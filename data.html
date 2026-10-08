@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Data schema · Dealectric</title>
+<meta name="description" content="The normalized product and offer schema Dealectric publishes for electronics, starting with chargers, power banks, cables and power stations.">
+<link rel="canonical" href="https://dealectric.com/data">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="/">Deal<span>ectric</span></a><nav><a href="/">Home</a><a href="/usb-c-charging">Charging guide</a><a href="/portable-power-stations">Power stations</a><a href="/data" aria-current="page">Data schema</a><a href="/agents">For AI agents</a><a href="/about">About</a></nav></div></header>
+<main><div class="wrap">
+
+<h1>Data schema</h1>
+<p class="lead">Every product on Dealectric is described with a shared core record plus a category-specific field set, all in the same units, and every offer carries provenance. Pages embed this as <code>schema.org/Product</code> and <code>schema.org/Offer</code> JSON-LD; a JSON API with the same shape is planned (see <a href="/agents">For AI agents</a>).</p>
+
+<h2>Product record (core + charging/power fields, the launch category)</h2>
+<div class="scroll"><table>
+<tr><th>Field</th><th>Type / unit</th><th>Notes</th></tr>
+<tr><td><code>id</code></td><td>string</td><td>Stable slug, e.g. <code>anker-prime-100w-3-port</code></td></tr>
+<tr><td><code>brand</code>, <code>model</code>, <code>sku</code></td><td>string</td><td>Manufacturer model number as printed on the product</td></tr>
+<tr><td><code>category</code></td><td>enum</td><td>Launch set: <code>wall_charger</code> · <code>power_bank</code> · <code>cable</code> · <code>wireless_charger</code> · <code>power_station</code> · <code>surge_protector</code>. Planned: <code>security_camera</code>, <code>smart_plug</code>, <code>router</code>, <code>earbuds</code>, <code>headphones</code>, <code>speaker</code>, <code>robot_vacuum</code>, <code>air_purifier</code>, and more — each with its own field block</td></tr>
+<tr><td><code>max_output_w</code></td><td>integer, W</td><td>Total headline output</td></tr>
+<tr><td><code>ports[]</code></td><td>array</td><td>Each: <code>type</code> (usb_c / usb_a / ac / dc12 / wireless), <code>max_w</code>, <code>protocols[]</code> (pd3.0, pd3.1_epr, pps, qc3, qc4+, …)</td></tr>
+<tr><td><code>power_distribution[]</code></td><td>array</td><td>Per-combination split, e.g. <code>{"ports":["c1","c2"],"w":[65,30]}</code></td></tr>
+<tr><td><code>capacity_wh</code>, <code>capacity_mah</code></td><td>number</td><td>Power banks / stations; Wh is canonical</td></tr>
+<tr><td><code>chemistry</code></td><td>enum</td><td><code>lfp</code> · <code>nmc</code> · <code>li_ion</code> · <code>unknown</code></td></tr>
+<tr><td><code>cycle_life</code></td><td>integer</td><td>Manufacturer-rated cycles to 80%</td></tr>
+<tr><td><code>ac_continuous_w</code>, <code>ac_surge_w</code></td><td>integer, W</td><td>Power stations</td></tr>
+<tr><td><code>recharge</code></td><td>object</td><td><code>ac_max_w</code>, <code>solar_max_w</code>, <code>solar_voltage_range</code>, <code>ups_switchover_ms</code></td></tr>
+<tr><td><code>cable</code></td><td>object</td><td><code>rated_w</code> (60/100/240), <code>emarker</code> (bool), <code>data_gbps</code>, <code>length_m</code>, <code>usb_if_certified</code></td></tr>
+<tr><td><code>airline_carry_on</code></td><td>enum</td><td><code>ok</code> (≤100 Wh) · <code>approval_required</code> (101–160 Wh) · <code>not_allowed</code></td></tr>
+<tr><td><code>dimensions_mm</code>, <code>weight_g</code></td><td>numbers</td><td></td></tr>
+<tr><td><code>safety_certs[]</code></td><td>array</td><td>ul, etl, ce, ukca, fcc, psE…</td></tr>
+<tr><td><code>warranty_months</code></td><td>integer</td><td></td></tr>
+<tr><td><code>source_urls[]</code>, <code>spec_verified_at</code></td><td>array, ISO date</td><td>Where the specs came from and when we last checked</td></tr>
+</table></div>
+
+<h2>Offer record</h2>
+<div class="scroll"><table>
+<tr><th>Field</th><th>Type / unit</th><th>Notes</th></tr>
+<tr><td><code>product_id</code></td><td>string</td><td></td></tr>
+<tr><td><code>merchant</code></td><td>string</td><td>Who fulfils the order (brand store, authorized retailer)</td></tr>
+<tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>List price at verification</td></tr>
+<tr><td><code>discount</code></td><td>object</td><td><code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>expires</code>, <code>last_worked_at</code>, <code>success_rate_7d</code></td></tr>
+<tr><td><code>effective_price</code></td><td>number</td><td>Price after the best known discount</td></tr>
+<tr><td><code>shipping</code></td><td>object</td><td><code>free_over</code>, <code>regions[]</code>, <code>est_days</code></td></tr>
+<tr><td><code>return_window_days</code></td><td>integer</td><td></td></tr>
+<tr><td><code>in_stock</code></td><td>bool</td><td></td></tr>
+<tr><td><code>url</code></td><td>URL</td><td>A dealectric.com link that redirects to the merchant. <strong>This may be an affiliate link</strong> — see <code>affiliate</code>.</td></tr>
+<tr><td><code>affiliate</code></td><td>bool</td><td>True when we earn a commission on purchases through <code>url</code></td></tr>
+<tr><td><code>verified_at</code></td><td>ISO datetime</td><td>When price and stock were last checked</td></tr>
+</table></div>
+
+<h2>Example</h2>
+<pre><code>{
+  "product": {
+    "id": "example-65w-3-port-gan",
+    "brand": "ExampleBrand", "model": "GaN 65", "category": "wall_charger",
+    "max_output_w": 65,
+    "ports": [
+      {"id":"c1","type":"usb_c","max_w":65,"protocols":["pd3.0","pps"]},
+      {"id":"c2","type":"usb_c","max_w":30,"protocols":["pd3.0","pps"]},
+      {"id":"a1","type":"usb_a","max_w":22.5,"protocols":["qc3"]}
+    ],
+    "power_distribution": [
+      {"ports":["c1"],"w":[65]},
+      {"ports":["c1","c2"],"w":[45,20]},
+      {"ports":["c1","c2","a1"],"w":[45,15,5]}
+    ],
+    "safety_certs": ["ul"], "warranty_months": 24,
+    "spec_verified_at": "2026-10-07"
+  },
+  "offers": [{
+    "merchant": "ExampleBrand.com", "price": 45.99, "currency": "USD",
+    "discount": {"code":"EXAMPLE10","type":"percent","value":10,"last_worked_at":"2026-10-07T18:02:00Z","success_rate_7d":0.96},
+    "effective_price": 41.39, "return_window_days": 30, "in_stock": true,
+    "url": "https://dealectric.com/go/example-65w-3-port-gan/examplebrand", "affiliate": true,
+    "verified_at": "2026-10-07T18:02:00Z"
+  }]
+}</code></pre>
+<p class="small">Illustrative record with a fictional brand. Units: W, Wh, mm, g. Dates are UTC ISO 8601.</p>
+
+<h2>Category field blocks (planned)</h2>
+<p>Non-power categories reuse the core record and add their own block. Examples of the fields each will carry: <strong>earbuds/headphones</strong> — driver size, codecs (AAC, LDAC, aptX), ANC (yes/no, adaptive), battery hours with and without case, multipoint, IP rating; <strong>security cameras</strong> — resolution, field of view, local vs cloud storage, subscription required, PoE/battery/wired, night-vision type, ecosystem (HomeKit, Alexa, Google); <strong>routers</strong> — Wi-Fi generation, bands, max link rate, ports, mesh support; <strong>robot vacuums</strong> — suction (Pa), mop type, self-empty/self-wash dock, mapping (LiDAR/vSLAM), runtime; <strong>small kitchen appliances</strong> — wattage, capacity, footprint, dishwasher-safe parts. Field names and units will be published here before each category goes live.</p>
+
+</div></main>
+<footer><div class="wrap">
+<div>© 2026 Dealectric · Sunnyvale, California, USA</div>
+<div><a href="/disclosure">Affiliate disclosure</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">llms.txt</a></div>
+</div></footer>
+</body>
+</html>
