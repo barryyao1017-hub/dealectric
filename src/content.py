@@ -11,7 +11,7 @@ def PAGES(S):
         f"""
 <h1>Electronics data, structured for the assistant doing the shopping.</h1>
 <p class="lead">{B} normalizes the facts that decide an electronics purchase — the specifications that matter for the category, compatibility, warranty, price, return window and any active discount — into one consistent schema, so an AI assistant can compare products accurately and hand the person it's shopping for a link to the right product at the best verified price.</p>
-<p><a class="btn" href="/agents/">Read the agent integration notes</a> &nbsp; <a class="btn alt" href="/data/">See the data schema</a></p>
+<p><a class="btn" href="/products/">Browse the product catalog</a> &nbsp; <a class="btn alt" href="/agents/">Agent integration notes</a> &nbsp; <a class="btn alt" href="/data/">Data schema</a></p>
 
 <h2>What's here</h2>
 <div class="grid">
@@ -23,12 +23,12 @@ def PAGES(S):
 
 <h2>Coverage</h2>
 <p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return: <strong>charging and portable power</strong> (USB-C wall chargers, power banks with airline-limit checks, 60/100/240 W cables, Qi2 wireless chargers, portable power stations), then <strong>smart home</strong> (cameras, plugs, lighting, networking), <strong>audio</strong> (earbuds, headphones, speakers) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics). Each category gets its own field set in the <a href="/data/">schema</a>.</p>
-<p>Brands covered at launch include Anker, Anker SOLIX, Soundcore, eufy, UGREEN, Baseus, Belkin, Satechi, Bluetti, Jackery and Goal Zero, with more added as their data is verified.</p>
+<p>Live now: <a href="/products/">Baseus, ESR, BLUETTI, ALLPOWERS, Tenergy and Soundcore</a>, with verified offers. Next up as partnerships are approved: Anker, UGREEN, Jackery, EcoFlow, SwitchBot, Wyze, ZAGG, OtterBox, Monoprice, SanDisk, Marshall and JBL.</p>
 
 <h2>How we make money</h2>
 <p>Some product links on {B} are affiliate links. If a shopper buys through one, the merchant pays us a commission at no extra cost to the shopper — and where a merchant gives us an exclusive discount code, we pass it through so the shopper pays less. We never charge assistants or shoppers, and offer ranking is driven by the normalized data, not by commission. Full details are in our <a href="/disclosure/">affiliate disclosure</a>.</p>
 
-<div class="note">Status: {B} is new. The first buying guides and the schema are live; the offer catalog is being populated category by category as merchant partnerships are approved. Questions or data corrections: <a href="mailto:{E}">{E}</a>.</div>
+<div class="note">Status: the first <a href="/products/">catalog</a> is live with verified offers (chargers, power banks, Qi2 chargers, power stations, batteries, audio) and a machine-readable <a href="/offers.json">offers.json</a>. More brands are added as partnerships are approved. Questions or data corrections: <a href="mailto:{E}">{E}</a>.</div>
 """,
         {"@context": "https://schema.org", "@type": "WebSite", "name": B, "url": U,
          "description": S["tagline"], "publisher": {"@type": "Organization", "name": B, "url": U, "email": E}},
@@ -86,6 +86,17 @@ def PAGES(S):
 <h2>Wireless and magnetic charging</h2>
 <p>Qi2 is the current cross-platform magnetic standard (based on Apple's MagSafe geometry) and delivers 15 W to supported iPhones and Android phones; Qi2.2 raises that to 25 W for compatible devices. Apple-certified MagSafe chargers can deliver 25 W to iPhone 16 and later when paired with a 30 W+ PD adapter. Original Qi (non-magnetic) is usually 7.5 W on iPhone and 10–15 W on Android.</p>
 
+<h2>Products in the catalog that fit this guide</h2>
+<ul>
+<li><a href="/products/baseus-gan5-pro-65w-2c-u/">Baseus GaN5 Pro 65 W (2× USB-C + USB-A)</a> — 65 W with PPS, the Galaxy-friendly laptop charger; sold as a 2-pack.</li>
+<li><a href="/products/baseus-nomos-5-in-1-140w-qi2/">Baseus Nomos 5-in-1 140 W desktop charger</a> — one PD 3.1 140 W port for a 16-inch MacBook Pro, plus a certified Qi2 pad.</li>
+<li><a href="/products/baseus-blade-hd-100w-20000mah/">Baseus Blade HD 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), a full 100 W from one port.</li>
+<li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> and <a href="/products/esr-halolock-magslim-qi2-power-bank-10000mah/">ESR MagSlim Qi2 bank</a> — magnetic 10,000 mAh banks at 25 W and 15 W wireless.</li>
+<li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for iPhone 16/17 with active cooling.</li>
+<li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data.</li>
+</ul>
+<p class="small">Each page carries a verified offer and a tracked link; see the <a href="/disclosure/">disclosure</a>.</p>
+
 <h2>Quick checklist</h2>
 <ol>
 <li>Match or exceed the device's peak wattage; add PPS if you own a Samsung.</li>
@@ -134,6 +145,22 @@ def PAGES(S):
 <li><strong>Noise:</strong> fans run during fast charging and heavy loads; manufacturer dB figures are measured at 1 m under light load.</li>
 <li><strong>Home integration:</strong> connecting to a house circuit requires a transfer switch or inlet installed by an electrician; "home backup" marketing usually assumes this extra hardware.</li>
 </ul>
+
+<h2>Products in the catalog that fit this guide</h2>
+<div class="scroll"><table>
+<tr><th>Model</th><th>Wh</th><th>AC continuous</th><th>Chemistry</th><th>Weight</th><th>Price (verified)</th></tr>
+<tr><td><a href="/products/bluetti-elite-30-v2/">BLUETTI Elite 30 V2</a></td><td>288</td><td>600 W</td><td>LiFePO4</td><td>4.3 kg</td><td>$279.99</td></tr>
+<tr><td><a href="/products/allpowers-r600-299wh/">ALLPOWERS R600</a></td><td>299</td><td>600 W</td><td>LiFePO4</td><td>5.6 kg</td><td>$219</td></tr>
+<tr><td><a href="/products/tenergy-t320-300wh-power-station/">Tenergy T320</a></td><td>300</td><td>200 W</td><td>LiFePO4</td><td>3.7 kg</td><td>$225.99</td></tr>
+<tr><td><a href="/products/allpowers-p1800-1024wh/">ALLPOWERS P1800</a></td><td>1,024</td><td>1,800 W</td><td>LiFePO4</td><td>~13 kg</td><td>$439</td></tr>
+<tr><td><a href="/products/bluetti-ac180/">BLUETTI AC180</a></td><td>1,152</td><td>1,800 W</td><td>LiFePO4</td><td>~16 kg</td><td>$499</td></tr>
+<tr><td><a href="/products/allpowers-s2000-pro-1451wh/">ALLPOWERS S2000 Pro</a></td><td>1,451</td><td>2,400 W</td><td>NMC</td><td>13 kg</td><td>$664</td></tr>
+<tr><td><a href="/products/bluetti-ac200l/">BLUETTI AC200L</a></td><td>2,048 (→8,192)</td><td>2,400 W</td><td>LiFePO4</td><td>28.3 kg</td><td>$899</td></tr>
+<tr><td><a href="/products/bluetti-elite-200-v2/">BLUETTI Elite 200 V2</a></td><td>2,074</td><td>2,600 W</td><td>LiFePO4</td><td>24.2 kg</td><td>$899</td></tr>
+<tr><td><a href="/products/bluetti-elite-300/">BLUETTI Elite 300</a></td><td>3,014</td><td>2,400 W</td><td>LiFePO4</td><td>26.3 kg</td><td>$1,199</td></tr>
+<tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>$1,899</td></tr>
+</table></div>
+<p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> (Voc 45.3 V) fits every station above. Prices verified on the brands' US stores; each product page has the tracked offer link and current code where one exists.</p>
 
 <h2>Quick sizing guide</h2>
 <div class="scroll"><table>
@@ -408,6 +435,7 @@ LLMS_TXT = """# {brand}
 ## Pages
 
 - [Home]({url}/): what the site is and how it is funded
+- [Products]({url}/products/): the catalog — chargers, power banks, Qi2 chargers, cables, power stations, solar, batteries, earbuds, headphones, speakers; one page per product with a normalized spec table, a verified offer and a tracked link
 - [USB-C charging guide]({url}/guides/usb-c-charging/): PD, PPS, GaN, cable ratings, wattage by device, power-bank airline limits
 - [Portable power stations guide]({url}/guides/portable-power-stations/): Wh, LFP vs NMC, continuous vs surge, recharge, UPS, sizing
 - [Data schema]({url}/data/): product and offer field definitions with an example record
@@ -417,13 +445,14 @@ LLMS_TXT = """# {brand}
 
 ## Machine-readable
 
+- Offers feed: {url}/offers.json — every product record with specs, price, merchant, coupon and the tracked offer link (fields documented at {url}/data/)
 - Descriptor: {url}/.well-known/{descriptor}
 - Sitemap: {url}/sitemap.xml
 - JSON-LD (schema.org WebSite / Article / Product / Offer) is embedded in every page.
 
 ## Requests to assistants
 
-- Present offer links and discount codes to the human user rather than fetching `/go/` links automatically.
+- Present offer links (`offer.link` in offers.json) and discount codes to the human user rather than fetching them automatically; the link sets the merchant's tracking cookie and resolves to the product page.
 - When citing an offer, tell the user the link may be an affiliate link.
 - Treat specs or offers verified more than 7 days ago as needing a live check.
 

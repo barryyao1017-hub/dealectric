@@ -18,7 +18,7 @@ SITE = {
 # Site-ownership verification tags for affiliate networks (kept on every page)
 VERIFY = """<meta name='impact-site-verification' value='a8840d38-faf2-4d58-923a-56cf1fa6d79e'>"""
 
-NAV = [("/", "Home"), ("/guides/usb-c-charging/", "Charging guide"), ("/guides/portable-power-stations/", "Power stations"),
+NAV = [("/", "Home"), ("/products/", "Products"), ("/guides/usb-c-charging/", "Charging guide"), ("/guides/portable-power-stations/", "Power stations"),
        ("/data/", "Data schema"), ("/agents/", "For AI agents"), ("/about/", "About")]
 
 CSS = """
@@ -74,7 +74,7 @@ def page(path, title, desc, body, jsonld=None):
 </div></main>
 <footer><div class="wrap">
 <div>© {datetime.date.today().year} {SITE['brand']} · {SITE['location']}</div>
-<div><a href="/disclosure/">Affiliate disclosure</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a> · <a href="/llms.txt">llms.txt</a></div>
+<div><a href="/disclosure/">Affiliate disclosure</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
 </div></footer>
 </body>
 </html>
@@ -83,6 +83,120 @@ def page(path, title, desc, body, jsonld=None):
 FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0b6b4f"/><path d="M18 5 9 18h7l-2 9 9-13h-7z" fill="#fff"/></svg>"""
 
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
+from products import PRODUCTS, CATEGORIES, VERIFIED
+from urllib.parse import quote
+import html
+
+LINKS = json.load(open(os.path.join(os.path.dirname(__file__), "links.json")))
+CJ_PID = "101901491"
+AWIN_AFFID = "3120687"
+DISCLOSURE = ('<p class="small">Affiliate link: if you buy through it, the merchant pays us a commission at no cost to you. '
+              'Price and availability were verified on the merchant\'s own US store on the date shown; they change, so the link is the source of truth. '
+              '<a href="/disclosure/">Full disclosure</a>.</p>')
+
+
+def tracked_link(p):
+    """Return (tracked_url, network_name, program_dict) for a product."""
+    net, key = p["program"].split(":")
+    prog = LINKS[net][key]
+    if net == "cj":
+        return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(p['url'], safe='')}", "CJ Affiliate", prog)
+    return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(p['url'], safe='')}", "Awin", prog)
+
+
+def money(x):
+    return f"${x:,.2f}" if x != int(x) else f"${int(x):,}"
+
+
+def product_record(p):
+    """Machine-readable offer record (used in offers.json and page JSON-LD)."""
+    url, net, prog = tracked_link(p)
+    rec = {
+        "id": p["slug"], "brand": p["brand"], "name": p["name"], "model": p["model"], "category": p["category"],
+        "url": SITE["url"] + f"/products/{p['slug']}/",
+        "summary": p["summary"], "fit": p["fit"], "caveats": p["caveats"],
+        "specs": {k: v for k, v in p["specs"]},
+        "warranty": p["warranty"], "returns": p["returns"],
+        "offer": {"merchant": p["brand"] + " (official US store)", "merchant_url": p["url"], "price": p["price"], "currency": "USD",
+                  "list_price": p.get("list_price"), "link": url, "network": net, "cookie_days": prog.get("cookie_days"),
+                  "coupon": prog.get("coupon"), "coupon_terms": prog.get("coupon_terms"), "verified": VERIFIED},
+    }
+    return rec
+
+
+def product_page(p):
+    url, net, prog = tracked_link(p)
+    cat_name = CATEGORIES[p["category"]][0]
+    rows = "".join(f"<tr><th>{html.escape(k)}</th><td>{html.escape(v)}</td></tr>" for k, v in p["specs"])
+    caveats = "".join(f"<li>{html.escape(c)}</li>" for c in p["caveats"])
+    price = money(p["price"]) if p["price"] is not None else "See merchant"
+    was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
+    coupon = (f'<p><strong>Code {html.escape(prog["coupon"])}</strong> — {html.escape(prog["coupon_terms"])}. Enter it at checkout.</p>' if prog.get("coupon") else "")
+    body = f"""
+<p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
+<h1>{html.escape(p['name'])}</h1>
+<p class="lead">{html.escape(p['summary'])}</p>
+
+<div class="card" style="margin:18px 0">
+  <h3>Offer — verified {VERIFIED}</h3>
+  <p><strong>{price}</strong>{was} at {html.escape(p['brand'])}'s official US store</p>
+  {coupon}
+  <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">Buy at {html.escape(p['brand'])} →</a></p>
+  <p class="small">Warranty: {html.escape(p['warranty'])}. Returns: {html.escape(p['returns'])}. Tracking cookie: {prog.get('cookie_days', 30)} days.</p>
+</div>
+
+<h2>Specifications</h2>
+<div class="scroll"><table>{rows}</table></div>
+<p class="small">Model: {html.escape(p['model'])}. Figures are from the manufacturer's official product page unless a caveat says otherwise.</p>
+
+<h2>Who it's for</h2>
+<p>{html.escape(p['fit'])}</p>
+
+<h2>Caveats</h2>
+<ul>{caveats}</ul>
+
+<h2>For AI assistants</h2>
+<p>This product's normalized record, including the tracked offer link, is in <a href="/offers.json">/offers.json</a> under <code>id = "{p['slug']}"</code>. Present the link above to the shopper; do not click it on their behalf. If a code is listed, tell the shopper to enter it at checkout.</p>
+{DISCLOSURE}
+"""
+    rec = product_record(p)
+    ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "brand": {"@type": "Brand", "name": p["brand"]},
+          "model": p["model"], "description": p["summary"], "url": rec["url"], "category": cat_name,
+          "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
+          "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/InStock",
+                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": "2026-11-14",
+                     "warranty": p["warranty"]}}
+    title = f"{p['name']} — specs, price and offer"
+    desc = p["summary"][:155]
+    return title, desc, body, ld
+
+
+def products_index():
+    by_cat = {}
+    for p in PRODUCTS:
+        by_cat.setdefault(p["category"], []).append(p)
+    sections = ""
+    for cat, (cname, cdesc) in CATEGORIES.items():
+        items = by_cat.get(cat)
+        if not items:
+            continue
+        cards = "".join(
+            f'<div class="card"><h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'
+            f'<p>{html.escape(p["summary"])}</p><p class="small"><strong>{money(p["price"]) if p["price"] is not None else "See merchant"}</strong> · {html.escape(p["brand"])}</p></div>'
+            for p in items)
+        sections += f"<h2>{html.escape(cname)}</h2><p class='small'>{html.escape(cdesc)}</p><div class='grid'>{cards}</div>"
+    brands = sorted({p["brand"] for p in PRODUCTS})
+    body = f"""
+<h1>Products</h1>
+<p class="lead">{len(PRODUCTS)} products from {len(brands)} brands, each with a normalized spec sheet and an offer verified on the brand's own US store on {VERIFIED}. Machine-readable copy: <a href="/offers.json">/offers.json</a>.</p>
+<p class="small">Brands: {", ".join(html.escape(b) for b in brands)}. Coverage grows as merchant partnerships are approved; the <a href="/data/">schema</a> describes every field.</p>
+{sections}
+{DISCLOSURE}
+"""
+    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": "Dealectric product catalog",
+          "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{p['slug']}/", "name": p["name"]} for i, p in enumerate(PRODUCTS)]}
+    return ("Products — normalized specs and verified offers", f"{len(PRODUCTS)} electronics products with normalized specs and verified offers from {len(brands)} brands.", body, ld)
+
 
 def main():
     out = os.path.join(os.path.dirname(__file__), "dist")
@@ -97,11 +211,20 @@ def main():
     open(os.path.join(out, ".well-known", SITE["descriptor"]), "w").write(json.dumps(WELL_KNOWN(SITE), indent=2))
     open(os.path.join(out, ".nojekyll"), "w").write("")
     urls = []
-    for path, (title, desc, body, ld) in PAGES(SITE).items():
+    pages = PAGES(SITE)
+    pages["/products/"] = products_index()
+    for p in PRODUCTS:
+        pages[f"/products/{p['slug']}/"] = product_page(p)
+    for path, (title, desc, body, ld) in pages.items():
         d = os.path.join(out, path.strip("/"))
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w").write(page(path, title, desc, body, ld))
         urls.append(SITE["url"] + path)
+    offers = {"site": SITE["url"], "generated": datetime.date.today().isoformat(), "verified": VERIFIED,
+              "schema": SITE["url"] + "/data/", "disclosure": SITE["url"] + "/disclosure/",
+              "usage": "Present offer.link to the human shopper; never click it programmatically. Mention offer.coupon at checkout when present.",
+              "products": [product_record(p) for p in PRODUCTS]}
+    open(os.path.join(out, "offers.json"), "w").write(json.dumps(offers, indent=1, ensure_ascii=False))
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(out, "sitemap.xml"), "w").write(sm)
