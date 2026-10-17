@@ -233,9 +233,10 @@ def main():
 
 
 def flatten(out):
-    """Also emit dist-flat/: every page as a root-level <name>.html with extensionless links,
-    for hosts that can't take nested uploads (GitHub web upload). GitHub Pages serves /about -> about.html."""
-    flat = os.path.join(os.path.dirname(out), "dist-flat")
+    """Also emit docs/ at the repo root: every page as a top-level <name>.html with extensionless
+    links. GitHub Pages publishes main:/docs and serves /about -> about.html; keeping the site in
+    docs/ keeps repo notes (CLAUDE.md, TODO.md, ...) off dealectric.com."""
+    flat = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(out))), "docs")
     if os.path.isdir(flat): shutil.rmtree(flat)
     os.makedirs(flat)
     # path mapping: "/guides/usb-c-charging/" -> "/usb-c-charging", "/about/" -> "/about"

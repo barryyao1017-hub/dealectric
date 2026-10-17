@@ -3,8 +3,8 @@
 Read this before judging project status from the repo alone. Much of the operational state lives outside git.
 
 ## What this repo is
-- Static site for https://dealectric.com (GitHub Pages, `main` branch, root-level extensionless pages).
-- Generator in `src/`: `build.py` (pages, offers.json, sitemap), `content.py` (prose), `products.py` (31 product records, `VERIFIED` date), `links.json` (CJ/Awin program IDs + link IDs). `python3 src/build.py` regenerates everything.
+- Static site for https://dealectric.com (GitHub Pages, `main` branch, `/docs` folder, extensionless pages). Only `docs/` is published; everything else in the repo (this file, `TODO.md`, `launch-status.md`, `src/`) is not served on dealectric.com, though the repo itself is public on GitHub.
+- Generator in `src/`: `build.py` (pages, offers.json, sitemap), `content.py` (prose), `products.py` (31 product records, `VERIFIED` date), `links.json` (CJ/Awin program IDs + link IDs). `python3 src/build.py` regenerates everything and writes the published site to `docs/` (it replaces the folder, so never hand-edit files there).
 - Current status and open items: `TODO.md` and `launch-status.md` at the repo root. Treat these as the source of truth over any inference from the code. Both are mirrored to the Claude project ("Agent Discoverable") as `ops/TODO.md` and `ops/launch-status.md`.
 
 ## State that is NOT visible in this repo (don't report it as missing)

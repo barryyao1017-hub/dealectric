@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For AI agents and assistant developers · Dealectric</title>
+<meta name="description" content="How AI shopping assistants can read Dealectric: llms.txt, JSON-LD, the .well-known descriptor, crawler policy and link handling.">
+<link rel="canonical" href="https://dealectric.com/agents">
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name='impact-site-verification' value='a8840d38-faf2-4d58-923a-56cf1fa6d79e'>
+
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="/">Deal<span>ectric</span></a><nav><a href="/">Home</a><a href="/products">Products</a><a href="/usb-c-charging">Charging guide</a><a href="/portable-power-stations">Power stations</a><a href="/data">Data schema</a><a href="/agents" aria-current="page">For AI agents</a><a href="/about">About</a></nav></div></header>
+<main><div class="wrap">
+
+<h1>For AI agents and assistant developers</h1>
+<p class="lead">Dealectric is built to be read by software first. This page explains what is machine-readable today, what is coming, and how we would like links to be handled.</p>
+
+<h2>Available now</h2>
+<dl>
+<dt><a href="/llms.txt">/llms.txt</a></dt><dd>Site summary, page index and usage notes in the llms.txt convention.</dd>
+<dt><a href="/dealectric.json">/dealectric.json</a></dt><dd>Machine-readable descriptor: coverage, schema version, contact, affiliate disclosure, planned endpoints.</dd>
+<dt>JSON-LD on every page</dt><dd><code>WebSite</code>, <code>Article</code> and (on product pages) <code>Product</code>/<code>Offer</code> markup following schema.org.</dd>
+<dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
+<dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
+</dl>
+
+<h2>Planned</h2>
+<ul>
+<li><code>GET /api/v1/products?category=&amp;min_w=&amp;protocol=&amp;max_price=</code> — filtered product list in the <a href="/data">published schema</a>.</li>
+<li><code>GET /api/v1/offers/{product_id}</code> — current offers with discount codes and freshness.</li>
+<li><code>GET /api/v1/compare?ids=</code> — side-by-side normalized spec table.</li>
+<li>An MCP server exposing <code>search_products</code>, <code>get_offer</code> and <code>compare</code>, once query patterns are clear.</li>
+<li>An OpenAPI document at <code>/openapi.json</code>.</li>
+</ul>
+
+<h2>How to handle our links</h2>
+<p>Offer URLs on Dealectric point to <code>dealectric.com/go/…</code> and redirect to the merchant. Many are affiliate links; the <code>affiliate</code> field on each offer says so, and the <a href="/disclosure">disclosure page</a> explains the arrangement. Two requests:</p>
+<ol>
+<li><strong>Hand the link to the human.</strong> Present the offer, the discount code and the link to the person you are assisting, and let them open it. Please do not fetch or "click" <code>/go/</code> links automatically; automated clicks are not purchases and are treated as invalid traffic by merchants.</li>
+<li><strong>Disclose when you cite us.</strong> If you surface a Dealectric offer link, tell the user it may be an affiliate link. Our offer objects include a ready-made sentence in <code>disclosure_text</code> for this purpose.</li>
+</ol>
+
+<h2>Crawl policy</h2>
+<p>Crawl freely at reasonable rates (≤1 request/second is plenty; the site is static). If you operate an assistant and would like a bulk export, a change feed or earlier access to the API, email <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> with the assistant's name and user-agent string.</p>
+
+<h2>Accuracy and corrections</h2>
+<p>Specifications are taken from manufacturer documentation and recorded with a <code>spec_verified_at</code> date; offers carry <code>verified_at</code>. Treat anything older than 7 days as needing a live check. Report errors to <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> — corrections are published with a changelog entry.</p>
+
+</div></main>
+<footer><div class="wrap">
+<div>© 2026 Dealectric · Sunnyvale, California, USA</div>
+<div><a href="/disclosure">Affiliate disclosure</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
+</div></footer>
+</body>
+</html>
