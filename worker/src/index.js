@@ -51,12 +51,15 @@ async function handleGo(url, request, env, ctx) {
   // the tracked link stays in the answer and no bot click reaches the affiliate network.
   const aiFetch = isAiFetcher(cf, ua);
   const row = env.DB.prepare(
-    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind, query, utm_source)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
     cf.verifiedBotCategory || "", looksLikeBot(ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
+    // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
+    clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100),
   );
   // Don't make the response wait on the write.
   ctx.waitUntil(row.run().catch((e) => console.error("click insert failed", e)));

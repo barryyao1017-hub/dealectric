@@ -12,10 +12,14 @@ CREATE TABLE IF NOT EXISTS clicks (
   country TEXT,
   verified_bot TEXT,           -- Cloudflare verified-bot category, if any
   bot_like INTEGER DEFAULT 0,  -- crude user-agent heuristic
-  kind TEXT DEFAULT 'redirect' -- redirect (302 issued) | ai_fetch (AI assistant got the text page, no redirect)
+  kind TEXT DEFAULT 'redirect', -- redirect (302 issued) | ai_fetch (AI assistant got the text page, no redirect)
+  query TEXT,                  -- raw query string of the /go/ request, e.g. utm_source=chatgpt.com (ChatGPT sends no referrer)
+  utm_source TEXT              -- parsed utm_source, for grouping clicks by assistant
 );
--- Added 2026-10-18 for databases created before the kind column existed (fails harmlessly once applied):
+-- Added 2026-10-18 for databases created before these columns existed (each fails harmlessly once applied):
 -- ALTER TABLE clicks ADD COLUMN kind TEXT DEFAULT 'redirect';
+-- ALTER TABLE clicks ADD COLUMN query TEXT;
+-- ALTER TABLE clicks ADD COLUMN utm_source TEXT;
 CREATE INDEX IF NOT EXISTS clicks_ts ON clicks (ts);
 CREATE INDEX IF NOT EXISTS clicks_slug ON clicks (slug);
 CREATE INDEX IF NOT EXISTS clicks_click_id ON clicks (click_id);
