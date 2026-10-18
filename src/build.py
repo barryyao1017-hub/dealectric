@@ -117,7 +117,10 @@ def links_map():
     m = {}
     for p in PRODUCTS:
         url, net_name, prog = tracked_link(p)
-        m[p["slug"]] = {"network": p["program"].split(":")[0], "url": url, "merchant_url": p["url"], "brand": p["brand"]}
+        m[p["slug"]] = {"network": p["program"].split(":")[0], "url": url, "merchant_url": p["url"], "brand": p["brand"],
+                        # Used by the Worker's text page for AI assistant fetchers (see worker/src/index.js).
+                        "name": p["name"], "price": p["price"], "verified": VERIFIED,
+                        "page": f"{SITE['url']}/{p['slug']}"}
     return m
 
 

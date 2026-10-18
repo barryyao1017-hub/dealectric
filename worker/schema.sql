@@ -11,8 +11,11 @@ CREATE TABLE IF NOT EXISTS clicks (
   user_agent TEXT,
   country TEXT,
   verified_bot TEXT,           -- Cloudflare verified-bot category, if any
-  bot_like INTEGER DEFAULT 0   -- crude user-agent heuristic
+  bot_like INTEGER DEFAULT 0,  -- crude user-agent heuristic
+  kind TEXT DEFAULT 'redirect' -- redirect (302 issued) | ai_fetch (AI assistant got the text page, no redirect)
 );
+-- Added 2026-10-18 for databases created before the kind column existed (fails harmlessly once applied):
+-- ALTER TABLE clicks ADD COLUMN kind TEXT DEFAULT 'redirect';
 CREATE INDEX IF NOT EXISTS clicks_ts ON clicks (ts);
 CREATE INDEX IF NOT EXISTS clicks_slug ON clicks (slug);
 CREATE INDEX IF NOT EXISTS clicks_click_id ON clicks (click_id);
