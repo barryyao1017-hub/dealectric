@@ -198,6 +198,9 @@ def products_index():
     return ("Products — normalized specs and verified offers", f"{len(PRODUCTS)} electronics products with normalized specs and verified offers from {len(brands)} brands.", body, ld)
 
 
+INDEXNOW_KEY = "dlc-31c73feed521769132773e90e1732d25"
+
+
 def main():
     out = os.path.join(os.path.dirname(__file__), "dist")
     if os.path.isdir(out): shutil.rmtree(out)
@@ -207,6 +210,9 @@ def main():
     open(os.path.join(out, "llms.txt"), "w").write(LLMS_TXT.format(**SITE))
     open(os.path.join(out, "robots.txt"), "w").write(ROBOTS_TXT.format(**SITE))
     open(os.path.join(out, "CNAME"), "w").write(SITE["domain"] + "\n")
+    # IndexNow key file (https://www.indexnow.org/documentation): proves we own the host when
+    # tools/indexnow.py pushes changed URLs to Bing & co. Public by design; keep the value stable.
+    open(os.path.join(out, INDEXNOW_KEY + ".txt"), "w").write(INDEXNOW_KEY)
     os.makedirs(os.path.join(out, ".well-known"))
     open(os.path.join(out, ".well-known", SITE["descriptor"]), "w").write(json.dumps(WELL_KNOWN(SITE), indent=2))
     open(os.path.join(out, ".nojekyll"), "w").write("")
