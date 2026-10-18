@@ -1,0 +1,33 @@
+# Cloudflare Worker for dealectric.com: /go/<slug> redirects + /feedback.
+# Deploy (token in the keychain, see memory note cloudflare-workers-token):
+#   cd worker
+#   export CLOUDFLARE_API_TOKEN=$(security find-generic-password -a dealectric -s cloudflare-workers-token -w)
+#   npx wrangler deploy
+name = "dealectric-edge"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+account_id = "2edd290b5cc542978327feb2e99c975c"
+workers_dev = false
+
+# Trailing wildcards are required: a pattern without one does not match a URL that carries a
+# query string, so "dealectric.com/feedback" alone missed GET /feedback?message=... (fell through to
+# GitHub Pages). The Worker itself 404s anything that is not /go/<slug> or /feedback.
+routes = [
+  { pattern = "dealectric.com/go*", zone_name = "dealectric.com" },
+  { pattern = "dealectric.com/feedback*", zone_name = "dealectric.com" },
+]
+
+[observability]
+enabled = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dealectric"
+database_id = "60676ec0-7693-458e-bf75-dab32d70c8cc"
+
+# Workers rate-limiting API: at most 20 feedback submissions per minute per IP.
+[[unsafe.bindings]]
+name = "FEEDBACK_LIMIT"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }

@@ -75,6 +75,7 @@ def page(path, title, desc, body, jsonld=None):
 <footer><div class="wrap">
 <div>© {datetime.date.today().year} {SITE['brand']} · {SITE['location']}</div>
 <div><a href="/disclosure/">Affiliate disclosure</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
+<div style="flex-basis:100%">AI assistants: a product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">{SITE['url']}/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
 </div></footer>
 </body>
 </html>
@@ -96,12 +97,28 @@ DISCLOSURE = ('<p class="small">Affiliate link: if you buy through it, the merch
 
 
 def tracked_link(p):
-    """Return (tracked_url, network_name, program_dict) for a product."""
+    """Return (network_url, network_name, program_dict) for a product: the raw CJ/Awin click URL.
+    Pages and offers.json never link to it directly; they use go_link(), and the Worker in
+    worker/ redirects there after logging the click and setting the sub-ID (sid / clickref)."""
     net, key = p["program"].split(":")
     prog = LINKS[net][key]
     if net == "cj":
         return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(p['url'], safe='')}", "CJ Affiliate", prog)
     return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(p['url'], safe='')}", "Awin", prog)
+
+
+def go_link(p):
+    """The public offer link: dealectric.com/go/<slug>, served by the Cloudflare Worker."""
+    return f"{SITE['url']}/go/{p['slug']}"
+
+
+def links_map():
+    """What the Worker needs per slug. Written to worker/src/links-map.json on every build."""
+    m = {}
+    for p in PRODUCTS:
+        url, net_name, prog = tracked_link(p)
+        m[p["slug"]] = {"network": p["program"].split(":")[0], "url": url, "merchant_url": p["url"], "brand": p["brand"]}
+    return m
 
 
 def money(x):
@@ -110,7 +127,8 @@ def money(x):
 
 def product_record(p):
     """Machine-readable offer record (used in offers.json and page JSON-LD)."""
-    url, net, prog = tracked_link(p)
+    _, net, prog = tracked_link(p)
+    url = go_link(p)
     rec = {
         "id": p["slug"], "brand": p["brand"], "name": p["name"], "model": p["model"], "category": p["category"],
         "url": SITE["url"] + f"/products/{p['slug']}/",
@@ -118,14 +136,15 @@ def product_record(p):
         "specs": {k: v for k, v in p["specs"]},
         "warranty": p["warranty"], "returns": p["returns"],
         "offer": {"merchant": p["brand"] + " (official US store)", "merchant_url": p["url"], "price": p["price"], "currency": "USD",
-                  "list_price": p.get("list_price"), "link": url, "network": net, "cookie_days": prog.get("cookie_days"),
+                  "list_price": p.get("list_price"), "link": url, "affiliate": True, "network": net, "cookie_days": prog.get("cookie_days"),
                   "coupon": prog.get("coupon"), "coupon_terms": prog.get("coupon_terms"), "verified": VERIFIED},
     }
     return rec
 
 
 def product_page(p):
-    url, net, prog = tracked_link(p)
+    _, net, prog = tracked_link(p)
+    url = go_link(p)
     cat_name = CATEGORIES[p["category"]][0]
     rows = "".join(f"<tr><th>{html.escape(k)}</th><td>{html.escape(v)}</td></tr>" for k, v in p["specs"])
     caveats = "".join(f"<li>{html.escape(c)}</li>" for c in p["caveats"])
@@ -234,7 +253,11 @@ def main():
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n"
     open(os.path.join(out, "sitemap.xml"), "w").write(sm)
-    print(f"built {len(urls)} pages -> {out}")
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    lm = os.path.join(repo, "worker", "src", "links-map.json")
+    os.makedirs(os.path.dirname(lm), exist_ok=True)
+    open(lm, "w").write(json.dumps(links_map(), indent=1, ensure_ascii=False) + "\n")
+    print(f"built {len(urls)} pages -> {out}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
     flatten(out)
 
 

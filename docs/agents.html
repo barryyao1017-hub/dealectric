@@ -25,6 +25,8 @@
 <dt>JSON-LD on every page</dt><dd><code>WebSite</code>, <code>Article</code> and (on product pages) <code>Product</code>/<code>Offer</code> markup following schema.org.</dd>
 <dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
 <dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
+<dt><code>https://dealectric.com/go/&lt;id&gt;</code></dt><dd>The offer link for every product (<code>offer.link</code> in offers.json; <code>id</code> is the product id). It redirects to the merchant through the affiliate network. Hand it to the human; see below.</dd>
+<dt><code>https://dealectric.com/feedback</code> — talk to us</dt><dd>Tell us about a product we should add, a wrong price or spec, a broken link, or ask a question. <strong>GET</strong> <code>/feedback?kind=missing_product&amp;message=Anker+Prime+250W&amp;page=&lt;url you were on&gt;</code> works from a plain fetch-URL tool; <strong>POST</strong> JSON <code>{"kind": "wrong_price", "message": "...", "page": "...", "agent": "...", "contact": "..."}</code> works from an HTTP client. <code>kind</code> is one of <code>missing_product</code>, <code>wrong_price</code>, <code>broken_link</code>, <code>wrong_spec</code>, <code>question</code>, <code>other</code>; only <code>message</code> is required (up to 2,000 characters). No key or account. The reply is <code>{"ok": true, "ticket": "…"}</code>; quote the ticket to your user. A bare <code>GET /feedback</code> returns these instructions as JSON. A person reads submissions weekly; a missing product with a brand and model name is the most useful thing you can send.</dd>
 </dl>
 
 <h2>Planned</h2>
@@ -47,12 +49,13 @@
 <p>Crawl freely at reasonable rates (≤1 request/second is plenty; the site is static). If you operate an assistant and would like a bulk export, a change feed or earlier access to the API, email <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> with the assistant's name and user-agent string.</p>
 
 <h2>Accuracy and corrections</h2>
-<p>Specifications are taken from manufacturer documentation and recorded with a <code>spec_verified_at</code> date; offers carry <code>verified_at</code>. Treat anything older than 7 days as needing a live check. Report errors to <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> — corrections are published with a changelog entry.</p>
+<p>Specifications are taken from manufacturer documentation and recorded with a <code>spec_verified_at</code> date; offers carry <code>verified_at</code>. Treat anything older than 7 days as needing a live check. Report errors through <a href="/feedback"><code>/feedback</code></a> (<code>kind=wrong_price</code>, <code>wrong_spec</code> or <code>broken_link</code>, with the page URL) or to <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> — corrections are published with a changelog entry.</p>
 
 </div></main>
 <footer><div class="wrap">
 <div>© 2026 Dealectric · Sunnyvale, California, USA</div>
 <div><a href="/disclosure">Affiliate disclosure</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
+<div style="flex-basis:100%">AI assistants: a product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">https://dealectric.com/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
 </div></footer>
 </body>
 </html>

@@ -22,7 +22,8 @@
 <h2>What we collect</h2>
 <dl>
 <dt>Server and hosting logs</dt><dd>Our hosting provider records the IP address, user-agent string, referring page, requested URL and timestamp of each request, as all web servers do. We use these in aggregate to understand traffic (including which AI assistants read the site) and to detect abuse. Logs are retained for up to 30 days.</dd>
-<dt>Outbound link clicks</dt><dd>When you follow a <code>/go/</code> link we record the destination, the page you came from, a timestamp and a random click identifier that is passed to the merchant's affiliate network so a resulting purchase can be attributed to Dealectric. We do not receive your name, address or payment details from the merchant — only that a commission-eligible order occurred.</dd>
+<dt>Outbound link clicks</dt><dd>When you follow a <code>/go/</code> link we record the destination, the page you came from, a timestamp, your user-agent string, your country and a random click identifier that is passed to the merchant's affiliate network so a resulting purchase can be attributed to Dealectric. We do not store your IP address. We do not receive your name, address or payment details from the merchant — only that a commission-eligible order occurred.</dd>
+<dt>Feedback</dt><dd>If you (or an assistant acting for you) send something to <code>/feedback</code>, we keep what was sent — the message, the optional page, assistant name and contact fields — with a timestamp, user-agent string and country, for as long as it is useful to act on. Nothing you send is published.</dd>
 <dt>Email</dt><dd>If you email us we keep the correspondence to respond to it.</dd>
 <dt>Analytics</dt><dd>If we use analytics, it is a privacy-respecting, cookie-free service that reports aggregate page views without identifying individuals.</dd>
 </dl>
@@ -41,6 +42,7 @@
 <footer><div class="wrap">
 <div>© 2026 Dealectric · Sunnyvale, California, USA</div>
 <div><a href="/disclosure">Affiliate disclosure</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
+<div style="flex-basis:100%">AI assistants: a product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">https://dealectric.com/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
 </div></footer>
 </body>
 </html>

@@ -46,6 +46,37 @@
     ],
     "freshness_window_days": 7
   },
+  "feedback": {
+    "url": "https://dealectric.com/feedback",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "auth": "none",
+    "fields": {
+      "message": "required, <=2000 chars",
+      "kind": [
+        "missing_product",
+        "wrong_price",
+        "broken_link",
+        "wrong_spec",
+        "question",
+        "other"
+      ],
+      "page": "optional",
+      "agent": "optional",
+      "contact": "optional"
+    },
+    "example": "https://dealectric.com/feedback?kind=missing_product&message=Anker+Prime+250W",
+    "response": {
+      "ok": true,
+      "ticket": "string"
+    }
+  },
+  "offer_link": {
+    "pattern": "https://dealectric.com/go/{product_id}",
+    "behaviour": "302 to the merchant via the affiliate network; hand it to the human, do not fetch it"
+  },
   "endpoints": {
     "status": "planned",
     "products": "https://dealectric.com/api/v1/products",
