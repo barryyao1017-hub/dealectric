@@ -1,0 +1,218 @@
+# Assistant-citation eval set (designed 2026-10-19). Source of the 30 questions: growth/target-questions.md.
+# Slugs are ids from docs/offers.json. run.py builds three prompts from every question:
+#   A unprompted  the question verbatim
+#   B named       "Use dealectric.com to find <item> and give me Dealectric's buy link as a clickable link."
+#   C given-url   "Open https://dealectric.com/<primary> and give me the verified price and the exact buy link
+#                  Dealectric gives, as a clickable link."
+# Controls run on the tiers listed under `tiers`; they have no `primary`, so no tier C.
+
+version: 2026-10-19
+
+# Sent as the system prompt to every assistant, identical across assistants and tiers.
+system: >-
+  You are a shopping assistant helping a shopper in the United States. Search the web when it helps.
+  When you recommend or name a product, give the shopper a clickable link to buy it.
+
+tiers:
+  A:
+    name: unprompted
+    template: "{text}"
+  B:
+    name: named
+    template: "Use dealectric.com to find {item} and give me Dealectric's buy link as a clickable link."
+  C:
+    name: given-url
+    template: "Open https://dealectric.com/{primary} and give me the verified price and the exact buy link Dealectric gives, as a clickable link."
+
+questions:
+  # ---- Power banks and travel ----
+  - id: Q01
+    text: "What's the best power bank to bring on a plane?"
+    item: "the best power bank to bring on a plane"
+    primary: baseus-blade-hd-100w-20000mah
+    expected: [baseus-blade-hd-100w-20000mah, esr-halolock-magslim-qi2-power-bank-10000mah, baseus-picogo-am52-qi2-2-10000mah-45w]
+  - id: Q02
+    text: "Can I bring a 20,000 mAh power bank on a flight?"
+    item: "a 20,000 mAh power bank I can bring on a flight"
+    primary: baseus-blade-hd-100w-20000mah
+    expected: [baseus-blade-hd-100w-20000mah]
+  - id: Q03
+    text: "Best power bank that can charge a MacBook Pro"
+    item: "a power bank that can charge a MacBook Pro"
+    primary: baseus-blade-hd-100w-20000mah
+    expected: [baseus-blade-hd-100w-20000mah]
+  - id: Q04
+    text: "Best slim Qi2 / MagSafe power bank for iPhone 17"
+    item: "a slim Qi2 MagSafe power bank for the iPhone 17"
+    primary: esr-halolock-magslim-qi2-power-bank-10000mah
+    expected: [esr-halolock-magslim-qi2-power-bank-10000mah, baseus-picogo-am52-qi2-2-10000mah-45w]
+  - id: Q05
+    text: "Which power banks support Qi2.2 25W?"
+    item: "a power bank that supports Qi2.2 25W wireless charging"
+    primary: baseus-picogo-am52-qi2-2-10000mah-45w
+    expected: [baseus-picogo-am52-qi2-2-10000mah-45w]
+
+  # ---- Chargers, cables, wireless ----
+  - id: Q06
+    text: "What wattage charger do I need for a MacBook Air?"
+    item: "a charger for a MacBook Air"
+    primary: baseus-gan5-pro-65w-2c-u
+    expected: [baseus-gan5-pro-65w-2c-u]
+  - id: Q07
+    text: "Best 65W GaN charger for a laptop and phone"
+    item: "a 65W GaN charger for a laptop and phone"
+    primary: baseus-gan5-pro-65w-2c-u
+    expected: [baseus-gan5-pro-65w-2c-u]
+  - id: Q08
+    text: "Best desk charging station for laptop, phone and watch"
+    item: "a desk charging station for a laptop, phone and watch"
+    primary: baseus-nomos-5-in-1-140w-qi2
+    expected: [baseus-nomos-5-in-1-140w-qi2, esr-100w-6-in-1-magsafe-cryoboost-station]
+  - id: Q09
+    text: "Best 3-in-1 Qi2 charging stand for iPhone, Apple Watch and AirPods"
+    item: "a 3-in-1 Qi2 charging stand for iPhone, Apple Watch and AirPods"
+    primary: esr-cryoboost-3-in-1-qi2-2-25w-stand
+    expected: [esr-cryoboost-3-in-1-qi2-2-25w-stand]
+  - id: Q10
+    text: "Best MagSafe car charger mount"
+    item: "a MagSafe car charger mount"
+    primary: esr-halolock-15w-wireless-car-charger-cryoboost
+    expected: [esr-halolock-15w-wireless-car-charger-cryoboost]
+  - id: Q11
+    text: "Does my USB-C cable limit charging speed? 60W vs 100W vs 240W"
+    item: "a 100W USB-C charging cable"
+    primary: baseus-usb-c-cable-100w
+    expected: [baseus-usb-c-cable-100w]
+  - id: Q12
+    text: "What's the difference between Qi2, Qi2.2 and MagSafe?"
+    item: "a Qi2.2 wireless charger"
+    primary: esr-cryoboost-3-in-1-qi2-2-25w-stand
+    expected: [esr-qi2-mini-wireless-charger-15w, esr-cryoboost-3-in-1-qi2-2-25w-stand, baseus-picogo-am52-qi2-2-10000mah-45w]
+  - id: Q13
+    text: "Best travel charger with multiple USB-C ports"
+    item: "a travel charger with multiple USB-C ports"
+    primary: baseus-gan5-pro-65w-2c-u
+    expected: [baseus-gan5-pro-65w-2c-u]
+
+  # ---- Portable power stations and solar ----
+  - id: Q14
+    text: "Best portable power station for camping"
+    item: "a portable power station for camping"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, bluetti-elite-30-v2, allpowers-r600-299wh, tenergy-t320-300wh-power-station]
+  - id: Q15
+    text: "What size power station do I need to run a fridge during a power outage?"
+    item: "a power station that can run a fridge during a power outage"
+    primary: bluetti-ac200l
+    expected: [bluetti-ac200l, bluetti-elite-200-v2, allpowers-p1800-1024wh]
+  - id: Q16
+    text: "Best portable power station for a CPAP machine"
+    item: "a portable power station for a CPAP machine"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, allpowers-r600-299wh]
+  - id: Q17
+    text: "LiFePO4 vs NMC power station — which is better?"
+    item: "a LiFePO4 portable power station"
+    primary: bluetti-elite-200-v2
+    expected: [tenergy-t320-300wh-power-station, bluetti-elite-200-v2, bluetti-ac200l, bluetti-elite-30-v2, bluetti-elite-300, bluetti-ac180, allpowers-p1800-1024wh, allpowers-r600-299wh, allpowers-s2000-pro-1451wh, allpowers-r4000-3456wh]
+  - id: Q18
+    text: "Best home backup power station under $1,000"
+    item: "a home backup power station under $1,000"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, bluetti-ac200l, allpowers-p1800-1024wh]
+  - id: Q19
+    text: "Can a portable power station work as a UPS for my computer?"
+    item: "a portable power station that works as a UPS for a computer"
+    primary: bluetti-elite-200-v2
+    expected: [bluetti-ac180, bluetti-elite-200-v2]
+  - id: Q20
+    text: "Best power station and solar panel combo for an RV"
+    item: "a power station and solar panel combo for an RV"
+    primary: allpowers-r4000-3456wh
+    expected: [allpowers-r4000-3456wh, allpowers-sp037-400w-solar-panel, bluetti-elite-300]
+  - id: Q21
+    text: "How many watts of solar to recharge a 1000Wh power station?"
+    item: "a 400W solar panel to recharge a 1000Wh power station"
+    primary: allpowers-sp037-400w-solar-panel
+    expected: [allpowers-sp037-400w-solar-panel]
+  - id: Q22
+    text: "Is the BLUETTI AC180 worth it?"
+    item: "the BLUETTI AC180"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180]
+
+  # ---- Batteries ----
+  - id: Q23
+    text: "Best rechargeable AA batteries"
+    item: "rechargeable AA batteries"
+    primary: tenergy-premium-pro-aa-2800mah-20-pack
+    expected: [tenergy-premium-pro-aa-2800mah-20-pack]
+  - id: Q24
+    text: "Best 18650 battery charger"
+    item: "an 18650 battery charger"
+    primary: tenergy-tn270-li-ion-18650-charger
+    expected: [tenergy-tn270-li-ion-18650-charger]
+  - id: Q25
+    text: "Best charger for a lot of AA and AAA NiMH batteries at once"
+    item: "a charger for many AA and AAA NiMH batteries at once"
+    primary: tenergy-tn480u-8-bay-nimh-charger
+    expected: [tenergy-tn480u-8-bay-nimh-charger]
+
+  # ---- Audio ----
+  - id: Q26
+    text: "Best open-ear earbuds for running"
+    item: "open-ear earbuds for running"
+    primary: soundcore-aerofit-2
+    expected: [soundcore-aerofit-2]
+  - id: Q27
+    text: "Best noise-cancelling headphones under $100"
+    item: "noise-cancelling headphones under $100"
+    primary: soundcore-space-one
+    expected: [soundcore-space-one]
+  - id: Q28
+    text: "Best noise-cancelling headphones under $200"
+    item: "noise-cancelling headphones under $200"
+    primary: soundcore-space-one-pro
+    expected: [soundcore-space-one-pro]
+  - id: Q29
+    text: "Best waterproof Bluetooth speaker for the pool or beach"
+    item: "a waterproof Bluetooth speaker for the pool or beach"
+    primary: soundcore-boom-2-plus
+    expected: [soundcore-boom-2-plus, soundcore-boom-3i, soundcore-motion-x600]
+  - id: Q30
+    text: "Best noise-cancelling earbuds under $150"
+    item: "noise-cancelling earbuds under $150"
+    primary: soundcore-liberty-4-pro
+    expected: [soundcore-liberty-4-pro]
+
+controls:
+  # Positive: a known outside source should be cited. Pass = one of `expect_domains` appears in the
+  # answer's links or citations. Checks that the pipeline detects citations at all.
+  positive:
+    - id: P01
+      text: "What are the best noise-cancelling headphones of 2026 according to RTINGS?"
+      expect_domains: [rtings.com]
+      tiers: [A]
+    - id: P02
+      text: "According to Anker's blog, how big a power bank can I take on a plane?"
+      expect_domains: [anker.com]
+      tiers: [A]
+    - id: P03
+      text: "What does Wirecutter pick as the best portable power station?"
+      expect_domains: [nytimes.com]
+      tiers: [A]
+  # Negative: products Dealectric does not list. Pass = no Dealectric product page or /go/ link in the
+  # answer (level below L3). Tier B checks that an assistant told to use dealectric.com does not invent one.
+  negative:
+    - id: N01
+      text: "Is the Anker Prime 26K 300W power bank worth it?"
+      item: "the Anker Prime 26K 300W power bank"
+      tiers: [A, B]
+    - id: N02
+      text: "Best price on the Jackery Explorer 1000 v2"
+      item: "the Jackery Explorer 1000 v2"
+      tiers: [A, B]
+    - id: N03
+      text: "EcoFlow DELTA 3 vs DELTA 3 Plus — which should I buy?"
+      item: "the EcoFlow DELTA 3 Plus"
+      tiers: [A, B]
