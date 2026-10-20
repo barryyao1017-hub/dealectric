@@ -464,3 +464,19 @@ def run_ids_for_iteration(it: str) -> list[str]:
         if str((m.get("stamp") or {}).get("iteration")) == str(it):
             found.append((m.get("started_at") or "", mp.parent.name))
     return [rid for _, rid in sorted(found)]
+
+
+def frozen_loop_subset(manifest: dict, q: dict) -> list[dict] | None:
+    """The loop subset stored in a run's manifest (first run of the iteration picked it), as question records with
+    `primary` and `fresh` restored; None when the manifest has none. Keeps the subset stable across the assistants
+    and re-runs of one iteration even though the loop's own fetches change the D1 rotation input."""
+    loop = (manifest or {}).get("loop") or {}
+    picked = loop.get("questions")
+    if not picked:
+        return None
+    by_id = {x["id"]: x for x in q["questions"]}
+    out = []
+    for x in picked:
+        if x["id"] in by_id:
+            out.append({**by_id[x["id"]], "primary": x["primary"], "fresh": x.get("fresh", True)})
+    return out or None

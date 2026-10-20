@@ -578,10 +578,16 @@ def main() -> int:
         if args.iteration is None:
             raise SystemExit("--loop needs --iteration N")
         tiers = ["B", "C"] if args.tiers == "A,B,C" else tiers
-        recent, d1err = ({}, "mock run; D1 not queried") if args.mock else E.d1_recent_ai_fetch_slugs(7)
-        if d1err:
-            log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
-        picked = pick_loop_questions(q, offers, recent, args.iteration)
+        _mp = E.run_dir(args.run_id) / "manifest.json"
+        frozen = E.frozen_loop_subset(E.read_json(_mp), q) if _mp.exists() else None
+        if frozen:
+            picked, recent, d1err = frozen, {}, None
+            log("loop subset reused from the run's manifest (picked by this iteration's first run)")
+        else:
+            recent, d1err = ({}, "mock run; D1 not queried") if args.mock else E.d1_recent_ai_fetch_slugs(7)
+            if d1err:
+                log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
+            picked = pick_loop_questions(q, offers, recent, args.iteration)
         q = {**q, "questions": picked}
         loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err,
                      "questions": [{"id": x["id"], "primary": x["primary"], "fresh": x["fresh"]} for x in picked]}
