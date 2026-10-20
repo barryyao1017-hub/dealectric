@@ -1,0 +1,163 @@
+<title>Dealectric Loop · Iteration 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root { --bg:#F5F7F8; --fg:#1A232C; --muted:#5A6875; --line:#C6CFD6; --panel:#FFFFFF; --accent:#B5551B; --accent-soft:#F6E4D6;
+  --go:#0E6F6E; --go-soft:#D9ECEA; --bad:#A33A2E; --bad-soft:#F6E0DC;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F;
+  --panel:#192230; --accent:#E8914A; --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark } }
+:root[data-theme="dark"] { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F; --panel:#192230; --accent:#E8914A;
+  --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark }
+body { background:var(--bg); color:var(--fg); font:15px/1.55 var(--sans); margin:0 }
+.wrap { max-width:960px; margin:0 auto; padding-block:28px 48px; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)) }
+h1 { font-size:26px; font-weight:600; margin:0 0 4px; letter-spacing:-0.01em; text-wrap:balance }
+h2 { font-size:13px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:600; margin:34px 0 10px; padding-top:14px; border-top:1px solid var(--line) }
+h3 { font-size:15px; font-weight:600; margin:16px 0 6px }
+p { margin:0 0 10px; max-width:78ch } ul { margin:0 0 10px; padding-left:20px } li { margin:2px 0 }
+.stamp { color:var(--muted); font-size:13.5px; margin-bottom:18px } .stamp code { font-size:12px }
+code { font-family:var(--mono); font-size:.9em; background:var(--accent-soft); padding:1px 5px; border-radius:3px }
+.ci { color:var(--muted); font-size:.85em }
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 6px }
+.tile { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:12px 14px; min-width:0 }
+.tile .k { font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted) }
+.tile .v { font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; margin-top:2px }
+.tile .d { font-size:13px; color:var(--muted) }
+.verdict { display:inline-block; padding:3px 10px; border-radius:4px; font-weight:600; font-size:13px; background:var(--go-soft); color:var(--go) }
+.verdict.bad { background:var(--bad-soft); color:var(--bad) } .verdict.flat { background:var(--accent-soft); color:var(--accent) }
+.scroll { overflow-x:auto } table { border-collapse:collapse; width:100%; font-size:13.5px; margin:0 0 12px }
+th,td { text-align:left; padding:6px 9px; border-bottom:1px solid var(--line); vertical-align:top; font-variant-numeric:tabular-nums }
+th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; min-width:0; display:flex; flex-direction:column }
+.card img { display:block; width:100%; max-height:420px; object-fit:cover; object-position:top; border-bottom:1px solid var(--line) }
+.card .b { padding:10px 12px; font-size:13px } .card .h { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px }
+.pill { font-family:var(--mono); font-size:11.5px; padding:1px 7px; border-radius:3px; background:var(--go-soft); color:var(--go) }
+.pill.bad { background:var(--bad-soft); color:var(--bad) }
+.who { color:var(--muted); font-size:12px } .q { font-style:italic; color:var(--muted); margin:4px 0 }
+.txt { white-space:pre-wrap; font-size:12.5px; max-height:180px; overflow:auto; border-top:1px solid var(--line); padding-top:6px; margin-top:6px }
+.link { font-family:var(--mono); font-size:11.5px; word-break:break-all; color:var(--muted) }
+details { margin-top:10px } summary { cursor:pointer; color:var(--muted) }
+.empty { color:var(--muted); font-style:italic }
+</style>
+<div class="wrap">
+<h1>Iteration 3 — the product page names the /go/ URL as the buy link (2026-10-20)</h1>
+<div class="stamp">Iteration 3 · 2026-10-20 · run <code>2026-10-20-iter03</code> · site commit <code>3cfdfdb797</code> · Worker <code>2a3bed54</code> deployed 2026-10-18T10:43Z · assistants chatgpt · tiers B, C · compared with iteration 2 (run <code>2026-10-20-iter02</code>)<br>Subset: Q10=esr-halolock-15w-wireless-car-charger-cryoboost*, Q11=baseus-usb-c-cable-100w*, Q12=esr-qi2-mini-wireless-charger-15w*, Q13=baseus-gan5-pro-65w-2c-u*, Q14=tenergy-t320-300wh-power-station*, Q15=bluetti-ac200l*, Q16=allpowers-r600-299wh*, Q17=allpowers-s2000-pro-1451wh, Q20=allpowers-r4000-3456wh, Q29=soundcore-boom-2-plus</div>
+
+<h2>Did it work</h2>
+<div class="tiles"><div class="tile"><div class="k">Pooled TLR, apps (ui)</div><div class="v">55% <span class='ci'>[40–69]</span> (22/40)</div><div class="d">-5.0 pts vs iteration 2</div></div><div class="tile"><div class="k">Pooled TLR, api</div><div class="v">90% <span class='ci'>[70–97]</span> (18/20)</div><div class="d">+0.0 pts vs iteration 2</div></div><div class="tile"><div class="k">Controls</div><div class="v">27/27 pass</div><div class="d">positive and negative</div></div><div class="tile"><div class="k">Decision rule</div><div class="v"><span class="verdict flat">flat (under the 5-point rule)</span></div><div class="d">≥ 5 points pooled, ui not contradicting</div></div></div>
+
+
+<h2>Thesis tested</h2>
+<p>Lever 1 (wording and placement): the offer block now prints the <code>/go/</code> URL in text as &quot;Buy link to give the shopper&quot;, says that neither the page URL nor the store page is the buy link, and carries the assistant note next to the offer. Expected: PAGE_ONLY on tier B 3/20 → ≤ 1/20, +5 to +10 points on tier B, +3 to +5 pooled; no change on tier C or for claude-code. If flat, the plateau rule (three flat iterations) stops the loop. Written before the re-evaluation.</p>
+<h2>Diagnosis it came from</h2>
+<p>chatgpt: tier C 95%; tier B 25% with 11 NOT_FOUND (search index, not addressable on the page) and 3 PAGE_ONLY. In two of the three PAGE_ONLY answers ChatGPT fetched the product page and its <code>/go/</code> link one second apart and still gave the product page as &quot;Dealectric&#x27;s buy link&quot;. The page showed the <code>/go/</code> URL only as the button&#x27;s href, and its assistant note sat at the bottom saying &quot;present the link above&quot;.</p>
+<h2>The change</h2>
+<p>Commit <code>loop-3:</code> (site rebuilt, 31 product pages changed; offers.json, links map, prices, disclosure and rel=sponsored unchanged; no Worker deploy). Live on dealectric.com and pinged to IndexNow.</p>
+
+<h2>Numbers</h2>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+C</th><th>tier B</th><th>tier C</th><th>spot-check CSV</th><th>bypass</th><th>coupon (C)</th><th>failure classes</th></tr></thead><tbody><tr><td>chatgpt<div class='who'>chatgpt.com, temporary chat, web search on</div></td><td>ui (app)</td><td>55% <span class='ci'>[40–69]</span> (22/40)</td><td>15% (3/20)</td><td>95% (19/20)</td><td>–</td><td>2% (1/40)</td><td>40% (8/20)</td><td>NOT_FOUND 12, PAGE_ONLY 3, OTHER 2, MERCHANT_SWAP 1</td></tr><tr><td>claude-code<div class='who'></div></td><td>api</td><td>90% <span class='ci'>[70–97]</span> (18/20)</td><td>80% (8/10)</td><td>100% (10/10)</td><td>–</td><td>0% (0/20)</td><td>20% (2/10)</td><td>PAGE_ONLY 2</td></tr></tbody></table></div>
+<h2>Outcome, in the iteration file</h2>
+<p>Frozen subset Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q20, Q29. chatgpt signed in (Free), temporary chats, 40 question chats on B+C plus 18 controls; claude-code once per cell.</p>
+<div class="scroll"><table><thead><tr><th>reading</th><th>chatgpt</th><th>claude-code</th><th>iteration 2</th></tr></thead><tbody><tr><td><strong>TLR tiers B+C</strong></td><td><strong>55% [40–69] (22/40)</strong></td><td>90% [70–97] (18/20)</td><td>60% (24/40) · 90%</td></tr><tr><td>tier B</td><td>15% (3/20)</td><td>80% (8/10)</td><td>25% · 80%</td></tr><tr><td>tier C</td><td>95% (19/20)</td><td>100% (10/10)</td><td>95% · 100%</td></tr><tr><td>PAGE_ONLY</td><td>3</td><td>2</td><td>3 · 2</td></tr><tr><td>MERCHANT_SWAP</td><td>1</td><td>0</td><td>1 · 0</td></tr><tr><td>NOT_FOUND</td><td>12</td><td>0</td><td>11 · 0</td></tr><tr><td>controls</td><td>18/18</td><td>9/9</td><td></td></tr></tbody></table></div>
+<p>chatgpt −5.0 points, pooled −3.3: <strong>flat</strong> (intervals overlap). The targeted class did not move: PAGE_ONLY stayed at 3 of 20 on tier B. Cloudflare shows ChatGPT fetched the rebuilt product pages in two of the three (Q11-B-2 at 15:57:36Z, Q12-B-1 at 15:58:32Z), read the new &quot;Buy link to give the shopper: https://dealectric.com/go/…&quot; line, and still answered &quot;Buy link: View product on Dealectric&quot; with the page URL. On tier C, where the prompt itself says &quot;the exact buy link Dealectric gives&quot;, the same pages yield the <code>/go/</code> link 95% of the time: the prompt&#x27;s wording decides more than the page&#x27;s. Tier B&#x27;s other misses are the same search-index class as before (12 NOT_FOUND).</p>
+<p>claude-code&#x27;s two PAGE_ONLY answers (Q15-B-1, Q16-B-1) both contain a <code>/go/</code> link for a sibling product that the question&#x27;s expected list does not include (AC180 for &quot;home backup under $1,000&quot;, T320 for a CPAP): expected-list gaps, not lost links. One real side effect of iteration 1 shows in its transcripts: since the home page lists every product, claude-code goes home page → product page and no longer reads offers.json on tier B (74/90 runs did in iteration 0, 0/30 since); it still finds the <code>/go/</code> link on the page, so the tracked-link rate did not move.</p>
+<h2>Run design</h2>
+<p>≥ 2 h after the push: <code>ui.py --app chatgpt --loop --iteration 3 --n 2</code> and <code>run.py --assistants claude-code --loop --iteration 3 --n 1</code>; compare PAGE_ONLY and tier B with iteration 2.</p>
+
+<h2>What the shopper saw</h2>
+<div class="cards"><div class="card"><img src="shots/chatgpt-Q10-B-1.jpg" alt="Screenshot of the chatgpt answer to Q10 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q10-B-1</span></div><div class="q">Use dealectric.com to find a MagSafe car charger mount and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div></div></div><div class="card"><img src="shots/chatgpt-Q10-B-2.jpg" alt="Screenshot of the chatgpt answer to Q10 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q10-B-2</span></div><div class="q">Use dealectric.com to find a MagSafe car charger mount and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div></div></div><div class="card"><img src="shots/chatgpt-Q10-C-1.jpg" alt="Screenshot of the chatgpt answer to Q10 tier C"><div class="b"><div class="h"><span class="pill bad">MERCHANT_SWAP</span><span class="who">chatgpt · Q10-C-1</span></div><div class="q">Open https://dealectric.com/esr-halolock-15w-wireless-car-charger-cryoboost and give me the verified price and the exact buy link Dealectric gives, as a clickab</div><div class="link">→ esr-halolock-15w-wireless-car-charger-cryoboost</div><div class="q">“Dealectric directs buyers to ESR’s official US store for the purchase.”</div></div></div><div class="card"><img src="shots/chatgpt-Q11-B-1.jpg" alt="Screenshot of the chatgpt answer to Q11 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q11-B-1</span></div><div class="q">Use dealectric.com to find a 100W USB-C charging cable and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div></div></div><div class="card"><img src="shots/chatgpt-Q11-B-2.jpg" alt="Screenshot of the chatgpt answer to Q11 tier B"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">chatgpt · Q11-B-2</span></div><div class="q">Use dealectric.com to find a 100W USB-C charging cable and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ baseus-usb-c-cable-100w</div><div class="q">“I searched for a 100W USB-C charging cable on Dealectric.com, but my search didn’t return a verifiable product listing from that site. I don’t want to give you an incorrect or invented buy link.”</div></div></div><div class="card"><img src="shots/chatgpt-Q12-B-1.jpg" alt="Screenshot of the chatgpt answer to Q12 tier B"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">chatgpt · Q12-B-1</span></div><div class="q">Use dealectric.com to find a Qi2.2 wireless charger and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ esr-cryoboost-3-in-1-qi2-2-25w-stand</div><div class="q">“I searched for a Qi2.2 wireless charger on Dealectric.com, but my search didn&#x27;t return a verified product page or buy link from that site. I don&#x27;t want to give you a guessed link.”</div></div></div><div class="card"><img src="shots/chatgpt-Q13-B-1.jpg" alt="Screenshot of the chatgpt answer to Q13 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q13-B-1</span></div><div class="q">Use dealectric.com to find a travel charger with multiple USB-C ports and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div></div></div><div class="card"><img src="shots/chatgpt-Q13-B-2.jpg" alt="Screenshot of the chatgpt answer to Q13 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q13-B-2</span></div><div class="q">Use dealectric.com to find a travel charger with multiple USB-C ports and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div></div></div></div><h3>Without a screenshot (answer text and spot-check notes)</h3><div class="cards"><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q14-B-2</span></div><div class="q">Use dealectric.com to find a portable power station for camping and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div><div class="txt">For camping, I’d look for a portable power station with enough battery capacity for phones, lights, and a laptop, with a larger 500–1,000 Wh or higher capacity if you’ll be powering a cooler or spending multiple nights off-grid.
+
+I searched for portable power stations on Dealectric, but the results I could verify did not identify a specific product listing on Dealectric with a confirmed purchase link. I don’t want to give you a guessed or incorrect buy link.
+
+My recommendation: Tenergy T320 Portable Power Station
+
+Tenergy T320 Portable Power Station
+
+$225.99
+
+Listed on Dealectric
+
+300 Wh LiFePO₄ battery
+
+200 W inverter
+
+Suitable for phones, laptops, campsite lights, and other small electroni</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q15-B-1</span></div><div class="q">Use dealectric.com to find a power station that can run a fridge during a power outage and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div><div class="txt">For running a refrigerator during a power outage, I’d look for a portable power station with at least 1,000 Wh of battery capacity, a pure-sine-wave AC outlet, and enough surge power to handle the fridge compressor starting up. For longer outages, 2,000 Wh or more is preferable.
+
+I searched for Dealectric listings, but the search results did not verify a specific product on Dealectric.com. I don’t want to give you an unverified purchase link and imply it comes from that retailer.
+
+As a fallback, the Anker SOLIX C2000 Gen 2 has 2,048 Wh of capacity and 2,400 W of output, and its manufacturer advertises up to 32 hours of runtime for a dual-door fridge. Actual runtime depends on the refrigerato</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">chatgpt · Q15-B-2</span></div><div class="q">Use dealectric.com to find a power station that can run a fridge during a power outage and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ bluetti-elite-200-v2</div><div class="q">“The link redirects to BLUETTI&#x27;s official store via Dealectric.”</div><div class="txt">I recommend the BLUETTI Elite 200 V2 Portable Power Station from Dealectric for keeping a refrigerator running during a power outage. It has a large battery capacity and enough output to handle most household refrigerators. 
+specs, price and offer · Dealectric
+
+BLUETTI Elite 200 V2
+$899
+
+Price verified by Dealectric on October 14, 2026
+
+Sold by BLUETTI&#x27;s official US store through Dealectric&#x27;s tracked link.
+
+Battery capacity: 2,073.6 Wh (about 2 kWh)
+
+Continuous output: 2,600 W
+
+Battery chemistry: LiFePO₄
+
+UPS switchover: 15 ms or less
+
+Warranty: 5 years 
+specs, price and offer · Dealectric
+
+ Suitable for a fridge, router and lights during an outage.
+
+Buy at Dealectric
+
+The link redirects to </div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">OTHER</span><span class="who">chatgpt · Q16-B-1</span></div><div class="q">Use dealectric.com to find a portable power station for a CPAP machine and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ tenergy-t320-300wh-power-station</div><div class="q">“This is Dealectric’s tracked buy link, which opens Tenergy’s official US store.”</div><div class="txt">For a CPAP machine, I’d look for a portable power station with a pure sine wave AC outlet and enough battery capacity to last through your intended sleep period. A model around 700–1,100 Wh is a sensible starting point for many users, especially if you use a heated humidifier. Actual runtime depends on your CPAP model and settings. 
+PowerStationMatch
++1
+
+Tenergy T320 Portable Power Station
+$225.99
+
+List price $299.99 · Price verified October 14, 2026
+
+300 Wh battery capacity
+
+200 W continuous output
+
+Pure sine wave AC outlets
+
+3.7 kg (8.2 lb)
+
+Source: Dealectric product listing. 
+specs, price and offer · Dealectric
+
+Buy the Tenergy T320 via Dealectric
+
+This is Dealectric’s tracked buy link, </div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">claude-code · Q15-B-1</span></div><div class="q">Use dealectric.com to find a power station that can run a fridge during a power outage and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ bluetti-ac180</div><div class="q">“Dealectric says this is an affiliate link that sends you to BLUETTI&#x27;s official US store. Dealectric earns a commission, but you don&#x27;t pay more.”</div><div class="txt">I recommend the **BLUETTI AC180** for $499.
+
+**[Buy the BLUETTI AC180 on Dealectric](https://dealectric.com/go/bluetti-ac180)**
+
+Dealectric says this is an affiliate link that sends you to BLUETTI&#x27;s official US store. Dealectric earns a commission, but you don&#x27;t pay more. Dealectric checked the $499 price on Oct 14, 2026. Another page showed $599, so the price depends on current promotions. Check it at checkout.
+
+**Why it works for a fridge**
+- **1,800 W continuous and 2,700 W lifting mode:** A typical home fridge uses about 100–200 W while running and briefly jumps to roughly 600–1,200 W when the compressor starts. The AC180 handles both.
+- **1,152 Wh capacity:** A fridge usually uses about</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">claude-code · Q16-B-1</span></div><div class="q">Use dealectric.com to find a portable power station for a CPAP machine and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ tenergy-t320-300wh-power-station</div><div class="q">“Dealectric gets a commission if you buy through this link. It doesn&#x27;t cost you anything extra.”</div><div class="txt">The portable power station Dealectric recommends for a CPAP is the **Tenergy T320 (300 Wh LiFePO4, 200 W)**. It&#x27;s $225.99, down from $299.99. Dealectric last checked that price on October 14, 2026, so confirm it before you buy.
+
+👉 **[Buy the Tenergy T320 through Dealectric](https://dealectric.com/go/tenergy-t320-300wh-power-station)** (it&#x27;s sold by Tenergy&#x27;s official US store)
+
+Dealectric gets a commission if you buy through this link. It doesn&#x27;t cost you anything extra.
+
+**Why it works for a CPAP**
+- It was the only station on Dealectric that was explicitly listed for CPAP use.
+- It has two pure sine wave AC outlets (200 W continuous, 400 W surge). That&#x27;s plenty for a CPAP, which usually us</div></div></div></div>
+
+<h2>New thesis and next run</h2>
+<p>Flat, kept (no cost). <strong>Third flat iteration in a row: the plateau rule stops the loop</strong> (growth/improvement-loop.md §6). Also declared, with the evidence above and in iterations 1 and 2: tier B on chatgpt is a <strong>blockade</strong> (12 of 17 misses are search-index misses that no page change reaches; the home page is not opened; OpenAI&#x27;s own crawler has only ever fetched robots.txt; Bing&#x27;s public index has 0 of our pages), and tier C is at or above 90% on both readings (chatgpt 95%, claude-code 100%). The transfer-learning report is <code>growth/loop-report.md</code>.</p>
+
+<h2>Tokens and time</h2>
+<p>0.4 h wall clock (2026-10-20T15:55:52.423Z → 2026-10-20T16:19:26.728Z). Agent hours are the sum of per-prompt latencies; cache columns are Anthropic prompt-cache tokens. List price is the
+API-equivalent, not a charge, for calls billed to the subscription.</p>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>calls</th><th>input</th><th>output</th><th>cache read</th><th>cache write</th><th>list price</th><th>agent hours</th><th>median s</th></tr></thead><tbody><tr><td>chatgpt</td><td>58</td><td colspan='5' class='who'>consumer app, no token accounting</td><td>0.25</td><td>14.9</td></tr><tr><td>claude-code</td><td>29</td><td>168</td><td>31,103</td><td>163,496</td><td>74,621</td><td>$2.67</td><td>0.23</td><td>25.0</td></tr><tr><td>LLM judge<div class='who'>claude-sonnet-5-5 via claude CLI (subscription)</div></td><td>38</td><td>76</td><td>4,203</td><td>23,981</td><td>95,917</td><td>$0.43</td><td>–</td><td>–</td></tr></tbody></table></div>
+
+
+</div>

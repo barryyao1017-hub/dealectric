@@ -1,3 +1,5 @@
+Report: https://claude.ai/artifact/2hARkUF33G4wbUw3ZrLKJf (built by `growth/evals/iterreport.py --iteration 3`)
+
 # Iteration 3 — the product page names the /go/ URL as the buy link (2026-10-20)
 
 ## Diagnosis (from iteration 2)
