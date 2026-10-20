@@ -1,3 +1,5 @@
+Report: https://claude.ai/artifact/4pk3vA5dRu3BVFy1JZg25U (built by `growth/evals/iterreport.py --iteration 1`)
+
 # Iteration 1 — home page names every product (2026-10-20)
 
 ## Diagnosis (from iteration 0)
