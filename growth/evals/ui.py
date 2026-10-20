@@ -122,23 +122,36 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
     try:
         tab.navigate(url)
         t0 = time.time()
-        last, same, state, submitted, account, temporary = None, 0, None, False, None, None
+        last, same, state, submitted, account, temporary, polls, trace = None, 0, None, 0, None, None, 0, []
         while time.time() - t0 < ANSWER_TIMEOUT:
             time.sleep(2)
+            polls += 1
             try:
                 raw = tab.eval(READ_JS)
-            except RuntimeError:
+            except Exception as e:  # noqa: BLE001  (a transient eval failure must not end the wait)
+                trace.append({"t": round(time.time() - t0, 1), "eval_error": str(e)[:120]})
                 continue
             state = json.loads(raw) if raw else None
             if not state:
                 continue
+            trace.append({"t": round(time.time() - t0, 1), "url": state["url"][:60], "answer_len": len(state["answer"]),
+                          "streaming": state["streaming"], "send": state.get("send"), "composer": (state.get("composer") or "")[:30]})
             if account is None and state.get("body_len", 0) > 200:
                 account = ("signed in" + (f" ({state['plan']})" if state.get("plan") else "")) if state.get("logged_in") else "logged out"
             if temporary is None and state.get("composer") is not None:
                 temporary = bool(state.get("temporary"))   # the label disappears once the chat starts
-            if not state["answer"] and not submitted and state.get("composer") and _squash(prompt[:20]) in _squash(state["composer"]) and state.get("send"):
-                tab.eval('document.querySelector(\'button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]\').click(); "sent"')
-                submitted = True
+            if not state["answer"] and state.get("composer") and _squash(prompt[:20]) in _squash(state["composer"]) and state.get("send") \
+                    and polls % 2 == 1:
+                # Signed in: the prompt sits in the composer until Send is pressed. A click too early does nothing
+                # (React not attached, link chip still resolving), so retry every ~4 s, alternating click and Enter.
+                if submitted % 2 == 0:
+                    tab.eval('document.querySelector(\'button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]\').click(); "sent"')
+                else:
+                    tab.eval('(document.querySelector("#prompt-textarea, div.ProseMirror[contenteditable=true]") || document.body).focus(); "focused"')
+                    tab.call("Input.dispatchKeyEvent", type="keyDown", key="Enter", code="Enter", windowsVirtualKeyCode=13, text="\r")
+                    tab.call("Input.dispatchKeyEvent", type="keyUp", key="Enter", code="Enter", windowsVirtualKeyCode=13)
+                submitted += 1
+                trace.append({"t": round(time.time() - t0, 1), "submit": "click" if submitted % 2 == 1 else "enter"})
                 continue
             if state["answer"] and BLOCK_RE.search(state["answer"][:400]):
                 raise RuntimeError(f"blocked: {state['answer'][:120]}")
@@ -150,7 +163,8 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
             elif not state["answer"] and time.time() - t0 > 60 and BLOCK_RE.search(state.get("title", "") + " " + (state.get("body_len") and "" or "")):
                 raise RuntimeError("blocked before answering")
         if not state or not state["answer"]:
-            raise RuntimeError(f"no answer within {ANSWER_TIMEOUT}s (url {state['url'] if state else url})")
+            raise RuntimeError(f"no answer within {ANSWER_TIMEOUT}s (url {state['url'] if state else url}); trace: "
+                               + json.dumps(trace[-6:])[:600])
         finished = same >= SETTLE_POLLS
         shot = screenshot(tab, shot_path) if shot_path else None
         links = [l for l in state["links"] if not APP_HOST_RE.match(l["href"]) and not AD_RE.search(l["href"])]
@@ -159,9 +173,9 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                 "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
-                "account": account, "temporary_chat": bool(temporary),
+                "account": account, "temporary_chat": bool(temporary), "trace": trace,
                 "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "
-                          f"{'Send clicked' if submitted else 'auto-submitted'}, agent Chrome via CDP, hrefs from the DOM"]
+                          f"{f'submitted after {submitted} send attempt(s)' if submitted else 'auto-submitted'}, agent Chrome via CDP, hrefs from the DOM"]
                          + ([] if finished else ["answer still changing at timeout"]),
                 "latency_s": round(time.time() - t0, 1)}
     finally:
