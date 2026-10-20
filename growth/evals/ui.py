@@ -6,8 +6,10 @@ This is the loop's primary reading since 2026-10-20 (Barry: shoppers use the app
     python3.12 growth/evals/ui.py --app chatgpt --loop --iteration 1 --n 2
     python3.12 growth/evals/ui.py --app chatgpt --questions Q04,Q25 --tiers B,C --n 1 --run-id 2026-10-20-iter01
 
-Apps: chatgpt = chatgpt.com logged out with web search on (?hints=search&q=...; no account needed; a lighter model
-than paying users get, so a floor). claude-ai, gemini, grok: once their logins exist in agent-vault (DLC-40).
+Apps: chatgpt = chatgpt.com with web search on (?temporary-chat=true&hints=search&q=...). Works logged out (the
+prompt auto-submits; lighter model) and signed in (the prompt fills the composer and the driver clicks Send; the
+account's plan is recorded per run file). Temporary chat means no memory and nothing saved to the account's history.
+claude-ai, gemini, grok: once their logins exist in agent-vault (DLC-40).
 
 Each prompt gets a fresh tab (fresh chat, no memory), the answer is read from the DOM when it stops changing, and
 every <a href> in the answer is recorded as a citation; ad links (oppref/olref/utm_source=oa) are dropped. Records
@@ -34,7 +36,7 @@ import run as R  # noqa: E402  (loop subset picker, log)
 
 CDP = "http://localhost:9222"
 APPS = {
-    "chatgpt": {"model": "chatgpt.com logged-out, web search on", "ua_bucket": "openai"},
+    "chatgpt": {"model": "chatgpt.com, temporary chat, web search on", "ua_bucket": "openai"},
 }
 ANSWER_TIMEOUT = 180
 SHOT_MAX_H = 4000         # px; full-page screenshot of the finished chat, saved as <qid>-<tier>-<n>.jpg next to the run file
@@ -48,12 +50,18 @@ READ_JS = r"""
 (() => {
   const t = document.body.innerText || '';
   const i = t.indexOf('ChatGPT said:');
-  const j = t.indexOf('ChatGPT is AI and can make mistakes');
+  const ends = ['ChatGPT is AI and can make mistakes', 'ChatGPT can make mistakes', '\nLatest response'].map(m => t.indexOf(m, i)).filter(j => j > i);
+  const j = ends.length ? Math.min(...ends) : -1;
   const answer = i >= 0 ? t.slice(i + 'ChatGPT said:'.length, j > i ? j : undefined).trim() : '';
   const streaming = !!document.querySelector('button[aria-label="Stop streaming"], button[aria-label="Stop generating"]');
   const links = [...document.querySelectorAll('a[href]')].map(a => ({text: (a.textContent || '').trim().slice(0, 120), href: a.href, rel: a.rel || ''}));
+  const composer = document.querySelector('#prompt-textarea, div.ProseMirror[contenteditable="true"]');
+  const send = document.querySelector('button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]');
+  const loggedIn = !!document.querySelector('button[aria-label="Open profile menu"]') && !document.querySelector('[data-testid="login-button"]');
+  const plan = (t.match(/\n(Free|Plus|Pro|Go|Business)\n/) || [])[1] || '';
   return JSON.stringify({streaming, answer, links, url: location.href, title: document.title, body_len: t.length,
-                         login_wall: !!document.querySelector('[data-testid="login-button"]') && answer === ''});
+                         composer: composer ? (composer.innerText || '').trim().slice(0, 80) : null, send: !!send,
+                         logged_in: loggedIn, plan, temporary: t.includes('Temporary chat')});
 })()
 """
 
@@ -107,12 +115,14 @@ def browser_ok() -> str | None:
 # ---------------------------------------------------------------- one prompt
 
 def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
-    url = "https://chatgpt.com/?hints=search&q=" + urllib.parse.quote(prompt, safe="")
+    # temporary-chat: no memory, not saved to the account's history (signed-in state). hints=search forces the
+    # web-search tool. Logged out, ?q= auto-submits; signed in, it only fills the composer and we click Send.
+    url = "https://chatgpt.com/?temporary-chat=true&hints=search&q=" + urllib.parse.quote(prompt, safe="")
     tab = Tab("about:blank")
     try:
         tab.navigate(url)
         t0 = time.time()
-        last, same, state = None, 0, None
+        last, same, state, submitted, account, temporary = None, 0, None, False, None, None
         while time.time() - t0 < ANSWER_TIMEOUT:
             time.sleep(2)
             try:
@@ -121,6 +131,14 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                 continue
             state = json.loads(raw) if raw else None
             if not state:
+                continue
+            if account is None and state.get("body_len", 0) > 200:
+                account = ("signed in" + (f" ({state['plan']})" if state.get("plan") else "")) if state.get("logged_in") else "logged out"
+            if temporary is None and state.get("composer") is not None:
+                temporary = bool(state.get("temporary"))   # the label disappears once the chat starts
+            if not state["answer"] and not submitted and state.get("composer") and _squash(prompt[:20]) in _squash(state["composer"]) and state.get("send"):
+                tab.eval('document.querySelector(\'button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]\').click(); "sent"')
+                submitted = True
                 continue
             if state["answer"] and BLOCK_RE.search(state["answer"][:400]):
                 raise RuntimeError(f"blocked: {state['answer'][:120]}")
@@ -141,7 +159,10 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                 "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
-                "notes": ["chatgpt.com logged out, agent Chrome via CDP, hrefs from the DOM"] + ([] if finished else ["answer still changing at timeout"]),
+                "account": account, "temporary_chat": bool(temporary),
+                "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "
+                          f"{'Send clicked' if submitted else 'auto-submitted'}, agent Chrome via CDP, hrefs from the DOM"]
+                         + ([] if finished else ["answer still changing at timeout"]),
                 "latency_s": round(time.time() - t0, 1)}
     finally:
         tab.close()
@@ -167,6 +188,10 @@ def screenshot(tab: Tab, path: Path) -> str | None:
     except Exception as e:  # noqa: BLE001
         R.log(f"screenshot failed for {path.name}: {e}")
         return None
+
+
+def _squash(s: str) -> str:
+    return re.sub(r"\s+", "", s or "")
 
 
 ASKERS = {"chatgpt": ask_chatgpt}
