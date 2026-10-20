@@ -14,3 +14,4 @@ grok.com join when their logins exist (DLC-40).
 | iteration | date | commit | pooled TLR api | pooled TLR ui | per-assistant TLR | change made | decision |
 |---|---|---|---|---|---|---|---|
 | 0 | 2026-10-20 | d32a405853 | 100% (180/180) | 75% (6/8) | claude-code 100%; ChatGPT ui 75% | baseline, no change (harness: Q19 expected widened, negative-control rule, CLI process-group kill) | continue: homepage product index for ChatGPT's tier-B NOT_FOUND |
+| 1 | 2026-10-20 | efd82c6 (site) | claude-code 95% (19/20) | chatgpt signed-in 57% (32/56) | chatgpt B 30% / C 88%; claude-code 95% | home page names every product (price, summary, link) | flat: 0/4 on the re-asked misses, kept; app baseline set; next: Worker text page without the merchant URL |

@@ -487,7 +487,7 @@ def main() -> int:
         for r in d1rows:
             by.setdefault(r["assistant"], []).append(r["slug"])
         d1["by_assistant"] = {a: sorted(set(v)) for a, v in by.items()}
-        slack = timedelta(seconds=20)
+        slack = timedelta(seconds=3)   # app chats run back to back ~20 s apart; a wider slack attributed a neighbour's fetch
         for row in rows:
             s, e_ = parse_ts(row.get("started_at")), parse_ts(row.get("finished_at"))
             ua_name = E.UA_ALIAS.get(row["assistant"], row["assistant"])   # claude-code fetches arrive as Claude-User

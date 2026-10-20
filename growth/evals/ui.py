@@ -64,7 +64,21 @@ READ_JS = r"""
   const j = ends.length ? Math.min(...ends) : -1;
   const answer = i >= 0 ? t.slice(i + 'ChatGPT said:'.length, j > i ? j : undefined).trim() : '';
   const streaming = !!document.querySelector('button[aria-label="Stop streaming"], button[aria-label="Stop generating"]');
-  const links = [...document.querySelectorAll('a[href]')].map(a => ({text: (a.textContent || '').trim().slice(0, 120), href: a.href, rel: a.rel || ''}));
+  // Anchors everywhere, including shadow roots (ChatGPT's product cards render their Buy button inside a custom
+  // element) and same-origin iframes; buttons that carry a URL in data attributes count too.
+  const anchors = [];
+  const walk = (root) => {
+    try {
+      root.querySelectorAll('a[href], button[data-href], [role="link"][data-href]').forEach(a => anchors.push({
+        text: (a.textContent || '').trim().slice(0, 120), href: a.href || a.getAttribute('data-href') || '', rel: a.rel || '',
+        where: root === document ? 'dom' : 'shadow'}));
+      root.querySelectorAll('*').forEach(el => { if (el.shadowRoot) walk(el.shadowRoot); });
+      root.querySelectorAll('iframe').forEach(f => { try { if (f.contentDocument) walk(f.contentDocument); } catch (e) {} });
+    } catch (e) {}
+  };
+  walk(document);
+  const links = anchors.filter(a => a.href);
+  const shadow_hosts = [...document.querySelectorAll('*')].filter(el => el.shadowRoot).length;
   const composer = document.querySelector('#prompt-textarea, div.ProseMirror[contenteditable="true"]');
   const send = document.querySelector('button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]');
   const loggedIn = !!document.querySelector('button[aria-label="Open profile menu"]') && !document.querySelector('[data-testid="login-button"]');
@@ -72,7 +86,7 @@ READ_JS = r"""
   const plan = (t.match(/\n(Free|Plus|Pro|Go|Business)\n/) || [])[1] || '';
   return JSON.stringify({streaming, answer, links, url: location.href, title: document.title, body_len: t.length,
                          composer: composer ? (composer.innerText || '').trim().slice(0, 80) : null, send: !!send, notice,
-                         logged_in: loggedIn, plan, temporary: t.includes('Temporary chat')});
+                         logged_in: loggedIn, plan, temporary: t.includes('Temporary chat'), shadow_hosts});
 })()
 """
 
