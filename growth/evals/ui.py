@@ -151,6 +151,12 @@ def screenshot(tab: Tab, path: Path) -> str | None:
     """Full-page JPEG of the finished chat (capped at SHOT_MAX_H px), saved next to the run file for the iteration
     report. Returns the file name, or None when the capture failed (the run file still counts)."""
     try:
+        # Park the pointer and close any hover popover (a citation chip under the cursor opens a sources card that
+        # covers the answer), then let the layout settle.
+        tab.call("Input.dispatchMouseEvent", type="mouseMoved", x=2, y=2)
+        tab.call("Input.dispatchKeyEvent", type="keyDown", key="Escape", code="Escape", windowsVirtualKeyCode=27)
+        tab.call("Input.dispatchKeyEvent", type="keyUp", key="Escape", code="Escape", windowsVirtualKeyCode=27)
+        time.sleep(0.5)
         m = tab.call("Page.getLayoutMetrics")
         cs = m.get("cssContentSize") or m.get("contentSize") or {}
         clip = {"x": 0, "y": 0, "width": cs.get("width") or 1200, "height": min(cs.get("height") or 900, SHOT_MAX_H), "scale": 1}
