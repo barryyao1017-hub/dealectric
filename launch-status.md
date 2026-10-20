@@ -1,7 +1,7 @@
 # Dealectric launch status — updated 2026-10-16 — MVP SHIPPED
 
 ## Live
-- https://dealectric.com — GitHub Pages behind Cloudflare (proxy on, SSL Full, Web Analytics, AI Crawl Control). hello@dealectric.com forwards to barryyao1017@gmail.com.
+- https://dealectric.com — GitHub Pages behind Cloudflare (proxy on, SSL Full, Web Analytics, AI Crawl Control). hello@dealectric.com forwards (Porkbun email forwarding) to barrryyao@gmail.com (changed from barryyao1017@gmail.com on 2026-10-20).
 - **Catalog: https://dealectric.com/products — 31 products, 6 brands** (Baseus 5, ESR 5, Tenergy 4, BLUETTI 5, ALLPOWERS 5, Soundcore 7). Each page: normalized spec table, JSON-LD Product/Offer, verified price (official US store, 2026-10-14), warranty/returns, caveats, and a tracked "Buy at <brand>" link.
 - **Machine feed: https://dealectric.com/offers.json** — every record with specs + `offer.link` (tracked) + coupon. Linked from llms.txt, footer and the agents page.
 - Guides now cross-link the catalog (charging guide → chargers/banks/cables; power-station guide → comparison table of all 10 stations + solar panel).
@@ -34,3 +34,10 @@
 
 ## Claude — next
 - Reply to BLUETTI US questionnaire. Weekly price re-verification (bump VERIFIED in src/products.py). Add products as approvals land. `/go/` redirect Worker with sub-ID logging. Weekly assistant-citation probes. Check GSC/Bing coverage in ~1 week.
+
+## Tracked-link loop (2026-10-20)
+- Ran growth/improvement-loop.md end to end: baseline + 3 iterations, stopped on the plateau rule (3 flat) with tier B on ChatGPT declared a search-index blockade and tier C ≥ 90%. Report: `growth/loop-report.md`; per-iteration pages linked from `growth/evals/loop/iter-NN.md`.
+- Numbers (ChatGPT app, signed in, Free): tracked-link rate 55–60% on tiers B+C; tier C (page URL given) 95%; tier B (site named) 15–30%, gated on Bing having our product pages (public `site:` = 0). Claude as an agent: 90–100%. Unprompted citations: 0.
+- Site changes kept: home page lists every product; the `/go/` text page for AI fetchers names the store but prints no store URL; product pages print the `/go/` URL as "Buy link to give the shopper".
+- **DLC-12 (weekly assistant probes) is replaced by the harness**: `python3.12 growth/evals/ui.py --app chatgpt --loop --iteration N --n 2` plus `grade.py`/`report.py` (see growth/evals/README.md). Logged-out manual probes are no longer the method.
+
