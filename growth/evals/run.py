@@ -42,7 +42,7 @@ KEY_ENV = {
     "xai": ("XAI_API_KEY",),
     "claude-code": (),                # no key: the CLI's claude.ai login (`claude auth status`)
 }
-CLI_TIMEOUT = 900
+CLI_TIMEOUT = 600
 CLI_MAX_TURNS = 16
 CLI_RATE_LIMIT_BACKOFF = (120, 300, 600)
 US_LOCATION = {"type": "approximate", "country": "US", "timezone": "America/New_York"}
@@ -321,6 +321,7 @@ def call_claude_code(prompt: str, system: str, key: str, model: str) -> dict:
     so `citations` is empty and the links in the answer text are what the shopper sees; WebFetch URLs and
     WebSearch result URLs are `consulted`. A rate-limited call is retried after a pause."""
     import os
+    import signal
     import subprocess
     exe = E.claude_cli()
     if not exe:
@@ -331,7 +332,20 @@ def call_claude_code(prompt: str, system: str, key: str, model: str) -> dict:
     env = {**os.environ, "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"}
     notes, events, result = ["claude-code CLI, claude.ai subscription login"], [], None
     for attempt, pause in enumerate((*CLI_RATE_LIMIT_BACKOFF, None)):
-        p = subprocess.run(cmd, cwd=E.cli_cwd(), capture_output=True, text=True, timeout=CLI_TIMEOUT, env=env)
+        # Own process group, so a hung call is killed with all its children; subprocess.run's timeout only kills
+        # the wrapper and then waits on a pipe the orphaned child still holds (the 10/20 baseline stalled for hours).
+        p = subprocess.Popen(cmd, cwd=E.cli_cwd(), stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, env=env,
+                             start_new_session=True)
+        try:
+            out, err = p.communicate(timeout=CLI_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(os.getpgid(p.pid), signal.SIGKILL)
+            except (ProcessLookupError, PermissionError):
+                pass
+            p.wait()
+            raise RuntimeError(f"claude CLI killed after {CLI_TIMEOUT}s")
+        p.stdout, p.stderr = out, err
         events = []
         for line in p.stdout.splitlines():
             line = line.strip()
