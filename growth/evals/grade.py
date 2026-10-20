@@ -207,6 +207,11 @@ def classify_failure(row: dict, stale_ids: set[str]) -> tuple[str | None, str]:
     if not reached:
         why = "no dealectric.com URL shown or consulted, no ai_fetch row"
         return "NOT_FOUND", why + ("" if row["tier"] == "B" else f" (tier {row['tier']}: page apparently not read)")
+    ours = [E.strip_tracking(u).rstrip("/") for u in row["dealectric_urls_shown"]]
+    if row["level"] == 2 and ours and all(u in ("https://dealectric.com", "https://www.dealectric.com") for u in ours) \
+            and not row["consulted_ours"] and not row.get("d1_fetched_slugs"):
+        # Search returned our home page and nothing deeper: the product was not found (the app's tier-B signature).
+        return "NOT_FOUND", "only the home page linked (search returned no product page)"
     if row.get("refusal_match"):
         return "REFUSED", f"prose: \"{row['refusal_match'][:120]}\""
     if row["click_ids"] and set(row["click_ids"]) & stale_ids:
