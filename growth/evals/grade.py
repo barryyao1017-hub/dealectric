@@ -99,6 +99,14 @@ REFUSAL_RE = re.compile(
     r"|(?:affiliate|tracked|tracking|redirect|referral) (?:links?|urls?)[^.\n]{0,60}?"
     r"(?:not (?:allowed|permitted|supported|something)|can'?t|cannot|won'?t|against|unable)", re.I)
 CLICK_ID_RE = re.compile(r"(?:clickref|sid)=([a-z0-9-]+)\.([0-9a-f]{6,})", re.I)
+# A negative-control answer that says we do not list the product. Such an answer may still link products we do carry
+# as alternatives (iteration 0 did, with /go/ links); that is not an invented listing, so it passes.
+NEG_HONEST_RE = re.compile(
+    r"dealectric[^.\n]{0,60}?(?:doesn'?t|does not|don'?t|do not|didn'?t|did not)[^.\n]{0,20}?(?:sell|carry|list|stock|offer|have|include)"
+    r"|(?:not|no)[^.\n]{0,30}?(?:in|on|at) (?:its|their|the|dealectric'?s?) (?:catalog|catalogue|site|listings?|offers)"
+    r"|(?:isn'?t|is not|aren'?t|are not)[^.\n]{0,40}?(?:listed|carried|sold|available|stocked)[^.\n]{0,30}?(?:on|at|by) dealectric"
+    r"|no (?:dealectric )?(?:listing|product page|buy link)[^.\n]{0,60}?(?:for|of) (?:this|that|the)"
+    r"|can'?t (?:give|get|provide|find)[^.\n]{0,40}?dealectric (?:buy )?link", re.I)
 
 
 def ua_assistant(ua: str) -> str:
@@ -162,7 +170,10 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
     if rec.get("kind") == "positive":
         control_pass = any(any(h == d or h.endswith("." + d) for h in domains_shown) for d in expect_domains)
     elif rec.get("kind") == "negative":
-        control_pass = level < 3 and not go_slugs and not go_unknown
+        # Pass = no invented /go/ slug, and either nothing of ours presented as the product (L<3) or the answer says
+        # outright that we do not list it (alternatives from our catalog may then carry product-page or /go/ links).
+        honest = bool(NEG_HONEST_RE.search(text))
+        control_pass = not go_unknown and ((level < 3 and not go_slugs) or honest)
 
     click_ids = sorted({m.group(2) for u in network_links + merchant_links for m in [CLICK_ID_RE.search(u)] if m})
     refusal = REFUSAL_RE.search(text)
@@ -389,6 +400,7 @@ def main() -> int:
                     help="LLM-pass backend: Anthropic API, or the claude CLI under the subscription login (auto: API if a key exists, else CLI)")
     ap.add_argument("--ui-csv", default=None, help="browser spot-check CSV (default: <run>/ui.csv or loop/ui/iter-NN.csv)")
     ap.add_argument("--regrade", action="store_true", help="recompute rows already in grades.jsonl (LLM passes re-run too)")
+    ap.add_argument("--rescore", action="store_true", help="recompute the deterministic fields and failure class of cached rows; keep their LLM-pass fields")
     args = ap.parse_args()
 
     rdir = E.run_dir(args.run_id)
@@ -424,6 +436,12 @@ def main() -> int:
         s, e_ = parse_ts(rec.get("started_at")), parse_ts(rec.get("finished_at"))
         if s and e_:
             starts.append(s); ends.append(e_)
+        if key in cached and args.rescore:
+            row = cached[key]
+            row["expected"] = rec.get("expected") or []
+            row.update(grade_record(rec, offers, coupons, brands))
+            row["_text"] = rec.get("text") or ""
+            rows.append(row); continue
         if key in cached:
             rows.append(cached[key]); continue
         g = grade_record(rec, offers, coupons, brands)
@@ -474,7 +492,12 @@ def main() -> int:
                 d1["note"] = (d1["note"] or "") + f"; click-id lookup failed: {cerr}"
     E.write_json(rdir / "d1-ai-fetch.json", d1)
 
-    # 3. failure class + LLM passes (fresh rows only)
+    # 3. failure class + LLM passes (fresh rows only; --rescore recomputes the class of cached rows too)
+    if args.rescore:
+        for row in rows:
+            if row not in fresh:
+                row["failure_class"], row["failure_evidence"] = classify_failure(row, stale_ids)
+                row.pop("_text", None)
     for i, row in enumerate(fresh, 1):
         row["failure_class"], row["failure_evidence"] = classify_failure(row, stale_ids)
         text = row.pop("_text")
