@@ -26,7 +26,12 @@ PROBES_DIR = REPO / "growth" / "probes"
 SITE_HOSTS = {"dealectric.com", "www.dealectric.com"}
 NETWORK_HOSTS = {"awin1.com", "www.awin1.com", "tkqlhce.com", "www.tkqlhce.com", "anrdoezrs.net", "jdoqocy.com", "dpbolvw.net", "kqzyfj.com"}
 
-ASSISTANTS = ("openai", "anthropic", "gemini", "xai")
+# openai/anthropic/gemini/xai go through the vendors' APIs (keys in env). claude-code is Claude as an agent through
+# the Claude Code CLI (`claude -p`, WebSearch + WebFetch), billed to the claude.ai subscription login; it stands in
+# for the Anthropic API route while the keys are missing (added 2026-10-19, see README "Subscription route").
+ASSISTANTS = ("openai", "anthropic", "gemini", "xai", "claude-code")
+# Which assistant's user agent a run file's fetches appear under in D1 (Claude Code's WebFetch is Claude-User).
+UA_ALIAS = {"claude-code": "anthropic"}
 
 LEVEL_LABELS = {
     0: "L0 none",
@@ -59,8 +64,9 @@ def load_questions(path: Path = QUESTIONS_PATH) -> dict:
     return q
 
 
-def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True):
-    """Yield (question_record, tier, prompt) for every prompt the run should ask."""
+def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True, controls_all_tiers=False):
+    """Yield (question_record, tier, prompt) for every prompt the run should ask. With controls_all_tiers the
+    controls run on their own tiers whatever `tiers` says (the loop asks only B and C but wants every control)."""
     tmpl = {k: v["template"] for k, v in q["tiers"].items()}
     for item in q["questions"]:
         if question_ids and item["id"] not in question_ids:
@@ -75,7 +81,7 @@ def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True)
             if question_ids and item["id"] not in question_ids:
                 continue
             for t in item.get("tiers", ["A"]):
-                if t not in tiers or (t == "C" and "primary" not in item):
+                if (t not in tiers and not controls_all_tiers) or (t == "C" and "primary" not in item):
                     continue
                 rec = dict(item, kind=kind, expected=item.get("expected", []))
                 yield rec, t, tmpl[t].format(**item)
@@ -250,6 +256,64 @@ def env_key(*names: str) -> str | None:
         if v:
             return v
     return None
+
+
+# ---------------------------------------------------------------- Claude Code CLI (subscription route)
+
+import shutil as _shutil
+import subprocess as _subprocess
+import tempfile as _tempfile
+
+CLI_ISOLATION = ["--no-session-persistence", "--setting-sources", "", "--strict-mcp-config"]
+
+
+def cli_cwd() -> Path:
+    """An empty directory outside the repo, so `claude -p` finds no CLAUDE.md, settings or memory up the tree."""
+    d = Path(_tempfile.gettempdir()) / "dealectric-eval-cli"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def claude_cli() -> str | None:
+    return _shutil.which("claude")
+
+
+def claude_cli_login() -> str | None:
+    """'<claude.ai login>' when the CLI is installed and logged in, else None."""
+    exe = claude_cli()
+    if not exe:
+        return None
+    try:
+        p = _subprocess.run([exe, "auth", "status"], capture_output=True, text=True, timeout=30, cwd=cli_cwd())
+        st = json.loads(p.stdout or "{}")
+        return "<claude.ai login>" if st.get("loggedIn") else None
+    except Exception:
+        return None
+
+
+def claude_cli_json(system: str, user: str, model: str, schema: dict, timeout: int = 180) -> dict | None:
+    """One no-tools `claude -p` call that must answer with JSON matching `schema`; the LLM judge uses it when there
+    is no Anthropic API key. Returns the parsed object or None."""
+    exe = claude_cli()
+    if not exe:
+        raise RuntimeError("claude CLI not found")
+    cmd = [exe, "-p", user, "--system-prompt", system, "--output-format", "json", "--tools", "",
+           "--model", model, "--json-schema", json.dumps(schema), *CLI_ISOLATION]
+    p = _subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, cwd=cli_cwd())
+    try:
+        d = json.loads(p.stdout)
+    except ValueError:
+        raise RuntimeError(f"claude CLI returned no JSON (exit {p.returncode}): {(p.stderr or p.stdout)[-300]}")
+    if d.get("is_error"):
+        raise RuntimeError(f"claude CLI error: {str(d.get('result'))[:300]}")
+    out = d.get("structured_output")
+    if out is None:
+        raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", str(d.get("result") or "").strip())
+        try:
+            out = json.loads(raw)
+        except ValueError:
+            return None
+    return out if isinstance(out, dict) else None
 
 
 # ---------------------------------------------------------------- loop support (added 2026-10-19, growth/improvement-loop.md)

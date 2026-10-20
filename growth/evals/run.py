@@ -15,6 +15,7 @@ import argparse
 import hashlib
 import json
 import random
+import re
 import sys
 import threading
 import time
@@ -32,13 +33,18 @@ DEFAULT_MODELS = {
     "anthropic": "claude-opus-5-5",   # ANTHROPIC_MODEL; web_search + web_fetch server tools
     "gemini": "gemini-4-argon",       # GEMINI_MODEL; google_search grounding
     "xai": "grok-4.7",                # XAI_MODEL; web_search tool in the Responses API
+    "claude-code": "claude-opus-5-5", # CLAUDE_CODE_MODEL; Claude Code CLI with WebSearch + WebFetch (subscription login)
 }
 KEY_ENV = {
     "openai": ("OPENAI_API_KEY",),
     "anthropic": ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN"),
     "gemini": ("GEMINI_API_KEY", "GOOGLE_API_KEY"),
     "xai": ("XAI_API_KEY",),
+    "claude-code": (),                # no key: the CLI's claude.ai login (`claude auth status`)
 }
+CLI_TIMEOUT = 900
+CLI_MAX_TURNS = 16
+CLI_RATE_LIMIT_BACKOFF = (120, 300, 600)
 US_LOCATION = {"type": "approximate", "country": "US", "timezone": "America/New_York"}
 HTTP_TIMEOUT = 600
 MAX_PAUSE_CONTINUATIONS = 5
@@ -307,7 +313,97 @@ def call_xai(prompt: str, system: str, key: str, model: str) -> dict:
             "usage": resp.get("usage"), "notes": ["xAI has no location parameter"]}
 
 
-CALLERS = {"openai": call_openai, "anthropic": call_anthropic, "gemini": call_gemini, "xai": call_xai}
+def call_claude_code(prompt: str, system: str, key: str, model: str) -> dict:
+    """Claude as an agent through the Claude Code CLI: `claude -p` with only WebSearch and WebFetch, billed to the
+    claude.ai subscription login (no API key). Isolated from this machine's context: empty cwd outside the repo, no
+    settings, no MCP servers, no memory, no session persistence; `system` replaces Claude Code's own system prompt.
+    The transcript (stream-json) is kept as the raw response. Claude Code's answers carry no citation annotations,
+    so `citations` is empty and the links in the answer text are what the shopper sees; WebFetch URLs and
+    WebSearch result URLs are `consulted`. A rate-limited call is retried after a pause."""
+    import os
+    import subprocess
+    exe = E.claude_cli()
+    if not exe:
+        raise RuntimeError("claude CLI not found on PATH")
+    cmd = [exe, "-p", prompt, "--system-prompt", system, "--output-format", "stream-json", "--verbose",
+           "--tools", "WebSearch,WebFetch", "--allowedTools", "WebSearch,WebFetch", "--model", model,
+           "--max-turns", str(CLI_MAX_TURNS), *E.CLI_ISOLATION]
+    env = {**os.environ, "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"}
+    notes, events, result = ["claude-code CLI, claude.ai subscription login"], [], None
+    for attempt, pause in enumerate((*CLI_RATE_LIMIT_BACKOFF, None)):
+        p = subprocess.run(cmd, cwd=E.cli_cwd(), capture_output=True, text=True, timeout=CLI_TIMEOUT, env=env)
+        events = []
+        for line in p.stdout.splitlines():
+            line = line.strip()
+            if line.startswith("{"):
+                try:
+                    events.append(json.loads(line))
+                except ValueError:
+                    pass
+        result = next((e for e in reversed(events) if e.get("type") == "result"), None)
+        if result is None:
+            raise RuntimeError(f"claude CLI exit {p.returncode}, no result event: {(p.stderr or p.stdout)[-400]}")
+        text = str(result.get("result") or "")
+        limited = (result.get("is_error") and re.search(r"rate.?limit|usage limit|hit your limit|429", text, re.I)) \
+            or result.get("api_error_status") == 429 or re.search(r"you'?ve hit your (?:usage )?limit", text, re.I)
+        if limited and pause:
+            notes.append(f"rate limited (attempt {attempt + 1}), paused {pause}s")
+            log(f"claude-code: rate limited, pausing {pause}s")
+            time.sleep(pause)
+            continue
+        break
+    text = str(result.get("result") or "")
+    if re.search(r"^Not logged in", text):
+        raise RuntimeError("claude CLI is not logged in (run `claude /login`)")
+    if result.get("is_error"):
+        raise RuntimeError(f"claude CLI error ({result.get('subtype')}): {text[:300]}")
+
+    consulted, queries, seen = [], [], set()
+    fetch_ids = set()
+    for e in events:
+        if e.get("type") == "assistant":
+            for b in (e.get("message") or {}).get("content") or []:
+                if b.get("type") != "tool_use":
+                    continue
+                inp = b.get("input") or {}
+                if b.get("name") == "WebSearch" and inp.get("query"):
+                    queries.append(inp["query"])
+                elif b.get("name") == "WebFetch" and inp.get("url"):
+                    fetch_ids.add(b.get("id"))
+                    if inp["url"] not in seen:
+                        seen.add(inp["url"]); consulted.append({"url": inp["url"], "title": "", "source": "fetch_request"})
+        elif e.get("type") == "user":
+            content = (e.get("message") or {}).get("content")
+            for b in content if isinstance(content, list) else []:
+                if b.get("type") != "tool_result" or b.get("tool_use_id") in fetch_ids:
+                    continue   # search results only; fetched page content would list every URL on the page
+                raw = b.get("content")
+                raw = " ".join(x.get("text", "") for x in raw if isinstance(x, dict)) if isinstance(raw, list) else str(raw or "")
+                for u in E.urls_in_text(raw):
+                    if u["url"] not in seen:
+                        seen.add(u["url"]); consulted.append({"url": u["url"], "title": u.get("title", ""), "source": "search_result"})
+    if not text:   # fall back to the last assistant text blocks
+        for e in reversed(events):
+            if e.get("type") == "assistant":
+                text = "\n".join(b.get("text", "") for b in (e.get("message") or {}).get("content") or [] if b.get("type") == "text")
+                if text:
+                    break
+    rl = next((e.get("rate_limit_info") for e in reversed(events) if e.get("type") == "rate_limit_event"), None)
+    if rl:
+        win = rl.get("unifiedWindows") or {}
+        notes.append("rate limit " + ", ".join(f"{k} {100 * (v or {}).get('utilization', 0):.0f}%" for k, v in win.items())
+                     + (f" ({rl.get('status')})" if rl.get("status") not in (None, "allowed") else ""))
+    if result.get("num_turns", 0) >= CLI_MAX_TURNS:
+        notes.append(f"hit --max-turns {CLI_MAX_TURNS}")
+    usage = {**(result.get("usage") or {}), "total_cost_usd_list": result.get("total_cost_usd"),
+             "num_turns": result.get("num_turns"), "duration_api_ms": result.get("duration_api_ms"), "rate_limit": rl}
+    return {"model": model, "request": {"cmd": cmd[:1] + ["-p", prompt, "--system-prompt", system, "..."], "model": model},
+            "response": events, "text": text, "citations": [], "raw_citations": [], "consulted": consulted,
+            "queries": queries, "stop_reason": result.get("stop_reason") or result.get("subtype"), "usage": usage, "notes": notes}
+
+
+CALLERS = {"openai": call_openai, "anthropic": call_anthropic, "gemini": call_gemini, "xai": call_xai,
+           "claude-code": call_claude_code}
 
 
 # ------------------------------------------------------------------ mock assistant (pipeline test, no keys)
@@ -444,7 +540,8 @@ def run_cell(assistant: str, rec: dict, tier: str, n: int, prompt: str, system: 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--assistants", default=",".join(E.ASSISTANTS), help="comma list of openai,anthropic,gemini,xai")
+    ap.add_argument("--assistants", default=",".join(E.ASSISTANTS),
+                    help="comma list of openai,anthropic,gemini,xai (APIs) and claude-code (Claude Code CLI, subscription login)")
     ap.add_argument("--tiers", default="A,B,C")
     ap.add_argument("--questions", default="", help="comma list of ids to run (default all, incl. controls)")
     ap.add_argument("--no-controls", action="store_true")
@@ -490,8 +587,10 @@ def main() -> int:
 
     keys, models, skipped = {}, {}, {}
     for a in assistants:
-        models[a] = E.env_key(a.upper() + "_MODEL") or DEFAULT_MODELS[a]
-        k = E.env_key(*KEY_ENV[a])
+        models[a] = E.env_key(a.upper().replace("-", "_") + "_MODEL") or DEFAULT_MODELS[a]
+        k = E.env_key(*KEY_ENV[a]) if KEY_ENV[a] else None
+        if a == "claude-code" and not args.mock:
+            k = E.claude_cli_login()
         if a == "anthropic" and not k and not args.mock:
             # The SDK also accepts an `ant auth login` profile; probe for one before giving up.
             try:
@@ -501,11 +600,11 @@ def main() -> int:
             except Exception:
                 k = None
         if not k and not args.mock:
-            skipped[a] = f"no key in {' / '.join(KEY_ENV[a])}"
+            skipped[a] = f"no key in {' / '.join(KEY_ENV[a])}" if KEY_ENV[a] else "claude CLI not installed or not logged in"
         keys[a] = k
     active = [a for a in assistants if a not in skipped]
 
-    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls))
+    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls, controls_all_tiers=args.loop))
     total = len(cells) * args.n * len(active)
     log(f"run {args.run_id}: {len(cells)} prompts x {args.n} runs x {len(active)} assistants = {total} calls"
         + (" (MOCK)" if args.mock else ""))

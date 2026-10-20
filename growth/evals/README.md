@@ -33,7 +33,8 @@ because of a missing key.
 | anthropic | `ANTHROPIC_API_KEY` | `claude-opus-5-5` (`ANTHROPIC_MODEL`) | Messages API `web_search_20260209` (US location) + `web_fetch_20260209`, adaptive thinking, effort medium, `pause_turn` continued |
 | gemini | `GEMINI_API_KEY` | `gemini-4-argon` (`GEMINI_MODEL`) | `generateContent` with `google_search` grounding; grounding redirect URIs are resolved one hop (HEAD, no follow) so our domain is visible. `GEMINI_API=interactions` switches to the Interactions API with `url_citation` annotations |
 | xai | `XAI_API_KEY` | `grok-4.7` (`XAI_MODEL`) | Responses API `web_search` tool; top-level `citations` list recorded as consulted |
-| LLM passes (grade.py) | Anthropic key as above | `claude-sonnet-5-5` (`JUDGE_MODEL`) | rank of our product among the answer's picks (tiers A and B); verbatim explanation quote for failures (tiers B and C) |
+| claude-code | none: the CLI's claude.ai login (`claude auth status`) | `claude-opus-5-5` (`CLAUDE_CODE_MODEL`) | Claude Code CLI `claude -p` with the WebSearch + WebFetch tools; see "Subscription route" below |
+| LLM passes (grade.py) | Anthropic key as above, else the claude CLI | `claude-sonnet-5-5` (`JUDGE_MODEL`) | rank of our product among the answer's picks (tiers A and B); verbatim explanation quote for failures (tiers B and C) |
 
 Model ids were checked against the providers' model pages on 2026-10-19; change the env var when they move. A full
 run is 99 prompts × N runs × 4 assistants with web search billed per call on top of tokens, so start with `--n 1` and
@@ -42,6 +43,30 @@ plus 12 control cells per assistant.
 
 Not enabled on purpose: Anthropic's server-side refusal fallback. A fallback would answer with a different model
 and corrupt the per-assistant measurement; a refusal is recorded as `stop_reason: refusal` and graded as it is.
+
+## Subscription route: `claude-code` (no API key needed)
+
+Added 2026-10-20 because none of the four API keys existed yet (DLC-40). `claude-code` runs Claude as an agent through
+the Claude Code CLI, `claude -p`, billed to the claude.ai subscription login on this machine (`claude auth status`),
+with only the built-in WebSearch and WebFetch tools. It is a fifth assistant id, kept apart from `anthropic` (the
+API route) because the surfaces differ: Claude Code answers carry no citation annotations, so its ladder levels come
+from the links in the answer text; WebFetch runs server-side and reaches the Worker as `Claude-User`, which the D1 join
+maps to the `anthropic` user-agent bucket (`UA_ALIAS` in evallib.py). Each call is isolated: empty cwd outside the
+repo (no CLAUDE.md, memory or settings), `--strict-mcp-config`, no session persistence, and the shared system prompt
+from `questions.yaml` replaces Claude Code's own. The whole stream-json transcript is stored as the raw response;
+`usage.total_cost_usd_list` is the list-price equivalent, not a charge. A rate-limited call pauses (2, 5, 10 min)
+and retries; the subscription's window utilisation is in every file's `notes`.
+
+The LLM passes in grade.py (rank judge, explanation quotes) also need an Anthropic key, so `--judge auto` falls back to
+the same CLI (`claude -p` with a JSON schema, no tools) when no key is present; `--judge api|cli` forces one.
+
+    python3.12 growth/evals/run.py --assistants claude-code --n 1 --questions Q22 --tiers B,C
+    python3.12 growth/evals/run.py --assistants claude-code --loop --iteration 1
+    python3.12 growth/evals/grade.py --run-id <id>            # judge: API if ANTHROPIC_API_KEY, else the CLI
+
+When the keys arrive, run `--assistants openai,anthropic,gemini,xai` and keep `claude-code` as a fifth column or drop
+it; nothing else changes. Model: `claude-opus-5-5` (`CLAUDE_CODE_MODEL`); the CLI's `--max-turns 16` caps a runaway
+search. In `--loop` mode the controls run on their own tiers (positives on A) even though questions run only B and C.
 
 ## Run
 

@@ -307,7 +307,12 @@ def scorecard(args) -> int:
               "US location set where the API allows it (OpenAI, Anthropic); Gemini and xAI have no location parameter.")
     md.append("- The browser spot-check (hrefs read from the DOM in the agent's Chrome) is a manual step whose CSV grade.py merges; "
               "see `growth/evals/README.md`. API answers and app answers can differ in link handling, which is why both readings exist.")
-    md.append("- Rank and the explanation quotes are the only LLM-judged fields (Anthropic API); everything else is string and URL matching.")
+    if "claude-code" in assistants:
+        md.append("- **claude-code** is Claude as an agent through the Claude Code CLI (`claude -p`, WebSearch + WebFetch tools, "
+                  "claude.ai subscription login), not the Anthropic API: no citation annotations, so its levels come from the links "
+                  "in the answer text; its fetches reach the Worker as Claude-User. It stands in for `anthropic` until an API key exists.")
+    md.append("- Rank and the explanation quotes are the only LLM-judged fields (Anthropic API, or the claude CLI when there is no key); "
+              "everything else is string and URL matching.")
 
     default_out = rdir / "scorecard.md" if manifest.get("mock") else E.PROBES_DIR / f"{args.run_id}-eval.md"
     out = Path(args.out) if args.out else default_out

@@ -232,6 +232,12 @@ EXPLAIN_SYSTEM = (
 )
 
 
+JUDGE_SCHEMA = {"type": "object", "properties": {"picks": {"type": "array", "items": {
+    "type": "object", "properties": {"name": {"type": "string"}, "slug": {"type": ["string", "null"]}}, "required": ["name", "slug"]}}},
+    "required": ["picks"]}
+EXPLAIN_SCHEMA = {"type": "object", "properties": {"quote": {"type": ["string", "null"]}}, "required": ["quote"]}
+
+
 def _json_reply(resp) -> dict | None:
     raw = "".join(b.text for b in resp.content if getattr(b, "type", "") == "text").strip()
     raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw)
@@ -241,38 +247,71 @@ def _json_reply(resp) -> dict | None:
         return None
 
 
-def judge_rank(client, model: str, text: str, offers: dict, expected: set[str]) -> dict:
+class ApiJudge:
+    """The LLM passes over the Anthropic API (ANTHROPIC_API_KEY or an auth token)."""
+    name = "anthropic API"
+
+    def __init__(self, model: str):
+        import anthropic
+        self.client = anthropic.Anthropic(timeout=120, max_retries=3)
+        if not (getattr(self.client, "api_key", None) or getattr(self.client, "auth_token", None)):
+            raise RuntimeError("no ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN")
+        self.model = model
+
+    def ask(self, system: str, user: str, schema: dict, max_tokens: int) -> dict | None:
+        resp = self.client.messages.create(model=self.model, max_tokens=max_tokens, system=system,
+                                           messages=[{"role": "user", "content": user}],
+                                           extra_body={"output_config": {"effort": "low"}})
+        return _json_reply(resp)
+
+
+class CliJudge:
+    """The same passes through `claude -p` (no tools, JSON schema), billed to the claude.ai subscription login.
+    Used when there is no API key; see README "Subscription route"."""
+    name = "claude CLI (subscription)"
+
+    def __init__(self, model: str):
+        if not E.claude_cli_login():
+            raise RuntimeError("claude CLI not installed or not logged in")
+        self.model = model
+
+    def ask(self, system: str, user: str, schema: dict, max_tokens: int) -> dict | None:
+        return E.claude_cli_json(system, user, self.model, schema)
+
+
+def make_judge(kind: str, model: str):
+    """kind: auto (API if a key exists, else CLI), api, cli. Raises when the chosen backend is unavailable."""
+    if kind == "api":
+        return ApiJudge(model)
+    if kind == "cli":
+        return CliJudge(model)
+    try:
+        return ApiJudge(model)
+    except Exception as api_err:
+        try:
+            return CliJudge(model)
+        except Exception as cli_err:
+            raise RuntimeError(f"{api_err}; {cli_err}")
+
+
+def judge_rank(judge, model: str, text: str, offers: dict, expected: set[str]) -> dict:
     catalog = "\n".join(f"- {s}: {p['brand']} {p['name']}" for s, p in offers.items())
-    resp = client.messages.create(model=model, max_tokens=2048, system=JUDGE_SYSTEM,
-                                  messages=[{"role": "user", "content": f"CATALOG\n{catalog}\n\nANSWER\n{text[:12000]}"}],
-                                  extra_body={"output_config": {"effort": "low"}})
-    data = _json_reply(resp)
+    data = judge.ask(JUDGE_SYSTEM, f"CATALOG\n{catalog}\n\nANSWER\n{text[:12000]}", JUDGE_SCHEMA, 2048)
     if not isinstance(data, dict):
         return {"picks": [], "our_rank": None, "catalog_rank": None, "judge_error": "unparseable judge reply"}
     picks = data.get("picks") or []
-    return {"picks": picks, "judge_error": None, "judge_model": model,
+    return {"picks": picks, "judge_error": None, "judge_model": f"{model} via {judge.name}",
             "our_rank": next((i for i, p in enumerate(picks, 1) if p.get("slug") in expected), None),
             "catalog_rank": next((i for i, p in enumerate(picks, 1) if p.get("slug") in offers), None)}
 
 
-def explain_link(client, model: str, text: str) -> dict:
-    resp = client.messages.create(model=model, max_tokens=1024, system=EXPLAIN_SYSTEM,
-                                  messages=[{"role": "user", "content": f"ANSWER\n{text[:12000]}"}],
-                                  extra_body={"output_config": {"effort": "low"}})
-    data = _json_reply(resp)
+def explain_link(judge, model: str, text: str) -> dict:
+    data = judge.ask(EXPLAIN_SYSTEM, f"ANSWER\n{text[:12000]}", EXPLAIN_SCHEMA, 1024)
     quote = data.get("quote") if isinstance(data, dict) else None
     if not quote:
         return {"explanation": None, "explanation_verbatim": None}
     norm = lambda s: re.sub(r"\s+", " ", s).strip().lower()  # noqa: E731
     return {"explanation": quote, "explanation_verbatim": norm(quote) in norm(text)}
-
-
-def anthropic_client():
-    import anthropic
-    c = anthropic.Anthropic(timeout=120, max_retries=3)
-    if not (getattr(c, "api_key", None) or getattr(c, "auth_token", None)):
-        raise RuntimeError("no ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN")
-    return c
 
 
 # ---------------------------------------------------------------- D1
@@ -346,6 +385,8 @@ def main() -> int:
     ap.add_argument("--no-judge", action="store_true", help="skip the LLM passes (rank, explanation quotes)")
     ap.add_argument("--no-d1", action="store_true", help="skip the D1 clicks join and stale-cache lookup")
     ap.add_argument("--judge-model", default=os.environ.get("JUDGE_MODEL", JUDGE_MODEL_DEFAULT))
+    ap.add_argument("--judge", choices=["auto", "api", "cli"], default="auto",
+                    help="LLM-pass backend: Anthropic API, or the claude CLI under the subscription login (auto: API if a key exists, else CLI)")
     ap.add_argument("--ui-csv", default=None, help="browser spot-check CSV (default: <run>/ui.csv or loop/ui/iter-NN.csv)")
     ap.add_argument("--regrade", action="store_true", help="recompute rows already in grades.jsonl (LLM passes re-run too)")
     args = ap.parse_args()
@@ -369,7 +410,8 @@ def main() -> int:
         judge_note = "LLM passes disabled by --no-judge"
     else:
         try:
-            judge = anthropic_client()
+            judge = make_judge(args.judge, args.judge_model)
+            print(f"LLM passes: {args.judge_model} via {judge.name}")
         except Exception as e:
             judge_note = f"LLM passes disabled: {e}"
 
@@ -416,8 +458,9 @@ def main() -> int:
         slack = timedelta(seconds=20)
         for row in rows:
             s, e_ = parse_ts(row.get("started_at")), parse_ts(row.get("finished_at"))
+            ua_name = E.UA_ALIAS.get(row["assistant"], row["assistant"])   # claude-code fetches arrive as Claude-User
             if s and e_:
-                row["d1_fetched_slugs"] = sorted({r["slug"] for r in d1rows if r["assistant"] == row["assistant"]
+                row["d1_fetched_slugs"] = sorted({r["slug"] for r in d1rows if r["assistant"] == ua_name
                                                   and (ts := parse_ts(r["ts"])) and s - slack <= ts <= e_ + slack})
         ids = {i for row in rows for i in row.get("click_ids") or []}
         if ids:
