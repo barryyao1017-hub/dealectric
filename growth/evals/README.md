@@ -13,10 +13,11 @@ probes in `growth/probes/` for the weekly check (DLC-12) and feeds the tracked-l
 | `run.py` | asks every question to each assistant over its API with web search on; saves raw JSON per cell; `--loop` picks the iteration subset |
 | `grade.py` | deterministic ladder + flags, failure class with the assistant's own explanation, LLM-judged rank, D1 join, browser spot-check (UI) merge |
 | `report.py` | `results.csv` and the scorecard `growth/probes/<run-id>-eval.md`; `--compare A B` for two iterations |
-| `evallib.py` | shared loaders, URL classification, D1 query, stamping, Wilson intervals |
+| `iterreport.py` | the iteration report page (`loop/reports/iter-NN/index.html` + `shots/`): thesis, verdict, numbers, screenshots, next run, tokens and time; published as the "Dealectric Loop · Iteration N" artifact |
+| `evallib.py` | shared loaders, URL classification, D1 query, stamping, Wilson intervals, token accounting |
 | `runs/<run-id>/<assistant>/<qid>-<tier>-<n>.json` | one file per call: prompt, raw API response, answer text, citations, raw citation/annotation objects, consulted URLs, stamp |
 | `runs/<run-id>/manifest.json`, `grades.jsonl`, `grades-ui.jsonl`, `d1-ai-fetch.json`, `results.csv` | run metadata and outputs |
-| `loop/` | iteration files `iter-NN.md`, `LOOP.md` and `ui/iter-NN.csv`, written by the loop session (this harness only reads the CSVs) |
+| `loop/` | iteration files `iter-NN.md`, `LOOP.md`, `ui/iter-NN.csv` (written by the loop session; this harness only reads the CSVs) and `reports/iter-NN/` (built by `iterreport.py`) |
 
 Tiers built from each question: **A** unprompted (verbatim) · **B** named ("Use dealectric.com to find … and give me
 Dealectric's buy link as a clickable link") · **C** given-url ("Open https://dealectric.com/<slug> and give me the
@@ -54,6 +55,25 @@ websocket-client`). It waits until the answer stops changing, records every `<a 
 `text_urls`, so grade.py scores hyperlinks only: a `/go/` URL shown as plain text is `PLAIN_TEXT`, not L4. The app
 fetches `/go/` as ChatGPT-User, mapped to the `openai` bucket in the D1 join. Other apps (claude.ai, gemini, grok)
 get an adapter each once their logins exist (DLC-40). About 12–40 s per prompt, sequential, `--pause 5` between.
+
+Every finished chat is also saved as a full-page JPEG next to its run file (`<qid>-<tier>-<n>.jpg`, `screenshot` field in
+the JSON; raw JPEGs stay local, see `.gitignore`). The iteration report picks up to eight of them, failures first.
+
+## Iteration report: `iterreport.py`
+
+```bash
+python3.12 growth/evals/iterreport.py --iteration 1                 # compares with iteration 0 (latest run of each)
+python3.12 growth/evals/iterreport.py --iteration 1 --run-id 2026-10-20 --prev 0
+```
+
+Writes `loop/reports/iter-NN/index.html` and copies the chosen screenshots to `shots/`. The loop session publishes the
+page as the artifact "Dealectric Loop · Iteration N" (`shots/*.jpg` via the Artifact tool's `files`) and records the URL
+on the first line of `loop/iter-NN.md`. Order on the page: stamp · did it work (pooled TLR for the app and api readings
+before → after, Wilson 95%, the ≥ 5-point rule, controls) · thesis tested · the change · per-assistant numbers and
+failure classes · what the shopper saw (screenshots, else answer text and spot-check notes) · new thesis and next run ·
+tokens and time (run files' `usage`, plus `judge-usage.json`, which grade.py accumulates for the LLM passes; consumer apps
+have no token accounting, so the app column shows chats and hours) · the rest of `iter-NN.md`. Prose sections are matched
+by heading keyword: hypothesis/thesis, diagnosis, change, re-evaluation/outcome/numbers, decision/next.
 
 ## Subscription route: `claude-code` (regression check only since 2026-10-20)
 

@@ -1,5 +1,7 @@
 # Iteration 0 — baseline (2026-10-20)
 
+Report: https://claude.ai/artifact/Q9ugMJe53w8rBCvsj5YNZE (built by `growth/evals/iterreport.py --iteration 0`)
+
 Route: the four API keys do not exist yet (DLC-40), so the API column is **claude-code** (Claude as an agent through
 the Claude Code CLI under the claude.ai subscription; `growth/evals/README.md`, "Subscription route") and the UI
 column is **ChatGPT logged out** at chatgpt.com in the Claude desktop browser pane (the Chrome extension was not

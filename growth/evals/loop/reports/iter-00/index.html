@@ -1,0 +1,95 @@
+<title>Dealectric Loop · Iteration 0</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root { --bg:#F5F7F8; --fg:#1A232C; --muted:#5A6875; --line:#C6CFD6; --panel:#FFFFFF; --accent:#B5551B; --accent-soft:#F6E4D6;
+  --go:#0E6F6E; --go-soft:#D9ECEA; --bad:#A33A2E; --bad-soft:#F6E0DC;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F;
+  --panel:#192230; --accent:#E8914A; --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark } }
+:root[data-theme="dark"] { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F; --panel:#192230; --accent:#E8914A;
+  --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark }
+body { background:var(--bg); color:var(--fg); font:15px/1.55 var(--sans); margin:0 }
+.wrap { max-width:960px; margin:0 auto; padding-block:28px 48px; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)) }
+h1 { font-size:26px; font-weight:600; margin:0 0 4px; letter-spacing:-0.01em; text-wrap:balance }
+h2 { font-size:13px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:600; margin:34px 0 10px; padding-top:14px; border-top:1px solid var(--line) }
+h3 { font-size:15px; font-weight:600; margin:16px 0 6px }
+p { margin:0 0 10px; max-width:78ch } ul { margin:0 0 10px; padding-left:20px } li { margin:2px 0 }
+.stamp { color:var(--muted); font-size:13.5px; margin-bottom:18px } .stamp code { font-size:12px }
+code { font-family:var(--mono); font-size:.9em; background:var(--accent-soft); padding:1px 5px; border-radius:3px }
+.ci { color:var(--muted); font-size:.85em }
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 6px }
+.tile { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:12px 14px; min-width:0 }
+.tile .k { font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted) }
+.tile .v { font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; margin-top:2px }
+.tile .d { font-size:13px; color:var(--muted) }
+.verdict { display:inline-block; padding:3px 10px; border-radius:4px; font-weight:600; font-size:13px; background:var(--go-soft); color:var(--go) }
+.verdict.bad { background:var(--bad-soft); color:var(--bad) } .verdict.flat { background:var(--accent-soft); color:var(--accent) }
+.scroll { overflow-x:auto } table { border-collapse:collapse; width:100%; font-size:13.5px; margin:0 0 12px }
+th,td { text-align:left; padding:6px 9px; border-bottom:1px solid var(--line); vertical-align:top; font-variant-numeric:tabular-nums }
+th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; min-width:0; display:flex; flex-direction:column }
+.card img { display:block; width:100%; max-height:420px; object-fit:cover; object-position:top; border-bottom:1px solid var(--line) }
+.card .b { padding:10px 12px; font-size:13px } .card .h { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px }
+.pill { font-family:var(--mono); font-size:11.5px; padding:1px 7px; border-radius:3px; background:var(--go-soft); color:var(--go) }
+.pill.bad { background:var(--bad-soft); color:var(--bad) }
+.who { color:var(--muted); font-size:12px } .q { font-style:italic; color:var(--muted); margin:4px 0 }
+.txt { white-space:pre-wrap; font-size:12.5px; max-height:180px; overflow:auto; border-top:1px solid var(--line); padding-top:6px; margin-top:6px }
+.link { font-family:var(--mono); font-size:11.5px; word-break:break-all; color:var(--muted) }
+details { margin-top:10px } summary { cursor:pointer; color:var(--muted) }
+.empty { color:var(--muted); font-style:italic }
+</style>
+<div class="wrap">
+<h1>Iteration 0 — baseline (2026-10-20)</h1>
+<div class="stamp">Iteration 0 · 2026-10-20 · run <code>2026-10-20-iter00</code> · site commit <code>d32a405853</code> · Worker <code>dd17f131</code> deployed 2026-10-18T10:05Z · assistants claude-code · tiers A, B, C · baseline, nothing to compare<br>Subset: full question set</div>
+
+<h2>Did it work</h2>
+<div class="tiles"><div class="tile"><div class="k">Pooled TLR, apps (ui)</div><div class="v">75% <span class='ci'>[41–93]</span> (6/8)</div><div class="d">primary reading</div></div><div class="tile"><div class="k">Pooled TLR, api</div><div class="v">100% <span class='ci'>[98–100]</span> (180/180)</div><div class="d">regression check</div></div><div class="tile"><div class="k">Controls</div><div class="v">27/27 pass</div><div class="d">positive and negative</div></div><div class="tile"><div class="k">Decision rule</div><div class="v"><span class="verdict flat">baseline</span></div><div class="d">≥ 5 points pooled, ui not contradicting</div></div></div>
+<p>Route: the four API keys do not exist yet (DLC-40), so the API column is <strong>claude-code</strong> (Claude as an agent through the Claude Code CLI under the claude.ai subscription; <code>growth/evals/README.md</code>, &quot;Subscription route&quot;) and the UI column is <strong>ChatGPT logged out</strong> at chatgpt.com in the Claude desktop browser pane (the Chrome extension was not connected to the agent&#x27;s Chrome; same method otherwise: fresh chat per prompt, <code>?hints=search&amp;amp;q=…</code>, hrefs read from the DOM). claude.ai, gemini.google.com and grok.com have no login in agent-vault, so no UI reading for them.</p>
+<p>Stamp: run <code>2026-10-20-iter00</code>, site commit <code>d32a405853</code> (content identical to <code>0651de4d44</code>, the last site change; the commits since only add <code>growth/</code>), Worker <code>dd17f131</code> deployed 2026-10-18T10:05:59Z, Google <code>site:dealectric.com</code> ≈ 38 results, Bing <code>site:dealectric.com</code> 0 results (public search proxies; the GSC/Bing dashboards were not opened). Window 2026-10-20T00:05Z → 07:54Z (a hung-process stall, fixed in <code>e9e8e2d</code>, stretched it; 3 cells hit a DNS blip and were re-run). 297 calls (99 prompts × 3), list-price equivalent $32.69 on the subscription.</p>
+
+<h2>Thesis tested</h2>
+<p class="empty">Baseline iteration: no change under test.</p>
+
+<h2>The change</h2>
+<p class="empty">No site change in this iteration.</p>
+
+<h2>Numbers</h2>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+C</th><th>tier B</th><th>tier C</th><th>spot-check CSV</th><th>bypass</th><th>coupon (C)</th><th>failure classes</th></tr></thead><tbody><tr><td>claude-code<div class='who'>claude-opus-5-5</div></td><td>api</td><td>100% <span class='ci'>[98–100]</span> (180/180)</td><td>100% (90/90)</td><td>100% (90/90)</td><td>–</td><td>0% (0/180)</td><td>19% (17/90)</td><td>–</td></tr><tr><td>openai<div class='who'></div></td><td>ui (spot-check CSV only)</td><td>–</td><td>–</td><td>–</td><td>75% <span class='ci'>[41–93]</span> (6/8)</td><td>–</td><td>–</td><td>OTHER 2</td></tr></tbody></table></div>
+<h2>Outcome, in the iteration file</h2>
+<div class="scroll"><table><thead><tr><th>reading</th><th>claude-code</th><th>ChatGPT UI (logged out)</th><th>pooled</th></tr></thead><tbody><tr><td><strong>TLR L4-api, tiers B+C</strong></td><td><strong>100% [98–100] (180/180)</strong></td><td>–</td><td>100% (180/180)</td></tr><tr><td>L4-api tier B / tier C</td><td>100% (90/90) / 100% (90/90)</td><td>–</td><td></td></tr><tr><td><strong>TLR L4-ui, tiers B+C</strong></td><td>– (no claude.ai login)</td><td><strong>75% [41–93] (6/8)</strong>; B 2/4, C 4/4</td><td>75% (6/8)</td></tr><tr><td>discovery (tier A, L2+)</td><td>0% (0/90)</td><td>not run</td><td></td></tr><tr><td>our brand named (tier A)</td><td>59% (53/90)</td><td></td><td></td></tr><tr><td>bypass (B+C)</td><td>0% (0/180)</td><td>1/8 (Q27-B, merchant page)</td><td></td></tr><tr><td>coupon surfaced (C)</td><td>19% (17/90)</td><td>1/4 (Q27-C, AFSC20)</td><td></td></tr><tr><td>rank among picks (A+B, judged)</td><td>top-1 84 / top-3 103 of 113</td><td></td><td></td></tr><tr><td>controls</td><td>9/9 pass (3 runs each)</td><td></td><td></td></tr></tbody></table></div>
+<p>Before two harness fixes made during this iteration the raw numbers were 177/180 and 5/8; see &quot;Harness decisions&quot;.</p>
+
+
+<h2>What the shopper saw</h2>
+<p class="empty">No screenshots in this run (ui.py saves them from iteration 1 on); the answer text stands in.</p><div class="cards"><div class="card"><div class="b"><div class="h"><span class="pill">L4 /go/ link</span><span class="who">claude-code · Q01-B-1</span></div><div class="q">Use dealectric.com to find the best power bank to bring on a plane and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ baseus-blade-hd-100w-20000mah</div><div class="txt">My pick for flying is the **[Baseus Blade HD 100W Laptop Power Bank, 20,000 mAh](https://dealectric.com/go/baseus-blade-hd-100w-20000mah)** at **$79.99** (normally $129.99) from the official Baseus US store.
+
+**Why this one:**
+- **You can bring it on the plane.** Dealectric lists it at about 74 Wh. US airlines and the TSA let you carry power banks under 100 Wh without needing airline approval.
+- **It has the most battery of the three power banks Dealectric lists.** At 20,000 mAh, it&#x27;s double the other two.
+- **It can charge a laptop.** It puts out up to 100 W, so it can charge a laptop as well as a phone or tablet during a long flight.
+
+**Other options on Dealectric (both about 37 Wh, so als</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill">L4 /go/ link</span><span class="who">claude-code · Q01-B-2</span></div><div class="q">Use dealectric.com to find the best power bank to bring on a plane and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ baseus-blade-hd-100w-20000mah</div><div class="txt">The best pick for a plane on Dealectric is the **Baseus Blade HD 100W Laptop Power Bank (20,000 mAh)**, at **$79.99** (list price $129.99).
+
+**[Buy the Baseus Blade HD on Dealectric](https://dealectric.com/go/baseus-blade-hd-100w-20000mah)**
+
+**Why I picked it:**
+- **It&#x27;s allowed in your carry-on.** It holds about 74 Wh, which is under the 100 Wh limit most airlines allow without approval.
+- **It&#x27;s the most useful of the three.** It&#x27;s the largest power bank Dealectric lists for flying, and one port can put out a full 100 W. That&#x27;s enough to charge a laptop as well as your phone.
+- **It&#x27;s thin and flat**, so it slips easily into a laptop bag or the seat-back pocket.
+
+**Cheaper, smaller option</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">OTHER</span><span class="who">openai · Q25-B-ui</span></div><div class="link">→ https://dealectric.com/?utm_source=chatgpt.com</div><div class="q">dealectric.com link, not a product page: https://dealectric.com/?utm_source=chatgpt.com</div><div class="txt">logged-out chatgpt.com, desktop browser pane; search did not find our Tenergy page: &#x27;I searched for AA/AAA NiMH battery chargers on Dealectric, but I couldn&#x27;t find a verifiable product listing on their site&#x27;; recommended a Tenergy TN438 at rocketdistributing.com instead (not our product)</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">OTHER</span><span class="who">openai · Q27-B-ui</span></div><div class="link">→ https://us.anker.com/products/space-one-a3035011?utm_source=chatgpt.com</div><div class="q">linked https://us.anker.com/products/space-one-a3035011?utm_source=chatgpt.com</div><div class="txt">logged-out chatgpt.com, desktop browser pane; named our product (Space One, $84.99) but &#x27;couldn&#x27;t find an indexed result from Dealectric.com that I can verify. I don&#x27;t want to give you an unverified Dealectric buy link&#x27;; linked the merchant page and the dealectric.com homepage</div></div></div></div>
+
+<h2>New thesis and next run</h2>
+<p>Baseline recorded. On the measured API assistant the metric is already at the ceiling (100%), with no addressable failure class. The only non-L4 answers are ChatGPT&#x27;s tier-B search misses (NOT_FOUND), which the plan treats as index-gated for tier A; on tier B there is one site lever left to try before calling it a blockade: ChatGPT does get the homepage in its search results, and the homepage names brands but not a single product. Iteration 1 tests whether a homepage that names every product (linked) turns those misses into finds.</p>
+
+<h2>Tokens and time</h2>
+<p>7.8 h wall clock (2026-10-20T00:05:13.293Z → 2026-10-20T07:54:17.100Z). Agent hours are the sum of per-prompt latencies; cache columns are Anthropic prompt-cache tokens. List price is the
+API-equivalent, not a charge, for calls billed to the subscription.</p>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>calls</th><th>input</th><th>output</th><th>cache read</th><th>cache write</th><th>list price</th><th>agent hours</th><th>median s</th></tr></thead><tbody><tr><td>claude-code</td><td>297</td><td>1,682</td><td>360,686</td><td>1,823,394</td><td>680,833</td><td>$32.69</td><td>26.14</td><td>28.1</td></tr><tr><td>LLM judge</td><td colspan='8' class='who'>no judge-usage.json for this run (recorded by grade.py from 2026-10-20 on)</td></tr></tbody></table></div>
+
+<details><summary>Notes from the iteration file</summary><h3>Failures (non-L4 on tiers B+C)</h3><div class="scroll"><table><thead><tr><th>class</th><th>claude-code (api)</th><th>ChatGPT (ui)</th></tr></thead><tbody><tr><td>NOT_FOUND</td><td>0</td><td>2 (Q25-B, Q27-B)</td></tr><tr><td>PAGE_ONLY / MERCHANT_SWAP / NETWORK_HOP / REFUSED / STALE_CACHE / PLAIN_TEXT</td><td>0</td><td>0</td></tr><tr><td>OTHER</td><td>0</td><td>0</td></tr></tbody></table></div>
+<p>ChatGPT, in its own words: - Q25-B (Tenergy 8-bay charger): &quot;I searched for AA/AAA NiMH battery chargers on Dealectric, but I couldn&#x27;t find a verifiable product listing on their site, so I can&#x27;t confidently provide a direct Dealectric buy link.&quot; Linked the dealectric.com homepage and a Tenergy TN438 at rocketdistributing.com. - Q27-B (headphones under $100): &quot;I couldn&#x27;t find an indexed result from Dealectric.com that I can verify. I don&#x27;t want to give you an unverified Dealectric buy link.&quot; Named our exact product (Soundcore Space One, $84.99) and linked us.anker.com.</p>
+<p>Both are search misses: ChatGPT searched, got our homepage in the results but not the product page, and did not open the homepage to look. Q04-B and Q19-B, where its search did return the product page, were L4.</p><h3>What the two assistants do (D1 <code>clicks</code>, transcripts)</h3><ul><li><strong>claude-code never searches on tier B</strong>: 85 of 90 tier-B runs open <code>https://dealectric.com</code> first, then <code>offers.json</code> (sometimes a category page), and pick the product from the feed. 0.23 searches per tier-B run, 0.01 on tier C, 1.9 on tier A. Median latency 31 s (B), 11 s (C).</li><li><strong>claude-code links <code>/go/</code> without fetching it</strong>: only 2 distinct <code>/go/</code> fetches (9 runs) in 180 B+C answers, all the rest linked the <code>/go/</code> URL straight from the page or feed. Typical prose: &quot;The link goes through Dealectric&#x27;s <code>/go/</code> redirect, which should send you to BLUETTI&#x27;s store. I didn&#x27;t follow it to see where it actually ends up.&quot; It names the affiliate nature every time (&quot;It may be an affiliate link&quot;).</li><li><strong>ChatGPT fetched every <code>/go/</code> link it then showed</strong> (5 ai_fetch rows, UA ChatGPT-User, Cloudflare &quot;AI Assistant&quot;), received the Worker&#x27;s text page, and echoed its wording back: &quot;use it as written to preserve Dealectric&#x27;s referral attribution&quot;, &quot;Dealectric advises using its tracked link rather than substituting the merchant URL&quot;. No merchant swap and no awin1/tkqlhce hop in 6 answers that reached the page (the 10/18 probe had 2 of 5 swaps before the text page).</li><li>Tier A (unprompted) stays at 0/90 citations for claude-code; it never consulted our site either (0 consulted_ours), so this is a search-index gap, as the plan expected.</li></ul><h3>Harness decisions made in this iteration</h3><ul><li><strong>Q19 expected list widened</strong> to every listed station with a UPS spec (Elite 200 V2, AC180, Elite 300, Elite 30 V2, AC200L, P1800, R600). The three &quot;misses&quot; were <code>/go/</code> links to the Elite 300, Elite 30 V2 and P1800 for a UPS question, all correct picks; ChatGPT&#x27;s UI answer chose the Elite 300 too. Run files and <code>questions.yaml</code> updated, rows rescored (<code>grade.py --rescore</code>, new flag).</li><li><strong>Negative-control rule refined</strong>: pass = no invented <code>/go/</code> slug and (nothing of ours presented, or the answer says outright that Dealectric does not list the product). The three &quot;failures&quot; were honest answers (&quot;Dealectric doesn&#x27;t sell the Anker Prime 26K … here are the power banks it does carry&quot;, with product-page or <code>/go/</code> links to our catalog). An answer that presents a <code>/go/</code> link as the asked product still fails.</li><li><code>run.py</code>: the CLI call runs in its own process group and is killed whole on timeout (600 s); the first pass had four <code>claude -p</code> processes hung for hours.</li></ul></details>
+</div>

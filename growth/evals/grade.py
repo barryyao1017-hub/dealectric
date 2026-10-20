@@ -273,11 +273,14 @@ class ApiJudge:
         if not (getattr(self.client, "api_key", None) or getattr(self.client, "auth_token", None)):
             raise RuntimeError("no ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN")
         self.model = model
+        self.usage: dict = {}
 
     def ask(self, system: str, user: str, schema: dict, max_tokens: int) -> dict | None:
         resp = self.client.messages.create(model=self.model, max_tokens=max_tokens, system=system,
                                            messages=[{"role": "user", "content": user}],
                                            extra_body={"output_config": {"effort": "low"}})
+        u = getattr(resp, "usage", None)
+        E.add_usage(self.usage, {k: getattr(u, k, 0) for k in E.USAGE_KEYS} if u else {})
         return _json_reply(resp)
 
 
@@ -290,9 +293,10 @@ class CliJudge:
         if not E.claude_cli_login():
             raise RuntimeError("claude CLI not installed or not logged in")
         self.model = model
+        self.usage: dict = {}
 
     def ask(self, system: str, user: str, schema: dict, max_tokens: int) -> dict | None:
-        return E.claude_cli_json(system, user, self.model, schema)
+        return E.claude_cli_json(system, user, self.model, schema, usage=self.usage)
 
 
 def make_judge(kind: str, model: str):
@@ -522,6 +526,15 @@ def main() -> int:
               flush=True)
     for row in rows:
         row.pop("_text", None)
+    if judge and judge.usage.get("calls"):
+        # Token accounting for the LLM passes, summed over every grade.py run on this run id (the iteration report reads it).
+        up = rdir / "judge-usage.json"
+        acc = E.read_json(up) if up.exists() else {}
+        for k, v in judge.usage.items():
+            acc[k] = round(acc.get(k, 0) + v, 6) if isinstance(v, float) else acc.get(k, 0) + v
+        acc.update({"model": args.judge_model, "backend": judge.name, "updated_at": E.now_iso()})
+        E.write_json(up, acc)
+        print(f"LLM passes: {judge.usage['calls']} calls this run; totals in {up.name}")
 
     with open(grades_path, "w", encoding="utf-8") as f:
         for row in rows:

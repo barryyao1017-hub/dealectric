@@ -72,7 +72,16 @@ Guardrails, every iteration: `rel="sponsored nofollow"` and the disclosure page 
 5. **Evaluate again** (= step 1 of the next iteration). Compare with the previous iteration.
 6. **Decide**: improvement → keep, continue. Drop of ≥ 5 points → revert the change before anything else, note it as a negative result. Flat → keep the change only if it cost nothing in other metrics, continue.
 
-Each iteration gets `growth/evals/loop/iter-NN.md`: numbers (per assistant and pooled, with intervals), failure table, hypothesis, change, outcome, decision. A one-line row is appended to `growth/evals/loop/LOOP.md`.
+7. **Report** (Barry, 2026-10-20): when the re-evaluation is graded, build the iteration report page with
+   `python3.12 growth/evals/iterreport.py --iteration N`, publish `growth/evals/loop/reports/iter-NN/index.html` as the
+   artifact "Dealectric Loop · Iteration N" (screenshots in `shots/` go along as files), and put the artifact URL on the
+   first line of `iter-NN.md`. The page is the succinct read of the iteration: the thesis tested, whether the change worked
+   (pooled TLR before → after with the decision rule and control status), per-assistant numbers and failure classes, what
+   the shopper saw (the app screenshots `ui.py` saves, the answer text where there is none), the new thesis and the next
+   run's change, tokens and time. The prose comes from `iter-NN.md`, read by its `##` headings (Diagnosis, Hypothesis,
+   Change, Re-evaluation, Decision), so write those sections and the page follows.
+
+Each iteration gets `growth/evals/loop/iter-NN.md`: numbers (per assistant and pooled, with intervals), failure table, hypothesis, change, outcome, decision. A one-line row is appended to `growth/evals/loop/LOOP.md`, and the report page above is published from it.
 
 ## 6. Stop conditions
 

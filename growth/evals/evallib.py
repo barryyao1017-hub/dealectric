@@ -294,7 +294,7 @@ def claude_cli_login() -> str | None:
         return None
 
 
-def claude_cli_json(system: str, user: str, model: str, schema: dict, timeout: int = 180) -> dict | None:
+def claude_cli_json(system: str, user: str, model: str, schema: dict, timeout: int = 180, usage: dict | None = None) -> dict | None:
     """One no-tools `claude -p` call that must answer with JSON matching `schema`; the LLM judge uses it when there
     is no Anthropic API key. Returns the parsed object or None."""
     exe = claude_cli()
@@ -309,6 +309,8 @@ def claude_cli_json(system: str, user: str, model: str, schema: dict, timeout: i
         raise RuntimeError(f"claude CLI returned no JSON (exit {p.returncode}): {(p.stderr or p.stdout)[-300]}")
     if d.get("is_error"):
         raise RuntimeError(f"claude CLI error: {str(d.get('result'))[:300]}")
+    if usage is not None:
+        add_usage(usage, d.get("usage") or {}, d.get("total_cost_usd"))
     out = d.get("structured_output")
     if out is None:
         raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", str(d.get("result") or "").strip())
@@ -317,6 +319,20 @@ def claude_cli_json(system: str, user: str, model: str, schema: dict, timeout: i
         except ValueError:
             return None
     return out if isinstance(out, dict) else None
+
+
+USAGE_KEYS = ("input_tokens", "output_tokens", "cache_read_input_tokens", "cache_creation_input_tokens")
+
+
+def add_usage(acc: dict, usage: dict, cost_usd: float | None = None) -> dict:
+    """Accumulate one call's token counts (Anthropic-shaped usage dict) and list-price cost into `acc`."""
+    acc["calls"] = acc.get("calls", 0) + 1
+    for k in USAGE_KEYS:
+        acc[k] = acc.get(k, 0) + int(usage.get(k) or 0)
+    cost = cost_usd if cost_usd is not None else usage.get("total_cost_usd_list")
+    if cost:
+        acc["total_cost_usd_list"] = round(acc.get("total_cost_usd_list", 0.0) + float(cost), 6)
+    return acc
 
 
 # ---------------------------------------------------------------- loop support (added 2026-10-19, growth/improvement-loop.md)

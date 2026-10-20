@@ -1,7 +1,9 @@
 # Tracked-link improvement loop — iteration log
 
 One row per iteration (growth/improvement-loop.md §5). Numbers are the pooled tracked-link rate on tiers B+C:
-L4-api from the harness run, L4-ui from the browser spot-check. Details in `iter-NN.md` next to this file.
+L4-api from the harness run, L4-ui from the browser spot-check. Details in `iter-NN.md` next to this file; each
+iteration's report page (built by `../iterreport.py`, published as the artifact "Dealectric Loop · Iteration N") is
+linked on the first line of its `iter-NN.md`.
 
 Iteration 0 ran on the subscription route: the API column was **claude-code** (Claude as an agent through the Claude
 Code CLI), the UI column a manual 8-prompt ChatGPT check. From iteration 1 (Barry, 2026-10-20: shoppers use the

@@ -17,6 +17,7 @@ PLAIN_TEXT, not L4). Start the browser first: uv --directory ~/Desktop/agent-vau
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import re
 import sys
@@ -36,6 +37,8 @@ APPS = {
     "chatgpt": {"model": "chatgpt.com logged-out, web search on", "ua_bucket": "openai"},
 }
 ANSWER_TIMEOUT = 180
+SHOT_MAX_H = 4000         # px; full-page screenshot of the finished chat, saved as <qid>-<tier>-<n>.jpg next to the run file
+SHOT_QUALITY = 70
 SETTLE_POLLS = 3          # consecutive 2 s polls with identical text before the answer counts as finished
 AD_RE = re.compile(r"[?&](oppref|olref)=|utm_source=oa\b", re.I)
 APP_HOST_RE = re.compile(r"^https?://([a-z0-9-]+\.)*(chatgpt\.com|openai\.com|oaiusercontent\.com)(/|$)", re.I)
@@ -103,7 +106,7 @@ def browser_ok() -> str | None:
 
 # ---------------------------------------------------------------- one prompt
 
-def ask_chatgpt(prompt: str) -> dict:
+def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
     url = "https://chatgpt.com/?hints=search&q=" + urllib.parse.quote(prompt, safe="")
     tab = Tab("about:blank")
     try:
@@ -131,16 +134,33 @@ def ask_chatgpt(prompt: str) -> dict:
         if not state or not state["answer"]:
             raise RuntimeError(f"no answer within {ANSWER_TIMEOUT}s (url {state['url'] if state else url})")
         finished = same >= SETTLE_POLLS
+        shot = screenshot(tab, shot_path) if shot_path else None
         links = [l for l in state["links"] if not APP_HOST_RE.match(l["href"]) and not AD_RE.search(l["href"])]
         cites = [{"url": l["href"], "title": l["text"], "source": "ui_href"} for l in links]
         return {"model": APPS["chatgpt"]["model"], "request": {"url": url, "method": "fresh tab, auto-submitted via ?q="},
                 "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
-                "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True,
+                "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
                 "notes": ["chatgpt.com logged out, agent Chrome via CDP, hrefs from the DOM"] + ([] if finished else ["answer still changing at timeout"]),
                 "latency_s": round(time.time() - t0, 1)}
     finally:
         tab.close()
+
+
+def screenshot(tab: Tab, path: Path) -> str | None:
+    """Full-page JPEG of the finished chat (capped at SHOT_MAX_H px), saved next to the run file for the iteration
+    report. Returns the file name, or None when the capture failed (the run file still counts)."""
+    try:
+        m = tab.call("Page.getLayoutMetrics")
+        cs = m.get("cssContentSize") or m.get("contentSize") or {}
+        clip = {"x": 0, "y": 0, "width": cs.get("width") or 1200, "height": min(cs.get("height") or 900, SHOT_MAX_H), "scale": 1}
+        r = tab.call("Page.captureScreenshot", format="jpeg", quality=SHOT_QUALITY, captureBeyondViewport=True, clip=clip)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(base64.b64decode(r["data"]))
+        return path.name
+    except Exception as e:  # noqa: BLE001
+        R.log(f"screenshot failed for {path.name}: {e}")
+        return None
 
 
 ASKERS = {"chatgpt": ask_chatgpt}
@@ -157,7 +177,7 @@ def run_cell(app: str, rec: dict, tier: str, n: int, prompt: str, run_id: str, s
               "prompt": prompt, "system": None, "expected": rec.get("expected", []), "primary": rec.get("primary"),
               "expect_domains": rec.get("expect_domains", []), "started_at": started, "stamp": stamp}
     try:
-        record.update(ASKERS[app](prompt))
+        record.update(ASKERS[app](prompt, out.with_suffix(".jpg")))
         record["error"] = None
     except Exception as e:
         record.update({"model": APPS[app]["model"], "request": None, "response": None, "text": "", "citations": [], "raw_citations": [],
