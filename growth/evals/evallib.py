@@ -29,9 +29,12 @@ NETWORK_HOSTS = {"awin1.com", "www.awin1.com", "tkqlhce.com", "www.tkqlhce.com",
 # openai/anthropic/gemini/xai go through the vendors' APIs (keys in env). claude-code is Claude as an agent through
 # the Claude Code CLI (`claude -p`, WebSearch + WebFetch), billed to the claude.ai subscription login; it stands in
 # for the Anthropic API route while the keys are missing (added 2026-10-19, see README "Subscription route").
-ASSISTANTS = ("openai", "anthropic", "gemini", "xai", "claude-code")
-# Which assistant's user agent a run file's fetches appear under in D1 (Claude Code's WebFetch is Claude-User).
-UA_ALIAS = {"claude-code": "anthropic"}
+# chatgpt (and later claude-ai, gemini-app, grok-app) are the consumer apps driven through the agent's Chrome by ui.py;
+# since 2026-10-20 they are the loop's primary reading (Barry: shoppers use the apps, not the APIs).
+ASSISTANTS = ("chatgpt", "claude-code", "openai", "anthropic", "gemini", "xai")
+# Which assistant's user agent a run file's fetches appear under in D1 (Claude Code's WebFetch is Claude-User;
+# the ChatGPT app fetches as ChatGPT-User).
+UA_ALIAS = {"claude-code": "anthropic", "chatgpt": "openai"}
 
 LEVEL_LABELS = {
     0: "L0 none",

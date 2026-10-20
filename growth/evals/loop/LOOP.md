@@ -3,10 +3,11 @@
 One row per iteration (growth/improvement-loop.md §5). Numbers are the pooled tracked-link rate on tiers B+C:
 L4-api from the harness run, L4-ui from the browser spot-check. Details in `iter-NN.md` next to this file.
 
-Route while the four API keys are missing (DLC-40): the API column is **claude-code** (Claude as an agent through the
-Claude Code CLI under the claude.ai subscription, see growth/evals/README.md); the UI column is **ChatGPT logged
-out** at chatgpt.com (no login needed). claude.ai, gemini.google.com and grok.com need logins that are not in
-agent-vault yet.
+Iteration 0 ran on the subscription route: the API column was **claude-code** (Claude as an agent through the Claude
+Code CLI), the UI column a manual 8-prompt ChatGPT check. From iteration 1 (Barry, 2026-10-20: shoppers use the
+apps) the **primary metric is chatgpt.com logged out, driven by `growth/evals/ui.py`** and recorded in the "pooled
+TLR ui" column; claude-code runs once per cell as a regression check ("api" column). claude.ai, gemini.google.com and
+grok.com join when their logins exist (DLC-40).
 
 | iteration | date | commit | pooled TLR api | pooled TLR ui | per-assistant TLR | change made | decision |
 |---|---|---|---|---|---|---|---|

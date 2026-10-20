@@ -177,6 +177,8 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
 
     click_ids = sorted({m.group(2) for u in network_links + merchant_links for m in [CLICK_ID_RE.search(u)] if m})
     refusal = REFUSAL_RE.search(text)
+    # App records (ui.py) score hyperlinks only; a /go/ URL that is in the visible text but not an <a href> is PLAIN_TEXT.
+    go_in_text = sorted(s for s in expected if re.search(r"dealectric\.com/go/" + re.escape(s) + r"(?![a-z0-9-])", text))
     st = rec.get("stamp") or {}
     return {
         "iteration": st.get("iteration"), "site_commit": st.get("site_commit"), "worker_version": st.get("worker_version"),
@@ -191,6 +193,7 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
         "domains_shown": domains_shown, "n_shown_urls": len(shown), "n_consulted_urls": len(consulted),
         "n_raw_citations": len(rec.get("raw_citations") or []),
         "control_pass": control_pass, "refusal_match": refusal.group(0) if refusal else None, "click_ids": click_ids,
+        "ui": bool(rec.get("ui")), "go_in_text": go_in_text,
     }
 
 
@@ -198,6 +201,8 @@ def classify_failure(row: dict, stale_ids: set[str]) -> tuple[str | None, str]:
     """(class, evidence) for a graded API row; (None, '') when the answer is L4."""
     if row["level"] == 4:
         return None, ""
+    if row.get("ui") and row.get("go_in_text"):
+        return "PLAIN_TEXT", "/go/ URL in the answer text but not a hyperlink: " + ", ".join(row["go_in_text"])
     reached = row["level"] >= 2 or row["consulted_ours"] or row.get("d1_fetched_slugs")
     if not reached:
         why = "no dealectric.com URL shown or consulted, no ai_fetch row"

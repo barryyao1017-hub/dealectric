@@ -2,6 +2,17 @@
 
 Goal: raise the share of assistant answers that render our tracked offer link, `https://dealectric.com/go/<slug>`, as a clickable link. In the eval ladder (`growth/evals/`) that is **L4**. The loop is: evaluate → diagnose the non-L4 answers → change the site → evaluate again, until the rate stops moving or a blockade is found. It ends with a transfer-learning report.
 
+## 0. Re-centred on the consumer apps (2026-10-20)
+
+Barry, 2026-10-20: shoppers use the consumer apps (chatgpt.com, claude.ai, gemini.google.com, grok.com), not the
+vendors' APIs, so the loop's **primary metric is the app reading**: `growth/evals/ui.py` drives each app in the
+agent's Chrome (DevTools protocol), one fresh chat per prompt, hyperlinks read from the DOM, and writes run files the
+grader scores like any assistant. The API route (`run.py` with vendor keys) is dormant; `claude-code` (Claude as an
+agent) runs once per cell as a regression check only. Iteration 0's API numbers stand as recorded. Apps are added as
+their logins arrive (DLC-40); until then the app column is chatgpt.com logged out, which runs a lighter model than
+signed-in users get and so is a floor. "L4-api" below now means the harness's automated reading of an app, and the
+manual browser spot-check (§2 "UI runs") is only needed where the driver has no adapter yet.
+
 ## 1. The metric
 
 **Tracked-link rate (TLR)** = share of answers at L4, measured on tiers **B** (named: "use dealectric.com …") and **C** (given URL). Tier A (unprompted) is gated by search indexing, which no site change in this loop can fix, so it is monitored, not optimized. Reported per assistant (ChatGPT, Claude, Gemini, Grok) and pooled.

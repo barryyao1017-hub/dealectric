@@ -44,7 +44,18 @@ plus 12 control cells per assistant.
 Not enabled on purpose: Anthropic's server-side refusal fallback. A fallback would answer with a different model
 and corrupt the per-assistant measurement; a refusal is recorded as `stop_reason: refusal` and graded as it is.
 
-## Subscription route: `claude-code` (no API key needed)
+## Consumer apps through the agent's Chrome: `ui.py` (the primary reading since 2026-10-20)
+
+`python3.12 growth/evals/ui.py --app chatgpt --loop --iteration N --n 2` asks each prompt in a fresh chatgpt.com chat
+(logged out, web search on via `?hints=search&q=`) in the agent's Chrome over the DevTools protocol (localhost:9222;
+start it with `uv --directory ~/Desktop/agent-vault run agent-vault browser`; needs `python3.12 -m pip install --user
+websocket-client`). It waits until the answer stops changing, records every `<a href>` in the answer as a citation
+(ad links dropped), and writes `runs/<run-id>/chatgpt/<qid>-<tier>-<n>.json` in run.py's format with `ui: true` and no
+`text_urls`, so grade.py scores hyperlinks only: a `/go/` URL shown as plain text is `PLAIN_TEXT`, not L4. The app
+fetches `/go/` as ChatGPT-User, mapped to the `openai` bucket in the D1 join. Other apps (claude.ai, gemini, grok)
+get an adapter each once their logins exist (DLC-40). About 12–40 s per prompt, sequential, `--pause 5` between.
+
+## Subscription route: `claude-code` (regression check only since 2026-10-20)
 
 Added 2026-10-20 because none of the four API keys existed yet (DLC-40). `claude-code` runs Claude as an agent through
 the Claude Code CLI, `claude -p`, billed to the claude.ai subscription login on this machine (`claude auth status`),
