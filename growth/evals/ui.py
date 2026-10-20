@@ -45,6 +45,16 @@ SETTLE_POLLS = 3          # consecutive 2 s polls with identical text before the
 AD_RE = re.compile(r"[?&](oppref|olref)=|utm_source=oa\b", re.I)
 APP_HOST_RE = re.compile(r"^https?://([a-z0-9-]+\.)*(chatgpt\.com|openai\.com|oaiusercontent\.com)(/|$)", re.I)
 BLOCK_RE = re.compile(r"verify you are human|too many requests|unusual activity|please log in to continue|sign up or log in to continue", re.I)
+# chatgpt.com's throttle notice after many chats in a row ("We're doing a quick check to keep ChatGPT reliable. Try
+# again in 13 minutes."): the driver sleeps that long and retries the cell instead of recording a failure.
+THROTTLE_RE = re.compile(r"try again in (\d+) (minute|hour|second)s?", re.I)
+THROTTLE_RETRIES = 3
+
+
+class Throttled(RuntimeError):
+    def __init__(self, wait_s: int, msg: str):
+        super().__init__(msg)
+        self.wait_s = wait_s
 
 READ_JS = r"""
 (() => {
@@ -58,9 +68,10 @@ READ_JS = r"""
   const composer = document.querySelector('#prompt-textarea, div.ProseMirror[contenteditable="true"]');
   const send = document.querySelector('button[data-testid="send-button"], button[aria-label="Send prompt"], button[aria-label="Send"]');
   const loggedIn = !!document.querySelector('button[aria-label="Open profile menu"]') && !document.querySelector('[data-testid="login-button"]');
+  const notice = (t.match(/[^\n]*(?:quick check|try again in \d+|reached (?:the|your) (?:message )?limit|limit reached|too many requests)[^\n]*/i) || [''])[0];
   const plan = (t.match(/\n(Free|Plus|Pro|Go|Business)\n/) || [])[1] || '';
   return JSON.stringify({streaming, answer, links, url: location.href, title: document.title, body_len: t.length,
-                         composer: composer ? (composer.innerText || '').trim().slice(0, 80) : null, send: !!send,
+                         composer: composer ? (composer.innerText || '').trim().slice(0, 80) : null, send: !!send, notice,
                          logged_in: loggedIn, plan, temporary: t.includes('Temporary chat')});
 })()
 """
@@ -155,6 +166,11 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                 continue
             if state["answer"] and BLOCK_RE.search(state["answer"][:400]):
                 raise RuntimeError(f"blocked: {state['answer'][:120]}")
+            if not state["answer"] and state.get("notice"):
+                m = THROTTLE_RE.search(state["notice"])
+                unit = {"minute": 60, "hour": 3600, "second": 1}[m.group(2).lower()] if m else 60
+                wait = int(m.group(1)) * unit if m else 300
+                raise Throttled(wait, f"throttled: {state['notice'][:140]}")
             if state["answer"] and not state["streaming"]:
                 same = same + 1 if state["answer"] == last else 0
                 last = state["answer"]
@@ -222,7 +238,16 @@ def run_cell(app: str, rec: dict, tier: str, n: int, prompt: str, run_id: str, s
               "prompt": prompt, "system": None, "expected": rec.get("expected", []), "primary": rec.get("primary"),
               "expect_domains": rec.get("expect_domains", []), "started_at": started, "stamp": stamp}
     try:
-        record.update(ASKERS[app](prompt, out.with_suffix(".jpg")))
+        for attempt in range(THROTTLE_RETRIES + 1):
+            try:
+                record.update(ASKERS[app](prompt, out.with_suffix(".jpg")))
+                break
+            except Throttled as t:
+                if attempt == THROTTLE_RETRIES:
+                    raise
+                R.log(f"{app}: {t}; waiting {t.wait_s + 30}s before retrying {rec['id']}-{tier}-{n}")
+                record.setdefault("throttle_waits", []).append({"at": E.now_iso(), "wait_s": t.wait_s + 30, "notice": str(t)})
+                time.sleep(t.wait_s + 30)
         record["error"] = None
     except Exception as e:
         record.update({"model": APPS[app]["model"], "request": None, "response": None, "text": "", "citations": [], "raw_citations": [],
