@@ -15,3 +15,4 @@ grok.com join when their logins exist (DLC-40).
 |---|---|---|---|---|---|---|---|
 | 0 | 2026-10-20 | d32a405853 | 100% (180/180) | 75% (6/8) | claude-code 100%; ChatGPT ui 75% | baseline, no change (harness: Q19 expected widened, negative-control rule, CLI process-group kill) | continue: homepage product index for ChatGPT's tier-B NOT_FOUND |
 | 1 | 2026-10-20 | efd82c6 (site) | claude-code 95% (19/20) | chatgpt signed-in 57% (32/56) | chatgpt B 30% / C 88%; claude-code 95% | home page names every product (price, summary, link) | flat: 0/4 on the re-asked misses, kept; app baseline set; next: Worker text page without the merchant URL |
+| 2 | 2026-10-20 | baf4298 (Worker 2a3bed54) | claude-code 90% (18/20) | chatgpt 60% (24/40) | chatgpt B 25% / C 95%; claude-code 90% | /go/ text page names the store, no store URL | flat (+2.9): merchant swaps 3→1, tier C 88→95; kept; next: product page names the /go/ URL as the buy link |
