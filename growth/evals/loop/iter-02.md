@@ -1,3 +1,5 @@
+Report: https://claude.ai/artifact/P2mVcFNi5sQCyNNyJ8Vzuf (built by `growth/evals/iterreport.py --iteration 2`)
+
 # Iteration 2 — the /go/ text page names the store, not its URL (2026-10-20)
 
 ## Diagnosis (from iteration 1)

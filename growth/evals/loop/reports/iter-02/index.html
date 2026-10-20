@@ -1,0 +1,135 @@
+<title>Dealectric Loop · Iteration 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root { --bg:#F5F7F8; --fg:#1A232C; --muted:#5A6875; --line:#C6CFD6; --panel:#FFFFFF; --accent:#B5551B; --accent-soft:#F6E4D6;
+  --go:#0E6F6E; --go-soft:#D9ECEA; --bad:#A33A2E; --bad-soft:#F6E0DC;
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F;
+  --panel:#192230; --accent:#E8914A; --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark } }
+:root[data-theme="dark"] { --bg:#111820; --fg:#E6ECF1; --muted:#98A6B4; --line:#34434F; --panel:#192230; --accent:#E8914A;
+  --accent-soft:#3A2A1C; --go:#4FB8B4; --go-soft:#173534; --bad:#E07B6E; --bad-soft:#3A1F1B; color-scheme:dark }
+body { background:var(--bg); color:var(--fg); font:15px/1.55 var(--sans); margin:0 }
+.wrap { max-width:960px; margin:0 auto; padding-block:28px 48px; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)) }
+h1 { font-size:26px; font-weight:600; margin:0 0 4px; letter-spacing:-0.01em; text-wrap:balance }
+h2 { font-size:13px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:600; margin:34px 0 10px; padding-top:14px; border-top:1px solid var(--line) }
+h3 { font-size:15px; font-weight:600; margin:16px 0 6px }
+p { margin:0 0 10px; max-width:78ch } ul { margin:0 0 10px; padding-left:20px } li { margin:2px 0 }
+.stamp { color:var(--muted); font-size:13.5px; margin-bottom:18px } .stamp code { font-size:12px }
+code { font-family:var(--mono); font-size:.9em; background:var(--accent-soft); padding:1px 5px; border-radius:3px }
+.ci { color:var(--muted); font-size:.85em }
+.tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin:0 0 6px }
+.tile { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:12px 14px; min-width:0 }
+.tile .k { font-size:11.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted) }
+.tile .v { font-size:22px; font-weight:600; font-variant-numeric:tabular-nums; margin-top:2px }
+.tile .d { font-size:13px; color:var(--muted) }
+.verdict { display:inline-block; padding:3px 10px; border-radius:4px; font-weight:600; font-size:13px; background:var(--go-soft); color:var(--go) }
+.verdict.bad { background:var(--bad-soft); color:var(--bad) } .verdict.flat { background:var(--accent-soft); color:var(--accent) }
+.scroll { overflow-x:auto } table { border-collapse:collapse; width:100%; font-size:13.5px; margin:0 0 12px }
+th,td { text-align:left; padding:6px 9px; border-bottom:1px solid var(--line); vertical-align:top; font-variant-numeric:tabular-nums }
+th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap }
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; min-width:0; display:flex; flex-direction:column }
+.card img { display:block; width:100%; max-height:420px; object-fit:cover; object-position:top; border-bottom:1px solid var(--line) }
+.card .b { padding:10px 12px; font-size:13px } .card .h { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:6px }
+.pill { font-family:var(--mono); font-size:11.5px; padding:1px 7px; border-radius:3px; background:var(--go-soft); color:var(--go) }
+.pill.bad { background:var(--bad-soft); color:var(--bad) }
+.who { color:var(--muted); font-size:12px } .q { font-style:italic; color:var(--muted); margin:4px 0 }
+.txt { white-space:pre-wrap; font-size:12.5px; max-height:180px; overflow:auto; border-top:1px solid var(--line); padding-top:6px; margin-top:6px }
+.link { font-family:var(--mono); font-size:11.5px; word-break:break-all; color:var(--muted) }
+details { margin-top:10px } summary { cursor:pointer; color:var(--muted) }
+.empty { color:var(--muted); font-style:italic }
+</style>
+<div class="wrap">
+<h1>Iteration 2 — the /go/ text page names the store, not its URL (2026-10-20)</h1>
+<div class="stamp">Iteration 2 · 2026-10-20 · run <code>2026-10-20-iter02</code> · site commit <code>e5fb933973</code> · Worker <code>2a3bed54</code> deployed 2026-10-18T10:43Z · assistants chatgpt · tiers A, B, C · compared with iteration 1 (run <code>2026-10-20-iter01</code>)<br>Subset: Q01=baseus-picogo-am52-qi2-2-10000mah-45w*, Q04=esr-halolock-magslim-qi2-power-bank-10000mah*, Q17=bluetti-elite-300, Q18=allpowers-p1800-1024wh*, Q21=allpowers-sp037-400w-solar-panel, Q22=bluetti-ac180*, Q23=tenergy-premium-pro-aa-2800mah-20-pack, Q24=tenergy-tn270-li-ion-18650-charger*, Q25=tenergy-tn480u-8-bay-nimh-charger*, Q29=soundcore-motion-x600</div>
+
+<h2>Did it work</h2>
+<div class="tiles"><div class="tile"><div class="k">Pooled TLR, apps (ui)</div><div class="v">60% <span class='ci'>[45–74]</span> (24/40)</div><div class="d">+2.9 pts vs iteration 1</div></div><div class="tile"><div class="k">Pooled TLR, api</div><div class="v">90% <span class='ci'>[70–97]</span> (18/20)</div><div class="d">-5.0 pts vs iteration 1</div></div><div class="tile"><div class="k">Controls</div><div class="v">27/27 pass</div><div class="d">positive and negative</div></div><div class="tile"><div class="k">Decision rule</div><div class="v"><span class="verdict flat">flat (under the 5-point rule)</span></div><div class="d">≥ 5 points pooled, ui not contradicting</div></div></div>
+
+
+<h2>Thesis tested</h2>
+<p>Lever 4 (Worker text page): name the brand&#x27;s store but print no store URL, and ask the assistant not to look one up. Expected: tier-C MERCHANT_SWAP 3/26 → ≤ 1/26 on chatgpt, +4 to +8 points on tier C, +2 to +4 pooled; no effect on tier B; no change for claude-code (links <code>/go/</code> without fetching it). Written before the re-evaluation.</p>
+<h2>Diagnosis it came from</h2>
+<p>chatgpt signed in (Free): tier C 88% (23/26), three MERCHANT_SWAP answers; tier B 30%, 18 NOT_FOUND that no page change addresses (search index). Two of the three tier-C swaps linked exactly the merchant URL that the Worker&#x27;s <code>/go/</code> text page printed in its prose while telling the assistant not to substitute it, and D1 shows ChatGPT fetched the <code>/go/</code> link in those chats. The product page carries no merchant URL (0 in its HTML); offers.json still does.</p>
+<h2>The change</h2>
+<p>Commit <code>baf4298</code> (<code>loop-2:</code>), Worker version <code>2a3bed54-cc1c-4d00-bdea-f337092fe67b</code> deployed 11:22Z. Verified: the text page for a ChatGPT-User fetch no longer contains the merchant domain; a browser fetch still gets the 302 with the sub-ID. Site files unchanged (no rebuild); links map unchanged.</p>
+
+<h2>Numbers</h2>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+C</th><th>tier B</th><th>tier C</th><th>spot-check CSV</th><th>bypass</th><th>coupon (C)</th><th>failure classes</th></tr></thead><tbody><tr><td>chatgpt<div class='who'>chatgpt.com, temporary chat, web search on</div></td><td>ui (app)</td><td>60% <span class='ci'>[45–74]</span> (24/40)</td><td>25% (5/20)</td><td>95% (19/20)</td><td>–</td><td>8% (3/40)</td><td>30% (6/20)</td><td>NOT_FOUND 11, PAGE_ONLY 3, MERCHANT_SWAP 1, OTHER 1</td></tr><tr><td>claude-code<div class='who'></div></td><td>api</td><td>90% <span class='ci'>[70–97]</span> (18/20)</td><td>80% (8/10)</td><td>100% (10/10)</td><td>–</td><td>0% (0/20)</td><td>30% (3/10)</td><td>PAGE_ONLY 2</td></tr></tbody></table></div>
+<h2>Outcome, in the iteration file</h2>
+<p>Frozen subset Q01, Q04, Q17, Q18, Q21, Q22, Q23, Q24, Q25, Q29 (the rotation has run out of never-fetched slugs; six of the ten were fetched by an assistant in the previous 7 days). chatgpt signed in (Free), temporary chats, 40 question chats on B+C plus 18 controls; claude-code once per cell.</p>
+<div class="scroll"><table><thead><tr><th>reading</th><th>chatgpt</th><th>claude-code</th><th>iteration 1</th></tr></thead><tbody><tr><td><strong>TLR tiers B+C</strong></td><td><strong>60% [45–74] (24/40)</strong></td><td>90% [70–97] (18/20)</td><td>57% (32/56) · 95% (19/20)</td></tr><tr><td>tier B</td><td>25% (5/20)</td><td>80% (8/10)</td><td>30% · 90%</td></tr><tr><td>tier C</td><td><strong>95% (19/20)</strong></td><td>100% (10/10)</td><td>88% · 100%</td></tr><tr><td>MERCHANT_SWAP (B+C)</td><td><strong>1</strong> (Q04-C-1)</td><td>0</td><td>3 · 0</td></tr><tr><td>PAGE_ONLY</td><td>3</td><td>2</td><td>2 · 1</td></tr><tr><td>NOT_FOUND</td><td>11</td><td>0</td><td>18 · 0</td></tr><tr><td>controls</td><td>18/18</td><td>9/9</td><td></td></tr></tbody></table></div>
+<p>Pooled chatgpt delta +2.9 points (<strong>flat</strong> under the 5-point rule; intervals overlap). The targeted class moved as predicted: tier-C merchant swaps 3/26 → 1/20, tier C 88% → 95%. The one remaining swap (Q04-C-1, ESR MagSlim) came after ChatGPT fetched both the product page and the new <code>/go/</code> text page (Cloudflare 13:24:36–37Z), so it took the store URL from its own search results, not from us.</p>
+<p>The three PAGE_ONLY answers are the next addressable class: in two of them (Q17-B-1 Tenergy T320, Q25-B-2 Tenergy TN480U) ChatGPT fetched the product page and its <code>/go/</code> link one second apart and still gave the product page as &quot;Dealectric&#x27;s buy link&quot;; in the third (Q01-B-1) it opened two product pages and linked both pages. The page&#x27;s own &quot;For AI assistants&quot; note sits at the bottom and says &quot;Present the link above to the shopper&quot;, which the assistant evidently reads as the page link. Tier B otherwise stays index-gated (11 NOT_FOUND: no product page in the search results, and the home page not opened). Q18-B-1 linked a bare <code>https://dealectric.com/go</code> (no slug), a first.</p>
+<p>claude-code 90% (two PAGE_ONLY, n=20) is within noise of 95% and 100%.</p>
+<h2>Run design</h2>
+<p>≥ 2 h after 11:22Z: <code>ui.py --app chatgpt --loop --iteration 2 --n 2</code> (new frozen subset, fresh slugs) and <code>run.py --assistants claude-code --loop --iteration 2 --n 1</code>. Compare tier-C MERCHANT_SWAP and TLR with iteration 1.</p>
+
+<h2>What the shopper saw</h2>
+<div class="cards"><div class="card"><img src="shots/chatgpt-Q01-B-1.jpg" alt="Screenshot of the chatgpt answer to Q01 tier B"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">chatgpt · Q01-B-1</span></div><div class="q">Use dealectric.com to find the best power bank to bring on a plane and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ baseus-blade-hd-100w-20000mah</div><div class="q">“Buy through Dealectric&#x27;s tracked offer at the manufacturer&#x27;s store.”</div></div></div><div class="card"><img src="shots/chatgpt-Q01-B-2.jpg" alt="Screenshot of the chatgpt answer to Q01 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q01-B-2</span></div><div class="q">Use dealectric.com to find the best power bank to bring on a plane and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div></div></div><div class="card"><img src="shots/chatgpt-Q04-C-1.jpg" alt="Screenshot of the chatgpt answer to Q04 tier C"><div class="b"><div class="h"><span class="pill bad">MERCHANT_SWAP</span><span class="who">chatgpt · Q04-C-1</span></div><div class="q">Open https://dealectric.com/esr-halolock-magslim-qi2-power-bank-10000mah and give me the verified price and the exact buy link Dealectric gives, as a clickable </div><div class="link">→ esr-halolock-magslim-qi2-power-bank-10000mah</div><div class="q">“Exact buy link provided by Dealectric: Buy at ESR →”</div></div></div><div class="card"><img src="shots/chatgpt-Q17-B-1.jpg" alt="Screenshot of the chatgpt answer to Q17 tier B"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">chatgpt · Q17-B-1</span></div><div class="q">Use dealectric.com to find a LiFePO4 portable power station and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ tenergy-t320-300wh-power-station</div><div class="q">“This is Dealectric’s verified tracked buy link, which redirects to Tenergy’s official US store.”</div></div></div><div class="card"><img src="shots/chatgpt-Q17-B-2.jpg" alt="Screenshot of the chatgpt answer to Q17 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q17-B-2</span></div><div class="q">Use dealectric.com to find a LiFePO4 portable power station and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div></div></div><div class="card"><img src="shots/chatgpt-Q18-B-1.jpg" alt="Screenshot of the chatgpt answer to Q18 tier B"><div class="b"><div class="h"><span class="pill bad">OTHER</span><span class="who">chatgpt · Q18-B-1</span></div><div class="q">Use dealectric.com to find a home backup power station under $1,000 and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ bluetti-elite-200-v2</div><div class="q">“I searched for a home backup power station under $1,000 on Dealectric.com, but the search didn’t return a verifiable Dealectric product listing. I don’t want to give you an unverified link and misrepresent it as Dealectric’s buy link.”</div></div></div><div class="card"><img src="shots/chatgpt-Q18-B-2.jpg" alt="Screenshot of the chatgpt answer to Q18 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q18-B-2</span></div><div class="q">Use dealectric.com to find a home backup power station under $1,000 and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ https://www.bluettipower.com/pages/portable-power-station/?utm_source=chatgpt.com</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div></div></div><div class="card"><img src="shots/chatgpt-Q21-B-1.jpg" alt="Screenshot of the chatgpt answer to Q21 tier B"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q21-B-1</span></div><div class="q">Use dealectric.com to find a 400W solar panel to recharge a 1000Wh power station and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div></div></div></div><h3>Without a screenshot (answer text and spot-check notes)</h3><div class="cards"><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q21-B-2</span></div><div class="q">Use dealectric.com to find a 400W solar panel to recharge a 1000Wh power station and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">no dealectric.com URL shown or consulted, no ai_fetch row</div><div class="txt">I searched for a 400W solar panel on Dealectric.com, but I couldn’t verify a matching product listing or a direct Dealectric buy link in the search results.
+
+For your 1,000Wh (1kWh) power station, a 400W panel is a reasonable choice, provided the station supports the panel’s voltage and connector specifications.
+
+400W portable solar panel — alternative
+
+Renogy 400W Lightweight Portable Solar Suitcase
+
+A foldable panel designed for portable power stations. Renogy lists a 400W model with MC4 connectors.
+
+View product and buy from Renogy 
+Renogy US
+
+Expected charging time: Under ideal conditions, a 400W panel could theoretically replenish 1,000Wh in 2.5 hours. In practice, allow roughly 3–5+ ho</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q22-B-2</span></div><div class="q">Use dealectric.com to find the BLUETTI AC180 and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ https://www.bluettipower.com/products/ac180?utm_source=chatgpt.com</div><div class="q">only the home page linked (search returned no product page)</div><div class="txt">I searched for the BLUETTI AC180 on Dealectric.com, but I couldn’t find a verified product listing or buy link on that site.
+
+You can try searching directly on Dealectric.com for the BLUETTI AC180 Portable Power Station.
+
+For reference, here’s the official BLUETTI AC180 product page.</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q23-B-2</span></div><div class="q">Use dealectric.com to find rechargeable AA batteries and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div><div class="txt">I searched for rechargeable AA batteries on Dealectric.com, but I couldn’t find an indexed product listing or verify a direct buy link on their website.
+
+You can try searching Dealectric directly here: Dealectric.com.
+
+I don’t want to give you an unverified purchase link. If you share the Dealectric product page or search results, I can identify the correct rechargeable AA batteries listing and provide its direct buy link.</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">NOT_FOUND</span><span class="who">chatgpt · Q24-B-1</span></div><div class="q">Use dealectric.com to find an 18650 battery charger and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="q">only the home page linked (search returned no product page)</div><div class="txt">I searched for an 18650 battery charger on Dealectric.com, but I couldn’t find a verified product listing or a direct buy link on that website.
+
+Here’s a compatible alternative from another retailer:
+
+XTAR VC4 4 Bay Digital LCD Battery Charger
+
+$18.99
+
+Sold by 18650BatteryStore.com
+
+A four-slot charger compatible with 18650 batteries.
+
+Buy from 18650 Battery Store
+
+You can also visit Dealectric.com directly to check its current catalog.
+
+I can’t confirm that Dealectric sells this charger, so I don’t want to give you an unverified purchase link.</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">claude-code · Q01-B-1</span></div><div class="q">Use dealectric.com to find the best power bank to bring on a plane and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ baseus-blade-hd-100w-20000mah</div><div class="q">product page linked: baseus-blade-hd-100w-20000mah, baseus-picogo-am52-qi2-2-10000mah-45w, esr-halolock-magslim-qi2-power-bank-10000mah</div><div class="txt">For most travelers, the best pick on Dealectric is the **[Baseus Blade HD 100W Laptop Power Bank, 20,000 mAh – $79.99](https://dealectric.com/baseus-blade-hd-100w-20000mah)**.
+
+**Why it&#x27;s the best for flying:**
+- **It&#x27;s allowed on planes.** 20,000 mAh works out to about 72–74 Wh. The FAA lets you carry power banks under 100 Wh without airline approval.
+- **It&#x27;s the biggest of the three.** It can recharge a phone several times or add a good amount of charge to a laptop.
+- **It can charge a laptop.** Its 100 W output handles most laptops, tablets and phones, so one bank covers all your devices.
+- **It&#x27;s thin and flat**, so it fits easily in a laptop sleeve or backpack.
+
+**Other options on Deal</div></div></div><div class="card"><div class="b"><div class="h"><span class="pill bad">PAGE_ONLY</span><span class="who">claude-code · Q18-B-1</span></div><div class="q">Use dealectric.com to find a home backup power station under $1,000 and give me Dealectric&#x27;s buy link as a clickable link.</div><div class="link">→ bluetti-elite-200-v2</div><div class="q">“Dealectric earns a commission when you buy through its link, at no extra cost to you.”</div><div class="txt">My pick for home backup under $1,000 on Dealectric is the **BLUETTI Elite 200 V2 at $899**.
+
+**Buy it here: [BLUETTI Elite 200 V2 on Dealectric](https://dealectric.com/go/bluetti-elite-200-v2)**
+
+**Why this one:**
+- **2,073.6 Wh battery.** It uses LiFePO4 cells, rated for 6,000+ cycles before dropping to 80%. Dealectric says it can run a fridge, router and lights for a day or two.
+- **2,600 W continuous output** (3,900 W &quot;Power Lifting&quot; mode), with 4 AC outlets. That&#x27;s enough for most kitchen appliances.
+- **UPS switchover of 15 ms or less,** so it takes over from the wall when the power goes out.
+- **Fast recharging:** 1,800 W from the wall gets it to 80% in about 1.1 hours. It also takes u</div></div></div></div>
+
+<h2>New thesis and next run</h2>
+<p>Flat, kept (no cost, targeted class improved). Second flat iteration in a row.</p>
+<p>Iteration 3: <strong>lever 1, product page wording and placement</strong>: name the <code>/go/</code> URL on the page as &quot;the buy link to give the shopper&quot;, state it in text next to the offer (not only as the button&#x27;s href) and move the assistant note up to the offer block, so an assistant that reads the page cannot mistake the page URL for the buy link. Expected: PAGE_ONLY on tier B 3/20 → ≤ 1/20, +5 to +10 points on tier B, +3 to +5 pooled. If flat, the plateau rule (three flat iterations) stops the loop, with tier B&#x27;s NOT_FOUND class declared a blockade (search index) and tier C at or above 90% on both the app and the agent reading.</p>
+
+<h2>Tokens and time</h2>
+<p>0.4 h wall clock (2026-10-20T13:22:58.175Z → 2026-10-20T13:47:07.857Z). Agent hours are the sum of per-prompt latencies; cache columns are Anthropic prompt-cache tokens. List price is the
+API-equivalent, not a charge, for calls billed to the subscription.</p>
+<div class="scroll"><table><thead><tr><th>assistant</th><th>calls</th><th>input</th><th>output</th><th>cache read</th><th>cache write</th><th>list price</th><th>agent hours</th><th>median s</th></tr></thead><tbody><tr><td>chatgpt</td><td>58</td><td colspan='5' class='who'>consumer app, no token accounting</td><td>0.26</td><td>14.9</td></tr><tr><td>claude-code</td><td>29</td><td>166</td><td>30,462</td><td>159,029</td><td>73,635</td><td>$2.68</td><td>0.2</td><td>23.2</td></tr><tr><td>LLM judge<div class='who'>claude-sonnet-5-5 via claude CLI (subscription)</div></td><td>34</td><td>68</td><td>4,236</td><td>21,339</td><td>87,066</td><td>$0.39</td><td>–</td><td>–</td></tr></tbody></table></div>
+
+
+</div>
