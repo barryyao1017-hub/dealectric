@@ -220,6 +220,27 @@ def products_index():
     return ("Products — normalized specs and verified offers", f"{len(PRODUCTS)} electronics products with normalized specs and verified offers from {len(brands)} brands.", body, ld)
 
 
+def product_index_html():
+    """Every product by category, for the home page: name linked to its page, verified price, one-line summary.
+    Added 2026-10-20 (improvement loop, iteration 1): assistants that search for a product by use case get the home
+    page in their results but not the product page, and the home page named only brands, so they reported that we
+    do not list the product. Same data as offers.json and the products page."""
+    by_cat = {}
+    for p in PRODUCTS:
+        by_cat.setdefault(p["category"], []).append(p)
+    out = []
+    for cat, (cname, _) in CATEGORIES.items():
+        items = by_cat.get(cat)
+        if not items:
+            continue
+        lis = "".join(
+            f'<li><a href="/products/{p["slug"]}/">{html.escape(p["name"] if p["name"].lower().startswith(p["brand"].lower()) else p["brand"] + " " + p["name"])}</a>'
+            f' — {money(p["price"]) if p["price"] is not None else "see merchant"}. {html.escape(p["summary"])}</li>'
+            for p in items)
+        out.append(f"<h3>{html.escape(cname)}</h3><ul>{lis}</ul>")
+    return "".join(out)
+
+
 INDEXNOW_KEY = "dlc-31c73feed521769132773e90e1732d25"
 
 
@@ -239,6 +260,7 @@ def main():
     open(os.path.join(out, ".well-known", SITE["descriptor"]), "w").write(json.dumps(WELL_KNOWN(SITE), indent=2))
     open(os.path.join(out, ".nojekyll"), "w").write("")
     urls = []
+    SITE["product_index_html"] = product_index_html()
     pages = PAGES(SITE)
     pages["/products/"] = products_index()
     for p in PRODUCTS:

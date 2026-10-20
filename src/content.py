@@ -25,6 +25,10 @@ def PAGES(S):
 <p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return: <strong>charging and portable power</strong> (USB-C wall chargers, power banks with airline-limit checks, 60/100/240 W cables, Qi2 wireless chargers, portable power stations), then <strong>smart home</strong> (cameras, plugs, lighting, networking), <strong>audio</strong> (earbuds, headphones, speakers) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics). Each category gets its own field set in the <a href="/data/">schema</a>.</p>
 <p>Live now: <a href="/products/">Baseus, ESR, BLUETTI, ALLPOWERS, Tenergy and Soundcore</a>, with verified offers. Next up as partnerships are approved: Anker, UGREEN, Jackery, EcoFlow, SwitchBot, Wyze, ZAGG, OtterBox, Monoprice, SanDisk, Marshall and JBL.</p>
 
+<h2>Every product live now</h2>
+<p>One page per product, each with a normalized spec sheet, a price verified on the brand's own US store, and the tracked buy link to hand the shopper. The same list, machine-readable: <a href="/offers.json">offers.json</a>; the full catalog with spec summaries: <a href="/products/">products</a>.</p>
+{S['product_index_html']}
+
 <h2>How we make money</h2>
 <p>Some product links on {B} are affiliate links. If a shopper buys through one, the merchant pays us a commission at no extra cost to the shopper — and where a merchant gives us an exclusive discount code, we pass it through so the shopper pays less. We never charge assistants or shoppers, and offer ranking is driven by the normalized data, not by commission. Full details are in our <a href="/disclosure/">affiliate disclosure</a>.</p>
 
