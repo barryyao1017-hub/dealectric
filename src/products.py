@@ -227,7 +227,7 @@ PRODUCTS = [
  "warranty": "Up to 5 years (site-wide statement)", "returns": "Per ALLPOWERS policy",
  "summary": "A 1 kWh LiFePO4 station with an 1,800 W inverter and a 140 W USB-C port at a sharply discounted price.",
  "fit": "Budget-conscious buyers who want BLUETTI AC180-class output for less.",
- "caveats": ["Cycle rating is to 70% capacity, not the usual 80%.", "ALLPOWERS' regional pages disagree on some figures (UPS, cycles); US page values used.", "Use code ALLPOWERS26 for 10% off sitewide (through 2026-12-30)."]},
+ "caveats": ["Cycle rating is to 70% capacity, not the usual 80%.", "ALLPOWERS' regional pages disagree on some figures (UPS, cycles); US page values used."]},
 
 {"slug": "allpowers-r600-299wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R600 Portable Power Station, 299 Wh, 600 W", "model": "R600",
@@ -249,7 +249,7 @@ PRODUCTS = [
  "warranty": "5 years; 30-day money-back", "returns": "30 days",
  "summary": "A 2,400 W inverter in a 13 kg unit — light for its output because it uses NMC cells, which also means fewer cycles than LiFePO4 rivals.",
  "fit": "Occasional high-draw use (tools, kettles) where weight matters more than cycle life.",
- "caveats": ["NMC chemistry: ~2,500 cycles vs 3,000–6,000 for LiFePO4.", "Solar input figure is inconsistent on the official page.", "Use code ALLPOWERS26 for 10% off (through 2026-12-30)."]},
+ "caveats": ["NMC chemistry: ~2,500 cycles vs 3,000–6,000 for LiFePO4.", "Solar input figure is inconsistent on the official page."]},
 
 {"slug": "allpowers-r4000-3456wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R4000 Portable Power Station, 3,456 Wh, 3,600 W", "model": "R4000",
@@ -260,7 +260,7 @@ PRODUCTS = [
  "warranty": "5 years", "returns": "Per ALLPOWERS policy",
  "summary": "ALLPOWERS' largest US unit: 3.5 kWh and 3,600 W, shipped from a US warehouse at well under BLUETTI's per-kWh price.",
  "fit": "Whole-circuit home backup or job sites; at 45 kg it is not portable in the hand-carry sense.",
- "caveats": ["Official page is inconsistent (4,000 W in the title vs 3,600 W in the spec table; 1 h vs 2 h recharge); conservative figures used.", "Use code ALLPOWERS26 for 10% off (through 2026-12-30)."]},
+ "caveats": ["Official page is inconsistent (4,000 W in the title vs 3,600 W in the spec table; 1 h vs 2 h recharge); conservative figures used."]},
 
 {"slug": "allpowers-sp037-400w-solar-panel", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
  "name": "ALLPOWERS SP037 400 W Foldable Solar Panel", "model": "SP037",
@@ -282,7 +282,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "Soundcore's flagship earbuds: dual drivers, adaptive ANC with a pressure sensor, LDAC and a wireless-charging case.",
  "fit": "Android users wanting LDAC and strong ANC under $150.",
- "caveats": ["Official page shows a '$40 off' badge without a list price.", "Use code AFSC20 for 20% off full-price items at soundcore.com (through 2026-12-31)."]},
+ "caveats": ["Official page shows a '$40 off' badge without a list price."]},
 
 {"slug": "soundcore-space-one-pro", "brand": "Soundcore", "program": "cj:soundcore", "category": "headphones",
  "name": "soundcore Space One Pro Over-Ear Headphones", "model": "A3062",
@@ -292,7 +292,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "Soundcore's top over-ears: 40-hour ANC battery, LDAC and a fold-flat design, undercutting Sony and Bose at $200.",
  "fit": "Long-haul travel and commuting where battery life matters.",
- "caveats": ["No IP rating.", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["No IP rating."]},
 
 {"slug": "soundcore-space-one", "brand": "Soundcore", "program": "cj:soundcore", "category": "headphones",
  "name": "soundcore Space One Noise Cancelling Headphones", "model": "A3035",
@@ -302,7 +302,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "The $100 Space One keeps the 40-hour ANC battery and LDAC of the Pro and gives up the fold-flat hinge and some ANC depth.",
  "fit": "Best-value ANC over-ears for office and travel.",
- "caveats": ["Not for workouts (no sweat resistance).", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["Not for workouts (no sweat resistance)."]},
 
 {"slug": "soundcore-aerofit-2", "brand": "Soundcore", "program": "cj:soundcore", "category": "earbuds",
  "name": "soundcore AeroFit 2 Open-Ear Earbuds", "model": "A3874",
@@ -312,7 +312,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "Open-ear buds for running and cycling that leave the ear canal clear, with LDAC and a 42-hour case.",
  "fit": "Runners and cyclists who need to hear traffic.",
- "caveats": ["Open-ear designs leak sound and have no isolation.", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["Open-ear designs leak sound and have no isolation."]},
 
 {"slug": "soundcore-boom-2-plus", "brand": "Soundcore", "program": "cj:soundcore", "category": "speaker",
  "name": "soundcore Boom 2 Plus Outdoor Speaker", "model": "A3134",
@@ -322,7 +322,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "A 140 W party speaker that floats, runs 20 hours and can charge a phone from its own battery.",
  "fit": "Backyards, beaches and boats.",
- "caveats": ["Heavy at 3.8 kg.", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["Heavy at 3.8 kg."]},
 
 {"slug": "soundcore-motion-x600", "brand": "Soundcore", "program": "cj:soundcore", "category": "speaker",
  "name": "soundcore Motion X600 Hi-Fi Portable Speaker", "model": "A3130",
@@ -332,7 +332,7 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "A living-room-grade portable with an upward-firing driver for height and LDAC input.",
  "fit": "Indoor listening and patio use where fidelity beats loudness.",
- "caveats": ["Slow 6-hour charge.", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["Slow 6-hour charge."]},
 
 {"slug": "soundcore-boom-3i", "brand": "Soundcore", "program": "cj:soundcore", "category": "speaker",
  "name": "soundcore Boom 3i Rugged Waterproof Speaker", "model": "D5100",
@@ -342,5 +342,5 @@ PRODUCTS = [
  "warranty": "18 months", "returns": "30-day money-back",
  "summary": "A sub-kilogram IP68 speaker built for kayaks and pools, with a siren and salt-spray rating.",
  "fit": "Water sports and travel.",
- "caveats": ["No fast charging or charge-out.", "Use code AFSC20 for 20% off full-price items (through 2026-12-31)."]},
+ "caveats": ["No fast charging or charge-out."]},
 ]

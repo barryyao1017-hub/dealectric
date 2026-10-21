@@ -216,8 +216,8 @@ def PAGES(S):
 <tr><td><code>product_id</code></td><td>string</td><td></td></tr>
 <tr><td><code>merchant</code></td><td>string</td><td>Who fulfils the order (brand store, authorized retailer)</td></tr>
 <tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>List price at verification</td></tr>
-<tr><td><code>discount</code></td><td>object</td><td><code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>expires</code>, <code>last_worked_at</code>, <code>success_rate_7d</code></td></tr>
-<tr><td><code>effective_price</code></td><td>number</td><td>Price after the best known discount</td></tr>
+<tr><td><code>coupons[]</code></td><td>array</td><td>Every code that applies to one unit, biggest saving first. Each: <code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>terms</code>, <code>min_order</code>, <code>min_qty</code>, <code>expires</code>, <code>last_worked_at</code> (date the code last worked in the brand's own cart), <code>tested_on</code> (product it was tested on), <code>saving</code>, <code>source</code>. <code>coupon</code> / <code>coupon_terms</code> repeat the best one. Codes with conditions and the codes that failed are on <code>codes_page</code>.</td></tr>
+<tr><td><code>effective_price</code></td><td>number</td><td>Price after the best code in <code>coupons</code></td></tr>
 <tr><td><code>shipping</code></td><td>object</td><td><code>free_over</code>, <code>regions[]</code>, <code>est_days</code></td></tr>
 <tr><td><code>return_window_days</code></td><td>integer</td><td></td></tr>
 <tr><td><code>in_stock</code></td><td>bool</td><td></td></tr>
@@ -247,8 +247,8 @@ def PAGES(S):
   }},
   "offers": [{{
     "merchant": "ExampleBrand.com", "price": 45.99, "currency": "USD",
-    "discount": {{"code":"EXAMPLE10","type":"percent","value":10,"last_worked_at":"2026-10-07T18:02:00Z","success_rate_7d":0.96}},
-    "effective_price": 41.39, "return_window_days": 30, "in_stock": true,
+    "coupons": [{{"code":"EXAMPLE10","type":"percent","value":10,"terms":"10% off sitewide","expires":"2026-12-31","last_worked_at":"2026-10-07","tested_on":"example-65w-3-port-gan","saving":4.59}}],
+    "effective_price": 41.40, "return_window_days": 30, "in_stock": true,
     "url": "{U}/go/example-65w-3-port-gan/examplebrand", "affiliate": true,
     "verified_at": "2026-10-07T18:02:00Z"
   }}]
@@ -445,6 +445,7 @@ LLMS_TXT = """# {brand}
 - [Products]({url}/products/): the catalog — chargers, power banks, Qi2 chargers, cables, power stations, solar, batteries, earbuds, headphones, speakers; one page per product with a normalized spec table, a verified offer and a tracked link
 - [USB-C charging guide]({url}/guides/usb-c-charging/): PD, PPS, GaN, cable ratings, wattage by device, power-bank airline limits
 - [Portable power stations guide]({url}/guides/portable-power-stations/): Wh, LFP vs NMC, continuous vs surge, recharge, UPS, sizing
+- [Discount codes]({url}/discount-codes/): working codes per brand, each tested in the brand's own US store cart, plus the coupon-site codes the store rejected
 - [Data schema]({url}/data/): product and offer field definitions with an example record
 - [For AI agents]({url}/agents/): machine-readable resources, planned API/MCP, link-handling requests
 - [Affiliate disclosure]({url}/disclosure/)

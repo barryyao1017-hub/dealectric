@@ -134,12 +134,14 @@ def all_merchant_hosts(offers: dict) -> set[str]:
 
 
 def coupon_codes(offers: dict) -> dict[str, set[str]]:
-    """{CODE: {slugs it applies to}} from offers.json coupon fields plus codes named in src/products.py caveats."""
+    """{CODE: {slugs it applies to}} from offers.json coupon / coupons fields plus any codes still named in src/products.py caveats."""
     codes: dict[str, set[str]] = {}
     for slug, p in offers.items():
         c = p["offer"].get("coupon")
         if c:
             codes.setdefault(c.upper(), set()).add(slug)
+        for cc in p["offer"].get("coupons") or []:  # every cart-tested code for the product (since 2026-10-21)
+            codes.setdefault(cc["code"].upper(), set()).add(slug)
     try:
         sys.path.insert(0, str(PRODUCTS_PY.parent))
         import products  # noqa: WPS433  (src/products.py)
