@@ -49,9 +49,12 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}footer
 footer a{color:var(--muted)}
 .small{font-size:14px;color:var(--muted)}
 dl dt{font-weight:600;margin-top:12px}dl dd{margin:2px 0 0 0;color:var(--muted)}
+img{max-width:100%;height:auto}figure{margin:18px 0}figure img{border:1px solid var(--line);border-radius:10px;display:block}
+.card img{border-radius:6px;margin-bottom:10px;display:block}
 """
 
-def page(path, title, desc, body, jsonld=None, noindex=False):
+def page(path, title, desc, body, jsonld=None, noindex=False, image=None):
+    image = image or SITE_IMAGE
     nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if h == path else ""}>{t}</a>' for h, t in NAV)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     canonical = SITE["url"] + path
@@ -65,6 +68,20 @@ def page(path, title, desc, body, jsonld=None, noindex=False):
 <link rel="canonical" href="{canonical}">{'<meta name="robots" content="noindex">' if noindex else ""}
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="{'product' if path.startswith('/products/') and path != '/products/' else 'website'}">
+<meta property="og:site_name" content="{SITE['brand']}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{image['url']}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="{image['width']}">
+<meta property="og:image:height" content="{image['height']}">
+<meta property="og:image:alt" content="{html.escape(image['alt'])}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{image['url']}">
+<meta name="twitter:image:alt" content="{html.escape(image['alt'])}">
+<link rel="image_src" href="{image['url']}">
 {VERIFY}
 {ld}
 </head>
@@ -99,6 +116,31 @@ DISCLOSURE = ('<p class="small">Affiliate link: if you buy through it, the merch
               '<a href="/disclosure/">Full disclosure</a>.</p>')
 # The sentence the agents and disclosure pages promise in every offer object, for an assistant to quote.
 DISCLOSURE_TEXT = "This is an affiliate link: Dealectric may earn a commission if you buy through it, at no extra cost to you."
+
+# Our own spec-card images (tools/images.py renders them into src/img/; the build copies them to /img/). The wide one
+# is the og:image link preview; the square one is first in the Product JSON-LD, the 1:1 ratio product listings want.
+IMG_SRC = os.path.join(os.path.dirname(__file__), "img")
+SITE_IMAGE = {"url": SITE["url"] + "/img/dealectric.png", "width": 1200, "height": 630,
+              "alt": "Dealectric: electronics specs and offers checked on each brand's US store"}
+
+
+def product_images(p):
+    """(wide, square) image dicts for a product; fails the build if tools/images.py hasn't rendered them."""
+    lead = ", ".join(v.split(";")[0] for k, v in p["specs"][:3])
+    alt = f"{p['name']}: {lead}. Dealectric spec card"
+    out = []
+    for suffix, w, h in (("", 1200, 630), ("-square", 1200, 1200)):
+        name = f"{p['slug']}{suffix}.png"
+        if not os.path.exists(os.path.join(IMG_SRC, name)):
+            raise SystemExit(f"missing src/img/{name}: run python3.12 tools/images.py {p['slug']}")
+        out.append({"url": SITE["url"] + "/img/" + name, "path": "/img/" + name, "width": w, "height": h, "alt": alt})
+    return out
+
+
+def image_ld(img, p):
+    return {"@type": "ImageObject", "contentUrl": img["url"], "url": img["url"], "width": img["width"], "height": img["height"],
+            "caption": img["alt"], "creditText": SITE["brand"], "creator": {"@type": "Organization", "name": SITE["brand"], "url": SITE["url"]},
+            "copyrightNotice": f"© {SITE['brand']}", "license": SITE["url"] + "/terms/", "acquireLicensePage": SITE["url"] + "/contact/"}
 
 
 def tracked_link(p):
@@ -195,6 +237,7 @@ def product_record(p):
         "id": p["slug"], "brand": p["brand"], "name": p["name"], "model": p["model"], "category": p["category"],
         # url and page are the same Dealectric product page; page is the explicit name, url is kept for older readers.
         "url": SITE["url"] + f"/products/{p['slug']}/", "page": SITE["url"] + f"/products/{p['slug']}/",
+        "image": product_images(p)[1]["url"], "image_wide": product_images(p)[0]["url"],
         "summary": p["summary"], "fit": p["fit"], "caveats": p["caveats"],
         "specs": {k: v for k, v in p["specs"]},
         "warranty": p["warranty"], "returns": p["returns"],
@@ -238,6 +281,7 @@ def product_page(p):
     _, net, prog = tracked_link(p)
     url = go_link(p)
     cat_name = CATEGORIES[p["category"]][0]
+    wide, square = product_images(p)
     rows = "".join(f"<tr><th>{html.escape(k)}</th><td>{html.escape(v)}</td></tr>" for k, v in p["specs"])
     caveats = "".join(f"<li>{html.escape(c)}</li>" for c in p["caveats"])
     price = money(p["price"]) if p["price"] is not None else "See merchant"
@@ -253,6 +297,8 @@ def product_page(p):
 <p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
 <h1>{html.escape(p['name'])}</h1>
 <p class="lead">{html.escape(p['summary'])}</p>
+<figure><img src="{wide['path']}" width="{wide['width']}" height="{wide['height']}" alt="{html.escape(wide['alt'])}">
+<figcaption class="small">{html.escape(short_name(p))} at a glance. Image: Dealectric; specs from {html.escape(p['brand'])}'s official product page.</figcaption></figure>
 
 <div class="card" style="margin:18px 0">
   <h3>Offer — verified {VERIFIED}</h3>
@@ -280,13 +326,14 @@ def product_page(p):
     rec = product_record(p)
     ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "brand": {"@type": "Brand", "name": p["brand"]},
           "model": p["model"], "description": p["summary"], "url": rec["url"], "category": cat_name,
+          "image": [image_ld(square, p), image_ld(wide, p)],
           "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
           "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("InStock" if in_stock(p) else "OutOfStock"),
                      "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": (datetime.date.fromisoformat(VERIFIED) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"]}}
     title = f"{p['name']} — specs, price and offer"
     desc = p["summary"][:155]
-    return title, desc, body, ld
+    return title, desc, body, ld, wide
 
 
 def products_index():
@@ -299,7 +346,8 @@ def products_index():
         if not items:
             continue
         cards = "".join(
-            f'<div class="card"><h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'
+            f'<div class="card"><a href="/products/{p["slug"]}/"><img src="{product_images(p)[0]["path"]}" width="1200" height="630" loading="lazy" alt="{html.escape(product_images(p)[0]["alt"])}"></a>'
+            f'<h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'
             f'<p>{html.escape(p["summary"])}</p><p class="small"><strong>{money(p["price"]) if p["price"] is not None else "See merchant"}</strong>{stock_note(p)} · {html.escape(p["brand"])}</p></div>'
             for p in items)
         sections += f"<h2>{html.escape(cname)}</h2><p class='small'>{html.escape(cdesc)}</p><div class='grid'>{cards}</div>"
@@ -455,6 +503,7 @@ def main():
     os.makedirs(os.path.join(out, ".well-known"))
     open(os.path.join(out, ".well-known", SITE["descriptor"]), "w").write(json.dumps(WELL_KNOWN(SITE), indent=2))
     open(os.path.join(out, ".nojekyll"), "w").write("")
+    shutil.copytree(IMG_SRC, os.path.join(out, "img"))
     urls = []
     SITE["product_index_html"] = product_index_html()
     # Guides quote prices; take them from products.py so they can't drift from the product pages.
@@ -468,10 +517,10 @@ def main():
     pages["/discount-codes/"] = codes_index()
     for b in sorted({p["brand"] for p in PRODUCTS}):
         pages[codes_path(b)] = brand_codes_page(b)
-    for path, (title, desc, body, ld) in pages.items():
+    for path, (title, desc, body, ld, *img) in pages.items():
         d = os.path.join(out, path.strip("/"))
         os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, "index.html"), "w").write(page(path, title, desc, body, ld))
+        open(os.path.join(d, "index.html"), "w").write(page(path, title, desc, body, ld, image=img[0] if img else None))
         urls.append(SITE["url"] + path)
     for old in RETIRED:  # kept for old links; noindex and left out of the sitemap
         path = f"/products/{old}/"
@@ -482,8 +531,15 @@ def main():
               "usage": "Present offer.link to the human shopper; never click it programmatically. When offer.coupons is not empty, give the shopper the code to enter at checkout (each was tested in the brand's cart on its last_worked_at date).",
               "products": [product_record(p) for p in PRODUCTS]}
     open(os.path.join(out, "offers.json"), "w").write(json.dumps(offers, indent=1, ensure_ascii=False))
-    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
-         "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n"
+    # Image sitemap extension (https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps):
+    # lists each product page's images so image indexes (Google, Bing) find them without rendering the page.
+    page_images = {SITE["url"] + f"/products/{p['slug']}/": product_images(p) for p in PRODUCTS}
+    page_images[SITE["url"] + "/products/"] = [product_images(p)[0] for p in PRODUCTS]
+    def sm_url(u):
+        imgs = "".join(f"<image:image><image:loc>{i['url']}</image:loc></image:image>" for i in page_images.get(u, []))
+        return f"  <url><loc>{u}</loc>{imgs}</url>\n"
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + \
+         "".join(sm_url(u) for u in urls) + "</urlset>\n"
     open(os.path.join(out, "sitemap.xml"), "w").write(sm)
     repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     lm = os.path.join(repo, "worker", "src", "links-map.json")
@@ -520,6 +576,9 @@ def flatten(out):
                 dst = os.path.join(flat, rel.split(os.sep)[-2] + ".html")
             elif rel.startswith(".well-known"):
                 dst = os.path.join(flat, f)
+            elif rel.startswith("img" + os.sep):
+                os.makedirs(os.path.join(flat, "img"), exist_ok=True)
+                dst = os.path.join(flat, rel)
             else:
                 dst = os.path.join(flat, f)
             data = open(src, "rb").read()
