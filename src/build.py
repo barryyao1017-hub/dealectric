@@ -405,7 +405,7 @@ def codes_index():
             f"{n} working discount codes for {', '.join(brands)}, each tested in the brand's own cart on {checked}.", body, ld)
 
 
-INDEXNOW_KEY ="dlc-31c73feed521769132773e90e1732d25"
+INDEXNOW_KEY = "dlc-31c73feed521769132773e90e1732d25"
 
 
 def main():
