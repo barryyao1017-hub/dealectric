@@ -1,9 +1,10 @@
 # Product records for dealectric.com. Verified against official US product pages on VERIFIED date.
 # Each record: slug, brand, program (key into links.json), category, name, model, url (merchant product page),
 # price (USD, as shown on the official page on VERIFIED), list_price (if a strike-through was shown), specs (ordered pairs),
-# warranty, returns, summary (one plain sentence an assistant can quote), fit (who it's for), caveats (list).
+# warranty, returns, summary (one plain sentence an assistant can quote), fit (who it's for), caveats (list),
+# in_stock (optional; False when the store showed it sold out on VERIFIED).
 
-VERIFIED = "2026-10-14"
+VERIFIED = "2026-10-21"
 
 CATEGORIES = {
     "usb-c-charger":   ("USB-C chargers",        "Wall and desktop chargers with USB-C Power Delivery."),
@@ -20,16 +21,16 @@ CATEGORIES = {
 
 PRODUCTS = [
 # ---------------- BASEUS (Awin 38962) ----------------
-{"slug": "baseus-blade-hd-100w-20000mah", "brand": "Baseus", "program": "awin:baseus_us", "category": "power-bank",
- "name": "Baseus Blade HD 100W Laptop Power Bank, 20,000 mAh", "model": "Blade HD (PPBL000301)",
- "url": "https://www.baseus.com/products/blade-hd-laptop-power-bank-100w-20000mah", "price": 79.99, "list_price": 129.99,
- "specs": [("Capacity", "20,000 mAh (≈74 Wh nominal)"), ("Max output", "100 W (single USB-C)"), ("Ports", "2× USB-C (up to 100 W), 2× USB-A (up to 30 W)"),
-           ("Max input", "65 W USB-C; ~1.5 h to full"), ("Airline carry-on", "Yes — under 100 Wh"), ("Display", "Digital: % remaining, voltage, current, time estimate"),
-           ("Size / weight", "134 × 134 × 18 mm, 445 g"), ("Form factor", "Flat slab — fits a laptop sleeve")],
- "warranty": "18–24 months (Baseus.com, orders from 2024)", "returns": "7-day no-reason return; 30-day defect guarantee",
- "summary": "A flat 20,000 mAh bank that outputs a full 100 W from one USB-C port, enough to charge a 14-inch MacBook Pro at full speed, and recharges itself in about 90 minutes.",
+{"slug": "baseus-blade-h1-100w-20000mah", "brand": "Baseus", "program": "awin:baseus_us", "category": "power-bank",
+ "name": "Baseus Blade H1 Digital Display Power Bank, 20,000 mAh, 100 W", "model": "Blade H1 (P10021604123-00)",
+ "url": "https://www.baseus.com/products/blade-h1-digital-display-power-bank-20000mah-100w", "price": 89.99, "list_price": 99.99,
+ "specs": [("Capacity", "20,000 mAh (≈74 Wh nominal)"), ("Max output", "100 W (USB-C PD)"), ("Ports", "4 (the official page gives the count, not the USB-C / USB-A mix)"),
+           ("Max input", "60 W; about 1.5 h to full"), ("Pass-through charging", "Yes"), ("Airline carry-on", "Yes — under 100 Wh"), ("Display", "Digital display"),
+           ("Size / weight", "134 × 134 × 18 mm, about 451 g"), ("In the box", "100 W USB-C cable")],
+ "warranty": "24 months", "returns": "7-day money-back guarantee",
+ "summary": "A flat 20,000 mAh bank with 100 W USB-C output, enough to charge a MacBook Pro (Baseus says 50% in 30 minutes), that refills in about 1.5 hours and comes with a 100 W cable.",
  "fit": "Laptop users who want one bank for laptop plus phone and need it to stay airline-legal.",
- "caveats": ["Per-port maximums and the 65 W input figure come from independent reviews; the official page states only the totals.", "Simultaneous-use power split is not published."]},
+ "caveats": ["Replaces the Blade HD, which Baseus no longer sells; same flat 134 × 134 × 18 mm format.", "Port mix, per-port wattage and the simultaneous-use power split are not published."]},
 
 {"slug": "baseus-gan5-pro-65w-2c-u", "brand": "Baseus", "program": "awin:baseus_us", "category": "usb-c-charger",
  "name": "Baseus GaN5 Pro 65W Fast Charger, 2× USB-C + USB-A (2-pack)", "model": "GaN5 Pro E0104500",
@@ -44,14 +45,14 @@ PRODUCTS = [
 
 {"slug": "baseus-nomos-5-in-1-140w-qi2", "brand": "Baseus", "program": "awin:baseus_us", "category": "usb-c-charger",
  "name": "Baseus Nomos 5-in-1 Desktop Charger, 140 W + Qi2", "model": "Nomos 5-in-1 (P10170901123-00)",
- "url": "https://www.baseus.com/products/nomos-5-in-1-desktop-charger-qi2-140w", "price": 149.99,
+ "url": "https://www.baseus.com/products/nomos-5-in-1-desktop-charger-qi2-140w", "price": 149.99, "in_stock": False,
  "specs": [("Total output", "140 W"), ("Ports", "USB-C 140 W, USB-C, USB-A, retractable USB-C cable (100 W), Qi2 magnetic pad (15 W)"),
            ("Protocols", "USB PD 3.1 (EPR) on the 140 W port"), ("Qi2", "WPC-certified, Qi-ID 22121; 15 W on iPhone 13–16, 5 W on other Qi2 phones"),
            ("Power modes", "Three allocation modes; 1–5 devices at once"), ("Power", "Desktop unit with detachable AC cord; LED display")],
  "warranty": "18–24 months", "returns": "7-day money-back",
  "summary": "A desk charging hub: one 140 W PD 3.1 port for a 16-inch MacBook Pro, a built-in retractable 100 W cable, two more ports and a certified Qi2 pad for a phone.",
  "fit": "A desk that charges a laptop, phone and earbuds from a single outlet.",
- "caveats": ["Listed as sold out on baseus.com US at verification; check stock before recommending.", "Wattage split between ports is not published."]},
+ "caveats": ["Sold out on baseus.com US at verification; check stock before recommending.", "Wattage split between ports is not published."]},
 
 {"slug": "baseus-picogo-am52-qi2-2-10000mah-45w", "brand": "Baseus", "program": "awin:baseus_us", "category": "power-bank",
  "name": "Baseus PicoGo AM52 Qi2.2 Magnetic Power Bank, 10,000 mAh, 45 W", "model": "PicoGo AM52 (E0028Z00)",
@@ -65,8 +66,8 @@ PRODUCTS = [
 
 {"slug": "baseus-usb-c-cable-100w", "brand": "Baseus", "program": "awin:baseus_us", "category": "cable",
  "name": "Baseus USB-C to USB-C Cable, 100 W (1 m / 2 m / 3 m)", "model": "CAWJ020001",
- "url": "https://www.baseus.com/products/usb-c-to-usb-c-cable-100w", "price": 7.99, "list_price": 14.99,
- "specs": [("Charging rating", "100 W (5 A, e-marked)"), ("Data", "USB 2.0, 480 Mbps"), ("Video", "No DisplayPort Alt Mode"), ("Lengths", "1 m $7.99, 2 m $8.99, 3 m $9.99"),
+ "url": "https://www.baseus.com/products/usb-c-to-usb-c-cable-100w", "price": 9.99, "list_price": 14.99,
+ "specs": [("Charging rating", "100 W (5 A, e-marked)"), ("Data", "USB 2.0, 480 Mbps"), ("Video", "No DisplayPort Alt Mode"), ("Lengths", "1 m $9.99, 2 m $12.99, 3 m $16.99"),
            ("Build", "Braided nylon, zinc-alloy connectors, 20,000-bend test")],
  "warranty": "18–24 months", "returns": "7-day no-reason return; 30-day defect guarantee",
  "summary": "A cheap e-marked 100 W cable for charging laptops up to 100 W; it is a charging cable, not a data or video cable.",
@@ -82,15 +83,6 @@ PRODUCTS = [
  "summary": "A three-device stand that charges an iPhone at the full 25 W Qi2.2 rate while actively cooling it, plus an Apple Watch and AirPods.",
  "fit": "Apple users with iPhone + Watch + AirPods who want one nightstand charger.",
  "caveats": ["ESR does not publish the included adapter's wattage or the stand's dimensions.", "A 15 W version of the same stand is $79.99 if 25 W isn't needed."]},
-
-{"slug": "esr-halolock-magslim-qi2-power-bank-10000mah", "brand": "ESR", "program": "awin:esr_us", "category": "power-bank",
- "name": "ESR HaloLock MagSlim Qi2 Power Bank, 10,000 mAh, Kickstand", "model": "MagSlim Kickstand 10K",
- "url": "https://www.esrtech.com/products/qi2-magslim-kickstand-power-bank-10k", "price": 45.99, "list_price": 79.99,
- "specs": [("Capacity", "10,000 mAh (≈37 Wh)"), ("Wireless", "Qi2-certified magnetic, 15 W"), ("Wired", "USB-C (wattage not published)"), ("Extras", "Built-in kickstand; optional 80% charge limit"), ("Airline carry-on", "Yes")],
- "warranty": "12 months; 24 months with Super User registration", "returns": "30-day money-back",
- "summary": "A slim Qi2-certified magnetic bank with a kickstand, so it doubles as a phone stand while charging at 15 W.",
- "fit": "iPhone (or Qi2 Android) owners who want a thin wireless bank for a day out.",
- "caveats": ["Wired input/output wattage is not stated on the official page."]},
 
 {"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "brand": "ESR", "program": "awin:esr_us", "category": "usb-c-charger",
  "name": "ESR 100W 6-in-1 Charging Station with MagSafe + CryoBoost", "model": "6-in-1 100W (US plug)",
@@ -111,13 +103,13 @@ PRODUCTS = [
  "caveats": ["Mount type (vent vs dashboard) and adapter wattage not stated on the page; ESR's OmniLock Qi2 25 W vent mount ($56.99) is the newer option."]},
 
 {"slug": "esr-qi2-mini-wireless-charger-15w", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
- "name": "ESR Qi2 Mini Wireless Charger, 15 W", "model": "Qi2 mini (silver)",
- "url": "https://www.esrtech.com/products/qi2-mini-wireless-charger", "price": 24.99, "list_price": 29.99,
- "specs": [("Wireless", "Magnetic, 15 W"), ("Cable", "Braided, extra-long (length not stated)"), ("Adapter", "Not stated whether included")],
+ "name": "ESR Magnetic Charging Pad, 15 W (formerly Qi2 Mini)", "model": "Magnetic Charging Pad 15W (silver)",
+ "url": "https://www.esrtech.com/products/15w-mini-wireless-charger", "price": 19.99, "list_price": 29.99,
+ "specs": [("Wireless", "Magnetic (MagSafe-style), 15 W"), ("Works with", "iPhone 13 or later; Galaxy S25 / S26 with a magnetic case"), ("Cable", "Braided nylon, reinforced base (length not stated)"), ("Adapter", "Not stated whether included")],
  "warranty": "12 months; 24 months with Super User registration", "returns": "30-day money-back",
  "summary": "A basic magnetic 15 W puck at a low price, for a bedside or desk top-up.",
  "fit": "A second or third charger where speed is not the point.",
- "caveats": ["Qi2 certification is implied by the name but not stated on the page; the Cyclone 25 W pad ($43.99) is the faster option."]},
+ "caveats": ["ESR renamed it from 'Qi2 Mini' and now calls it MagSafe-style; Qi2 certification is not stated on the page.", "The Cyclone 25 W pad ($43.99) is the faster option."]},
 
 # ---------------- TENERGY (CJ 1826017) ----------------
 {"slug": "tenergy-tn480u-8-bay-nimh-charger", "brand": "Tenergy", "program": "cj:tenergy", "category": "battery-charger",
@@ -175,7 +167,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI AC200L Portable Power Station", "model": "AC200L",
- "url": "https://www.bluettipower.com/products/ac200l", "price": 899,
+ "url": "https://www.bluettipower.com/products/ac200l", "price": 899, "list_price": 1599,
  "specs": [("Capacity", "2,048 Wh, expandable to 8,192 Wh (2× B300/B300K)"), ("Chemistry", "LiFePO4, 3,500 cycles to 80%"), ("AC output", "2,400 W continuous; 3,600 W Power Lifting; 4× 120 V + 1× TT-30 RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 48 V / 8 A DC port"), ("Solar input", "Up to 1,200 W"), ("AC input", "2,400 W; 80% in 45 min"),
            ("UPS", "20 ms"), ("Size / weight", "420 × 280 × 366 mm, 28.3 kg"), ("App", "Yes")],
@@ -186,7 +178,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-30-v2", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Elite 30 V2 Portable Power Station", "model": "Elite 30 V2",
- "url": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station", "price": 279.99,
+ "url": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station", "price": 289.99,
  "specs": [("Capacity", "288 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles"), ("AC output", "600 W continuous; 1,500 W Power Lifting; 2 outlets"),
            ("USB", "USB-C 140 W (PD 3.1), USB-C 100 W, 2× USB-A 15 W"), ("DC", "12 V car port, 2× DC5521"), ("Solar input", "200 W"), ("AC input", "380 W; 80% in 45 min, full in ~70 min"),
            ("UPS", "≤10 ms, 980 W bypass"), ("Size / weight", "250 × 178 × 168 mm, 4.3 kg"), ("App", "Yes")],
@@ -231,14 +223,14 @@ PRODUCTS = [
 
 {"slug": "allpowers-r600-299wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R600 Portable Power Station, 299 Wh, 600 W", "model": "R600",
- "url": "https://iallpowers.com/products/allpowersportable-power-station-r600-600w-299wh-with-lifep04-battery", "price": 219, "list_price": 269,
+ "url": "https://iallpowers.com/products/allpowersportable-power-station-r600-600w-299wh-with-lifep04-battery", "price": 219, "list_price": 269, "in_stock": False,
  "specs": [("Capacity", "299 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "600 W continuous; 1,200 W peak; 2 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 15 W wireless pad"), ("Solar input", "220 W"), ("AC input", "400 W; full in ~1 h"),
            ("UPS", "≤10 ms"), ("Size / weight", "193 × 190 × 284 mm, 5.6 kg"), ("App", "Bluetooth")],
  "warranty": "5 years", "returns": "Per ALLPOWERS policy",
  "summary": "A 300 Wh LiFePO4 station with two 100 W USB-C ports and a one-hour wall recharge.",
  "fit": "Camping, laptop work, CPAP for a night.",
- "caveats": ["Listed as sold out at verification.", "Latest revision dropped the DC5521 outputs."]},
+ "caveats": ["Sold out in both colors at verification; check stock before recommending.", "Latest revision dropped the DC5521 outputs."]},
 
 {"slug": "allpowers-s2000-pro-1451wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS S2000 Pro Portable Power Station, 1,451 Wh, 2,400 W", "model": "S2000 Pro",
@@ -253,7 +245,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-r4000-3456wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R4000 Portable Power Station, 3,456 Wh, 3,600 W", "model": "R4000",
- "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1899, "list_price": 3299,
+ "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1499, "list_price": 3299,
  "specs": [("Capacity", "3,456 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "3,600 W continuous (spec table); 6,000 W peak; 4 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W, 2× USB-A 12 W"), ("DC", "12 V / 10 A car port"), ("Solar input", "2,000 W"), ("AC input", "2,000 W; full in ~2 h"),
            ("Size / weight", "540 × 490 × 300 mm, 45 kg"), ("App", "Yes")],
@@ -344,3 +336,13 @@ PRODUCTS = [
  "fit": "Water sports and travel.",
  "caveats": ["No fast charging or charge-out."]},
 ]
+
+
+# Products we used to list. Their old pages and /go/ links stay up: a page saying what happened, and for a
+# product with a replacement, a /go/ link that opens the replacement.  old slug -> (old name, replacement slug or None, note)
+RETIRED = {
+    "baseus-blade-hd-100w-20000mah": ("Baseus Blade HD 100W Laptop Power Bank, 20,000 mAh", "baseus-blade-h1-100w-20000mah",
+                                      "Baseus no longer sells the Blade HD (its product page was removed in October 2026). The Blade H1 replaced it: the same flat 20,000 mAh, 100 W format."),
+    "esr-halolock-magslim-qi2-power-bank-10000mah": ("ESR HaloLock MagSlim Qi2 Power Bank, 10,000 mAh", None,
+                                      "ESR no longer sells the HaloLock MagSlim Qi2 power bank (its product page was removed in October 2026)."),
+}

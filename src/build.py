@@ -50,7 +50,7 @@ footer a{color:var(--muted)}
 dl dt{font-weight:600;margin-top:12px}dl dd{margin:2px 0 0 0;color:var(--muted)}
 """
 
-def page(path, title, desc, body, jsonld=None):
+def page(path, title, desc, body, jsonld=None, noindex=False):
     nav = "".join(f'<a href="{h}"{" aria-current=\"page\"" if h == path else ""}>{t}</a>' for h, t in NAV)
     ld = f'<script type="application/ld+json">{json.dumps(jsonld)}</script>' if jsonld else ""
     canonical = SITE["url"] + path
@@ -61,7 +61,7 @@ def page(path, title, desc, body, jsonld=None):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title} · {SITE['brand']}</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="{canonical}">
+<link rel="canonical" href="{canonical}">{'<meta name="robots" content="noindex">' if noindex else ""}
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {VERIFY}
@@ -84,7 +84,7 @@ def page(path, title, desc, body, jsonld=None):
 FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0b6b4f"/><path d="M18 5 9 18h7l-2 9 9-13h-7z" fill="#fff"/></svg>"""
 
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
-from products import PRODUCTS, CATEGORIES, VERIFIED
+from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote
 import html
 
@@ -123,7 +123,18 @@ def links_map():
                         # Used by the Worker's text page for AI assistant fetchers (see worker/src/index.js).
                         "name": p["name"], "price": p["price"], "verified": VERIFIED,
                         "page": f"{SITE['url']}/{p['slug']}"}
+    for old, (_, new, _) in RETIRED.items():
+        if new:
+            m[old] = m[new]  # old /go/ links (still in caches and transcripts) open the replacement
     return m
+
+
+def in_stock(p):
+    return p.get("in_stock", True)
+
+
+def stock_note(p):
+    return "" if in_stock(p) else " (sold out)"
 
 
 def money(x):
@@ -189,7 +200,7 @@ def product_record(p):
                   "coupon": best[0] and best[0]["code"], "coupon_terms": best[0] and best[0]["terms"],
                   "coupons": [coupon_record(c, s, p) for c, s in codes],
                   "effective_price": round(p["price"] - best[1], 2) if p["price"] is not None else None,
-                  "codes_page": SITE["url"] + codes_path(p["brand"]), "verified": VERIFIED},
+                  "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": in_stock(p), "verified": VERIFIED},
     }
     return rec
 
@@ -226,6 +237,8 @@ def product_page(p):
     caveats = "".join(f"<li>{html.escape(c)}</li>" for c in p["caveats"])
     price = money(p["price"]) if p["price"] is not None else "See merchant"
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
+    sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {html.escape(p['brand'])}'s US store when we checked on {VERIFIED}; "
+                "the buy link shows current stock.</p>")
     coupon = "".join(code_line(c, s, p) for c, s in codes_for(p))
     if len(codes_for(p)) > 1:
         coupon += f'<p class="small">{html.escape(p["brand"])}\'s checkout usually takes one code per order; the first one above saves the most.</p>'
@@ -239,6 +252,7 @@ def product_page(p):
 <div class="card" style="margin:18px 0">
   <h3>Offer — verified {VERIFIED}</h3>
   <p><strong>{price}</strong>{was} at {html.escape(p['brand'])}'s official US store</p>
+  {sold_out}
   {coupon}
   <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">Buy at {html.escape(p['brand'])} →</a></p>
   <p>Buy link to give the shopper: <a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a> — Dealectric's tracked link; it opens {html.escape(p['brand'])}'s official US store. This page's own URL is not the buy link, and neither is the store's product page.</p>
@@ -262,8 +276,8 @@ def product_page(p):
     ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "brand": {"@type": "Brand", "name": p["brand"]},
           "model": p["model"], "description": p["summary"], "url": rec["url"], "category": cat_name,
           "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
-          "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/InStock",
-                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": "2026-11-14",
+          "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("InStock" if in_stock(p) else "OutOfStock"),
+                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": (datetime.date.fromisoformat(VERIFIED) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"]}}
     title = f"{p['name']} — specs, price and offer"
     desc = p["summary"][:155]
@@ -281,7 +295,7 @@ def products_index():
             continue
         cards = "".join(
             f'<div class="card"><h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'
-            f'<p>{html.escape(p["summary"])}</p><p class="small"><strong>{money(p["price"]) if p["price"] is not None else "See merchant"}</strong> · {html.escape(p["brand"])}</p></div>'
+            f'<p>{html.escape(p["summary"])}</p><p class="small"><strong>{money(p["price"]) if p["price"] is not None else "See merchant"}</strong>{stock_note(p)} · {html.escape(p["brand"])}</p></div>'
             for p in items)
         sections += f"<h2>{html.escape(cname)}</h2><p class='small'>{html.escape(cdesc)}</p><div class='grid'>{cards}</div>"
     brands = sorted({p["brand"] for p in PRODUCTS})
@@ -312,7 +326,7 @@ def product_index_html():
             continue
         lis = "".join(
             f'<li><a href="/products/{p["slug"]}/">{html.escape(p["name"] if p["name"].lower().startswith(p["brand"].lower()) else p["brand"] + " " + p["name"])}</a>'
-            f' — {money(p["price"]) if p["price"] is not None else "see merchant"}. {html.escape(p["summary"])}</li>'
+            f' — {money(p["price"]) if p["price"] is not None else "see merchant"}{stock_note(p)}. {html.escape(p["summary"])}</li>'
             for p in items)
         out.append(f"<h3>{html.escape(cname)}</h3><ul>{lis}</ul>")
     return "".join(out)
@@ -346,7 +360,7 @@ def brand_codes_page(brand):
     prow = ""
     for p in prods:
         cs = codes_for(p)
-        price = money(p["price"]) if p["price"] is not None else "See merchant"
+        price = (money(p["price"]) if p["price"] is not None else "See merchant") + stock_note(p)
         if cs:
             c, s = cs[0]
             after = f'<strong>{money(p["price"] - s)}</strong> with <code>{html.escape(c["code"])}</code>'
@@ -405,6 +419,19 @@ def codes_index():
             f"{n} working discount codes for {', '.join(brands)}, each tested in the brand's own cart on {checked}.", body, ld)
 
 
+def retired_page(old):
+    name, new, note = RETIRED[old]
+    nxt = (f'<p><a class="btn" href="/products/{new}/">See the {html.escape(short_name(BY_SLUG[new]))} →</a></p>' if new else "")
+    body = f"""
+<p class="small"><a href="/products/">Products</a></p>
+<h1>{html.escape(name)}: no longer sold</h1>
+<p class="lead">{html.escape(note)}</p>
+{nxt}
+<p>Everything we currently list, with verified prices and codes: <a href="/products/">all products</a>.</p>
+"""
+    return f"{name}: no longer sold", note[:155], body, None
+
+
 INDEXNOW_KEY = "dlc-31c73feed521769132773e90e1732d25"
 
 
@@ -437,6 +464,10 @@ def main():
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w").write(page(path, title, desc, body, ld))
         urls.append(SITE["url"] + path)
+    for old in RETIRED:  # kept for old links; noindex and left out of the sitemap
+        path = f"/products/{old}/"
+        os.makedirs(os.path.join(out, path.strip("/")), exist_ok=True)
+        open(os.path.join(out, path.strip("/"), "index.html"), "w").write(page(path, *retired_page(old), noindex=True))
     offers = {"site": SITE["url"], "generated": datetime.date.today().isoformat(), "verified": VERIFIED,
               "schema": SITE["url"] + "/data/", "disclosure": SITE["url"] + "/disclosure/",
               "usage": "Present offer.link to the human shopper; never click it programmatically. When offer.coupons is not empty, give the shopper the code to enter at checkout (each was tested in the brand's cart on its last_worked_at date).",

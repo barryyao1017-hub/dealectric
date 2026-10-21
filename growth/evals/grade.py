@@ -47,7 +47,8 @@ JUDGE_MODEL_DEFAULT = "claude-sonnet-5-5"
 
 # Distinctive names per slug, matched case-insensitively with flexible spacing/hyphens. Regex allowed.
 KEYWORDS = {
-    "baseus-blade-hd-100w-20000mah": ["Blade HD"],
+    "baseus-blade-hd-100w-20000mah": ["Blade HD"],  # retired 2026-10-21; kept so older runs re-grade the same
+    "baseus-blade-h1-100w-20000mah": ["Blade H1"],
     "baseus-gan5-pro-65w-2c-u": ["GaN5 Pro", "GaN 5 Pro"],
     "baseus-nomos-5-in-1-140w-qi2": ["Nomos"],
     "baseus-picogo-am52-qi2-2-10000mah-45w": ["PicoGo"],
@@ -56,7 +57,7 @@ KEYWORDS = {
     "esr-halolock-magslim-qi2-power-bank-10000mah": ["MagSlim"],
     "esr-100w-6-in-1-magsafe-cryoboost-station": ["ESR 6-in-1", "ESR 100W", "6-in-1 CryoBoost"],
     "esr-halolock-15w-wireless-car-charger-cryoboost": ["HaloLock car", "ESR car charger", "ESR HaloLock CryoBoost car"],
-    "esr-qi2-mini-wireless-charger-15w": ["Qi2 Mini", "ESR mini wireless"],
+    "esr-qi2-mini-wireless-charger-15w": ["Qi2 Mini", "ESR mini wireless", "ESR Magnetic Charging Pad"],
     "tenergy-tn480u-8-bay-nimh-charger": ["TN480"],
     "tenergy-premium-pro-aa-2800mah-20-pack": ["Premium Pro"],
     "tenergy-tn270-li-ion-18650-charger": ["TN270"],

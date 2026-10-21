@@ -94,8 +94,8 @@ def PAGES(S):
 <ul>
 <li><a href="/products/baseus-gan5-pro-65w-2c-u/">Baseus GaN5 Pro 65 W (2× USB-C + USB-A)</a> — 65 W with PPS, the Galaxy-friendly laptop charger; sold as a 2-pack.</li>
 <li><a href="/products/baseus-nomos-5-in-1-140w-qi2/">Baseus Nomos 5-in-1 140 W desktop charger</a> — one PD 3.1 140 W port for a 16-inch MacBook Pro, plus a certified Qi2 pad.</li>
-<li><a href="/products/baseus-blade-hd-100w-20000mah/">Baseus Blade HD 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), a full 100 W from one port.</li>
-<li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> and <a href="/products/esr-halolock-magslim-qi2-power-bank-10000mah/">ESR MagSlim Qi2 bank</a> — magnetic 10,000 mAh banks at 25 W and 15 W wireless.</li>
+<li><a href="/products/baseus-blade-h1-100w-20000mah/">Baseus Blade H1 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), 100 W over USB-C, refills in about 1.5 h.</li>
+<li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> — a magnetic 10,000 mAh bank with 25 W wireless and 45 W USB-C.</li>
 <li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for iPhone 16/17 with active cooling.</li>
 <li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data.</li>
 </ul>
@@ -153,8 +153,8 @@ def PAGES(S):
 <h2>Products in the catalog that fit this guide</h2>
 <div class="scroll"><table>
 <tr><th>Model</th><th>Wh</th><th>AC continuous</th><th>Chemistry</th><th>Weight</th><th>Price (verified)</th></tr>
-<tr><td><a href="/products/bluetti-elite-30-v2/">BLUETTI Elite 30 V2</a></td><td>288</td><td>600 W</td><td>LiFePO4</td><td>4.3 kg</td><td>$279.99</td></tr>
-<tr><td><a href="/products/allpowers-r600-299wh/">ALLPOWERS R600</a></td><td>299</td><td>600 W</td><td>LiFePO4</td><td>5.6 kg</td><td>$219</td></tr>
+<tr><td><a href="/products/bluetti-elite-30-v2/">BLUETTI Elite 30 V2</a></td><td>288</td><td>600 W</td><td>LiFePO4</td><td>4.3 kg</td><td>$289.99</td></tr>
+<tr><td><a href="/products/allpowers-r600-299wh/">ALLPOWERS R600</a></td><td>299</td><td>600 W</td><td>LiFePO4</td><td>5.6 kg</td><td>$219 (sold out)</td></tr>
 <tr><td><a href="/products/tenergy-t320-300wh-power-station/">Tenergy T320</a></td><td>300</td><td>200 W</td><td>LiFePO4</td><td>3.7 kg</td><td>$225.99</td></tr>
 <tr><td><a href="/products/allpowers-p1800-1024wh/">ALLPOWERS P1800</a></td><td>1,024</td><td>1,800 W</td><td>LiFePO4</td><td>~13 kg</td><td>$439</td></tr>
 <tr><td><a href="/products/bluetti-ac180/">BLUETTI AC180</a></td><td>1,152</td><td>1,800 W</td><td>LiFePO4</td><td>~16 kg</td><td>$499</td></tr>
@@ -162,7 +162,7 @@ def PAGES(S):
 <tr><td><a href="/products/bluetti-ac200l/">BLUETTI AC200L</a></td><td>2,048 (→8,192)</td><td>2,400 W</td><td>LiFePO4</td><td>28.3 kg</td><td>$899</td></tr>
 <tr><td><a href="/products/bluetti-elite-200-v2/">BLUETTI Elite 200 V2</a></td><td>2,074</td><td>2,600 W</td><td>LiFePO4</td><td>24.2 kg</td><td>$899</td></tr>
 <tr><td><a href="/products/bluetti-elite-300/">BLUETTI Elite 300</a></td><td>3,014</td><td>2,400 W</td><td>LiFePO4</td><td>26.3 kg</td><td>$1,199</td></tr>
-<tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>$1,899</td></tr>
+<tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>$1,499</td></tr>
 </table></div>
 <p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> (Voc 45.3 V) fits every station above. Prices verified on the brands' US stores; each product page has the tracked offer link and current code where one exists.</p>
 
