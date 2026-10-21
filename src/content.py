@@ -15,15 +15,15 @@ def PAGES(S):
 
 <h2>What's here</h2>
 <div class="grid">
-  <div class="card"><h3>Normalized spec sheets</h3><p>Every product in a category described with the same fields and units — watts, Wh, ports and protocols for power gear; drivers, codecs and ANC for audio; capacity, wattage and footprint for appliances. No marketing prose to parse.</p></div>
-  <div class="card"><h3>Verified offers</h3><p>Current price, the merchant it's sold by, shipping and return terms, and any active discount code — each with a "last verified" timestamp, so an assistant knows how fresh the data is.</p></div>
+  <div class="card"><h3>Normalized spec sheets</h3><p>Every product in a category described with the same fields and units — watts, Wh, ports and protocols for power gear; drivers, codecs, ANC and battery hours for audio. No marketing prose to parse.</p></div>
+  <div class="card"><h3>Verified offers</h3><p>Current price on the brand's own US store, stock, warranty and return terms, and every discount code that worked in the brand's cart — each with a "last verified" date, so an assistant knows how fresh the data is.</p></div>
   <div class="card"><h3>Plain-language buying guides</h3><p>Human-readable explainers on the specs that decide a purchase — starting with USB-C Power Delivery, PPS, GaN, power-bank airline limits and power-station chemistry — written to be cited.</p></div>
   <div class="card"><h3>Open to agents</h3><p>An <a href="/llms.txt">llms.txt</a>, a <a href="/.well-known/{S['descriptor']}">.well-known descriptor</a>, JSON-LD on every page and a robots.txt that welcomes AI crawlers.</p></div>
 </div>
 
 <h2>Coverage</h2>
-<p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return: <strong>charging and portable power</strong> (USB-C wall chargers, power banks with airline-limit checks, 60/100/240 W cables, Qi2 wireless chargers, portable power stations), then <strong>smart home</strong> (cameras, plugs, lighting, networking), <strong>audio</strong> (earbuds, headphones, speakers) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics). Each category gets its own field set in the <a href="/data/">schema</a>.</p>
-<p>Live now: <a href="/products/">Baseus, ESR, BLUETTI, ALLPOWERS, Tenergy and Soundcore</a>, with verified offers. Next up as partnerships are approved: Anker, UGREEN, Jackery, EcoFlow, SwitchBot, Wyze, ZAGG, OtterBox, Monoprice, SanDisk, Marshall and JBL.</p>
+<p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return. Live now: <strong>charging and portable power</strong> (USB-C chargers, power banks with airline-limit checks, cables, Qi2 and MagSafe-style wireless chargers, portable power stations, solar panels, rechargeable batteries) and <strong>audio</strong> (earbuds, headphones, speakers). Planned: <strong>smart home</strong> (cameras, plugs, lighting, networking) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics).</p>
+<p>Brands live now: <a href="/products/">Baseus, ESR, BLUETTI, ALLPOWERS, Tenergy and Soundcore</a>, with verified offers. More are added as their affiliate programs approve us; we have applied to programs including Jackery, UGREEN, SwitchBot, Wyze, ZAGG, Monoprice, SanDisk and Marshall.</p>
 
 <h2>Every product live now</h2>
 <p>One page per product, each with a normalized spec sheet, a price verified on the brand's own US store, and the tracked buy link to hand the shopper. The same list, machine-readable: <a href="/offers.json">offers.json</a>; the full catalog with spec summaries: <a href="/products/">products</a>.</p>
@@ -59,15 +59,16 @@ def PAGES(S):
 <h2>How many watts do you need?</h2>
 <div class="scroll"><table>
 <tr><th>Device</th><th>Peak charging draw</th><th>Sensible charger</th></tr>
-<tr><td>iPhone (recent models)</td><td>~20–30 W</td><td>20–30 W PD</td></tr>
-<tr><td>Samsung Galaxy S/Ultra</td><td>25–45 W (PPS required)</td><td>45 W PD with PPS</td></tr>
+<tr><td>iPhone 17 / 17 Pro</td><td>up to ~40 W (iPhone Air ~20 W)</td><td>40 W+ PD</td></tr>
+<tr><td>iPhone 15 / 16</td><td>~20–30 W</td><td>20–30 W PD</td></tr>
+<tr><td>Samsung Galaxy S / Ultra</td><td>25–60 W (PPS required; 60 W on the S26 Ultra)</td><td>45 W PD with PPS; a 60 W PPS charger for the S26 Ultra</td></tr>
 <tr><td>iPad / Android tablet</td><td>20–45 W</td><td>30–45 W PD</td></tr>
 <tr><td>MacBook Air (13"/15")</td><td>30–70 W</td><td>65–70 W PD</td></tr>
 <tr><td>MacBook Pro 14"</td><td>67–96 W</td><td>96–100 W PD</td></tr>
 <tr><td>MacBook Pro 16"</td><td>up to 140 W</td><td>140 W PD 3.1 (EPR) with a 240 W-rated cable</td></tr>
 <tr><td>Windows ultrabook</td><td>45–65 W</td><td>65 W PD</td></tr>
 <tr><td>Steam Deck / ROG Ally</td><td>45–65 W</td><td>65 W PD</td></tr>
-<tr><td>Nintendo Switch</td><td>~18 W (39 W docked)</td><td>Any 30 W+ PD charger</td></tr>
+<tr><td>Nintendo Switch (original / OLED)</td><td>~18 W (39 W docked)</td><td>Any 30 W+ PD charger</td></tr>
 </table></div>
 <p>Figures are approximate peaks; devices draw less once past ~80% charge. When in doubt, buy the next size up — it costs a few dollars more and future-proofs the purchase.</p>
 
@@ -85,21 +86,21 @@ def PAGES(S):
 
 <h2>Power banks</h2>
 <p>Capacity is sold in mAh at the cell's nominal 3.7 V; the useful figure is watt-hours: <code>Wh = mAh × 3.7 ÷ 1000</code>. A 10,000 mAh bank is 37 Wh and will typically deliver 60–70% of that to a phone after conversion losses, i.e. roughly two full charges of a modern phone. Output wattage decides whether a bank can charge a laptop: look for 45 W+ for ultrabooks, 65 W+ for a MacBook Pro 14".</p>
-<p><strong>Airline rules:</strong> the FAA (and most carriers worldwide) allow power banks up to <strong>100 Wh (~27,000 mAh)</strong> in carry-on without approval, 101–160 Wh with airline approval (usually two units), and nothing above 160 Wh. Power banks are never allowed in checked baggage. Several Asian carriers introduced additional in-cabin usage restrictions in 2025; check the airline before flying.</p>
+<p><strong>Airline rules:</strong> the FAA (and most carriers worldwide) allow power banks up to <strong>100 Wh (~27,000 mAh)</strong> in carry-on without approval, 101–160 Wh with airline approval (usually two units), and nothing above 160 Wh. Power banks are never allowed in checked baggage. Since 27 March 2026, ICAO rules for international flights limit each passenger to two power banks and ban recharging them during the flight, and many airlines go further and ban using them on board at all; check the airline before flying.</p>
 
 <h2>Wireless and magnetic charging</h2>
-<p>Qi2 is the current cross-platform magnetic standard (based on Apple's MagSafe geometry) and delivers 15 W to supported iPhones and Android phones; Qi2.2 raises that to 25 W for compatible devices. Apple-certified MagSafe chargers can deliver 25 W to iPhone 16 and later when paired with a 30 W+ PD adapter. Original Qi (non-magnetic) is usually 7.5 W on iPhone and 10–15 W on Android.</p>
+<p>Qi2 is the current cross-platform magnetic standard (based on Apple's MagSafe geometry) and delivers 15 W to supported iPhones and Android phones; Qi2.2 raises that to 25 W for compatible devices; how much a given iPhone 16 or 17 actually gets depends on the charger, so check its compatibility table. Apple-certified MagSafe chargers can deliver 25 W to iPhone 16 and later when paired with a 30 W+ PD adapter. "Magnetic" or "MagSafe-compatible" on a listing is not the same as Qi2-certified; look for the certification itself. Original Qi (non-magnetic) is usually 7.5 W on iPhone and 10–15 W on Android.</p>
 
 <h2>Products in the catalog that fit this guide</h2>
 <ul>
-<li><a href="/products/baseus-gan5-pro-65w-2c-u/">Baseus GaN5 Pro 65 W (2× USB-C + USB-A)</a> — 65 W with PPS, the Galaxy-friendly laptop charger; sold as a 2-pack.</li>
-<li><a href="/products/baseus-nomos-5-in-1-140w-qi2/">Baseus Nomos 5-in-1 140 W desktop charger</a> — one PD 3.1 140 W port for a 16-inch MacBook Pro, plus a certified Qi2 pad.</li>
-<li><a href="/products/baseus-blade-h1-100w-20000mah/">Baseus Blade H1 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), 100 W over USB-C, refills in about 1.5 h.</li>
-<li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> — a magnetic 10,000 mAh bank with 25 W wireless and 45 W USB-C.</li>
-<li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for iPhone 16/17 with active cooling.</li>
-<li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data.</li>
+<li><a href="/products/baseus-gan5-pro-65w-2c-u/">Baseus GaN5 Pro 65 W (2× USB-C + USB-A)</a> — 65 W with PPS, the Galaxy-friendly laptop charger; sold as a 2-pack. {S['price']('baseus-gan5-pro-65w-2c-u')}.</li>
+<li><a href="/products/baseus-nomos-5-in-1-140w-qi2/">Baseus Nomos 5-in-1 140 W desktop charger</a> — one PD 3.1 140 W port for a 16-inch MacBook Pro, plus a certified Qi2 pad. {S['price']('baseus-nomos-5-in-1-140w-qi2')}.</li>
+<li><a href="/products/baseus-blade-h1-100w-20000mah/">Baseus Blade H1 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), 100 W over USB-C, refills in about 1.5 h. {S['price']('baseus-blade-h1-100w-20000mah')}.</li>
+<li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> — a magnetic 10,000 mAh bank with 25 W wireless and 45 W USB-C. {S['price']('baseus-picogo-am52-qi2-2-10000mah-45w')}.</li>
+<li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for the iPhone 17 series (20 W on most iPhone 16 models) with active cooling. {S['price']('esr-cryoboost-3-in-1-qi2-2-25w-stand')}.</li>
+<li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data. {S['price']('baseus-usb-c-cable-100w')}.</li>
 </ul>
-<p class="small">Each page carries a verified offer and a tracked link; see the <a href="/disclosure/">disclosure</a>.</p>
+<p class="small">Prices verified on the brands' US stores on {S['verified']}. Each page carries the verified offer and a tracked link; see the <a href="/disclosure/">disclosure</a>.</p>
 
 <h2>Quick checklist</h2>
 <ol>
@@ -112,7 +113,7 @@ def PAGES(S):
 <p class="small">Last reviewed {S['effective']}. Specifications quoted are from manufacturer documentation and the USB-IF specifications; corrections welcome at <a href="mailto:{E}">{E}</a>.</p>
 """,
         {"@context": "https://schema.org", "@type": "Article", "headline": "USB-C charging explained: PD, PPS, GaN and how many watts you actually need",
-         "author": {"@type": "Organization", "name": B}, "publisher": {"@type": "Organization", "name": B}, "datePublished": "2026-10-07", "url": U + "/guides/usb-c-charging/"},
+         "author": {"@type": "Organization", "name": B}, "publisher": {"@type": "Organization", "name": B}, "datePublished": "2026-10-07", "dateModified": S["reviewed"], "url": U + "/guides/usb-c-charging/"},
     )
 
     # ---------------- GUIDE: power stations ----------------
@@ -127,7 +128,7 @@ def PAGES(S):
 <p>Capacity is quoted in watt-hours. Divide by the appliance's draw to estimate runtime, then subtract 10–15% for inverter losses. A 1,000 Wh unit runs a 60 W laptop for roughly 14 hours, a 150 W fridge compressor (cycling) for a day or more, or a 1,500 W space heater for about half an hour. Common tiers: 300–500 Wh (camping, phones, lights), 1,000–1,500 Wh (weekend trips, CPAP, small appliances), 2,000–4,000 Wh (home-outage backup, expandable with extra batteries).</p>
 
 <h2>2. Chemistry: LiFePO4 vs NMC</h2>
-<p>Most current models use <strong>LiFePO4 (LFP)</strong> cells, rated for 3,000–4,000+ charge cycles to 80% capacity and more tolerant of heat. Older or lighter designs use <strong>NMC</strong> (lithium nickel manganese cobalt), typically 500–800 cycles, which packs more energy per kilogram but ages faster. For anything used daily or kept as backup for years, LFP is the better buy; NMC still makes sense when weight is the priority.</p>
+<p>Most current models use <strong>LiFePO4 (LFP)</strong> cells, rated for 3,000–6,000+ charge cycles to 80% capacity and more tolerant of heat. Older or lighter designs use <strong>NMC</strong> (lithium nickel manganese cobalt), traditionally rated for 500–1,000 cycles (a few brands now claim more, such as ALLPOWERS' 2,500 for the S2000 Pro), which packs more energy per kilogram but ages faster. For anything used daily or kept as backup for years, LFP is the better buy; NMC still makes sense when weight is the priority.</p>
 
 <h2>3. Inverter output: continuous vs surge</h2>
 <p>The <em>continuous</em> (rated) wattage is what the AC outlets can supply indefinitely; <em>surge</em> (peak) is a brief allowance for motor start-up. A refrigerator may run at 150 W but surge to 1,000 W for a second. Match continuous watts to the sum of what you will run at once and make sure surge covers any motor or compressor. Some brands advertise a "boost" mode that runs resistive loads (kettles, heaters) above the continuous rating by lowering voltage — useful, but not the same as true capacity.</p>
@@ -153,18 +154,19 @@ def PAGES(S):
 <h2>Products in the catalog that fit this guide</h2>
 <div class="scroll"><table>
 <tr><th>Model</th><th>Wh</th><th>AC continuous</th><th>Chemistry</th><th>Weight</th><th>Price (verified)</th></tr>
-<tr><td><a href="/products/bluetti-elite-30-v2/">BLUETTI Elite 30 V2</a></td><td>288</td><td>600 W</td><td>LiFePO4</td><td>4.3 kg</td><td>$289.99</td></tr>
-<tr><td><a href="/products/allpowers-r600-299wh/">ALLPOWERS R600</a></td><td>299</td><td>600 W</td><td>LiFePO4</td><td>5.6 kg</td><td>$219 (sold out)</td></tr>
-<tr><td><a href="/products/tenergy-t320-300wh-power-station/">Tenergy T320</a></td><td>300</td><td>200 W</td><td>LiFePO4</td><td>3.7 kg</td><td>$225.99</td></tr>
-<tr><td><a href="/products/allpowers-p1800-1024wh/">ALLPOWERS P1800</a></td><td>1,024</td><td>1,800 W</td><td>LiFePO4</td><td>~13 kg</td><td>$439</td></tr>
-<tr><td><a href="/products/bluetti-ac180/">BLUETTI AC180</a></td><td>1,152</td><td>1,800 W</td><td>LiFePO4</td><td>~16 kg</td><td>$499</td></tr>
-<tr><td><a href="/products/allpowers-s2000-pro-1451wh/">ALLPOWERS S2000 Pro</a></td><td>1,451</td><td>2,400 W</td><td>NMC</td><td>13 kg</td><td>$664</td></tr>
-<tr><td><a href="/products/bluetti-ac200l/">BLUETTI AC200L</a></td><td>2,048 (→8,192)</td><td>2,400 W</td><td>LiFePO4</td><td>28.3 kg</td><td>$899</td></tr>
-<tr><td><a href="/products/bluetti-elite-200-v2/">BLUETTI Elite 200 V2</a></td><td>2,074</td><td>2,600 W</td><td>LiFePO4</td><td>24.2 kg</td><td>$899</td></tr>
-<tr><td><a href="/products/bluetti-elite-300/">BLUETTI Elite 300</a></td><td>3,014</td><td>2,400 W</td><td>LiFePO4</td><td>26.3 kg</td><td>$1,199</td></tr>
-<tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>$1,499</td></tr>
+<tr><td><a href="/products/bluetti-elite-30-v2/">BLUETTI Elite 30 V2</a></td><td>288</td><td>600 W</td><td>LiFePO4</td><td>4.3 kg</td><td>{S['price']('bluetti-elite-30-v2')}</td></tr>
+<tr><td><a href="/products/allpowers-r600-299wh/">ALLPOWERS R600</a></td><td>299</td><td>600 W</td><td>LiFePO4</td><td>5.6 kg</td><td>{S['price']('allpowers-r600-299wh')}</td></tr>
+<tr><td><a href="/products/tenergy-t320-300wh-power-station/">Tenergy T320</a></td><td>300</td><td>200 W</td><td>LiFePO4</td><td>3.7 kg</td><td>{S['price']('tenergy-t320-300wh-power-station')}</td></tr>
+<tr><td><a href="/products/allpowers-p1800-1024wh/">ALLPOWERS P1800</a></td><td>1,024</td><td>1,800 W</td><td>LiFePO4</td><td>~13 kg</td><td>{S['price']('allpowers-p1800-1024wh')}</td></tr>
+<tr><td><a href="/products/bluetti-ac180/">BLUETTI AC180</a></td><td>1,152</td><td>1,800 W</td><td>LiFePO4</td><td>~16 kg</td><td>{S['price']('bluetti-ac180')}</td></tr>
+<tr><td><a href="/products/allpowers-s2000-pro-1451wh/">ALLPOWERS S2000 Pro</a></td><td>1,451</td><td>2,400 W</td><td>NMC</td><td>13 kg</td><td>{S['price']('allpowers-s2000-pro-1451wh')}</td></tr>
+<tr><td><a href="/products/bluetti-ac200l/">BLUETTI AC200L</a></td><td>2,048 (→8,192)</td><td>2,400 W</td><td>LiFePO4</td><td>28.3 kg</td><td>{S['price']('bluetti-ac200l')}</td></tr>
+<tr><td><a href="/products/bluetti-elite-200-v2/">BLUETTI Elite 200 V2</a></td><td>2,074</td><td>2,600 W</td><td>LiFePO4</td><td>24.2 kg</td><td>{S['price']('bluetti-elite-200-v2')}</td></tr>
+<tr><td><a href="/products/bluetti-elite-300/">BLUETTI Elite 300</a></td><td>3,014</td><td>2,400 W</td><td>LiFePO4</td><td>26.3 kg</td><td>{S['price']('bluetti-elite-300')}</td></tr>
+<tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>{S['price']('allpowers-r4000-3456wh')}</td></tr>
 </table></div>
-<p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> (Voc 45.3 V) fits every station above. Prices verified on the brands' US stores; each product page has the tracked offer link and current code where one exists.</p>
+<p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> ({S['price']('allpowers-sp037-400w-solar-panel')}, Voc 45.3 V) fits every station above except two with low-voltage solar inputs: the Tenergy T320 (5–24 V) and the BLUETTI Elite 30 V2 (12–28 V). Check the open-circuit voltage of any panel against the station's input range before wiring panels in series.</p>
+<p>Prices verified on the brands' US stores on {S['verified']}; each product page has the tracked offer link and current code where one exists.</p>
 
 <h2>Quick sizing guide</h2>
 <div class="scroll"><table>
@@ -177,86 +179,84 @@ def PAGES(S):
 <p class="small">Last reviewed {S['effective']}. Corrections welcome at <a href="mailto:{E}">{E}</a>.</p>
 """,
         {"@context": "https://schema.org", "@type": "Article", "headline": "Portable power stations: what the numbers mean",
-         "author": {"@type": "Organization", "name": B}, "publisher": {"@type": "Organization", "name": B}, "datePublished": "2026-10-07", "url": U + "/guides/portable-power-stations/"},
+         "author": {"@type": "Organization", "name": B}, "publisher": {"@type": "Organization", "name": B}, "datePublished": "2026-10-07", "dateModified": S["reviewed"], "url": U + "/guides/portable-power-stations/"},
     )
 
     # ---------------- DATA SCHEMA ----------------
     P["/data/"] = (
         "Data schema",
-        "The normalized product and offer schema Dealectric publishes for electronics, starting with chargers, power banks, cables and power stations.",
+        "The fields Dealectric publishes for every product and offer in offers.json and in page JSON-LD, with an example record.",
         f"""
 <h1>Data schema</h1>
-<p class="lead">Every product on {B} is described with a shared core record plus a category-specific field set, all in the same units, and every offer carries provenance. Pages embed this as <code>schema.org/Product</code> and <code>schema.org/Offer</code> JSON-LD; a JSON API with the same shape is planned (see <a href="/agents/">For AI agents</a>).</p>
+<p class="lead">Every product on {B} is published as one record in <a href="/offers.json">/offers.json</a>, and the same facts are on its product page as visible text and as <code>schema.org/Product</code> + <code>Offer</code> JSON-LD. This page documents the fields exactly as they appear in the feed today.</p>
 
-<h2>Product record (core + charging/power fields, the launch category)</h2>
+<h2>Feed (top level)</h2>
 <div class="scroll"><table>
-<tr><th>Field</th><th>Type / unit</th><th>Notes</th></tr>
-<tr><td><code>id</code></td><td>string</td><td>Stable slug, e.g. <code>anker-prime-100w-3-port</code></td></tr>
-<tr><td><code>brand</code>, <code>model</code>, <code>sku</code></td><td>string</td><td>Manufacturer model number as printed on the product</td></tr>
-<tr><td><code>category</code></td><td>enum</td><td>Launch set: <code>wall_charger</code> · <code>power_bank</code> · <code>cable</code> · <code>wireless_charger</code> · <code>power_station</code> · <code>surge_protector</code>. Planned: <code>security_camera</code>, <code>smart_plug</code>, <code>router</code>, <code>earbuds</code>, <code>headphones</code>, <code>speaker</code>, <code>robot_vacuum</code>, <code>air_purifier</code>, and more — each with its own field block</td></tr>
-<tr><td><code>max_output_w</code></td><td>integer, W</td><td>Total headline output</td></tr>
-<tr><td><code>ports[]</code></td><td>array</td><td>Each: <code>type</code> (usb_c / usb_a / ac / dc12 / wireless), <code>max_w</code>, <code>protocols[]</code> (pd3.0, pd3.1_epr, pps, qc3, qc4+, …)</td></tr>
-<tr><td><code>power_distribution[]</code></td><td>array</td><td>Per-combination split, e.g. <code>{{"ports":["c1","c2"],"w":[65,30]}}</code></td></tr>
-<tr><td><code>capacity_wh</code>, <code>capacity_mah</code></td><td>number</td><td>Power banks / stations; Wh is canonical</td></tr>
-<tr><td><code>chemistry</code></td><td>enum</td><td><code>lfp</code> · <code>nmc</code> · <code>li_ion</code> · <code>unknown</code></td></tr>
-<tr><td><code>cycle_life</code></td><td>integer</td><td>Manufacturer-rated cycles to 80%</td></tr>
-<tr><td><code>ac_continuous_w</code>, <code>ac_surge_w</code></td><td>integer, W</td><td>Power stations</td></tr>
-<tr><td><code>recharge</code></td><td>object</td><td><code>ac_max_w</code>, <code>solar_max_w</code>, <code>solar_voltage_range</code>, <code>ups_switchover_ms</code></td></tr>
-<tr><td><code>cable</code></td><td>object</td><td><code>rated_w</code> (60/100/240), <code>emarker</code> (bool), <code>data_gbps</code>, <code>length_m</code>, <code>usb_if_certified</code></td></tr>
-<tr><td><code>airline_carry_on</code></td><td>enum</td><td><code>ok</code> (≤100 Wh) · <code>approval_required</code> (101–160 Wh) · <code>not_allowed</code></td></tr>
-<tr><td><code>dimensions_mm</code>, <code>weight_g</code></td><td>numbers</td><td></td></tr>
-<tr><td><code>safety_certs[]</code></td><td>array</td><td>ul, etl, ce, ukca, fcc, psE…</td></tr>
-<tr><td><code>warranty_months</code></td><td>integer</td><td></td></tr>
-<tr><td><code>source_urls[]</code>, <code>spec_verified_at</code></td><td>array, ISO date</td><td>Where the specs came from and when we last checked</td></tr>
+<tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+<tr><td><code>site</code>, <code>schema</code>, <code>disclosure</code></td><td>URL</td><td>This site, this page, the affiliate disclosure</td></tr>
+<tr><td><code>generated</code></td><td>ISO date</td><td>When the feed was built</td></tr>
+<tr><td><code>verified</code></td><td>ISO date</td><td>When prices and stock were last checked on the brands' stores</td></tr>
+<tr><td><code>usage</code></td><td>string</td><td>How to hand links and codes to a shopper</td></tr>
+<tr><td><code>products[]</code></td><td>array</td><td>One product record each (below)</td></tr>
 </table></div>
 
-<h2>Offer record</h2>
+<h2>Product record</h2>
 <div class="scroll"><table>
-<tr><th>Field</th><th>Type / unit</th><th>Notes</th></tr>
-<tr><td><code>product_id</code></td><td>string</td><td></td></tr>
-<tr><td><code>merchant</code></td><td>string</td><td>Who fulfils the order (brand store, authorized retailer)</td></tr>
-<tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>List price at verification</td></tr>
-<tr><td><code>coupons[]</code></td><td>array</td><td>Every code that applies to one unit, biggest saving first. Each: <code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>terms</code>, <code>min_order</code>, <code>min_qty</code>, <code>expires</code>, <code>last_worked_at</code> (date the code last worked in the brand's own cart), <code>tested_on</code> (product it was tested on), <code>saving</code>, <code>source</code>. <code>coupon</code> / <code>coupon_terms</code> repeat the best one. Codes with conditions and the codes that failed are on <code>codes_page</code>.</td></tr>
+<tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+<tr><td><code>id</code></td><td>string</td><td>Stable slug, e.g. <code>bluetti-ac180</code>; also the last part of the offer link</td></tr>
+<tr><td><code>brand</code>, <code>name</code>, <code>model</code></td><td>string</td><td>Model as the manufacturer names it, with part numbers where published</td></tr>
+<tr><td><code>category</code></td><td>enum</td><td><code>usb-c-charger</code> · <code>power-bank</code> · <code>wireless-charger</code> · <code>cable</code> · <code>power-station</code> · <code>solar-panel</code> · <code>battery-charger</code> · <code>earbuds</code> · <code>headphones</code> · <code>speaker</code></td></tr>
+<tr><td><code>page</code> (also <code>url</code>)</td><td>URL</td><td>The {B} product page. Not the buy link.</td></tr>
+<tr><td><code>summary</code></td><td>string</td><td>One plain sentence an assistant can quote</td></tr>
+<tr><td><code>fit</code></td><td>string</td><td>Who it is for</td></tr>
+<tr><td><code>caveats[]</code></td><td>strings</td><td>Limits, and anything the manufacturer does not publish or states inconsistently</td></tr>
+<tr><td><code>specs</code></td><td>object</td><td>Name → value, in the same names and units for every product in a category (W, Wh, mAh, mm, kg/g, hours). Values come from the manufacturer's official page unless a caveat says otherwise.</td></tr>
+<tr><td><code>warranty</code>, <code>returns</code></td><td>string</td><td>As the brand's US store states them</td></tr>
+<tr><td><code>offer</code></td><td>object</td><td>Below</td></tr>
+</table></div>
+
+<h2>Offer object</h2>
+<div class="scroll"><table>
+<tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+<tr><td><code>merchant</code>, <code>merchant_url</code></td><td>string, URL</td><td>The brand's official US store and the product's page there</td></tr>
+<tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>Price shown on the store on <code>verified</code></td></tr>
+<tr><td><code>list_price</code></td><td>number or null</td><td>The store's strike-through price, when it shows one</td></tr>
+<tr><td><code>in_stock</code></td><td>bool</td><td>False when the store showed the product sold out on <code>verified</code></td></tr>
+<tr><td><code>link</code></td><td>URL</td><td><code>{U}/go/&lt;id&gt;</code>: the buy link to give the shopper. It redirects to the merchant through the affiliate network.</td></tr>
+<tr><td><code>affiliate</code>, <code>network</code>, <code>cookie_days</code></td><td>bool, string, integer</td><td>Whether <code>link</code> earns us a commission, through which network (CJ Affiliate or Awin), and the attribution window</td></tr>
+<tr><td><code>disclosure_text</code></td><td>string</td><td>A sentence to tell the shopper that <code>link</code> is an affiliate link</td></tr>
+<tr><td><code>coupons[]</code></td><td>array</td><td>Every code that applies to one unit, biggest saving first. Each: <code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>terms</code>, <code>min_order</code>, <code>min_qty</code>, <code>expires</code>, <code>last_worked_at</code> (date the code last worked in the brand's own cart), <code>tested_on</code> (product it was tested on), <code>saving</code> (on this product), <code>source</code>. <code>coupon</code> / <code>coupon_terms</code> repeat the best one.</td></tr>
 <tr><td><code>effective_price</code></td><td>number</td><td>Price after the best code in <code>coupons</code></td></tr>
-<tr><td><code>shipping</code></td><td>object</td><td><code>free_over</code>, <code>regions[]</code>, <code>est_days</code></td></tr>
-<tr><td><code>return_window_days</code></td><td>integer</td><td></td></tr>
-<tr><td><code>in_stock</code></td><td>bool</td><td></td></tr>
-<tr><td><code>url</code></td><td>URL</td><td>A {S['domain']} link that redirects to the merchant. <strong>This may be an affiliate link</strong> — see <code>affiliate</code>.</td></tr>
-<tr><td><code>affiliate</code></td><td>bool</td><td>True when we earn a commission on purchases through <code>url</code></td></tr>
-<tr><td><code>verified_at</code></td><td>ISO datetime</td><td>When price and stock were last checked</td></tr>
+<tr><td><code>codes_page</code></td><td>URL</td><td>All of the brand's codes, including ones that need a minimum order and ones the store rejected</td></tr>
+<tr><td><code>verified</code></td><td>ISO date</td><td>When price and stock were last checked</td></tr>
 </table></div>
 
 <h2>Example</h2>
 <pre><code>{{
-  "product": {{
-    "id": "example-65w-3-port-gan",
-    "brand": "ExampleBrand", "model": "GaN 65", "category": "wall_charger",
-    "max_output_w": 65,
-    "ports": [
-      {{"id":"c1","type":"usb_c","max_w":65,"protocols":["pd3.0","pps"]}},
-      {{"id":"c2","type":"usb_c","max_w":30,"protocols":["pd3.0","pps"]}},
-      {{"id":"a1","type":"usb_a","max_w":22.5,"protocols":["qc3"]}}
-    ],
-    "power_distribution": [
-      {{"ports":["c1"],"w":[65]}},
-      {{"ports":["c1","c2"],"w":[45,20]}},
-      {{"ports":["c1","c2","a1"],"w":[45,15,5]}}
-    ],
-    "safety_certs": ["ul"], "warranty_months": 24,
-    "spec_verified_at": "2026-10-07"
-  }},
-  "offers": [{{
-    "merchant": "ExampleBrand.com", "price": 45.99, "currency": "USD",
-    "coupons": [{{"code":"EXAMPLE10","type":"percent","value":10,"terms":"10% off sitewide","expires":"2026-12-31","last_worked_at":"2026-10-07","tested_on":"example-65w-3-port-gan","saving":4.59}}],
-    "effective_price": 41.40, "return_window_days": 30, "in_stock": true,
-    "url": "{U}/go/example-65w-3-port-gan/examplebrand", "affiliate": true,
-    "verified_at": "2026-10-07T18:02:00Z"
-  }}]
+  "id": "example-65w-3-port-gan",
+  "brand": "ExampleBrand", "name": "ExampleBrand GaN 65 W Charger", "model": "GaN 65",
+  "category": "usb-c-charger",
+  "page": "{U}/example-65w-3-port-gan",
+  "summary": "A 65 W three-port GaN charger with PPS.",
+  "fit": "One charger for a laptop and a phone.",
+  "caveats": ["Per-port wattage with all three ports in use is not published."],
+  "specs": {{"Total output": "65 W", "Ports": "2× USB-C, 1× USB-A", "Protocols": "USB PD 3.0, PPS"}},
+  "warranty": "24 months", "returns": "30-day money-back",
+  "offer": {{
+    "merchant": "ExampleBrand (official US store)", "merchant_url": "https://examplebrand.com/products/gan-65",
+    "price": 45.99, "currency": "USD", "list_price": 59.99, "in_stock": true,
+    "link": "{U}/go/example-65w-3-port-gan", "affiliate": true, "network": "CJ Affiliate", "cookie_days": 30,
+    "disclosure_text": "This is an affiliate link: ...",
+    "coupons": [{{"code": "EXAMPLE10", "type": "percent", "value": 10, "terms": "10% off sitewide", "min_order": null, "min_qty": null,
+                 "expires": "2026-12-31", "last_worked_at": "2026-10-21", "tested_on": "example-65w-3-port-gan", "saving": 4.59, "source": "..."}}],
+    "coupon": "EXAMPLE10", "coupon_terms": "10% off sitewide", "effective_price": 41.40,
+    "codes_page": "{U}/examplebrand-discount-codes", "verified": "2026-10-21"
+  }}
 }}</code></pre>
-<p class="small">Illustrative record with a fictional brand. Units: W, Wh, mm, g. Dates are UTC ISO 8601.</p>
+<p class="small">Illustrative record with a fictional brand. Dates are ISO 8601.</p>
 
-<h2>Category field blocks (planned)</h2>
-<p>Non-power categories reuse the core record and add their own block. Examples of the fields each will carry: <strong>earbuds/headphones</strong> — driver size, codecs (AAC, LDAC, aptX), ANC (yes/no, adaptive), battery hours with and without case, multipoint, IP rating; <strong>security cameras</strong> — resolution, field of view, local vs cloud storage, subscription required, PoE/battery/wired, night-vision type, ecosystem (HomeKit, Alexa, Google); <strong>routers</strong> — Wi-Fi generation, bands, max link rate, ports, mesh support; <strong>robot vacuums</strong> — suction (Pa), mop type, self-empty/self-wash dock, mapping (LiDAR/vSLAM), runtime; <strong>small kitchen appliances</strong> — wattage, capacity, footprint, dishwasher-safe parts. Field names and units will be published here before each category goes live.</p>
+<h2>Planned</h2>
+<p>Typed fields alongside <code>specs</code>, so assistants can filter without parsing strings: <code>max_output_w</code>, <code>ports[]</code> (type, max W, protocols), <code>power_distribution[]</code> (per-port split when several devices are connected), <code>capacity_wh</code>, <code>chemistry</code>, <code>cycle_life</code>, <code>ac_continuous_w</code> / <code>ac_surge_w</code>, <code>solar_max_w</code> / <code>solar_voltage_range</code>, <code>airline_carry_on</code>, <code>codecs[]</code>, <code>anc</code>, <code>battery_hours</code>, <code>ip_rating</code>, <code>warranty_months</code> and <code>return_window_days</code>. New categories (smart home, small appliances) get their own field names here before they go live.</p>
 """,
         None,
     )
@@ -271,8 +271,10 @@ def PAGES(S):
 
 <h2>Available now</h2>
 <dl>
+<dt><a href="/offers.json">/offers.json</a></dt><dd>Every product in one JSON file: specs, warranty, returns, the verified price and stock, every discount code that worked in the brand's cart, and the buy link. Fields are documented on the <a href="/data/">data schema</a> page.</dd>
+<dt><a href="/discount-codes/">/discount-codes</a></dt><dd>Working codes per brand, each tested in the brand's own US store cart, plus the coupon-site codes the store rejected.</dd>
 <dt><a href="/llms.txt">/llms.txt</a></dt><dd>Site summary, page index and usage notes in the llms.txt convention.</dd>
-<dt><a href="/.well-known/{S['descriptor']}">/.well-known/{S['descriptor']}</a></dt><dd>Machine-readable descriptor: coverage, schema version, contact, affiliate disclosure, planned endpoints.</dd>
+<dt><a href="/.well-known/{S['descriptor']}">/.well-known/{S['descriptor']}</a></dt><dd>Machine-readable descriptor: coverage, schema version, contact, affiliate disclosure, feedback endpoint, planned endpoints.</dd>
 <dt>JSON-LD on every page</dt><dd><code>WebSite</code>, <code>Article</code> and (on product pages) <code>Product</code>/<code>Offer</code> markup following schema.org.</dd>
 <dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
 <dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
@@ -293,14 +295,14 @@ def PAGES(S):
 <p>Offer URLs on {B} point to <code>{S['domain']}/go/…</code> and redirect to the merchant. Many are affiliate links; the <code>affiliate</code> field on each offer says so, and the <a href="/disclosure/">disclosure page</a> explains the arrangement. Two requests:</p>
 <ol>
 <li><strong>Hand the link to the human.</strong> Present the offer, the discount code and the link to the person you are assisting, and let them open it. Please do not fetch or "click" <code>/go/</code> links automatically; automated clicks are not purchases and are treated as invalid traffic by merchants.</li>
-<li><strong>Disclose when you cite us.</strong> If you surface a {B} offer link, tell the user it may be an affiliate link. Our offer objects include a ready-made sentence in <code>disclosure_text</code> for this purpose.</li>
+<li><strong>Disclose when you cite us.</strong> If you surface a {B} offer link, tell the user it may be an affiliate link. Every offer object in offers.json includes a ready-made sentence in <code>offer.disclosure_text</code> for this purpose.</li>
 </ol>
 
 <h2>Crawl policy</h2>
 <p>Crawl freely at reasonable rates (≤1 request/second is plenty; the site is static). If you operate an assistant and would like a bulk export, a change feed or earlier access to the API, email <a href="mailto:{E}">{E}</a> with the assistant's name and user-agent string.</p>
 
 <h2>Accuracy and corrections</h2>
-<p>Specifications are taken from manufacturer documentation and recorded with a <code>spec_verified_at</code> date; offers carry <code>verified_at</code>. Treat anything older than 7 days as needing a live check. Report errors through <a href="/feedback"><code>/feedback</code></a> (<code>kind=wrong_price</code>, <code>wrong_spec</code> or <code>broken_link</code>, with the page URL) or to <a href="mailto:{E}">{E}</a> — corrections are published with a changelog entry.</p>
+<p>Specifications are taken from the manufacturer's official US product page; where the page is silent or contradicts itself, the record says so in <code>caveats</code>. Prices and stock carry the date they were last checked (<code>offer.verified</code>, shown on every product page), and each code carries <code>last_worked_at</code>. Treat anything older than 7 days as needing a live check. Report errors through <a href="/feedback"><code>/feedback</code></a> (<code>kind=wrong_price</code>, <code>wrong_spec</code> or <code>broken_link</code>, with the page URL) or to <a href="mailto:{E}">{E}</a>; we fix them in the next build.</p>
 """,
         None,
     )
@@ -318,8 +320,8 @@ def PAGES(S):
 <p>{B} is operated by {S['operator']}, a machine-learning engineer based in {S['location']} who works on search and retrieval systems. It is a one-person, independently funded project.</p>
 <h2>Principles</h2>
 <ul>
-<li><strong>Same fields, same units, every product.</strong> If a specification can't be verified from manufacturer documentation, the field is left empty rather than guessed.</li>
-<li><strong>Freshness is data.</strong> Every spec and every offer carries the date it was last checked.</li>
+<li><strong>Same fields, same units, every product.</strong> If a specification can't be verified from manufacturer documentation, it is left out or flagged in the product's caveats rather than guessed.</li>
+<li><strong>Freshness is data.</strong> Every price, stock status and discount code carries the date it was last checked.</li>
 <li><strong>Ranking is not for sale.</strong> Affiliate commission never changes the order in which products or offers appear; see the <a href="/disclosure/">affiliate disclosure</a>.</li>
 <li><strong>Agents are first-class readers.</strong> Machine-readable formats are maintained alongside the human pages, not as an afterthought.</li>
 </ul>
@@ -338,7 +340,7 @@ def PAGES(S):
 <h1>Contact</h1>
 <p class="lead">Email is the fastest way to reach us: <a href="mailto:{E}">{E}</a>. We usually reply within two business days.</p>
 <h2>Merchants and affiliate managers</h2>
-<p>We work through Impact, Awin, CJ, Rakuten Advertising and Partnerize, and directly with brands. The most useful things you can send us: a product feed or spec sheets, your current promotions, an exclusive discount code for our readers, and the correct deep-link format for your program. We disclose every affiliate relationship on-site.</p>
+<p>We work through CJ Affiliate and Awin today, and are glad to join programs on other networks or work with a brand directly. The most useful things you can send us: a product feed or spec sheets, your current promotions, an exclusive discount code for our readers, and the correct deep-link format for your program. We disclose every affiliate relationship on-site.</p>
 <h2>Assistant and agent developers</h2>
 <p>Ask for bulk exports, API early access or an MCP endpoint. Include your user-agent string so we can allow-list it.</p>
 <h2>Corrections</h2>
@@ -357,9 +359,9 @@ def PAGES(S):
 <h1>Affiliate disclosure</h1>
 <p class="lead">{B} earns money through affiliate marketing. This page explains exactly how, in line with the US Federal Trade Commission's Endorsement Guides (16 CFR Part 255).</p>
 <h2>What an affiliate link is</h2>
-<p>Some links on this site — and in the structured data we publish — lead to merchants' websites through a tracking link. If you click one and make a purchase (sometimes within a window of up to 30 days, depending on the merchant), the merchant pays {B} a commission. <strong>You pay the same price as you would without the link</strong>, and where a merchant gives us a discount code for our readers, you pay less.</p>
+<p>Some links on this site — and in the structured data we publish — lead to merchants' websites through a tracking link. If you click one and make a purchase (within a window of 30 to 60 days, depending on the merchant), the merchant pays {B} a commission. <strong>You pay the same price as you would without the link</strong>, and where a merchant gives us a discount code for our readers, you pay less.</p>
 <h2>Which merchants</h2>
-<p>We participate in affiliate programs run through Impact, Awin, CJ Affiliate, Rakuten Advertising and Partnerize, and directly with electronics brands including (as programs are approved) Anker, Anker SOLIX, Soundcore, eufy, UGREEN, Baseus, Belkin, Satechi, Bluetti, Jackery and Goal Zero, with audio, smart-home and appliance brands added as those categories launch. The current list is kept up to date on this page. We are <em>not</em> currently a participant in the Amazon Services LLC Associates Program.</p>
+<p>Every brand we link to today pays us through one of two affiliate networks: <strong>CJ Affiliate</strong> (Soundcore, Tenergy, ALLPOWERS) and <strong>Awin</strong> (Baseus, ESR, BLUETTI). We are also approved by BLUETTI's global program, Aurzen, Amazfit and Mobile Pixels on CJ, which we do not link to yet, and we have applied to other electronics brands' programs; this list is updated when a brand's products go on the site. Each product page names the network behind its link. We are <em>not</em> currently a participant in the Amazon Services LLC Associates Program.</p>
 <h2>How it affects our content</h2>
 <ul>
 <li>Product and offer ranking is determined by the normalized specifications and the effective price. Commission rates do not influence order or inclusion.</li>
@@ -387,18 +389,18 @@ def PAGES(S):
 <p>{B} ({U}) is operated by {S['operator']}, {S['location']}. Contact: <a href="mailto:{E}">{E}</a>.</p>
 <h2>What we collect</h2>
 <dl>
-<dt>Server and hosting logs</dt><dd>Our hosting provider records the IP address, user-agent string, referring page, requested URL and timestamp of each request, as all web servers do. We use these in aggregate to understand traffic (including which AI assistants read the site) and to detect abuse. Logs are retained for up to 30 days.</dd>
-<dt>Outbound link clicks</dt><dd>When you follow a <code>/go/</code> link we record the destination, the page you came from, a timestamp, your user-agent string, your country and a random click identifier that is passed to the merchant's affiliate network so a resulting purchase can be attributed to {B}. We do not store your IP address. We do not receive your name, address or payment details from the merchant — only that a commission-eligible order occurred.</dd>
+<dt>Server and hosting logs</dt><dd>The site is hosted on GitHub Pages behind Cloudflare. Both record the IP address, user-agent string, referring page, requested URL and timestamp of each request, as all web servers do. We use these in aggregate to understand traffic (including which AI assistants read the site) and to detect abuse. Logs are retained for up to 30 days.</dd>
+<dt>Outbound link clicks</dt><dd>When you follow a <code>/go/</code> link we record the destination, the page you came from, the link's query string (for example <code>utm_source</code>), a timestamp, your user-agent string, your country and a random click identifier that is passed to the merchant's affiliate network so a resulting purchase can be attributed to {B}. We do not store your IP address. We do not receive your name, address or payment details from the merchant — only that a commission-eligible order occurred.</dd>
 <dt>Feedback</dt><dd>If you (or an assistant acting for you) send something to <code>/feedback</code>, we keep what was sent — the message, the optional page, assistant name and contact fields — with a timestamp, user-agent string and country, for as long as it is useful to act on. Nothing you send is published.</dd>
 <dt>Email</dt><dd>If you email us we keep the correspondence to respond to it.</dd>
-<dt>Analytics</dt><dd>If we use analytics, it is a privacy-respecting, cookie-free service that reports aggregate page views without identifying individuals.</dd>
+<dt>Analytics</dt><dd>We use Cloudflare Web Analytics, a cookie-free service that reports aggregate page views without identifying individuals.</dd>
 </dl>
 <h2>What we do not collect</h2>
 <p>No accounts, no newsletter list, no advertising trackers, no cross-site profiling, no sale or sharing of personal information for advertising.</p>
 <h2>Cookies</h2>
-<p>{B} itself sets no cookies. After you click an affiliate link, the merchant and its affiliate network (Impact, Awin, CJ, Rakuten, Partnerize) may set cookies on <em>their</em> domains to attribute your purchase; those are governed by their privacy policies.</p>
+<p>{B} itself sets no cookies. After you click an affiliate link, the merchant and its affiliate network (CJ Affiliate or Awin) may set cookies on <em>their</em> domains to attribute your purchase; those are governed by their privacy policies.</p>
 <h2>Your rights</h2>
-<p><strong>California residents (CCPA/CPRA):</strong> you may request to know what personal information we hold about you and to have it deleted. Because we hold only server logs and email correspondence, requests are typically fulfilled by deleting any email thread that identifies you. We do not sell or share personal information as defined by the CPRA, so there is no opt-out to exercise. <strong>EEA/UK residents (GDPR):</strong> our legal basis for log processing is legitimate interest (site operation and security); you have the rights of access, rectification, erasure, restriction and objection. To exercise any right, email <a href="mailto:{E}">{E}</a>.</p>
+<p><strong>California residents (CCPA/CPRA):</strong> you may request to know what personal information we hold about you and to have it deleted. We hold only server logs, the click and feedback records described above (neither stores your IP address) and email correspondence, so requests are typically fulfilled by deleting any email thread or feedback message that identifies you. We do not sell or share personal information as defined by the CPRA, so there is no opt-out to exercise. <strong>EEA/UK residents (GDPR):</strong> our legal basis for log processing is legitimate interest (site operation and security); you have the rights of access, rectification, erasure, restriction and objection. To exercise any right, email <a href="mailto:{E}">{E}</a>.</p>
 <h2>Children</h2>
 <p>The site is not directed to children under 13 and we do not knowingly collect information from them.</p>
 <h2>Changes</h2>
@@ -437,7 +439,7 @@ LLMS_TXT = """# {brand}
 
 > {tagline}
 
-{brand} ({url}) publishes normalized specifications and verified offers for consumer electronics and small appliances, built out category by category. Launch category: charging and portable power (USB-C wall chargers, power banks, cables, wireless/Qi2 chargers, portable power stations); next: smart home, audio, small appliances. Every product uses a shared core record plus a category field block, in consistent units; every offer carries a merchant, price, any discount code, return window and a last-verified timestamp. Some offer links are affiliate links (flagged `affiliate: true`); see the disclosure page.
+{brand} ({url}) publishes normalized specifications and verified offers for consumer electronics, built out category by category. Live: charging and portable power (USB-C chargers, power banks, cables, wireless/Qi2 chargers, portable power stations, solar panels, rechargeable batteries) and audio (earbuds, headphones, speakers); planned: smart home, small appliances. Every product in a category uses the same spec names and units; every offer carries the brand's official US store, price, stock, warranty and returns, every discount code that worked in the brand's cart, and a last-verified date. Some offer links are affiliate links (flagged `affiliate: true`); see the disclosure page.
 
 ## Pages
 
@@ -518,14 +520,16 @@ def WELL_KNOWN(S):
         "name": S["brand"],
         "url": S["url"],
         "description": S["tagline"],
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "schema_url": S["url"] + "/data/",
         "llms_txt": S["url"] + "/llms.txt",
+        "offers": S["url"] + "/offers.json",
         "sitemap": S["url"] + "/sitemap.xml",
         "coverage": {
             "scope": "consumer electronics and small appliances, built out by category",
-            "categories_live": ["wall_charger", "power_bank", "cable", "wireless_charger", "power_station", "surge_protector"],
-            "categories_planned": ["security_camera", "smart_plug", "smart_lighting", "router", "earbuds", "headphones", "speaker", "robot_vacuum", "air_purifier", "kitchen_appliance"],
+            # Same ids as the category field in offers.json.
+            "categories_live": ["usb-c-charger", "power-bank", "wireless-charger", "cable", "power-station", "solar-panel", "battery-charger", "earbuds", "headphones", "speaker"],
+            "categories_planned": ["security-camera", "smart-plug", "smart-lighting", "router", "robot-vacuum", "air-purifier", "kitchen-appliance"],
             "regions": ["US"],
             "currencies": ["USD"],
         },

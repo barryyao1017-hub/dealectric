@@ -1,13 +1,13 @@
-# Dealectric launch status — updated 2026-10-16 — MVP SHIPPED
+# Dealectric launch status — updated 2026-10-21 — MVP SHIPPED
 
 ## Live
 - https://dealectric.com — GitHub Pages behind Cloudflare (proxy on, SSL Full, Web Analytics, AI Crawl Control). hello@dealectric.com forwards (Porkbun email forwarding) to barrryyao@gmail.com (changed from barryyao1017@gmail.com on 2026-10-20).
-- **Catalog: https://dealectric.com/products — 31 products, 6 brands** (Baseus 5, ESR 5, Tenergy 4, BLUETTI 5, ALLPOWERS 5, Soundcore 7). Each page: normalized spec table, JSON-LD Product/Offer, verified price (official US store, 2026-10-14), warranty/returns, caveats, and a tracked "Buy at <brand>" link.
+- **Catalog: https://dealectric.com/products — 30 products, 6 brands** (Baseus 5, ESR 4, Tenergy 4, BLUETTI 5, ALLPOWERS 5, Soundcore 7). Each page: normalized spec table, JSON-LD Product/Offer, verified price and stock (official US store, 2026-10-21), warranty/returns, caveats, working discount codes, and a tracked "Buy at <brand>" link (`/go/<slug>`). Retired 2026-10-21: Baseus Blade HD (→ Blade H1) and ESR MagSlim power bank (noindex "no longer sold" pages).
 - **Machine feed: https://dealectric.com/offers.json** — every record with specs + `offer.link` (tracked) + coupon. Linked from llms.txt, footer and the agents page.
 - Guides now cross-link the catalog (charging guide → chargers/banks/cables; power-station guide → comparison table of all 10 stations + solar panel).
 
 ## Traffic & indexing (where to look)
-- Requests/visitors incl. bots: Cloudflare → dealectric.com → Analytics. AI crawlers by bot: AI Crawl Control → Overview. Page views: Account → Observability → Web analytics. First 3 days: ~300 requests, ~40 page views, mostly affiliate-network reviewers and scanners; 0 AI crawlers yet.
+- Requests/visitors incl. bots: Cloudflare → dealectric.com → Analytics. AI crawlers by bot: AI Crawl Control → Overview. Page views: Account → Observability → Web analytics. First 3 days (10/14–10/16, Cloudflare API, checked 10/17): 7,334 requests, 62 real page views, 182 AI-crawler requests; most human-looking traffic was affiliate-network reviewers and scanners.
 - **Google Search Console** (sc-domain:dealectric.com; owners: yaojiayi1017@gmail.com (verified 10/14 by TXT record in Cloudflare DNS) and, since 10/18, barrryyao@gmail.com, which is the account signed in to the agent's Chrome). sitemap.xml submitted and read — 42 pages discovered, but on 10/18 only 3 were indexed (home, /privacy, /agents). Indexing requests via URL Inspection are quota-limited to ~10/day; 9 done 10/18 (DLC-13 tracks the rest).
 - **Bing Webmaster Tools** (dealectric.com, Google sign-in as barrryyao@gmail.com; verified 10/14 by CNAME `f303e07e…` → verify.bing.com in Cloudflare DNS). sitemap.xml: Success, 42 URLs discovered, but on 10/18 every page was 'Discovered but not crawled' and the home page carried a stale May-2025 DNS-failure record. All 42 URLs submitted 10/18 via URL Submission (quota 100/day) and via IndexNow (`tools/indexnow.py`; key file published by `build.py`). Bing feeds ChatGPT search / Copilot, so this is the one that matters for assistant citations.
 
@@ -15,7 +15,7 @@
 - Link formats (src/links.json): CJ `https://www.tkqlhce.com/click-101901491-<linkId>?sid=<slug>&url=<encoded product URL>`; Awin `https://www.awin1.com/cread.php?awinmid=<mid>&awinaffid=3120687&clickref=<slug>&ued=<encoded product URL>`. Both click-tested 2026-10-14: land on the exact product page with cjevent / awc tracking attached.
 - Cookie: 30 days (ESR 60). Brand approves commission after its return window (~30–50 days). CJ pays ~20th of the following month by direct deposit (min $50; payment method already set). Awin pays 1st/15th after advertiser settles (min $20; Baseus/AUKEY on accelerated payment; $5 deposit refunded with first payout).
 - **Open: Awin Payment Details requires two-step verification on the account first — Barry.**
-- Coupons live on pages: Soundcore AFSC20 (20% off full-price, to 2026-12-31), ALLPOWERS ALLPOWERS26 (10% sitewide, to 2026-12-30).
+- Coupons live on pages (all cart-tested 2026-10-21, src/coupons.json; per-brand pages at /discount-codes): Soundcore AFSC20 (20% off full-price, to 2026-12-31); ESR PARTNER18 (18%, to 2026-12-31); BLUETTI AFF5OFF (5%, to 2030-12-30); ALLPOWERS ALLPOWERS26 (10% sitewide, to 2026-12-30), EXTRA10 (10% power stations), EXTRA12 (12% over $1,200), BULKRATE (11% on 2+), the last three to 2026-11-15; Baseus AM52 ($6 off the PicoGo AM52, shown on Baseus's own page). Tenergy: none. Working coupon-site codes held back pending DLC-42.
 
 ## Affiliate programs (checked in both dashboards 2026-10-16): 10 approved, 7 declined, 17 pending
 - **Approved (10):** CJ — Tenergy, Soundcore, Bluetti Global, ALLPOWERS, Aurzen, Amazfit US, Mobile Pixels. Awin — ESR (US), BASEUS TECHNOLOGY (US), BLUETTI US. Not yet in the catalog despite approval: Aurzen, Amazfit, Mobile Pixels (outside launch categories).
@@ -33,7 +33,7 @@
 3. Rakuten account — optional.
 
 ## Claude — next
-- Reply to BLUETTI US questionnaire. Weekly price re-verification (bump VERIFIED in src/products.py). Add products as approvals land. `/go/` redirect Worker with sub-ID logging. Weekly assistant-citation probes. Check GSC/Bing coverage in ~1 week.
+- Reply to BLUETTI US questionnaire. Weekly price re-verification (bump VERIFIED in src/products.py). Add products as approvals land. Weekly assistant-citation runs (eval harness). The `/go/` Worker with sub-ID logging is live (2026-10-18). Check GSC/Bing coverage in ~1 week.
 
 ## Tracked-link loop (2026-10-20)
 - Ran growth/improvement-loop.md end to end: baseline + 3 iterations, stopped on the plateau rule (3 flat) with tier B on ChatGPT declared a search-index blockade and tier C ≥ 90%. Report: `growth/loop-report.md`; per-iteration pages linked from `growth/evals/loop/iter-NN.md`.

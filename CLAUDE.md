@@ -4,7 +4,7 @@ Read this before judging project status from the repo alone. Much of the operati
 
 ## What this repo is
 - Static site for https://dealectric.com (GitHub Pages, `main` branch, `/docs` folder, extensionless pages). Only `docs/` is published; everything else in the repo (this file, `TODO.md`, `launch-status.md`, `src/`) is not served on dealectric.com, though the repo itself is public on GitHub.
-- Generator in `src/`: `build.py` (pages, offers.json, sitemap), `content.py` (prose), `products.py` (31 product records, `VERIFIED` date), `links.json` (CJ/Awin program IDs + link IDs). `python3 src/build.py` regenerates everything and writes the published site to `docs/` (it replaces the folder, so never hand-edit files there).
+- Generator in `src/`: `build.py` (pages, offers.json, sitemap), `content.py` (prose), `products.py` (30 product records, `VERIFIED` date, `RETIRED` slugs), `links.json` (CJ/Awin program IDs + link IDs). `python3 src/build.py` regenerates everything and writes the published site to `docs/` (it replaces the folder, so never hand-edit files there).
 - Open items: the "Dealectric To-Dos" artifact (https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp, IDs `DLC-<n>`) is the source of truth; see "Project to-do lists" in the global CLAUDE.md. Current status detail: `launch-status.md`; `TODO.md` is an older mirror. Trust these over any inference from the code. Both are mirrored to the Claude project ("Agent Discoverable") as `ops/TODO.md` and `ops/launch-status.md`.
 
 ## State that is NOT visible in this repo (don't report it as missing)
@@ -17,7 +17,6 @@ Read this before judging project status from the repo alone. Much of the operati
 - `python3` on this machine may be 3.11 (Anaconda); the generator needs 3.12: `python3.12 src/build.py`.
 
 ## Still genuinely open in code
-- `offers.json` records lack a `page` field pointing at the Dealectric product page.
 - Weekly: re-verify prices, bump `VERIFIED` in `src/products.py`, rebuild, push.
 
 ## Conventions

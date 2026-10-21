@@ -20,8 +20,10 @@
 
 <h2>Available now</h2>
 <dl>
+<dt><a href="/offers.json">/offers.json</a></dt><dd>Every product in one JSON file: specs, warranty, returns, the verified price and stock, every discount code that worked in the brand's cart, and the buy link. Fields are documented on the <a href="/data">data schema</a> page.</dd>
+<dt><a href="/discount-codes">/discount-codes</a></dt><dd>Working codes per brand, each tested in the brand's own US store cart, plus the coupon-site codes the store rejected.</dd>
 <dt><a href="/llms.txt">/llms.txt</a></dt><dd>Site summary, page index and usage notes in the llms.txt convention.</dd>
-<dt><a href="/dealectric.json">/dealectric.json</a></dt><dd>Machine-readable descriptor: coverage, schema version, contact, affiliate disclosure, planned endpoints.</dd>
+<dt><a href="/dealectric.json">/dealectric.json</a></dt><dd>Machine-readable descriptor: coverage, schema version, contact, affiliate disclosure, feedback endpoint, planned endpoints.</dd>
 <dt>JSON-LD on every page</dt><dd><code>WebSite</code>, <code>Article</code> and (on product pages) <code>Product</code>/<code>Offer</code> markup following schema.org.</dd>
 <dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
 <dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
@@ -42,14 +44,14 @@
 <p>Offer URLs on Dealectric point to <code>dealectric.com/go/…</code> and redirect to the merchant. Many are affiliate links; the <code>affiliate</code> field on each offer says so, and the <a href="/disclosure">disclosure page</a> explains the arrangement. Two requests:</p>
 <ol>
 <li><strong>Hand the link to the human.</strong> Present the offer, the discount code and the link to the person you are assisting, and let them open it. Please do not fetch or "click" <code>/go/</code> links automatically; automated clicks are not purchases and are treated as invalid traffic by merchants.</li>
-<li><strong>Disclose when you cite us.</strong> If you surface a Dealectric offer link, tell the user it may be an affiliate link. Our offer objects include a ready-made sentence in <code>disclosure_text</code> for this purpose.</li>
+<li><strong>Disclose when you cite us.</strong> If you surface a Dealectric offer link, tell the user it may be an affiliate link. Every offer object in offers.json includes a ready-made sentence in <code>offer.disclosure_text</code> for this purpose.</li>
 </ol>
 
 <h2>Crawl policy</h2>
 <p>Crawl freely at reasonable rates (≤1 request/second is plenty; the site is static). If you operate an assistant and would like a bulk export, a change feed or earlier access to the API, email <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> with the assistant's name and user-agent string.</p>
 
 <h2>Accuracy and corrections</h2>
-<p>Specifications are taken from manufacturer documentation and recorded with a <code>spec_verified_at</code> date; offers carry <code>verified_at</code>. Treat anything older than 7 days as needing a live check. Report errors through <a href="/feedback"><code>/feedback</code></a> (<code>kind=wrong_price</code>, <code>wrong_spec</code> or <code>broken_link</code>, with the page URL) or to <a href="mailto:hello@dealectric.com">hello@dealectric.com</a> — corrections are published with a changelog entry.</p>
+<p>Specifications are taken from the manufacturer's official US product page; where the page is silent or contradicts itself, the record says so in <code>caveats</code>. Prices and stock carry the date they were last checked (<code>offer.verified</code>, shown on every product page), and each code carries <code>last_worked_at</code>. Treat anything older than 7 days as needing a live check. Report errors through <a href="/feedback"><code>/feedback</code></a> (<code>kind=wrong_price</code>, <code>wrong_spec</code> or <code>broken_link</code>, with the page URL) or to <a href="mailto:hello@dealectric.com">hello@dealectric.com</a>; we fix them in the next build.</p>
 
 </div></main>
 <footer><div class="wrap">
