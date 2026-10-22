@@ -31,3 +31,4 @@ kept for comparison with phase 1. Stop rules: 3 flat, blockade, ≥ 90% code-and
 
 | iteration | date | commit | TLR B / D / E (chatgpt) | code-and-link D / E (chatgpt) | claude-code TLR / code+link | change made | decision |
 |---|---|---|---|---|---|---|---|
+| 2.0 | 2026-10-22 | 15543b4 (site unchanged since bd039ec) | 80% (16/20) / 75% (15/20) / 60% (12/20) | 70% (14/20) / 60% (12/20) | 97% (29/30) / 95% (19/20) | baseline before the rebrand (instrument: ui.py now reads ChatGPT's widget markup; the DOM-only pilot is `2026-10-22-p2pilot`) | continue: iteration 1 = rebrand + daily cart check; expect CODE_ONLY 7 → ≤ 3, code-and-link D 70% → ~85% |

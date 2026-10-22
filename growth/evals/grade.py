@@ -107,7 +107,7 @@ CLICK_ID_RE = re.compile(r"(?:clickref|sid)=([a-z0-9-]+)\.([0-9a-f]{6,})", re.I)
 # A negative-control answer that says we do not list the product. Such an answer may still link products we do carry
 # as alternatives (iteration 0 did, with /go/ links); that is not an invented listing, so it passes.
 NEG_HONEST_RE = re.compile(
-    r"dealectric[^.\n]{0,60}?(?:doesn'?t|does not|don'?t|do not|didn'?t|did not)[^.\n]{0,20}?(?:sell|carry|list|stock|offer|have|include)"
+    r"dealectric(?:\.com)?[^.\n]{0,60}?(?:doesn'?t|does not|don'?t|do not|didn'?t|did not)[^.\n]{0,20}?(?:sell|carry|list|stock|offer|have|include)"
     r"|(?:not|no)[^.\n]{0,30}?(?:in|on|at) (?:its|their|the|dealectric'?s?) (?:catalog|catalogue|site|listings?|offers)"
     r"|(?:isn'?t|is not|aren'?t|are not)[^.\n]{0,40}?(?:listed|carried|sold|available|stocked)[^.\n]{0,30}?(?:on|at|by) dealectric"
     r"|no (?:dealectric )?(?:listing|product page|buy link)[^.\n]{0,60}?(?:for|of) (?:this|that|the)"
@@ -157,7 +157,8 @@ def parse_ts(s: str | None) -> datetime | None:
 # ---------------------------------------------------------------- deterministic part
 
 def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], universe: dict | None = None) -> dict:
-    text = rec.get("text") or ""
+    # Curly apostrophes (ChatGPT and Claude both write "doesn’t") would slip past the ASCII-quoted regexes.
+    text = (rec.get("text") or "").replace("\u2019", "'").replace("\u2018", "'")
     universe = universe if universe is not None else E.all_codes()
     expected = set(rec.get("expected") or [])
     shown_src = [(u, E.classify_url(u["url"], offers)) for u in (rec.get("citations") or []) + (rec.get("text_urls") or []) if u.get("url")]
@@ -209,9 +210,10 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], unive
     elif rec.get("kind") == "negative":
         # Pass = no invented /go/ slug, and either nothing of ours presented as the product (L<3) or the answer says
         # outright that we do not list it (alternatives from our catalog may then carry product-page or /go/ links).
-        # On tier D (phase 2) an invented code for the unlisted product also fails.
+        # On tier D (phase 2) a code we never had, presented without saying we do not list the product, also fails
+        # (an honest answer may still pass on coupon-site codes it found elsewhere, as claude-code did for Anker).
         honest = bool(NEG_HONEST_RE.search(text))
-        control_pass = not go_unknown and ((level < 3 and not go_slugs) or honest) and not (tier == "D" and cf["unknown"])
+        control_pass = not go_unknown and ((level < 3 and not go_slugs) or honest) and not (tier == "D" and cf["unknown"] and not honest)
 
     click_ids = sorted({m.group(2) for u in network_links + merchant_links for m in [CLICK_ID_RE.search(u)] if m})
     refusal = REFUSAL_RE.search(text)
@@ -441,8 +443,8 @@ def find_ui_csv(args, rdir: Path, manifest: dict) -> Path | None:
         return Path(args.ui_csv)
     cands = [rdir / "ui.csv"]
     it = (manifest.get("stamp") or {}).get("iteration")
-    if isinstance(it, int) or (isinstance(it, str) and it.isdigit()):
-        cands.append(E.LOOP_DIR / "ui" / f"iter-{int(it):02d}.csv")
+    if (isinstance(it, int) or (isinstance(it, str) and it.isdigit())) and E.stamp_phase(manifest) == 1:
+        cands.append(E.LOOP_DIR / "ui" / f"iter-{int(it):02d}.csv")   # phase-1 manual spot-checks only
     return next((c for c in cands if c.exists()), None)
 
 
