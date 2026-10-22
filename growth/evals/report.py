@@ -385,6 +385,12 @@ def compare(args) -> int:
     ra, rb = resolve_iteration(args.compare[0], args.phase), resolve_iteration(args.compare[1], args.phase)
     rows_a, ui_a, man_a = load_run(ra)
     rows_b, ui_b, man_b = load_run(rb)
+    if args.questions:   # compare on the same questions when the later iteration ran a smaller subset (phase 2: 44 chats)
+        keep = {s.strip() for s in args.questions.split(",") if s.strip()}
+        rows_a = [r for r in rows_a if r["kind"] != "question" or r["qid"] in keep]
+        rows_b = [r for r in rows_b if r["kind"] != "question" or r["qid"] in keep]
+        ui_a = [r for r in ui_a if r.get("qid") in keep]
+        ui_b = [r for r in ui_b if r.get("qid") in keep]
     assistants = [a for a in E.ASSISTANTS if any(r["assistant"] == a for r in rows_a + rows_b)]
     it_a = (man_a.get("stamp") or {}).get("iteration", ra)
     it_b = (man_b.get("stamp") or {}).get("iteration", rb)
@@ -514,6 +520,7 @@ def main() -> int:
     ap.add_argument("--out", default=None, help="scorecard path (default growth/probes/<run-id>-eval.md), or comparison path")
     ap.add_argument("--compare", nargs=2, metavar=("ITER_A", "ITER_B"), help="compare two iterations (numbers from manifest stamps, or run ids)")
     ap.add_argument("--phase", type=int, default=None, help="loop phase the iteration numbers belong to (phase-2 iterations restart at 0); '2:1' in --compare also works")
+    ap.add_argument("--questions", default="", help="--compare only: restrict both sides to these question ids (controls kept)")
     args = ap.parse_args()
     return compare(args) if args.compare else scorecard(args)
 

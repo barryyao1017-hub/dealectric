@@ -441,7 +441,7 @@ def find_ui_csv(args, rdir: Path, manifest: dict) -> Path | None:
         return Path(args.ui_csv)
     cands = [rdir / "ui.csv"]
     it = (manifest.get("stamp") or {}).get("iteration")
-    if it is not None:
+    if isinstance(it, int) or (isinstance(it, str) and it.isdigit()):
         cands.append(E.LOOP_DIR / "ui" / f"iter-{int(it):02d}.csv")
     return next((c for c in cands if c.exists()), None)
 

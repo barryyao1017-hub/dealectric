@@ -155,8 +155,20 @@ primaries are drawn from products with a code) and `--phase 2` (stamped on every
 so `report.py --compare 0 1 --phase 2`, `iterreport.py --iteration 1 --phase 2`, and `run_ids_for_iteration("2:1")`).
 Iteration files are `loop/phase2-iter-NN.md`, report pages `loop/reports/phase2-iter-NN/`.
 
-    python3.12 growth/evals/ui.py --app chatgpt --coded --loop --phase 2 --iteration N --tiers B,D,E --n 2 --run-id <id>
-    python3.12 growth/evals/run.py --assistants claude-code --coded --loop --phase 2 --iteration N --tiers B,D,E --n 1 --run-id <id>
+    # iteration 0 (baseline): 10 questions, n = 2 on every tier, full controls = 84 chats; throttled twice
+    python3.12 growth/evals/ui.py --app chatgpt --coded --loop --phase 2 --iteration 0 --tiers B,D,E --n 2 --run-id <id>
+    # from iteration 1 (Barry, 2026-10-22: a run must fit in one throttle window of ChatGPT Free, ~60 chats): 8 questions,
+    # tier B once, D and E twice, one positive control, the negative controls on tier D once = 44 chats
+    python3.12 growth/evals/ui.py --app chatgpt --coded --loop --loop-k 8 --questions Q04,Q09,Q17,Q21,Q22,Q26,Q27,Q29 \
+        --phase 2 --iteration N --tiers B,D,E --n 2 --n-by-tier B=1 --controls lite --run-id <id>
+    python3.12 growth/evals/run.py --assistants claude-code --coded --loop --loop-k 8 --questions Q04,Q09,Q17,Q21,Q22,Q26,Q27,Q29 \
+        --phase 2 --iteration N --tiers B,D,E --n 1 --controls lite --run-id <id>
+    python3.12 growth/evals/report.py --compare 0 1 --phase 2 --questions Q04,Q09,Q17,Q21,Q22,Q26,Q27,Q29   # baseline on the same questions
+
+`--loop-k` sets the subset size and, with `--questions`, the pool it is drawn from (the rotation to fresh slugs still
+applies); `--n-by-tier B=1` lowers n on the comparison tier; `--controls lite` keeps one positive control and the
+negative controls on the highest link tier the negatives define, once each. Progress is saved per chat: each cell is
+written the moment it finishes and a restarted run with the same run id skips existing cells.
 
 Grading adds the **code dimension** on every row: `code_class` RIGHT_CODE (a code we publish for the product the answer
 linked, or for an expected product), WRONG_CODE (a code we know from `src/coupons.json` but do not publish for it:

@@ -98,6 +98,46 @@ def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True,
                 yield rec, t, tmpl[t].format(**item)
 
 
+def parse_n_by_tier(spec: str | None) -> dict[str, int]:
+    """'B=1,D=2' -> {'B': 1, 'D': 2}."""
+    out = {}
+    for part in (spec or "").split(","):
+        if "=" in part:
+            t, n = part.split("=", 1)
+            out[t.strip()] = int(n)
+    return out
+
+
+def plan_jobs(cells, n: int, n_by_tier: dict[str, int] | None = None, controls: str = "full") -> list[tuple]:
+    """(rec, tier, prompt, n_index) for every chat a run makes. Phase 2 (2026-10-22, Barry: a run must fit under
+    ChatGPT Free's throttle, about 60 chats): `n_by_tier` lowers n on a comparison tier (B=1), and controls 'lite'
+    keeps one positive control on tier A and the negative controls on the highest link tier present, once each."""
+    n_by_tier = n_by_tier or {}
+    neg_tiers = [t for rec, t, _ in cells if rec["kind"] == "negative" and t in LINK_TIERS]
+    top = max(neg_tiers, key=lambda t: LINK_TIERS.index(t)) if neg_tiers else "B"
+    jobs = []
+    pos_done = False
+    for rec, tier, prompt in cells:
+        if rec["kind"] == "question":
+            for i in range(1, n_by_tier.get(tier, n) + 1):
+                jobs.append((rec, tier, prompt, i))
+            continue
+        if controls == "none":
+            continue
+        if controls == "lite":
+            if rec["kind"] == "positive":
+                if pos_done:
+                    continue
+                pos_done = True
+            elif tier != top:
+                continue
+            jobs.append((rec, tier, prompt, 1))
+        else:
+            for i in range(1, n + 1):
+                jobs.append((rec, tier, prompt, i))
+    return jobs
+
+
 def coded_question_ids(q: dict, offers: dict) -> list[str]:
     """The questions whose expected list holds at least one product with a cart-tested code (offers.json
     offer.coupons non-empty): `coded_questions` from questions.yaml when present, else derived from offers.json."""

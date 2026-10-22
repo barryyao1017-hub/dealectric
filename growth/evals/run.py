@@ -577,6 +577,10 @@ def main() -> int:
     ap.add_argument("--questions", default="", help="comma list of ids to run (default all, incl. controls)")
     ap.add_argument("--no-controls", action="store_true")
     ap.add_argument("--n", type=int, default=None, help="runs per cell (default 3; 5 in --loop mode)")
+    ap.add_argument("--n-by-tier", default="", help="per-tier runs, e.g. B=1 (other tiers keep --n)")
+    ap.add_argument("--controls", default="full", choices=["full", "lite", "none"],
+                    help="lite: one positive control on A and the negative controls on the highest link tier, once each")
+    ap.add_argument("--loop-k", type=int, default=10, help="questions in the loop subset (with --questions the pool is those ids)")
     ap.add_argument("--loop", action="store_true", help="improvement-loop subset: 10 rotated questions, tiers B and C, controls")
     ap.add_argument("--coded", action="store_true", help="phase 2: only the questions whose product carries a cart-tested code "
                     "(questions.yaml coded_questions); with --loop the subset is drawn from them and primaries are products with a code")
@@ -610,8 +614,10 @@ def main() -> int:
             recent, d1err = ({}, "mock run; D1 not queried") if args.mock else E.d1_recent_ai_fetch_slugs(7)
             if d1err:
                 log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
-            picked = pick_loop_questions(q, offers, recent, args.iteration, pool=coded_pool,
+            pool = (coded_pool & qids) if (coded_pool is not None and qids) else (qids or coded_pool)
+            picked = pick_loop_questions(q, offers, recent, args.iteration, k=args.loop_k, pool=pool,
                                          slugs=E.coded_slugs(offers) if args.coded else None)
+        qids = None   # the subset is the question list now
         q = {**q, "questions": picked}
         loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err, "coded": bool(args.coded),
                      "questions": [{"id": x["id"], "primary": x["primary"], "fresh": x["fresh"]} for x in picked]}
@@ -648,15 +654,16 @@ def main() -> int:
         keys[a] = k
     active = [a for a in assistants if a not in skipped]
 
-    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls, controls_all_tiers=args.loop))
-    total = len(cells) * args.n * len(active)
-    log(f"run {args.run_id}: {len(cells)} prompts x {args.n} runs x {len(active)} assistants = {total} calls"
+    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls and args.controls != "none", controls_all_tiers=args.loop))
+    plan = E.plan_jobs(cells, args.n, E.parse_n_by_tier(args.n_by_tier), args.controls)
+    total = len(plan) * len(active)
+    log(f"run {args.run_id}: {len(cells)} prompts, {len(plan)} calls per assistant x {len(active)} assistants = {total} calls"
         + (" (MOCK)" if args.mock else ""))
     for a in assistants:
         log(f"  {a:10s} " + (f"SKIPPED: {skipped[a]}" if a in skipped else f"model {models[a]}"))
     if args.dry_run:
-        for rec, tier, prompt in cells:
-            log(f"  {rec['id']}-{tier}  {prompt}")
+        for rec, tier, prompt, n in plan:
+            log(f"  {rec['id']}-{tier}-{n}  {prompt}")
         return 0
     if not active:
         log("nothing to run: every requested assistant is missing its API key (set them or use --mock)")
@@ -678,10 +685,9 @@ def main() -> int:
     jobs = []
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         for a in active:
-            for rec, tier, prompt in cells:
-                for n in range(1, args.n + 1):
-                    jobs.append(pool.submit(run_cell, a, rec, tier, n, prompt, q["system"], keys[a], models[a],
-                                            args.run_id, offers, args.mock, stamp))
+            for rec, tier, prompt, n in plan:
+                jobs.append(pool.submit(run_cell, a, rec, tier, n, prompt, q["system"], keys[a], models[a],
+                                        args.run_id, offers, args.mock, stamp))
         for i, fut in enumerate(as_completed(jobs), 1):
             r = fut.result()
             results[r["status"]] += 1
