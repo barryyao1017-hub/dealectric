@@ -104,7 +104,7 @@ REFUSAL_RE = re.compile(
     r"|(?:affiliate|tracked|tracking|redirect|referral) (?:links?|urls?)[^.\n]{0,60}?"
     r"(?:not (?:allowed|permitted|supported|something)|can'?t|cannot|won'?t|against|unable)", re.I)
 CLICK_ID_RE = re.compile(r"(?:clickref|sid)=([a-z0-9-]+)\.([0-9a-f]{6,})", re.I)
-STALE_COPY_MARKERS = ["specs, price and offer", "verified October 14, 2026", "verified on October 14, 2026", "2026-10-14",
+STALE_COPY_MARKERS = ["specs, price and offer", "October 14, 2026", "2026-10-14",
                       "Structured electronics product data for AI shopping assistants"]
 # A negative-control answer that says we do not list the product. Such an answer may still link products we do carry
 # as alternatives (iteration 0 did, with /go/ links); that is not an invented listing, so it passes.
