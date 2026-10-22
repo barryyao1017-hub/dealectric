@@ -62,7 +62,7 @@ def main() -> int:
     phrases = args.phrase or DEFAULT_PHRASES
     surfaces = [("home", f"{SITE}/"), ("product (coded)", f"{SITE}/{args.coded_slug}"), ("product", f"{SITE}/{args.slug}"),
                 ("llms.txt", f"{SITE}/llms.txt"), ("offers.json", f"{SITE}/offers.json"), ("dealectric.json", f"{SITE}/dealectric.json"),
-                ("agents", f"{SITE}/agents"), ("discount-codes", f"{SITE}/discount-codes"),
+                ("agents", f"{SITE}/agents"), ("discount-codes", f"{SITE}/discount-codes"), ("products (catalog)", f"{SITE}/products"),
                 ("/go/ (coded)", f"{SITE}/go/{args.coded_slug}"), ("/go/", f"{SITE}/go/{args.slug}")]
     uas = sorted(UAS) if args.ua == "both" else [args.ua]
     bad = 0

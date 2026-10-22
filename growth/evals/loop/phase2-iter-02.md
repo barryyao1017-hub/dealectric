@@ -25,7 +25,7 @@ index copy of `/products` has turned over by the evaluation; tier E unchanged; c
 
 ## Change
 
-Commit `loop2-2` (2026-10-22 ~16:00Z): `src/build.py products_index`: every catalog card carries "Code X saves $Y:
+Commit `loop2-2` (ec7a2aa, pushed 2026-10-22 15:30Z): `src/build.py products_index`: every catalog card carries "Code X saves $Y:
 $Z after the code; tested in <brand>'s cart on <date>" and "Buy link to give the shopper: https://dealectric.com/go/
 <slug>" (or "No discount code applies"); the page title and lead name the codes, and the canonical paragraph sits
 under the lead. Rebuilt (docs/products.html and offers.json's generated date are the only changed files), pushed,
@@ -33,8 +33,12 @@ IndexNow; no Worker change, no price change.
 
 ## Proof that the assistant sees the new copy
 
-_(copycheck.py on /products; a tier-C-style probe is not needed for a catalog-page change: the per-cell stale marker
-does the gating)_
+Push 15:30Z, GitHub Pages live after 80 s, IndexNow for `/products` and `/` at 15:32Z (200 OK). Fetched as
+ChatGPT-User through Cloudflare at 15:33Z (cf-cache DYNAMIC): `/products` carries 30 "Buy link to give the shopper"
+lines and 22 "Code X saves" lines; home and discount-codes unchanged and still fresh. No tier-C probe (a
+catalog-page change): the evaluation starts four hours after the deploy, at 19:30Z, and every cell that quotes the
+old catalog title ("normalized specs and verified offers", added to the stale markers) or the pre-10/21 date is
+STALE_CACHE and re-asked.
 
 ## Re-evaluation
 
