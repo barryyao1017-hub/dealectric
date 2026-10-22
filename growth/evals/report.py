@@ -133,6 +133,10 @@ def failure_table(rows: list[dict], ui: list[dict], assistants: list[str]) -> li
         md.append(f"| {cls} | " + " | ".join(str(c) for c in counts) + f" | {sum(counts)} |")
     tot = [sum(r["assistant"] == a for r in api) for a in assistants]
     md.append("| **non-L4 answers (api)** | " + " | ".join(str(c) for c in tot) + f" | {sum(tot)} |")
+    stale = [r for r in rows if r["kind"] == "question" and r["tier"] in E.LINK_TIERS and r.get("stale_copy")]
+    if stale:
+        counts = [sum(r["assistant"] == a for r in stale) for a in assistants]
+        md.append("| answers carrying a pre-rebrand page copy marker (stale_copy, any level) | " + " | ".join(str(c) for c in counts) + f" | {sum(counts)} |")
     coded = [r for r in rows if r["kind"] == "question" and r["tier"] in E.CODE_TIERS and not r.get("error")]
     if coded:   # phase 2: the code dimension on tiers D/E, whatever the link level
         wrong = [sum(r.get("code_class") == "WRONG_CODE" for r in coded if r["assistant"] == a) for a in assistants]

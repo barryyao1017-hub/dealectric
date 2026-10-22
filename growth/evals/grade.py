@@ -104,6 +104,8 @@ REFUSAL_RE = re.compile(
     r"|(?:affiliate|tracked|tracking|redirect|referral) (?:links?|urls?)[^.\n]{0,60}?"
     r"(?:not (?:allowed|permitted|supported|something)|can'?t|cannot|won'?t|against|unable)", re.I)
 CLICK_ID_RE = re.compile(r"(?:clickref|sid)=([a-z0-9-]+)\.([0-9a-f]{6,})", re.I)
+STALE_COPY_MARKERS = ["specs, price and offer", "verified October 14, 2026", "verified on October 14, 2026", "2026-10-14",
+                      "Structured electronics product data for AI shopping assistants"]
 # A negative-control answer that says we do not list the product. Such an answer may still link products we do carry
 # as alternatives (iteration 0 did, with /go/ links); that is not an invented listing, so it passes.
 NEG_HONEST_RE = re.compile(
@@ -217,11 +219,16 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], unive
 
     click_ids = sorted({m.group(2) for u in network_links + merchant_links for m in [CLICK_ID_RE.search(u)] if m})
     refusal = REFUSAL_RE.search(text)
+    # Phase 2 stale-copy marker (2026-10-22): ChatGPT answers from its search-index copy of a page even after fetching
+    # the live one. Pre-rebrand titles ("specs, price and offer", the product page's old <title>) and the pre-10/21
+    # verification date in the answer or in the citation titles mean the cell read old copy.
+    cite_titles = " ".join(str(c.get("title") or "") for c in (rec.get("citations") or []))
+    stale_copy = sorted({m for m in STALE_COPY_MARKERS if m.lower() in (text + " " + cite_titles).lower()})
     # App records (ui.py) score hyperlinks only; a /go/ URL that is in the visible text but not an <a href> is PLAIN_TEXT.
     go_in_text = sorted(s for s in expected if re.search(r"dealectric\.com/go/" + re.escape(s) + r"(?![a-z0-9-])", text))
     st = rec.get("stamp") or {}
     return {
-        "iteration": st.get("iteration"), "site_commit": st.get("site_commit"), "worker_version": st.get("worker_version"),
+        "iteration": st.get("iteration"), "stamp_phase": st.get("phase"), "site_commit": st.get("site_commit"), "worker_version": st.get("worker_version"),
         "worker_deployed_at": st.get("worker_deployed_at"), "gsc_indexed": st.get("gsc_indexed"), "bing_indexed": st.get("bing_indexed"),
         "level": level, "level_label": E.LEVEL_LABELS[level], "l4_api": level == 4, "l4_evidence": l4_evidence,
         "brand_hits": brand_hits, "product_hits": product_hits, "expected_hits": expected_hits,
@@ -235,7 +242,7 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], unive
         "domains_shown": domains_shown, "n_shown_urls": len(shown), "n_consulted_urls": len(consulted),
         "n_raw_citations": len(rec.get("raw_citations") or []),
         "control_pass": control_pass, "refusal_match": refusal.group(0) if refusal else None, "click_ids": click_ids,
-        "ui": bool(rec.get("ui")), "go_in_text": go_in_text,
+        "ui": bool(rec.get("ui")), "go_in_text": go_in_text, "stale_copy": stale_copy,
     }
 
 
@@ -258,6 +265,8 @@ def classify_failure(row: dict, stale_ids: set[str]) -> tuple[str | None, str]:
         return "REFUSED", f"prose: \"{row['refusal_match'][:120]}\""
     if row["click_ids"] and set(row["click_ids"]) & stale_ids:
         return "STALE_CACHE", f"click id(s) {sorted(set(row['click_ids']) & stale_ids)} predate the last Worker deploy"
+    if row.get("stale_copy") and (row.get("stamp_phase") or 0) >= 2 and (row.get("iteration") or 0) >= 1:
+        return "STALE_CACHE", "answer built from a pre-rebrand copy of the page: " + ", ".join(row["stale_copy"])
     if row["network_links"]:
         return "NETWORK_HOP", "linked " + "; ".join(row["network_links"][:2])
     if row["merchant_links"]:
