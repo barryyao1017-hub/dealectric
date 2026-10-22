@@ -72,7 +72,12 @@ ever fetched robots.txt). The iteration waits: a probe repeats every 2 h on the 
 the new wording or title, and the grader flags any evaluation cell that quotes the old title or the pre-10/21 date
 as STALE_CACHE (`stale_copy`), which does not count.
 
-_(re-probes appended below)_
+Re-probes (`reprobe.sh`, same slug): 10:45Z no answer within 180 s (RuntimeError: no answer within 180s (url https://chatgpt.com); **12:48Z fresh**:
+"Verified Dealectric price: $1,499.00 … checked on October 21, 2026. Price after discount: $1,319.12. Discount code:
+EXTRA12 — saves $179.88 (12% off). Exact buy link Dealectric provides: Buy at ALLPOWERS → … Dealectric confirms the
+discount was tested in the manufacturer's checkout." Both the product page and `/go/allpowers-r4000-3456wh` linked.
+ChatGPT's index copy turned over between 08:41Z and 12:48Z, about four hours after the deploy (push 08:37Z, IndexNow
+08:41Z). The evaluation started at 12:50Z.
 
 ## Re-evaluation design
 
@@ -88,7 +93,28 @@ ChatGPT's index cache): 24/24 L4 and 24/24 code-and-link on B, D and E (iteratio
 and 15/16); 16 of 24 answers quote the cart test ("tested in ESR's cart on 2026-10-22"); controls 4/4 (N01-D
 after a grader fix: "Anker isn't one of them" now counts as an honest answer).
 
-**ChatGPT**: _(pending the index turnover; re-probes below)_
+**ChatGPT, first pass** (run `2026-10-22-p2iter01`, 12:50–13:33Z, 44 chats, 2 timed out and re-asked): on the
+8 questions, with the baseline restricted to the same questions (`compare-p2-00-01.md`):
+
+| reading (ChatGPT) | iteration 0 (8 q) | iteration 1 | delta |
+|---|---|---|---|
+| **code-and-link, tiers D+E** | **69% (22/32)** | **83% (25/30)** | **+14.6** |
+| code-and-link D / E | 75% / 62% | 87% / 91% | +12 / +29 |
+| tracked link B / D / E | 75% / 81% / 62% | 88% / 87% / 91% | |
+| right code shown D / E | 81% / 81% | 91% / 91% | |
+| CODE_ONLY | 5 (of 32) | 1 (of 30) | |
+| controls | | 4/4 | |
+
+claude-code 24/24 on both metrics. Pooled TLR +8.2 points (≥ 5: improvement by the phase-1 rule); intervals overlap
+(n = 30 and 32), so the number to trust is the direction and the failure classes: CODE_ONLY fell from 5 to 1, tier
+E (no link asked) now carries the link in 21 of 23 answers. 9 of the 38 ChatGPT answers still show a pre-rebrand
+marker: 3 quote "verified October 14, 2026" in the text (content read from the old copy), 6 only show the old page
+title in the citation chip (the search index's title, while the answer text carries the 10/21 verification and in
+two cases the cart test). By the plan's rule those cells do not count yet: they are re-asked after a further 2 h wait
+(the 2 timed-out cells too), and the numbers above are provisional.
+
+Excluding the 9 marked cells: code-and-link D 10/13, E 10/12 (80% on D+E), tier B 0/4 (the four tier-B answers
+that were not marked all lacked the code; small n).
 
 ## Decision
 

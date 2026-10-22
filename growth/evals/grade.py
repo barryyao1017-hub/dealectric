@@ -225,6 +225,10 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], unive
     # verification date in the answer or in the citation titles mean the cell read old copy.
     cite_titles = " ".join(str(c.get("title") or "") for c in (rec.get("citations") or []))
     stale_copy = sorted({m for m in STALE_COPY_MARKERS if m.lower() in (text + " " + cite_titles).lower()})
+    # "content": a pre-deploy date or wording in the answer itself; "title": only the old page title, which ChatGPT shows
+    # as the citation chip label from its search index even when the fetched content was fresh.
+    stale_strength = ("content" if any(m.lower() in text.lower() for m in STALE_COPY_MARKERS if "October 14" in m or "2026-10-14" in m)
+                      else "title" if stale_copy else None)
     # App records (ui.py) score hyperlinks only; a /go/ URL that is in the visible text but not an <a href> is PLAIN_TEXT.
     go_in_text = sorted(s for s in expected if re.search(r"dealectric\.com/go/" + re.escape(s) + r"(?![a-z0-9-])", text))
     st = rec.get("stamp") or {}
@@ -243,7 +247,7 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], unive
         "domains_shown": domains_shown, "n_shown_urls": len(shown), "n_consulted_urls": len(consulted),
         "n_raw_citations": len(rec.get("raw_citations") or []),
         "control_pass": control_pass, "refusal_match": refusal.group(0) if refusal else None, "click_ids": click_ids,
-        "ui": bool(rec.get("ui")), "go_in_text": go_in_text, "stale_copy": stale_copy,
+        "ui": bool(rec.get("ui")), "go_in_text": go_in_text, "stale_copy": stale_copy, "stale_strength": stale_strength,
     }
 
 
