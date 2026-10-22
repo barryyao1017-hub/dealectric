@@ -1,4 +1,4 @@
-# Dealectric launch status — updated 2026-10-21 — MVP SHIPPED
+# Dealectric launch status — updated 2026-10-22 — MVP SHIPPED
 
 ## Live
 - https://dealectric.com — GitHub Pages behind Cloudflare (proxy on, SSL Full, Web Analytics, AI Crawl Control). hello@dealectric.com forwards (Porkbun email forwarding) to barrryyao@gmail.com (changed from barryyao1017@gmail.com on 2026-10-20).
@@ -40,4 +40,10 @@
 - Numbers (ChatGPT app, signed in, Free): tracked-link rate 55–60% on tiers B+C; tier C (page URL given) 95%; tier B (site named) 15–30%, gated on Bing having our product pages (public `site:` = 0). Claude as an agent: 90–100%. Unprompted citations: 0.
 - Site changes kept: home page lists every product; the `/go/` text page for AI fetchers names the store but prints no store URL; product pages print the `/go/` URL as "Buy link to give the shopper".
 - **DLC-12 (weekly assistant probes) is replaced by the harness**: `python3.12 growth/evals/ui.py --app chatgpt --loop --iteration N --n 2` plus `grade.py`/`report.py` (see growth/evals/README.md). Logged-out manual probes are no longer the method.
+
+## Phase 2 of the loop: the discount-code rebrand (2026-10-22, DLC-46, in progress)
+- The site now leads with the cart-tested codes on every surface (titles, hero, product offer block code → saving → test date → link, offers.json `agent_note`, llms.txt, dealectric.json, /agents, discount-codes pages, the Worker's /go/ text page), one canonical paragraph telling the agent to give the shopper the code and the buy link together. Copy says "tested in <brand>'s cart on <date>" until the daily sweep has run on its own.
+- **Daily cart check is scheduled**: launchd `com.jiayiyao.dealectric.codesweep` at 06:37 local runs `tools/codesweep.py` through the agent's Chrome, updates `src/coupons.json`, rebuilds, pushes, redeploys the Worker when needed (log `~/Library/Logs/claude-automations/dealectric-codesweep.log`). First unattended run expected 2026-10-23.
+- Baseline before the rebrand (iteration 0, signed-in ChatGPT Free): tracked link B 80% / D 75% / E 60%; the right code shown D 85% / E 80%; code-and-link D 70% / E 60%; 0 wrong codes. Instrument fix on the way: ChatGPT's product cards carry the buy link as a widget button (not an href), now read from the conversation JSON. Reports: `growth/evals/loop/phase2-iter-NN.md`.
+- Iteration 1 (the rebrand) is deployed and proven visible to ChatGPT-User/Claude-User fetches, but ChatGPT answers from its search-index copy of pages (a day or more old), so the evaluation waits for that copy to turn over (`growth/evals/reprobe.sh`).
 
