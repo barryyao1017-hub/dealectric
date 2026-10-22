@@ -30,14 +30,21 @@ answers carried the same pre-10/21 date.
 
 **Claude as an agent (Claude Code CLI).** Fetches live: home page, offers.json or the product page, then links
 `/go/` from the data, with the code and its test date; 23/24 (baseline) and 24/24 (after the rebrand) on the same
-questions, 16 of 24 post-rebrand answers quoting the cart test.
+questions, 16 of 24 post-rebrand answers quoting the cart test. It is unaffected by ChatGPT's index lag: the day's
+copy is what it reads.
+
+**After the rebrand, ChatGPT** hands over code and link together when it reaches a product page ("Discount code:
+PARTNER18 — saves $17.99. Reported tested in ESR's checkout today … Buy link"); its remaining misses come from
+landing on the home page, the catalog page or a guide and stopping there ("I couldn't verify the exact
+product-specific buy URL"), which iteration 2 addresses on the catalog page.
 
 ## 2. What we changed
 
 | iteration | change (lever) | ChatGPT code-and-link D / E before → after | tracked link B / D / E | stayed? |
 |---|---|---|---|---|
 | 0 | baseline, no copy change (instrument: widget-aware `ui.py`) | 70% / 60% (on the 8-question subset 75% / 62%) | 80% / 75% / 60% | — |
-| 1 | the rebrand: one canonical paragraph (code, saving, test date, link, "give both") on every surface, offer block first on the product page, Worker `/go/` text page names the code; plus the daily cart check | _(pending ChatGPT's index turnover)_ | | |
+| 1 | the rebrand: one canonical paragraph (code, saving, test date, link, "give both") on every surface, offer block first on the product page, Worker `/go/` text page names the code; plus the daily cart check | 75% / 62% → 81% / 90% (D+E 69% → 85%, 8 questions, fresh cells) | 63% / 81% / 90% | yes (improvement; 6 stale tier-E cells excluded) |
+| 2 | the catalog page's cards carry the code, the saving, the test date and the buy link (ChatGPT's search lands on `/products`) | _(pending)_ | | |
 
 ## 3. Why the loop stopped
 
