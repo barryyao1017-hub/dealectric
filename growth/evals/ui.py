@@ -93,10 +93,40 @@ READ_JS = r"""
 
 # ---------------------------------------------------------------- minimal CDP client
 
+def browser_call(method: str, **params):
+    """One command on the browser-level DevTools socket (the URL in /json/version); a fresh connection each time."""
+    v = json.loads(urllib.request.urlopen(f"{CDP}/json/version", timeout=10).read())
+    ws = websocket.create_connection(v["webSocketDebuggerUrl"], timeout=30, suppress_origin=True)
+    try:
+        ws.send(json.dumps({"id": 1, "method": method, "params": params}))
+        while True:
+            msg = json.loads(ws.recv())
+            if msg.get("id") == 1:
+                if "error" in msg:
+                    raise RuntimeError(f"{method}: {msg['error']}")
+                return msg.get("result", {})
+    finally:
+        ws.close()
+
+
 class Tab:
+    """A fresh tab opened in the background. /json/new and /json/close count as user actions and bring Chrome's window
+    to the front on every chat (Barry, 2026-10-22: the Mac was unusable during a run), so the tab is created with
+    Target.createTarget(background=true) on the browser socket, driven over its own page socket, and closed with
+    Target.closeTarget. Nothing here calls Page.bringToFront."""
+
     def __init__(self, url: str = "about:blank"):
-        req = urllib.request.Request(f"{CDP}/json/new?{urllib.parse.quote(url, safe=':/?&=')}", method="PUT")
-        self.info = json.loads(urllib.request.urlopen(req, timeout=10).read())
+        self.target_id = browser_call("Target.createTarget", url=url, background=True)["targetId"]
+        self.info = None
+        for _ in range(50):   # the page target appears in /json/list a moment after creation
+            for t in json.loads(urllib.request.urlopen(f"{CDP}/json/list", timeout=10).read()):
+                if t.get("id") == self.target_id and t.get("webSocketDebuggerUrl"):
+                    self.info = t
+            if self.info:
+                break
+            time.sleep(0.1)
+        if not self.info:
+            raise RuntimeError("new background tab not found in /json/list")
         self.ws = websocket.create_connection(self.info["webSocketDebuggerUrl"], timeout=30, suppress_origin=True)
         self._id = 0
         self.responses: dict[str, dict] = {}   # requestId -> {url, mimeType} from Network.responseReceived (Network.enable first)
@@ -134,7 +164,7 @@ class Tab:
             self.ws.close()
         finally:
             try:
-                urllib.request.urlopen(f"{CDP}/json/close/{self.info['id']}", timeout=10).read()
+                browser_call("Target.closeTarget", targetId=self.target_id)
             except Exception:
                 pass
 
@@ -375,6 +405,10 @@ def main() -> int:
     ap.add_argument("--questions", default="")
     ap.add_argument("--no-controls", action="store_true")
     ap.add_argument("--n", type=int, default=1)
+    ap.add_argument("--n-by-tier", default="", help="per-tier runs, e.g. B=1 (other tiers keep --n)")
+    ap.add_argument("--controls", default="full", choices=["full", "lite", "none"],
+                    help="lite: one positive control on A and the negative controls on the highest link tier, once each")
+    ap.add_argument("--loop-k", type=int, default=10, help="questions in the loop subset (with --questions the pool is those ids)")
     ap.add_argument("--loop", action="store_true", help="the loop subset (10 rotated questions) like run.py --loop")
     ap.add_argument("--coded", action="store_true", help="phase 2: only questions whose product carries a code (see run.py --coded)")
     ap.add_argument("--phase", type=int, default=1, help="loop phase stamped on every file (2 = the discount-code hypothesis)")
@@ -406,17 +440,21 @@ def main() -> int:
             recent, d1err = E.d1_recent_ai_fetch_slugs(7)
             if d1err:
                 R.log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
-            picked = R.pick_loop_questions(q, offers, recent, args.iteration, pool=coded_pool,
+            pool = (coded_pool & qids) if (coded_pool is not None and qids) else (qids or coded_pool)
+            picked = R.pick_loop_questions(q, offers, recent, args.iteration, k=args.loop_k, pool=pool,
                                            slugs=E.coded_slugs(offers) if args.coded else None)
+        qids = None   # the subset is the question list now
         q = {**q, "questions": picked}
         loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err, "coded": bool(args.coded),
                      "questions": [{"id": x["id"], "primary": x["primary"], "fresh": x["fresh"]} for x in picked]}
         R.log("loop subset: " + ", ".join(f"{x['id']}={x['primary']}{'' if x['fresh'] else '*'}" for x in picked))
-    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls, controls_all_tiers=args.loop))
-    R.log(f"ui run {args.run_id}: app {args.app}, {len(cells)} prompts x {args.n} = {len(cells) * args.n} chats")
+    cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls and args.controls != "none", controls_all_tiers=args.loop))
+    jobs = E.plan_jobs(cells, args.n, E.parse_n_by_tier(args.n_by_tier), args.controls)
+    R.log(f"ui run {args.run_id}: app {args.app}, {len(cells)} prompts, {len(jobs)} chats (n={args.n}"
+          + (f", {args.n_by_tier}" if args.n_by_tier else "") + f", controls {args.controls})")
     if args.dry_run:
-        for rec, tier, prompt in cells:
-            R.log(f"  {rec['id']}-{tier}  {prompt}")
+        for rec, tier, prompt, n in jobs:
+            R.log(f"  {rec['id']}-{tier}-{n}  {prompt}")
         return 0
     b = browser_ok()
     if not b:
@@ -430,11 +468,11 @@ def main() -> int:
                      "models": {**manifest.get("models", {}), args.app: APPS[args.app]["model"]},
                      "mock": False, "tiers": sorted(set(manifest.get("tiers", [])) | set(tiers)), "n": max(manifest.get("n", 0), args.n),
                      "system": q["system"], "questions_version": q.get("version"), "stamp": stamp, "loop": loop_info or manifest.get("loop"),
-                     "ui_apps": {**manifest.get("ui_apps", {}), args.app: {"browser": b, "n": args.n, "tiers": tiers}}})
+                     "ui_apps": {**manifest.get("ui_apps", {}), args.app: {"browser": b, "n": args.n, "n_by_tier": args.n_by_tier,
+                                                                           "controls": args.controls, "tiers": tiers, "chats": len(jobs)}}})
     E.write_json(manifest_path, manifest)
 
     results = {"ok": 0, "error": 0, "exists": 0}
-    jobs = [(rec, tier, prompt, n) for rec, tier, prompt in cells for n in range(1, args.n + 1)]
     for i, (rec, tier, prompt, n) in enumerate(jobs, 1):
         r = run_cell(args.app, rec, tier, n, prompt, args.run_id, stamp, args.pause)
         results[r["status"]] += 1
