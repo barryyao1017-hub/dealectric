@@ -393,7 +393,7 @@ def main() -> int:
     ap.add_argument("--no-deploy", action="store_true", help="never run wrangler deploy")
     ap.add_argument("--brand", default=None, help="only this brand (testing)")
     args = ap.parse_args()
-    today = dt.date.today().isoformat()
+    today = dt.datetime.now(dt.timezone.utc).date().isoformat()   # UTC, like the checked_at stamps and the build
     data = json.load(open(COUPONS, encoding="utf-8"))
     codes = live_published(data["codes"], today)
     if args.brand:
