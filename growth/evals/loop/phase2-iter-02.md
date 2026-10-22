@@ -25,8 +25,11 @@ index copy of `/products` has turned over by the evaluation; tier E unchanged; c
 
 ## Change
 
-_(commit `loop2-2`, pending: `src/build.py products_index` and the catalog page's title/lead; rebuilt, pushed, IndexNow;
-no Worker change)_
+Commit `loop2-2` (2026-10-22 ~16:00Z): `src/build.py products_index`: every catalog card carries "Code X saves $Y:
+$Z after the code; tested in <brand>'s cart on <date>" and "Buy link to give the shopper: https://dealectric.com/go/
+<slug>" (or "No discount code applies"); the page title and lead name the codes, and the canonical paragraph sits
+under the lead. Rebuilt (docs/products.html and offers.json's generated date are the only changed files), pushed,
+IndexNow; no Worker change, no price change.
 
 ## Proof that the assistant sees the new copy
 
