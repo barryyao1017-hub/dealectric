@@ -99,6 +99,7 @@ class Tab:
         self.info = json.loads(urllib.request.urlopen(req, timeout=10).read())
         self.ws = websocket.create_connection(self.info["webSocketDebuggerUrl"], timeout=30, suppress_origin=True)
         self._id = 0
+        self.responses: dict[str, dict] = {}   # requestId -> {url, mimeType} from Network.responseReceived (Network.enable first)
 
     def call(self, method: str, **params):
         self._id += 1
@@ -109,6 +110,15 @@ class Tab:
                 if "error" in msg:
                     raise RuntimeError(f"{method}: {msg['error']}")
                 return msg.get("result", {})
+            if msg.get("method") == "Network.responseReceived":
+                r = msg["params"]["response"]
+                self.responses[msg["params"]["requestId"]] = {"url": r.get("url", ""), "mimeType": r.get("mimeType", "")}
+
+    def body(self, request_id: str) -> str:
+        try:
+            return self.call("Network.getResponseBody", requestId=request_id).get("body", "") or ""
+        except Exception:
+            return ""
 
     def eval(self, js: str):
         r = self.call("Runtime.evaluate", expression=js, returnByValue=True, awaitPromise=True)
@@ -139,12 +149,86 @@ def browser_ok() -> str | None:
 
 # ---------------------------------------------------------------- one prompt
 
+GENUI_URL_RE = re.compile(r"""GenUI\.openUrl\(\s*["']([^"']+)["']""")
+MD_LINK_RE = re.compile(r"\[([^\]]*)\]\((https?://[^)\s]+)\)")
+HREF_RE = re.compile(r"""<a\b[^>]*href=["']([^"']+)["'][^>]*>(.*?)</a>""", re.I | re.S)
+CONV_ID_RE = re.compile(r'"conversation_id"\s*:\s*"([0-9a-f-]{36})"')
+
+
+def conversation_markup(tab: Tab) -> dict:
+    """The assistant's answer as ChatGPT's own markup, from the conversation JSON the page fetched
+    (/backend-api/conversation/<id>). Since 2026-10-22 ChatGPT answers shopping prompts with "dil" widget markup
+    (model_dil_v2): product cards whose Buy button is `<button onClick={() => GenUI.openUrl("https://dealectric.com/
+    go/...")}>`. The URL is not an <a href> anywhere in the DOM, yet the shopper's click opens it, so the DOM read
+    alone undercounts L4. Returns {"parts": [...], "urls": [{url, text, source}], "conversation_id", "note"}."""
+    out = {"parts": [], "urls": [], "conversation_id": None, "note": None}
+    tab.eval("1")   # drain pending Network events
+    bodies = []
+    for rid, r in list(tab.responses.items()):
+        if re.search(r"/backend-api/conversation/[0-9a-f-]{36}", r["url"]):
+            b = tab.body(rid)
+            if b.startswith("{"):
+                bodies.append((r["url"], b))
+    if not bodies:
+        # The GET by id is issued by the page after generation; if it was missed, find the id in the SSE stream and fetch.
+        cid = None
+        for rid, r in list(tab.responses.items()):
+            if r["url"].rstrip("/").endswith("/backend-api/f/conversation") or r["url"].rstrip("/").endswith("/backend-api/conversation"):
+                m = CONV_ID_RE.search(tab.body(rid))
+                if m:
+                    cid = m.group(1); break
+        if cid:
+            try:
+                b = tab.eval(f"fetch('/backend-api/conversation/{cid}', {{credentials: 'include'}}).then(r => r.text())")
+                if b and b.startswith("{"):
+                    bodies.append((f"/backend-api/conversation/{cid}", b))
+            except Exception as e:  # noqa: BLE001
+                out["note"] = f"conversation fetch failed: {e}"[:160]
+    if not bodies:
+        out["note"] = out["note"] or "no conversation JSON captured (DOM links only)"
+        return out
+    url, body = bodies[-1]
+    try:
+        d = json.loads(body)
+    except ValueError:
+        out["note"] = "conversation JSON unparseable"
+        return out
+    out["conversation_id"] = d.get("conversation_id")
+    mapping = d.get("mapping") or {}
+    # Walk the current branch from the leaf up to the last user message; keep assistant text parts in order.
+    node = mapping.get(d.get("current_node"))
+    chain = []
+    while node:
+        m = node.get("message") or {}
+        if (m.get("author") or {}).get("role") == "user":
+            break
+        chain.append(m)
+        node = mapping.get(node.get("parent"))
+    seen = set()
+    for m in reversed(chain):
+        c = m.get("content") or {}
+        if (m.get("author") or {}).get("role") != "assistant" or c.get("content_type") != "text":
+            continue
+        for p in c.get("parts") or []:
+            if isinstance(p, str) and p.strip() and p not in seen:
+                seen.add(p); out["parts"].append(p)
+    text = "\n".join(out["parts"])
+    for m in GENUI_URL_RE.finditer(text):
+        out["urls"].append({"url": m.group(1), "text": "widget button", "source": "widget_button"})
+    for m in MD_LINK_RE.finditer(text):
+        out["urls"].append({"url": m.group(2), "text": m.group(1)[:120], "source": "markup_link"})
+    for m in HREF_RE.finditer(text):
+        out["urls"].append({"url": m.group(1), "text": re.sub(r"<[^>]+>", "", m.group(2))[:120], "source": "markup_link"})
+    return out
+
+
 def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
     # temporary-chat: no memory, not saved to the account's history (signed-in state). hints=search forces the
     # web-search tool. Logged out, ?q= auto-submits; signed in, it only fills the composer and we click Send.
     url = "https://chatgpt.com/?temporary-chat=true&hints=search&q=" + urllib.parse.quote(prompt, safe="")
     tab = Tab("about:blank")
     try:
+        tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
         tab.navigate(url)
         t0 = time.time()
         last, same, state, submitted, account, temporary, polls, trace = None, 0, None, 0, None, None, 0, []
@@ -199,13 +283,22 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
         shot = screenshot(tab, shot_path) if shot_path else None
         links = [l for l in state["links"] if not APP_HOST_RE.match(l["href"]) and not AD_RE.search(l["href"])]
         cites = [{"url": l["href"], "title": l["text"], "source": "ui_href"} for l in links]
+        markup = conversation_markup(tab)
+        have = {E.strip_tracking(c["url"]) for c in cites}
+        for u in markup["urls"]:
+            if not APP_HOST_RE.match(u["url"]) and not AD_RE.search(u["url"]) and E.strip_tracking(u["url"]) not in have:
+                have.add(E.strip_tracking(u["url"]))
+                cites.append({"url": u["url"], "title": u["text"], "source": u["source"]})
+        n_widget = sum(u["source"] == "widget_button" for u in markup["urls"])
         return {"model": APPS["chatgpt"]["model"], "request": {"url": url, "method": "fresh tab, auto-submitted via ?q="},
-                "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"]},
+                "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"],
+                             "markup": markup["parts"], "markup_urls": markup["urls"], "conversation_id": markup["conversation_id"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
                 "account": account, "temporary_chat": bool(temporary), "trace": trace,
                 "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "
-                          f"{f'submitted after {submitted} send attempt(s)' if submitted else 'auto-submitted'}, agent Chrome via CDP, hrefs from the DOM"]
+                          f"{f'submitted after {submitted} send attempt(s)' if submitted else 'auto-submitted'}, agent Chrome via CDP, "
+                          f"hrefs from the DOM plus the answer markup ({n_widget} widget button(s))" + (f"; {markup['note']}" if markup["note"] else "")]
                          + ([] if finished else ["answer still changing at timeout"]),
                 "latency_s": round(time.time() - t0, 1)}
     finally:

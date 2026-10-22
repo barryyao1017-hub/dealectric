@@ -33,7 +33,8 @@ import evallib as E  # noqa: E402
 import report as RPT  # noqa: E402
 
 REPORTS_DIR = E.LOOP_DIR / "reports"
-MAX_SHOTS = 8          # screenshots shown inline (all failures first, then L4 examples)
+MAX_SHOTS = 8          # screenshots shown as cards (all failures first, then L4 examples); every screenshot is copied and listed in the gallery
+ALL_SHOTS: list[dict] = []
 MAX_TEXT_CARDS = 4     # answer-text cards per assistant when there is no screenshot
 H = html.escape
 
@@ -281,12 +282,16 @@ def responses(d: dict, out_dir: Path) -> tuple[list[dict], list[dict]]:
                 "link": (r.get("go_slugs") or r.get("page_slugs") or r.get("merchant_links") or r.get("network_links") or [""])[0],
                 "quote": r.get("explanation") or "", "text": (rec.get("text") or "")[:700]}
         shot = rec.get("screenshot")
-        if shot and f and (f.parent / shot).exists() and len(shots) < MAX_SHOTS and (r["level"] < 4 or len(shots) < MAX_SHOTS - 2):
+        if shot and f and (f.parent / shot).exists():
+            # Every chat's screenshot (prompt + answer) is kept with the report (Barry, 2026-10-22); the page shows the
+            # first MAX_SHOTS as cards and the rest in the gallery at the end.
             dst = out_dir / "shots" / f"{r['assistant']}-{shot}"
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(f.parent / shot, dst)
             card["img"] = f"shots/{dst.name}"
-            shots.append(card)
+            ALL_SHOTS.append(dict(card))
+            if len(shots) < MAX_SHOTS and (r["level"] < 4 or len(shots) < MAX_SHOTS - 2):
+                shots.append(card)
         elif card["text"] and per_a.get(r["assistant"], 0) < MAX_TEXT_CARDS and (r["level"] < 4 or per_a.get(r["assistant"], 0) < 2):
             per_a[r["assistant"]] = per_a.get(r["assistant"], 0) + 1
             texts.append(card)
@@ -338,6 +343,10 @@ th { color:var(--muted); font-weight:600; font-size:11.5px; text-transform:upper
 .txt { white-space:pre-wrap; font-size:12.5px; max-height:180px; overflow:auto; border-top:1px solid var(--line); padding-top:6px; margin-top:6px }
 .link { font-family:var(--mono); font-size:11.5px; word-break:break-all; color:var(--muted) }
 details { margin-top:10px } summary { cursor:pointer; color:var(--muted) }
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; margin-top:12px }
+.gallery figure { margin:0; background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden }
+.gallery img { display:block; width:100%; max-height:300px; object-fit:cover; object-position:top }
+.gallery figcaption { font-size:12px; padding:6px 8px; color:var(--muted) }
 .empty { color:var(--muted); font-style:italic }
 """
 
@@ -469,6 +478,14 @@ def build(it: int, cur: dict, prev: dict | None, out_dir: Path) -> Path:
         resp_html.append('<div class="cards">' + "".join(card_html(c) for c in texts) + "</div>")
     if not shots and not texts:
         resp_html.append('<p class="empty">No tier B or C answers in this run.</p>')
+    rest = [c for c in ALL_SHOTS if c not in shots]
+    if rest:
+        rest.sort(key=lambda c: (c["qid"], c["tier"], str(c["n"])))
+        gallery = "".join(
+            f'<figure class="g"><a href="{H(c["img"])}"><img src="{H(c["img"])}" loading="lazy" alt="{H(c["assistant"])} {H(c["qid"])}-{H(c["tier"])}-{H(str(c["n"]))}"></a>'
+            f'<figcaption><span class="pill{"" if c["level"].startswith("L4") and "WRONG" not in c["level"] else " bad"}">{H(c["cls"] or c["level"].split(" · ")[0])}</span> '
+            f'{H(c["qid"])}-{H(c["tier"])}-{H(str(c["n"]))} · {H(c["level"])}</figcaption></figure>' for c in rest)
+        resp_html.append(f'<details><summary>Every other chat of this run, prompt and answer ({len(rest)} screenshots)</summary><div class="gallery">{gallery}</div></details>')
 
     page = f"""<title>Dealectric Loop · {'Phase 2 · ' if PHASE >= 2 else ''}Iteration {it}</title>
 <meta name="claude:viewport-fit-sides" content="cover">

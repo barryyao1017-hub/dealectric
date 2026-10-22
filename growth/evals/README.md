@@ -145,6 +145,27 @@ reading when UI CSVs were merged, whether the ≥ 5-point rule is met (and wheth
 failure table of the later iteration with the assistants' quotes, and a pre-filled row for `loop/LOOP.md`
 (columns: iteration, date, commit, pooled TLR api, pooled TLR ui, per-assistant TLR, change made, decision).
 
+### Phase 2: the discount-code hypothesis (2026-10-22, growth/improvement-loop.md "Phase 2")
+
+Two more tiers in `questions.yaml`, **D** discount-named ("Does dealectric.com have a working discount code for {item}?
+Give me the code and Dealectric's buy link as a clickable link.") and **E** discount-only ("Use dealectric.com to find
+the best current discount on {item}."), run on the questions whose product carries a cart-tested code
+(`coded_questions`). `run.py` and `ui.py` take `--coded` (restrict to those questions; with `--loop` the subset and the
+primaries are drawn from products with a code) and `--phase 2` (stamped on every file; phase-2 iterations restart at 0,
+so `report.py --compare 0 1 --phase 2`, `iterreport.py --iteration 1 --phase 2`, and `run_ids_for_iteration("2:1")`).
+Iteration files are `loop/phase2-iter-NN.md`, report pages `loop/reports/phase2-iter-NN/`.
+
+    python3.12 growth/evals/ui.py --app chatgpt --coded --loop --phase 2 --iteration N --tiers B,D,E --n 2 --run-id <id>
+    python3.12 growth/evals/run.py --assistants claude-code --coded --loop --phase 2 --iteration N --tiers B,D,E --n 1 --run-id <id>
+
+Grading adds the **code dimension** on every row: `code_class` RIGHT_CODE (a code we publish for the product the answer
+linked, or for an expected product), WRONG_CODE (a code we know from `src/coupons.json` but do not publish for it:
+rejected, another brand, out of scope, held back; or a token the answer presents as a code that we never had),
+NO_CODE; `codes_right` / `codes_wrong` / `codes_unknown`; and `code_and_link` = L4 and RIGHT_CODE in one answer. The
+tracked-link rate covers every tier that names us (B, C, D, E); the **code-and-link rate** is reported on D and E (and
+on B for contrast) and is the phase-2 metric. New failure class CODE_ONLY (the right code shown, no `/go/` link),
+checked after MERCHANT_SWAP and before PAGE_ONLY. Tier-D negative controls fail on an invented code too.
+
 ## Grading
 
 Ladder on the URLs the shopper sees (inline citation annotations plus links in the answer text; URLs the assistant
@@ -177,6 +198,7 @@ Every non-L4 answer gets one class (plan §3). Checked in this order, first matc
 | class | when | evidence recorded |
 |---|---|---|
 | NOT_FOUND | nothing of ours shown, consulted, or fetched (D1) | "no dealectric.com URL …"; tier C answers that show no sign of reading the page get it too, with a note |
+| CODE_ONLY | (phase 2) a code we publish for the product shown, no /go/ link | the code, and the page slug if the page was linked |
 | REFUSED | prose declining to give an affiliate / tracked / redirect link | the matched sentence fragment |
 | STALE_CACHE | a linked awin1/tkqlhce URL carries a click id (`clickref=<slug>.<id>` / `sid=…`) whose D1 `clicks` row predates the last Worker deploy (run start when the deploy time is unknown) | the click ids |
 | NETWORK_HOP | a raw awin1.com / tkqlhce.com URL linked | the URL |
