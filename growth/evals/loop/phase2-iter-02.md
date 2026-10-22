@@ -1,6 +1,6 @@
 # Phase 2, iteration 2 — the catalog page hands over the code and the buy link too (planned 2026-10-22)
 
-Report: _(artifact URL, added when published)_
+Report: https://claude.ai/artifact/L1rGBF6gXDTynNc3Nw3uxP (built by `growth/evals/iterreport.py --iteration 2 --phase 2`; every chat screenshot in its gallery)
 
 ## Diagnosis (from iteration 1)
 
@@ -45,16 +45,38 @@ STALE_CACHE and re-asked.
 **claude-code** (run `2026-10-22-p2iter02`, 15:33–15:50Z, live fetches): 24/24 L4 and 24/24 code-and-link on B, D
 and E; controls 4/4. Unchanged from iteration 1, as expected.
 
-**ChatGPT, first pass** (run `2026-10-22-p2iter02`, 19:30–19:58Z, 44 chats; the positive control and Q21-D-1 timed
-out and are re-asked): on the fresh cells, code-and-link D 10/13, E 9/9, D+E 19/22 (86%; iteration 1: 85%), tier B
-3/5; tracked link D 10/13, E 9/9. **Flat on the fresh cells.** 14 of 39 answers read a pre-deploy copy: the tier-E
-and some tier-B cells still quote "October 14, 2026", and the Q17 tier-D answers that link `/products` quote the
-Elite 30 V2 at $279.99, its price before the 10/21 price check, i.e. ChatGPT's index copy of the catalog page
-predates not only this iteration but the rebrand itself (36 h+). Those are exactly the cells this iteration's change
-targets, so the first pass cannot see the lever either way. A tier-C chat on an opened product page (the Elite 200
-V2, 20:05Z) reads the current code and link, so product pages are fresh in the index while the catalog and home
-pages are not. The stale and timed-out cells are re-asked at 22:00Z.
+**ChatGPT** (run `2026-10-22-p2iter02`: first pass 19:30–19:58Z, 44 chats; the 14 cells that read a pre-deploy
+copy plus the 2 timed-out cells re-asked at 22:00Z; 5 cells still quoting "October 14, 2026" or the old title after
+that are excluded as STALE_CACHE, first-pass files under `stale-pass-1/` and `errored-first-pass/`). On the 8
+questions (`compare-p2-01-02.md`):
+
+| reading (ChatGPT) | iteration 1, fresh | iteration 2, fresh cells | iteration 2, all 40 |
+|---|---|---|---|
+| **code-and-link, tiers D+E** | **85% (22/26)** | **86% (24/28)** | 84% (27/32) |
+| code-and-link D / E | 81% (13/16) / 90% (9/10) | 81% (13/16) / 92% (11/12) | 81% / 88% |
+| tracked link B / D / E | 63% / 81% / 90% | 86% (6/7) / 81% / 92% | 88% / 81% / 88% |
+| right code shown D / E | 88% / 90% | 81% / 92% | |
+| OTHER (catalog or home page linked, no code) | 3 | 4 | |
+| controls | 4/4 | 4/4 | |
+
+claude-code 24/24 on both metrics. **Flat** (+1 point on the phase-2 metric, +1 pooled TLR).
+
+The lever could not reach its target: the four OTHER answers are the catalog-landing ones (Q17 ×3 "LiFePO4
+portable power station", Q27-D-1), and each still says "I couldn't verify a working discount code … Dealectric does
+list portable power stations with verified offers, prices, and tracked purchase links" with `/products` as the buy
+link. The live catalog page has carried "Code AFF5OFF saves $14.49 … Buy link to give the shopper" on every coded
+card since 15:31Z; the index copy ChatGPT answers from does not. Evidence that the copy is old: the first-pass Q17
+answers quoted the Elite 30 V2 at $279.99, its price before the 10/21 price check, and five tier-E/B cells still
+quoted "October 14, 2026" at 22:00Z, 13.5 h after the rebrand deploy and 6.5 h after this one. Product pages turn
+over in about four hours in ChatGPT's index (iteration 1's probe, and today's tier-C chat on the Elite 200 V2 read
+the current code and link); the catalog and home pages have not turned over in 36 h.
 
 ## Decision
 
-_(pending)_
+Flat, kept (no cost: the cards only gained the code line and the buy link). **The loop stops here on the blockade
+rule**: the remaining ChatGPT misses on the discount tiers all come from answers that land on the catalog or home
+page and read ChatGPT's index copy of it, which predates the rebrand (36 h and counting), so no page change can be
+measured on that path until the copy turns over; product pages, which do turn over in about four hours, are at
+81% (D) and 92% (E) code-and-link on the fresh cells, with the code shown in 81–92% of answers and never a wrong
+one. Re-run the same 44-chat design when the catalog copy has turned over (a chat citing `/products` quotes the
+codes): tracked as DLC-49. The transfer-learning report is `growth/loop-report-phase2.md`.
