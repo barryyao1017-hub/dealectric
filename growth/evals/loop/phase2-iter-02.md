@@ -42,7 +42,10 @@ STALE_CACHE and re-asked.
 
 ## Re-evaluation
 
-_(pending)_
+**claude-code** (run `2026-10-22-p2iter02`, 15:33–15:50Z, live fetches): 24/24 L4 and 24/24 code-and-link on B, D
+and E; controls 4/4. Unchanged from iteration 1, as expected.
+
+**ChatGPT**: _(evaluation scheduled for 19:30Z, four hours after the deploy; stale cells re-asked)_
 
 ## Decision
 
