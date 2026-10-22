@@ -27,8 +27,12 @@ Failure classes for every non-L4 answer (growth/improvement-loop.md §3), checke
   STALE_CACHE    a linked awin1/tkqlhce URL carries a click id whose D1 row predates the last Worker deploy
   NETWORK_HOP    a raw awin1.com / tkqlhce.com URL linked
   MERCHANT_SWAP  the merchant's site linked instead of /go/
+  CODE_ONLY      (phase 2) a code we publish for the product shown, no /go/ link
   PAGE_ONLY      our product page linked, no /go/ anywhere
   OTHER          none of the above (PLAIN_TEXT exists for UI rows only)
+Phase 2 code dimension, on every row: code_class RIGHT_CODE (a code we publish for the linked or expected product),
+WRONG_CODE (a code we know but do not publish for it, or a token the answer presents as a code that we never had),
+NO_CODE; code_and_link = L4 and RIGHT_CODE in the same answer.
 """
 from __future__ import annotations
 
@@ -110,6 +114,29 @@ NEG_HONEST_RE = re.compile(
     r"|can'?t (?:give|get|provide|find)[^.\n]{0,40}?dealectric (?:buy )?link", re.I)
 
 
+# Phase 2: a token the answer presents as a code ("code AFSC20", "promo code: `SAVE10`"), to catch codes we never
+# published. Uppercase, 4–20 characters, a digit or at least 5 letters; common words after "code" are skipped.
+CODE_TOKEN_RE = re.compile(r"(?:\bcode|\bcoupon|\bpromo(?:\s+code)?|\bvoucher)\b\s*(?:is|was|:|：|-|–|—)?\s*[\"'“‘`*_]*([A-Z][A-Z0-9]{3,19})(?![a-z])")
+CODE_STOP = {"NONE", "THIS", "THAT", "YOUR", "WITH", "FROM", "ONLY", "ENTER", "APPLY", "CHECKOUT", "DEALECTRIC", "HERE", "BELOW", "ABOVE",
+             "WHICH", "THERE", "WHEN", "LISTED", "AVAILABLE", "NEEDED", "REQUIRED", "VALID", "WORKS", "FOUND", "SHOWN", "GIVEN"}
+
+
+def codes_in_text(text: str, known: dict[str, set[str]], universe: dict[str, dict]) -> dict:
+    """Which codes the answer shows: `known` ({CODE: slugs it applies to} from offers.json), `universe` (every code
+    in src/coupons.json), plus uppercase tokens the prose presents as a code. Returns the three disjoint lists."""
+    found_known = sorted({c for c in known if re.search(r"(?<![A-Z0-9])" + re.escape(c) + r"(?![A-Z0-9])", text, re.I)})
+    found_universe = sorted({c for c in universe if c not in known and re.search(r"(?<![A-Z0-9])" + re.escape(c) + r"(?![A-Z0-9])", text, re.I)})
+    tokens = set()
+    for m in CODE_TOKEN_RE.finditer(text or ""):
+        t = m.group(1)
+        if t in CODE_STOP or t.upper() in known or t.upper() in universe:
+            continue
+        if not (re.search(r"\d", t) or len(t) >= 5):
+            continue
+        tokens.add(t)
+    return {"known": found_known, "other_known": found_universe, "unknown": sorted(tokens)}
+
+
 def ua_assistant(ua: str) -> str:
     u = (ua or "").lower()
     for name, needles in UA_MAP:
@@ -129,8 +156,9 @@ def parse_ts(s: str | None) -> datetime | None:
 
 # ---------------------------------------------------------------- deterministic part
 
-def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> dict:
+def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str], universe: dict | None = None) -> dict:
     text = rec.get("text") or ""
+    universe = universe if universe is not None else E.all_codes()
     expected = set(rec.get("expected") or [])
     shown_src = [(u, E.classify_url(u["url"], offers)) for u in (rec.get("citations") or []) + (rec.get("text_urls") or []) if u.get("url")]
     shown = [c for _, c in shown_src]
@@ -160,11 +188,19 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
     else:
         level = 0
 
-    codes_found = sorted({c for c in coupons if re.search(r"(?<![A-Z0-9])" + re.escape(c) + r"(?![A-Z0-9])", text, re.I)})
+    cf = codes_in_text(text, coupons, universe)
+    codes_found = cf["known"]
     coupon_applicable = sorted({c for c in codes_found if coupons[c] & expected}) if expected else []
+    # Phase 2 code dimension. The target is the product the answer linked (go slug in expected) when there is one,
+    # else any expected product. Right = a code we publish for the target; wrong = a code we know but do not publish
+    # for it (rejected, another brand, out of scope, held back) or a token the answer invented; none = no code shown.
+    target = (set(go_slugs) & expected) or expected
+    codes_right = sorted({c for c in codes_found if coupons[c] & target}) if target else []
+    codes_wrong = sorted(set(codes_found) - set(codes_right)) + cf["other_known"] + cf["unknown"]
+    code_class = "RIGHT_CODE" if codes_right else ("WRONG_CODE" if codes_wrong else "NO_CODE")
 
     tier = rec["tier"]
-    bypass = bool(tier in ("B", "C") and (merchant_links or network_links) and level < 4)
+    bypass = bool(tier in E.LINK_TIERS and (merchant_links or network_links) and level < 4)
     domains_shown = sorted({c["host"] for c in shown if c["host"]})
     expect_domains = rec.get("expect_domains") or []
     control_pass = None
@@ -173,8 +209,9 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
     elif rec.get("kind") == "negative":
         # Pass = no invented /go/ slug, and either nothing of ours presented as the product (L<3) or the answer says
         # outright that we do not list it (alternatives from our catalog may then carry product-page or /go/ links).
+        # On tier D (phase 2) an invented code for the unlisted product also fails.
         honest = bool(NEG_HONEST_RE.search(text))
-        control_pass = not go_unknown and ((level < 3 and not go_slugs) or honest)
+        control_pass = not go_unknown and ((level < 3 and not go_slugs) or honest) and not (tier == "D" and cf["unknown"])
 
     click_ids = sorted({m.group(2) for u in network_links + merchant_links for m in [CLICK_ID_RE.search(u)] if m})
     refusal = REFUSAL_RE.search(text)
@@ -190,6 +227,8 @@ def grade_record(rec: dict, offers: dict, coupons: dict, brands: set[str]) -> di
         "go_unknown_slugs": go_unknown, "other_our_slugs": sorted((set(page_slugs) | set(go_slugs)) - expected),
         "merchant_links": merchant_links, "network_links": network_links, "bypass": bypass,
         "coupon_codes_found": codes_found, "coupon_surfaced": bool(coupon_applicable), "coupon_applicable": coupon_applicable,
+        "codes_right": codes_right, "codes_wrong": codes_wrong, "codes_unknown": cf["unknown"], "code_class": code_class,
+        "code_and_link": bool(level == 4 and codes_right),
         "consulted_ours": sorted({E.strip_tracking(c["url"]) for c in consulted if c["ours"]}),
         "domains_shown": domains_shown, "n_shown_urls": len(shown), "n_consulted_urls": len(consulted),
         "n_raw_citations": len(rec.get("raw_citations") or []),
@@ -221,6 +260,10 @@ def classify_failure(row: dict, stale_ids: set[str]) -> tuple[str | None, str]:
         return "NETWORK_HOP", "linked " + "; ".join(row["network_links"][:2])
     if row["merchant_links"]:
         return "MERCHANT_SWAP", "linked " + "; ".join(row["merchant_links"][:2])
+    if row.get("codes_right"):
+        # Phase 2: the code reached the shopper, the tracked link did not (the page may be linked, named in evidence).
+        return "CODE_ONLY", "code " + ", ".join(row["codes_right"]) + " shown, no /go/ link" + \
+            (f"; product page linked: {', '.join(row['page_slugs'])}" if row["level"] == 3 else "")
     if row["level"] == 3:
         return "PAGE_ONLY", "product page linked: " + ", ".join(row["page_slugs"])
     detail = []
@@ -425,6 +468,7 @@ def main() -> int:
     offers = E.load_offers()
     coupons = E.coupon_codes(offers)
     brands = E.brand_names(offers)
+    universe = E.all_codes()
 
     grades_path = rdir / "grades.jsonl"
     cached: dict[str, dict] = {}
@@ -454,12 +498,12 @@ def main() -> int:
         if key in cached and args.rescore:
             row = cached[key]
             row["expected"] = rec.get("expected") or []
-            row.update(grade_record(rec, offers, coupons, brands))
+            row.update(grade_record(rec, offers, coupons, brands, universe))
             row["_text"] = rec.get("text") or ""
             rows.append(row); continue
         if key in cached:
             rows.append(cached[key]); continue
-        g = grade_record(rec, offers, coupons, brands)
+        g = grade_record(rec, offers, coupons, brands, universe)
         row = {"file": key, "source": "api", "run_id": rec.get("run_id"), "assistant": assistant, "model": rec.get("model"),
                "qid": rec["qid"], "kind": rec.get("kind"), "tier": rec["tier"], "n": rec["n"], "prompt": rec.get("prompt"),
                "expected": rec.get("expected") or [], "primary": rec.get("primary"), "started_at": rec.get("started_at"),
@@ -516,18 +560,19 @@ def main() -> int:
     for i, row in enumerate(fresh, 1):
         row["failure_class"], row["failure_evidence"] = classify_failure(row, stale_ids)
         text = row.pop("_text")
-        if judge and row["kind"] == "question" and row["tier"] in ("A", "B") and row["level"] >= 1 and text:
+        if judge and row["kind"] == "question" and row["tier"] in ("A", "B", "E") and row["level"] >= 1 and text:
             try:
                 row.update(judge_rank(judge, args.judge_model, text, offers, set(row["expected"])))
             except Exception as e:
                 row["judge_error"] = f"{type(e).__name__}: {e}"
-        if judge and row["tier"] in ("B", "C") and row["failure_class"] and row["failure_class"] != "NOT_FOUND" and text:
+        if judge and row["tier"] in E.LINK_TIERS and row["failure_class"] and row["failure_class"] != "NOT_FOUND" and text:
             try:
                 row.update(explain_link(judge, args.judge_model, text))
             except Exception as e:
                 row["judge_error"] = f"{type(e).__name__}: {e}"
         print(f"[{i}/{len(fresh)}] {row['file']}: {row['level_label']}"
               + (f" {row['failure_class']}" if row["failure_class"] else "") + (" bypass" if row["bypass"] else "")
+              + (f" {row['code_class']}" if row.get("code_class") and row["code_class"] != "NO_CODE" else "")
               + (f" rank={row['our_rank']}" if row["our_rank"] else "") + (f" ERROR {str(row['error'])[:80]}" if row["error"] else ""),
               flush=True)
     for row in rows:

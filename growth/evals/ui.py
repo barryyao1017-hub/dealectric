@@ -283,6 +283,8 @@ def main() -> int:
     ap.add_argument("--no-controls", action="store_true")
     ap.add_argument("--n", type=int, default=1)
     ap.add_argument("--loop", action="store_true", help="the loop subset (10 rotated questions) like run.py --loop")
+    ap.add_argument("--coded", action="store_true", help="phase 2: only questions whose product carries a code (see run.py --coded)")
+    ap.add_argument("--phase", type=int, default=1, help="loop phase stamped on every file (2 = the discount-code hypothesis)")
     ap.add_argument("--iteration", type=int, default=None)
     ap.add_argument("--gsc-indexed", type=int, default=None)
     ap.add_argument("--bing-indexed", type=int, default=None)
@@ -295,6 +297,9 @@ def main() -> int:
     offers = E.load_offers()
     tiers = [t.strip() for t in args.tiers.split(",") if t.strip()]
     qids = {s.strip() for s in args.questions.split(",") if s.strip()} or None
+    coded_pool = set(E.coded_question_ids(q, offers)) if args.coded else None
+    if coded_pool is not None and not args.loop:
+        qids = (qids & coded_pool) if qids else coded_pool
     loop_info = None
     if args.loop:
         if args.iteration is None:
@@ -308,9 +313,10 @@ def main() -> int:
             recent, d1err = E.d1_recent_ai_fetch_slugs(7)
             if d1err:
                 R.log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
-            picked = R.pick_loop_questions(q, offers, recent, args.iteration)
+            picked = R.pick_loop_questions(q, offers, recent, args.iteration, pool=coded_pool,
+                                           slugs=E.coded_slugs(offers) if args.coded else None)
         q = {**q, "questions": picked}
-        loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err,
+        loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err, "coded": bool(args.coded),
                      "questions": [{"id": x["id"], "primary": x["primary"], "fresh": x["fresh"]} for x in picked]}
         R.log("loop subset: " + ", ".join(f"{x['id']}={x['primary']}{'' if x['fresh'] else '*'}" for x in picked))
     cells = list(E.iter_cells(q, tiers=tiers, question_ids=qids, controls=not args.no_controls, controls_all_tiers=args.loop))
@@ -322,7 +328,7 @@ def main() -> int:
     b = browser_ok()
     if not b:
         raise SystemExit("no browser on localhost:9222; start it: uv --directory ~/Desktop/agent-vault run agent-vault browser")
-    stamp = E.stamp(args.iteration, args.gsc_indexed, args.bing_indexed)
+    stamp = E.stamp(args.iteration, args.gsc_indexed, args.bing_indexed, phase=args.phase)
     R.log(f"browser {b}; stamp: iteration={stamp['iteration']} commit={(stamp['site_commit'] or '?')[:10]} worker={stamp['worker_version'] or '?'}")
 
     manifest_path = E.run_dir(args.run_id) / "manifest.json"
@@ -344,6 +350,7 @@ def main() -> int:
             R.log(f"[{i}/{len(jobs)}] ERROR {tag}: {str(r['error'])[:160]}")
         elif r["status"] == "ok":
             R.log(f"[{i}/{len(jobs)}] ok    {tag} ({r['latency']}s)")
+    manifest = E.read_json(manifest_path) if manifest_path.exists() else manifest   # run.py may have written meanwhile
     manifest["finished_at"] = E.now_iso()
     manifest["calls"] = manifest.get("calls", 0) + results["ok"] + results["error"]
     manifest["last_results"] = results

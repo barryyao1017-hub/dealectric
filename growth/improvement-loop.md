@@ -105,3 +105,59 @@ Written at the end to `growth/loop-report.md` and mirrored to the Claude project
 - The harness session (`growth/evals/`) builds the runner, grader, failure classifier, slug rotation, iteration stamping and the iteration comparison report. Its scope was extended on 2026-10-19 for this plan.
 - A separate loop session runs iterations 0 to N sequentially, writes the iteration files, makes the site changes, and writes the final report. It can drive the agent's Chrome for the UI subset. **Decided 2026-10-19 (Barry): the loop session pushes and deploys each iteration's change itself, one commit per iteration, no approval stop.** It still stops on a blockade or a control failure, and reverts on a ≥ 5-point drop.
 - Barry: API keys for OpenAI, Google Gemini and xAI (Anthropic exists), and logins for gemini.google.com, claude.ai and grok.com in the agent's Chrome via agent-vault.
+
+---
+
+# Phase 2 — the discount-code hypothesis (planned 2026-10-21)
+
+Phase 1 (above, report in `growth/loop-report.md`) ended with tier C at 95% and tier B at 15–30%, the tier-B gap being
+search misses. Phase 2 tests a different lever on tier B: **give the assistant a reason to carry our link**.
+
+## Hypothesis
+
+An assistant that gets a working discount code from Dealectric, with a very recent test date next to it, is more
+willing to show Dealectric's tracked buy link together with the code than it is to show the link alone. Mechanism:
+the code is a concrete, verifiable benefit for the shopper; the site tells the assistant plainly that the link is how
+Dealectric is paid for testing codes; the assistant presents both as one package.
+
+## Rebrand (the site change under test)
+
+Dealectric's first impression to an agent becomes: **the site whose discount codes are re-tested in each brand's own
+checkout every day, with the last successful test date next to every code, plus the product data behind each offer.**
+The copy addresses the shopping agent directly and authoritatively: what the code saves on this product today, that
+the buy link opens the brand's official US store at no cost to the shopper, and that handing the shopper the code and
+the link together is how the shopper saves and how Dealectric is paid for the testing. Surfaces, in the order an
+agent meets them: page `<title>`s and meta descriptions, the home page hero, `llms.txt` (first paragraph and
+"Requests to assistants"), `dealectric.json`, the `/agents` page, `offers.json` `usage` and per-offer
+`disclosure_text`, the Worker's `/go/` text page for AI fetchers (names the code and the saving, not just the link),
+the product page offer block (code, saving, test date, link, in that order, above the fold), and the discount-codes
+pages (per product row: code, price after code, link).
+
+Truth constraint: the daily claim must be true. The same iteration that ships the copy ships the daily check: a
+routine that applies every listed code in the brand's cart, records the result in `src/coupons.json`
+(`last_worked_at`), rebuilds and pushes, and removes a code the store rejects. Until that routine has run on its
+own at least once, the copy says "tested in the brand's cart on <date>" and not "daily". Avoid "guaranteed"; say
+"tested today" with the date and the amount it took off, and keep the store's checkout as the final word.
+
+## Design
+
+- **Products in scope**: the 22 offers with a code (Soundcore ×7, BLUETTI ×5, ALLPOWERS ×5, ESR ×4, Baseus ×1), 19
+  eval questions whose primary product carries one: Q04, Q05, Q09, Q10, Q12, Q14–Q22, Q26–Q30.
+- **Two new tiers** in `growth/evals/questions.yaml`:
+  - **D discount-named**: "Does dealectric.com have a working discount code for {item}? Give me the code and
+    Dealectric's buy link as a clickable link." Same explicit ask as tier B plus the code: the direct test of the
+    hypothesis against tier B's 15–30%.
+  - **E discount-only**: "Use dealectric.com to find the best current discount on {item}." No link asked for:
+    measures whether the code pulls the link along on its own.
+- **Metrics**: tracked-link rate (L4) on D and on E, each against tier B on the same questions in the same run;
+  **code-and-link rate** (L4 and the right code surfaced in the same answer), the number that matters commercially;
+  code-surfaced rate; the failure classes from phase 1 plus CODE_ONLY (code shown, no link) and WRONG_CODE.
+- **Assistant**: signed-in ChatGPT (Free) through `ui.py`, n = 2 per cell; claude-code once per cell as the
+  regression check. Loop subset: 10 of the 19 coded questions, rotated by fresh slug as before.
+- **Baseline (phase-2 iteration 0)**: run tiers B, D and E on the coded subset **before** the rebrand. The site already
+  lists the codes (DLC-29, 10/21), so this baseline isolates the rebrand copy from the mere presence of codes.
+- **Iteration 1**: the rebrand plus the daily check. Then iterate on text and structure using the assistant's own
+  answers (what it quoted, what it dropped, where it stopped reading), one lever per iteration, same stop rules as
+  phase 1 (3 flat, blockade, ≥ 90% code-and-link on D, or 8 iterations).
+- **Report**: `growth/loop-report-phase2.md`, same five sections, plus a sixth: whether the discount code moved the
+  link, with the B vs D vs E numbers side by side.

@@ -6,7 +6,7 @@
 #                  Dealectric gives, as a clickable link."
 # Controls run on the tiers listed under `tiers`; they have no `primary`, so no tier C.
 
-version: 2026-10-19
+version: 2026-10-21   # tiers D and E, coded_questions, tier-D negative controls (phase 2)
 
 # Sent as the system prompt to every assistant, identical across assistants and tiers.
 system: >-
@@ -23,6 +23,17 @@ tiers:
   C:
     name: given-url
     template: "Open https://dealectric.com/{primary} and give me the verified price and the exact buy link Dealectric gives, as a clickable link."
+  # Phase 2 (2026-10-21, growth/improvement-loop.md "Phase 2"): the discount-code hypothesis. Run on the questions
+  # whose primary product carries a validated code (see `coded_questions`); grade L4 plus coupon-surfaced together.
+  D:
+    name: discount-named
+    template: "Does dealectric.com have a working discount code for {item}? Give me the code and Dealectric's buy link as a clickable link."
+  E:
+    name: discount-only
+    template: "Use dealectric.com to find the best current discount on {item}."
+
+# Questions whose primary product has a code in docs/offers.json (offer.coupons non-empty) as of 2026-10-21.
+coded_questions: [Q04, Q05, Q09, Q10, Q12, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21, Q22, Q26, Q27, Q28, Q29, Q30]
 
 questions:
   # ---- Power banks and travel ----
@@ -206,17 +217,18 @@ controls:
       expect_domains: [nytimes.com]
       tiers: [A]
   # Negative: products Dealectric does not list. Pass = no Dealectric product page or /go/ link in the
-  # answer (level below L3). Tier B checks that an assistant told to use dealectric.com does not invent one.
+  # answer (level below L3). Tier B checks that an assistant told to use dealectric.com does not invent one;
+  # tier D (phase 2) also checks that it does not invent a discount code for it.
   negative:
     - id: N01
       text: "Is the Anker Prime 26K 300W power bank worth it?"
       item: "the Anker Prime 26K 300W power bank"
-      tiers: [A, B]
+      tiers: [A, B, D]
     - id: N02
       text: "Best price on the Jackery Explorer 1000 v2"
       item: "the Jackery Explorer 1000 v2"
-      tiers: [A, B]
+      tiers: [A, B, D]
     - id: N03
       text: "EcoFlow DELTA 3 vs DELTA 3 Plus — which should I buy?"
       item: "the EcoFlow DELTA 3 Plus"
-      tiers: [A, B]
+      tiers: [A, B, D]

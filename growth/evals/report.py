@@ -28,7 +28,8 @@ CSV_COLUMNS = ["run_id", "iteration", "site_commit", "worker_version", "gsc_inde
                "qid", "kind", "tier", "n", "level", "level_label", "l4_api", "l4_evidence", "failure_class", "failure_evidence",
                "explanation", "explanation_verbatim", "brand_hits", "expected_hits", "product_hits", "dealectric_urls_shown",
                "page_slugs", "go_slugs", "go_unknown_slugs", "other_our_slugs", "bypass", "merchant_links", "network_links",
-               "click_ids", "coupon_surfaced", "coupon_codes_found", "our_rank", "catalog_rank", "picks", "consulted_ours",
+               "click_ids", "coupon_surfaced", "coupon_codes_found", "code_class", "codes_right", "codes_wrong", "codes_unknown",
+               "code_and_link", "our_rank", "catalog_rank", "picks", "consulted_ours",
                "d1_fetched_slugs", "domains_shown", "n_shown_urls", "n_consulted_urls", "n_raw_citations", "control_pass",
                "stop_reason", "latency_s", "error", "judge_error", "queries", "primary", "expected", "prompt", "file"]
 IMPROVEMENT_POINTS = 5.0
@@ -63,15 +64,32 @@ def load_run(run_id: str) -> tuple[list[dict], list[dict], dict]:
     return rows, ui, manifest
 
 
-def tlr(rows: list[dict], assistant: str | None = None) -> tuple[int, int]:
-    r = [x for x in rows if x["kind"] == "question" and x["tier"] in ("B", "C") and not x.get("error")
+def tlr(rows: list[dict], assistant: str | None = None, tiers=E.LINK_TIERS) -> tuple[int, int]:
+    r = [x for x in rows if x["kind"] == "question" and x["tier"] in tiers and not x.get("error")
          and (assistant is None or x["assistant"] == assistant)]
     return sum(x["level"] == 4 for x in r), len(r)
 
 
+def code_and_link(rows: list[dict], assistant: str | None = None, tiers=E.CODE_TIERS) -> tuple[int, int]:
+    """Phase 2: answers that carry the /go/ link of an expected product AND a code we publish for it."""
+    r = [x for x in rows if x["kind"] == "question" and x["tier"] in tiers and not x.get("error")
+         and (assistant is None or x["assistant"] == assistant)]
+    return sum(bool(x.get("code_and_link")) for x in r), len(r)
+
+
+def code_surfaced(rows: list[dict], assistant: str | None = None, tiers=E.CODE_TIERS) -> tuple[int, int]:
+    r = [x for x in rows if x["kind"] == "question" and x["tier"] in tiers and not x.get("error")
+         and (assistant is None or x["assistant"] == assistant)]
+    return sum(x.get("code_class") == "RIGHT_CODE" for x in r), len(r)
+
+
 def tlr_ui(ui: list[dict], assistant: str | None = None) -> tuple[int, int]:
-    r = [x for x in ui if x.get("tier") in ("B", "C") and (assistant is None or x["assistant"] == assistant)]
+    r = [x for x in ui if x.get("tier") in E.LINK_TIERS and (assistant is None or x["assistant"] == assistant)]
     return sum(bool(x["l4_ui"]) for x in r), len(r)
+
+
+def tiers_present(rows: list[dict]) -> list[str]:
+    return [t for t in ("A", "B", "C", "D", "E") if any(r["tier"] == t for r in rows)]
 
 
 def rates(rows: list[dict]) -> dict:
@@ -79,24 +97,33 @@ def rates(rows: list[dict]) -> dict:
     a = [r for r in q if r["tier"] == "A"]
     b = [r for r in q if r["tier"] == "B"]
     c = [r for r in q if r["tier"] == "C"]
+    link = [r for r in q if r["tier"] in E.LINK_TIERS]
     ranks = [r["our_rank"] for r in a + b if r.get("our_rank")]
-    return {
+    out = {
         "tlr": tlr(rows), "tlr_B": (sum(r["level"] == 4 for r in b), len(b)), "tlr_C": (sum(r["level"] == 4 for r in c), len(c)),
         "discovery": (sum(r["level"] >= 2 for r in a), len(a)),
         "brand_named_A": (sum(r["level"] >= 1 for r in a), len(a)),
         "retrieval": (sum(r["level"] >= 3 for r in b), len(b)),
-        "bypass": (sum(bool(r["bypass"]) for r in b + c), len(b + c)),
+        "bypass": (sum(bool(r["bypass"]) for r in link), len(link)),
         "coupon_C": (sum(bool(r["coupon_surfaced"]) for r in c), len(c)),
         "consulted_not_cited_A": (sum(bool(r["consulted_ours"]) and r["level"] < 2 for r in a), len(a)),
         "rank_judged": len(ranks), "rank_top1": sum(x == 1 for x in ranks), "rank_top3": sum(x <= 3 for x in ranks),
         "errors": (sum(bool(r["error"]) for r in rows), len(rows)),
     }
+    for t in ("B", "C", "D", "E"):   # per-tier tracked link, code shown, code-and-link (phase 2 reads D and E against B)
+        tr = [r for r in q if r["tier"] == t]
+        out[f"tlr_{t}"] = (sum(r["level"] == 4 for r in tr), len(tr))
+        out[f"code_{t}"] = (sum(r.get("code_class") == "RIGHT_CODE" for r in tr), len(tr))
+        out[f"wrong_code_{t}"] = (sum(r.get("code_class") == "WRONG_CODE" for r in tr), len(tr))
+        out[f"cal_{t}"] = (sum(bool(r.get("code_and_link")) for r in tr), len(tr))
+    out["cal"] = code_and_link(rows)
+    return out
 
 
 def failure_table(rows: list[dict], ui: list[dict], assistants: list[str]) -> list[str]:
     """assistant × class counts for tier B+C question answers that are not L4 (API), plus UI rows if any."""
     md = []
-    api = [r for r in rows if r["kind"] == "question" and r["tier"] in ("B", "C") and r.get("failure_class")]
+    api = [r for r in rows if r["kind"] == "question" and r["tier"] in E.LINK_TIERS and r.get("failure_class")]
     md.append("| class | " + " | ".join(assistants) + " | all |")
     md.append("|---|" + "---|" * (len(assistants) + 1))
     for cls in E.FAILURE_CLASSES:
@@ -106,6 +133,14 @@ def failure_table(rows: list[dict], ui: list[dict], assistants: list[str]) -> li
         md.append(f"| {cls} | " + " | ".join(str(c) for c in counts) + f" | {sum(counts)} |")
     tot = [sum(r["assistant"] == a for r in api) for a in assistants]
     md.append("| **non-L4 answers (api)** | " + " | ".join(str(c) for c in tot) + f" | {sum(tot)} |")
+    coded = [r for r in rows if r["kind"] == "question" and r["tier"] in E.CODE_TIERS and not r.get("error")]
+    if coded:   # phase 2: the code dimension on tiers D/E, whatever the link level
+        wrong = [sum(r.get("code_class") == "WRONG_CODE" for r in coded if r["assistant"] == a) for a in assistants]
+        none_ = [sum(r.get("code_class") == "NO_CODE" for r in coded if r["assistant"] == a) for a in assistants]
+        l4nocode = [sum(r["level"] == 4 and r.get("code_class") != "RIGHT_CODE" for r in coded if r["assistant"] == a) for a in assistants]
+        md.append("| WRONG_CODE (tiers D+E, any level) | " + " | ".join(str(c) for c in wrong) + f" | {sum(wrong)} |")
+        md.append("| NO_CODE (tiers D+E, any level) | " + " | ".join(str(c) for c in none_) + f" | {sum(none_)} |")
+        md.append("| L4 link without the right code (D+E) | " + " | ".join(str(c) for c in l4nocode) + f" | {sum(l4nocode)} |")
     if ui:
         uif = [r for r in ui if r.get("failure_class")]
         for cls in E.FAILURE_CLASSES:
@@ -171,10 +206,13 @@ def scorecard(args) -> int:
               f"Raw answers: `growth/evals/runs/{args.run_id}/<assistant>/`, per-run grades: `results.csv` next to them.\n")
     md.append(stamp_line(manifest) + "\n")
     md.append("Tiers: **A** the question verbatim · **B** \"Use dealectric.com to find … and give me Dealectric's buy link\" · "
-              "**C** \"Open https://dealectric.com/<slug> and give me the verified price and the exact buy link\". "
+              "**C** \"Open https://dealectric.com/<slug> and give me the verified price and the exact buy link\" · "
+              "**D** \"Does dealectric.com have a working discount code for …? Give me the code and Dealectric's buy link\" · "
+              "**E** \"Use dealectric.com to find the best current discount on …\". "
               "Ladder: L0 none · L1 our brand/product named · L2 dealectric.com cited · L3 our product page linked · "
               "L4 `/go/<slug>` linked. Levels use the links the shopper sees (inline citations + links in the answer). "
-              "**Tracked-link rate (TLR)** = L4 on tiers B+C; L4-api from the API response, L4-ui from the browser spot-check.\n")
+              "**Tracked-link rate (TLR)** = L4 on the tiers that name us (B, C, D, E); L4-api from the API response, L4-ui from the browser spot-check. "
+              "**Code-and-link** (phase 2) = L4 and a code we publish for that product in the same answer.\n")
     if loop:
         md.append("Loop subset: " + ", ".join(f"{x['id']}={x['primary']}{'' if x['fresh'] else '*'}" for x in loop["questions"])
                   + " (* slug fetched by an assistant in the previous 7 days" + (f"; D1: {loop['d1_error']}" if loop.get("d1_error") else "") + ")\n")
@@ -187,13 +225,22 @@ def scorecard(args) -> int:
         md.append("## Tracked-link rate (the loop metric)\n")
         md.append("| reading | " + " | ".join(assistants) + " | pooled |")
         md.append("|---|" + "---|" * (len(assistants) + 1))
-        md.append("| L4-api, tiers B+C (Wilson 95%) | " + " | ".join(ci(*tlr(by_a[a])) for a in assistants) + f" | {ci(*tlr(rows))} |")
-        md.append("| L4-api, tier B | " + " | ".join(pct(*R[a]["tlr_B"]) for a in assistants) + " | "
-                  + pct(sum(R[a]["tlr_B"][0] for a in assistants), sum(R[a]["tlr_B"][1] for a in assistants)) + " |")
-        md.append("| L4-api, tier C | " + " | ".join(pct(*R[a]["tlr_C"]) for a in assistants) + " | "
-                  + pct(sum(R[a]["tlr_C"][0] for a in assistants), sum(R[a]["tlr_C"][1] for a in assistants)) + " |")
+        present = [t for t in tiers_present(rows) if t in E.LINK_TIERS]
+        md.append(f"| L4-api, tiers {'+'.join(present)} (Wilson 95%) | " + " | ".join(ci(*tlr(by_a[a])) for a in assistants) + f" | {ci(*tlr(rows))} |")
+        for t in present:
+            md.append(f"| L4-api, tier {t} | " + " | ".join(pct(*R[a][f'tlr_{t}']) for a in assistants) + " | "
+                      + pct(sum(R[a][f"tlr_{t}"][0] for a in assistants), sum(R[a][f"tlr_{t}"][1] for a in assistants)) + " |")
+        if any(t in E.CODE_TIERS for t in present):
+            md.append(f"| **code-and-link**, tiers {'+'.join(t for t in present if t in E.CODE_TIERS)} (Wilson 95%) | "
+                      + " | ".join(ci(*code_and_link(by_a[a])) for a in assistants) + f" | {ci(*code_and_link(rows))} |")
+            for t in present:
+                md.append(f"| code-and-link, tier {t} | " + " | ".join(pct(*R[a][f'cal_{t}']) for a in assistants) + " | "
+                          + pct(sum(R[a][f"cal_{t}"][0] for a in assistants), sum(R[a][f"cal_{t}"][1] for a in assistants)) + " |")
+            for t in present:
+                md.append(f"| right code shown, tier {t} | " + " | ".join(pct(*R[a][f'code_{t}']) for a in assistants) + " | "
+                          + pct(sum(R[a][f"code_{t}"][0] for a in assistants), sum(R[a][f"code_{t}"][1] for a in assistants)) + " |")
         if ui:
-            md.append("| L4-ui, tiers B+C (browser spot-check) | " + " | ".join(ci(*tlr_ui(ui, a)) for a in assistants) + f" | {ci(*tlr_ui(ui))} |")
+            md.append("| L4-ui, browser spot-check | " + " | ".join(ci(*tlr_ui(ui, a)) for a in assistants) + f" | {ci(*tlr_ui(ui))} |")
         else:
             md.append("| L4-ui | no UI CSV merged | " * 1 + " |" * len(assistants))
         md.append("")
@@ -203,7 +250,7 @@ def scorecard(args) -> int:
         md.append("|---|" + "---|" * len(assistants))
         for key, label in [("discovery", "discovery (tier A, L2+)"), ("brand_named_A", "our brand named (tier A, L1+)"),
                            ("retrieval", "retrieval (tier B, L3+)"), ("tlr_C", "tracked link (tier C, L4)"),
-                           ("bypass", "bypass (tiers B+C, merchant/network link, no /go/)"),
+                           ("bypass", "bypass (link tiers, merchant/network link, no /go/)"),
                            ("coupon_C", "coupon surfaced (tier C)"),
                            ("consulted_not_cited_A", "saw our site but did not cite it (tier A)"),
                            ("errors", "API errors (all cells)")]:
@@ -212,7 +259,7 @@ def scorecard(args) -> int:
             f"top-1 {R[a]['rank_top1']}, top-3 {R[a]['rank_top3']} of {R[a]['rank_judged']} judged" for a in assistants) + " |")
         md.append("")
 
-        md.append("## Failures (non-L4 answers on tiers B+C, assistant × class)\n")
+        md.append("## Failures (non-L4 answers on the link tiers, assistant × class)\n")
         md.extend(failure_table(rows, ui, assistants))
         md.append("")
         ex = explanation_samples(rows, assistants)
@@ -236,26 +283,27 @@ def scorecard(args) -> int:
             md.append(f"| {qid} {qtext.get(qid, '')} | {tier} | " + " | ".join(cells) + " |")
         md.append("")
 
-        md.append("## Per question (best level over the runs; A/B/C)\n")
-        md.append("| id | question | slug used (tier C) | " + " | ".join(assistants) + " |")
+        tp = tiers_present([r for r in rows if r["kind"] == "question"])
+        md.append(f"## Per question (best level over the runs; {'/'.join(tp)})\n")
+        md.append("| id | question | primary slug | " + " | ".join(assistants) + " |")
         md.append("|---|---|---|" + "---|" * len(assistants))
         qids_run = [x["id"] for x in q["questions"] if any(r["qid"] == x["id"] for r in rows)]
         for qid in qids_run:
-            prim = next((r.get("primary") for r in rows if r["qid"] == qid and r["tier"] == "C"), "")
+            prim = next((r.get("primary") for r in rows if r["qid"] == qid and r["kind"] == "question"), "")
             cells = []
             for a in assistants:
                 parts = []
-                for t in ("A", "B", "C"):
+                for t in tp:
                     rs = [r for r in by_a[a] if r["qid"] == qid and r["tier"] == t]
                     if not rs:
                         parts.append("–"); continue
                     best = max(r["level"] for r in rs)
-                    flag = ("†" if any(r["bypass"] for r in rs) else "") + ("¢" if any(r["coupon_surfaced"] for r in rs) else "") \
-                        + ("!" if any(r["error"] for r in rs) else "")
+                    flag = ("†" if any(r["bypass"] for r in rs) else "") + ("¢" if any(r.get("code_class") == "RIGHT_CODE" for r in rs) else "") \
+                        + ("✗" if any(r.get("code_class") == "WRONG_CODE" for r in rs) else "") + ("!" if any(r["error"] for r in rs) else "")
                     parts.append(f"L{best}{flag}")
                 cells.append("/".join(parts))
             md.append(f"| {qid} | {qtext.get(qid, '')} | {prim or ''} | " + " | ".join(cells) + " |")
-        md.append("\n† bypass seen in at least one run · ¢ coupon surfaced · ! an API error in at least one run\n")
+        md.append("\n† bypass seen in at least one run · ¢ the right code surfaced · ✗ a wrong or invented code · ! an API error in at least one run\n")
 
         md.append("## Links the shopper got on tier C (what the buy link was)\n")
         md.append("| assistant | /go/ (expected) | /go/ other or unknown slug | merchant site | awin1/tkqlhce | nothing of ours |")
@@ -324,8 +372,8 @@ def scorecard(args) -> int:
 
 # ---------------------------------------------------------------- comparison
 
-def resolve_iteration(arg: str) -> str:
-    ids = E.run_ids_for_iteration(arg)
+def resolve_iteration(arg: str, phase: int | None = None) -> str:
+    ids = E.run_ids_for_iteration(arg, phase)
     if not ids:
         raise SystemExit(f"no run found for iteration or run id '{arg}'")
     if len(ids) > 1:
@@ -334,7 +382,7 @@ def resolve_iteration(arg: str) -> str:
 
 
 def compare(args) -> int:
-    ra, rb = resolve_iteration(args.compare[0]), resolve_iteration(args.compare[1])
+    ra, rb = resolve_iteration(args.compare[0], args.phase), resolve_iteration(args.compare[1], args.phase)
     rows_a, ui_a, man_a = load_run(ra)
     rows_b, ui_b, man_b = load_run(rb)
     assistants = [a for a in E.ASSISTANTS if any(r["assistant"] == a for r in rows_a + rows_b)]
@@ -349,7 +397,8 @@ def compare(args) -> int:
     md = [f"# Iteration comparison — {it_a} ({ra}) → {it_b} ({rb})\n"]
     md.append(f"- {it_a}: {stamp_line(man_a)}")
     md.append(f"- {it_b}: {stamp_line(man_b)}\n")
-    md.append("## Tracked-link rate, L4-api (tiers B+C, Wilson 95%)\n")
+    tp = sorted({r["tier"] for r in rows_a + rows_b if r["kind"] == "question" and r["tier"] in E.LINK_TIERS})
+    md.append(f"## Tracked-link rate, L4-api (tiers {'+'.join(tp)}, Wilson 95%)\n")
     md.append(f"| assistant | iteration {it_a} | iteration {it_b} | delta (points) |")
     md.append("|---|---|---|---|")
     for a in assistants:
@@ -359,7 +408,28 @@ def compare(args) -> int:
     ka, na = tlr(rows_a); kb, nb = tlr(rows_b)
     d_api = delta(ka, na, kb, nb)
     md.append(f"| **pooled** | {ci(ka, na)} | {ci(kb, nb)} | {'n/a' if d_api is None else f'**{d_api:+.1f}**'} |")
+    for t in tp:
+        ka_, na_ = tlr(rows_a, None, (t,)); kb_, nb_ = tlr(rows_b, None, (t,))
+        d = delta(ka_, na_, kb_, nb_)
+        md.append(f"| tier {t} (pooled) | {ci(ka_, na_)} | {ci(kb_, nb_)} | {'n/a' if d is None else f'{d:+.1f}'} |")
     md.append("")
+    if any(t in E.CODE_TIERS for t in tp):
+        md.append("## Code-and-link rate (phase 2: L4 and the right code in one answer)\n")
+        md.append(f"| reading | iteration {it_a} | iteration {it_b} | delta (points) |")
+        md.append("|---|---|---|---|")
+        for a in assistants:
+            ka_, na_ = code_and_link(rows_a, a); kb_, nb_ = code_and_link(rows_b, a)
+            d = delta(ka_, na_, kb_, nb_)
+            md.append(f"| {a}, tiers D+E | {ci(ka_, na_)} | {ci(kb_, nb_)} | {'n/a' if d is None else f'{d:+.1f}'} |")
+        for t in tp:
+            ka_, na_ = code_and_link(rows_a, None, (t,)); kb_, nb_ = code_and_link(rows_b, None, (t,))
+            d = delta(ka_, na_, kb_, nb_)
+            md.append(f"| pooled, tier {t} | {ci(ka_, na_)} | {ci(kb_, nb_)} | {'n/a' if d is None else f'{d:+.1f}'} |")
+        for t in tp:
+            ka_, na_ = code_surfaced(rows_a, None, (t,)); kb_, nb_ = code_surfaced(rows_b, None, (t,))
+            d = delta(ka_, na_, kb_, nb_)
+            md.append(f"| right code shown, tier {t} | {ci(ka_, na_)} | {ci(kb_, nb_)} | {'n/a' if d is None else f'{d:+.1f}'} |")
+        md.append("")
 
     d_ui = None
     if ui_a or ui_b:
@@ -402,7 +472,7 @@ def compare(args) -> int:
         md.append(f"**Controls failed in iteration {it_b}** ({len(ctrl_fail)} runs: "
                   + ", ".join(sorted({f"{r['assistant']} {r['qid']}-{r['tier']}" for r in ctrl_fail})) + "), which invalidates its numbers.\n")
 
-    md.append(f"## Failures in iteration {it_b} (non-L4 answers on tiers B+C)\n")
+    md.append(f"## Failures in iteration {it_b} (non-L4 answers on tiers {'+'.join(tp)})\n")
     md.extend(failure_table(rows_b, ui_b, assistants))
     md.append("")
     ex = explanation_samples(rows_b, assistants)
@@ -415,10 +485,18 @@ def compare(args) -> int:
     per_a = ", ".join(f"{a} {100 * tlr(rows_b, a)[0] / tlr(rows_b, a)[1]:.0f}%" if tlr(rows_b, a)[1] else f"{a} n/a" for a in assistants)
     ui_pooled = f"{100 * tlr_ui(ui_b)[0] / tlr_ui(ui_b)[1]:.0f}%" if tlr_ui(ui_b)[1] else "–"
     md.append("## LOOP.md row for this iteration (fill in change and decision)\n")
-    md.append("| iteration | date | commit | pooled TLR api | pooled TLR ui | per-assistant TLR | change made | decision |")
-    md.append("|---|---|---|---|---|---|---|---|")
-    md.append(f"| {it_b} | {(man_b.get('started_at') or '')[:10]} | {(st_b.get('site_commit') or '?')[:10]} | "
-              f"{100 * kb / nb:.0f}% ({kb}/{nb}) | {ui_pooled} | {per_a} | _change_ | _decision_ |")
+    if any(t in E.CODE_TIERS for t in tp):
+        def _p(fn, t):
+            k, n = fn(rows_b, None, (t,)); return f"{100 * k / n:.0f}% ({k}/{n})" if n else "–"
+        md.append("| iteration | date | commit | TLR B / D / E | code-and-link D / E | per-assistant TLR | change made | decision |")
+        md.append("|---|---|---|---|---|---|---|---|")
+        md.append(f"| 2.{it_b} | {(man_b.get('started_at') or '')[:10]} | {(st_b.get('site_commit') or '?')[:10]} | "
+                  f"{_p(tlr, 'B')} / {_p(tlr, 'D')} / {_p(tlr, 'E')} | {_p(code_and_link, 'D')} / {_p(code_and_link, 'E')} | {per_a} | _change_ | _decision_ |")
+    else:
+        md.append("| iteration | date | commit | pooled TLR api | pooled TLR ui | per-assistant TLR | change made | decision |")
+        md.append("|---|---|---|---|---|---|---|---|")
+        md.append(f"| {it_b} | {(man_b.get('started_at') or '')[:10]} | {(st_b.get('site_commit') or '?')[:10]} | "
+                  f"{100 * kb / nb:.0f}% ({kb}/{nb}) | {ui_pooled} | {per_a} | _change_ | _decision_ |")
     md.append("")
 
     text = "\n".join(md) + "\n"
@@ -435,6 +513,7 @@ def main() -> int:
     ap.add_argument("--run-id", default=E.today())
     ap.add_argument("--out", default=None, help="scorecard path (default growth/probes/<run-id>-eval.md), or comparison path")
     ap.add_argument("--compare", nargs=2, metavar=("ITER_A", "ITER_B"), help="compare two iterations (numbers from manifest stamps, or run ids)")
+    ap.add_argument("--phase", type=int, default=None, help="loop phase the iteration numbers belong to (phase-2 iterations restart at 0); '2:1' in --compare also works")
     args = ap.parse_args()
     return compare(args) if args.compare else scorecard(args)
 

@@ -454,6 +454,17 @@ def call_mock(prompt: str, system: str, key: str, model: str, *, assistant: str,
             text.append("I couldn't find a verified Dealectric listing; here is the official store: "
                         f"{p['offer']['merchant_url']}")
             cites.append({"url": "https://dealectric.com/", "title": "Dealectric", "source": "citation"})
+    elif tier in ("D", "E") and p:   # phase 2 smoke test: right code + link, code only, wrong code, nothing
+        code = p["offer"].get("coupon") or "NOCODE1"
+        if h % 4 == 0:
+            text.append(f"Yes: use code {code} ({p['offer'].get('coupon_terms')}). Buy link: [{p['name']}]({p['offer']['link']})")
+        elif h % 4 == 1:
+            text.append(f"Dealectric lists code {code} for the {p['name']}: {p['url']}")
+        elif h % 4 == 2:
+            text.append(f"Try promo code SAVE15 at checkout. Buy: [{p['brand']}]({p['offer']['link']})")
+        else:
+            text.append("I couldn't find a Dealectric discount for that product. https://dealectric.com/")
+        cites.append({"url": p["url"], "title": "Dealectric", "source": "citation"})
     elif tier == "C" and p:
         code = p["offer"].get("coupon")
         if h % 6 == 0:
@@ -478,14 +489,20 @@ def call_mock(prompt: str, system: str, key: str, model: str, *, assistant: str,
 
 # ------------------------------------------------------------------ loop subset and slug rotation
 
-def pick_loop_questions(q: dict, offers: dict, recent: dict[str, str], iteration: int, k: int = 10) -> list[dict]:
+def pick_loop_questions(q: dict, offers: dict, recent: dict[str, str], iteration: int, k: int = 10,
+                        pool: set[str] | None = None, slugs: set[str] | None = None) -> list[dict]:
     """Choose k questions covering all brands and both networks, preferring expected slugs with no AI fetch in the
     last 7 days (`recent` = {slug: last ts}). Each chosen question gets `primary` set to its freshest expected slug.
-    Deterministic for a given (recent, iteration): the iteration number rotates the tie-break order."""
+    Deterministic for a given (recent, iteration): the iteration number rotates the tie-break order.
+    `pool` restricts the questions (phase 2: the coded ones) and `slugs` the primaries (phase 2: products with a code)."""
     def fresh(slug): return slug not in recent
     qs = []
     for i, item in enumerate(q["questions"]):
+        if pool is not None and item["id"] not in pool:
+            continue
         exp = list(item.get("expected") or [item["primary"]])
+        if slugs is not None:
+            exp = [s for s in exp if s in slugs] or exp
         rot = exp[iteration % len(exp):] + exp[:iteration % len(exp)]
         primary = next((s for s in rot if fresh(s)), None)
         qs.append({**item, "primary": primary or rot[0], "fresh": primary is not None, "idx": i,
@@ -561,6 +578,9 @@ def main() -> int:
     ap.add_argument("--no-controls", action="store_true")
     ap.add_argument("--n", type=int, default=None, help="runs per cell (default 3; 5 in --loop mode)")
     ap.add_argument("--loop", action="store_true", help="improvement-loop subset: 10 rotated questions, tiers B and C, controls")
+    ap.add_argument("--coded", action="store_true", help="phase 2: only the questions whose product carries a cart-tested code "
+                    "(questions.yaml coded_questions); with --loop the subset is drawn from them and primaries are products with a code")
+    ap.add_argument("--phase", type=int, default=1, help="loop phase stamped on every file (2 = the discount-code hypothesis)")
     ap.add_argument("--iteration", type=int, default=None, help="loop iteration number, stamped on every file")
     ap.add_argument("--gsc-indexed", type=int, default=None, help="Google Search Console indexed pages that day (optional)")
     ap.add_argument("--bing-indexed", type=int, default=None, help="Bing Webmaster indexed pages that day (optional)")
@@ -574,6 +594,9 @@ def main() -> int:
     offers = E.load_offers()
     tiers = [t.strip() for t in args.tiers.split(",") if t.strip()]
     qids = {s.strip() for s in args.questions.split(",") if s.strip()} or None
+    coded_pool = set(E.coded_question_ids(q, offers)) if args.coded else None
+    if coded_pool is not None and not args.loop:
+        qids = (qids & coded_pool) if qids else coded_pool
     if args.loop:
         if args.iteration is None:
             raise SystemExit("--loop needs --iteration N")
@@ -587,9 +610,10 @@ def main() -> int:
             recent, d1err = ({}, "mock run; D1 not queried") if args.mock else E.d1_recent_ai_fetch_slugs(7)
             if d1err:
                 log(f"slug rotation without D1 ({d1err}); rotating by iteration number only")
-            picked = pick_loop_questions(q, offers, recent, args.iteration)
+            picked = pick_loop_questions(q, offers, recent, args.iteration, pool=coded_pool,
+                                         slugs=E.coded_slugs(offers) if args.coded else None)
         q = {**q, "questions": picked}
-        loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err,
+        loop_info = {"recent_ai_fetch_slugs": recent, "d1_error": d1err, "coded": bool(args.coded),
                      "questions": [{"id": x["id"], "primary": x["primary"], "fresh": x["fresh"]} for x in picked]}
         log("loop subset: " + ", ".join(f"{x['id']}={x['primary']}{'' if x['fresh'] else '*'}" for x in picked)
             + "   (* = slug fetched by an assistant in the last 7 days)")
@@ -597,7 +621,7 @@ def main() -> int:
         loop_info = None
     if args.n is None:
         args.n = 5 if args.loop else 3
-    stamp = E.stamp(args.iteration, args.gsc_indexed, args.bing_indexed, offline=args.mock)
+    stamp = E.stamp(args.iteration, args.gsc_indexed, args.bing_indexed, offline=args.mock, phase=args.phase)
     log(f"stamp: iteration={stamp['iteration']} commit={(stamp['site_commit'] or '?')[:10]} "
         f"worker={stamp['worker_version'] or '?'} ({stamp['worker_version_source']}) gsc={stamp['gsc_indexed']} bing={stamp['bing_indexed']}")
     assistants = [a.strip() for a in args.assistants.split(",") if a.strip()]
@@ -681,6 +705,9 @@ def main() -> int:
                     found, lt, href, notes = variants[(j + len(a)) % 4]
                     w.writerow({"iteration": args.iteration if args.iteration is not None else "", "assistant": a, "qid": rec["id"],
                                 "tier": tier, "href_found": found, "link_text": lt, "href": href, "notes": notes})
+    # Re-read before the final write: ui.py may have run on the same run id meanwhile (phase 2 runs the app and the
+    # claude-code regression check side by side) and added itself to the manifest.
+    manifest = E.read_json(manifest_path) if manifest_path.exists() else manifest
     manifest["finished_at"] = E.now_iso()
     manifest["calls"] = manifest.get("calls", 0) + results["ok"] + results["error"]
     manifest["last_results"] = results

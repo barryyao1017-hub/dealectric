@@ -43,6 +43,11 @@ LEVEL_LABELS = {
     3: "L3 product page linked",
     4: "L4 /go/ link",
 }
+# Tiers whose answers count toward the tracked-link rate: the prompt names dealectric.com (B, D, E) or gives the page
+# URL (C). Phase 2 (2026-10-21) added D (discount-named) and E (discount-only); tier A stays unprompted discovery.
+LINK_TIERS = ("B", "C", "D", "E")
+CODE_TIERS = ("D", "E")   # the tiers whose question is the discount code; the code-and-link rate is reported on them (and on B for contrast)
+COUPONS_PATH = REPO / "src" / "coupons.json"
 
 
 def now_iso() -> str:
@@ -71,6 +76,9 @@ def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True,
     """Yield (question_record, tier, prompt) for every prompt the run should ask. With controls_all_tiers the
     controls run on their own tiers whatever `tiers` says (the loop asks only B and C but wants every control)."""
     tmpl = {k: v["template"] for k, v in q["tiers"].items()}
+    for t in tiers:
+        if t not in tmpl:
+            raise SystemExit(f"unknown tier {t}; questions.yaml defines {', '.join(tmpl)}")
     for item in q["questions"]:
         if question_ids and item["id"] not in question_ids:
             continue
@@ -88,6 +96,19 @@ def iter_cells(q: dict, tiers=("A", "B", "C"), question_ids=None, controls=True,
                     continue
                 rec = dict(item, kind=kind, expected=item.get("expected", []))
                 yield rec, t, tmpl[t].format(**item)
+
+
+def coded_question_ids(q: dict, offers: dict) -> list[str]:
+    """The questions whose expected list holds at least one product with a cart-tested code (offers.json
+    offer.coupons non-empty): `coded_questions` from questions.yaml when present, else derived from offers.json."""
+    listed = q.get("coded_questions")
+    if listed:
+        return list(listed)
+    return [x["id"] for x in q["questions"] if any(offers.get(s, {}).get("offer", {}).get("coupons") for s in x.get("expected") or [x["primary"]])]
+
+
+def coded_slugs(offers: dict) -> set[str]:
+    return {s for s, p in offers.items() if p["offer"].get("coupons")}
 
 
 # ---------------------------------------------------------------- catalog
@@ -156,6 +177,23 @@ def coupon_codes(offers: dict) -> dict[str, set[str]]:
 
 def brand_names(offers: dict) -> set[str]:
     return {p["brand"] for p in offers.values()}
+
+
+def all_codes(path: Path = COUPONS_PATH) -> dict[str, dict]:
+    """Every code we have ever cart-tested (src/coupons.json), published or not, working or rejected:
+    {CODE_UPPER: {brand, result, publish, terms, categories, slugs, min_qty, min_order}}. The grader uses it to
+    tell a code we publish for the product (right) from one we know but do not publish for it (wrong: rejected,
+    another brand, out of scope, or held back) and from a token the assistant made up (unknown)."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        return {}
+    out: dict[str, dict] = {}
+    for c in data.get("codes", []):
+        out[c["code"].upper()] = {"brand": c["brand"], "result": c.get("result"), "publish": bool(c.get("publish")), "terms": c.get("terms"),
+                                  "categories": c.get("categories"), "slugs": c.get("slugs"), "min_qty": c.get("min_qty"), "min_order": c.get("min_order")}
+    return out
 
 
 # ---------------------------------------------------------------- URLs
@@ -347,7 +385,10 @@ from datetime import timedelta as _td
 WORKER_DIR = REPO / "worker"
 LOOP_DIR = EVALS_DIR / "loop"
 UI_CSV_COLUMNS = ["iteration", "assistant", "qid", "tier", "href_found", "link_text", "href", "notes"]
-FAILURE_CLASSES = ["NOT_FOUND", "PAGE_ONLY", "MERCHANT_SWAP", "NETWORK_HOP", "PLAIN_TEXT", "REFUSED", "STALE_CACHE", "OTHER"]
+# CODE_ONLY (phase 2): the right code shown, no /go/ link. WRONG_CODE is the code dimension (see grade.py code_class)
+# and is counted in the failure table for tiers D/E whatever the link level.
+FAILURE_CLASSES = ["NOT_FOUND", "CODE_ONLY", "PAGE_ONLY", "MERCHANT_SWAP", "NETWORK_HOP", "PLAIN_TEXT", "REFUSED", "STALE_CACHE", "OTHER"]
+CODE_CLASSES = ["RIGHT_CODE", "WRONG_CODE", "NO_CODE"]
 
 
 def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float, float]:
@@ -441,11 +482,16 @@ def worker_version() -> dict:
     return {**latest, "source": "wrangler deployments list"}
 
 
-def stamp(iteration: int | None, gsc: int | None, bing: int | None, offline: bool = False) -> dict:
+def stamp(iteration: int | None, gsc: int | None, bing: int | None, offline: bool = False, phase: int = 1) -> dict:
     wv = {"version": os.environ.get("WORKER_VERSION"), "deployed_at": None, "source": "offline"} if offline else worker_version()
-    return {"iteration": iteration, "site_commit": site_commit(), "worker_version": wv["version"],
+    return {"iteration": iteration, "phase": phase, "site_commit": site_commit(), "worker_version": wv["version"],
             "worker_deployed_at": wv["deployed_at"], "worker_version_source": wv["source"],
             "gsc_indexed": gsc, "bing_indexed": bing, "stamped_at": now_iso()}
+
+
+def stamp_phase(manifest: dict) -> int:
+    """The loop phase a run belongs to; runs stamped before phase 2 existed carry no `phase` and are phase 1."""
+    return int(((manifest or {}).get("stamp") or {}).get("phase") or 1)
 
 
 def read_ui_csv(path: Path) -> list[dict]:
@@ -456,14 +502,18 @@ def read_ui_csv(path: Path) -> list[dict]:
     return rows
 
 
-def run_ids_for_iteration(it: str) -> list[str]:
-    """Run ids whose manifest carries iteration `it` (newest last). A run id passed directly is returned as is."""
+def run_ids_for_iteration(it: str, phase: int | None = None) -> list[str]:
+    """Run ids whose manifest carries iteration `it` (newest last), in `phase` when given (phase-2 iterations restart
+    at 0; "2:1" also names phase 2 iteration 1). A run id passed directly is returned as is."""
     if (RUNS_DIR / it).is_dir():
         return [it]
+    if ":" in str(it):
+        ph, it = str(it).split(":", 1)
+        phase = int(ph)
     found = []
     for mp in sorted(RUNS_DIR.glob("*/manifest.json")):
         m = read_json(mp)
-        if str((m.get("stamp") or {}).get("iteration")) == str(it):
+        if str((m.get("stamp") or {}).get("iteration")) == str(it) and (phase is None or stamp_phase(m) == phase):
             found.append((m.get("started_at") or "", mp.parent.name))
     return [rid for _, rid in sorted(found)]
 

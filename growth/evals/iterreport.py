@@ -40,8 +40,15 @@ H = html.escape
 
 # ---------------------------------------------------------------- iter-NN.md
 
+PHASE = 1   # set from --phase; phase 2 reads phase2-iter-NN.md and writes reports/phase2-iter-NN/
+
+
+def iter_prefix() -> str:
+    return "iter-" if PHASE == 1 else f"phase{PHASE}-iter-"
+
+
 def read_iter_md(it: int) -> tuple[str, dict[str, list[str]]]:
-    p = E.LOOP_DIR / f"iter-{it:02d}.md"
+    p = E.LOOP_DIR / f"{iter_prefix()}{it:02d}.md"
     if not p.exists():
         return f"Iteration {it}", {}
     title, sections, cur = f"Iteration {it}", {}, "_intro"
@@ -123,7 +130,7 @@ def md_html(lines: list[str]) -> str:
 def load_iteration(it: int | None, run_id: str | None) -> dict | None:
     if it is None and not run_id:
         return None
-    rid = run_id or (E.run_ids_for_iteration(str(it)) or [None])[-1]
+    rid = run_id or (E.run_ids_for_iteration(str(it), PHASE) or [None])[-1]
     if not rid:
         return None
     rows, ui, manifest = RPT.load_run(rid)
@@ -134,15 +141,18 @@ def is_app(rows: list[dict], assistant: str) -> bool:
     return any(r.get("ui") for r in rows if r["assistant"] == assistant)
 
 
-def pooled(d: dict, kind: str) -> tuple[int, int]:
-    """kind 'ui': app rows in grades.jsonl plus the spot-check CSV rows; 'api': everything else."""
-    rows = [r for r in d["rows"] if r["kind"] == "question" and r["tier"] in ("B", "C") and not r.get("error")]
+def pooled(d: dict, kind: str, metric: str = "tlr") -> tuple[int, int]:
+    """kind 'ui': app rows in grades.jsonl plus the spot-check CSV rows; 'api': everything else.
+    metric 'tlr' = L4 on the link tiers; 'cal' = code-and-link on tiers D+E (phase 2)."""
+    tiers = E.CODE_TIERS if metric == "cal" else E.LINK_TIERS
+    rows = [r for r in d["rows"] if r["kind"] == "question" and r["tier"] in tiers and not r.get("error")]
+    hit = (lambda r: bool(r.get("code_and_link"))) if metric == "cal" else (lambda r: r["level"] == 4)
     if kind == "ui":
-        k = sum(r["level"] == 4 for r in rows if r.get("ui")); n = sum(1 for r in rows if r.get("ui"))
-        ku, nu = RPT.tlr_ui(d["ui"])
+        k = sum(hit(r) for r in rows if r.get("ui")); n = sum(1 for r in rows if r.get("ui"))
+        ku, nu = RPT.tlr_ui(d["ui"]) if metric == "tlr" else (0, 0)
         return k + ku, n + nu
     sel = [r for r in rows if not r.get("ui")]
-    return sum(r["level"] == 4 for r in sel), len(sel)
+    return sum(hit(r) for r in sel), len(sel)
 
 
 def ci_text(k: int, n: int) -> str:
@@ -154,10 +164,12 @@ def ci_text(k: int, n: int) -> str:
 
 def verdict(cur: dict, prev: dict | None) -> dict:
     out = {"api": pooled(cur, "api"), "ui": pooled(cur, "ui"), "rule": "baseline", "delta_api": None, "delta_ui": None,
+           "cal_ui": pooled(cur, "ui", "cal"), "cal_api": pooled(cur, "api", "cal"), "delta_cal_ui": None, "delta_cal_api": None,
            "controls": controls(cur)}
     if prev:
         out["prev_api"], out["prev_ui"] = pooled(prev, "api"), pooled(prev, "ui")
-        for key in ("api", "ui"):
+        out["prev_cal_api"], out["prev_cal_ui"] = pooled(prev, "api", "cal"), pooled(prev, "ui", "cal")
+        for key in ("api", "ui", "cal_api", "cal_ui"):
             k0, n0 = out["prev_" + key]; k1, n1 = out[key]
             out["delta_" + key] = (k1 / n1 - k0 / n0) * 100 if n0 and n1 else None
         primary = out["delta_ui"] if out["delta_ui"] is not None else out["delta_api"]
@@ -191,10 +203,14 @@ def per_assistant(d: dict) -> list[dict]:
         ku, nu = RPT.tlr_ui(d["ui"], a)
         fails: dict[str, int] = {}
         for r in rows + [u for u in d["ui"] if u["assistant"] == a]:
-            if r.get("kind", "question") == "question" and r.get("tier") in ("B", "C") and r.get("failure_class"):
+            if r.get("kind", "question") == "question" and r.get("tier") in E.LINK_TIERS and r.get("failure_class"):
                 fails[r["failure_class"]] = fails.get(r["failure_class"], 0) + 1
+        wrong = sum(r.get("code_class") == "WRONG_CODE" for r in rows if r["kind"] == "question" and r["tier"] in E.CODE_TIERS)
+        if wrong:
+            fails["WRONG_CODE"] = wrong
         out.append({"assistant": a, "model": d["manifest"].get("models", {}).get(a, ""), "app": app,
                     "reading": "ui (app)" if app else ("ui (spot-check CSV only)" if not rows else "api"), "tlr": (k, n), "tlr_B": R["tlr_B"], "tlr_C": R["tlr_C"],
+                    "tlr_D": R["tlr_D"], "tlr_E": R["tlr_E"], "cal_D": R["cal_D"], "cal_E": R["cal_E"], "code_D": R["code_D"], "code_E": R["code_E"],
                     "tlr_ui_csv": (ku, nu), "bypass": R["bypass"], "coupon": R["coupon_C"], "fails": fails})
     return out
 
@@ -250,13 +266,18 @@ def responses(d: dict, out_dir: Path) -> tuple[list[dict], list[dict]]:
     recs: dict[str, dict] = {}
     for a, f in E.iter_run_files(d["run_id"]):
         recs[str(f.relative_to(rdir))] = (f, E.read_json(f))
-    rows = [r for r in d["rows"] if r["kind"] == "question" and r["tier"] in ("B", "C") and not r.get("error")]
-    rows.sort(key=lambda r: (not r.get("ui"), r["level"] == 4, r["assistant"], r["qid"], r["tier"], r["n"]))
+    rows = [r for r in d["rows"] if r["kind"] == "question" and r["tier"] in E.LINK_TIERS and not r.get("error")]
+    rows.sort(key=lambda r: (not r.get("ui"), r["level"] == 4 and r.get("code_class") != "WRONG_CODE", r["assistant"], r["qid"], r["tier"], r["n"]))
     shots, texts, per_a = [], [], {}
     for r in rows:
         f, rec = recs.get(r["file"], (None, {}))
-        card = {"assistant": r["assistant"], "qid": r["qid"], "tier": r["tier"], "n": r["n"], "level": r["level_label"],
-                "cls": r.get("failure_class"), "evidence": r.get("failure_evidence") or "", "prompt": r.get("prompt") or "",
+        code_note = ""
+        if r["tier"] in E.CODE_TIERS or r.get("code_class") != "NO_CODE":
+            code_note = {"RIGHT_CODE": "code " + ", ".join(r.get("codes_right") or []), "WRONG_CODE": "WRONG CODE " + ", ".join(r.get("codes_wrong") or []),
+                         "NO_CODE": "no code"}.get(r.get("code_class") or "NO_CODE", "")
+        card = {"assistant": r["assistant"], "qid": r["qid"], "tier": r["tier"], "n": r["n"], "level": r["level_label"] + (f" · {code_note}" if code_note else ""),
+                "cls": r.get("failure_class") or ("WRONG_CODE" if r.get("code_class") == "WRONG_CODE" else None),
+                "evidence": r.get("failure_evidence") or "", "prompt": r.get("prompt") or "",
                 "link": (r.get("go_slugs") or r.get("page_slugs") or r.get("merchant_links") or r.get("network_links") or [""])[0],
                 "quote": r.get("explanation") or "", "text": (rec.get("text") or "")[:700]}
         shot = rec.get("screenshot")
@@ -271,7 +292,7 @@ def responses(d: dict, out_dir: Path) -> tuple[list[dict], list[dict]]:
             texts.append(card)
     # spot-check CSV rows (manual browser checks) carry the shopper-facing link and the note; show the failures
     for u in d["ui"]:
-        if u.get("tier") in ("B", "C") and not u.get("l4_ui") and len(texts) < MAX_TEXT_CARDS * 3:
+        if u.get("tier") in E.LINK_TIERS and not u.get("l4_ui") and len(texts) < MAX_TEXT_CARDS * 3:
             texts.append({"assistant": u["assistant"], "qid": u["qid"], "tier": u["tier"], "n": "ui", "level": u.get("level_label", ""),
                           "cls": u.get("failure_class"), "evidence": u.get("failure_evidence") or "", "prompt": "",
                           "link": u.get("href") or u.get("link_text") or "", "quote": "", "text": u.get("notes") or ""})
@@ -375,6 +396,10 @@ def build(it: int, cur: dict, prev: dict | None, out_dir: Path) -> Path:
 
     rule_cls = "bad" if "drop" in v["rule"] or "FAILURE" in v["rule"] else ("flat" if "flat" in v["rule"] or "baseline" in v["rule"] else "")
     tiles = []
+    phase2 = PHASE >= 2 or v["cal_ui"][1] or v["cal_api"][1]
+    if phase2:
+        tiles.append(tile("Code-and-link, apps (ui), tiers D+E", ci_text(*v["cal_ui"]),
+                          f"{v['delta_cal_ui']:+.1f} pts vs iteration {prev['iteration']}" if v.get("delta_cal_ui") is not None else ("the phase-2 metric" if v["cal_ui"][1] else "no app rows")))
     tiles.append(tile("Pooled TLR, apps (ui)", ci_text(*v["ui"]),
                       f"{v['delta_ui']:+.1f} pts vs iteration {prev['iteration']}" if v.get("delta_ui") is not None else ("primary reading" if v["ui"][1] else "no app rows")))
     tiles.append(tile("Pooled TLR, api", ci_text(*v["api"]),
@@ -386,13 +411,24 @@ def build(it: int, cur: dict, prev: dict | None, out_dir: Path) -> Path:
     rows_html = []
     for a in pa:
         f = ", ".join(f"{k} {n}" for k, n in sorted(a["fails"].items(), key=lambda x: -x[1])) or "–"
-        rows_html.append(f"<tr><td>{H(a['assistant'])}<div class='who'>{H(a['model'])}</div></td><td>{H(a['reading'])}</td>"
-                         f"<td>{ci_text(*a['tlr'])}</td><td>{pct(*a['tlr_B'])}</td><td>{pct(*a['tlr_C'])}</td>"
-                         f"<td>{ci_text(*a['tlr_ui_csv']) if a['tlr_ui_csv'][1] else '–'}</td>"
-                         f"<td>{pct(*a['bypass'])}</td><td>{pct(*a['coupon'])}</td><td>{H(f)}</td></tr>")
-    numbers = ('<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+C</th><th>tier B</th><th>tier C</th>'
-               '<th>spot-check CSV</th><th>bypass</th><th>coupon (C)</th><th>failure classes</th></tr></thead><tbody>'
-               + "".join(rows_html) + "</tbody></table></div>")
+        if phase2:
+            rows_html.append(f"<tr><td>{H(a['assistant'])}<div class='who'>{H(a['model'])}</div></td><td>{H(a['reading'])}</td>"
+                             f"<td>{ci_text(*a['tlr'])}</td><td>{pct(*a['tlr_B'])}</td><td>{pct(*a['tlr_D'])}</td><td>{pct(*a['tlr_E'])}</td>"
+                             f"<td>{pct(*a['cal_D'])}</td><td>{pct(*a['cal_E'])}</td><td>{pct(*a['code_D'])}</td><td>{pct(*a['code_E'])}</td>"
+                             f"<td>{pct(*a['bypass'])}</td><td>{H(f)}</td></tr>")
+        else:
+            rows_html.append(f"<tr><td>{H(a['assistant'])}<div class='who'>{H(a['model'])}</div></td><td>{H(a['reading'])}</td>"
+                             f"<td>{ci_text(*a['tlr'])}</td><td>{pct(*a['tlr_B'])}</td><td>{pct(*a['tlr_C'])}</td>"
+                             f"<td>{ci_text(*a['tlr_ui_csv']) if a['tlr_ui_csv'][1] else '–'}</td>"
+                             f"<td>{pct(*a['bypass'])}</td><td>{pct(*a['coupon'])}</td><td>{H(f)}</td></tr>")
+    if phase2:
+        numbers = ('<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+D+E</th><th>TLR B</th><th>TLR D</th><th>TLR E</th>'
+                   '<th>code+link D</th><th>code+link E</th><th>right code D</th><th>right code E</th><th>bypass</th><th>failure classes</th></tr></thead><tbody>'
+                   + "".join(rows_html) + "</tbody></table></div>")
+    else:
+        numbers = ('<div class="scroll"><table><thead><tr><th>assistant</th><th>reading</th><th>TLR B+C</th><th>tier B</th><th>tier C</th>'
+                   '<th>spot-check CSV</th><th>bypass</th><th>coupon (C)</th><th>failure classes</th></tr></thead><tbody>'
+                   + "".join(rows_html) + "</tbody></table></div>")
 
     cost_rows = []
     for a, u in cost["per"].items():
@@ -434,7 +470,7 @@ def build(it: int, cur: dict, prev: dict | None, out_dir: Path) -> Path:
     if not shots and not texts:
         resp_html.append('<p class="empty">No tier B or C answers in this run.</p>')
 
-    page = f"""<title>Dealectric Loop · Iteration {it}</title>
+    page = f"""<title>Dealectric Loop · {'Phase 2 · ' if PHASE >= 2 else ''}Iteration {it}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>{CSS}</style>
@@ -481,7 +517,10 @@ def main() -> int:
     ap.add_argument("--run-id", default=None, help="run id for this iteration (default: the latest run stamped with it)")
     ap.add_argument("--prev-run-id", default=None)
     ap.add_argument("--out", default=None, help="output folder (default growth/evals/loop/reports/iter-NN)")
+    ap.add_argument("--phase", type=int, default=1, help="loop phase: 2 reads phase2-iter-NN.md, matches phase-2 run stamps and writes reports/phase2-iter-NN")
     args = ap.parse_args()
+    global PHASE
+    PHASE = args.phase
 
     cur = load_iteration(args.iteration, args.run_id)
     if not cur:
@@ -490,7 +529,7 @@ def main() -> int:
     prev = load_iteration(prev_it, args.prev_run_id) if prev_it is not None else None
     if prev_it is not None and not prev:
         print(f"no run for iteration {prev_it}; building without a comparison")
-    out_dir = Path(args.out) if args.out else REPORTS_DIR / f"iter-{args.iteration:02d}"
+    out_dir = Path(args.out) if args.out else REPORTS_DIR / f"{iter_prefix()}{args.iteration:02d}"
     if out_dir.exists():
         shutil.rmtree(out_dir / "shots", ignore_errors=True)
     out = build(args.iteration, cur, prev, out_dir)
