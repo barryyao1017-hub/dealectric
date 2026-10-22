@@ -513,7 +513,10 @@ def main() -> int:
             starts.append(s); ends.append(e_)
         if key in cached and args.rescore:
             row = cached[key]
-            row["expected"] = rec.get("expected") or []
+            # the run file may have been re-asked since (rerun_stale.sh): refresh what comes from the record itself
+            row.update({"expected": rec.get("expected") or [], "primary": rec.get("primary"), "prompt": rec.get("prompt"),
+                        "started_at": rec.get("started_at"), "finished_at": rec.get("finished_at"), "latency_s": rec.get("latency_s"),
+                        "error": rec.get("error"), "stop_reason": rec.get("stop_reason"), "queries": rec.get("queries") or []})
             row.update(grade_record(rec, offers, coupons, brands, universe))
             row["_text"] = rec.get("text") or ""
             rows.append(row); continue

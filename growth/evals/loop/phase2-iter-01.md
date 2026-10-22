@@ -1,6 +1,6 @@
 # Phase 2, iteration 1 — the rebrand: code, saving, test date and link on every surface (2026-10-22)
 
-Report: _(artifact URL, added when published)_
+Report: https://claude.ai/artifact/Xu3Pmk6QAiVaDvqmf2or8a (built by `growth/evals/iterreport.py --iteration 1 --phase 2`; every chat screenshot in its gallery)
 
 ## Diagnosis (from iteration 0)
 
@@ -93,29 +93,39 @@ ChatGPT's index cache): 24/24 L4 and 24/24 code-and-link on B, D and E (iteratio
 and 15/16); 16 of 24 answers quote the cart test ("tested in ESR's cart on 2026-10-22"); controls 4/4 (N01-D
 after a grader fix: "Anker isn't one of them" now counts as an honest answer).
 
-**ChatGPT, first pass** (run `2026-10-22-p2iter01`, 12:50–13:33Z, 44 chats, 2 timed out and re-asked): on the
-8 questions, with the baseline restricted to the same questions (`compare-p2-00-01.md`):
+**ChatGPT** (run `2026-10-22-p2iter01`: first pass 12:50–13:33Z, 44 chats; the 16 cells that read a pre-rebrand
+copy re-asked at 15:20Z; 6 tier-E cells still quoted "October 14, 2026" after that and are excluded as STALE_CACHE,
+their first-pass files kept under `stale-pass-1/`). On the 8 questions, baseline restricted to the same questions
+(`compare-p2-00-01.md`):
 
-| reading (ChatGPT) | iteration 0 (8 q) | iteration 1 | delta |
+| reading (ChatGPT) | iteration 0 (8 q) | iteration 1, fresh cells | iteration 1, all 40 |
 |---|---|---|---|
-| **code-and-link, tiers D+E** | **69% (22/32)** | **83% (25/30)** | **+14.6** |
-| code-and-link D / E | 75% / 62% | 87% / 91% | +12 / +29 |
-| tracked link B / D / E | 75% / 81% / 62% | 88% / 87% / 91% | |
-| right code shown D / E | 81% / 81% | 91% / 91% | |
-| CODE_ONLY | 5 (of 32) | 1 (of 30) | |
+| **code-and-link, tiers D+E** | **69% (22/32)** | **85% (22/26)** | 84% (27/32) |
+| code-and-link D / E | 75% (12/16) / 62% (10/16) | 81% (13/16) / 90% (9/10) | 81% / 88% |
+| tracked link B / D / E | 75% / 81% / 62% | 63% (5/8) / 81% / 90% | 63% / 81% / 88% |
+| right code shown B / D / E | 50% / 81% / 81% | 25% (2/8) / 88% / 90% | |
+| CODE_ONLY / OTHER (catalog or home page linked) / NOT_FOUND / MERCHANT_SWAP | 5 / 3 / 1 / 0 | 1 / 3 / 2 / 1 | |
+| WRONG_CODE | 0 | 0 | |
 | controls | | 4/4 | |
 
-claude-code 24/24 on both metrics. Pooled TLR +8.2 points (≥ 5: improvement by the phase-1 rule); intervals overlap
-(n = 30 and 32), so the number to trust is the direction and the failure classes: CODE_ONLY fell from 5 to 1, tier
-E (no link asked) now carries the link in 21 of 23 answers. 9 of the 38 ChatGPT answers still show a pre-rebrand
-marker: 3 quote "verified October 14, 2026" in the text (content read from the old copy), 6 only show the old page
-title in the citation chip (the search index's title, while the answer text carries the 10/21 verification and in
-two cases the cart test). By the plan's rule those cells do not count yet: they are re-asked after a further 2 h wait
-(the 2 timed-out cells too), and the numbers above are provisional.
+claude-code: 24/24 L4 and 24/24 code-and-link (iteration 0: 23/24, 15/16).
 
-Excluding the 9 marked cells: code-and-link D 10/13, E 10/12 (80% on D+E), tier B 0/4 (the four tier-B answers
-that were not marked all lacked the code; small n).
+What moved, in ChatGPT's own words: the answers that reach a product page now hand over both ("Discount code:
+PARTNER18 — saves $17.99. Reported tested in ESR's checkout today … Buy link", "Dealectric confirms the discount was
+tested in the manufacturer's checkout. Enter EXTRA12 at checkout"); tier E, where no link is asked for, went from
+62% to 90% code-and-link. What did not move: tier B (named, no code asked) fell to 5/8 links and 2/8 codes, and
+every remaining miss on D has the same shape: search returned the home page, `/products` or a category guide, not
+the product page, and the answer stops at "The link above goes to Dealectric's homepage; I couldn't verify the exact
+product-specific buy URL" (Q09-B-1, Q17-B-1) or "Shop the Boom 3i through Dealectric" linking `/products` with "I
+couldn't verify a currently working code specifically for the Boom 3i" (Q29-D-1, Q26-D-2). The catalog page lists
+every product with its price but carried no code and no `/go/` link.
+
+Cache: ChatGPT's index copy of the product pages turned over about four hours after the deploy; its copy of the
+catalog and home pages had not by 15:20Z (seven hours), which is where the six excluded tier-E answers came from.
 
 ## Decision
 
-_(pending)_
+**Improvement** on the phase-2 metric: code-and-link on D+E +16 points (69% → 85% on the same questions; pooled TLR
++8 by the phase-1 rule); kept. Below the ≥ 90%-on-D stop rule (81%), so the loop continues. The remaining misses
+are structural, not wording: ChatGPT lands on the catalog page and finds no code and no buy link there. Iteration 2
+gives every catalog card the same deal line and buy link as the home page (`phase2-iter-02.md`).
