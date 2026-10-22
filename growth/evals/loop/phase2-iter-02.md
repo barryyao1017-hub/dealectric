@@ -45,7 +45,15 @@ STALE_CACHE and re-asked.
 **claude-code** (run `2026-10-22-p2iter02`, 15:33–15:50Z, live fetches): 24/24 L4 and 24/24 code-and-link on B, D
 and E; controls 4/4. Unchanged from iteration 1, as expected.
 
-**ChatGPT**: _(evaluation scheduled for 19:30Z, four hours after the deploy; stale cells re-asked)_
+**ChatGPT, first pass** (run `2026-10-22-p2iter02`, 19:30–19:58Z, 44 chats; the positive control and Q21-D-1 timed
+out and are re-asked): on the fresh cells, code-and-link D 10/13, E 9/9, D+E 19/22 (86%; iteration 1: 85%), tier B
+3/5; tracked link D 10/13, E 9/9. **Flat on the fresh cells.** 14 of 39 answers read a pre-deploy copy: the tier-E
+and some tier-B cells still quote "October 14, 2026", and the Q17 tier-D answers that link `/products` quote the
+Elite 30 V2 at $279.99, its price before the 10/21 price check, i.e. ChatGPT's index copy of the catalog page
+predates not only this iteration but the rebrand itself (36 h+). Those are exactly the cells this iteration's change
+targets, so the first pass cannot see the lever either way. A tier-C chat on an opened product page (the Elite 200
+V2, 20:05Z) reads the current code and link, so product pages are fresh in the index while the catalog and home
+pages are not. The stale and timed-out cells are re-asked at 22:00Z.
 
 ## Decision
 
