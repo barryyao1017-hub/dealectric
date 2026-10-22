@@ -113,7 +113,8 @@ NEG_HONEST_RE = re.compile(
     r"|(?:not|no)[^.\n]{0,30}?(?:in|on|at) (?:its|their|the|dealectric'?s?) (?:catalog|catalogue|site|listings?|offers)"
     r"|(?:isn'?t|is not|aren'?t|are not)[^.\n]{0,40}?(?:listed|carried|sold|available|stocked)[^.\n]{0,30}?(?:on|at|by) dealectric"
     r"|no (?:dealectric )?(?:listing|product page|buy link)[^.\n]{0,60}?(?:for|of) (?:this|that|the)"
-    r"|can'?t (?:give|get|provide|find)[^.\n]{0,40}?dealectric (?:buy )?link", re.I)
+    r"|can'?t (?:give|get|provide|find)[^.\n]{0,40}?dealectric[^.\n]{0,30}?(?:link|code|listing|page)"
+    r"|(?:isn'?t|is not|aren'?t|are not|not) (?:one of|among|in) (?:them|its|their|the) ?(?:brands|catalog|listings?)?", re.I)
 
 
 # Phase 2: a token the answer presents as a code ("code AFSC20", "promo code: `SAVE10`"), to catch codes we never

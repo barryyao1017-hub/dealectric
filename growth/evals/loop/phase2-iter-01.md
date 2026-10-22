@@ -83,7 +83,12 @@ quotes the pre-rebrand wording is STALE_CACHE and does not count; the iteration 
 
 ## Re-evaluation
 
-_(pending)_
+**claude-code** (regression check, run `2026-10-22-p2iter01`, 09:04–09:20Z, live fetches so not subject to
+ChatGPT's index cache): 24/24 L4 and 24/24 code-and-link on B, D and E (iteration 0 on the same questions: 23/24
+and 15/16); 16 of 24 answers quote the cart test ("tested in ESR's cart on 2026-10-22"); controls 4/4 (N01-D
+after a grader fix: "Anker isn't one of them" now counts as an honest answer).
+
+**ChatGPT**: _(pending the index turnover; re-probes below)_
 
 ## Decision
 
