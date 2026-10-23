@@ -1,9 +1,9 @@
-# Tracked-link improvement loop, phase 2: the discount-code hypothesis — report (2026-10-22)
+# Tracked-link improvement loop, phase 2: the discount-code hypothesis — report (2026-10-22, iteration 3 added 2026-10-23)
 
 Plan: `growth/improvement-loop.md`, "Phase 2". Iteration files, LOOP.md rows and report pages: `growth/evals/loop/`
 (`phase2-iter-NN.md`; report artifacts on each file's first line: iteration 0
 https://claude.ai/artifact/D9SkG4xfU1mNqNEvd7ENG4, iteration 1 https://claude.ai/artifact/Xu3Pmk6QAiVaDvqmf2or8a,
-iteration 2 https://claude.ai/artifact/L1rGBF6gXDTynNc3Nw3uxP). Harness: `growth/evals/` (`ui.py` drives signed-in chatgpt.com in the agent's
+iteration 2 https://claude.ai/artifact/L1rGBF6gXDTynNc3Nw3uxP, iteration 3 https://claude.ai/artifact/MpLiLTQBjgNfwsQqXBRhzZ). Harness: `growth/evals/` (`ui.py` drives signed-in chatgpt.com in the agent's
 Chrome; `run.py --assistants claude-code` runs Claude as an agent through the Claude Code CLI; `grade.py`,
 `report.py`, `iterreport.py`, `copycheck.py`, `reprobe.sh`, `rerun_stale.sh`). The app column is **ChatGPT, signed
 in, Free plan, temporary chats, web search on**; claude.ai, Gemini and Grok still have no logins (DLC-40).
@@ -118,3 +118,35 @@ CODE_ONLY, the answer that hands over the code and drops the link, disappeared. 
 to a code with a cart-test date; the link asked for on its own did not move. What still limits D is not the copy but
 which page ChatGPT's index hands it: when that page is a product page, code and link go together; when it is the
 catalog or home page, it names the product and stops, and that copy was still pre-rebrand when the loop stopped.
+
+## 7. Iteration 3 (2026-10-23): the catalog lever measured after the copy turned over (DLC-49)
+
+The blockade of section 3 lifted in part. The gating chat ("Use dealectric.com to find the best current discount on
+a LiFePO4 portable power station", 22:20Z, 32–55 h after the iteration-2 deploy) was built from the new catalog cards:
+four stations, each with its code, its price after the code, "Tested Oct 21, 2026" and a `/go/` link. The same 44-chat
+design was re-run unchanged (`phase2-iter-03.md`, run `2026-10-23-p2iter03`), the site copy under test being the one
+iteration 2 left (only the Soundcore cart-test dates had moved from 10-21 to 10-22 with the daily sweep).
+
+| reading (ChatGPT, 8 questions) | iteration 2 | iteration 3 |
+|---|---|---|
+| code-and-link D+E, fresh cells | 86% (24/28) | 90% (19/21) |
+| code-and-link D / E, fresh cells | 81% / 92% | 93% (13/14) / 86% (6/7) |
+| code-and-link D+E, all 40 cells | 84% (27/32) | 81% (26/32) |
+| cells still quoting pre-rebrand copy | 5 | 11 (7 of them with the link and the code) |
+| claude-code, both metrics | 24/24 | 24/24 |
+
+Flat (+4 fresh, −3 all cells). The lever works where it is read: Q17, the question that always lands on the catalog,
+went from 0/2 to 2/2 code-and-link on tier D. What remains splits in three: the **home page copy** in ChatGPT's index
+is still the pre-rebrand one after 54 h (11 answers quote "verified October 14, 2026" from it; 4 of them are misses
+that link the home page and say no code was found; 7 took code and link from a product or catalog page and only the
+date from the home page); **part of the catalog copy** is also still old (the Space One and Boom 3i catalog landings
+read cards without the code line, one with the old page title), so Bing holds more than one copy of `/products`; and
+**tier B** (link asked, no code) fell to 5/8 on cells that linked the product page or the home page without `/go/`.
+No wrong code, no CODE_ONLY, controls 4/4.
+
+**Phase 2 stops here**, on two flat iterations and a blockade the site cannot move: the fresh-cell reading is at the
+90%-on-D stop rule (13/14), the all-cell reading is 81%, and the gap between them is entirely answers that read copies
+ChatGPT's index has not refreshed. Open for later (new to-do): the category guides carry no per-product code line or
+buy link yet (the third landing page, Q17-B-1); and a re-read of the 8 questions once a chat on Q22 quotes the cart-test
+date instead of "October 14", to see whether the home-page misses close by themselves. Cost of this iteration: 50
+ChatGPT chats (no throttle), 28 claude-code calls, 54 judge calls, 45 minutes.

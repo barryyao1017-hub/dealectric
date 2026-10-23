@@ -173,8 +173,11 @@ def verdict(cur: dict, prev: dict | None) -> dict:
         for key in ("api", "ui", "cal_api", "cal_ui"):
             k0, n0 = out["prev_" + key]; k1, n1 = out[key]
             out["delta_" + key] = (k1 / n1 - k0 / n0) * 100 if n0 and n1 else None
-        primary = out["delta_ui"] if out["delta_ui"] is not None else out["delta_api"]
-        secondary = out["delta_api"] if out["delta_ui"] is not None else None
+        # Phase 2's metric is the code-and-link rate ("cal"), so the verdict reads it; phase 1 reads the TLR. (Iteration 2.3
+        # was flat on code-and-link but -7.5 on TLR, which the TLR rule called a drop although no change had been made.)
+        first, second = ("cal_ui", "cal_api") if PHASE >= 2 else ("ui", "api")
+        primary = out["delta_" + first] if out["delta_" + first] is not None else out["delta_" + second]
+        secondary = out["delta_" + second] if out["delta_" + first] is not None else None
         if primary is None:
             out["rule"] = "no comparable reading"
         elif primary >= RPT.IMPROVEMENT_POINTS:

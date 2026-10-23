@@ -19,7 +19,7 @@ Read this before judging project status from the repo alone. Much of the operati
 
 ## Still genuinely open in code
 - Weekly: re-verify prices, bump `VERIFIED` in `src/products.py`, rebuild, push. (Codes are re-tested daily by the sweep above.)
-- Phase 2 of the tracked-link loop (DLC-46, `growth/improvement-loop.md` "Phase 2", files `growth/evals/loop/phase2-iter-NN.md`): the site's copy is the discount-code rebrand of 2026-10-22; it must say "tested in <brand>'s cart on <date>", not "daily", until the sweep has run on its own.
+- Phase 2 of the tracked-link loop (DLC-46, `growth/improvement-loop.md` "Phase 2", files `growth/evals/loop/phase2-iter-NN.md`): the site's copy is the discount-code rebrand of 2026-10-22; it must say "tested in <brand>'s cart on <date>", not "daily", until the sweep has run on its own. Phase 2 stopped 2026-10-23 after iteration 3 (DLC-49; `growth/loop-report-phase2.md` §7): code-and-link 90% on fresh ChatGPT cells, 81% on all; the remaining misses read ChatGPT's unrefreshed copies of the home and catalog pages.
 
 ## Conventions
 - Legal name on official forms: Jiayi Yao; public name: Barry / Dealectric.
