@@ -35,7 +35,13 @@ change to the home, catalog or product pages.
 
 ## Proof that the assistant sees the new copy
 
-PROOF_PENDING
+Pushed 23:30Z, GitHub Pages live within 100 s. Fetched as ChatGPT-User through Cloudflare at 23:32Z (cf-cache DYNAMIC,
+age 0): `/usb-c-charging` carries 6 "Buy link to give the shopper" lines and the canonical sentence, `/portable-power-stations`
+11 and the sentence. IndexNow for both URLs at 23:32Z (200 OK). Whether ChatGPT's index copy of the guides has turned
+over shows in the run itself (an answer landing on a guide and quoting a code line); the guides had no stale marker of
+their own, so the Q17-B answer text is the tell. The home-page copy is watched separately by `growth/evals/homeprobe.sh`
+(one tier-E chat on Q22 every 4 h, up to 12, log `runs/2026-10-23-p2homeprobe/homeprobe.log`): FRESH once an answer
+quotes a 2026-10-2x cart-test date or the `/go/` link without "verified October 14, 2026".
 
 ## Re-evaluation
 
@@ -49,6 +55,6 @@ PROOF_PENDING
 
 Measure with the 44-chat design as iteration 4 (`ui.py … --phase 2 --iteration 4 --run-id <date>-p2iter04`, then
 `run.py --assistants claude-code`, `grade.py`, `report.py --compare 3 4 --phase 2 --questions …`, `iterreport.py
---iteration 4 --phase 2`) once a tier-E chat on Q22 (BLUETTI AC180) quotes the cart-test date instead of "verified
-October 14, 2026", the sign that ChatGPT's home-page copy has turned over; until then the home-page misses would
+--iteration 4 --phase 2`) once `homeprobe.sh` logs FRESH (a tier-E chat on Q22, BLUETTI AC180, quoting the cart-test date instead of
+"verified October 14, 2026"), the sign that ChatGPT's home-page copy has turned over; until then the home-page misses would
 mask the guide change. Tracked as DLC-50.
