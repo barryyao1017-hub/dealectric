@@ -37,6 +37,9 @@ from urllib.parse import urlsplit
 
 import websocket  # websocket-client (python3.12 -m pip install --user websocket-client)
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import codecheck  # noqa: E402  (plain-HTTP cart check, the fallback when a store's tab leaves its cart origin)
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "tools"))
@@ -48,7 +51,9 @@ COUPONS = ROOT / "src" / "coupons.json"
 LOG_DIR = ROOT / "growth" / "codes"
 CONTROL = "ZZNOTACODE7Q"
 GAP_PER_STORE = 14.0     # seconds between two cart calls on the same store (Shopify 429s a burst from one client)
-RETRY_WAIT = 90          # after a 429
+STORE_GAP = {"iallpowers.com": 75.0}   # ALLPOWERS stays limited for minutes after a burst (2026-10-22: 13 of 15 calls 429'd at 14 s)
+RETRY_WAIT = 240         # after a 429
+MAX_RETRIES = 3
 # Where a brand's cart lives when it is not the host in products.py (Soundcore's US cart is us.soundcore.com).
 CART_HOST = {"www.soundcore.com": "us.soundcore.com"}
 BY_SLUG = {p["slug"]: p for p in PRODUCTS}
@@ -200,6 +205,12 @@ def store_of(url: str) -> tuple[str, str, str]:
 # ---------------------------------------------------------------- one check
 
 def run_check(tab: Tab, host: str, handle: str, code: str, qty: int) -> dict:
+    # Some stores move the tab off the cart host (us.soundcore.com redirects a browser to www.soundcore.com, whose
+    # /products/<handle>.js is a 404, seen 2026-10-22); relative fetches then hit the wrong host. Fall back to the
+    # plain-HTTP check (tools/codecheck.py) against the cart host.
+    origin = tab.eval("location.origin")
+    if origin != f"https://{host}":
+        return codecheck.check(f"https://{host}/products/{handle}", code, qty)
     tab.fresh_cart(host)
     js = CHECK_JS.replace("HANDLE", json.dumps(handle)).replace("QTY", str(qty)).replace("CODE", json.dumps(code))
     js = js.replace("`/products/${" + json.dumps(handle) + "}.js`", "`/products/" + handle + ".js`")
@@ -234,7 +245,7 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
         queue[origin] = [{**first, "code": CONTROL, "qty": 1, "control": True}] + items
     tabs: dict[str, Tab] = {}
     last_call: dict[str, float] = {}
-    rows, retried = [], set()
+    rows, retried = [], {}
     try:
         for origin in queue:
             tabs[origin] = Tab(origin + "/")
@@ -245,7 +256,7 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
             for origin, items in queue.items():
                 if not items:
                     continue
-                wait = GAP_PER_STORE - (time.time() - last_call.get(origin, 0))
+                wait = STORE_GAP.get(urlsplit(origin).netloc, GAP_PER_STORE) - (time.time() - last_call.get(origin, 0))
                 if wait > 0:
                     continue
                 ch = items.pop(0)
@@ -258,17 +269,23 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
                 except Exception as e:  # noqa: BLE001
                     res = {"error": f"{type(e).__name__}: {e}"[:300]}
                 if res.get("error"):
-                    row["error"] = res["error"]
+                    row["error"] = str(res["error"])[:300]
                     key = (origin, ch["code"], ch["slug"], ch["qty"])
-                    if (res.get("status") == 429 or "429" in res["error"]) and key not in retried:
-                        retried.add(key)
-                        items.append(ch)                    # requeue once, after a longer pause
-                        last_call[origin] = time.time() + RETRY_WAIT - GAP_PER_STORE
-                        log(f"{ch['brand']} {ch['code']} on {ch['slug']}: 429, requeued")
+                    if (res.get("status") == 429 or "429" in row["error"]) and retried.get(key, 0) < MAX_RETRIES:
+                        retried[key] = retried.get(key, 0) + 1
+                        items.append(ch)                    # requeue after a longer pause (up to MAX_RETRIES times)
+                        last_call[origin] = time.time() + RETRY_WAIT - STORE_GAP.get(ch["host"], GAP_PER_STORE)
+                        log(f"{ch['brand']} {ch['code']} on {ch['slug']}: 429, requeued ({retried[key]}/{MAX_RETRIES})")
                         continue
-                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: ERROR {res['error'][:120]}")
+                    if "422" in row["error"]:
+                        row["inconclusive"] = "the store could not add the item (sold out or quantity limit)"
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: ERROR {row['error'][:120]}")
                 else:
                     row.update(res)
+                    price = BY_SLUG[ch["slug"]]["price"]
+                    if ch["qty"] == 1 and price is not None and abs(res["subtotal"] - price) >= 0.01:
+                        row["price_mismatch"] = {"page": price, "store": res["subtotal"]}
+                        log(f"PRICE MISMATCH {ch['slug']}: page ${price:.2f}, store cart ${res['subtotal']:.2f} (fix in the weekly price check, DLC-9)")
                     log(f"{ch['brand']} {ch['code']} on {ch['slug']} x{ch['qty']}: "
                         + (f"accepted, ${res['code_amount']:.2f} off ${res['subtotal']:.2f}" if res["applicable"] else f"rejected (subtotal ${res['subtotal']:.2f})"))
                 if ch.get("control"):
@@ -333,7 +350,9 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
         f.write('{\n "_notes": ' + json.dumps(data["_notes"], ensure_ascii=False) + ',\n "checked": ' + json.dumps(data["checked"]) + ',\n "codes": [\n')
         f.write(",\n".join("  " + json.dumps(c, ensure_ascii=False) for c in data["codes"]) + "\n ]\n}\n")
     return {"usable": len(usable), "bad_stores": sorted(bad_stores), "held": held,
-            "accepted": sum(r["applicable"] for r in usable), "rejected": sum(not r["applicable"] for r in usable)}
+            "accepted": sum(r["applicable"] for r in usable), "rejected": sum(not r["applicable"] for r in usable),
+            "mismatch": sorted({f"{r['url'].rsplit('/', 1)[-1]}: page ${r['price_mismatch']['page']:.2f} vs store ${r['price_mismatch']['store']:.2f}"
+                                for r in usable if r.get("price_mismatch")})}
 
 
 # ---------------------------------------------------------------- publish
@@ -361,6 +380,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
            + (f"; stores discarded (control not rejected): {', '.join(summary['bad_stores'])}" if summary["bad_stores"] else "")
+           + (f"; PRICE MISMATCH for the weekly check: {'; '.join(summary['mismatch'])}" if summary.get("mismatch") else "")
            + ". Run by tools/codesweep.py through the agent's Chrome.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>")
     r = sh(["git", "commit", "-q", "-m", msg])
     if r.returncode != 0:
@@ -382,7 +402,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
     urls = ["https://dealectric.com/" + p[len("docs/"):-len(".html")].replace("index", "") for p in changed_pages]
     if urls:
         time.sleep(90)   # let GitHub Pages publish before IndexNow fetches
-        r = sh([sys.executable, "tools/indexnow.py", *urls[:200]])
+        r = sh(["/usr/bin/python3", "tools/indexnow.py", *urls[:200]])   # the system Python has a CA bundle; python.org's does not
         log("indexnow: " + (r.stdout or r.stderr).strip()[-200:])
 
 

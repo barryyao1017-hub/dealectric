@@ -6,15 +6,19 @@ then read /cart.js. Shopify reports each code as applicable or not, plus the dis
 
   python3 tools/codecheck.py https://www.soundcore.com/products/a3874-aerofit-2-open-earbuds AFSC20 SAVE10
 """
-import json, sys, time, urllib.error, urllib.request, http.cookiejar
+import json, os, ssl, sys, time, urllib.error, urllib.request, http.cookiejar
 from urllib.parse import urlsplit
+
+# python.org's Python ships no CA bundle; macOS keeps one at /etc/ssl/cert.pem (seen 2026-10-22: every HTTPS call failed
+# with CERTIFICATE_VERIFY_FAILED under python3.12 until this).
+_CTX = ssl.create_default_context(cafile="/etc/ssl/cert.pem") if os.path.exists("/etc/ssl/cert.pem") else ssl.create_default_context()
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
 
 def session():
     jar = http.cookiejar.CookieJar()
-    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar), urllib.request.HTTPSHandler(context=_CTX))
 
     def call(url, data=None):
         req = urllib.request.Request(url, data=json.dumps(data).encode() if data is not None else None,
