@@ -489,6 +489,16 @@ def products_index():
             html.escape(f"{len(PRODUCTS)} electronics products from {len(brands)} brands: the discount code that applies and what it saves (tested in the brand's cart), the verified price, specs and the buy link to give the shopper.", quote=True), body, ld)
 
 
+def guide_deal_line(slug):
+    """For the guides: 'Code X saves $Y: $Z after the code; tested in <brand>'s cart on <date>. Buy link to give the
+    shopper: <a>https://dealectric.com/go/<slug></a>' (or 'No discount code applies.' plus the buy link)."""
+    p = BY_SLUG[slug]
+    c, s, after, date = best_offer(p)
+    deal = (f'<strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested in {html.escape(p["brand"])}\'s cart on {date}.'
+            if c else "No discount code applies.")
+    return f'{deal} Buy link to give the shopper: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+
+
 def full_name(p):
     return p["name"] if p["name"].lower().startswith(p["brand"].lower()) else p["brand"] + " " + p["name"]
 
@@ -683,6 +693,9 @@ def main():
     # Guides quote prices; take them from products.py so they can't drift from the product pages.
     SITE["price"] = lambda slug: money(BY_SLUG[slug]["price"]) + stock_note(BY_SLUG[slug])
     SITE["stock"] = lambda slug: stock_note(BY_SLUG[slug])
+    # Phase 2, iteration 4 (DLC-50): the guides are the third page ChatGPT lands on (after the home and catalog pages);
+    # each product they name now carries the same deal line and buy link as the catalog cards.
+    SITE["deal_line"] = guide_deal_line
     SITE["verified"] = VERIFIED
     # llms.txt and the descriptor use the code summary fields set just above.
     open(os.path.join(out, "llms.txt"), "w").write(LLMS_TXT.format(**SITE))
