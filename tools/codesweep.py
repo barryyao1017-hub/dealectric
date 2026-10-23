@@ -11,8 +11,10 @@ result is committed, pushed and, when the Worker's link map changed, deployed.
 
 Rules: a made-up control code must be rejected by each store or that store's checks are discarded; a code that fails
 on every product in one sweep keeps its last passing date and gets a strike; two strikes in a row retire it
-(result rejected, so it leaves every page and offers.json); a 429 or a network error is never a rejection. No order
-is ever placed and no personal data entered.
+(result rejected, so it leaves every page and offers.json); a 429 or a network error is never a rejection, and a code
+with any unanswered check gets no strike that day; a product the store cannot put in the cart (sold out) is
+inconclusive. Pacing is per store, with backoff on 429 (see GAP_PER_STORE). No order is ever placed and no personal
+data entered.
 
     python3.12 tools/codesweep.py                 # check, merge, rebuild, commit, push, deploy if needed
     python3.12 tools/codesweep.py --dry-run       # list the checks
@@ -24,12 +26,15 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import email.utils
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -50,33 +55,57 @@ CDP = "http://localhost:9222"
 COUPONS = ROOT / "src" / "coupons.json"
 LOG_DIR = ROOT / "growth" / "codes"
 CONTROL = "ZZNOTACODE7Q"
-GAP_PER_STORE = 14.0     # seconds between two cart calls on the same store (Shopify 429s a burst from one client)
-STORE_GAP = {"iallpowers.com": 75.0}   # ALLPOWERS stays limited for minutes after a burst (2026-10-22: 13 of 15 calls 429'd at 14 s)
-RETRY_WAIT = 240         # after a 429
-MAX_RETRIES = 3
+# Pacing (DLC-48). Shopify answers 429 to a burst from one client, and some stores (ALLPOWERS, BLUETTI, ESR) stay
+# limited for many minutes: on 2026-10-22 and -23 only 6-9 of 32 checks got an answer at 14 s between a store's calls
+# with one or three short requeues. Now: a slower base gap, and after a 429 the store cools down (the store's
+# Retry-After when it sends one, else an exponential backoff) and its gap widens for the rest of the run. A check is
+# tried up to MAX_TRIES times; a store that is still limited STORE_DEADLINE after the sweep started gives up its
+# remaining checks. Unanswered checks are never rejections (see merge()).
+GAP_PER_STORE = 30.0      # seconds between two checks on the same store
+STORE_GAP = {"iallpowers.com": 90.0}   # ALLPOWERS stays limited for minutes after a burst
+GAP_MAX = 300.0           # a store's gap widens x1.5 after each 429, up to this
+BACKOFF_BASE = 180.0      # cool-down after a store's first 429 in a row; doubles with each further 429 in a row
+BACKOFF_MAX = 1200.0
+MAX_TRIES = 6             # attempts per check before it is logged as unanswered
+STORE_DEADLINE = 3 * 3600  # seconds after the sweep starts; a store still rate-limiting then gives up its remaining checks
+REQ_PAUSE_MS = 600        # between the few cart calls inside one check
 # Where a brand's cart lives when it is not the host in products.py (Soundcore's US cart is us.soundcore.com).
 CART_HOST = {"www.soundcore.com": "us.soundcore.com"}
+# Cart hosts checked over plain HTTP (tools/codecheck.py) instead of a browser tab: a browser tab opened on
+# us.soundcore.com is sent on to www.soundcore.com, a non-Shopify front end whose /products/<handle>.js is its 404
+# page, so every in-tab lookup (the control code too) read "product 404" and the whole store was discarded on 10-22
+# and 10-23. The handles themselves are right (us.soundcore.com/products/<handle>.js is a 200 for all seven).
+PLAIN_HTTP = {"us.soundcore.com"}
 BY_SLUG = {p["slug"]: p for p in PRODUCTS}
 
+# Five cart calls per check (the product lookup only on a handle's first check; its variant is cached), a short pause
+# between them, and each failure carries its HTTP status and the store's Retry-After header.
 CHECK_JS = r"""
 (async () => {
   const H = {'Content-Type': 'application/json', 'Accept': 'application/json'};
-  const j = async (u, o) => { const r = await fetch(u, Object.assign({credentials: 'same-origin'}, o || {}));
-    const t = await r.text(); let b = null; try { b = JSON.parse(t); } catch (e) {} return {status: r.status, body: b, text: t.slice(0, 200)}; };
-  const prod = await j(`/products/${HANDLE}.js`);
-  if (prod.status !== 200 || !prod.body) return {error: `product ${prod.status} ${prod.text}`};
-  const v = prod.body.variants.find(x => x.available) || prod.body.variants[0];
+  const pause = () => new Promise(r => setTimeout(r, PAUSE));
+  const j = async (u, o) => { await pause(); const r = await fetch(u, Object.assign({credentials: 'same-origin'}, o || {}));
+    const t = await r.text(); let b = null; try { b = JSON.parse(t); } catch (e) {}
+    return {status: r.status, retry_after: r.headers.get('Retry-After'), body: b, text: t.slice(0, 200)}; };
+  const fail = (step, x) => ({error: `${step} ${x.status} ${x.text}`, status: x.status, retry_after: x.retry_after});
+  let v = VARIANT;
+  if (!v) {
+    const prod = await j(`/products/HANDLE.js`);
+    if (prod.status !== 200 || !prod.body) return fail('product', prod);
+    const pv = prod.body.variants.find(x => x.available) || prod.body.variants[0];
+    v = {id: pv.id, available: !!pv.available, title: prod.body.title};
+  }
+  const out = {variant: v, product: v.title, variant_available: v.available};
+  if (!v.available) return Object.assign(out, {soldout: true, error: 'sold out (no available variant)'});
   await j('/cart/clear.js', {method: 'POST', headers: H});
-  await j('/cart/update.js', {method: 'POST', headers: H, body: JSON.stringify({discount: ''})});
   const add = await j('/cart/add.js', {method: 'POST', headers: H, body: JSON.stringify({items: [{id: v.id, quantity: QTY}]})});
-  if (add.status >= 400) return {error: `add ${add.status} ${add.text}`, status: add.status};
+  if (add.status >= 400) return Object.assign(out, fail('add', add));
   const upd = await j('/cart/update.js', {method: 'POST', headers: H, body: JSON.stringify({discount: CODE})});
-  if (upd.status >= 400) return {error: `update ${upd.status} ${upd.text}`, status: upd.status};
+  if (upd.status >= 400) return Object.assign(out, fail('update', upd));
   const cart = await j('/cart.js');
-  if (cart.status !== 200 || !cart.body) return {error: `cart ${cart.status} ${cart.text}`, status: cart.status};
-  await j('/cart/update.js', {method: 'POST', headers: H, body: JSON.stringify({discount: ''})});
+  if (cart.status !== 200 || !cart.body) return Object.assign(out, fail('cart', cart));
   await j('/cart/clear.js', {method: 'POST', headers: H});
-  return {product: prod.body.title, variant_available: !!v.available, cart: cart.body};
+  return Object.assign(out, {cart: cart.body});
 })()
 """
 
@@ -204,100 +233,219 @@ def store_of(url: str) -> tuple[str, str, str]:
 
 # ---------------------------------------------------------------- one check
 
-def run_check(tab: Tab, host: str, handle: str, code: str, qty: int) -> dict:
-    # Some stores move the tab off the cart host (us.soundcore.com redirects a browser to www.soundcore.com, whose
-    # /products/<handle>.js is a 404, seen 2026-10-22); relative fetches then hit the wrong host. Fall back to the
-    # plain-HTTP check (tools/codecheck.py) against the cart host.
-    origin = tab.eval("location.origin")
-    if origin != f"https://{host}":
-        return codecheck.check(f"https://{host}/products/{handle}", code, qty)
-    tab.fresh_cart(host)
-    js = CHECK_JS.replace("HANDLE", json.dumps(handle)).replace("QTY", str(qty)).replace("CODE", json.dumps(code))
-    js = js.replace("`/products/${" + json.dumps(handle) + "}.js`", "`/products/" + handle + ".js`")
-    r = tab.eval(js)
-    if not isinstance(r, dict):
-        return {"error": f"no result ({r!r})"}
-    if r.get("error"):
-        return r
-    cart = r["cart"]
+def cart_answer(cart: dict, code: str, product: str, available) -> dict:
     dc = next((d for d in cart.get("discount_codes", []) if str(d.get("code", "")).upper() == code.upper()), None)
     apps = ([{"title": a.get("title"), "type": a.get("type"), "value": a.get("value"), "value_type": a.get("value_type"),
               "amount": (a.get("total_allocated_amount") or 0) / 100} for a in cart.get("cart_level_discount_applications", [])]
             + [{"title": (a.get("discount_application") or {}).get("title"), "amount": a["amount"] / 100, "line": True}
                for it in cart.get("items", []) for a in it.get("line_level_discount_allocations", [])])
-    return {"product": r["product"], "variant_available": r["variant_available"],
+    return {"product": product, "variant_available": available,
             "applicable": bool(dc and dc.get("applicable")),
             "subtotal": cart["original_total_price"] / 100, "total": cart["total_price"] / 100, "discount": cart["total_discount"] / 100,
             "code_amount": round(sum(a["amount"] for a in apps if (a.get("title") or "").upper() == code.upper()), 2),
             "applications": apps}
 
 
+def plain_check(host: str, handle: str, code: str, qty: int) -> dict:
+    """The plain-HTTP cart check (tools/codecheck.py) against the cart host; HTTP errors come back with their status."""
+    try:
+        r = codecheck.check(f"https://{host}/products/{handle}", code, qty, wait_on_429=False, pause=REQ_PAUSE_MS / 1000)
+    except urllib.error.HTTPError as e:
+        try:
+            body = e.read()[:200].decode("utf-8", "replace")
+        except Exception:  # noqa: BLE001
+            body = ""
+        return {"error": f"HTTP {e.code} {body}", "status": e.code, "retry_after": e.headers.get("Retry-After") if e.headers else None}
+    r.pop("code", None)
+    r.pop("store", None)
+    return r
+
+
+def run_check(tab: "Tab | None", host: str, handle: str, code: str, qty: int, variants: dict) -> dict:
+    if tab is None or host in PLAIN_HTTP:
+        return plain_check(host, handle, code, qty)
+    # A store that moves the tab off its cart host would make the relative fetches below hit the wrong host.
+    origin = tab.eval("location.origin")
+    if origin != f"https://{host}":
+        return plain_check(host, handle, code, qty)
+    cached = variants.get((host, handle))
+    if cached and not cached.get("available"):
+        return {"soldout": True, "error": "sold out (no available variant)", "product": cached.get("title"),
+                "variant_available": False, "network": False}
+    tab.fresh_cart(host)
+    js = (CHECK_JS.replace("HANDLE", urllib.parse.quote(handle)).replace("QTY", str(int(qty))).replace("PAUSE", str(REQ_PAUSE_MS))
+          .replace("CODE", json.dumps(code)).replace("VARIANT", json.dumps(cached)))   # VARIANT last: it holds a product title
+    r = tab.eval(js)
+    if not isinstance(r, dict):
+        return {"error": f"no result ({r!r})"[:300], "transient": True}
+    if r.get("variant"):
+        variants[(host, handle)] = r.pop("variant")
+    if r.get("error"):
+        return r
+    return cart_answer(r["cart"], code, r["product"], r["variant_available"])
+
+
+def classify(res: dict) -> str:
+    """ok (the store answered: accepted or rejected), rate (429), soldout (the item could not be put in the cart: sold out
+    or a quantity limit, so the code is untested), transient (network, 5xx, tab trouble) or error (anything else)."""
+    if not res.get("error"):
+        return "ok"
+    err, status = str(res["error"]), res.get("status")
+    if status == 429 or (status is None and re.search(r"\b429\b|Too Many Requests", err[:120])):
+        return "rate"
+    if res.get("soldout") or status == 422 or re.search(r"\b422\b|sold out", err[:200], re.I):
+        return "soldout"
+    if res.get("transient") or (isinstance(status, int) and status >= 500) or status is None:
+        return "transient"
+    return "error"
+
+
+def retry_after_s(v) -> float | None:
+    """Seconds from a Retry-After header (delta-seconds or an HTTP date); None when absent or unreadable."""
+    if not v:
+        return None
+    try:
+        return max(0.0, float(v))
+    except (TypeError, ValueError):
+        pass
+    try:
+        return max(0.0, (email.utils.parsedate_to_datetime(v) - dt.datetime.now(dt.timezone.utc)).total_seconds())
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def sweep(checks: list[dict], out: Path) -> list[dict]:
-    """Run every check, one tab per store, round-robin across stores with GAP_PER_STORE between a store's calls."""
+    """Run every check, stores interleaved, with each store's own pacing (see GAP_PER_STORE and below).
+
+    Every planned check ends as exactly one row: answered (applicable true/false), inconclusive (the store could not
+    put the item in the cart), or unanswered (429s or errors until it gave up). Only answered rows count in merge()."""
     by_store: dict[str, list[dict]] = {}
     for ch in checks:
         origin, host, handle = store_of(ch["url"])
         by_store.setdefault(origin, []).append({**ch, "host": host, "handle": handle})
-    # the control code first on each store, on its first product
+    # the control code first on each store, on its first product (moved to another product if that one is sold out)
     queue: dict[str, list[dict]] = {}
     for origin, items in by_store.items():
         first = items[0]
         queue[origin] = [{**first, "code": CONTROL, "qty": 1, "control": True}] + items
-    tabs: dict[str, Tab] = {}
-    last_call: dict[str, float] = {}
-    rows, retried = [], {}
+    t0 = time.time()
+    state = {o: {"next": 0.0, "gap": STORE_GAP.get(urlsplit(o).netloc, GAP_PER_STORE), "streak": 0} for o in queue}
+    tabs: dict[str, Tab | None] = {}
+    variants: dict = {}
+    soldout_handles: set = set()
+    rows, tries = [], {}
+
+    def record(ch: dict, row: dict) -> None:
+        if ch.get("control"):
+            row["control"] = True
+        rows.append(row)
+        with open(out, "a", encoding="utf-8") as f:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    def base_row(ch: dict) -> dict:
+        return {"code": ch["code"], "brand": ch["brand"], "url": ch["url"], "qty": ch["qty"], "store": ch["host"],
+                "checked_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+
     try:
         for origin in queue:
-            tabs[origin] = Tab(origin + "/")
+            tabs[origin] = None if urlsplit(origin).netloc in PLAIN_HTTP else Tab(origin + "/")
             time.sleep(2)
         time.sleep(4)
         while any(queue.values()):
             progressed = False
             for origin, items in queue.items():
-                if not items:
+                st = state[origin]
+                if not items or time.time() < st["next"]:
                     continue
-                wait = STORE_GAP.get(urlsplit(origin).netloc, GAP_PER_STORE) - (time.time() - last_call.get(origin, 0))
-                if wait > 0:
+                progressed = True
+                if time.time() - t0 > STORE_DEADLINE:
+                    log(f"{origin}: still limited {STORE_DEADLINE // 60} min into the sweep; {len(items)} checks left unanswered")
+                    for ch in items:
+                        record(ch, {**base_row(ch), "error": "unanswered: store deadline passed (rate limited)", "unanswered": True})
+                    items.clear()
                     continue
                 ch = items.pop(0)
-                progressed = True
-                last_call[origin] = time.time()
-                row = {"code": ch["code"], "brand": ch["brand"], "url": ch["url"], "qty": ch["qty"], "store": ch["host"],
-                       "checked_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+                key = (origin, ch["code"], ch["slug"], ch["qty"], bool(ch.get("control")))
+                row = base_row(ch)
                 try:
-                    res = run_check(tabs[origin], ch["host"], ch["handle"], ch["code"], ch["qty"])
-                except Exception as e:  # noqa: BLE001
-                    res = {"error": f"{type(e).__name__}: {e}"[:300]}
-                if res.get("error"):
-                    row["error"] = str(res["error"])[:300]
-                    key = (origin, ch["code"], ch["slug"], ch["qty"])
-                    if (res.get("status") == 429 or "429" in row["error"]) and retried.get(key, 0) < MAX_RETRIES:
-                        retried[key] = retried.get(key, 0) + 1
-                        items.append(ch)                    # requeue after a longer pause (up to MAX_RETRIES times)
-                        last_call[origin] = time.time() + RETRY_WAIT - STORE_GAP.get(ch["host"], GAP_PER_STORE)
-                        log(f"{ch['brand']} {ch['code']} on {ch['slug']}: 429, requeued ({retried[key]}/{MAX_RETRIES})")
+                    res = run_check(tabs[origin], ch["host"], ch["handle"], ch["code"], ch["qty"], variants)
+                except Exception as e:  # noqa: BLE001  (tab or socket trouble: reopen the tab and try again)
+                    res = {"error": f"{type(e).__name__}: {e}"[:300], "transient": True}
+                    if tabs.get(origin) is not None:
+                        try:
+                            tabs[origin].close()
+                        except Exception:  # noqa: BLE001
+                            pass
+                        try:
+                            tabs[origin] = Tab(origin + "/")
+                            time.sleep(4)
+                        except Exception as e2:  # noqa: BLE001
+                            log(f"{origin}: could not reopen the tab ({e2}); plain HTTP from here")
+                            tabs[origin] = None
+                kind = classify(res)
+                now = time.time()
+                if res.get("network", True):
+                    st["next"] = now + st["gap"]
+                if kind == "rate":
+                    tries[key] = tries.get(key, 0) + 1
+                    st["streak"] += 1
+                    ra = retry_after_s(res.get("retry_after"))
+                    cool = max(ra or 0.0, min(BACKOFF_BASE * 2 ** (st["streak"] - 1), BACKOFF_MAX))
+                    st["next"] = now + cool
+                    st["gap"] = min(st["gap"] * 1.5, GAP_MAX)
+                    if tries[key] < MAX_TRIES:
+                        items.insert(0, ch)
+                        log(f"{ch['brand']} {ch['code']} on {ch['slug']}: 429 (try {tries[key]}/{MAX_TRIES}); store cools down "
+                            f"{cool:.0f} s" + (f" (Retry-After {res.get('retry_after')})" if ra is not None else "") + f", gap now {st['gap']:.0f} s")
                         continue
-                    if "422" in row["error"]:
-                        row["inconclusive"] = "the store could not add the item (sold out or quantity limit)"
-                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: ERROR {row['error'][:120]}")
-                else:
-                    row.update(res)
-                    price = BY_SLUG[ch["slug"]]["price"]
-                    if ch["qty"] == 1 and price is not None and abs(res["subtotal"] - price) >= 0.01:
-                        row["price_mismatch"] = {"page": price, "store": res["subtotal"]}
-                        log(f"PRICE MISMATCH {ch['slug']}: page ${price:.2f}, store cart ${res['subtotal']:.2f} (fix in the weekly price check, DLC-9)")
-                    log(f"{ch['brand']} {ch['code']} on {ch['slug']} x{ch['qty']}: "
-                        + (f"accepted, ${res['code_amount']:.2f} off ${res['subtotal']:.2f}" if res["applicable"] else f"rejected (subtotal ${res['subtotal']:.2f})"))
-                if ch.get("control"):
-                    row["control"] = True
-                rows.append(row)
-                with open(out, "a", encoding="utf-8") as f:
-                    f.write(json.dumps(row, ensure_ascii=False) + "\n")
+                    row.update(error=f"unanswered: 429 on {tries[key]} tries ({str(res['error'])[:200]})", unanswered=True)
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: UNANSWERED after {tries[key]} 429s (not a rejection)")
+                    record(ch, row)
+                    continue
+                st["streak"] = 0
+                if kind == "transient":
+                    tries[key] = tries.get(key, 0) + 1
+                    if tries[key] < MAX_TRIES:
+                        items.insert(0, ch)
+                        log(f"{ch['brand']} {ch['code']} on {ch['slug']}: {str(res['error'])[:120]} (try {tries[key]}/{MAX_TRIES}), retrying")
+                        continue
+                    row.update(error=f"unanswered: {str(res['error'])[:250]}", unanswered=True)
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: UNANSWERED ({str(res['error'])[:120]}; not a rejection)")
+                    record(ch, row)
+                    continue
+                if kind == "soldout":
+                    soldout_handles.add((ch["host"], ch["handle"], ch["qty"]))
+                    if ch.get("control"):
+                        nxt = next((x for x in items if (x["host"], x["handle"], 1) not in soldout_handles and x["handle"] != ch["handle"]), None)
+                        if nxt:
+                            log(f"{ch['brand']} control: {ch['slug']} could not be put in the cart ({str(res['error'])[:80]}); control moves to {nxt['slug']}")
+                            items.insert(0, {**nxt, "code": CONTROL, "qty": 1, "control": True})
+                            continue
+                    row.update(error=str(res["error"])[:300], inconclusive="the store could not put the item in the cart (sold out or quantity limit); the code is untested on it")
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']} x{ch['qty']}: INCONCLUSIVE, {str(res['error'])[:120]} (not a rejection)")
+                    record(ch, row)
+                    continue
+                if kind == "error":
+                    row["error"] = str(res["error"])[:300]
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: ERROR {row['error'][:120]} (not a rejection)")
+                    record(ch, row)
+                    continue
+                res = {k: v for k, v in res.items() if k not in ("network", "status", "retry_after")}
+                row.update(res)
+                price = BY_SLUG[ch["slug"]]["price"]
+                if ch["qty"] == 1 and price is not None and abs(res["subtotal"] - price) >= 0.01:
+                    row["price_mismatch"] = {"page": price, "store": res["subtotal"]}
+                    log(f"PRICE MISMATCH {ch['slug']}: page ${price:.2f}, store cart ${res['subtotal']:.2f} (fix in the weekly price check, DLC-9)")
+                log(f"{ch['brand']} {ch['code']} on {ch['slug']} x{ch['qty']}: "
+                    + (f"accepted, ${res['code_amount']:.2f} off ${res['subtotal']:.2f}" if res["applicable"] else f"rejected (subtotal ${res['subtotal']:.2f})"))
+                record(ch, row)
             if not progressed:
                 time.sleep(1)
     finally:
         for t in tabs.values():
-            t.close()
+            if t is not None:
+                t.close()
+    log(f"sweep took {(time.time() - t0) / 60:.0f} min")
     return rows
 
 
@@ -313,14 +461,25 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
             bad_stores.add(r["store"])
             log(f"control code not rejected on {r['store']} ({r.get('error') or 'accepted'}); that store's checks are discarded")
     usable = [r for r in rows if not r.get("control") and r["store"] not in bad_stores and not r.get("error")]
-    # Two strikes: a code that was rejected on every product today keeps its last passing tests this once.
-    held = []
+    # Two strikes: a code that was rejected on every product today keeps its last passing tests this once. A strike
+    # needs a complete answer: every product the code was planned on either answered (rejected) or could not be put in
+    # the cart (sold out / quantity limit, which tests nothing). If any of its checks went unanswered (429s, errors),
+    # nothing changes for that code today, no strike and no new tests: on 2026-10-23 BULKRATE took a strike from one
+    # real rejection while its other four products had all 429'd.
+    held, incomplete = [], []
     for (brand, code), c in by_key.items():
         mine = [r for r in usable if r["brand"] == brand and r["code"] == code]
         if not mine:
             continue
         if any(r["applicable"] for r in mine):
             c.pop("fail_streak", None)
+            continue
+        open_ = [r for r in rows if not r.get("control") and r["store"] not in bad_stores and r["brand"] == brand
+                 and r["code"] == code and r.get("error") and not r.get("inconclusive")]
+        if open_:
+            incomplete.append((brand, code))
+            log(f"{brand} {code}: rejected on {len(mine)} product(s), {len(open_)} unanswered (429 or error); no strike, "
+                f"kept as it was (fail_streak {int(c.get('fail_streak') or 0)})")
             continue
         streak = int(c.get("fail_streak") or 0) + 1
         c["fail_streak"] = streak
@@ -330,7 +489,7 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
             log(f"{brand} {code}: rejected on every product today (strike {streak}); kept with its last passing date, retired on a second strike")
         else:
             log(f"{brand} {code}: rejected on every product for the second sweep in a row; retired")
-    kept_rows = [r for r in usable if (r["brand"], r["code"]) not in held]
+    kept_rows = [r for r in usable if (r["brand"], r["code"]) not in held and (r["brand"], r["code"]) not in incomplete]
     # codes_merge rebuilds each code's tests from a log file: write the rows it should see.
     merge_log = log_path.with_suffix(".merge.jsonl")
     with open(merge_log, "w", encoding="utf-8") as f:
@@ -349,7 +508,9 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
     with open(COUPONS, "w", encoding="utf-8") as f:
         f.write('{\n "_notes": ' + json.dumps(data["_notes"], ensure_ascii=False) + ',\n "checked": ' + json.dumps(data["checked"]) + ',\n "codes": [\n')
         f.write(",\n".join("  " + json.dumps(c, ensure_ascii=False) for c in data["codes"]) + "\n ]\n}\n")
-    return {"usable": len(usable), "bad_stores": sorted(bad_stores), "held": held,
+    return {"usable": len(usable), "bad_stores": sorted(bad_stores), "held": held, "incomplete": incomplete,
+            "unanswered": sum(1 for r in rows if not r.get("control") and r.get("error") and not r.get("inconclusive")),
+            "inconclusive": sum(1 for r in rows if not r.get("control") and r.get("inconclusive")),
             "accepted": sum(r["applicable"] for r in usable), "rejected": sum(not r["applicable"] for r in usable),
             "mismatch": sorted({f"{r['url'].rsplit('/', 1)[-1]}: page ${r['price_mismatch']['page']:.2f} vs store ${r['price_mismatch']['store']:.2f}"
                                 for r in usable if r.get("price_mismatch")})}
@@ -379,6 +540,9 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
     sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
+           + (f"; {summary['unanswered']} unanswered (429 or error, not rejections)" if summary.get("unanswered") else "")
+           + (f"; {summary['inconclusive']} inconclusive (sold out or quantity limit)" if summary.get("inconclusive") else "")
+           + (f"; unchanged for lack of answers: {', '.join(c for _, c in summary['incomplete'])}" if summary.get("incomplete") else "")
            + (f"; stores discarded (control not rejected): {', '.join(summary['bad_stores'])}" if summary["bad_stores"] else "")
            + (f"; PRICE MISMATCH for the weekly check: {'; '.join(summary['mismatch'])}" if summary.get("mismatch") else "")
            + ". Run by tools/codesweep.py through the agent's Chrome.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>")
@@ -402,7 +566,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
     urls = ["https://dealectric.com/" + p[len("docs/"):-len(".html")].replace("index", "") for p in changed_pages]
     if urls:
         time.sleep(90)   # let GitHub Pages publish before IndexNow fetches
-        r = sh(["/usr/bin/python3", "tools/indexnow.py", *urls[:200]])   # the system Python has a CA bundle; python.org's does not
+        r = sh([sys.executable, "tools/indexnow.py", *urls[:200]])   # indexnow.py brings its own CA bundle (certifi or macOS's)
         log("indexnow: " + (r.stdout or r.stderr).strip()[-200:])
 
 

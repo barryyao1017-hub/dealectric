@@ -16,14 +16,16 @@ _CTX = ssl.create_default_context(cafile="/etc/ssl/cert.pem") if os.path.exists(
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
 
-def session():
+def session(wait_on_429=True, pause=0.0):
     jar = http.cookiejar.CookieJar()
     op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar), urllib.request.HTTPSHandler(context=_CTX))
 
     def call(url, data=None):
+        if pause:
+            time.sleep(pause)
         req = urllib.request.Request(url, data=json.dumps(data).encode() if data is not None else None,
                                      headers={"User-Agent": UA, "Accept": "application/json", "Content-Type": "application/json"})
-        for wait in (15, 0):  # one short retry on Shopify's 429s
+        for wait in ((15, 0) if wait_on_429 else (0,)):  # one short retry on Shopify's 429s (the sweep does its own backoff)
             try:
                 with op.open(req, timeout=30) as r:
                     return json.loads(r.read())
@@ -34,10 +36,10 @@ def session():
     return call
 
 
-def check(product_url, code, qty=1):
+def check(product_url, code, qty=1, wait_on_429=True, pause=0.0):
     s = urlsplit(product_url)
     base, handle = f"{s.scheme}://{s.netloc}", s.path.rstrip("/").split("/products/")[1]
-    call = session()
+    call = session(wait_on_429, pause)
     prod = call(f"{base}/products/{handle}.js")
     var = next((v for v in prod["variants"] if v.get("available")), prod["variants"][0])
     call(f"{base}/cart/add.js", {"items": [{"id": var["id"], "quantity": qty}]})

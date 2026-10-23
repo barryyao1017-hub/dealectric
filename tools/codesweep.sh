@@ -28,6 +28,9 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
     echo "src/ has uncommitted changes; skipping today's sweep so the rebuild does not publish work in progress"
     exit 0
   fi
-  python3.12 "$REPO/tools/codesweep.py" "$@"
-  echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep end (exit $?)"
+  # The paced sweep can take a few hours when stores rate-limit (DLC-48); caffeinate -i keeps the Mac from idle-sleeping
+  # until it ends (only for this process; no setting changes).
+  /usr/bin/caffeinate -i python3.12 "$REPO/tools/codesweep.py" "$@"
+  rc=$?
+  echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep end (exit $rc)"
 } >>"$LOG" 2>&1
