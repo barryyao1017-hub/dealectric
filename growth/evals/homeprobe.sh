@@ -34,7 +34,7 @@ dated = bool(re.search(r"(?:Oct(?:ober)?\.? ?2\d, 2026|2026-10-2\d)", t))
 go = any("/go/" in c["url"] for c in r["citations"])
 # Only an answer that actually cites the home page says anything about the home page's copy; a product-page landing
 # (the usual Q22-E answer) is fresh on its own and proves nothing.
-home = any(l["href"].split("?")[0].rstrip("/") == "https://dealectric.com" for l in r["response"].get("links_all") or [])
+home = any(c["url"].split("?")[0].rstrip("/") == "https://dealectric.com" for c in r["citations"])   # citations = DOM hrefs + widget markup
 if not home:
     print("no-home-landing", f"dated={dated} go={go}")
 else:
