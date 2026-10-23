@@ -41,7 +41,8 @@ age 0): `/usb-c-charging` carries 6 "Buy link to give the shopper" lines and the
 over shows in the run itself (an answer landing on a guide and quoting a code line); the guides had no stale marker of
 their own, so the Q17-B answer text is the tell. The home-page copy is watched separately by `growth/evals/homeprobe.sh`
 (one tier-E chat on Q22 every 4 h, up to 12, log `runs/2026-10-23-p2homeprobe/homeprobe.log`): FRESH once an answer
-quotes a 2026-10-2x cart-test date or the `/go/` link without "verified October 14, 2026".
+that cites the home page quotes a 2026-10-2x cart-test date or the `/go/` link without "verified October 14, 2026";
+answers that land on the product page only (the first probe, 23:33Z) are logged as no-home-landing and prove nothing.
 
 ## Re-evaluation
 

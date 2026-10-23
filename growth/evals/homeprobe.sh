@@ -2,7 +2,8 @@
 # Phase 2, iteration 4 (DLC-50): watch for ChatGPT's index copy of the HOME page turning over. Every GAP seconds ask
 # the tier-E question of one coded product (default Q22, BLUETTI AC180) in a fresh temporary chat; the answer is
 # "stale" while it quotes the pre-rebrand home-page sentence ("verified October 14, 2026"), FRESH once it quotes a
-# 2026-10-2x cart-test date or the /go/ link without that sentence. Exit 0 on FRESH, 1 after MAX probes. One line per
+# 2026-10-2x cart-test date or the /go/ link without that sentence; an answer that does not cite the home page at all is
+# "no-home-landing" and the watch goes on. Exit 0 on FRESH, 1 after MAX probes. One line per
 # probe in growth/evals/runs/<run-id>/homeprobe.log; run files under growth/evals/runs/<run-id>/chatgpt/.
 #   nohup growth/evals/homeprobe.sh Q22 2026-10-23-p2homeprobe 12 14400 &
 set -u
@@ -31,7 +32,13 @@ t = r["text"] + " " + "\n".join(r["response"].get("markup") or [])
 stale = "october 14, 2026" in t.lower() or "2026-10-14" in t
 dated = bool(re.search(r"(?:Oct(?:ober)?\.? ?2\d, 2026|2026-10-2\d)", t))
 go = any("/go/" in c["url"] for c in r["citations"])
-print(("FRESH" if not stale and (dated or go) else "stale" if stale else "neither"), f"dated={dated} go={go}")
+# Only an answer that actually cites the home page says anything about the home page's copy; a product-page landing
+# (the usual Q22-E answer) is fresh on its own and proves nothing.
+home = any(l["href"].split("?")[0].rstrip("/") == "https://dealectric.com" for l in r["response"].get("links_all") or [])
+if not home:
+    print("no-home-landing", f"dated={dated} go={go}")
+else:
+    print(("FRESH" if not stale and (dated or go) else "stale" if stale else "neither"), f"home=True dated={dated} go={go}")
 PY
 )
   echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) probe $next $Q-E: $verdict" | tee -a "$LOG"
