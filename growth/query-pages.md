@@ -55,12 +55,33 @@ without (c) is the fallback finding (ranked but not chosen); (a) without (b) mea
 
 ## Clusters (step 2)
 
-_To be filled from `serp-claude.json` and the queryprobe run._
+Chosen 2026-10-23 from the queryprobe run. What ChatGPT's queries look like: the shopper's question plus "2026",
+"review(s)" and two or three brand names ("best portable power station for camping 2026 review Jackery EcoFlow Bluetti
+Anker"); one or two searches per chat; on the questions below its whole result set was small niche sites (no
+Wirecutter, RTINGS, Tom's Guide, Wired), which is the opening: a site of our size ranks there. Claude's queries are
+narrower and more numerous (up to 20 per answer), often "X vs Y vs Z" or a spec list. Public Bing had one of our pages
+indexed on 2026-10-23 (`site:dealectric.com` → the home page), Brave none; ChatGPT's own Bing-fed index has more (it
+lands on product pages on tier B), so reading 3 is the one that counts.
 
-| cluster | shopper question (Qnn) | agent query (verbatim) | engine | top-10 pages answering it | our products | build / control |
-|---|---|---|---|---|---|---|
+| cluster | Qnn | ChatGPT's query (verbatim) | ChatGPT's result set | our products | build / control |
+|---|---|---|---|---|---|
+| LiFePO4 vs NMC | Q17 | "portable power station LiFePO4 NMC battery chemistry manufacturer comparison 2026"; "LiFePO4 vs NMC portable power station battery chemistry cycle life energy density safety comparison" | 13 small sites, all titled "LiFePO4 vs NMC …", no product table | 10 stations (9 LFP, 1 NMC) | **build**: `/compare/lifepo4-vs-nmc-power-stations/` |
+| CPAP | Q16 | "best portable power station for CPAP machine 2026 runtime humidifier pure sine wave" | 12 small sites | Elite 30 V2, R600, T320, P1800, AC180 | **build**: `/compare/power-station-for-cpap/` |
+| solar to recharge 1 kWh | Q21 | "how many watts solar panel to recharge 1000Wh portable power station solar charging losses peak sun hours" | 12 small sites and calculators | SP037 400 W + the stations' solar inputs | **build**: `/compare/solar-watts-to-recharge-power-station/` |
+| many AA/AAA at once | Q25 | "best high capacity AA AAA NiMH battery charger 8 bay 16 bay independent channels 2026 reviews" | 12 results, 6 from one small site | TN480U, Premium Pro AA | **build**: `/compare/aa-aaa-nimh-battery-charger-8-bay-16-bay/` |
+| fridge sizing | Q15 | "portable power station refrigerator backup sizing watt hours runtime inverter surge manufacturer guide" | 23 small sites (+ Anker, EnergySage) | AC200L, Elite 200 V2, P1800 | control |
+| backup under $1,000 | Q18 | "best home backup power stations under $1000 2026 reviews price battery capacity" | 9 small sites + Home Depot | AC180, AC200L, P1800 | control |
+| UPS | Q19 | "portable power station UPS transfer time computer manufacturer guidance EcoFlow Anker Bluetti" | makers' FAQs + small sites | AC180, Elite 200 V2 | control |
+| RV + solar combo | Q20 | "best RV portable power station solar panel combo 2026 comparison EcoFlow Bluetti Jackery specs" | 22 small sites + Popular Mechanics | R4000 + SP037, Elite 300 | control |
+
+Not chosen: the audio questions (Q26–Q30: RTINGS, Tom's Guide and What Hi-Fi hold the result sets), the charging
+questions (Q03–Q13: Wired, Macworld, Apple, the WPC), and the power-bank airline questions (FAA, IATA).
 
 ## Log
 
 - 2026-10-23: SSE hook in `ui.py` (queries + result list per chat); `serp.py`; unprompted 30-question ChatGPT run and
   Bing/Brave scoring of 68 Claude queries started.
+- 2026-10-23 (evening): the four pages built and deployed (`src/compare.py` records, `compare_page()` in `build.py`;
+  `/compare/` index; llms.txt section; sitemap). Other brands' figures from four research passes over the makers' US
+  pages (EcoFlow, Anker SOLIX, Jackery, Goal Zero, DJI, Panasonic, Powerex, EBL, XTAR, La Crosse, SkyRC, Renogy,
+  BLUETTI models we do not list, ResMed, Philips). IndexNow pushed. Day 0 of the readings.

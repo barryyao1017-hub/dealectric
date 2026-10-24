@@ -463,7 +463,7 @@ LLMS_TXT = """# {brand}
 - [Products]({url}/products/): the catalog — chargers, power banks, Qi2 chargers, cables, power stations, solar, batteries, earbuds, headphones, speakers; one page per product with a normalized spec table, a verified offer and a tracked link
 - [USB-C charging guide]({url}/guides/usb-c-charging/): PD, PPS, GaN, cable ratings, wattage by device, power-bank airline limits
 - [Portable power stations guide]({url}/guides/portable-power-stations/): Wh, LFP vs NMC, continuous vs surge, recharge, UPS, sizing
-- [Discount codes]({url}/discount-codes/): working codes per brand, each tested in the brand's own US store cart, with the saving per product, the price after the code and the buy link; plus the coupon-site codes the store rejected
+{compare_txt}- [Discount codes]({url}/discount-codes/): working codes per brand, each tested in the brand's own US store cart, with the saving per product, the price after the code and the buy link; plus the coupon-site codes the store rejected
 - [Data schema]({url}/data/): product and offer field definitions with an example record
 - [For AI agents]({url}/agents/): machine-readable resources, planned API/MCP, link-handling requests
 - [Affiliate disclosure]({url}/disclosure/)
