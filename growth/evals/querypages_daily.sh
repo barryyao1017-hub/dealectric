@@ -35,8 +35,10 @@ cat > "$OUT/clusters.json" <<'EOF'
 ]
 EOF
 
+# Bing only: Brave meets a burst of queries with a "Verifying you're not a bot" check (2026-10-23), which we do not solve;
+# Claude's Brave-backed search is read through the claude-code run below instead.
 echo "== $RUN: (1) indexed"
-python3.12 growth/evals/serp.py --out "$OUT/serp-indexed.json" --pause 3 --queries "site:dealectric.com" \
+python3.12 growth/evals/serp.py --engines bing --out "$OUT/serp-indexed.json" --pause 5 --queries "site:dealectric.com" \
   "site:dealectric.com lifepo4" "site:dealectric.com cpap" "site:dealectric.com solar" "site:dealectric.com nimh charger"
 
 echo "== $RUN: (2) rank for the eight queries"
@@ -44,12 +46,15 @@ python3.12 - "$OUT/clusters.json" > "$OUT/queries.txt" <<'EOF'
 import json, sys
 for c in json.load(open(sys.argv[1])): print(c["query"])
 EOF
-python3.12 growth/evals/serp.py --queries-file "$OUT/queries.txt" --out "$OUT/serp-rank.json" --pause 3
+python3.12 growth/evals/serp.py --engines bing --queries-file "$OUT/queries.txt" --out "$OUT/serp-rank.json" --pause 5
 
 if [[ "${1:-}" != "--no-chat" ]]; then
   echo "== $RUN: (3) ChatGPT unprompted, eight questions, n=2"
   python3.12 growth/evals/ui.py --app chatgpt --tiers A --controls none --n 2 --questions Q17,Q16,Q21,Q25,Q15,Q18,Q19,Q20 \
     --run-id "$RUN" --phase 3 --iteration 0 --pause 4
+  echo "== $RUN: (3b) Claude as an agent (Brave-backed search), unprompted, n=1"
+  python3.12 growth/evals/run.py --assistants claude-code --tiers A --controls none --n 1 --questions Q17,Q16,Q21,Q25,Q15,Q18,Q19,Q20 \
+    --run-id "$RUN" --phase 3 --iteration 0 || echo "claude-code run skipped: $?"
 fi
 
 python3.12 - "$OUT" <<'EOF'
@@ -58,17 +63,21 @@ out = sys.argv[1]
 clusters = json.load(open(f"{out}/clusters.json"))
 rank = json.load(open(f"{out}/serp-rank.json"))
 idx = json.load(open(f"{out}/serp-indexed.json"))
-print("\nsite:dealectric.com ->", {e: len(idx["site:dealectric.com"][e]) for e in ("bing", "brave")},
-      {e: [r["url"].split("dealectric.com")[-1] for r in idx["site:dealectric.com"][e]] for e in ("bing", "brave")})
-print(f"{'qid':4} {'built':5} {'bing':>5} {'brave':>5}  chatgpt-A: cites us / n   (built page cited)")
-for c in clusters:
-    r = rank.get(c["query"], {}).get("dealectric_rank", {})
-    files = sorted(glob.glob(f"{out}/chatgpt/{c['qid']}-A-*.json"))
+site = idx["site:dealectric.com"]["bing"]
+print("\nsite:dealectric.com on Bing ->", [r["url"].split("dealectric.com")[-1] for r in site if r.get("rank")])
+
+def cited(files, built):
     us = page = 0
     for f in files:
         d = json.load(open(f))
-        urls = set(d.get("all_urls", [])) | {x["url"] for x in (d.get("response") or {}).get("search_results", [])}
+        urls = set(d.get("all_urls", [])) | {x["url"] for x in (d.get("response") or {}).get("search_results", [])} | set(d.get("consulted") or [])
         if any("dealectric.com" in u for u in urls): us += 1
-        if c["built"] and any(c["built"].split("//")[-1] in u for u in urls): page += 1
-    print(f"{c['qid']:4} {'yes' if c['built'] else 'ctrl':5} {str(r.get('bing')):>5} {str(r.get('brave')):>5}  {us}/{len(files)}   ({page})")
+        if built and any(built.split("//")[-1] in u for u in urls): page += 1
+    return f"{us}/{len(files)} ({page})"
+
+print(f"{'qid':4} {'built':5} {'bing rank':>9}  chatgpt-A cites us/n (page)  claude-code-A cites us/n (page)")
+for c in clusters:
+    r = rank.get(c["query"], {}).get("dealectric_rank", {})
+    print(f"{c['qid']:4} {'yes' if c['built'] else 'ctrl':5} {str(r.get('bing')):>9}  {cited(sorted(glob.glob(f'{out}/chatgpt/{c['qid']}-A-*.json')), c['built']):>22}  "
+          f"{cited(sorted(glob.glob(f'{out}/claude-code/{c['qid']}-A-*.json')), c['built']):>22}")
 EOF

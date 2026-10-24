@@ -85,3 +85,11 @@ questions (Q03–Q13: Wired, Macworld, Apple, the WPC), and the power-bank airli
   `/compare/` index; llms.txt section; sitemap). Other brands' figures from four research passes over the makers' US
   pages (EcoFlow, Anker SOLIX, Jackery, Goal Zero, DJI, Panasonic, Powerex, EBL, XTAR, La Crosse, SkyRC, Renogy,
   BLUETTI models we do not list, ResMed, Philips). IndexNow pushed. Day 0 of the readings.
+- 2026-10-23, day 0 (`runs/2026-10-23-qp/`): Bing top 10 for all eight ChatGPT queries holds no Wirecutter/RTINGS-class
+  domain and none of our pages (rank None everywhere); `site:dealectric.com` on Bing = the home page only. Brave could
+  not be read: after about ten queries in a row it shows a "Verifying you're not a bot" check (not solved; the script
+  records the page text), so Brave is dropped from the automated readings and Claude's Brave-backed search is read
+  through the claude-code tier-A run instead. ChatGPT unprompted on the eight questions (queryprobe, n = 1): 0 of 8
+  cite us. Bing/Brave result sets for all 36 ChatGPT and 68 Claude queries are in `runs/2026-10-23-queryprobe/
+  serp.json` and `serp-claude.json`: on the power-station and battery questions the top 10 is small sites throughout;
+  the audio, charging and airline questions have RTINGS, Wired, Macworld, Apple, the FAA or the WPC in them.

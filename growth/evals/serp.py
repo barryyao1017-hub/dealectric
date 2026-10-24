@@ -9,6 +9,12 @@ query) and later shows whether a built page ranks for its query.
     python3.12 growth/evals/serp.py --from-run 2026-10-23-queryprobe --out growth/evals/runs/2026-10-23-queryprobe/serp.json
 
 Writes one JSON: {query: {"bing": [{rank, title, url, domain}], "brave": [...], "dealectric_rank": {bing, brave}}}.
+A query already in the file is fetched again only on the engines that returned nothing, so a re-run fills the gaps.
+
+Brave: after about ten queries in a row Brave serves a "Verifying you're not a bot" check instead of results, and it is
+still there an hour later even at one query per 8 s; we do not solve it. The record then holds a single row with
+rank 0 and a `note` quoting the page. For the daily readings Brave is left to the Claude-as-agent run (its search is
+Brave-backed) and only Bing is scraped here (`--engines bing`); ask Brave by hand, a few queries a day at most.
 Start the browser first: uv --directory ~/Desktop/agent-vault run agent-vault browser
 """
 from __future__ import annotations
@@ -68,6 +74,14 @@ def fetch(engine: str, query: str) -> list[dict]:
             if rows:
                 break
             time.sleep(2)
+        if not rows:
+            # Brave answers a burst of queries with an empty result list (seen 2026-10-23 after ~10 queries in a row;
+            # fine again minutes later); keep what the page said so the run can tell a block from a real zero.
+            try:
+                note = (tab.eval("document.title") or "")[:80] + " :: " + (tab.eval("document.body.innerText.slice(0,160)") or "").replace("\n", " ")
+            except Exception:  # noqa: BLE001
+                note = "unreadable"
+            return [{"rank": 0, "title": "", "url": "", "domain": "", "note": f"no results parsed; page: {note}"}]
         out = []
         for r in rows:
             u = E.strip_tracking(unwrap_bing(r["url"]) if engine == "bing" else r["url"])
@@ -108,16 +122,20 @@ def main() -> int:
         sys.exit("no queries")
     out_path = Path(a.out) if a.out else (E.run_dir(a.from_run) / "serp.json" if a.from_run else None)
     result = json.load(open(out_path)) if out_path and out_path.exists() else {}
+    engines = a.engines.split(",")
     for i, q in enumerate(queries, 1):
-        if q in result:
+        # A query already in the output file is fetched again only on the engines that gave no real results (a block
+        # or an empty page), so a re-run repairs the gaps without repeating the rest.
+        row = result.get(q, {})
+        todo = [e for e in engines if not any(r.get("rank") for r in row.get(e) or [])]
+        if not todo:
             continue
-        row = {}
-        for eng in a.engines.split(","):
+        for eng in todo:
             row[eng] = fetch(eng, q)
             time.sleep(a.pause)
         row["dealectric_rank"] = {eng: next((r["rank"] for r in row[eng] if r["domain"].endswith("dealectric.com")), None) for eng in row if eng != "dealectric_rank"}
         result[q] = row
-        print(f"[{i}/{len(queries)}] {q!r}: " + ", ".join(f"{e} {len(row[e])}" for e in row if e != "dealectric_rank")
+        print(f"[{i}/{len(queries)}] {q!r}: " + ", ".join(f"{e} {sum(1 for r in row[e] if r.get('rank'))}" for e in row if e != "dealectric_rank")
               + f"; dealectric {row['dealectric_rank']}")
         if out_path:
             out_path.parent.mkdir(parents=True, exist_ok=True)
