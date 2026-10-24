@@ -45,7 +45,7 @@ LEVEL_LABELS = {
 }
 # Tiers whose answers count toward the tracked-link rate: the prompt names dealectric.com (B, D, E) or gives the page
 # URL (C). Phase 2 (2026-10-21) added D (discount-named) and E (discount-only); tier A stays unprompted discovery.
-LINK_TIERS = ("B", "C", "D", "E")
+LINK_TIERS = ("B", "C", "D", "E", "F")   # F: phase 3, a comparison page given (2026-10-24)
 CODE_TIERS = ("D", "E")   # the tiers whose question is the discount code; the code-and-link rate is reported on them (and on B for contrast)
 COUPONS_PATH = REPO / "src" / "coupons.json"
 

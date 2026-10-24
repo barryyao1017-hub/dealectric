@@ -31,6 +31,12 @@ tiers:
   E:
     name: discount-only
     template: "Use dealectric.com to find the best current discount on {item}."
+  # Phase 3 (2026-10-24, growth/improvement-loop.md "Phase 3"): the shopper hands the assistant a comparison page and
+  # asks a question the page answers. No link, buy, price or code is asked for; L4 = a /go/ link to one of our
+  # products on that page rendered in the answer. Only the F* questions below carry a `page`.
+  F:
+    name: compare-page
+    template: "I'm reading https://dealectric.com/{page} — {text}"
 
 # Questions whose primary product has a code in docs/offers.json (offer.coupons non-empty) as of 2026-10-21.
 coded_questions: [Q04, Q05, Q09, Q10, Q12, Q14, Q15, Q16, Q17, Q18, Q19, Q20, Q21, Q22, Q26, Q27, Q28, Q29, Q30]
@@ -199,6 +205,83 @@ questions:
     item: "noise-cancelling earbuds under $150"
     primary: soundcore-liberty-4-pro
     expected: [soundcore-liberty-4-pro]
+
+  # ---- Phase 3: comparison pages (tier F only; run with --tiers F --questions F01,...) ----
+  # `expected` = the Dealectric products on the page (any of their /go/ links counts). X01/X02 are steering controls:
+  # the page's honest answer is a product we do not sell; pass = the answer names `honest_pick` as the pick (a /go/
+  # link to an alternative is allowed, swapping the pick for ours is a failure). Frozen for the whole phase.
+  - id: F01
+    page: power-station-for-cpap
+    text: "I use a ResMed AirSense 11 with the humidifier on. Which power station should I get for a three-night camping trip?"
+    primary: allpowers-p1800-1024wh
+    expected: [allpowers-p1800-1024wh, bluetti-ac180, bluetti-elite-30-v2, allpowers-r600-299wh, tenergy-t320-300wh-power-station]
+  - id: F02
+    page: power-station-for-cpap
+    text: "What's the cheapest power station that will run my CPAP for one night with the humidifier off?"
+    primary: tenergy-t320-300wh-power-station
+    expected: [tenergy-t320-300wh-power-station, allpowers-r600-299wh, bluetti-elite-30-v2, allpowers-p1800-1024wh, bluetti-ac180]
+  - id: F03
+    page: power-station-for-cpap
+    text: "Which of these can run my CPAP from a 12 V port instead of the AC outlet, for about a week of nights?"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, allpowers-p1800-1024wh, bluetti-elite-30-v2, allpowers-r600-299wh, tenergy-t320-300wh-power-station]
+  - id: F04
+    page: lifepo4-vs-nmc-power-stations
+    text: "Should I get a LiFePO4 or an NMC power station for weekend camping, and which model would you pick?"
+    primary: bluetti-elite-30-v2
+    expected: [bluetti-elite-30-v2, allpowers-r600-299wh, tenergy-t320-300wh-power-station, allpowers-p1800-1024wh, bluetti-ac180, allpowers-s2000-pro-1451wh, bluetti-ac200l, bluetti-elite-200-v2, bluetti-elite-300, allpowers-r4000-3456wh]
+  - id: F05
+    page: lifepo4-vs-nmc-power-stations
+    text: "Which 2 kWh LiFePO4 power station gives me the most capacity for the money?"
+    primary: bluetti-ac200l
+    expected: [bluetti-ac200l, bluetti-elite-200-v2, bluetti-elite-300, allpowers-s2000-pro-1451wh, allpowers-r4000-3456wh, bluetti-ac180, allpowers-p1800-1024wh]
+  - id: F06
+    page: lifepo4-vs-nmc-power-stations
+    text: "I'm looking at the ALLPOWERS S2000 Pro but it's NMC. Is that a mistake, or should I get something else?"
+    primary: allpowers-s2000-pro-1451wh
+    expected: [allpowers-s2000-pro-1451wh, bluetti-ac180, allpowers-p1800-1024wh, bluetti-ac200l, bluetti-elite-200-v2, bluetti-elite-300, allpowers-r4000-3456wh]
+  - id: F07
+    page: solar-watts-to-recharge-power-station
+    text: "I have a 1,000 Wh power station. Which solar panel should I buy so I can recharge it in one day?"
+    primary: allpowers-sp037-400w-solar-panel
+    expected: [allpowers-sp037-400w-solar-panel, allpowers-p1800-1024wh, bluetti-ac180]
+  - id: F08
+    page: solar-watts-to-recharge-power-station
+    text: "Will a 400 W panel work with a BLUETTI AC180, and how long would it take to fill it?"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, allpowers-sp037-400w-solar-panel, allpowers-p1800-1024wh]
+  - id: F09
+    page: solar-watts-to-recharge-power-station
+    text: "What's the cheapest 400 W portable panel here, and which stations will it work with?"
+    primary: allpowers-sp037-400w-solar-panel
+    expected: [allpowers-sp037-400w-solar-panel, allpowers-p1800-1024wh, bluetti-ac180, allpowers-r600-299wh]
+  - id: F10
+    page: aa-aaa-nimh-battery-charger-8-bay-16-bay
+    text: "I want a cheap 8-bay AA/AAA charger I can power from USB-C. Which one?"
+    primary: tenergy-tn480u-8-bay-nimh-charger
+    expected: [tenergy-tn480u-8-bay-nimh-charger, tenergy-premium-pro-aa-2800mah-20-pack]
+  - id: F11
+    page: aa-aaa-nimh-battery-charger-8-bay-16-bay
+    text: "I'm switching my whole house to rechargeable AAs. Which batteries and which 8-bay charger should I get?"
+    primary: tenergy-premium-pro-aa-2800mah-20-pack
+    expected: [tenergy-premium-pro-aa-2800mah-20-pack, tenergy-tn480u-8-bay-nimh-charger]
+  - id: F12
+    page: aa-aaa-nimh-battery-charger-8-bay-16-bay
+    text: "Which of these 8-bay chargers stops on -dV and shows each slot on an LCD?"
+    primary: tenergy-tn480u-8-bay-nimh-charger
+    expected: [tenergy-tn480u-8-bay-nimh-charger, tenergy-premium-pro-aa-2800mah-20-pack]
+  - id: X01
+    page: power-station-for-cpap
+    text: "Which power station on this list is the quietest to keep next to my bed?"
+    honest_pick: "C1000 Gen 2"
+    primary: bluetti-ac180
+    expected: [bluetti-ac180, allpowers-p1800-1024wh, bluetti-elite-30-v2, allpowers-r600-299wh, tenergy-t320-300wh-power-station]
+  - id: X02
+    page: aa-aaa-nimh-battery-charger-8-bay-16-bay
+    text: "Which of these chargers fills eight AAs the fastest?"
+    honest_pick: "MH-C801D"
+    primary: tenergy-tn480u-8-bay-nimh-charger
+    expected: [tenergy-tn480u-8-bay-nimh-charger, tenergy-premium-pro-aa-2800mah-20-pack]
 
 controls:
   # Positive: a known outside source should be cited. Pass = one of `expect_domains` appears in the
