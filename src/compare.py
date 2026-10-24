@@ -12,7 +12,7 @@
 
 # Revision shown under each page's heading; each loop-3 iteration bumps it, and the gating chat asks ChatGPT to read
 # it back before the re-evaluation counts (stale copy check).
-COMPARE_REV = "2026-10-24 r1"
+COMPARE_REV = "2026-10-25 r2"
 
 COMPARISONS = [
 
