@@ -63,16 +63,26 @@ narrower and more numerous (up to 20 per answer), often "X vs Y vs Z" or a spec 
 indexed on 2026-10-23 (`site:dealectric.com` → the home page), Brave none; ChatGPT's own Bing-fed index has more (it
 lands on product pages on tier B), so reading 3 is the one that counts.
 
-| cluster | Qnn | ChatGPT's query (verbatim) | ChatGPT's result set | our products | build / control |
-|---|---|---|---|---|---|
-| LiFePO4 vs NMC | Q17 | "portable power station LiFePO4 NMC battery chemistry manufacturer comparison 2026"; "LiFePO4 vs NMC portable power station battery chemistry cycle life energy density safety comparison" | 13 small sites, all titled "LiFePO4 vs NMC …", no product table | 10 stations (9 LFP, 1 NMC) | **build**: `/compare/lifepo4-vs-nmc-power-stations/` |
-| CPAP | Q16 | "best portable power station for CPAP machine 2026 runtime humidifier pure sine wave" | 12 small sites | Elite 30 V2, R600, T320, P1800, AC180 | **build**: `/compare/power-station-for-cpap/` |
-| solar to recharge 1 kWh | Q21 | "how many watts solar panel to recharge 1000Wh portable power station solar charging losses peak sun hours" | 12 small sites and calculators | SP037 400 W + the stations' solar inputs | **build**: `/compare/solar-watts-to-recharge-power-station/` |
-| many AA/AAA at once | Q25 | "best high capacity AA AAA NiMH battery charger 8 bay 16 bay independent channels 2026 reviews" | 12 results, 6 from one small site | TN480U, Premium Pro AA | **build**: `/compare/aa-aaa-nimh-battery-charger-8-bay-16-bay/` |
-| fridge sizing | Q15 | "portable power station refrigerator backup sizing watt hours runtime inverter surge manufacturer guide" | 23 small sites (+ Anker, EnergySage) | AC200L, Elite 200 V2, P1800 | control |
-| backup under $1,000 | Q18 | "best home backup power stations under $1000 2026 reviews price battery capacity" | 9 small sites + Home Depot | AC180, AC200L, P1800 | control |
-| UPS | Q19 | "portable power station UPS transfer time computer manufacturer guidance EcoFlow Anker Bluetti" | makers' FAQs + small sites | AC180, Elite 200 V2 | control |
-| RV + solar combo | Q20 | "best RV portable power station solar panel combo 2026 comparison EcoFlow Bluetti Jackery specs" | 22 small sites + Popular Mechanics | R4000 + SP037, Elite 300 | control |
+| cluster | Qnn | ChatGPT's query (verbatim) | ChatGPT's result set | Bing US demand, 3 mo (exact / broad) | our products | build / control |
+|---|---|---|---|---|---|---|
+| LiFePO4 vs NMC | Q17 | "portable power station LiFePO4 NMC battery chemistry manufacturer comparison 2026"; "LiFePO4 vs NMC portable power station battery chemistry cycle life energy density safety comparison" | 13 small sites, all titled "LiFePO4 vs NMC …", no product table | none reported (also "lifepo4 vs nmc", "lifepo4 (portable) power station") | 10 stations (9 LFP, 1 NMC) | **build**: `/compare/lifepo4-vs-nmc-power-stations/` |
+| CPAP | Q16 | "best portable power station for CPAP machine 2026 runtime humidifier pure sine wave" | 12 small sites | none reported (also "(best) (portable) power station for cpap"); head: "cpap battery backup" 156, "cpap battery" 78 / 252 | Elite 30 V2, R600, T320, P1800, AC180 | **build**: `/compare/power-station-for-cpap/` |
+| solar to recharge 1 kWh | Q21 | "how many watts solar panel to recharge 1000Wh portable power station solar charging losses peak sun hours" | 12 small sites and calculators | none reported (also "solar panel for (portable) power station", "how many solar panels to charge a power station"); head: "solar generator" 3,197 / 11,428 | SP037 400 W + the stations' solar inputs | **build**: `/compare/solar-watts-to-recharge-power-station/` |
+| many AA/AAA at once | Q25 | "best high capacity AA AAA NiMH battery charger 8 bay 16 bay independent channels 2026 reviews" | 12 results, 6 from one small site | none reported (also "8/16 bay battery charger"); head: "aa battery charger" 214, "rechargeable battery charger" 133, "nimh battery charger" 33 | TN480U, Premium Pro AA | **build**: `/compare/aa-aaa-nimh-battery-charger-8-bay-16-bay/` |
+| fridge sizing | Q15 | "portable power station refrigerator backup sizing watt hours runtime inverter surge manufacturer guide" | 23 small sites (+ Anker, EnergySage) | none reported (also "(portable) power station for refrigerator"); head: "battery backup for refrigerator" 16 | AC200L, Elite 200 V2, P1800 | control |
+| backup under $1,000 | Q18 | "best home backup power stations under $1000 2026 reviews price battery capacity" | 9 small sites + Home Depot | none reported (also "home backup power station"); head: "home battery backup" 657 / 1,426, "portable power station for home" 317 | AC180, AC200L, P1800 | control |
+| UPS | Q19 | "portable power station UPS transfer time computer manufacturer guidance EcoFlow Anker Bluetti" | makers' FAQs + small sites | none reported (also "portable power station ups", "power station with/as ups") | AC180, Elite 200 V2 | control |
+| RV + solar combo | Q20 | "best RV portable power station solar panel combo 2026 comparison EcoFlow Bluetti Jackery specs" | 22 small sites + Popular Mechanics | none reported (also "rv power station", "portable power station for rv", "rv solar generator") | R4000 + SP037, Elite 300 | control |
+
+Demand column (2026-10-24, `runs/2026-10-24-bingkw/volumes.json`): Bing Webmaster Tools → Keyword Research, US,
+2026-07-24 to 2026-10-21, searches on Bing by people (not ChatGPT's backend queries, which nobody reports); one number
+means exact = broad. "None reported" = Bing returns no data for the phrase in any country, i.e. below its reporting
+threshold. For scale: "portable power station" 3,263 / 10,351, "best portable power station" 614 / 787, and the brand
+names far above the category ("ecoflow" 20,861, "jackery" 18,833, "bluetti" 8,965). Reading: every verbatim ChatGPT
+query and nearly every two-to-four-word version of the eight questions is below Bing's threshold, so on Bing the
+cluster queries are thin on demand as well as on supply; only the broad head terms ("solar generator", "home battery
+backup", "cpap battery backup") show measurable demand. This does not measure how often the assistants issue these
+queries, which is the demand that matters for DLC-51.
 
 Not chosen: the audio questions (Q26–Q30: RTINGS, Tom's Guide and What Hi-Fi hold the result sets), the charging
 questions (Q03–Q13: Wired, Macworld, Apple, the WPC), and the power-bank airline questions (FAA, IATA).
@@ -103,3 +113,9 @@ questions (Q03–Q13: Wired, Macworld, Apple, the WPC), and the power-bank airli
   ChatGPT's queries, which would tell Bing from ChatGPT.
 - 2026-10-24: Bing Webmaster Tools → URL Submission: `/compare` and the four comparison pages submitted ("Success: 5
   URLs submitted"; quota 100/day). The 2026-10-18 submissions of the product pages are still listed.
+- 2026-10-24: **demand** from Bing Webmaster Tools → Keyword Research (US, 3 months; `runs/2026-10-24-bingkw/volumes.json`,
+  demand column above): all eight verbatim ChatGPT queries and their short forms are below Bing's reporting threshold;
+  only head terms register ("solar generator" 3,197, "home battery backup" 657, "cpap battery backup" 156, "aa battery
+  charger" 214). Brand discount-code searches are small too ("jackery discount code" 36, "anker discount code" 19,
+  "bluetti discount code" 18, "ecoflow discount code" 12). Bing's figures are people searching Bing, not the
+  assistants' fan-out queries.
