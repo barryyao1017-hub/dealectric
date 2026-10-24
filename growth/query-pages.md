@@ -93,3 +93,13 @@ questions (Q03–Q13: Wired, Macworld, Apple, the WPC), and the power-bank airli
   cite us. Bing/Brave result sets for all 36 ChatGPT and 68 Claude queries are in `runs/2026-10-23-queryprobe/
   serp.json` and `serp-claude.json`: on the power-station and battery questions the top 10 is small sites throughout;
   the audio, charging and airline questions have RTINGS, Wired, Macworld, Apple, the FAA or the WPC in them.
+- 2026-10-24: **narrowing test** (`growth/evals/narrowing.py`, run `2026-10-24-narrowing`, stopped by Barry after 27 of
+  32 chats): four products whose pages ChatGPT's index already holds (BLUETTI AC180, Baseus PicoGo AM52, Soundcore
+  Space One, ALLPOWERS R4000), unprompted questions in four rungs from category to "exact model + a discount code that
+  works at checkout". dealectric.com was in ChatGPT's search results in **0 of 27** chats, at every rung (rung 4: 0/7),
+  although the AC180 page answers rung 4 almost word for word and is cited when the prompt names dealectric.com.
+  Reading: narrowing the query alone does not surface an indexed Dealectric page; the gate is the search backend's
+  ranking of a new domain (or ChatGPT's filtering of it), not the number of competing pages. Not run: the Bing rank of
+  ChatGPT's queries, which would tell Bing from ChatGPT.
+- 2026-10-24: Bing Webmaster Tools → URL Submission: `/compare` and the four comparison pages submitted ("Success: 5
+  URLs submitted"; quota 100/day). The 2026-10-18 submissions of the product pages are still listed.
