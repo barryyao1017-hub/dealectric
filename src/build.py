@@ -106,7 +106,7 @@ def page(path, title, desc, body, jsonld=None, noindex=False, image=None):
 FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#0b6b4f"/><path d="M18 5 9 18h7l-2 9 9-13h-7z" fill="#fff"/></svg>"""
 
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
-from compare import COMPARISONS
+from compare import COMPARISONS, COMPARE_REV
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote
 import html
@@ -635,9 +635,12 @@ def compare_row(c, r):
     to the maker's page (no affiliate relation) and show the maker's published price as read on `checked`."""
     if r.get("slug"):
         p = BY_SLUG[r["slug"]]
-        name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
+        c0, s0, after0, date0 = best_offer(p)
+        name = (f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a><br>'
+                f'Buy link to give the shopper: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
         price = money(p["price"]) + stock_note(p)
-        deal = guide_deal_line(p["slug"])
+        deal = (f'<strong>Code {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; tested in {html.escape(p["brand"])}\'s cart on {date0}.'
+                if c0 else "No discount code applies.")
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>' if r.get("url")
                 else html.escape(r["brand"] + " " + r["model"]))
@@ -649,9 +652,21 @@ def compare_row(c, r):
     return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{deal}</td></tr>"
 
 
+def buy_inline(slug):
+    """'$X; buy link to give the shopper: <a>/go/slug</a>, code C saves $Y' for prose that names one of our products
+    (loop 3 iteration 1: the link next to every mention, not only in the table's last column)."""
+    p = BY_SLUG[slug]
+    c, s, after, date = best_offer(p)
+    code = f', code <strong>{html.escape(c["code"])}</strong> saves {money(s)}' if c else ""
+    return (f'{money(p["price"])}{stock_note(p)}; buy link to give the shopper: '
+            f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}')
+
+
 def compare_fill(text):
-    """{price:slug} and {deal:slug} in a comparison page's prose become the verified price and the deal line."""
+    """{price:slug}, {buy:slug} and {deal:slug} in a comparison page's prose become the verified price, the price with
+    the buy link and code, and the deal line."""
     import re
+    text = re.sub(r"\{buy:([a-z0-9-]+)\}", lambda m: buy_inline(m.group(1)), text)
     text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
     return re.sub(r"\{deal:([a-z0-9-]+)\}", lambda m: guide_deal_line(m.group(1)), text)
 
@@ -664,9 +679,10 @@ def compare_page(c):
     makers = sorted({r["brand"] for r in others})
     body = f"""
 <h1>{c['h1']}</h1>
+<p class="small">Revision {COMPARE_REV}.</p>
 {compare_fill(c['intro'])}
 <div class="scroll"><table>
-<tr><th>Model</th>{heads}<th>Price</th><th>Code and buy link</th></tr>
+<tr><th>Model</th>{heads}<th>Price</th><th>Code</th></tr>
 {rows}
 </table></div>
 <p class="small">Rows marked with a code and buy link are products {SITE['brand']} lists: the price was verified on the brand's own US store on {VERIFIED}
