@@ -14,7 +14,10 @@ claude-ai, gemini, grok: once their logins exist in agent-vault (DLC-40).
 Each prompt gets a fresh tab (fresh chat, no memory), the answer is read from the DOM when it stops changing, and
 every <a href> in the answer is recorded as a citation; ad links (oppref/olref/utm_source=oa) are dropped. Records
 carry ui: true and no text_urls, so grade.py scores only real hyperlinks (a /go/ URL shown as plain text is
-PLAIN_TEXT, not L4). Start the browser first: uv --directory ~/Desktop/agent-vault run agent-vault browser
+PLAIN_TEXT, not L4). Since 2026-10-23 each record also carries ChatGPT's own web-search queries (`queries`) and the
+result list it was shown (`response.search_results`), read from the SSE answer stream (see SSE_HOOK_JS); run.py's
+API records have carried `queries` since the start. Start the browser first:
+uv --directory ~/Desktop/agent-vault run agent-vault browser
 """
 from __future__ import annotations
 
@@ -184,6 +187,79 @@ MD_LINK_RE = re.compile(r"\[([^\]]*)\]\((https?://[^)\s]+)\)")
 HREF_RE = re.compile(r"""<a\b[^>]*href=["']([^"']+)["'][^>]*>(.*?)</a>""", re.I | re.S)
 CONV_ID_RE = re.compile(r'"conversation_id"\s*:\s*"([0-9a-f-]{36})"')
 
+# Installed on every new document before chatgpt.com loads (Page.addScriptToEvaluateOnNewDocument): tees the SSE
+# answer stream (POST /backend-api/f/conversation) into window.__sse so it can be read back whole once the answer has
+# settled. Network.getResponseBody returns nothing for that streaming response, and the conversation JSON fetched
+# afterwards (GET /backend-api/conversation/<id>) has the search queries stripped (the web.run call's parts are
+# empty), so the stream is the only place ChatGPT's own search queries ("search_model_queries") and the result list
+# it was shown ("search_result_group") can be read (DLC-51, 2026-10-23).
+SSE_HOOK_JS = r"""
+(() => {
+  window.__sse = [];
+  const of = window.fetch;
+  window.fetch = async function(input, init) {
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    const resp = await of.apply(this, arguments);
+    try {
+      if (/backend-api\/f\/conversation(\?|$)/.test(url) && resp.body) {
+        const [a, b] = resp.body.tee();
+        const rec = {url, chunks: []}; window.__sse.push(rec);
+        (async () => { const rd = b.getReader(); const dec = new TextDecoder();
+          while (true) { const {done, value} = await rd.read(); if (done) break; rec.chunks.push(dec.decode(value, {stream: true})); } })();
+        return new Response(a, {status: resp.status, statusText: resp.statusText, headers: resp.headers});
+      }
+    } catch (e) {}
+    return resp;
+  };
+})();
+"""
+
+
+def search_trace(tab: Tab) -> dict:
+    """ChatGPT's web searches for this chat, from the SSE stream captured by SSE_HOOK_JS: {"queries": [the strings
+    ChatGPT sent to its search backend, in order, deduplicated], "results": [{domain, title, url, pub_date} for every
+    search result it was shown, deduplicated by URL], "note"}. Both are empty when the chat did not search."""
+    out = {"queries": [], "results": [], "note": None}
+    try:
+        raw = tab.eval("JSON.stringify((window.__sse||[]).map(r => r.chunks.join('')))")
+        streams = json.loads(raw) if raw else []
+    except Exception as e:  # noqa: BLE001
+        out["note"] = f"sse read failed: {e}"[:160]
+        return out
+    if not streams:
+        out["note"] = "no SSE stream captured (queries unknown)"
+        return out
+    seen_q, seen_u = set(), set()
+
+    def walk(o):
+        if isinstance(o, dict):
+            if o.get("type") == "search_model_queries":
+                for q in o.get("queries") or []:
+                    if isinstance(q, str) and q not in seen_q:
+                        seen_q.add(q); out["queries"].append(q)
+            elif o.get("type") == "search_result_group":
+                for e in o.get("entries") or []:
+                    u = E.strip_tracking(e.get("url") or "")
+                    if u and u not in seen_u:
+                        seen_u.add(u)
+                        out["results"].append({"domain": (o.get("domain") or "").removeprefix("www."), "title": (e.get("title") or "")[:200],
+                                               "url": u, "pub_date": e.get("pub_date")})
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+
+    for text in streams:
+        for line in text.split("\n"):
+            s = line[5:].strip() if line.startswith("data:") else ""
+            if s.startswith("{"):
+                try:
+                    walk(json.loads(s))
+                except ValueError:
+                    continue
+    return out
+
 
 def conversation_markup(tab: Tab) -> dict:
     """The assistant's answer as ChatGPT's own markup, from the conversation JSON the page fetched
@@ -259,6 +335,8 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
     tab = Tab("about:blank")
     try:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
+        tab.call("Page.enable")
+        tab.call("Page.addScriptToEvaluateOnNewDocument", source=SSE_HOOK_JS)
         tab.navigate(url)
         t0 = time.time()
         last, same, state, submitted, account, temporary, polls, trace = None, 0, None, 0, None, None, 0, []
@@ -314,6 +392,7 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
         links = [l for l in state["links"] if not APP_HOST_RE.match(l["href"]) and not AD_RE.search(l["href"])]
         cites = [{"url": l["href"], "title": l["text"], "source": "ui_href"} for l in links]
         markup = conversation_markup(tab)
+        searches = search_trace(tab)
         have = {E.strip_tracking(c["url"]) for c in cites}
         for u in markup["urls"]:
             if not APP_HOST_RE.match(u["url"]) and not AD_RE.search(u["url"]) and E.strip_tracking(u["url"]) not in have:
@@ -322,13 +401,16 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
         n_widget = sum(u["source"] == "widget_button" for u in markup["urls"])
         return {"model": APPS["chatgpt"]["model"], "request": {"url": url, "method": "fresh tab, auto-submitted via ?q="},
                 "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"],
-                             "markup": markup["parts"], "markup_urls": markup["urls"], "conversation_id": markup["conversation_id"]},
-                "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
+                             "markup": markup["parts"], "markup_urls": markup["urls"], "conversation_id": markup["conversation_id"],
+                             "search_results": searches["results"]},
+                "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": searches["queries"],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
                 "account": account, "temporary_chat": bool(temporary), "trace": trace,
                 "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "
                           f"{f'submitted after {submitted} send attempt(s)' if submitted else 'auto-submitted'}, agent Chrome via CDP, "
-                          f"hrefs from the DOM plus the answer markup ({n_widget} widget button(s))" + (f"; {markup['note']}" if markup["note"] else "")]
+                          f"hrefs from the DOM plus the answer markup ({n_widget} widget button(s)); "
+                          f"{len(searches['queries'])} search query(ies) and {len(searches['results'])} search result(s) from the SSE stream"
+                          + (f"; {markup['note']}" if markup["note"] else "") + (f"; {searches['note']}" if searches["note"] else "")]
                          + ([] if finished else ["answer still changing at timeout"]),
                 "latency_s": round(time.time() - t0, 1)}
     finally:
