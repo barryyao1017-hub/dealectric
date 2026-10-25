@@ -276,6 +276,20 @@ def strip_tracking(url: str) -> str:
     return urlunparse(p._replace(query=urlencode(qs), fragment=""))
 
 
+def resolve_go_slug(slug: str, offers) -> str | None:
+    """The offer a /go/<slug> link reaches, by the Worker's rule (worker/src/index.js resolveSlug, 2026-10-25): the
+    exact id, else the one id that starts with the slug when it is at least 8 characters (ChatGPT shortened
+    allpowers-sp037-400w-solar-panel to allpowers-sp037-400w in 4 phase-3 answers; that link 404ed until then)."""
+    s = (slug or "").lower()
+    if s in offers:
+        return s
+    if len(s) >= 8:
+        hits = [k for k in offers if k.startswith(s)]
+        if len(hits) == 1:
+            return hits[0]
+    return None
+
+
 def classify_url(url: str, offers: dict) -> dict:
     """What a URL is to us: our site? which slug? a /go/ link? a merchant or network link?"""
     u = strip_tracking(url)
@@ -288,8 +302,9 @@ def classify_url(url: str, offers: dict) -> dict:
         m = re.match(r"^/go/([a-z0-9-]+)$", path)
         if m:
             info["go"] = True
-            info["slug"] = m.group(1) if m.group(1) in offers else None
-            info["unknown_slug"] = m.group(1) not in offers
+            info["slug"] = resolve_go_slug(m.group(1), offers)
+            info["unknown_slug"] = info["slug"] is None
+            info["prefix_slug"] = info["slug"] is not None and info["slug"] != m.group(1)
         else:
             s = path.lstrip("/")
             if s in offers:

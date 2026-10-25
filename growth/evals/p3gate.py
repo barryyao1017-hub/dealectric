@@ -12,9 +12,11 @@ import ui  # noqa: E402
 ap = argparse.ArgumentParser()
 ap.add_argument("--run-id", required=True); ap.add_argument("--rev", required=True)
 ap.add_argument("--every", type=float, default=30); ap.add_argument("--tries", type=int, default=8)
+ap.add_argument("--wait-first", type=float, default=0, help="minutes to wait before the first try (the cached copy lives about 75 min)")
 a = ap.parse_args()
 P = "I'm reading https://dealectric.com/power-station-for-cpap — what revision does the page show right under its heading? Quote it exactly."
 gd = E.run_dir(a.run_id) / "gate"; gd.mkdir(parents=True, exist_ok=True)
+time.sleep(a.wait_first * 60)
 for i in range(1, a.tries + 1):
     n = len(list(gd.glob("gate-*.json"))) + 1
     try:

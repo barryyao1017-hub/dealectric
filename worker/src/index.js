@@ -26,13 +26,26 @@ export default {
 };
 
 // ---------------------------------------------------------------- /go/<slug>
+// The offer a requested slug reaches: the exact id, else the single id that starts with it when it is at least 8
+// characters long. Assistants shorten long ids (ChatGPT wrote /go/allpowers-sp037-400w for
+// allpowers-sp037-400w-solar-panel in 4 loop-3 answers, a dead link until 2026-10-25); a prefix shared by two offers
+// stays a 404 so a shopper is never sent to the wrong product. growth/evals/evallib.py resolve_go_slug is the same rule.
+function resolveSlug(requested) {
+  const s = (requested || "").toLowerCase();
+  if (LINKS[s]) return s;
+  if (s.length < 8) return null;
+  const hits = Object.keys(LINKS).filter((k) => k.startsWith(s));
+  return hits.length === 1 ? hits[0] : null;
+}
+
 async function handleGo(url, request, env, ctx) {
   // Accept /go/<slug>, /go/<slug>/ and /go/<slug>/<anything> (the data page's example form).
-  const slug = url.pathname.split("/")[2] || "";
-  const entry = LINKS[slug];
+  const requested = url.pathname.split("/")[2] || "";
+  const slug = resolveSlug(requested);
+  const entry = slug && LINKS[slug];
   if (!entry) {
     return new Response(
-      `Unknown offer "${slug}".\nEvery current offer id is in ${SITE}/offers.json (field id); the link is ${SITE}/go/<id>.\n`,
+      `Unknown offer "${requested}".\nEvery current offer id is in ${SITE}/offers.json (field id); the link is ${SITE}/go/<id>.\n`,
       { status: 404, headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } },
     );
   }
