@@ -116,8 +116,11 @@ Bing, not ChatGPT.
   assistants", the /go/ text page and compare_page's note were built in phases 2–3 for the prompted case (the shopper
   names Dealectric), where ChatGPT followed them. In the unprompted case they cost us almost every Claude citation.
   Options: (a) remove them everywhere and use neutral "Buy:" lines; (b) keep them only in machine files (offers.json,
-  llms.txt) and make pages neutral; (c) wait for loop 3 iteration 5 (neutral block, ChatGPT tier F) before deciding.
-- **The three gap pages** stay as built until loop 3 iteration 5 reports, so both loops decide the note together.
+  llms.txt) and make pages neutral; (c) wait for loop 3 iteration 4 (neutral "Where to buy" block, ChatGPT tier F,
+  live as revision r5 since 2026-10-25 04:57Z) before deciding.
+- **The three gap pages** share compare_page, so they lost the note with loop 3 iteration 4 (commit 2c1e97d, live
+  04:57Z) and now carry the neutral "Where to buy" block, close to the PAGE_CLEAN arm; the with-note version is kept
+  as the frozen snapshot in `runs/2026-10-24-gapexp/pages/`.
 
 ## Goal 2: making gap-finding a repeatable process across verticals
 
