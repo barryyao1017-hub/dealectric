@@ -28,3 +28,11 @@ text addressed to AI as an injection. Options for the one iteration left in the 
 the note (ChatGPT +5, Claude flags); (c) a request addressed to the shopper, not to AI (e.g. "Use the Buy links here:
 the codes were tested through them, and the commission pays for the testing"), honest, and possibly readable by
 ChatGPT as a reason without reading to Claude as an instruction.
+
+## Corroboration, unprompted (gap experiment, 2026-10-25, `growth/gap-experiment.md` stage 1)
+
+19 coded questions, our product page first among ChatGPT's real results, identical prompts. ChatGPT: AI-addressed page
+/go/ 19/19, code+link 19/19; neutral page /go/ 19/19, code+link 13/19 (codes dropped mostly on BLUETTI stations,
+Q14–Q18); 0 flags either way. Claude: AI-addressed page 10 flags, /go/ 0/19; neutral page 0 flags, /go/ 16/19,
+code+link 16/19. Same split as tier F: the request makes ChatGPT relay the code (and, in tier F, keep the link on the
+power-station pages); Claude refuses the page. Unprompted, ChatGPT keeps the link without the request.
