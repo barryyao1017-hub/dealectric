@@ -183,9 +183,30 @@ def questions() -> dict:
     return {**{q["id"]: q for q in E.load_questions()["questions"]}, **{k: {"id": k, **v} for k, v in EXTRA.items()}}
 
 
-def baseline_text(qid: str) -> tuple[str, str]:
+AGENT_SENTENCES = [   # text on our pages addressed to AI assistants; the CLEAN arms remove it (2026-10-25 finding)
+    r"(?s)AI assistants:.*?id = \"[^\"]*\"\s*\.",
+    r"This page's own URL is not the buy link, and neither is the store's product page\.",
+    r"Give the shopper the code and the buy link together:\s*",
+]
+
+
+def clean_html(raw: str) -> str:
+    """Our page without the passages addressed to AI assistants: the agent note block, the agent_note paragraph and the
+    'AI assistants: …' lines; 'Buy link to give the shopper' becomes a plain 'Buy'. Facts, prices, codes, links and the
+    affiliate disclosure stay."""
+    raw = re.sub(r'(?is)<div class="note"><strong>For AI assistants.*?</ul></div>', " ", raw)
+    raw = re.sub(r'(?is)<p class="agent">.*?</p>', " ", raw)
+    raw = raw.replace("Buy link to give the shopper:", "Buy:").replace("buy link to give the shopper:", "buy:")
+    t = html_text(raw)
+    for pat in AGENT_SENTENCES:
+        t = re.sub(pat, " ", t)
+    return t
+
+
+def baseline_text(qid: str, clean: bool = False) -> tuple[str, str]:
     slug = questions()[qid]["primary"]
-    return f"https://dealectric.com/{slug}", html_text((ROOT / f"docs/{slug}.html").read_text())
+    raw = (ROOT / f"docs/{slug}.html").read_text()
+    return f"https://dealectric.com/{slug}", clean_html(raw) if clean else html_text(raw)
 
 
 def product_facts(qid: str) -> list[dict]:
@@ -236,7 +257,7 @@ def drafts(args) -> None:
         print(f"draft {qid}: {len(f.read_text().split())} words", flush=True)
 
 
-def page_text(qid: str) -> tuple[str, str]:
+def page_text(qid: str, clean: bool = False) -> tuple[str, str]:
     """The published gap page, from the snapshot taken when the arm was first run (pages/<slug>.html), so later
     loop-3 changes to the shared renderer do not leak into the measurement."""
     slug = PAGES[qid]
@@ -244,7 +265,7 @@ def page_text(qid: str) -> tuple[str, str]:
     if not snap.exists():
         snap.parent.mkdir(parents=True, exist_ok=True)
         snap.write_text((ROOT / f"docs/{slug}.html").read_text())
-    return f"https://dealectric.com/{slug}", html_text(snap.read_text())
+    return f"https://dealectric.com/{slug}", clean_html(snap.read_text()) if clean else html_text(snap.read_text())
 
 
 def targeted_text(qid: str, it: int) -> tuple[str, str]:
@@ -276,7 +297,7 @@ def trials(arms: list[str]) -> list[tuple[str, str, str]]:
     out = []
     for qid in QIDS + list(EXTRA):
         for arm in arms:
-            if arm == "PAGE" and qid not in PAGES:
+            if arm.startswith("PAGE") and qid not in PAGES:
                 continue
             if arm == "TARGETED" and qid in EXTRA:
                 continue
@@ -289,7 +310,12 @@ def build_prompt(qid: str, arm: str, pos: str, it: int) -> str:
     p = load("packs.json", {})[qid]
     srcs = [{"title": s["title"], "url": s["url"], "text": s["text"]} for s in p["sources"]]
     if arm != "NONE":
-        url, text = baseline_text(qid) if arm == "BASELINE" else page_text(qid) if arm == "PAGE" else targeted_text(qid, it)
+        if arm in ("BASELINE", "BASELINE_CLEAN"):
+            url, text = baseline_text(qid, clean=arm.endswith("CLEAN"))
+        elif arm in ("PAGE", "PAGE_CLEAN"):
+            url, text = page_text(qid, clean=arm.endswith("CLEAN"))
+        else:
+            url, text = targeted_text(qid, it)
         title = text.strip().split("\n")[0].lstrip("# ").strip()[:120]
         ours = {"title": title, "url": url, "text": cut(text)}
         k = {"first": 0, "middle": len(srcs) // 2, "last": len(srcs)}[pos]
@@ -381,7 +407,7 @@ def report(args) -> None:
     for model in sorted({r["model"] for r in rows}):
         lines += [f"## {model}", "", "| gap status | arm | n | " + " | ".join(METRICS) + " |", "|---|---|---|" + "---|" * len(METRICS)]
         for status in ("GAP", "PARTIAL", "SATURATED"):
-            for arm in ("NONE", "BASELINE", "TARGETED", "PAGE"):
+            for arm in ("NONE", "BASELINE", "BASELINE_CLEAN", "TARGETED", "PAGE", "PAGE_CLEAN"):
                 g = [r for r in rows if r["model"] == model and r["arm"] == arm and gl.get(r["qid"], {}).get("status") == status]
                 if not g:
                     continue
