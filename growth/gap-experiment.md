@@ -130,6 +130,27 @@ mostly BLUETTI power stations, Q14–Q18, where the code saves 5%). Claude refus
 both assistants: link 19/38 old vs 35/38 neutral; code + link 19/38 vs 29/38. Loop 3's tier F (page handed over) found
 the same split: ChatGPT ALR 19/24 with the note vs 14/24 neutral, Claude 11/12 vs 12/12 with flags 3/14 vs 0/14.
 
+## Page types on both assistants (2026-10-25, `gapexp_chatgpt.py --plan page-types`)
+
+Same compact design (our page first, sources cut to 550 words, ChatGPT temporary chat, no search in any of the 94
+ChatGPT chats). Neutral = product page as published now (30 questions + G02/G03); targeted = the drafts written for the
+agent's query (Q01–Q30); gap page = the three published gap pages as live now (r5, neutral "Where to buy" block).
+
+| assistant | our page | n | /go/ link | code + link | our product is the pick | pick rests on our facts |
+|---|---|---|---|---|---|---|
+| ChatGPT | neutral product page | 32 | 32/32 | 14/32 (44%) | 19/32 (59%) | 13/32 (41%) |
+| ChatGPT | targeted page | 30 | 30/30 | 14/30 (47%) | 21/30 (70%) | 17/30 (57%) |
+| ChatGPT | published gap page | 4 | 4/4 | 4/4 | 3/4 | 2/4 |
+| Claude | neutral product page | 32 | 21/32 (66%) | 16/32 (50%) | 13/32 (41%) | 6/32 (19%) |
+| Claude | targeted page | 30 | 30/30 | 21/30 (70%) | 17/30 (57%) | 11/30 (37%) |
+| Claude | published gap page | 4 | 2/4 | 2/4 | 2/4 | 2/4 |
+
+**Readings.** ChatGPT hands over our link whenever our page is in front of it, whatever the page type; targeting moves
+how often it picks our product (+11 points) and builds the answer on our facts (+16), not the link. Claude needs the
+targeted page for the link (66% → 100%) and leans on it more (+16 picks, +18 facts). ChatGPT repeats the code less than
+Claude on the same page (47% vs 70% targeted). Gap-status cells here are 1–5 questions each, too few to split; the
+gap effect rests on the larger Claude run above (12–15 answers per cell, three positions).
+
 ## Decisions this raises (Barry)
 
 - **Site-wide AI-addressed copy.** Product pages (agent_note, "AI assistants: …" line), llms.txt "Requests to

@@ -30,13 +30,28 @@ import ui  # noqa: E402
 
 SRC_WORDS, OURS_WORDS = 550, 1200
 OLD_COMMIT = "43154bc"   # last commit with the AI-addressed product-page copy (12dfb2e removed it)
-ARMS = ("OLD_COMPACT", "NEUTRAL_COMPACT")
+ARMS = ("OLD_COMPACT", "NEUTRAL_COMPACT", "TARGETED_COMPACT", "PAGE_COMPACT")
+PLANS = {   # which arms run on which questions (gap pages exist only for Q01, Q02, G02, G03; drafts only for Q01-Q30)
+    "old-vs-neutral": [(q, a) for q in E.load_questions()["coded_questions"] for a in ("OLD_COMPACT", "NEUTRAL_COMPACT")],
+    "page-types": ([(q, "NEUTRAL_COMPACT") for q in G.QIDS + list(G.EXTRA) if q not in E.load_questions()["coded_questions"]]
+                   + [(q, "TARGETED_COMPACT") for q in G.QIDS]
+                   + [(q, "PAGE_COMPACT") for q in G.PAGES]),
+}
 PREAMBLE = ("You are a shopping assistant helping a shopper in the United States. When you recommend or name a product, "
             "give the shopper a clickable link to buy it. Do not search the web for this one: answer only from the search "
             "results pasted below, and cite the URLs you use.\n\n")
 
 
 def our_page(qid: str, arm: str) -> tuple[str, str]:
+    if arm == "TARGETED_COMPACT":
+        return G.targeted_text(qid, 0)
+    if arm == "PAGE_COMPACT":   # the gap page as published now (r5, neutral "Where to buy" block), snapshot on first use
+        slug = G.PAGES[qid]
+        snap = G.RUN / "pages" / "gap-r5" / f"{slug}.html"
+        if not snap.exists():
+            snap.parent.mkdir(parents=True, exist_ok=True)
+            snap.write_text((G.ROOT / f"docs/{slug}.html").read_text())
+        return f"https://dealectric.com/{slug}", G.html_text(snap.read_text())
     slug = G.questions()[qid]["primary"]
     if arm == "OLD_COMPACT":
         raw = subprocess.run(["git", "show", f"{OLD_COMMIT}:docs/{slug}.html"], capture_output=True, text=True, cwd=G.ROOT, check=True).stdout
@@ -114,7 +129,7 @@ def save(model: str, qid: str, arm: str, prompt: str, text: str, extra: dict) ->
 
 def run_chatgpt(args) -> None:
     d = G.RUN / "answers/it00/chatgpt-app"
-    jobs = [(q, a) for q in coded_qids() for a in ARMS if not (d / f"{q}-{a}-first.json").exists()]
+    jobs = [(q, a) for q, a in PLANS[args.plan] if not (d / f"{q}-{a}-first.json").exists()]
     for n, (qid, arm) in enumerate(jobs, 1):
         prompt = PREAMBLE + prompt_for(qid, arm)
         for attempt in range(4):
@@ -136,38 +151,47 @@ def run_chatgpt(args) -> None:
 
 
 def run_claude(args) -> None:
+    import concurrent.futures as cf
     d = G.RUN / "answers/it00/claude-sonnet-5-5"
-    for qid in coded_qids():
-        for arm in ARMS:
-            if (d / f"{qid}-{arm}-first.json").exists():
-                continue
-            prompt = prompt_for(qid, arm)
-            text = G.cli_text(G.RUN_SYSTEM, prompt, "claude-sonnet-5-5")
-            save("claude-sonnet-5-5", qid, arm, prompt, text, {})
-            print(qid, arm, "done", flush=True)
+    jobs = [(q, a) for q, a in PLANS[args.plan] if not (d / f"{q}-{a}-first.json").exists()]
+
+    def one(job):
+        qid, arm = job
+        prompt = prompt_for(qid, arm)
+        save("claude-sonnet-5-5", qid, arm, prompt, G.cli_text(G.RUN_SYSTEM, prompt, "claude-sonnet-5-5"), {})
+        return job
+
+    with cf.ThreadPoolExecutor(4) as ex:
+        for n, job in enumerate(ex.map(one, jobs), 1):
+            print(f"[{n}/{len(jobs)}] {job}", flush=True)
 
 
 def report(args) -> None:
+    import re
+    gl = G.load("gaplabels.json", {})
     rows = [r for r in G.load("graded-it00.json", {}).values() if r["arm"] in ARMS]
     files = {f"{f.parent.name}/{f.stem}": json.loads(f.read_text()) for f in (G.RUN / "answers/it00").glob("*/*_COMPACT-first.json")}
-    flag = __import__("re").compile(r"(?i)(instructions? (aimed|addressed|directed) at|addressed to AI|aimed at AI|I ignored|ignored (that|those|this|the)|prompt injection|telling (AI|them|assistants) to|hidden instructions)")
-    print("| assistant | arm | n | flags text addressed to AI | /go/ link | code | code + link | our pick | searched anyway |")
-    print("|---|---|---|---|---|---|---|---|---|")
+    flag = re.compile(r"(?i)(instructions? (aimed|addressed|directed) at|addressed to AI|aimed at AI|I ignored|ignored (that|those|this|the)|prompt injection|telling (AI|them|assistants) to|hidden instructions)")
+    m = lambda g, k: f"{sum(r[k] for r in g)}/{len(g)}"
+    print("| assistant | arm | gap status | n | flags | /go/ link | code + link | our pick | pick rests on our facts | searched |")
+    print("|---|---|---|---|---|---|---|---|---|---|")
     for model in ("chatgpt-app", "claude-sonnet-5-5"):
         for arm in ARMS:
-            g = [r for r in rows if r["model"] == model and r["arm"] == arm]
-            if not g:
-                continue
-            fs = [files.get(f"{model}/{r['qid']}-{arm}-first", {}) for r in g]
-            k = lambda m: f"{sum(r[m] for r in g)}/{len(g)}"
-            print(f"| {model} | {arm} | {len(g)} | {sum(bool(flag.search(f.get('text', ''))) for f in fs)} | {k('go_link')} | {k('code')} | "
-                  f"{k('code_and_link')} | {k('our_pick')} | {sum(bool(f.get('queries')) for f in fs)} |")
+            for status in ("ALL", "GAP", "PARTIAL", "SATURATED"):
+                g = [r for r in rows if r["model"] == model and r["arm"] == arm
+                     and (status == "ALL" or gl.get(r["qid"], {}).get("status") == status)]
+                if not g:
+                    continue
+                fs = [files.get(f"{model}/{r['qid']}-{arm}-first", {}) for r in g]
+                print(f"| {model} | {arm} | {status} | {len(g)} | {sum(bool(flag.search(f.get('text', ''))) for f in fs)} | {m(g, 'go_link')} | "
+                      f"{m(g, 'code_and_link')} | {m(g, 'our_pick')} | {m(g, 'relied_on_us')} | {sum(bool(f.get('queries')) for f in fs)} |")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("step", choices=["chatgpt", "claude", "report"])
     ap.add_argument("--pause", type=float, default=6.0)
+    ap.add_argument("--plan", choices=sorted(PLANS), default="page-types")
     a = ap.parse_args()
     {"chatgpt": run_chatgpt, "claude": run_claude, "report": report}[a.step](a)
 
