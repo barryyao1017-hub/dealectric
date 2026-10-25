@@ -116,6 +116,7 @@ from gaps import GAP_PAGES
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote
 import html
+import sys
 
 LINKS = json.load(open(os.path.join(os.path.dirname(__file__), "links.json")))
 # Discount codes, each tested in the brand's own cart before it is published (tools/codecheck.py; raw runs in growth/codes/).
@@ -926,3 +927,6 @@ def flatten(out):
 
 if __name__ == "__main__":
     main()
+    if "--lab" in sys.argv:   # copy-line study pages (src/lab.py, DLC-59); any build without the flag removes them
+        import lab
+        lab.build(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs"))
