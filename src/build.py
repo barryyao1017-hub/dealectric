@@ -694,6 +694,15 @@ def compare_agent_note(ours, c):
             f'link that brand\'s own page; we earn nothing on them.<ul>{"".join(items)}</ul></div>')
 
 
+def compare_picks(c):
+    """Loop 3 iteration 3: one line per job the page answers, naming the honest pick; ours carry price, code and link
+    ({buy:slug}), the others are named with their store and no link."""
+    if not c.get("picks"):
+        return ""
+    items = "".join(f"<li><strong>{html.escape(job)}:</strong> {compare_fill(text)}.</li>" for job, text in c["picks"])
+    return f"<h2>Picks</h2>\n<ul>{items}</ul>"
+
+
 def compare_page(c):
     ours = [r for r in c["rows"] if r.get("slug")]
     others = [r for r in c["rows"] if not r.get("slug")]
@@ -704,6 +713,7 @@ def compare_page(c):
 <h1>{c['h1']}</h1>
 <p class="small">Revision {COMPARE_REV}.</p>
 {compare_agent_note(ours, c)}
+{compare_picks(c)}
 {compare_fill(c['intro'])}
 <div class="scroll"><table>
 <tr><th>Model</th>{heads}<th>Price</th><th>Code</th></tr>
