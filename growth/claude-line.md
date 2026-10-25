@@ -180,3 +180,14 @@ included, through either channel (raw: line reached the model 6/6 each, link 6/6
 through the raw tool channel (2r), the order matches setting 1 once the line reaches the model: V1 4/4, V4 3/4,
 C3 5/5 flagged; V3 0/5, V7 0/4, V8 0/2. Through Claude Code's WebFetch the added sentence reached the model in 1 of
 106 runs that read a variant page, so there the copy barely matters.
+
+**ChatGPT (the app, 2026-10-25, 95 temporary chats on account 1; 19 coded questions; our page first in its own
+result set; compact gapexp_chatgpt shape).** No flags on any variant; our link in every answer (19/19 each). Code and
+link: V1 18, V6 17, V0 16, V7 15, V8 14 (of 19). Our product as the pick: V6 12, V1 11, others 9. One throttle notice
+("try again in 4 minutes") at chat ~60, waited out. The neutral page is a same-day control added to the plan (19
+chats), because the gap experiment's 13/19 came from a different day and snapshot.
+
+**Decision for loop 3's option (c).** No shopper-facing or third-person wording beats the neutral block on either
+assistant; option (c) is safe on Claude and neutral on ChatGPT. Keep the product pages' block, optionally with V6's
+shopper line; the measurable gain left is removing the rule-1 wording from the home, catalog, guide and codes pages,
+llms.txt and offers.json (`growth/claude-line-rules.md`, "Audit").

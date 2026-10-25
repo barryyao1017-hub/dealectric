@@ -272,8 +272,8 @@ def chatgpt(args) -> None:
                 r = GC.ask_chatgpt_pasted(prompt)
                 break
             except ui.Throttled as t:
-                print(f"throttled, waiting {t.args[0]} s: {t.args[1]}", flush=True)
-                time.sleep(t.args[0] + 30)
+                print(f"throttled, waiting {t.wait_s} s: {t}", flush=True)
+                time.sleep(t.wait_s + 30)
             except Exception as e:  # noqa: BLE001
                 print(f"{qid} {v}: {e}; retrying", flush=True)
                 time.sleep(30)

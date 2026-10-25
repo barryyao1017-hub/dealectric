@@ -79,12 +79,36 @@ when it pushes our link over the store's page or says we are paid through it.
 
 ## ChatGPT
 
-ChatGPT never flags any of this. With the old line it relays code and link 18/19 (link 19/19); with the neutral page
-it relayed code and link 13/19 in the gap experiment. CHATGPT_RESULT
+ChatGPT (the app, temporary chats, the 19 coded questions, our page first in its own result set) never flags any of
+this, and keeps our link in every answer whatever the wording (19/19 for each of V0, V1, V6, V7, V8). Code and link
+together, same day:
+
+| variant | code + link | our pick |
+|---|---|---|
+| V1 old line | 18/19 | 11/19 |
+| V6 "Use the Buy link above and enter code … at checkout to pay …" | 17/19 | 12/19 |
+| V0 neutral | 16/19 | 9/19 |
+| V7 option c (shopper rationale + disclosure) | 15/19 | 9/19 |
+| V8 third-person rationale | 14/19 | 9/19 |
+
+The spread is two or three answers out of 19, inside the noise. The gap experiment's 13/19 for the neutral page
+(2026-10-25, older snapshot) was partly that noise. The old line's edge on ChatGPT is at most a couple of codes in 19,
+and it costs every unprompted Sonnet citation.
 
 ## The block to ship
 
-SHIP_BLOCK
+**Keep the product pages' buy block as it is (V0).** Nothing tested beats it on either assistant: Sonnet's link rate is
+18/20 against 15-16/20 for the alternatives, ChatGPT's code + link 16/19 against 14-17/19, and the differences are
+inside the intervals. Option (c) (V7) is safe (no flags on any Claude model) but buys nothing measurable, so it is
+worth adding only if we want the commission explained on the page for its own sake; the disclosure line at the foot
+of the page already says it.
+
+If one line is added, make it V6, written to the shopper: "Use the Buy link above and enter code {code} at checkout to
+pay {price after code}." It was never flagged (Sonnet 0/20, Haiku 0/10, Opus 0/10), had the best ChatGPT number
+(17/19) and tells the shopper something useful. Its Claude link rate (16/20) is within noise of V0.
+
+The larger gain is off the product pages: the home page, catalog, guides, brand codes pages, llms.txt and offers.json
+still carry the rule-1 wording listed below. That is the change to make next.
 
 ## Audit of what is live (2026-10-25)
 
