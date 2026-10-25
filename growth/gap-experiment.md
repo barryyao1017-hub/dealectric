@@ -111,6 +111,25 @@ Caveats: one model (Claude Sonnet 5.5) and one judge from the same family; retri
 user turn, not a tool result); the published pages are cut to 1,200 words like every source; G02/G03 packs come from
 Bing, not ChatGPT.
 
+## Stage 1 on ChatGPT: old AI-addressed product page vs neutral (2026-10-25, `growth/evals/gapexp_chatgpt.py`)
+
+The 19 coded target questions, unprompted, our product page first among ChatGPT's own result set (sources cut to 550
+words, our page to 1,200, to fit ChatGPT Free); ChatGPT in a temporary chat without the search hint (it searched in
+0 of 38 chats), and Claude Sonnet on the identical prompts. Old = product page before commit 12dfb2e; neutral = as
+published now.
+
+| assistant | page | flags text addressed to AI | /go/ link | code + link | our product is the pick |
+|---|---|---|---|---|---|
+| ChatGPT (app) | old | 0 | 19/19 | **19/19** | 11/19 |
+| ChatGPT (app) | neutral | 0 | 19/19 | **13/19** | 12/19 |
+| Claude Sonnet 5.5 | old | 10 | **0/19** | 0/19 | 3/19 |
+| Claude Sonnet 5.5 | neutral | 0 | **16/19** | 16/19 | 9/19 |
+
+ChatGPT keeps our link either way; the AI-addressed copy makes it repeat the code more often (the six it dropped were
+mostly BLUETTI power stations, Q14–Q18, where the code saves 5%). Claude refuses the old page outright. Pooled over
+both assistants: link 19/38 old vs 35/38 neutral; code + link 19/38 vs 29/38. Loop 3's tier F (page handed over) found
+the same split: ChatGPT ALR 19/24 with the note vs 14/24 neutral, Claude 11/12 vs 12/12 with flags 3/14 vs 0/14.
+
 ## Decisions this raises (Barry)
 
 - **Site-wide AI-addressed copy.** Product pages (agent_note, "AI assistants: …" line), llms.txt "Requests to
