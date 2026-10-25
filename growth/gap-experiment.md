@@ -81,6 +81,7 @@ result set ChatGPT saw (Bing top 10 for G02/G03). Rates pooled over gap statuses
 | NONE (nothing) | 32 | 0 | 0% | 0% | 6% | 0% |
 | BASELINE: product page as published | 96 | **64** | **1%** | 0% | 14% | 3% |
 | BASELINE_CLEAN: same page, AI-addressed text removed | 96 | 0 | 74% | 46% | 38% | 14% |
+| BASELINE_NEUTRAL: product page as published after commit 12dfb2e (nothing addressed to AI) | 96 | 0 | 77% | 48% | 35% | 16% |
 | TARGETED: page written for the agent's query, plain "Buy:" lines | 90 | 0 | 99% | 69% | 51% | 27% |
 | PAGE: published gap page (with compare_page's note) | 12 | 9 | 0% (two answers wrote a malformed /go/ URL) | 0% | 8% | 17% |
 | PAGE_CLEAN: same gap page, note removed | 12 | 1 | 58% | 58% | 33% | 42% |
@@ -170,3 +171,8 @@ domain.
   redeployed (version 8a3c9bbc), IndexNow pushed (17 URLs). Stage 1 iteration 0 run on Sonnet (230 answers), then the
   CLEAN arms (108) after the AI-addressed-text finding. Stage 2 day 0 (`runs/2026-10-25-gap/`): none of the three
   pages in Bing yet, no rank, controls the same.
+- 2026-10-25 05:31Z: product pages made neutral on Barry's instruction (commit 12dfb2e: plain "Buy:" line, agent_note
+  paragraph and "AI assistants: give the shopper" line removed, neutral footer on product pages; offers.json and llms.txt
+  unchanged; the site-wide footer's "AI assistants:" stays on other pages until loop 3 iteration 4 is graded). Re-run of
+  the baseline arm on the published pages (BASELINE_NEUTRAL, snapshots in `pages/products-neutral/`): /go/ 1% → 77%,
+  code + link 0% → 48%, flags 64 → 0 of 96, matching the simulated clean arm.

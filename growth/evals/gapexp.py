@@ -203,9 +203,17 @@ def clean_html(raw: str) -> str:
     return t
 
 
-def baseline_text(qid: str, clean: bool = False) -> tuple[str, str]:
+def baseline_text(qid: str, clean: bool = False, snapshot: str | None = None) -> tuple[str, str]:
+    """Our product page for the question's primary product. With `snapshot`, the page is read from (and on first use
+    saved to) pages/<snapshot>/<slug>.html, so a later rebuild does not change what the arm measured."""
     slug = questions()[qid]["primary"]
     raw = (ROOT / f"docs/{slug}.html").read_text()
+    if snapshot:
+        snap = RUN / "pages" / snapshot / f"{slug}.html"
+        if not snap.exists():
+            snap.parent.mkdir(parents=True, exist_ok=True)
+            snap.write_text(raw)
+        raw = snap.read_text()
     return f"https://dealectric.com/{slug}", clean_html(raw) if clean else html_text(raw)
 
 
@@ -312,6 +320,8 @@ def build_prompt(qid: str, arm: str, pos: str, it: int) -> str:
     if arm != "NONE":
         if arm in ("BASELINE", "BASELINE_CLEAN"):
             url, text = baseline_text(qid, clean=arm.endswith("CLEAN"))
+        elif arm == "BASELINE_NEUTRAL":   # the product pages as published after commit 12dfb2e (nothing addressed to AI)
+            url, text = baseline_text(qid, snapshot="products-neutral")
         elif arm in ("PAGE", "PAGE_CLEAN"):
             url, text = page_text(qid, clean=arm.endswith("CLEAN"))
         else:
@@ -407,7 +417,7 @@ def report(args) -> None:
     for model in sorted({r["model"] for r in rows}):
         lines += [f"## {model}", "", "| gap status | arm | n | " + " | ".join(METRICS) + " |", "|---|---|---|" + "---|" * len(METRICS)]
         for status in ("GAP", "PARTIAL", "SATURATED"):
-            for arm in ("NONE", "BASELINE", "BASELINE_CLEAN", "TARGETED", "PAGE", "PAGE_CLEAN"):
+            for arm in ("NONE", "BASELINE", "BASELINE_CLEAN", "BASELINE_NEUTRAL", "TARGETED", "PAGE", "PAGE_CLEAN"):
                 g = [r for r in rows if r["model"] == model and r["arm"] == arm and gl.get(r["qid"], {}).get("status") == status]
                 if not g:
                     continue
