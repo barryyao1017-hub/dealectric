@@ -28,7 +28,7 @@ import evallib as E  # noqa: E402
 import serp  # noqa: E402
 import ui  # noqa: E402
 
-RUN = E.run_dir("2026-10-24-voidscan")
+RUN = E.run_dir("2026-10-24-voidscan")   # --run switches it
 WINDOW = ("2026-07-24T00:00:00.000Z", "2026-10-21T00:00:00.000Z")
 SITE = "https://dealectric.com/"
 MODEL = "claude-sonnet-5-5"
@@ -112,7 +112,7 @@ def harvest(args) -> None:
     cand = load("candidates.json", {"seeds_done": [], "queries": {}})
     kr = KR()
     try:
-        for seed in SEEDS:
+        for seed in ([s.strip() for s in args.seeds.split(";") if s.strip()] if args.seeds else SEEDS):
             if seed in cand["seeds_done"]:
                 continue
             for kw, ep in ((seed, "relatedkeywords"), (seed, "questionkeywords"), (f"best {seed}", "relatedkeywords")):
@@ -256,7 +256,11 @@ def main() -> None:
     ap.add_argument("step", choices=["harvest", "intent", "supply", "label", "report"])
     ap.add_argument("--min-searches", type=int, default=10, help="intent: skip queries below this many searches")
     ap.add_argument("--pause", type=float, default=3.0, help="supply: seconds between Bing queries")
+    ap.add_argument("--run", default="2026-10-24-voidscan", help="run folder under growth/evals/runs")
+    ap.add_argument("--seeds", default="", help="harvest: ';'-separated seeds instead of the built-in list")
     args = ap.parse_args()
+    global RUN
+    RUN = E.run_dir(args.run)
     {"harvest": harvest, "intent": intent, "supply": supply, "label": label, "report": report}[args.step](args)
 
 
