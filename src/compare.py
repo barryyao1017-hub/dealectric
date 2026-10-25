@@ -12,7 +12,7 @@
 
 # Revision shown under each page's heading; each loop-3 iteration bumps it, and the gating chat asks ChatGPT to read
 # it back before the re-evaluation counts (stale copy check).
-COMPARE_REV = "2026-10-25 r3"
+COMPARE_REV = "2026-10-25 r2"
 
 COMPARISONS = [
 
@@ -31,13 +31,6 @@ COMPARISONS = [
 """,
  "columns": [("bays", "Bays"), ("cells", "Cells"), ("indep", "Independent channels"), ("current", "Charge current, AA / AAA"),
              ("time", "Time for a 2,000–2,800 mAh AA"), ("stop", "How it stops"), ("extras", "Display, modes"), ("power", "Power")],
- "picks": [
-  ('Sixteen cells at once', 'Tenergy TN438 16-bay ($57.99 at power.tenergy.com; not sold through Dealectric), or the BONAI 16-bay ($29.44) if LEDs are enough'),
-  ('Cheapest 8-bay powered from USB-C', 'EBL C9008 ($19.99 at eblofficial.com; not sold through Dealectric). One step up, with a per-slot LCD and −ΔV cut-off: Tenergy TN480U, {buy:tenergy-tn480u-8-bay-nimh-charger}'),
-  ('8-bay with −ΔV cut-off and an LCD for each slot', 'Tenergy TN480U, {buy:tenergy-tn480u-8-bay-nimh-charger}; the Powerex MH-C800S also has a per-bay LCD and charges at 1 A'),
-  ('Fastest for eight AAs', 'Powerex MH-C801D (2 A per AA, about 1 hour; $74.95 at mahaenergy.com; not sold through Dealectric)'),
-  ('High-capacity AAs to charge in bulk', 'Tenergy Premium Pro AA 2,800 mAh 20-pack, {buy:tenergy-premium-pro-aa-2800mah-20-pack}; Panasonic eneloop for the lowest self-discharge'),
- ],
  "rows": [
   {"slug": "tenergy-tn480u-8-bay-nimh-charger", "model": "Tenergy TN480U",
    "cells": {"bays": "8", "cells": "AA, AAA (mixed)", "indep": "Yes", "current": "500 mA / 250 mA", "time": "about 4–6 h (not published)",
@@ -147,13 +140,6 @@ COMPARISONS = [
 <p>Wh/kg is the station's rated capacity divided by its weight, computed from the makers' figures. "Cycles" is the maker's rating with the end-of-life capacity it states. Prices are the makers' own US store prices (sale price in parentheses) on the date in the note below the table.</p>
 """,
  "columns": [("chem", "Chemistry"), ("wh", "Wh"), ("ac", "AC continuous"), ("cycles", "Rated cycles"), ("kg", "Weight"), ("whkg", "Wh/kg"), ("warranty", "Warranty")],
- "picks": [
-  ('LiFePO4 or NMC', 'LiFePO4 for almost every buyer: 3,000–6,000 rated cycles against about 500, 5-year warranties, and no weight penalty at the station level'),
-  ('Small LiFePO4 station for weekend camping', 'BLUETTI Elite 30 V2 (288 Wh, 140 W USB-C), {buy:bluetti-elite-30-v2}; or the EcoFlow RIVER 3 Plus ($299 at us.ecoflow.com; not sold through Dealectric)'),
-  ('Lightest 1 kWh LiFePO4', 'Jackery Explorer 1000 v2 (99 Wh/kg, $499 sale at jackery.com) or Anker SOLIX C1000 Gen 2 (91 Wh/kg, $699.99); neither is sold through Dealectric'),
-  ('Most 2 kWh LiFePO4 capacity for the money', 'BLUETTI Elite 200 V2 (2,074 Wh, 6,000 cycles), {buy:bluetti-elite-200-v2}; the BLUETTI AC200L (2,048 Wh, expandable), {buy:bluetti-ac200l}; and the Jackery Explorer 2000 v2 (2,042 Wh, $899 on sale at jackery.com; not sold through Dealectric) are within a few watt-hours of each other at the same price'),
-  ('An NMC station worth buying', 'ALLPOWERS S2000 Pro (1,451 Wh, 2,500 rated cycles, 5-year warranty), {buy:allpowers-s2000-pro-1451wh}: not a mistake for occasional use; for daily cycling pick an LFP unit'),
- ],
  "rows": [
   {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
    "cells": {"chem": "LiFePO4", "wh": "288", "ac": "600 W", "cycles": "3,000+", "kg": "4.3 kg", "whkg": "67", "warranty": "5 years"}},
@@ -242,13 +228,6 @@ COMPARISONS = [
 """,
  "columns": [("wh", "Wh"), ("ac", "AC continuous"), ("dc", "12 V port"), ("usbc", "USB-C"), ("ups", "UPS switchover"), ("noise", "Noise (maker)"), ("kg", "Weight"),
              ("nights", "Nights: 10 W / 25 W / 35 W")],
- "picks": [
-  ('One or two nights with the humidifier on', 'BLUETTI Elite 30 V2 (288 Wh, 1.2 nights at 25 W), {buy:bluetti-elite-30-v2}; or the EcoFlow RIVER 3 Plus ($299; not sold through Dealectric)'),
-  ('Three nights or more with the humidifier on', 'a 1 kWh station: ALLPOWERS P1800 (4.3 nights at 25 W), {buy:allpowers-p1800-1024wh}; BLUETTI AC180 (4.8 nights), {buy:bluetti-ac180}; or the Jackery Explorer 1000 v2 (4.5 nights, $499 sale; not sold through Dealectric)'),
-  ('Cheapest for one night, humidifier off', 'Tenergy T320 (3.1 nights at 10 W, 12 V port), {buy:tenergy-t320-300wh-power-station}'),
-  ('A week of nights from the 12 V port', "ALLPOWERS P1800 (12 V car port 120 W), {buy:allpowers-p1800-1024wh}; BLUETTI AC180 (12 V / 10 A), {buy:bluetti-ac180}; with the CPAP maker's DC converter"),
-  ('Quietest next to the bed', 'Anker SOLIX C1000 Gen 2 (20 dB published, 10 ms UPS; $699.99 at ankersolix.com; not sold through Dealectric)'),
- ],
  "rows": [
   {"brand": "EcoFlow", "model": "RIVER 3 Plus", "url": "https://us.ecoflow.com/products/ecoflow-river-3-plus-portable-power-station-flash-sale",
    "cells": {"wh": "286", "ac": "600 W", "dc": "not listed", "usbc": "100 W", "ups": "<10 ms", "noise": "<30 dB", "kg": "4.7 kg", "nights": "3.0 / 1.2 / 0.8", "price": "$299"}},
@@ -333,13 +312,6 @@ COMPARISONS = [
 <h2>15 portable panels: hours of strong sun to put 1,000 Wh into a station</h2>
 """,
  "columns": [("w", "Rated W"), ("voc", "Voc"), ("conn", "Connector"), ("fold", "Folded"), ("kg", "Weight"), ("ip", "Weather"), ("hours", "Hours for 1,000 Wh (70% output)")],
- "picks": [
-  ('One panel that refills 1,000 Wh in one sunny day', 'a 400 W panel: ALLPOWERS SP037 (the cheapest 400 W here, 3.6 h of strong sun), {buy:allpowers-sp037-400w-solar-panel}'),
-  ('Lighter 400 W panel', 'Anker SOLIX PS400 Bifacial (9.9 kg, $599.99 at ankersolix.com; not sold through Dealectric)'),
-  ('400 W panel on a BLUETTI AC180', "yes: the AC180 takes up to 500 W at 12–60 V, and a 400 W panel's 45–48 V Voc fits; about 4.1 h of strong sun to fill its 1,152 Wh. BLUETTI AC180, {buy:bluetti-ac180}; ALLPOWERS SP037 panel, {buy:allpowers-sp037-400w-solar-panel}"),
-  ('Station that takes the most solar for its size', 'EcoFlow DELTA 3 Plus (1,000 W over two inputs; not sold through Dealectric); among ours, the ALLPOWERS P1800 (650 W), {buy:allpowers-p1800-1024wh}'),
-  ('300 Wh station', 'a 100–200 W panel at 21–23 V Voc (the 24–28 V inputs refuse a 400 W panel), such as the Jackery SolarSaga 200W or EcoFlow 220W Bifacial'),
- ],
  "rows": [
   {"slug": "allpowers-sp037-400w-solar-panel", "model": "ALLPOWERS SP037 400 W",
    "cells": {"w": "400", "voc": "45.3 V (Vmp 37.4 V)", "conn": "MC4; MC4→XT60, DC5525, DC8020 adapters included", "fold": "1,048 × 532 × 65 mm", "kg": "18.5 kg", "ip": "IP67, ETFE", "hours": "3.6 h"}},
