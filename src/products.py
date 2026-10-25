@@ -2,7 +2,8 @@
 # Each record: slug, brand, program (key into links.json), category, name, model, url (merchant product page),
 # price (USD, as shown on the official page on VERIFIED), list_price (if a strike-through was shown), specs (ordered pairs),
 # warranty, returns, summary (one plain sentence an assistant can quote), fit (who it's for), caveats (list),
-# in_stock (optional; False when the store showed it sold out on VERIFIED).
+# in_stock (optional; False when the store showed it sold out on VERIFIED), verified (optional; the date a product added
+# after the last weekly re-check was read, until the next re-check folds it into VERIFIED).
 
 VERIFIED = "2026-10-21"
 
@@ -17,6 +18,8 @@ CATEGORIES = {
     "earbuds":         ("Earbuds",               "True-wireless and open-ear earbuds."),
     "headphones":      ("Headphones",            "Over-ear wireless headphones."),
     "speaker":         ("Speakers",              "Portable Bluetooth speakers."),
+    "projector":       ("Projectors & screens",  "Portable projectors and car projector screens."),
+    "solar-kit":       ("Solar generator kits",  "A power station and a folding solar panel sold together as one kit."),
 }
 
 PRODUCTS = [
@@ -73,6 +76,16 @@ PRODUCTS = [
  "summary": "A cheap e-marked 100 W cable for charging laptops up to 100 W; it is a charging cable, not a data or video cable.",
  "fit": "Pairing with any 65–100 W charger; not for monitors or fast file transfer.",
  "caveats": ["Not rated for 140 W / 240 W EPR charging.", "Baseus notes it is not supported for iPad Pro charging."]},
+
+{"slug": "baseus-enerfill-fc41-25000mah-145w", "verified": "2026-10-24", "brand": "Baseus", "program": "awin:baseus_us", "category": "power-bank",
+ "name": "Baseus EnerFill FC41 Power Bank with Built-in Cables, 25,000 mAh, 145 W", "model": "EnerFill FC41 (E0028H03)",
+ "url": "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w", "price": 79.99, "list_price": 89.99,
+ "specs": [("Capacity", "25,000 mAh (91.25 Wh); under the 100 Wh airline limit"), ("Max output", "145 W total; 140 W from USB-C1 (PD 3.1)"), ("Cables", "Two built-in USB-C cables; charges 4 devices at once"),
+           ("Input", "65 W; about 1–2 h to full"), ("Pass-through charging", "Yes"), ("Display", "Smart digital display"), ("Weight", "Not published (store shipping weight 579 g)")],
+ "warranty": "Baseus standard warranty (not stated on the page)", "returns": "7-day money-back guarantee",
+ "summary": "A 91 Wh airline-legal bank with two built-in USB-C cables and 140 W from one port, enough to charge a MacBook Air to 50% in 30 minutes, per Baseus.",
+ "fit": "Flyers who want laptop power and no loose cables in a carry-on.",
+ "caveats": ["Baseus lists the port layout and weight only in images.", "At 91 Wh it is close to, but under, the 100 Wh limit; some airlines cap the number of power banks at one or two."]},
 
 # ---------------- ESR (Awin 24915) ----------------
 {"slug": "esr-cryoboost-3-in-1-qi2-2-25w-stand", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
@@ -335,6 +348,106 @@ PRODUCTS = [
  "summary": "A sub-kilogram IP68 speaker built for kayaks and pools, with a siren and salt-spray rating.",
  "fit": "Water sports and travel.",
  "caveats": ["No charge-out; soundcore publishes no charge time or charging speed."]},
+
+# ---------------- SOLAR GENERATOR KITS (added 2026-10-25, growth/gap-targets.md) ----------------
+# The stores' own kit listings (station + panel in one product), read 2026-10-24 US time.
+{"slug": "allpowers-p1800-sp037-solar-kit", "verified": "2026-10-24", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "name": "ALLPOWERS P1800 + SP037 400 W Solar Generator Kit (1,024 Wh, 1,800 W)", "model": "P1800 + 1× SP037",
+ "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 731, "list_price": 1059.98,
+ "specs": [("Battery", "1,024 Wh LiFePO4"), ("AC output", "1,800 W (3,600 W peak)"), ("Panel", "1× SP037 400 W folding, Voc 45.3 V"),
+           ("Solar input", "650 W max, 11–60 V, 13 A (XT60)"), ("Solar recharge with this kit", "Not published; 400 W of panel at ~60% real output is roughly 4–5 h of good sun"),
+           ("UPS", "≤10 ms (images say 15 ms)"), ("Weight", "Station ~13 kg + panel 18.5 kg")],
+ "warranty": "Station 24 months; panel 2 years", "returns": "30-day money-back for unused items; buyer pays return shipping unless defective",
+ "summary": "ALLPOWERS' 1 kWh LiFePO4 station with its 400 W folding panel in one kit; the cheapest 1 kWh-class kit with a 400 W panel on the makers' US stores when we checked.",
+ "fit": "Camping, RV and home-backup buyers who want one box with real solar input.",
+ "caveats": ["Bought separately the P1800 ($439) and SP037 ($299) cost $738, so the kit saves only $7.", "The SP037 weighs 18.5 kg; it is a two-hand panel.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
+
+{"slug": "allpowers-s2000-pro-sp037-solar-kit", "verified": "2026-10-24", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
+ "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 963, "list_price": 1999,
+ "specs": [("Battery", "1,451 Wh, ternary lithium (NMC), not LiFePO4"), ("AC output", "2,400 W (4,000 W surge)"), ("Panel", "1× SP037 400 W folding"),
+           ("Solar input", "The page says both 1,000 W (12–150 V) and 650 W"), ("Solar recharge with this kit", "Not published")],
+ "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items; buyer pays return shipping unless defective",
+ "summary": "A 2,400 W, 1.45 kWh station with a 400 W panel: the most inverter per dollar among the kits we list, on an NMC battery.",
+ "fit": "Buyers who need to start big loads (well pumps, microwaves) more than they need cycle life.",
+ "caveats": ["NMC chemistry: fewer cycles than LiFePO4.", "Same price as buying the station ($664) and panel ($299) separately.", "ALLPOWERS' page contradicts itself on solar input (1,000 W vs 650 W)."]},
+
+{"slug": "allpowers-volix-p300-100w-solar-kit", "verified": "2026-10-24", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
+ "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 208.99, "list_price": 359,
+ "specs": [("Battery", "256 Wh LiFePO4"), ("AC output", "300 W (600 W surge)"), ("Panel", "1× SE100 100 W laminated"),
+           ("Solar input", "110 W max, 11–30 V, 8 A"), ("Solar recharge with this kit", "Not published; a 100 W panel refills 256 Wh in roughly 4–5 h of good sun")],
+ "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items; buyer pays return shipping unless defective",
+ "summary": "The cheapest kit we found on a maker's US store: a 256 Wh LiFePO4 station with a 100 W panel, for phones, lights, a CPAP night or a small fridge for a few hours.",
+ "fit": "Weekend camping and blackout basics on a budget.",
+ "caveats": ["300 W inverter: no kettles, hair dryers or microwaves.", "Only the SE100 laminated-panel version was in stock (the SF100 and SP027 versions were sold out)."]},
+
+{"slug": "bluetti-ac180-200w-solar-kit", "verified": "2026-10-24", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+ "name": "BLUETTI AC180 + 200 W Solar Panel Kit (1,152 Wh, 1,800 W)", "model": "AC180 + 200 W panel",
+ "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 769, "list_price": 899,
+ "specs": [("Battery", "1,152 Wh LiFePO4"), ("AC output", "1,800 W; 2,700 W Power Lifting for resistive loads"), ("Panel", "1× BLUETTI 200 W folding"),
+           ("Solar input", "500 W max, 12–60 V, 10 A"), ("Solar recharge with this kit", "Not published; 3 h is BLUETTI's figure at the full 500 W")],
+ "warranty": "See BLUETTI's page (the AC180 station carries 5 years)", "returns": "BLUETTI US return policy",
+ "summary": "BLUETTI's 1.15 kWh LiFePO4 AC180 with a 200 W panel, as one variant of the AC180 listing.",
+ "fit": "Camping and outage backup where a 1 kWh station and one carry-size panel are enough.",
+ "caveats": ["Sold as a variant of the AC180 page; choose \"AC180+200W Solar\" on the store.", "200 W of panel recharges a 1,152 Wh battery in most of a sunny day; add a second panel for faster refills.", "Dealectric's daily code check tests the AC180 listing's first variant, not this kit."]},
+
+{"slug": "bluetti-elite-200-v2-200w-solar-kit", "verified": "2026-10-24", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+ "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
+ "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199,
+ "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
+           ("Solar input", "1,000 W max, 12–60 V, 20 A"), ("Solar recharge with this kit", "Not published")],
+ "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
+ "summary": "A 2 kWh LiFePO4 station that takes up to 1,000 W of solar, sold with one 200 W panel to start.",
+ "fit": "Home backup for a fridge and essentials, with room to add panels later.",
+ "caveats": ["BLUETTI's page says the 200 W panel ships from October 29.", "One 200 W panel uses a fifth of the station's 1,000 W solar input; a 2,000 Wh battery takes more than a day of sun to refill from it."]},
+
+{"slug": "bluetti-elite-30-v2-100w-solar-kit", "verified": "2026-10-24", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+ "name": "BLUETTI Elite 30 V2 + 100 W Solar Panel Kit (288 Wh, 600 W)", "model": "Elite 30 V2 + 100 W panel",
+ "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 459.99, "list_price": 489.99,
+ "specs": [("Battery", "288 Wh LiFePO4"), ("AC output", "600 W; 1,500 W Power Lifting"), ("Panel", "1× BLUETTI 100 W"),
+           ("Solar input", "200 W max, 12–28 V, 10 A (XT60)"), ("Solar recharge with this kit", "Not published; BLUETTI gives 5.5 h for its 60 W kit")],
+ "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
+ "summary": "A small 288 Wh LiFePO4 station and a matched low-voltage 100 W panel; the panel suits the station's 12–28 V solar input, which larger panels exceed.",
+ "fit": "Day trips, CPAP for a night, phones and lights.",
+ "caveats": ["A 60 W kit is $379.99.", "Large folding panels (Voc 40 V+) are too high-voltage for this station."]},
+
+# ---------------- AURZEN (CJ 7895424) ----------------
+# Added 2026-10-25 for the Tesla Model Y back-seat gap page (growth/gap-targets.md). Read on aurzen.com 2026-10-25.
+{"slug": "aurzen-travelplay-autocinema-tesla-model-y", "verified": "2026-10-24", "brand": "Aurzen", "program": "cj:aurzen", "category": "projector",
+ "name": "Aurzen TravelPlay AutoCinema Screen for Tesla Model Y", "model": "TravelPlay AutoCinema",
+ "url": "https://aurzen.com/products/aurzen-travelplay-autocinema-screen-for-tesla-model-y", "price": 119.99, "list_price": 129.99,
+ "specs": [("Screens", "47\" front + 50\" rear; 1,098 × 590 mm and 1,031 × 685 mm, detachable"), ("Fits", "Model Y 2025–2026 (Juniper); 2020–2024 in roof mode only, rear panel does not fully cover"),
+           ("Power", "None; a passive fabric projector screen that doubles as a roof sunshade"),
+           ("Modes", "Rear-seat theater, tailgate theater, sky-roof theater"), ("Install", "Tool-free clips into the roof's inner rim; no drilling"),
+           ("Source", "Any portable projector (Aurzen ZIP / ZIP Pro suggested); not included"),
+           ("Weight", "1 kg; folds into a carry bag")],
+ "warranty": "1 year", "returns": "30-day money-back for undamaged products (buyer pays return shipping unless defective); free shipping",
+ "summary": "A clip-in screen-and-sunshade for the 2025–2026 Model Y that turns the panoramic roof or rear window into a 47–50 inch projection screen for a portable projector, with no wiring.",
+ "fit": "Model Y Juniper owners who want back-seat or tailgate movies while parked without installing a rear display.",
+ "caveats": ["Needs a separate projector; Aurzen's MagPlay mount for rear-seat projection showed as unavailable in the US store on 2026-10-25.", "For use while parked only.", "On 2020–2024 cars the rear panel does not fully cover the window."]},
+
+{"slug": "aurzen-zip-pro-tri-fold-1080p-projector", "verified": "2026-10-24", "brand": "Aurzen", "program": "cj:aurzen", "category": "projector",
+ "name": "Aurzen ZIP Pro Tri-Fold Full HD Portable Projector", "model": "ZIP Pro",
+ "url": "https://aurzen.com/products/aurzen-zip-pro-full-hd-portable-projector", "price": 579.99, "list_price": 629.99,
+ "specs": [("Resolution", "Native 1080p DLP, LED"), ("Brightness", "200 ANSI lumens (spec table says 200 lm)"), ("Throw", "1.2:1; 0.5–3 m; 60–80\" recommended in the dark"),
+           ("Battery", "38 Wh; up to 2.5 h in ECO mode; 65 W USB-C PD (65 W+ needed to charge while playing)"), ("Casting", "AirPlay (no Wi-Fi needed), Miracast, Google Cast, DLNA; USB-C DisplayPort input; no built-in apps"),
+           ("Audio", "2 × 2 W; Bluetooth 5.4 out, incl. Tesla car audio"), ("Size / weight", "115 × 97 × 44 mm folded, 586 g")],
+ "warranty": "1 year + 1 year with registration", "returns": "30-day money-back for undamaged products; free shipping",
+ "summary": "A pocketable tri-fold 1080p projector with a 2.5-hour battery, autofocus and AirPlay that Aurzen pairs with its Model Y screen.",
+ "fit": "Travel, car and bedroom movies where a 720p mini projector looks soft.",
+ "caveats": ["Pre-order: Aurzen gives dispatch from 2026-10-30.", "No streaming apps built in; DRM apps (Netflix, Disney+) may refuse to mirror, so Aurzen sells a CastPlay Pro dongle.", "200 lumens is a dark-room figure."]},
+
+{"slug": "aurzen-zip-tri-fold-mini-projector", "verified": "2026-10-24", "brand": "Aurzen", "program": "cj:aurzen", "category": "projector",
+ "name": "Aurzen ZIP Tri-Fold Portable Mini Projector (US version)", "model": "ZIP",
+ "url": "https://aurzen.com/products/aurzen-zip-tri-fold-portable-mini-projector-usa", "price": 199.99, "list_price": 499.99,
+ "specs": [("Resolution", "720p DLP (accepts 1080p)"), ("Brightness", "100 ANSI lumens"), ("Throw", "1.09:1; 40–60\" recommended"),
+           ("Battery", "5,000 mAh, up to 1.5 h; 24 W USB-C PD, can play while charging"), ("Casting", "Screen mirroring from iOS, macOS, Android, Windows without Wi-Fi; not Google Cast"),
+           ("Audio", "2 × 1 W; Bluetooth 5.4 out, incl. Tesla car audio"), ("Size / weight", "84 × 78 × 26 mm, 280 g; fan ≤28 dB in ECO")],
+ "warranty": "1 year + 1 year with registration", "returns": "30-day money-back for undamaged products; free shipping",
+ "summary": "A 280 g folding 720p projector that mirrors a phone without Wi-Fi; Tom's Guide gave it 4/5 as a travel and bedroom projector.",
+ "fit": "Phone-mirrored movies in a tent, hotel room or car on a budget.",
+ "caveats": ["720p only and about 1.5 hours of battery.", "No apps; Netflix and Disney+ need Aurzen's CastPlay Pro dongle.", "Aurzen's sale price does not combine with promo codes."]},
 ]
 
 

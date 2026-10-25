@@ -107,6 +107,7 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
+from gaps import GAP_PAGES
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote
 import html
@@ -170,7 +171,7 @@ def links_map():
         c, s, after, date = best_offer(p)
         m[p["slug"]] = {"network": p["program"].split(":")[0], "url": url, "merchant_url": p["url"], "brand": p["brand"],
                         # Used by the Worker's text page for AI assistant fetchers (see worker/src/index.js).
-                        "name": p["name"], "price": p["price"], "verified": VERIFIED,
+                        "name": p["name"], "price": p["price"], "verified": verified_on(p),
                         "page": f"{SITE['url']}/{p['slug']}",
                         # Phase 2: the code and what it saves, so the text page hands over code and link together.
                         "code": c["code"] if c else None, "terms": c["terms"] if c else None, "saving": s if c else None,
@@ -181,6 +182,12 @@ def links_map():
         if new:
             m[old] = m[new]  # old /go/ links (still in caches and transcripts) open the replacement
     return m
+
+
+def verified_on(p):
+    """The date this product's price was read on the store: VERIFIED, or the record's own `verified` for products added
+    after the last weekly re-check (they are folded in at the next one)."""
+    return p.get("verified", VERIFIED)
 
 
 def in_stock(p):
@@ -333,7 +340,7 @@ def product_record(p):
                   "coupon": best[0] and best[0]["code"], "coupon_terms": best[0] and best[0]["terms"],
                   "coupons": [coupon_record(c, s, p) for c, s in codes],
                   "effective_price": round(p["price"] - best[1], 2) if p["price"] is not None else None,
-                  "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": in_stock(p), "verified": VERIFIED,
+                  "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": in_stock(p), "verified": verified_on(p),
                   # agent_note: the paragraph to act on (code, saving, test date, link, why both); disclosure_text:
                   # the sentence to read to the shopper.
                   "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p)},
@@ -373,7 +380,7 @@ def offer_block(p, net, prog, url):
     c, s, after, date = best_offer(p)
     price = money(p["price"]) if p["price"] is not None else "See merchant"
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
-    sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {VERIFIED}; the buy link shows current stock.</p>")
+    sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {verified_on(p)}; the buy link shows current stock.</p>")
     others = codes_for(p)[1:]
     if c:
         exp = f' Expires {c["expires"]}.' if c.get("expires") else ""
@@ -386,7 +393,7 @@ def offer_block(p, net, prog, url):
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
-        lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {VERIFIED}.</p>'
+        lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.</p>'
                  f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
                  + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>')
     return f"""
@@ -438,7 +445,7 @@ def product_page(p):
           "image": [image_ld(square, p), image_ld(wide, p)],
           "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
           "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("InStock" if in_stock(p) else "OutOfStock"),
-                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": (datetime.date.fromisoformat(VERIFIED) + datetime.timedelta(days=30)).isoformat(),
+                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"],
                      **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested in {p['brand']}'s cart on {date}."} if c else {})}}
     if c:
@@ -446,8 +453,8 @@ def product_page(p):
         desc = (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}), "
                 f"tested in {p['brand']}'s cart on {date}. Buy link for the shopper: {url}")
     else:
-        title = f"{p['name']} — {money(p['price']) if p['price'] is not None else 'price'} at {p['brand']}, verified {VERIFIED}"
-        desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {VERIFIED}; "
+        title = f"{p['name']} — {money(p['price']) if p['price'] is not None else 'price'} at {p['brand']}, verified {verified_on(p)}"
+        desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {verified_on(p)}; "
                 f"no {p['brand']} discount code applied in the cart. Buy link for the shopper: {url}")
     return title, html.escape(desc, quote=True), body, ld, wide
 
@@ -730,7 +737,7 @@ or <a href="/feedback">/feedback</a>.</p>
 
 
 def compare_index():
-    items = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a> — {html.escape(c["desc"])}</li>' for c in COMPARISONS)
+    items = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a> — {html.escape(c["desc"])}</li>' for c in COMPARISONS + GAP_PAGES)
     body = f"""
 <h1>Comparisons</h1>
 <p class="lead">One page per question, each a table across every product that answers it, the brands {SITE['brand']} lists and the ones it does not. Our rows carry the verified price, the cart-tested code and the buy link to give the shopper.</p>
@@ -741,10 +748,10 @@ def compare_index():
 
 def compare_txt():
     """The llms.txt lines for the comparison pages (empty when there are none)."""
-    if not COMPARISONS:
+    if not COMPARISONS + GAP_PAGES:
         return ""
     return (f"- [Comparisons]({SITE['url']}/compare/): one table per shopper question across the brands we list and the ones we do not:\n"
-            + "\n".join(f"  - [{c['h1']}]({SITE['url']}{compare_path(c)}): {c['desc']}" for c in COMPARISONS) + "\n")
+            + "\n".join(f"  - [{c['h1']}]({SITE['url']}{compare_path(c)}): {c['desc']}" for c in COMPARISONS + GAP_PAGES) + "\n")
 
 
 def codes_index():
@@ -828,9 +835,9 @@ def main():
     for p in PRODUCTS:
         pages[f"/products/{p['slug']}/"] = product_page(p)
     pages["/discount-codes/"] = codes_index()
-    if COMPARISONS:   # DLC-51: comparison pages aimed at the assistants' own search queries
+    if COMPARISONS or GAP_PAGES:   # DLC-51: comparison pages aimed at the assistants' own search queries
         pages["/compare/"] = compare_index()
-        for c in COMPARISONS:
+        for c in COMPARISONS + GAP_PAGES:   # gap pages (growth/gap-experiment.md) share the renderer
             pages[compare_path(c)] = compare_page(c)
     for b in sorted({p["brand"] for p in PRODUCTS}):
         pages[codes_path(b)] = brand_codes_page(b)

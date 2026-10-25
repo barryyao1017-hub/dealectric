@@ -29,6 +29,8 @@ ICONS = {
     "battery-charger": '<rect x="14" y="10" width="20" height="34" rx="3"/><path d="M20 10V6h8v4"/><path d="M24 20v12M18 26h12"/>',
     "earbuds": '<path d="M14 8a8 8 0 0 1 8 8v4a8 8 0 0 1-8 8h-2v12a3 3 0 0 1-6 0V16a8 8 0 0 1 8-8z"/><path d="M34 8a8 8 0 0 0-8 8v4a8 8 0 0 0 8 8h2v12a3 3 0 0 0 6 0V16a8 8 0 0 0-8-8z"/>',
     "headphones": '<path d="M8 30v-6a16 16 0 0 1 32 0v6"/><rect x="5" y="28" width="9" height="14" rx="3"/><rect x="34" y="28" width="9" height="14" rx="3"/>',
+    "projector": '<rect x="4" y="16" width="40" height="20" rx="4"/><circle cx="16" cy="26" r="6"/><path d="M28 22h10M28 30h10M10 36v4M38 36v4"/>',
+    "solar-kit": '<path d="M4 6h22l3 18H1z"/><path d="M11 6l-1 18M19 6l1 18M3 15h24"/><rect x="28" y="22" width="18" height="20" rx="3"/><path d="M33 22v-3h8v3M33 34l3-6h3l-3 6"/>',
     "speaker": '<rect x="6" y="12" width="36" height="28" rx="10"/><circle cx="17" cy="26" r="6"/><circle cx="31" cy="26" r="6"/><path d="M14 8h20"/>',
 }
 
