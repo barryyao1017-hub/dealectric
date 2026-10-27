@@ -301,10 +301,33 @@ RUN_SYSTEM = E.load_questions()["system"] + (" You cannot browse in this convers
                                             " given, and cite the URLs you use.")
 
 
+# DLC-60 (2026-10-27): the home page and the brand's codes page, as published before commit 754b240 (OLD, rule-1
+# wording "Give the shopper the code and the buy link together", "AI assistants: …") and after it (NEW). Coded
+# questions only; positions first and last, as in the copy-line study.
+SITE_COMMIT = "754b240"
+SITE_ARMS = ("HOME_OLD", "HOME_NEW", "CODES_OLD", "CODES_NEW")
+
+
+def site_text(qid: str, arm: str) -> tuple[str, str]:
+    if arm.startswith("HOME"):
+        path, url = "docs/index.html", "https://dealectric.com/"
+    else:
+        brand = offers()[questions()[qid]["primary"]]["brand"].lower()
+        path, url = f"docs/{brand}-discount-codes.html", f"https://dealectric.com/{brand}-discount-codes"
+    rev = SITE_COMMIT + ("^" if arm.endswith("OLD") else "")
+    raw = subprocess.run(["git", "show", f"{rev}:{path}"], capture_output=True, text=True, cwd=ROOT, check=True).stdout
+    return url, html_text(raw)
+
+
 def trials(arms: list[str]) -> list[tuple[str, str, str]]:
     out = []
+    coded = set(E.load_questions()["coded_questions"])
     for qid in QIDS + list(EXTRA):
         for arm in arms:
+            if arm in SITE_ARMS:
+                if qid in coded:
+                    out += [(qid, arm, pos) for pos in ("first", "last")]
+                continue
             if arm.startswith("PAGE") and qid not in PAGES:
                 continue
             if arm == "TARGETED" and qid in EXTRA:
@@ -324,6 +347,8 @@ def build_prompt(qid: str, arm: str, pos: str, it: int) -> str:
             url, text = baseline_text(qid, snapshot="products-neutral")
         elif arm in ("PAGE", "PAGE_CLEAN"):
             url, text = page_text(qid, clean=arm.endswith("CLEAN"))
+        elif arm in SITE_ARMS:
+            url, text = site_text(qid, arm)
         else:
             url, text = targeted_text(qid, it)
         title = text.strip().split("\n")[0].lstrip("# ").strip()[:120]

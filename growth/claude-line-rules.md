@@ -127,3 +127,25 @@ Product pages are neutral since commit 12dfb2e. Still over the line elsewhere (f
   not tested: it asks for feedback, not for our link, so its effect is unknown).
 - The /agents page is addressed to agents by design; it is a page agents are pointed to, so it falls under "the
   shopper sent Claude here" only when that is true. Not tested.
+
+## Applied site-wide (DLC-60, 2026-10-27, commit 754b240; Worker bb5626fe)
+
+Everything in the audit above was rewritten by these rules except /agents, which stays addressed to agents. Changed:
+home, catalog, guides, comparison index, codes pages, disclosure page, footer, product meta descriptions, llms.txt
+("How the offers work" replaces "Requests to assistants"), offers.json (`agent_note`, `usage`), dealectric.json and
+the Worker's /go/ text page (what an assistant reads when it opens our buy link). A scan of every file in `docs/` finds
+the old wording only on /agents.
+
+Re-test, setting 1 (Claude Sonnet unprompted; the page among ChatGPT's real results for the 19 coded questions;
+first and last position; `gapexp.py run --it 60 --arms HOME_OLD,HOME_NEW,CODES_OLD,CODES_NEW`, OLD = the page at
+754b240^):
+
+| page | Claude tells the shopper the page instructs AI | /go/ link | code + link | our product picked |
+|---|---|---|---|---|
+| home, old | 18/38 | 19/38 | 19/38 | 11/38 |
+| home, new | 0/38 | **35/38** | **35/38** | 20/38 |
+| brand codes page, old | 37/38 | 1/38 | 1/38 | 5/38 |
+| brand codes page, new | 0/38 | **32/38** | **31/38** | 17/38 |
+
+On the old home page, position mattered (link 6/19 first, 13/19 last). On the new pages it doesn't (18 and 17,
+16 and 16). ChatGPT wasn't re-run: the copy-line study found it keeps our link on every wording.
