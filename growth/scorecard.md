@@ -8,7 +8,7 @@ Bing and Brave; Google Search Console and Bing Webmaster Tools (agent Chrome, ba
 
 | Week | AI crawlers | ChatGPT-User | Search crawlers | Google `site:` | Bing `site:` | Brave `site:` | GSC impr. / clicks | `/go/` clicks by shoppers | `ai_fetch` rows | Feedback rows | Sales |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 10-20 to 10-26 | 400 (GPTBot 177, Amazonbot 104) | 258 (mostly our evals) | 311 (Bingbot 18) | ~47 (33 on 10-23) | 0 | 0 | not read | 0 known | 149 | 3 | none known |
+| 10-20 to 10-26 | 400 (GPTBot 177, Amazonbot 104) | 258 (mostly our evals) | 311 (Bingbot 18) | ~47 (33 on 10-23) | 0 | 0 | 32 / 0 (10-19 to 10-25) | 0 known | 149 | 3 | none known |
 
 ## Notes
 
@@ -20,6 +20,9 @@ Bing and Brave; Google Search Console and Bing Webmaster Tools (agent Chrome, ba
 - Feedback: three `missing_product` rows, all Anker ("Anker Prime 250W power bank" on 10-21 and 10-24, "Anker" on
   10-23), no agent name. The only product agents have asked for is one we can't link (Impact stalled, DLC-15).
 - Sales: no sale or commission email from CJ or Awin; the dashboards were not read this week.
-- GSC and Bing WMT were not read: the agent Chrome was busy with another session.
+- GSC: 46 pages indexed, 17 excluded on purpose (12 noindex, 3 redirects, 2 404s), none left "Discovered, not
+  indexed" as of the 10-25 report; the pages added since 10-23 are not in it yet (11 requested 10-27). 32 impressions,
+  0 clicks, average position 38.6; top query "allpowers kod rabatowy" (5). Merchant listings: 22 invalid for a missing
+  `image`, all crawled before the spec-card images went live on 10-21 (validation started 10-27). Bing WMT not read.
 </content>
 </invoke>
