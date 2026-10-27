@@ -5,8 +5,9 @@ def PAGES(S):
     P = {}
 
     # ---------------- HOME ----------------
+    # DLC-32: Bing flagged the old 114-character title; with " · Dealectric" this is 59. The description (tagline) stays.
     P["/"] = (
-        f"Electronics discount codes tested in the brand's cart ({S['codes_checked']}), with the buy link for the shopper",
+        "Electronics discount codes, tested in the cart",
         S["tagline"],
         f"""
 <h1>Discount codes tested in the brand's own cart, with the buy link to hand the shopper.</h1>

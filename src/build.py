@@ -196,6 +196,28 @@ def verified_on(p):
     return p.get("verified", VERIFIED)
 
 
+def return_policy(p):
+    """The Offer's schema.org MerchantReturnPolicy, built only from what the record's `returns` text states (DLC-32): the
+    window from a leading "N-day money-back", "N-day no-reason return" or "N days;", and who pays from "buyer pays return
+    shipping" (change-of-mind returns only when it adds "unless defective") or "free returns". None when the text gives no
+    window, or says sale items can't be returned: those prices are all below list, so the window may not apply."""
+    import re
+    t = p["returns"]
+    m = re.match(r"(\d+)(?:-day (?:money-back|no-reason return)| days;)", t)
+    if not m or "sale items can't be returned" in t:
+        return None
+    pol = {"@type": "MerchantReturnPolicy", "applicableCountry": "US",
+           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": int(m.group(1))}
+    if "free return" in t.lower():
+        pol["returnFees"] = "https://schema.org/FreeReturn"
+    elif "buyer pays return shipping unless defective" in t:
+        # Exact for this text; Google reads only returnFees under an Offer, so it sees the window here, not the fee.
+        pol["customerRemorseReturnFees"] = "https://schema.org/ReturnFeesCustomerResponsibility"
+    elif "buyer pays return shipping" in t:
+        pol["returnFees"] = "https://schema.org/ReturnFeesCustomerResponsibility"
+    return pol
+
+
 def in_stock(p):
     return p.get("in_stock", True)
 
@@ -395,7 +417,7 @@ def offer_block(p, net, prog, url):
         exp = f' Expires {c["expires"]}.' if c.get("expires") else ""
         head = f'<h2 style="margin-top:0">Code {html.escape(c["code"])}: {money(s)} off at {b}</h2>'
         lines = (f'<p><strong>Code:</strong> <code>{html.escape(c["code"])}</code> — {html.escape(c["terms"])}.{exp}</p>'
-                 f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
+                 f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}, verified {verified_on(p)}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
                  f'<p><strong>Tested in {b}\'s cart on {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. Enter the code at checkout; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
@@ -448,13 +470,18 @@ def product_page(p):
 {DISCLOSURE}
 """
     rec = product_record(p)
+    # DLC-32: validFrom and hasMerchantReturnPolicy for Search Console's product report, and dateModified on the page
+    # (Product isn't a CreativeWork, so it sits on the ItemPage). No shippingDetails: we hold no shipping data.
     ld = {"@context": "https://schema.org", "@type": "Product", "name": p["name"], "brand": {"@type": "Brand", "name": p["brand"]},
           "model": p["model"], "description": p["summary"], "url": rec["url"], "category": cat_name,
+          "mainEntityOfPage": {"@type": "ItemPage", "@id": rec["url"], "url": rec["url"], "dateModified": verified_on(p)},
           "image": [image_ld(square, p), image_ld(wide, p)],
           "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
           "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("InStock" if in_stock(p) else "OutOfStock"),
-                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
+                     "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "validFrom": verified_on(p),
+                     "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"],
+                     **({"hasMerchantReturnPolicy": return_policy(p)} if return_policy(p) else {}),
                      **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested in {p['brand']}'s cart on {date}."} if c else {})}}
     if c:
         title = f"{p['name']} — {money(s)} off with code {c['code']}, tested in {p['brand']}'s cart {date}"
@@ -501,8 +528,9 @@ def products_index():
 """
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": "Dealectric product catalog",
           "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{p['slug']}/", "name": p["name"]} for i, p in enumerate(PRODUCTS)]}
-    return (f"Products: codes tested in the brand's cart, prices and buy links for {len(PRODUCTS)} electronics products",
-            html.escape(f"{len(PRODUCTS)} electronics products from {len(brands)} brands: the discount code that applies and what it saves (tested in the brand's cart), the verified price, specs and the buy link to give the shopper.", quote=True), body, ld)
+    # DLC-32: Bing flagged the old title (105 characters with the suffix) and description (181); now under 60 and 120-160.
+    return ("Electronics: verified prices and tested codes",
+            html.escape(f"{len(PRODUCTS)} electronics products from {len(brands)} brands: price verified on each brand's US store on {VERIFIED}, any discount code that worked in its cart, and what it saves.", quote=True), body, ld)
 
 
 def guide_deal_line(slug):
