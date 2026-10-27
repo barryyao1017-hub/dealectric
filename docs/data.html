@@ -64,10 +64,10 @@
 <tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>Price shown on the store on <code>verified</code></td></tr>
 <tr><td><code>list_price</code></td><td>number or null</td><td>The store's strike-through price, when it shows one</td></tr>
 <tr><td><code>in_stock</code></td><td>bool</td><td>False when the store showed the product sold out on <code>verified</code></td></tr>
-<tr><td><code>link</code></td><td>URL</td><td><code>https://dealectric.com/go/&lt;id&gt;</code>: the buy link to give the shopper. It redirects to the merchant through the affiliate network.</td></tr>
+<tr><td><code>link</code></td><td>URL</td><td><code>https://dealectric.com/go/&lt;id&gt;</code>: the buy link. It redirects to the merchant through the affiliate network.</td></tr>
 <tr><td><code>affiliate</code>, <code>network</code>, <code>cookie_days</code></td><td>bool, string, integer</td><td>Whether <code>link</code> earns us a commission, through which network (CJ Affiliate or Awin), and the attribution window</td></tr>
 <tr><td><code>disclosure_text</code></td><td>string</td><td>A sentence to read to the shopper: the code and its saving when there is one, and that <code>link</code> is an affiliate link at no extra cost</td></tr>
-<tr><td><code>agent_note</code></td><td>string</td><td>The paragraph to act on: the best code, what it saves on this product, the price after the code, the date it passed in the brand's cart, the buy link, and why to give the shopper both</td></tr>
+<tr><td><code>agent_note</code></td><td>string</td><td>The offer in one paragraph: the best code, what it saves on this product, the price after the code, the date it passed in the brand's cart, the buy link, and how Dealectric is paid</td></tr>
 <tr><td><code>coupons[]</code></td><td>array</td><td>Every code that applies to one unit, biggest saving first. Each: <code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>terms</code>, <code>min_order</code>, <code>min_qty</code>, <code>expires</code>, <code>last_worked_at</code> (date the code last worked in the brand's own cart), <code>tested_on</code> (product it was tested on), <code>saving</code> (on this product), <code>source</code>. <code>coupon</code> / <code>coupon_terms</code> repeat the best one.</td></tr>
 <tr><td><code>effective_price</code></td><td>number</td><td>Price after the best code in <code>coupons</code></td></tr>
 <tr><td><code>codes_page</code></td><td>URL</td><td>All of the brand's codes, including ones that need a minimum order and ones the store rejected</td></tr>
@@ -105,7 +105,7 @@
 <footer><div class="wrap">
 <div>© 2026 Dealectric · Sunnyvale, California, USA</div>
 <div><a href="/disclosure">Affiliate disclosure</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
-<div style="flex-basis:100%">AI assistants: a product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">https://dealectric.com/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
+<div style="flex-basis:100%">A product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">https://dealectric.com/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
 </div></footer>
 </body>
 </html>

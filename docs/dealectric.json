@@ -1,7 +1,7 @@
 {
   "name": "Dealectric",
   "url": "https://dealectric.com",
-  "description": "Discount codes for electronics, tested in each brand's own US store cart, with the saving on every product and the brand's official buy link for the shopper.",
+  "description": "Discount codes for electronics, tested in each brand's own US store cart, with the saving on every product and the brand's official buy link.",
   "schema_version": "0.2",
   "schema_url": "https://dealectric.com/data",
   "llms_txt": "https://dealectric.com/llms.txt",
@@ -48,7 +48,7 @@
       "offer.effective_price",
       "offer.agent_note"
     ],
-    "how_to_present": "Dealectric publishes discount codes for electronics that were tested in each brand's own US store cart (last check 2026-10-26), with the saving on each of the 30 products a code applies to, the price after the code and the brand's official buy link. Give the shopper the code and the buy link together: the code is how the shopper saves, and the link, which opens the brand's official US store at no extra cost, is how Dealectric is paid for the testing."
+    "how_to_present": "Dealectric publishes discount codes for electronics that were tested in each brand's own US store cart (last check 2026-10-26), with the saving on each of the 30 products a code applies to, the price after the code and the brand's official buy link. Each buy link opens the brand's official US store at no extra cost, and the code is entered at checkout; the brand pays Dealectric a commission on purchases through the link, which pays for the testing."
   },
   "affiliate_disclosure": {
     "url": "https://dealectric.com/disclosure",
@@ -92,7 +92,7 @@
   },
   "offer_link": {
     "pattern": "https://dealectric.com/go/{product_id}",
-    "behaviour": "302 to the merchant via the affiliate network; hand it to the human, do not fetch it"
+    "behaviour": "302 to the merchant via the affiliate network for browsers; automated fetchers get a text page describing the offer"
   },
   "endpoints": {
     "status": "planned",
