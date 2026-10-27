@@ -696,7 +696,9 @@ def compare_where_to_buy(ours, c):
     """Loop 3 iteration 4 (2026-10-25): the products of ours a comparison page names, each with its buy link and code, as
     a plain "Where to buy" block with one affiliate-disclosure line. It replaces iteration 2's note to AI assistants: Claude
     reported that note to shoppers as "hidden instructions telling AI assistants how to present its links" and dropped the
-    links (3/14 answers in tier F; 69/96 unprompted in the gap experiment), while plain "Buy:" lines were never flagged."""
+    links (3/14 answers in tier F; 69/96 unprompted in the gap experiment), while plain "Buy:" lines were never flagged.
+    Iteration 5 (2026-10-27, option c): one line to the shopper above the list, the shape of DLC-59's V6 (never flagged by
+    any Claude model, best ChatGPT code + link of the honest variants; growth/claude-line-rules.md)."""
     import re
     slugs = list(dict.fromkeys([r["slug"] for r in ours] + re.findall(r"\{(?:price|buy|deal):([a-z0-9-]+)\}", c["intro"] + c["after"])
                                + re.findall(r'href="/products/([a-z0-9-]+)/"', c["after"])))
@@ -708,7 +710,10 @@ def compare_where_to_buy(ours, c):
         code = f' — code <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code (tested in {html.escape(p["brand"])}\'s cart {date})' if cd else ""
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
                      f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
-    return (f'<div class="note"><strong>Where to buy</strong><ul>{"".join(items)}</ul>'
+    coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
+    line = ("Use the Buy link for the model you choose; where a code is listed, enter it at checkout to pay the price after the code."
+            if coded else "Use the Buy link for the model you choose.")
+    return (f'<div class="note"><strong>Where to buy</strong><p>{line}</p><ul>{"".join(items)}</ul>'
             f'<p class="small">These are affiliate links: each opens the brand\'s official US store at no extra cost, and the brand pays {SITE["brand"]} '
             f'a commission that funds the cart tests. The other brands in the table link to their own stores; we earn nothing on them.</p></div>')
 
