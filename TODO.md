@@ -1,31 +1,55 @@
-# Dealectric — TODO (as of 2026-10-16, MVP shipped)
+# Dealectric — TODO (mirror of the "Dealectric To-Dos" artifact, 2026-10-27)
 
-Live: https://dealectric.com · Repo: github.com/barryyao1017-hub/dealectric · Local: ~/Desktop/dealectric · Status detail: launch-status.md (same file as ops/launch-status.md in the Claude project)
+Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>; notes and history live there). This file is a read-only mirror; change rows in the artifact. Status detail: launch-status.md.
 
-## Waiting on networks (nothing to do — 17 applications pending, checked 10/16)
-- CJ (11): Audioengine, Baseus US Amazon, eufyMake, Jackery, KOSS, Marshall, Monoprice, NOMAD, SanDisk, Ugreen, ZAGG+mophie.
-- Awin (6): Twelve South, Jackery US, SwitchBot, Wyze, PECRON, AUKEY.
-- Declined so far: EcoFlow, Harman, OtterBox, Scosche, Sony, X-Sense (CJ); UGREEN (Awin); Impact Marketplace. Reapply to these once Cloudflare shows real traffic (~30–60 days).
-- Anker invitation email unanswered.
+## Needs Barry (11)
+- [ ] DLC-3 Decide how to get Awin payouts (high)
+- [ ] DLC-7 Reply to the BLUETTI US welcome questionnaire (Awin) (high)
+- [ ] DLC-30 Ask approved advertisers for Dealectric-exclusive coupon codes (high)
+- [ ] DLC-38 Earn inbound links in person: 3–5 Reddit answers a week + outreach to the cited niche blogs (high, weekly)
+- [ ] DLC-40 Logins for the consumer-app eval: claude.ai, gemini.google.com, grok.com in the agent Chrome (chatgpt.com already signed in) (high)
+- [ ] DLC-61 Keep the Mac awake for the 06:37 cart sweep, or pick another time (high)
+- [ ] DLC-4 Create store accounts for refer-a-friend links
+- [ ] DLC-5 (Optional) Open a Rakuten publisher account
+- [ ] DLC-36 Get dealectric.com into Brave's index (what Claude's search uses)
+- [ ] DLC-42 Decide: publish working coupon-site codes (not issued through CJ/Awin)?
+- [ ] DLC-53 Confirm CJ/Awin terms allow auto-applying codes from the buy link
 
-## Needs Barry (credentials / accounts)
-- [ ] (Optional) **Rakuten** publisher account — Anker (mid=43469) and Anker SOLIX (mid=53552) fallback while Impact is stalled.
-- [ ] Register store accounts for refer-a-friend links: anker.com, soundcore.com, ankersolix.com; Jackery needs only an email.
-- [ ] Delete `~/Desktop/_to_delete/` (a partial clone I couldn't remove).
-- [ ] Awin: turn on two-step verification (Account → Security) and enter bank details under Payment Details — Awin commissions can't be paid out until then.
-- [ ] Sign in to CJ and Awin when asked (sessions expire daily).
+## Waiting on others (4)
+- [ ] DLC-31 Make sure Bing has indexed dealectric.com (high, due 2026-10-30)
+- [ ] DLC-16 17 affiliate applications pending
+- [ ] DLC-17 Anker invitation reply
+- [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-11-15)
 
-## Claude (runs as soon as the item above it is unblocked)
-- [ ] Reply to BLUETTI US welcome questionnaire (Awin).
-- [ ] Weekly: re-verify the 31 prices/stock on official pages, bump VERIFIED in src/products.py, rebuild, push.
-- [ ] On each new approval (17 pending): add 3–5 products for that brand to src/products.py.
-- [ ] Daily: check barrryyao@gmail.com for CJ/Awin approvals and Anker reply; on approval generate deep links and fill the packet tracker.
-- [ ] Impact: appeal denied 10/12 — retry brand-direct links (Anker, SOLIX, eufy, Belkin) and email affiliate managers for invitations; reapply to Marketplace once Cloudflare shows traffic.
-- [ ] Cloudflare `/go/<slug>` redirect Worker with sub-ID logging (step 6 of the plan) — once the first product pages with tracking links exist.
-- [ ] Pull refer-a-friend links + terms into the tracker once store accounts exist.
-- [ ] Offer schema v0.1 + first 20 product records (chargers / power banks / power stations) with JSON-LD and real tracking links.
-- [ ] Weekly synthetic probes: ask ChatGPT / Claude / Perplexity / Gemini a fixed set of charging questions; log whether dealectric.com is cited.
-- [ ] Reapply to Impact Marketplace in 30–60 days if the appeal fails.
+## Claude (23)
+- [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-28)
+- [ ] DLC-24 Build the first 3 question-answer comparison pages (high)
+- [ ] DLC-32 Optimize pages for what agents actually see: text and search snippet (high)
+- [ ] DLC-33 North Star: get our first conversion / commission (high)
+- [ ] DLC-37 Agent feedback loop: /go/ click log + /feedback endpoint, then decide on MCP (high, due 2026-11-01)
+- [ ] DLC-48 Check the daily cart sweep's first unattended run, then let the copy say 'daily' (high, due 2026-10-27)
+- [ ] DLC-51 Query-targeted comparison pages: build pages that answer the agents' own narrow search queries and test whether they get cited unprompted (high)
+- [ ] DLC-9 Re-verify the 30 prices and stock, bump VERIFIED, rebuild, push (weekly, due 2026-11-03)
+- [ ] DLC-12 Weekly assistant-citation run (harness replaces the manual probes) (weekly, due 2026-11-03)
+- [ ] DLC-14 Check email for CJ/Awin approvals and add 3–5 products per newly approved brand (daily)
+- [ ] DLC-15 Retry Impact via brand-direct links
+- [ ] DLC-26 Earn first outside links and mentions
+- [ ] DLC-27 Ship a read-only offers API / MCP server and list it in MCP registries
+- [ ] DLC-28 Weekly growth scorecard (weekly, due 2026-11-03)
+- [ ] DLC-35 Auto-renew our affiliate links
+- [ ] DLC-44 Monthly spec and policy re-audit of every product (monthly, due 2026-11-21)
+- [ ] DLC-45 Own product images on the site; test whether ChatGPT shows them (due 2026-10-28)
+- [ ] DLC-47 Optimize for ChatGPT product cards and images
+- [ ] DLC-50 Loop iteration 4: measure the guide-page lever once ChatGPT's home-page copy has turned over (due 2026-10-30)
+- [ ] DLC-54 Have the /go/ hop apply the current code in the cart (Baseus, ESR, ALLPOWERS)
+- [ ] DLC-55 Void scan: finish the other 70 categories and check ChatGPT
+- [ ] DLC-57 Gap pages stage 2: daily readings until indexed and cited (daily)
+- [ ] DLC-62 Give /data a license, a citation line and CSV exports before the dataset outreach
+
+## Done on 2026-10-27
+- [x] DLC-6 Delete ~/Desktop/_to_delete/
+- [x] DLC-52 Add the Tenergy TN438 16-bay AA/AAA charger to the catalog (CJ Tenergy program)
+- [x] DLC-58 SP037 panel: product URL points to a sold-out listing
 
 ## Traffic tracking plan (why Cloudflare)
 Today nothing records visits: GitHub Pages has no logs or analytics, and the repo's Insights → Traffic counts repository views, not dealectric.com. Ordinary JS analytics would also miss the visitors that matter most — AI crawlers (GPTBot, ClaudeBot, PerplexityBot) and agent fetches don't execute JavaScript — so seeing agent traffic needs something that sees raw HTTP requests.
