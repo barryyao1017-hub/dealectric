@@ -4,6 +4,11 @@ Run `2026-10-27-p3iter05`; change `loop3-5` (bfd4762), revision r6. Barry chose 
 its 2nd try (09:19Z; 08:59Z still read r5). 28 ChatGPT chats with no errors or re-asks; claude-code 14 cells.
 Summary: `python3.12 growth/evals/p3summary.py --run-id 2026-10-27-p3iter05`.
 
+Caveat: another session's weekly price re-verification (48f0171, 02:18 PDT) rebuilt all seven comparison pages a
+minute before the first chat (02:19–02:33 PDT). It changed prices and the verified date only (ESR 100W 6-in-1, Elite
+300); the revision, the Where-to-buy line and the links are the same, so the copy reading stands. ChatGPT answered
+from the copy it fetched for the gate at about the same time.
+
 ## The change
 
 One sentence at the top of the "Where to buy" box on all seven comparison pages, addressed to the shopper. It has
