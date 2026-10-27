@@ -13,8 +13,9 @@ Rules: a made-up control code must be rejected by each store or that store's che
 on every product in one sweep keeps its last passing date and gets a strike; two strikes in a row retire it
 (result rejected, so it leaves every page and offers.json); a 429 or a network error is never a rejection, and a code
 with any unanswered check gets no strike that day; a product the store cannot put in the cart (sold out) is
-inconclusive. Pacing is per store, with backoff on 429 (see GAP_PER_STORE). No order is ever placed and no personal
-data entered.
+inconclusive. Pacing is per store, with backoff on 429 (see GAP_PER_STORE); the store deadline counts awake time, so
+the Mac sleeping through a run does not use it up (see RUN_WALL_MAX). No order is ever placed and no personal data
+entered.
 
     python3.12 tools/codesweep.py                 # check, merge, rebuild, commit, push, deploy if needed
     python3.12 tools/codesweep.py --dry-run       # list the checks
@@ -62,38 +63,67 @@ CONTROL = "ZZNOTACODE7Q"
 # tried up to MAX_TRIES times; a store that is still limited STORE_DEADLINE after the sweep started gives up its
 # remaining checks. Unanswered checks are never rejections (see merge()).
 GAP_PER_STORE = 30.0      # seconds between two checks on the same store
-STORE_GAP = {"iallpowers.com": 90.0}   # ALLPOWERS stays limited for minutes after a burst
+STORE_GAP = {"iallpowers.com": 90.0,   # ALLPOWERS stays limited for minutes after a burst
+             "us.soundcore.com": 60.0}  # Soundcore's 429 says Retry-After 60; four calls a check, so one check a minute
 GAP_MAX = 300.0           # a store's gap widens x1.5 after each 429, up to this
 BACKOFF_BASE = 180.0      # cool-down after a store's first 429 in a row; doubles with each further 429 in a row
 BACKOFF_MAX = 1200.0
 MAX_TRIES = 6             # attempts per check before it is logged as unanswered
-STORE_DEADLINE = 3 * 3600  # seconds after the sweep starts; a store still rate-limiting then gives up its remaining checks
+STORE_DEADLINE = 3 * 3600  # seconds of awake time after the sweep starts; a store still rate-limiting then gives up its checks
 REQ_PAUSE_MS = 600        # between the few cart calls inside one check
+# Sleep (DLC-48, 2026-10-24 and -26). With the lid closed on battery the Mac sleeps through the run whatever caffeinate
+# asks (pmset log: "Clamshell Sleep" at 02:08 on 10-26, then DarkWakes of 2-30 s every ~16 min until the lid opened at
+# 11:12). The sweep only ran inside those slices, so every log line of the 10-26 run sits on a DarkWake, the 3 h
+# deadline (then wall-clock) ran out with 1 of 47 checks answered, and a fetch cut by the sleep came back "Failed to
+# fetch". The deadline now counts awake time (time.monotonic stops while the Mac sleeps; cool-downs stay on the clock,
+# since a store's limit expires in real time), RUN_WALL_MAX caps the run by the clock, and a check whose call spanned a
+# sleep and failed on the network is retried without using up a try. Code cannot keep a closed laptop awake.
+RUN_WALL_MAX = 12 * 3600  # by the clock: past this the remaining checks are left unanswered, however long the Mac slept
+SLEEP_GAP = 60.0          # clock time running ahead of awake time by more than this means the Mac slept
+# Bounds: no single call may hold the run. Every DevTools command waits at most CDP_TIMEOUT for its reply (EVAL_TIMEOUT
+# for the in-page check, whose fetches each abort after FETCH_TIMEOUT_MS), and the publish step's commands time out too.
+CDP_TIMEOUT = 30.0
+EVAL_TIMEOUT = 150.0      # six fetches of at most FETCH_TIMEOUT_MS each, plus the pauses between them
+FETCH_TIMEOUT_MS = 20000
+PLAIN_HEAD_START = 15 * 60  # awake seconds the plain-HTTP stores run alone at the start, before any store tab opens
 # Where a brand's cart lives when it is not the host in products.py (Soundcore's US cart is us.soundcore.com).
 CART_HOST = {"www.soundcore.com": "us.soundcore.com"}
 # Cart hosts checked over plain HTTP (tools/codecheck.py) instead of a browser tab: a browser tab opened on
 # us.soundcore.com is sent on to www.soundcore.com, a non-Shopify front end whose /products/<handle>.js is its 404
 # page, so every in-tab lookup (the control code too) read "product 404" and the whole store was discarded on 10-22
 # and 10-23. The handles themselves are right (us.soundcore.com/products/<handle>.js is a 200 for all seven).
+# "Plain HTTP" means Python's urllib over https; http:// only 301s to https (Cloudflare in front of Shopify).
+# From 10-24 on, Soundcore's first call of each run was a 429 (Shopify's JSON TOO_MANY_REQUESTS, Retry-After 60) that
+# lasted hours (10-25: 11 tries, 13:38-16:19Z). On 2026-10-27 at 09:12Z, with no other store traffic, the same calls
+# from this Mac all answered 200 (curl and codecheck.py; the control was rejected), so it is not a ban on this IP or on
+# Python. Every failing run had made its first Soundcore call seconds after the agent's Chrome loaded the other Shopify
+# stores and ran their cart calls from the same IP. So the plain-HTTP stores now go first and alone: no store tab opens
+# until their queues are done or PLAIN_HEAD_START has passed (a hypothesis to confirm in the 10-27 log, not a proven cause).
 PLAIN_HTTP = {"us.soundcore.com"}
 BY_SLUG = {p["slug"]: p for p in PRODUCTS}
 
-# Five cart calls per check (the product lookup only on a handle's first check; its variant is cached), a short pause
-# between them, and each failure carries its HTTP status and the store's Retry-After header.
+# Five cart calls per check (the product lookup only on a product's first check; its variant is cached), a short pause
+# between them, and each failure carries its HTTP status and the store's Retry-After header. Each fetch aborts after
+# FETCH_MS. PICK is the variant the record's URL names (?variant=<id>), else null for the first available variant: the
+# BLUETTI AC180 + 200 W solar kit is a variant of /products/ac180, and adding the listing's first variant tested the
+# AC180 alone ($499 against the page's $769) on 10-25.
 CHECK_JS = r"""
 (async () => {
   const H = {'Content-Type': 'application/json', 'Accept': 'application/json'};
   const pause = () => new Promise(r => setTimeout(r, PAUSE));
-  const j = async (u, o) => { await pause(); const r = await fetch(u, Object.assign({credentials: 'same-origin'}, o || {}));
+  const j = async (u, o) => { await pause();
+    const r = await fetch(u, Object.assign({credentials: 'same-origin', signal: AbortSignal.timeout(FETCH_MS)}, o || {}));
     const t = await r.text(); let b = null; try { b = JSON.parse(t); } catch (e) {}
     return {status: r.status, retry_after: r.headers.get('Retry-After'), body: b, text: t.slice(0, 200)}; };
   const fail = (step, x) => ({error: `${step} ${x.status} ${x.text}`, status: x.status, retry_after: x.retry_after});
   let v = VARIANT;
   if (!v) {
+    const want = PICK;
     const prod = await j(`/products/HANDLE.js`);
     if (prod.status !== 200 || !prod.body) return fail('product', prod);
-    const pv = prod.body.variants.find(x => x.available) || prod.body.variants[0];
-    v = {id: pv.id, available: !!pv.available, title: prod.body.title};
+    const pv = want ? prod.body.variants.find(x => x.id === want) : (prod.body.variants.find(x => x.available) || prod.body.variants[0]);
+    if (!pv) return {error: `product: variant ${want} is not on /products/HANDLE`, status: 404};
+    v = {id: pv.id, available: !!pv.available, title: want ? `${prod.body.title} - ${pv.title}` : prod.body.title};
   }
   const out = {variant: v, product: v.title, variant_available: v.available};
   if (!v.available) return Object.assign(out, {soldout: true, error: 'sold out (no available variant)'});
@@ -116,18 +146,29 @@ def log(msg: str) -> None:
 
 # ---------------------------------------------------------------- the agent's Chrome
 
+def reply(ws, want: int, method: str, timeout: float):
+    """Read the socket until the reply to command `want`, for at most `timeout` seconds in all (events in between
+    included); TimeoutError past that. A CDP error comes back as RuntimeError."""
+    end = time.monotonic() + timeout
+    while True:
+        left = end - time.monotonic()
+        if left <= 0:
+            raise TimeoutError(f"{method}: no reply in {timeout:.0f} s")
+        ws.settimeout(left)
+        msg = json.loads(ws.recv())
+        if msg.get("id") == want:
+            if "error" in msg:
+                raise RuntimeError(f"{method}: {msg['error']}")
+            return msg.get("result", {})
+
+
 def browser_call(method: str, **params):
     """One command on the browser-level DevTools socket (the URL in /json/version); a fresh connection each time."""
     v = json.loads(urllib.request.urlopen(f"{CDP}/json/version", timeout=10).read())
-    ws = websocket.create_connection(v["webSocketDebuggerUrl"], timeout=30, suppress_origin=True)
+    ws = websocket.create_connection(v["webSocketDebuggerUrl"], timeout=CDP_TIMEOUT, suppress_origin=True)
     try:
         ws.send(json.dumps({"id": 1, "method": method, "params": params}))
-        while True:
-            msg = json.loads(ws.recv())
-            if msg.get("id") == 1:
-                if "error" in msg:
-                    raise RuntimeError(f"{method}: {msg['error']}")
-                return msg.get("result", {})
+        return reply(ws, 1, method, CDP_TIMEOUT)
     finally:
         ws.close()
 
@@ -139,30 +180,25 @@ class Tab:
     def __init__(self, url: str):
         self.target_id = browser_call("Target.createTarget", url=url, background=True)["targetId"]
         self.info = None
-        for _ in range(50):
-            for t in json.loads(urllib.request.urlopen(f"{CDP}/json/list", timeout=10).read()):
+        end = time.monotonic() + 15
+        while not self.info and time.monotonic() < end:
+            for t in json.loads(urllib.request.urlopen(f"{CDP}/json/list", timeout=5).read()):
                 if t.get("id") == self.target_id and t.get("webSocketDebuggerUrl"):
                     self.info = t
-            if self.info:
-                break
-            time.sleep(0.1)
+            if not self.info:
+                time.sleep(0.1)
         if not self.info:
             raise RuntimeError("new background tab not found in /json/list")
-        self.ws = websocket.create_connection(self.info["webSocketDebuggerUrl"], timeout=60, suppress_origin=True)
+        self.ws = websocket.create_connection(self.info["webSocketDebuggerUrl"], timeout=CDP_TIMEOUT, suppress_origin=True)
         self._id = 0
 
-    def call(self, method: str, **params):
+    def call(self, method: str, _timeout: float = CDP_TIMEOUT, **params):
         self._id += 1
         self.ws.send(json.dumps({"id": self._id, "method": method, "params": params}))
-        while True:
-            msg = json.loads(self.ws.recv())
-            if msg.get("id") == self._id:
-                if "error" in msg:
-                    raise RuntimeError(f"{method}: {msg['error']}")
-                return msg.get("result", {})
+        return reply(self.ws, self._id, method, _timeout)
 
     def eval(self, js: str):
-        r = self.call("Runtime.evaluate", expression=js, returnByValue=True, awaitPromise=True)
+        r = self.call("Runtime.evaluate", _timeout=EVAL_TIMEOUT, expression=js, returnByValue=True, awaitPromise=True)
         if "exceptionDetails" in r:
             raise RuntimeError(f"JS: {r['exceptionDetails'].get('text')} {str(r['exceptionDetails'].get('exception', {}).get('description', ''))[:200]}")
         return r.get("result", {}).get("value")
@@ -173,7 +209,7 @@ class Tab:
             for dom in (host, "." + host, host.split(".", 1)[-1] if host.count(".") > 1 else host, "." + host.split(".", 1)[-1]):
                 try:
                     self.call("Network.deleteCookies", name=name, domain=dom)
-                except Exception:
+                except RuntimeError:   # a CDP error; a timeout or a dead socket goes up (the sweep reopens the tab)
                     pass
 
     def close(self):
@@ -231,6 +267,12 @@ def store_of(url: str) -> tuple[str, str, str]:
     return f"{s.scheme}://{host}", host, handle
 
 
+def variant_of(url: str) -> int | None:
+    """The variant a product URL names (?variant=<id>); None means the listing's first available variant."""
+    v = urllib.parse.parse_qs(urlsplit(url).query).get("variant", [""])[0]
+    return int(v) if v.isdigit() else None
+
+
 # ---------------------------------------------------------------- one check
 
 def cart_answer(cart: dict, code: str, product: str, available) -> dict:
@@ -246,40 +288,59 @@ def cart_answer(cart: dict, code: str, product: str, available) -> dict:
             "applications": apps}
 
 
-def plain_check(host: str, handle: str, code: str, qty: int) -> dict:
-    """The plain-HTTP cart check (tools/codecheck.py) against the cart host; HTTP errors come back with their status."""
+def plain_check(host: str, handle: str, want: int | None, code: str, qty: int, variants: dict) -> dict:
+    """The cart check over plain HTTP (a tools/codecheck.py session, so a fresh cart) against the cart host, the same
+    steps and variant choice as CHECK_JS. An HTTP error comes back with the step that failed, its status and Retry-After."""
+    call = codecheck.session(wait_on_429=False, pause=REQ_PAUSE_MS / 1000)
+    base, step, v = f"https://{host}", "product", variants.get((host, handle, want))
+    cached = v is not None
     try:
-        r = codecheck.check(f"https://{host}/products/{handle}", code, qty, wait_on_429=False, pause=REQ_PAUSE_MS / 1000)
+        if not cached:
+            prod = call(f"{base}/products/{urllib.parse.quote(handle)}.js")
+            pv = (next((x for x in prod["variants"] if x["id"] == want), None) if want
+                  else next((x for x in prod["variants"] if x.get("available")), prod["variants"][0]))
+            if not pv:
+                return {"error": f"product: variant {want} is not on /products/{handle}", "status": 404}
+            v = variants[(host, handle, want)] = {"id": pv["id"], "available": bool(pv.get("available")),
+                                                  "title": f"{prod['title']} - {pv['title']}" if want else prod["title"]}
+        if not v["available"]:
+            return {"soldout": True, "error": "sold out (no available variant)", "product": v["title"], "variant_available": False,
+                    "network": not cached}
+        step = "add"
+        call(f"{base}/cart/add.js", {"items": [{"id": v["id"], "quantity": qty}]})
+        step = "update"
+        call(f"{base}/cart/update.js", {"discount": code})
+        step = "cart"
+        cart = call(f"{base}/cart.js")
     except urllib.error.HTTPError as e:
         try:
             body = e.read()[:200].decode("utf-8", "replace")
         except Exception:  # noqa: BLE001
             body = ""
-        return {"error": f"HTTP {e.code} {body}", "status": e.code, "retry_after": e.headers.get("Retry-After") if e.headers else None}
-    r.pop("code", None)
-    r.pop("store", None)
-    return r
+        return {"error": f"{step} HTTP {e.code} {body}", "status": e.code, "retry_after": e.headers.get("Retry-After") if e.headers else None}
+    return cart_answer(cart, code, v["title"], v["available"])
 
 
-def run_check(tab: "Tab | None", host: str, handle: str, code: str, qty: int, variants: dict) -> dict:
+def run_check(tab: "Tab | None", host: str, handle: str, want: int | None, code: str, qty: int, variants: dict) -> dict:
     if tab is None or host in PLAIN_HTTP:
-        return plain_check(host, handle, code, qty)
+        return plain_check(host, handle, want, code, qty, variants)
     # A store that moves the tab off its cart host would make the relative fetches below hit the wrong host.
     origin = tab.eval("location.origin")
     if origin != f"https://{host}":
-        return plain_check(host, handle, code, qty)
-    cached = variants.get((host, handle))
+        return plain_check(host, handle, want, code, qty, variants)
+    cached = variants.get((host, handle, want))
     if cached and not cached.get("available"):
         return {"soldout": True, "error": "sold out (no available variant)", "product": cached.get("title"),
                 "variant_available": False, "network": False}
     tab.fresh_cart(host)
     js = (CHECK_JS.replace("HANDLE", urllib.parse.quote(handle)).replace("QTY", str(int(qty))).replace("PAUSE", str(REQ_PAUSE_MS))
-          .replace("CODE", json.dumps(code)).replace("VARIANT", json.dumps(cached)))   # VARIANT last: it holds a product title
+          .replace("FETCH_MS", str(FETCH_TIMEOUT_MS)).replace("PICK", json.dumps(want))
+          .replace("CODE", json.dumps(code)).replace("VARIANT", json.dumps(cached)))   # CODE and VARIANT last: they hold store text
     r = tab.eval(js)
     if not isinstance(r, dict):
         return {"error": f"no result ({r!r})"[:300], "transient": True}
     if r.get("variant"):
-        variants[(host, handle)] = r.pop("variant")
+        variants[(host, handle, want)] = r.pop("variant")
     if r.get("error"):
         return r
     return cart_answer(r["cart"], code, r["product"], r["variant_available"])
@@ -322,15 +383,22 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
     by_store: dict[str, list[dict]] = {}
     for ch in checks:
         origin, host, handle = store_of(ch["url"])
-        by_store.setdefault(origin, []).append({**ch, "host": host, "handle": handle})
+        by_store.setdefault(origin, []).append({**ch, "host": host, "handle": handle, "variant": variant_of(ch["url"])})
     # the control code first on each store, on its first product (moved to another product if that one is sold out)
     queue: dict[str, list[dict]] = {}
     for origin, items in by_store.items():
         first = items[0]
         queue[origin] = [{**first, "code": CONTROL, "qty": 1, "control": True}] + items
-    t0 = time.time()
+    plain = {o for o in queue if urlsplit(o).netloc in PLAIN_HTTP}
+    t0, m0 = time.time(), time.monotonic()
+
+    def asleep() -> float:
+        """Seconds the Mac has slept since the sweep started: clock time minus awake time (see RUN_WALL_MAX)."""
+        return (time.time() - t0) - (time.monotonic() - m0)
+
+    slept_seen = 0.0
     state = {o: {"next": 0.0, "gap": STORE_GAP.get(urlsplit(o).netloc, GAP_PER_STORE), "streak": 0} for o in queue}
-    tabs: dict[str, Tab | None] = {}
+    tabs: dict[str, Tab | None] = {}   # a store's tab opens on its first check (see PLAIN_HEAD_START)
     variants: dict = {}
     soldout_handles: set = set()
     rows, tries = [], {}
@@ -347,28 +415,38 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
                 "checked_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
 
     try:
-        for origin in queue:
-            tabs[origin] = None if urlsplit(origin).netloc in PLAIN_HTTP else Tab(origin + "/")
-            time.sleep(2)
-        time.sleep(4)
         while any(queue.values()):
             progressed = False
+            if asleep() - slept_seen > SLEEP_GAP:
+                log(f"the Mac was asleep for {(asleep() - slept_seen) / 60:.0f} min (lid closed or system sleep); "
+                    f"the store deadline counts awake time only")
+            slept_seen = asleep()
+            # The plain-HTTP stores (Soundcore) first and alone: no store tab opens until their queues are done or
+            # PLAIN_HEAD_START has passed (see PLAIN_HTTP).
+            hold_tabs = any(queue[o] for o in plain) and time.monotonic() - m0 < PLAIN_HEAD_START
             for origin, items in queue.items():
                 st = state[origin]
-                if not items or time.time() < st["next"]:
+                if not items or time.time() < st["next"] or (hold_tabs and origin not in plain):
                     continue
                 progressed = True
-                if time.time() - t0 > STORE_DEADLINE:
-                    log(f"{origin}: still limited {STORE_DEADLINE // 60} min into the sweep; {len(items)} checks left unanswered")
+                if time.monotonic() - m0 > STORE_DEADLINE or time.time() - t0 > RUN_WALL_MAX:
+                    why = (f"still limited {STORE_DEADLINE // 60} min of awake time into the sweep" if time.monotonic() - m0 > STORE_DEADLINE
+                           else f"{RUN_WALL_MAX // 3600} h by the clock into the sweep, {asleep() / 60:.0f} min of it asleep")
+                    log(f"{origin}: {why}; {len(items)} checks left unanswered")
                     for ch in items:
-                        record(ch, {**base_row(ch), "error": "unanswered: store deadline passed (rate limited)", "unanswered": True})
+                        record(ch, {**base_row(ch), "error": f"unanswered: {why}", "unanswered": True})
                     items.clear()
                     continue
                 ch = items.pop(0)
                 key = (origin, ch["code"], ch["slug"], ch["qty"], bool(ch.get("control")))
                 row = base_row(ch)
+                s0 = asleep()
                 try:
-                    res = run_check(tabs[origin], ch["host"], ch["handle"], ch["code"], ch["qty"], variants)
+                    if origin not in tabs:
+                        tabs[origin] = None if origin in plain else Tab(origin + "/")
+                        if tabs[origin] is not None:
+                            time.sleep(6)   # let the store's page load before the first in-page fetch
+                    res = run_check(tabs[origin], ch["host"], ch["handle"], ch["variant"], ch["code"], ch["qty"], variants)
                 except Exception as e:  # noqa: BLE001  (tab or socket trouble: reopen the tab and try again)
                     res = {"error": f"{type(e).__name__}: {e}"[:300], "transient": True}
                     if tabs.get(origin) is not None:
@@ -403,6 +481,11 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
                     record(ch, row)
                     continue
                 st["streak"] = 0
+                if kind == "transient" and asleep() - s0 > SLEEP_GAP:   # cut by the Mac's sleep: not the store's doing
+                    items.insert(0, ch)
+                    log(f"{ch['brand']} {ch['code']} on {ch['slug']}: {str(res['error'])[:120]} (the Mac slept during the call; "
+                        f"not counted as a try), retrying")
+                    continue
                 if kind == "transient":
                     tries[key] = tries.get(key, 0) + 1
                     if tries[key] < MAX_TRIES:
@@ -414,9 +497,10 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
                     record(ch, row)
                     continue
                 if kind == "soldout":
-                    soldout_handles.add((ch["host"], ch["handle"], ch["qty"]))
+                    soldout_handles.add((ch["host"], ch["handle"], ch["variant"], ch["qty"]))
                     if ch.get("control"):
-                        nxt = next((x for x in items if (x["host"], x["handle"], 1) not in soldout_handles and x["handle"] != ch["handle"]), None)
+                        nxt = next((x for x in items if (x["host"], x["handle"], x["variant"], 1) not in soldout_handles
+                                    and (x["handle"], x["variant"]) != (ch["handle"], ch["variant"])), None)
                         if nxt:
                             log(f"{ch['brand']} control: {ch['slug']} could not be put in the cart ({str(res['error'])[:80]}); control moves to {nxt['slug']}")
                             items.insert(0, {**nxt, "code": CONTROL, "qty": 1, "control": True})
@@ -432,10 +516,16 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
                     continue
                 res = {k: v for k, v in res.items() if k not in ("network", "status", "retry_after")}
                 row.update(res)
+                # The page price may be the store's list price (the cart subtotal) or what the cart charges after the store's
+                # automatic discounts and before our code (total + the code's own amount: BLUETTI Elite 300 is $1,699
+                # with $600 off automatically; Soundcore takes $5 "Buy More Save More" off a single Liberty 4 Pro).
+                # Only a price that matches neither is a mismatch.
                 price = BY_SLUG[ch["slug"]]["price"]
-                if ch["qty"] == 1 and price is not None and abs(res["subtotal"] - price) >= 0.01:
-                    row["price_mismatch"] = {"page": price, "store": res["subtotal"]}
-                    log(f"PRICE MISMATCH {ch['slug']}: page ${price:.2f}, store cart ${res['subtotal']:.2f} (fix in the weekly price check, DLC-9)")
+                paid = round(res["total"] + res["code_amount"], 2)
+                if ch["qty"] == 1 and price is not None and min(abs(res["subtotal"] - price), abs(paid - price)) >= 0.01:
+                    row["price_mismatch"] = {"page": price, "store": res["subtotal"], "store_after_automatic": paid}
+                    log(f"PRICE MISMATCH {ch['slug']}: page ${price:.2f}, store cart ${res['subtotal']:.2f} (${paid:.2f} after its "
+                        f"automatic discounts) (fix in the weekly price check, DLC-9)")
                 log(f"{ch['brand']} {ch['code']} on {ch['slug']} x{ch['qty']}: "
                     + (f"accepted, ${res['code_amount']:.2f} off ${res['subtotal']:.2f}" if res["applicable"] else f"rejected (subtotal ${res['subtotal']:.2f})"))
                 record(ch, row)
@@ -445,7 +535,7 @@ def sweep(checks: list[dict], out: Path) -> list[dict]:
         for t in tabs.values():
             if t is not None:
                 t.close()
-    log(f"sweep took {(time.time() - t0) / 60:.0f} min")
+    log(f"sweep took {(time.time() - t0) / 60:.0f} min" + (f", {asleep() / 60:.0f} min of it with the Mac asleep" if asleep() > SLEEP_GAP else ""))
     return rows
 
 
@@ -513,14 +603,20 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
             "inconclusive": sum(1 for r in rows if not r.get("control") and r.get("inconclusive")),
             "accepted": sum(r["applicable"] for r in usable), "rejected": sum(not r["applicable"] for r in usable),
             "mismatch": sorted({f"{r['url'].rsplit('/', 1)[-1]}: page ${r['price_mismatch']['page']:.2f} vs store ${r['price_mismatch']['store']:.2f}"
+                                + (f" (${r['price_mismatch']['store_after_automatic']:.2f} after automatic discounts)"
+                                   if r["price_mismatch"].get("store_after_automatic") is not None else "")
                                 for r in usable if r.get("price_mismatch")})}
 
 
 # ---------------------------------------------------------------- publish
 
-def sh(cmd: list[str], **kw) -> subprocess.CompletedProcess:
+def sh(cmd: list[str], timeout: float = 600, **kw) -> subprocess.CompletedProcess:
+    """Run a command in the repo; one that hangs (a push waiting on credentials, say) fails after `timeout` seconds."""
     log("$ " + " ".join(cmd))
-    return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, **kw)
+    try:
+        return subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, timeout=timeout, **kw)
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess(cmd, 124, "", f"timed out after {timeout:.0f} s")
 
 
 def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
@@ -559,8 +655,11 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
         if not tok:
             log("Worker link map changed but no Cloudflare token in the keychain; deploy by hand")
         else:
-            r = subprocess.run(["npx", "--yes", "wrangler", "deploy"], cwd=ROOT / "worker", text=True, capture_output=True,
-                               env={**os.environ, "CLOUDFLARE_API_TOKEN": tok})
+            try:
+                r = subprocess.run(["npx", "--yes", "wrangler", "deploy"], cwd=ROOT / "worker", text=True, capture_output=True,
+                                   env={**os.environ, "CLOUDFLARE_API_TOKEN": tok}, timeout=600)
+            except subprocess.TimeoutExpired:
+                r = subprocess.CompletedProcess([], 124, "", "timed out after 600 s; deploy by hand")
             log("worker deployed" if r.returncode == 0 else f"worker deploy failed: {(r.stderr or r.stdout)[-400:]}")
     changed_pages = [l.split()[-1] for l in st.splitlines() if l.split()[-1].startswith("docs/") and l.split()[-1].endswith(".html")]
     urls = ["https://dealectric.com/" + p[len("docs/"):-len(".html")].replace("index", "") for p in changed_pages]

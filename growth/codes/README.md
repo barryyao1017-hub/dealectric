@@ -25,9 +25,16 @@ DLC-29: the site publishes only discount codes that worked in the brand's own US
 `tools/codesweep.py` re-tests every published code on every catalog product it applies to, every day, through the
 agent's Chrome (a tab on each store, cart calls from the page's own context, so the store sees a normal browser
 session; Soundcore's `us.soundcore.com` over plain HTTP, because a browser tab there is sent on to the non-Shopify
-`www.soundcore.com`). Pacing (DLC-48): stores interleaved, 30 s between a store's checks (ALLPOWERS 90 s); after a 429
+`www.soundcore.com`). Soundcore goes first and alone: no store tab opens until its checks are done or 15 min have
+passed, since its first call 429'd for hours on every run where it came seconds after Chrome's calls to the other
+stores (10-24 to 10-26). Pacing (DLC-48): stores otherwise interleaved, 30 s between a store's checks (ALLPOWERS 90 s,
+Soundcore 60 s); after a 429
 the store cools down for its Retry-After or 3, 6, 12, then 20 min, and its gap widens up to 5 min; a check is tried up
-to 6 times, and a store still limited 3 h into the run leaves its remaining checks unanswered. The run can take hours. It appends to
+to 6 times, and a store still limited 3 h of awake time into the run leaves its remaining checks unanswered (the Mac's
+sleep does not count; the run stops at 12 h by the clock). The Mac must be awake for the run: with the lid closed on
+battery it sleeps through it whatever `caffeinate` asks (10-24, 10-26). A product URL with `?variant=<id>` is tested on
+that variant. A price mismatch is logged when the page price matches neither the cart subtotal nor the cart total
+after the store's automatic discounts. The run can take hours. It appends to
 `<date>-checks.jsonl` here, folds the results into `src/coupons.json` (`tools/codes_merge.py`), rebuilds, commits
 ("codes: daily cart check <date>"), pushes, and redeploys the Worker when `worker/src/links-map.json` changed.
 Scheduled by `~/Library/LaunchAgents/com.jiayiyao.dealectric.codesweep.plist` (copy in `tools/`) at 06:37 local via
