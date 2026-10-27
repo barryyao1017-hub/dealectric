@@ -14,10 +14,14 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO, "src"))
 from products import PRODUCTS  # noqa: E402
 
-# Store handle -> our slug, where the store's handle differs from our product URL.
+# A logged row's URL is the product record's own URL, so it maps to the slug exactly; a kit sold as a variant of
+# another listing (bluetti-ac180-200w-solar-kit is /products/ac180?variant=...) shares that listing's handle.
+URLS = {p["url"]: p["slug"] for p in PRODUCTS}
+# Store handle -> our slug, for older rows and where the store's handle differs from our product URL; variant URLs
+# don't claim the handle.
 HANDLES = {"ac180": "bluetti-ac180", "15w-mini-wireless-charger": "esr-qi2-mini-wireless-charger-15w"}
 for p in PRODUCTS:
-    if "/products/" in p["url"]:
+    if "/products/" in p["url"] and not urlsplit(p["url"]).query:
         HANDLES[urlsplit(p["url"]).path.rstrip("/").split("/products/")[1]] = p["slug"]
 
 CJ, AWIN, SITES = "{}'s affiliate code (CJ Affiliate)", "{}'s affiliate code (Awin)", "coupon sites"
@@ -83,7 +87,7 @@ def main(logs):
             r = json.loads(line)
             if r.get("error") or r["code"] == "ZZNOTACODE7Q":
                 continue
-            slug = HANDLES.get(urlsplit(r["url"]).path.rstrip("/").split("/products/")[1])
+            slug = URLS.get(r["url"]) or HANDLES.get(urlsplit(r["url"]).path.rstrip("/").split("/products/")[1])
             if not slug:
                 print("unknown product", r["url"]); continue
             k = (r["brand"], r["code"], slug, r["qty"])
