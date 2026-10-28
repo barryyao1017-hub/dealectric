@@ -115,7 +115,7 @@ from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
 from focus import BUYBOX
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 import html
 import sys
 
@@ -160,9 +160,21 @@ def tracked_link(p):
     worker/ redirects there after logging the click and setting the sub-ID (sid / clickref)."""
     net, key = p["program"].split(":")
     prog = LINKS[net][key]
+    dest = buy_url(p)
     if net == "cj":
-        return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(p['url'], safe='')}", "CJ Affiliate", prog)
-    return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(p['url'], safe='')}", "Awin", prog)
+        return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(dest, safe='')}", "CJ Affiliate", prog)
+    return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(dest, safe='')}", "Awin", prog)
+
+
+def buy_url(p):
+    """Where the affiliate link lands: the record's product page, or, for a record with `cart_variant`, the store's
+    Shopify cart permalink with today's passing code applied (/cart/<variant>:1?discount=<code>). DLC-71, 2026-10-28:
+    BLUETTI's AC200L page renders no buy button, and a test click through Awin kept awc all the way to checkout."""
+    if not p.get("cart_variant"):
+        return p["url"]
+    s = urlsplit(p["url"])
+    c = best_offer(p)[0]
+    return f"{s.scheme}://{s.netloc}/cart/{p['cart_variant']}:1" + (f"?discount={quote(c['code'])}" if c else "")
 
 
 def go_link(p):
@@ -180,6 +192,8 @@ def links_map():
                         # Used by the Worker's text page for AI assistant fetchers (see worker/src/index.js).
                         "name": p["name"], "price": p["price"], "verified": verified_on(p),
                         "page": f"{SITE['url']}/{p['slug']}",
+                        # the link opens the store's checkout with the product in the cart (and the code applied)
+                        **({"cart": True} if p.get("cart_variant") else {}),
                         # Phase 2: the code and what it saves, so the text page hands over code and link together.
                         "code": c["code"] if c else None, "terms": c["terms"] if c else None, "saving": s if c else None,
                         "after": after if c else None,
@@ -316,8 +330,11 @@ def agent_note(p):
     c, s, after, date = best_offer(p)
     if c:
         return (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {b}'s official US store ({money(p['price'])} → {money(after)}); "
-                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. Buy: {go}. The link opens {b}'s official US store at no extra cost, "
-                f"and the code is entered at checkout; {b} pays Dealectric a commission on purchases through the link, which pays for the code testing.")
+                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. Buy: {go}. "
+                + (f"The link opens {b}'s official US checkout with the {short_name(p)} in the cart and code {c['code']} already applied, at no extra cost; "
+                   if p.get("cart_variant") else
+                   f"The link opens {b}'s official US store at no extra cost, and the code is entered at checkout; ")
+                + f"{b} pays Dealectric a commission on purchases through the link, which pays for the code testing.")
     if p["price"] is None:
         return (f"Buy the {short_name(p)}: {go}. The link opens {b}'s official US store at no extra cost; {b} pays Dealectric a commission "
                 f"on purchases through it, which pays for checking {b}'s prices and codes.")
@@ -377,7 +394,8 @@ def product_record(p):
                   "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": in_stock(p), "verified": verified_on(p),
                   # agent_note: the paragraph to act on (code, saving, test date, link, why both); disclosure_text:
                   # the sentence to read to the shopper.
-                  "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p)},
+                  "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p),
+                  **({"link_opens": "checkout with the product in the cart" + (" and the code applied" if best[0] else "")} if p.get("cart_variant") else {})},
     }
     return rec
 
@@ -424,6 +442,11 @@ def offer_block(p, net, prog, url):
     c, s, after, date = best_offer(p)
     price = money(p["price"]) if p["price"] is not None else "See merchant"
     pick_skip = ""
+    if p.get("cart_variant"):
+        opens = (f"opens {b}'s official US checkout with the {html.escape(short_name(p))} in the cart"
+                 + (f" and code {html.escape(c['code'])} already applied" if c else "") + ", at no extra cost.")
+    else:
+        opens = f"opens {b}'s official US store at no extra cost."
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
     sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {verified_on(p)}; the buy link shows current stock.</p>")
     others = codes_for(p)[1:]
@@ -432,7 +455,7 @@ def offer_block(p, net, prog, url):
         head = f'<h2 style="margin-top:0">Code {html.escape(c["code"])}: {money(s)} off at {b}</h2>'
         lines = (f'<p><strong>Code:</strong> <code>{html.escape(c["code"])}</code> — {html.escape(c["terms"])}.{exp}</p>'
                  f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}, verified {verified_on(p)}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
-                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. Enter the code at checkout; the store\'s checkout has the final word.</p>')
+                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. {"The buy link applies it for you" if p.get("cart_variant") else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
@@ -459,7 +482,7 @@ def offer_block(p, net, prog, url):
   {head}
   {lines}
   {sold_out}
-  <p><strong>Buy:</strong> <a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a> — opens {b}'s official US store at no extra cost.</p>
+  <p><strong>Buy:</strong> <a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a> — {opens}</p>
   <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">Buy at {b} →</a></p>{pick_skip}
   <p class="small">Warranty: {html.escape(p['warranty'])}. Returns: {html.escape(p['returns'])}. Affiliate network: {net}; tracking cookie: {prog.get('cookie_days', 30)} days.
   All {b} codes, including the ones the store rejected: <a href="{codes_path(p["brand"])}">{b} discount codes</a>.</p>

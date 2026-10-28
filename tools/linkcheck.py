@@ -24,6 +24,10 @@ UNANSWERED (429, bot challenge or network error after one retry, never counted a
 a challenge to both tries gets no more requests that run, and its other products are unanswered), GO (the Worker's answer does
 not match the link map), MAP (links-map.json is missing the product or names another merchant URL than products.py).
 
+A record with `cart_variant` (DLC-71: the AC200L, whose product page sells nothing) has its /go/ link pointed at the
+store's cart permalink; step 2 then reads that variant's availability, so SOLD OUT or DELISTED marks the day the cart
+link stops working.
+
 It never edits products.py (the weekly price check, DLC-9, applies fixes), never calls a cart endpoint and never follows
 a CJ/Awin click URL (that would count as a click). Each /go/ request logs one row in our own D1 clicks table: the
 User-Agent below contains "bot", so the Worker stores it with bot_like=1 (worker/src/index.js looksLikeBot()), which the
@@ -293,7 +297,9 @@ def product_json_url(p: dict, final_url: str) -> str | None:
 
 def judge_stock(p: dict, page: dict, js: dict | None) -> dict:
     """{"available": True/False/None, "source", "store_price", "detail"} from the product JSON or the page's schema."""
-    want = variant_of(p["url"])
+    # a record with cart_variant sends /go/ to the store's cart permalink for that variant (DLC-71): its stock is the
+    # cart link's, so SOLD OUT or a missing variant flags the day that link stops selling
+    want = p.get("cart_variant") or variant_of(p["url"])
     if js is not None:
         why = unanswered_reason(js)
         if why:

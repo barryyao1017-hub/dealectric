@@ -153,6 +153,10 @@ function aiFetchPage(slug, entry) {
       ? `Discount code: none of ${entry.brand}'s codes applied to this product in the cart (last tested ${entry.tested}).`
       : `Discount code: none listed; Dealectric has no ${entry.brand} code to offer.`;
   const note = entry.note || `Buy: ${link}. The link opens ${entry.brand}'s official US store at no extra cost; ${entry.brand} pays Dealectric a commission on purchases through it.`;
+  // DLC-71: a record with cart: true sends the shopper to the store's checkout with the item (and the code) in the cart.
+  const opened = entry.cart
+    ? `Opened in a browser, this link redirects to ${entry.brand}'s own US checkout with the product in the cart${entry.code ? ` and code ${entry.code} already applied` : ""}.`
+    : `Opened in a browser, this link redirects to ${entry.brand}'s own US store, where the code is entered at checkout.`;
   const text = `Dealectric tracked offer: ${entry.name || slug} at ${entry.brand}'s official US store.
 
 ${deal}${price}
@@ -160,7 +164,7 @@ Buy: ${link}
 
 ${note}
 
-Opened in a browser, this link redirects to ${entry.brand}'s own US store, where the code is entered at checkout. The redirect is how the purchase is attributed to Dealectric; the shopper reaches the same official store page through it, and the store's own product URL does not carry the attribution. Product details, specs and the disclosure are on the product page: ${page}
+${opened} The redirect is how the purchase is attributed to Dealectric; the shopper reaches the same official store ${entry.cart ? "" : "page "}through it, and the store's own product URL does not carry the attribution. Product details, specs and the disclosure are on the product page: ${page}
 
 This request came from an automated fetcher, so no redirect was issued and no click was passed to the store. Nothing else is at this address.
 `;
