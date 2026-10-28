@@ -185,3 +185,6 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   AC input, warranty condition, "job sites", per-kWh claim; P1800 silent charge and UPS; SP037 compatibility count,
   IP rating, the 2025 revision). Those are fact fixes, not levers. Their L1 buy boxes (with the rest of each fix list,
   SP037's dated in-stock line among them) ship after R0b has run.
+- 2026-10-28: DLC-76 (Barry's DLC-75 call) dropped the compare-at strike-through on every ALLPOWERS page and added a
+  dated "lowest store price we've seen" line (60ef1c3), while R0b was running. It touches arms C-E's test and control
+  pages alike and isn't a lever. ChatGPT's copies of those pages predate it, so R0b still reads the baseline.
