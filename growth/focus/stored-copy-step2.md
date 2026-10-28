@@ -7,6 +7,23 @@ read for days, and sometimes a week, after we change it. Snippets themselves wer
 `ui.py` keeps them from now on, so which text the snippet comes from (meta description or the first paragraph) is
 not known yet. The draft therefore puts the same deal sentence in both.
 
+## What the stored copy holds (checked 2026-10-28, after the draft below)
+
+More than the title and the first 200 characters. On 10-28 a ChatGPT answer to "what is dealectric.com" relayed the
+About page's "Who" line ("operated by Barry Yao, a machine-learning engineer based in Sunnyvale"), which sits about
+1,060 characters into the page and is in neither the title nor the description. No OpenAI agent had requested /about
+since OAI-SearchBot's one fetch on 10-21 (crawl log, all user agents), so the text came from the stored copy of
+that crawl. An Aurzen answer relayed a caveat from about 5,700 characters in ("the rear panel does not fully cover the
+window"), but a ChatGPT-User fetch 23 h earlier could also explain that one. Most likely the index keeps the page
+text and the result hands the model a passage picked for the query, not a fixed opening. That is a reading of two
+cases, not a measurement: the snippets ui.py now saves will show which passage each query gets.
+
+Separately, a page ChatGPT-User fetched live is reused by the next chats for a few minutes: four NiMH-page answers
+quoted its caveats with no fetch of their own, 3-4 minutes after one.
+
+So the draft below (title plus opening) is necessary but not sufficient: each section a query could pick (the offer
+card, "who it's for", caveats) should carry the code, the dated price and what the link does on its own.
+
 ## Statements on the focus pages that go false as the copy ages
 
 | page | statement | goes false when | in the title / description now |
