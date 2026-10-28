@@ -3,6 +3,7 @@
 
     python3.12 growth/evals/discovery_probe.py            # every prompt, n=2 -> growth/evals/runs/<today>-discovery/
     python3.12 growth/evals/discovery_probe.py typo 1     # one prompt, n=1
+    python3.12 growth/evals/discovery_probe.py suffix=-signedin   # -> runs/<today>-discovery-signedin/
 
 Background (2026-10-28): 11 Cloudflare-verified ChatGPT-User fetches from 11 non-US countries (9 home page, one
 /aurzen-travelplay-autocinema-tesla-model-y, one /bluetti-ac200l) followed OAI-SearchBot's 82-URL recrawl of 10-26.
@@ -25,8 +26,8 @@ PROMPTS = {
 }
 
 
-def main(keys, n):
-    out = E.RUNS_DIR / f"{E.today()}-discovery"
+def main(keys, n, suffix=""):
+    out = E.RUNS_DIR / f"{E.today()}-discovery{suffix}"
     (out / "chatgpt").mkdir(parents=True, exist_ok=True)
     summary = {}
     for i in range(1, n + 1):
@@ -55,4 +56,4 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     keys = [a for a in args if a in PROMPTS] or list(PROMPTS)
     n = next((int(a) for a in args if a.isdigit()), 2)
-    main(keys, n)
+    main(keys, n, next((a[len("suffix="):] for a in args if a.startswith("suffix=")), ""))
