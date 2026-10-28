@@ -347,7 +347,11 @@ def PAGES(S):
 </ul>
 <h2>Contact</h2>
 <p>Email <a href="mailto:{E}">{E}</a>. Merchants and affiliate managers: we are happy to receive product feeds, spec sheets and exclusive codes for our readers — see <a href="/contact/">contact</a>.</p>
+<h2>How codes are re-tested</h2>
+<p>Since 2026-10-27 the check has run unattended every morning at 06:37 Pacific time: each published code goes into the brand's own US cart on every product it applies to, next to a made-up control code the store must reject. A code the store rejects on two mornings in a row comes off every page the same day.</p>
 """,
+        # DLC-77 canary (growth/focus/canary.md): the last section above is the deepest text on this page and its wording
+        # appears nowhere else on the site, so an answer that relays it read OpenAI's stored copy past the opening.
         {"@context": "https://schema.org", "@type": "Organization", "name": B, "url": U, "email": E,
          "founder": {"@type": "Person", "name": S["operator"]}, "address": {"@type": "PostalAddress", "addressLocality": "Sunnyvale", "addressRegion": "CA", "addressCountry": "US"}},
     )
