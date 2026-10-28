@@ -50,7 +50,7 @@ PRODUCTS = [
  "name": "Baseus Nomos 5-in-1 Desktop Charger, 140 W + Qi2", "model": "Nomos 5-in-1 (P10170901123-00)",
  "url": "https://www.baseus.com/products/nomos-5-in-1-desktop-charger-qi2-140w", "price": 149.99, "in_stock": False,
  "specs": [("Total output", "140 W"), ("Ports", "USB-C 140 W, USB-C, USB-A, retractable USB-C cable (100 W), Qi2 magnetic pad (15 W)"),
-           ("Protocols", "USB PD 3.1 (EPR) on the 140 W port"), ("Qi2", "WPC-certified, Qi-ID 22121; 15 W on iPhone 13–16, 5 W on other Qi2 phones"),
+           ("Protocols", "USB PD 3.1 (EPR) on the 140 W port"), ("Qi2", "WPC-certified per Baseus (Qi-ID 22121, which the WPC database lists as the Baseus Nomos Power Strip); 15 W on iPhone 13–16, 5 W on other Qi2 phones"),
            ("Power modes", "Three allocation modes; 1–5 devices at once"), ("Power", "Desktop unit with detachable AC cord; LED display")],
  "warranty": "18–24 months", "returns": "7-day no-reason return; 30-day defect guarantee",
  "summary": "A desk charging hub: one 140 W PD 3.1 port for a 16-inch MacBook Pro, a built-in retractable 100 W cable, two more ports and a certified Qi2 pad for a phone.",
@@ -95,7 +95,7 @@ PRODUCTS = [
  "warranty": "12 months; 24 months with free ESR Super User registration", "returns": "30-day money-back",
  "summary": "A three-device stand that charges an iPhone 17 at the full 25 W Qi2.2 rate while actively cooling it, plus an Apple Watch and AirPods.",
  "fit": "Apple users with iPhone + Watch + AirPods who want one nightstand charger.",
- "caveats": ["25 W only on the iPhone 17 series, 16 Pro Max and 16 Plus (iOS 26); iPhone Air, 16 and 16 Pro get 20 W, older iPhones 15 W.", "ESR does not publish the stand's dimensions.", "A 15 W version of the same stand is $79.99 if 25 W isn't needed."]},
+ "caveats": ["25 W only on the iPhone 17 series, 16 Pro Max and 16 Plus (iOS 26); iPhone Air, 16 and 16 Pro charge below 25 W (about 20–22 W by ESR's, Apple's and Anker's figures), older iPhones at 15 W.", "ESR does not publish the stand's dimensions.", "A 15 W version of the same stand is $79.99 if 25 W isn't needed."]},
 
 {"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "brand": "ESR", "program": "awin:esr_us", "category": "usb-c-charger",
  "name": "ESR 100W 6-in-1 Charging Station with MagSafe + CryoBoost", "model": "6-in-1 100W (US plug)",
