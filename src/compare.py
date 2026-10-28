@@ -380,4 +380,166 @@ COMPARISONS = [
  ],
  "published": "2026-10-23", "checked": "2026-10-23"},
 
+# ---------------- Q12 (Q04, Q05, Q09): Qi2 vs Qi2.2 vs MagSafe ----------------
+# DLC-24 topic 3. Shopper questions: "What's the difference between Qi2, Qi2.2 and MagSafe?" (Q12), "Which power banks
+# support Qi2.2 25W?" (Q05), "Best slim Qi2 / MagSafe power bank for iPhone 17" (Q04), "Best 3-in-1 Qi2 charging stand for
+# iPhone, Apple Watch and AirPods" (Q09). Agent queries seen in the eval runs: "best Qi2 25W magnetic power bank 2026",
+# "Qi2.2 25W power bank certified list", "Qi2 25W certified magnetic power bank Anker Belkin Ugreen Baseus", "Anker MagGo
+# 2 Pro power bank 10K Qi2 25W active cooling", "Belkin UltraCharge Pro Qi2.2 25W magnetic power bank 10K kickstand".
+# Phone figures are Apple's (support.apple.com, apple.com specs), Google's and Samsung's; standard figures the WPC's; charger
+# figures the makers' US pages and the WPC certified-product database, all read 2026-10-27.
+{"slug": "qi2-vs-qi2-2-vs-magsafe-chargers", "question": "Q12 (Q04, Q05, Q09)",
+ "title": "Qi2 vs Qi2.2 vs MagSafe: which magnetic chargers and power banks charge an iPhone at 25 W, and which stay at 15 W (2026)",
+ "h1": "Qi2 vs Qi2.2 vs MagSafe: which chargers and power banks charge an iPhone at 25 W, and which stay at 15 W",
+ "desc": "What Qi2 (15 W), Qi2 25W or 'Qi2.2' and Apple's MagSafe each mean, the wireless watts every iPhone from the 12 to the 18 Pro accepts (Apple's figures, plus Pixel and Galaxy), and 18 magnetic pads, 3-in-1 stands, power banks, car mounts and desk hubs from Apple, Anker, Belkin, ESR, Baseus, UGREEN and Google: certification, watts to an iPhone, cooling, adapter and price.",
+ "intro": """
+<p class="lead"><strong>Only two kinds of magnetic charger go past 15 W on an iPhone: chargers certified for Qi2 25W (sold as "Qi2.2") and Apple's current MagSafe Charger, which Apple says is itself certified for Qi2 25W.</strong> Even then the phone sets the ceiling. Apple's figures: 25 W on the iPhone 17, 17 Pro, 17 Pro Max, 18 Pro, 18 Pro Max, iPhone Duo, 16 Plus and 16 Pro Max; about 22 W on the iPhone 16 and 16 Pro; 20 W on the iPhone Air; 15 W on the iPhone 17e and on every iPhone from the 12 to the 15 (12 W on the 12 mini and 13 mini). An original Qi2 or older MagSafe charger stops at 15 W on every iPhone, and a plain, non-magnetic Qi pad at 7.5 W. The iPhone 16e has no magnets and charges as a plain Qi phone. The table below compares 18 current magnetic pads, stands, power banks, car mounts and desk hubs from Apple, Anker, Belkin, ESR, Baseus, UGREEN and Google: what each is certified for, what it delivers to an iPhone, how it is cooled, which adapter it needs and what it costs.</p>
+<p><strong>Short answer.</strong> On a 25 W iPhone, the 25 W rows give full speed with a large enough adapter. Cheapest: a puck at about $40 (Apple MagSafe Charger, Google Pixelsnap Charger, Belkin UltraCharge pad); only Belkin's includes an adapter, and Belkin's is out of stock until November 25. The cheapest 3-in-1 stands here are $99.99: the Belkin UltraCharge 3-in-1 Foldable (passive cooling) and the <strong>ESR CryoBoost 3-in-1</strong> ({buy:esr-cryoboost-3-in-1-qi2-2-25w-stand}), which adds a fan. The cheapest 25 W power bank here is the <strong>Baseus PicoGo AM52</strong> ({buy:baseus-picogo-am52-qi2-2-10000mah-45w}), WPC-certified for Qi2 25W; the Anker MagGo 2 Pro ($109.99) and UGREEN MagFlow Pro ($149.99) cost more and add active cooling. The one 25 W car mount here is Belkin's ($79.99). On an iPhone 12–15 or 17e a 25 W charger is no faster than a 15 W one, such as the ESR Magnetic Charging Pad ({buy:esr-qi2-mini-wireless-charger-15w}) or the WPC-certified ESR HaloLock car mount ({buy:esr-halolock-15w-wireless-car-charger-cryoboost}).</p>
+<h2>Qi2, Qi2.2 and MagSafe: what each name means</h2>
+<div class="scroll"><table>
+<tr><th>Name</th><th>What it is</th><th>Most it delivers</th><th>Who certifies it, and how to check</th></tr>
+<tr><td>Qi (v1.x, "Qi1")</td><td>The WPC's wireless standard since 2010, without magnets</td><td>7.5 W to any iPhone 8 or later (Apple). Apple counts chargers under 10 W, "like a Qi1-certified charger", as slow</td><td>WPC; Qi logo</td></tr>
+<tr><td>Qi2 (Qi v2.0, launched November 2023)</td><td>Adds the Magnetic Power Profile (MPP): magnets attach and align the phone and charger coils</td><td>15 W</td><td>WPC. In its database a 15 W Qi2 product shows Version 2.0.0, Power Profile MPP, Potential Load Power 15.0</td></tr>
+<tr><td>Qi2 25W, sold as "Qi2.2" (Qi v2.2.1, July 2025)</td><td>The same magnetic profile at up to 25 W, with power modes matched to USB-C adapters. The WPC says it can take a phone from 0 to 50% in about 30 minutes, and that it brought major Android phones into Qi2 for the first time. "Qi2.2" is the makers' name; the WPC's is "Qi2 25W"</td><td>25 W</td><td>WPC. Database fields: Version 2.2.1, MPP25 (or MPP25 + BPP), 25.0</td></tr>
+<tr><td>MagSafe</td><td>Apple's magnetic charging for the iPhone 12 and later. Apple's current MagSafe Charger (A3502, A3503) is, per Apple, certified for Qi2 25W and Qi; Apple's charger article gives the 2024 models (A2580, A3250) the same 25 W, and the original A2140 15 W</td><td>25 W (A3502, A3503, A2580, A3250); 15 W (A2140)</td><td>Apple. Third-party chargers built under Apple's MFi Program carry "Made for MagSafe", such as ESR's 6-in-1 station at 15 W</td></tr>
+<tr><td>"MagSafe-compatible", "MagSafe-style", "Qi2-compatible"</td><td>Marketing words for a magnetic charger that fits the iPhone's magnet ring</td><td>Whatever the maker claims</td><td>Nobody. The WPC says products described as "Qi2 compatible" or "Qi2 enabled" are not Qi2 certified; a certified product is in its database</td></tr>
+</table></div>
+<h2>What each iPhone takes</h2>
+<div class="scroll"><table>
+<tr><th>iPhone</th><th>Most it takes wirelessly</th><th>Notes</th></tr>
+<tr><td>iPhone 18 Pro, 18 Pro Max</td><td>25 W (MagSafe and Qi2)</td><td>Apple: 50% in 30 minutes with a 35 W adapter or higher on the MagSafe Charger</td></tr>
+<tr><td>iPhone Duo</td><td>25 W (MagSafe and Qi2)</td><td></td></tr>
+<tr><td>iPhone 17, 17 Pro, 17 Pro Max</td><td>25 W (MagSafe and Qi2)</td><td>With a 30 W adapter or higher</td></tr>
+<tr><td>iPhone Air</td><td>20 W (MagSafe and Qi2)</td><td>Apple's MagSafe Battery for it gives up to 12 W</td></tr>
+<tr><td>iPhone 16 Plus, 16 Pro Max</td><td>25 W</td><td>On a third-party Qi2 25W charger this needs iOS 26 (WPC, UGREEN). Apple's own pages disagree: the iPhone 16 Plus spec page lists Qi2 up to 25 W, the 16 Pro Max page still lists Qi2 up to 15 W</td></tr>
+<tr><td>iPhone 16, 16 Pro</td><td>22.5 W peak on Apple's MagSafe Charger (Apple's charger article; the spec pages say "up to 25W"); 22 W on Anker's Qi2 25W station</td><td>iOS 26 needed on third-party Qi2 25W chargers. The iPhone 16 spec page lists Qi2 up to 25 W, the 16 Pro page Qi2 up to 15 W</td></tr>
+<tr><td>iPhone 17e</td><td>15 W (MagSafe and Qi2)</td><td>With a 20 W adapter or higher</td></tr>
+<tr><td>iPhone 13, 14, 15 models</td><td>15 W; 12 W for the 13 mini on MagSafe</td><td>Apple's iPhone 13 and 15 pages list Qi2 at 15 W. The iPhone 14 page lists MagSafe at 15 W and Qi at 7.5 W but no Qi2; the charger makers (Anker, UGREEN, Baseus) list the 14 at 15 W on Qi2</td></tr>
+<tr><td>iPhone 12 models</td><td>15 W on MagSafe; 12 W for the 12 mini</td><td>Apple's page lists MagSafe and Qi (7.5 W) but no Qi2; Anker, UGREEN and Baseus list the 12 at 15 W on their Qi2 chargers</td></tr>
+<tr><td>iPhone 16e</td><td>7.5 W on Qi</td><td>No MagSafe magnets, so magnetic chargers do not hold it; Anker lists its Prime station and MagGo 2 Pro as not compatible</td></tr>
+</table></div>
+<p><strong>Android.</strong> Phones with magnets built in: Google's Pixel 11, 11 Pro and 11 Pro XL (Qi2.2-certified, 25 W), Pixel 10 Pro XL (25 W) and, per Google's Pixelsnap page, the Pixel 11 Pro Fold (25 W); the Pixel 10, 10 Pro and 10 Pro Fold take 15 W. Samsung lists the Galaxy S26 Ultra at up to 25 W wireless, the S26+ at 20 W and the S26 at 15 W without naming the charger; the WPC says the S26 Ultra reaches 25 W on a Qi2 25W charger and the rest of the S26 line 15 W. The Galaxy S25 and S26 need a magnetic case to snap on (Samsung sells Magnet Cases; the WPC calls them Qi2 Ready cases). Not every charger below is meant for Android: Anker says the MagGo 2 Pro is not for Android phones, Belkin says Samsung phones charge from its 10K bank over USB-C, and Baseus's Nomos gives Android Qi2 phones 5 W.</p>
+<h2>18 magnetic chargers and power banks</h2>
+<p>Rows run from 25 W down to 12 W; within each group, pads, stands, power banks, car mounts and desk hubs, by price. "Standard / certification" gives the WPC database record where one matches the product's part number, and otherwise the maker's own claim. "Max to an iPhone" is the maker's figure; the phone's own limit in the table above applies on top of it.</p>
+""",
+ "columns": [("form", "Form"), ("std", "Standard / certification"), ("iphone", "Max to an iPhone"), ("other", "Other outputs"), ("cool", "Cooling"), ("adapter", "Adapter")],
+ "rows": [
+  {"brand": "Apple", "model": "MagSafe Charger (1 m or 2 m)", "url": "https://www.apple.com/shop/product/mgd74ll/a/magsafe-charger-1-m",
+   "note": "Models A3502 (1 m), A3503 (2 m)",
+   "cells": {"form": "Puck, 1 m or 2 m cable", "std": "Apple MagSafe; Apple says certified for Qi2 25W and Qi",
+             "iphone": "25 W (16 Plus, 16 Pro Max, 17 models, 18 Pro, Duo); 22.5 W (16, 16 Pro); 20 W (Air); 15 W (12–15, 17e); 12 W (12 mini, 13 mini)",
+             "other": "—", "cool": "Not stated", "adapter": "Not included; 30 W or higher for 25 W, 20 W for 15 W", "price": "$39 (1 m), $49 (2 m) (apple.com)"}},
+  {"brand": "Google", "model": "Pixelsnap Charger", "url": "https://store.google.com/us/product/pixelsnap_charger?hl=en-US",
+   "note": "The version with a stand is $69.99",
+   "cells": {"form": "Magnetic puck", "std": "Qi2; Google: 25 W (MPP) for Qi2.2-certified devices, 15 W for Qi2.0",
+             "iphone": "25 W to Qi2.2-certified phones (Google's list names Pixels only)", "other": "—", "cool": "Not stated", "adapter": "Not included",
+             "price": "$39.99 (store.google.com)"}},
+  {"brand": "Belkin", "model": "UltraCharge Magnetic Charger, Qi2 25W (WIA014)", "url": "https://www.belkin.com/p/magnetic-charger-with-qi2-25w/WIA014ttBK.html",
+   "note": "Belkin sells its Qi2 25W chargers as UltraCharge; the BoostCharge Pro dock on its Qi2 page is 15 W",
+   "cells": {"form": "Pad with kickstand, 2 m cable", "std": "Qi2 25W, WPC QI-24043 (v2.2.1, MPP25)", "iphone": "25 W to Qi2 25W phones, 15 W to other Qi2 phones",
+             "other": "—", "cool": "Passive (ChillBoost)", "adapter": "36 W included (power-supply version)", "price": "$39.99 (belkin.com; out of stock, due November 25)"}},
+  {"brand": "Belkin", "model": "UltraCharge 3-in-1 Foldable Magnetic Charger (WIZ037)", "url": "https://www.belkin.com/p/3-in-1-foldable-magnetic-charger-with-qi2-25w/WIZ037ttWH.html",
+   "cells": {"form": "3-in-1, folds flat", "std": "Qi2 25W (Belkin)", "iphone": "25 W to Qi2 25W phones, 15 W to other Qi2 phones",
+             "other": "Apple Watch, AirPods", "cool": "Passive (ChillBoost)", "adapter": "45 W included", "price": "$99.99 (belkin.com)"}},
+  {"slug": "esr-cryoboost-3-in-1-qi2-2-25w-stand", "model": "ESR CryoBoost 3-in-1 Qi2.2 25 W",
+   "cells": {"form": "3-in-1 stand", "std": "Qi2.2 25 W (ESR). The WPC lists ESR 3-in-1 stations at v2.2.1, MPP25 (QI-24258, QI-25151, QI-24275); ESR's page gives no part number to match",
+             "iphone": "25 W (ESR gives no per-model list)", "other": "Apple Watch (Apple MFW-certified charger), AirPods", "cool": "Fan (CryoBoost; ESR: 6.5 °F cooler on average)",
+             "adapter": "50 W included"}},
+  {"brand": "Belkin", "model": "UltraCharge Pro 3-in-1 Magnetic Charging Dock (WIZ040)", "url": "https://www.belkin.com/p/3-in-1-magnetic-charging-dock-with-qi2-25w/WIZ040ttCH.html",
+   "cells": {"form": "3-in-1 dock", "std": "Qi2 25W, WPC QI-23778 (v2.2.1, MPP25 + BPP)", "iphone": "25 W to Qi2 25W phones, 15 W to other Qi2 phones",
+             "other": "Apple Watch (fast charging), AirPods 5 W", "cool": "Active (ChillBoost)", "adapter": "45 W included", "price": "$129.99 (belkin.com)"}},
+  {"brand": "UGREEN", "model": "MagFlow Pro Qi2 25W 3-in-1 Wireless Charger", "url": "https://us.ugreen.com/products/magflow-pro-qi2-25w-3-in-1-wireless-charger",
+   "cells": {"form": "3-in-1 stand, display", "std": "Qi2 25W (UGREEN)", "iphone": "25 W on iPhone 16 (iOS 26 or later) and 17; 15 W on iPhone 12–15",
+             "other": "Apple Watch, AirPods", "cool": "Thermoelectric (TEC); UGREEN: under 15 dB", "adapter": "45 W included",
+             "price": "$159.99 (us.ugreen.com; a time-limited 18% code was shown)"}},
+  {"brand": "Anker", "model": "Prime Wireless Charging Station (3-in-1, MagGo, AirCool, Dock Stand) (A25X7)", "url": "https://www.anker.com/products/a25x7-anker-prime-qi2-wireless-charging-station-25w-3-in-1-stand",
+   "cells": {"form": "3-in-1 dock, display", "std": "Qi2 25W, WPC QI-24419 (v2.2.1, MPP25 + BPP)",
+             "iphone": "25 W on iPhone 17, 16 Plus, 16 Pro Max; 22 W on 16, 16 Pro; 20 W on Air; 15 W on 12–15; not the 16e",
+             "other": "Apple Watch 5 W, earbuds 5 W", "cool": "Thermoelectric (TEC) plus fan", "adapter": "65 W included", "price": "$229.99 (anker.com, shown as $60 off)"}},
+  {"slug": "baseus-picogo-am52-qi2-2-10000mah-45w", "model": "Baseus PicoGo AM52 Qi2.2 10,000 mAh",
+   "cells": {"form": "Power bank, 10,000 mAh (≈37 Wh), 196 g", "std": "Qi2.2, WPC QI-24231 (part E0028Z, v2.2.1, MPP25)", "iphone": "25 W on iPhone 16 and 17; 15 W on iPhone 12–15",
+             "other": "USB-C 45 W out, 30 W in", "cool": "Passive (graphene, alloy case, temperature control)", "adapter": "— (battery)"}},
+  {"brand": "Belkin", "model": "UltraCharge Pro 10K Magnetic Ring Power Bank (BPD014)", "url": "https://www.belkin.com/p/power-bank-10k-with-magnetic-ring/BPD014fqBK.html",
+   "note": "Belkin: Samsung phones charge from it over USB-C",
+   "cells": {"form": "Power bank, 10,000 mAh, kickstand, display", "std": "Qi2 25W, WPC QI-24402 (v2.2.1, MPP25)", "iphone": "25 W to Qi2 25W phones, 15 W to other Qi2 phones",
+             "other": "USB-C 30 W", "cool": "Not stated", "adapter": "— (battery)", "price": "$99.99 (belkin.com; out of stock, due November 19)"}},
+  {"brand": "Anker", "model": "MagGo 2 Pro Magnetic Power Bank (10K, Qi2 25W, Active Cooling) (A110R)", "url": "https://www.anker.com/products/a110r-qi2-maggo-2-pro-magnetic-power-bank",
+   "note": "Anker: not for Android phones",
+   "cells": {"form": "Power bank, 10,000 mAh, 7.7 oz (218 g)", "std": "Qi2 25W, WPC QI-24417 (v2.2.1, MPP25)", "iphone": "25 W (Anker: iPhone 17 Pro to 50% in 25 minutes); iPhone 13–18, not the 16e",
+             "other": "USB-C 45 W in and out", "cool": "Fan", "adapter": "— (battery)", "price": "$109.99 (anker.com)"}},
+  {"brand": "UGREEN", "model": "MagFlow Pro 10000mAh Qi2 25W Magnetic Power Bank", "url": "https://us.ugreen.com/products/magflow-pro-qi2-25w-magnetic-power-bank-10000mah",
+   "cells": {"form": "Power bank, 10,000 mAh, built-in cable, display", "std": "Qi2 25W (UGREEN)", "iphone": "25 W (UGREEN)",
+             "other": "45 W max wired, built-in USB-C cable", "cool": "Liquid cooling", "adapter": "— (battery)", "price": "$149.99 (us.ugreen.com; a time-limited 20% code was shown)"}},
+  {"brand": "Belkin", "model": "UltraCharge Magnetic Wireless Car Charger Vent Mount, Qi2.2 25W (WIC014)", "url": "https://www.belkin.com/p/magnetic-wireless-car-charger-vent-mount-with-qi2.2-25w/WIC014fqBK-X1.html",
+   "cells": {"form": "Car vent mount", "std": "Qi2.2 (Belkin)", "iphone": "25 W (Belkin)", "other": "—", "cool": "Not stated", "adapter": "36 W car adapter included",
+             "price": "$79.99 (belkin.com)"}},
+  {"slug": "esr-qi2-mini-wireless-charger-15w", "model": "ESR Magnetic Charging Pad 15 W (formerly Qi2 Mini)",
+   "cells": {"form": "Puck, 5 ft braided cable", "std": "Magnetic, \"MagSafe-style\" (ESR); no Qi2 certification stated", "iphone": "15 W (iPhone 13 or later, per ESR)",
+             "other": "—", "cool": "None stated", "adapter": "Not stated"}},
+  {"slug": "esr-halolock-15w-wireless-car-charger-cryoboost", "model": "ESR HaloLock 15 W car charger with CryoBoost",
+   "cells": {"form": "Car vent or dash mount", "std": "Qi2 15 W, WPC QI-21376 (v2.0.0, MPP)", "iphone": "15 W", "other": "—", "cool": "Fan (CryoBoost)",
+             "adapter": "Car adapter not stated"}},
+  {"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "model": "ESR 100W 6-in-1 station with MagSafe",
+   "cells": {"form": "6-in-1 desk station", "std": "Apple MFi \"Made for MagSafe\", 15 W", "iphone": "15 W (iPhone 12 or later)",
+             "other": "Apple Watch 5 W (MFi), AirPods; 2× USB-C + USB-A, 100 W total (65 W while the pads charge)", "cool": "Fan (CryoBoost, can be switched off)",
+             "adapter": "Built in (US plug)"}},
+  {"slug": "baseus-nomos-5-in-1-140w-qi2", "model": "Baseus Nomos 5-in-1 140 W + Qi2",
+   "cells": {"form": "5-in-1 desk hub", "std": "Qi2 15 W. Baseus cites WPC QI-22121, which the WPC lists as the Baseus Nomos Power Strip (NMS67QI2-US, v2.0.0, MPP)",
+             "iphone": "15 W on iPhone 13–16 (iOS 17.2 or later); 5 W on Android Qi2 phones", "other": "USB-C 140 W (PD 3.1), retractable 100 W USB-C cable, USB-C, USB-A",
+             "cool": "Not stated", "adapter": "Built in, AC cord"}},
+  {"brand": "Apple", "model": "iPhone Air MagSafe Battery", "url": "https://www.apple.com/shop/product/mgpg4am/a/iphone-air-magsafe-battery",
+   "note": "Apple lists the iPhone Air as its only compatible phone",
+   "cells": {"form": "Battery pack for iPhone Air", "std": "Apple MagSafe", "iphone": "12 W, iPhone Air only", "other": "—",
+             "cool": "Not stated", "adapter": "— (battery)", "price": "$99 (apple.com)"}},
+ ],
+ "after": """
+<h2>Which one, for which phone</h2>
+<ul>
+<li><strong>iPhone 17 models, 18 Pro, iPhone Duo, 16 Plus or 16 Pro Max, cheapest at full speed</strong>: a puck at about $40: Apple's MagSafe Charger (30 W adapter sold separately), Google's Pixelsnap Charger (adapter sold separately; Google's 25 W list names Pixels only) or Belkin's UltraCharge pad (36 W adapter in the box; out of stock until November 25).</li>
+<li><strong>A nightstand for iPhone, Apple Watch and AirPods</strong>: the Belkin UltraCharge 3-in-1 Foldable ($99.99, passive cooling, 45 W adapter) or the ESR CryoBoost 3-in-1 ({buy:esr-cryoboost-3-in-1-qi2-2-25w-stand}; fan, 50 W adapter). Belkin's UltraCharge Pro dock ($129.99) adds active cooling; UGREEN's MagFlow Pro ($159.99) and Anker's Prime dock ($229.99) add thermoelectric cooling and a display.</li>
+<li><strong>25 W in a pocket</strong>: the Baseus PicoGo AM52 ({buy:baseus-picogo-am52-qi2-2-10000mah-45w}; 10,000 mAh, 196 g, passive cooling). The Anker MagGo 2 Pro ($109.99, fan) and UGREEN MagFlow Pro ($149.99, liquid cooling) add active cooling; Belkin's UltraCharge Pro 10K ($99.99) has a kickstand and a display and is out of stock until November 19.</li>
+<li><strong>In the car</strong>: Belkin's UltraCharge vent mount is the 25 W option ($79.99, 36 W car adapter included). The ESR HaloLock ({buy:esr-halolock-15w-wireless-car-charger-cryoboost}) is a WPC-certified 15 W Qi2 mount with a fan, which is all an iPhone 12–15 or 17e can take.</li>
+<li><strong>iPhone 16, 16 Pro or Air</strong>: any 25 W row, at about 22 W (16, 16 Pro) or 20 W (Air). On a third-party Qi2 25W charger the iPhone 16 models need iOS 26.</li>
+<li><strong>iPhone 12–15 or 17e</strong>: 15 W is the phone's limit, so a 25 W charger is only worth it with a newer iPhone in mind. The ESR Magnetic Charging Pad ({buy:esr-qi2-mini-wireless-charger-15w}) charges them at 15 W; ESR states no Qi2 certification for it.</li>
+<li><strong>A desk that also charges a laptop</strong>: the ESR 100W 6-in-1 ({buy:esr-100w-6-in-1-magsafe-cryoboost-station}; Apple-certified 15 W MagSafe pad, Apple Watch and AirPods pads and 100 W of USB) or the Baseus Nomos 5-in-1 at {price:baseus-nomos-5-in-1-140w-qi2}: a Qi2 15 W pad plus a 140 W USB-C port. Both stop at 15 W for the phone.</li>
+<li><strong>iPhone Air</strong>: Apple's iPhone Air MagSafe Battery ($99) is made for it and charges it at up to 12 W; from the 25 W rows the Air takes up to 20 W.</li>
+<li><strong>iPhone 16e</strong>: no magnets, so magnetic pucks and mounts do not hold it; it charges at 7.5 W on a Qi pad, Apple's MagSafe Charger included.</li>
+<li><strong>Pixel or Galaxy</strong>: the Pixel 11 series and Pixel 10 Pro XL get 25 W from a Qi2 25W charger, Google's Pixelsnap Charger included; a Galaxy S26 Ultra gets 25 W with a magnetic case. Anker's MagGo 2 Pro is not for Android phones (Anker).</li>
+</ul>
+<h2>What else limits the watts</h2>
+<ul>
+<li><strong>The adapter.</strong> Apple's MagSafe Charger needs a 30 W adapter or higher (15 V / 2 A) for 25 W and 20 W for 15 W; with a 12 W adapter it still works, slowly. The WPC says a 25 W station needs a 30–40 W adapter or larger, and that on an old 20 W brick it charges below 25 W without saying so. Anker asks for 65 W on its Prime station.</li>
+<li><strong>Heat.</strong> The WPC says active cooling makes a measurable difference at 25 W under sustained load and far less at 15 W. Apple says that if the battery gets too warm, software might limit charging above 80 percent.</li>
+<li><strong>Anything plugged into the phone.</strong> With USB-C or Lightning accessories connected, Apple caps wireless charging at 7.5 W on the iPhone 16 models and the iPhone 15 and earlier, 10 W on the 17 Pro and 17 Pro Max, and 16 W on the iPhone 17, Air, 18 Pro and 18 Pro Max.</li>
+<li><strong>Order of plugging in.</strong> Apple: plug the MagSafe Charger into power before placing the iPhone on it; otherwise take the phone off, wait three seconds and put it back to get full power.</li>
+<li><strong>Cases.</strong> Case limits differ by maker: ESR supports magnetic cases under 2 mm, Anker says cases over 2.5 mm may reduce efficiency, UGREEN charges through cases up to 3 mm.</li>
+<li><strong>Checking a "Qi2.2" claim.</strong> Search the maker's part number in the WPC's certified-product database and read three fields: Version 2.2.1, Power Profile MPP25, Potential Load Power 25.0. Version 2.0.0, MPP and 15.0 is the 15 W tier.</li>
+</ul>
+""",
+ "sources": [
+  ("WPC, Qi wireless charging: Qi v2.0 (2023) and Qi v2.2.1, branded Qi2 25W and launched July 2025; Qi2 brought 15 W with magnetic attachment; Qi2 25W delivers nearly 70% more power and can charge a phone from 0 to 50% in about 30 minutes", "https://www.wirelesspowerconsortium.com/standards/qi-wireless-charging/"),
+  ("WPC, history of the Qi specifications: v1.2 up to 15 W; v2.0 (April 2023) introduced the Magnetic Power Profile with magnetic attachment and alignment; v2.2 (April 2025) up to 25 W with power modes for USB-C adapters; current version 2.2.1", "https://www.wirelesspowerconsortium.com/knowledge-base/qi-specification/history-of-the-qi-specifications/"),
+  ("WPC news release, Qi v2.2.1 branded Qi2 25W: major Android smartphones join Qi2 for the first time; Qi2 launched November 2023 at 15 W", "https://www.wirelesspowerconsortium.com/media/wvsmia32/qi2-25w-news-release-v72.pdf"),
+  ("WPC, Qi2 25W charging stations: the database fields for Qi2 25W (2.2.1, MPP25, 25.0); 'Qi2 compatible' or 'Qi2 enabled' products are not certified; 30–40 W adapter; iPhone 16 series on iOS 26, Galaxy S26 Ultra 25 W, rest of S26 15 W, Pixel 10 Pro XL 25 W; S25 and S26 need a Qi2 Ready case", "https://www.wirelesspowerconsortium.com/blog-pages/best-qi2-25w-charging-stations/"),
+  ("WPC certified-product database: Baseus power bank part E0028Z (PicoGo AM52), QI-24231, v2.2.1, MPP25, 25.0", "https://jpsapi.wirelesspowerconsortium.com/products/qi/24231"),
+  ("WPC database: ESR Qi2 Wireless Car Charger with CryoBoost (HaloLock), QI-21376, v2.0.0, MPP, 15.0", "https://jpsapi.wirelesspowerconsortium.com/products/qi/21376"),
+  ("WPC database: Baseus Nomos Power Strip, NMS67QI2-US, QI-22121, v2.0.0, MPP, 15.0", "https://jpsapi.wirelesspowerconsortium.com/products/qi/22121"),
+  ("WPC database: ESR 3-in-1 Charging Station, parts 2C588-01 (QI-24258), 2C588 (QI-25151), 2C590-01 (QI-24275), v2.2.1, MPP25 + BPP, 25.0", "https://jpsapi.wirelesspowerconsortium.com/products/qi/24258"),
+  ("WPC database: Anker A25X7 (QI-24419) and A110R (QI-24417); Belkin WIZ040 (QI-23778), WIA014 (QI-24043) and BPD014 (QI-24402); all v2.2.1, MPP25, 25.0", "https://jpsapi.wirelesspowerconsortium.com/products/qi/24417"),
+  ("Apple, How to use your MagSafe Charger: up to 25 W on iPhone 18 Pro, 17 models, 16 Plus and 16 Pro Max with a 30 W adapter; 20 W on iPhone Air, 22.5 W on iPhone 16 and 16 Pro; 15 W on iPhone 17e and iPhone 15 and earlier; 12 W on the 12 mini and 13 mini; limits with wired accessories; iPhone 16e charges as a non-MagSafe Qi device", "https://support.apple.com/en-us/105047"),
+  ("Apple, About iPhone charge speeds: use a MagSafe Charger or a Qi2-certified charger for faster wireless charging; a wireless charger under 10 W, like a Qi1-certified charger, is slow", "https://support.apple.com/en-us/120619"),
+  ("Apple Store, MagSafe Charger: certified for Qi2 25W and Qi; up to 25 W with a 30 W adapter for compatible iPhone 16 models, iPhone 17 models, iPhone Air, iPhone 18 Pro models and iPhone Duo; 15 W for iPhone 12 or later with a 20 W adapter; 7.5 W on Qi for iPhone 8 or later; $39 (1 m), $49 (2 m)", "https://www.apple.com/shop/product/mgd74ll/a/magsafe-charger-1-m"),
+  ("Apple tech specs, MagSafe and Qi2 wireless charging: iPhone 18 Pro, iPhone Duo, iPhone 17 and 17 Pro up to 25 W; iPhone Air up to 20 W; iPhone 17e up to 15 W", "https://www.apple.com/iphone-18-pro/specs/"),
+  ("Apple tech specs, iPhone 16 and 16 Plus (Qi2 up to 25 W), 16 Pro and 16 Pro Max (Qi2 up to 15 W, MagSafe up to 25 W), iPhone 13 and 15 (Qi2 15 W), iPhone 12 and 14 (MagSafe 15 W, Qi 7.5 W, no Qi2), iPhone 16e (works with Qi chargers)", "https://support.apple.com/en-us/121029"),
+  ("Apple, iPhone Air MagSafe Battery tech specs: made for iPhone Air, up to 12 W wireless; $99", "https://support.apple.com/en-us/125312"),
+  ("Apple Developer, accessories: MagSafe chargers are an MFi Program product type (licensed technologies, hardware components, certification and badge)", "https://developer.apple.com/accessories/"),
+  ("Google Store: Pixel 11 series Pixelsnap Qi2.2-certified up to 25 W; Pixel 10 Pro XL 25 W, Pixel 10 and 10 Pro 15 W; Pixelsnap Charger $39.99, 25 W (MPP) for Qi2.2-certified devices", "https://store.google.com/us/product/pixel_11_pro_specs?hl=en-US"),
+  ("Samsung, Compare Galaxy S26 series: S26 Ultra wireless up to 25 W, S26+ 20 W, S26 15 W; Samsung Magnet Cases snap onto magnetic accessories", "https://www.samsung.com/us/support/answer/ANS10010342/"),
+  ("Anker product pages: Prime Wireless Charging Station A25X7 (per-iPhone watts, 65 W adapter, TEC cooling) and MagGo 2 Pro A110R", "https://www.anker.com/products/a25x7-anker-prime-qi2-wireless-charging-station-25w-3-in-1-stand"),
+  ("Belkin product pages: UltraCharge Pro 3-in-1 dock, UltraCharge 3-in-1 Foldable, UltraCharge pad, UltraCharge Pro 10K power bank, Qi2.2 car vent mount; Qi2 chargers list (the BoostCharge Pro dock there is Qi2 15 W)", "https://www.belkin.com/products/wireless-chargers/qi2-wireless-chargers/"),
+  ("UGREEN product pages: MagFlow Pro Qi2 25W 3-in-1 (iPhone 16 needs iOS 26; 45 W adapter; TEC cooling) and MagFlow Pro 10,000 mAh power bank", "https://us.ugreen.com/products/magflow-pro-qi2-25w-3-in-1-wireless-charger"),
+  ("ESR and Baseus product pages for the six Dealectric products (ESR CryoBoost 3-in-1, Magnetic Charging Pad, HaloLock car charger, 100W 6-in-1; Baseus PicoGo AM52, Nomos 5-in-1)", "https://www.esrtech.com/products/3-in-1-25w-qi2-2-wireless-charging-station-us-plug-black"),
+ ],
+ "published": "2026-10-27", "checked": "2026-10-27"},
+
 ]
