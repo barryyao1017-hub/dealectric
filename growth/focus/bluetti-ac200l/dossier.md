@@ -44,8 +44,12 @@ no product section, no Add to Cart, no cart form (`main` element empty). The mak
 WebFetch and a browser. A shopper on that page can only reach the menu, which links to the "Discontinued" listing.
 - What does work: the Shopify cart link `https://www.bluettipower.com/cart/44449450852571:1` opened BLUETTI's checkout
   with the AC200L at $899 and "Your order is reserved for 19:53 minutes". I entered nothing and left the page.
-- So the unit is buyable, but only through a cart link. Whether Awin's tracking survives a landing on a cart link is
-  untested (see "Decisions for Barry").
+- `checkout.bluettipower.com/products/ac200l` (where W3's `/discount/AFF5OFF?redirect=` test lands) redirects to the
+  same blank `www` page (browser check about 08:52 UTC). So the discount link applies the code but still shows no buy
+  button.
+- So the unit is buyable, but only through a cart link. Shopify cart links also take `?discount=AFF5OFF`, which would
+  open checkout with the code applied (untested). Whether Awin's tracking survives a landing on a cart link is
+  untested too (see "Decisions for Barry").
 
 ## Facts that matter
 
@@ -138,7 +142,7 @@ No TT-30 here gives a full 30 A; all stop near 2,400 W. Elite 200 V2 and Elite 3
    itself after a full drain; no self-heating, no charging below 32 °F.
 7. `bluetti-elite-200-v2` caveat "buy the AC200L if you may add batteries later" now points shoppers at an end-of-run
    product. Point it at the Apex 200 (when listed) or the Apex 300 ($1,599, same batteries).
-8. Catalog: add the Apex 200 on launch day (Nov 4), with AFF5OFF tested on it.
+8. Catalog: add the Apex 200 on launch day (Nov 4), with AFF5OFF tested on it (DLC-73).
 
 `src/coupons.json`, AFF5OFF: the "CJ Affiliate" source label is accurate. The public trail (Feedico's CJ feed for
 "Bluetti Global", expiry 2030-12-30, matching ours; a third-party site using it with a CJ link) ties the code to CJ.
@@ -146,14 +150,14 @@ No public page ties it to Awin. The mismatch is our link network, not the label 
 
 ## Decisions for Barry
 
-1. **How shoppers buy the AC200L from our link.** The page we land on can't sell it. Options: (a) point
+1. **How shoppers buy the AC200L from our link (DLC-71).** The page we land on can't sell it. Options: (a) point
    `/go/bluetti-ac200l` at the cart link (`/cart/44449450852571:1`) through Awin's deep link, if Awin's tracking
    survives a cart-link landing (W3 can test that with one click, as DLC-53 did on 10-24); (b) keep the AC200L page
    but make the Elite 200 V2 the primary buy button, with the AC200L as "while stock lasts"; (c) drop the AC200L arm
    and move W3's BLUETTI arm to the Elite 200 V2 now and the Apex 200 on Nov 4. My pick: (b) now, plus (a) if the
    tracking test passes. ChatGPT finds us for the AC200L question, and the honest answer to it now points at the
    Elite 200 V2 or the Apex 200.
-2. **Which network carries BLUETTI.** AFF5OFF is a CJ-feed code (Bluetti Global, CJ cid 6191107, approved), while our
+2. **Which network carries BLUETTI (DLC-72).** AFF5OFF is a CJ-feed code (Bluetti Global, CJ cid 6191107, approved), while our
    BLUETTI links go through Awin (BLUETTI US, mid 59271), whose payouts wait on DLC-3 (awin-payout). A sale that pairs
    an Awin click with a CJ code may be credited to neither network cleanly. Options: check Awin's BLUETTI US
    voucher tab for an Awin code; or move BLUETTI links to CJ, which pays today but at 2-5% against Awin's 5-10%. This
