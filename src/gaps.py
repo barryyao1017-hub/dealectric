@@ -181,12 +181,12 @@ Smallest budgets: <strong>ALLPOWERS VOLIX P300 + 100 W</strong> ({buy:allpowers-
  "intro": """
 <p class="lead">What fits depends on the model year. Most add-on rear displays are made for the <strong>2020 to early-2025 Model Y</strong>; the refreshed <strong>2025–2026 Model Y (Juniper)</strong> has far fewer options, because most trims already come with Tesla's own 8-inch rear touchscreen and the add-on displays below were made for the older console.</p>
 <p><strong>Short answer.</strong> On a <strong>2025–2026 Model Y</strong>, for a big picture while parked (camping, charging stops), the
-<strong>Aurzen TravelPlay AutoCinema</strong> screen clips into the roof rim and turns the panoramic roof or the rear window into a 47–50 inch screen for any portable projector
+<strong>Aurzen TravelPlay AutoCinema</strong> screen clips into the glass roof for lie-back movies, or stands one panel at the front console for the back seat or in the open liftgate, as a 47-inch screen for a portable projector
 ({buy:aurzen-travelplay-autocinema-tesla-model-y}); pair it with the Aurzen ZIP ({buy:aurzen-zip-tri-fold-mini-projector}) or the 1080p ZIP Pro ({buy:aurzen-zip-pro-tri-fold-1080p-projector}).
 For a screen that works while driving, a Juniper Standard without a rear screen can take Hansshow's H86 ($399.99), and any Juniper except the Standard can take Hansshow's 18.5-inch flip-down ($1,049).
 The cheapest fix on any year is a seat-back tablet mount: TESERY's fits the seat gap for $19.99.
 On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are the usual choice: Teslahubs Rear Display Ultra ($269.99, 2019–2024), TESERY 8.66-inch ($359, to 2025.03) or Tlyard H86 ($359, to 2025.02).</p>
-<p>A projector screen and a rear display solve different problems: the projector setup is for parked movies (the screen covers the roof or rear window, and Aurzen says not to use it while driving); a rear display or tablet works on the road.</p>
+<p>A projector screen and a rear display solve different problems: the projector setup is for parked movies (the screen lines the roof or stands in front of the back seat with the front seats slid forward, and Aurzen says not to use it while driving); a rear display or tablet works on the road.</p>
 """,
  "columns": [("what", "What it is"), ("size", "Screen"), ("years", "Model Y years"), ("install", "Install"), ("plays", "What it plays"), ("use", "Power / when")],
  "rows": [

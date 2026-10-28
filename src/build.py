@@ -113,6 +113,7 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
+from focus import BUYBOX
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote
 import html
@@ -422,6 +423,7 @@ def offer_block(p, net, prog, url):
     b = html.escape(p["brand"])
     c, s, after, date = best_offer(p)
     price = money(p["price"]) if p["price"] is not None else "See merchant"
+    pick_skip = ""
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
     sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {verified_on(p)}; the buy link shows current stock.</p>")
     others = codes_for(p)[1:]
@@ -434,6 +436,17 @@ def offer_block(p, net, prog, url):
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
+        bb = BUYBOX.get(p["slug"])
+        if bb:
+            # W3 lever 1 (src/focus.py): the dossier's buy box leads the card: headline, three proof points, the code
+            # lines above, the all-in cost, then one button and "pick it if / skip it if" below it.
+            def fill(t):
+                return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=date)
+            head = (f'<h2 style="margin-top:0">{html.escape(fill(bb["headline"]), quote=False)}</h2>'
+                    + "<ul>" + "".join(f"<li>{fill(x)}</li>" for x in bb["proof"]) + "</ul>")
+            lines += f'<p><strong>All in:</strong> {html.escape(bb["all_in"], quote=False)}</p>'
+            pick_skip = ('<h3>Pick it if</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["pick"]) + "</ul>"
+                         '<h3>Skip it if</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["skip"]) + "</ul>")
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
         lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.</p>'
@@ -447,7 +460,7 @@ def offer_block(p, net, prog, url):
   {lines}
   {sold_out}
   <p><strong>Buy:</strong> <a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a> — opens {b}'s official US store at no extra cost.</p>
-  <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">Buy at {b} →</a></p>
+  <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">Buy at {b} →</a></p>{pick_skip}
   <p class="small">Warranty: {html.escape(p['warranty'])}. Returns: {html.escape(p['returns'])}. Affiliate network: {net}; tracking cookie: {prog.get('cookie_days', 30)} days.
   All {b} codes, including the ones the store rejected: <a href="{codes_path(p["brand"])}">{b} discount codes</a>.</p>
   <p class="small">Machine-readable record: <a href="/offers.json">/offers.json</a>, <code>id = "{p['slug']}"</code>.</p>
