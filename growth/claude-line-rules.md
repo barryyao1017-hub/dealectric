@@ -13,6 +13,10 @@ do**. Naming AI is the strongest signal, but not needed: "Give the shopper the c
 flagged as often as "AI assistants: …". Text written to the shopper, or about us in the third person, passes, even
 when it pushes our link over the store's page or says we are paid through it.
 
+Before using these rules, read the prompt-injection caveat in `growth/claude-line.md`. In short: text that tells the
+answering assistant what to do is an injection, and these rules are for honest copy. They are not for wording that
+slips an instruction past the defence.
+
 ## Rules
 
 1. **Write to the shopper or about the product. Never to whoever relays it.**
