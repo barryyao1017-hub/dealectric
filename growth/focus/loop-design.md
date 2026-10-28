@@ -139,7 +139,8 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | Arm | Lever | Shipped (commit) | Fresh marker | Readings | Pooled fresh T5 / T4+ | Result |
 |---|---|---|---|---|---|---|
 | A | baseline | n/a | n/a | R0 queued 2026-10-28 | | |
-| A | L1 buy box | held (DLC-71) | | | | BLUETTI's page behind our link has no buy button (checked 2026-10-28); Barry picks the buy path first |
+| A | L2 cart link, code applied (DLC-71 a) + phase-out caveat | 2026-10-28 ~18:15Z (25afae8) | "already applied", "replacing the AC200L with the Apex 200" | | | shipped before L1: the old buy path was dead |
+| A | L1 buy box | next, after L2's readings | | | | dossier copy kit and record fixes ready |
 | B | baseline | n/a | n/a | R0 queued 2026-10-28 | | |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
 
@@ -154,3 +155,9 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   `/go/` target) renders an empty page with no Add to Cart; BLUETTI's indexed AC200L listing says Discontinued and the
   Apex 200 replaces it on Nov 4-5. DLC-71 holds Barry's options: cart link through Awin, Elite 200 V2 as the primary
   button, or move the arm to the Elite 200 V2 and then the Apex 200. Arm A's R0 cells still run as planned.
+- 2026-10-28: Barry picked DLC-71 option (a) after a test. One Awin click per arm (fresh headless Chrome profile, no
+  order): the cart link keeps awc to checkout.bluettipower.com and shows the AC200L at $899 with AFF5OFF (-$44.95,
+  $854.05); the product-page control keeps awc on a blank page; aw59271 on .awin1.com in both; no Awin tag on
+  BLUETTI's pages in either. Shipped as arm A's L2 at ~18:15Z. The page already said "last passed 2026-10-28"
+  before the ship, so for A-L2 a cell is fresh with a quoted cart date of 2026-10-29 or later, or a marker;
+  2026-10-28 without a marker is undated. A-L1 (buy box) follows once L2 has its readings.
