@@ -54,6 +54,24 @@ passed <date>": the claim is daily testing, and the date is the evidence. Never 
 
 By hand: `python3.12 tools/codesweep.py --dry-run` lists the checks; `--no-push` checks, merges and rebuilds only.
 
+## Product links: the daily link check (DLC-35)
+
+After the cart checks and before it publishes, the sweep runs `tools/linkcheck.py` in its own process (15 min timeout;
+a crash, hang or bad result is logged as "links: check failed" and the sweep publishes anyway). For every catalog
+product it GETs the record's `url` as a browser would (redirects followed, 3 s between requests to one store, 6 s on
+ALLPOWERS and Soundcore, 20 s on BLUETTI), reads the Shopify product JSON (`<url>.js`, Soundcore's on `us.soundcore.com`) or the page's
+schema.org availability, and requests `dealectric.com/go/<slug>` without following it, to confirm the Location is the
+deep link in `worker/src/links-map.json` with the `<slug>.<click id>` sub-ID. It flags BROKEN, MOVED, DELISTED, SOLD
+OUT or BACK IN STOCK (against `in_stock`), a /go/ mismatch and a stale link map; a 429, a bot challenge or a network
+error is UNANSWERED, never broken, and a store that refuses both tries gets no more requests that run. Results go to
+`<date>-links.json` here and a "links:" line in the sweep's commit message. It only flags: the weekly price check
+(DLC-9) edits `products.py`. Each /go/ check is one row in D1 `clicks` with user agent `dealectric-linkcheck-bot`
+(`bot_like=1`, so the click counts in `worker/README.md` leave it out). Tenergy's store answers every non-browser client
+with a Cloudflare challenge, so its five products come back unanswered every day (their /go/ links are still checked);
+the script does not try to get past it. Not checked: CJ/Awin program status (visible
+only in the network dashboards), and the tracking parameters on the store's landing page, since seeing those takes a
+real click through the network.
+
 ## Logs
 
 - `2026-10-21-checks.jsonl`: first sweep. One JSON object per check: code, store, product, subtotal, `code_amount`, the Shopify discount applications, and `checked_at`.

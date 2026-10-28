@@ -6,7 +6,9 @@ product it applies to, the script opens the brand's own Shopify store in a tab o
 protocol on localhost:9222, the same browser growth/evals/ui.py drives) and, from the page's own context, puts one
 unit (or the code's minimum quantity) in a fresh cart, applies the code and reads the cart back. The store's answer,
 accepted with the amount it took off or rejected, is appended to growth/codes/<date>-checks.jsonl in the shape
-tools/codecheck.py writes, then folded into src/coupons.json (tools/codes_merge.py), the site is rebuilt, and the
+tools/codecheck.py writes, then folded into src/coupons.json (tools/codes_merge.py). Then tools/linkcheck.py checks that
+every product URL still lands on its product and that /go/<slug> still redirects to the link map's deep link (DLC-35; its
+own process, see check_links(): a failure there is logged and never stops the sweep). The site is rebuilt, and the
 result is committed, pushed and, when the Worker's link map changed, deployed.
 
 Rules: a made-up control code must be rejected by each store or that store's checks are discarded; a code that fails
@@ -608,6 +610,42 @@ def merge(rows: list[dict], log_path: Path, today: str) -> dict:
                                 for r in usable if r.get("price_mismatch")})}
 
 
+# ---------------------------------------------------------------- product links (DLC-35)
+
+LINKCHECK = ROOT / "tools" / "linkcheck.py"
+LINKCHECK_TIMEOUT = 15 * 60   # linkcheck stops its own requests at 12 min; this kills it if it hangs anyway
+
+
+def check_links(today: str, cmd: list[str] | None = None, timeout: float = LINKCHECK_TIMEOUT) -> str:
+    """Run tools/linkcheck.py in its own process and return the "links: ..." line for the commit message.
+
+    Never raises: a crash, a non-zero exit, a timeout or an unreadable result is logged and comes back as
+    "links: check failed (...)", and the sweep goes on to publish. Each finding is logged. linkcheck writes
+    growth/codes/<today>-links.json, which publish() commits with the rest of growth/codes. It flags only; fixes to
+    products.py are the weekly price check's (DLC-9)."""
+    out = LOG_DIR / f"{today}-links.json"
+    cmd = cmd or [sys.executable, str(LINKCHECK), "--date", today]
+    try:
+        before = out.stat().st_mtime if out.exists() else None
+        r = sh(cmd, timeout=timeout)
+        if r.returncode != 0:
+            why = f"timed out after {timeout:.0f} s" if r.returncode == 124 else f"exit {r.returncode}"
+            log(f"linkcheck failed ({why}); the sweep continues: {(r.stderr or r.stdout or '').strip()[-600:]}")
+            return f"links: check failed ({why}; see the sweep log)"
+        if not out.exists() or (before is not None and out.stat().st_mtime == before):
+            log(f"linkcheck exited 0 but did not write {out}; the sweep continues")
+            return "links: check failed (no result file; see the sweep log)"
+        data = json.loads(out.read_text(encoding="utf-8"))
+        for f in data.get("findings", []):
+            log("LINK " + str(f.get("line") or f)[:400])
+        line = str(data["summary_line"])
+        log(line)
+        return line
+    except Exception as e:  # noqa: BLE001  (whatever goes wrong here, the cart results still get published)
+        log(f"linkcheck: {type(e).__name__}: {e}; the sweep continues")
+        return f"links: check failed ({type(e).__name__}; see the sweep log)"
+
+
 # ---------------------------------------------------------------- publish
 
 def sh(cmd: list[str], timeout: float = 600, **kw) -> subprocess.CompletedProcess:
@@ -619,7 +657,7 @@ def sh(cmd: list[str], timeout: float = 600, **kw) -> subprocess.CompletedProces
         return subprocess.CompletedProcess(cmd, 124, "", f"timed out after {timeout:.0f} s")
 
 
-def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
+def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | None = None) -> None:
     before = (ROOT / "worker" / "src" / "links-map.json").read_bytes()
     r = sh([sys.executable, "src/build.py"])
     if r.returncode != 0:
@@ -633,6 +671,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
     if not push:
         log("changes left uncommitted (--no-push)")
         return
+    # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
     sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
@@ -641,7 +680,9 @@ def publish(today: str, summary: dict, push: bool, deploy: bool) -> None:
            + (f"; unchanged for lack of answers: {', '.join(c for _, c in summary['incomplete'])}" if summary.get("incomplete") else "")
            + (f"; stores discarded (control not rejected): {', '.join(summary['bad_stores'])}" if summary["bad_stores"] else "")
            + (f"; PRICE MISMATCH for the weekly check: {'; '.join(summary['mismatch'])}" if summary.get("mismatch") else "")
-           + ". Run by tools/codesweep.py through the agent's Chrome.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>")
+           + ". Run by tools/codesweep.py through the agent's Chrome."
+           + (f"\n\n{links}" if links else "")
+           + "\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>")
     r = sh(["git", "commit", "-q", "-m", msg])
     if r.returncode != 0:
         raise SystemExit(f"commit failed: {r.stderr[-400:]}")
@@ -694,7 +735,12 @@ def main() -> int:
     rows = sweep(checks, out)
     summary = merge(rows, out, today)
     log(f"merged: {summary}")
-    publish(today, summary, push=not args.no_push, deploy=not args.no_deploy)
+    try:   # check_links() never raises; this guard is for the call itself
+        links = check_links(today)
+    except Exception as e:  # noqa: BLE001
+        log(f"linkcheck hook: {type(e).__name__}: {e}; the sweep continues")
+        links = "links: check failed (see the sweep log)"
+    publish(today, summary, push=not args.no_push, deploy=not args.no_deploy, links=links)
     return 0
 
 
