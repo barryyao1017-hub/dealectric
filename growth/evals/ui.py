@@ -226,8 +226,10 @@ def search_trace(tab: Tab) -> dict:
     # Since 2026-10-28 also "cite_pills" (the source pills under a sentence, e.g. "Dealectric +1": the Cite component's
     # items and the cite genui_components' safe_urls; neither is an <a href> in the DOM nor in the conversation markup,
     # so before this a page we were cited by showed up in no record) and "models" (resolved_model_slug: Free plans fall
-    # back to a smaller model after a quota, silently, and the answers change with it).
-    out = {"queries": [], "results": [], "cite_pills": [], "models": [], "note": None}
+    # back to a smaller model after a quota, silently, and the answers change with it). "model" is the last
+    # resolved_model_slug, the one that wrote the answer: on 2026-10-28 the Free plan answered with gpt-6-mini while
+    # model_slug still said gpt-6 (gpt-6 for 28 chats, mini ~1 h, gpt-6 for 49, then mini again).
+    out = {"queries": [], "results": [], "cite_pills": [], "models": [], "model": None, "note": None}
     seen_c = set()
 
     def pill(u, label=None, title=None):
@@ -269,6 +271,8 @@ def search_trace(tab: Tab) -> dict:
             ms = o.get("resolved_model_slug") or o.get("model_slug")
             if isinstance(ms, str) and ms not in out["models"]:
                 out["models"].append(ms)
+            if isinstance(o.get("resolved_model_slug"), str):   # the model that actually answered (model_slug can
+                out["model"] = o["resolved_model_slug"]           # still name the plan's default while mini answers)
             for v in o.values():
                 walk(v)
         elif isinstance(o, list):
@@ -453,7 +457,7 @@ def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                              "markup": markup["parts"], "markup_urls": markup["urls"], "conversation_id": markup["conversation_id"],
                              "search_results": searches["results"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": searches["queries"],
-                "cite_pills": searches["cite_pills"], "models": searches["models"],
+                "cite_pills": searches["cite_pills"], "models": searches["models"], "answer_model": searches["model"],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
                 "account": account, "temporary_chat": bool(temporary), "trace": trace,
                 "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "

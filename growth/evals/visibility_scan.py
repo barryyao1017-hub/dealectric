@@ -17,7 +17,7 @@ results, the model that answered and the cart dates the answer quotes.
 
 Limit test (Barry, 2026-10-28): the run goes back to back and logs every throttle notice and every change of the
 answering model to runs/<run>/events.jsonl. A Free plan drops to a smaller model after a quota without any error, so a
-chat answered by a model other than the run's first one counts as "downgraded": it is logged, the run sleeps
+chat whose resolved_model_slug is not --model (gpt-6) counts as "downgraded": it is logged, the run sleeps
 --cooldown seconds and asks the same question again until the original model is back. The events file is the
 evidence for the scan's safe pace. Screenshots are kept only for T3 and up (about 200 KB each).
 """
@@ -138,26 +138,27 @@ def log(path: Path, row: dict) -> None:
 
 
 def done_cells(out: Path) -> set[str]:
+    """Cells with an answer from the run's model. A downgraded line stays in scan.jsonl as evidence for the limit
+    test, but its cell counts as not done and is asked again."""
     p = out / "scan.jsonl"
-    return {json.loads(l)["cell"] for l in p.open()} if p.exists() else set()
+    return {r["cell"] for r in map(json.loads, p.open()) if not r.get("downgraded")} if p.exists() else set()
 
 
 def run(args) -> int:
     out = E.RUNS_DIR / args.run_id
     (out / "chatgpt").mkdir(parents=True, exist_ok=True)
-    bank = json.loads(BANK.read_text())["questions"] if BANK.exists() else build_bank()
+    qfile = Path(args.questions) if args.questions else BANK
+    bank = json.loads(qfile.read_text())["questions"] if qfile.exists() else build_bank()
     if args.only:
         keep = set(args.only.split(","))
         bank = [q for q in bank if q["slug"] in keep or q["qid"] in keep or q["phrasing"] in keep]
-    todo = []
+    done = done_cells(out)
     if args.retest:
         rows = [json.loads(l) for l in (out / "scan.jsonl").open()]
         hits = {r["qid"] for r in rows if r.get("tier", 0) >= 2 and r["n"] == 1 and not r.get("downgraded")}
-        have2 = {r["qid"] for r in rows if r["n"] == 2}
-        todo = [(q, 2) for q in bank if q["qid"] in hits and q["qid"] not in have2]
+        todo = [(q, 2) for q in bank if q["qid"] in hits and f"{q['qid']}-2" not in done]
     else:
-        done = done_cells(out)
-        todo = [(q, 1) for q in bank if f"{q['qid']}-1" not in done]
+        todo = [(q, n) for n in range(1, args.n + 1) for q in bank if f"{q['qid']}-{n}" not in done]
     todo = todo[: args.limit] if args.limit else todo
     base_model = args.model
     events = out / "events.jsonl"
@@ -165,7 +166,7 @@ def run(args) -> int:
     n_ok = 0
     for i, (q, n) in enumerate(todo):
         cell = f"{q['qid']}-{n}"
-        for attempt in range(1, 7):
+        for attempt in range(1, 13):
             started = E.now_iso()
             shot = out / "chatgpt" / f"{cell}.jpg"
             try:
@@ -182,10 +183,8 @@ def run(args) -> int:
                 log(events, {"at": E.now_iso(), "event": "not_signed_in", "cell": cell, "account": rec.get("account")})
                 return 2
             models = rec.get("models") or []
-            if base_model is None and models:
-                base_model = models[-1]
-                log(events, {"at": E.now_iso(), "event": "base_model", "model": base_model})
-            downgraded = bool(base_model and models and base_model not in models)
+            answer_model = rec.get("answer_model")
+            downgraded = bool(answer_model and answer_model != base_model)
             rec.update(qid=q["qid"], slug=q["slug"], phrasing=q["phrasing"], n=n, prompt=q["prompt"], started_at=started,
                        finished_at=E.now_iso(), run_id=args.run_id, downgraded=downgraded)
             s = score(rec, q)
@@ -194,15 +193,15 @@ def run(args) -> int:
                 shot.unlink()
             log(out / "scan.jsonl", {"cell": cell, "qid": q["qid"], "slug": q["slug"], "phrasing": q["phrasing"], "n": n,
                                      "started_at": started, "latency_s": rec.get("latency_s"), "models": models,
+                                     "answer_model": answer_model,
                                      "downgraded": downgraded, "queries": rec.get("queries"), **s})
-            print(f"{i + 1}/{len(todo)} {cell} T{s['tier']} rank={s['our_rank']} model={models} {'DOWNGRADED' if downgraded else ''}", flush=True)
+            print(f"{i + 1}/{len(todo)} {cell} T{s['tier']} rank={s['our_rank']} model={answer_model} {'DOWNGRADED' if downgraded else ''}", flush=True)
             if downgraded:
                 log(events, {"at": E.now_iso(), "event": "downgraded", "after_ok": n_ok, "cell": cell, "models": models,
                              "base_model": base_model, "cooldown_s": args.cooldown})
                 if args.stop_on_limit:
                     return 3
                 time.sleep(args.cooldown)
-                (out / "scan.jsonl").write_text("".join(l for l in (out / "scan.jsonl").open() if json.loads(l)["cell"] != cell))
                 continue
             n_ok += 1
             break
@@ -213,13 +212,14 @@ def run(args) -> int:
 
 def report(run_id: str) -> None:
     out = E.RUNS_DIR / run_id
-    rows = [json.loads(l) for l in (out / "scan.jsonl").open()]
+    every = [json.loads(l) for l in (out / "scan.jsonl").open()]
+    rows = list({r["cell"]: r for r in every if not r.get("downgraded")}.values())   # latest answer from the run's model
     bank = {q["qid"]: q for q in json.loads(BANK.read_text())["questions"]}
     by = {}
     for r in rows:
         by.setdefault(r["slug"], []).append(r)
     lines = [f"# ChatGPT visibility scan ({run_id})", "",
-             f"{len(rows)} chats, signed in (Free), temporary, unprompted. Tiers: T5 /go/ link, T4 our page linked or as a "
+             f"{len(rows)} cells answered by gpt-6 ({len(every) - len(rows)} gpt-6-mini answers set aside), signed in (Free), temporary, unprompted. Tiers: T5 /go/ link, T4 our page linked or as a "
              "source pill, T3 Dealectric named, T2 our page in ChatGPT's results only, T1 absent. Made by "
              "`growth/evals/visibility_scan.py --report`.", "",
              "| product | network | chats | best | T2+ | T4+ | per phrasing (tier, our rank) |", "|---|---|---|---|---|---|---|"]
@@ -248,8 +248,10 @@ def main() -> int:
     ap.add_argument("--only", help="comma list of slugs, qids or phrasings")
     ap.add_argument("--retest", action="store_true", help="second run (n=2) of every T2+ question")
     ap.add_argument("--pace", type=float, default=20, help="seconds between chats")
-    ap.add_argument("--cooldown", type=float, default=1800, help="seconds to wait after a downgraded answer")
-    ap.add_argument("--model", help="expected model slug (default: the first answer's)")
+    ap.add_argument("--cooldown", type=float, default=1200, help="seconds to wait after a downgraded answer")
+    ap.add_argument("--model", default="gpt-6", help="the model every scored answer must come from (resolved_model_slug)")
+    ap.add_argument("--questions", help="question file (default growth/focus/questions.json), e.g. growth/focus/loop-questions.json")
+    ap.add_argument("--n", type=int, default=1, help="runs per question")
     ap.add_argument("--stop-on-limit", action="store_true", help="exit 3 at the first downgraded answer")
     ap.add_argument("--report", action="store_true")
     args = ap.parse_args()
