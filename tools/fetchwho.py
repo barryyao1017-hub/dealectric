@@ -2,7 +2,8 @@
 """Who fetched dealectric.com: our own evals or outside users? (added 2026-10-28)
 
 Pulls Cloudflare-verified AI Assistant fetches (ChatGPT-User and any other bot Cloudflare files under "AI Assistant")
-and the Worker's D1 `clicks` rows (kind ai_fetch and redirect) for a date range, and matches each against the times
+and the Worker's D1 `clicks` rows (kind ai_fetch and redirect) and `landings` rows (pages opened from a link tagged
+utm_source) for a date range, and matches each against the times
 we know our own assistants were working:
 
   * growth/evals/footprint.jsonl, one entry per chat or probe since 2026-10-28 (evallib.footprint);
@@ -33,7 +34,7 @@ Classes, for a verified fetch:
 
 A fetch is matched only against chats of the same assistant family (ChatGPT-User against ChatGPT and OpenAI API
 chats, Claude-User against Claude ones); footprints of our own direct fetches (copycheck.py) match any
-user agent. Index and training crawlers (OAI-SearchBot, GPTBot, ClaudeBot ...) are their own class, "crawler". D1 redirect rows (browsers,
+user agent. Index and training crawlers (OAI-SearchBot, GPTBot, ClaudeBot ...) are their own class, "crawler". D1 redirect and landing rows (browsers,
 scanners) are matched only against those direct-fetch footprints and our tools' user agents.
 
 Default --slack 120 s, picked from the data on 2026-10-28 (--offsets, 2026-10-20..28): of 262 US ChatGPT-User fetches,
@@ -289,7 +290,15 @@ def d1_fetches(since: datetime, until: datetime) -> tuple[list[dict], str | None
         out.append({"src": f"d1 {r['kind']}", "ts": parse_ts(r["ts"]), "n": 1, "country": r.get("country") or "?",
                     "path": f"/go/{r['slug']}", "ua": r.get("user_agent") or "", "bot_like": r.get("bot_like"),
                     "bot": bot_name(r.get("user_agent") or "") if r["kind"] == "ai_fetch" else ("bot-like" if r.get("bot_like") else "browser")})
-    return out, err
+    # page landings tagged utm_source (the Worker's landing log, W3 step 0, since 2026-10-28): matched like redirects
+    lrows, lerr = E.d1_query("SELECT ts, page, utm_source, user_agent, country, bot_like FROM landings "
+                             f"WHERE ts >= '{iso(since)}' AND ts < '{iso(until)}' ORDER BY ts")
+    for r in lrows:
+        out.append({"src": "d1 landing", "ts": parse_ts(r["ts"]), "n": 1, "country": r.get("country") or "?",
+                    "path": f"/{r['page']}?utm_source={r.get('utm_source') or ''}", "ua": r.get("user_agent") or "",
+                    "bot_like": r.get("bot_like"), "bot": "bot-like" if r.get("bot_like") else "browser"})
+    out.sort(key=lambda f: f["ts"])
+    return out, err or lerr
 
 
 def classify(f: dict, idx: Index, slack: float, near_min: float, bursts: dict | None = None) -> dict:
@@ -302,7 +311,7 @@ def classify(f: dict, idx: Index, slack: float, near_min: float, bursts: dict | 
     if f["bot"] in CRAWLERS:
         return {**f, "cls": "crawler", "why": "training/index crawler, not driven by a chat", "off": float("inf"), "win": None}
     fam = fetch_family(f["bot"])
-    off, w = idx.offset(f["ts"], families={None} if f["src"] == "d1 redirect" else ({fam, None} if fam else None))
+    off, w = idx.offset(f["ts"], families={None} if f["src"] in ("d1 redirect", "d1 landing") else ({fam, None} if fam else None))
     if f["country"] != OUR_COUNTRY:
         return {**f, "cls": "outside", "why": f"country {f['country']}", "off": off, "win": w}
     if w and abs(off) <= slack:
@@ -409,6 +418,7 @@ def main() -> int:
         if d1r:
             summary([r for r in d1r if r["src"] == "d1 ai_fetch"], "D1 /go/ ai_fetch (assistant user agents; overlaps Cloudflare)")
             summary([r for r in d1r if r["src"] == "d1 redirect"], "D1 /go/ redirect (browsers, scanners, curl)")
+            summary([r for r in d1r if r["src"] == "d1 landing"], "D1 page landings tagged utm_source (browsers, scanners)")
     if a.offsets:
         offsets_table([r for r in cfr if r["bot"] == "ChatGPT-User"])
     want = set(CLASSES) if a.list == "all" else {c.strip() for c in a.list.split(",") if c.strip()}

@@ -697,7 +697,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
             log("Worker link map changed but no Cloudflare token in the keychain; deploy by hand")
         else:
             try:
-                r = subprocess.run(["npx", "--yes", "wrangler", "deploy"], cwd=ROOT / "worker", text=True, capture_output=True,
+                r = subprocess.run(["bash", "deploy.sh"], cwd=ROOT / "worker", text=True, capture_output=True,   # wrangler deploy + page route fail open
                                    env={**os.environ, "CLOUDFLARE_API_TOKEN": tok}, timeout=600)
             except subprocess.TimeoutExpired:
                 r = subprocess.CompletedProcess([], 124, "", "timed out after 600 s; deploy by hand")

@@ -24,6 +24,27 @@ CREATE INDEX IF NOT EXISTS clicks_ts ON clicks (ts);
 CREATE INDEX IF NOT EXISTS clicks_slug ON clicks (slug);
 CREATE INDEX IF NOT EXISTS clicks_click_id ON clicks (click_id);
 
+-- Added 2026-10-28 (W3 step 0): page requests that arrive with a utm_source tag. The Worker passes every page through
+-- to GitHub Pages unchanged and logs only these. ChatGPT tags its links utm_source=chatgpt.com.
+CREATE TABLE IF NOT EXISTS landings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts TEXT NOT NULL,            -- ISO 8601 UTC
+  page TEXT NOT NULL,          -- path without slashes or .html ("" = home); equals clicks.slug on a product page
+  path TEXT NOT NULL,          -- raw request path
+  method TEXT,                 -- GET or HEAD
+  status INTEGER,              -- status the origin answered with (200, 301, 404)
+  query TEXT,                  -- raw query string
+  utm_source TEXT,             -- parsed utm_source, e.g. chatgpt.com
+  referrer TEXT,
+  user_agent TEXT,
+  country TEXT,
+  verified_bot TEXT,           -- Cloudflare verified-bot category, if any
+  bot_like INTEGER DEFAULT 0,  -- same user-agent heuristic as clicks
+  purpose TEXT                 -- Sec-Purpose / Purpose header: set on browser prefetches and prerenders
+);
+CREATE INDEX IF NOT EXISTS landings_ts ON landings (ts);
+CREATE INDEX IF NOT EXISTS landings_page ON landings (page);
+
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   ts TEXT NOT NULL,

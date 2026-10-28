@@ -2,7 +2,7 @@
 # Deploy (token in the keychain, see memory note cloudflare-workers-token):
 #   cd worker
 #   export CLOUDFLARE_API_TOKEN=$(security find-generic-password -a dealectric -s cloudflare-workers-token -w)
-#   npx wrangler deploy
+#   bash deploy.sh        (wrangler deploy, then the page route back to fail open)
 name = "dealectric-edge"
 main = "src/index.js"
 compatibility_date = "2026-09-01"
@@ -11,10 +11,13 @@ workers_dev = false
 
 # Trailing wildcards are required: a pattern without one does not match a URL that carries a
 # query string, so "dealectric.com/feedback" alone missed GET /feedback?message=... (fell through to
-# GitHub Pages). The Worker itself 404s anything that is not /go/<slug> or /feedback.
+# GitHub Pages). Since 2026-10-28 dealectric.com/* also runs the Worker, which passes every page to GitHub Pages
+# unchanged and only logs the landings that carry a utm_source tag (D1 `landings`). That route fails open on the daily
+# request limit only when deployed with deploy.sh: wrangler deploy alone resets it to fail closed (worker/README.md).
 routes = [
   { pattern = "dealectric.com/go*", zone_name = "dealectric.com" },
   { pattern = "dealectric.com/feedback*", zone_name = "dealectric.com" },
+  { pattern = "dealectric.com/*", zone_name = "dealectric.com" },
 ]
 
 [observability]
