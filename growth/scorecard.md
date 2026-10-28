@@ -24,5 +24,14 @@ Bing and Brave; Google Search Console and Bing Webmaster Tools (agent Chrome, ba
   indexed" as of the 10-25 report; the pages added since 10-23 are not in it yet (11 requested 10-27). 32 impressions,
   0 clicks, average position 38.6; top query "allpowers kod rabatowy" (5). Merchant listings: 22 invalid for a missing
   `image`, all crawled before the spec-card images went live on 10-21 (validation started 10-27). Bing WMT not read.
-</content>
-</invoke>
+
+**Search crawlers by name** (read 2026-10-28; Cloudflare, 10-14 to 10-28). A bot's name in the UA proves nothing:
+count only requests Cloudflare marks with a `verifiedBotCategory`, and check the paths against the sitemap.
+- OAI-SearchBot (builds ChatGPT's own search index): 182 verified requests, first real page 10-21, covering 53 of the
+  75 sitemap URLs plus 41 `/go/` links. Another 300 requests carry its UA but are scanners (`.env` and key-file probes).
+- Claude-SearchBot: never visited. All 296 requests with its UA are unverified and hit 0 site pages (secret-file
+  probes). Claude's index is Brave, still 0 pages.
+- PerplexityBot: never visited. All 273 requests with its UA are unverified scanners, 0 site pages.
+- Bingbot: 28 verified requests 10-20 to 10-28, all 200, only sitemap, home, robots, `/products` and assets; Bing
+  Webmaster shows 0 backlinks (DLC-31).
+- Googlebot 199 and Google-InspectionTool 177 verified requests since 10-21; Amazonbot 125, Applebot 43.

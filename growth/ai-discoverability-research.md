@@ -48,17 +48,17 @@ Everything commercial for us today runs through the second path, so that is what
 
 ## 2. The index behind each assistant, and where Dealectric stands today
 
-| Assistant | Retrieval index | Crawler that decides citation eligibility | Our status, 2026-10-18 |
-|---|---|---|---|
-| ChatGPT search / shopping | Bing plus OpenAI's own OAI-SearchBot and unnamed "third-party search providers" | OAI-SearchBot (must be allowed; is) | `site:dealectric.com` on Bing: **0 pages**. OAI-SearchBot: **never visited**. ChatGPT-User: 5 fetches (our own tests). GPTBot (training): 19 requests |
-| Claude (web search) | Brave Search (Brave is on Anthropic's subprocessor list; 80 to 88% of Claude's cited URLs are in Brave's top 10 per two vendor measurements) | Claude-SearchBot | Brave: **0 pages**. Claude-SearchBot: **never visited**. ClaudeBot (training): 100 requests, our most frequent bot |
-| Gemini / Google AI Mode / AI Overviews | Google's index; Google says no extra requirements beyond being indexed with a snippet | Googlebot | Google: **3 of 42 pages** indexed (home, /privacy, /agents). Googlebot: 25+ requests. Sitemap read 10/14 |
-| Microsoft Copilot | Bing | Bingbot | 7 Bingbot requests; 0 pages indexed |
-| Perplexity | Own index (plus merchant feeds and Shopify) | PerplexityBot | **Never visited** |
-| Amazon Alexa for Shopping | Amazon catalog plus Shop Direct merchant feeds; Amazonbot crawls the web | Amazonbot | 50 requests. No path for a non-merchant |
-| Training sets generally | Common Crawl monthly crawls, filtered | CCBot | **No captures** of dealectric.com in the Aug and Sep 2026 crawls |
+| Assistant | Retrieval index | Crawler that decides citation eligibility | Our status, 2026-10-18 | 2026-10-28 |
+|---|---|---|---|---|
+| ChatGPT search / shopping | Bing plus OpenAI's own OAI-SearchBot and unnamed "third-party search providers" | OAI-SearchBot (must be allowed; is) | `site:dealectric.com` on Bing: **0 pages**. OAI-SearchBot: **never visited**. ChatGPT-User: 5 fetches (our own tests). GPTBot (training): 19 requests | Bing: home page only. **OAI-SearchBot: crawling since 10-21**, 182 verified requests over 53 of 75 sitemap URLs and 41 `/go/` links |
+| Claude (web search) | Brave Search (Brave is on Anthropic's subprocessor list; 80 to 88% of Claude's cited URLs are in Brave's top 10 per two vendor measurements) | Claude-SearchBot | Brave: **0 pages**. Claude-SearchBot: **never visited**. ClaudeBot (training): 100 requests, our most frequent bot | Brave: **0 pages** (10-27). Claude-SearchBot: **never visited**; all 296 requests with its UA are unverified scanners |
+| Gemini / Google AI Mode / AI Overviews | Google's index; Google says no extra requirements beyond being indexed with a snippet | Googlebot | Google: **3 of 42 pages** indexed (home, /privacy, /agents). Googlebot: 25+ requests. Sitemap read 10/14 | Google: **46 pages** indexed (10-27). Googlebot 199 and Google-InspectionTool 177 verified requests since 10-21 |
+| Microsoft Copilot | Bing | Bingbot | 7 Bingbot requests; 0 pages indexed | Bing: home page only; 'Discovered but not crawled' elsewhere, 0 backlinks. Verified Bingbot 28 requests 10-20 to 10-28, no product page |
+| Perplexity | Own index (plus merchant feeds and Shopify) | PerplexityBot | **Never visited** | PerplexityBot: **never visited**; all 273 requests with its UA are unverified scanners |
+| Amazon Alexa for Shopping | Amazon catalog plus Shop Direct merchant feeds; Amazonbot crawls the web | Amazonbot | 50 requests. No path for a non-merchant | Amazonbot 125 verified requests since 10-21 |
+| Training sets generally | Common Crawl monthly crawls, filtered | CCBot | **No captures** of dealectric.com in the Aug and Sep 2026 crawls | not re-checked |
 
-The Cloudflare figures are verified-bot requests since 2026-10-10 (`tools/cf.py`, `verifiedBotCategory`). Checks of Bing and Brave used `site:dealectric.com` in the browser; both returned unrelated results or "too few matches", which is what they show for a domain with no indexed pages. The Google check returned exactly three dealectric.com results.
+The Cloudflare figures are verified-bot requests since 2026-10-10 (2026-10-28 column: since 10-14 or 10-21 as stated; a bot's name in the UA alone is not counted, since scanners borrow it) (`tools/cf.py`, `verifiedBotCategory`). Checks of Bing and Brave used `site:dealectric.com` in the browser; both returned unrelated results or "too few matches", which is what they show for a domain with no indexed pages. The Google check returned exactly three dealectric.com results.
 
 Conclusion: we are invisible by construction, not by quality. Four days after sitemap submission, no assistant's search provider has our product pages. Nothing else in this document matters until that changes.
 
