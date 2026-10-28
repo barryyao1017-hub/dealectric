@@ -188,3 +188,16 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 - 2026-10-28: DLC-76 (Barry's DLC-75 call) dropped the compare-at strike-through on every ALLPOWERS page and added a
   dated "lowest store price we've seen" line (60ef1c3), while R0b was running. It touches arms C-E's test and control
   pages alike and isn't a lever. ChatGPT's copies of those pages predate it, so R0b still reads the baseline.
+- 2026-10-28 (DLC-77): what ChatGPT reads is OpenAI's stored copy, and it follows OAI-SearchBot. `growth/evals/storedcopy.py`
+  (report `growth/focus/stored-copy.md`, crawl log `growth/focus/crawls/fetches.jsonl`) matched every saved result
+  title to the deployed version that carried it: in 291 of 292 chats that showed a superseded version, OAI-SearchBot's
+  last verified fetch before the chat had seen that version; Bingbot's fits 1 of 117. OAI-SearchBot fetched each
+  focus page once (2026-10-26 21:3xZ), so all five arms' index copies predate A-L2, B-L1 and the ALLPOWERS fact fixes.
+  Scoring addition (not a rule edited in place): a test cell with no marker and no cart date that decides it is
+  fresh if OAI-SearchBot fetched the arm's page after the lever shipped and before the chat, stale if it did not
+  (`w3score.py` records `index_fetch`, `index_version`, the stored title and, from now on, the snippet). R0's seven
+  undated B cells become stale by this rule; they were already scored as baseline. The reading trigger ("OAI-SearchBot
+  fetched the changed page after the ship") is checked with `w3score.py --crawl`, verified crawler rows only.
+- 2026-10-28 (DLC-77): the sitemap carries an exact `<lastmod>` per URL (the time the page's bytes last changed;
+  `build.py sitemap_lastmod`), so the daily cart pass marks every coded page changed. It applies to test and control
+  pages alike, so it is not a lever (lever 5's price and stock re-check stays one).

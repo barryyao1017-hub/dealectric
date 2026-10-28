@@ -259,8 +259,11 @@ def search_trace(tab: Tab) -> dict:
                     u = E.strip_tracking(e.get("url") or "")
                     if u and u not in seen_u:
                         seen_u.add(u)
+                        # snippet since 2026-10-28 (DLC-77): with the title, it is all ChatGPT reads of a page it
+                        # does not fetch, and it comes from OpenAI's stored copy, not the live page
                         out["results"].append({"domain": (o.get("domain") or "").removeprefix("www."), "title": (e.get("title") or "")[:200],
-                                               "url": u, "pub_date": e.get("pub_date")})
+                                               "url": u, "pub_date": e.get("pub_date"),
+                                               "snippet": (e.get("snippet") or e.get("text") or "")[:600] or None})
             if o.get("componentName") == "Cite":
                 for it in ((o.get("state") or {}).get("items") or []):
                     if isinstance(it, dict):

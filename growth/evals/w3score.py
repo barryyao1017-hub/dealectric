@@ -25,6 +25,8 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 # arms A-B, and arms C-E (ALLPOWERS, added 2026-10-28) in a file of their own so each reading request names one file
 QUESTIONS = [ROOT / "growth" / "focus" / "loop-questions.json", ROOT / "growth" / "focus" / "loop-questions-allpowers.json"]
 FLAGS = ROOT / "growth" / "focus" / "readings" / "flags.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import storedcopy as SC  # noqa: E402  (OpenAI's crawl log and the stored-copy matcher, DLC-77)
 
 # Levers per arm, as in loop-design.md's lever log: (name, live from (UTC), first cart date only the lever's copy can
 # carry, marker phrases only the lever's copy has). Append a row when a lever ships.
@@ -82,23 +84,50 @@ def parse_ts(s: str) -> datetime:
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
-def freshness(arm: str, at: datetime, quoted: list[str], text: str) -> tuple[str | None, str]:
-    """(lever in force, 'baseline' | 'fresh' | 'stale' | 'undated')."""
+def freshness(arm: str, at: datetime, quoted: list[str], text: str, index_fetch: str | None = None) -> tuple[str | None, str]:
+    """(lever in force, 'baseline' | 'fresh' | 'stale' | 'undated').
+
+    From R1 on (loop-design.md, Changes 2026-10-28, DLC-77) a lever counts only once its copy is in OpenAI's index:
+    a marker or a post-ship cart date proves it; otherwise OAI-SearchBot's last fetch of the page before the chat
+    decides (before the ship: stale; after it: fresh). Without either the cell is undated."""
     levers = [lv for lv in LEVERS.get(arm, []) if parse_ts(lv[1]) <= at]
     if not levers:
         return None, "baseline"
-    name, _, fresh_from, markers = levers[-1]
+    name, live, fresh_from, markers = levers[-1]
     if any(mk.lower() in (text or "").lower() for mk in markers) or any(d >= fresh_from for d in quoted):
         return name, "fresh"
     prev_last = (datetime.fromisoformat(fresh_from) - timedelta(days=2)).date().isoformat()
     if quoted and max(quoted) <= prev_last:
         return name, "stale"
+    if index_fetch:
+        return name, "fresh" if parse_ts(index_fetch) >= parse_ts(live) else "stale"
     return name, "undated"
+
+
+def stored_copy(slug: str, at: datetime, rec: dict, crawls: dict, vers: dict, deploys: list, blobs) -> dict:
+    """What OpenAI's index held of the product page at chat time: OAI-SearchBot's last fetch before the chat, the
+    version live at that fetch, and the title (and snippet, from 2026-10-28 on) ChatGPT's results showed for it."""
+    path, t = "/" + slug, at.strftime("%Y-%m-%dT%H:%M:%SZ")
+    if path not in vers:
+        vers[path] = SC.versions(path, deploys, blobs)
+    vs = vers[path]
+    fetch = SC.last_before(crawls.get(path, {}).get("OAI-SearchBot", []), t)
+    held = SC.live_at(vs, fetch) if fetch else None
+    shown = next((s for s in (rec.get("response") or {}).get("search_results") or []
+                  if SC.norm_path(s.get("url") or "") == path), None)
+    hits = SC.match(shown["title"], vs) if shown else []
+    return {"index_fetch": fetch, "index_version": f"v{held + 1}" if held is not None else None,
+            "index_sha": vs[held]["sha"] if held is not None else None,
+            "stored_title": shown["title"] if shown else None, "stored_snippet": (shown or {}).get("snippet"),
+            "stored_title_versions": [f"v{h + 1}" for h in hits]}
 
 
 def score_run(run: Path, baseline: bool = False) -> list[dict]:
     qs = {q["qid"]: q for f in QUESTIONS if f.exists() for q in json.loads(f.read_text())["questions"]}
     calls = json.loads(FLAGS.read_text()) if FLAGS.exists() else {}
+    crawls = SC.page_crawls(SC.load_crawls())   # refresh with `storedcopy.py` (or --crawl) before scoring
+    deploys = json.loads(SC.DEPLOYS.read_text()) if SC.DEPLOYS.exists() else []
+    vers, blobs = {}, SC.Blobs()
     rows = {}
     for line in (run / "scan.jsonl").open():
         r = json.loads(line)
@@ -116,8 +145,9 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         # a cart pass can't postdate the chat; this drops expiry and sale-end dates that share a sentence with "tested"
         quoted = [d for d in cart_dates(text) if d <= at.date().isoformat()]
         live = live_cart_date(q["slug"], at)
+        sc = stored_copy(q["slug"], at, rec, crawls, vers, deploys, blobs)
         # controls' pages never change, so no lever applies to them
-        lever, fresh = freshness(q["arm"], at, quoted, text) if q["role"] == "test" else (None, "n/a")
+        lever, fresh = freshness(q["arm"], at, quoted, text, sc["index_fetch"]) if q["role"] == "test" else (None, "n/a")
         raw = fresh
         if baseline and fresh in ("stale", "undated"):
             fresh = "baseline"   # --baseline (R0): a test cell that can't be shown to have read the lever's copy is baseline
@@ -137,7 +167,7 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
                 "code_relayed": r.get("code_relayed"), "named": r.get("named"),
                 "quoted_cart_dates": quoted, "live_cart_date": live,
                 "copy_age_days": ((datetime.fromisoformat(live) - datetime.fromisoformat(max(quoted))).days if live and quoted else None),
-                "lever": lever, "freshness": fresh, "freshness_raw": raw,
+                "lever": lever, "freshness": fresh, "freshness_raw": raw, **sc,
                 "flag_candidates": [s for s in sentences(text) if FLAG_WORDS.search(s)],
                 "flag": calls.get(key), "flag_note": calls.get(key + ".note"),
             })
@@ -162,29 +192,25 @@ def summary(cells: list[dict]) -> str:
         fl = [c for c in a if c["flag"] not in (None, "none", "affiliate-noted")]
         lines.append(f"- freshness: " + ", ".join(f"{k} {sum(1 for c in test if c['freshness'] == k)}" for k in ("baseline", "fresh", "stale", "undated"))
                      + f"; flags {len(fl)}; uncalled flag candidates {sum(1 for c in a if c['flag_candidates'] and c['flag'] is None)}")
-        lines.append("\n| cell | role | T | go | product page | rank | buy link domains | cart date quoted / live | fresh | flag |")
-        lines.append("|---|---|---|---|---|---|---|---|---|---|")
+        lines.append("\n| cell | role | T | go | product page | rank | buy link domains | cart date quoted / live | index copy (OAI fetch) | fresh | flag |")
+        lines.append("|---|---|---|---|---|---|---|---|---|---|---|")
         for c in a:
             lines.append(f"| {c['cell']} | {c['role']} | {c['tier']} | {'yes' if c['go'] else ''} | {'yes' if c['product_page_cited'] else ''} | "
                          f"{c['our_rank'] or '-'}/{c['n_results']} | {', '.join(c['buy_domains']) or '-'} | "
-                         f"{', '.join(c['quoted_cart_dates']) or '-'} / {c['live_cart_date']} | {c['freshness']} | {c['flag'] or '?'} |")
+                         f"{', '.join(c['quoted_cart_dates']) or '-'} / {c['live_cart_date']} | "
+                         f"{c['index_version'] or '-'} ({(c['index_fetch'] or 'never')[5:16]}) | {c['freshness']} | {c['flag'] or '?'} |")
     return "\n".join(lines)
 
 
 def crawl_report() -> str:
-    """OAI-SearchBot fetches of each arm's product page since its last lever went live (the reading trigger)."""
-    sys.path.insert(0, str(ROOT / "tools"))
-    import cf
+    """OAI-SearchBot fetches of each arm's product page since its last lever went live (the reading trigger). Refreshes
+    the crawl log first; verified crawler rows only (scanners send the OAI-SearchBot UA too)."""
+    crawls = SC.page_crawls(SC.refresh_crawls(SC.load_crawls()))
     lines = ["", "OAI-SearchBot fetches since each arm's last lever:"]
     for arm, levers in LEVERS.items():
         name, live, _, _ = levers[-1]
-        q = ('{viewer{zones(filter:{zoneTag:$zone}){httpRequestsAdaptiveGroups(limit:100, filter:{datetime_geq:"%s", '
-             'datetime_lt:"%s", clientRequestPath:"/%s", userAgent_like:"%%OAI-SearchBot%%"}, orderBy:[datetime_ASC]){count '
-             'dimensions{datetime edgeResponseStatus}}}}}') % (live, datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), arm)
-        d = cf.query(q)
-        got = [] if d.get("errors") else d["data"]["viewer"]["zones"][0]["httpRequestsAdaptiveGroups"]
-        when = ", ".join(g["dimensions"]["datetime"] for g in got) or ("query failed" if d.get("errors") else "none yet")
-        lines.append(f"- {arm} {name} (live {live}): {when}")
+        got = [t for t in crawls.get("/" + arm, {}).get("OAI-SearchBot", []) if t >= live]
+        lines.append(f"- {arm} {name} (live {live}): {', '.join(got) or 'none yet'}")
     return "\n".join(lines)
 
 

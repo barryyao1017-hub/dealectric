@@ -1,0 +1,56 @@
+# DLC-77 step 2: copy that survives OpenAI's stored copy (draft, not shipped)
+
+Measured in `growth/focus/stored-copy.md` (step 1): ChatGPT's result title for a page is the `<title>` that was live
+at OAI-SearchBot's last fetch of it (291 of 292 chats that showed a superseded version; Bingbot's last fetch fits 1 of
+117). OAI-SearchBot has fetched each focus page once, on 2026-10-26 21:3xZ. So whatever the title and snippet say is
+read for days, and sometimes a week, after we change it. Snippets themselves were never saved before 2026-10-28;
+`ui.py` keeps them from now on, so which text the snippet comes from (meta description or the first paragraph) is
+not known yet. The draft therefore puts the same deal sentence in both.
+
+## Statements on the focus pages that go false as the copy ages
+
+| page | statement | goes false when | in the title / description now |
+|---|---|---|---|
+| `/allpowers-r4000-3456wh` | "$1,319.12 with code EXTRA12" | EXTRA12 ends 2026-11-15; a copy fetched before then keeps saying it | title and description; only the body says "Expires 2026-11-15" |
+| `/bluetti-ac200l` | "$854.05 with code AFF5OFF", buy link to the AC200L | BLUETTI stops selling the AC200L (the Apex 200 replaces it in early November) | title and description; the phase-out is only in the body |
+| all five | "$X with code Y" in the title, undated | the store price moves between OAI crawls | title (the description dates the cart pass, not the price) |
+| `/bluetti-ac200l` | lead: "same price as the Elite 200 V2" | either price moves | first sentence of the page |
+
+Everything else in the first 200 characters is dated ("last passed <date>") or stays true ("tested daily", as long as
+the sweep runs).
+
+## Draft (title, then the description, which would also open the page as its first paragraph)
+
+The cart pass re-reads the price in the brand's cart every day, so "in the cart on <date>" dates the price too.
+
+**A, `/bluetti-ac200l`**
+- Title: `BLUETTI AC200L Portable Power Station: $854.05 with code AFF5OFF, tested daily · Dealectric`
+- Description: `$854.05 with code AFF5OFF (5% off $899 at BLUETTI's US store) while BLUETTI's stock lasts. Tested daily in BLUETTI's cart, last passed 2026-10-28. Our link opens BLUETTI's checkout with the AC200L in the cart and AFF5OFF applied.`
+
+**B, `/aurzen-travelplay-autocinema-tesla-model-y`**
+- Title: `Aurzen TravelPlay AutoCinema Screen for Tesla Model Y: $108 with code CJ10, tested daily · Dealectric`
+- Description: `$108 with code CJ10 (10% off $119.99 at Aurzen's US store). Tested daily in Aurzen's cart, last passed 2026-10-28. Our link opens Aurzen's product page; enter CJ10 at checkout.`
+
+**C, `/allpowers-r4000-3456wh`**
+- Title: `ALLPOWERS R4000 Portable Power Station: $1,319.12 with code EXTRA12 to Nov 15, tested daily · Dealectric`
+- Description: `$1,319.12 with code EXTRA12 (12% off $1,499 at ALLPOWERS' US store) until 2026-11-15; after that ALLPOWERS26 takes 10% off. Tested daily in ALLPOWERS' cart, last passed 2026-10-28. Our link opens ALLPOWERS' product page; enter the code at checkout.`
+
+**D, `/allpowers-p1800-1024wh`**
+- Title: `ALLPOWERS P1800 Portable Power Station: $395.10 with code ALLPOWERS26, tested daily · Dealectric`
+- Description: `$395.10 with code ALLPOWERS26 (10% off $439 at ALLPOWERS' US store). Tested daily in ALLPOWERS' cart, last passed 2026-10-28. Our link opens ALLPOWERS' product page; enter ALLPOWERS26 at checkout.`
+
+**E, `/allpowers-sp037-400w-solar-panel`**
+- Title: `ALLPOWERS SP037 400 W Foldable Solar Panel: $269.10 with code ALLPOWERS26, tested daily · Dealectric`
+- Description: `$269.10 with code ALLPOWERS26 (10% off $299 at ALLPOWERS' US store). Tested daily in ALLPOWERS' cart, last passed 2026-10-28. Our link opens ALLPOWERS' product page; enter ALLPOWERS26 at checkout.`
+
+Only arm A's link applies the code today (A-L2). "Opens the checkout with the code applied" on B-E would be false until
+their L2 ships (DLC-53), so B-E say what the link does now. When an arm's L2 ships, its sentence changes with it.
+
+The numbers and dates are generated (build.py fills them from products.py and coupons.json), so the sweep keeps them
+current; the format is what this step changes.
+
+## Why it isn't shipped yet
+
+Every focus page has 5-6 versions waiting for the next OAI-SearchBot fetch (A-L2, B-L1, the ALLPOWERS fact fixes and
+DLC-76). Whatever ships before that fetch enters the index in the same crawl, so it can't be told apart from the lever
+in force on that arm. The choice is Barry's (see the DLC-77 report).

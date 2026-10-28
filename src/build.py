@@ -1060,6 +1060,7 @@ def flatten(out):
     links. GitHub Pages publishes main:/docs and serves /about -> about.html; keeping the site in
     docs/ keeps repo notes (CLAUDE.md, TODO.md, ...) off dealectric.com."""
     flat = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(out))), "docs")
+    before = previous_pages(flat)
     if os.path.isdir(flat): shutil.rmtree(flat)
     os.makedirs(flat)
     # path mapping: "/guides/usb-c-charging/" -> "/usb-c-charging", "/about/" -> "/about"
@@ -1091,7 +1092,49 @@ def flatten(out):
             if f.endswith((".html", ".txt", ".xml", ".json")):
                 data = rewrite(data.decode()).encode()
             open(dst, "wb").write(data)
+    sitemap_lastmod(flat, *before)
     print(f"flattened -> {flat} ({len(os.listdir(flat))} files)")
+
+
+def previous_pages(flat):
+    """The published pages and sitemap lastmods as they stand before this build replaces docs/."""
+    import re
+    pages, lastmod = {}, {}
+    if os.path.isdir(flat):
+        for f in os.listdir(flat):
+            if f.endswith(".html"):
+                pages[f] = open(os.path.join(flat, f), "rb").read()
+        sm = os.path.join(flat, "sitemap.xml")
+        if os.path.exists(sm):
+            lastmod = dict(re.findall(r"<loc>([^<]+)</loc>(?:<lastmod>([^<]+)</lastmod>)?", open(sm).read()))
+    return pages, lastmod
+
+
+def sitemap_lastmod(flat, pages, lastmod):
+    """DLC-77: give every sitemap URL an exact <lastmod>, the time its page last changed. A page whose bytes match the
+    previous build keeps its old lastmod (or, the first time, its last commit time); a changed page gets now. The daily
+    cart check changes "last passed" on every coded page, so those pages carry the day's date: that is a real change."""
+    import re, subprocess
+    repo = os.path.dirname(flat)
+    now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    def stamp(loc):
+        name = (loc.removeprefix(SITE["url"]).strip("/") or "index") + ".html"
+        path = os.path.join(flat, name)
+        if not os.path.exists(path):
+            return None
+        if pages.get(name) != open(path, "rb").read():
+            return now
+        if lastmod.get(loc):
+            return lastmod[loc]
+        t = subprocess.run(["git", "log", "-1", "--format=%cd", "--date=format-local:%Y-%m-%dT%H:%M:%SZ", "--", f"docs/{name}"],
+                           cwd=repo, capture_output=True, text=True, env={**os.environ, "TZ": "UTC"}).stdout.strip()
+        return t or now
+    sm = os.path.join(flat, "sitemap.xml")
+    text = open(sm).read()
+    def add(m):
+        t = stamp(m.group(1))
+        return f"<loc>{m.group(1)}</loc>" + (f"<lastmod>{t}</lastmod>" if t else "")
+    open(sm, "w").write(re.sub(r"<loc>([^<]+)</loc>(?:<lastmod>[^<]*</lastmod>)?", add, text))
 
 if __name__ == "__main__":
     main()
