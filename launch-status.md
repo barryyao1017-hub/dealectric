@@ -1,12 +1,12 @@
-# Dealectric launch status — updated 2026-10-27 — MVP SHIPPED
+# Dealectric launch status — updated 2026-10-28 — MVP SHIPPED
 
 ## Where it stands on 2026-10-27 (sections below are from 10-22 unless marked)
-- **Catalog: 41 products, 7 brands** (Baseus 6, ESR 4, Tenergy 5, BLUETTI 8, ALLPOWERS 8, Soundcore 7, Aurzen 3); prices re-verified 2026-10-27 (38 of 40 unchanged; ESR 100W 6-in-1 $142.99; Elite 300 $1,099 after BLUETTI's automatic cart discount). Tenergy TN438 16-bay added 10-27.
+- **Catalog: 46 products, 8 brands** (Baseus 6, ESR 4, Tenergy 5, BLUETTI 8, ALLPOWERS 8, Soundcore 7, Aurzen 3, Marshall 5 since 10-27); prices re-verified 2026-10-27 (38 of 40 unchanged; ESR 100W 6-in-1 $142.99; Elite 300 $1,099 after BLUETTI's automatic cart discount). Tenergy TN438 16-bay added 10-27.
 - **Google**: 46 pages indexed (3 on 10-23), 0 clicks, 32 impressions 10-19 to 10-25. The 23 pages added since 10-23 are not indexed yet; 11 requested 10-27, the rest next.
 - **Bing**: still only the home page. Three support requests filed 10-27 (REQ00376947, REQ00377184, REQ00377239), each answered by an automatic root-URL check. Re-check 10-30. Brave: 0.
   - Why (10-28): Bing reads the sitemap and chooses not to crawl. Verified Bingbot made 28 requests 10-20 to 10-28, all 200, only sitemap, home, robots, /products and assets; the bingbot-UA hits on product pages are unverified. Bing Webmaster shows 0 backlinks, which is the likeliest cause for a new domain. Also in play: the domain's previous owners (Spanish shop 2024, lapsed, re-registered 2026-10-08) and Bing's generic "issues preventing indexation" quality note. The daily sweep resubmits ~80 unchanged URLs to IndexNow (412 total). The lever is inbound links (DLC-38); detail in DLC-31.
 - **Money**: no sale yet. No `/go/` click in 10-20 to 10-26 looks like a shopper (scanners and our own evals). Agents' only feedback: three requests for Anker.
-- **Daily cart sweep**: no clean unattended run yet; 10-24 and 10-26 slept through with the lid closed. Sleep-tolerant fix pushed 10-27; the Mac must be awake at 06:37 (DLC-61).
+- **Daily cart sweep**: first clean unattended run 2026-10-27, committed daily since; 10-24 and 10-26 slept through with the lid closed. Sleep-tolerant fix pushed 10-27; the Mac must be awake at 06:37 (DLC-61).
 - **Loop 3** (comparison pages) stopped 10-27 after iteration 5: ChatGPT tracked link 14/24, Claude 11/12, no page flagged.
 - **Waiting on Barry**: five code-request emails drafted in Gmail (DLC-7, DLC-30); Awin payouts (2FA); DLC-42 and DLC-53 decisions; DLC-38 Reddit posts (drafts in growth/outreach/); DLC-40 logins.
 

@@ -209,3 +209,9 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   November 2026"); before, only its caveats did. Both reach the index in the same OAI crawl as A-L2 and arm C's
   baseline-era fixes, and neither is a fresh marker. The title format change (stored-copy-step2.md) is held until that
   crawl.
+- 2026-10-28 (DLC-78, DLC-79): site-wide, not a lever. Every page's menu gains "Comparisons" (/compare), and each
+  product page that appears in a comparison table gains a "Compared side by side" list linking those tables, placed
+  after the spec table, below the offer block and buy box. All five arms' pages get it (AC200L, R4000, P1800: the
+  LiFePO4/NMC table and, for the P1800, the CPAP one; SP037: solar watts; Aurzen TravelPlay: Tesla Model Y screens), so
+  the arms change together, as with DLC-76. The home page's counts and brand list, the disclosure's network list and
+  dealectric.json's categories are now generated. No title, price, code or offer text changed; no fresh marker.

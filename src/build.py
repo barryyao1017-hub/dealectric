@@ -22,7 +22,7 @@ SITE = {
 VERIFY = """<meta name='impact-site-verification' value='a8840d38-faf2-4d58-923a-56cf1fa6d79e'>"""
 
 NAV = [("/", "Home"), ("/products/", "Products"), ("/guides/usb-c-charging/", "Charging guide"), ("/guides/portable-power-stations/", "Power stations"),
-       ("/discount-codes/", "Discount codes"), ("/data/", "Data schema"), ("/agents/", "For AI agents"), ("/about/", "About")]
+       ("/compare/", "Comparisons"), ("/discount-codes/", "Discount codes"), ("/data/", "Data schema"), ("/agents/", "For AI agents"), ("/about/", "About")]
 
 CSS = """
 :root{--bg:#fbfbf9;--fg:#1a1a1a;--muted:#5c5c58;--line:#e4e2dc;--accent:#0b6b4f;--accent-fg:#fff;--card:#fff;--code:#f1f0ea}
@@ -575,7 +575,7 @@ def product_page(p):
 <h2>Specifications</h2>
 <div class="scroll"><table>{rows}</table></div>
 <p class="small">Model: {html.escape(p['model'])}. Figures are from the manufacturer's official product page unless a caveat says otherwise.</p>
-
+{compared_in(p)}
 <h2>Who it's for</h2>
 <p>{html.escape(p['fit'])}</p>
 
@@ -905,6 +905,50 @@ or <a href="/feedback">/feedback</a>.</p>
     return (c["title"], c["desc"], body, ld)
 
 
+def compared_in(p):
+    """DLC-78: the comparison tables a product appears in, linked from its page (they had no inbound link but /compare)."""
+    cs = [c for c in COMPARISONS + GAP_PAGES if any(r.get("slug") == p["slug"] for r in c["rows"])]
+    if not cs:
+        return ""
+    items = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a></li>' for c in cs)
+    return f"""
+<h2>Compared side by side</h2>
+<p>The {html.escape(short_name(p))} appears in {"this table" if len(cs) == 1 else "these tables"} next to models from other brands:</p>
+<ul>{items}</ul>
+"""
+
+
+def and_list(xs):
+    xs = list(xs)
+    if len(xs) < 2:
+        return "".join(xs)
+    return ", ".join(xs[:-1]) + " and " + xs[-1]
+
+
+def networks_html():
+    """DLC-79: the disclosure's network sentence, from the programs the live products use (products.py) and the
+    approved programs in links.json, so it moves when a brand goes live instead of being retyped."""
+    names = {"cj": "CJ Affiliate", "awin": "Awin"}
+    used = {}
+    for p in PRODUCTS:
+        used.setdefault(p["program"].split(":")[0], set()).add(p["brand"])
+    nets = [n for n in names if n in used]
+    count = {1: "one affiliate network", 2: "one of two affiliate networks", 3: "one of three affiliate networks"}[len(nets)]
+    parts = and_list(f"<strong>{names[n]}</strong> ({', '.join(sorted(used[n], key=str.lower))})" for n in nets)
+    live = {p["program"] for p in PRODUCTS}
+    idle = {}
+    for n in names:
+        for key, prog in LINKS[n].items():
+            if f"{n}:{key}" not in live:
+                idle.setdefault(n, []).append(prog["name"])
+    if idle:
+        rest = " and ".join(f"{and_list(v)} on {names[n].split()[0]}" for n, v in idle.items())
+        tail = f"We are also approved by {rest}, which we do not link to yet"
+    else:
+        tail = "We link to every program that has approved us"
+    return f"Every brand we link to today pays us through {count}: {parts}. {tail}"
+
+
 def compare_index():
     items = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a> — {html.escape(c["desc"])}</li>' for c in COMPARISONS + GAP_PAGES)
     body = f"""
@@ -984,6 +1028,13 @@ def main():
     SITE["site_note"] = site_note()
     SITE["codes_checked"] = latest_code_date()
     SITE["coded_count"] = sum(1 for p in PRODUCTS if codes_for(p))
+    # DLC-79: counts and lists the home page, the disclosure and the descriptor used to type by hand
+    SITE["product_count"] = len(PRODUCTS)
+    SITE["brands"] = list(dict.fromkeys(p["brand"] for p in PRODUCTS))
+    SITE["brands_text"] = and_list(SITE["brands"])
+    SITE["and"] = and_list
+    SITE["networks_html"] = networks_html()
+    SITE["categories_live"] = list(dict.fromkeys(p["category"] for p in PRODUCTS))
     # llms.txt: one line per product with a code (code, saving, price after, test date, buy link).
     SITE["compare_txt"] = compare_txt()
     SITE["codes_txt"] = "\n".join(

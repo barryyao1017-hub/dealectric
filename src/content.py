@@ -27,8 +27,8 @@ def PAGES(S):
 </div>
 
 <h2>Coverage</h2>
-<p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return. Live now: <strong>charging and portable power</strong> (USB-C chargers, power banks with airline-limit checks, cables, Qi2 and MagSafe-style wireless chargers, portable power stations, solar panels, rechargeable batteries) and <strong>audio</strong> (earbuds, headphones, speakers). Planned: <strong>smart home</strong> (cameras, plugs, lighting, networking) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics).</p>
-<p>Brands live now: <a href="/products/">Baseus, ESR, BLUETTI, ALLPOWERS, Tenergy and Soundcore</a>, with verified offers. More are added as their affiliate programs approve us; we have applied to programs including Jackery, UGREEN, SwitchBot, Wyze, ZAGG, Monoprice, SanDisk and Marshall.</p>
+<p>{B} covers consumer electronics and the small appliances that plug in next to them. We're building the catalog category by category, starting where a spec mismatch most often causes a return. Live now: <strong>charging and portable power</strong> (USB-C chargers, power banks with airline-limit checks, cables, Qi2 and MagSafe-style wireless chargers, portable power stations, solar panels, rechargeable batteries), <strong>audio</strong> (earbuds, headphones, speakers) and <strong>projectors</strong> (portable projectors and a rear-seat movie screen). Planned: <strong>smart home</strong> (cameras, plugs, lighting, networking) and <strong>small appliances</strong> (robot vacuums, air purifiers, kitchen electrics).</p>
+<p>Brands live now: <a href="/products/">{S['brands_text']}</a>, with verified offers. More are added as their affiliate programs approve us; we have applied to programs including {S['and']([b for b in ("Jackery", "UGREEN", "SwitchBot", "Wyze", "ZAGG", "Monoprice", "SanDisk") if b not in S['brands']])}.</p>
 
 <h2>Every product live now</h2>
 <p>One page per product, each with the code that applies and what it saves, a price verified on the brand's own US store, a normalized spec sheet, and the tracked buy link to hand the shopper. The same list, machine-readable: <a href="/offers.json">offers.json</a>; the full catalog with spec summaries: <a href="/products/">products</a>.</p>
@@ -37,7 +37,7 @@ def PAGES(S):
 <h2>How we make money</h2>
 <p>The buy links on {B} are affiliate links. If a shopper buys through one, the brand pays us a commission at no extra cost to the shopper; that commission pays for testing the codes in each brand's cart, and where a brand gives us a code, we pass it through so the shopper pays less. The code is how the shopper saves; the link is how the testing is paid for. We never charge assistants or shoppers, and offer ranking is driven by the normalized data, not by commission. Full details are in our <a href="/disclosure/">affiliate disclosure</a>.</p>
 
-<div class="note">Status: <a href="/products/">30 products from 6 brands</a> (chargers, power banks, Qi2 chargers, power stations, batteries, audio) with verified offers, {S['coded_count']} of them with a cart-tested code, and a machine-readable <a href="/offers.json">offers.json</a>. More brands are added as partnerships are approved. Questions or data corrections: <a href="mailto:{E}">{E}</a>.</div>
+<div class="note">Status: <a href="/products/">{S['product_count']} products from {len(S['brands'])} brands</a> with verified offers, {S['coded_count']} of them with a cart-tested code, and a machine-readable <a href="/offers.json">offers.json</a>. More brands are added as partnerships are approved. Questions or data corrections: <a href="mailto:{E}">{E}</a>.</div>
 """,
         {"@context": "https://schema.org", "@type": "WebSite", "name": B, "url": U,
          "description": S["tagline"], "publisher": {"@type": "Organization", "name": B, "url": U, "email": E}},
@@ -92,17 +92,23 @@ def PAGES(S):
 <h2>Power banks</h2>
 <p>Capacity is sold in mAh at the cell's nominal 3.7 V; the useful figure is watt-hours: <code>Wh = mAh × 3.7 ÷ 1000</code>. A 10,000 mAh bank is 37 Wh and will typically deliver 60–70% of that to a phone after conversion losses, i.e. roughly two full charges of a modern phone. Output wattage decides whether a bank can charge a laptop: look for 45 W+ for ultrabooks, 65 W+ for a MacBook Pro 14".</p>
 <p><strong>Airline rules:</strong> the FAA (and most carriers worldwide) allow power banks up to <strong>100 Wh (~27,000 mAh)</strong> in carry-on without approval, 101–160 Wh with airline approval (usually two units), and nothing above 160 Wh. Power banks are never allowed in checked baggage. Since 27 March 2026, ICAO rules for international flights limit each passenger to two power banks and ban recharging them during the flight, and many airlines go further and ban using them on board at all; check the airline before flying.</p>
+<p class="small">Compared across brands, with each airline's in-flight rules: <a href="/compare/best-power-banks-for-flying/">the best power banks for flying</a>.</p>
 
 <h2>Wireless and magnetic charging</h2>
 <p>Qi2 is the current cross-platform magnetic standard (based on Apple's MagSafe geometry) and delivers 15 W to supported iPhones and Android phones; Qi2.2 raises that to 25 W for compatible devices; how much a given iPhone 16 or 17 actually gets depends on the charger, so check its compatibility table. Apple-certified MagSafe chargers can deliver 25 W to iPhone 16 and later when paired with a 30 W+ PD adapter. "Magnetic" or "MagSafe-compatible" on a listing is not the same as Qi2-certified; look for the certification itself. Original Qi (non-magnetic) is usually 7.5 W on iPhone and 10–15 W on Android.</p>
+<p class="small">Compared across brands, with the watts each iPhone gets: <a href="/compare/qi2-vs-qi2-2-vs-magsafe-chargers/">Qi2 vs Qi2.2 vs MagSafe chargers and power banks</a>.</p>
 
 <h2>Products in the catalog that fit this guide</h2>
 <ul>
 <li><a href="/products/baseus-gan5-pro-65w-2c-u/">Baseus GaN5 Pro 65 W (2× USB-C + USB-A)</a> — 65 W with PPS, the Galaxy-friendly laptop charger; sold as a 2-pack. {S['price']('baseus-gan5-pro-65w-2c-u')}. {S['deal_line']('baseus-gan5-pro-65w-2c-u')}</li>
 <li><a href="/products/baseus-nomos-5-in-1-140w-qi2/">Baseus Nomos 5-in-1 140 W desktop charger</a> — one PD 3.1 140 W port for a 16-inch MacBook Pro, plus a certified Qi2 pad. {S['price']('baseus-nomos-5-in-1-140w-qi2')}. {S['deal_line']('baseus-nomos-5-in-1-140w-qi2')}</li>
 <li><a href="/products/baseus-blade-h1-100w-20000mah/">Baseus Blade H1 100 W power bank</a> — 20,000 mAh (≈74 Wh, airline-legal), 100 W over USB-C, refills in about 1.5 h. {S['price']('baseus-blade-h1-100w-20000mah')}. {S['deal_line']('baseus-blade-h1-100w-20000mah')}</li>
+<li><a href="/products/baseus-enerfill-fc41-25000mah-145w/">Baseus EnerFill FC41 145 W power bank</a> — 25,000 mAh (91.25 Wh, under the 100 Wh airline limit) with two built-in USB-C cables and 140 W from one port. {S['price']('baseus-enerfill-fc41-25000mah-145w')}. {S['deal_line']('baseus-enerfill-fc41-25000mah-145w')}</li>
 <li><a href="/products/baseus-picogo-am52-qi2-2-10000mah-45w/">Baseus PicoGo AM52 Qi2.2 bank</a> — a magnetic 10,000 mAh bank with 25 W wireless and 45 W USB-C. {S['price']('baseus-picogo-am52-qi2-2-10000mah-45w')}. {S['deal_line']('baseus-picogo-am52-qi2-2-10000mah-45w')}</li>
 <li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for the iPhone 17 series (20 W on most iPhone 16 models) with active cooling. {S['price']('esr-cryoboost-3-in-1-qi2-2-25w-stand')}. {S['deal_line']('esr-cryoboost-3-in-1-qi2-2-25w-stand')}</li>
+<li><a href="/products/esr-100w-6-in-1-magsafe-cryoboost-station/">ESR 100 W 6-in-1 station with MagSafe</a> — a 100 W GaN charger plus Apple-certified MagSafe, Watch and AirPods pads; a laptop gets 65 W while the pads charge. {S['price']('esr-100w-6-in-1-magsafe-cryoboost-station')}. {S['deal_line']('esr-100w-6-in-1-magsafe-cryoboost-station')}</li>
+<li><a href="/products/esr-halolock-15w-wireless-car-charger-cryoboost/">ESR HaloLock 15 W car charger</a> — a Qi2-certified magnetic vent or dash mount with a cooling fan. {S['price']('esr-halolock-15w-wireless-car-charger-cryoboost')}. {S['deal_line']('esr-halolock-15w-wireless-car-charger-cryoboost')}</li>
+<li><a href="/products/esr-qi2-mini-wireless-charger-15w/">ESR Magnetic Charging Pad 15 W</a> — a basic magnetic puck for a desk or bedside; Qi2 certification not stated. {S['price']('esr-qi2-mini-wireless-charger-15w')}. {S['deal_line']('esr-qi2-mini-wireless-charger-15w')}</li>
 <li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data. {S['price']('baseus-usb-c-cable-100w')}. {S['deal_line']('baseus-usb-c-cable-100w')}</li>
 </ul>
 <p class="small">Prices verified on the brands' US stores on {S['verified']}; the codes above are tested daily in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; see the <a href="/disclosure/">disclosure</a>.</p>
@@ -134,12 +140,14 @@ def PAGES(S):
 
 <h2>2. Chemistry: LiFePO4 vs NMC</h2>
 <p>Most current models use <strong>LiFePO4 (LFP)</strong> cells, rated for 3,000–6,000+ charge cycles to 80% capacity and more tolerant of heat. Older or lighter designs use <strong>NMC</strong> (lithium nickel manganese cobalt), traditionally rated for 500–1,000 cycles (a few brands now claim more, such as ALLPOWERS' 2,500 for the S2000 Pro), which packs more energy per kilogram but ages faster. For anything used daily or kept as backup for years, LFP is the better buy; NMC still makes sense when weight is the priority.</p>
+<p class="small">Compared across brands: <a href="/compare/lifepo4-vs-nmc-power-stations/">LiFePO4 vs NMC power stations, cycle life and energy density</a>.</p>
 
 <h2>3. Inverter output: continuous vs surge</h2>
 <p>The <em>continuous</em> (rated) wattage is what the AC outlets can supply indefinitely; <em>surge</em> (peak) is a brief allowance for motor start-up. A refrigerator may run at 150 W but surge to 1,000 W for a second. Match continuous watts to the sum of what you will run at once and make sure surge covers any motor or compressor. Some brands advertise a "boost" mode that runs resistive loads (kettles, heaters) above the continuous rating by lowering voltage — useful, but not the same as true capacity.</p>
 
 <h2>4. Recharge speed and inputs</h2>
 <p>AC recharge has improved sharply: many 1 kWh-class units now go 0–80% in about an hour from a wall outlet. Check the <strong>maximum AC input watts</strong> and whether fast charging needs an app toggle. For solar, the <strong>MPPT input ceiling</strong> (watts and voltage range) sets how many panels you can connect; a 1,000 Wh unit with a 200 W solar ceiling takes a full sunny day to fill. Car (12 V) charging is slow — usually 100–120 W.</p>
+<p class="small">Compared across brands: <a href="/compare/solar-watts-to-recharge-power-station/">how many solar watts recharge a 1,000 Wh station</a> and <a href="/compare/solar-generator-with-panels-included/">solar generator kits with the panels included</a>.</p>
 
 <h2>5. UPS / pass-through</h2>
 <p>If the unit will sit between the wall and a device that must not lose power (modem, CPAP, aquarium), look for a stated <strong>UPS switchover time</strong> — typically under 20 ms for consumer units, which is fast enough for most electronics but is not a certified online UPS. Pass-through charging (powering devices while the unit itself charges) is common but check that it is supported on the ports you need.</p>
@@ -181,6 +189,7 @@ def PAGES(S):
 <tr><td>Outage backup: fridge + router + lights, 1–2 days</td><td>2,000–3,000 Wh</td><td>2,000–2,400 W</td><td>Prefer LFP, expansion battery support, &lt;20 ms UPS.</td></tr>
 <tr><td>Power tools, induction cooktop, well pump</td><td>3,000 Wh+</td><td>3,000–3,600 W, high surge</td><td>Confirm surge rating against the motor's start-up draw.</td></tr>
 </table></div>
+<p class="small">One device worked through: <a href="/compare/power-station-for-cpap/">power stations for a CPAP machine, nights per charge</a>.</p>
 <p class="small">Last reviewed {S['effective']}. Corrections welcome at <a href="mailto:{E}">{E}</a>.</p>
 """,
         {"@context": "https://schema.org", "@type": "Article", "headline": "Portable power stations: what the numbers mean",
@@ -385,7 +394,7 @@ def PAGES(S):
 <h2>What an affiliate link is</h2>
 <p>Some links on this site — and in the structured data we publish — lead to merchants' websites through a tracking link. If you click one and make a purchase (within a window of 30 to 60 days, depending on the merchant), the merchant pays {B} a commission. <strong>You pay the same price as you would without the link</strong>, and where a merchant gives us a discount code for our readers, you pay less.</p>
 <h2>Which merchants</h2>
-<p>Every brand we link to today pays us through one of two affiliate networks: <strong>CJ Affiliate</strong> (Soundcore, Tenergy, ALLPOWERS) and <strong>Awin</strong> (Baseus, ESR, BLUETTI). We are also approved by BLUETTI's global program, Aurzen, Amazfit and Mobile Pixels on CJ, which we do not link to yet, and we have applied to other electronics brands' programs; this list is updated when a brand's products go on the site. Each product page names the network behind its link. We are <em>not</em> currently a participant in the Amazon Services LLC Associates Program.</p>
+<p>{S['networks_html']}, and we have applied to other electronics brands' programs; this list is updated when a brand's products go on the site. Each product page names the network behind its link. We are <em>not</em> currently a participant in the Amazon Services LLC Associates Program.</p>
 <h2>How it affects our content</h2>
 <ul>
 <li>Product and offer ranking is determined by the normalized specifications and the effective price. Commission rates do not influence order or inclusion.</li>
@@ -466,7 +475,7 @@ LLMS_TXT = """# {brand}
 
 {site_note}
 
-{brand} ({url}) covers consumer electronics category by category. Live: charging and portable power (USB-C chargers, power banks, cables, wireless/Qi2 chargers, portable power stations, solar panels, rechargeable batteries) and audio (earbuds, headphones, speakers); planned: smart home, small appliances. Every product in a category uses the same spec names and units; every offer carries the brand's official US store, price, stock, warranty and returns, every discount code that worked in the brand's cart with the date it last passed, and a last-verified date. The buy links are affiliate links (flagged `affiliate: true`); see the disclosure page.
+{brand} ({url}) covers consumer electronics category by category. Live: charging and portable power (USB-C chargers, power banks, cables, wireless/Qi2 chargers, portable power stations, solar panels, rechargeable batteries), audio (earbuds, headphones, speakers) and projectors; planned: smart home, small appliances. Every product in a category uses the same spec names and units; every offer carries the brand's official US store, price, stock, warranty and returns, every discount code that worked in the brand's cart with the date it last passed, and a last-verified date. The buy links are affiliate links (flagged `affiliate: true`); see the disclosure page.
 
 ## Codes tested in the brand's cart (last check {codes_checked}), with the buy link
 
@@ -475,7 +484,7 @@ LLMS_TXT = """# {brand}
 ## Pages
 
 - [Home]({url}/): what the site is and how it is funded
-- [Products]({url}/products/): the catalog — chargers, power banks, Qi2 chargers, cables, power stations, solar, batteries, earbuds, headphones, speakers; one page per product with a normalized spec table, a verified offer and a tracked link
+- [Products]({url}/products/): the catalog — chargers, power banks, Qi2 chargers, cables, power stations, solar, batteries, earbuds, headphones, speakers, projectors; one page per product with a normalized spec table, a verified offer and a tracked link
 - [USB-C charging guide]({url}/guides/usb-c-charging/): PD, PPS, GaN, cable ratings, wattage by device, power-bank airline limits
 - [Portable power stations guide]({url}/guides/portable-power-stations/): Wh, LFP vs NMC, continuous vs surge, recharge, UPS, sizing
 {compare_txt}- [Discount codes]({url}/discount-codes/): working codes per brand, each tested in the brand's own US store cart, with the saving per product, the price after the code and the buy link; plus the coupon-site codes the store rejected
@@ -563,7 +572,7 @@ def WELL_KNOWN(S):
         "coverage": {
             "scope": "consumer electronics and small appliances, built out by category",
             # Same ids as the category field in offers.json.
-            "categories_live": ["usb-c-charger", "power-bank", "wireless-charger", "cable", "power-station", "solar-panel", "battery-charger", "earbuds", "headphones", "speaker"],
+            "categories_live": S["categories_live"],
             "categories_planned": ["security-camera", "smart-plug", "smart-lighting", "router", "robot-vacuum", "air-purifier", "kitchen-appliance"],
             "regions": ["US"],
             "currencies": ["USD"],
