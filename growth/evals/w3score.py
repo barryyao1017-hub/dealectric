@@ -22,7 +22,8 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-QUESTIONS = ROOT / "growth" / "focus" / "loop-questions.json"
+# arms A-B, and arms C-E (ALLPOWERS, added 2026-10-28) in a file of their own so each reading request names one file
+QUESTIONS = [ROOT / "growth" / "focus" / "loop-questions.json", ROOT / "growth" / "focus" / "loop-questions-allpowers.json"]
 FLAGS = ROOT / "growth" / "focus" / "readings" / "flags.json"
 
 # Levers per arm, as in loop-design.md's lever log: (name, live from (UTC), first cart date only the lever's copy can
@@ -96,7 +97,7 @@ def freshness(arm: str, at: datetime, quoted: list[str], text: str) -> tuple[str
 
 
 def score_run(run: Path, baseline: bool = False) -> list[dict]:
-    qs = {q["qid"]: q for q in json.loads(QUESTIONS.read_text())["questions"]}
+    qs = {q["qid"]: q for f in QUESTIONS if f.exists() for q in json.loads(f.read_text())["questions"]}
     calls = json.loads(FLAGS.read_text()) if FLAGS.exists() else {}
     rows = {}
     for line in (run / "scan.jsonl").open():
@@ -125,20 +126,21 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         ours = [u for u in links + pills if "dealectric.com" in u]
         product_page = any(urlsplit(u).path.strip("/").removeprefix("products/").rstrip("/") == q["slug"] for u in ours)
         key = f"{run.name}/{cell}"
-        out.append({
-            "cell": cell, "qid": r["qid"], "arm": q["arm"], "role": q["role"], "slug": q["slug"], "n": r.get("n"),
-            "started_at": r["started_at"], "model": rec.get("answer_model") or (r.get("models") or [None])[-1],
-            "tier": r["tier"], "go": r.get("go") or [], "our_pages": sorted({u.split("?")[0] for u in ours}),
-            "product_page_cited": product_page, "our_rank": r.get("our_rank"), "n_results": r.get("n_results"),
-            "queries": rec.get("queries") or r.get("queries") or [],
-            "buy_domains": sorted({urlsplit(u).hostname or "" for u in links} - {""}),
-            "code_relayed": r.get("code_relayed"), "named": r.get("named"),
-            "quoted_cart_dates": quoted, "live_cart_date": live,
-            "copy_age_days": ((datetime.fromisoformat(live) - datetime.fromisoformat(max(quoted))).days if live and quoted else None),
-            "lever": lever, "freshness": fresh, "freshness_raw": raw,
-            "flag_candidates": [s for s in sentences(text) if FLAG_WORDS.search(s)],
-            "flag": calls.get(key), "flag_note": calls.get(key + ".note"),
-        })
+        for arm in (q["arm"] if isinstance(q["arm"], list) else [q["arm"]]):   # a shared control scores for each arm
+            out.append({
+                "cell": cell, "qid": r["qid"], "arm": arm, "role": q["role"], "slug": q["slug"], "n": r.get("n"),
+                "started_at": r["started_at"], "model": rec.get("answer_model") or (r.get("models") or [None])[-1],
+                "tier": r["tier"], "go": r.get("go") or [], "our_pages": sorted({u.split("?")[0] for u in ours}),
+                "product_page_cited": product_page, "our_rank": r.get("our_rank"), "n_results": r.get("n_results"),
+                "queries": rec.get("queries") or r.get("queries") or [],
+                "buy_domains": sorted({urlsplit(u).hostname or "" for u in links} - {""}),
+                "code_relayed": r.get("code_relayed"), "named": r.get("named"),
+                "quoted_cart_dates": quoted, "live_cart_date": live,
+                "copy_age_days": ((datetime.fromisoformat(live) - datetime.fromisoformat(max(quoted))).days if live and quoted else None),
+                "lever": lever, "freshness": fresh, "freshness_raw": raw,
+                "flag_candidates": [s for s in sentences(text) if FLAG_WORDS.search(s)],
+                "flag": calls.get(key), "flag_note": calls.get(key + ".note"),
+            })
     return sorted(out, key=lambda x: (x["arm"], x["role"] != "test", x["qid"], x["n"] or 0))
 
 

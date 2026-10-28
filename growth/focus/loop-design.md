@@ -12,6 +12,9 @@ ChatGPT's stored copy.
 |---|---|---|---|
 | A | `/bluetti-ac200l` | Awin, AFF5OFF (5% off) | `/bluetti-discount-codes`, `/discount-codes`, catalog card, `offers.json`, CSVs, `/go/` text page, spec card |
 | B | `/aurzen-travelplay-autocinema-tesla-model-y` | CJ, CJ10 (10% off) | `/tesla-model-y-back-seat-screen`, `/aurzen-discount-codes`, `/discount-codes`, catalog card, `offers.json`, CSVs, `/go/` text page, spec card |
+| C | `/allpowers-r4000-3456wh` | CJ, EXTRA12 (12% off, to 11-15), then ALLPOWERS26 (10%) | `/allpowers-discount-codes`, `/discount-codes`, catalog card, `offers.json`, CSVs, `/go/` text page, spec card |
+| D | `/allpowers-p1800-1024wh` | CJ, ALLPOWERS26 (10% off) | as C |
+| E | `/allpowers-sp037-400w-solar-panel` | CJ, ALLPOWERS26 (10% off) | as C |
 
 A product W1 adds to the focus set later gets its own arm, with its questions and controls added here under "Changes"
 before its baseline reading.
@@ -38,6 +41,13 @@ Four test questions and two controls per arm. None names Dealectric.
 - The discovery prompts are the two 2026-10-28 questions where ChatGPT showed us unprompted. The rest come from W1's
   bank (same text, so W1 scan cells count) plus one search-style and one use-case phrasing. A test question that stays
   T1 in the baseline stays in the set: it measures reach, and a lever may move it.
+Arms C-E (added 2026-10-28, frozen in `growth/focus/loop-questions-allpowers.json`, so each reading request names one
+file): per arm the W1 bank's deal and worth questions, "<product> coupon code", and the bank's "best ... under $X"
+question, where W2 found us absent. Controls: a same-brand sibling per arm (`allpowers-s2000-pro-1451wh--deal` for C,
+`allpowers-r600-299wh--deal` for D, `allpowers-volix-p300-100w-solar-kit--deal` for E) and one drift control shared by
+all three, `esr-halolock-15w-wireless-car-charger-cryoboost--deal` (non-focus brand, T5 in W1's scan). 16 questions,
+32 chats at n=2.
+
 - Controls: one same-brand sibling (same code and phrasing, its pages untouched) and one non-focus product that was T4
   in W1's first scan cell (a drift detector). No lever edits a control product's page or its row on a shared surface.
   If W1 moves a control product into the focus set, it leaves the controls that day and its replacement is recorded
@@ -142,6 +152,9 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | A | L2 cart link, code applied (DLC-71 a) + phase-out caveat | 2026-10-28 ~18:15Z (25afae8) | "already applied", "replacing the AC200L with the Apex 200" | | | shipped before L1: the old buy path was dead |
 | A | L1 buy box | next, after L2's readings | | | | dossier copy kit and record fixes ready |
 | B | baseline | n/a | n/a | R0 2026-10-28 (`readings/r0.md`) | T5 0/8, T4+ 4/8 | controls T4+ 3/4 |
+| C | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
+| D | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
+| E | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
 
 ## Changes
@@ -167,3 +180,8 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   hours before R0 ran. B's R0 cells that carry no L1 marker and no post-ship cart date count as B's baseline
   (`w3score.py --baseline`).
 - 2026-10-28: scoring is `growth/evals/w3score.py`; its LEVERS table mirrors this lever log and gets a row per ship.
+- 2026-10-28: arms C-E added for the ALLPOWERS R4000, P1800 and SP037 (Barry's focus set, 3a1a09c), set up when W2's
+  dossiers landed (Barry's call). Before their baseline, df2d809 corrected only what was false on their pages (R4000
+  AC input, warranty condition, "job sites", per-kWh claim; P1800 silent charge and UPS; SP037 compatibility count,
+  IP rating, the 2025 revision). Those are fact fixes, not levers. Their L1 buy boxes (with the rest of each fix list,
+  SP037's dated in-stock line among them) ship after R0b has run.
