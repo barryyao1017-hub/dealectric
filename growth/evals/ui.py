@@ -22,6 +22,7 @@ uv --directory ~/Desktop/agent-vault run agent-vault browser
 from __future__ import annotations
 
 import argparse
+import os
 import base64
 import json
 import re
@@ -37,7 +38,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import evallib as E  # noqa: E402
 import run as R  # noqa: E402  (loop subset picker, log)
 
-CDP = "http://localhost:9222"
+# AGENT_CDP picks the Chrome instance: 9222 is the agent's main profile (ChatGPT account 1); 9223 is a second profile
+# (~/.config/agent-vault/chrome-profile-2, ChatGPT account 2) so two sessions can run chats at once. Cookies are per
+# profile, so one profile can only be signed in to one ChatGPT account at a time (2026-10-25).
+CDP = os.environ.get("AGENT_CDP", "http://localhost:9222")
 APPS = {
     "chatgpt": {"model": "chatgpt.com, temporary chat, web search on", "ua_bucket": "openai"},
 }
@@ -219,7 +223,18 @@ def search_trace(tab: Tab) -> dict:
     """ChatGPT's web searches for this chat, from the SSE stream captured by SSE_HOOK_JS: {"queries": [the strings
     ChatGPT sent to its search backend, in order, deduplicated], "results": [{domain, title, url, pub_date} for every
     search result it was shown, deduplicated by URL], "note"}. Both are empty when the chat did not search."""
-    out = {"queries": [], "results": [], "note": None}
+    # Since 2026-10-28 also "cite_pills" (the source pills under a sentence, e.g. "Dealectric +1": the Cite component's
+    # items and the cite genui_components' safe_urls; neither is an <a href> in the DOM nor in the conversation markup,
+    # so before this a page we were cited by showed up in no record) and "models" (resolved_model_slug: Free plans fall
+    # back to a smaller model after a quota, silently, and the answers change with it).
+    out = {"queries": [], "results": [], "cite_pills": [], "models": [], "note": None}
+    seen_c = set()
+
+    def pill(u, label=None, title=None):
+        u = E.strip_tracking(u or "")
+        if u and u not in seen_c:
+            seen_c.add(u)
+            out["cite_pills"].append({"url": u, "label": (label or "")[:80] or None, "title": (title or "")[:200] or None})
     try:
         raw = tab.eval("JSON.stringify((window.__sse||[]).map(r => r.chunks.join('')))")
         streams = json.loads(raw) if raw else []
@@ -244,6 +259,16 @@ def search_trace(tab: Tab) -> dict:
                         seen_u.add(u)
                         out["results"].append({"domain": (o.get("domain") or "").removeprefix("www."), "title": (e.get("title") or "")[:200],
                                                "url": u, "pub_date": e.get("pub_date")})
+            if o.get("componentName") == "Cite":
+                for it in ((o.get("state") or {}).get("items") or []):
+                    if isinstance(it, dict):
+                        pill(it.get("url"), it.get("source_label"), it.get("title"))
+            if o.get("type") == "cite":
+                for s in o.get("safe_urls") or []:
+                    pill(s.get("url") if isinstance(s, dict) else s)
+            ms = o.get("resolved_model_slug") or o.get("model_slug")
+            if isinstance(ms, str) and ms not in out["models"]:
+                out["models"].append(ms)
             for v in o.values():
                 walk(v)
         elif isinstance(o, list):
@@ -348,7 +373,7 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = No
         raise
     finally:
         E.footprint("chatgpt-ui", started, E.now_iso(), prompt=prompt, account=r.get("account"), temporary=r.get("temporary_chat"),
-                    cited=r.get("citations"), retrieved=(r.get("response") or {}).get("search_results"), error=err,
+                    cited=[r.get("citations"), r.get("cite_pills")], model=r.get("models"), retrieved=(r.get("response") or {}).get("search_results"), error=err,
                     conversation_id=(r.get("response") or {}).get("conversation_id"), cdp=CDP, **fp)
 
 
@@ -428,6 +453,7 @@ def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                              "markup": markup["parts"], "markup_urls": markup["urls"], "conversation_id": markup["conversation_id"],
                              "search_results": searches["results"]},
                 "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": searches["queries"],
+                "cite_pills": searches["cite_pills"], "models": searches["models"],
                 "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
                 "account": account, "temporary_chat": bool(temporary), "trace": trace,
                 "notes": [f"chatgpt.com {account or '?'}, {'temporary chat' if temporary else 'regular chat'}, "
