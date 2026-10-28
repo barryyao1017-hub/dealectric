@@ -26,6 +26,18 @@ W2 DLC-68, W3 DLC-69, W4 DLC-70; Claude parked as DLC-66.
   TravelPlay $119.99 on aurzen.com. One ChatGPT answer said BLUETTI labels the AC200L discontinued; the product page
   sells it and BLUETTI's discontinued-models page mentions only AC200L bundles in its navigation data. W2 settles it.
 
+## Focus set (as of 2026-10-28)
+
+| product | network | approved | why |
+|---|---|---|---|
+| `bluetti-ac200l` | Awin | 10-28 (start) | ChatGPT cites us on its deal question; end of run, `/go/` now opens BLUETTI's checkout (DLC-71 a) |
+| `aurzen-travelplay-autocinema-tesla-model-y` | CJ | 10-28 (start) | our page in ChatGPT's results 1-6 for its questions |
+| `allpowers-r4000-3456wh` | CJ | 10-28, Barry | W1 first pass (gpt-6): deal question ranks our page #1, source pill |
+| `allpowers-sp037-400w-solar-panel` | CJ | 10-28, Barry | deal and worth questions rank us 3-5, source pill |
+| `allpowers-p1800-1024wh` | CJ | 10-28, Barry | deal question ranks us #3; its kit page ranks #1 |
+
+W2 writes their dossiers first; W3 and W4 take each product once its dossier lands.
+
 ## The metric cascade (W1 and W3 score every answer the same way)
 
 An answer to an unprompted question (one that doesn't name Dealectric) gets the highest tier it reaches:
