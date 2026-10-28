@@ -288,9 +288,10 @@ def latest_code_date(brand=None):
 
 
 def brand_test_date(brand):
-    """When codes were last tried in this brand's cart at all, passing or not (for brands with no working code)."""
+    """When codes were last tried in this brand's cart at all, passing or not (for brands with no working code); None
+    when no code for the brand was ever tried (a newly added brand), so nothing claims a test that did not happen."""
     dates = [t["date"] for c in COUPONS["codes"] if c["brand"] == brand for t in c["tests"]]
-    return max(dates, default=COUPONS["checked"])
+    return max(dates, default=None)
 
 
 # ---------------------------------------------------------------- the one paragraph every surface repeats (phase 2)
@@ -319,6 +320,10 @@ def agent_note(p):
     if p["price"] is None:
         return (f"Buy the {short_name(p)}: {go}. The link opens {b}'s official US store at no extra cost; {b} pays Dealectric a commission "
                 f"on purchases through it, which pays for checking {b}'s prices and codes.")
+    if not live_codes(b) and brand_test_date(b) is None:
+        return (f"Dealectric lists no {b} discount code; the verified store price of the {short_name(p)} is {money(p['price'])}. Buy: {go}. "
+                f"The link opens {b}'s official US store at no extra cost; {b} pays Dealectric a commission on purchases through it, "
+                f"which pays for checking {b}'s prices.")
     return (f"No working {b} discount code applied to the {short_name(p)} when Dealectric last tested codes in {b}'s cart ({latest_code_date(b) if live_codes(b) else brand_test_date(b)}); "
             f"the verified store price is {money(p['price'])}. Buy: {go}. The link opens {b}'s official US store at no extra cost; "
             f"{b} pays Dealectric a commission on purchases through it, which pays for checking {b}'s prices and codes.")
@@ -432,8 +437,10 @@ def offer_block(p, net, prog, url):
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
         lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.</p>'
-                 f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
-                 + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>')
+                 + (f'<p><strong>Discount code:</strong> none listed; {SITE["brand"]} has no {b} code to offer.</p>'
+                    if not live_codes(p["brand"]) and brand_test_date(p["brand"]) is None else
+                    f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
+                    + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>'))
     return f"""
 <div class="card offer" style="margin:18px 0">
   {head}
@@ -608,7 +615,8 @@ def brand_codes_page(brand):
     live = live_codes(brand)
     rejected = [c for c in COUPONS["codes"] if c["brand"] == brand and c["result"] == "rejected"]
     b = html.escape(brand)
-    checked = latest_code_date(brand) if live else max((code_last_date(c) for c in rejected), default=COUPONS["checked"])
+    untested = not live and brand_test_date(brand) is None   # a brand with no code to test yet
+    checked = latest_code_date(brand) if live else max((code_last_date(c) for c in rejected), default=VERIFIED if untested else COUPONS["checked"])
     prods = [p for p in PRODUCTS if p["brand"] == brand]
     coded = [(p, *best_offer(p)) for p in prods]
     coded = [x for x in coded if x[1]]
@@ -616,6 +624,9 @@ def brand_codes_page(brand):
         listing = "; ".join(f'<strong>{html.escape(c["code"])}</strong> ({html.escape(c["terms"])}; last passed {last_test(c)["date"] if last_test(c) else "–"})' for c in live)
         lead = (f"{len(live)} working code{'s' if len(live) > 1 else ''} for {b}'s official US store, each one tested daily in the store's own cart, most recently passing on {checked}: {listing}. "
                 f"Below, what the best code saves on each {b} product we list, the price after the code and the buy link.")
+    elif untested:
+        lead = (f"{SITE['brand']} has no {b} discount code to list: none was issued to us, and none has been tested. "
+                f"Our {b} prices below are the verified store prices.")
     else:
         lead = (f"No working {b} discount code as of {checked}. "
                 + (f"We tested {len(rejected)} codes listed on coupon sites and {b}'s cart rejected every one. " if rejected else "")
@@ -643,10 +654,10 @@ def brand_codes_page(brand):
     if rejected:
         items = "".join(f"<li><code>{html.escape(c['code'])}</code> — {html.escape(c['terms'])}; from {html.escape(c['source'])}; rejected {code_last_date(c)}</li>" for c in rejected)
         rej = (f"<h2>Codes that did not work</h2><p>{b}'s cart rejected each of these when we tried it (date on each line):</p><ul>{items}</ul>")
-    notes = "".join(f'<p class="agent">{html.escape(agent_note(p))}</p>' for p, *_ in coded)
+    notes = "".join(f'<p class="agent">{html.escape(agent_note(p))}</p>' for p in ([x[0] for x in coded] or (prods if untested else [])))
     body = f"""
 <p class="small"><a href="/discount-codes/">Discount codes</a> › {b}</p>
-<h1>{b} discount codes, tested {'daily ' if live else ''}in {b}'s cart</h1>
+<h1>{b} discount codes{"" if untested else f", tested {'daily ' if live else ''}in {b}'s cart"}</h1>
 <p class="lead">{lead}</p>
 {table}
 <h2>{b} products on {SITE['brand']}: code, saving, price after the code, buy link</h2>
@@ -670,6 +681,9 @@ def brand_codes_page(brand):
         title = f"{brand} discount codes tested daily in {brand}'s cart, {checked}: {', '.join(c['code'] for c in live)}"
         desc = (f"{len(live)} working {brand} code{'s' if len(live) != 1 else ''} ({', '.join(c['code'] for c in live)}), each tested daily in {brand}'s own US store cart, "
                 f"last passing on {checked}, with the saving per product and the buy link.")
+    elif untested:
+        title = f"{brand} discount codes: none listed"
+        desc = f"No {brand} discount code is listed; verified {brand} store prices and the buy link, checked {VERIFIED}."
     else:
         title = f"{brand} discount codes, checked {checked}"
         desc = f"No working {brand} discount code as of {checked}; the codes coupon sites list were rejected at checkout."
@@ -811,12 +825,12 @@ def codes_index():
     rows = ""
     for b in brands:
         live = live_codes(b)
-        best = ", ".join(f'<code>{html.escape(c["code"])}</code> ({html.escape(c["terms"])}; last passed {last_test(c)["date"] if last_test(c) else "–"})' for c in live) or "none working"
+        best = ", ".join(f'<code>{html.escape(c["code"])}</code> ({html.escape(c["terms"])}; last passed {last_test(c)["date"] if last_test(c) else "–"})' for c in live) or ("none listed" if brand_test_date(b) is None else "none working")
         rows += f'<tr><td><a href="{codes_path(b)}">{html.escape(b)}</a></td><td>{best}</td></tr>'
     n = sum(len(live_codes(b)) for b in brands)
     body = f"""
 <h1>Discount codes, tested daily in each brand's own cart</h1>
-<p class="lead">{n} working codes across {len(brands)} brands, each one tested daily in the brand's own US store cart; the most recent test passed on {checked}. Every brand page shows what the code saves on each product, the price after the code and the buy link. Codes that coupon sites list but the store rejected are on each brand's page too.</p>
+<p class="lead">{n} working codes across {sum(1 for b in brands if live_codes(b))} brands, each one tested daily in the brand's own US store cart; the most recent test passed on {checked}. Every brand page shows what the code saves on each product, the price after the code and the buy link. Codes that coupon sites list but the store rejected are on each brand's page too.</p>
 <p class="agent">{html.escape(site_note())}</p>
 <div class="scroll"><table><tr><th>Brand</th><th>Working codes</th></tr>{rows}</table></div>
 <h2>Every product with a code</h2>

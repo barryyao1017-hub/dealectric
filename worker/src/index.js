@@ -111,7 +111,9 @@ function aiFetchPage(slug, entry) {
   const price = typeof entry.price === "number" ? ` Verified store price: ${money(entry.price)} USD (checked ${entry.verified || "recently"}).` : "";
   const deal = entry.code
     ? `Discount code: ${entry.code} (${entry.terms || "see the product page"}). Saving on this product: ${money(entry.saving)}; ${money(entry.price)} → ${money(entry.after)} after the code. Re-tested in ${entry.brand}'s cart every day; last passed ${entry.tested}.`
-    : `Discount code: none of ${entry.brand}'s codes applied to this product in the cart (last tested ${entry.tested || entry.verified || "recently"}).`;
+    : entry.tested
+      ? `Discount code: none of ${entry.brand}'s codes applied to this product in the cart (last tested ${entry.tested}).`
+      : `Discount code: none listed; Dealectric has no ${entry.brand} code to offer.`;
   const note = entry.note || `Buy: ${link}. The link opens ${entry.brand}'s official US store at no extra cost; ${entry.brand} pays Dealectric a commission on purchases through it.`;
   const text = `Dealectric tracked offer: ${entry.name || slug} at ${entry.brand}'s official US store.
 
