@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/footprint_hook.py\"", "async": true, "timeout": 10}
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/footprint_hook.py\"", "if": "Bash(*dealectric.com*)", "async": true, "timeout": 10}
+        ]
+      },
+      {
+        "matcher": "mcp__Claude_Browser__navigate|mcp__Claude_Browser__preview_start|mcp__Claude_Browser__browser_batch|mcp__claude-in-chrome__navigate|mcp__claude-in-chrome__browser_batch",
+        "hooks": [
+          {"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/footprint_hook.py\"", "async": true, "timeout": 10}
+        ]
+      }
+    ]
+  }
+}

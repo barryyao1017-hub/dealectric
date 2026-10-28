@@ -6,6 +6,9 @@ and the Worker's D1 `clicks` rows (kind ai_fetch and redirect) for a date range,
 we know our own assistants were working:
 
   * growth/evals/footprint.jsonl, one entry per chat or probe since 2026-10-28 (evallib.footprint);
+  * tools/footprint_hook.py entries (source "hook"): an agent session's own WebFetch, curl or browser navigation to
+    dealectric.com (window: the 90 s before the entry) or a chat it opened on an assistant app (the 10 min after);
+    counted apart as "ours (hook)";
   * backfill: every run file under growth/evals/runs/ with started_at / finished_at (cell JSONs from ui.py, run.py,
     narrowing.py ...), plus chat records that carry no times (image_probe, claudeline, gapexp answers), placed by file
     mtime minus their latency. Those mtime windows are weaker evidence and are counted apart ("ours, by mtime").
@@ -56,7 +59,7 @@ import cf  # noqa: E402
 import evallib as E  # noqa: E402
 
 OUR_COUNTRY = "US"
-CLASSES = ["ours", "ours (mtime)", "outside", "ambiguous", "outside-likely", "crawler", "scanner"]
+CLASSES = ["ours", "ours (hook)", "ours (mtime)", "outside", "ambiguous", "outside-likely", "crawler", "scanner"]
 CRAWLERS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot", "Bytespider")
 # D1 rows our own tools make under a user agent of their own (tools/linkcheck.py, deploy checks, rawfetch_mcp.py)
 # Our own clients: dealectric-* tools (linkcheck, indexnow, deploy checks, rawfetch_mcp.py's claudeline UA, run.py's
@@ -68,7 +71,9 @@ OWN_UA_MARKS = ("dealectric", "(claude-code/")
 SECRET_RE = re.compile(r"(^|/)\.(env|git|aws|ssh|svn|npmrc|docker)|/@fs/|/proc/|/etc/passwd|wp-(admin|login|config|content)|phpinfo|"
                        r"\.php\b|(^|/)(sa|service[-_]?account|credentials?|secrets?|keys?|firebase|config|settings)\.(json|ya?ml|js|ts)$|"
                        r"\.(sql|bak|old|swp|pem|key)$|actuator|server-status|\.\./|/vendor/|/node_modules/", re.I)
-BURST_S = 600   # a scanner burst: same country, within 10 minutes of a secret-hunting request
+BURST_S = 600
+HOOK_FETCH_S, HOOK_CHAT_S = 90, 600
+OURS_BY_SOURCE = {"mtime": "ours (mtime)", "hook": "ours (hook)"}   # windows for footprint_hook.py entries: a fetch ends at the entry, a chat starts there   # a scanner burst: same country, within 10 minutes of a secret-hunting request
 
 
 def parse_ts(s) -> datetime | None:
@@ -117,6 +122,14 @@ def load_windows(since: datetime, until: datetime) -> list[dict]:
             except ValueError:
                 continue
             a, b = parse_ts(e.get("started_at")), parse_ts(e.get("finished_at"))
+            if a and e.get("source") == "hook":
+                # tools/footprint_hook.py logs the moment a session's tool call returned: a fetch happened just before it,
+                # a chat it opened runs on for a while after it
+                a, b = (a - timedelta(seconds=HOOK_FETCH_S), a) if e.get("kind") == "fetch" else (a, a + timedelta(seconds=HOOK_CHAT_S))
+                if b >= lo and a <= hi:
+                    out.append({"start": a, "end": b, "source": "hook", "country": None, "family": app_family(e.get("app")),
+                                "label": f"{e.get('via')} {e.get('app')} {e.get('kind')} session {(e.get('session_id') or '?')[:8]}"})
+                continue
             if a and b and b >= lo and a <= hi:
                 out.append({"start": a, "end": b, "source": "footprint", "country": e.get("egress_country"), "family": app_family(e.get("app")),
                             "label": f"{e.get('script')} {e.get('app')} {e.get('run_id') or ''} {e.get('prompt_id') or ''}".strip()})
@@ -166,14 +179,14 @@ def app_family(s) -> str | None:
     if not s or s == "direct-fetch":
         return None
     for fam, marks in (("openai", ("chatgpt", "openai", "gpt-")), ("anthropic", ("claude", "anthropic")),
-                       ("google", ("gemini",)), ("xai", ("xai", "grok"))):
+                       ("google", ("gemini",)), ("xai", ("xai", "grok")), ("perplexity", ("perplexity",))):
         if any(m in s for m in marks):
             return fam
     return None
 
 
 def fetch_family(bot: str) -> str | None:
-    return {"ChatGPT-User": "openai", "Claude-User": "anthropic", "Gemini": "google"}.get(bot)
+    return {"ChatGPT-User": "openai", "Claude-User": "anthropic", "Gemini": "google", "Perplexity-User": "perplexity"}.get(bot)
 
 
 class Index:
@@ -293,7 +306,7 @@ def classify(f: dict, idx: Index, slack: float, near_min: float, bursts: dict | 
     if f["country"] != OUR_COUNTRY:
         return {**f, "cls": "outside", "why": f"country {f['country']}", "off": off, "win": w}
     if w and abs(off) <= slack:
-        return {**f, "cls": "ours (mtime)" if w["source"] == "mtime" else "ours", "why": f"{w['source']}: {w['label']}", "off": off, "win": w}
+        return {**f, "cls": OURS_BY_SOURCE.get(w["source"], "ours"), "why": f"{w['source']}: {w['label']}", "off": off, "win": w}
     if w and abs(off) <= near_min * 60:
         return {**f, "cls": "ambiguous", "why": f"{off:+.0f}s from {w['source']}: {w['label']}", "off": off, "win": w}
     return {**f, "cls": "outside-likely", "why": "no chat of ours near" + (f" (nearest {off / 60:+.0f} min)" if w else ""), "off": off, "win": w}
@@ -312,7 +325,7 @@ def classify_unverified(f: dict, idx: Index, slack: float, bursts: dict) -> dict
     # the burst rule: the scanner also runs from US cloud regions.
     off, w = idx.offset(f["ts"], families={fam, None} if fam == "anthropic" else {None})
     if w and abs(off) <= slack and (fam == "anthropic" or f["country"] == OUR_COUNTRY):
-        return {**f, "cls": "ours (mtime)" if w["source"] == "mtime" else "ours", "why": f"{w['source']}: {w['label']}", "off": off, "win": w}
+        return {**f, "cls": OURS_BY_SOURCE.get(w["source"], "ours"), "why": f"{w['source']}: {w['label']}", "off": off, "win": w}
     if in_burst(f, bursts):
         return {**f, "cls": "scanner", "why": f"fake AI user agent in a {f['country']} scanner burst", "off": off, "win": w}
     if f["bot"] in CRAWLERS or f["bot"] == "Claude-SearchBot":

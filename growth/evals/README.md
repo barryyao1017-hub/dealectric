@@ -102,6 +102,27 @@ regions (NL, TW, DE, BE, CA, BR, US; 10 bursts 2026-10-20..28) asking for `/.env
 of ours is ours (server-side Claude: API `web_fetch`, claude.ai); anything else unverified is `ambiguous`. Server-side
 Claude fetches come from Anthropic's IPs and look like anyone's, so a probe that uses them must log its footprint.
 
+**Agent sessions working by hand** are logged by a Claude Code hook, not by the agent remembering to:
+`.claude/settings.json` runs `tools/footprint_hook.py` after a tool call in any Claude Code session in this repo (or a
+worktree of it), and the script appends a `"source": "hook"` entry only for these:
+
+- WebFetch of a dealectric.com URL;
+- a Bash command that names a dealectric.com URL and runs curl / wget / http as a command word outside quotes. Our own
+  scripts are skipped (they log themselves or send their own user agent), and so are commands that start a child
+  `claude` session (that session's own calls get logged);
+- a browser-tool navigation (built-in browser or Claude in Chrome) to dealectric.com, or to the start of a chat on
+  chatgpt.com, claude.ai, perplexity.ai, gemini.google.com, grok.com or copilot.microsoft.com. Settings, account and
+  login pages are not chats. A batch that types into the new chat records the prompt.
+
+Nothing else is written: no other tools, no other sites, no sessions outside this repo (the script checks
+`docs/CNAME`). The Bash hook only starts for commands containing `dealectric.com` (settings `if` gate). The WebFetch
+and browser hooks start on every call of those tools and exit at once when nothing matches: Claude Code 2.1.303 does
+not apply an `if` gate to WebFetch (tested 2026-10-28) or to MCP tool inputs. The hooks run async, use only the
+standard library and never fail a tool call. fetchwho gives a hook fetch the 90 s before the entry and a hook chat
+the 10 min after it, counted as "ours (hook)". Not covered: Barry's own chats on the phone or laptop, claude.ai and
+Cowork sessions, and the browser hook end to end (only pipe-tested; the browser MCP servers exist only in the
+desktop app).
+
 ## Iteration report: `iterreport.py`
 
 ```bash
