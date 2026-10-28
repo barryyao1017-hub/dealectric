@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import statistics
 import sys
 import time
@@ -175,6 +176,7 @@ def supply(args) -> None:
     save("supply.json", out)
 
 
+TRANSACTIONAL = re.compile(r"\b(deals?|sales?|coupons?|discounts?|promo|cheap(est)?|near me|buy|for sale|clearance|price|prices|refurbished|used)\b", re.I)
 KINDS = ["major_publisher", "niche_site", "retailer", "brand", "forum_video", "other"]
 LABEL_SCHEMA = {"type": "object", "properties": {"items": {"type": "array", "items": {"type": "object", "properties": {
     "q": {"type": "string"},
@@ -236,17 +238,25 @@ def report(args) -> None:
     mean_ded = statistics.mean(r["dedicated"] for r in rows)
     for r in rows:
         r["opening"] = r["searches"] >= med and r["dedicated"] < mean_ded and r["dedicated_major"] == 0
+        # The stricter rule, fixed on 2026-10-27 before the second harvest (growth/void-scan.md "Next" (2)): at most one
+        # major publisher anywhere in the top 10, and no transactional query (the shopper already chose and wants a deal).
+        r["transactional"] = bool(TRANSACTIONAL.search(r["q"]))
+        r["opening_strict"] = r["opening"] and r["major_any"] <= 1 and not r["transactional"]
     openings = sorted((r for r in rows if r["opening"]), key=lambda r: -r["searches"])
+    strict = [r for r in openings if r["opening_strict"]]
     summary = {"discovery_queries_scored": len(rows), "median_searches": med, "mean_dedicated": round(mean_ded, 2),
                "openings": len(openings), "openings_share": round(len(openings) / len(rows), 3) if rows else 0,
-               "thesis_threshold_met": len(openings) >= 10 and len(openings) / max(len(rows), 1) >= 0.05}
+               "thesis_threshold_met": len(openings) >= 10 and len(openings) / max(len(rows), 1) >= 0.05,
+               "openings_strict": len(strict), "openings_strict_share": round(len(strict) / len(rows), 3) if rows else 0,
+               "thesis_threshold_met_strict": len(strict) >= 10 and len(strict) / max(len(rows), 1) >= 0.05}
     save("report.json", {"summary": summary, "rows": sorted(rows, key=lambda r: -r["searches"])})
     lines = [f"# Void scan report ({E.today()})", "", "```", json.dumps(summary, indent=1), "```", "",
-             "| query | Bing US searches, 3 mo | dedicated in top 10 | major publishers (any) | kinds | dedicated titles |",
-             "|---|---|---|---|---|---|"]
+             "| query | Bing US searches, 3 mo | dedicated in top 10 | major publishers (any) | strict rule | kinds | dedicated titles |",
+             "|---|---|---|---|---|---|---|"]
     for r in openings:
         kinds = ", ".join(f"{k} {v}" for k, v in r["kinds"].items() if v)
-        lines.append(f"| {r['q']} | {r['searches']} | {r['dedicated']} | {r['major_any']} | {kinds} | {'; '.join(r['dedicated_titles'])} |")
+        why = "yes" if r["opening_strict"] else ("no: transactional" if r["transactional"] else "no: 2+ majors")
+        lines.append(f"| {r['q']} | {r['searches']} | {r['dedicated']} | {r['major_any']} | {why} | {kinds} | {'; '.join(r['dedicated_titles'])} |")
     (RUN / "report.md").write_text("\n".join(lines) + "\n")
     print(json.dumps(summary, indent=1))
 
