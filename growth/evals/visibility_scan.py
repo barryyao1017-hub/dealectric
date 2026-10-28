@@ -149,6 +149,10 @@ def run(args) -> int:
     (out / "chatgpt").mkdir(parents=True, exist_ok=True)
     qfile = Path(args.questions) if args.questions else BANK
     bank = json.loads(qfile.read_text())["questions"] if qfile.exists() else build_bank()
+    offers = {p["id"]: p["offer"] for p in json.loads(OFFERS.read_text())["products"]}
+    for q in bank:   # other question files (W3's loop-questions.json) carry arm/role instead of phrasing and code
+        q.setdefault("phrasing", q["qid"].rsplit("--", 1)[-1])
+        q.setdefault("code", (offers.get(q.get("slug")) or {}).get("coupon"))
     if args.only:
         keep = set(args.only.split(","))
         bank = [q for q in bank if q["slug"] in keep or q["qid"] in keep or q["phrasing"] in keep]
