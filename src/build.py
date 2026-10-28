@@ -383,6 +383,13 @@ def short_name(p):
     return p["name"].split(",")[0]
 
 
+def title_name(p):
+    """The name for a page title: the product name without its spec list ("Baseus Blade H1 Digital Display Power Bank,
+    20,000 mAh, 100 W" -> "Baseus Blade H1 Digital Display Power Bank"; a kit's "(1,451 Wh, 2,400 W)" goes too)."""
+    import re
+    return re.sub(r"\s*\([^)]*\)", "", p["name"]).split(",")[0].strip()
+
+
 def tested_text(c, p=None):
     """'checked in Soundcore's cart on 2026-10-21: $19.99 off the Space One ($99.99)'."""
     t = last_test(c, p)
@@ -484,11 +491,11 @@ def product_page(p):
                      **({"hasMerchantReturnPolicy": return_policy(p)} if return_policy(p) else {}),
                      **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested daily in {p['brand']}'s cart, last passed {date}."} if c else {})}}
     if c:
-        title = f"{p['name']} — {money(s)} off with code {c['code']}, tested in {p['brand']}'s cart {date}"
+        title = f"{title_name(p)}: {money(after)} with code {c['code']}"   # DLC-32: the test date is in the description
         desc = (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}), "
                 f"tested daily in {p['brand']}'s cart, last passed {date}. Buy: {url}")
     else:
-        title = f"{p['name']} — {money(p['price']) if p['price'] is not None else 'price'} at {p['brand']}, verified {verified_on(p)}"
+        title = f"{title_name(p)}: {money(p['price'])} at {p['brand']}" if p["price"] is not None else f"{title_name(p)} at {p['brand']}"
         desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {verified_on(p)}; "
                 f"no {p['brand']} discount code applied in the cart. Buy: {url}")
     return title, html.escape(desc, quote=True), body, ld, wide
