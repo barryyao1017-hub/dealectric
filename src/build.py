@@ -878,6 +878,9 @@ def main():
     # each product they name now carries the same deal line and buy link as the catalog cards.
     SITE["deal_line"] = guide_deal_line
     SITE["verified"] = VERIFIED
+    SITE["citation"] = citation()   # DLC-62
+    SITE["csv_products"], SITE["csv_comparisons"] = CSV_PRODUCTS, CSV_COMPARISONS
+    SITE["csv_tables"] = len(COMPARISONS + GAP_PAGES)
     # llms.txt and the descriptor use the code summary fields set just above.
     open(os.path.join(out, "llms.txt"), "w").write(LLMS_TXT.format(**SITE))
     open(os.path.join(out, ".well-known", SITE["descriptor"]), "w").write(json.dumps(WELL_KNOWN(SITE), indent=2))
@@ -907,8 +910,11 @@ def main():
                        "offer.coupons lists every code that worked in the brand's cart on this product (last_worked_at is the date; every published code is re-tested daily). offer.link is the buy link; "
                        "opened in a browser, it logs the click and redirects to offer.merchant_url's store, and the commission is paid only on that route.",
               "codes_last_tested": latest_code_date(),
+              "citation": citation(),
+              "downloads": [SITE["url"] + "/" + CSV_PRODUCTS, SITE["url"] + "/" + CSV_COMPARISONS],
               "products": [product_record(p) for p in PRODUCTS]}
     open(os.path.join(out, "offers.json"), "w").write(json.dumps(offers, indent=1, ensure_ascii=False))
+    csv_exports(out)
     # Image sitemap extension (https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps):
     # lists each product page's images so image indexes (Google, Bing) find them without rendering the page.
     page_images = {SITE["url"] + f"/products/{p['slug']}/": product_images(p) for p in PRODUCTS}
@@ -925,6 +931,51 @@ def main():
     open(lm, "w").write(json.dumps(links_map(), indent=1, ensure_ascii=False) + "\n")
     print(f"built {len(urls)} pages -> {out}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
     flatten(out)
+
+
+CSV_PRODUCTS, CSV_COMPARISONS = "dealectric-products.csv", "dealectric-comparisons.csv"
+
+
+def citation():
+    """DLC-62: how to cite the data (on /data/, in llms.txt and in offers.json)."""
+    return (f"Dealectric ({VERIFIED[:4]}). Electronics product, offer and comparison data, version {VERIFIED}. "
+            f"{SITE['url']}/data/")
+
+
+def csv_exports(out):
+    """DLC-62: the catalog and every comparison table (other brands' rows included) as CSV, linked from /data/, so a
+    site that cites the figures can use them without scraping. One row per product, and one row per table cell."""
+    import csv
+    import re
+    plain = lambda v: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", str(v)))).strip() if v is not None else ""
+    with open(os.path.join(out, CSV_PRODUCTS), "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "brand", "name", "category", "price_usd", "list_price_usd", "in_stock", "price_verified",
+                    "best_code", "code_saving_usd", "price_after_code_usd", "code_last_passed", "specs", "warranty", "returns",
+                    "page", "store_url", "buy_link"])
+        for p in PRODUCTS:
+            c, s, after, date = best_offer(p)
+            w.writerow([p["slug"], p["brand"], p["name"], p["category"], p["price"], p.get("list_price", ""),
+                        "yes" if p.get("in_stock", True) else "no", verified_on(p),
+                        c["code"] if c else "", round(s, 2) if c else "", round(after, 2) if c else "", date or "",
+                        "; ".join(f"{k}: {v}" for k, v in p["specs"]), p["warranty"], p["returns"],
+                        f"{SITE['url']}/{p['slug']}", p["url"], go_link(p)])
+    with open(os.path.join(out, CSV_COMPARISONS), "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["comparison", "title", "page", "product", "listed_by_dealectric", "field", "value", "price",
+                    "price_read_on", "source_url", "figures_read_on"])
+        for c in COMPARISONS + GAP_PAGES:
+            for r in c["rows"]:
+                if r.get("slug"):
+                    pr = BY_SLUG[r["slug"]]
+                    name, ours, price, read_on, src = (r.get("model") or short_name(pr), "yes", pr["price"], verified_on(pr),
+                                                       f"{SITE['url']}/{pr['slug']}")
+                else:
+                    name, ours, price, read_on, src = (f"{r['brand']} {r['model']}", "no", plain(r["cells"].get("price", "")),
+                                                       c["checked"], r.get("url", ""))
+                for key, label in c["columns"]:
+                    w.writerow([c["slug"], plain(c["h1"]), f"{SITE['url']}/{c['slug']}", name, ours, label,
+                                plain(r["cells"].get(key, "")), price, read_on, src, c["checked"]])
 
 
 def flatten(out):

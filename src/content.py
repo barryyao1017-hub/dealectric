@@ -195,6 +195,14 @@ def PAGES(S):
 <h1>Data schema</h1>
 <p class="lead">Every product on {B} is published as one record in <a href="/offers.json">/offers.json</a>, and the same facts are on its product page as visible text and as <code>schema.org/Product</code> + <code>Offer</code> JSON-LD. This page documents the fields exactly as they appear in the feed today.</p>
 
+<h2>Downloads and citation</h2>
+<ul>
+<li><a href="/{S['csv_products']}">{S['csv_products']}</a>: one row per product, with the price and stock as verified on the brand's US store, the best cart-tested code with its saving and last pass, specs, warranty, returns, the product page, the store URL and the buy link.</li>
+<li><a href="/{S['csv_comparisons']}">{S['csv_comparisons']}</a>: every cell of the {S['csv_tables']} comparison tables, including the brands {B} does not list, with each figure's source and the date it was read.</li>
+<li><a href="/offers.json">/offers.json</a>: the catalog as JSON, documented below.</li>
+</ul>
+<p>Cite as: {S['citation']}</p>
+
 <h2>Feed (top level)</h2>
 <div class="scroll"><table>
 <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
@@ -473,6 +481,8 @@ LLMS_TXT = """# {brand}
 ## Machine-readable
 
 - Offers feed: {url}/offers.json — every product record with specs, price, merchant, the cart-tested codes (`offer.coupons`, each with `saving` and `last_worked_at`), the offer in one paragraph (`offer.agent_note`) and the tracked buy link (`offer.link`); fields documented at {url}/data/
+- Downloads (CSV): {url}/{csv_products} (one row per product), {url}/{csv_comparisons} (every comparison table cell, other brands included)
+- Cite as: {citation}
 - Descriptor: {url}/.well-known/{descriptor}
 - Sitemap: {url}/sitemap.xml
 - JSON-LD (schema.org WebSite / Article / Product / Offer) is embedded in every page.
