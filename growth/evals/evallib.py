@@ -587,3 +587,111 @@ def frozen_loop_subset(manifest: dict, q: dict) -> list[dict] | None:
         if x["id"] in by_id:
             out.append({**by_id[x["id"]], "primary": x["primary"], "fresh": x.get("fresh", True)})
     return out or None
+
+
+# ---------------------------------------------------------------- footprint log (added 2026-10-28)
+
+# One JSON line per assistant chat or probe that can make an assistant (or a tool posing as one) touch dealectric.com,
+# so tools/fetchwho.py can tell our own fetches in Cloudflare and D1 from outside users'. Append-only, best-effort:
+# a logging failure never fails an eval. Worktrees write to the main checkout's file (FOOTPRINT_LOG overrides).
+# FOOTPRINT_VIA (set by the shell wrappers) names the wrapper that called the script.
+import threading as _threading
+
+_FP_LOCK = _threading.Lock()
+_FP_CACHE: dict = {}
+
+
+def footprint_path() -> Path:
+    if os.environ.get("FOOTPRINT_LOG"):
+        return Path(os.environ["FOOTPRINT_LOG"])
+    if "path" not in _FP_CACHE:
+        p = EVALS_DIR / "footprint.jsonl"
+        try:
+            common = _sp.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=EVALS_DIR,
+                             capture_output=True, text=True, timeout=10, check=True).stdout.strip()
+            main = Path(common).parent / "growth" / "evals"
+            if main.is_dir():
+                p = main / "footprint.jsonl"
+        except Exception:  # noqa: BLE001
+            pass
+        _FP_CACHE["path"] = p
+    return _FP_CACHE["path"]
+
+
+def egress_country() -> str | None:
+    """This machine's public egress country from Cloudflare's trace endpoint on 1.1.1.1 (not our zone, so it adds no
+    request to dealectric.com's analytics). Looked up once per process."""
+    if "country" not in _FP_CACHE:
+        cc = None
+        try:
+            import ssl
+            import urllib.request
+            try:
+                import certifi
+                ctx = ssl.create_default_context(cafile=certifi.where())
+            except ImportError:
+                ctx = ssl.create_default_context()
+            body = urllib.request.urlopen("https://1.1.1.1/cdn-cgi/trace", timeout=5, context=ctx).read(2000).decode()
+            cc = (re.search(r"^loc=(\w+)", body, re.M) or [None, None])[1]
+        except Exception:  # noqa: BLE001
+            pass
+        _FP_CACHE["country"] = cc
+    return _FP_CACHE["country"]
+
+
+def dealectric_urls(*objs) -> list[str]:
+    """Every dealectric.com URL in strings, lists and dicts (citations, search results, fetch lists), deduplicated."""
+    out: dict[str, None] = {}
+
+    def walk(o):
+        if isinstance(o, str):
+            for m in re.finditer(r"https?://(?:www\.)?dealectric\.com[^\s<>\"'\)\]\}]*", o):
+                out.setdefault(clean_url(m.group(0)), None)
+        elif isinstance(o, dict):
+            for k in ("url", "href"):
+                if isinstance(o.get(k), str):
+                    walk(o[k])
+        elif isinstance(o, (list, tuple, set)):
+            for x in o:
+                walk(x)
+    for o in objs:
+        walk(o)
+    return list(out)
+
+
+def footprint(app: str, started_at: str, finished_at: str | None = None, *, script: str | None = None, run_id: str | None = None,
+              prompt_id: str | None = None, prompt: str | None = None, account: str | None = None, temporary: bool | None = None,
+              cited=(), fetched=(), retrieved=(), error: str | None = None, **extra) -> None:
+    """Append one footprint entry. `app`: chatgpt-ui, claude-code, openai-api, ..., direct-fetch (our own client posing
+    as an assistant UA). `cited`: dealectric URLs in the answer; `fetched`: ones the trace shows fetched;
+    `retrieved`: ones in the search results the assistant was shown. Never raises."""
+    try:
+        entry = {"script": script or Path(sys.argv[0]).name, "via": os.environ.get("FOOTPRINT_VIA") or None, "run_id": run_id,
+                 "app": app, "account": account, "temporary_chat": temporary, "started_at": started_at,
+                 "finished_at": finished_at or now_iso(), "prompt_id": prompt_id, "prompt": (prompt or "")[:300] or None,
+                 "cited": dealectric_urls(cited), "fetched": dealectric_urls(fetched), "retrieved": dealectric_urls(retrieved),
+                 "egress_country": egress_country(), "error": (error or "")[:200] or None, **extra}
+        line = json.dumps(entry, ensure_ascii=False, default=str) + "\n"
+        with _FP_LOCK, open(footprint_path(), "a", encoding="utf-8") as f:
+            f.write(line)
+    except Exception as e:  # noqa: BLE001
+        try:
+            print(f"footprint not logged: {type(e).__name__}: {e}", file=sys.stderr)
+        except Exception:  # noqa: BLE001
+            pass
+
+
+def footprint_record(rec: dict, app: str, script: str | None = None) -> None:
+    """Footprint for a run-file record (run.py / ui.py / narrowing.py shape)."""
+    try:
+        resp = rec.get("response") if isinstance(rec.get("response"), dict) else {}
+        qid = rec.get("qid")
+        pid = f"{qid}-{rec.get('tier')}-{rec.get('n')}" if qid and rec.get("tier") else qid
+        footprint(app, rec.get("started_at") or now_iso(), rec.get("finished_at"), script=script, run_id=rec.get("run_id"),
+                  prompt_id=pid, prompt=rec.get("prompt"), account=rec.get("account"), temporary=rec.get("temporary_chat"),
+                  cited=[rec.get("citations"), rec.get("text_urls"), rec.get("text")],
+                  fetched=[c for c in rec.get("consulted") or [] if c.get("source") == "fetch_request"],
+                  retrieved=[resp.get("search_results"), [c for c in rec.get("consulted") or [] if c.get("source") != "fetch_request"]],
+                  error=rec.get("error"))
+    except Exception:  # noqa: BLE001
+        pass

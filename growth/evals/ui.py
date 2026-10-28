@@ -328,7 +328,31 @@ def conversation_markup(tab: Tab) -> dict:
     return out
 
 
-def ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
+def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = None) -> dict:
+    """One temporary chat (see _ask_chatgpt), logged to the footprint log (evallib.footprint) whether it answers or
+    fails. `fp` adds run_id / prompt_id / script; without it they come from shot_path (runs/<run>/chatgpt/<cell>.jpg)."""
+    fp = dict(fp or {})
+    if shot_path is not None and not fp.get("run_id"):
+        try:
+            rel = Path(shot_path).resolve().relative_to(E.RUNS_DIR)
+            fp.setdefault("run_id", rel.parts[0])
+            fp.setdefault("prompt_id", Path(shot_path).stem)
+        except ValueError:
+            fp.setdefault("prompt_id", Path(shot_path).stem)
+    started, r, err = E.now_iso(), {}, None
+    try:
+        r = _ask_chatgpt(prompt, shot_path)
+        return r
+    except Exception as e:
+        err = f"{type(e).__name__}: {e}"
+        raise
+    finally:
+        E.footprint("chatgpt-ui", started, E.now_iso(), prompt=prompt, account=r.get("account"), temporary=r.get("temporary_chat"),
+                    cited=r.get("citations"), retrieved=(r.get("response") or {}).get("search_results"), error=err,
+                    conversation_id=(r.get("response") or {}).get("conversation_id"), cdp=CDP, **fp)
+
+
+def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
     # temporary-chat: no memory, not saved to the account's history (signed-in state). hints=search forces the
     # web-search tool. Logged out, ?q= auto-submits; signed in, it only fills the composer and we click Send.
     url = "https://chatgpt.com/?temporary-chat=true&hints=search&q=" + urllib.parse.quote(prompt, safe="")

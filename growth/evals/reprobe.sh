@@ -3,6 +3,7 @@
 # (new title or the canonical paragraph), then exit 0. Exit 1 after MAX probes. Appends a line per probe to the
 # log; the run files land in growth/evals/runs/<run-id>/chatgpt/.
 #   growth/evals/reprobe.sh Q20 2026-10-22-p2proof 5
+export FOOTPRINT_VIA="$(basename "$0")"   # tags footprint.jsonl entries written by the scripts below
 set -u
 Q="${1:-Q20}"; RUN="${2:-2026-10-22-p2proof}"; MAX="${3:-5}"; GAP="${4:-7200}"
 cd /Users/jiayiyao/Desktop/dealectric || exit 1

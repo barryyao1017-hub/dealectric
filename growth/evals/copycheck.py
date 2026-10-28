@@ -18,6 +18,10 @@ import html
 import re
 import subprocess
 import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import evallib as E  # noqa: E402
 
 SITE = "https://dealectric.com"
 UAS = {
@@ -66,6 +70,7 @@ def main() -> int:
                 ("/go/ (coded)", f"{SITE}/go/{args.coded_slug}"), ("/go/", f"{SITE}/go/{args.slug}")]
     uas = sorted(UAS) if args.ua == "both" else [args.ua]
     bad = 0
+    started = E.now_iso()
     print("| surface | UA | status | cf-cache | age | " + " | ".join(f"“{p[:28]}”" for p in phrases) + " |")
     print("|---|---|---|---|---|" + "---|" * len(phrases))
     for name, url in surfaces:
@@ -76,6 +81,7 @@ def main() -> int:
             if not all(hits) and not (name.startswith("/go/") and "coded" not in name and hits[0] is False and st == 200):
                 bad += 1
             print(f"| {name} | {ua} | {st} | {h.get('cf-cache-status', '–')} | {h.get('age', '–')} | " + " | ".join("yes" if x else "**no**" for x in hits) + " |")
+    E.footprint("direct-fetch", started, E.now_iso(), prompt_id="copycheck", fetched=[u for _, u in surfaces], user_agents=[UAS[u] for u in uas])
     print()
     print("rows with a missing phrase:", bad, "(the uncoded /go/ page is allowed to lack the first phrase)")
     return 1 if bad else 0

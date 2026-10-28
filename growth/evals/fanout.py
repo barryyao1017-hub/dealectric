@@ -66,7 +66,21 @@ CLUSTERS = {
 }
 
 
-def ask(prompt: str) -> dict:
+def ask(prompt: str, fp: dict | None = None) -> dict:
+    """_ask, logged to the footprint log (evallib.footprint)."""
+    started, r, err = E.now_iso(), {}, None
+    try:
+        r = _ask(prompt)
+        return r
+    except Exception as e:
+        err = f"{type(e).__name__}: {e}"
+        raise
+    finally:
+        E.footprint("claude-code", started, E.now_iso(), prompt=prompt, account="claude.ai subscription (CLI)", cited=r.get("answer"),
+                    fetched=r.get("fetches"), retrieved=r.get("result_urls"), error=err, model=MODEL, **(fp or {}))
+
+
+def _ask(prompt: str) -> dict:
     cmd = [E.claude_cli(), "-p", prompt, "--output-format", "stream-json", "--verbose", "--allowedTools", "WebSearch,WebFetch",
            "--tools", "WebSearch,WebFetch", "--model", MODEL, *E.CLI_ISOLATION]
     p = subprocess.run(cmd, capture_output=True, text=True, timeout=600, cwd=E.cli_cwd())
@@ -103,7 +117,7 @@ def run(names: list[str]) -> None:
 
     def one(job):
         f, prompt = job
-        r = ask(prompt)
+        r = ask(prompt, fp={"run_id": RUN.name, "prompt_id": f"{f.parent.name}-{f.stem}"})
         f.parent.mkdir(parents=True, exist_ok=True)
         E.write_json(f, r)
         return f, len(r["queries"])

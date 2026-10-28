@@ -155,7 +155,22 @@ CLI_TIMEOUT, MAX_TURNS = 600, 12
 RAW_MCP = json.dumps({"mcpServers": {"web": {"command": sys.executable, "args": [str(Path(__file__).with_name("rawfetch_mcp.py"))]}}})
 
 
-def cli_agent(prompt: str, system: str, model: str, channel: str = "webfetch") -> dict:
+def cli_agent(prompt: str, system: str, model: str, channel: str = "webfetch", fp: dict | None = None) -> dict:
+    """_cli_agent, logged to the footprint log (evallib.footprint); `fp` adds prompt_id."""
+    started, r, err = E.now_iso(), {}, None
+    try:
+        r = _cli_agent(prompt, system, model, channel)
+        return r
+    except Exception as e:
+        err = f"{type(e).__name__}: {e}"
+        raise
+    finally:
+        E.footprint("claude-code", started, E.now_iso(), run_id=RUN.name, prompt=prompt, account="claude.ai subscription (CLI)",
+                    cited=r.get("text"), fetched=[f["url"] for f in r.get("fetched") or []], error=err, model=model, channel=channel,
+                    **(fp or {}))
+
+
+def _cli_agent(prompt: str, system: str, model: str, channel: str = "webfetch") -> dict:
     """`claude -p` with one fetch tool, isolated like run.call_claude_code: Claude Code's WebFetch (pages summarised by
     a second model before the answering model reads them) or `raw` (rawfetch_mcp.py: the page's full text, as claude.ai's
     fetch delivers it). Returns the answer, the URLs fetched and what each fetch returned (the text that reached the model)."""
@@ -220,10 +235,10 @@ def run(args) -> None:
             out = {"text": G.cli_text(SYSTEM_1, prompt, args.model)}
         elif args.setting == 2:
             prompt = prompt_2(qid, v)
-            out = cli_agent(prompt, SYSTEM_2, args.model, args.channel)
+            out = cli_agent(prompt, SYSTEM_2, args.model, args.channel, fp={"prompt_id": f"s{setting}-{qid}-{v}-{pos}"})
         else:
             prompt = prompt_34(args.setting, qid, v)
-            out = cli_agent(prompt, SYSTEM_34, args.model, args.channel)
+            out = cli_agent(prompt, SYSTEM_34, args.model, args.channel, fp={"prompt_id": f"s{setting}-{qid}-{v}-{pos}"})
         # setting 1's prompt (~7,000 words) is rebuilt by prompt_1(); keep only its length
         kept = {"prompt_words": len(prompt.split())} if args.setting == 1 else {"prompt": prompt}
         E.write_json(d / f"{qid}-{v}-{pos}.json", {"qid": qid, "variant": v, "pos": pos, "setting": setting,
@@ -269,7 +284,7 @@ def chatgpt(args) -> None:
         prompt = prompt_chatgpt(qid, v)
         for attempt in range(5):
             try:
-                r = GC.ask_chatgpt_pasted(prompt)
+                r = GC.ask_chatgpt_pasted(prompt, fp={"run_id": RUN.name, "prompt_id": f"{qid}-{v}"})
                 break
             except ui.Throttled as t:
                 print(f"throttled, waiting {t.wait_s} s: {t}", flush=True)

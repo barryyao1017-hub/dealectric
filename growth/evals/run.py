@@ -565,6 +565,8 @@ def run_cell(assistant: str, rec: dict, tier: str, n: int, prompt: str, system: 
     record["text_urls"] = [u for u in text_urls if u["url"] not in seen]
     record["all_urls"] = sorted({u["url"] for u in record["citations"] + record["text_urls"] + record["consulted"] if u.get("url")})
     E.write_json(out, record)
+    if not mock:
+        E.footprint_record(record, assistant if assistant == "claude-code" else f"{assistant}-api", script="run.py")
     return {"status": "error" if record["error"] else "ok", "path": out, "error": record["error"],
             "latency": record["latency_s"]}
 

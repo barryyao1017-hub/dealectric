@@ -15,6 +15,7 @@ probes in `growth/probes/` for the weekly check (DLC-12) and feeds the tracked-l
 | `report.py` | `results.csv` and the scorecard `growth/probes/<run-id>-eval.md`; `--compare A B` for two iterations |
 | `iterreport.py` | the iteration report page (`loop/reports/iter-NN/index.html` + `shots/`): thesis, verdict, numbers, screenshots, next run, tokens and time; published as the "Dealectric Loop · Iteration N" artifact |
 | `evallib.py` | shared loaders, URL classification, D1 query, stamping, Wilson intervals, token accounting |
+| `footprint.jsonl` | one line per assistant chat or probe we run (since 2026-10-28), written by `evallib.footprint`; read by `tools/fetchwho.py`. Committed |
 | `runs/<run-id>/<assistant>/<qid>-<tier>-<n>.json` | one file per call: prompt, raw API response, answer text, citations, raw citation/annotation objects, consulted URLs, stamp |
 | `runs/<run-id>/manifest.json`, `grades.jsonl`, `grades-ui.jsonl`, `d1-ai-fetch.json`, `results.csv` | run metadata and outputs |
 | `loop/` | iteration files `iter-NN.md`, `LOOP.md`, `ui/iter-NN.csv` (written by the loop session; this harness only reads the CSVs) and `reports/iter-NN/` (built by `iterreport.py`) |
@@ -58,6 +59,37 @@ get an adapter each once their logins exist (DLC-40). About 12–40 s per prompt
 
 Every finished chat is also saved as a full-page JPEG next to its run file (`<qid>-<tier>-<n>.jpg`, `screenshot` field in
 the JSON; raw JPEGs stay local, see `.gitignore`). The iteration report picks up to eight of them, failures first.
+
+## Footprint log: every probe must log one (2026-10-28)
+
+Our evals make ChatGPT and Claude fetch dealectric.com, so Cloudflare and D1 mix our own traffic with outside users'.
+`footprint.jsonl` records when and where we were working, so `tools/fetchwho.py` can tell them apart.
+
+**Rule: any new script that makes an assistant (or our own client with an assistant's user agent) touch
+dealectric.com must log a footprint per chat or probe**, by going through `ui.ask_chatgpt`, `gapexp_chatgpt.ask_chatgpt_pasted`,
+`run.run_cell`, `claudeline.cli_agent` or `fanout.ask` (they log already), or by calling the helper itself:
+
+    started = E.now_iso()
+    ...   # the chat or probe
+    E.footprint("chatgpt-ui", started, E.now_iso(), run_id=..., prompt_id=..., prompt=prompt,
+                account=..., temporary=..., cited=answer_urls, fetched=trace_urls, retrieved=search_results)
+
+`app` is `chatgpt-ui`, `claude-code`, `<vendor>-api` or `direct-fetch` (our own client, e.g. `copycheck.py`). URL
+arguments take strings, lists or citation dicts; only dealectric.com URLs are kept. Each entry also gets the script
+name, `FOOTPRINT_VIA` (the shell wrappers `reprobe.sh`, `homeprobe.sh`, `querypages_daily.sh`, `rerun_stale.sh` set
+it), the UTC start and finish, and the machine's egress country (from `1.1.1.1/cdn-cgi/trace`, once per process). It
+is best-effort: it never raises, so a logging failure cannot fail an eval. Worktrees append to the main checkout's
+file (`git rev-parse --git-common-dir`); `FOOTPRINT_LOG=<path>` overrides it, e.g. for a dry test.
+
+`python3.12 tools/fetchwho.py` (last 8 days, what the Cloudflare Free plan keeps) pulls verified AI Assistant fetches
+from Cloudflare and `/go/` rows from D1, matches them against the footprint log plus the start/finish times in every
+run file (history before the log existed, including other worktrees' gitignored cells), and prints ours / outside
+(non-US: OpenAI's ChatGPT-User exit follows the user's region, ours is always US) / ambiguous (US, within 30 min of a
+chat of ours) / outside-likely (US, nowhere near one). The match window is the chat's start to finish ±120 s, picked
+from the data (`--offsets`): on 2026-10-20..28, 221 of 262 US ChatGPT-User fetches landed inside a chat window and 4
+more within 120 s, none between 120 s and 6 min. Chats that never logged times (image_probe, claudeline, gapexp before
+2026-10-28) are placed by file mtime and counted apart as "ours (mtime)"; files written in bulk by a checkout or pull
+are skipped.
 
 ## Iteration report: `iterreport.py`
 

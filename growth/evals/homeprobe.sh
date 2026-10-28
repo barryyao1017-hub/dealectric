@@ -6,6 +6,7 @@
 # "no-home-landing" and the watch goes on. Exit 0 on FRESH, 1 after MAX probes. One line per
 # probe in growth/evals/runs/<run-id>/homeprobe.log; run files under growth/evals/runs/<run-id>/chatgpt/.
 #   nohup growth/evals/homeprobe.sh Q22 2026-10-23-p2homeprobe 12 14400 &
+export FOOTPRINT_VIA="$(basename "$0")"   # tags footprint.jsonl entries written by the scripts below
 set -u
 Q="${1:-Q22}"; RUN="${2:-2026-10-23-p2homeprobe}"; MAX="${3:-12}"; GAP="${4:-14400}"
 cd /Users/jiayiyao/Desktop/dealectric || exit 1

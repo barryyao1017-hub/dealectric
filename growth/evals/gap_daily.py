@@ -79,7 +79,7 @@ def main() -> None:
 
         def one(job):
             name, n, prompt = job
-            res = fanout.ask(prompt)
+            res = fanout.ask(prompt, fp={"run_id": out_dir.name, "prompt_id": f"{name}-{n}"})
             urls = [u for group in res["result_urls"] for u in group] + res["fetches"]
             page = CLUSTERS[name]["page"]
             return name, n, {"queries": res["queries"], "dealectric_in_results": any("dealectric.com" in u for u in urls),

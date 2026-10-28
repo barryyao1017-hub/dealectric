@@ -69,8 +69,22 @@ def prompt_for(qid: str, arm: str) -> str:
     return f"{p['question']}\n\n--- Web search results for \"{p['query']}\" ---\n\n{body}"
 
 
-def ask_chatgpt_pasted(prompt: str) -> dict:
-    """ui.ask_chatgpt, but the prompt is inserted into the composer (too long for ?q=) and no search hint is set."""
+def ask_chatgpt_pasted(prompt: str, fp: dict | None = None) -> dict:
+    """ui.ask_chatgpt, but the prompt is inserted into the composer (too long for ?q=) and no search hint is set.
+    Logged to the footprint log like ui.ask_chatgpt; `fp` adds run_id / prompt_id."""
+    started, r, err = E.now_iso(), {}, None
+    try:
+        r = _ask_chatgpt_pasted(prompt)
+        return r
+    except Exception as e:
+        err = f"{type(e).__name__}: {e}"
+        raise
+    finally:
+        E.footprint("chatgpt-ui", started, E.now_iso(), prompt=prompt, account=r.get("account"), temporary=r.get("temporary"),
+                    cited=r.get("urls"), retrieved=r.get("search_results"), error=err, cdp=ui.CDP, **(fp or {}))
+
+
+def _ask_chatgpt_pasted(prompt: str) -> dict:
     tab = ui.Tab("about:blank")
     try:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
@@ -134,7 +148,7 @@ def run_chatgpt(args) -> None:
         prompt = PREAMBLE + prompt_for(qid, arm)
         for attempt in range(4):
             try:
-                r = ask_chatgpt_pasted(prompt)
+                r = ask_chatgpt_pasted(prompt, fp={"run_id": G.RUN.name, "prompt_id": f"{qid}-{arm}"})
                 break
             except ui.Throttled as t:
                 print(f"throttled, waiting {t.wait_s} s: {t}", flush=True)

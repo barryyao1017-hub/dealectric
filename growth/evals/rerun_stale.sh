@@ -3,6 +3,7 @@
 # grades.jsonl). The first-pass files are kept under stale-pass-<n>/; ui.py then fills the missing cells. One round
 # per call; call again if cells are still stale.
 #   growth/evals/rerun_stale.sh <run-id> <iteration> <sleep-seconds> [ui.py args...]
+export FOOTPRINT_VIA="$(basename "$0")"   # tags footprint.jsonl entries written by the scripts below
 set -u
 RUN="$1"; IT="$2"; SLEEP="$3"; shift 3
 cd /Users/jiayiyao/Desktop/dealectric || exit 1

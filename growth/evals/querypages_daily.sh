@@ -9,6 +9,7 @@
 # eight target queries (four built clusters, four controls), with our position; (3) cited unprompted: ChatGPT tier A on
 # the eight shopper questions, n = 2 (ui.py, run id <date>-qp), graded with grade.py. claude-code tier A is run from
 # run.py separately when the CLI is available.
+export FOOTPRINT_VIA="$(basename "$0")"   # tags footprint.jsonl entries written by the scripts below
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 DATE=${DATE:-$(date +%F)}
