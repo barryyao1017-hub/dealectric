@@ -201,3 +201,11 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 - 2026-10-28 (DLC-77): the sitemap carries an exact `<lastmod>` per URL (the time the page's bytes last changed;
   `build.py sitemap_lastmod`), so the daily cart pass marks every coded page changed. It applies to test and control
   pages alike, so it is not a lever (lever 5's price and stock re-check stays one).
+- 2026-10-28 (DLC-77, Barry's call): two fact fixes, not levers, so a stale stored copy stays true. (1) A code that ends
+  within 30 days carries its end date: the R4000's title says "(ends Nov 15)" and its description, catalog card and
+  agent note say "until 2026-11-15" and name the code tested to follow it (ALLPOWERS26, $149.90). No other product's
+  best code ends within 30 days, so no control page changed. (2) The AC200L's description, catalog card and agent note
+  carry the phase-out ("On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early
+  November 2026"); before, only its caveats did. Both reach the index in the same OAI crawl as A-L2 and arm C's
+  baseline-era fixes, and neither is a fresh marker. The title format change (stored-copy-step2.md) is held until that
+  crawl.

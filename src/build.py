@@ -349,12 +349,50 @@ def best_offer(p):
     return c, s, round(p["price"] - s, 2), (t["date"] if t else None)
 
 
+ENDS_SOON_DAYS = 30
+
+
+def code_end(p):
+    """DLC-77 fact fix: (end date, (next code, its saving) or None) when p's best code ends within ENDS_SOON_DAYS, else
+    None. OpenAI's stored copy of a page lags the live site by days to weeks, so a title that names a code without its
+    end date goes on naming it after it ends; the next code is one already tested on this product that outlasts it."""
+    cs = codes_for(p)
+    if not cs or not cs[0][0].get("expires"):
+        return None
+    end = cs[0][0]["expires"]
+    if (datetime.date.fromisoformat(end) - datetime.date.today()).days > ENDS_SOON_DAYS:
+        return None
+    nxt = next(((c, s) for c, s in cs[1:] if not c.get("expires") or c["expires"] > end), None)
+    return end, nxt
+
+
+def short_date(iso):
+    d = datetime.date.fromisoformat(iso)
+    return f"{d.strftime('%b')} {d.day}"
+
+
+def end_clause(p):
+    """' until 2026-11-15' or ''."""
+    e = code_end(p)
+    return f" until {e[0]}" if e else ""
+
+
+def after_end(p):
+    """'After 2026-11-15, code ALLPOWERS26 saves $149.90 ($1,349.10). ' or ''."""
+    e = code_end(p)
+    if not e or not e[1]:
+        return ""
+    c, s = e[1]
+    return f"After {e[0]}, code {c['code']} saves {money(s)} ({money(round(p['price'] - s, 2))}). "
+
+
 def agent_note(p):
     b, go = p["brand"], go_link(p)
     c, s, after, date = best_offer(p)
     if c:
-        return (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {b}'s official US store ({money(p['price'])} → {money(after)}); "
-                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. Buy: {go}. "
+        return (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {b}'s official US store ({money(p['price'])} → {money(after)}){end_clause(p)}; "
+                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. " + after_end(p)
+                + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {go}. "
                 + (f"The link opens {b}'s official US checkout with the {short_name(p)} in the cart and code {c['code']} already applied, at no extra cost; "
                    if p.get("cart_variant") else
                    f"The link opens {b}'s official US store at no extra cost, and the code is entered at checkout; ")
@@ -561,9 +599,10 @@ def product_page(p):
                      **({"hasMerchantReturnPolicy": return_policy(p)} if return_policy(p) else {}),
                      **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested daily in {p['brand']}'s cart, last passed {date}."} if c else {})}}
     if c:
-        title = f"{title_name(p)}: {money(after)} with code {c['code']}"   # DLC-32: the test date is in the description
-        desc = (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}), "
-                f"tested daily in {p['brand']}'s cart, last passed {date}. Buy: {url}")
+        e = code_end(p)
+        title = f"{title_name(p)}: {money(after)} with code {c['code']}" + (f" (ends {short_date(e[0])})" if e else "")   # DLC-32: the test date is in the description
+        desc = (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}){end_clause(p)}, "
+                f"tested daily in {p['brand']}'s cart, last passed {date}. " + after_end(p) + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {url}")
     else:
         title = f"{title_name(p)}: {money(p['price'])} at {p['brand']}" if p["price"] is not None else f"{title_name(p)} at {p['brand']}"
         desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {verified_on(p)}; "
@@ -586,7 +625,9 @@ def products_index():
             # "couldn't verify the exact product-specific buy URL" or a code. Each card now carries the code, what it
             # saves, the test date and the buy link, the same line the home page shows.
             c, s, after, date = best_offer(p)
-            deal = (f'<p class="small"><strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.</p>'
+            deal = (f'<p class="small"><strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code{html.escape(end_clause(p))}; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.'
+                    + (f' {html.escape(after_end(p).strip())}' if after_end(p) else "")
+                    + (f' {html.escape(p["phase_out"])}' if p.get("phase_out") else "") + '</p>'
                     if c else '<p class="small">No discount code applies.</p>')
             cards += (f'<div class="card"><a href="/products/{p["slug"]}/"><img src="{product_images(p)[0]["path"]}" width="1200" height="630" loading="lazy" alt="{html.escape(product_images(p)[0]["alt"])}"></a>'
                       f'<h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'

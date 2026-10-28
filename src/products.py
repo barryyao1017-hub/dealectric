@@ -198,6 +198,8 @@ PRODUCTS = [
  # DLC-71 (2026-10-28): this page renders no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
  # (build.py buy_url); tools/linkcheck.py flags the day the variant sells out.
  "cart_variant": 44449450852571,
+ # DLC-77 fact fix: in the description, catalog card and agent note, so a stale stored copy still says it is ending
+ "phase_out": "On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early November 2026.",
  "specs": [("Capacity", "2,048 Wh, expandable to 8,192 Wh (2× B300); 7,577.6 Wh with 2× B300K"), ("Chemistry", "LiFePO4, 3,000+ cycles to 80%"), ("AC output", "2,400 W continuous; 3,600 W Power Lifting; 4× 120 V + 1× TT-30 RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 48 V / 8 A DC port"), ("Solar input", "Up to 1,200 W, 12–145 V, 15 A"), ("AC input", "2,400 W; 80% in 45 min, full in ~1.5 h"),
            ("UPS", "20 ms"), ("Size / weight", "420 × 280 × 366 mm, 28.3 kg"), ("App", "Yes")],
