@@ -138,10 +138,10 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 
 | Arm | Lever | Shipped (commit) | Fresh marker | Readings | Pooled fresh T5 / T4+ | Result |
 |---|---|---|---|---|---|---|
-| A | baseline | n/a | n/a | R0 queued 2026-10-28 | | |
+| A | baseline | n/a | n/a | R0 2026-10-28 (`readings/r0.md`) | T5 1/8, T4+ 5/8 | controls T4+ 3/4 |
 | A | L2 cart link, code applied (DLC-71 a) + phase-out caveat | 2026-10-28 ~18:15Z (25afae8) | "already applied", "replacing the AC200L with the Apex 200" | | | shipped before L1: the old buy path was dead |
 | A | L1 buy box | next, after L2's readings | | | | dossier copy kit and record fixes ready |
-| B | baseline | n/a | n/a | R0 queued 2026-10-28 | | |
+| B | baseline | n/a | n/a | R0 2026-10-28 (`readings/r0.md`) | T5 0/8, T4+ 4/8 | controls T4+ 3/4 |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
 
 ## Changes
@@ -161,3 +161,9 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   BLUETTI's pages in either. Shipped as arm A's L2 at ~18:15Z. The page already said "last passed 2026-10-28"
   before the ship, so for A-L2 a cell is fresh with a quoted cart date of 2026-10-29 or later, or a marker;
   2026-10-28 without a marker is undated. A-L1 (buy box) follows once L2 has its readings.
+- 2026-10-28 (R0 scoring, two clarifications, not rule changes): (1) ChatGPT's generic coupon hedge ("I couldn't
+  independently confirm the code in checkout") is not a flag: it appears as often on control answers that don't involve
+  us. It is noted per cell in `readings/flags.json`. (2) R0 was meant as both arms' baseline, but B-L1 went live six
+  hours before R0 ran. B's R0 cells that carry no L1 marker and no post-ship cart date count as B's baseline
+  (`w3score.py --baseline`).
+- 2026-10-28: scoring is `growth/evals/w3score.py`; its LEVERS table mirrors this lever log and gets a row per ship.
