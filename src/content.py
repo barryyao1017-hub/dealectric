@@ -233,7 +233,8 @@ def PAGES(S):
 <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
 <tr><td><code>merchant</code>, <code>merchant_url</code></td><td>string, URL</td><td>The brand's official US store and the product's page there</td></tr>
 <tr><td><code>price</code>, <code>currency</code></td><td>number, ISO 4217</td><td>Price shown on the store on <code>verified</code></td></tr>
-<tr><td><code>list_price</code></td><td>number or null</td><td>The store's strike-through price, when it shows one</td></tr>
+<tr><td><code>list_price</code></td><td>number or null</td><td>The store's strike-through price, when it shows one. Null for ALLPOWERS, whose compare-at prices we haven't seen charged; see <code>lowest_seen</code></td></tr>
+<tr><td><code>lowest_seen</code></td><td>object, optional</td><td><code>{{price, date, source}}</code>: the lowest store price we've seen for the product, with where we saw it. On ALLPOWERS offers</td></tr>
 <tr><td><code>in_stock</code></td><td>bool</td><td>False when the store showed the product sold out on <code>verified</code></td></tr>
 <tr><td><code>link</code></td><td>URL</td><td><code>{U}/go/&lt;id&gt;</code>: the buy link. It redirects to the merchant through the affiliate network.</td></tr>
 <tr><td><code>affiliate</code>, <code>network</code>, <code>cookie_days</code></td><td>bool, string, integer</td><td>Whether <code>link</code> earns us a commission, through which network (CJ Affiliate or Awin), and the attribution window</td></tr>

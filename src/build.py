@@ -241,6 +241,30 @@ def stock_note(p):
     return "" if in_stock(p) else " (sold out)"
 
 
+def lowest_seen(p):
+    """{price, date, source} of the lowest store price we've seen, for a record that carries one (ALLPOWERS, DLC-76);
+    today's verified price when it is lower than the record's."""
+    ls = p.get("lowest_seen")
+    if not ls or p["price"] is None:
+        return None
+    if p["price"] < ls["price"]:
+        return {"price": p["price"], "date": verified_on(p), "source": "our price checks"}
+    return ls
+
+
+def low_line(p):
+    """The dated line that replaces a brand's compare-at strike-through (DLC-75: never seen charged)."""
+    ls = lowest_seen(p)
+    if not ls:
+        return ""
+    b = html.escape(p["brand"])
+    if ls["price"] == p["price"] and ls["source"] == "our price checks":
+        low = f'Today\'s {money(p["price"])} is the lowest store price we\'ve seen for it at {b} (checked since {ls["date"]}).'
+    else:
+        low = f'Lowest store price we\'ve seen at {b}: {money(ls["price"])} on {ls["date"]} ({html.escape(ls["source"])}).'
+    return f'<p class="small">{low} The store\'s crossed-out "compare at" price isn\'t shown here: we haven\'t seen {b} charge it.</p>'
+
+
 def money(x):
     return f"${x:,.2f}" if x != int(x) else f"${int(x):,}"
 
@@ -395,6 +419,7 @@ def product_record(p):
                   # agent_note: the paragraph to act on (code, saving, test date, link, why both); disclosure_text:
                   # the sentence to read to the shopper.
                   "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p),
+                  **({"lowest_seen": lowest_seen(p)} if lowest_seen(p) else {}),
                   **({"link_opens": "checkout with the product in the cart" + (" and the code applied" if best[0] else "")} if p.get("cart_variant") else {})},
     }
     return rec
@@ -459,6 +484,7 @@ def offer_block(p, net, prog, url):
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
+        lines += low_line(p)
         bb = BUYBOX.get(p["slug"])
         if bb:
             # W3 lever 1 (src/focus.py): the dossier's buy box leads the card: headline, three proof points, the code
@@ -476,7 +502,8 @@ def offer_block(p, net, prog, url):
                  + (f'<p><strong>Discount code:</strong> none listed; {SITE["brand"]} has no {b} code to offer.</p>'
                     if not live_codes(p["brand"]) and brand_test_date(p["brand"]) is None else
                     f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
-                    + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>'))
+                    + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>')
+                 + low_line(p))
     return f"""
 <div class="card offer" style="margin:18px 0">
   {head}

@@ -243,9 +243,11 @@ PRODUCTS = [
  "caveats": ["No expansion port; it can only be topped up from a B80/B230/B300 battery in Power Bank Mode.", "$499 is the station alone; the store's $599 option is a bundle with a 100 W solar panel."]},
 
 # ---------------- ALLPOWERS (CJ 7797916) ----------------
+# ALLPOWERS records carry no list_price (DLC-75/76, Barry 2026-10-28: "Drop them"): its compare-at prices were never seen
+# charged. lowest_seen is the lowest store price we've seen instead; build.py shows today's price when it is lower.
 {"slug": "allpowers-p1800-1024wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS P1800 Portable Power Station, 1,024 Wh, 1,800 W", "model": "VOLIX P1800 (VOLIX-P1800-US)",
- "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w", "price": 439, "list_price": 1059.98,
+ "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w", "price": 439, "lowest_seen": {"price": 439, "date": "2026-10-14", "source": "our price checks"},
  "specs": [("Capacity", "1,024 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles (to 70%)"), ("AC output", "1,800 W continuous; 3,600 W peak; 4 outlets"),
            ("USB", "2× USB-C (140 W max), 2× USB-A 18 W"), ("DC", "12 V car port 120 W"), ("Solar input", "650 W (XT60, 11–60 V, 13 A)"), ("AC input", "1,200 W fast / 800 W standard / 400 W silent (manual); 80% in ~1 h"),
            ("UPS", "20 ms per ALLPOWERS' manual (its spec table says ≤10 ms, product images 15 ms)"), ("Size / weight", "371 × 208 × 296 mm, 13 kg (manual)"), ("App", "Bluetooth + Wi-Fi")],
@@ -256,7 +258,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-r600-299wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R600 Portable Power Station, 299 Wh, 600 W", "model": "R600",
- "url": "https://iallpowers.com/products/allpowersportable-power-station-r600-600w-299wh-with-lifep04-battery", "price": 219, "list_price": 269, "in_stock": False,
+ "url": "https://iallpowers.com/products/allpowersportable-power-station-r600-600w-299wh-with-lifep04-battery", "price": 219, "lowest_seen": {"price": 219, "date": "2026-10-14", "source": "our price checks"}, "in_stock": False,
  "specs": [("Capacity", "299 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "600 W continuous; 1,200 W peak; 2 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 15 W wireless pad"), ("Solar input", "220 W, 12–60 V, 8.8 A"), ("AC input", "400 W; full in ~1 h"),
            ("UPS", "≤10 ms"), ("Size / weight", "193 × 190 × 284 mm, 5.6 kg"), ("App", "Bluetooth")],
@@ -267,7 +269,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-s2000-pro-1451wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS S2000 Pro Portable Power Station, 1,451 Wh, 2,400 W", "model": "S2000 Pro",
- "url": "https://iallpowers.com/products/allpowers-2400w-portable-power-station", "price": 664, "list_price": 1399,
+ "url": "https://iallpowers.com/products/allpowers-2400w-portable-power-station", "price": 664, "lowest_seen": {"price": 664, "date": "2026-10-14", "source": "our price checks"},
  "specs": [("Capacity", "1,451 Wh"), ("Chemistry", "NMC (ternary lithium), 2,500+ cycles"), ("AC output", "2,400 W continuous; 4,000 W peak; 4 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W, 2× USB-A 12 W"), ("DC", "12 V / 10 A car port"), ("Solar input", "1,000 W, 12–150 V, 13 A per spec table and manual (FAQ says 650 W)"), ("AC input", "1,500 W; full in 1.5 h with AC + solar"),
            ("Size / weight", "375 × 245 × 250 mm, 13 kg"), ("App", "Bluetooth only")],
@@ -278,7 +280,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-r4000-3456wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R4000 Portable Power Station, 3,456 Wh, 3,600 W", "model": "R4000",
- "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1499, "list_price": 3299,
+ "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1499, "lowest_seen": {"price": 1399, "date": "2026-03-02", "source": "Internet Archive copy of ALLPOWERS' US product page"},
  "specs": [("Capacity", "3,456 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "3,600 W continuous at 120 V (4,000 W is the 230 V rating); 6,000 W peak; 4 outlets + RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W, 2× USB-A 12 W"), ("DC", "12 V / 10 A car port"), ("Solar input", "2,000 W over 3 XT60 inputs (650 W each), 12–60 V, 13 A"), ("AC input", "1,500 W at 120 V (2,000 W is the 230 V rating); about 2.5 h to full; ships in 650 W Mute mode (3,000 W max with AC + solar)"),
            ("Size / weight", "540 × 490 × 300 mm, 45 kg"), ("App", "Wi-Fi + Bluetooth")],
@@ -289,7 +291,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-sp037-400w-solar-panel", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
  "name": "ALLPOWERS SP037 400 W Foldable Solar Panel", "model": "SP037",
- "url": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel", "price": 299, "list_price": 699,
+ "url": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel", "price": 299, "lowest_seen": {"price": 299, "date": "2026-10-14", "source": "our price checks"},
  "specs": [("Rated power", "400 W"), ("Efficiency", "22% claimed"), ("Vmp / Voc", "37.4 V / 45.3 V"), ("Imp / Isc", "10.6 A / 11.45 A"), ("Connector", "MC4-style; MC4→XT60 and DC5525/DC8020 adapters included"),
            ("Weather", "IP67 on ALLPOWERS' page (its manuals say IP66), ETFE laminate"), ("Size / weight", "1,048 × 532 × 65 mm folded, 1,048 × 2,660 mm open; 18.5 kg")],
  "warranty": "2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
@@ -374,7 +376,7 @@ PRODUCTS = [
 # The stores' own kit listings (station + panel in one product), read 2026-10-24 US time.
 {"slug": "allpowers-p1800-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS P1800 + SP037 400 W Solar Generator Kit (1,024 Wh, 1,800 W)", "model": "P1800 + 1× SP037",
- "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 731, "list_price": 1059.98,
+ "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 731, "lowest_seen": {"price": 731, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "1,024 Wh LiFePO4"), ("AC output", "1,800 W (3,600 W peak)"), ("Panel", "1× SP037 400 W folding, Voc 45.3 V"),
            ("Solar input", "650 W max, 11–60 V, 13 A (XT60)"), ("Solar recharge with this kit", "Not published; 400 W of panel at ~60% real output is roughly 4–5 h of good sun"),
            ("UPS", "≤10 ms (images say 15 ms)"), ("Weight", "Station ~13 kg + panel 18.5 kg")],
@@ -385,7 +387,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-s2000-pro-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
- "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 963, "list_price": 1999,
+ "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 963, "lowest_seen": {"price": 963, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "1,451 Wh, ternary lithium (NMC), not LiFePO4"), ("AC output", "2,400 W (4,000 W surge)"), ("Panel", "1× SP037 400 W folding"),
            ("Solar input", "The page says both 1,000 W (12–150 V) and 650 W"), ("Solar recharge with this kit", "Not published")],
  "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
@@ -395,7 +397,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-volix-p300-100w-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
- "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 208.99, "list_price": 359,
+ "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 208.99, "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "256 Wh LiFePO4"), ("AC output", "300 W (600 W surge)"), ("Panel", "1× SE100 100 W laminated"),
            ("Solar input", "110 W max, 11–30 V, 8 A"), ("Solar recharge with this kit", "Not published; a 100 W panel refills 256 Wh in roughly 4–5 h of good sun")],
  "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
