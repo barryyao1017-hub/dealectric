@@ -1,4 +1,4 @@
-# Dealectric — TODO (mirror of the "Dealectric To-Dos" artifact, 2026-10-27)
+# Dealectric — TODO (mirror of the "Dealectric To-Dos" artifact, 2026-10-28)
 
 Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>; notes and history live there). This file is a read-only mirror; change rows in the artifact. Status detail: launch-status.md.
 
@@ -8,26 +8,32 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-30 Ask approved advertisers for Dealectric-exclusive coupon codes (high)
 - [ ] DLC-38 Earn inbound links in person: 3–5 Reddit answers a week + outreach to the cited niche blogs (high, weekly)
 - [ ] DLC-40 Logins for the consumer-app eval: claude.ai, gemini.google.com, grok.com in the agent Chrome (chatgpt.com already signed in) (high)
+- [ ] DLC-72 Pick the network for BLUETTI links: AFF5OFF is a CJ code, our links are Awin (high)
 - [ ] DLC-4 Create store accounts for refer-a-friend links
 - [ ] DLC-5 (Optional) Open a Rakuten publisher account
-- [ ] DLC-15 Retry Impact via brand-direct links
 - [ ] DLC-36 Get dealectric.com into Brave's index (what Claude's search uses)
 - [ ] DLC-42 Decide: publish working coupon-site codes (not issued through CJ/Awin)?
 - [ ] DLC-53 Confirm CJ/Awin terms allow auto-applying codes from the buy link
 - [ ] DLC-62 Give /data a license, a citation line and CSV exports before the dataset outreach
 
-## Waiting on others (4)
+## Waiting on others (5)
 - [ ] DLC-31 Make sure Bing has indexed dealectric.com (high, due 2026-10-30)
+- [ ] DLC-15 Retry Impact via brand-direct links
 - [ ] DLC-16 17 affiliate applications pending
 - [ ] DLC-17 Anker invitation reply
 - [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-11-15)
 
-## Claude (18)
-- [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-28)
-- [ ] DLC-24 Build the first 3 question-answer comparison pages (high)
+## Claude (25)
+- [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-29)
+- [ ] DLC-24 Build the first 3 question-answer comparison pages (high, due 2026-10-30)
 - [ ] DLC-33 North Star: get our first conversion / commission (high)
 - [ ] DLC-37 Agent feedback loop: /go/ click log + /feedback endpoint, then decide on MCP (high, due 2026-11-01)
 - [ ] DLC-51 Query-targeted comparison pages: build pages that answer the agents' own narrow search queries and test whether they get cited unprompted (high)
+- [ ] DLC-67 W1: visibility scan, find the products ChatGPT already shows us for (high)
+- [ ] DLC-68 W2: research dossier per focus product (AC200L and Aurzen TravelPlay first) (high)
+- [ ] DLC-69 W3: copy loop on every surface of the focus products (ChatGPT, T5 tracked-link rate) (high)
+- [ ] DLC-70 W4: threads and reply drafts for the focus products (Barry sends) (high)
+- [ ] DLC-71 AC200L buy path: our /go/ lands on a BLUETTI page with no buy button (high)
 - [ ] DLC-9 Re-verify the 30 prices and stock, bump VERIFIED, rebuild, push (weekly, due 2026-11-03)
 - [ ] DLC-12 Weekly assistant-citation run (harness replaces the manual probes) (weekly, due 2026-11-03)
 - [ ] DLC-14 Check email for CJ/Awin approvals and add 3–5 products per newly approved brand (daily)
@@ -35,21 +41,26 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-27 Ship a read-only offers API / MCP server and list it in MCP registries
 - [ ] DLC-28 Weekly growth scorecard (weekly, due 2026-11-03)
 - [ ] DLC-44 Monthly spec and policy re-audit of every product (monthly, due 2026-11-21)
-- [ ] DLC-45 Own product images on the site; test whether ChatGPT shows them (due 2026-10-28)
 - [ ] DLC-47 Optimize for ChatGPT product cards and images
 - [ ] DLC-50 Loop iteration 4: measure the guide-page lever once ChatGPT's home-page copy has turned over (due 2026-10-30)
 - [ ] DLC-54 Have the /go/ hop apply the current code in the cart (Baseus, ESR, ALLPOWERS)
-- [ ] DLC-55 Void scan: finish the other 70 categories and check ChatGPT
+- [ ] DLC-55 Void scan: finish the other 70 categories and check ChatGPT (due 2026-10-28)
 - [ ] DLC-57 Gap pages stage 2: daily readings until indexed and cited (daily)
+- [ ] DLC-63 Staleness guard on the 'tested daily' claim
+- [ ] DLC-66 Later: get Claude citing us again without copy it reads as prompt injection
+- [ ] DLC-73 Add the BLUETTI Apex 200 to the catalog on launch day (due 2026-11-04)
 
-## Done on 2026-10-27
+## Done 2026-10-27 and 28
 - [x] DLC-6 Delete ~/Desktop/_to_delete/
 - [x] DLC-32 Optimize pages for what agents actually see: text and search snippet
 - [x] DLC-35 Auto-renew our affiliate links
+- [x] DLC-45 Own product images on the site; test whether ChatGPT shows them
 - [x] DLC-48 Check the daily cart sweep's first unattended run, then let the copy say 'daily'
 - [x] DLC-52 Add the Tenergy TN438 16-bay AA/AAA charger to the catalog (CJ Tenergy program)
 - [x] DLC-58 SP037 panel: product URL points to a sold-out listing
 - [x] DLC-61 Keep the Mac awake for the 06:37 cart sweep, or pick another time
+- [x] DLC-64 Footprint log for every eval/probe + tools/fetchwho.py (ours vs outside fetches)
+- [x] DLC-65 Claude Code hook logs agent sessions' own dealectric.com touches and assistant chats (footprint)
 
 ## Traffic tracking plan (why Cloudflare)
 Today nothing records visits: GitHub Pages has no logs or analytics, and the repo's Insights → Traffic counts repository views, not dealectric.com. Ordinary JS analytics would also miss the visitors that matter most — AI crawlers (GPTBot, ClaudeBot, PerplexityBot) and agent fetches don't execute JavaScript — so seeing agent traffic needs something that sees raw HTTP requests.
