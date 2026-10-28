@@ -91,6 +91,17 @@ more within 120 s, none between 120 s and 6 min. Chats that never logged times (
 2026-10-28) are placed by file mtime and counted apart as "ours (mtime)"; files written in bulk by a checkout or pull
 are skipped.
 
+It also pulls the requests Cloudflare did **not** verify under an AI user agent (ChatGPT, GPTBot, Claude, Perplexity,
+DuckAssist ...) and never counts them as users. Cloudflare verifies ChatGPT-User and GPTBot but none of the Claude
+agents, so for Claude the user agent proves nothing. Our own clients are recognised by user agent: Claude Code's
+WebFetch (`Claude-User (claude-code/<ver>; ...)`, it runs on this Mac) and every `dealectric-*` tool. A vulnerability
+scanner rotates fake ClaudeBot / Claude-User / Claude-SearchBot / ChatGPT-User / GPTBot / Perplexity agents from cloud
+regions (NL, TW, DE, BE, CA, BR, US; 10 bursts 2026-10-20..28) asking for `/.env`, `/@fs/proc/self/environ`,
+`/sa.json`: such requests, and any unverified or D1 request in the same country within 10 minutes of one, are class
+`scanner` (that explains the BE/DE/BR/NL `/go/` rows in D1). An unverified Claude agent inside a Claude chat window
+of ours is ours (server-side Claude: API `web_fetch`, claude.ai); anything else unverified is `ambiguous`. Server-side
+Claude fetches come from Anthropic's IPs and look like anyone's, so a probe that uses them must log its footprint.
+
 ## Iteration report: `iterreport.py`
 
 ```bash

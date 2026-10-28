@@ -10,7 +10,12 @@ we know our own assistants were working:
     narrowing.py ...), plus chat records that carry no times (image_probe, claudeline, gapexp answers), placed by file
     mtime minus their latency. Those mtime windows are weaker evidence and are counted apart ("ours, by mtime").
 
-Classes, for a fetch:
+Unverified requests under an AI user agent are pulled too and never counted as users: our own clients by user agent
+(Claude Code's WebFetch, dealectric-* tools), a scanner that rotates fake AI agents (class "scanner": a secret-hunting
+path such as /.env or /sa.json, or any unverified or D1 request in the same country within 10 minutes of one), an
+unverified Claude agent inside a Claude chat window of ours, else "ambiguous".
+
+Classes, for a verified fetch:
   ours            inside a known chat window, widened by --slack seconds on both ends (US egress only)
   outside         non-US country. OpenAI's ChatGPT-User exit follows the user's region and every chat of ours egresses
                   from the US, so a non-US assistant fetch is someone else's, whenever it lands.
@@ -37,6 +42,7 @@ from __future__ import annotations
 import argparse
 import bisect
 import json
+import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -50,10 +56,19 @@ import cf  # noqa: E402
 import evallib as E  # noqa: E402
 
 OUR_COUNTRY = "US"
-CLASSES = ["ours", "ours (mtime)", "outside", "ambiguous", "outside-likely", "crawler"]
+CLASSES = ["ours", "ours (mtime)", "outside", "ambiguous", "outside-likely", "crawler", "scanner"]
 CRAWLERS = ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot", "Google-Extended", "CCBot", "Bytespider")
 # D1 rows our own tools make under a user agent of their own (tools/linkcheck.py, deploy checks, rawfetch_mcp.py)
-OWN_UA_MARKS = ("dealectric",)
+# Our own clients: dealectric-* tools (linkcheck, indexnow, deploy checks, rawfetch_mcp.py's claudeline UA, run.py's
+# dealectric-eval) and Claude Code's WebFetch ("Claude-User (claude-code/<ver>; ...)"), which runs on this Mac. Nobody
+# else's Claude Code fetches our pages in practice (981 such fetches 2026-10-20..28, 855 inside logged claude-code
+# cells, the rest the unlogged claudeline runs of 10-25).
+OWN_UA_MARKS = ("dealectric", "(claude-code/")
+# What the 2026-10-20..28 scanner asked for under rotating fake AI user agents (/.env, /@fs/proc/self/environ, /sa.json)
+SECRET_RE = re.compile(r"(^|/)\.(env|git|aws|ssh|svn|npmrc|docker)|/@fs/|/proc/|/etc/passwd|wp-(admin|login|config|content)|phpinfo|"
+                       r"\.php\b|(^|/)(sa|service[-_]?account|credentials?|secrets?|keys?|firebase|config|settings)\.(json|ya?ml|js|ts)$|"
+                       r"\.(sql|bak|old|swp|pem|key)$|actuator|server-status|\.\./|/vendor/|/node_modules/", re.I)
+BURST_S = 600   # a scanner burst: same country, within 10 minutes of a secret-hunting request
 
 
 def parse_ts(s) -> datetime | None:
@@ -189,14 +204,19 @@ class Index:
 
 # ---------------------------------------------------------------- fetches
 
-def cf_fetches(since: datetime, until: datetime) -> list[dict]:
-    """Verified AI Assistant requests, one row per (second, UA, country, path), day by day (limit 10000 per query)."""
+# User agents that claim an AI assistant or crawler, or one of our tools; Cloudflare verifies ChatGPT-User and GPTBot
+# but none of the Claude agents (2026-10-28), so for Claude the user agent alone proves nothing.
+AI_UA_LIKE = ("%ChatGPT%", "%GPTBot%", "%OAI-SearchBot%", "%Claude%", "%anthropic%", "%Perplexity%", "%MistralAI%", "%DuckAssist%",
+              "%dealectric%")
+
+
+def _cf_rows(flt: str, since: datetime, until: datetime) -> list[dict]:
     rows, t = [], since
     while t < until:
         u = min(t + timedelta(days=1), until)
         q = ('{viewer{zones(filter:{zoneTag:$zone}){httpRequestsAdaptiveGroups(limit:10000, filter:{datetime_geq:"%s", '
-             'datetime_lt:"%s", verifiedBotCategory:"AI Assistant"}, orderBy:[datetime_ASC]){count dimensions{datetime '
-             'userAgent clientCountryName clientRequestPath edgeResponseStatus}}}}}') % (iso(t), iso(u))
+             'datetime_lt:"%s", %s}, orderBy:[datetime_ASC]){count dimensions{datetime userAgent clientCountryName '
+             'clientRequestPath edgeResponseStatus verifiedBotCategory}}}}}') % (iso(t), iso(u), flt)
         d = cf.query(q)
         if d.get("errors"):
             raise SystemExit(f"Cloudflare: {d['errors']}")
@@ -206,13 +226,43 @@ def cf_fetches(since: datetime, until: datetime) -> list[dict]:
         for g in got:
             dm = g["dimensions"]
             rows.append({"src": "cloudflare", "ts": parse_ts(dm["datetime"]), "n": g["count"], "country": dm["clientCountryName"],
-                         "path": dm["clientRequestPath"], "ua": dm["userAgent"], "status": dm["edgeResponseStatus"], "bot": bot_name(dm["userAgent"])})
+                         "path": dm["clientRequestPath"], "ua": dm["userAgent"], "status": dm["edgeResponseStatus"],
+                         "verified": dm.get("verifiedBotCategory") or "", "bot": bot_name(dm["userAgent"])})
         t = u
     return rows
 
 
+def cf_fetches(since: datetime, until: datetime) -> tuple[list[dict], list[dict]]:
+    """(verified AI Assistant requests, unverified requests under an AI or our own user agent), one row per (second,
+    UA, country, path), day by day (limit 10000 per query)."""
+    verified = _cf_rows('verifiedBotCategory:"AI Assistant"', since, until)
+    ors = ",".join('{userAgent_like:"%s"}' % x for x in AI_UA_LIKE)
+    unverified = [r for r in _cf_rows(f"OR:[{ors}]", since, until) if not r["verified"]]
+    return verified, unverified
+
+
+def scanner_bursts(rows: list[dict]) -> dict[str, list[datetime]]:
+    """{country: sorted times} of secret-hunting requests (SECRET_RE) under an unverified or D1 user agent."""
+    out = defaultdict(list)
+    for r in rows:
+        if not r.get("verified") and SECRET_RE.search(r["path"] or "") and not own_ua(r["ua"]):
+            out[r["country"]].append(r["ts"])
+    return {k: sorted(v) for k, v in out.items()}
+
+
+def in_burst(f: dict, bursts: dict[str, list[datetime]]) -> bool:
+    ts = bursts.get(f["country"]) or []
+    i = bisect.bisect_left(ts, f["ts"] - timedelta(seconds=BURST_S))
+    return i < len(ts) and ts[i] <= f["ts"] + timedelta(seconds=BURST_S)
+
+
+def own_ua(ua: str) -> bool:
+    return any(m in (ua or "").lower() for m in OWN_UA_MARKS)
+
+
 def bot_name(ua: str) -> str:
-    for k in ("ChatGPT-User", "Claude-User", "Perplexity-User", "MistralAI-User", "Gemini", "DuckAssistBot", "OAI-SearchBot", "GPTBot", "ClaudeBot"):
+    for k in ("ChatGPT-User", "Claude-User", "Claude-SearchBot", "Perplexity-User", "MistralAI-User", "Gemini", "DuckAssistBot",
+              "OAI-SearchBot", "GPTBot", "ClaudeBot", "PerplexityBot", "dealectric"):
         if k.lower() in (ua or "").lower():
             return k
     return (ua or "?")[:40]
@@ -229,9 +279,13 @@ def d1_fetches(since: datetime, until: datetime) -> tuple[list[dict], str | None
     return out, err
 
 
-def classify(f: dict, idx: Index, slack: float, near_min: float) -> dict:
-    if any(m in (f["ua"] or "").lower() for m in OWN_UA_MARKS):
+def classify(f: dict, idx: Index, slack: float, near_min: float, bursts: dict | None = None) -> dict:
+    """Verified Cloudflare rows and D1 rows. D1 cannot see Cloudflare's verification, so it also gets the scanner test."""
+    if own_ua(f["ua"]):
         return {**f, "cls": "ours", "why": "our tool's user agent", "off": 0.0, "win": None}
+    if f["src"] != "cloudflare" and bursts is not None and (SECRET_RE.search(f["path"] or "") or in_burst(f, bursts)):
+        return {**f, "cls": "scanner", "why": f"scanner burst ({f['country']}, within {BURST_S // 60} min of a secret-hunting request)",
+                "off": float("inf"), "win": None}
     if f["bot"] in CRAWLERS:
         return {**f, "cls": "crawler", "why": "training/index crawler, not driven by a chat", "off": float("inf"), "win": None}
     fam = fetch_family(f["bot"])
@@ -243,6 +297,27 @@ def classify(f: dict, idx: Index, slack: float, near_min: float) -> dict:
     if w and abs(off) <= near_min * 60:
         return {**f, "cls": "ambiguous", "why": f"{off:+.0f}s from {w['source']}: {w['label']}", "off": off, "win": w}
     return {**f, "cls": "outside-likely", "why": "no chat of ours near" + (f" (nearest {off / 60:+.0f} min)" if w else ""), "off": off, "win": w}
+
+
+def classify_unverified(f: dict, idx: Index, slack: float, bursts: dict) -> dict:
+    """A Cloudflare request under an AI user agent that Cloudflare did not verify. Never counted as an outside user:
+    an unverified ChatGPT-User or GPTBot does not come from OpenAI, and Cloudflare verifies no Claude agent at all."""
+    if own_ua(f["ua"]):
+        return {**f, "cls": "ours", "why": "our tool's user agent", "off": 0.0, "win": None}
+    if SECRET_RE.search(f["path"] or ""):
+        return {**f, "cls": "scanner", "why": "fake AI user agent on a secret-hunting path", "off": float("inf"), "win": None}
+    fam = fetch_family(f["bot"])
+    # a real Claude fetch can arrive unverified (server-side Claude: API web_fetch, claude.ai), so Claude agents may
+    # match Claude chats; other unverified agents only our own direct fetches (copycheck.py). A window of ours beats
+    # the burst rule: the scanner also runs from US cloud regions.
+    off, w = idx.offset(f["ts"], families={fam, None} if fam == "anthropic" else {None})
+    if w and abs(off) <= slack and (fam == "anthropic" or f["country"] == OUR_COUNTRY):
+        return {**f, "cls": "ours (mtime)" if w["source"] == "mtime" else "ours", "why": f"{w['source']}: {w['label']}", "off": off, "win": w}
+    if in_burst(f, bursts):
+        return {**f, "cls": "scanner", "why": f"fake AI user agent in a {f['country']} scanner burst", "off": off, "win": w}
+    if f["bot"] in CRAWLERS or f["bot"] == "Claude-SearchBot":
+        return {**f, "cls": "crawler", "why": "crawler user agent, unverified", "off": off, "win": w}
+    return {**f, "cls": "ambiguous", "why": f"unverified {f['bot']}, outside our windows", "off": off, "win": w}
 
 
 # ---------------------------------------------------------------- report
@@ -292,6 +367,7 @@ def main() -> int:
     ap.add_argument("--no-d1", action="store_true")
     ap.add_argument("--offsets", action="store_true", help="print the distance distribution used to pick --slack")
     ap.add_argument("--list", default="outside,outside-likely,ambiguous", help="classes to list row by row ('' for none, 'all')")
+    ap.add_argument("--list-unverified", action="store_true", help="also list the unverified Cloudflare rows of those classes")
     ap.add_argument("--json", default=None, help="write every classified row to this file")
     a = ap.parse_args()
     since = parse_ts(a.since) if a.since else now - timedelta(days=8)
@@ -305,14 +381,18 @@ def main() -> int:
     print(f"fetchwho {iso(since)} .. {iso(until)}; our windows: " + ", ".join(f"{v} {k}" for k, v in src.items())
           + f"; footprint log {E.footprint_path()}; slack {a.slack:.0f}s, near {a.near:.0f} min")
 
-    cfr = [classify(f, idx, a.slack, a.near) for f in cf_fetches(since, until)]
+    ver, unver = cf_fetches(since, until)
+    d1, err = ([], None) if a.no_d1 else d1_fetches(since, until)
+    bursts = scanner_bursts(unver + d1)
+    cfr = [classify(f, idx, a.slack, a.near) for f in ver]
     summary(cfr, "Cloudflare verified AI Assistant")
+    cfu = [classify_unverified(f, idx, a.slack, bursts) for f in unver]
+    summary(cfu, "Cloudflare unverified AI or own user agents (never counted as users)")
     d1r = []
     if not a.no_d1:
-        d1, err = d1_fetches(since, until)
         if err:
             print(f"\nD1 unavailable: {err}")
-        d1r = [classify(f, idx, a.slack, a.near) for f in d1]
+        d1r = [classify(f, idx, a.slack, a.near, bursts) for f in d1]
         if d1r:
             summary([r for r in d1r if r["src"] == "d1 ai_fetch"], "D1 /go/ ai_fetch (assistant user agents; overlaps Cloudflare)")
             summary([r for r in d1r if r["src"] == "d1 redirect"], "D1 /go/ redirect (browsers, scanners, curl)")
@@ -320,13 +400,17 @@ def main() -> int:
         offsets_table([r for r in cfr if r["bot"] == "ChatGPT-User"])
     want = set(CLASSES) if a.list == "all" else {c.strip() for c in a.list.split(",") if c.strip()}
     if want:
-        print("\nCloudflare rows (" + ", ".join(sorted(want)) + "):")
+        print("\nCloudflare verified rows (" + ", ".join(sorted(want)) + "):")
         listing(cfr, want)
+        if a.list_unverified:
+            print("\nCloudflare unverified rows (" + ", ".join(sorted(want)) + "):")
+            listing(cfu, want)
     if a.json:
         def dump(r):
             return {k: (iso(v) if isinstance(v, datetime) else v) for k, v in r.items() if k != "win"}
         Path(a.json).write_text(json.dumps({"since": iso(since), "until": iso(until), "slack_s": a.slack, "near_min": a.near,
-                                            "cloudflare": [dump(r) for r in cfr], "d1": [dump(r) for r in d1r]}, indent=1))
+                                            "cloudflare": [dump(r) for r in cfr], "cloudflare_unverified": [dump(r) for r in cfu],
+                                            "d1": [dump(r) for r in d1r]}, indent=1))
         print(f"\nwrote {a.json}")
     return 0
 
