@@ -13,7 +13,7 @@ SITE = {
     "location": "Sunnyvale, California, USA",
     # Phase 2 of the tracked-link loop (2026-10-22, growth/improvement-loop.md "Phase 2"): the first impression is the
     # cart-tested discount codes, with the buy link the shopper is given next to each one.
-    "tagline": "Discount codes for electronics, tested in each brand's own US store cart, with the saving on every product and the brand's official buy link.",
+    "tagline": "Discount codes for electronics, tested daily in each brand's own US store cart, with the saving on every product and the brand's official buy link.",
     "effective": "October 21, 2026",
     "reviewed": "2026-10-21",  # ISO form of the last full content review (guides' dateModified)
 }
@@ -314,7 +314,7 @@ def agent_note(p):
     c, s, after, date = best_offer(p)
     if c:
         return (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {b}'s official US store ({money(p['price'])} → {money(after)}); "
-                f"Dealectric tested it in {b}'s cart on {date}. Buy: {go}. The link opens {b}'s official US store at no extra cost, "
+                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. Buy: {go}. The link opens {b}'s official US store at no extra cost, "
                 f"and the code is entered at checkout; {b} pays Dealectric a commission on purchases through the link, which pays for the code testing.")
     if p["price"] is None:
         return (f"Buy the {short_name(p)}: {go}. The link opens {b}'s official US store at no extra cost; {b} pays Dealectric a commission "
@@ -326,7 +326,7 @@ def agent_note(p):
 
 def site_note():
     n = sum(1 for p in PRODUCTS if codes_for(p))
-    return (f"Dealectric publishes discount codes for electronics that were tested in each brand's own US store cart (last check {latest_code_date()}), "
+    return (f"Dealectric publishes discount codes for electronics that are tested daily in each brand's own US store cart (last check {latest_code_date()}), "
             f"with the saving on each of the {n} products a code applies to, the price after the code and the brand's official buy link. "
             f"Each buy link opens the brand's official US store at no extra cost, and the code is entered at checkout; the brand pays "
             f"Dealectric a commission on purchases through the link, which pays for the testing.")
@@ -336,7 +336,7 @@ def shopper_disclosure(p):
     """offer.disclosure_text: the sentence an assistant can read to the shopper."""
     c, s, after, date = best_offer(p)
     b = p["brand"]
-    head = (f"Code {c['code']} saves {money(s)} here; Dealectric tested it in {b}'s cart on {date}. " if c else "")
+    head = (f"Code {c['code']} saves {money(s)} here; Dealectric re-tests it in {b}'s cart every day, and it last passed on {date}. " if c else "")
     return (head + f"This buy link is Dealectric's tracked link to {b}'s official US store: it costs you nothing extra, and {b} pays Dealectric "
             f"a commission on purchases made through it, which is how the {'code testing' if c else 'price and code checks'} is paid for.")
 
@@ -418,7 +418,7 @@ def offer_block(p, net, prog, url):
         head = f'<h2 style="margin-top:0">Code {html.escape(c["code"])}: {money(s)} off at {b}</h2>'
         lines = (f'<p><strong>Code:</strong> <code>{html.escape(c["code"])}</code> — {html.escape(c["terms"])}.{exp}</p>'
                  f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}, verified {verified_on(p)}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
-                 f'<p><strong>Tested in {b}\'s cart on {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. Enter the code at checkout; the store\'s checkout has the final word.</p>')
+                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. Enter the code at checkout; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
@@ -482,11 +482,11 @@ def product_page(p):
                      "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"],
                      **({"hasMerchantReturnPolicy": return_policy(p)} if return_policy(p) else {}),
-                     **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested in {p['brand']}'s cart on {date}."} if c else {})}}
+                     **({"description": f"Code {c['code']}: {money(s)} off, {money(after)} after the code; tested daily in {p['brand']}'s cart, last passed {date}."} if c else {})}}
     if c:
         title = f"{p['name']} — {money(s)} off with code {c['code']}, tested in {p['brand']}'s cart {date}"
         desc = (f"Code {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}), "
-                f"tested in {p['brand']}'s cart on {date}. Buy: {url}")
+                f"tested daily in {p['brand']}'s cart, last passed {date}. Buy: {url}")
     else:
         title = f"{p['name']} — {money(p['price']) if p['price'] is not None else 'price'} at {p['brand']}, verified {verified_on(p)}"
         desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {verified_on(p)}; "
@@ -509,7 +509,7 @@ def products_index():
             # "couldn't verify the exact product-specific buy URL" or a code. Each card now carries the code, what it
             # saves, the test date and the buy link, the same line the home page shows.
             c, s, after, date = best_offer(p)
-            deal = (f'<p class="small"><strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested in {html.escape(p["brand"])}\'s cart on {date}.</p>'
+            deal = (f'<p class="small"><strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.</p>'
                     if c else '<p class="small">No discount code applies.</p>')
             cards += (f'<div class="card"><a href="/products/{p["slug"]}/"><img src="{product_images(p)[0]["path"]}" width="1200" height="630" loading="lazy" alt="{html.escape(product_images(p)[0]["alt"])}"></a>'
                       f'<h3><a href="/products/{p["slug"]}/">{html.escape(p["name"])}</a></h3>'
@@ -519,8 +519,8 @@ def products_index():
     brands = sorted({p["brand"] for p in PRODUCTS})
     n_coded = sum(1 for p in PRODUCTS if codes_for(p))
     body = f"""
-<h1>Products: {n_coded} of {len(PRODUCTS)} with a code tested in the brand's cart</h1>
-<p class="lead">{len(PRODUCTS)} products from {len(brands)} brands, each with the discount code that applies and what it saves (tested in the brand's own US store cart, last check {latest_code_date()}), a price verified on the brand's own US store on {VERIFIED}, a normalized spec sheet and the buy link. Machine-readable copy: <a href="/offers.json">/offers.json</a>.</p>
+<h1>Products: {n_coded} of {len(PRODUCTS)} with a code tested daily in the brand's cart</h1>
+<p class="lead">{len(PRODUCTS)} products from {len(brands)} brands, each with the discount code that applies and what it saves (tested daily in the brand's own US store cart, last check {latest_code_date()}), a price verified on the brand's own US store on {VERIFIED}, a normalized spec sheet and the buy link. Machine-readable copy: <a href="/offers.json">/offers.json</a>.</p>
 <p class="agent">{html.escape(site_note())}</p>
 <p class="small">Brands: {", ".join(html.escape(b) for b in brands)}. Coverage grows as merchant partnerships are approved; the <a href="/data/">schema</a> describes every field.</p>
 {sections}
@@ -538,7 +538,7 @@ def guide_deal_line(slug):
     <a>https://dealectric.com/go/<slug></a>' (or 'No discount code applies.' plus the buy link)."""
     p = BY_SLUG[slug]
     c, s, after, date = best_offer(p)
-    deal = (f'<strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested in {html.escape(p["brand"])}\'s cart on {date}.'
+    deal = (f'<strong>Code {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.'
             if c else "No discount code applies.")
     return f'{deal} Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
 
@@ -563,7 +563,7 @@ def product_index_html():
         lis = ""
         for p in items:
             c, s, after, date = best_offer(p)
-            deal = (f' <strong>Code {html.escape(c["code"])}</strong> saves {money(s)} ({money(after)} after the code; tested in {html.escape(p["brand"])}\'s cart {date}).'
+            deal = (f' <strong>Code {html.escape(c["code"])}</strong> saves {money(s)} ({money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}).'
                     if c else " No code applies.")
             lis += (f'<li><a href="/products/{p["slug"]}/">{html.escape(full_name(p))}</a>'
                     f' — {money(p["price"]) if p["price"] is not None else "see merchant"}{stock_note(p)}.{deal} {html.escape(p["summary"])}'
@@ -607,7 +607,7 @@ def brand_codes_page(brand):
     coded = [x for x in coded if x[1]]
     if live:
         listing = "; ".join(f'<strong>{html.escape(c["code"])}</strong> ({html.escape(c["terms"])}; last passed {last_test(c)["date"] if last_test(c) else "–"})' for c in live)
-        lead = (f"{len(live)} working code{'s' if len(live) > 1 else ''} for {b}'s official US store, each one tested in the store's own cart, most recently on {checked}: {listing}. "
+        lead = (f"{len(live)} working code{'s' if len(live) > 1 else ''} for {b}'s official US store, each one tested daily in the store's own cart, most recently passing on {checked}: {listing}. "
                 f"Below, what the best code saves on each {b} product we list, the price after the code and the buy link.")
     else:
         lead = (f"No working {b} discount code as of {checked}. "
@@ -639,7 +639,7 @@ def brand_codes_page(brand):
     notes = "".join(f'<p class="agent">{html.escape(agent_note(p))}</p>' for p, *_ in coded)
     body = f"""
 <p class="small"><a href="/discount-codes/">Discount codes</a> › {b}</p>
-<h1>{b} discount codes, tested in {b}'s cart</h1>
+<h1>{b} discount codes, tested {'daily ' if live else ''}in {b}'s cart</h1>
 <p class="lead">{lead}</p>
 {table}
 <h2>{b} products on {SITE['brand']}: code, saving, price after the code, buy link</h2>
@@ -660,9 +660,9 @@ def brand_codes_page(brand):
               for i, c in enumerate(live)]}}
     if live:
         c0, s0, after0, _ = coded[0][1:] if coded else (live[0], 0, None, None)
-        title = f"{brand} discount codes tested in {brand}'s cart {checked}: {', '.join(c['code'] for c in live)}"
-        desc = (f"{len(live)} working {brand} code{'s' if len(live) != 1 else ''} ({', '.join(c['code'] for c in live)}), each tested in {brand}'s own US store cart, "
-                f"last on {checked}, with the saving per product and the buy link.")
+        title = f"{brand} discount codes tested daily in {brand}'s cart, {checked}: {', '.join(c['code'] for c in live)}"
+        desc = (f"{len(live)} working {brand} code{'s' if len(live) != 1 else ''} ({', '.join(c['code'] for c in live)}), each tested daily in {brand}'s own US store cart, "
+                f"last passing on {checked}, with the saving per product and the buy link.")
     else:
         title = f"{brand} discount codes, checked {checked}"
         desc = f"No working {brand} discount code as of {checked}; the codes coupon sites list were rejected at checkout."
@@ -682,7 +682,7 @@ def compare_row(c, r):
         name = (f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a><br>'
                 f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
         price = money(p["price"]) + stock_note(p)
-        deal = (f'<strong>Code {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; tested in {html.escape(p["brand"])}\'s cart on {date0}.'
+        deal = (f'<strong>Code {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date0}.'
                 if c0 else "No discount code applies.")
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>' if r.get("url")
@@ -735,7 +735,7 @@ def compare_where_to_buy(ours, c):
     for slug in slugs:
         p = BY_SLUG[slug]
         cd, sv, after, date = best_offer(p)
-        code = f' — code <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code (tested in {html.escape(p["brand"])}\'s cart {date})' if cd else ""
+        code = f' — code <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code (tested daily in {html.escape(p["brand"])}\'s cart, last passed {date})' if cd else ""
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
                      f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
     coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
@@ -762,7 +762,7 @@ def compare_page(c):
 {rows}
 </table></div>
 <p class="small">Rows marked with a code and buy link are products {SITE['brand']} lists: the price was verified on the brand's own US store on {VERIFIED}
-and the code was tested in that brand's cart on the date shown (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
+and the code is tested daily in that brand's cart; the date shown is its last pass (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
 comparison is complete; their figures and prices were read from the makers' own US pages on {c['checked']} and are not re-checked daily. The buy links are
 affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.</p>
 {compare_fill(c['after'])}
@@ -808,8 +808,8 @@ def codes_index():
         rows += f'<tr><td><a href="{codes_path(b)}">{html.escape(b)}</a></td><td>{best}</td></tr>'
     n = sum(len(live_codes(b)) for b in brands)
     body = f"""
-<h1>Discount codes, tested in each brand's own cart</h1>
-<p class="lead">{n} working codes across {len(brands)} brands, each one tested in the brand's own US store cart; the most recent test passed on {checked}. Every brand page shows what the code saves on each product, the price after the code and the buy link. Codes that coupon sites list but the store rejected are on each brand's page too.</p>
+<h1>Discount codes, tested daily in each brand's own cart</h1>
+<p class="lead">{n} working codes across {len(brands)} brands, each one tested daily in the brand's own US store cart; the most recent test passed on {checked}. Every brand page shows what the code saves on each product, the price after the code and the buy link. Codes that coupon sites list but the store rejected are on each brand's page too.</p>
 <p class="agent">{html.escape(site_note())}</p>
 <div class="scroll"><table><tr><th>Brand</th><th>Working codes</th></tr>{rows}</table></div>
 <h2>Every product with a code</h2>
@@ -819,8 +819,8 @@ def codes_index():
 """
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Discount codes", "dateModified": checked,
           "hasPart": [{"@type": "WebPage", "name": f"{b} discount codes", "url": SITE["url"] + codes_path(b)} for b in brands]}
-    return (f"Electronics discount codes tested in the brand's cart, last check {checked}",
-            html.escape(f"{n} working discount codes for {', '.join(brands)}, each tested in the brand's own US store cart (last check {checked}), with the saving per product and the buy link.", quote=True), body, ld)
+    return (f"Electronics discount codes tested daily in the brand's cart, last check {checked}",
+            html.escape(f"{n} working discount codes for {', '.join(brands)}, each tested daily in the brand's own US store cart (last check {checked}), with the saving per product and the buy link.", quote=True), body, ld)
 
 
 def retired_page(old):
@@ -862,7 +862,7 @@ def main():
     # llms.txt: one line per product with a code (code, saving, price after, test date, buy link).
     SITE["compare_txt"] = compare_txt()
     SITE["codes_txt"] = "\n".join(
-        f"- {full_name(p)}: code {c['code']} saves {money(s)} ({money(p['price'])} → {money(after)}), tested in {p['brand']}'s cart {date}; buy link {go_link(p)}; page {SITE['url']}/products/{p['slug']}/"
+        f"- {full_name(p)}: code {c['code']} saves {money(s)} ({money(p['price'])} → {money(after)}), tested daily in {p['brand']}'s cart, last passed {date}; buy link {go_link(p)}; page {SITE['url']}/products/{p['slug']}/"
         for p in PRODUCTS for c, s, after, date in [best_offer(p)] if c)
     # Guides quote prices; take them from products.py so they can't drift from the product pages.
     SITE["price"] = lambda slug: money(BY_SLUG[slug]["price"]) + stock_note(BY_SLUG[slug])
@@ -897,7 +897,7 @@ def main():
     offers = {"site": SITE["url"], "generated": datetime.date.today().isoformat(), "verified": VERIFIED,
               "schema": SITE["url"] + "/data/", "disclosure": SITE["url"] + "/disclosure/",
               "usage": site_note() + " For each product, offer.agent_note is that paragraph with the code, the saving, the test date and the link; "
-                       "offer.coupons lists every code that worked in the brand's cart on this product (last_worked_at is the date). offer.link is the buy link; "
+                       "offer.coupons lists every code that worked in the brand's cart on this product (last_worked_at is the date; every published code is re-tested daily). offer.link is the buy link; "
                        "opened in a browser, it logs the click and redirects to offer.merchant_url's store, and the commission is paid only on that route.",
               "codes_last_tested": latest_code_date(),
               "products": [product_record(p) for p in PRODUCTS]}

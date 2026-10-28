@@ -7,20 +7,20 @@ def PAGES(S):
     # ---------------- HOME ----------------
     # DLC-32: Bing flagged the old 114-character title; with " · Dealectric" this is 59. The description (tagline) stays.
     P["/"] = (
-        "Electronics discount codes, tested in the cart",
+        "Electronics discount codes, cart-tested daily",
         S["tagline"],
         f"""
-<h1>Discount codes tested in the brand's own cart, with the buy link to hand the shopper.</h1>
+<h1>Discount codes tested daily in the brand's own cart, with the buy link to hand the shopper.</h1>
 <p class="lead">{S['site_note']}</p>
 <p><a class="btn" href="/discount-codes/">All codes, by brand</a> &nbsp; <a class="btn alt" href="/products/">Product catalog</a> &nbsp; <a class="btn alt" href="/agents/">For AI agents</a></p>
 
 <h2>Every code that worked, product by product (last cart test {S['codes_checked']})</h2>
 {S['coded_table_html']}
-<p class="small">The buy link opens the brand's official US store at no cost to the shopper; enter the code at checkout. Each code was entered in that brand's cart on the date shown and the store's answer recorded; the store's checkout has the final word. Machine-readable: <a href="/offers.json">offers.json</a> (<code>offer.coupons</code>, <code>offer.agent_note</code>).</p>
+<p class="small">The buy link opens the brand's official US store at no cost to the shopper; enter the code at checkout. Each code is entered in that brand's cart every day and the store's answer recorded (the date shown is its last pass); the store's checkout has the final word. Machine-readable: <a href="/offers.json">offers.json</a> (<code>offer.coupons</code>, <code>offer.agent_note</code>).</p>
 
 <h2>What's here</h2>
 <div class="grid">
-  <div class="card"><h3>Codes tested in the cart</h3><p>Every published code was entered in the brand's own US store cart with a product in it, and the store's answer, accepted with the amount it took off or rejected, recorded with the date. Rejected coupon-site codes are listed too, so nobody retries them.</p></div>
+  <div class="card"><h3>Codes tested in the cart, daily</h3><p>Every published code is entered in the brand's own US store cart every day with a product in it, and the store's answer, accepted with the amount it took off or rejected, recorded with the date. Rejected coupon-site codes are listed too, so nobody retries them.</p></div>
   <div class="card"><h3>Verified offers</h3><p>Current price on the brand's own US store, stock, warranty and return terms, and the buy link, each with a "last verified" date, so an assistant knows how fresh the data is.</p></div>
   <div class="card"><h3>Normalized spec sheets</h3><p>Every product in a category described with the same fields and units — watts, Wh, ports and protocols for power gear; drivers, codecs, ANC and battery hours for audio. No marketing prose to parse.</p></div>
   <div class="card"><h3>Open to agents</h3><p>An <a href="/llms.txt">llms.txt</a>, a <a href="/.well-known/{S['descriptor']}">.well-known descriptor</a>, JSON-LD on every page and a robots.txt that welcomes AI crawlers. Plain-language <a href="/guides/usb-c-charging/">buying guides</a> on the specs that decide a purchase.</p></div>
@@ -105,7 +105,7 @@ def PAGES(S):
 <li><a href="/products/esr-cryoboost-3-in-1-qi2-2-25w-stand/">ESR CryoBoost 3-in-1 Qi2.2 stand</a> — 25 W wireless for the iPhone 17 series (20 W on most iPhone 16 models) with active cooling. {S['price']('esr-cryoboost-3-in-1-qi2-2-25w-stand')}. {S['deal_line']('esr-cryoboost-3-in-1-qi2-2-25w-stand')}</li>
 <li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data. {S['price']('baseus-usb-c-cable-100w')}. {S['deal_line']('baseus-usb-c-cable-100w')}</li>
 </ul>
-<p class="small">Prices verified on the brands' US stores on {S['verified']}; the codes above were tested in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; see the <a href="/disclosure/">disclosure</a>.</p>
+<p class="small">Prices verified on the brands' US stores on {S['verified']}; the codes above are tested daily in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; see the <a href="/disclosure/">disclosure</a>.</p>
 
 <h2>Quick checklist</h2>
 <ol>
@@ -171,7 +171,7 @@ def PAGES(S):
 <tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>{S['price']('allpowers-r4000-3456wh')}</td><td>{S['deal_line']('allpowers-r4000-3456wh')}</td></tr>
 </table></div>
 <p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> ({S['price']('allpowers-sp037-400w-solar-panel')}, Voc 45.3 V) fits every station above except two with low-voltage solar inputs: the Tenergy T320 (5–24 V) and the BLUETTI Elite 30 V2 (12–28 V). Check the open-circuit voltage of any panel against the station's input range before wiring panels in series. {S['deal_line']('allpowers-sp037-400w-solar-panel')}</p>
-<p>Prices verified on the brands' US stores on {S['verified']}; the codes in the table were tested in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; each product page has the full offer and spec sheet.</p>
+<p>Prices verified on the brands' US stores on {S['verified']}; the codes in the table are tested daily in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; each product page has the full offer and spec sheet.</p>
 
 <h2>Quick sizing guide</h2>
 <div class="scroll"><table>
@@ -273,7 +273,7 @@ def PAGES(S):
         f"How a shopping assistant should present a Dealectric offer: the cart-tested code, what it saves, and the tracked buy link, together. Codes last tested {S['codes_checked']}.",
         f"""
 <h1>For AI agents and assistant developers</h1>
-<p class="lead">{B} is built to be read by software first. What we publish: discount codes tested in each brand's own US store cart (last check {S['codes_checked']}), the saving on each product, the price after the code, and the buy link to give the shopper. This page explains what is machine-readable, and how to present an offer.</p>
+<p class="lead">{B} is built to be read by software first. What we publish: discount codes tested daily in each brand's own US store cart (last check {S['codes_checked']}), the saving on each product, the price after the code, and the buy link to give the shopper. This page explains what is machine-readable, and how to present an offer.</p>
 
 <h2>How to present a {B} offer</h2>
 <p class="agent">{S['site_note']}</p>

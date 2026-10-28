@@ -48,7 +48,9 @@ day. A product the store could not put in the cart (sold out, quantity limit) is
 does not count either way (a sold-out control product moves the control to the store's next product). The
 build shows a code on a product only when the latest test on that product passed, and shows the store's own amount
 when it was recorded at the current price. `checked` is the date of the last sweep; page copy uses each code's own
-test dates ("tested in the brand's cart on <date>"), never "daily" or "guaranteed" until the sweep has a track record.
+test dates. Since 2026-10-27, after the first clean unattended run, the copy says "tested daily in <brand>'s cart, last
+passed <date>": the claim is daily testing, and the date is the evidence. Never "guaranteed"; a brand with no published code
+(Tenergy) makes no daily claim.
 
 By hand: `python3.12 tools/codesweep.py --dry-run` lists the checks; `--no-push` checks, merges and rebuilds only.
 
