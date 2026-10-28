@@ -54,7 +54,10 @@ async function logLanding(url, request, status, utm, env) {
   ).bind(
     new Date().toISOString(), clip(page, 200), clip(url.pathname, 300), request.method, status,
     clip(url.search.slice(1), 300), clip(utm, 100), clip(request.headers.get("referer") || "", 500), clip(ua, 500),
-    cf.country || "", cf.verifiedBotCategory || "", looksLikeBot(ua) ? 1 : 0,
+    // A person's browser names its engine. ChatGPT's own backend fetches result URLs during a chat, utm tag included,
+    // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
+    // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
+    cf.country || "", cf.verifiedBotCategory || "", looksLikeBot(ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
   ).run();

@@ -81,7 +81,8 @@ Four test questions and two controls per arm. None names Dealectric.
 ## Funnel (per reading window, from D1)
 
 - ChatGPT landings on the arm's pages: `landings` with `utm_source='chatgpt.com'`, `bot_like=0`, `verified_bot=''`,
-  `query NOT LIKE '%dlc_check=%'`, `purpose=''`, minus rows `tools/fetchwho.py` classes as ours.
+  `query NOT LIKE '%dlc_check=%'`, `purpose=''`, minus rows `tools/fetchwho.py` classes as ours. `bot_like=0` already drops
+  ChatGPT's own backend fetches of result URLs (bare `Mozilla/5.0 (compatible)`, utm tag on, during a chat).
 - `/go/` clicks after a landing: `clicks` with `kind='redirect'` and `referrer LIKE '%utm_source=%'`, and every
   `/go/<arm slug>` redirect from a browser.
 - Sales: CJ and Awin reports, matched by sub-ID `<slug>.<click_id>`.

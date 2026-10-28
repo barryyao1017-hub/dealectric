@@ -311,7 +311,12 @@ def classify(f: dict, idx: Index, slack: float, near_min: float, bursts: dict | 
     if f["bot"] in CRAWLERS:
         return {**f, "cls": "crawler", "why": "training/index crawler, not driven by a chat", "off": float("inf"), "win": None}
     fam = fetch_family(f["bot"])
-    off, w = idx.offset(f["ts"], families={None} if f["src"] in ("d1 redirect", "d1 landing") else ({fam, None} if fam else None))
+    if f["src"] == "d1 landing" and f["bot"] != "browser":
+        # ChatGPT's backend fetches result URLs during a chat with the utm tag on (bare "Mozilla/5.0 (compatible)")
+        fams = {"openai", None} if "utm_source=chatgpt.com" in f["path"] else None
+    else:
+        fams = {None} if f["src"] in ("d1 redirect", "d1 landing") else ({fam, None} if fam else None)
+    off, w = idx.offset(f["ts"], families=fams)
     if f["country"] != OUR_COUNTRY:
         return {**f, "cls": "outside", "why": f"country {f['country']}", "off": off, "win": w}
     if w and abs(off) <= slack:

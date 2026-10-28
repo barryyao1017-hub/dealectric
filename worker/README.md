@@ -21,7 +21,9 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   visitor and crawler alike: no rewriting, no added header, cookie or script (checked 2026-10-28: same bytes as
   before the route, apart from Cloudflare's own per-request email obfuscation, and Web Analytics is still injected).
   A request whose query carries `utm_source` also writes a row to D1 `landings` (page, query, status, referrer,
-  user agent, country, bot flags, `Sec-Purpose`; no IP). ChatGPT appends `utm_source=chatgpt.com` to every link it
+  user agent, country, bot flags, `Sec-Purpose`; no IP). `bot_like` is also 1 for a user agent with no browser engine
+  token: during a chat ChatGPT's backend fetches the result URLs it shows, utm tag included, as bare
+  `Mozilla/5.0 (compatible)` (5 such rows inside W1's scan chats on 2026-10-28, none a person). ChatGPT appends `utm_source=chatgpt.com` to every link it
   shows, source pills included, so a ChatGPT landing, the `/go/` click from that page (its `clicks.referrer` is the
   landing URL) and a sale line up. An exception falls through to the origin (`passThroughOnException`), and the
   `dealectric.com/*` route is set to fail open on the Free plan's daily request limit (about 1-5k requests a day in
