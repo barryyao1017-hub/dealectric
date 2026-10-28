@@ -95,3 +95,16 @@ comes in. (3) Run the assistant check on ChatGPT too, n = 2 per opening.
   quota); Bing closed the connection on 54, a slower re-run filled 33. Labels: 3 Claude CLI passes, spot-checked on 4
   queries. Report: 13 rule-openings, 9 artefacts on inspection, 2 above median on a strict reading. Assistant check on 3
   openings plus 1 control (Claude CLI, n = 1).
+- 2026-10-27: the stricter rule fixed in `report()` before new data (at most one major publisher anywhere in the top
+  10, no transactional query); on the first pass it keeps 2 of 13 openings, the same 2 the inspection kept. Second
+  harvest: 20 -> 51 of 89 seeds (2,173 queries) before the 429 quota, at "treadmill"; 38 seeds left, about two more
+  days of quota. Scored together: 262 discovery queries, 19 openings by the original rule (7.3%), **4 by the strict
+  rule (1.5%), below the 5% bar**: desk chairs for home (1,215 searches; only 5 retailer results came back, so
+  probably a fetch artefact), fitbit watches for women (709), vertical laptop stand (348), extra screen for laptop
+  (243; fits Mobile Pixels, an approved CJ program). ChatGPT check (signed in, n = 2, plus the earbuds control;
+  `runs/2026-10-24-voidscan/assistant/chatgpt-*.json`): ChatGPT never searches the narrow query. It searches the head
+  term ("best ergonomic office chairs 2026 ... reviews", "best portable monitors for laptop 2026"), and those results
+  carry Tom's Guide, TechRadar, Wired, RTINGS, Consumer Reports and Tom's Hardware, so three of the four strict
+  openings are not openings from ChatGPT's side. Vertical laptop stand stays thin (Wired, once also Tom's Guide).
+  ChatGPT cited only stores and brands in every answer, the control included. Reading so far: the thesis does not
+  hold on the strict rule, and assistants' query rewriting closes most gaps that exist at the query level.
