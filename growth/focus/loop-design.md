@@ -270,7 +270,8 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
     A, D, E nothing changes. Compare each half's change from its baseline on fresh cells, T5 first, then T4 on the
     product page.
   - Decision after R1: DR half T5 at least 10 points above the held half's → ship the deal row on A, D and E as
-    their next lever. Less than that → DR stays on B, C, F for one more reading. With 24 cells a half, a gap under
-    about 4 cells is noise.
+    their next lever. Less than that → DR stays on B, C, F for one more reading. The 10 points is a practical call:
+    with 24 cells a half and 1 T5 each at baseline, only 6 against 1 or wider is clear (one-sided Fisher p 0.049;
+    4 against 1 is p 0.17).
   - Stop rule: any R1 answer on B, C or F that questions, warns about or quotes the deal row (flag rules above)
     takes the line off that arm.
