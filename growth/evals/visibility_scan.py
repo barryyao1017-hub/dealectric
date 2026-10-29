@@ -187,8 +187,10 @@ def run(args) -> int:
                 log(events, {"at": E.now_iso(), "event": "not_signed_in", "cell": cell, "account": rec.get("account")})
                 return 2
             models = rec.get("models") or []
-            answer_model = rec.get("answer_model")
-            downgraded = bool(answer_model and answer_model != base_model)
+            # resolved_model_slug is only sent when the model changed mid-answer; a chat routed to mini from the start
+            # carries model_slug gpt-6-mini and no resolved slug (76 cells on 10-28/29 were scored as gpt-6 before this).
+            answer_model = rec.get("answer_model") or (models[-1] if models else None)
+            downgraded = answer_model != base_model
             rec.update(qid=q["qid"], slug=q["slug"], phrasing=q["phrasing"], n=n, prompt=q["prompt"], started_at=started,
                        finished_at=E.now_iso(), run_id=args.run_id, downgraded=downgraded)
             s = score(rec, q)
