@@ -297,13 +297,14 @@ PRODUCTS = [
 {"slug": "allpowers-sp037-400w-solar-panel", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
  "name": "ALLPOWERS SP037 400 W Foldable Solar Panel", "model": "SP037",
  "url": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel", "price": 299, "lowest_seen": {"price": 299, "date": "2026-10-14", "source": "our price checks"},
- "specs": [("Rated power", "400 W"), ("Efficiency", "22% claimed"), ("Vmp / Voc", "37.4 V / 45.3 V"), ("Imp / Isc", "10.6 A / 11.45 A"), ("Connector", "MC4-style; MC4→XT60 and DC5525/DC8020 adapters included"),
+ "specs": [("Rated power", "400 W"), ("Efficiency", "22% claimed"), ("Vmp / Voc", "37.4 V / 45.3 V"), ("Imp / Isc", "10.6 A / 11.45 A (manual: 10.69 A / 11.7 A)"), ("Real output", "About 260–320 W in normal sun (ALLPOWERS' manual); owners report a median of 320 W"), ("Connector", "MC4-style; MC4→XT60 and DC5525/DC8020 adapters included"),
            ("Weather", "IP67 on ALLPOWERS' page (its manuals say IP66), ETFE laminate"), ("Size / weight", "1,048 × 532 × 65 mm folded, 1,048 × 2,660 mm open; 18.5 kg")],
- "warranty": "2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
+ "warranty": "2 years on ALLPOWERS' page (its manuals say 18 months, and 3 years on materials and workmanship)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
  "summary": "A 400 W folding panel that works fully with six of the ten power stations on this site (P1800, R4000, S2000 Pro, Elite 200 V2, Elite 300, AC200L), runs capped on the AC180 and R600, and is too high-voltage for the Elite 30 V2 and Tenergy T320.",
  "fit": "Pairing with an ALLPOWERS P1800, S2000 Pro or R4000, or a BLUETTI AC180, AC200L, Elite 200 V2 or Elite 300, for off-grid recharging.",
  "caveats": ["ALLPOWERS has a 2025 monocrystalline revision (Voc 36.5 V, 13.8 kg) under the same model number; the US page still lists the older 45.3 V, 18.5 kg panel, and buyers report receiving the new one. Don't mix the two in one string.",
-             "Too high-voltage (Voc 45.3 V) for the Tenergy T320 (5–24 V) and the BLUETTI Elite 30 V2 (12–28 V).", "Heavy for a folding panel at 18.5 kg (the manual confirms it).", "The page claims 22% efficiency; the manual says 19–23%."]},
+             "Too high-voltage (Voc 45.3 V) for the Tenergy T320 (5–24 V) and the BLUETTI Elite 30 V2 (12–28 V).", "Heavy for a folding panel at 18.5 kg (the manual confirms it).", "The page claims 22% efficiency; the manual says 19–23%.", "Not meant to stay outdoors for weeks (manual).",
+             "Kickstands are the most common owner complaint."]},
 
 # ---------------- SOUNDCORE (CJ 7382109) ----------------
 {"slug": "soundcore-liberty-4-pro", "brand": "Soundcore", "program": "cj:soundcore", "category": "earbuds",

@@ -109,4 +109,37 @@ BUYBOX = {
         ],
         "rivals_checked": "2026-10-28",
     },
+    # W3-allpowers-sp037-400w-solar-panel-L1, 2026-10-28. Dossier: growth/focus/allpowers-sp037-400w-solar-panel/dossier.md
+    # The stock line rests on the cart test: tools/codesweep.py stops at a sold-out variant, so a pass means in stock.
+    "allpowers-sp037-400w-solar-panel": {
+        "headline": "A 400 W folding panel under $300: {after} with code {code}, last passed in ALLPOWERS' cart {date}{ends}",
+        "proof": [
+            "<strong>{after} with {code}</strong>, under half the price per watt of the 350–400 W folding panels from "
+            "EcoFlow, Anker, BLUETTI, Jackery and Renogy, none of which was under $300 on 2026-10-28.",
+            "<strong>About 320 W in real sun</strong>: the median of 24 owner reports, matching ALLPOWERS' own 260–320 W.",
+            "<strong>One panel refills a 1 kWh station in about 4 hours</strong> of good sun; three refill the 3.5 kWh R4000 "
+            "in about 4–5 hours (our estimates).",
+        ],
+        "note": ("In stock", "ALLPOWERS' US store had it in stock on {date}, when our code test added it to the cart. "
+                 "ALLPOWERS' page code also carries a hidden \"Sold out\" label, which some summaries repeat."),
+        "pick": [
+            "You want the most solar watts per dollar.",
+            "It rides in your car and you don't carry it far (18.5 kg for the version on ALLPOWERS' page).",
+            "You set it out and pack it away rather than leave it up for weeks.",
+            "Your station's solar input accepts at least 46 V (most 12–60 V stations do).",
+        ],
+        "skip": [
+            "You carry it any distance or set it up alone: the Anker SOLIX PS400 Bifacial (9.9 kg, 5-year warranty, "
+            "$599.99), or two ALLPOWERS SP033 200 W panels ($398, 6.3 kg each).",
+            "It will live outdoors at camp for days in wind: the Renogy 400W Lightweight Suitcase ($495.99, aluminium "
+            "kickstands, 3+2 years).",
+            "Your station's input takes 15 A or more (BLUETTI Elite 200 V2, Elite 300) and you want fewer, lighter panels: "
+            "ALLPOWERS' SP039 600 W ($489, 12.5 kg).",
+            "Your station has a 12–28 V or 5–24 V input (BLUETTI Elite 30 V2, Tenergy T320): it won't work; buy a "
+            "100–200 W 12 V-class panel.",
+            "It's for a roof or a permanent mount: rigid panels carry 25-year output warranties and cost less per watt at "
+            "volume.",
+        ],
+        "rivals_checked": "2026-10-28",
+    },
 }
