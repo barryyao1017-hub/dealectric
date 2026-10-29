@@ -37,6 +37,16 @@ LEVERS = {
     "aurzen-travelplay-autocinema-tesla-model-y": [
         ("L1", "2026-10-28T09:00:00Z", "2026-10-28", ["34 times", "sunshade alone", "about $308"]),
     ],
+    # arms C-E: L1 buy boxes pushed 2026-10-29 04:21Z (fc9a808, 6e77e4a, a3bbec3); the pages already said 10-28
+    "allpowers-r4000-3456wh": [
+        ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["1/2 HP sump pump", "1.7 times the capacity"]),
+    ],
+    "allpowers-p1800-1024wh": [
+        ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["8 nights of CPAP", "AirSense 11"]),
+    ],
+    "allpowers-sp037-400w-solar-panel": [
+        ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["24 owner reports", "under half the price per watt"]),
+    ],
 }
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 DATE = re.compile(r"\b(?:(?P<mon>Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? (?P<day>\d{1,2})(?:, (?P<year>20\d\d))?"

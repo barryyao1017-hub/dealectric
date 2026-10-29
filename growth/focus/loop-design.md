@@ -152,9 +152,12 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | A | L2 cart link, code applied (DLC-71 a) + phase-out caveat | 2026-10-28 ~18:15Z (25afae8) | "already applied", "replacing the AC200L with the Apex 200" | | | shipped before L1: the old buy path was dead |
 | A | L1 buy box | next, after L2's readings | | | | dossier copy kit and record fixes ready |
 | B | baseline | n/a | n/a | R0 2026-10-28 (`readings/r0.md`) | T5 0/8, T4+ 4/8 | controls T4+ 3/4 |
-| C | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
-| D | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
-| E | baseline | n/a | n/a | R0b queued 2026-10-28 | | |
+| C | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 1/4, 3/4 |
+| D | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 4/8 | controls T5, T4+ 1/4, 3/4 |
+| E | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 2/4, 3/4 |
+| C | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (fc9a808) | "1/2 HP sump pump", "1.7 times the capacity" | | | |
+| D | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (6e77e4a) | "8 nights of CPAP", "AirSense 11" | | | |
+| E | L1 buy box, dated stock line + rest of the fix list | 2026-10-29 04:21Z (a3bbec3) | "24 owner reports", "under half the price per watt" | | | |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
 
 ## Changes
@@ -215,3 +218,7 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   LiFePO4/NMC table and, for the P1800, the CPAP one; SP037: solar watts; Aurzen TravelPlay: Tesla Model Y screens), so
   the arms change together, as with DLC-76. The home page's counts and brand list, the disclosure's network list and
   dealectric.json's categories are now generated. No title, price, code or offer text changed; no fresh marker.
+- 2026-10-29: arms C-E L1 shipped after R0b (fc9a808, 6e77e4a, a3bbec3). Their pages said "last passed 2026-10-28"
+  before and after the ship, so a cell is fresh with a cart date of 2026-10-29 or later, a marker, or (DLC-77 rule)
+  an OAI-SearchBot fetch after 04:25Z; 2026-10-28 alone is undated. SP037's stock line rests on the cart test (the
+  sweep stops at a sold-out variant), so it can't claim stock the cart didn't confirm.
