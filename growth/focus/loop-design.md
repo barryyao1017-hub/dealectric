@@ -163,7 +163,7 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | E | L1 buy box, dated stock line + rest of the fix list | 2026-10-29 04:21Z (a3bbec3) | "24 owner reports", "under half the price per watt" | | | |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
 | A | not a W3 lever: BLUETTI links move Awin → CJ (DLC-72); page changes one line (network, 14-day cookie) | 2026-10-29 23:13Z (e3e610d) | none | | | `/go/` now CJ, cart link and AFF5OFF unchanged |
-| B | DR deal row first (split test, shipped half) | see Changes 2026-10-29 "deal row first" | OAI-SearchBot fetch after the ship; snippet holds "cart test passed" | R1 | | held half: A, D, E |
+| B | DR deal row first (split test, shipped half) | 2026-10-29 23:45:07Z (48cd51e) | OAI-SearchBot fetch after the ship; snippet holds "cart test passed" | R1 | | held half: A, D, E |
 | C | DR deal row first (split test, shipped half) | as B | as B | R1 | | |
 | F | DR deal row first (split test, shipped half) | as B | as B | R1 | | |
 | A, D, E | DR held as the control half until R1 | n/a | n/a | R1 | | their current lever is read alone |
@@ -275,3 +275,6 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
     4 against 1 is p 0.17).
   - Stop rule: any R1 answer on B, C or F that questions, warns about or quotes the deal row (flag rules above)
     takes the line off that arm.
+- 2026-10-29: deal row shipped on B, C and F (48cd51e), live 23:45:07Z, IndexNow 200 for the three URLs; held pages
+  and both ESR pages checked live without it. w3score: lever "DR" for B, C, F from 23:45:07Z (`--crawl` now reports
+  OAI-SearchBot fetches since then for them), and a lever marker counts in the stored snippet as well as the answer.

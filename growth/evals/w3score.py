@@ -30,16 +30,21 @@ import storedcopy as SC  # noqa: E402  (OpenAI's crawl log and the stored-copy m
 
 # Levers per arm, as in loop-design.md's lever log: (name, live from (UTC), first cart date only the lever's copy can
 # carry, marker phrases only the lever's copy has). Append a row when a lever ships.
+# "deal row first" split (loop-design.md, Changes 2026-10-29): live on B, C and F at 23:45:07Z (48cd51e); A, D and E
+# held. The row sits right under the product name, so the stored snippet showing it proves the index holds it.
+DR_LIVE, DR_MARKERS = "2026-10-29T23:45:07Z", ["cart test passed"]
 LEVERS = {
     "bluetti-ac200l": [
         ("L2", "2026-10-28T18:16:00Z", "2026-10-29", ["already applied", "replacing the AC200L with the Apex 200"]),
     ],
     "aurzen-travelplay-autocinema-tesla-model-y": [
         ("L1", "2026-10-28T09:00:00Z", "2026-10-28", ["34 times", "sunshade alone", "about $308"]),
+        ("DR", DR_LIVE, "2026-10-30", DR_MARKERS),
     ],
     # arms C-E: L1 buy boxes pushed 2026-10-29 04:21Z (fc9a808, 6e77e4a, a3bbec3); the pages already said 10-28
     "allpowers-r4000-3456wh": [
         ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["1/2 HP sump pump", "1.7 times the capacity"]),
+        ("DR", DR_LIVE, "2026-10-30", DR_MARKERS),
     ],
     "allpowers-p1800-1024wh": [
         ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["8 nights of CPAP", "AirSense 11"]),
@@ -50,6 +55,7 @@ LEVERS = {
     # arm F: L1 buy box pushed 2026-10-29 08:09Z (5435350); the page said "last passed 2026-10-28" before and after
     "allpowers-s2000-pro-sp037-solar-kit": [
         ("L1", "2026-10-29T08:12:00Z", "2026-10-29", ["13 kg station", "less than the kit"]),
+        ("DR", DR_LIVE, "2026-10-30", DR_MARKERS),
     ],
 }
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
@@ -188,7 +194,9 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         live = live_cart_date(q["slug"], at)
         sc = stored_copy(q["slug"], at, rec, crawls, vers, deploys, blobs)
         # controls' pages never change, so no lever applies to them
-        lever, fresh = freshness(q["arm"], at, quoted, text, sc["index_fetch"]) if q["role"] == "test" else (None, "n/a")
+        # a lever's marker counts in the answer or in the stored snippet of the product page
+        seen = text + "\n" + (sc["stored_snippet"] or "")
+        lever, fresh = freshness(q["arm"], at, quoted, seen, sc["index_fetch"]) if q["role"] == "test" else (None, "n/a")
         raw = fresh
         if baseline and fresh in ("stale", "undated"):
             fresh = "baseline"   # --baseline (R0): a test cell that can't be shown to have read the lever's copy is baseline
