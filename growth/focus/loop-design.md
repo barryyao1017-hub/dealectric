@@ -162,6 +162,11 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | D | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (6e77e4a) | "8 nights of CPAP", "AirSense 11" | | | |
 | E | L1 buy box, dated stock line + rest of the fix list | 2026-10-29 04:21Z (a3bbec3) | "24 owner reports", "under half the price per watt" | | | |
 | B | L1 buy box + record fixes | 2026-10-28 ~09:10Z (629bcd5) | "34 times the area", "glass-roof sunshade alone" | | | |
+| A | not a W3 lever: BLUETTI links move Awin → CJ (DLC-72); page changes one line (network, 14-day cookie) | 2026-10-29 23:13Z (e3e610d) | none | | | `/go/` now CJ, cart link and AFF5OFF unchanged |
+| B | DR deal row first (split test, shipped half) | see Changes 2026-10-29 "deal row first" | OAI-SearchBot fetch after the ship; snippet holds "cart test passed" | R1 | | held half: A, D, E |
+| C | DR deal row first (split test, shipped half) | as B | as B | R1 | | |
+| F | DR deal row first (split test, shipped half) | as B | as B | R1 | | |
+| A, D, E | DR held as the control half until R1 | n/a | n/a | R1 | | their current lever is read alone |
 
 ## Changes
 
@@ -247,3 +252,25 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   with the number of tries. ChatGPT can route one question to gpt-6-mini every time (W1: Baseus worth-2, 12 in a row
   while the cells around it got gpt-6), so W1's runner caps the retries instead of looping. Before this, a cell whose
   every try was mini dropped out without being listed. R0, R0b and R0c have no unanswered cells.
+- 2026-10-29: **deal row first, split test** (Barry: "Ship the deal-row-first line now on half the focus products and
+  hold the rest as the control until the 10-31 reading."). Basis: `readings/esr-qi2-study.md` (T5 came only from
+  list-page rows; product-page snippets end before the `/go/` link).
+  - Shipped half: B Aurzen, C R4000, F S2000 Pro + SP037 kit. Held half: A AC200L, D P1800, E SP037.
+  - Why this split: both halves have the same baseline, T5 1/24 and T4+ 15/24 (R0, R0b, R0c). ALLPOWERS goes 2 and
+    2, BLUETTI and Aurzen one each side, so one brand's stale copy can't decide it. Every arm is on CJ since
+    e3e610d (BLUETTI moved from Awin at 23:13Z), so there is no network to balance. Holding A keeps its L2 reading
+    clean (A also took the network move above).
+  - The line: right under the product name, one visible paragraph in the list-row shape, link first:
+    "Buy: https://dealectric.com/go/<slug> · code X: $P → $A · <brand> cart test passed <date> · affiliate link".
+    The link carries rel="sponsored nofollow"; the code, prices and date are the day's cart pass (the line drops the
+    code when none passes and says sold out when the variant is). It is not addressed to assistants. The ESR Qi2
+    Mini page, the HaloLock drift control and every list page stay unchanged.
+  - Reading: R1 as planned (queue row 7). For B, C and F the lever in force is DR and a cell is fresh once
+    OAI-SearchBot fetched the page after the ship; the stored snippet showing "cart test passed" confirms it. For
+    A, D, E nothing changes. Compare each half's change from its baseline on fresh cells, T5 first, then T4 on the
+    product page.
+  - Decision after R1: DR half T5 at least 10 points above the held half's → ship the deal row on A, D and E as
+    their next lever. Less than that → DR stays on B, C, F for one more reading. With 24 cells a half, a gap under
+    about 4 cells is noise.
+  - Stop rule: any R1 answer on B, C or F that questions, warns about or quotes the deal row (flag rules above)
+    takes the line off that arm.
