@@ -76,4 +76,37 @@ BUYBOX = {
         ],
         "rivals_checked": "2026-10-28",
     },
+    # W3-allpowers-p1800-1024wh-L1, 2026-10-28. Dossier: growth/focus/allpowers-p1800-1024wh/dossier.md
+    "allpowers-p1800-1024wh": {
+        "headline": "1,024 Wh and 1,800 W for {after} with code {code}, last passed in ALLPOWERS' cart {date}{ends}",
+        "proof": [
+            "<strong>{after} with {code}</strong>: the lowest price for a new, in-stock 1 kWh LiFePO4 station on the maker "
+            "stores we checked on 2026-10-28 (EcoFlow, Anker, BLUETTI, Jackery, Pecron); the cheapest from EcoFlow, Anker "
+            "and BLUETTI was $489.",
+            "<strong>About 8 nights of CPAP</strong> (ResMed AirSense 11, no humidifier) from its 12 V port on one charge "
+            "(our estimate).",
+            "<strong>One 400 W panel refills it in about 4 hours</strong> of good sun (our estimate).",
+        ],
+        "note": ("Before you buy", "ALLPOWERS' US warranty page gives 24 months (its returns page says 18); register at "
+                 "iallpowers.com and keep the box. It's new since June 2026, with one review on ALLPOWERS' US store; "
+                 "Amazon's ratings belong to an older model."),
+        "pick": [
+            "You want a 1 kWh LiFePO4 station now for the least money.",
+            "You'll charge it from one 400 W panel or the wall.",
+            "You run laptops from its two USB-C ports (140 W max).",
+            "You accept a 2-year warranty from a brand with weak support reviews.",
+        ],
+        "skip": [
+            "You want a 5-year warranty from a known brand: the EcoFlow DELTA 3 Classic ($499; register it in EcoFlow's "
+            "app for 3+2 years).",
+            "You can wait for Black Friday: watch the Anker SOLIX C1000 Gen 2, which has sold for $349–399.99 at past "
+            "sales (2,000 W, 5 years).",
+            "You charge mainly from solar or want 1,000 W of panels: the BLUETTI Elite 100 V2 ($489, 5 years).",
+            "You'll ever add a battery: the EcoFlow DELTA 3 Plus ($719, pre-order to late November, expands to 5 kWh).",
+            "It's a UPS for a desktop PC: its 20 ms switchover (manual) isn't guaranteed to keep one on.",
+            "You need a fridge and a heated CPAP through the night on solar: step up to a 2 kWh station such as the "
+            "BLUETTI Elite 200 V2.",
+        ],
+        "rivals_checked": "2026-10-28",
+    },
 }
