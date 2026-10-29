@@ -47,6 +47,10 @@ LEVERS = {
     "allpowers-sp037-400w-solar-panel": [
         ("L1", "2026-10-29T04:25:00Z", "2026-10-29", ["24 owner reports", "under half the price per watt"]),
     ],
+    # arm F: L1 buy box pushed 2026-10-29 08:09Z (5435350); the page said "last passed 2026-10-28" before and after
+    "allpowers-s2000-pro-sp037-solar-kit": [
+        ("L1", "2026-10-29T08:12:00Z", "2026-10-29", ["13 kg station", "less than the kit"]),
+    ],
 }
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6, "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 DATE = re.compile(r"\b(?:(?P<mon>Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? (?P<day>\d{1,2})(?:, (?P<year>20\d\d))?"
@@ -132,6 +136,18 @@ def stored_copy(slug: str, at: datetime, rec: dict, crawls: dict, vers: dict, de
             "stored_title_versions": [f"v{h + 1}" for h in hits]}
 
 
+# The model every scored answer must come from (loop-design.md: readings are gpt-6). Checked here as well as by the
+# scan's own downgraded flag: a chat routed to gpt-6-mini from the start carries model_slug "gpt-6-mini" and no
+# resolved_model_slug, which the scan once counted as gpt-6 (76 cells, 2026-10-28/29, W1's 2781278).
+EXPECTED_MODEL = "gpt-6"
+DROPPED: list[str] = []
+
+
+def answer_model(rec: dict, r: dict) -> str | None:
+    """The model that answered: the resolved slug ui.py records, else the last model_slug the chat carried."""
+    return rec.get("answer_model") or ((rec.get("models") or r.get("models") or [None])[-1])
+
+
 def score_run(run: Path, baseline: bool = False) -> list[dict]:
     qs = {q["qid"]: q for f in QUESTIONS if f.exists() for q in json.loads(f.read_text())["questions"]}
     calls = json.loads(FLAGS.read_text()) if FLAGS.exists() else {}
@@ -150,6 +166,9 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         if not q:
             continue
         rec = json.loads((run / "chatgpt" / f"{cell}.json").read_text())
+        if answer_model(rec, r) != EXPECTED_MODEL:
+            DROPPED.append(f"{cell} ({answer_model(rec, r)})")
+            continue
         text = rec.get("text") or ""
         at = parse_ts(r["started_at"])
         # a cart pass can't postdate the chat; this drops expiry and sale-end dates that share a sentence with "tested"
@@ -170,7 +189,7 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         for arm in (q["arm"] if isinstance(q["arm"], list) else [q["arm"]]):
             out.append({
                 "cell": cell, "qid": r["qid"], "arm": arm, "role": q["role"], "slug": q["slug"], "n": r.get("n"),
-                "started_at": r["started_at"], "model": rec.get("answer_model") or (r.get("models") or [None])[-1],
+                "started_at": r["started_at"], "model": answer_model(rec, r),
                 "tier": r["tier"], "go": r.get("go") or [], "our_pages": sorted({u.split("?")[0] for u in ours}),
                 "product_page_cited": product_page, "our_rank": r.get("our_rank"), "n_results": r.get("n_results"),
                 "queries": rec.get("queries") or r.get("queries") or [],
@@ -194,7 +213,9 @@ def summary(cells: list[dict]) -> str:
     for arm in sorted({c["arm"] for c in cells}):
         a = [c for c in cells if c["arm"] == arm]
         test, ctl = [c for c in a if c["role"] == "test"], [c for c in a if c["role"] in ("control", "positive")]
-        lines.append(f"\n## {arm}")
+        if not test and arm != "positive":
+            continue   # an arm that only shares a control with the arms in this run
+        lines.append(f"\n## {arm}" + (" control (ESR Qi2 Mini, page never changed)" if arm == "positive" else ""))
         for label, group in (("test, all", test), ("test, fresh or baseline", [c for c in test if c["freshness"] in ("fresh", "baseline")]),
                              ("control", ctl)):
             lines.append(f"- {label}: T5 {rate(group, lambda c: c['tier'] >= 5)}, T4+ {rate(group, lambda c: c['tier'] >= 4)}, "
@@ -235,6 +256,8 @@ def main() -> int:
     a = ap.parse_args()
     cells = score_run(Path(a.run).resolve(), baseline=a.baseline)
     print(summary(cells))
+    if DROPPED:
+        print(f"\nDropped, not answered by {EXPECTED_MODEL} (re-ask them): " + ", ".join(DROPPED))
     if a.crawl:
         print(crawl_report())
     if a.candidates:

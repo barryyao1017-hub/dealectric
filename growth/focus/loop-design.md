@@ -156,7 +156,8 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | C | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 1/4, 3/4 |
 | D | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 4/8 | controls T5, T4+ 1/4, 3/4 |
 | E | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 2/4, 3/4 |
-| F | baseline | n/a | n/a | R0c queued 2026-10-29 (queue row 11) | | |
+| F | baseline | n/a | n/a | R0c 2026-10-29 (`readings/r0c.md`) | T5 1/8, T4+ 5/8 | controls T5, T4+ 1/4, 3/4; positive control 2/2 |
+| F | L1 buy box + rest of the fix list | 2026-10-29 08:09Z (5435350) | "13 kg station", "less than the kit" | | | |
 | C | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (fc9a808) | "1/2 HP sump pump", "1.7 times the capacity" | | | |
 | D | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (6e77e4a) | "8 nights of CPAP", "AirSense 11" | | | |
 | E | L1 buy box, dated stock line + rest of the fix list | 2026-10-29 04:21Z (a3bbec3) | "24 owner reports", "under half the price per watt" | | | |
@@ -237,4 +238,8 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   and the S2000 Pro station (arm C's control) now say 2,400 W is rated 2,000 W below about 60% charge, and the kit's
   solar input is settled. Baseline R0c is queue row 11, reusing W1's scan cells; the kit's buy box waits for it. R1
   (row 7) now covers arm F too.
+- 2026-10-29: R0c scored (`readings/r0c.md`) and arm F L1 shipped (5435350). w3score.py now drops any answer not from
+  gpt-6 itself (a chat routed to gpt-6-mini from the start has no resolved model slug; W1's scan once counted 76 such
+  answers as gpt-6). R0 and R0b re-scored under the check: unchanged. For F-L1 a cell is fresh with a cart date of
+  2026-10-29 or later, a marker, or an OAI-SearchBot fetch after 08:12Z.
 
