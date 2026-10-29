@@ -526,14 +526,19 @@ def offer_block(p, net, prog, url):
         bb = BUYBOX.get(p["slug"])
         if bb:
             # W3 lever 1 (src/focus.py): the dossier's buy box leads the card: headline, three proof points, the code
-            # lines above, the all-in cost, then one button and "pick it if / skip it if" below it.
+            # lines above, a note line (the all-in cost, what to know before buying, stock), then one button and
+            # "pick it if / skip it if" below it.
             def fill(t):
-                return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=date)
+                return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=date, verified=verified_on(p),
+                                stock="in stock" if in_stock(p) else "sold out",
+                                ends=f", code ends {c['expires']}" if c.get("expires") else "")
             head = (f'<h2 style="margin-top:0">{html.escape(fill(bb["headline"]), quote=False)}</h2>'
                     + "<ul>" + "".join(f"<li>{fill(x)}</li>" for x in bb["proof"]) + "</ul>")
-            lines += f'<p><strong>All in:</strong> {html.escape(bb["all_in"], quote=False)}</p>'
+            label, note = ("All in", bb["all_in"]) if "all_in" in bb else bb["note"]
+            lines += f'<p><strong>{label}:</strong> {html.escape(fill(note), quote=False)}</p>'
+            rivals = f' <span class="small">(other brands\' prices checked {bb["rivals_checked"]})</span>' if bb.get("rivals_checked") else ""
             pick_skip = ('<h3>Pick it if</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["pick"]) + "</ul>"
-                         '<h3>Skip it if</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["skip"]) + "</ul>")
+                         f'<h3>Skip it if{rivals}</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["skip"]) + "</ul>")
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
         lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.</p>'
