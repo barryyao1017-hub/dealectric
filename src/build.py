@@ -113,7 +113,7 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
-from focus import BUYBOX
+from focus import BUYBOX, DEAL_ROW
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from urllib.parse import quote, urlsplit
 import html
@@ -561,6 +561,20 @@ def offer_block(p, net, prog, url):
 """
 
 
+def deal_row(p, url):
+    """W3 "deal row first" (src/focus.py DEAL_ROW): buy link, code, price after it and the cart test date in one line
+    under the product name, in the shape of the list-page rows that earned ChatGPT's /go/ links. Empty elsewhere."""
+    if p["slug"] not in DEAL_ROW:
+        return ""
+    b, link = html.escape(p["brand"]), html.escape(url)
+    c, _, after, date = best_offer(p)
+    price = money(p["price"]) if p["price"] is not None else "see merchant"
+    deal = (f' · code <code>{html.escape(c["code"])}</code>: {price} → {money(after)} · {b} cart test passed {date}' if c and date
+            else f' · {price} at {b}, price verified {verified_on(p)}')
+    stock = "" if in_stock(p) else f" · sold out when we checked on {verified_on(p)}"
+    return f'\n<p><strong>Buy:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>{deal}{stock} · affiliate link</p>'
+
+
 def product_page(p):
     _, net, prog = tracked_link(p)
     url = go_link(p)
@@ -571,7 +585,7 @@ def product_page(p):
     c, s, after, date = best_offer(p)
     body = f"""
 <p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
-<h1>{html.escape(p['name'])}</h1>
+<h1>{html.escape(p['name'])}</h1>{deal_row(p, url)}
 <p class="lead">{html.escape(p['summary'])}</p>
 {offer_block(p, net, prog, url)}
 <figure><img src="{wide['path']}" width="{wide['width']}" height="{wide['height']}" alt="{html.escape(wide['alt'])}">

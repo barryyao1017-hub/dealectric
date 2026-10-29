@@ -179,3 +179,13 @@ BUYBOX = {
         "rivals_checked": "2026-10-29",
     },
 }
+
+# W3 split test "deal row first" (Barry, 2026-10-29; growth/focus/loop-design.md, Changes 2026-10-29). build.py puts one
+# line in the list-row shape right under the product name of these pages only, link first: OpenAI's index keeps about
+# 200 characters of a page, and product-page snippets ended before the /go/ link (readings/esr-qi2-study.md). Held as
+# the control half until R1: bluetti-ac200l, allpowers-p1800-1024wh, allpowers-sp037-400w-solar-panel.
+DEAL_ROW = {
+    "aurzen-travelplay-autocinema-tesla-model-y",   # B
+    "allpowers-r4000-3456wh",                       # C
+    "allpowers-s2000-pro-sp037-solar-kit",          # F
+}
