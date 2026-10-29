@@ -7,7 +7,7 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-7 Reply to the BLUETTI US welcome questionnaire (Awin) (high)
 - [ ] DLC-30 Ask approved advertisers for Dealectric-exclusive coupon codes (high)
 - [ ] DLC-38 Earn inbound links in person: 3–5 Reddit answers a week + outreach to the cited niche blogs (high, weekly)
-- [ ] DLC-40 Logins for the consumer-app eval: claude.ai, gemini.google.com, grok.com in the agent Chrome (chatgpt.com already signed in) (high)
+- [ ] DLC-40 Logins for the consumer-app eval: claude.ai, grok.com, meta.ai/muse.ai in the agent Chrome (chatgpt.com and gemini.google.com work) (high)
 - [ ] DLC-72 Pick the network for BLUETTI links: AFF5OFF is a CJ code, our links are Awin (high)
 - [ ] DLC-4 Create store accounts for refer-a-friend links
 - [ ] DLC-5 (Optional) Open a Rakuten publisher account
@@ -23,7 +23,7 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-17 Anker invitation reply
 - [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-11-15)
 
-## Claude (25)
+## Claude (28)
 - [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-29)
 - [ ] DLC-24 Build the first 3 question-answer comparison pages (high, due 2026-10-30)
 - [ ] DLC-33 North Star: get our first conversion / commission (high)
@@ -49,6 +49,9 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-63 Staleness guard on the 'tested daily' claim
 - [ ] DLC-66 Later: get Claude citing us again without copy it reads as prompt injection
 - [ ] DLC-73 Add the BLUETTI Apex 200 to the catalog on launch day (due 2026-11-04)
+- [ ] DLC-87 IndexNow: submit only pages that really changed
+- [ ] DLC-88 Add Gemini to the app eval (ui.py adapter), then Grok and Meta AI when their logins exist
+- [ ] DLC-89 Worker: log visits we can attribute to Gemini, Grok and Muse (referrer and ASN)
 
 ## Done 2026-10-27 and 28
 - [x] DLC-6 Delete ~/Desktop/_to_delete/
