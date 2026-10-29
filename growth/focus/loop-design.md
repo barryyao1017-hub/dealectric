@@ -222,3 +222,11 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   before and after the ship, so a cell is fresh with a cart date of 2026-10-29 or later, a marker, or (DLC-77 rule)
   an OAI-SearchBot fetch after 04:25Z; 2026-10-28 alone is undated. SP037's stock line rests on the cart test (the
   sweep stops at a sold-out variant), so it can't claim stock the cart didn't confirm.
+- 2026-10-29: Barry added the ALLPOWERS S2000 Pro + SP037 kit as arm F (set up when W2's dossier lands; W1's scan
+  cells reuse for its baseline) and the ESR Qi2 Mini as a study case (82c329c). The ESR Qi2 Mini deal question is now a
+  positive control in both question files (role "positive"; its page is never changed), and R1 runs both files into
+  one run-id (queue row 7, 58 chats). Study: `readings/esr-qi2-study.md`: our `/go/` link comes from list-page rows,
+  never from a product page alone (0 of 55), because ChatGPT keeps a ~200-character snippet and a product page's
+  snippet ends before its link. Proposed lever "deal row first" (the buy link and code in the first line after the
+  product name) awaits Barry.
+

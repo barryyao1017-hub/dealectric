@@ -166,7 +166,8 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
         ours = [u for u in links + pills if "dealectric.com" in u]
         product_page = any(urlsplit(u).path.strip("/").removeprefix("products/").rstrip("/") == q["slug"] for u in ours)
         key = f"{run.name}/{cell}"
-        for arm in (q["arm"] if isinstance(q["arm"], list) else [q["arm"]]):   # a shared control scores for each arm
+        # a shared control scores for each arm; the positive control (role "positive", ESR Qi2 Mini) is its own group
+        for arm in (q["arm"] if isinstance(q["arm"], list) else [q["arm"]]):
             out.append({
                 "cell": cell, "qid": r["qid"], "arm": arm, "role": q["role"], "slug": q["slug"], "n": r.get("n"),
                 "started_at": r["started_at"], "model": rec.get("answer_model") or (r.get("models") or [None])[-1],
@@ -192,7 +193,7 @@ def summary(cells: list[dict]) -> str:
     lines = []
     for arm in sorted({c["arm"] for c in cells}):
         a = [c for c in cells if c["arm"] == arm]
-        test, ctl = [c for c in a if c["role"] == "test"], [c for c in a if c["role"] == "control"]
+        test, ctl = [c for c in a if c["role"] == "test"], [c for c in a if c["role"] in ("control", "positive")]
         lines.append(f"\n## {arm}")
         for label, group in (("test, all", test), ("test, fresh or baseline", [c for c in test if c["freshness"] in ("fresh", "baseline")]),
                              ("control", ctl)):
