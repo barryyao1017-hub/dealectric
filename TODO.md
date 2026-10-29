@@ -2,13 +2,12 @@
 
 Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>; notes and history live there). This file is a read-only mirror; change rows in the artifact. Status detail: launch-status.md.
 
-## Needs Barry (12)
+## Needs Barry (11)
 - [ ] DLC-3 Decide how to get Awin payouts (high)
 - [ ] DLC-7 Reply to the BLUETTI US welcome questionnaire (Awin) (high)
 - [ ] DLC-30 Ask approved advertisers for Dealectric-exclusive coupon codes (high)
 - [ ] DLC-38 Earn inbound links in person: 3–5 Reddit answers a week + outreach to the cited niche blogs (high, weekly)
 - [ ] DLC-40 Logins for the consumer-app eval: claude.ai, grok.com, meta.ai/muse.ai in the agent Chrome (chatgpt.com and gemini.google.com work) (high)
-- [ ] DLC-72 Pick the network for BLUETTI links: AFF5OFF is a CJ code, our links are Awin (high)
 - [ ] DLC-4 Create store accounts for refer-a-friend links
 - [ ] DLC-5 (Optional) Open a Rakuten publisher account
 - [ ] DLC-36 Get dealectric.com into Brave's index (what Claude's search uses)

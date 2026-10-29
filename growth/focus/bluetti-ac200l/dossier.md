@@ -162,6 +162,8 @@ No public page ties it to Awin. The mismatch is our link network, not the label 
    an Awin click with a CJ code may be credited to neither network cleanly. Options: check Awin's BLUETTI US
    voucher tab for an Awin code; or move BLUETTI links to CJ, which pays today but at 2-5% against Awin's 5-10%. This
    needs the dashboards; it is now noted on DLC-54 for DLC-53.
+   **Decided 2026-10-29 (Barry): CJ.** All BLUETTI links now go through CJ Bluetti Global; see
+   `growth/codes/program-terms.md`.
 
 ## Three proof points
 
