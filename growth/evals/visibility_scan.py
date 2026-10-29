@@ -226,17 +226,21 @@ def report(run_id: str) -> None:
              f"{len(rows)} cells answered by gpt-6 ({len(every) - len(rows)} gpt-6-mini answers set aside), signed in (Free), temporary, unprompted. Tiers: T5 /go/ link, T4 our page linked or as a "
              "source pill, T3 Dealectric named, T2 our page in ChatGPT's results only, T1 absent. Made by "
              "`growth/evals/visibility_scan.py --report`.", "",
-             "| product | network | chats | best | T2+ | T4+ | per phrasing (tier, our rank) |", "|---|---|---|---|---|---|---|"]
+             "By phrasing (first runs): " + "; ".join(
+                 f"{ph} " + ", ".join(f"T{t} {n}" for t, n in sorted(__import__('collections').Counter(
+                     r["tier"] for r in rows if r["phrasing"] == ph and r["n"] == 1).items(), reverse=True))
+                 for ph in ("deal", "worth", "best", "alt")) + ".", "",
+             "| product | network | chats | best | T5 | T4+ | T2+ | per phrasing (tier, our rank) |", "|---|---|---|---|---|---|---|---|"]
     def key(s):
         rs = by[s]
-        return (-sum(r["tier"] >= 2 for r in rs), -max(r["tier"] for r in rs))
+        return (-sum(r["tier"] >= 5 for r in rs), -sum(r["tier"] >= 4 for r in rs), -sum(r["tier"] >= 2 for r in rs))
     for slug in sorted(by, key=key):
         rs = by[slug]
         ph = ", ".join(f"{r['phrasing']}{'' if r['n'] == 1 else '#2'} T{r['tier']}" + (f" #{r['our_rank']}" if r["our_rank"] else "")
                        for r in sorted(rs, key=lambda r: (r["phrasing"], r["n"])))
         net = next((q["network"] for q in bank.values() if q["slug"] == slug), "")
-        lines.append(f"| {slug} | {net} | {len(rs)} | T{max(r['tier'] for r in rs)} | {sum(r['tier'] >= 2 for r in rs)} | "
-                     f"{sum(r['tier'] >= 4 for r in rs)} | {ph} |")
+        lines.append(f"| {slug} | {net} | {len(rs)} | T{max(r['tier'] for r in rs)} | {sum(r['tier'] >= 5 for r in rs)} | "
+                     f"{sum(r['tier'] >= 4 for r in rs)} | {sum(r['tier'] >= 2 for r in rs)} | {ph} |")
     ev = [json.loads(l) for l in (out / "events.jsonl").open()] if (out / "events.jsonl").exists() else []
     lines += ["", "## Throttle and model events", ""] + [f"- {e['at']} {e['event']}: " + ", ".join(
         f"{k}={v}" for k, v in e.items() if k not in ("at", "event")) for e in ev if e["event"] not in ("start", "end")]

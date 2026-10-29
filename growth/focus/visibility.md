@@ -1,55 +1,57 @@
 # ChatGPT visibility scan (2026-10-28-visibility)
 
-77 cells answered by gpt-6 (107 gpt-6-mini answers set aside), signed in (Free), temporary, unprompted. Tiers: T5 /go/ link, T4 our page linked or as a source pill, T3 Dealectric named, T2 our page in ChatGPT's results only, T1 absent. Made by `growth/evals/visibility_scan.py --report`.
+255 cells answered by gpt-6 (131 gpt-6-mini answers set aside), signed in (Free), temporary, unprompted. Tiers: T5 /go/ link, T4 our page linked or as a source pill, T3 Dealectric named, T2 our page in ChatGPT's results only, T1 absent. Made by `growth/evals/visibility_scan.py --report`.
 
-| product | network | chats | best | T2+ | T4+ | per phrasing (tier, our rank) |
-|---|---|---|---|---|---|---|
-| tenergy-tn438-16-bay-nimh-charger | CJ Affiliate | 2 | T4 | 2 | 1 | best T4 #6, deal T2 #5 |
-| allpowers-p1800-1024wh | CJ Affiliate | 3 | T4 | 2 | 1 | best T1, deal T4 #3, worth T2 #7 |
-| allpowers-r600-299wh | CJ Affiliate | 2 | T4 | 2 | 1 | deal T4 #3, worth T2 #6 |
-| allpowers-s2000-pro-1451wh | CJ Affiliate | 2 | T4 | 2 | 1 | deal T4 #6, worth T2 #8 |
-| allpowers-r4000-3456wh | CJ Affiliate | 2 | T4 | 2 | 2 | deal T4 #1, worth T4 #16 |
-| allpowers-sp037-400w-solar-panel | CJ Affiliate | 2 | T4 | 2 | 2 | deal T4 #3, worth T4 #5 |
-| esr-halolock-15w-wireless-car-charger-cryoboost | Awin | 2 | T5 | 1 | 1 | best T1, deal T5 #8 |
-| esr-qi2-mini-wireless-charger-15w | Awin | 2 | T5 | 1 | 1 | best T1, deal T5 #10 |
-| bluetti-ac200l | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #16 |
-| baseus-blade-h1-100w-20000mah | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #4 |
-| baseus-gan5-pro-65w-2c-u | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #4 |
-| baseus-nomos-5-in-1-140w-qi2 | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #5 |
-| baseus-enerfill-fc41-25000mah-145w | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #6 |
-| esr-100w-6-in-1-magsafe-cryoboost-station | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #14 |
-| tenergy-tn480u-8-bay-nimh-charger | CJ Affiliate | 2 | T4 | 1 | 1 | best T1, deal T4 #6 |
-| tenergy-t320-300wh-power-station | CJ Affiliate | 2 | T4 | 1 | 1 | best T1, deal T4 #4 |
-| bluetti-elite-200-v2 | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #18 |
-| bluetti-elite-30-v2 | Awin | 2 | T4 | 1 | 1 | best T1, deal T4 #11 |
-| bluetti-ac180 | Awin | 3 | T4 | 1 | 1 | best T1, deal T4 #7, worth T1 |
-| allpowers-p1800-sp037-solar-kit | CJ Affiliate | 1 | T4 | 1 | 1 | worth T4 #4 |
-| allpowers-volix-p300-100w-solar-kit | CJ Affiliate | 1 | T4 | 1 | 1 | worth T4 #6 |
-| bluetti-ac180-200w-solar-kit | Awin | 1 | T4 | 1 | 1 | worth T4 #6 |
-| aurzen-travelplay-autocinema-tesla-model-y | CJ Affiliate | 1 | T4 | 1 | 1 | worth T4 #4 |
-| baseus-picogo-am52-qi2-2-10000mah-45w | Awin | 2 | T3 | 1 | 0 | best T1, deal T3 #9 |
-| soundcore-space-one | CJ Affiliate | 2 | T3 | 1 | 0 | deal T3 #6, worth T1 |
-| baseus-usb-c-cable-100w | Awin | 2 | T2 | 1 | 0 | best T1, deal T2 #13 |
-| esr-cryoboost-3-in-1-qi2-2-25w-stand | Awin | 2 | T2 | 1 | 0 | best T1, deal T2 #14 |
-| tenergy-tn270-li-ion-18650-charger | CJ Affiliate | 2 | T2 | 1 | 0 | best T1, deal T2 #9 |
-| bluetti-elite-300 | Awin | 3 | T2 | 1 | 0 | best T1, deal T2 #14, worth T1 |
-| soundcore-liberty-4-pro | CJ Affiliate | 2 | T2 | 1 | 0 | deal T2 #16, worth T1 |
-| soundcore-space-one-pro | CJ Affiliate | 2 | T2 | 1 | 0 | deal T2 #9, worth T1 |
-| soundcore-boom-2-plus | CJ Affiliate | 1 | T2 | 1 | 0 | worth T2 #12 |
-| allpowers-s2000-pro-sp037-solar-kit | CJ Affiliate | 1 | T2 | 1 | 0 | worth T2 #16 |
-| bluetti-elite-200-v2-200w-solar-kit | Awin | 1 | T2 | 1 | 0 | worth T2 #16 |
-| bluetti-elite-30-v2-100w-solar-kit | Awin | 1 | T2 | 1 | 0 | worth T2 #11 |
-| aurzen-zip-pro-tri-fold-1080p-projector | CJ Affiliate | 1 | T2 | 1 | 0 | worth T2 #10 |
-| aurzen-zip-tri-fold-mini-projector | CJ Affiliate | 1 | T2 | 1 | 0 | worth T2 #5 |
-| tenergy-premium-pro-aa-2800mah-20-pack | CJ Affiliate | 2 | T1 | 0 | 0 | best T1, deal T1 |
-| soundcore-aerofit-2 | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| soundcore-motion-x600 | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| soundcore-boom-3i | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| marshall-major-v | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| marshall-monitor-iii-anc | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| marshall-minor-iv | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| marshall-emberton-iii | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
-| marshall-middleton-ii | CJ Affiliate | 1 | T1 | 0 | 0 | worth T1 |
+By phrasing (first runs): deal T5 3, T4 25, T3 2, T2 9, T1 7; worth T4 14, T3 1, T2 10, T1 21; best T4 1, T1 45; alt T4 3, T2 3, T1 40.
+
+| product | network | chats | best | T5 | T4+ | T2+ | per phrasing (tier, our rank) |
+|---|---|---|---|---|---|---|---|
+| esr-qi2-mini-wireless-charger-15w | Awin | 5 | T5 | 2 | 2 | 2 | alt T1, best T1, deal T5 #10, deal#2 T5 #7, worth T1 |
+| allpowers-s2000-pro-sp037-solar-kit | CJ Affiliate | 6 | T5 | 1 | 3 | 4 | alt T1, best T1, deal T5 #2, deal#2 T4 #1, worth T2 #16, worth#2 T4 #8 |
+| esr-halolock-15w-wireless-car-charger-cryoboost | Awin | 5 | T5 | 1 | 1 | 1 | alt T1, best T1, deal T5 #8, deal#2 T1, worth T1 |
+| aurzen-travelplay-autocinema-tesla-model-y | CJ Affiliate | 7 | T4 | 0 | 6 | 6 | alt T4 #4, alt#2 T4 #1, best T1, deal T4 #3, deal#2 T4 #4, worth T4 #4, worth#2 T4 #1 |
+| allpowers-sp037-400w-solar-panel | CJ Affiliate | 7 | T4 | 0 | 5 | 6 | alt T4 #7, alt#2 T2 #7, best T1, deal T4 #3, deal#2 T4 #2, worth T4 #5, worth#2 T4 #7 |
+| allpowers-p1800-sp037-solar-kit | CJ Affiliate | 7 | T4 | 0 | 5 | 5 | alt T4 #2, alt#2 T1, best T1, deal T4 #3, deal#2 T4 #1, worth T4 #4, worth#2 T4 #1 |
+| tenergy-t320-300wh-power-station | CJ Affiliate | 7 | T4 | 0 | 4 | 5 | alt T2 #4, alt#2 T1, best T1, deal T4 #4, deal#2 T4 #5, worth T4 #4, worth#2 T4 #4 |
+| allpowers-r4000-3456wh | CJ Affiliate | 6 | T4 | 0 | 4 | 4 | alt T1, best T1, deal T4 #1, deal#2 T4 #1, worth T4 #16, worth#2 T4 #11 |
+| tenergy-tn480u-8-bay-nimh-charger | CJ Affiliate | 7 | T4 | 0 | 3 | 6 | alt T2 #5, alt#2 T2 #5, best T1, deal T4 #6, deal#2 T4 #2, worth T4 #5, worth#2 T2 #6 |
+| esr-100w-6-in-1-magsafe-cryoboost-station | Awin | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #14, deal#2 T4 #14, worth T2 #9, worth#2 T4 #4 |
+| allpowers-p1800-1024wh | CJ Affiliate | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #3, deal#2 T4 #1, worth T2 #7, worth#2 T4 #5 |
+| allpowers-s2000-pro-1451wh | CJ Affiliate | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #6, deal#2 T4 #3, worth T2 #8, worth#2 T4 #4 |
+| allpowers-volix-p300-100w-solar-kit | CJ Affiliate | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #4, deal#2 T4 #1, worth T4 #6, worth#2 T2 #8 |
+| bluetti-ac180-200w-solar-kit | Awin | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #17, deal#2 T4 #4, worth T4 #6, worth#2 T2 #5 |
+| bluetti-elite-200-v2-200w-solar-kit | Awin | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #12, deal#2 T4 #11, worth T2 #16, worth#2 T4 #7 |
+| bluetti-elite-30-v2-100w-solar-kit | Awin | 6 | T4 | 0 | 3 | 4 | alt T1, best T1, deal T4 #12, deal#2 T4 #11, worth T2 #11, worth#2 T4 #18 |
+| tenergy-tn438-16-bay-nimh-charger | CJ Affiliate | 8 | T4 | 0 | 2 | 7 | alt T2 #8, alt#2 T2 #9, best T4 #6, best#2 T1, deal T2 #5, deal#2 T2 #3, worth T4 #7, worth#2 T2 #6 |
+| baseus-blade-h1-100w-20000mah | Awin | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #4, deal#2 T2 #3, worth T4 #5, worth#2 T2 #10 |
+| baseus-gan5-pro-65w-2c-u | Awin | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #4, deal#2 T2 #5, worth T4 #6, worth#2 T2 #4 |
+| baseus-nomos-5-in-1-140w-qi2 | Awin | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #5, deal#2 T2 #15, worth T4 #7, worth#2 T2 #9 |
+| baseus-usb-c-cable-100w | Awin | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T2 #13, deal#2 T2 #9, worth T4 #6, worth#2 T4 #6 |
+| baseus-enerfill-fc41-25000mah-145w | Awin | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #6, deal#2 T4 #6, worth T3 #7, worth#2 T3 #11 |
+| allpowers-r600-299wh | CJ Affiliate | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #3, deal#2 T4 #5, worth T2 #6, worth#2 T2 #7 |
+| soundcore-boom-2-plus | CJ Affiliate | 6 | T4 | 0 | 2 | 4 | alt T1, best T1, deal T4 #8, deal#2 T4 #8, worth T2 #12, worth#2 T2 #21 |
+| bluetti-ac200l | Awin | 6 | T4 | 0 | 2 | 3 | alt T1, best T1, deal T4 #16, deal#2 T2 #20, worth T4 #11, worth#2 T1 |
+| bluetti-elite-30-v2 | Awin | 5 | T4 | 0 | 2 | 2 | alt T1, best T1, deal T4 #11, deal#2 T4 #11, worth T1 |
+| soundcore-motion-x600 | CJ Affiliate | 5 | T4 | 0 | 2 | 2 | alt T1, best T1, deal T4 #11, deal#2 T4 #5, worth T1 |
+| aurzen-zip-tri-fold-mini-projector | CJ Affiliate | 6 | T4 | 0 | 1 | 4 | alt T1, best T1, deal T4 #5, deal#2 T2 #11, worth T2 #5, worth#2 T2 #13 |
+| aurzen-zip-pro-tri-fold-1080p-projector | CJ Affiliate | 6 | T4 | 0 | 1 | 3 | alt T1, best T1, deal T2 #16, deal#2 T4 #6, worth T2 #10, worth#2 T1 |
+| esr-cryoboost-3-in-1-qi2-2-25w-stand | Awin | 5 | T4 | 0 | 1 | 2 | alt T1, best T1, deal T2 #14, deal#2 T4 #7, worth T1 |
+| bluetti-elite-200-v2 | Awin | 5 | T4 | 0 | 1 | 2 | alt T1, best T1, deal T4 #18, deal#2 T2 #17, worth T1 |
+| bluetti-ac180 | Awin | 5 | T4 | 0 | 1 | 2 | alt T1, best T1, deal T4 #7, deal#2 T2 #6, worth T1 |
+| soundcore-liberty-4-pro | CJ Affiliate | 5 | T4 | 0 | 1 | 2 | alt T1, best T1, deal T2 #16, deal#2 T4 #13, worth T1 |
+| soundcore-space-one-pro | CJ Affiliate | 5 | T4 | 0 | 1 | 2 | alt T1, best T1, deal T2 #9, deal#2 T4 #7, worth T1 |
+| baseus-picogo-am52-qi2-2-10000mah-45w | Awin | 5 | T3 | 0 | 0 | 2 | alt T1, best T1, deal T3 #9, deal#2 T3 #10, worth T1 |
+| tenergy-tn270-li-ion-18650-charger | CJ Affiliate | 5 | T2 | 0 | 0 | 2 | alt T1, best T1, deal T2 #9, deal#2 T2 #1, worth T1 |
+| bluetti-elite-300 | Awin | 5 | T2 | 0 | 0 | 2 | alt T1, best T1, deal T2 #14, deal#2 T2 #15, worth T1 |
+| soundcore-space-one | CJ Affiliate | 5 | T3 | 0 | 0 | 2 | alt T1, best T1, deal T3 #6, deal#2 T2 #7, worth T1 |
+| soundcore-aerofit-2 | CJ Affiliate | 5 | T2 | 0 | 0 | 2 | alt T1, best T1, deal T2 #8, deal#2 T2 #7, worth T1 |
+| tenergy-premium-pro-aa-2800mah-20-pack | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| soundcore-boom-3i | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| marshall-major-v | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| marshall-monitor-iii-anc | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| marshall-minor-iv | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| marshall-emberton-iii | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
+| marshall-middleton-ii | CJ Affiliate | 4 | T1 | 0 | 0 | 0 | alt T1, best T1, deal T1, worth T1 |
 
 ## Throttle and model events
 
@@ -73,3 +75,50 @@
 - 2026-10-28T11:07:38.392Z error: after_ok=126, cell=bluetti-ac180-200w-solar-kit--best-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%27s%20the%20best%20solar%20generator%20kit%20under%20%24800%3F); trace: [{"t": 174.3, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "streaming": false, "sen
 - 2026-10-28T11:41:54.320Z error: after_ok=163, cell=soundcore-space-one-pro--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20soundcore%20Space%20One%20Pro%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "stream
 - 2026-10-28T12:05:00Z reclassified: note=resolved_model_slug check (12:00Z debug chat): chats listing gpt-6-mini were answered by gpt-6-mini; first pass had flagged none. gpt-6 for chats 1-28 (08:21-08:44Z), mini 29-64 (08:44-09:45Z), gpt-6 65-113 (09:45-10:49Z), mini 114-184 (10:49-11:59Z). No throttle notice in 184 chats at 20 s pace., downgraded=107, gpt6=77
+- 2026-10-28T15:12:38.894Z error: after_ok=1, cell=soundcore-boom-2-plus--deal-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20there%20a%20discount%20code%20or%20a%20good%20deal%20on%20the%20soundcore%20Boom%202%20Plus%20right%20now%3F); trace: [{"t": 175.8, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=Is
+- 2026-10-28T15:24:54.399Z error: after_ok=12, cell=aurzen-zip-tri-fold-mini-projector--deal-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20there%20a%20discount%20code%20or%20a%20good%20deal%20on%20the%20Aurzen%20ZIP%20mini%20projector%20right%20now%3F); trace: [{"t": 175.8, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&
+- 2026-10-28T15:31:11.470Z error: after_ok=15, cell=marshall-minor-iv--deal-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20there%20a%20discount%20code%20or%20a%20good%20deal%20on%20the%20Marshall%20Minor%20IV%20right%20now%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%2", "
+- 2026-10-28T15:39:12.406Z error: after_ok=20, cell=baseus-nomos-5-in-1-140w-qi2--worth-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20the%20Baseus%20Nomos%205-in-1%20charger%20worth%20buying%3F%20Where%27s%20the%20best%20place%20to%20buy%20it%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q
+- 2026-10-28T15:44:51.736Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T16:05:23.856Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T16:25:55.951Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T16:46:30.209Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T17:07:03.268Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T17:27:33.282Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T17:48:05.704Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T18:08:36.455Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T18:31:37.823Z error: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20the%20ESR%20100W%206-in-1%20MagSafe%20charging%20station%20worth%20buying%3F%20Where%27s%20the%20best%20place%20to%20buy%20it%3F); trace: [{"t": 174.4, "url": "https://chatgpt.com/?temporary-chat=tr
+- 2026-10-28T18:33:08.498Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T18:53:38.802Z downgraded: after_ok=25, cell=esr-100w-6-in-1-magsafe-cryoboost-station--worth-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T20:21:09.836Z error: after_ok=8, cell=bluetti-elite-200-v2--worth-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20the%20BLUETTI%20Elite%20200%20V2%20worth%20buying%3F%20Where%27s%20the%20best%20place%20to%20buy%20it%3F); trace: [{"t": 174.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%2",
+- 2026-10-28T20:30:01.949Z error: after_ok=14, cell=allpowers-sp037-400w-solar-panel--best-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/c/local-chatgpt%3A77a9c4b7-a31b-46ed-8b95-d76431f9d36b?temporary-chat=true); trace: [{"t": 170.0, "url": "https://chatgpt.com/c/local-chatgpt%3A77a9c4b7-a31b-46ed-8b9", "answer_len": 0, "streaming": false, "send": true, "composer": "Web se
+- 2026-10-28T20:42:25.597Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T21:02:53.850Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T21:23:22.145Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T21:43:51.306Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T22:04:17.348Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T22:24:45.609Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T22:45:13.937Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T23:05:40.272Z downgraded: after_ok=28, cell=aurzen-travelplay-autocinema-tesla-model-y--best-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-28T23:38:29.396Z error: after_ok=40, cell=baseus-usb-c-cable-100w--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20Baseus%20100W%20USB-C%20cable%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "stream
+- 2026-10-28T23:45:02.086Z error: after_ok=43, cell=esr-100w-6-in-1-magsafe-cryoboost-station--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20ESR%20100W%206-in-1%20MagSafe%20charging%20station%3F); trace: [{"t": 174.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "an
+- 2026-10-28T23:53:16.511Z error: after_ok=48, cell=tenergy-premium-pro-aa-2800mah-20-pack--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20Tenergy%20Premium%20PRO%20AA%202800mAh%20batteries%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "an
+- 2026-10-29T00:08:08.601Z error: after_ok=61, cell=soundcore-liberty-4-pro--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/c/local-chatgpt%3Af5c07660-d5be-44ff-a904-1702facd99ff?temporary-chat=true); trace: [{"t": 170.2, "url": "https://chatgpt.com/c/local-chatgpt%3Af5c07660-d5be-44ff-a90", "answer_len": 0, "streaming": false, "send": true, "composer": "Web se
+- 2026-10-29T00:13:01.594Z error: after_ok=62, cell=soundcore-space-one-pro--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/c/local-chatgpt%3A8907ede3-5e94-4b2e-a8ee-897ff3efa50e?temporary-chat=true); trace: [{"t": 170.3, "url": "https://chatgpt.com/c/local-chatgpt%3A8907ede3-5e94-4b2e-a8e", "answer_len": 0, "streaming": false, "send": true, "composer": "Web se
+- 2026-10-29T00:19:32.761Z error: after_ok=65, cell=soundcore-boom-2-plus--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20soundcore%20Boom%202%20Plus%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "streamin
+- 2026-10-29T00:21:05.022Z downgraded: after_ok=65, cell=soundcore-boom-2-plus--alt-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-29T00:41:37.373Z downgraded: after_ok=65, cell=soundcore-boom-2-plus--alt-1, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-29T01:10:58.990Z error: after_ok=72, cell=bluetti-elite-200-v2-200w-solar-kit--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20BLUETTI%20Elite%20200%20V2%20solar%20kit%3F); trace: [{"t": 174.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len":
+- 2026-10-29T01:15:51.833Z error: after_ok=73, cell=bluetti-elite-30-v2-100w-solar-kit--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20BLUETTI%20Elite%2030%20V2%20with%20100W%20solar%20panel%3F); trace: [{"t": 174.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What"
+- 2026-10-29T01:24:07.081Z error: after_ok=78, cell=marshall-monitor-iii-anc--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20Marshall%20Monitor%20III%20A.N.C.%3F); trace: [{"t": 174.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "st
+- 2026-10-29T01:28:59.784Z error: after_ok=79, cell=marshall-minor-iv--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20Marshall%20Minor%20IV%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "streaming": fa
+- 2026-10-29T01:34:42.309Z error: after_ok=81, cell=marshall-middleton-ii--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/c/local-chatgpt%3Aa0e2dea2-3d5b-4d6c-821b-0447c93f66ab?temporary-chat=true); trace: [{"t": 170.1, "url": "https://chatgpt.com/c/local-chatgpt%3Aa0e2dea2-3d5b-4d6c-821", "answer_len": 0, "streaming": false, "send": true, "composer": "Web se
+- 2026-10-29T01:38:43.114Z error: after_ok=81, cell=marshall-middleton-ii--alt-1, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=What%20are%20the%20best%20alternatives%20to%20the%20Marshall%20Middleton%20II%3F); trace: [{"t": 174.2, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q=What", "answer_len": 0, "streaming"
+- 2026-10-29T02:06:11.693Z error: after_ok=30, cell=allpowers-p1800-sp037-solar-kit--deal-2, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20there%20a%20discount%20code%20or%20a%20good%20deal%20on%20the%20ALLPOWERS%20P1800%20with%20SP037%20400W%20solar%20panel%20right%20now%3F); trace: [{"t": 175.9, "url": "https://chatgpt.com/?temporary
+- 2026-10-29T02:16:35.352Z error: after_ok=38, cell=aurzen-zip-tri-fold-mini-projector--deal-2, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20there%20a%20discount%20code%20or%20a%20good%20deal%20on%20the%20Aurzen%20ZIP%20mini%20projector%20right%20now%3F); trace: [{"t": 176.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&
+- 2026-10-29T02:23:05.368Z error: after_ok=41, cell=baseus-nomos-5-in-1-140w-qi2--worth-2, error=RuntimeError: no answer within 180s (url https://chatgpt.com/?temporary-chat=true&hints=search&q=Is%20the%20Baseus%20Nomos%205-in-1%20charger%20worth%20buying%3F%20Where%27s%20the%20best%20place%20to%20buy%20it%3F); trace: [{"t": 176.0, "url": "https://chatgpt.com/?temporary-chat=true&hints=search&q
+- 2026-10-29T02:33:06.948Z error: after_ok=48, cell=bluetti-ac200l--worth-2, error=RuntimeError: no answer within 180s (url https://chatgpt.com/c/local-chatgpt%3A32e457ce-b7aa-43a5-abd8-5dc58508bc7a?temporary-chat=true); trace: [{"t": 170.0, "url": "https://chatgpt.com/c/local-chatgpt%3A32e457ce-b7aa-43a5-abd", "answer_len": 0, "streaming": false, "send": true, "composer": "Web se
+- 2026-10-29T02:38:22.127Z downgraded: after_ok=52, cell=allpowers-r4000-3456wh--worth-2, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-29T02:59:02.074Z downgraded: after_ok=52, cell=allpowers-r4000-3456wh--worth-2, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-29T03:19:34.624Z downgraded: after_ok=52, cell=allpowers-r4000-3456wh--worth-2, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
+- 2026-10-29T03:41:57.004Z downgraded: after_ok=54, cell=soundcore-boom-2-plus--worth-2, models=['gpt-6-mini', 'gpt-6'], base_model=gpt-6, cooldown_s=1200
