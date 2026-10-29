@@ -15,6 +15,7 @@ ChatGPT's stored copy.
 | C | `/allpowers-r4000-3456wh` | CJ, EXTRA12 (12% off, to 11-15), then ALLPOWERS26 (10%) | `/allpowers-discount-codes`, `/discount-codes`, catalog card, `offers.json`, CSVs, `/go/` text page, spec card |
 | D | `/allpowers-p1800-1024wh` | CJ, ALLPOWERS26 (10% off) | as C |
 | E | `/allpowers-sp037-400w-solar-panel` | CJ, ALLPOWERS26 (10% off) | as C |
+| F | `/allpowers-s2000-pro-sp037-solar-kit` | CJ, ALLPOWERS26 (10% off); BULKRATE on the station + panel as two items | as C |
 
 A product W1 adds to the focus set later gets its own arm, with its questions and controls added here under "Changes"
 before its baseline reading.
@@ -155,6 +156,7 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
 | C | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 1/4, 3/4 |
 | D | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 4/8 | controls T5, T4+ 1/4, 3/4 |
 | E | baseline | n/a | n/a | R0b 2026-10-28 (`readings/r0b.md`) | T5 0/8, T4+ 6/8 | controls T5, T4+ 2/4, 3/4 |
+| F | baseline | n/a | n/a | R0c queued 2026-10-29 (queue row 11) | | |
 | C | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (fc9a808) | "1/2 HP sump pump", "1.7 times the capacity" | | | |
 | D | L1 buy box + rest of the fix list | 2026-10-29 04:21Z (6e77e4a) | "8 nights of CPAP", "AirSense 11" | | | |
 | E | L1 buy box, dated stock line + rest of the fix list | 2026-10-29 04:21Z (a3bbec3) | "24 owner reports", "under half the price per watt" | | | |
@@ -229,4 +231,10 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   never from a product page alone (0 of 55), because ChatGPT keeps a ~200-character snippet and a product page's
   snippet ends before its link. Proposed lever "deal row first" (the buy link and code in the first line after the
   product name) awaits Barry.
+- 2026-10-29: arm F (ALLPOWERS S2000 Pro + SP037 kit) set up when W2's dossier landed (9cfbc6c): questions in
+  `loop-questions-allpowers.json` (deal, worth, coupon, best; control `allpowers-p1800-sp037-solar-kit--deal`; the
+  shared ESR HaloLock drift control now covers C-F). Before its baseline, c7ee97b fixed what was misleading: the kit
+  and the S2000 Pro station (arm C's control) now say 2,400 W is rated 2,000 W below about 60% charge, and the kit's
+  solar input is settled. Baseline R0c is queue row 11, reusing W1's scan cells; the kit's buy box waits for it. R1
+  (row 7) now covers arm F too.
 
