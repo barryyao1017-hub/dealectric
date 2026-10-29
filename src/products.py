@@ -181,7 +181,7 @@ PRODUCTS = [
  "caveats": ["Slow recharge: about 8 hours from the wall.", "Solar input is 5–24 V, so typical 100 W+ folding panels (Voc 20–45 V, including the ALLPOWERS SP037) are too high-voltage; use a 12 V-class panel.", "Not airline-legal (300 Wh)."]},
 
 # ---------------- BLUETTI (Awin 59271 for US store) ----------------
-{"slug": "bluetti-elite-200-v2", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-elite-200-v2", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI Elite 200 V2 Portable Power Station", "model": "Elite 200 V2",
  "url": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station", "price": 899,
  "specs": [("Capacity", "2,073.6 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles to 80%"), ("AC output", "2,600 W continuous; 3,900 W Power Lifting; 4 outlets (9 outputs in all)"),
@@ -192,7 +192,7 @@ PRODUCTS = [
  "fit": "Backing up a fridge, router and lights for a day or two; weekend van use.",
  "caveats": ["Not expandable — buy the AC200L if you may add batteries later.", "The AC outlet count is inferred from BLUETTI's 9-output total; the other ports are listed individually."]},
 
-{"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI AC200L Portable Power Station", "model": "AC200L",
  "url": "https://www.bluettipower.com/products/ac200l", "price": 899, "list_price": 1599,
  # DLC-71 (2026-10-28): this page renders no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
@@ -211,7 +211,7 @@ PRODUCTS = [
              "on 2026-10-28, so our buy link opens BLUETTI's checkout with the AC200L in the cart.",
              "Fewer cycles (3,000+) than the Elite 200 V2 (6,000+).", "Heavier at 28 kg."]},
 
-{"slug": "bluetti-elite-30-v2", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-elite-30-v2", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI Elite 30 V2 Portable Power Station", "model": "Elite 30 V2",
  "url": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station", "price": 289.99,
  "specs": [("Capacity", "288 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles"), ("AC output", "600 W continuous; 1,500 W Power Lifting; 2 outlets (9 outputs in all)"),
@@ -222,7 +222,7 @@ PRODUCTS = [
  "fit": "Laptop-first mobile work, camping, CPAP backup.",
  "caveats": ["288 Wh is small — about four laptop charges.", "Solar input tops out at 28 V, so most 100 W+ folding panels (and the ALLPOWERS SP037) are too high-voltage for it.", "Not airline-legal."]},
 
-{"slug": "bluetti-elite-300", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-elite-300", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI Elite 300 Portable Power Station", "model": "Elite 300",
  "url": "https://www.bluettipower.com/products/elite-300-portable-power-station", "price": 1099, "list_price": 1699,
  "specs": [("Capacity", "3,014.4 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles"), ("AC output", "2,400 W continuous; 4,800 W Power Lifting; 4× 120 V + 1× TT-30"),
@@ -233,7 +233,7 @@ PRODUCTS = [
  "fit": "Multi-day home backup or off-grid work where it will mostly sit in one place.",
  "caveats": ["Not expandable: BLUETTI says it cannot link to its B80/B230/B300/B500K batteries.", "The $1,099 is an automatic $600 discount BLUETTI applies in the cart to the $1,699 list price, no code needed; it was $500 off on October 22, so the price moves."]},
 
-{"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI AC180 Portable Power Station", "model": "AC180",
  "url": "https://www.bluettipower.com/products/ac180", "price": 499,
  "specs": [("Capacity", "1,152 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "1,800 W continuous; 2,700 W Power Lifting; 4 outlets"),
@@ -412,7 +412,7 @@ PRODUCTS = [
  "fit": "Weekend camping and blackout basics on a budget.",
  "caveats": ["300 W inverter: no kettles, hair dryers or microwaves.", "This is the SE100 laminated-panel version; the SP027 panel version is $216.99 and the SF100 version was sold out."]},
 
-{"slug": "bluetti-ac180-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-ac180-200w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI AC180 + 200 W Solar Panel Kit (1,152 Wh, 1,800 W)", "model": "AC180 + 200 W panel",
  "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 769, "list_price": 899,
  "specs": [("Battery", "1,152 Wh LiFePO4"), ("AC output", "1,800 W; 2,700 W Power Lifting for resistive loads"), ("Panel", "1× BLUETTI 200 W folding"),
@@ -422,7 +422,7 @@ PRODUCTS = [
  "fit": "Camping and outage backup where a 1 kWh station and one carry-size panel are enough.",
  "caveats": ["Sold as a variant of the AC180 page; choose \"AC180+200W Solar\" on the store.", "200 W of panel recharges a 1,152 Wh battery in most of a sunny day; add a second panel for faster refills.", "Dealectric's daily code check tests the AC180 listing's first variant, not this kit."]},
 
-{"slug": "bluetti-elite-200-v2-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-200-v2-200w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
  "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199,
  "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
@@ -432,7 +432,7 @@ PRODUCTS = [
  "fit": "Home backup for a fridge and essentials, with room to add panels later.",
  "caveats": ["BLUETTI's page says the 200 W panel ships from October 29.", "One 200 W panel uses a fifth of the station's 1,000 W solar input; a 2,000 Wh battery takes more than a day of sun to refill from it."]},
 
-{"slug": "bluetti-elite-30-v2-100w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-30-v2-100w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI Elite 30 V2 + 100 W Solar Panel Kit (288 Wh, 600 W)", "model": "Elite 30 V2 + 100 W panel",
  "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 459.99, "list_price": 489.99,
  "specs": [("Battery", "288 Wh LiFePO4"), ("AC output", "600 W; 1,500 W Power Lifting"), ("Panel", "1× BLUETTI 100 W"),
