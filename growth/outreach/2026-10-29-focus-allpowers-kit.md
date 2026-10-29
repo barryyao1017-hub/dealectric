@@ -39,8 +39,14 @@ scan and W3's R0b). Scores couldn't be read (RSS carries none). Comment counts i
   - No compare-at price. DLC-76 already removed ALLPOWERS strike-throughs from our pages.
 - **The kit's fine print the drafts state:**
   - NMC battery, 2,500 cycles.
-  - The only lab test found measured 920 Wh usable on a 2023 unit.
+  - Usable capacity: tests range from 920 Wh (a 2023 unit) to about 1,250-1,380 Wh (two 2026 YouTube tests).
   - Rated 2,000 W once the battery is below about 60%.
+  - Owners' top complaint is units that won't power on: 21 reports, mostly 2023-24 units. A German repair forum
+    traces many to solar charging in weak light. Whether the current build has it is unverified (W2's owner research,
+    added 10-29).
+- **The honest alternative for stay-put buyers** is named in drafts #1 and #3: ALLPOWERS' R2500 V2 + SP037, $852.62
+  as two items with BULKRATE (W2's cart test 10-29), 1,920 Wh of LiFePO4, 29 kg. It's not in our catalog (DLC-82), so
+  no link to it.
 - **Link choice.** The kit drafts link our "solar generator with panels included" comparison, not the kit page,
   because it holds the kit and the LiFePO4 kits the drafts recommend for stay-put use. The two extras link their
   product pages.
@@ -60,7 +66,7 @@ scan and W3's R0b). Scores couldn't be read (RSS carries none). Comment counts i
 - Link rule: r/SolarDIY's rules couldn't be read. AutoModerator posts a planning-guide welcome on every new post.
 - In ChatGPT's results: no.
 
-Draft (205 words):
+Draft (240 words):
 
 > Three numbers decide this, and the pictured unit missed two of them:
 > - Inverter: a drip coffee maker pulls roughly 900-1,500 W while brewing. Check yours, because the Anker S2000
@@ -68,13 +74,17 @@ Draft (205 words):
 > - Battery: one day of fridge. Its EnergyGuide label's kWh per year ÷ 365 is the daily use, usually 1-1.5 kWh.
 > - Panel: enough to put that day back. 100 W can't; 400 W (about 260-320 W in real sun) can on a good day.
 >
-> Since it'll mostly sit at home, I'd buy 2 kWh of LiFePO4: the Anker S2000 if your coffee maker fits under
-> 1,500 W, or a 2 kWh kit like BLUETTI's Elite 200 V2 + 200 W, which takes another 800 W of panel later.
+> Since it'll mostly sit at home, I'd buy LiFePO4 around 2 kWh:
+> - the Anker S2000, if your coffee maker fits under 1,500 W;
+> - BLUETTI's Elite 200 V2 + 200 W kit, which takes another 800 W of panel later;
+> - or ALLPOWERS' R2500 V2 with its 400 W panel: 1,920 Wh, $852.62 if you add the two to the cart separately with code
+>   BULKRATE (tested Oct 29, ends Nov 15). It's heavy at 29 kg.
 >
-> If you'd also carry it (camping, tailgating), the cheapest 2,400 W option is ALLPOWERS' S2000 Pro (not Anker's
-> S2000) with its 400 W panel: $857.07 if you add the station and panel to the cart as two items with code BULKRATE
-> (tested Oct 29, ends Nov 15). Trade-offs: an NMC battery rated 2,500 cycles, 1,451 Wh on paper (one lab test measured
-> 920 Wh), and a weak support record.
+> If you'd rather carry it (camping, tailgating), the same store's S2000 Pro (not Anker's S2000) with that panel is the
+> cheapest 2,400 W option, at 13 kg: $857.07 the same way. Trade-offs:
+> - an NMC battery rated 2,500 cycles;
+> - usable capacity that tests put between 920 and about 1,380 Wh;
+> - owner reports of units that won't power on, mostly 2023-24 builds.
 >
 > I keep these kits side by side: https://dealectric.com/solar-generator-with-panels-included
 >
@@ -82,8 +92,8 @@ Draft (205 words):
 > sales, not Anker.
 
 Notes: the coffee-maker range is a general figure, not from our data; the OP should check the label. The Elite 200 V2
-takes up to 1,000 W of solar (our page), so "another 800 W" assumes the kit's 200 W panel. S2000 Pro facts are from
-W2's dossier.
+takes up to 1,000 W of solar (our page), so "another 800 W" assumes the kit's 200 W panel. S2000 Pro and R2500 V2
+facts and both BULKRATE prices are from W2's kit dossier and its 10-29 cart check.
 
 ---
 
@@ -98,7 +108,7 @@ W2's dossier.
 - Link rule: r/camping's rules couldn't be read.
 - In ChatGPT's results: no.
 
-Draft (190 words):
+Draft (220 words):
 
 > Some numbers for anyone trying this. A single portable induction burner pulls about 1,800 W on high and much less on
 > low. So you need an inverter rated above that, and the battery decides how long:
@@ -110,8 +120,11 @@ Draft (190 words):
 >
 > If you're shopping for this, the cheapest 2,400 W kit I know of is ALLPOWERS' S2000 Pro with a 400 W panel: $857.07
 > bought as two items with code BULKRATE (tested Oct 29, ends Nov 15). The station is 13 kg, light for its output. The
-> catches: it's an NMC battery, and it's rated 2,000 W once the charge drops below about 60%, which still runs one
-> burner on high.
+> catches:
+> - It's an NMC battery.
+> - It's rated 2,000 W once the charge drops below about 60%, which still runs one burner on high.
+> - Owners' most common complaint is units that won't power on. A repair forum ties many of them to solar charging in
+>   weak light, mostly on 2023-24 units. I can't say whether the current build has it.
 >
 > The kits side by side: https://dealectric.com/solar-generator-with-panels-included
 >
@@ -134,7 +147,7 @@ SP037.
 - Link rule: as #1.
 - In ChatGPT's results: no.
 
-Draft (200 words):
+Draft (215 words):
 
 > Fridge plus freezer is the most common version of this, so a few numbers:
 > - Daily use: add the two EnergyGuide labels (kWh per year ÷ 365). A 500 kWh fridge and a 250 kWh chest freezer come
@@ -144,8 +157,9 @@ Draft (200 words):
 >   live. One panel keeps up with a fridge; fridge plus freezer needs two, or a generator top-up on bad days.
 >
 > At 3 kWh, ALLPOWERS' R4000 (3,456 Wh, three solar inputs) is $1,319.12 with code EXTRA12 (passed in ALLPOWERS' cart
-> Oct 28, ends Nov 15). It can't add batteries in the US, and Pecron's E3800LFP ($1,299) can. At 2 kWh, look at the kits
-> that take 1,000 W of panel later.
+> Oct 28, ends Nov 15). It can't add batteries in the US, and Pecron's E3800LFP ($1,299) can. At about 2 kWh, look at
+> the kits that take 1,000 W of panel later, or ALLPOWERS' R2500 V2 with a 400 W panel: 1,920 Wh of LiFePO4 for
+> $852.62 bought as two items with code BULKRATE (tested Oct 29).
 >
 > Skip the cheap 2,400 W kits (ALLPOWERS' S2000 Pro + 400 W is one) for this. Their 1.45 kWh NMC battery runs a fridge
 > alone about 16 hours (my estimate).
