@@ -40,4 +40,12 @@ Score: `python3.12 growth/evals/canary.py growth/evals/runs/<date>-canary`. Only
 
 ## Result
 
-(pending)
+2026-10-29, before the canary reading: the snippets ui.py now saves answer most of the question. In 31 of our 116
+results in W1's overnight scan (2026-10-28 23:30Z to 10-29 04:10Z), ChatGPT's result carried a snippet: about 200
+characters (median 202, max 203), a passage picked for the query from anywhere in the page OpenAI crawled. On
+`/products` the passages started 960, 5,398, 7,224 and 10,961 characters into the page; on `/discount-codes` 2,747;
+on `/` 1,400 and 2,525 (each the card or table row for the product asked about). On product pages, deal and worth
+questions got the opening of the page body (breadcrumb, H1, summary, start of the offer card), not the meta
+description. So the stored copy holds the full text and the model sees the title plus one 200-character passage per
+result. The canary reading still checks whether an answer can use text beyond that passage (gate: OAI-SearchBot
+re-fetching /about, not yet as of 10-29 07:30Z).

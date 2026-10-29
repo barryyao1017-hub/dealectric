@@ -7,6 +7,14 @@ read for days, and sometimes a week, after we change it. Snippets themselves wer
 `ui.py` keeps them from now on, so which text the snippet comes from (meta description or the first paragraph) is
 not known yet. The draft therefore puts the same deal sentence in both.
 
+## Snippets, measured 2026-10-29 (`canary.md`, Result)
+
+Each result carries the title and one passage of about 200 characters, picked for the query from the whole crawled
+page. Product-page deal and worth questions got the opening of the body: breadcrumb, H1, the summary line, the start
+of the offer card. The meta description did not show. On the AC200L that opening is "same price as the Elite 200 V2",
+an undated comparison. So for product pages the place to put the deal is the H1 and summary line, and on the catalog
+and codes pages every card is its own passage.
+
 ## What the stored copy holds (checked 2026-10-28, after the draft below)
 
 More than the title and the first 200 characters. On 10-28 a ChatGPT answer to "what is dealectric.com" relayed the
