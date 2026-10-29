@@ -243,3 +243,7 @@ hold: `rel="sponsored nofollow"`, the disclosure page, no JavaScript, no cookies
   answers as gpt-6). R0 and R0b re-scored under the check: unchanged. For F-L1 a cell is fresh with a cart date of
   2026-10-29 or later, a marker, or an OAI-SearchBot fetch after 08:12Z.
 
+- 2026-10-29: a cell with no gpt-6 answer is unanswered: it stays out of every rate and w3score lists it under its arm
+  with the number of tries. ChatGPT can route one question to gpt-6-mini every time (W1: Baseus worth-2, 12 in a row
+  while the cells around it got gpt-6), so W1's runner caps the retries instead of looping. Before this, a cell whose
+  every try was mini dropped out without being listed. R0, R0b and R0c have no unanswered cells.

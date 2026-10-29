@@ -140,7 +140,9 @@ def stored_copy(slug: str, at: datetime, rec: dict, crawls: dict, vers: dict, de
 # scan's own downgraded flag: a chat routed to gpt-6-mini from the start carries model_slug "gpt-6-mini" and no
 # resolved_model_slug, which the scan once counted as gpt-6 (76 cells, 2026-10-28/29, W1's 2781278).
 EXPECTED_MODEL = "gpt-6"
-DROPPED: list[str] = []
+# cells with no gpt-6 answer: left out of every rate and listed per arm as unanswered. ChatGPT can route one question
+# to mini every time (Baseus worth-2, 12 tries, 2026-10-29), so the runner caps retries and the cell ends up here.
+UNANSWERED: list[dict] = []
 
 
 def answer_model(rec: dict, r: dict) -> str | None:
@@ -154,20 +156,30 @@ def score_run(run: Path, baseline: bool = False) -> list[dict]:
     crawls = SC.page_crawls(SC.load_crawls())   # refresh with `storedcopy.py` (or --crawl) before scoring
     deploys = json.loads(SC.DEPLOYS.read_text()) if SC.DEPLOYS.exists() else []
     vers, blobs = {}, SC.Blobs()
-    rows = {}
+    rows, tries = {}, {}
     for line in (run / "scan.jsonl").open():
         r = json.loads(line)
-        if r.get("downgraded"):
-            continue
-        rows[r["cell"]] = r          # the last good answer for a cell wins
+        tries.setdefault(r["cell"], []).append(r)
+        if not r.get("downgraded"):
+            rows[r["cell"]] = r      # the last good answer for a cell wins
     out = []
+
+    def unanswered(cell: str, rs: list[dict], model: str | None) -> None:
+        q = qs.get(rs[-1]["qid"])
+        if q:
+            arms = q["arm"] if isinstance(q["arm"], list) else [q["arm"]]
+            UNANSWERED.extend({"cell": cell, "arm": a, "role": q["role"], "tries": len(rs), "model": model} for a in arms)
+
+    for cell, rs in tries.items():
+        if cell not in rows:
+            unanswered(cell, rs, rs[-1].get("answer_model"))
     for cell, r in rows.items():
         q = qs.get(r["qid"])
         if not q:
             continue
         rec = json.loads((run / "chatgpt" / f"{cell}.json").read_text())
         if answer_model(rec, r) != EXPECTED_MODEL:
-            DROPPED.append(f"{cell} ({answer_model(rec, r)})")
+            unanswered(cell, tries[cell], answer_model(rec, r))
             continue
         text = rec.get("text") or ""
         at = parse_ts(r["started_at"])
@@ -221,6 +233,10 @@ def summary(cells: list[dict]) -> str:
             lines.append(f"- {label}: T5 {rate(group, lambda c: c['tier'] >= 5)}, T4+ {rate(group, lambda c: c['tier'] >= 4)}, "
                          f"T4 on the product page {rate(group, lambda c: c['product_page_cited'] or c['tier'] >= 5)}, "
                          f"T3+ {rate(group, lambda c: c['tier'] >= 3)}, T2+ {rate(group, lambda c: c['tier'] >= 2)}")
+        un = [u for u in UNANSWERED if u["arm"] == arm]
+        if un:
+            lines.append(f"- unanswered (no {EXPECTED_MODEL} answer, not in the rates): "
+                         + ", ".join(f"{u['cell']} ({u['role']}, {u['tries']} tries, {u['model']})" for u in un))
         fl = [c for c in a if c["flag"] not in (None, "none", "affiliate-noted")]
         lines.append(f"- freshness: " + ", ".join(f"{k} {sum(1 for c in test if c['freshness'] == k)}" for k in ("baseline", "fresh", "stale", "undated"))
                      + f"; flags {len(fl)}; uncalled flag candidates {sum(1 for c in a if c['flag_candidates'] and c['flag'] is None)}")
@@ -256,8 +272,9 @@ def main() -> int:
     a = ap.parse_args()
     cells = score_run(Path(a.run).resolve(), baseline=a.baseline)
     print(summary(cells))
-    if DROPPED:
-        print(f"\nDropped, not answered by {EXPECTED_MODEL} (re-ask them): " + ", ".join(DROPPED))
+    if UNANSWERED:
+        print(f"\nUnanswered, no {EXPECTED_MODEL} answer: "
+              + ", ".join(sorted({f"{u['cell']} ({u['tries']} tries, {u['model']})" for u in UNANSWERED})))
     if a.crawl:
         print(crawl_report())
     if a.candidates:
