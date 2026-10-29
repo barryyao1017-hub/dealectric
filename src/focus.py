@@ -142,4 +142,40 @@ BUYBOX = {
         ],
         "rivals_checked": "2026-10-28",
     },
+    # W3-allpowers-s2000-pro-sp037-solar-kit-L1, 2026-10-29. Dossier: growth/focus/allpowers-s2000-pro-sp037-solar-kit/dossier.md
+    # The two-item route (station + panel with BULKRATE) is cheaper than the kit; both items link through our own /go/.
+    "allpowers-s2000-pro-sp037-solar-kit": {
+        "headline": "2,400 W from a 13 kg station plus a 400 W panel: {after} with code {code}, last passed in ALLPOWERS' cart {date}{ends}",
+        "proof": [
+            "<strong>2,400 W from a 13 kg station</strong>: the most inverter per dollar of the solar generator kits near "
+            "$1,000 we checked on 2026-10-29 ($0.36 per continuous watt as two items with BULKRATE).",
+            "<strong>$857.07 as two items with BULKRATE</strong>: the <a href=\"https://dealectric.com/go/allpowers-s2000-pro-1451wh\" rel=\"sponsored nofollow noopener\">S2000 Pro</a> "
+            "and the <a href=\"https://dealectric.com/go/allpowers-sp037-400w-solar-panel\" rel=\"sponsored nofollow noopener\">SP037 panel</a> added to "
+            "ALLPOWERS' cart separately (our cart test 2026-10-29; code ends 2026-11-15), $9.63 less than the kit with {code}.",
+            "<strong>One 400 W panel refills it in about 5–6 hours</strong> of good sun; two in series take about 3 on units "
+            "made after mid-2024 (our estimates).",
+        ],
+        "note": ("Before you buy", "NMC battery rated 2,500 cycles: built for occasional use, not daily cycling. It's rated "
+                 "2,000 W once the battery is below about 60%, so big loads run from the top of the charge. ALLPOWERS' kit "
+                 "page text still describes an older 2× 200 W kit with an RV port."),
+        "pick": [
+            "You need 2,400 W from a station one person can lift: a microwave, kettle, saw or sump pump.",
+            "You'll use it occasionally (camping, outages), not daily.",
+            "You want 400 W of panel for about $860.",
+        ],
+        "skip": [
+            "The station mostly stays put (home backup, a van, a cabin): ALLPOWERS' R2500 V2 + SP037 ($852.62 as two items "
+            "with BULKRATE) has 1,920 Wh of LiFePO4, 2,500 W and 3,500+ cycles; it weighs 29 kg.",
+            "You'll cycle it daily or keep it for years (NMC ages faster): the BLUETTI Elite 200 V2 + 200 W ($1,099, "
+            "2,074 Wh LiFePO4, 6,000 cycles).",
+            "You carry the whole kit and 1 kWh is enough: the Anker SOLIX C1000 Gen 2 + 400 W Bifacial ($999.99 to Nov 2; "
+            "21 kg; 5 years on both parts).",
+            "Your budget is $700 and your loads stay under 1,500 W: the Jackery Solar Generator 1000 v2 ($699).",
+            "You want the most LiFePO4 per dollar and may add a battery: the Pecron E2400LFP + 2× 200 W ($1,007, 2,048 Wh, "
+            "expands to 9.7 kWh).",
+            "You need a 2-wire submersible well pump or 240 V: it probably won't start the pump, and it has no 240 V.",
+            "It's a UPS for a PC that can't blink: its 15 ms switchover isn't guaranteed.",
+        ],
+        "rivals_checked": "2026-10-29",
+    },
 }
