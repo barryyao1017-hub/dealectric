@@ -35,6 +35,8 @@ W2 DLC-68, W3 DLC-69, W4 DLC-70; Claude parked as DLC-66.
 | `allpowers-r4000-3456wh` | CJ | 10-28, Barry | W1 first pass (gpt-6): deal question ranks our page #1, source pill |
 | `allpowers-sp037-400w-solar-panel` | CJ | 10-28, Barry | deal and worth questions rank us 3-5, source pill |
 | `allpowers-p1800-1024wh` | CJ | 10-28, Barry | deal question ranks us #3; its kit page ranks #1 |
+| `allpowers-s2000-pro-sp037-solar-kit` | CJ | 10-29, Barry | full scan: deal question T5 (our `/go/`) 1 of 2, ranks #1-2; $963 |
+| `esr-qi2-mini-wireless-charger-15w` | Awin | 10-29, Barry | study case, not a copy arm: the one product whose deal question gave our `/go/` link 2 of 2; W3 watches it as a positive control and works out why |
 
 W2 writes their dossiers first; W3 and W4 take each product once its dossier lands.
 
