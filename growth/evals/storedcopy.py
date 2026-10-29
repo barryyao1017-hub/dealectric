@@ -21,6 +21,7 @@ saved before 2026-10-28 (ui.py kept domain, title, url, pub_date); cells from ui
 from __future__ import annotations
 
 import argparse
+import bisect
 import collections
 import datetime as dt
 import html
@@ -200,14 +201,49 @@ def refresh_crawls(rows: list[dict]) -> list[dict]:
     return rows
 
 
-def page_crawls(crawls: list[dict]) -> dict[str, dict[str, list[str]]]:
-    """{path: {bot: [times of 200 fetches, ascending]}} (only verified bots for the crawler UAs)."""
+CRAWLER_UAS = ("OAI-SearchBot", "GPTBot", "bingbot")   # UAs scanners spoof; Cloudflare's verifiedBotCategory tells them apart
+SWEEP_S = 600   # an unverified fetch this close to a verified one by the same bot belongs to that crawl sweep
+
+
+def crawl_kind(crawls: list[dict]) -> dict[tuple, str]:
+    """Classify each 200 row of a crawler UA: 'verified'; 'sweep' (unverified, but within SWEEP_S of a verified fetch by
+    the same bot); or 'dropped' (unverified and alone: a scanner, or a real fetch we cannot tell from one).
+
+    From 2026-10-28 15:29Z Cloudflare leaves verifiedBotCategory empty on part of OpenAI's genuine crawl: on 10-29
+    06:38Z one OAI-SearchBot sweep of the brand code pages logged 5 verified and 4 unverified rows within 4 s, and
+    ChatGPT then showed /aurzen-discount-codes with the title only the unverified 06:38:11 fetch could have seen.
+    Scanners using the UA hit .env paths (404) at other times, so the sweep rule keeps them out."""
+    verified = collections.defaultdict(list)
+    for r in crawls:
+        if r["bot"] in CRAWLER_UAS and r["verified"]:
+            verified[r["bot"]].append(parse_t(r["t"]))
+    for ts in verified.values():
+        ts.sort()
+    kind = {}
+    for r in crawls:
+        if r["status"] != 200 or r["bot"] not in CRAWLER_UAS:
+            continue
+        key = (r["t"], r["bot"], r["path"])
+        if r["verified"]:
+            kind[key] = "verified"
+            continue
+        t, ts = parse_t(r["t"]), verified[r["bot"]]
+        i = bisect.bisect_left(ts, t)
+        near = [ts[j] for j in (i - 1, i) if 0 <= j < len(ts)]
+        kind[key] = "sweep" if any(abs((t - x).total_seconds()) <= SWEEP_S for x in near) else "dropped"
+    return kind
+
+
+def page_crawls(crawls: list[dict], kinds: tuple = ("verified", "sweep")) -> dict[str, dict[str, list[str]]]:
+    """{path: {bot: [times of 200 fetches, ascending]}}. Crawler-UA rows count when their crawl_kind is in `kinds`
+    (default: verified or in a verified sweep); ChatGPT-User rows always count."""
+    kind = crawl_kind(crawls)
     out: dict[str, dict[str, list[str]]] = collections.defaultdict(lambda: collections.defaultdict(list))
     for r in crawls:
         if r["status"] != 200:
             continue
-        if r["bot"] in ("OAI-SearchBot", "GPTBot", "bingbot") and not r["verified"]:
-            continue   # a spoofed UA
+        if r["bot"] in CRAWLER_UAS and kind[(r["t"], r["bot"], r["path"])] not in kinds:
+            continue
         out[norm_path(r["path"])][r["bot"]].append(r["t"])
     for p in out.values():
         for b in p.values():
@@ -285,6 +321,8 @@ def days(a: str, b: str) -> float:
 def analyse(deploys, crawls):
     blobs = Blobs()
     pc = page_crawls(crawls)
+    pv = page_crawls(crawls, ("verified",))
+    pd = page_crawls(crawls, ("dropped",))
     by_path = collections.defaultdict(list)
     for s in sightings():
         by_path[s["path"]].append(s)
@@ -313,6 +351,16 @@ def analyse(deploys, crawls):
                 lb = last_before(pc.get(path, {}).get(bot, []), s["t"])
                 row[f"last_{bot}"] = lb
                 row[f"fits_{bot}"] = None if (lb is None or not hits) else (live_at(vs, lb) in hits)
+            lv = last_before(pv.get(path, {}).get("OAI-SearchBot", []), s["t"])
+            row["fits_OAI_verified"] = None if (lv is None or not hits) else (live_at(vs, lv) in hits)
+            # A dropped unverified fetch is confirmed by title when it is the only fetch that saw the version shown:
+            # later than the last counted fetch (which saw another version, or there was none) and before the chat.
+            row["oai_dropped_fit"] = None
+            if hits and row["fits_OAI-SearchBot"] is not True:
+                lb = row["last_OAI-SearchBot"]
+                fit = [x for x in pd.get(path, {}).get("OAI-SearchBot", [])
+                       if x <= s["t"] and (lb is None or x > lb) and live_at(vs, x) in hits]
+                row["oai_dropped_fit"] = fit[-1] if fit else None
             out.append(row)
         rows[path] = out
     return rows, vers, pc
@@ -333,7 +381,7 @@ def index_state(path: str, vs: list[dict], pc, now: str) -> dict:
             "since": round(days(last, now), 1) if last else None}
 
 
-def write_report(rows, vers, pc, now: str) -> str:
+def write_report(rows, vers, pc, now: str, crawls: list[dict]) -> str:
     L = ["# What ChatGPT sees: stored titles vs live pages (DLC-77)", "",
          f"Generated by `growth/evals/storedcopy.py` at {now}. Do not edit by hand; rerun it.", "",
          "One row per chat in which a dealectric.com page showed up in ChatGPT's search results (`#rank`) or as a source "
@@ -352,12 +400,34 @@ def write_report(rows, vers, pc, now: str) -> str:
             if r["behind"] and r["behind"][0] > 0:
                 for bot in ("OAI-SearchBot", "bingbot"):
                     fit[(bot, r[f"fits_{bot}"])] += 1
+                fit[("OAI_verified", r["fits_OAI_verified"])] += 1
     L += ["## Which crawl feeds the stored copy", "",
           "Only chats that showed a superseded version tell the crawlers apart. For those, did the crawler's last fetch "
           "before the chat see the version ChatGPT showed?", "",
           "| crawler | yes | no (it had fetched a newer one) | never fetched the page |", "|---|---|---|---|"]
-    for bot in ("OAI-SearchBot", "bingbot"):
-        L.append(f"| {bot} | {fit[(bot, True)]} | {fit[(bot, False)]} | {fit[(bot, None)]} |")
+    for bot, label in (("OAI-SearchBot", "OAI-SearchBot"), ("OAI_verified", "OAI-SearchBot, verified rows only"),
+                       ("bingbot", "bingbot")):
+        L.append(f"| {label} | {fit[(bot, True)]} | {fit[(bot, False)]} | {fit[(bot, None)]} |")
+    kind = crawl_kind(crawls)
+    kc = collections.Counter(k for (t, b, p), k in kind.items() if b == "OAI-SearchBot")
+    swept = collections.Counter(p for (t, b, p), k in kind.items() if b == "OAI-SearchBot" and k == "sweep" and p != "/robots.txt")
+    confirmed = sorted({(r["oai_dropped_fit"], r["path"]) for rs in rows.values() for r in rs if r["oai_dropped_fit"]})
+    # Chats whose shown title only a sweep row explains (the last verified fetch saw another version), live copies included.
+    by_sweep = sorted({(r["last_OAI-SearchBot"], r["path"]) for rs in rows.values() for r in rs
+                       if r["fits_OAI-SearchBot"] and r["fits_OAI_verified"] is not True}, key=lambda x: (x[0] or "", x[1]))
+    L += ["", "## Unverified OpenAI fetches", "",
+          "Scanners send the OAI-SearchBot UA, so a row counts only when Cloudflare verified it or it sits within "
+          f"{SWEEP_S // 60} min of a verified fetch by the same bot (one crawl sweep: from 2026-10-28 15:29Z Cloudflare leaves "
+          "part of OpenAI's genuine crawl unverified). Times marked `*` below are such sweep rows. OAI-SearchBot 200 rows: "
+          f"{kc['verified']} verified, {kc['sweep']} unverified in a verified sweep, {kc['dropped']} unverified and dropped.", ""]
+    if swept:
+        L.append("Pages fetched in a sweep without a verified row: " + ", ".join(f"`{p}`" for p in sorted(swept)) + ".")
+        L.append("")
+    L.append("Sweep rows that a later chat's title confirms (verified rows alone would put an older version in the index): " +
+             (", ".join(f"`{p}` {fmt_t(t)}" for t, p in by_sweep) if by_sweep else "none") + ".")
+    L.append("")
+    L.append("Dropped fetches that a later chat's title confirms (the only fetch that saw the version shown): " +
+             (", ".join(f"`{p}` {fmt_t(t)}" for t, p in confirmed) if confirmed else "none") + ".")
     L += ["", "## Index state of the focus pages", "",
           "The version OpenAI's index holds is the one live at OAI-SearchBot's last fetch. A lever is in the index only "
           "once a fetch after its ship has happened.", "",
@@ -379,7 +449,8 @@ def write_report(rows, vers, pc, now: str) -> str:
         L += [f"## `{path}`" + (" (focus)" if path in FOCUS else ""), ""]
         crawl = pc.get(path, {})
         oai, bing = crawl.get("OAI-SearchBot", []), crawl.get("bingbot", [])
-        L.append(f"OAI-SearchBot fetches (200): {', '.join(fmt_t(x) for x in oai) or 'none'}. bingbot: {len(bing)} "
+        star = lambda x: "*" if kind.get((x, "OAI-SearchBot", path)) == "sweep" else ""
+        L.append(f"OAI-SearchBot fetches (200): {', '.join(fmt_t(x) + star(x) for x in oai) or 'none'}. bingbot: {len(bing)} "
                  f"(last {fmt_t(bing[-1] if bing else None)}).")
         if not rs:
             L += ["", "No sighting in any saved ChatGPT cell.", ""]
@@ -432,7 +503,7 @@ def main() -> int:
         crawls = refresh_crawls(crawls)
     rows, vers, pc = analyse(deploys, crawls)
     now = iso(dt.datetime.now(dt.timezone.utc).replace(tzinfo=None))
-    REPORT.write_text(write_report(rows, vers, pc, now))
+    REPORT.write_text(write_report(rows, vers, pc, now, crawls))
     if a.json:
         a.json.write_text(json.dumps(rows, indent=1))
     print(f"wrote {REPORT.relative_to(E.REPO)}")

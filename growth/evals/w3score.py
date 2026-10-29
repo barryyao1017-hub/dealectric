@@ -236,7 +236,7 @@ def summary(cells: list[dict]) -> str:
 
 def crawl_report() -> str:
     """OAI-SearchBot fetches of each arm's product page since its last lever went live (the reading trigger). Refreshes
-    the crawl log first; verified crawler rows only (scanners send the OAI-SearchBot UA too)."""
+    the crawl log first; verified crawler rows plus unverified ones in a verified sweep (storedcopy.crawl_kind)."""
     crawls = SC.page_crawls(SC.refresh_crawls(SC.load_crawls()))
     lines = ["", "OAI-SearchBot fetches since each arm's last lever:"]
     for arm, levers in LEVERS.items():
