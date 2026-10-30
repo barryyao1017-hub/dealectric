@@ -17,7 +17,7 @@ DLC-29: the site publishes only discount codes that worked in the brand's own US
 - **CJ:** Campaigns → Links & Products, Promotion Type = Coupons, My Advertisers Only.
 - **Awin:** Toolbox → My Offers, filter by advertiser.
 - **Coupon sites:** RetailMeNot, DealHack, PriceCheckHQ and the like.
-- **Publishing:** only codes from the affiliate networks or the brand's own site get `publish: true`. Codes that work but appear only on coupon sites stay `publish: false` until Barry decides. Many affiliate terms allow only network-issued codes, and some coupon-site codes are newsletter or "next order" codes the brand may not want posted.
+- **Publishing (Barry, 2026-10-29):** only network-issued or brand-approved codes get `publish: true`. Brand-approved means the brand printed the code on its own site, approved it in writing, or its program terms allow public codes (CJ Bluetti Global and Aurzen do; see `program-terms.md`). Codes found only on coupon sites stay `publish: false` otherwise, and a program's own stricter terms always win. To get more codes, ask the brand for one (DLC-30) instead of sourcing them from coupon sites.
 - **Rejected codes:** listed on the brand's page so shoppers and assistants don't keep trying them.
 
 ## Re-checking: the daily sweep (since 2026-10-22, DLC-46)
