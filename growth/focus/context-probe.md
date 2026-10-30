@@ -74,3 +74,31 @@ results are about the tool's payload, but they are re-run on gpt-6 before they c
 - A size cap on pages longer than ~25k characters of text (needle near the end of a 35k+ page).
 - Re-run two needles on gpt-6.
 - Product listings (`turn<id>productN`): which records they carry and whether our pages ever appear there.
+
+## API vs app (2026-10-30, `growth/evals/apiprobe.py`, runs `2026-10-30-apiprobe/`)
+
+The four needle prompts and two echo prompts above, word for word, through the Responses API `web_search` tool:
+`gpt-6.1-sol` at search_context_size low, medium and high, `gpt-6-luna` at low and medium (30 calls, all one search
+action, no page opened).
+
+| | gpt-6.1-sol (low/med/high) | gpt-6-luna (low/med) | app |
+|---|---|---|---|
+| Elite 30 V2 kit on `/` (last 10% of 24k chars) | 3/3 | 2/2 | yes |
+| ZIP Pro on `/` | 2/3 (the miss: `/` not in that call's results) | 1/2 (same) | yes |
+| PV100 FX table row, 70% into amphourly | 3/3 | 1/2 | yes |
+| Anker PS200 Voc on a second amphourly page | 0/3 (page in results every time) | 0/2 | yes |
+| AC200L echo: which version | stored 10-26 (3/3), never live | stored 10-26 (2/2) | stored 10-26 |
+
+- **Same stored copy, same deep text.** The API's search returns OpenAI's stored copy of our pages (the AC200L's
+  10-26 version, not the live page) and text from anywhere in the page, as the app's does. When `/` was in the
+  results, the API model answered the needle from its last 10% every time.
+- **Not identical.** One needle the app answered was never answered through the API, though the page was in every
+  result list: either the API hands over less of some pages, or less for lower-ranked results. Result lists also vary
+  call to call (12-13 vs 18-19 sources for the same pinned query).
+- **search_context_size changes nothing measurable**: same hits, same input tokens (~12.7k per call at every size).
+- **Model**: Luna is noisier than Sol on the same payload (1 of 2 on the PV100 row). ChatGPT Free reportedly runs GPT-6
+  Luna (secondary sources only); the app's account reports `gpt-6` / `gpt-6-mini`, which map to no confirmed API id.
+
+Use: the API is a fast stand-in for which stored text of our pages reaches the model. Answer behaviour (does it hand
+over the `/go/` link, DLC-83) is still decided in the app; run API batches on both Luna and Sol and keep the one that
+agrees with app answers more.
