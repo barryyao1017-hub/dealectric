@@ -106,6 +106,56 @@ def submit(tab: ui.Tab, text: str | None = None, n_before: int = 0) -> None:
     raise RuntimeError("send did not start a turn")
 
 
+def stream_answer(text: str) -> str:
+    """The final assistant text rebuilt from a delta-encoded SSE stream (the page can fail to render it: "This
+    response couldn't load"). Follows the message added last and every append to its content parts."""
+    cur, parts = None, {}
+    def apply(op):
+        nonlocal cur
+        if not isinstance(op, dict):
+            return
+        v, p, o = op.get("v"), op.get("p", ""), op.get("o")
+        if isinstance(v, dict) and isinstance(v.get("message"), dict):
+            m = v["message"]
+            if m["author"]["role"] == "assistant" and m.get("recipient") in ("all", None) and m["content"].get("content_type") == "text":
+                cur = m["id"]; parts[cur] = "".join(x for x in m["content"].get("parts") or [] if isinstance(x, str))
+            else:
+                cur = None
+            return
+        if o == "patch" and isinstance(v, list):
+            for x in v:
+                apply(x)
+            return
+        if cur and p == "/message/content/parts/0" and o == "append" and isinstance(v, str):
+            parts[cur] += v
+        elif cur and not p and not o and isinstance(v, str):
+            parts[cur] += v
+    last_path = None
+    for line in text.split("\n"):
+        if not line.startswith("data:"):
+            continue
+        d = line[5:].strip()
+        if not d.startswith("{") and not d.startswith('"'):
+            continue
+        try:
+            op = json.loads(d)
+        except ValueError:
+            continue
+        if isinstance(op, dict) and "p" in op:
+            last_path = op.get("p")
+        if isinstance(op, dict) and isinstance(op.get("v"), list) and "p" not in op and "o" not in op:
+            for x in op["v"]:
+                apply(x)
+            continue
+        if isinstance(op, dict) and "v" in op and "p" not in op and "o" not in op and isinstance(op["v"], str):
+            if cur and last_path == "/message/content/parts/0":
+                parts[cur] += op["v"]
+            continue
+        apply(op)
+    texts = [t for t in parts.values() if t.strip()]
+    return texts[-1] if texts else ""
+
+
 def read_sse(tab: ui.Tab) -> list[dict]:
     """Every captured SSE stream, read in 500 kB slices (one eval of a multi-MB stream times out the page socket)."""
     out = []
@@ -133,6 +183,8 @@ def chat(prompt: str, followups: list[str], tag: str) -> dict:
         submit(tab)
         st = wait_turn(tab, 0, t0)
         rec["turns"].append({"prompt": prompt, "answer": st["last"]})
+        if "couldn't load" in st["last"] or "couldn’t load" in st["last"]:
+            rec["turns"][-1]["answer"] = stream_answer("".join(x["text"] for x in read_sse(tab))) or st["last"]
         for i, fu in enumerate(followups, 1):
             t0 = time.time()
             submit(tab, fu, i)

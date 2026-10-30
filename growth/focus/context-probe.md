@@ -69,9 +69,52 @@ results are about the tool's payload, but they are re-run on gpt-6 before they c
 - When ChatGPT shows our page and does not hand over our `/go/` link, it had the link in front of it. DLC-83 is a
   question of what makes the model choose it.
 
+## How much of a page, and do results compete? (11:56-12:28Z)
+
+Echoes stopped being usable (the model now refuses to reproduce more than ~25 words per source, owner framing or
+not), so these use answers the model can give without quoting much: the first and last sentence it received per
+result, and a YES/NO grid of six statements placed down a page, per result. Positions are measured in the stored
+version. Chats: B115654, B115841, BN120147, BQ120712, C1120853, C2121034, G2122325, G6122502 (gpt-6), R1122745
+(gpt-6-mini).
+
+1. **Passages follow the model's search query, not the user's question.** 19-result search for "History of the
+   Internet wikipedia" with a question about a fact 75% into that 74k-character article: NOT IN RESULTS (BN). The
+   same question with the fact's words in the search query: answered, both sentences verbatim, from the same
+   article (BQ). Within its share, a page is represented by the passages that best match the query, in page order;
+   generic queries get the opening.
+2. **Results share one budget.** 19 results: about 100-300 words each, the article lead only (B115654). 11 results:
+   130-650 words each (B115841). `/discount-codes` with 3 results: opening, the "Every product with a code" table and
+   "How we check codes", ~500 words (C1); with 6 results the table is gone, ~250 words (C2). 7 results (G6): home,
+   ranked 1st, got nearly all of its text; `/products`, ranked 3rd, only its first cards. Higher-ranked results get
+   more.
+3. **Even alone, a long page has a ceiling.** With 2 results `/products` (19,253 chars) stopped at the same card,
+   83% down (~16k chars), in two chats (BA120324, G2); home stopped at 81% (~20k) in G2 but reached 95% for
+   gpt-6-mini in N032039. So the ceiling is somewhere around 16-23k characters, not a fixed number; some chunks are
+   skipped inside that (home's R4000 card at 59% was missing in both G2 and G6).
+4. **Short pages arrive whole even in a crowded search.** Real deal query "ALLPOWERS R4000 discount code", 12 results
+   (R1): our R4000 page (3,438 chars), ranked 1st, contained all six statements from top to the disclosure (~450
+   words); the other ten sites got ~110-170 words each, `/allpowers-discount-codes` (7k chars) ~350. Earlier, the
+   2,300-character AC200L page came through whole in a 10-result search (d024441).
+5. **The crowded case is the normal one.** In 324 W3 and visibility-scan chats ChatGPT ran a median of one search
+   with 12 results (p25-p75: 10-17); where our page appeared, its median position was 5th.
+
+The model's own word counts are estimates, and the grids rely on it reporting honestly (it answers NO often, and its
+YES/NO pattern matches the page order), so treat sizes as approximate.
+
+## What this means for our pages
+
+- Product pages (2-3.5k characters) fit: the whole page, offer card and `/go/` line included, reaches the model even
+  in a 12-result search, at least when ranked near the top.
+- Hub pages are cut: past roughly 16-20k characters nothing reaches the model, and in a crowded search a lower-ranked
+  hub gives only its opening plus the passages that match the query. Order on `/products`, `/` and the codes pages
+  decides which products the model can see; focus products belong near the top.
+- Words matter twice: the model's query decides which passages of a long page it gets, so a card that carries the
+  words shoppers' queries use ("discount code", the model name) is the one picked.
+
 ## Open
 
-- A size cap on pages longer than ~25k characters of text (needle near the end of a 35k+ page).
+- The exact budget (tokens per search and per result) and how rank weights the shares.
+- Whether gpt-6 and gpt-6-mini get different budgets (N032039 vs G2 differ for the home page).
 - Re-run two needles on gpt-6.
 - Product listings (`turn<id>productN`): which records they carry and whether our pages ever appear there.
 
