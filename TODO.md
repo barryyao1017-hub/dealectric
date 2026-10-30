@@ -22,6 +22,7 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 - [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-11-15)
 
 ## Claude (28)
+- [ ] DLC-102 North Star: 10 credited outside sales in a rolling 30 days (high)
 - [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-29)
 - [ ] DLC-24 Build the first 3 question-answer comparison pages (high, due 2026-10-30)
 - [ ] DLC-33 North Star: get our first conversion / commission (high)

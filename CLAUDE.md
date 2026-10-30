@@ -2,6 +2,9 @@
 
 Read this before judging project status from the repo alone. Much of the operational state lives outside git.
 
+## North Star (since 2026-10-30, DLC-102)
+10 credited sales from outside shoppers in a rolling 30 days. First credited sale 2026-10-29 (CJ, ALLPOWERS kit, via ChatGPT; DLC-33). Leading indicator, reported in the daily update: ChatGPT-tagged `/go/` clicks from real browsers (`tools/dailyupdate.py`).
+
 ## What this repo is
 - Static site for https://dealectric.com (GitHub Pages, `main` branch, `/docs` folder, extensionless pages). Only `docs/` is published; everything else in the repo (this file, `TODO.md`, `launch-status.md`, `src/`) is not served on dealectric.com, though the repo itself is public on GitHub.
 - Generator in `src/`: `build.py` (pages, offers.json, sitemap), `content.py` (prose), `products.py` (30 product records, `VERIFIED` date, `RETIRED` slugs), `links.json` (CJ/Awin program IDs + link IDs). `python3 src/build.py` regenerates everything and writes the published site to `docs/` (it replaces the folder, so never hand-edit files there).
