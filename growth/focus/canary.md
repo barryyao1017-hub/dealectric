@@ -46,6 +46,8 @@ characters (median 202, max 203), a passage picked for the query from anywhere i
 `/products` the passages started 960, 5,398, 7,224 and 10,961 characters into the page; on `/discount-codes` 2,747;
 on `/` 1,400 and 2,525 (each the card or table row for the product asked about). On product pages, deal and worth
 questions got the opening of the page body (breadcrumb, H1, summary, start of the offer card), not the meta
-description. So the stored copy holds the full text and the model sees the title plus one 200-character passage per
-result. The canary reading still checks whether an answer can use text beyond that passage (gate: OAI-SearchBot
-re-fetching /about, not yet as of 10-29 07:30Z).
+description. Correction 2026-10-30 (`context-probe.md`, needle tests): that passage is what the UI shows the shopper,
+not what the model reads. The model gets the stored page itself, whole for our product pages, so the canary
+question is answered: a fact in the last 10% of a 24k-character page was answered with no live fetch. Row 9 can be
+dropped.
+

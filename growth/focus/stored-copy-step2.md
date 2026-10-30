@@ -9,6 +9,10 @@ not known yet. The draft therefore puts the same deal sentence in both.
 
 ## Snippets, measured 2026-10-29 (`canary.md`, Result)
 
+**Correction 2026-10-30:** the ~200-character passage below is what the UI shows the shopper. The model reads the whole
+stored page (product pages whole, hubs to ~16-23k characters; `context-probe.md`). So the opening matters for what the
+shopper sees on the result card, not for what the model knows.
+
 Each result carries the title and one passage of about 200 characters, picked for the query from the whole crawled
 page. Product-page deal and worth questions got the opening of the body: breadcrumb, H1, the summary line, the start
 of the offer card. The meta description did not show. On the AC200L that opening is "same price as the Elite 200 V2",
