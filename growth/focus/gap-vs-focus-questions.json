@@ -1,0 +1,17 @@
+{
+ "version": "2026-10-30",
+ "note": "Discoverability test, gap pages vs focus pages (Barry, 2026-10-30). Category questions a shopper asks before choosing a product; none names Dealectric or a model. `arm`: gap = the solar gap page (first OAI-SearchBot fetch 10-29 07:12Z); gap-uncrawled = gap pages OpenAI has never fetched (crawl control); query = DLC-51 comparison pages, fetched 10-29 07:12Z; focus = the category each focus product answers (focus pages last fetched 10-26). `slug` is the page we'd expect to surface. Product-named focus questions are not re-run: W1/W3 baselines cover them (T4+ 15/24, T5 1/24).",
+ "questions": [
+  {"qid": "gap-solar--best", "arm": "gap", "role": "test", "slug": "solar-generator-with-panels-included", "prompt": "What's the best solar generator with solar panels included?"},
+  {"qid": "gap-solar--budget", "arm": "gap", "role": "test", "slug": "solar-generator-with-panels-included", "prompt": "Best solar generator kit with panels for under $1,000?"},
+  {"qid": "gap-solar--camping", "arm": "gap", "role": "test", "slug": "solar-generator-with-panels-included", "prompt": "I want a portable power station that comes with a solar panel for camping. Which kit should I buy?"},
+  {"qid": "gap-flying--best", "arm": "gap-uncrawled", "role": "control", "slug": "best-power-banks-for-flying", "prompt": "What's the best power bank to bring on a plane that airlines allow?"},
+  {"qid": "gap-tesla--best", "arm": "gap-uncrawled", "role": "control", "slug": "tesla-model-y-back-seat-screen", "prompt": "What's the best back-seat screen for a Tesla Model Y?"},
+  {"qid": "query-cpap--best", "arm": "query", "role": "test", "slug": "power-station-for-cpap", "prompt": "Which portable power station can run a CPAP machine all night?"},
+  {"qid": "query-solarwatts--how", "arm": "query", "role": "test", "slug": "solar-watts-to-recharge-power-station", "prompt": "How many watts of solar panels do I need to recharge a portable power station in a day?"},
+  {"qid": "focus-p1800--category", "arm": "focus", "role": "test", "slug": "allpowers-p1800-1024wh", "prompt": "What's the best 1kWh LiFePO4 portable power station under $500?"},
+  {"qid": "focus-sp037--category", "arm": "focus", "role": "test", "slug": "allpowers-sp037-400w-solar-panel", "prompt": "What's the best 400W portable solar panel for a power station?"},
+  {"qid": "focus-r4000--category", "arm": "focus", "role": "test", "slug": "allpowers-r4000-3456wh", "prompt": "What's the best 3 to 4 kWh portable power station for home backup?"},
+  {"qid": "focus-ac200l--category", "arm": "focus", "role": "test", "slug": "bluetti-ac200l", "prompt": "What's the best 2kWh portable power station for an RV?"}
+ ]
+}
