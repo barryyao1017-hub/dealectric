@@ -183,3 +183,28 @@ every event-stream response, and both re-runs were complete. W1's `ui.py` still 
 - API: what text of our pages the model receives, page structure checks (what's dropped), cheap smoke tests of copy.
 - App: reach (is our page in the results), whether `/go/` is handed over, and the catalog cards. Every copy decision
   is scored in the app.
+
+## The app's own query, replayed through the API (2026-10-30, `queryreplay.py`, runs `2026-10-30-queryreplay/`)
+
+Every captured app chat that ran one search (39: 10 W3 questions, 29 probes) had its exact query replayed through the
+API, one search allowed (`max_tool_calls: 1`), three times each on gpt-6-luna (117 calls; every call ran one search
+with the query verbatim). The app's result list (`search_result_groups`) is compared with the API's
+`action.sources`. Report: `runs/2026-10-30-queryreplay/report.md`.
+
+| | |
+|---|---|
+| App's results the API also returned, per call | 66% (web results only: 76%; news results: 0 of 52) |
+| App's top 5 found in at least one of 3 API calls | 79% |
+| Baseline, app vs app on the identical query (12 pairs) | 87% of one chat's results in the other (Jaccard 65%) |
+| API vs itself | Jaccard 88%; it returns about twice as many sources as the app shows |
+| **Whether any of our pages is in the results: API agrees with the app** | **111 of 117 calls (95%)** |
+| Which of our pages: agreement per page | 203 of 278 (73%); the API usually returns extra pages of ours |
+
+- The gap is concentrated in queries where the app also ran its news vertical: the API never returns news results,
+  and for one AC200L query ("... discount code deal sale price October 2026 coupon") the API returned no sources at
+  all in 2 of 3 calls, while the app showed three of our pages. 5 of the 6 queries where the app had one of our pages
+  that no API call returned had news results in the app.
+- With the app's query in hand, the API is a usable screen for reach: "is our page in what the model sees for this
+  query" agrees 95% of the time, and our page-level misses are mostly the API showing more of our pages, not fewer.
+  The app's query itself still comes from an app chat (the API's own queries differ: 4 per question vs 1).
+- It does not change the hand-over finding: the API's answer format has no buy slot.
