@@ -102,3 +102,41 @@ action, no page opened).
 Use: the API is a fast stand-in for which stored text of our pages reaches the model. Answer behaviour (does it hand
 over the `/go/` link, DLC-83) is still decided in the app; run API batches on both Luna and Sol and keep the one that
 agrees with app answers more.
+
+## How the app builds its answer, and where the API differs (2026-10-30, `cardprobe.py`, runs `2026-10-30-cardprobe/`)
+
+10 W3 questions once each in the app (raw stream rebuilt from its delta ops; 8 answered by gpt-6, 2 by gpt-6-mini after
+the quota), and 3 times each on `gpt-6.1-sol` and `gpt-6-luna` through the API (60 calls). Table: `cardprobe.py
+report --run 2026-10-30-cardprobe`.
+
+### Product cards come from a shopping catalog, not from the search results
+
+An app answer is a small UI program (`model_dil_v2`), not markdown. Its product cards bind catalog records
+(`turn<id>product<n>`, in `appData.opGenui.modelDataBindings`): title, price, rating, merchant and `product_page` URL,
+tagged `utm_campaign=openai_catalog` / `utm_medium=feed`, with Shopify product ids. They come from merchant product
+feeds. The card's link is the feed's merchant URL. The model only picks which records to show and lays them out; it
+cannot point a card at our `/go/`. Our link reaches a shopper in one of two ways only: a button or text link whose
+URL the model writes itself (`GenUI.openUrl(...)` / `Link {url}`), copied from our page text.
+
+The API has neither: no product records, no UI program. It answers in markdown with citation links. So an app answer
+is not the API's output folded into cards; the cards are a separate channel the API never sees.
+
+### The differences, and the risk of iterating the site on the API
+
+| | App | API | Risk if the API is the source of truth |
+|---|---|---|---|
+| Text the model gets of a page | stored copy, deep text, collapsed `<details>` dropped | same on all three (AC200L 10-26 version; needles; the `<details>` fact missed by both on the same pinned query) | **Low.** Measuring what text of ours reaches the model works on the API. |
+| Searches per question | 1 query, ~20 results (10/10 chats) | median 4 queries, 54 sources (2-15 queries) | **High.** The API finds our pages far more often: worth/best questions had our page in 15 of 18 API calls and 0 of 3 app chats. It overstates reach. |
+| Our `/go/` link handed over | 4 of 10 chats (as a buy button); 4 of the 6 where our page was in the results | 1 of 60 calls | **High.** The API almost never hands over the link, so it can't rank copy for DLC-83, and could wrongly say no wording works. |
+| Catalog product cards | on 4 of 5 ALLPOWERS chats, always "ALLPOWERS US" (iallpowers.com, direct); none for BLUETTI, Aurzen or ESR | none | **High for ALLPOWERS, out of our control.** The brand's own card takes the buy slot. Where a card showed alongside our page, /go/ came through 1 of 3 times; with no card, 3 of 4 (tiny n). |
+| Answering model | gpt-6, gpt-6-mini after the Free quota | gpt-6.1-sol, gpt-6-luna; no confirmed mapping | Medium: matters for behaviour, not for the payload. |
+| Run-to-run variation | result sets differ per chat | result sets and query counts differ per call | Both need repeats. |
+
+Also found: the stream capture missed the end of 2 of 10 chats (`ui.SSE_HOOK_JS` reads one response); cardprobe now tees
+every event-stream response, and both re-runs were complete. W1's `ui.py` still uses the narrow hook.
+
+### Use
+
+- API: what text of our pages the model receives, page structure checks (what's dropped), cheap smoke tests of copy.
+- App: reach (is our page in the results), whether `/go/` is handed over, and the catalog cards. Every copy decision
+  is scored in the app.
