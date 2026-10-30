@@ -174,7 +174,8 @@ def run(args) -> int:
             started = E.now_iso()
             shot = out / "chatgpt" / f"{cell}.jpg"
             try:
-                rec = ui.ask_chatgpt(q["prompt"], shot, fp={"run_id": args.run_id, "prompt_id": cell, "script": "visibility_scan.py"})
+                rec = ui.ask_chatgpt(q["prompt"], shot, fp={"run_id": args.run_id, "prompt_id": cell, "script": "visibility_scan.py"},
+                                     search=q.get("search", True))
             except ui.Throttled as t:
                 log(events, {"at": E.now_iso(), "event": "throttled", "after_ok": n_ok, "cell": cell, "wait_s": t.wait_s, "notice": str(t)[:200]})
                 time.sleep(t.wait_s + 30)

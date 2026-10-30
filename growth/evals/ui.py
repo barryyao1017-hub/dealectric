@@ -360,7 +360,7 @@ def conversation_markup(tab: Tab) -> dict:
     return out
 
 
-def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = None) -> dict:
+def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = None, search: bool = True) -> dict:
     """One temporary chat (see _ask_chatgpt), logged to the footprint log (evallib.footprint) whether it answers or
     fails. `fp` adds run_id / prompt_id / script; without it they come from shot_path (runs/<run>/chatgpt/<cell>.jpg)."""
     fp = dict(fp or {})
@@ -373,7 +373,7 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = No
             fp.setdefault("prompt_id", Path(shot_path).stem)
     started, r, err = E.now_iso(), {}, None
     try:
-        r = _ask_chatgpt(prompt, shot_path)
+        r = _ask_chatgpt(prompt, shot_path, search)
         return r
     except Exception as e:
         err = f"{type(e).__name__}: {e}"
@@ -384,10 +384,12 @@ def ask_chatgpt(prompt: str, shot_path: Path | None = None, fp: dict | None = No
                     conversation_id=(r.get("response") or {}).get("conversation_id"), cdp=CDP, **fp)
 
 
-def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
+def _ask_chatgpt(prompt: str, shot_path: Path | None = None, search: bool = True) -> dict:
     # temporary-chat: no memory, not saved to the account's history (signed-in state). hints=search forces the
-    # web-search tool. Logged out, ?q= auto-submits; signed in, it only fills the composer and we click Send.
-    url = "https://chatgpt.com/?temporary-chat=true&hints=search&q=" + urllib.parse.quote(prompt, safe="")
+    # web-search tool; search=False leaves the choice to ChatGPT, as for a user who just types (2026-10-30 harvest).
+    # Logged out, ?q= auto-submits; signed in, it only fills the composer and we click Send.
+    url = ("https://chatgpt.com/?temporary-chat=true" + ("&hints=search" if search else "") + "&q="
+           + urllib.parse.quote(prompt, safe=""))
     tab = Tab("about:blank")
     try:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
@@ -396,6 +398,7 @@ def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
         tab.navigate(url)
         t0 = time.time()
         last, same, state, submitted, account, temporary, polls, trace = None, 0, None, 0, None, None, 0, []
+        typed = 0
         while time.time() - t0 < ANSWER_TIMEOUT:
             time.sleep(2)
             polls += 1
@@ -413,6 +416,14 @@ def _ask_chatgpt(prompt: str, shot_path: Path | None = None) -> dict:
                 account = ("signed in" + (f" ({state['plan']})" if state.get("plan") else "")) if state.get("logged_in") else "logged out"
             if temporary is None and state.get("composer") is not None:
                 temporary = bool(state.get("temporary"))   # the label disappears once the chat starts
+            if not search and not state["answer"] and state.get("composer") is not None and polls >= 3 and typed < 3 \
+                    and _squash(prompt[:20]) not in _squash(state.get("composer") or ""):
+                # Without hints=search ChatGPT drops ?q= on its redirect, so the composer stays empty: type the prompt.
+                tab.eval('(document.querySelector("#prompt-textarea, div.ProseMirror[contenteditable=true]") || document.body).focus(); "focused"')
+                tab.call("Input.insertText", text=prompt)
+                typed += 1
+                trace.append({"t": round(time.time() - t0, 1), "typed": typed})
+                continue
             if not state["answer"] and state.get("composer") and _squash(prompt[:20]) in _squash(state["composer"]) and state.get("send") \
                     and polls % 2 == 1:
                 # Signed in: the prompt sits in the composer until Send is pressed. A click too early does nothing
