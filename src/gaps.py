@@ -246,4 +246,81 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
  ],
  "published": "2026-10-25", "checked": "2026-10-25"},
 
+# ---------------- G04: solar generator for power outages / home backup ----------------
+# Built 2026-10-30 from the solar page's win (growth/focus/readings/g04-outage-page.md has the full provenance). ChatGPT's
+# own queries for the shopper questions it answers: "best solar generators portable power stations for home power outages
+# 2026 reviews capacity expandable solar charging" and "best solar generators for home backup 2026 EcoFlow Anker SOLIX
+# BLUETTI battery capacity solar panels comparison". The title carries those words; the solar page was never retrieved
+# for them (its title shares 0.1-0.27 of their words). Competitors there are lab-tested publishers without dated prices.
+{"slug": "best-solar-generator-for-power-outages", "question": "G04",
+ "title": "Best solar generator for power outages and home backup (2026): portable power stations compared on capacity, expandable batteries and solar charging",
+ "h1": "Best solar generator for power outages and home backup (2026)",
+ "desc": "Which solar generator to buy for power outages and home backup: twelve portable power stations from EcoFlow, Anker SOLIX, Jackery, BLUETTI and ALLPOWERS compared on battery capacity, expandable batteries, 120/240 V home hookup, UPS switchover, solar charging, days of fridge backup and price checked on the makers' US stores, with the codes that worked in their carts.",
+ "intro": """
+<p class="lead">For a power outage, size a solar generator by what must keep running and for how long. A refrigerator uses about 1–1.5 kWh a day, and a portable power station delivers roughly 85% of its rated capacity as AC power, so a 2 kWh station keeps a fridge going about a day and a half and a 3–4 kWh station two to three days. Solar charging is what carries you past that: 400 W of panel puts back roughly 1.2–1.5 kWh on a sunny day. For 240 V loads such as a well pump, or to feed your home's circuits, you need a station with a 120/240 V L14-30 output and a transfer switch; a TT-30 outlet gives 120 V only.</p>
+<p><strong>Short answer.</strong> Best value for a day or two without power: the <strong>BLUETTI Elite 300</strong>, 3,014 Wh LiFePO4 with a 10 ms switchover and a TT-30 outlet, at BLUETTI's automatic sale price ({buy:bluetti-elite-300}); it does not take extra batteries.
+Most capacity and inverter per dollar: the <strong>ALLPOWERS R4000</strong>, 3,456 Wh and 3,600 W with 2,000 W of solar input over three ports ({buy:allpowers-r4000-3456wh}); it weighs 45 kg and has no add-on battery in the US.
+To grow into whole-home backup with a transfer switch and 240 V: EcoFlow's <strong>DELTA Pro 3</strong> ($2,799; 4,096 Wh, about 12 kWh with two Extra Batteries, Smart Home Panel 2) or Anker's <strong>SOLIX F3800 Plus</strong> ($2,599.99; 3,840 Wh, up to six BP3800 batteries, 10-circuit transfer switch kit).
+About 2 kWh for under $900: the <strong>BLUETTI Elite 200 V2</strong>, 6,000 cycles and a ≤15 ms switchover ({buy:bluetti-elite-200-v2}), or Anker's C2000 Gen 2 ($899.99), which takes one BP2000 battery to reach 4,096 Wh.
+Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037 400 W</strong> kit ({buy:allpowers-p1800-sp037-solar-kit}) or the <strong>BLUETTI AC180 + 200 W</strong> kit ({buy:bluetti-ac180-200w-solar-kit}).</p>
+""",
+ "columns": [("battery", "Battery"), ("expand", "Expandable to"), ("ac", "AC output"), ("hookup", "Home hookup"), ("ups", "Switchover"), ("solar", "Max solar input"), ("fridge", "Days of fridge backup*")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"battery": "3,014.4 Wh LiFePO4", "expand": "Not expandable", "ac": "2,400 W (4,800 W Power Lifting)", "hookup": "TT-30, 120 V", "ups": "10 ms", "solar": "1,200 W, 12–60 V", "fridge": "2.1"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"battery": "3,456 Wh LiFePO4", "expand": "No add-on battery sold in the US", "ac": "3,600 W at 120 V (6,000 W peak)", "hookup": "TT-30, 120 V (3,000 W)", "ups": "15 ms, up to 1,500 W", "solar": "2,000 W over 3 inputs, 12–60 V", "fridge": "2.4"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"battery": "2,073.6 Wh LiFePO4", "expand": "Not expandable", "ac": "2,600 W (3,900 W Power Lifting)", "hookup": "None listed", "ups": "≤15 ms", "solar": "1,000 W, 12–60 V", "fridge": "1.5"}},
+  {"slug": "allpowers-p1800-sp037-solar-kit", "model": "ALLPOWERS P1800 + SP037 400 W",
+   "cells": {"battery": "1,024 Wh LiFePO4", "expand": "Not expandable", "ac": "1,800 W (3,600 W peak)", "hookup": "None", "ups": "≤10 ms (manual: 20 ms)", "solar": "650 W, 11–60 V; 400 W panel in the box", "fridge": "0.7"}},
+  {"slug": "bluetti-ac180-200w-solar-kit", "model": "BLUETTI AC180 + 200 W",
+   "cells": {"battery": "1,152 Wh LiFePO4", "expand": "No expansion port", "ac": "1,800 W (2,700 W Power Lifting)", "hookup": "None", "ups": "20 ms", "solar": "500 W, 12–60 V; 200 W panel in the box", "fridge": "0.8"}},
+  {"brand": "EcoFlow", "model": "DELTA Pro 3", "url": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "cells": {"battery": "4,096 Wh LFP", "expand": "About 12 kWh with 2 × DP3 Extra Battery ($1,899 each)", "ac": "4,000 W (8,000 W surge)", "hookup": "L14-30 120/240 V; Smart Home Panel 2, transfer switch, inlet box", "ups": "10 ms", "solar": "2,600 W (1,600 W at 30–150 V + 1,000 W at 11–60 V)", "fridge": "2.9", "price": "$2,799 (list $3,299); +400 W panel $3,099"}},
+  {"brand": "Anker SOLIX", "model": "F3800 Plus", "url": "https://www.ankersolix.com/products/f3800-plus",
+   "cells": {"battery": "3,840 Wh LFP", "expand": "Up to 6 × BP3800 ($1,999.99 each)", "ac": "6,000 W (page footnote: 3,300 W without an extra battery)", "hookup": "L14-30 120/240 V and TT-30; 10-circuit transfer switch kit", "ups": "20 ms on the UPS outlets", "solar": "3,200 W (2 × 1,600 W, 11–165 V)", "fridge": "2.7", "price": "$2,599.99 (list $2,999.99); +400 W panel $2,899.99"}},
+  {"brand": "Jackery", "model": "HomePower 3600 Plus", "url": "https://www.jackery.com/products/jackery-homepower-3600-plus",
+   "cells": {"battery": "3,584 Wh LiFePO4", "expand": "21 kWh with Battery Pack 3600 ($1,349 each)", "ac": "3,600 W (7,200 W surge)", "hookup": "TT-30, 120 V; 240 V needs two units", "ups": "Not published", "solar": "1,000 W, 12–60 V", "fridge": "2.5", "price": "$1,899; +SolarSaga 500 X $2,199"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Ultra", "url": "https://us.ecoflow.com/products/delta-3-ultra-series-portable-power-station",
+   "cells": {"battery": "3,072 Wh LFP", "expand": "Ultra Plus version ($1,599) only: 3–11 kWh", "ac": "3,600 W (7,200 W surge)", "hookup": "TT-30; transfer switch or inlet box", "ups": "<10 ms", "solar": "800 W", "fridge": "2.2", "price": "$1,299 (list $1,599); +400 W panel $1,799"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"battery": "2,048 Wh LFP", "expand": "6,144 Wh with 2 × Smart Extra Battery", "ac": "2,400 W (4,800 W surge)", "hookup": "None on the page", "ups": "Not on the page", "solar": "1,000 W, 11–60 V", "fridge": "1.5", "price": "$1,049 (list $1,299); +400 W panel $1,549"}},
+  {"brand": "Anker SOLIX", "model": "C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"battery": "2,048 Wh LFP", "expand": "4,096 Wh with 1 × BP2000 Gen 2 ($899.99)", "ac": "2,400 W (4,000 W peak)", "hookup": "TT-30R, 120 V", "ups": "10 ms", "solar": "800 W, 11–60 V", "fridge": "1.5", "price": "$899.99 (list $1,199.99); +400 W panel $1,399.99"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "cells": {"battery": "2,042 Wh LiFePO4", "expand": "Not expandable", "ac": "2,200 W (4,400 W surge)", "hookup": "None", "ups": "<20 ms", "solar": "400 W, 11–60 V", "fridge": "1.4", "price": "$999; +2 × 200 W panels $1,649"}},
+ ],
+ "after": """
+<p class="small">*Days of fridge backup: a refrigerator at 1.2 kWh a day, 85% of the rated capacity usable as AC power, no solar. The label on your fridge or a plug-in meter gives your real figure; a chest freezer often uses less, an old fridge more.</p>
+<h2>How to pick for outages</h2>
+<ul>
+<li><strong>Hours first, then capacity.</strong> Add up what must run (fridge, Wi-Fi, lights, a CPAP, phones) and multiply by the hours you expect to be without power. Most one-night outages fit 1–2 kWh; storms that take out power for days need 3 kWh or more and a solar panel.</li>
+<li><strong>How it connects to the house.</strong> A TT-30 outlet feeds 120 V circuits through an inlet box and a transfer switch fitted by an electrician. Only stations with an L14-30 120/240 V output (here the DELTA Pro 3 and F3800 Plus) can run 240 V loads such as a well pump.</li>
+<li><strong>Switchover.</strong> A UPS-style switchover of 10–20 ms keeps a router or computer running when the grid drops; the R4000 holds up to 1,500 W of load that way.</li>
+<li><strong>Room to grow.</strong> If you may add capacity later, buy a station that takes extra batteries (DELTA Pro 3, F3800 Plus, HomePower 3600 Plus, DELTA 2 Max, C2000 Gen 2); the Elite 300, Elite 200 V2 and R4000 are fixed.</li>
+<li><strong>Weight.</strong> The R4000 weighs 45 kg and the Elite 300 26.3 kg; plan where it sits before the outage.</li>
+<li><strong>Prices move.</strong> EcoFlow, Anker and Jackery prices here are each store's sale price on 2026-10-30; Anker's include a code the store applies itself, which expires in early November. Our rows carry the price and the code checked in the brand's cart.</li>
+</ul>
+<p>For kits sold with their panels, see <a href="/solar-generator-with-panels-included">best solar generator with panels included</a>.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("ALLPOWERS R4000", "https://iallpowers.com/products/allpowers-r4000-power-station"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("ALLPOWERS P1800 + SP037 kit", "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel"),
+  ("BLUETTI AC180 kits", "https://www.bluettipower.com/products/ac180?variant=45427542491355"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+  ("EcoFlow DELTA Pro 3 Extra Battery", "https://us.ecoflow.com/products/delta-pro-3-extra-battery"),
+  ("Anker SOLIX F3800 Plus", "https://www.ankersolix.com/products/f3800-plus"),
+  ("Jackery HomePower 3600 Plus", "https://www.jackery.com/products/jackery-homepower-3600-plus"),
+  ("Jackery Battery Pack 3600", "https://www.jackery.com/products/jackery-battery-pack-3600"),
+  ("EcoFlow DELTA 3 Ultra", "https://us.ecoflow.com/products/delta-3-ultra-series-portable-power-station"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+  ("Anker SOLIX C2000 Gen 2 + 400 W", "https://www.ankersolix.com/products/c2000-gen2-400w-solar-panel"),
+  ("Jackery Solar Generator 2000 v2", "https://www.jackery.com/products/jackery-solar-generator-2000-v2"),
+ ],
+ "published": "2026-10-30", "checked": "2026-10-30"},
+
 ]
