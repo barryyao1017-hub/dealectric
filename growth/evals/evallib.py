@@ -348,11 +348,25 @@ def write_json(path: Path, obj) -> None:
     os.replace(tmp, path)
 
 
+# Keys kept in the macOS keychain (account "dealectric") when the environment doesn't set them. OpenAI's key since
+# 2026-10-30 (Barry's platform account, key "dealectric-evals", 30-day expiry).
+KEYCHAIN_KEYS = {"OPENAI_API_KEY": "openai-api-key"}
+
+
 def env_key(*names: str) -> str | None:
     for n in names:
         v = os.environ.get(n)
         if v:
             return v
+    for n in names:
+        if n in KEYCHAIN_KEYS:
+            try:
+                v = _subprocess.run(["security", "find-generic-password", "-a", "dealectric", "-s", KEYCHAIN_KEYS[n], "-w"],
+                                   capture_output=True, text=True, check=True).stdout.strip()
+            except (_subprocess.CalledProcessError, FileNotFoundError):
+                v = ""
+            if v:
+                return v
     return None
 
 

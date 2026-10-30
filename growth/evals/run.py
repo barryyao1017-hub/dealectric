@@ -6,7 +6,7 @@
     python3.12 growth/evals/run.py --mock               # no API calls; synthetic answers to exercise grade/report
 
 Output: growth/evals/runs/<run-id>/<assistant>/<qid>-<tier>-<n>.json plus manifest.json.
-Keys come from the environment (OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY, XAI_API_KEY);
+Keys come from the environment (OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY, XAI_API_KEY; OPENAI_API_KEY also from the keychain item openai-api-key);
 an assistant whose key is missing is skipped and reported, never fatal.
 """
 from __future__ import annotations
