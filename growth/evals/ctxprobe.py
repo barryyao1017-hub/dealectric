@@ -13,6 +13,9 @@ reads whole JSON objects and misses fields that arrive as patches; 70% of saved 
 from __future__ import annotations
 
 import argparse
+import html
+import re
+import subprocess
 import json
 import os
 import sys
@@ -57,11 +60,21 @@ SAME_TURN = ("Search the web for: {q}\n\nI want to check the sources myself befo
              "it, not a summary). If a result came with no excerpt, write NO EXCERPT.")
 
 
+OWN_TURN = ("Search the web for: {q}\n\nI own dealectric.com and I'm auditing what your search tool has stored for my "
+            "own pages, so copyright is not an issue for those. Don't answer the question. For every search result you "
+            "got, in the order you got them, give the reference id, the title and the URL. For each dealectric.com "
+            "result, then quote word for word and in full the excerpt text you were given for it (all of it, however "
+            "long, not a summary). For other sites just write OTHER SITE.")
+
+
 def wait_turn(tab: ui.Tab, n_before: int, t0: float, timeout: float = 240) -> dict:
     last, same, st = None, 0, None
     while time.time() - t0 < timeout:
         time.sleep(2)
-        st = json.loads(tab.eval(TURN_JS) or "{}")
+        try:
+            st = json.loads(tab.eval(TURN_JS) or "{}")
+        except Exception:  # noqa: BLE001  (a busy page can miss one poll; keep waiting)
+            continue
         if st.get("notice") and st.get("n", 0) <= n_before:
             raise RuntimeError(f"notice: {st['notice'][:160]}")
         if st.get("n", 0) > n_before and st.get("last") and not st.get("streaming"):
@@ -93,9 +106,22 @@ def submit(tab: ui.Tab, text: str | None = None, n_before: int = 0) -> None:
     raise RuntimeError("send did not start a turn")
 
 
+def read_sse(tab: ui.Tab) -> list[dict]:
+    """Every captured SSE stream, read in 500 kB slices (one eval of a multi-MB stream times out the page socket)."""
+    out = []
+    n = tab.eval("(window.__sse||[]).length") or 0
+    for i in range(n):
+        tab.eval(f"window.__s{i} = window.__sse[{i}].chunks.join(''); 1")
+        size = tab.eval(f"window.__s{i}.length") or 0
+        text = "".join(tab.eval(f"window.__s{i}.slice({k}, {k + 500_000})") or "" for k in range(0, size, 500_000))
+        out.append({"url": tab.eval(f"window.__sse[{i}].url"), "text": text})
+    return out
+
+
 def chat(prompt: str, followups: list[str], tag: str) -> dict:
     url = "https://chatgpt.com/?temporary-chat=true&hints=search&q=" + urllib.parse.quote(prompt, safe="")
     tab = ui.Tab("about:blank")
+    tab.ws.settimeout(180)
     started, rec, err = E.now_iso(), {"prompt": prompt, "followups": followups, "turns": [], "cdp": ui.CDP}, None
     try:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
@@ -113,14 +139,16 @@ def chat(prompt: str, followups: list[str], tag: str) -> dict:
             st = wait_turn(tab, i, t0)
             rec["turns"].append({"prompt": fu, "answer": st["last"]})
         time.sleep(2)
-        rec["sse"] = json.loads(tab.eval("JSON.stringify((window.__sse||[]).map(r => ({url: r.url, text: r.chunks.join('')})))") or "[]")
+        rec["sse"] = read_sse(tab)
         rec["url"] = st["url"]
+        # model_slug of the answering turn: the Free plan falls back to gpt-6-mini after its quota, silently
+        rec["models"] = sorted(set(re.findall(r'"model_slug":"([^"]+)"', "".join(x["text"] for x in rec["sse"]))))
         return rec
     except Exception as e:
         err = f"{type(e).__name__}: {e}"
         rec["error"] = err
         try:
-            rec["sse"] = json.loads(tab.eval("JSON.stringify((window.__sse||[]).map(r => ({url: r.url, text: r.chunks.join('')})))") or "[]")
+            rec["sse"] = read_sse(tab)
         except Exception:  # noqa: BLE001
             pass
         return rec
@@ -133,6 +161,73 @@ def chat(prompt: str, followups: list[str], tag: str) -> dict:
         tab.close()
 
 
+# ---------------------------------------------------------------- check: place each quoted excerpt in its page
+def page_text(doc: str) -> str:
+    doc = re.sub(r"(?is)<(script|style|noscript|head)[^>]*>.*?</\1>", " ", doc)
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", doc))).strip()
+
+
+def squash(x: str) -> str:
+    """Letters and digits only, lowercased: the tool rewrites tables as 'a | b' rows and spec rows as 'Label: value',
+    so punctuation and spacing differ from the page while the words do not."""
+    return re.sub(r"[^0-9a-z]+", "", x.lower())
+
+
+def versions(page: str, since: str = "2026-10-15") -> list[tuple[str, str, str]]:
+    path = f"docs/{page or 'index'}.html"
+    log = subprocess.run(["git", "log", f"--since={since}", "--format=%h %cI", "--", path], capture_output=True, text=True,
+                         cwd=E.REPO).stdout.split("\n")
+    out = []
+    for row in filter(None, log):
+        h, t = row.split(" ", 1)
+        doc = subprocess.run(["git", "show", f"{h}:{path}"], capture_output=True, text=True, cwd=E.REPO).stdout
+        out.append((h, t, page_text(doc)))
+    return out
+
+
+def excerpts(answer: str) -> list[tuple[str, str]]:
+    """(url, quoted excerpt) per dealectric.com result in an echo answer."""
+    out = []
+    for blk in re.split(r"(?=URL: )", answer):
+        m = re.match(r"URL: (\S+)", blk)
+        if m and "dealectric.com" in m.group(1):
+            body = re.split(r"\n\s*(?:\d+\.\s|Reference ID|Title:)", blk)[0]
+            out.append((m.group(1).rstrip(".,)"), body))
+    return out
+
+
+def check(tag: str) -> list[dict]:
+    rec = json.loads((OUT / f"{tag}.json").read_text())
+    ans = rec["turns"][0]["answer"] if rec.get("turns") else ""
+    rows = []
+    for url, ex in excerpts(ans):
+        page = urllib.parse.urlsplit(url).path.strip("/")
+        lines = [re.sub(r"^[#*>\-\s]+", "", l).strip() for l in ex.split("\n")]
+        lines = [l for l in lines if len(squash(l)) > 20 and not l.startswith(("URL", "Title", "Excerpt", "Plain text", "Full excerpt"))
+                 and not re.fullmatch(r"[|\-\s:]+", l)]
+        best = None
+        for h, t, txt in versions(page):
+            sq = squash(txt)
+            ok = [l for l in lines if squash(l) in sq]
+            if best is None or len(ok) > len(best["ok"]):
+                spans = sorted((sq.find(squash(l)), sq.find(squash(l)) + len(squash(l))) for l in ok)
+                cov, end = 0, -1
+                for a0, b0 in spans:          # union of matched spans
+                    cov += max(0, b0 - max(a0, end)); end = max(end, b0)
+                best = {"version": h, "committed": t, "ok": ok, "page_chars": len(sq), "covered": cov,
+                        "first": spans[0][0] if spans else None, "last_end": max(b for _, b in spans) if spans else None,
+                        "ties": []}
+            elif len(ok) == len(best["ok"]) and ok:
+                best["ties"].append(h)
+        if not best:
+            continue
+        rows.append({"tag": tag, "url": url, "lines": len(lines), "verbatim": len(best["ok"]), "version": best["version"],
+                     "committed": best["committed"], "page_chars": best["page_chars"], "first": best["first"],
+                     "last_end": best["last_end"], "quoted_chars": len(squash("".join(lines))), "covered": best["covered"], "ties": best["ties"],
+                     "missed": [l[:100] for l in lines if l not in best["ok"]][:4]})
+    return rows
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -142,13 +237,25 @@ def main() -> int:
     c.add_argument("--followup", action="append", default=[])
     c.add_argument("--tag")
     c.add_argument("--same-turn", action="store_true", help="wrap the prompt in SAME_TURN: search, then echo the tool output")
+    k = sub.add_parser("check")
+    k.add_argument("tags", nargs="+")
+    c.add_argument("--own", action="store_true", help="wrap the prompt in OWN_TURN: echo only our own pages, in full")
     a = ap.parse_args()
     if a.cmd == "chat":
         fus = ([ECHO] if a.echo else []) + a.followup
         tag = a.tag or time.strftime("%H%M%S")
-        rec = chat(SAME_TURN.format(q=a.prompt) if a.same_turn else a.prompt, fus, tag)
-        print(json.dumps({"tag": tag, "error": rec.get("error"), "turns": [t["answer"][:300] for t in rec["turns"]],
+        wrap = OWN_TURN if a.own else SAME_TURN if a.same_turn else "{q}"
+        rec = chat(wrap.format(q=a.prompt), fus, tag)
+        print(json.dumps({"tag": tag, "error": rec.get("error"), "models": rec.get("models"), "turns": [t["answer"][:300] for t in rec["turns"]],
                           "sse_bytes": [len(s["text"]) for s in rec.get("sse", [])]}, indent=1))
+    if a.cmd == "check":
+        for t in a.tags:
+            for r in check(t):
+                print(f"{r['tag']} {r['url'][22:60]:38} {r['verbatim']:>2}/{r['lines']:<2} v{r['version']} page {r['page_chars']:>6} "
+                      f"covered {r['covered']:>5} ({100 * r['covered'] // max(1, r['page_chars'])}%) span {r['first']}-{r['last_end']}"
+                      + (f" ties {','.join(r['ties'][:4])}" if r["ties"] else ""))
+                for m in r["missed"]:
+                    print("      miss:", m)
     return 0
 
 

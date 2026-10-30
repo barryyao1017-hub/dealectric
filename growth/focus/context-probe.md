@@ -36,10 +36,41 @@ a page cannot be guessed, so a line found verbatim is proof the model had it.
 5. **A second channel: product listings.** Shopping queries also return product records
    (`turn<id>product0..36` in e02) separate from the web results; not examined yet.
 
+## Needle tests (10:20-10:26Z, answered by gpt-6-mini)
+
+The echo only shows what the model is willing to quote (1% to 80% of a page per chat; it labels some excerpts
+"partial"), so a second test checks what it can answer. The prompt pins one search to a generic query, forbids
+further searches and opening pages, and asks for a fact deep in a page that the query does not mention, with NOT IN
+RESULTS as the honest exit. The stream confirms one `web.run` search with the pinned query and no other tool, and
+Cloudflare shows no ChatGPT-User fetch of dealectric.com in the window.
+
+| Chat | Query | Fact asked | Where it sits | Answer |
+|---|---|---|---|---|
+| N032039 | dealectric.com electronics catalog | Elite 30 V2 kit: price after code, solar voltage range | last 10% of `/` (24,447 chars) | $437, 12-28 V, sentence quoted verbatim from `/` |
+| N032217 | dealectric.com discount codes | Aurzen ZIP Pro: saving, price after code | `/` table and `/discount-codes` | $57.99, $522, verbatim from `/` |
+| N032612 | amphourly best solar panels for power stations ranked by data | BLUETTI PV100 FX weight, W/lb | 70% into amphourly's 25,410-char page | 4.85 lb, 20.6, table row verbatim |
+| N032434 | same | Anker PS200 Voc and the limit it exceeds | 50% into the same page | 57.6 V over 55 V, verbatim from the 7th result (another long amphourly page) |
+
+So the model receives the whole stored page, or at least the first ~25k characters of text, for every result,
+including the 7th. The earlier ~1,000-character `/discount-codes` echo was the model quoting selectively.
+
+## Model
+
+Chats from 09:34 to 10:00Z were answered by gpt-6; from 10:03Z on, gpt-6-mini (Free quota spent; a parallel
+`void-openings` scan used the same account from 09:49 to 09:58Z). The search tool runs server-side and the needle
+results are about the tool's payload, but they are re-run on gpt-6 before they count for W3.
+
+## What this means
+
+- What ChatGPT's model reads of our page is the page as OpenAI last crawled it, all of it: every offer card,
+  table row, code, date and `/go/` link. The 200-character passage and the title are only what the shopper sees.
+- So copy anywhere on the page reaches the model; nothing needs to be squeezed into the opening for that reason.
+  What decides freshness is still the crawl (`stored-copy.md`).
+- When ChatGPT shows our page and does not hand over our `/go/` link, it had the link in front of it. DLC-83 is a
+  question of what makes the model choose it.
+
 ## Open
 
-- Is there a length cap on long pages, and where does the excerpt start and end (only the top N characters, or a
-  query-picked window)? Needs our long pages (`/products`, `/discount-codes`, `/`) in the results, where we know the
-  stored text exactly.
-- Does the same page give the same excerpt for different queries?
-- Do the product listings carry our pages, and what is in them?
+- A size cap on pages longer than ~25k characters of text (needle near the end of a 35k+ page).
+- Re-run two needles on gpt-6.
+- Product listings (`turn<id>productN`): which records they carry and whether our pages ever appear there.
