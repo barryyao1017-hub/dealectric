@@ -23,6 +23,10 @@ ROOT = Path(__file__).resolve().parents[2]
 RUNS = ROOT / "growth" / "evals" / "runs"
 OUT = ROOT / "growth" / "focus" / "focus-gap"
 W1, GVF = RUNS / "2026-10-28-visibility" / "chatgpt", RUNS / "2026-10-30-gap-vs-focus" / "chatgpt"
+VOID = RUNS / "2026-10-30-void-openings" / "chatgpt"   # void-scan openings re-checked in ChatGPT (growth/focus/readings/void-openings.md)
+VOID_CELLS = [VOID / f"{t}--{p}-{n}.json" for t, ps in (("void-fitbit-women", ("best", "smallwrist", "sleep")),
+                                                        ("void-vertical-stand", ("best", "macbook", "worth")))
+              for p in ps for n in (1, 2)]
 
 # (group, product or page, cell file)
 CELLS = [
@@ -41,7 +45,7 @@ CELLS = [
     ("yardstick", "solar-generator-with-panels-included", GVF / "gap-solar--budget-1.json"),
     ("yardstick", "solar-generator-with-panels-included", GVF / "gap-solar--camping-1.json"),
     ("yardstick", "best-power-banks-for-flying", GVF / "gap-flying--best-1.json"),
-]
+] + [("void", f.stem.split("--")[0], f) for f in VOID_CELLS]
 
 
 def pack(f: Path) -> dict:

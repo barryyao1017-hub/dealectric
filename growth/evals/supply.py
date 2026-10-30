@@ -31,7 +31,8 @@ FOCUS = ["bluetti-ac200l", "allpowers-r4000-3456wh", "allpowers-sp037-400w-solar
 CELLS = ([("solar", F.GVF / f"gap-solar--{p}-{n}.json") for p in ("best", "budget", "camping") for n in (1, 2)]
          + [("solar", f) for f in sorted(F.GVF.glob("solar-general--*-1.json"))]
          + [("focus", F.GVF / f"focus-{p}--category-{n}.json") for p in ("p1800", "sp037", "r4000", "ac200l") for n in (1, 2)]
-         + [("focus", F.W1 / f"{s}--best-1.json") for s in FOCUS])
+         + [("focus", F.W1 / f"{s}--best-1.json") for s in FOCUS]
+         + [(f.stem.split("--")[0], f) for f in F.VOID_CELLS])
 
 BUY = re.compile(r"href=[\"'](https?://[^\"']+)", re.I)
 STORE = re.compile(r"amazon\.|amzn\.to|walmart\.|bestbuy\.|homedepot\.|lowes\.|costco\.|target\.com|ebay\.|"
@@ -121,7 +122,7 @@ def judge_answer(d: dict) -> dict:
 
 
 def summary(res: dict) -> None:
-    for group in ("solar", "focus"):
+    for group in dict.fromkeys(v["group"] for v in res.values()):
         rows = [v for v in res.values() if v["group"] == group]
         if not rows:
             continue

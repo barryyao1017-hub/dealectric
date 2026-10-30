@@ -36,7 +36,8 @@ CELLS = ([("solar-hit", SOLAR, f"gap-solar--{c}") for c in ("best-1", "best-2", 
          + [("focus", s, c) for s, c in (("allpowers-p1800-1024wh", "focus-p1800--category-1"),
                                          ("allpowers-sp037-400w-solar-panel", "focus-sp037--category-1"),
                                          ("allpowers-r4000-3456wh", "focus-r4000--category-1"),
-                                         ("bluetti-ac200l", "focus-ac200l--category-1"))])
+                                         ("bluetti-ac200l", "focus-ac200l--category-1"))]
+         + [(f.stem.split("--")[0], None, f) for f in F.VOID_CELLS])   # no page of ours: competitors only
 STOP = set("a an and the for of to with in on best what whats what's is are which should i my me buy good under vs 2026 review reviews "
            "comparison compared price prices specs".split())
 
@@ -86,32 +87,33 @@ def judge(question: str, pages: list[tuple[str, str]]) -> dict:
 
 
 def run_cell(group: str, slug: str, cell: str, packs: dict) -> dict:
-    d = json.loads((F.GVF / f"{cell}.json").read_text())
+    d = json.loads((cell if isinstance(cell, Path) else F.GVF / f"{cell}.json").read_text())
+    cell = cell.stem if isinstance(cell, Path) else cell
     query = (d.get("queries") or [d["prompt"]])[0]
     sr = (d.get("response") or {}).get("search_results") or []
     results = [{"domain": r.get("domain"), "title": r.get("title"), "ours": "dealectric.com" in (r.get("domain") or ""),
                 "pub_date": dt.datetime.fromtimestamp(r["pub_date"], dt.timezone.utc).date().isoformat() if r.get("pub_date") else None,
                 "title_match": title_match(query, r.get("title") or "")} for r in sr]
     p = packs[cell]
-    srcs = [("comp", s["domain"], s["text"]) for s in p["sources"]] + [("ours", "dealectric.com", our_text(slug))]
+    srcs = [("comp", s["domain"], s["text"]) for s in p["sources"]] + ([("ours", "dealectric.com", our_text(slug))] if slug else [])
     random.Random(cell).shuffle(srcs)
     ids = [chr(65 + i) for i in range(len(srcs))]
     r = judge(d["prompt"], [(i, s[2]) for i, s in zip(ids, srcs)])
     by = {x["id"]: x for x in r.get("pages") or []}
     pages = [{"id": i, "who": s[0], "domain": s[1], **{k: v for k, v in by.get(i, {}).items() if k != "id"}} for i, s in zip(ids, srcs)]
     rank = r.get("ranking") or []
-    ours_id = next(i for i, s in zip(ids, srcs) if s[0] == "ours")
+    ours_id = next((i for i, s in zip(ids, srcs) if s[0] == "ours"), None)
     title = next((x["title"] for x in results if x["ours"]), None)
     return {"group": group, "slug": slug, "question": d["prompt"], "query": query, "results": results, "pages": pages,
             "ranking": rank, "our_judged_rank": rank.index(ours_id) + 1 if ours_id in rank else None, "of": len(srcs),
             "our_chatgpt_rank": next((i for i, x in enumerate(results, 1) if x["ours"]), None),
-            "our_title_match": title_match(query, title) if title else title_match(query, (
+            "our_title_match": None if not slug else title_match(query, title) if title else title_match(query, (
                 "Best solar generator with panels included (2026): 15 kits compared on battery, inverter, solar input and price"
                 if slug == SOLAR else slug.replace("-", " ")))}
 
 
 def summary(res: dict) -> None:
-    for group in ("solar-hit", "solar-miss", "focus"):
+    for group in dict.fromkeys(v["group"] for v in res.values()):
         rows = [v for v in res.values() if v["group"] == group]
         if not rows:
             continue
@@ -150,11 +152,12 @@ def main() -> None:
     packs = json.loads((F.OUT / "packs.json").read_text())
     if not args.report:
         for group, slug, cell in CELLS:
-            if cell in res:
+            k = cell.stem if isinstance(cell, Path) else cell
+            if k in res or k not in packs:
                 continue
-            res[cell] = run_cell(group, slug, cell, packs)
+            res[k] = run_cell(group, slug, cell, packs)
             rf.write_text(json.dumps(res, indent=1))
-            print(f"{cell}: our judged rank {res[cell]['our_judged_rank']} of {res[cell]['of']}", flush=True)
+            print(f"{k}: our judged rank {res[k]['our_judged_rank']} of {res[k]['of']}", flush=True)
     summary(res)
 
 
