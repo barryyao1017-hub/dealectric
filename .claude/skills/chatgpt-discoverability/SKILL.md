@@ -1,6 +1,6 @@
 ---
 name: chatgpt-discoverability
-description: How ChatGPT finds, reads and presents web pages (OpenAI's stored copy, the search query it writes, the ~12 results, the text budget the model gets, catalog cards and buy buttons), and the fast loop for making Dealectric pages win ChatGPT shopping answers. Use when picking queries or pages to build for a product or brand, writing or editing page titles, headings or copy in src/, diagnosing why ChatGPT did or didn't cite us or hand over a /go/ link, designing or pricing a ChatGPT eval (app or OpenAI API), or reading crawl and stored-copy state.
+description: How ChatGPT finds, reads and presents web pages (OpenAI's stored copy, the search query it writes, the ~12 results, the text budget the model gets, catalog cards and buy buttons), and the fast loop for making Dealectric pages win ChatGPT shopping answers. Use when picking queries or pages to build for a product or brand, writing or editing page titles, headings or copy in src/, diagnosing why ChatGPT did or didn't cite us or hand over a /go/ link, designing or running a ChatGPT eval (app by default, OpenAI API as fallback), or reading crawl and stored-copy state.
 ---
 
 # ChatGPT discoverability
@@ -61,11 +61,12 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    phrasings can win.
 2. **Query transfer.** Ask each question in the app at least twice (`visibility_scan.py` on a harvest file, then
    `harvest.py`). Record the words ChatGPT searched with, whether it searched at all, and the results it got. Drop
-   questions it doesn't search for: no page can win those. The API writes ~4× more queries in different words, so it
-   doesn't stand in for this step. One open test: whether the API's first query matches the app's.
+   questions it doesn't search for: no page can win those. This step must run in the app: the API's own first query
+   for a blind question overlaps the app's 56% of the time, against 90% between two app chats [measured,
+   `runs/2026-10-31-transfer`].
 3. **Gap score.** For each query cluster (the 2–3 phrasings ChatGPT actually uses), take the real top 12: the
-   harvest chat's own results, or a one-search API replay (`queryreplay.py`, about 1 cent). Judge whether the cluster
-   is open or saturated.
+   harvest chat's own results, or a pinned one-search chat in the app for extra phrasings (see "Running it" below;
+   `queryreplay.py` on the API is the fallback). Judge whether the cluster is open or saturated.
    - **Saturated:** RTINGS, Wirecutter, major reviewers or the brand's own store answer it well. Skip it; copy won't
      displace their authority.
    - **Open:** the results are AI listicles, expired-domain or spam roundups, or off-target pages. Gaps are about
@@ -82,17 +83,41 @@ are weak, iterate drafts offline, and check retrieval live at volume.
 6. **Offline scoring.**
    - Build the context the model would get: the rival pages, each cut to the share measured for its rank, plus the
      draft (`fastloop.py pack`, `replay`, `score`; see `reference/tools.md`).
-   - Answer the shopper's question from that context with an OpenAI API model, search off.
+   - Answer the shopper's question from that context in the app: paste it into a Free temporary chat, search off
+     (`fastloop.py replay --engine app`). The API with search off (`--engine api`) is the fallback. Whether a pasted
+     page can produce a `/go/` button is untested.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.
    - Use the scores to compare drafts against each other and the current page, never as forecasts.
 7. **Live check.**
    - Publish only the winner. A new page linked from the home page gets fetched fastest.
-   - Once OAI-SearchBot has fetched it (`storedcopy.py`), replay the target queries daily through the API to see
-     whether it's retrieved.
+   - Once OAI-SearchBot has fetched it (`storedcopy.py`), run the target queries as pinned one-search chats in the
+     app every day or two to see whether it's retrieved (API replay as fallback).
    - Then read it in the app with the blind questions, n=2.
 8. **Recalibrate.** When a draft wins offline and loses live, fix the loop, not just the page. Every live reading is a
    new calibration case and updates the gap map.
+
+### Running it: the app by default, the API as fallback (Barry, 2026-10-31)
+
+Every step runs on Free ChatGPT accounts in the agent's Chrome. The OpenAI API is only the fallback, for when the
+accounts are flagged, throttled for long or out of quota and the work can't wait.
+- **Why the app:** it's the gpt-6 shoppers use, with the app's real search and answer format, and it costs nothing.
+  The API's search overlaps the app's results only 66–76%, and its queries differ.
+- **Budget:** about 26 gpt-6 answers per account before it falls back to gpt-6-mini [observed once; the reset took
+  more than 4 h]. Discard or re-ask gpt-6-mini answers. One product takes about 135 chats: harvest 24, pinned
+  replays 10, five drafts plus the current page × 10 questions = 60, retrieval checks 21, readings 20. With three
+  accounts that's about two quota windows.
+- **Accounts:** ChatGPT's account switcher holds several accounts in one Chrome profile, but only one is active per
+  profile. Run one chat at a time per profile, and switch account when one hits its quota.
+- **Pasted context:** a 45,033-character paste (six pages plus the question) was accepted, answered by gpt-6 with
+  no search, and read to the end [observed, `runs/2026-10-31-appfeas/paste-1.json`]. Send long prompts through the
+  composer (`ctxprobe.submit(tab, text, 0)`): `ui.ask_chatgpt`'s `?q=` URL fails at that length.
+- **Pinned search:** the prompt 'Run exactly one web search with this exact query, word for word: "<q>". Do not
+  search again and do not open any page.' ran exactly one search with the query verbatim, giving 12 results on gpt-6
+  [observed, `runs/2026-10-31-appfeas/ctx/pinned-1.json`]. Check the stream's query on every run and drop chats
+  that searched differently.
+- **Risk:** automating the consumer app is against OpenAI's terms. Keep a human pace: one chat at a time per
+  profile, with no bursts. Keep the API key alive as the fallback.
 
 A step counts as trusted only after it passes calibration against recorded app chats whose outcome we already know.
 These pass bars are proposals until Barry sets them:
@@ -139,8 +164,9 @@ address.
   are the exceptions.
 - **A lever counts only once OpenAI has fetched the page after the ship.** Gate readings on the crawl
   (`w3score.py --crawl`, `storedcopy.py`). Everything shipped before one crawl is read together.
-- **Score hand-over, cards and reach in the app.** The API gives the same page text but searches ~4× more, has no
-  catalog cards and almost never hands over `/go/` (1 of 60 calls). It overstates reach and understates hand-over.
+- **Score hand-over, cards and reach in the app, never on the API.** The API gives the same page text but searches
+  ~4× more, has no catalog cards and almost never hands over `/go/` (1 of 60 calls). It overstates reach and
+  understates hand-over.
 - **Log every touch of dealectric.com** by a probe or chat (`evallib.footprint`) so our traffic is never counted as
   outside traffic.
 - **Space app chats on the same page 15+ minutes apart.** A live ChatGPT-User fetch is reused by the next chats for a

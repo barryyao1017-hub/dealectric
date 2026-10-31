@@ -79,7 +79,7 @@ ul.list b { font-weight: 600; }
 
 <main>
   <header class="prose">
-    <div class="eyebrow">Dealectric · DLC-77 · final design, nothing built yet · 2026-10-31</div>
+    <div class="eyebrow">Dealectric · DLC-77 · final design · app by default, API as fallback · 2026-10-31</div>
     <h1>ChatGPT Fast Loop</h1>
     <p class="lede"><b>Input: one product or brand.</b> Start from questions shoppers with a loose purchase intent would really ask, learn which words ChatGPT turns them into, and aim pages at the searches where the current results are weak. We don't try to simulate OpenAI's ranking: we measure the real results, judge the gap, and confirm retrieval live at volume.</p>
   </header>
@@ -175,8 +175,8 @@ ul.list b { font-weight: 600; }
         <text class="s" x="691" y="269">spot-checked by needles</text>
 
         <path class="tie" d="M869 190 V326" marker-end="url(#am)"/>
-        <text class="s" x="877" y="248">API model, search off,</text>
-        <text class="s" x="877" y="262">fixed result set</text>
+        <text class="s" x="877" y="248">app chat, pasted context,</text>
+        <text class="s" x="877" y="262">search off (API fallback)</text>
 
         <path class="gapline" d="M1055 190 V262" style="stroke-dasharray:3 3"/>
         <path class="gapline" d="M1047 266 L1063 282 M1063 266 L1047 282"/>
@@ -288,7 +288,7 @@ ul.list b { font-weight: 600; }
         <rect class="plain" x="230" y="236" width="190" height="56" rx="5" style="stroke: var(--slow)"/>
         <text class="t" x="325" y="260" text-anchor="middle">Publish the winner</text><text class="s" x="325" y="277" text-anchor="middle">new linked URL ~13 h</text>
         <rect class="plain" x="460" y="236" width="190" height="56" rx="5"/>
-        <text class="t" x="555" y="260" text-anchor="middle">Retrieved?</text><text class="s" x="555" y="277" text-anchor="middle">target queries, daily, API</text>
+        <text class="t" x="555" y="260" text-anchor="middle">Retrieved?</text><text class="s" x="555" y="277" text-anchor="middle">pinned searches in the app</text>
         <rect class="plain" x="690" y="236" width="190" height="56" rx="5"/>
         <text class="t" x="785" y="260" text-anchor="middle">Read in the app</text><text class="s" x="785" y="277" text-anchor="middle">blind questions, n=2</text>
         <rect class="plain" x="920" y="236" width="190" height="56" rx="5"/>
@@ -300,7 +300,7 @@ ul.list b { font-weight: 600; }
         <text class="m" x="670" y="209" text-anchor="middle">each reading becomes a calibration case and updates the gap map</text>
       </svg>
       </div>
-      <figcaption>Retrieval of a new draft is never predicted offline. It's checked once the page is live: a daily one-search API replay of each target query costs about a cent and shows the same top results as the app most of the time.</figcaption>
+      <figcaption>Retrieval of a new draft is never predicted offline. It's checked once the page is live, with pinned one-search chats in the app every day or two. They run the exact query and show the app's own top 12.</figcaption>
     </figure>
   </section>
 
@@ -341,13 +341,13 @@ ul.list b { font-weight: 600; }
       <thead><tr><th>Step</th><th>Built from</th><th>State</th><th>Before it's trusted</th></tr></thead>
       <tbody>
         <tr><td>1 · Shopper questions</td><td>The harvest question files already do this: levels G0 (bare category), G1 (situation only) and G2 (category plus one constraint), with no product, model or domain. Extend them per brand and product type, phrased from real sources such as GSC queries and forum posts.</td><td><span class="pill have">exists, extend</span></td><td>A reviewer check that no question leaks a product or model name.</td></tr>
-        <tr><td>2 · Query transfer</td><td><code>harvest.py</code> on app chats records the words ChatGPT searched for each question, and whether it searched at all. App chats are the volume limit (Free quota).</td><td><span class="pill have">exists</span></td><td><span class="pill prop">test</span> Does the API's first query match the app's for the same question? If yes, the transfer harvest can run through the API at volume.</td></tr>
-        <tr><td>3 · Gap score</td><td>The real result set per query: the harvest chat's own results, or a one-search API replay (<code>queryreplay.py</code>). A judge model labels each result, as <code>gapexp.py</code> did, and counts recurring domains.</td><td><span class="pill new">judge prompt new</span></td><td><span class="pill prop">proposal</span> The judge agrees with your labels on a sample of about 20 queries.</td></tr>
+        <tr><td>2 · Query transfer</td><td><code>harvest.py</code> on app chats records the words ChatGPT searched for each question, and whether it searched at all.</td><td><span class="pill have">exists</span></td><td>App only: the API's first query overlaps the app's 56% of the time, against 90% between two app chats (measured 10-31).</td></tr>
+        <tr><td>3 · Gap score</td><td>The real result set per query: the harvest chat's own results, or a pinned one-search app chat for extra phrasings (API replay as fallback). A judge model labels each result, as <code>gapexp.py</code> did, and counts recurring domains.</td><td><span class="pill new">judge prompt new</span></td><td><span class="pill prop">proposal</span> The judge agrees with your labels on a sample of about 20 queries.</td></tr>
         <tr><td>3b · Competitor set</td><td>Recurring domains in the top 12 across a query cluster's phrasings, the page shape that wins (comparison vs product page), the shared core, and the open concern from research outside the top 12.</td><td><span class="pill new">new</span></td><td>Your review of the chosen concern.</td></tr>
         <tr><td>Draft</td><td>Your judgment, or mine reviewed by you, in the target query's words. Neutral copy, nothing addressed to AI.</td><td><span class="pill jud">judgment</span></td><td>Checked live only.</td></tr>
         <tr><td>4 · Context builder</td><td>The rival pages from the competitor set, fetched now (they change slowly), each cut to the share measured for its rank, plus the draft. Same-turn echoes stopped working on 10-30 (the model now quotes at most ~25 words per source), so the cut is checked with needle questions in the app instead.</td><td><span class="pill new">new, fastloop.py</span></td><td>Needle spot-checks agree with the cut; then tested with step 5.</td></tr>
-        <tr><td>5 · Answer replay</td><td>The shopper's question answered by an API model from that context, search off, scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill new">new, fastloop.py</span></td><td><span class="pill prop">proposal</span> On the recorded app chats, matches cited/not in 80%+ and the top pick in 70%+. /go/ and "our point carried" used only to compare drafts.</td></tr>
-        <tr><td>Live check</td><td>Daily one-search API replays of the target queries (retrieved or not), then blind app readings.</td><td><span class="pill have">tools exist</span></td><td>This is the check.</td></tr>
+        <tr><td>5 · Answer replay</td><td>The shopper's question answered from that context in a Free temporary chat, search off (<code>fastloop.py replay --engine app</code>); the API with search off is the fallback. Scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill have">built, fastloop.py</span></td><td><span class="pill prop">proposal</span> On the recorded app chats, matches cited/not in 80%+ and the top pick in 70%+. /go/ and "our point carried" used only to compare drafts.</td></tr>
+        <tr><td>Live check</td><td>Pinned one-search app chats on the target queries every day or two (retrieved or not), then blind app readings.</td><td><span class="pill have">tools exist</span></td><td>This is the check.</td></tr>
       </tbody>
     </table>
     </div>
@@ -364,12 +364,12 @@ ul.list b { font-weight: 600; }
       </ul>
     </div>
     <div>
-      <h3>Cost and time, estimated</h3>
+      <h3>Cost and capacity, estimated</h3>
       <ul class="list">
-        <li><b>Per product, one full cycle: about $5–10 of API.</b> Gap map ~$1.50, competitor set ~$0.30, 10 drafts ~$2 (Luna replay) or ~$5 (Sol), two weeks of daily retrieval checks ~$1.</li>
-        <li><b>One-time setup: about $8–10.</b> Calibration ~$3, gap-judge check against your labels ~$2, API query-transfer test ~$1, build and debug runs ~$2–5.</li>
-        <li><b>What drives it:</b> the $10 per 1,000 web-search fee. Token costs on Luna are a tenth of a cent per call. Never let the API search freely (it averages 4 searches per question); use one search or none.</li>
-        <li><b>Not money:</b> about one product's app harvest per Free-quota window, and your time on the 20 judge labels and each page's chosen concern.</li>
+        <li><b>Default, Free accounts: $0.</b> One product is about 135 app chats (harvest 24, pinned searches 10, 5 drafts plus the current page × 10 questions = 60, retrieval checks 21, readings 20). That's about two quota windows on three accounts, roughly a day.</li>
+        <li><b>Quota:</b> about 26 gpt-6 answers per account before gpt-6-mini takes over (seen once; the reset took more than 4 h). Those answers are discarded.</li>
+        <li><b>Fallback, the API: about $3–10 per product</b> when the accounts are flagged or out of quota. The search fee ($10 per 1,000) is most of it.</li>
+        <li><b>Risk:</b> automating the consumer app is against OpenAI's terms; keep a human pace, and keep the API key alive.</li>
       </ul>
     </div>
   </section>

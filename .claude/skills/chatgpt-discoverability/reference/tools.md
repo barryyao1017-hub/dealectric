@@ -5,12 +5,21 @@ clone.
 
 ## Driving the ChatGPT app
 
-- Agent Chrome over CDP: port 9222 is profile 1, signed in to Barry's Free account. Port 9223 is profile 2, signed
-  out of ChatGPT. Never type credentials; logins go through agent-vault.
-- Only the W1 session drives chatgpt.com for scans. Other work adds a row to `growth/focus/chatgpt-queue.md` unless
-  Barry says otherwise.
-- The Free quota: after it runs out, answers come from gpt-6-mini. Re-ask those answers later, or mark them
-  downgraded.
+The app is the default engine for every step; the API below is the fallback (Barry, 2026-10-31).
+
+- Agent Chrome over CDP.
+  - Port 9222 is profile 1. Its ChatGPT account switcher holds barryyao1017 (active on 10-31) and barrryyao.
+  - Port 9223 is profile 2, signed out of ChatGPT on 10-31.
+  - A third account may be added. Each profile has one active account at a time.
+  - Never type credentials. The vault has no ChatGPT login; Barry signs profiles in himself.
+- Check which account is active: open chatgpt.com in a tab and read `/api/auth/session` (`user.email`, `account.planType`).
+  Never print the token.
+- The Free quota: about 26 gpt-6 answers per account, then gpt-6-mini. Re-ask those answers later or mark them
+  downgraded. `fastloop.py` flags them.
+- Long prompts (pasted context) go through the composer: open `https://chatgpt.com/?temporary-chat=true`, then
+  `ctxprobe.submit(tab, text, 0)`, `wait_turn`, `read_sse`. `ui.ask_chatgpt` puts the prompt in the URL and fails
+  at ~45k characters.
+- The W1/W3 scan queue (`growth/focus/chatgpt-queue.md`) is being retired. Don't route fast-loop chats through it.
 
 | Tool | What it does |
 |---|---|
@@ -21,7 +30,7 @@ clone.
 | `growth/evals/cardprobe.py app\|parse\|report` | Rebuilds the answer from the stream: queries, results, catalog products, links by kind (card, button, cite, text), model. |
 | `growth/evals/w3score.py <run> [--crawl]` | W3 readings, with crawl gating. |
 
-## The OpenAI API (key: keychain item `openai-api-key`; `evallib.env_key("OPENAI_API_KEY")` reads it; expires 2026-11-29)
+## The OpenAI API: fallback only (key: keychain item `openai-api-key`; `evallib.env_key("OPENAI_API_KEY")` reads it; expires 2026-11-29)
 
 | Tool | What it does |
 |---|---|
@@ -69,9 +78,9 @@ clone.
 | Command | What it does |
 |---|---|
 | `pack --cell runs/<run>/chatgpt/<qid>.json --name <pack>` | Result set from a recorded app chat: rivals fetched now (cached in `runs/fastloop-cache/`); our pages as OpenAI had them stored at the chat. |
-| `pack --query "<q>" --question "<shopper question>" --name <pack>` | Result set from a one-search API replay (about 1 cent), for queries with no app chat yet. |
+| `pack --query "<q>" --question "<shopper question>" --name <pack>` | Result set from a one-search API replay (about 1 cent), for queries with no app chat yet. Fallback: by default, record a pinned one-search app chat and pack from that. |
 | `gap <pack> [<pack> ...]` | Claude judge on the rival results: each source's kind (major reviewer, authority, brand store, retailer, niche reviewer, listicle, forum, spam, off-target), whether it answers the question, the verdict (open, contested, saturated) and what's missing (a lead for the open concern). Several packs: recurring domains. |
-| `replay <pack> [--draft d.md\|d.html --url /slug --rank 2] --reps 3 --tag v1` | Builds the context (length rule), inserts the draft, answers through the API with search off. Without `--draft`: the pack as recorded. |
+| `replay <pack> [--draft d.md\|d.html --url /slug --rank 2] --reps 3 --tag v1 [--engine app\|api]` | Builds the context (length rule) and inserts the draft. `--engine app` pastes it into a Free temporary chat, search off, one chat at a time; it is the default from 10-31. `--engine api` answers through the API with search off, as the fallback. Without `--draft`: the pack as recorded. |
 | `score <pack> [--concern "..."]` | Scorecard per tag: cited (T4+), `/go/`, our pick, relied on us, our point carried, top picks. |
 | `calibrate --n 40 --run <date>-fastcal`, `calreport --run ...` | Replays recorded app chats and reports agreement with what the app did. |
 
