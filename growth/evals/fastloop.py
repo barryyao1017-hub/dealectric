@@ -81,6 +81,16 @@ def cache_path(url: str) -> Path:
     return CACHE / "pages" / (hashlib.sha1(url.encode()).hexdigest()[:16] + ".json")
 
 
+def pdf_text(body: bytes) -> str:
+    """Text of a PDF (manuals, FDA and airline guidance turn up in results); '' if it can't be read."""
+    try:
+        import io, logging, pypdf
+        logging.getLogger("pypdf").setLevel(logging.ERROR)   # font-encoding warnings flood stderr
+        return "\n".join((pg.extract_text() or "") for pg in pypdf.PdfReader(io.BytesIO(body)).pages).strip()
+    except Exception:  # noqa: BLE001
+        return ""
+
+
 def fetch_text(url: str) -> dict:
     """Live text of a rival page (cached). Returns {text, status}; text is '' when the page could not be read."""
     p = cache_path(url)
@@ -89,8 +99,8 @@ def fetch_text(url: str) -> dict:
     started, text, status = E.now_iso(), "", "ok"
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en"})
-        raw = urllib.request.urlopen(req, timeout=20, context=SSL).read(3_000_000).decode("utf-8", "replace")
-        text = html_text(raw)
+        body = urllib.request.urlopen(req, timeout=20, context=SSL).read(8_000_000)
+        text = pdf_text(body) if body[:5] == b"%PDF-" else html_text(body.decode("utf-8", "replace"))
         if len(text) < 400:
             status = "thin"
     except Exception as e:  # noqa: BLE001
@@ -506,6 +516,64 @@ answers it and comes from a major reviewer, authority or substantive niche revie
 missing: the most important thing a shopper asking this would still need that none of the sources answer well."""
 
 
+# v2 (Barry, 10-31): the same labels, judged from our side, with our one proven win as a worked OPEN example. The
+# example's rivals are the real result set of the 10-30 chat gap-solar--budget-1 (runs/2026-10-30-gap-vs-focus), which
+# the v1 prompt called "contested".
+GAP_SYSTEM_V2 = """You judge whether a shopping search is OPEN for a small comparison site, Dealectric: whether a new,
+well-built page could get into ChatGPT's ~12 search results for it and become the source ChatGPT relies on and links
+to. You see the shopper's question, the exact query ChatGPT searched, and the results it got (our own pages removed).
+
+For each numbered source give:
+- kind: major-reviewer (RTINGS, Wirecutter, Consumer Reports, OutdoorGearLab, Tom's Guide, TechRadar and peers that
+  test products), authority (government, standards, the maker's manual or support pages), brand-store (a maker's own
+  product or category page), retailer (Amazon, Best Buy, Home Depot listings), niche-reviewer (a small site that
+  compares or tests with specific data), listicle (a roundup with no testing or data of its own, often AI-written or on
+  a recycled domain), forum (Reddit, community Q&A), spam, off-target (about another product kind or question),
+  unreadable (no text).
+- answers_it: true only if this page answers THIS question, constraints included (budget, size, use), with specific,
+  current, checkable product information. A famous site counts for nothing when its page is about something else: a
+  deal post on one bundle, a different price band, a general category guide.
+- why: one short phrase.
+
+Then the verdict, from Dealectric's side:
+- open: no major reviewer or authority answers this exact question with its own testing. The results are affiliate
+  listicles, deal posts, single-brand pages, pages answering a neighbouring question, and niche sites that compare
+  with specs or claim testing nobody can check. Such niche pages do not close a search: we won against three of them.
+  A focused page with current prices, tested codes and a direct pick would stand out.
+- contested: one major reviewer or authority answers this exact question with testing, or several answer it in part;
+  a new page could get in but would compete with it.
+- saturated: two or more major reviewers or authorities answer this exact question well, with testing. A new page
+  would not displace them.
+missing: the most important thing a shopper asking this would still need that none of the sources answer well.
+
+WORKED EXAMPLE, our one proven win. Its label is OPEN.
+Shopper question: "Best solar generator kit with panels for under $1,000?"
+ChatGPT's query: "best solar generator kits with solar panels under $1000 2026 reviews prices"
+Results ChatGPT got, besides our page:
+[0] solargenadvisor.com, "Best Solar Generator Kits 2026: Station + Panel Bundles": affiliate roundup with scores, no
+    testing shown. listicle.
+[1] techradar.com, "EcoFlow's Delta 3 solar generator bundle gets a $300 price drop at Amazon": a deal post on one
+    bundle. major-reviewer by name, but it does not answer the question.
+[2] pwice.com, "8 Best Solar Generators Under $1000 (October 2026) Honest Reviews": affiliate roundup, no test data.
+    listicle.
+[3] trek4tech.com, "Best Solar Generators (2026): Six Bundles Compared on the Panel, Not the Pitch": compares
+    bundles on panel output and refill time, with numbers. niche-reviewer, answers it.
+[4] roversolar.com, "Best Solar Generators of 2026": compares kits (Anker C1000 + 200W) with specs and refill
+    estimates; claims hands-on testing. niche-reviewer, answers it.
+[5] solargenadvisor.com, "SGA Best Under $1K 2026 Award — Jackery Explorer 1000 V2": a single-product award page.
+    listicle.
+[6] outageoutfitter.com, "Bluetti vs EcoFlow vs Jackery vs Anker SOLIX vs Goal Zero": brand comparison, mostly
+    without panels. niche-reviewer, off the kit question.
+[7] powersized.com, "Portable Power Station With Solar Panel Kits: Price Guide": tracks 53 kits, kit vs separate
+    prices and refill times, untested. niche-reviewer, answers it.
+Why it is OPEN: no major reviewer or authority has tested kits under $1,000; the one famous name is a deal post. Three
+niche sites answer it with specs and price tracking, but none with testing anyone can check, and the rest are
+affiliate roundups. Our page, "Best solar generator with panels included (2026): 15 kits compared on battery,
+inverter, solar input and price", with current prices and the brand's cart-tested code where one exists, ranked 1st
+in both chats on this question. ChatGPT cited it both times, and once put our buy link in its answer. Searches that
+look like this one are what we are looking for."""
+
+
 def named_query(q: str) -> str | None:
     """The brand or model number a query names, if any. Gap scores run on general category searches only (Barry,
     10-31): a named search is an edge case whose results are the brand's own pages, so it reads as falsely open."""
@@ -529,13 +597,19 @@ def cmd_gap(a) -> None:
         for i, r in enumerate(r for r in pack["results"] if "dealectric.com" not in r["url"]):
             doms[E.host_of(r["url"]).removeprefix("www.")] += 1
             rows.append(f"[{i}] {r.get('title')}\nURL: {r['url']}\n{(r.get('text') or r.get('snippet') or '')[:1500]}")
-        out = d / ("gap.json" if a.judge == JUDGE else f"gap-{a.judge}.json")
+        system = GAP_SYSTEM_V2 if a.prompt == "v2" else GAP_SYSTEM
+        if a.show:
+            print(f"===== SYSTEM ({a.prompt}) =====\n{system}\n\n===== USER =====\nSHOPPER QUESTION: {pack['question']}\n"
+                  f"SEARCH QUERY: {pack['query']}\n\nSOURCES:\n\n" + "\n\n".join(rows))
+            return
+        stem = "gap" if a.prompt == "v1" else f"gap-{a.prompt}"
+        out = d / (f"{stem}.json" if a.judge == JUDGE else f"{stem}-{a.judge}.json")
         if out.exists() and not a.redo:
             g = json.loads(out.read_text())
         else:
             user = f"SHOPPER QUESTION: {pack['question']}\nSEARCH QUERY: {pack['query']}\n\nSOURCES:\n\n" + "\n\n".join(rows)
             try:
-                g = E.claude_cli_json(GAP_SYSTEM, user.replace("\x00", ""), a.judge, GAP_SCHEMA, timeout=600) or {}
+                g = E.claude_cli_json(system, user.replace("\x00", ""), a.judge, GAP_SCHEMA, timeout=600) or {}
             except Exception as e:  # noqa: BLE001
                 print(f"{name}: judge failed: {str(e)[:120]}")
                 continue
@@ -544,6 +618,94 @@ def cmd_gap(a) -> None:
         print(f"{name} [{a.judge}]: {g.get('verdict', '?').upper()} | {dict(kinds)} | missing: {g.get('missing', '')[:160]}")
     if len(a.packs) > 1:
         print("recurring domains:", ", ".join(f"{k} {v}" for k, v in doms.most_common(12) if v > 1))
+
+
+# ---------------------------------------------------------------- the vote (Barry, 10-31)
+# Judges see each result as ChatGPT's model does: the pack cut by the measured length rule (build_context: share by
+# rank, long pages cut to the passages matching the query), our pages removed. They must quote each result word for
+# word; quotes are checked against the text they were shown.
+
+VOTE_SCHEMA = {"type": "object", "properties": {
+    "sources": {"type": "array", "items": {"type": "object", "properties": {
+        **GAP_SCHEMA["properties"]["sources"]["items"]["properties"],
+        "evidence": {"type": "string"}}, "required": ["n", "kind", "answers_it", "why", "evidence"]}},
+    "verdict": {"type": "string", "enum": ["open", "contested", "saturated"]},
+    "missing": {"type": "string"}, "why": {"type": "string"}}, "required": ["sources", "verdict", "missing", "why"]}
+VOTE_SYSTEM = GAP_SYSTEM_V2.replace(
+    "You see the shopper's question, the exact query ChatGPT searched, and the results it got (our own pages removed).",
+    "You see the shopper's question, the exact query ChatGPT searched, and the results it got (our own pages removed),\n"
+    "each with the text ChatGPT's model was given for it: short pages whole, long ones cut to the passages matching the\n"
+    "query, less text for lower ranks. Judge from that text; it is what ChatGPT reads.").replace(
+    "- why: one short phrase.\n\nThen the verdict",
+    "- why: one short phrase.\n- evidence: a passage copied word for word from that source's text, 8 to 30 words, that best\n"
+    "  supports your answers_it label. Copy it exactly; it is checked.\n\nThen the verdict")
+
+
+def squash(s: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+
+
+def vote_context(pack: dict) -> list[dict]:
+    results = []
+    for r in pack["results"]:
+        r = dict(r)
+        if (r.get("text") or "").startswith("%PDF-"):   # cached before PDF support: fetch again as text
+            cache_path(r["url"]).unlink(missing_ok=True)
+            r["text"] = fetch_text(r["url"])["text"]
+        results.append(r)
+    return [c for c in build_context(results, pack["query"]) if "dealectric.com" not in c["url"]]
+
+
+def cmd_vote(a) -> None:
+    jobs = []
+    for name in a.packs:
+        pack = json.loads((pack_dir(name) / "pack.json").read_text())
+        if (hit := named_query(pack.get("query") or "")) and not a.allow_named:
+            print(f"{name}: skipped, query names {hit!r}")
+            continue
+        ctx = vote_context(pack)
+        rows = [f"[{i}] {c.get('title')}\nURL: {c['url']}\n{c['shown']}" for i, c in enumerate(ctx)]
+        user = (f"SHOPPER QUESTION: {pack['question']}\nSEARCH QUERY: {pack['query']}\n\nRESULTS:\n\n" + "\n\n".join(rows)).replace("\x00", "")
+        if a.show:
+            print(f"===== SYSTEM =====\n{VOTE_SYSTEM}\n\n===== USER ({len(user)} chars) =====\n{user}")
+            return
+        jobs += [(name, pack, ctx, user, m) for m in a.judges]
+
+    def one(job):
+        name, pack, ctx, user, m = job
+        out = pack_dir(name) / "vote-v2" / f"{m}.json"
+        if out.exists():
+            return name, m, json.loads(out.read_text())
+        try:
+            g = E.claude_cli_json(VOTE_SYSTEM, user, m, VOTE_SCHEMA, timeout=900) or {}
+        except Exception as e:  # noqa: BLE001
+            return name, m, {"error": str(e)[:200]}
+        found = 0
+        for s in g.get("sources", []):
+            shown = squash(ctx[s["n"]]["shown"]) if 0 <= s.get("n", -1) < len(ctx) else ""
+            q = squash(s.get("evidence", ""))
+            s["quote_found"] = len(q) >= 20 and q in shown
+            found += s["quote_found"]
+        g.update(results=len(ctx), quotes_found=found, chars_shown=sum(len(c["shown"]) for c in ctx),
+                 chars_full=sum(c["full_chars"] for c in ctx))
+        out.parent.mkdir(parents=True, exist_ok=True)
+        E.write_json(out, g)
+        return name, m, g
+
+    with cf.ThreadPoolExecutor(a.workers) as ex:
+        res = list(ex.map(one, jobs))
+    table = collections.defaultdict(dict)
+    for name, m, g in res:
+        table[name][m] = g
+    for name in a.packs:
+        if name not in table:
+            continue
+        gs = [table[name].get(m, {}) for m in a.judges]
+        votes = [g.get("verdict", "err") for g in gs]
+        top, k = collections.Counter(votes).most_common(1)[0]
+        q = json.loads((pack_dir(name) / "pack.json").read_text())["question"]
+        reads = " ".join(f"{g.get('quotes_found', '?')}/{g.get('results', '?')}" for g in gs)
+        print(f"{name}  {'/'.join(v[:4] for v in votes):16} -> {top.upper() if k >= 2 else 'SPLIT':9} quotes {reads:14} | {q[:60]}", flush=True)
 
 
 def cmd_gapcheck(a) -> None:
@@ -841,7 +1003,11 @@ def main() -> int:
     p.add_argument("--name", required=True); p.add_argument("--top", type=int, default=12)
     p.add_argument("--engine", choices=["app", "api"], default="app")
     p = sub.add_parser("gap"); p.add_argument("packs", nargs="+"); p.add_argument("--redo", action="store_true"); p.add_argument("--allow-named", action="store_true")
+    p.add_argument("--prompt", choices=["v1", "v2"], default="v2"); p.add_argument("--show", action="store_true")
     p.add_argument("--judge", default=JUDGE)
+    p = sub.add_parser("vote"); p.add_argument("packs", nargs="+"); p.add_argument("--allow-named", action="store_true")
+    p.add_argument("--judges", nargs="+", default=["claude-sonnet-5-5", "claude-opus-5-5", "claude-fable-5-1"])
+    p.add_argument("--workers", type=int, default=6); p.add_argument("--show", action="store_true")
     p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)
@@ -857,7 +1023,7 @@ def main() -> int:
     p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)
     a = ap.parse_args()
     {"pack": cmd_pack, "gap": cmd_gap, "replay": cmd_replay, "score": cmd_score, "calibrate": cmd_calibrate,
-     "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck}[a.cmd](a)
+     "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck, "vote": cmd_vote}[a.cmd](a)
     return 0
 
 

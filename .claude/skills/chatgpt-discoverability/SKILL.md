@@ -159,8 +159,23 @@ sentence; 16 on barryyao1017, 24 on barrryyao):
 - Every chat repeated its own tier band (40 of 40).
 
 Use the app engine for picks and our point carried. Use either engine for cited, reading it as relative.
-Gap judge: no human labels (Barry, 10-31); the verdict is a vote of several models. On 20 brand-free searches
-(`runs/fastloop/generic-*`) Sonnet 5.5, Opus 5.5 and Fable 5.1 agree on 14; Fable leans open. ChatGPT voters to come.
+Gap judge: no human labels (Barry, 10-31); the verdict is a majority vote of Sonnet 5.5, Opus 5.5 and Fable 5.1
+(`fastloop.py vote <packs>`). How it's set up:
+- **The prompt (v2, `GAP_SYSTEM_V2`)** judges from our side: could a new page get in and become the source ChatGPT
+  links to. It carries the solar-kit win as a worked OPEN example: no tested major reviewer, the one famous name a deal
+  post, three niche sites with untestable specs.
+- **"Answers it"** means this exact question, constraints included.
+- **The judges see each result as ChatGPT's model does:** the measured length rule, about 15–19k characters per
+  search, our pages removed.
+- **A word-for-word quote per result**, checked against the text shown. On the first run every quote was found except
+  for results with no readable text, plus one miss.
+
+Without the example (v1, first 1,500 characters per page), 17 of 20 came out contested and only 1 open. With v2:
+- 8 open (7 unanimous), 9 contested, 3 saturated. Table and gap leads in `growth/focus/gap-vote/v2-results.md`.
+- The two broad searches where our product pages scored 0 of 8 came out saturated.
+- The search closest to the win ("small solar generator kit under $500") came out open.
+
+ChatGPT voters to come.
 
 Until a step passes, label its output unvalidated.
 
