@@ -79,7 +79,7 @@ ul.list b { font-weight: 600; }
 
 <main>
   <header class="prose">
-    <div class="eyebrow">Dealectric · DLC-77 · final design · app by default, API as fallback · 2026-10-31</div>
+    <div class="eyebrow">Dealectric · DLC-77/112 · built and calibrated · 2026-10-31</div>
     <h1>ChatGPT Fast Loop</h1>
     <p class="lede"><b>Input: one product or brand.</b> Start from questions shoppers with a loose purchase intent would really ask, learn which words ChatGPT turns them into, and aim pages at the searches where the current results are weak. We don't try to simulate OpenAI's ranking: we measure the real results, judge the gap, and confirm retrieval live at volume.</p>
   </header>
@@ -310,6 +310,7 @@ ul.list b { font-weight: 600; }
       <p>The query space is bounded: the brands and product types we have approved links and codes for, times the ways a shopper asks. Each harvested query gets one row:</p>
       <ul class="list">
         <li><b>Open or saturated.</b> Read the real results for that query and judge whether they already answer it well. Earlier gap work found gaps are about quality, not count: AI listicles on expired domains and spam, not empty result sets.</li>
+        <li><b>General searches only.</b> A query that names a brand or model returns the brand's own pages and retailers, so it looks open when it isn't (Barry, 10-31).</li>
         <li><b>Fit.</b> We sell a product that answers it, with a tested code.</li>
         <li><b>Does ChatGPT search at all?</b> Vague questions sometimes get a clarifying reply or an answer from memory. No search means no page can win.</li>
         <li><b>Demand,</b> roughly: how often the harvest produces the query, plus Bing keyword volume where it exists. There's no ChatGPT demand data.</li>
@@ -341,12 +342,12 @@ ul.list b { font-weight: 600; }
       <thead><tr><th>Step</th><th>Built from</th><th>State</th><th>Before it's trusted</th></tr></thead>
       <tbody>
         <tr><td>1 · Shopper questions</td><td>The harvest question files already do this: levels G0 (bare category), G1 (situation only) and G2 (category plus one constraint), with no product, model or domain. Extend them per brand and product type, phrased from real sources such as GSC queries and forum posts.</td><td><span class="pill have">exists, extend</span></td><td>A reviewer check that no question leaks a product or model name.</td></tr>
-        <tr><td>2 · Query transfer</td><td><code>harvest.py</code> on app chats records the words ChatGPT searched for each question, and whether it searched at all.</td><td><span class="pill have">exists</span></td><td>App only: the API's first query overlaps the app's 56% of the time, against 90% between two app chats (measured 10-31).</td></tr>
-        <tr><td>3 · Gap score</td><td>The real result set per query: the harvest chat's own results, or a pinned one-search app chat for extra phrasings (API replay as fallback). A judge model labels each result, as <code>gapexp.py</code> did, and counts recurring domains.</td><td><span class="pill new">judge prompt new</span></td><td><span class="pill prop">proposal</span> The judge agrees with your labels on a sample of about 20 queries.</td></tr>
-        <tr><td>3b · Competitor set</td><td>Recurring domains in the top 12 across a query cluster's phrasings, the page shape that wins (comparison vs product page), the shared core, and the open concern from research outside the top 12.</td><td><span class="pill new">new</span></td><td>Your review of the chosen concern.</td></tr>
+        <tr><td>2 · Query transfer</td><td><code>harvest.py</code> on app chats records the words ChatGPT searched for each question, and whether it searched at all.</td><td><span class="pill have">exists</span></td><td>App only. Given the same blind question, the API's first query shares 56% of its words with the app's, against 90% between two app chats (measured 10-31, 33 questions).</td></tr>
+        <tr><td>3 · Gap score</td><td>General category searches only: a query naming a brand or model reads as falsely open. The real result set per query (the harvest chat's results, or a pinned one-search app chat), shown to the judges as ChatGPT's model sees it. Verdict: majority vote of Sonnet, Opus and Fable (<code>fastloop.py vote</code>, prompt v2 with the solar-kit win as a worked example, each result quoted and checked).</td><td><span class="pill have">built, vote v2</span></td><td>No human labels (Barry, 10-31). First run on 20 brand-free searches: 8 open, 9 contested, 3 saturated; the two searches our product pages lost came out saturated. Live readings are the check. ChatGPT voters to come.</td></tr>
+        <tr><td>3b · Competitor set</td><td>Recurring domains in the top 12 across a query cluster's phrasings, the page shape that wins (comparison vs product page), the shared core, and the open concern from research outside the top 12.</td><td><span class="pill jud">by hand</span></td><td>No command yet: <code>gap</code> prints recurring domains and the vote gives a "missing" lead per search; counting the shared core and researching the concern are done by hand. Your review of the chosen concern.</td></tr>
         <tr><td>Draft</td><td>Your judgment, or mine reviewed by you, in the target query's words. Neutral copy, nothing addressed to AI.</td><td><span class="pill jud">judgment</span></td><td>Checked live only.</td></tr>
-        <tr><td>4 · Context builder</td><td>The rival pages from the competitor set, fetched now (they change slowly), each cut to the share measured for its rank, plus the draft. Same-turn echoes stopped working on 10-30 (the model now quotes at most ~25 words per source), so the cut is checked with needle questions in the app instead.</td><td><span class="pill new">new, fastloop.py</span></td><td>Needle spot-checks agree with the cut; then tested with step 5.</td></tr>
-        <tr><td>5 · Answer replay</td><td>The shopper's question answered from that context in a Free temporary chat, search off (<code>fastloop.py replay --engine app</code>); the API with search off is the fallback. Scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill have">built, fastloop.py</span></td><td><span class="pill prop">proposal</span> On the recorded app chats, matches cited/not in 80%+ and the top pick in 70%+. /go/ and "our point carried" used only to compare drafts.</td></tr>
+        <tr><td>4 · Context builder</td><td>The rival pages from the competitor set, fetched now (they change slowly), each cut to the share measured for its rank, plus the draft. Same-turn echoes stopped working on 10-30 (the model now quotes at most ~25 words per source), so the cut is checked with needle questions in the app instead.</td><td><span class="pill have">built, fastloop.py</span></td><td>Tested through step 5's calibration. Needle spot-checks of the cut not run yet.</td></tr>
+        <tr><td>5 · Answer replay</td><td>The shopper's question answered from that context in a Free temporary chat, search off (<code>fastloop.py replay --engine app</code>); the API with search off is the fallback. Scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill have">calibrated</span></td><td>40 recorded app chats. The app agrees with itself on cited/not only 72% of the time, so that is the ceiling. App engine: cited/not 73%, top pick 80%. API engine: 70–77%, top pick 72%. Both over-credit our page by about 15 points, and the paste's linking sentence inflates /go/ (14 of 30 vs the app's 3), so cited and /go/ compare drafts, never forecast.</td></tr>
         <tr><td>Live check</td><td>Pinned one-search app chats on the target queries every day or two (retrieved or not), then blind app readings.</td><td><span class="pill have">tools exist</span></td><td>This is the check.</td></tr>
       </tbody>
     </table>
@@ -360,7 +361,8 @@ ul.list b { font-weight: 600; }
         <li><b>Whether a new page will rank.</b> Judgment until it's live. Volume across many gap queries is how we learn, not a model of OpenAI's ranking.</li>
         <li><b>The real hand-over rate.</b> In the app, /go/ reaches a shopper only through a button the model writes; the API writes plain text.</li>
         <li><b>Catalog cards.</b> On brand questions the brand's own card can take the buy slot whatever our page says.</li>
-        <li><b>Query drift and quota.</b> ChatGPT's phrasing changes, and app harvests are capped by the Free quota until the transfer test says the API can stand in.</li>
+        <li><b>Query drift and quota.</b> ChatGPT's phrasing changes, and app harvests are capped by the Free quota: the transfer test showed the API can't stand in for the app's queries.</li>
+        <li><b>Single chats.</b> The app disagrees with itself on whether it cites us in 28% of repeat chats, so no draft score predicts one chat. Read rates over 30+ chats.</li>
       </ul>
     </div>
     <div>
