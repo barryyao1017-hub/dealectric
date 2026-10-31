@@ -207,6 +207,20 @@ address.
 - **Length.** About 4,000 characters, so the whole page reaches the model, until the 3.5k–16k range is measured. Put
   the answer to the concern near the top, under a heading in the query's words. A long page that gets cut keeps the
   passages matching the query.
+- **The concern goes inside the short answer, on one line, in the query's words.** [measured in the replay, DLC-114,
+  2026-10-31]
+  - A new page ranked 3rd of 17 results gets only about 1,500 characters.
+  - Draft A put the 30-amp concern in a section below the short answer. The cut dropped it, and it was carried in 0
+    of 2 answers.
+  - The same concern folded into the short answer (A2) was carried in 4 of 6.
+  - The rendered page split its short answer across source lines, and the concern fell out again. Rejoining it into
+    one line fixed it.
+- **Check the rendered page before shipping.**
+  - Run `fastloop.py replay <pack> --draft docs/<slug>.html` and confirm the concern and the `/go/` link survive the
+    cut in every target result set.
+  - The renderer adds a "Where to buy" block above the intro, so the rendered text is not the draft's text.
+- **A worked example:** `/best-2kwh-power-station-for-rv`. Its record, inputs, outputs and decisions are in
+  `growth/focus/fastloop-runs/rv-2kwh/` and on the run-log artifact (https://claude.ai/artifact/NtCVs8kZBHtyRJorjYCJU7).
 - **What the shopper sees.** The result title is the `<title>` at OpenAI's last fetch. The ~200-character snippet is
   picked for the query; on product pages it is the H1 and summary line, never the meta description [measured]. Make
   the H1 and summary carry the deal.
