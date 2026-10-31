@@ -44,7 +44,7 @@ footprint-logged.
 from __future__ import annotations
 
 import argparse, bisect, collections, concurrent.futures as cf, hashlib, json, os, random, re, ssl, statistics, sys, time
-import urllib.request
+import urllib.parse, urllib.request
 from pathlib import Path
 
 os.environ.setdefault("AGENT_CDP", "http://localhost:9222")   # profile 1, signed in; ctxprobe alone defaults to 9223
@@ -303,7 +303,7 @@ def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
         tab.call("Page.enable")
         tab.call("Page.addScriptToEvaluateOnNewDocument", source=K.WIDE_HOOK_JS)
-        tab.navigate("https://chatgpt.com/?temporary-chat=true")
+        tab.navigate("https://chatgpt.com/?temporary-chat=true" + (f"&model={APP_MODEL}" if APP_MODEL else ""))
         time.sleep(6)
         t0 = time.time()
         C.submit(tab, text, 0)
@@ -1189,6 +1189,110 @@ def cmd_pastecalreport(a) -> None:
     print(txt)
 
 
+# ---------------------------------------------------------------- paired calibration (Barry, 2026-11-01)
+# No fixed ground truth: real chats age (0 of 5 recorded hand-overs repeated live on 11-01). Each question is asked
+# live (search on) and, right after, its own result set is replayed in a fresh chat (search off), so both sides see the
+# same results, pages and model. A second live ask on the first --repeat questions gives the noise floor.
+
+PAIRED = E.RUNS_DIR / "2026-11-01-paired"
+APP_MODEL = os.environ.get("FASTLOOP_MODEL", "gpt-6")   # pin the model the Free plan answers with
+
+
+def live_chat(prompt: str) -> dict:
+    """One live temporary chat with search on; returns the decomposed answer plus the raw result list."""
+    import ui, ctxprobe as C, cardprobe as K
+    url = ("https://chatgpt.com/?temporary-chat=true&hints=search" + (f"&model={APP_MODEL}" if APP_MODEL else "")
+           + "&q=" + urllib.parse.quote(prompt, safe=""))
+    tab = ui.Tab("about:blank")
+    tab.ws.settimeout(180)
+    started, err, rec = E.now_iso(), None, {}
+    try:
+        tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
+        tab.call("Page.enable")
+        tab.call("Page.addScriptToEvaluateOnNewDocument", source=K.WIDE_HOOK_JS)
+        tab.navigate(url)
+        time.sleep(6)
+        t0 = time.time()
+        C.submit(tab)
+        C.wait_turn(tab, 0, t0, timeout=300)
+        time.sleep(2)
+        x = K.decompose(C.read_sse(tab))
+        rec = {"status": 200, "answer": x["answer"], "links": x["links"], "products": x["products"], "model": x["model"],
+               "queries": x["queries"], "results": x["results"]}
+    except Exception as e:  # noqa: BLE001
+        err = f"{type(e).__name__}: {e}"
+        rec = {"status": 0, "error": err}
+    finally:
+        E.footprint("chatgpt-ui", started, E.now_iso(), prompt=prompt, script="fastloop.py", run_id=PAIRED.name, temporary=True,
+                    retrieved=[{"url": r["url"]} for r in rec.get("results") or []], error=err, cdp=ui.CDP)
+        tab.close()
+    rec["started_at"] = started
+    return rec
+
+
+def answer_links(rec: dict, ctx: list[dict] | None = None) -> list[str]:
+    """Links an app answer gave: buttons, in-text links and source pills (never shopping cards)."""
+    return replay_links(rec, ctx or [])
+
+
+def cmd_paired(a) -> None:
+    global FMT_VERSION, PASTE_VERSION
+    FMT_VERSION, PASTE_VERSION = a.fmt, a.paste
+    qs = json.loads(Path(a.questions).read_text())["questions"][a.start:a.start + a.n]
+    out = PAIRED / f"{a.fmt}-{a.paste}"
+    out.mkdir(parents=True, exist_ok=True)
+    stored = Stored()
+    for i, q in enumerate(qs, a.start):
+        p = out / f"{i:03d}.json"
+        if p.exists():
+            continue
+        live = live_chat(q["prompt"])
+        if live.get("status") != 200 or not live.get("results"):
+            print(f"{i:3} live chat failed or no search: {live.get('error') or 'no results'}", flush=True)
+            E.write_json(p, {"i": i, "question": q["prompt"], "live": live, "skipped": "no search"})
+            continue
+        query = (live.get("queries") or [q["prompt"]])[0]
+        res = [r for r in live["results"] if r.get("url") and r.get("type") in (None, "search")]
+        fetch_all([{"url": r["url"]} for r in res])
+        cell = {"started_at": live["started_at"], "response": {"search_results": res}}
+        ctx = build_context(results_from_cell(cell, stored), query)
+        rep = answer_app(q["prompt"], query, ctx)
+        live2 = live_chat(q["prompt"]) if i - a.start < a.repeat else None
+        rec = {"i": i, "question": q["prompt"], "query": query, "n_results": len(ctx),
+               "our_rank": next((k + 1 for k, r in enumerate(ctx) if "dealectric.com" in r["url"]), None),
+               "live": {"model": live["model"], "links": answer_links(live), **link_flags(answer_links(live)), "answer": live["answer"]},
+               "replay": {"model": rep.get("model"), "status": rep.get("status"), "links": replay_links(rep, ctx),
+                          **link_flags(replay_links(rep, ctx)), "answer": rep.get("answer")},
+               "fmt": a.fmt, "paste": a.paste}
+        if live2 and live2.get("status") == 200:
+            rec["live2"] = {"model": live2["model"], "links": answer_links(live2), **link_flags(answer_links(live2))}
+        E.write_json(p, rec)
+        L, R = rec["live"], rec["replay"]
+        print(f"{i:3} rank={rec['our_rank']} live[{L['model']}] m1={L['m1']:d} m2={L['m2']:d} | replay[{R['model']}] m1={R['m1']:d} m2={R['m2']:d}"
+              + (f" | live2 m1={rec['live2']['m1']:d} m2={rec['live2']['m2']:d}" if 'live2' in rec else "") + f" | {q['prompt'][:50]}", flush=True)
+    cmd_pairedreport(a)
+
+
+def cmd_pairedreport(a) -> None:
+    lines = []
+    for d in sorted(x for x in PAIRED.iterdir() if x.is_dir()):
+        rows = [json.loads(p.read_text()) for p in sorted(d.glob("*.json"))]
+        rows = [r for r in rows if "replay" in r and r["replay"].get("status") == 200]
+        if not rows:
+            continue
+        rate = lambda side, k: sum(r[side][k] for r in rows if r[side]["linked"]) / max(sum(r[side]["linked"] for r in rows), 1)
+        agree = lambda k: sum(r["live"][k] == r["replay"][k] for r in rows) / len(rows)
+        rep = [r for r in rows if "live2" in r]
+        noise = lambda k: sum(r["live"][k] == r["live2"][k] for r in rep) / max(len(rep), 1)
+        models = collections.Counter(r["live"]["model"] for r in rows) + collections.Counter(r["replay"]["model"] for r in rows)
+        lines += [f"{d.name}: {len(rows)} pairs, models {dict(models)}",
+                  f"  M1 live {rate('live', 'm1'):.0%} | replay {rate('replay', 'm1'):.0%}   per-pair agreement {agree('m1'):.0%}"
+                  + (f"   live vs live {noise('m1'):.0%} ({len(rep)})" if rep else ""),
+                  f"  M2 live {rate('live', 'm2'):.0%} | replay {rate('replay', 'm2'):.0%}   per-pair agreement {agree('m2'):.0%}"
+                  + (f"   live vs live {noise('m2'):.0%} ({len(rep)})" if rep else "")]
+    print("\n".join(lines) or "no paired rows yet")
+
+
 class Downgraded(Exception):
     """An app answer from gpt-6-mini (the Free quota ran out) or a failed chat: not a calibration case."""
 
@@ -1308,6 +1412,10 @@ def main() -> int:
     p.add_argument("--rep", type=int, default=1); p.add_argument("--engine", choices=["app", "api", "apitool"], default="app")
     p.add_argument("--model", default="gpt-6.1-sol")
     p = sub.add_parser("pastecalreport")
+    p = sub.add_parser("paired"); p.add_argument("--questions", default=str(E.REPO / "growth/focus/pastecal-reask-questions.json"))
+    p.add_argument("--n", type=int, default=15); p.add_argument("--start", type=int, default=0); p.add_argument("--repeat", type=int, default=5)
+    p.add_argument("--fmt", choices=FORMATS, default="v1"); p.add_argument("--paste", choices=sorted(PASTES), default="c1")
+    p = sub.add_parser("pairedreport")
     p = sub.add_parser("reaskreport"); p.add_argument("--run", default="2026-11-01-pastecal-reask")
     p.add_argument("--questions", default=str(E.REPO / "growth/focus/pastecal-reask-questions.json"))
     p = sub.add_parser("transfer"); p.add_argument("--n", type=int, default=40); p.add_argument("--model", default=MODEL)
@@ -1316,7 +1424,7 @@ def main() -> int:
     {"pack": cmd_pack, "gap": cmd_gap, "replay": cmd_replay, "score": cmd_score, "calibrate": cmd_calibrate,
      "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck, "vote": cmd_vote,
      "pastecal": cmd_pastecal, "pastecalreport": cmd_pastecalreport,
-     "reaskreport": cmd_reaskreport}[a.cmd](a)
+     "reaskreport": cmd_reaskreport, "paired": cmd_paired, "pairedreport": cmd_pairedreport}[a.cmd](a)
     return 0
 
 
