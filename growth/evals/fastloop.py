@@ -293,7 +293,7 @@ def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
 
 def _click(tab, el_js: str) -> None:
     r = tab.eval(f"(() => {{ const e = ({el_js}); if (!e) return null; const b = e.getBoundingClientRect(); "
-                 "return [b.x + b.width / 2, b.y + b.height / 2]; }})()")
+                 "return [b.x + b.width / 2, b.y + b.height / 2]; })()")
     if not r:
         raise RuntimeError(f"not found: {el_js[:80]}")
     tab.call("Input.dispatchMouseEvent", type="mouseMoved", x=r[0], y=r[1])
@@ -766,8 +766,19 @@ def cmd_replay(a) -> None:
     E.write_json(out / "context.json", {"query": pack["query"], "our_rank": our_rank,
                                         "results": [{k: r[k] for k in ("url", "title", "share", "full_chars", "shown", "source")} for r in ctx]})
 
+    tried = {active_account()} if a.engine == "app" else set()
+
     def one(n):
+        if (out / f"{n}.json").exists():   # resume: keep answers already recorded
+            return json.loads((out / f"{n}.json").read_text())
         rec = respond(a.engine, pack["question"], pack["query"], ctx, a.model, key)
+        while a.engine == "app" and (rec.get("downgraded") or rec["status"] != 200):   # quota: next account, same chat
+            new = switch_account(tried)
+            if not new:
+                break
+            tried.add(new)
+            print(f"    switched ChatGPT account to {new}", flush=True)
+            rec = respond(a.engine, pack["question"], pack["query"], ctx, a.model, key)
         rec.update(tier(rec["text"], our_rank), our_rank=our_rank, n=n, tag=tag)
         E.write_json(out / f"{n}.json", rec)
         return rec

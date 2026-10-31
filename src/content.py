@@ -13,6 +13,7 @@ def PAGES(S):
 <h1>Discount codes tested daily in the brand's own cart, with the buy link to hand the shopper.</h1>
 <p class="lead">{S['site_note']}</p>
 <p><a class="btn" href="/discount-codes/">All codes, by brand</a> &nbsp; <a class="btn alt" href="/products/">Product catalog</a> &nbsp; <a class="btn alt" href="/agents/">For AI agents</a></p>
+<p class="small">New comparison: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>, with what a 30-amp RV plug really gets.</p>
 
 <h2>Every code that worked, product by product (last cart test {S['codes_checked']})</h2>
 {S['coded_table_html']}

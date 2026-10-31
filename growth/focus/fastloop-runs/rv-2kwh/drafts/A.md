@@ -1,0 +1,28 @@
+# Best 2kWh portable power station for an RV under $900 (2026): what a 30-amp RV plug really gets
+
+Prices checked on the makers' US stores on 2026-10-31.
+
+**Short answer.** For an RV, buy a 2 kWh station with a built-in TT-30 (30-amp RV) outlet, so the shore cord plugs straight in. Under $900 that is the **BLUETTI AC200L**: 2,048 Wh LiFePO4, 2,400 W, TT-30 outlet, 1,200 W solar input, $899, or $854.05 with code AFF5OFF (tested daily in BLUETTI's cart, last passed 2026-10-30). Buy: https://dealectric.com/go/bluetti-ac200l . It is late in its life (BLUETTI Canada lists it as discontinued) but was in stock on bluettipower.com on 2026-10-31. The other two with a TT-30 under $900 are Anker's SOLIX C2000 Gen 2 ($899.99, 41.7 lb, the lightest) and the Renogy PowerStation 2000 ($849).
+
+## What the 30-amp outlet really delivers
+
+- **The socket is 30 A, the inverter is not.** 30 A at 120 V is 3,600 W. Every 2 kWh station caps at 2,200–2,600 W, about 20 A. Anker rates its TT-30 at 20 A. Your fridge, water pump, lights, fans and a coffee maker run fine; a microwave plus a kettle at once will trip it.
+- **Turn the converter off.** Plugged into the station, the RV thinks it is on shore power, and its converter charges the house battery from the station, up to about 800 W. Switch the converter breaker off once the house battery is full.
+- **Set the fridge to propane.** A two-way fridge on AUTO switches to 120 V and draws 300–450 W all day, 2.4–3.6 kWh, more than the whole pack.
+- **No rooftop AC to speak of.** A 13,500 BTU AC needs 2,800–3,500 W to start (about 2,000 W with a soft starter) and runs 1,300–1,900 W: about an hour per 2 kWh.
+
+## 2 kWh stations for an RV under $900
+
+| Model | Battery | AC output | TT-30 | Solar in | Weight | Price 10-31 |
+|---|---|---|---|---|---|---|
+| BLUETTI AC200L | 2,048 Wh LiFePO4 | 2,400 W | Yes | 1,200 W | 62.4 lb | $899; $854.05 with AFF5OFF |
+| Anker SOLIX C2000 Gen 2 | 2,048 Wh LFP | 2,400 W | Yes (20 A) | 800 W | 41.7 lb | $899.99 |
+| Renogy PowerStation 2000 | 2,048 Wh LiFePO4 | 2,400 W | Yes | 1,200 W | 51.8 lb | $849 |
+| BLUETTI Elite 200 V2 | 2,073.6 Wh LiFePO4, 6,000 cycles | 2,600 W | No (5-20 to TT-30 adapter) | 1,000 W | 53.4 lb | $899; $854.05 with AFF5OFF |
+| Jackery Explorer 2000 v2 | 2,042 Wh LiFePO4 | 2,200 W | No | 400 W | 39.5 lb | $999 |
+
+Elite 200 V2: https://dealectric.com/go/bluetti-elite-200-v2 . Lighter and longer-lived than the AC200L, but no RV outlet.
+
+## How long 2 kWh lasts in an RV
+
+A 12 V compressor fridge uses about 0.7 kWh a day, a furnace blower 0.3–0.5 kWh a night, lights, phones and the water pump about 0.2 kWh: roughly 1.2–1.5 kWh a day. That is about a day and a half with no sun, and two to three days with 200–400 W of solar. Recharge from a campground 20 A outlet in about 1–1.5 hours, or on the road with a 560–800 W alternator charger; the 12 V socket gives only about 100 W.

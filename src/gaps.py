@@ -323,4 +323,56 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  ],
  "published": "2026-10-30", "checked": "2026-10-30"},
 
+# ---------------- G05: 2 kWh power station for an RV under $900 (DLC-114, the first end-to-end fast-loop run) ----------------
+# ChatGPT's own searches (2026-10-31 harvest, growth/evals/runs/2026-10-31-harvest-rv): "best 2kWh portable power stations under
+# $900 for RV 2026 prices models comparison"; "best portable power stations for RV boondocking under $1000 2026 LiFePO4
+# comparison". Three-model gap vote: open on all six RV searches. Winning draft A2 of growth/focus/fastloop-runs/rv-2kwh/
+# (the 30-amp reality in the short answer, carried into 4 of 6 replayed answers; B 2 of 6, C 0 of 6). Facts and sources:
+# growth/focus/fastloop-runs/rv-2kwh/open-concern.md.
+{"slug": "best-2kwh-power-station-for-rv", "question": "G05 (DLC-114)",
+ "title": "Best 2kWh portable power station for an RV under $900 (2026): what a 30-amp RV plug really gets",
+ "h1": "Best 2kWh portable power station for an RV under $900 (2026)",
+ "desc": "Which 2kWh portable power station to buy for an RV under $900: five LiFePO4 stations compared on the TT-30 (30-amp RV) outlet, output, solar input, weight and price on the makers' US stores, with what a 30-amp RV plug really gets from a 2,400 W inverter and the code that worked in BLUETTI's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For an RV, buy a 2kWh portable power station with a built-in TT-30 (30-amp RV) outlet; under $900 that is the <strong>BLUETTI AC200L</strong>: 2,048 Wh LiFePO4, 2,400 W, 1,200 W of solar input ({buy:bluetti-ac200l}). The RV plug gets about 20 A, not 30 A: the 2,400 W inverter runs the RV fridge, water pump, lights and a coffee maker, not the full 30 A service or the rooftop AC. Plugged in, the RV's converter charges its house battery from the power station (up to about 800 W), so switch the converter off once that battery is full, and set a two-way fridge to propane: on AUTO it uses 2.4–3.6 kWh a day, more than the whole 2kWh pack.</p>
+<p>The AC200L is late in its life (BLUETTI Canada lists it as discontinued) but was in stock on bluettipower.com on 2026-10-31. The other RV power stations with a TT-30 under $900 are Anker's SOLIX C2000 Gen 2 ($899.99, the lightest at 41.7 lb) and the Renogy PowerStation 2000 ($849).</p>
+""",
+ "columns": [("battery", "Battery"), ("ac", "AC output"), ("rv", "TT-30 RV outlet"), ("solar", "Max solar input"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"battery": "2,048 Wh LiFePO4", "ac": "2,400 W", "rv": "Yes (capped at 2,400 W)", "solar": "1,200 W, 12–145 V", "weight": "62.4 lb"}},
+  {"brand": "Anker SOLIX", "model": "C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"battery": "2,048 Wh LFP", "ac": "2,400 W (4,000 W peak)", "rv": "Yes (TT-30R rated 20 A)", "solar": "800 W, 11–60 V", "weight": "41.7 lb", "price": "$899.99 (list $1,199.99)"}},
+  {"brand": "Renogy", "model": "PowerStation 2000", "url": "https://www.renogy.com/products/power-station-2000",
+   "cells": {"battery": "2,048 Wh LiFePO4", "ac": "2,400 W (3,600 W surge)", "rv": "Yes (up to 2,400 W)", "solar": "1,200 W, 12–60 V", "weight": "51.8 lb", "price": "$849"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"battery": "2,073.6 Wh LiFePO4, 6,000 cycles", "ac": "2,600 W", "rv": "No (5-20P to TT-30R adapter)", "solar": "1,000 W, 12–60 V", "weight": "53.4 lb"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "cells": {"battery": "2,042 Wh LiFePO4", "ac": "2,200 W (4,400 W surge)", "rv": "No", "solar": "400 W", "weight": "39.5 lb", "price": "$999"}},
+ ],
+ "after": """
+<h2>How long a 2kWh power station lasts in an RV</h2>
+<p>A 12 V compressor fridge uses about 0.7 kWh a day, a furnace blower 0.3–0.5 kWh on a cold night, and lights, phones and the water pump about 0.2 kWh: roughly 1.2–1.5 kWh a day. That is about a day and a half with no sun, and two to three days with 200–400 W of solar. A 13,500 BTU rooftop AC needs 2,800–3,500 W to start (about 2,000 W with a soft starter) and runs 1,300–1,900 W, so a 2kWh station runs it for about an hour.</p>
+<h2>Recharging on the road</h2>
+<ul>
+<li><strong>Campground or home outlet:</strong> about 1–1.5 hours on a 15/20 A outlet.</li>
+<li><strong>Driving:</strong> a DC-DC alternator charger adds 560–800 W; the 12 V socket gives about 100 W, a full day for a full charge.</li>
+<li><strong>Solar:</strong> a 400 W panel returns about 1–1.5 kWh on a good day. The AC200L and Renogy take 1,200 W, the Elite 200 V2 1,000 W, Anker 800 W, Jackery 400 W.</li>
+</ul>
+<p>The Elite 200 V2 is lighter and rated for twice the cycles of the AC200L, but has no RV outlet: it needs a 5-20P to TT-30R adapter and is then limited to that outlet's 20 A. Jackery's Explorer 2000 v2 is a popular pick but was $999 on Jackery's store on 2026-10-31 and has no RV outlet.</p>
+""",
+ "sources": [
+  ("BLUETTI AC200L", "https://www.bluettipower.com/products/ac200l"),
+  ("BLUETTI Elite 200 V2, with BLUETTI's AC200L comparison table", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("BLUETTI AC200L listed as discontinued in Canada", "https://shop-ca.bluettipower.com/products/ac200l"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+  ("Renogy PowerStation 2000", "https://www.renogy.com/products/power-station-2000"),
+  ("Jackery Explorer 2000 v2", "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station"),
+  ("What a TT-30 outlet on a power station delivers, and the converter draw", "https://thecampingnerd.com/power-stations-with-tt-30-rv-outlet/"),
+  ("RV owners on running a trailer from a power station's 30 A outlet", "https://www.forestriverforums.com/threads/using-a-portable-power-station-with-a-30-amp-rv-outlet.2192187/"),
+  ("Measured 12 V compressor fridge use", "https://www.forestriverforums.com/threads/12vdc-compressor-fridge-data.381473/"),
+  ("Starting watts for an RV air conditioner, with and without a soft starter", "https://www.microair.net/blogs/news/what-size-generator-do-you-need-to-run-an-rv-air-conditioner"),
+ ],
+ "published": "2026-10-31", "checked": "2026-10-31"},
+
 ]
