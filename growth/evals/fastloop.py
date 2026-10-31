@@ -95,7 +95,10 @@ def fetch_text(url: str) -> dict:
     """Live text of a rival page (cached). Returns {text, status}; text is '' when the page could not be read."""
     p = cache_path(url)
     if p.exists():
-        return json.loads(p.read_text())
+        try:
+            return json.loads(p.read_text())
+        except ValueError:   # half-written by a concurrent run: fetch again
+            p.unlink(missing_ok=True)
     started, text, status = E.now_iso(), "", "ok"
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en"})
@@ -122,7 +125,10 @@ def fetch_text(url: str) -> dict:
     rec = {"url": url, "text": text, "status": status, "fetched_at": started}
     if not status.startswith("error"):   # retry failures next time
         p.parent.mkdir(parents=True, exist_ok=True)
-        E.write_json(p, rec)
+        try:
+            E.write_json(p, rec)
+        except FileNotFoundError:   # another run cached the same page at the same moment
+            pass
     if "dealectric.com" in url:
         E.footprint("direct-fetch", started, E.now_iso(), script="fastloop.py", run_id="fastloop-cache", retrieved=[{"url": url}])
     return rec
@@ -212,7 +218,32 @@ def build_context(results: list[dict], query: str) -> list[dict]:
     return out
 
 
-def context_text(ctx: list[dict], query: str) -> str:
+FORMATS = ("v1", "v2")   # how the result list is laid out for the replay model (growth/evals/loop/paste-calibration.md)
+FMT_VERSION = os.environ.get("FASTLOOP_FMT", "v1")
+CITE_START, CITE_DELIM, CITE_STOP = "\ue200", "\ue202", "\ue201"   # OpenAI's documented citation-marker tokens
+
+
+def pub_date(r: dict) -> str | None:
+    d = r.get("pub_date")
+    if isinstance(d, (int, float)) and d > 0:
+        return time.strftime("%Y-%m-%d", time.gmtime(d))
+    return d if isinstance(d, str) and d else None
+
+
+def context_text(ctx: list[dict], query: str, fmt: str | None = None) -> str:
+    """v1: 【i】 title / URL / passages. v2: OpenAI's documented tool-output layout (developers.openai.com, Citation
+    Formatting): a citation-marker line per source (turn0search<i>), Title / URL / Updated metadata, line locators."""
+    fmt = fmt or FMT_VERSION
+    if fmt == "v2":
+        rows = [f'Search query: "{query}"']
+        for i, r in enumerate(ctx):
+            rows.append(f"\nCitation Marker: {CITE_START}cite{CITE_DELIM}turn0search{i}{CITE_STOP}")
+            rows.append(f"Title: {r.get('title') or E.host_of(r['url'])}")
+            rows.append(f"URL: {r['url']}")
+            if pub_date(r):
+                rows.append(f"Updated: {pub_date(r)}")
+            rows += [f"[L{n}] {line}" for n, line in enumerate((x for x in r["shown"].splitlines() if x.strip()), 1)]
+        return "\n".join(rows)
     rows = [f'Results for "{query}":']
     for i, r in enumerate(ctx):
         rows.append(f"\n【{i}】 {r.get('title') or E.host_of(r['url'])}\nURL: {r['url']}\n{r['shown']}")
@@ -250,9 +281,13 @@ PASTES = {   # b1 adds ANSWER_SYSTEM's linking sentence: with a0, the app wrote 
     "b1": ("I collected these {n} web pages from a search for \"{query}\". Do not search the web: answer my question from "
            "these pages only. Cite the pages you rely on as links to their URLs. You may add a buy link for a product you "
            "recommend, using a URL that appears in the pages.\n\nMy question: {question}\n\n{pages}")}
-PASTES["c1"] = ("I found these {n} pages when I searched \"{query}\". Using whatever is most useful in them, answer my "
-                "question: {question}\n\n{pages}")   # neutral: no cite or buy verbs (Barry, 10-31)
-PASTE_VERSION = "b1"
+PASTES["c1"] = ("Here is a user's question, and the web search results for \"{query}\". Without doing any further web "
+                "search, respond to the user's question according to these search results.\n\nUser's question: {question}\n\n"
+                "Search results:\n\n{pages}")   # Barry 10-31: no link instruction, results framed as search results
+PASTES["c2"] = ("You just ran a web search for \"{query}\" to answer the user's question below; these are its results. Without "
+                "searching again, answer the user's question using them.\n\nUser's question: {question}\n\n"
+                "Search results:\n\n{pages}")   # DLC-115 round: results framed as the model's own search, no link wording
+PASTE_VERSION = os.environ.get("FASTLOOP_PASTE", "b1")
 
 
 def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
@@ -405,7 +440,8 @@ def results_from_cell(cell: dict, stored: Stored | None) -> list[dict]:
         else:
             rec = fetch_text(url)
             text, how = rec["text"], rec["status"]
-        out.append({"url": url, "title": r.get("title") or "", "snippet": r.get("snippet") or "", "text": text, "source": how})
+        out.append({"url": url, "title": r.get("title") or "", "snippet": r.get("snippet") or "", "text": text, "source": how,
+                    "pub_date": r.get("pub_date")})
     return out
 
 
@@ -916,6 +952,243 @@ def cmd_calibrate(a) -> None:
     print(calreport(run))
 
 
+# ---------------------------------------------------------------- paste calibration (DLC-115)
+# Metrics over answers with at least one link. Real side: in-text links + source pills (shopping-card and image links
+# excluded: the replay runs with search off, so it has no cards). Replay side: every link written, plus any
+# turn0search<i> citation the model writes, mapped to that result's URL.
+#   M1 buy-link share: answers linking our dealectric.com/go/ link. M2 our-page share: answers linking dealectric.com.
+#   M3 link share: our links / all links.
+# The calibration set is stratified on real M1 (it is rare: 13 of 195 real answers), and every metric is reweighted to
+# the pool's real M1 rate, so a 30-chat set can measure it. growth/evals/loop/paste-calibration.md has the rounds.
+
+PASTECAL = E.RUNS_DIR / "2026-10-31-pastecal"
+URL_RE = re.compile(r"https?://[^\s)\]>\"'】<]+")
+
+
+def norm_link(u: str) -> str:
+    return (u or "").split("#")[0].split("?")[0].rstrip("/.,;:")
+
+
+def keep_link(u: str) -> bool:
+    return bool(u) and not any(s in u for s in ("openai_catalog", "utm_medium=feed", "images.openai.com", "chatgpt.com"))
+
+
+def real_links(c: dict) -> list[str]:
+    resp = c.get("response") or {}
+    urls = [x.get("url", "") for x in c.get("citations") or []] + [x.get("url", "") for x in c.get("cite_pills") or []]
+    urls += [u.get("url", "") for u in resp.get("markup_urls") or []] + URL_RE.findall(c.get("text") or "")
+    return list(dict.fromkeys(norm_link(u) for u in urls if keep_link(u)))
+
+
+def replay_links(rec: dict, ctx: list[dict]) -> list[str]:
+    ans = rec.get("answer") or rec.get("text") or ""
+    urls = [l["url"] for l in rec.get("links") or [] if l.get("kind") in ("button", "text", "cite")] + URL_RE.findall(ans)
+    urls += [ctx[int(i)]["url"] for i in re.findall(r"turn\d+search(\d+)", ans) if int(i) < len(ctx)]
+    return list(dict.fromkeys(norm_link(u) for u in urls if keep_link(u)))
+
+
+def link_flags(links: list[str]) -> dict:
+    ours = [u for u in links if "dealectric.com" in u]
+    return {"linked": bool(links), "m1": any("/go/" in u for u in ours), "m2": bool(ours), "ours": len(ours), "all": len(links)}
+
+
+def pastecal_pool() -> list[Path]:
+    out = []
+    for f in cal_cells():
+        c = json.loads(f.read_text())
+        if re.search(r"dealectric|deelectric", c.get("prompt") or "", re.I):
+            continue   # probes that name us
+        man = f.parent.parent / "manifest.json"
+        if man.exists() and re.search(r"link", json.loads(man.read_text()).get("system") or "", re.I):
+            continue   # runs whose system prompt asked for links (p3iter05)
+        if any("dealectric.com" in (r.get("url") or "") for r in c["response"]["search_results"]):
+            out.append(f)
+    return out
+
+
+def pastecal_split(seed: int = 11) -> dict:
+    """Stratified on real M1: two thirds of the real hand-overs plus negatives make 30 to tune on; the rest of the
+    hand-overs plus 8 negatives are held out. Saved once and reused."""
+    p = PASTECAL / "split.json"
+    if p.exists():
+        return json.loads(p.read_text())
+    pool = pastecal_pool()
+    pos = [f for f in pool if link_flags(real_links(json.loads(f.read_text())))["m1"]]
+    neg = [f for f in pool if f not in pos]
+    rng = random.Random(seed)
+    rng.shuffle(pos); rng.shuffle(neg)
+    rel = lambda fs: [str(f.relative_to(E.RUNS_DIR)) for f in fs]
+    k = round(len(pos) * 2 / 3)   # two thirds of the real hand-overs to tune on, the rest held out
+    split = {"pool": len(pool), "pool_m1": len(pos), "tune": rel(pos[:k] + neg[:30 - k]), "holdout": rel(pos[k:] + neg[30 - k:38 - k]),
+             "seed": seed, "made": E.now_iso()}
+    PASTECAL.mkdir(parents=True, exist_ok=True)
+    E.write_json(p, split)
+    return split
+
+
+def answer_api_paste(question: str, query: str, ctx: list[dict], model: str, key: str) -> dict:
+    """The app paste sent as a plain user message through the API (no system prompt, no tools): the API twin of the
+    app engine, for cheap calibration rounds."""
+    text = PASTES[PASTE_VERSION].format(n=len(ctx), query=query, question=question, pages=context_text(ctx, query).split("\n", 1)[1].strip())
+    started = E.now_iso()
+    for attempt in range(4):
+        status, r = A.post({"model": model, "store": False, "input": text}, key)
+        if status != 429:
+            break
+        time.sleep(10 * (attempt + 1))
+    ans = "\n".join(c.get("text", "") for it in r.get("output", []) if it.get("type") == "message"
+                    for c in it.get("content", []) if c.get("type") == "output_text") if status == 200 else ""
+    E.footprint("openai-api", started, E.now_iso(), prompt=question, script="fastloop.py", run_id="pastecal",
+                retrieved=[{"url": c["url"]} for c in ctx], error=str(r.get("error")) if status != 200 else None)
+    return {"status": status, "error": r.get("error"), "text": ans, "answer": ans, "links": [], "model": model,
+            "usage": r.get("usage"), "engine": "api", "started_at": started}
+
+
+def answer_api_tool(question: str, query: str, ctx: list[dict], model: str, key: str) -> dict:
+    """The results delivered as the output of the model's own web_search call (as ChatGPT's tool returns them), with no
+    system prompt and no link wording: the closest API stand-in for a real search turn."""
+    body = {"model": model, "store": False, "tool_choice": "none",
+            "tools": [{"type": "function", "name": "web_search", "description": "Search the web.",
+                       "parameters": {"type": "object", "properties": {"query": {"type": "string"}}, "required": ["query"]}}],
+            "input": [{"role": "user", "content": question},
+                      {"type": "function_call", "call_id": "call_ws0", "name": "web_search", "arguments": json.dumps({"query": query})},
+                      {"type": "function_call_output", "call_id": "call_ws0", "output": context_text(ctx, query)}]}
+    started = E.now_iso()
+    for attempt in range(4):
+        status, r = A.post(body, key)
+        if status != 429:
+            break
+        time.sleep(10 * (attempt + 1))
+    ans = "\n".join(c.get("text", "") for it in r.get("output", []) if it.get("type") == "message"
+                    for c in it.get("content", []) if c.get("type") == "output_text") if status == 200 else ""
+    E.footprint("openai-api", started, E.now_iso(), prompt=question, script="fastloop.py", run_id="pastecal",
+                retrieved=[{"url": c["url"]} for c in ctx], error=str(r.get("error")) if status != 200 else None)
+    return {"status": status, "error": r.get("error"), "text": ans, "answer": ans, "links": [], "model": model,
+            "usage": r.get("usage"), "engine": "apitool", "started_at": started}
+
+
+def cmd_pastecal(a) -> None:
+    global FMT_VERSION, PASTE_VERSION
+    FMT_VERSION, PASTE_VERSION = a.fmt, a.paste
+    split = pastecal_split()
+    cells = split[a.set]
+    eng = a.engine if a.engine == "app" or a.model == "gpt-6.1-sol" else f"{a.engine}_{a.model}"
+    out = PASTECAL / f"{eng}-{a.fmt}-{a.paste}-{a.set}-r{a.rep}"
+    out.mkdir(parents=True, exist_ok=True)
+    stored, key = Stored(), E.env_key("OPENAI_API_KEY")
+    fetch_all([{"url": r.get("url") or ""} for rel in cells for r in json.loads((E.RUNS_DIR / rel).read_text())["response"]["search_results"]])
+    tried = {active_account()} if a.engine == "app" else set()
+    done = 0
+    for rel in cells:
+        p = out / (rel.replace("/chatgpt/", "--").replace("/", "--"))
+        if p.exists():
+            done += 1
+            continue
+        c = json.loads((E.RUNS_DIR / rel).read_text())
+        q = c["queries"][0]
+        ctx = build_context(results_from_cell(c, stored), q)
+        while True:
+            rec = (answer_app(c["prompt"], q, ctx) if a.engine == "app" else answer_api_tool(c["prompt"], q, ctx, a.model, key)
+                   if a.engine == "apitool" else answer_api_paste(c["prompt"], q, ctx, a.model, key))
+            if a.engine == "app" and (rec.get("downgraded") or rec["status"] != 200):
+                new = switch_account(tried)
+                if new:
+                    tried.add(new)
+                    print(f"    switched ChatGPT account to {new}", flush=True)
+                    continue
+                print(f"every account is out of gpt-6 ({done}/{len(cells)} done): rerun after the quota resets")
+                sys.exit(3)
+            break
+        rl, pl = real_links(c), replay_links(rec, ctx)
+        E.write_json(p, {"cell": rel, "question": c["prompt"], "query": q, "set": a.set, "fmt": a.fmt, "paste": a.paste,
+                         "engine": a.engine, "rep": a.rep, "our_rank": next((i + 1 for i, r in enumerate(ctx) if "dealectric.com" in r["url"]), None),
+                         "real": {"links": rl, **link_flags(rl)}, "replay": {"links": pl, **link_flags(pl)},
+                         "rec": {k: rec.get(k) for k in ("status", "model", "answer", "links", "error", "started_at")}})
+        done += 1
+        f = link_flags(pl)
+        print(f"{done:3}/{len(cells)} real m1={link_flags(rl)['m1']:d} m2={link_flags(rl)['m2']:d} | replay m1={f['m1']:d} m2={f['m2']:d} "
+              f"links={f['all']} | {c['prompt'][:60]}", flush=True)
+    print(f"done: {out.name}")
+
+
+def pastecal_metrics(rows: list[dict], side: str, p_pop: float, n_pos: int, n_neg: int) -> dict:
+    """Population-weighted M1/M2/M3 over linked answers: each real-M1 stratum reweighted to the pool's base rate."""
+    w = {True: p_pop / max(n_pos, 1), False: (1 - p_pop) / max(n_neg, 1)}
+    W = lambda r: w[r["real"]["m1"]]
+    lk = [r for r in rows if r[side]["linked"]]
+    tot = sum(W(r) for r in lk) or 1
+    m1 = sum(W(r) for r in lk if r[side]["m1"]) / tot
+    m2 = sum(W(r) for r in lk if r[side]["m2"]) / tot
+    m3 = sum(W(r) * r[side]["ours"] for r in lk) / (sum(W(r) * r[side]["all"] for r in lk) or 1)
+    return {"linked": len(lk), "of": len(rows), "m1": m1, "m2": m2, "m3": m3}
+
+
+def cmd_reaskreport(a) -> None:
+    """Ground-truth repeatability: each live re-ask (search on) against the recorded chat it repeats (`orig`)."""
+    qs = {q["qid"]: q for q in json.loads(Path(a.questions).read_text())["questions"]}
+    rows = []
+    for f in sorted((E.RUNS_DIR / a.run / "chatgpt").glob("*.json")):
+        c = json.loads(f.read_text())
+        q = qs.get(c.get("qid")) or qs.get(f.stem.rsplit("-", 1)[0])
+        if not q or c.get("downgraded") or not (c.get("response") or {}).get("search_results"):
+            continue
+        o = json.loads((E.RUNS_DIR / q["orig"]).read_text())
+        new, old = link_flags(real_links(c)), link_flags(real_links(o))
+        ours_in = any("dealectric.com" in (r.get("url") or "") for r in c["response"]["search_results"])
+        rows.append({"qid": q["qid"], "old": old, "new": new, "ours_in_results": ours_in})
+    n = len(rows) or 1
+    pos = [r for r in rows if r["old"]["m1"]]
+    out = [f"{len(rows)} re-asks compared with their recorded chats.",
+           f"- our page in the new chat's results: {sum(r['ours_in_results'] for r in rows)}/{len(rows)}",
+           f"- M1 (buy link) same as the original: {sum(r['old']['m1'] == r['new']['m1'] for r in rows)}/{len(rows)}; "
+           f"repeated on the {len(pos)} original hand-overs: {sum(r['new']['m1'] for r in pos)}/{len(pos)}; "
+           f"new hand-overs where the original had none: {sum(r['new']['m1'] and not r['old']['m1'] for r in rows)}/{len(rows) - len(pos)}",
+           f"- M2 (our page linked) same: {sum(r['old']['m2'] == r['new']['m2'] for r in rows)}/{len(rows)}; "
+           f"rate original {sum(r['old']['m2'] for r in rows)}/{len(rows)}, re-ask {sum(r['new']['m2'] for r in rows)}/{len(rows)}"]
+    for r in rows:
+        out.append(f"  {r['qid'][:60]:60} M1 {int(r['old']['m1'])}->{int(r['new']['m1'])}  M2 {int(r['old']['m2'])}->{int(r['new']['m2'])}  ours in results {int(r['ours_in_results'])}")
+    print("\n".join(out))
+
+
+def cmd_pastecalreport(a) -> None:
+    split = pastecal_split()
+    p_pop = split["pool_m1"] / split["pool"]
+    lines = [f"Pool: {split['pool']} real chats with our page in the results; real M1 base rate {p_pop:.1%}. "
+             "Metrics weighted to that base rate (stratified set).", "",
+             "| version | set | n | linked (replay) | M1 real | M1 replay | sens | false pos | M2 real | M2 replay | M3 real | M3 replay | per-chat M2 agree |",
+             "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    runs = {}
+    for d in sorted(PASTECAL.iterdir()):
+        if not d.is_dir():
+            continue
+        rows = [json.loads(x.read_text()) for x in sorted(d.glob("*.json"))]
+        rows = [r for r in rows if r["rec"]["status"] == 200]
+        if not rows:
+            continue
+        runs[d.name] = rows
+        n_pos = sum(r["real"]["m1"] for r in rows); n_neg = len(rows) - n_pos
+        R = pastecal_metrics(rows, "real", p_pop, n_pos, n_neg); P = pastecal_metrics(rows, "replay", p_pop, n_pos, n_neg)
+        sens = sum(r["replay"]["m1"] for r in rows if r["real"]["m1"]) / max(n_pos, 1)
+        fpr = sum(r["replay"]["m1"] for r in rows if not r["real"]["m1"]) / max(n_neg, 1)
+        agree = sum(r["replay"]["m2"] == r["real"]["m2"] for r in rows) / len(rows)
+        lines.append(f"| {d.name.rsplit('-', 1)[0]} | {rows[0]['set']} r{rows[0]['rep']} | {len(rows)} | {P['linked']} | {R['m1']:.0%} | {P['m1']:.0%} | "
+                     f"{sens:.0%} ({n_pos}) | {fpr:.0%} ({n_neg}) | {R['m2']:.0%} | {P['m2']:.0%} | {R['m3']:.0%} | {P['m3']:.0%} | {agree:.0%} |")
+    # noise: same version, different reps
+    base = {}
+    for name, rows in runs.items():
+        base.setdefault(name.rsplit("-r", 1)[0], []).append(rows)
+    for v, reps in base.items():
+        if len(reps) >= 2:
+            A_, B_ = ({r["cell"]: r for r in reps[0]}, {r["cell"]: r for r in reps[1]})
+            common = [c for c in A_ if c in B_]
+            m1 = sum(A_[c]["replay"]["m1"] == B_[c]["replay"]["m1"] for c in common) / max(len(common), 1)
+            m2 = sum(A_[c]["replay"]["m2"] == B_[c]["replay"]["m2"] for c in common) / max(len(common), 1)
+            lines.append(f"\nNoise, {v}: two runs agree per chat on M1 {m1:.0%}, on M2 {m2:.0%} ({len(common)} chats).")
+    txt = "\n".join(lines)
+    (PASTECAL / "report.md").write_text(txt + "\n")
+    print(txt)
+
+
 class Downgraded(Exception):
     """An app answer from gpt-6-mini (the Free quota ran out) or a failed chat: not a calibration case."""
 
@@ -1030,11 +1303,20 @@ def main() -> int:
     p.add_argument("--no-judge", action="store_true"); p.add_argument("--alpha", type=float); p.add_argument("--budget", type=int)
     p.add_argument("--paste", choices=sorted(PASTES)); p.add_argument("--only-ours", action="store_true")
     p = sub.add_parser("calreport"); p.add_argument("--run")
+    p = sub.add_parser("pastecal"); p.add_argument("--set", choices=["tune", "holdout"], default="tune")
+    p.add_argument("--fmt", choices=FORMATS, default="v1"); p.add_argument("--paste", choices=sorted(PASTES), default="c1")
+    p.add_argument("--rep", type=int, default=1); p.add_argument("--engine", choices=["app", "api", "apitool"], default="app")
+    p.add_argument("--model", default="gpt-6.1-sol")
+    p = sub.add_parser("pastecalreport")
+    p = sub.add_parser("reaskreport"); p.add_argument("--run", default="2026-11-01-pastecal-reask")
+    p.add_argument("--questions", default=str(E.REPO / "growth/focus/pastecal-reask-questions.json"))
     p = sub.add_parser("transfer"); p.add_argument("--n", type=int, default=40); p.add_argument("--model", default=MODEL)
     p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)
     a = ap.parse_args()
     {"pack": cmd_pack, "gap": cmd_gap, "replay": cmd_replay, "score": cmd_score, "calibrate": cmd_calibrate,
-     "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck, "vote": cmd_vote}[a.cmd](a)
+     "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck, "vote": cmd_vote,
+     "pastecal": cmd_pastecal, "pastecalreport": cmd_pastecalreport,
+     "reaskreport": cmd_reaskreport}[a.cmd](a)
     return 0
 
 
