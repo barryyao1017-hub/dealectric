@@ -513,18 +513,19 @@ def cmd_gap(a) -> None:
         for i, r in enumerate(r for r in pack["results"] if "dealectric.com" not in r["url"]):
             doms[E.host_of(r["url"]).removeprefix("www.")] += 1
             rows.append(f"[{i}] {r.get('title')}\nURL: {r['url']}\n{(r.get('text') or r.get('snippet') or '')[:1500]}")
-        if (d / "gap.json").exists() and not a.redo:
-            g = json.loads((d / "gap.json").read_text())
+        out = d / ("gap.json" if a.judge == JUDGE else f"gap-{a.judge}.json")
+        if out.exists() and not a.redo:
+            g = json.loads(out.read_text())
         else:
             user = f"SHOPPER QUESTION: {pack['question']}\nSEARCH QUERY: {pack['query']}\n\nSOURCES:\n\n" + "\n\n".join(rows)
             try:
-                g = E.claude_cli_json(GAP_SYSTEM, user.replace("\x00", ""), JUDGE, GAP_SCHEMA, timeout=400) or {}
+                g = E.claude_cli_json(GAP_SYSTEM, user.replace("\x00", ""), a.judge, GAP_SCHEMA, timeout=600) or {}
             except Exception as e:  # noqa: BLE001
                 print(f"{name}: judge failed: {str(e)[:120]}")
                 continue
-            E.write_json(d / "gap.json", g)
+            E.write_json(out, g)
         kinds = collections.Counter(s["kind"] for s in g.get("sources", []))
-        print(f"{name}: {g.get('verdict', '?').upper()} | {dict(kinds)} | missing: {g.get('missing', '')[:160]}")
+        print(f"{name} [{a.judge}]: {g.get('verdict', '?').upper()} | {dict(kinds)} | missing: {g.get('missing', '')[:160]}")
     if len(a.packs) > 1:
         print("recurring domains:", ", ".join(f"{k} {v}" for k, v in doms.most_common(12) if v > 1))
 
@@ -824,6 +825,7 @@ def main() -> int:
     p.add_argument("--name", required=True); p.add_argument("--top", type=int, default=12)
     p.add_argument("--engine", choices=["app", "api"], default="app")
     p = sub.add_parser("gap"); p.add_argument("packs", nargs="+"); p.add_argument("--redo", action="store_true")
+    p.add_argument("--judge", default=JUDGE)
     p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)
