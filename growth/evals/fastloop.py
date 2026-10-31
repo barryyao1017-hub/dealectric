@@ -278,6 +278,59 @@ def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
     return rec
 
 
+def _click(tab, el_js: str) -> None:
+    r = tab.eval(f"(() => {{ const e = ({el_js}); if (!e) return null; const b = e.getBoundingClientRect(); "
+                 "return [b.x + b.width / 2, b.y + b.height / 2]; }})()")
+    if not r:
+        raise RuntimeError(f"not found: {el_js[:80]}")
+    tab.call("Input.dispatchMouseEvent", type="mouseMoved", x=r[0], y=r[1])
+    tab.call("Input.dispatchMouseEvent", type="mousePressed", x=r[0], y=r[1], button="left", buttons=1, clickCount=1)
+    time.sleep(0.1)
+    tab.call("Input.dispatchMouseEvent", type="mouseReleased", x=r[0], y=r[1], button="left", buttons=0, clickCount=1)
+
+
+def active_account(tab=None) -> str | None:
+    import ui
+    own = tab is None
+    tab = tab or ui.Tab("about:blank")
+    try:
+        if own:
+            tab.navigate("https://chatgpt.com/")
+            time.sleep(6)
+        return tab.eval("fetch('/api/auth/session').then(r => r.json()).then(j => (j.user || {}).email || null)")
+    finally:
+        if own:
+            tab.close()
+
+
+def switch_account(tried: set[str]) -> str | None:
+    """Switch the profile's ChatGPT account to one in its account switcher not in `tried` (profile menu -> the account
+    row -> another email; menus need real pointer events, so clicks go through Input.dispatchMouseEvent). Returns the
+    new account's email, or None when every listed account was tried."""
+    import ui
+    tab = ui.Tab("about:blank")
+    try:
+        tab.call("Page.bringToFront")
+        tab.navigate("https://chatgpt.com/")
+        time.sleep(7)
+        _click(tab, "document.querySelectorAll('[aria-label=\"Open profile menu\"]')[1]")
+        time.sleep(2)
+        _click(tab, "[...document.querySelectorAll('[role=menu] [role=menuitem]')].find(e => /@|Free|Plus/.test(e.innerText))")
+        time.sleep(2)
+        emails = tab.eval("[...new Set((document.querySelectorAll('[role=menu]')[1] || {innerText: ''}).innerText"
+                          ".match(/[\\w.+-]+@[\\w-]+\\.[\\w.]+/g) || [])]") or []
+        nxt = next((e for e in emails if e not in tried), None)
+        if not nxt:
+            return None
+        _click(tab, f"[...document.querySelectorAll('[role=menu] *')].filter(e => e.innerText && e.innerText.includes('{nxt}'))"
+                    ".sort((a, b) => a.innerText.length - b.innerText.length)[0]")
+        time.sleep(8)
+        now = active_account(tab)
+        return now if now == nxt else None
+    finally:
+        tab.close()
+
+
 def respond(engine: str, question: str, query: str, ctx: list[dict], model: str, key: str | None) -> dict:
     return answer_app(question, query, ctx) if engine == "app" else answer(question, query, ctx, model, key)
 
@@ -597,22 +650,55 @@ def cmd_calibrate(a) -> None:
         reps = []
         for n in range(a.reps):
             rec = respond(a.engine, c["prompt"], q, ctx, a.model, key)
+            if a.engine == "app" and (rec.get("downgraded") or rec["status"] != 200):
+                raise Downgraded(f"{rec.get('model')} {rec.get('error') or ''}".strip())
             rec.update(tier(rec["text"], our_rank))
             rec["judge"] = judge(c["prompt"], rec["text"]) if rec["status"] == 200 and not a.no_judge else {}
             reps.append(rec)
         app = {**app_outcome(c), "judge": {} if a.no_judge else judge(c["prompt"], c["text"])}
         row = {"cell": str(f.relative_to(E.RUNS_DIR)), "question": c["prompt"], "query": q, "our_rank": our_rank,
                "n_results": len(ctx), "our_source": next((r["source"] for r in ctx if "dealectric.com" in r["url"]), None),
-               "unreadable": sum(1 for r in ctx if not r.get("text")), "app": app, "replays": reps, "model": a.model,
-               "prompt_version": PROMPT_VERSION, "engine": a.engine, "alpha": ALPHA, "budget": BUDGET}
+               "unreadable": sum(1 for r in ctx if not r.get("text")), "app": app, "replays": reps,
+               "model": "gpt-6 (app)" if a.engine == "app" else a.model,
+               "prompt_version": PASTE_VERSION if a.engine == "app" else PROMPT_VERSION, "engine": a.engine,
+               "alpha": ALPHA, "budget": BUDGET}
         E.write_json(p, row)
         return row
 
-    with cf.ThreadPoolExecutor(1 if a.engine == "app" else a.workers) as ex:
-        for i, row in enumerate(ex.map(one, pick), 1):
-            ts = [r["tier"] for r in row["replays"]]
-            print(f"{i:3}/{len(pick)} app T{row['app']['tier']} replay T{ts} rank={row['our_rank']} | {row['question'][:70]}", flush=True)
+    def show(i, row):
+        ts = [r["tier"] for r in row["replays"]]
+        print(f"{i:3}/{len(pick)} app T{row['app']['tier']} replay T{ts} rank={row['our_rank']} | {row['question'][:70]}", flush=True)
+
+    if a.engine == "app":   # one chat at a time; on quota, switch to the profile's next account, else stop (rerun resumes)
+        strikes, tried, queue, i = 0, {active_account()}, list(pick), 0
+        while queue:
+            f = queue[0]
+            try:
+                row = one(f)
+                queue.pop(0)
+                i += 1
+                show(i, row)
+                strikes = 0
+            except Downgraded as e:
+                strikes += 1
+                print(f"    not counted ({strikes}): {e}", flush=True)
+                if strikes >= 2:
+                    new = switch_account(tried)
+                    if not new:
+                        print(f"every account tried ({', '.join(sorted(x for x in tried if x))}) is out of gpt-6: rerun later to resume")
+                        break
+                    print(f"    switched ChatGPT account to {new}", flush=True)
+                    tried.add(new)
+                    strikes = 0
+    else:
+        with cf.ThreadPoolExecutor(a.workers) as ex:
+            for i, row in enumerate(ex.map(one, pick), 1):
+                show(i, row)
     print(calreport(run))
+
+
+class Downgraded(Exception):
+    """An app answer from gpt-6-mini (the Free quota ran out) or a failed chat: not a calibration case."""
 
 
 def majority(xs: list[bool]) -> bool:
@@ -645,7 +731,7 @@ def calreport(run: Path) -> str:
         stats["replay vs itself: same tier band"].append(len({x["tier"] >= 4 for x in reps}) == 1)
         lines.append(f"| {r['cell'][:60]} | {r['our_rank'] or '-'} | {app['tier']} | {[x['tier'] for x in reps]} | {atop[:30]} | "
                      f"{'; '.join(t[:24] for t in rtops)} |")
-    summ = [f"{len(rows)} app chats, replayed with {rows[0]['model'] if rows else '?'} (prompt {PROMPT_VERSION}).", ""]
+    summ = [f"{len(rows)} app chats, replayed with {rows[0]['model'] if rows else '?'} (prompt {rows[0].get('prompt_version') if rows else '?'}).", ""]
     summ += [f"- {k}: {sum(v)}/{len(v)} ({sum(v) / len(v):.0%})" for k, v in stats.items() if v]
     rep = "\n".join(summ + [""] + lines)
     (run / "report.md").write_text(rep + "\n")

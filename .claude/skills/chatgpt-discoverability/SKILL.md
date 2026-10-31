@@ -113,6 +113,12 @@ accounts are flagged, throttled for long or out of quota and the work can't wait
   accounts that's about two quota windows.
 - **Accounts:** ChatGPT's account switcher holds several accounts in one Chrome profile, but only one is active per
   profile. Run one chat at a time per profile, and switch account when one hits its quota.
+  - `fastloop.py calibrate --engine app` switches by itself after two downgraded answers in a row
+    (`switch_account`). It works through the profile menu, then the account row, then the other email; the menu needs
+    real pointer events.
+  - Check the active account with `active_account()` (`/api/auth/session`).
+  - On barrryyao, temporary chats are labelled "Personalized": they can use the account's memory, plugins and custom
+    instructions. Keep that account's memory empty.
 - **Pasted context:** a 45,033-character paste (six pages plus the question) was accepted, answered by gpt-6 with
   no search, and read to the end [observed, `runs/2026-10-31-appfeas/paste-1.json`]. Send long prompts through the
   composer (`ctxprobe.submit(tab, text, 0)`): `ui.ask_chatgpt`'s `?q=` URL fails at that length.
@@ -139,7 +145,16 @@ API engine calibration (`runs/2026-10-31-fastcal*`, 40 recorded chats, 30 with o
 - Top pick agrees 72%, top brand 78%.
 - `/go/` couldn't be calibrated: the app handed it over in only 3 of 30.
 
-The app engine is not calibrated yet; it needs about 40 app chats.
+App engine calibration (`runs/2026-10-31-fastcal-app`, the same 40 chats, one gpt-6 paste each with the b1 linking
+sentence; 16 on barryyao1017, 24 on barrryyao):
+- Cited/not agrees 73% per chat (blind 71%): the app's own ceiling again. At rank 1–5, 14 of 17; below, 8 of 13.
+- Cited rate: replay 90% vs app 77%. It over-credits our page by about the same 15 points as the API.
+- **Top pick agrees 80% (API 72%), top brand 80%**: the app engine's real gain.
+- **`/go/` is inflated by the linking sentence: 14 of 30 replays vs 3 of 30 in the app.** Use it only to compare
+  drafts.
+- Every chat repeated its own tier band (40 of 40).
+
+Use the app engine for picks and our point carried. Use either engine for cited, reading it as relative.
 Gap judge: unvalidated until it agrees with Barry's labels on about 20 queries.
 
 Until a step passes, label its output unvalidated.
