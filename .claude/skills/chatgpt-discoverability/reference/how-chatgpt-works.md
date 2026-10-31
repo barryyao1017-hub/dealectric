@@ -14,7 +14,7 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
   of 10-30 19:54Z. Copies were seen 1 to 6.5 days behind live on 10-28. Home and `/portable-power-stations` are
   re-fetched every few hours. One sitemap read (10-22) came before a full sweep (10-26).
 - **New URLs get fetched fast.** [observed, 2] TN438 in 13 h; the Marshall pages the next night. The solar gap page's
-  first fetch was 10-29 07:12Z, four days after launch (it was linked later). A new URL linked from the home page is
+  first fetch was 10-29 07:12Z, four days after launch. A new URL linked from the home page is
   the fastest route in.
 - **Sitemap `lastmod`** has been exact since 10-28. [effect unmeasured] No official OpenAI URL-submission route was
   found.
@@ -93,7 +93,7 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
   which records to show; it cannot point a card at our `/go/`.
 - **`/go/` reaches a shopper only through a model-written button or link** (`GenUI.openUrl(...)`, `Link {url}`,
   markdown), copied from our page text. [measured: 4 of 10 app chats; 4 of the 6 with our page in results] The
-  first sale (10-29) and a 10-30 reading both came this way.
+  10-30 reading reproduced the first sale's link shape (`/go/<slug>?utm_source=chatgpt.com` from a model-written button).
 - **Brand catalog cards compete on brand questions.** [measured, small n] "ALLPOWERS US" (iallpowers.com) cards
   appeared on 4 of 5 ALLPOWERS chats; none for BLUETTI, Aurzen or ESR. With a card, `/go/` came through 1 of 3
   times; without, 3 of 4.
