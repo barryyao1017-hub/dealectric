@@ -81,7 +81,7 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    candidate concern.
 6. **Offline scoring.**
    - Build the context the model would get: the rival pages, each cut to the share measured for its rank, plus the
-     draft (`fastloop.py`, **not built yet**). `gapexp.py` did the same with Claude as the answering model.
+     draft (`fastloop.py pack`, `replay`, `score`; see `reference/tools.md`).
    - Answer the shopper's question from that context with an OpenAI API model, search off.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.

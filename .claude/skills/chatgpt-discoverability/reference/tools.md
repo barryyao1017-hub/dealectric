@@ -64,12 +64,19 @@ clone.
 | `growth/evals/voidscan.py` | Bing demand and live Bing top 10 per query (Bing Keyword Research: about 120 calls a day before 429s). |
 | `growth/evals/compqual.py` | Judges what competitor pages are missing. |
 
-## Not built yet
+## The fast loop: `growth/evals/fastloop.py` (built 2026-10-31, DLC-112)
 
-- `growth/evals/fastloop.py`: context builder (rival pages cut to the measured share per rank, plus the draft),
-  answer replay with search off, and a scorecard (cited, picked, our point carried, `/go/` copied).
-- Gap judge prompt, and a calibration script that replays recorded app chats (`runs/2026-10-30-cardprobe/`,
-  `runs/2026-10-30-ctxprobe/`) and compares results with what the app did.
+| Command | What it does |
+|---|---|
+| `pack --cell runs/<run>/chatgpt/<qid>.json --name <pack>` | Result set from a recorded app chat: rivals fetched now (cached in `runs/fastloop-cache/`); our pages as OpenAI had them stored at the chat. |
+| `pack --query "<q>" --question "<shopper question>" --name <pack>` | Result set from a one-search API replay (about 1 cent), for queries with no app chat yet. |
+| `gap <pack> [<pack> ...]` | Claude judge on the rival results: each source's kind (major reviewer, authority, brand store, retailer, niche reviewer, listicle, forum, spam, off-target), whether it answers the question, the verdict (open, contested, saturated) and what's missing (a lead for the open concern). Several packs: recurring domains. |
+| `replay <pack> [--draft d.md\|d.html --url /slug --rank 2] --reps 3 --tag v1` | Builds the context (length rule), inserts the draft, answers through the API with search off. Without `--draft`: the pack as recorded. |
+| `score <pack> [--concern "..."]` | Scorecard per tag: cited (T4+), `/go/`, our pick, relied on us, our point carried, top picks. |
+| `calibrate --n 40 --run <date>-fastcal`, `calreport --run ...` | Replays recorded app chats and reports agreement with what the app did. |
+
+Constants and the answer prompt are at the top of the script (`BUDGET`, `ALPHA`, `CAP`, `ANSWER_SYSTEM`,
+`PROMPT_VERSION`); bump the version when changing them, since scores across versions don't compare.
 
 ## Every probe that touches dealectric.com
 
