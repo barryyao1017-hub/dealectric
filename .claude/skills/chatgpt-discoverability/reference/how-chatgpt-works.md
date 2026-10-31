@@ -52,6 +52,9 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
 - **Narrow questions keep their distinctive words** [observed]. The first sale came from a question matching a
   page title ("solar generator with panels included"). Whether constraint phrasings (G2) keep their words is
   DLC-110.
+- **The API writes different queries.** Given the same blind question, the API's first query shares 56% of its words
+  with the app's (app vs app 90%), and often is a narrow `site:` lookup. [measured, 33 questions, 10-31,
+  `growth/evals/runs/2026-10-31-transfer/`] Query transfer must come from app chats.
 - **Wording varies between chats on the same question** [measured], which is why the camping phrasing missed our
   page once.
 - **Most shopping questions are searched, even when ChatGPT decides on its own.** [measured: natural mode 11 of 13]
@@ -153,8 +156,6 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
 ## Open questions (test before relying on them)
 
 - The exact text budget per search and per rank, and whether the 3.5k–16k range arrives whole.
-- Whether the API's first query matches the app's for the same question (it decides whether the query transfer can
-  run at volume).
 - The second index feed (section 1).
 - What makes the model write a `/go/` button rather than cite us without it (DLC-83).
 - Whether sitemap `lastmod` speeds re-crawls.

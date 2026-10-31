@@ -78,14 +78,15 @@ The app is the default engine for every step; the API below is the fallback (Bar
 | Command | What it does |
 |---|---|
 | `pack --cell runs/<run>/chatgpt/<qid>.json --name <pack>` | Result set from a recorded app chat: rivals fetched now (cached in `runs/fastloop-cache/`); our pages as OpenAI had them stored at the chat. |
-| `pack --query "<q>" --question "<shopper question>" --name <pack>` | Result set from a one-search API replay (about 1 cent), for queries with no app chat yet. Fallback: by default, record a pinned one-search app chat and pack from that. |
+| `pack --query "<q>" --question "<shopper question>" --name <pack> [--engine api]` | Default: runs a pinned one-search chat in the app (one gpt-6 message), refuses it if the stream's query differs, then packs its results. `--engine api`: a one-search API replay (about 1 cent) instead. |
+| `pack --cell runs/<run>/ctx/<pinned>.json --question "<q>" --name <pack>` | The same from an existing pinned chat (ctxprobe format). |
 | `gap <pack> [<pack> ...]` | Claude judge on the rival results: each source's kind (major reviewer, authority, brand store, retailer, niche reviewer, listicle, forum, spam, off-target), whether it answers the question, the verdict (open, contested, saturated) and what's missing (a lead for the open concern). Several packs: recurring domains. |
 | `replay <pack> [--draft d.md\|d.html --url /slug --rank 2] --reps 3 --tag v1 [--engine app\|api]` | Builds the context (length rule) and inserts the draft. `--engine app` pastes it into a Free temporary chat, search off, one chat at a time; it is the default from 10-31. `--engine api` answers through the API with search off, as the fallback. Without `--draft`: the pack as recorded. |
 | `score <pack> [--concern "..."]` | Scorecard per tag: cited (T4+), `/go/`, our pick, relied on us, our point carried, top picks. |
-| `calibrate --n 40 --run <date>-fastcal`, `calreport --run ...` | Replays recorded app chats and reports agreement with what the app did. |
+| `calibrate --n 40 --run <date>-fastcal [--engine api] [--no-judge] [--alpha a]`, `calreport --run ...` | Replays recorded app chats and reports agreement with what the app did (all prompts, and blind prompts only). The default engine is the app: 40 chats × reps gpt-6 messages, more than one account's quota. |
 
-Constants and the answer prompt are at the top of the script (`BUDGET`, `ALPHA`, `CAP`, `ANSWER_SYSTEM`,
-`PROMPT_VERSION`); bump the version when changing them, since scores across versions don't compare.
+Constants and prompts are at the top of the script (`BUDGET`, `ALPHA`, `CAP`, `ANSWER_SYSTEM` and `PROMPT_VERSION`
+for the API, `PASTES` and `PASTE_VERSION` for the app); bump the version when changing them, since scores across versions don't compare.
 
 ## Every probe that touches dealectric.com
 

@@ -3,7 +3,8 @@
 against the result set ChatGPT really got, so copy iterates in minutes and only the winner waits for OpenAI's crawler.
 
     python3.12 growth/evals/fastloop.py pack --cell runs/<run>/chatgpt/<qid>.json --name <pack>   # from an app chat
-    python3.12 growth/evals/fastloop.py pack --query "<ChatGPT's query>" --question "<shopper question>" --name <pack>
+    python3.12 growth/evals/fastloop.py pack --query "<ChatGPT's query>" --question "<shopper question>" --name <pack> [--engine api]
+    python3.12 growth/evals/fastloop.py pack --cell runs/<run>/ctx/pinned-1.json --question "<q>" --name <pack>  # pinned chat
     python3.12 growth/evals/fastloop.py gap <pack> [<pack> ...]            # open or saturated, recurring domains
     python3.12 growth/evals/fastloop.py replay <pack> --draft d.md [--rank 2] [--url /slug] [--reps 3] [--tag v1]
     python3.12 growth/evals/fastloop.py score <pack> [--concern "<the open concern>"]   # scorecard per draft tag
@@ -21,9 +22,11 @@ in the probes; the crowded case is the normal one. Rival text is fetched now (ri
 calibration, are the version OpenAI had stored at the time of the chat (its last verified OAI-SearchBot fetch before
 the chat, else the version live at the chat).
 
-Answer replay (stage 5). The Responses API, search off: the shopper's question, then a `web_search` function call with
+Answer replay (stage 5). --engine api (default): the Responses API, search off: the shopper's question, then a `web_search` function call with
 ChatGPT's query and the built context as its output, `tool_choice: none`. The prompt (ANSWER_SYSTEM) is fixed across
-drafts. Scores compare drafts; they are not forecasts of the app (no catalog cards, no UI program).
+drafts. Scores compare drafts; they are not forecasts of the app (no catalog cards, no UI program). --engine app: the
+same context pasted into a Free temporary chat (PASTE), so the real gpt-6 writes the answer and its buttons; costs
+one gpt-6 message of the Free quota per answer and runs one chat at a time.
 
 Scoring. Tiers as visibility_scan.py (T5 /go/ link, T4 our page linked, T3 Dealectric named, T2 in results only,
 T1 absent), plus a Claude judge (JUDGE, via the claude CLI as gapexp.py): top pick, whether it is our product, whether
@@ -39,9 +42,11 @@ footprint-logged.
 """
 from __future__ import annotations
 
-import argparse, bisect, collections, concurrent.futures as cf, hashlib, json, random, re, ssl, statistics, sys, time
+import argparse, bisect, collections, concurrent.futures as cf, hashlib, json, os, random, re, ssl, statistics, sys, time
 import urllib.request
 from pathlib import Path
+
+os.environ.setdefault("AGENT_CDP", "http://localhost:9222")   # profile 1, signed in; ctxprobe alone defaults to 9223
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import evallib as E  # noqa: E402
@@ -89,6 +94,20 @@ def fetch_text(url: str) -> dict:
             status = "thin"
     except Exception as e:  # noqa: BLE001
         status = f"error: {str(e)[:80]}"
+    if status != "ok" and "dealectric.com" not in url:   # bot-walled or JS-rendered: read it in the agent's Chrome
+        try:
+            import ui
+            tab = ui.Tab("about:blank")
+            try:
+                tab.navigate(url)
+                time.sleep(6)
+                t2 = (tab.eval("document.body ? document.body.innerText : ''") or "").strip()
+            finally:
+                tab.close()
+            if len(t2) >= 400:
+                text, status = t2, "ok (chrome)"
+        except Exception:  # noqa: BLE001
+            pass
     rec = {"url": url, "text": text, "status": status, "fetched_at": started}
     if not status.startswith("error"):   # retry failures next time
         p.parent.mkdir(parents=True, exist_ok=True)
@@ -106,6 +125,7 @@ class Stored:
         self.at = [d["at"] for d in self.deploys]
         self.pc = S.page_crawls(S.load_crawls())
         self.blobs = S.Blobs()
+        self.lock = __import__("threading").Lock()   # one git cat-file process: reads must not interleave
 
     def text(self, url: str, t: str) -> tuple[str, str]:
         path = S.norm_path(url)
@@ -114,7 +134,8 @@ class Stored:
         i = bisect.bisect_right(self.at, when) - 1
         if i < 0:
             return "", "no deployment"
-        raw = self.blobs.get(f"{self.deploys[i]['sha']}:{S.page_file(path)}")
+        with self.lock:
+            raw = self.blobs.get(f"{self.deploys[i]['sha']}:{S.page_file(path)}")
         if raw is None:
             return "", f"missing at {self.deploys[i]['sha'][:7]}"
         how = f"stored {self.deploys[i]['sha'][:7]} (OAI fetch {fetch})" if fetch else f"live {self.deploys[i]['sha'][:7]} (no OAI fetch before)"
@@ -210,6 +231,57 @@ def answer(question: str, query: str, ctx: list[dict], model: str, key: str) -> 
             "prompt_version": PROMPT_VERSION, "started_at": started}
 
 
+PINNED = ('Run exactly one web search with this exact query, word for word: "{q}". Do not search again and do not open '
+          'any page. Then list the title and URL of every result you got, in order.')
+PASTES = {   # b1 adds ANSWER_SYSTEM's linking sentence: with a0, the app wrote no links at all (10-31, smoke-solar-budget)
+    "a0": ("I collected these {n} web pages from a search for \"{query}\". Do not search the web: answer my question from "
+           "these pages only.\n\nMy question: {question}\n\n{pages}"),
+    "b1": ("I collected these {n} web pages from a search for \"{query}\". Do not search the web: answer my question from "
+           "these pages only. Cite the pages you rely on as links to their URLs. You may add a buy link for a product you "
+           "recommend, using a URL that appears in the pages.\n\nMy question: {question}\n\n{pages}")}
+PASTE_VERSION = "b1"
+
+
+def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
+    """The same context pasted into a Free temporary chat (agent Chrome, AGENT_CDP), search off: the real gpt-6 and the
+    app's own answer program, so buttons count; no catalog cards (no search). One gpt-6 message of the Free quota each
+    (~26 per account before gpt-6-mini). Driver per the fork's appfeas test: ?q= fails at this length, so insert text."""
+    import ui, ctxprobe as C, cardprobe as K
+    text = PASTES[PASTE_VERSION].format(n=len(ctx), query=query, question=question, pages=context_text(ctx, query).split("\n", 1)[1].strip())
+    tab = ui.Tab("about:blank")
+    tab.ws.settimeout(180)
+    started, err, rec = E.now_iso(), None, {}
+    try:
+        tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
+        tab.call("Page.enable")
+        tab.call("Page.addScriptToEvaluateOnNewDocument", source=K.WIDE_HOOK_JS)
+        tab.navigate("https://chatgpt.com/?temporary-chat=true")
+        time.sleep(6)
+        t0 = time.time()
+        C.submit(tab, text, 0)
+        C.wait_turn(tab, 0, t0, timeout=300)
+        time.sleep(2)
+        x = K.decompose(C.read_sse(tab))
+        links = [l["url"] for l in x["links"] if l["kind"] in ("button", "text", "cite")]
+        rec = {"status": 200, "text": x["answer"] + "\n\n" + "\n".join(links), "answer": x["answer"], "links": x["links"],
+               "products": x["products"], "model": x["model"], "queries": x["queries"]}
+    except Exception as e:  # noqa: BLE001
+        err = f"{type(e).__name__}: {e}"
+        rec = {"status": 0, "error": err, "text": ""}
+    finally:
+        E.footprint("chatgpt-ui", started, E.now_iso(), prompt=text, script="fastloop.py", run_id="fastloop", temporary=True,
+                    retrieved=[{"url": c["url"]} for c in ctx], error=err, cdp=ui.CDP)
+        tab.close()
+    rec.update(engine="app", prompt_version=PASTE_VERSION, started_at=started)
+    if rec.get("model") and rec["model"] != "gpt-6":
+        rec["downgraded"] = True
+    return rec
+
+
+def respond(engine: str, question: str, query: str, ctx: list[dict], model: str, key: str | None) -> dict:
+    return answer_app(question, query, ctx) if engine == "app" else answer(question, query, ctx, model, key)
+
+
 # ---------------------------------------------------------------- scoring
 
 def tier(text: str, our_rank: int | None) -> dict:
@@ -271,6 +343,42 @@ def results_from_cell(cell: dict, stored: Stored | None) -> list[dict]:
     return out
 
 
+def pinned_chat(query: str, name: str) -> dict:
+    """Run one pinned one-search chat in the app (Free, temporary): the result list ChatGPT gets for exactly `query`."""
+    import ctxprobe as C
+    C.OUT = pack_dir(name) / "pinned"
+    C.chat(PINNED.format(q=query), [], f"pinned-{E.today()}-{hashlib.sha1(query.encode()).hexdigest()[:6]}")
+    return json.loads(sorted(C.OUT.glob("pinned-*.json"))[-1].read_text())
+
+
+def pack_from_pinned(rec: dict, question: str | None) -> dict:
+    """A pinned chat -> pack. The stream must show exactly one search with the pinned query, else it is refused."""
+    import cardprobe as K
+    m = re.search(r'word for word: "(.*?)"', rec.get("prompt") or "")
+    want = m.group(1) if m else None
+    x = K.decompose(rec.get("sse") or [])
+    if not want or x["queries"] != [want]:
+        sys.exit(f"pinned chat ran {x['queries']!r}, not [{want!r}]: drop it")
+    if x["model"] and x["model"] != "gpt-6":
+        print(f"warning: answered by {x['model']} (downgraded); the result list is still the search tool's", file=sys.stderr)
+    if not question:
+        sys.exit("a pinned chat needs --question (the shopper question the draft is scored on)")
+    rs = list({r["url"]: r for r in x["results"] if r["url"]}.values())
+    fetch_all([{"url": r["url"]} for r in rs])
+    stored, t = Stored(), rec.get("started_at") or E.now_iso()
+    results = []
+    for r in rs:
+        if "dealectric.com" in r["url"]:
+            text, how = stored.text(r["url"], t)
+        else:
+            f = fetch_text(r["url"])
+            text, how = f["text"], f["status"]
+        results.append({"url": r["url"], "title": r.get("title") or "", "snippet": r.get("snippet") or "", "text": text,
+                        "source": how, "type": r.get("type")})
+    return {"question": question, "query": want, "from": f"pinned app chat {rec.get('tag')}", "app_started_at": t,
+            "model": x["model"], "results": results}
+
+
 def fetch_all(results: list[dict], workers: int = 8) -> None:
     todo = [r for r in results if "dealectric.com" not in r["url"]]
     with cf.ThreadPoolExecutor(workers) as ex:
@@ -278,13 +386,19 @@ def fetch_all(results: list[dict], workers: int = 8) -> None:
 
 
 def cmd_pack(a) -> None:
-    if a.cell:
+    if a.cell and "sse" in json.loads(Path(a.cell).read_text()):   # a ctxprobe chat (pinned one-search)
+        pack = pack_from_pinned(json.loads(Path(a.cell).read_text()), a.question)
+    elif a.cell:
         cell = json.loads(Path(a.cell).read_text())
         rs = (cell.get("response") or {}).get("search_results") or []
         fetch_all([{"url": r.get("url") or ""} for r in rs])
         results = results_from_cell(cell, Stored())
         pack = {"question": a.question or cell.get("prompt"), "query": (cell.get("queries") or [""])[0], "from": a.cell,
                 "app_started_at": cell.get("started_at"), "results": results}
+    elif a.engine == "app":
+        if not (a.query and a.question):
+            sys.exit("pack needs --cell, or --query and --question")
+        pack = pack_from_pinned(pinned_chat(a.query, a.name), a.question)
     else:
         if not (a.query and a.question):
             sys.exit("pack needs --cell, or --query and --question")
@@ -392,12 +506,12 @@ def cmd_replay(a) -> None:
                                         "results": [{k: r[k] for k in ("url", "title", "share", "full_chars", "shown", "source")} for r in ctx]})
 
     def one(n):
-        rec = answer(pack["question"], pack["query"], ctx, a.model, key)
+        rec = respond(a.engine, pack["question"], pack["query"], ctx, a.model, key)
         rec.update(tier(rec["text"], our_rank), our_rank=our_rank, n=n, tag=tag)
         E.write_json(out / f"{n}.json", rec)
         return rec
 
-    with cf.ThreadPoolExecutor(3) as ex:
+    with cf.ThreadPoolExecutor(1 if a.engine == "app" else 3) as ex:   # one app chat at a time
         for rec in ex.map(one, range(1, a.reps + 1)):
             print(f"{tag} #{rec['n']} {rec['status']} T{rec['tier']} our_rank={our_rank} go={rec['go']} | {rec['text'][:100]!r}")
     shown = next((r["shown"] for r in ctx if "dealectric.com" in r["url"]), "")
@@ -457,6 +571,8 @@ def app_outcome(c: dict) -> dict:
 
 
 def cmd_calibrate(a) -> None:
+    global ALPHA, BUDGET
+    ALPHA, BUDGET = a.alpha or ALPHA, a.budget or BUDGET
     run = E.RUNS_DIR / (a.run or f"{E.today()}-fastcal")
     run.mkdir(parents=True, exist_ok=True)
     cells = cal_cells()
@@ -480,19 +596,19 @@ def cmd_calibrate(a) -> None:
         our_rank = next((i + 1 for i, r in enumerate(ctx) if "dealectric.com" in r["url"]), None)
         reps = []
         for n in range(a.reps):
-            rec = answer(c["prompt"], q, ctx, a.model, key)
+            rec = respond(a.engine, c["prompt"], q, ctx, a.model, key)
             rec.update(tier(rec["text"], our_rank))
-            rec["judge"] = judge(c["prompt"], rec["text"]) if rec["status"] == 200 else {}
+            rec["judge"] = judge(c["prompt"], rec["text"]) if rec["status"] == 200 and not a.no_judge else {}
             reps.append(rec)
-        app = {**app_outcome(c), "judge": judge(c["prompt"], c["text"])}
+        app = {**app_outcome(c), "judge": {} if a.no_judge else judge(c["prompt"], c["text"])}
         row = {"cell": str(f.relative_to(E.RUNS_DIR)), "question": c["prompt"], "query": q, "our_rank": our_rank,
                "n_results": len(ctx), "our_source": next((r["source"] for r in ctx if "dealectric.com" in r["url"]), None),
                "unreadable": sum(1 for r in ctx if not r.get("text")), "app": app, "replays": reps, "model": a.model,
-               "prompt_version": PROMPT_VERSION}
+               "prompt_version": PROMPT_VERSION, "engine": a.engine, "alpha": ALPHA, "budget": BUDGET}
         E.write_json(p, row)
         return row
 
-    with cf.ThreadPoolExecutor(a.workers) as ex:
+    with cf.ThreadPoolExecutor(1 if a.engine == "app" else a.workers) as ex:
         for i, row in enumerate(ex.map(one, pick), 1):
             ts = [r["tier"] for r in row["replays"]]
             print(f"{i:3}/{len(pick)} app T{row['app']['tier']} replay T{ts} rank={row['our_rank']} | {row['question'][:70]}", flush=True)
@@ -591,13 +707,16 @@ def main() -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("pack"); p.add_argument("--cell"); p.add_argument("--query"); p.add_argument("--question")
     p.add_argument("--name", required=True); p.add_argument("--top", type=int, default=12)
+    p.add_argument("--engine", choices=["app", "api"], default="app")
     p = sub.add_parser("gap"); p.add_argument("packs", nargs="+")
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)
+    p.add_argument("--engine", choices=["app", "api"], default="app")
     p = sub.add_parser("score"); p.add_argument("pack"); p.add_argument("--concern")
     p = sub.add_parser("calibrate"); p.add_argument("--n", type=int, default=40); p.add_argument("--reps", type=int, default=3)
     p.add_argument("--model", default=MODEL); p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)
-    p.add_argument("--workers", type=int, default=3)
+    p.add_argument("--workers", type=int, default=3); p.add_argument("--engine", choices=["app", "api"], default="app")
+    p.add_argument("--no-judge", action="store_true"); p.add_argument("--alpha", type=float); p.add_argument("--budget", type=int)
     p = sub.add_parser("calreport"); p.add_argument("--run")
     p = sub.add_parser("transfer"); p.add_argument("--n", type=int, default=40); p.add_argument("--model", default=MODEL)
     p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)

@@ -62,8 +62,9 @@ are weak, iterate drafts offline, and check retrieval live at volume.
 2. **Query transfer.** Ask each question in the app at least twice (`visibility_scan.py` on a harvest file, then
    `harvest.py`). Record the words ChatGPT searched with, whether it searched at all, and the results it got. Drop
    questions it doesn't search for: no page can win those. This step must run in the app: the API's own first query
-   for a blind question overlaps the app's 56% of the time, against 90% between two app chats [measured,
-   `runs/2026-10-31-transfer`].
+   for a blind question shares 56% of its words with the app's, against 90% between two app chats on the same
+   question; it often runs a narrow `site:` lookup instead of the app's "best <category> 2026" query [measured, 33
+   blind questions, `runs/2026-10-31-transfer`].
 3. **Gap score.** For each query cluster (the 2–3 phrasings ChatGPT actually uses), take the real top 12: the
    harvest chat's own results, or a pinned one-search chat in the app for extra phrasings (see "Running it" below;
    `queryreplay.py` on the API is the fallback). Judge whether the cluster is open or saturated.
@@ -84,8 +85,11 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    - Build the context the model would get: the rival pages, each cut to the share measured for its rank, plus the
      draft (`fastloop.py pack`, `replay`, `score`; see `reference/tools.md`).
    - Answer the shopper's question from that context in the app: paste it into a Free temporary chat, search off
-     (`fastloop.py replay --engine app`). The API with search off (`--engine api`) is the fallback. Whether a pasted
-     page can produce a `/go/` button is untested.
+     (`fastloop.py replay --engine app`). The API with search off (`--engine api`) is the fallback.
+   - A pasted context gets no links unless the paste asks for them: without the linking sentence the app wrote no
+     citation and no link at all. With it (`PASTE_VERSION` b1, the same sentence as the API prompt), the app put our
+     `/go/` link in its answer and picked our kit [observed, 1 chat each, `runs/fastloop/smoke-solar-budget/`].
+     Keep the paste fixed across drafts; hand-over rates from it compare drafts, they aren't live rates.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.
    - Use the scores to compare drafts against each other and the current page, never as forecasts.
@@ -120,9 +124,23 @@ accounts are flagged, throttled for long or out of quota and the work can't wait
   profile, with no bursts. Keep the API key alive as the fallback.
 
 A step counts as trusted only after it passes calibration against recorded app chats whose outcome we already know.
-These pass bars are proposals until Barry sets them:
-- Answer replay: matches the app on cited/not in 80%+ of chats and on the top pick in 70%+.
-- Gap judge: agrees with Barry's labels on about 20 queries.
+
+**The ceiling is the app itself.** [measured, 10-31] Two app chats on the same blind question, both with our page in
+the results, agree on whether they cite us only 72% of the time (134 of 186 pairs); on `/go/`, 90%. No simulator can
+match single chats better than that, so an 80% per-chat bar is unreachable. Judge a replay by the rate over 30+
+chats, and by whether it ranks drafts the way live readings do.
+
+API engine calibration (`runs/2026-10-31-fastcal*`, 40 recorded chats, 30 with our page in the results, gpt-6-luna,
+3 replays each):
+- Per chat, cited/not agrees 70–77% at every rank decay tried (blind prompts 62–71%): at the app's own ceiling.
+- At rank 1–5 it agrees 17 of 19; below rank 5, 7 of 13.
+- Cited rate: replay 88% vs app 71% at `ALPHA` 0.5, which is kept because it matches the measured per-rank shares.
+  So the replay over-credits low-ranked pages by about 15 points.
+- Top pick agrees 72%, top brand 78%.
+- `/go/` couldn't be calibrated: the app handed it over in only 3 of 30.
+
+The app engine is not calibrated yet; it needs about 40 app chats.
+Gap judge: unvalidated until it agrees with Barry's labels on about 20 queries.
 
 Until a step passes, label its output unvalidated.
 
