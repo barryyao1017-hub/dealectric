@@ -29,8 +29,21 @@ clone.
 | `growth/evals/apiprobe.py` | Needle and echo probes through the API. |
 | `growth/evals/cardprobe.py api` | Full API answers, for comparison with the app. |
 
-- **Cost:** web search is $10 per 1,000 calls plus content tokens at the model's rates. A one-search replay is about
-  1 cent. The 117-call replay cost about $1.20. Total DLC-77 API spend was about $5, mostly from free-form searching.
+- **Cost:** web search is $10 per 1,000 calls plus content tokens at the model's rates.
+  - Prices, third-party listings checked 2026-10-31:
+    - gpt-6-luna: $0.10 per million input tokens, $0.50 output.
+    - gpt-6.1-sol: $2 / $10 in most listings, $1 / $5 in one. Our 10-30 bill fits $1 / $5 better.
+    - Claude Haiku 5.5: $0.10 / $0.50. Claude Sonnet 5.5: $2 / $10.
+  - Measured calls (10-30 runs, Luna):
+    - One-search replay: ~8.7k input tokens, ~40 output, about 1.1 cents, nearly all search fee. The 117-call
+      replay cost about $1.20.
+    - Free-form answers: ~26k input tokens with ~4 searches.
+    - Total DLC-77 spend was about $5, mostly from free-form searching.
+  - Estimates:
+    - Per product, one fast-loop cycle: $5–10. Gap map ~$1.50; Haiku first pass, then Sonnet judge only on
+      shortlisted queries, ~$0.08 each. Competitor set ~$0.30. Ten drafts ~$2 with Luna answer replay, ~$5 with
+      Sol. Two weeks of daily retrieval checks ~$1.
+    - One-time setup: $8–10.
 - **Defaults:** `max_tool_calls: 1` whenever only the result list matters, and `gpt-6-luna` for routine runs. Account
   is Tier 1: Sol hit HTTP 429 at 6 workers, so use 3.
 - `search_context_size` had no visible effect.

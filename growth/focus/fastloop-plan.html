@@ -366,11 +366,10 @@ ul.list b { font-weight: 600; }
     <div>
       <h3>Cost and time, estimated</h3>
       <ul class="list">
-        <li><b>Build:</b> about half a day for <code>fastloop.py</code> and the gap judge, mostly glue around existing tools.</li>
-        <li><b>Gap map:</b> about 1 cent per query for a one-search replay plus judge tokens; 200 queries is roughly $2–4.</li>
-        <li><b>Calibration:</b> about 30 no-search replays, about $1.</li>
-        <li><b>Each draft:</b> tokens only. I expect well under $1 per draft but haven't checked the model's token price.</li>
-        <li><b>Live retrieval checks:</b> about 1 cent per target query per day.</li>
+        <li><b>Per product, one full cycle: about $5–10 of API.</b> Gap map ~$1.50, competitor set ~$0.30, 10 drafts ~$2 (Luna replay) or ~$5 (Sol), two weeks of daily retrieval checks ~$1.</li>
+        <li><b>One-time setup: about $8–10.</b> Calibration ~$3, gap-judge check against your labels ~$2, API query-transfer test ~$1, build and debug runs ~$2–5.</li>
+        <li><b>What drives it:</b> the $10 per 1,000 web-search fee. Token costs on Luna are a tenth of a cent per call. Never let the API search freely (it averages 4 searches per question); use one search or none.</li>
+        <li><b>Not money:</b> about one product's app harvest per Free-quota window, and your time on the 20 judge labels and each page's chosen concern.</li>
       </ul>
     </div>
   </section>
