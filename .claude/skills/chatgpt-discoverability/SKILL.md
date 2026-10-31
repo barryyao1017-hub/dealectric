@@ -191,7 +191,9 @@ address.
   makes are noise, and we drop them.
 - **The open concern.** Name the one thing that still leaves the shopper hesitant and that the top 12 don't answer.
   Example: will a camping power station keep a 12V fridge cold for three days without solar, and is it quiet enough
-  beside a tent? This gets the deep research. The answer must be true, sourced or worked out from specs. We don't run
+  beside a tent? This gets the deep research, **done by Fable 5.1** (Barry, 10-31): spawn a subagent with
+  `model: "fable"` and web search, give it the query cluster, the vote's "missing" lead and the shared core, and ask
+  for the candidate concerns (with how often forums and reviews raise each) and a sourced answer to each. The answer must be true, sourced or worked out from specs. We don't run
   product tests, so the page never implies we did. Choosing the concern is a judgment; forum and review frequency
   narrows it, and the offline scorecard chooses between candidates.
 - **The short list.** On generic questions ChatGPT names 2–3 models, usually the big four (Jackery, Anker, EcoFlow,
