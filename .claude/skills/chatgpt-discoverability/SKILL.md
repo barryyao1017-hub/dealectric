@@ -159,7 +159,8 @@ sentence; 16 on barryyao1017, 24 on barrryyao):
 - Every chat repeated its own tier band (40 of 40).
 
 Use the app engine for picks and our point carried. Use either engine for cited, reading it as relative.
-Gap judge: no human labels (Barry, 10-31); the verdict is a majority vote of Sonnet 5.5, Opus 5.5 and Fable 5.1
+Gap judge: **trusted.** Barry adopted the three-model vote as his labels (10-31), so there is no separate human
+label set. The verdict is a majority vote of Sonnet 5.5, Opus 5.5 and Fable 5.1
 (`fastloop.py vote <packs>`). How it's set up:
 - **The prompt (v2, `GAP_SYSTEM_V2`)** judges from our side: could a new page get in and become the source ChatGPT
   links to. It carries the solar-kit win as a worked OPEN example: no tested major reviewer, the one famous name a deal
@@ -175,7 +176,8 @@ Without the example (v1, first 1,500 characters per page), 17 of 20 came out con
 - The two broad searches where our product pages scored 0 of 8 came out saturated.
 - The search closest to the win ("small solar generator kit under $500") came out open.
 
-ChatGPT voters to come.
+ChatGPT voters to come. Results: `growth/focus/gap-vote/v2-results.md`; per-model verdicts, labels and quotes in
+`growth/evals/runs/fastloop/generic-NN/vote-v2/`.
 
 Until a step passes, label its output unvalidated.
 
