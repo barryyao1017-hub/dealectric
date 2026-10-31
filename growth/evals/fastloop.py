@@ -240,6 +240,8 @@ PASTES = {   # b1 adds ANSWER_SYSTEM's linking sentence: with a0, the app wrote 
     "b1": ("I collected these {n} web pages from a search for \"{query}\". Do not search the web: answer my question from "
            "these pages only. Cite the pages you rely on as links to their URLs. You may add a buy link for a product you "
            "recommend, using a URL that appears in the pages.\n\nMy question: {question}\n\n{pages}")}
+PASTES["c1"] = ("I found these {n} pages when I searched \"{query}\". Using whatever is most useful in them, answer my "
+                "question: {question}\n\n{pages}")   # neutral: no cite or buy verbs (Barry, 10-31)
 PASTE_VERSION = "b1"
 
 
@@ -504,11 +506,25 @@ answers it and comes from a major reviewer, authority or substantive niche revie
 missing: the most important thing a shopper asking this would still need that none of the sources answer well."""
 
 
+def named_query(q: str) -> str | None:
+    """The brand or model number a query names, if any. Gap scores run on general category searches only (Barry,
+    10-31): a named search is an edge case whose results are the brand's own pages, so it reads as falsely open."""
+    src = (Path(__file__).resolve().parents[2] / "src" / "products.py").read_text()
+    brands = {b.lower() for b in re.findall(r'"brand":\s*"([^"]+)"', src)}
+    words = re.findall(r"[a-z0-9][a-z0-9-]*", q.lower())
+    hit = next((w for w in words if w in brands), None)
+    return hit or next((w for w in words if re.search(r"[a-z]", w) and re.search(r"\d", w)
+                        and not re.fullmatch(r"\d+(w|wh|mah|kwh|v|in|ft|bay|c|th|nd|rd|st|k|hz|mm)|\d+p|lifepo4|qi\d.*|usb.*|\d+-in-\d+|202\d", w)), None)
+
+
 def cmd_gap(a) -> None:
     doms = collections.Counter()
     for name in a.packs:
         d = pack_dir(name)
         pack = json.loads((d / "pack.json").read_text())
+        if (hit := named_query(pack.get("query") or "")) and not a.allow_named:
+            print(f"{name}: skipped, query names {hit!r} (general category searches only; --allow-named to judge it)")
+            continue
         rows = []   # rivals only: the question is whether the other results already answer it
         for i, r in enumerate(r for r in pack["results"] if "dealectric.com" not in r["url"]):
             doms[E.host_of(r["url"]).removeprefix("www.")] += 1
@@ -654,15 +670,15 @@ def app_outcome(c: dict) -> dict:
 
 
 def cmd_calibrate(a) -> None:
-    global ALPHA, BUDGET
-    ALPHA, BUDGET = a.alpha or ALPHA, a.budget or BUDGET
+    global ALPHA, BUDGET, PASTE_VERSION
+    ALPHA, BUDGET, PASTE_VERSION = a.alpha or ALPHA, a.budget or BUDGET, a.paste or PASTE_VERSION
     run = E.RUNS_DIR / (a.run or f"{E.today()}-fastcal")
     run.mkdir(parents=True, exist_ok=True)
     cells = cal_cells()
     ours = [f for f in cells if any("dealectric.com" in (r.get("url") or "") for r in json.loads(f.read_text())["response"]["search_results"])]
     rest = [f for f in cells if f not in ours]
     rng = random.Random(a.seed)
-    n_ours = round(a.n * 0.75)
+    n_ours = a.n if a.only_ours else round(a.n * 0.75)
     pick = rng.sample(ours, min(n_ours, len(ours))) + rng.sample(rest, min(a.n - n_ours, len(rest)))
     print(f"{len(cells)} usable app chats ({len(ours)} with our page in the results); calibrating on {len(pick)}", flush=True)
     stored, key = Stored(), E.env_key("OPENAI_API_KEY")
@@ -824,7 +840,7 @@ def main() -> int:
     p = sub.add_parser("pack"); p.add_argument("--cell"); p.add_argument("--query"); p.add_argument("--question")
     p.add_argument("--name", required=True); p.add_argument("--top", type=int, default=12)
     p.add_argument("--engine", choices=["app", "api"], default="app")
-    p = sub.add_parser("gap"); p.add_argument("packs", nargs="+"); p.add_argument("--redo", action="store_true")
+    p = sub.add_parser("gap"); p.add_argument("packs", nargs="+"); p.add_argument("--redo", action="store_true"); p.add_argument("--allow-named", action="store_true")
     p.add_argument("--judge", default=JUDGE)
     p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
@@ -835,6 +851,7 @@ def main() -> int:
     p.add_argument("--model", default=MODEL); p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)
     p.add_argument("--workers", type=int, default=3); p.add_argument("--engine", choices=["app", "api"], default="app")
     p.add_argument("--no-judge", action="store_true"); p.add_argument("--alpha", type=float); p.add_argument("--budget", type=int)
+    p.add_argument("--paste", choices=sorted(PASTES)); p.add_argument("--only-ours", action="store_true")
     p = sub.add_parser("calreport"); p.add_argument("--run")
     p = sub.add_parser("transfer"); p.add_argument("--n", type=int, default=40); p.add_argument("--model", default=MODEL)
     p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)

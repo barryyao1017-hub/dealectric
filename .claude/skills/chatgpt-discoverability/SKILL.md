@@ -68,6 +68,10 @@ are weak, iterate drafts offline, and check retrieval live at volume.
 3. **Gap score.** For each query cluster (the 2–3 phrasings ChatGPT actually uses), take the real top 12: the
    harvest chat's own results, or a pinned one-search chat in the app for extra phrasings (see "Running it" below;
    `queryreplay.py` on the API is the fallback). Judge whether the cluster is open or saturated.
+   - **General category searches only** (Barry, 10-31). A search that names a brand or model number ("Tenergy TN270
+     review") is an edge case: its results are the brand's own pages and retailers, so it reads as falsely open (the
+     only all-judge "open" on the first labelling set was TN270). Start the questions blind and brand-free, and drop
+     clusters whose query names a brand or model; `fastloop.py gap` skips them unless `--allow-named`.
    - **Saturated:** RTINGS, Wirecutter, major reviewers or the brand's own store answer it well. Skip it; copy won't
      displace their authority.
    - **Open:** the results are AI listicles, expired-domain or spam roundups, or off-target pages. Gaps are about
@@ -155,7 +159,8 @@ sentence; 16 on barryyao1017, 24 on barrryyao):
 - Every chat repeated its own tier band (40 of 40).
 
 Use the app engine for picks and our point carried. Use either engine for cited, reading it as relative.
-Gap judge: unvalidated until it agrees with Barry's labels on about 20 queries.
+Gap judge: no human labels (Barry, 10-31); the verdict is a vote of several models. On 20 brand-free searches
+(`runs/fastloop/generic-*`) Sonnet 5.5, Opus 5.5 and Fable 5.1 agree on 14; Fable leans open. ChatGPT voters to come.
 
 Until a step passes, label its output unvalidated.
 
