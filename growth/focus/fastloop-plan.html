@@ -1,0 +1,377 @@
+<title>ChatGPT Fast Loop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: one reading column; the two diagrams break out wider and scroll on phones. */
+:root {
+  --bg: #f5f6f8; --surface: #ffffff; --fg: #1a2230; --muted: #5a6577; --line: #c6cdd8;
+  --sim: #0d6a80; --sim-fill: #e2f0f3; --real-fill: #eceff4; --slow: #a85600; --gap: #b3261e;
+  --judge: #6b4fa0; --judge-fill: #efeaf7;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11151b; --surface: #191f27; --fg: #e5e9ef; --muted: #98a3b3; --line: #364150;
+  --sim: #5ec4d8; --sim-fill: #133038; --real-fill: #1e242d; --slow: #f0a24e; --gap: #ef7c72;
+  --judge: #b9a2e6; --judge-fill: #2a2340; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #191f27; --fg: #e5e9ef; --muted: #98a3b3; --line: #364150;
+  --sim: #5ec4d8; --sim-fill: #133038; --real-fill: #1e242d; --slow: #f0a24e; --gap: #ef7c72;
+  --judge: #b9a2e6; --judge-fill: #2a2340; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main { max-width: 1140px; margin: 0 auto; padding-block: 40px 64px; display: grid; gap: 40px; }
+.prose { max-width: 70ch; display: grid; gap: 12px; }
+h1, h2 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.45rem; }
+h3 { font: 600 1.02rem var(--display); margin: 0; }
+p { margin: 0; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.08rem; }
+section { display: grid; gap: 16px; }
+figure { margin: 0; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; }
+.scroll svg { display: block; width: 100%; min-width: 900px; height: auto; }
+figcaption { color: var(--muted); font-size: .92rem; max-width: 80ch; }
+
+svg text { font-family: var(--body); fill: var(--fg); }
+svg .t { font-size: 13px; font-weight: 600; }
+svg .s { font-size: 11px; fill: var(--muted); }
+svg .m { font: 10.5px var(--mono); fill: var(--muted); }
+svg .lane { font: 500 11px var(--mono); letter-spacing: .1em; fill: var(--muted); }
+svg .real { fill: var(--real-fill); stroke: var(--line); stroke-width: 1.2; }
+svg .simbox { fill: var(--sim-fill); stroke: var(--sim); stroke-width: 1.4; }
+svg .judgebox { fill: var(--judge-fill); stroke: var(--judge); stroke-width: 1.4; }
+svg .plain { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+svg .flow { stroke: var(--fg); stroke-width: 1.3; fill: none; }
+svg .simflow { stroke: var(--sim); stroke-width: 1.5; fill: none; }
+svg .slowflow { stroke: var(--slow); stroke-width: 1.6; fill: none; stroke-dasharray: 6 4; }
+svg .tie { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; fill: none; }
+svg .gapline { stroke: var(--gap); stroke-width: 1.3; fill: none; }
+svg .simtxt { fill: var(--sim); } svg .slowtxt { fill: var(--slow); } svg .gaptxt { fill: var(--gap); } svg .judgetxt { fill: var(--judge); }
+svg .ah { fill: var(--fg); } svg .ah-sim { fill: var(--sim); } svg .ah-slow { fill: var(--slow); } svg .ah-mut { fill: var(--muted); }
+
+.key { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: .88rem; color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 14px; height: 10px; border-radius: 2px; border: 1.4px solid; display: inline-block; }
+.sw.real { background: var(--real-fill); border-color: var(--line); }
+.sw.sim { background: var(--sim-fill); border-color: var(--sim); }
+.sw.judge { background: var(--judge-fill); border-color: var(--judge); }
+
+table { border-collapse: collapse; width: 100%; font-size: .93rem; }
+.tablewrap { overflow-x: auto; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td:first-child { white-space: nowrap; font-family: var(--mono); font-size: .86rem; }
+code { font: .86em var(--mono); background: var(--real-fill); padding: 1px 5px; border-radius: 3px; }
+.pill { display: inline-block; font: 500 11px/1.6 var(--mono); padding: 0 7px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.have { color: var(--sim); } .new { color: var(--slow); } .prop { color: var(--muted); } .jud { color: var(--judge); }
+ul.list { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; max-width: 72ch; }
+ul.list b { font-weight: 600; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+.cols > div { min-width: 0; display: grid; gap: 8px; align-content: start; }
+.evidence { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; max-width: 80ch; }
+</style>
+
+<main>
+  <header class="prose">
+    <div class="eyebrow">Dealectric · DLC-77 · final design, nothing built yet · 2026-10-31</div>
+    <h1>ChatGPT Fast Loop</h1>
+    <p class="lede"><b>Input: one product or brand.</b> Start from questions shoppers with a loose purchase intent would really ask, learn which words ChatGPT turns them into, and aim pages at the searches where the current results are weak. We don't try to simulate OpenAI's ranking: we measure the real results, judge the gap, and confirm retrieval live at volume.</p>
+  </header>
+
+  <section>
+    <div class="prose">
+      <h2>Each real step, and what we put in its place</h2>
+      <p>The top row is what the ChatGPT app does with a shopper's question. The bottom row is our offline version of each step. Each dashed line says how that version is made, which is how far we can trust it: simulated, harvested from real chats, measured on the real index, or replayed. Ranking our own draft is the one step we leave to judgment and check live.</p>
+      <div class="key"><span><i class="sw real"></i>real app step</span><span><i class="sw sim"></i>offline step, scored</span><span><i class="sw judge"></i>judgment, checked live</span></div>
+    </div>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1160 530" role="img" aria-label="Six real steps: shopper asks, ChatGPT writes a query, searches the index, hands over page text, writes the answer, builds the screen. Under them: blind shopper questions, the query transfer harvested from app chats, a gap score measured on real results, a context builder and an answer replay, then a scorecard. The draft page is written by judgment for the chosen gap query. Only the winning draft is published and waits for the crawler.">
+        <defs>
+          <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-sim" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-slow" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah-mut" d="M0 0L10 5L0 10z"/></marker>
+        </defs>
+
+        <text class="lane" transform="rotate(-90 22 112)" x="22" y="112" text-anchor="middle">REAL APP</text>
+        <text class="lane simtxt" transform="rotate(-90 22 420)" x="22" y="420" text-anchor="middle">FAST LOOP</text>
+
+        <!-- ship the winner -->
+        <path class="flow" d="M1130 370 H1148 V12 H125 V28" marker-end="url(#a)"/>
+        <text class="s" x="640" y="27" text-anchor="middle">ship only the winning draft, then check retrieval and read it live (1–3 days)</text>
+
+        <!-- published page and crawler -->
+        <rect class="plain" x="50" y="32" width="150" height="50" rx="5"/>
+        <text class="t" x="125" y="54" text-anchor="middle">Our published page</text>
+        <text class="m" x="125" y="71" text-anchor="middle">dealectric.com</text>
+        <path class="slowflow" d="M200 57 H497 V106" marker-end="url(#ao)"/>
+        <text class="m slowtxt" x="212" y="50">OAI-SearchBot</text>
+        <text class="s slowtxt" x="510" y="62">Fetch every few days per change; a new URL linked from home ~13 h.</text>
+        <text class="s slowtxt" x="510" y="77">The only step that needs the crawler, so it stays out of the inner loop.</text>
+
+        <!-- real lane -->
+        <rect class="real" x="50" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="125" y="136" text-anchor="middle">Shopper asks</text>
+        <text class="s" x="125" y="156" text-anchor="middle">in their own words,</text>
+        <text class="s" x="125" y="171" text-anchor="middle">rarely a model name</text>
+
+        <rect class="real" x="236" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="311" y="136" text-anchor="middle">Writes a query</text>
+        <text class="s" x="311" y="156" text-anchor="middle">usually one search,</text>
+        <text class="s" x="311" y="171" text-anchor="middle">its own words</text>
+
+        <rect class="real" x="422" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="497" y="136" text-anchor="middle">Searches the index</text>
+        <text class="s" x="497" y="156" text-anchor="middle">OpenAI's stored copy,</text>
+        <text class="s" x="497" y="171" text-anchor="middle">about 12 results</text>
+
+        <rect class="real" x="608" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="683" y="136" text-anchor="middle">Hands over text</text>
+        <text class="s" x="683" y="156" text-anchor="middle">short pages whole,</text>
+        <text class="s" x="683" y="171" text-anchor="middle">long ones cut by query</text>
+
+        <rect class="real" x="794" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="869" y="136" text-anchor="middle">Writes the answer</text>
+        <text class="s" x="869" y="156" text-anchor="middle">gpt-6 on Free</text>
+        <text class="s" x="869" y="171" text-anchor="middle">(gpt-6-mini after quota)</text>
+
+        <rect class="real" x="980" y="110" width="150" height="80" rx="5"/>
+        <text class="t" x="1055" y="136" text-anchor="middle">Builds the screen</text>
+        <text class="s" x="1055" y="156" text-anchor="middle">cards, buttons,</text>
+        <text class="s" x="1055" y="171" text-anchor="middle">links, citations</text>
+
+        <path class="flow" d="M200 150 H234" marker-end="url(#a)"/>
+        <path class="flow" d="M386 150 H420" marker-end="url(#a)"/>
+        <path class="flow" d="M572 150 H606" marker-end="url(#a)"/>
+        <path class="flow" d="M758 150 H792" marker-end="url(#a)"/>
+        <path class="flow" d="M944 150 H978" marker-end="url(#a)"/>
+
+        <!-- ties -->
+        <path class="tie" d="M125 190 V326" marker-end="url(#am)"/>
+        <text class="s" x="133" y="241">simulated: blind</text>
+        <text class="s" x="133" y="255">questions per brand</text>
+        <text class="s" x="133" y="269">and product type</text>
+
+        <path class="tie" d="M311 190 V326" marker-end="url(#am)"/>
+        <text class="s" x="319" y="241">harvested from real</text>
+        <text class="s" x="319" y="255">app chats: the transfer</text>
+        <text class="s" x="319" y="269">we are learning</text>
+
+        <path class="tie" d="M497 190 V326" marker-end="url(#am)"/>
+        <text class="s" x="505" y="241">measured, not simulated:</text>
+        <text class="s" x="505" y="255">the real results for</text>
+        <text class="s" x="505" y="269">that query, then judged</text>
+
+        <path class="tie" d="M683 190 V326" marker-end="url(#am)"/>
+        <text class="s" x="691" y="241">rival pages, cut by</text>
+        <text class="s" x="691" y="255">the measured budget,</text>
+        <text class="s" x="691" y="269">spot-checked by needles</text>
+
+        <path class="tie" d="M869 190 V326" marker-end="url(#am)"/>
+        <text class="s" x="877" y="248">API model, search off,</text>
+        <text class="s" x="877" y="262">fixed result set</text>
+
+        <path class="gapline" d="M1055 190 V262" style="stroke-dasharray:3 3"/>
+        <path class="gapline" d="M1047 266 L1063 282 M1063 266 L1047 282"/>
+        <text class="s gaptxt" x="1055" y="302" text-anchor="middle">no stand-in: cards and</text>
+        <text class="s gaptxt" x="1055" y="316" text-anchor="middle">buttons are live-only</text>
+
+        <!-- fast lane -->
+        <rect class="simbox" x="50" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="125" y="356" text-anchor="middle">Shopper questions</text>
+        <text class="s" x="125" y="376" text-anchor="middle">no product, model</text>
+        <text class="s" x="125" y="391" text-anchor="middle">number or domain</text>
+
+        <rect class="simbox" x="236" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="311" y="356" text-anchor="middle">Query transfer</text>
+        <text class="s" x="311" y="376" text-anchor="middle">question → words</text>
+        <text class="s" x="311" y="391" text-anchor="middle">ChatGPT searches</text>
+
+        <rect class="simbox" x="422" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="497" y="356" text-anchor="middle">Gap score</text>
+        <text class="s" x="497" y="376" text-anchor="middle">who holds the top 12,</text>
+        <text class="s" x="497" y="391" text-anchor="middle">open or saturated?</text>
+
+        <rect class="simbox" x="608" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="683" y="356" text-anchor="middle">Context builder</text>
+        <text class="s" x="683" y="376" text-anchor="middle">rivals' text + draft,</text>
+        <text class="s" x="683" y="391" text-anchor="middle">as the model gets it</text>
+
+        <rect class="simbox" x="794" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="869" y="356" text-anchor="middle">Answer replay</text>
+        <text class="s" x="869" y="376" text-anchor="middle">shopper's question,</text>
+        <text class="s" x="869" y="391" text-anchor="middle">answered from that set</text>
+
+        <rect class="simbox" x="980" y="330" width="150" height="80" rx="5"/>
+        <text class="t" x="1055" y="356" text-anchor="middle">Scorecard</text>
+        <text class="s" x="1055" y="376" text-anchor="middle">cited · picked · our</text>
+        <text class="s" x="1055" y="391" text-anchor="middle">point carried · /go/</text>
+
+        <path class="simflow" d="M200 370 H234" marker-end="url(#as)"/>
+        <path class="simflow" d="M386 370 H420" marker-end="url(#as)"/>
+        <path class="simflow" d="M572 370 H606" marker-end="url(#as)"/><text class="m simtxt" x="589" y="363" text-anchor="middle">rivals</text>
+        <path class="simflow" d="M758 370 H792" marker-end="url(#as)"/>
+        <path class="simflow" d="M944 370 H978" marker-end="url(#as)"/>
+
+        <!-- draft: the judgment step -->
+        <rect class="judgebox" x="420" y="458" width="340" height="56" rx="5"/>
+        <text class="t judgetxt" x="590" y="481" text-anchor="middle">Draft page · judgment</text>
+        <text class="s" x="590" y="500" text-anchor="middle">shared core + the open concern, ~4k characters, query's words</text>
+        <path class="simflow" d="M497 410 V454" marker-end="url(#as)"/>
+        <text class="m simtxt" x="489" y="438" text-anchor="end">target query</text>
+        <path class="simflow" d="M683 458 V414" marker-end="url(#as)"/>
+        <text class="m simtxt" x="691" y="438">draft text</text>
+        <path class="simflow" d="M1055 410 V486 H764" marker-end="url(#as)"/>
+        <text class="s simtxt" x="910" y="479" text-anchor="middle">revise and re-score, ~10 drafts an afternoon</text>
+      </svg>
+      </div>
+      <figcaption>The fast loop starts from the shopper, not from ChatGPT's query, so the question-to-query transfer is learned as part of the loop. Whether our draft would rank is left to judgment (purple) and checked live. Only the screen step has no offline version.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="prose">
+      <h2>Three loops, three speeds</h2>
+      <p>The draft loop uses only steps that passed calibration. The live check confirms retrieval at volume, and every reading goes back into calibration and the gap map.</p>
+    </div>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1140 310" role="img" aria-label="Three loops. Draft loop, minutes: pick a gap query, draft, context and answer replay, scorecard, revise. Calibration, once and after each live reading: recorded app chats are replayed and compared with what the app did; a step that meets its pass bar is trusted. Live check, 1 to 3 days: publish the winner, replay the target queries daily to see whether it is retrieved, read it in the app, compare with the prediction.">
+        <defs>
+          <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="bs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-sim" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="bo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-slow" d="M0 0L10 5L0 10z"/></marker>
+        </defs>
+
+        <text class="t simtxt" x="0" y="58">Draft loop</text>
+        <text class="m" x="0" y="76">minutes · cents</text>
+        <rect class="simbox" x="230" y="36" width="190" height="56" rx="5"/>
+        <text class="t" x="325" y="60" text-anchor="middle">Pick a gap query</text><text class="s" x="325" y="77" text-anchor="middle">from the gap map</text>
+        <rect class="judgebox" x="460" y="36" width="190" height="56" rx="5"/>
+        <text class="t" x="555" y="60" text-anchor="middle">Draft</text><text class="s" x="555" y="77" text-anchor="middle">core + one open concern</text>
+        <rect class="simbox" x="690" y="36" width="190" height="56" rx="5"/>
+        <text class="t" x="785" y="60" text-anchor="middle">Context + answer replay</text><text class="s" x="785" y="77" text-anchor="middle">trusted steps only</text>
+        <rect class="simbox" x="920" y="36" width="190" height="56" rx="5"/>
+        <text class="t" x="1015" y="60" text-anchor="middle">Scorecard</text><text class="s" x="1015" y="77" text-anchor="middle">vs the current page</text>
+        <path class="simflow" d="M420 64 H458" marker-end="url(#bs)"/>
+        <path class="simflow" d="M650 64 H688" marker-end="url(#bs)"/>
+        <path class="simflow" d="M880 64 H918" marker-end="url(#bs)"/>
+        <path class="simflow" d="M960 92 V110 H555 V96" marker-end="url(#bs)"/>
+        <text class="m simtxt" x="757" y="106" text-anchor="middle">revise</text>
+
+        <text class="t" x="0" y="158">Calibration</text>
+        <text class="m" x="0" y="176">once, then after</text>
+        <text class="m" x="0" y="190">each live reading</text>
+        <rect class="plain" x="230" y="136" width="190" height="56" rx="5"/>
+        <text class="t" x="325" y="160" text-anchor="middle">Recorded app chats</text><text class="s" x="325" y="177" text-anchor="middle">outcome already known</text>
+        <rect class="plain" x="460" y="136" width="190" height="56" rx="5"/>
+        <text class="t" x="555" y="160" text-anchor="middle">Replay offline</text><text class="s" x="555" y="177" text-anchor="middle">transfer, gap, answer</text>
+        <rect class="plain" x="690" y="136" width="190" height="56" rx="5"/>
+        <text class="t" x="785" y="160" text-anchor="middle">Compare with the app</text><text class="s" x="785" y="177" text-anchor="middle">queries, cited, pick, /go/</text>
+        <rect class="plain" x="920" y="136" width="190" height="56" rx="5"/>
+        <text class="t" x="1015" y="160" text-anchor="middle">Pass bar met?</text><text class="s" x="1015" y="177" text-anchor="middle">per step, not overall</text>
+        <path class="flow" d="M420 164 H458" marker-end="url(#b)"/>
+        <path class="flow" d="M650 164 H688" marker-end="url(#b)"/>
+        <path class="flow" d="M880 164 H918" marker-end="url(#b)"/>
+        <path class="flow" d="M1070 136 V96" marker-end="url(#b)"/>
+        <text class="m" x="1078" y="122">trusted</text>
+
+        <text class="t slowtxt" x="0" y="258">Live check</text>
+        <text class="m" x="0" y="276">1–3 days</text>
+        <rect class="plain" x="230" y="236" width="190" height="56" rx="5" style="stroke: var(--slow)"/>
+        <text class="t" x="325" y="260" text-anchor="middle">Publish the winner</text><text class="s" x="325" y="277" text-anchor="middle">new linked URL ~13 h</text>
+        <rect class="plain" x="460" y="236" width="190" height="56" rx="5"/>
+        <text class="t" x="555" y="260" text-anchor="middle">Retrieved?</text><text class="s" x="555" y="277" text-anchor="middle">target queries, daily, API</text>
+        <rect class="plain" x="690" y="236" width="190" height="56" rx="5"/>
+        <text class="t" x="785" y="260" text-anchor="middle">Read in the app</text><text class="s" x="785" y="277" text-anchor="middle">blind questions, n=2</text>
+        <rect class="plain" x="920" y="236" width="190" height="56" rx="5"/>
+        <text class="t" x="1015" y="260" text-anchor="middle">Prediction vs result</text><text class="s" x="1015" y="277" text-anchor="middle">miss → fix the loop</text>
+        <path class="slowflow" d="M420 264 H458" marker-end="url(#bo)"/>
+        <path class="flow" d="M650 264 H688" marker-end="url(#b)"/>
+        <path class="flow" d="M880 264 H918" marker-end="url(#b)"/>
+        <path class="flow" d="M1015 236 V214 H325 V196" marker-end="url(#b)"/>
+        <text class="m" x="670" y="209" text-anchor="middle">each reading becomes a calibration case and updates the gap map</text>
+      </svg>
+      </div>
+      <figcaption>Retrieval of a new draft is never predicted offline. It's checked once the page is live: a daily one-search API replay of each target query costs about a cent and shows the same top results as the app most of the time.</figcaption>
+    </figure>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h3>The gap map</h3>
+      <p>The query space is bounded: the brands and product types we have approved links and codes for, times the ways a shopper asks. Each harvested query gets one row:</p>
+      <ul class="list">
+        <li><b>Open or saturated.</b> Read the real results for that query and judge whether they already answer it well. Earlier gap work found gaps are about quality, not count: AI listicles on expired domains and spam, not empty result sets.</li>
+        <li><b>Fit.</b> We sell a product that answers it, with a tested code.</li>
+        <li><b>Does ChatGPT search at all?</b> Vague questions sometimes get a clarifying reply or an answer from memory. No search means no page can win.</li>
+        <li><b>Demand,</b> roughly: how often the harvest produces the query, plus Bing keyword volume where it exists. There's no ChatGPT demand data.</li>
+      </ul>
+    </div>
+    <div class="evidence">
+      <h3>Why gaps, not ranking</h3>
+      <p>Gap-vs-focus reading, 2026-10-30, 11 blind questions, n=2: the solar-kit gap page reached the answer (T4+) in 4 of 6 chats and was retrieved in 5 of 6, ranked first or second each time. The focus product pages scored 0 of 8; "best X" queries return listicles and stores. One of those chats repeated the first sale's path through a /go/ button.</p>
+      <p>The same reading shows the limit. A camping phrasing searched "portable power station solar panel kit for camping" and missed our page, which says "solar generator with panels included". Retrieval follows the query's words, so the draft is written in them.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="prose">
+      <h2>The page formula</h2>
+      <p>Aim for a page that, to the model, sums up the top results and then answers the one concern none of them address. Research goes into that concern; the rest is distilled, not collected.</p>
+    </div>
+    <div class="cols">
+      <div><h3>1 · Shared core</h3><p>Pull the claims, picks and criteria from each of the top 12 and count how many pages make each one. What about half or more of them say is what kept them there: state it briefly. Points only one page makes are noise, and we drop them.</p></div>
+      <div><h3>2 · The open concern</h3><p>The one thing that still leaves a shopper hesitant and that the top 12 don't answer, found in forum threads, review complaints, product Q&amp;A and return reasons. It gets the deep research. The answer must be true and sourced or worked out from specs: we don't run product tests, so the page never implies we did. Draft two or three candidate concerns and let the answer replay choose.</p></div>
+      <div><h3>3 · Length</h3><p>Pages of 2,000–3,500 characters reached the model whole, even in a 12-result search, when ranked near the top. Rivals got 110–170 words each, and long hubs were cut around 16–23k characters. Until the middle range is measured, aim for about 4,000 characters. Put the answer to the concern near the top, under a heading in the query's words.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="prose"><h2>What gets built, and from what</h2></div>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Step</th><th>Built from</th><th>State</th><th>Before it's trusted</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Shopper questions</td><td>The harvest question files already do this: levels G0 (bare category), G1 (situation only) and G2 (category plus one constraint), with no product, model or domain. Extend them per brand and product type, phrased from real sources such as GSC queries and forum posts.</td><td><span class="pill have">exists, extend</span></td><td>A reviewer check that no question leaks a product or model name.</td></tr>
+        <tr><td>2 · Query transfer</td><td><code>harvest.py</code> on app chats records the words ChatGPT searched for each question, and whether it searched at all. App chats are the volume limit (Free quota).</td><td><span class="pill have">exists</span></td><td><span class="pill prop">test</span> Does the API's first query match the app's for the same question? If yes, the transfer harvest can run through the API at volume.</td></tr>
+        <tr><td>3 · Gap score</td><td>The real result set per query: the harvest chat's own results, or a one-search API replay (<code>queryreplay.py</code>). A judge model labels each result, as <code>gapexp.py</code> did, and counts recurring domains.</td><td><span class="pill new">judge prompt new</span></td><td><span class="pill prop">proposal</span> The judge agrees with your labels on a sample of about 20 queries.</td></tr>
+        <tr><td>3b · Competitor set</td><td>Recurring domains in the top 12 across a query cluster's phrasings, the page shape that wins (comparison vs product page), the shared core, and the open concern from research outside the top 12.</td><td><span class="pill new">new</span></td><td>Your review of the chosen concern.</td></tr>
+        <tr><td>Draft</td><td>Your judgment, or mine reviewed by you, in the target query's words. Neutral copy, nothing addressed to AI.</td><td><span class="pill jud">judgment</span></td><td>Checked live only.</td></tr>
+        <tr><td>4 · Context builder</td><td>The rival pages from the competitor set, fetched now (they change slowly), each cut to the share measured for its rank, plus the draft. Same-turn echoes stopped working on 10-30 (the model now quotes at most ~25 words per source), so the cut is checked with needle questions in the app instead.</td><td><span class="pill new">new, fastloop.py</span></td><td>Needle spot-checks agree with the cut; then tested with step 5.</td></tr>
+        <tr><td>5 · Answer replay</td><td>The shopper's question answered by an API model from that context, search off, scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill new">new, fastloop.py</span></td><td><span class="pill prop">proposal</span> On the recorded app chats, matches cited/not in 80%+ and the top pick in 70%+. /go/ and "our point carried" used only to compare drafts.</td></tr>
+        <tr><td>Live check</td><td>Daily one-search API replays of the target queries (retrieved or not), then blind app readings.</td><td><span class="pill have">tools exist</span></td><td>This is the check.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h3>What this loop can't tell us</h3>
+      <ul class="list">
+        <li><b>Whether a new page will rank.</b> Judgment until it's live. Volume across many gap queries is how we learn, not a model of OpenAI's ranking.</li>
+        <li><b>The real hand-over rate.</b> In the app, /go/ reaches a shopper only through a button the model writes; the API writes plain text.</li>
+        <li><b>Catalog cards.</b> On brand questions the brand's own card can take the buy slot whatever our page says.</li>
+        <li><b>Query drift and quota.</b> ChatGPT's phrasing changes, and app harvests are capped by the Free quota until the transfer test says the API can stand in.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cost and time, estimated</h3>
+      <ul class="list">
+        <li><b>Build:</b> about half a day for <code>fastloop.py</code> and the gap judge, mostly glue around existing tools.</li>
+        <li><b>Gap map:</b> about 1 cent per query for a one-search replay plus judge tokens; 200 queries is roughly $2–4.</li>
+        <li><b>Calibration:</b> about 30 no-search replays, about $1.</li>
+        <li><b>Each draft:</b> tokens only. I expect well under $1 per draft but haven't checked the model's token price.</li>
+        <li><b>Live retrieval checks:</b> about 1 cent per target query per day.</li>
+      </ul>
+    </div>
+  </section>
+</main>
