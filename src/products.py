@@ -90,7 +90,7 @@ PRODUCTS = [
 # ---------------- ESR (Awin 24915) ----------------
 {"slug": "esr-cryoboost-3-in-1-qi2-2-25w-stand", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
  "name": "ESR CryoBoost 3-in-1 Magnetic Charging Station, Qi2.2 25 W", "model": "3-in-1 25W Qi2.2 (US plug, black)",
- "url": "https://www.esrtech.com/products/3-in-1-25w-qi2-2-wireless-charging-station-us-plug-black", "price": 99.99, "list_price": 129.99,
+ "url": "https://www.esrtech.com/products/3-in-1-25w-qi2-2-wireless-charging-station-us-plug-black", "price": 109.99, "list_price": 129.99,
  "specs": [("Phone", "Qi2.2 magnetic, 25 W"), ("Watch", "Apple Watch pad"), ("Earbuds", "Qi pad"), ("Cooling", "CryoBoost active fan"), ("Adapter", "50 W, included")],
  "warranty": "12 months; 24 months with free ESR Super User registration", "returns": "30-day money-back",
  "summary": "A three-device stand that charges an iPhone 17 at the full 25 W Qi2.2 rate while actively cooling it, plus an Apple Watch and AirPods.",
@@ -424,7 +424,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-200-v2-200w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
- "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199,
+ "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1099, "list_price": 1199,
  "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
            ("Solar input", "1,000 W max, 12–60 V, 20 A"), ("Solar recharge with this kit", "Not published")],
  "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
