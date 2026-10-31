@@ -6,6 +6,7 @@ against the result set ChatGPT really got, so copy iterates in minutes and only 
     python3.12 growth/evals/fastloop.py pack --query "<ChatGPT's query>" --question "<shopper question>" --name <pack> [--engine api]
     python3.12 growth/evals/fastloop.py pack --cell runs/<run>/ctx/pinned-1.json --question "<q>" --name <pack>  # pinned chat
     python3.12 growth/evals/fastloop.py gap <pack> [<pack> ...]            # open or saturated, recurring domains
+    python3.12 growth/evals/fastloop.py gapcheck --labels labels.json     # Barry's labels vs the judge
     python3.12 growth/evals/fastloop.py replay <pack> --draft d.md [--rank 2] [--url /slug] [--reps 3] [--tag v1]
     python3.12 growth/evals/fastloop.py score <pack> [--concern "<the open concern>"]   # scorecard per draft tag
     python3.12 growth/evals/fastloop.py calibrate --n 40 [--model gpt-6-luna] [--reps 3]
@@ -512,13 +513,41 @@ def cmd_gap(a) -> None:
         for i, r in enumerate(r for r in pack["results"] if "dealectric.com" not in r["url"]):
             doms[E.host_of(r["url"]).removeprefix("www.")] += 1
             rows.append(f"[{i}] {r.get('title')}\nURL: {r['url']}\n{(r.get('text') or r.get('snippet') or '')[:1500]}")
-        user = f"SHOPPER QUESTION: {pack['question']}\nSEARCH QUERY: {pack['query']}\n\nSOURCES:\n\n" + "\n\n".join(rows)
-        g = E.claude_cli_json(GAP_SYSTEM, user, JUDGE, GAP_SCHEMA, timeout=400) or {}
-        E.write_json(d / "gap.json", g)
+        if (d / "gap.json").exists() and not a.redo:
+            g = json.loads((d / "gap.json").read_text())
+        else:
+            user = f"SHOPPER QUESTION: {pack['question']}\nSEARCH QUERY: {pack['query']}\n\nSOURCES:\n\n" + "\n\n".join(rows)
+            try:
+                g = E.claude_cli_json(GAP_SYSTEM, user.replace("\x00", ""), JUDGE, GAP_SCHEMA, timeout=400) or {}
+            except Exception as e:  # noqa: BLE001
+                print(f"{name}: judge failed: {str(e)[:120]}")
+                continue
+            E.write_json(d / "gap.json", g)
         kinds = collections.Counter(s["kind"] for s in g.get("sources", []))
         print(f"{name}: {g.get('verdict', '?').upper()} | {dict(kinds)} | missing: {g.get('missing', '')[:160]}")
     if len(a.packs) > 1:
         print("recurring domains:", ", ".join(f"{k} {v}" for k, v in doms.most_common(12) if v > 1))
+
+
+def cmd_gapcheck(a) -> None:
+    """Barry's labels (the "Gap Judge Labels" artifact's `labels` collection, exported to --labels as {pack: {verdict}})
+    against the judge's verdicts. The skill's bar: the judge agrees on about 20 queries."""
+    labels = json.loads(Path(a.labels).read_text())
+    rows, conf = [], collections.Counter()
+    for name, lab in sorted(labels.items()):
+        g = pack_dir(name) / "gap.json"
+        if not (lab.get("verdict") and g.exists()):
+            continue
+        jv = json.loads(g.read_text()).get("verdict")
+        conf[(lab["verdict"], jv)] += 1
+        rows.append((name, lab["verdict"], jv, lab.get("note", "")))
+    n = len(rows) or 1
+    exact = sum(b == j for _, b, j, _ in rows)
+    near = sum(b == j or "contested" in (b, j) for _, b, j, _ in rows)
+    for name, b, j, note in rows:
+        print(f"{'  ' if b == j else '≠ '}{name}  Barry {b:9}  judge {j:9}  {note[:80]}")
+    print(f"\n{len(rows)} labelled: exact agreement {exact}/{len(rows)} ({exact / n:.0%}); never open-vs-saturated "
+          f"{near}/{len(rows)} ({near / n:.0%}). Confusion (Barry, judge): {dict(conf)}")
 
 
 # ---------------------------------------------------------------- replay a draft
@@ -794,7 +823,8 @@ def main() -> int:
     p = sub.add_parser("pack"); p.add_argument("--cell"); p.add_argument("--query"); p.add_argument("--question")
     p.add_argument("--name", required=True); p.add_argument("--top", type=int, default=12)
     p.add_argument("--engine", choices=["app", "api"], default="app")
-    p = sub.add_parser("gap"); p.add_argument("packs", nargs="+")
+    p = sub.add_parser("gap"); p.add_argument("packs", nargs="+"); p.add_argument("--redo", action="store_true")
+    p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)
     p.add_argument("--engine", choices=["app", "api"], default="app")
@@ -808,7 +838,7 @@ def main() -> int:
     p.add_argument("--run"); p.add_argument("--seed", type=int, default=7)
     a = ap.parse_args()
     {"pack": cmd_pack, "gap": cmd_gap, "replay": cmd_replay, "score": cmd_score, "calibrate": cmd_calibrate,
-     "calreport": cmd_calreport, "transfer": cmd_transfer}[a.cmd](a)
+     "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck}[a.cmd](a)
     return 0
 
 
