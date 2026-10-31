@@ -17,9 +17,16 @@ plausible, not tested. Treat a hypothesis as something to test, never as a rule.
 ## The pipeline in one screen
 
 1. **The shopper asks** in their own words, usually without a model name.
-2. **ChatGPT writes a search query.** The app usually runs **one** search [measured: median 1, 324 chats]. The query
-   is typically the question plus "2026", "review(s)" and brand names. Wording varies between chats on the same
-   question [measured]. Vague questions sometimes get a clarifying reply or an answer with no search [observed].
+2. **ChatGPT writes a search query.** The app usually runs **one** search [measured: median 1, 324 chats].
+   - ChatGPT writes it, not the shopper, from a template: `best <its category word> 2026 <spec words> <use cases>`
+     [measured, 26].
+   - It never adds deal, discount, code or coupon words (0 of 26). Codes win only once a page is retrieved on
+     spec and use-case words.
+   - The category word decides the vertical, and generic words drift: "solar panel" goes to rooftop panels.
+   - Situation questions search authorities (USDA, FDA) first, then a sizing query.
+   - Wording varies between chats on the same question [measured].
+   - A few questions are answered from memory without a search, or get a clarifying reply [measured: 11 of 13
+     natural chats searched].
 3. **It searches OpenAI's index, which holds a stored copy of each page.** It returns about 12 web results [measured:
    median 12, p25–p75 10–17], sometimes with news results on top. The copy is refreshed only when OAI-SearchBot
    fetches the page, not from Bing [measured: 291/292]. Known pages are re-fetched every few days. A new URL linked
@@ -49,7 +56,9 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    cases. They never name our product, a model number, the brand (unless it's a brand question) or dealectric.com.
    Levels: G0 bare category, G1 situation only, G2 category plus one constraint. Use the format of
    `growth/focus/harvest-allpowers-questions.json`. Ground the phrasing in real sources (GSC queries, forum threads,
-   product Q&A) where possible.
+   product Q&A) where possible. Ask the bare category question first, to see which vertical ChatGPT maps the
+   product's category word to. If it drifts (the SP037 panel's "solar panel" goes to rooftop), only narrower
+   phrasings can win.
 2. **Query transfer.** Ask each question in the app at least twice (`visibility_scan.py` on a harvest file, then
    `harvest.py`). Record the words ChatGPT searched with, whether it searched at all, and the results it got. Drop
    questions it doesn't search for: no page can win those. The API writes ~4× more queries in different words, so it
@@ -105,6 +114,9 @@ address.
   beside a tent? This gets the deep research. The answer must be true, sourced or worked out from specs. We don't run
   product tests, so the page never implies we did. Choosing the concern is a judgment; forum and review frequency
   narrows it, and the offline scorecard chooses between candidates.
+- **The short list.** On generic questions ChatGPT names 2–3 models, usually the big four (Jackery, Anker, EcoFlow,
+  BLUETTI). Include the ones the shopper is weighing, and put our product next to them in one table. For situation
+  questions, put the sizing answer (watts, Wh, runtimes) before the picks.
 - **Our own facts.** Add what only we have: a code tested in the brand's cart with the date, the current price, a
   direct pick with its reason.
 - **Words.** The title, H1 and opening use the target query cluster's words. Retrieval follows the query's words: a

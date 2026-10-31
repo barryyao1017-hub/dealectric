@@ -30,12 +30,33 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
 
 - **The app usually runs one search per answer.** [measured: median 1, 324 W3 and visibility chats; 10 of 10 in the
   card probe] The API runs a median of 4 (2–15) for the same question.
-- **Query shape:** the question plus "2026", "review(s)" and brand names. [measured, 10-23 and 10-30] Examples: "best
-  1kWh LiFePO4 portable power station under $500 2026"; "portable power station solar panel kit for camping".
+- **ChatGPT, not the shopper, writes the query, from one template**: `best <ChatGPT's category name> 2026
+  [review|comparison] <spec words> <use cases>`. [measured, 26 harvest answers, `readings/harvest-allpowers.md`]
+  - "2026" appeared in 19 of 26 queries, and 16 of 26 started with "best".
+  - It adds spec words (capacity, LiFePO4, surge, warranty, sizing) and use cases (camping, home backup, outage) on
+    its own.
+  - Brand names appeared in 3 of 26, only on purchase-intent prompts.
+  - **It never adds "deal", "discount", "code" or "coupon" (0 of 26).** Code words come only from the shopper.
+  - The shopper's own words barely survive.
+  - Examples: "best 1kWh LiFePO4 portable power station under $500 2026"; "portable power station solar panel kit
+    for camping".
+- **The category word decides the vertical, and generic words drift.** [measured, 26]
+  - "Which solar panel" goes to rooftop panels, never portable ones.
+  - "Backup battery for my home" goes to Powerwall-class installed systems.
+  - "Not stuck in the dark" goes to lanterns and power banks.
+  - "Solar generator" and "portable power station" stay in our category.
+  - For a new product, ask the bare category question first and see where it lands.
+- **Situation questions search authorities first, products second.** [measured, 26] Fridge goes to USDA and
+  Ready.gov, CPAP to FDA and ResMed. The product query that follows is a sizing query ("starting watts running
+  watts", "runtime").
+- **Narrow questions keep their distinctive words** [observed]. The first sale came from a question matching a
+  page title ("solar generator with panels included"). Whether constraint phrasings (G2) keep their words is
+  DLC-110.
 - **Wording varies between chats on the same question** [measured], which is why the camping phrasing missed our
   page once.
-- **Vague questions may not search**; they get a clarifying question or an answer from memory. [observed, harvest
-  10-30] `harvest.py` measures this per level (G0/G1/G2) and mode (natural vs forced search).
+- **Most shopping questions are searched, even when ChatGPT decides on its own.** [measured: natural mode 11 of 13]
+  The two it didn't search were answered from memory with the big brands. Some vague questions get a clarifying
+  question instead. `harvest.py` measures this per level (G0/G1/G2) and mode (natural vs forced search).
 
 ## 3. The results (`context-probe.md`, `growth/evals/runs/2026-10-30-queryreplay/report.md`)
 
@@ -97,6 +118,12 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
 - **Brand catalog cards compete on brand questions.** [measured, small n] "ALLPOWERS US" (iallpowers.com) cards
   appeared on 4 of 5 ALLPOWERS chats; none for BLUETTI, Aurzen or ESR. With a card, `/go/` came through 1 of 3
   times; without, 3 of 4.
+- **Generic questions get a short list of 2–3 models, usually the big four** (Jackery 10, Anker 8, EcoFlow 8,
+  BLUETTI 6 of 26 answers; ALLPOWERS 0). [measured, harvest] The publishers ChatGPT reads for them are Consumer
+  Reports (top in 6), OutdoorGearLab and TechRadar, and they don't feature ALLPOWERS. Small comparison sites do get
+  in (thepowerstationguide.com 4, others 2–3).
+- **On generic questions the buy buttons go to big retailers and brand stores** (17 of 26 answers had them), not to
+  cited pages. [measured, harvest]
 
 ## 7. Models and plans
 
