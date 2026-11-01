@@ -16,3 +16,6 @@ Rule change (Barry, 11-01): the best draft by M1 becomes the next base (M2 guard
 
 Replay host changed (Barry, 11-01): replay pages now served from web-results.tesla-send-to-car.workers.dev, not dealectric.com/x, so the host cannot tilt ChatGPT toward our result; round 2 restarted with every draft scored on the new host (the base's 24 old-host answers kept as round-02/incumbent-dealectric-host.jsonl).
 
+
+Model (Barry, 11-01): continue on gpt-6-mini while the gpt-6 quota is out (FASTLOOP_MODEL=gpt-6-mini, pinned in the chat URL; answers from any other model are dropped). Round 2's base re-scored on mini; its 12 gpt-6 answers kept as round-02/incumbent-gpt6.jsonl. All comparisons from here are mini vs mini, including the final check.
+
