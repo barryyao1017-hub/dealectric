@@ -53,3 +53,12 @@ Round 3 knowledge base: not added: +5% is within noise (margin 31%)
 Round 4 models: gpt-6 66 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 4 knowledge base: not added: +10% is within noise (margin 33%)
+| 5 | incumbent | | 12 | 11 | 64% | 64% | 38% | |
+| 5 | headline | Named the pick, the BLUETTI AC200L, in the title and H1 and kept every target-query word. | 12 | 9 | 44% | 67% | 43% | no |
+| 5 | concern_placement | Turned the three cautions into numbered points, each opening with a bold action line, stil | 12 | 11 | 45% | 45% | 33% | dropped: M2 fell |
+| 5 | offer_line | Moved the buy link out of the opening clause into its own sentence with the price, right a | 12 | 8 | 25% | 38% | 33% | dropped: M2 fell |
+| 5 | alternatives | Rewrote the alternatives sentence as 'if X matters most' picks, with Anker for weight and  | 12 | 11 | 45% | 55% | 33% | no |
+| 5 | closing_section | Moved the Elite 200 V2 and Jackery note to the top of the closing section under its own he | 12 | 11 | 45% | 45% | 33% | dropped: M2 fell |
+
+Round 5 models: gpt-6 61 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
