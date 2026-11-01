@@ -1,0 +1,14 @@
+# Neutral host for the fast loop's open-page replay (DLC-116, Barry 11-01): the same replay_pages rows as
+# dealectric.com/x/<id>, served from a workers.dev name that does not say "dealectric", so the host of the page that
+# holds a result set cannot tilt ChatGPT toward our own result in it. No routes on dealectric.com.
+# Deploy: CLOUDFLARE_API_TOKEN=$(security find-generic-password -a dealectric -s cloudflare-workers-token -w) npx wrangler deploy
+name = "web-results"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+account_id = "2edd290b5cc542978327feb2e99c975c"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dealectric"
+database_id = "60676ec0-7693-458e-bf75-dab32d70c8cc"

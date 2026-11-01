@@ -187,14 +187,27 @@ class Engine:
         if self.kind == "api":
             return F.answer_api_paste(question, query, ctx, self.model, self.key)
         if self.kind == "open":
-            for _ in range(3):
+            fails = 0
+            while True:
                 rec = F.answer_app_open(question, query, ctx)
-                ok = rec["status"] == 200 and (rec.get("model") or "") == F.APP_MODEL and (rec.get("open_fetches") or 0) >= 1
-                if ok:
+                model = rec.get("model") or ""
+                if rec["status"] == 200 and model == F.APP_MODEL and (rec.get("open_fetches") or 0) >= 1:
                     return rec
                 self.dropped += 1
-                print(f"    dropped an answer: status {rec['status']} model {rec.get('model')} fetches {rec.get('open_fetches')}", flush=True)
-            return {**rec, "status": 0}
+                if rec["status"] == 200 and model and model != F.APP_MODEL:   # quota: the plan fell back to a smaller model
+                    new = F.switch_account(self.tried)
+                    if new:
+                        self.tried.add(new)
+                        print(f"    {model} answer: switched ChatGPT account to {new}", flush=True)
+                    else:
+                        print(f"    {model} answer and every account tried: waiting 30 min ({E.now_iso()})", flush=True)
+                        time.sleep(1800)
+                        self.tried = {F.active_account()}
+                    continue
+                fails += 1
+                print(f"    failed chat: status {rec['status']} model {model or None} fetches {rec.get('open_fetches')}", flush=True)
+                if fails >= 3:
+                    return {**rec, "status": 0}
         while True:
             rec = F.answer_app(question, query, ctx)
             if not (rec.get("downgraded") or rec["status"] != 200):

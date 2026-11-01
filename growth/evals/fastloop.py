@@ -1357,6 +1357,12 @@ def d1(sql_file: str | None = None, command: str | None = None) -> str:
     return subprocess.run(args, capture_output=True, text=True, cwd=E.REPO / "worker", env=env, timeout=180).stdout
 
 
+# Host of the open-page replay (Barry, 11-01): a workers.dev name that does not say "dealectric" (worker/replay), so the
+# page holding a result set cannot tilt ChatGPT toward our own result in it. FASTLOOP_REPLAY_BASE=https://dealectric.com/x
+# restores the old host.
+REPLAY_BASE = os.environ.get("FASTLOOP_REPLAY_BASE", "https://web-results.tesla-send-to-car.workers.dev")
+
+
 def replay_page_html(ctx: list[dict], query: str) -> str:
     import html as H
     parts = [f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">'
@@ -1374,7 +1380,7 @@ def answer_app_open(question: str, query: str, ctx: list[dict]) -> dict:
     page = replay_page_html(ctx, query).replace("'", "''")
     sql.write_text(f"INSERT INTO replay_pages (id, html, created) VALUES ('{pid}', '{page}', '{E.now_iso()}');")
     d1(sql_file=str(sql))
-    url = f"https://dealectric.com/x/{pid}"
+    url = f"{REPLAY_BASE}/{pid}"
     rec = answer_app(question, query, ctx, text=OPEN_PROMPT.format(url=url, query=query, question=question))
     got = d1(command=f"SELECT fetches, last_ua FROM replay_pages WHERE id = '{pid}'")
     d1(command=f"DELETE FROM replay_pages WHERE id = '{pid}'")

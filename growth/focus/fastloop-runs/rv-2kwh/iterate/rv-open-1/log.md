@@ -13,3 +13,6 @@ Engine open (gpt-6 app), paste c1, format v1, 2 answers per result set, 6 result
 
 Rule change (Barry, 11-01): the best draft by M1 becomes the next base (M2 guard, page rules); the noise margin applies only at the end, against the published page. Round 1's concern_placement (M1 71% vs 50%) is the base for round 2.
 
+
+Replay host changed (Barry, 11-01): replay pages now served from web-results.tesla-send-to-car.workers.dev, not dealectric.com/x, so the host cannot tilt ChatGPT toward our result; round 2 restarted with every draft scored on the new host (the base's 24 old-host answers kept as round-02/incumbent-dealectric-host.jsonl).
+
