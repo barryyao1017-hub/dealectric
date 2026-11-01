@@ -1,0 +1,12 @@
+# Iterate rv-2kwh (rv-open-1)
+
+Engine open (gpt-6 app), paste c1, format v1, 2 answers per result set, 6 result sets, rank 5.
+
+| round | draft | change | answers | linked | M1 | M2 | M3 | decision |
+|---|---|---|---|---|---|---|---|---|
+| 1 | incumbent | | 24 | 24 | 50% | 96% | 79% | |
+| 1 | closing_section | Moved the Elite 200 V2 and Jackery note to the top of the closing section under its own he | 24 | 24 | 54% | 100% | 86% | no |
+| 1 | short_answer | Reworded the opening sentence so it names the AC200L as the best 2kWh RV power station und | 12 | 12 | 50% | 100% | 95% | no |
+| 1 | headline | Reworded the title and H1 to put the 30-amp RV plug in the H1 and lead the title with the  | 24 | 22 | 59% | 100% | 83% | no |
+| 1 | concern_placement | Split the open concern into three numbered points (20 A plug, converter off, fridge on pro | 24 | 24 | 71% | 100% | 87% | no |
+| 1 | offer_line | Moved the buy link right after the pick's name with an explicit 'buy it here' phrase, and  | 24 | 24 | 58% | 100% | 88% | no |

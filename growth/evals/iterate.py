@@ -17,7 +17,9 @@ Each round:
    /go/ link (the metric), M2 = share linking dealectric.com, M3 = our links / all links (guards).
 4. A variant replaces the incumbent only if its M1 beats the incumbent's by more than the noise margin
    (max(--margin, 1.5 standard errors of the difference)) and M2 does not drop by more than the margin. A close call
-   (ahead, but within the margin) is rerun once with the same number of answers before deciding.
+   (ahead, but within the margin) is rerun once with the same number of answers before deciding. A near-miss (ahead
+   by more than half the margin after that) is carried into the next round and re-scored on 3x the answers, with the
+   unchanged incumbent's answers carried forward too: more data, same bar.
 5. Stop after --patience rounds in a row with no accepted variant, or at --max-rounds.
 
 Everything is written under growth/focus/fastloop-runs/<target>/iterate/<run-id>/: round-NN.json (variants, answers,
@@ -254,9 +256,35 @@ def cmd_run(a) -> None:
                 snapshot(inc, rdir / "incumbent.png")
             except Exception as e:  # noqa: BLE001
                 print(f"    screenshot failed: {e}", flush=True)
-        inc_s = score(render(inc), tgt, eng, a.reps, rdir / "incumbent.jsonl")
-        vs = make_variants(inc, a.variants, rn)
+        carried = []
+        prev = out / f"round-{rn - 1:02d}.json"
+        if prev.exists():
+            P = json.loads(prev.read_text())
+            pdir = out / f"round-{rn - 1:02d}"
+            if P["incumbent"]["record"] == inc:   # unchanged incumbent: its answers carry forward
+                old = (pdir / "incumbent.jsonl").read_text() if (pdir / "incumbent.jsonl").exists() else ""
+                cur = (rdir / "incumbent.jsonl").read_text() if (rdir / "incumbent.jsonl").exists() else ""
+                if old and old not in cur:
+                    (rdir / "incumbent.jsonl").write_text(old + cur)
+                # near-misses (ahead by more than half the margin, not past it): re-scored on more answers, same rule
+                for i, v in enumerate(P["variants"]):
+                    s, m = v.get("score"), v.get("margin")
+                    if s and m and v["decision"] == "no" and s["m1"] - P["incumbent"]["score"]["m1"] > m / 2:
+                        src = pdir / f"v{i}.jsonl"
+                        dst = rdir / f"carried-{v['dimension']}.jsonl"
+                        if src.exists() and not dst.exists():
+                            dst.write_text(src.read_text())
+                        carried.append({**{k: v[k] for k in ("dimension", "change", "record")}, "file": dst, "carried": True})
+        reps_inc = a.reps * 3 if carried else a.reps
+        inc_s = score(render(inc), tgt, eng, reps_inc, rdir / "incumbent.jsonl")
         results = []
+        for v in carried:
+            s = score(render(v["record"]), tgt, eng, a.reps * 3, v["file"])
+            m = margin(s, inc_s, a.margin)
+            win = s["m1"] - inc_s["m1"] > m and inc_s["m2"] - s["m2"] <= a.margin
+            results.append({**{k: v[k] for k in ("dimension", "change", "record", "carried")}, "violations": [], "score": s,
+                            "margin": m, "decision": "beats incumbent (carried)" if win else "no (carried)"})
+        vs = make_variants(inc, a.variants, rn)
         for i, v in enumerate(vs):
             v["violations"] = check(v["record"], inc, tgt)
             if v["violations"]:
@@ -270,14 +298,14 @@ def cmd_run(a) -> None:
                 m = margin(s, inc_s, a.margin)
             win = s["m1"] - inc_s["m1"] > m and inc_s["m2"] - s["m2"] <= a.margin
             results.append({**v, "score": s, "margin": m, "decision": "beats incumbent" if win else "no"})
-        winners = [r for r in results if r["decision"] == "beats incumbent"]
+        winners = [r for r in results if r["decision"].startswith("beats incumbent")]
         best = max(winners, key=lambda r: r["score"]["m1"]) if winners else None
         E.write_json(out / f"round-{rn:02d}.json", {"round": rn, "incumbent": {"record": inc, "score": inc_s},
                                                    "variants": results, "accepted": best["dimension"] if best else None})
         rows = [f"| {rn} | incumbent | | {inc_s['answers']} | {inc_s['linked']} | {inc_s['m1']:.0%} | {inc_s['m2']:.0%} | {inc_s['m3']:.0%} | |"]
         for r in results:
             s = r["score"]
-            rows.append(f"| {rn} | {r['dimension']} | {r['change'][:90]} | " + (f"{s['answers']} | {s['linked']} | {s['m1']:.0%} | {s['m2']:.0%} | {s['m3']:.0%}"
+            rows.append(f"| {rn} | {r['dimension']}{' (carried)' if r.get('carried') else ''} | {r['change'][:90]} | " + (f"{s['answers']} | {s['linked']} | {s['m1']:.0%} | {s['m2']:.0%} | {s['m3']:.0%}"
                         if s else "- | - | - | - | -") + f" | {r['decision']} |")
         with log.open("a") as fh:
             fh.write("\n".join(rows) + "\n")
