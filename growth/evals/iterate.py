@@ -408,6 +408,9 @@ def cmd_run(a) -> None:
         log.write_text(f"# Iterate {a.target} ({out.name})\n\nEngine {a.engine} ({a.model if a.engine == 'api' else 'gpt-6 app'}), paste {a.paste}, "
                        f"format {a.fmt}, {a.reps} answers per result set, {len(tgt['packs'])} result sets, rank {tgt['rank']}.\n\n"
                        "| round | draft | change | answers | linked | M1 | M2 | M3 | decision |\n|---|---|---|---|---|---|---|---|---|\n")
+    if a.final_only:   # re-run only the final check, e.g. strict on gpt-6 into final-gpt6/ (--final-tag gpt6)
+        final_check(out, tgt, eng, a)
+        return
     done = sorted(out.glob("round-*.json"))
     stale = 0
     for f in done:   # a resumed run counts its plateau from the rounds already on disk
@@ -497,9 +500,9 @@ def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     the same result sets with --final-reps answers per set each, interleaved and standardized to one model mix; then a
     live check and Barry's OK before shipping."""
     best_p = out / "best.json"
-    if not best_p.exists() or (out / "final" / "check.json").exists():
+    fdir = out / ("final" + (f"-{a.final_tag}" if a.final_tag else ""))
+    if not best_p.exists() or (fdir / "check.json").exists():
         return
-    fdir = out / "final"
     fdir.mkdir(exist_ok=True)
     sc = score_round({"published": (render(record(tgt["slug"])), fdir / "published.jsonl"),
                       "final": (render(json.loads(best_p.read_text())["record"]), fdir / "final.jsonl")}, tgt, eng, a.final_reps)
@@ -507,7 +510,7 @@ def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     m = margin(fin, pub, a.margin)
     ok = fin["m1"] - pub["m1"] > m and pub["m2"] - fin["m2"] <= a.margin
     E.write_json(fdir / "check.json", {"published": pub, "final": fin, "margin": m, "beats_published": ok})
-    line = (f"Final check ({a.final_reps} answers per set each): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
+    line = (f"Final check{' [' + a.final_tag + ', models ' + a.models + ']' if a.final_tag else ''} ({a.final_reps} answers per set each): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
             f"{fin['m1']:.0%} / M2 {fin['m2']:.0%}, margin {m:.0%}: {'beats the published page by more than noise' if ok else 'not beyond noise'}. "
             f"By model: published {json.dumps(pub['by_model'])}, final {json.dumps(fin['by_model'])}. "
             "Next: live check (search on) and Barry's OK before shipping.")
@@ -649,6 +652,8 @@ def main() -> int:
         p.add_argument("--models", default="gpt-6,gpt-6-mini",
                        help="accepted answer models, preferred first; one model = strict (off-model answers dropped)")
         p.add_argument("--max-wait", type=float, default=60, help="minutes of quota waiting before the run stops (exit 75)")
+        p.add_argument("--final-only", action="store_true", help="skip the rounds; run only the final check")
+        p.add_argument("--final-tag", help="write the final check to final-<tag>/ (a second check, e.g. on one model)")
         if name == "supervise":
             p.add_argument("--stall-min", type=float, default=30); p.add_argument("--budget-h", type=float, default=16)
             p.add_argument("--max-restarts", type=int, default=8)
