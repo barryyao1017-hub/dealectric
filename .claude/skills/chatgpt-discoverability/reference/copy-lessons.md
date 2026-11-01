@@ -6,6 +6,14 @@ the drafting step (SKILL.md, the page formula) and the variant writer in `growth
 - **observed** lessons are the first variants to try.
 - **Don'ts** are hard constraints.
 
+**Entry rule (Barry, 11-01).** A change becomes a lesson only if both hold:
+1. **Significant:** it raised M1 over its base by more than the noise margin (max of 10 points and 1.5 standard
+   errors of the difference) and kept our page cited.
+2. **Generalizable:** a Claude judge rates it a pattern of structure, placement, ordering or phrasing that works on
+   other product pages, not something resting on this product's facts.
+
+Everything else stays in the run logs (`growth/focus/fastloop-runs/`). A don't needs a significant drop.
+
 Confidence tags:
 - **observed:** one round on one page.
 - **measured:** held on a retest, or on a second page.
@@ -18,25 +26,17 @@ the target's rank. M2 = share citing our page (the guard).
 
 ## Lessons
 
-### The open concern goes inside the short answer, in the query's words, on one line
-- Tag: measured. Metric: concern carried, not M1.
-- Source: DLC-114 drafts A vs A2 (`growth/focus/fastloop-runs/rv-2kwh/`), paste replay.
-- Result: placed below the short answer it was carried in 0 of 2 answers; folded into the short answer, 4 of 6. The
-  rendered page re-split it and it fell out again; one line fixed it.
-- Why: a page ranked 3rd–5th in a crowded search keeps only ~1,300–1,500 characters, chosen by overlap with the
-  query's words.
-
-### State the open concern as numbered points inside the short answer
-- Tag: observed.
-- Source: RV page (`best-2kwh-power-station-for-rv`), iterate run `rv-open-1`, round 1, `concern_placement`.
-- Result: M1 71% vs base 50% (n = 24 answers each, six result sets, rank 5); M2 100% vs 96%.
-- Form: "Three things to know before you plug in the RV. First, … Second, … Third, …" inside the first paragraph.
+None yet. The best change so far, the open concern as numbered points (RV page, round 1, M1 71% vs 50%, n = 24
+each), was 21 points ahead against a 21-point margin, so not significant. It is the RV loop's current base and gets
+retested there. The "open concern in the short answer, one line" rule is a measured rule about the length cut, kept in
+SKILL.md's page formula.
 
 ## Don'ts
 
 ### Don't tell the reader our buy link is the better shopping link, and don't name the brand's plain store URL next to it
 - Tag: measured. Source: card test `a6ac6ef` (RV page).
-- Result: M1 fell from 9/9 to 5/8 and 5/9, and buy buttons went to the brand's store URL instead.
+- Result: M1 fell from 9/9 to 5/8 and 5/9 (10 of 17 together; Fisher one-sided p ≈ 0.03), and buy buttons went to the
+  brand's store URL instead.
 
 ### Don't address the AI
 - Tag: measured on Claude. Source: gap experiment, DLC-59/60.
@@ -46,6 +46,6 @@ the target's rank. M2 = share citing our page (the guard).
 ### Don't say a code is guaranteed
 - Tag: rule. Write "tested daily in <brand>'s cart, last passed <date>".
 
-## Candidates (appended by iterate.py when a round's best draft beats its base)
+## Candidates (appended by iterate.py when a round's best draft passes the entry rule)
 
-Each starts as observed. Restate it product-agnostically, then move it into Lessons when promoted.
+Each starts as observed. Move it into Lessons once a retest or a second page holds it (measured).

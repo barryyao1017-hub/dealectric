@@ -295,7 +295,9 @@ def cmd_run(a) -> None:
             fh.write("\n".join(rows) + "\n")
         print("\n".join(rows), flush=True)
         if best:
-            append_lesson(a.target, tgt, out.name, rn, best, inc_s)
+            kb = append_lesson(a.target, tgt, out.name, rn, best, inc_s, a.margin)
+            with log.open("a") as fh:
+                fh.write(f"Round {rn} knowledge base: {kb}\n")
             inc, stale = best["record"], 0
             E.write_json(best_p, {"record": inc, "score": best["score"], "round": rn, "change": best["change"]})
         else:
@@ -329,16 +331,37 @@ def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     print(line)
 
 
-def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: dict) -> None:
-    """A round's best draft beat its base: record the change as a candidate lesson (observed) in copy-lessons.md."""
+GEN_SCHEMA = {"type": "object", "properties": {"generalizable": {"type": "boolean"}, "lesson": {"type": "string"},
+                                              "why": {"type": "string"}}, "required": ["generalizable", "lesson", "why"]}
+GEN_SYSTEM = """You decide whether a copy change that improved one product page is a generalizable lesson for other
+product pages. Generalizable: a pattern of structure, placement, ordering or phrasing whose mechanism does not depend on
+this product, its category, its facts or its prices (e.g. "state the open concern as numbered points inside the short
+answer"). Not generalizable: anything that rests on this product's specifics (a spec, a claim about this brand, this
+category's terms) or that only re-words content without a transferable pattern. Return generalizable (true/false), the
+lesson restated in one product-agnostic sentence, and why in one sentence."""
+
+
+def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: dict, floor: float) -> str:
+    """Add a lesson to copy-lessons.md only if (Barry, 11-01) the change raised M1 significantly over its base (more than
+    the noise margin, with M2 kept) AND a Claude judge rates it generalizable to other product pages. Returns why."""
     s = best["score"]
+    m = margin(s, base, floor)
+    if s["m1"] - base["m1"] <= m:
+        return f"not added: +{s['m1'] - base['m1']:.0%} is within noise (margin {m:.0%})"
+    g = E.claude_cli_json(GEN_SYSTEM, f"CHANGE ON THIS PAGE: {best['change']}\nWRITER'S LESSON: {best.get('lesson', '')}\n"
+                          f"PAGE: {tgt['slug']}", "claude-sonnet-5-5", GEN_SCHEMA, timeout=300) or {}
+    if not g.get("generalizable"):
+        return f"not added: not generalizable ({g.get('why', 'judge gave no answer')})"
+    best = {**best, "lesson": g["lesson"]}
     entry = (f"\n### {best.get('lesson') or best['change']}\n"
              f"- Tag: observed. Source: `{tgt['slug']}`, iterate run `{run}`, round {rn}, `{best['dimension']}`.\n"
              f"- Result: M1 {s['m1']:.0%} vs base {base['m1']:.0%} (n = {s['linked']} vs {base['linked']} linked answers, "
              f"{len(tgt['packs'])} result sets, rank {tgt['rank']}); M2 {s['m2']:.0%} vs {base['m2']:.0%}.\n"
-             f"- Change on this page: {best['change']}\n")
+             f"- Change on this page: {best['change']}\n"
+             f"- Significance: +{s['m1'] - base['m1']:.0%} over base, margin {m:.0%}. Generalizable: {g['why']}\n")
     with LESSONS.open("a") as fh:
         fh.write(entry)
+    return "added to copy-lessons.md (significant, generalizable)"
 
 
 def cmd_show(a) -> None:
