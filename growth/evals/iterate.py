@@ -770,6 +770,8 @@ def cmd_winners(a) -> None:
                            "round": r["round"], "others": [v for v in r["variants"] if v is not w]})
     shots = [_stage_shot(st["rec"], wd / f"{st['name']}.png") for st in stages]
     fmt = lambda s: f"M1 {s['m1']:.0%} · M2 {s['m2']:.0%} · {s['linked']} linked"   # noqa: E731
+    log = (out / "log.md").read_text() if (out / "log.md").exists() else ""
+    noise = {int(m[1]): re.sub(r"^(not )?added: ", "", m[2]) for m in re.finditer(r"^Round (\d+) knowledge base: (.*)$", log, re.M)}
     secs = []
     for k in range(1, len(stages)):
         st, prev = stages[k], stages[k - 1]
@@ -782,6 +784,7 @@ def cmd_winners(a) -> None:
   <h2>{H.escape(st['label'])}</h2>
   <p class="change">{H.escape(st['change'])}</p>
   <p class="scores"><span>Base ({H.escape(prev['name'])}): {fmt(st['base'])}</span><span class="win">Winner: {fmt(st['score'])}</span></p>
+  {f'<p class="others">Noise check: {H.escape(noise[st["round"]])}. The loop still builds on the best draft; the final check decides what ships.</p>' if st['round'] in noise else ''}
   <h3>Close-up: red boxes mark the changed blocks</h3>
   <div class="pair"><figure><figcaption>Before</figcaption>{_svg(prev['name'] + '.png', shots[k - 1], bi, _zoom(shots[k - 1], bi))}</figure>
   <figure><figcaption>After</figcaption>{_svg(st['name'] + '.png', shots[k], ai, _zoom(shots[k], ai))}</figure></div>
