@@ -109,12 +109,22 @@ are weak, iterate drafts offline, and check retrieval live at volume.
      - Google Search Console URL inspection, then "Request indexing", from the agent's Chrome as barrryyao. Use the
        inspect bar on the property's home; the direct `/search-console/inspect` URL returns a 404.
      - No OpenAI submission route exists.
-   - **Tier 3, genuine outreach (per page, Barry approves and posts).**
-     - Find open questions that the page truly answers: forum and community threads, product Q&A, articles with a
-       factual error on the topic, and resource lists.
-     - Draft replies that answer the question in full on their own, disclose the affiliation, and link only where
-       the venue's rules allow.
-     - Claude never posts, comments or emails. Barry posts from his own accounts.
+   - **Tier 3, genuine outreach (per page; Barry clicks every submit).**
+     1. Research (a Fable subagent with web search): open questions the page truly answers (forum and community
+        threads, product Q&A, articles with a factual error on the topic, resource lists), each venue's link rules,
+        and drafts. Every reply answers the question fully on its own, discloses the affiliation, and links only where
+        the rules allow. Output: `growth/focus/fastloop-runs/<run>/outreach.md`.
+     2. Instruction set: one task per action, giving the URL, the account needed, the steps, the exact text and the
+        stop point. Output: `promote-tier3-instructions.md`.
+     3. Execution (a subagent in the agent's Chrome on 9222): log in through agent-vault where an account exists, and
+        fill each form up to the final Submit/Post. Email corrections become Gmail drafts. Leave the tabs open and
+        screenshot each filled form.
+     4. Barry reviews each tab and clicks Submit himself.
+     - Claude never clicks a final submit, never sends email and **never creates accounts**, including through
+       agent-vault `register`; Barry creates any missing account.
+     - RV LIFE forums (Forest River, Grand Design, Airstream, Jayco, Keystone, iRV2) forbid links to sites we profit
+       from, so replies there are link-free.
+     - Reddit is blocked for our tools; Barry checks it by hand.
    - **Why these tiers.** OpenAI hasn't published whether links weigh in ChatGPT's ranking. What links demonstrably
      do is get our pages found and re-fetched sooner (the RV page was fetched about 11 h after its home link went
      live) and rank in Bing and Google. Treat tier 3's effect on ChatGPT retrieval as an experiment: compare pages
@@ -129,7 +139,7 @@ are weak, iterate drafts offline, and check retrieval live at volume.
 
 ### Running it: the app by default, the API as fallback (Barry, 2026-10-31)
 
-Every step runs on Free ChatGPT accounts in the agent's Chrome. The OpenAI API is only the fallback, for when the
+Every step runs on Free ChatGPT accounts in the agent's Chrome (localhost:9222 only). The OpenAI API is only the fallback, for when the
 accounts are flagged, throttled for long or out of quota and the work can't wait.
 - **Why the app:** it's the gpt-6 shoppers use, with the app's real search and answer format, and it costs nothing.
   The API's search overlaps the app's results only 66–76%, and its queries differ.
