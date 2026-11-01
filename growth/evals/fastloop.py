@@ -43,11 +43,11 @@ footprint-logged.
 """
 from __future__ import annotations
 
-import argparse, bisect, collections, concurrent.futures as cf, hashlib, json, os, random, re, ssl, statistics, sys, time
+import argparse, tempfile, bisect, collections, concurrent.futures as cf, hashlib, json, os, random, re, ssl, statistics, sys, time
 import urllib.parse, urllib.request
 from pathlib import Path
 
-os.environ.setdefault("AGENT_CDP", "http://localhost:9222")   # profile 1, signed in; ctxprobe alone defaults to 9223
+os.environ.setdefault("AGENT_CDP", "http://localhost:9222")   # the only agent Chrome (2026-10-31)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import evallib as E  # noqa: E402
@@ -290,12 +290,12 @@ PASTES["c2"] = ("You just ran a web search for \"{query}\" to answer the user's 
 PASTE_VERSION = os.environ.get("FASTLOOP_PASTE", "b1")
 
 
-def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
+def answer_app(question: str, query: str, ctx: list[dict], text: str | None = None) -> dict:
     """The same context pasted into a Free temporary chat (agent Chrome, AGENT_CDP), search off: the real gpt-6 and the
     app's own answer program, so buttons count; no catalog cards (no search). One gpt-6 message of the Free quota each
     (~26 per account before gpt-6-mini). Driver per the fork's appfeas test: ?q= fails at this length, so insert text."""
     import ui, ctxprobe as C, cardprobe as K
-    text = PASTES[PASTE_VERSION].format(n=len(ctx), query=query, question=question, pages=context_text(ctx, query).split("\n", 1)[1].strip())
+    text = text or PASTES[PASTE_VERSION].format(n=len(ctx), query=query, question=question, pages=context_text(ctx, query).split("\n", 1)[1].strip())
     tab = ui.Tab("about:blank")
     tab.ws.settimeout(180)
     started, err, rec = E.now_iso(), None, {}
@@ -303,7 +303,8 @@ def answer_app(question: str, query: str, ctx: list[dict]) -> dict:
         tab.call("Network.enable", maxResourceBufferSize=50_000_000, maxTotalBufferSize=100_000_000)
         tab.call("Page.enable")
         tab.call("Page.addScriptToEvaluateOnNewDocument", source=K.WIDE_HOOK_JS)
-        tab.navigate("https://chatgpt.com/?temporary-chat=true" + (f"&model={APP_MODEL}" if APP_MODEL else ""))
+        tab.navigate("https://chatgpt.com/?temporary-chat=true" + ("&hints=search" if REPLAY_SEARCH else "")
+                     + (f"&model={APP_MODEL}" if APP_MODEL else ""))
         time.sleep(6)
         t0 = time.time()
         C.submit(tab, text, 0)
@@ -1195,6 +1196,7 @@ def cmd_pastecalreport(a) -> None:
 # same results, pages and model. A second live ask on the first --repeat questions gives the noise floor.
 
 PAIRED = E.RUNS_DIR / "2026-11-01-paired"
+REPLAY_SEARCH = False   # paired --search: the replay chat runs in search mode too (web search on, as live)
 APP_MODEL = os.environ.get("FASTLOOP_MODEL", "gpt-6")   # pin the model the Free plan answers with
 
 
@@ -1236,10 +1238,10 @@ def answer_links(rec: dict, ctx: list[dict] | None = None) -> list[str]:
 
 
 def cmd_paired(a) -> None:
-    global FMT_VERSION, PASTE_VERSION
-    FMT_VERSION, PASTE_VERSION = a.fmt, a.paste
+    global FMT_VERSION, PASTE_VERSION, REPLAY_SEARCH
+    FMT_VERSION, PASTE_VERSION, REPLAY_SEARCH = a.fmt, a.paste, a.search
     qs = json.loads(Path(a.questions).read_text())["questions"][a.start:a.start + a.n]
-    out = PAIRED / f"{a.fmt}-{a.paste}"
+    out = PAIRED / ((f"open-{a.fmt}" if a.engine == "open" else f"{a.fmt}-{a.paste}") + ("-search" if a.search else ""))
     out.mkdir(parents=True, exist_ok=True)
     stored = Stored()
     for i, q in enumerate(qs, a.start):
@@ -1256,14 +1258,16 @@ def cmd_paired(a) -> None:
         fetch_all([{"url": r["url"]} for r in res])
         cell = {"started_at": live["started_at"], "response": {"search_results": res}}
         ctx = build_context(results_from_cell(cell, stored), query)
-        rep = answer_app(q["prompt"], query, ctx)
+        rep = answer_app_open(q["prompt"], query, ctx) if a.engine == "open" else answer_app(q["prompt"], query, ctx)
         live2 = live_chat(q["prompt"]) if i - a.start < a.repeat else None
         rec = {"i": i, "question": q["prompt"], "query": query, "n_results": len(ctx),
                "our_rank": next((k + 1 for k, r in enumerate(ctx) if "dealectric.com" in r["url"]), None),
                "live": {"model": live["model"], "links": answer_links(live), **link_flags(answer_links(live)), "answer": live["answer"]},
                "replay": {"model": rep.get("model"), "status": rep.get("status"), "links": replay_links(rep, ctx),
+                          "searched": rep.get("queries") or [], "cards": len(rep.get("products") or {}),
                           **link_flags(replay_links(rep, ctx)), "answer": rep.get("answer")},
-               "fmt": a.fmt, "paste": a.paste}
+               "fmt": a.fmt, "paste": a.paste, "engine": a.engine,
+               "open": {k: rep.get(k) for k in ("open_url", "open_fetches", "open_ua")} if a.engine == "open" else None}
         if live2 and live2.get("status") == 200:
             rec["live2"] = {"model": live2["model"], "links": answer_links(live2), **link_flags(answer_links(live2))}
         E.write_json(p, rec)
@@ -1291,6 +1295,53 @@ def cmd_pairedreport(a) -> None:
                   f"  M2 live {rate('live', 'm2'):.0%} | replay {rate('replay', 'm2'):.0%}   per-pair agreement {agree('m2'):.0%}"
                   + (f"   live vs live {noise('m2'):.0%} ({len(rep)})" if rep else "")]
     print("\n".join(lines) or "no paired rows yet")
+
+
+# ---- open engine (DLC-115 step 5): the result set served as an unlisted page that ChatGPT opens with its own tool,
+# so the text arrives as tool output instead of the user's message. Pages live in D1 replay_pages (Worker /x/<id>).
+
+OPEN_PROMPT = ("Open {url} . It holds the web search results for \"{query}\". Without running a new web search, answer the "
+               "user's question using those results.\n\nUser's question: {question}")
+
+
+def d1(sql_file: str | None = None, command: str | None = None) -> str:
+    import subprocess
+    env = {**os.environ, "CLOUDFLARE_API_TOKEN": subprocess.run(["security", "find-generic-password", "-a", "dealectric", "-s",
+                                                                 "cloudflare-workers-token", "-w"], capture_output=True, text=True).stdout.strip()}
+    args = ["npx", "--yes", "wrangler", "d1", "execute", "dealectric", "--remote", "--json"] + (["--file", sql_file] if sql_file else ["--command", command])
+    return subprocess.run(args, capture_output=True, text=True, cwd=E.REPO / "worker", env=env, timeout=180).stdout
+
+
+def replay_page_html(ctx: list[dict], query: str) -> str:
+    import html as H
+    parts = [f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">'
+             f'<title>Search results: {H.escape(query)}</title></head><body><h1>Search results for "{H.escape(query)}"</h1>']
+    for i, r in enumerate(ctx):
+        lines = "".join(f"<p>{H.escape(x)}</p>" for x in r["shown"].splitlines() if x.strip())
+        parts.append(f"<article><h2>[{i}] {H.escape(r.get('title') or E.host_of(r['url']))}</h2>"
+                     f"<p>URL: {H.escape(r['url'])}</p>{lines}</article>")
+    return "".join(parts) + "</body></html>"
+
+
+def answer_app_open(question: str, query: str, ctx: list[dict]) -> dict:
+    pid = hashlib.sha1(f"{question}{query}{time.time()}".encode()).hexdigest()[:24]
+    sql = Path(tempfile.gettempdir()) / f"replay-{pid}.sql"
+    page = replay_page_html(ctx, query).replace("'", "''")
+    sql.write_text(f"INSERT INTO replay_pages (id, html, created) VALUES ('{pid}', '{page}', '{E.now_iso()}');")
+    d1(sql_file=str(sql))
+    url = f"https://dealectric.com/x/{pid}"
+    rec = answer_app(question, query, ctx, text=OPEN_PROMPT.format(url=url, query=query, question=question))
+    got = d1(command=f"SELECT fetches, last_ua FROM replay_pages WHERE id = '{pid}'")
+    d1(command=f"DELETE FROM replay_pages WHERE id = '{pid}'")
+    sql.unlink(missing_ok=True)
+    try:
+        row = json.loads(got)[0]["results"][0]
+    except (ValueError, IndexError, KeyError, TypeError):
+        row = {}
+    rec.update(open_url=url, open_fetches=row.get("fetches"), open_ua=row.get("last_ua"), engine="app-open")
+    E.footprint("chatgpt-ui", rec.get("started_at") or E.now_iso(), E.now_iso(), prompt=question, script="fastloop.py",
+                run_id=PAIRED.name, temporary=True, fetched=[{"url": url}], note="replay page opened by ChatGPT-User (ours)")
+    return rec
 
 
 class Downgraded(Exception):
@@ -1415,6 +1466,7 @@ def main() -> int:
     p = sub.add_parser("paired"); p.add_argument("--questions", default=str(E.REPO / "growth/focus/pastecal-reask-questions.json"))
     p.add_argument("--n", type=int, default=15); p.add_argument("--start", type=int, default=0); p.add_argument("--repeat", type=int, default=5)
     p.add_argument("--fmt", choices=FORMATS, default="v1"); p.add_argument("--paste", choices=sorted(PASTES), default="c1")
+    p.add_argument("--engine", choices=["paste", "open"], default="paste"); p.add_argument("--search", action="store_true")
     p = sub.add_parser("pairedreport")
     p = sub.add_parser("reaskreport"); p.add_argument("--run", default="2026-11-01-pastecal-reask")
     p.add_argument("--questions", default=str(E.REPO / "growth/focus/pastecal-reask-questions.json"))

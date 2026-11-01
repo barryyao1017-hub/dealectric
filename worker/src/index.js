@@ -18,6 +18,7 @@ export default {
     try {
       if (url.pathname === "/go" || url.pathname.startsWith("/go/")) return handleGo(url, request, env, ctx);
       if (url.pathname === "/feedback" || url.pathname === "/feedback/") return handleFeedback(url, request, env);
+      if (url.pathname.startsWith("/x/")) return handleReplayPage(url, request, env);
     } catch (err) {
       console.error(err);
       return json({ error: "internal error" }, 500);
@@ -264,4 +265,18 @@ function clip(s, n) {
 }
 function looksLikeBot(ua) {
   return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|gpt|claude|perplexity|anthropic/i.test(ua);
+}
+
+// ---------------------------------------------------------------- /x/<id> (DLC-115 replay calibration)
+// Temporary, unlisted pages that hold one recorded search result set, so ChatGPT can read it through its own page
+// tool instead of a paste. Unguessable ids, noindex, linked from nowhere; rows are deleted after each round
+// (growth/evals/fastloop.py). Not blocked in robots.txt, because ChatGPT's user-initiated fetcher may honour it.
+async function handleReplayPage(url, request, env) {
+  const id = url.pathname.slice(3).replace(/\/$/, "");
+  const row = /^[a-f0-9]{24}$/.test(id) ? await env.DB.prepare("SELECT html FROM replay_pages WHERE id = ?").bind(id).first() : null;
+  const headers = { "X-Robots-Tag": "noindex, nofollow, noarchive", "Cache-Control": "no-store" };
+  if (!row) return new Response("Not found\n", { status: 404, headers: { ...headers, "Content-Type": "text/plain; charset=utf-8" } });
+  await env.DB.prepare("UPDATE replay_pages SET fetches = fetches + 1, last_ua = ? WHERE id = ?")
+    .bind((request.headers.get("user-agent") || "").slice(0, 200), id).run();
+  return new Response(row.html, { headers: { ...headers, "Content-Type": "text/html; charset=utf-8" } });
 }

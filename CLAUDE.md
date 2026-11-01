@@ -25,6 +25,14 @@ Read this before judging project status from the repo alone. Much of the operati
 - Weekly: re-verify prices, bump `VERIFIED` in `src/products.py`, rebuild, push. (Codes are re-tested daily by the sweep above.)
 - Phase 2 of the tracked-link loop (DLC-46, `growth/improvement-loop.md` "Phase 2", files `growth/evals/loop/phase2-iter-NN.md`): the site's copy is the discount-code rebrand of 2026-10-22. Since 2026-10-27 (first clean unattended sweep, Barry's call) it says codes are "tested daily" in the brand's cart, always with the last-pass date next to it ("tested daily in <brand>'s cart, last passed <date>"); never "guaranteed". A brand with no published code (Tenergy) does not claim daily testing. Phase 2 stopped 2026-10-23 after iteration 3 (DLC-49; `growth/loop-report-phase2.md` §7): code-and-link 90% on fresh ChatGPT cells, 81% on all; the remaining misses read ChatGPT's unrefreshed copies of the home and catalog pages.
 
+## Browsers (Barry, 2026-10-31)
+- The agent's Chrome is only the one on `localhost:9222`. Every script (`ui.py`, `ctxprobe.py`, `fastloop.py`, `codesweep.py`, `dailyupdate.py`) and every manual step uses it. Don't use or start a second CDP Chrome (the old port 9223 / `chrome-profile-2`). Run ChatGPT chats one at a time and switch accounts inside 9222's profile when a quota runs out.
+- Barry's personal Chrome stays untouched unless he says otherwise for that step. Browsing that needs no sign-in goes in the built-in browser pane.
+
+## Logins
+- **Google account barrryyao@gmail.com: sign in without asking** (Barry, 2026-11-01). When a site in the agent's Chrome (port 9222) needs a login that "Continue with Google" or Google's account chooser offers as barrryyao@gmail.com, pick it and continue; if Google itself asks for a password, use agent-vault's google.com login. Never type credentials. This covers ChatGPT (the fast-loop accounts sign in with Google; the vault has no chatgpt.com login).
+- **When ChatGPT shows signed out** (session `/api/auth/session` returns `{}`; it happened twice on 10-31/11-01): open `https://chatgpt.com/auth/login`, Continue with Google, choose barrryyao@gmail.com, then confirm the session shows that email (Plus since 11-01).
+
 ## Conventions
 - Legal name on official forms: Jiayi Yao; public name: Barry / Dealectric.
 - Affiliate links carry `rel="sponsored nofollow"`; disclosure page is required on every build.
