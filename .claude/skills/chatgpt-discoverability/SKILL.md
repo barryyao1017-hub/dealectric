@@ -118,11 +118,14 @@ are weak, iterate drafts offline, and check retrieval live at volume.
      - Google Search Console URL inspection, then "Request indexing", from the agent's Chrome as barrryyao. Use the
        inspect bar on the property's home; the direct `/search-console/inspect` URL returns a 404.
      - No OpenAI submission route exists.
-   - **Tier 3, genuine outreach (per page; Barry clicks every submit).**
-     1. Research (a Fable subagent with web search): open questions the page truly answers (forum and community
-        threads, product Q&A, articles with a factual error on the topic, resource lists), each venue's link rules,
-        and drafts. Every reply answers the question fully on its own, discloses the affiliation, and links only where
-        the rules allow. Output: `growth/focus/fastloop-runs/<run>/outreach.md`.
+   - **Tier 3, genuine outreach (per page; Barry clicks every submit). The tier that matters most (Barry, 11-01).**
+     1. Research (a Fable subagent with web search, briefed with `growth/focus/fastloop-briefs/outreach-brief.md`):
+        the freshest threads where someone is about to buy something we list, newest-first (a post in the last 14
+        days first, then unresolved ones up to 45 days, older only if still on page 1 for a target query), scored for
+        genuine demand (3 = buying now among products we cover) and venue activity. Also product Q&A and recent or
+        top-ranking articles with a factual error. Every reply answers the question fully on its own, discloses the
+        affiliation, and links only where the rules allow. Output: `growth/focus/fastloop-runs/<run>/outreach.md`.
+        Re-run it at each live check, looking only for threads newer than the last run.
      2. Instruction set: one task per action, giving the URL, the account needed, the steps, the exact text and the
         stop point. Output: `promote-tier3-instructions.md`.
      3. Execution (a subagent in the agent's Chrome on 9222): log in through agent-vault where an account exists, and
