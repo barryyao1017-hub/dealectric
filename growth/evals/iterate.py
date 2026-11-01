@@ -40,8 +40,11 @@ WRITER = "claude-opus-5-5"
 
 # Targets: the page record, the recorded result sets its shopper questions got, and where a new page is inserted.
 TARGETS = {
-    "rv-2kwh": {"slug": "best-2kwh-power-station-for-rv", "rank": 3,
-                "packs": ["rv-r04-G2-station--nat-1", "generic-17", "rv-r05-G2-station--nat-1"],
+    # rank 5 = the median position of our pages in live results (rank 3 left M1 at 9/9, no headroom); six result sets,
+    # three of them questions where the page is a less obvious answer (bare category, weekend fridge).
+    "rv-2kwh": {"slug": "best-2kwh-power-station-for-rv", "rank": 5,
+                "packs": ["rv-r04-G2-station--nat-1", "generic-17", "rv-r05-G2-station--nat-1", "rv-r05-G2-station--nat-2",
+                          "rv-r01-G0-station--nat-1", "rv-r02-G1-station--nat-1"],
                 "concern": ["20 A", "converter", "propane"],   # the open concern's markers: must stay in the first line
                 "buy": "{buy:bluetti-ac200l}"},
 }
@@ -70,6 +73,8 @@ RULES = """Page rules (Dealectric, measured; never break them):
   its first paragraph, in the query's words (2kWh, RV, power station).
 - Keep HTML valid and the same tags the field uses (<p class="lead">, <strong>, <h2>, <ul>, <li>).
 - Keep the page short: the rendered page should stay near its current length.
+- Never name the brand's plain store URL next to our buy link, and never claim our link is the better shopping link
+  (measured: that copy lowered hand-over and diverted buy buttons to the store, card test a6ac6ef).
 """
 
 VARIANT_SCHEMA = {"type": "object", "properties": {"variants": {"type": "array", "items": {"type": "object", "properties": {
@@ -133,15 +138,30 @@ def make_variants(inc: dict, n: int, round_no: int) -> list[dict]:
 
 
 class Engine:
+    """open (default, Barry 11-01): the open-page replay, fastloop.answer_app_open: the result set is served as an
+    unlisted page that a fresh temporary chat opens with its own tool, so results arrive as tool output. An answer
+    counts only if it came from the pinned model (APP_MODEL) and the page was fetched. app/api: the paste engines,
+    kept for comparison only (they behave unlike a real search; growth/evals/loop/paste-calibration.md)."""
+
     def __init__(self, kind: str, model: str, paste: str, fmt: str):
         self.kind, self.model = kind, model
         F.PASTE_VERSION, F.FMT_VERSION = paste, fmt
         self.key = E.env_key("OPENAI_API_KEY")
-        self.tried = {F.active_account()} if kind == "app" else set()
+        self.tried = {F.active_account()} if kind in ("app", "open") else set()
+        self.dropped = 0
 
     def answer(self, question: str, query: str, ctx: list[dict]) -> dict:
         if self.kind == "api":
             return F.answer_api_paste(question, query, ctx, self.model, self.key)
+        if self.kind == "open":
+            for _ in range(3):
+                rec = F.answer_app_open(question, query, ctx)
+                ok = rec["status"] == 200 and (rec.get("model") or "") == F.APP_MODEL and (rec.get("open_fetches") or 0) >= 1
+                if ok:
+                    return rec
+                self.dropped += 1
+                print(f"    dropped an answer: status {rec['status']} model {rec.get('model')} fetches {rec.get('open_fetches')}", flush=True)
+            return {**rec, "status": 0}
         while True:
             rec = F.answer_app(question, query, ctx)
             if not (rec.get("downgraded") or rec["status"] != 200):
@@ -169,7 +189,7 @@ def score(text: str, tgt: dict, eng: Engine, reps: int, cache: Path) -> dict:
                 continue
             links = F.replay_links(rec, ctx)
             row = {"pack": pname, **F.link_flags(links), "links": links, "answer": (rec.get("answer") or "")[:4000],
-                   "model": rec.get("model"), "at": E.now_iso()}
+                   "model": rec.get("model"), "open_fetches": rec.get("open_fetches"), "at": E.now_iso()}
             rows.append(row)
             with cache.open("a") as fh:
                 fh.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -187,7 +207,9 @@ def margin(a: dict, b: dict, floor: float) -> float:
 
 
 def cmd_run(a) -> None:
-    tgt = TARGETS[a.target]
+    tgt = dict(TARGETS[a.target])
+    if a.rank:
+        tgt["rank"] = a.rank
     run = a.run or f"{E.today()}-{a.engine}"
     out = RUNS / a.target / "iterate" / run
     out.mkdir(parents=True, exist_ok=True)
@@ -266,7 +288,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("run"); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
-    p.add_argument("--engine", choices=["app", "api"], default="api"); p.add_argument("--model", default="gpt-6.1-sol")
+    p.add_argument("--engine", choices=["open", "app", "api"], default="open"); p.add_argument("--model", default="gpt-6.1-sol")
+    p.add_argument("--rank", type=int)
     p.add_argument("--paste", default="c1"); p.add_argument("--fmt", default="v1")
     p.add_argument("--variants", type=int, default=5); p.add_argument("--reps", type=int, default=4)
     p.add_argument("--max-rounds", type=int, default=6); p.add_argument("--patience", type=int, default=3)
