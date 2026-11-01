@@ -93,12 +93,26 @@ are weak, iterate drafts offline, and check retrieval live at volume.
 6. **Offline scoring.**
    - Build the context the model would get: the rival pages, each cut to the share measured for its rank, plus the
      draft (`fastloop.py pack`, `replay`, `score`; see `reference/tools.md`).
-   - Answer the shopper's question from that context in the app: paste it into a Free temporary chat, search off
-     (`fastloop.py replay --engine app`). The API with search off (`--engine api`) is the fallback.
-   - A pasted context gets no links unless the paste asks for them: without the linking sentence the app wrote no
-     citation and no link at all. With it (`PASTE_VERSION` b1, the same sentence as the API prompt), the app put our
-     `/go/` link in its answer and picked our kit [observed, 1 chat each, `runs/fastloop/smoke-solar-budget/`].
-     Keep the paste fixed across drafts; hand-over rates from it compare drafts, they aren't live rates.
+   - Answer the shopper's question with the open-page replay (`fastloop.answer_app_open`, Barry 11-01). The result
+     set is served as an unlisted page on a neutral host (`web-results…workers.dev`, `worker/replay`). A fresh
+     temporary chat opens that page with its own tool, so the results arrive as tool output, as in a real search.
+     - **Use the neutral host.** The old `dealectric.com/x` host inflated hand-over: the same draft scored M1 71% on it
+       vs 25% on the neutral host.
+     - **Don't use the paste engines.** Pasting the context (`--engine app`) handed over 40% vs 5% live, and the API
+       caught only 1 of 6 real hand-overs (`growth/evals/loop/paste-calibration.md`).
+     - **Scores compare drafts; they aren't live rates.**
+   - **Iterate (step 6b, `growth/evals/iterate.py supervise`, DLC-116):**
+     - **Each round:** Opus writes 5 one-change variants of the current base on named dimensions; rule checks run
+       first. Every draft gets 2 answers per result set over 6 result sets at rank 5. The best by M1 becomes the next
+       base, provided M2 (our page cited) holds.
+     - **Stopping:** 3 rounds with no winner, or 6 rounds.
+     - **The one noise test** comes at the end: the final base vs the published page, 6 answers per result set each,
+       margin max(10 points, 1.5 SE).
+     - **At 12 answers per draft, per-round M1 swings about 30 points.** The same draft scored 50%, 64% and 28% in
+       RV rounds 4–6, so trust only the final check.
+     - First run (RV page, `rv-open-1`, 11-01): the final draft scored 48% vs the published page's 19% on gpt-6-mini.
+     - How it runs unattended (models, accounts, quota): `reference/tools.md`. Lessons that pass the entry rule go to
+       `reference/copy-lessons.md`.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.
    - Use the scores to compare drafts against each other and the current page, never as forecasts.
