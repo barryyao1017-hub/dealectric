@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.12
 """Improvement loop for one page (DLC-116): iterate drafts against buy-link hand-over (M1) until they plateau.
 
-    python3.12 growth/evals/iterate.py run --target rv-2kwh --engine api [--variants 5] [--reps 4] [--max-rounds 6]
+    python3.12 growth/evals/iterate.py supervise --target rv-2kwh [--variants 3] [--reps 1] [--max-rounds 6]   # unattended; `run` takes the same arguments
     python3.12 growth/evals/iterate.py show --target rv-2kwh [--run <run-id>]      # rounds table
     python3.12 growth/evals/iterate.py diff --target rv-2kwh [--run <run-id>]      # incumbent vs best, field by field
 
@@ -19,8 +19,14 @@ Each round:
    --margin) and passes the page rules; no noise margin per round (Barry, 11-01: the published page is a one-shot
    draft like any variant). Ties keep the base.
 5. Stop after --patience rounds in a row in which no variant beat the base, or at --max-rounds. Then the one noise
-   test: the final base must beat the published page's M1 by more than max(--margin, 1.5 SE) on --final-reps answers
-   per result set each, before a live check (search on) and Barry's OK.
+   test: the final base must beat the published page's M1 by more than max(--margin, 1.5 SE) on about --final-answers
+   answers per page (spread evenly over the result sets), before a live check (search on) and Barry's OK.
+
+Sampling (11-01, after run rv-open-1): one answer per result set (--reps 1) over many result sets (18 for rv-2kwh), and
+3 variants per round, so each draft gets 18 answers for ~72 chats a round. Two answers to the same result set agreed on
+M1 72% of the time against 52% by chance, and M1 swings by result set (0% to 73%), so a second answer to a set adds
+little; more distinct sets make a winner generalize and more answers per draft cut the noise. Build the target's result
+sets (`fastloop.py pack`) before iterating.
 
 Everything is written under growth/focus/fastloop-runs/<target>/iterate/<run-id>/: round-NN.json (variants, answers,
 scores, decision), best.json (the best record) and log.md. Nothing is published: shipping the winner is Barry's call
@@ -43,11 +49,16 @@ WRITER = "claude-opus-5-5"
 
 # Targets: the page record, the recorded result sets its shopper questions got, and where a new page is inserted.
 TARGETS = {
-    # rank 5 = the median position of our pages in live results (rank 3 left M1 at 9/9, no headroom); six result sets,
-    # three of them questions where the page is a less obvious answer (bare category, weekend fridge).
+    # rank 5 = the median position of our pages in live results (rank 3 left M1 at 9/9, no headroom). 18 result sets,
+    # one answer each per draft (--reps 1): the six of run rv-open-1 (harvest and pinned chats, 10-31) plus twelve
+    # pinned app chats of 11-01 (rv-n01..n12, general questions, no brand; max URL overlap with any other set 0.25).
+    # Six are questions where the page is a less obvious answer: bare category (r01), weekend fridge (r02), dry camping
+    # (n09), quiet overnight power (n10), camping in general (n11), gas generator alternative (n12).
     "rv-2kwh": {"slug": "best-2kwh-power-station-for-rv", "rank": 5,
                 "packs": ["rv-r04-G2-station--nat-1", "generic-17", "rv-r05-G2-station--nat-1", "rv-r05-G2-station--nat-2",
-                          "rv-r01-G0-station--nat-1", "rv-r02-G1-station--nat-1"],
+                          "rv-r01-G0-station--nat-1", "rv-r02-G1-station--nat-1",
+                          "rv-n01", "rv-n02", "rv-n03", "rv-n04", "rv-n05", "rv-n06", "rv-n07", "rv-n08",
+                          "rv-n09", "rv-n10", "rv-n11", "rv-n12"],
                 "concern": ["20 A", "converter", "propane"],   # the open concern's markers: must stay in the first line
                 "buy": "{buy:bluetti-ac200l}"},
 }
@@ -110,6 +121,13 @@ def render(rec: dict) -> str:
     return f"{title} · Dealectric\n" + html_text(body)
 
 
+BLOCKS_JS = r"""(() => { const sel = 'h1,h2,h3,p,li,tr,dt,dd,caption,figcaption,summary';
+  return [...document.querySelectorAll(sel)].filter(e => !e.querySelector(sel)).map(e => {
+    const r = e.getBoundingClientRect();
+    return {text: e.innerText.replace(/\s+/g, ' ').trim(), x: Math.round(r.left + scrollX), y: Math.round(r.top + scrollY),
+            w: Math.round(r.width), h: Math.round(r.height)}; }).filter(b => b.text && b.w > 0 && b.h > 0); })()"""
+
+
 def snapshot(rec: dict, png: Path, width: int = 1280) -> Path:
     """A full-page screenshot of the record as the site would render it (site stylesheet inlined), taken in a
     background tab of the agent's Chrome so a running replay chat is not disturbed. Saves the HTML beside the PNG."""
@@ -129,6 +147,8 @@ def snapshot(rec: dict, png: Path, width: int = 1280) -> Path:
         shot = tab.call("Page.captureScreenshot", format="png", captureBeyondViewport=True,
                         clip={"x": 0, "y": 0, "width": width, "height": h, "scale": 1})
         png.write_bytes(base64.b64decode(shot["data"]))
+        boxes = tab.eval(BLOCKS_JS) or []   # where each text block sits, for the winners report's change boxes
+        E.write_json(png.with_suffix(".boxes.json"), {"width": width, "height": h, "blocks": boxes})
     finally:
         tab.close()
     return png
@@ -397,6 +417,8 @@ def cmd_run(a) -> None:
     tgt = dict(TARGETS[a.target])
     if a.rank:
         tgt["rank"] = a.rank
+    if a.packs:   # a subset of result sets (smoke tests); a real run uses the target's full list
+        tgt["packs"] = a.packs.split(",")
     out = run_dir(a)
     out.mkdir(parents=True, exist_ok=True)
     eng = Engine(a.engine, a.model, a.paste, a.fmt, models=a.models.split(","), max_wait_min=a.max_wait,
@@ -406,7 +428,8 @@ def cmd_run(a) -> None:
     log = out / "log.md"
     if not log.exists():
         log.write_text(f"# Iterate {a.target} ({out.name})\n\nEngine {a.engine} ({a.model if a.engine == 'api' else 'gpt-6 app'}), paste {a.paste}, "
-                       f"format {a.fmt}, {a.reps} answers per result set, {len(tgt['packs'])} result sets, rank {tgt['rank']}.\n\n"
+                       f"format {a.fmt}, {a.reps} answer(s) per result set × {len(tgt['packs'])} result sets = {a.reps * len(tgt['packs'])} "
+                       f"answers per draft, {a.variants} variants per round, rank {tgt['rank']}.\n\n"
                        "| round | draft | change | answers | linked | M1 | M2 | M3 | decision |\n|---|---|---|---|---|---|---|---|---|\n")
     if a.final_only:   # re-run only the final check, e.g. strict on gpt-6 into final-gpt6/ (--final-tag gpt6)
         final_check(out, tgt, eng, a)
@@ -497,20 +520,22 @@ def cmd_run(a) -> None:
 
 def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     """The one noise test (Barry 11-01): the final base must beat the published page's M1 by more than noise, scored on
-    the same result sets with --final-reps answers per set each, interleaved and standardized to one model mix; then a
-    live check and Barry's OK before shipping."""
+    the same result sets, interleaved and standardized to one model mix; then a live check and Barry's OK before
+    shipping. Sample: --final-reps answers per set if given, else enough per set for about --final-answers per page
+    (36 ≈ the 31 linked answers per page of run rv-open-1, which used 6 sets × 6)."""
+    reps = a.final_reps or math.ceil(a.final_answers / len(tgt["packs"]))
     best_p = out / "best.json"
     fdir = out / ("final" + (f"-{a.final_tag}" if a.final_tag else ""))
     if not best_p.exists() or (fdir / "check.json").exists():
         return
     fdir.mkdir(exist_ok=True)
     sc = score_round({"published": (render(record(tgt["slug"])), fdir / "published.jsonl"),
-                      "final": (render(json.loads(best_p.read_text())["record"]), fdir / "final.jsonl")}, tgt, eng, a.final_reps)
+                      "final": (render(json.loads(best_p.read_text())["record"]), fdir / "final.jsonl")}, tgt, eng, reps)
     pub, fin = sc["published"], sc["final"]
     m = margin(fin, pub, a.margin)
     ok = fin["m1"] - pub["m1"] > m and pub["m2"] - fin["m2"] <= a.margin
     E.write_json(fdir / "check.json", {"published": pub, "final": fin, "margin": m, "beats_published": ok})
-    line = (f"Final check{' [' + a.final_tag + ', models ' + a.models + ']' if a.final_tag else ''} ({a.final_reps} answers per set each): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
+    line = (f"Final check{' [' + a.final_tag + ', models ' + a.models + ']' if a.final_tag else ''} ({reps} answer(s) per set × {len(tgt['packs'])} sets: {pub['linked']} vs {fin['linked']} linked): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
             f"{fin['m1']:.0%} / M2 {fin['m2']:.0%}, margin {m:.0%}: {'beats the published page by more than noise' if ok else 'not beyond noise'}. "
             f"By model: published {json.dumps(pub['by_model'])}, final {json.dumps(fin['by_model'])}. "
             "Next: live check (search on) and Barry's OK before shipping.")
@@ -619,6 +644,154 @@ def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: d
     return "added to copy-lessons.md (significant, generalizable)"
 
 
+def _stage_shot(rec: dict, png: Path) -> dict:
+    if not (png.exists() and png.with_suffix(".boxes.json").exists()):
+        snapshot(rec, png)
+    return json.loads(png.with_suffix(".boxes.json").read_text())
+
+
+def _changed(before: list[dict], after: list[dict]) -> tuple[list[int], list[int], list[tuple[str, str]]]:
+    """Text blocks that differ between two renders: indexes in each, and (before, after) text pairs."""
+    sm = difflib.SequenceMatcher(None, [b["text"] for b in before], [b["text"] for b in after], autojunk=False)
+    bi, ai, pairs = [], [], []
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        if op == "equal":
+            continue
+        bi += range(i1, i2)
+        ai += range(j1, j2)
+        pairs.append((" / ".join(b["text"] for b in before[i1:i2]), " / ".join(b["text"] for b in after[j1:j2])))
+    return bi, ai, pairs
+
+
+def _words(before: str, after: str) -> tuple[str, str]:
+    """Word-level diff as HTML: removed words struck in `before`, added words marked in `after`."""
+    import html as H
+    bw, aw = before.split(), after.split()
+    sm = difflib.SequenceMatcher(None, bw, aw, autojunk=False)
+    bo, ao = [], []
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        bs, as_ = H.escape(" ".join(bw[i1:i2])), H.escape(" ".join(aw[j1:j2]))
+        if op == "equal":
+            bo.append(bs); ao.append(as_)
+        else:
+            if bs:
+                bo.append(f"<del>{bs}</del>")
+            if as_:
+                ao.append(f"<ins>{as_}</ins>")
+    return " ".join(bo), " ".join(ao)
+
+
+def _svg(png: str, shot: dict, idx: list[int], view: tuple[int, int, int, int] | None = None) -> str:
+    w, h = shot["width"], shot["height"]
+    vx, vy, vw, vh = view or (0, 0, w, h)
+    rects = "".join(f'<rect x="{b["x"] - 6}" y="{b["y"] - 5}" width="{b["w"] + 12}" height="{b["h"] + 10}" rx="4"/>'
+                    for b in (shot["blocks"][i] for i in idx))
+    return (f'<svg class="shot" viewBox="{vx} {vy} {vw} {vh}" role="img"><image href="{png}" width="{w}" height="{h}"/>'
+            f"{rects}</svg>")
+
+
+def _zoom(shot: dict, idx: list[int]) -> tuple[int, int, int, int] | None:
+    if not idx:
+        return None
+    bs = [shot["blocks"][i] for i in idx]
+    y0, y1 = min(b["y"] for b in bs) - 40, max(b["y"] + b["h"] for b in bs) + 40
+    y1 = min(y1, y0 + 900)
+    return (0, max(0, y0), shot["width"], y1 - max(0, y0))
+
+
+def cmd_winners(a) -> None:
+    """The winners report (Barry 11-01): a screenshot of the page each round ended with, the changes from the page
+    before it boxed in red, and what changed and why it won. Writes <run>/winners/index.html plus its images; publish
+    the folder as an artifact after each round."""
+    import html as H
+    tgt = TARGETS[a.target]
+    out = run_dir(a) if a.run else sorted((RUNS / a.target / "iterate").iterdir())[-1]
+    wd = out / "winners"
+    wd.mkdir(exist_ok=True)
+    rounds = [json.loads(f.read_text()) for f in sorted(out.glob("round-*.json"))]
+    if not rounds:
+        print("no rounds yet")
+        return
+    stages = [{"name": "published", "label": "The published page (round 1 base)", "rec": rounds[0]["incumbent"]["record"],
+               "score": rounds[0]["incumbent"]["score"]}]
+    for r in rounds:
+        w = next((v for v in r["variants"] if str(v.get("decision", "")).startswith("new base")), None)
+        if w:
+            stages.append({"name": f"round-{r['round']:02d}", "label": f"Round {r['round']} winner: {w['dimension']}",
+                           "rec": w["record"], "score": w["score"], "base": r["incumbent"]["score"], "change": w["change"],
+                           "round": r["round"], "others": [v for v in r["variants"] if v is not w]})
+    shots = [_stage_shot(st["rec"], wd / f"{st['name']}.png") for st in stages]
+    fmt = lambda s: f"M1 {s['m1']:.0%} · M2 {s['m2']:.0%} · {s['linked']} linked"   # noqa: E731
+    secs = []
+    for k in range(1, len(stages)):
+        st, prev = stages[k], stages[k - 1]
+        bi, ai, pairs = _changed(shots[k - 1]["blocks"], shots[k]["blocks"])
+        rows = "".join(f"<tr><td>{_words(b, t)[0] or '<i>(none)</i>'}</td><td>{_words(b, t)[1] or '<i>(removed)</i>'}</td></tr>"
+                       for b, t in pairs)
+        lost = "".join(f"<li>{H.escape(v['dimension'])}: {H.escape(v.get('decision', ''))}"
+                       + (f" ({v['score']['m1']:.0%})" if v.get("score") else "") + "</li>" for v in st["others"])
+        secs.append(f"""<section class="stage">
+  <h2>{H.escape(st['label'])}</h2>
+  <p class="change">{H.escape(st['change'])}</p>
+  <p class="scores"><span>Base ({H.escape(prev['name'])}): {fmt(st['base'])}</span><span class="win">Winner: {fmt(st['score'])}</span></p>
+  <h3>Close-up: red boxes mark the changed blocks</h3>
+  <div class="pair"><figure><figcaption>Before</figcaption>{_svg(prev['name'] + '.png', shots[k - 1], bi, _zoom(shots[k - 1], bi))}</figure>
+  <figure><figcaption>After</figcaption>{_svg(st['name'] + '.png', shots[k], ai, _zoom(shots[k], ai))}</figure></div>
+  <h3>What changed, block by block</h3>
+  <div class="tbl"><table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody>{rows}</tbody></table></div>
+  <details><summary>Full pages</summary><div class="pair full"><figure>{_svg(prev['name'] + '.png', shots[k - 1], bi)}</figure>
+  <figure>{_svg(st['name'] + '.png', shots[k], ai)}</figure></div></details>
+  <p class="others">Other variants this round:</p><ul class="others">{lost}</ul>
+</section>""")
+    if len(stages) == 1:
+        secs.append('<p class="lede">No round has produced a winner yet. The published page is below.</p>'
+                    f'<figure>{_svg("published.png", shots[0], [])}</figure>')
+    status = "; ".join(f"round {r['round']}: " + (r["accepted"] or "base kept") for r in rounds)
+    page = WINNERS_HTML.format(title=f"{tgt['slug']} round winners", run=H.escape(out.name), slug=H.escape(tgt["slug"]),
+                               status=H.escape(status), body="\n".join(secs))
+    (wd / "index.html").write_text(page)
+    print(wd / "index.html")
+
+
+WINNERS_HTML = """<title>Round Winners: {run}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* One section per winning round: the change, the scores, then before/after screenshots with the changed blocks boxed. */
+:root {{ --bg:#f6f7f8; --surface:#fff; --fg:#1b2228; --muted:#5d6a74; --line:#dde2e6; --mark:#e0242b; --win:#157347;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif; }}
+@media (prefers-color-scheme: dark) {{ :root:not([data-theme="light"]) {{ --bg:#12171b; --surface:#1a2126; --fg:#e6eaed;
+  --muted:#97a3ad; --line:#2c353c; --mark:#ff4d52; --win:#4cc38a; color-scheme: dark }} }}
+:root[data-theme="dark"] {{ --bg:#12171b; --surface:#1a2126; --fg:#e6eaed; --muted:#97a3ad; --line:#2c353c; --mark:#ff4d52;
+  --win:#4cc38a; color-scheme: dark }}
+body {{ background:var(--bg); color:var(--fg); font:15px/1.55 var(--sans); margin:0; }}
+main {{ max-width:1120px; margin:0 auto; padding:28px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px));
+  display:grid; gap:36px; }}
+h1 {{ font-size:26px; margin:0; }} h2 {{ font-size:20px; margin:0; }} h3 {{ font-size:13px; text-transform:uppercase;
+  letter-spacing:.07em; color:var(--muted); margin:14px 0 8px; }}
+.lede, .change {{ max-width:72ch; margin:0; }} .lede {{ color:var(--muted); }}
+.stage {{ display:grid; gap:8px; }}
+.scores {{ display:flex; flex-wrap:wrap; gap:6px 18px; font-variant-numeric:tabular-nums; color:var(--muted); margin:0; }}
+.scores .win {{ color:var(--win); font-weight:600; }}
+.pair {{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }} .pair > * {{ min-width:0; margin:0; }}
+figcaption {{ font-size:13px; color:var(--muted); margin-bottom:4px; }}
+svg.shot {{ display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:4px; background:#fff; }}
+svg.shot rect {{ fill:none; stroke:var(--mark); stroke-width:4; }} .full svg.shot rect {{ stroke-width:9; }}
+.tbl {{ overflow-x:auto; background:var(--surface); border:1px solid var(--line); border-radius:6px; }}
+table {{ border-collapse:collapse; width:100%; font-size:14px; }} td, th {{ text-align:left; vertical-align:top;
+  padding:8px 10px; border-bottom:1px solid var(--line); width:50%; }} th {{ font-size:12px; color:var(--muted); }}
+del {{ color:var(--mark); }} ins {{ text-decoration:none; background:color-mix(in srgb, var(--win) 22%, transparent); border-radius:2px; }}
+details summary {{ cursor:pointer; color:var(--muted); margin-top:8px; }}
+.others {{ color:var(--muted); font-size:14px; margin:4px 0 0; }}
+@media (max-width:720px) {{ .pair {{ grid-template-columns:1fr; }} }}
+</style>
+<main>
+<header style="display:grid;gap:8px"><h1>Round winners: {slug}</h1>
+<p class="lede">Iterate run {run}. Each section shows the page a round ended with next to the page it started from; red boxes mark the text blocks that changed, and the table marks removed words in red strike-through and added words in green. Rounds without a winner kept their base. {status}.</p></header>
+{body}
+</main>
+"""
+
+
 def cmd_show(a) -> None:
     run = a.run or sorted((RUNS / a.target / "iterate").iterdir())[-1].name
     print((RUNS / a.target / "iterate" / run / "log.md").read_text())
@@ -645,10 +818,12 @@ def main() -> int:
         p = sub.add_parser(name); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
         p.add_argument("--engine", choices=["open", "app", "api"], default="open"); p.add_argument("--model", default="gpt-6.1-sol")
         p.add_argument("--rank", type=int)
+        p.add_argument("--packs", help="comma-separated result sets instead of the target's (smoke tests)")
         p.add_argument("--paste", default="c1"); p.add_argument("--fmt", default="v1")
-        p.add_argument("--variants", type=int, default=5); p.add_argument("--reps", type=int, default=4)
+        p.add_argument("--variants", type=int, default=3); p.add_argument("--reps", type=int, default=1)
         p.add_argument("--max-rounds", type=int, default=6); p.add_argument("--patience", type=int, default=3)
-        p.add_argument("--margin", type=float, default=0.10); p.add_argument("--final-reps", type=int, default=6)
+        p.add_argument("--margin", type=float, default=0.10); p.add_argument("--final-reps", type=int)
+        p.add_argument("--final-answers", type=int, default=36, help="final check: answers per page, spread over the sets")
         p.add_argument("--models", default="gpt-6,gpt-6-mini",
                        help="accepted answer models, preferred first; one model = strict (off-model answers dropped)")
         p.add_argument("--max-wait", type=float, default=60, help="minutes of quota waiting before the run stops (exit 75)")
@@ -657,10 +832,10 @@ def main() -> int:
         if name == "supervise":
             p.add_argument("--stall-min", type=float, default=30); p.add_argument("--budget-h", type=float, default=16)
             p.add_argument("--max-restarts", type=int, default=8)
-    for name in ("show", "diff"):
+    for name in ("show", "diff", "winners"):
         p = sub.add_parser(name); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
     a = ap.parse_args()
-    return {"run": cmd_run, "supervise": cmd_supervise, "show": cmd_show, "diff": cmd_diff}[a.cmd](a) or 0
+    return {"run": cmd_run, "supervise": cmd_supervise, "show": cmd_show, "diff": cmd_diff, "winners": cmd_winners}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":

@@ -93,8 +93,14 @@ for the API, `PASTES` and `PASTE_VERSION` for the app); bump the version when ch
 Run it unattended with `supervise` (same arguments as `run`):
 
 ```
-python3.12 growth/evals/iterate.py supervise --target rv-2kwh --engine open --variants 5 --reps 2 --run <id>
+python3.12 growth/evals/iterate.py supervise --target rv-2kwh --run <id>   # defaults: --variants 3 --reps 1
 ```
+
+- **Sampling (defaults since 11-01):** 1 answer per result set (`--reps 1`) over the target's 18 sets, 3 variants a
+  round (`--variants 3`): 18 answers per draft, ~72 chats a round. In `rv-open-1` (6 sets × 2 answers, 5 variants) the
+  two answers to one set agreed on M1 72% of the time vs 52% by chance, and M1 ran from 0% to 73% by set, so distinct
+  sets buy more than repeat answers. The final check sizes itself to `--final-answers` (36) per page, spread over the
+  sets (2 per set at 18); `--final-reps` overrides. `--packs a,b,c` runs on a subset (smoke tests).
 
 - **Restarts:** `supervise` restarts the run when it exits. Exit 75 (quota or stall) waits 10 min; a crash waits 1 min.
   A run whose `heartbeat.json` is quiet for 30 min is killed and restarted. It gives up after 8 restarts or 16 h and

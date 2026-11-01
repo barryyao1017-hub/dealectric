@@ -102,15 +102,24 @@ are weak, iterate drafts offline, and check retrieval live at volume.
        caught only 1 of 6 real hand-overs (`growth/evals/loop/paste-calibration.md`).
      - **Scores compare drafts; they aren't live rates.**
    - **Iterate (step 6b, `growth/evals/iterate.py supervise`, DLC-116):**
-     - **Each round:** Opus writes 5 one-change variants of the current base on named dimensions; rule checks run
-       first. Every draft gets 2 answers per result set over 6 result sets at rank 5. The best by M1 becomes the next
-       base, provided M2 (our page cited) holds.
+     - **Before iterating, build 18 result sets for the target page** (`fastloop.py pack --query ... --question ...`,
+       one pinned chat each; general questions only, about a third where the page is a less obvious answer) and list
+       them in `TARGETS`.
+     - **Each round:** Opus writes 3 one-change variants of the current base on named dimensions; rule checks run
+       first. Every draft gets 1 answer per result set over the 18 sets at rank 5 (18 answers, ~72 chats a round). The
+       best by M1 becomes the next base, provided M2 (our page cited) holds.
+     - **Why 18 × 1 and not 6 × 2:** in `rv-open-1`, two answers to the same result set agreed on M1 72% of the time
+       vs 52% by chance, and M1 ran from 0% to 73% by result set. A second answer adds little; more sets make a winner
+       generalize, and 18 answers per draft cut the noise.
      - **Stopping:** 3 rounds with no winner, or 6 rounds.
-     - **The one noise test** comes at the end: the final base vs the published page, 6 answers per result set each,
-       margin max(10 points, 1.5 SE).
-     - **At 12 answers per draft, per-round M1 swings about 30 points.** The same draft scored 50%, 64% and 28% in
-       RV rounds 4–6, so trust only the final check.
-     - First run (RV page, `rv-open-1`, 11-01): the final draft scored 48% vs the published page's 19% on gpt-6-mini.
+     - **The one noise test** comes at the end: the final base vs the published page, about 36 answers each (2 per set
+       over 18 sets), margin max(10 points, 1.5 SE).
+     - **Per-round scores are noisy.** At 12 answers per draft (`rv-open-1`), M1 swung about 30 points: the same draft
+       scored 50%, 64% and 28% in rounds 4–6. Trust only the final check.
+     - First run (RV page, `rv-open-1`, 11-01): the final draft scored 48% vs the published page's 19% on gpt-6-mini and
+       tied on gpt-6 (31% each); shipped trimmed 11-01 after the length gate failed at rank 6.
+     - **Gate variants at every rank.** The loop scores rank 5 only; run `fastloop.py check --ranks 1,3,5,6` on the
+       winner before shipping (a longer short answer was cut whole at rank 6 in `rv-open-1`).
      - How it runs unattended (models, accounts, quota): `reference/tools.md`. Lessons that pass the entry rule go to
        `reference/copy-lessons.md`.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
