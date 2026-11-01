@@ -6,7 +6,7 @@ page's URL, target queries, shared core and open concern. It researches and draf
 ## What to find
 
 Places where a real person is deciding, right now, on a purchase our page helps with, and where a full answer
-(with our link only where the venue allows it) settles their question.
+(ending with our page's link and the affiliation disclosure) settles their question.
 
 ## Selection rules, in priority order
 
@@ -31,8 +31,12 @@ Places where a real person is deciding, right now, on a purchase our page helps 
    - Verify the asker's own setup from their links and words before doing arithmetic on it (11-01: the solar run's
      first draft sized "Callsun 200 W 2-pack" as two 100 W panels; the listing was two 200 W panels, which turned a
      safe wiring answer into one that can exceed the station's 60 V limit).
-5. **Link rules known.** Read the venue's rules before drafting. Where links to sites we profit from are banned
-   (RV LIFE forums, most brand forums), the reply carries no link and no site mention.
+5. **Every draft links the page being promoted (Barry, 11-01).** Each reply, comment and correction note ends with
+   the page's URL and the disclosure "I run dealectric.com, which earns a commission on some links", whatever the
+   venue's rules say. Barry reviews each draft and decides whether to post it. Still read the venue's link rules and
+   record them in the table (e.g. RV LIFE forums ban links to sites the poster profits from), so he sees the risk
+   when he reviews. Never a bare affiliate URL, never a link without the disclosure, never phrasing that presents
+   the page as someone else's ("explained very well here").
 
 Articles with a factual error (correction notes): only ones published or updated in the last 60 days, or ranking on
 page 1 for a target query. Give the date and the rank.
@@ -47,10 +51,10 @@ their contents.
 ## Output (`growth/focus/fastloop-runs/<run>/outreach.md`)
 
 1. A table sorted by demand, then freshness, then venue activity: URL, venue, opened and last-post dates, tier
-   (A/B/evergreen), demand score with the quote, what's missing, link rules, action (reply with link and disclosure,
-   reply without link, correction note, skip).
+   (A/B/evergreen), demand score with the quote, what's missing, link rules, action (reply, comment, correction note,
+   skip).
 2. Drafts for the top candidates. Each reply answers the asker's actual question fully on its own, in their terms,
-   with specifics from our page's research; discloses the affiliation where it links; never reads as an ad.
+   with specifics from our page's research; ends with the page's link and the disclosure; never reads as an ad.
 3. What was checked and rejected, and why (stale, no demand, already answered, rules), so the next run doesn't redo it.
 
 ## Re-runs

@@ -123,8 +123,9 @@ are weak, iterate drafts offline, and check retrieval live at volume.
         the freshest threads where someone is about to buy something we list, newest-first (a post in the last 14
         days first, then unresolved ones up to 45 days, older only if still on page 1 for a target query), scored for
         genuine demand (3 = buying now among products we cover) and venue activity. Also product Q&A and recent or
-        top-ranking articles with a factual error. Every reply answers the question fully on its own, discloses the
-        affiliation, and links only where the rules allow. Output: `growth/focus/fastloop-runs/<run>/outreach.md`.
+        top-ranking articles with a factual error. Every reply answers the question fully on its own and ends with the
+        promoted page's link plus the disclosure, on every venue (Barry, 11-01); the venue's link rule is recorded
+        next to the draft for Barry's review. Output: `growth/focus/fastloop-runs/<run>/outreach.md`.
         Re-run it at each live check, looking only for threads newer than the last run.
      2. Instruction set: one task per action, giving the URL, the account needed, the steps, the exact text and the
         stop point. Output: `promote-tier3-instructions.md`.
@@ -132,14 +133,15 @@ are weak, iterate drafts offline, and check retrieval live at volume.
         fill each form up to the final Submit/Post. Email corrections become Gmail drafts. Leave the tabs open and
         screenshot each filled form.
      4. Barry reviews each tab and clicks Submit himself.
-     5. Afterwards, read each live post and check it against its venue's link rule. On 11-01 the live Forest River
-        reply carried a closing link line that wasn't in the instruction text, on a forum that bans links to sites we
-        profit from; fix such a post with an edit (filled up to Save for Barry).
+     5. Afterwards, read each live post and check that it matches the instruction text and carries the disclosure.
+        On 11-01 a live reply carried a link line phrased as a third party's recommendation and without the
+        disclosure; fix such a post with an edit (filled up to Save for Barry; XenForo forums allow edits for 60 min).
      - Claude never clicks a final submit, never sends email and **never creates accounts**, including through
        agent-vault `register`. Where an account is missing, the subagent opens the site's sign-up page and leaves it for
        Barry to create the account.
-     - RV LIFE forums (Forest River, Grand Design, Airstream, Jayco, Keystone, iRV2) forbid links to sites we profit
-       from, so replies there are link-free.
+     - RV LIFE forums (Forest River, Grand Design, Airstream, Jayco, Keystone, iRV2) forbid links to sites the poster
+       profits from, and share one account (barrryyao), so a ban there would cover all of them. Barry chose on 11-01
+       to link there anyway; the instruction set flags it on each such task.
      - Reddit is blocked for our tools; Barry checks it by hand.
    - **Why these tiers.** OpenAI hasn't published whether links weigh in ChatGPT's ranking. What links demonstrably
      do is get our pages found and re-fetched sooner (the RV page was fetched about 11 h after its home link went
