@@ -79,7 +79,7 @@ On "here in 5–10 years": BLUETTI, Anker and EcoFlow are the three with the lon
 ## T4. Answer on Quora (link with disclosure)
 
 - **Where:** https://www.quora.com/Can-a-portable-power-station-be-used-to-power-an-RV-or-camper
-- **Account:** Quora account. Check `list_accounts`; if none, STOP this task (Barry creates it).
+- **Account:** Quora, signed in with Google as barrryyao@gmail.com (Barry, 2026-11-01): when Quora offers "Continue with Google", choose barrryyao and continue.
 - **Steps:** Open the question, click Answer, paste the text into the editor, do not click Post.
 - **Rules:** Quora: affiliate links banned in answers; a self-promotional link is allowed as part of a full answer with the affiliation disclosed. Our page carries affiliate links but the link is to our page, not an affiliate URL, and the disclosure is in the text.
 - **Stop before:** the final submit/post/send click.
