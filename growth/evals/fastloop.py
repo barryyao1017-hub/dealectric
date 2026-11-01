@@ -353,6 +353,45 @@ def active_account(tab=None) -> str | None:
             tab.close()
 
 
+def relogin(email: str = "barrryyao@gmail.com") -> str | None:
+    """Sign a signed-out profile back in: chatgpt.com/auth/login -> Continue with Google -> pick `email` in Google's
+    account chooser (Barry, 11-01: barrryyao signs in without asking; no credentials are typed). Returns the
+    signed-in email, or None."""
+    import ui
+    tab = ui.Tab("about:blank")
+    try:
+        tab.call("Page.bringToFront")
+        tab.call("Emulation.setFocusEmulationEnabled", enabled=True)
+        tab.navigate("https://chatgpt.com/auth/login")
+        time.sleep(8)
+        _click(tab, "[...document.querySelectorAll('button, a')].find(e => /Continue with Google/i.test(e.innerText))")
+        pick = (f"[...document.querySelectorAll('*')].find(e => e.children.length < 4 && "
+                f"(e.innerText || '').trim() === '{email}')")
+        for _ in range(8):
+            time.sleep(3)
+            try:
+                if tab.eval(f"!!({pick})"):
+                    break
+            except Exception:  # noqa: BLE001  (page mid-navigation)
+                pass
+        _click(tab, pick)
+        for _ in range(12):
+            time.sleep(4)
+            try:
+                if tab.eval("location.host") == "chatgpt.com":
+                    break
+            except Exception:  # noqa: BLE001
+                pass
+        time.sleep(4)
+        tab.navigate("https://chatgpt.com/")
+        time.sleep(6)
+        return active_account(tab)
+    except Exception:  # noqa: BLE001
+        return None
+    finally:
+        tab.close()
+
+
 def switch_account(tried: set[str]) -> str | None:
     """Switch the profile's ChatGPT account to one in its account switcher not in `tried` (profile menu -> the account
     row -> another email; menus need real pointer events, so clicks go through Input.dispatchMouseEvent). Returns the

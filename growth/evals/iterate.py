@@ -213,6 +213,13 @@ class Engine:
                     continue
                 fails += 1
                 print(f"    failed chat: status {rec['status']} model {model or None} fetches {rec.get('open_fetches')}", flush=True)
+                if fails >= 2 and not F.active_account():   # signed out (10-31, 11-01): sign back in, or stop
+                    who = F.relogin()
+                    if not who:
+                        raise SystemExit("ChatGPT is signed out and the Google re-login failed: sign in, then rerun")
+                    print(f"    ChatGPT was signed out: signed back in as {who}", flush=True)
+                    self.tried, fails = {who}, 0
+                    continue
                 if fails >= 3:
                     return {**rec, "status": 0}
         while True:

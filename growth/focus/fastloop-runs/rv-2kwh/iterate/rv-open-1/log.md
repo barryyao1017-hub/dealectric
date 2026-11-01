@@ -19,3 +19,5 @@ Replay host changed (Barry, 11-01): replay pages now served from web-results.tes
 
 Model (Barry, 11-01): continue on gpt-6-mini while the gpt-6 quota is out (FASTLOOP_MODEL=gpt-6-mini, pinned in the chat URL; answers from any other model are dropped). Round 2's base re-scored on mini; its 12 gpt-6 answers kept as round-02/incumbent-gpt6.jsonl. All comparisons from here are mini vs mini, including the final check.
 
+
+Outage (11-01 00:00-01:05): ChatGPT signed out of the agent Chrome; about 85 chats failed and nothing was recorded. Signed back in as barrryyao; the engine now re-logs in through Google on its own and stops if that fails.
