@@ -284,7 +284,14 @@ def cmd_run(a) -> None:
             except Exception as e:  # noqa: BLE001
                 print(f"    screenshot failed: {e}", flush=True)
         inc_s = score(render(inc), tgt, eng, a.reps, rdir / "incumbent.jsonl")
-        vs = make_variants(inc, a.variants, rn)
+        vf = rdir / "variants.json"   # saved, so a resumed round scores the same variants its cached answers belong to
+        if vf.exists():
+            vs = json.loads(vf.read_text())
+        else:
+            vs = make_variants(inc, a.variants, rn)
+            for f in rdir.glob("v*.jsonl"):   # answers from variants of an earlier, unsaved attempt
+                f.unlink()
+            E.write_json(vf, vs)
         results = []
         for i, v in enumerate(vs):
             v["violations"] = check(v["record"], inc, tgt)
