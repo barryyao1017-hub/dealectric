@@ -88,6 +88,30 @@ The app is the default engine for every step; the API below is the fallback (Bar
 Constants and prompts are at the top of the script (`BUDGET`, `ALPHA`, `CAP`, `ANSWER_SYSTEM` and `PROMPT_VERSION`
 for the API, `PASTES` and `PASTE_VERSION` for the app); bump the version when changing them, since scores across versions don't compare.
 
+## The improvement loop: `growth/evals/iterate.py` (DLC-116)
+
+Run it unattended with `supervise` (same arguments as `run`):
+
+```
+python3.12 growth/evals/iterate.py supervise --target rv-2kwh --engine open --variants 5 --reps 2 --run <id>
+```
+
+- **Restarts:** `supervise` restarts the run when it exits. Exit 75 (quota or stall) waits 10 min; a crash waits 1 min.
+  A run whose `heartbeat.json` is quiet for 30 min is killed and restarted. It gives up after 8 restarts or 16 h and
+  writes why to `log.md`. Answers are cached, so every restart resumes where the last one stopped.
+- **Models:** the `&model=` URL pin does not choose the model; the account's quota does (11-01: Plus answered gpt-6
+  under a mini pin). So `--models gpt-6,gpt-6-mini` (the default) accepts both and tags each answer with its model and
+  account. Drafts are answered interleaved (rep → result set → draft), and M1/M2 are standardized to the round's model
+  mix. `--models gpt-6` is strict: off-model answers are dropped.
+- **Accounts:** after a mini answer, the other account is tried next, so both accounts' gpt-6 quota is spent before
+  mini counts, and gpt-6 is re-probed every 30 min. A usage-cap notice moves to the other account.
+- **Quota waits:** capped by `--max-wait` (60 min). After that the run exits 75 and the supervisor resumes it later.
+- **Failed chats:** a failed chat triggers `fastloop.ensure_ready`, which restarts the agent's Chrome with agent-vault's
+  launcher if 9222 is down and re-logs ChatGPT in through Google as barrryyao. Failed slots are retried in later
+  passes, never skipped.
+- **Timeouts and retries:** every CDP command has a 120 s deadline; D1 calls, the variant writer and the lesson judge
+  retry.
+
 ## Promote (fast loop step 7b), after a page is live
 
 | Tier | Tool | What it does |
