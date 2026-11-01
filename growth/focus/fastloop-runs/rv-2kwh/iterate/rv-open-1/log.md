@@ -33,3 +33,13 @@ Robustness (Barry, 11-01: run end to end, no endless quota waits, both accounts 
 Round 2 models: gpt-6 38, gpt-6-mini 25 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 2 knowledge base: not added: +24% is within noise (margin 32%)
+| 3 | incumbent | | 12 | 11 | 36% | 64% | 37% | |
+| 3 | offer_line | Moved the buy link to sit right after the pick's name in the first sentence, before the re | 12 | 10 | 30% | 60% | 40% | no |
+| 3 | alternatives | Recast the TT-30 alternatives in the short answer as fallbacks, each tied to the one thing | 12 | 11 | 27% | 45% | 28% | dropped: M2 fell |
+| 3 | closing_section | Moved the Elite 200 V2 and Jackery note to the top of the closing section under its own he | 12 | 10 | 40% | 50% | 33% | dropped: M2 fell |
+| 3 | short_answer | Opened the short answer with a direct 'Buy the AC200L' and gave the reason as a practical  | 12 | 12 | 42% | 67% | 38% | new base (best M1) |
+| 3 | headline | Named the pick, the BLUETTI AC200L, in both the title and the H1. | 12 | 10 | 0% | 40% | 21% | dropped: M2 fell |
+
+Round 3 models: gpt-6 64 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+Round 3 knowledge base: not added: +5% is within noise (margin 31%)
