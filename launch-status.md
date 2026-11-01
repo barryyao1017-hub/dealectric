@@ -1,5 +1,8 @@
 # Dealectric launch status — updated 2026-10-28 — MVP SHIPPED
 
+## North Stars (2026-11-01)
+1. Sales: 10 credited outside sales in a rolling 30 days (DLC-102). 2. Supply loop runs itself: partners → codes → products → pages with no hand work beyond Barry's yes on outward briefs; done when 3 new approvals in a row are live within 48 h, unattended (DLC-118).
+
 ## Where it stands on 2026-10-27 (sections below are from 10-22 unless marked)
 - **Catalog: 46 products, 8 brands** (Baseus 6, ESR 4, Tenergy 5, BLUETTI 8, ALLPOWERS 8, Soundcore 7, Aurzen 3, Marshall 5 since 10-27); prices re-verified 2026-10-27 (38 of 40 unchanged; ESR 100W 6-in-1 $142.99; Elite 300 $1,099 after BLUETTI's automatic cart discount). Tenergy TN438 16-bay added 10-27.
 - **Google**: 46 pages indexed (3 on 10-23), 0 clicks, 32 impressions 10-19 to 10-25. The 23 pages added since 10-23 are not indexed yet; 11 requested 10-27, the rest next.

@@ -2,8 +2,9 @@
 
 Read this before judging project status from the repo alone. Much of the operational state lives outside git.
 
-## North Star (since 2026-10-30, DLC-102)
-10 credited sales from outside shoppers in a rolling 30 days. First credited sale 2026-10-29 (CJ, ALLPOWERS kit, via ChatGPT; DLC-33). Leading indicator, reported in the daily update: ChatGPT-tagged `/go/` clicks from real browsers (`tools/dailyupdate.py`).
+## North Stars
+1. **Sales (since 2026-10-30, DLC-102)**: 10 credited sales from outside shoppers in a rolling 30 days. First credited sale 2026-10-29 (CJ, ALLPOWERS kit, via ChatGPT; DLC-33). Leading indicator, reported in the daily update: ChatGPT-tagged `/go/` clicks from real browsers (`tools/dailyupdate.py`).
+2. **Supply loop runs itself (since 2026-11-01, DLC-118)**: new partners → codes → products → pages, with no hand work in a Claude session. Barry's only touch is a yes or no on the outward briefs (applications, code-request emails, accepting terms), which consent-by-brief keeps his. Done when 3 new approvals in a row each go from the approval landing to live product pages with cart-tested codes and `/go/` links within 48 h, unattended. Today only the code re-test (daily sweep) and the build/deploy run unattended; finding programs, reading approvals, asking for codes, picking products and writing their records are still done by hand. When the two conflict, sales (1) comes first: the supply loop is the capacity, sales are the outcome.
 
 ## What this repo is
 - Static site for https://dealectric.com (GitHub Pages, `main` branch, `/docs` folder, extensionless pages). Only `docs/` is published; everything else in the repo (this file, `TODO.md`, `launch-status.md`, `src/`) is not served on dealectric.com, though the repo itself is public on GitHub.

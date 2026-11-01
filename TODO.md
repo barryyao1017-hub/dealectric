@@ -23,6 +23,7 @@ Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>;
 
 ## Claude (28)
 - [ ] DLC-102 North Star: 10 credited outside sales in a rolling 30 days (high)
+- [ ] DLC-118 North Star 2: the supply loop (partners → codes → products → pages) runs unattended (high)
 - [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-10-29)
 - [ ] DLC-24 Build the first 3 question-answer comparison pages (high, due 2026-10-30)
 - [ ] DLC-33 North Star: get our first conversion / commission (high)
