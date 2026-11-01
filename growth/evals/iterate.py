@@ -278,6 +278,7 @@ class Engine:
                     self.fallback_at[self.who] = time.time()
                 if model in self.models:
                     self.waited = 0.0
+                    rec["account"] = self.who
                     if model != self.models[0] and self._other_fresh(self.fallback_at):
                         self._other()   # spend the other account's preferred-model quota first
                     return rec
@@ -339,7 +340,7 @@ def fill(drafts: dict[str, tuple[str, Path]], tgt: dict, eng: Engine, reps: int,
                         continue
                     links = F.replay_links(rec, ctx)
                     row = {"pack": pname, **F.link_flags(links), "links": links, "answer": (rec.get("answer") or "")[:4000],
-                           "model": rec.get("model"), "account": eng.who, "open_fetches": rec.get("open_fetches"),
+                           "model": rec.get("model"), "account": rec.get("account"), "open_fetches": rec.get("open_fetches"),
                            "at": E.now_iso()}
                     with cache.open("a") as fh:
                         fh.write(json.dumps(row, ensure_ascii=False) + "\n")
