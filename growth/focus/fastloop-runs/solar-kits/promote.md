@@ -19,3 +19,10 @@ Promote only; the page itself is not edited (Barry: the solar pages work, don't 
 
 ## Tier 3, outreach
 - Research: `outreach.md` (Fable subagent, `growth/focus/fastloop-briefs/outreach-brief.md`).
+- Instruction set: `promote-tier3-instructions.md` (solar S1–S6 plus the RV refresh R1–R4).
+- Staged 11-01 (agent's Chrome, background tabs; nothing submitted): R1 My Grand RV and R2 Airstream replies (RV LIFE
+  login), S5 Quora answer (saved as a Quora draft), S4 geekbitz and R4 progressiveradionetwork comments.
+  Gmail drafts: R3 Boondock or Bust, S6 trek4tech (no contact form). Sign-up pages open for diysolarforum (S1, S2)
+  and Tacoma World (S3): no accounts.
+- Fixed after staging: literal `**` in R1/R2 converted to bold in the editors; S1 rewritten (the asker's panels are
+  2 × 200 W, 54.6 V Voc in series, not 2 × 100 W); S2 and S3 trimmed of points other replies had already made.

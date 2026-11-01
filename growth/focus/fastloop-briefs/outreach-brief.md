@@ -26,7 +26,11 @@ Places where a real person is deciding, right now, on a purchase our page helps 
 3. **Active venue.** Prefer forums, subforums and communities with current traffic on the topic (count the new
    threads on it in the last 30 days and say how you counted). A dormant forum's fresh thread ranks below an active
    forum's.
-4. **Still open.** Nobody in the thread has already given the answer our page gives. Say what is missing.
+4. **Still open.** Nobody in the thread has already given the answer our page gives. Read every reply, and cut any
+   part of a draft that repeats one (name who covered it). Say what is missing.
+   - Verify the asker's own setup from their links and words before doing arithmetic on it (11-01: the solar run's
+     first draft sized "Callsun 200 W 2-pack" as two 100 W panels; the listing was two 200 W panels, which turned a
+     safe wiring answer into one that can exceed the station's 60 V limit).
 5. **Link rules known.** Read the venue's rules before drafting. Where links to sites we profit from are banned
    (RV LIFE forums, most brand forums), the reply carries no link and no site mention.
 
