@@ -102,6 +102,30 @@ def render(rec: dict) -> str:
     return f"{title} · Dealectric\n" + html_text(body)
 
 
+def snapshot(rec: dict, png: Path, width: int = 1280) -> Path:
+    """A full-page screenshot of the record as the site would render it (site stylesheet inlined), taken in a
+    background tab of the agent's Chrome so a running replay chat is not disturbed. Saves the HTML beside the PNG."""
+    import base64, build, ui
+    title, desc, body, ld = build.compare_page(rec)
+    html = build.page("/" + rec["slug"], title, desc, body, ld)
+    css = (E.REPO / "docs" / "style.css").read_text()
+    html = html.replace('<link rel="stylesheet" href="/style.css">', f"<style>{css}</style>")
+    page_f = png.with_suffix(".html")
+    page_f.write_text(html)
+    tab = ui.Tab("about:blank")
+    try:
+        tab.call("Emulation.setDeviceMetricsOverride", width=width, height=900, deviceScaleFactor=1, mobile=False)
+        tab.navigate(page_f.resolve().as_uri())
+        time.sleep(2)
+        h = int(tab.eval("Math.ceil(document.documentElement.scrollHeight)") or 900)
+        shot = tab.call("Page.captureScreenshot", format="png", captureBeyondViewport=True,
+                        clip={"x": 0, "y": 0, "width": width, "height": h, "scale": 1})
+        png.write_bytes(base64.b64decode(shot["data"]))
+    finally:
+        tab.close()
+    return png
+
+
 def check(rec: dict, base: dict, tgt: dict) -> list[str]:
     """Rule checks on a variant before it is scored."""
     bad = []
@@ -225,6 +249,11 @@ def cmd_run(a) -> None:
     for rn in range(start, a.max_rounds + 1):
         rdir = out / f"round-{rn:02d}"
         rdir.mkdir(exist_ok=True)
+        if not (rdir / "incumbent.png").exists():   # Barry: a screenshot of each iteration's page before it is iterated
+            try:
+                snapshot(inc, rdir / "incumbent.png")
+            except Exception as e:  # noqa: BLE001
+                print(f"    screenshot failed: {e}", flush=True)
         inc_s = score(render(inc), tgt, eng, a.reps, rdir / "incumbent.jsonl")
         vs = make_variants(inc, a.variants, rn)
         results = []
