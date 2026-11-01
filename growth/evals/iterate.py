@@ -38,6 +38,7 @@ import fastloop as F  # noqa: E402
 from gapexp import html_text  # noqa: E402
 
 RUNS = E.REPO / "growth" / "focus" / "fastloop-runs"
+LESSONS = E.REPO / ".claude" / "skills" / "chatgpt-discoverability" / "reference" / "copy-lessons.md"
 WRITER = "claude-opus-5-5"
 
 # Targets: the page record, the recorded result sets its shopper questions got, and where a new page is inserted.
@@ -80,14 +81,19 @@ RULES = """Page rules (Dealectric, measured; never break them):
 """
 
 VARIANT_SCHEMA = {"type": "object", "properties": {"variants": {"type": "array", "items": {"type": "object", "properties": {
-    "dimension": {"type": "string"}, "change": {"type": "string"},
+    "dimension": {"type": "string"}, "change": {"type": "string"}, "lesson": {"type": "string"},
     "title": {"type": "string"}, "h1": {"type": "string"}, "intro": {"type": "string"}, "after": {"type": "string"}},
-    "required": ["dimension", "change", "title", "h1", "intro", "after"]}}}, "required": ["variants"]}
+    "required": ["dimension", "change", "lesson", "title", "h1", "intro", "after"]}}}, "required": ["variants"]}
 
 VARIANT_SYSTEM = """You improve one web page so that ChatGPT, answering a shopper's question from search results that
 include this page, more often hands the shopper the page's buy link. You change ONE thing per variant, on the dimension
 you are given, and keep everything else word for word. Return the full title, h1, intro and after fields for each
-variant (unchanged fields copied exactly). Describe the change in one short sentence.
+variant (unchanged fields copied exactly). Describe the change in one short sentence ("change"), and restate it in
+one product-agnostic sentence that would apply to any product page ("lesson").
+
+COPY LESSONS (Dealectric's knowledge base, reference/copy-lessons.md, appended below the rules): keep every measured or
+confirmed-live lesson the page already follows; when the page does not follow an observed lesson, try it among your
+variants first; never break a don't.
 
 """ + RULES
 
@@ -154,12 +160,13 @@ def make_variants(inc: dict, n: int, round_no: int) -> list[dict]:
     user = (json.dumps({k: inc[k] for k in ("title", "h1", "intro", "after")}, ensure_ascii=False, indent=1)
             + "\n\nWrite one variant per dimension below, in this order:\n"
             + "\n".join(f"{i + 1}. {d}: {why}" for i, (d, why) in enumerate(dims)))
-    out = E.claude_cli_json(VARIANT_SYSTEM, user, WRITER, VARIANT_SCHEMA, timeout=600) or {}
+    system = VARIANT_SYSTEM + ("\n\n" + LESSONS.read_text() if LESSONS.exists() else "")
+    out = E.claude_cli_json(system, user, WRITER, VARIANT_SCHEMA, timeout=600) or {}
     vs = []
     for v in out.get("variants", [])[:n]:
         rec = copy.deepcopy(inc)
         rec.update({k: v[k] for k in ("title", "h1", "intro", "after")})
-        vs.append({"dimension": v["dimension"], "change": v["change"], "record": rec})
+        vs.append({"dimension": v["dimension"], "change": v["change"], "lesson": v.get("lesson", ""), "record": rec})
     return vs
 
 
@@ -288,6 +295,7 @@ def cmd_run(a) -> None:
             fh.write("\n".join(rows) + "\n")
         print("\n".join(rows), flush=True)
         if best:
+            append_lesson(a.target, tgt, out.name, rn, best, inc_s)
             inc, stale = best["record"], 0
             E.write_json(best_p, {"record": inc, "score": best["score"], "round": rn, "change": best["change"]})
         else:
@@ -319,6 +327,18 @@ def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     with (out / "log.md").open("a") as fh:
         fh.write(line + "\n")
     print(line)
+
+
+def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: dict) -> None:
+    """A round's best draft beat its base: record the change as a candidate lesson (observed) in copy-lessons.md."""
+    s = best["score"]
+    entry = (f"\n### {best.get('lesson') or best['change']}\n"
+             f"- Tag: observed. Source: `{tgt['slug']}`, iterate run `{run}`, round {rn}, `{best['dimension']}`.\n"
+             f"- Result: M1 {s['m1']:.0%} vs base {base['m1']:.0%} (n = {s['linked']} vs {base['linked']} linked answers, "
+             f"{len(tgt['packs'])} result sets, rank {tgt['rank']}); M2 {s['m2']:.0%} vs {base['m2']:.0%}.\n"
+             f"- Change on this page: {best['change']}\n")
+    with LESSONS.open("a") as fh:
+        fh.write(entry)
 
 
 def cmd_show(a) -> None:

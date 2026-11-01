@@ -225,6 +225,13 @@ Until a step passes, label its output unvalidated.
 
 ## The page formula
 
+**Start from the copy lessons** (`reference/copy-lessons.md`). It lists the product-agnostic copy changes that
+moved buy-link hand-over (M1), each tagged with its evidence, plus the don'ts.
+- Apply every measured or confirmed-live lesson in a new draft.
+- Try the observed ones first when iterating.
+- `iterate.py` appends a candidate whenever a round's best draft beats its base; promote it with a retest or a
+  live confirmation.
+
 **The copy rules, which every content step follows** (Barry, 11-01; full text and evidence in
 `growth/focus/fastloop-briefs/COPY-RULES.md`):
 1. **ChatGPT's model sees only part of a page.** At a new page's usual rank 3–6, that's about 1,000–1,500
