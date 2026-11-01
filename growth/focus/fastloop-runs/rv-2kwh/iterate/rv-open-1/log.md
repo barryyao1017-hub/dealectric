@@ -43,3 +43,13 @@ Round 2 knowledge base: not added: +24% is within noise (margin 32%)
 Round 3 models: gpt-6 64 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 3 knowledge base: not added: +5% is within noise (margin 31%)
+| 4 | incumbent | | 12 | 10 | 40% | 60% | 35% | |
+| 4 | concern_placement | Turned the three plug-in cautions into numbered points, each led by a bold one-line takeaw | 12 | 12 | 25% | 42% | 24% | dropped: M2 fell |
+| 4 | offer_line | Moved the buy link and price right after the product name in the first sentence, ahead of  | 12 | 10 | 50% | 60% | 33% | new base (best M1) |
+| 4 | alternatives | Named each short-answer alternative by the shopper it suits (Anker if weight matters, Reno | 12 | 12 | 42% | 58% | 31% | no |
+| 4 | closing_section | Moved the Elite 200 V2 and Jackery note to the top of the closing section under its own he | 12 | 11 | 18% | 36% | 26% | dropped: M2 fell |
+| 4 | short_answer | Reworded the opening so it repeats the shopper's question as a full sentence that names th | 12 | 11 | 36% | 55% | 30% | no |
+
+Round 4 models: gpt-6 66 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+Round 4 knowledge base: not added: +10% is within noise (margin 33%)
