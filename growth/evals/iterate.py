@@ -195,14 +195,21 @@ class Engine:
                     return rec
                 self.dropped += 1
                 if rec["status"] == 200 and model and model != F.APP_MODEL:   # quota: the plan fell back to a smaller model
-                    new = F.switch_account(self.tried)
+                    try:
+                        new = F.switch_account(self.tried)
+                    except Exception as e:  # noqa: BLE001  (menu not rendered in time, etc.): treat as no account
+                        print(f"    account switch failed ({str(e)[:80]})", flush=True)
+                        new = None
                     if new:
                         self.tried.add(new)
                         print(f"    {model} answer: switched ChatGPT account to {new}", flush=True)
                     else:
                         print(f"    {model} answer and every account tried: waiting 30 min ({E.now_iso()})", flush=True)
                         time.sleep(1800)
-                        self.tried = {F.active_account()}
+                        try:
+                            self.tried = {F.active_account()}
+                        except Exception:  # noqa: BLE001
+                            self.tried = set()
                     continue
                 fails += 1
                 print(f"    failed chat: status {rec['status']} model {model or None} fetches {rec.get('open_fetches')}", flush=True)
