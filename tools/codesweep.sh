@@ -14,23 +14,37 @@ mkdir -p "$LOG_DIR"
 LOG="$LOG_DIR/dealectric-codesweep.log"
 {
   echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep start"
+  # Every stop, early ones included, writes the end line with its exit code, so tools/dailyupdate.py reports a skipped
+  # day as FAILED instead of "still running" (2026-10-31).
+  end() { echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep end (exit $1)"; exit "$1"; }
   if ! curl -s --max-time 5 http://localhost:9222/json/version >/dev/null; then
     echo "starting the agent's Chrome"
     uv --directory "$HOME/Desktop/agent-vault" run agent-vault browser || echo "agent-vault browser exited $? (under launchd, ~/Desktop may be off limits; start it by hand)"
     for i in $(seq 1 30); do curl -s --max-time 5 http://localhost:9222/json/version >/dev/null && break; sleep 2; done
-    curl -s --max-time 5 http://localhost:9222/json/version >/dev/null || { echo "no agent Chrome on localhost:9222; skipping today's sweep"; exit 2; }
+    curl -s --max-time 5 http://localhost:9222/json/version >/dev/null || { echo "no agent Chrome on localhost:9222; skipping today's sweep"; end 2; }
   fi
-  cd "$REPO" || exit 1
-  git pull -q --ff-only origin main || { echo "git pull failed; skipping today's sweep"; exit 1; }
+  cd "$REPO" || end 1
+  # Local edits to tracked files made --ff-only refuse (2026-10-31: a line appended to growth/evals/footprint.jsonl
+  # skipped the day). --autostash sets them aside and puts them back, .gitattributes merges the append-only logs line
+  # by line, and --rebase replays a sweep commit whose push failed on an earlier run.
+  if ! git pull -q --rebase --autostash origin main; then
+    git rebase --abort 2>/dev/null
+    echo "git pull failed; skipping today's sweep"
+    end 1
+  fi
+  if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+    echo "local changes clash with main after the pull (kept in git stash list): $(git diff --name-only --diff-filter=U | tr '\n' ' ')skipping today's sweep"
+    end 1
+  fi
   # Never run on a dirty tree the loop session is mid-edit on: the sweep commits only its own files, but a rebuild
-  # would publish whatever is in src/. Uncommitted changes outside the sweep's own files mean skip today.
+  # would publish whatever is in src/. Uncommitted changes outside the sweep's own files mean skip today (exit 3, so
+  # the daily update flags it).
   if [ -n "$(git status --porcelain -- src/build.py src/content.py src/products.py src/links.json worker/src/index.js)" ]; then
     echo "src/ has uncommitted changes; skipping today's sweep so the rebuild does not publish work in progress"
-    exit 0
+    end 3
   fi
   # The paced sweep can take a few hours when stores rate-limit (DLC-48); caffeinate -i keeps the Mac from idle-sleeping
   # until it ends (only for this process; no setting changes).
   /usr/bin/caffeinate -i python3.12 "$REPO/tools/codesweep.py" "$@"
-  rc=$?
-  echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep end (exit $rc)"
+  end $?
 } >>"$LOG" 2>&1

@@ -688,7 +688,31 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         raise SystemExit(f"commit failed: {r.stderr[-400:]}")
     r = sh(["git", "push", "-q", "origin", "HEAD:main"])
     if r.returncode != 0:
-        raise SystemExit(f"push failed: {r.stderr[-400:]}")
+        # Another session pushed to main after this run pulled (2026-10-29: the day's commit sat unpushed and the
+        # Worker undeployed). Retry once on top of main: take the commit back, drop the generated files (docs/ and the
+        # link map would clash with main's own rebuilds), pull, rebuild from the merged src/ and commit again.
+        why = next((l.strip() for l in r.stderr.splitlines() if "rejected" in l), r.stderr.strip()[:200])
+        log(f"push rejected ({why}); rebuilding on top of main and retrying once")
+        sh(["git", "reset", "-q", "HEAD~1"])
+        sh(["git", "checkout", "-q", "--", "docs", "worker/src/links-map.json"])
+        sh(["git", "clean", "-fdq", "--", "docs"])
+        r = sh(["git", "pull", "-q", "--rebase", "--autostash", "origin", "main"])
+        clash = sh(["git", "diff", "--name-only", "--diff-filter=U"]).stdout.split()
+        if r.returncode != 0 or clash:
+            raise SystemExit(f"push failed, and pulling main failed or clashed ({' '.join(clash) or r.stderr[-300:]}); "
+                             "today's src/coupons.json and growth/codes are uncommitted in the clone")
+        r = sh([sys.executable, "src/build.py"])
+        if r.returncode != 0:
+            raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
+        sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
+        r = sh(["git", "commit", "-q", "-m", msg])
+        if r.returncode != 0:
+            raise SystemExit(f"commit on top of main failed: {r.stderr[-400:]}")
+        # main's own commits may have changed the link map too; deploying a map that is already live is harmless
+        map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
+        r = sh(["git", "push", "-q", "origin", "HEAD:main"])
+        if r.returncode != 0:
+            raise SystemExit(f"push failed again on top of main: {r.stderr[-400:]}")
     log("pushed")
     if map_changed and deploy:
         tok = subprocess.run(["security", "find-generic-password", "-a", "dealectric", "-s", "cloudflare-workers-token", "-w"],
