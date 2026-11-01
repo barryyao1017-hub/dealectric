@@ -62,3 +62,14 @@ Round 4 knowledge base: not added: +10% is within noise (margin 33%)
 
 Round 5 models: gpt-6 61 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
+| 6 | incumbent | | 12 | 10 | 28% | 59% | 26% | |
+| 6 | short_answer | The opening sentence now states the pick as the answer to the query, gives the reason (the | 12 | 10 | 9% | 9% | 8% | dropped: M2 fell |
+| 6 | headline | The title now leads with the pick's key feature (a 30-amp RV outlet), and the H1 names the | 12 | 11 | 36% | 45% | 31% | dropped: M2 fell |
+| 6 | concern_placement | The three RV caveats are now numbered points, each starting with a bold one-line rule, fol | 12 | 10 | 36% | 45% | 29% | dropped: M2 fell |
+| 6 | offer_line | The buy link moves out of the brackets after the product name and into its own short buy s | 12 | 8 | 22% | 22% | 14% | dropped: M2 fell |
+| 6 | alternatives | The alternatives are now grouped in the intro by what each is best for (lightest, lower pr | 12 | 9 | 31% | 41% | 31% | dropped: M2 fell |
+
+Round 6 models: gpt-6-mini 48, gpt-6 10 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+
+Stopped after round 6. Best: round 4.
