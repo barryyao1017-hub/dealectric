@@ -97,12 +97,34 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.
    - Use the scores to compare drafts against each other and the current page, never as forecasts.
-7. **Live check.**
-   - Publish only the winner. A new page linked from the home page gets fetched fastest.
+7. **Publish, then promote (7b).** Publish only the winner, then run the three Promote tiers the same day:
+   - **Tier 1, internal links (every page).**
+     - Link the page from the pages OAI-SearchBot fetches most. Check with `growth/focus/crawls/fetches.jsonl`; on
+       10-31 these were `/portable-power-stations`, home, `/discount-codes` and `/products`.
+     - Use a contextual line whose anchor uses the target query's words, as on the RV page.
+     - Product pages of the products in the table link back automatically (`compared_in`). `/compare` and `llms.txt`
+       pick the page up at build time.
+   - **Tier 2, submissions (every page).**
+     - `python3 tools/indexnow.py <urls>` for the new page and every page that now links to it (reaches Bing).
+     - Google Search Console URL inspection, then "Request indexing", from the agent's Chrome as barrryyao. Use the
+       inspect bar on the property's home; the direct `/search-console/inspect` URL returns a 404.
+     - No OpenAI submission route exists.
+   - **Tier 3, genuine outreach (per page, Barry approves and posts).**
+     - Find open questions that the page truly answers: forum and community threads, product Q&A, articles with a
+       factual error on the topic, and resource lists.
+     - Draft replies that answer the question in full on their own, disclose the affiliation, and link only where
+       the venue's rules allow.
+     - Claude never posts, comments or emails. Barry posts from his own accounts.
+   - **Why these tiers.** OpenAI hasn't published whether links weigh in ChatGPT's ranking. What links demonstrably
+     do is get our pages found and re-fetched sooner (the RV page was fetched about 11 h after its home link went
+     live) and rank in Bing and Google. Treat tier 3's effect on ChatGPT retrieval as an experiment: compare pages
+     with outreach against matched pages without.
+   - Record each tier's output on the run log (step 7b).
+8. **Live check.**
    - Once OAI-SearchBot has fetched it (`storedcopy.py`), run the target queries as pinned one-search chats in the
      app every day or two to see whether it's retrieved (API replay as fallback).
    - Then read it in the app with the blind questions, n=2.
-8. **Recalibrate.** When a draft wins offline and loses live, fix the loop, not just the page. Every live reading is a
+9. **Recalibrate.** When a draft wins offline and loses live, fix the loop, not just the page. Every live reading is a
    new calibration case and updates the gap map.
 
 ### Running it: the app by default, the API as fallback (Barry, 2026-10-31)

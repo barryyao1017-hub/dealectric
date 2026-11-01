@@ -110,14 +110,17 @@ svg .ah { fill: var(--muted); } svg .ah-no { fill: var(--stop); }
         <path class="flow no" d="M420 255 V280 H785 V259" marker-end="url(#an)"/><text class="m" x="600" y="294" text-anchor="middle" style="fill:var(--stop)">no: revise the drafts</text>
         <!-- turn down -->
         <path class="flow" d="M150 220 H40 V375 H68" marker-end="url(#a)"/><text class="m" x="30" y="300" style="writing-mode:vertical-rl">shipped</text>
-        <!-- row 3: live -->
-        <g class="node" id="n-s8"><rect x="70" y="340" width="170" height="70" rx="6"/><text class="num" x="82" y="360">8</text><text class="t" x="155" y="372" text-anchor="middle">Live check</text><text class="s" x="155" y="390" text-anchor="middle">after OpenAI's crawl</text></g>
-        <g class="gate"><polygon points="340,340 390,375 340,410 290,375"/><text x="340" y="371" text-anchor="middle">retrieved,</text><text x="340" y="384" text-anchor="middle">cited?</text></g>
-        <g class="node" id="n-s9"><rect x="440" y="340" width="170" height="70" rx="6"/><text class="num" x="452" y="360">9</text><text class="t" x="525" y="372" text-anchor="middle">Recalibrate</text><text class="s" x="525" y="390" text-anchor="middle">prediction vs live</text></g>
-        <path class="flow" d="M240 375 H288" marker-end="url(#a)"/>
-        <path class="flow" d="M390 375 H438" marker-end="url(#a)"/><text class="m" x="414" y="368" text-anchor="middle">either way</text>
-        <path class="flow" d="M610 375 H700 V100 H805" style="stroke-dasharray:2 3"/><text class="m" x="706" y="330">updates the gap map</text>
-        <text class="s" x="640" y="440">Steps 0–6 run in hours, with no wait on OpenAI. Step 8 waits for the crawl (a new URL linked from home was fetched in about 13 h).</text>
+        <!-- row 3: promote, then live -->
+        <g class="node" id="n-s7b"><rect x="70" y="340" width="170" height="70" rx="6"/><text class="num" x="82" y="360">7b</text><text class="t" x="155" y="372" text-anchor="middle">Promote</text><text class="s" x="155" y="390" text-anchor="middle">links, submissions, outreach</text></g>
+        <g class="node" id="n-s8"><rect x="290" y="340" width="170" height="70" rx="6"/><text class="num" x="302" y="360">8</text><text class="t" x="375" y="372" text-anchor="middle">Live check</text><text class="s" x="375" y="390" text-anchor="middle">after OpenAI's crawl</text></g>
+        <g class="gate"><polygon points="570,340 620,375 570,410 520,375"/><text x="570" y="371" text-anchor="middle">retrieved,</text><text x="570" y="384" text-anchor="middle">cited?</text></g>
+        <g class="node" id="n-s9"><rect x="670" y="340" width="170" height="70" rx="6"/><text class="num" x="682" y="360">9</text><text class="t" x="755" y="372" text-anchor="middle">Recalibrate</text><text class="s" x="755" y="390" text-anchor="middle">prediction vs live</text></g>
+        <path class="flow" d="M240 375 H288" marker-end="url(#a)"/><text class="m" x="264" y="368" text-anchor="middle">crawl</text>
+        <path class="flow" d="M460 375 H518" marker-end="url(#a)"/>
+        <path class="flow" d="M620 375 H668" marker-end="url(#a)"/><text class="m" x="644" y="368" text-anchor="middle">either way</text>
+        <text class="m" x="850" y="372">→ updates the gap map (step 3)</text>
+        <text class="m" x="850" y="386">and the calibration set</text>
+        <text class="s" x="70" y="445">Steps 0–6 run in hours, with no wait on OpenAI. Step 7b makes the page easy to find; step 8 waits for OpenAI's crawl (this page: about 11 h).</text>
       </svg>
     </div>
   </section>
@@ -140,7 +143,7 @@ function render(rows) {
     if (node) node.setAttribute("class", "node " + (r.status || "waiting"));
     const s = el("article", "step"); s.id = r.id;
     const h = el("header");
-    h.append(el("span", "n", "STEP " + r.n), el("h3", null, r.title), el("span", "pill " + (r.status || "waiting"), LABEL[r.status] || "waiting"));
+    h.append(el("span", "n", "STEP " + (r.label || r.n)),el("h3", null, r.title), el("span", "pill " + (r.status || "waiting"), LABEL[r.status] || "waiting"));
     if (r.at) h.append(el("span", "when", r.at));
     s.append(h);
     if (r.why) s.append(el("p", "why", r.why));
