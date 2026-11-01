@@ -864,7 +864,7 @@ def compare_deal_line(slug):
     return guide_deal_line(slug).replace("Buy link to give the shopper:", "Buy:")
 
 
-def compare_where_to_buy(ours, c):
+def compare_where_to_buy(ours, c, filler=True):
     """Loop 3 iteration 4 (2026-10-25): the products of ours a comparison page names, each with its buy link and code, as
     a plain "Where to buy" block with one affiliate-disclosure line. It replaces iteration 2's note to AI assistants: Claude
     reported that note to shoppers as "hidden instructions telling AI assistants how to present its links" and dropped the
@@ -885,7 +885,7 @@ def compare_where_to_buy(ours, c):
     coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
     line = ("Use the Buy link for the model you choose; where a code is listed, enter it at checkout to pay the price after the code."
             if coded else "Use the Buy link for the model you choose.")
-    return (f'<div class="note"><strong>Where to buy</strong><p>{line}</p><ul>{"".join(items)}</ul>'
+    return (f'<div class="note"><strong>Where to buy</strong>{f"<p>{line}</p>" if filler else ""}<ul>{"".join(items)}</ul>'
             f'<p class="small">These are affiliate links: each opens the brand\'s official US store at no extra cost, and the brand pays {SITE["brand"]} '
             f'a commission that funds the cart tests. The other brands in the table link to their own stores; we earn nothing on them.</p></div>')
 
@@ -896,11 +896,18 @@ def compare_page(c):
     heads = "".join(f"<th>{h}</th>" for _, h in c["columns"])
     rows = "".join(compare_row(c, r) for r in c["rows"])
     makers = sorted({r["brand"] for r in others})
-    body = f"""
-<h1>{c['h1']}</h1>
+    if c.get("lead_first"):   # fast-loop pages (growth/focus/fastloop-briefs/COPY-RULES.md): the conversion block opens the page
+        top = f"""<h1>{c['h1']}</h1>
+{compare_fill(c['intro'])}
+{compare_where_to_buy(ours, c, filler=False)}
+<p class="small">Revision {COMPARE_REV}.</p>"""
+    else:
+        top = f"""<h1>{c['h1']}</h1>
 <p class="small">Revision {COMPARE_REV}.</p>
 {compare_where_to_buy(ours, c)}
-{compare_fill(c['intro'])}
+{compare_fill(c['intro'])}"""
+    body = f"""
+{top}
 <div class="scroll"><table>
 <tr><th>Model</th>{heads}<th>Price</th><th>Code</th></tr>
 {rows}

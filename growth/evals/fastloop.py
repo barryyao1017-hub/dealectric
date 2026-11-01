@@ -8,6 +8,7 @@ against the result set ChatGPT really got, so copy iterates in minutes and only 
     python3.12 growth/evals/fastloop.py gap <pack> [<pack> ...]            # open or saturated, recurring domains
     python3.12 growth/evals/fastloop.py gapcheck --labels labels.json     # Barry's labels vs the judge
     python3.12 growth/evals/fastloop.py replay <pack> --draft d.md [--rank 2] [--url /slug] [--reps 3] [--tag v1]
+    python3.12 growth/evals/fastloop.py check <draft.md|docs/<slug>.html> --packs <p> [<p> ...] --must "<concern phrase>"  # copy-rules gate
     python3.12 growth/evals/fastloop.py score <pack> [--concern "<the open concern>"]   # scorecard per draft tag
     python3.12 growth/evals/fastloop.py calibrate --n 40 [--model gpt-6-luna] [--reps 3]
     python3.12 growth/evals/fastloop.py calreport [--run <cal-run>]
@@ -778,6 +779,50 @@ def draft_text(path: str) -> tuple[str, str]:
     return lines[0].lstrip("# ").strip(), raw.strip()
 
 
+def _squash(s: str) -> str:
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def cmd_check(a) -> None:
+    """The copy rules' gate (growth/focus/fastloop-briefs/COPY-RULES.md, rule 6): the conversion block (a /go/ link and a
+    price) sits in the first 600 characters after the title, and it and every --must phrase survive the length cut at
+    each rank in every target result set. Exit 1 on any failure."""
+    title, text = draft_text(a.draft)
+    start = text.find("Short answer")
+    if start < 0:   # no "Short answer." label: the top starts after the title line(s)
+        start = text.find("\n", text.find(title[:40]) + 1) if title[:40] in text else 0
+    top = text[max(start, 0): max(start, 0) + 600]
+    fails = []
+    top_ok = "/go/" in top and "$" in top
+    print(f"top block ({len(top)} chars from {'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
+          f"/go/ link {'yes' if '/go/' in top else 'NO'}, price {'yes' if '$' in top else 'NO'}")
+    if not top_ok:
+        fails.append("conversion block not in the first 600 characters")
+    musts = [m for m in (a.must or [])]
+    ranks = [int(r) for r in a.ranks.split(",")]
+    print(f"{'pack':34} {'results':>7} {'rank':>4} {'share':>6} {'shown':>6}  /go/  " + "  ".join(f"must{i + 1}" for i in range(len(musts))))
+    for name in a.packs:
+        pack = json.loads((pack_dir(name) / "pack.json").read_text())
+        base = [dict(r) for r in pack["results"] if "dealectric.com" not in r["url"]]
+        for rank in ranks:
+            res = list(base)
+            res.insert(min(rank, len(res) + 1) - 1, {"url": "https://dealectric.com" + (a.url or "/draft"), "title": title, "text": text})
+            res = res[:max(len(pack["results"]), rank)]
+            ctx = build_context(res, pack["query"])
+            me = next(c for c in ctx if "dealectric.com" in c["url"])
+            shown = _squash(me["shown"])
+            ok_go = "/go/" in shown
+            ok_m = [_squash(m) in shown for m in musts]
+            if not ok_go:
+                fails.append(f"{name} rank {rank}: /go/ link cut")
+            fails += [f"{name} rank {rank}: '{m[:40]}' cut" for m, ok in zip(musts, ok_m) if not ok]
+            print(f"{name[:34]:34} {len(ctx):>7} {rank:>4} {me['share']:>6} {len(me['shown']):>6}  {'ok  ' if ok_go else 'CUT '}  "
+                  + "  ".join("ok   " if ok else "CUT  " for ok in ok_m))
+    print("PASS" if not fails else "FAIL:\n- " + "\n- ".join(fails))
+    if fails:
+        sys.exit(1)
+
+
 def cmd_replay(a) -> None:
     d = pack_dir(a.pack)
     pack = json.loads((d / "pack.json").read_text())
@@ -1448,6 +1493,8 @@ def main() -> int:
     p.add_argument("--judges", nargs="+", default=["claude-sonnet-5-5", "claude-opus-5-5", "claude-fable-5-1"])
     p.add_argument("--workers", type=int, default=6); p.add_argument("--show", action="store_true")
     p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
+    p = sub.add_parser("check"); p.add_argument("draft"); p.add_argument("--packs", nargs="+", required=True)
+    p.add_argument("--ranks", default="1,3,6"); p.add_argument("--must", action="append"); p.add_argument("--url")
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)
     p.add_argument("--engine", choices=["app", "api"], default="app")
@@ -1476,7 +1523,7 @@ def main() -> int:
     {"pack": cmd_pack, "gap": cmd_gap, "replay": cmd_replay, "score": cmd_score, "calibrate": cmd_calibrate,
      "calreport": cmd_calreport, "transfer": cmd_transfer, "gapcheck": cmd_gapcheck, "vote": cmd_vote,
      "pastecal": cmd_pastecal, "pastecalreport": cmd_pastecalreport,
-     "reaskreport": cmd_reaskreport, "paired": cmd_paired, "pairedreport": cmd_pairedreport}[a.cmd](a)
+     "reaskreport": cmd_reaskreport, "paired": cmd_paired, "pairedreport": cmd_pairedreport, "check": cmd_check}[a.cmd](a)
     return 0
 
 

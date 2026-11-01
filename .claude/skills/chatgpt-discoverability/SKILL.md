@@ -83,8 +83,13 @@ are weak, iterate drafts offline, and check retrieval live at volume.
      return listicles and stores, and single product pages scored 0 of 8 on them, so they need a short comparison
      page.
    - Note the shared core (step 5) and the open concern, researched outside the top 12.
-5. **Draft (judgment) with the page formula below.** Write two or three versions, each built around a different
-   candidate concern.
+   - **The Fable research uses `growth/focus/fastloop-briefs/research-brief.md`.** It carries the copy rules and
+     asks for the top block ready to use: the one reason our pick wins on the query (at most 200 characters), and
+     the concern's answer (at most 300 characters), each in the query's words with its number and source.
+5. **Draft (judgment) with the page formula below**, following `growth/focus/fastloop-briefs/draft-brief.md`.
+   - Write two or three versions, each built around a different candidate concern or reason.
+   - Every draft opens with the conversion block on one line.
+   - Run `fastloop.py check` on each draft before scoring; a draft that fails isn't scored.
 6. **Offline scoring.**
    - Build the context the model would get: the rival pages, each cut to the share measured for its rank, plus the
      draft (`fastloop.py pack`, `replay`, `score`; see `reference/tools.md`).
@@ -97,7 +102,11 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    - Scorecard per draft: our page cited, our product picked, **our point carried** (the answer repeats our answer to
      the concern and credits us), `/go/` copied.
    - Use the scores to compare drafts against each other and the current page, never as forecasts.
-7. **Publish, then promote (7b).** Publish only the winner, then run the three Promote tiers the same day:
+   - **Iterate from the top.** When a draft loses, read `answers/<tag>/context.json` to see what reached the model.
+     Change the top block (the reason, the concern or the query words) before anything below it.
+7. **Publish, then promote (7b).** Publish only the winner, as a `src/gaps.py` record with `"lead_first": True` whose
+   intro opens with the conversion block on one source line. Push only after `fastloop.py check docs/<slug>.html`
+   passes. Then run the three Promote tiers the same day:
    - **Tier 1, internal links (every page).**
      - Link the page from the pages OAI-SearchBot fetches most. Check with `growth/focus/crawls/fetches.jsonl`; on
        10-31 these were `/portable-power-stations`, home, `/discount-codes` and `/products`.
@@ -216,6 +225,16 @@ Until a step passes, label its output unvalidated.
 
 ## The page formula
 
+**The copy rules, which every content step follows** (Barry, 11-01; full text and evidence in
+`growth/focus/fastloop-briefs/COPY-RULES.md`):
+1. **ChatGPT's model sees only part of a page.** At a new page's usual rank 3–6, that's about 1,000–1,500
+   characters. It keeps the opening, then the passages sharing the query's words.
+2. **So the top decides.** The page opens with the conversion block, on one line, in the query's words: the pick,
+   the price after our tested code, the `/go/` link and the reason it wins on this query.
+3. **The open concern comes next**, with its number. Everything below is reference that the model may never see.
+4. **The gate:** `fastloop.py check` must pass at ranks 1, 3 and 6 in every target result set before scoring and
+   before shipping.
+
 The model should come away feeling our page sums up the top results and then answers the one concern none of them
 address.
 
@@ -249,9 +268,14 @@ address.
   - The rendered page split its short answer across source lines, and the concern fell out again. Rejoining it into
     one line fixed it.
 - **Check the rendered page before shipping.**
-  - Run `fastloop.py replay <pack> --draft docs/<slug>.html` and confirm the concern and the `/go/` link survive the
-    cut in every target result set.
-  - The renderer adds a "Where to buy" block above the intro, so the rendered text is not the draft's text.
+  - New records set `"lead_first": True` in `src/gaps.py`. The page then opens with the H1 and the short answer;
+    "Where to buy" and the revision line follow, without their filler sentence. Older pages keep their layout.
+  - After building, run `fastloop.py check docs/<slug>.html --packs <target packs> --must "<concern phrase>"`. The
+    rendered text isn't the draft's text, so the check must pass on the rendered page too.
+  - The check reproduces DLC-114:
+    - Draft A fails at rank 3 (its concern was carried in 0 of 2 answers).
+    - Draft A2 fails only at rank 6 of 17 results.
+    - The shipped page passes everywhere.
 - **A worked example:** `/best-2kwh-power-station-for-rv`. Its record, inputs, outputs and decisions are in
   `growth/focus/fastloop-runs/rv-2kwh/` and on the run-log artifact (https://claude.ai/artifact/NtCVs8kZBHtyRJorjYCJU7).
 - **What the shopper sees.** The result title is the `<title>` at OpenAI's last fetch. The ~200-character snippet is
