@@ -15,12 +15,12 @@ Each round:
    calibrated (growth/evals/loop/paste-calibration.md); both are pluggable here.
 3. Score per draft over all its answers (fastloop.replay_links, link_flags): M1 = share of linked answers with our
    /go/ link (the metric), M2 = share linking dealectric.com, M3 = our links / all links (guards).
-4. A variant replaces the incumbent only if its M1 beats the incumbent's by more than the noise margin
-   (max(--margin, 1.5 standard errors of the difference)) and M2 does not drop by more than the margin. A close call
-   (ahead, but within the margin) is rerun once with the same number of answers before deciding. A near-miss (ahead
-   by more than half the margin after that) is carried into the next round and re-scored on 3x the answers, with the
-   unchanged incumbent's answers carried forward too: more data, same bar.
-5. Stop after --patience rounds in a row with no accepted variant, or at --max-rounds.
+4. The best draft by M1 becomes the next round's base, if it keeps our page cited (M2 not dropping by more than
+   --margin) and passes the page rules; no noise margin per round (Barry, 11-01: the published page is a one-shot
+   draft like any variant). Ties keep the base.
+5. Stop after --patience rounds in a row in which no variant beat the base, or at --max-rounds. Then the one noise
+   test: the final base must beat the published page's M1 by more than max(--margin, 1.5 SE) on --final-reps answers
+   per result set each, before a live check (search on) and Barry's OK.
 
 Everything is written under growth/focus/fastloop-runs/<target>/iterate/<run-id>/: round-NN.json (variants, answers,
 scores, decision), best.json (the best record) and log.md. Nothing is published: shipping the winner is Barry's call
@@ -256,56 +256,33 @@ def cmd_run(a) -> None:
                 snapshot(inc, rdir / "incumbent.png")
             except Exception as e:  # noqa: BLE001
                 print(f"    screenshot failed: {e}", flush=True)
-        carried = []
-        prev = out / f"round-{rn - 1:02d}.json"
-        if prev.exists():
-            P = json.loads(prev.read_text())
-            pdir = out / f"round-{rn - 1:02d}"
-            if P["incumbent"]["record"] == inc:   # unchanged incumbent: its answers carry forward
-                old = (pdir / "incumbent.jsonl").read_text() if (pdir / "incumbent.jsonl").exists() else ""
-                cur = (rdir / "incumbent.jsonl").read_text() if (rdir / "incumbent.jsonl").exists() else ""
-                if old and old not in cur:
-                    (rdir / "incumbent.jsonl").write_text(old + cur)
-                # near-misses (ahead by more than half the margin, not past it): re-scored on more answers, same rule
-                for i, v in enumerate(P["variants"]):
-                    s, m = v.get("score"), v.get("margin")
-                    if s and m and v["decision"] == "no" and s["m1"] - P["incumbent"]["score"]["m1"] > m / 2:
-                        src = pdir / f"v{i}.jsonl"
-                        dst = rdir / f"carried-{v['dimension']}.jsonl"
-                        if src.exists() and not dst.exists():
-                            dst.write_text(src.read_text())
-                        carried.append({**{k: v[k] for k in ("dimension", "change", "record")}, "file": dst, "carried": True})
-        reps_inc = a.reps * 3 if carried else a.reps
-        inc_s = score(render(inc), tgt, eng, reps_inc, rdir / "incumbent.jsonl")
-        results = []
-        for v in carried:
-            s = score(render(v["record"]), tgt, eng, a.reps * 3, v["file"])
-            m = margin(s, inc_s, a.margin)
-            win = s["m1"] - inc_s["m1"] > m and inc_s["m2"] - s["m2"] <= a.margin
-            results.append({**{k: v[k] for k in ("dimension", "change", "record", "carried")}, "violations": [], "score": s,
-                            "margin": m, "decision": "beats incumbent (carried)" if win else "no (carried)"})
+        inc_s = score(render(inc), tgt, eng, a.reps, rdir / "incumbent.jsonl")
         vs = make_variants(inc, a.variants, rn)
+        results = []
         for i, v in enumerate(vs):
             v["violations"] = check(v["record"], inc, tgt)
             if v["violations"]:
                 results.append({**v, "score": None, "decision": "dropped: " + "; ".join(v["violations"])})
                 continue
             s = score(render(v["record"]), tgt, eng, a.reps, rdir / f"v{i}.jsonl")
-            m = margin(s, inc_s, a.margin)
-            if 0 < s["m1"] - inc_s["m1"] <= m:   # close call: one rerun with the same number of answers each
-                inc_s = score(render(inc), tgt, eng, a.reps * 2, rdir / "incumbent.jsonl")
-                s = score(render(v["record"]), tgt, eng, a.reps * 2, rdir / f"v{i}.jsonl")
-                m = margin(s, inc_s, a.margin)
-            win = s["m1"] - inc_s["m1"] > m and inc_s["m2"] - s["m2"] <= a.margin
-            results.append({**v, "score": s, "margin": m, "decision": "beats incumbent" if win else "no"})
-        winners = [r for r in results if r["decision"].startswith("beats incumbent")]
-        best = max(winners, key=lambda r: r["score"]["m1"]) if winners else None
+            guard = inc_s["m2"] - s["m2"] <= a.margin   # keeps our page cited
+            results.append({**v, "score": s, "decision": "candidate" if guard else "dropped: M2 fell"})
+        # Barry 11-01: the best draft by M1 becomes the next base (no noise margin per round); ties keep the incumbent.
+        cands = [r for r in results if r["decision"] == "candidate"]
+        best = max(cands, key=lambda r: r["score"]["m1"]) if cands else None
+        if best and best["score"]["m1"] > inc_s["m1"]:
+            best["decision"] = "new base (best M1)"
+        else:
+            best = None
+        for r in cands:
+            if r is not best:
+                r["decision"] = "no"
         E.write_json(out / f"round-{rn:02d}.json", {"round": rn, "incumbent": {"record": inc, "score": inc_s},
                                                    "variants": results, "accepted": best["dimension"] if best else None})
         rows = [f"| {rn} | incumbent | | {inc_s['answers']} | {inc_s['linked']} | {inc_s['m1']:.0%} | {inc_s['m2']:.0%} | {inc_s['m3']:.0%} | |"]
         for r in results:
             s = r["score"]
-            rows.append(f"| {rn} | {r['dimension']}{' (carried)' if r.get('carried') else ''} | {r['change'][:90]} | " + (f"{s['answers']} | {s['linked']} | {s['m1']:.0%} | {s['m2']:.0%} | {s['m3']:.0%}"
+            rows.append(f"| {rn} | {r['dimension']} | {r['change'][:90]} | " + (f"{s['answers']} | {s['linked']} | {s['m1']:.0%} | {s['m2']:.0%} | {s['m3']:.0%}"
                         if s else "- | - | - | - | -") + f" | {r['decision']} |")
         with log.open("a") as fh:
             fh.write("\n".join(rows) + "\n")
@@ -316,10 +293,32 @@ def cmd_run(a) -> None:
         else:
             stale += 1
             if stale >= a.patience:
-                print(f"plateau: {stale} rounds with no accepted variant")
+                print(f"plateau: {stale} rounds in which no variant beat the base on M1")
                 break
     with log.open("a") as fh:
         fh.write(f"\nStopped after round {rn}. Best: {'round ' + str(json.loads(best_p.read_text())['round']) if best_p.exists() else 'the published page (no variant beat it)'}.\n")
+    final_check(out, tgt, eng, a)
+
+
+def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
+    """The one noise test (Barry 11-01): the final base must beat the published page's M1 by more than noise, scored on
+    the same result sets with --final-reps answers per set each; then a live check and Barry's OK before shipping."""
+    best_p = out / "best.json"
+    if not best_p.exists():
+        return
+    fdir = out / "final"
+    fdir.mkdir(exist_ok=True)
+    pub = score(render(record(tgt["slug"])), tgt, eng, a.final_reps, fdir / "published.jsonl")
+    fin = score(render(json.loads(best_p.read_text())["record"]), tgt, eng, a.final_reps, fdir / "final.jsonl")
+    m = margin(fin, pub, a.margin)
+    ok = fin["m1"] - pub["m1"] > m and pub["m2"] - fin["m2"] <= a.margin
+    E.write_json(fdir / "check.json", {"published": pub, "final": fin, "margin": m, "beats_published": ok})
+    line = (f"Final check ({a.final_reps} answers per set each): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
+            f"{fin['m1']:.0%} / M2 {fin['m2']:.0%}, margin {m:.0%}: {'beats the published page by more than noise' if ok else 'not beyond noise'}. "
+            "Next: live check (search on) and Barry's OK before shipping.")
+    with (out / "log.md").open("a") as fh:
+        fh.write(line + "\n")
+    print(line)
 
 
 def cmd_show(a) -> None:
@@ -350,7 +349,7 @@ def main() -> int:
     p.add_argument("--paste", default="c1"); p.add_argument("--fmt", default="v1")
     p.add_argument("--variants", type=int, default=5); p.add_argument("--reps", type=int, default=4)
     p.add_argument("--max-rounds", type=int, default=6); p.add_argument("--patience", type=int, default=3)
-    p.add_argument("--margin", type=float, default=0.10)
+    p.add_argument("--margin", type=float, default=0.10); p.add_argument("--final-reps", type=int, default=6)
     for name in ("show", "diff"):
         p = sub.add_parser(name); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
     a = ap.parse_args()
