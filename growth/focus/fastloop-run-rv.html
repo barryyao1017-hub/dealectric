@@ -76,7 +76,7 @@ svg .ah { fill: var(--muted); } svg .ah-no { fill: var(--stop); }
     <h2>The pipeline</h2>
     <div class="legend"><span><i style="background:var(--done-fill);border-color:var(--done)"></i>done</span><span><i style="background:var(--run-fill);border-color:var(--run)"></i>running</span><span><i style="background:var(--wait-fill);border-color:var(--wait)"></i>waiting</span><span><i style="background:var(--stop-fill);border-color:var(--stop)"></i>stopped at a gate</span><span style="color:var(--gate)">◇ gate: the run stops or changes course here</span></div>
     <div class="scroll">
-      <svg viewBox="0 0 1100 470" role="img" aria-label="The fast-loop run as a flowchart: target, shopper questions, query transfer in the app, a gate on whether ChatGPT searches, gap vote, a gate on open versus saturated, competitor set and open-concern research, drafts, offline scoring, a gate on whether a draft beats the current state, publish, live check, a gate on retrieved and cited, and recalibration feeding back to the gap map.">
+      <svg viewBox="0 0 1100 600" role="img" aria-label="The fast-loop run as a flowchart, with the improvement loop below it: target, shopper questions, query transfer in the app, a gate on whether ChatGPT searches, gap vote, a gate on open versus saturated, competitor set and open-concern research, drafts, offline scoring, a gate on whether a draft beats the current state, publish, live check, a gate on retrieved and cited, and recalibration feeding back to the gap map.">
         <defs>
           <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
           <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-no" d="M0 0L10 5L0 10z"/></marker>
@@ -120,7 +120,16 @@ svg .ah { fill: var(--muted); } svg .ah-no { fill: var(--stop); }
         <path class="flow" d="M620 375 H668" marker-end="url(#a)"/><text class="m" x="644" y="368" text-anchor="middle">either way</text>
         <text class="m" x="850" y="372">→ updates the gap map (step 3)</text>
         <text class="m" x="850" y="386">and the calibration set</text>
-        <text class="s" x="70" y="445">Steps 0–6 run in hours, with no wait on OpenAI. Step 7b makes the page easy to find; step 8 waits for OpenAI's crawl (this page: about 11 h).</text>
+        <text class="s" x="70" y="580">Steps 0–6 run in hours, with no wait on OpenAI. Step 7b makes the page easy to find; step 8 waits for OpenAI's crawl (this page: about 11 h).</text>
+        <!-- row 4: the improvement loop (DLC-116) -->
+        <path class="flow" d="M755 410 V440 H155 V458" marker-end="url(#a)"/><text class="m" x="455" y="434" text-anchor="middle">improve the live page</text>
+        <g class="node" id="n-s10"><rect x="70" y="460" width="170" height="70" rx="6"/><text class="num" x="82" y="480">10</text><text class="t" x="155" y="492" text-anchor="middle">Iterate on M1</text><text class="s" x="155" y="510" text-anchor="middle">5 one-change variants/round</text></g>
+        <g class="gate"><polygon points="370,460 420,495 370,530 320,495"/><text x="370" y="491" text-anchor="middle">beats it by</text><text x="370" y="504" text-anchor="middle">&gt; noise?</text></g>
+        <g class="node" id="n-s11"><rect x="520" y="460" width="190" height="70" rx="6"/><text class="num" x="532" y="480">11</text><text class="t" x="615" y="492" text-anchor="middle">Confirm live, then ship</text><text class="s" x="615" y="510" text-anchor="middle">search on; Barry's OK</text></g>
+        <path class="flow" d="M240 495 H318" marker-end="url(#a)"/><text class="m" x="279" y="488" text-anchor="middle">scores</text>
+        <path class="flow" d="M370 530 V552 H155 V534" marker-end="url(#a)"/><text class="m" x="262" y="566" text-anchor="middle">yes: new incumbent, next round</text>
+        <path class="flow no" d="M420 495 H518" marker-end="url(#an)"/><text class="m" x="469" y="488" text-anchor="middle" style="fill:var(--stop)">3 rounds no</text>
+        <path class="flow" d="M710 495 H758" marker-end="url(#a)"/><text class="m" x="764" y="492">replaces the live page</text><text class="m" x="764" y="506">(back to step 7)</text>
       </svg>
     </div>
   </section>
