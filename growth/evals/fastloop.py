@@ -348,6 +348,8 @@ def active_account(tab=None) -> str | None:
             tab.navigate("https://chatgpt.com/")
             time.sleep(6)
         return tab.eval("fetch('/api/auth/session').then(r => r.json()).then(j => (j.user || {}).email || null)")
+    except Exception:  # noqa: BLE001  (page or socket trouble reads as signed out; ensure_ready re-checks)
+        return None
     finally:
         if own:
             tab.close()
@@ -390,6 +392,30 @@ def relogin(email: str = "barrryyao@gmail.com") -> str | None:
         return None
     finally:
         tab.close()
+
+
+AGENT_BROWSER = ["uv", "--directory", str(Path.home() / "Desktop" / "agent-vault"), "run", "agent-vault", "browser"]
+
+
+def ensure_ready() -> str:
+    """Health check before a chat is blamed on quota: the agent's Chrome answers on 9222 (started with agent-vault's
+    launcher if not; it does nothing when Chrome is up) and ChatGPT is signed in (Google re-login as barrryyao if not).
+    Returns the signed-in email; raises RuntimeError when either cannot be fixed."""
+    import subprocess, ui
+    if not ui.browser_ok():
+        subprocess.run(AGENT_BROWSER, capture_output=True, timeout=120)
+        for _ in range(20):
+            if ui.browser_ok():
+                break
+            time.sleep(3)
+        else:
+            raise RuntimeError("the agent's Chrome (9222) is down and did not start")
+    who = active_account()
+    if not who:
+        who = relogin()
+    if not who:
+        raise RuntimeError("ChatGPT is signed out and the Google re-login failed")
+    return who
 
 
 def switch_account(tried: set[str]) -> str | None:
@@ -1393,7 +1419,15 @@ def d1(sql_file: str | None = None, command: str | None = None) -> str:
     env = {**os.environ, "CLOUDFLARE_API_TOKEN": subprocess.run(["security", "find-generic-password", "-a", "dealectric", "-s",
                                                                  "cloudflare-workers-token", "-w"], capture_output=True, text=True).stdout.strip()}
     args = ["npx", "--yes", "wrangler", "d1", "execute", "dealectric", "--remote", "--json"] + (["--file", sql_file] if sql_file else ["--command", command])
-    return subprocess.run(args, capture_output=True, text=True, cwd=E.REPO / "worker", env=env, timeout=180).stdout
+    for attempt in range(3):   # a stuck npx/wrangler is killed and retried, never waited on (11-01)
+        try:
+            p = subprocess.run(args, capture_output=True, text=True, cwd=E.REPO / "worker", env=env, timeout=90)
+            if p.returncode == 0:
+                return p.stdout
+        except subprocess.TimeoutExpired:
+            pass
+        time.sleep(5 * (attempt + 1))
+    raise RuntimeError(f"D1 unreachable after 3 tries: {(sql_file or command)[:80]}")
 
 
 # Host of the open-page replay (Barry, 11-01): a workers.dev name that does not say "dealectric" (worker/replay), so the
@@ -1418,16 +1452,20 @@ def answer_app_open(question: str, query: str, ctx: list[dict]) -> dict:
     sql = Path(tempfile.gettempdir()) / f"replay-{pid}.sql"
     page = replay_page_html(ctx, query).replace("'", "''")
     sql.write_text(f"INSERT INTO replay_pages (id, html, created) VALUES ('{pid}', '{page}', '{E.now_iso()}');")
-    d1(sql_file=str(sql))
     url = f"{REPLAY_BASE}/{pid}"
-    rec = answer_app(question, query, ctx, text=OPEN_PROMPT.format(url=url, query=query, question=question))
-    got = d1(command=f"SELECT fetches, last_ua FROM replay_pages WHERE id = '{pid}'")
-    d1(command=f"DELETE FROM replay_pages WHERE id = '{pid}'")
-    sql.unlink(missing_ok=True)
     try:
-        row = json.loads(got)[0]["results"][0]
-    except (ValueError, IndexError, KeyError, TypeError):
-        row = {}
+        d1(sql_file=str(sql))
+    except RuntimeError as e:
+        sql.unlink(missing_ok=True)
+        return {"status": 0, "error": str(e), "text": "", "open_url": url, "open_fetches": None, "engine": "app-open"}
+    rec = answer_app(question, query, ctx, text=OPEN_PROMPT.format(url=url, query=query, question=question))
+    row = {}
+    try:
+        row = json.loads(d1(command=f"SELECT fetches, last_ua FROM replay_pages WHERE id = '{pid}'"))[0]["results"][0]
+        d1(command=f"DELETE FROM replay_pages WHERE id = '{pid}'")
+    except (RuntimeError, ValueError, IndexError, KeyError, TypeError):
+        pass
+    sql.unlink(missing_ok=True)
     rec.update(open_url=url, open_fetches=row.get("fetches"), open_ua=row.get("last_ua"), engine="app-open")
     E.footprint("chatgpt-ui", rec.get("started_at") or E.now_iso(), E.now_iso(), prompt=question, script="fastloop.py",
                 run_id=PAIRED.name, temporary=True, fetched=[{"url": url}], note="replay page opened by ChatGPT-User (ours)")

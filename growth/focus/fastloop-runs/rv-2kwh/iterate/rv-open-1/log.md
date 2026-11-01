@@ -21,3 +21,5 @@ Model (Barry, 11-01): continue on gpt-6-mini while the gpt-6 quota is out (FASTL
 
 
 Outage (11-01 00:00-01:05): ChatGPT signed out of the agent Chrome; about 85 chats failed and nothing was recorded. Signed back in as barrryyao; the engine now re-logs in through Google on its own and stops if that fails.
+
+Robustness (Barry, 11-01: run end to end, no endless quota waits, both accounts used): the run now goes through `iterate.py supervise` (restarts on exit, kills and restarts a run whose heartbeat is quiet 30 min, gives up after 8 restarts or 16 h). Answers from gpt-6 and gpt-6-mini both count, each tagged with its model and account; drafts are answered interleaved and M1/M2 are standardized to the round's model mix. Both accounts' gpt-6 quota is spent before mini answers are used, and gpt-6 is re-tried every 30 min. Quota waits are capped at 60 min, then the run stops and the supervisor resumes it later. Every browser call has a deadline, and D1, writer and judge calls retry instead of crashing.

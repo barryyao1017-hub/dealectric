@@ -28,7 +28,7 @@ scores, decision), best.json (the best record) and log.md. Nothing is published:
 """
 from __future__ import annotations
 
-import argparse, copy, difflib, json, math, re, sys, time
+import argparse, collections, copy, difflib, json, math, re, sys, time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -155,13 +155,24 @@ def check(rec: dict, base: dict, tgt: dict) -> list[str]:
     return bad
 
 
-def make_variants(inc: dict, n: int, round_no: int) -> list[dict]:
+def make_variants(inc: dict, n: int, round_no: int, beat=None) -> list[dict]:
     dims = [DIMENSIONS[(round_no * n + i) % len(DIMENSIONS)] for i in range(n)]
     user = (json.dumps({k: inc[k] for k in ("title", "h1", "intro", "after")}, ensure_ascii=False, indent=1)
             + "\n\nWrite one variant per dimension below, in this order:\n"
             + "\n".join(f"{i + 1}. {d}: {why}" for i, (d, why) in enumerate(dims)))
     system = VARIANT_SYSTEM + ("\n\n" + LESSONS.read_text() if LESSONS.exists() else "")
-    out = E.claude_cli_json(system, user, WRITER, VARIANT_SCHEMA, timeout=600) or {}
+    out = {}
+    for attempt in range(3):   # a failed or empty writer call is retried; an empty round would read as a plateau
+        if beat:
+            beat(f"writing variants, attempt {attempt + 1}")
+        try:
+            out = E.claude_cli_json(system, user, WRITER, VARIANT_SCHEMA, timeout=600) or {}
+        except Exception as e:  # noqa: BLE001  (CLI timeout, no JSON)
+            print(f"    variant writer failed ({str(e)[:100]}), attempt {attempt + 1}", flush=True)
+        if out.get("variants"):
+            break
+    else:
+        raise Stall("the variant writer returned nothing three times")
     vs = []
     for v in out.get("variants", [])[:n]:
         rec = copy.deepcopy(inc)
@@ -170,94 +181,205 @@ def make_variants(inc: dict, n: int, round_no: int) -> list[dict]:
     return vs
 
 
+class Stall(SystemExit):
+    """The run cannot make progress now (quota spent past --max-wait, or chats failing after a health check). Exit code
+    75; every answer so far is cached, so `supervise` (or a rerun) resumes exactly where it stopped."""
+
+    def __init__(self, why: str):
+        print(f"STALL: {why}", flush=True)
+        super().__init__(75)
+
+
+CAP_RE = re.compile(r"limit|reached|too many|try again later|usage cap", re.I)
+
+
 class Engine:
     """open (default, Barry 11-01): the open-page replay, fastloop.answer_app_open: the result set is served as an
     unlisted page that a fresh temporary chat opens with its own tool, so results arrive as tool output. An answer
-    counts only if it came from the pinned model (APP_MODEL) and the page was fetched. app/api: the paste engines,
-    kept for comparison only (they behave unlike a real search; growth/evals/loop/paste-calibration.md)."""
+    counts only if the page was fetched and it came from an accepted model (--models). app/api: the paste engines,
+    kept for comparison only (they behave unlike a real search; growth/evals/loop/paste-calibration.md).
 
-    def __init__(self, kind: str, model: str, paste: str, fmt: str):
+    Accounts and quota (Barry, 11-01: no waiting on a dead component, both accounts used, no endless quota waits):
+    - The URL pin does not choose the model; the account's quota does (11-01: Plus answered gpt-6 under &model=gpt-6-mini).
+      So each answer's model is recorded and drafts are compared within model (stratified M1, `tally`).
+    - Preferred model = the first of --models. After an answer on another model, the other account is tried next if it
+      has not fallen back within the last PROBE_S, so both accounts' gpt-6 quota is spent before mini answers count.
+    - An answer on a model outside --models is dropped (strict mode, e.g. --models gpt-6): try the other account, then
+      wait in 10-minute steps; past --max-wait minutes the run stops with Stall (exit 75) instead of waiting longer.
+    - A failed chat triggers a health check (Chrome up, signed in: fastloop.ensure_ready); a usage-cap notice moves to the
+      other account. A slot that still fails is retried in a later pass of the round (`fill`), never silently skipped."""
+
+    PROBE_S = 1800
+
+    def __init__(self, kind: str, model: str, paste: str, fmt: str, models: list[str] | None = None,
+                 max_wait_min: float = 60, heartbeat: Path | None = None):
         self.kind, self.model = kind, model
         F.PASTE_VERSION, F.FMT_VERSION = paste, fmt
-        self.key = E.env_key("OPENAI_API_KEY")
-        self.tried = {F.active_account()} if kind in ("app", "open") else set()
+        self.key = E.env_key("OPENAI_API_KEY") if kind == "api" else None
+        self.models = models or [F.APP_MODEL]
+        self.max_wait, self.waited = max_wait_min * 60, 0.0
+        self.heartbeat = heartbeat
+        self.fallback_at: dict[str, float] = {}   # account -> when it last answered off the preferred model
+        self.capped_at: dict[str, float] = {}     # account -> when it last showed a usage-cap notice
+        self.who = F.ensure_ready() if kind in ("app", "open") else None
         self.dropped = 0
+
+    def beat(self, what: str) -> None:
+        if self.heartbeat:
+            self.heartbeat.write_text(json.dumps({"at": E.now_iso(), "what": what, "account": self.who}))
+
+    def _other(self) -> str | None:
+        """Switch to the account not in use; its email, or None."""
+        new = None
+        for attempt in range(2):   # the profile menu sometimes renders late (11-01): one retry
+            try:
+                new = F.switch_account({self.who})
+                break
+            except Exception as e:  # noqa: BLE001
+                print(f"    account switch failed ({str(e)[:80]}), attempt {attempt + 1}", flush=True)
+        if new:
+            print(f"    switched ChatGPT account {self.who} -> {new}", flush=True)
+            self.who = new
+        return new
+
+    def _other_fresh(self, within: dict) -> bool:
+        now = time.time()
+        known = set(self.fallback_at) | set(self.capped_at) | {self.who}
+        others = [a for a in known if a != self.who]
+        # an account never seen yet is fresh; a seen one is fresh once its mark is older than PROBE_S
+        return not others or any(now - within.get(a, 0) > self.PROBE_S for a in others)
+
+    def _wait(self, why: str) -> None:
+        if self.waited >= self.max_wait:
+            raise Stall(f"{why}; waited {self.waited / 60:.0f} min (cap --max-wait)")
+        print(f"    {why}: waiting 10 min ({self.waited / 60:.0f} of {self.max_wait / 60:.0f} min used, {E.now_iso()})", flush=True)
+        for _ in range(10):
+            self.beat(f"quota wait: {why}")
+            time.sleep(60)
+        self.waited += 600
+        self.fallback_at.clear()
+        self.capped_at.clear()
 
     def answer(self, question: str, query: str, ctx: list[dict]) -> dict:
         if self.kind == "api":
             return F.answer_api_paste(question, query, ctx, self.model, self.key)
-        if self.kind == "open":
-            fails = 0
-            while True:
-                rec = F.answer_app_open(question, query, ctx)
-                model = rec.get("model") or ""
-                if rec["status"] == 200 and model == F.APP_MODEL and (rec.get("open_fetches") or 0) >= 1:
-                    return rec
-                self.dropped += 1
-                if rec["status"] == 200 and model and model != F.APP_MODEL:   # quota: the plan fell back to a smaller model
-                    try:
-                        new = F.switch_account(self.tried)
-                    except Exception as e:  # noqa: BLE001  (menu not rendered in time, etc.): treat as no account
-                        print(f"    account switch failed ({str(e)[:80]})", flush=True)
-                        new = None
-                    if new:
-                        self.tried.add(new)
-                        print(f"    {model} answer: switched ChatGPT account to {new}", flush=True)
-                    else:
-                        print(f"    {model} answer and every account tried: waiting 30 min ({E.now_iso()})", flush=True)
-                        time.sleep(1800)
-                        try:
-                            self.tried = {F.active_account()}
-                        except Exception:  # noqa: BLE001
-                            self.tried = set()
-                    continue
-                fails += 1
-                print(f"    failed chat: status {rec['status']} model {model or None} fetches {rec.get('open_fetches')}", flush=True)
-                if fails >= 2 and not F.active_account():   # signed out (10-31, 11-01): sign back in, or stop
-                    who = F.relogin()
-                    if not who:
-                        raise SystemExit("ChatGPT is signed out and the Google re-login failed: sign in, then rerun")
-                    print(f"    ChatGPT was signed out: signed back in as {who}", flush=True)
-                    self.tried, fails = {who}, 0
-                    continue
-                if fails >= 3:
-                    return {**rec, "status": 0}
+        if self.kind == "app":
+            return F.answer_app(question, query, ctx)
+        fails = 0
         while True:
-            rec = F.answer_app(question, query, ctx)
-            if not (rec.get("downgraded") or rec["status"] != 200):
-                return rec
-            new = F.switch_account(self.tried)
-            if not new:
-                raise SystemExit("every ChatGPT account is out of quota: rerun to resume")
-            self.tried.add(new)
-
-
-def score(text: str, tgt: dict, eng: Engine, reps: int, cache: Path) -> dict:
-    """Insert the rendered page into each result set, answer `reps` times per set, count M1/M2/M3. Answers are cached
-    in `cache` (JSON lines) so a rerun or a close-call rerun adds to them."""
-    url = "https://dealectric.com/" + tgt["slug"]
-    rows = [json.loads(x) for x in cache.read_text().splitlines()] if cache.exists() else []
-    for pname in tgt["packs"]:
-        pack = json.loads((F.pack_dir(pname) / "pack.json").read_text())
-        res = [dict(r) for r in pack["results"] if F.norm_link(r["url"]) != url]
-        res.insert(tgt["rank"] - 1, {"url": url, "title": text.splitlines()[0], "text": text, "source": "draft"})
-        ctx = F.build_context(res[:len(pack["results"])], pack["query"])
-        have = sum(1 for r in rows if r["pack"] == pname)
-        for _ in range(max(0, reps - have)):
-            rec = eng.answer(pack["question"], pack["query"], ctx)
-            if rec["status"] != 200:
+            self.beat(f"chat: {query[:60]}")
+            rec = F.answer_app_open(question, query, ctx)
+            model = rec.get("model") or ""
+            fetched = (rec.get("open_fetches") or 0) >= 1
+            if rec["status"] == 200 and model and fetched:
+                if model == self.models[0]:
+                    self.fallback_at.pop(self.who, None)
+                else:
+                    self.fallback_at[self.who] = time.time()
+                if model in self.models:
+                    self.waited = 0.0
+                    if model != self.models[0] and self._other_fresh(self.fallback_at):
+                        self._other()   # spend the other account's preferred-model quota first
+                    return rec
+                self.dropped += 1                         # strict mode: off-model answer
+                print(f"    {model} answer dropped (accepted: {', '.join(self.models)})", flush=True)
+                if not (self._other_fresh(self.fallback_at) and self._other()):
+                    self._wait(f"every account answers {model}")
                 continue
-            links = F.replay_links(rec, ctx)
-            row = {"pack": pname, **F.link_flags(links), "links": links, "answer": (rec.get("answer") or "")[:4000],
-                   "model": rec.get("model"), "open_fetches": rec.get("open_fetches"), "at": E.now_iso()}
-            rows.append(row)
-            with cache.open("a") as fh:
-                fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+            self.dropped += 1
+            fails += 1
+            err = rec.get("error") or ""
+            print(f"    failed chat: status {rec['status']} model {model or None} fetches {rec.get('open_fetches')} "
+                  f"{err[:100]}", flush=True)
+            if CAP_RE.search(err):                        # usage-cap notice: this account is out for now
+                self.capped_at[self.who] = time.time()
+                if not (self._other_fresh(self.capped_at) and self._other()):
+                    self._wait("every account shows a usage cap")
+                continue
+            if fails in (2, 4):
+                try:
+                    who = F.ensure_ready()
+                except RuntimeError as e:
+                    raise Stall(str(e))
+                if who != self.who:
+                    print(f"    health check: now signed in as {who}", flush=True)
+                self.who = who
+            if fails >= 5:
+                return {**rec, "status": 0}
+
+
+def draft_ctx(text: str, tgt: dict, pname: str) -> tuple[dict, list[dict]]:
+    """The result set `pname` with the draft inserted at the target's rank, cut by the length rule."""
+    url = "https://dealectric.com/" + tgt["slug"]
+    pack = json.loads((F.pack_dir(pname) / "pack.json").read_text())
+    res = [dict(r) for r in pack["results"] if F.norm_link(r["url"]) != url]
+    res.insert(tgt["rank"] - 1, {"url": url, "title": text.splitlines()[0], "text": text, "source": "draft"})
+    return pack, F.build_context(res[:len(pack["results"])], pack["query"])
+
+
+def load_rows(cache: Path) -> list[dict]:
+    return [json.loads(x) for x in cache.read_text().splitlines()] if cache.exists() else []
+
+
+def fill(drafts: dict[str, tuple[str, Path]], tgt: dict, eng: Engine, reps: int, passes: int = 3) -> None:
+    """Answer every draft `reps` times per result set, interleaved (rep -> result set -> draft), so a change of model,
+    account or time of day lands on all drafts alike. A slot that fails is retried in the next pass; a round that
+    still has empty slots after `passes` passes stops with Stall (exit 75) rather than scoring on gaps."""
+    for p in range(passes):
+        missing = 0
+        for rep in range(reps):
+            for pname in tgt["packs"]:
+                for name, (text, cache) in drafts.items():
+                    if sum(1 for r in load_rows(cache) if r["pack"] == pname) > rep:
+                        continue
+                    pack, ctx = draft_ctx(text, tgt, pname)
+                    rec = eng.answer(pack["question"], pack["query"], ctx)
+                    if rec["status"] != 200:
+                        missing += 1
+                        continue
+                    links = F.replay_links(rec, ctx)
+                    row = {"pack": pname, **F.link_flags(links), "links": links, "answer": (rec.get("answer") or "")[:4000],
+                           "model": rec.get("model"), "account": eng.who, "open_fetches": rec.get("open_fetches"),
+                           "at": E.now_iso()}
+                    with cache.open("a") as fh:
+                        fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+        if not missing:
+            return
+        print(f"    pass {p + 1}: {missing} slots failed; retrying them", flush=True)
+    raise Stall(f"{missing} answer slots still failing after {passes} passes")
+
+
+def tally(rows: list[dict], weights: dict[str, float] | None = None) -> dict:
+    """M1/M2/M3 over linked answers. With `weights` (model -> share of the round's linked answers), M1 and M2 are
+    standardized: each model's rate weighted by its share in the whole round, so a draft that happened to get more
+    gpt-6-mini answers is not favoured or penalized for it. Raw rates are kept as m1_raw/m2_raw; m1_hits/linked
+    stay raw for the noise margin."""
     lk = [r for r in rows if r["linked"]]
     n = len(lk)
-    return {"answers": len(rows), "linked": n, "m1": sum(r["m1"] for r in lk) / n if n else 0.0,
-            "m2": sum(r["m2"] for r in lk) / n if n else 0.0,
-            "m3": sum(r["ours"] for r in lk) / (sum(r["all"] for r in lk) or 1), "m1_hits": sum(r["m1"] for r in lk)}
+    out = {"answers": len(rows), "linked": n, "m1_hits": sum(r["m1"] for r in lk),
+           "m1_raw": sum(r["m1"] for r in lk) / n if n else 0.0, "m2_raw": sum(r["m2"] for r in lk) / n if n else 0.0,
+           "m3": sum(r["ours"] for r in lk) / (sum(r["all"] for r in lk) or 1),
+           "by_model": {m: {"linked": len(g), "m1": sum(r["m1"] for r in g) / len(g)}
+                        for m in sorted({r.get("model") or "?" for r in lk})
+                        for g in [[r for r in lk if (r.get("model") or "?") == m]]}}
+    out["m1"], out["m2"] = out["m1_raw"], out["m2_raw"]
+    if weights and n:
+        ws = {m: w for m, w in weights.items() if any((r.get("model") or "?") == m for r in lk)}
+        tot = sum(ws.values()) or 1
+        for k in ("m1", "m2"):
+            out[k] = sum(w / tot * (sum(r[k] for r in lk if (r.get("model") or "?") == m)
+                                    / sum(1 for r in lk if (r.get("model") or "?") == m)) for m, w in ws.items())
+    return out
+
+
+def score_round(drafts: dict[str, tuple[str, Path]], tgt: dict, eng: Engine, reps: int) -> dict[str, dict]:
+    """fill, then tally every draft standardized to the round's model mix."""
+    fill(drafts, tgt, eng, reps)
+    rows = {name: load_rows(cache) for name, (_t, cache) in drafts.items()}
+    allr = [r for rs in rows.values() for r in rs if r["linked"]]
+    weights = {m: sum(1 for r in allr if (r.get("model") or "?") == m) / len(allr)
+               for m in {r.get("model") or "?" for r in allr}} if allr else None
+    return {name: tally(rs, weights) for name, rs in rows.items()}
 
 
 def margin(a: dict, b: dict, floor: float) -> float:
@@ -266,46 +388,65 @@ def margin(a: dict, b: dict, floor: float) -> float:
     return max(floor, 1.5 * se)
 
 
+def run_dir(a) -> Path:
+    return RUNS / a.target / "iterate" / (a.run or f"{E.today()}-{a.engine}")
+
+
 def cmd_run(a) -> None:
     tgt = dict(TARGETS[a.target])
     if a.rank:
         tgt["rank"] = a.rank
-    run = a.run or f"{E.today()}-{a.engine}"
-    out = RUNS / a.target / "iterate" / run
+    out = run_dir(a)
     out.mkdir(parents=True, exist_ok=True)
-    eng = Engine(a.engine, a.model, a.paste, a.fmt)
+    eng = Engine(a.engine, a.model, a.paste, a.fmt, models=a.models.split(","), max_wait_min=a.max_wait,
+                 heartbeat=out / "heartbeat.json")
     best_p = out / "best.json"
     inc = json.loads(best_p.read_text())["record"] if best_p.exists() else record(tgt["slug"])
     log = out / "log.md"
     if not log.exists():
-        log.write_text(f"# Iterate {a.target} ({run})\n\nEngine {a.engine} ({a.model if a.engine == 'api' else 'gpt-6 app'}), paste {a.paste}, "
+        log.write_text(f"# Iterate {a.target} ({out.name})\n\nEngine {a.engine} ({a.model if a.engine == 'api' else 'gpt-6 app'}), paste {a.paste}, "
                        f"format {a.fmt}, {a.reps} answers per result set, {len(tgt['packs'])} result sets, rank {tgt['rank']}.\n\n"
                        "| round | draft | change | answers | linked | M1 | M2 | M3 | decision |\n|---|---|---|---|---|---|---|---|---|\n")
-    stale, start = 0, len(list(out.glob("round-*.json"))) + 1
+    done = sorted(out.glob("round-*.json"))
+    stale = 0
+    for f in done:   # a resumed run counts its plateau from the rounds already on disk
+        stale = 0 if json.loads(f.read_text()).get("accepted") else stale + 1
+    start = rn = len(done) + 1
+    rn -= 1
     for rn in range(start, a.max_rounds + 1):
+        if stale >= a.patience:
+            rn -= 1
+            break
         rdir = out / f"round-{rn:02d}"
         rdir.mkdir(exist_ok=True)
+        eng.beat(f"round {rn}: screenshot")
         if not (rdir / "incumbent.png").exists():   # Barry: a screenshot of each iteration's page before it is iterated
             try:
                 snapshot(inc, rdir / "incumbent.png")
             except Exception as e:  # noqa: BLE001
                 print(f"    screenshot failed: {e}", flush=True)
-        inc_s = score(render(inc), tgt, eng, a.reps, rdir / "incumbent.jsonl")
         vf = rdir / "variants.json"   # saved, so a resumed round scores the same variants its cached answers belong to
         if vf.exists():
             vs = json.loads(vf.read_text())
         else:
-            vs = make_variants(inc, a.variants, rn)
+            eng.beat(f"round {rn}: writing variants")
+            vs = make_variants(inc, a.variants, rn, eng.beat)
             for f in rdir.glob("v*.jsonl"):   # answers from variants of an earlier, unsaved attempt
                 f.unlink()
             E.write_json(vf, vs)
-        results = []
+        drafts = {"incumbent": (render(inc), rdir / "incumbent.jsonl")}
         for i, v in enumerate(vs):
             v["violations"] = check(v["record"], inc, tgt)
+            if not v["violations"]:
+                drafts[f"v{i}"] = (render(v["record"]), rdir / f"v{i}.jsonl")
+        sc = score_round(drafts, tgt, eng, a.reps)
+        inc_s = sc["incumbent"]
+        results = []
+        for i, v in enumerate(vs):
             if v["violations"]:
                 results.append({**v, "score": None, "decision": "dropped: " + "; ".join(v["violations"])})
                 continue
-            s = score(render(v["record"]), tgt, eng, a.reps, rdir / f"v{i}.jsonl")
+            s = sc[f"v{i}"]
             guard = inc_s["m2"] - s["m2"] <= a.margin   # keeps our page cited
             results.append({**v, "score": s, "decision": "candidate" if guard else "dropped: M2 fell"})
         # Barry 11-01: the best draft by M1 becomes the next base (no noise margin per round); ties keep the incumbent.
@@ -325,44 +466,120 @@ def cmd_run(a) -> None:
             s = r["score"]
             rows.append(f"| {rn} | {r['dimension']} | {r['change'][:90]} | " + (f"{s['answers']} | {s['linked']} | {s['m1']:.0%} | {s['m2']:.0%} | {s['m3']:.0%}"
                         if s else "- | - | - | - | -") + f" | {r['decision']} |")
+        mix = collections.Counter(r.get("model") or "?" for _t, c in drafts.values() for r in load_rows(c) if r["linked"])
+        rows.append(f"\nRound {rn} models: " + ", ".join(f"{m} {n}" for m, n in mix.most_common())
+                    + " linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).\n")
         with log.open("a") as fh:
             fh.write("\n".join(rows) + "\n")
         print("\n".join(rows), flush=True)
         if best:
-            kb = append_lesson(a.target, tgt, out.name, rn, best, inc_s, a.margin)
+            try:
+                kb = append_lesson(a.target, tgt, out.name, rn, best, inc_s, a.margin)
+            except Exception as e:  # noqa: BLE001  (judge unavailable: the round stands, the lesson waits)
+                kb = f"not judged ({str(e)[:80]})"
             with log.open("a") as fh:
                 fh.write(f"Round {rn} knowledge base: {kb}\n")
             inc, stale = best["record"], 0
             E.write_json(best_p, {"record": inc, "score": best["score"], "round": rn, "change": best["change"]})
         else:
             stale += 1
-            if stale >= a.patience:
-                print(f"plateau: {stale} rounds in which no variant beat the base on M1")
-                break
-    with log.open("a") as fh:
-        fh.write(f"\nStopped after round {rn}. Best: {'round ' + str(json.loads(best_p.read_text())['round']) if best_p.exists() else 'the published page (no variant beat it)'}.\n")
+    if stale >= a.patience:
+        print(f"plateau: {stale} rounds in which no variant beat the base on M1", flush=True)
+    if "Stopped after round" not in log.read_text():
+        with log.open("a") as fh:
+            fh.write(f"\nStopped after round {rn}. Best: {'round ' + str(json.loads(best_p.read_text())['round']) if best_p.exists() else 'the published page (no variant beat it)'}.\n")
     final_check(out, tgt, eng, a)
 
 
 def final_check(out: Path, tgt: dict, eng: "Engine", a) -> None:
     """The one noise test (Barry 11-01): the final base must beat the published page's M1 by more than noise, scored on
-    the same result sets with --final-reps answers per set each; then a live check and Barry's OK before shipping."""
+    the same result sets with --final-reps answers per set each, interleaved and standardized to one model mix; then a
+    live check and Barry's OK before shipping."""
     best_p = out / "best.json"
-    if not best_p.exists():
+    if not best_p.exists() or (out / "final" / "check.json").exists():
         return
     fdir = out / "final"
     fdir.mkdir(exist_ok=True)
-    pub = score(render(record(tgt["slug"])), tgt, eng, a.final_reps, fdir / "published.jsonl")
-    fin = score(render(json.loads(best_p.read_text())["record"]), tgt, eng, a.final_reps, fdir / "final.jsonl")
+    sc = score_round({"published": (render(record(tgt["slug"])), fdir / "published.jsonl"),
+                      "final": (render(json.loads(best_p.read_text())["record"]), fdir / "final.jsonl")}, tgt, eng, a.final_reps)
+    pub, fin = sc["published"], sc["final"]
     m = margin(fin, pub, a.margin)
     ok = fin["m1"] - pub["m1"] > m and pub["m2"] - fin["m2"] <= a.margin
     E.write_json(fdir / "check.json", {"published": pub, "final": fin, "margin": m, "beats_published": ok})
     line = (f"Final check ({a.final_reps} answers per set each): published M1 {pub['m1']:.0%} / M2 {pub['m2']:.0%}, final M1 "
             f"{fin['m1']:.0%} / M2 {fin['m2']:.0%}, margin {m:.0%}: {'beats the published page by more than noise' if ok else 'not beyond noise'}. "
+            f"By model: published {json.dumps(pub['by_model'])}, final {json.dumps(fin['by_model'])}. "
             "Next: live check (search on) and Barry's OK before shipping.")
     with (out / "log.md").open("a") as fh:
         fh.write(line + "\n")
-    print(line)
+    print(line, flush=True)
+
+
+SUPERVISE_ONLY = {"--stall-min": 1, "--budget-h": 1, "--max-restarts": 1}
+
+
+def close_chat_tabs() -> None:
+    """Close temporary-chat tabs a killed run left open in the agent's Chrome."""
+    import urllib.request, ui
+    try:
+        for t in json.loads(urllib.request.urlopen(f"{ui.CDP}/json/list", timeout=10).read()):
+            if t.get("type") == "page" and "temporary-chat=true" in t.get("url", ""):
+                ui.browser_call("Target.closeTarget", targetId=t["id"])
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def cmd_supervise(a) -> int:
+    """Run `run` end to end without anyone watching: restart it when it exits early (Stall = exit 75: quota or failing
+    chats, retried after 10 min; a crash, after 1 min) and kill and restart it when its heartbeat goes quiet for
+    --stall-min minutes (a hang nothing else caught). Every answer is cached, so a restart resumes where it stopped.
+    Gives up after --max-restarts restarts or --budget-h hours, writing why to log.md."""
+    import subprocess
+    argv, skip = [], 0
+    for x in sys.argv[2:]:
+        if skip:
+            skip -= 1
+        elif x in SUPERVISE_ONLY:
+            skip = SUPERVISE_ONLY[x]
+        else:
+            argv.append(x)
+    cmd = [sys.executable, str(Path(__file__).resolve()), "run", *argv]
+    out = run_dir(a)
+    out.mkdir(parents=True, exist_ok=True)
+    hb, t0, restarts = out / "heartbeat.json", time.time(), 0
+    while True:
+        started = time.time()
+        print(f"supervise: starting run ({E.now_iso()})", flush=True)
+        proc = subprocess.Popen(cmd)
+        while proc.poll() is None:
+            time.sleep(30)
+            quiet = time.time() - max(hb.stat().st_mtime if hb.exists() else 0, started)
+            if quiet > a.stall_min * 60:
+                print(f"supervise: no heartbeat for {quiet / 60:.0f} min: killing the run", flush=True)
+                proc.terminate()
+                try:
+                    proc.wait(30)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                    proc.wait()
+                close_chat_tabs()
+                break
+        rc = proc.returncode
+        if rc == 0:
+            print("supervise: run finished", flush=True)
+            return 0
+        restarts += 1
+        hours = (time.time() - t0) / 3600
+        if restarts > a.max_restarts or hours > a.budget_h:
+            why = (f"\nSupervisor gave up ({E.now_iso()}): run exited {rc}, {restarts - 1} restarts, {hours:.1f} h. "
+                   "Answers so far are cached; rerun `supervise` with the same arguments to resume.\n")
+            with (out / "log.md").open("a") as fh:
+                fh.write(why)
+            print(why, flush=True)
+            return rc or 1
+        delay = 600 if rc == 75 else 60
+        print(f"supervise: run exited {rc}; restart {restarts}/{a.max_restarts} in {delay // 60} min", flush=True)
+        time.sleep(delay)
 
 
 GEN_SCHEMA = {"type": "object", "properties": {"generalizable": {"type": "boolean"}, "lesson": {"type": "string"},
@@ -420,18 +637,24 @@ def cmd_diff(a) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("run"); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
-    p.add_argument("--engine", choices=["open", "app", "api"], default="open"); p.add_argument("--model", default="gpt-6.1-sol")
-    p.add_argument("--rank", type=int)
-    p.add_argument("--paste", default="c1"); p.add_argument("--fmt", default="v1")
-    p.add_argument("--variants", type=int, default=5); p.add_argument("--reps", type=int, default=4)
-    p.add_argument("--max-rounds", type=int, default=6); p.add_argument("--patience", type=int, default=3)
-    p.add_argument("--margin", type=float, default=0.10); p.add_argument("--final-reps", type=int, default=6)
+    for name in ("run", "supervise"):
+        p = sub.add_parser(name); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
+        p.add_argument("--engine", choices=["open", "app", "api"], default="open"); p.add_argument("--model", default="gpt-6.1-sol")
+        p.add_argument("--rank", type=int)
+        p.add_argument("--paste", default="c1"); p.add_argument("--fmt", default="v1")
+        p.add_argument("--variants", type=int, default=5); p.add_argument("--reps", type=int, default=4)
+        p.add_argument("--max-rounds", type=int, default=6); p.add_argument("--patience", type=int, default=3)
+        p.add_argument("--margin", type=float, default=0.10); p.add_argument("--final-reps", type=int, default=6)
+        p.add_argument("--models", default="gpt-6,gpt-6-mini",
+                       help="accepted answer models, preferred first; one model = strict (off-model answers dropped)")
+        p.add_argument("--max-wait", type=float, default=60, help="minutes of quota waiting before the run stops (exit 75)")
+        if name == "supervise":
+            p.add_argument("--stall-min", type=float, default=30); p.add_argument("--budget-h", type=float, default=16)
+            p.add_argument("--max-restarts", type=int, default=8)
     for name in ("show", "diff"):
         p = sub.add_parser(name); p.add_argument("--target", default="rv-2kwh", choices=sorted(TARGETS)); p.add_argument("--run")
     a = ap.parse_args()
-    {"run": cmd_run, "show": cmd_show, "diff": cmd_diff}[a.cmd](a)
-    return 0
+    return {"run": cmd_run, "supervise": cmd_supervise, "show": cmd_show, "diff": cmd_diff}[a.cmd](a) or 0
 
 
 if __name__ == "__main__":

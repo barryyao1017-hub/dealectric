@@ -38,9 +38,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import evallib as E  # noqa: E402
 import run as R  # noqa: E402  (loop subset picker, log)
 
-# AGENT_CDP picks the Chrome instance: 9222 is the agent's main profile (ChatGPT account 1); 9223 is a second profile
-# (~/.config/agent-vault/chrome-profile-2, ChatGPT account 2) so two sessions can run chats at once. Cookies are per
-# profile, so one profile can only be signed in to one ChatGPT account at a time (2026-10-25).
+# AGENT_CDP is the agent's Chrome, localhost:9222 and nothing else (Barry, 2026-10-31: the second profile on 9223 is
+# retired). One ChatGPT account is active per profile at a time, so run one chat at a time and switch accounts.
 CDP = os.environ.get("AGENT_CDP", "http://localhost:9222")
 APPS = {
     "chatgpt": {"model": "chatgpt.com, temporary chat, web search on", "ua_bucket": "openai"},
@@ -106,7 +105,10 @@ def browser_call(method: str, **params):
     ws = websocket.create_connection(v["webSocketDebuggerUrl"], timeout=30, suppress_origin=True)
     try:
         ws.send(json.dumps({"id": 1, "method": method, "params": params}))
+        end = time.time() + 60
         while True:
+            if time.time() > end:
+                raise TimeoutError(f"{method}: no reply in 60s")
             msg = json.loads(ws.recv())
             if msg.get("id") == 1:
                 if "error" in msg:
@@ -114,6 +116,9 @@ def browser_call(method: str, **params):
                 return msg.get("result", {})
     finally:
         ws.close()
+
+
+CALL_DEADLINE = 120   # seconds for any one DevTools command
 
 
 class Tab:
@@ -138,10 +143,15 @@ class Tab:
         self._id = 0
         self.responses: dict[str, dict] = {}   # requestId -> {url, mimeType} from Network.responseReceived (Network.enable first)
 
-    def call(self, method: str, **params):
+    def call(self, method: str, deadline: float = CALL_DEADLINE, **params):
+        """One command; raises TimeoutError after `deadline` seconds even while page events keep arriving (a
+        never-settling eval or a dead renderer used to block here forever, 11-01)."""
         self._id += 1
         self.ws.send(json.dumps({"id": self._id, "method": method, "params": params}))
+        end = time.time() + deadline
         while True:
+            if time.time() > end:
+                raise TimeoutError(f"{method}: no reply in {deadline:.0f}s")
             msg = json.loads(self.ws.recv())
             if msg.get("id") == self._id:
                 if "error" in msg:
