@@ -132,6 +132,9 @@ are weak, iterate drafts offline, and check retrieval live at volume.
         fill each form up to the final Submit/Post. Email corrections become Gmail drafts. Leave the tabs open and
         screenshot each filled form.
      4. Barry reviews each tab and clicks Submit himself.
+     5. Afterwards, read each live post and check it against its venue's link rule. On 11-01 the live Forest River
+        reply carried a closing link line that wasn't in the instruction text, on a forum that bans links to sites we
+        profit from; fix such a post with an edit (filled up to Save for Barry).
      - Claude never clicks a final submit, never sends email and **never creates accounts**, including through
        agent-vault `register`. Where an account is missing, the subagent opens the site's sign-up page and leaves it for
        Barry to create the account.
