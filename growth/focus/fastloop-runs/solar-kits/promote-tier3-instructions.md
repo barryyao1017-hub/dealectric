@@ -17,11 +17,11 @@ Rules for the execution agent:
 
 | Task | Venue / URL | Account | Text | Stop point |
 |---|---|---|---|---|
-| S1 | diysolarforum "Need help anker c1000 gens": https://diysolarforum.com/threads/need-help-anker-c1000-gens.132049/ | none in vault | solar 2a (no link) | Sign-up page open (https://diysolarforum.com/register/); paste text after Barry signs up |
-| S2 | diysolarforum "Worth waiting for Black Friday Deals?": https://diysolarforum.com/threads/worth-waiting-for-black-friday-deals.131924/ | same as S1 | solar 2b (no link) | Same account as S1 |
+| S1 | diysolarforum "Need help anker c1000 gens": https://diysolarforum.com/threads/need-help-anker-c1000-gens.132049/ | vault: diysolarforum.com (Barry created 11-01) | solar 2a (no link) | Reply box filled 11-01, "Post reply" not clicked |
+| S2 | diysolarforum "Worth waiting for Black Friday Deals?": https://diysolarforum.com/threads/worth-waiting-for-black-friday-deals.131924/ | same as S1 | solar 2b (no link) | Reply box filled 11-01, not posted |
 | R1 | My Grand RV "Transcend 151RB for Off-Grid Camping": https://www.mygrandrv.com/threads/grand-design-transcend-151rb-for-off-grid-camping.2219375/ | vault: forestriverforums.com item (RV LIFE login, mygrandrv.com domain approved 10-31) | rv-b 2a (no link) | Reply box filled, "Post reply" not clicked |
 | R2 | Airstream Forums "Portable Power Station as House Battery": https://www.airforums.com/threads/portable-power-station-as-house-battery.2216870/ | vault: same RV LIFE item (airforums.com approved 10-31) | rv-b 2b (no link) | Reply box filled |
-| S3 | Tacoma World "110V bed outlet": https://www.tacomaworld.com/threads/110v-bed-outlet.884814/ | none in vault | solar 2c (no link) | Sign-up page open; text ready in the instruction file |
+| S3 | Tacoma World "110V bed outlet": https://www.tacomaworld.com/threads/110v-bed-outlet.884814/ | vault: tacomaworld.com (Barry created 11-01) | solar 2c (no link) | Quick reply on page 2 filled 11-01, "Post Reply" not clicked |
 | R3 | Boondock or Bust correction, chuck@boondockorbust.com | Gmail (barrryyao) | rv-b 2c | Gmail draft (made by the main session). Barry: re-check the Elite 200 V2 has no TT-30 before sending |
 | S4 | geekbitz.com comment: https://geekbitz.com/best-solar-generators | comment form | solar 2d | Comment filled, not submitted |
 | S5 | Quora: https://www.quora.com/What-is-the-most-reliable-portable-solar-generator-for-off-grid-camping-in-2026 | Google as barrryyao (existing account) | solar 2e (disclosed link) | Answer editor filled, "Post" not clicked |

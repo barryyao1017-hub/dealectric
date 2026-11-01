@@ -26,3 +26,7 @@ Promote only; the page itself is not edited (Barry: the solar pages work, don't 
   and Tacoma World (S3): no accounts.
 - Fixed after staging: literal `**` in R1/R2 converted to bold in the editors; S1 rewritten (the asker's panels are
   2 × 200 W, 54.6 V Voc in series, not 2 × 100 W); S2 and S3 trimmed of points other replies had already made.
+- 11-01, after Barry created the accounts (both in agent-vault, already signed in on 9222): S1 and S2 filled in the
+  diysolarforum reply boxes, S3 in the Tacoma World quick reply (page 2). Threads re-read first: no new replies since
+  the drafts (S1 last 10-31, S2 last 10-30, S3 last 10-22). `**` converted to bold. Not posted. diysolarforum shows a
+  "You mentioned Callsun 200 W, which one?" product-tag prompt under S1; ignore or close it.
