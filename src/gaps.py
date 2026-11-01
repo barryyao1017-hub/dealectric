@@ -329,12 +329,15 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # comparison". Three-model gap vote: open on all six RV searches. Winning draft A2 of growth/focus/fastloop-runs/rv-2kwh/
 # (the 30-amp reality in the short answer, carried into 4 of 6 replayed answers; B 2 of 6, C 0 of 6). Facts and sources:
 # growth/focus/fastloop-runs/rv-2kwh/open-concern.md.
+# 2026-11-01 (DLC-116): intro from round 4 of iterate run rv-open-1 (growth/focus/fastloop-runs/rv-2kwh/iterate/rv-open-1/,
+# "Buy the AC200L" opener, buy link right after the name, First/Second/Third), trimmed by 83 characters so the short
+# answer survives the length cut at rank 6 (fastloop check passes all 24 rank x result-set cells).
 {"slug": "best-2kwh-power-station-for-rv", "question": "G05 (DLC-114)",
  "title": "Best 2kWh portable power station for an RV under $900 (2026): what a 30-amp RV plug really gets",
  "h1": "Best 2kWh portable power station for an RV under $900 (2026)",
  "desc": "Which 2kWh portable power station to buy for an RV under $900: five LiFePO4 stations compared on the TT-30 (30-amp RV) outlet, output, solar input, weight and price on the makers' US stores, with what a 30-amp RV plug really gets from a 2,400 W inverter and the code that worked in BLUETTI's cart.",
  "intro": """
-<p class="lead"><strong>Short answer.</strong> For an RV, buy a 2kWh portable power station with a built-in TT-30 (30-amp RV) outlet; under $900 that is the <strong>BLUETTI AC200L</strong>: 2,048 Wh LiFePO4, 2,400 W, 1,200 W of solar input ({buy:bluetti-ac200l}). The RV plug gets about 20 A, not 30 A: the 2,400 W inverter runs the RV fridge, water pump, lights and a coffee maker, not the full 30 A service or the rooftop AC. Plugged in, the RV's converter charges its house battery from the power station (up to about 800 W), so switch the converter off once that battery is full, and set a two-way fridge to propane: on AUTO it uses 2.4–3.6 kWh a day, more than the whole 2kWh pack.</p>
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI AC200L</strong> ({buy:bluetti-ac200l}), under $900: it is a 2kWh portable power station with a built-in TT-30 (30-amp RV) outlet: 2,048 Wh LiFePO4, 2,400 W, 1,200 W of solar input. Three things to know. First, the RV plug gets about 20 A, not 30 A: the 2,400 W inverter runs the RV fridge, water pump, lights and a coffee maker, not the full 30 A service or the rooftop AC. Second, the RV's converter charges its house battery from the power station (up to about 800 W), so switch the converter off once that battery is full. Third, set a two-way fridge to propane: on AUTO it uses 2.4–3.6 kWh a day, more than the whole 2kWh pack.</p>
 <p>The AC200L is late in its life (BLUETTI Canada lists it as discontinued) but was in stock on bluettipower.com on 2026-10-31. The other RV power stations with a TT-30 under $900 are Anker's SOLIX C2000 Gen 2 ($899.99, the lightest at 41.7 lb) and the Renogy PowerStation 2000 ($849).</p>
 """,
  "columns": [("battery", "Battery"), ("ac", "AC output"), ("rv", "TT-30 RV outlet"), ("solar", "Max solar input"), ("weight", "Weight")],
