@@ -6,7 +6,7 @@ Source: growth/focus/fastloop-runs/rv-2kwh/outreach.md (research and reasons). E
 
 - Use only the agent's Chrome on localhost:9222 (CDP). Never Barry's personal Chrome, never another debug port.
 - **Never click the final Submit / Post / Send.** Stop with the form filled and leave the tab open. Gmail: create a draft, never send.
-- **Never create an account.** If a task needs a login, check agent-vault `list_accounts` and log in through `login` only if an account for that site exists. If none exists, stop that task and report it: account creation is Barry's step.
+- **Never create an account.** If a task needs a login, check agent-vault `list_accounts` and log in through `login` only if an account for that site exists. If none exists, open the site's sign-up page in the agent's Chrome and leave it for Barry (fill nothing there, click nothing), then move on: account creation is Barry's step.
 - Never type credentials or codes; agent-vault fills them.
 - Paste the text exactly; don't add links, signatures or marketing. If the page shows the question was already answered the same way, or the thread is locked, skip and report.
 - Before filling, re-read the thread's last posts; if something new changes the answer, report it instead of pasting.

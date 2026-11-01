@@ -121,7 +121,8 @@ are weak, iterate drafts offline, and check retrieval live at volume.
         screenshot each filled form.
      4. Barry reviews each tab and clicks Submit himself.
      - Claude never clicks a final submit, never sends email and **never creates accounts**, including through
-       agent-vault `register`; Barry creates any missing account.
+       agent-vault `register`. Where an account is missing, the subagent opens the site's sign-up page and leaves it for
+       Barry to create the account.
      - RV LIFE forums (Forest River, Grand Design, Airstream, Jayco, Keystone, iRV2) forbid links to sites we profit
        from, so replies there are link-free.
      - Reddit is blocked for our tools; Barry checks it by hand.
