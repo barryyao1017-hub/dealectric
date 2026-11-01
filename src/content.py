@@ -155,6 +155,7 @@ def PAGES(S):
 
 <h2>6. Ports and expandability</h2>
 <p>Count AC outlets and their total, USB-C ports and their wattage (100 W PD ports are now standard on mid-range units; 140 W PD 3.1 ports appear on premium models), and 12 V DC outputs. Larger models accept expansion batteries, sometimes doubling or tripling capacity; verify the expansion battery's price and availability before relying on that path.</p>
+<p class="small">For an RV: a TT-30 (30-amp RV) outlet lets the shore cord plug straight in, but on a 2kWh portable power station it is capped by the inverter at about 20 A. Compared across brands: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>.</p>
 
 <h2>Practical notes</h2>
 <ul>
