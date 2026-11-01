@@ -300,7 +300,7 @@ ul.list b { font-weight: 600; }
         <text class="m" x="670" y="209" text-anchor="middle">each reading becomes a calibration case and updates the gap map</text>
       </svg>
       </div>
-      <figcaption>Retrieval of a new draft is never predicted offline. It's checked once the page is live, with pinned one-search chats in the app every day or two. They run the exact query and show the app's own top 12.</figcaption>
+      <figcaption>Between publishing and the live check, step 7b (Promote) links, submits and stages outreach for the new page. Retrieval of a new draft is never predicted offline. It's checked once the page is live, with pinned one-search chats in the app every day or two. They run the exact query and show the app's own top 12.</figcaption>
     </figure>
   </section>
 
@@ -348,6 +348,7 @@ ul.list b { font-weight: 600; }
         <tr><td>Draft</td><td>Your judgment, or mine reviewed by you, in the target query's words. Neutral copy, nothing addressed to AI.</td><td><span class="pill jud">judgment</span></td><td>Checked live only.</td></tr>
         <tr><td>4 · Context builder</td><td>The rival pages from the competitor set, fetched now (they change slowly), each cut to the share measured for its rank, plus the draft. Same-turn echoes stopped working on 10-30 (the model now quotes at most ~25 words per source), so the cut is checked with needle questions in the app instead.</td><td><span class="pill have">built, fastloop.py</span></td><td>Tested through step 5's calibration. Needle spot-checks of the cut not run yet.</td></tr>
         <tr><td>5 · Answer replay</td><td>The shopper's question answered from that context in a Free temporary chat, search off (<code>fastloop.py replay --engine app</code>); the API with search off is the fallback. Scored with <code>cardprobe.py</code>'s answer parsing.</td><td><span class="pill have">calibrated</span></td><td>40 recorded app chats. The app agrees with itself on cited/not only 72% of the time, so that is the ceiling. App engine: cited/not 73%, top pick 80%. API engine: 70–77%, top pick 72%. Both over-credit our page by about 15 points, and the paste's linking sentence inflates /go/ (14 of 30 vs the app's 3), so cited and /go/ compare drafts, never forecast.</td></tr>
+        <tr><td>7b · Promote</td><td>After publish, the same day. Tier 1: link the page from the pages OpenAI's crawler fetches most, in the query's words. Tier 2: IndexNow (Bing) and a Search Console indexing request (Google); OpenAI has no submission route. Tier 3: a research subagent finds open questions the page genuinely answers, an instruction set gives the exact text per venue, and a second subagent fills each form up to Submit for Barry to review and click.</td><td><span class="pill have">built, run on the RV page</span></td><td>Whether links weigh in ChatGPT's own ranking isn't published; links do speed discovery (the RV page was fetched ~11 h after its home link) and rank in Bing and Google. Tier 3's effect on ChatGPT retrieval is measured: pages with outreach against matched pages without.</td></tr>
         <tr><td>Live check</td><td>Pinned one-search app chats on the target queries every day or two (retrieved or not), then blind app readings.</td><td><span class="pill have">tools exist</span></td><td>This is the check.</td></tr>
       </tbody>
     </table>

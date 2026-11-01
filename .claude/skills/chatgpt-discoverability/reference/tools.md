@@ -7,10 +7,9 @@ clone.
 
 The app is the default engine for every step; the API below is the fallback (Barry, 2026-10-31).
 
-- Agent Chrome over CDP.
-  - Port 9222 is profile 1. Its ChatGPT account switcher holds barryyao1017 (active on 10-31) and barrryyao.
-  - Port 9223 is profile 2, signed out of ChatGPT on 10-31.
-  - A third account may be added. Each profile has one active account at a time.
+- Agent Chrome over CDP, port 9222 only (Barry, 2026-10-31). No second CDP Chrome: the old 9223 profile is retired.
+  - Its ChatGPT account switcher holds barryyao1017 (active on 10-31) and barrryyao. A third account may be added.
+  - One account is active at a time, so run one chat at a time and switch accounts when a quota runs out.
   - Never type credentials. The vault has no ChatGPT login; Barry signs profiles in himself.
 - Check which account is active: open chatgpt.com in a tab and read `/api/auth/session` (`user.email`, `account.planType`).
   Never print the token.
@@ -87,6 +86,14 @@ The app is the default engine for every step; the API below is the fallback (Bar
 
 Constants and prompts are at the top of the script (`BUDGET`, `ALPHA`, `CAP`, `ANSWER_SYSTEM` and `PROMPT_VERSION`
 for the API, `PASTES` and `PASTE_VERSION` for the app); bump the version when changing them, since scores across versions don't compare.
+
+## Promote (fast loop step 7b), after a page is live
+
+| Tier | Tool | What it does |
+|---|---|---|
+| 1 Internal links | `src/content.py` (home, the `/guides/portable-power-stations/` hub), `src/gaps.py` / `compare.py` records | Link the new page from the pages OAI-SearchBot fetches most (count them in `growth/focus/crawls/fetches.jsonl`), with anchor text in the query's words. Product pages link back automatically (`compared_in`); `/compare` and `llms.txt` pick it up at build time. |
+| 2 Submissions | `python3 tools/indexnow.py <urls>`; Google Search Console in the agent's Chrome (barrryyao) | IndexNow reaches Bing. In Search Console, type the URL in the property's inspect bar and click "Request indexing" (the direct `/search-console/inspect?...` URL 404s). No OpenAI route. |
+| 3 Outreach | Fable research subagent → `outreach.md`; instruction set `promote-tier3-instructions.md`; execution subagent over CDP (`ui.Tab`, `fastloop._click`, agent-vault `login`) | Fill every form up to the final Submit, Gmail drafts for email, sign-up pages left open where an account is missing; Barry reviews and submits. Google sign-in as barrryyao is allowed (Quora, ChatGPT). Worked example: `growth/focus/fastloop-runs/rv-2kwh/`. |
 
 ## Every probe that touches dealectric.com
 
