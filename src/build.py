@@ -1009,6 +1009,7 @@ def codes_index():
 <div class="scroll"><table><tr><th>Brand</th><th>Working codes</th></tr>{rows}</table></div>
 <h2>Every product with a code</h2>
 {coded_table_html()}
+<p class="small">Comparisons priced with these codes: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a> (portable power station and solar panel kits) and <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV</a>.</p>
 {HOW_WE_CHECK}
 {DISCLOSURE}
 """
