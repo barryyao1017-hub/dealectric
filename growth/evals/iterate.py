@@ -61,7 +61,33 @@ TARGETS = {
                           "rv-n09", "rv-n10", "rv-n11", "rv-n12"],
                 "concern": ["20 A", "converter", "propane"],   # the open concern's markers: must stay in the first line
                 "buy": "{buy:bluetti-ac200l}"},
+    # ESR run (11-01, exclusive code ECTRIC18): the iPhone 17 25W page. 18 result sets: the harvest chat whose search the
+    # gap vote found open (esr-e04) plus seventeen pinned app chats of the same cluster (esr25-n01..n17); five where the
+    # page is a less obvious answer (heat, charging speed, new charger at all, battery wear, cooling fan in general).
+    "esr-25w": {"slug": "iphone-17-25w-wireless-charger", "rank": 5,
+                "packs": ["esr-e04-G1-stand--nat-1"] + [f"esr25-n{i:02d}" for i in range(1, 18)],
+                "concern": ["30W", "15W"],
+                "concern_rule": ("The open concern (an old Qi2 or MagSafe charger stops at 15W; 25W needs a Qi2.2 or new "
+                                 "MagSafe charger and a 30W-or-higher adapter) stays inside the short answer, in its first "
+                                 "paragraph, in the query's words (iPhone 17, 25W, wireless charging, charger)."),
+                "buy": "{buy:esr-cryoboost-3-in-1-qi2-2-25w-stand}",
+                "dimensions": [
+                    ("short_answer", "Reword the short answer's first sentences (the pick and why) without changing the facts."),
+                    ("headline", "Change the title and H1 wording, keeping the search's words (iPhone 17, 25W, wireless charger)."),
+                    ("concern_placement", "Change where and how the open concern (old charger stops at 15W; 25W needs Qi2.2 "
+                                          "or new MagSafe plus a 30W adapter) sits inside the short answer: order, emphasis, "
+                                          "sentence split; keep it in the first paragraph."),
+                    ("offer_line", "Change how the pick's price, code and buy link are stated in the short answer (position "
+                                   "in the paragraph, wording around them); keep the {buy:...} token exactly."),
+                    ("alternatives", "Change how the alternatives (Apple's MagSafe Charger plus its adapter, the other 3-in-1 "
+                                     "stands) are presented in the second line or the closing sections: order, what each is best for."),
+                    ("closing_section", "Change the 'after' sections (which iPhones get 25W, old charger check, 80% stop, "
+                                        "speed): order, headings, what comes first."),
+                ]},
 }
+
+RV_CONCERN_RULE = ("The open concern (30 A socket vs ~20 A inverter; converter off; fridge on propane) stays inside the short "
+                   "answer, in its first paragraph, in the query's words (2kWh, RV, power station).")
 
 DIMENSIONS = [
     ("short_answer", "Reword the short answer's first sentences (the pick and why) without changing the facts."),
@@ -83,8 +109,7 @@ RULES = """Page rules (Dealectric, measured; never break them):
   {deal:slug} tokens exactly as they are.
 - Every statement must stay true for a week: keep dated prices and the 'in stock on <date>' wording; add no new facts,
   figures, products or claims that the current page does not already contain.
-- The open concern (30 A socket vs ~20 A inverter; converter off; fridge on propane) stays inside the short answer, in
-  its first paragraph, in the query's words (2kWh, RV, power station).
+- {concern_rule}
 - Keep HTML valid and the same tags the field uses (<p class="lead">, <strong>, <h2>, <ul>, <li>).
 - Keep the page short: the rendered page should stay near its current length.
 - Never name the brand's plain store URL next to our buy link, and never claim our link is the better shopping link
@@ -172,15 +197,38 @@ def check(rec: dict, base: dict, tgt: dict) -> list[str]:
     n0, n1 = len(render(base)), len(render(rec))
     if n1 > n0 * 1.25:
         bad.append(f"too long ({n1} vs {n0} characters)")
+    bad += gate(render(rec), tgt)
     return bad
 
 
-def make_variants(inc: dict, n: int, round_no: int, beat=None) -> list[dict]:
-    dims = [DIMENSIONS[(round_no * n + i) % len(DIMENSIONS)] for i in range(n)]
+def gate(text: str, tgt: dict, ranks: tuple[int, ...] = (1, 3, 5, 6)) -> list[str]:
+    """fastloop's length gate on a rendered draft: the /go/ link and the concern markers must survive the cut at every
+    rank in every result set (rv-open-1's winner, scored at rank 5 only, lost its whole short answer at rank 6)."""
+    url = "https://dealectric.com/" + tgt["slug"]
+    cut = []
+    for pname in tgt["packs"]:
+        pack = json.loads((F.pack_dir(pname) / "pack.json").read_text())
+        base = [dict(r) for r in pack["results"] if F.norm_link(r["url"]) != url]
+        for rank in ranks:
+            res = list(base)
+            res.insert(min(rank, len(res) + 1) - 1, {"url": url, "title": text.splitlines()[0], "text": text})
+            me = next(c for c in F.build_context(res[:max(len(pack["results"]), rank)], pack["query"]) if c["url"] == url)
+            shown = F._squash(me["shown"])
+            lost = [m for m in ["/go/"] + tgt["concern"] if F._squash(m) not in shown]
+            if lost:
+                cut.append(f"{pname} rank {rank}: {', '.join(lost)}")
+    return [f"length gate: cut in {len(cut)} cells ({'; '.join(cut[:3])})"] if cut else []
+
+
+def make_variants(inc: dict, n: int, round_no: int, beat=None, tgt: dict | None = None) -> list[dict]:
+    tgt = tgt or TARGETS["rv-2kwh"]
+    dimensions = tgt.get("dimensions") or DIMENSIONS
+    dims = [dimensions[(round_no * n + i) % len(dimensions)] for i in range(n)]
     user = (json.dumps({k: inc[k] for k in ("title", "h1", "intro", "after")}, ensure_ascii=False, indent=1)
             + "\n\nWrite one variant per dimension below, in this order:\n"
             + "\n".join(f"{i + 1}. {d}: {why}" for i, (d, why) in enumerate(dims)))
-    system = VARIANT_SYSTEM + ("\n\n" + LESSONS.read_text() if LESSONS.exists() else "")
+    system = (VARIANT_SYSTEM.replace("{concern_rule}", tgt.get("concern_rule") or RV_CONCERN_RULE)
+              + ("\n\n" + LESSONS.read_text() if LESSONS.exists() else ""))
     out = {}
     for attempt in range(3):   # a failed or empty writer call is retried; an empty round would read as a plateau
         if beat:
@@ -457,7 +505,7 @@ def cmd_run(a) -> None:
             vs = json.loads(vf.read_text())
         else:
             eng.beat(f"round {rn}: writing variants")
-            vs = make_variants(inc, a.variants, rn, eng.beat)
+            vs = make_variants(inc, a.variants, rn, eng.beat, tgt)
             for f in rdir.glob("v*.jsonl"):   # answers from variants of an earlier, unsaved attempt
                 f.unlink()
             E.write_json(vf, vs)

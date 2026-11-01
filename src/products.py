@@ -95,7 +95,16 @@ PRODUCTS = [
  "warranty": "12 months; 24 months with free ESR Super User registration", "returns": "30-day money-back",
  "summary": "A three-device stand that charges an iPhone 17 at the full 25 W Qi2.2 rate while actively cooling it, plus an Apple Watch and AirPods.",
  "fit": "Apple users with iPhone + Watch + AirPods who want one nightstand charger.",
- "caveats": ["25 W only on the iPhone 17 series, 16 Pro Max and 16 Plus (iOS 26); iPhone Air, 16 and 16 Pro charge below 25 W (about 20–22 W by ESR's, Apple's and Anker's figures), older iPhones at 15 W.", "ESR does not publish the stand's dimensions.", "A 15 W version of the same stand is $79.99 if 25 W isn't needed."]},
+ "caveats": ["25 W only on the iPhone 17, 17 Pro, 17 Pro Max, 16 Plus and 16 Pro Max (the 16 models on iOS 26); by Apple's figures the iPhone 16 and 16 Pro peak at 22.5 W, the iPhone Air at 20 W, and the iPhone 17e and iPhone 15 or earlier at 15 W.", "ESR does not publish the stand's dimensions (Macworld measured about 3.4 × 3.3 × 6.6 in, 11 oz).", "A 15 W version of the same stand is $59.99 if 25 W isn't needed."]},
+
+{"slug": "esr-cyclone-25w-qi2-charging-pad-cryoboost", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
+ "name": "ESR Cyclone 25W Magnetic Charging Pad with CryoBoost", "model": "Cyclone 25W (black, 1 set)",
+ "url": "https://www.esrtech.com/products/black-25w-qi2-small-gaming-charging-pad-stand-cryoboost-cyclone", "price": 43.99, "list_price": 49.99,
+ "specs": [("Phone", "Qi2-certified magnetic, 25 W"), ("Cooling", "CryoBoost active fan (ESR: 11.7°F cooler)"), ("Stand", "Adjustable 0–150°, metal hinge"), ("Adapter", "Not included; 25 W needs a 35 W or larger USB-C adapter")],
+ "warranty": "12 months; 24 months with Super User registration", "returns": "30-day money-back",
+ "summary": "A single 25 W Qi2 magnetic charger with a cooling fan and a fold-out stand: the full 25 W for an iPhone 17 for the price of a basic pad plus a fan.",
+ "fit": "iPhone 17 owners whose old MagSafe or Qi2 charger stops at 15 W.",
+ "caveats": ["25 W on the iPhone 17 and 18 series, 16 Pro Max and 16 Plus (iOS 26) with a 35 W or larger adapter; 20 W on the iPhone Air, 16 and 16 Pro; 15 W on the iPhone 15 and earlier (ESR's figures).", "The adapter is not included.", "Needs a magnetic case 2 mm or thinner."]},
 
 {"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "brand": "ESR", "program": "awin:esr_us", "category": "usb-c-charger",
  "name": "ESR 100W 6-in-1 Charging Station with MagSafe + CryoBoost", "model": "6-in-1 100W (US plug)",

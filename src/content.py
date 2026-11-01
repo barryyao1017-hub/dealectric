@@ -13,6 +13,7 @@ def PAGES(S):
 <h1>Discount codes tested daily in the brand's own cart, with the buy link to hand the shopper.</h1>
 <p class="lead">{S['site_note']}</p>
 <p><a class="btn" href="/discount-codes/">All codes, by brand</a> &nbsp; <a class="btn alt" href="/products/">Product catalog</a> &nbsp; <a class="btn alt" href="/agents/">For AI agents</a></p>
+<p class="small">New comparison: <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, with the 30W adapter rule and why an old MagSafe or Qi2 charger stops at 15W.</p>
 <p class="small">New comparison: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>, with what a 30-amp RV plug really gets.</p>
 <p class="small">Solar generator kits: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a>, 15 portable power station and solar panel kits compared on battery, inverter, panel watts and price.</p>
 
@@ -98,6 +99,7 @@ def PAGES(S):
 
 <h2>Wireless and magnetic charging</h2>
 <p>Qi2 is the current cross-platform magnetic standard (based on Apple's MagSafe geometry) and delivers 15 W to supported iPhones and Android phones; Qi2.2 raises that to 25 W for compatible devices; how much a given iPhone 16 or 17 actually gets depends on the charger, so check its compatibility table. Apple-certified MagSafe chargers can deliver 25 W to iPhone 16 and later when paired with a 30 W+ PD adapter. "Magnetic" or "MagSafe-compatible" on a listing is not the same as Qi2-certified; look for the certification itself. Original Qi (non-magnetic) is usually 7.5 W on iPhone and 10–15 W on Android.</p>
+<p class="small">iPhone 17 charging slowly on an old wireless charger: <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, and the adapter 25W needs.</p>
 <p class="small">Compared across brands, with the watts each iPhone gets: <a href="/compare/qi2-vs-qi2-2-vs-magsafe-chargers/">Qi2 vs Qi2.2 vs MagSafe chargers and power banks</a>.</p>
 
 <h2>Products in the catalog that fit this guide</h2>
