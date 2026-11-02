@@ -924,9 +924,7 @@ def compare_where_to_buy(ours, c, filler=True):
              else "Use the Buy link for your model; enter any code not pre-applied at checkout.") if applied else
             "Use the Buy link for the model you choose; where a code is listed, enter it at checkout to pay the price after the code."
             if coded else "Use the Buy link for the model you choose.")
-    return (f'<div class="note"><strong>Where to buy</strong>{f"<p>{line}</p>" if filler else ""}<ul>{"".join(items)}</ul>'
-            f'<p class="small">These are affiliate links: each opens the brand\'s official US store at no extra cost, and the brand pays {SITE["brand"]} '
-            f'a commission that funds the cart tests. The other brands in the table link to their own stores; we earn nothing on them.</p></div>')
+    return (f'<div class="note"><strong>Where to buy</strong>{f"<p>{line}</p>" if filler else ""}<ul>{"".join(items)}</ul></div>')
 
 
 def page_dates(c):
