@@ -35,3 +35,11 @@ Round 3 knowledge base: not added: +8% is within noise (margin 26%)
 Round 4 models: gpt-6 67 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 4 knowledge base: not added: +8% is within noise (margin 25%)
+| 5 | incumbent | | 18 | 17 | 47% | 71% | 48% | |
+| 5 | offer_line | Moved the pick and its buy link to the start of the short answer, with the 288 Wh run-time | 18 | 18 | 56% | 72% | 44% | no |
+| 5 | alternatives | Introduced the alternative by the job it does best (a fridge or longer outages) instead of | 18 | 17 | 47% | 71% | 49% | no |
+| 5 | closing_section | Moved the 'Kit or parts' section (the $49 kit saving and why the other brands have no kit  | 18 | 16 | 56% | 69% | 41% | new base (best M1) |
+
+Round 5 models: gpt-6 68 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+Round 5 knowledge base: not added: +9% is within noise (margin 26%)
