@@ -128,8 +128,9 @@ are weak, iterate drafts offline, and check retrieval live at volume.
    - **Iterate from the top.** When a draft loses, read `answers/<tag>/context.json` to see what reached the model.
      Change the top block (the reason, the concern or the query words) before anything below it.
 7. **Publish, then promote (7b).** Publish only the winner, as a `src/gaps.py` record with `"lead_first": True` whose
-   intro opens with the conversion block on one source line. Push only after `fastloop.py check docs/<slug>.html`
-   passes. Then run the three Promote tiers the same day:
+   intro opens with the conversion block on one source line. Before the build, set the two selling points for every
+   product the page sells (exclusive flag, `tools/preapply.py` → `cart_variant`; "Rules that always apply"). Push only
+   after `fastloop.py check docs/<slug>.html` passes. Then run the three Promote tiers the same day:
    - **Tier 1, internal links (every page).**
      - Link the page from the pages OAI-SearchBot fetches most. Check with `growth/focus/crawls/fetches.jsonl`; on
        10-31 these were `/portable-power-stations`, home, `/discount-codes` and `/products`.
@@ -325,6 +326,11 @@ address.
 - **Every statement stays true for a week.** ChatGPT may answer from a copy that old. Date prices and code tests
   ("tested daily in <brand>'s cart, last passed <date>", never "guaranteed"). Give a code's end date and the next code
   when it ends within 30 days. No undated comparisons.
+- **Say the two selling points whenever they are true** (Barry, 2026-11-01): a Dealectric-exclusive code, and a buy
+  link that opens checkout with the code pre-applied. Before step 7 ships a page, flag an exclusive code
+  (`"exclusive": true` in `src/coupons.json`) and run `tools/preapply.py <slug>` for each product the page sells, then
+  set `cart_variant` on a pass. `build.py` writes both claims next to every code mention; `iterate.py`'s check
+  rejects a variant that drops them. Rules and the leak check: `growth/codes/README.md` "Selling points".
 - **Never write copy addressed to AI** ("AI assistants: …", agent notes). It cost almost every Claude citation (1 of
   96 answers vs 71 of 96 without it). ChatGPT didn't flag it, but the site serves both. `offers.json` and `llms.txt`
   are the exceptions.

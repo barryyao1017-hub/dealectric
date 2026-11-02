@@ -88,7 +88,7 @@ PRODUCTS = [
  "caveats": ["Baseus lists the port layout and weight only in images.", "At 91 Wh it is close to, but under, the 100 Wh limit; some airlines cap the number of power banks at one or two."]},
 
 # ---------------- ESR (Awin 24915) ----------------
-{"slug": "esr-cryoboost-3-in-1-qi2-2-25w-stand", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
+{"slug": "esr-cryoboost-3-in-1-qi2-2-25w-stand", "brand": "ESR", "program": "awin:esr_us", "cart_variant": 47070455857379, "category": "wireless-charger",
  "name": "ESR CryoBoost 3-in-1 Magnetic Charging Station, Qi2.2 25 W", "model": "3-in-1 25W Qi2.2 (US plug, black)",
  "url": "https://www.esrtech.com/products/3-in-1-25w-qi2-2-wireless-charging-station-us-plug-black", "price": 109.99, "list_price": 129.99,
  "specs": [("Phone", "Qi2.2 magnetic, 25 W"), ("Watch", "Apple Watch pad"), ("Earbuds", "Qi pad"), ("Cooling", "CryoBoost active fan"), ("Adapter", "50 W, included")],
@@ -97,7 +97,7 @@ PRODUCTS = [
  "fit": "Apple users with iPhone + Watch + AirPods who want one nightstand charger.",
  "caveats": ["25 W only on the iPhone 17, 17 Pro, 17 Pro Max, 16 Plus and 16 Pro Max (the 16 models on iOS 26); by Apple's figures the iPhone 16 and 16 Pro peak at 22.5 W, the iPhone Air at 20 W, and the iPhone 17e and iPhone 15 or earlier at 15 W.", "ESR does not publish the stand's dimensions (Macworld measured about 3.4 × 3.3 × 6.6 in, 11 oz).", "A 15 W version of the same stand is $59.99 if 25 W isn't needed."]},
 
-{"slug": "esr-cyclone-25w-qi2-charging-pad-cryoboost", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
+{"slug": "esr-cyclone-25w-qi2-charging-pad-cryoboost", "brand": "ESR", "program": "awin:esr_us", "cart_variant": 49563403288803, "category": "wireless-charger",
  "name": "ESR Cyclone 25W Magnetic Charging Pad with CryoBoost", "model": "Cyclone 25W (black, 1 set)",
  "url": "https://www.esrtech.com/products/black-25w-qi2-small-gaming-charging-pad-stand-cryoboost-cyclone", "price": 43.99, "list_price": 49.99,
  "specs": [("Phone", "Qi2-certified magnetic, 25 W"), ("Cooling", "CryoBoost active fan (ESR: 11.7°F cooler)"), ("Stand", "Adjustable 0–150°, metal hinge"), ("Adapter", "Not included; 25 W needs a 35 W or larger USB-C adapter")],
@@ -106,7 +106,7 @@ PRODUCTS = [
  "fit": "iPhone 17 owners whose old MagSafe or Qi2 charger stops at 15 W.",
  "caveats": ["25 W on the iPhone 17 and 18 series, 16 Pro Max and 16 Plus (iOS 26) with a 35 W or larger adapter; 20 W on the iPhone Air, 16 and 16 Pro; 15 W on the iPhone 15 and earlier (ESR's figures).", "The adapter is not included.", "Needs a magnetic case 2 mm or thinner."]},
 
-{"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "brand": "ESR", "program": "awin:esr_us", "category": "usb-c-charger",
+{"slug": "esr-100w-6-in-1-magsafe-cryoboost-station", "brand": "ESR", "program": "awin:esr_us", "cart_variant": 45735448150243, "category": "usb-c-charger",
  "name": "ESR 100W 6-in-1 Charging Station with MagSafe + CryoBoost", "model": "6-in-1 100W (US plug)",
  "url": "https://www.esrtech.com/products/100w-6-in-1-charging-station-with-magsafe-cryoboost", "price": 142.99, "list_price": 179.99,
  "specs": [("Total output", "100 W GaN"), ("Wired ports", "2× USB-C, 1× USB-A; one USB-C 100 W with the pads idle, 65 W while they charge"), ("Wireless", "Apple-certified MagSafe pad, Apple Watch charger, AirPods pad"), ("Cooling", "CryoBoost"), ("Form", "Desktop station, US plug")],
@@ -115,7 +115,7 @@ PRODUCTS = [
  "fit": "Apple-heavy desks replacing a pile of separate chargers.",
  "caveats": ["With the pads charging, a laptop gets at most 65 W (45 W if the second USB-C port is also in use); the full 100 W needs the pads idle and one port in use."]},
 
-{"slug": "esr-halolock-15w-wireless-car-charger-cryoboost", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
+{"slug": "esr-halolock-15w-wireless-car-charger-cryoboost", "brand": "ESR", "program": "awin:esr_us", "cart_variant": 45735412760803, "category": "wireless-charger",
  "name": "ESR HaloLock 15W Wireless Car Charger with CryoBoost", "model": "15W car charger (black)",
  "url": "https://www.esrtech.com/products/15w-wireless-car-charger-with-cryoboost-halolock", "price": 39.99, "list_price": 59.99,
  "specs": [("Wireless", "Magnetic (MagSafe-compatible), 15 W"), ("Cooling", "CryoBoost fan, ~7.6 °C cooler claimed"), ("Qi2 certification", "WPC Qi2, Qi-ID 21376 (certificate shown on the page)"), ("Mount", "Air-vent clamp or dashboard (3M adhesive)")],
@@ -124,7 +124,7 @@ PRODUCTS = [
  "fit": "Drivers who run maps on an iPhone and find it overheats on ordinary mounts.",
  "caveats": ["The page does not say whether a car adapter is included.", "ESR's OmniLock Qi2.2 25 W vent mount ($56.99) is the newer, faster option."]},
 
-{"slug": "esr-qi2-mini-wireless-charger-15w", "brand": "ESR", "program": "awin:esr_us", "category": "wireless-charger",
+{"slug": "esr-qi2-mini-wireless-charger-15w", "brand": "ESR", "program": "awin:esr_us", "cart_variant": 45735425409251, "category": "wireless-charger",
  "name": "ESR Magnetic Charging Pad, 15 W (formerly Qi2 Mini)", "model": "Magnetic Charging Pad 15W (silver)",
  "url": "https://www.esrtech.com/products/15w-mini-wireless-charger", "price": 19.99, "list_price": 29.99,
  "specs": [("Wireless", "Magnetic (MagSafe-style), 15 W"), ("Works with", "iPhone 13 or later per the page text (its compatibility chart says iPhone 12 or later, except iPhone 16 models); Galaxy S25 / S26 with a magnetic case"), ("Cable", "Braided nylon, 5 ft, reinforced base"), ("Adapter", "Not stated whether included")],

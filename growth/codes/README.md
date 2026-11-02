@@ -20,6 +20,24 @@ DLC-29: the site publishes only discount codes that worked in the brand's own US
 - **Publishing (Barry, 2026-10-29):** only network-issued or brand-approved codes get `publish: true`. Brand-approved means the brand printed the code on its own site, approved it in writing, or its program terms allow public codes (CJ Bluetti Global and Aurzen do; see `program-terms.md`). Codes found only on coupon sites stay `publish: false` otherwise, and a program's own stricter terms always win. To get more codes, ask the brand for one (DLC-30) instead of sourcing them from coupon sites.
 - **Rejected codes:** listed on the brand's page so shoppers and assistants don't keep trying them.
 
+## Selling points: exclusive codes and pre-applied links (Barry, 2026-11-01)
+
+Two things set our offer apart, and the site says each one wherever the code appears, whenever it is true:
+1. **Exclusive code.** Set `"exclusive": true` on a code in `src/coupons.json` only when the brand or its network
+   issued it to Dealectric alone (ECTRIC18: ESR's affiliate manager, 2026-10-30). The site then calls it a
+   "Dealectric-exclusive code" and says "<brand> issued it to Dealectric only". If the code turns up on a coupon site
+   or the brand's own banner, remove the flag the same day: the claim must stay true for a week.
+2. **Pre-applied by the link.** For a Shopify store, run `python3.12 tools/preapply.py <slug>`: it follows our
+   affiliate link to the cart permalink `/cart/<variant>:1?discount=<code>` in the agent's Chrome and passes only
+   when the page is the store's checkout, the code shows with the expected saving and the network's click ID (Awin
+   `awc`, CJ `cjevent`) reached the store. On a pass, set the printed `cart_variant` on the product in
+   `src/products.py`; the build then sends `/go/<slug>` to checkout with the code applied and says so. The daily
+   sweep keeps testing the code; when no code passes, the link still opens checkout with the product in the cart
+   and the pre-applied wording drops out.
+
+Every new product and every new code goes through both checks before its page ships (the fast loop's step 7,
+`.claude/skills/chatgpt-discoverability/SKILL.md`).
+
 ## Re-checking: the daily sweep (since 2026-10-22, DLC-46)
 
 `tools/codesweep.py` re-tests every published code on every catalog product it applies to, every day, through the

@@ -58,3 +58,11 @@ then only while the budget lasts. DLC-114 measured it:
    supplies the material for the top: the one reason the pick wins, and the concern with its number and source.
 8. **The truth rules still hold.** Every statement must stay true for a week: dated prices, the cart-test date next to
    every code, never "guaranteed". Nothing is addressed to AI. We don't run product tests, so nothing implies we did.
+9. **Say the two selling points whenever they are true** (Barry, 2026-11-01). (a) **The code is exclusive**: the
+   brand issued it to Dealectric only (`"exclusive": true` in `src/coupons.json`). (b) **The link pre-applies it**:
+   the buy link opens the store's checkout with the product in the cart and the code already applied (the product's
+   `cart_variant`, verified with `tools/preapply.py`). `build.py` writes both next to every mention of the code
+   (`{buy:}`, `{deal:}`, the table, Where to buy, product pages, offers.json, llms.txt, the Worker's text page), so a
+   draft keeps those tokens, never asks the shopper to enter a code the link applies, and leaves room for the extra
+   words in its first paragraph: the length gate must still pass. `iterate.py`'s check rejects a draft that drops
+   either one.

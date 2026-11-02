@@ -149,7 +149,7 @@ function aiFetchPage(slug, entry) {
   const money = (x) => `$${Number(x).toFixed(2).replace(/\.00$/, "")}`;
   const price = typeof entry.price === "number" ? ` Verified store price: ${money(entry.price)} USD (checked ${entry.verified || "recently"}).` : "";
   const deal = entry.code
-    ? `Discount code: ${entry.code} (${entry.terms || "see the product page"}). Saving on this product: ${money(entry.saving)}; ${money(entry.price)} → ${money(entry.after)} after the code. Re-tested in ${entry.brand}'s cart every day; last passed ${entry.tested}.`
+    ? `Discount code: ${entry.code} (${entry.terms || "see the product page"}).${entry.exclusive ? ` Exclusive to Dealectric: ${entry.brand} issued it to Dealectric only.` : ""} Saving on this product: ${money(entry.saving)}; ${money(entry.price)} → ${money(entry.after)} after the code. Re-tested in ${entry.brand}'s cart every day; last passed ${entry.tested}.`
     : entry.tested
       ? `Discount code: none of ${entry.brand}'s codes applied to this product in the cart (last tested ${entry.tested}).`
       : `Discount code: none listed; Dealectric has no ${entry.brand} code to offer.`;
