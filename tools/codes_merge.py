@@ -31,6 +31,8 @@ META = {
     ("ALLPOWERS", "EXTRA10"): dict(type="percent", value=10, terms="10% off power stations", categories=["power-station"], expires="2026-11-15", source=CJ.format("ALLPOWERS"), publish=True),
     ("ALLPOWERS", "BULKRATE"): dict(type="percent", value=11, terms="11% off when you buy 2 or more", min_qty=2, expires="2026-11-15", source=CJ.format("ALLPOWERS"), publish=True),
     ("ALLPOWERS", "EXTRA12"): dict(type="percent", value=12, terms="12% off orders over $1,200", min_order=1200, expires="2026-11-15", source=CJ.format("ALLPOWERS"), publish=True),
+    ("ALLPOWERS", "APBF12"): dict(type="percent", value=12, terms="12% off orders over $1,000", min_order=1000, expires="2026-12-14", source=CJ.format("ALLPOWERS"), publish=True),
+    ("ALLPOWERS", "APBF10"): dict(type="percent", value=10, terms="10% off sitewide", expires="2026-12-14", source=CJ.format("ALLPOWERS"), publish=False),
     ("ALLPOWERS", "AFFAP"): dict(type="percent", value=10, terms="10% off sitewide", source=SITES, publish=False),
     ("ALLPOWERS", "ALLPOWERSAF"): dict(type="percent", value=10, terms="10% off sitewide", source=SITES, publish=False),
     ("ALLPOWERS", "AFALLPOWERS"): dict(type="percent", value=10, terms="10% off sitewide", source=SITES, publish=False),

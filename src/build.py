@@ -317,6 +317,8 @@ def codes_for(p):
         if t and t["qty"] == 1 and abs(t["subtotal"] - p["price"]) < 0.005:
             s = round(t["discount"], 2)
         found.append((c, s))
+    # Equal savings: the code that runs longer leads, so a page doesn't name a code about to end (EXTRA12 and APBF12).
+    found.sort(key=lambda cs: cs[0].get("expires") or "9999-12-31", reverse=True)
     return sorted(found, key=lambda cs: -cs[1])
 
 
