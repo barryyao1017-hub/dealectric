@@ -24,7 +24,7 @@ Edits to the research drafts: unverified figures removed (the USB-C cable's $33 
 ```text
 16ACE27, your 3 hours is the math working, not luck: an 18 V 4 Ah pack is 72 Wh, the Mini draws about 20–25 W once it's locked on (Starlink says 20–40 W, 15 W idle; the app will show you), and a converter loses roughly 15%, so 72 × 0.85 ÷ 22 W ≈ 2.8 hours. A 6 Ah pack gets you about 4 hours, a 9 Ah about 6.
 
-The part the tool-battery route can't fix is Chateau_Nomad's point: there is no low-voltage cutoff, so you are the BMS. For an afternoon that's fine; for a day it isn't.
+The catch with Ryobi-style packs is Chateau_Nomad's point: the pack has no low-voltage cutoff of its own (dkoldman's Craftsman has one built in), so you are the BMS. For an afternoon that's fine; for a day it isn't.
 
 If you want "a day" from one box, size it from the draw, not from the box's wattage: 24 h × 20 W ≈ 0.5 kWh at the low end, 1 kWh if you plan on Starlink's 40 W figure (snow melt, trees, cold). Two sizes make sense:
 - A workday (8–10 h): ~300 Wh. EcoFlow RIVER 3 Plus (286 Wh, $299) or BLUETTI Elite 30 V2 (288 Wh, ~$275). Someone in the iRV2 thread this week gets ~14 h from an Anker SOLIX C300 DC (288 Wh), which matches a 17–20 W real-world draw.
@@ -36,6 +36,8 @@ Hours ≈ battery Wh × 0.85 ÷ watts, if you want to size your own.
 
 I keep the table (watt-hours, USB-C port ratings, hours, prices) at https://dealectric.com/starlink-mini-usb-c-power-requirements. Disclosure: I run dealectric.com, which earns a commission on some links there (the ALLPOWERS and BLUETTI rows); the Anker and EcoFlow rows are plain comparisons.
 ```
+
+Filled 2026-11-02 with the cutoff line narrowed after dkoldman's #407 (Craftsman packs have the cutoff built in).
 
 ## T2. Reply on iRV2 "looking at a starlink Mini" (RV LIFE link rule applies)
 
@@ -53,6 +55,8 @@ If you'd rather have one box that works in the Bronco, the F-350 and the camper 
 
 I keep the comparison at https://dealectric.com/starlink-mini-usb-c-power-requirements. Disclosure: I run dealectric.com, which earns a commission on some links there.
 ```
+
+Filled 2026-11-02 with two changes: Stircrazy had since said he's going the DC-DC converter way (Nov 1), so the opener says "the DC-DC converter you're leaning toward" and the 400 W inverter paragraph was dropped.
 
 ## T3. Quora answer: "What do you use to power a Starlink Mini for Wi-Fi?" (link allowed with disclosure)
 
