@@ -268,6 +268,29 @@ def make_variants(inc: dict, n: int, round_no: int, beat=None, tgt: dict | None 
         rec = copy.deepcopy(inc)
         rec.update({k: v[k] for k in ("title", "h1", "intro", "after")})
         vs.append({"dimension": v["dimension"], "change": v["change"], "lesson": v.get("lesson", ""), "record": rec})
+    # esr-open-2 rounds 1-3 lost 5 of 9 variants to the rule checks (mostly the length gate) before scoring: each one
+    # gets one rewrite with the failure named, so a round still scores the dimension it was meant to try.
+    for i, v in enumerate(vs):
+        bad = check(v["record"], inc, tgt)
+        if not bad:
+            continue
+        if beat:
+            beat(f"repairing variant {i + 1}")
+        fix = (user + f"\n\nOnly dimension {v['dimension']}. Your earlier variant made this change: {v['change']}\n"
+               f"It failed the page checks: {'; '.join(bad)}. A length-gate failure means the opening paragraph "
+               "(title, h1 and first <p>) got longer than the cut allows; keep the same change but make that "
+               "opening no longer than the current page's, e.g. by saying the change in fewer words. Return one variant.")
+        try:
+            r = (E.claude_cli_json(system, fix, WRITER, VARIANT_SCHEMA, timeout=600) or {}).get("variants") or []
+        except Exception as e:  # noqa: BLE001
+            print(f"    repair of {v['dimension']} failed ({str(e)[:100]})", flush=True)
+            continue
+        if r:
+            rec = copy.deepcopy(inc)
+            rec.update({k: r[0][k] for k in ("title", "h1", "intro", "after")})
+            if not check(rec, inc, tgt):
+                vs[i] = {"dimension": v["dimension"], "change": r[0]["change"], "lesson": r[0].get("lesson", ""),
+                         "record": rec, "repaired": "; ".join(bad)}
     return vs
 
 
