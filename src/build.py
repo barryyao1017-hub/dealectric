@@ -882,11 +882,13 @@ def buy_inline(slug):
 
 
 def compare_fill(text):
-    """{price:slug}, {buy:slug} and {deal:slug} in a comparison page's prose become the verified price, the price with
-    the buy link and code, and the deal line."""
+    """{price:slug}, {after:slug}, {buy:slug} and {deal:slug} in a comparison page's prose become the verified price, the
+    price after the best tested code (the verified price when there is none), the price with the buy link and code, and
+    the deal line."""
     import re
     text = re.sub(r"\{buy:([a-z0-9-]+)\}", lambda m: buy_inline(m.group(1)), text)
     text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
+    text = re.sub(r"\{after:([a-z0-9-]+)\}", lambda m: money(best_offer(BY_SLUG[m.group(1)])[2] or BY_SLUG[m.group(1)]["price"]), text)
     return re.sub(r"\{deal:([a-z0-9-]+)\}", lambda m: compare_deal_line(m.group(1)), text)
 
 
@@ -1046,7 +1048,7 @@ def codes_index():
 <div class="scroll"><table><tr><th>Brand</th><th>Working codes</th></tr>{rows}</table></div>
 <h2>Every product with a code</h2>
 {coded_table_html()}
-<p class="small">Comparisons priced with these codes: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a> (portable power station and solar panel kits), <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV</a> and <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>.</p>
+<p class="small">Comparisons priced with these codes: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a> (portable power station and solar panel kits), <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV</a>, <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, <a href="/best-power-bank-for-steam-deck">the best power bank for Steam Deck</a>, <a href="/best-20000mah-power-bank-under-50">the best 20,000mAh power banks under $50</a> and <a href="/starlink-mini-usb-c-power-requirements">what runs a Starlink Mini all day</a>.</p>
 {HOW_WE_CHECK}
 {DISCLOSURE}
 """

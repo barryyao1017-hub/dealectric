@@ -77,7 +77,7 @@ PRODUCTS = [
  "fit": "Pairing with any 65–100 W charger; not for monitors or fast file transfer.",
  "caveats": ["Not rated for 140 W / 240 W EPR charging.", "Baseus notes it is not supported for iPad Pro charging."]},
 
-{"slug": "baseus-enerfill-fc41-25000mah-145w", "brand": "Baseus", "program": "awin:baseus_us", "category": "power-bank",
+{"slug": "baseus-enerfill-fc41-25000mah-145w", "brand": "Baseus", "program": "awin:baseus_us", "cart_variant": 43152057729101, "category": "power-bank",
  "name": "Baseus EnerFill FC41 Power Bank with Built-in Cables, 25,000 mAh, 145 W", "model": "EnerFill FC41 (E0028H03)",
  "url": "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w", "price": 79.99, "list_price": 89.99,
  "specs": [("Capacity", "25,000 mAh (91.25 Wh); under the 100 Wh airline limit"), ("Max output", "145 W total; 140 W from USB-C1 (PD 3.1)"), ("Cables", "Two built-in USB-C cables; charges 4 devices at once"),

@@ -433,4 +433,138 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ('iPhone 17 owners on heat and 25W charging', 'https://forums.macrumors.com/threads/iphone-17-pro-max-only-charging-at-25w-with-40-60w-charger-thunderbolt-4-cable.2467080/'),
  ],
  "published": '2026-11-01', "checked": '2026-11-01'},
+
+# ---------------- G07-G09: three FC41 gap-funnel pages (2026-11-02) ----------------
+# From the gap-funnel run (worktree gap-funnel, growth/focus/funnel-fc41/README.md): ChatGPT's real app queries, app gap
+# score 7-8 on two chats each. Barry's idea (11-02): put the products ChatGPT's own shopping cards show for the query in
+# one table next to ours and lead with ours being the same class for less after the tested code. Card lists and answers:
+# growth/evals/runs/2026-11-02-gapconfirm/pb-*-app{1,2}.json (gap-funnel worktree); packs copied to runs/fastloop/pb-*-app*.
+# Rival prices and specs read on the makers' US stores 2026-11-01 (subagent check; the cards' "Anker Prime 24K" and
+# "Anker 737" are both the 737, A1289). Baseus's and ALLPOWERS' codes are network codes, so no page says "exclusive".
+{"slug": "best-power-bank-for-steam-deck", "question": "G07 (FC41 funnel: Steam Deck / handheld)", "lead_first": True,
+ "title": "Best power bank for Steam Deck (2026): 45W USB-C PD, capacity and airline limits compared",
+ "h1": "Best power bank for Steam Deck (2026): 45W USB-C PD and airline limits",
+ "desc": "Which power bank to buy for a Steam Deck, ROG Ally or Legion Go: 45W USB-C PD power banks compared on capacity, charges per handheld, built-in cables, weight, the 100 Wh airline limit and price, with the code that worked in Baseus's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>Baseus EnerFill FC41</strong> ({buy:baseus-enerfill-fc41-25000mah-145w}): {after:baseus-enerfill-fc41-25000mah-145w} after the code for a 25,000 mAh (91 Wh) USB-C PD power bank that charges a Steam Deck at its full 45 W while you play, under the 100 Wh airline limit, with two built-in USB-C cables (one 140 W); Anker's 24,000–25,000 mAh laptop banks are $104.99–$109.99. How long it lasts: about 77 Wh reaches the Deck, roughly 1.5 full charges of a Steam Deck OLED (50 Wh) or 1.9 of an LCD model (40 Wh), or 3–5 more hours of play.</p>
+<p>The same money otherwise buys INIU's 20,000 mAh 65 W Cougar ($46.99 at INIU): lighter (324 g vs about 517 g) but a fifth less capacity and no built-in cable. A 20–30 W bank only slows the battery drain while you play a demanding game.</p>
+""",
+ "columns": [("cap", "Capacity"), ("usbc", "Max USB-C"), ("deck", "Steam Deck OLED charges"), ("cable", "Built-in cable"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "baseus-enerfill-fc41-25000mah-145w", "model": "Baseus EnerFill FC41 25,000 mAh",
+   "cells": {"cap": "25,000 mAh (91 Wh)", "usbc": "140 W (built-in cable)", "deck": "about 1.5", "cable": "Two USB-C", "weight": "about 517 g"}},
+  {"brand": "INIU", "model": "Cougar 20,000 mAh 65 W (P62-E1)", "url": "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w",
+   "cells": {"cap": "20,000 mAh (73 Wh)", "usbc": "65 W", "deck": "about 1.2", "cable": "No", "weight": "324 g", "price": "$46.99 (INIU, sale)"}},
+  {"brand": "Anker", "model": "737 Power Bank 24,000 mAh 140 W (A1289)", "url": "https://www.anker.com/products/a1289",
+   "cells": {"cap": "24,000 mAh (about 89 Wh)", "usbc": "140 W", "deck": "about 1.5", "cable": "No", "weight": "630 g", "price": "$109.99 (Anker, Target)"}},
+  {"brand": "Anker", "model": "Laptop Power Bank 25K 165 W (A1695)",
+   "cells": {"cap": "25,000 mAh (90 Wh)", "usbc": "100 W", "deck": "about 1.5", "cable": "Two (one retractable)", "weight": "595 g", "price": "$119.99; $104.99 with Anker's auto-applied code"}},
+  {"brand": "UGREEN", "model": "Nexode 20,000 mAh 130 W", "url": "https://us.ugreen.com/",
+   "cells": {"cap": "20,000 mAh (72 Wh)", "usbc": "100 W", "deck": "about 1.2", "cable": "No", "weight": "476 g", "price": "$89.99 (UGREEN); about $59.99 with UGREEN's code"}},
+  {"slug": "baseus-blade-h1-100w-20000mah", "model": "Baseus Blade H1 20,000 mAh 100 W",
+   "cells": {"cap": "20,000 mAh (74 Wh)", "usbc": "100 W", "deck": "about 1.2", "cable": "No", "weight": "about 450 g"}},
+ ],
+ "after": """
+<h2>How many Steam Deck charges a power bank gives</h2>
+<p>A power bank's mAh is rated at its cells' 3.7 V, so 25,000 mAh is 91 Wh; after conversion losses about 85% reaches the Deck. The Steam Deck OLED has a 50 Wh battery and the LCD model 40 Wh (Valve), and the Deck draws about 15–25 W in demanding games. A 20,000 mAh (73–74 Wh) bank gives about 1.2 OLED charges, a 25,000 mAh (91 Wh) bank about 1.5.</p>
+<h2>What 45W USB-C PD means for a Steam Deck</h2>
+<p>Valve rates both Steam Decks at 45 W USB-C PD. A 45 W-or-higher bank charges it while you play; a 20–30 W bank charges it when idle or asleep but only slows the drain in heavy games. More than 45 W doesn't charge the Deck faster, but a 100–140 W output also charges a laptop.</p>
+<h2>ROG Ally, Legion Go and Switch 2</h2>
+<ul>
+<li><strong>ROG Ally (2023):</strong> 40 Wh, 65 W charger: about 1.9 charges from the FC41.</li>
+<li><strong>ROG Ally X:</strong> 80 Wh, 65 W charger (its USB4 port takes up to 100 W): about one full charge.</li>
+<li><strong>Legion Go:</strong> 49.2 Wh, 65 W: about 1.5 charges. <strong>Legion Go 2:</strong> 74 Wh, 65 W: about one.</li>
+<li><strong>Switch 2:</strong> charges from any USB-C PD bank and draws under 25 W in tests, so any bank here keeps it going for many hours.</li>
+</ul>
+<p>For these 65 W handhelds, use a bank with 65 W or more on one port to charge them while you play.</p>
+<h2>Airline limits</h2>
+<p>Power banks up to 100 Wh (about 27,000 mAh) go in carry-on without approval; 101–160 Wh needs the airline's approval; never in checked bags. Since 27 March 2026, ICAO rules for international flights allow two power banks per passenger and ban recharging them in flight; many airlines also ban using them on board.</p>
+""",
+ "sources": [
+  ("Baseus EnerFill FC41", "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w"),
+  ("Steam Deck OLED tech specs (Valve)", "https://www.steamdeck.com/en/tech"),
+  ("Steam Deck LCD tech specs (Valve)", "https://www.steamdeck.com/en/tech/deck"),
+  ("INIU Cougar P62-E1", "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w"),
+  ("Anker 737 Power Bank (A1289)", "https://www.anker.com/products/a1289"),
+  ("FAA: lithium batteries in carry-on", "https://www.faa.gov/hazmat/packsafe/lithium-batteries"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-01"},
+
+{"slug": "best-20000mah-power-bank-under-50", "question": "G08 (FC41 funnel: 20,000 mAh under $50)", "lead_first": True,
+ "title": "Best 20000mAh power banks under $50 (2026): reviews and prices compared",
+ "h1": "Best 20,000mAh power banks under $50 (2026): prices compared",
+ "desc": "The best 20,000mAh power banks under $50 compared on price, USB-C watts, built-in cables, weight and real phone charges, with a 25,000mAh 140W bank that comes in under $50 with the code that worked in Baseus's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Under $50, buy the <strong>Baseus EnerFill FC41</strong> ({buy:baseus-enerfill-fc41-25000mah-145w}): {after:baseus-enerfill-fc41-25000mah-145w} after the code for 25,000 mAh (91 Wh) with two built-in USB-C cables, one at 140 W, where the 20,000mAh power banks under $50 stop at 30–65 W: INIU Carry 45 W $29.99, Anker Zolo 30 W $35.99, INIU Cougar 65 W $46.99, EcoFlow RAPID 45 W $47.99. Real charges: about 77 Wh reaches your devices, roughly five charges of a phone with a 15 Wh battery, or more than one full charge of a 13-inch MacBook Air.</p>
+<p>The tradeoff is weight: about 517 g against 324–360 g for the 20,000 mAh banks. For a phone-only bank at the lowest price, INIU's Carry (45 W, built-in cable, $29.99 at INIU) is the pick.</p>
+""",
+ "columns": [("cap", "Capacity"), ("usbc", "Max USB-C"), ("cable", "Built-in cable"), ("weight", "Weight"), ("laptop", "Laptop at full speed")],
+ "rows": [
+  {"slug": "baseus-enerfill-fc41-25000mah-145w", "model": "Baseus EnerFill FC41 25,000 mAh",
+   "cells": {"cap": "25,000 mAh (91 Wh)", "usbc": "140 W", "cable": "Two USB-C", "weight": "about 517 g", "laptop": "Yes, up to 140 W"}},
+  {"brand": "INIU", "model": "Carry 20,000 mAh 45 W (P51L-E2)", "url": "https://iniushop.com/",
+   "cells": {"cap": "20,000 mAh (about 74 Wh)", "usbc": "45 W", "cable": "USB-C", "weight": "326 g", "laptop": "Small laptops only", "price": "$29.99 (INIU)"}},
+  {"brand": "Anker", "model": "Zolo 20,000 mAh 30 W, built-in USB-C cable", "url": "https://www.walmart.com/ip/19999706645",
+   "cells": {"cap": "20,000 mAh", "usbc": "30 W", "cable": "USB-C", "weight": "about 353 g", "laptop": "No", "price": "$35.99 blue/pink, $42.99 white (Walmart)"}},
+  {"brand": "INIU", "model": "Cougar 20,000 mAh 65 W (P62-E1)", "url": "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w",
+   "cells": {"cap": "20,000 mAh (73 Wh)", "usbc": "65 W", "cable": "No", "weight": "324 g", "laptop": "Most 13–14 in laptops", "price": "$46.99 (INIU, sale)"}},
+  {"brand": "EcoFlow", "model": "RAPID Power Bank 20K 45 W", "url": "https://us.ecoflow.com/",
+   "cells": {"cap": "20,000 mAh (74 Wh)", "usbc": "45 W", "cable": "USB-C", "weight": "360 g", "laptop": "Small laptops only", "price": "$47.99 (EcoFlow)"}},
+ ],
+ "after": """
+<h2>How many charges a 20,000mAh power bank really gives</h2>
+<p>mAh is rated at the cells' 3.7 V: 20,000 mAh is 74 Wh and 25,000 mAh is 91 Wh. About 80–85% reaches the device after conversion, so a 20,000 mAh bank gives roughly 4 charges of a phone with a 15 Wh battery and a 25,000 mAh bank about 5.</p>
+<h2>Watts: what 30, 45, 65 and 140 W buy you</h2>
+<ul>
+<li><strong>20–30 W:</strong> full-speed charging for any phone; a laptop only slowly.</li>
+<li><strong>45–65 W:</strong> a MacBook Air, a Steam Deck at full speed, most 13–14 in laptops.</li>
+<li><strong>100–140 W:</strong> a MacBook Pro at fast-charge speed, or a laptop and a phone at once.</li>
+</ul>
+<h2>Flying</h2>
+<p>All the banks here are under the 100 Wh carry-on limit; power banks never go in checked bags.</p>
+""",
+ "sources": [
+  ("Baseus EnerFill FC41", "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w"),
+  ("INIU Cougar P62-E1", "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w"),
+  ("Anker Zolo 20K 30W at Walmart", "https://www.walmart.com/ip/19999706645"),
+  ("FAA: lithium batteries in carry-on", "https://www.faa.gov/hazmat/packsafe/lithium-batteries"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-01"},
+
+{"slug": "starlink-mini-usb-c-power-requirements", "question": "G09 (FC41 funnel: Starlink Mini all day)", "lead_first": True,
+ "title": "Starlink Mini USB-C power requirements: 100W PD, power consumption in watts, and what runs it all day (2026)",
+ "h1": "Starlink Mini USB-C power requirements (2026): 100W PD, watts, and running it all day",
+ "desc": "Starlink Mini's official USB-C power requirement (100 W USB PD at 20 V / 5 A), its power consumption in watts, how many hours a power bank or power station runs it, and the 1 kWh power stations that run it all day, compared on watt-hours, USB-C output and price.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Starlink Mini needs a 100W USB-C PD source at 20 V / 5 A (100 W is the minimum; a 65 W source won't run it) and draws 20–40 W of power on average, 15 W idle (Starlink), so running it all day takes a power station, not a power bank: buy the <strong>ALLPOWERS P1800</strong> ({buy:allpowers-p1800-1024wh}), {after:allpowers-p1800-1024wh} after the code for 1,024 Wh with a 140 W USB-C port, about 22–43 hours of Starlink Mini; Anker's SOLIX C1000 Gen 2 and BLUETTI's Elite 100 V2 (both 1,024 Wh) are $499–$499.99. A 99 Wh power bank with a 100 W USB-C port runs it about 2–4 hours.</p>
+<p>For a workday (8–10 h), about 300 Wh is enough: EcoFlow RIVER 3 Plus (286 Wh, $299) or BLUETTI Elite 30 V2 (288 Wh, {after:bluetti-elite-30-v2} after the code). Starlink's USB-C cable is a separate 5 m accessory that plugs into a USB-C port, so a bank's built-in cables won't do; keep other devices off a bank that reboots the Mini when the load changes.</p>
+""",
+ "columns": [("wh", "Battery"), ("usbc", "USB-C (100 W+ runs the Mini)"), ("hours", "Starlink Mini hours (20–40 W)"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh LiFePO4", "usbc": "2× USB-C, 140 W max", "hours": "about 22–43 h", "weight": "13 kg (28.7 lb)"}},
+  {"brand": "Anker SOLIX", "model": "C1000 Gen 2", "url": "https://www.ankersolix.com/",
+   "cells": {"wh": "1,024 Wh LiFePO4", "usbc": "140 W (USB-C2)", "hours": "about 22–43 h", "weight": "24.9 lb", "price": "$499.99 (Anker SOLIX, from $699.99)"}},
+  {"brand": "BLUETTI", "model": "Elite 100 V2", "url": "https://www.bluettipower.com/",
+   "cells": {"wh": "1,024 Wh LiFePO4", "usbc": "140 W + 100 W", "hours": "about 22–43 h", "weight": "25 lb", "price": "$499 (BLUETTI; page also shows $699)"}},
+  {"brand": "EcoFlow", "model": "RIVER 3 Plus", "url": "https://us.ecoflow.com/",
+   "cells": {"wh": "286 Wh (858 Wh with an extra battery)", "usbc": "100 W", "hours": "about 6–12 h", "weight": "10.4 lb", "price": "$299 (EcoFlow)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh LiFePO4", "usbc": "140 W + 100 W", "hours": "about 6–12 h", "weight": "4.3 kg (9.5 lb)"}},
+ ],
+ "after": """
+<h2>Starlink Mini power consumption in watts</h2>
+<p>Starlink: the Mini consumes 20 to 40 W on average and 15 W idle (its spec sheet says 25–40 W average); it peaks higher while melting snow or reconnecting. Hours ≈ battery Wh × 0.85 ÷ watts: a 288 Wh station at 30 W runs about 8 hours, a 1,024 Wh station about 29.</p>
+<h2>Why a 65W power bank won't run a Starlink Mini</h2>
+<p>Starlink's USB power article: use a 100 W, 20 V at 5 A USB Power Delivery source; 100 W is the minimum, and a 65 W source or anything from 66 to 99 W won't run the Mini. The Mini doesn't draw 100 W, but the source must offer the 20 V / 5 A profile. Starlink's 5 m USB-C cable replaces the 15 m power cable and needs that 100 W source.</p>
+""",
+ "sources": [
+  ("Starlink: what USB power rating Starlink Mini needs", "https://starlink.com/support/article/fba85643-e7fa-4b55-21e5-021422d5701e"),
+  ("Starlink: Starlink Mini power consumption", "https://starlink.com/support/article/a7fe6525-5356-a837-48e6-33df176cdbc5"),
+  ("Starlink Mini specification sheet", "https://starlink.com/public-files/specification_sheet_mini.pdf"),
+  ("Starlink Mini USB-C cable", "https://starlink.com/support/article/7c9fb509-e3c4-c6af-b2f5-ef95e645c046"),
+  ("ALLPOWERS P1800", "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w"),
+  ("BLUETTI Elite 30 V2", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-01"},
 ]
