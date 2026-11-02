@@ -238,7 +238,14 @@ def in_stock(p):
     return p.get("in_stock", True)
 
 
+def preorder(p):
+    """The store's dispatch date for a product it sells as a pre-order (e.g. "Dec 7, 2026"), or None."""
+    return p.get("preorder") if in_stock(p) else None
+
+
 def stock_note(p):
+    if preorder(p):
+        return f" (pre-order, ships {p['preorder'].rsplit(',', 1)[0]})"
     return "" if in_stock(p) else " (sold out)"
 
 
@@ -540,6 +547,8 @@ def offer_block(p, net, prog, url):
         opens = f"opens {b}'s official US store at no extra cost."
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
     sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {verified_on(p)}; the buy link shows current stock.</p>")
+    if preorder(p):
+        sold_out = f"<p><strong>Pre-order</strong> on {b}'s US store when we checked on {verified_on(p)}: {b} dispatches from {html.escape(p['preorder'])}.</p>"
     others = codes_for(p)[1:]
     if c:
         exp = f' Expires {c["expires"]}.' if c.get("expires") else ""
@@ -559,7 +568,7 @@ def offer_block(p, net, prog, url):
             # "pick it if / skip it if" below it.
             def fill(t):
                 return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=date, verified=verified_on(p),
-                                stock="in stock" if in_stock(p) else "sold out",
+                                stock=("pre-order, ships " + p["preorder"]) if preorder(p) else "in stock" if in_stock(p) else "sold out",
                                 ends=f", code ends {c['expires']}" if c.get("expires") else "")
             head = (f'<h2 style="margin-top:0">{html.escape(fill(bb["headline"]), quote=False)}</h2>'
                     + "<ul>" + "".join(f"<li>{fill(x)}</li>" for x in bb["proof"]) + "</ul>")
@@ -601,6 +610,8 @@ def deal_row(p, url):
     deal = (f' · code <code>{html.escape(c["code"])}</code>: {price} → {money(after)} · {b} cart test passed {date}' if c and date
             else f' · {price} at {b}, price verified {verified_on(p)}')
     stock = "" if in_stock(p) else f" · sold out when we checked on {verified_on(p)}"
+    if preorder(p):
+        stock = f" · pre-order when we checked on {verified_on(p)}, {b} dispatches from {html.escape(p['preorder'])}"
     return f'\n<p><strong>Buy:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>{deal}{stock} · affiliate link</p>'
 
 
@@ -640,7 +651,7 @@ def product_page(p):
           "mainEntityOfPage": {"@type": "ItemPage", "@id": rec["url"], "url": rec["url"], "dateModified": verified_on(p)},
           "image": [image_ld(square, p), image_ld(wide, p)],
           "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in p["specs"]],
-          "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("InStock" if in_stock(p) else "OutOfStock"),
+          "offers": {"@type": "Offer", "priceCurrency": "USD", "price": p["price"], "availability": "https://schema.org/" + ("PreOrder" if preorder(p) else "InStock" if in_stock(p) else "OutOfStock"),
                      "url": url, "seller": {"@type": "Organization", "name": p["brand"]}, "validFrom": verified_on(p),
                      "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"],

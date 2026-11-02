@@ -258,7 +258,7 @@ PRODUCTS = [
 # charged. lowest_seen is the lowest store price we've seen instead; build.py shows today's price when it is lower.
 {"slug": "allpowers-p1800-1024wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS P1800 Portable Power Station, 1,024 Wh, 1,800 W", "model": "VOLIX P1800 (VOLIX-P1800-US)",
- "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w", "price": 439, "lowest_seen": {"price": 439, "date": "2026-10-14", "source": "our price checks"},
+ "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w", "price": 399, "preorder": "Dec 7, 2026", "verified": "2026-11-02", "lowest_seen": {"price": 399, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Capacity", "1,024 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles to 70% (spec table); the manual rates ≥4,000 to 70%"), ("AC output", "1,800 W continuous; 3,600 W peak; 4 outlets"),
            ("USB", "2× USB-C (140 W max), 2× USB-A 18 W"), ("DC", "12 V car port 120 W"), ("Solar input", "650 W (XT60, 11–60 V, 13 A); one SP037 is the useful maximum, two in series exceed 60 V"), ("AC input", "1,200 W fast / 800 W standard / 400 W silent (manual); 80% in ~1 h"),
            ("UPS", "20 ms per ALLPOWERS' manual (its spec table says ≤10 ms, product images 15 ms)"), ("Size / weight", "371 × 208 × 296 mm, 13 kg (manual)"), ("App", "Bluetooth + Wi-Fi")],
@@ -281,7 +281,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-s2000-pro-1451wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS S2000 Pro Portable Power Station, 1,451 Wh, 2,400 W", "model": "S2000 Pro",
- "url": "https://iallpowers.com/products/allpowers-2400w-portable-power-station", "price": 664, "lowest_seen": {"price": 664, "date": "2026-10-14", "source": "our price checks"},
+ "url": "https://iallpowers.com/products/allpowers-2400w-portable-power-station", "price": 549, "verified": "2026-11-02", "lowest_seen": {"price": 549, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Capacity", "1,451 Wh"), ("Chemistry", "NMC (ternary lithium), 2,500+ cycles"), ("AC output", "2,400 W continuous (rated 2,000 W once the battery is below about 60%); 4,000 W peak; 4 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W, 2× USB-A 12 W"), ("DC", "12 V / 10 A car port"), ("Solar input", "1,000 W, 12–150 V, 13 A per spec table and manual (FAQ says 650 W)"), ("AC input", "1,500 W; full in 1.5 h with AC + solar"),
            ("Size / weight", "375 × 245 × 250 mm, 13 kg"), ("App", "Bluetooth only")],
@@ -391,7 +391,7 @@ PRODUCTS = [
 # The stores' own kit listings (station + panel in one product), read 2026-10-24 US time.
 {"slug": "allpowers-p1800-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS P1800 + SP037 400 W Solar Generator Kit (1,024 Wh, 1,800 W)", "model": "P1800 + 1× SP037",
- "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 731, "lowest_seen": {"price": 731, "date": "2026-10-24", "source": "our price checks"},
+ "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 698, "preorder": "Dec 7, 2026", "verified": "2026-11-02", "lowest_seen": {"price": 698, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Battery", "1,024 Wh LiFePO4"), ("AC output", "1,800 W (3,600 W peak)"), ("Panel", "1× SP037 400 W folding, Voc 45.3 V"),
            ("Solar input", "650 W max, 11–60 V, 13 A (XT60)"), ("Solar recharge with this kit", "Not published; 400 W of panel at ~60% real output is roughly 4–5 h of good sun"),
            ("UPS", "≤10 ms (images say 15 ms)"), ("Weight", "Station ~13 kg + panel 18.5 kg")],
@@ -402,7 +402,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-s2000-pro-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
- "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 963, "lowest_seen": {"price": 963, "date": "2026-10-24", "source": "our price checks"},
+ "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 848, "verified": "2026-11-02", "lowest_seen": {"price": 848, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Battery", "1,451 Wh, ternary lithium (NMC), not LiFePO4"), ("AC output", "2,400 W (4,000 W surge); rated 2,000 W once the battery is below about 60% (ALLPOWERS told one reviewer 70%)"), ("Panel", "1× SP037 400 W folding"),
            ("Solar input", "1,000 W, 12–150 V, 13 A on current units (the page FAQ's 650 W / 18–70 V is the 2022 build); one SP037 fits fully, two in series fit current units only"), ("Solar recharge with this kit", "About 5–6 hours of good sun with one SP037 (our estimate)")],
  "warranty": "Station 5 years if registered at iallpowers.com (24 months otherwise); SP037 2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
