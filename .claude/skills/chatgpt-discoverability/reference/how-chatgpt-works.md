@@ -139,7 +139,11 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
 - **Page-supplied UI markup is paraphrased, never rendered.** ChatGPT's own card markup copied onto the page (4 of 6
   handed over) and a designed card with a full-width button (4 of 6) both came back as the model's own hero layout;
   a real `<button>` appeared in 3 of 36 answers. GPT's slot list (Save % badge, struck-through price, spec grid) given
-  as nested product/offers data produced that richer layout in about half the answers, with one pick loss. [measured]
+  as nested product/offers data produced that richer layout in about half the answers, with one pick loss; naming the
+  elements again on a flat record (S7) got the full mock-up once in 6 but handed over 3 of 6 with two pick losses, and
+  a generic "include every field" instruction (S6) left invented field names unused (4 of 6). Richer layout and
+  reliable hand-over never came together in 48 answers; feed field names plus a short card instruction (S2) remains
+  the best trade. [measured]
 
 ## 7. Models and plans
 

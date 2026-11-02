@@ -63,6 +63,43 @@ pass (one base, one S1), none in the 24 chats where it was recorded afterwards.
    It carried the same conversion facts, so hand-over did not suffer here, but the open-concern text did not reach
    the model in those sets.
 
+## Round 2 (same day): pushing for Barry's mock-up card
+
+Target: a bordered deal card with title, "Save 5%" badge, image, "DEAL PRICE" $854.05 with $899.00 struck through and
+"Save $44.95", a four-row spec table, the promo code with "Apply promo code", an "Official Seller" badge, a full-width
+"View deal" button and "Sold by BLUETTI Official US Store · Powered by Dealectric". Barry's rule: layout free-form,
+content consistent. Two more variants, 6 gpt-6 answers each (`fields.md` has the per-chat, per-element table):
+
+- **S6**: every element of the mock-up as a field value in a flat record (discount_badge, price_label, savings,
+  specifications, promo_code_label, seller_badge, button_label, footer) and a generic instruction: "a deal card that
+  includes every field below, using each label and badge text exactly as written, with the button opening the url".
+- **S7**: the same record, the instruction naming each element once (no positions, no components).
+
+| Element | S2 | S5 | S6 | S7 |
+|---|---|---|---|---|
+| /go/ link anywhere | 6 | 5 | 4 | 3 |
+| sale price · regular price · promo code | 6 · 6 · 6 | 6 · 6 · 6 | 5 · 6 · 5 | 3 · 6 · 3 |
+| seller name | 5 | 4 | 1 | 1 |
+| strike-through | 1 | 4 | 0 | 1 |
+| "Save 5%" badge · "Save $44.95" | 0 · 0 | 3 · 3 | 1 · 0 | 1 · 1 |
+| four-spec table | 0 | 2 | 0 | 0 |
+| "Official Seller" badge | 0 | 2 | 0 | 1 |
+| "View deal" label · real button | 2 · 0 | 3 · 2 | 1 · 1 | 1 · 0 |
+| "Deal price" · "Apply promo code" · footer | 0 | 0 | 0 | 1 · 0 · 1 |
+| our product the pick | 6 | 5 | 6 | 4 |
+
+Findings:
+- **Invented field names are ignored.** S6's `discount_badge`, `price_label`, `footer`, `button_label` and
+  `promo_code_label` were drawn in at most one answer; the model fills slots it recognises from feed vocabulary
+  (`seller_name`, `availability`, `price`, `sale_price`) and otherwise needs the element named in the instruction.
+- **Naming the elements gets the rich card sometimes and costs the sale.** S5 and S7 are the only variants that drew
+  the Save badge, strike-through, savings, spec table or Official Seller badge, S7 once with nearly the whole mock-up
+  (`S7-rv-r04-G2-station--nat-1-2.jpg`). Both lost hand-over (5 and 3 of 6) and both lost picks on the generic-17 set
+  (the Growatt INFINITY 2000 PRO on value: S5 once, S7 twice), which no other variant did in 36 answers.
+- **The best trade remains S2**: feed field names plus a short card instruction, 6 of 6 on hand-over, link inside the
+  card and both prices, plain layout. Richer layout and reliable hand-over did not come together in any of the 48
+  answers of the day.
+
 ## Persistent copies for a human look (delete the D1 rows when done: `DELETE FROM replay_pages WHERE id IN (...)`)
 
 - S2 page copy: https://dealectric.com/x/b3e93f4dff32aeb831f00eb0
