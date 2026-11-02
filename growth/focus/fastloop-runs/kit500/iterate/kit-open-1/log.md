@@ -43,3 +43,12 @@ Round 4 knowledge base: not added: +8% is within noise (margin 25%)
 Round 5 models: gpt-6 68 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 5 knowledge base: not added: +9% is within noise (margin 26%)
+| 6 | incumbent | | 18 | 17 | 65% | 76% | 48% | |
+| 6 | short_answer | Reworded the pick line to 'Pick: <kit>, $49 under parts:' with the buy link, giving the re | 18 | 16 | 62% | 75% | 50% | no |
+| 6 | headline | Rewrote the title to lead with the exact query and turned the H1 into the open concern as  | 18 | 17 | 47% | 65% | 34% | dropped: M2 fell |
+| 6 | concern_placement | Moved the pick and buy link to the front of the short answer and put the 288 Wh concern, w | 18 | 18 | 56% | 72% | 43% | no |
+
+Round 6 models: gpt-6 68 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+
+Stopped after round 6. Best: round 5.
