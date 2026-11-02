@@ -919,6 +919,9 @@ def compare_where_to_buy(ours, c, filler=True):
     import re
     slugs = list(dict.fromkeys([r["slug"] for r in ours] + re.findall(r"\{(?:price|buy|deal):([a-z0-9-]+)\}", c["intro"] + c["after"])
                                + re.findall(r'href="/products/([a-z0-9-]+)/"', c["after"])))
+    # what can be bought today first, then pre-orders, then sold out (11-02: the page's first two kits went pre-order and
+    # sold out, and ChatGPT copies its buy links from the top of this block)
+    slugs.sort(key=lambda s: 2 if not in_stock(BY_SLUG[s]) else 1 if preorder(BY_SLUG[s]) else 0)
     names = {r["slug"]: r.get("model") for r in ours}
     items = []
     for slug in slugs:
@@ -938,12 +941,21 @@ def compare_where_to_buy(ours, c, filler=True):
     return (f'<div class="note"><strong>Where to buy</strong>{f"<p>{line}</p>" if filler else ""}<ul>{"".join(items)}</ul></div>')
 
 
+def price_days(c):
+    """Every date a comparison page's prices were read: our products' store checks, plus `checked` for other brands' rows."""
+    return sorted({verified_on(BY_SLUG[r["slug"]]) for r in c["rows"] if r.get("slug")}
+                  | ({c["checked"]} if c.get("checked") and any(not r.get("slug") for r in c["rows"]) else set()))
+
+
 def page_dates(c):
     """The page's own dates in place of the shared template revision (Barry 11-02: 'Revision 2026-10-27 r6' read as the
-    page's update date); the revision stays in an HTML comment."""
+    page's update date); the revision stays in an HTML comment. `checked` dates only the other brands' figures, so the
+    line spans it and our products' own store-check dates (11-02: 'prices checked 2026-10-24' sat above 11-02 prices).
+    Kept to one short range: on lead_first pages it counts toward the rank-6 length gate."""
     d = [f"Published {c['published']}"] if c.get("published") else []
-    if c.get("checked"):
-        d.append(f"prices checked {c['checked']}")
+    days = price_days(c)
+    if days:
+        d.append(f"prices checked {days[0]}" + (f" to {days[-1]}" if len(days) > 1 else ""))
     return f'<!-- template revision {COMPARE_REV} -->' + (f'<p class="small">{" · ".join(d)}.</p>' if d else "")
 
 
@@ -983,7 +995,7 @@ or <a href="/feedback">/feedback</a>.</p>
 """
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": c["h1"], "description": c["desc"],
           "author": {"@type": "Organization", "name": SITE["brand"]}, "publisher": {"@type": "Organization", "name": SITE["brand"]},
-          "datePublished": c["published"], "dateModified": c["checked"], "url": SITE["url"] + compare_path(c),
+          "datePublished": c["published"], "dateModified": max(price_days(c), default=c["checked"]), "url": SITE["url"] + compare_path(c),
           "about": [{"@type": "Product", "name": full_name(BY_SLUG[r["slug"]]), "url": SITE["url"] + f"/products/{r['slug']}/"} for r in ours]}
     return (c["title"], c["desc"], body, ld)
 
