@@ -18,3 +18,12 @@ Round 1 models: gpt-6 46 linked answers; M1 and M2 are standardized to that mix 
 
 Round 2 models: gpt-6 16 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
+| 3 | incumbent | | 18 | 15 | 7% | 20% | 9% | |
+| 3 | offer_line | The short answer now opens with the pick and its buy link, then gives the 15W old-charger  | 18 | 13 | 0% | 8% | 4% | dropped: M2 fell |
+| 3 | alternatives | The second line now labels each alternative by who it suits: 3-in-1 stand for several devi | 18 | 14 | 0% | 21% | 10% | no |
+| 3 | closing_section | The old-charger check now comes first among the closing sections, retitled as a model-numb | 18 | 16 | 0% | 6% | 3% | dropped: M2 fell |
+
+Round 3 models: gpt-6 58 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+
+Stopped after round 3. Best: the published page (no variant beat it).
