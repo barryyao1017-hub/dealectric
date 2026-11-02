@@ -52,3 +52,4 @@ Round 6 models: gpt-6 68 linked answers; M1 and M2 are standardized to that mix 
 
 
 Stopped after round 6. Best: round 5.
+Final check (2 answer(s) per set × 18 sets: 33 vs 36 linked): published M1 54% / M2 76%, final M1 64% / M2 72%, margin 18%: not beyond noise. By model: published {"gpt-6": {"linked": 23, "m1": 0.5652173913043478}, "gpt-6-mini": {"linked": 10, "m1": 0.5}}, final {"gpt-6": {"linked": 24, "m1": 0.6666666666666666}, "gpt-6-mini": {"linked": 12, "m1": 0.5833333333333334}}. Next: live check (search on) and Barry's OK before shipping.
