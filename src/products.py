@@ -398,7 +398,18 @@ PRODUCTS = [
  "warranty": "Station 24 months; panel 2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
  "summary": "ALLPOWERS' 1 kWh LiFePO4 station with its 400 W folding panel in one kit; the cheapest 1 kWh-class kit with a 400 W panel on the makers' US stores when we checked.",
  "fit": "Camping, RV and home-backup buyers who want one box with real solar input.",
- "caveats": ["Bought separately the P1800 ($439) and SP037 ($299) cost $738, so the kit saves only $7.", "The SP037 weighs 18.5 kg; it is a two-hand panel.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
+ "caveats": ["Bought separately the P1800 ($399) and SP037 ($299) cost the same $698 (2026-11-02), so the kit saves nothing; it is one order and one box.", "The SP037 weighs 18.5 kg; it is a two-hand panel.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
+
+{"slug": "allpowers-p1800-sf200-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "name": "ALLPOWERS P1800 + SF200 200 W Solar Generator Kit (1,024 Wh, 1,800 W)", "model": "P1800 + 1× SF200",
+ "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-200w-solar-panel", "price": 531, "preorder": "Dec 15, 2026", "cart_variant": 48279218028697, "verified": "2026-11-02", "lowest_seen": {"price": 531, "date": "2026-11-02", "source": "our price checks"},
+ "specs": [("Battery", "1,024 Wh LiFePO4"), ("AC output", "1,800 W (3,600 W peak)"), ("Panel", "1× SF200 200 W flexible (ETFE, IP68)"),
+           ("Solar input", "650 W max, 11–60 V, 13 A (XT60)"), ("Solar recharge with this kit", "Not published; a 200 W panel gives about 150 W in full sun, so roughly 7–8 h of full sun (1.5–2 sunny days)"),
+           ("UPS", "≤10 ms"), ("Weight", "Station ~13 kg")],
+ "warranty": "Station 24 months; panel 2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
+ "summary": "ALLPOWERS' 1 kWh LiFePO4 station with a 200 W flexible panel in one kit: the most battery a solar generator kit under $500 buys after the code, as a pre-order.",
+ "fit": "Buyers who want 1 kWh for outages or camping and can wait for December delivery.",
+ "caveats": ["Pre-order: ALLPOWERS dispatches from Dec 15, 2026 (checked 2026-11-02).", "One 200 W panel refills 1,024 Wh in about 1.5–2 sunny days; the station takes up to 650 W of panels.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
 
 {"slug": "allpowers-s2000-pro-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
@@ -443,7 +454,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-30-v2-100w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI Elite 30 V2 + 100 W Solar Panel Kit (288 Wh, 600 W)", "model": "Elite 30 V2 + 100 W panel",
- "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 489.99, "verified": "2026-11-02",
+ "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 489.99, "verified": "2026-11-02", "cart_variant": 47282470027483,
  "specs": [("Battery", "288 Wh LiFePO4"), ("AC output", "600 W; 1,500 W Power Lifting"), ("Panel", "1× BLUETTI 100 W"),
            ("Solar input", "200 W max, 12–28 V, 10 A (XT60)"), ("Solar recharge with this kit", "Not published; BLUETTI gives 5.5 h for its 60 W kit")],
  "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
