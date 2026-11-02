@@ -12,7 +12,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import codesweep as C
 url = sys.argv[1]
-t = C.Tab("https://search.google.com/search-console?resource_id=sc-domain%3Adealectric.com")
+# authuser picks barrryyao, the property's owner: the agent's Chrome holds more than one Google account, and the default
+# one gets "you don't have access to this property" (2026-11-02)
+t = C.Tab("https://search.google.com/search-console?resource_id=sc-domain%3Adealectric.com&authuser=barrryyao%40gmail.com")
 def click_xy(x, y):
     for typ in ("mousePressed", "mouseReleased"):
         t.call("Input.dispatchMouseEvent", type=typ, x=x, y=y, button="left", clickCount=1)
