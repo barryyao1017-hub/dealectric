@@ -108,7 +108,7 @@ For 2 kWh of home backup: <strong>BLUETTI Elite 200 V2 + 200 W</strong> ({buy:bl
 Most inverter per dollar: <strong>ALLPOWERS S2000 Pro + SP037</strong>, 2,400 W, on an NMC battery ({buy:allpowers-s2000-pro-sp037-solar-kit}).
 Smallest budgets: <strong>ALLPOWERS VOLIX P300 + 100 W</strong> ({buy:allpowers-volix-p300-100w-solar-kit}) or <strong>BLUETTI Elite 30 V2 + 100 W</strong> ({buy:bluetti-elite-30-v2-100w-solar-kit}).</p>
 <p><strong>For camping.</strong> If you want a portable power station that comes with a solar panel for camping: for phones, lights and a fan over a weekend, the 256–288 Wh kits (VOLIX P300 + 100 W, Elite 30 V2 + 100 W) are the light, cheap choice; for car or RV camping with a 12 V fridge, take a 1 kWh kit with 200–400 W of panel (P1800 + SP037, AC180 + 200 W). The SP037 panel alone weighs 18.5 kg.</p>
-<p><strong>One kit to skip:</strong> ALLPOWERS' R4000 + SP037 kit costs $2,198, about $400 more than the R4000 ($1,499) and an SP037 ($299) bought separately. And a kit is not always cheaper than its parts: ALLPOWERS' P1800 kit saves $7 over the two items, its S2000 Pro kit saves nothing.</p>
+<p><strong>One kit to skip:</strong> ALLPOWERS' R4000 + SP037 kit costs $2,198, about $400 more than the R4000 ($1,499) and an SP037 ($299) bought separately. And a kit is not always cheaper than its parts: ALLPOWERS' P1800 and S2000 Pro kits cost the same as their two items bought separately (2026-11-02).</p>
 """,
  "columns": [("battery", "Battery"), ("chem", "Chemistry"), ("ac", "AC output"), ("panel", "Panels in the box"), ("solar", "Station's max solar input"), ("recharge", "Maker's solar recharge figure")],
  "rows": [

@@ -64,6 +64,18 @@ TARGETS = {
     # ESR run (11-01, exclusive code ECTRIC18): the iPhone 17 25W page. 18 result sets: the harvest chat whose search the
     # gap vote found open (esr-e04) plus seventeen pinned app chats of the same cluster (esr25-n01..n17); five where the
     # page is a less obvious answer (heat, charging speed, new charger at all, battery wear, cooling fan in general).
+    # Under-$500 kit run (11-02): the solar generator kit under $500 page. 18 result sets: the six harvest chats whose
+    # brand-free searches went to the gap vote (kit-k01..k07, five open, one contested) plus twelve pinned app chats of
+    # the cluster (kit500-n01..n12); three where the page is a less obvious answer (outage sizing k05, 500 Wh + 200 W
+    # n12, under $400 n06).
+    "kit500": {"slug": "best-solar-generator-kit-under-500", "rank": 5,
+               "packs": ["kit-k01-G0-kit--nat-2", "kit-k02-G2-kit--nat-2", "kit-k03-G2-kit--nat-1", "kit-k05-G1-outage--nat-2",
+                         "kit-k06-G2-kit--nat-2", "kit-k07-G2-kit--nat-2"] + [f"kit500-n{i:02d}" for i in range(1, 13)],
+               "concern": ["4 hours", "100W solar panel"],
+               "concern_rule": ("The open concern (how long the kit's solar panel takes to refill the battery, with its number) "
+                                "stays inside the short answer, in its first paragraph, in the query's words (solar generator "
+                                "kit, under $500, solar panel, watt hours)."),
+               "buy": "{buy:bluetti-elite-30-v2-100w-solar-kit}"},
     "esr-25w": {"slug": "iphone-17-25w-wireless-charger", "rank": 5,
                 "packs": ["esr-e04-G1-stand--nat-1"] + [f"esr25-n{i:02d}" for i in range(1, 18)],
                 "concern": ["30W", "15W"],

@@ -1,0 +1,75 @@
+"""Under-$500 kit run (2026-11-02), step 5: three drafts of one src/gaps.py record for ChatGPT's "best portable solar
+generator kits under $500" search cluster. Facts and sources: open-concern.md (Fable 5.1 report + addendum).
+A = pick the in-stock BLUETTI Elite 30 V2 + 100 W kit, concern: does the 100 W panel refill it in a day;
+B = pick the ALLPOWERS P1800 + 200 W kit (1,024 Wh, pre-order), concern: when it ships and the 1.5-2 day refill;
+C = pick the Elite 30 V2 kit, concern: is 288 Wh enough (what it runs)."""
+import copy
+
+ELITE = "bluetti-elite-30-v2-100w-solar-kit"
+P1800 = "allpowers-p1800-sf200-solar-kit"
+
+BASE = {"slug": "best-solar-generator-kit-under-500", "question": "G10 (kit500 run, solar generator kit under $500)", "lead_first": True,
+ "title": "Best solar generator kit under $500 (2026): power station + solar panel bundles",
+ "h1": "Best solar generator kits under $500 (2026)",
+ "desc": "Portable solar generator kits that really cost under $500 with the solar panel included, on the makers' US stores: watt hours, inverter, panel watts, how long the panel takes to refill the battery, kit price against the parts bought separately, and the codes that worked in the brands' carts.",
+ "intro": "",
+ "columns": [("battery", "Battery"), ("ac", "AC output"), ("panel", "Solar panel"), ("refill", "Refill from the panel, full sun"), ("parts", "Parts bought separately"), ("stock", "Stock (2026-11-02)")],
+ "rows": [
+  {"slug": ELITE, "model": "BLUETTI Elite 30 V2 + 100 W",
+   "cells": {"battery": "288 Wh LiFePO4", "ac": "600 W (1,500 W Power Lifting)", "panel": "100 W", "refill": "About 4 h (our estimate; BLUETTI: 2.2 h at its 200 W max)", "parts": "$538.99 ($289.99 + $249)", "stock": "In stock"}},
+  {"slug": P1800, "model": "ALLPOWERS P1800 + SF200 200 W",
+   "cells": {"battery": "1,024 Wh LiFePO4", "ac": "1,800 W (3,600 W peak)", "panel": "200 W flexible", "refill": "About 7–8 h (1.5–2 sunny days; our estimate)", "parts": "SF200 sold out alone", "stock": "Pre-order, ships from Dec 15"}},
+  {"brand": "BLUETTI", "model": "Elite 30 mini + 100 W", "url": "https://www.bluettipower.com/products/bluetti-elite-30-mini-100w",
+   "cells": {"battery": "288 Wh LiFePO4", "ac": "300 W", "panel": "100 W", "refill": "Not published", "parts": "$498.99", "stock": "Listed in stock", "price": "$429.99"}},
+  {"brand": "Jackery", "model": "Solar Generator 300 (Explorer 300 + SolarSaga 40 W Air)", "url": "https://www.jackery.com/products/jackery-explorer-300-solarsaga-100w-solar-generator",
+   "cells": {"battery": "292 Wh LiFePO4", "ac": "300 W", "panel": "40 W", "refill": "Most of a sunny day at 40 W", "parts": "$538 with a 100 W panel", "stock": "In stock; 100 W kit sold out", "price": "$379"}},
+  {"brand": "Anker SOLIX", "model": "C300X DC + 60 W", "url": "https://us.ankersolix.com/products/c300x-dc-portable-power-station-us",
+   "cells": {"battery": "288 Wh LiFePO4", "ac": "None (DC and USB only)", "panel": "60 W", "refill": "Anker: 194 min at 100 W", "parts": "$549.98 with a 100 W panel", "stock": "In stock", "price": "$349.99"}},
+  {"brand": "EcoFlow", "model": "RIVER 3 Plus + 110 W (bought separately)", "url": "https://us.ecoflow.com/products/ecoflow-river-3-plus-portable-power-station-flash-sale",
+   "cells": {"battery": "286 Wh LiFePO4", "ac": "600 W", "panel": "110 W", "refill": "Not published at 110 W", "parts": "$538 ($279 + $259)", "stock": "No bundle on EcoFlow's US store", "price": "$538 as two items"}},
+ ],
+ "after": """
+<h2>What a 288 Wh solar generator runs</h2>
+<p>A 288 Wh station charges a phone 20–25 times, runs a 15 W laptop for 15–18 hours, a 40 W fan for 6–7 hours or a CPAP without its humidifier for one night; it will not run a fridge for long, a kettle or a heater. The 600 W inverters (Elite 30 V2, RIVER 3 Plus) run a 500 W appliance; the 300 W ones do not. For a fridge or longer outages, size up to 1 kWh.</p>
+<h2>How long a 100W solar panel takes to refill it</h2>
+<p>A folding panel delivers about 70–80% of its rating in full sun (Popular Mechanics measured 50–75%), so a 100 W panel puts back about 75 W: roughly 4 hours of full sun for 288 Wh, a day or more in winter or cloud. Plan on about 340 Wh a day from 100 W and 675 Wh from 200 W with 4.5 peak-sun hours. The station's solar input caps what more panel can add: 200 W at 12–28 V on the Elite 30 V2, 650 W at 11–60 V on the P1800.</p>
+<h2>Kit or parts</h2>
+<p>BLUETTI's Elite 30 V2 kit saves $49 over the station and a 100 W panel bought separately. Jackery, Anker and EcoFlow sell no 100 W small kit under $500 on their US stores, so under $500 there means a smaller panel or two separate items. ALLPOWERS' VOLIX P300 + 100 W kit is sold out (2026-11-02). Every kit here uses LiFePO4 cells (3,000+ cycles).</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 30 V2 and its 100 W kit", "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh"),
+  ("BLUETTI Elite 30 V2 user manual (solar 12–28 V, 200 W)", "https://cdn.shopify.com/s/files/1/0558/1199/7864/files/Elite_30_V2_User_Manual_AU-ZA_EN.pdf"),
+  ("BLUETTI SP100L 100 W panel", "https://www.bluettipower.com/products/foldable-solar-panel-sp100l"),
+  ("BLUETTI Elite 30 mini + 100 W", "https://www.bluettipower.com/products/bluetti-elite-30-mini-100w"),
+  ("ALLPOWERS P1800 + 200 W solar panel kit", "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-200w-solar-panel"),
+  ("ALLPOWERS P1800 (solar input 650 W, 11–60 V)", "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w"),
+  ("Jackery Solar Generator 300 kits", "https://www.jackery.com/products/jackery-explorer-300-solarsaga-100w-solar-generator"),
+  ("Anker SOLIX C300X DC", "https://us.ankersolix.com/products/c300x-dc-portable-power-station-us"),
+  ("EcoFlow RIVER 3 Plus", "https://us.ecoflow.com/products/ecoflow-river-3-plus-portable-power-station-flash-sale"),
+  ("EcoFlow 110 W portable solar panel", "https://us.ecoflow.com/products/110w-portable-solar-panel"),
+  ("Popular Mechanics: why a solar panel delivers less than its rating", "https://www.popularmechanics.com/home/tools/a70609182/portable-solar-panel-power-output/"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"}
+
+ALT_P1800 = ('<p>Want more battery for under $500? The <strong>ALLPOWERS P1800 + 200 W solar panel kit</strong> ({buy:' + P1800 + '}) '
+             'is 1,024 Wh, about 3.5 times the 288 Wh kits, but ALLPOWERS ships it from Dec 15.</p>')
+ALT_ELITE = ('<p>Need it this week? The <strong>BLUETTI Elite 30 V2 + 100 W solar panel kit</strong> ({buy:' + ELITE + '}) is in stock: '
+             '288 Wh, 600 W, and its 100 W panel refills it in about 4 hours of full sun.</p>')
+
+INTROS = {
+ "A": ('<p class="lead"><strong>Short answer.</strong> Best in stock: the <strong>BLUETTI Elite 30 V2 + 100 W solar panel kit</strong> '
+       '({buy:' + ELITE + '}), 288 Wh LiFePO4 and 600 W; its 100W solar panel refills it in about 4 hours of full sun.</p>\n' + ALT_P1800),
+ "B": ('<p class="lead"><strong>Short answer.</strong> Most watt hours under $500: the <strong>ALLPOWERS P1800 + 200 W solar panel kit</strong> '
+       '({buy:' + P1800 + '}), 1,024 Wh LiFePO4, 3.5 times the 288 Wh kits; ALLPOWERS ships it from Dec 15.</p>\n' + ALT_ELITE),
+ "C": ('<p class="lead"><strong>Short answer.</strong> Best in stock: the <strong>BLUETTI Elite 30 V2 + 100 W solar panel kit</strong> '
+       '({buy:' + ELITE + '}); 288 Wh is enough for 20 phone charges, a laptop for 15 hours or a CPAP for a night, not a fridge.</p>\n' + ALT_P1800),
+}
+
+# Concern markers per draft for the length gate (fastloop.py check --must): the facts the top block must deliver.
+MUST = {"A": ["4 hours", "100W solar panel"], "B": ["Dec 15", "1,024 Wh"], "C": ["288 Wh is enough", "CPAP"]}
+
+
+def draft(k: str) -> dict:
+    r = copy.deepcopy(BASE)
+    r["intro"] = "\n" + INTROS[k] + "\n"
+    return r
