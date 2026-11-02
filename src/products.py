@@ -413,7 +413,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-volix-p300-100w-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
- "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 208.99, "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
+ "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 218.99, "in_stock": False, "verified": "2026-11-02", "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "256 Wh LiFePO4"), ("AC output", "300 W (600 W surge)"), ("Panel", "1× SE100 100 W laminated"),
            ("Solar input", "110 W max, 11–30 V, 8 A"), ("Solar recharge with this kit", "Not published; a 100 W panel refills 256 Wh in roughly 4–5 h of good sun")],
  "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
@@ -443,7 +443,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-30-v2-100w-solar-kit", "brand": "BLUETTI", "program": "cj:bluetti", "category": "solar-kit",
  "name": "BLUETTI Elite 30 V2 + 100 W Solar Panel Kit (288 Wh, 600 W)", "model": "Elite 30 V2 + 100 W panel",
- "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 459.99, "list_price": 489.99,
+ "url": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh", "price": 489.99, "verified": "2026-11-02",
  "specs": [("Battery", "288 Wh LiFePO4"), ("AC output", "600 W; 1,500 W Power Lifting"), ("Panel", "1× BLUETTI 100 W"),
            ("Solar input", "200 W max, 12–28 V, 10 A (XT60)"), ("Solar recharge with this kit", "Not published; BLUETTI gives 5.5 h for its 60 W kit")],
  "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
