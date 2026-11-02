@@ -929,6 +929,15 @@ def compare_where_to_buy(ours, c, filler=True):
             f'a commission that funds the cart tests. The other brands in the table link to their own stores; we earn nothing on them.</p></div>')
 
 
+def page_dates(c):
+    """The page's own dates in place of the shared template revision (Barry 11-02: 'Revision 2026-10-27 r6' read as the
+    page's update date); the revision stays in an HTML comment."""
+    d = [f"Published {c['published']}"] if c.get("published") else []
+    if c.get("checked"):
+        d.append(f"prices checked {c['checked']}")
+    return f'<!-- template revision {COMPARE_REV} -->' + (f'<p class="small">{" · ".join(d)}.</p>' if d else "")
+
+
 def compare_page(c):
     ours = [r for r in c["rows"] if r.get("slug")]
     others = [r for r in c["rows"] if not r.get("slug")]
@@ -939,10 +948,10 @@ def compare_page(c):
         top = f"""<h1>{c['h1']}</h1>
 {compare_fill(c['intro'])}
 {compare_where_to_buy(ours, c, filler=False)}
-<p class="small">Revision {COMPARE_REV}.</p>"""
+{page_dates(c)}"""
     else:
         top = f"""<h1>{c['h1']}</h1>
-<p class="small">Revision {COMPARE_REV}.</p>
+{page_dates(c)}
 {compare_where_to_buy(ours, c)}
 {compare_fill(c['intro'])}"""
     body = f"""
