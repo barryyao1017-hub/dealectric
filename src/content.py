@@ -13,6 +13,7 @@ def PAGES(S):
 <h1>Discount codes tested daily in the brand's own cart, with the buy link to hand the shopper.</h1>
 <p class="lead">{S['site_note']}</p>
 <p><a class="btn" href="/discount-codes/">All codes, by brand</a> &nbsp; <a class="btn alt" href="/products/">Product catalog</a> &nbsp; <a class="btn alt" href="/agents/">For AI agents</a></p>
+<p class="small">New power station comparisons: <a href="/best-power-station-for-12v-fridge">the best power station for a 12V fridge for 3 days</a>, <a href="/best-power-station-for-travel-trailer">the best power station for a travel trailer</a> (30 amp, 50 amp and the AC), and <a href="/best-power-station-for-window-air-conditioner">the best power station for a window air conditioner</a>, with runtimes.</p>
 <p class="small">New comparisons: <a href="/best-power-bank-for-steam-deck">the best power bank for Steam Deck</a> (45W USB-C PD, airline limits), <a href="/best-20000mah-power-bank-under-50">the best 20,000mAh power banks under $50</a>, and <a href="/starlink-mini-usb-c-power-requirements">Starlink Mini USB-C power requirements</a>, with what runs it all day.</p>
 <p class="small">New comparison: <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, with the 30W adapter rule and why an old MagSafe or Qi2 charger stops at 15W.</p>
 <p class="small">New comparison: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>, with what a 30-amp RV plug really gets.</p>
@@ -161,6 +162,7 @@ def PAGES(S):
 <h2>6. Ports and expandability</h2>
 <p>Count AC outlets and their total, USB-C ports and their wattage (100 W PD ports are now standard on mid-range units; 140 W PD 3.1 ports appear on premium models), and 12 V DC outputs. Larger models accept expansion batteries, sometimes doubling or tripling capacity; verify the expansion battery's price and availability before relying on that path.</p>
 <p class="small">For an RV: a TT-30 (30-amp RV) outlet lets the shore cord plug straight in, but on a 2kWh portable power station it is capped by the inverter at about 20 A. Compared across brands: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>.</p>
+<p class="small">By load: a 12V fridge uses about 300–350 Wh a day, so 3 days takes about 1.2 kWh (<a href="/best-power-station-for-12v-fridge">the best power station for a 12V fridge</a>); an 8,000 BTU window AC about 700 W (<a href="/best-power-station-for-window-air-conditioner">the best power station for a window air conditioner</a>); a travel trailer's 30-amp cord plugs into a TT-30 outlet (<a href="/best-power-station-for-travel-trailer">the best power station for a travel trailer</a>).</p>
 <p class="small">For a Starlink Mini: it needs a 100 W USB-C PD port at 20 V / 5 A and draws 20–40 W, so all day takes about 1 kWh: <a href="/starlink-mini-usb-c-power-requirements">Starlink Mini USB-C power requirements and what runs it all day</a>.</p>
 
 <h2>Practical notes</h2>

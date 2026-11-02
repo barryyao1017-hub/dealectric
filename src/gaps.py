@@ -258,7 +258,7 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
  "desc": "Which solar generator to buy for power outages and home backup: twelve portable power stations from EcoFlow, Anker SOLIX, Jackery, BLUETTI and ALLPOWERS compared on battery capacity, expandable batteries, 120/240 V home hookup, UPS switchover, solar charging, days of fridge backup and price checked on the makers' US stores, with the codes that worked in their carts.",
  "intro": """
 <p class="lead">For a power outage, size a solar generator by what must keep running and for how long. A refrigerator uses about 1–1.5 kWh a day, and a portable power station delivers roughly 85% of its rated capacity as AC power, so a 2 kWh station keeps a fridge going about a day and a half and a 3–4 kWh station two to three days. Solar charging is what carries you past that: 400 W of panel puts back roughly 1.2–1.5 kWh on a sunny day. For 240 V loads such as a well pump, or to feed your home's circuits, you need a station with a 120/240 V L14-30 output and a transfer switch; a TT-30 outlet gives 120 V only.</p>
-<p><strong>Short answer.</strong> Best value for a day or two without power: the <strong>BLUETTI Elite 300</strong>, 3,014 Wh LiFePO4 with a 10 ms switchover and a TT-30 outlet, at BLUETTI's automatic sale price ({buy:bluetti-elite-300}); it does not take extra batteries.
+<p><strong>Short answer.</strong> Best value for a day or two without power: the <strong>BLUETTI Elite 300</strong>, 3,014 Wh LiFePO4 with a 10 ms switchover and a TT-30 outlet ({buy:bluetti-elite-300}); it does not take extra batteries.
 Most capacity and inverter per dollar: the <strong>ALLPOWERS R4000</strong>, 3,456 Wh and 3,600 W with 2,000 W of solar input over three ports ({buy:allpowers-r4000-3456wh}); it weighs 45 kg and has no add-on battery in the US.
 To grow into whole-home backup with a transfer switch and 240 V: EcoFlow's <strong>DELTA Pro 3</strong> ($2,799; 4,096 Wh, about 12 kWh with two Extra Batteries, Smart Home Panel 2) or Anker's <strong>SOLIX F3800 Plus</strong> ($2,599.99; 3,840 Wh, up to six BP3800 batteries, 10-circuit transfer switch kit).
 About 2 kWh for under $900: the <strong>BLUETTI Elite 200 V2</strong>, 6,000 cycles and a ≤15 ms switchover ({buy:bluetti-elite-200-v2}), or Anker's C2000 Gen 2 ($899.99), which takes one BP2000 battery to reach 4,096 Wh.
@@ -567,4 +567,138 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("BLUETTI Elite 30 V2", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
  ],
  "published": "2026-11-02", "checked": "2026-11-01"},
+
+# ---------------- G10-G12: three power-station gap-funnel pages (2026-11-02) ----------------
+# Gap funnel, power stations (worktree gap-funnel, growth/focus/funnel-fc41/power-stations.md): app-confirmed open
+# queries. Same method as G07-G09: ChatGPT's shopping-card products for the query in one table with ours, lead with ours
+# being the same class for less. Cards/answers: runs/2026-11-02-gapconfirm/ps-*-app{1,2}.json (gap-funnel worktree);
+# packs copied to runs/fastloop/ps-*-app*. Rival prices/specs read on the makers' US stores and Best Buy/Home Depot
+# 2026-11-02 (subagent); several card prices were stale (C2000 Gen 2 card $1,499 is the panel bundle; unit $999.99).
+# BLUETTI's AFF5OFF and ALLPOWERS' codes are network codes: no "exclusive" claim. The travel-trailer page is a new page
+# beside /best-2kwh-power-station-for-rv (Barry 11-02: don't retarget), angled on the 30/50-amp plug and the AC.
+{"slug": "best-power-station-for-12v-fridge", "question": "G10 (power-station funnel: 12V fridge, 3+ days)", "lead_first": True,
+ "title": "Best portable power station for a 12V fridge for 3 days (2026): runtime, efficiency and 1500Wh vs 2000Wh",
+ "h1": "Best portable power station for a 12V fridge for 3 days (2026)",
+ "desc": "How big a portable power station a 12V fridge needs for 3 days or more: the fridge makers' own daily energy figures, runtime in days for 1,000 Wh, 1,500 Wh and 2,000 Wh stations, and the 2 kWh stations compared on price, with the code that worked in BLUETTI's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}): {after:bluetti-elite-200-v2} after the code for 2,073 Wh LiFePO4, about 5 days of a 12V fridge from its 12 V car port, while the other 2kWh power stations cost $879–$1,029 (EcoFlow DELTA 3 Max, DELTA 2 Max, Anker SOLIX C2000 Gen 2, Jackery 2000 v2). Runtime: a 45–55 L 12V compressor fridge uses about 300–350 Wh a day in hot weather (Dometic: 1.11 Ah an hour at 32 °C; ICECO: 0.35 kWh a day), so 3 days takes about 1.2 kWh, not 2 kWh; a 1,024 Wh station lasts about 2.5 days.</p>
+<p>Run the fridge from the 12 V car port and switch the AC inverter off: an idling inverter draws power around the clock. To keep going past 3 days without a plug, the ALLPOWERS P1800 with a 400 W SP037 panel ({after:allpowers-p1800-sp037-solar-kit} after the code, pre-order) refills about 1.2–1.6 kWh on a sunny day, several days of fridge.</p>
+""",
+ "columns": [("wh", "Battery"), ("days", "12V fridge days (300–350 Wh/day)"), ("dc", "12 V car port"), ("solar", "Max solar input"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh LiFePO4", "days": "about 5", "dc": "12 V / 10 A", "solar": "1,000 W", "weight": "24.2 kg"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Max", "url": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "cells": {"wh": "2,048 Wh LiFePO4", "days": "about 5", "dc": "Yes", "solar": "500 W", "weight": "20.3 kg", "price": "$879 (EcoFlow, Best Buy; sale)"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh LiFePO4 (to 6 kWh)", "days": "about 5", "dc": "Yes", "solar": "1,000 W", "weight": "23 kg", "price": "$1,029 (EcoFlow, Best Buy)"}},
+  {"brand": "Anker SOLIX", "model": "C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"wh": "2,048 Wh LiFePO4 (to 4 kWh)", "days": "about 5", "dc": "Yes", "solar": "800 W", "weight": "18.9 kg", "price": "$999.99 (Anker SOLIX, sale; ships from Nov 21)"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "cells": {"wh": "2,042 Wh LiFePO4", "days": "about 5", "dc": "Yes", "solar": "400 W", "weight": "17.9 kg", "price": "$999 (Jackery)"}},
+  {"slug": "allpowers-p1800-sp037-solar-kit", "model": "ALLPOWERS P1800 + SP037 400 W panel",
+   "cells": {"wh": "1,024 Wh LiFePO4 + 400 W panel", "days": "about 2.5 on battery; more with sun", "dc": "12 V car port, 120 W", "solar": "650 W", "weight": "13 kg + panel"}},
+ ],
+ "after": """
+<h2>How much power a 12V fridge uses in a day</h2>
+<p>The makers' own figures: Dometic CFX3 55IM, 1.11 Ah an hour at 32 °C outside and 4 °C inside, about 320 Wh a day; ICECO VL45, 0.347 kWh per 24 hours (lab data). In mild weather, with the lid shut and the fridge pre-cooled, it is less; in the sun or opened often, more.</p>
+<h2>How many days each size of power station runs it</h2>
+<p>Days ≈ battery Wh × 0.85 ÷ the fridge's Wh a day. At 320 Wh a day: 1,024 Wh about 2.7 days, 1,500 Wh about 4, 2,048 Wh about 5.4. A 12V fridge on the car port avoids the AC inverter's conversion loss and its idle draw.</p>
+<h2>Solar for longer trips</h2>
+<p>A 400 W panel returns about 1.2–1.6 kWh on a sunny day, several times what the fridge uses, so with sun any of these runs a fridge indefinitely; the battery size only decides how many cloudy days you can ride out.</p>
+""",
+ "sources": [
+  ("Dometic CFX3 55IM energy figure", "https://www.dometic.com/en-ae/product/dometic-cfx3-55im-9600025320"),
+  ("ICECO VL45", "https://icecofreezer.com/products/iceco-vl45-portable-refrigerator-freezer"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("EcoFlow DELTA 3 Max", "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+  ("Jackery Explorer 2000 v2", "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-power-station-for-travel-trailer", "question": "G11 (power-station funnel: travel trailer)", "lead_first": True,
+ "title": "Best portable power station for a travel trailer (2026): 30 amp, 50 amp and the air conditioner compared",
+ "h1": "Best portable power station for a travel trailer (2026): 30 amp, 50 amp and AC",
+ "desc": "Which portable power station to buy for a travel trailer: 2–3 kWh stations compared on the 30-amp RV (TT-30) outlet, a 50-amp trailer on an adapter, running the rooftop air conditioner, capacity and price, with the code that worked in BLUETTI's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI AC200L</strong> ({buy:bluetti-ac200l}): {after:bluetti-ac200l} after the code for a 2,048 Wh LiFePO4 portable power station with a 30-amp RV (TT-30) outlet, so the travel trailer's 30-amp cord plugs straight in; the other 2kWh stations cost $879 (EcoFlow DELTA 3 Max, no RV outlet) and $999.99 (Anker SOLIX C2000X Gen 2). The air conditioner: a 13,500 BTU rooftop AC runs at 1,400–1,900 W and needs a soft starter to start on a 2,400 W inverter; then 2 kWh runs it about an hour.</p>
+<p>50-amp trailer: a 50-to-30 adapter gives one 120 V leg, and these stations deliver at most 2,400–3,600 W through it, not 50 A; only a 240 V station such as Anker's SOLIX F3800 ($2,404.10 at Home Depot) has a 50-amp (14-50R) outlet. For more AC time on a TT-30, BLUETTI's Elite 300 has 3,014 Wh ({after:bluetti-elite-300}).</p>
+""",
+ "columns": [("wh", "Battery"), ("ac", "AC output"), ("rv", "RV outlet"), ("acrun", "13,500 BTU AC hours"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh LiFePO4 (to 8,192 Wh)", "ac": "2,400 W", "rv": "TT-30 (30 A plug, 2,400 W)", "acrun": "about 1 h, soft starter needed", "weight": "28.3 kg"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Max", "url": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "cells": {"wh": "2,048 Wh LiFePO4", "ac": "2,400 W", "rv": "None", "acrun": "about 1 h with an adapter cord", "weight": "20.3 kg", "price": "$879 (EcoFlow, Best Buy; sale)"}},
+  {"brand": "Anker SOLIX", "model": "C2000X Gen 2 / C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"wh": "2,048 Wh LiFePO4 (to 4 kWh)", "ac": "2,400 W", "rv": "TT-30 (rated 20 A)", "acrun": "about 1 h", "weight": "18.9 kg", "price": "$999.99 (Best Buy / Anker SOLIX)"}},
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014 Wh LiFePO4", "ac": "2,400 W", "rv": "TT-30 (2,400 W)", "acrun": "about 1.5 h", "weight": "26.3 kg"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Ultra", "url": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh",
+   "cells": {"wh": "3,072 Wh LiFePO4", "ac": "3,600 W", "rv": "TT-30 (30 A)", "acrun": "about 1.5 h", "weight": "32.7 kg", "price": "$1,299 (EcoFlow, Best Buy)"}},
+  {"brand": "Anker SOLIX", "model": "F3800", "url": "https://www.homedepot.com/p/Anker-SOLIX-F3800-Portable-Power-Station-3840Wh-6000-Watt-AC-Output-Home-Backup-RVs-Push-Button-Start-Battery-Generator-AnkerSOLIXF3800/341221895",
+   "cells": {"wh": "3,840 Wh LiFePO4 (expandable)", "ac": "6,000 W, 120/240 V", "rv": "50 A (14-50R)", "acrun": "about 2 h", "weight": "about 60 kg", "price": "$2,404.10 (Home Depot)"}},
+ ],
+ "after": """
+<h2>30 amp vs 50 amp travel trailers</h2>
+<p>A 30-amp trailer has one 120 V leg (3,600 W at the pedestal); a 50-amp trailer has two (12,000 W). A portable power station's TT-30 outlet is limited by its inverter, 2,400 W on the AC200L, Elite 300 and C2000 Gen 2 (Anker rates its TT-30 at 20 A), 3,600 W on EcoFlow's DELTA 3 Ultra. On a 50-to-30 adapter a 50-amp trailer gets that same single leg, shared by its whole panel.</p>
+<h2>Running the RV air conditioner</h2>
+<p>A 13,500–15,000 BTU rooftop AC draws 12–16 A running (about 1,400–1,900 W) and 25–50 A for a moment at start (Micro-Air), more than a 2,400 W inverter's limit; a soft starter cuts the starting current by 65–75% (Micro-Air's claim), which is what lets these stations start it. Hours ≈ battery Wh × 0.85 ÷ the AC's watts: about 1 hour from 2 kWh, 1.5 hours from 3 kWh. Overnight AC takes a generator or shore power.</p>
+<h2>What 2 kWh runs in a travel trailer</h2>
+<p>A 12 V compressor fridge, lights, the water pump, phones and a TV use about 1–1.5 kWh a day, so a 2 kWh station covers one to two days without sun, and a microwave or coffee maker runs on the 2,400 W inverter. Switch the trailer's converter off once its house battery is full, or the converter keeps charging that battery from the station.</p>
+""",
+ "sources": [
+  ("BLUETTI AC200L", "https://www.bluettipower.com/products/ac200l"),
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+  ("EcoFlow DELTA 3 Max", "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh"),
+  ("EcoFlow DELTA 3 Ultra", "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh"),
+  ("Anker SOLIX F3800 at Home Depot", "https://www.homedepot.com/p/Anker-SOLIX-F3800-Portable-Power-Station-3840Wh-6000-Watt-AC-Output-Home-Backup-RVs-Push-Button-Start-Battery-Generator-AnkerSOLIXF3800/341221895"),
+  ("Micro-Air: how many amps an RV AC draws", "https://www.microair.net/blogs/news/how-many-amps-does-an-rv-ac-draw"),
+  ("30 amp vs 50 amp RV service", "https://rvelectricity.substack.com/p/30-amp-vs-50-amp-power"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-power-station-for-window-air-conditioner", "question": "G12 (power-station funnel: window AC)", "lead_first": True,
+ "title": "Best portable power station for a window air conditioner (2026): runtime and startup surge for 5000 and 8000 BTU",
+ "h1": "Best portable power station for a window air conditioner (2026)",
+ "desc": "Which portable power station runs a 5,000 or 8,000 BTU window air conditioner and for how long: running watts from the AC makers, startup surge, runtime for 2 kWh and 3 kWh stations, and the stations compared on capacity, output and price.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}): 3,014 Wh LiFePO4 and a 2,400 W inverter for {after:bluetti-elite-300}, less than the other 3kWh portable power stations (EcoFlow DELTA 3 Ultra $1,299, Anker SOLIX F3800 $2,404.10). Runtime: an 8,000 BTU window AC draws about 695 W (GE AHEK08AC), so about 3.7 hours running flat out and 5–7 hours as the compressor cycles; a 5,000 BTU unit (450 W, Frigidaire) about 5.7 hours flat out. BLUETTI lists an air conditioner (740 W) at 3.3 hours on it.</p>
+<p>On 2 kWh, BLUETTI's Elite 200 V2 is {after:bluetti-elite-200-v2} after the code (EcoFlow DELTA 3 Max $879, Anker SOLIX C2000 Gen 2 $999.99): about 2.5 hours of an 8,000 BTU AC. Startup surge: a window AC's compressor pulls several times its running watts for a moment; an inverter window AC (Midea U) ramps up instead.</p>
+""",
+ "columns": [("wh", "Battery"), ("ac", "AC output"), ("run8", "8,000 BTU (695 W) hours"), ("run5", "5,000 BTU (450 W) hours"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014 Wh LiFePO4", "ac": "2,400 W", "run8": "about 3.7 (5–7 cycling)", "run5": "about 5.7", "weight": "26.3 kg"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Ultra", "url": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh",
+   "cells": {"wh": "3,072 Wh LiFePO4", "ac": "3,600 W (7,200 W surge)", "run8": "about 3.8", "run5": "about 5.8", "weight": "32.7 kg", "price": "$1,299 (EcoFlow, Best Buy)"}},
+  {"brand": "Anker SOLIX", "model": "F3800", "url": "https://www.homedepot.com/p/Anker-SOLIX-F3800-Portable-Power-Station-3840Wh-6000-Watt-AC-Output-Home-Backup-RVs-Push-Button-Start-Battery-Generator-AnkerSOLIXF3800/341221895",
+   "cells": {"wh": "3,840 Wh LiFePO4", "ac": "6,000 W", "run8": "about 4.7", "run5": "about 7.3", "weight": "about 60 kg", "price": "$2,404.10 (Home Depot)"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh LiFePO4", "ac": "2,600 W", "run8": "about 2.5", "run5": "about 3.9", "weight": "24.2 kg"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Max", "url": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "cells": {"wh": "2,048 Wh LiFePO4", "ac": "2,400 W (4,800 W surge)", "run8": "about 2.5", "run5": "about 3.9", "weight": "20.3 kg", "price": "$879 (EcoFlow, Best Buy; sale)"}},
+  {"brand": "Anker SOLIX", "model": "C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"wh": "2,048 Wh LiFePO4 (to 4 kWh)", "ac": "2,400 W (4,000 W surge)", "run8": "about 2.5", "run5": "about 3.9", "weight": "18.9 kg", "price": "$999.99 (Anker SOLIX, sale)"}},
+ ],
+ "after": """
+<h2>How many watts a window air conditioner uses</h2>
+<p>From the makers' spec sheets: a 5,000 BTU Frigidaire (FFRA051WAE) 450 W; an 8,000 BTU GE (AHEK08AC) 695 W; an 8,000 BTU Midea U inverter (MAW08V1QWT) 710 W rated, less once the room is cool. The compressor cycles, so over an hour a fixed-speed unit uses about 50–70% of its running watts on a warm day.</p>
+<h2>Startup surge</h2>
+<p>A fixed-speed compressor draws its locked-rotor current (LRA on the nameplate) for a fraction of a second; LRA × 115 V is the surge to compare with the station's surge rating. BLUETTI's "Power Lifting" figures are for resistive loads such as heaters, not motor starts, so go by the 2,400 W rating; 5,000–8,000 BTU units are within what these stations start. An inverter window AC starts slowly and avoids the spike.</p>
+<h2>Runtime math</h2>
+<p>Hours ≈ battery Wh × 0.85 ÷ the AC's watts. For a night, 8 hours of an 8,000 BTU AC cycling takes about 3–4 kWh of battery; with less, cool the room before sleeping and let the station run the AC in the hottest hours.</p>
+""",
+ "sources": [
+  ("Frigidaire FFRA051WAE (5,000 BTU)", "https://support.frigidaire.com/Owner-Center/Product-Support/FFRA051WAE"),
+  ("GE AHEK08AC (8,000 BTU)", "https://www.ajmadison.com/cgi-bin/ajmadison/AHEK08AC.html"),
+  ("Midea U MAW08V1QWT (8,000 BTU inverter)", "https://www.ajmadison.com/cgi-bin/ajmadison/MAW08V1QWT.html"),
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("EcoFlow DELTA 3 Ultra", "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh"),
+  ("EcoFlow DELTA 3 Max", "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
 ]

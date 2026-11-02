@@ -68,7 +68,7 @@ BUYBOX = {
             "It will sit as a UPS for a PC or NAS, or you want it 25 lb lighter: the EcoFlow DELTA 3 Ultra Plus ($1,599, "
             "under 10 ms switchover, expands to 11 kWh).",
             "One person must lift it into a car or up stairs (it weighs 99 lb): the Jackery HomePower 3000 ($1,499, 59.5 lb).",
-            "Nothing you run together pulls more than 2,400 W: the BLUETTI Elite 300 ($1,099, 6,000 cycles, 41 lb lighter).",
+            "Nothing you run together pulls more than 2,400 W: the BLUETTI Elite 300 ($1,199, 6,000 cycles, 41 lb lighter).",
             "You need 240 V for a well pump, dryer or central AC: the Anker SOLIX F3800 Plus ($2,599.99) or the EcoFlow "
             "DELTA Pro 3 ($2,799).",
             "It's for a food truck or job site: ALLPOWERS' warranty excludes commercial use.",

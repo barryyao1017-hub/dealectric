@@ -190,7 +190,7 @@ PRODUCTS = [
  "caveats": ["Slow recharge: about 8 hours from the wall.", "Solar input is 5–24 V, so typical 100 W+ folding panels (Voc 20–45 V, including the ALLPOWERS SP037) are too high-voltage; use a 12 V-class panel.", "Not airline-legal (300 Wh)."]},
 
 # ---------------- BLUETTI (Awin 59271 for US store) ----------------
-{"slug": "bluetti-elite-200-v2", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
+{"slug": "bluetti-elite-200-v2", "brand": "BLUETTI", "program": "cj:bluetti", "cart_variant": 46252054544603, "category": "power-station",
  "name": "BLUETTI Elite 200 V2 Portable Power Station", "model": "Elite 200 V2",
  "url": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station", "price": 899,
  "specs": [("Capacity", "2,073.6 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles to 80%"), ("AC output", "2,600 W continuous; 3,900 W Power Lifting; 4 outlets (9 outputs in all)"),
@@ -233,14 +233,14 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-300", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI Elite 300 Portable Power Station", "model": "Elite 300",
- "url": "https://www.bluettipower.com/products/elite-300-portable-power-station", "price": 1099, "list_price": 1699,
+ "url": "https://www.bluettipower.com/products/elite-300-portable-power-station", "price": 1199,
  "specs": [("Capacity", "3,014.4 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles"), ("AC output", "2,400 W continuous; 4,800 W Power Lifting; 4× 120 V + 1× TT-30"),
            ("USB", "USB-C 140 W, USB-C 100 W, 2× USB-A 15 W"), ("DC", "12 V / 30 A XT90, 12 V car port (30 A shared)"), ("Solar input", "1,200 W, 12–60 V, 22 A"), ("AC input", "1,800 W, full in ~2 h; ~1.6 h with AC + solar together"),
            ("UPS", "10 ms"), ("Expandable", "No — standalone unit"), ("Size / weight", "366 × 305 × 298 mm, 26.3 kg"), ("App", "Yes")],
  "warranty": "5 years (proof of purchase from an official store)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping",
  "summary": "Three kilowatt-hours in a 26 kg box with a 10 ms UPS; BLUETTI bills it as its smallest and lightest 3 kWh station.",
  "fit": "Multi-day home backup or off-grid work where it will mostly sit in one place.",
- "caveats": ["Not expandable: BLUETTI says it cannot link to its B80/B230/B300/B500K batteries.", "The $1,099 is an automatic $600 discount BLUETTI applies in the cart to the $1,699 list price, no code needed; it was $500 off on October 22, so the price moves."]},
+ "caveats": ["Not expandable: BLUETTI says it cannot link to its B80/B230/B300/B500K batteries.", "$1,199 on BLUETTI's US store on 2026-11-02 (store data, no compare-at price); it was $1,099 via an automatic cart discount off $1,699 on 11-01 and $500 off on 10-22, so the price moves. BLUETTI's code AFF5OFF does not apply to it."]},
 
 {"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "cj:bluetti", "category": "power-station",
  "name": "BLUETTI AC180 Portable Power Station", "model": "AC180",
@@ -256,7 +256,7 @@ PRODUCTS = [
 # ---------------- ALLPOWERS (CJ 7797916) ----------------
 # ALLPOWERS records carry no list_price (DLC-75/76, Barry 2026-10-28: "Drop them"): its compare-at prices were never seen
 # charged. lowest_seen is the lowest store price we've seen instead; build.py shows today's price when it is lower.
-{"slug": "allpowers-p1800-1024wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
+{"slug": "allpowers-p1800-1024wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "cart_variant": 48268416909465, "category": "power-station",
  "name": "ALLPOWERS P1800 Portable Power Station, 1,024 Wh, 1,800 W", "model": "VOLIX P1800 (VOLIX-P1800-US)",
  "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w", "price": 399, "preorder": "Dec 7, 2026", "verified": "2026-11-02", "lowest_seen": {"price": 399, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Capacity", "1,024 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles to 70% (spec table); the manual rates ≥4,000 to 70%"), ("AC output", "1,800 W continuous; 3,600 W peak; 4 outlets"),
@@ -389,7 +389,7 @@ PRODUCTS = [
 
 # ---------------- SOLAR GENERATOR KITS (added 2026-10-25, growth/gap-targets.md) ----------------
 # The stores' own kit listings (station + panel in one product), read 2026-10-24 US time.
-{"slug": "allpowers-p1800-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+{"slug": "allpowers-p1800-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "cart_variant": 48279304044697, "category": "solar-kit",
  "name": "ALLPOWERS P1800 + SP037 400 W Solar Generator Kit (1,024 Wh, 1,800 W)", "model": "P1800 + 1× SP037",
  "url": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel", "price": 698, "preorder": "Dec 7, 2026", "verified": "2026-11-02", "lowest_seen": {"price": 698, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Battery", "1,024 Wh LiFePO4"), ("AC output", "1,800 W (3,600 W peak)"), ("Panel", "1× SP037 400 W folding, Voc 45.3 V"),
