@@ -46,6 +46,19 @@ SKILL.md's page formula.
 ### Don't say a code is guaranteed
 - Tag: rule. Write "tested daily in <brand>'s cart, last passed <date>".
 
+### Don't put ChatGPT's UI markup (or a designed card in it) on the page
+- Tag: measured, offline. Source: `growth/evals/runs/2026-11-02-cardjson/` (RV page, rank 3, n = 6 each).
+- Result: the model paraphrases markup into its own hero layout; hand-over fell to 4 of 6 (own markup) and 4 of 6
+  (designed card) against 6 of 6 for a plain JSON product record with the same instruction.
+
 ## Candidates (appended by iterate.py when a round's best draft passes the entry rule)
+
+### Candidate (manual, 2026-11-02): a one-line product record after the H1, in OpenAI product-feed field names
+- Source: `growth/evals/runs/2026-11-02-cardjson/README.md`, offline replay, RV page at rank 3, 6 answers per variant.
+- Result: record + a line asking the assistant to show it as a product card: `/go/` handed over 6 of 6 and inside the
+  model's card 6 of 6 with seller, in-stock and both prices (plain page: 4 of 6 and 2 of 6). Record without the
+  instruction: 6 of 6 handed over, fields mostly not filled.
+- Before promotion: the Claude check (the instruction is copy addressed to the assistant, DLC-59/60), the rank-1/3/6
+  length gate (the record displaces the short answer at rank 3), then a live reading. DLC-144.
 
 Each starts as observed. Move it into Lessons once a retest or a second page holds it (measured).

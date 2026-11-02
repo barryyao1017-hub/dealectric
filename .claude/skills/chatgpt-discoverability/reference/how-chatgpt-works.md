@@ -127,6 +127,19 @@ unless a path says otherwise. The app is the Free plan, signed in, temporary cha
   in (thepowerstationguide.com 4, others 2–3).
 - **On generic questions the buy buttons go to big retailers and brand stores** (17 of 26 answers had them), not to
   cited pages. [measured, harvest]
+- **The image-plus-price card for the recommended product is the model's own layout, drawn in every answer** (36 of
+  36 replay answers on 11-02, 8 of 9 plain-page answers on 11-01): a `<row>` with an `AsyncImage query="…"` (ChatGPT's
+  image search; a page's `image_url` is never used) and a green price. It is not the catalog card. [measured,
+  `growth/evals/runs/2026-11-02-cardjson/README.md`]
+- **A one-line product record in OpenAI's product-feed field names, right after the H1, fills that card's slots.**
+  Record plus a line asking the assistant to show it as a product card: our `/go/` link inside the card 6 of 6 (plain
+  page 2 of 6), seller 5 of 6, in-stock 6 of 6, regular and sale price 6 of 6; `/go/` handed over 6 of 6 vs 4 of 6.
+  Record alone: handed over 6 of 6, fields mostly not filled. Offline replay at rank 3, n = 6 per variant; not yet
+  checked on Claude (the instruction is copy addressed to the assistant, DLC-59) and not yet live. [measured, small n]
+- **Page-supplied UI markup is paraphrased, never rendered.** ChatGPT's own card markup copied onto the page (4 of 6
+  handed over) and a designed card with a full-width button (4 of 6) both came back as the model's own hero layout;
+  a real `<button>` appeared in 3 of 36 answers. GPT's slot list (Save % badge, struck-through price, spec grid) given
+  as nested product/offers data produced that richer layout in about half the answers, with one pick loss. [measured]
 
 ## 7. Models and plans
 

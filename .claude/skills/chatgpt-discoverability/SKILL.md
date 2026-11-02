@@ -343,8 +343,10 @@ address.
   outside traffic.
 - **Space app chats on the same page 15+ minutes apart.** A live ChatGPT-User fetch is reused by the next chats for a
   few minutes [observed].
-- Product cards, images (ChatGPT's own image index) and the news vertical are outside our control. Don't spend copy
-  effort on them.
+- Catalog product cards, images (ChatGPT's own image index) and the news vertical are outside our control. Don't spend
+  copy effort on them. The answer's own image-plus-price card for its pick is different: a one-line product record
+  after the H1 fills its slots with our link, seller and prices (offline 6 of 6 vs 2 of 6, 11-02; Claude check and
+  live reading pending, DLC-144; `reference/how-chatgpt-works.md` §6).
 
 ## Keeping this skill current
 
