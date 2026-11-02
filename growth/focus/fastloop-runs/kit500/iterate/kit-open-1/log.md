@@ -27,3 +27,11 @@ Round 2 knowledge base: not added: +27% is within noise (margin 27%)
 Round 3 models: gpt-6 67 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 3 knowledge base: not added: +8% is within noise (margin 26%)
+| 4 | incumbent | | 18 | 17 | 53% | 59% | 39% | |
+| 4 | short_answer | The pick line now reads "Best under $500 in stock", the buy link sits right after the kit  | 18 | 16 | 50% | 62% | 40% | no |
+| 4 | headline | Rewrote the title and H1 so they ask the open concern as a question ('is 288 watt hours en | 18 | 16 | 44% | 75% | 35% | no |
+| 4 | concern_placement | Moved the '288 Wh is enough' line to open the short answer as its own sentence, before the | 18 | 18 | 61% | 72% | 45% | new base (best M1) |
+
+Round 4 models: gpt-6 67 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+Round 4 knowledge base: not added: +8% is within noise (margin 25%)
