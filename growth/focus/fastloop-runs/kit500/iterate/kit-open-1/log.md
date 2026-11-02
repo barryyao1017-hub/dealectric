@@ -19,3 +19,11 @@ Round 1 models: gpt-6 62 linked answers; M1 and M2 are standardized to that mix 
 Round 2 models: gpt-6 61 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
 
 Round 2 knowledge base: not added: +27% is within noise (margin 27%)
+| 3 | incumbent | | 18 | 16 | 56% | 62% | 29% | |
+| 3 | offer_line | Moved the buy link from the middle of the first sentence to a short 'Buy:' sentence at the | 18 | 17 | 65% | 71% | 47% | new base (best M1) |
+| 3 | alternatives | Reframed the ALLPOWERS P1800 alternative by what it's best for (a fridge or longer outages | 18 | 18 | 61% | 72% | 54% | no |
+| 3 | closing_section | Moved the 'Kit or parts' section to the top of the closing section, ahead of the runtime a | 18 | 16 | 62% | 81% | 52% | no |
+
+Round 3 models: gpt-6 67 linked answers; M1 and M2 are standardized to that mix (each model's rate weighted by its share).
+
+Round 3 knowledge base: not added: +8% is within noise (margin 26%)
