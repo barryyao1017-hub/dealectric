@@ -20,6 +20,8 @@ CATEGORIES = {
     "speaker":         ("Speakers",              "Portable Bluetooth speakers."),
     "projector":       ("Projectors & screens",  "Portable projectors and car projector screens."),
     "solar-kit":       ("Solar generator kits",  "A power station and a folding solar panel sold together as one kit."),
+    "portable-monitor":("Portable monitors",     "Laptop screen extenders and portable USB-C displays."),
+    "smartwatch":      ("Smartwatches",          "GPS fitness smartwatches."),
 }
 
 PRODUCTS = [
@@ -582,6 +584,220 @@ PRODUCTS = [
  "fit": "Backyards, picnics and small gatherings where one portable speaker has to fill the space.",
  "caveats": ["1.8 kg, against the Emberton III's 0.67 kg.", "$279.99 is Marshall's Special offers price against $329.99 list, for both colours; Marshall gives no end date.",
              "Marshall publishes no output wattage for charging a phone."]},
+
+# ---------------- MOBILE PIXELS (CJ 5725421; added 2026-11-02, gap vote growth/focus/gap-vote/2026-11-02-amazfit-mobilepixels.md) ----------------
+# Trio 3 Pro. Sources:
+#   price/stock: https://www.mobilepixels.us/products.json (handle "trio", variant 42564296376386 "Trio 3 Pro (1400p)",
+#     433.49, compare_at 599.99, available) and https://www.mobilepixels.us/products/trio (sale $433.49, regular $599.99)
+#   specs: product page bullets + comparison table (values are images: Trio_3_Comparison_14.1, _1400P, _300_nits,
+#     _16-10, _4.13_lbs; dimensions as text); manual https://mobilepixelsdriver.s3.us-east-2.amazonaws.com/MANUAL/TRIO3-Series_V5_English.pdf
+#     (60 Hz, 300 nits, <13 W, 4.2 lb, "USB-C DP/HDMI Alternate Mode; Display Driver", the three connection options,
+#     7.5 W at default brightness, PD charger needed for full brightness)
+#   driver: https://www.mobilepixels.us/pages/2023-trio-series-mac-display-driver (Trio 2nd/3rd gen; screen-recording
+#     permission for "DJTVirtualDisplayAgent" per the manual, i.e. a DisplayLink-style virtual display)
+#   review: https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html (13-16" MacBooks, tested on a
+#     14" MacBook Pro; 0.5 m cables; base M1/M2 need the driver)
+#   warranty: https://www.mobilepixels.us/pages/warranty-information (2 years from March 2025); returns:
+#     https://www.mobilepixels.us/policies/refund-policy
+#   Amazon: https://www.amazon.com/dp/B0GC6BKVSZ $423.99, sold by Mobile Pixels Inc, in stock (also B0GF27QM8B $423.99
+#     same seller; a "Brand: Generic" third-party listing B0DS2KVMKF at $369.99 is not the brand's)
+# Unconfirmed / conflicting:
+#   - Refresh rate: the manual says 60 Hz; the store's mobile-layout spec table shows a "120 Hz" image. Used 60 Hz.
+#   - Laptop fit: the store says "Perfect for 15-inch to 16-inch laptops"; Macworld says 13-16" MacBooks (tested on a 14");
+#     resellers say 15-17.3". A 13" fit is not confirmed by Mobile Pixels.
+#   - "Single-cable" and "No drivers needed" on the product page contradict the manual: one cable needs the driver;
+#     no driver needs two cables and two DP-capable USB-C ports.
+#   - Mac display limits are from Apple's specs as I know them (M1/M2 Air: 1 external display; M3 Air: 2 only with the lid
+#     closed; M4 Air: 2 with the lid open); not re-read on apple.com today. Mobile Pixels publishes no chip list.
+#   - Weight: 4.13 lb on the page, 4.2 lb in the manual.
+{"slug": "mobile-pixels-trio-3-pro", "brand": "Mobile Pixels", "program": "cj:mobilepixels", "category": "portable-monitor",
+ "name": "Mobile Pixels Trio 3 Pro Triple Laptop Screen Extender, 2 × 14.1\" 1400p", "model": "Trio 3 Pro (1400p)",
+ "url": "https://www.mobilepixels.us/products/trio", "price": 433.49, "list_price": 599.99, "verified": "2026-11-02",
+ "specs": [("Screens", "2 × 14.1\" 2240×1400 IPS; 16:10, 300 nits, 100% sRGB, 60 Hz (the manual; one store table says 120 Hz)"),
+           ("Fits", "15–16\" laptops (Mobile Pixels); Macworld ran it on a 14-inch MacBook Pro and lists 13–16-inch MacBooks"),
+           ("Connection", "USB-C Alt Mode or driver; one cable per screen with no driver if the laptop has two video-capable USB-C ports, one cable for both screens only with Mobile Pixels' display driver (a DisplayLink-style virtual display)"),
+           ("MacBook Air M1 / M2 / M3", "These run one external screen natively with the lid open, so both side screens need the driver; an M4 Air runs both natively over two cables"),
+           ("Power", "From the laptop's USB-C, under 13 W (about 7.5 W at default brightness); a 15 W+ PD charger is needed for full brightness; two USB-C ports with 65 W pass-through charging"),
+           ("Weight / size", "4.13 lb (about 1.9 kg); 13.44 × 8.83 × 0.9\" folded"), ("Stand", "Built-in kickstand cover; four laptop magnets included; landscape, portrait, presentation and collaboration modes"),
+           ("In the box", "2× USB-C cables (0.5 m) with USB-A adapters, 4 magnets")],
+ "warranty": "2 years (Mobile Pixels' limited warranty, for purchases from March 2025); extended plans sold separately",
+ "returns": "30 days from delivery, original condition and packaging; a $15 return label is deducted from the refund (or ship it yourself); final-sale items excluded; free US shipping",
+ "summary": "Two 14-inch 1400p screens that fold out from behind a laptop lid to make a three-screen setup, powered from the laptop's USB-C.",
+ "fit": "15–16-inch laptop users who want three screens on the road; 14-inch works per reviews.",
+ "caveats": ["One-cable setup needs Mobile Pixels' driver; without it each screen needs its own video-capable USB-C port.",
+             "On a base M1, M2 or M3 MacBook Air (lid open) the second side screen only works through the driver.",
+             "Amazon had it for $423.99 from Mobile Pixels itself on 2026-11-02, $9.50 less than the store.",
+             "300 nits, and the laptop's port can't power full brightness; plug a charger into the Trio for that.",
+             "4.1 lb added to the laptop lid; some owners find the magnets weak."]},
+
+# Duex Float 2 Pro. Sources:
+#   price/stock: https://www.mobilepixels.us/products.json (handle "duex-float", variant 42255313141826 "Duex Float 2 Pro",
+#     263.49, compare_at 389.99, available) and https://www.mobilepixels.us/products/duex-float (sale $263.49, regular $389.99;
+#     "Free USB-C to HDMI Adapter ($29.99 Value)" added to cart; "Flash sale ends" timer)
+#   specs: page bullets and overview text (2.5K, 15-16" laptops, 2.9 lb, 0.7", single USB-C for video and power, HDMI for
+#     laptops without DP Alt Mode, speakers, 65 W pass-through, mini HDMI); comparison-table images (16_inch, 2.5K,
+#     350_nits, 1200, 120hz, 2.9_lbs); manual https://cdn.shopify.com/s/files/1/1705/7751/files/Float_2_2_Pro_User_Manual_20250728.pdf
+#     (3 lb, 0.7 in, 7.5 W at default brightness, 15 W PD for full brightness)
+#   review: https://www.macworld.com/article/2961577/mobile-pixels-duex-float-2-pro-review-portable-screen.html (stacked
+#     above the MacBook's display, magnets on the lid, kickstand; 120 Hz; 350 nits; fits the 16" MacBook Pro)
+#   warranty/returns: as Trio.  Amazon: https://www.amazon.com/dp/B0FJRM51FC $249.99, sold by Mobile Pixels Inc, in stock
+#     (B0B5GGBMBG also $249.99, same seller)
+# Unconfirmed: fit on 13-14" laptops (store says 15-16"; no review tested a 14"); exact height of the stacked screen
+#   above the laptop display.
+{"slug": "mobile-pixels-duex-float-2-pro", "brand": "Mobile Pixels", "program": "cj:mobilepixels", "category": "portable-monitor",
+ "name": "Mobile Pixels Duex Float 2 Pro Stacked Laptop Monitor, 16\" 2.5K 120 Hz", "model": "Duex Float 2 Pro",
+ "url": "https://www.mobilepixels.us/products/duex-float", "price": 263.49, "list_price": 389.99, "verified": "2026-11-02",
+ "specs": [("Screen", "16\" 2560×1600, 120 Hz; 16:10, 350 nits, 1200:1, 100% sRGB, anti-glare"),
+           ("Layout", "Stacked above the laptop; the screen sits directly above the laptop's own display, its base held to the back of the lid by four included magnets and its built-in kickstand; also free-standing or flipped to face someone across the table"),
+           ("Fits", "15–16\" laptops (Mobile Pixels); Macworld calls it a fit for the 16-inch MacBook Pro"),
+           ("Connection", "One USB-C cable for video and power on a laptop with DisplayPort Alt Mode, no driver; mini HDMI for laptops without it; also iPhone 15 and later and Samsung DeX phones"),
+           ("Power", "About 7.5 W at default brightness from the laptop; a 15 W+ PD charger is needed for full brightness; two USB-C ports with 65 W pass-through"),
+           ("Weight / thickness", "2.9 lb (1.3 kg), 0.7\""), ("Audio", "Built-in stereo speakers"),
+           ("In the box", "USB-C cable with USB-A adapter, mini-HDMI to HDMI cable, 4 magnets; the store adds a free USB-C to HDMI adapter")],
+ "warranty": "2 years (Mobile Pixels' limited warranty, for purchases from March 2025); extended plans sold separately",
+ "returns": "30 days from delivery, original condition and packaging; a $15 return label is deducted from the refund (or ship it yourself); final-sale items excluded; free US shipping",
+ "summary": "A 16-inch 2.5K 120 Hz screen that stacks above a laptop's own display on one USB-C cable, so the second screen sits at eye level instead of off to the side.",
+ "fit": "15–16-inch laptop users (16-inch MacBook Pro especially) who want a second screen above, not beside, the laptop.",
+ "caveats": ["Amazon had it for $249.99 from Mobile Pixels itself on 2026-11-02, $13.50 less than the store.",
+             "Sized for 15–16-inch laptops; a 13–14-inch lid is narrower than the 16-inch screen above it.",
+             "Running on laptop power caps brightness; plug a 15 W+ charger into the monitor for full brightness.",
+             "Reviewers call the speakers tinny."]},
+
+# ---------------- AMAZFIT (CJ 5757681; added 2026-11-02, same gap vote) ----------------
+# Bip 6. Sources (read 2026-11-02):
+#   price/stock: https://us.amazfit.com/products.json (handle "bip-6", variant 47009947877628 "Black" 79.99, available,
+#     no compare_at; SKU W2435US2N; the only variant listed, although the spec table names Black, Charcoal, Stone, Red)
+#     and https://us.amazfit.com/products/bip-6 ("Regular price $79.99"; compare block Bip 6 $79.99 / Bip Max $99.99 /
+#     Active 3 Premium $169.99)
+#   specs/features: product page tech spec table (27.9 g, 46.3x40.2x10.45 mm, 1.97" AMOLED 390*450, 2,000 nits (footnote 14:
+#     not below 30% battery), 340 mAh, 14/6/26 days, 32 h GPS, 5 satellite systems, BT 5.2, iOS 14+/Android 7+,
+#     "Magnetic charging head (no cable)"), sport list "Indoor sports: HYROX Race, ...", feature copy "to HYROX Race mode",
+#     footnote 5 (OSM offline maps, navigation needs an imported route), footnote 11 (WhatsApp replies need Android),
+#     Zepp Flow "type Android message replies", "Bluetooth Phone Camera Control (iOS only)"
+#   golf: sport list has only "Golf swing"; Bip 6 is not on https://us.amazfit.com/pages/golf-finder per the 2026-11-02
+#     Active 2 record (list not re-read for this record)
+#   warranty/returns: same Amazfit policy as the Active 2 / Active Max / Balance 2 records (pages not re-read for this record)
+# Unconfirmed: dual-band GPS (the page says "5 satellite positioning systems" only); HYROX race formats (Single/Double/Relay
+#   not listed on the Bip 6 page, unlike Active 2); whether "official" applies (the Bip 6 page doesn't use the word);
+#   Amazon price not checked.
+{"slug": "amazfit-bip-6", "brand": "Amazfit", "program": "cj:amazfit", "category": "smartwatch",
+ "name": "Amazfit Bip 6, 1.97\" AMOLED, Black", "model": "Bip 6 – Black",
+ "url": "https://us.amazfit.com/products/bip-6?variant=47009947877628", "price": 79.99, "verified": "2026-11-02",
+ "specs": [("HYROX", "HYROX Race mode built in; listed among 140+ sports modes, race formats not stated"),
+           ("Battery", "14 days typical; 6 days heavy, 26 days battery saver, 32 h continuous GPS"),
+           ("GPS", "Built in, five satellite systems; dual-band not stated"),
+           ("Maps", "Free offline maps (imported OSM files); turn-by-turn directions on an imported route; no golf course maps"),
+           ("Display / case", "1.97\" AMOLED, 390 × 450, up to 2,000 nits; 46.3 × 40.2 × 10.45 mm aluminium-alloy frame, polymer case"),
+           ("Weight", "27.9 g without strap"), ("Water", "5 ATM"),
+           ("Health", "24/7 heart rate, SpO2 and stress; sleep stages, sleep HRV and sleep score; readiness score"),
+           ("Phones", "iOS 14+ and Android 7+; Bluetooth calls; message replies are Android-only"),
+           ("App", "Zepp App, no subscription for workout and recovery data; Zepp Coach plans included"),
+           ("In the box", "Magnetic charging head; no cable")],
+ "warranty": "1 year (Amazfit limited warranty, official-store purchases)",
+ "returns": "30 days from purchase with an RMA, in original condition and packaging; buyer pays return shipping; November–December orders returnable through January 31 (or 45 days); free FedEx shipping over $99",
+ "summary": "A $79.99 square AMOLED watch with up to 14 days of battery, built-in GPS and a HYROX Race mode, which works with iPhone and Android.",
+ "fit": "HYROX beginners and gym-goers who want race tracking and two weeks between charges for the least money.",
+ "caveats": ["Only the Black version was listed in the US store on 2026-11-02.",
+             "On iPhone you can read notifications and take calls but cannot reply to messages from the watch.",
+             "Dual-band GPS is not stated; no golf course maps.",
+             "2,000-nit peak brightness is unavailable below 30% battery.",
+             "No charging cable in the box (charging head only).",
+             "The Bip 6 page lists HYROX Race but not the Single/Double/Relay formats the Active 2 page describes."]},
+
+# Active 2 (Round). Sources:
+#   price/stock: https://us.amazfit.com/products.json (handle "active-2-round"): Black Sport Silicone 67706898907388 99.99
+#     available; Red Sport Silicone 46799536488700 99.99 SOLD OUT; Black Leather - Premium 46799536521468 129.99 SOLD OUT;
+#     no compare_at prices. Page shows "$99.99 - $129.99", Black Sport Silicone selected at $99.99.
+#   specs/features: https://us.amazfit.com/products/active-2-round (tech spec table, footnotes 6, 13, 14; "HYROX Race Mode"
+#     section; sport list "HYROX Race"; "Call Quick Reply (Android only)"; premium = sapphire glass + leather + extra red strap)
+#   golf: https://us.amazfit.com/pages/golf-finder "Watches that support Golf Map" lists Balance 2, Balance 3, Balance Ultra,
+#     Cheetah 2 Pro/Ultra, T-Rex 3 Pro, T-Rex Ultra 2 only; Active 2 page lists only a "Golf swing" mode.
+#   warranty/returns: https://us.amazfit.com/pages/warranty-policy and https://us.amazfit.com/policies/refund-policy
+#   Amazon: the standard Active 2 (B0DT3YNMBX) had no buy-box price, only a third-party seller (Jiant Solutions);
+#     Renewed B0DV16C5HK $92.99; Premium B0DT3YMDMZ $129.99 in search (seller not checked). New standard price: not found.
+# Unconfirmed: Zepp Aura Premium's price (not checked; the page only says monthly or yearly fee).
+{"slug": "amazfit-active-2-round", "brand": "Amazfit", "program": "cj:amazfit", "category": "smartwatch",
+ "name": "Amazfit Active 2 Round, 44 mm, standard version", "model": "Active 2 (Round) – Black Sport Silicone",
+ "url": "https://us.amazfit.com/products/active-2-round?variant=67706898907388", "price": 99.99, "verified": "2026-11-02",
+ "specs": [("HYROX", "HYROX Race mode built in; Single, Double, Team Relay"),
+           ("Battery", "10 days typical; 5 days heavy, 19 days battery saver, 21 h continuous GPS"),
+           ("GPS", "Single-band, five systems; circularly polarized antenna"),
+           ("Maps", "Free offline maps; downloaded in the Zepp App, turn-by-turn directions on an imported route, plus ski-resort maps; no golf course maps"),
+           ("Display / case", "1.32\" AMOLED, 466 × 466, 2,000 nits; 43.9 × 43.9 × 9.9 mm stainless-steel bezel, polymer frame"),
+           ("Weight", "29.5 g without strap (premium 31.65 g)"), ("Water", "5 ATM"),
+           ("Phones", "iOS 14+ and Android 7+; Bluetooth calls; message and call quick replies are Android-only"),
+           ("App", "Zepp App, no subscription for health and training data; Zepp Aura sleep coach is partly free (sleep music, meditation, one AI coach message a day), Aura Premium (paid) adds weekly/monthly sleep reports and unlimited messages"),
+           ("In the box", "Charging base; no USB-C cable")],
+ "warranty": "1 year (Amazfit limited warranty, official-store purchases)",
+ "returns": "30 days from purchase with an RMA, in original condition and packaging; buyer pays return shipping; November–December orders returnable through January 31 (or 45 days); free FedEx shipping over $99",
+ "summary": "A $99.99 round 44 mm AMOLED watch with up to 10 days of battery, free offline maps and Amazfit's official HYROX Race mode, which works with iPhone and Android.",
+ "fit": "HYROX and gym-plus-running people on a budget who want a normal-looking watch and a week-plus between charges.",
+ "caveats": ["$99.99 is the standard version (tempered glass, silicone strap); the Premium (sapphire glass, leather plus red strap) is $129.99 and was sold out on 2026-11-02, as was the red standard version.",
+             "On iPhone you can read notifications and take calls but cannot reply to messages from the watch.",
+             "Single-band GPS; no golf course maps.", "No charging cable in the box.",
+             "Amazfit is HYROX's official partner, which is where the 'official HYROX mode' label comes from."]},
+
+# Active Max. Sources:
+#   price/stock: https://us.amazfit.com/products.json (handle "active-max", variant 48591709929724 "Default Title" 169.99,
+#     available, no compare_at) and https://us.amazfit.com/products/active-max ($169.99)
+#   specs/features: product page tech spec table, compare table, footnotes 1, 2, 4, 12; sport list "HYROX: HYROX race,
+#     HYROX PFT, HYROX training"; software-update log (OTA 3 July 2026 HYROX simulation, OTA 4 HYROX Virtual Pace)
+#   golf: not on https://us.amazfit.com/pages/golf-finder list.  warranty/returns: as Active 2.
+#   Amazon: https://www.amazon.com/dp/B0G4F6ZCSV $169.99, sold and shipped by Amazon, in stock (same as store; Android
+#     Authority reported $139.99 on Amazon on 2026-10-06).
+# Unconfirmed: whether podcast playback has shipped (footnote 1 still says "will be added via software update", while the
+#   headline sells "100 hours of podcasts").
+{"slug": "amazfit-active-max", "brand": "Amazfit", "program": "cj:amazfit", "category": "smartwatch",
+ "name": "Amazfit Active Max, 48.5 mm", "model": "Active Max",
+ "url": "https://us.amazfit.com/products/active-max", "price": 169.99, "verified": "2026-11-02",
+ "specs": [("Battery", "25 days typical; 13 days heavy, 10 days always-on display, 64 h continuous GPS (22 h with music)"),
+           ("GPS", "Single-band, five systems; not dual-band"),
+           ("Maps", "Free offline maps; contour lines, turn-by-turn directions on an imported route; no golf course maps"),
+           ("HYROX", "HYROX Race, PFT and training modes built in; HYROX simulation and Virtual Pace added by 2026 updates"),
+           ("Display / case", "1.5\" AMOLED, 480 × 480, up to 3,000 nits; 48.5 × 48.5 × 12.2 mm aluminium frame"),
+           ("Weight", "39.5 g without strap"), ("Water", "5 ATM"), ("Storage", "4 GB"),
+           ("Phones", "iOS 14+ and Android 7+; Bluetooth calls; message and call quick replies are Android-only"),
+           ("App", "Zepp App, no subscription for training and recovery data; Zepp Aura Premium is an optional paid sleep-coach add-on"),
+           ("In the box", "Charger; no USB-C cable")],
+ "warranty": "1 year (Amazfit limited warranty, official-store purchases)",
+ "returns": "30 days from purchase with an RMA, in original condition and packaging; buyer pays return shipping; November–December orders returnable through January 31 (or 45 days); free FedEx shipping over $99",
+ "summary": "A big-screen 1.5-inch AMOLED watch rated for up to 25 days of typical use and 64 hours of GPS, with free offline maps, that pairs with an iPhone or Android phone.",
+ "fit": "iPhone or Android owners who want weeks between charges and a large, bright screen, and don't mind a 48.5 mm case.",
+ "caveats": ["48.5 mm and 12.2 mm thick: large on small wrists.", "On iPhone you cannot reply to messages from the watch.",
+             "Single-band GPS; no golf course maps.", "3,000 nits only above 30% battery.",
+             "Amazfit's footnote still says podcast support 'will be added via software update'.",
+             "Amazon matched the $169.99 store price on 2026-11-02, but has sold it for $119–139.99 in recent deals."]},
+
+# Balance 2. Sources:
+#   price/stock: https://us.amazfit.com/products.json (handle "balance-2", variant 47234903802108 "Black (with additional
+#     Lava strap)" 299.99, available, no compare_at) and https://us.amazfit.com/products/balance-2 ($299.99)
+#   specs/features: product page bullets ("Free offline maps, including golf course and ski resort maps"; "downloadable maps
+#     for 40,000 golf courses"; "Golf Mode with Course Maps"), tech spec table (dual-band, 6 systems, 21/10 days, 33/67 h),
+#     compare table, FAQ (HYROX), footnote 8 (WhatsApp replies need Android)
+#   golf: https://us.amazfit.com/pages/golf-finder lists Balance 2 among "Watches that support Golf Map".
+#   warranty/returns: as Active 2.
+#   Amazon: new https://www.amazon.com/dp/B0F9JFCYNX $299.99, sold by Amazon (same as store); Amazon Renewed B0H7FLG8W8 $229.99.
+# Unconfirmed: Zepp Aura is not mentioned on the Balance 2 page (it's an app feature; terms taken from the Active 2 page).
+{"slug": "amazfit-balance-2", "brand": "Amazfit", "program": "cj:amazfit", "category": "smartwatch",
+ "name": "Amazfit Balance 2, 47 mm with extra Lava strap", "model": "Balance 2",
+ "url": "https://us.amazfit.com/products/balance-2", "price": 299.99, "verified": "2026-11-02",
+ "specs": [("Golf", "40,000 free course maps; golf mode with distance to the green, hazards, hole layout and scorekeeping, no subscription"),
+           ("Battery", "21 days typical; 10 days heavy, 33 h accurate GPS, 67 h power-saving GPS"),
+           ("GPS", "Dual-band, six systems"),
+           ("Maps", "Free offline maps with turn-by-turn directions, points of interest and ski-resort maps"),
+           ("HYROX", "Official HYROX Race, Simulation, Training, Virtual Pace and PFT modes"),
+           ("Display / case", "1.5\" AMOLED, 480 × 480, 2,000 nits, sapphire glass; 47.4 × 47.4 × 12.3 mm aluminium frame"),
+           ("Weight", "43 g without strap"), ("Water / diving", "10 ATM; certified for 45 m freediving and recreational scuba"),
+           ("Phones", "iOS 15+ and Android 7+; Bluetooth calls with two speakers; message and call quick replies are Android-only"),
+           ("App", "Zepp App, no subscription for training, recovery or golf maps"), ("In the box", "Charging head, extra Lava strap; no USB-C cable")],
+ "warranty": "1 year (Amazfit limited warranty, official-store purchases)",
+ "returns": "30 days from purchase with an RMA, in original condition and packaging; buyer pays return shipping; November–December orders returnable through January 31 (or 45 days); free FedEx shipping over $99",
+ "summary": "A sapphire-glass multisport watch with dual-band GPS, up to 21 days of battery and free golf maps for 40,000 courses, with no subscription.",
+ "fit": "Golfers who also run, lift or do HYROX and want one watch for both, without paying for course maps.",
+ "caveats": ["On iPhone you cannot reply to messages from the watch.",
+             "An owner notes it doesn't show each shot's distance on the watch the way Garmin's golf watches do.",
+             "No charging cable in the box; 10 days with heavy use.",
+             "Amazon matched the $299.99 store price new on 2026-11-02 (Renewed $229.99); past Amazon deals reached $219.99–249.99 (dates not confirmed)."]},
 ]
 
 

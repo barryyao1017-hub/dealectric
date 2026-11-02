@@ -32,6 +32,8 @@ ICONS = {
     "projector": '<rect x="4" y="16" width="40" height="20" rx="4"/><circle cx="16" cy="26" r="6"/><path d="M28 22h10M28 30h10M10 36v4M38 36v4"/>',
     "solar-kit": '<path d="M4 6h22l3 18H1z"/><path d="M11 6l-1 18M19 6l1 18M3 15h24"/><rect x="28" y="22" width="18" height="20" rx="3"/><path d="M33 22v-3h8v3M33 34l3-6h3l-3 6"/>',
     "speaker": '<rect x="6" y="12" width="36" height="28" rx="10"/><circle cx="17" cy="26" r="6"/><circle cx="31" cy="26" r="6"/><path d="M14 8h20"/>',
+    "portable-monitor": '<rect x="4" y="12" width="12" height="20" rx="2"/><rect x="18" y="10" width="12" height="24" rx="2"/><rect x="32" y="12" width="12" height="20" rx="2"/><path d="M14 40h20"/>',
+    "smartwatch": '<rect x="13" y="13" width="22" height="22" rx="6"/><path d="M18 13l2-9h8l2 9M18 35l2 9h8l2-9"/><path d="M24 19v5l3 3"/>',
 }
 
 CSS = """

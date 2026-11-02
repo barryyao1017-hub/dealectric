@@ -746,4 +746,213 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ('Popular Mechanics: why a solar panel delivers less than its rating', 'https://www.popularmechanics.com/home/tools/a70609182/portable-solar-panel-power-output/'),
  ],
  "published": '2026-11-02', "checked": '2026-11-02'},
+
+# ---------------- G14-G18: Amazfit and Mobile Pixels card-comparison pages (2026-11-02) ----------------
+# Gap vote 2026-11-02 (growth/focus/gap-vote/2026-11-02-amazfit-mobilepixels.md: 8 of 10 packs open). Same method as
+# G07-G12: the products ChatGPT's app answer and shopping cards named for the question (growth/evals/runs/
+# 2026-11-02-cardharvest-xb/app/*.json) in one table with ours. Neither brand has a code (requests sent 11-02, DLC-142),
+# so the lead is the reason the pick fits the query, not a price after a code. Rival figures read on the makers' US
+# stores 2026-11-02 (subagent; open points in growth/focus/funnel-*/screen.md). HYROX: Bip 6 leads, not Active 2, since
+# it has the mode for $20 less.
+{"slug": "best-triple-screen-laptop-extender-for-macbook-air", "question": "G14 (Mobile Pixels funnel: triple screen on a one-display MacBook)", "lead_first": True,
+ "title": "Best triple screen laptop extender for MacBook Air (2026): which work on an M1, M2 or M3 with one external display",
+ "h1": "Best triple screen laptop extender for MacBook Air (2026): M1, M2 and M3",
+ "desc": "Which triple screen laptop extenders work on a MacBook Air that supports one external display (M1, M2, M3 with the lid open): the driver or adapter each needs, the laptop sizes each fits, and prices compared.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For a 15-inch MacBook Air, buy the <strong>Mobile Pixels Trio 3 Pro</strong> ({buy:mobile-pixels-trio-3-pro}): a triple screen laptop extender with two 14.1-inch 2240×1400 screens that runs both side screens on an M1, M2 or M3 MacBook Air over one cable with Mobile Pixels' Mac display driver, for less than INVZI's MagHub Trio Go 16 ($549) or Xebec's Tri-Screen 3 ($758 with the Mac adapter it requires). The concern: an M1, M2 or M3 MacBook Air drives only one external display with the lid open (Apple), so the second side screen needs a DisplayLink-style driver; an M4 Air drives two natively.</p>
+<p>UPERFECT's Z 14 Tri Screen is $389.99 with the same 2240×1400 panels and a macOS driver for one-cable use, but UPERFECT doesn't say which Mac chips it supports. On a 13-inch Air (30.4 cm wide), check the minimum lid size first: Mobile Pixels sizes the Trio for 15–16-inch laptops and UPERFECT needs a lid at least 32.5 cm wide.</p>
+""",
+ "columns": [("screens", "Side screens"), ("fits", "Laptop sizes (maker)"), ("air", "M1/M2/M3 Air, both screens"), ("cable", "Cables"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "mobile-pixels-trio-3-pro", "model": "Mobile Pixels Trio 3 Pro",
+   "cells": {"screens": "2 × 14.1\" 2240×1400, 300 nits", "fits": "15–16\" (Macworld ran it on a 14\")", "air": "Yes, with Mobile Pixels' Mac driver", "cable": "One USB-C with the driver; one per screen without", "weight": "4.13 lb"}},
+  {"brand": "UPERFECT", "model": "Z 14 Tri Screen (BE14BF)", "url": "https://uperfectmonitor.com/products/uperfect-z-tri-screen",
+   "cells": {"screens": "2 × 14\" 2240×1400, 300 nits", "fits": "Lid 32.5–45 cm wide, over 22 cm tall", "air": "One-cable use needs UPERFECT's macOS driver; Mac chips not stated", "cable": "USB-C or mini-HDMI per screen", "weight": "3.39 lb", "price": "$389.99 (UPERFECT)"}},
+  {"brand": "INVZI", "model": "MagHub Trio Go 16", "url": "https://www.invzi.com/",
+   "cells": {"screens": "2 × 16\" 1920×1200", "fits": "Not stated on INVZI's store", "air": "One cable, INVZI driver required", "cable": "One", "weight": "Not stated", "price": "$549 (INVZI)"}},
+  {"brand": "Xebec", "model": "Tri-Screen 3", "url": "https://www.thexebec.com/products/xebec-tri-screen-3",
+   "cells": {"screens": "2 × 13.3\" 1920×1080, 300 nits", "fits": "13–18\" (Xebec)", "air": "Only with the Tri-Screen 3 Mac Adapter (DisplayLink)", "cable": "One built-in USB-C", "weight": "3.6 lb", "price": "$699 + $59 Mac adapter (Xebec)"}},
+  {"brand": "KEFEYA", "model": "S2Pro 14\"", "url": "https://www.kefeya.com/products/kefeya-s2pro-2k-2160-x-1440p-14-inch-laptop-triple-screen-extender",
+   "cells": {"screens": "2 × 14\" 2160×1440, 300 nits", "fits": "13–17\" (Kefeya)", "air": "No: Kefeya says M1/M2/M3 MacBooks need a docking station", "cable": "HDMI or USB-C", "weight": "Not stated", "price": "$299.99 (Kefeya)"}},
+ ],
+ "after": """
+<h2>How many external displays each MacBook Air drives</h2>
+<ul>
+<li><strong>M1 and M2 MacBook Air:</strong> one external display (Apple).</li>
+<li><strong>M3 MacBook Air:</strong> one with the lid open; a second only with the lid closed, which defeats a laptop screen extender (Apple).</li>
+<li><strong>M4 MacBook Air:</strong> two external displays with the lid open (Apple), so a triple extender's two screens work over two video-capable USB-C cables with no driver.</li>
+</ul>
+<h2>Driver or two cables</h2>
+<p>A triple extender shows up as two external displays. On a Mac that drives one, the second screen needs a driver that creates a virtual display (DisplayLink or the maker's own, as with Mobile Pixels and INVZI) or a DisplayLink adapter (Xebec). On a Mac that drives two, plug each screen into its own USB-C port and skip the driver.</p>
+<h2>Fit: measure the lid</h2>
+<p>A 13-inch MacBook Air is 30.4 cm (11.97 in) wide, a 15-inch Air 34 cm (13.4 in) (Apple). Makers state fit as screen sizes or lid dimensions; the side screens clamp to the lid's back, so a lid smaller than the minimum leaves the clamp loose.</p>
+""",
+ "sources": [
+  ("Mobile Pixels Trio 3 Pro", "https://www.mobilepixels.us/products/trio"),
+  ("Mobile Pixels Trio Mac display driver", "https://www.mobilepixels.us/pages/2023-trio-series-mac-display-driver"),
+  ("Macworld: Mobile Pixels Trio 3 Pro review", "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html"),
+  ("MacBook Air (M2) tech specs: one external display (Apple)", "https://support.apple.com/en-us/111867"),
+  ("MacBook Air 13-inch (M3) tech specs (Apple)", "https://support.apple.com/en-us/118551"),
+  ("MacBook Air 13-inch (M4) tech specs: two external displays (Apple)", "https://support.apple.com/en-us/122209"),
+  ("UPERFECT Z 14 Tri Screen", "https://uperfectmonitor.com/products/uperfect-z-tri-screen"),
+  ("Xebec Tri-Screen 3", "https://www.thexebec.com/products/xebec-tri-screen-3"),
+  ("KEFEYA S2Pro", "https://www.kefeya.com/products/kefeya-s2pro-2k-2160-x-1440p-14-inch-laptop-triple-screen-extender"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-portable-monitor-above-laptop-screen", "question": "G15 (Mobile Pixels funnel: stacked above the laptop)", "lead_first": True,
+ "title": "Best portable monitor that sits above a laptop screen (2026): stacked second monitors compared",
+ "h1": "Best portable monitor that sits above a laptop screen (2026)",
+ "desc": "Which portable monitors actually sit above a laptop's own screen, stacked: how each attaches, the laptop sizes it fits, the cable it needs, and prices compared with free-standing dual-screen monitors.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>Mobile Pixels Duex Float 2 Pro</strong> ({buy:mobile-pixels-duex-float-2-pro}): a 16-inch 2560×1600 120 Hz portable monitor that sits directly above a 15–16-inch laptop's screen, held by magnets on the back of the lid and its own kickstand, on one USB-C cable with no driver. The only other monitor made to stack above the laptop screen, Xebec's Snap with its Stack-Up Mount, is $708 for a 13.3-inch 1080p screen. The concern: Mobile Pixels sizes the Float for 15–16-inch laptops; for a 13–14-inch laptop, Xebec's Snap fits 13–17.5 inches.</p>
+<p>ASUS's ZenScreen Duo OLED ($599) and JSAUX's FlipGo Horizon Pro ($449) stack two screens on a free-standing stand, not over the laptop. As one extra display, the Float runs natively on every MacBook, M1 Air included.</p>
+""",
+ "columns": [("screen", "Screen"), ("layout", "Above the laptop screen?"), ("fits", "Laptop sizes"), ("conn", "Connection"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "mobile-pixels-duex-float-2-pro", "model": "Mobile Pixels Duex Float 2 Pro",
+   "cells": {"screen": "16\" 2560×1600, 120 Hz, 350 nits", "layout": "Yes: magnets on the lid's back plus a kickstand", "fits": "15–16\"", "conn": "One USB-C (DP Alt Mode), no driver; mini-HDMI", "weight": "2.9 lb"}},
+  {"brand": "Xebec", "model": "Snap with Stack-Up Mount", "url": "https://www.thexebec.com/products/snap",
+   "cells": {"screen": "13.3\" 1920×1080, 400 nits", "layout": "Yes, on the Stack-Up Mount ($99) over the lid bracket", "fits": "13–17.5\"", "conn": "USB-C, DisplayLink chip built in", "weight": "Screen 1 lb + bracket 1.5 lb", "price": "$609 + $99 mount (Xebec)"}},
+  {"brand": "ASUS", "model": "ZenScreen Duo OLED MQ149CD", "url": "https://www.asus.com/us/displays-desktops/monitors/zenscreen/zenscreen-duo-oled-mq149cd/",
+   "cells": {"screen": "2 × 14\" OLED 1920×1200", "layout": "No: free-standing, its two panels stack on each other", "fits": "Free-standing", "conn": "USB-C or mini-HDMI", "weight": "2.36 lb", "price": "$599 (ASUS eShop)"}},
+  {"brand": "JSAUX", "model": "FlipGo Horizon Pro", "url": "https://jsaux.com/products/flipgo-horizon-snap-on-tri-screens",
+   "cells": {"screen": "2 × 15.6\" 1920×1080, 300 nits", "layout": "No: screens snap to a free-standing stand beside the laptop", "fits": "Stand arm adjusts; sizes not stated", "conn": "One USB-C to the stand", "weight": "About 5.4 lb with stand", "price": "$449 (JSAUX)"}},
+ ],
+ "after": """
+<h2>Stacked above vs beside the laptop</h2>
+<p>A screen above the laptop keeps both screens in one line of sight and takes no extra desk width, which suits small tables, trains and cafés. Side-mounted extenders and free-standing dual monitors need table room to the left or right.</p>
+<h2>Cable and power</h2>
+<p>On a laptop with USB-C DisplayPort Alt Mode, one cable carries video and power to the Float. Running on laptop power caps its brightness; plug a 15 W or larger USB-C charger into the monitor for full brightness (Mobile Pixels). Laptops without Alt Mode use the mini-HDMI port.</p>
+""",
+ "sources": [
+  ("Mobile Pixels Duex Float 2 Pro", "https://www.mobilepixels.us/products/duex-float"),
+  ("Macworld: Duex Float 2 Pro review", "https://www.macworld.com/article/2961577/mobile-pixels-duex-float-2-pro-review-portable-screen.html"),
+  ("Xebec Snap", "https://www.thexebec.com/products/snap"),
+  ("ASUS ZenScreen Duo OLED MQ149CD", "https://www.asus.com/us/displays-desktops/monitors/zenscreen/zenscreen-duo-oled-mq149cd/"),
+  ("JSAUX FlipGo Horizon Pro", "https://jsaux.com/products/flipgo-horizon-snap-on-tri-screens"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-watch-for-hyrox-under-150", "question": "G16 (Amazfit funnel: budget HYROX)", "lead_first": True,
+ "title": "Best watch for HYROX under $150 (2026): watches with a built-in HYROX race mode compared",
+ "h1": "Best watch for HYROX under $150 (2026): built-in HYROX race mode",
+ "desc": "Which watches under $150 have a built-in HYROX race mode, compared with Garmin and COROS on race tracking, battery, GPS and price, for a first HYROX race on a budget.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>Amazfit Bip 6</strong> ({buy:amazfit-bip-6}): the cheapest watch here with a built-in HYROX race mode, with up to 14 days of battery and built-in GPS. For a round AMOLED watch, the <strong>Amazfit Active 2</strong> ({buy:amazfit-active-2-round}) has HYROX Race mode with Single, Double and Team Relay formats listed. The concern: Garmin and COROS have no mode under the HYROX name at this price; Garmin's Forerunner 165 ($249.99) has none, and COROS's PACE 3 ($199) has a "Hybrid Fitness" mode.</p>
+<p>Amazfit is HYROX's official wearable partner, which is why its watches carry the mode. Over $150, Amazfit's Balance 2 adds HYROX Simulation, Training and PFT modes.</p>
+""",
+ "columns": [("hyrox", "HYROX race mode"), ("battery", "Battery (typical)"), ("gps", "GPS"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "amazfit-bip-6", "model": "Amazfit Bip 6",
+   "cells": {"hyrox": "HYROX Race, built in", "battery": "Up to 14 days", "gps": "Five systems, 32 h", "weight": "27.9 g"}},
+  {"slug": "amazfit-active-2-round", "model": "Amazfit Active 2 (Round)",
+   "cells": {"hyrox": "HYROX Race: Single, Double, Team Relay", "battery": "Up to 10 days", "gps": "Five systems, 21 h", "weight": "29.5 g"}},
+  {"brand": "COROS", "model": "PACE 3", "url": "https://coros.com/pace3",
+   "cells": {"hyrox": "No HYROX mode by name; \"Hybrid Fitness\" mode", "battery": "15 days", "gps": "Dual-frequency, 38 h", "weight": "About 30 g", "price": "$199 (COROS)"}},
+  {"brand": "Garmin", "model": "Forerunner 165", "url": "https://www.garmin.com/en-US/p/1055469",
+   "cells": {"hyrox": "No", "battery": "Up to 11 days", "gps": "17–19 h", "weight": "39 g", "price": "$249.99 (Garmin)"}},
+  {"brand": "Garmin", "model": "Forerunner 55", "url": "https://www.garmin.com/en-US/p/741137",
+   "cells": {"hyrox": "No", "battery": "Up to 2 weeks", "gps": "20 h", "weight": "37 g", "price": "$199.99 (Garmin; out of stock)"}},
+ ],
+ "after": """
+<h2>What a HYROX race mode does</h2>
+<p>A HYROX race is eight 1 km runs, each followed by a workout station, with the Roxzone transitions in between. A HYROX race mode tracks the runs and stations as one race session; with a generic interval or strength mode you sort the laps out afterwards.</p>
+<h2>Battery and phones</h2>
+<p>Both Amazfit watches work with iPhone and Android in the Zepp app with no subscription for workout data. On iPhone you get notifications and calls but can't reply to messages from the watch.</p>
+""",
+ "sources": [
+  ("Amazfit Bip 6", "https://us.amazfit.com/products/bip-6"),
+  ("Amazfit Active 2 (Round)", "https://us.amazfit.com/products/active-2-round"),
+  ("Amazfit Balance 2 (HYROX modes)", "https://us.amazfit.com/products/balance-2"),
+  ("COROS PACE 3", "https://coros.com/pace3"),
+  ("Garmin Forerunner 165", "https://www.garmin.com/en-US/p/1055469"),
+  ("Garmin Forerunner 55", "https://www.garmin.com/en-US/p/741137"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-smartwatch-for-iphone-two-week-battery", "question": "G17 (Amazfit funnel: iPhone, two weeks of battery)", "lead_first": True,
+ "title": "Best smartwatch for iPhone with two weeks of battery life under $200 (2026)",
+ "h1": "Best smartwatch for iPhone that lasts two weeks or more, under $200 (2026)",
+ "desc": "Smartwatches that work with an iPhone and last two weeks or more on a charge, under $200 and above, compared on battery days, what works with iPhone, GPS, display and price.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>Amazfit Active Max</strong> ({buy:amazfit-active-max}): a smartwatch that works with iPhone and lasts up to 25 days on a charge (13 with heavy use, per Amazfit), with a 1.5-inch AMOLED screen and GPS, where Garmin's two-week Forerunner 55 is $199.99 and the 28-day Instinct 3 Solar is $349.99. The cheapest that reaches two weeks is the <strong>Amazfit Bip 6</strong> ({buy:amazfit-bip-6}), at up to 14 days. The concern: on iPhone, non-Apple watches show notifications and take calls, but you can't reply to messages from the watch.</p>
+<p>For contrast, Apple Watch SE 3 is rated for up to 18 hours (Apple).</p>
+""",
+ "columns": [("battery", "Battery (typical)"), ("iphone", "With an iPhone"), ("gps", "GPS"), ("display", "Display")],
+ "rows": [
+  {"slug": "amazfit-active-max", "model": "Amazfit Active Max",
+   "cells": {"battery": "Up to 25 days (13 heavy)", "iphone": "Notifications and calls; no message replies", "gps": "Five systems, 64 h", "display": "1.5\" AMOLED, 3,000 nits"}},
+  {"slug": "amazfit-bip-6", "model": "Amazfit Bip 6",
+   "cells": {"battery": "Up to 14 days (6 heavy)", "iphone": "Notifications and calls; no message replies", "gps": "Five systems, 32 h", "display": "1.97\" AMOLED"}},
+  {"brand": "Garmin", "model": "Forerunner 55", "url": "https://www.garmin.com/en-US/p/741137",
+   "cells": {"battery": "Up to 2 weeks", "iphone": "Notifications; text replies not listed", "gps": "20 h", "display": "1.04\" MIP", "price": "$199.99 (Garmin; out of stock)"}},
+  {"brand": "Garmin", "model": "Instinct 3 Solar, 45 mm", "url": "https://www.garmin.com/en-US/p/1316857",
+   "cells": {"battery": "Up to 28 days; more with solar", "iphone": "Notifications; text replies Android only", "gps": "Multi-band", "display": "Monochrome MIP", "price": "$349.99 (Garmin)"}},
+  {"brand": "Amazfit", "model": "T-Rex 3", "url": "https://us.amazfit.com/products/amazfit-t-rex-3",
+   "cells": {"battery": "Up to 27 days", "iphone": "Notifications and calls; no message replies", "gps": "Dual-band, 42 h", "display": "1.5\" AMOLED", "price": "$279.99 (Amazfit)"}},
+  {"brand": "COROS", "model": "VERTIX 2S", "url": "https://coros.com/vertix2s",
+   "cells": {"battery": "36 days", "iphone": "Not stated", "gps": "Dual-frequency, 118 h", "display": "1.4\" sapphire, always on", "price": "$699 (COROS)"}},
+  {"brand": "Apple", "model": "Watch SE 3", "url": "https://www.apple.com/apple-watch-se-3/specs/",
+   "cells": {"battery": "Up to 18 hours (32 h low power)", "iphone": "Full: replies, Apple Pay", "gps": "L1 GPS", "display": "Retina, 1,000 nits", "price": "From $249 (Apple)"}},
+ ],
+ "after": """
+<h2>Why non-Apple watches last weeks</h2>
+<p>Amazfit, Garmin and COROS watches run their own low-power software instead of watchOS, so a charge lasts days or weeks instead of a day. Battery figures are the makers' "typical use" numbers; always-on display, GPS workouts and heavy notifications shorten them (Active Max: 10 days always-on, 13 days heavy use).</p>
+<h2>What works with an iPhone</h2>
+<ul>
+<li>Works: notifications, calls on models with a speaker (both Amazfit picks), and health and sleep data in the maker's app.</li>
+<li>Doesn't: replying to messages from the watch (Android only on Amazfit and Garmin), Apple Pay, iMessage.</li>
+</ul>
+""",
+ "sources": [
+  ("Amazfit Active Max", "https://us.amazfit.com/products/active-max"),
+  ("Amazfit Bip 6", "https://us.amazfit.com/products/bip-6"),
+  ("Amazfit T-Rex 3", "https://us.amazfit.com/products/amazfit-t-rex-3"),
+  ("Garmin Forerunner 55", "https://www.garmin.com/en-US/p/741137"),
+  ("Garmin Instinct 3 Solar 45 mm", "https://www.garmin.com/en-US/p/1316857"),
+  ("COROS VERTIX 2S", "https://coros.com/vertix2s"),
+  ("Apple Watch SE 3 specs", "https://www.apple.com/apple-watch-se-3/specs/"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
+
+{"slug": "best-golf-watch-under-300-with-fitness-tracking", "question": "G18 (Amazfit funnel: golf + everyday fitness)", "lead_first": True,
+ "title": "Best golf watch under $300 that's also a fitness tracker (2026): free course maps, heart rate and sleep",
+ "h1": "Best golf watch under $300 that's also an everyday fitness tracker (2026)",
+ "desc": "Golf GPS watches under $300 that also track workouts, heart rate and sleep: free course maps vs subscriptions, wrist heart rate, GPS, battery and price compared with Garmin's Approach range.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>Amazfit Balance 2</strong> ({buy:amazfit-balance-2}): a golf watch with free maps for 40,000 courses and no subscription that is also an everyday fitness tracker, with wrist heart rate, sleep tracking, dual-band GPS and up to 21 days of battery. Garmin's golf watches under $300 (Approach S44 $299.99, S12 $199.99) have free course maps but no wrist heart rate or sleep tracking; the cheapest Approach with both is the S50 at $399.99. The concern: Garmin's full-color maps, green contours and PlaysLike distances need Garmin Golf, $99.99 a year.</p>
+<p>On the course the Balance 2 shows distance to the green, hazards and the hole layout, and keeps score (Amazfit). Above $600, Garmin's Approach S70 ($649.99) and S72 ($799.99) combine full golf features and fitness tracking.</p>
+""",
+ "columns": [("maps", "Course maps"), ("fitness", "Wrist heart rate / sleep"), ("gps", "GPS"), ("battery", "Battery")],
+ "rows": [
+  {"slug": "amazfit-balance-2", "model": "Amazfit Balance 2",
+   "cells": {"maps": "40,000 courses, free, no subscription", "fitness": "Yes / yes", "gps": "Dual-band", "battery": "Up to 21 days"}},
+  {"brand": "Garmin", "model": "Approach S44", "url": "https://www.garmin.com/en-US/p/1604358",
+   "cells": {"maps": "43,000 free; full maps and green contours need Garmin Golf", "fitness": "No / no", "gps": "GPS", "battery": "Up to 10 days", "price": "$299.99 (Garmin)"}},
+  {"brand": "Garmin", "model": "Approach S12", "url": "https://www.garmin.com/en-US/p/721216",
+   "cells": {"maps": "43,000 free", "fitness": "No / no", "gps": "GPS", "battery": "Up to 10 weeks (watch mode)", "price": "$199.99 (Garmin)"}},
+  {"brand": "Garmin", "model": "Approach S50", "url": "https://www.garmin.com/en-US/p/1604377",
+   "cells": {"maps": "43,000 free; full maps need Garmin Golf", "fitness": "Yes / yes", "gps": "GPS", "battery": "Up to 10 days", "price": "$399.99 (Garmin)"}},
+  {"brand": "Garmin", "model": "Approach S70", "url": "https://www.garmin.com/en-US/p/847706",
+   "cells": {"maps": "43,000 full-color, free; green contours need Garmin Golf", "fitness": "Yes / yes", "gps": "Multi-band", "battery": "Up to 16 days (47 mm)", "price": "$649.99–$699.99 (Garmin)"}},
+  {"brand": "Garmin", "model": "Approach S72", "url": "https://www.garmin.com/en-US/p/1937117",
+   "cells": {"maps": "43,000, aerial imagery", "fitness": "Yes / yes", "gps": "Multi-band", "battery": "Up to 16 days (47 mm)", "price": "$799.99 (Garmin)"}},
+ ],
+ "after": """
+<h2>Free course maps vs Garmin Golf</h2>
+<p>Every Garmin Approach includes preloaded maps for 43,000+ courses with distances to the green and hazards. Garmin Golf ($9.99 a month or $99.99 a year) adds full-color CourseView maps with touch targeting, green contours and PlaysLike distances on watches without them built in (Garmin). Amazfit's golf maps on the Balance 2 are free in the Zepp app.</p>
+<h2>Fitness tracking the rest of the week</h2>
+<p>Wrist heart rate is what makes sleep tracking, training load and recovery scores possible. Among Garmin's Approach watches, the S50, S70 and S72 have it; the S12, S42 and S44 count steps only (Garmin). The Balance 2 also has HYROX race modes, offline hiking maps and 10 ATM water resistance.</p>
+""",
+ "sources": [
+  ("Amazfit Balance 2", "https://us.amazfit.com/products/balance-2"),
+  ("Amazfit golf watch finder", "https://us.amazfit.com/pages/golf-finder"),
+  ("Garmin Approach S44", "https://www.garmin.com/en-US/p/1604358"),
+  ("Garmin Approach S50", "https://www.garmin.com/en-US/p/1604377"),
+  ("Garmin Approach S12", "https://www.garmin.com/en-US/p/721216"),
+  ("Garmin Golf membership", "https://www.garmin.com/en-US/p/850633"),
+  ("Garmin Approach S72 announcement", "https://www.garmin.com/en-US/newsroom/press-release/outdoor/meet-approach-s72-garmins-ultimate-golf-smartwatch/"),
+ ],
+ "published": "2026-11-02", "checked": "2026-11-02"},
 ]
