@@ -15,6 +15,7 @@ def PAGES(S):
 <p><a class="btn" href="/discount-codes/">All codes, by brand</a> &nbsp; <a class="btn alt" href="/products/">Product catalog</a> &nbsp; <a class="btn alt" href="/agents/">For AI agents</a></p>
 <p class="small">New power station comparisons: <a href="/best-power-station-for-12v-fridge">the best power station for a 12V fridge for 3 days</a>, <a href="/best-power-station-for-travel-trailer">the best power station for a travel trailer</a> (30 amp, 50 amp and the AC), and <a href="/best-power-station-for-window-air-conditioner">the best power station for a window air conditioner</a>, with runtimes.</p>
 <p class="small">New comparisons: <a href="/best-power-bank-for-steam-deck">the best power bank for Steam Deck</a> (45W USB-C PD, airline limits), <a href="/best-20000mah-power-bank-under-50">the best 20,000mAh power banks under $50</a>, and <a href="/starlink-mini-usb-c-power-requirements">Starlink Mini USB-C power requirements</a>, with what runs it all day.</p>
+<p class="small">New comparison: <a href="/best-solar-generator-kit-under-500">the best solar generator kit under $500</a>, power station and solar panel bundles priced, with how long the panel takes to refill the battery.</p>
 <p class="small">New comparison: <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, with the 30W adapter rule and why an old MagSafe or Qi2 charger stops at 15W.</p>
 <p class="small">New comparison: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>, with what a 30-amp RV plug really gets.</p>
 <p class="small">Solar generator kits: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a>, 15 portable power station and solar panel kits compared on battery, inverter, panel watts and price.</p>
@@ -154,6 +155,7 @@ def PAGES(S):
 
 <h2>4. Recharge speed and inputs</h2>
 <p>AC recharge has improved sharply: many 1 kWh-class units now go 0–80% in about an hour from a wall outlet. Check the <strong>maximum AC input watts</strong> and whether fast charging needs an app toggle. For solar, the <strong>MPPT input ceiling</strong> (watts and voltage range) sets how many panels you can connect; a 1,000 Wh unit with a 200 W solar ceiling takes a full sunny day to fill. Car (12 V) charging is slow — usually 100–120 W.</p>
+<p class="small">On a budget: <a href="/best-solar-generator-kit-under-500">the best solar generator kit under $500</a>, with the watt hours and solar panel each kit includes.</p>
 <p class="small">Compared across brands: <a href="/compare/solar-watts-to-recharge-power-station/">how many solar watts recharge a 1,000 Wh station</a> and <a href="/compare/solar-generator-with-panels-included/">solar generator kits with the panels included</a>.</p>
 
 <h2>5. UPS / pass-through</h2>

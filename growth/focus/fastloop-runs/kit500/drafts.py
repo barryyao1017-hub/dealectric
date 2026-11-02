@@ -8,7 +8,7 @@ import copy
 ELITE = "bluetti-elite-30-v2-100w-solar-kit"
 P1800 = "allpowers-p1800-sf200-solar-kit"
 
-BASE = {"slug": "best-solar-generator-kit-under-500", "question": "G10 (kit500 run, solar generator kit under $500)", "lead_first": True,
+BASE = {"slug": "best-solar-generator-kit-under-500", "question": "G13 (kit500 run, solar generator kit under $500)", "lead_first": True,
  "title": "Best solar generator kit under $500 (2026): power station + solar panel bundles",
  "h1": "Best solar generator kits under $500 (2026)",
  "desc": "Portable solar generator kits that really cost under $500 with the solar panel included, on the makers' US stores: watt hours, inverter, panel watts, how long the panel takes to refill the battery, kit price against the parts bought separately, and the codes that worked in the brands' carts.",

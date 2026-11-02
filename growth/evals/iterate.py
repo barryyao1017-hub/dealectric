@@ -71,8 +71,8 @@ TARGETS = {
     "kit500": {"slug": "best-solar-generator-kit-under-500", "rank": 5,
                "packs": ["kit-k01-G0-kit--nat-2", "kit-k02-G2-kit--nat-2", "kit-k03-G2-kit--nat-1", "kit-k05-G1-outage--nat-2",
                          "kit-k06-G2-kit--nat-2", "kit-k07-G2-kit--nat-2"] + [f"kit500-n{i:02d}" for i in range(1, 13)],
-               "concern": ["4 hours", "100W solar panel"],
-               "concern_rule": ("The open concern (how long the kit's solar panel takes to refill the battery, with its number) "
+               "concern": ["288 Wh is enough", "CPAP"],
+               "concern_rule": ("The open concern (is 288 Wh enough: what the kit runs, with its numbers) "
                                 "stays inside the short answer, in its first paragraph, in the query's words (solar generator "
                                 "kit, under $500, solar panel, watt hours)."),
                "buy": "{buy:bluetti-elite-30-v2-100w-solar-kit}"},
