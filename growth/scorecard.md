@@ -1,6 +1,7 @@
 # Weekly growth scorecard (DLC-28)
 
-One row per week, Monday to Sunday UTC. North Star (DLC-33): a sale credited to us that isn't our own test.
+One row per week, Monday to Sunday UTC. North Star (DLC-102, since 2026-10-30): 10 credited outside sales in a rolling
+30 days; before that (DLC-33) the first one.
 
 Sources: Cloudflare GraphQL (`python3 tools/cf.py`, `verifiedBotCategory` and `userAgent`); D1 (`wrangler d1 execute
 dealectric --remote`, queries in `worker/README.md`); `site:dealectric.com` read logged out in a clean browser on Google,
@@ -9,8 +10,28 @@ Bing and Brave; Google Search Console and Bing Webmaster Tools (agent Chrome, ba
 | Week | AI crawlers | ChatGPT-User | Search crawlers | Google `site:` | Bing `site:` | Brave `site:` | GSC impr. / clicks | `/go/` clicks by shoppers | `ai_fetch` rows | Feedback rows | Sales |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 10-20 to 10-26 | 400 (GPTBot 177, Amazonbot 104) | 258 (mostly our evals) | 311 (Bingbot 18) | ~47 (33 on 10-23) | 0 | 0 | 32 / 0 (10-19 to 10-25) | 0 known | 149 | 3 | none known |
+| 10-27 to 11-02 | 290 (ClaudeBot 147, Amazonbot 124, GPTBot 16) | 447 (verified) | 424 (OAI-SearchBot 177, Googlebot 160, Bingbot 57) | no total shown (GSC: 46 indexed, report of 10-22) | not read (challenge page) | 0 | 76 / 2 (avg position 33.6) | 19 ChatGPT shoppers (45 tagged clicks) | 92 | 1 | 1 (CJ, ALLPOWERS, $33.63, New) |
 
 ## Notes
+
+**10-27 to 11-02** (read 2026-11-03 on the work laptop).
+- Sales: CJ shows one commission, the first sale (ALLPOWERS P1800 + SP037 kit, event 10-29 07:42 PT, sale $672.52,
+  commission $33.63, status New, coupon APS87Q7FQHHT). Awin not read (it had 0 transactions in October).
+- `/go/`: 45 redirects from real browsers tagged `utm_source=chatgpt.com`, 19 shoppers by (Pacific day, user agent):
+  18 clicks on 10-29, 18 on 10-30, then 2-4 a day. 24 of the 45 went to the ALLPOWERS P1800 + SP037 kit, 10 to the
+  VOLIX P300 kit, 6 to the Elite 30 V2 kit, 3 to the AC180 kit. The 452 untagged real-UA redirects are mostly
+  scanners. `tools/fetchwho.py`: of the 92 `ai_fetch` rows, 63 are crawlers, 16 ours, 12 outside or outside-likely, 1
+  ambiguous. Tagged page landings: 91 (86 chatgpt.com).
+- Feedback: one row, `missing_product` "Anker Prime 250W power bank" (10-31), the same Anker ask as before.
+- Bing (DLC-31) moved: verified Bingbot fetched inner pages for the first time, 13 distinct ones from 10-28 (/data) on,
+  faster from 11-01: /bluetti-ac200l, /bluetti-ac180, /best-2kwh-power-station-for-rv, /allpowers-p1800-1024wh,
+  /soundcore-aerofit-2, /baseus-gan5-pro-65w-2c-u, /bluetti-elite-200-v2, /agents, /contact, /products (all 200).
+  The public `site:` count could not be read (Bing served a challenge page in the browser pane) and Bing Webmaster
+  was signed out in the Agent Chrome.
+- GSC: 76 impressions, 2 clicks, average position 33.6 (32 / 0 the week before). The Page indexing report is still
+  dated 10-22 (46 indexed, 17 not). Google's `site:` no longer shows a total, so that column is GSC's from now on.
+- Brave `site:dealectric.com`: no results ("too few matches").
+
 
 **10-20 to 10-26** (read 2026-10-27).
 - `/go/` clicks: 219 redirects carry `bot_like=0`, but none looks like a shopper. 98 come from Windows Chrome UAs in 6
