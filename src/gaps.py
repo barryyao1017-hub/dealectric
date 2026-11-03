@@ -333,6 +333,11 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # "Buy the AC200L" opener, buy link right after the name, First/Second/Third), trimmed by 83 characters so the short
 # answer survives the length cut at rank 6 (fastloop check passes all 24 rank x result-set cells).
 {"slug": "best-2kwh-power-station-for-rv", "question": "G05 (DLC-114)",
+ # DLC-144 (2026-11-02): the S2 product record, one line after the H1; fields tested offline in growth/evals/cardjson.py.
+ "product_result": {"slug": "bluetti-ac200l", "item_id": "BLUETTI-AC200L",
+                    "title": "BLUETTI AC200L 2kWh portable power station for an RV",
+                    "description": "2,048 Wh LiFePO4, 2,400 W, built-in 30-amp RV outlet (gives about 20 A, not 30 A); under $900 after the code.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC200L-_-_1.png"},
  "title": "Best 2kWh portable power station for an RV under $900 (2026): what a 30-amp RV plug really gets",
  "h1": "Best 2kWh portable power station for an RV under $900 (2026)",
  "desc": "Which 2kWh portable power station to buy for an RV under $900: five LiFePO4 stations compared on the TT-30 (30-amp RV) outlet, output, solar input, weight and price on the makers' US stores, with what a 30-amp RV plug really gets from a 2,400 W inverter and the code that worked in BLUETTI's cart.",

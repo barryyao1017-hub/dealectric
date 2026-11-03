@@ -114,3 +114,12 @@ Findings:
   failure, both chats rerun).
 - The OpenAI Apps SDK is the sanctioned way to render our own card component inside ChatGPT, but only for shoppers who
   have connected the app or whom ChatGPT points at it; a separate evaluation (DLC-145).
+
+## Shipped (2026-11-02, Barry's call, before the Claude check)
+
+S2 went live on `/best-2kwh-power-station-for-rv`: `build.py` renders a `product_result` record from the page's data
+(`product_result_line`, prices/code/stock from the same sources the daily sweep updates), one line after the H1, with
+the S2 instruction. The record's description also carries the 30-amp concern ("gives about 20 A, not 30 A"): with the
+tested S2 text the copy-rules gate failed the concern at rank 6 in all three result sets and at rank 3 in one (the
+record displaces the short answer); with the concern in the record it passes at ranks 1, 3 and 6 everywhere. Still
+pending: the Claude reading (S1/S2 copies), OAI-SearchBot's re-fetch (`storedcopy.py`), then live app readings.
