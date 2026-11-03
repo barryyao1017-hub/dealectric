@@ -77,6 +77,9 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G21 | /best-nas-under-500-for-docker-immich-home-assistant | DXP2800 $389.99 | open ×3 |
 | G22 | /best-nas-for-photographers-10tb-raw-lightroom | DXP4800 Plus; DXP2800 | open ×3 |
 | G23 | /best-usb-switch-two-computers-keyboard-mouse-ssd | USB-C Switch CM691 $40.99 | open ×3 |
+| G24 | /thunderbolt-5-ssd-enclosure-worth-it-macbook-pro-m4 | TB5 enclosure with fan $159.99 w/ UL45789; fanless $159.99 w/ UL95583 | open ×3 |
+| G25 | /best-40gbps-nvme-enclosure-no-throttling | 40Gbps fan enclosure CM642 $75.99 w/ UL15976 | open ×3 |
+| G26 | /usb-c-cable-240w-and-40gbps | Thunderbolt 5 cable $31.99 | open/contested/open |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -121,3 +124,12 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
 - 2026-11-03, G23 built (USB switch, two computers): new record `ugreen-usb-c-switch-2-computers-4-port-10gbps` and a
   `usb-switch` category. Only three 10Gbps switches exist (UGREEN, Cable Matters 201160, ATEN US3342). Gate passed
   after two trims: the record line and the lead tie on all eight query words, so 179 + record + lead had to fit 1,309.
+- 2026-11-03, batch 5 votes (`x5-*`): Mac mini M4 dock contested (TechRadar, Tom's Guide, Macworld); **40Gbps NVMe
+  enclosure that doesn't throttle open ×3**; **Thunderbolt 5 enclosure for a MacBook Pro M4 open ×3**; **240W + 40Gbps
+  cable open/contested/open**; 300W desktop charger contested (Macworld, Tom's Hardware, Notebookcheck). Three pages
+  built (G24–G26) with four new records: TB5 enclosure fanless (SKU 95583, $229.99, UL95583 $70 off) and with fan
+  (SKU 45789, $259.99, UL45789 $100 off; both $159.99 after the code, cheaper than ORICO X50 Pro, OWC and Satechi),
+  40Gbps fan enclosure CM642 (SKU 15976, $109.99, UL15976 $34 off), Thunderbolt 5 cable (SKU 45996, $31.99, no code).
+  All codes cart-tested with the control rejected. Conflicts recorded on the pages: UGREEN's US page for SKU 95583
+  describes fins, ChargerLAB's teardown of "the UGREEN TB5 enclosure" found a fan (SKU unstated); UGREEN's
+  "Intel-certified" claim on the TB5 cable could not be checked in Intel's list. Three research agents ~355k tokens.

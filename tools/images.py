@@ -33,6 +33,7 @@ ICONS = {
     "solar-kit": '<path d="M4 6h22l3 18H1z"/><path d="M11 6l-1 18M19 6l1 18M3 15h24"/><rect x="28" y="22" width="18" height="20" rx="3"/><path d="M33 22v-3h8v3M33 34l3-6h3l-3 6"/>',
     "speaker": '<rect x="6" y="12" width="36" height="28" rx="10"/><circle cx="17" cy="26" r="6"/><circle cx="31" cy="26" r="6"/><path d="M14 8h20"/>',
     "portable-monitor": '<rect x="4" y="12" width="12" height="20" rx="2"/><rect x="18" y="10" width="12" height="24" rx="2"/><rect x="32" y="12" width="12" height="20" rx="2"/><path d="M14 40h20"/>',
+    "ssd-enclosure": '<rect x="6" y="16" width="36" height="16" rx="4"/><path d="M12 22h16M12 26h10"/><circle cx="35" cy="24" r="2"/>',
     "usb-switch": '<rect x="6" y="18" width="36" height="12" rx="3"/><path d="M14 18V8h6M34 18V8h-6M14 30v10h6M34 30v10h-6"/><circle cx="24" cy="24" r="2"/>',
     "nas": '<rect x="8" y="6" width="32" height="36" rx="4"/><path d="M8 15h32M8 24h32M8 33h32"/><circle cx="34" cy="10.5" r="1.5"/><circle cx="34" cy="19.5" r="1.5"/><circle cx="34" cy="28.5" r="1.5"/><circle cx="34" cy="37.5" r="1.5"/>',
     "smartwatch": '<rect x="13" y="13" width="22" height="22" rx="6"/><path d="M18 13l2-9h8l2 9M18 35l2 9h8l2-9"/><path d="M24 19v5l3 3"/>',

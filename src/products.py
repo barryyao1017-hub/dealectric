@@ -24,6 +24,7 @@ CATEGORIES = {
     "smartwatch":      ("Smartwatches",          "GPS fitness smartwatches."),
     "nas":             ("NAS",                   "Network-attached storage: diskless home and small-office NAS units, sold without drives."),
     "usb-switch":      ("USB switches & hubs",   "USB switches that share devices between computers, and USB-C hubs."),
+    "ssd-enclosure":   ("SSD enclosures",        "M.2 NVMe enclosures over USB4, Thunderbolt 4 and Thunderbolt 5."),
 }
 
 PRODUCTS = [
@@ -996,6 +997,59 @@ PRODUCTS = [
              "Switching moves the USB devices without ejecting them; eject an external drive first or risk a corrupted write.",
              "UGREEN advises against wireless 2.4 GHz receivers on USB 3 switches (interference) and cables longer than 0.8 m.",
              "$40.99 is a sale price against $69.99 on 2026-11-03; UGREEN gives no end date. No printed code on the page."]},
+
+
+{"slug": "ugreen-40gbps-nvme-enclosure-cooling-fan", "brand": "UGREEN", "program": "cj:ugreen", "category": "ssd-enclosure",
+ "name": "UGREEN 40Gbps M.2 NVMe SSD Enclosure with Cooling Fan (USB4, Thunderbolt 4/3)", "model": "40Gbps NVMe enclosure with fan (SKU 15976)",
+ "url": "https://us.ugreen.com/products/ugreen-40gbps-m-2-nvme-enclosure-with-cooling-fan", "price": 109.99, "verified": "2026-11-03",
+ "specs": [("Interface", "USB4 40 Gb/s; works on Thunderbolt 4 and 3 hosts; USB 3.2 hosts fall back to 10 Gb/s"), ("Controller", "ASMedia ASM2464PD (PCWorld's review); UGREEN's EU page claims up to 3,812 MB/s"), ("Cooling", "Aluminium shell, silicone thermal pad and a PWM fan that adjusts its speed to temperature (UGREEN's 'triple heat dissipation')"),
+           ("Drives", "M.2 NVMe (PCIe) SSDs; UGREEN's page lists 4 TB; not for SATA M.2"), ("In the box", "Enclosure, USB-C to C cable, USB-C to A cable, thermal pad, screwdriver, silicone sleeve, manual"),
+           ("Power", "Bus-powered")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A 40 Gb/s USB4 enclosure with a temperature-controlled fan on top of the usual aluminium shell and thermal pad, for sustained transfers that fanless boxes slow down on; $109.99 on 2026-11-03.",
+ "fit": "Anyone copying hundreds of gigabytes at a time (video, backups) from a Gen4 NVMe drive over a Thunderbolt or USB4 port.",
+ "caveats": ["UGREEN publishes no sustained-transfer or temperature figures of its own; PCWorld's 450 GB write ran with no thermal trouble and IT-Connect saw 43 °C, stable.",
+             "Not tool-free despite one UGREEN title: one top screw, screwdriver in the box (PCWorld, IT-Connect). Max capacity is listed as 4 TB on UGREEN's EU page while reviewers ran an 8 TB drive.", "40 Gb/s needs a USB4 or Thunderbolt port and the included short cable; a USB 3.2 port gives 10 Gb/s."]},
+
+{"slug": "ugreen-thunderbolt-5-nvme-enclosure-80gbps", "brand": "UGREEN", "program": "cj:ugreen", "category": "ssd-enclosure",
+ "name": "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure (fanless)", "model": "Thunderbolt 5 NVMe enclosure (SKU 95583)",
+ "url": "https://us.ugreen.com/products/ugreen-thunderbolt-5-nvme-enclosure", "price": 229.99, "verified": "2026-11-03",
+ "specs": [("Interface", "Thunderbolt 5, 80 Gb/s; backward compatible with Thunderbolt 4/3 and USB4 at 40 Gb/s"), ("Controllers", "Intel JHL9480 Thunderbolt 5 plus JMicron JMS583 bridge (UGREEN)"),
+           ("Speed", "Up to 7,000 MB/s claimed on a Thunderbolt 5 port"), ("Cooling", "Fanless: double-sided aluminium fins (UGREEN quotes 91% more dissipation area)"),
+           ("Drives", "M.2 NVMe 2230 / 2242 / 2260 / 2280; not SATA or mSATA; SSDs with their own heatsinks do not fit"), ("Weight", "232 g"), ("Systems", "Windows, macOS, Linux, Android")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A fanless Thunderbolt 5 enclosure on Intel's JHL9480 with a JMicron bridge, rated to 7,000 MB/s on a Thunderbolt 5 Mac and 40 Gb/s on Thunderbolt 4; $229.99 on 2026-11-03, with a page code.",
+ "fit": "A MacBook Pro with M4 Pro or M4 Max (Thunderbolt 5) moving large video or photo libraries; on a base M4 or any Thunderbolt 4 Mac it runs at 40 Gb/s.",
+ "caveats": ["Only M4 Pro, M4 Max and later Macs have Thunderbolt 5; the base M4 MacBook Pro and older Macs run it at Thunderbolt 4 speed (about 3,000–4,000 MB/s).",
+             "UGREEN's US page for this SKU describes fins and no fan, while ChargerLAB's teardown of a UGREEN Thunderbolt 5 enclosure found a PWM fan; which SKU was torn down is not stated.",
+             "UGREEN's US page does not state the cable included or its length; a 1 m passive Thunderbolt 5 cable is needed for 80 Gb/s.",
+             "Fanless: UGREEN's fan model (SKU 45789, $259.99) adds a fan that starts at 40 °C for long copies."]},
+
+{"slug": "ugreen-thunderbolt-5-nvme-enclosure-with-fan", "brand": "UGREEN", "program": "cj:ugreen", "category": "ssd-enclosure",
+ "name": "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure with Cooling Fan", "model": "80Gbps NVMe enclosure with fan (SKU 45789)",
+ "url": "https://us.ugreen.com/products/ugreen-nvme-80gbps-storage-case-8tb", "price": 259.99, "verified": "2026-11-03",
+ "specs": [("Interface", "Thunderbolt 5, 80 Gb/s; backward compatible with Thunderbolt 4/3 and USB4 at 40 Gb/s"), ("Controller", "Intel JHL9480 (UGREEN)"),
+           ("Speed", "Up to 7,000 MB/s claimed on a Thunderbolt 5 port"), ("Cooling", "Aluminium shell plus a built-in fan that starts when the inside reaches 40 °C"),
+           ("Drives", "M.2 NVMe up to 8 TB (UGREEN's listing)"), ("Size", "4.6 × 1.8 × 0.9 in")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "UGREEN's Thunderbolt 5 enclosure with a fan that kicks in at 40 °C, for long copies at 80 Gb/s; $259.99 on 2026-11-03, with a page code.",
+ "fit": "Thunderbolt 5 Macs and PCs that copy hundreds of gigabytes at a time and want the fan.",
+ "caveats": ["UGREEN notes only Thunderbolt 5-rated cables reach 80 Gb/s; the box contents are not listed on the US page.",
+             "Fan noise and sustained speeds are not published by UGREEN; see the comparison page for reviewers' measurements."]},
+
+{"slug": "ugreen-thunderbolt-5-cable-80gbps-240w", "brand": "UGREEN", "program": "cj:ugreen", "category": "cable",
+ "name": "UGREEN Thunderbolt 5 USB-C Cable, 80 Gb/s and 240 W", "model": "Thunderbolt 5 cable (SKU 45996)",
+ "url": "https://us.ugreen.com/products/ugreen-thunderbolt-5-usb-c-cable", "price": 31.99, "list_price": 45.99, "verified": "2026-11-03",
+ "specs": [("Data", "Thunderbolt 5, 80 Gb/s both ways, 120 Gb/s one-way for video; Intel-certified (UGREEN); backward compatible with Thunderbolt 4/3 and USB4/3.x/2.0"),
+           ("Charging", "240 W USB PD 3.1 EPR (48 V 5 A)"), ("Video", "One 16K60 display or three 4K144 (UGREEN)"), ("Length", "Not stated on the US page (passive Thunderbolt 5 cables are 1 m or shorter)")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "One cable for 240 W charging and 80 Gb/s Thunderbolt 5 data, so it also covers every 40 Gb/s USB4 and Thunderbolt 4 need; $31.99 on 2026-11-03 against $45.99.",
+ "fit": "A Thunderbolt 5 or USB4 laptop and dock, SSD enclosure or 240 W charger, with one cable that does all of it.",
+ "caveats": ["The US page does not state the length; UGREEN's USB4 240 W cable (1 m, $14.99) was sold out on 2026-11-03.", "240 W needs a charger and laptop that support PD 3.1 EPR; most take 100 or 140 W.", "No printed code on the page on 2026-11-03."]},
 
 ]
 

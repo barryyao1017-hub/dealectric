@@ -1468,4 +1468,184 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Logitech: Easy-Switch and Flow", "https://support.logi.com/hc/en-us/articles/360023188134"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "thunderbolt-5-ssd-enclosure-worth-it-macbook-pro-m4", "question": "G24 (UGREEN funnel: Thunderbolt 5 enclosure for a MacBook Pro M4)", "lead_first": True,
+ "product_result": {"slug": "ugreen-thunderbolt-5-nvme-enclosure-with-fan", "item_id": "UGREEN-TB5-NVME-45789",
+                    "title": "UGREEN Thunderbolt 5 NVMe enclosure with fan",
+                    "description": "80Gbps, Intel JHL9480, fan from 40 °C, up to 8 TB; $100 off with the page code.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-80gbps-thunderbolt-5-m2-nvme-ssd-enclosure-6542189.png"},
+ "title": "Is a Thunderbolt 5 SSD enclosure worth it for a MacBook Pro M4, and which one (2026)?",
+ "h1": "Is a Thunderbolt 5 SSD enclosure worth it for a MacBook Pro M4, and which one? (2026)",
+ "desc": "Whether a Thunderbolt 5 (80Gbps) NVMe enclosure pays off on a MacBook Pro M4: only the M4 Pro and M4 Max have Thunderbolt 5, the base M4 runs any enclosure at Thunderbolt 4 speed. UGREEN's two Thunderbolt 5 enclosures against the ORICO X50 Pro, OWC Express 1M2 80G, ACASIS TB501 Pro, Satechi DotDisk and TerraMaster D1 SSD Pro on controller, measured speed, cooling, cable and price, with the SSD to put inside.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Worth it only on an M4 Pro or M4 Max: those chips have Thunderbolt 5, and the base M4 MacBook Pro has Thunderbolt 4, where an 80Gbps SSD enclosure runs at about 3,000–4,000 MB/s like a $60 USB4 box. On a Thunderbolt 5 Mac, buy the <strong>UGREEN Thunderbolt 5 NVMe enclosure with fan</strong> ({buy:ugreen-thunderbolt-5-nvme-enclosure-with-fan}), $159.99 with the code printed on UGREEN's page, on Intel's JHL9480 with a fan that starts at 40 °C; its fanless sibling ({buy:ugreen-thunderbolt-5-nvme-enclosure-80gbps}) costs the same after its code and measured 6,511 MB/s read and 6,001 MB/s write at Macwelt.</p>
+<p>What to put inside: a PCIe 4.0 x4 drive rated about 7,000 MB/s (Samsung 990 Pro, Kingston KC3000, WD SN850X); a PCIe 5.0 drive adds nothing over Thunderbolt 5's roughly 6,000 MB/s ceiling and is reported not to work in the UGREEN and ACASIS units. Rivals with the same controller cost more: ORICO X50 Pro $189.99 with an Amazon coupon (March 2026), OWC Express 1M2 80G $199.99, Satechi DotDisk $199.99 list.</p>
+""",
+ "columns": [("ctrl", "Controller"), ("speed", "Claimed / measured"), ("cooling", "Cooling"), ("cable", "Cable"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-thunderbolt-5-nvme-enclosure-with-fan", "model": "UGREEN TB5 enclosure with fan (SKU 45789)",
+   "cells": {"ctrl": "Intel JHL9480", "speed": "Up to 7,000 MB/s claimed; not independently measured", "cooling": "Aluminium shell + fan from 40 °C", "cable": "Not stated on the US page", "warranty": "2 years"}},
+  {"slug": "ugreen-thunderbolt-5-nvme-enclosure-80gbps", "model": "UGREEN TB5 enclosure, fins (SKU 95583)",
+   "cells": {"ctrl": "Intel JHL9480 + JMicron JMS583", "speed": "6,511 / 6,001 MB/s with a 990 Pro, stable, 40 °C under stress (Macwelt)", "cooling": "Double-sided fins; a teardown of a UGREEN TB5 unit found a PWM fan (SKU unclear)", "cable": "About 0.8–1 m TB5, e-marked 240 W (teardown)", "warranty": "2 years"}},
+  {"brand": "ORICO", "model": "X50 Pro", "url": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "cells": {"ctrl": "Intel JHL9480 + Realtek RTL9210 fallback", "speed": "6,000 / 5,800 rated; about 6,000 read, 3,000 write measured on a TB5 MacBook Pro (Notebookcheck)", "cooling": "Fanless fins + pad", "cable": "About 50 cm TB5", "warranty": "Not found", "price": "$189.99 with Amazon coupon (TheSSDReview, Mar 2026)"}},
+  {"brand": "OWC", "model": "Express 1M2 80G", "url": "https://www.macrumors.com/2025/08/20/owc-1m2-80g-portable-ssd-tb5-macs/",
+   "cells": {"ctrl": "Not published", "speed": "Over 6,000 MB/s on TB5, over 3,800 on 40G USB4, 2,800 on TB3 (OWC claims)", "cooling": "Fanless aluminium", "cable": "Not found", "warranty": "2 years", "price": "$219 list; $199.99 at Adorama (undated)"}},
+  {"brand": "ACASIS", "model": "TB501 Pro", "url": "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5",
+   "cells": {"ctrl": "Intel JHL9480", "speed": "80Gbps; no measurement found", "cooling": "Adjustable fan", "cable": "Included, length not found", "warranty": "Not found", "price": "about $224.90 (ACASIS store, via search)"}},
+  {"brand": "Satechi", "model": "DotDisk", "url": "https://9to5toys.com/2026/05/05/satechi-debuts-new-dotdisk-80gbps-ssd-enclosure/",
+   "cells": {"ctrl": "Not named (USB4 v2, 80Gbps)", "speed": "80Gbps; no measurement found", "cooling": "Micro fan + pad", "cable": "30 cm TB5", "warranty": "Not found", "price": "$199.99 list (May 2026)"}},
+  {"brand": "TerraMaster", "model": "D1 SSD Pro", "url": "https://www.neowin.net/amp/terramaster-d1-ssd-pro-review-a-cool-all-aluminum-thunderbolt-5-ssd-enclosure/",
+   "cells": {"ctrl": "Not found", "speed": "7,061 MB/s read on an M4 Pro Mac mini (maker's benchmark); Neowin saw far less in one test", "cooling": "Fanless, 38 fins; 39 °C max (Neowin)", "cable": "0.3 m", "warranty": "Not found", "price": "Not found"}},
+ ],
+ "after": """
+<h2>Which Macs have Thunderbolt 5</h2>
+<p>Apple's M4 Pro and M4 Max announcement (October 2024) says those chips bring Thunderbolt 5 to the Mac; the 14-inch MacBook Pro with the base M4 lists three Thunderbolt 4 ports at 40 Gb/s. The M4 Pro and M4 Max MacBook Pro, the Mac mini with M4 Pro and the Mac Studio with M4 Max have Thunderbolt 5 at "up to 120 Gb/s": 80 Gb/s each way for data, with the 120 Gb/s Bandwidth Boost reserved for displays. So storage sees 80 Gb/s at most, about 6,000 MB/s after overhead, against about 3,000–4,000 MB/s on Thunderbolt 4 and USB4. The M5 generation keeps the same split.</p>
+<h2>Heat and the fan question</h2>
+<p>A Thunderbolt 5 bridge plus a Gen4 SSD runs hot in a hand-sized shell. Macwelt measured UGREEN's unit at 34 °C idle and 40 °C under a stress test with no throttling and a fan it called quiet but not silent; Neowin's fanless TerraMaster peaked at 39 °C; a reviewer of the fanless ORICO saw the drive at 58–68 °C over a 13-minute write. No head-to-head shows fan or fins winning; a fan model is the safer buy for copies of hundreds of gigabytes, which is why the fan UGREEN is the pick here at the same $159.99 after the code.</p>
+<h2>If you have a base M4 or an older Mac</h2>
+<p>Any 40 Gb/s USB4 enclosure gives the same 3,000–4,000 MB/s: UGREEN's 40Gbps enclosure with a cooling fan is $75.99 with its page code ({buy:ugreen-40gbps-nvme-enclosure-cooling-fan}). A Thunderbolt 5 enclosure bought now still works at that speed and moves to the next Mac.</p>
+""",
+ "sources": [
+  ("UGREEN 80Gbps Thunderbolt 5 NVMe enclosure (SKU 95583)", "https://us.ugreen.com/products/ugreen-thunderbolt-5-nvme-enclosure"),
+  ("UGREEN 80Gbps NVMe enclosure with fan (SKU 45789)", "https://us.ugreen.com/products/ugreen-nvme-80gbps-storage-case-8tb"),
+  ("ChargerLAB: teardown of UGREEN's Thunderbolt 5 enclosure (JHL9480, PWM fan, cable)", "https://www.chargerlab.com/teardown-of-ugreen-thunderbolt-5-80gbps-m-2-nvme-ssd-enclosure-d705/"),
+  ("Macwelt: UGREEN Thunderbolt 5 enclosure test (6,511 / 6,001 MB/s, 40 °C)", "https://www.macwelt.de/article/2807262/ugreen-thunderbolt-5-ssd-gehaeuse-test.html"),
+  ("Notebookcheck: UGREEN Thunderbolt 5 enclosure launch", "https://www.notebookcheck.net/Ugreen-launches-new-SSD-enclosure-with-Thunderbolt-5-and-active-cooling.996467.0.html"),
+  ("Apple: M4 Pro and M4 Max bring Thunderbolt 5 to the Mac", "https://www.apple.com/newsroom/2024/10/apple-introduces-m4-pro-and-m4-max/"),
+  ("Apple: 14-inch MacBook Pro (M4) tech specs, Thunderbolt 4", "https://support.apple.com/en-us/121552"),
+  ("Apple: MacBook Pro (M4 Pro / M4 Max) tech specs, Thunderbolt 5", "https://support.apple.com/en-us/121553"),
+  ("MacRumors: Thunderbolt 5 on Macs (80 Gb/s data, 120 Gb/s boost)", "https://www.macrumors.com/guide/thunderbolt-5-new-macs-features-benefits-necessity/"),
+  ("Notebookcheck: ORICO X50 Pro review", "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html"),
+  ("TheSSDReview: ORICO X50 Pro review and price", "https://www.thessdreview.com/hardware/portable-ssds/orico-x50-pro-80gbps-thunderbolt-5-ssd-enclosure-review/"),
+  ("MacRumors: OWC Express 1M2 80G", "https://www.macrumors.com/2025/08/20/owc-1m2-80g-portable-ssd-tb5-macs/"),
+  ("ACASIS TB501 Pro", "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5"),
+  ("9to5Toys: Satechi DotDisk", "https://9to5toys.com/2026/05/05/satechi-debuts-new-dotdisk-80gbps-ssd-enclosure/"),
+  ("Neowin: TerraMaster D1 SSD Pro review", "https://www.neowin.net/amp/terramaster-d1-ssd-pro-review-a-cool-all-aluminum-thunderbolt-5-ssd-enclosure/"),
+  ("thunderboltlaptop.com: Thunderbolt 5 enclosures roundup", "https://thunderboltlaptop.com/best-thunderbolt-5-nvme-enclosures/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-40gbps-nvme-enclosure-no-throttling", "question": "G25 (UGREEN funnel: 40Gbps NVMe enclosure that doesn't throttle)", "lead_first": True,
+ "product_result": {"slug": "ugreen-40gbps-nvme-enclosure-cooling-fan", "item_id": "UGREEN-40GBPS-NVME-15976",
+                    "title": "UGREEN 40Gbps NVMe enclosure with cooling fan",
+                    "description": "USB4 40Gbps, ASM2464PD, PWM fan and thermal pad.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-40gpbs-hard-drive-enclosure-with-cooling-fan-379401.png"},
+ "title": "Best 40Gbps NVMe SSD enclosure that doesn't throttle on long transfers (2026): fan models compared",
+ "h1": "Best 40Gbps NVMe enclosure that doesn't throttle on long transfers (2026)",
+ "desc": "Which USB4 / Thunderbolt 4 (40Gbps) NVMe enclosure holds its speed on a 100 GB-plus copy: UGREEN's fan-cooled CM642 against its CM850, the Sabrent EC-U4TN, ACASIS TBU405 Pro, ORICO AAGM2 and the fanless OWC Express 1M2, Satechi, Hyper HyperDrive Next, TerraMaster D1 SSD Plus and StarTech, on controller, fan, what reviewers measured on long writes, price and warranty.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN 40Gbps NVMe enclosure with cooling fan</strong> ({buy:ugreen-40gbps-nvme-enclosure-cooling-fan}), the best 40Gbps NVMe enclosure that doesn't throttle on long transfers on 2026-11-03: $75.99 with UGREEN's page code, an ASM2464PD USB4 bridge, a thermal pad and a near-silent PWM fan; PCWorld's 450 GB write ran with no thermal trouble and IT-Connect saw 43 °C, stable.</p>
+<p>What to know: a 40Gbps bridge plus a Gen4 SSD draws close to 10 W for as long as a copy lasts, so fanless shells (OWC Express 1M2, Satechi, Hyper, StarTech) have been reported throttling or running hot on long writes, and UGREEN's cheaper fan model CM850 dropped out of PCWorld's 450 GB test until its silicone sleeve came off. Real ceilings are 3,100–3,800 MB/s on a USB4 or Thunderbolt 4 port, about 1,000 MB/s on a 10Gbps USB port, and only with the included short cable.</p>
+""",
+ "columns": [("ctrl", "Controller"), ("fan", "Fan"), ("measured", "Long-copy results"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-40gbps-nvme-enclosure-cooling-fan", "model": "UGREEN CM642 (SKU 15976)",
+   "cells": {"ctrl": "ASMedia ASM2464PD", "fan": "Yes, PWM, auto", "measured": "PCWorld 450 GB write: no thermal issues, fastest bare USB4 enclosure it had tested; IT-Connect 26 → 43 °C, stable", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "CM850 (fan)", "url": "https://www.macworld.com/article/2585804/ugreen-cm850-usb4-enclosure-review.html",
+   "cells": {"ctrl": "ASMedia ASM2464PD", "fan": "Yes", "measured": "PCWorld 450 GB write: the drive dropped out with the sleeve on; finished with the sleeve off or a fan over it", "warranty": "Not found", "price": "$89.99 (Macworld); $64.99 Prime (PCWorld price list)"}},
+  {"brand": "Sabrent", "model": "EC-U4TN", "url": "https://sabrent.com/products/ec-u4tn",
+   "cells": {"ctrl": "ASMedia ASM2464PD", "fan": "Yes", "measured": "No independent long-copy test found; roundups note fan noise on long transfers", "warranty": "1 year, 2 with registration", "price": "$89.99 (sabrent.com)"}},
+  {"brand": "ACASIS", "model": "TBU405 Pro", "url": "https://thunderboltlaptop.com/best-actively-cooled-nvme-enclosures/",
+   "cells": {"ctrl": "Intel JHL7440 (Thunderbolt 3)", "fan": "Yes (one listing: switched on by hand)", "measured": "Maker claims 35 °C after an hour; a vendor blog says its Thunderbolt units throttle", "warranty": "Not found", "price": "Not found"}},
+  {"brand": "ORICO", "model": "AAGM2 (fan)", "url": "https://thunderboltlaptop.com/best-actively-cooled-nvme-enclosures/",
+   "cells": {"ctrl": "Not found", "fan": "Yes", "measured": "None found", "warranty": "Not found", "price": "$69.99 sale / $99.99 regular"}},
+  {"brand": "OWC", "model": "Express 1M2", "url": "https://www.owc.com/solutions/express-1m2",
+   "cells": {"ctrl": "Not named", "fan": "No, solid aluminium", "measured": "OWC claims 3,836 MB/s; a vendor blog reported moderate to severe throttling in a 20-minute test", "warranty": "2 years", "price": "Not found on owc.com"}},
+  {"brand": "TerraMaster", "model": "D1 SSD Plus", "url": "https://pcworld.com/article/2848105/terramaster-d1-ssd-plus-enclosure-review.html",
+   "cells": {"ctrl": "Not named", "fan": "No, finned aluminium", "measured": "PCWorld: clearly faster than the CM850 on long copies with the same SSD; no temperatures", "warranty": "2 years", "price": "$109.99 (Aug 2025)"}},
+  {"brand": "Hyper", "model": "HyperDrive Next USB4", "url": "https://www.cultofmac.com/836560/hyperdrive-next-usb4-nvme-ssd-enclosure-review",
+   "cells": {"ctrl": "ASMedia ASM2464PD", "fan": "No", "measured": "Cult of Mac: +12 °F over a 5-minute copy; AppleInsider: 'can get a little hot'", "warranty": "2 years", "price": "$95.99 sale, $119.99 regular"}},
+  {"brand": "Satechi", "model": "USB4 NVMe SSD Pro", "url": "https://thunderboltlaptop.com/?p=999617",
+   "cells": {"ctrl": "Not named", "fan": "No (thermal pad, polycarbonate)", "measured": "A buyer reports about 135 °F on the surface; no sustained test", "warranty": "2 years", "price": "Not found"}},
+ ],
+ "after": """
+<h2>Why 40Gbps enclosures throttle</h2>
+<p>The ASM2464PD bridge converts PCIe Gen4 to USB4 and, with a Gen4 drive, the pair draws close to 10 W while a copy runs; in a palm-sized shell that heat has to leave through the case. A thermal pad and a fan keep the drive in the 40s °C (IT-Connect's 43 °C on the UGREEN CM642); a fanless shell relies on the drive's own thermal throttling, which shows up as the speed falling after the first tens of gigabytes. Drives matter too: the fast long-copy results used Gen4 x4 drives with DRAM (WD SN850X 8 TB, Samsung 990 Pro), and a larger drive keeps its write cache longer.</p>
+<h2>Cables and ports</h2>
+<p>40Gbps needs a USB4 or Thunderbolt 3/4 port and a 40Gbps cable: PCWorld saw an older USB-C cable cut the CM642 to roughly 10Gbps speeds. A USB 3.2 Gen 2 port gives about 1,000 MB/s whatever the enclosure. On a Thunderbolt 5 Mac an 80Gbps enclosure roughly doubles the ceiling (see the Thunderbolt 5 page); on everything else this class is the ceiling.</p>
+<h2>Prices read on 2026-11-03</h2>
+<p>UGREEN's CM642 is $109.99 with a $34 page code (the cart took $34.00 off, control code rejected). Sabrent's EC-U4TN is $89.99 on sabrent.com; the ORICO AAGM2 was $69.99 on sale; Hyper's HyperDrive Next $95.99 on sale. ACASIS, Satechi and OWC prices could not be read from their stores on the day.</p>
+""",
+ "sources": [
+  ("UGREEN 40Gbps NVMe enclosure with cooling fan (US store)", "https://us.ugreen.com/products/ugreen-40gbps-m-2-nvme-enclosure-with-cooling-fan"),
+  ("UGREEN EU: 40Gbps enclosure with cooling fan (3,812 MB/s claim, fan, sizes)", "https://eu.ugreen.com/products/ugreen-40gbps-nvme-enclosure-cooling-fan"),
+  ("PCWorld: UGREEN CM642 review (450 GB write, ASM2464PD, cable note)", "https://www.pcworld.com/article/2583028/ugreen-cm642-ssd-enclosure-review.html"),
+  ("IT-Connect: UGREEN CM642 test (temperatures)", "https://www.it-connect.fr/test-ugreen-cm642-boitier-ssd-nvme-compatible-usb4/"),
+  ("TechRadar: UGREEN 40Gbps M.2 enclosure review", "https://www.techradar.com/pro/ugreen-40gbps-m-2-enclosure-review"),
+  ("Macworld: UGREEN CM850 review", "https://www.macworld.com/article/2585804/ugreen-cm850-usb4-enclosure-review.html"),
+  ("PCWorld: TerraMaster D1 SSD Plus review", "https://pcworld.com/article/2848105/terramaster-d1-ssd-plus-enclosure-review.html"),
+  ("Sabrent EC-U4TN", "https://sabrent.com/products/ec-u4tn"),
+  ("OWC Express 1M2", "https://www.owc.com/solutions/express-1m2"),
+  ("Cult of Mac: HyperDrive Next USB4 review", "https://www.cultofmac.com/836560/hyperdrive-next-usb4-nvme-ssd-enclosure-review"),
+  ("AppleInsider: HyperDrive USB4 enclosure review", "https://appleinsider.com/articles/25/05/09/hyperdrive-usb4-ssd-enclosure-review-secure-and-speedy-external-storage"),
+  ("thunderboltlaptop.com: actively cooled NVMe enclosures", "https://thunderboltlaptop.com/best-actively-cooled-nvme-enclosures/"),
+  ("VCOM: NVMe enclosure thermals roundup (vendor blog)", "https://www.vcom.hk/blogs/blog/top-nvme-enclosures-of-2026-speed-thermals-and-real-world-tests"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "usb-c-cable-240w-and-40gbps", "question": "G26 (UGREEN funnel: 240W + 40Gbps USB-C cable)", "lead_first": True,
+ "product_result": {"slug": "ugreen-thunderbolt-5-cable-80gbps-240w", "item_id": "UGREEN-TB5-CABLE-45996",
+                    "title": "UGREEN Thunderbolt 5 cable, 80Gbps and 240W",
+                    "description": "1 m passive Thunderbolt 5 cable: 80Gbps data, 240 W PD 3.1, works on USB4 and TB4.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-thunderbolt-5-usb-c-cable-80gbps-240w-4469944.png"},
+ "title": "Which USB-C cable does 240W charging and 40Gbps data at the same time (2026)? The ones that are e-marked for both",
+ "h1": "USB-C cables that do 240W charging and 40Gbps data at the same time (2026)",
+ "desc": "Which USB-C cables carry 240 W (USB PD 3.1 EPR) and 40Gbps or more at once: UGREEN's Thunderbolt 5 cable and USB4 240W cable against Apple's Thunderbolt 5 Pro cable, Belkin, Anker, OWC, Plugable, Cable Matters, Monoprice, StarTech and Amazon Basics, on length, certification, price and warranty, with the e-marker and 1 m passive-length rules.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN Thunderbolt 5 cable</strong> ({buy:ugreen-thunderbolt-5-cable-80gbps-240w}), the USB-C cable that does 240W charging and 40Gbps data at the same time, and more: 80Gbps Thunderbolt 5, 240 W USB PD 3.1, 1 m, $31.99 on 2026-11-03 against $45.99, backward compatible with USB4 and Thunderbolt 4 at 40Gbps. Any cable rated 240 W must be e-marked for 50 V 5 A, and any passive 40Gbps or 80Gbps cable is 1 m or shorter; longer cables are active and most of those do not carry 240 W.</p>
+<p>Cheaper and certified: UGREEN's own USB4 240W 1 m cable is $14.99 (e-marked, rated 40Gbps and 8K60 by retailers, sold out on 2026-11-03), Amazon Basics' USB4 240W 1 m about $14 (USB-IF certified per its listing), StarTech's USB-IF-certified USB4 1 m $23–29, Plugable's Thunderbolt-and-USB-IF-certified TBT4-240W-1M $34.95. UGREEN calls its Thunderbolt 5 cable Intel-certified; that could not be checked in Intel's or USB-IF's lists on the day, so buyers who need the certificate on paper should pick Plugable, Belkin ($53.99) or OWC ($34.99).</p>
+""",
+ "columns": [("length", "Length"), ("data", "Data"), ("power", "Power"), ("cert", "Certification"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-thunderbolt-5-cable-80gbps-240w", "model": "UGREEN Thunderbolt 5 cable (SKU 45996)",
+   "cells": {"length": "1 m", "data": "80Gbps (120 Gb/s one-way video); TB4/USB4 at 40Gbps", "power": "240 W PD 3.1", "cert": "UGREEN says Intel-certified; not verified", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "USB4 240W cable 1 m (SKU 65383)", "url": "https://us.ugreen.com/products/ugreen-usb4-240w-usb-c-cable-1m",
+   "cells": {"length": "1 m", "data": "40Gbps, 8K60 (retailer listings; UGREEN's page gives no figure)", "power": "240 W, e-marked", "cert": "None stated", "warranty": "Not stated", "price": "$14.99 (list $26.99); sold out 2026-11-03"}},
+  {"brand": "Apple", "model": "Thunderbolt 5 (USB-C) Pro Cable", "url": "https://www.bestbuy.com/site/apple-thunderbolt-5-usbc-pro-cable-1m-black/5687502.p",
+   "cells": {"length": "1 m", "data": "80Gbps (120 Gb/s boost)", "power": "240 W", "cert": "Apple", "warranty": "1 year", "price": "$69–69.99"}},
+  {"brand": "Belkin", "model": "Connect Thunderbolt 5 (INZ005)", "url": "https://www.belkin.com/p/thunderbolt-5-cable/P-INZ005.html",
+   "cells": {"length": "1 m", "data": "80Gbps", "power": "240 W", "cert": "Thunderbolt 5, Intel certified", "warranty": "2 years", "price": "$53.99 (belkin.com)"}},
+  {"brand": "Anker", "model": "Prime Thunderbolt 5 (A84N1)", "url": "https://www.notebookcheck.net/Anker-launches-new-Prime-Thunderbolt-5-240W-Cable.1026979.0.html",
+   "cells": {"length": "1.7 ft / 3.3 ft", "data": "80Gbps", "power": "240 W", "cert": "Not confirmed", "warranty": "Not found", "price": "$45.99 (3.3 ft, launch)"}},
+  {"brand": "OWC", "model": "Thunderbolt 5 cable", "url": "https://www.bestbuy.com/product/owc-1-0m-3-28ft-thunderbolt-5-cable-thunderbolt-certified-40-gb-s-data-transfer-240w-power-delivery/J3GWPLHXV3",
+   "cells": {"length": "1 m", "data": "80Gbps (listings vary)", "power": "240 W", "cert": "Thunderbolt certified", "warranty": "2–3 years (retailers disagree)", "price": "$34.99 (Newegg, SHI)"}},
+  {"brand": "Plugable", "model": "TBT4-240W-1M", "url": "https://plugable.com/products/tbt4-240w-1m",
+   "cells": {"length": "1 m", "data": "40Gbps (Thunderbolt 4, passive)", "power": "240 W", "cert": "Thunderbolt and USB-IF certified", "warranty": "2 years", "price": "$34.95 (plugable.com)"}},
+  {"brand": "Monoprice", "model": "Thunderbolt 4 cable (#44117)", "url": "https://www.monoprice.com/Product?p_id=44117",
+   "cells": {"length": "1 m", "data": "40Gbps", "power": "240 W", "cert": "Intel and USB-IF certified", "warranty": "Not found", "price": "$61.99 (cached listing)"}},
+  {"brand": "StarTech", "model": "USB4 cable 1M-40G-USB4-CABLE", "url": "https://www.cdw.com/product/startech-3ft-usb4-cable-usb-c/7992951",
+   "cells": {"length": "1 m", "data": "40Gbps", "power": "240 W, e-marked", "cert": "USB-IF certified", "warranty": "Not found", "price": "$22.99–28.70 (resellers)"}},
+  {"brand": "Amazon Basics", "model": "USB4 240W cable", "url": "https://camelcamelcamel.com/product/B0C93G2M83",
+   "cells": {"length": "1 m", "data": "40Gbps, 8K", "power": "240 W", "cert": "'USB-IF cert.' in the listing title", "warranty": "Not found", "price": "$14.39 (Aug 2026); $9.44 deal (Jul 2026)"}},
+ ],
+ "after": """
+<h2>The rules behind the ratings</h2>
+<ul>
+<li><strong>240 W</strong> is USB PD 3.1 Extended Power Range: 48 V at 5 A. The cable must carry an e-marker chip that declares 50 V 5 A; without it, a charger negotiates 100 W (20 V 5 A) at most. The laptop and the charger must both support EPR too; most laptops take 100 W or 140 W.</li>
+<li><strong>40Gbps passive</strong> USB4 and Thunderbolt 4 cables are 1 m or shorter (vendors quote 40Gbps at 1 m, 20Gbps at 2 m); longer runs need active cables, which cost $60–80 and are not all rated for 240 W.</li>
+<li><strong>Thunderbolt 5</strong> uses passive cables up to 1 m for 80Gbps (120 Gb/s one way for displays), per Intel's 2023 announcement, and is backward compatible with Thunderbolt 4, 3 and USB4 at their own speeds. A Thunderbolt 5 cable is therefore the one cable that covers every USB-C need below it.</li>
+<li><strong>Certified versus rated.</strong> Intel certifies Thunderbolt cables and USB-IF certifies USB4 cables; both keep public product lists. A "rated" cable may work the same, but only a certified one has been tested against the spec by a third party.</li>
+</ul>
+<h2>Which to buy</h2>
+<p>For a Thunderbolt 5 Mac or PC and a dock, SSD or 240 W charger: the UGREEN Thunderbolt 5 cable at $31.99, or OWC's certified one at $34.99. For 40Gbps and 240 W on a budget: Amazon Basics or UGREEN's USB4 cable at about $14–15. For a cable that must show a certificate: Plugable, Belkin, Monoprice or StarTech.</p>
+""",
+ "sources": [
+  ("UGREEN Thunderbolt 5 USB-C cable (US store)", "https://us.ugreen.com/products/ugreen-thunderbolt-5-usb-c-cable"),
+  ("UGREEN EU: Thunderbolt 5 cable 80Gbps 240W (1 m)", "https://eu.ugreen.com/en-ch/products/thunderbolt-5-cable-80gbps-240w"),
+  ("UGREEN USB4 240W cable 1 m", "https://us.ugreen.com/products/ugreen-usb4-240w-usb-c-cable-1m"),
+  ("USB-IF: USB Power Delivery (240 W at 48 V)", "https://www.usb.org/usb-charger-pd"),
+  ("Allion: e-marker requirements for 240 W cables", "https://www.allion.com/?p=16408"),
+  ("Intel: Thunderbolt 5 announcement (passive cables up to 1 m)", "https://download.intel.com/newsroom/archive/2025/en-us-2023-09-12-intel-introduces-thunderbolt-5-connectivity-standard.pdf"),
+  ("Thunderbolt Technology: 1 m Thunderbolt 5 cable listing", "https://www.thunderbolttechnology.net/product/1m-thunderbolt-5-cable-120gbps-240w"),
+  ("Belkin Thunderbolt 5 cable", "https://www.belkin.com/p/thunderbolt-5-cable/P-INZ005.html"),
+  ("Plugable TBT4-240W-1M", "https://plugable.com/products/tbt4-240w-1m"),
+  ("Apple Thunderbolt 5 Pro cable (Best Buy listing)", "https://www.bestbuy.com/site/apple-thunderbolt-5-usbc-pro-cable-1m-black/5687502.p"),
+  ("Notebookcheck: Anker Prime Thunderbolt 5 cable", "https://www.notebookcheck.net/Anker-launches-new-Prime-Thunderbolt-5-240W-Cable.1026979.0.html"),
+  ("OWC Thunderbolt 5 cable (Best Buy listing)", "https://www.bestbuy.com/product/owc-1-0m-3-28ft-thunderbolt-5-cable-thunderbolt-certified-40-gb-s-data-transfer-240w-power-delivery/J3GWPLHXV3"),
+  ("Monoprice Thunderbolt 4 cable", "https://www.monoprice.com/Product?p_id=44117"),
+  ("StarTech USB4 cable (CDW listing)", "https://www.cdw.com/product/startech-3ft-usb4-cable-usb-c/7992951"),
+  ("Amazon Basics USB4 240W cable price history", "https://camelcamelcamel.com/product/B0C93G2M83"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
