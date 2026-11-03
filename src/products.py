@@ -1114,6 +1114,19 @@ PRODUCTS = [
  "caveats": ["ARM: no x86 containers or virtual machines; reviewers report Docker is not in the DH series' App Center.", "One 1GbE port (about 110 MB/s): the DH4300 Plus ($399.99) has 2.5GbE.",
              "Diskless; RAM is fixed at 4 GB.", "$239.99 is a sale price against $269.99 on 2026-11-03; UGREEN gives no end date. Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code."]},
 
+
+{"slug": "ugreen-magflow-pro-qi2-25w-car-charger-cooling", "brand": "UGREEN", "program": "cj:ugreen", "category": "wireless-charger",
+ "name": "UGREEN MagFlow Pro Qi2 25W Magnetic Car Charger with Cooling", "model": "MagFlow Pro Qi2.2 car charger with TEC cooling (SKU 75250)",
+ "url": "https://us.ugreen.com/products/magflow-pro-qi2-25w-magnetic-car-charger", "price": 49.99, "verified": "2026-11-03",
+ "specs": [("Phone", "Qi2.2 magnetic, 25 W on the iPhone 17 and 16 series; 15 W on iPhone 12–15"), ("Cooling", "Thermoelectric (TEC) cooler with airflow, to keep the phone cool while it navigates and charges"),
+           ("Mount", "Air-vent clip, rotatable"), ("Power", "12 V car socket adapter required (not stated as included); 5 ft USB-C to C cable in the box"), ("In the box", "Charger, 5 ft USB-C cable, manual")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A Qi2.2 25 W magnetic car mount with a thermoelectric cooler behind the coil, so an iPhone 17 or 16 keeps charging at full rate while it runs navigation in a hot car; $49.99 on 2026-11-03 with a page code.",
+ "fit": "iPhone 16 or 17 drivers who use the phone for navigation on the mount and find it hot and stuck at a trickle on an ordinary charger.",
+ "caveats": ["25 W only on the iPhone 17 and 16 series (iOS 26); iPhone 12–15 charge at 15 W.", "A 12 V socket adapter of 30 W or more is needed and UGREEN's box list does not include one.",
+             "Vent mount only; no dashboard or suction option on this model.", "UGREEN publishes no temperature or sustained-wattage figures of its own."]},
+
 ]
 
 

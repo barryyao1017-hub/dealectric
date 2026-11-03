@@ -96,6 +96,11 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G43 | /best-nas-to-replace-google-photos-family-library | DXP2800; DH2300 budget | open ×3 |
 | G44 | /best-nas-for-immich-iphone-photo-backup | DXP2800 | open ×3 |
 | G45 | /best-nas-to-replace-dropbox-freelancer | DXP2800 as the value pick; Synology Drive named for on-demand files and versions | open ×3 |
+| G46 | /best-nas-with-thunderbolt-4-direct-to-mac | DXP480T Plus (cheapest TB4 NAS) / DXP6800 Pro; QNAP TBS-h574TX, TS-h966TX, TVS-h874T and DAS arrays named; link explained as an IP bridge, not a drive | open ×3 |
+| G47 | /best-nas-for-frigate-security-cameras | DXP4800 Plus with OpenVINO on the iGPU; "untested on UGOS by any reviewer" said in the lead; Frigate's own requirements laid out | open ×3 |
+| G48 | /can-a-nas-host-a-minecraft-server | DXP2800 (N100 single-core clock) / DXP4800 Plus for 10+ players or mods; port 25565 / playit.gg | open ×3 |
+| G49 | /best-nas-for-music-streaming-navidrome-plexamp | DXP2800 (UGREEN's own Navidrome guide); DH2300 ruled out (no Docker); Plex Pass and Roon prices dated | open ×3 |
+| G50 | /qi2-car-charger-that-keeps-iphone-cool | UGREEN MagFlow Pro Qi2 25W car charger (new record, UL75250 $10 off) + ESR HaloLock CryoBoost; Anker Prime AirCool named; every cooling figure labelled a maker's claim | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -194,3 +199,14 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   DXP-series items per UGREEN's own notes (the DH2300 gets basic tagging); Immich's iOS backup is opportunistic
   (Immich's docs); UGOS has no official Nextcloud guide; UGREEN's sync client has no on-demand files or client-side
   versions, so G45 names Synology Drive for those. G43 and G44 needed lead trims for rank 6.
+- 2026-11-03, batch 10 votes (`x10-*`), all five open ×3: NAS with Thunderbolt 4 (→ G46, DXP480T Plus / DXP6800 Pro),
+  NAS for Frigate (→ G47, DXP4800 Plus with OpenVINO on the iGPU), NAS as a Minecraft server (→ G48, DXP2800 /
+  DXP4800 Plus), NAS for a FLAC library with Navidrome or Plexamp (→ G49, DXP2800), Qi2 car charger that keeps an
+  iPhone cool (→ G50, ESR HaloLock CryoBoost and UGREEN MagFlow Pro car charger; other brand allowed). Five research
+  agents started.
+- 2026-11-03, iteration 10 built (G46–G50) from five research agents (~600k tokens) plus a new product record
+  (UGREEN MagFlow Pro Qi2 25W car charger with cooling, $49.99, UL75250 $10 off cart-tested). Honesty notes: no outlet
+  has measured cooled vs uncooled car mounts, so G50 calls every temperature figure a maker's claim and quotes Apple's
+  own heat rule instead; Frigate on UGOS has no published working report, said in G47's lead; the DH2300 is ruled out
+  for Navidrome/Plex in G49. G46 and G48 needed lead and record trims for rank 6 (record line 700 chars + lead must
+  fit 1,309 with the title chunk).

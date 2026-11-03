@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Covers SBCs and mini PCs, not NAS units",
+   "evidence": "are overkill for Frigate alone but make sense if the box is also running Home Assistant, a NAS, and a dozen other containers.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Official hardware guidance on detectors; names no NAS models",
+   "evidence": "The Coral is no longer recommended for new Frigate installations, except in deployments with particularly low power requirements",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Official install docs; no NAS recommendation",
+   "evidence": "Frigate runs best with Docker installed on bare metal Debian-based distributions.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Recommends N100 mini PC; NAS only as clip storage",
+   "evidence": "A NAS such as a Synology or QNAP over a network share is a fine target for archived clips.",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "Generic NAS surveillance guide with no specific NAS models",
+   "evidence": "it runs as a Docker container on any NAS, and its headline feature is real-time AI object detection",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Personal guide; its hardware table lists Pis and mini PCs, no NAS",
+   "evidence": "Frigate runs anywhere Docker runs. The Coral TPU offloads object detection, so CPU requirements are modest.",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Affiliate pick of a mini PC, not a NAS",
+   "evidence": "The GEEKOM IT12 is the best mini PC for Frigate in 2026.",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "brand-store",
+   "answers_it": false,
+   "why": "Vendor's managed Frigate appliance page",
+   "evidence": "Professional Frigate NVR on Debian 12 Enterprise-grade, AI-powered video surveillance running Frigate on Docker.",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Proxmox setup walkthrough; NAS used only as a recording target",
+   "evidence": "with 7 cameras, Coral TPU detection at 1% GPU usage, and recordings going directly to a QNAP NAS",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "A GitHub fork of the install docs; no NAS picks",
+   "evidence": "Frigate runs best with Docker installed on bare metal Debian-based distributions. For ideal performance, Frigate needs low overhead access",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "General Plex+NVR build guide; summary only",
+   "evidence": "hardware platform selection (Synology NAS, refurbished enterprise SFF PC, custom X99 build), GPU vs iGPU vs Coral TPU tradeoffs",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "Raspberry Pi 5 build, not a NAS",
+   "evidence": "Running Frigate NVR on a Raspberry Pi 5 with a Coral Edge TPU is exactly how to fill that gap.",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "A direct pick of specific NAS models (Synology, QNAP, UGREEN, TerraMaster, Asustor) for Frigate. It would need to compare CPU/iGPU support for OpenVINO and hardware decode, Docker support, M.2/PCIe/USB slots for a Coral or Hailo card, RAM, and current prices, with camera counts for each.",
+ "why": "No major reviewer covers this. The two Frigate docs pages are official, but they cover detectors and installation in general and name no NAS. The rest are guides that point to SBCs, mini PCs or Proxmox, plus a vendor page and a NAS surveillance guide with no models. None names a NAS model to buy, so a focused page comparing NAS models with prices and accelerator support would have little competition.",
+ "results": 12,
+ "quotes_found": 12,
+ "chars_shown": 17260,
+ "chars_full": 211602
+}

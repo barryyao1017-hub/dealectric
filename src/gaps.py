@@ -2730,4 +2730,315 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Dropbox plans", "https://www.dropbox.com/plans"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "can-a-nas-host-a-minecraft-server", "question": "G48 (UGREEN funnel: NAS as a Minecraft server)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800, Minecraft server NAS",
+                    "description": "2-bay Intel N100, 8 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Can a NAS host a Minecraft server for friends, and which one is best (2026)? RAM, clocks, Docker and reaching it from outside",
+ "h1": "Can a NAS host a Minecraft server for friends, and which one is best? (2026)",
+ "desc": "Yes: an x86 NAS with Docker runs a Java or Bedrock Minecraft server for a group of friends. UGREEN's DXP2800 and DXP4800 Plus against the Synology DS225+ and DS925+, QNAP TS-264, TerraMaster F2-425 Plus and F4-424 Pro, Asustor AS5402T and a Raspberry Pi 5, with minecraft.wiki's and PaperMC's RAM and CPU guidance, the itzg Docker setup, ports and tunnels for friends outside the house, and what owners report.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Yes, if it is x86 with Docker: buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03: Intel N100 (3.4 GHz single core, which matters most), 8 GB, the itzg/minecraft-server Docker image with 2–4 GB for Java, enough for 5–10 friends per minecraft.wiki. Forward port 25565 or use a playit.gg tunnel.</p>
+<p>For ten-plus players, mods or a modpack, the <strong>DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}) ($619.99) has a 4.4 GHz chip and takes up to 64 GB. Minecraft's tick loop runs on one thread, so single-core clock matters more than core count (the wiki says three cores at most are used); Java 21 is needed from 1.20.5 on and the itzg image brings it; and Synology's DS225+ ships with 2 GB and its DS925+ runs a 2.2 GHz chip with no turbo, which is why the Intel N-series boxes suit this job better.</p>
+""",
+ "columns": [("cpu", "CPU, max clock"), ("ram", "RAM (max)"), ("docker", "Docker"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 4C, 3.4 GHz", "ram": "8 GB DDR5 (16 GB)", "docker": "Compose projects in UGOS; owner guide ran the Bedrock image, about 10 users at moderate settings", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T, 4.4 GHz", "ram": "8 GB DDR5 (64 GB)", "docker": "Same UGOS Docker; room for Paper with Aikar's flags at 6–10 GB", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 4C, 3.6 GHz", "ram": "8 GB DDR5 (32 GB)", "docker": "TOS 6 Docker", "warranty": "2 years (sellers)", "price": "$424.99 (Amazon listing, undated)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"cpu": "Intel Core i3-N305, 8C, 3.8 GHz", "ram": "32 GB DDR5", "docker": "TOS 6 Docker", "warranty": "2 years", "price": "$644.99–699.99 (listings)"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Intel Celeron N5095, 4C, 2.9 GHz", "ram": "8 GB", "docker": "Container Station", "warranty": "3 years", "price": "$489 (June 2026)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, 4C, 2.9 GHz", "ram": "4 GB (16 GB)", "docker": "Portainer/Docker in ADM", "warranty": "3 years", "price": "$369 (review, undated)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 4C, 2.7 GHz", "ram": "2 GB (6 GB): too little without an upgrade", "docker": "Container Manager", "warranty": "3 years", "price": "$339.99–364.99 (listings)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T, 2.2 GHz, no turbo", "ram": "4 GB ECC (32 GB)", "docker": "Container Manager", "warranty": "3 years", "price": "$639.99 list"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5 (16 GB)", "url": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+   "cells": {"cpu": "Cortex-A76, 4C, 2.4 GHz (arm64)", "ram": "16 GB", "docker": "Docker on Raspberry Pi OS", "warranty": "Not stated", "price": "$305 board; guides estimate 4–6 players at 20 TPS"}},
+ ],
+ "after": """
+<h2>What a Minecraft server needs</h2>
+<ul>
+<li><strong>RAM (Java):</strong> minecraft.wiki's server page lists 1 GB for 1–4 players, 2 GB for 5–10 and 4 GB for more, about 50–100 MB per player; PaperMC's Aikar's-flags guide is more generous, recommending 6–10 GB for the Java heap and leaving 1–1.5 GB for the OS, and calls 32 GB wasted. Mods and modpacks sit at the top of those ranges.</li>
+<li><strong>CPU:</strong> "good single-core performance"; the server uses about three cores at most and hyperthreading adds little. The N100's 3.4 GHz and the Pentium Gold 8505's 4.4 GHz are the relevant numbers here, not the core counts.</li>
+<li><strong>Java and disk:</strong> Java 21 from Minecraft 1.20.5; worlds start at a few hundred megabytes and grow with exploration. Bedrock's dedicated server lists an i3-3210-class CPU and 4 GB on Mojang's page, with community guides running small worlds in 1–2 GB.</li>
+</ul>
+<h2>The Docker route on UGOS</h2>
+<p>In UGOS's Docker app create a Project and paste a compose file for itzg/minecraft-server: EULA set to TRUE, VERSION pinned, MEMORY (the Java heap, 1G by default; 2G–4G for friends) with a container limit about 25% above it, USE_AIKAR_FLAGS for Paper, a ./data volume for the world, port 25565 TCP (19132 UDP for the separate itzg/minecraft-bedrock-server image, or GeyserMC and Floodgate to let Bedrock players join a Java server). The UGREEN owner guide used host networking; a port mapping is the alternative. Backups are the data folder: snapshot or copy it on a schedule.</p>
+<h2>Letting friends in</h2>
+<p>Forward port 25565 on the router to the NAS and give friends a DDNS name, or run a playit.gg tunnel container next to the server, which needs no open ports (community images exist; clients may fail to ping the server list entry but can connect). Tailscale works too for friends who install it. Keep the server whitelisted either way.</p>
+<h2>What owners report</h2>
+<p>A July 2025 guide on a DXP2800 (N100, 8 GB, 2.5GbE) calls it "not high-performance but competent", advises about ten users at moderate view and simulation distance and warns off large or complex servers; a mini-PC guide reports 19–20 TPS with 8–10 players on an N100 with 16 GB, dipping to 17–18 during chunk generation. No one has published a DXP4800 Plus test; its higher clock and RAM ceiling are the reason to choose it for a bigger or modded server, not a measured result. A Raspberry Pi 5 is estimated at 4–6 players at a steady 20 TPS.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("LifeInTech: Minecraft server on a UGREEN NAS (DXP2800)", "https://www.lifeintech.com/2025/07/16/Minecraft-UGREEN-NAS"),
+  ("minecraft.wiki: server requirements", "https://minecraft.wiki/w/Server/Requirements"),
+  ("PaperMC: Aikar's flags (memory guidance)", "https://docs.papermc.io/paper/aikars-flags"),
+  ("Mojang: Bedrock dedicated server download and requirements", "https://minecraft.net/download/server/bedrock"),
+  ("itzg/minecraft-server documentation", "https://docker-minecraft-server.readthedocs.io/en/latest/"),
+  ("itzg/minecraft-server: JVM options (MEMORY, Aikar's flags)", "https://docker-minecraft-server.readthedocs.io/en/latest/configuration/jvm-options/"),
+  ("playit.gg tunnel as a Docker container (community image)", "https://github.com/embeddedt/playit-docker"),
+  ("PC Build Advisor: Minecraft server on a mini PC (N100 report)", "https://www.pcbuildadvisor.com/can-i-run-a-minecraft-server-on-a-mini-pc/"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("QNAP TS-264", "https://www.qnap.com/en-us/product/ts-264"),
+  ("Raspberry Pi 5", "https://www.raspberrypi.com/products/raspberry-pi-5/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-with-thunderbolt-4-direct-to-mac", "question": "G46 (UGREEN funnel: NAS with Thunderbolt 4)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp480t-plus", "item_id": "UGREEN-DXP480T-PLUS",
+                    "title": "UGREEN NASync DXP480T Plus, Thunderbolt 4 NAS",
+                    "description": "All-NVMe NAS, 2× Thunderbolt 4, 10GbE, Core i5. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/ugreen-nas_storage-dxp480t-plus.png"},
+ "title": "Which NAS has Thunderbolt 4 so a Mac can connect directly to it (2026)? Every Thunderbolt NAS, and what the link really is",
+ "h1": "Which NAS has Thunderbolt 4 so a Mac can connect directly to it? (2026)",
+ "desc": "Every NAS with Thunderbolt 4 in 2026: UGREEN's DXP480T Plus, DXP6800 Pro and DXP8800 Plus and QNAP's TBS-h574TX, TVS-h674T, TVS-h874T and TS-h966TX, plus the Thunderbolt direct-attached arrays (OWC ThunderBay, LaCie, Promise Pegasus) for comparison, with what the Thunderbolt link is (an IP network bridge, not a mounted drive), measured speeds on Macs and PCs, prices and the macOS Thunderbolt Bridge setup.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP480T Plus</strong> ({buy:ugreen-nasync-dxp480t-plus}), the cheapest NAS with Thunderbolt 4 so a Mac can connect directly to it in 2026, $899.99 diskless on 2026-11-03: four NVMe slots, Core i5-1235U, 10GbE and two Thunderbolt 4 ports that make a direct network link with the Mac (Thunderbolt Bridge, shares over SMB), 1.5 GB/s measured on a 100 GB copy and about 2 GB/s reads on a Mac per one owner.</p>
+<p>For hard-drive capacity with the same ports, the <strong>DXP6800 Pro</strong> ({buy:ugreen-nasync-dxp6800-pro}) at $1,099.99. What the link is: on every Thunderbolt NAS (UGREEN and QNAP alike) the Mac sees a network interface, not a disk, so shares mount over SMB at 10–20 Gb/s rather than the 40 Gb/s of a Thunderbolt drive; QNAP's all-flash TBS-h574TX measured 1,929 MB/s write and 1,850 MB/s read on a Mac at StorageReview and costs about $1,449 and up, its 6- and 8-bay TVS-h674T/h874T run $2,999 for the i7, and its new TS-h966TX is $1,299 on pre-order. Asustor's USB4 ports link only to drives or another Asustor, Synology and TerraMaster sell no Thunderbolt NAS, and UGREEN says macOS gets higher speeds than Windows on its link.</p>
+""",
+ "columns": [("cpu", "CPU"), ("tb", "Thunderbolt"), ("lan", "LAN"), ("bays", "Bays"), ("measured", "Measured over Thunderbolt"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp480t-plus", "model": "UGREEN NASync DXP480T Plus",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T", "tb": "2× TB4, IP bridge", "lan": "1× 10GbE", "bays": "4× M.2 NVMe", "measured": "1.51 GB/s in, 1.42 GB/s out on a 100 GB copy (PC, Liliputing); about 2 GB/s reads on a Mac (owner)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp6800-pro", "model": "UGREEN NASync DXP6800 Pro",
+   "cells": {"cpu": "Intel Core i5-1235U", "tb": "2× TB4, IP bridge", "lan": "2× 10GbE", "bays": "6× SATA + 2× M.2", "measured": "Not measured by a review; UGREEN lists it as supported", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp8800-plus", "model": "UGREEN NASync DXP8800 Plus",
+   "cells": {"cpu": "Intel Core i5-1235U", "tb": "2× TB4, IP bridge", "lan": "2× 10GbE", "bays": "8× SATA + 2× M.2", "measured": "Not measured by a review", "warranty": "2 years"}},
+  {"brand": "QNAP", "model": "TBS-h574TX (all-flash)", "url": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "cells": {"cpu": "Intel Core i5-1235U (i3 option)", "tb": "2× TB4 'Thunderbolt Networking', macOS 13.5+", "lan": "1× 10GbE + 1× 2.5GbE", "bays": "5× E1.S", "measured": "1,929 MB/s write, about 1,850 read on a Mac (StorageReview)", "warranty": "3 years (5 extendable)", "price": "$1,449 at launch (i5); $1,744 at one reseller"}},
+  {"brand": "QNAP", "model": "TS-h966TX (announced Sept 2026)", "url": "https://www.storagereview.com/news/qnap-ts-h966tx-combines-thunderbolt-4-10gbe-and-u-2-nvme-in-a-compact-9-bay-nas",
+   "cells": {"cpu": "Intel Core i3, 6C", "tb": "2× TB4", "lan": "10GbE + 2.5GbE", "bays": "9 (SATA + U.2 NVMe)", "measured": "QNAP's own AJA test: 2,252 MB/s write, 2,004 read", "warranty": "3 years (5 option)", "price": "$1,299 (8 GB, pre-order)"}},
+  {"brand": "QNAP", "model": "TVS-h674T / TVS-h874T", "url": "https://www.qnap.com/en-us/product/tvs-h874t/specs",
+   "cells": {"cpu": "Core i5-12400 / i7 or i9", "tb": "2× TB4", "lan": "2× 2.5GbE; 10GbE by card", "bays": "6 or 8× SATA + 2× M.2", "measured": "Not found", "warranty": "3 years", "price": "h874T i7/32 GB $2,999 (Newegg)"}},
+  {"brand": "Asustor", "model": "Lockerstor Gen3 / Flashstor Gen2 (USB4)", "url": "https://www.asustor.com/en/knowledge?id=10",
+   "cells": {"cpu": "AMD Ryzen V3C14", "tb": "USB4: external drives and NAS-to-NAS only, no Mac bridge (Asustor KB)", "lan": "10GbE", "bays": "4–12", "measured": "n/a", "warranty": "3 years", "price": "$1,299 and up"}},
+  {"brand": "OWC", "model": "ThunderBay 4 (direct-attached, not a NAS)", "url": "https://www.owc.com/solutions/thunderbay-4",
+   "cells": {"cpu": "None (SoftRAID on the Mac)", "tb": "Thunderbolt, mounts as drives", "lan": "None", "bays": "4× SATA", "measured": "Up to 1,527 MB/s SSD RAID 0 (OWC)", "warranty": "1 year enclosure; 5 with drives", "price": "about $635–873 diskless"}},
+  {"brand": "Promise", "model": "Pegasus32 R6 / Pegasus5 R12 (direct-attached)", "url": "https://www.promise.com/Products/Pegasus/pegasus5-r12/",
+   "cells": {"cpu": "None", "tb": "TB3 / TB5, mounts as drives", "lan": "None", "bays": "6 / 12× SATA", "measured": "Up to 3,000 / 6,000 MB/s (Promise, R12)", "warranty": "Not stated", "price": "$2,889 (24 TB R6, reseller); R12 not stated"}},
+ ],
+ "after": """
+<h2>How the Thunderbolt link works</h2>
+<p>A Thunderbolt NAS does not appear on the Mac as a disk. The cable carries an IP network between the two (Apple's Thunderbolt Bridge, which macOS adds under System Settings → Network, with DHCP or a manual address such as 169.254.1.1 / 169.254.1.2), and the NAS's shares mount over SMB with Finder's Connect to Server. UGREEN's support article lists the DXP480T Plus, DXP6800 Pro and DXP8800 series, says macOS reaches higher speeds than Windows (which needs manual drivers), and one owner reports the NAS reverting a manual Thunderbolt IP after a reboot. Reviewers saw 10–20 Gb/s links depending on the host, so expect 1–2 GB/s, two to four times a 10GbE link, with no switch, adapter or 10GbE card to buy; a Thunderbolt direct-attached array (OWC, LaCie, Promise) mounts as a drive and goes faster, but serves one computer and offers no apps, users or remote access.</p>
+<h2>Which to buy</h2>
+<p>For one editing Mac and a flash-only library, the DXP480T Plus at $899.99 undercuts QNAP's TBS-h574TX by roughly $550 with the same processor; for a hard-drive library with Thunderbolt to one Mac and 10GbE to the rest, the DXP6800 Pro ($1,099.99) or DXP8800 Plus ($1,369.99) against QNAP's $1,299 TS-h966TX (with U.2 NVMe bays and QuTS hero's ZFS) and $3,000 TVS-h874T. Two Macs at once on the two ports, and whether the link survives sleep, are not documented by UGREEN.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP480T Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage"),
+  ("UGREEN NASync DXP6800 Pro", "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage"),
+  ("UGREEN NASync DXP8800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage"),
+  ("UGREEN support: Thunderbolt direct connection (article 609)", "https://support.ugnas.com/detail/article/en-US/609"),
+  ("Liliputing: DXP480T Plus review (Thunderbolt copy speeds)", "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/"),
+  ("NASCompares forum: Thunderbolt IP setup on a UGREEN NAS", "https://ask.nascompares.com/showthread.php?tid=12545"),
+  ("StorageReview: QNAP TBS-h574TX review (Mac Thunderbolt speeds)", "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review"),
+  ("StorageReview: QNAP TS-h966TX announcement", "https://www.storagereview.com/news/qnap-ts-h966tx-combines-thunderbolt-4-10gbe-and-u-2-nvme-in-a-compact-9-bay-nas"),
+  ("QNAP TBS-h574TX", "https://www.qnap.com/en-us/product/tbs-h574tx"),
+  ("QNAP TVS-h874T specs", "https://www.qnap.com/en-us/product/tvs-h874t/specs"),
+  ("Asustor KB: USB4 ports", "https://www.asustor.com/en/knowledge?id=10"),
+  ("Apple: connect Macs over Thunderbolt (IP over Thunderbolt)", "https://support.apple.com/guide/mac-help/ip-thunderbolt-connect-mac-computers-mchld53dd2f5/mac"),
+  ("OWC ThunderBay 4", "https://www.owc.com/solutions/thunderbay-4"),
+  ("Promise Pegasus5 R12", "https://www.promise.com/Products/Pegasus/pegasus5-r12/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-frigate-security-cameras", "question": "G47 (UGREEN funnel: NAS for Frigate)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus for Frigate",
+                    "description": "4-bay Intel NAS with an iGPU for OpenVINO and VAAPI, 8 GB to 64 GB, 10GbE, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best NAS for running Frigate to record security cameras (2026): detectors, drives and the Docker setup",
+ "h1": "Best NAS for running Frigate to record security cameras (2026)",
+ "desc": "Which NAS runs Frigate NVR well: UGREEN's DXP4800 Plus and DXP2800 against the Synology DS925+ and DS225+, QNAP TS-464, TerraMaster F4-425 Plus, Asustor AS5402T and an N100 mini PC, with Frigate's own requirements (AVX2, RAM, OpenVINO on an Intel iGPU, Coral and Hailo accelerators, hardware video decode, shared memory, surveillance drives), the Docker setup per NAS OS and the recording storage math.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best NAS for running Frigate to record security cameras in 2026, $619.99 diskless on 2026-11-03: a 12th-gen Intel chip with an iGPU that Frigate's docs support for OpenVINO object detection and VAAPI or QSV video decoding, 8 GB DDR5 (Frigate's minimum with face or plate enrichments; 16 GB recommended for 8+ cameras) expandable to 64 GB, four bays for surveillance drives, 10GbE and Docker Compose with /dev/dri passthrough.</p>
+<p>What to know: Frigate on UGOS is a Docker Compose project you write yourself (the same compose the docs give, with /dev/dri/renderD128, a 512 MB shm and the recordings on the hard drives), and no review has verified it on UGREEN hardware; a USB Coral adds a detector without host drivers but Frigate no longer recommends it for new installs, and M.2 Coral or Hailo cards need kernel drivers UGOS does not ship; four 1080p cameras at 2–4 Mbps write about 2.6–5.2 TB a month in continuous mode, so buy WD Purple or Seagate SkyHawk drives. Synology's DS925+ has no iGPU (CPU or Coral USB only).</p>
+""",
+ "columns": [("cpu", "CPU / iGPU"), ("ram", "RAM (max)"), ("accel", "Detector options"), ("docker", "Docker route"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505 (Alder Lake, AVX2), Intel UHD iGPU", "ram": "8 GB DDR5 (64 GB)", "accel": "OpenVINO on the iGPU; Coral USB; M.2 Coral/Hailo need host drivers (not on UGOS)", "docker": "Compose project with /dev/dri; untested by reviewers", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, UHD iGPU (Frigate lists about 15 ms per detection, one detector)", "ram": "8 GB DDR5 (16 GB)", "accel": "OpenVINO; Coral USB", "docker": "Same", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B; no iGPU", "ram": "4 GB ECC (32 GB)", "accel": "CPU detector or Coral USB only", "docker": "Container Manager with 'high privilege' (Frigate docs); Coral USB reported working on DSM 7.2", "warranty": "3 years", "price": "$639.99 list"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125 (Gemini Lake, UHD 600)", "ram": "2 GB (6 GB): below Frigate's 4 GB floor until upgraded", "accel": "OpenVINO on the iGPU in principle (6th-gen+); not confirmed", "docker": "Container Manager", "warranty": "3 years", "price": "$339.99–364.99 (listings)"}},
+  {"brand": "QNAP", "model": "TS-464", "url": "https://www.qnap.com/en-us/product/ts-464",
+   "cells": {"cpu": "Intel Celeron N5095, UHD", "ram": "8 GB (16 GB)", "accel": "OpenVINO; Coral USB", "docker": "Container Station cannot pull from GHCR or raise shm: install from the command line (Frigate docs)", "warranty": "3 years", "price": "$639–699"}},
+  {"brand": "TerraMaster", "model": "F4-425 Plus", "url": "https://www.terra-master.com/products/f4-425-plus",
+   "cells": {"cpu": "Intel N150, UHD (about 15 ms per detection per Frigate's table)", "ram": "16 GB DDR5 (32 GB)", "accel": "OpenVINO; Coral USB", "docker": "TOS 6 Docker; Frigate not documented", "warranty": "Not found", "price": "$569.99 list; $455.99 Cyber Monday 2025"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, UHD", "ram": "4 GB (16 GB)", "accel": "OpenVINO; Coral USB", "docker": "Portainer/Docker; Frigate not documented", "warranty": "3 years", "price": "$392 (reseller)"}},
+  {"brand": "Beelink", "model": "EQ13 (N100 mini PC) + USB drives", "url": "https://docs.frigate.video/frigate/hardware",
+   "cells": {"cpu": "Intel N100, UHD", "ram": "16 GB", "accel": "OpenVINO; named in Frigate's docs as the author's favourite for several 1080p cameras", "docker": "Any Linux; no RAID or NAS apps", "warranty": "Not found", "price": "about $259–279"}},
+ ],
+ "after": """
+<h2>Frigate's own requirements</h2>
+<ul>
+<li><strong>CPU:</strong> AVX and AVX2 are required; Intel Celeron and Pentium parts before Tiger Lake typically lack them, but the Alder Lake Pentium Gold 8505 and the N100 have them.</li>
+<li><strong>RAM:</strong> 4 GB for a few cameras, 8 GB with face or licence-plate enrichments, 16 GB recommended for most users and for 8+ cameras.</li>
+<li><strong>Detectors:</strong> the CPU detector is "not recommended for general use"; OpenVINO runs on 6th-gen Intel and newer iGPUs (N100 and N150 about 15 ms per inference, one detector instance; UHD 730 about 10 ms); the Coral USB needs no host driver but is "no longer recommended for new installations" and does not throttle itself; M.2 or mini-PCIe Coral and Hailo-8/8L (about 7–11 ms) need host kernel drivers, so on a NAS they only work where you control the kernel (Proxmox, Unraid, TrueNAS).</li>
+<li><strong>Video decode:</strong> preset-vaapi on 8th–12th-gen Intel (QSV optional), preset-intel-qsv on 13th-gen and newer; there is no CPU fallback if hardware decode fails.</li>
+<li><strong>Docker:</strong> map /dev/dri/renderD128 for the iGPU, /dev/bus/usb for a Coral USB, set shm_size from Frigate's formula (about 210 MB for two 720p cameras; the example uses 512 MB), and privileged mode "may not be necessary".</li>
+<li><strong>Storage:</strong> surveillance-rated hard drives (WD Purple, Seagate SkyHawk) for 24/7 recording; SSD wear worries are "largely no longer valid"; Frigate's emergency cleanup starts below about an hour of free space.</li>
+</ul>
+<h2>Frigate on each NAS OS</h2>
+<p>UGOS: a Docker Compose project with the devices mapped; a May 2026 guide describes it with QSV and warns UGOS updates can reset bind mounts, but no owner has published a working Frigate report, only an Immich-with-iGPU one, so treat it as the expected route rather than a proven one. Synology: enable "Execute container using high privilege" (tested on DSM 7.1.1); a DS718+ owner runs a Coral USB on DSM 7.2. QNAP: Container Station cannot pull from GitHub's registry or change the 64 MB shm, so install from the command line. TrueNAS SCALE: one owner reports preset-vaapi failing on 25.10 with a Coral USB working without hardware decode. Home Assistant OS: no Intel NPU or GPU support, shared memory about half of RAM.</p>
+<h2>Storage math</h2>
+<p>A 1080p H.265 camera at 2–4 Mbps writes about 0.9–1.8 GB an hour: 0.65–1.3 TB per camera per 30 days of continuous recording, so four cameras need roughly 2.6–5.2 TB a month and 4K roughly three times that; Frigate's default motion-only recording cuts it well below. Two 8 TB surveillance drives in RAID 1 hold a month of four 1080p cameras with margin; prices for WD Purple Pro 8 TB were about $400 and IronWolf Pro 8 TB about $220–275 in 2026 listings, undated.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("Frigate docs: planning a setup (CPU, RAM, storage)", "https://docs.frigate.video/frigate/planning_setup"),
+  ("Frigate docs: recommended hardware and detectors", "https://docs.frigate.video/frigate/hardware"),
+  ("Frigate docs: installation (Docker, devices, shm, NAS notes)", "https://docs.frigate.video/frigate/installation"),
+  ("Frigate docs: object detectors", "https://docs.frigate.video/configuration/object_detectors"),
+  ("Frigate docs: hardware video acceleration", "https://docs.frigate.video/configuration/hardware_acceleration_video"),
+  ("Frigate docs: recording", "https://docs.frigate.video/configuration/record"),
+  ("privacysmarthome: Frigate on a UGREEN NASync (2026 guide)", "https://www.privacysmarthome.com/guides/build-local-nvr-ugreen-nasync-frigate-2026/"),
+  ("Frigate discussion: Coral USB on a Synology DS718+", "https://google.18789066745.workers.dev/blakeblackshear/frigate/discussions/8127"),
+  ("TrueNAS forum: Frigate app and VAAPI on an Intel iGPU", "https://forums.truenas.com/t/frigate-app-vaapi-via-intel-igpu-capable/59335"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("QNAP TS-464", "https://www.qnap.com/en-us/product/ts-464"),
+  ("Notebookcheck: TerraMaster F4-425 Plus", "https://www.notebookcheck.net/TerraMaster-F4-425-Plus-short-test-Flexible-metal-housed-design-minor-issues.1174210.0.html"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-music-streaming-navidrome-plexamp", "question": "G49 (UGREEN funnel: NAS for a FLAC library)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Navidrome or Plexamp",
+                    "description": "2-bay Intel N100 NAS, 8 GB, Docker for Navidrome or Plex; UGOS Music app with CarPlay. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS for streaming a FLAC music library with Navidrome or Plexamp (2026)",
+ "h1": "Best NAS for streaming a FLAC music library with Navidrome or Plexamp (2026)",
+ "desc": "Which NAS to stream a FLAC library from: UGREEN's DXP2800 (and why the DH2300 is not it) against the Synology DS225+, QNAP TS-264, TerraMaster F2-425 Plus, Asustor AS5402T, a Raspberry Pi 5 and a Mac mini, with what Navidrome, Plexamp (and its Plex Pass), Jellyfin, Roon and Lyrion need, library sizing for FLAC and hi-res, and UGOS's own Music app.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS for streaming a FLAC music library with Navidrome or Plexamp at its 2026 price, $389.99 diskless on 2026-11-03: an x86 Intel N100 with 8 GB that runs Navidrome in Docker (UGREEN publishes the how-to) or Plex Media Server for Plexamp, two M.2 slots for the database, and UGOS's own Music app with CarPlay for the no-setup route. Navidrome runs on a Raspberry Pi Zero, so the NAS is never the bottleneck.</p>
+<p>What to know: UGREEN's cheaper DH2300 ($239.99) is ARM with no official Docker, so Navidrome and Plex's server are out and only the Music app remains; Plexamp needs Plex Media Server on the NAS and a Plex Pass ($6.99 a month, $69.99 a year, $749.99 lifetime since July 2026) for offline downloads, and its Sonic Analysis runs only on x86 and "can take hours or days"; Roon Server wants x86, 8 GB and an SSD and costs about $12–15 a month or $830 lifetime; 10,000 CD-quality FLAC tracks take about 350 GB, hi-res two to three times that.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("apps", "Music route"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (x86), 8 GB DDR5 (16 GB)", "apps": "Navidrome in Docker (UGREEN guide); Plex Media Server for Plexamp; Jellyfin; UGOS Music app with CarPlay", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "Rockchip ARM, 4 GB", "apps": "UGOS Music app and file playback only; no official Docker, Plex's analysis unsupported on ARM", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 2 GB (6 GB)", "apps": "Audio Station and DS audio (still in DSM 7.2–7.4); Navidrome/Plex in Container Manager", "warranty": "3 years", "price": "about $340–365 (listings)"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Intel Celeron N5095, 8 GB", "apps": "Music Station; Container Station for Navidrome/Plex", "warranty": "3 years", "price": "$489 (June 2026)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 8 GB DDR5", "apps": "TOS 6 Docker and Plex app", "warranty": "2 years", "price": "about $425 (Walmart listing, 2026-11-03)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, 4 GB", "apps": "SoundsGood; Docker/Portainer", "warranty": "3 years", "price": "$369 (review, undated)"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5, 8 GB, with a USB SSD", "url": "https://www.navidrome.org/docs/installation/docker/",
+   "cells": {"cpu": "Cortex-A76 arm64, 8 GB", "apps": "Navidrome in Docker (arm64 image); Plex's Sonic Analysis unsupported on ARM", "warranty": "Not found", "price": "Board about $80 and rising in 2026 (unverified)"}},
+  {"brand": "Apple", "model": "Mac mini (M4)", "url": "https://www.macrumors.com/2026/05/02/apple-just-raised-mac-mini-starting-price/",
+   "cells": {"cpu": "Apple M4", "apps": "Plex, Roon Server, Navidrome via Docker; not a NAS", "warranty": "1 year", "price": "$799 base (May 2026)"}},
+ ],
+ "after": """
+<h2>The apps</h2>
+<ul>
+<li><strong>Navidrome:</strong> free, a single Docker container (navidrome/navidrome, port 4533, amd64 and arm64), per-user play counts and playlists, on-the-fly transcoding to Opus per user or player, Last.fm and ListenBrainz scrobbling, Jukebox mode to a DAC on the server, and 100-plus Subsonic clients: Symfonium and DSub on Android, play:Sub and Amperfy on iPhone and Mac, plus CarPlay and Android Auto clients.</li>
+<li><strong>Plexamp:</strong> the Plex music app against Plex Media Server; loudness levelling and CarPlay in the free tier per Plex's blog, offline downloads with a Plex Pass, Sonos casting since 3.2; Sonic Analysis (the mixes and "sonically similar" features) is CPU-heavy, x86-only per forum reports, and one guess puts 25,000 tracks at days on an N100-class chip.</li>
+<li><strong>Jellyfin:</strong> free; one folder per album, tags from the files, .lrc lyrics; enable "always remux FLAC" if embedded WebP art breaks browser playback.</li>
+<li><strong>Roon:</strong> Roon Server is x86 only (no ARM), 4 GB minimum and 8 GB recommended, SSD for the database, Docker on the NAS; light use runs on Atom or Celeron chips, DSP and multi-zone want a Core i3/i5; about $12–15 a month or $830 lifetime, or a Nucleus One with five years for $949.99.</li>
+<li><strong>Lyrion (LMS):</strong> free, with Docker guides for Synology, QNAP and OpenMediaVault.</li>
+</ul>
+<h2>UGOS's own Music app</h2>
+<p>UGREEN ships a Music app in UGOS that plays a collection from tags, with lyrics from a same-named file, and the UGREEN NAS iPhone app supports CarPlay. Transcoding and the DH-series feature set are not documented. For a FLAC library the Subsonic ecosystem (Navidrome plus a client of your choice) is the richer route, and UGREEN's own blog walks through Navidrome on UGOS Pro.</p>
+<h2>Sizing</h2>
+<p>CD-quality FLAC runs about 30–40 MB a track, so 10,000 tracks is roughly 350 GB; 24-bit hi-res is two to three times that. Two 4 TB drives in RAID 1 hold a large library several times over; put Navidrome's or Plex's database on an M.2 SSD and let the drives spin down.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("UGREEN: set up Navidrome on a NAS", "https://nas.ugreen.com/blogs/how-to/set-up-navidrome-on-nas"),
+  ("UGREEN support: the Music app (article 279)", "https://support.ugnas.com/detail/article/en-US/279"),
+  ("UGREEN NAS app on the App Store (CarPlay)", "https://apps.apple.com/app/id6458647408"),
+  ("UGREEN: software support by model (Docker on the DH series)", "https://nas.ugreen.com/pages/solution-software"),
+  ("Navidrome: overview", "https://www.navidrome.org/docs/overview/"),
+  ("Navidrome: Docker installation", "https://www.navidrome.org/docs/installation/docker/"),
+  ("Navidrome: client apps", "https://www.navidrome.org/apps/"),
+  ("Plex: new lifetime Plex Pass pricing", "https://www.plex.tv/en-gb/blog/new-lifetime-plex-pass-pricing/"),
+  ("Plex: Plexamp free tier", "https://plex.tv/blog/free-bird-plexamp-spreads-its-wings-for-every-music-lover"),
+  ("Plex: Sonic Analysis", "https://support.plex.tv/articles/sonic-analysis-music/"),
+  ("Jellyfin: music libraries", "https://jellyfin.org/docs/general/server/media/music/"),
+  ("Roon: Roon Server on a NAS", "https://help.roonlabs.com/portal/en/kb/articles/roon-server-on-nas"),
+  ("Roon store: Nucleus One", "https://store.roonlabs.com/products/nucleus-one-with-5-years-roon-subscription"),
+  ("Lyrion Music Server", "https://lyrion.org/"),
+  ("Windows Central: UGREEN DH2300 review (Docker status)", "https://www.windowscentral.com/hardware/storage/ugreen-nasync-dh2300-review"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "qi2-car-charger-that-keeps-iphone-cool", "question": "G50 (car funnel: Qi2 car charger that keeps an iPhone cool)", "lead_first": True,
+ "product_result": {"slug": "ugreen-magflow-pro-qi2-25w-car-charger-cooling", "item_id": "UGREEN-MAGFLOW-PRO-CAR-75250",
+                    "title": "UGREEN MagFlow Pro Qi2 25W car charger with cooling",
+                    "description": "Qi2.2 25 W vent mount with a thermoelectric cooler and fan; $10 off with the page code.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-magflow-pro-qi2-25w-magnetic-car-charger-with-cooling-5598813.webp"},
+ "title": "Which Qi2 magnetic car charger keeps an iPhone cool and charging at full speed (2026)? Cooled mounts compared",
+ "h1": "Which Qi2 magnetic car charger keeps an iPhone cool and charging at full speed? (2026)",
+ "desc": "The Qi2 and Qi2.2 car mounts with active cooling (UGREEN MagFlow Pro, ESR HaloLock CryoBoost and OmniLock CryoBoost, Anker Prime AirCool, Spigen Essential, LISEN) against the passive Belkin, mophie, Satechi and Scosche mounts, on wattage, cooling method, mount type, the car adapter needed and price, with Apple's own rules on heat and charging and why a hot cabin stalls wireless charging.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN MagFlow Pro Qi2 25W car charger with cooling</strong> ({buy:ugreen-magflow-pro-qi2-25w-car-charger-cooling}), the Qi2 magnetic car charger that keeps an iPhone cool and charging at full speed for the least money in 2026: $39.99 with UGREEN's page code on 2026-11-03, a Qi2.2 25 W vent mount with a thermoelectric cooler and fan behind the coil, 25 W on the iPhone 17 and 16 series, 15 W on iPhone 12–15. Feed it a 45 W USB-C car adapter (not in the box) for full cooling.</p>
+<p>What to know: no outlet has published watts-over-time tests of cooled against uncooled mounts, so every "stays under 35 °C" figure is a maker's claim; what Apple does say is that iPhones are rated for 0–35 °C ambient and that charging, wireless included, slows or stops when the phone is hot, which a sun-heated mount reaches fast. The 15 W <strong>ESR HaloLock CryoBoost</strong> ({buy:esr-halolock-15w-wireless-car-charger-cryoboost}) is the cheaper fan-cooled option with both a vent clip and a dashboard base; Anker's Prime AirCool (25 W, TEC plus fan, 60 W adapter included) costs $89.99.</p>
+""",
+ "columns": [("watts", "Wireless"), ("cooling", "Cooling"), ("mount", "Mount"), ("adapter", "Car adapter"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-magflow-pro-qi2-25w-car-charger-cooling", "model": "UGREEN MagFlow Pro Qi2 25W with cooling",
+   "cells": {"watts": "Qi2.2 25 W (iPhone 17/16); 15 W on 12–15", "cooling": "TEC cooler + fan (3,800 rpm per Red Dot)", "mount": "Vent clip", "adapter": "Not included; UGREEN says 45 W+ for full cooling; 5 ft cable in the box", "warranty": "2 years"}},
+  {"slug": "esr-halolock-15w-wireless-car-charger-cryoboost", "model": "ESR HaloLock CryoBoost (15 W)",
+   "cells": {"watts": "Qi2 15 W (certified)", "cooling": "CryoBoost fan; ESR claims about 7.6 °C cooler", "mount": "Vent clip and dashboard base in the box", "adapter": "Not included (a reviewer notes no 18 W adapter)", "warranty": "12 months, 24 with registration"}},
+  {"brand": "ESR", "model": "OmniLock CryoBoost (25 W)", "url": "https://esrtech.com/products/black-omnilock-magnetic-qi2-25w-air-vent-car-mount-charger",
+   "cells": {"watts": "Qi2.2 25 W", "cooling": "CryoBoost fan", "mount": "Vent (clamps the blade, flexible arm)", "adapter": "Included: 40 W USB-C + 18 W USB-A; needs 35 W+", "warranty": "12–24 months", "price": "$69.99 (esrtech.com, via search)"}},
+  {"brand": "Anker", "model": "Prime Wireless Car Charger, AirCool (A2933)", "url": "https://www.anker.com/products/a2933-anker-prime-25w-qi2-wireless-car-charger",
+   "cells": {"watts": "Qi2.2 25 W", "cooling": "TEC + fan; Anker claims under 89 °F and 50% in about 22 min on an iPhone 17 Pro", "mount": "Vent", "adapter": "60 W included", "warranty": "Not found", "price": "$89.99 (anker.com); $62.99 Black Friday 2025"}},
+  {"brand": "Spigen", "model": "Essential EV25MFAQ", "url": "https://homescreen.pl/en/to-the-air-vents/126193-spigen-essential-ev25mfaq-qi22-peltier-magnetic-magsafe-vent-car-mount-wireless-charger-black-8800283316438.html",
+   "cells": {"watts": "Qi2.2 25 W", "cooling": "Peltier (TEC)", "mount": "Vent", "adapter": "Not found", "warranty": "Not found", "price": "about €42 (EU listing); US price not found"}},
+  {"brand": "LISEN", "model": "25 W cooling mount", "url": "https://the-gadgeteer.com/?p=511044",
+   "cells": {"watts": "Qi2.2 25 W", "cooling": "Fan; LISEN claims 31–36 °C pad", "mount": "Suction base", "adapter": "95 W included", "warranty": "Not found", "price": "$39.95 (The Gadgeteer)"}},
+  {"brand": "Belkin", "model": "BoostCharge Pro Qi2 vent mount", "url": "https://www.belkin.com/p/magnetic-wireless-charging-car-vent-mount/WIC010ttBK.html",
+   "cells": {"watts": "Qi2 15 W", "cooling": "None", "mount": "Vent (dash bundle exists)", "adapter": "20–30 W in some bundles", "warranty": "Not found", "price": "$42.99 (belkin.com, related model)"}},
+  {"brand": "mophie", "model": "Snap+ Qi2 vent mount", "url": "https://www.macrumors.com/2024/11/12/mophie-new-qi-2-chargers",
+   "cells": {"watts": "Qi2 15 W", "cooling": "None", "mount": "Vent", "adapter": "30 W included", "warranty": "Not found", "price": "$69.95 (Apple Store)"}},
+  {"brand": "Satechi", "model": "Qi2 wireless car charger", "url": "https://www.macrumors.com/2024/06/20/satechi-qi2-wireless-car-charger/",
+   "cells": {"watts": "Qi2 15 W", "cooling": "None", "mount": "Vent", "adapter": "25 W included", "warranty": "Not found", "price": "$59.99"}},
+  {"brand": "Scosche", "model": "MagicMount Charge Pro (MPQMRDV)", "url": "https://www.abt.com/Scosche-MagicMount-Charge-Pro-Dash-and-Vent-Phone-Mount-MPQMRDVSP/p/228777.html",
+   "cells": {"watts": "Qi2 15 W (a 25 W model is listed)", "cooling": "None", "mount": "Dash and vent", "adapter": "Not found", "warranty": "Not found", "price": "$59.99 (Abt, Walmart)"}},
+ ],
+ "after": """
+<h2>Why car mounts throttle, in Apple's words</h2>
+<p>Apple rates iPhones for use between 0 and 35 °C ambient, says not to leave the device in a car, and states that when a device gets too warm "charging, including wireless charging, slows or stops"; since iOS 16 the phone shows Charging On Hold and resumes when it cools. Wireless charging adds its own heat on top of a sun-warmed dashboard and a running navigation app, which is why an uncooled magnetic mount in summer often sits at a trickle or pauses; a fan or thermoelectric plate pulls heat off the back of the phone. Keep the case thin or off, point an air-conditioning vent at the mount (a vent mount that blocks the vent helps less), and keep the phone out of direct sun.</p>
+<h2>What the claims are worth</h2>
+<p>ESR says CryoBoost keeps phones under 35 °C against 40 °C-plus for competitors, Anker says under 89 °F, LISEN 31–36 °C and 10–15 °C cooler than passive mounts; all are the makers' own figures, and no review from ChargerLAB, Macworld, Wired, 9to5Mac or MacRumors logs delivered watts over a drive for a cooled mount against an uncooled one. The one reviewer note is that a fan "may struggle in direct sun unless the AC blows on it". Buy a cooled mount for the mechanism, not for a number.</p>
+<h2>Getting 25 W</h2>
+<p>Qi2.2's 25 W reaches only the iPhone 17 series and iPhone 16 series on iOS 26; every older iPhone charges at 15 W. The mount's own electronics plus the cooler need a USB-C PD car adapter of about 35–45 W (UGREEN says 45 W or more for maximum cooling; ESR's OmniLock needs 35 W and ships a 40 W adapter); a 20 W adapter gives a slow charge and a warm phone whatever the mount claims.</p>
+""",
+ "sources": [
+  ("UGREEN MagFlow Pro Qi2 25W magnetic car charger with cooling", "https://us.ugreen.com/products/magflow-pro-qi2-25w-magnetic-car-charger"),
+  ("Red Dot: UGREEN MagFlow Pro car charger (cooling design)", "https://www.red-dot.org/project/magflow-pro-magnetic-wireless-car-charger-with-cooling-system-89315"),
+  ("ESR HaloLock Qi2 wireless car charger with CryoBoost", "https://www.esrtech.com/products/15w-wireless-car-charger-with-cryoboost-halolock"),
+  ("ESR OmniLock CryoBoost 25W vent mount", "https://esrtech.com/products/black-omnilock-magnetic-qi2-25w-air-vent-car-mount-charger"),
+  ("LavX: ESR OmniLock review", "https://news.lavx.hu/article/esr-omnilock-review-a-25w-qi2-2-car-charger-that-demands-real-power"),
+  ("ESR FAQ: warranty", "https://www.esrgear.com/faq/2c540/"),
+  ("Anker Prime 25W Qi2 wireless car charger (A2933)", "https://www.anker.com/products/a2933-anker-prime-25w-qi2-wireless-car-charger"),
+  ("The Gadgeteer: cooled Qi2 car mounts roundup", "https://the-gadgeteer.com/?p=511044"),
+  ("Apple: iPhone and iPad operating temperature", "https://support.apple.com/en-us/118431"),
+  ("Apple: Charging On Hold", "https://support.apple.com/en-us/104949"),
+  ("Belkin magnetic wireless charging vent mount", "https://www.belkin.com/p/magnetic-wireless-charging-car-vent-mount/WIC010ttBK.html"),
+  ("MacRumors: mophie Qi2 chargers", "https://www.macrumors.com/2024/11/12/mophie-new-qi-2-chargers"),
+  ("MacRumors: Satechi Qi2 car charger", "https://www.macrumors.com/2024/06/20/satechi-qi2-wireless-car-charger/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
