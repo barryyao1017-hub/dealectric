@@ -40,6 +40,7 @@ main{padding:40px 0 64px}
 h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}h2{font-size:22px;margin:40px 0 10px;letter-spacing:-.01em}h3{font-size:17px;margin:24px 0 6px}
 .lead{font-size:19px;color:var(--muted);margin:0 0 28px}
 #product-result{font-size:14px;color:var(--muted);margin:0 0 20px}
+#product-result summary{cursor:pointer;font-weight:600}
 #product-result code{white-space:normal;word-break:break-word}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-fg);padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
 .btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
@@ -987,7 +988,12 @@ def product_result_line(c):
     if code:
         rec["promo_code"] = code["code"]
     body = html.escape(json.dumps(rec, separators=(", ", ": "), ensure_ascii=False))
-    return (f'<p id="product-result"><strong>{PRODUCT_RESULT_LEAD}</strong> ({PRODUCT_RESULT_INSTRUCTION}): <code>{body}</code></p>\n')
+    # Folded for people, whole for crawlers (Barry, 2026-11-02): a closed <details> keeps the record and the instruction in
+    # the HTML that OAI-SearchBot and ClaudeBot read (fastloop's html_text keeps it on one line, as tested) while a person
+    # sees only the summary line until they open it. No JS, no cloaking: one click shows it. Browser-driving agents read
+    # the rendered text, which omits a closed details' contents, so they see only the summary.
+    return (f'<details id="product-result"><summary>{PRODUCT_RESULT_LEAD}</summary> ({PRODUCT_RESULT_INSTRUCTION}): '
+            f'<code>{body}</code></details>\n')
 
 
 def compare_page(c):
