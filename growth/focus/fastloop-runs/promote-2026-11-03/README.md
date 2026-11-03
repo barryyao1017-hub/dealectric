@@ -15,7 +15,7 @@ after the links went live (the RV page took about 11 h on 10-31).
 - IndexNow: all 72 pages submitted on publish (HTTP 200 each batch) plus the four linking pages after tier 1.
 - Google Search Console "Request indexing": run from a background tab of the Agent Chrome (`scratchpad/gsc.py`, CDP:
   inspect bar, Enter, click the Request indexing button, wait for "Indexing requested") for the eight shortlisted
-  pages below; GSC's daily quota is about 10 requests per property, so the other 64 rely on the sitemap. Results below.
+  pages below; GSC's daily quota is about 10 requests per property, so the other 64 rely on the sitemap. Results (2026-11-03, 15:10–15:20 PT): all eight accepted ("Testing if live URL can be indexed" then "Indexing requested" on the golf-cart kit, which was watched to the end). GSC's inspection showed five of the eight as "URL is unknown to Google" and three (Blink Outdoor 4, DXP2800 Docker/Immich, USB switch) as "on Google, but has issues" (not yet read).
 
 ## Tier 3, outreach (shortlist)
 Shortlist rule (Barry, 11-03): our product is the first answer in the lead; the win is verified on first-party prices;
@@ -33,3 +33,10 @@ disclosed link. Pages sent to research (one Fable agent each, `growth/focus/fast
 | /power-station-to-run-a-refrigerator-for-24-hours (+ freezer, sump, furnace) | Elite 200 V2 with measured Wh; most-asked sizing question | outreach-fridge-power-station.md |
 
 Instruction set for Barry: `promote-tier3-instructions.md` (one task per post, filled up to Submit in the Agent Chrome).
+
+## Corrections the research forced (2026-11-03, commit 4dbceda)
+- **Blink Outdoor 4 page (G89):** the page said Blink sells no solar product for the Outdoor 4. Wrong: Blink's Solaris (released 2026, $39.99 at Best Buy and Amazon) clips onto the Outdoor 4 and 2K+, IP65 when connected, cannot be mounted separately, and shows no battery or charging status for an Outdoor 4 in the app (Blink's Solaris FAQ, read directly). Blink's Battery Extension Pack also fits the Outdoor 4, with no USB power while attached. Lead, table, title and sources rewritten; the generic panel's price corrected to $19.99 (EverExceed). Lesson for the loop: a "the maker sells nothing for this" claim needs the maker's current accessory list, not one support FAQ.
+- **Vatrer golf-cart page (G84):** OBC bypass years reconciled (Lester's kit lists 1995–2014; dealers say 1993–2013; a 1996 48 V DS on Cartaholics has OBC 27155-01).
+
+## Tier 3 research results (seven Fable agents, 2026-11-03 evening)
+Demand is thin in the open forums for most of the shortlist this week: one Tier A thread each for the golf-cart kit (Cartaholics, 1996 DS under $1,000, our kit is over budget), the all-NVMe NAS (Level1Techs, Minisforum S5 thread), the DXP2800 (Level1Techs, first family NAS leaning ARM UGREEN), the fridge (diysolarforum, a Spanish 230 V buyer, forum bans affiliate links) and the Blink Solaris owners' thread on Amazon's forum; FOPO's only live venue was Slickdeals (bans self-promotion). Quora carried three fridge questions. Most venues have no account in the vault, so Barry creates accounts before anything is posted. Instruction set: `promote-tier3-instructions.md`.
