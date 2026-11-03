@@ -3388,4 +3388,379 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("9to5Toys: Lectric spare battery prices", "https://9to5toys.com/2026/05/29/lectric-celebrates-7th-anniversary-savings-on-e-bike-extra-batteries-from-210/"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-pihole-adguard-wireguard-vpn", "question": "G57 (UGREEN funnel: NAS for Pi-hole/AdGuard Home + WireGuard)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for VPN and storage",
+                    "description": "2-bay Intel N100, 8 GB, 2.5GbE, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS to run Pi-hole or AdGuard Home plus a WireGuard VPN for the house (2026): what works on each NAS OS",
+ "h1": "Best NAS to run Pi-hole or AdGuard Home plus a WireGuard VPN for the house (2026)",
+ "desc": "Which NAS runs an ad-blocking DNS (Pi-hole or AdGuard Home) and a WireGuard VPN into the house alongside file storage: UGREEN's DXP2800 and DXP4800 Plus against the Synology DS225+, QNAP TS-264, Asustor AS5402T and TerraMaster F2-425 Plus, with native VPN-server support per OS, the port-53 conflicts, the macvlan fix, Tailscale as the no-port-forward route, idle power, and why a Raspberry Pi or a GL.iNet router does the DNS half better.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03, as the one box for storage plus a WireGuard VPN into the house: an N100 with 8 GB, 2.5GbE and Docker that runs wg-easy or Tailscale as a Compose project (one third-party guide also lists a built-in VPN Server with WireGuard in UGOS Pro, unconfirmed by UGREEN). Run Pi-hole on it only with a macvlan address, because UGOS holds port 53; a NAS reboot takes down DNS for every device.</p>
+<p>What to know: UGOS runs its own dnsmasq on port 53 (and more for the Virtual Machines app), so a Pi-hole container with host networking fails with "address in use"; the fixes are a macvlan IP for the container, a different port with router forwarding (which loses per-device stats), or masking dnsmasq, which UGREEN advises against. QNAP's QVPN Service and Asustor's VPN Server app (ADM 4.2.6+) have documented native WireGuard servers; Synology DSM 7.3 and TerraMaster TOS 6 offer OpenVPN/L2TP only. For the DNS half a Raspberry Pi 5 ($200 at Adafruit, about 3 W idle) or a GL.iNet Flint 2 router with AdGuard Home built in ($159 list) stays up when the NAS reboots; if the NAS must do both, run a second resolver elsewhere.</p>
+""",
+ "columns": [("vpn", "Native VPN server"), ("dns", "Pi-hole / AdGuard route"), ("idle", "Idle power"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"vpn": "WireGuard + OpenVPN per a VPN Tracker guide (unconfirmed by UGREEN); wg-easy needs the host wireguard module (owners report an ip6_tables reload after updates); Tailscale in Docker", "dns": "Docker with macvlan; port 53 is taken by UGOS's dnsmasq", "idle": "5.2 W drive asleep, 16.4 W active (UGREEN lab); about 7 W idle with 2 drives (OCinside)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"vpn": "Same", "dns": "Same", "idle": "higher; 4 bays, 10GbE", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/dsm/7.3/software_spec/vpn_server",
+   "cells": {"vpn": "VPN Server: OpenVPN, L2TP/IPsec, PPTP; no WireGuard (community SPK only)", "dns": "Container Manager; uninstall DNS Server/DHCP Server or use macvlan (Marius guide, DSM 7.4.1, Pi-hole v6.5)", "idle": "not read", "warranty": "3 years", "price": "$275–365 across dated snapshots (Amazon deal $274.99; $364.99 mid-2026); not read live"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-uk/software/qvpn-service",
+   "cells": {"vpn": "QVPN Service 3: WireGuard server, OpenVPN, L2TP/IPsec, QBelt", "dns": "Container Station", "idle": "not read", "warranty": "3 years", "price": "$464–591 across 2026 snapshots; not read live"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/app_central/app_detail?id=1600",
+   "cells": {"vpn": "VPN Server app 1.1 adds WireGuard (ADM 4.2.6+); AS54 series not on the list read, check the listing", "dns": "AdGuard Home in App Central (ADM 4.3)", "idle": "not read", "warranty": "3 years", "price": "about $449–460 (undated)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://toshelp.terra-master.com/docs/TOS6/application/vpn-server",
+   "cells": {"vpn": "TOS 6 VPN Server: PPTP, OpenVPN, L2TP/IPsec; no WireGuard", "dns": "Docker", "idle": "not read", "warranty": "2 years (reseller)", "price": "$339–400 (undated)"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5 (8 GB) for DNS + PiVPN", "url": "https://www.adafruit.com/product/5813",
+   "cells": {"vpn": "PiVPN (WireGuard) on Raspberry Pi OS", "dns": "Pi-hole natively; no storage", "idle": "about 3 W", "warranty": "not found", "price": "$200 (Adafruit, 2026-11-03); a Pi 4 is enough"}},
+  {"brand": "GL.iNet", "model": "Flint 2 (GL-MT6000) router", "url": "https://store-us.gl-inet.com/products/flint-2-gl-mt6000-wi-fi-6-high-performance-home-router",
+   "cells": {"vpn": "WireGuard server built in (GL.iNet claims up to 900 Mbps client)", "dns": "AdGuard Home built in", "idle": "not read", "warranty": "not read", "price": "$159 list; about $100–113 on deals"}},
+ ],
+ "after": """
+<h2>The port-53 problem on UGOS, in detail</h2>
+<p>Owners found UGOS Pro 1.6 and later binding dnsmasq to 127.0.0.1:53, with the Virtual Machines app adding two more listeners, so Pi-hole's own dnsmasq cannot start. The Pi-hole forum's solution (uninstall the VM app, mask dnsmasq, restart the container) works but may break UGREENlink and VMs, and one commenter says it has to be redone after reboots; UGREEN support said it does not recommend disabling or reassigning port 53. The clean route is Docker macvlan: the container gets its own LAN IP, keeps per-device statistics, and leaves UGOS alone. AdGuard Home has the same port-53 need and the same fix.</p>
+<h2>The VPN half</h2>
+<p>WireGuard in Docker (wg-easy or linuxserver/wireguard) needs the host kernel's wireguard module; the UGREEN Docker guide reports kernel 6.12 with the module, an ip6_tables error after UGOS or Docker updates that needs a one-line SSH fix, and UDP 51820 forwarded on the router. Tailscale as a Compose project needs no open port and works behind CGNAT (free plan, 6 users), at the cost of a Tailscale account and an occasional relay hop. UGREEN's own UGREENlink relay reaches the NAS but not your whole LAN. Throughput is not the question on an N100: the OpenWrt WireGuard table puts the chip in the multi-gigabit range, so your internet uplink is the limit.</p>
+<h2>What the DNS box needs</h2>
+<p>Pi-hole asks for 512 MB of RAM and 2 GB of disk and "does not require much processing power"; AdGuard Home publishes no minimum. Either runs on the oldest Pi you own, which is the point: a 3 W box that never reboots for a NAS update is better DNS than a 40 W NAS that does. Clients do not reliably fall back to a secondary DNS, so two resolvers (Pi-hole on the NAS plus a Pi, synced) is the setup that survives updates.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("VPN Tracker: set up a VPN on a UGREEN NAS (UGOS VPN Server with WireGuard)", "https://blog.vpntracker.com/how-to-set-up-vpn-on-a-ugreen-nas-and-connect-with-vpn-tracker/"),
+  ("Pi-hole forum: Pi-hole v6 on UGOS Pro, port 53 conflict with dnsmasq", "https://discourse.pi-hole.net/t/solution-pi-hole-v6-on-ugreen-nas-ugos-pro-port-53-conflict-with-dnsmasq/86004"),
+  ("Sergey Tihon: Pi-hole DNS on UGOS Pro 1.6 (three fixes)", "https://sergeytihon.com/2025/06/28/pi-hole-dns-on-ugos-pro-1-6-0-2917/"),
+  ("UGREEN Docker guides: WireGuard (kernel module, ip6_tables)", "https://github.com/EszopiCoder/ugreen-docker-guides/wiki/WireGuard"),
+  ("needtoknowit: UGREEN NAS remote access guide (UGREENlink, wg-easy, Tailscale)", "https://www.needtoknowit.com.au/blog/ugreen-nas-remote-access-guide-australia.md"),
+  ("StarryHope: UGREEN DXP2800 (power figures)", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/"),
+  ("Synology DSM 7.3 VPN Server specification", "https://www.synology.com/en-us/dsm/7.3/software_spec/vpn_server"),
+  ("Marius Hosting: Pi-hole on Synology with Portainer", "https://mariushosting.com/synology-install-pi-hole-with-portainer/"),
+  ("QNAP QVPN Service", "https://www.qnap.com/en-uk/software/qvpn-service"),
+  ("Asustor App Central: VPN Server (WireGuard)", "https://www.asustor.com/en/app_central/app_detail?id=1600"),
+  ("Asustor App Central: AdGuard Home", "https://www.asustor.com/en/app_central/app_detail?id=1026"),
+  ("TerraMaster TOS 6: VPN Server", "https://toshelp.terra-master.com/docs/TOS6/application/vpn-server"),
+  ("Pi-hole docs: prerequisites", "https://docs.pi-hole.net/main/prerequisites/"),
+  ("Pi-hole forum: fallback DNS when the Pi-hole box is down", "https://discourse.pi-hole.net/t/possible-to-configure-router-to-use-pi-hole-as-primary-dns-but-also-define-a-fallback-in-case-pi-hole-box-is-down/3779"),
+  ("Adafruit: Raspberry Pi 5 8 GB", "https://www.adafruit.com/product/5813"),
+  ("raspberry.tips: Raspberry Pi power consumption 2026", "https://raspberry.tips/en/faq/raspberry-pi-power-consumption-update-2026-all-models-compared"),
+  ("OpenWrt forum: WireGuard throughput comparison", "https://forum.openwrt.org/t/a-wireguard-comparison-db/187586/1"),
+  ("GL.iNet Flint 2", "https://store-us.gl-inet.com/products/flint-2-gl-mt6000-wi-fi-6-high-performance-home-router"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "nas-that-runs-on-12v-in-a-van-or-rv", "question": "G60 (UGREEN funnel: NAS on 12 V in a van)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dh2300", "item_id": "UGREEN-DH2300",
+                    "title": "UGREEN NASync DH2300, 12 V input NAS",
+                    "description": "2-bay ARM NAS with a 12 V adapter, 3–11 W. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DH2300_home.webp"},
+ "title": "Which NAS runs on 12 V in a van or RV, and how much power does it draw (2026)? Input voltages and measured watts",
+ "h1": "Which NAS runs on 12 V in a van or RV, and how much power does it draw? (2026)",
+ "desc": "The NAS units whose power brick is 12 V (so they can run off a van's battery through a 12 V regulator, no inverter): UGREEN's DH2300 and DXP2800, Synology's 2-bay units, QNAP TS-233, TerraMaster F8 SSD Plus, ZimaBoard, against the 19 V and 20 V UGREEN DXP4800 Plus and DXP480T Plus that need a boost converter, with spec-sheet and measured watts, amp-hours per day, regulator and inverter losses, heat and vibration limits, and the Raspberry Pi 5 that draws a third as much.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DH2300</strong> ({buy:ugreen-nasync-dh2300}), $239.99 diskless on 2026-11-03: a NAS that runs on 12 V in a van or RV because its brick is a 12 V adapter, drawing 3.3 W with the drives asleep and 9–11 W idle in reviews (about 20 Ah a day from a 12 V battery), fed through an isolated 12 V regulator such as a Victron Orion-Tr 12/12-9 (about $64–75) rather than raw battery voltage. UGREEN publishes no input tolerance and nobody has logged a van install, so treat it as "12 V on the label", not "tested in a van".</p>
+<p>What to know: the <strong>DXP2800</strong> ({buy:ugreen-nasync-dxp2800}) also ships with a 12 V 5 A adapter and adds x86 and Docker for 5–16 W; the DXP4800 Plus (19 V, 18–50 W) and DXP480T Plus (20 V, 16–74 W) need a 12-to-19/20 V boost module or an inverter and are poor van fits. A Raspberry Pi 5 with a USB SSD draws 3–4 W, a third of any NAS, and wins outright if you can live without a NAS app suite. Spinning drives are rated 0–40 °C (UGREEN) and about 30–70 G operating shock; in a vehicle, SSDs or 2.5-inch drives and a cool cabinet matter more than the box.</p>
+""",
+ "columns": [("input", "Power input"), ("spec", "Spec-sheet draw"), ("measured", "Measured"), ("ah", "Ah/day at 12 V (idle)"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"input": "External adapter, 12 V (manuals say 6 A; two retailers 4.2 A)", "spec": "13.7 W access, 3.3 W hibernation (UGREEN lab, one drive)", "measured": "9–11 W idle, 12–13 W copying, 15–17 W stress (OC Inside); 10.3 W with two WD Reds hibernating (Neowin)", "ah": "about 20", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"input": "External adapter, 12 V 5 A", "spec": "16.4 W access, 5.2 W hibernation (UGREEN lab)", "measured": "about 7 W idle with two drives in RAID 1 (OCinside via StarryHope)", "ah": "about 14–30", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"input": "External 150 W adapter, 19 V 7.9 A: needs a boost converter or inverter", "spec": "42.4 W access, 18.1 W hibernation", "measured": "about 50 W under normal load (TechPowerUp)", "ah": "about 36–100", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp480t-plus", "model": "UGREEN NASync DXP480T Plus",
+   "cells": {"input": "External adapter, 20 V 7 A (retailer listings, not UGREEN): needs a boost converter or inverter", "spec": "23.1 W access, 16.9 W hibernation", "measured": "16–18 W idle, 74 W full load or 10GbE copy (OC Inside)", "ah": "about 34", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS223j / DS224+ / DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"input": "External 60 W adapter, 5.5 × 2.5 mm plug; third-party replacements are 12 V 5 A (Synology's own voltage rating not found)", "spec": "DS224+ 14.7 W access, 4.4 W hibernation; DS225+ 17.0 / 6.1 W", "measured": "not found", "ah": "about 9–34", "warranty": "2–3 years", "price": "not read"}},
+  {"brand": "QNAP", "model": "TS-233 (ARM)", "url": "https://www.bhphotovideo.com/c/product/1894573-REG/qnap_pwr_adapter_48w_a01_48w_external_power_adapter.html",
+   "cells": {"input": "External 48 W adapter, 12 V", "spec": "10.8 W typical, 3.4 W sleep (one listing; conflicting)", "measured": "not found", "ah": "about 22", "warranty": "2 years", "price": "not read"}},
+  {"brand": "TerraMaster", "model": "F8 SSD Plus (8× M.2)", "url": "https://liliputing.com/terramaster-f8-ssd-plus-review/",
+   "cells": {"input": "External 72 W adapter, 12 V 6 A", "spec": "45 W operating, 9 W idle (spec)", "measured": "22–42 W (ServeTheHome)", "ah": "about 44–84", "warranty": "2 years", "price": "not read"}},
+  {"brand": "Zima", "model": "ZimaBoard 2", "url": "https://shop.zimaspace.com/pt/products/60w-12v-5a-power-adapter-for-zimaboard",
+   "cells": {"input": "12 V 5 A, 5.5 × 2.5 mm", "spec": "not published", "measured": "10–11 W idle, 26 W load (Notebookcheck, pre-release)", "ah": "about 20–22", "warranty": "not read", "price": "not read"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5 + USB SSD", "url": "https://raspberry.tips/en/faq/raspberry-pi-power-consumption-update-2026-all-models-compared",
+   "cells": {"input": "5 V 5 A USB-C PD (a 12 V-to-USB-C PD adapter); weaker supplies cap USB at 600 mA", "spec": "n/a", "measured": "about 3 W headless, 3.6 W with an SSD; up to 8.8 W full load", "ah": "about 7", "warranty": "not found", "price": "$200 board (Adafruit, 2026-11-03)"}},
+ ],
+ "after": """
+<h2>Feeding a 12 V NAS from a van battery</h2>
+<p>A 12 V LiFePO4 house bank sits at about 13.3 V full, charges at 14.2–14.6 V and an alternator can swing 12–15 V, while lead-acid sags toward 11.8 V when low, so a device built for a regulated 12 V brick should get an isolated DC-DC regulator (Victron Orion-Tr 12/12-9, 9 A at about 12.2 V, $64–75 in US listings on 2026-11-03) sized above the adapter's amps: at least 5 A for the DXP2800 and 6 A for the DH2300 until you read your adapter's label. A 19 V unit needs a 12-to-19 V boost module (8 A / 152 W modules run $18–64, input 9–16 V) and a 20 V unit a 20 V equivalent; a pure-sine inverter adds 3–8 W of no-load draw plus conversion loss to a 10–20 W NAS, which is why the 12 V boxes are the ones to buy.</p>
+<h2>The arithmetic</h2>
+<p>Amp-hours a day at 12 V are watts × 2: 3.6 W (Pi 5) is about 7 Ah, 10 W about 20 Ah, 15 W about 30 Ah and 25 W about 50 Ah, plus 5–15 % for the regulator. On a 100 Ah LiFePO4 bank a DH2300 idling all day takes a fifth of it; a DXP480T Plus a third; a DXP4800 Plus under load half. UGREEN's US3000 NAS UPS (12 V 10 A out) is listed for all four models but UGREEN does not say how it feeds the 19 V and 20 V units, so it is not a 12 V-rail answer.</p>
+<h2>Heat and vibration</h2>
+<p>UGREEN rates the DXP2800 for 0–40 °C (one retailer lists 35 °C maximum); a closed van cabinet in summer passes that, so give the NAS airflow. 3.5-inch NAS drives list roughly 30–70 G operating shock for 2 ms and 250–350 G non-operating, enough for a parked van and not a promise for a corrugated road; park the drives (hibernate) while driving or use SSDs. No published report measures a UGREEN, Synology or Pi NAS living in a van, so the figures here are bench numbers.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN NASync DXP480T Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage"),
+  ("DH2300 manual (12 V adapter)", "https://manuals.plus/asin/B0FNWHSPXF"),
+  ("DXP2800 manual (12 V 5 A adapter)", "https://manuals.plus/ugreen/dxp2800-nasync-network-attached-storage-manual"),
+  ("OC Inside: DH2300 review (power measurements)", "https://www.ocinside.de/review/ugreen_dh2300/5/"),
+  ("OC Inside: DXP480T Plus review (power measurements)", "https://www.ocinside.de/review/ugreen_dxp480t_plus/7"),
+  ("TechPowerUp: DXP4800 Plus review (19 V 150 W adapter)", "https://techpowerup.com/review/ugreen-nasync-dxp4800-plus/3.html"),
+  ("Neowin: DH2300 review (power with two WD Reds)", "https://www.neowin.net/amp/ugreen-nasync-dh2300-review-an-ultra-low-powered-personal-cloud-and-streamer-nas/"),
+  ("StarryHope: DXP2800 (idle power)", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/"),
+  ("UGREEN US3000 NAS UPS (12 V 10 A output)", "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"),
+  ("digitec Q&A: Synology DS224+ 12 V plug size", "https://www.digitec.ch/en/s1/questionandanswer/diskstation-ds224-which-12-volt-plug-is-used-55-mm-x-25-mm-or-55-mm-x-21-mm-789957"),
+  ("B&H: QNAP 48 W 12 V adapter (TS-233)", "https://www.bhphotovideo.com/c/product/1894573-REG/qnap_pwr_adapter_48w_a01_48w_external_power_adapter.html"),
+  ("Liliputing: TerraMaster F8 SSD Plus review", "https://liliputing.com/terramaster-f8-ssd-plus-review/"),
+  ("Notebookcheck: ZimaBoard 2 pre-release (power)", "https://www.notebookcheck.net/ZimaBoard-2-0-in-pre-release-testing-Now-an-even-more-powerful-and-versatile-Raspberry-Pi-rival.1006382.0.html"),
+  ("raspberry.tips: Raspberry Pi power consumption 2026", "https://raspberry.tips/en/faq/raspberry-pi-power-consumption-update-2026-all-models-compared"),
+  ("LiTime: LiFePO4 charge voltages", "https://www.litime.com/blogs/blogs/can-i-charge-a-lifepo4-battery-with-a-normal-charger"),
+  ("Samlex PST-300-12 inverter (no-load draw)", "https://www.solaris-shop.com/samlex-pst-300-12-pure-sine-wave-300w-battery-inverter/"),
+  ("NASCompares: mobile NAS for an RV", "https://nascompares.com/answer/mobile-nas-for-a-rv/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-sump-pump-12-hour-outage", "question": "G61 (power funnel: power station for a 1/3 HP sump pump through a 12-hour outage)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, sump pump backup",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W, 10 ms UPS.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Which portable power station runs a 1/3 HP sump pump through a 12-hour outage (2026)? Start surge, duty cycle and runtime",
+ "h1": "Which portable power station runs a 1/3 HP sump pump through a 12-hour outage? (2026)",
+ "desc": "Sizing a portable power station for a 1/3 HP sump pump over a 12-hour outage: pump running and start watts (Zoeller M53, Superior 92341), why BLUETTI's Power Lifting watts do not count for a motor start, a runtime table at 10 % and 25 % duty for the BLUETTI Elite 300, Elite 200 V2, AC200L, AC180 and ALLPOWERS R4000, S2000 Pro and P1800, UPS switchover, pass-through, EcoFlow and Jackery for comparison, and the battery-backup and water-powered pumps that are the dedicated answers.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: the portable power station to run a 1/3 HP sump pump (about 800 W running, up to 2,900 W to start) through a 12-hour outage, 3,014.4 Wh and 2,400 W continuous, about 27 hours at 10 % duty and just under 12 at 25 %, 10 ms UPS switchover. Count only continuous watts for a motor start, never lifting watts, and test your own pump: no outlet has published such a test.</p>
+<p>What to know: for a wet basement at heavy-storm duty (25 %, pump every 2–3 minutes) only the <strong>ALLPOWERS R4000</strong> ({buy:allpowers-r4000-3456wh}) (3,456 Wh, 3,600 W, $1,499, 45 kg) clears 12 hours; the Elite 200 V2 and AC200L ($899) manage 18 hours at 10 % and 8 at 25 %; the AC180 ($449) and P1800 ($399) do not reach 12 hours at any duty and the AC180's 1,800 W is below a Zoeller M53's listed 25.9 A start. EcoFlow's DELTA 3 Plus ($719, 1,024 Wh, X-Boost surge) is cheaper with more owner reports of sump use but covers about 9 hours. A dedicated battery-backup sump pump ($200–600 plus a 12 V battery) or a water-powered Liberty SumpJet (about $240–330, city water only) is the unattended, multi-day answer; a station wins when it also runs the fridge and phones.</p>
+""",
+ "columns": [("wh", "Capacity / continuous"), ("ups", "UPS switchover"), ("h10", "Hours at 10 % duty"), ("h25", "Hours at 25 % duty"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh / 2,400 W (4,800 W lifting, resistive only)", "ups": "10 ms (8 ms measured, StorageReview)", "h10": "27", "h25": "11.9", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh / 3,600 W (6,000 W peak)", "ups": "15 ms", "h10": "31", "h25": "13.7", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh / 2,600 W (3,900 W lifting)", "ups": "≤15 ms", "h10": "18.6", "h25": "8.2", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh / 2,400 W (3,600 W lifting); expandable; being replaced by the Apex 200", "ups": "20 ms", "h10": "18.3", "h25": "8.1", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC / 2,400 W (4,000 W peak; derates to 2,000 W below about 60 %)", "ups": "not verified", "h10": "13", "h25": "5.7", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh / 1,800 W (2,700 W lifting): below some 1/3 HP start figures", "ups": "20 ms", "h10": "10.3", "h25": "4.6", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh / 1,800 W (3,600 W peak)", "ups": "20 ms (manual)", "h10": "9.2", "h25": "4.0", "warranty": "24 months US page"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Plus", "url": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "cells": {"wh": "1,024 Wh / 1,800 W (3,600 W surge, X-Boost 2,200 W)", "ups": "<10 ms", "h10": "about 9", "h25": "about 4", "warranty": "5 years", "price": "$719, pre-order (2026-11-03)"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/collections/portable-power-stations",
+   "cells": {"wh": "2,042 Wh / 2,200 W (4,400 W surge)", "ups": "not found", "h10": "about 18", "h25": "about 8", "warranty": "not read", "price": "$799–999 across 2026 listings"}},
+  {"brand": "Anker", "model": "SOLIX C1000 Gen 2", "url": "https://www.ankersolix.com/products/c1000-gen2",
+   "cells": {"wh": "1,024 Wh / 2,000 W", "ups": "not found", "h10": "about 9", "h25": "about 4", "warranty": "not stated", "price": "from $529.99"}},
+ ],
+ "after": """
+<h2>What a 1/3 HP pump draws</h2>
+<p>BLUETTI's own sump-pump guide puts a 1/3 HP pump at 600–800 W running and 1,200–2,900 W starting; retailer nameplates give the Zoeller M53 9.7 A running and 25.9 A locked rotor (about 1,160 W and 3,100 W at 120 V) and the Superior Pump 92341 4.1 A running and 19 A starting (about 490 W and 2,300 W). Manufacturers' own locked-rotor figures were not readable, and Wayne CDU790 listings disagree with each other. The start pulse lasts a fraction of a second, but an inverter must supply it: BLUETTI's manuals describe Power Lifting as a resistive-load mode (heaters, kettles) and BLUETTI staff have said inductive surge can be 3–5× running, so size against continuous watts, which is why the AC180 is marginal and the Elite 300 or R4000 are comfortable.</p>
+<h2>Duty cycle and the runtime table</h2>
+<p>Pump duty depends on inflow: BLUETTI's pages assume 5 minutes an hour in light rain (8 %) and 10–20 minutes an hour in heavy rain (17–33 %); owners in storms report a cycle every 2–3 minutes. Our table assumes 800 W running, 15 W of station self-draw with the inverter on (BLUETTI's own assumption; one review measured about 10 W) and 85 % of rated watt-hours usable: 12 hours needs about 1,140 Wh at 10 % duty and about 2,580 Wh at 25 %. BLUETTI's own estimate for the Elite 300 is 12–18 hours and for the Elite 200 V2 8–12, which matches the 25 % column. Measure your own pit before a storm season: time the cycles for an hour in rain.</p>
+<h2>Running it unattended</h2>
+<p>Leave the station plugged into the wall with the pump plugged into the station; the UPS mode switches over in 8–20 ms, far faster than a motor notices, with no one home. BLUETTI says pass-through charging is safe and heat is the ageing risk, but one owner reported an AC180P shutting down during an outage while in pass-through, so pull the plug once and watch the pump run. A station has no float switch or high-water alarm of its own: keep a separate alarm.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("BLUETTI: how long can a BLUETTI power a sump pump", "https://bluettipower.com/blogs/buying-guide/how-long-can-bluetti-power-sump-pump"),
+  ("BLUETTI: how many watts does a sump pump use", "https://www.bluettipower.com/blogs/knowledge/how-many-watts-does-a-sump-pump-use"),
+  ("StorageReview: BLUETTI Elite 300 review (8 ms UPS, Power Lifting)", "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box"),
+  ("BLUETTI community: EB3A overloads on a sump pump (inductive surge)", "https://community.bluettipower.com/t/eb3a-overloads-powering-sump-pump/6244"),
+  ("BLUETTI community: AC180P in pass-through during an outage", "https://community.bluettipower.com/t/ac180p-clicking/31084"),
+  ("BLUETTI: pass-through charging", "https://bluettipower.com/blogs/knowledge/what-is-pass-through-charging"),
+  ("SupplyHouse: Zoeller M53 (amps)", "https://www.supplyhouse.com/Zoeller-53-0018-Model-M53-Mighty-Mate-Automatic-Cast-Iron-Effluent-Pump-w-35-ft-Cord-115-V-0-3-HP"),
+  ("Power Equipment Direct: Superior Pump 92341", "https://powerequipmentdirect.com/Superior-Pump-92341-Sump-Pump/p4540.html"),
+  ("The Gadgeteer: Elite 200 V2 review (idle draw)", "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/"),
+  ("Slickdeals thread: 1/3 HP pump on an EcoFlow DELTA 2 for 9 hours", "https://slickdeals.net/f/17632944-ef-ecoflow-portable-power-station-delta-2-1024wh-lifepo4-lfp-battery-fast-charging-solar-generator-solar-panel-optional-for-home-backup-power-prime-deal-479"),
+  ("EcoFlow DELTA 3 Plus", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("Ace Hardware: CyberPower battery backup sump system (10 % duty rating)", "https://www.acehardware.com/p/4003789"),
+  ("Ferguson: Liberty SumpJet SJ10", "https://www.fergusonhome.com/liberty-pumps-sj10/s774068"),
+  ("BLUETTI: battery backup power for a sump pump (install costs)", "https://bluettipower.com/blogs/power-solution/battery-backup-power-for-sump-pump"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "cheapest-nas-for-infuse-apple-tv-4k-remux", "question": "G58 (UGREEN funnel: cheapest NAS for Infuse on Apple TV)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dh2300", "item_id": "UGREEN-DH2300",
+                    "title": "UGREEN NASync DH2300 for Infuse direct play",
+                    "description": "2-bay ARM NAS, SMB and NFS, 1GbE, quiet. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DH2300_home.webp"},
+ "title": "Cheapest NAS for Infuse on an Apple TV 4K (2026): direct-playing 4K remuxes over SMB or NFS, no transcoding",
+ "h1": "Cheapest NAS for Infuse on an Apple TV 4K (2026)",
+ "desc": "What a direct-play-only Infuse library needs from a NAS (about 12 MB/s average, 128 Mbps peak, over gigabit SMB or NFS) and the cheapest 2-bay boxes that do it: Synology DS223j, TerraMaster F2-212, UGREEN DH2300, QNAP TS-233, Asustor AS1102TL, with measured throughput, noise and power, what Infuse plays (Dolby Vision profiles, TrueHD Atmos limits), the Apple TV 4K's Ethernet and 2026 prices, and drive costs per film.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Any gigabit 2-bay NAS direct-plays a 4K remux to Infuse on a wired Apple TV; the proven cheapest is Synology's DS223j (about $210, 115 MB/s measured over SMB). Buy the <strong>UGREEN NASync DH2300</strong> ({buy:ugreen-nasync-dh2300}), $239.99 diskless on 2026-11-03, if the $30 buys what you want: NFS as well as SMB (the fallback Infuse users reach for when SMB stutters), 4 GB of RAM, 31–35 dBA and about 9.5 W idle, and an HDMI port. Nobody has published an Infuse-plus-UGOS test, so the claim rests on standard shares, not a review.</p>
+<p>What to know: a UHD remux averages about 55–82 Mbps and peaks at 128 Mbps, and every box here reads 100–115 MB/s (800–900 Mbps) over gigabit, so the NAS is never the limit, the Wi-Fi is: wire the Apple TV (the 2026 Apple TV 4K is $299 with Gigabit Ethernet). Infuse Pro is $1.99 a month, $16.99 a year or $99.99 lifetime and plays MKV/ISO/BDMV with HEVC, Dolby Vision profiles 5 and 8 (profile 7 discs need remuxing to 8), HDR10+, and decodes TrueHD and DTS-HD to multichannel PCM, but TrueHD Atmos and DTS:X do not pass through on tvOS. TerraMaster's F2-212 ($169.99 list) is likely cheaper still with 1 GB RAM and TOS; the DH2300 has no Docker. At 55–80 GB a film, an 8 TB drive holds 100–145 remuxes, and drives now cost more than the box.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("lan", "LAN and shares"), ("measured", "Measured SMB read"), ("noise", "Noise / idle power"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "Rockchip RK3576 8-core ARM, 4 GB", "lan": "1× 1GbE; SMB, NFS, AFP, WebDAV, FTP; HDMI 4K60; UGREEN tvOS app; no Docker", "measured": "about 110–115 MB/s (Digital Camera World, via search)", "noise": "31–35 dBA idle/light, 38–41 heavy (NASCompares); 9.5 W idle", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 8 GB", "lan": "2.5GbE; SMB/NFS; Docker (Plex/Jellyfin if you later need transcoding)", "measured": "not found", "noise": "about 7 W idle", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS223j", "url": "https://www.storagereview.com/review/synology-ds223j-review",
+   "cells": {"cpu": "Realtek RTD1619B, 1 GB", "lan": "1GbE; SMB/NFS; DSM", "measured": "about 115 MB/s read and write (StorageReview); just over 100 MB/s (TechARP)", "noise": "not read", "warranty": "2 years", "price": "about $209.99 (aggregator, undated); $190 at launch; $152–162 sale lows reported"}},
+  {"brand": "TerraMaster", "model": "F2-212", "url": "https://hothardware.com/reviews/terramaster-f2-212-nas-review",
+   "cells": {"cpu": "Realtek RTD1619B, 1 GB", "lan": "1GbE; SMB/NFS; TOS", "measured": "saturates gigabit on large files (HotHardware)", "noise": "10.4 W idle, 21.1 W access", "warranty": "2 years", "price": "$169.99 list; $118.99 on an undated deal"}},
+  {"brand": "Synology", "model": "DS223", "url": "https://dongknows.com/synology-diskstation-ds223-review/",
+   "cells": {"cpu": "RTD1619B, 2 GB", "lan": "1GbE", "measured": "gigabit-limited (Dong Knows)", "noise": "not read", "warranty": "2 years", "price": "about $285.99 (aggregator); $250 MSRP"}},
+  {"brand": "QNAP", "model": "TS-233", "url": "https://www.qnap.com/en-us/product/ts-233",
+   "cells": {"cpu": "Cortex-A55 4-core, 2 GB", "lan": "1GbE", "measured": "not found", "noise": "not read", "warranty": "2 years", "price": "about $219 (unverified)"}},
+  {"brand": "Asustor", "model": "Drivestor 2 Lite (AS1102TL)", "url": "https://www.asustor.com/en/product?p_id=78",
+   "cells": {"cpu": "Realtek RTD1619B, 1 GB", "lan": "2.5GbE", "measured": "not found", "noise": "not read", "warranty": "3 years", "price": "no US price found (€190 / £167)"}},
+ ],
+ "after": """
+<h2>What Infuse plays, and what it does not</h2>
+<p>Firecore lists MKV, MP4, M2TS/TS, ISO, BDMV and VIDEO_TS with H.264, HEVC, AV1 and VC-1; HDR10, HDR10+, HLG and Dolby Vision profiles 5 and 8; TrueHD, DTS-HD MA, DTS, AC3, E-AC3, FLAC and PCM, with Atmos passthrough only in its E-AC3 form. Dolby Vision profile 7 (UHD discs) is dual-layer and Apple hardware does not play it, so the community remuxes to profile 8.1 (MEL discs convert cleanly, FEL discs lose their enhancement layer); check how your files are labelled. Lossless audio is decoded to up to 7.1 24-bit LPCM, so a receiver gets the channels but not the Atmos objects. Sources: SMB, NFS, FTP/SFTP, WebDAV, UPnP, plus Plex, Jellyfin and Emby, none of which are needed for direct play.</p>
+<h2>Why the NAS is not the bottleneck</h2>
+<p>Direct play is a file copy at the film's bitrate: about 7–10 MB/s average and 16 MB/s at a 128 Mbps peak, against 100–115 MB/s from any of these boxes over gigabit. Infuse forum threads about 4K remuxes spinning are almost all Wi-Fi or SMB-signing cases, and the fixes are Ethernet, NFS, or SMB settings. ARM boxes are weak only for transcoding, which Infuse never asks for; buy a 2.5GbE or Intel box only if a second client (a phone away from home, a browser) will need transcoding later, where the DXP2800 ($389.99) with Plex or Jellyfin in Docker is the step-up.</p>
+<h2>Drives and the Apple TV</h2>
+<p>At 55–80 GB per remux, two 8 TB NAS drives in RAID 1 hold roughly 100–145 films; 8 TB IronWolf listings ran about $281–350 and WD Red Plus about $355–400 in 2026 (undated), so the drives cost more than any NAS on this page. The Apple TV 4K has no USB port, so a NAS or a computer sharing SMB/NFS is the only way to feed Infuse a local library; the new 2026 Apple TV 4K (A19, 128 GB, Gigabit Ethernet, Wi-Fi 7) is $299 on pre-order at Apple, and the 2022 models rose to $199 (Wi-Fi) and $249 (Ethernet) in June 2026 per a third-party report.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("Firecore: Infuse (formats, protocols, pricing)", "https://firecore.com/infuse"),
+  ("Firecore support: audio options and capabilities", "https://support.firecore.com/hc/en-us/articles/217735707-Audio-Options-Capabilities"),
+  ("Firecore community: Dolby Vision profile 7/8 support", "https://community.firecore.com/t/dolby-vision-profile-7-8-support-ts-mkv-files/19713"),
+  ("Firecore community: 4K playback spinner over SMB", "https://community.firecore.com/t/4k-playback-constantly-gets-apple-spinner/15873"),
+  ("Apple TV 4K tech specs", "https://www.apple.com/apple-tv-4k/specs/"),
+  ("Apple: buy Apple TV 4K", "https://www.apple.com/shop/buy-tv/apple-tv-4k"),
+  ("StorageReview: Synology DS223j review (115 MB/s)", "https://www.storagereview.com/review/synology-ds223j-review"),
+  ("HotHardware: TerraMaster F2-212 review", "https://hothardware.com/reviews/terramaster-f2-212-nas-review"),
+  ("Dong Knows Tech: Synology DS223 review", "https://dongknows.com/synology-diskstation-ds223-review/"),
+  ("NASCompares: UGREEN DH2300 review (noise, power, shares)", "https://nascompares.com/review/ugreen-dh2300-nas-review/"),
+  ("OC Inside: UGREEN DH2300 review (services)", "https://www.ocinside.de/review/ugreen_dh2300/4/"),
+  ("UGREEN: connect Kodi to a UGREEN NAS (NFS on UGOS Pro)", "https://ai.ugreen.com/blogs/how-to/connect-kodi-to-ugreen-nas"),
+  ("UGREEN: app downloads (tvOS app)", "https://ai.ugreen.com/pages/app-download"),
+  ("Wolfcrow: UHD Blu-ray vs streaming bitrates", "https://wolfcrow.com/ultra-hd-blu-ray-vs-streaming-the-ultimate-showdown-for-best-picture-and-sound/"),
+  ("listofdisks: 8 TB drive prices", "https://listofdisks.com/capacity/8"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-veeam-macrium-windows-image-backups", "question": "G59 (UGREEN funnel: NAS for Veeam/Macrium image backups of Windows PCs)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800, Veeam backup target",
+                    "description": "2-bay Intel N100, 8 GB, 2.5GbE. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS for nightly image backups of three Windows PCs with Veeam Agent Free or Macrium Reflect (2026)",
+ "h1": "Best NAS for nightly image backups of three Windows PCs with Veeam Agent Free or Macrium Reflect (2026)",
+ "desc": "Which NAS to point Veeam Agent for Windows Free or Macrium Reflect at for nightly full-image backups of three PCs: UGREEN's DXP2800 (and DH2300 as the cheap SMB target) against the Synology DS225+ with its free Active Backup for Business, QNAP TS-264 with the HDP PC Agent, TerraMaster and Asustor, with what Veeam Free does and does not include, Macrium's pricing and Image Guardian limits, SMB share setup, snapshot immutability against ransomware, sizing for fulls plus 30 days of incrementals, and 1GbE vs 2.5GbE transfer times.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For install-and-forget, Synology's DS225+ (about $365–399) wins: its free Active Backup for Business images Windows PCs with dedup, bare-metal restore and immutable snapshots. If you already run Veeam Agent Free or Macrium, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 on 2026-11-03, a NAS whose SMB share (N100, 8 GB, 2.5GbE, Btrfs snapshots) is all either needs.</p>
+<p>What to know: Veeam Agent for Windows Free (13.1.1, August 2026) backs up to an SMB share with one job per PC, full then incrementals, a set number of restore points, encryption and recovery media, but no GFS retention or synthetic fulls, and its scheduling is listed inconsistently in Veeam's own docs, so test a nightly run. Macrium Reflect Free ended in January 2024 and Reflect X Home is about $49.99 a year per PC (a 4-pack for the price of 2), and its Image Guardian protects local backup drives only, not a NAS. UGREEN's own Windows client is file-level, not an image, and UGOS documents no immutable snapshots.</p>
+<p>Three PCs at 300 GB used each need about 900 GB of fulls plus 1.4–2.7 TB for 30 days of 5–10 % daily incrementals before compression: two 4 TB drives mirrored is the floor, 8 TB is comfortable. The $239.99 DH2300 works as a plain SMB target on 1GbE; nightly incrementals take minutes either way, and only the first full (about 45 minutes at 1GbE, 25–35 at 2.5GbE) and restores feel the port.</p>
+""",
+ "columns": [("cpu", "CPU / RAM / LAN"), ("backup", "Backup software route"), ("snap", "Snapshots"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 8 GB DDR5, 2.5GbE", "backup": "SMB share for Veeam/Macrium; UGREEN's PC client is file-level only", "snap": "Btrfs Snapshot app (restores data and permissions); no immutable/WORM option documented", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "ARM 8-core, 4 GB, 1GbE", "backup": "SMB share; about 110 MB/s on the wire", "snap": "Btrfs; Snapshot app on this model unverified", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/dsm/7.4/software_spec/abb",
+   "cells": {"cpu": "Celeron J4125, 2 GB (6 GB), 2.5GbE + 1GbE", "backup": "Active Backup for Business: free agent, full images, global dedup (one client went 2.5 TB to 1.1 TB across 50 PCs), bare-metal media, daily/startup/sign-out triggers; needs Btrfs and an x64 Plus model", "snap": "Snapshot Replication with immutable snapshots (protection period, cannot be deleted)", "warranty": "3 years", "price": "$364.99 Amazon deal (November 2026 listing); $398.95 (Aztek, undated)"}},
+  {"brand": "QNAP", "model": "TS-264 (8 GB)", "url": "https://www.qnap.com/en/news/2024/qnap-releases-netbak-pc-agent-a-license-free-windows-pcserver-backup-solution",
+   "cells": {"cpu": "Celeron N5095, 8 GB, 2× 2.5GbE", "backup": "HDP (NetBak) PC Agent: licence-free full-system backup and USB bare-metal restore (BitLocker must be off)", "snap": "QTS snapshots (not checked)", "warranty": "3 years", "price": "$479–489 (QNAP store June 2026 / Amazon, undated)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://toshelp.terra-master.com/docs/TOS6/backup/snapshot",
+   "cells": {"cpu": "Intel N150, 8 GB, 2× 5GbE", "backup": "SMB share", "snap": "TOS 6 Btrfs snapshots, retain by count or always; optional @snapshot folder exposure", "warranty": "2 years (reseller)", "price": "from $398.99 (TerraMaster); $424.99 Walmart (undated)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://asustor.com/online/online_help?id=73",
+   "cells": {"cpu": "Celeron N5105, 4 GB, 2× 2.5GbE", "backup": "SMB share", "snap": "Snapshot Center (Btrfs), lockable snapshots, 256 max", "warranty": "3 years", "price": "$369–460 (sellers, undated)"}},
+  {"brand": "Synology", "model": "DS223j", "url": "https://www.synology.com/en-us/products/DS223j",
+   "cells": {"cpu": "RTD1619B ARM, 1 GB, 1GbE", "backup": "SMB share only (no Active Backup on J models)", "snap": "none (ext4)", "warranty": "2 years", "price": "$162–190 (2026 listings, dates vary)"}},
+ ],
+ "after": """
+<h2>Veeam Agent Free on a NAS share</h2>
+<p>Create a backup folder and a dedicated NAS user with write access; in the job pick "Shared folder", enter the UNC path and that user's credentials (the same account must exist on the NAS and be typed in the job, the usual cause of "cannot create job" errors). Free runs incrementals after the first full and keeps the number of restore points you set; synthetic fulls, GFS, the CBT driver and backup windows are paid features. Rebuild the recovery media after each agent upgrade or major Windows update. Veeam compresses and can dedup at the source, so the on-disk total is below the raw sizing.</p>
+<h2>Ransomware and the share</h2>
+<p>A PC that saves the share's credentials can encrypt or delete the backups it wrote, so the NAS side matters: Synology's Snapshot Replication can lock snapshots for a protection period during which they cannot be deleted; Asustor can lock snapshots; UGOS's Snapshot app takes read-only Btrfs snapshots but publishes nothing about immutability, and a compromised admin login could remove them. On any NAS, use a backup-only user, no admin, and keep a second copy off the NAS. Macrium's Image Guardian hardens local backup volumes on the PC that runs it (shareable to other MIG PCs), not a NAS target.</p>
+<h2>Sizing and the wire</h2>
+<p>Fulls: 3 × 300 GB = 900 GB. Incrementals at 5–10 % a day: 15–30 GB per PC, 1.35–2.7 TB over 30 days. Plan 2.3–3.6 TB raw, less after compression or dedup. A 300 GB full takes about 45 minutes at a gigabit wire speed of 110 MB/s and 18–35 minutes at 2.5GbE (drive-limited); a 15–30 GB incremental takes 1–5 minutes on either, which is why the port only matters the first night and on restore day. Drive prices in 2026 listings were undated and inconsistent (IronWolf 4 TB about $208, WD Red Plus 4 TB about $250), so check the retailer before buying.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Veeam help: Agent for Windows licence editions (Free)", "https://helpcenter.veeam.com/docs/agentforwindows/userguide/license_editions.html"),
+  ("vladan.fr: Veeam Agent for Windows 13.1.1 Free overview", "https://www.vladan.fr/veeam-agent-for-microsoft-windows-13-1-1-700-free-edition-technical-overview-and-what-you-can-achieve/"),
+  ("Veeam forum: NAS share credentials", "https://forums.veeam.com/viewtopic.php?p=424332"),
+  ("Macrium KB: Image Guardian", "https://kbx.macrium.com/macrium-reflect-x/macrium-image-guardian"),
+  ("Macrium: Reflect X FAQ", "https://www.macrium.com/reflect-x/faq"),
+  ("Neowin: Macrium Reflect Free end of support", "https://www.neowin.net/news/macrium-reflect-free-windows-backup-software-will-be-dead-soon-limited-support-announced/"),
+  ("itechguides: back up a PC or Mac to a UGREEN NAS (file-level client)", "https://www.itechguides.com/how-to-back-up-a-pc-or-mac-to-a-ugreen-nas/"),
+  ("UGREEN support: Snapshot app (article 654)", "https://support.ugnas.com/detail/article/en-US/654"),
+  ("Synology DSM 7.4: Active Backup for Business specification", "https://www.synology.com/en-us/dsm/7.4/software_spec/abb"),
+  ("Synology DSM 7.3: Snapshot Replication (immutable snapshots)", "https://www.synology.com/en-us/dsm/7.3/software_spec/snapshot_replication"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("ifeeltech: Active Backup for Business guide 2026", "https://ifeeltech.com/blog/synology-active-backup-for-business-guide"),
+  ("QNAP: NetBak PC Agent (licence-free)", "https://www.qnap.com/en/news/2024/qnap-releases-netbak-pc-agent-a-license-free-windows-pcserver-backup-solution"),
+  ("Asustor help: Snapshot Center", "https://asustor.com/online/online_help?id=73"),
+  ("TerraMaster TOS 6 help: Snapshot", "https://toshelp.terra-master.com/docs/TOS6/backup/snapshot"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-for-starlink-mini-and-macbook-off-grid", "question": "G62 (power funnel: power station for Starlink Mini + MacBook remote work)", "lead_first": True,
+ "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
+                    "title": "BLUETTI AC180, a workday for Starlink Mini",
+                    "description": "1,152 Wh LiFePO4, 100 W USB-C, 500 W solar input.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
+ "title": "Which power station runs a Starlink Mini and a MacBook for a remote workday off grid, and for how many days (2026)?",
+ "h1": "Which power station runs a Starlink Mini and a MacBook for a remote workday off grid, and for how many days? (2026)",
+ "desc": "Sizing a power station for a Starlink Mini (20–40 W, needs a 100 W USB-C PD port or 12–48 V DC) plus a MacBook (10–40 W): workdays per charge for the BLUETTI AC180, Elite 200 V2, AC200L, Elite 30 V2, ALLPOWERS P1800, S2000 Pro and R600 from measured usable watt-hours, why the USB-C path beats the inverter, solar and car refill, and EcoFlow, Jackery, Anker and Goal Zero for comparison.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For one workday, buy the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}), $449 in our 2026-11-03 check (BLUETTI's page shows $499, restock late November): 950–1,030 Wh measured, so a Starlink Mini (21–25 W average) plus a MacBook (10–40 W) for 8 hours, about 250–560 Wh, is one to three days per charge, Mini on the 100 W USB-C port, MacBook on AC. For three or four days off grid, the Elite 200 V2 ($899, 1,910 Wh measured).</p>
+<p>What to know: the <strong>Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}) has two 100 W USB-C ports. Starlink's US help page says the Mini needs a 100 W (20 V/5 A) USB-C PD source and will not boot on 65 W (its UK page says 65 W), so one 100 W port is the Mini's alone and the laptop takes a second port or the inverter; the AC180 has one USB-C port, the Elite 200 V2, AC200L and S2000 Pro two, the ALLPOWERS P1800 two at up to 140 W (13 kg, but sold out until December 7 and untested for usable Wh). Leaving the inverter on costs about 10–15 W around the clock, 230–360 Wh a day, so switch AC off overnight or run everything from USB-C and 12 V. A 200 W panel returns roughly 600–750 Wh on a good day, which covers a workday; the Elite 200 V2 takes 96 W from a car socket. Anker's SOLIX C1000 Gen 2 and Jackery's Explorer 1000 v2 are about 5 kg lighter than the AC180 with two 100–140 W ports, at prices we could not verify today.</p>
+""",
+ "columns": [("wh", "Capacity (measured usable)"), ("usbc", "USB-C"), ("solar", "Solar / car input"), ("weight", "Weight"), ("days", "Days at 320 / 560 Wh"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030)", "usbc": "1× 100 W", "solar": "500 W / about 100 W car", "weight": "16 kg", "days": "3.0 / 1.7", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910–2,065)", "usbc": "2× 100 W", "solar": "1,000 W / 96 W car", "weight": "24.2 kg", "days": "6.0 / 3.4", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (unmeasured)", "usbc": "2× 100 W", "solar": "1,200 W / car", "weight": "28.3 kg", "days": "about 5.4 / 3.1", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (unmeasured)", "usbc": "2× USB-C, 140 W max", "solar": "650 W XT60 / not listed", "weight": "13 kg", "days": "about 2.7 / 1.6", "warranty": "24 months (US page)"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 920 at 350 W)", "usbc": "2× 100 W", "solar": "650–1,000 W (pages conflict)", "weight": "13–14.5 kg", "days": "2.9 / 1.6", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh (unmeasured)", "usbc": "140 W + 100 W", "solar": "200 W / 24 V car", "weight": "4.3 kg", "days": "under 1", "warranty": "5 years"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh (225–263)", "usbc": "2× 100 W", "solar": "220 W / 200 W car", "weight": "5.6 kg", "days": "0.8 / 0.45", "warranty": "5 years"}},
+  {"brand": "Anker", "model": "SOLIX C1000 Gen 2", "url": "https://9to5toys.com/2025/10/15/anker-solix-c1000-gen-2-power-station-429/",
+   "cells": {"wh": "1,024 Wh", "usbc": "2× 140 W", "solar": "not read", "weight": "about 11.3 kg", "days": "about 2.7 / 1.6", "warranty": "not stated", "price": "$799 MSRP; $429 on an October 2025 deal; current price not verified"}},
+  {"brand": "Jackery", "model": "Explorer 1000 v2", "url": "https://9to5toys.com/2026/09/29/jackery-1070wh-explorer-1000-v2-power-station/",
+   "cells": {"wh": "1,070 Wh", "usbc": "2× 100 W", "solar": "not read", "weight": "about 10.8 kg", "days": "about 2.8 / 1.6", "warranty": "not read", "price": "$879 regular (Sept 2026); deals $449–699 expired"}},
+  {"brand": "EcoFlow", "model": "RIVER 3", "url": "https://9to5toys.com/2025/04/30/ecoflow-river-3-159-low/",
+   "cells": {"wh": "245 Wh", "usbc": "100 W", "solar": "not read", "weight": "about 3.5 kg", "days": "under 1", "warranty": "not read", "price": "$239 MSRP; $159–179 deals (2025)"}},
+  {"brand": "Goal Zero", "model": "Yeti 500X", "url": "https://www.rei.com/product/180610/goal-zero-yeti-500x-portable-power-station",
+   "cells": {"wh": "505 Wh", "usbc": "60 W: cannot power the Mini", "solar": "not read", "weight": "5.85 kg", "days": "n/a", "warranty": "not read", "price": "$499.95 (REI; marked discontinued)"}},
+ ],
+ "after": """
+<h2>The Starlink Mini's power rules</h2>
+<p>Starlink lists the Mini at 12–48 V DC and 60 W, averaging 20–40 W with idle about 15 W (router included); meters show about 21 W average with 40 W peaks for the first minute or two after power-on, and 17–23 W idle for the antenna alone. The US help page requires a 100 W (20 V/5 A) USB-C PD source and says it will not run on 65 W supplies; a reviewer's 60 W bank boot-looped it. Starlink's own car adapter takes 12–24 V, so a station's 12 V socket is the other inverter-free route (not tested here). Snow-melt mode draws more; no measured Mini figure exists. The Mini was $149 at starlink.com in October 2026 (MSRP $249), Roam plans $55 (100 GB), $80 (300 GB) and $175 (unlimited) a month, and a Mini 2 is rumoured, not announced.</p>
+<h2>The arithmetic</h2>
+<p>A MacBook Air M4 idles at a few watts and charges at up to about 72 W; a 14-inch MacBook Pro M4 Pro sustains about 40 W under full load. Call it 10–20 W for an Air on office work and 20–40 W for a Pro. With the Mini on 8 hours the day is about 250–360 Wh; with 70 W combined, 560 Wh; with the Mini on 24 hours, about 720 Wh. Usable capacity is the measured AC figure (which already includes inverter loss), so the USB-C path only does better: the Elite 200 V2 idles at about 9.5 W with its inverter on and the AC180 at about 15 W, which is why the AC180's single USB-C port costs it a day over a long weekend compared with the two-port units.</p>
+<h2>Refilling</h2>
+<p>A 200 W panel yields about 150 W in full sun and 600–750 Wh over 4–5 peak-sun hours; the 400 W ALLPOWERS SP037 about 1,000–1,600 Wh. Kits as sold: P1800 + SF200 $531, AC180 + 200 W $729, Elite 200 V2 + 200 W $1,199, S2000 Pro + 400 W $848 (2026-11-03). Car charging: 96 W on the Elite 200 V2 (192 W at 24 V), about 100 W on the AC180, 200 W on the R600. The S2000 Pro caps its inverter near 2,050 W below 70 % charge, irrelevant at 60 W loads but worth knowing.</p>
+""",
+ "sources": [
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("ALLPOWERS P1800", "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w"),
+  ("Starlink help: Mini power requirements (100 W USB-C PD)", "https://starlink.com/support/article/fba85643-e7fa-4b55-21e5-021422d5701e"),
+  ("Starlink help (UK): Mini power", "https://starlink.com/gb/support/article/a7fe6525-5356-a837-48e6-33df176cdbc5"),
+  ("Starlink help: Mini car adapter", "https://starlink.com/support/article/8a0d11cd-ff87-83a0-5a42-fca892b14cff"),
+  ("WirelessMoves: Starlink Mini power measurements", "https://blog.wirelessmoves.com/?p=13403"),
+  ("DishyTech forum: Starlink idle power after update", "https://forum.dishytech.com/d/71-starlink-idle-power-consumption-has-been-decreased-by-25-for-standard-and-mini"),
+  ("DishyTech: Starlink Mini now $149", "https://www.dishytech.com/starlink-mini-is-now-149-but-mini-2-is-coming/"),
+  ("satelliteinternet.com: Starlink Mini review and Roam plans", "https://www.satelliteinternet.com/providers/starlink/starlink-mini-review/"),
+  ("ChargerLAB: MacBook Air M4 charging review", "https://www.chargerlab.com/charging-review-of-macbook-air-13-inch-m4/"),
+  ("Notebookcheck: Apple M4 Pro analysis", "https://www.notebookcheck.net/Apple-M4-Pro-analysis-Extremely-fast-but-not-as-efficient.915270.0.html"),
+  ("StorageReview: BLUETTI AC180 review", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
+  ("OutdoorGearLab: BLUETTI AC180", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180"),
+  ("New Atlas: BLUETTI AC180 review (self-consumption)", "https://newatlas.com/outdoors/bluetti-ac180-portable-power-station-review"),
+  ("StorageReview: BLUETTI Elite 200 V2 review", "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review"),
+  ("The Solar Lab: Elite 200 V2 review (idle draw)", "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review"),
+  ("StorageReview: ALLPOWERS S2000 Pro review", "https://www.storagereview.com/review/allpowers-s2000-pro-portable-power-station-review"),
+  ("The Solar Lab: ALLPOWERS S2000 Pro review (inverter cap)", "https://www.thesolarlab.com/review/allpowers-s2000-pro-review"),
+  ("StorageReview: ALLPOWERS R600 review", "https://www.storagereview.com/review/allpowers-r600-portable-power-station-review"),
+  ("9to5Toys: Anker SOLIX C1000 Gen 2 deal", "https://9to5toys.com/2025/10/15/anker-solix-c1000-gen-2-power-station-429/"),
+  ("9to5Toys: Jackery Explorer 1000 v2", "https://9to5toys.com/2026/09/29/jackery-1070wh-explorer-1000-v2-power-station/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "compares backup agents, not NAS hardware; Veeam itself untested, no NAS pick",
+   "evidence": "Veeam and Duplicati weren’t tested here; what I say about them comes from their documentation and is marked as such.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Veeam VBR-managed agent requirements for the PC, nothing about choosing a NAS",
+   "evidence": "A computer that you want to protect with Veeam Agent for Microsoft Windows must meet the following requirements",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "protected-computer system requirements only; no NAS or target guidance",
+   "evidence": "The protected computer must meet requirements listed in the table below.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "brand-store",
+   "answers_it": false,
+   "why": "QNAP Veeam Ready marketing page, enterprise VBR focus, no model pick for a 3-PC home",
+   "evidence": "one or multiple QNAP NAS devices can be configured as the backup targets for VMware® vSphere or Microsoft® Hyper-V virtual machines",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "answers only the 'anything special' half (any SMB-share NAS, no exFAT); no NAS recommendation",
+   "evidence": "Network Attached Storage (NAS) able to represent itself as an SMB (CIFS) share.",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "generic affiliate backup-NAS roundup; Veeam mentioned in passing, no testing",
+   "evidence": "UGREEN NASync DXP2800 Modern 2.5G hardware suited for Veeam Agent and rsync workflows on a newer NAS platform.",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "research-compiled home backup NAS builds, not Veeam/image-backup specific",
+   "evidence": "Each article combines the exact NAS and HDD records with official facts, independent reviews, YouTube material, and community discussion.",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "enterprise SAN snapshot integration table (Dell PowerStore etc.)",
+   "evidence": "Veeam Backup & Replication provides different types of snapshot integrations and these integrations support different storage systems.",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "enterprise VBR repository best practice (RDMA, 40Gbit); only SMB 3 vendor-support note is relevant",
+   "evidence": "If using SMB 3.x.x it must be fully supported by the storage vendor or Windows Server (recommended Windows Server 2016+).",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "closest match: NAS roundup for Windows backups with a claimed Veeam image-backup test, but unverifiable and 4-bay framed",
+   "evidence": "then ran a Veeam full image backup of a Windows Server 2022 instance (640GB) to the NAS. Sequential write speeds held at 1.05 GB/s",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "picks DS925+ for Mac/Windows backups from specs, but no Veeam/Macrium or image-backup specifics",
+   "evidence": "Editorial recommendations based on researched specifications, observed pricing, and exact CMR drive validation.",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "VBR-managed agent components and failover clusters; irrelevant to a free standalone home setup",
+   "evidence": "Veeam Agent for Windows supports backup and restore of Microsoft Failover Clusters",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "A direct NAS pick for three PCs with the practical Veeam Agent Free/Macrium specifics: how much capacity to plan for (3 full images plus retention), 2.5GbE vs 1GbE nightly window, SMB share and user setup, immutability/snapshots against ransomware, and whether Synology Active Backup for Business makes a Synology the easier answer — with current prices.",
+ "why": "No major reviewer tests NAS units for Veeam Agent image backups. The Veeam help pages are authoritative but only confirm the trivial part (any SMB share works, not exFAT) and are mostly enterprise VBR docs; QNAP's page is marketing. The actual NAS-pick side is held by one affiliate listicle, two spec-compiled ChooseCompute pages without Veeam specifics, and one roundup with an unverifiable test claim. A focused page pairing a concrete NAS pick with Veeam/Macrium setup, sizing and current prices would stand out.",
+ "results": 12,
+ "quotes_found": 12,
+ "chars_shown": 17147,
+ "chars_full": 120016
+}

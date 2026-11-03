@@ -106,6 +106,12 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G53 | /best-nas-for-audiobookshelf-calibre-web | DXP2800; lead says the official iPhone app is TestFlight-only and a Pi/mini PC runs both apps | open ×3 |
 | G55 | /best-alternative-to-synology-4-bay-nas-home | DXP4800 Plus; states DSM 7.3's reversal (HDD/SATA open, M.2 still listed-only) before making the Plex/10GbE/price case; UGOS gaps listed | open ×3 |
 | G56 | /power-station-to-charge-an-ebike-camping | BLUETTI Elite 200 V2 (only 2 kWh unit with a measured 1,910 Wh); spare battery named as the cheaper answer for one bike; rivals' $/Wh dated | open ×3 |
+| G57 | /best-nas-for-pihole-adguard-wireguard-vpn | DXP2800 for storage + VPN; lead says a NAS is the wrong place for house DNS (UGOS holds port 53, reboots drop DNS); QNAP/Asustor named for documented native WireGuard; UGOS VPN Server claim marked unconfirmed | open ×3 |
+| G58 | /cheapest-nas-for-infuse-apple-tv-4k-remux | Synology DS223j named first as the proven cheapest; DH2300 as the pick for NFS, 4 GB RAM, quiet, HDMI; "no Infuse-plus-UGOS test exists" said | open ×3 |
+| G59 | /best-nas-for-veeam-macrium-windows-image-backups | Synology DS225+ with Active Backup named first for install-and-forget; DXP2800 for Veeam/Macrium users; UGOS has no documented immutable snapshots | open ×3 |
+| G60 | /nas-that-runs-on-12v-in-a-van-or-rv | DH2300 (12 V adapter, 3–11 W); DXP2800 also 12 V; DXP4800 Plus/DXP480T Plus need a boost converter; Pi 5 named as drawing a third as much; "no measured van install" said | open ×3 |
+| G61 | /power-station-to-run-a-sump-pump-12-hour-outage | BLUETTI Elite 300 (12 h at 10 % duty); R4000 for 25 %; no station-starts-a-pump test exists, lifting watts excluded; battery-backup and water-powered pumps named as the unattended answers | open ×3 |
+| G62 | /power-station-for-starlink-mini-and-macbook-off-grid | AC180 for a day, Elite 200 V2 for 3–4 days; Starlink's 100 W PD rule; Anker/Jackery named as lighter with more USB-C | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -233,4 +239,18 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   calls UGOS Surveillance Center a 2026 first-version app with undocumented licensing; G55 corrects the query's own
   premise (Synology reversed the HDD lock in DSM 7.3); G51 and G53 say a Pi or mini PC is enough when the buyer does
   not want bays. G53 and G56 needed lead trims for rank 6.
+- 2026-11-03, batch 12 votes (`x12-*`): six open ×3, one contested. Open: NAS for Pi-hole/AdGuard + WireGuard (→ G57,
+  DXP2800 unless a native WireGuard server on QNAP/Asustor wins), cheapest NAS for Infuse on Apple TV direct play
+  (→ G58, DH2300 unless a cheaper Synology/TerraMaster ARM box wins), NAS for Veeam/Macrium image backups of three
+  Windows PCs (→ G59, DXP2800 vs Synology Active Backup), NAS on 12 V in a van (→ G60 only if a UGREEN unit takes
+  12 V input; else parked), power station for a 1/3 HP sump pump for 12 h (→ G61, BLUETTI AC200L/Elite 200 V2 if a
+  motor start is defensible), power station for Starlink Mini + MacBook (→ G62, AC180/Elite 200 V2/R600 by days per
+  charge). Contested, parked: cheapest fast external SSD for a Mac mini M4 (two judges: tested enclosure roundups
+  exist). Six research agents started.
+- 2026-11-03, iteration 12 built (G57–G62) from six research agents (~850k tokens); Mac mini storage parked (contested).
+  No new product records. Honesty notes: four of six leads name a rival or a non-NAS first (DS223j cheapest for Infuse,
+  DS225+ Active Backup for install-and-forget, a Pi for house DNS, a battery-backup pump for unattended sump duty);
+  G57 marks the third-party claim of a native UGOS WireGuard server as unconfirmed; G60 says no measured van install
+  exists; G62 notes BLUETTI's page lists the AC180 at $499 against our $449 cart check. G59, G61 and G62 needed lead
+  trims for rank 6 (G59 also needed the query word "NAS" in the lead so it outranks the long second paragraph).
 

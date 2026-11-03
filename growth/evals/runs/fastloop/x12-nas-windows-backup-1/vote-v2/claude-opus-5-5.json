@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "compares backup agents, not which NAS to buy; Veeam untested",
+   "evidence": "Verdict: UrBackup for a fleet you administer; Veeam Free for the one machine that must restore onto dissimilar hardware; restic or Kopia for files and off-site copies.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Veeam B&R agent requirements, no NAS guidance",
+   "evidence": "A computer that you want to protect with Veeam Agent for Microsoft Windows must meet the following requirements:",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "agent system requirements, not NAS choice",
+   "evidence": "The following system requirements apply to Veeam Agent for Microsoft Windows operating in the standalone mode.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "brand-store",
+   "answers_it": false,
+   "why": "QNAP Veeam Ready marketing page, single brand",
+   "evidence": "Veeam-compliant and high-performance SMB backup target.",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "states target needs (SMB share) but no NAS pick",
+   "evidence": "Network Attached Storage (NAS) able to represent itself as an SMB (CIFS) share.",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "generic backup NAS roundup, affiliate, untested",
+   "evidence": "#5 Pick UGREEN NASync DXP2800 Modern 2.5G hardware suited for Veeam Agent and rsync workflows on a newer NAS platform.",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "general home backup guide, no Veeam/Macrium specifics",
+   "evidence": "Compare home backup NAS builds for Mac and Windows: complete hardware costs, protected capacity, backup software limits, and a tested second copy.",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "enterprise storage snapshot integrations, off-target",
+   "evidence": "Veeam Backup & Replication provides different types of snapshot integrations and these integrations support different storage systems.",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "B&R repository best practice, enterprise-scale",
+   "evidence": "If using SMB 3.x.x it must be fully supported by the storage vendor or Windows Server (recommended Windows Server 2016+).",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "listicle",
+   "answers_it": true,
+   "why": "4-bay NAS roundup for Windows backups; unverifiable test claim",
+   "evidence": "I tested the DXP4800 GT with four 20TB Seagate IronWolf Pro drives in RAID 5, then ran a Veeam full image backup of a Windows Server 2022 instance (640GB) to the NAS.",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "general home backup picks, research-based, no Veeam detail",
+   "evidence": "Best Overall Choice DS925+ + 3 × 12 TB ( 24 TB usable)",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "agent install types under B&R, off-target",
+   "evidence": "Veeam Agent for Windows is installed with different components depending on the way how the agent’s backups are managed, mainly a “lightweight” or a “full” installation.",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "Which NAS to buy for nightly Veeam Agent Free or Macrium image backups of 3 PCs. That means SMB share and per-PC login setup, how much storage 3 images with retention need, and how Macrium differs. It also means comparing these with Synology's free Active Backup for Business, at current prices.",
+ "why": "No major reviewer is in the results. Veeam's own documentation answers only the \"does it need anything special\" part (an SMB share, no exFAT) and never recommends a NAS. The rest are a niche guide comparing backup programs rather than NAS units, untested affiliate roundups, a QNAP brand page and general home-backup guides. A focused page on this exact job, with current prices, would stand out.",
+ "results": 12,
+ "quotes_found": 12,
+ "chars_shown": 17147,
+ "chars_full": 120016
+}
