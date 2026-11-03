@@ -65,8 +65,19 @@ cost and whether each price is a promo; for the charger, chargers whose allocati
 ports at once, with prices.
 
 ## Pages built
-See the log below; records in `src/gaps.py` (slugs `best-nas-for-unraid-truenas`, `best-4-bay-nas-10gbe-under-700`,
-`usb-c-charger-two-laptops-100w`) and products in `src/products.py` (UGREEN section).
+Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
+
+| # | page | pick | vote |
+|---|---|---|---|
+| G16 | /best-nas-for-unraid-truenas | DXP4800 Plus $619.99 | open ×3 (two packs) |
+| G17 | /best-4-bay-nas-10gbe-under-700 | DXP4800 Plus | open ×3 (two packs) |
+| G18 | /usb-c-charger-two-laptops-100w | Nexode 200W $61.99; 500W $199.99 w/ UL55549 | open ×3 |
+| G19 | /best-all-nvme-nas-under-900 | DXP480T Plus $899.99 | open ×3 |
+| G20 | /best-65w-travel-charger-interchangeable-plugs | Nexode 65W travel $49.99, $37.99 w/ UL90409 | open/open/contested |
+| G21 | /best-nas-under-500-for-docker-immich-home-assistant | DXP2800 $389.99 | open ×3 |
+
+Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
+bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
 
 ## Log
 - 2026-11-03: harvest, screen, votes as above. Dock cluster parked (contested).
@@ -83,3 +94,9 @@ See the log below; records in `src/gaps.py` (slugs `best-nas-for-unraid-truenas`
 - Open: Amazon's live price for the DXP4800 Plus (unreachable from the tools; last snapshots $565–657); a UGREEN
   primary source for the third-party-OS warranty line (NASCompares quotes a UGREEN rep, 26 Mar 2024); whether the
   CJ pixel fires on the NAS store's checkout (first NAS sale will tell).
+- 2026-11-03, iteration 2: vote on five more packs (`ug2-*`): Docker/Immich NAS open ×3, all-NVMe NAS open ×3, travel
+  charger open/open/contested, MacBook Air dual-monitor dock contested, retractable-cable bank saturated. Three pages
+  built (G19–G21) with two new product records (DXP480T Plus, Nexode 65W travel; UL90409 $12 off cart-tested, control
+  rejected; the charger-alone variant is $49.99, the page's $44.98 is a bundle with two cables). All three passed
+  `fastloop.py check` first time with the lead kept near 450 chars. Three research agents ~360k tokens. Fixed
+  `named_query()`: spec tokens (10gbe, x86, ddr5, pcie4, m.2, tb4) no longer count as names.

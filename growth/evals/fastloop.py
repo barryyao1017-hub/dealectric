@@ -685,7 +685,8 @@ def named_query(q: str) -> str | None:
     words = re.findall(r"[a-z0-9][a-z0-9-]*", q.lower())
     hit = next((w for w in words if w in brands), None)
     return hit or next((w for w in words if re.search(r"[a-z]", w) and re.search(r"\d", w)
-                        and not re.fullmatch(r"\d+(w|wh|mah|kwh|v|in|ft|bay|c|th|nd|rd|st|k|hz|mm)|\d+p|lifepo4|qi\d.*|usb.*|\d+-in-\d+|202\d", w)), None)
+                        and not re.fullmatch(r"\d+(w|wh|mah|kwh|v|in|ft|bay|c|th|nd|rd|st|k|hz|mm|gbe|gbps|gb|tb|g|bit|port|ports)|\d+p|lifepo4|qi\d.*|usb.*|\d+-in-\d+|202\d"
+                                              r"|x86|x64|ddr\d|pcie\d|tb\d|m\.?2|\d+x\d+|\d+k", w)), None)   # spec tokens (10gbe, x86, ddr5, m.2) are not names, 2026-11-03
 
 
 def cmd_gap(a) -> None:

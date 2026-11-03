@@ -1150,4 +1150,190 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Plugable: what 240 W USB-C EPR means for cables", "https://plugable.com/en-ca/blogs/news/what-is-240w-usb-extended-power-range-epr"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-all-nvme-nas-under-900", "question": "G19 (UGREEN funnel: all-NVMe NAS under $900)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp480t-plus", "item_id": "UGREEN-DXP480T-PLUS",
+                    "title": "UGREEN NASync DXP480T Plus, all-NVMe NAS under $900",
+                    "description": "4 M.2 slots (two PCIe x4), Core i5-1235U, 10GbE, 2× Thunderbolt 4, HDMI 8K. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/ugreen-nas_storage-dxp480t-plus.png"},
+ "title": "Best all-NVMe (SSD-only) NAS under $900 (2026): slots, lanes and what four drives add",
+ "h1": "Best all-NVMe NAS under $900 (2026)",
+ "desc": "Which SSD-only NAS to buy under $900: UGREEN's DXP480T Plus against the TerraMaster F4 SSD, F8 SSD and F8 SSD Plus, Asustor's Flashstor 6 Gen2 and Flashstor 6, QNAP's TBS-464, the Beelink ME mini and LincStation N2, compared on CPU, RAM, M.2 slots and PCIe lanes per slot, LAN, Thunderbolt or USB4, and the price on the maker's store, with what four NVMe drives add to the bill.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP480T Plus</strong> ({buy:ugreen-nasync-dxp480t-plus}), the best all-NVMe NAS under $900 on 2026-11-03 at $899.99 diskless: four M.2 slots, two of them full PCIe x4, a 10-core Intel Core i5-1235U, 10GbE, two Thunderbolt 4 ports and 8 GB DDR5 you can take to 64 GB. Cheaper SSD NAS boxes (TerraMaster F4 SSD $359.99, F8 SSD Plus $799.99, Beelink ME mini $209) run their slots at one or two PCIe 3.0 lanes each, about 1 GB/s a slot.</p>
+<p>What the price does not include: the drives. Four 2 TB NVMe SSDs add roughly $1,200 to $1,600 at late-2026 prices (Crucial P3 Plus about $306 to $345 each, Lexar NM790 about $379), four 4 TB drives $2,000 to $3,400, so an 8 TB all-flash build lands near $2,100 to $2,500 before RAID. Its Thunderbolt 4 ports are network links, not a drive mode: reviewers measured 10 to 20 Gb/s to a PC, sometimes no faster than 10GbE. Two years' warranty; the $899.99 is a sale against $999.99 with no end date.</p>
+""",
+ "columns": [("cpu", "CPU"), ("ram", "RAM (max)"), ("slots", "M.2 slots and lanes"), ("lan", "LAN"), ("fast", "Thunderbolt / USB4"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp480t-plus", "model": "UGREEN NASync DXP480T Plus",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T", "ram": "8 GB DDR5 (64 GB)", "slots": "4: two PCIe 4.0 x4, two x2 (reviews disagree on Gen3 or Gen4 for the x2 pair)", "lan": "1× 10GbE", "fast": "2× Thunderbolt 4 (network bridge, 10–20 Gb/s measured)", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F4 SSD", "url": "https://www.terra-master.com/products/f4-ssd",
+   "cells": {"cpu": "Intel N95, 4C", "ram": "8 GB DDR5 (32 GB)", "slots": "4: two PCIe 3.0 x2, two x1", "lan": "1× 5GbE", "fast": "None", "warranty": "2 years", "price": "$399.99 list, $359.99 sale (TerraMaster store, via search)"}},
+  {"brand": "TerraMaster", "model": "F8 SSD Plus", "url": "https://www.terra-master.com/products/f8-ssd-plus",
+   "cells": {"cpu": "Intel Core i3-N305, 8C", "ram": "16 GB DDR5", "slots": "8: PCIe 3.0 x1 each (retailer listing)", "lan": "1× 10GbE", "fast": "USB-C 10 Gb/s, no Thunderbolt", "warranty": "2 years", "price": "$799.99 list; $674.99 Amazon sale in Aug 2026"}},
+  {"brand": "TerraMaster", "model": "F8 SSD", "url": "https://www.terra-master.com/products/f8-ssd",
+   "cells": {"cpu": "Intel N95, 4C", "ram": "8 GB DDR5", "slots": "8; lanes not published", "lan": "1× 10GbE", "fast": "None", "warranty": "2 years", "price": "$659.99 list, $560.99 sale (TerraMaster store, via search)"}},
+  {"brand": "Asustor", "model": "Flashstor 6 Gen2 (FS6806X)", "url": "https://www.asustor.com/en/product?p_id=93",
+   "cells": {"cpu": "AMD Ryzen V3C14, 4C", "ram": "8 GB DDR5 (64 GB)", "slots": "6: Asustor says PCIe 4.0 x4; lane routing for all six unverified", "lan": "1× 10GbE", "fast": "2× USB4", "warranty": "3 years (Asustor's NAS warranty)", "price": "about $799–899 (launch $899; $799 seen, undated)"}},
+  {"brand": "Asustor", "model": "Flashstor 6 (FS6706T)", "url": "https://www.asustor.com/en/product?p_id=80",
+   "cells": {"cpu": "Intel Celeron N5105, 4C", "ram": "4 GB DDR4 (16 GB)", "slots": "6: PCIe 3.0, lanes per slot not published", "lan": "2× 2.5GbE", "fast": "None", "warranty": "3 years", "price": "$544.99 MSRP"}},
+  {"brand": "QNAP", "model": "TBS-464", "url": "https://www.qnap.com/en-us/product/tbs-464",
+   "cells": {"cpu": "Intel Celeron N5095/N5105, 4C", "ram": "8 GB, soldered", "slots": "4: PCIe 3.0 x2 each", "lan": "2× 2.5GbE", "fast": "None", "warranty": "2 years", "price": "about $685 at launch; listed as discontinued by some retailers"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://www.bee-link.com/products/beelink-me-mini",
+   "cells": {"cpu": "Intel N150, 4C", "ram": "Soldered (size not confirmed)", "slots": "6: one PCIe 3.0 x2, five x1", "lan": "2× 2.5GbE", "fast": "None", "warranty": "Not found", "price": "$209 (eMMC-only model, TechRadar)"}},
+  {"brand": "LincPlus", "model": "LincStation N2", "url": "https://www.lincplustech.com/",
+   "cells": {"cpu": "Intel N100, 4C", "ram": "16 GB LPDDR5, soldered", "slots": "4 M.2 + 2 SATA; lanes not published", "lan": "1× 10GbE", "fast": "None", "warranty": "Not found", "price": "$439 retail ($309 on Kickstarter); Plus licence $59"}},
+ ],
+ "after": """
+<h2>Why lanes decide an SSD NAS</h2>
+<p>An NVMe drive is only as fast as the PCIe lanes feeding it: one PCIe 3.0 lane carries about 985 MB/s, two about 2 GB/s, four PCIe 4.0 lanes about 7 GB/s. The N95, N100, N150 and N305 chips in the cheaper boxes have nine PCIe 3.0 lanes in total, so four to eight slots share them at x1 or x2. The Core i5-1235U in the DXP480T Plus has twenty lanes: two slots get a full x4 and two get x2, plus a separate 2242 slot for the 128 GB system drive. Over a single 10GbE link (about 1.1 GB/s) an x1 slot already saturates the network; the extra lanes matter for RAID rebuilds, local transcoding and the Thunderbolt bridge.</p>
+<h2>Thunderbolt on a NAS</h2>
+<p>The DXP480T Plus's two Thunderbolt 4 ports run in host mode: a Mac or PC cannot mount the NAS as an external drive. They form an IP link (a Thunderbolt bridge) that reviewers measured at 10 to 20 Gb/s, with one mini PC gaining nothing over 10GbE, and one Mac owner reporting about 2 GB/s reads after a BIOS update. Asustor's Flashstor Gen2 offers USB4 on the same terms.</p>
+<h2>Heat</h2>
+<p>All-flash boxes throttle when drives run hot: a review of the first Flashstor generation found unheatsinked drives at 75–85 °C and throttling when fully populated. UGREEN ships thermal pads for the four drives and has Default, Quiet and Full Speed fan modes; a 100 GB copy measured 40–42 dBA and the CPU reached 69 °C, 71 °C with throttling under a synthetic stress test. Buy drives with heatsinks or fit the pads.</p>
+<h2>Drive prices (read in September and October 2026 from price trackers and Amazon; they move weekly)</h2>
+<ul>
+<li>Crucial P3 Plus 2 TB about $306 (Newegg) to $345 (Amazon); 4 TB about $587.</li>
+<li>Lexar NM790 2 TB about $379 (Amazon); 4 TB $499.99 (Amazon, Aug 2026) to $579.99.</li>
+<li>Samsung 990 Pro 2 TB about $386; 4 TB $799.99 (Amazon deal, Jul 2026) to $839.95.</li>
+<li>WD Red SN700 2 TB $498 to $600; 4 TB about $1,425.</li>
+</ul>
+""",
+ "sources": [
+  ("UGREEN NASync DXP480T Plus (specs, price, warranty)", "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage"),
+  ("Liliputing: UGREEN DXP480T Plus review (lanes, Thunderbolt throughput, thermals)", "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/"),
+  ("StorageReview: UGREEN DXP480T Plus review (fan modes, thermal pads)", "https://www.storagereview.com/review/ugreen-dxp480t-plus-ssd-nas-review"),
+  ("StarryHope: DXP480T Plus specs and Thunderbolt mode", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp480t-plus/"),
+  ("TerraMaster F4 SSD", "https://www.terra-master.com/products/f4-ssd"),
+  ("TechRadar: TerraMaster F4 SSD review", "https://www.techradar.com/pro/terramaster-f4-nas-ssd-review"),
+  ("TerraMaster F8 SSD Plus", "https://www.terra-master.com/products/f8-ssd-plus"),
+  ("TechPowerUp: TerraMaster F8 SSD Plus review", "https://techpowerup.com/review/terramaster-f8-ssd-plus/single-page.html"),
+  ("Liliputing: TerraMaster F8 SSD", "https://liliputing.com/terramaster-f8-ssd-is-an-8-bay-nas-that-supports-up-to-64tb-of-solid-state-storage-and-10-gbe-networking/"),
+  ("TechRadar: Asustor Flashstor 6 Gen2 review", "https://www.techradar.com/pro/asustor-flashstor-6-gen2-fs6806x-review"),
+  ("NASCompares: Flashstor Gen2 release and prices", "https://nascompares.com/news/flashstor-gen-2-nas-news-release-price-power-and-more/"),
+  ("CNX Software: QNAP TBS-464", "https://www.cnx-software.com/2021/10/20/qnap-tbs-464-ultra-thin-nas-supports-4-m-2-nvme-ssds-2-5gbe-networking/"),
+  ("TechRadar: Beelink ME mini review", "https://www.techradar.com/computing/beelink-me-mini-nas-mini-pc-review"),
+  ("TechRadar: LincStation N2 review", "https://www.techradar.com/computing/lincstation-n2-review"),
+  ("StorageDiskPrices: Flashstor heat and throttling", "https://storagediskprices.com/asustor-flashstor-review/"),
+  ("Borecraft: Samsung 990 Pro 4 TB at $799.99 (Jul 2026)", "https://borecraft.com/2026/07/25/samsungs-4tb-990-pro-pcie-nvme-gen-4-ssd-drops-to-799-99-on-amazon-experience-speeds-of-7000mb-s-at-300-off-2tb-version-is-39-off/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-65w-travel-charger-interchangeable-plugs", "question": "G20 (UGREEN funnel: 65W travel charger with US/UK/EU plugs)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nexode-65w-travel-charger-us-uk-eu", "item_id": "UGREEN-NEXODE-65W-90409",
+                    "title": "UGREEN Nexode 65W GaN travel charger with US, UK and EU plugs",
+                    "description": "65 W, 2× USB-C + USB-A, swappable US/UK/EU plug heads in the box, 100–240 V.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-usukeu-plug-for-travel-304097.png"},
+ "title": "Best 65W travel charger with interchangeable US, UK and EU plugs (2026)",
+ "h1": "Best 65W travel charger with interchangeable US, UK and EU plugs (2026)",
+ "desc": "Which 65 W GaN charger with swappable plug heads to take to the UK and Europe: UGREEN's Nexode 65W travel charger against the D-Link DCP-651, Twelve South PlugBug Travel, Xtorm 65W travel kit, j5create 65W traveler, Mazer Infinite Travel and Satechi 145W, compared on ports, the split with two devices, the plug heads in the box, weight and the price on the maker's store, with the UK and EU plug facts.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN Nexode 65W travel charger</strong> ({buy:ugreen-nexode-65w-travel-charger-us-uk-eu}), the best 65W GaN travel charger with interchangeable US, UK and EU plugs on 2026-11-03: $49.99, $37.99 with the code printed on UGREEN's page, two USB-C ports (65 W to one laptop) plus a USB-A, 100–240 V, and the three plug heads in the box; with a laptop and a phone connected it splits about 45 W + 20 W.</p>
+<p>What to know: 65 W is the total, so a laptop and a phone together give the laptop about 45 W (a MacBook Air's full speed, a 65 W laptop's slow charge); the US head folds, the UK and EU heads click in with a release button; it only charges USB devices, not a hair dryer. The alternatives with swappable heads either cost more (Twelve South PlugBug Travel 50 W $79.95 and 120 W $129.95, with six heads and Find My) or publish no US price (D-Link DCP-651, Xtorm, Mazer).</p>
+""",
+ "columns": [("watts", "Watts / ports"), ("split", "Two devices"), ("heads", "Plug heads in the box"), ("weight", "Weight"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nexode-65w-travel-charger-us-uk-eu", "model": "UGREEN Nexode 65W travel",
+   "cells": {"watts": "65 W; 2× USB-C + 1× USB-A", "split": "about 45 W + 20 W on two USB-C (review); 45 + 8.5 + 8.5 with all three", "heads": "US, EU, UK", "weight": "12 oz (UGREEN's table); about 6 oz in one review", "warranty": "2 years"}},
+  {"brand": "D-Link", "model": "DCP-651 65W GaN", "url": "https://www.dlink.com/pl/pl/products/dcp-651-65w-gan-charger",
+   "cells": {"watts": "65 W; 2× USB-C + 1× USB-A", "split": "C+C 45 + 20 W; C+A 45 + 18 W", "heads": "Interchangeable (AU/EU/UK/US compatible; box contents not stated)", "weight": "240 g", "warranty": "Not stated", "price": "No US price on D-Link's page"}},
+  {"brand": "Twelve South", "model": "PlugBug Travel 50W / 120W", "url": "https://support.twelvesouth.com/en-US/articles/plugbug-with-findmy-216792",
+   "cells": {"watts": "50 W (2× USB-C) or 120 W (4 ports)", "split": "Automatic; no figures published", "heads": "US, UK, EU, AU, KR, CN plus a case", "weight": "Not listed", "warranty": "2 years (US)", "price": "$79.95 / $129.95 (Apple Store, via Macworld)"}},
+  {"brand": "Xtorm", "model": "65W Fast Travel Charger kit", "url": "https://www.xtorm.eu/products/65w-fast-travel-charger-kit",
+   "cells": {"watts": "65 W; 1× USB-C + 1× USB-A", "split": "C 45 W + A 12 W", "heads": "US, UK, EU, AU/NZ plus case and 1 m cable", "weight": "85 g charger; 154 g kit", "warranty": "2 years", "price": "€49.99; no US store"}},
+  {"brand": "j5create", "model": "JUP3565CV 65W traveler", "url": "https://www.backtotheoffice.co.uk/collections/vendors/products/j5create-65w-gan-usb-c-3-port-traveler-charger-with-changeable-ac-plugs-and-usb-c-cable",
+   "cells": {"watts": "65 W; 3 ports", "split": "Not published", "heads": "Three AC plugs", "weight": "Not found", "warranty": "Not found", "price": "£35.60 (UK retailer, out of stock)"}},
+  {"brand": "Mazer", "model": "Infinite Travel 65W (M-IFTRAVEL165PD)", "url": "https://speedcom.co.th/en/products/mazer-m-iftravel165pd",
+   "cells": {"watts": "65 W; 2× USB-C + USB-A + an AC socket", "split": "Not published", "heads": "JP/US, AU, EU, UK", "weight": "Not found", "warranty": "2 years", "price": "No US price found"}},
+  {"brand": "Satechi", "model": "145W 4-port travel charger", "url": "https://www.adorama.com/satstw145gtm.html",
+   "cells": {"watts": "145 W; 2× 140 W + 2× 45 W USB-C", "split": "Not published", "heads": "UK, EU, AU, US", "weight": "Not found", "warranty": "Not found", "price": "Not found"}},
+ ],
+ "after": """
+<h2>The plugs you will meet</h2>
+<ul>
+<li><strong>UK, Ireland, Malta, Cyprus:</strong> Type G (BS 1363), 230 V 50 Hz, three rectangular pins; not compatible with continental sockets.</li>
+<li><strong>Continental Europe:</strong> Type C (two round pins) and Type F (Schuko), 230 V 50 Hz; a Type C plug fits Type F sockets. Switzerland uses Type J, which accepts Type C plugs; Italy has Types C, F and L, and guides disagree on whether Type C fits every Type L socket.</li>
+<li><strong>"100–240 V":</strong> the charger takes any mains voltage, so only the plug shape changes; UGREEN's input rating is 100–240 V, 50/60 Hz.</li>
+</ul>
+<h2>Heads versus adapters</h2>
+<p>A charger with interchangeable heads carries its own 230 V electronics and swaps only the pins; a plug adapter puts a US charger into a foreign socket and adds a second loose part. The UGREEN, D-Link, Xtorm and PlugBug models are chargers with heads. No AU head comes with the UGREEN; Twelve South and Xtorm include one.</p>
+""",
+ "sources": [
+  ("UGREEN Nexode 65W travel charger with US/UK/EU plugs (US store)", "https://us.ugreen.com/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-us-uk-eu-plug-for-travel"),
+  ("UGREEN UK: Nexode 65W GaN travel charger", "https://uk.ugreen.com/products/ugreen-nexode-65w-gan-travel-charger-3-ports"),
+  ("SmartGadgetKit: UGREEN Nexode 65W travel charger review (port split)", "https://smartgadgetkit.com/ugreen-nexode-65w-travel-charger-review/"),
+  ("HighTechDad: UGREEN 65W travel charger review", "https://www.hightechdad.com/?p=28973"),
+  ("D-Link DCP-651", "https://www.dlink.com/pl/pl/products/dcp-651-65w-gan-charger"),
+  ("Twelve South PlugBug support page", "https://support.twelvesouth.com/en-US/articles/plugbug-with-findmy-216792"),
+  ("Macworld: Twelve South PlugBug review (prices)", "https://www.macworld.com/article/2508910/twelve-south-plugbug-find-my-charger-review.html"),
+  ("Xtorm 65W fast travel charger kit", "https://www.xtorm.eu/products/65w-fast-travel-charger-kit"),
+  ("Mazer Infinite Travel 65W", "https://speedcom.co.th/en/products/mazer-m-iftravel165pd"),
+  ("ProductIP: mains plug types", "https://www.productip.com/kb/productipedia/compliance-resources/mains-plugs"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-under-500-for-docker-immich-home-assistant", "question": "G21 (UGREEN funnel: NAS under $500 for Docker, Immich, Home Assistant)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800, NAS under $500 for Docker, Immich and Home Assistant",
+                    "description": "2-bay Intel N100 NAS, 8 GB DDR5 to 16 GB, 2× M.2, 2.5GbE, Docker and VMs. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS under $500 for Docker containers like Immich and Home Assistant (2026)",
+ "h1": "Best NAS under $500 for Docker, Immich and Home Assistant (2026)",
+ "desc": "Which NAS under $500 to buy for running Docker containers such as Immich and Home Assistant: UGREEN's DXP2800 against the TerraMaster F2-425 Plus and F2-425, Synology DS225+, Asustor Nimbustor 2 Gen2 and Lockerstor 2 Gen2, QNAP TS-264, UGREEN DH2300 and the Beelink ME mini, compared on CPU, RAM ceiling, M.2 slots, LAN, Docker and virtual-machine support, idle power and the price on the maker's store, with Immich's and Home Assistant's own requirements.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS under $500 for Docker containers like Immich and Home Assistant on 2026-11-03: $389.99 diskless, an Intel N100 (x86) with 8 GB DDR5, the amount Immich recommends, expandable to 16 GB, two M.2 slots for an SSD app pool, 2.5GbE, and Docker with Compose projects plus virtual machines in UGOS, so Home Assistant OS runs as a VM with its add-ons; about 5 W idle.</p>
+<p>What to plan for: Immich's own requirements are 6 GB of RAM minimum and 8 GB recommended with 2 to 4 cores (its machine-learning container can be turned off or run on another machine), and Home Assistant OS in a VM wants 2 GB and 2 vCPUs, so the 16 GB upgrade is worth budgeting if both run together. The spec rival is TerraMaster's F2-425 Plus (Intel N150, 8 GB to 32 GB, three M.2 slots, two 5GbE ports) at about $399 on Amazon in October 2025, but no current price or warranty term could be confirmed. Synology's DS225+ ($339.99) tops out at 6 GB with no M.2 slots.</p>
+""",
+ "columns": [("cpu", "CPU"), ("ram", "RAM (max)"), ("m2", "M.2 slots"), ("lan", "LAN"), ("docker", "Docker / VMs"), ("power", "Power draw (maker)")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 4C, x86", "ram": "8 GB DDR5 (16 GB)", "m2": "2× NVMe", "lan": "1× 2.5GbE", "docker": "Docker app with Compose projects; VMs (Home Assistant OS runs as a VM per owner guides)", "power": "16.4 W active, 5.2 W hibernating"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 4C, x86", "ram": "8 GB DDR5 (32 GB)", "m2": "3× NVMe (PCIe 3.0 x1)", "lan": "2× 5GbE", "docker": "Docker, Compose and Portainer in TOS 6; VirtualBox", "power": "Not published (48 W adapter)", "price": "about $399 (Amazon, Oct 2025); $340 sale seen"}},
+  {"brand": "TerraMaster", "model": "F2-425", "url": "https://www.terra-master.com/products/f2-425",
+   "cells": {"cpu": "Intel Celeron N5095, 4C, x86", "ram": "4 GB", "m2": "None", "lan": "2.5GbE", "docker": "Docker in the App Center; VMs reported", "power": "11 W idle / 22 W active (review)", "price": "$249.99 (review table, undated)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 4C, x86", "ram": "2 GB (6 GB)", "m2": "None", "lan": "1× 2.5GbE + 1× 1GbE", "docker": "Container Manager (third-party guides); Virtual Machine Manager, 2 VMs recommended", "power": "16.98 W access, 6.08 W hibernating", "price": "$339.99 (B&H tracker, undated)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/product/spec?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, 4C, x86", "ram": "4 GB (16 GB)", "m2": "4× NVMe (PCIe 3.0 x1)", "lan": "2× 2.5GbE", "docker": "Docker/Portainer in ADM; VirtualBox", "power": "22.9 W operating, 12.7 W hibernating", "price": "$392–460 (reseller listings, undated)"}},
+  {"brand": "Asustor", "model": "Lockerstor 2 Gen2 (AS6702T)", "url": "https://www.asustor.com/product/spec?p_id=76",
+   "cells": {"cpu": "Intel Celeron N5105, 4C, x86", "ram": "4 GB (16 GB)", "m2": "4× NVMe (PCIe 3.0 x1)", "lan": "2× 2.5GbE", "docker": "Docker apps; VirtualBox", "power": "21 W operating, 13.5 W hibernating", "price": "$459 (Amazon tracker, undated); $549 at launch"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Intel Celeron N5095, 4C, x86", "ram": "8 GB built in", "m2": "2× NVMe (PCIe 3.0 x1)", "lan": "2× 2.5GbE", "docker": "Container Station (Docker, LXD); Virtualization Station", "power": "29.1 W operating, 18.3 W standby", "price": "$577–591 (CDW, SHI): over $500"}},
+  {"brand": "UGREEN", "model": "NASync DH2300", "url": "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "cells": {"cpu": "Rockchip RK3576, ARM", "ram": "4 GB LPDDR4X", "m2": "None", "lan": "2.5GbE", "docker": "Docker removed from its App Center (reviews); no VMs", "power": "Not published", "price": "$239.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://www.bee-link.com/products/beelink-me-mini",
+   "cells": {"cpu": "Intel N150, 4C, x86", "ram": "12 GB LPDDR5, soldered", "m2": "6× NVMe (no SATA bays)", "lan": "2× 2.5GbE", "docker": "Bring your own OS (Proxmox, TrueNAS); Docker and light VMs reported", "power": "about 8 W idle (review)", "price": "$209 barebone (launch)"}},
+ ],
+ "after": """
+<h2>What Immich and Home Assistant need</h2>
+<ul>
+<li><strong>Immich:</strong> 6 GB RAM minimum, 8 GB recommended, 2 cores minimum and 4 recommended; its machine-learning container needs an x86-64-v2 CPU (the N100 qualifies) and can be disabled in Administration → Machine Learning Settings or moved to another Docker host with the remote-ML guide (smart search and face detection go remote; facial recognition stays local). With 4 GB, run it with ML off.</li>
+<li><strong>Home Assistant:</strong> the Container install runs anywhere Docker does but has no add-ons; Home Assistant OS, which has them, needs a VM with 2 GB RAM, 2 vCPUs, UEFI and a bridged network adapter. UGREEN's DXP models run it as a VM per owner guides; one DXP2800 owner reported the VM getting no IP address, with no clear fix in the thread.</li>
+<li><strong>Zigbee and Z-Wave sticks</strong> must be passed through to the container or VM by hand on every platform.</li>
+</ul>
+<h2>Why the DXP2800</h2>
+<p>Under $500 the choice is between x86 boxes with 4 GB (Asustor, Synology, TerraMaster F2-425) that need a RAM upgrade before Immich's machine learning runs comfortably, ARM boxes (UGREEN DH2300, Asustor Drivestor) that cannot run x86 containers or VMs, and two N100/N150 units that ship with 8 GB: the DXP2800 and TerraMaster's F2-425 Plus. The TerraMaster has the newer chip, 5GbE and a 32 GB ceiling; the UGREEN has a verified price, HDMI out, a documented VM path and two years' warranty. If 5GbE matters, price the TerraMaster on the day. The Beelink ME mini is the cheapest N150 box but has no drive bays and no NAS software.</p>
+<h2>Running both at once</h2>
+<p>Immich with ML on uses most of 8 GB during imports; Home Assistant OS takes 2 GB more. On the DXP2800, fit a 16 GB SO-DIMM (its ceiling) and put the Docker pool on an M.2 SSD so the photo library's database and thumbnails are not on spinning disks. UGOS's Docker app reserves nothing on 9443, but one guide warns against publishing Portainer there.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: Docker on NASync", "https://support.ugnas.com/detail/article/en-US/236"),
+  ("Home Assistant community: HA OS VM on a DXP2800", "https://community.home-assistant.io/t/home-assistant-vm-in-ugreen-dxp2800/816304"),
+  ("Smart Home Junkie: Home Assistant OS as a VM on a UGREEN NAS", "https://www.smarthomejunkie.net/installing-home-assistant-os-as-a-vm-on-the-ugreen-nas-dxp4800-gt/"),
+  ("Immich: requirements", "https://docs.immich.app/install/requirements"),
+  ("Immich: FAQ (disabling machine learning)", "https://docs.immich.app/FAQ/"),
+  ("Immich: remote machine learning", "https://docs.immich.app/guides/remote-machine-learning"),
+  ("Home Assistant: installation methods", "https://www.home-assistant.io/installation/"),
+  ("Home Assistant: Linux installs (VM requirements, Container limits)", "https://www.home-assistant.io/installation/linux/"),
+  ("CNX Software: TerraMaster F2-425 Plus and F4-425 Plus (N150, 5GbE, $399)", "https://www.cnx-software.com/2025/10/29/terramaster-intel-n150-nas-systems-5gbe-networking-ai-photo-recognition-privacy-protection/"),
+  ("Neowin: TerraMaster F2-425 review", "https://www.neowin.net/amp/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("Asustor AS5402T specification", "https://www.asustor.com/product/spec?p_id=81"),
+  ("Asustor AS6702T specification", "https://www.asustor.com/product/spec?p_id=76"),
+  ("QNAP TS-264", "https://www.qnap.com/en-us/product/ts-264"),
+  ("The DIY Life: Beelink ME mini", "https://www.the-diy-life.com/beelink-me-mini-tiny-silent-and-perfect-for-a-diy-nas"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

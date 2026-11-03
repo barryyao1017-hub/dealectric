@@ -946,6 +946,38 @@ PRODUCTS = [
              "No USB-C cables in the box; 240 W or 140 W to one port needs a 240 W-rated (EPR) cable.",
              "A 2.2 kg desktop unit with a power cord, not a wall plug."]},
 
+
+{"slug": "ugreen-nasync-dxp480t-plus", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DXP480T Plus All-NVMe NAS, 4× M.2, Intel Core i5-1235U, 10GbE, Thunderbolt 4", "model": "NASync DXP480T Plus (SKU 25891), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage", "price": 899.99, "list_price": 999.99, "verified": "2026-11-03",
+ "specs": [("CPU", "12th-gen Intel Core i5-1235U, 10 cores / 12 threads, x86, Iris Xe with Quick Sync"), ("Memory", "8 GB DDR5, expandable to 64 GB; 128 GB SSD system disk"),
+           ("Drive slots", "4× M.2 NVMe; no SATA bays; diskless"), ("Max raw storage", "32 TB (4× 8 TB)"), ("RAID", "JBOD, Basic, 0, 1, 5, 6, 10"),
+           ("Network", "1× 10GbE (RJ45); Wi-Fi built in"), ("Thunderbolt", "2× Thunderbolt 4 (40 Gb/s), rear"), ("USB", "1× USB-A 10 Gb/s, rear"), ("Other ports", "HDMI (8K)"),
+           ("Power draw", "23.14 W with drives active, 16.94 W hibernating (UGREEN's lab)"), ("Size", "7.05 × 5.59 × 2.05 in"), ("Software", "UGOS Pro: Docker, virtual machines")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "A four-slot all-NVMe NAS the size of a small router, with a 10-core Core i5, 10GbE, two Thunderbolt 4 ports and HDMI 8K; $899.99 diskless on 2026-11-03 against a $999.99 list price.",
+ "fit": "A silent desk-side NAS for video editing or a photo library over 10GbE or Thunderbolt, where spinning drives are unwanted.",
+ "caveats": ["Diskless: four NVMe SSDs are extra, and 8 TB M.2 drives cost more per terabyte than hard drives.",
+             "The PCIe lanes per M.2 slot are not on UGREEN's spec table; see the comparison page for what reviewers measured.",
+             "$899.99 is a sale price against $999.99 on 2026-11-03; UGREEN gives no end date. Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code."]},
+
+{"slug": "ugreen-nexode-65w-travel-charger-us-uk-eu", "brand": "UGREEN", "program": "cj:ugreen", "category": "usb-c-charger",
+ "name": "UGREEN Nexode 65W 3-Port GaN Travel Charger with US, UK and EU Plugs", "model": "Nexode 65W travel (SKU 90409)",
+ "url": "https://us.ugreen.com/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-us-uk-eu-plug-for-travel", "price": 49.99, "verified": "2026-11-03",
+ "specs": [("Total output", "65 W"), ("Ports", "2× USB-C (65 W max each, PPS 3.3–21 V 3 A), 1× USB-A (22.5 W max)"), ("Plug heads", "US, EU and UK heads in the box, swapped by hand"),
+           ("Input", "100–240 V, 50/60 Hz, 1.8 A"), ("Protocols", "PD 3.0, PPS, QC 4+/4/3/2, AFC, SCP"), ("GaN", "Yes"),
+           ("Size / weight", "2.56 × 2.56 × 1.28 in, 12 oz with the heads"), ("Protection", "Short circuit, over-voltage, over-current, overheat, overcharge")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A 65 W three-port GaN charger that ships with US, UK and EU plug heads, so one charger covers a laptop and phone across the Atlantic; $49.99 on 2026-11-03, $37.99 with the code printed on UGREEN's page.",
+ "fit": "A traveller with a MacBook Air or a 65 W laptop plus a phone who wants one charger for the US, the UK and the Continent.",
+ "caveats": ["The per-port split with two or three devices is shown only in the page's images (a review reports 45 W + 20 W with two USB-C devices); UGREEN's text says the power is 'split optimally'.",
+             "UGREEN's page also sells a bundle with two 100 W USB-C cables for $44.98, less than the charger alone; whether the code applies to the bundle was not tested.",
+             "UGREEN's US spec table lists 12 oz; one review weighed it at about 6 oz.",
+             "65 W is for one device: with a laptop and a phone connected the laptop gets less (see the comparison page).",
+             "Not an adapter for other appliances: it only charges USB devices. No AU or other plug heads in the box."]},
+
 ]
 
 
