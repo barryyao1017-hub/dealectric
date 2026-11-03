@@ -585,7 +585,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # being the same class for less. Cards/answers: runs/2026-11-02-gapconfirm/ps-*-app{1,2}.json (gap-funnel worktree);
 # packs copied to runs/fastloop/ps-*-app*. Rival prices/specs read on the makers' US stores and Best Buy/Home Depot
 # 2026-11-02 (subagent); several card prices were stale (C2000 Gen 2 card $1,499 is the panel bundle; unit $999.99).
-# BLUETTI's AFF5OFF and ALLPOWERS' codes are network codes: no "exclusive" claim. The travel-trailer page is a new page
+# ALLPOWERS' codes are network codes: no "exclusive" claim. BLUETTI's DEALECTRIC is Dealectric's own code (Awin, 2026-11-02 switch). The travel-trailer page is a new page
 # beside /best-2kwh-power-station-for-rv (Barry 11-02: don't retarget), angled on the 30/50-amp plug and the AC.
 {"slug": "best-power-station-for-12v-fridge", "question": "G10 (power-station funnel: 12V fridge, 3+ days)", "lead_first": True,
  "title": "Best portable power station for a 12V fridge for 3 days (2026): runtime, efficiency and 1500Wh vs 2000Wh",
