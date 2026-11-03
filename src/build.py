@@ -1188,10 +1188,35 @@ def retired_page(old):
 INDEXNOW_KEY = "dlc-31c73feed521769132773e90e1732d25"
 
 
+def prune_tree(root, keep):
+    """Delete files under root that are not in keep (a set of absolute paths), then empty subdirectories.
+    The folder itself is never removed: on OneDrive checkouts rmtree+makedirs leaves "<name> 2" copies (DLC-149)."""
+    for d, dirs, files in os.walk(root, topdown=False):
+        for f in files:
+            if os.path.join(d, f) not in keep:
+                os.remove(os.path.join(d, f))
+        if d != root and not os.listdir(d):
+            os.rmdir(d)
+
+
+def sync_tree(src, dst):
+    """Write every file of src into dst in place (dst created if missing), then prune what src does not have."""
+    os.makedirs(dst, exist_ok=True)
+    keep = set()
+    for d, dirs, files in os.walk(src):
+        rel = os.path.relpath(d, src)
+        tgt = dst if rel == "." else os.path.join(dst, rel)
+        os.makedirs(tgt, exist_ok=True)
+        for f in files:
+            shutil.copyfile(os.path.join(d, f), os.path.join(tgt, f))
+            keep.add(os.path.join(tgt, f))
+    prune_tree(dst, keep)
+
+
 def main():
-    out = os.path.join(os.path.dirname(__file__), "dist")
-    if os.path.isdir(out): shutil.rmtree(out)
-    os.makedirs(out)
+    import tempfile
+    final = os.path.join(os.path.dirname(__file__), "dist")
+    out = tempfile.mkdtemp(prefix="dealectric-build-")
     open(os.path.join(out, "style.css"), "w").write(CSS.strip() + "\n")
     open(os.path.join(out, "favicon.svg"), "w").write(FAVICON)
     open(os.path.join(out, "robots.txt"), "w").write(ROBOTS_TXT.format(**SITE))
@@ -1279,8 +1304,10 @@ def main():
     lm = os.path.join(repo, "worker", "src", "links-map.json")
     os.makedirs(os.path.dirname(lm), exist_ok=True)
     open(lm, "w").write(json.dumps(links_map(), indent=1, ensure_ascii=False) + "\n")
-    print(f"built {len(urls)} pages -> {out}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
-    flatten(out)
+    sync_tree(out, final)
+    shutil.rmtree(out, ignore_errors=True)
+    print(f"built {len(urls)} pages -> {final}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
+    flatten(final)
 
 
 CSV_PRODUCTS, CSV_COMPARISONS = "dealectric-products.csv", "dealectric-comparisons.csv"
@@ -1334,8 +1361,8 @@ def flatten(out):
     docs/ keeps repo notes (CLAUDE.md, TODO.md, ...) off dealectric.com."""
     flat = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(out))), "docs")
     before = previous_pages(flat)
-    if os.path.isdir(flat): shutil.rmtree(flat)
-    os.makedirs(flat)
+    os.makedirs(flat, exist_ok=True)
+    written = set()   # docs/ is written in place and pruned at the end, never removed (DLC-149)
     # path mapping: "/guides/usb-c-charging/" -> "/usb-c-charging", "/about/" -> "/about"
     mapping = {}
     for root, dirs, files in os.walk(out):
@@ -1365,7 +1392,9 @@ def flatten(out):
             if f.endswith((".html", ".txt", ".xml", ".json")):
                 data = rewrite(data.decode()).encode()
             open(dst, "wb").write(data)
+            written.add(dst)
     sitemap_lastmod(flat, *before)
+    prune_tree(flat, written)
     print(f"flattened -> {flat} ({len(os.listdir(flat))} files)")
 
 

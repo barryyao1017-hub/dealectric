@@ -671,6 +671,8 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
     if not push:
         log("changes left uncommitted (--no-push)")
         return
+    import docsguard   # DLC-149: never stage a missing, truncated or duplicated docs/
+    docsguard.check(str(ROOT))
     # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
     sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
@@ -704,6 +706,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         r = sh([sys.executable, "src/build.py"])
         if r.returncode != 0:
             raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
+        docsguard.check(str(ROOT))
         sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
         r = sh(["git", "commit", "-q", "-m", msg])
         if r.returncode != 0:
