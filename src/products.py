@@ -5,7 +5,7 @@
 # in_stock (optional; False when the store showed it sold out on VERIFIED), verified (optional; the date a product added
 # after the last weekly re-check was read, until the next re-check folds it into VERIFIED).
 
-VERIFIED = "2026-10-27"
+VERIFIED = "2026-11-03"
 
 CATEGORIES = {
     "usb-c-charger":   ("USB-C chargers",        "Wall and desktop chargers with USB-C Power Delivery."),
@@ -246,14 +246,14 @@ PRODUCTS = [
 
 {"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI AC180 Portable Power Station", "model": "AC180",
- "url": "https://www.bluettipower.com/products/ac180", "price": 499,
+ "url": "https://www.bluettipower.com/products/ac180", "price": 449, "list_price": 499,
  "specs": [("Capacity", "1,152 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "1,800 W continuous; 2,700 W Power Lifting; 4 outlets"),
            ("USB", "USB-C 100 W, 4× USB-A"), ("DC", "12 V / 10 A car port; 15 W wireless pad"), ("Solar input", "500 W, 12–60 V, 10 A"), ("AC input", "1,440 W in Turbo mode (1,000 W standard); 80% in 45 min"),
            ("UPS", "20 ms"), ("Size / weight", "340 × 247 × 317 mm, ~16 kg"), ("Cert", "UL standard, FCC, CEC, DOE, CA Prop 65"), ("App", "Bluetooth")],
  "warranty": "5 years (proof of purchase from an official store)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping",
  "summary": "The mid-size BLUETTI: 1.1 kWh and an 1,800 W inverter that runs most kitchen appliances, at a price that is often discounted.",
  "fit": "Weekend trips, power-tool charging, short outages.",
- "caveats": ["No expansion port; it can only be topped up from a B80/B230/B300 battery in Power Bank Mode.", "$499 is the station alone; the store's $599 option is a bundle with a 100 W solar panel."]},
+ "caveats": ["No expansion port; it can only be topped up from a B80/B230/B300 battery in Power Bank Mode.", "$449 is the AC180 alone in BLUETTI's cart on 2026-11-02 and 11-03, after BLUETTI's automatic $50 cart discount on its $499 store price; BLUETTI gives no end date. Code DEALECTRIC was rejected on it in the 11-02 cart test (BLUETTI excludes items on sale). The store's $599 option is a bundle with a 100 W solar panel."]},
 
 # ---------------- ALLPOWERS (CJ 7797916) ----------------
 # ALLPOWERS records carry no list_price (DLC-75/76, Barry 2026-10-28: "Drop them"): its compare-at prices were never seen
@@ -436,7 +436,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-ac180-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI AC180 + 200 W Solar Panel Kit (1,152 Wh, 1,800 W)", "model": "AC180 + 200 W panel",
- "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 769, "list_price": 899,
+ "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 729, "list_price": 899,
  "specs": [("Battery", "1,152 Wh LiFePO4"), ("AC output", "1,800 W; 2,700 W Power Lifting for resistive loads"), ("Panel", "1× BLUETTI 200 W folding"),
            ("Solar input", "500 W max, 12–60 V, 10 A"), ("Solar recharge with this kit", "Not published; 3 h is BLUETTI's figure at the full 500 W")],
  "warranty": "See BLUETTI's page (the AC180 station carries 5 years)", "returns": "BLUETTI US return policy",
@@ -446,7 +446,7 @@ PRODUCTS = [
 
 {"slug": "bluetti-elite-200-v2-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
- "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1099, "list_price": 1199,
+ "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199,
  "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
            ("Solar input", "1,000 W max, 12–60 V, 20 A"), ("Solar recharge with this kit", "Not published")],
  "warranty": "See BLUETTI's page", "returns": "BLUETTI US return policy",
@@ -485,7 +485,7 @@ PRODUCTS = [
 
 {"slug": "aurzen-zip-pro-tri-fold-1080p-projector", "brand": "Aurzen", "program": "cj:aurzen", "category": "projector",
  "name": "Aurzen ZIP Pro Tri-Fold Full HD Portable Projector", "model": "ZIP Pro",
- "url": "https://aurzen.com/products/aurzen-zip-pro-full-hd-portable-projector", "price": 579.99, "list_price": 629.99,
+ "url": "https://aurzen.com/products/aurzen-zip-pro-full-hd-portable-projector", "price": 629.99,
  "specs": [("Resolution", "Native 1080p DLP, LED"), ("Brightness", "200 ANSI lumens (spec table says 200 lm)"), ("Throw", "1.2:1; 0.5–3 m; 60–80\" recommended in the dark"),
            ("Battery", "38 Wh; up to 2.5 h in ECO mode; 65 W USB-C PD (65 W+ needed to charge while playing)"), ("Casting", "AirPlay (no Wi-Fi needed), Miracast, Google Cast, DLNA; USB-C DisplayPort input; no built-in apps"),
            ("Audio", "2 × 2 W; Bluetooth 5.4 out, incl. Tesla car audio"), ("Size / weight", "115 × 97 × 44 mm folded, 586 g")],
@@ -496,7 +496,7 @@ PRODUCTS = [
 
 {"slug": "aurzen-zip-tri-fold-mini-projector", "brand": "Aurzen", "program": "cj:aurzen", "category": "projector",
  "name": "Aurzen ZIP Tri-Fold Portable Mini Projector (US version)", "model": "ZIP",
- "url": "https://aurzen.com/products/aurzen-zip-tri-fold-portable-mini-projector-usa", "price": 199.99, "list_price": 499.99,
+ "url": "https://aurzen.com/products/aurzen-zip-tri-fold-portable-mini-projector-usa", "price": 259.99, "list_price": 499.99,
  "specs": [("Resolution", "720p DLP (accepts 1080p)"), ("Brightness", "100 ANSI lumens"), ("Throw", "1.09:1; 40–60\" recommended"),
            ("Battery", "5,000 mAh, up to 1.5 h; 24 W USB-C PD, can play while charging"), ("Casting", "Screen mirroring from iOS, macOS, Android, Windows without Wi-Fi; not Google Cast"),
            ("Audio", "2 × 1 W; Bluetooth 5.4 out, incl. Tesla car audio"), ("Size / weight", "84 × 78 × 26 mm, 280 g; fan ≤28 dB in ECO")],
@@ -513,7 +513,7 @@ PRODUCTS = [
 # page's canonical URL) and the record states that colour. No CJ coupon links for Marshall, so no codes.
 {"slug": "marshall-major-v", "brand": "Marshall", "program": "cj:marshall", "category": "headphones",
  "name": "Marshall Major V Wireless On-Ear Headphones", "model": "Major V (Black, pid 1006832)",
- "url": "https://www.marshall.com/us/en/product/major-v?pid=1006832", "price": 89.99, "list_price": 159.99,
+ "url": "https://www.marshall.com/us/en/product/major-v?pid=1006832", "price": 159.99,
  "specs": [("Type", "On-ear, foldable; no ANC"), ("Battery", "100+ h wireless; 15 min charge = 15 h; 3 h full charge"), ("Bluetooth", "5.3, multipoint; LE Audio-ready; 10 m range"),
            ("Codecs", "SBC, AAC, LC3"), ("ANC", "None"), ("Drivers", "40 mm dynamic, 32 Ω, 20–20,000 Hz"),
            ("Charging", "USB-C cable, or a wireless charging pad (pad not included)"), ("Wired", "3.5 mm input/output; cable included"),
@@ -523,12 +523,12 @@ PRODUCTS = [
  "summary": "Foldable on-ear headphones with 100+ hours of wireless playtime, wireless charging and a 3.5 mm cable; no noise cancelling.",
  "fit": "Long trips and days away from a charger, for listeners who don't need noise cancelling.",
  "caveats": ["No active noise cancelling.", "Not IP rated: Marshall says don't take them swimming.",
-             "$89.99 is Marshall's Special offers price for Black, Brown, Cream and Pitch Black; Midnight Blue was $159.99 on 2026-10-27. Marshall gives no end date.",
+             "Full price ($159.99) on 2026-11-03: Marshall's Special offers price of $89.99 (2026-10-27) has ended.",
              "The link opens the Black colour."]},
 
 {"slug": "marshall-monitor-iii-anc", "brand": "Marshall", "program": "cj:marshall", "category": "headphones",
  "name": "Marshall Monitor III A.N.C. Noise Cancelling Over-Ear Headphones", "model": "Monitor III A.N.C. (Cream, pid 1009077)",
- "url": "https://www.marshall.com/us/en/product/monitor-iii-anc?pid=1009077", "price": 199.99, "list_price": 379.99,
+ "url": "https://www.marshall.com/us/en/product/monitor-iii-anc?pid=1009077", "price": 379.99,
  "specs": [("ANC", "Active + Transparency"), ("Battery", "70 h with ANC; 100 h without; 15 min charge = 12 h; 2.5 h full charge"), ("Bluetooth", "5.3, multipoint; LE Audio-ready; 10 m range"),
            ("Codecs", "SBC, AAC"), ("Drivers", "32 mm dynamic, 46 Ω, 20–20,000 Hz"), ("Wired", "USB-C to 3.5 mm cable, included; no 3.5 mm jack on the headphones"),
            ("Charging", "USB-C; no wireless charging"), ("Weight", "250 g"), ("Water", "Not IP rated"),
@@ -538,7 +538,7 @@ PRODUCTS = [
  "summary": "Marshall's flagship over-ear headphones: active noise cancelling with 70 hours of battery (100 h with ANC off), multipoint and a hard carrying case.",
  "fit": "Commuters and long-haul travellers who want noise cancelling and long battery life.",
  "caveats": ["SBC and AAC only: no LDAC or aptX.", "No IP rating and no wireless charging.",
-             "$199.99 is Marshall's Special offers price against $379.99 list, for all three colours; Marshall gives no end date.",
+             "Full price ($379.99) on 2026-11-03: Marshall's Special offers price of $199.99 (2026-10-27) has ended.",
              "The link opens the Cream colour; Black and Pitch Black are the same price."]},
 
 {"slug": "marshall-minor-iv", "brand": "Marshall", "program": "cj:marshall", "category": "earbuds",
@@ -572,7 +572,7 @@ PRODUCTS = [
 
 {"slug": "marshall-middleton-ii", "brand": "Marshall", "program": "cj:marshall", "category": "speaker",
  "name": "Marshall Middleton II Portable Bluetooth Speaker", "model": "Middleton II (Black and Brass, pid 1009644)",
- "url": "https://www.marshall.com/us/en/product/middleton-ii?pid=1009644", "price": 279.99, "list_price": 329.99,
+ "url": "https://www.marshall.com/us/en/product/middleton-ii?pid=1009644", "price": 329.99,
  "specs": [("Playtime", "30+ h; 20 min charge = 5 h; 3 h full charge"), ("Water", "IP67 (1 m for 30 min), dustproof"), ("Bluetooth", "5.3, multipoint; SBC, AAC, LC3; 60 m range"),
            ("Drivers", "2 woofers, 2 tweeters; 2 × 3\" woofers, 2 × 0.6\" tweeters, 2 passive radiators"), ("Amplifiers", "2 × 30 W + 2 × 10 W class D"), ("Sound", "Stereo, True Stereophonic 360°; 50 Hz–20 kHz; 87 dB SPL max at 1 m"),
            ("Charging", "USB-C in (5/9/12/20 V, 3 A); charges a phone from its battery (output wattage not published)"), ("Wired", "3.5 mm AUX in"),
@@ -582,7 +582,7 @@ PRODUCTS = [
  "returns": "30 days; from delivery, free returns in the US; product in mint condition in its original box; refunds only, no exchanges",
  "summary": "Marshall's larger portable speaker: four drivers with 360° True Stereophonic sound, IP67, 30+ hours of playtime and a USB-C port that charges a phone.",
  "fit": "Backyards, picnics and small gatherings where one portable speaker has to fill the space.",
- "caveats": ["1.8 kg, against the Emberton III's 0.67 kg.", "$279.99 is Marshall's Special offers price against $329.99 list, for both colours; Marshall gives no end date.",
+ "caveats": ["1.8 kg, against the Emberton III's 0.67 kg.", "Full price ($329.99) on 2026-11-03: Marshall's Special offers price of $279.99 (2026-10-27) has ended.",
              "Marshall publishes no output wattage for charging a phone."]},
 
 # ---------------- MOBILE PIXELS (CJ 5725421; added 2026-11-02, gap vote growth/focus/gap-vote/2026-11-02-amazfit-mobilepixels.md) ----------------

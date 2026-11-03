@@ -1316,6 +1316,24 @@ def main():
     shutil.rmtree(out, ignore_errors=True)
     print(f"built {len(urls)} pages -> {final}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
     flatten(final)
+    untracked_images(repo)
+
+
+def untracked_images(repo):
+    """DLC-138 (2026-11-02): a product commit that left its -square.png untracked broke the next day's sweep build in
+    the clean clone. The build passes here because the file is on disk, so name every spec image a product uses that git
+    does not track yet; `git add` them with the product. Silent outside a git checkout."""
+    import subprocess
+    try:
+        out = subprocess.run(["git", "-C", repo, "ls-files", "--others", "--exclude-standard", "src/img"],
+                             capture_output=True, text=True, timeout=30).stdout.split()
+    except (OSError, subprocess.SubprocessError):
+        return
+    used = {f"src/img/{p['slug']}{sfx}.png" for p in PRODUCTS for sfx in ("", "-square")}
+    missing = sorted(f for f in out if f in used)
+    if missing:
+        print("WARNING: spec images used by products but not tracked by git (git add them with the product, or the "
+              "clean clone's build fails):\n  " + "\n  ".join(missing), file=sys.stderr)
 
 
 CSV_PRODUCTS, CSV_COMPARISONS = "dealectric-products.csv", "dealectric-comparisons.csv"

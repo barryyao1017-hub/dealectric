@@ -23,7 +23,7 @@ BUYBOX = {
             "<strong>A two-hour movie with Camp Mode on uses about 2–3%</strong> of a Long Range battery in mild weather "
             "(our estimate from owner and press measurements; about 5% near freezing).",
         ],
-        "all_in": "It needs a projector: with Aurzen's ZIP ($199.99) the whole setup is about $308. Best after dark: "
+        "all_in": "It needs a projector: with Aurzen's ZIP ($259.99) the whole setup is about $368. Best after dark: "
                   "a 100–200 lumen projector washes out in a sunny cabin.",
         "pick": [
             "You have a 2025–2026 Model Y with the see-through glass roof (Premium, Performance).",
@@ -166,7 +166,7 @@ BUYBOX = {
         "skip": [
             "The station mostly stays put (home backup, a van, a cabin): ALLPOWERS' R2500 V2 + SP037 ($852.62 as two items "
             "with BULKRATE) has 1,920 Wh of LiFePO4, 2,500 W and 3,500+ cycles; it weighs 29 kg.",
-            "You'll cycle it daily or keep it for years (NMC ages faster): the BLUETTI Elite 200 V2 + 200 W ($1,099, "
+            "You'll cycle it daily or keep it for years (NMC ages faster): the BLUETTI Elite 200 V2 + 200 W ($1,199, "
             "2,074 Wh LiFePO4, 6,000 cycles).",
             "You carry the whole kit and 1 kWh is enough: the Anker SOLIX C1000 Gen 2 + 400 W Bifacial ($999.99 to Nov 2; "
             "21 kg; 5 years on both parts).",
