@@ -118,6 +118,13 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G66 | /power-station-to-run-a-chest-freezer-for-3-days | Elite 300 is a 2-day unit alone (19 W idle), 3 days with a 400 W panel; AC200L + B300K for 3 days without sun; solar under storm cloud 10–25 %; generator named for longer outages | open ×3 |
 | G67 | /can-a-portable-power-station-charge-an-ev-in-an-emergency | "Barely": 3–7 miles in 1–2 h if the EVSE accepts a floating neutral; call roadside first; Elite 300 as the pick; EcoFlow DP3 / Anker F3800 named as the units sold for EV charging | open ×3 |
 | G68 | /nas-that-runs-home-assistant-os-vm-zigbee | DXP2800 runs HAOS in UGOS's VM (verified by two guides) but USB passthrough is contradicted by UGREEN's own article, so a wired SLZB-06 coordinator is the route; Home Assistant Green named as the appliance answer | open ×3 |
+| G69 | /can-a-nas-replace-google-drive-for-a-small-team | "Files yes, Docs no"; Synology Drive + Office named for non-technical teams and Workspace Standard for truly remote ones; DXP2800 as the DIY Nextcloud route; the host's upload speed named as the real cost | open ×3 |
+| G70 | /best-nas-under-400-for-a-beginner-home-lab | DXP2800 (x86, 8 GB, Compose projects, VM app, SSH); an N100 mini PC named as the better pure-learning buy; TerraMaster F2-425 Plus flagged if under $400; third-party-OS warranty stance marked unofficial | open ×3 |
+| G71 | /power-station-to-run-a-window-ac-while-camping | "Only the 3 kWh class, and only with an inverter AC"; Elite 300; R4000 for a conventional unit; EcoFlow Wave 3 named for tents; no measured overnight test exists | open ×3 |
+| G72 | /power-station-for-an-aquarium-24-hour-outage | Elite 300 only with the heater setpoint managed (3.1–3.4 kWh otherwise); AC180 for aeration + filtration; battery air pump named as the $30–110 insurance | open ×3 |
+| G73 | /power-station-to-keep-insulin-cold-in-a-power-outage | FDA and label rules quoted (in-use insulin fine under 86 °F; unopened stock needs 36–46 °F); AC180 + 12 V compressor cooler on the DC port, 2–3.5 days; Frio wallet named as the cheapest adequate plan | open ×3 |
+| G74 | /ups-for-a-bambu-lab-3d-printer-power-outage | CyberPower/APC pure-sine UPS named first for flickers; AC180 for a multi-hour outage; Bambu's own power table and power-loss recovery limits; T320 and US3000 ruled out | open ×3 |
+| G75 | /kvm-switch-for-a-mac-and-pc-4k-144hz | "No KVM is proven at 4K144 with a Mac"; monitor with built-in KVM + our UGREEN USB switch as the answer; Level1Techs/TESmart/UGREEN claims laid out; us.ugreen.com KVM prices unreadable (429) | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -273,4 +280,19 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   (the Elite 300 is a two-day freezer unit, not three). G63 needed a lead trim for rank 6. Research agents keep
   flagging the same unreadable UGREEN support articles (671, 373, 911, 909, 866, 654): a browser read of those would
   close most of the open facts in DLC-152.
+- 2026-11-03, batch 14 votes (`x14-*`), all eight open ×3: NAS to replace Google Drive for a 5-person team (→ G69,
+  DXP2800/DXP4800 Plus with Nextcloud, Synology Drive named if it wins), beginner home-lab NAS under $400 (→ G70,
+  DXP2800 vs an N100 mini PC), power station for a 5,000 BTU window AC overnight (→ G71, Elite 300/R4000 or parked),
+  power station for a 75-gallon aquarium for 24 h (→ G72), small station + fridge to keep insulin cold for two days
+  (→ G73, medical: FDA/ADA guidance quoted exactly), UPS for a Bambu P1S (→ G74, a pure-sine computer UPS likely
+  named first), KVM for a Mac + PC at 4K 144 Hz (→ G75, needs a UGREEN KVM record if one honestly fits), USB-C 2.5GbE
+  adapter for a Mac mini M4 (→ G76, needs a UGREEN adapter record). Eight research agents started.
+- 2026-11-03, iteration 14 built (G69–G75) from eight research agents (~1.1M tokens). **G76 (USB-C 2.5GbE adapter for a
+  Mac mini) parked**: the right product is UGREEN's $25.99 RTL8156BG adapter sold on Amazon, not on us.ugreen.com, so
+  there is no affiliate link to give; recommending a $240 Revodok dock for that query would be dishonest. Honesty notes:
+  G69, G74 and G75 name a rival or a non-UGREEN product class first; G71 and G72 say no station covers the naive
+  premise; G73 leads with the FDA rule that in-use insulin needs no fridge. Gate pattern seen three times today: when
+  the "what to know" paragraph carries more query words than the lead, it outranks it and the buy link is cut; the fix
+  is to put the query's own words in the lead (G59, G74, G75). KVM and 2.5GbE agents could not read us.ugreen.com
+  (HTTP 429) at all: UGREEN product pricing now needs a browser read or the Shopify .json endpoints.
 

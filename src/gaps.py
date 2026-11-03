@@ -4130,4 +4130,414 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Norwall: Westinghouse WGen3600DF", "https://norwall.com/products/Westinghouse-3600-Watt-Dual-Fuel-Electric-Start-Portable-Generator-WGen3600DF"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "can-a-nas-replace-google-drive-for-a-small-team", "question": "G69 (UGREEN funnel: NAS to replace Google Drive for a 5-person team)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for a team Nextcloud",
+                    "description": "2-bay Intel N100, 8 GB, 2.5GbE, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Can a NAS replace Google Drive for a 5-person remote team (2026)? Costs over three years, versioning, remote access, and what you lose",
+ "h1": "Can a NAS replace Google Drive for a 5-person remote team? (2026)",
+ "desc": "Whether a NAS can take over from Google Workspace storage for five remote workers: Workspace Starter, Standard and Plus prices over three years, what a NAS replaces (files, versions, sharing) and what it cannot (Docs co-editing, Gmail, Calendar), Synology Drive and Synology Office versus UGOS with Nextcloud on a UGREEN DXP2800, the host's upload speed as the real bottleneck, hosted Nextcloud (Hetzner Storage Share) as the no-hardware middle, off-site backup, 2FA and snapshot immutability.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Files yes, Docs no: a NAS can replace Google Drive for a 5-person remote team's shared files, versions and links, not Docs co-editing, Gmail or Calendar. If the team has an admin, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03, and run Nextcloud in Docker; a non-technical team gets the polished route from Synology Drive plus Office; a truly remote team should keep Workspace Standard ($2,520 for five over three years), because the host's home upload (20–50 Mbps, 3–7 minutes a gigabyte) is the price of any NAS.</p>
+<p>What to know: Workspace Starter ($7, 30 GB a user) cannot hold a 1 TB working set, so Standard (2 TB pooled per user) is the comparison, $2,520 over three years at list; a NAS with two 4 TB drives and Backblaze B2 for the off-site copy ($6.95 per TB a month, about $250 for 1 TB over three years) lands near that once drives are counted, so the saving is small. Synology Drive keeps up to 32 versions per file with on-demand sync on Mac and Windows, Synology Office co-edits docx/xlsx/pptx in real time, and the DS225+ (about $340–365, 2 GB RAM, rated for about 10 Drive users) has immutable snapshots on supported models. On UGOS the sync client does two-way or one-way sync with deletions propagated, snapshots are folder-level Btrfs with no documented immutability, 2FA does not cover SMB logins, UGREENlink relays through UGREEN's servers at an unpublished speed, and Nextcloud (with Collabora for web editing) is a Portainer, DDNS and reverse-proxy build from a third-party guide. Hosted Nextcloud on Hetzner Storage Share is €4.29 a month for 1 TB (about €154 over three years), unlimited users, but Hetzner reportedly cannot run the built-in Collabora, so document editing needs a separate server.</p>
+""",
+ "columns": [("files", "Files, versions, sync"), ("office", "Document editing"), ("remote", "Remote access for 5 homes"), ("ransomware", "Ransomware protection"), ("cost3y", "3-year cost (my arithmetic)")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"files": "Per-user shared folders; sync client (two-way/one-way, no on-demand files documented); Btrfs snapshots (folder rollback; single-file restore not documented)", "office": "Nextcloud + Collabora in Docker (third-party guide; Collabora wants 2 cores + 1 GB on top)", "remote": "UGREENlink relay (speed unpublished) or Tailscale in Docker on every laptop", "ransomware": "Snapshots, not immutable; 2FA per user, not on SMB", "cost3y": "$390 + 2× 4 TB + B2 about $250: roughly $900–1,100"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"files": "Same, four bays, 10GbE", "office": "Same, more headroom for Collabora", "remote": "Same", "ransomware": "Same", "cost3y": "$620 + drives + B2"}},
+  {"brand": "Synology", "model": "DS225+ with Synology Drive + Office", "url": "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_drive",
+   "cells": {"files": "32 versions per file, Intelliversioning, on-demand sync (Win 10 1809+, macOS 12.3+), ShareSync between two NAS; rated for about 10 Drive users", "office": "Synology Office: real-time co-editing of Docs/Sheets/Slides, free", "remote": "QuickConnect (Synology itself lists the relay as a Drive bottleneck; use DDNS/direct) or Tailscale package", "ransomware": "Snapshot Replication with immutable snapshots on supported models; 2FA, auto-block", "cost3y": "about $340–365 + drives + B2: roughly $900–1,100", "price": "$364.99 (B&H/Newegg snippets, undated); $310 after an Amazon coupon"}},
+  {"brand": "Google", "model": "Workspace Business Standard, 5 seats", "url": "https://workspace.google.com/pricing",
+   "cells": {"files": "2 TB pooled per user, versions, sharing with outside clients", "office": "Docs, Sheets, Slides, Gmail, Calendar, Meet", "remote": "It is the cloud", "ransomware": "Google's; no admin work", "cost3y": "$2,520 at annual list ($14 per user a month); about $2,100 with the first-year 50 % offer", "price": "$14 per user a month, annual"}},
+  {"brand": "Hetzner", "model": "Storage Share NX11 (hosted Nextcloud, 1 TB)", "url": "https://www.hetzner.com/storage/storage-share/",
+   "cells": {"files": "Nextcloud: versions, expiring links, mobile apps, unlimited users, 50 connections", "office": "Built-in Collabora reportedly unsupported; external server needed", "remote": "Hosted in Germany; no home upload bottleneck", "ransomware": "Hetzner patches Nextcloud; versions and trash", "cost3y": "about €154 (€4.29 a month)", "price": "€4.29 a month ex-VAT"}},
+ ],
+ "after": """
+<h2>What the team keeps and what it gives up</h2>
+<p>A NAS gives the team a shared file tree with per-user permissions, sync clients on each laptop, file versions and share links, and a 4 TB mirror for the price of one year of Workspace Standard. It does not give real-time Docs and Sheets editing (Synology Office and Nextcloud with Collabora are the substitutes, and neither is Google Docs), a bundled Gmail and Calendar on the company domain, effortless sharing with outside clients, Vault, or Google's uptime and zero-admin updates. Most teams that move end up on a hybrid: Workspace Starter for mail and Docs, the NAS for the files that fill the quota.</p>
+<h2>The remote-work penalty</h2>
+<p>The NAS lives in one person's home, and every colleague's download rides that home's upload link: at 20 Mbps a 1 GB file takes about seven minutes, at 40 Mbps about three, on 500 Mbps fibre about 16 seconds. Vendor relays (QuickConnect, UGREENlink) add their own cap, which is why Synology's own guidance tells Drive users to use DDNS or a direct connection and why Tailscale on every laptop is the usual fix. If no one on the team has fast upload, the NAS is the wrong tool for a distributed team however good the box.</p>
+<h2>Security is now your job</h2>
+<p>Turn on 2FA for every account (on UGOS it does not cover SMB), auto-block, and snapshots on a schedule; keep an off-site copy because sync clients propagate deletions and encrypted files to the NAS. Synology's immutable snapshots (DSM 7.2, model-dependent) survive a stolen admin login; UGOS's do not claim to. Someone has to apply firmware updates and replace a failed drive; with Workspace or Hetzner that is the vendor's job.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Google Workspace pricing", "https://workspace.google.com/pricing"),
+  ("UGREEN support: shared folder permissions (article 216)", "https://support.ugnas.com/detail/article/en-US/216"),
+  ("UGREEN support: Snapshot app (article 654)", "https://support.ugnas.com/detail/article/en-US/654"),
+  ("UGREEN: file sync client", "https://ai.ugreen.com/blogs/how-to/ugreen-nas-file-sync"),
+  ("UGREEN support: UGREENlink vs DDNS (article 373)", "https://support.ugnas.com/detail/article/en-US/373"),
+  ("UGREEN: remote access (Tailscale in Docker)", "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access"),
+  ("UGREEN support: two-factor authentication (article 597)", "https://support.ugnas.com/detail/article/en-US/597"),
+  ("Marius Hosting: Nextcloud on a UGREEN NAS", "https://mariushosting.com/how-to-install-nextcloud-on-your-ugreen-nas/"),
+  ("Nextcloud forum: Collabora Online system requirements", "https://help.nextcloud.com/t/system-requirements-for-collabora-online/30694"),
+  ("Synology DSM 7.4: Synology Drive specification", "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_drive"),
+  ("Synology Office", "https://www.synology.com/en-global/dsm/feature/office"),
+  ("Synology KB: how to increase Drive speed (QuickConnect relay)", "https://www.synology.com/en-us/knowledgebase/DSM/tutorial/Collaboration/how_to_increase_Drive_speed"),
+  ("Synology DS225+ (Drive user figures)", "https://www.synology.com/en-us/products/DS225+"),
+  ("Synology DSM 7.2 (immutable snapshots)", "https://www.synology.com/en-us/DSM72"),
+  ("Hetzner Storage Share", "https://www.hetzner.com/storage/storage-share/"),
+  ("Nextcloud forum: Collabora on Hetzner Storage Share", "https://help.nextcloud.com/t/hetzner-collabora-storage-share-managed-nextcloud/220868"),
+  ("Backblaze B2 pricing", "https://www.backblaze.com/cloud-storage/pricing"),
+  ("Light Reading: Ookla US city upload medians", "https://www.lightreading.com/broadband/miami-broadband-speed-is-slowest-among-us-cities-ookla"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-for-an-aquarium-24-hour-outage", "question": "G72 (power funnel: power station for a 75-gallon aquarium for 24 h)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, aquarium outage backup",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W, 10 ms UPS.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Which portable power station keeps a 75-gallon tropical aquarium alive through a 24-hour outage (2026)? Heater duty cycle decides it",
+ "h1": "Which portable power station keeps a 75-gallon tropical aquarium alive through a 24-hour outage? (2026)",
+ "desc": "The 24-hour watt-hour budget for a 75-gallon tropical tank (300 W heater at a 15–30 % duty cycle, 23–43 W canister filter, air pump, the station's own idle draw), which portable power stations cover it with and without heat (BLUETTI Elite 300, ALLPOWERS R4000, Elite 200 V2, AC180, P1800, S2000 Pro, the 300 Wh units), what fishkeepers say to back up first (aeration, circulation, then heat), insulation and setpoint tricks, battery air pumps, UPS passthrough and ECO mode, and rivals' prices.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: the portable power station to keep a 75-gallon tropical aquarium running through a 24-hour outage, about 2.6 kWh usable, which covers a 300 W heater at a reduced duty cycle plus a canister filter and air pump (about 2.0–2.3 kWh) once you lower the setpoint a couple of degrees and wrap the tank, but not a heater working flat out in a cold room (3.1–3.4 kWh). Aeration first, heat second: a $450 AC180 runs the filter and air pump for the day.</p>
+<p>What to know: the heater decides everything. A 300 W heater (Fluval E300, Eheim Jager 300) cycles 15–50 % depending on the room; one 75-gallon owner's whole-tank meter read 4.3 kWh a day with a 300 W heater and lights, falling to 1.88 kWh after a 2 °F setpoint drop, lids and less heater, so at 30 % duty the heater alone is 2.2 kWh in 24 hours. Add a Fluval 407 (23 W) or FX6 (43 W) at 0.6–1 kWh, an air pump at about 0.1 kWh and the inverter's idle draw (about 15 W on the AC180, roughly 19 W on the Elite 300) at 0.35–0.45 kWh. Bulk Reef Supply and BLUETTI both say to back up water movement first (oxygen drops before temperature matters) and that a tank can go two or three days without filtration or heat if aerated; a battery-backup air pump (Aquarium Co-Op's lithium pump runs up to 40 hours in power-save mode, Penn-Plax B-11 on D cells 8–12 hours) is the $30–110 insurance under any station. The ALLPOWERS R4000 (about 2.9 kWh usable, $1,499, 45 kg) is the other unit that handles heat; the Elite 200 V2 ($899) does filter, pump and a few hours of heat; the AC180, P1800 and S2000 Pro cover aeration and filtration for the day with little margin; the 288–300 Wh units cover an air pump, or a small filter, for 8–10 hours.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable)"), ("heat", "24 h with heater at 15–30 % duty (2.0–3.4 kWh)"), ("noheat", "24 h filter + air pump (about 1 kWh)"), ("ups", "UPS switchover"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh (about 2.6 kWh)", "heat": "Yes at reduced duty; no in a cold room at 30 %", "noheat": "Yes, 2 days", "ups": "10 ms (8–9 measured)", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh (about 2.9 kWh); 45 kg", "heat": "Yes at reduced duty; marginal at 30 %", "noheat": "Yes, 2–3 days", "ups": "15 ms", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured)", "heat": "Filter, pump and a few hours of heat", "noheat": "Yes, comfortably", "ups": "≤15 ms", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030)", "heat": "No", "noheat": "Just, if idle is near 15 W", "ups": "20 ms", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 920 at 350 W)", "heat": "No", "noheat": "About a day", "ups": "not verified", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (unmeasured); pre-order, ships Dec 7", "heat": "No", "noheat": "Borderline", "ups": "20 ms (manual)", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh (about 240)", "heat": "No", "noheat": "Air pump, or a small filter, 8–10 h", "ups": "not listed", "warranty": "5 years"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh", "heat": "Like the Elite 200 V2", "noheat": "Yes", "ups": "not shown", "warranty": "5 years", "price": "$1,029 (2026-11-03), $0.50/Wh"}},
+  {"brand": "EcoFlow", "model": "DELTA 3", "url": "https://us.ecoflow.com/products/delta-2-portable-power-station",
+   "cells": {"wh": "1,024 Wh", "heat": "No", "noheat": "About a day", "ups": "<10 ms", "warranty": "5 years", "price": "$579 (2026-11-03), $0.57/Wh"}},
+  {"brand": "Anker", "model": "SOLIX C1000 Gen 2", "url": "https://www.ankersolix.com/blogs/portable-power-station/aquarium-battery-backup-during-power-outages",
+   "cells": {"wh": "1,024 Wh", "heat": "No", "noheat": "About a day", "ups": "not read", "warranty": "not stated", "price": "$429–499 (2026 deals, unverified)"}},
+ ],
+ "after": """
+<h2>The budget, line by line</h2>
+<p>Heater: 300 W × 30 % × 24 h = 2.16 kWh in a cool room; about 1.1 kWh at 15 % after a lowered setpoint and insulation (owner data, not a lab figure: BLUETTI's own aquarium example assumes a 200 W heater at 40 %, 80 W average). Filter: Fluval 407 23 W (0.55 kWh), FX6 43 W (1.0 kWh). Air pump: a few watts (0.1 kWh). Station idle with the inverter on: 15–19 W (0.35–0.45 kWh), unless the air pump runs from the 12 V port with AC off. Lights: skip them in an outage. Usable energy is about 85 % of rated (the Elite 200 V2's 1,910 Wh is measured; the others are estimates). That gives 3.1–3.4 kWh for the cold-room case, 2.0–2.3 kWh for the managed case, and about 1 kWh with no heater, which is why the Elite 300 and R4000 are the only "with heat" picks and only with the setpoint managed.</p>
+<h2>Keeping the fish alive with less</h2>
+<p>Fishkeeping guidance agrees on the order: aeration and circulation first (oxygen falls within hours in a stocked tank), heat second (a slow drop of a few degrees over a day is survivable for most tropicals; wrap the tank in blankets kept off the water and keep the lid on), filtration third (bacteria survive a day; keep the media wet), lights last. Run the heater in bursts rather than continuously, drop the setpoint 2–4 °F, and keep a battery air pump that switches on by itself (Aquarium Co-Op's lithium pump, up to 40 hours in power-save mode; Penn-Plax Silent Air B-11, 8–12 hours on D cells; Bulk Reef Supply's Maxum $109.99). Unplug the heater if the water level drops.</p>
+<h2>Set it up as a UPS</h2>
+<p>Plug the tank's power strip into the station and the station into the wall so it takes over in 10–20 ms with nobody home. Turn ECO mode off: the heater cycles to 0 W and the station will otherwise shut its outlets after a few hours of low load (AC180 owners have reported outlets cutting out; BLUETTI support treated one as a defect). Anker's own guidance says not to put a heater on a computer UPS unless it is rated for it; an APC 1500 VA unit gives minutes, not a day.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("BLUETTI: aquarium battery backup", "https://www.bluettipower.com/blogs/emergency/aquarium-battery-backup"),
+  ("Anker: aquarium battery backup during power outages", "https://www.ankersolix.com/blogs/portable-power-station/aquarium-battery-backup-during-power-outages"),
+  ("Bulk Reef Supply: power outages, keeping your tank alive", "https://www.bulkreefsupply.com/content/post/power-outages-what-to-do-to-keep-your-tank-alive"),
+  ("ScapeCrunch: how much electricity does an aquarium use (75-gallon meter data)", "https://scapecrunch.com/threads/so-just-how-much-electricity-does-an-aquarium-use.2696/"),
+  ("Aquarium Co-Op: battery backup air pump", "https://aquariumcoop.com/collections/air-pumps/products/aquarium-co-op-air-pump"),
+  ("Fluval E300 heater (100-gallon rating)", "https://fishtanksdirect.com/fluval-e-300-watt-electronic-heater"),
+  ("Fluval FX6 (43 W)", "https://www.bulkreefsupply.com/fluval-fx6-canister-filter-fluval.html"),
+  ("BLUETTI community: AC180 AC output turning off", "https://community.bluettipower.com/t/ac-output-turns-off-randomly/28695"),
+  ("Chewy: keeping aquarium fish alive during a power outage", "https://www.chewy.com/education/fish/general/how-to-keep-your-aquarium-fish-alive-during-a-power-outage"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("EcoFlow DELTA 3", "https://us.ecoflow.com/products/delta-2-portable-power-station"),
+  ("APC Back-UPS Pro BX1500M", "https://www.se.com/us/en/product/BX1500M/apc-back-ups-1500va-120v-avr-lcd-interface-10-outlets/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-under-400-for-a-beginner-home-lab", "question": "G70 (UGREEN funnel: beginner home-lab NAS under $400)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800, home-lab NAS",
+                    "description": "2-bay Intel N100, 8 GB (16 GB), Docker, VMs, SSH. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS under $400 for a beginner home lab to learn Docker, Linux and self-hosting (2026)",
+ "h1": "Best NAS under $400 for a beginner home lab to learn Docker, Linux and self-hosting (2026)",
+ "desc": "Which sub-$400 NAS teaches Docker and self-hosting: UGREEN's DXP2800 (x86 N100, 8 GB to 16 GB, Docker Compose projects, a VM app, root over SSH, two M.2 slots) against the Synology DS225+ (2 GB), DS223j, TerraMaster F2-425 Plus and F2-212, QNAP TS-233 and Asustor AS5402T, plus the N100 mini PC and used OptiPlex that teach more Linux for less, with the third-party-OS warranty question, 2026 drive and RAM prices, and the first apps with working guides.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS under $400 for a beginner home lab, $389.99 diskless on 2026-11-03: an x86 Intel N100 with 8 GB DDR5 (one slot, 16 GB max), a Docker app that takes Compose projects, a VM app, root over SSH with sudo, 2.5GbE and two M.2 slots, so your data sits on mirrored drives while you break things in containers. If you have no data to protect and want to learn Proxmox or bare Linux, a 16 GB N100 mini PC ($150–350 in 2026's RAM market) teaches more for less.</p>
+<p>What to know: the Synology DS225+ (about $340) ships with 2 GB and tops out at 6, and the DS223j, TerraMaster F2-212 and QNAP TS-233 are ARM boxes with 1–2 GB where many Docker images will not run; the TerraMaster F2-425 Plus (N150, 8 GB to 32 GB, 5GbE, three M.2) out-specs the DXP2800 if it is under $400 the day you buy ($399 at launch, $425 on Walmart undated) at the cost of TOS's thinner guide ecosystem and reported Docker hiccups. UGOS Pro is a locked-down Debian 12 (apt is blocked, SSH auto-closes after 10 minutes unless you keep it on), so the DXP2800 teaches containers, Compose and VMs, not distro maintenance; installing TrueNAS, Unraid or Proxmox is possible (disable the BIOS watchdog, boot from USB or M.2) and a UGREEN representative said the hardware warranty stays, but UGREEN has published no policy and a Proxmox forum thread warns the 32 GB eMMC will wear under hypervisor logging. Budget the drives: hard drives ran about $50 per TB in early November 2026 (two 4 TB about $225–400), 2 TB NVMe $210–380 each, and a 16 GB DDR5 SO-DIMM about $120–250 after memory prices doubled this year.</p>
+""",
+ "columns": [("cpu", "CPU / RAM (max)"), ("learn", "Docker, VMs, shell"), ("os", "Other OS"), ("idle", "Idle power"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (x86), 8 GB DDR5 (16 GB, one slot)", "learn": "Docker app with Compose 'Projects' (UGOS 1.10+), Portainer, VM app, SSH + sudo -i", "os": "TrueNAS/Unraid/Proxmox bootable from USB/M.2 after disabling the BIOS watchdog; warranty reportedly stays (unofficial)", "idle": "5.2 W one drive asleep; about 7 W idle with two drives (OCinside)", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Celeron J4125 (x86), 2 GB (6 GB)", "learn": "Container Manager (Compose), Virtual Machine Manager, SSH + sudo -i; the deepest tutorial library", "os": "Not supported", "idle": "not read", "warranty": "3 years", "price": "$339.99–364.99 (B&H/Adorama/Newegg, undated); $274.99 Amazon deal"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.cnx-software.com/2025/10/29/terramaster-intel-n150-nas-systems-5gbe-networking-ai-photo-recognition-privacy-protection/",
+   "cells": {"cpu": "Intel N150 (x86), 8 GB DDR5 (32 GB)", "learn": "TOS 6 Docker Manager, VirtualBox; forum reports of containers lost after a Docker Manager update", "os": "TrueNAS/Unraid commonly installed on TerraMaster hardware", "idle": "not read", "warranty": "2 years", "price": "$399 at launch (Oct 2025); $424.99 Walmart (undated)"}},
+  {"brand": "Synology", "model": "DS223j", "url": "https://synology.com/en-us/releaseNote/ContainerManager",
+   "cells": {"cpu": "Realtek RTD1619B (ARM), 1 GB", "learn": "Container Manager support on the DS223j unconfirmed (release notes name the DS223 and DS420j); ARM images only", "os": "No", "idle": "not read", "warranty": "2 years", "price": "$151–190 (2025–26 listings)"}},
+  {"brand": "TerraMaster", "model": "F2-212", "url": "https://mightygadget.com/terramaster-f2-212-nas-review/",
+   "cells": {"cpu": "Realtek RTD1619B (ARM), 1 GB", "learn": "Docker Manager, ARM images only, 1 GB is tight", "os": "No", "idle": "10.4 W (HotHardware)", "warranty": "2 years", "price": "$169.99 list"}},
+  {"brand": "QNAP", "model": "TS-233", "url": "https://needtoknowit.com.au/blog/qnap-ts-233-review-australia.md",
+   "cells": {"cpu": "Cortex-A55 (ARM), 2 GB soldered", "learn": "Container Station, ARM images only", "os": "No", "idle": "not read", "warranty": "2 years", "price": "no US price read"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.shi.com/product/46476207/ASUSTOR-Nimbustor-2-Gen-2-AS5402T",
+   "cells": {"cpu": "Celeron N5105 (x86), 4 GB (16 GB)", "learn": "Docker/Portainer, VirtualBox", "os": "Possible", "idle": "not read", "warranty": "3 years", "price": "$449–460: over the cap"}},
+  {"brand": "Mini PC", "model": "N100/N150, 16 GB / 512 GB", "url": "https://homelab-guide.pages.dev/homelab-n100-mini-pc-builds",
+   "cells": {"cpu": "N100/N150, 16 GB", "learn": "Proxmox or plain Linux: full VMs, LXC, Docker, real distro maintenance", "os": "Anything", "idle": "6–8 W; 10–12 W as a Proxmox node", "warranty": "varies", "price": "$130–180 in a Feb 2026 guide; $350 for a 2026 Beelink S13 listing: unverified"}},
+  {"brand": "Used", "model": "Dell OptiPlex Micro 7050/7060", "url": "https://homelabpicks-com.pages.dev/mini-pc/mini-pc-vs-nas/",
+   "cells": {"cpu": "i5/i7 7th–8th gen, 16 GB", "learn": "Proxmox; the classic first hypervisor", "os": "Anything", "idle": "about 10 W", "warranty": "none", "price": "$80–150 on eBay (blog figures, unverified)"}},
+ ],
+ "after": """
+<h2>What you learn on each</h2>
+<p>A NAS appliance teaches containers: paste a Compose file into UGOS's Docker Projects, run Portainer, map volumes and ports, watch logs, back up a volume. It also teaches the operational half of self-hosting that a mini PC skips: RAID, snapshots, SMB permissions, scheduled backups. What it hides is the operating system itself. UGOS Pro is Debian-based but apt is blocked, UGREEN warns against root-level changes, and SSH is meant to be switched on for a session. A mini PC or used OptiPlex under Proxmox teaches the OS, the hypervisor, networking and storage from scratch, which is more learning and more ways to lose data; the usual compromise is both, with the NAS holding the data and the mini PC running the experiments.</p>
+<h2>First apps with working UGOS guides</h2>
+<p>EszopiCoder's ugreen-docker-guides wiki covers Portainer, Uptime Kuma, Nginx, WireGuard, Filebrowser, Homepage, Mealie and GoAccess, with Immich, AdGuard Home, Tailscale and Glances in its status table; Marius Hosting's UGREEN section covers Portainer (with and without SSH), OpenCloud, Transmission, Nextcloud and Audiobookshelf; UGREEN's own blog covers Navidrome and Docker Compose; reviewers ran Pi-hole (mind UGOS's port 53), Home Assistant and an Ubuntu Server VM. Nothing exists yet for Vaultwarden on UGOS, so expect to adapt a generic compose file, which is the lesson.</p>
+<h2>Total cost in 2026</h2>
+<p>DXP2800 $389.99 plus two 4 TB hard drives ($225–400 at November 2026 prices, which rose with the year's memory and storage shortages) is $615–790; two 2 TB NVMe drives for a silent lab make it $810–1,150; a 16 GB DDR5-4800 SO-DIMM adds $120–250 (eBay to Newegg) and is worth it only when containers start swapping. Do not confuse the DXP2800 with the DXP2800 GT, a newer AMD Ryzen model at about $510 with higher idle draw.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: enabling SSH (article 481)", "https://support.ugnas.com/detail/article/en-US/481"),
+  ("UGREEN support: Docker app and Compose projects (article 236)", "https://support.ugnas.com/detail/article/en-US/236"),
+  ("Marius Hosting: Portainer on a UGREEN NAS", "https://mariushosting.com/how-to-install-portainer-on-your-ugreen-nas/"),
+  ("EszopiCoder: UGREEN Docker guides wiki", "https://github.com/EszopiCoder/ugreen-docker-guides/wiki"),
+  ("StarryHope: UGREEN DXP2800 (RAM, power, noise, third-party OS)", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/"),
+  ("NASCompares: UGREEN DXP Q&A (warranty and third-party OS)", "https://nascompares.com/2024/03/14/ugreen-brand-user-qa-questions-about-the-new-dxp-nasync-nas-storage-solution/"),
+  ("Proxmox forum: UGREEN DXP2800 (eMMC wear, SATA/M.2)", "https://forum.proxmox.com/threads/ugreen-dxp2800-proxmox-sata-m-2-bus-sharing.179215/"),
+  ("needtoknowit: UGREEN DXP2800 review", "https://needtoknowit.com.au/blog/ugreen-dxp2800-review-australia-2-bay-pro-nas.md"),
+  ("Neowin: UGREEN DXP2800 review", "https://www.neowin.net/amp/ugreen-nasync-dxp2800--ups-review-a-full-two-bay-nas-experience-for-a-low-price/"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("CNX Software: TerraMaster N150 NAS systems (F2-425 Plus)", "https://www.cnx-software.com/2025/10/29/terramaster-intel-n150-nas-systems-5gbe-networking-ai-photo-recognition-privacy-protection/"),
+  ("homelab-guide: N100 mini PC builds", "https://homelab-guide.pages.dev/homelab-n100-mini-pc-builds"),
+  ("homelabpicks: mini PC vs NAS", "https://homelabpicks-com.pages.dev/mini-pc/mini-pc-vs-nas/"),
+  ("MaxMyBuild: storage price tracker", "https://www.maxmybuild.com/storage/prices"),
+  ("Notebookcheck: Raspberry Pi 2026 pricing", "https://www.notebookcheck.net/Raspberry-Pi-confirms-new-pricing-for-popular-single-board-computers.1264226.0.html"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-window-ac-while-camping", "question": "G71 (power funnel: power station for a 5,000 BTU window AC overnight)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, a night of window AC",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W, 1,200 W solar, 26.3 kg.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Can a portable power station run a 5,000 BTU window AC overnight while camping (2026)? Only the 3 kWh class, and only with an inverter AC",
+ "h1": "Can a portable power station run a 5,000 BTU window AC overnight while camping? (2026)",
+ "desc": "What an 8-hour night of 5,000–6,000 BTU window air conditioning costs in watt-hours (450 W conventional vs an inverter unit that modulates), which portable power stations cover it (BLUETTI Elite 300, ALLPOWERS R4000; the Elite 200 V2 and AC200L marginal; the 1 kWh class a few hours), start surge, the 6,000 BTU inverter units sold in the US, the EcoFlow Wave 3 and Zero Breeze purpose-built campers, solar refill and rivals' prices.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Only the 3 kWh class, and only with an inverter AC. Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: the portable power station to run a window AC unit while camping overnight, about 2.6 kWh usable, which covers an 8-hour night when a 5,000–6,000 BTU inverter unit (LG LW6023IVSM, $347–399; Midea U-shaped) cycles down to roughly half its 450 W rating, but not a conventional 450 W unit running flat out in a hot tent (3.6 kWh). For that, the ALLPOWERS R4000 (3,456 Wh, $1,499, 45 kg on casters) is the one that has the margin.</p>
+<p>What to know: no outlet has measured a window AC overnight on any BLUETTI or ALLPOWERS station, so the hours here are arithmetic (85 % of rated capacity, about 15 W of station idle, a 50 % duty cycle for the inverter unit); measure your AC with a plug-in meter before the trip. A 5,000 BTU Frigidaire draws about 4.6 A (450 W) and starts at two to three times that, which every station here handles (1,800 W continuous and 2,700 W surge at minimum). The Elite 200 V2 and AC200L ($899) give about 7 hours at 50 % duty, the AC180, P1800 and S2000 Pro 3.5–5 hours. For a tent, EcoFlow's Wave 3 (6,100 BTU, 15.3 kg, $849 on sale, "up to 8 hours" with its $649 battery, both sold out on 2026-11-03) and the Zero Breeze Mark 3 are the purpose-built answers we do not sell; a 6,000 BTU window unit needs a camper wall or a built frame, not a tent. Refilling 2 kWh in a day takes about 600 W of panel in full sun; a car's 100 W socket is useless for this.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable)"), ("hours", "Hours at 240 W average (inverter AC, 50 % duty)"), ("conv", "Conventional 450 W flat out"), ("weight", "Weight"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh (about 2.56 kWh) / 2,400 W", "hours": "about 10.7", "conv": "about 5.7 h", "weight": "26.3 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh (about 2.94 kWh) / 3,600 W", "hours": "about 12", "conv": "about 6.5 h", "weight": "45 kg, casters", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured) / 2,600 W", "hours": "about 7.3", "conv": "about 4 h", "weight": "24.2 kg", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (about 1.74 kWh) / 2,400 W; expandable", "hours": "about 7.2", "conv": "about 4 h", "weight": "28.3 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 1.23 kWh) / 2,400 W", "hours": "about 5", "conv": "about 2.7 h", "weight": "13 kg", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030) / 1,800 W", "hours": "about 4", "conv": "about 2 h", "weight": "16 kg", "warranty": "5 years"}},
+  {"brand": "EcoFlow", "model": "Wave 3 + add-on battery (portable AC)", "url": "https://us.ecoflow.com/products/ecoflow-wave-3-portable-air-conditioner-with-heater?variant=42093673021513",
+   "cells": {"wh": "1,024 Wh battery; 6,100 BTU cool / 6,800 heat", "hours": "'up to 8' (EcoFlow); 2–8 h (The Gadgeteer)", "conv": "n/a", "weight": "15.3 kg + 9.7 kg battery; needs a vent hose", "warranty": "not read", "price": "$849 sale ($1,299) + $649 battery; sold out (2026-11-03)"}},
+  {"brand": "Zero Breeze", "model": "Mark 3 (portable AC)", "url": "https://www.pickhvac.com/?p=40003",
+   "cells": {"wh": "1,022 Wh battery; about 5,280 BTU, 150–500 W", "hours": "3–5 h normal, up to about 7 in Sleep mode (maker claims)", "conv": "n/a", "weight": "10 kg + 6.4 kg per battery", "warranty": "not read", "price": "$1,399 alone, about $1,899 with a battery (listings vary)"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh / 2,400 W", "hours": "about 7", "conv": "about 4 h", "weight": "about 23 kg", "warranty": "5 years", "price": "$1,029 (2026-11-03), $0.50/Wh"}},
+ ],
+ "after": """
+<h2>The arithmetic, and why the AC matters more than the station</h2>
+<p>A conventional 5,000 BTU unit is on or off: 450 W while the compressor runs, and in a hot tent it runs most of the night, so eight hours is up to 3.6 kWh plus the station's idle draw. An inverter unit (LG's 6,000 BTU dual inverter at CEER 15.5, Midea's U-shaped line) throttles the compressor instead of cycling it, so once the space is cool it sits at a fraction of its rating; at an assumed 50 % of 450 W plus 15 W idle, the night is about 1.9 kWh, which is what makes the Elite 300 a yes and the Elite 200 V2 a maybe. Start surge is two to three times running watts (BLUETTI and ALLPOWERS both quote about 1,200 W for a 500 W unit), inside every station here. No one has published a measured overnight run, so the honest instruction is a $20 plug-in meter on your own unit for one night at home.</p>
+<h2>Tents, campers and the purpose-built option</h2>
+<p>A window unit needs a wall: campers and vans can frame one in, tents mostly cannot, which is why the EcoFlow Wave 3 (a portable with a vent hose and its own 1,024 Wh battery) and the Zero Breeze Mark 3 exist; both claim a night only in low-power modes and cost $1,400–1,900 with a battery, and neither is a brand we carry. Weight matters too: the Elite 300 is a two-hand carry at 26.3 kg, the R4000 rolls at 45 kg and lives in a vehicle.</p>
+<h2>Refilling for night two</h2>
+<p>Two kilowatt-hours back into the station takes about 600 W of panel over a full sunny day (400 W × 4–5 sun-hours × 75 % is only 1.2–1.5 kWh); the Elite 300 accepts 1,200 W of solar, the R4000 2,000 W, the Elite 200 V2 1,000 W. A car socket at about 100 W adds a few hundred watt-hours a day and is not a plan; shore power at a campsite is.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("ALLPOWERS R4000", "https://iallpowers.com/products/allpowers-r4000-power-station"),
+  ("BLUETTI: using a solar generator to power a window AC", "https://bluettipower.com/blogs/news/using-solar-generator-to-power-your-window-ac"),
+  ("ALLPOWERS: can a portable power station run a window air conditioner", "https://iallpowers.com/blogs/blog/can-a-portable-power-station-run-a-window-air-conditioner"),
+  ("Sylvane: Frigidaire 5,000 BTU window AC (amps)", "https://www.sylvane.com/collections/window-air-conditioners/products/frigidaire-fhwc054te1-5000-btu-window-air-conditioner"),
+  ("LG LW6023IVSM 6,000 BTU dual inverter window AC", "https://www.lg.com/us/air-conditioners/lg-lw6023ivsm-window-air-conditioner"),
+  ("House Digest: Consumer Reports' best small-room window AC 2026", "https://www.housedigest.com/2161333/consumer-reports-names-best-window-air-conditioner-small-room-2026/"),
+  ("EcoFlow Wave 3", "https://us.ecoflow.com/products/ecoflow-wave-3-portable-air-conditioner-with-heater?variant=42093673021513"),
+  ("The Gadgeteer: EcoFlow Wave 3 review", "https://the-gadgeteer.com/2025/07/29/ecoflow-wave-3-portable-air-conditioner-with-add-on-battery-review/"),
+  ("PickHVAC: Zero Breeze Mark 3", "https://www.pickhvac.com/?p=40003"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("StorageReview: BLUETTI Elite 300 review", "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-keep-insulin-cold-in-a-power-outage", "question": "G73 (power funnel: keeping insulin cold for two days)", "lead_first": True,
+ "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
+                    "title": "BLUETTI AC180, two days of fridge power",
+                    "description": "1,152 Wh LiFePO4, 12 V/10 A port, 500 W solar.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
+ "title": "Which small power station and fridge keep insulin cold through a two-day outage (2026)? What the FDA and labels actually require",
+ "h1": "Which small power station and fridge keep insulin cold through a two-day outage? (2026)",
+ "desc": "Insulin storage rules from the FDA and the Humalog, NovoLog and Tresiba labels (unopened at 36–46 °F; in-use pens and vials at room temperature up to 86 °F for 28 days or more), why a two-day outage usually only threatens unopened stock, a 12 V compressor cooler on a power station's DC port (265–500 Wh a day measured), days per charge for the BLUETTI AC180, Elite 200 V2, Elite 30 V2, ALLPOWERS P1800, R600 and Tenergy T320, Frio wallets and ice-pack coolers, and the medical caveats to keep.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For two days, the insulin you are using needs no fridge if the room stays under 86 °F; it is unopened stock that needs cold. To keep it at 36–46 °F, buy the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}), $449 in our 2026-11-03 check (BLUETTI's page lists $499), and run a 15–25 L 12 V compressor cooler (BougeRV, Alpicool, Dometic CFX3 25) from its 12 V port: at the 265–500 Wh a day those coolers measure, the AC180's roughly 980 usable watt-hours is two to three and a half days, with no inverter idle to pay.</p>
+<p>What to know: the FDA says insulin should be stored at approximately 36–46 °F, that unrefrigerated vials or cartridges, opened or unopened, may be kept between 59 and 86 °F for up to 28 days and continue to work, that insulin stored above 86 °F may still be needed in an emergency (keep it as cool as possible, out of sun, and replace it once proper storage returns), and never to use insulin that has frozen; Lilly's Humalog and Novo's NovoLog pages say the same (in-use pens below 86 °F, discard at 28 days; in-use NovoLog pens must not go back in the fridge), Tresiba allows 8 weeks in use. A thermoelectric cooler (about 54 W continuous, 1.3 kWh a day, only 40 °F below ambient) is the wrong tool; the 288–300 Wh units (Elite 30 V2, R600, T320) run a compressor cooler under a day; the ALLPOWERS P1800 ($399) manages about two days but is a pre-order shipping December 7; the Elite 200 V2 ($899) gives four to seven days. The cheapest adequate plan is a $20–25 Frio evaporative wallet for in-use insulin and a cooler with ice packs (insulin never touching the ice) for the rest.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable via DC)"), ("dc", "12 V port"), ("days", "Days running a compressor cooler (265 / 400 / 500 Wh a day)"), ("weight", "Weight"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (about 980)", "dc": "12 V / 10 A", "days": "3.7 / 2.4 / 2.0", "weight": "16 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (about 870); pre-order, ships Dec 7", "dc": "12 V car port, 120 W", "days": "3.3 / 2.2 / 1.7", "weight": "13 kg", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (about 1,760)", "dc": "12 V / 10 A", "days": "6.7 / 4.4 / 3.5", "weight": "24.2 kg", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh (about 245)", "dc": "12 V car port + 2× DC5521, 10 A shared", "days": "0.9 / 0.6 / 0.5", "weight": "4.3 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh (about 250)", "dc": "12 V / 10 A", "days": "0.9 / 0.6 / 0.5", "weight": "5.6 kg", "warranty": "5 years"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh (about 255)", "dc": "12 V car port 10 A + 2× DC5521, 120 W shared", "days": "0.9 / 0.6 / 0.5", "weight": "3.7 kg", "warranty": "2 years"}},
+  {"brand": "Anker", "model": "SOLIX C300 DC (no AC outlet)", "url": "https://slickdeals.net/f/19673709",
+   "cells": {"wh": "288 Wh", "dc": "DC-only station; port rating unconfirmed", "days": "under 1", "weight": "2.8 kg", "warranty": "not read", "price": "$149.99–249.99 (2026 listings)"}},
+  {"brand": "Goal Zero", "model": "Yeti 300", "url": "https://rei.com/product/235636/goal-zero-yeti-300-power-station",
+   "cells": {"wh": "297 Wh", "dc": "two 12 V ports, 10 A", "days": "under 1", "weight": "6.2 kg", "warranty": "not read", "price": "$299.95–349.95"}},
+ ],
+ "after": """
+<h2>The rules, as the FDA and the labels state them</h2>
+<ul>
+<li><strong>Unopened:</strong> refrigerate at approximately 36–46 °F (2–8 °C) and it works to its expiry date (FDA; Lilly; Novo).</li>
+<li><strong>Out of the fridge:</strong> vials or cartridges, opened or unopened, between 59 and 86 °F for up to 28 days (FDA's current emergency page); Humalog in-use pens below 86 °F, thrown away 28 days after first use; NovoLog unopened or in use at room temperature up to 86 °F for 28 days, in-use pens not refrigerated; Tresiba in use up to 86 °F or refrigerated for 8 weeks. Day limits vary by product: follow your label.</li>
+<li><strong>Heat:</strong> above 86 °F the FDA says insulin may still be needed in an emergency; keep it as cool as you can and replace exposed vials once stored supply is available; pump insulin above 98.6 °F should be discarded.</li>
+<li><strong>Cold:</strong> never freeze it, and do not use insulin that has frozen; with ice, keep the insulin off the ice.</li>
+</ul>
+<p>Two days in a house that stays under 86 °F is inside every label for the pen or vial in use. The outage problem is the unopened boxes in the refrigerator door, and a closed household fridge holds food temperature only about 4 hours (FDA), so that is what the cooler is for.</p>
+<h2>The cooler, not the station, sets the runtime</h2>
+<p>A 12 V compressor cooler holds a real 36–46 °F in a warm room and cycles: Dometic's CFX3 25 spec is 0.92 Ah an hour at 12 V in a 90 °F ambient (about 265 Wh a day), BougeRV's 22 L lists 118 kWh a year (about 320 Wh a day), and owner tests of Alpicool and ICECO units run 450–620 Wh a day, so plan 265–500 Wh. Run it from the station's 12 V socket (a 6.5 A rated cooler fits a 10 A port; put nothing else on a shared DC bus) and leave the AC inverter off, which saves its idle draw. Thermoelectric boxes draw about 54 W all the time and only reach about 40 °F below ambient, so they cannot promise 46 °F in a warm house. Recharge from a car at about 100 W or a 100–200 W panel (the AC180 takes up to 500 W of solar).</p>
+<h2>Caveats to keep</h2>
+<p>Follow the label and your prescriber; day limits and in-use rules differ by product. Test the whole setup before an outage, with a thermometer in the cooler. Contact the manufacturer with product questions (the FDA page lists their numbers). This page is about keeping a cold chain, not medical advice.</p>
+""",
+ "sources": [
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("FDA: information regarding insulin storage and switching between products in an emergency", "https://www.fda.gov/drugs/emergency-preparedness-drugs/information-regarding-insulin-storage-and-switching-between-products-emergency"),
+  ("FDA: power outages, food safety (4-hour refrigerator figure)", "https://www.fda.gov/food/food-safety-during-emergencies/power-outages-key-tips-consumers-about-food-safety"),
+  ("Lilly: Humalog storage", "https://insulins.lilly.com/humalog"),
+  ("Novo Nordisk: taking NovoLog (storage)", "https://www.novolog.com/taking-novolog.html"),
+  ("Novo Nordisk: Tresiba FlexTouch storage", "https://www.tresiba.com/how-to-take-tresiba/flextouch-storage.html"),
+  ("ADA: tips for emergency preparedness", "https://diabetes.org/tools-resources/disaster-relief/tips-for-emergency-preparedness"),
+  ("Dometic CFX3 25 (power consumption)", "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370"),
+  ("BougeRV 23-quart 12 V refrigerator", "https://bougerv.com/products/12v-23-quart-portable-refrigerator-for-travel"),
+  ("Mousetrap: tiny Alpicool compressor fridges tested (Wh per day)", "https://mouse.mousetrap.net/blog/2018/07/01/tiny-alpicool-compressor-fridges/"),
+  ("Koolatron: 12 V cooler FAQ (thermoelectric draw)", "https://www.koolatron.com/pages/12v-cooler-frequently-asked-questions"),
+  ("MaxiAids: insulin cases and coolers (Frio prices)", "https://www.maxiaids.com/category/insulin-cases-and-coolers"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "ups-for-a-bambu-lab-3d-printer-power-outage", "question": "G74 (power funnel: UPS for a Bambu P1S)", "lead_first": True,
+ "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
+                    "title": "BLUETTI AC180 for a printer outage",
+                    "description": "1,152 Wh LiFePO4, 1,800 W, 20 ms UPS switchover.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
+ "title": "What UPS or power station keeps a Bambu Lab P1S printing through a power flicker or outage (2026)?",
+ "h1": "What UPS or power station keeps a Bambu Lab P1S printing through a power flicker or outage? (2026)",
+ "desc": "Bambu Lab P1S, X1C and A1 power draw from Bambu's own table (350 W peak at 110 V, about 105–150 W average, 5–6 W standby) and owner meters, what Bambu's power-loss recovery does and where it fails, why a pure-sine line-interactive UPS (CyberPower CP1500PFCLCD, APC BR1500MS2) is the answer for flickers, and which power station rides out a multi-hour outage mid-print: BLUETTI AC180, Elite 200 V2, Elite 30 V2, ALLPOWERS P1800 and R600, with switchover, ECO-mode and runtime figures.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For power flickers on a Bambu Lab printer, a $240–340 pure-sine UPS (CyberPower CP1500PFCLCD, APC BR1500MS2; we sell neither) is the honest buy. For a multi-hour outage mid-print, buy the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}), $449 in our 2026-11-03 check: 1,800 W covers the P1S's 350 W heat-up spike, about 980 usable Wh is roughly 6 hours of PLA at 150 W, 20 ms switchover (test it first).</p>
+<p>What to know: Bambu's own power table puts the P1S and X1C at a 350 W maximum on 110 V (1,000 W on 220 V), 105 W average on PLA, 140–150 W on ABS and 5–6 W standby, with a power factor of about 0.5, so size a UPS by watts, not VA; owners log a 300–350 W startup peak for 15–60 seconds, then 100–130 W. Bambu's power-loss recovery saves position and temperatures at the cut and resumes after power returns, but not during the first layer, almost always with a visible line, and PLA that has cooled may have let go of the bed; a flicker still reboots the printer and pauses the job, which is what a UPS prevents. The Elite 30 V2 and ALLPOWERS R600 (288–299 Wh, 600 W, ≤10 ms) hold the spike but last about 1–1.5 hours; the Elite 200 V2 ($899) is the only unit that covers a full 10-hour PLA print; the Tenergy T320's 200 W inverter is below the P1S peak and the UGREEN US3000 is a 12 V DC UPS for NAS units, not a printer. On any BLUETTI used as a UPS, turn ECO mode off: an idle printer at 5–6 W sits under the auto-off threshold.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable)"), ("inv", "Inverter / switchover"), ("pla", "Hours at 150 W (PLA)"), ("abs", "Hours at 250 W (ABS, chamber)"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (about 980)", "inv": "1,800 W / 20 ms", "pla": "about 6.4", "abs": "about 3.8", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (about 1,760)", "inv": "2,600 W / ≤15 ms", "pla": "about 11.5 (a full 10-hour print)", "abs": "about 7", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (about 870); pre-order, ships Dec 7", "inv": "1,800 W / 20 ms (manual)", "pla": "about 5.7", "abs": "about 3.4", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh (about 245)", "inv": "600 W / ≤10 ms", "pla": "about 1.6", "abs": "about 1", "warranty": "5 years"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh (about 254)", "inv": "600 W / ≤10 ms", "pla": "about 1.6", "abs": "about 1", "warranty": "5 years"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh", "inv": "200 W continuous (400 W surge): below the P1S peak, not recommended", "pla": "n/a", "abs": "n/a", "warranty": "2 years"}},
+  {"brand": "CyberPower", "model": "CP1500PFCLCD (pure sine UPS)", "url": "https://www.pcnation.com/cyberpower-cp1500pfclcd-9gm314",
+   "cells": {"wh": "lead-acid; about 10 min at half load (vendor)", "inv": "1,000 W / about 4 ms", "pla": "roughly 20–45 min (estimate, unverified)", "abs": "less", "warranty": "3 years", "price": "$239.95 (PCNation, 2026-11-03)"}},
+  {"brand": "APC", "model": "Back-UPS Pro BR1500MS2 (sine wave)", "url": "https://www.markertek.com/product/apc-br1500ms2/apc-br1500ms2-back-ups-pro-1500va-sinewave-power-supply-10-outlets-2-usb-charging-ports-avr-lcd",
+   "cells": {"wh": "lead-acid; about 1 h 24 min at 90 W, 14.5 min at 450 W (vendor)", "inv": "900 W / 8–10 ms", "pla": "roughly 20–45 min (estimate)", "abs": "less", "warranty": "3 years", "price": "$339.99 (Markertek, 2026-11-03); $223–300 Amazon in 2026"}},
+  {"brand": "EcoFlow", "model": "RIVER 3 Plus", "url": "https://www.bhphotovideo.com/c/product/1874518-REG/ecoflow_efriver3plus_us_river_3_plus_portable.html",
+   "cells": {"wh": "286 Wh", "inv": "600 W / <10 ms (9 ms measured)", "pla": "about 1.6", "abs": "about 1", "warranty": "5 years", "price": "$269 (March 2026 review)"}},
+ ],
+ "after": """
+<h2>What the printer draws</h2>
+<p>Bambu's power-consumption page lists the P1S and X1C at a 1,000 W maximum on 220 V and 350 W on 110 V, averages of 105 W (PLA) and 140–150 W (ABS) over a short test print that includes warm-up, and 5–10 W standby; the A1 is 350 W at 110 V and 95–200 W average, the A1 mini 150 W. Owners on 120 V log a 300–350 W peak while the bed heats and 100–130 W printing; one second-by-second log on 220 V saw 850 W for the first minute then 30–70 W on PLA, which shows how much depends on bed temperature and plate. Power factor is about 0.45–0.63, so a "1,500 VA" UPS is a 900–1,000 W one and the printer's watts are what count. A 600 W APC tripped on an X1C's bed heat-up at 220 V; on 120 V the 350 W spike is inside every unit here except the T320.</p>
+<h2>Power-loss recovery, and why a UPS still matters</h2>
+<p>When power drops, the P1S's capacitors keep the board alive long enough to save axis positions, the G-code line, temperatures and AMS state; on power-up it offers to resume, rehomes X and Y, keeps the stored Z, reheats and returns to the spot. Bambu says it does not work during the first layer, there is almost always a visible mark, cooled PLA can detach and ABS or PC can warp, and a blob can form at the nozzle. Owner reports match: a 10-second flicker left one P1S unresponsive until resumed from the app with a line and a defect; another resumed only from Bambu Studio after reheating, with warped flat parts. A UPS turns those into non-events, and some owners argue a P-series printer barely needs one; both views are in Bambu's forum.</p>
+<h2>Using a station as the UPS</h2>
+<p>Plug the printer into the station and the station into the wall. BLUETTI quotes ≤10 ms on the Elite 30 V2, ≤15 ms on the Elite 200 V2 and 20 ms on the AC180; no owner has published a P1S on a BLUETTI switchover, and one forum member warns a slow transfer can reset a printer, so pull the wall plug on a test print first. Turn ECO off (one owner set a 17 W threshold with a 1-hour delay, which an idle printer at 5–6 W would trip) and, on the AC180P, Grid Enhancement Mode off. Pure sine is not something Bambu requires (its supplies are switching units), but every station here is pure sine anyway. EcoFlow and Bambu ran a joint promotion in December 2023 with EcoFlow stations positioned as printer UPSs, and one owner reports a RIVER 3 Plus working on a P1S.</p>
+""",
+ "sources": [
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("Bambu Lab wiki: power consumption", "https://wiki.bambulab.com/en/general/power-consumption"),
+  ("Bambu Lab wiki: power loss recovery", "https://wiki.bambulab.com/en/knowledge-sharing/power-loss-recovery"),
+  ("Bambu forum: which UPS for a P1S + AMS (owner measurements)", "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205"),
+  ("Bambu forum: P1S power consumption (second-by-second log)", "https://forum.bambulab.com/t/p1s-power-consumption/173002"),
+  ("Bambu forum: a P1S mid-print power loss", "https://forum.bambulab.com/t/my-experience-with-a-p1s-mid-print-unexpected-utility-power-loss/91609"),
+  ("Bambu forum: UPS model recommendations list", "https://forum.bambulab.com/t/3d-printer-ups-magic-ups-model-recommendations-list/238907"),
+  ("Bambu forum: portable power suggestions (switchover concern)", "https://forum.bambulab.com/t/portable-power-suggestions/115429"),
+  ("BLUETTI community: ECO mode while plugged in (Elite 30 V2)", "https://community.bluettipower.com/t/question-about-eco-mode-while-the-unit-is-plugged-in-e-g-elite-30v2/43022"),
+  ("PCNation: CyberPower CP1500PFCLCD", "https://www.pcnation.com/cyberpower-cp1500pfclcd-9gm314"),
+  ("Markertek: APC BR1500MS2", "https://www.markertek.com/product/apc-br1500ms2/apc-br1500ms2-back-ups-pro-1500va-sinewave-power-supply-10-outlets-2-usb-charging-ports-avr-lcd"),
+  ("All3DP: Bambu Lab and EcoFlow joint sale", "https://all3dp.com/4/bambu-lab-and-ecoflow-joint-sale-offers-discounts-on-3d-printers-and-backup-power/"),
+  ("UGREEN NAS UPS US3000 (DC only)", "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "kvm-switch-for-a-mac-and-pc-4k-144hz", "question": "G75 (UGREEN funnel: KVM for a Mac + PC at 4K 144 Hz)", "lead_first": True,
+ "product_result": {"slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps", "item_id": "UGREEN-USB-SWITCH-10G",
+                    "title": "UGREEN USB-C switch, 2 computers, 4× 10 Gb/s",
+                    "description": "Switches four 10 Gb/s USB ports between two computers.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-usbc-switch-2-port-4-x-usb-32-10gbps-data-3711971.png"},
+ "title": "Which KVM switch holds 4K 144 Hz between a MacBook Pro and a gaming PC on one monitor (2026)? Mostly, none: use the monitor's KVM",
+ "h1": "Which KVM switch holds 4K 144 Hz between a MacBook Pro and a gaming PC on one monitor? (2026)",
+ "desc": "Why 4K 144 Hz through a KVM is a DSC and EDID problem (DP 1.4 without DSC tops out at 4K120; macOS does not document DSC; re-handshakes shuffle windows), what Level1Techs, TESmart, Cable Matters and UGREEN's DP 1.4 and HDMI 2.1 KVMs actually claim, Apple's own per-chip display limits, the Mac sleep-and-wake reports on KVMs, and the setup that sidesteps all of it: a 4K 144 Hz monitor with a built-in KVM plus a USB switch for the peripherals.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> No KVM switch is proven to hold 4K 144 Hz for a MacBook Pro and a Windows PC on one monitor (Level1Techs rates its DP 1.4 unit at 4K120 unless DSC works end to end; UGREEN's lists 4K144 untested on a Mac). Buy a 4K 144 Hz monitor with a built-in KVM (Gigabyte M27UP about $299–329) plus the <strong>UGREEN USB-C switch</strong> ({buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}), $40.99 on 2026-11-03, for the peripherals.</p>
+<p>What to know: DP 1.4 carries 4K120 at 8-bit without DSC and needs DSC on the host, the switch and the monitor for 4K144 at 10-bit; Apple lists its M3/M4 Pro MacBook Pros at 4K240 over HDMI and 6K60 over Thunderbolt but does not document DSC, and Level1Techs' own forum shows 4K144 through its KVM failing on LG monitors for reasons blamed on firmware and drivers, not the switch. KVMs without EDID emulation re-handshake on every switch, so the Mac rearranges windows (turn off "automatically rearrange Spaces") and may not wake (UGREEN KVM owners report closing and reopening the lid); TESmart and Cable Matters claim EDID emulation 2.0 and 4K144 but no independent Mac test exists. UGREEN's DP 1.4 2-in-1-out and 55851 KVMs (8K60, 4K240/144/120 listed, four USB 3.0 ports, no hotkeys, no wake of the unselected PC) and its HDMI 2.1 AK703 could not be price-checked on us.ugreen.com today, and a DP KVM cannot charge the MacBook. With the monitor as the switch, the Mac plugs into the monitor's USB-C port with one cable and the PC into DisplayPort, the monitor's input button swaps machines, and the peripherals follow it over the monitor's USB upstream or our USB switch's button; mind the monitor's USB-C power (the M27UP gives only 18 W, so the Mac keeps its charger).</p>
+""",
+ "columns": [("path", "Video path"), ("claim", "4K144 claim and evidence"), ("mac", "Mac behaviour"), ("price", "Price")],
+ "rows": [
+  {"slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps", "model": "Monitor with built-in KVM + UGREEN USB-C switch",
+   "cells": {"path": "Mac on the monitor's USB-C (DP Alt Mode), PC on DisplayPort 1.4 / HDMI 2.1; monitor input button switches", "claim": "Whatever the monitor does natively: Gigabyte M27UP 4K160, BenQ PD3226G 4K144 with Thunderbolt 4", "mac": "Direct link, no KVM re-handshake, no DSC middleman", "price": "$40.99 (switch) + the monitor"}},
+  {"brand": "UGREEN", "model": "8K DisplayPort 1.4 KVM, 2 in 1 out", "url": "https://www.pbtech.co.nz/product/CABUGR6426/UGREEN-25962-DisplayPort-KVM-Switch-2-In-1-Out",
+   "cells": {"path": "DP 1.4 in ×2, DP out, 4× USB 3.0 (3 A + 1 C), 2 DP + 2 USB cables", "claim": "8K60, 'backward compatible 4K@240/144/120/60Hz'; customer reviews report 144–240 Hz on some monitors, flicker on others; no Mac test", "mac": "No hotkeys; unselected PC may not wake; Mac wake-after-switch complaints on UGREEN KVMs; no laptop charging", "price": "us.ugreen.com unreadable today (HTTP 429); not verified"}},
+  {"brand": "UGREEN", "model": "AK703 HDMI 2.1 KVM (2 PC, 2 monitors)", "url": "https://www.pcgameshardware.de/Gadgets-Hardware-281140/News/Ugreen-KVM-Switch-HDMI-21-zum-Bestpreis-1491394/",
+   "cells": {"path": "HDMI 2.1", "claim": "4K240 or 8K60 (listing)", "mac": "M-series MacBooks use only one HDMI link through it", "price": "€89.98 on a German sale; US price not verified"}},
+  {"brand": "Level1Techs", "model": "DP 1.4 KVM (2 computers)", "url": "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj",
+   "cells": {"path": "DP 1.4", "claim": "Official spec 4K120; 4K144 only via DSC; 'overclocking not supported'", "mac": "No monitor emulation: re-handshake on switch, windows move; the brand with Mac-owner support", "price": "dual-monitor from $520 (sold out); single-monitor not read"}},
+  {"brand": "TESmart", "model": "DKS202-M24 / HDK402-M24", "url": "https://www.tesmart.com/pages/displayport-kvm-switches-multi-monitor-8k-4k-kvm-solutions-by-tesmart",
+   "cells": {"path": "DP 1.4 / HDMI 2.1 + DP 1.4", "claim": "4K144, 4K240, 'EDID emulation 2.0', VRR (vendor claims)", "mac": "No independent Mac test found", "price": "not read"}},
+  {"brand": "Cable Matters", "model": "DP 1.4 KVM", "url": "https://www.newegg.com/p/0XP-00W5-00049",
+   "cells": {"path": "DP 1.4", "claim": "4K144 only with a DSC-capable host (its own listing)", "mac": "Not tested with Macs", "price": "$212.99 bundle (Newegg snippet)"}},
+  {"brand": "Gigabyte", "model": "M27UP (monitor with KVM)", "url": "https://slickdeals.net/f/19016452-gigabyte-m27up-27-ss-ips-gaming-monitor-4k-160hz-fhd-320hz-dual-mode-type-c-kvm-hdmi-dp-type-c-299",
+   "cells": {"path": "USB-C + HDMI 2.1 + DP, KVM button", "claim": "4K160 native", "mac": "USB-C PD only 18 W: keep the Mac's charger", "price": "$299 (Dec 2025 deal), about $329 since"}},
+  {"brand": "BenQ", "model": "PD3226G (monitor)", "url": "https://www.itpro.com/hardware/monitors/benq-pd3226g-monitor-review-a-4k-144hz-monitor-for-work-and-play",
+   "cells": {"path": "Thunderbolt 4 + HDMI 2.1 + DP", "claim": "4K144 native", "mac": "Thunderbolt 4 upstream; KVM and PD wattage not confirmed", "price": "$1,099.99 launch; $969–1,136 at resellers"}},
+ ],
+ "after": """
+<h2>Why 4K144 breaks at the switch</h2>
+<p>4K at 144 Hz with 10-bit colour exceeds DP 1.4's uncompressed budget, so the host, the KVM and the monitor must all agree on Display Stream Compression; many "8K60" KVMs are DP 1.4 boxes that only pass DSC when every device negotiates it, which is why Level1Techs rates its switch at 4K120 and a forum member's LG 27GP950 pair held 4K144 only with the KVM removed. HDMI 2.1 (48 Gbps) carries 4K144 without DSC, and Apple's M3/M4 Pro HDMI ports do 4K240, but UGREEN's HDMI 2.1 KVM passes one HDMI link from an M-series Mac and most HDMI KVMs are 4K60. Macs add a second problem: a KVM without EDID emulation makes macOS see a new display on every switch, so windows and Spaces shuffle and sleep-wake sometimes fails; the vendor emulation claims (TESmart, Cable Matters) have no Mac test behind them.</p>
+<h2>Apple's own limits</h2>
+<p>Apple's external-display page lists the M4 and M4 Pro MacBook Pro at one display up to 4K240 (two displays at 4K144 each), the M2 Pro and M3 Pro at 4K240 over HDMI or 6K60 over Thunderbolt, and the base M3 at 4K144 over HDMI; Thunderbolt 4 carries DP 1.4 and Thunderbolt 5 DP 2.1. Owners still report USB-C-to-DP cables not recognised on an M4 Pro, a Mac Studio capped at 100 Hz on a 144 Hz BenQ, and a DisplayPort-version toggle needed after reconnects, all with direct connections, so the KVM is not the only variable.</p>
+<h2>The setup that works</h2>
+<p>Pick a 4K144-or-better monitor with a built-in KVM and a USB-C upstream (M27UP, PD3226G, Gigabyte M32U), run the Mac to the USB-C port with a USB-C-to-DP 1.4 or Thunderbolt cable, the PC to DisplayPort or HDMI 2.1, and let the monitor's input switch move the USB hub between them; where the hub lacks ports or you want a physical button for a USB mic, drives or a 10 Gb/s SSD, our UGREEN switch toggles four USB-C/A 10 Gb/s ports between two computers with its own button. Keep the Mac's charger: monitor USB-C power ranges from 18 W (M27UP) to 90 W, and no KVM here charges a laptop.</p>
+""",
+ "sources": [
+  ("UGREEN USB-C switch, 2 computers, 4 ports", "https://us.ugreen.com/products/ugreen-usb-c-switch-2-port-4-x-usb-3-2-10gbps-data"),
+  ("Apple: connect external displays to a Mac (per-chip limits)", "https://support.apple.com/en-us/101571"),
+  ("Apple: MacBook Pro M4 Pro tech specs", "https://support.apple.com/en-us/121553"),
+  ("Level1Techs store: DP 1.4 KVM (4K120, DSC note)", "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj"),
+  ("Level1Techs forum: 4K144 via DP 1.4a with DSC on L1 KVMs", "https://forum.level1techs.com/t/4k144-support-via-dp1-4a-with-dsc1-2a-on-level1techs-kvms/182339"),
+  ("Level1Techs forum: KVM for a PC + MacBook with high-refresh monitors", "https://forum.level1techs.com/t/l1-kvm-recommendation-for-pc-macbook-setup-high-refresh-rate-monitors/194370"),
+  ("PB Tech: UGREEN 25962 DisplayPort KVM 2-in-1-out", "https://www.pbtech.co.nz/product/CABUGR6426/UGREEN-25962-DisplayPort-KVM-Switch-2-In-1-Out"),
+  ("PB Tech: UGREEN 55851 DisplayPort dual-monitor KVM", "https://www.pbtech.co.nz/product/CABUGR6429/UGREEN-55851-DisplayPort-Dual-Monitor-KVM-Switch-2"),
+  ("PC Games Hardware: UGREEN HDMI 2.1 KVM (AK703)", "https://www.pcgameshardware.de/Gadgets-Hardware-281140/News/Ugreen-KVM-Switch-HDMI-21-zum-Bestpreis-1491394/"),
+  ("TESmart: DisplayPort KVM switches", "https://www.tesmart.com/pages/displayport-kvm-switches-multi-monitor-8k-4k-kvm-solutions-by-tesmart"),
+  ("Newegg: Cable Matters DP 1.4 KVM (DSC host required)", "https://www.newegg.com/p/0XP-00W5-00049"),
+  ("Slickdeals: Gigabyte M27UP (4K160, KVM, 18 W USB-C)", "https://slickdeals.net/f/19016452-gigabyte-m27up-27-ss-ips-gaming-monitor-4k-160hz-fhd-320hz-dual-mode-type-c-kvm-hdmi-dp-type-c-299"),
+  ("ITPro: BenQ PD3226G review", "https://www.itpro.com/hardware/monitors/benq-pd3226g-monitor-review-a-4k-144hz-monitor-for-work-and-play"),
+  ("MacRumors forum: 4K 144 Hz KVM for a PC and Mac", "https://forums.macrumors.com/threads/4k-144hz-kvm-switch-pc-mac.2453262"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
