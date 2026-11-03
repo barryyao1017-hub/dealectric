@@ -23,6 +23,7 @@ CATEGORIES = {
     "portable-monitor":("Portable monitors",     "Laptop screen extenders and portable USB-C displays."),
     "smartwatch":      ("Smartwatches",          "GPS fitness smartwatches."),
     "nas":             ("NAS",                   "Network-attached storage: diskless home and small-office NAS units, sold without drives."),
+    "usb-switch":      ("USB switches & hubs",   "USB switches that share devices between computers, and USB-C hubs."),
 }
 
 PRODUCTS = [
@@ -977,6 +978,24 @@ PRODUCTS = [
              "UGREEN's US spec table lists 12 oz; one review weighed it at about 6 oz.",
              "65 W is for one device: with a laptop and a phone connected the laptop gets less (see the comparison page).",
              "Not an adapter for other appliances: it only charges USB devices. No AU or other plug heads in the box."]},
+
+
+{"slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps", "brand": "UGREEN", "program": "cj:ugreen", "category": "usb-switch",
+ "name": "UGREEN USB-C Switch, 2 Computers to 4 USB 3.2 Gen 2 (10 Gb/s) Devices", "model": "USB-C switch 2-in-4-out, CM691 (SKU 25164)",
+ "url": "https://us.ugreen.com/products/ugreen-usbc-switch-2-port", "price": 40.99, "list_price": 69.99, "verified": "2026-11-03",
+ "specs": [("Computers", "2, over USB-C (a USB-A computer needs a USB-A to C data cable, not included)"), ("Devices", "4 ports, 3× USB-A + 1× USB-C, USB 3.2 Gen 2 up to 10 Gb/s; the four share one 10 Gb/s uplink"),
+           ("Switching", "Button on the unit or the wired remote (1.5 m); PC 1 has priority when both are connected"), ("Power", "Bus-powered: up to 2.4 A from a USB-C host, 1.8 A from a USB-A host; UGREEN says enough for four 3.5\" drives"),
+           ("Video", "None: a USB switch, not a KVM; no monitor passes through"), ("Cable length", "Keep host cables within 0.8 m or speed drops (UGREEN)"),
+           ("macOS", "On macOS 13.3 or later, allow the accessory in Privacy & Security"), ("Size", "4.8 × 2.1 × 0.7 in"),
+           ("In the box", "Switch, 2× USB-C to C cables (0.8 m), wired remote")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A two-computer USB switch with four 10 Gb/s USB 3.2 Gen 2 ports, bus-powered, with a wired remote; $40.99 on 2026-11-03 against $69.99.",
+ "fit": "A desk where a work laptop and a personal computer share one keyboard, mouse and an external SSD, with the monitors handled separately.",
+ "caveats": ["Not a KVM: no video passes through, so monitors need their own input switching.",
+             "Switching moves the USB devices without ejecting them; eject an external drive first or risk a corrupted write.",
+             "UGREEN advises against wireless 2.4 GHz receivers on USB 3 switches (interference) and cables longer than 0.8 m.",
+             "$40.99 is a sale price against $69.99 on 2026-11-03; UGREEN gives no end date. No printed code on the page."]},
 
 ]
 

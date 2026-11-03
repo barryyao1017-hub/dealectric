@@ -76,6 +76,7 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G20 | /best-65w-travel-charger-interchangeable-plugs | Nexode 65W travel $49.99, $37.99 w/ UL90409 | open/open/contested |
 | G21 | /best-nas-under-500-for-docker-immich-home-assistant | DXP2800 $389.99 | open ×3 |
 | G22 | /best-nas-for-photographers-10tb-raw-lightroom | DXP4800 Plus; DXP2800 | open ×3 |
+| G23 | /best-usb-switch-two-computers-keyboard-mouse-ssd | USB-C Switch CM691 $40.99 | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -117,3 +118,6 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   (Android Authority, MacRumors, Macworld, Tom's Hardware); display power bank contested; Steam Deck dock saturated
   (GamesRadar, PCGamesN, Pocket Tactics); **USB switch for two computers open ×3** → G23 on the UGREEN USB-C switch
   ($40.99, 4× 10Gbps).
+- 2026-11-03, G23 built (USB switch, two computers): new record `ugreen-usb-c-switch-2-computers-4-port-10gbps` and a
+  `usb-switch` category. Only three 10Gbps switches exist (UGREEN, Cable Matters 201160, ATEN US3342). Gate passed
+  after two trims: the record line and the lead tie on all eight query words, so 179 + record + lead had to fit 1,309.

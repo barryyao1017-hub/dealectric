@@ -1412,4 +1412,60 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("QNAP QNA-T310G1T Thunderbolt 10GbE adapter (retailer)", "https://esaitech.com/products/qnap-qna-t310g1t-thunderbolt-3-to-10gbe-adapter-thunderbolt-3-1-ports-1-twisted-pair"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-usb-switch-two-computers-keyboard-mouse-ssd", "question": "G23 (UGREEN funnel: USB switch for two computers)", "lead_first": True,
+ "product_result": {"slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps", "item_id": "UGREEN-USB-C-SWITCH-25164",
+                    "title": "UGREEN USB-C Switch for two computers",
+                    "description": "2 USB-C in, 4× 10Gbps USB 3.2 Gen 2 out, wired remote.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-usbc-switch-2-port-4-x-usb-32-10gbps-data-3711971.png"},
+ "title": "Best USB switch for two computers sharing a keyboard, mouse and SSD (2026): the 10Gbps ones",
+ "h1": "Best USB switch for two computers sharing a keyboard, mouse and SSD (2026)",
+ "desc": "Which USB switch (not a KVM) to buy so two computers share a keyboard, mouse and an external SSD: UGREEN's 10Gbps USB-C switch against the Cable Matters 201160, ATEN US3342 and US3324, IOGEAR GUS432, Sabrent USB-SW30, Plugable USB3-SWITCH2 and UGREEN's own 5Gbps and USB 2.0 switches, compared on ports, speed, cables in the box, power, how they switch and the price, with the eject-before-switching rule.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN USB-C Switch</strong> ({buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}), the best USB switch for two computers sharing a keyboard, mouse and SSD at 10Gbps on 2026-11-03: $40.99, two USB-C uplinks with cables and a wired remote, four USB 3.2 Gen 2 ports (3× USB-A + 1× USB-C), bus-powered, no video. Eject the SSD before you switch: a USB switch moves a drive the way pulling the plug does.</p>
+<p>Only two other switches run the shared ports at 10Gbps: the Cable Matters 201160 (2× USB-A + 2× USB-C, wired remote, about $51 to $66 at resellers, one-year warranty) and the ATEN US3342 ($156.95 list, sold out at one US retailer). The ATEN US3324 ($49 to $74), IOGEAR GUS432 ($69.99), Sabrent USB-SW30 ($14.99, one port) and Plugable USB3-SWITCH2 ($19.95, one port) are 5Gbps, about half the SSD speed. None of them switches a monitor; that is a KVM, which costs more.</p>
+""",
+ "columns": [("ports", "Computers / devices"), ("speed", "Speed"), ("cables", "In the box"), ("power", "Power"), ("switch", "Switching"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps", "model": "UGREEN USB-C Switch (CM691)",
+   "cells": {"ports": "2 USB-C / 3× USB-A + 1× USB-C", "speed": "10Gbps (USB 3.2 Gen 2)", "cables": "2× USB-C 0.8 m, wired remote", "power": "Bus-powered, up to 2.4 A from a USB-C host", "switch": "Button or wired remote; PC 1 has priority", "warranty": "2 years"}},
+  {"brand": "Cable Matters", "model": "201160 USB-C switch", "url": "https://www.cablematters.com/pc-1591-131-4-port-usb-a-usb-c-switch-with-remote-control.aspx",
+   "cells": {"ports": "2 USB-C / 2× USB-A + 2× USB-C", "speed": "10Gbps, all ports", "cables": "2× USB-C data cables", "power": "Optional 5 V 3 A adapter", "switch": "Wired remote (battery)", "warranty": "1 year", "price": "$51.25–65.99 (resellers, 2026-11-03)"}},
+  {"brand": "ATEN", "model": "US3342", "url": "https://www.aten.com/au/en/products/usb-solutions/docks-and-switches/us3342",
+   "cells": {"ports": "2 USB-C / 4 (listings say USB-A)", "speed": "10Gbps", "cables": "2× USB-C 3.2 Gen 2", "power": "Bus-powered; adapter only for PD pass-through", "switch": "Remote pushbutton", "warranty": "Not found", "price": "$156.95 MSRP; sold out at one US retailer"}},
+  {"brand": "ATEN", "model": "US3324", "url": "https://www.aten.com/global/en/products/usb-peripherals/peripheral-switches/us3324/",
+   "cells": {"ports": "2 USB-B / 4× USB-A", "speed": "5Gbps", "cables": "2× B-to-A 1.2 m, 1× B-to-C 1.8 m", "power": "Bus-powered, optional micro-B", "switch": "Wired remote", "warranty": "2 years (retailer)", "price": "$48.99–74.48 (resellers)"}},
+  {"brand": "IOGEAR", "model": "GUS432", "url": "https://www.iogear.com/product/GUS432",
+   "cells": {"ports": "2 / 4× USB-A", "speed": "5Gbps", "cables": "Not found", "power": "Not found", "switch": "Button", "warranty": "3 years", "price": "$69.99 (CDW); $79.95 MSRP"}},
+  {"brand": "Sabrent", "model": "USB-SW30", "url": "https://sabrent.com/products/USB-SW30",
+   "cells": {"ports": "2 USB-B / 1× USB-A", "speed": "5Gbps", "cables": "2× 3 ft B-to-A", "power": "Not found", "switch": "Button", "warranty": "1 year", "price": "$14.99 sale, $17.99 regular (sabrent.com)"}},
+  {"brand": "Plugable", "model": "USB3-SWITCH2", "url": "https://www.plugable.com/products/usb3-switch2",
+   "cells": {"ports": "2 / 1× USB-A", "speed": "5Gbps", "cables": "2× 4.9 ft A-to-B", "power": "Bus-powered", "switch": "One button", "warranty": "2 years", "price": "$19.95 (list $29.99, plugable.com)"}},
+  {"brand": "UGREEN", "model": "USB 2.0 switch 2-in-4-out (SKU 30767)", "url": "https://us.ugreen.com/products/ugreen-usb-2-0-switch-2-in-4-output-usb-kvm-switch",
+   "cells": {"ports": "2 USB-A / 4× USB-A", "speed": "480Mbps (USB 2.0)", "cables": "2× USB-A cables", "power": "Optional 5 V adapter; keyboard and mouse run without", "switch": "One button with LED", "warranty": "2 years", "price": "$23.99 (UGREEN US store, 2026-11-03); $16.99 at Adorama"}},
+ ],
+ "after": """
+<h2>Switch versus KVM</h2>
+<p>A USB switch hands one set of USB devices to whichever computer is selected; it carries no video. A monitor with two inputs does the display half (its own input button, or a monitor with a built-in KVM), and the USB switch does the keyboard, mouse, webcam and SSD. A KVM does both in one box and costs more, and the cheap "USB-C KVM" listings are usually video switches with 5Gbps or USB 2.0 ports.</p>
+<h2>Drives: eject first</h2>
+<p>Switching is electrically the same as unplugging the drive from one computer and plugging it into the other. Plugable's knowledge base says to eject storage before switching and does not recommend its switch for drives in use; ATEN's FAQ describes the same behaviour. No switch here ejects for you. Keep the SSD's writes finished (or the file closed) before pressing the button, and expect Windows to re-scan the drive on each switch.</p>
+<h2>Speed and power</h2>
+<p>USB 3.2 Gen 2 is 10Gbps, about 1,000 MB/s to a fast external SSD; USB 3.2 Gen 1 (5Gbps) tops out near 450 MB/s. On the UGREEN switch the four ports share each computer's single 10Gbps uplink, and UGREEN says to keep the uplink cables within 0.8 m or speed drops. It is bus-powered: up to 2.4 A from a USB-C host, 1.8 A from a USB-A host (which needs a USB-A to C cable, not included), enough for a keyboard, mouse and a bus-powered SSD; a spinning drive with its own power supply is safer. UGREEN also advises against 2.4 GHz wireless receivers on USB 3 switches because of interference, a USB 3 problem on any brand.</p>
+<h2>Software instead of hardware</h2>
+<p>Logitech's Easy-Switch (F1 to F3 on a paired keyboard) and Flow (cursor and clipboard across computers over the network, in Logi Options+) move a Logitech keyboard and mouse between machines with no box at all, but neither moves an SSD or any other USB device.</p>
+""",
+ "sources": [
+  ("UGREEN USB-C Switch (US store: price, FAQ, box contents)", "https://us.ugreen.com/products/ugreen-usbc-switch-2-port"),
+  ("UGREEN USB 2.0 switch", "https://us.ugreen.com/products/ugreen-usb-2-0-switch-2-in-4-output-usb-kvm-switch"),
+  ("Cable Matters 201160 manual", "https://www.cablematters.com/images/Product/files/201160/Manual/201160%204-Port%20USB-A%20&%20USB-C%20Switch%20with%20Remote%20Control.pdf"),
+  ("ATEN US3342", "https://www.aten.com/au/en/products/usb-solutions/docks-and-switches/us3342"),
+  ("ATEN US3324", "https://www.aten.com/global/en/products/usb-peripherals/peripheral-switches/us3324/"),
+  ("ATEN FAQ: switching with storage attached", "https://support.aten.com/eServiceCx/Common/FAQ/view.do?id=6650"),
+  ("IOGEAR GUS432", "https://www.iogear.com/product/GUS432"),
+  ("Sabrent USB-SW30", "https://sabrent.com/products/USB-SW30"),
+  ("Plugable USB3-SWITCH2", "https://www.plugable.com/products/usb3-switch2"),
+  ("Plugable KB: why the switch is not recommended for storage in use", "https://kb.plugable.com/usb-switch/why-is-this-switch-is-not-recommended-for-use-with-hard-drives,-flash-drives,-or-other-storage-devices%3F"),
+  ("Logitech: Easy-Switch and Flow", "https://support.logi.com/hc/en-us/articles/360023188134"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
