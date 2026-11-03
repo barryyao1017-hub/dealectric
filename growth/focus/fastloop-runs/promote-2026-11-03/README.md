@@ -32,7 +32,7 @@ disclosed link. Pages sent to research (one Fable agent each, `growth/focus/fast
 | /best-usb-switch-two-computers-keyboard-mouse-ssd (+ KVM page) | $40.99 CM691, one-to-one query match | outreach-usb-switch.md |
 | /power-station-to-run-a-refrigerator-for-24-hours (+ freezer, sump, furnace) | Elite 200 V2 with measured Wh; most-asked sizing question | outreach-fridge-power-station.md |
 
-Instruction set for Barry: `promote-tier3-instructions.md` (one task per post, filled up to Submit in the Agent Chrome).
+Instruction set for Barry: `promote-tier3-instructions.md` (21 tasks; nothing pre-filled yet: the vault login prompts for MacRumors and diysolarforum timed out unanswered, and the other venues need accounts Barry must create).
 
 ## Corrections the research forced (2026-11-03, commit 4dbceda)
 - **Blink Outdoor 4 page (G89):** the page said Blink sells no solar product for the Outdoor 4. Wrong: Blink's Solaris (released 2026, $39.99 at Best Buy and Amazon) clips onto the Outdoor 4 and 2K+, IP65 when connected, cannot be mounted separately, and shows no battery or charging status for an Outdoor 4 in the app (Blink's Solaris FAQ, read directly). Blink's Battery Extension Pack also fits the Outdoor 4, with no USB power while attached. Lead, table, title and sources rewritten; the generic panel's price corrected to $19.99 (EverExceed). Lesson for the loop: a "the maker sells nothing for this" claim needs the maker's current accessory list, not one support FAQ.
