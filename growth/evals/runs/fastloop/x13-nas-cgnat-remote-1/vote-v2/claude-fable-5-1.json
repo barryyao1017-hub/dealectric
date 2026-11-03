@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "Windows PC remote desktop vendor guide, not NAS or phone file access",
+   "evidence": "The RemoteAccessApp Agent on your PC keeps an outgoing connection to your account. When you open the PC from another PC",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "no text at all",
+   "evidence": "",
+   "quote_found": false
+  },
+  {
+   "n": 2,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "MikroTik router management product, not a NAS",
+   "evidence": "Onasis Tech Connect is a remote access and management platform for MikroTik routers.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "industrial IoT ZTNA vendor page",
+   "evidence": "Your equipment sits in a customer's factory. Their IT won't open ports for you.",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "SSH client vendor blog on reverse tunnels; no NAS pick, no phone photo access",
+   "evidence": "This post walks the four approaches that actually work, what each one costs you, and a worked example of each.",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "generic NAS-behind-CGNAT how-to naming Tailscale and QuickConnect, no NAS comparison or phone app guidance",
+   "evidence": "Common shared range 100.64.0.0/10 Best easy option Tailscale Self-hosted option VPS + WireGuard",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Tailscale on Starlink deployment piece, not about choosing a NAS",
+   "evidence": "Standard Starlink plans put you behind carrier-grade NAT (CGNAT) . Your dish shares a public IP address with many other customers",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "explains Synology QuickConnect relay behind CGNAT with specifics; single brand only",
+   "evidence": "QuickConnect is Synology's own remote access and it needs no port forwarding, which is why carrier-grade NAT does not stop it",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "security cameras on Starlink, not NAS",
+   "evidence": "Cameras that use the maker’s cloud app connect out to the maker’s servers, and that works behind Starlink’s CGNAT.",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "vendor blog on general Starlink remote access, no NAS product info",
+   "evidence": "WireGuard server on your router , the listening port is unreachable from the internet.",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "IoT device management vendor article",
+   "evidence": "We will be using SocketXP IoT Remote Device Management Platform to remotely connect to IoT devices.",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "no text at all",
+   "evidence": "",
+   "quote_found": false
+  }
+ ],
+ "verdict": "open",
+ "missing": "A cross-brand comparison of NAS built-in relay services (Synology QuickConnect, QNAP myQNAPcloud Link, UGREEN, TerraMaster TNAS.online, Asustor EZ-Connect) with their phone photo-backup apps, relay vs hole-punch speed behind Starlink, current prices and a direct pick.",
+ "why": "No major reviewer or authority appears; most results are remote-access vendor pages for PCs, routers, IoT and cameras. Only tunnelnet [7] answers the NAS question, and only for Synology with no testing; cloudzat [5] gives generic Tailscale advice without a NAS pick. A focused page comparing NAS brands' no-port-forward relays and phone apps with prices would stand out.",
+ "results": 12,
+ "quotes_found": 10,
+ "chars_shown": 14401,
+ "chars_full": 79973
+}

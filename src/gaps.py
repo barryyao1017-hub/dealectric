@@ -3763,4 +3763,371 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("9to5Toys: Jackery Explorer 1000 v2", "https://9to5toys.com/2026/09/29/jackery-1070wh-explorer-1000-v2-power-station/"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "nas-remote-access-behind-cgnat-starlink-no-port-forwarding", "question": "G63 (UGREEN funnel: NAS behind CGNAT/Starlink)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 with UGREENlink and Tailscale",
+                    "description": "2-bay Intel N100, 8 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Which NAS can you reach from your phone behind CGNAT (Starlink, 5G home internet) with no port forwarding (2026)?",
+ "h1": "Which NAS can you reach from your phone behind CGNAT (Starlink, 5G home internet) with no port forwarding? (2026)",
+ "desc": "How each NAS brand gets a phone to the NAS when the ISP uses carrier-grade NAT and no port can be forwarded: Synology QuickConnect and BeeStation, UGREEN's UGREENlink (relay with an IPv6 P2P mode), QNAP myQNAPcloud Link, Asustor EZ-Connect, TerraMaster TNAS.online, and Tailscale as the direct encrypted route, with what Starlink actually blocks, relay speed caveats, photo-backup apps, prices and the security trade-off of a public login page.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Every NAS brand has a relay for remote access behind CGNAT with no port forwarding; the proven one is Synology's QuickConnect (BeeStation Plus, or a DS223j at about $180–210 with Synology Photos). If someone in the house can paste a Docker Compose file, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 on 2026-11-03: UGREENlink reaches it from the phone app through UGREEN's relay, and Tailscale in Docker adds a direct path with no public login page.</p>
+<p>What to know: Starlink's router blocks every inbound port and hands out 100.64.0.0/10 addresses, a public IPv4 needs a Priority plan, and its IPv6 is inbound-blocked too, so DDNS and port forwarding are off the table on any NAS. Relays (QuickConnect, UGREENlink, myQNAPcloud Link, EZ-Connect) try a direct path first and fall back to the vendor's servers, which are bandwidth-limited (QNAP quotes 1–2 Mbps at peak; Synology and UGREEN publish no figure) and fine for photos and documents, poor for 4K video. UGREENlink's speed behind CGNAT has no published test and the UGREEN app's background photo backup has no independent review, which is why Synology is the safe answer; the DH2300 ($239.99) has UGREENlink but no Docker, so no Tailscale fallback. Tailscale's free plan covers 6 users (hole-punching with DERP relay fallback, end-to-end encrypted); it needs the app on every phone.</p>
+""",
+ "columns": [("relay", "Built-in remote access"), ("photos", "Phone photo backup"), ("direct", "Direct route"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"relay": "UGREENlink (ug.link ID): IPv6 P2P when the network allows, else relay through UGREEN servers; no speed test published; disable Cloud Connect to switch it off", "photos": "UGREEN NAS app: auto backup incl. Live Photos per UGREEN's blog; no independent reliability test", "direct": "Tailscale as a Docker Compose project (official image)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"relay": "UGREENlink (UGREEN points DH owners to it)", "photos": "Same app", "direct": "None on the box (no Docker); Tailscale on a Pi as a subnet router", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "BeeStation Plus (8 TB)", "url": "https://dongknows.com/synology-beestation-plus-review/",
+   "cells": {"relay": "QuickConnect built in; set up with a Synology account", "photos": "BeePhotos auto-sync", "direct": "None (appliance); single drive, no RAID", "warranty": "not read", "price": "$409.99 at launch; $593 on one undated Amazon listing (conflict)"}},
+  {"brand": "Synology", "model": "DS223j / DS225+", "url": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "cells": {"relay": "QuickConnect: direct/hole-punch first, relay fallback; Synology says the relay 'may be slower'", "photos": "Synology Photos (HEIC/HEVC kept; iOS backs up best when charging with notifications on)", "direct": "Tailscale official DSM package (quarterly updates)", "warranty": "2–3 years", "price": "DS223j $151–210, DS225+ $275–365 across 2026 listings"}},
+  {"brand": "QNAP", "model": "TS-233 / TS-264", "url": "https://support.myqnapcloud.com/faq/is-there-bandwidth-limite-when-i-use-myqnapcloud-remote-access-service",
+   "cells": {"relay": "myQNAPcloud Link: works on CGNAT; QNAP enforces bandwidth limits, 'usually 1–2 Mbps' at peak per its own article", "photos": "QuMagie", "direct": "QVPN; Tailscale in Container Station", "warranty": "2–3 years", "price": "TS-233 about $289; TS-264 $350–489 (undated)"}},
+  {"brand": "Asustor", "model": "Drivestor 2 Lite (AS1102TL)", "url": "https://www.asustor.com/online/online_help?id=13",
+   "cells": {"relay": "EZ-Connect: LAN/EZ-Router direct first, then a rate-limited relay; some apps do not run in relay mode", "photos": "AiFoto 3 (relay behaviour unconfirmed)", "direct": "VPN Server app", "warranty": "3 years", "price": "about $357 (June 2026 listing; currency unclear)"}},
+  {"brand": "Ubiquiti", "model": "UNAS 4", "url": "https://digital-runners.pages.dev/en/blog/unifi-drive-4-backup",
+   "cells": {"relay": "UniFi site access; reportedly needs a UniFi Cloud Gateway (not confirmed by Ubiquiti)", "photos": "iOS-only, flat folder (NASCompares)", "direct": "n/a", "warranty": "not read", "price": "about $379–408"}},
+ ],
+ "after": """
+<h2>What CGNAT actually blocks</h2>
+<p>Starlink residential routers do not support port forwarding, block all inbound ports and give the dish a 100.64.0.0/10 address shared with other customers; a public IPv4 is sold only with Local or Global Priority plans (no standalone price published). IPv6 is delegated, but the Starlink router has no inbound firewall settings, so a direct IPv6 path to the NAS needs your own router, which rules it out for most homes. T-Mobile 5G Home Internet behaves the same way. That leaves two kinds of answer: the vendor's relay, which the NAS dials out to, or an overlay network like Tailscale, which punches through NAT with UDP and falls back to its DERP relays while keeping the payload encrypted end to end.</p>
+<h2>Relay or Tailscale</h2>
+<p>A relay is zero-setup and gives the family the vendor's own apps, at the cost of a login page that is reachable from the internet (turn on 2FA and auto-block: DSM 7.4 enforces 2FA per user and blocks DSM, SSH, SMB, FTP and app logins after failed attempts; UGOS Pro offers OTP-app 2FA; neither lists passkeys) and of the vendor's bandwidth cap. Tailscale puts nothing on the public internet, runs at line speed when the hole-punch succeeds, and needs its app on each phone and a Compose project on the NAS (on UGOS: Docker app, official tailscale image, auth key). UGREEN's third-party guide recommends Tailscale over UGREENlink for anything confidential, because the relay traffic passes through UGREEN's infrastructure. Cloudflare Tunnel is not a fit for photo and video libraries under Cloudflare's terms.</p>
+<h2>What we could not verify</h2>
+<p>UGREEN's support articles on UGREENlink (671, 373) render only in a browser, so the P2P conditions table and any model list are unread; no outlet has measured UGREENlink throughput behind CGNAT; the UGREEN app's HEIC, Live Photo and background-upload behaviour has no independent test; and none of the NAS prices above were read live on 2026-11-03.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: UGREEN NAS P2P connection mode incl. IPv6 (article 671)", "https://support.ugnas.com/detail/article/en-US/671"),
+  ("UGREEN support: UGREENlink FAQ (article 373)", "https://support.ugnas.com/detail/article/en-US/373"),
+  ("UGREEN: back up iPhone photos to a UGREEN NAS", "https://ai.ugreen.com/blogs/how-to/backup-iphone-photos-to-ugreen-nas"),
+  ("UGREEN: NAS 2FA setup guide", "https://ai.ugreen.com/blogs/how-to/nas-2fa-setup-guide"),
+  ("needtoknowit: UGREEN NAS remote access guide", "https://www.needtoknowit.com.au/blog/ugreen-nas-remote-access-guide-australia.md"),
+  ("needtoknowit: NAS for Starlink (CGNAT explained)", "https://needtoknowit.com.au/blog/nas-for-starlink-australia-remote-access-backup-and-cgnat-explained.md"),
+  ("Starlink support: port forwarding and CGNAT", "https://starlink.com/gb/support/article/e3e6bb65-2bbc-1c8a-0c42-74b4776a64f8"),
+  ("Starlink support: public IP", "https://starlink.com/support/article/1192f3ef-2a17-31d9-261a-a59d215629f4"),
+  ("Tailscale: how NAT traversal works", "https://tailscale.com/blog/how-nat-traversal-works"),
+  ("Tailscale: free plans (6 users)", "https://tailscale.com/docs/account/manage-plans/free-plans-discounts.md"),
+  ("Tailscale on Synology", "https://tailscale.com/docs/integrations/synology"),
+  ("Synology DSM 7.4: external access (QuickConnect)", "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access"),
+  ("Synology DSM 7.4: sign-in protection (2FA, Auto Block)", "https://www.synology.com/en-us/dsm/7.4/software_spec/signin_protection"),
+  ("Dong Knows Tech: Synology BeeStation Plus review", "https://dongknows.com/synology-beestation-plus-review/"),
+  ("QNAP: is there a bandwidth limit on myQNAPcloud", "https://support.myqnapcloud.com/faq/is-there-bandwidth-limite-when-i-use-myqnapcloud-remote-access-service"),
+  ("QNAP: relay vs direct connection speeds", "https://www.qnap.com/fr-ca/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings"),
+  ("Asustor help: EZ-Connect", "https://www.asustor.com/online/online_help?id=13"),
+  ("Cloudflare: updated terms of service (content restrictions)", "https://blog.cloudflare.com/updated-tos/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "can-a-nas-replace-icloud-2tb-for-an-iphone-family", "question": "G64 (UGREEN funnel: NAS to replace iCloud+ 2 TB)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for family photos",
+                    "description": "2-bay Intel N100, 8 GB, Docker for Immich. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Can a NAS replace iCloud+ 2 TB for a family of iPhones and a Mac (2026)? What it takes over, what you lose, what it costs",
+ "h1": "Can a NAS replace iCloud+ 2 TB for a family of iPhones and a Mac? (2026)",
+ "desc": "What a NAS can and cannot take over from a $9.99-a-month iCloud+ 2 TB family plan: photo backup from four iPhones (UGREEN's app, Synology Photos, Immich), shared files and Time Machine yes; iPhone device backup and restore, iCloud Photos sync with Optimized Storage, Messages in iCloud, Private Relay and Apple's recovery no; with the UGREEN DH2300 and DXP2800, Synology DS225+ and BeeStation Plus compared, iOS background-upload realities, drive and off-site backup costs, and the honest five-year arithmetic.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Partly. A NAS can replace iCloud+ 2 TB for a family of iPhones for photo backup, shared files and the Mac's Time Machine, but not for iPhone device backup and restore, iCloud Photos sync with Optimized Storage, Messages in iCloud or Apple's recovery, and with an off-site copy it costs more than $599 over five years. If you want one as the family's own photo library, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03, and run Immich in Docker.</p>
+<p>What to know: iCloud+ 2 TB is $9.99 a month, shared by up to six people with separate spaces, and it is the only place an iPhone backs itself up to (a Finder backup on the Mac is the other). Every NAS photo app on iOS (UGREEN's, Synology Photos, Immich) depends on iOS granting background time; UGREEN's December 2025 app update fixed background backup stopping when the screen turned off and Live Photos sticking on iOS 26, so expect to open the app. The $239.99 <strong>DH2300</strong> ({buy:ugreen-nasync-dh2300}) is the cheapest entry with UGREEN's app and Time Machine but no Docker, so no Immich. For a non-technical Apple family Synology's BeeStation Plus (about $370–400, 8 TB, BeePhotos, no setup, no RAID) or a DS225+ with Synology Photos and Drive's on-demand Mac sync is the more polished route. Five years: iCloud $599; a NAS with two 4 TB drives ($130–230 each in 2026's rising market) plus Backblaze B2 for 2 TB ($6.95 per TB a month, about $834) runs $1,300–1,700; skip the off-site copy and the NAS is cheaper, and a fire or theft takes everything.</p>
+""",
+ "columns": [("photos", "iPhone photo backup"), ("mac", "Mac and files"), ("offsite", "Off-site backup"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"photos": "UGREEN NAS app (HEIC and Live Photos kept per UGREEN's blog) or Immich in Docker (faces, map, iCloud-aware 'free up space')", "mac": "SMB, Time Machine (UGOS Pro 1.9+, macOS 12+); sync client without on-demand files", "offsite": "Docker tools (e.g. to Backblaze B2); UGOS's own cloud targets not confirmed", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"photos": "UGREEN NAS app only; AI album per UGREEN, per-model detail unverified", "mac": "SMB, Time Machine", "offsite": "rsync targets; no Docker", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "BeeStation Plus (8 TB)", "url": "https://synology.com/en-us/store/BST170-8T",
+   "cells": {"photos": "BeePhotos: faces, objects, map, shared albums; QuickConnect built in", "mac": "BeeFiles; no Docker, single drive (about 6.98 TB usable), no RAID", "offsite": "BeeProtect $119.99 a year after a 3-month trial", "warranty": "3 years", "price": "$369.95 RRP; 'around $400' (TechRadar, Aug 2025); not read live"}},
+  {"brand": "Synology", "model": "DS225+ / DS224+", "url": "https://www.synology.com/en-us/dsm/feature/photos",
+   "cells": {"photos": "Synology Photos: faces (objects need 4 GB RAM), background and 'Focused' backup, shared albums", "mac": "Synology Drive with on-demand sync (placeholders, macOS 12.3+); Time Machine", "offsite": "Hyper Backup to Backblaze B2 and others", "warranty": "3 years", "price": "DS225+ $339.99–364.99 (Walmart/Newegg, early Nov 2026)"}},
+ ],
+ "after": """
+<h2>What iCloud+ does that no NAS does</h2>
+<ul>
+<li><strong>iPhone backup and restore:</strong> iCloud backs each phone up daily while charging, locked and on Wi-Fi, and a new phone restores from it. A NAS app backs up photos, videos and Files-app items only; the nearest NAS equivalent is a Finder backup on the Mac copied to the NAS.</li>
+<li><strong>Photos sync with Optimized Storage:</strong> iCloud keeps full-resolution originals in the cloud and small versions on the phone; with a NAS the originals are on the NAS and the phone's own storage still fills, unless you use Immich's "free up space" (which deletes locally and, with iCloud sync on, from iCloud too).</li>
+<li><strong>Everything else in the plan:</strong> Messages in iCloud, Shared Photo Library, Hide My Email, Private Relay, custom email domain, HomeKit Secure Video, and Apple-handled recovery.</li>
+</ul>
+<h2>What a NAS takes over well</h2>
+<p>A per-person photo and video archive from four phones (each app uploads new items over Wi-Fi in the background when iOS allows), shared folders for the family, the Mac's Time Machine over SMB, and a library larger than 2 TB without a bigger subscription. Immich on the DXP2800 is the closest thing to a self-hosted Photos app (faces, map, albums, sharing); Synology Photos and BeePhotos are the polished appliance routes; UGREEN's own app covers backup and browsing with fewer frills.</p>
+<h2>The arithmetic</h2>
+<p>iCloud+ 2 TB: $9.99 × 60 = $599 over five years, tax extra. DH2300 with two 4 TB drives: $240 + $260–460; DXP2800: $390 + $260–460; add Backblaze B2 for 2 TB at $6.95 per TB a month (about $834 over five years) for the off-site copy iCloud gives you by default, and the NAS lands at $1,300–1,700. A BeeStation Plus with BeeProtect is about $970–1,000 and is unmirrored. Drive prices rose sharply from late 2025 (IronWolf 4 TB from about $94 to $132 by January 2026; Synology's own 4 TB at about $229), so price them the week you buy. Power is small change: the DH2300 draws 3–14 W, the DXP2800 5–16 W.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("Apple: iCloud+ plans and pricing", "https://support.apple.com/en-us/108047"),
+  ("Apple: iCloud+", "https://www.apple.com/icloud/"),
+  ("Apple: iCloud Backup and iCloud Photos", "https://support.apple.com/en-us/108306"),
+  ("UGREEN NAS app on the App Store (version history)", "https://apps.apple.com/uy/app/ugreen-nas/id6458647408"),
+  ("UGREEN: back up iPhone photos to a UGREEN NAS", "https://ai.ugreen.com/blogs/how-to/backup-iphone-photos-to-ugreen-nas"),
+  ("UGREEN: file sync client", "https://ai.ugreen.com/blogs/how-to/ugreen-nas-file-sync"),
+  ("MacMyths: back up a Mac to a UGREEN NAS (Time Machine requirements)", "https://macmyths.com/how-to-back-up-a-computer-to-a-ugreen-nas/"),
+  ("Immich docs: mobile backup", "https://docs.immich.app/features/mobile-backup/"),
+  ("Immich docs: mobile app (iCloud and free up space)", "https://docs.immich.app/features/mobile-app/"),
+  ("Synology Photos", "https://www.synology.com/en-us/dsm/feature/photos"),
+  ("Synology KB: on-demand sync", "https://kb.synology.com/en-my/DSM/tutorial/What_is_On-demand_Sync"),
+  ("Synology store: BeeStation Plus", "https://synology.com/en-us/store/BST170-8T"),
+  ("TechRadar: Synology BeeStation Plus review", "https://www.techradar.com/pro/synology-beestation-plus-nas-review"),
+  ("Backblaze B2 pricing", "https://www.backblaze.com/cloud-storage/pricing"),
+  ("NASCompares: HDD/SSD price situation 2026", "https://nascompares.com/news/hdd-ssd-price-situation-worse-than-we-thought-2026/"),
+  ("NASCompares: backing up an iPhone to a NAS", "https://nascompares.com/answer/how-to-back-up-your-iphone-ipad-directly-to-a-nas"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "can-a-portable-power-station-charge-an-ev-in-an-emergency", "question": "G67 (power funnel: power station to charge an EV a few miles)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, a few EV miles",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W pure sine.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Can a portable power station charge an EV enough to get home in an emergency (2026)? Miles per station, and the grounding catch",
+ "h1": "Can a portable power station charge an EV enough to get home in an emergency? (2026)",
+ "desc": "What a 1–3.5 kWh portable power station really adds to an EV through a Level 1 cable: 3–8 miles for a car and 2–5 for a truck in one to two hours, after charger losses, if the EVSE accepts a floating-neutral inverter; per-station estimates for the BLUETTI Elite 300, Elite 200 V2, AC200L, AC180 and ALLPOWERS R4000, S2000 Pro, the one measured test, why bonding plugs are not recommended, roadside charging trucks, and the EcoFlow and Anker units sold for EV charging.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Barely. A portable power station can charge an EV in an emergency by a few miles: a 2–3 kWh unit through the car's 120 V Level 1 cable adds about 3–7 miles to a car (2–4 to a truck) in one to two hours, and only if the charge cable accepts the station's ungrounded output. Call roadside assistance first. If you want a station for this and for home backup, buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: about 7 miles for a 3.5 mi/kWh car in under two hours.</p>
+<p>What to know: a Level 1 cable draws 1.44 kW at 12 A (1.92 kW at 16 A) and only 75–90 % reaches the pack at that rate, so 2 kWh in the station is about 1.5 kWh in the car; InsideEVs measured a 2 kWh EcoFlow Delta Max putting 1.4 kWh into a Model Y for about 7 miles in just under an hour. Many EVSEs, Tesla's Mobile Connector among them, refuse a supply with no neutral-to-ground bond, which BLUETTI's stations lack; owners fix it with a bonding plug, which Tesla's manual and electricians advise against, so test your cable before you need it. No BLUETTI, ALLPOWERS or Tenergy station is sold for EV charging; EcoFlow's DELTA Pro 3 ($2,799) with its X-Stream adapter and Anker's SOLIX F3800 (240 V NEMA 14-50, EV mode) are, and we do not carry them. AAA's mobile charging trucks add 10–14 miles in 30 minutes where offered.</p>
+""",
+ "columns": [("wh", "Capacity (usable)"), ("pack", "Into the pack"), ("car", "Car miles (3.5 mi/kWh)"), ("truck", "Truck miles (2 mi/kWh)"), ("time", "Time at 12 A / 16 A"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh (about 2,560)", "pack": "about 2.05 kWh", "car": "about 7", "truck": "about 4", "time": "1 h 47 / 1 h 20", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh (about 2,940); 45 kg", "pack": "about 2.35 kWh", "car": "about 8", "truck": "about 4.7", "time": "2 h / 1 h 32", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured)", "pack": "about 1.5 kWh", "car": "about 5", "truck": "about 3", "time": "1 h 20 / 1 h", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (about 1,740)", "pack": "about 1.4 kWh", "car": "about 5", "truck": "about 3", "time": "1 h 13 / 54 min", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 1,230)", "pack": "about 1 kWh", "car": "about 3.5", "truck": "about 2", "time": "51 / 39 min", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030); 1,800 W, so 12 A only", "pack": "about 0.8 kWh", "car": "about 2.7", "truck": "about 1.6", "time": "41 min", "warranty": "5 years"}},
+  {"brand": "EcoFlow", "model": "DELTA Pro 3 (+ EV X-Stream adapter)", "url": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "cells": {"wh": "4,096 Wh", "pack": "about 2.8 kWh", "car": "about 10", "truck": "about 5.5", "time": "Level 2 with the $99 adapter", "warranty": "5 years", "price": "$2,799 (2026-11-03)"}},
+  {"brand": "Anker", "model": "SOLIX F3800", "url": "https://www.ankersolix.com/products/f3800",
+   "cells": {"wh": "3,840 Wh", "pack": "about 2.6 kWh", "car": "about 9", "truck": "about 5", "time": "Level 2: NEMA 14-50 at 240 V, EV mode under 25 A", "warranty": "not read", "price": "about $2,599 (retailer snapshots, undated)"}},
+ ],
+ "after": """
+<h2>The arithmetic</h2>
+<p>At 120 V and 12 A the cable draws 1.44 kW; the onboard charger returns about 80 % of it at that rate (75 % at 8 A, per the studies Recurrent cites; a Volt measured 89 % at Level 1, a Zoe lost 24 % on a household socket), so figure 20 % lost. Usable station energy is the measured discharge where one exists (Elite 200 V2 1,910 Wh) or 85 % of rated. A Model Y Long Range is 4.0 mi/kWh on the EPA cycle, so the table's 3.5 mi/kWh is a cold-weather or highway figure; the F-150 Lightning is about 2.1 mi/kWh. Run the AC180 at 12 A (its inverter is 1,800 W); every other unit here sustains 1.92 kW. None of our stations has published thermal-derating data for an hour at 1.4–1.9 kW; the Delta Max in the measured test hit 51 °C and refused to recharge until it cooled.</p>
+<h2>The grounding catch</h2>
+<p>Power-station inverters usually leave neutral floating, and an EVSE that checks for a ground reports a fault and refuses. Reports split by cable: a Tesla charger on a Delta Max threw "needs a grounded power source" until a bonding plug was fitted (then about 3 miles in an hour); the same Mobile Connector worked on a Rivian's ungrounded outlet in another report, while Rivian's own cable refused; InsideEVs' test ran with no error. A neutral-ground bonding plug makes the fault go away but creates a second bond if the source is already bonded, and Tesla's manual says to plug straight into a wall outlet; we do not recommend one. BLUETTI's technical team has said its stations do not bond neutral to ground. Test your own cable on the station in the driveway, with the car above 20 %, before you count on it.</p>
+<h2>What to do instead</h2>
+<p>AAA's mobile EV charging trucks (Level 2, about 10–14 miles in up to 30 minutes, free to members) exist in a list of cities, not nationwide; a flatbed to the nearest charger is the fallback everywhere. If you want a station anyway, buy it for home backup and camping and keep "a few miles" as a bonus, not the reason: a 3 kWh station is a wall of weight (Elite 300 about 26 kg, R4000 45 kg) for 7–8 miles.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("InsideEVs: how much EV range a portable power station adds (Delta Max test)", "https://insideevs.com/news/606522/portable-energy-storage-test-how-much-ev-range-you-can-replenish/"),
+  ("Recurrent: why your battery doesn't get all the energy you pay for", "https://www.recurrentauto.com/research/why-doesnt-your-battery-get-all-the-energy-you-pay-for"),
+  ("InsideEVs: EV charger efficiency losses (ADAC)", "https://insideevs.com/features/711659/ev-charger-efficiency-losses/"),
+  ("fueleconomy.gov: 2026 Tesla Model Y", "https://fueleconomy.gov/feg/Find.do?action=sbs&id=49743"),
+  ("Freshly Charged: charging a Tesla from an EcoFlow (ground error, bonding plug)", "https://freshlycharged.com/how-to-charge-your-tesla-with-the-ecoflow-portable-generator/"),
+  ("Rivian Forums: portable charger vs ungrounded outlet", "https://rivianforums.com/forum/threads/rivian-portable-charger-cannot-be-powered-by-the-rivian.8788/"),
+  ("Lectron: can you charge a Tesla with a generator", "https://ev-lectron.com/en-ca/blogs/blog/can-you-charge-a-tesla-with-a-generator"),
+  ("Bad Wolf: generator bonding plugs", "https://badwolfusa.com/generator-bonding-plugs-what-they-do-how-they-work-and-when-diy-homeowners-need-one/"),
+  ("SlashGear: charging a Tesla with a generator", "https://www.slashgear.com/1834673/tesla-charge-with-generator/"),
+  ("BLUETTI community: neutral bonding", "https://community.bluettipower.com/t/switching-neutrals/4192"),
+  ("BLUETTI EV charger adapter (charges the station, AC300/AC500)", "https://www.bluettipower.com/products/ev-charger-adapter"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+  ("Anker SOLIX F3800", "https://www.ankersolix.com/products/f3800"),
+  ("AAA Oregon: mobile EV charging", "https://info.oregon.aaa.com/its-electrifying-aaa-expands-ev-services/"),
+  ("SparkCharge Roadie", "https://www.sparkcharge.io/roadie-portable"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-for-a-cpap-week-of-camping", "question": "G65 (power funnel: power station for an AirSense 11 CPAP for a week)", "lead_first": True,
+ "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
+                    "title": "BLUETTI AC180, a week of CPAP nights",
+                    "description": "1,152 Wh LiFePO4 (about 1,000 measured), 12 V port, 500 W solar.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
+ "title": "Which portable power station runs a ResMed AirSense 11 CPAP for a week of camping (2026)? Nights per charge, DC vs AC, humidifier on or off",
+ "h1": "Which portable power station runs a ResMed AirSense 11 CPAP for a week of camping? (2026)",
+ "desc": "Running a ResMed AirSense 11 off a portable power station for seven nights: the ResMed 12 V DC converter (part 39231) versus the AC adapter through the inverter, what the humidifier and heated tube cost per night, nights per charge for the BLUETTI AC180, Elite 200 V2, Elite 30 V2 and ALLPOWERS P1800, S2000 Pro, R600 and Tenergy T320 from measured capacities, ECO-mode cut-offs, solar refill, and the dedicated CPAP batteries that win for flying and backpacking.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}), $449 in our 2026-11-03 check (BLUETTI's page lists $499 and a late-November restock): the portable power station for a CPAP for a week of camping, about 985–1,005 Wh measured, which is nine nights of an AirSense 11 with the humidifier off through ResMed's 12 V DC converter (about 100 Wh a night), or two nights with the humidifier and heated tube on through the AC outlet. Turn ECO mode off, or the station may shut the outlet overnight.</p>
+<p>What to know: ResMed rates the AirSense 11 at 56 W typical and 73 W peak, but a dry night at a typical pressure draws about 10–18 W (80–145 Wh), while the humidifier and ClimateLine tube add 30–50 W, so a humid night through the inverter (plus the station's own 15 W idle draw for 8 hours) is roughly 450–500 Wh; no outlet has published an overnight meter test, so these are planning figures. The DC converter (ResMed part 39231, $95 at DirectHomeMedical) runs the machine with humidifier and tube from the 12 V car port and skips the inverter's idle loss, which is why "dry via DC" gets 9 nights and "dry via AC" about 4. For humidifier-on all week, the <strong>Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}) ($899, 1,910 Wh measured) does 4–5 nights alone and a week with a 200 W panel in good sun. The 288–300 Wh units (Elite 30 V2, R600, T320) are two dry nights. Flying? A Medistrom Pilot-24 Lite (95 Wh, carry-on legal) is the answer, not a station.</p>
+""",
+ "columns": [("wh", "Capacity (measured usable)"), ("dc", "12 V port"), ("dry", "Dry nights via DC (100 Wh)"), ("humid", "Humid nights via AC (450 Wh)"), ("weight", "Weight"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (985–1,005)", "dc": "10 A / 120 W", "dry": "9", "humid": "2", "weight": "16 kg", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910–2,065)", "dc": "10 A / 120 W", "dry": "19", "humid": "4–5", "weight": "24.2 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 920 at 350 W)", "dc": "10 A / 120 W", "dry": "9", "humid": "2", "weight": "13 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (unmeasured)", "dc": "120 W", "dry": "about 8", "humid": "about 2", "weight": "13 kg; pre-order, ships Dec 7", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh (244 via DC, 231 via AC measured)", "dc": "10 A / 120 W", "dry": "2", "humid": "under 1", "weight": "4.3 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh (225–263)", "dc": "10 A / 120 W", "dry": "2", "humid": "under 1", "weight": "5.6 kg", "warranty": "5 years"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh (unmeasured)", "dc": "120 W", "dry": "about 2", "humid": "under 1", "weight": "3.7 kg (lightest here)", "warranty": "2 years"}},
+  {"brand": "Medistrom", "model": "Pilot-24 Lite (CPAP battery)", "url": "https://1800cpap.com/products/medistrom-pilot-24-lite-cpap-battery",
+   "cells": {"wh": "about 95 Wh", "dc": "24 V direct (AirSense 11 cable kit sold separately)", "dry": "1–2 (maker claim)", "humid": "n/a", "weight": "560 g; carry-on legal", "warranty": "not read", "price": "$339 (sold out at 1800cpap)"}},
+  {"brand": "EXP", "model": "EXP96 Pro with AirSense 11 cord", "url": "https://thesolarstore.com/products/exp96pro-apex-battery-with-cpap-dc-cord-included",
+   "cells": {"wh": "307 Wh", "dc": "24 V direct", "dry": "about 2.6 at 100 Wh (maker claims 4–6)", "humid": "n/a", "weight": "2.9 kg", "warranty": "not read", "price": "$499"}},
+  {"brand": "Jackery", "model": "Explorer 500 v2", "url": "https://9to5toys.com/2026/06/11/jackery-512wh-explorer-500-v2-power-station-319/",
+   "cells": {"wh": "512 Wh", "dc": "car port", "dry": "about 4", "humid": "about 1", "weight": "5.7 kg", "warranty": "not read", "price": "$449 list; $319–339 deals"}},
+ ],
+ "after": """
+<h2>DC converter or AC adapter</h2>
+<p>ResMed's AirSense 11 DC/DC converter (part 39231) takes 12 V or 24 V in and feeds the machine's 24 V input with the humidifier and ClimateLine tube working, shutting off if the supply sags; it draws up to about 8 A from a 12 V car port at the machine's 73 W peak, inside every station's 10 A / 120 W port. One forum measurement put an AC adapter plus inverter at 64–70 % efficient and a DC converter at 72–78 %, a modest gap; the bigger saving is the inverter's standby draw, measured at 15 W on the AC180 and 19 W on the Elite 30 V2, which over an 8-hour night is 120–150 Wh, more than the dry machine itself. The AirSense 11 has no USB-C input. Use ResMed's converter, not a generic one: sellers warn a non-ResMed converter can damage the machine and void its warranty.</p>
+<h2>ECO mode and the overnight cut-off</h2>
+<p>BLUETTI's ECO setting switches outputs off after hours of low load (thresholds of roughly 10–50 W on other models), and owners report CPAPs stopping in the night. Turn ECO off before bed; with it off the station idles down slowly even with nothing plugged in, which is the price of a reliable night.</p>
+<h2>Refilling during the week</h2>
+<p>A 100 W panel returns about 300–375 Wh on a clear day (less than 2 peak-sun hours in a November valley cuts that by half or more), a 200 W panel 600–750 Wh, roughly a humidifier-on night. Mind the input windows: the Elite 30 V2 accepts 12–28 V and the T320 5–24 V, which rules out most 100 W-plus folding panels (BLUETTI's own 100 W kit, $489.99, fits the Elite 30 V2). Car charging adds about 100 Wh an hour on the AC180 (a full charge in 10–13 hours) and 96 W on the Elite 200 V2. For air travel the FAA allows 100 Wh batteries freely and 101–160 Wh with airline approval; every station here is over 160 Wh and stays home.</p>
+""",
+ "sources": [
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("ResMed AirSense 11 user guide (power supply, rated consumption)", "https://manualslib.mx/manual/808713/Resmed-Airsense11.html?page=31"),
+  ("ResMed shop: AirSense 11 DC/DC converter (part 39231)", "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231"),
+  ("DirectHomeMedical: AirSense 11 12 V DC converter ($95)", "https://directhomemedical.com/products/12-volt-dc-power-converter-for-airsense-11-series-cpap-aircurve-11-series-bilevel-machines"),
+  ("Sleep Backup Lab: CPAP battery sizing guide", "https://www.sleepbackuplab.com/blog/cpap-battery-sizing-guide"),
+  ("Portable Power Nerd: battery backup for the AirSense 11", "https://portablepowernerd.com/blog/best-battery-backup-for-resmed-airsense-11/"),
+  ("CPAPtalk: DC converter vs inverter efficiency", "https://www.cpaptalk.com/viewtopic.php?start=15&t=182977"),
+  ("The CPAP Shop: AirSense 11 power guide", "https://www.thecpapshop.com/blog/the-airsense-11-power-guide/"),
+  ("offgridvolt: BLUETTI AC180 review (idle draw, usable Wh)", "https://offgridvolt.com/bluetti-ac180-review-2026/"),
+  ("The Technology Man: BLUETTI Elite 30 V2 (AC and DC drain)", "https://thetechnologyman.com/this-189-bluetti-elite-30-v2-power-station-is-better-than-i-expected/"),
+  ("StorageReview: BLUETTI Elite 200 V2 review", "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review"),
+  ("StorageReview: ALLPOWERS R600 review", "https://www.storagereview.com/review/allpowers-r600-portable-power-station-review"),
+  ("BLUETTI community: ECO mode cutting a CPAP", "https://community.bluettipower.com/t/problem-i-think-with-new-eb3a-brand-new/32307"),
+  ("FAA PackSafe: lithium batteries", "https://www.faa.gov/hazmat/packsafe/lithium-batteries"),
+  ("1800CPAP: Medistrom Pilot-24 Lite", "https://1800cpap.com/products/medistrom-pilot-24-lite-cpap-battery"),
+  ("The Solar Store: EXP96 Pro with AirSense 11 cord", "https://thesolarstore.com/products/exp96pro-apex-battery-with-cpap-dc-cord-included"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "nas-that-runs-home-assistant-os-vm-zigbee", "question": "G68 (UGREEN funnel: NAS running Home Assistant OS as a VM)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for a Home Assistant VM",
+                    "description": "2-bay Intel N100, 8 GB, UGOS Virtual Machines app. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Which NAS runs Home Assistant OS as a virtual machine with a Zigbee stick (2026)? UGOS, Synology VMM, QNAP, and the passthrough problem",
+ "h1": "Which NAS runs Home Assistant OS as a virtual machine with a Zigbee stick? (2026)",
+ "desc": "Running the full Home Assistant OS (with add-ons) as a VM on a NAS: what UGOS Pro's Virtual Machines app does on the UGREEN DXP2800 and DXP4800 Plus (KVM, qcow2/vdi/vmdk import, UEFI, 2 vCPU/4 GB), the conflicting evidence on USB Zigbee passthrough, Synology Virtual Machine Manager's known flakiness, QNAP, Asustor and TerraMaster, the wired network coordinator (SMLIGHT SLZB-06) that makes passthrough unnecessary, HAOS requirements, and the Home Assistant Green that is the appliance answer.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03, and run Home Assistant OS as a virtual machine in UGOS Pro's Virtual Machines app (KVM; import the qcow2, UEFI boot, 2 vCPU, 4 GB, bridged network, auto-start), but connect the Zigbee radio over the network with a wired SMLIGHT SLZB-06 rather than a USB stick: UGREEN's own hardware-passthrough article reportedly says USB passthrough is not supported, two guides show it working, and owners report sticks that fail, so do not buy the NAS on the strength of a USB stick.</p>
+<p>What to know: if you only want Home Assistant, a Home Assistant Green ($199) plus a Connect ZBT-2 ($49) is a $248 appliance with no passthrough risk, and the NAS is then for storage and Docker. HAOS needs 2 vCPU, 2 GB (4 recommended), 32 GB and UEFI; the ARM DH2300 has no VM app. Synology's Virtual Machine Manager (Plus models, Btrfs, more than 2 GB RAM) passes USB through but owners report sticks vanishing after reboots and missing USB-serial drivers; QNAP's Virtualization Station works for some and drops sticks for others; TerraMaster says USB passthrough to VMs is unsupported; Asustor's VirtualBox needs a replug after reboots. The Container install (Docker, no add-on store) is the fallback on any Docker NAS: one DXP2800 owner runs a ConBee II that way with Zigbee2MQTT as a separate container.</p>
+""",
+ "columns": [("vm", "VM app and HAOS"), ("usb", "USB Zigbee passthrough"), ("ram", "RAM"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"vm": "Virtual Machines app (libvirt/KVM): .img/.qcow2/.vdi/.vmdk import, UEFI, auto-start; HAOS shown running by raspberry.tips (Oct 2026)", "usb": "Conflicting: UGREEN article 911 reportedly 'not currently supported' (UGOS 1.19+); a sponsored DXP4800 GT guide shows a Sonoff stick working; a DXP4800 Plus owner's Z-Wave stick failed on HAOS 16.3 and worked on 17.0; ConBee II detected but unusable in two reports", "ram": "8 GB (16 GB)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"vm": "Same app; more cores and up to 64 GB for several VMs", "usb": "Same uncertainty", "ram": "8 GB (64 GB)", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+ / DS925+", "url": "https://www.synology.com/en-us/dsm/7.0/software_spec/vmm",
+   "cells": {"vm": "Virtual Machine Manager (needs >2 GB RAM, Btrfs); qcow2 import per community guides; 2 recommended instances on the DS225+", "usb": "Supported, flaky: a DS224+ runs Sonoff and Z-Wave sticks via a powered hub; a DS920+ loses its ConBee path at random; USB-serial modules reported missing on DSM 7; changes only with the VM off", "ram": "2 GB (6 GB) / 4 GB ECC (32 GB)", "warranty": "3 years", "price": "DS225+ $272–365, DS925+ $512–770 (2025–26 snapshots)"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://community.home-assistant.io/t/how-to-install-hass-io-into-qnap-virtualisation-station/122607",
+   "cells": {"vm": "Virtualization Station imports HAOS", "usb": "Mixed: works on a TS-464; CC2531/ConBee II disconnect seconds after attach on a TS-473; drops during VM backups", "ram": "8 GB", "warranty": "3 years", "price": "about $476 (undated)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://community.home-assistant.io/t/home-assistant-os-asustor-nas/917331",
+   "cells": {"vm": "VirtualBox from App Central", "usb": "Filters; one owner must replug after each reboot", "ram": "4 GB (16 GB)", "warranty": "3 years", "price": "not read"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus / F4-425 Plus", "url": "https://forum.terra-master.com/en/viewtopic.php?p=56455",
+   "cells": {"vm": "TOS 6/7 VM", "usb": "Unsupported per TerraMaster support; dongle visible in lsusb but cannot be passed", "ram": "8–16 GB", "warranty": "2 years", "price": "not read"}},
+  {"brand": "Home Assistant", "model": "Green + Connect ZBT-2", "url": "https://www.home-assistant.io/green/",
+   "cells": {"vm": "HAOS natively (4 GB, 32 GB eMMC); add-ons included", "usb": "Plug the ZBT-2 in: no hypervisor", "ram": "4 GB", "warranty": "not read", "price": "$199 + $49 (2026-11-03)"}},
+  {"brand": "Mini PC", "model": "N100 (16 GB / 512 GB) with HAOS or Proxmox", "url": "https://www.home-assistant.io/installation/linux/",
+   "cells": {"vm": "HAOS bare-metal or under Proxmox", "usb": "Direct (bare-metal) or Proxmox passthrough; one DXP2800-under-Proxmox owner still could not pass an eQ-3 stick", "ram": "16 GB", "warranty": "varies", "price": "about $300–340 (2026 listings)"}},
+ ],
+ "after": """
+<h2>The passthrough evidence, laid out</h2>
+<p>For: SmartHomeJunkie (July 2026, UGREEN-sponsored, DXP4800 GT) added a SONOFF Zigbee Dongle Plus under VM Settings → Advanced → Add USB Device and got a working ZHA network; raspberry.tips (October 2026, DXP2800) shows a USB controller toggle and device list but never completed a Zigbee test; UGREEN's 2025–2026 update plan lists "supported USB passthrough for virtual machine" as released. Against: two search indexes quote UGREEN's Hardware Passthrough article (911, firmware 1.19.0.0093+) as saying USB port passthrough is "not currently supported"; a UGREEN representative said the same in January 2025; a DXP4800 Plus owner's Z-Wave stick failed on HAOS 16.3 and worked after HAOS 17.0 with UGREEN blaming the image; ConBee II sticks were detected but had no usable serial port in a UGREEN VM in two reports; and the old virsh attach-device workaround stopped working for several owners. Nobody has published a completed Zigbee-stick setup on a DXP2800 or DXP4800 Plus on current firmware. UGREEN's support pages render only in a browser, so read article 911 yourself before relying on a stick.</p>
+<h2>Why a wired coordinator settles it</h2>
+<p>A network Zigbee coordinator such as the SMLIGHT SLZB-06 (Ethernet or PoE, Home Assistant integration, auto-discovered by ZHA; about $40–75 across EU, UK and US listings) puts the radio on the LAN, so the VM talks to it over TCP and the hypervisor's USB layer never matters; ZHA's docs warn against serial-over-IP across Wi-Fi or VPN, so wire it. The same trick works on Synology, QNAP and any Docker host, and it survives NAS reboots and firmware updates better than a passed-through stick.</p>
+<h2>UGOS VM facts and one side effect</h2>
+<p>The VM app is x86-only (DXP and iDX series), imports .img, .qcow2, .vdi and .vmdk (extract .xz first), needs UEFI set or you get a black screen and the bridge set to the live Ethernet port or you get no IP, and owners resize the HAOS disk from 32 GB to 128 GB before first boot. Installing the VM app adds libvirt dnsmasq listeners on port 53, which breaks a Pi-hole or AdGuard container on the same NAS until the VM app is removed or the container gets a macvlan address.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: hardware passthrough (article 911)", "https://support.ugnas.com/detail/article/en-US/911"),
+  ("raspberry.tips: Home Assistant on a UGREEN NAS (DXP2800 VM, Oct 2026)", "https://raspberry.tips/en/smart-home/home-assistant-ugreen-nas-setup"),
+  ("SmartHomeJunkie: HAOS as a VM on the UGREEN DXP4800 GT (sponsored)", "https://www.smarthomejunkie.net/installing-home-assistant-os-as-a-vm-on-the-ugreen-nas-dxp4800-gt/"),
+  ("Home Assistant community: UGREEN DXP2800, Home Assistant available", "https://community.home-assistant.io/t/ugreen-nas-dxp2800-home-assistant-available/715622"),
+  ("Home Assistant community: HA on a UGREEN DXP4800 Plus VM (Z-Wave stick)", "https://community.home-assistant.io/t/ha-on-ugreen-dxp4800-plus-vm/977510"),
+  ("ugreen-forum.de: UGOS Pro update plan 2025–2026", "https://ugreen-forum.de/blog/entry/6-ugos-pro-system-update-plan-2025-2026/"),
+  ("Pi-hole forum: VM app dnsmasq and port 53 on UGOS", "https://discourse.pi-hole.net/t/solution-pi-hole-v6-on-ugreen-nas-ugos-pro-port-53-conflict-with-dnsmasq/86004"),
+  ("Home Assistant: Linux/VM installation (requirements)", "https://www.home-assistant.io/installation/linux/"),
+  ("Home Assistant: installation methods (Container limits)", "https://www.home-assistant.io/installation/"),
+  ("Home Assistant: ZHA integration (network coordinators)", "https://www.home-assistant.io/integrations/zha/"),
+  ("Home Assistant Green", "https://www.home-assistant.io/green/"),
+  ("Home Assistant Connect ZBT-2", "https://www.home-assistant.io/connect/zbt-2/"),
+  ("SMLIGHT SLZB-06", "https://smlight.tech/global/slzb-06"),
+  ("Synology DSM: Virtual Machine Manager specification", "https://www.synology.com/en-us/dsm/7.0/software_spec/vmm"),
+  ("Home Assistant community: Z-Stick not showing in a Synology VM", "https://community.home-assistant.io/t/z-stick-gen5-not-showing-in-hardware-in-ha-synology-vm/706763"),
+  ("Home Assistant community: HAOS on a QNAP (Virtualization Station)", "https://community.home-assistant.io/t/how-to-install-hass-io-into-qnap-virtualisation-station/122607"),
+  ("Home Assistant community: HAOS on an Asustor NAS", "https://community.home-assistant.io/t/home-assistant-os-asustor-nas/917331"),
+  ("TerraMaster forum: USB passthrough to a VM", "https://forum.terra-master.com/en/viewtopic.php?p=56455"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-chest-freezer-for-3-days", "question": "G66 (power funnel: power station for a chest freezer for 3 days with solar)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, freezer backup",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W, 1,200 W solar input, 10 ms UPS.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Which portable power station keeps a chest freezer running for 3 days in an outage, and does solar help (2026)?",
+ "h1": "Which portable power station keeps a chest freezer running for 3 days in an outage, and does solar help? (2026)",
+ "desc": "The 72-hour arithmetic for a chest freezer on a portable power station: ENERGY STAR daily watt-hours by size, measured running watts and duty cycle, the station's own idle draw with the inverter on (about 19 W measured on the Elite 300), which units cover three days (AC200L plus a B300K; the Elite 300 for two days or three with a 400 W panel; ALLPOWERS R4000), what solar panels really yield under storm cloud, ECO-mode and UPS behaviour, EcoFlow, Anker, Jackery and Goal Zero for comparison, and when a dual-fuel generator wins.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: the portable power station to run a chest freezer for 3 days once you add a 350–400 W panel ($1,499 with BLUETTI's 350 W panel), because alone its 3,014.4 Wh covers about two days of a typical freezer (0.55–0.95 kWh a day) plus its own 19 W idle draw. For three days with no sun, pair the <strong>AC200L</strong> ({buy:bluetti-ac200l}) ($899) with a B300K expansion battery ($1,099, 2,764.8 Wh): 4.8 kWh with a day in hand.</p>
+<p>What to know: ENERGY STAR chest freezers use about 540 Wh a day at 5 cu ft, 580 at 10, 760 at 16 and 950 at 22 in the lab, and one owner's plug meter read 80–125 W running at a 38–40 % duty cycle, about 1.2 kWh a day for a 15.7 cu ft unit in a warm garage; a full, closed chest freezer holds its temperature about 48 hours on its own (Ready.gov), which is your margin, not your plan. The station's inverter must stay on for the thermostat, so its idle draw (19 W measured on the Elite 300, about 15 W on the AC180, 9–12 W reported on the AC200L, unknown on the ALLPOWERS R4000) costs 0.7–1.4 kWh over 72 hours; turn ECO mode off or the outlet shuts down while the compressor rests (it is on by default on the Elite 300). Solar in a storm slows the drain, it does not stop it: a 400 W panel nets a freezer day in sun (about 1.3–1.6 kWh) and a fifth of one under heavy cloud (10–25 % of rated), so 400 W is the realistic minimum and 200 W is not enough. For outages past three or four days, or a week of storm cloud, a dual-fuel generator (about $540–630 for 3,500 W) wins on energy and loses on noise, carbon monoxide and not being automatic.</p>
+""",
+ "columns": [("wh", "Capacity / continuous"), ("idle", "Idle with AC on"), ("days", "Freezer days alone (0.6 kWh/day)"), ("solar", "Solar input"), ("ups", "UPS"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh / 2,400 W", "idle": "about 19 W measured", "days": "about 2 (3 only at 0.45 kWh/day or less)", "solar": "1,200 W, 12–60 V; car about 100 W", "ups": "10 ms (8–9 measured)", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L (+ B300K)",
+   "cells": {"wh": "2,048 Wh alone; 4,812.8 Wh with one B300K ($1,099); 7,577.6 Wh with two / 2,400 W", "idle": "9–12 W reported (conflicting)", "days": "about 1.5 alone; 4–5 with a B300K", "solar": "1,200 W, 12–145 V", "ups": "20 ms", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh / 3,600 W; 45 kg", "idle": "not published", "days": "about 3 if idle is 20 W or less", "solar": "2,000 W MPPT, 12–60 V (spec pages conflict)", "ups": "15 ms", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured) / 2,600 W", "idle": "about 10–15 W (sources vary)", "days": "about 1.5–2", "solar": "1,000 W, 12–60 V; car 96 W", "ups": "≤15 ms", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030) / 1,800 W", "idle": "14–15 W (BLUETTI support)", "days": "about 1", "solar": "500 W, 12–60 V", "ups": "20 ms", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC / 2,400 W", "idle": "not published", "days": "about 1", "solar": "650–1,000 W (pages conflict)", "ups": "not verified", "warranty": "5 years"}},
+  {"brand": "EcoFlow", "model": "DELTA Pro 3", "url": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "cells": {"wh": "4,096 Wh / 4,000 W", "idle": "not read", "days": "about 3–4", "solar": "not shown", "ups": "not shown", "warranty": "5 years", "price": "$2,799 (2026-11-03), $0.68/Wh"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh / 2,400 W", "idle": "not read", "days": "about 1.5", "solar": "1,000 W", "ups": "<20 ms", "warranty": "5 years", "price": "$1,029 (2026-11-03), $0.50/Wh"}},
+  {"brand": "Anker", "model": "SOLIX F3800", "url": "https://www.ankersolix.com/products/f3800",
+   "cells": {"wh": "3,840 Wh / 6,000 W", "idle": "not read", "days": "about 3", "solar": "not read", "ups": "not read", "warranty": "not read", "price": "$1,899 April 2026 deal (expired); about $2,200 undated"}},
+  {"brand": "Goal Zero", "model": "Yeti 3000X", "url": "https://goalzero.com/products/goal-zero-yeti-3000x-portable-power-station",
+   "cells": {"wh": "3,032 Wh / 2,000 W", "idle": "not read", "days": "about 2.5", "solar": "600 W", "ups": "not read", "warranty": "not read", "price": "$2,999.95, no longer available"}},
+ ],
+ "after": """
+<h2>The arithmetic</h2>
+<p>Daily freezer energy from EPA's ENERGY STAR data (kWh a year ÷ 365): Arctic King 5.0 cu ft 537 Wh, Danby 10 cu ft 578 Wh, GE 15.7 cu ft 759 Wh, GE 21.7 cu ft 948 Wh; ENERGY STAR's average certified chest freezer is about 215 kWh a year, 590 Wh a day. Real homes run higher: a plug meter on a GE 15.7 cu ft read 125 W running at a 40 % duty cycle, about 1.2 kWh a day. Over 72 hours that is 1.65–2.85 kWh for the freezer (3.6 for the warm-garage case), plus the inverter's idle draw of 0.7–1.4 kWh, divided by about 90 % inverter efficiency. The Elite 300 delivered 2.67 kWh at its AC outlets before empty in StorageReview's test, which is why it is a two-day unit at 0.6 kWh a day and a three-day unit only for a small freezer in a cool room. Start surge is 500–1,200 W by the usual 3–5× rule (no measured figure found); every station here is rated 1,800 W or more continuous.</p>
+<h2>Solar, honestly</h2>
+<p>In full sun a 400 W folding panel delivers 260–320 W (ALLPOWERS' SP037 owners' figures), roughly 1.3–1.6 kWh over a day, which replaces a freezer day; a 200 W panel about half that. Under storm cloud panels give 10–25 % of rated (a Voltaic test saw 15 % "behind clouds" and nothing in heavy rain), so 400 W yields 0.2–0.5 kWh, a fifth to a half of a freezer day. Check the input window: the AC180 caps at 500 W, the Elite 200 V2 at 1,000 W, the Elite 300 and AC200L at 1,200 W. Car charging at about 100 W adds a tenth of a freezer day per hour of driving. BLUETTI bundles the Elite 300 with a 350 W panel for $1,499 and with two 200 W panels for $1,699 (2026-11-03).</p>
+<h2>Set it up before the storm</h2>
+<p>Leave the freezer plugged into the station and the station into the wall: the UPS switchover (8–9 ms measured on the Elite 300; 15–20 ms specified on the others) is far faster than a compressor notices, so it takes over with nobody home. Disable ECO mode (default on for the Elite 300; an AC180P owner's fridge went dark after two hours of the compressor resting) and keep the lid shut: a full freezer holds about 48 hours closed, a half-full one about 24 (USDA guidance), which stretches any of these stations past their battery alone. A 3,500 W dual-fuel generator ($540–630 undated) needs fuel, 20 feet from windows and a carbon-monoxide alarm, and it is what covers a week.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("BLUETTI AC200L", "https://www.bluettipower.com/products/ac200l"),
+  ("BLUETTI B300K expansion battery", "https://www.bluettipower.com/products/bluetti-b300k-expansion-battery"),
+  ("ENERGY STAR certified freezers dataset (EPA)", "https://data.energystar.gov/resource/8t9c-g3tn.json"),
+  ("ENERGY STAR: freezers", "https://www.energystar.gov/products/freezers"),
+  ("Modern Survival Blog: chest freezer in a power outage (plug-meter readings)", "https://modernsurvivalblog.com/survival-kitchen/chest-freezer-power-outage/"),
+  ("BLUETTI: how many watts does a freezer use", "https://www.bluettipower.com/blogs/knowledge/how-many-watts-does-a-freezer-use"),
+  ("Ready.gov: power outages (48-hour freezer hold)", "https://www.ready.gov/power-outages"),
+  ("The Technology Man: BLUETTI Elite 300 review (idle draw, 8.9 ms switchover)", "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/"),
+  ("StorageReview: BLUETTI Elite 300 review (2.67 kWh delivered)", "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box"),
+  ("BLUETTI Elite 300 manual (ECO default, car charging)", "https://www.manualslib.de/manual/1620676/Bluetti-Elite-300.html"),
+  ("BLUETTI AC300 manual (ECO threshold)", "https://www.manualslib.de/manual/856216/Bluetti-Ac300.html?page=17"),
+  ("BLUETTI community: AC180P shutting off on a fridge (ECO)", "https://community.bluettipower.com/t/problem-with-new-ac180p/28425/15"),
+  ("Voltaic Systems: solar performance in clouds and rain", "https://blog.voltaicsystems.com/solar-performance-clouds-rain/"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("Goal Zero Yeti 3000X", "https://goalzero.com/products/goal-zero-yeti-3000x-portable-power-station"),
+  ("Norwall: Westinghouse WGen3600DF", "https://norwall.com/products/Westinghouse-3600-Watt-Dual-Fuel-Electric-Start-Portable-Generator-WGen3600DF"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

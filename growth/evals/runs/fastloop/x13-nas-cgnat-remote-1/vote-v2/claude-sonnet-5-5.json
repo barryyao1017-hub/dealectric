@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "remote desktop to a PC, not NAS",
+   "evidence": "The RemoteAccessApp Agent on your PC keeps an outgoing connection to your account. When you open the PC from another PC, a browser or your phone",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "no text",
+   "evidence": "https://roze.to/",
+   "quote_found": false
+  },
+  {
+   "n": 2,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "MikroTik router management product",
+   "evidence": "Remote access to routers behind CGNAT, Starlink, or shared ISP connections, with no public IP and no port forwarding required on your end.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "IoT/industrial vendor page, no NAS",
+   "evidence": "Your devices are behind CGNAT, 4G/5G SIMs, Starlink, or client firewalls you don't control. Traditional VPNs can't reach them.",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "SSH client promo, only passing NAS mention",
+   "evidence": "Reach a home NAS or server over SSH: on your own network, from outside without exposing port 22, and letting an AI agent help without your keys.",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "NAS-specific CGNAT guide, Tailscale/relay options, no NAS model pick",
+   "evidence": "CGNAT blocks ordinary IPv4 port forwarding at the ISP edge, but it does not prevent secure NAS remote access.",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "Tailscale on Starlink, not NAS or photos",
+   "evidence": "Standard Starlink plans put you behind carrier-grade NAT (CGNAT) . Your dish shares a public IP address with many other customers",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Synology QuickConnect behind CGNAT explained, one brand",
+   "evidence": "QuickConnect is Synology's own remote access and it needs no port forwarding, which is why carrier-grade NAT does not stop it",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "security cameras, not NAS",
+   "evidence": "Cameras that use the maker's cloud app connect out to the maker's servers, and that works behind Starlink's CGNAT.",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "generic Starlink remote access vendor blog",
+   "evidence": "Most traditional remote access approaches assume you can receive inbound connections. On Starlink, they do not work: Port forwarding , impossible.",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "IoT device management vendor",
+   "evidence": "how to securely remote access and manage your IoT devices or any embedded Linux devices connected to the internet via Starlink satellite network",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "no text",
+   "evidence": "https://ipv6.natchecker.com/blog/remote-access-without-port-forwarding",
+   "quote_found": false
+  }
+ ],
+ "verdict": "open",
+ "missing": "A NAS-by-NAS comparison of which models have built-in relay or cloud access (Synology QuickConnect, QNAP myQNAP, UGREEN, Asustor, TerraMaster) and photo apps for phones, with real relay speeds on Starlink, plus step-by-step setup.",
+ "why": "No major reviewer or authority appears. Results are vendor pages, generic CGNAT guides, and two niche NAS guides that cover one tool or one brand. None compares NAS models or their phone photo access.",
+ "results": 12,
+ "quotes_found": 10,
+ "chars_shown": 14401,
+ "chars_full": 79973
+}

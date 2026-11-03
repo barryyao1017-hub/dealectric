@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "YouTube walkthrough of full HA OS VM with Zigbee stick on one UGREEN model; no cross-model comparison",
+   "evidence": "Here's exactly how I set it up on the UGREEN NAS DXP4800 GT, Zigbee stick and all.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Step-by-step HA OS VM guide on UGREEN DXP2800, notes x86 vs ARM and USB stick passthrough; single model",
+   "evidence": "ARM-based NAS units like the QNAP TS-233 from our QNAP Home Assistant article cannot do that; there, the container route is your only option.",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "HA OS build docs for VM image formats and requirements; names no NAS",
+   "evidence": "The ova target builds Home Assistant OS for x86-64 virtual machines. Its board files are in buildroot-external/board/pc/ova/ .",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "General VM-vs-container explainer with USB passthrough warning; names hypervisors, not NAS models",
+   "evidence": "If your NAS supports virtual machines (Synology Virtual Machine Manager, QNAP Virtualization Station, Proxmox, Unraid), this is the better path for most people.",
+   "quote_found": true
+  },
+  {
+   "n": 4,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Official installation index; generic, no NAS models",
+   "evidence": "Use Home Assistant on virtual machines, Home Assistant Container with NAS, or other SKILLS REQUIRED Setting up a virtual machine or NAS app",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Checks 27 NAS models against maker statements for VM/container support and notes USB passthrough; no hands-on testing",
+   "evidence": "of the 27 models checked here, 19 state both containers and virtual machines, 3 state one of the two, 4 have pages that say nothing either way",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Architecture decision record listing supported hypervisors; nothing about NAS hardware",
+   "evidence": "The following Hypervisors are supported: KVM/QEMU VirtualBox VMWare Xen",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Duplicate of the official installation index; generic",
+   "evidence": "Home Assistant Operating System is the recommended installation type. Home Assistant Operating System : An embedded,",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Linux/VirtualBox install steps; not NAS-specific",
+   "evidence": "By default, VirtualBox does not reclaim unused disk space from virtual disks. To enable automatic disk shrinking for the Home Assistant VDI",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Canada-specific ranking with a direct pick and specs, prices checked; explains x86-only VM constraint, no testing shown",
+   "evidence": "Only an x86 model can, because Home Assistant OS runs as a virtual machine and VMs need Intel or AMD hardware virtualization.",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Hands-on guide for HA OS VM with USB hardware on UGREEN DXP4800 GT; single model only",
+   "evidence": "U.G.O.S. Pro gives it its own slice of CPU, RAM, and — critically — the ability to see real USB hardware plugged into the NAS.",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "niche-reviewer",
+   "answers_it": false,
+   "why": "UGREEN vs Synology brand comparison; shown text covers 10GbE and Docker, not VM or Zigbee passthrough per model",
+   "evidence": "Docker support is no longer a meaningful reason to exclude either brand.",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "A model-by-model table of current NAS units (Synology, QNAP, UGREEN, TerraMaster, Asustor) showing x86 CPU, VM support in the maker's OS, verified USB passthrough of a Zigbee stick inside that hypervisor (Synology VMM is known to be flaky here), RAM headroom, and current prices with a direct pick per budget.",
+ "why": "No major reviewer answers this; the authorities present are Home Assistant's own docs, which only describe VM requirements and hypervisors and never name a NAS. What answers the question are niche pages: three single-model UGREEN walkthroughs (one in video form), one maker-statement audit of 27 models with no testing, and a Canada-specific ranking. None ranks NAS models on verified Zigbee USB passthrough with current prices. A focused comparison page with a direct pick would stand out against these.",
+ "results": 12,
+ "quotes_found": 12,
+ "chars_shown": 14096,
+ "chars_full": 129714
+}

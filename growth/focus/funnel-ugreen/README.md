@@ -112,6 +112,12 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G60 | /nas-that-runs-on-12v-in-a-van-or-rv | DH2300 (12 V adapter, 3–11 W); DXP2800 also 12 V; DXP4800 Plus/DXP480T Plus need a boost converter; Pi 5 named as drawing a third as much; "no measured van install" said | open ×3 |
 | G61 | /power-station-to-run-a-sump-pump-12-hour-outage | BLUETTI Elite 300 (12 h at 10 % duty); R4000 for 25 %; no station-starts-a-pump test exists, lifting watts excluded; battery-backup and water-powered pumps named as the unattended answers | open ×3 |
 | G62 | /power-station-for-starlink-mini-and-macbook-off-grid | AC180 for a day, Elite 200 V2 for 3–4 days; Starlink's 100 W PD rule; Anker/Jackery named as lighter with more USB-C | open ×3 |
+| G63 | /nas-remote-access-behind-cgnat-starlink-no-port-forwarding | Synology QuickConnect/BeeStation named first as the proven relay; DXP2800 for a household with one tech-comfortable person (UGREENlink + Tailscale); UGREENlink speed and photo-app reliability marked untested | open ×3 |
+| G64 | /can-a-nas-replace-icloud-2tb-for-an-iphone-family | "Partly": photos/files/Time Machine yes, device backup and Photos sync no, costs more than $599 over 5 years with off-site; DXP2800 + Immich; BeeStation named for non-technical families | open ×3 |
+| G65 | /power-station-for-a-cpap-week-of-camping | AC180 via ResMed's DC converter (9 dry nights); Elite 200 V2 for humidifier-on; ECO-mode warning; Medistrom named for flying | open ×3 |
+| G66 | /power-station-to-run-a-chest-freezer-for-3-days | Elite 300 is a 2-day unit alone (19 W idle), 3 days with a 400 W panel; AC200L + B300K for 3 days without sun; solar under storm cloud 10–25 %; generator named for longer outages | open ×3 |
+| G67 | /can-a-portable-power-station-charge-an-ev-in-an-emergency | "Barely": 3–7 miles in 1–2 h if the EVSE accepts a floating neutral; call roadside first; Elite 300 as the pick; EcoFlow DP3 / Anker F3800 named as the units sold for EV charging | open ×3 |
+| G68 | /nas-that-runs-home-assistant-os-vm-zigbee | DXP2800 runs HAOS in UGOS's VM (verified by two guides) but USB passthrough is contradicted by UGREEN's own article, so a wired SLZB-06 coordinator is the route; Home Assistant Green named as the appliance answer | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -253,4 +259,18 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   G57 marks the third-party claim of a native UGOS WireGuard server as unconfirmed; G60 says no measured van install
   exists; G62 notes BLUETTI's page lists the AC180 at $499 against our $449 cart check. G59, G61 and G62 needed lead
   trims for rank 6 (G59 also needed the query word "NAS" in the lead so it outranks the long second paragraph).
+- 2026-11-03, batch 13 votes (`x13-*`): six open ×3, one contested. Open: NAS reachable from a phone behind CGNAT/
+  Starlink (→ G63, DH2300/DXP2800 via UGREENlink or Tailscale unless Synology QuickConnect/BeeStation plainly wins),
+  NAS to replace iCloud+ 2 TB for an Apple family (→ G64, DH2300/DXP2800 with the losses listed), power station for an
+  AirSense 11 CPAP for a week (→ G65, AC180/Elite 30 V2 via the ResMed DC converter), power station for a chest freezer
+  for 3 days with solar (→ G66, Elite 300/R4000 + 400 W), can a station charge an EV in an emergency (→ G67 only if
+  "a few miles" is honestly defensible; else parked as a "no" page), NAS running Home Assistant OS as a VM with a Zigbee
+  stick (→ G68 only if UGOS's VM app passes USB through or a network coordinator makes it moot). Contested, parked:
+  400 W portable solar panel for a 2 kWh station (all three judges: sizing guides exist). Six research agents started.
+- 2026-11-03, iteration 13 built (G63–G68) from six research agents (~900k tokens); 400 W solar panel parked
+  (contested). No new product records. Honesty notes: three leads answer "partly" or "barely" before naming our pick
+  (iCloud, EV), three name a rival first (QuickConnect, HA Green, a generator); G66 corrects the brief's own premise
+  (the Elite 300 is a two-day freezer unit, not three). G63 needed a lead trim for rank 6. Research agents keep
+  flagging the same unreadable UGREEN support articles (671, 373, 911, 909, 866, 654): a browser read of those would
+  close most of the open facts in DLC-152.
 
