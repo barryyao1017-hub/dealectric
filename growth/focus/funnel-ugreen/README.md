@@ -131,6 +131,14 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G81 | /power-station-to-run-a-gas-furnace-in-an-outage | Elite 300 (about 10 h PSC, 19 h ECM); the only safe hookup is a UL 1008 furnace transfer switch by an electrician (Reliance manual, NEC 702 quoted); AC180/P1800 ruled out for PSC starts | open ×3 |
 | G82 | /power-station-for-a-farmers-market-booth | AC180 (restock late Nov) with the Elite 200 V2 as the in-stock fallback; ENERGY STAR mini-fridge data, Vitamix 2 HP; 300 Wh units for lights + reader only | open ×3 |
 | G83 | /power-station-and-solar-panel-for-an-off-grid-cabin-weekend | Elite 200 V2 + 350 W ($1,249); ENERGY STAR compact-fridge Wh/day and NREL PVWatts sun-hours by region; December is battery-only | open ×3 |
+| G84 | /best-48v-lithium-golf-cart-battery-kit-with-charger-club-car | Vatrer 48V 105Ah Club Car kit $1,579.99 (charger + LCD, UL 2271, 10-yr on registration); LiTime's $1,281.66 kit named; Allied/Epoch/Dakota/RoyPow $2,045–3,000; OBC bypass note | open ×3 |
+| G85 | /best-65w-gan-universal-travel-adapter-under-50 | TESSAN GaN 65W WTA07 $42.99 (3 USB-C, double fuse, 6 oz); Epicka TA-105C $24.99 named for three USB-C ports; not-a-converter and 7-day-returns said | open ×3 |
+| G86 | /cheapest-10-inch-double-din-android-head-unit-wireless-carplay | Eonon UA13 Plus $229.99 (coupon $209.99); UA12S Plus-6G $319.99 for apps; ATOTO 10-inch from ~$370 named; reliability record and 3-month return terms said | open ×3 |
+| G87 | /best-pet-camera-with-treat-dispenser-under-100 | Petcube Bites 2 Lite $99.99 (live, talk, treats, vet chat without a plan; no history without Care $9.99); Furbo's Nanny catch and eufy D605's local storage named | open ×3 |
+| G88 | /best-triple-screen-laptop-extender-16-inch-1920x1200 | FOPO S788 $499.99 (3× 16-inch 1920×1200, 2.64 kg, driver-based, PD supply in box; code FOPO 10% cart-tested); UPERFECT QHD $639.99, Trio Max, Kwumsy, LIMINK named | open ×3 |
+| G89 | /solar-panel-for-blink-outdoor-4-without-a-camera-bundle | Wasserstein panel $36.99 (internal battery, 13.1 ft, USB-C adapter); Blink's own mount excludes the Outdoor 4 (support FAQ) and sells bundled in the US; generic $27–30 panels named | open ×3 |
+| G90 | /bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription | "Yes": Wasserstein case $50.99 (camera not included, no bird ID); Wyze microSD / Blink Sync Module 2 storage explained; Birdfy, Birdfy Lite, Bird Buddy named for AI ID | open ×3 |
+| G91 | /best-swimming-headphones-with-mp3-storage-under-100 | MOJAWA Run Plus $99.99 (IP68, 32 GB, 8 h); RTINGS's "poor sound" verdict in the lead; OpenSwim Pro $179.95–229.95 named; Purra Swim $169.99 (15 h) | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -317,4 +325,17 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   directly and leaves rival prices thin; no further research agents can run until Barry's next message resets it.
   Stock notes seen on makers' pages today: AC180 out of stock (restock late Nov), R4000 sold out, S2000 Pro sold out,
   P1800 pre-order (Dec 7); the daily sweep should catch these, but the pages say so where it matters.
-
+- 2026-11-03, batch 16 (Barry: one page per new Awin brand, codes included). Eight Awin programmes joined 11-03 (Vatrer
+  119703, TESSAN 122030, Eonon 32471, Petcube 33889, FOPOMonitor 42800, Wasserstein 91781, MOJAWA 123666, hansmaker
+  118139; Minoston 117721 and OM Digital 129303 are also joined and unused). Research agents could not fetch pages
+  (this laptop's DNS resolves only through the corporate proxy, `proxy-intlho.wal-mart.com:8080`), so catalogs came
+  from each Shopify store's `/products.json` through the proxy and Petcube/Eonon from their HTML; the Awin dashboard
+  was read in a background tab of the Agent Chrome (merchant profiles, commission groups, My Creative), but its My
+  Offers table never loaded. Sixteen packs (`x16-*`) voted: fourteen open, TESSAN 140 W and MOJAWA 32 GB contested.
+  Pages G84–G91 built on the open ones, one per brand and two for Wasserstein; Vatrer Group 24 (open, but LiTime and
+  Redodo are $30–40 cheaper) and TESSAN converter (open, but BESTEK is cheaper and most travellers need no converter)
+  left for a later batch. **hansmaker parked**: its store lists the F1 Pro at $8,999 and D1 Ultra at $9,999 (tagged
+  Pre-Order) against reseller prices of $2,199–2,999, so no honest page until the prices make sense. Codes: Vatrer's
+  banner code VIPD2026 passed in the cart on the Group 24 (5%) and was rejected on the golf-cart kit (which carries an
+  automatic $78.99 discount); FOPO's banner code FOPO passed on the S788 (10%); no code is printed on the other six
+  sites and Awin's creatives show no vouchers. Fourteen product records added with spec cards; five new categories.

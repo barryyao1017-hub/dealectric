@@ -4874,4 +4874,792 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("EcoFlow DELTA 3", "https://us.ecoflow.com/products/delta-3-portable-power-station"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{'slug': 'best-48v-lithium-golf-cart-battery-kit-with-charger-club-car',
+ 'question': 'G84 (Awin brands: 48V lithium golf cart battery kit with charger for a Club Car under $1,700)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit',
+                    'item_id': 'VATRER-48V-105AH-CLUBCAR',
+                    'title': 'Vatrer 48V 105Ah Club Car kit, charger included',
+                    'description': '5.4 kWh LiFePO4, 200 A BMS, UL 2271, 58.4 V charger, LCD and bracket in the box.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0591/7523/9838/files/48V_105Ah_5af1f962-e435-4539-8465-cdf96bb9083b.webp'},
+ 'title': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
+ 'h1': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
+ 'desc': "Which 48V lithium golf cart battery kit with the charger included fits a Club Car DS, Precedent, Tempo or Onward for under $1,700: Vatrer's 48V "
+         "105Ah UL 2271 kit ($1,579.99 with a 58.4 V charger, LCD and bracket, 10-year warranty on registration) against LiTime's 48V 100Ah kit, Allied, "
+         'Epoch, RoyPow, Dakota Lithium and Eco Battery, with the on-board-computer bypass older Club Cars need, the warranty fine print and the prices seen '
+         'on 2026-11-03.',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Vatrer 48V 105Ah Club Car kit</strong> '
+          '({buy:vatrer-48v-105ah-club-car-golf-cart-battery-kit}), the best 48V lithium golf cart battery kit with charger for a Club Car under $1,700: '
+          '$1,579.99 on 2026-11-03 for a 105 Ah (5.4 kWh) UL 2271 LiFePO4 pack with a 200 A BMS, a 58.4 V 18 A charger, an LCD monitor and the bracket, and a '
+          "10-year warranty once registered. LiTime's 48V 100Ah kit was $1,281.66 on sale the same day if price matters more than the extra 5 Ah.</p>\n"
+          '<p>What to know: every other complete Club Car kit we priced on 2026-11-03 starts past $2,000 (Allied 48V 105Ah sets $2,045–2,395, Epoch 48V 105Ah '
+          "$2,299, Dakota Lithium 48V 96Ah about $2,699, RoyPow 48V 105Ah $2,999.99 and sold out), so the real choice is Vatrer against LiTime. Vatrer's pack "
+          'fits a 19.69 × 12.52 × 9.6-inch tray, is rated for 4,000+ cycles and stops charging below freezing; the cart showed an automatic $78.99 '
+          '"Limited-Time Discount" on top of the page price, and Vatrer\'s banner code VIPD2026 does not apply to this kit. A 1993–2013 Club Car may need its '
+          "on-board computer bypassed for a lithium conversion, and Vatrer's 10-year term only starts once you register and activate the warranty before the "
+          'first charge. Returns are 7 days.</p>\n',
+ 'columns': [('cap', 'Capacity'), ('charger', 'Charger included'), ('bms', 'BMS / listing'), ('warranty', 'Warranty')],
+ 'rows': [{'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit',
+           'model': 'Vatrer 48V 105Ah Club Car kit',
+           'cells': {'cap': '105 Ah, about 5.4 kWh',
+                     'charger': 'Yes: 58.4 V 18 A, plus LCD monitor and bracket',
+                     'bms': '200 A; UL 2271 (Vatrer)',
+                     'warranty': '10 years after registration and activation'}},
+          {'brand': 'LiTime',
+           'model': '48V 100Ah golf cart kit',
+           'url': 'https://litime.com/products/48v-100ah-golf-cart-battery-kit',
+           'cells': {'cap': '100 Ah, about 5.1 kWh',
+                     'charger': 'Yes: 58.4 V 18 A',
+                     'bms': 'not read; UL 2271 not confirmed',
+                     'warranty': "5 years (LiTime's Canadian site); 3 years on a third-party listing",
+                     'price': '$1,281.66 (list $1,649.99) on litime.com, 2026-11-03'}},
+          {'brand': 'Allied',
+           'model': '48V 105Ah Club Car set',
+           'url': 'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent',
+           'cells': {'cap': '105 Ah',
+                     'charger': 'Yes on the Reach.dog set; optional elsewhere',
+                     'bms': 'not read',
+                     'warranty': 'not read',
+                     'price': '$2,045 (Reach.dog) to $2,395, search result 2026-11-03'}},
+          {'brand': 'Epoch',
+           'model': '48V 105Ah Precedent kit',
+           'url': 'https://www.epochbatteries.com/',
+           'cells': {'cap': '105 Ah', 'charger': 'Yes', 'bms': 'not read', 'warranty': 'not read', 'price': '$2,299, search result 2026-11-03'}},
+          {'brand': 'Dakota Lithium',
+           'model': '48V 96Ah',
+           'url': 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery',
+           'cells': {'cap': '96 Ah, about 4.6 kWh',
+                     'charger': 'not stated',
+                     'bms': 'not read',
+                     'warranty': "11 years (Dakota's usual term; not read for this pack)",
+                     'price': 'about $2,694–2,699, search result 2026-11-03'}},
+          {'brand': 'RoyPow',
+           'model': '48V 105Ah',
+           'url': 'https://www.roypow.com/',
+           'cells': {'cap': '105 Ah', 'charger': 'not stated', 'bms': 'not read', 'warranty': 'not read', 'price': '$2,999.99, sold out on 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>What the kit replaces, and the bypass older carts need</h2>\n'
+          "<p>One 48 V LiFePO4 box replaces the six or eight flooded lead-acid batteries in a 48 V Club Car, and the kit's charger replaces the cart's old "
+          'one, so nothing else has to be sourced. Club Cars built from 1993 to 2013 carry an on-board computer that talks to the factory charger; dealers who '
+          "sell Allied's sets note it may need to be bypassed before a lithium pack charges normally. That is a general Club Car note, not Vatrer's, so check "
+          'it against your model year before ordering.</p>\n'
+          '<h2>Capacity and cycle life</h2>\n'
+          '<p>Vatrer rates the pack at 105 Ah and 4,000+ cycles with a 200 A BMS that handles overcharge, over-discharge, overcurrent, shorts and abnormal '
+          'temperatures and stops charging below freezing. Vatrer quotes 5,376–5,736 Wh for the 48 V 105 Ah family across its pages; 51.2 V × 105 Ah is 5,376 '
+          "Wh, which is the figure to plan range on. LiTime's 100 Ah kit is about 5% smaller.</p>\n"
+          '<h2>The warranty fine print</h2>\n'
+          "<p>Vatrer's warranty table (updated July 2026) gives 48 V 105 Ah golf-cart batteries 10 years, but only to the original buyer, from an authorized "
+          'channel, after the product is registered and the warranty activated before it goes into service. Unregistered packs fall back to the standard term, '
+          'and loose terminals, undersized cables or exceeding the series and parallel limits void it. Returns are 7 days, with a 30-day price guarantee.</p>\n'
+          '<h2>Price on the day</h2>\n'
+          "<p>The $1,579.99 page price dropped to $1,501.00 in the cart on 2026-11-03 through an automatic discount the store applied by itself; Vatrer's "
+          "site-wide banner code VIPD2026 was rejected on this kit (it took 5% off a Group 24 battery the same day). LiTime's $1,281.66 was a sale price "
+          'against a $1,649.99 list, so compare on the day you buy.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>LiTime's UL 2271 status and BMS rating, Eco Battery's current 48 V price, every rival's golf-cart warranty, and any independent capacity test or "
+          'teardown of this Vatrer pack; the only independent Vatrer critique we found covers its server-rack battery, not this one.</p>\n',
+ 'sources': [('Vatrer 48V 105Ah Club Car kit', 'https://vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries'),
+             ('Vatrer warranty policy (July 2026 table)', 'https://www.vatrerpower.com/pages/warranty-policy'),
+             ('LiTime 48V 100Ah golf cart kit', 'https://litime.com/products/48v-100ah-golf-cart-battery-kit'),
+             ('Allied 48V Club Car set (Reach.dog listing)',
+              'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent'),
+             ('Dakota Lithium 48V 96Ah (Reach.dog listing)', 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'best-65w-gan-universal-travel-adapter-under-50',
+ 'question': 'G85 (Awin brands: 65W GaN universal travel adapter with 3 USB-C under $50)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'tessan-gan-65w-universal-travel-adapter-wta07',
+                    'item_id': 'TESSAN-WTA07',
+                    'title': 'TESSAN GaN 65W travel adapter WTA07',
+                    'description': '65 W USB-C, 3 USB-C + 2 USB-A, universal outlet, double 10 A fuse, 6 oz. $42.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0747/5439/2376/files/2TS-WTA07-BK.png'},
+ 'title': 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
+ 'h1': 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
+ 'desc': "Which universal travel adapter can charge a laptop at 65 W for under $50: TESSAN's GaN 65W WTA07 ($42.99, 3 USB-C + 2 USB-A, double 10 A fuse, 6 oz) "
+         "against TESSAN's WTA09, Epicka's TA-105C and TA-105 Max, Zendure's Passport III and Anker's 65 W adapter, with the single-port catch, the "
+         'voltage-converter myth and the prices seen on 2026-11-03.',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>TESSAN GaN 65W WTA07</strong> ({buy:tessan-gan-65w-universal-travel-adapter-wta07}), '
+          'the best universal travel adapter that charges a laptop at 65W for under $50: $42.99 on 2026-11-03 (list $49.99) for one 65 W USB-C port, two more '
+          "USB-C and two USB-A at 15 W, a 2,500 W universal outlet, double 10 A fuses and 6.04 oz. If three USB-C ports matter more than 65 W, Epicka's "
+          'TA-105C was $24.99 at Best Buy the same day.</p>\n'
+          '<p>What to know: 65 W is from one port at a time (USB-C 3), enough for a MacBook Air, a 14-inch MacBook Pro at reduced speed or any USB-C laptop '
+          "under 65 W, while the other four ports share 15 W each; a 16-inch MacBook Pro needs TESSAN's 205 W Voyager ($119). The adapter covers Type A, C, G "
+          "and I plugs for 150+ countries but not India or South Africa, and it is not a voltage converter: it passes the wall's 100–250 V through, so hair "
+          "dryers and straighteners must be dual-voltage. TESSAN's WTA09 ($48.99) adds a second AC outlet for the same 65 W; Zendure's Passport III (65 W, "
+          "four USB-C) launched at $65–69 and Epicka's 75 W TA-105 Max is $59.99, both over the cap. TESSAN's return window is 7 days, with a 12–24-month "
+          'warranty.</p>\n',
+ 'columns': [('max', 'Max USB-C'), ('ports', 'Ports'), ('outlet', 'AC outlet'), ('safety', 'Fuse / weight')],
+ 'rows': [{'slug': 'tessan-gan-65w-universal-travel-adapter-wta07',
+           'model': 'TESSAN GaN 65W WTA07',
+           'cells': {'max': '65 W on USB-C 3',
+                     'ports': '3 USB-C + 2 USB-A (15 W each on the other four)',
+                     'outlet': '1 universal, 2,500 W, 100–250 V',
+                     'safety': 'Double 10 A fuse; 6.04 oz'}},
+          {'brand': 'TESSAN',
+           'model': '65W GaN WTA09',
+           'url': 'https://tessan.com/products/65w-gan-universal-travel-adapter-wta09',
+           'cells': {'max': '65 W on USB-C 3',
+                     'ports': '3 USB-C + 2 USB-A',
+                     'outlet': '2 AC outlets (front universal + side 2-prong)',
+                     'safety': 'fuse not read; weight not read',
+                     'price': '$48.99 (list $49.99) on 2026-11-03'}},
+          {'brand': 'Epicka',
+           'model': 'TA-105C',
+           'url': 'https://bestbuy.com/site/epicka-universal-travel-adapter-with-3-usb-c-and-2-usb-a-ports-charger-for-usa-eu-uk-aus-ta-105c-black/6610133.p',
+           'cells': {'max': 'not confirmed (lower than 65 W)',
+                     'ports': '3 USB-C + 2 USB-A',
+                     'outlet': '1 universal',
+                     'safety': 'not read',
+                     'price': '$24.99 at Best Buy, 2026-11-03'}},
+          {'brand': 'Epicka',
+           'model': 'TA-105 Max 75W',
+           'url': 'https://www.t3.com/us/features/best-travel-adapter',
+           'cells': {'max': '75 W',
+                     'ports': 'not read',
+                     'outlet': '1 universal',
+                     'safety': 'not read',
+                     'price': '$59.99, search result 2026-11-03: over the cap'}},
+          {'brand': 'Zendure',
+           'model': 'Passport III 65W',
+           'url': 'https://appleinsider.com/articles/22/03/05/zendure-passport-iii-review-usb-c-rich-global-travel-charger',
+           'cells': {'max': '65 W',
+                     'ports': '4 USB-C + 1 USB-A',
+                     'outlet': '1 universal, no ground',
+                     'safety': 'about 173 g',
+                     'price': '$65–69 at launch (2022); current price not read'}},
+          {'brand': 'Anker',
+           'model': '65W travel adapter (A9213)',
+           'url': 'https://anker.com.sg/zh/collections/travel-essentials/products/anker-powerextend-travel-adapter-65w-with-usb-c-charger-a9213',
+           'cells': {'max': '65 W on one USB-C',
+                     'ports': '1 AC + 3 USB (count of USB-C not confirmed)',
+                     'outlet': '1',
+                     'safety': 'not read',
+                     'price': 'no US price read (S$79.90 in Singapore)'}}],
+ 'after': '\n'
+          '<h2>What 65 W buys you</h2>\n'
+          '<p>A USB-C laptop that ships with a 30–67 W charger (MacBook Air, most 13–14-inch Windows ultrabooks, iPad Pro) charges at full speed from the '
+          "WTA07's USB-C 3 port. A 14-inch MacBook Pro charges, more slowly than its 70–96 W brick; a 16-inch MacBook Pro (140 W) or a gaming laptop will "
+          "trickle or not charge under load. TESSAN's figure for a phone is 0–80% in 40 minutes on that port alone.</p>\n"
+          '<h2>The port split</h2>\n'
+          '<p>Only USB-C 3 is 65 W. USB-C 1, 2 and the two USB-A ports are 15 W each, so the adapter charges six devices at once but only one of them fast. '
+          "Epicka's $24.99 TA-105C also has three USB-C ports; Best Buy's listing does not state its wattage, and no result we read put it at 65 W.</p>\n"
+          '<h2>Not a converter</h2>\n'
+          '<p>Every adapter on this list passes the local voltage straight through. Phone, laptop and camera chargers are 100–240 V and need nothing more; a '
+          "single-voltage hair dryer or straightener needs a dual-voltage replacement, not an adapter, and TESSAN's own 250 W converter cannot run one "
+          'either.</p>\n'
+          '<h2>Fuses, certification and returns</h2>\n'
+          '<p>TESSAN lists double 10 A fuses on the WTA07; it does not list a UL or ETL mark on this product page, and we could not confirm one for any rival '
+          "either. TESSAN's FAQ gives 7 days from delivery for returns, unused and in the original packaging, with a 12–24-month warranty depending on the "
+          'product.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>Wirecutter's current travel-adapter pick (its 2020 guide chose Epicka; one aggregator says Anker's Nano is pending), Epicka's TA-105C wattage, "
+          'current US prices for the Zendure and Anker adapters, and any Reddit thread on these models.</p>\n',
+ 'sources': [('TESSAN GaN 65W WTA07', 'https://tessan.com/products/gan-65w-universal-travel-adapter-wta07'),
+             ('TESSAN 65W GaN WTA09', 'https://tessan.com/products/65w-gan-universal-travel-adapter-wta09'),
+             ('TESSAN warranty info', 'https://tessan.com/pages/warranty-info'),
+             ('TESSAN FAQ (returns)', 'https://tessan.com/pages/faq'),
+             ('Epicka TA-105C at Best Buy',
+              'https://bestbuy.com/site/epicka-universal-travel-adapter-with-3-usb-c-and-2-usb-a-ports-charger-for-usa-eu-uk-aus-ta-105c-black/6610133.p'),
+             ("Wirecutter's travel adapter guide, as published by Engadget (2020)", 'https://www.engadget.com/2020/01/11/the-best-travel-plug-adapter/')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'cheapest-10-inch-double-din-android-head-unit-wireless-carplay',
+ 'question': 'G86 (Awin brands: cheapest 10-inch double-DIN Android head unit with wireless CarPlay)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'eonon-ua13-plus-10-inch-android-13-wireless-carplay',
+                    'item_id': 'EONON-UA13-PLUS',
+                    'title': 'Eonon UA13 Plus, 10.1-inch wireless CarPlay',
+                    'description': 'Android 13, RK3562, 2 GB/32 GB, wireless CarPlay and Android Auto, 2-year warranty. $229.99.',
+                    'image_url': 'https://www.eonon.com//upload/product/Gallery/UA13Plus/UA13Plus-01.jpg'},
+ 'title': 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
+ 'h1': 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
+ 'desc': "The cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto from a brand's own store in 2026: Eonon's UA13 Plus "
+         "($229.99, Android 13, 2 GB/32 GB, 2-year warranty) against Eonon's UA12S Plus-6G, ATOTO's S8 Ultra Plus and A6 PF, Joying's 10.1-inch units, "
+         "Pioneer's DMH-WT3800NEX and Kenwood's DMX1037S, with the reliability record, coupon pricing and the return terms.",
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> The <strong>Eonon UA13 Plus</strong> ({buy:eonon-ua13-plus-10-inch-android-13-wireless-carplay}) is '
+          "the cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto sold by a brand's own store: $229.99 on 2026-11-03 (the "
+          "page showed coupon prices down to $209.99) for a 10.1-inch 1280 × 720 screen, Android 13, 2 GB/32 GB and a 2-year warranty. ATOTO's 10-inch units "
+          'start about $370; its $211 A6 PF is a 7-inch screen.</p>\n'
+          '<p>What to know: the price buys a quad-core Rockchip RK3562 with 2 GB of RAM, fine for CarPlay, Android Auto and maps, slow for heavy Android apps; '
+          "Eonon's own UA12S Plus-6G ($319.99, Qualcomm 8-core, 6 GB/64 GB) is the unit to buy if you will run apps on the head unit itself. Both are "
+          "universal double-DIN units, so the vehicle harness, dash kit and any CAN-bus adapter are extra, and Eonon's page prices with on-page coupons rather "
+          "than codes, so the number changes by the day. Eonon's owner reviews split between free replacements and units that froze or failed within the first "
+          'year; Pioneer, Sony and Kenwood cost two to five times more and are the safe answer for anyone who cannot live with that. Returns: full refund '
+          'within 3 months for a product issue; change-of-mind returns within 3 months at your shipping cost, plus 20% if opened.</p>\n',
+ 'columns': [('screen', 'Screen'), ('hw', 'Chip / RAM / storage'), ('phone', 'Wireless CarPlay / Android Auto'), ('warranty', 'Warranty')],
+ 'rows': [{'slug': 'eonon-ua13-plus-10-inch-android-13-wireless-carplay',
+           'model': 'Eonon UA13 Plus',
+           'cells': {'screen': '10.1-inch, 1280 × 720',
+                     'hw': 'RK3562 quad-core, Android 13, 2 GB / 32 GB',
+                     'phone': 'Yes, both (wired too)',
+                     'warranty': '2 years (eonon.com purchases)'}},
+          {'slug': 'eonon-ua12s-plus-6g-10-inch-android-13-car-stereo',
+           'model': 'Eonon UA12S Plus-6G',
+           'cells': {'screen': '10.1-inch QLED', 'hw': 'Qualcomm QCM6125 8-core, Android 13, 6 GB / 64 GB', 'phone': 'Yes, both', 'warranty': '2 years'}},
+          {'brand': 'ATOTO',
+           'model': 'S8 Ultra Plus 10.1-inch',
+           'url': 'https://www.atotodirect.com/products/s8g2109up-n-10-1-ultra-plus-car-stereo',
+           'cells': {'screen': '10.1-inch',
+                     'hw': '6 GB / 128 GB',
+                     'phone': 'Yes, both',
+                     'warranty': 'not read',
+                     'price': '$413–478, search result 2026-11-03'}},
+          {'brand': 'ATOTO',
+           'model': 'A6 PF 7-inch',
+           'url': 'https://www.atotodirect.com/products/atoto-a6g2a7pf-7-inch-double-din-car-stereo-with-backup-cam',
+           'cells': {'screen': '7-inch (a 9-inch variant exists)',
+                     'hw': '2 GB / 32 GB',
+                     'phone': 'Yes, both',
+                     'warranty': 'not read',
+                     'price': '$210.90 (list $252.90), 2026-11-03'}},
+          {'brand': 'Joying',
+           'model': '10.1-inch 6 GB / 128 GB',
+           'url': 'https://www.joyingauto.com/',
+           'cells': {'screen': '10.1-inch',
+                     'hw': '6 GB / 128 GB; 8 GB on some',
+                     'phone': 'Mixed reports (one buyer: wired CarPlay only)',
+                     'warranty': 'not read',
+                     'price': '$415–465 for its other 10.1-inch units; this one not priced'}},
+          {'brand': 'Pioneer',
+           'model': 'DMH-WT3800NEX',
+           'url': 'https://www.walmart.com/ip/188118011',
+           'cells': {'screen': '9-inch floating',
+                     'hw': 'not Android',
+                     'phone': 'Yes, both',
+                     'warranty': 'not read',
+                     'price': '$549.99 at Walmart, 2026-11-03'}},
+          {'brand': 'Kenwood',
+           'model': 'DMX1037S',
+           'url': 'https://www.kenwood.com/usa/car/',
+           'cells': {'screen': '10.1-inch',
+                     'hw': 'not Android',
+                     'phone': 'CarPlay and Android Auto; wireless not confirmed',
+                     'warranty': 'not read',
+                     'price': '$1,199 at Walmart, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>What $230 gives up</h2>\n'
+          '<p>Two things. The hardware: 2 GB of RAM and a quad-core chip run CarPlay and Android Auto, which do the work on your phone, but Android apps '
+          "installed on the unit itself will stutter, and the 1280 × 720 panel is sharp enough at arm's length and no more. And the track record: Trustpilot "
+          'and ResellerRatings reviews of Eonon include early failures, freezes and slow support next to owners who got free mainboard repairs and quick '
+          'replacements. A July 2025 r/CarAV thread warns against generic Chinese head units as a class; ATOTO gets the most consistent praise of the budget '
+          'Android brands, and its 10-inch units cost $180 or more above the UA13 Plus.</p>\n'
+          '<h2>Fit, wiring and CAN bus</h2>\n'
+          '<p>Both Eonon units are universal double-DIN chassis. Budget for the vehicle-specific harness, a dash kit and, on cars with steering-wheel controls '
+          'or a factory amplifier, a CAN-bus adapter; Eonon sells wiring options on the product page and vehicle-specific units for BMW, Mazda, Volkswagen and '
+          'GM models at higher prices.</p>\n'
+          '<h2>Coupon pricing</h2>\n'
+          "<p>Eonon's product pages show a base price and one or more coupon prices that change with its sales calendar (on 2026-11-03 the UA13 Plus page read "
+          '$229.99 with a $209.99 coupon price and the UA12S Plus-6G $319.99 with $289.99). The price you pay is the one the page offers that day, not a code '
+          'you type.</p>\n'
+          '<h2>Returns and warranty</h2>\n'
+          '<p>Eonon gives Android car stereos bought on eonon.com a 2-year warranty: full refund or exchange within 3 months for a product issue, exchange '
+          'within 6 months, replacement accessories or a discounted new unit within 2 years. Returns for any other reason are accepted within 3 months at your '
+          'return-shipping cost, plus 20% depreciation if the unit was opened or installed.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          '<p>Whether the UA12S Plus-6G ships with 4G LTE and the DSP amplifier its marketing mentions (the spec text we read lists neither), the warranty '
+          'terms of the ATOTO, Joying, Pioneer and Kenwood units, and any Crutchfield coverage of Eonon.</p>\n',
+ 'sources': [('Eonon UA13 Plus',
+              'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/Eonon-10-Inch-Android-13-Double-Din-Wireless-CarPlay--Android-Auto-Car-Radio.html'),
+             ('Eonon UA12S Plus-6G', 'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/UA12S%20Plus-6G.html'),
+             ('Eonon returns and warranty policy', 'https://www.eonon.com/support/returns.aspx'),
+             ('ATOTO S8 Ultra Plus', 'https://www.atotodirect.com/products/s8g2109up-n-10-1-ultra-plus-car-stereo'),
+             ('ATOTO A6 PF', 'https://www.atotodirect.com/products/atoto-a6g2a7pf-7-inch-double-din-car-stereo-with-backup-cam'),
+             ('r/CarAV: please avoid generic Chinese head units (July 2025)',
+              'https://www.reddit.com/r/CarAV/comments/1lu72cf/please_avoid_generic_chinese_head_units/')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'best-pet-camera-with-treat-dispenser-under-100',
+ 'question': 'G87 (Awin brands: pet camera with a treat dispenser under $100)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'petcube-bites-2-lite',
+                    'item_id': 'PETCUBE-BITES-2-LITE',
+                    'title': 'Petcube Bites 2 Lite, treat-tossing camera',
+                    'description': '1080p, 160°, night vision, two-way talk, treat tossing; live view and treats work without a plan. $99.99.',
+                    'image_url': 'https://petcube.com/images/store/gallery/bites-2-lite/side-face.jpg'},
+ 'title': 'Best pet camera with a treat dispenser under $100 (2026)',
+ 'h1': 'Best pet camera with a treat dispenser under $100 (2026)',
+ 'desc': "Which pet camera with a treat dispenser costs under $100 and still works without a subscription: Petcube's Bites 2 Lite ($99.99, 1080p, 160°, night "
+         "vision, two-way talk, adjustable treat toss) against the Furbo 360 and Furbo Mini 360, eufy's D605 with local storage, the Skymee Owl robot and the "
+         'no-treat Wyze Cam v4, with what each needs a plan for and the prices seen on 2026-11-03.',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Petcube Bites 2 Lite</strong> ({buy:petcube-bites-2-lite}), the best pet camera with '
+          'a treat dispenser under $100: $99.99 on 2026-11-03 (list $149.99) for 1080p video, a 160° view, night vision, two-way talk and treat tossing at an '
+          'adjustable distance, all of which work without a subscription; Petcube Care ($9.99 a month) adds video history and alerts. If stored clips without '
+          "a plan matter more, eufy's D605 records locally but listed at about $200.</p>\n"
+          "<p>What to know: no treat camera under $100 records history without a plan. The Bites 2 Lite keeps live view, talk, treats and Petcube's 24/7 vet "
+          "chat free and puts cloud history, daily diary and pet and human alerts behind Care; Furbo's 360° camera (listings $129–199 on 2026-11-03, with sale "
+          "SKUs that require its $6.99-a-month Nanny plan) is the better-known dog camera but costs more; eufy's D605 keeps 16 GB of clips on the device with "
+          "no plan at a higher price; Wyze's Cam v4 ($35) records to a microSD card but tosses nothing. The Bites 2 Lite holds 1.5 lb of treats in a "
+          'dishwasher-safe container, runs on 2.4 GHz Wi-Fi only, and comes with a 45-day money-back guarantee and a 1-year warranty.</p>\n',
+ 'columns': [('treats', 'Treat tossing'), ('video', 'Video'), ('free', 'Without a plan'), ('plan', 'Plan price')],
+ 'rows': [{'slug': 'petcube-bites-2-lite',
+           'model': 'Petcube Bites 2 Lite',
+           'cells': {'treats': 'Yes, adjustable distance, 1.5 lb container',
+                     'video': '1080p, 160°, night vision, 8× zoom',
+                     'free': 'Live view, talk, treats, vet chat; no history',
+                     'plan': 'Care $9.99/mo (bundles from $5.99)'}},
+          {'brand': 'Furbo',
+           'model': '360° Dog Camera',
+           'url': 'https://furbo.com/pages/comparison',
+           'cells': {'treats': 'Yes',
+                     'video': '1080p, 360° rotating',
+                     'free': 'Live view and treats while the app is open (reported; Nanny-required SKUs exist)',
+                     'plan': 'Nanny $6.99/mo for alerts and cloud clips',
+                     'price': '$129–199 listings; sale SKUs from $44 require Nanny, 2026-11-03'}},
+          {'brand': 'Furbo',
+           'model': 'Mini 360',
+           'url': 'https://furbo.com/',
+           'cells': {'treats': 'Yes',
+                     'video': 'not read',
+                     'free': 'described as a no-subscription model; unverified',
+                     'plan': 'optional',
+                     'price': 'about $99 in one guide, 2026-11-03'}},
+          {'brand': 'eufy',
+           'model': 'Pet Dog Camera D605',
+           'url': 'https://service.anker.com/article-description/Introducing-eufy-Pet-Dog-Camera-D605',
+           'cells': {'treats': 'Yes',
+                     'video': '2K, 360° pan',
+                     'free': 'Everything, with 16 GB on-device storage (no microSD slot per eufy)',
+                     'plan': 'none',
+                     'price': '$199.99 new (StackSocial); $109.99 open-box (Woot), 2026-11-03'}},
+          {'brand': 'Skymee',
+           'model': 'Owl Robot',
+           'url': 'https://www.skymee.com/',
+           'cells': {'treats': 'Yes, from a mobile robot', 'video': '1080p', 'free': 'Core features', 'plan': 'none', 'price': '$139.99–170, 2026-11-03'}},
+          {'slug': 'petcube-cam-360',
+           'model': 'Petcube Cam 360 (no treats)',
+           'cells': {'treats': 'No', 'video': '1080p, 360° pan-tilt, night vision', 'free': 'Live view, talk, pan; no history', 'plan': 'Care'}},
+          {'brand': 'Wyze',
+           'model': 'Cam v4 (no treats)',
+           'url': 'https://www.tomsguide.com/home/smart-home/wyze-cam-v4-vs-blink-mini-2-which-budget-security-camera-wins',
+           'cells': {'treats': 'No',
+                     'video': '2.5K, night vision',
+                     'free': 'Local microSD recording',
+                     'plan': 'Cam Plus about $2/mo for pet detection',
+                     'price': '$35–36, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>What works without Petcube Care</h2>\n'
+          '<p>Live 1080p video with 8× digital zoom, two-way talk, treat tossing with the amount and distance set from the phone, an autoplay mode that tosses '
+          "on a schedule, and Petcube's 24/7 online vet chat. What does not: any recording. The camera stores nothing on its own, so a bark at 2 p.m. is gone "
+          'unless Care (cloud history up to 90 days, daily diary, pet and human recognition) is on. SafeWise found the alerts weak even with Care on the older '
+          'Bites 2.</p>\n'
+          "<h2>Furbo's catch</h2>\n"
+          "<p>Furbo's cameras are the best-known of the type and reviewers like the AI features, but those features and cloud clips live in the $6.99-a-month "
+          "Nanny plan, and several Furbo 360 sale listings are subscription-required SKUs sold below $50 on the strength of the plan. Petcube's $99.99 is the "
+          'price with no strings.</p>\n'
+          '<h2>eufy D605 for recordings</h2>\n'
+          "<p>If you want clips kept without a plan, eufy's D605 stores 16 GB on the device (eufy's page says there is no microSD slot, though some "
+          'third-party listings claim one). It listed at $199.99 new and $109.99 open-box on 2026-11-03, and like the Petcube it is 2.4 GHz only.</p>\n'
+          '<h2>Fine print</h2>\n'
+          '<p>2.4 GHz Wi-Fi only; a 45-day money-back guarantee and a 1-year warranty from Petcube; a "first order bonus" of 10% off the next purchase, which '
+          "is not a code. Several reviews put the Bites 2 Lite's regular price near $125 rather than Petcube's $149.99 list.</p>\n"
+          '<h2>What we could not verify</h2>\n'
+          "<p>Furbo's current first-party prices and whether its current 360 SKU tosses treats without Nanny; the Furbo Mini 360's specs; eufy's microSD "
+          'question; any Wirecutter or PCMag text on these cameras (only secondhand claims surfaced).</p>\n',
+ 'sources': [('Petcube Bites 2 Lite', 'https://petcube.com/store/product/bites-2-lite/'),
+             ('Petcube Care', 'https://petcube.com/care/'),
+             ('eufy Pet Dog Camera D605 (Anker support)', 'https://service.anker.com/article-description/Introducing-eufy-Pet-Dog-Camera-D605'),
+             ('Furbo camera comparison', 'https://furbo.com/pages/comparison'),
+             ('SafeWise: Petcube Bites 2 review', 'https://www.safewise.com/petcube-bites-2-review/'),
+             ('Digital Camera World: Petcube Bites 2 Lite review',
+              'https://www.digitalcameraworld.com/reviews/petcube-bites-2-lite-review-the-top-dog-in-affordable-pet-cameras')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'best-triple-screen-laptop-extender-16-inch-1920x1200',
+ 'question': 'G88 (Awin brands: triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'fopo-s788-16-inch-triple-laptop-screen-extender',
+                    'item_id': 'FOPO-S788',
+                    'title': 'FOPO S788, three 16-inch 1920×1200 screens',
+                    'description': '3× 16-inch IPS 16:10, 100% sRGB, fits 12–18.5-inch laptops, driver-based, PD supply included, 2.64 kg. $499.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0663/7495/9316/files/bdd2095567ed5ee49cd4fc6878a5ea98.png'},
+ 'title': 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
+ 'h1': 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
+ 'desc': "Which triple-screen laptop extender gives a 16-inch laptop three 1920×1200 (16:10) panels: FOPO's S788 ($499.99, 100% sRGB, 12–18.5-inch fit, 2.64 "
+         "kg, driver-based with a PD supply in the box) against FOPO's S788C and S980, Mobile Pixels' Trio Max and Trio 3 Pro, Kwumsy's P2 Pro, UPERFECT's "
+         "16-inch QHD triple and LIMINK's 14-inch, with the driver and Mac caveats and the prices seen on 2026-11-03.",
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>FOPO S788</strong> ({buy:fopo-s788-16-inch-triple-laptop-screen-extender}), the best '
+          "triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels: $499.99 on 2026-11-03 (list $999.99; FOPO's banner code takes 10% more "
+          'off) for three 16-inch 16:10 IPS screens at 100% sRGB, a 12–18.5-inch laptop fit, a PD power supply in the box and 2.64 kg. Every other triple at '
+          'this size we found is 1080p or costs more.</p>\n'
+          "<p>What to know: the S788 is a USB display-driver device, not a native display connection. It needs FOPO's UsbDisplay driver (and Screen Recording "
+          'permission on a Mac), a USB-C or dual-head USB-A data cable and its own power supply, and FOPO lists Windows 10/11 and macOS from 2019 including '
+          "M1, M2 and M3; on a base M-series chip the driver is what makes three extra screens possible at all. Mobile Pixels' Trio Max (14.1-inch, 1080p, "
+          "$512.99 at Staples) and Kwumsy's P2 Pro (13.3-inch, $529.99) are smaller for the money, UPERFECT's 16-inch triple is 2560 × 1600 at $639.99 "
+          "early-bird ($849.99 list), and LIMINK's 14-inch 1080p was $139.99 at Walmart. Fit is by laptop dimensions, not just the screen diagonal; FOPO gives "
+          '30-day returns and a 1-year warranty, 2 years for registered buyers.</p>\n',
+ 'columns': [('panels', 'Panels'), ('fit', 'Laptop fit'), ('mac', 'Mac'), ('power', 'Driver / power'), ('weight', 'Weight')],
+ 'rows': [{'slug': 'fopo-s788-16-inch-triple-laptop-screen-extender',
+           'model': 'FOPO S788',
+           'cells': {'panels': '3 × 16-inch IPS, 1920 × 1200, 100% sRGB',
+                     'fit': '12–18.5-inch',
+                     'mac': 'macOS 2019+, M1/M2/M3 listed',
+                     'power': 'UsbDisplay driver; PD supply included',
+                     'weight': '2.64 kg'}},
+          {'brand': 'FOPO',
+           'model': 'S788C 16-inch / S780C 14-inch',
+           'url': 'https://www.fopomonitor.com/products/fopo-s788c-16-inch-triple-laptop-screen-extender',
+           'cells': {'panels': '3 × 16 or 14-inch, 1920 × 1200',
+                     'fit': '12–16.5-inch',
+                     'mac': 'M1–M4 listed; driver required',
+                     'power': 'Driver; power per laptop',
+                     'weight': 'not read',
+                     'price': '$599.99 (16) / $499.99 (14) on 2026-11-03'}},
+          {'brand': 'FOPO',
+           'model': 'S980 15.3-inch',
+           'url': 'https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender',
+           'cells': {'panels': '3 × 15.3-inch, 1920 × 1200, 250 nits',
+                     'fit': '12–18.5-inch',
+                     'mac': 'M1/M2/M3 listed',
+                     'power': 'Driver + separate PD power',
+                     'weight': '2.6 kg',
+                     'price': '$599.99 (list $999.99) on 2026-11-03'}},
+          {'brand': 'Mobile Pixels',
+           'model': 'Trio Max',
+           'url': 'https://mobilepixels.us/pages/xebec-comparison',
+           'cells': {'panels': '2 × 14.1-inch, 1920 × 1080',
+                     'fit': '13–17-inch',
+                     'mac': 'Yes via USB (driver)',
+                     'power': 'USB-powered',
+                     'weight': '2.2–3.9 lb (sources conflict)',
+                     'price': '$512.99 Staples (Trio Max 2.0), 2026-11-03'}},
+          {'brand': 'Mobile Pixels',
+           'model': 'Trio 3 Pro',
+           'url': 'https://www.shi.com/product/50445665/Mobile-Pixels-Trio-3-Pro',
+           'cells': {'panels': '2 × 14.1-inch, 2240 × 1400',
+                     'fit': 'not read',
+                     'mac': 'not verified',
+                     'power': 'not read',
+                     'weight': '1.87 kg',
+                     'price': 'CHF 399 (Swiss listing, out of stock); no US price read'}},
+          {'brand': 'Kwumsy',
+           'model': 'P2 Pro',
+           'url': 'https://www.mbreviews.com/?p=16358',
+           'cells': {'panels': '2 × 13.3-inch, 1080p',
+                     'fit': '13.3–16.5-inch',
+                     'mac': 'Worked on an M1 MacBook Pro after drivers (reviewer)',
+                     'power': 'Drivers',
+                     'weight': 'not read',
+                     'price': '$529.99, 2026-11-03'}},
+          {'brand': 'UPERFECT',
+           'model': '16-inch QHD triple',
+           'url': 'https://uperfect.com/products/triple-laptop-screen-extender',
+           'cells': {'panels': '2 × 16-inch, 2560 × 1600 (14 and 15.6-inch 1080p versions)',
+                     'fit': 'not read',
+                     'mac': 'not verified',
+                     'power': 'Two USB-C + mini-HDMI',
+                     'weight': 'not read',
+                     'price': '$639.99 early-bird (list $849.99), 2026-11-03'}},
+          {'brand': 'LIMINK',
+           'model': '14-inch triple',
+           'url': 'https://www.walmart.com/ip/LIMINK-Portable-Triple-Monitor-Extender-14inch-Screen-Used-15-17inch-Laptop-Workstation-Expansion-FHD-1080P-Folding-IPS-Tri-Screen-Fits-Mac-Windows-N/1837878974',
+           'cells': {'panels': '2 × 14-inch, 1080p',
+                     'fit': '15–17-inch',
+                     'mac': 'Listed',
+                     'power': 'not read',
+                     'weight': 'not read',
+                     'price': '$139.99 (was $299.99) at Walmart, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>Why 1920 × 1200 matters on a 16-inch laptop</h2>\n'
+          "<p>A 16-inch laptop's own panel is 16:10. Side screens at 1920 × 1200 line up with it and give the same vertical room for documents; the 1080p 16:9 "
+          "panels on most extenders sit shorter next to it. The S788's three panels are IPS, 100% sRGB, 60 Hz and 25 ms, with brightness buttons and an OSD; "
+          "FOPO's spec sheet gives a 388 × 244 × 41.3 mm folded size and a 344.7 × 215.4 mm active area per screen.</p>\n"
+          '<h2>Driver, not native</h2>\n'
+          "<p>FOPO's S788 page says it plainly: a driver-based setup, not a driver-free one. Windows installs UsbDisplay on its own when online; a Mac needs "
+          'the driver installed by hand and Screen Recording permission granted, and company-managed laptops may block the install. The upside is that a base '
+          'M1, M2 or M3 Mac, which Apple limits to one native external display, drives all three through the driver. Expect some latency and no HDR; it is a '
+          'workspace, not a gaming rig.</p>\n'
+          '<h2>Weight and fit</h2>\n'
+          "<p>2.64 kg clamps onto the laptop, so a thin 16-inch machine will want the rear support FOPO builds in; Notebookcheck's review of FOPO's 12-inch "
+          'model called the format clunky and more fragile than two standalone portable monitors, which is the honest alternative if you never move the setup. '
+          "FOPO's fit range is 12–18.5 inches, subject to the laptop's physical dimensions and clearance.</p>\n"
+          '<h2>Code and returns</h2>\n'
+          '<p>FOPO prints its own 10% code on its site; we applied it in the cart on 2026-11-03 and it took $49.99 off the S788. Returns are 30 days; the '
+          'warranty is 1 year on hardware, with a second year for registered members. A PD power supply, carrying case, cables and a driver USB drive come in '
+          'the box.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          '<p>The weights of the FOPO S788C and most rivals, whether the Trio 3 Pro and UPERFECT units use DisplayLink or need separate power, and any '
+          "2025–2026 triple-extender review from Tom's Hardware, PCMag or AppleInsider (search returned none).</p>\n",
+ 'sources': [('FOPO S788', 'https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender'),
+             ('FOPO S980', 'https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender'),
+             ('FOPO warranty policy', 'https://www.fopomonitor.com/pages/warranty-policy'),
+             ('Notebookcheck: FOPO 12-inch triple extender review',
+              'https://www.notebookcheck.net/FOPO-12-inch-triple-monitor-extender-review-Clunky-and-more-fragile-than-standalone-portable-monitors.636422.0.html'),
+             ('Mobile Pixels comparison page', 'https://mobilepixels.us/pages/xebec-comparison'),
+             ('UPERFECT triple laptop screen extender', 'https://uperfect.com/products/triple-laptop-screen-extender')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'solar-panel-for-blink-outdoor-4-without-a-camera-bundle',
+ 'question': 'G89 (Awin brands: solar panel for a Blink Outdoor 4 sold separately)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'wasserstein-solar-panel-blink-outdoor-4',
+                    'item_id': 'WASSERSTEIN-BLINK-SOLAR',
+                    'title': 'Wasserstein solar panel for Blink Outdoor 4',
+                    'description': 'Internal battery, 13.1 ft cable, 360° mount, USB-C adapter for the Outdoor 4. $36.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/1100/5760/products/SolarPanelblinkcamoutdoorpic2-713927_cb0a1a55-b724-4f82-a914-e6d3369dbc90.jpg'},
+ 'title': 'Solar panel for a Blink Outdoor 4 sold separately, without a camera bundle (2026)',
+ 'h1': 'Solar panel for a Blink Outdoor 4 sold separately, without a camera bundle (2026)',
+ 'desc': "Where to buy a solar panel for a Blink Outdoor 4 without a new camera: Blink's own Solar Panel Mount fits only the Outdoor (3rd Gen) and sells "
+         "bundled in the US, so a third-party panel is the only route. Wasserstein's panel with an internal battery, 13.1 ft cable and USB-C adapter ($36.99, "
+         '2-pack $63.99) against generic 4 W panels at $27–30, with how solar power actually works on the Outdoor 4 (USB-C port, AA batteries out, weather '
+         'seal).',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Wasserstein solar panel for Blink Outdoor 4</strong> '
+          '({buy:wasserstein-solar-panel-blink-outdoor-4}): $36.99 on 2026-11-03 (list $48.99; 2-pack $63.99), with an internal battery, a 13.1 ft cable, a '
+          "360° mount and the USB-C adapter the Outdoor 4 needs. Blink's own Solar Panel Mount fits only the Outdoor (3rd Gen) and is sold in the US bundled "
+          'with a camera, so a third-party panel is the only way to add solar to an Outdoor 4 without buying a camera bundle; generic 4 W panels were '
+          '$27–30.</p>\n'
+          '<p>What to know: the Outdoor 4 runs on two AA lithium cells and has a USB-C port under a cover; Blink says the camera can run from a '
+          'weather-resistant USB-C power source but offers no solar product for it, and its support page lists the Outdoor 4, XT and XT2 as incompatible with '
+          "the Solar Panel Mount's micro-USB connector and seal. A third-party panel plugs into that USB-C port, the AAs come out (lithium AAs do not "
+          "recharge), and the camera then runs on the panel's internal battery day and night; the port cover is off, so the panel's plug is what seals the "
+          "port, which is the seller's claim rather than Blink's. Wasserstein's extras over a $27 generic panel are the internal battery, the included USB-C "
+          'converter, the 13.1 ft cable and a 3-month warranty with 30-day returns.</p>\n',
+ 'columns': [('fits', 'Fits the Outdoor 4'), ('battery', 'Internal battery'), ('cable', 'Cable / mount'), ('sold', 'Sold alone')],
+ 'rows': [{'slug': 'wasserstein-solar-panel-blink-outdoor-4',
+           'model': 'Wasserstein solar panel (Outdoor 4/3, XT2, XT)',
+           'cells': {'fits': 'Yes, USB-C converter included',
+                     'battery': 'Yes',
+                     'cable': '13.1 ft; 360° wall mount, screws and anchors',
+                     'sold': 'Yes: 1, 2 or 3 pack'}},
+          {'brand': 'Blink',
+           'model': 'Solar Panel Mount (official)',
+           'url': 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs',
+           'cells': {'fits': 'No: Outdoor (3rd Gen) only; Outdoor 4, XT, XT2 listed as incompatible',
+                     'battery': 'No',
+                     'cable': 'Integrated mount',
+                     'sold': 'Bundled with a camera in the US ($74.98); alone in the UK (£34.99)',
+                     'price': '$74.98 with camera (Slickdeals), 2026-11-03'}},
+          {'brand': 'Generic',
+           'model': '4 W USB-C panels for Blink Outdoor 4 (Amazon)',
+           'url': 'https://www.amazon.com/Camera-Compatible-Outdoor-Adjustable-Weatherproof/dp/B0CRD6L3LP',
+           'cells': {'fits': 'Yes, USB-C plug',
+                     'battery': 'Some list a 2000 mAh battery',
+                     'cable': '13.12 ft typical',
+                     'sold': 'Yes: singles, 2-, 3- and 4-packs',
+                     'price': 'about $27–30 single; $16 (2-pack) to $52.99 (3-pack), aggregator figures 2026-11-03'}},
+          {'brand': 'Wasserstein',
+           'model': '2-pack / 3-pack',
+           'url': 'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack',
+           'cells': {'fits': 'Yes', 'battery': 'Yes', 'cable': '13.1 ft each', 'sold': 'Yes', 'price': '$63.99 (2) / $91.99 (3) on 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>How solar works on an Outdoor 4</h2>\n'
+          "<p>Blink's Outdoor 4 ships with two AA lithium batteries and a USB-C port behind a rubber cover. Blink's own support page says the camera can be "
+          'powered through that port by a weather-resistant USB-C adapter and that, once the cover is removed, the camera is no longer weather-resistant until '
+          'it goes back on. A solar panel for the Outdoor 4 is therefore a USB-C power supply with a battery: the panel charges its internal cell by day, the '
+          'cell runs the camera at night, and the AAs are removed. Blink sells no such panel for the Outdoor 4 and has not said whether its Battery Extension '
+          'Pack works with it.</p>\n'
+          "<h2>What Blink's own mount does</h2>\n"
+          "<p>The Blink Solar Panel Mount is a micro-USB design for the Outdoor (3rd Gen). Blink's FAQ names the Outdoor 4, XT and XT2 as unsupported, and in "
+          'the US it is sold with a camera ($74.98 bundle), standalone only abroad (£34.99 at John Lewis). It is not an option for an Outdoor 4 owner at any '
+          'price.</p>\n'
+          '<h2>Internal battery and cable</h2>\n'
+          "<p>Wasserstein's panel stores daytime charge in an internal battery and runs the camera through the night and through cloudy days; the 13.1 ft "
+          'weatherproof cable lets the panel sit in sun while the camera sits in shade, and the 360° wall mount comes with screws and anchors. Owner reviews '
+          "at Best Buy and Lowe's praise fewer battery swaps and report charge levels rising over weeks; a minority report no charging, and Wasserstein's own "
+          'reply is that its panels trickle-charge rather than fill a flat battery.</p>\n'
+          '<h2>Warranty and returns</h2>\n'
+          "<p>Wasserstein's Blink accessories carry a 3-month warranty per its listings and the store gives 30 days to return. Tom's Guide's piece on "
+          "Wasserstein's panel says it mounts more flexibly than Blink's own but is not as seamless.</p>\n"
+          '<h2>What we could not verify</h2>\n'
+          "<p>Whether Blink's Battery Extension Pack fits the Outdoor 4, long-term owner reports on r/blinkcameras, Ayotu's and Hoiioa's exact Amazon prices, "
+          'and whether the Outdoor 4 keeps its weather rating with a third-party plug in the port.</p>\n',
+ 'sources': [('Wasserstein solar panel for Blink Outdoor 4 & 3 / XT2 / XT',
+              'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack'),
+             ('Blink support: Solar Panel Mount FAQs', 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs'),
+             ("Tom's Guide: this solar panel is a game-changer for security cameras, but there's a catch",
+              'https://www.tomsguide.com/opinion/this-solar-panel-is-a-game-changer-for-security-cameras-but-theres-a-catch'),
+             ('Blink Solar Panel Mount, John Lewis (UK, sold alone)',
+              'https://www.johnlewis.com/blink-solar-panel-mount-for-blink-outdoor-camera-black/p6144808'),
+             ('Blink Outdoor + Solar Panel Mount bundle (Slickdeals)',
+              'https://slickdeals.net/f/16078297-blink-outdoor-solar-panel-charging-mount-wireless-motion-detection-add-on-camera-sync-module-required-74-98')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription',
+ 'question': 'G90 (Awin brands: bird feeder camera from a Blink or Wyze camera you already own)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'wasserstein-bird-feeder-camera-case',
+                    'item_id': 'WASSERSTEIN-BIRD-FEEDER-CASE',
+                    'title': 'Wasserstein bird feeder case for Blink, Wyze, Ring',
+                    'description': 'Holds 26.4 oz of seed; fits Blink Outdoor 4, Wyze Cam v3/OG, Ring Stick Up Cam. Camera not included. $50.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/1100/5760/files/1f_Listing.jpg'},
+ 'title': 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
+ 'h1': 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
+ 'desc': "Yes: Wasserstein's Bird Feeder Camera Case ($50.99) holds 26.4 oz of seed and fits the Blink Outdoor 4 and 3, Wyze Cam OG, v3, v3 Pro and Outdoor, "
+         "and Ring Stick Up Cam, with clips kept on the camera's own storage (Wyze microSD, Blink Sync Module 2). Compared with Netvue Birdfy, Birdfy Lite, "
+         'Bird Buddy and Soliom feeders that include a camera and AI bird identification, with what each needs a plan for and the prices seen on 2026-11-03.',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Yes. The <strong>Wasserstein Bird Feeder Camera Case</strong> '
+          '({buy:wasserstein-bird-feeder-camera-case}) turns the Blink or Wyze camera you already own into a bird feeder camera without a subscription: $50.99 '
+          'on 2026-11-03 (list $65.99), holding 26.4 oz of seed and fitting the Blink Outdoor 4 and 3, Wyze Cam OG, v3, v3 Pro and Outdoor, and Ring Stick Up '
+          "Cam. Clips follow your camera's own storage; for AI bird identification, Birdfy ($170–250) and Bird Buddy ($199+) are the answer.</p>\n"
+          '<p>What to know: the case is a weatherproof feeder with a camera pocket, nothing more, so the picture, the clips and the alerts are whatever your '
+          'camera already gives you. A Wyze Cam v3 records to its microSD card with no plan, and a Blink Outdoor 4 saves motion clips to a USB drive in a Sync '
+          "Module 2 without a plan (no person detection or extended live view on the free tier). The case does no bird identification; Netvue's Birdfy Feeder "
+          'AI ($249.99 list, $169.98–199 on sale, camera included) bundles lifetime AI ID according to TechRadar while other outlets describe a $4.99-a-month '
+          'plan, Birdfy Lite ($199.99 list, $169.99) adds AI only by plan, and Bird Buddy 2 ($199 MSRP) puts its AI features in a Pro plan. TechRadar found '
+          "Blink's picture in the case slightly sharper than Ring's, and Bob Vila's review (7.8/10) says squirrels are not kept out. Returns are 30 "
+          'days.</p>\n',
+ 'columns': [('camera', 'Camera included'), ('id', 'Bird identification'), ('plan', 'Subscription'), ('feed', 'Seed capacity')],
+ 'rows': [{'slug': 'wasserstein-bird-feeder-camera-case',
+           'model': 'Wasserstein Bird Feeder Camera Case',
+           'cells': {'camera': 'No: fits Blink Outdoor 4/3, Wyze Cam OG/v3/v3 Pro/Outdoor, Ring Stick Up Cam',
+                     'id': 'None',
+                     'plan': 'None for the case; clips per your camera (Wyze microSD, Blink Sync Module 2)',
+                     'feed': '26.4 oz'}},
+          {'brand': 'Netvue',
+           'model': 'Birdfy Feeder AI',
+           'url': 'https://www.techradar.com/cameras/netvue-birdfy-feeder-ai-review',
+           'cells': {'camera': 'Yes, 1080p',
+                     'id': 'AI (6,000 species)',
+                     'plan': 'Lifetime AI bundled per TechRadar; a $4.99/mo plan per other outlets',
+                     'feed': 'not read',
+                     'price': '$249.99 list; $169.98–199 on sale, 2026-11-03'}},
+          {'brand': 'Netvue',
+           'model': 'Birdfy Lite',
+           'url': 'https://www.techradar.com/cameras/the-best-bird-feeder-camera-in-year-birdwatching-at-home',
+           'cells': {'camera': 'Yes',
+                     'id': 'Only with a plan (about $5/mo)',
+                     'plan': 'Records and alerts without one',
+                     'feed': 'not read',
+                     'price': '$199.99 list; $169.99 sale, 2026-11-03'}},
+          {'brand': 'Bird Buddy',
+           'model': 'Bird Buddy 2',
+           'url': 'https://amp.cnn.com/cnn/cnn-underscored/reviews/bird-buddy-smart-bird-feeder',
+           'cells': {'camera': 'Yes',
+                     'id': 'AI, with Pro features behind a plan',
+                     'plan': 'Free tier; Pro about $6/mo or $60/yr (older review; current price not confirmed)',
+                     'feed': 'not read',
+                     'price': '$199 MSRP; $199.99 at Target against a $279.99 solar-roof list, 2026-11-03'}},
+          {'brand': 'Soliom',
+           'model': 'BF08 AI feeder with 5 W solar',
+           'url': 'https://www.walmart.com/',
+           'cells': {'camera': 'Yes', 'id': 'AI', 'plan': 'not read', 'feed': 'not read', 'price': 'from $129 at Walmart, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>What recording you get with your own camera</h2>\n'
+          "<p>With a Wyze Cam v3 or OG, a microSD card in the camera records continuously or on events with no plan, and the Wyze app's free tier gives "
+          '12-second event clips with a cooldown. With a Blink Outdoor 4, a Sync Module 2 saves motion clips to a USB drive (up to 256 GB) when the account '
+          "has no plan; Blink's local clips skip person detection, extended live view and Moments. Either way the feeder adds nothing to the storage question "
+          'and takes nothing away.</p>\n'
+          '<h2>Mounting and build</h2>\n'
+          "<p>A strap for small trees and poles or a metal wall mount, weatherproof plastic, and a 26.4 oz seed well. TechRadar's review found the Blink "
+          "picture sharper than Ring's in the case and birds not perfectly sharp with either; CNN Underscored called it an affordable way to start, and Bob "
+          'Vila scored it 7.8/10 with the note that it is not critter-proof.</p>\n'
+          '<h2>When a dedicated feeder is the better buy</h2>\n'
+          '<p>If you do not own a Wyze or Blink camera, a Birdfy Lite at $169.99 is within $50 of buying a camera plus the case and comes assembled with its '
+          "own app; if species identification is the point, Birdfy's AI model or Bird Buddy do it and the Wasserstein case cannot.</p>\n"
+          '<h2>Warranty and returns</h2>\n'
+          '<p>The store page states no warranty term for the case; Wasserstein lists 3 months on its accessories. Returns are 30 days.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>Bird Buddy's current Pro price, which Birdfy models include AI identification without a plan (TechRadar, Reviewed and Gizmodo disagree), the "
+          "Soliom's plan terms, and cheaper Amazon feeder cases for Blink and Wyze cameras (none surfaced in search).</p>\n",
+ 'sources': [('Wasserstein Bird Feeder Camera Case',
+              'https://wasserstein-home.com/products/wasserstein-bird-feeder-smart-camera-case-compatible-with-ring-blink-and-wyze-cam-bird-feeder-for-bird-watching-with-your-security-cam-saddle-brown'),
+             ('TechRadar: Wasserstein bird feeder camera case review', 'https://www.techradar.com/cameras/wasserstein-bird-feeder-camera-case-review'),
+             ('CNN Underscored: Wasserstein bird feeder camera case', 'https://amp.cnn.com/cnn/cnn-underscored/reviews/wasserstein-bird-feeder-camera-case'),
+             ('Bob Vila: best bird feeder cameras', 'https://www.bobvila.com/lawn-and-garden/best-bird-feeder-cameras.md'),
+             ('Blink support: Sync Module 2 FAQs (local storage)', 'https://support.blinkforhome.com/en_US/faq-sm/sync-module-2-faqs'),
+             ('TechRadar: Netvue Birdfy Feeder AI review', 'https://www.techradar.com/cameras/netvue-birdfy-feeder-ai-review')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'best-swimming-headphones-with-mp3-storage-under-100',
+ 'question': 'G91 (Awin brands: swimming headphones with built-in MP3 storage under $100)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'mojawa-run-plus-bone-conduction-32gb',
+                    'item_id': 'MOJAWA-RUN-PLUS',
+                    'title': 'MOJAWA Run Plus, IP68, 32 GB',
+                    'description': 'Bone conduction, 32 GB MP3 for the pool, Bluetooth 5.0 on land, 8-hour battery. $99.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0603/1012/6834/files/run-plus-headphones-with-2026-new-version-badge.png'},
+ 'title': 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
+ 'h1': 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
+ 'desc': "Which swimming headphones with built-in MP3 storage cost under $100: MOJAWA's Run Plus ($99.99, IP68 bone conduction, 32 GB, Bluetooth 5.0 on land, "
+         "8 hours) against MOJAWA's Purra Swim, Shokz's OpenSwim Pro and OpenSwim, H2O Audio's Tri 2 Pro, Naenka's Runner Diver and Nank's Diver2 Pro, with "
+         "RTINGS's verdict on the sound, why Bluetooth does not work underwater and the prices seen on 2026-11-03.",
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>MOJAWA Run Plus</strong> ({buy:mojawa-run-plus-bone-conduction-32gb}), the best '
+          'swimming headphones with built-in MP3 storage under $100: $99.99 on 2026-11-03 (list $129.99) for IP68 bone-conduction headphones with 32 GB of '
+          "onboard music, Bluetooth 5.0 for dry land and about 8 hours of play. Shokz's OpenSwim Pro has the same 32 GB with better-reviewed sound at "
+          "$179.95–229.95; the only rival near $100 we found, H2O Audio's original Tri, has 8 GB.</p>\n"
+          "<p>What to know: Bluetooth does not travel through water, so every swim headphone plays from onboard storage in the pool and the Run Plus's 32 GB "
+          "(about 8,000 songs) is the figure that matters; Shokz's original OpenSwim has 4 GB and no Bluetooth at all, H2O Audio's Tri 2 Pro has 8 GB at "
+          "$199.99, and Naenka's Runner Diver about 16 GB. The honest part is the sound: RTINGS rates the Run Plus's audio as poor even for bone conduction "
+          "and prefers the Shokz OpenRun Pro for dry land, while Tom's Guide found it comfortable and fine in and out of the water, so this is a pool purchase "
+          "first. MOJAWA's Purra Swim ($169.99) keeps the 32 GB and stretches the battery to 15 hours; the Run Plus gets 8 hours (Headphones Addict measured 8 "
+          "h 43 min) against the OpenSwim Pro's 6 hours in MP3 mode. MOJAWA gives 30-day returns and a 2-year warranty through official channels; the $129.99 "
+          '"2026 Edition" is the same model in new colours.</p>\n',
+ 'columns': [('storage', 'Onboard storage'), ('water', 'Water rating'), ('battery', 'Battery'), ('bt', 'Bluetooth')],
+ 'rows': [{'slug': 'mojawa-run-plus-bone-conduction-32gb',
+           'model': 'MOJAWA Run Plus',
+           'cells': {'storage': '32 GB', 'water': 'IP68, 2 m', 'battery': '8 h (8 h 43 min measured)', 'bt': '5.0, land only'}},
+          {'slug': 'mojawa-purra-swim-32gb-bone-conduction',
+           'model': 'MOJAWA Purra Swim',
+           'cells': {'storage': '32 GB', 'water': 'IP68, 2 m', 'battery': '15 h (MOJAWA, 50% volume)', 'bt': '5.0, land only'}},
+          {'brand': 'Shokz',
+           'model': 'OpenSwim Pro',
+           'url': 'https://shokz.com/products/openswimpro',
+           'cells': {'storage': '32 GB',
+                     'water': 'IP68',
+                     'battery': '9 h Bluetooth, 6 h MP3',
+                     'bt': 'Yes',
+                     'price': '$229.95 list; $179.95 street; $139.99 in an REI sale (date unclear), 2026-11-03'}},
+          {'brand': 'Shokz',
+           'model': 'OpenSwim (original)',
+           'url': 'https://shokz.com/',
+           'cells': {'storage': '4 GB', 'water': 'IP68', 'battery': 'not read', 'bt': 'No', 'price': 'not read'}},
+          {'brand': 'H2O Audio',
+           'model': 'Tri 2 Pro Multi-Sport',
+           'url': 'https://www.techradar.com/health-fitness/fitness-headphones/h2o-audio-tri-2-pro-multi-sport-review-a-triathletes-dream',
+           'cells': {'storage': '8 GB', 'water': 'IPX8', 'battery': 'not read', 'bt': 'Yes', 'price': '$199.99, 2026-11-03'}},
+          {'brand': 'Naenka',
+           'model': 'Runner Diver',
+           'url': 'https://www.techradar.com/reviews/naenka-runner-diver',
+           'cells': {'storage': 'about 16 GB (unconfirmed)', 'water': 'IPX8', 'battery': 'about 10 h', 'bt': 'Yes', 'price': '$169.99 at launch (2022)'}},
+          {'brand': 'Nank',
+           'model': 'Runner Diver2 Pro',
+           'url': 'https://www.techradar.com/health-fitness/fitness-headphones/nank-runner-diver2-pro-review',
+           'cells': {'storage': 'not read', 'water': 'not read', 'battery': 'not read', 'bt': 'Yes', 'price': 'about $160, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>Why storage, not Bluetooth</h2>\n'
+          '<p>Radio at Bluetooth frequencies dies within an inch of water, so a swim headphone is an MP3 player on your cheekbones. 32 GB holds a library; 4 '
+          "or 8 GB holds a few playlists. Loading is drag-and-drop over USB, and MOJAWA's and Shokz's units both switch to Bluetooth out of the pool. Use the "
+          'included earplugs: bone conduction underwater sounds clearer with the ear canal blocked.</p>\n'
+          '<h2>The sound, honestly</h2>\n'
+          "<p>RTINGS measured the Run Plus's frequency response consistency as bad and calls its sound poor even for bone conduction, recommending the Shokz "
+          'OpenRun Pro for most people and reserving the Run Plus for swimmers who need the storage. Tom\'s Guide found it light, comfortable and "up there '
+          'with" the OpenSwim in the water; Headphones Addict liked the natural mids but heard the bass distort, and GamingTrend called the underwater '
+          'performance excellent. Buy it for the pool, not as your only pair.</p>\n'
+          '<h2>Battery and charging</h2>\n'
+          '<p>8 hours rated and 8 h 43 min measured at 50% volume, with a 5-minute charge good for about 1.5 hours; the OpenSwim Pro gets 6 hours in MP3 mode '
+          'and the Purra Swim 15 hours on a magnetic USB charger in 2 hours.</p>\n'
+          '<h2>Fit</h2>\n'
+          '<p>Open-ear loops that sit on the cheekbones; some wearers report top-of-ear pressure after an hour or so, and the loops can press on glasses '
+          'frames, so goggles with thin straps fit better than thick ones.</p>\n'
+          '<h2>Returns and warranty</h2>\n'
+          "<p>A 30-day money-back guarantee and a 2-year warranty on purchases through MOJAWA's official channels. A refurbished Run Plus was $59.99 on "
+          'mojawa.com on 2026-11-03.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>The Run Plus's headphone weight and multipoint support, any independent review of the Purra Swim, the exact Naenka storage figure, and the date "
+          "of Shokz's $139.99 REI price.</p>\n",
+ 'sources': [('MOJAWA Run Plus', 'https://mojawa.com/products/run-plus-waterproof-bone-conduction-headphones'),
+             ('MOJAWA Purra Swim', 'https://mojawa.com/products/purra-swim-bone-conduction-headphones-best-swimming-headphones'),
+             ('MOJAWA refund policy', 'https://mojawa.com/pages/refund-policy'),
+             ('RTINGS: MOJAWA Run Plus review', 'https://www.rtings.com/headphones/reviews/mojawa/run-plus-bone-conduction'),
+             ("Tom's Guide: MOJAWA Run Plus review", 'https://tomsguide.com/reviews/mojawa-run-plus'),
+             ('Shokz OpenSwim Pro', 'https://shokz.com/products/openswimpro'),
+             ('Headphones Addict: MOJAWA Run Plus review', 'https://headphonesaddict.com/mojawa-run-plus-review/')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
 ]
