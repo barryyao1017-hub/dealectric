@@ -966,4 +966,188 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Garmin Approach S72 announcement", "https://www.garmin.com/en-US/newsroom/press-release/outdoor/meet-approach-s72-garmins-ultimate-golf-smartwatch/"),
  ],
  "published": "2026-11-02", "checked": "2026-11-02"},
+
+# ---------------- G16–G18: UGREEN gap funnel (growth/focus/funnel-ugreen/README.md), 2026-11-03 ----------------
+# Packs ug-nas-unraid-1/-2, ug-nas-10gbe-1/-2, ug-charger-2laptops-1 (growth/evals/runs/fastloop/), all voted open by
+# Sonnet 5.5 / Opus 5.5 / Fable 5.1. Rival figures read 2026-11-03 from the makers' pages or, where those answered 429,
+# from reviews that quote them (named in Sources). We don't test NAS units or chargers; every figure is the maker's.
+{"slug": "best-nas-for-unraid-truenas", "question": "G16 (UGREEN funnel: prebuilt NAS for Unraid / TrueNAS)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus for Unraid or TrueNAS",
+                    "description": "Prebuilt 4-bay Intel x86 NAS, 10GbE, UEFI boot; warranty stands with another OS.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best prebuilt NAS for Unraid or TrueNAS (2026): 4-bay x86 boxes under $700",
+ "h1": "Best prebuilt NAS for Unraid or TrueNAS (2026)",
+ "desc": "Which prebuilt NAS to buy to run Unraid or TrueNAS instead of the maker's OS: six 4-bay and 2-bay x86 boxes (UGREEN, TerraMaster, Asustor, QNAP, Synology) compared on CPU, RAM ceiling, LAN, M.2 slots, each maker's stance on a third-party OS and its warranty, the BIOS and boot steps, and the price on the maker's US store on 2026-11-03, plus what an Unraid licence adds.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best prebuilt NAS under $700 to run Unraid or TrueNAS on, $619.99 diskless on 2026-11-03: a 4-bay Intel x86 NAS (Pentium Gold 8505, 10GbE, 2× M.2) whose UEFI BIOS boots Unraid or TrueNAS, and UGREEN says the hardware warranty is unchanged with another OS. Disable the BIOS watchdog timer first, or it reboots every three minutes.</p>
+<p>$668.99 with an Unraid Starter licence ($49); TrueNAS is free. Smaller: the 2-bay <strong>DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), Intel N100, $389.99, same BIOS and stance. The warranty statement comes from a UGREEN representative quoted by NASCompares (26 March 2024: the policy "only covers the hardware" and "will not change"), not from a UGREEN page; UGOS support ends with the install. Before installing, press F2 or Ctrl+F12 at boot with HDMI and a keyboard attached, disable the watchdog timer, and take the internal OS drive (128 GB SSD) out of the boot order so it stops booting UGOS.</p>
+""",
+ "columns": [("cpu", "CPU"), ("ram", "RAM (max)"), ("lan", "LAN"), ("m2", "M.2 slots"), ("stance", "Third-party OS and warranty"), ("install", "Install notes")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T, Quick Sync", "ram": "8 GB DDR5 (64 GB)", "lan": "1× 10GbE + 1× 2.5GbE", "m2": "2× NVMe",
+             "stance": "Hardware warranty unchanged with another OS, UGOS support ends (UGREEN rep via NASCompares, Mar 2024); 2 years", "install": "UEFI; boot USB or NVMe; disable the watchdog timer and the internal OS drive in BIOS"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800 (2-bay)",
+   "cells": {"cpu": "Intel N100, 4C/4T, Quick Sync", "ram": "8 GB DDR5 (16 GB)", "lan": "1× 2.5GbE", "m2": "2× NVMe",
+             "stance": "Same UGREEN stance; 2 years", "install": "Same steps; 32 GB eMMC holds UGOS"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"cpu": "Intel Core i3-N305, 8C", "ram": "32 GB DDR5, one slot", "lan": "2× 2.5GbE", "m2": "2× NVMe (PCIe 3 x1)",
+             "stance": "No official statement found; NASCompares says Unraid does not void the 2-year warranty but is unsupported", "install": "The bootloader USB stick sits inside the case: the motherboard comes out to swap it (Neowin)", "price": "$699.99 (TerraMaster's store, via search; $644.99 on Amazon in Aug 2026)"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen2 (AS6704T)", "url": "https://www.asustor.com/product/spec?p_id=77",
+   "cells": {"cpu": "Intel Celeron N5105, 4C", "ram": "4 GB DDR4 (16 GB)", "lan": "2× 2.5GbE (+ optional PCIe 10GbE card)", "m2": "4× NVMe (PCIe 3 x1)",
+             "stance": "Permitted under the warranty terms, no support for other OSes (Jeff Geerling, 2023); 3 years", "install": "8 GB eMMC too small: boot from USB or NVMe; on TrueNAS the fan sits at a fixed 20%, the power button and status LEDs need a community driver", "price": "$681.99 (Walmart) to $750.99 MSRP"}},
+  {"brand": "QNAP", "model": "TS-464-8G", "url": "https://store.qnap.com/ts-464-8g-us.html",
+   "cells": {"cpu": "Intel Celeron N5095, 4C", "ram": "8 GB (16 GB)", "lan": "2× 2.5GbE (PCIe slot for a 10GbE card, $139)", "m2": "2× NVMe (PCIe 3 x1)",
+             "stance": "No statement; the user guide voids the warranty for unauthorized modification and disclaims unsupported third-party software; 3 years", "install": "Users run TrueNAS from NVMe or Unraid from USB and keep QTS on its own partition as a fallback", "price": "$639 (QNAP store, 2–4 week lead time)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T, no iGPU", "ram": "4 GB ECC DDR4 (32 GB)", "lan": "2× 2.5GbE, no 10GbE option", "m2": "2× NVMe (pools need Synology SSDs)",
+             "stance": "DSM only; the warranty excludes use with non-Synology items and the EULA bars modifying the software, so a replaced OS most likely falls outside it; 3 years", "install": "Not a practical target", "price": "about $640 list"}},
+ ],
+ "after": """
+<h2>Installing Unraid or TrueNAS on a UGREEN NASync</h2>
+<ul>
+<li><strong>Boot.</strong> Plug in HDMI and a keyboard, press F2 or Ctrl+F12 at power-on for the BIOS, put the USB stick (Unraid) or the NVMe/USB installer (TrueNAS SCALE) first in the boot order, and disable the internal UGOS drive (128 GB SSD on the DXP4800 Plus, 32 GB eMMC on the DXP2800) so it cannot boot UGOS. Debian 13 needed "Force UEFI" to boot from NVMe (Debian wiki).</li>
+<li><strong>Watchdog.</strong> Disable the watchdog timer in the BIOS. With UGOS gone nothing feeds it, and the NAS reboots about every three minutes.</li>
+<li><strong>What works.</strong> Community installs report the Intel NIC (2.5GbE and 10GbE), the iGPU for Plex or Jellyfin transcoding, the M.2 slots and the HDMI output working under Unraid and TrueNAS SCALE on the DXP series. Fan curves and the front LEDs are UGOS features; expect default fan behaviour and dark LEDs unless a community driver covers your model.</li>
+<li><strong>Warranty.</strong> UGREEN's representative told NASCompares (update of 26 March 2024) that the warranty "only covers the hardware" and the policy "will not change" with another OS; the Debian wiki and NASCompares' Unraid guide repeat it. A support-chat reply reported on Reddit in 2024 said the opposite, and forum users mention a warranty sticker over the OS drive. Keep the UGOS drive intact so you can put it back.</li>
+</ul>
+<h2>What the OS adds to the price</h2>
+<p>Unraid: Starter $49 (6 attached devices, a year of updates), Unleashed $109 (unlimited devices, a year of updates), Lifetime $249; after the year, updates cost $36 a year or the licence keeps working as is. Unraid 7.3 can boot from an internal drive, but a USB stick is still needed to start a new server. TrueNAS Community Edition is free (25.10 stable as of November 2026). So the DXP4800 Plus comes to $668.99 with Unraid Starter or $619.99 with TrueNAS, before drives.</p>
+<h2>Why not the others</h2>
+<p>The TerraMaster F4-424 Pro has the stronger CPU (i3-N305, 8 cores) at about the same money, but its 32 GB of RAM is soldered into one slot, it has no 10GbE, and TerraMaster's own bootloader USB sits inside the case. The Asustor Lockerstor 4 Gen2 is the one maker whose warranty terms openly permit another OS, but it is 2021 silicon (N5105, 4 GB DDR4) and TrueNAS leaves its fan at a fixed speed and its LEDs dark without a community driver. QNAP's TS-464 works and costs $639, but QNAP's documentation disclaims unsupported software. Synology's DS925+ is built for DSM and nothing else.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus (specs, price, 2-year warranty)", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("NASCompares: UGREEN Q&A, with the 26 March 2024 warranty update", "https://nascompares.com/2024/03/14/ugreen-brand-user-qa-questions-about-the-new-dxp-nasync-nas-storage-solution/"),
+  ("NASCompares: installing Unraid on a UGREEN NAS", "https://nascompares.com/2024/08/23/how-to-install-unraid-on-a-ugreen-nas-full-guide/"),
+  ("Debian wiki: installing on UGREEN NASync (watchdog, boot order)", "https://wiki.debian.org/InstallingDebianOn/Ugreen"),
+  ("TrueNAS community: UGREEN NASync support thread", "https://www.truenas.com/community/threads/ugreen-nasync-support.117567/"),
+  ("TerraMaster F4-424 Pro specification", "https://www.terra-master.com/pages/f4-424-pro-specification"),
+  ("TerraMaster warranty and returns", "https://www.terra-master.com/pages/warranty-returns"),
+  ("Asustor AS6704T specification", "https://www.asustor.com/product/spec?p_id=77"),
+  ("Jeff Geerling: TrueNAS on an Asustor NAS", "https://www.jeffgeerling.com/blog/2023/how-i-installed-truenas-on-my-new-asustor-nas/"),
+  ("TrueNAS forum: Asustor Lockerstor Gen2 fan, power button and LEDs", "https://forums.truenas.com/t/asustor-lockerstor-gen2-on-truenas-fan-control-power-button-shutdown-and-status-leds-dont-work/66386"),
+  ("QNAP TS-464-8G", "https://store.qnap.com/ts-464-8g-us.html"),
+  ("TrueNAS forum: TrueNAS on QNAP TS-464 hardware", "https://forums.truenas.com/t/possible-to-install-truenas-on-qnap-ts-464eu-hardware/24929"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("Synology warranty terms", "https://www.synology.com/en-eu/company/legal/warranty"),
+  ("Unraid pricing", "https://account.unraid.net/buy"),
+  ("Unraid licensing FAQ", "https://docs.unraid.net/unraid-os/faq/licensing-faq"),
+  ("TrueNAS Community Edition download", "https://www.truenas.com/getting-started/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-4-bay-nas-10gbe-under-700", "question": "G17 (UGREEN funnel: 4-bay NAS with built-in 10GbE under $700)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus, 4-bay NAS with built-in 10GbE",
+                    "description": "10GbE and 2.5GbE built in, Intel Quick Sync for Plex, 8 GB DDR5, 2× M.2. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best 4-bay NAS with built-in 10GbE under $700 (2026): every one that qualifies, and the add-in-card alternatives priced",
+ "h1": "Best 4-bay NAS with built-in 10GbE under $700 (2026)",
+ "desc": "Which 4-bay NAS has 10GbE built in for under $700: UGREEN's DXP4800 Plus and DXP4800 GT and QNAP's TS-432X compared with the 2.5GbE units that need a 10GbE card (QNAP TS-464, TerraMaster F4-424 Pro, Synology DS925+) and the pricier 10GbE boxes (TerraMaster F4-424 Max, Asustor Lockerstor 4 Gen3, UniFi UNAS Pro 4) on CPU, RAM, LAN, M.2, Plex hardware transcoding, warranty and the price on the maker's US store on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the cheapest 4-bay NAS with 10GbE built in at its 2026 price, $619.99 diskless on 2026-11-03: 10GbE plus 2.5GbE, an Intel Pentium Gold 8505 with Quick Sync for Plex 4K transcoding, 8 GB DDR5 (to 64 GB), two M.2 slots. The only other 4-bay NAS under $700 with 10GbE built in are UGREEN's DXP4800 GT ($659.99, two 10GbE ports, AMD, no Quick Sync) and QNAP's TS-432X ($659, ARM, SFP+).</p>
+<p>The catch: 10GbE pays off only with a 10GbE port or adapter in the computer and a 10GbE switch or direct cable, and UGREEN's single port tops out near 1,250 MB/s, so a two-editor studio wants the GT's second port. The $619.99 is a sale price against $729.99 with no stated end date. The 2.5GbE favourites cost more once a card is added (QNAP TS-464 $639 + QXG-10G1T $139 = $778), and the Synology DS925+ has no 10GbE option at all.</p>
+""",
+ "columns": [("cpu", "CPU"), ("ram", "RAM (max)"), ("tengig", "10GbE built in"), ("lan", "Other LAN"), ("m2", "M.2 slots"), ("plex", "Plex hardware transcoding"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T", "ram": "8 GB DDR5 (64 GB)", "tengig": "1× 10GbE RJ45", "lan": "1× 2.5GbE", "m2": "2× NVMe", "plex": "Yes (Quick Sync)", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP4800 GT", "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-gt-4-bay-nas-storage",
+   "cells": {"cpu": "AMD Ryzen R2514, 4C/8T", "ram": "8 GB DDR4 (64 GB)", "tengig": "2× 10GbE RJ45", "lan": "none", "m2": "2× NVMe (PCIe 3 x2)", "plex": "Vega 8 iGPU; no Quick Sync", "warranty": "2 years", "price": "$659.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "QNAP", "model": "TS-432X-4G", "url": "https://store.qnap.com/ts-432x-4g-us.html",
+   "cells": {"cpu": "Quad-core 2.0 GHz ARM (Alpine AL524)", "ram": "4 GB (16 GB)", "tengig": "1× 10GbE SFP+ (transceiver or DAC extra)", "lan": "2× 2.5GbE", "m2": "none", "plex": "No (ARM)", "warranty": "2 years", "price": "$659 (QNAP store)"}},
+  {"brand": "QNAP", "model": "TS-464-8G + QXG-10G1T card", "url": "https://store.qnap.com/ts-464-8g-us.html",
+   "cells": {"cpu": "Intel Celeron N5095, 4C", "ram": "8 GB (16 GB)", "tengig": "No: PCIe card, $139", "lan": "2× 2.5GbE", "m2": "2× NVMe (cache)", "plex": "Yes (Quick Sync)", "warranty": "3 years", "price": "$639 + $139 = $778"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"cpu": "Intel Core i3-N305, 8C", "ram": "32 GB DDR5, not expandable", "tengig": "No", "lan": "2× 2.5GbE", "m2": "2× NVMe (PCIe 3 x1)", "plex": "Yes (UHD iGPU)", "warranty": "2 years", "price": "$699.99 (TerraMaster's store, via search)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Max", "url": "https://www.terra-master.com/products/f4-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C", "ram": "8 GB DDR5 (64 GB)", "tengig": "2× 10GbE RJ45", "lan": "none", "m2": "2× NVMe (PCIe 4 x4)", "plex": "Yes (Iris Xe)", "warranty": "2 years", "price": "$899.99, sold out on 2026-11-03"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T", "ram": "4 GB ECC DDR4 (32 GB)", "tengig": "No, and no card slot", "lan": "2× 2.5GbE", "m2": "2× NVMe (pools need Synology SSDs)", "plex": "No iGPU", "warranty": "3 years", "price": "about $640 list"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen3 (AS6804T)", "url": "https://www.asustor.com/product/spec?p_id=86",
+   "cells": {"cpu": "AMD Ryzen V3C14, 4C", "ram": "16 GB ECC DDR5 (64 GB)", "tengig": "2× 10GbE RJ45", "lan": "2× 5GbE", "m2": "4× NVMe (PCIe 4 x1)", "plex": "No Quick Sync (AMD)", "warranty": "3 years", "price": "$1,299 MSRP"}},
+  {"brand": "Ubiquiti", "model": "UniFi UNAS Pro 4", "url": "https://store.ui.com/us/en/category/all-unifi-nas/products/unas-pro-4",
+   "cells": {"cpu": "4× Cortex-A57 2.0 GHz (ARM)", "ram": "8 GB", "tengig": "2× 10G SFP+", "lan": "1× 1GbE", "m2": "2× NVMe (cache only)", "plex": "No; no app platform", "warranty": "2 years", "price": "$499 (store.ui.com)"}},
+ ],
+ "after": """
+<h2>Which 10GbE port</h2>
+<p>RJ45 10GbE (UGREEN, TerraMaster, Asustor) plugs into Cat6a copper and the 10GBase-T ports on prosumer switches and Thunderbolt adapters. SFP+ (QNAP TS-432X, UniFi) needs a transceiver or a direct-attach cable at each end, cheaper per port on a UniFi or MikroTik switch but useless with a copper-only desk. A single 10GbE link moves a 1 GB file in about a second against about 4 seconds on 2.5GbE, provided the drives keep up: four spinning disks in RAID 5 give roughly 400–600 MB/s, so the NVMe slots matter for reads above that.</p>
+<h2>Plex and transcoding</h2>
+<p>Hardware transcoding needs an Intel iGPU with Quick Sync (the DXP4800 Plus, TS-464 and F4-424 Pro) or an AMD iGPU with a Plex Pass and driver support (the DXP4800 GT's Vega 8, reported working in reviews but not promised by UGREEN). The ARM units (TS-432X, UNAS Pro 4) cannot transcode 4K; the UNAS Pro 4 runs no apps at all.</p>
+<h2>Prices and what they are</h2>
+<p>UGREEN's NAS store showed $619.99 (DXP4800 Plus, against $729.99) and $659.99 (DXP4800 GT) on 2026-11-03 as sale prices with no end date; UGREEN's DXP4800 Pro (Core i3-1315U, 10GbE + 2.5GbE) was $799.99 the same day, over the line. QNAP's store quoted a 2–4 week lead time on the TS-464. TerraMaster's F4-424 Pro price comes from a search snippet of its store; the F4-424 Max was sold out.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN NASync DXP4800 GT", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-gt-4-bay-nas-storage"),
+  ("Notebookcheck: UGREEN DXP4800 GT review (Ryzen R2514, $659.99)", "https://www.notebookcheck.net/Ugreen-NASync-DXP4800-GT-review-A-powerful-4-bay-NAS-at-a-great-price.1322288.0.html"),
+  ("QNAP TS-432X-4G", "https://store.qnap.com/ts-432x-4g-us.html"),
+  ("QNAP TS-464-8G", "https://store.qnap.com/ts-464-8g-us.html"),
+  ("QNAP QXG-10G1T 10GbE card", "https://store.qnap.com/qxg-10g1t.html"),
+  ("TerraMaster F4-424 Pro specification", "https://www.terra-master.com/pages/f4-424-pro-specification"),
+  ("TerraMaster F4-424 Max", "https://www.terra-master.com/products/f4-424-max"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("Asustor AS6804T specification", "https://www.asustor.com/product/spec?p_id=86"),
+  ("UniFi UNAS Pro 4", "https://store.ui.com/us/en/category/all-unifi-nas/products/unas-pro-4"),
+  ("UniFi UNAS Pro 4 tech specs", "https://techspecs.ui.com/unifi/integrations/unas-pro-4"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "usb-c-charger-two-laptops-100w", "question": "G18 (UGREEN funnel: charger for two laptops at 100 W each)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nexode-200w-4-port-charger", "item_id": "UGREEN-NEXODE-200W-35538",
+                    "title": "UGREEN Nexode 200W GaN charger, two laptops at 100W each",
+                    "description": "Two USB-C ports at 100 W + 100 W at the same time, 140 W to one device, 4 ports, wall plug.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0257/5246/9566/files/ugreen-200w-4-port-usb-c-laptop-charger-7773141.png"},
+ "title": "Which USB-C charger can fast-charge two laptops at 100 W each at the same time (2026): the ones whose sharing tables say so",
+ "h1": "USB-C chargers that charge two laptops at 100 W each at the same time (2026)",
+ "desc": "Which GaN chargers really give two laptops 100 W each at once, from the makers' own port-sharing tables: UGREEN's Nexode 200W and 500W, Anker Prime 200W and 250W, EcoFlow RAPID Pro 320W, Baseus 240W and Satechi 200W compared on total watts, the two-laptop split, the biggest single port, cable needs and the price on the maker's US store on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN Nexode 200W 4-port charger</strong> ({buy:ugreen-nexode-200w-4-port-charger}), the GaN charger that charges two laptops at 100W each at the same time, $61.99 on 2026-11-03 (list $99.99): UGREEN rates two USB-C ports at 100 W + 100 W at once, 140 W to one device, plus a third USB-C and a USB-A. Most 140–160 W chargers fall to 65 + 65 or 100 + 60 with two laptops; 140 W to one port needs a 240 W-rated (EPR) cable.</p>
+<p>For three laptops, or a 240 W gaming laptop, the step up is the <strong>UGREEN Nexode 500W desktop charger</strong> ({buy:ugreen-nexode-500w-6-port-desktop-charger}): one 240 W port, four 100 W USB-C ports and a USB-A, $199.99 with the code. UGREEN's own Nexode 140W (65 + 65) and Nexode Pro 160W (100 + 60) are the cases to avoid for two laptops; Anker's Prime 200W (100 + 100) was sold out on anker.com on 2026-11-03, and its Prime 250W ($149.99) gives 140 + 100.</p>
+""",
+ "columns": [("total", "Total"), ("ports", "Ports"), ("split", "Two laptops at once"), ("single", "Biggest single port"), ("form", "Form"), ("cable", "Cable")],
+ "rows": [
+  {"slug": "ugreen-nexode-200w-4-port-charger", "model": "UGREEN Nexode 200W 4-port",
+   "cells": {"total": "200 W", "ports": "3× USB-C, 1× USB-A", "split": "100 W + 100 W (UGREEN's page)", "single": "140 W", "form": "Wall plug, foldable prongs", "cable": "Not stated; 240 W cable needed for 140 W"}},
+  {"slug": "ugreen-nexode-500w-6-port-desktop-charger", "model": "UGREEN Nexode 500W 6-port desktop",
+   "cells": {"total": "500 W", "ports": "5× USB-C, 1× USB-A", "split": "240 W + 100 W on C1 + C2 (review table); UGREEN lists per-port maxima only", "single": "240 W (PD 3.1)", "form": "Desktop, 2.2 kg, AC cord", "cable": "None included"}},
+  {"brand": "Anker", "model": "Prime 250W 6-port desktop (A2345)", "url": "https://www.anker.com/products/a2345-anker-prime-charger-250w-6-ports-ganprime",
+   "cells": {"total": "250 W", "ports": "4× USB-C, 2× USB-A", "split": "Up to 140 W + 100 W (two ports share up to 240 W); a tester saw it throttle under that load within an hour", "single": "140 W (C1 only)", "form": "Desktop, AC cord", "cable": "Not stated", "price": "$149.99 (anker.com, 2026-11-03)"}},
+  {"brand": "Anker", "model": "Prime 200W 6-port (A2683)", "url": "https://www.anker.com/products/a2683-anker-prime-charger-200w-6-ports-gan",
+   "cells": {"total": "200 W", "ports": "4× USB-C, 2× USB-A", "split": "100 W + 100 W (Anker: each up to 100 W)", "single": "100 W", "form": "Desktop", "cable": "Not stated", "price": "Sold out on anker.com on 2026-11-03 ($79.99 seen earlier)"}},
+  {"brand": "EcoFlow", "model": "RAPID Pro 320W desktop", "url": "https://www.chargerlab.com/teardown-of-ecoflow-rapid-pro-320w-gan-desktop-charger-ef-dc-320/",
+   "cells": {"total": "320 W", "ports": "4× USB-C, 1× USB-A, pogo pin", "split": "140 W + 140 W (ChargerLAB)", "single": "140 W (C1, C2)", "form": "Desktop", "cable": "Not stated", "price": "Not found on EcoFlow's US store"}},
+  {"brand": "Baseus", "model": "240W Digital desktop charger", "url": "https://www.notebookcheck.net/Baseus-240-W-hands-on-Universal-GaN-charger-with-display-for-up-to-5-devices.812033.0.html",
+   "cells": {"total": "240 W", "ports": "3× USB-C, 1× USB-A, 1× DC", "split": "140 W + 100 W, but the 140 W is the DC barrel port; between two USB-C ports C1 gets more than C2", "single": "140 W USB-C (240 W DC)", "form": "Desktop", "cable": "240 W cable in the EU kit", "price": "$169.99 (Windows Central review)"}},
+  {"brand": "Satechi", "model": "200W 6-port USB-C GaN", "url": "https://satechi.com/products/200w-usb-c-6-port-pd-gan-charger",
+   "cells": {"total": "200 W", "ports": "6× USB-C", "split": "Not published; 140 W to one device on PD1 or PD2", "single": "140 W", "form": "Desktop", "cable": "None included", "price": "$149.99 at launch (2023)"}},
+  {"brand": "Belkin", "model": "BoostCharge Pro 200W 4-port", "url": "https://www.belkin.com/p/200w-4-port-usb-c-gan-charger/WCH015dqWH.html",
+   "cells": {"total": "200 W", "ports": "4× USB-C", "split": "Not published", "single": "140 W", "form": "Desktop", "cable": "Not stated", "price": "Not found"}},
+ ],
+ "after": """
+<h2>How the sharing works</h2>
+<p>A multi-port charger has one power budget and a table that splits it by which ports are in use. Two laptops only get 100 W each if the total is at least 200 W and the table assigns 100 + 100 to the two ports you use: on the UGREEN 200W those are the two 100 W USB-C ports; plug a phone into the third port and a review reports the two laptops drop to 65 W each. UGREEN's Nexode Pro 160W gives 100 W + 60 W with two laptops and 65 + 65 with four devices; the Nexode 140W gives 65 + 65. On the 500W, port C1 can deliver 240 W (48 V) and C2–C5 100 W each, so two laptops get 240 + 100; UGREEN's UK and EU pages are reported to limit C2–C5 to 60–65 W while C1 draws its full 240 W, so a 240 W gaming laptop and a 100 W laptop may not both get full power.</p>
+<h2>Cables and the 140 W question</h2>
+<p>USB-C stops at 100 W (20 V, 5 A) unless the charger, the laptop and the cable all support PD 3.1 Extended Power Range; an EPR cable is e-marked and rated 240 W (50 V, 5 A). Two 100 W laptops need two 100 W (5 A) cables, which most laptops ship with. 140 W to one port needs the 240 W cable. Apple lists USB-C fast charging at 140 W only for the 16-inch MacBook Pro from November 2023 on (M3 Pro/Max and later) with its 240 W cable; earlier 16-inch models take 140 W only through MagSafe 3 and 100 W over USB-C.</p>
+""",
+ "sources": [
+  ("UGREEN Nexode 200W 4-port charger (two laptops at 100 W each)", "https://us.ugreen.com/products/ugreen-200w-dual-laptop-type-c-charge"),
+  ("UGREEN Nexode 500W 6-port desktop charger (per-port spec table)", "https://us.ugreen.com/products/ugreen-500w-usbc-desktop-charger"),
+  ("Parkablogs: UGREEN 200W Nexode review (100 W + 100 W, 65 W each with a third device)", "https://www.parkablogs.com/content/review-ugreen-200w-nexode-gan-charger"),
+  ("MyHelpfulHints: UGREEN Nexode 500W review (240 W + 100 W table)", "https://myhelpfulhints.co.uk/reviews/product-reviews/ugreen-nexode-500w-charger"),
+  ("UGREEN Nexode Pro series page (160W: 65 W + 65 W + 15 W with four devices)", "https://www.ugreen.com/pages/ugreen-nexode-pro-charger-series"),
+  ("Notebookcheck: UGREEN Nexode Pro 160W (100 W + 60 W)", "https://www.notebookcheck.net/UGREEN-unveils-new-Nexode-Pro-160W-4-Port-GaN-Fast-Charger.781696.0.html"),
+  ("Anker Prime 250W (A2345)", "https://www.anker.com/products/a2345-anker-prime-charger-250w-6-ports-ganprime"),
+  ("techtest.org: Anker Prime 250W load and thermal test", "https://techtest.org/anker-prime-250w-usb-c-ladegeraet-test-2024-alles-ueber-leistung-pps-stufe-und-effizienz/"),
+  ("Anker Prime 200W (A2683)", "https://www.anker.com/products/a2683-anker-prime-charger-200w-6-ports-gan"),
+  ("ChargerLAB: EcoFlow RAPID Pro 320W teardown (140 W + 140 W)", "https://www.chargerlab.com/teardown-of-ecoflow-rapid-pro-320w-gan-desktop-charger-ef-dc-320/"),
+  ("Notebookcheck: Baseus 240W hands-on", "https://www.notebookcheck.net/Baseus-240-W-hands-on-Universal-GaN-charger-with-display-for-up-to-5-devices.812033.0.html"),
+  ("Belkin BoostCharge Pro 200W", "https://www.belkin.com/p/200w-4-port-usb-c-gan-charger/WCH015dqWH.html"),
+  ("Apple: fast charge your MacBook Pro (140 W over USB-C from the Nov 2023 16-inch)", "https://support.apple.com/en-us/102378"),
+  ("Plugable: what 240 W USB-C EPR means for cables", "https://plugable.com/en-ca/blogs/news/what-is-240w-usb-extended-power-range-epr"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

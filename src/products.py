@@ -22,6 +22,7 @@ CATEGORIES = {
     "solar-kit":       ("Solar generator kits",  "A power station and a folding solar panel sold together as one kit."),
     "portable-monitor":("Portable monitors",     "Laptop screen extenders and portable USB-C displays."),
     "smartwatch":      ("Smartwatches",          "GPS fitness smartwatches."),
+    "nas":             ("NAS",                   "Network-attached storage: diskless home and small-office NAS units, sold without drives."),
 }
 
 PRODUCTS = [
@@ -875,6 +876,75 @@ PRODUCTS = [
  "caveats": ["The page's spec table says '2 USB-C + 1 USB-A' while the title and feature text say three USB-C and one USB-A; this is the 3C+1A model (SKU 40737).",
              "The split between ports when several devices charge is shown only in the page's images, not in text.",
              "Whether the prongs fold is not stated.", "No printed code on this product's page on 2026-11-03."]},
+
+
+# UGREEN NAS and desktop chargers, added 2026-11-03 by the gap-page run (growth/focus/funnel-ugreen/README.md). The NAS
+# units are sold on UGREEN's NAS store (nas.ugreen.com, which 301s to ai.ugreen.com; prices, specs and the 2-year warranty
+# read there 2026-11-03; returns from ai.ugreen.com/policies/refund-policy). The CJ deep link lands on ai.ugreen.com with
+# cjevent kept (curl, 2026-11-03). The NAS store prints no codes; the chargers' codes are printed on their us.ugreen.com pages.
+{"slug": "ugreen-nasync-dxp4800-plus", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DXP4800 Plus 4-Bay NAS, Intel Pentium Gold 8505, 10GbE", "model": "NASync DXP4800 Plus (SKU 35260US), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage", "price": 619.99, "list_price": 729.99, "verified": "2026-11-03",
+ "specs": [("CPU", "12th-gen Intel Pentium Gold 8505, 5 cores / 6 threads, x86, with Intel Quick Sync (hardware transcoding)"),
+           ("Memory", "8 GB DDR5, expandable to 64 GB; 128 GB SSD system disk"), ("Bays", "4× SATA (3.5\" or 2.5\") + 2× M.2 NVMe slots; diskless"),
+           ("Max raw storage", "144 TB (4× 32 TB + 2× 8 TB)"), ("RAID", "JBOD, Basic, 0, 1, 5, 6, 10"), ("Network", "1× 10GbE + 1× 2.5GbE (RJ45)"),
+           ("USB", "Front 1× USB-C + 1× USB-A, both 10 Gb/s; rear 1× USB-A 5 Gb/s + 2× USB 2.0"), ("Other ports", "HDMI (4K), SD 3.0 card reader"),
+           ("Power draw", "42.36 W with drives active, 18.12 W with drives hibernating (UGREEN's lab, one Seagate 2 TB drive)"),
+           ("Size", "10.1 × 7.0 × 7.0 in"), ("Software", "UGOS Pro: Docker, virtual machines, Plex in Docker (Quick Sync), AI photo album")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "A four-bay x86 NAS with a 10GbE port built in, a 5-core Pentium Gold with Quick Sync, 8 GB of DDR5 (to 64 GB) and two M.2 slots, sold diskless at $619.99 on 2026-11-03.",
+ "fit": "A home or small-office NAS that needs 10GbE now (video editing, large backups) or a prebuilt x86 box to run Unraid or TrueNAS on.",
+ "caveats": ["Diskless: drives, and any RAM beyond 8 GB, are extra.",
+             "$619.99 is a sale price against $729.99 on 2026-11-03; UGREEN gives no end date.",
+             "Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com), not us.ugreen.com; no printed code on 2026-11-03.",
+             "UGREEN supports third-party drives but documents only its own UGOS; a third-party OS is the owner's own install (see the comparison page for what UGREEN has said about the warranty)."]},
+
+{"slug": "ugreen-nasync-dxp2800", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DXP2800 2-Bay NAS, Intel N100, 2.5GbE", "model": "NASync DXP2800 (SKU 25242), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage", "price": 389.99, "list_price": 439.99, "verified": "2026-11-03",
+ "specs": [("CPU", "12th-gen Intel N100, 4 cores / 4 threads, x86, with Intel Quick Sync"), ("Memory", "8 GB DDR5, expandable to 16 GB; 32 GB eMMC system disk"),
+           ("Bays", "2× SATA (3.5\" or 2.5\") + 2× M.2 NVMe slots; diskless"), ("Max raw storage", "80 TB (2× 32 TB + 2× 8 TB)"), ("RAID", "JBOD, Basic, 0, 1"),
+           ("Network", "1× 2.5GbE (RJ45)"), ("USB", "Front 1× USB-C + 1× USB-A, both 10 Gb/s; rear 1× USB-A 5 Gb/s + 2× USB 2.0"), ("Other ports", "HDMI (4K); no card reader"),
+           ("Power draw", "16.38 W with drives active, 5.24 W with drives hibernating (UGREEN's lab, one Seagate 2 TB drive)"),
+           ("Noise", "29–34 dB in quiet mode (UGREEN's figure)"), ("Size", "9.1 × 4.3 × 7.0 in"), ("Software", "UGOS Pro: Docker, virtual machines")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "The two-bay N100 model: x86 with Quick Sync, 8 GB DDR5, two M.2 slots and a 2.5GbE port, diskless at $389.99 on 2026-11-03.",
+ "fit": "Backups, a family photo library and a few Docker containers, where two bays and 2.5GbE are enough.",
+ "caveats": ["Diskless; RAM tops out at 16 GB and RAID is limited to 0/1 with two bays.", "No 10GbE: the DXP4800 Plus is the step up for that.",
+             "$389.99 is a sale price against $439.99 on 2026-11-03; UGREEN gives no end date.",
+             "Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code on 2026-11-03."]},
+
+{"slug": "ugreen-nexode-200w-4-port-charger", "brand": "UGREEN", "program": "cj:ugreen", "category": "usb-c-charger",
+ "name": "UGREEN Nexode 200W 4-Port GaN Charger, 3× USB-C + USB-A (two laptops at 100 W each)", "model": "Nexode 200W 4-port (SKU 35538)",
+ "url": "https://us.ugreen.com/products/ugreen-200w-dual-laptop-type-c-charge", "price": 61.99, "list_price": 99.99, "verified": "2026-11-03",
+ "specs": [("Total output", "200 W"), ("Ports", "3× USB-C, 1× USB-A"), ("Two laptops", "100 W + 100 W from two USB-C ports at the same time (UGREEN's page)"),
+           ("Single device", "140 W from one USB-C port (PD 3.1)"), ("GaN", "Yes (UGREEN 'GaNInfinity')"), ("Plug", "Foldable prongs, wall charger"),
+           ("Protection", "Over-voltage, over-current, short-circuit and temperature protection"), ("Input", "100–240 V")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A wall charger that UGREEN rates for two laptops at 100 W each at once, or one device at 140 W, with a third USB-C and a USB-A port; $61.99 against $99.99 on 2026-11-03.",
+ "fit": "Two laptops on one desk or in one bag: a MacBook Pro and a work laptop, both charging at full 100 W.",
+ "caveats": ["The sharing table for three or four devices is shown only in the page's images; a review reports the two 100 W ports drop to 65 W each when a third device is added.",
+             "140 W to one port needs a 240 W-rated (EPR) USB-C cable; whether a cable is included is not stated.",
+             "$61.99 is a sale price against $99.99 on 2026-11-03; UGREEN gives no end date. No printed code on the page."]},
+
+{"slug": "ugreen-nexode-500w-6-port-desktop-charger", "brand": "UGREEN", "program": "cj:ugreen", "category": "usb-c-charger",
+ "name": "UGREEN Nexode 500W 6-Port Desktop Charger, 240 W from one port", "model": "Nexode 500W 6-port (SKU 55549)",
+ "url": "https://us.ugreen.com/products/ugreen-500w-usbc-desktop-charger", "price": 249.99, "verified": "2026-11-03",
+ "specs": [("Total output", "500 W"), ("Ports", "5× USB-C, 1× USB-A; desktop unit with an AC power cord"),
+           ("USB-C1", "240 W max (PD 3.1: 28 V, 36 V, 48 V at 5 A)"), ("USB-C2 to C5", "100 W max each (20 V 5 A)"), ("USB-A", "20 W max"),
+           ("Protocols", "PD 3.1/3.0, PPS, QC 3.0, UFCS 63 W on C1/C2, SCP/FCP/AFC"), ("Input", "100–240 V, 7 A max"),
+           ("Size / weight", "146 × 114.6 × 60.6 mm, 2,207 g"), ("Protection", "Over-current, over-voltage, short circuit, over-temperature (NTC sensors)"),
+           ("In the box", "Charger station, 2 m AC cord; no USB-C cables")],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": "30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded",
+ "summary": "A 2.2 kg desktop charging station with one 240 W PD 3.1 port and four 100 W USB-C ports, for a desk with several laptops; UGREEN's page code took $50 off $249.99 in the cart on 2026-11-03.",
+ "fit": "A shared desk or office that charges two or three laptops at once, including a 240 W gaming laptop.",
+ "caveats": ["UGREEN's US page lists per-port maxima, not the sharing table: one review measured 240 W + 100 W on C1 + C2 with two laptops; UGREEN's UK and EU pages are reported to allow only 60–65 W on C2–C5 while C1 draws 240 W.",
+             "No USB-C cables in the box; 240 W or 140 W to one port needs a 240 W-rated (EPR) cable.",
+             "A 2.2 kg desktop unit with a power cord, not a wall plug."]},
 
 ]
 
