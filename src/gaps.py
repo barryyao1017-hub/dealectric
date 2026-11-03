@@ -97,13 +97,19 @@ Elsewhere: Anker's Prime 26K (99.75 Wh, $229.99) is the most power you can carry
 # Bing US demand 402 searches / 3 months (runs/2026-10-25-codedscan); live Bing top 10: six store pages and two thin
 # guides, no publisher (runs/2026-10-25-agentq). Kit prices read on each maker's US store 2026-10-24 US time.
 {"slug": "solar-generator-with-panels-included", "question": "G02",
+ # DLC-144 (2026-11-02, Barry: ship directly, an in-stock product): the S2 product record, one line after the H1. The
+ # page's best-value pick (P1800 kit) is a pre-order until Dec 7, so the card shows the in-stock 1 kWh kit.
+ "product_result": {"slug": "bluetti-ac180-200w-solar-kit", "item_id": "BLUETTI-AC180-200W-KIT",
+                    "title": "BLUETTI AC180 + 200 W solar generator kit with panels included (1 kWh, in stock)",
+                    "description": "In stock now: 1,152 Wh LiFePO4 station with a 200 W folding panel and 500 W solar input, more battery than the $699 Jackery and EcoFlow 1 kWh kits.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
  "title": "Best solar generator with panels included (2026): 15 kits compared on battery, inverter, solar input and price",
  "h1": "Best solar generator with panels included (2026): 15 kits compared",
  "desc": "Power station and folding solar panel kits for camping, RV trips and home backup, sold on the makers' US stores (ALLPOWERS, BLUETTI, Jackery, EcoFlow, Anker SOLIX, Goal Zero), compared on battery size and chemistry, inverter, panel watts, the station's solar input, and price, with the codes that worked in the stores' carts.",
  "intro": """
 <p class="lead">A "solar generator with panels included" is a portable power station sold together with one or more folding panels. Judge it on four numbers: the <strong>battery</strong> (Wh, and LiFePO4 if you want thousands of cycles), the <strong>inverter</strong> (W it can run), the <strong>panel watts</strong> in the box, and the station's <strong>maximum solar input</strong>, which caps how much more panel you can add later. A folding panel delivers roughly 60–75% of its rating in good sun, so a 200 W panel puts back about 600–750 Wh on a clear day with five peak-sun hours.</p>
-<p><strong>Short answer.</strong> Best value at 1 kWh: the <strong>ALLPOWERS P1800 + SP037 400 W</strong> kit, a 1,024 Wh LiFePO4 station with twice the panel most 1 kWh kits include ({buy:allpowers-p1800-sp037-solar-kit}).
-The 1 kWh alternatives with a 200–220 W panel: <strong>BLUETTI AC180 + 200 W</strong> ({buy:bluetti-ac180-200w-solar-kit}), Jackery Solar Generator 1000 v2 ($699), EcoFlow DELTA 3 Classic + 220 W ($699) and Anker SOLIX C1000 Gen 2 + 200 W ($739.99).
+<p><strong>Short answer.</strong> Best value at 1 kWh: the <strong>ALLPOWERS P1800 + SP037 400 W</strong> kit, a 1,024 Wh LiFePO4 station with twice the panel most 1 kWh kits include ({buy:allpowers-p1800-sp037-solar-kit}). In stock now, the 1 kWh kit to buy today: the <strong>BLUETTI AC180 + 200 W</strong> kit, 1,152 Wh LiFePO4 with 500 W of solar input ({buy:bluetti-ac180-200w-solar-kit}).
+The other 1 kWh kits with a 200–220 W panel: Jackery Solar Generator 1000 v2 ($699), EcoFlow DELTA 3 Classic + 220 W ($699) and Anker SOLIX C1000 Gen 2 + 200 W ($739.99).
 For 2 kWh of home backup: <strong>BLUETTI Elite 200 V2 + 200 W</strong> ({buy:bluetti-elite-200-v2-200w-solar-kit}), which takes up to 1,000 W of panel later; Jackery's 2000 v2 comes with two 200 W panels ($1,399) and Anker's C2000 Gen 2 with a 400 W panel ($1,399.99).
 Most inverter per dollar: <strong>ALLPOWERS S2000 Pro + SP037</strong>, 2,400 W, on an NMC battery ({buy:allpowers-s2000-pro-sp037-solar-kit}).
 Under $500, compared on its own page: <a href="/best-solar-generator-kit-under-500">solar generator kits under $500</a>. Smallest budgets: <strong>BLUETTI Elite 30 V2 + 100 W</strong> ({buy:bluetti-elite-30-v2-100w-solar-kit}), or the cheaper <strong>ALLPOWERS VOLIX P300 + 100 W</strong> ({price:allpowers-volix-p300-100w-solar-kit}) when ALLPOWERS has it.</p>

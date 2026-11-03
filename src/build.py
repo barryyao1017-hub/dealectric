@@ -982,7 +982,7 @@ def product_result_line(c):
     code, saving, after, _ = best_offer(p)
     rec = {"item_id": pr["item_id"], "title": pr["title"], "description": pr["description"],
            "url": SITE["url"] + f"/go/{p['slug']}", "brand": p["brand"], "seller_name": f"{p['brand']} Official US Store",
-           "image_url": pr["image_url"], "availability": "in_stock" if in_stock(p) else "out_of_stock",
+           "image_url": pr["image_url"], "availability": "preorder" if preorder(p) else "in_stock" if in_stock(p) else "out_of_stock",
            "price": f"{p['price']:.2f} USD", "sale_price": f"{after:.2f} USD"}
     if code:
         rec["promo_code"] = code["code"]
