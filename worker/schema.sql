@@ -45,6 +45,25 @@ CREATE TABLE IF NOT EXISTS landings (
 CREATE INDEX IF NOT EXISTS landings_ts ON landings (ts);
 CREATE INDEX IF NOT EXISTS landings_page ON landings (page);
 
+-- Added 2026-11-03 (DLC-146): pages served to a verified agent browser (Muse and the like; index.js agentBrowser),
+-- whose HTML got utm_source=<agent> on our links. Logged with the Web Bot Auth headers and the network, to learn
+-- what each agent sends. No IP.
+CREATE TABLE IF NOT EXISTS agent_pages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts TEXT NOT NULL,            -- ISO 8601 UTC
+  agent TEXT NOT NULL,         -- tag put on the links: muse | chatgpt-agent | signed-agent
+  path TEXT NOT NULL,          -- path and query requested
+  status INTEGER,
+  user_agent TEXT,
+  country TEXT,
+  asn INTEGER,                 -- Cloudflare request.cf.asn
+  as_org TEXT,                 -- request.cf.asOrganization
+  verified_bot TEXT,
+  signature_agent TEXT,        -- Signature-Agent header (Web Bot Auth key directory)
+  signature_input TEXT         -- Signature-Input header (keyid, created, expires, tag)
+);
+CREATE INDEX IF NOT EXISTS agent_pages_ts ON agent_pages (ts);
+
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   ts TEXT NOT NULL,

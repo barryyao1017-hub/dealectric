@@ -279,6 +279,10 @@ def bot_name(ua: str) -> str:
               "OAI-SearchBot", "GPTBot", "ClaudeBot", "PerplexityBot", "dealectric"):
         if k.lower() in (ua or "").lower():
             return k
+    # A verified AI Assistant with a plain desktop-Chrome user agent is an agent's cloud browser: Meta's Muse reads
+    # pages as Linux Chrome 138 (2026-11-03, DLC-146; the Worker tags its links utm_source=muse, see worker/src/index.js).
+    if re.search(r"X11; Linux x86_64\).*Chrome/", ua or ""):
+        return "agent browser (Muse?)"
     return (ua or "?")[:40]
 
 

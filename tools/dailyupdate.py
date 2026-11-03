@@ -56,11 +56,17 @@ def pt_day(ts: str) -> str:
     return datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(PT).strftime("%Y-%m-%d")
 
 
-def chatgpt_clicks(now: datetime) -> tuple[list[dict], str | None]:
+def chatgpt_clicks(now: datetime, sources: tuple[str, ...] = ("chatgpt.com",)) -> tuple[list[dict], str | None]:
     since = (now - timedelta(days=8)).strftime("%Y-%m-%dT%H:%M:%S")
-    rows, err = E.d1_query("SELECT ts, slug, user_agent FROM clicks WHERE kind='redirect' AND bot_like=0 "
-                           f"AND utm_source='chatgpt.com' AND ts >= '{since}' ORDER BY ts")
+    src = ", ".join(f"'{s}'" for s in sources)
+    rows, err = E.d1_query("SELECT ts, slug, user_agent, utm_source FROM clicks WHERE kind='redirect' AND bot_like=0 "
+                           f"AND utm_source IN ({src}) AND ts >= '{since}' ORDER BY ts")
     return [r for r in rows if real_ua(r.get("user_agent") or "")], err
+
+
+# Tags the edge Worker puts on our links in pages served to a verified agent browser (worker/src/index.js
+# agentBrowser, DLC-146, since 2026-11-03): a shopper's tap on a link Muse handed over arrives with utm_source=muse.
+AGENT_TAGS = ("muse", "chatgpt-agent", "signed-agent")
 
 
 def cdp_page(url: str, button: str, wait=(20, 15)) -> str:
@@ -157,6 +163,10 @@ def main() -> int:
     shoppers_w = {(pt_day(c["ts"]), c["user_agent"]) for c in w}
     shoppers_y = {c["user_agent"] for c in y}
 
+    agent_clicks, _ = chatgpt_clicks(now, AGENT_TAGS)
+    agent_y = [c for c in agent_clicks if pt_day(c["ts"]) == yday]
+    agent_w = [c for c in agent_clicks if pt_day(c["ts"]) in week]
+
     sales, cj_err = ([], "skipped") if args.no_cj else cj_sales()
     new = [s for s in sales if (t := cj_time(s["posted"])) and now - t <= timedelta(hours=26)]
     brand_of = {p["slug"]: p["brand"].lower() for p in PRODUCTS}
@@ -195,6 +205,10 @@ def main() -> int:
         print(f"  D1: {d1_err}")
     for slug, k in Counter(c["slug"] for c in w).most_common(8):
         print(f"  {k:3d}  /go/{slug}")
+    print(f"\nAgent-browser clicks (links Muse and other shopping agents handed over; Barry's own tests count too):"
+          f" yesterday {len(agent_y)}, 7 days {len(agent_w)}.")
+    for (src, slug), k in Counter((c["utm_source"], c["slug"]) for c in agent_w).most_common(8):
+        print(f"  {k:3d}  {src}  /go/{slug}")
     print(f"\nSweep: {sweep_health(today)} ({SWEEP_LOG})")
     return 0
 

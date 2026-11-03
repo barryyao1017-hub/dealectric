@@ -28,8 +28,9 @@ export default {
 };
 
 // ---------------------------------------------------------------- pages (GitHub Pages pass-through)
-// Every page and file reaches the visitor exactly as the origin sends it, crawlers included: no rewriting, no headers
-// added, no cookie, no script. A request whose query carries utm_source (ChatGPT appends utm_source=chatgpt.com to
+// Every page and file reaches the visitor exactly as the origin sends it, crawlers included: no headers added, no
+// cookie, no script, and no rewriting except for verified agent browsers (agentBrowser below), whose HTML gets a
+// utm_source on our own links. A request whose query carries utm_source (ChatGPT appends utm_source=chatgpt.com to
 // every link it shows, source pills included) also writes one row to D1 `landings`, so a landing from an assistant,
 // the /go/ click after it (clicks.referrer is the landing URL) and a sale line up. If anything here throws, the
 // request falls through to the origin as if the Worker weren't there; the route is also set to fail open on the
@@ -39,7 +40,60 @@ async function passThrough(url, request, env, ctx) {
   const res = await fetch(request);
   const utm = url.searchParams.get("utm_source");
   if (utm !== null) ctx.waitUntil(logLanding(url, request, res.status, utm, env).catch((e) => console.error("landing insert failed", e)));
-  return res;
+  const agent = agentBrowser(request, env);
+  if (!agent) return res;
+  // Pages and text files only: the browser's stylesheet, image and font requests add nothing.
+  if (/text\/html|text\/plain|text\/xml|application\/(json|xml)/.test(res.headers.get("content-type") || "")) ctx.waitUntil(logAgentPage(url, request, res.status, agent, env).catch((e) => console.error("agent_pages insert failed", e)));
+  return tagLinks(res, agent);
+}
+
+// ---------------------------------------------------------------- agent browsers (DLC-146)
+// A shopping agent that browses in its own cloud browser hands the shopper a link it read on our page, and the
+// shopper's tap then arrives from their own phone with no referrer and no tag, indistinguishable from a direct visit
+// (Meta's Muse, 2026-11-03 07:00Z: Linux Chrome 138 that Cloudflare verifies as "AI Assistant", then
+// meta-webindexer's link preview, then Barry's tap on /go/baseus-picogo-am52-... with nothing on it). So the HTML
+// served to such a browser gets utm_source=<agent> on every dealectric.com link, and the tap carries the tag into
+// `clicks` / `landings`. Only for a Cloudflare-verified AI Assistant that is not one of the answer fetchers in AI_UA
+// (ChatGPT-User and co. keep the page byte for byte: ChatGPT appends its own utm_source to every link it shows).
+// Everyone else, people and crawlers, still gets the origin's response untouched.
+const SIGNERS = [[/chatgpt\.com|openai\.com/i, "chatgpt-agent"], [/meta\.com|facebook\.com|fb\.com|muse/i, "muse"]];
+function agentBrowser(request, env) {
+  const ua = request.headers.get("user-agent") || "";
+  const verified = (request.cf || {}).verifiedBotCategory === "AI Assistant" || (env.TEST_AGENT_UA && ua === env.TEST_AGENT_UA);
+  if (!verified || AI_UA.test(ua)) return null;
+  // Web Bot Auth: a signed agent names its key directory in Signature-Agent. Muse's value is unknown as of 11-03 (Meta
+  // hasn't published one); until it shows up in agent_pages, an unsigned or unknown verified agent browser is "muse",
+  // the only one seen on the site (5 home-page reads 10-30..11-03, each followed by meta-webindexer within 6 min).
+  const sig = request.headers.get("signature-agent") || "";
+  const hit = SIGNERS.find(([re]) => re.test(sig));
+  return hit ? hit[1] : sig ? "signed-agent" : "muse";
+}
+
+function tagLinks(res, agent) {
+  if (!(res.headers.get("content-type") || "").includes("text/html")) return res;
+  const tag = (el) => {
+    const href = el.getAttribute("href");
+    if (!href || href.startsWith("#") || href.includes("utm_source=")) return;
+    let u;
+    try { u = new URL(href, SITE); } catch { return; }
+    if (u.hostname !== "dealectric.com" || u.pathname.startsWith("/cdn-cgi/")) return;   // cdn-cgi: Cloudflare's email protection
+    u.searchParams.set("utm_source", agent);
+    // Keep relative hrefs relative, as the page wrote them.
+    el.setAttribute("href", /^https?:/i.test(href) ? u.toString() : u.pathname + u.search + u.hash);
+  };
+  return new HTMLRewriter().on("a[href]", { element: tag }).transform(res);
+}
+
+async function logAgentPage(url, request, status, agent, env) {
+  const cf = request.cf || {};
+  const h = (k) => clip(request.headers.get(k) || "", 300);
+  return env.DB.prepare(
+    `INSERT INTO agent_pages (ts, agent, path, status, user_agent, country, asn, as_org, verified_bot, signature_agent, signature_input)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  ).bind(
+    new Date().toISOString(), agent, clip(url.pathname + url.search, 300), status, h("user-agent"), cf.country || "",
+    cf.asn || null, clip(cf.asOrganization || "", 100), cf.verifiedBotCategory || "", h("signature-agent"), h("signature-input"),
+  ).run();
 }
 
 async function logLanding(url, request, status, utm, env) {

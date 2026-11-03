@@ -28,6 +28,14 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   landing URL) and a sale line up. An exception falls through to the origin (`passThroughOnException`), and the
   `dealectric.com/*` route is set to fail open on the Free plan's daily request limit (about 1-5k requests a day in
   October 2026, against 100k). `wrangler deploy` resets that flag, so deploy with `deploy.sh`, which sets it again.
+  One exception since 2026-11-03 (DLC-146): a request that Cloudflare verifies as an "AI Assistant" but whose user
+  agent is not one of the answer fetchers above (an agent's own cloud browser, such as Meta's Muse, which reads pages
+  as Linux Chrome 138) gets its HTML with `utm_source=<agent>` added to every dealectric.com link (`muse`,
+  `chatgpt-agent` or `signed-agent`, from the `Signature-Agent` header when there is one). The shopper's tap on a link
+  the agent handed over then carries the tag into `clicks` / `landings`. Each such page or text fetch also writes a
+  row to D1 `agent_pages` (path, user agent, country, ASN and network name, `Signature-Agent`, `Signature-Input`).
+  Test locally with `npx wrangler dev --local --local-upstream dealectric.com --upstream-protocol https --var TEST_AGENT_UA:dlc-test-agent`
+  and `curl -A dlc-test-agent`.
   Check after a deploy: `python3.12 tools/landingcheck.py` (one tagged request of ours, marked `dlc_check=` and
   logged to the footprint log as `direct-fetch`; exit 0 when its row is in D1 and the page is unchanged).
 
