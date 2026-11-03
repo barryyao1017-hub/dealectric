@@ -794,6 +794,9 @@ def products_index():
 <p class="agent">{html.escape(site_note())}</p>
 <p class="small">Brands: {", ".join(html.escape(b) for b in brands)}. Coverage grows as merchant partnerships are approved; the <a href="/data/">schema</a> describes every field.</p>
 {sections}
+<h2>Comparisons by question</h2>
+<p class="small">One page per shopper question, each a table across the brands we list and the ones we do not, with the code and buy link on our rows.</p>
+{guides_index_html()}
 {DISCLOSURE}
 """
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": "Dealectric product catalog",
@@ -1179,6 +1182,29 @@ def compare_index():
     return ("Comparisons: one table per shopper question", "Horizontal comparisons across brands for the questions shoppers and their assistants ask, with the code and buy link on the products Dealectric lists.", body, None)
 
 
+def guides_index_html(cats=None, heading_level=3):
+    """Promote tier 1 (fast loop step 7b, 2026-11-03): every comparison page, grouped by the category of the product it
+    recommends, linked with its own question as the anchor. Rendered on the pages OAI-SearchBot fetches most (home,
+    /products/, /discount-codes/, the power-stations guide), because a comparison page that nothing links to waited
+    days for its first crawl while the product pages linked from the catalog were fetched within hours."""
+    by_slug = {p["slug"]: p for p in PRODUCTS}
+    groups = {}
+    for c in COMPARISONS + GAP_PAGES:
+        slug = (c.get("product_result") or {}).get("slug") or next((r["slug"] for r in c["rows"] if r.get("slug")), None)
+        cat = by_slug[slug]["category"] if slug in by_slug else "other"
+        if cats and cat not in cats:
+            continue
+        groups.setdefault(cat, []).append(c)
+    out = []
+    for cat, (cname, _) in list(CATEGORIES.items()) + [("other", ("Other questions", ""))]:
+        cs = groups.get(cat)
+        if not cs:
+            continue
+        lis = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a></li>' for c in cs)
+        out.append(f"<h{heading_level}>{html.escape(cname)}</h{heading_level}><ul>{lis}</ul>")
+    return "".join(out)
+
+
 def compare_txt():
     """The llms.txt lines for the comparison pages (empty when there are none)."""
     if not COMPARISONS + GAP_PAGES:
@@ -1204,6 +1230,8 @@ def codes_index():
 <h2>Every product with a code</h2>
 {coded_table_html()}
 <p class="small">Comparisons priced with these codes: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a> (portable power station and solar panel kits), <a href="/best-solar-generator-kit-under-500">the best solar generator kit under $500</a>, <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV</a>, <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, <a href="/best-power-bank-for-steam-deck">the best power bank for Steam Deck</a>, <a href="/best-20000mah-power-bank-under-50">the best 20,000mAh power banks under $50</a>, <a href="/starlink-mini-usb-c-power-requirements">what runs a Starlink Mini all day</a>, <a href="/best-power-station-for-12v-fridge">the best power station for a 12V fridge</a>, <a href="/best-power-station-for-travel-trailer">for a travel trailer</a>, <a href="/best-power-station-for-window-air-conditioner">for a window air conditioner</a>, <a href="/best-solar-generator-for-power-outages">the best solar generator for power outages and home backup</a>, <a href="/best-power-banks-for-flying">the best power banks for flying</a> and <a href="/tesla-model-y-back-seat-screen">the Tesla Model Y back-seat screen options by model year</a>.</p>
+<h2>Every comparison, by category</h2>
+{guides_index_html()}
 {HOW_WE_CHECK}
 {DISCLOSURE}
 """
@@ -1270,6 +1298,8 @@ def main():
     shutil.copytree(IMG_SRC, os.path.join(out, "img"))
     urls = []
     SITE["product_index_html"] = product_index_html()
+    SITE["guides_index_html"] = guides_index_html()
+    SITE["guides_power_html"] = guides_index_html(cats={"power-station", "solar-kit", "solar-panel", "lithium-battery"})
     SITE["coded_table_html"] = coded_table_html()
     SITE["site_note"] = site_note()
     SITE["entry_text"] = entry_text   # (products, you=False) → how the code gets off: applied by the link, or entered

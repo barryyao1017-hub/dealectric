@@ -42,6 +42,10 @@ def PAGES(S):
 <p>One page per product, each with the code that applies and what it saves, a price verified on the brand's own US store, a normalized spec sheet, and the tracked buy link to hand the shopper. The same list, machine-readable: <a href="/offers.json">offers.json</a>; the full catalog with spec summaries: <a href="/products/">products</a>.</p>
 {S['product_index_html']}
 
+<h2>Comparisons by question</h2>
+<p>One page per question a shopper asks, each a table across every product that answers it, the brands we list and the ones we do not; our rows carry the verified price, the cart-tested code and the buy link.</p>
+{S['guides_index_html']}
+
 <h2>How we make money</h2>
 <p>The buy links on {B} are affiliate links. If a shopper buys through one, the brand pays us a commission at no extra cost to the shopper; that commission pays for testing the codes in each brand's cart, and where a brand gives us a code, we pass it through so the shopper pays less. The code is how the shopper saves; the link is how the testing is paid for. We never charge assistants or shoppers, and offer ranking is driven by the normalized data, not by commission. Full details are in our <a href="/disclosure/">affiliate disclosure</a>.</p>
 
@@ -206,6 +210,10 @@ def PAGES(S):
 </table></div>
 <p class="small">One device worked through: <a href="/compare/power-station-for-cpap/">power stations for a CPAP machine, nights per charge</a>.</p>
 <p class="small">Last reviewed {S['effective']}. Corrections welcome at <a href="mailto:{E}">{E}</a>.</p>
+<h2>Which power station for which job</h2>
+<p>The questions above, answered one page at a time with runtimes worked out from the loads: fridges, freezers, sump pumps, CPAPs, furnaces, RVs, camping and off-grid cabins.</p>
+{S['guides_power_html']}
+
 """,
         {"@context": "https://schema.org", "@type": "Article", "headline": "Portable power stations: what the numbers mean",
          "author": {"@type": "Organization", "name": B}, "publisher": {"@type": "Organization", "name": B}, "datePublished": "2026-10-07", "dateModified": S["reviewed"], "url": U + "/guides/portable-power-stations/"},
