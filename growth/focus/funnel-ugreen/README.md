@@ -80,6 +80,10 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G24 | /thunderbolt-5-ssd-enclosure-worth-it-macbook-pro-m4 | TB5 enclosure with fan $159.99 w/ UL45789; fanless $159.99 w/ UL95583 | open ×3 |
 | G25 | /best-40gbps-nvme-enclosure-no-throttling | 40Gbps fan enclosure CM642 $75.99 w/ UL15976 | open ×3 |
 | G26 | /usb-c-cable-240w-and-40gbps | Thunderbolt 5 cable $31.99 | open/contested/open |
+| G27 | /best-8-bay-nas-under-1500-home-media | DXP8800 Plus $1,369.99 | open ×3 |
+| G28 | /best-6-bay-nas-10gbe-intel-transcoding | DXP6800 Pro $1,099.99 | open ×3 |
+| G29 | /best-small-ups-for-home-nas | US3000 $109.99 (UGREEN owners); APC BE600M1 named for the rest | open ×3 |
+| G31 | /best-nas-under-500-for-plex-4k-transcoding | DXP2800 $389.99; TerraMaster F2-425 Plus named as the native-app alternative | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -133,3 +137,14 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   All codes cart-tested with the control rejected. Conflicts recorded on the pages: UGREEN's US page for SKU 95583
   describes fins, ChargerLAB's teardown of "the UGREEN TB5 enclosure" found a fan (SKU unstated); UGREEN's
   "Intel-certified" claim on the TB5 cable could not be checked in Intel's list. Three research agents ~355k tokens.
+- 2026-11-03, batch 6 votes (`x6-*`), all five open ×3: 8-bay NAS under $1,500 (→ G27, DXP8800 Plus $1,369.99),
+  6-bay NAS with 10GbE and Intel transcoding (→ G28, DXP6800 Pro $1,099.99), small UPS for a home NAS (→ G29, US3000
+  $109.99, honest framing: UGREEN's DC UPS fits only its own 2–4-bay NASync units, so the page also names the AC units
+  everyone else buys), quietest 2-bay NAS for a bedroom (**parked**: UGREEN quotes 29–34 dB in quiet mode while
+  Synology and TerraMaster spec about 19 dB(A), so the DXP2800 would not honestly win), Plex 4K NAS under $500 (→ G31,
+  DXP2800). New records: DXP8800 Plus, DXP6800 Pro, US3000 UPS (`ups` category). Four research agents started.
+- 2026-11-03, iteration 6 built (G27, G28, G29, G31) from four research agents (~470k tokens). Honesty notes carried
+  on the pages: the TerraMaster F6-424 Max has the DXP6800 Pro's chip and dual 10GbE for less (no Thunderbolt or PCIe);
+  the TerraMaster F2-425 Plus runs Plex as a native app where UGOS needs Docker; the US3000 UPS fits only UGREEN's
+  2–4-bay units and no lab has measured its runtime; the DXP8800 Plus is the only sub-$1,500 8-bay with both built-in
+  10GbE and an Intel iGPU. Gate trims needed on G31 (title + record + lead must fit 1,309 at rank 6).

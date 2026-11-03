@@ -25,6 +25,7 @@ CATEGORIES = {
     "nas":             ("NAS",                   "Network-attached storage: diskless home and small-office NAS units, sold without drives."),
     "usb-switch":      ("USB switches & hubs",   "USB switches that share devices between computers, and USB-C hubs."),
     "ssd-enclosure":   ("SSD enclosures",        "M.2 NVMe enclosures over USB4, Thunderbolt 4 and Thunderbolt 5."),
+    "ups":             ("UPS",                   "Battery backup units that keep a NAS or router up through an outage and shut it down safely."),
 }
 
 PRODUCTS = [
@@ -1050,6 +1051,53 @@ PRODUCTS = [
  "summary": "One cable for 240 W charging and 80 Gb/s Thunderbolt 5 data, so it also covers every 40 Gb/s USB4 and Thunderbolt 4 need; $31.99 on 2026-11-03 against $45.99.",
  "fit": "A Thunderbolt 5 or USB4 laptop and dock, SSD enclosure or 240 W charger, with one cable that does all of it.",
  "caveats": ["The US page does not state the length; UGREEN's USB4 240 W cable (1 m, $14.99) was sold out on 2026-11-03.", "240 W needs a charger and laptop that support PD 3.1 EPR; most take 100 or 140 W.", "No printed code on the page on 2026-11-03."]},
+
+
+{"slug": "ugreen-nasync-dxp8800-plus", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DXP8800 Plus 8-Bay NAS, Intel Core i5-1235U, 2× 10GbE, Thunderbolt 4", "model": "NASync DXP8800 Plus (SKU 35126), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage", "price": 1369.99, "list_price": 1509.99, "verified": "2026-11-03",
+ "specs": [("CPU", "12th-gen Intel Core i5-1235U, 10 cores / 12 threads, x86, Iris Xe with Quick Sync"), ("Memory", "8 GB DDR5, expandable to 64 GB; 128 GB SSD system disk"),
+           ("Bays", "8× SATA (3.5\" or 2.5\") + 2× M.2 NVMe; diskless"), ("Max raw storage", "272 TB (8× 32 TB + 2× 8 TB)"), ("RAID", "JBOD, Basic, 0, 1, 5, 6, 10"),
+           ("Network", "2× 10GbE (RJ45)"), ("Expansion", "1× PCIe x4 slot"), ("Thunderbolt", "2× Thunderbolt 4 (40 Gb/s), front"), ("USB", "2× USB-A 10 Gb/s rear + 2× USB 2.0"),
+           ("Other ports", "HDMI (8K), SD 4.0 card reader"), ("Power draw", "70.39 W with drives active, 28.99 W hibernating (UGREEN's lab)"), ("Size", "14.4 × 10.2 × 7.4 in"),
+           ("Software", "UGOS Pro: Docker, virtual machines, Plex in Docker (Quick Sync)")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "An eight-bay x86 NAS with two 10GbE ports, two Thunderbolt 4 ports, a PCIe slot and a 10-core Core i5 with Quick Sync, diskless at $1,369.99 on 2026-11-03 against $1,509.99.",
+ "fit": "A home media library or small studio that wants eight bays, 10GbE on both ports and Plex transcoding in one box.",
+ "caveats": ["Diskless: eight drives are the larger part of the bill.", "$1,369.99 is a sale price against $1,509.99 on 2026-11-03; UGREEN gives no end date.",
+             "Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code on 2026-11-03.", "70 W with drives spinning: budget the power and a UPS sized for it."]},
+
+{"slug": "ugreen-nasync-dxp6800-pro", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DXP6800 Pro 6-Bay NAS, Intel Core i5-1235U, 2× 10GbE, Thunderbolt 4", "model": "NASync DXP6800 Pro (SKU 25898), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage", "price": 1099.99, "list_price": 1209.99, "verified": "2026-11-03",
+ "specs": [("CPU", "12th-gen Intel Core i5-1235U, 10 cores / 12 threads, x86, Iris Xe with Quick Sync"), ("Memory", "8 GB DDR5, expandable to 64 GB; 128 GB SSD system disk"),
+           ("Bays", "6× SATA (3.5\" or 2.5\") + 2× M.2 NVMe; diskless"), ("Max raw storage", "208 TB (6× 32 TB + 2× 8 TB)"), ("RAID", "JBOD, Basic, 0, 1, 5, 6, 10"),
+           ("Network", "2× 10GbE (RJ45)"), ("Expansion", "1× PCIe x4 slot"), ("Thunderbolt", "2× Thunderbolt 4 (40 Gb/s), front"), ("USB", "1× USB-A 3.2 + 2× USB 2.0, rear"),
+           ("Other ports", "HDMI (8K), SD 4.0 card reader"), ("Power draw", "43.07 W with drives active, 24.91 W hibernating (UGREEN's lab)"), ("Size", "11.54 × 10.16 × 7.87 in"),
+           ("Software", "UGOS Pro: Docker, virtual machines, Plex in Docker (Quick Sync)")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "A six-bay x86 NAS with two 10GbE ports, two Thunderbolt 4 ports and a 10-core Core i5 with Quick Sync, diskless at $1,099.99 on 2026-11-03 against $1,209.99.",
+ "fit": "A media server or editing-shared store that needs six bays and 10GbE with Intel hardware transcoding.",
+ "caveats": ["Diskless.", "$1,099.99 is a sale price against $1,209.99 on 2026-11-03; UGREEN gives no end date.",
+             "Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code on 2026-11-03.",
+             "The DXP6800 Ultra ($1,449.99) swaps in an Intel Core 5 120U, 96 GB max RAM and a PCIe Gen4 x4 slot; same bays and ports."]},
+
+{"slug": "ugreen-nas-ups-us3000-120w", "brand": "UGREEN", "program": "cj:ugreen", "category": "ups",
+ "name": "UGREEN NAS UPS US3000, 120 W DC Battery Backup for NASync 2- and 4-Bay Models", "model": "US3000 (SKU 45615)",
+ "url": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah", "price": 109.99, "list_price": 137.50, "verified": "2026-11-03",
+ "specs": [("Type", "DC UPS: sits between the NAS power adapter and the NAS"), ("Input", "12 V 10 A / 19 V 7.9 A / 20 V 7 A"), ("Output", "12 V 10 A, 120 W max"),
+           ("Battery", "Lithium-ion, 43.2 Wh (14.4 V 3,000 mAh; 12,000 mAh in UGREEN's listing)"), ("Transfer time", "0 s"), ("Data link", "USB, for the safe-shutdown signal to UGOS"),
+           ("Supports", "UGREEN NASync 2- and 4-bay models: DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus, DH2300, DH4300 Plus per reviews and UGREEN's support list; the 6- and 8-bay units are not supported; the US2000 (72 W, $69.99) is for the DH series")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "UGREEN's inline DC battery for its own 2- and 4-bay NASync units: 120 W, 43 Wh, no switchover gap, and a USB link that tells UGOS to shut down cleanly; $109.99 on 2026-11-03 against $137.50.",
+ "fit": "An owner of a DXP2800, DXP4800, DXP4800 Plus or GT who wants a clean shutdown in an outage without a desk-sized AC UPS.",
+ "caveats": ["Only for UGREEN NASync DC-powered models; it does not power a router, a switch or any other brand's NAS.",
+             "Runtime: UGREEN's guide says about 10 minutes; reviewers estimate 7–10 minutes at 35–55 W. No lab measurement exists.",
+             "Battery replacement is not published; the four 18650 cells are inside the unit.",
+             "$109.99 is a sale price against $137.50 on 2026-11-03; UGREEN gives no end date. No printed code."]},
 
 ]
 

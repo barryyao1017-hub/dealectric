@@ -1648,4 +1648,260 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Amazon Basics USB4 240W cable price history", "https://camelcamelcamel.com/product/B0C93G2M83"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-6-bay-nas-10gbe-intel-transcoding", "question": "G28 (UGREEN funnel: 6-bay NAS with 10GbE and Intel transcoding)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp6800-pro", "item_id": "UGREEN-DXP6800-PRO",
+                    "title": "UGREEN NASync DXP6800 Pro, 6-bay NAS with 10GbE and Intel Quick Sync",
+                    "description": "6 bays + 2× M.2, Core i5-1235U, 2× 10GbE, 2× Thunderbolt 4, PCIe slot. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NASync_DXP6800_Pro_6_bay.png"},
+ "title": "Best 6-bay NAS with 10GbE and Intel transcoding for Plex (2026): the DXP6800 Pro against TerraMaster, QNAP, Asustor and Synology",
+ "h1": "Best 6-bay NAS with 10GbE and Intel transcoding (2026)",
+ "desc": "Which 6-bay NAS has 10GbE built in and an Intel iGPU for Plex transcoding: UGREEN's DXP6800 Pro and DXP6800 Ultra against the TerraMaster F6-424 Max, QNAP TS-664 and TVS-h674, Asustor Lockerstor 6 Gen3 and Synology's DS1621+, compared on CPU and Quick Sync, RAM, 10GbE, M.2, PCIe and Thunderbolt, with measured throughput, noise and power from reviews and the price on the maker's store on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP6800 Pro</strong> ({buy:ugreen-nasync-dxp6800-pro}), the best 6-bay NAS with 10GbE and Intel transcoding for Plex at its 2026 price, $1,099.99 diskless on 2026-11-03: a 10-core Intel Core i5-1235U with Quick Sync, two 10GbE ports measured at a steady 9.5 Gbit/s (Notebookcheck), two Thunderbolt 4 ports, a PCIe x4 slot, 8 GB DDR5 to 64 GB and two M.2 slots. Plex runs in Docker with a Plex Pass for hardware transcoding.</p>
+<p>The one rival with the same chip and two 10GbE ports is TerraMaster's F6-424 Max, $999.99 on TerraMaster's store per a search listing (its page could not be read on the day): no Thunderbolt, no PCIe slot, two-year warranty like UGREEN's. Every QNAP 6-bay needs a 10GbE card (QXG-10G1T, no verified US price), and the AMD units (Asustor Lockerstor 6 Gen3, Synology's 2020 DS1621+) have no Quick Sync. Budget the power: Notebookcheck measured 36–42 W idle with four drives, against UGREEN's 25 W hibernating figure, and 34.6 dB(A) at idle.</p>
+""",
+ "columns": [("cpu", "CPU / Quick Sync"), ("ram", "RAM (max)"), ("lan", "10GbE"), ("m2", "M.2"), ("extra", "PCIe / Thunderbolt"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp6800-pro", "model": "UGREEN NASync DXP6800 Pro",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T, Quick Sync", "ram": "8 GB DDR5 (64 GB)", "lan": "2× 10GbE built in", "m2": "2× NVMe", "extra": "1× PCIe x4; 2× Thunderbolt 4", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP6800 Ultra", "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-ultra-nas-storage",
+   "cells": {"cpu": "Intel Core 5 120U, 10C/12T, Quick Sync (same Iris Xe 80 EU)", "ram": "8 GB DDR5 (96 GB)", "lan": "2× 10GbE built in", "m2": "2× NVMe", "extra": "1× PCIe Gen4 x4; 2× Thunderbolt 4", "warranty": "2 years", "price": "$1,449.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "TerraMaster", "model": "F6-424 Max", "url": "https://www.terra-master.com/products/f6-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T, Iris Xe", "ram": "8 GB DDR5 (max not found)", "lan": "2× 10GbE built in", "m2": "2× NVMe Gen4 x4", "extra": "No PCIe slot; no Thunderbolt (USB 10 Gb/s)", "warranty": "2 years (retailers)", "price": "$999.99 (TerraMaster store, via search); $699.99 Prime Day promo in June 2026"}},
+  {"brand": "QNAP", "model": "TS-664 (+ QXG-10G1T card)", "url": "https://www.qnap.com/en-us/product/ts-664",
+   "cells": {"cpu": "Intel Celeron N5095, 4C, UHD graphics", "ram": "8 GB DDR4", "lan": "2× 2.5GbE; 10GbE only by PCIe card", "m2": "2× NVMe Gen3 x1", "extra": "1× PCIe Gen3 x2 (used by the card)", "warranty": "3 years", "price": "about $800–935 (CDW, Adorama); card price not verified in the US"}},
+  {"brand": "QNAP", "model": "TVS-h674", "url": "https://www.qnap.com/en-us/product/tvs-h674",
+   "cells": {"cpu": "Intel Core i5 6C/12T or i3 4C, UHD 730", "ram": "to 64 GB DDR4", "lan": "2.5GbE; 10GbE by PCIe card", "m2": "2× NVMe Gen4 x4", "extra": "2× PCIe Gen4", "warranty": "3 years", "price": "Not on QNAP's page"}},
+  {"brand": "Asustor", "model": "Lockerstor 6 Gen3 (AS6806T)", "url": "https://www.asustor.com/en/product?p_id=88",
+   "cells": {"cpu": "AMD Ryzen V3C14, 4C; no Quick Sync", "ram": "16 GB ECC DDR5 (64 GB)", "lan": "2× 10GbE + 2× 5GbE (listings)", "m2": "4× NVMe", "extra": "USB4 (listing)", "warranty": "3 years", "price": "$1,494–1,499 (resellers, undated)"}},
+  {"brand": "Synology", "model": "DS1621+ (2020)", "url": "https://www.synology.com/en-us/products/DS1621+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T; no iGPU", "ram": "4 GB ECC (32 GB)", "lan": "4× 1GbE; 10GbE by Synology's own card", "m2": "2× NVMe (cache)", "extra": "1× PCIe", "warranty": "3 years", "price": "Not found; Synology has released no 6-bay since 2020"}},
+ ],
+ "after": """
+<h2>What reviewers measured on the DXP6800 Pro</h2>
+<ul>
+<li><strong>10GbE:</strong> 9.5 Gbit/s steady in iPerf3 both ways (Notebookcheck, 2026); 8.9 Gbit/s sequential read and 6 Gbit/s write over a mapped share with four WD Red Pro drives in RAID 5 (ITPro, 2024); 2.26 GB/s read and 1.4 GB/s write over CIFS (StorageReview).</li>
+<li><strong>Noise:</strong> 34.6 dB(A) idle with hard drives, up to 43 dB(A) under load (Notebookcheck); "remarkably quiet", two 9 cm rear fans (ITPro).</li>
+<li><strong>Power:</strong> 22.4 W with no drives, 36.6–41.9 W idle with four IronWolf 4 TB drives (Notebookcheck); about 33 W averaged over a day (Dong Knows Tech). UGREEN's own 24.9 W hibernating figure is lower than any review's idle.</li>
+<li><strong>Plex:</strong> not in UGOS's App Center, so it runs in Docker; hardware transcoding needs a Plex Pass. No review published a transcode-stream count for this box; the i5-1235U's Iris Xe decodes HEVC, VP9 and AV1 in hardware (Quick Sync).</li>
+</ul>
+<h2>Thunderbolt 4 on a NAS</h2>
+<p>UGREEN's Thunderbolt 4 ports are a point-to-point network link to one computer (a "Thunderbolt" interface with its own IP), not a direct-attached disk, and need a certified cable; UGREEN says Macs run it faster than Windows. No review measured it on this model; treat it as a second fast link for one editing machine, not a 40 Gb/s drive.</p>
+<h2>Pro or Ultra</h2>
+<p>The Ultra's Core 5 120U is the same 10-core, 80-EU Iris Xe design with a higher turbo (5.0 vs 4.4 GHz), RAM to 96 GB and a PCIe Gen4 slot; its media engine is the same, so transcoding gains nothing. Six 12 TB drives in RAID 6 give 48 TB usable (about 43.7 TiB) on either.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP6800 Pro", "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage"),
+  ("UGREEN NASync DXP6800 Ultra", "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-ultra-nas-storage"),
+  ("Notebookcheck: UGREEN DXP6800 Pro review (10GbE, noise, power)", "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"),
+  ("ITPro: UGREEN DXP6800 Pro review", "https://itpro.com/infrastructure/servers-and-storage/ugreen-nasync-dxp6800-pro-review-an-affordable-nas-alternative-to-qnap-and-synology"),
+  ("StorageReview: UGREEN DXP6800 Pro review", "https://www.storagereview.com/review/ugreen-dxp6800-pro-nas-review"),
+  ("Dong Knows Tech: UGREEN DXP6800 Pro review", "https://dongknows.com/ugreen-nasync-dxp6800-pro-nas-server-review"),
+  ("UGREEN support: Thunderbolt direct connection", "https://support.ugnas.com/detail/article/en-US/609"),
+  ("TerraMaster F6-424 Max", "https://www.terra-master.com/products/f6-424-max"),
+  ("NASCompares: TerraMaster Prime Day prices (June 2026)", "https://nascompares.com/2026/06/25/terramaster-nas-prime-day-deals-2026/"),
+  ("QNAP TS-664", "https://www.qnap.com/en-us/product/ts-664"),
+  ("QNAP TVS-h674", "https://www.qnap.com/en-us/product/tvs-h674"),
+  ("Asustor Lockerstor Gen3 (AS6808T page)", "https://www.asustor.com/en/product?p_id=88"),
+  ("Technical City: Core i5-1235U vs Core 5 120U", "https://technical.city/en/cpu/Core-i5-1235U-vs-Core-5-120U"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-8-bay-nas-under-1500-home-media", "question": "G27 (UGREEN funnel: 8-bay NAS under $1,500 for home media)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp8800-plus", "item_id": "UGREEN-DXP8800-PLUS",
+                    "title": "UGREEN NASync DXP8800 Plus, 8-bay NAS under $1,500",
+                    "description": "8 bays + 2× M.2, Core i5-1235U with Quick Sync, 2× 10GbE, 2× Thunderbolt 4, PCIe slot. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NASync_DXP8800_Plus_8_bay.png"},
+ "title": "Best 8-bay NAS under $1,500 for a home media library (2026): built-in 10GbE and Plex transcoding compared",
+ "h1": "Best 8-bay NAS under $1,500 for a home media library (2026)",
+ "desc": "Which 8-bay NAS under $1,500 to buy for a Plex or Jellyfin library: UGREEN's DXP8800 Plus against the Synology DS1825+, QNAP TS-873A, TS-832PX and TS-855X, Asustor Lockerstor 8 Gen3, UniFi UNAS Pro 8 and UGREEN's DXP8800 Ultra, on CPU and Quick Sync, RAM, built-in 10GbE, M.2 and PCIe, with measured throughput, noise and power from reviews, RAID 6 capacity for eight drives and the price on the maker's store on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP8800 Plus</strong> ({buy:ugreen-nasync-dxp8800-plus}), the best 8-bay NAS under $1,500 for a home media library in 2026, $1,369.99 diskless on 2026-11-03: the only 8-bay at that price with both 10GbE built in (two ports) and an Intel iGPU for Plex transcoding (Core i5-1235U, Quick Sync), plus two M.2 slots, two Thunderbolt 4 ports and a PCIe x4 slot. Eight 12 TB drives in RAID 6 give 72 TB usable.</p>
+<p>The cheaper 8-bays give up one or the other: Synology's DS1825+ (about $1,150–1,219) and QNAP's TS-873A ($1,149) run AMD Ryzens with no Quick Sync and 2.5GbE only (the DS1825+ takes no Synology 10GbE mini card), QNAP's TS-832PX ($1,150) is ARM with 10G SFP+, and UniFi's UNAS Pro 8 ($799) is an ARM rackmount with no Plex. Reviews of the DXP8800 Plus measured 650–700 MB/s over 10GbE at the default MTU, 64–66 W idle and 90–94 W active with ten drives, and about 49 dB at 1 m under load, so give it a cupboard, not a shelf by the sofa.</p>
+""",
+ "columns": [("cpu", "CPU / Quick Sync"), ("ram", "RAM (max)"), ("lan", "Built-in LAN"), ("m2", "M.2 / PCIe"), ("plex", "Plex HW transcode"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp8800-plus", "model": "UGREEN NASync DXP8800 Plus",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T, Quick Sync", "ram": "8 GB DDR5 (64 GB)", "lan": "2× 10GbE", "m2": "2× NVMe; 1× PCIe x4; 2× Thunderbolt 4", "plex": "Yes (Docker, Plex Pass)", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP8800 Ultra", "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-ultra-nas-storage",
+   "cells": {"cpu": "Intel Core 7 150U, 10C/12T, Quick Sync", "ram": "to 96 GB DDR5", "lan": "2× 10GbE", "m2": "2× NVMe; PCIe Gen4; 2× Thunderbolt 4", "plex": "Yes", "warranty": "2 years", "price": "$1,779.99 (UGREEN NAS store, 2026-11-03): over the line"}},
+  {"brand": "Synology", "model": "DS1825+", "url": "https://www.synology.com/en-us/products/DS1825+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T; no iGPU", "ram": "8 GB ECC (32 GB)", "lan": "2× 2.5GbE", "m2": "2× NVMe; 1× PCIe Gen3 x8 slot (x4)", "plex": "No hardware transcoding", "warranty": "3 years (5 with Extended Warranty Plus)", "price": "$1,149.99 (B&H) to $1,218.99 (Best Buy), undated"}},
+  {"brand": "QNAP", "model": "TS-873A", "url": "https://www.qnap.com/en-us/product/ts-873a",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C; no iGPU", "ram": "to 64 GB", "lan": "2× 2.5GbE", "m2": "2× NVMe; 2× PCIe Gen3 x4", "plex": "No hardware transcoding", "warranty": "3 years", "price": "$1,149 (Newegg, Walmart; undated)"}},
+  {"brand": "QNAP", "model": "TS-832PX", "url": "https://www.qnap.com/en-us/product/ts-832px",
+   "cells": {"cpu": "ARM Cortex-A57 4C 1.7 GHz", "ram": "4 GB (16 GB)", "lan": "2× 10GbE SFP+ + 2× 2.5GbE", "m2": "None built in; 1× PCIe Gen2", "plex": "No", "warranty": "2 years", "price": "$1,150 (Walmart, undated)"}},
+  {"brand": "QNAP", "model": "TS-855X", "url": "https://www.qnap.com/en-us/product/ts-855x",
+   "cells": {"cpu": "Intel Atom C5125, 8C; no iGPU", "ram": "8 GB (128 GB)", "lan": "1× 10GbE + 2× 2.5GbE", "m2": "2× NVMe; 2× PCIe Gen3 x4", "plex": "No (no iGPU)", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "Asustor", "model": "Lockerstor 8 Gen3 (AS6808T)", "url": "https://www.asustor.com/en/product?p_id=88",
+   "cells": {"cpu": "AMD Ryzen V3C14, 4C; no iGPU", "ram": "16 GB ECC DDR5 (64 GB)", "lan": "2× 10GbE + 2× 5GbE", "m2": "4× NVMe PCIe 4.0", "plex": "No hardware transcoding", "warranty": "3 years", "price": "$1,681–1,817 (Saitech, Best Buy; undated): over the line"}},
+  {"brand": "Ubiquiti", "model": "UniFi UNAS Pro 8 (2U rackmount)", "url": "https://store.ui.com/us/en/products/unas-pro-8",
+   "cells": {"cpu": "ARM Cortex-A57 4C", "ram": "16 GB, fixed", "lan": "2× 10G SFP+ + 1× 10GbE RJ45", "m2": "2× NVMe (cache); no PCIe", "plex": "No app platform found", "warranty": "Not found (UI Care 5-year plan $199)", "price": "$799 (store.ui.com, 2026-11-03)"}},
+ ],
+ "after": """
+<h2>What reviewers measured</h2>
+<ul>
+<li><strong>10GbE:</strong> NASCompares (April 2024) saw about 650–700 MB/s up and down at MTU 1500, "less than expected" for a 10GbE link; its sibling DXP6800 Pro, with the same chip and ports, later measured 9.5 Gbit/s in iPerf3 at Notebookcheck, so the gap is in the drives and file protocol, not the ports. Jumbo frames and an SSD pool help.</li>
+<li><strong>Power:</strong> UGREEN says 29 W hibernating and 70 W active; NASCompares' wall meter read 64–66 W idle and 90–94 W active with ten drives fitted. Size the UPS on the measured numbers.</li>
+<li><strong>Noise:</strong> about 49 dB at 1 m under load (AppleInsider, via StarryHope); the 6-bay sibling idles at 34.6 dB(A).</li>
+<li><strong>Plex:</strong> runs in Docker on UGOS; hardware transcoding needs a Plex Pass. No review published a stream count for the i5-1235U; the closest measurement, an Iris Xe i7-1165G7 in Jellyfin, held three 4K HDR tone-mapped transcodes at 73 fps each, so plan on about three tone-mapped 4K streams or many more plain 1080p ones.</li>
+<li><strong>Software:</strong> NASCompares scored the hardware high and UGOS 6/10 at launch (April 2024); the OS has had two years of updates since.</li>
+</ul>
+<h2>Eight drives: capacity and cost</h2>
+<p>RAID 6 keeps two drives for parity: eight 8 TB drives give 48 TB usable, eight 12 TB give 72 TB, eight 16 TB give 96 TB (decimal; the NAS shows about 9% less in TiB). NAS drive prices swung widely in 2026: 12 TB IronWolf Pro drives were listed from $229.99 (Newegg, Best Buy) to $429.99 (Amazon, February 2026) and 8 TB WD Red Plus drives at $345–416 in September 2026, so eight 12 TB drives run roughly $1,840 to $3,440 depending on the week. Price them on the day; the NAS is the smaller half of the bill.</p>
+<h2>Why not the others</h2>
+<p>The Synology DS1825+ is the polished choice for backups and Synology Photos, but its Ryzen cannot hardware-transcode and its PCIe slot takes a full-size 10GbE card, not Synology's mini card. QNAP's Intel 8-bay with 10GbE (TS-855X) uses an Atom with no iGPU. The Asustor Lockerstor 8 Gen3 has the best network ports of the group and no iGPU, at $1,700 or more. UniFi's UNAS Pro 8 is the cheapest 8-bay with 10GbE but is a rack unit running UniFi Drive, with no Plex or Docker.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP8800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage"),
+  ("UGREEN NASync DXP8800 Ultra", "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-ultra-nas-storage"),
+  ("NASCompares: UGREEN DXP8800 Plus review (10GbE, power)", "https://nascompares.com/review/ugreen-dxp8800-plus-nas-review"),
+  ("StarryHope: DXP8800 Plus specs and review summary (noise, power)", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp8800-plus/"),
+  ("Marius Hosting: Plex on the DXP8800 Plus", "https://mariushosting.com/ugreen-nasync-dxp8800-plus-review/"),
+  ("Notebookcheck: UGREEN DXP6800 Pro review (same chip, 9.5 Gbit/s)", "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"),
+  ("computingforgeeks: iGPU transcoding tests (Iris Xe, Jellyfin)", "https://computingforgeeks.com/best-gpu-jellyfin-plex-transcoding/"),
+  ("Synology DS1825+", "https://www.synology.com/en-us/products/DS1825+"),
+  ("Synology E10G22-T1-Mini (compatibility list)", "https://www.synology.com/en-us/products/E10G22-T1-Mini"),
+  ("QNAP TS-873A", "https://www.qnap.com/en-us/product/ts-873a"),
+  ("QNAP TS-832PX", "https://www.qnap.com/en-us/product/ts-832px"),
+  ("QNAP TS-855X", "https://www.qnap.com/en-us/product/ts-855x"),
+  ("Asustor AS6808T", "https://www.asustor.com/en/product?p_id=88"),
+  ("UniFi UNAS Pro 8", "https://store.ui.com/us/en/products/unas-pro-8"),
+  ("storagediskprices: IronWolf Pro prices (Feb 2026)", "https://storagediskprices.com/seagate-ironwolf-pro/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-under-500-for-plex-4k-transcoding", "question": "G31 (UGREEN funnel: NAS under $500 for Plex 4K hardware transcoding)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Plex under $500",
+                    "description": "2-bay Intel N100 with Quick Sync, 8 GB DDR5, 2× M.2. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS under $500 for Plex 4K hardware transcoding (2026)",
+ "h1": "Best NAS under $500 for Plex 4K hardware transcoding (2026)",
+ "desc": "Which NAS under $500 can hardware-transcode 4K in Plex: UGREEN's DXP2800 against the TerraMaster F2-425 Plus and F2-425, Synology DS224+, DS225+ and DS425+, QNAP TS-264 and TS-262, Asustor AS5402T and the Beelink ME mini, with Plex's own rules (Plex Pass, Jasper Lake or newer for HEVC, Kaby Lake or newer for hardware tone mapping), what the 2025 Synology models lost, reported N100 stream counts and prices on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS under $500 for Plex 4K hardware transcoding, $389.99 diskless on 2026-11-03: an Intel N100 with Quick Sync that meets Plex's bar for NAS transcoding (Jasper Lake or newer; Kaby Lake or newer for hardware tone mapping), 8 GB DDR5, two M.2 slots; owners report two to four 4K HDR transcodes at once on an N100 under Linux. Plex runs in Docker and needs a Plex Pass.</p>
+<p>If you want Plex as a one-click app instead of a Docker container, TerraMaster's F2-425 Plus (Intel N150, 8 GB to 32 GB, three M.2 slots, two 5GbE ports, native Plex package) was $399 on Amazon in October 2025, with no current price confirmed. Avoid the 2025 Synology Plus models for this job: the DS225+ and DS425+ carry a Celeron J4125 whose iGPU driver Synology reportedly removed, so Plex hardware transcoding does not work without an unofficial patch, and the J4125 is older than Plex's Kaby Lake line for hardware tone mapping anyway.</p>
+""",
+ "columns": [("cpu", "CPU / iGPU"), ("ram", "RAM (max)"), ("m2", "M.2"), ("lan", "LAN"), ("plex", "Plex"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (Alder Lake-N), 4C, Quick Sync", "ram": "8 GB DDR5 (16 GB)", "m2": "2× NVMe", "lan": "1× 2.5GbE", "plex": "Docker; hardware transcoding with a Plex Pass and a device mount", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150 (Twin Lake), 4C, Quick Sync", "ram": "8 GB DDR5 (32 GB)", "m2": "3× NVMe", "lan": "2× 5GbE", "plex": "Native Plex, Jellyfin and Emby apps; Docker", "warranty": "Not found", "price": "$399 (Amazon, Oct 2025)"}},
+  {"brand": "TerraMaster", "model": "F2-425", "url": "https://www.terra-master.com/products/f2-425",
+   "cells": {"cpu": "Intel Celeron N5095 (Jasper Lake), 4C, Quick Sync (unverified)", "ram": "4 GB", "m2": "None", "lan": "1× 2.5GbE", "plex": "App Center; direct play recommended by a reviewer", "warranty": "Not found", "price": "about $249.99 (review table)"}},
+  {"brand": "Synology", "model": "DS224+", "url": "https://www.synology.com/en-us/products/DS224+",
+   "cells": {"cpu": "Intel Celeron J4125 (Gemini Lake), 4C", "ram": "2 GB (6 GB)", "m2": "None", "lan": "2× 1GbE", "plex": "Native package; Gemini Lake is older than Plex's Jasper Lake and Kaby Lake lines", "warranty": "2 years", "price": "about $340 (Amazon, May 2026); listings conflict"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125; iGPU driver reportedly removed in DSM", "ram": "2 GB (6 GB)", "m2": "None", "lan": "1× 2.5GbE + 1× 1GbE", "plex": "Native package; hardware transcoding reported unsupported", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "Synology", "model": "DS425+", "url": "https://www.synology.com/en-us/products/DS425+",
+   "cells": {"cpu": "Intel Celeron J4125; iGPU driver reportedly removed", "ram": "2 GB (6 GB)", "m2": "2× NVMe (Synology SSDs for pools)", "lan": "1× 2.5GbE + 1× 1GbE", "plex": "Native package; hardware transcoding reported unsupported", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Intel Celeron N5095 (Jasper Lake), 4C, Quick Sync", "ram": "8 GB", "m2": "2× NVMe Gen3 x1", "lan": "2× 2.5GbE", "plex": "Native package", "warranty": "3 years", "price": "$577–591 (CDW, SHI): over $500"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105 (Jasper Lake), 4C, Quick Sync", "ram": "4 GB (16 GB)", "m2": "4× NVMe Gen3 x1", "lan": "2× 2.5GbE", "plex": "Native package", "warranty": "3 years", "price": "$392–460 (resellers, undated)"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://www.cnx-software.com/2025/05/10/beelink-me-mini-compact-6-slot-ssd-nas-and-mini-pc-powered-by-an-intel-n150-twin-lake-soc/",
+   "cells": {"cpu": "Intel N150, 4C, Quick Sync", "ram": "12 GB, soldered", "m2": "6× NVMe (no SATA bays)", "lan": "2× 2.5GbE", "plex": "Bring your own OS", "warranty": "Not found", "price": "$209 barebone"}},
+ ],
+ "after": """
+<h2>Plex's own rules</h2>
+<ul>
+<li><strong>Plex Pass:</strong> hardware-accelerated streaming is a premium feature; tone mapping needs a Plex Pass on the server owner's account too (a lifetime pass was about $250 in 2026).</li>
+<li><strong>CPU generations:</strong> Plex's hardware-transcoding article recommends 5th-gen Core or newer, needs 7th-gen for HEVC encoding, and says NAS units need "a Jasper Lake or better CPU for reliable HEVC output". The N100 and N150 are newer than Jasper Lake; the J4125 (Gemini Lake Refresh) is older.</li>
+<li><strong>Tone mapping (HDR to SDR):</strong> hardware tone mapping on Linux, Docker and NAS needs Plex Media Server 1.29.2 or newer and an Intel Kaby Lake or newer iGPU; Windows needs Tiger Lake or newer, and macOS has no hardware option. Jasper Lake and Alder Lake-N both qualify; Gemini Lake does not.</li>
+<li><strong>Docker:</strong> hardware transcoding in a container needs the kernel's render device bound into the container (Plex calls it an advanced setup); UGREEN's Docker app exposes that through its compose "projects".</li>
+</ul>
+<h2>How many streams</h2>
+<p>No lab has published a tone-mapped 4K stream count for these boxes. Owner reports for the N100 under Linux range from two 4K HDR tone-mapped transcodes (including 60 fps remuxes) while a library scan ran, to three or four 4K HDR-to-1080p streams; a Windows test held five mixed 1080p/HEVC transcodes at about 35% CPU but Windows has no hardware tone mapping. Jasper Lake (N5095, N5105) shares the same Quick Sync block as the N100's predecessor and should behave alike; the J4125 is reported unable to transcode 4K reliably in real time. Treat all of it as a range, not a specification.</p>
+<h2>What changed at Synology</h2>
+<p>Synology's 2025 two-bay Plus models (DS225+, DS425+) use the same J4125 as the DS224+, but owners and NASCompares report the i915 graphics driver is gone from DSM and Synology support calls hardware transcoding unsupported on them; a community patch restores it with root access. DSM 7.3 (October 2025) let the 2025 Plus, Value and J models create pools on third-party hard drives again, but M.2 pools still need Synology-verified SSDs.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Plex: using hardware-accelerated streaming", "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/"),
+  ("Plex: HDR to SDR tone mapping", "https://support.plex.tv/articles/hdr-to-sdr-tone-mapping/"),
+  ("lon.tv: Plex on Intel N100 mini PCs (measured transcodes)", "https://blog.lon.tv/2024/05/31/plex-server-on-the-cheap-intel-n100-mini-pcs-are-a-great-choice/"),
+  ("bitdoze: mini PCs for Plex and Jellyfin (N150 estimate)", "https://www.bitdoze.com/best-mini-pc-plex-jellyfin/"),
+  ("WunderTech: best NAS for Plex (2026)", "https://wundertech.net/best-nas-for-plex/"),
+  ("Blackvoid: Plex hardware transcoding on the x25 Synology models", "https://www.blackvoid.club/unlocking-plex-hw-transcoding-on-x25-synology-models/"),
+  ("NASCompares: getting hardware transcoding back on a Synology NAS", "https://nascompares.com/2025/09/24/how-to-get-hardware-transcoding-back-on-your-synology-nas/"),
+  ("Plex forum: Synology DS425+ hardware transcoding issue", "https://forums.plex.tv/t/synology-ds425-hardware-transcoding-issue/926093"),
+  ("NASCompares: DSM 7.3 drive support", "https://nascompares.com/guide/synology-dsm-7-3-nas-full-details-on-hdd-and-ssd-support/"),
+  ("Synology DS224+", "https://www.synology.com/en-us/products/DS224+"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("Synology DS425+", "https://www.synology.com/en-us/products/DS425+"),
+  ("QNAP TS-264", "https://www.qnap.com/en-us/product/ts-264"),
+  ("Asustor AS5402T", "https://www.asustor.com/en/product?p_id=81"),
+  ("CNX Software: TerraMaster F2-425 Plus and F4-425 Plus", "https://www.cnx-software.com/2025/10/29/terramaster-intel-n150-nas-systems-5gbe-networking-ai-photo-recognition-privacy-protection/"),
+  ("CNX Software: Beelink ME mini", "https://www.cnx-software.com/2025/05/10/beelink-me-mini-compact-6-slot-ssd-nas-and-mini-pc-powered-by-an-intel-n150-twin-lake-soc/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-small-ups-for-home-nas", "question": "G29 (UGREEN funnel: small UPS for a home NAS)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nas-ups-us3000-120w", "item_id": "UGREEN-US3000-UPS",
+                    "title": "UGREEN NAS UPS US3000 for NASync 2- and 4-bay units",
+                    "description": "120 W inline DC battery, 43 Wh, 0 s transfer, USB link for UGOS auto shutdown.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/ups.webp"},
+ "title": "Best small UPS to protect a home NAS and shut it down safely (2026): UGREEN's DC UPS, and the AC units for every other NAS",
+ "h1": "Best small UPS for a home NAS, with a safe shutdown (2026)",
+ "desc": "Which small UPS keeps a home NAS up through an outage and shuts it down cleanly: UGREEN's inline DC UPS (US3000, US2000) for its own NASync models, and the compact AC units for any NAS (APC BE425M, BE600M1, BE850M2, BN900M; CyberPower EC650LCD, CP685AVRG, CP850PFCLCD; Eaton 3S 550, 5S 700; Tripp Lite AVR650UM, SMART1000LCD) on watts, waveform, USB shutdown, runtime and warranty, with what UGOS, DSM, QTS and TrueNAS support.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> If your NAS is a UGREEN NASync 2- or 4-bay (DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus, DH2300, DH4300 Plus), buy the <strong>UGREEN NAS UPS US3000</strong> ({buy:ugreen-nas-ups-us3000-120w}), $109.99 on 2026-11-03: a 120 W lithium battery that sits inline on the NAS's own DC lead, switches over in 0 seconds, and tells UGOS over USB to shut down at once, after a set time, or before the battery runs out; UGREEN quotes about 10 minutes of runtime. For any other NAS, the small AC unit to buy is the <strong>APC Back-UPS BE600M1</strong> (600 VA / 330 W, USB shutdown, about $135–140): it is on UGOS's own supported list and on Synology's and QNAP's.</p>
+<p>Two things to know. The US3000 powers only the NAS, not the router or switch, so remote access drops during the outage even though the data stays safe; and no lab has measured its runtime, the figures are UGREEN's 10 minutes and reviewers' 7–10 minute estimates at 35–55 W. For a NAS with an active-PFC power supply, or a 6- or 8-bay that the US3000 does not support, the CyberPower CP850PFCLCD (850 VA / 510 W, pure sine wave on battery, three-year warranty) is the safe AC pick.</p>
+""",
+ "columns": [("rating", "Rating"), ("wave", "Waveform on battery"), ("data", "USB shutdown"), ("runtime", "Runtime (maker or reviewer)"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nas-ups-us3000-120w", "model": "UGREEN NAS UPS US3000 (DC, NASync 2–4 bay)",
+   "cells": {"rating": "120 W DC, 43.2 Wh lithium", "wave": "DC inline, 0 s transfer", "data": "USB to UGOS: Auto, Timed or Standby shutdown; NUT server toggle", "runtime": "About 10 min (UGREEN); 7–10 min estimated at 35–55 W (reviews)", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NAS UPS US2000 (DC, DH series and DXP2800)", "url": "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply",
+   "cells": {"rating": "72 W DC, 43.2 Wh lithium", "wave": "DC inline, 0 s", "data": "USB to UGOS", "runtime": "Not published", "warranty": "2 years", "price": "$69.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "APC", "model": "Back-UPS BE600M1", "url": "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/",
+   "cells": {"rating": "600 VA / 330 W", "wave": "Simulated sine", "data": "USB data port; on UGOS's, DSM's and QTS's lists", "runtime": "67 min at 40 W, 10 min at 180 W (APC datasheet)", "warranty": "3 years (retailers)", "price": "about $135–140 (SHI, undated)"}},
+  {"brand": "APC", "model": "Back-UPS BE425M", "url": "https://www.mouser.com/datasheet/2/357/1/BE425M_DATASHEET_WW_en_WW-2576945.pdf",
+   "cells": {"rating": "425 VA / 255 W", "wave": "Simulated sine", "data": "Not stated", "runtime": "45 min at 40 W (APC datasheet)", "warranty": "Not found", "price": "about $77–80 (MSRP $106)"}},
+  {"brand": "APC", "model": "Back-UPS BE850M2", "url": "https://www.se.com/us/en/product/BE850M2/",
+   "cells": {"rating": "850 VA / 450 W", "wave": "Simulated sine", "data": "Not stated", "runtime": "90 min at 40 W, 14.8 min at 180 W", "warranty": "Not found", "price": "Not found"}},
+  {"brand": "CyberPower", "model": "CP850PFCLCD", "url": "https://m.cdw.com/product/cyberpower-intelligent-pfc-lcd-cp850pfclcd/2190603",
+   "cells": {"rating": "850 VA / 510 W", "wave": "Pure sine (line-interactive)", "data": "USB", "runtime": "2 min at full load (retailer)", "warranty": "3 years + connected-equipment guarantee", "price": "Not found"}},
+  {"brand": "CyberPower", "model": "EC650LCD", "url": "https://www.cyberpowersystems.com/product/ups/ecologic/ec650lcd/",
+   "cells": {"rating": "650 VA / 390 W", "wave": "Simulated sine", "data": "USB management", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "CyberPower", "model": "CP685AVRG", "url": "https://www.cyberpowersystems.com/product/ups/avr/cp685avrg/",
+   "cells": {"rating": "685 VA / 390 W", "wave": "Simulated sine", "data": "USB and RS-232", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "Eaton", "model": "5S 700", "url": "https://www.shi.com/product/27137872/Eaton-5S-700-UPS-AC-120-V",
+   "cells": {"rating": "700 VA / 420 W", "wave": "Not found", "data": "USB", "runtime": "12 min at half load (retailer)", "warranty": "2–3 years (sources differ)", "price": "Not found"}},
+  {"brand": "Tripp Lite", "model": "AVR650UM", "url": "https://tripplite.eaton.com/",
+   "cells": {"rating": "650 VA / 325 W", "wave": "Not found", "data": "USB", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
+ ],
+ "after": """
+<h2>DC inline or AC box</h2>
+<p>UGREEN's DC UPS takes the NAS's own power brick as input (12 V 10 A, 19 V 7.9 A or 20 V 7 A), feeds the NAS from its four 18650 cells and reports over USB; there is no inverter and no switchover gap. It supports only UGREEN's DC-powered 2- and 4-bay NASync units (the 6- and 8-bay DXP6800 and DXP8800 use internal AC supplies and are listed as not supported), powers nothing else, and its battery replacement path is not published. An AC UPS backs up the NAS plus the router and switch, so the NAS stays reachable and NUT can share one UPS with several machines; it needs a model on your NAS's compatibility list for the USB shutdown to work, and its lead-acid battery lasts roughly three to five years.</p>
+<h2>What each NAS OS does</h2>
+<ul>
+<li><strong>UGOS Pro:</strong> detects a USB UPS under Control Panel → Hardware & Power → UPS, with Auto Shutdown (immediate, logged within two seconds in NASCompares' test), Timed shutdown and Standby (shut down before the battery is empty) modes, restart on power return, and a NUT server toggle. UGREEN's supported list names the US3000, APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850; other USB units may or may not be recognised.</li>
+<li><strong>Synology DSM:</strong> USB, SNMP and network UPS with one NAS as server and others on an allow-list, plus a standby-mode trigger; Synology advises a real outage test.</li>
+<li><strong>QNAP QTS:</strong> USB, SNMP and network master with up to 20 clients; QNAP suggests a 3–5 minute shutdown delay and keeps a per-model list.</li>
+<li><strong>TrueNAS and Unraid:</strong> NUT; the US3000 needs manual configuration there, and one TrueNAS SCALE 25.10 user could not get NUT to see it.</li>
+</ul>
+<h2>Why bother</h2>
+<p>A NAS that loses power mid-write can leave a RAID array resyncing for hours or a file system to repair; the UPS's job is the clean shutdown, not hours of runtime. Ten minutes is enough if the shutdown is automatic; pick Auto Shutdown on UGOS, or a short delay on DSM and QTS, and test it by pulling the plug once.</p>
+""",
+ "sources": [
+  ("UGREEN NAS UPS US3000", "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"),
+  ("UGREEN NAS UPS US2000", "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply"),
+  ("UGREEN: UPS for NAS buying and setup guide", "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide"),
+  ("UGREEN support: supported UPS models", "https://support.ugnas.com/detail/article/en-US/708"),
+  ("NASCompares: UGREEN US3000 review (UGOS modes, shutdown test)", "https://nascompares.com/2025/09/26/ugreen-us3000-nas-ups-review/"),
+  ("rack2reality: UGREEN US3000 review (connection, runtime table)", "https://rack2reality.com/2025/11/03/ugreen-us3000-ups-review-nasync-companion/"),
+  ("needtoknowit: UGREEN 120W UPS review (supported models)", "https://www.needtoknowit.com.au/blog/ugreen-nas-120w-ups-review.md"),
+  ("TrueNAS forum: US3000 and NUT on TrueNAS SCALE", "https://forums.truenas.com/t/ugreen-us3000-ups-usb-vid-2b89-ffff-not-accessible-by-nut-on-truenas-scale-25-10/66980"),
+  ("APC Back-UPS BE600M1", "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/"),
+  ("APC BE425M datasheet", "https://www.mouser.com/datasheet/2/357/1/BE425M_DATASHEET_WW_en_WW-2576945.pdf"),
+  ("CyberPower CP850PFCLCD (CDW listing)", "https://m.cdw.com/product/cyberpower-intelligent-pfc-lcd-cp850pfclcd/2190603"),
+  ("Eaton 5S 700 (SHI listing)", "https://www.shi.com/product/27137872/Eaton-5S-700-UPS-AC-120-V"),
+  ("Synology DSM: UPS settings", "https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7"),
+  ("QNAP: using a UPS with a QNAP NAS", "https://www.qnap.com/en/how-to/faq/article/how-do-i-use-a-ups-with-my-qnap-nas"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
