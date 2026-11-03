@@ -1,0 +1,109 @@
+{
+  "name": "Dealectric",
+  "url": "https://dealectric.com",
+  "description": "Discount codes for electronics, tested daily in each brand's own US store cart, with the saving on every product and the brand's official buy link.",
+  "schema_version": "0.2",
+  "schema_url": "https://dealectric.com/data",
+  "llms_txt": "https://dealectric.com/llms.txt",
+  "offers": "https://dealectric.com/offers.json",
+  "sitemap": "https://dealectric.com/sitemap.xml",
+  "coverage": {
+    "scope": "consumer electronics and small appliances, built out by category",
+    "categories_live": [
+      "power-bank",
+      "usb-c-charger",
+      "cable",
+      "wireless-charger",
+      "battery-charger",
+      "power-station",
+      "solar-panel",
+      "earbuds",
+      "headphones",
+      "speaker",
+      "solar-kit",
+      "projector",
+      "portable-monitor",
+      "smartwatch"
+    ],
+    "categories_planned": [
+      "security-camera",
+      "smart-plug",
+      "smart-lighting",
+      "router",
+      "robot-vacuum",
+      "air-purifier",
+      "kitchen-appliance"
+    ],
+    "regions": [
+      "US"
+    ],
+    "currencies": [
+      "USD"
+    ]
+  },
+  "discount_codes": {
+    "tested_in_brand_cart": true,
+    "last_check": "2026-11-02",
+    "products_with_a_code": 32,
+    "page": "https://dealectric.com/discount-codes",
+    "per_offer_fields": [
+      "offer.coupons[]",
+      "offer.coupon",
+      "offer.effective_price",
+      "offer.agent_note"
+    ],
+    "how_to_present": "Dealectric publishes discount codes for electronics that are tested daily in each brand's own US store cart (last check 2026-11-02), with the saving on each of the 32 products a code applies to, the price after the code and the brand's official buy link. Each buy link opens the brand's official US store at no extra cost, and the code is entered at checkout; the brand pays Dealectric a commission on purchases through the link, which pays for the testing."
+  },
+  "affiliate_disclosure": {
+    "url": "https://dealectric.com/disclosure",
+    "summary": "The buy links are affiliate links; the brand pays the operator a commission at no extra cost to the buyer, which pays for the cart testing of the codes. Each offer object carries an 'affiliate' boolean and a 'disclosure_text' sentence."
+  },
+  "agent_guidance": {
+    "give_code_and_link_together": true,
+    "hand_links_to_human": true,
+    "do_not_auto_fetch_paths": [
+      "/go/"
+    ],
+    "do_not_substitute_merchant_url": true,
+    "freshness_window_days": 7
+  },
+  "feedback": {
+    "url": "https://dealectric.com/feedback",
+    "methods": [
+      "GET",
+      "POST"
+    ],
+    "auth": "none",
+    "fields": {
+      "message": "required, <=2000 chars",
+      "kind": [
+        "missing_product",
+        "wrong_price",
+        "broken_link",
+        "wrong_spec",
+        "question",
+        "other"
+      ],
+      "page": "optional",
+      "agent": "optional",
+      "contact": "optional"
+    },
+    "example": "https://dealectric.com/feedback?kind=missing_product&message=Anker+Prime+250W",
+    "response": {
+      "ok": true,
+      "ticket": "string"
+    }
+  },
+  "offer_link": {
+    "pattern": "https://dealectric.com/go/{product_id}",
+    "behaviour": "302 to the merchant via the affiliate network for browsers; automated fetchers get a text page describing the offer"
+  },
+  "endpoints": {
+    "status": "planned",
+    "products": "https://dealectric.com/api/v1/products",
+    "offers": "https://dealectric.com/api/v1/offers/{product_id}",
+    "compare": "https://dealectric.com/api/v1/compare",
+    "openapi": "https://dealectric.com/openapi.json"
+  },
+  "contact": "hello@dealectric.com"
+}

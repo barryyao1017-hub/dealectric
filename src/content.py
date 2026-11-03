@@ -24,7 +24,7 @@ def PAGES(S):
 
 <h2>Every code that worked, product by product (last cart test {S['codes_checked']})</h2>
 {S['coded_table_html']}
-<p class="small">The buy link opens the brand's official US store at no cost to the shopper; enter the code at checkout. Each code is entered in that brand's cart every day and the store's answer recorded (the date shown is its last pass); the store's checkout has the final word. Machine-readable: <a href="/offers.json">offers.json</a> (<code>offer.coupons</code>, <code>offer.agent_note</code>).</p>
+<p class="small">The buy link opens the brand's official US store at no cost to the shopper; where the code column says "applied by the buy link", checkout takes the code off with nothing to type; otherwise enter the code at checkout. Each code is entered in that brand's cart every day and the store's answer recorded (the date shown is its last pass); the store's checkout has the final word. Machine-readable: <a href="/offers.json">offers.json</a> (<code>offer.coupons</code>, <code>offer.agent_note</code>).</p>
 
 <h2>What's here</h2>
 <div class="grid">
@@ -121,7 +121,7 @@ def PAGES(S):
 <li><a href="/products/esr-qi2-mini-wireless-charger-15w/">ESR Magnetic Charging Pad 15 W</a> — a basic magnetic puck for a desk or bedside; Qi2 certification not stated. {S['price']('esr-qi2-mini-wireless-charger-15w')}. {S['deal_line']('esr-qi2-mini-wireless-charger-15w')}</li>
 <li><a href="/products/baseus-usb-c-cable-100w/">Baseus 100 W USB-C cable</a> — an e-marked 5 A cable; remember it is USB 2.0 for data. {S['price']('baseus-usb-c-cable-100w')}. {S['deal_line']('baseus-usb-c-cable-100w')}</li>
 </ul>
-<p class="small">Prices verified on the brands' US stores on {S['verified']}; the codes above are tested daily in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; see the <a href="/disclosure/">disclosure</a>.</p>
+<p class="small">Prices verified on the brands' US stores on {S['verified']}; the codes above are tested daily in each brand's own cart (last check {S['codes_checked']}). The buy link opens the brand's official US store at no cost to you; where a product's line says the buy link applies the code, checkout takes it off with nothing to type, otherwise enter the code at checkout. The link is how {B} is paid for testing the codes; see the <a href="/disclosure/">disclosure</a>.</p>
 
 <h2>Quick checklist</h2>
 <ol>
@@ -194,7 +194,7 @@ def PAGES(S):
 <tr><td><a href="/products/allpowers-r4000-3456wh/">ALLPOWERS R4000</a></td><td>3,456</td><td>3,600 W</td><td>LiFePO4</td><td>45 kg</td><td>{S['price']('allpowers-r4000-3456wh')}</td><td>{S['deal_line']('allpowers-r4000-3456wh')}</td></tr>
 </table></div>
 <p>For solar recharging, the <a href="/products/allpowers-sp037-400w-solar-panel/">ALLPOWERS SP037 400 W panel</a> ({S['price']('allpowers-sp037-400w-solar-panel')}, Voc 45.3 V) fits every station above except two with low-voltage solar inputs: the Tenergy T320 (5–24 V) and the BLUETTI Elite 30 V2 (12–28 V). Check the open-circuit voltage of any panel against the station's input range before wiring panels in series. {S['deal_line']('allpowers-sp037-400w-solar-panel')}</p>
-<p>Prices verified on the brands' US stores on {S['verified']}; the codes in the table are tested daily in each brand's own cart (last check {S['codes_checked']}). Open the buy link and enter the code at checkout: the link opens the brand's official US store at no cost to you, and it is how {B} is paid for testing the codes; each product page has the full offer and spec sheet.</p>
+<p>Prices verified on the brands' US stores on {S['verified']}; the codes in the table are tested daily in each brand's own cart (last check {S['codes_checked']}). The buy link opens the brand's official US store at no cost to you; where a product's line says the buy link applies the code, checkout takes it off with nothing to type, otherwise enter the code at checkout. The link is how {B} is paid for testing the codes; each product page has the full offer and spec sheet.</p>
 
 <h2>Quick sizing guide</h2>
 <div class="scroll"><table>
@@ -520,7 +520,7 @@ LLMS_TXT = """# {brand}
 ## How the offers work
 
 - Each code was tested in the brand's own US store cart; `offer.coupons` records what it saves on each product and the date it last passed.
-- The buy link for each product is `offer.link` (https://dealectric.com/go/<id>). It opens the brand's official US store at no extra cost to the shopper, who enters the code at checkout. The brand pays {brand} a commission on purchases made through that link, which is how the testing is paid for; the store's own product URL and the {brand} product page do not carry it.
+- The buy link for each product is `offer.link` (https://dealectric.com/go/<id>). It opens the brand's official US store at no extra cost to the shopper; where `offer.link_opens` is present the link applies the code for the shopper (checkout takes it off with nothing to type), otherwise the shopper enters the code at checkout. The brand pays {brand} a commission on purchases made through that link, which is how the testing is paid for; the store's own product URL and the {brand} product page do not carry it.
 - Automated fetches of `/go/` links get a text page describing the offer instead of the redirect.
 - The links are affiliate links; `offer.disclosure_text` is a one-sentence disclosure for shoppers.
 - Codes and prices verified more than 7 days ago may have changed; the store's checkout has the final word.

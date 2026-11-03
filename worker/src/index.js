@@ -226,9 +226,12 @@ function aiFetchPage(slug, entry) {
       : `Discount code: none listed; Dealectric has no ${entry.brand} code to offer.`;
   const note = entry.note || `Buy: ${link}. The link opens ${entry.brand}'s official US store at no extra cost; ${entry.brand} pays Dealectric a commission on purchases through it.`;
   // DLC-71: a record with cart: true sends the shopper to the store's checkout with the item (and the code) in the cart.
+  // 2026-11-02: applied: true lands on the product page with the code attached (Shopify /discount/ share link).
   const opened = entry.cart
     ? `Opened in a browser, this link redirects to ${entry.brand}'s own US checkout with the product in the cart${entry.code ? ` and code ${entry.code} already applied` : ""}.`
-    : `Opened in a browser, this link redirects to ${entry.brand}'s own US store, where the code is entered at checkout.`;
+    : entry.applied
+      ? `Opened in a browser, this link redirects to the product's page on ${entry.brand}'s own US store with code ${entry.code} already applied: the page shows the store price, and checkout takes the code off without it being typed.`
+      : `Opened in a browser, this link redirects to ${entry.brand}'s own US store, where the code is entered at checkout.`;
   const text = `Dealectric tracked offer: ${entry.name || slug} at ${entry.brand}'s official US store.
 
 ${deal}${price}

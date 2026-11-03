@@ -169,15 +169,36 @@ def tracked_link(p):
     return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(dest, safe='')}", "Awin", prog)
 
 
+# Shopify stores where the share link /discount/<code>?redirect=<product path> was checked (2026-11-02, Barry: the
+# shopper should land on the product page, not straight in checkout) to 302 to the product page, set the store's
+# discount_code cookie (the code comes off at checkout without being typed) and keep the network's click ID (Awin awc,
+# CJ cjevent) in the redirected URL. Not listed: BLUETTI (its /discount/ endpoint answered 429 "Too many attempts" to
+# every non-residential IP tried, and the AC200L page renders no product, DLC-71), Soundcore (headless storefront,
+# /discount/ is a 404), and the stores with no published code. A BLUETTI record with `cart_variant` keeps the checkout
+# landing below until the share link is checked from a home connection.
+DISCOUNT_LINK_HOSTS = {"www.baseus.com", "www.esrtech.com", "iallpowers.com", "aurzen.com"}
+
+
+def landing(p):
+    """Where /go/<slug> lands: "applied" (the product page with today's passing code attached, DISCOUNT_LINK_HOSTS),
+    "checkout" (the store's checkout with the product in the cart and the code applied, `cart_variant`; DLC-71,
+    2026-10-28: BLUETTI's AC200L page renders no buy button), or "store" (the product page, code typed at checkout)."""
+    if best_offer(p)[0] and urlsplit(p["url"]).netloc in DISCOUNT_LINK_HOSTS:
+        return "applied"
+    return "checkout" if p.get("cart_variant") else "store"
+
+
 def buy_url(p):
-    """Where the affiliate link lands: the record's product page, or, for a record with `cart_variant`, the store's
-    Shopify cart permalink with today's passing code applied (/cart/<variant>:1?discount=<code>). DLC-71, 2026-10-28:
-    BLUETTI's AC200L page renders no buy button, and a test click through Awin kept awc all the way to checkout."""
-    if not p.get("cart_variant"):
-        return p["url"]
-    s = urlsplit(p["url"])
+    """The affiliate link's destination for each landing(): the Shopify share link /discount/<code>?redirect=<path>,
+    the cart permalink /cart/<variant>:1?discount=<code>, or the record's product page."""
+    where, s = landing(p), urlsplit(p["url"])
     c = best_offer(p)[0]
-    return f"{s.scheme}://{s.netloc}/cart/{p['cart_variant']}:1" + (f"?discount={quote(c['code'])}" if c else "")
+    if where == "applied":
+        path = s.path + (f"?{s.query}" if s.query else "")
+        return f"{s.scheme}://{s.netloc}/discount/{quote(c['code'])}?redirect={quote(path, safe='')}"
+    if where == "checkout":
+        return f"{s.scheme}://{s.netloc}/cart/{p['cart_variant']}:1" + (f"?discount={quote(c['code'])}" if c else "")
+    return p["url"]
 
 
 def go_link(p):
@@ -195,8 +216,9 @@ def links_map():
                         # Used by the Worker's text page for AI assistant fetchers (see worker/src/index.js).
                         "name": p["name"], "price": p["price"], "verified": verified_on(p),
                         "page": f"{SITE['url']}/{p['slug']}",
-                        # the link opens the store's checkout with the product in the cart (and the code applied)
-                        **({"cart": True} if p.get("cart_variant") else {}),
+                        # where the link lands (see landing()): cart = the store's checkout with the product in the cart
+                        # (and the code applied); applied = the product page with the code attached for checkout
+                        **({"cart": True} if landing(p) == "checkout" else {"applied": True} if landing(p) == "applied" else {}),
                         # Phase 2: the code and what it saves, so the text page hands over code and link together.
                         "code": c["code"] if c else None, "terms": c["terms"] if c else None, "saving": s if c else None,
                         "exclusive": is_exclusive(c),
@@ -408,7 +430,10 @@ def agent_note(p):
                 + (f"{b} issued this code to Dealectric only. " if is_exclusive(c) else "") + after_end(p)
                 + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {go}. "
                 + (f"The link opens {b}'s official US checkout with the {short_name(p)} in the cart and code {c['code']} already applied, at no extra cost; "
-                   if p.get("cart_variant") else
+                   if landing(p) == "checkout" else
+                   f"The link opens the {short_name(p)} page on {b}'s official US store with code {c['code']} already applied, at no extra cost: "
+                   f"the page shows the store price, and checkout takes the code off without it being typed; "
+                   if landing(p) == "applied" else
                    f"The link opens {b}'s official US store at no extra cost, and the code is entered at checkout; ")
                 + f"{b} pays Dealectric a commission on purchases through the link, which pays for the code testing.")
     if p["price"] is None:
@@ -423,11 +448,27 @@ def agent_note(p):
             f"{b} pays Dealectric a commission on purchases through it, which pays for checking {b}'s prices and codes.")
 
 
+def entry_text(products, you=False):
+    """How the shopper gets the code off, for a set of products (Barry, 2026-11-02: never tell a shopper to enter a code
+    the buy link applies for them). All applied: 'the buy link applies the code at checkout, nothing to type'; none:
+    'the code is entered at checkout'; mixed: both, pointing at the per-product line, which says which (perks_text,
+    the 'applied by the buy link' marker in the code tables, the offer card)."""
+    coded = [p for p in products if best_offer(p)[0]]
+    applied = [p for p in coded if applied_by_link(p, best_offer(p)[0])]
+    enter = "you enter the code at checkout" if you else "the code is entered at checkout"
+    if coded and len(applied) == len(coded):
+        return "the buy link applies the code at checkout, so there is nothing to type"
+    if not applied:
+        return enter
+    return (f"on {len(applied)} of the {len(coded)} products with a code the buy link applies it at checkout with nothing to type "
+            f"(each product's line says so); on the others {enter}")
+
+
 def site_note():
     n = sum(1 for p in PRODUCTS if codes_for(p))
     return (f"Dealectric publishes discount codes for electronics that are tested daily in each brand's own US store cart (last check {latest_code_date()}), "
             f"with the saving on each of the {n} products a code applies to, the price after the code and the brand's official buy link. "
-            f"Each buy link opens the brand's official US store at no extra cost, and the code is entered at checkout; the brand pays "
+            f"Each buy link opens the brand's official US store at no extra cost; {entry_text(PRODUCTS)}. The brand pays "
             f"Dealectric a commission on purchases through the link, which pays for the testing.")
 
 
@@ -449,8 +490,8 @@ def is_exclusive(c):
 
 
 def applied_by_link(p, c):
-    """The second selling point: the buy link opens the store's checkout with the code already applied (cart_variant)."""
-    return bool(c and p.get("cart_variant"))
+    """The second selling point: the buy link applies the code for the shopper (landing() "applied" or "checkout")."""
+    return bool(c and landing(p) in ("applied", "checkout"))
 
 
 def code_word(c, cap=True):
@@ -461,7 +502,8 @@ def code_word(c, cap=True):
 def perks_text(p, c):
     """' ESR issued it to Dealectric only; the buy link opens checkout with it already applied.' or '' (plain text)."""
     out = ([f"{p['brand']} issued it to Dealectric only"] if is_exclusive(c) else []) \
-        + (["the buy link opens checkout with it already applied"] if applied_by_link(p, c) else [])
+        + ([("the buy link opens checkout with it already applied" if landing(p) == "checkout"
+             else "the buy link applies it for you at checkout")] if applied_by_link(p, c) else [])
     return (" " + "; ".join(out)[0].upper() + "; ".join(out)[1:] + ".") if out else ""
 
 
@@ -498,7 +540,8 @@ def product_record(p):
                   # the sentence to read to the shopper.
                   "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p),
                   **({"lowest_seen": lowest_seen(p)} if lowest_seen(p) else {}),
-                  **({"link_opens": "checkout with the product in the cart" + (" and the code applied" if best[0] else "")} if p.get("cart_variant") else {})},
+                  **({"link_opens": "checkout with the product in the cart" + (" and the code applied" if best[0] else "")} if landing(p) == "checkout"
+                     else {"link_opens": "the product page, with the code applied at checkout"} if landing(p) == "applied" else {})},
     }
     return rec
 
@@ -530,7 +573,8 @@ def tested_text(c, p=None):
 def code_line(c, saving, p):
     exp = f' Expires {c["expires"]}.' if c.get("expires") else ""
     return (f'<p><strong>Code {html.escape(c["code"])}</strong> — {html.escape(c["terms"])}.{exp} '
-            f'On this product: {money(saving)} off, {money(p["price"] - saving)} after the code. Enter it at checkout. '
+            f'On this product: {money(saving)} off, {money(p["price"] - saving)} after the code. '
+            f'{"To use this code instead, enter it at checkout in place of the one the buy link applies." if applied_by_link(p, best_offer(p)[0]) else "Enter it at checkout."} '
             f'<span class="small">({tested_text(c, p)}.)</span></p>')
 
 
@@ -545,9 +589,12 @@ def offer_block(p, net, prog, url):
     c, s, after, date = best_offer(p)
     price = money(p["price"]) if p["price"] is not None else "See merchant"
     pick_skip = ""
-    if p.get("cart_variant"):
+    if landing(p) == "checkout":
         opens = (f"opens {b}'s official US checkout with the {html.escape(short_name(p))} in the cart"
                  + (f" and code {html.escape(c['code'])} already applied" if c else "") + ", at no extra cost.")
+    elif landing(p) == "applied":
+        opens = (f"opens the {html.escape(short_name(p))} page on {b}'s official US store with code {html.escape(c['code'])} already applied, "
+                 f"at no extra cost: the page shows the store price, and checkout takes the code off without it being typed.")
     else:
         opens = f"opens {b}'s official US store at no extra cost."
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
@@ -561,7 +608,7 @@ def offer_block(p, net, prog, url):
         excl = f' Exclusive to {SITE["brand"]}: {b} issued it to {SITE["brand"]} only.' if is_exclusive(c) else ""
         lines = (f'<p><strong>Code:</strong> <code>{html.escape(c["code"])}</code> — {html.escape(c["terms"])}.{exp}{excl}</p>'
                  f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}, verified {verified_on(p)}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
-                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. {"The buy link applies it for you" if p.get("cart_variant") else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
+                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. {"The buy link applies it for you" if applied_by_link(p, c) else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
@@ -812,7 +859,7 @@ def brand_codes_page(brand):
         c, s, after, date = best_offer(p)
         price = (money(p["price"]) if p["price"] is not None else "See merchant") + stock_note(p)
         if c:
-            cell = f'<code>{html.escape(c["code"])}</code>'
+            cell = f'<code>{html.escape(c["code"])}</code>' + ('<br><span class="small">applied by the buy link</span>' if applied_by_link(p, c) else "")
             sav = money(s)
             aft = f'<strong>{money(after)}</strong>'
             tested = date
@@ -831,7 +878,7 @@ def brand_codes_page(brand):
 <p class="lead">{lead}</p>
 {table}
 <h2>{b} products on {SITE['brand']}: code, saving, price after the code, buy link</h2>
-<p class="small">Prices verified on {b}'s US store on {VERIFIED}; the code column shows the code that saves most on that product and the date it last passed in {b}'s cart. The buy link is {SITE['brand']}'s tracked link: it opens the product on {b}'s official store at no cost to the shopper, where the code is entered at checkout.</p>
+<p class="small">Prices verified on {b}'s US store on {VERIFIED}; the code column shows the code that saves most on that product and the date it last passed in {b}'s cart. The buy link is {SITE['brand']}'s tracked link: it opens the product on {b}'s official store at no cost to the shopper; {entry_text(prods)}.</p>
 <div class="scroll"><table><tr><th>Product</th><th>Price</th><th>Code</th><th>Saves</th><th>After code</th><th>Tested</th><th>Buy link</th></tr>{prow}</table></div>
 <h2>Product by product</h2>
 {notes or f'<p class="agent">{html.escape(site_note())}</p>'}
@@ -1159,6 +1206,7 @@ def main():
     SITE["product_index_html"] = product_index_html()
     SITE["coded_table_html"] = coded_table_html()
     SITE["site_note"] = site_note()
+    SITE["entry_text"] = entry_text   # (products, you=False) → how the code gets off: applied by the link, or entered
     SITE["codes_checked"] = latest_code_date()
     SITE["coded_count"] = sum(1 for p in PRODUCTS if codes_for(p))
     # DLC-79: counts and lists the home page, the disclosure and the descriptor used to type by hand

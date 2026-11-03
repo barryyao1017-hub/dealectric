@@ -27,13 +27,23 @@ Two things set our offer apart, and the site says each one wherever the code app
    issued it to Dealectric alone (ECTRIC18: ESR's affiliate manager, 2026-10-30). The site then calls it a
    "Dealectric-exclusive code" and says "<brand> issued it to Dealectric only". If the code turns up on a coupon site
    or the brand's own banner, remove the flag the same day: the claim must stay true for a week.
-2. **Pre-applied by the link.** For a Shopify store, run `python3.12 tools/preapply.py <slug>`: it follows our
-   affiliate link to the cart permalink `/cart/<variant>:1?discount=<code>` in the agent's Chrome and passes only
-   when the page is the store's checkout, the code shows with the expected saving and the network's click ID (Awin
-   `awc`, CJ `cjevent`) reached the store. On a pass, set the printed `cart_variant` on the product in
-   `src/products.py`; the build then sends `/go/<slug>` to checkout with the code applied and says so. The daily
-   sweep keeps testing the code; when no code passes, the link still opens checkout with the product in the cart
-   and the pre-applied wording drops out.
+2. **Pre-applied by the link.** Two ways, chosen by `landing()` in `src/build.py`:
+   - *Product page with the code attached* (preferred since 2026-11-02, Barry: the shopper should see the product,
+     not land straight on a payment form). For the Shopify stores in `DISCOUNT_LINK_HOSTS`, `/go/<slug>` opens the
+     store's share link `/discount/<code>?redirect=<product path>`: Shopify 302s to the product page, sets the
+     `discount_code` cookie (the code comes off at checkout without being typed) and keeps the network's click ID
+     (Awin `awc`, CJ `cjevent`) in the redirected URL. Checked with curl on 2026-11-02 for Baseus, ESR, ALLPOWERS
+     and Aurzen. Add a store to the set only after the same check: a 302 to the product path with the click ID
+     kept and `set-cookie: discount_code=<code>`. BLUETTI's `/discount/` answered 429 "Too many attempts" from
+     every non-residential IP tried (check it from a home connection first); Soundcore's headless storefront
+     returns 404 on it. The product page shows the store price; the saving appears at checkout.
+   - *Checkout with the product in the cart* (`cart_variant`, DLC-71): for a store not in the set, run
+     `python3.12 tools/preapply.py <slug>`: it follows our affiliate link to the cart permalink
+     `/cart/<variant>:1?discount=<code>` in the agent's Chrome and passes only when the page is the store's
+     checkout, the code shows with the expected saving and the click ID reached the store. On a pass, set the
+     printed `cart_variant` on the product in `src/products.py`; the build then sends `/go/<slug>` to checkout
+     with the code applied and says so. The daily sweep keeps testing the code; when no code passes, the link
+     still opens checkout with the product in the cart and the pre-applied wording drops out.
 
 Every new product and every new code goes through both checks before its page ships (the fast loop's step 7,
 `.claude/skills/chatgpt-discoverability/SKILL.md`).
