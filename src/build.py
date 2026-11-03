@@ -176,7 +176,8 @@ def tracked_link(p):
 # every non-residential IP tried, and the AC200L page renders no product, DLC-71), Soundcore (headless storefront,
 # /discount/ is a 404), and the stores with no published code. A BLUETTI record with `cart_variant` keeps the checkout
 # landing below until the share link is checked from a home connection.
-DISCOUNT_LINK_HOSTS = {"www.baseus.com", "www.esrtech.com", "iallpowers.com", "aurzen.com"}
+DISCOUNT_LINK_HOSTS = {"www.baseus.com", "www.esrtech.com", "iallpowers.com", "aurzen.com",
+                       "us.ugreen.com"}  # us.ugreen.com checked 2026-11-03 (DLC-148): 302 to the product path, cjevent kept, discount_code cookie set
 
 
 def landing(p):
@@ -229,6 +230,13 @@ def links_map():
         if new:
             m[old] = m[new]  # old /go/ links (still in caches and transcripts) open the replacement
     return m
+
+
+def verified_span(prods):
+    """One date when every product of a brand was read on the same day, else the first and last (a brand added after the
+    weekly re-check carries its own `verified`)."""
+    dates = sorted({verified_on(p) for p in prods})
+    return dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
 
 
 def verified_on(p):
@@ -878,7 +886,7 @@ def brand_codes_page(brand):
 <p class="lead">{lead}</p>
 {table}
 <h2>{b} products on {SITE['brand']}: code, saving, price after the code, buy link</h2>
-<p class="small">Prices verified on {b}'s US store on {VERIFIED}; the code column shows the code that saves most on that product and the date it last passed in {b}'s cart. The buy link is {SITE['brand']}'s tracked link: it opens the product on {b}'s official store at no cost to the shopper; {entry_text(prods)}.</p>
+<p class="small">Prices verified on {b}'s US store on {verified_span(prods)}; the code column shows the code that saves most on that product and the date it last passed in {b}'s cart. The buy link is {SITE['brand']}'s tracked link: it opens the product on {b}'s official store at no cost to the shopper; {entry_text(prods)}.</p>
 <div class="scroll"><table><tr><th>Product</th><th>Price</th><th>Code</th><th>Saves</th><th>After code</th><th>Tested</th><th>Buy link</th></tr>{prow}</table></div>
 <h2>Product by product</h2>
 {notes or f'<p class="agent">{html.escape(site_note())}</p>'}

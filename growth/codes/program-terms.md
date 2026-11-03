@@ -15,6 +15,7 @@ None of the seven programs says anything about applying a code from the link. Wh
 | Baseus (US) | Awin | No program terms, no documents, no offers published | AM52, FC41: printed on Baseus's own product pages (public) | OK as far as anything is written |
 | Soundcore | CJ | "Publishers may only use coupons and promotional codes that are provided exclusively through the affiliate program" (read 2026-10-29, after the others) | AFSC20: CJ link 17024098 "Evergreen Extra 20% Off on All Full Price Items w/Code: AFSC20", 2025-02-06 to 2026-12-31 | OK |
 | ESR (US) | Awin | No program terms published | PARTNER18: in Awin My Offers, "Exclusive affiliate promotional code", to 2026-12-31 | OK |
+| Ugreen | CJ | No coupon rule and no URL/domain-keyword list in the program terms (read 2026-11-03); the only policies are search ones: no bidding on UGREEN trademark terms, no PPC straight to ugreen.com, no shopping/display/Facebook ads | UL75247, UL75248, UL35525: printed on the brand's own US product pages ("Save 30% Code: UL75247, Time-Limited Discount"), per product | OK (brand-printed, public) |
 
 BLUETTI US codes in Awin My Offers (2026-10-29): ELITE400AFF (6%, Elite 400 + bundles), NaAFF6 (6%, Pioneer Na),
 EP6KAFF6 (6%, EnergyPro 6K), B500KAFF6 (6%, B500K), **ELITE300AFF (8%, Elite 300 + bundles, to 2026-12-31)**,
