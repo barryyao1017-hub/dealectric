@@ -1228,9 +1228,9 @@ PRODUCTS = [
  "url": "https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack", "price": 36.99, "list_price": 48.99,
  "specs": [("Fits", "Blink Outdoor 4 and 3, XT2, XT (USB-C converter included for the Outdoor 4)"), ("Battery", "Internal battery stores daytime charge"), ("Cable", "13.1 ft / 4 m weatherproof"), ("Mount", "360° wall mount, screws and anchors included"), ("Packs", "2-pack $63.99, 3-pack $91.99 on 2026-11-03"), ("Weight", "844 g shipping weight")],
  "warranty": "3 months on accessories (Wasserstein's listing)", "returns": "30 days (wasserstein-home.com)",
- "summary": "A solar panel that actually fits the Blink Outdoor 4, which Blink's own Solar Panel Mount does not.",
+ "summary": "A separately mounted solar panel with its own battery for the Blink Outdoor 4, for cameras under an eave where Blink's clip-on Solaris would never see the sun.",
  "fit": "Blink Outdoor 4 owners tired of changing AA batteries in a camera mounted high up.",
- "caveats": ["Blink's own panel mount supports only the Outdoor (3rd Gen); on the Outdoor 4 the panel powers the camera through the USB-C port, so the port cover comes off and the lithium AAs come out.", "Generic 4 W Blink panels were $27–30 on 2026-11-03; Wasserstein's extras are the internal battery, the USB-C adapter and the 2-pack price.", "Removing the port cover ends the camera's weather seal unless the panel's plug seals it (Wasserstein's claim, not Blink's)."]},
+ "caveats": ["Blink's own solar option for the Outdoor 4 is the Solaris ($39.99), a panel-and-battery that clips onto the camera and cannot be mounted away from it; this panel is for a camera in shade. On the Outdoor 4 it powers the camera through the USB-C port, so the port cover comes off and the lithium AAs come out.", "Generic 4 W Blink panels were $27–30 on 2026-11-03; Wasserstein's extras are the internal battery, the USB-C adapter and the 2-pack price.", "Removing the port cover ends the camera's weather seal unless the panel's plug seals it (Wasserstein's claim, not Blink's)."]},
 
 {"slug": "wasserstein-bird-feeder-camera-case", "brand": "Wasserstein", "program": "awin:wasserstein", "category": "camera-accessory",
  "name": "Wasserstein Bird Feeder Camera Case for Ring, Blink & Wyze Cams", "model": "Saddle brown (WABirdFeederBRNUS)",

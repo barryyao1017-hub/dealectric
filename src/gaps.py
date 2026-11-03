@@ -4897,9 +4897,9 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
           '<p>What to know: every other complete Club Car kit we priced on 2026-11-03 starts past $2,000 (Allied 48V 105Ah sets $2,045–2,395, Epoch 48V 105Ah '
           "$2,299, Dakota Lithium 48V 96Ah about $2,699, RoyPow 48V 105Ah $2,999.99 and sold out), so the real choice is Vatrer against LiTime. Vatrer's pack "
           'fits a 19.69 × 12.52 × 9.6-inch tray, is rated for 4,000+ cycles and stops charging below freezing; the cart showed an automatic $78.99 '
-          '"Limited-Time Discount" on top of the page price, and Vatrer\'s banner code VIPD2026 does not apply to this kit. A 1993–2013 Club Car may need its '
-          "on-board computer bypassed for a lithium conversion, and Vatrer's 10-year term only starts once you register and activate the warranty before the "
-          'first charge. Returns are 7 days.</p>\n',
+          '"Limited-Time Discount" on top of the page price, and Vatrer\'s banner code VIPD2026 does not apply to this kit. A Club Car from roughly 1995–2014 '
+          "(Lester's bypass-kit range; dealers say 1993–2013) may need its on-board computer bypassed for a lithium conversion, and Vatrer's 10-year term only "
+          'starts once you register and activate the warranty before the first charge. Returns are 7 days.</p>\n',
  'columns': [('cap', 'Capacity'), ('charger', 'Charger included'), ('bms', 'BMS / listing'), ('warranty', 'Warranty')],
  'rows': [{'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit',
            'model': 'Vatrer 48V 105Ah Club Car kit',
@@ -4942,9 +4942,10 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  'after': '\n'
           '<h2>What the kit replaces, and the bypass older carts need</h2>\n'
           "<p>One 48 V LiFePO4 box replaces the six or eight flooded lead-acid batteries in a 48 V Club Car, and the kit's charger replaces the cart's old "
-          'one, so nothing else has to be sourced. Club Cars built from 1993 to 2013 carry an on-board computer that talks to the factory charger; dealers who '
-          "sell Allied's sets note it may need to be bypassed before a lithium pack charges normally. That is a general Club Car note, not Vatrer's, so check "
-          'it against your model year before ordering.</p>\n'
+          'one, so nothing else has to be sourced. Club Cars from the mid-1990s to about 2014 carry a Lester on-board computer that talks to the factory '
+          "charger (Lester's bypass kit lists 1995–2014; dealers selling Allied's sets say 1993–2013), and it has to be bypassed before a lithium pack charges "
+          "normally; a 1996 48 V DS discussed on Cartaholics this week has the OBC 27155-01. That is a general Club Car note, not Vatrer's, so check it "
+          'against your model year before ordering.</p>\n'
           '<h2>Capacity and cycle life</h2>\n'
           '<p>Vatrer rates the pack at 105 Ah and 4,000+ cycles with a 200 A BMS that handles overcharge, over-discharge, overcurrent, shorts and abnormal '
           'temperatures and stops charging below freezing. Vatrer quotes 5,376–5,736 Wh for the 48 V 105 Ah family across its pages; 51.2 V × 105 Ah is 5,376 '
@@ -4968,7 +4969,6 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
              ('Dakota Lithium 48V 96Ah (Reach.dog listing)', 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery')],
  'published': '2026-11-03',
  'checked': '2026-11-03'},
-
 {'slug': 'best-65w-gan-universal-travel-adapter-under-50',
  'question': 'G85 (Awin brands: 65W GaN universal travel adapter with 3 USB-C under $50)',
  'lead_first': True,
@@ -5408,24 +5408,26 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
                     'title': 'Wasserstein solar panel for Blink Outdoor 4',
                     'description': 'Internal battery, 13.1 ft cable, 360° mount, USB-C adapter for the Outdoor 4. $36.99.',
                     'image_url': 'https://cdn.shopify.com/s/files/1/1100/5760/products/SolarPanelblinkcamoutdoorpic2-713927_cb0a1a55-b724-4f82-a914-e6d3369dbc90.jpg'},
- 'title': 'Solar panel for a Blink Outdoor 4 sold separately, without a camera bundle (2026)',
- 'h1': 'Solar panel for a Blink Outdoor 4 sold separately, without a camera bundle (2026)',
- 'desc': "Where to buy a solar panel for a Blink Outdoor 4 without a new camera: Blink's own Solar Panel Mount fits only the Outdoor (3rd Gen) and sells "
-         "bundled in the US, so a third-party panel is the only route. Wasserstein's panel with an internal battery, 13.1 ft cable and USB-C adapter ($36.99, "
-         '2-pack $63.99) against generic 4 W panels at $27–30, with how solar power actually works on the Outdoor 4 (USB-C port, AA batteries out, weather '
-         'seal).',
+ 'title': 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
+ 'h1': 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
+ 'desc': "Solar for a Blink Outdoor 4: Blink's Solaris ($39.99) clips onto the camera and cannot be mounted apart from it, and the old Solar Panel Mount fits "
+         "only the Outdoor (3rd Gen); a separately mounted panel is the route when the camera sits in shade. Wasserstein's panel with an internal battery, "
+         '13.1 ft cable and USB-C adapter ($36.99, 2-pack $63.99) against the Solaris and generic 4 W panels at $19.99–30, with how solar power works on the '
+         'Outdoor 4 (USB-C port, AA batteries out, weather seal) and the Battery Extension Pack rule.',
  'intro': '\n'
           '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Wasserstein solar panel for Blink Outdoor 4</strong> '
           '({buy:wasserstein-solar-panel-blink-outdoor-4}): $36.99 on 2026-11-03 (list $48.99; 2-pack $63.99), with an internal battery, a 13.1 ft cable, a '
-          "360° mount and the USB-C adapter the Outdoor 4 needs. Blink's own Solar Panel Mount fits only the Outdoor (3rd Gen) and is sold in the US bundled "
-          'with a camera, so a third-party panel is the only way to add solar to an Outdoor 4 without buying a camera bundle; generic 4 W panels were '
-          '$27–30.</p>\n'
-          '<p>What to know: the Outdoor 4 runs on two AA lithium cells and has a USB-C port under a cover; Blink says the camera can run from a '
-          'weather-resistant USB-C power source but offers no solar product for it, and its support page lists the Outdoor 4, XT and XT2 as incompatible with '
-          "the Solar Panel Mount's micro-USB connector and seal. A third-party panel plugs into that USB-C port, the AAs come out (lithium AAs do not "
-          "recharge), and the camera then runs on the panel's internal battery day and night; the port cover is off, so the panel's plug is what seals the "
-          "port, which is the seller's claim rather than Blink's. Wasserstein's extras over a $27 generic panel are the internal battery, the included USB-C "
-          'converter, the 13.1 ft cable and a 3-month warranty with 30-day returns.</p>\n',
+          "360° mount and the USB-C adapter the Outdoor 4 needs. Blink's own answer for the Outdoor 4 is the Solaris ($39.99), a solar battery pack that clips "
+          "onto the camera and cannot be mounted away from it; Wasserstein's panel is the one to buy when the camera sits in shade and the panel needs sun. "
+          'Generic 4 W panels were $19.99–30.</p>\n'
+          "<p>What to know: the Outdoor 4 runs on two AA lithium cells and has a USB-C port under a cover; Blink's Solar Panel Mount (micro-USB, Outdoor 3rd "
+          "Gen only) does not fit it, and Blink's replacement is the Solaris, released in 2026: a solar panel and battery that attach to the Outdoor 4 or "
+          "Outdoor 2K+, IP65 when connected, with no separate mount and, on the Outdoor 4, no battery or charging readout in the app (Blink's Solaris FAQ). A "
+          "third-party panel plugs into that USB-C port, the AAs come out (lithium AAs do not recharge), and the camera then runs on the panel's internal "
+          "battery day and night; the port cover is off, so the panel's plug is what seals the port, which is the seller's claim rather than Blink's. "
+          "Wasserstein's case against the Solaris is the 13.1 ft cable: the panel goes where the sun is and the camera stays under the eave; against a $20 "
+          "generic panel its extras are the internal battery, the included USB-C converter and 30-day returns. Blink's Battery Extension Pack also fits the "
+          'Outdoor 4, but Blink says USB power cannot be plugged in while it is attached, so it is pack or panel, not both.</p>\n',
  'columns': [('fits', 'Fits the Outdoor 4'), ('battery', 'Internal battery'), ('cable', 'Cable / mount'), ('sold', 'Sold alone')],
  'rows': [{'slug': 'wasserstein-solar-panel-blink-outdoor-4',
            'model': 'Wasserstein solar panel (Outdoor 4/3, XT2, XT)',
@@ -5441,6 +5443,14 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
                      'cable': 'Integrated mount',
                      'sold': 'Bundled with a camera in the US ($74.98); alone in the UK (£34.99)',
                      'price': '$74.98 with camera (Slickdeals), 2026-11-03'}},
+          {'brand': 'Blink',
+           'model': 'Solaris (official, 2026)',
+           'url': 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq',
+           'cells': {'fits': 'Yes: Outdoor 4 and Outdoor 2K+',
+                     'battery': 'Yes',
+                     'cable': 'None: attaches to the camera, cannot be mounted separately; IP65 when connected',
+                     'sold': 'Yes, alone',
+                     'price': '$39.99 at Best Buy and Amazon, 2026-11-03'}},
           {'brand': 'Generic',
            'model': '4 W USB-C panels for Blink Outdoor 4 (Amazon)',
            'url': 'https://www.amazon.com/Camera-Compatible-Outdoor-Adjustable-Weatherproof/dp/B0CRD6L3LP',
@@ -5448,7 +5458,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
                      'battery': 'Some list a 2000 mAh battery',
                      'cable': '13.12 ft typical',
                      'sold': 'Yes: singles, 2-, 3- and 4-packs',
-                     'price': 'about $27–30 single; $16 (2-pack) to $52.99 (3-pack), aggregator figures 2026-11-03'}},
+                     'price': '$19.99 single / $37.99 2-pack (EverExceed, Amazon, 2026-11-03); other listings $27–30'}},
           {'brand': 'Wasserstein',
            'model': '2-pack / 3-pack',
            'url': 'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack',
@@ -5458,12 +5468,14 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
           "<p>Blink's Outdoor 4 ships with two AA lithium batteries and a USB-C port behind a rubber cover. Blink's own support page says the camera can be "
           'powered through that port by a weather-resistant USB-C adapter and that, once the cover is removed, the camera is no longer weather-resistant until '
           'it goes back on. A solar panel for the Outdoor 4 is therefore a USB-C power supply with a battery: the panel charges its internal cell by day, the '
-          'cell runs the camera at night, and the AAs are removed. Blink sells no such panel for the Outdoor 4 and has not said whether its Battery Extension '
-          'Pack works with it.</p>\n'
-          "<h2>What Blink's own mount does</h2>\n"
+          "cell runs the camera at night, and the AAs are removed. Blink's Solaris is the official solar option: it attaches to the camera itself (IP65 when "
+          "connected), so it only helps where the camera gets direct sun, and Blink's FAQ says the app shows no battery or charging status for an Outdoor 4 "
+          "with Solaris attached. Blink's Battery Extension Pack is compatible with the Outdoor 4 too, with the rule that USB power cannot be connected while "
+          'it is on.</p>\n'
+          "<h2>What Blink's own mount and Solaris do</h2>\n"
           "<p>The Blink Solar Panel Mount is a micro-USB design for the Outdoor (3rd Gen). Blink's FAQ names the Outdoor 4, XT and XT2 as unsupported, and in "
           'the US it is sold with a camera ($74.98 bundle), standalone only abroad (£34.99 at John Lewis). It is not an option for an Outdoor 4 owner at any '
-          'price.</p>\n'
+          'price; the Solaris ($39.99 at Best Buy and Amazon on 2026-11-03) is, with the mounting limit above.</p>\n'
           '<h2>Internal battery and cable</h2>\n'
           "<p>Wasserstein's panel stores daytime charge in an internal battery and runs the camera through the night and through cloudy days; the 13.1 ft "
           'weatherproof cable lets the panel sit in sun while the camera sits in shade, and the 360° wall mount comes with screws and anchors. Owner reviews '
@@ -5473,11 +5485,13 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
           "<p>Wasserstein's Blink accessories carry a 3-month warranty per its listings and the store gives 30 days to return. Tom's Guide's piece on "
           "Wasserstein's panel says it mounts more flexibly than Blink's own but is not as seamless.</p>\n"
           '<h2>What we could not verify</h2>\n'
-          "<p>Whether Blink's Battery Extension Pack fits the Outdoor 4, long-term owner reports on r/blinkcameras, Ayotu's and Hoiioa's exact Amazon prices, "
-          'and whether the Outdoor 4 keeps its weather rating with a third-party plug in the port.</p>\n',
+          '<p>Long-term owner reports on r/blinkcameras, how long the Solaris keeps an Outdoor 4 running in winter (early Amazon-forum reports include units '
+          'that never showed charging), and whether the Outdoor 4 keeps its weather rating with a third-party plug in the port.</p>\n',
  'sources': [('Wasserstein solar panel for Blink Outdoor 4 & 3 / XT2 / XT',
               'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack'),
              ('Blink support: Solar Panel Mount FAQs', 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs'),
+             ('Blink support: Blink Solaris FAQ', 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq'),
+             ('Blink support: Outdoor 4 Battery Extension Pack FAQ', 'https://support.blinkforhome.com/f-a-q/outdoor-4-battery-extension-pack-faq'),
              ("Tom's Guide: this solar panel is a game-changer for security cameras, but there's a catch",
               'https://www.tomsguide.com/opinion/this-solar-panel-is-a-game-changer-for-security-cameras-but-theres-a-catch'),
              ('Blink Solar Panel Mount, John Lewis (UK, sold alone)',
@@ -5486,7 +5500,6 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
               'https://slickdeals.net/f/16078297-blink-outdoor-solar-panel-charging-mount-wireless-motion-detection-add-on-camera-sync-module-required-74-98')],
  'published': '2026-11-03',
  'checked': '2026-11-03'},
-
 {'slug': 'bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription',
  'question': 'G90 (Awin brands: bird feeder camera from a Blink or Wyze camera you already own)',
  'lead_first': True,
