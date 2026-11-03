@@ -139,6 +139,8 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G89 | /solar-panel-for-blink-outdoor-4-without-a-camera-bundle | Wasserstein panel $36.99 (internal battery, 13.1 ft, USB-C adapter); Blink's own mount excludes the Outdoor 4 (support FAQ) and sells bundled in the US; generic $27–30 panels named | open ×3 |
 | G90 | /bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription | "Yes": Wasserstein case $50.99 (camera not included, no bird ID); Wyze microSD / Blink Sync Module 2 storage explained; Birdfy, Birdfy Lite, Bird Buddy named for AI ID | open ×3 |
 | G91 | /best-swimming-headphones-with-mp3-storage-under-100 | MOJAWA Run Plus $99.99 (IP68, 32 GB, 8 h); RTINGS's "poor sound" verdict in the lead; OpenSwim Pro $179.95–229.95 named; Purra Swim $169.99 (15 h) | open ×3 |
+| G92 | /best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300 | Vatrer Group 24 $259.99 (150 A BMS, UL 1973; VIPD2026 5%); on the makers' own stores LiTime is $365.99 and Redodo $289.99, reseller listings $219–230 named; trolling-motor warranty question said | open ×3 |
+| G93 | /universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter | "Yes, but most travellers don't need one" first; TESSAN TC03 $43.99 (250 W, 2 AC, 2 USB-C, 2 USB-A); BESTEK $24.99–33.99 named; heating appliances excluded | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -339,3 +341,7 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   banner code VIPD2026 passed in the cart on the Group 24 (5%) and was rejected on the golf-cart kit (which carries an
   automatic $78.99 discount); FOPO's banner code FOPO passed on the S788 (10%); no code is printed on the other six
   sites and Awin's creatives show no vouchers. Fourteen product records added with spec cards; five new categories.
+- 2026-11-03, batch 16b (Barry: "Build both"): G92 Vatrer Group 24 and G93 TESSAN converter from the two remaining open
+  packs. The makers' own stores on 11-03 put LiTime's Group 24 Bluetooth at $365.99 and Redodo's at $289.99, so Vatrer's
+  $259.99 is the cheapest on the brand stores and the reseller listings ($219–230) are named; G93 leads with "most
+  travellers need no converter" before the TC03. No new product records; links-map unchanged, so no Worker deploy.

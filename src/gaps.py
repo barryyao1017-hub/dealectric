@@ -5662,4 +5662,183 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
              ('Headphones Addict: MOJAWA Run Plus review', 'https://headphonesaddict.com/mojawa-run-plus-review/')],
  'published': '2026-11-03',
  'checked': '2026-11-03'},
+
+{'slug': 'best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300',
+ 'question': 'G92 (Awin brands: 12V 100Ah Group 24 LiFePO4 with Bluetooth for a trolling motor under $300)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'vatrer-12v-100ah-group-24-bluetooth-150a',
+                    'item_id': 'VATRER-GROUP24-BT',
+                    'title': 'Vatrer 12V 100Ah Group 24, Bluetooth, 150 A',
+                    'description': '1,280 Wh LiFePO4, 150 A BMS, low-temp cutoff, UL 1973, IP65. $259.99; code VIPD2026 takes 5% off.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0591/7523/9838/files/vatrer_12v_100ah_150_bms_battery.webp'},
+ 'title': 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
+ 'h1': 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
+ 'desc': "Which 12V 100Ah Group 24 LiFePO4 battery with Bluetooth to buy for a trolling motor under $300: Vatrer's Group 24 ($259.99, 150 A BMS, UL 1973, "
+         "low-temp cutoff, IP65, code VIPD2026) against LiTime's and Redodo's Group 24 Bluetooth packs on their own stores and at resellers, Dakota Lithium "
+         'and Renogy, with BMS amps, warranties, the trolling-motor warranty question and the prices seen on 2026-11-03.',
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Vatrer 12V 100Ah Group 24</strong> ({buy:vatrer-12v-100ah-group-24-bluetooth-150a}), '
+          'the best Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300: $259.99 on 2026-11-03 (list $359.99; code VIPD2026 took 5% off in '
+          "the cart) for 1,280 Wh with a 150 A BMS, a UL 1973 listing, a low-temperature charge cutoff and an IP65 case. LiTime's Group 24 Bluetooth was "
+          "$365.99 and Redodo's $289.99 on their own stores the same day, both with 100 A BMSs.</p>\n"
+          '<p>What to know: the same LiTime and Redodo packs turn up cheaper at resellers ($229.99 at Renewable Outdoors, $219.99 at Walmart in search '
+          'results), so compare on the day; what the Vatrer adds at any price is the 150 A BMS against 100 A, which matters when a trolling motor and a fish '
+          'finder pull from one battery, and the UL 1973 listing no rival in this table claims. The Bluetooth app shows state of charge, voltage, current and '
+          "temperature; charging stops below 32 °F. Weight is about 11 kg (24 lb) shipping, in the standard Group 24 footprint. Vatrer's US warranty table "
+          'gives 12 V 100–600 Ah batteries 5 years after registration and activation, but its Japanese-market page says powered-equipment use such as trolling '
+          "motors carries 1 year, so ask Vatrer before counting on 5 for a boat. Dakota Lithium's Group 24 ($699–799) is the premium pick with an 11-year "
+          'warranty; this is not a starter battery.</p>\n',
+ 'columns': [('bms', 'BMS'), ('listing', 'UL / low-temp'), ('app', 'Bluetooth'), ('warranty', 'Warranty')],
+ 'rows': [{'slug': 'vatrer-12v-100ah-group-24-bluetooth-150a',
+           'model': 'Vatrer 12V 100Ah Group 24',
+           'cells': {'bms': '150 A',
+                     'listing': 'UL 1973; charge cutoff below 32 °F; IP65',
+                     'app': 'Yes: SOC, volts, amps, temperature',
+                     'warranty': '5 years (registered); possibly 1 year for trolling use, unconfirmed'}},
+          {'brand': 'LiTime',
+           'model': '12V 100Ah Group 24 Smart Bluetooth',
+           'url': 'https://litime.com/products/12v-100ah-group-24-smart-bluetooth',
+           'cells': {'bms': '100 A',
+                     'listing': 'Charge cutoff below 0 °C; UL not stated',
+                     'app': 'Yes',
+                     'warranty': '5 years',
+                     'price': '$365.99 (list $429.99) on litime.com; $229.99 at Renewable Outdoors, 2026-11-03'}},
+          {'brand': 'LiTime',
+           'model': '12V 100Ah Group 24 (no Bluetooth)',
+           'url': 'https://litime.com/products/12v-100ah-group-24-lithium-battery',
+           'cells': {'bms': '100 A',
+                     'listing': 'Low-temp protection; UL not stated',
+                     'app': 'No',
+                     'warranty': '5 years',
+                     'price': '$319.99 (list $369.99) on litime.com, 2026-11-03'}},
+          {'brand': 'Redodo',
+           'model': '12V 100Ah Group 24 with Bluetooth',
+           'url': 'https://redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth',
+           'cells': {'bms': '100 A (per Walmart listing)',
+                     'listing': 'Low-temp protection; UL not stated',
+                     'app': 'Yes',
+                     'warranty': "not read ('10-year lifetime' claims on listings, unverified)",
+                     'price': '$289.99 (list $359.99) on redodopower.com; $219.99 at Walmart, 2026-11-03'}},
+          {'brand': 'Dakota Lithium',
+           'model': '12V 100Ah Group 24',
+           'url': 'https://reach.dog/shop/mealey-marine/products/dakota-lithium-12v-100ah-battery',
+           'cells': {'bms': 'not read', 'listing': 'not read', 'app': 'not read', 'warranty': '11 years', 'price': '$699–799, search result 2026-11-03'}},
+          {'brand': 'Renogy',
+           'model': 'Core Group 24 Bluetooth (trolling)',
+           'url': 'https://www.renogy.com/',
+           'cells': {'bms': 'not read', 'listing': 'not read', 'app': 'Yes', 'warranty': '5 years, prorated', 'price': 'not read'}}],
+ 'after': '\n'
+          '<h2>Why the BMS rating matters on a boat</h2>\n'
+          '<p>A 12 V trolling motor on high draws 40–60 A, a 24 V setup on two batteries less per battery; add a fish finder, livewell pump and lights and a '
+          "100 A BMS is still within limits but closer to them, and a BMS that trips under a surge shuts the whole battery off until it resets. Vatrer's 150 A "
+          "rating is the headroom. None of the packs here is a starter battery, so an outboard's starter stays on its own lead-acid or dual-purpose "
+          'battery.</p>\n'
+          '<h2>Price on the day, and where</h2>\n'
+          "<p>On 2026-11-03 the makers' own stores had Vatrer at $259.99 (5% off with VIPD2026, which passed in the cart), Redodo at $289.99 and LiTime at "
+          '$365.99 for the Bluetooth Group 24; search results showed the LiTime at $229.99 at Renewable Outdoors and the Redodo at $219.99 at Walmart. '
+          "Reseller prices move faster than the makers', so the honest statement is that Vatrer is the cheapest on the brand stores and within $40 of the "
+          'cheapest reseller listing, with the stronger BMS.</p>\n'
+          '<h2>The warranty question</h2>\n'
+          "<p>Vatrer's warranty table (July 2026) lists 5 years for 12 V 100–600 Ah batteries, after registering and activating the warranty before first use. "
+          'Its Japanese-language page for the low-temp Group 24 says powered equipment such as trolling motors, golf carts and kayaks gets 1 year; the US page '
+          'does not say that. Until Vatrer confirms in writing, plan on 1 year for a trolling motor and treat 5 as the RV term. LiTime states 5 years and '
+          'Dakota 11.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>UL listings for the LiTime and Redodo packs, Redodo's warranty term, Renogy's and Dakota's current prices and BMS ratings, any capacity test or "
+          "teardown of the Vatrer Group 24 (Wired2Fish ran it on a kayak for three weeks without publishing a capacity figure), and the Vatrer's net "
+          'weight.</p>\n',
+ 'sources': [('Vatrer 12V 100Ah Group 24 (Bluetooth, 150 A)', 'https://vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery'),
+             ('Vatrer warranty policy', 'https://www.vatrerpower.com/pages/warranty-policy'),
+             ('LiTime 12V 100Ah Group 24 Smart Bluetooth', 'https://litime.com/products/12v-100ah-group-24-smart-bluetooth'),
+             ('Redodo 12V 100Ah Group 24 with Bluetooth', 'https://redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth'),
+             ('Wired2Fish: Vatrer Group 24 Bluetooth review',
+              'https://www.wired2fish.com/tackle-reviews/vatrer-12v-100ah-group-24-bluetooth-lithium-battery-review')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
+
+{'slug': 'universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter',
+ 'question': 'G93 (Awin brands: universal travel adapter with a built-in 220V to 110V voltage converter)',
+ 'lead_first': True,
+ 'product_result': {'slug': 'tessan-250w-voltage-converter-travel-adapter-tc03',
+                    'item_id': 'TESSAN-TC03',
+                    'title': 'TESSAN TC03, 250 W converter + universal adapter',
+                    'description': '220 V in, 110 V out, 250 W max; 2 AC outlets, 2 USB-C, 2 USB-A; Type A/C/G/I plugs. $43.99.',
+                    'image_url': 'https://cdn.shopify.com/s/files/1/0747/5439/2376/files/TS-TC03US00-GR.jpg'},
+ 'title': 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
+ 'h1': 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
+ 'desc': 'Yes, but most travellers do not need one: phone, laptop and camera chargers are 100–240 V and only a plug adapter is required. For the '
+         "single-voltage 110 V gadgets under 250 W that remain, TESSAN's TC03 converter-adapter ($43.99, 2 AC outlets, 2 USB-C, 2 USB-A, Type A/C/G/I plugs) "
+         "against BESTEK's 200–250 W converters ($24.99–59.99) and Foval's, with what a 250 W converter cannot run and the prices seen on 2026-11-03.",
+ 'intro': '\n'
+          '<p class="lead"><strong>Short answer.</strong> Yes, but first check whether you need one: nearly every phone, laptop, tablet and camera charger is '
+          '100–240 V and needs only a plug adapter, and running a dual-voltage device through a converter can damage it. For a single-voltage 110 V gadget '
+          'under 250 W, the <strong>TESSAN TC03</strong> ({buy:tessan-250w-voltage-converter-travel-adapter-tc03}) is a universal travel adapter with a '
+          "built-in 220V to 110V voltage converter: $43.99 on 2026-11-03 for 250 W, two AC outlets, two USB-C and two USB-A. BESTEK's 250 W converter was "
+          '$24.99–33.99 at Walmart and eBay.</p>\n'
+          "<p>What to know: 250 W runs an electric shaver, a small CPAP, a sound machine, a sewing machine's motor or an older game console; it does not run a "
+          "hair dryer, straightener, curling iron, kettle or anything that heats, which TESSAN's own page says in so many words, and the same limit applies to "
+          'BESTEK\'s and Foval\'s 200–250 W units. Check the label on the device: "100–240 V" means no converter, "110 V" or "120 V" alone means it needs one. '
+          "TESSAN's unit covers Type A, C, G and I plugs for 150+ countries and charges six devices at once; it is about $10–17 more than the BESTEK 250 W "
+          "listings we found and cheaper than BESTEK's $59.99 plug-set version on Newegg. Returns at tessan.com are 7 days, with a 12–24-month warranty.</p>\n",
+ 'columns': [('watts', 'Converter'), ('outlets', 'AC outlets'), ('usb', 'USB'), ('plugs', 'Plugs')],
+ 'rows': [{'slug': 'tessan-250w-voltage-converter-travel-adapter-tc03',
+           'model': 'TESSAN TC03',
+           'cells': {'watts': '220–230 V to 110 V, 250 W', 'outlets': '2', 'usb': '2 USB-C (one PD) + 2 USB-A', 'plugs': 'Universal Type A, C, G, I'}},
+          {'brand': 'BESTEK',
+           'model': '250W converter, 4 USB',
+           'url': 'https://www.walmart.com/ip/BESTEK-250W-Universal-Travel-Adapter-220V-110V-Travel-Voltage-Converter-4-Port-USB-US-AU-EU-UK-India-South-Africa-Worldwide-Plug-Adapter-Red/244740790',
+           'cells': {'watts': '250 W',
+                     'outlets': '1 (per listing)',
+                     'usb': '4 USB-A',
+                     'plugs': 'US, AU, EU, UK, India, South Africa adapters',
+                     'price': '$33.99 at Walmart; a black 250 W listing $26.63, 2026-11-03'}},
+          {'brand': 'BESTEK',
+           'model': '250W with plug set (MRJ201GU-1)',
+           'url': 'https://www.newegg.com/bestek-mrj201gu-1/p/2VH-010E-000E0',
+           'cells': {'watts': '250 W', 'outlets': 'not read', 'usb': '4 USB-A', 'plugs': 'Type G/D/M/AU/US set', 'price': '$59.99 at Newegg, 2026-11-03'}},
+          {'brand': 'BESTEK',
+           'model': '200W with 35 W USB-C',
+           'url': 'https://www.walmart.com/',
+           'cells': {'watts': '200 W',
+                     'outlets': 'not read',
+                     'usb': 'USB-C 35 W + USB-A',
+                     'plugs': 'not read',
+                     'price': '$32.39 (was $35.99) at Walmart, 2026-11-03'}},
+          {'brand': 'Foval',
+           'model': 'Step-down converter, 4 USB',
+           'url': 'https://www.desertcart.com.cy/products/462072394-220v-to-110v-converter-travel-adapter-foval-international-step-down',
+           'cells': {'watts': 'about 200–230 W',
+                     'outlets': 'not read',
+                     'usb': '4 USB-A (a USB-C PD version exists)',
+                     'plugs': 'not read',
+                     'price': '$39.98 at Walmart; USB-C PD version $29.99, 2026-11-03'}}],
+ 'after': '\n'
+          '<h2>Do you need a converter at all?</h2>\n'
+          "<p>Almost certainly not for electronics. Wirecutter's travel-adapter guide (2020, republished by Engadget) says most people only need a plug "
+          "adapter because modern chargers adjust to the local voltage, and TESSAN's own blog says the same. The exceptions are heating and motor appliances "
+          'sold for the US market only: hair dryers, straighteners, curling irons, some shavers, CPAP machines and older gadgets with a "120 V" label. A '
+          'dual-voltage hair dryer or a travel-sized one bought locally is cheaper and safer than any converter.</p>\n'
+          '<h2>What 250 W does and does not run</h2>\n'
+          '<p>Runs: shavers, toothbrush chargers, sound machines, small CPAPs (check the label: many are 100–240 V anyway), sewing machines, older game '
+          'consoles and small fans. Does not run: anything that heats. A hair dryer is 1,200–1,875 W, a straightener 40–200 W at best but often more, a kettle '
+          "1,500 W; TESSAN warns against heating appliances on the product page, and BESTEK's and Foval's listings carry the same warning.</p>\n"
+          '<h2>Why TESSAN costs more than BESTEK</h2>\n'
+          '<p>Two AC outlets instead of one, two USB-C ports including Power Delivery, and the universal retractable plugs built in rather than a bag of '
+          "adapter heads. If you only ever travel to one region and only need USB-A, BESTEK's $25–34 unit does the job for less.</p>\n"
+          '<h2>Returns and warranty</h2>\n'
+          "<p>TESSAN's FAQ gives 7 days from delivery for returns, unused and in the original packaging, and 12–24 months of warranty depending on the "
+          'product.</p>\n'
+          '<h2>What we could not verify</h2>\n'
+          "<p>The dimensions and weight of any converter here, BESTEK's and Foval's exact outlet counts and warranties, Wirecutter's current guidance, and any "
+          'Reddit thread on converters (none surfaced in search).</p>\n',
+ 'sources': [('TESSAN 250W Voltage Converter with Universal Travel Adapter TC03',
+              'https://tessan.com/products/250w-voltage-converter-with-universal-travel-adapter-tc03'),
+             ('TESSAN: travel adapter vs voltage converter guide', 'https://tessan.com/blogs/news/travel-adapter-vs-voltage-converter-guide'),
+             ('TESSAN FAQ (returns)', 'https://tessan.com/pages/faq'),
+             ('BESTEK 250W converter at Walmart',
+              'https://www.walmart.com/ip/BESTEK-250W-Universal-Travel-Adapter-220V-110V-Travel-Voltage-Converter-4-Port-USB-US-AU-EU-UK-India-South-Africa-Worldwide-Plug-Adapter-Red/244740790'),
+             ("Wirecutter's travel adapter guide, as published by Engadget (2020)", 'https://www.engadget.com/2020/01/11/the-best-travel-plug-adapter/'),
+             ('SmarterTravel: adapters vs converters', 'https://www.smartertravel.com/electricity-overseas-converters-adapters-beyond/')],
+ 'published': '2026-11-03',
+ 'checked': '2026-11-03'},
 ]
