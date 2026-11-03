@@ -61,9 +61,9 @@ function agentBrowser(request, env) {
   const ua = request.headers.get("user-agent") || "";
   const verified = (request.cf || {}).verifiedBotCategory === "AI Assistant" || (env.TEST_AGENT_UA && ua === env.TEST_AGENT_UA);
   if (!verified || AI_UA.test(ua)) return null;
-  // Web Bot Auth: a signed agent names its key directory in Signature-Agent. Muse's value is unknown as of 11-03 (Meta
-  // hasn't published one); until it shows up in agent_pages, an unsigned or unknown verified agent browser is "muse",
-  // the only one seen on the site (5 home-page reads 10-30..11-03, each followed by meta-webindexer within 6 min).
+  // Web Bot Auth: a signed agent names its key directory in Signature-Agent. Meta's fetcher for Muse sends
+  // "https://www.meta.com" (meta-webindexer/1.1, ed25519, agent_pages row 1, 11-03). An unsigned verified agent browser
+  // is also "muse", the only one seen on the site (5 home-page reads 10-30..11-03, each followed by meta-webindexer).
   const sig = request.headers.get("signature-agent") || "";
   const hit = SIGNERS.find(([re]) => re.test(sig));
   return hit ? hit[1] : sig ? "signed-agent" : "muse";
@@ -81,7 +81,24 @@ function tagLinks(res, agent) {
     // Keep relative hrefs relative, as the page wrote them.
     el.setAttribute("href", /^https?:/i.test(href) ? u.toString() : u.pathname + u.search + u.hash);
   };
-  return new HTMLRewriter().on("a[href]", { element: tag }).transform(res);
+  // The /go/ link also stands in page text ("Buy: https://dealectric.com/go/<slug>") and in the JSON-LD offer, and
+  // Muse copies it from there: the 07:24Z test tapped an untagged /go/ link 9 s after meta-webindexer read the tagged
+  // page. Text nodes arrive in chunks, so each is collected whole before the /go/ URLs in it get the tag.
+  const go = /(https:\/\/dealectric\.com\/go\/[a-z0-9-]+)(?![a-z0-9?\/-])/gi;
+  let buf = "";
+  const text = (t) => {
+    buf += t.text;
+    if (!t.lastInTextNode) { t.remove(); return; }
+    t.replace(buf.replace(go, `$1?utm_source=${agent}`), { html: true });   // raw source text in, raw out
+    buf = "";
+  };
+  // ...and in the description / og:description, which a link preview such as meta-webindexer reads first.
+  const meta = (el) => {
+    const c = el.getAttribute("content");
+    if (c && go.test(c)) el.setAttribute("content", c.replace(go, `$1?utm_source=${agent}`));
+    go.lastIndex = 0;
+  };
+  return new HTMLRewriter().on("a[href]", { element: tag }).on("meta[content]", { element: meta }).on("*", { text }).transform(res);
 }
 
 async function logAgentPage(url, request, status, agent, env) {

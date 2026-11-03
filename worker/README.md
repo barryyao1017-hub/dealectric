@@ -32,7 +32,8 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   agent is not one of the answer fetchers above (an agent's own cloud browser, such as Meta's Muse, which reads pages
   as Linux Chrome 138) gets its HTML with `utm_source=<agent>` added to every dealectric.com link (`muse`,
   `chatgpt-agent` or `signed-agent`, from the `Signature-Agent` header when there is one). The shopper's tap on a link
-  the agent handed over then carries the tag into `clicks` / `landings`. Each such page or text fetch also writes a
+  the agent handed over then carries the tag into `clicks` / `landings`. `/go/` URLs written in page text, JSON-LD and
+  `<meta content>` (the description a link preview reads) get the tag too: Muse copied an untagged one from there. Each such page or text fetch also writes a
   row to D1 `agent_pages` (path, user agent, country, ASN and network name, `Signature-Agent`, `Signature-Input`).
   Test locally with `npx wrangler dev --local --local-upstream dealectric.com --upstream-protocol https --var TEST_AGENT_UA:dlc-test-agent`
   and `curl -A dlc-test-agent`.
