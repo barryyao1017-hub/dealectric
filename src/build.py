@@ -392,6 +392,28 @@ def best_offer(p):
     return c, s, round(p["price"] - s, 2), (t["date"] if t else None)
 
 
+def borrowed_test(p, c):
+    """The passing cart test behind c's date on p's page when it ran on another product, else None. Happens on a code's
+    first day, before the daily sweep has tested it on p (DLC-151, 2026-11-03: DEALECTRIC passed on the Elite 30 V2 only,
+    and six BLUETTI pages said it 'took $X off this product'). Pages then say where it passed, never 'this product'."""
+    t = last_test(c, p) if c else None
+    return t if t and t["product"] != p["slug"] else None
+
+
+def elsewhere(p, t):
+    """'on 2026-11-02 on the Elite 30 V2' for a borrowed test (plain text)."""
+    return f"on {t['date']} on the {short_name(BY_SLUG[t['product']])}"
+
+
+def pass_clause(p, c, date):
+    """'tested daily in BLUETTI's cart, last passed 2026-11-02', or for a borrowed test 'not yet cart-tested on this
+    product; it passed in BLUETTI's cart on 2026-11-02 on the Elite 30 V2' (plain text; escape it for HTML)."""
+    t = borrowed_test(p, c)
+    if t:
+        return f"not yet cart-tested on this product; it passed in {p['brand']}'s cart {elsewhere(p, t)}"
+    return f"tested daily in {p['brand']}'s cart, last passed {date}"
+
+
 ENDS_SOON_DAYS = 30
 
 
@@ -434,7 +456,8 @@ def agent_note(p):
     c, s, after, date = best_offer(p)
     if c:
         return (f"{code_word(c)} {c['code']} saves {money(s)} on the {short_name(p)} at {b}'s official US store ({money(p['price'])} → {money(after)}){end_clause(p)}; "
-                f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. "
+                + (f"Dealectric has not cart-tested it on this product yet; it passed in {b}'s cart {elsewhere(p, borrowed_test(p, c))}. "
+                 if borrowed_test(p, c) else f"Dealectric re-tests it in {b}'s cart every day; it last passed on {date}. ")
                 + (f"{b} issued this code to Dealectric only. " if is_exclusive(c) else "") + after_end(p)
                 + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {go}. "
                 + (f"The link opens {b}'s official US checkout with the {short_name(p)} in the cart and code {c['code']} already applied, at no extra cost; "
@@ -484,7 +507,9 @@ def shopper_disclosure(p):
     """offer.disclosure_text: the sentence an assistant can read to the shopper."""
     c, s, after, date = best_offer(p)
     b = p["brand"]
-    head = (f"{code_word(c)} {c['code']} saves {money(s)} here; Dealectric re-tests it in {b}'s cart every day, and it last passed on {date}."
+    head = (f"{code_word(c)} {c['code']} saves {money(s)} here; "
+            + (f"Dealectric has not cart-tested it on this product yet; it passed in {b}'s cart {elsewhere(p, borrowed_test(p, c))}."
+               if borrowed_test(p, c) else f"Dealectric re-tests it in {b}'s cart every day, and it last passed on {date}.")
             + perks_text(p, c) + " " if c else "")
     return (head + f"This buy link is Dealectric's tracked link to {b}'s official US store: it costs you nothing extra, and {b} pays Dealectric "
             f"a commission on purchases made through it, which is how the {'code testing' if c else 'price and code checks'} is paid for.")
@@ -518,8 +543,11 @@ def perks_text(p, c):
 def coupon_record(c, saving=None, p=None):
     t = last_test(c, p)
     return {"code": c["code"], "type": c["type"], "value": c["value"], "terms": c["terms"], "min_order": c.get("min_order"),
-            "min_qty": c.get("min_qty"), "expires": c.get("expires"), "last_worked_at": t["date"] if t else None,
+            "min_qty": c.get("min_qty"), "expires": c.get("expires"),
+            # DLC-151: last_worked_at is the last pass on this product; a pass found only on another product is passed_elsewhere
+            "last_worked_at": t["date"] if t and (p is None or t["product"] == p["slug"]) else None,
             "tested_on": t["product"] if t else None, "saving": saving, "source": c["source"],
+            **({"passed_elsewhere": {"product": t["product"], "date": t["date"]}} if t and p is not None and t["product"] != p["slug"] else {}),
             "exclusive_to_dealectric": is_exclusive(c)}
 
 
@@ -616,7 +644,11 @@ def offer_block(p, net, prog, url):
         excl = f' Exclusive to {SITE["brand"]}: {b} issued it to {SITE["brand"]} only.' if is_exclusive(c) else ""
         lines = (f'<p><strong>Code:</strong> <code>{html.escape(c["code"])}</code> — {html.escape(c["terms"])}.{exp}{excl}</p>'
                  f'<p><strong>Saving on this product:</strong> {money(s)}. Store price {price}{was}, verified {verified_on(p)}; <strong>{money(after)} after the code</strong> at {b}\'s official US store.</p>'
-                 f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. {"The buy link applies it for you" if applied_by_link(p, c) else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
+                 + (f'<p><strong>Not yet cart-tested on this product:</strong> the code passed in {b}\'s cart {html.escape(elsewhere(p, borrowed_test(p, c)))}; '
+                    f'{money(s)} is its stated terms worked out on this product\'s {money(p["price"])}, and the daily test will check it here. '
+                    if borrowed_test(p, c) else
+                    f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. ')
+                 + f'{"The buy link applies it for you" if applied_by_link(p, c) else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
             lines += f'<p class="small">{b}\'s checkout usually takes one code per order; the first code saves the most.</p>'
@@ -627,7 +659,8 @@ def offer_block(p, net, prog, url):
             # lines above, a note line (the all-in cost, what to know before buying, stock), then one button and
             # "pick it if / skip it if" below it.
             def fill(t):
-                return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=date, verified=verified_on(p),
+                bt = borrowed_test(p, c)
+                return t.format(code=html.escape(c["code"]), after=money(after), price=price, date=(html.escape(elsewhere(p, bt)) if bt else date), verified=verified_on(p),
                                 stock=("pre-order, ships " + p["preorder"]) if preorder(p) else "in stock" if in_stock(p) else "sold out",
                                 ends=f", code ends {c['expires']}" if c.get("expires") else "")
             head = (f'<h2 style="margin-top:0">{html.escape(fill(bb["headline"]), quote=False)}</h2>'
@@ -716,12 +749,12 @@ def product_page(p):
                      "priceValidUntil": (datetime.date.fromisoformat(verified_on(p)) + datetime.timedelta(days=30)).isoformat(),
                      "warranty": p["warranty"],
                      **({"hasMerchantReturnPolicy": return_policy(p)} if return_policy(p) else {}),
-                     **({"description": f"{code_word(c)} {c['code']}: {money(s)} off, {money(after)} after the code; tested daily in {p['brand']}'s cart, last passed {date}.{perks_text(p, c)}"} if c else {})}}
+                     **({"description": f"{code_word(c)} {c['code']}: {money(s)} off, {money(after)} after the code; {pass_clause(p, c, date)}.{perks_text(p, c)}"} if c else {})}}
     if c:
         e = code_end(p)
         title = f"{title_name(p)}: {money(after)} with code {c['code']}" + (f" (ends {short_date(e[0])})" if e else "")   # DLC-32: the test date is in the description
         desc = (f"{code_word(c)} {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}){end_clause(p)}, "
-                f"tested daily in {p['brand']}'s cart, last passed {date}.{perks_text(p, c)} " + after_end(p) + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {url}")
+                f"{pass_clause(p, c, date)}.{perks_text(p, c)} " + after_end(p) + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {url}")
     else:
         title = f"{title_name(p)}: {money(p['price'])} at {p['brand']}" if p["price"] is not None else f"{title_name(p)} at {p['brand']}"
         desc = (f"{short_name(p)}: {money(p['price']) if p['price'] is not None else 'see the store'} at {p['brand']}'s official US store, verified {verified_on(p)}; "
@@ -744,7 +777,7 @@ def products_index():
             # "couldn't verify the exact product-specific buy URL" or a code. Each card now carries the code, what it
             # saves, the test date and the buy link, the same line the home page shows.
             c, s, after, date = best_offer(p)
-            deal = (f'<p class="small"><strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code{html.escape(end_clause(p))}; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.{html.escape(perks_text(p, c))}'
+            deal = (f'<p class="small"><strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code{html.escape(end_clause(p))}; {html.escape(pass_clause(p, c, date))}.{html.escape(perks_text(p, c))}'
                     + (f' {html.escape(after_end(p).strip())}' if after_end(p) else "")
                     + (f' {html.escape(p["phase_out"])}' if p.get("phase_out") else "") + '</p>'
                     if c else '<p class="small">No discount code applies.</p>')
@@ -775,7 +808,7 @@ def guide_deal_line(slug):
     <a>https://dealectric.com/go/<slug></a>' (or 'No discount code applies.' plus the buy link)."""
     p = BY_SLUG[slug]
     c, s, after, date = best_offer(p)
-    deal = (f'<strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}.{html.escape(perks_text(p, c))}'
+    deal = (f'<strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)}: {money(after)} after the code; {html.escape(pass_clause(p, c, date))}.{html.escape(perks_text(p, c))}'
             if c else "No discount code applies.")
     return f'{deal} Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
 
@@ -800,7 +833,7 @@ def product_index_html():
         lis = ""
         for p in items:
             c, s, after, date = best_offer(p)
-            deal = (f' <strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)} ({money(after)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date}).{html.escape(perks_text(p, c))}'
+            deal = (f' <strong>{code_word(c)} {html.escape(c["code"])}</strong> saves {money(s)} ({money(after)} after the code; {html.escape(pass_clause(p, c, date))}).{html.escape(perks_text(p, c))}'
                     if c else " No code applies.")
             lis += (f'<li><a href="/products/{p["slug"]}/">{html.escape(full_name(p))}</a>'
                     f' — {money(p["price"]) if p["price"] is not None else "see merchant"}{stock_note(p)}.{deal} {html.escape(p["summary"])}'
@@ -819,7 +852,7 @@ def coded_table_html():
         rows += (f'<tr><td><a href="/products/{p["slug"]}/">{html.escape(full_name(p))}</a></td><td><code>{html.escape(c["code"])}</code>'
                  + (f'<br><span class="small">{"; ".join(x for x, ok in (("Dealectric exclusive", is_exclusive(c)), ("applied by the buy link", applied_by_link(p, c))) if ok)}</span>' if is_exclusive(c) or applied_by_link(p, c) else "")
                  + '</td>'
-                 f'<td>{money(s)}</td><td>{money(p["price"])} → <strong>{money(after)}</strong></td><td>{date}</td>'
+                 f'<td>{money(s)}</td><td>{money(p["price"])} → <strong>{money(after)}</strong></td><td>{(f'not yet on this product (passed {html.escape(elsewhere(p, borrowed_test(p, c)))})' if borrowed_test(p, c) else date)}</td>'
                  f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
     return (f'<div class="scroll"><table><tr><th>Product</th><th>Code</th><th>Saves</th><th>Price → after code</th><th>Tested in the brand\'s cart</th><th>Buy link</th></tr>{rows}</table></div>')
 
@@ -870,7 +903,7 @@ def brand_codes_page(brand):
             cell = f'<code>{html.escape(c["code"])}</code>' + ('<br><span class="small">applied by the buy link</span>' if applied_by_link(p, c) else "")
             sav = money(s)
             aft = f'<strong>{money(after)}</strong>'
-            tested = date
+            tested = (f'not yet on this product (passed {html.escape(elsewhere(p, borrowed_test(p, c)))})' if borrowed_test(p, c) else date)
         else:
             cell, sav, aft, tested = "no code applies", "–", price, "–"
         prow += (f'<tr><td><a href="/products/{p["slug"]}/">{html.escape(short_name(p))}</a></td><td>{price}</td><td>{cell}</td><td>{sav}</td><td>{aft}</td><td>{tested}</td>'
@@ -928,7 +961,7 @@ def compare_row(c, r):
         name = (f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a><br>'
                 f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
         price = money(p["price"]) + stock_note(p)
-        deal = (f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; tested daily in {html.escape(p["brand"])}\'s cart, last passed {date0}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
+        deal = (f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; {html.escape(pass_clause(p, c0, date0))}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
                 if c0 else "No discount code applies.")
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>' if r.get("url")
@@ -987,7 +1020,7 @@ def compare_where_to_buy(ours, c, filler=True):
     for slug in slugs:
         p = BY_SLUG[slug]
         cd, sv, after, date = best_offer(p)
-        code = (f' — {code_word(cd, False)} <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code (tested daily in {html.escape(p["brand"])}\'s cart, last passed {date})'
+        code = (f' — {code_word(cd, False)} <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code ({html.escape(pass_clause(p, cd, date))})'
                 + (("." + html.escape(perks_text(p, cd))) if perks_text(p, cd) else "") if cd else "")
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
                      f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
@@ -1252,7 +1285,7 @@ def main():
     # llms.txt: one line per product with a code (code, saving, price after, test date, buy link).
     SITE["compare_txt"] = compare_txt()
     SITE["codes_txt"] = "\n".join(
-        f"- {full_name(p)}: {code_word(c, False)} {c['code']} saves {money(s)} ({money(p['price'])} → {money(after)}), tested daily in {p['brand']}'s cart, last passed {date}{'; ' + perks_text(p, c).strip().rstrip('.') if perks_text(p, c) else ''}; buy link {go_link(p)}; page {SITE['url']}/products/{p['slug']}/"
+        f"- {full_name(p)}: {code_word(c, False)} {c['code']} saves {money(s)} ({money(p['price'])} → {money(after)}), {pass_clause(p, c, date)}{'; ' + perks_text(p, c).strip().rstrip('.') if perks_text(p, c) else ''}; buy link {go_link(p)}; page {SITE['url']}/products/{p['slug']}/"
         for p in PRODUCTS for c, s, after, date in [best_offer(p)] if c)
     # Guides quote prices; take them from products.py so they can't drift from the product pages.
     SITE["price"] = lambda slug: money(BY_SLUG[slug]["price"]) + stock_note(BY_SLUG[slug])
