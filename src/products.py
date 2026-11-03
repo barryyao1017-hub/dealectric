@@ -1099,6 +1099,21 @@ PRODUCTS = [
              "Battery replacement is not published; the four 18650 cells are inside the unit.",
              "$109.99 is a sale price against $137.50 on 2026-11-03; UGREEN gives no end date. No printed code."]},
 
+
+{"slug": "ugreen-nasync-dh2300", "brand": "UGREEN", "program": "cj:ugreen", "category": "nas",
+ "name": "UGREEN NASync DH2300 2-Bay Home NAS, 8-core ARM, 4 GB, HDMI", "model": "NASync DH2300 (SKU 95087), diskless",
+ "url": "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage", "price": 239.99, "list_price": 269.99, "verified": "2026-11-03",
+ "specs": [("CPU", "Rockchip 8-core ARM (A72 + A53), 2.2 GHz"), ("Memory", "4 GB LPDDR4X; 32 GB eMMC system disk"), ("Bays", "2× SATA (3.5\" or 2.5\"); diskless; no M.2"),
+           ("Max raw storage", "64 TB (2× 32 TB)"), ("RAID", "JBOD, Basic, 0, 1"), ("Network", "1× 1GbE (RJ45)"), ("USB", "Front: 1× USB-C 5 Gb/s + 2× USB-A 5 Gb/s"),
+           ("Other ports", "HDMI (4K 60 Hz)"), ("Power draw", "13.72 W with drives active, 3.30 W hibernating (UGREEN's lab)"), ("Size", "151 × 98 × 213.7 mm"),
+           ("Software", "UGOS Pro (DH edition): Photos with AI album, Time Machine, SMB, mobile backup; no virtual machines, Docker not in the App Center")],
+ "warranty": "2 years (UGREEN NAS store)",
+ "returns": "30 days from receiving the product, refund or exchange (UGREEN NAS store policy)",
+ "summary": "UGREEN's entry two-bay NAS: an 8-core ARM chip, 4 GB, a 1GbE port and HDMI, running the same UGOS Pro photo and backup apps as the DXP series without Docker or VMs; $239.99 diskless on 2026-11-03 against $269.99.",
+ "fit": "A family photo backup and Time Machine target on a budget, where apps beyond UGREEN's own are not needed.",
+ "caveats": ["ARM: no x86 containers or virtual machines; reviewers report Docker is not in the DH series' App Center.", "One 1GbE port (about 110 MB/s): the DH4300 Plus ($399.99) has 2.5GbE.",
+             "Diskless; RAM is fixed at 4 GB.", "$239.99 is a sale price against $269.99 on 2026-11-03; UGREEN gives no end date. Sold on UGREEN's NAS store (nas.ugreen.com / ai.ugreen.com); no printed code."]},
+
 ]
 
 

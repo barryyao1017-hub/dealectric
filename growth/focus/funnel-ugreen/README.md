@@ -91,6 +91,11 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G36 | /power-station-to-run-a-refrigerator-for-24-hours | BLUETTI Elite 200 V2 (other brand); ALLPOWERS S2000 Pro | open ×3 |
 | G39 | /best-nas-for-proxmox-virtual-machines-home-lab | DXP4800 Plus; DXP6800 Pro; Minisforum MS-A2 named for bay-less VM hosts | open ×3 |
 | G40 | /best-all-in-one-home-server-under-800-docker-plex-vms | DXP4800 Plus; TerraMaster F4-425 Plus named (16 GB stock) | open ×3 |
+| G41 | /best-2-bay-nas-under-300-home | DH2300 $239.99 (photos); TerraMaster F2-425 named for Docker/2.5GbE | open ×3 |
+| G42 | /best-nas-for-nextcloud-self-hosted-cloud | DXP2800; DXP4800 Plus | open ×3 |
+| G43 | /best-nas-to-replace-google-photos-family-library | DXP2800; DH2300 budget | open ×3 |
+| G44 | /best-nas-for-immich-iphone-photo-backup | DXP2800 | open ×3 |
+| G45 | /best-nas-to-replace-dropbox-freelancer | DXP2800 as the value pick; Synology Drive named for on-demand files and versions | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -179,3 +184,13 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   that parked G38). Honesty notes: Proxmox on UGREEN rests on owner reports (SATA passthrough works, iGPU passthrough
   is a "99%" report, 64 GB is Intel's spec with a 48 GB module owner-verified); the home-server bill with 16 GB and
   an NVMe runs $980–1,050 at late-2026 memory prices, so the page says only the NAS plus one upgrade fits under $800.
+- 2026-11-03, batch 9 votes (`x9-*`), all five open ×3: 2-bay NAS under $300 (→ G41, DH2300 $239.99 vs the x86
+  TerraMaster F2-425 at the same price, both named), Nextcloud NAS (→ G42, DXP2800 / DXP4800 Plus), family photo
+  library as a Google Photos alternative (→ G43, DXP2800 + DH2300), Immich iPhone backup (→ G44, DXP2800), Dropbox
+  replacement for a freelancer (→ G45 only if UGREEN's sync client holds up against Synology Drive; else parked).
+  Five research agents started; DH2300 record to add.
+- 2026-11-03, iteration 9 built (G41–G45) from five research agents (~570k tokens) plus a new DH2300 record (its
+  spec table says 1× 1GbE, correcting the harvest's "2.5GbE"). Honesty notes: UGOS Photos' AI features are
+  DXP-series items per UGREEN's own notes (the DH2300 gets basic tagging); Immich's iOS backup is opportunistic
+  (Immich's docs); UGOS has no official Nextcloud guide; UGREEN's sync client has no on-demand files or client-side
+  versions, so G45 names Synology Drive for those. G43 and G44 needed lead trims for rank 6.

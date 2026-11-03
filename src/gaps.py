@@ -2413,4 +2413,321 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("NASCompares: CWWK N355 NAS review", "https://nascompares.com/?p=79322"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-2-bay-nas-under-300-home", "question": "G41 (UGREEN funnel: 2-bay NAS under $300 for home use)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dh2300", "item_id": "UGREEN-DH2300",
+                    "title": "UGREEN NASync DH2300, 2-bay NAS under $300",
+                    "description": "8-core ARM, 4 GB, 1GbE, HDMI; photo app with face recognition, Time Machine. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DH2300_home.webp"},
+ "title": "Best 2-bay NAS under $300 for home use (2026): photos, backups, and which ones have 2.5GbE or Docker",
+ "h1": "Best 2-bay NAS under $300 for home use (2026)",
+ "desc": "Which 2-bay NAS under $300 to buy for home photos and backups: UGREEN's DH2300 against the TerraMaster F2-425, Synology DS223 and DS223j, QNAP TS-233, Asustor Drivestor 2 Pro Gen2 and UniFi UNAS 2, on CPU, RAM, 1GbE or 2.5GbE, Docker, Plex, photo apps with face recognition, measured noise and power, and the price on the maker's store on 2026-11-03.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For home photos and backups, buy the <strong>UGREEN NASync DH2300</strong> ({buy:ugreen-nasync-dh2300}), the best 2-bay NAS under $300 for home use on 2026-11-03 at $239.99: an 8-core ARM chip with an NPU that runs UGOS's photo app with face, scene and text recognition, Time Machine over SMB, HDMI, about 10 W at idle and a fan reviewers never heard. Know its two limits: one 1GbE port (about 110 MB/s, no 2.5GbE) and no Docker or virtual machines.</p>
+<p>If you want containers, Plex with Intel graphics or a 2.5GbE port at this price, the x86 <strong>TerraMaster F2-425</strong> (Celeron N5095, 4 GB, 2.5GbE, Docker in TOS 6) costs about the same ($239.99–254.99) but has no face recognition in its photo app; UniFi's UNAS 2 ($199) has 2.5GbE and no apps at all; Synology's DS223 ($249.99 list, 1GbE, 2 GB) lists face recognition in Synology Photos on a slower box; Synology's DS225+ is over $300 now. Two 4 TB NAS drives in RAID 1 add about $200–260 and give 4 TB.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("lan", "LAN"), ("apps", "Docker / Plex / photo AI"), ("measured", "Noise and power"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "Rockchip RK3576, 8-core ARM 2.2 GHz, 6 TOPS NPU; 4 GB", "lan": "1× 1GbE", "apps": "No Docker, no VMs; Plex/Jellyfin direct play; face, scene and text recognition in Photos", "measured": "31–32 dBA idle, 9.5–13 W (NASCompares); 'never heard the fan' (Cult of Mac)", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F2-425", "url": "https://www.terra-master.com/products/f2-425",
+   "cells": {"cpu": "Intel Celeron N5095, 4C x86; 4 GB DDR4", "lan": "1× 2.5GbE", "apps": "Docker in TOS 6; Plex direct play recommended by a reviewer; no photo AI on this model", "measured": "Not found", "warranty": "Not found", "price": "$239.99–254.99 (trackers, reviews, 2026)"}},
+  {"brand": "Synology", "model": "DS223", "url": "https://www.synology.com/en-us/products/DS223",
+   "cells": {"cpu": "Realtek RTD1619B, 4-core ARM 1.7 GHz; 2 GB", "lan": "1× 1GbE", "apps": "Docker unclear on this model; Synology Photos with facial recognition (spec page)", "measured": "Not found", "warranty": "2 years", "price": "$249.99 MSRP; no current street price found"}},
+  {"brand": "Synology", "model": "DS223j", "url": "https://www.synology.com/en-us/products/DS223j",
+   "cells": {"cpu": "Realtek RTD1619B; 1 GB", "lan": "1× 1GbE", "apps": "Backup and file sharing; no Docker", "measured": "Not found", "warranty": "2 years", "price": "Not found"}},
+  {"brand": "QNAP", "model": "TS-233", "url": "https://www.qnap.com/en-us/product/ts-233",
+   "cells": {"cpu": "ARM Cortex-A55 4-core 2.0 GHz; 2 GB", "lan": "1× 1GbE", "apps": "QTS apps; no hardware transcoding", "measured": "Not found", "warranty": "2 years", "price": "No US price found (about €242 in the EU)"}},
+  {"brand": "Asustor", "model": "Drivestor 2 Pro Gen2 (AS3302T v2)", "url": "https://www.asustor.com/en/product/spec?p_id=83",
+   "cells": {"cpu": "Realtek RTD1619B 1.7 GHz; 2 GB", "lan": "1× 2.5GbE", "apps": "Portainer/Docker on ARM; no transcoding", "measured": "Not found", "warranty": "3 years", "price": "$269 (reseller); $311.99 MSRP"}},
+  {"brand": "Ubiquiti", "model": "UniFi UNAS 2", "url": "https://nascompares.com/review/unifi-unas-2-review/",
+   "cells": {"cpu": "ARM Cortex-A55 1.7 GHz; 4 GB", "lan": "1× 2.5GbE (PoE++ powered)", "apps": "None: no Docker, VMs or app store", "measured": "About 260 MB/s read, 160–180 MB/s write; 16–17 W idle; 31–32 dBA (NASCompares)", "warranty": "Not found", "price": "$199 (store.ui.com)"}},
+ ],
+ "after": """
+<h2>ARM or x86 at $240</h2>
+<p>At this price the processor decides what the box can do. The DH2300's Rockchip chip has a neural unit, so UGOS tags faces, scenes and text in the photo library (Cult of Mac found it good, if less smooth than Apple Photos) and the whole unit idles near 10 W and 31 dBA; it cannot run x86 containers, UGREEN removed Docker from the DH series, and Plex or Jellyfin play files without transcoding. TerraMaster's F2-425 spends the same money on an Intel Celeron with Docker and Quick Sync graphics, a 2.5GbE port and a 15 W chip, but its photo AI arrived only on the newer F2-425 Plus. Synology's and QNAP's ARM boxes at this price are 1GbE with 1–2 GB of RAM: backup and file sharing, not apps.</p>
+<h2>What the DH2300 does well</h2>
+<ul>
+<li><strong>Photos:</strong> automatic backup from the UGREEN mobile app, albums by face, scene and text, shared family spaces; the AI jobs keep the drives spinning while they run.</li>
+<li><strong>Mac backups:</strong> Time Machine over SMB with Bonjour; Cult of Mac called setup a breeze after enabling Bonjour.</li>
+<li><strong>Quiet and cheap to run:</strong> NASCompares measured 31–32 dBA at idle on the low fan setting, 44–45 dBA at the maximum, and 9.5–13 W with two 4 TB drives.</li>
+<li><strong>HDMI:</strong> a 4K60 port that plays video started from the phone app (a beta feature, not a TV interface).</li>
+</ul>
+<h2>Drives</h2>
+<p>Two 4 TB NAS drives in RAID 1 give 4 TB and survive one failure; two 8 TB give 8 TB. The DH2300 takes up to 32 TB per bay. Prices for 4 TB NAS drives ran about $100–130 each in 2026 listings; check on the day.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("UGREEN: software support by model (Docker and VMs on the DH series)", "https://ai.ugreen.com/pages/solution-software"),
+  ("NASCompares: UGREEN DH2300 review (noise, power, specs)", "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/"),
+  ("Cult of Mac: UGREEN DH2300 and DH4300 Plus review (photo AI, Time Machine)", "https://www.cultofmac.com/reviews/ugreen-dh2300-4300-plus-nas-review"),
+  ("needtoknowit: UGREEN DH2300 review", "https://needtoknowit.com.au/blog/ugreen-dh2300-review-australia-entry-level-nas-tested.md"),
+  ("Neowin: UGREEN DH2300 review", "https://www.neowin.net/amp/ugreen-nasync-dh2300-review-an-ultra-low-powered-personal-cloud-and-streamer-nas/"),
+  ("Neowin: TerraMaster F2-425 review", "https://www.neowin.net/reviews/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/"),
+  ("PCWorld: TerraMaster F2-425 review", "https://pcworld.com/article/2910872/terramaster-f2-425-review.html"),
+  ("Synology DS223", "https://www.synology.com/en-us/products/DS223"),
+  ("QNAP TS-233", "https://www.qnap.com/en-us/product/ts-233"),
+  ("Asustor Drivestor 2 Pro Gen2 specification", "https://www.asustor.com/en/product/spec?p_id=83"),
+  ("NASCompares: UniFi UNAS 2 review", "https://nascompares.com/review/unifi-unas-2-review/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-to-replace-google-photos-family-library", "question": "G43 (UGREEN funnel: NAS as a Google Photos replacement)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 as a Google Photos replacement",
+                    "description": "2-bay Intel N100, 8 GB; UGOS Photos with face recognition, or Immich in Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS to replace Google Photos for a family's photo library (2026): face recognition, phone backup and what each app really does",
+ "h1": "Best NAS to replace Google Photos for a family's photo library (2026)",
+ "desc": "Which NAS replaces Google Photos for a family: UGREEN's DXP2800 and DH2300 (UGOS Photos, or Immich in Docker) against the Synology DS225+, DS425+ and DS925+ (Synology Photos), QNAP TS-264 (QuMagie), TerraMaster F2-425 Plus and F4-425 Plus (Terra Photos) and Asustor AS5402T, compared on face and scene recognition, phone backup, shared albums, Google Takeout import, RAM, and price, with library sizing and the off-site backup cost.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS to replace Google Photos for a family's photo library in 2026, $389.99 diskless on 2026-11-03: UGOS Photos groups people by face recognition, tags scenes, objects, pets and text, shows a map and timeline, backs up phones automatically and makes shared albums; its Intel N100 and 8 GB also run Immich in Docker. Google Takeout import is a manual folder copy on every brand.</p>
+<p>What to know: UGREEN restricts some Photos AI features to the DXP series, so the cheaper <strong>DH2300</strong> ({buy:ugreen-nasync-dh2300}) ($239.99, ARM, 4 GB) gets basic tagging per reviewers and cannot run Immich with machine learning; Synology's DS225+ and DS425+ ship with 2 GB, which reviewers say is too little for Synology Photos' object recognition without an upgrade; Google Takeout import is a manual folder copy on every brand (a 7-day download link, albums duplicating files); and a NAS mirror is one copy, so budget an off-site backup (Backblaze B2 at $6.95 per TB a month, about $7 for 1 TB).</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("app", "Photo app"), ("ai", "Face / scene recognition"), ("backup", "Phone backup, sharing"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 8 GB DDR5 (16 GB)", "app": "UGOS Photos; Immich in Docker", "ai": "Face, scene, object, pet and text recognition (DXP series)", "backup": "iOS/Android auto backup (background, off-peak or cellular), shared albums, share and request links, duplicate finder, map", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "Rockchip 8-core ARM, 4 GB", "app": "UGOS Photos (no Docker)", "ai": "Basic tagging per reviewers; custom classification, pet and sensitive-content detection not on DH models (UGREEN)", "backup": "Same mobile backup and sharing", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DH4300 Plus", "url": "https://ai.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "cells": {"cpu": "Rockchip 8-core ARM, 8 GB", "app": "UGOS Photos; Docker (no VMs)", "ai": "As DH2300", "backup": "Same", "warranty": "2 years", "price": "$399.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 2 GB (6 GB)", "app": "Synology Photos", "ai": "Face recognition on this model (reported); object recognition said to need 4 GB", "backup": "iOS/Android backup, Shared Space, Places map", "warranty": "3 years", "price": "$339.99 (Newegg)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4 GB ECC (32 GB)", "app": "Synology Photos; Immich in Container Manager", "ai": "Face and object recognition", "backup": "Same Synology Photos features", "warranty": "3 years", "price": "$639.99 list; $511.99 Prime Day"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en/software/qumagie",
+   "cells": {"cpu": "Intel Celeron N5095, 8 GB", "app": "QuMagie; Immich in Container Station", "ai": "Face, object, scene; phrase search on x86 with 8 GB", "backup": "Qphoto backup, guest links", "warranty": "3 years", "price": "$489 (tracker, June 2026)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus / F4-425 Plus", "url": "https://www.terra-master.com/blogs/page/ai-photos-management",
+   "cells": {"cpu": "Intel N150, 8 GB / 16 GB", "app": "Terra Photos 3.0; Docker", "ai": "Local face recognition (vendor claims up to 80%), scenes, pets; x86 only", "backup": "TNAS Mobile backup", "warranty": "2 years", "price": "$399 / $569 launch; $599.99 / $779.99 on TerraMaster's store"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, 4 GB (16 GB)", "app": "Photo Gallery 4 (beta face recognition, ADM 5.1.1+); Docker", "ai": "Local face recognition in beta", "backup": "AiFoto backup", "warranty": "3 years", "price": "$392–461 (resellers)"}},
+ ],
+ "after": """
+<h2>What UGOS Photos does (UGREEN's own description)</h2>
+<ul>
+<li><strong>Recognition:</strong> people grouped by face with matches you confirm before merging; scenes, objects and pets after the AI models are downloaded and enabled; text in photos searchable (OCR) and "semantic" descriptions. UGREEN's support notes say some Photos features are DXP-only and list custom classification, pet recognition and sensitive-content detection as unsupported on DH Plus models.</li>
+<li><strong>Library:</strong> timeline and folder views without moving files, map view from GPS data, albums (standard, conditional, baby, personal, shared), exact and similar-duplicate finder, RAW previews (CR2, CR3, NEF, ARW, RAF, RW2, DNG), HEIC and Live Photos (both halves must upload).</li>
+<li><strong>Phones:</strong> the UGREEN mobile app backs up new photos in the background, off-peak or over cellular by choice; iCloud "optimize storage" phones upload the smaller local versions.</li>
+<li><strong>Sharing:</strong> share links and photo-request links for guests (requests can convert HEIC to JPEG and drop the Live Photo video).</li>
+<li><strong>Maturity:</strong> TechPowerUp, ITPro and Cult of Mac call UGOS rougher than Apple or Google Photos; face recognition is praised, the map and mobile app called basic.</li>
+</ul>
+<h2>Immich on the same box</h2>
+<p>Immich runs in Docker on the DXP2800 (UGREEN publishes a setup guide) and adds the strongest open-source feature set: face recognition, CLIP "sunset at the beach" search, a map, shared and partner albums, duplicate detection, Live and Motion Photos, and a Google Takeout importer (immich-go). It wants 6 GB minimum and 8 GB recommended with 4 cores, its database on an SSD, and the first machine-learning pass over a large library takes hours to days on an N100 (turn ML off for the initial import). The DH2300's 4 GB and ARM chip rule it out.</p>
+<h2>Moving out of Google Photos</h2>
+<p>Export with Google Takeout (links expire in about seven days; each album duplicates its files), copy the folders onto the NAS and add them to the photo app's library; metadata sidecars need a tool to restore dates on Synology, and immich-go handles the ZIPs directly. Keep the phones backing up to the NAS afterward, since Takeout is one-time. Size: a 100,000-photo HEIC library is roughly 300–500 GB, 1–2 TB with videos, plus 10–20% for thumbnails and transcodes; two 4 TB drives in RAID 1 cover it, and the off-site copy is the part the NAS does not provide.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("UGREEN: the Photos app (knowledge article)", "https://ai.ugreen.com/blogs/knowledge/ugreen-nas-photos"),
+  ("UGREEN: back up iPhone photos to a UGREEN NAS", "https://ai.ugreen.com/blogs/how-to/backup-iphone-photos-to-ugreen-nas"),
+  ("UGREEN support: Photos features by model", "https://support.ugnas.com/detail/article/en-US/222"),
+  ("needtoknowit: AI photo search on Synology, QNAP and UGREEN compared", "https://needtoknowit.com.au/blog/ai-photo-search-on-nas-synology-qnap-and-ugreen-compared/"),
+  ("Cult of Mac: UGREEN DH2300 and DH4300 Plus review", "https://www.cultofmac.com/reviews/ugreen-dh2300-4300-plus-nas-review"),
+  ("Synology Photos specifications (DSM 7.4)", "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_photos"),
+  ("QNAP QuMagie", "https://www.qnap.com/en/software/qumagie"),
+  ("TerraMaster: AI photo management (Terra Photos)", "https://www.terra-master.com/blogs/page/ai-photos-management"),
+  ("ASUSTOR newsletter: Photo Gallery 4 face recognition", "https://marketing.asustor.com/newsletter/Newsletter_265_ENG.html"),
+  ("Immich features", "https://immich.app/features"),
+  ("Immich: requirements", "https://docs.immich.app/install/requirements"),
+  ("immich-go: Google Takeout importer", "https://github.com/simulot/immich-go"),
+  ("Backblaze B2 pricing", "https://www.backblaze.com/cloud-storage/pricing"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-immich-iphone-photo-backup", "question": "G44 (UGREEN funnel: NAS for Immich iPhone backup)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Immich",
+                    "description": "2-bay Intel N100, 8 GB, 2× M.2 for the database, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS for backing up iPhone photos with Immich (2026): the box, the iOS background rules and remote access",
+ "h1": "Best NAS for backing up iPhone photos with Immich (2026)",
+ "desc": "Which NAS to run Immich on for iPhone photo backup: UGREEN's DXP2800 against the Synology DS225+ and DS925+, QNAP TS-264, TerraMaster F2-425 Plus and F4-425 Plus, Asustor AS5402T, UGREEN's DH2300, the Beelink ME mini and a Raspberry Pi 5, with Immich's own iPhone-app rules (Background App Refresh, iCloud optimize storage, Live Photos), server and machine-learning requirements, first-import times on an N100 and the remote-access options.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS for backing up iPhone photos with Immich at its 2026 price, $389.99 diskless on 2026-11-03: an Intel N100 with the 8 GB of RAM Immich recommends (to 16 GB), two M.2 slots for Immich's database and thumbnails on SSD, and Docker Compose in UGOS, with UGREEN's own Immich setup guide. On iPhone, Immich backs up only when iOS allows it: Background App Refresh on, and open the app now and then.</p>
+<p>What to know: do the first upload in the foreground; originals must be downloaded if iCloud "optimize storage" is on, and the app needs a route to the server from outside the house (Tailscale, or a domain with HTTPS through a reverse proxy; never forward port 2283 bare). The first machine-learning pass over a big library runs hours to days on an N100 (one owner saw about 300 photos an hour with ML on, 5,000 with it off), so import first and let faces run after. UGREEN's ARM DH2300 ($239.99) has no Docker and 4 GB, so it is out.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("route", "Immich route"), ("ssd", "SSD for the database"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 4C; 8 GB DDR5 (16 GB)", "route": "Docker Compose (UGREEN guide, article 577); Portainer guides", "ssd": "2× M.2 NVMe", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 4C; 8 GB DDR5 (32 GB)", "route": "TOS 6 Docker (a review notes Immich 'takes longer' on the N150)", "ssd": "3× M.2", "warranty": "2 years", "price": "about $399 launch; $599.99 on TerraMaster's store"}},
+  {"brand": "TerraMaster", "model": "F4-425 Plus", "url": "https://www.terra-master.com/products/f4-425-plus",
+   "cells": {"cpu": "Intel N150, 4C; 16 GB DDR5 (32 GB)", "route": "TOS 6 Docker", "ssd": "3× M.2", "warranty": "2 years", "price": "$569 launch; $519.99 tracker"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 4C; 2 GB (6 GB): below Immich's 6 GB minimum until upgraded", "route": "Container Manager", "ssd": "None", "warranty": "3 years", "price": "$339.99 (Newegg)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T; 4 GB ECC (32 GB): ML needs an upgrade", "route": "Container Manager", "ssd": "2× M.2 (Synology SSDs for pools)", "warranty": "3 years", "price": "$639.99 list; $511.99 Prime Day"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Intel Celeron N5095, 4C; 8 GB fixed", "route": "Container Station", "ssd": "2× M.2", "warranty": "3 years", "price": "$489 (tracker, June 2026)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/product?p_id=81",
+   "cells": {"cpu": "Intel Celeron N5105, 4C; 4 GB (16 GB)", "route": "Docker/Portainer", "ssd": "4× M.2", "warranty": "3 years", "price": "$369–461 (resellers)"}},
+  {"brand": "UGREEN", "model": "NASync DH2300", "url": "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "cells": {"cpu": "Rockchip ARM, 4 GB", "route": "No Docker in UGOS on the DH series", "ssd": "None", "warranty": "2 years", "price": "$239.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://m.gsmarena.com/beelink_me_mini_6slot_nas_mini_pc_review-amp-68209.php",
+   "cells": {"cpu": "Intel N150; 12 GB soldered", "route": "Bring your own OS (TrueNAS, Proxmox) and Docker", "ssd": "6× M.2, no SATA", "warranty": "Not found", "price": "$209 barebone; $329 with 2 TB"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5, 8 GB, with NVMe HAT", "url": "https://docs.immich.app/install/requirements",
+   "cells": {"cpu": "Cortex-A76 arm64; 8 GB", "route": "Docker; ML on CPU is slow, Immich suggests disabling or offloading it", "ssd": "NVMe via HAT", "warranty": "Varies", "price": "Not priced here"}},
+ ],
+ "after": """
+<h2>Immich's iPhone rules</h2>
+<ul>
+<li><strong>Background:</strong> turn on Background App Refresh for Immich; iOS decides when the task runs and the app cannot force it, so open Immich from time to time; the first big upload is best done in the foreground. Immich 3.0 moved sync and upload to run in parallel inside iOS's short background window, and later 3.x releases list more iOS fixes.</li>
+<li><strong>Wi-Fi:</strong> upload is Wi-Fi only by default; the charging-only option is documented for Android.</li>
+<li><strong>iCloud:</strong> with "Optimize iPhone Storage" on, Immich downloads each original to its cache, hashes and uploads it, then clears it, which costs data and space; Immich's "Free Up Space" deletes from iCloud too (30 days in Recently Deleted), so keep iCloud as a second copy or treat the NAS as the only one knowingly.</li>
+<li><strong>Albums and formats:</strong> album sync is phone to server only, duplicates are skipped by checksum, Live Photos upload with their video (since 1.36, manual link/unlink since 1.115), RAW files are viewable.</li>
+</ul>
+<h2>Server and machine learning</h2>
+<p>Immich wants 6 GB minimum and 8 GB recommended, 2 cores minimum and 4 recommended, an x86-64-v2 CPU for the ML container since version 3 (the N100 qualifies), and its Postgres database on local SSD, never a network share; thumbnails and transcodes add 10–20% to the library. Machine learning can be disabled or run on another machine. The one N100 owner report (a DXP4800 Plus, 43,000 photos) saw about 300 photos an hour with ML on against 5,000 with ML off, so expect days for a big first import unless ML waits. Video transcoding can use Quick Sync (experimental; encoding only by default) through the QSV compose extension and /dev/dri.</p>
+<h2>Remote access</h2>
+<p>Immich's guide offers three routes: a VPN such as WireGuard (needs a forwarded port), Tailscale (works behind carrier NAT with the app on phone and NAS, no open port), or a domain with HTTPS through a reverse proxy, which the mobile app reaches without a VPN; it warns never to expose port 2283 directly. UGREEN's own relay carries UGREEN's apps, not Immich.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: installing Immich (article 577)", "https://support.ugnas.com/detail/article/en-US/577"),
+  ("Marius Hosting: Immich on a UGREEN NAS", "https://mariushosting.com/how-to-install-immich-on-your-ugreen-nas/"),
+  ("Marius Hosting: Immich with GPU acceleration on UGREEN (model notes)", "https://mariushosting.com/how-to-install-immich-on-ugreen-nas-with-gpu-acceleration/"),
+  ("Immich: mobile backup", "https://docs.immich.app/features/mobile-backup"),
+  ("Immich: automatic backup", "https://docs.immich.app/features/automatic-backup"),
+  ("Immich: mobile app (iCloud, Free Up Space)", "https://docs.immich.app/features/mobile-app"),
+  ("Immich: requirements", "https://docs.immich.app/install/requirements"),
+  ("Immich: remote access", "https://docs.immich.app/guides/remote-access"),
+  ("Immich: hardware transcoding", "https://docs.immich.app/features/hardware-transcoding"),
+  ("Immich: machine-learning hardware acceleration", "https://docs.immich.app/features/ml-hardware-acceleration"),
+  ("Immich 3.0 release (iOS background sync)", "https://immich.app/blog/v3.0.0-release"),
+  ("SparkBox: Immich setup on an N100 NAS (import rates)", "https://sparkbox-site.pages.dev/guides/immich-setup"),
+  ("hometechops: Immich not backing up (Background App Refresh)", "https://hometechops.com/self-hosting/immich-photos-not-backing-up"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("QNAP TS-264", "https://www.qnap.com/en-us/product/ts-264"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-nextcloud-self-hosted-cloud", "question": "G42 (UGREEN funnel: NAS for Nextcloud)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Nextcloud",
+                    "description": "2-bay Intel N100, 8 GB, 2× M.2, Docker Compose. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Which NAS is best for running Nextcloud as my own cloud (2026)? Requirements, the Docker route on each NAS, and remote access",
+ "h1": "Which NAS is best for running Nextcloud as your own cloud? (2026)",
+ "desc": "Which NAS to run Nextcloud on: UGREEN's DXP2800 and DXP4800 Plus against the Synology DS225+ and DS925+, QNAP TS-264 and TS-464, TerraMaster F2-425 Plus and F4-425 Plus, Asustor AS5402T, the Beelink ME mini and a Raspberry Pi 5, with Nextcloud's own requirements, what the All-in-One Docker image bundles, the port and reverse-proxy rules on each NAS OS, and the remote-access options (domain, Cloudflare Tunnel, Tailscale).",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS for running Nextcloud as your own cloud at its 2026 price, $389.99 diskless on 2026-11-03: an x86 Intel N100 with 8 GB DDR5 (four times the Synology DS225+'s 2 GB), two M.2 slots for the database and Docker Compose in UGOS for the Nextcloud All-in-One image. For more users or Nextcloud Office, the <strong>DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}) at $619.99 takes 64 GB and has 10GbE.</p>
+<p>What to know: Nextcloud's floor is low (512 MB per PHP process recommended, 64-bit CPU, PostgreSQL or MariaDB, SSD storage) but the All-in-One bundle grows with Collabora Office (about 1 GB plus 100 MB per user), Talk and full-text search, so 8 GB is the comfortable minimum; UGOS has no official Nextcloud guide (Synology's DSM does appear in Nextcloud's own AIO docs), so this is a Compose project you set up yourself behind a reverse proxy on port 11000; and remote access needs a domain with HTTPS (ports 80 and 443 forwarded), a Cloudflare Tunnel (100 MB upload cap on the free plan, chunking works around it) or Tailscale, which Nextcloud's docs say performs better. No published benchmark of Nextcloud on an N100 exists.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("route", "Nextcloud route"), ("ports", "Port note"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 4C; 8 GB DDR5 (16 GB)", "route": "Docker Compose project in UGOS (AIO or the LinuxServer image); no official guide", "ports": "One owner hit a 403 on port 8080 (permissions suspected); use the AIO reverse-proxy mode", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T; 8 GB DDR5 (64 GB)", "route": "Same Docker route; room for Office, Talk and search", "ports": "As above", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 4C; 2 GB (6 GB)", "route": "AIO in Container Manager; Nextcloud's AIO docs include a DSM guide", "ports": "DSM holds 80/443; AIO behind DSM's reverse proxy on 11000 (domain-validation failures reported)", "warranty": "3 years", "price": "$364.99 (Amazon, Nov 2026 listing)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T; 4 GB ECC (32 GB)", "route": "AIO in Container Manager", "ports": "As DS225+", "warranty": "3 years", "price": "$639.99 (synology.com, June 2026)"}},
+  {"brand": "QNAP", "model": "TS-264 / TS-464", "url": "https://www.qnap.com/en/product/ts-464",
+   "cells": {"cpu": "Intel Celeron N5095, 4C; 8 GB", "route": "Container Station (Compose YAML)", "ports": "QTS uses 8080 and 443; move them first", "warranty": "3 years", "price": "$489 / $639 (Newegg, June 2026)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus / F4-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 4C; 8 GB / 16 GB (32 GB)", "route": "Docker from the App Center; simple Nextcloud apps listed", "ports": "TOS 6 reserves 80/443; change under Network settings", "warranty": "Not found", "price": "$398.99 / $509.99 (TerraMaster store, 2025 listings)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/app_central/app_detail?id=942",
+   "cells": {"cpu": "Intel Celeron N5105, 4C; 4 GB (16 GB)", "route": "Docker-based Nextcloud package in App Central", "ports": "Upgrades reported to need a config.php edit", "warranty": "3 years", "price": "$392–460 (resellers)"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://m.gsmarena.com/beelink_me_mini_6slot_nas_mini_pc_review-amp-68209.php",
+   "cells": {"cpu": "Intel N150; 12 GB soldered", "route": "Bring your own OS (TrueNAS apps, Proxmox) and Docker", "ports": "Yours to manage", "warranty": "Not found", "price": "$329 with 2 TB"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5, 8 GB", "url": "https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html",
+   "cells": {"cpu": "Cortex-A76 arm64; 8 GB", "route": "Docker or NextcloudPi; Pi 4 owners reported 2–20 MB/s uploads", "ports": "Yours to manage", "warranty": "Varies", "price": "$175 board (April 2026); about a DXP2800 once NVMe, case and PSU are added"}},
+ ],
+ "after": """
+<h2>Nextcloud's requirements</h2>
+<ul>
+<li><strong>Server:</strong> 64-bit CPU strongly recommended; PHP 8.3–8.5; MariaDB, MySQL or PostgreSQL (SQLite for testing only); 128 MB minimum and 512 MB recommended per PHP process; SSD storage recommended and SD cards discouraged.</li>
+<li><strong>All-in-One (AIO):</strong> the official Docker bundle for amd64 and arm64 with optional Nextcloud Office (Collabora), EuroOffice, Talk with TURN, Imaginary previews, full-text search (Java, 512 MB by default), ClamAV and Whiteboard. By default it publishes 80, 8080 (admin page) and 8443 and Talk needs 3478; behind a reverse proxy it listens on 11000 bound to localhost and needs only the proxy's 443.</li>
+<li><strong>RAM in practice:</strong> a bare Nextcloud with MariaDB runs in about 500 MB on an N100 box; Office adds about 1 GB plus 100 MB per user; search and previews add more. 8 GB covers a household; 16 GB is comfortable with everything on.</li>
+</ul>
+<h2>Remote access</h2>
+<p>Three routes, from Nextcloud's own AIO documentation: your domain with DDNS and ports 80 and 443 forwarded (AIO issues the Let's Encrypt certificate itself); a Cloudflare Tunnel with no open ports (set SKIP_DOMAIN_VALIDATION, turn off Rocket Loader, allow Cloudflare's IP ranges for Office, and live with the free plan's 100 MB upload limit via chunking and 100-second request timeout); or Tailscale, which the docs say typically performs better with fewer trade-offs (Serve for the tailnet, Funnel for the public). UGREEN's own UGREENlink relay carries UGREEN's apps and, per UGREEN's FAQ, reaches containers only when logged in with a UGREENlink ID; it is not a replacement for a domain and certificate.</p>
+<h2>Why the DXP2800 over the usual picks</h2>
+<p>Synology ships the DS225+ with 2 GB and no M.2 slots, so Nextcloud with Office needs a RAM upgrade and lives on hard drives; its advantage is the documented Container Manager route. QNAP's TS-264 has 8 GB but an older Celeron and QTS's own claim on ports 8080 and 443. TerraMaster's F2-425 Plus matches the DXP2800 on RAM with a newer N150 and two 5GbE ports at about the same price, and its App Center lists simple Nextcloud apps. The DXP2800 wins on price for 8 GB plus two M.2 slots; it loses on documentation, so budget an evening.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Nextcloud: system requirements", "https://docs.nextcloud.com/server/latest/admin_manual/installation/system_requirements.html"),
+  ("Nextcloud All-in-One (GitHub)", "https://github.com/nextcloud/all-in-one"),
+  ("Nextcloud AIO: reverse proxy documentation", "https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md"),
+  ("Nextcloud community: Collabora RAM requirements", "https://help.nextcloud.com/t/system-requirements-for-collabora-online/30694"),
+  ("Nextcloud community: Nextcloud in Docker on a UGREEN DXP4800 (403 on 8080)", "https://help.nextcloud.com/t/nextcloud-docker-in-ugreen-dxp4800-ssd-hdd-403-forbidden-access-denied/244830"),
+  ("Blog: Nextcloud on a UGREEN NAS with Docker", "https://mozgc.blogspot.com/2025/12/how-to-setup-nextcloud-file-hosting-on.html"),
+  ("UGREEN: remote access options (relay, DDNS)", "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access"),
+  ("Nextcloud community: AIO behind Synology's reverse proxy", "https://help.nextcloud.com/t/unable-to-use-synology-dsms-reverse-proxy-on-nextcloud-aio/239311"),
+  ("Nextcloud community: AIO with QNAP's reverse proxy", "https://help.nextcloud.com/t/how-to-install-nextcloud-aio-with-qnap-reverse-proxy/228244"),
+  ("TerraMaster forum: Nextcloud on TOS 6", "https://forum.terra-master.com/en/viewtopic.php?p=53063"),
+  ("Asustor App Central: Nextcloud", "https://www.asustor.com/en/app_central/app_detail?id=942"),
+  ("Nextcloud community: upload speed on a Raspberry Pi", "https://help.nextcloud.com/t/is-10mb-s-upload-download-speed-normal-for-ncp-on-a-rpi4/122590"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("QNAP TS-464", "https://www.qnap.com/en/product/ts-464"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-to-replace-dropbox-freelancer", "question": "G45 (UGREEN funnel: NAS to replace Dropbox for a freelancer)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 as a Dropbox replacement",
+                    "description": "2-bay Intel N100 NAS, 8 GB; two-way sync client, share links, relay remote access. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS to replace Dropbox for a freelancer (2026): sync clients, remote access and what each brand's software really does",
+ "h1": "Best NAS to replace Dropbox for a freelancer who needs remote access and sync (2026)",
+ "desc": "Which NAS replaces Dropbox for a freelancer: UGREEN's DXP2800 and DXP4800 Plus against Synology's DS225+ and DS925+ (Synology Drive), QNAP's TS-264 (Qsync), TerraMaster's F2-425 Plus (TerraSync), Asustor (EZ Sync), UniFi UNAS and Nextcloud in Docker, compared on desktop sync, on-demand files, versioning, share links, relay remote access and mobile apps, with Dropbox's own prices for the payback math.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For a freelancer who works from project folders, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best-value NAS to replace Dropbox in 2026, $389.99 diskless on 2026-11-03: a two-way sync client for Windows and macOS, password and expiry share links for clients, relay remote access with no port forwarding, phone access with camera backup, Btrfs snapshots and two-factor login. If you need Dropbox's online-only files on a laptop and 32-version history, buy a Synology instead: Synology Drive has both, UGREEN's client has neither.</p>
+<p>What UGREEN's software does not do today: on-demand placeholder files (every synced folder downloads in full, with filters by extension), version history in the client (the NAS keeps versions per shared folder, limits unpublished), syncing while the client is closed, and remote speed beyond UGREEN's relay (use DDNS for a direct link). Dropbox Plus costs $9.99 a month billed annually ($11.99 monthly) for 2 TB, so the NAS pays back in about three years once drives are added, and it gives no off-site copy, which Dropbox did: keep a cloud backup.</p>
+""",
+ "columns": [("client", "Desktop sync"), ("ondemand", "On-demand files"), ("versions", "Versions"), ("remote", "Remote access"), ("share", "Share links")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800 (UGOS Pro)",
+   "cells": {"client": "Windows and macOS: two-way, NAS→PC or PC→NAS folder pairs, filters; sync stops when the client closes", "ondemand": "No", "versions": "Per-shared-folder version retention on the NAS; not in the client", "remote": "UGREENlink relay (speed capped by UGREEN's servers), DDNS direct, P2P on IPv6", "share": "Expiry, password, access limit, download toggle, QR"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"client": "Same client", "ondemand": "No", "versions": "Same", "remote": "Same", "share": "Same"}},
+  {"brand": "Synology", "model": "DS225+ / DS925+ (Synology Drive)", "url": "https://www.synology.com/en-us/dsm/software_spec/synology_drive",
+   "cells": {"client": "Drive Client, Windows 10 2004+ and macOS 12+; ShareSync between sites", "ondemand": "Yes (Windows 10 1809+, macOS 12.3+)", "versions": "Up to 32 per file, Intelliversioning, 7–120-day rotation", "remote": "QuickConnect relay (throttled; direct when hole-punching works)", "share": "Password and expiry, also from the mobile app", "price": "$364.99 / $639.99 (listings)"}},
+  {"brand": "QNAP", "model": "TS-264 (Qsync)", "url": "https://www.qnap.com/static/landing/useng/qsync_feature",
+   "cells": {"client": "Qsync for Windows and macOS, subfolder selection", "ondemand": "Not found", "versions": "Revisions kept; limits not found", "remote": "myQNAPcloud Link relay", "share": "Password and expiry", "price": "$489 (June 2026)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus (TerraSync)", "url": "https://help.terra-master.com/docs/TOS6/application/tnas-pc",
+   "cells": {"client": "TerraSync and TNAS PC", "ondemand": "Mac on-demand from TerraSync 2.1.560 on TOS 7 x86 only", "versions": "Not found", "remote": "TNAS Online, no port forwarding", "share": "Not confirmed", "price": "about $399"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (EZ Sync)", "url": "https://www.asustor.com/en/online/online_help?id=71",
+   "cells": {"client": "EZ Sync (Windows per Asustor's help)", "ondemand": "Not found", "versions": "Version history, restore in the file explorer", "remote": "EZ-Connect relay", "share": "Share links", "price": "$392–460"}},
+  {"brand": "Ubiquiti", "model": "UNAS 2 / Pro (UniFi Drive)", "url": "https://nascompares.com/guide/unifi-unas-pro-nas-drive-software-review/",
+   "cells": {"client": "No real sync client (reviews)", "ondemand": "No", "versions": "Not found", "remote": "Teleport WireGuard VPN, SMB mapping", "share": "Not found", "price": "$199 / $499"}},
+  {"brand": "Nextcloud", "model": "Nextcloud in Docker (any x86 NAS)", "url": "https://needtoknowit.com.au/blog/nextcloud-on-nas-setup-guide.md",
+   "cells": {"client": "Official desktop client", "ondemand": "Yes (virtual files)", "versions": "Configurable", "remote": "Your own domain, reverse proxy and certificate", "share": "Yes", "price": "Free; a few hours of setup"}},
+ ],
+ "after": """
+<h2>What a freelancer actually needs, brand by brand</h2>
+<ul>
+<li><strong>Large-file links for clients:</strong> UGREEN's Files app makes links with a validity period, password, access limit and download toggle; Synology the same, including from its phone app. Upload speed to the client is your home connection's upload rate, or UGREEN's relay if you leave DDNS off.</li>
+<li><strong>Version history:</strong> Synology Drive keeps up to 32 versions per file with Intelliversioning; UGREEN keeps versions on the NAS per shared folder (limits not published) and conflict copies in the client (the newer file wins, the older is renamed), plus Btrfs snapshots for ransomware rollback.</li>
+<li><strong>A laptop with a small SSD:</strong> Dropbox's online-only placeholders exist in Synology Drive and Nextcloud's client; UGREEN syncs whole folder pairs, so sync only the active projects.</li>
+<li><strong>Phone:</strong> UGREEN's app browses and uploads, backs up the camera roll in the background; Synology Drive adds offline files. Both use a relay with no router setup; both relays are slower than a direct connection.</li>
+<li><strong>Moving off Dropbox:</strong> UGREEN's Cloud Drives app mounts Dropbox, Google Drive and OneDrive for the copy; afterwards the NAS is the only copy unless you add a backup (Sync &amp; Backup to another NAS or a USB drive, or a cloud bucket).</li>
+</ul>
+<h2>The money</h2>
+<p>Dropbox's own plans page showed Plus at $9.99 a month (2 TB, 30-day history) on 2026-11-03, $11.99 billed monthly per third parties, and 3 TB tiers at about $15–20 a month; that is $120–240 a year. The DXP2800 at $389.99 plus two 4 TB drives (about $200–260) costs roughly $600–650 once and runs on about 16 W, so it pays back in three to five years against Plus, sooner against a 3 TB plan, and holds 4 TB in RAID 1 with room to grow. The honest caveat is time: UGOS's client is less polished than Dropbox's and Synology's, and reviewers describe the setup as more hands-on.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: the sync client (article 399)", "https://support.ugnas.com/detail/article/en-US/399"),
+  ("UGREEN support: Sync & Backup and version retention (article 166)", "https://support.ugnas.com/detail/article/en-US/166"),
+  ("UGREEN support: share links (article 366)", "https://support.ugnas.com/detail/article/en-US/366"),
+  ("UGREEN support: Cloud Drives (Dropbox, Google Drive, OneDrive) (article 631)", "https://support.ugnas.com/detail/article/en-US/631"),
+  ("UGREEN: remote access (relay, DDNS, P2P)", "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access"),
+  ("UGREEN: file sync guide", "https://nas.ugreen.com/blogs/how-to/ugreen-nas-file-sync"),
+  ("UGREEN: is a UGREEN NAS secure (2FA, snapshots)", "https://ai.ugreen.com/blogs/knowledge/is-ugreen-nas-secure"),
+  ("needtoknowit: UGOS Pro review", "https://needtoknowit.com.au/blog/ugreen-ugos-pro-review-nas-software-and-ecosystem-explained/"),
+  ("Synology Drive specifications (on-demand sync, 32 versions)", "https://www.synology.com/en-us/dsm/software_spec/synology_drive"),
+  ("Synology: increasing Drive speed (QuickConnect relay)", "https://www.synology.com/en-us/knowledgebase/DSM/tutorial/Collaboration/how_to_increase_Drive_speed"),
+  ("QNAP Qsync", "https://www.qnap.com/static/landing/useng/qsync_feature"),
+  ("TerraMaster: TNAS PC", "https://help.terra-master.com/docs/TOS6/application/tnas-pc"),
+  ("Asustor: EZ Sync help", "https://www.asustor.com/en/online/online_help?id=71"),
+  ("NASCompares: UniFi UNAS Pro Drive software review", "https://nascompares.com/guide/unifi-unas-pro-nas-drive-software-review/"),
+  ("Dropbox plans", "https://www.dropbox.com/plans"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
