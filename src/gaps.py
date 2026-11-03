@@ -2271,4 +2271,146 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-all-in-one-home-server-under-800-docker-plex-vms", "question": "G40 (UGREEN funnel: all-in-one home server under $800)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus as an all-in-one home server",
+                    "description": "4-bay Intel NAS, Quick Sync, 8 GB DDR5 to 64 GB, 10GbE, Docker and VMs in UGOS. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best all-in-one home server under $800 for Docker, Plex and a couple of VMs (2026)",
+ "h1": "Best all-in-one home server under $800 for Docker, Plex and a couple of VMs (2026)",
+ "desc": "Which single box under $800 runs Docker containers, Plex with hardware transcoding and two virtual machines: UGREEN's DXP4800 Plus and DXP2800 against the TerraMaster F4-425 Plus and F4-424 Pro, Aoostar WTR Pro and WTR Max, an N305 mini PC with a USB drive bay, a used Dell OptiPlex, Synology DS925+ and QNAP TS-464, with what the workload needs in RAM and CPU, what UGOS's VM app can and cannot do, and the bill with a RAM and SSD upgrade.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best all-in-one home server under $800 for Docker, Plex and a couple of VMs in 2026, $619.99 diskless on 2026-11-03: four bays plus two M.2 slots, an Intel Pentium Gold 8505 with Quick Sync for Plex, 8 GB DDR5 expandable to 64 GB, 10GbE built in, and UGOS Pro's Docker (with Compose) and Virtual Machine apps with snapshots, ISO and OVA import and bridged networking. Plan on a 16 GB upgrade for a Windows VM.</p>
+<p>What to know: the stock 8 GB covers Plex, a Home Assistant OS VM (2 GB, 2 vCPU) and a few containers, not a Windows 11 VM (4 GB and 2 vCPU minimum, 64 GB disk, UEFI and vTPM) on top; a 16 GB DDR5 SO-DIMM ran about $200 in late-2026 listings during the memory shortage and a 1 TB NVMe for the app pool $160–200, so the full build is about $980–1,050 and only the NAS plus one of the two fits under $800. UGOS's VMs have no iGPU passthrough, so Plex transcodes in Docker on the host, not inside a VM. TerraMaster's F4-425 Plus ($569.99, Intel N150, 16 GB stock, two 5GbE ports) is the cheaper box that ships with enough RAM; it lacks 10GbE and its VM support is described as light.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("lan", "LAN"), ("virt", "Docker / VMs"), ("plex", "Plex HW transcode"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T; 8 GB DDR5 (64 GB)", "lan": "1× 10GbE + 1× 2.5GbE", "virt": "Docker + Compose; VM app with snapshots, ISO/OVA import, bridged network, USB passthrough; no iGPU passthrough", "plex": "Yes (Quick Sync, in Docker with a Plex Pass)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800 (small option)",
+   "cells": {"cpu": "Intel N100, 4C; 8 GB DDR5 (16 GB)", "lan": "1× 2.5GbE", "virt": "Same UGOS apps", "plex": "Yes (Quick Sync)", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F4-425 Plus", "url": "https://www.terra-master.com/products/f4-425-plus",
+   "cells": {"cpu": "Intel N150, 4C/4T; 16 GB DDR5 (32 GB, one slot)", "lan": "2× 5GbE", "virt": "TOS 6 Docker and VM ('light virtualization')", "plex": "Yes (UHD graphics; Plex, Emby, Jellyfin apps)", "warranty": "Not found", "price": "$569.99 list; $484.99 intro (NASCompares)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"cpu": "Intel Core i3-N305, 8C; 32 GB DDR5", "lan": "2× 2.5GbE", "virt": "Docker and VM", "plex": "Yes (Plex Pass)", "warranty": "2 years", "price": "about $699 (reviews, via search)"}},
+  {"brand": "Aoostar", "model": "WTR Pro (Ryzen 7 5825U)", "url": "https://www.starryhope.com/nas/models/aoostar-wtr-pro-5825u/",
+   "cells": {"cpu": "AMD Ryzen 7 5825U, 8C/16T; DDR4, two slots", "lan": "2× 2.5GbE", "virt": "Bring your own OS (Unraid, TrueNAS, Proxmox)", "plex": "AMD graphics, no Quick Sync", "warranty": "Not found", "price": "$379 barebone (StarryHope, Sept 2026)"}},
+  {"brand": "Aoostar", "model": "WTR Max (Ryzen 7 PRO 8845HS)", "url": "https://www.notebookcheck.net/Aoostar-WTR-Max-launches-as-new-11-bay-NAS-with-capable-AMD-Ryzen-APU-and-OCuLink-port.991136.0.html",
+   "cells": {"cpu": "AMD Ryzen 7 PRO 8845HS; to 128 GB", "lan": "Listings conflict (2× 10G SFP+ or 2× 2.5GbE)", "virt": "Bring your own OS", "plex": "Radeon 780M, no Quick Sync", "warranty": "Not found", "price": "$659–709 barebone"}},
+  {"brand": "Various", "model": "N305 mini PC + TerraMaster D4-320 USB bay", "url": "https://slickdeals.net/f/19667874-terramaster-d4-320-4-bay-hard-drive-enclosure-at-amazon-20-off-deal-price-151-99",
+   "cells": {"cpu": "Intel Core i3-N305 (mini PC price not found; N150 units about $200)", "lan": "2.5GbE on most", "virt": "Bring your own OS", "plex": "Yes (Quick Sync)", "warranty": "Varies", "price": "D4-320 $152–230; no RAID of its own, USB bottleneck"}},
+  {"brand": "Dell (refurbished)", "model": "OptiPlex 7010 SFF", "url": "https://www.popsci.com/sponsored-content/dell-optiplex-7010-sff-refurbished-desktop-deal/",
+   "cells": {"cpu": "i5-3470 (about $140) to i5-13500 builds ($400–550); 16 GB", "lan": "1GbE", "virt": "Bring your own OS", "plex": "Quick Sync by generation", "warranty": "Refurbisher's", "price": "$140–550"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4C/8T; 4 GB ECC (32 GB)", "lan": "2× 2.5GbE", "virt": "Container Manager; Virtual Machine Manager", "plex": "No iGPU", "warranty": "3 years (5 extendable)", "price": "$639.99 list (Feb 2026); $511.99 Prime Day"}},
+  {"brand": "QNAP", "model": "TS-464-8G", "url": "https://www.qnap.com/en/product/ts-464/specs",
+   "cells": {"cpu": "Intel Celeron N5095, 4C; 8 GB (16 GB)", "lan": "2× 2.5GbE", "virt": "Container Station; Virtualization Station (4 GB minimum)", "plex": "Yes (UHD graphics)", "warranty": "3 years", "price": "$639 (QNAP store); no current US listing read"}},
+ ],
+ "after": """
+<h2>What the workload needs</h2>
+<ul>
+<li><strong>Home Assistant OS as a VM:</strong> 2 GB RAM and 2 vCPUs minimum, UEFI boot, a bridged network adapter (Home Assistant's install page).</li>
+<li><strong>Windows 11 as a VM:</strong> 4 GB RAM, 2 virtual processors, 64 GB disk, UEFI with Secure Boot and a vTPM 2.0 (Microsoft's requirements page); UGREEN's guest tools cover Windows 7, 10 and 11.</li>
+<li><strong>Plex:</strong> hardware transcoding needs a Plex Pass and an Intel CPU with Quick Sync; without it Plex wants about 2,000 PassMark per 1080p stream and 12,000–17,000 for 4K, which none of these CPUs spare while VMs run.</li>
+<li><strong>Adding up:</strong> 2 GB (HAOS) + 4 GB (Windows) + 2–4 GB of containers + Plex + UGOS itself is 10–12 GB, so 16 GB is comfortable and 32 GB roomy; the DXP4800 Plus takes up to 64 GB in two slots.</li>
+<li><strong>Storage:</strong> put the Docker volumes and VM disks on an M.2 SSD pool and the media on the hard drives; UGOS runs the VM app only on the DXP series, not the DH series.</li>
+</ul>
+<h2>UGOS Pro's VM app</h2>
+<p>UGREEN's own guide and support article describe a Virtual Machine app on DXP models with VM snapshots (take one before risky changes), ISO import from the NAS or an upload, OVA import and export, bridged networking, guest tools for Windows, and guests including Windows, Linux, OpenWRT and iKuai; a USB device can be assigned to one VM at a time. UGREEN names no hypervisor and publishes no per-VM vCPU or RAM ceiling, and a reviewer's discrete-GPU passthrough test failed in a Windows VM, so treat GPU and iGPU passthrough as unavailable. Reviewers (TechPowerUp, ITPro) call the Plus capable for most home uses but not a machine for many VMs; for that, Proxmox on the same hardware is the usual route.</p>
+<h2>The bill</h2>
+<p>NAS $619.99; a 16 GB DDR5 SO-DIMM about $198–230 (CDW and eBay listings, undated, in a year when 32 GB DDR5 kits rose from $100–200 to $350–480); a 1 TB NVMe $160–200 (Kingston NV3 $159.99 in May 2026, Crucial P3 Plus $198): about $980–1,050 before hard drives. Under $800 buys the NAS and the SSD now and the RAM later, which works if the Windows VM can wait. The TerraMaster F4-425 Plus starts with 16 GB for $569.99 but tops out at 32 GB, has no 10GbE and documents VMs as a light feature.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN: NAS virtualization setup guide (VM app)", "https://nas.ugreen.com/blogs/how-to/setup-nas-virtualization-guide"),
+  ("UGREEN support: Virtual Machine app (article 229)", "https://support.ugnas.com/detail/article/en-US/229"),
+  ("privatehomelab: Zigbee2MQTT and Home Assistant on a UGREEN NAS (USB passthrough)", "https://privatehomelab.com/ugreen-nas-zigbee2mqtt-home-assistant-docker-vm-usb-passthrough/"),
+  ("smartzone.de: GPU passthrough test on a UGREEN NAS", "https://www.smartzone.de/ugreen-nas-gpu-passthrough/"),
+  ("Home Assistant: Linux installs (VM requirements)", "https://www.home-assistant.io/installation/linux/"),
+  ("Microsoft: Windows 11 requirements", "https://learn.microsoft.com/en-us/windows/whats-new/windows-11-requirements"),
+  ("Plex: what kind of CPU do I need for my server", "https://support.plex.tv/articles/201774043-what-kind-of-cpu-do-i-need-for-my-server/"),
+  ("Plex: using hardware-accelerated streaming", "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/"),
+  ("NASCompares: TerraMaster F4-425 Plus review", "https://nascompares.com/review/terramaster-f4-425-plus-nas-review/"),
+  ("Neowin: TerraMaster F4-424 Pro review", "https://neowin.net/amp/terramaster-f4-424-pro-review-its-the-most-powerful-media-class-4-bay-nas-on-the-market"),
+  ("StarryHope: Aoostar WTR Pro", "https://www.starryhope.com/nas/models/aoostar-wtr-pro-5825u/"),
+  ("Notebookcheck: Aoostar WTR Max", "https://www.notebookcheck.net/Aoostar-WTR-Max-launches-as-new-11-bay-NAS-with-capable-AMD-Ryzen-APU-and-OCuLink-port.991136.0.html"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("QNAP TS-464 specs", "https://www.qnap.com/en/product/ts-464/specs"),
+  ("Digital Citizen: DDR5 prices in 2026", "https://www.digitalcitizen.life/ddr5-ram-prices-surge-in-2026-as-32gb-kits-reach-450-amid-global-memory-shortage/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-proxmox-virtual-machines-home-lab", "question": "G39 (UGREEN funnel: NAS for Proxmox and several VMs)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus for Proxmox",
+                    "description": "4-bay Intel x86 NAS, VT-x/VT-d, RAM to 64 GB, 10GbE, 2× M.2, UEFI boot. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best NAS to run Proxmox or several virtual machines in a home lab (2026): 64 GB RAM, passthrough and what owners report",
+ "h1": "Best NAS to run Proxmox or several virtual machines in a home lab (2026)",
+ "desc": "Which NAS runs Proxmox VE or several VMs well: UGREEN's DXP4800 Plus, DXP6800 Pro and DXP6800 Ultra against the Minisforum MS-A2 and MS-01, Asustor Lockerstor 4 and 6 Gen3, QNAP TVS-h674, TerraMaster F4-424 Max and F6-424 Max, Aoostar WTR Max and CWWK N355 boxes, on CPU, verified RAM ceilings, 10GbE, M.2 and PCIe, with Proxmox's own requirements and what owners report about installing it on UGREEN hardware (SATA passthrough, watchdog, iGPU, boot drive).",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best NAS to run Proxmox or several virtual machines in a home lab for the money in 2026, $619.99 diskless on 2026-11-03: an Intel Pentium Gold 8505 with VT-x and VT-d, RAM to 64 GB (Intel's spec; a 48 GB module is owner-verified), 10GbE and 2.5GbE, two M.2 slots for a ZFS mirror of VM disks and a plain UEFI BIOS; owners run Proxmox on it with the SATA controller passed through to a TrueNAS VM. More cores and bays: the <strong>DXP6800 Pro</strong> ({buy:ugreen-nasync-dxp6800-pro}), Core i5-1235U (10C/12T), two 10GbE ports and a PCIe x4 slot.</p>
+<p>What to know before you wipe it: disable the watchdog in the BIOS (Ctrl+F12 at boot) or use the it87_wdt module, install to a second M.2 and keep UGREEN's factory SSD so UGOS can go back, and expect fan readings to need a custom driver. iGPU passthrough on the DXP4800 Plus is a "99%" owner report (blank first boot, sound quirks), so Plex and Jellyfin transcode on the host, not in a VM. If you need no drive bays, Minisforum's MS-A2 ($799 barebone, Ryzen 9, 96 GB, two 10G SFP+ ports, a PCIe x16 slot) is the stronger pure VM host; UGREEN says a third-party OS leaves the hardware warranty unchanged.</p>
+""",
+ "columns": [("cpu", "CPU"), ("ram", "RAM ceiling"), ("lan", "LAN"), ("exp", "M.2 / PCIe / bays"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T, VT-d", "ram": "64 GB (Intel spec); 48 GB module owner-verified; UGOS misreports above 32 GB", "lan": "1× 10GbE (AQC113) + 1× 2.5GbE (Intel I226-V)", "exp": "2× M.2; 4 bays; no PCIe slot", "warranty": "2 years (hardware; unchanged with another OS per UGREEN)"}},
+  {"slug": "ugreen-nasync-dxp6800-pro", "model": "UGREEN NASync DXP6800 Pro",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T, VT-d", "ram": "64 GB (spec); a single 32 GB module owner-verified", "lan": "2× 10GbE", "exp": "2× M.2; 1× PCIe x4; 2× Thunderbolt 4; 6 bays", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP6800 Ultra", "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-ultra-nas-storage",
+   "cells": {"cpu": "Intel Core 5 120U, 10C/12T", "ram": "96 GB (UGREEN's listing)", "lan": "2× 10GbE", "exp": "2× M.2; 1× PCIe Gen4 x4; 2× Thunderbolt 4; 6 bays", "warranty": "2 years", "price": "$1,449.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Minisforum", "model": "MS-A2 (no drive bays)", "url": "https://store.minisforum.com/products/minisforum-ms-a2",
+   "cells": {"cpu": "AMD Ryzen 9 9955HX (and others), 16C/32T", "ram": "96 GB DDR5-5600", "lan": "2× 10G SFP+ + 1× 2.5GbE", "exp": "3× M.2 Gen4; PCIe x16 slot (x8); no SATA bays", "warranty": "2 years", "price": "$799 barebone (Minisforum store, regular $999)"}},
+  {"brand": "Minisforum", "model": "MS-01 (no drive bays)", "url": "https://servethehome.com/minisforum-ms-01-review-the-10gbe-with-pcie-slot-mini-pc-intel",
+   "cells": {"cpu": "Intel Core i9-12900H or i5-12600H", "ram": "64 GB official; 96 GB tested by ServeTheHome", "lan": "2× 10G SFP+ + 2× 2.5GbE", "exp": "M.2 slots; PCIe 4.0 slot (x8)", "warranty": "Not found", "price": "$549 at launch; about $423 barebone in one listing"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen3 (AS6804T)", "url": "https://www.asustor.com/en/product?p_id=86",
+   "cells": {"cpu": "AMD Ryzen V3C14, 4C", "ram": "64 GB DDR5 ECC (16 GB included)", "lan": "2× 10GbE + 2× 5GbE", "exp": "4× M.2 Gen4; 4 bays", "warranty": "3 years", "price": "about $1,299"}},
+  {"brand": "QNAP", "model": "TVS-h674", "url": "https://www.qnap.com/en-us/product/tvs-h674",
+   "cells": {"cpu": "Intel Core i5-12400, 6C/12T (or i3)", "ram": "64 GB DDR4 (QNAP)", "lan": "2× 2.5GbE; 10GbE by card", "exp": "2× M.2 Gen4; 2× PCIe Gen4; 6 bays", "warranty": "3 years", "price": "about $1,299 (May 2026 listing)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Max / F6-424 Max", "url": "https://www.terra-master.com/products/f4-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U", "ram": "64 GB (reviews; F6 not confirmed)", "lan": "2× 10GbE", "exp": "2× M.2; no PCIe; 4 or 6 bays", "warranty": "2 years (retailers)", "price": "$899.99 (sold out) / $999.99 ($719.99 Prime Day 2026)"}},
+  {"brand": "Aoostar", "model": "WTR Max", "url": "https://aoostar.com/products/aoostar-wtr-max-amd-r7-pro-8845hs-11-bays-mini-pc",
+   "cells": {"cpu": "AMD Ryzen 7 PRO 8845HS, 8C/16T", "ram": "128 GB spec; 96 GB with ECC SO-DIMMs per Aoostar", "lan": "Listings conflict", "exp": "OCuLink; 11 bays", "warranty": "Not found", "price": "$699 (aoostar.com)"}},
+  {"brand": "CWWK", "model": "N355 / N305 boxes", "url": "https://nascompares.com/?p=79322",
+   "cells": {"cpu": "Intel N355 or Core i3-N305", "ram": "32 GB safe (48 GB in a manual, unconfirmed)", "lan": "4× 2.5GbE (10G variant: 2× SFP+ + 2× 2.5GbE)", "exp": "up to 4× M.2", "warranty": "Not found", "price": "$304–460"}},
+ ],
+ "after": """
+<h2>Proxmox on a UGREEN NASync: what owners report</h2>
+<ul>
+<li><strong>Works:</strong> Proxmox VE installed on a DXP4800 Plus and a DXP8800 Plus for months, with the SATA controller passed through from the Proxmox GUI to a TrueNAS VM (16 GB, ballooning off) and a ZFS mirror on the two M.2 slots for VMs and containers (Proxmox forum, December 2025); "runs stably" on a DXP6800 Pro (February 2026). On the 8800 Plus only one of the two SATA controllers passes through; the rest of the drives go through one by one.</li>
+<li><strong>Watchdog:</strong> the standard it87_wdt kernel module drives the hardware watchdog, so no out-of-tree driver is needed, but a wrong timeout can cause a reboot loop; disabling it in the BIOS is the simple route.</li>
+<li><strong>Boot:</strong> Ctrl+F12 (or Ctrl+F2) at power-on for the BIOS; the 4-bay Plus, 6-bay and 8-bay models boot UGOS from a factory M.2 SSD (the DXP2800 from eMMC, which one owner warns would wear under Proxmox logging). Install to a second M.2 or swap the factory SSD out and keep it; "Force UEFI installation" is needed for an NVMe install.</li>
+<li><strong>Fans and sensors:</strong> chassis fan monitoring on the IT8613E needs custom kernel drivers (TrueNAS owners); no Proxmox-specific fan-control report found.</li>
+<li><strong>iGPU:</strong> the one DXP4800 Plus passthrough report ("99% success", Windows Server 2025) needed intel_iommu=on, vfio-pci, legacy-igd and a custom GOP ROM and still boots to a blank display first time; a TrueNAS VM owner found hardware acceleration did not work inside the VM. Keep transcoding on the host or in an LXC container.</li>
+<li><strong>NICs:</strong> Marvell/Aquantia AQC113 (10GbE) and Intel I226-V (2.5GbE) on the DXP4800 Plus; both have in-kernel drivers, with no owner complaint found.</li>
+</ul>
+<h2>RAM: spec versus verified</h2>
+<p>Intel lists the Pentium Gold 8505 at 64 GB maximum (DDR5-4800, two channels, no ECC) and third-party databases list the i5-1235U at 64 GB and the Core 5 120U at 96 GB. Owner verification is thinner: a single 48 GB module ran in a DXP4800 Plus (UGOS showed 32 GB, the guest OS the full amount) and a single 32 GB module in a DXP6800 Pro; no one has posted a 2× 32 GB kit, so buy memory from a vendor that names the model (OWC and NEMIX list 32 GB modules for these units) and expect UGOS to misreport the total.</p>
+<h2>Proxmox's own requirements</h2>
+<p>A 64-bit CPU with VT-x or AMD-V, at least 2 GB of RAM for the host plus the guests' memory, about 1 GB per TB of used ZFS storage, an IOMMU (VT-d) enabled in the BIOS for passthrough, fast redundant SSDs for VM storage (consumer SSDs are discouraged; ZFS does not sit on hardware RAID) and multi-gigabit NICs. Every Intel unit here meets the CPU side; the ZFS rule of thumb is why 32 GB or more matters once the array is large.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN NASync DXP6800 Pro", "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage"),
+  ("Proxmox forum: NAS UGREEN DXP4800 Plus (SATA passthrough, ZFS mirror)", "https://forum.proxmox.com/threads/nas-ugreen-dxp4800-plus.177241/"),
+  ("Proxmox forum: UGREEN DXP6800 Pro hardware watchdog", "https://forum.proxmox.com/threads/ugreen-dxp-6800-pro-hardware-watchdog.180160/"),
+  ("Proxmox forum: DXP4800 Plus iGPU passthrough", "https://forum.proxmox.com/threads/ugreen-dxp4800-igpu-99-success-win-server-2025.163149/"),
+  ("Proxmox forum: DXP2800, Proxmox and M.2 bus sharing", "https://forum.proxmox.com/threads/ugreen-dxp2800-proxmox-sata-m-2-bus-sharing.179215/"),
+  ("TrueNAS forum: installs on UGREEN hardware (boot, fans, BIOS)", "https://forums.truenas.com/t/actual-installs-on-ugreen-hardware-observations-experiences-tips/6910/1"),
+  ("Debian wiki: installing on UGREEN NASync", "https://wiki.debian.org/InstallingDebianOn/Ugreen"),
+  ("Intel ARK: Pentium Gold 8505 (64 GB max, VT-d)", "https://www.intel.com/content/www/us/en/products/sku/226265/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz-with-ipu/specifications.html"),
+  ("techtest.org: how much RAM a UGREEN NAS accepts (48 GB module)", "https://techtest.org/was-bringt-mehr-ram-bei-einem-ugreen-nas-wie-viel-ram-akzeptiert-ein-ugreen-nas"),
+  ("OWC 32 GB module for UGREEN NASync (Best Buy listing)", "https://www.bestbuy.com/product/owc-32gb-memory-ram-for-ugreen-nasync-dxp4800-plus-nasync-dxp480t-plus-nasync-dxp6800-pro-nasync-dxp8800-plus-black-chips/J3GWPLHGHG/sku/11107732"),
+  ("Proxmox VE: system requirements", "https://pve.proxmox.com/wiki/System_Requirements"),
+  ("TechPowerUp: UGREEN DXP4800 Plus review (NIC chips)", "https://techpowerup.com/review/ugreen-nasync-dxp4800-plus"),
+  ("Minisforum MS-A2", "https://store.minisforum.com/products/minisforum-ms-a2"),
+  ("ServeTheHome: Minisforum MS-01 review", "https://servethehome.com/minisforum-ms-01-review-the-10gbe-with-pcie-slot-mini-pc-intel"),
+  ("Asustor AS6804T", "https://www.asustor.com/en/product?p_id=86"),
+  ("QNAP TVS-h674", "https://www.qnap.com/en-us/product/tvs-h674"),
+  ("Aoostar WTR Max", "https://aoostar.com/products/aoostar-wtr-max-amd-r7-pro-8845hs-11-bays-mini-pc"),
+  ("NASCompares: CWWK N355 NAS review", "https://nascompares.com/?p=79322"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

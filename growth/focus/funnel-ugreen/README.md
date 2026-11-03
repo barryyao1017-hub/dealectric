@@ -89,6 +89,8 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G34 | /best-nas-under-400-for-jellyfin | DXP2800 | open ×3 |
 | G35 | /best-2-bay-nas-for-time-machine-backups | DXP2800 (one share per Mac); DS225+ named as the safer software | open ×3 |
 | G36 | /power-station-to-run-a-refrigerator-for-24-hours | BLUETTI Elite 200 V2 (other brand); ALLPOWERS S2000 Pro | open ×3 |
+| G39 | /best-nas-for-proxmox-virtual-machines-home-lab | DXP4800 Plus; DXP6800 Pro; Minisforum MS-A2 named for bay-less VM hosts | open ×3 |
+| G40 | /best-all-in-one-home-server-under-800-docker-plex-vms | DXP4800 Plus; TerraMaster F4-425 Plus named (16 GB stock) | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -163,3 +165,17 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   UGOS Time Machine quotas are per share, so one share per Mac (G35); the fridge page uses ENERGY STAR medians and
   one named-outlet measurement (Bob Vila, 30+ h on the Elite 200 V2) and labels the rest arithmetic. G36 needed the
   second buy link moved out of the lead to pass rank 6.
+- 2026-11-03, batch 8 votes (`x8-*`), all five open ×3. Built: NAS for Proxmox / several VMs (→ G39, DXP4800 Plus /
+  DXP6800 Pro), all-in-one home server under $800 (→ G40, DXP4800 Plus); pending the HDMI facts: NAS with HDMI output
+  to a TV (→ G38 only if UGOS has a real media interface on HDMI; QNAP HD Station and Asustor Portal do). **Parked**:
+  4-bay NAS under $500 (the judges want Intel boxes; UGREEN's only 4-bay under $500 on its US store is the ARM
+  DH4300 Plus at $399.99, and the base DXP4800 is not listed there), NAS for backing up several PCs and Macs
+  (Synology's Active Backup for Business is the honest pick; UGOS has no endpoint backup, see G32).
+- 2026-11-03, G38 (NAS with HDMI to a TV) **parked** after the HDMI research: UGOS Pro's HDMI port plays video only
+  when started from the phone app (beta, phone as the remote, no TV interface, no remote or keyboard navigation;
+  BGR 2026-10-08, Soundphile 2026-09, ugreen-forum), while QNAP's HD Station and Asustor's Portal are real local
+  interfaces. Not an honest win; revisit if UGOS ships a TV interface.
+- 2026-11-03, iteration 8 built (G39, G40) from three research agents (~380k tokens, one of them the HDMI verdict
+  that parked G38). Honesty notes: Proxmox on UGREEN rests on owner reports (SATA passthrough works, iGPU passthrough
+  is a "99%" report, 64 GB is Intel's spec with a 48 GB module owner-verified); the home-server bill with 16 GB and
+  an NVMe runs $980–1,050 at late-2026 memory prices, so the page says only the NAS plus one upgrade fits under $800.
