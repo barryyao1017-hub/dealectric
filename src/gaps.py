@@ -1904,4 +1904,371 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("QNAP: using a UPS with a QNAP NAS", "https://www.qnap.com/en/how-to/faq/article/how-do-i-use-a-ups-with-my-qnap-nas"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-under-400-for-jellyfin", "question": "G34 (UGREEN funnel: Jellyfin NAS under $400)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Jellyfin under $400",
+                    "description": "2-bay Intel N100 with Quick Sync, 8 GB DDR5, 2× M.2, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS under $400 for a Jellyfin server with hardware transcoding (2026)",
+ "h1": "Best NAS under $400 for Jellyfin with hardware transcoding (2026)",
+ "desc": "Which NAS under $400 runs a Jellyfin server with Intel Quick Sync hardware transcoding and HDR tone mapping: UGREEN's DXP2800 against the TerraMaster F2-425 and F2-425 Plus, Synology DS225+ and DS224+, QNAP TS-262, Asustor Drivestor 2 Pro Gen2, UGREEN's DH2300 and the Beelink ME mini, with Jellyfin's own hardware-acceleration rules, the Docker setup and what owners report for N100 stream counts.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS under $400 for a Jellyfin server with hardware transcoding, $389.99 diskless on 2026-11-03: an Intel N100 whose Quick Sync meets Jellyfin's rules for HEVC 10-bit decode and HDR tone mapping, 8 GB DDR5, two M.2 slots and 2.5GbE. Jellyfin is free, runs in Docker on UGOS with /dev/dri passed in (UGREEN publishes the guide), and an N100 is reported to hold about two 4K HDR tone-mapped streams, more in plain 1080p.</p>
+<p>The cheaper boxes lose transcoding: TerraMaster's F2-425 ($239.99–254.99, Celeron N5095, 4 GB) is reviewed as a direct-play machine, UGREEN's own DH2300 ($239.99) and Asustor's Drivestor 2 Pro Gen2 are ARM with no Quick Sync, and the Beelink ME mini ($209) is an N150 with six M.2 slots but no drive bays and no NAS software. TerraMaster's F2-425 Plus (N150, 8 GB to 32 GB, two 5GbE ports) is the closest match at about $399–425, over the line on most listings. Synology's DS225+ reportedly ships without the graphics driver Jellyfin needs for hardware transcoding.</p>
+""",
+ "columns": [("cpu", "CPU / iGPU"), ("ram", "RAM (max)"), ("m2", "M.2"), ("lan", "LAN"), ("jelly", "Jellyfin"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (Alder Lake-N), 4C, Quick Sync", "ram": "8 GB DDR5 (16 GB)", "m2": "2× NVMe", "lan": "1× 2.5GbE", "jelly": "Docker with /dev/dri; UGREEN setup guide", "warranty": "2 years"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 4C, Quick Sync", "ram": "8 GB DDR5 (32 GB, one slot)", "m2": "3× NVMe Gen3", "lan": "2× 5GbE", "jelly": "TOS 6 app / Docker", "warranty": "Not found", "price": "about $399 (launch) to $424.99 (Walmart listing)"}},
+  {"brand": "TerraMaster", "model": "F2-425", "url": "https://www.terra-master.com/products/f2-425",
+   "cells": {"cpu": "Intel Celeron N5095 (Jasper Lake), 4C", "ram": "4 GB DDR4 (16 GB)", "m2": "None found", "lan": "1× 2.5GbE", "jelly": "Reviewed as direct-play; low-power mode needed on Jasper Lake", "warranty": "Not found", "price": "$239.99–254.99 (deal listings, 2026)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125; graphics driver reportedly absent in DSM", "ram": "2 GB (6 GB)", "m2": "None", "lan": "1× 2.5GbE + 1× 1GbE", "jelly": "Container Manager; hardware transcoding reported not working (80–100% CPU in software)", "warranty": "3 years", "price": "Not found"}},
+  {"brand": "QNAP", "model": "TS-262", "url": "https://www.qnap.com/en-us/product/ts-262",
+   "cells": {"cpu": "Intel Celeron N4505 (Jasper Lake), 2C", "ram": "4 GB (16 GB)", "m2": "2× NVMe Gen3 x1", "lan": "1× 2.5GbE", "jelly": "Container Station", "warranty": "2 years", "price": "No US price found"}},
+  {"brand": "UGREEN", "model": "NASync DH2300", "url": "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "cells": {"cpu": "Rockchip RK3576, ARM; no Quick Sync", "ram": "4 GB LPDDR4X", "m2": "None", "lan": "2.5GbE", "jelly": "Manual Docker only; direct play", "warranty": "2 years", "price": "$239.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Asustor", "model": "Drivestor 2 Pro Gen2", "url": "https://www.asustor.com/en/product/spec?p_id=83",
+   "cells": {"cpu": "Realtek RTD1619B, ARM; no Quick Sync", "ram": "2 GB", "m2": "None", "lan": "1× 2.5GbE", "jelly": "Docker/Portainer; software transcoding only", "warranty": "3 years", "price": "$269 MSRP (listings disagree)"}},
+  {"brand": "Beelink", "model": "ME mini", "url": "https://m.gsmarena.com/beelink_me_mini_6slot_nas_mini_pc_review-amp-68209.php",
+   "cells": {"cpu": "Intel N150, 4C, Quick Sync", "ram": "12 GB LPDDR5, soldered", "m2": "6× NVMe (five at x1, one at x2); no SATA bays", "lan": "2× 2.5GbE", "jelly": "Bring your own OS and Docker", "warranty": "Not found", "price": "$209 barebone; $329 with 2 TB"}},
+ ],
+ "after": """
+<h2>Jellyfin's own rules</h2>
+<ul>
+<li><strong>Free:</strong> Jellyfin has no paid pass or tier; hardware acceleration costs nothing.</li>
+<li><strong>Intel Quick Sync:</strong> HEVC 10-bit decode needs Kaby Lake, Apollo Lake, Gemini Lake or newer; AV1 decode needs 11th-gen (Tiger Lake) or newer, which Alder Lake-N chips like the N100 belong to; AV1 encode needs Arc or Meteor Lake, so no N100.</li>
+<li><strong>Tone mapping:</strong> supported on every Intel GPU with HEVC 10-bit decode, through OpenCL (handles Dolby Vision profile 5, needs the OpenCL runtime; Jellyfin notes N95/N100 support from intel-opencl-icd 23.x) or QSV VPP (lower power, Linux only).</li>
+<li><strong>Docker:</strong> the official image includes Intel's media drivers and OpenCL; map /dev/dri/renderD128, add the render group, and check with vainfo inside the container. UGREEN's guide uses a compose file with /dev/dri passed through and host port 9096.</li>
+<li><strong>Memory:</strong> Jellyfin recommends dual-channel RAM for integrated GPUs; the DXP2800 ships with one 8 GB stick, so a second stick (to 16 GB) helps tone mapping as well as containers.</li>
+</ul>
+<h2>How many streams</h2>
+<p>No lab has published a concurrent Jellyfin count for the N100. The one measured single-stream test (Linux, March 2024) ran a 4K HDR tone-mapped transcode at about 50–57 fps and 4K-to-1080p with burned-in subtitles at 82 fps; Windows was far slower. Owner reports put the N100 at about two simultaneous 4K HDR tone-mapped streams, with one guide claiming three or four; plan on two 4K HDR streams or several 1080p ones, and use direct play for the TV in the living room.</p>
+<h2>Jellyfin on UGOS</h2>
+<p>UGREEN's blog guide installs Jellyfin either from the App Center or by Docker Compose; reviewers describe the App Center as thin and Docker as the route UGREEN support points to, so count on Docker. Put the config and transcode cache on an M.2 SSD and the library on the hard drives.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN: install Jellyfin on a NASync (setup guide)", "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step"),
+  ("Jellyfin docs: Intel QSV / VA-API hardware acceleration", "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/"),
+  ("Jellyfin docs: hardware acceleration overview", "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/"),
+  ("Jellyfin: free software, no paid tier", "https://jellyfin.org/"),
+  ("randomnamer: Jellyfin transcode benchmark on an N100", "https://randomnamer.github.io/StaticBlog/2024/03/26/jellyfinTranscodeBench"),
+  ("jellywatch: N100 / N150 / N305 Jellyfin servers", "https://jellywatch.app/blog/best-mini-pc-jellyfin-server-n100-n150-n305-2026"),
+  ("computingforgeeks: iGPU transcoding tests", "https://computingforgeeks.com/best-mini-pc-plex-jellyfin/"),
+  ("NASCompares: hardware transcoding on the 2025 Synology models", "https://nascompares.com/2025/09/24/how-to-get-hardware-transcoding-back-on-your-synology-nas/"),
+  ("Jellyfin forum: transcoding on a DS225+", "https://forum.jellyfin.org/t-hwa-transcoding-not-working-and-crashes-player-on-intel-j4125-syno-ds225"),
+  ("ITPro: TerraMaster F2-425 Plus review", "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price"),
+  ("Neowin: TerraMaster F2-425 review", "https://www.neowin.net/reviews/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/"),
+  ("Windows Central: UGREEN DH2300 review", "https://www.windowscentral.com/hardware/storage/ugreen-nasync-dh2300-review"),
+  ("GSMArena: Beelink ME mini review", "https://m.gsmarena.com/beelink_me_mini_6slot_nas_mini_pc_review-amp-68209.php"),
+  ("QNAP TS-262", "https://www.qnap.com/en-us/product/ts-262"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-2-bay-nas-for-time-machine-backups", "question": "G35 (UGREEN funnel: 2-bay NAS for Time Machine from two Macs)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Time Machine backups",
+                    "description": "2-bay Intel N100 NAS, 8 GB DDR5, 2.5GbE; Time Machine over SMB with a quota per share. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best 2-bay NAS for Time Machine backups from a couple of Macs (2026)",
+ "h1": "Best 2-bay NAS for Time Machine backups from a couple of Macs (2026)",
+ "desc": "Which 2-bay NAS to buy as a Time Machine target for two Macs: UGREEN's DXP2800 and DH2300 against the Synology DS225+ and DS223j, QNAP TS-262 and TS-233, TerraMaster F2-425 and F2-425 Plus, Asustor Drivestor 2 Pro Gen2 and UniFi UNAS 2, with how each OS handles Time Machine over SMB and quotas, Apple's sizing rule, the one-share-per-Mac setup and the drive math.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best 2-bay NAS for Time Machine backups from a couple of Macs at its 2026 price, $389.99 diskless on 2026-11-03: UGOS Pro (firmware 1.9 or later) serves Time Machine over SMB with Bonjour, a capacity quota per shared folder, and the strongest hardware under $400 (Intel N100, 8 GB DDR5, 2.5GbE, two M.2 slots). Set it up as one share per Mac, each with its own quota, so one Mac cannot fill the other's space.</p>
+<p>What to know: UGOS has no per-user Time Machine quota, only per share (hence one share per Mac); Synology's DS225+ (about $360–431, Celeron J4125, 2 GB) has the most complete Time Machine and quota documentation if you want the safest software on weaker hardware, and TerraMaster's F2-425 ($239.99–249.99) is the cheapest 2-bay with Time Machine support, with a forum-reported quota quirk in TOS 6. Apple's rule is a backup disk at least twice the Mac's storage, so two 4 TB drives in RAID 1 (4 TB usable) cover two Macs holding about 1 TB each; buy bigger drives for more.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("lan", "LAN"), ("tm", "Time Machine"), ("quota", "Quota"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100, 8 GB DDR5 (16 GB)", "lan": "1× 2.5GbE", "tm": "Yes, SMB + Bonjour (UGOS Pro 1.9+)", "quota": "Per shared folder; one share per Mac", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DH2300", "url": "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "cells": {"cpu": "Rockchip RK3576 (ARM), 4 GB", "lan": "2.5GbE", "tm": "Yes (Cult of Mac: enable Bonjour, then 'a breeze')", "quota": "Per shared folder", "warranty": "2 years", "price": "$239.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Intel Celeron J4125, 2 GB (6 GB)", "lan": "1× 2.5GbE + 1× 1GbE", "tm": "Yes, SMB (Synology says turn AFP off)", "quota": "Per user or per shared folder; Synology's guide sizes it at 2–3× the Mac's data", "warranty": "3 years", "price": "about $360–431 (trackers, undated)"}},
+  {"brand": "Synology", "model": "DS223j", "url": "https://www.synology.com/en-us/products/DS223j",
+   "cells": {"cpu": "Realtek RTD1619B (ARM), 1 GB", "lan": "1× 1GbE", "tm": "Yes", "quota": "Per user or share", "warranty": "2 years", "price": "Not listed"}},
+  {"brand": "QNAP", "model": "TS-262", "url": "https://www.qnap.com/en-us/product/ts-262",
+   "cells": {"cpu": "Intel Celeron N4505, 4 GB (16 GB)", "lan": "1× 2.5GbE", "tm": "Yes, SMB 3 (QTS tutorial)", "quota": "A Time Machine user with a quota per Mac; QNAP suggests 2× the Mac's storage", "warranty": "2 years", "price": "No US price found"}},
+  {"brand": "QNAP", "model": "TS-233", "url": "https://www.qnap.com/en-us/product/ts-233",
+   "cells": {"cpu": "ARM Cortex-A55 4C, 2 GB", "lan": "1× 1GbE", "tm": "Yes (QNAP's page)", "quota": "Per user", "warranty": "2 years", "price": "No US price listed"}},
+  {"brand": "TerraMaster", "model": "F2-425", "url": "https://www.terra-master.com/products/f2-425",
+   "cells": {"cpu": "Intel Celeron N5095, 4 GB", "lan": "1× 2.5GbE", "tm": "Yes (TOS 6, Backup → Time Machine)", "quota": "Separate Time Machine quota; a forum thread reports any quota hiding the share", "warranty": "Not found", "price": "$239.99–249.99"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 8 GB DDR5 (32 GB)", "lan": "2× 5GbE", "tm": "Yes (TOS 6)", "quota": "As above", "warranty": "Not found", "price": "$399.99"}},
+  {"brand": "Asustor", "model": "Drivestor 2 Pro Gen2", "url": "https://www.asustor.com/en/product/spec?p_id=83",
+   "cells": {"cpu": "Realtek RTD1619B (ARM), 2 GB", "lan": "1× 2.5GbE", "tm": "Not confirmed on Asustor's page", "quota": "An owner reports no per-folder quota on their model", "warranty": "3 years", "price": "$269–312 (resellers)"}},
+  {"brand": "Ubiquiti", "model": "UniFi UNAS 2", "url": "https://help.ui.com/hc/en-us/articles/17299776030999-macOS-Time-Machine-Backups-on-UNAS",
+   "cells": {"cpu": "ARM; RAM not confirmed", "lan": "2.5GbE (retail pages)", "tm": "Yes, SMB with a Time Machine toggle and per-user credentials", "quota": "Not covered by Ubiquiti's article", "warranty": "Not found", "price": "$199 ($214 with the memory surcharge)"}},
+ ],
+ "after": """
+<h2>Setting it up on the DXP2800</h2>
+<ol>
+<li>Update UGOS Pro to 1.9.0.0035 or later and enable SMB and Bonjour in Control Panel.</li>
+<li>Create one shared folder per Mac (Backups-Air, Backups-Pro) and set a capacity quota on each: at least twice that Mac's storage, per Apple, and never so small that Time Machine reports "insufficient space" (UGREEN's own warning). A sparsebundle's maximum size is fixed when it is created, so set the quota before the first backup.</li>
+<li>Turn on Time Machine for each share, then on each Mac choose its share in System Settings → General → Time Machine. Use separate NAS user accounts so one Mac cannot read the other's backup.</li>
+</ol>
+<h2>What is known and what is not</h2>
+<p>UGREEN's own support article (350) states the firmware and macOS 12 requirements and the per-share quota; reviewers set up Time Machine on the DH2300, DH4300 Plus and DXP4800 Pro without trouble. No sourced report of sparsebundle corruption or macOS 26 failures on UGOS turned up, which is thin evidence rather than clean evidence: macOS 26 (Tahoe) Time Machine failures reported on Synology, QNAP and UniFi units came from SMB signing and credential changes and non-ASCII names, problems any NAS can hit. Test a restore once the first backup completes, on any brand.</p>
+<h2>Drives and RAID</h2>
+<p>Two drives in RAID 1 give one drive's capacity and survive one failure; a Time Machine backup that lives only on the NAS is still a single copy, so RAID 1 is about not losing the backup when a disk dies, not a second backup. Two 4 TB NAS drives give 4 TB usable, enough for two Macs with about 1 TB of data each under Apple's 2× rule; 8 TB drives double that.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: Time Machine backup to a NASync (article 350)", "https://support.ugnas.com/detail/article/en-US/350"),
+  ("UGREEN: managing Mac files with a NAS (SMB, Bonjour, Time Machine)", "https://ai.ugreen.com/blogs/buying-guide/manage-mac-files-with-nas"),
+  ("Cult of Mac: UGREEN DH2300 and DH4300 Plus review (Time Machine setup)", "https://www.cultofmac.com/reviews/ugreen-dh2300-4300-plus-nas-review"),
+  ("Apple: back up to a shared folder with Time Machine", "https://support.apple.com/guide/mac-help/back-up-to-a-shared-folder-with-time-machine-mchl3deb9a5f/mac"),
+  ("Apple: Time Machine recommends a larger backup disk (twice the storage)", "https://support.apple.com/lt-lt/guide/mac-help/time-machine-recommends-a-larger-backup-disk-mchl72b408e0/mac"),
+  ("Eclectic Light: Time Machine to networked storage (sparsebundle size)", "https://eclecticlight.co/2019/12/19/time-machine-6-networked-storage/"),
+  ("Synology: back up a Mac with Time Machine (tutorial 608)", "https://www.synology.com/en-us/knowledgebase/tutorials/608"),
+  ("Synology: limit the space Time Machine uses", "https://kb.synology.com/en-me/DSM/tutorial/How_can_I_limit_space_taken_up_by_Time_Machine_backup"),
+  ("QNAP: Time Machine backup to a QNAP NAS", "https://www.qnap.com/en/how-to/tutorial/con_show.php?cid=268"),
+  ("TerraMaster forum: Time Machine quota in TOS 6", "https://forum.terra-master.com/en/viewtopic.php?p=51709"),
+  ("Ubiquiti: macOS Time Machine backups on UNAS", "https://help.ui.com/hc/en-us/articles/17299776030999-macOS-Time-Machine-Backups-on-UNAS"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("QNAP TS-233", "https://www.qnap.com/en-us/product/ts-233"),
+  ("Neowin: TerraMaster F2-425 review (prices)", "https://www.neowin.net/reviews/terramaster-f2-425-review-a-low-cost-local-cloud-backup-and-streaming-nas/"),
+  ("NASCompares: UniFi UNAS 2 and UNAS 4 one year later", "https://nascompares.com/2026/08/26/unifi-unas-2-and-unas-4-one-year-later/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-under-1000-for-small-office-10-users", "question": "G32 (UGREEN funnel: NAS under $1,000 for a 10-person office)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus for a small office",
+                    "description": "4-bay Intel NAS with 10GbE and 2.5GbE built in, 8 GB DDR5, 2× M.2. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best NAS under $1,000 for a small office of about 10 people (2026): hardware, software and the all-in bill",
+ "h1": "Best NAS under $1,000 for a small office of about 10 people (2026)",
+ "desc": "Which NAS under $1,000 suits a 10-person office: UGREEN's DXP4800 Plus against the Synology DS925+, DS425+ and DS1525+, QNAP TS-464 and TS-432X, TerraMaster F4-424 Pro and F4-424 Max and Asustor Lockerstor 4 Gen2, on hardware, what each OS offers for permissions, directory join, snapshots, cloud backup and endpoint backup, what 10 users get from 2.5GbE and 10GbE, the switch to buy, and a sample bill with drives.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For the most hardware under $1,000, buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), $619.99 diskless on 2026-11-03: a 4-bay Intel NAS with 10GbE and 2.5GbE built in (no card to buy), 8 GB DDR5 to 64 GB, two M.2 slots, Btrfs snapshots, per-user quotas and two-factor admin login in UGOS Pro. For the most complete office software, the <strong>Synology DS925+</strong> ($639.99 list, $511.99 on sale in June 2026) adds Active Backup for Business for the office PCs, Hyper Backup to S3 and immutable snapshots, on 2.5GbE only and a three-year warranty.</p>
+<p>What UGOS Pro lacks today, so the DXP4800 Plus is the pick only if these do not matter: no native S3 or Backblaze B2 backup (Dropbox yes; Duplicati in Docker is the workaround), no equivalent of Active Backup for office PCs, and owner reports of failed Active Directory joins, so test the domain join before buying. Ten users on 2.5GbE share about 280 MB/s, which is fine for documents; 10GbE matters for the one or two people moving video or CAD files, and only with a switch that has a 10G port. A sample bill: NAS $619.99 + four 8 TB NAS drives (about $1,200 in late 2026, 24 TB usable in RAID 5) + a UniFi Flex 2.5G switch ($159) = about $1,980.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("lan", "LAN"), ("soft", "Office software"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 8 GB DDR5 (64 GB)", "lan": "1× 10GbE + 1× 2.5GbE built in", "soft": "SMB permissions, Domain/LDAP wizard (AD joins reported failing), Btrfs snapshots, per-user quotas, 2FA, Dropbox backup; no S3/B2, no endpoint backup", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 4 GB ECC (32 GB)", "lan": "2× 2.5GbE; no 10GbE option", "soft": "AD/LDAP client or Directory Server, Snapshot Replication with immutable snapshots, Hyper Backup to S3, Active Backup for Business (PCs, Macs, VMs, Microsoft 365), Synology Drive", "warranty": "3 years (5 with Extended Warranty Plus)", "price": "$639.99 list; $511.99 Prime Day (June 2026)"}},
+  {"brand": "Synology", "model": "DS1525+", "url": "https://www.synology.com/en-us/products/DS1525+",
+   "cells": {"cpu": "AMD Ryzen V1500B, 8 GB ECC", "lan": "2× 2.5GbE; 10GbE via E10G22-T1-Mini", "soft": "Same DSM stack, five bays", "warranty": "3 years", "price": "$799.99 list; $639.99 Prime Day"}},
+  {"brand": "Synology", "model": "DS425+", "url": "https://www.synology.com/en-us/products/DS425+",
+   "cells": {"cpu": "Intel Celeron J4125, 2 GB (6 GB)", "lan": "1× 2.5GbE + 1× 1GbE", "soft": "Same DSM stack", "warranty": "3 years", "price": "$519.99 list; $415.99 Prime Day"}},
+  {"brand": "QNAP", "model": "TS-464", "url": "https://www.qnap.com/en-us/product/ts-464",
+   "cells": {"cpu": "Intel Celeron N5095, 8 GB", "lan": "2× 2.5GbE; 10GbE by PCIe card", "soft": "AD join, snapshots, HBS 3 backup, Security Center ransomware watch", "warranty": "3 years", "price": "about $638 (aggregator, Oct 2026)"}},
+  {"brand": "QNAP", "model": "TS-432X", "url": "https://store.qnap.com/ts-432x-4g-us.html",
+   "cells": {"cpu": "ARM Alpine AL524, 4 GB", "lan": "2× 2.5GbE + 1× 10GbE SFP+", "soft": "QTS (ARM: fewer apps, no VMs)", "warranty": "2 years", "price": "$659 (QNAP store) to $718 (Newegg)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"cpu": "Intel Core i3-N305, 32 GB DDR5", "lan": "2× 2.5GbE", "soft": "TOS 6: Domain/LDAP listed, scheduled snapshots with lock, CloudSync to S3 and 14 others, Hyper-Lock WORM", "warranty": "2 years", "price": "$699.99 (TerraMaster store, via search)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Max", "url": "https://www.terra-master.com/products/f4-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U, 8 GB DDR5", "lan": "2× 10GbE", "soft": "TOS 6, as above", "warranty": "2 years", "price": "$899.99 list; $629–799 street (undated)"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen2 (AS6704T)", "url": "https://www.asustor.com/product/spec?p_id=77",
+   "cells": {"cpu": "Intel Celeron N5105, 4 GB (16 GB)", "lan": "2× 2.5GbE; PCIe 10GbE card optional", "soft": "ADM: AD join, snapshots, cloud backup apps", "warranty": "3 years", "price": "$549.99 (Walmart, undated) to $771 (SHI)"}},
+ ],
+ "after": """
+<h2>What ten people actually need</h2>
+<ul>
+<li><strong>Permissions and sign-in:</strong> per-user and per-group folder rights over SMB on every OS here; joining a Windows domain is documented and routine on Synology and QNAP, and offered on UGOS with owner reports of joins that failed where Synology's worked.</li>
+<li><strong>Versions and ransomware:</strong> Btrfs snapshots on UGOS (per folder, incremental), Synology's Snapshot Replication with immutable snapshots, QNAP snapshots plus Security Center, TerraMaster's lockable snapshots and WORM.</li>
+<li><strong>Backup:</strong> the NAS is the office's file store, not its backup. Synology's Active Backup for Business backs up the PCs and Macs to the NAS at no licence cost; Hyper Backup and QNAP's HBS 3 send the NAS to S3-class cloud storage; UGOS backs up to another NASync or an rsync target and to Dropbox, with S3 and B2 on UGREEN's roadmap.</li>
+<li><strong>Quotas and 2FA:</strong> both on UGOS (quotas from 1.18, authenticator-app 2FA) and on DSM and QTS.</li>
+</ul>
+<h2>Network: 2.5GbE or 10GbE for ten users</h2>
+<p>A 2.5GbE NAS port moves about 280 MB/s in total; ten people copying at once get about 28 MB/s each, and most office PCs sit on 1GbE (about 110 MB/s) anyway. A 10GbE port (about 1,100 MB/s) lets ten 1GbE clients all run at full speed, or one video workstation on 10GbE take the lot; four hard drives in RAID 5 will cap sustained transfers around 400–500 MB/s regardless. The switch: UniFi Flex 2.5G (eight 2.5GbE ports plus one 10G port for the NAS, $159 on 2026-11-03) for a small office; TP-Link's Omada 2.5G PoE switches with SFP+ uplinks (about $230–420) for more ports.</p>
+<h2>The bill</h2>
+<p>NAS $619.99 (DXP4800 Plus) or $639.99 (DS925+ list) + four 8 TB NAS drives (IronWolf or WD Red Plus ran about $300–350 each in 2026 guides, with lows near $170) + a $159 switch: about $1,460 to $2,200 all in, 24 TB usable. File sharing carries no per-user licence on any of them; Synology's Drive and Active Backup are free, with paid ActiveProtect packs only beyond three backup servers.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("needtoknowit: UGOS Pro review (snapshots, backup, software)", "https://needtoknowit.com.au/blog/ugreen-ugos-pro-review-nas-software-and-ecosystem-explained/"),
+  ("Dong Knows Tech: UGREEN DXP6800 Pro review (Domain/LDAP wizard)", "https://dongknows.com/ugreen-nasync-dxp6800-pro-nas-server-review/"),
+  ("UGREEN forum: domain join failures (German)", "https://ugreen-forum.de/forum/thread/2073-domain-beitritt-nicht-moeglich/"),
+  ("techtest: encrypted cloud backups from a UGREEN NAS (Duplicati)", "https://techtest.org/ugreen-nas-und-verschluesselte-cloud-backups/"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("Synology: Active Backup for Business", "https://www.synology.com/en-us/dsm/feature/active_backup_business/overview"),
+  ("Synology: Hyper Backup", "https://www.synology.com/en-us/dsm/feature/hyper_backup"),
+  ("Synology: Snapshot Replication", "https://www.synology.com/en-us/dsm/feature/snapshot_replication"),
+  ("Synology: join a Windows domain (tutorial 483)", "https://www.synology.com/en-us/knowledgebase/tutorials/483"),
+  ("NASCompares: Synology Prime Day prices (June 2026)", "https://nascompares.com/deals/synology-prime-day-deals-10-25-off-ds925-ds1525-ds425-and-more/"),
+  ("QNAP TS-464", "https://www.qnap.com/en-us/product/ts-464"),
+  ("QNAP: Security Center (QTS 5.2)", "https://www.qnap.com/en/news/2024/qnap-officially-releases-qts-5-2-introducing-security-center-for-active-file-activity-monitoring-elevated-security-and-data-protection"),
+  ("NASCompares: TerraMaster TOS 6 review", "https://nascompares.com/2026/01/16/terramaster-tos-6-software-review/"),
+  ("UniFi Flex 2.5G switch", "https://store.ui.com/us/en/category/all-switching/products/usw-flex-2-5g-8"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-4k-video-editing-thunderbolt-10gbe", "question": "G33 (UGREEN funnel: NAS for 4K video editing in Premiere or Resolve)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp6800-pro", "item_id": "UGREEN-DXP6800-PRO",
+                    "title": "UGREEN NASync DXP6800 Pro for 4K video editing",
+                    "description": "6 bays + 2× M.2, Core i5-1235U, 2× 10GbE, 2× Thunderbolt 4. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NASync_DXP6800_Pro_6_bay.png"},
+ "title": "Best NAS for editing 4K video directly from it in Premiere or Resolve (2026): Thunderbolt, 10GbE and the data rates that decide it",
+ "h1": "Best NAS for editing 4K video directly from it in Premiere or Resolve (2026)",
+ "desc": "Which NAS to edit 4K video from in Premiere Pro or DaVinci Resolve: UGREEN's DXP6800 Pro, DXP480T Plus and DXP4800 Plus against QNAP's TVS-h674T, TVS-h874T, TBS-h574TX and TS-h973AX, TerraMaster F4-424 Max, F6-424 Max and F8 SSD Plus, Asustor Flashstor 6 Gen2 and 12 Pro Gen2 and Lockerstor 4 Gen3, Synology DS925+ and DS1825+, OWC Jellyfish Nomad and LincStation N2, with ProRes and BRAW data rates, how many streams 2.5GbE, 10GbE and a Thunderbolt link carry, and the Premiere and Resolve rules on caches and databases.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP6800 Pro</strong> ({buy:ugreen-nasync-dxp6800-pro}), the best NAS for editing 4K video directly from it in Premiere or Resolve at its 2026 price, $1,099.99 diskless on 2026-11-03: six bays plus two M.2 slots, two 10GbE ports (measured 9.5 Gbit/s) and two Thunderbolt 4 ports for one editing Mac, enough for four to ten ProRes 422 HQ 4K streams over 10GbE. For an all-flash box that plugs straight into a Mac over Thunderbolt, the <strong>DXP480T Plus</strong> ({buy:ugreen-nasync-dxp480t-plus}) at $899.99.</p>
+<p>What decides it: ProRes 422 HQ at UHD is about 110 MB/s per stream at 30p (220 at 60p), BRAW 5:1 UHD about 77 MB/s, H.265 4K 10–20 MB/s. 2.5GbE (about 280 MB/s) scrubs two ProRes HQ streams; 10GbE (about 1,100 MB/s) ten; a Thunderbolt bridge measured 1,200–1,850 MB/s on QNAP's TB4 NAS. Plan on 70% of those: four hard drives in RAID 5 wrote only 6 Gbit/s on the DXP6800 Pro, so an SSD pool or the all-NVMe DXP480T Plus keeps the link full. Keep Resolve's database and cache and Premiere's media cache on the local SSD; the media on the NAS over SMB.</p>
+""",
+ "columns": [("cpu", "CPU"), ("fast", "10GbE / Thunderbolt"), ("m2", "Flash slots"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp6800-pro", "model": "UGREEN NASync DXP6800 Pro (6-bay)",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T", "fast": "2× 10GbE built in; 2× Thunderbolt 4 (network bridge)", "m2": "2× NVMe", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp480t-plus", "model": "UGREEN NASync DXP480T Plus (all-NVMe)",
+   "cells": {"cpu": "Intel Core i5-1235U, 10C/12T", "fast": "1× 10GbE; 2× Thunderbolt 4 (10–20 Gb/s to a PC, about 2 GB/s reads on a Mac reported)", "m2": "4× NVMe (two x4, two x2)", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus (budget)",
+   "cells": {"cpu": "Intel Pentium Gold 8505, 5C/6T", "fast": "1× 10GbE + 1× 2.5GbE; no Thunderbolt", "m2": "2× NVMe", "warranty": "2 years"}},
+  {"brand": "QNAP", "model": "TVS-h674T / TVS-h874T", "url": "https://www.qnap.com/en/product/tvs-h674t",
+   "cells": {"cpu": "Intel Core i5-12400 / i7-12700E or i9-12900E", "fast": "2× 2.5GbE, 10GbE by PCIe card; 2× Thunderbolt 4", "m2": "2× NVMe Gen4", "warranty": "3 years (5 extendable)", "price": "Not on QNAP's page; h874T i7/32 GB listed at $3,261.99 (US retailer, undated)"}},
+  {"brand": "QNAP", "model": "TBS-h574TX (all-flash)", "url": "https://www.qnap.com/en/product/tbs-h574tx",
+   "cells": {"cpu": "Intel Core i5-1235U or i3", "fast": "1× 10GbE + 1× 2.5GbE; 2× Thunderbolt 4 (1,850–1,930 MB/s measured on a Mac)", "m2": "5× E1.S (M.2 via adapter)", "warranty": "3 years", "price": "$1,449 i5 / $1,199 i3 (StorageReview, April 2024)"}},
+  {"brand": "QNAP", "model": "TS-h973AX", "url": "https://www.qnap.com/en/product/ts-h973ax",
+   "cells": {"cpu": "AMD Ryzen V1500B", "fast": "1× 10GbE + 2× 2.5GbE; no Thunderbolt", "m2": "None (QDA adapters)", "warranty": "3 years", "price": "Not shown"}},
+  {"brand": "TerraMaster", "model": "F6-424 Max", "url": "https://www.terra-master.com/products/f6-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U", "fast": "2× 10GbE; no Thunderbolt", "m2": "2× NVMe Gen4", "warranty": "2 years (retailers)", "price": "$999.99 (TerraMaster store, via search); $899 Amazon seen"}},
+  {"brand": "TerraMaster", "model": "F4-424 Max", "url": "https://www.terra-master.com/products/f4-424-max",
+   "cells": {"cpu": "Intel Core i5-1235U", "fast": "2× 10GbE; no Thunderbolt", "m2": "2× NVMe Gen4", "warranty": "2 years (retailers)", "price": "$899.99 list, sold out 2026-11-03; $629 Amazon seen"}},
+  {"brand": "TerraMaster", "model": "F8 SSD Plus (all-flash)", "url": "https://www.terra-master.com/products/f8-ssd-plus",
+   "cells": {"cpu": "Intel Core i3-N305", "fast": "1× 10GbE (about 1.2 GB/s measured); no Thunderbolt", "m2": "8× NVMe, PCIe 3 x1 each", "warranty": "Not found", "price": "$764.99 sale / $899.99 regular (Aug 2026)"}},
+  {"brand": "Asustor", "model": "Flashstor 6 Gen2 / 12 Pro Gen2 (all-flash)", "url": "https://nascompares.com/news/flashstor-gen-2-nas-news-release-price-power-and-more/",
+   "cells": {"cpu": "AMD Ryzen V3C14", "fast": "1× or 2× 10GbE; 2× USB4 (external storage and NAS-to-NAS; Mac bridge unverified)", "m2": "6× or 12× NVMe", "warranty": "3 years", "price": "$799–999 / $1,399–1,716 (launch and retailers)"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen3 (AS6804T)", "url": "https://www.asustor.com/product/spec?p_id=86",
+   "cells": {"cpu": "AMD Ryzen V3C14", "fast": "2× 10GbE + 2× 5GbE; USB4 per a retailer", "m2": "4× NVMe PCIe 4.0", "warranty": "3 years", "price": "$1,299 (late 2024)"}},
+  {"brand": "Synology", "model": "DS925+ / DS1825+", "url": "https://www.synology.com/en-us/products/DS1825+",
+   "cells": {"cpu": "AMD Ryzen V1500B", "fast": "2× 2.5GbE only (DS1825+: 10GbE by PCIe card); no Thunderbolt", "m2": "2× NVMe (Synology SSDs for pools)", "warranty": "3 years", "price": "$639.99 / about $1,150–1,219"}},
+  {"brand": "OWC", "model": "Jellyfish Nomad", "url": "https://www.owc.com/solutions/jellyfish/nomad",
+   "cells": {"cpu": "Not stated", "fast": "6× 10GbE direct to six workstations, 6,000 MB/s aggregate", "m2": "16–64 TB flash built in", "warranty": "OWC terms", "price": "about $17,435 as tested (2023 review)"}},
+  {"brand": "LincPlus", "model": "LincStation N2", "url": "https://liliputing.com/lincplus-lincstation-n2-review-a-compact-nas-with-10-gbe-lan-four-m-2-slots-and-support-for-two-2-5-inch-drives/",
+   "cells": {"cpu": "Intel N100", "fast": "1× 10GbE (about 1.2 GB/s measured); no Thunderbolt", "m2": "4× NVMe + 2 SATA", "warranty": "Not found", "price": "$439 retail"}},
+ ],
+ "after": """
+<h2>Data rates and what each link carries</h2>
+<div class="scroll"><table>
+<tr><th>Format (UHD)</th><th>MB/s at 30p</th><th>Streams on 2.5GbE</th><th>On 10GbE</th><th>On a Thunderbolt bridge</th></tr>
+<tr><td>ProRes 422 HQ</td><td>about 110 (220 at 60p)</td><td>2</td><td>10</td><td>10–16</td></tr>
+<tr><td>ProRes 422</td><td>about 74</td><td>3</td><td>14</td><td>16–25</td></tr>
+<tr><td>ProRes 4444</td><td>about 166</td><td>1</td><td>6</td><td>7–11</td></tr>
+<tr><td>BRAW 5:1 / 8:1</td><td>77 / 48</td><td>3 / 5</td><td>14 / 22</td><td>15–24 / 25–38</td></tr>
+<tr><td>BRAW 5:1 6K</td><td>194</td><td>1</td><td>5</td><td>6–9</td></tr>
+<tr><td>H.265 4K</td><td>10–20</td><td>about 18</td><td>about 70</td><td>80–120</td></tr>
+</table></div>
+<p>Apple's ProRes figures are for 1080p (422 HQ about 220 Mb/s at 29.97p); the UHD numbers scale from them and match Frame.io's codec comparison; BRAW rates are Blackmagic's camera figures at 30p. Whole streams with no headroom: plan on about 70%, since drives, SMB and the Mac's own SMB stack all take a cut, and the write side is slower (6 Gbit/s on four hard drives in RAID 5 on the DXP6800 Pro).</p>
+<h2>Premiere and Resolve rules</h2>
+<ul>
+<li><strong>Resolve:</strong> the project database lives on the workstation (a shared database needs the PostgreSQL Project Server and Resolve Studio); the render cache goes to the first Media Storage volume you set, so set a local SSD first. Media on an SMB share is how vendors and Blackmagic forum staff describe the normal setup, though Blackmagic publishes no SMB guarantee.</li>
+<li><strong>Premiere:</strong> Adobe's community staff call a network media cache unsupported; keep it on a local NVMe separate from the footage. Footage on the NAS is fine over a fast link; for laptops, Ingest with proxies (Media Encoder) or Attach Proxies for proxies made elsewhere.</li>
+<li><strong>macOS SMB:</strong> Apple's nsmb.conf documentation covers protocol versions and the port only; the common "signing_required=no" tweak is community advice with mixed results and lowers LAN security.</li>
+</ul>
+<h2>Thunderbolt on these NAS units</h2>
+<p>UGREEN's Thunderbolt 4 ports form a point-to-point network link to one computer, not a mounted drive; owners report about 2 GB/s reads on a Mac from the DXP480T Plus and reviewers 10–20 Gb/s to PCs. QNAP's TB4 NAS measured 1,850–1,930 MB/s on a Mac in StorageReview's test, so expect the same class. A Mac on 10GbE needs a Thunderbolt adapter (Sonnet Solo10G about $193–224, OWC about $160–200, QNAP QNA-T310G1T about $199) or the direct Thunderbolt cable, which needs no switch at all; several editors sharing the NAS need a 10GbE switch (QNAP QSW-2104-2T about $200–215).</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP6800 Pro", "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage"),
+  ("UGREEN NASync DXP480T Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage"),
+  ("Notebookcheck: DXP6800 Pro review (9.5 Gbit/s)", "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"),
+  ("ITPro: DXP6800 Pro review (8.9 / 6 Gbit/s over SMB)", "https://itpro.com/infrastructure/servers-and-storage/ugreen-nasync-dxp6800-pro-review-an-affordable-nas-alternative-to-qnap-and-synology"),
+  ("Liliputing: DXP480T Plus review (Thunderbolt bridge 10–20 Gb/s)", "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/"),
+  ("Apple: about Apple ProRes (data rates)", "https://support.apple.com/en-us/102207"),
+  ("Frame.io: comparing intermediate codecs (UHD data rates)", "https://blog.frame.io/2017/02/13/compare-50-intermediate-codecs/"),
+  ("Blackmagic: Pocket Cinema Camera tech specs (BRAW data rates)", "https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs/W-CIN-18"),
+  ("StorageReview: QNAP TBS-h574TX review (Thunderbolt 4 measured)", "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review"),
+  ("Dell: Resolve disk and network project databases", "https://infohub.delltechnologies.com/en-au/l/dell-technologies-powerscale-onefs-best-practices-for-davinci-resolve/disk-and-network-project-databases"),
+  ("Blackmagic forum: editing from a NAS over SMB", "https://forum.blackmagicdesign.com/viewtopic.php?p=429023"),
+  ("Adobe community: media cache location (network not supported)", "https://community.adobe.com/t5/premiere-pro-discussions/best-location-for-media-cache-on-large-documentary-project/m-p/13528766"),
+  ("Adobe Help: ingest and proxy workflow", "https://helpx.adobe.com/premiere-pro-next/organize-media/ingest-proxy-workflow/ingest-and-proxy-workflow.html"),
+  ("Apple: nsmb.conf SMB settings on Mac", "https://support.apple.com/en-us/102050"),
+  ("QNAP TVS-h674T", "https://www.qnap.com/en/product/tvs-h674t"),
+  ("QNAP TBS-h574TX", "https://www.qnap.com/en/product/tbs-h574tx"),
+  ("NASCompares: TerraMaster F6-424 Max review and prices", "https://nascompares.com/review/terramaster-f6-424-nas-review/"),
+  ("Liliputing: TerraMaster F8 SSD Plus review", "https://liliputing.com/terramaster-f8-ssd-plus-review/"),
+  ("NASCompares: Flashstor Gen2 prices", "https://nascompares.com/news/flashstor-gen-2-nas-news-release-price-power-and-more/"),
+  ("OWC Jellyfish Nomad", "https://www.owc.com/solutions/jellyfish/nomad"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-refrigerator-for-24-hours", "question": "G36 (fridge funnel: power station to run a full-size refrigerator for 24 hours)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-200-v2", "item_id": "BLUETTI-ELITE-200-V2",
+                    "title": "BLUETTI Elite 200 V2, a day of refrigerator power",
+                    "description": "2,073.6 Wh LiFePO4, 2,600 W; ran a full-size fridge over 30 hours in a review.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-200-v2.png"},
+ "title": "Which portable power station runs a full-size refrigerator for 24 hours in an outage (2026)? The arithmetic and the picks",
+ "h1": "Which portable power station runs a full-size refrigerator for 24 hours? (2026)",
+ "desc": "How much a full-size refrigerator really uses (ENERGY STAR medians of 1.0–1.8 kWh a day, 100–250 W running, up to 1,200 W to start) and which portable power stations cover 24 hours: BLUETTI's Elite 200 V2, AC200L and Elite 300 and ALLPOWERS' S2000 Pro and R4000 against the EcoFlow DELTA 2 Max, DELTA 3 Plus and DELTA Pro 3, Jackery Explorer 2000 v2 and 2000 Plus, Anker SOLIX C2000 Gen 2 and F2000, OUPES Mega 2, Pecron E2000LFP, Dabbsson DBS2300 and Goal Zero Yeti 1500X, with runtime arithmetic by class and the caveats.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> A 2 kWh-class portable power station runs a full-size refrigerator for 24 hours with room to spare. Buy the <strong>BLUETTI Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}): 2,073.6 Wh of LiFePO4 and 2,600 W, which a Bob Vila reviewer ran a full-size fridge on for over 30 hours; ENERGY STAR medians put a fridge at 1.0–1.8 kWh a day, so its roughly 1,760 usable Wh covers 24–35 hours, 22–27 with the inverter's idle draw counted.</p>
+<p>A cheaper day's cover: the <strong>ALLPOWERS S2000 Pro</strong> ({buy:allpowers-s2000-pro-1451wh}), 1,451 Wh, about 16 to 19 hours. What matters besides capacity: the compressor's start surge, 1,000–1,500 W for a bottom-freezer and more for a side-by-side, so a station needs 2,000 W or more continuous (every BLUETTI and ALLPOWERS unit here clears it; EcoFlow's River 2 could not start a fridge in one report); a hot room raises the compressor's duty cycle from about 40% toward 80–90% and halves the runtime; and the door stays shut. For two days, the BLUETTI Elite 300 ({buy:bluetti-elite-300}) or ALLPOWERS R4000 ({buy:allpowers-r4000-3456wh}); a 200–400 W panel in winter sun adds roughly 300–1,200 Wh a day.</p>
+""",
+ "columns": [("wh", "Capacity"), ("ac", "AC output / surge"), ("chem", "Chemistry"), ("hours", "Hours on a 1.2–1.5 kWh/day fridge (with 15 W idle)"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh", "ac": "2,600 W; 3,900 W Power Lifting", "chem": "LiFePO4, 6,000 cycles", "hours": "35 / 28 (27 / 23); 30+ h measured by Bob Vila", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (expandable)", "ac": "2,400 W; 3,600 W Power Lifting; TT-30 outlet", "chem": "LiFePO4", "hours": "35 / 28 (27 / 22)", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh", "ac": "2,400 W; 4,800 W Power Lifting", "chem": "LiFePO4", "hours": "51 / 41 (39 / 33): about two days", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh", "ac": "2,400 W (2,000 W below 60%); 4,000 W peak", "chem": "LiFePO4", "hours": "25 / 20 (19 / 16)", "warranty": "ALLPOWERS terms"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh", "ac": "3,600 W; 6,000 W peak", "chem": "LiFePO4", "hours": "59 / 47 (45 / 38)", "warranty": "ALLPOWERS terms"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh", "ac": "2,400 W; 3,400 W X-Boost", "chem": "LFP", "hours": "about 35 / 28 (27 / 22)", "warranty": "5 years", "price": "$1,029 (was $1,299) on 2026-11-03"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Plus", "url": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "cells": {"wh": "1,024 Wh", "ac": "1,800 W; 3,600 W", "chem": "LFP", "hours": "about 17 / 14 (13 / 11): not a full day", "warranty": "5 years", "price": "$719 (was $799), sold out 2026-11-03"}},
+  {"brand": "EcoFlow", "model": "DELTA Pro 3", "url": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "cells": {"wh": "4,096 Wh", "ac": "4,000 W; 6,000 W X-Boost", "chem": "LFP", "hours": "about 2.5 days", "warranty": "5 years", "price": "$2,799 (was $3,299), sold out 2026-11-03"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "cells": {"wh": "2,042 Wh", "ac": "2,200 W; 4,400 W surge", "chem": "LFP", "hours": "about 35 / 28 (27 / 22)", "warranty": "3 + 2 years", "price": "$799 sale / $1,499 list (retailer listings; jackery.com unreadable on the day)"}},
+  {"brand": "Anker SOLIX", "model": "C2000 Gen 2", "url": "https://www.ankersolix.com/products/c2000-gen2",
+   "cells": {"wh": "2,048 Wh", "ac": "2,400 W; about 4,000 W (retailer)", "chem": "LFP", "hours": "about 35 / 28 (27 / 22); Anker claims 30+ h for its 2 kWh class", "warranty": "5 years", "price": "$899.99 (Anker, via search)"}},
+  {"brand": "OUPES", "model": "Mega 2", "url": "https://oupes.com/products/oupes-mega-2-home-backup-portable-power-station-2500w-2048wh",
+   "cells": {"wh": "2,048 Wh", "ac": "2,500 W; 5,400 W", "chem": "LFP", "hours": "about 35 / 28 (27 / 22)", "warranty": "5 years (6 registered)", "price": "$1,499 list, sold out; deals $649–1,039 seen"}},
+  {"brand": "Pecron", "model": "E2000LFP", "url": "https://www.techradar.com/reviews/pecron-e2000lfp",
+   "cells": {"wh": "1,920 Wh", "ac": "2,000 W; 4,000 W", "chem": "LFP", "hours": "about 33 / 26 (25 / 21)", "warranty": "2–5 years (sources differ)", "price": "$1,499 MSRP (TechRadar)"}},
+  {"brand": "Dabbsson", "model": "DBS2300", "url": "https://www.dabbsson.com/",
+   "cells": {"wh": "2,330 Wh", "ac": "2,200 W", "chem": "Not confirmed", "hours": "about 40 / 32 (30 / 26)", "warranty": "3 + 2 years", "price": "$1,131 sale / $1,599 list (via search)"}},
+  {"brand": "Goal Zero", "model": "Yeti 1500X", "url": "https://www.goalzero.com/",
+   "cells": {"wh": "1,516 Wh", "ac": "2,000 W; 3,500 W", "chem": "Lithium-ion (not LFP)", "hours": "about 26 / 21 (20 / 16)", "warranty": "up to 2 years", "price": "$1,299–1,800 (retailers); 'notify me' on goalzero.com"}},
+ ],
+ "after": """
+<h2>How much a refrigerator uses</h2>
+<div class="scroll"><table>
+<tr><th>Type (ENERGY STAR certified-model medians)</th><th>kWh / year</th><th>kWh / day</th><th>Average W</th></tr>
+<tr><td>Top freezer, about 18 cu ft</td><td>364</td><td>1.0</td><td>41</td></tr>
+<tr><td>Top freezer with ice maker</td><td>450</td><td>1.2</td><td>51</td></tr>
+<tr><td>Bottom freezer or French door, about 22 cu ft</td><td>500</td><td>1.4</td><td>57</td></tr>
+<tr><td>French door with ice maker</td><td>597</td><td>1.6</td><td>68</td></tr>
+<tr><td>Side-by-side with dispenser, about 26 cu ft</td><td>668</td><td>1.8</td><td>76</td></tr>
+</table></div>
+<p>Those medians come from the ENERGY STAR certified-products dataset (4,853 models, October 2026) as compiled by a secondary site; your own fridge's yellow EnergyGuide label gives its kWh per year, and a fridge over ten years old can use twice the median. The compressor draws about 100–250 W while running (about 190 W is typical) with a start surge of several hundred to about 1,200 W, running 30–50% of the time at room temperature and 80–90% in a 90 °F room (BLUETTI's figures). BLUETTI's own runtime calculator assumes a 300 W fridge at 40%, about twice the ENERGY STAR medians, so its 13.8 hours for the Elite 200 V2 is the worst case, not the typical one.</p>
+<h2>The arithmetic</h2>
+<p>Usable energy is the rated watt-hours times about 85% for the inverter. Divide by the fridge's daily kWh for hours of cover, and subtract the inverter's own idle draw (Anker's illustration uses 15 W, about 360 Wh a day) for the honest figure: a 1 kWh station gives 11–17 hours, 1.5 kWh 16–25, 2 kWh 22–35, 3 kWh 33–51. Measured runs are rare: Bob Vila's 30-plus hours on the Elite 200 V2 (fridge size unstated) is the one named-outlet result, consistent with a 1.6 kWh/day fridge. A 200–400 W folding panel in winter sun returns roughly 300–1,200 Wh a day, so a 400 W panel on a clear day can replace most of what the fridge takes.</p>
+<h2>Caveats</h2>
+<ul>
+<li><strong>Surge:</strong> a station must start the compressor, not just run it; 2,000 W continuous and 3,000 W-plus surge covers every household fridge here.</li>
+<li><strong>Door shut:</strong> an unopened fridge holds safe temperatures for about 4 hours and a full freezer about 48 hours even with no power, so the station can be plugged in on a schedule rather than continuously.</li>
+<li><strong>Heat:</strong> a hot kitchen can halve the runtime; a garage fridge in summer is the worst case.</li>
+<li><strong>Check it:</strong> run the setup for a few hours with a plug-in watt meter, including at least one compressor restart, before the outage you are planning for.</li>
+</ul>
+""",
+ "sources": [
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("BLUETTI: how long can a BLUETTI power a full-size refrigerator (duty cycle, surge)", "https://www.bluettipower.com/blogs/buying-guide/how-long-can-bluetti-power-full-size-refrigerator"),
+  ("Bob Vila: BLUETTI Elite 200 V2 review (30+ hours on a fridge)", "https://www.bobvila.com/reviews/bluetti-elite-200-v2-review.md"),
+  ("GreenCalculus: refrigerator electricity use (ENERGY STAR dataset medians)", "https://greencalculus.com/guides/how-much-electricity-does-a-refrigerator-use/"),
+  ("Anker SOLIX: how long a power station runs a refrigerator", "https://www.ankersolix.com/blogs/portable-power-station/how-long-can-a-portable-power-station-run-a-refrigerator"),
+  ("PC Tech Magazine: can a power station keep a fridge cold all day", "https://pctechmag.com/2026/09/can-a-power-station-keep-your-fridge-cold-all-day/"),
+  ("HealthDay: FDA guidance on food after a power outage", "https://www.healthday.com/health-news/public-health/health-tip-is-your-food-still-good-after-power-outage-729907.html"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("EcoFlow DELTA 3 Plus", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+  ("OUPES Mega 2", "https://oupes.com/products/oupes-mega-2-home-backup-portable-power-station-2500w-2048wh"),
+  ("TechRadar: Pecron E2000LFP review", "https://www.techradar.com/reviews/pecron-e2000lfp"),
+  ("Jackery Explorer 2000 v2", "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station"),
+  ("Anker SOLIX C2000 Gen 2", "https://www.ankersolix.com/products/c2000-gen2"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

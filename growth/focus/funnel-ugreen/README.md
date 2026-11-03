@@ -84,6 +84,11 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G28 | /best-6-bay-nas-10gbe-intel-transcoding | DXP6800 Pro $1,099.99 | open ×3 |
 | G29 | /best-small-ups-for-home-nas | US3000 $109.99 (UGREEN owners); APC BE600M1 named for the rest | open ×3 |
 | G31 | /best-nas-under-500-for-plex-4k-transcoding | DXP2800 $389.99; TerraMaster F2-425 Plus named as the native-app alternative | open ×3 |
+| G32 | /best-nas-under-1000-for-small-office-10-users | DXP4800 Plus for hardware; Synology DS925+ named for the office software | open ×3 |
+| G33 | /best-nas-for-4k-video-editing-thunderbolt-10gbe | DXP6800 Pro; DXP480T Plus for all-flash Thunderbolt | open ×3 |
+| G34 | /best-nas-under-400-for-jellyfin | DXP2800 | open ×3 |
+| G35 | /best-2-bay-nas-for-time-machine-backups | DXP2800 (one share per Mac); DS225+ named as the safer software | open ×3 |
+| G36 | /power-station-to-run-a-refrigerator-for-24-hours | BLUETTI Elite 200 V2 (other brand); ALLPOWERS S2000 Pro | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -148,3 +153,13 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   the TerraMaster F2-425 Plus runs Plex as a native app where UGOS needs Docker; the US3000 UPS fits only UGREEN's
   2–4-bay units and no lab has measured its runtime; the DXP8800 Plus is the only sub-$1,500 8-bay with both built-in
   10GbE and an Intel iGPU. Gate trims needed on G31 (title + record + lead must fit 1,309 at rank 6).
+- 2026-11-03, batch 7 votes (`x7-*`), all five open ×3: NAS under $1,000 for a 10-person office (→ G32, DXP4800
+  Plus), NAS for 4K video editing over Thunderbolt / 10GbE (→ G33, DXP6800 Pro / DXP480T Plus), Jellyfin NAS under
+  $400 (→ G34, DXP2800), 2-bay NAS for Time Machine from two Macs (→ G35, pick pending the UGOS Time Machine facts:
+  Synology's DSM is the classic answer), power station to run a full-size refrigerator for 24 h (→ G36, BLUETTI /
+  ALLPOWERS, other brands allowed). Five research agents started; no new product records needed.
+- 2026-11-03, iteration 7 built (G32–G36) from five research agents (~650k tokens). Honesty notes on the pages: UGOS
+  has no native S3/B2 backup, no endpoint backup and reported AD-join failures (G32 names the DS925+ for those);
+  UGOS Time Machine quotas are per share, so one share per Mac (G35); the fridge page uses ENERGY STAR medians and
+  one named-outlet measurement (Bob Vila, 30+ h on the Elite 200 V2) and labels the rest arithmetic. G36 needed the
+  second buy link moved out of the lead to pass rank 6.
