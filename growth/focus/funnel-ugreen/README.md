@@ -75,6 +75,7 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G19 | /best-all-nvme-nas-under-900 | DXP480T Plus $899.99 | open ×3 |
 | G20 | /best-65w-travel-charger-interchangeable-plugs | Nexode 65W travel $49.99, $37.99 w/ UL90409 | open/open/contested |
 | G21 | /best-nas-under-500-for-docker-immich-home-assistant | DXP2800 $389.99 | open ×3 |
+| G22 | /best-nas-for-photographers-10tb-raw-lightroom | DXP4800 Plus; DXP2800 | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -100,3 +101,19 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   rejected; the charger-alone variant is $49.99, the page's $44.98 is a bundle with two cables). All three passed
   `fastloop.py check` first time with the lead kept near 450 chars. Three research agents ~360k tokens. Fixed
   `named_query()`: spec tokens (10gbe, x86, ddr5, pcie4, m.2, tb4) no longer count as names.
+- 2026-11-03, batch 3 votes (`ug3-*`): one charger for a 16" MacBook Pro + iPhone + iPad contested ×3 (Tom's Guide,
+  TechRadar, Apple); 100W car charger open/contested/contested (Android Central, Wired); Thunderbolt dock with 2.5GbE
+  contested ×3 (Tom's Hardware, Macworld); iPad Pro M4 hub open/contested/contested (TechRadar, Tom's Guide);
+  **NAS for a photographer with 10 TB of RAW files open ×3** (Fstoppers' guide is a list, no sizing or Lightroom
+  facts). Building G22 on the DXP4800 Plus. Batch 4 (`x4-*`, other brands allowed): 3kWh-class power station under
+  $1,100 (BLUETTI Elite 300), retractable-cable wall charger, display power bank, Steam Deck dock, USB switch.
+- 2026-11-03, G22 built (photographer NAS, 10 TB RAW, Lightroom): Adobe's catalog-must-be-local rule and Smart
+  Previews from helpx (read through a text proxy; helpx 403s direct fetches), Fstoppers' 285 MB/s measurement of the
+  DXP4800 Plus over 2.5GbE. Drive prices only as a 2026 range (sources disagree; none dated for November).
+- 2026-11-03, batch 4 votes (`x4-*`): **3kWh-class power station under $1,100 open ×3** but parked: the judges name
+  Pecron, Dabbsson, OUPES and Anker F3000 at sale prices (none linkable; OUPES and Dabbsson are pending on Awin) and
+  the BLUETTI Elite 300 was $1,199 on 11-02 ($1,139 with DEALECTRIC), so our pick would not honestly be under $1,100
+  until BLUETTI's automatic discount returns ($1,099 on 11-01). Retractable-cable wall charger saturated/contested
+  (Android Authority, MacRumors, Macworld, Tom's Hardware); display power bank contested; Steam Deck dock saturated
+  (GamesRadar, PCGamesN, Pocket Tactics); **USB switch for two computers open ×3** → G23 on the UGREEN USB-C switch
+  ($40.99, 4× 10Gbps).

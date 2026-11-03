@@ -1336,4 +1336,80 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("The DIY Life: Beelink ME mini", "https://www.the-diy-life.com/beelink-me-mini-tiny-silent-and-perfect-for-a-diy-nas"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-photographers-10tb-raw-lightroom", "question": "G22 (UGREEN funnel: NAS for a photographer with 10 TB of RAW, Lightroom)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus, NAS for photographers with 10TB of RAW",
+                    "description": "4-bay, 10GbE + 2.5GbE, front SD reader, Intel Pentium Gold, 8 GB DDR5. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best NAS for photographers with 10 TB of RAW files who edit in Lightroom (2026)",
+ "h1": "Best NAS for a photographer with 10 TB of RAW files in Lightroom (2026)",
+ "desc": "Which NAS to buy for a 10 TB RAW library edited in Lightroom Classic: UGREEN's DXP4800 Plus and DXP2800 against the Synology DS925+, UGREEN DXP4800 GT, QNAP TS-464, TerraMaster F4-424 Pro and F4-424 Max, Asustor Lockerstor 4 Gen3 and OWC's ThunderBay 4, with Adobe's rule on where the catalog may live, Smart Previews, what 2.5GbE and 10GbE really move, drive layouts that give 10 TB with headroom, and backup costs.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best NAS for photographers with 10TB of RAW files who edit in Lightroom, $619.99 diskless on 2026-11-03: four bays (4× 8 TB in RAID 5 gives 24 TB usable), 10GbE plus 2.5GbE, a front SD card reader and an Intel Pentium Gold 8505. Keep the Lightroom Classic catalog on the Mac, since Adobe allows no catalog on a network drive; the RAW originals live on the NAS.</p>
+<p>How it works day to day: Lightroom Classic reads originals from the NAS and keeps the catalog and previews on the local SSD; Smart Previews (about 3% of the originals' size, so roughly 300 GB for 10 TB) let you edit with the NAS off. Fstoppers measured about 285 MB/s from this NAS over 2.5GbE with four drives in RAID 10, enough to browse and edit RAW; 10GbE (about 1,100 MB/s) speeds up imports and copies but needs a Thunderbolt 10GbE adapter on the Mac ($169 to $199 for a Sonnet Solo10G or QNAP QNA-T310G1T) or a direct cable. Two bays enough? The <strong>DXP2800</strong> ({buy:ugreen-nasync-dxp2800}) with 2× 16 TB in RAID 1 gives 16 TB for $389.99 plus drives.</p>
+""",
+ "columns": [("bays", "Bays"), ("cpu", "CPU"), ("ram", "RAM (max)"), ("lan", "LAN"), ("reader", "Card reader"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"bays": "4× SATA + 2× M.2", "cpu": "Intel Pentium Gold 8505, 5C/6T", "ram": "8 GB DDR5 (64 GB)", "lan": "1× 10GbE + 1× 2.5GbE", "reader": "SD 3.0, front", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800 (2-bay)",
+   "cells": {"bays": "2× SATA + 2× M.2", "cpu": "Intel N100, 4C", "ram": "8 GB DDR5 (16 GB)", "lan": "1× 2.5GbE", "reader": "None", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP4800 GT", "url": "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-gt-4-bay-nas-storage",
+   "cells": {"bays": "4× SATA + 2× M.2", "cpu": "AMD Ryzen R2514, 4C/8T", "ram": "8 GB DDR4 (64 GB)", "lan": "2× 10GbE", "reader": "Not confirmed", "warranty": "2 years", "price": "$659.99 (UGREEN NAS store, 2026-11-03)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"bays": "4× SATA + 2× M.2 (Synology SSDs for pools)", "cpu": "AMD Ryzen V1500B, 4C/8T", "ram": "4 GB ECC DDR4 (32 GB)", "lan": "2× 2.5GbE, no 10GbE option", "reader": "None listed", "warranty": "3 years (5 with Extended Warranty Plus)", "price": "about $639.99 list (Fstoppers' Best Overall)"}},
+  {"brand": "QNAP", "model": "TS-464-8G", "url": "https://www.qnap.com/en-us/product/ts-464",
+   "cells": {"bays": "4× SATA + 2× M.2", "cpu": "Intel Celeron N5095, 4C", "ram": "8 GB (16 GB)", "lan": "2× 2.5GbE (PCIe slot for a 10GbE card, $139)", "reader": "None listed", "warranty": "3 years", "price": "$639 (QNAP store)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/pages/f4-424-pro-specification",
+   "cells": {"bays": "4× SATA + 2× M.2", "cpu": "Intel Core i3-N305, 8C", "ram": "32 GB DDR5, one slot", "lan": "2× 2.5GbE", "reader": "Not found", "warranty": "2 years", "price": "$649–699.99 (reviews, via search)"}},
+  {"brand": "TerraMaster", "model": "F4-424 Max", "url": "https://www.terra-master.com/products/f4-424-max",
+   "cells": {"bays": "4× SATA + 2× M.2", "cpu": "Intel Core i5-1235U, 10C", "ram": "8 GB DDR5 (64 GB)", "lan": "2× 10GbE", "reader": "Not found", "warranty": "2 years", "price": "$899.99, sold out on 2026-11-03"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen3 (AS6804T)", "url": "https://www.asustor.com/product/spec?p_id=86",
+   "cells": {"bays": "4× SATA + 4× M.2", "cpu": "AMD Ryzen V3C14, 4C", "ram": "16 GB ECC DDR5 (64 GB)", "lan": "2× 10GbE + 2× 5GbE", "reader": "Not found", "warranty": "3 years", "price": "about $1,299"}},
+  {"brand": "OWC", "model": "ThunderBay 4 (Thunderbolt DAS, not a NAS)", "url": "https://www.newegg.com/p/N82E16817467003",
+   "cells": {"bays": "4× SATA", "cpu": "None (SoftRAID on the Mac)", "ram": "None", "lan": "None: one Mac over Thunderbolt, no sharing or remote access", "reader": "None", "warranty": "1–2 years (retailers disagree)", "price": "$635–873 diskless (Newegg listings)"}},
+ ],
+ "after": """
+<h2>Adobe's rules</h2>
+<p>Adobe's Lightroom Classic FAQ says catalogs must be stored on the computer or a locally connected drive, never on a network drive or in Creative Cloud; original images may live on the computer, an external drive or a networked drive. Smart Previews are lossy DNGs built at import or from Library → Previews, stored beside the catalog as "<em>Catalog</em> Smart Previews.lrdata"; Adobe's own example is 500 RAW files, 14 GB of originals and about 400 MB of previews, and edits sync back to the originals when the drive reconnects. The cloud-based Lightroom is a different product with its own storage model; this page is about Lightroom Classic.</p>
+<h2>Drives: what gives 10 TB with room to grow</h2>
+<div class="scroll"><table>
+<tr><th>Layout</th><th>Usable</th><th>10 TB fills</th><th>Protection</th></tr>
+<tr><td>4× 8 TB, RAID 5</td><td>24 TB</td><td>42%</td><td>One drive</td></tr>
+<tr><td>4× 8 TB, RAID 6</td><td>16 TB</td><td>63%</td><td>Two drives</td></tr>
+<tr><td>4× 6 TB, RAID 5</td><td>18 TB</td><td>56%</td><td>One drive; the cheapest with headroom</td></tr>
+<tr><td>4× 12 TB, RAID 6</td><td>24 TB</td><td>42%</td><td>Two drives</td></tr>
+<tr><td>2× 12 TB, RAID 1 (DXP2800)</td><td>12 TB</td><td>83%</td><td>One drive; tight</td></tr>
+<tr><td>2× 16 TB, RAID 1 (DXP2800)</td><td>16 TB</td><td>63%</td><td>One drive</td></tr>
+</table></div>
+<p>Usable figures are decimal terabytes; the NAS shows about 9% less in TiB (24 TB reads as about 21.8 TiB). NAS drive prices moved a lot in 2026 (a 12 TB WD Red Plus was seen between $199.99 and $459.99 on Amazon within a year), so price four 8 TB or 12 TB NAS drives (WD Red Plus, Seagate IronWolf, Toshiba N300) on the day; in late-2026 listings an 8 TB NAS drive ran from about $175 to $355 depending on brand and retailer.</p>
+<h2>2.5GbE or 10GbE</h2>
+<p>2.5GbE moves about 260–300 MB/s in real SMB transfers; Fstoppers' review of the DXP4800 Plus measured about 285 MB/s with four 4 TB drives in RAID 10. That is enough to scroll a Library grid and open RAW files from the NAS. 10GbE moves about 1,050–1,150 MB/s, which matters when importing a 200 GB card or copying the archive, and needs a 10GbE port at the other end: a Thunderbolt adapter (Sonnet Solo10G about $169–199, QNAP QNA-T310G1T about $199) or a switch with 10GbE ports (QNAP QSW-2104-2T with two 10GbE and four 2.5GbE ports, around $140–213 in listings). The front SD 3.0 reader on the DXP4800 Plus imports cards straight to the NAS.</p>
+<h2>RAID is not a backup</h2>
+<p>RAID survives a drive failure, not deletion, ransomware, theft or fire. Backblaze's 3-2-1 rule: three copies on two kinds of media with one off-site. For 10 TB, Backblaze B2 costs $6.95 per TB per month, about $70 a month or $834 a year, before any egress above three times the stored amount; a second NAS or a pair of external drives rotated off-site is the cheaper second copy.</p>
+<h2>What Fstoppers picks</h2>
+<p>Fstoppers' "Best NAS for Photographers in 2026" names the Synology DS925+ best overall, the UGREEN DXP4800 Pro best hardware for the money, the TerraMaster F4-424 best budget, the TerraMaster F2-425 Plus best compact two-bay and the Asustor Flashstor 6 Gen2 best all-flash; it reviews the DXP4800 Plus separately and calls it ideal for photographers. The DXP4800 Pro (Core i3-1315U) was $799.99 on UGREEN's store on 2026-11-03, $180 more than the Plus for a faster CPU on the same 10GbE and bays.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Fstoppers: UGREEN DXP4800 Plus review (285 MB/s over 2.5GbE, SD reader)", "https://fstoppers.com/reviews/ugreen-nasync-dxp4800-plus-ideal-nas-photographers-700186"),
+  ("Fstoppers: best NAS for photographers 2026", "https://fstoppers.com/guide/best-nas-photographers-2026"),
+  ("Adobe: Lightroom Classic and Creative Cloud FAQ (catalogs must be local)", "https://helpx.adobe.com/lightroom-classic/desktop/kb/lightroom-creative-cloud-faq.html"),
+  ("Adobe: Smart Previews", "https://helpx.adobe.com/lightroom-classic/desktop/viewing-photos/lightroom-smart-previews.html"),
+  ("Adobe: catalog FAQ", "https://helpx.adobe.com/lightroom-classic/desktop/technical-support/workflow-issues/catalog-issues/catalog-faq-lightroom.html"),
+  ("ZimaSpace: 2.5GbE vs 10GbE real transfer rates", "https://shop.zimaspace.com/blogs/buying-guide/2-5gbe-vs-10gbe-nas-which-speed-do-you-actually-need"),
+  ("Backblaze: the 3-2-1 backup strategy", "https://www.backblaze.com/blog/the-3-2-1-backup-strategy/"),
+  ("Backblaze B2 pricing", "https://www.backblaze.com/cloud-storage/pricing"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("QNAP TS-464", "https://www.qnap.com/en-us/product/ts-464"),
+  ("TerraMaster F4-424 Pro specification", "https://www.terra-master.com/pages/f4-424-pro-specification"),
+  ("TerraMaster F4-424 Max", "https://www.terra-master.com/products/f4-424-max"),
+  ("Asustor AS6804T specification", "https://www.asustor.com/product/spec?p_id=86"),
+  ("Notebookcheck: UGREEN DXP4800 GT review", "https://www.notebookcheck.net/Ugreen-NASync-DXP4800-GT-review-A-powerful-4-bay-NAS-at-a-great-price.1322288.0.html"),
+  ("OWC ThunderBay 4 (Newegg listing)", "https://www.newegg.com/p/N82E16817467003"),
+  ("QNAP QNA-T310G1T Thunderbolt 10GbE adapter (retailer)", "https://esaitech.com/products/qnap-qna-t310g1t-thunderbolt-3-to-10gbe-adapter-thunderbolt-3-1-ports-1-twisted-pair"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
