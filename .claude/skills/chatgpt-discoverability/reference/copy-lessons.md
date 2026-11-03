@@ -51,7 +51,7 @@ SKILL.md's page formula.
 - Result: the model paraphrases markup into its own hero layout; hand-over fell to 4 of 6 (own markup) and 4 of 6
   (designed card) against 6 of 6 for a plain JSON product record with the same instruction.
 
-## Candidates (appended by iterate.py when a round's best draft passes the entry rule)
+## Candidates (appended by iterate.py: a round's best draft that passes the entry rule, and, since 2026-11-03 (DLC-120), "Don't (candidate)" entries for a variant that fell beyond the noise margin and was judged generalizable)
 
 ### Candidate (manual, 2026-11-02): a one-line product record after the H1, in OpenAI product-feed field names
 - Source: `growth/evals/runs/2026-11-02-cardjson/README.md`, offline replay, RV page at rank 3, 6 answers per variant.

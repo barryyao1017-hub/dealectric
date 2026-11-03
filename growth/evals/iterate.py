@@ -604,6 +604,12 @@ def cmd_run(a) -> None:
         with log.open("a") as fh:
             fh.write("\n".join(rows) + "\n")
         print("\n".join(rows), flush=True)
+        try:
+            kd = append_dont(a.target, tgt, out.name, rn, results, inc_s, a.margin)
+        except Exception as e:  # noqa: BLE001  (judge unavailable: the round stands)
+            kd = f"don't not judged ({str(e)[:80]})"
+        with log.open("a") as fh:
+            fh.write(f"Round {rn} don'ts: {kd}\n")
         if best:
             try:
                 kb = append_lesson(a.target, tgt, out.name, rn, best, inc_s, a.margin)
@@ -726,6 +732,14 @@ category's terms) or that only re-words content without a transferable pattern. 
 lesson restated in one product-agnostic sentence, and why in one sentence."""
 
 
+DONT_SYSTEM = """You decide whether a copy change that HURT one product page (fewer answers handed over our buy link, M1,
+or fewer kept our page cited, M2) is a generalizable don't for other product pages. Generalizable: a pattern of
+structure, placement, ordering or phrasing whose harm does not depend on this product, its category, its facts or its
+prices (e.g. "don't open the closing section with alternatives that skip the pick"). Not generalizable: anything that
+rests on this product's specifics or only re-words content without a transferable pattern. Return generalizable
+(true/false), the don't restated in one product-agnostic sentence starting with "Don't", and why in one sentence."""
+
+
 def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: dict, floor: float) -> str:
     """Add a lesson to copy-lessons.md only if (Barry, 11-01) the change raised M1 significantly over its base (more than
     the noise margin, with M2 kept) AND a Claude judge rates it generalizable to other product pages. Returns why."""
@@ -747,6 +761,38 @@ def append_lesson(target: str, tgt: dict, run: str, rn: int, best: dict, base: d
     with LESSONS.open("a") as fh:
         fh.write(entry)
     return "added to copy-lessons.md (significant, generalizable)"
+
+
+def append_dont(target: str, tgt: dict, run: str, rn: int, results: list[dict], base: dict, floor: float) -> str:
+    """Mirror of append_lesson (Barry, 11-01, DLC-120): the round's worst scored variant goes to copy-lessons.md as a
+    candidate don't only if it dropped M1 or M2 below its base by more than the noise margin AND a Claude judge rates
+    the harm generalizable. One per round at most, so a bad round costs one judge call. Returns why."""
+    def drop(r):
+        s = r["score"]
+        m = margin(s, base, floor)
+        return max(base["m1"] - s["m1"] - m, base["m2"] - s["m2"] - m), m
+    scored = [r for r in results if r.get("score")]
+    if not scored:
+        return "no don't: no scored variant"
+    worst = max(scored, key=lambda r: drop(r)[0])
+    excess, m = drop(worst)
+    if excess <= 0:
+        return f"no don't: no variant fell beyond the noise margin (worst {worst['dimension']}, margin {m:.0%})"
+    g = E.claude_cli_json(DONT_SYSTEM, f"CHANGE ON THIS PAGE: {worst['change']}\nPAGE: {tgt['slug']}\n"
+                          f"RESULT: M1 {worst['score']['m1']:.0%} vs base {base['m1']:.0%}; M2 {worst['score']['m2']:.0%} vs {base['m2']:.0%}",
+                          "claude-sonnet-5-5", GEN_SCHEMA, timeout=300) or {}
+    if not g.get("generalizable"):
+        return f"no don't: {worst['dimension']} fell but is not generalizable ({g.get('why', 'judge gave no answer')})"
+    s = worst["score"]
+    entry = (f"\n### Don't (candidate): {g['lesson']}\n"
+             f"- Tag: observed harm. Source: `{tgt['slug']}`, iterate run `{run}`, round {rn}, `{worst['dimension']}`.\n"
+             f"- Result: M1 {s['m1']:.0%} vs base {base['m1']:.0%}, M2 {s['m2']:.0%} vs {base['m2']:.0%} "
+             f"(n = {s['linked']} vs {base['linked']} linked answers, {len(tgt['packs'])} result sets, rank {tgt['rank']}).\n"
+             f"- Change on this page: {worst['change']}\n"
+             f"- Significance: fell {excess + m:.0%} on its worse metric, margin {m:.0%}. Generalizable: {g['why']}\n")
+    with LESSONS.open("a") as fh:
+        fh.write(entry)
+    return f"don't candidate added to copy-lessons.md ({worst['dimension']})"
 
 
 def _stage_shot(rec: dict, png: Path) -> dict:

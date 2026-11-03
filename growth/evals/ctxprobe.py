@@ -1,11 +1,11 @@
 #!/usr/bin/env python3.12
 """What goes into ChatGPT's context after a web search (DLC-77 follow-up, 2026-10-30).
 
-    AGENT_CDP=http://localhost:9223 python3.12 growth/evals/ctxprobe.py chat "best 400W solar panel" [--echo]
+    python3.12 growth/evals/ctxprobe.py chat "best 400W solar panel" [--echo]
     python3.12 growth/evals/ctxprobe.py parse growth/evals/runs/<run>/ctx/<id>.json
 
-Runs one temporary ChatGPT chat in the agent's Chrome (profile 2 on port 9223 by default, so W1's driver on 9222 is
-never touched), keeps the raw SSE stream of every turn (ui.py's hook tees it into window.__sse), and optionally asks a
+Runs one temporary ChatGPT chat in the agent's Chrome (port 9222, the only agent Chrome since 2026-10-31; run chats
+one at a time), keeps the raw SSE stream of every turn (ui.py's hook tees it into window.__sse), and optionally asks a
 follow-up in the same chat that makes the model repeat its search results word for word. The raw stream is saved
 whole so the result list can be rebuilt from every delta, not only from the first event per entry (ui.py's walk()
 reads whole JSON objects and misses fields that arrive as patches; 70% of saved results have no snippet).
@@ -23,7 +23,7 @@ import time
 import urllib.parse
 from pathlib import Path
 
-os.environ.setdefault("AGENT_CDP", "http://localhost:9223")
+os.environ.setdefault("AGENT_CDP", "http://localhost:9222")   # the only agent Chrome (2026-10-31)
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import evallib as E  # noqa: E402
 import ui  # noqa: E402
