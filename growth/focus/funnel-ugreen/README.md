@@ -125,6 +125,12 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G73 | /power-station-to-keep-insulin-cold-in-a-power-outage | FDA and label rules quoted (in-use insulin fine under 86 °F; unopened stock needs 36–46 °F); AC180 + 12 V compressor cooler on the DC port, 2–3.5 days; Frio wallet named as the cheapest adequate plan | open ×3 |
 | G74 | /ups-for-a-bambu-lab-3d-printer-power-outage | CyberPower/APC pure-sine UPS named first for flickers; AC180 for a multi-hour outage; Bambu's own power table and power-loss recovery limits; T320 and US3000 ruled out | open ×3 |
 | G75 | /kvm-switch-for-a-mac-and-pc-4k-144hz | "No KVM is proven at 4K144 with a Mac"; monitor with built-in KVM + our UGREEN USB switch as the answer; Level1Techs/TESmart/UGREEN claims laid out; us.ugreen.com KVM prices unreadable (429) | open ×3 |
+| G77 | /cheap-nas-as-a-remote-hyper-backup-target | A second Synology with Hyper Backup Vault named first; DH2300 as a single-version rsync mirror (no .hbk, no versions); Backblaze B2 / C2 as the no-hardware answer | open ×3 |
+| G78 | /can-you-host-a-wordpress-site-on-a-nas-at-home | "You can, and mostly you shouldn't": shared hosting renewal prices and a VPS named first; DXP2800 behind a Cloudflare Tunnel for hobby/private/staging sites; Xfinity's AUP quoted | open/open/contested |
+| G80 | /power-station-to-run-a-pellet-stove-in-an-outage | Elite 300 (13 h at 150 W); R4000 for margin (sold out today); Harman P43 label and owners' Kill-A-Watt readings; no BLUETTI/ALLPOWERS owner run exists | open ×3 |
+| G81 | /power-station-to-run-a-gas-furnace-in-an-outage | Elite 300 (about 10 h PSC, 19 h ECM); the only safe hookup is a UL 1008 furnace transfer switch by an electrician (Reliance manual, NEC 702 quoted); AC180/P1800 ruled out for PSC starts | open ×3 |
+| G82 | /power-station-for-a-farmers-market-booth | AC180 (restock late Nov) with the Elite 200 V2 as the in-stock fallback; ENERGY STAR mini-fridge data, Vitamix 2 HP; 300 Wh units for lights + reader only | open ×3 |
+| G83 | /power-station-and-solar-panel-for-an-off-grid-cabin-weekend | Elite 200 V2 + 350 W ($1,249); ENERGY STAR compact-fridge Wh/day and NREL PVWatts sun-hours by region; December is battery-only | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -295,4 +301,20 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   the "what to know" paragraph carries more query words than the lead, it outranks it and the buy link is cut; the fix
   is to put the query's own words in the lead (G59, G74, G75). KVM and 2.5GbE agents could not read us.ugreen.com
   (HTTP 429) at all: UGREEN product pricing now needs a browser read or the Shopify .json endpoints.
+- 2026-11-03, batch 15 votes (`x15-*`), all seven open (website hosting open/open/contested): cheap NAS as a remote
+  Hyper Backup target for a Synology (→ G77, DH2300/DXP2800 as an rsync/WebDAV target, or a DS223j + Vault named if it
+  wins), hosting WordPress on a NAS at home (→ G78, "you can, but shared hosting is the better deal" likely first),
+  silent all-SSD NAS under $500 (→ G79 only if the DXP2800 with M.2-only pools or SATA SSDs is honest; else parked
+  with Beelink/Aiffro/Lincstation named), power station for a pellet stove for 12 h (→ G80, Elite 200 V2/Elite 300),
+  power station for a gas furnace (→ G81, Elite 300/R4000 with the transfer-switch rule), farmers-market booth
+  (→ G82, AC180/S2000 Pro), off-grid cabin weekend kit (→ G83, Elite 200 V2 + 200 W or S2000 Pro + 400 W). Seven
+  research agents started.
+- 2026-11-03, iteration 15 built (G77, G78, G80–G83) from seven research agents. **G79 (silent all-SSD NAS under
+  $500) parked**: the only all-NVMe UGREEN is the $899.99 DXP480T Plus; the DXP2800 with M.2-only pools is plausible
+  but unconfirmed and costs about $810 with two 2 TB drives; the honest picks are the Beelink ME mini ($209–429) and
+  TerraMaster F4 SSD ($400), so no page. **The shared WebSearch budget (200 per turn) ran out during this batch**: the
+  market-booth, pellet, furnace and cabin agents finished on WebFetch alone, so G82 cites ENERGY STAR and Vitamix
+  directly and leaves rival prices thin; no further research agents can run until Barry's next message resets it.
+  Stock notes seen on makers' pages today: AC180 out of stock (restock late Nov), R4000 sold out, S2000 Pro sold out,
+  P1800 pre-order (Dec 7); the daily sweep should catch these, but the pages say so where it matters.
 

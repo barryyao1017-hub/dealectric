@@ -4540,4 +4540,338 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("MacRumors forum: 4K 144 Hz KVM for a PC and Mac", "https://forums.macrumors.com/threads/4k-144hz-kvm-switch-pc-mac.2453262"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "can-you-host-a-wordpress-site-on-a-nas-at-home", "question": "G78 (UGREEN funnel: hosting WordPress on a NAS)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for a hobby WordPress site",
+                    "description": "2-bay Intel N100, 8 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Can you host a WordPress site on a NAS at home instead of paying for hosting (2026)? Yes, and mostly you shouldn't",
+ "h1": "Can you host a WordPress site on a NAS at home instead of paying for hosting? (2026)",
+ "desc": "What it takes to run WordPress on a home NAS (Docker on a UGREEN DXP2800, Synology's Web Station package, QNAP's app), what stops it being a good public host (Xfinity's residential terms forbid web hosting, CGNAT on Starlink and 5G, home upload speeds, NAS reboots, WordPress's attack surface), Cloudflare Tunnel as the safe way out, and the real cost of shared hosting (Bluehost, Hostinger, SiteGround, DreamHost intro and renewal prices) and a $4–6 VPS, so you can see when the NAS honestly wins: private, staging, learning and low-traffic hobby sites.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> You can host a WordPress site on a NAS at home, and for a public site that matters you shouldn't: shared hosting renews at about $10–11 a month (Bluehost, Hostinger, DreamHost; $2–4 a month on a 1–4-year prepay) and a $4–6 VPS does the same, with uptime, upload bandwidth and patching that a box under your desk cannot match. For a private site, a staging copy, a learning project or a low-traffic hobby blog, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless on 2026-11-03, run the WordPress + MariaDB + Redis stack in its Docker app, and publish it through a Cloudflare Tunnel rather than an open port.</p>
+<p>What to know: Xfinity's residential acceptable-use policy prohibits running servers that provide network content from the premises and names web hosting as an example, so check your own ISP's terms (Spectrum and AT&T wording not verified); Starlink and 5G home internet sit behind carrier-grade NAT, which blocks inbound ports entirely; a Cloudflare Tunnel makes only outbound connections, needs no port forwarding and sidesteps both, but Cloudflare's CDN terms restrict serving video and "a disproportionate percentage of pictures" through the free tier, so an image-heavy gallery is a grey area. The DXP2800 is more than enough CPU for a small site (the DXP4800 Plus adds nothing here); UGREEN publishes no WordPress guide, so you follow a third-party Portainer stack with Nginx Proxy Manager for HTTPS, while Synology's DS225+ (about $275–340) has a one-click WordPress package in Web Station and QNAP a QTS tutorial. Running cost is about $1 a month of electricity plus a $10–15 domain; the costs that matter are your time and the risk that a power cut, an ISP outage or a firmware reboot takes the site down while you sleep.</p>
+""",
+ "columns": [("route", "WordPress route"), ("expose", "Exposure"), ("cost", "Cost"), ("warranty", "Warranty / SLA")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"route": "Docker: wordpress + mariadb + redis stack via Portainer (Marius Hosting guide); Nginx Proxy Manager for HTTPS; no UGREEN guide", "expose": "Cloudflare Tunnel (outbound only) or DDNS + port forwarding where the ISP allows", "cost": "$389.99 + drives; about $1 a month power", "warranty": "2 years; no uptime guarantee"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://kb.synology.com/en-us/knowledgebase/tutorials/480",
+   "cells": {"route": "Web Station + WordPress package (installs PHP and MariaDB); the simplest NAS route", "expose": "Same options; QuickConnect does not serve a public site", "cost": "about $275–340 (2025–26 listings, not read live)", "warranty": "3 years; no uptime guarantee", "price": "$274.99 Amazon deal (Dec 2025 snapshot)"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en/how-to/tutorial/con_show.php?cid=485",
+   "cells": {"route": "Web Server + WordPress app from the App Center (QTS 5 tutorial)", "expose": "Same", "cost": "$415–439 (undated listing)", "warranty": "3 years"}},
+  {"brand": "Bluehost", "model": "Shared hosting, Starter", "url": "https://www.bluehost.com/hosting/shared",
+   "cells": {"route": "Managed WordPress install", "expose": "It is the internet", "cost": "$3.99 a month on a 36-month term, renews at $9.99", "warranty": "99.99 % uptime claim, credit capped at 5 % of a month"}},
+  {"brand": "Hostinger", "model": "Premium WordPress hosting", "url": "https://www.hostinger.com/wordpress-hosting",
+   "cells": {"route": "Managed", "expose": "Hosted", "cost": "$1.99 a month on a 48-month prepay, renews at $10.99", "warranty": "host SLA"}},
+  {"brand": "DreamHost", "model": "Shared Launch", "url": "https://www.dreamhost.com/hosting/shared/",
+   "cells": {"route": "Managed", "expose": "Hosted", "cost": "$2.89 a month first year, renews at $10.99", "warranty": "host SLA"}},
+  {"brand": "DigitalOcean", "model": "Basic Droplet (VPS)", "url": "https://www.digitalocean.com/pricing/droplets",
+   "cells": {"route": "You install WordPress (or a one-click image)", "expose": "Public IP", "cost": "$4 a month (512 MiB, 1 vCPU, 500 GiB transfer)", "warranty": "cloud SLA"}},
+  {"brand": "Hetzner", "model": "Cloud (cheapest)", "url": "https://www.hetzner.com/cloud",
+   "cells": {"route": "You install WordPress", "expose": "Public IP", "cost": "from €5.99–6.49 a month ex-VAT", "warranty": "cloud SLA"}},
+ ],
+ "after": """
+<h2>Why a home NAS is a poor public host</h2>
+<ul>
+<li><strong>Terms of service:</strong> Xfinity's residential AUP bars "dedicated, stand-alone equipment or servers from the Premises that provide network content" and lists web hosting among them, and limits the service to personal, non-commercial use; how strictly it is enforced is undocumented. Other ISPs' wording was not verified; read yours.</li>
+<li><strong>Reachability:</strong> Starlink and T-Mobile 5G home internet use carrier-grade NAT, so port forwarding does not work; a dynamic IP on cable needs DDNS; a Cloudflare Tunnel (cloudflared dialling out to Cloudflare, your hostname proxied back) solves both without an open port.</li>
+<li><strong>Bandwidth and uptime:</strong> every visitor rides your home upload link, and the site is down for every power cut, ISP outage and firmware reboot; hosts sell 99.9 %-plus uptime with credits.</li>
+<li><strong>Security:</strong> WordPress is the most attacked CMS; on a NAS the WordPress container sits next to your family's files. Keep it in its own container with no share mounts, keep phpMyAdmin off the proxy, enable auto-updates and a firewall plugin, and treat the NAS admin password as the crown jewel.</li>
+</ul>
+<h2>When it honestly wins</h2>
+<p>A documentation or family site on the LAN; a staging copy of a hosted site you can break; learning Docker, reverse proxies and certificates; a blog with a few visitors a day behind a tunnel, where the NAS was bought for storage anyway and the site is free. Cloudflare's free CDN terms (no video, no disproportionate share of images or large files without its paid services) are the one thing to read before putting a photo-heavy site through the tunnel.</p>
+<h2>The stack on UGOS</h2>
+<p>UGREEN's Docker app takes Compose projects (UGOS Pro 1.10+); the published UGREEN recipe is a Portainer stack with wordpress, mariadb, redis and phpMyAdmin under /volume1/docker/wordpress with the NAS user's UID and GID, WordPress on a high port, Nginx Proxy Manager in front with a Let's Encrypt certificate, HSTS and HTTP/2, and HTTPS enabled on the NAS itself. UGOS has no documented native Let's Encrypt or reverse proxy, which is why the proxy runs in Docker; Synology's Web Station bundles both.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Marius Hosting: WordPress on a UGREEN NAS", "https://mariushosting.com/how-to-install-wordpress-on-your-ugreen-nas/"),
+  ("UGREEN support: Docker Compose projects (article 236)", "https://support.ugnas.com/detail/article/en-US/236"),
+  ("UGREEN: Docker and Docker Compose on a UGREEN NAS", "https://ai.ugreen.com/blogs/knowledge/docker-docker-compose-ugreen-nas"),
+  ("Xfinity: residential acceptable use policy", "https://www.xfinity.com/support/internet/comcast-acceptable-use-policy/"),
+  ("Cloudflare: connect networks with Cloudflare Tunnel", "https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/"),
+  ("Cloudflare: service-specific terms (CDN content restrictions)", "https://www.cloudflare.com/service-specific-terms-application-services"),
+  ("Cloudflare: updated terms of service (2023)", "https://blog.cloudflare.com/updated-tos/"),
+  ("Synology KB: host a WordPress website (tutorial 480)", "https://kb.synology.com/en-us/knowledgebase/tutorials/480"),
+  ("QNAP: install WordPress on QTS 5.0", "https://www.qnap.com/en/how-to/tutorial/con_show.php?cid=485"),
+  ("Bluehost shared hosting", "https://www.bluehost.com/hosting/shared"),
+  ("Hostinger WordPress hosting", "https://www.hostinger.com/wordpress-hosting"),
+  ("SiteGround WordPress hosting", "https://www.siteground.com/wordpress-hosting.htm"),
+  ("DreamHost shared hosting", "https://www.dreamhost.com/hosting/shared/"),
+  ("Kinsta plans", "https://kinsta.com/plans/"),
+  ("DigitalOcean Droplet pricing", "https://www.digitalocean.com/pricing/droplets"),
+  ("Hetzner Cloud pricing", "https://www.hetzner.com/cloud"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "cheap-nas-as-a-remote-hyper-backup-target", "question": "G77 (UGREEN funnel: cheap NAS as a Synology Hyper Backup target)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dh2300", "item_id": "UGREEN-DH2300",
+                    "title": "UGREEN NASync DH2300 as an rsync backup mirror",
+                    "description": "2-bay ARM NAS with rsync, WebDAV and SSH servers, 1GbE. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DH2300_home.webp"},
+ "title": "Cheapest NAS to use as a remote Hyper Backup target for a Synology at a relative's house (2026)",
+ "h1": "Cheapest NAS to use as a remote Hyper Backup target for a Synology at a relative's house (2026)",
+ "desc": "What Synology Hyper Backup can write to (another Synology running Hyper Backup Vault, an rsync server, S3 and cloud), what you keep or lose with each (versions, the .hbk format, client-side encryption), whether a UGREEN DH2300 or DXP2800 works as the target (yes, as a single-version rsync mirror), the cheapest second Synology (DS223j, DS124) with Vault, reaching the relative's house without port forwarding (Tailscale, port 6281), seeding the first copy locally, and Backblaze B2 or Synology C2 as the no-hardware answer.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For a Synology owner a second Synology running Hyper Backup Vault wins (a DS223j at about $190–210 keeps the versioned, encrypted .hbk archive). A non-Synology NAS is only an rsync mirror: the <strong>UGREEN NASync DH2300</strong> ({buy:ugreen-nasync-dh2300}), $239.99 on 2026-11-03, has rsync, WebDAV and SSH servers and takes Hyper Backup's rsync destination in single-version mode, a readable copy with no version history.</p>
+<p>What to know: Hyper Backup writes to local folders, a remote Synology or rsync server, and S3-compatible or cloud storage, keeps up to 65,535 versions with Smart Recycle, and encrypts client-side with AES-256, but the .hbk format is readable only by Hyper Backup, Explorer or Vault, so a non-Synology target gets the rsync mode (multi-version or single-version; Synology's docs say rsync tasks do not support data encryption or compression, and the only documented UGREEN case is a single-version copy). The relative's router is the other problem: a Synology target needs TCP 6281 forwarded or Tailscale on both NAS units (official DSM package; on a UGREEN only in Docker, which the DH2300 lacks, so a $390 DXP2800 or a Raspberry Pi as a subnet router would carry it), and the first terabyte takes 2–5 days over a 20–50 Mbps home upload, so seed it at home and relink after moving the box. BeeStation cannot run Vault. With no hardware at all, Backblaze B2 ($6.95 per TB a month) or Synology C2 ($77.99 per TB a year) takes Hyper Backup with versions and encryption and ignores the relative's router entirely.</p>
+""",
+ "columns": [("mode", "Hyper Backup mode"), ("keeps", "Versions / encryption"), ("remote", "Reaching it remotely"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"mode": "rsync server (Control Panel > File Service > Rsync); WebDAV (5005/5006) and SSH also present; one published Synology-to-UGREEN rsync single-version example", "keeps": "Single-version copy: no .hbk, no version history, encryption unconfirmed", "remote": "Port 873 (or 22) forwarded on the relative's router; no Docker, so no Tailscale on the box", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"mode": "Same rsync/WebDAV/SSH services", "keeps": "Same", "remote": "Tailscale in Docker: no port forwarding needed", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS223j (Hyper Backup Vault)", "url": "https://www.synology.com/en-us/dsm/7.3/software_spec/hyper_backup",
+   "cells": {"mode": "Native remote Synology destination via Vault (DSM 7.2+; check Package Center for the J model)", "keeps": "Full .hbk: up to 65,535 versions, Smart Recycle, AES-256 client-side encryption, integrity checks", "remote": "TCP 6281 forwarded, or Tailscale's official DSM package on both ends (100.x address)", "warranty": "2 years", "price": "$209.99 (B&H via tracker, undated); $151–178 on 2023 deals"}},
+  {"brand": "Synology", "model": "DS124 (1-bay, Vault)", "url": "https://www.synology.com/en-us/products/DS124",
+   "cells": {"mode": "Same as the DS223j, one drive", "keeps": "Full .hbk", "remote": "Same", "warranty": "2 years", "price": "no current US price read ($139–178 in undated listings)"}},
+  {"brand": "Synology", "model": "BeeStation", "url": "https://www.blackvoid.club/synology-beestation-as-a-hyperbackup-destination/",
+   "cells": {"mode": "Cannot run Vault; rsync only after SSH command-line setup", "keeps": "Plain copy, unencrypted transfer", "remote": "Port forwarding", "warranty": "3 years", "price": "not read"}},
+  {"brand": "TerraMaster", "model": "F2-212", "url": "https://mightygadget.com/terramaster-f2-212-nas-review/",
+   "cells": {"mode": "rsync server in TOS (setup not verified)", "keeps": "Plain copy", "remote": "Port forwarding or Docker Tailscale (TOS Docker on ARM: unverified)", "warranty": "2 years", "price": "$169.99 list; $118.99 on an undated sale"}},
+  {"brand": "Backblaze", "model": "B2 (cloud)", "url": "https://www.backblaze.com/cloud-storage/pricing",
+   "cells": {"mode": "S3-compatible Hyper Backup destination", "keeps": "Full .hbk with versions and client-side encryption", "remote": "No router involved", "warranty": "n/a", "price": "$6.95 per TB a month; egress free to 3× stored"}},
+  {"brand": "Synology", "model": "C2 Object Storage", "url": "https://nascompares.com/2026/05/25/synologys-c2-and-license-changes-explained/amp/",
+   "cells": {"mode": "Native Hyper Backup destination", "keeps": "Full .hbk", "remote": "No router involved", "warranty": "n/a", "price": "$7.99 per TB a month or $77.99 per TB a year (from June 2026)"}},
+ ],
+ "after": """
+<h2>What each target keeps</h2>
+<p>A Synology-to-Synology backup through Hyper Backup Vault is a deduplicated, versioned .hbk archive with client-side encryption, Smart Recycle retention and integrity checks, restorable from the Hyper Backup app or the Vault desktop tool. An rsync destination is Hyper Backup's "copy" mode: in single-version mode the destination holds a plain mirror of the files that older versions overwrite, in multi-version mode a dated tree; Synology's own documentation says rsync tasks do not support data encryption or compression and that transfer encryption needs an SSH-capable server with a password, and application settings cannot be backed up this way. The UGREEN box, then, is a second copy of the files at another address, which is worth having, not a Synology backup.</p>
+<h2>Getting across town without port forwarding</h2>
+<p>Most relatives' routers are untouched consumer boxes and a growing number of homes sit behind carrier-grade NAT, where forwarding is impossible. Two Synology units solve it with Tailscale (the official DSM package; DSM 7 needs a boot task for outbound access) and Hyper Backup pointed at the tailnet address on port 6281, with owner reports of slow transfers and "target offline" errors after certificate renewals to watch for. A UGREEN target runs Tailscale only as a Docker container, so the DH2300 needs a port opened for rsync (873) or SSH (22) with key authentication, or a Raspberry Pi at the relative's house acting as a Tailscale subnet router; the DXP2800 runs Tailscale itself. Whatever the path, do the first full copy on your own LAN, then move the box and relink: a terabyte over a 20 Mbps upload is about four and a half days.</p>
+<h2>Or skip the hardware</h2>
+<p>Backblaze B2 at $6.95 per TB a month (first 10 GB free, egress free up to three times what you store) and Synology C2 at $77.99 per TB a year are both first-class Hyper Backup destinations with versions and encryption, cost less than a second NAS plus a drive for the first two or three years at 1–2 TB, and never depend on someone else's router. The relative's-house NAS wins when the data is many terabytes, when restores must be fast and local, or when you want the box to double as their own storage.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DH2300", "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("UGREEN support: rsync service (article 485)", "https://support.ugnas.com/detail/article/en-US/485"),
+  ("Synology DSM 7.3: Hyper Backup specification", "https://www.synology.com/en-us/dsm/7.3/software_spec/hyper_backup"),
+  ("Synology: Hyper Backup Vault release notes", "https://www.synology.com/releaseNote/HyperBackupVault"),
+  ("Blackvoid: Hyper Backup to a remote Synology NAS", "https://www.blackvoid.club/synology-101-hyper-backup-to-a-remote-synology-nas/"),
+  ("Blackvoid: Synology backup tools compared", "https://www.blackvoid.club/synology-backup-tools-usage-and-comparison/"),
+  ("Blackvoid: BeeStation as a Hyper Backup destination", "https://www.blackvoid.club/synology-beestation-as-a-hyperbackup-destination/"),
+  ("SpaceRex forum: Hyper Backup to a remote Synology over Tailscale", "https://forums.spacerex.co/t/how-to-hyper-backup-to-a-remote-synology-nas-using-tailscale-without-port-forwarding/219"),
+  ("Tailscale on Synology", "https://tailscale.com/kb/1131/synology"),
+  ("QuikTechSolutions: Synology to UGREEN over rsync (video)", "https://vigyata.ai/@QuikTechSolutions/video/how-to-transfer-files-from-synology-to-ugreen-nas-using-rsync--6Yp0jBiEgLY"),
+  ("Backblaze B2 pricing", "https://www.backblaze.com/cloud-storage/pricing"),
+  ("NASCompares: Synology C2 and licence changes (2026)", "https://nascompares.com/2026/05/25/synologys-c2-and-license-changes-explained/amp/"),
+  ("cpricewatch: Synology DS223j price", "https://www.cpricewatch.com/product/07996/Synology-DiskStation-DS223j-2-Bay-NAS-Enclosure-price.html"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-pellet-stove-in-an-outage", "question": "G80 (power funnel: power station for a pellet stove for 12 h)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, a night of pellet heat",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W pure sine, 10 ms UPS.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Which portable power station runs a pellet stove through a 12-hour winter outage (2026)? Measured stove draws and the runtime math",
+ "h1": "Which portable power station runs a pellet stove through a 12-hour winter outage? (2026)",
+ "desc": "What a pellet stove really draws (a Harman P43's label: 4.2 A start, 2.8 A run, 1.1 A normal; owners' Kill-A-Watt readings of 390–460 W at ignition and 100–215 W running), the 12-hour arithmetic, which portable power stations cover it (BLUETTI Elite 300 and ALLPOWERS R4000; the Elite 200 V2 and AC200L for a low-draw stove; the AC180 for a few hours), the UPS-style hookup so the stove never loses power mid-burn, pure sine wave, what Harman's own backup is for, and rivals.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: the portable power station to run a pellet stove through a 12-hour winter outage, 3,014.4 Wh (about 2,560 usable) and 2,400 W pure sine, which is about 13 hours at a measured 150 W running draw plus two or three 400 W ignitions and the station's own idle, with a 10 ms UPS switchover so the stove never sees the outage. A stove that runs above 200 W needs the ALLPOWERS R4000 (3,456 Wh, $1,499, listed sold out today) for margin.</p>
+<p>What to know: Harman's P43 label reads 4.2 A to start and 2.8 A running (about 480 and 320 W) with 1.1 A (about 127 W) in normal operation, and owners' plug meters on Harman P43, P68, XXV and Accentra stoves read 390–460 W at ignition and 60–215 W running depending on fan speed and auger cycling, a 2× spread, so measure your own stove for an hour before buying. At 150 W plus ignitions and idle, 12 hours is about 2.0–2.5 kWh (up to 3 kWh at 215 W): the Elite 200 V2 and AC200L ($899) give about 9 hours, or 14–15 on a low-draw stove at 110–120 W; the AC180 and P1800 about 5, a graceful-shutdown bridge, not a night. Owners running stoves on batteries report 7–12 hours per 100–200 Ah of lead-acid; nobody has published a BLUETTI or ALLPOWERS run. Makers and retailers advise a pure sine inverter (every station here is), and Harman's own battery backup is designed to shut the stove down cleanly so smoke does not back up into the room, not to keep it burning; a station in UPS mode does both.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable)"), ("ups", "UPS switchover"), ("h150", "Hours at 150 W + ignitions + idle"), ("h215", "Hours at 215 W"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh (about 2,560) / 2,400 W", "ups": "10 ms", "h150": "about 13.5", "h215": "about 12, no margin", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh (about 2,940) / 3,600 W; discharge rated to −20 °C; 45 kg", "ups": "15 ms", "h150": "about 15.5", "h215": "about 13.5", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured) / 2,600 W", "ups": "≤15 ms", "h150": "about 9 (14–15 at 110–120 W)", "h215": "about 7", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (about 1,740); expandable to 8 kWh with B300K packs", "ups": "20 ms", "h150": "about 9", "h215": "about 7", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 1,230)", "ups": "not verified", "h150": "about 6.5", "h215": "about 5", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030)", "ups": "20 ms", "h150": "about 5", "h215": "about 4", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (about 870); pre-order, ships Dec 7", "ups": "20 ms (manual)", "h150": "about 4.5", "h215": "about 3.5", "warranty": "24 months (US page)"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://www.ecoflow.com/us/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh / 2,400 W", "ups": "under 20 ms", "h150": "about 9", "h215": "about 7", "warranty": "5 years", "price": "$1,029 (2026-11-03); one owner feeds an APC UPS from it for his stove"}},
+  {"brand": "Jackery", "model": "HomePower 2000 Plus v2", "url": "https://www.jackery.com/products/explorer-2000-plus-portable-power-station",
+   "cells": {"wh": "2,048 Wh / 2,400 W", "ups": "not shown", "h150": "about 9", "h215": "about 7", "warranty": "not read", "price": "not shown on the page"}},
+ ],
+ "after": """
+<h2>What a pellet stove draws, from labels and plug meters</h2>
+<p>Harman P43 label: 115 V, start 4.2 A, run 2.8 A, normal operation 1.1 A. Owners' Kill-A-Watt readings: a P43 at 390 W starting (blower, auger and igniter) and 140 W running with fans, 175 W with the auger; a P68 at 396 W at ignition, 209 W on the distribution blower and about 215 W time-weighted; an XXV at about 400 W to start and 102–170 W running; an Accentra's igniter just over 300 W then 60–120 W. A retailer's table lists the P43 at 460 W maximum and 200 W running. The igniter runs 5–15 minutes per light; a thermostat-controlled stove may relight two to four times a night, about 70 Wh each. Standby and controller draw were not published anywhere we could read. Englander, Pelpro, Castle and Quadra-Fire figures were not retrievable, so print nothing for them; the P43's label is the one maker number here.</p>
+<h2>The hookup: UPS mode, pure sine, ECO off</h2>
+<p>Plug the stove into the station and the station into the wall so the switchover (10–20 ms) carries the stove through the cut; owners on line-interactive UPS units report stoves riding through transfers, and a stove that loses power mid-burn can push smoke into the room, which is what Harman's small battery backup exists to prevent by running a clean shutdown. Turn ECO mode off so a stove idling at standby does not trip the station's auto-off. Harman advises the manual igniter setting on battery power so the stove does not cycle on and off; check your own manual for its backup guidance. Pure sine is what every maker-affiliated source recommends and every station here provides. Keep the station indoors: the R4000 is rated to discharge at −20 °C and charge at 0 °C; BLUETTI publishes no range on these pages.</p>
+<h2>What owners actually got</h2>
+<p>A P43 ran 9 hours on two 100 Ah AGM batteries and a 1,250 W pure sine inverter; an XXV ran 7.2 hours on one 100 Ah AGM at 102 W and 4.3 hours at 116 W; a P68 ran about 12 hours on two RV deep-cycle batteries with the fan at minimum; a 960 Wh Ryobi rig gave 6–7 hours of stove time per charge through a three-day outage in the teens; a Yamaha EF1000iS generator ran a stove 24 hours on a gallon of gas. None of these is a BLUETTI or ALLPOWERS run, and the UPS-only figures (65 minutes on a 1500 VA CyberPower at 100 W) show why a computer UPS is a shutdown bridge, not a night of heat.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("ALLPOWERS R4000 (temperature ratings)", "https://iallpowers.com/products/allpowers-r4000-power-station"),
+  ("Harman P43 manual (electrical label)", "https://www.manualslib.com/manual/519917/Harman-P43.html?page=4"),
+  ("Harman P43 manual (manual igniter on battery backup)", "https://www.manualslib.com/manual/961503/Harman-P43.html?page=16"),
+  ("hearth.com: P43 ramblings (Kill-A-Watt readings)", "https://hearth.com/talk/threads/p43-ramblings-to-be-added-to-when-something-strikes-me.170923"),
+  ("hearth.com: backup for a P68", "https://www.hearth.com/talk/threads/backup-for-p68-my-head-hurts.143146/latest"),
+  ("hearth.com: backup batteries for a Harman XXV (measured runtimes)", "https://www.hearth.com/talk/threads/advises-on-backup-batteries-for-harman-xxv.205479"),
+  ("hearth.com: electric use of an older Accentra insert", "https://www.hearth.com/talk/threads/electric-use-for-older-harman-accentra-insert-kwh.191410"),
+  ("kitchprep: pellet stove power use and Harman's backup addendum", "https://kitchprep.com/?p=115504"),
+  ("Anker: powering a pellet stove in an outage", "https://www.ankersolix.com/blogs/battery/power-pellet-stove-outage"),
+  ("woodpellets.com: pellet stove backup power", "https://woodpellets.com/blog/?p=3202"),
+  ("EcoFlow DELTA 2 Max", "https://www.ecoflow.com/us/delta-2-max-portable-power-station"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-run-a-gas-furnace-in-an-outage", "question": "G81 (power funnel: power station for a gas furnace)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-300", "item_id": "BLUETTI-ELITE-300",
+                    "title": "BLUETTI Elite 300, furnace backup",
+                    "description": "3,014.4 Wh LiFePO4, 2,400 W, 10 ms UPS.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-300.png"},
+ "title": "Can a portable power station run a gas furnace during a power outage, and how do you connect it (2026)?",
+ "h1": "Can a portable power station run a gas furnace during a power outage, and how do you connect it? (2026)",
+ "desc": "What a gas furnace draws (PSC blowers 450–900 W running and up to 2,000 W to start; ECM blowers 90–300 W), the night-long arithmetic for the BLUETTI Elite 300, Elite 200 V2, AC200L, AC180 and ALLPOWERS R4000, S2000 Pro and P1800, and the only safe connection: a UL 1008 furnace transfer switch (Reliance TF151) or an inspector-accepted cord-and-plug conversion, installed by an electrician, as NEC Article 702 requires, never a backfed outlet; plus the EcoFlow and Anker units sold with transfer-switch ecosystems.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Yes, a power station can run a gas furnace during a power outage, through a transfer switch and nothing else. Buy the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}), $1,199 on 2026-11-03: 3,014.4 Wh and 2,400 W, about 10 hours of a PSC-blower furnace at 40 % duty (19 of an ECM furnace), and have an electrician fit a furnace transfer switch (Reliance TF151, $89–109 part) with an inlet. Never backfeed an outlet.</p>
+<p>What to know: a single-speed PSC blower draws about 450–900 W running and 600–2,000 W to start, an ECM blower 90–300 W, plus 200–800 W for the inducer and 50–200 W for ignition and controls at start-up, so a furnace starts at 1,000–3,000 W and read your own nameplate (amps × 120 V); blowers run 8–15 minutes a cycle, two to four cycles an hour, up to 35–40 minutes an hour in the cold. At 600 W × 40 % plus the station's idle, 12 hours is about 3.1 kWh, which the Elite 300 and the ALLPOWERS R4000 (3,456 Wh, $1,499) cover for about 10–11.5 hours after inverter losses, the Elite 200 V2 and AC200L ($899) for about 7; an ECM furnace at 300 W × 40 % is 1.6 kWh, which every unit from the Elite 200 V2 up covers all night and the AC180 for about 7 hours. Whether an 1,800 W inverter rides through a 2,000 W PSC start is undocumented, so the AC180 and P1800 are not furnace picks; BLUETTI's "Power Lifting" is for resistive loads, not motors. EcoFlow's DELTA Pro 3 ($2,799) and Anker's SOLIX F3800 are sold with transfer-switch and home-panel bundles that need professional installation; a 2–3 kW dual-fuel generator is the traditional answer and needs the same transfer switch.</p>
+""",
+ "columns": [("wh", "Capacity (about 85 % usable) / continuous"), ("psc", "Hours: PSC furnace, 600 W at 40 %"), ("ecm", "Hours: ECM furnace, 300 W at 40 %"), ("ups", "UPS"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh (about 2,560) / 2,400 W", "psc": "about 10", "ecm": "about 19", "ups": "10 ms", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh (about 2,940) / 3,600 W, 6,000 W peak; 45 kg", "psc": "about 11.5", "ecm": "about 22", "ups": "15 ms, loads to 1,500 W", "warranty": "5 years registered"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured) / 2,600 W", "psc": "about 7", "ecm": "about 13", "ups": "≤15 ms", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh (about 1,740) / 2,400 W; expandable", "psc": "about 7", "ecm": "about 13", "ups": "20 ms", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 1,230) / 2,400 W (2,000 W below about 60 %)", "psc": "about 5", "ecm": "about 9", "ups": "not verified", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030) / 1,800 W: PSC start unverified", "psc": "about 4 (if it starts)", "ecm": "about 7", "ups": "20 ms", "warranty": "5 years"}},
+  {"brand": "EcoFlow", "model": "DELTA Pro 3 (+ transfer switch bundles)", "url": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "cells": {"wh": "4,096 Wh (to 48 kWh) / 4,000 W at 120/240 V", "psc": "about 13", "ecm": "about 26", "ups": "not shown", "warranty": "5 years", "price": "$2,799 (2026-11-03); panel bundles $3,299–5,599, professional install required"}},
+  {"brand": "Anker", "model": "SOLIX F3800", "url": "https://www.anker.com/products/f3800",
+   "cells": {"wh": "3,840 Wh / 6,000 W, 120/240 V inlet-box ready", "psc": "about 12", "ecm": "about 24", "ups": "not read", "warranty": "not read", "price": "sold out, no price shown"}},
+  {"brand": "Reliance Controls", "model": "TF151 / TF151W furnace transfer switch", "url": "https://assets.unilogcorp.com/187/ITEM/DOC/RELIANCE_CONTROLS_100081659_Instruction_Installation_Manual.pdf",
+   "cells": {"wh": "n/a: UL 1008 single-circuit switch, 15 A (TF201: 20 A)", "psc": "n/a", "ecm": "n/a", "ups": "manual GEN/LINE toggle", "warranty": "not read", "price": "about $89–109 for the part; installation cost not published"}},
+ ],
+ "after": """
+<h2>The only safe connection</h2>
+<p>Reliance's TF-series manual says transfer switches "are required for use with portable generators by Article 702 of the National Electrical Code", that installation "must be performed by a qualified electrician, or others knowledgeable of electrical systems, in compliance with all applicable electrical codes", and that the furnace-mounted TF151/TF201 "should be connected by a licensed electrician or heating contractor" (the W variants mount at the panel with a conduit whip). The switch puts a GEN/LINE toggle on the furnace circuit and a flanged inlet (never a male plug) takes the cord from the station; the utility side of the main breaker stays live, so nobody should open the panel but the electrician. Some inspectors accept converting the furnace to cord-and-plug with a proper receptacle; whether NEC 422.16 allows that for a furnace is argued on every trade forum and decided by your local authority, so ask. Also ask the electrician and the furnace maker about polarity and grounding: furnace control boards sense flame through the ground path, and power stations commonly leave neutral floating; BLUETTI's pages show only a grounding screw with no guidance, and Anker's F3800 FAQ says neutral and ground "must be properly connected" when feeding an inlet box.</p>
+<h2>The arithmetic</h2>
+<p>PickHVAC's tables put PSC single-speed blowers at 500–900 W (text: 550–800 on average), ECM single-stage at 250–300 W and modulating ECM at 90–200 W, with the blower over 90 % of the furnace's electricity; PickComfort puts starting draws at 600–2,000 W (PSC), 200–800 W (ECM), 200–800 W (inducer) and 50–200 W (ignition and controls), total 1,000–3,000 W. No manufacturer nameplate, Energy.gov figure or measured station test was retrievable, and the hot-surface-igniter wattage is unsourced here, so the honest instruction is the nameplate and a clamp meter. Our table assumes 15 W of station idle, a 40 % duty cycle and 85 % usable energy: 12 hours of a 600 W PSC furnace is about 3.1 kWh, of a 300 W ECM furnace about 1.6 kWh.</p>
+<h2>The alternatives</h2>
+<p>EcoFlow sells the DELTA Pro 3 with a transfer switch or a Smart Home Panel 2 that "requires professional installation", and Anker markets the F3800's 240 V port for inlet boxes; both are whole-home routes at $2,800 and up before the electrician. A 2–3 kW dual-fuel inverter generator costs far less per kilowatt-hour over a multi-day outage, needs fuel, 20 feet of clearance and a carbon-monoxide alarm, and still needs the same transfer switch. If the house has a wood or pellet stove, that is the cheaper heat; the station then runs the stove and the fridge.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 300", "https://www.bluettipower.com/products/elite-300-portable-power-station"),
+  ("BLUETTI Elite 200 V2 (Power Lifting for resistive loads)", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("Reliance Controls TF-series furnace transfer switch manual (UL 1008, NEC 702)", "https://assets.unilogcorp.com/187/ITEM/DOC/RELIANCE_CONTROLS_100081659_Instruction_Installation_Manual.pdf"),
+  ("PickHVAC: how many watts does a furnace use", "https://www.pickhvac.com/furnace/using/how-many-watts-does-a-furnace-use/"),
+  ("PickComfort: gas furnace starting watts", "https://www.pickcomfort.com/gas-furnace-starting-watts-how-much-power-is-needed-start/"),
+  ("HVACBase: gas furnace wattage", "https://www.hvacbase.org/gas-furnace-wattage"),
+  ("HeatingHelp forum: cord-and-plug furnace connections", "https://forum.heatinghelp.com/discussion/comment/1510755"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+  ("Anker SOLIX F3800", "https://www.anker.com/products/f3800"),
+  ("Jackery HomePower 2000 Plus v2", "https://www.jackery.com/products/explorer-2000-plus-portable-power-station"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-and-solar-panel-for-an-off-grid-cabin-weekend", "question": "G83 (power funnel: station + panel for an off-grid cabin weekend)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-200-v2", "item_id": "BLUETTI-ELITE-200-V2",
+                    "title": "BLUETTI Elite 200 V2 with a solar panel",
+                    "description": "2,073.6 Wh LiFePO4, 2,600 W, 1,000 W solar input.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-200-v2.png"},
+ "title": "What size power station and solar panel run an off-grid cabin for a weekend (LED lights, small fridge, phones, a fan) in 2026?",
+ "h1": "What size power station and solar panel run an off-grid cabin for a weekend? (2026)",
+ "desc": "A worked weekend load sheet for an off-grid cabin (ENERGY STAR compact fridges at 600–740 Wh a day, LED lights, phones, a laptop, a box fan or a 12 V fan), NREL PVWatts peak-sun hours by season for four US regions, what a 200 W or 350–400 W folding panel returns in summer and in December, and which station-and-panel kits cover two nights: BLUETTI Elite 200 V2 + 350 W, AC180 + 200 W, Elite 30 V2 + 100 W, ALLPOWERS S2000 Pro + 400 W, P1800 + 200 W or 400 W, VOLIX P300 + 100 W, with prices, stock and the winter caveat.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}) with BLUETTI's 350 W panel ($1,249 on 2026-11-03; $899 for the station alone): a 2,073.6 Wh power station and solar panel for an off-grid cabin weekend that runs a small fridge, LED lights, phones and a fan for two nights, with the panel putting back about 1.3 kWh on a summer day so the weekend's 2.8–4.0 kWh balances. In December sun it does not: plan on the battery alone (roughly one day with the fridge) or bring ice.</p>
+<p>What to know: ENERGY STAR data puts a 3–4.4 cu ft compact fridge at 220–270 kWh a year, 600–740 Wh a day (a 17 cu ft full-size fridge is 1.2–1.3 kWh a day), so the fridge is most of the load; lights at 4–6 × 9 W for five hours are about 225 Wh, phones and a laptop about 135 Wh, and the fan decides the rest: a 75 W box fan for eight hours is 600 Wh, a 12 V fan 120 Wh. Call it 1.1–1.6 kWh a day, 2.8–4.0 kWh for a two-night weekend, or 1.2–2.4 kWh without the fridge. NREL's PVWatts gives peak-sun hours of 5.5–6.9 in June–July (Denver 6.9, Asheville 6.0, Minneapolis 6.0, Seattle 5.5) and 1.5–4.3 in December (Seattle 1.5, Minneapolis 2.6, Denver 4.3) for a tilted panel aimed south, and folding panels deliver about 65–80 % of their rating, so a 200 W panel returns about 770 Wh on a summer day and 210–360 Wh in a northern December, a 350–400 W panel about 1.3–1.5 kWh and 400–730 Wh. The AC180 + 200 W kit ($729; the AC180 is out of stock until late November) and the ALLPOWERS P1800 kits ($531 with 200 W, $698 with 400 W; December pre-order) cover lights, phones and a fan and are marginal with a fridge; the S2000 Pro + 400 W ($848, sold out) covers the fridge in strong sun; the Elite 30 V2 + 100 W ($489.99) and VOLIX P300 + 100 W ($218.99) are lights-and-phones kits. Mind the input windows: the Elite 30 V2 takes 12–28 V and the Tenergy T320 5–24 V, so a 400 W panel's 45 V open-circuit does not fit them.</p>
+""",
+ "columns": [("wh", "Station Wh (about 90 % usable)"), ("panel", "Panel and summer yield"), ("covers", "Two-night weekend"), ("price", "Kit price (2026-11-03)"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2 + 350 W (or + 200 W)",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured)", "panel": "350 W: about 1.3 kWh a day; 200 W: about 770 Wh; input 1,000 W, 12–60 V", "covers": "Fridge + lights + phones + box fan (4.0 kWh): yes with 350 W; with 200 W, yes with a 12 V fan (2.8 kWh)", "price": "$1,249 (350 W, ships Nov 9); $1,199 (200 W, ships Nov 18); $1,499 (2× 200 W)", "warranty": "5 years"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 + 200 W",
+   "cells": {"wh": "1,152 Wh (950–1,030)", "panel": "about 770 Wh a day; input 500 W", "covers": "Lights, phones, fan: yes; with a fridge: marginal", "price": "$729 (AC180 out of stock, restock late November)", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro + SP037 400 W",
+   "cells": {"wh": "1,451 Wh NMC (920–1,380 in tests)", "panel": "SP037 (Voc 45.3 V, 18.5 kg): about 1.5 kWh a day", "covers": "Fridge + box fan: yes in strong sun", "price": "$848 (sold out, pre-order)", "warranty": "5 years registered (24 months otherwise)"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 + SF200 / + SP037",
+   "cells": {"wh": "1,024 Wh (unmeasured)", "panel": "200 W: about 770 Wh; 400 W: about 1.5 kWh; input 650 W, 11–60 V, XT60", "covers": "Lights, phones, fan: yes; fridge: only with the 400 W panel in good sun (overnight draw must fit about 0.9 kWh)", "price": "$531 (200 W), $698 (400 W); pre-order, ships from Dec 7–15", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2 + 100 W",
+   "cells": {"wh": "288 Wh", "panel": "100 W: about 385 Wh a day; input 200 W, 12–28 V only", "covers": "Lights and phones; about one day of a 12 V fan too", "price": "$489.99", "warranty": "5 years"}},
+  {"slug": "allpowers-volix-p300-100w-solar-kit", "model": "ALLPOWERS VOLIX P300 + 100 W",
+   "cells": {"wh": "256 Wh", "panel": "100 W: about 385 Wh a day; input 110 W, 11–30 V", "covers": "Lights and phones", "price": "$218.99 (bundle page $228.99; pre-order from Nov 16)", "warranty": "per ALLPOWERS' warranty page"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max + panels", "url": "https://www.ecoflow.com/us/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh", "panel": "input 1,000 W; 220 W bifacial option; '2 free 110 W panels' promotion", "covers": "Like the Elite 200 V2", "price": "$1,029 station (2026-11-03); bundle price not shown", "warranty": "5 years"}},
+ ],
+ "after": """
+<h2>The load sheet</h2>
+<p>Fridge: ENERGY STAR-certified compact units of 3.0–4.4 cu ft are rated 220–270 kWh a year (Arctic King 3.3 cu ft 220, 4.4 cu ft 226; Avallon 3.0 cu ft 230; Arctic King 3.1 cu ft 270), 600–740 Wh a day in the lab, more in a hot cabin or after a week switched off while it pulls the box down; a 17 cu ft bottom-freezer is 450–460 kWh a year, 1.2–1.3 kWh a day. Lights: 4–6 LED bulbs at 9 W for five hours, 180–270 Wh. Phones 10–30 Wh each, a laptop 50–100 Wh a day. Fan: the swing item, 400–800 Wh for a 75–100 W box fan over eight hours against 80–160 Wh for a 12 V fan. Station idle with the inverter on adds 10–20 W around the clock (the Elite 30 V2 quotes 4.5 W standby); running lights and fans from the DC ports avoids it. Figures other than the ENERGY STAR and BLUETTI ones are planning assumptions.</p>
+<h2>Sun, by season and region</h2>
+<p>PVWatts (NREL, fixed panel tilted 30° facing south, 14 % losses) gives daily peak-sun hours of: Denver 4.3 January, 6.9 June, 4.3 December, 5.9 annual; Asheville 4.1, 6.0, 3.8, 5.1; Minneapolis 3.2, 6.0, 2.6, 4.7; Seattle 1.6, 5.5, 1.5, 3.9. A folding panel laid flat or shaded by trees does worse. At 70 % of rating, a 200 W panel yields about 770 Wh on a 5.5-hour day and 210–360 Wh on a northern December day; a 350–400 W panel about 1.3–1.5 kWh and 400–730 Wh. That is why the summer weekend balances with the Elite 200 V2 and 350 W of panel, and the winter weekend is battery-only.</p>
+<h2>Between visits</h2>
+<p>Leaving the fridge running means the station lives as a small solar system for the week, cycling every day; neither BLUETTI nor ALLPOWERS publishes guidance on continuous solar cycling for these units, so the safer habit is to empty the fridge, switch it off and let the station top up unloaded, or bring a cooler. A cabin used every weekend eventually wants a proper install (two or more fixed panels, a LiFePO4 bank, charge controller and inverter), which this page does not price. Check the kits' cables: ALLPOWERS kits ship a PV cable to XT60 with adapters; BLUETTI's in-the-box lists did not show an MC4 lead.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 200 V2 + SP200L solar panel kit", "https://www.bluettipower.com/products/elite-200-v2-sp200l"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("BLUETTI Elite 30 V2", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
+  ("ALLPOWERS S2000 Pro + SP037 400 W kit", "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel"),
+  ("ALLPOWERS P1800 + 200 W kit", "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-200w-solar-panel"),
+  ("ALLPOWERS SP037 400 W panel", "https://iallpowers.com/products/allpowers-400w-portable-solar-panel"),
+  ("ALLPOWERS VOLIX P300 + 100 W", "https://iallpowers.com/products/volix-p300-100w-solar-panel"),
+  ("ENERGY STAR certified residential refrigerators (compact models)", "https://data.energystar.gov/resource/p5st-her9.json?$limit=40&$offset=30&$where=upper(type)%20like%20%27%25COMPACT%25%27"),
+  ("NREL PVWatts v8 API (peak-sun hours)", "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&lat=47.6&lon=-122.3&system_capacity=1&azimuth=180&tilt=30&array_type=0&module_type=0&losses=14"),
+  ("EcoFlow DELTA 2 Max", "https://www.ecoflow.com/us/delta-2-max-portable-power-station"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-for-a-farmers-market-booth", "question": "G82 (power funnel: power station for a farmers-market booth)", "lead_first": True,
+ "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
+                    "title": "BLUETTI AC180, a market day of power",
+                    "description": "1,152 Wh LiFePO4, 1,800 W, 0–80 % in 45 min on AC.",
+                    "image_url": "https://checkout.bluettipower.com/cdn/shop/files/AC180_cb56a69e-aa02-41ce-b2ed-965b8afa3cef.png"},
+ "title": "Which power station gets a farmers-market booth (card reader, mini fridge, LED lights, an occasional blender) through a 6-hour day (2026)?",
+ "h1": "Which power station gets a farmers-market booth through a 6-hour day? (2026)",
+ "desc": "Sizing a power station for a market booth with a card reader, a mini fridge, LED lights and a blender used now and then: ENERGY STAR mini-fridge consumption (106–247 kWh a year for 1–1.6 cu ft units), a 2 HP Vitamix's roughly 1,500 W draw, the 6-hour arithmetic, which stations hold the blender's surge and the day (BLUETTI AC180, Elite 200 V2, ALLPOWERS S2000 Pro, P1800) and which only run lights and a reader (Elite 30 V2, R600, Tenergy T320), recharge times between markets, weight, heat, and rivals.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}), $449 in our 2026-11-03 check (BLUETTI's page lists $499 and a late-November restock): the power station for a farmers market booth with a fridge and a blender, about 950–1,030 Wh measured, an 1,800 W inverter that holds a 2 HP Vitamix (about 1,500 W) for a smoothie, and a 0–80 % AC recharge in about 45 minutes at home. A 6-hour day with a mini fridge, LED lights, a card reader and ten blends is roughly 0.7–1.0 kWh, so the AC180 covers it with little to spare; if it is out of stock the <strong>Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}) ($899, in stock) covers two days.</p>
+<p>What to know: ENERGY STAR-certified 1.0–1.6 cu ft mini fridges are rated 106–247 kWh a year (290–680 Wh a day, so 75–170 Wh an hour), the Dometic C40 absorption units at the low end and the Avanti and Danby compressor units at the top; over six hours in the sun with the door opening, plan 400–600 Wh. LED string lights draw 10–40 W (60–240 Wh), a card reader and phone a few watts from their own batteries, and the station's inverter about 15 W idle (90 Wh); a blender is a surge problem, not an energy one (ten 30-second blends of a 1,500 W Vitamix is about 125 Wh), which rules out the 288–300 Wh units: the Elite 30 V2 and ALLPOWERS R600 have 600 W inverters and the Tenergy T320 200 W, fine for lights and a reader, not a blender or a fridge all day. The ALLPOWERS S2000 Pro (1,451 Wh, 2,400 W, 13 kg, $549) has the most margin for a Vitamix but was sold out today and derates to 2,000 W below about 60 % charge; the P1800 (1,024 Wh, 1,800 W, 13 kg, $399) is a December pre-order. Keep the station shaded under the table (lithium stations are rated to about 40 °C), and check the market's rules: most that ban generators allow battery stations.</p>
+""",
+ "columns": [("wh", "Capacity (usable)"), ("inv", "Inverter: holds a 1,500 W blender?"), ("day", "6-hour booth day (0.7–1.0 kWh)"), ("recharge", "AC recharge"), ("weight", "Weight"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030)", "inv": "1,800 W: yes", "day": "Yes, thin margin", "recharge": "0–80 % in 45 min (1,440 W input)", "weight": "16 kg", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910)", "inv": "2,600 W: yes", "day": "Two days, or a full-size fridge", "recharge": "80 % in 1.1 h, full in 1.4 h", "weight": "24.2 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (about 920–1,380 in tests)", "inv": "2,400 W (2,000 W below about 60 %): yes", "day": "Yes, with margin", "recharge": "about 1.5 h", "weight": "13 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh (unmeasured)", "inv": "1,800 W (3,600 W peak): yes", "day": "Yes, thin margin; pre-order, ships Dec 7", "recharge": "per ALLPOWERS' page", "weight": "13 kg", "warranty": "24 months (US page)"}},
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh", "inv": "600 W: no blender", "day": "Lights + reader only", "recharge": "about 1 h", "weight": "4.3 kg", "warranty": "5 years"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh", "inv": "600 W: no blender", "day": "Lights + reader only; sold out at last check", "recharge": "about 1 h", "weight": "5.6 kg", "warranty": "5 years"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh", "inv": "200 W (400 W surge): no blender, no fridge", "day": "Lights + reader only", "recharge": "about 8 h", "weight": "3.7 kg", "warranty": "2 years"}},
+  {"brand": "EcoFlow", "model": "DELTA 3", "url": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "cells": {"wh": "1,024 Wh", "inv": "1,800 W (3,600 W surge): yes", "day": "Yes, thin margin", "recharge": "full in about 56 min at 1,500 W", "weight": "12.5 kg", "warranty": "5 years", "price": "$579 (2026-11-03), $0.57/Wh; base option sold out"}},
+ ],
+ "after": """
+<h2>The booth's loads</h2>
+<p>The fridge is the only load that runs all day. EPA's ENERGY STAR data for compact refrigerators under 2.5 cu ft lists 106 kWh a year for Dometic's 1.1 cu ft C40S absorption units, 121 for an Insignia 1.5 cu ft, 190–210 for Danby, Ikea and Smeg 1.2–1.5 cu ft units, and 241–247 for Danby, Absocold and Avanti 1.0–1.6 cu ft compressor fridges: 290–680 Wh a day in a lab at room temperature, which a sunny booth with a door that keeps opening will exceed. Lights: a string of LED bulbs is 10–40 W. Card reader and tablet: their own batteries, topped up from a USB port. Blender: Vitamix lists the Explorian E310 at 2 HP (about 1,500 W electrical) at 110–120 V, which an 1,800 W inverter holds for a 30–60 second blend but a 600 W one trips on; a personal blender in the 600–900 W class fits the Elite 30 V2 and R600. A hot plate or espresso machine is a 1,000–1,500 W continuous load and a different page.</p>
+<h2>The arithmetic</h2>
+<p>Fridge 400–600 Wh, lights 60–240 Wh, reader and phones about 60 Wh, ten blends about 125 Wh, station idle about 90 Wh: 0.7–1.1 kWh for six hours. The AC180's measured 950–1,030 Wh covers it with little margin on a hot day; the Elite 200 V2 or S2000 Pro gives the margin, two days, or a second fridge. The 300 Wh units cover lights and a reader for the day and nothing cold. Between markets the AC180 refills to 80 % in 45 minutes from a wall socket; a 200 W panel on the stall adds 300–600 Wh over a sunny day if you have the space, and the car socket adds about 100 Wh an hour on the drive.</p>
+<h2>Carrying it and keeping it cool</h2>
+<p>Weight from the car: Elite 30 V2 4.3 kg, S2000 Pro and P1800 13 kg, AC180 16 kg, Elite 200 V2 24.2 kg. Shade the station: the ALLPOWERS R4000's rating tops out at 40 °C and BLUETTI publishes no range on these pages, so under the table out of the sun is the rule. Fan noise rises under a blender load and settles after. Rivals: EcoFlow's DELTA 3 (1,024 Wh, 12.5 kg) is lighter than the AC180 at $579, about $0.57 per watt-hour against the AC180's $0.39–0.43; Jackery and Anker pages could not be read today.</p>
+""",
+ "sources": [
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("ENERGY STAR certified compact refrigerators under 2.5 cu ft (EPA data)", "https://data.energystar.gov/resource/p5st-her9.json?$limit=15&$where=capacity_total_volume_ft3%3C2.5%20AND%20upper(type)%20like%20%27%25COMPACT%25%27&$select=brand_name,model_number,capacity_total_volume_ft3,annual_energy_use_kwh_yr"),
+  ("Vitamix Explorian E310 (2 HP, 110–120 V)", "https://www.vitamix.com/us/en_us/products/e310"),
+  ("ALLPOWERS R4000 (temperature ratings)", "https://iallpowers.com/products/allpowers-r4000-power-station"),
+  ("EcoFlow DELTA 3", "https://us.ecoflow.com/products/delta-3-portable-power-station"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]
