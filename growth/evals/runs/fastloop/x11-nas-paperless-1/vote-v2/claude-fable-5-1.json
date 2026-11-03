@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "Deployment how-to; names no NAS, only generic prerequisites",
+   "evidence": "A host with Docker and the Docker Compose v2 plugin — a NAS that supports Docker, or a small Linux server.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Official install docs; software setup only, no hardware or NAS advice",
+   "evidence": "Docker and Docker Compose must be installed. macOS users will need GNU sed with support for running as sed as well as wget.",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "Only GitHub navigation chrome, no page content",
+   "evidence": "Find code, projects, and people on GitHub:",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text extracted",
+   "evidence": "https://blog.plainshawk.co.uk/setting-up-a-document-store-under-docker/",
+   "quote_found": false
+  },
+  {
+   "n": 4,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text extracted",
+   "evidence": "https://stackharbor.com/en/knowledge-base/paperless-ngx-document-archive/",
+   "quote_found": false
+  },
+  {
+   "n": 5,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Project repo README; describes the software, not which NAS to buy",
+   "evidence": "Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Official FAQ; only says arm64/Raspberry Pi works, no NAS recommendation or sizing",
+   "evidence": "Docker images are available for arm64 hardware, so just follow the Docker Compose instructions.",
+   "quote_found": true
+  },
+  {
+   "n": 7,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "Roundup of containers for people who already own a Synology; does not pick a NAS",
+   "evidence": "7. Paperless-ngx – best document archive with OCR",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "Same container-roundup angle, assumes a Synology already owned, no hardware picks",
+   "evidence": "Paperless-ngx turns receipts, warranties, tax documents, manuals, and scans into a searchable archive.",
+   "quote_found": true
+  },
+  {
+   "n": 9,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "One person's sanitised Proxmox build runbook, not a NAS buying guide",
+   "evidence": "Paperless-ngx — Document Management Build Runbook 🌐 PUBLIC / SANITISED VERSION Hostnames and CT/VM IDs are retained",
+   "quote_found": true
+  },
+  {
+   "n": 10,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "A raw docker-compose file; configuration, not hardware",
+   "evidence": "PAPERLESS_OCR_LANGUAGE : ${PAPERLESS_OCR_LANGUAGE} # Primary OCR language",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "authority",
+   "answers_it": false,
+   "why": "Fossies mirror of the official FAQ; no NAS or sizing guidance",
+   "evidence": "If you can't run the docker image, the documentation has instructions for bare metal installs.",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "A direct NAS pick: specific current models (e.g. Synology DS224+/DS923+, UGREEN DXP2800/4800, QNAP TS-264, or a mini PC alternative) with prices, whether they run Docker/Container Manager, x86 vs ARM, RAM needed for Tesseract OCR and PostgreSQL/Redis, drive-bay and RAID/backup setup for keeping documents for years, and which scanners feed the consume folder.",
+ "why": "Not a single result recommends a NAS. The official docs and GitHub pages (authorities) only cover software install; the two listicles assume you already own a Synology; the rest are personal runbooks, compose files, or unreadable pages. No major reviewer tested NAS units for Paperless-ngx, and nobody states hardware requirements beyond \"Docker and enough disk\". A page that compares Docker-capable NAS models on CPU, RAM, bays and price, states what Paperless-ngx actually needs, and makes a pick would be the only direct answer in the set.",
+ "results": 12,
+ "quotes_found": 10,
+ "chars_shown": 13746,
+ "chars_full": 126522
+}

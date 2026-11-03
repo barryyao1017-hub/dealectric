@@ -3041,4 +3041,351 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("MacRumors: Satechi Qi2 car charger", "https://www.macrumors.com/2024/06/20/satechi-qi2-wireless-car-charger/"),
  ],
  "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-paperless-ngx-document-archive", "question": "G51 (UGREEN funnel: NAS for Paperless-ngx)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Paperless-ngx",
+                    "description": "2-bay Intel N100, 8 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS for running Paperless-ngx as a scanned document archive (2026): picks, what it needs, scanners that feed it",
+ "h1": "Best NAS for running Paperless-ngx as a scanned document archive (2026)",
+ "desc": "Which NAS to run Paperless-ngx on for years of scanned mail and documents: UGREEN's DXP2800 against the Synology DS225+ and DS224+, QNAP TS-264, TerraMaster F2-425 Plus, Asustor AS5402T (native package), a Raspberry Pi 5 and an N100 mini PC, with Paperless-ngx's own requirements (Docker Compose stack, OCR workers, x86 or ARM, consume folder, exporter backups), the guides per NAS OS, the scanners that write straight to the consume folder, and the storage math.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS for running Paperless-ngx as a document archive at its 2026 price, $389.99 diskless on 2026-11-03: an x86 Intel N100 with 8 GB that runs the Docker Compose stack (Paperless, Redis, PostgreSQL, optional Tika and Gotenberg) with room for OCR workers, two mirrored bays plus two M.2 slots for the database, and an SMB share your scanner writes into as the consume folder.</p>
+<p>What to know: Paperless-ngx publishes no RAM or CPU minimum and says it "runs on Raspberry Pi", so a $100–170 N100 mini PC or a Pi 5 is enough for a small personal archive if you don't want drive bays; Synology's DS225+ (about $340, 3-year warranty, 2 GB RAM) has far more Paperless guides, Asustor ships a native Paperless package, and UGREEN's only how-to is a third-party post, so on UGOS you follow the project's own compose file. The DH2300 is out: UGREEN says it has no official Docker support.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("docker", "Docker and Paperless guides"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (x86), 8 GB DDR5 (16 GB); 2× M.2", "docker": "Docker app on UGOS Pro; one third-party guide (Marius Hosting, Portainer + compose); no owner reports found", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Pentium Gold 8505, 8 GB (64 GB); 4 bays, 10GbE", "docker": "Same; overkill for Paperless alone, the pick if the NAS also does Plex or VMs", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Celeron J4125, 2 GB (6 GB); 2.5GbE", "docker": "Container Manager; the most Paperless guides of any NAS (incl. a MariaDB variant); DSM ACLs and a postgres:18 bind-mount bug on btrfs are the reported snags", "warranty": "3 years", "price": "about $339.99 (B&H/Newegg trackers, undated)"}},
+  {"brand": "Synology", "model": "DS224+", "url": "https://www.synology.com/en-us/products/DS224+",
+   "cells": {"cpu": "Celeron J4125, 2 GB (6 GB); 1GbE", "docker": "Container Manager", "warranty": "2 years", "price": "tracker prices conflict ($251 low, $599 outlier); not verified"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en-us/product/ts-264",
+   "cells": {"cpu": "Celeron N5095, 8 GB", "docker": "Container Station; community compose files only", "warranty": "not verified", "price": "$439–504 across sellers (trackers, undated)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 8 GB DDR5; 2× 5GbE", "docker": "TOS 6 Docker Manager; no Paperless guide; one report of Docker's data root vanishing after a reboot", "warranty": "2 years (reseller)", "price": "$424.99 (listing from May 2026)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/app_central/app_detail?id=1566&model=40",
+   "cells": {"cpu": "Celeron N5105, 4 GB (16 GB)", "docker": "Native Paperless-ngx package in App Central (MariaDB build on ADM 5), the only one-click NAS install", "warranty": "3 years (listings conflict)", "price": "about $370–460 (sellers, undated)"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5, 8 GB + USB SSD", "url": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/setup.md",
+   "cells": {"cpu": "Arm Cortex-A76, 8 GB", "docker": "Official arm64 image; the docs' own low-power settings (SQLite, 1 webserver worker, OCR clean none)", "warranty": "not found", "price": "$175 board (after the April 2026 rise); case, PSU and SSD extra"}},
+  {"brand": "Mini PC", "model": "N100, 16 GB / 512 GB", "url": "https://slickdeals.net/f/18469096-minisforum-un100p-mini-pc-refurb-n100-16gb-ddr4-512gb-ssd-wi-fi-6-2-5g-lan-99-95",
+   "cells": {"cpu": "Intel N100, 16 GB", "docker": "Any Linux + Docker; no RAID, no bays, no NAS apps", "warranty": "varies", "price": "about $100–170 (refurb to new, undated)"}},
+ ],
+ "after": """
+<h2>What Paperless-ngx needs</h2>
+<ul>
+<li><strong>The stack:</strong> the official compose file runs the webserver (ghcr.io/paperless-ngx/paperless-ngx), Redis as the broker, PostgreSQL (recommended for new installs; SQLite for the smallest boxes), and optionally Gotenberg and Tika for Office files. The image is published for amd64 and arm64.</li>
+<li><strong>CPU and RAM:</strong> no published minimum; OCR (OCRmyPDF/Tesseract) uses every core by default, with one task worker and threads set to the core count. The docs' advice for small boxes is SQLite, one webserver worker, OCR mode auto (skip pages that already carry text) and OCR clean none. An N100 with 8 GB runs it with headroom; extra OCR languages cost CPU.</li>
+<li><strong>Consume folder:</strong> Paperless watches it, imports each file and deletes it. Scanners reach it over an SMB or FTP share on the NAS; if the folder sits on a network mount from elsewhere, set the polling interval because inotify does not fire. Email consumption (mail rules, every 10 minutes) and the mobile apps are the other inputs. Set USERMAP_UID/GID to a user that can write the folder.</li>
+<li><strong>Backups:</strong> document_exporter writes originals, archive PDFs, thumbnails and a manifest.json of the database, runs incrementally and imports only into the same Paperless version; schedule it to a second disk and keep an off-site copy. RAID 1 protects against a dead drive, not a deletion.</li>
+<li><strong>Version churn:</strong> Paperless 3.x renamed settings and requires the database engine to be set explicitly, so third-party guides go stale; start from the project's compose file.</li>
+</ul>
+<h2>Scanners that feed the consume folder without a PC</h2>
+<ul>
+<li><strong>Brother ADS-4300N</strong> (about $400–530): scan to SMB network folder, FTP or SFTP from the panel.</li>
+<li><strong>Brother ADS-1800W</strong> (replaces the discontinued ADS-1700W, $249.99): network folder (CIFS) and FTP.</li>
+<li><strong>Ricoh ScanSnap iX1600</strong> (about $400–460): one of only two ScanSnaps (with the iX2500) that save straight to a NAS folder, over SMB 1.0–3.0.2, but direct save drops searchable-PDF, naming and deskew; let Paperless do the OCR.</li>
+<li><strong>Epson ES-580W</strong> (about $380–450): SMB, FTP, email and cloud destinations.</li>
+</ul>
+<p>Use a dedicated scanner account with write access to the consume folder only; SMB version mismatches and paths are the usual failures.</p>
+<h2>Storage math</h2>
+<p>A 300-dpi black-and-white page is about 50–200 KB, a colour page 1–3 MB, so 10,000 pages is roughly 0.5–2 GB in black and white or 10–30 GB in colour, and Paperless roughly doubles that with its OCR'd archive copy (which you can turn off). Two 4 TB drives in RAID 1 hold decades of paper; the budget goes into the box, the scanner and the backup, not the disks.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN NASync DH2300 (no official Docker)", "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"),
+  ("Paperless-ngx docs: setup (hardware, low-power devices, UID/GID)", "https://github.com/paperless-ngx/paperless-ngx/blob/dev/docs/setup.md"),
+  ("Paperless-ngx docs: configuration (workers, OCR, polling)", "https://github.com/paperless-ngx/paperless-ngx/blob/dev/docs/configuration.md"),
+  ("Paperless-ngx docs: administration (document_exporter)", "https://github.com/paperless-ngx/paperless-ngx/blob/dev/docs/administration.md"),
+  ("Paperless-ngx docs: usage (consume folder, email)", "https://github.com/paperless-ngx/paperless-ngx/blob/dev/docs/usage.md"),
+  ("Paperless-ngx container image (amd64, arm64)", "https://github.com/paperless-ngx/paperless-ngx/pkgs/container/paperless-ngx"),
+  ("Marius Hosting: Paperless-ngx on a UGREEN NAS", "https://mariushosting.com/how-to-install-paperless-ngx-on-your-ugreen-nas/"),
+  ("Marius Hosting: Paperless-ngx on a Synology NAS", "https://mariushosting.com/how-to-install-paperless-ngx-on-your-synology-nas/"),
+  ("Asustor App Central: Paperless-ngx", "https://www.asustor.com/app_central/app_detail?id=1566&model=40"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("Synology DS224+", "https://www.synology.com/en-us/products/DS224+"),
+  ("QNAP TS-264", "https://www.qnap.com/en-us/product/ts-264"),
+  ("TerraMaster F2-425 Plus", "https://www.terra-master.com/products/f2-425-plus"),
+  ("Brother ADS-1700W (discontinued; network folder and FTP)", "https://www.brother-usa.com/p/desktop-scanners/ADS1700W"),
+  ("Ricoh ScanSnap FAQ: saving to a NAS folder", "https://scansnap-faq.pfu.ricoh.com/hc/en-us/articles/25057686329113-Can-I-save-images-to-a-network-folder-such-as-NAS"),
+  ("Ricoh ScanSnap FAQ: PC vs direct network-folder save", "https://scansnap-faq.pfu.ricoh.com/hc/en-us/articles/48773703467033-What-are-the-differences-between-saving-scan-data-through-a-PC-and-directly-to-a-network-folder"),
+  ("Dynafile: scanned document storage estimates", "https://kb.dynafile.com/knowledge-base/storage-estimates/"),
+  ("BGR: Raspberry Pi 5 price after the 2026 RAM rise", "https://www.bgr.com/2150106/raspberry-pi-cost-ram-crisis/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-for-audiobookshelf-calibre-web", "question": "G53 (UGREEN funnel: NAS for Audiobookshelf and Calibre-Web)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 for Audiobookshelf",
+                    "description": "2-bay Intel N100, 8 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS for self-hosting Audiobookshelf and Calibre-Web for a family (2026): picks, phone apps, remote access",
+ "h1": "Best NAS for self-hosting Audiobookshelf and Calibre-Web for a family (2026)",
+ "desc": "Which NAS runs Audiobookshelf and Calibre-Web for a family's audiobooks and ebooks: UGREEN's DXP2800 against the Synology DS225+, QNAP TS-264, TerraMaster F2-425 Plus, Asustor AS5402T and a Raspberry Pi 5, with what each app needs in Docker (config on local disk, no PUID, the x86-only Calibre conversion mod), the state of the iPhone and Android apps, Kobo sync and OPDS, remote access for family phones, and library sizing.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), the best NAS for self-hosting Audiobookshelf and Calibre-Web for a family that also wants mirrored drives for photos and backups, $389.99 diskless on 2026-11-03: x86 Intel N100, 8 GB, both apps as Docker Compose projects (the x86-only Calibre conversion mod included). Know first that Audiobookshelf's official iPhone app is TestFlight-only, so iPhones use a third-party client.</p>
+<p>What to know: neither app needs a NAS (direct-play audio and EPUB serving are light, so a Pi 5 at about $175 plus SSD and power, or an N100 mini PC, runs both); Synology's DS225+ (about $365, 2 GB RAM, 3-year warranty) has more step-by-step guides, and UGREEN's coverage is one third-party guide. The TestFlight beta is full, so iPhone families pick ShelfPlayer ($5.99), Plappa, SoundLeaf or Absorb (CarPlay per each developer); the Android app is a free beta; and family phones outside the house need Tailscale or a reverse proxy.</p>
+""",
+ "columns": [("cpu", "CPU / RAM"), ("route", "Docker and guides"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"cpu": "Intel N100 (x86), 8 GB DDR5 (16 GB); 2× M.2", "route": "Docker app (Compose projects) or Portainer; Marius Hosting guides for Audiobookshelf and Calibre-Web Automated; UGREENlink/DDNS built in, Tailscale in Docker", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dh2300", "model": "UGREEN NASync DH2300",
+   "cells": {"cpu": "Rockchip ARM, 4 GB", "route": "No official Docker: ruled out", "warranty": "2 years"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"cpu": "Celeron J4125, 2 GB (6 GB); 2.5GbE", "route": "Container Manager; guides for both apps; known 'Reset' step on Audiobookshelf updates; Tailscale is a manual SPK on DSM 7", "warranty": "3 years", "price": "$364.99 (B&H, 2026-11-03 via search); $274.99 on an undated Amazon deal"}},
+  {"brand": "QNAP", "model": "TS-264 (8 GB)", "url": "https://store.qnap.com/ts-264-8g-us.html",
+   "cells": {"cpu": "Celeron N5095, 8 GB", "route": "Container Station; a third-party Calibre-Web walkthrough, no Audiobookshelf guide found", "warranty": "not verified", "price": "$489 (QNAP store, 2026-11-03)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/products/f2-425-plus",
+   "cells": {"cpu": "Intel N150, 8 GB DDR5; 2× 5GbE", "route": "TOS 6 Docker; no guide for either app", "warranty": "2 years (reseller)", "price": "$499.99 out of stock on TerraMaster's page; $424.99 Walmart (unverified)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/app_central/app_detail?id=1017",
+   "cells": {"cpu": "Celeron N5105, 4 GB (16 GB)", "route": "Calibre-Web in App Central (one click); Audiobookshelf via Docker, no guide found", "warranty": "3 years (listings conflict)", "price": "about $407 (B&H/Newegg via search, undated)"}},
+  {"brand": "Raspberry Pi", "model": "Pi 5, 8 GB + SSD", "url": "https://www.raspberrypi.com/news/more-memory-driven-price-rises/",
+   "cells": {"cpu": "Arm Cortex-A76, 8 GB", "route": "Both images build for arm64; no Calibre conversion (the mod is x86 only); no RAID", "warranty": "not found", "price": "about $175 board after 2026's rises; about $230+ with PSU and SSD"}},
+ ],
+ "after": """
+<h2>What each app needs</h2>
+<ul>
+<li><strong>Audiobookshelf</strong> (ghcr.io/advplyr/audiobookshelf, v2.37.2 on 2026-10-23): volumes /config, /metadata, /audiobooks, /podcasts; the docs say /config must be on the same machine, never a network share, or the SQLite database can corrupt; it ignores PUID/PGID (use the compose user: line); multi-user with per-user progress, podcasts, and "basic ebook support" (EPUB, PDF, CBR/CBZ reader with send-to-device). No published RAM or CPU minimum; transcoding, M4B merging and metadata embedding are the heavy parts. Synology's Container Manager and Portainer can cache old images on update ("Cannot find module '/index.js'"), fixed by Reset or Recreate.</li>
+<li><strong>Calibre-Web</strong> (lscr.io/linuxserver/calibre-web, amd64 and arm64): port 8083, /config and /books, PUID/PGID supported, OPDS feed at /opds for KOReader-type apps, Kobo sync ("limited testing", no PDFs, put it behind SSL), one-click send to an e-reader. Ebook conversion needs the universal-calibre Docker mod, which is x86-64 only, so a Pi serves but does not convert. Calibre-Web Automated adds an ingest folder and auto-conversion (about 2 GB image).</li>
+<li><strong>Do you need both?</strong> Audiobookshelf alone covers a family that reads EPUBs in its web reader or sends them to a Kindle; add Calibre-Web for Kobo sync and OPDS apps. Keep the two libraries in separate folders.</li>
+</ul>
+<h2>Phones and remote access</h2>
+<p>Android: the official Audiobookshelf app is on Google Play, free, still marked beta, with offline listening "in beta". iPhone: no App Store listing; the official app is TestFlight-only and full, so the choices are ShelfPlayer ($5.99 one-time, iOS 26, repo archived July 2026 and under new ownership), Plappa and SoundLeaf (free with paid offline downloads), AudioBooth (free) and Absorb (free, open source, both platforms); each lists CarPlay, none independently tested. Outside the house, run Tailscale (a Compose project on UGOS; a manual SPK on Synology) and point the app at the tailnet address, or put the server behind a reverse proxy; Cloudflare Tunnel users report WebSocket disconnects. Whether UGREENlink's relay reaches the Audiobookshelf app is not documented.</p>
+<h2>Sizing</h2>
+<p>Kobo puts audiobooks at about 28 MB an hour (64 kbps); 128 kbps is about 58 MB an hour, so a 10-hour book is 0.3–0.6 GB and 500 books roughly 150–300 GB. EPUBs are negligible. One 2 TB drive holds the library many times over, which is why the NAS is bought for its bays and backups, not for this workload.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("Audiobookshelf docs: Docker install", "https://audiobookshelf.org/docs/documentation/install/docker"),
+  ("Audiobookshelf docs: introduction (features)", "https://www.audiobookshelf.org/docs/documentation/introduction"),
+  ("Audiobookshelf releases", "https://github.com/advplyr/audiobookshelf/releases"),
+  ("Audiobookshelf mobile app (Android beta, iOS TestFlight)", "https://github.com/advplyr/audiobookshelf-app"),
+  ("Audiobookshelf on iPhone: third-party apps (author makes a rival app)", "https://www.tobiasreithmeier.de/en/blog/audiobookshelf-on-iphone"),
+  ("linuxserver.io: calibre-web image", "https://docs.linuxserver.io/images/docker-calibre-web/"),
+  ("Calibre-Web: Kobo integration", "https://github.com/janeczku/calibre-web/wiki/Kobo-Integration"),
+  ("Calibre-Web Automated", "https://github.com/crocodilestick/Calibre-Web-Automated"),
+  ("Marius Hosting: Audiobookshelf on a UGREEN NAS", "https://mariushosting.com/how-to-install-audiobookshelf-on-your-ugreen-nas/"),
+  ("Marius Hosting: Calibre-Web Automated on a UGREEN NAS", "https://mariushosting.com/how-to-install-calibre-web-automated-on-your-ugreen-nas/"),
+  ("UGREEN NAS Docker guide (ports, paths)", "https://www.needtoknowit.com.au/blog/ugreen-nas-docker-containers-guide.md"),
+  ("Tailscale on Synology", "https://tailscale.com/kb/1131/synology"),
+  ("Audiobookshelf over Tailscale (discussion)", "https://github.com/advplyr/audiobookshelf/discussions/2536"),
+  ("Asustor App Central: Calibre-Web", "https://www.asustor.com/en/app_central/app_detail?id=1017"),
+  ("QNAP store: TS-264-8G", "https://store.qnap.com/ts-264-8g-us.html"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("Kobo: audiobook file sizes", "https://help.kobo.com/hc/en-us/articles/360018108913-Audiobook-file-sizes"),
+  ("Raspberry Pi: memory-driven price rises", "https://www.raspberrypi.com/news/more-memory-driven-price-rises/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-nas-to-record-reolink-cameras-24-7", "question": "G52 (UGREEN funnel: NAS to record Reolink PoE cameras)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp2800", "item_id": "UGREEN-DXP2800",
+                    "title": "UGREEN NASync DXP2800 with Surveillance Center",
+                    "description": "2-bay Intel N100 NAS, 8 GB; UGOS Surveillance Center (ONVIF/RTSP) or Frigate. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/DXP2800.807_03f73156-0ab5-482c-a855-f7c96d35f6d2.png"},
+ "title": "Best NAS to record four Reolink PoE cameras 24/7 with no subscription (2026): UGREEN, Synology, or Reolink's own NVR",
+ "h1": "Best NAS to record four Reolink PoE cameras 24/7 with no subscription (2026)",
+ "desc": "What records four Reolink PoE cameras around the clock with no cloud fee: Reolink's RLN8-410 NVR, a UGREEN NASync DXP2800 with UGOS's Surveillance Center (ONVIF/RTSP, a first-version app) or Frigate in Docker, a Synology DS225+ with Surveillance Station and a 4-camera licence pack, QNAP QVR Elite, Asustor and TerraMaster, with camera licence rules, Reolink's RTSP/ONVIF and FTP options, bitrates, storage per month, surveillance drives and PoE switch prices.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> If you only want the cameras recorded, buy Reolink's own <strong>RLN8-410</strong> NVR ($349.99 with a 2 TB drive on 2026-11-03): eight PoE ports, no NAS, no subscription. If you want a NAS anyway, buy the <strong>UGREEN NASync DXP2800</strong> ({buy:ugreen-nasync-dxp2800}), $389.99 diskless: UGOS's Surveillance Center records ONVIF/RTSP cameras 24/7 or on events with no published camera fee, but it is a 2026 first-version app, so the NAS, not the recorder, is the reason to pick it.</p>
+<p>What to know: Synology's DS225+ (about $365) has the mature recorder, Surveillance Station, but only 2 free camera licences, so four Reolinks need a CLP4 pack (about $295 on Amazon), about $660 in all; QNAP's QVR Elite is 2 free channels then a subscription; Asustor gives 4 free. One reviewer found UGREEN's people/vehicle detection failing with a Reolink doorbell, and UGREEN's licence terms are undocumented. The technical route on the DXP2800 is Frigate in Docker with OpenVINO on the N100. Four 8MP Reolinks at their 6 Mbps default write about 7.8 TB a month continuous, so buy 6 TB surveillance drives and expect roughly three weeks of retention per 6 TB.</p>
+""",
+ "columns": [("recorder", "Recorder and licences"), ("reolink", "Reolink support"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp2800", "model": "UGREEN NASync DXP2800",
+   "cells": {"recorder": "UGOS Surveillance Center (UGOS Pro 1.18+): 24/7 or event recording, retention limits, local people/vehicle/package/pet detection; no fee or camera cap published; reviewers call it basic. Or Frigate in Docker.", "reolink": "Standard ONVIF/RTSP; one review saw AI detection fail on a Reolink doorbell", "warranty": "2 years"}},
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"recorder": "Same, with four bays and a 12th-gen iGPU for Frigate", "reolink": "Same", "warranty": "2 years"}},
+  {"brand": "Reolink", "model": "RLN8-410 NVR (2 TB)", "url": "https://reolink.com/us/product/rln8-410/",
+   "cells": {"recorder": "Built-in 8-port PoE NVR, up to 12 cameras, local storage, no subscription; 10/100 ports", "reolink": "Native", "warranty": "not read", "price": "$349.99 with 2 TB; $189.99 diskless (2026-11-03)"}},
+  {"brand": "Synology", "model": "DS225+", "url": "https://www.synology.com/en-us/products/DS225+",
+   "cells": {"recorder": "Surveillance Station: 2 free licences, CLP4 pack about $295 (Amazon, 2026-11-03); 20 channels at 4K H.265", "reolink": "Reolink publishes a Surveillance Station guide (ONVIF/RTSP)", "warranty": "3 years", "price": "$364.99 (Amazon, 2026-11-03)"}},
+  {"brand": "QNAP", "model": "TS-264", "url": "https://www.qnap.com/en/software/qvr-elite/pricing",
+   "cells": {"recorder": "QVR Elite: 2 free channels, then from $1.99 per channel per month (subscription only)", "reolink": "ONVIF/RTSP", "warranty": "3 years", "price": "$489 (QNAP store)"}},
+  {"brand": "Asustor", "model": "Nimbustor 2 Gen2 (AS5402T)", "url": "https://www.asustor.com/en/surveillance?sub=104",
+   "cells": {"recorder": "Surveillance Center: 4 free licences, packs of 1 or 4, transferable", "reolink": "ONVIF Profile S/T and generic RTSP; Reolink not in the brand list (old forum report)", "warranty": "3 years (listings conflict)", "price": "about $407 (sellers, undated)"}},
+  {"brand": "TerraMaster", "model": "F2-425 Plus", "url": "https://www.terra-master.com/us/surveillance-manager/",
+   "cells": {"recorder": "Surveillance Manager, listed at $0; ONVIF + H.264 only (unverified)", "reolink": "ONVIF; Reolink's H.265 default must be switched", "warranty": "2 years (reseller)", "price": "$424.99–499.99 (listings conflict)"}},
+ ],
+ "after": """
+<h2>How Reolink cameras reach a NAS</h2>
+<ul>
+<li><strong>RTSP/ONVIF:</strong> RLC-series PoE cameras (RLC-810A 8MP, RLC-510A 5MP, RLC-1212A, Duo 3) expose RTSP and ONVIF; the ports may be off by default and are enabled in the Reolink client. That is what UGOS Surveillance Center, Synology, QNAP, Asustor and Frigate consume.</li>
+<li><strong>FTP upload:</strong> every Reolink PoE camera (add-on cameras excepted) can upload 24/7, motion-only or timed video to an FTP server; SFTP is not supported and Reolink documents no SMB or NFS recording, so this route needs an FTP server on the NAS and gives no playback app.</li>
+<li><strong>Reolink's own NVR or Home Hub 2:</strong> the no-NAS route; the RLN16-410 for more cameras ran about $261–460 across Amazon listings.</li>
+</ul>
+<h2>Storage math</h2>
+<p>GB per day is about 10.8 × total Mbps. Four 8MP Reolinks at the 6,144 Kbps default write about 259 GB a day (7.8 TB a month); at 8 Mbps 346 GB a day; four 5MP at 3 Mbps about 130 GB a day (3.9 TB a month). Those are bitrate ceilings, and H.265 on a quiet scene writes less. A 6 TB drive holds about 23 days of four 8MP cameras at 6 Mbps or 46 days of four 5MP at 3 Mbps; the RLN8-410's 2 TB about 8 or 15 days. Event-only recording cuts it several-fold. Prices read on Amazon 2026-11-03, mostly third-party sellers: WD Purple 4 TB $199–235, Seagate SkyHawk 4 TB $214.99 (from $149.99), SkyHawk 6 TB $296–330; volatile, recheck before buying.</p>
+<h2>PoE</h2>
+<p>Reolink PoE cameras are 802.3af (about 12 W each), so a 65 W four-port PoE+ switch covers four: TP-Link TL-SG1005P $39.90, Tenda TEG1105P $29.99, TP-Link TL-SG1008MP (8 ports, 126 W) $99.99 on 2026-11-03. The Reolink NVR has its PoE ports built in.</p>
+<h2>What we could not verify</h2>
+<p>UGREEN's Surveillance Center guide (support article 866) is readable only in a browser; its camera cap, licence terms, H.265 playback in the web UI and mobile-app live view are unconfirmed, and it has not been tested on the ARM DH2300. Reolink's RTSP table does not name the RLC-1212A, Duo 3 or CX410 individually.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP2800", "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN support: Surveillance Center (article 866)", "https://support.ugnas.com/detail/article/en-US/866"),
+  ("UGREEN forum: Surveillance Center 1.0 announcement (June 2026)", "https://ugreen-forum.de/blog/entry/67-ugreen-surveillance-center/"),
+  ("needtoknowit: UGOS Pro review (surveillance rated basic)", "https://www.needtoknowit.com.au/blog/ugreen-nas-ugos-pro-review.md"),
+  ("NASCompares: UGREEN surveillance cameras and licensing (Jan 2026)", "https://nascompares.com/2026/01/06/ugreen-reveal-new-surveillance-cameras-for-nas/"),
+  ("Reolink RLN8-410", "https://reolink.com/us/product/rln8-410/"),
+  ("Reolink support: FTP upload", "https://support.reolink.com/hc/en-us/articles/360020081034"),
+  ("Reolink support: protocols by model (RTSP/ONVIF/CGI)", "https://support.reolink.com/hc/en-us/articles/900000617826"),
+  ("Reolink support: NAS recording", "https://support.reolink.com/hc/en-us/articles/900000628566"),
+  ("Reolink RLC-810A", "https://reolink.com/us/product/rlc-810a/"),
+  ("Synology: device licence packs (2 free per NAS)", "https://www.synology.com/en-us/products/Device_License_Pack"),
+  ("Synology DS225+", "https://www.synology.com/en-us/products/DS225+"),
+  ("QNAP QVR Elite pricing", "https://www.qnap.com/en/software/qvr-elite/pricing"),
+  ("Asustor Surveillance Center (4 free licences)", "https://www.asustor.com/en/surveillance?sub=104"),
+  ("TerraMaster Surveillance Manager", "https://www.terra-master.com/us/surveillance-manager/"),
+  ("Frigate docs: hardware (N100 OpenVINO)", "https://docs.frigate.video/frigate/hardware"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "best-alternative-to-synology-4-bay-nas-home", "question": "G55 (UGREEN funnel: alternative to a Synology 4-bay)", "lead_first": True,
+ "product_result": {"slug": "ugreen-nasync-dxp4800-plus", "item_id": "UGREEN-DXP4800-PLUS",
+                    "title": "UGREEN NASync DXP4800 Plus, 4-bay 10GbE NAS",
+                    "description": "4-bay Intel NAS with 10GbE, Quick Sync, 8 GB to 64 GB, Docker. Diskless.",
+                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/UGREEN_NAS_storage_4_bay.png"},
+ "title": "Best alternative to a Synology 4-bay NAS for a home user (2026): what the drive policy is now, and the picks",
+ "h1": "Best alternative to a Synology 4-bay NAS for a home user (2026)",
+ "desc": "The 4-bay alternatives to Synology's DS925+ and DS425+ for a home user in 2026: UGREEN DXP4800 Plus and DXP4800, QNAP TS-464, TerraMaster F4-425 Plus and F4-424 Pro, Asustor Nimbustor 4 Gen2 and Lockerstor 4 Gen3, Ubiquiti UNAS 4, with diskless prices, CPUs and iGPUs, drive restrictions (Synology's DSM 7.3 reversal, with the M.2 exception), Plex hardware transcoding, UGOS Pro's maturity and update record, and warranties.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>UGREEN NASync DXP4800 Plus</strong> ({buy:ugreen-nasync-dxp4800-plus}), the best alternative to a Synology 4-bay NAS for a home user in 2026, $619.99 diskless on 2026-11-03: a 12th-gen Intel Pentium Gold 8505 with Quick Sync for Plex, 8 GB DDR5 up to 64 GB, 10GbE plus 2.5GbE, two M.2 slots, Docker, and no drive restrictions of any kind, for less than the DS925+ (about $640–770) that has no iGPU and still needs Synology-listed NVMe for M.2 pools.</p>
+<p>What to know first: the drive lock is mostly over. Since DSM 7.3 (2025-10-08) Synology's 2025 Plus models accept third-party hard drives and SATA SSDs for pool creation again; only new M.2 pools and caches still require listed drives, and unlisted drives get "limited support". So the honest reasons to leave Synology are Plex hardware transcoding (the DS925+'s Ryzen V1500B cannot, and the DS425+'s is contested), 10GbE in the box, and price; the reasons to stay are DSM's mature first-party suite, a 3-year warranty against UGREEN's 2, and Synology's support. UGOS Pro gets monthly updates (1.20 in September 2026), has Docker, Btrfs snapshots, Time Machine and remote access, but no ZFS, no volume encryption (folder encryption since 1.18), about 29 apps, and AI photo recognition tied to the newer iDX series.</p>
+""",
+ "columns": [("cpu", "CPU / iGPU"), ("ram", "RAM (max)"), ("lan", "LAN"), ("drives", "Drive rules"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "ugreen-nasync-dxp4800-plus", "model": "UGREEN NASync DXP4800 Plus",
+   "cells": {"cpu": "Pentium Gold 8505, UHD iGPU (Quick Sync)", "ram": "8 GB DDR5 (64 GB)", "lan": "10GbE + 2.5GbE", "drives": "None; 2× PCIe 4.0 M.2", "warranty": "2 years"}},
+  {"brand": "UGREEN", "model": "NASync DXP4800 (N100)", "url": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-nas-storage",
+   "cells": {"cpu": "Intel N100, UHD iGPU", "ram": "8 GB DDR5", "lan": "2× 2.5GbE", "drives": "None", "warranty": "2 years", "price": "about $468–480 on UGREEN's US pages (undated search results; unverified)"}},
+  {"brand": "Synology", "model": "DS925+", "url": "https://www.synology.com/en-us/products/DS925+",
+   "cells": {"cpu": "AMD Ryzen V1500B, no iGPU", "ram": "4 GB ECC (32 GB)", "lan": "2× 2.5GbE", "drives": "HDD/SATA SSD open since DSM 7.3; M.2 pools/cache need listed NVMe", "warranty": "3 years", "price": "$639.99 list; $700–770 at Newegg/Amazon in 2026 reviews; $511.99 on a March 2026 sale"}},
+  {"brand": "Synology", "model": "DS425+", "url": "https://www.synology.com/en-us/products/DS425+",
+   "cells": {"cpu": "Celeron J4125 (Quick Sync contested in Plex since the 2025 firmware)", "ram": "2 GB (6 GB)", "lan": "2.5GbE + 1GbE", "drives": "Same as DS925+", "warranty": "3 years", "price": "$415.99 (B&H/Slickdeals, undated sale); $519.99 before"}},
+  {"brand": "QNAP", "model": "TS-464", "url": "https://www.qnap.com/en-us/product/ts-464",
+   "cells": {"cpu": "Celeron N5095, UHD", "ram": "8 GB", "lan": "2× 2.5GbE", "drives": "None; 2× M.2", "warranty": "3 years", "price": "$639–655 (Newegg/trackers, mid-2026)"}},
+  {"brand": "TerraMaster", "model": "F4-425 Plus", "url": "https://www.terra-master.com/products/f4-425-plus",
+   "cells": {"cpu": "Intel N150, UHD (Quick Sync)", "ram": "16 GB DDR5 (soldered)", "lan": "2× 5GbE", "drives": "None; 3× M.2", "warranty": "not verified", "price": "$599.99 list; $510–612 on sale; TechRadar says the DXP4800 Plus is better for about $100 more"}},
+  {"brand": "TerraMaster", "model": "F4-424 Pro", "url": "https://www.terra-master.com/products/f4-424-pro",
+   "cells": {"cpu": "Core i3-N305, UHD", "ram": "16 GB DDR5", "lan": "2× 2.5GbE", "drives": "None", "warranty": "not verified", "price": "$859.99 list; $646–700 street"}},
+  {"brand": "Asustor", "model": "Nimbustor 4 Gen2 (AS5404T)", "url": "https://www.asustor.com/en/product?p_id=79",
+   "cells": {"cpu": "Celeron N5105, UHD", "ram": "4 GB (16 GB)", "lan": "2× 2.5GbE", "drives": "None; 4× M.2", "warranty": "3 years (one source says 5)", "price": "$583–642 (undated listings)"}},
+  {"brand": "Asustor", "model": "Lockerstor 4 Gen3 (AS6804T)", "url": "https://www.asustor.com/en/product?p_id=90",
+   "cells": {"cpu": "AMD Ryzen V3C14, no GPU", "ram": "16 GB ECC DDR5 (64 GB)", "lan": "2× 10GbE + 2× 5GbE", "drives": "None; 4× M.2", "warranty": "3 years", "price": "$1,299–1,320"}},
+  {"brand": "Ubiquiti", "model": "UNAS 4", "url": "https://nascompares.com/guide/unifi-unas-2-and-unas-4-one-year-later/amp/",
+   "cells": {"cpu": "ARM Cortex-A55", "ram": "4 GB", "lan": "1× 2.5GbE", "drives": "None; M.2 cache only", "warranty": "not verified", "price": "$379 base, about $408 with surcharge; storage-only, no app host (NASCompares)"}},
+ ],
+ "after": """
+<h2>The Synology policy, precisely</h2>
+<p>In April 2025 Synology required listed (in practice Synology-branded) hard drives for new pools on its 2025 Plus models (DS925+, DS1525+, DS1825+, DS225+, DS425+, DS725+), with deduplication, lifespan analysis and automatic drive firmware limited to its own drives, and third-party M.2 barred from pools and caches. On 2025-10-08 Synology announced that DSM 7.3 lets 2025 Plus, Value and J models install and create storage pools on non-validated third-party drives; its footnote keeps M.2 pools and caches on listed drives, and its compatibility policy page says unlisted drives get limited support and no cover for drive-caused faults. Reports of a warning at pool creation are secondary. The DS225+'s own list still shows only Synology drives.</p>
+<h2>Where each alternative stands for a home user</h2>
+<ul>
+<li><strong>UGREEN DXP4800 Plus:</strong> WunderTech's default Plex pick for most people in 2026 (one or two 4K transcodes); Docker (engine 29 in UGOS 1.19), Btrfs snapshots, Time Machine (firmware 1.9+), UGREENlink remote access without port forwarding; no native Plex package (run it in Docker with the iGPU passed through); reviewers (ITPro, Digitec, KitGuru) call the hardware excellent and the software behind DSM; the fan gets loud under sustained load.</li>
+<li><strong>TerraMaster F4-425 Plus:</strong> the budget Quick Sync Plex box with Plex and Jellyfin in its app store, 16 GB soldered, 5GbE; TOS 6 is rated less polished than UGOS or DSM.</li>
+<li><strong>QNAP TS-464:</strong> mature QTS and Container Station, 2.5GbE only, priced like the DXP4800 Plus without the 10GbE.</li>
+<li><strong>Asustor:</strong> the Nimbustor 4 Gen2 is the N5105 value box with 3-year warranty; the Lockerstor 4 Gen3 is a $1,300 prosumer unit with no GPU.</li>
+<li><strong>Ubiquiti UNAS 4:</strong> a storage appliance for UniFi households; no Docker or apps, iOS-only photo backup, reported NIC drops.</li>
+<li><strong>DIY TrueNAS or Unraid:</strong> the most capable route if you build it; not an appliance.</li>
+</ul>
+<h2>Total cost</h2>
+<p>Add four NAS drives to any of these: 8 TB IronWolf and WD Red Plus prices in 2026 ranged from a $180 deal to about $350–400 list, so four drives are roughly $720–1,600 depending on the week; the box is the smaller half of the bill, which is why 10GbE and an iGPU in the box matter more than $50 of list price.</p>
+""",
+ "sources": [
+  ("UGREEN NASync DXP4800 Plus", "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("Synology press release: DSM 7.3 third-party drive support", "https://www.synology.com/en-us/company/news/article/dsm73"),
+  ("Synology KB: drive compatibility policies (2025 models, DSM 7.3+)", "https://kb.synology.com/en-nz/DSM/tutorial/Drive_compatibility_policies"),
+  ("NASCompares: Synology 2025 drive lock (April 2025)", "https://nascompares.com/2025/04/16/synology-2025-nas-hard-drive-and-ssd-lock-in-confirmed-bye-bye-seagate-and-wd/"),
+  ("Techzine: Synology lifts restrictions on third-party storage", "https://www.techzine.eu/news/devices/135275/synology-lifts-artificial-restrictions-on-third-party-storage"),
+  ("StarryHope: Synology DS925+ (M.2 rule after 7.3)", "https://www.starryhope.com/nas/models/synology-ds925-plus/"),
+  ("StarryHope: UGREEN DXP4800 Plus", "https://www.starryhope.com/nas/models/ugreen-nasync-dxp4800-plus/"),
+  ("WunderTech: best NAS for Plex 2026", "https://www.wundertech.net/?p=20225"),
+  ("Plex forum: Synology DS425+ hardware transcoding issue", "https://forums.plex.tv/t/synology-ds425-hardware-transcoding-issue/926093"),
+  ("techtest: UGOS Pro 2026 update check (encryption, AI, features)", "https://techtest.org/ugreen-ugos-pro-2026-im-update-check-verschluesselung-ki-und-neue-funktionen-im-ueberblick/"),
+  ("UGREEN support: Time Machine (article 350)", "https://support.ugnas.com/detail/article/en-US/350"),
+  ("TechRadar: TerraMaster F4-425 Plus review", "https://www.techradar.com/pro/terramaster-f4-425-plus-nas-review"),
+  ("NASCompares: UniFi UNAS 2 and UNAS 4 one year later", "https://nascompares.com/guide/unifi-unas-2-and-unas-4-one-year-later/amp/"),
+  ("QNAP TS-464", "https://www.qnap.com/en-us/product/ts-464"),
+  ("Synology DS925+", "https://www.synology.com/en-us/products/DS925+"),
+  ("Synology DS425+", "https://www.synology.com/en-us/products/DS425+"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
+
+{"slug": "power-station-to-charge-an-ebike-camping", "question": "G56 (power funnel: power station to recharge a 700 Wh e-bike on a camping weekend)", "lead_first": True,
+ "product_result": {"slug": "bluetti-elite-200-v2", "item_id": "BLUETTI-ELITE-200-V2",
+                    "title": "BLUETTI Elite 200 V2, two e-bike charges",
+                    "description": "2,073.6 Wh LiFePO4, 2,600 W pure sine.",
+                    "image_url": "https://dealectric.com/img/bluetti-elite-200-v2.png"},
+ "title": "Which portable power station recharges a 700 Wh e-bike twice on a camping weekend (2026)? The sizing math and the picks",
+ "h1": "Which portable power station recharges a 700 Wh e-bike twice on a camping weekend? (2026)",
+ "desc": "How much power station a 700 Wh e-bike battery needs for two full charges (about 1,800–1,900 Wh after charger and inverter losses), the stations that clear it (BLUETTI Elite 200 V2, AC200L, Elite 300, ALLPOWERS R4000) and the 1 kWh class that gives one charge (AC180, P1800, S2000 Pro), against EcoFlow, Jackery, Anker and Goal Zero on price per Wh and weight, plus pure sine wave, ECO-mode cut-offs, car and solar refill rates and the spare-battery alternative.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>BLUETTI Elite 200 V2</strong> ({buy:bluetti-elite-200-v2}), $899 on 2026-11-03, the portable power station to charge an e-bike twice off grid: 2,073.6 Wh LiFePO4, 1,910 Wh in StorageReview's discharge test, just enough for two 700 Wh charges (1,800–1,900 Wh after losses), 2,600 W pure sine, 24.2 kg. For one bike a spare battery ($350–575) is cheaper.</p>
+<p>What to know: the 1 kWh class (BLUETTI AC180 $449, ALLPOWERS P1800 $399, S2000 Pro $549 at 1,451 Wh) gives one full charge each, not two; the 3 kWh class (BLUETTI Elite 300 $1,199, ALLPOWERS R4000 $1,499) adds margin for lights, a fridge or a second bike. No rival undercuts BLUETTI or ALLPOWERS per watt-hour today (Jackery 2000 v2 $0.49/Wh, EcoFlow DELTA 2 Max $0.50, Goal Zero Yeti 1500X $0.87 against $0.38–0.44 here), and EcoFlow's DELTA 3 Plus wins only on weight (12.5 kg for 1,024 Wh). A car's 12 V socket refills the Elite 200 V2 at 96 W, about 20 hours for 1,900 Wh, so it cannot top it up over a weekend; a 200 W panel adds roughly one e-bike charge per good day.</p>
+""",
+ "columns": [("wh", "Capacity"), ("inverter", "AC output"), ("weight", "Weight"), ("charges", "700 Wh charges"), ("perwh", "$/Wh"), ("warranty", "Warranty")],
+ "rows": [
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh (1,910 measured, StorageReview)", "inverter": "2,600 W pure sine", "weight": "24.2 kg", "charges": "2", "perwh": "$0.43", "warranty": "5 years"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh, expandable", "inverter": "2,400 W", "weight": "28.3 kg", "charges": "2 (unmeasured)", "perwh": "$0.44", "warranty": "5 years"}},
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014.4 Wh", "inverter": "2,400 W", "weight": "26.3 kg", "charges": "3", "perwh": "$0.40", "warranty": "5 years"}},
+  {"slug": "allpowers-r4000-3456wh", "model": "ALLPOWERS R4000",
+   "cells": {"wh": "3,456 Wh", "inverter": "3,600 W", "weight": "45 kg (not a carry)", "charges": "3–4", "perwh": "$0.43", "warranty": "5 years registered (24 months otherwise)"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh (950–1,030 measured)", "inverter": "1,800 W pure sine", "weight": "16 kg", "charges": "1", "perwh": "$0.39", "warranty": "5 years"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro",
+   "cells": {"wh": "1,451 Wh NMC (920 measured at 350 W on one 2024 sample)", "inverter": "2,400 W pure sine", "weight": "13 kg", "charges": "1", "perwh": "$0.38", "warranty": "5 years"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh", "inverter": "1,800 W", "weight": "13 kg", "charges": "1", "perwh": "$0.39 (pre-order, ships Dec 7)", "warranty": "24 months (US page); 5 years on EU/Amazon listings"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 Max", "url": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "cells": {"wh": "2,048 Wh", "inverter": "2,400 W", "weight": "about 23 kg", "charges": "2", "perwh": "$0.50", "warranty": "5 years", "price": "$1,029, sold out (2026-11-03)"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Plus", "url": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "cells": {"wh": "1,024 Wh", "inverter": "1,800 W", "weight": "12.5 kg", "charges": "1", "perwh": "$0.70", "warranty": "5 years", "price": "$719, pre-order (2026-11-03)"}},
+  {"brand": "Jackery", "model": "Explorer 2000 v2", "url": "https://www.jackery.com/collections/portable-power-stations",
+   "cells": {"wh": "2,042 Wh", "inverter": "not read", "weight": "not found", "charges": "2", "perwh": "$0.49", "warranty": "not read", "price": "$999, sold out (2026-11-03)"}},
+  {"brand": "Jackery", "model": "Explorer 1000 v2", "url": "https://www.jackery.com/collections/portable-power-stations",
+   "cells": {"wh": "1,024 Wh", "inverter": "1,500 W", "weight": "about 11 kg", "charges": "1", "perwh": "$0.58", "warranty": "not read", "price": "$589 (2026-11-03)"}},
+  {"brand": "Goal Zero", "model": "Yeti 1500X", "url": "https://goalzero.com/products/yeti-1500x-portable-power-station-600w-power-supply",
+   "cells": {"wh": "1,516 Wh", "inverter": "2,000 W", "weight": "20.7 kg", "charges": "1", "perwh": "$0.87", "warranty": "24 months", "price": "$1,312.89, sold out (2026-11-03)"}},
+ ],
+ "after": """
+<h2>The sizing math</h2>
+<p>An e-bike charger is a 2–5 A supply at 36–54 V, so 110–220 W from the outlet; a maker's test of 48 V chargers measured 86–91 % efficiency (2 A best), and a power station's inverter returns 82–92 % of its rated watt-hours in independent discharge tests (AC180 950–1,030 Wh of 1,152; Elite 200 V2 1,910 of 2,073.6), likely toward the low end at a 100–200 W load. 700 Wh ÷ 0.88 ÷ 0.85–0.90 is about 880–935 Wh per full charge, so two charges need 1,800–1,900 Wh from the station: that is why a "2 kWh" station is the floor and a 1 kWh station is one charge. Rated watt-hours times 0.85 is the quick rule.</p>
+<h2>Things that stop a charge</h2>
+<ul>
+<li><strong>Waveform:</strong> e-bike chargers want a pure sine wave; the Elite 200 V2, AC180 and S2000 Pro state pure sine (the others' spec pages were not readable to confirm).</li>
+<li><strong>ECO mode:</strong> BLUETTI's ECO setting switches AC off after hours under a low load (50 W for 4 hours on the AC200MAX, 40 W on the AC70P; the Elite 200 V2 and AC180 values are set in the app). A charger draws above those thresholds until the pack is full, then the station may power down, which is fine. The Elite 200 V2 also turns itself off after a minute with no load.</li>
+<li><strong>Nobody has tested a Bosch, Shimano, Rad, Lectric or Aventon charger on these stations in print</strong>; the compatibility case rests on pure sine and the inverter's headroom.</li>
+</ul>
+<h2>Refilling it</h2>
+<p>The Elite 200 V2 takes 96 W from a 12 V car socket (192 W at 24 V), so a nine-hour drive adds about one e-bike charge; its solar input is up to 1,000 W, and a measured run took it from 25 % to full between noon and 3:40 pm on 520–600 W of panels in July. With a 200 W panel in November sun, count on roughly one e-bike charge per clear day. The AC180's solar input is 500 W.</p>
+<h2>The cheaper answer for one bike</h2>
+<p>A spare battery (Lectric $350–575 regular, Aventon $499, Rad third-party packs $299–349) is one extra 700 Wh charge with no conversion loss, no weight beyond 3–4 kg and no inverter. A station only wins when it also runs a fridge, lights and phones, or charges two bikes.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 200 V2", "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"),
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("ALLPOWERS S2000 Pro", "https://iallpowers.com/products/allpowers-2400w-portable-power-station"),
+  ("StorageReview: BLUETTI Elite 200 V2 review (1.91 kWh discharged)", "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review"),
+  ("StorageReview: BLUETTI AC180 review", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
+  ("OutdoorGearLab: BLUETTI AC180", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180"),
+  ("StorageReview: ALLPOWERS S2000 Pro review", "https://www.storagereview.com/review/allpowers-s2000-pro-portable-power-station-review"),
+  ("Movcan: e-bike charger efficiency at 2, 4 and 5 A", "https://movcan.com/blogs/blog/charger-performance-analysis-how-2a-4a-and-5a-affect-your-e-bike-battery"),
+  ("ALLPOWERS: can a power station charge an e-bike (pure sine, charger watts)", "https://iallpowers.com/blogs/blog/can-a-portable-power-station-charge-an-electric-bike"),
+  ("BLUETTI community: ECO mode thresholds (AC200MAX)", "https://community.bluettipower.com/t/ac200max-switches-off-ac-unasked-in-eco-off-mode/12300"),
+  ("BLUETTI community: Elite 200 V2 auto power-off", "https://community.bluettipower.com/t/200-v2-auto-power-off/37454"),
+  ("CleanTechnica: Elite 200 V2 solar test", "https://cleantechnica.com/2025/07/07/bluetti-elite-200-v2-test-review/"),
+  ("EcoFlow DELTA 2 Max", "https://us.ecoflow.com/products/delta-2-max-portable-power-station"),
+  ("EcoFlow DELTA 3 Plus", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("Jackery power stations", "https://www.jackery.com/collections/portable-power-stations"),
+  ("Goal Zero Yeti 1500X", "https://goalzero.com/products/yeti-1500x-portable-power-station-600w-power-supply"),
+  ("9to5Toys: Lectric spare battery prices", "https://9to5toys.com/2026/05/29/lectric-celebrates-7th-anniversary-savings-on-e-bike-extra-batteries-from-210/"),
+ ],
+ "published": "2026-11-03", "checked": "2026-11-03"},
 ]

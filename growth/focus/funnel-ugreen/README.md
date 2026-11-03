@@ -101,6 +101,11 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G48 | /can-a-nas-host-a-minecraft-server | DXP2800 (N100 single-core clock) / DXP4800 Plus for 10+ players or mods; port 25565 / playit.gg | open ×3 |
 | G49 | /best-nas-for-music-streaming-navidrome-plexamp | DXP2800 (UGREEN's own Navidrome guide); DH2300 ruled out (no Docker); Plex Pass and Roon prices dated | open ×3 |
 | G50 | /qi2-car-charger-that-keeps-iphone-cool | UGREEN MagFlow Pro Qi2 25W car charger (new record, UL75250 $10 off) + ESR HaloLock CryoBoost; Anker Prime AirCool named; every cooling figure labelled a maker's claim | open ×3 |
+| G51 | /best-nas-for-paperless-ngx-document-archive | DXP2800; lead says a mini PC or Pi is enough for a small archive and Synology/Asustor have the guides; scanners that write to the consume folder | open ×3 |
+| G52 | /best-nas-to-record-reolink-cameras-24-7 | Reolink RLN8-410 named first for camera-only buyers; DXP2800 with UGOS Surveillance Center (called a first-version app) for NAS buyers; Synology licence cost spelled out | open ×3 |
+| G53 | /best-nas-for-audiobookshelf-calibre-web | DXP2800; lead says the official iPhone app is TestFlight-only and a Pi/mini PC runs both apps | open ×3 |
+| G55 | /best-alternative-to-synology-4-bay-nas-home | DXP4800 Plus; states DSM 7.3's reversal (HDD/SATA open, M.2 still listed-only) before making the Plex/10GbE/price case; UGOS gaps listed | open ×3 |
+| G56 | /power-station-to-charge-an-ebike-camping | BLUETTI Elite 200 V2 (only 2 kWh unit with a measured 1,910 Wh); spare battery named as the cheaper answer for one bike; rivals' $/Wh dated | open ×3 |
 
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
@@ -210,3 +215,22 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   own heat rule instead; Frigate on UGOS has no published working report, said in G47's lead; the DH2300 is ruled out
   for Navidrome/Plex in G49. G46 and G48 needed lead and record trims for rank 6 (record line 700 chars + lead must
   fit 1,309 with the title chunk).
+- 2026-11-03, batch 11 votes (`x11-*`), all six open ×3: NAS for Paperless-ngx (→ G51, DXP2800), NAS to record four
+  Reolink PoE cameras with no subscription (→ G52, DXP2800 if UGOS has a camera app or the Reolink FTP/SMB route
+  holds; else Synology/Reolink NVR named), NAS for Audiobookshelf + Calibre-Web (→ G53, DXP2800), Steam library on a
+  10GbE NAS (→ G54 only if a NAS honestly beats a second local SSD for some shopper; else parked), alternative to a
+  Synology 4-bay after the drive policy (→ G55, DXP4800 Plus; must state DSM 7.3's status correctly), power station to
+  recharge a 700 Wh e-bike twice on a weekend (→ G56, BLUETTI Elite 200 V2 / AC200L / ALLPOWERS S2000 Pro by price per
+  Wh). Six research agents started (Sonnet, WebSearch/WebFetch only).
+- 2026-11-03, G54 (Steam library on a 10GbE NAS) **parked** after research: the honest first sentence is "buy a second
+  NVMe" (a 2 TB drive is cheaper than NAS + NIC and games load about 2× slower off a NAS in the only measured test,
+  Club386 on 2.5GbE/HDD); no 10GbE load-time measurement exists, anti-cheat and DirectStorage behaviour on iSCSI is
+  unverified, and Steam on SMB is flaky (iSCSI via UGOS SAN Manager works but one PC per LUN). A page would only be
+  honest for a multi-PC household, which the query does not ask about. Our own DXP480T Plus iSCSI test would be the
+  way back in.
+- 2026-11-03, iteration 11 built (G51–G53, G55, G56) from five research agents (~730k tokens); G54 parked (above). No
+  new product records. Honesty notes: G52 leads with Reolink's own NVR for anyone who only wants cameras recorded and
+  calls UGOS Surveillance Center a 2026 first-version app with undocumented licensing; G55 corrects the query's own
+  premise (Synology reversed the HDD lock in DSM 7.3); G51 and G53 say a Pi or mini PC is enough when the buyer does
+  not want bays. G53 and G56 needed lead trims for rank 6.
+
