@@ -78,11 +78,10 @@ Other venues the tools could not read, if Barry has time (in the Pane): buggiesg
 
 # Section A. Live threads (tier A or B), by demand then freshness
 
-## Execution state (2026-11-03, 17:40 PT)
+## Execution state (2026-11-03, 18:10 PT)
 
-- **Filled, not posted (11 tasks):** MacRumors T4, T19, T20; diysolarforum T2; Home Assistant community T9; Level1Techs T1, T5, T8, T11, T13, T15. Each sits in its reply editor in the Agent Chrome (localhost:9222) with the Post/Reply button untouched; Level1Techs' composer was switched from rich text to markdown so the `**` markup posts as bold. Screenshots in `screenshots/` (`<task>-<venue>.png`). Barry reads each, edits, and clicks Post himself. T2's link risks a diysolarforum ban; T19/T20 only if on page 1; T11 may read as competitive on Level1Techs (the forum sells KVMs).
+- **Filled, not posted (13 tasks):** MacRumors T4, T19, T20; diysolarforum T2; Home Assistant community T9; Level1Techs T1, T5, T8, T11, T13, T15; Amazon's Blink forum T12, T14 (signed in through Amazon with Barry's consent, display name barrryyao, guidelines agreed on Barry's yes; the editor is a Lightning rich-text box in a closed shadow root, filled by a real mouse click plus typed input; the Answer/Post button is untouched). Each sits in its reply editor in the Agent Chrome (localhost:9222) with the Post/Reply button untouched; Level1Techs' composer was switched from rich text to markdown so the `**` markup posts as bold. Screenshots in `screenshots/` (`<task>-<venue>.png`). Barry reads each, edits, and clicks Post himself. T2's link risks a diysolarforum ban; T19/T20 only if on page 1; T11 may read as competitive on Level1Techs (the forum sells KVMs).
 - **Cartaholics T3, T7: blocked.** The new barrryyao account is "awaiting approval by an administrator", so the forum shows no reply editor. Once approved, run `paste.py` on the two threads (XenForo).
-- **Amazon's Blink forum T12, T14: at the Amazon OAuth consent step.** The forum signs in through Amazon; the Agent Chrome is already signed in to Amazon, and Amazon's consent page asks to share the profile with "AmazonForum" (Salesforce). Claude does not grant OAuth consent without Barry's say-so; the tab is left on the consent page.
 - **Still no account:** Slickdeals (T6, T10), Quora (T17, T18), Best Buy (T21). T16 is a blog comment form (no account; not filled, since the form posts on submit and Barry wanted to review first).
 - The vault's approval dialog had to be fixed first (Tk drew no window on macOS; native dialog now, agent-vault commit 7d0ce02). On the corporate network the vault's `bw` cannot reach Bitwarden without the proxy.
 
