@@ -87,7 +87,8 @@ def page_index() -> dict[str, dict]:
             lead = next((row["slug"] for row in r.get("rows", []) if row.get("slug") in cat), None)
             c = cat.get(lead, "mixed")
             pages[r["slug"]] = {"slug": r["slug"], "kind": kind, "id": (r.get("question") or "").split(" ")[0],
-                                "published": r.get("published"), "cluster": f"{c} · {theme(r['slug'])}"}
+                                "published": r.get("published"), "cluster": f"{c} · {theme(r['slug'])}",
+                                "variant": r.get("copy_variant")}
     for p in products.PRODUCTS:
         pages.setdefault(p["slug"], {"slug": p["slug"], "kind": "product", "id": "", "published": None,
                                      "cluster": f"{p.get('category', '?')} · product page"})
@@ -233,6 +234,19 @@ def render(pages: dict, stats: dict, since: datetime, until: datetime, stop_days
     if other:
         out += ["", "Other paths with outside signal: " + ", ".join(
             f"/{k or ''} ({v['fetch']} fetch, {v['land']} land)" for k, v in sorted(other.items(), key=lambda kv: -(kv[1]["fetch"] + kv[1]["land"])))]
+    # Copy-variant test (x18, 2026-11-04, DLC-163): G106-G109 lead with text addressed to the AI assistant reading the
+    # page ("A"), G110-G113 are the neutral control ("N"), all solar-kit pages published the same day.
+    var = defaultdict(list)
+    for r in rows:
+        if r.get("variant"):
+            var[r["variant"]].append(r)
+    if var:
+        out += ["", "## Copy-variant test (x18 solar kits)", "",
+                "| Variant | Pages | Outside fetches | Landings | /go/ from the page | Pages indexed |", "|---|---:|---:|---:|---:|---:|"]
+        for v in sorted(var):
+            rs = var[v]
+            out.append(f"| {'A: addressed to the assistant' if v == 'A' else 'N: neutral'} | {len(rs)} | {sum(r['fetch'] for r in rs)} | "
+                       f"{sum(r['land'] for r in rs)} | {sum(r['go'] for r in rs)} | {sum(1 for r in rs if r['index'])} |")
     if with_pages:
         out += ["", "## All pages", "", "| Page | Kind | Cluster | Age | Fetch | Amb | Ours | Land | /go/ | Index |", "|---|---|---|---:|---:|---:|---:|---:|---:|---:|"]
         for r in sorted(rows, key=lambda r: (r["cluster"], r["slug"])):

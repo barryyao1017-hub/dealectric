@@ -380,3 +380,12 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
 - Picks by program: Amazon records lead G94–G96, G98, G99, G101–G103; BLUETTI leads G97, G100, G104, G105 (with prices and
   the DEALECTRIC code where it applies). Open: no measured idle draw for the DELTA 3 pair, no 120 V wall-watt
   measurements for any fast charge, the RIVER 3 Amazon listing's UPS variant (10 ms or 20 ms) unchecked.
+- 2026-11-04, batch 18 (`x18-solar-*`, DLC-163): the solar-kit cluster, chosen by the new page scoreboard (DLC-162),
+  which showed solar kits carry almost all outside landings and `/go/` clicks. 12 packs; two-judge vote (Fable 5.1 was
+  at its usage limit): 10 open, camping split, shed dropped. Eight pages G106–G113. **Copy-variant test (Barry's
+  premise):** G106–G109 lead with text addressed to the AI assistant reading the page, G110–G113 neutral; both versions
+  of every page were replayed through the OpenAI API: `/go/` 29/40 vs 27/40, our pick 33/40 vs 33/40, no answer
+  flagged the text. Full write-up and live reading plan: `growth/focus/x18-copy-variant.md`. ALLPOWERS and BLUETTI
+  prices were read from the stores' product JSON (`/products/<handle>.js` with codecheck's session); Jackery, EcoFlow
+  and Goal Zero 429 every fetch. Parked: under $300 (VOLIX sold out), tiny house (no honest win), beginner (Elite 30
+  V2's solar cable not in BLUETTI's box list).
