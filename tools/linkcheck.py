@@ -393,7 +393,10 @@ def judge_go(slug: str, entry: dict | None, r: dict) -> tuple[str, str]:
 # ---------------------------------------------------------------- the run
 
 def plan(slugs: list[str] | None) -> tuple[list[dict], list[str]]:
-    products = [p for p in PRODUCTS if p["slug"] not in RETIRED and (not slugs or p["slug"] in slugs)]
+    # Amazon Associates records (program "amazon:us", DLC-159) are left out: amazon.com answers a plain client with a
+    # bot wall or 503, so a verdict here would be noise; their listings are checked by hand with the weekly price pass.
+    products = [p for p in PRODUCTS if p["slug"] not in RETIRED and (not slugs or p["slug"] in slugs)
+                and not p["program"].startswith("amazon:")]
     aliases = [] if slugs else sorted(s for s, (_, new, _) in RETIRED.items() if new)   # retired slugs the Worker still serves
     return products, aliases
 

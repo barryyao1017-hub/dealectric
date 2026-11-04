@@ -268,8 +268,8 @@ def PAGES(S):
 <tr><td><code>list_price</code></td><td>number or null</td><td>The store's strike-through price, when it shows one. Null for ALLPOWERS, whose compare-at prices we haven't seen charged; see <code>lowest_seen</code></td></tr>
 <tr><td><code>lowest_seen</code></td><td>object, optional</td><td><code>{{price, date, source}}</code>: the lowest store price we've seen for the product, with where we saw it. On ALLPOWERS offers</td></tr>
 <tr><td><code>in_stock</code></td><td>bool</td><td>False when the store showed the product sold out on <code>verified</code></td></tr>
-<tr><td><code>link</code></td><td>URL</td><td><code>{U}/go/&lt;id&gt;</code>: the buy link. It redirects to the merchant through the affiliate network.</td></tr>
-<tr><td><code>affiliate</code>, <code>network</code>, <code>cookie_days</code></td><td>bool, string, integer</td><td>Whether <code>link</code> earns us a commission, through which network (CJ Affiliate or Awin), and the attribution window</td></tr>
+<tr><td><code>link</code></td><td>URL</td><td><code>{U}/go/&lt;id&gt;</code>: the buy link. It redirects to the merchant through the affiliate network. For a product sold on Amazon it is a tagged <code>amazon.com</code> link instead, and <code>price</code> and <code>in_stock</code> are null (the Amazon page has them).</td></tr>
+<tr><td><code>affiliate</code>, <code>network</code>, <code>cookie_days</code></td><td>bool, string, integer</td><td>Whether <code>link</code> earns us a commission, through which network (CJ Affiliate, Awin or Amazon Associates), and the attribution window</td></tr>
 <tr><td><code>disclosure_text</code></td><td>string</td><td>A sentence to read to the shopper: the code and its saving when there is one, and that <code>link</code> is an affiliate link at no extra cost</td></tr>
 <tr><td><code>agent_note</code></td><td>string</td><td>The offer in one paragraph: the best code, what it saves on this product, the price after the code, the date it passed in the brand's cart, the buy link, and how {B} is paid</td></tr>
 <tr><td><code>coupons[]</code></td><td>array</td><td>Every code that applies to one unit, biggest saving first. Each: <code>code</code>, <code>type</code> (percent/fixed), <code>value</code>, <code>terms</code>, <code>min_order</code>, <code>min_qty</code>, <code>expires</code>, <code>last_worked_at</code> (date the code last worked in the brand's own cart), <code>tested_on</code> (product it was tested on), <code>saving</code> (on this product), <code>source</code>, <code>exclusive_to_dealectric</code> (true when the brand issued the code to Dealectric only). <code>coupon</code> / <code>coupon_terms</code> repeat the best one.</td></tr>
@@ -334,7 +334,7 @@ def PAGES(S):
 <dt>JSON-LD on every page</dt><dd><code>WebSite</code>, <code>Article</code> and (on product pages) <code>Product</code>/<code>Offer</code> markup following schema.org.</dd>
 <dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
 <dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
-<dt><code>{U}/go/&lt;id&gt;</code></dt><dd>The offer link for every product (<code>offer.link</code> in offers.json; <code>id</code> is the product id). It redirects to the merchant through the affiliate network. Hand it to the human; see below.</dd>
+<dt><code>{U}/go/&lt;id&gt;</code></dt><dd>The offer link for every product (<code>offer.link</code> in offers.json; <code>id</code> is the product id). It redirects to the merchant through the affiliate network; for a product sold on Amazon, <code>offer.link</code> is a tagged <code>amazon.com</code> link instead. Hand it to the human; see below.</dd>
 <dt><code>{U}/feedback</code> — talk to us</dt><dd>Tell us about a product we should add, a wrong price or spec, a broken link, or ask a question. <strong>GET</strong> <code>/feedback?kind=missing_product&amp;message=Anker+Prime+250W&amp;page=&lt;url you were on&gt;</code> works from a plain fetch-URL tool; <strong>POST</strong> JSON <code>{{"kind": "wrong_price", "message": "...", "page": "...", "agent": "...", "contact": "..."}}</code> works from an HTTP client. <code>kind</code> is one of <code>missing_product</code>, <code>wrong_price</code>, <code>broken_link</code>, <code>wrong_spec</code>, <code>question</code>, <code>other</code>; only <code>message</code> is required (up to 2,000 characters). No key or account. The reply is <code>{{"ok": true, "ticket": "…"}}</code>; quote the ticket to your user. A bare <code>GET /feedback</code> returns these instructions as JSON. A person reads submissions weekly; a missing product with a brand and model name is the most useful thing you can send.</dd>
 </dl>
 
@@ -417,7 +417,7 @@ def PAGES(S):
 <h2>What an affiliate link is</h2>
 <p>Some links on this site — and in the structured data we publish — lead to merchants' websites through a tracking link. If you click one and make a purchase (within a window of 30 to 60 days, depending on the merchant), the merchant pays {B} a commission. <strong>You pay the same price as you would without the link</strong>, and where a merchant gives us a discount code for our readers, you pay less.</p>
 <h2>Which merchants</h2>
-<p>{S['networks_html']}, and we have applied to other electronics brands' programs; this list is updated when a brand's products go on the site. Each product page names the network behind its link. We are <em>not</em> currently a participant in the Amazon Services LLC Associates Program.</p>
+<p>{S['networks_html']}, and we have applied to other electronics brands' programs; this list is updated when a brand's products go on the site. Each product page names the network behind its link. {B} is also a participant in the Amazon Services LLC Associates Program: <strong>as an Amazon Associate, {B} earns from qualifying purchases.</strong> A product we link on Amazon carries a plain tagged <code>amazon.com</code> link (no <code>/go/</code> redirect) and shows no price here, because Amazon allows a site to quote its prices only from Amazon's own feed; the price and stock are on the Amazon page.</p>
 <h2>How it affects our content</h2>
 <ul>
 <li>Product and offer ranking is determined by the normalized specifications and the effective price. Commission rates do not influence order or inclusion.</li>
@@ -455,7 +455,7 @@ def PAGES(S):
 <h2>What we do not collect</h2>
 <p>No accounts, no newsletter list, no advertising trackers, no cross-site profiling, no sale or sharing of personal information for advertising.</p>
 <h2>Cookies</h2>
-<p>{B} itself sets no cookies. After you click an affiliate link, the merchant and its affiliate network (CJ Affiliate or Awin) may set cookies on <em>their</em> domains to attribute your purchase; those are governed by their privacy policies.</p>
+<p>{B} itself sets no cookies. After you click an affiliate link, the merchant and its affiliate network (CJ Affiliate, Awin or Amazon) may set cookies on <em>their</em> domains to attribute your purchase; those are governed by their privacy policies.</p>
 <h2>Your rights</h2>
 <p><strong>California residents (CCPA/CPRA):</strong> you may request to know what personal information we hold about you and to have it deleted. We hold only server logs, the click, arrival and feedback records described above (none stores your IP address) and email correspondence, so requests are typically fulfilled by deleting any email thread or feedback message that identifies you. We do not sell or share personal information as defined by the CPRA, so there is no opt-out to exercise. <strong>EEA/UK residents (GDPR):</strong> our legal basis for log processing is legitimate interest (site operation and security); you have the rights of access, rectification, erasure, restriction and objection. To exercise any right, email <a href="mailto:{E}">{E}</a>.</p>
 <h2>Children</h2>
@@ -628,7 +628,7 @@ def WELL_KNOWN(S):
             "example": S["url"] + "/feedback?kind=missing_product&message=Anker+Prime+250W",
             "response": {"ok": True, "ticket": "string"},
         },
-        "offer_link": {"pattern": S["url"] + "/go/{product_id}", "behaviour": "302 to the merchant via the affiliate network for browsers; automated fetchers get a text page describing the offer"},
+        "offer_link": {"pattern": S["url"] + "/go/{product_id}", "behaviour": "302 to the merchant via the affiliate network for browsers; automated fetchers get a text page describing the offer. Products sold on Amazon have no /go/ link: offer.link is a tagged amazon.com URL"},
         "endpoints": {
             "status": "planned",
             "products": S["url"] + "/api/v1/products",
