@@ -4886,16 +4886,21 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  'title': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
  'h1': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
  'desc': "Which 48V lithium golf cart battery kit with the charger included fits a Club Car DS, Precedent, Tempo or Onward for under $1,700: Vatrer's 48V "
-         "105Ah UL 2271 kit ($1,579.99 with a 58.4 V charger, LCD and bracket, 10-year warranty on registration) against LiTime's 48V 100Ah kit, Allied, "
+         "105Ah UL 2271 kit ($1,579.99 with a 58.4 V charger, LCD and bracket, 10-year warranty on registration) against DC House's $879.99 48V 100Ah kit, LiTime's 48V 100Ah kit, Allied, "
          'Epoch, RoyPow, Dakota Lithium and Eco Battery, with the on-board-computer bypass older Club Cars need, the warranty fine print and the prices seen '
          'on 2026-11-03.',
  'intro': '\n'
           '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Vatrer 48V 105Ah Club Car kit</strong> '
           '({buy:vatrer-48v-105ah-club-car-golf-cart-battery-kit}), the best 48V lithium golf cart battery kit with charger for a Club Car under $1,700: '
           '$1,579.99 on 2026-11-03 for a 105 Ah (5.4 kWh) UL 2271 LiFePO4 pack with a 200 A BMS, a 58.4 V 18 A charger, an LCD monitor and the bracket, and a '
-          "10-year warranty once registered. LiTime's 48V 100Ah kit was $1,281.66 on sale the same day if price matters more than the extra 5 Ah.</p>\n"
-          '<p>What to know: every other complete Club Car kit we priced on 2026-11-03 starts past $2,000 (Allied 48V 105Ah sets $2,045–2,395, Epoch 48V 105Ah '
-          "$2,299, Dakota Lithium 48V 96Ah about $2,699, RoyPow 48V 105Ah $2,999.99 and sold out), so the real choice is Vatrer against LiTime. Vatrer's pack "
+          "10-year warranty once registered. If price matters more than the warranty, DC House's 48V 100Ah kit with an 18 A charger was $879.99 on its own "
+          'store the same day, $700 less, with a 5-year warranty and no UL listing named on its page.</p>\n'
+          "<p>What to know: the Vatrer sits between the budget kits and the premium ones. Under it on 2026-11-03: DC House's 48V 100Ah kit with charger "
+          "$879.99 (regular $1,149.99; 200 A BMS, LCD and Bluetooth), DC House's Sentry G100 with charger $1,199.99 (the same size with a UL 2580 listing) "
+          "and LiTime's 48V 100Ah kit $1,281.66 on sale. Over it: Allied 48V 105Ah sets $2,045–2,395, Epoch 48V 105Ah $2,299, Dakota Lithium 48V 96Ah about "
+          "$2,699 and RoyPow 48V 105Ah $2,999.99 (sold out). What the Vatrer's extra $300–700 over the budget kits buys is the longest warranty of any "
+          "kit under $2,000 (10 years, against DC House's 5 plus a 2-year extension its store advertises), a UL 2271 listing, a Club Car bracket in the box and 5 more "
+          "Ah. Vatrer's pack "
           'fits a 19.69 × 12.52 × 9.6-inch tray, is rated for 4,000+ cycles and stops charging below freezing; the cart showed an automatic $78.99 '
           '"Limited-Time Discount" on top of the page price, and Vatrer\'s banner code VIPD2026 does not apply to this kit. A Club Car from roughly 1995–2014 '
           "(Lester's bypass-kit range; dealers say 1993–2013) may need its on-board computer bypassed for a lithium conversion, and Vatrer's 10-year term only "
@@ -4915,6 +4920,22 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
                      'bms': 'not read; UL 2271 not confirmed',
                      'warranty': "5 years (LiTime's Canadian site); 3 years on a third-party listing",
                      'price': '$1,281.66 (list $1,649.99) on litime.com, 2026-11-03'}},
+          {'brand': 'DC House',
+           'model': '48V 100Ah metal-case battery with charger',
+           'url': 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger',
+           'cells': {'cap': '100 Ah, about 5.1 kWh',
+                     'charger': 'Yes: 18 A, plus LCD monitor, Bluetooth and a 5 m cable (charger ships in a separate box)',
+                     'bms': '200 A; no UL listing named on the page',
+                     'warranty': '5 years; the store banner adds a 2-year extension for orders on dchousepower.com',
+                     'price': '$879.99 (regular $1,149.99) on dchousepower.com, 2026-11-03'}},
+          {'brand': 'DC House',
+           'model': 'Sentry G100 48V 100Ah with charger',
+           'url': 'https://www.dchousepower.com/products/dc-house-sentry-g100-48v-100ah-ul2580-lifepo4-metal-case-battery-with-charger-ideal-for-golf-carts',
+           'cells': {'cap': '100 Ah, 5,120 Wh',
+                     'charger': 'Yes',
+                     'bms': '200 A (2C) discharge; UL 2580 (DC House)',
+                     'warranty': 'not read',
+                     'price': '$1,199.99 (regular $1,499.99) on dchousepower.com, 2026-11-03'}},
           {'brand': 'Allied',
            'model': '48V 105Ah Club Car set',
            'url': 'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent',
@@ -4959,11 +4980,16 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
           "site-wide banner code VIPD2026 was rejected on this kit (it took 5% off a Group 24 battery the same day). LiTime's $1,281.66 was a sale price "
           'against a $1,649.99 list, so compare on the day you buy.</p>\n'
           '<h2>What we could not verify</h2>\n'
-          "<p>LiTime's UL 2271 status and BMS rating, Eco Battery's current 48 V price, every rival's golf-cart warranty, and any independent capacity test or "
+          "<p>LiTime's UL 2271 status and BMS rating, Eco Battery's current 48 V price, Chins and Cloud Energy kit prices (neither lists a price on its own "
+          "store; Chins's site did not load for us), whether DC House's charger plug fits your cart's charge port, every other rival's golf-cart warranty, "
+          'and any independent capacity test or '
           'teardown of this Vatrer pack; the only independent Vatrer critique we found covers its server-rack battery, not this one.</p>\n',
  'sources': [('Vatrer 48V 105Ah Club Car kit', 'https://vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries'),
              ('Vatrer warranty policy (July 2026 table)', 'https://www.vatrerpower.com/pages/warranty-policy'),
              ('LiTime 48V 100Ah golf cart kit', 'https://litime.com/products/48v-100ah-golf-cart-battery-kit'),
+             ('DC House 48V 100Ah battery with charger', 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger'),
+             ('DC House Sentry G100 (UL 2580) with charger',
+              'https://www.dchousepower.com/products/dc-house-sentry-g100-48v-100ah-ul2580-lifepo4-metal-case-battery-with-charger-ideal-for-golf-carts'),
              ('Allied 48V Club Car set (Reach.dog listing)',
               'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent'),
              ('Dakota Lithium 48V 96Ah (Reach.dog listing)', 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery')],
