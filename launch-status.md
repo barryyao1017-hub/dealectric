@@ -36,6 +36,8 @@
 - **Pending (17):** CJ (11) — Audioengine, Baseus US Amazon Marketplace, eufyMake, Jackery, KOSS, Marshall Headphones US, Monoprice, NOMAD Goods, SanDisk North America, Ugreen, ZAGG + mophie. Awin (6) — Twelve South, Jackery US, SwitchBot, Wyze Global, PECRON, AUKEY OFFICIAL.
 - Unsolicited CJ offer waiting: GearUP (game-booster subscription, 70%) — off-vertical, ignore.
 - Anker (Impact) invitation email unanswered.
+- **Amazon Associates (2026-11-03): live**, store/tracking ID `dealectric-20`, site dealectric.com, payee Jiayi Yao; provisional until 3 qualifying sales in 180 days (by 2027-05-02). Barry still owes the tax interview and payment details in Associates Central (DLC-157). Link build (declined brands: EcoFlow, Jackery, Anker) is DLC-159; check the Operating Agreement's rule on obscured referrers before routing Amazon links through `/go/`, and show no Amazon prices until PA-API access.
+- **Skimlinks (2026-11-03): application submitted** for dealectric.com as "Editorial", review up to 3 working days (DLC-158). Sub-network for brands with no direct program; 25% cut, ~90-day payout.
 
 ## Clicks & sales (as of 2026-10-16)
 - CJ this month: 2 clicks, 0 sales, $0. Awin October: 2 clicks, 0 transactions, $0 payable/approved/pending. The 4 clicks are our own link tests on 10/14. No purchases yet.
