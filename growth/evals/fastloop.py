@@ -859,9 +859,13 @@ def cmd_check(a) -> None:
         start = text.find("\n", text.find(title[:40]) + 1) if title[:40] in text else 0
     top = text[max(start, 0): max(start, 0) + 600]
     fails = []
-    top_ok = "/go/" in top and "$" in top
+    # Amazon Associates picks (DLC-159, 2026-11-03) carry a direct tagged amazon.com link and no price (Amazon's Program
+    # Policies), so for them the buy link is "tag=dealectric-20" and the price slot is the words "price on the Amazon page".
+    has_link = lambda t: "/go/" in t or "tag=dealectric-20" in t   # noqa: E731
+    has_price = lambda t: "$" in t or "price on the amazon page" in t.lower()   # noqa: E731
+    top_ok = has_link(top) and has_price(top)
     print(f"top block ({len(top)} chars from {'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
-          f"/go/ link {'yes' if '/go/' in top else 'NO'}, price {'yes' if '$' in top else 'NO'}")
+          f"buy link {'yes' if has_link(top) else 'NO'}, price {'yes' if has_price(top) else 'NO'}")
     if not top_ok:
         fails.append("conversion block not in the first 600 characters")
     musts = [m for m in (a.must or [])]
@@ -877,7 +881,7 @@ def cmd_check(a) -> None:
             ctx = build_context(res, pack["query"])
             me = next(c for c in ctx if "dealectric.com" in c["url"])
             shown = _squash(me["shown"])
-            ok_go = "/go/" in shown
+            ok_go = has_link(shown)
             ok_m = [_squash(m) in shown for m in musts]
             if not ok_go:
                 fails.append(f"{name} rank {rank}: /go/ link cut")

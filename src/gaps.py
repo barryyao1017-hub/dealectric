@@ -5854,4 +5854,472 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
              ('SmarterTravel: adapters vs converters', 'https://www.smartertravel.com/electricity-overseas-converters-adapters-beyond/')],
  'published': '2026-11-03',
  'checked': '2026-11-03'},
+
+{"slug": "power-station-as-a-ups-for-a-nas-usb-shutdown", "question": "G94 (power funnel x17: portable power station as a UPS for a NAS with a USB shutdown signal)", "lead_first": True,
+ "title": "Which portable power station can be a UPS for a NAS and send a USB shutdown signal (2026)? Data ports, NUT support, runtimes",
+ "h1": "Which portable power station can act as a UPS for a NAS and signal it to shut down over USB? (2026)",
+ "desc": "Which portable power stations have a USB UPS data port a NAS can read (EcoFlow DELTA 3 Plus and RIVER 3 Plus) and which have none (DELTA 3, Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2, BLUETTI), what NUT supports, the owner reports so far, measured switchover times, runtimes for a 2-bay and a 4-bay NAS, and when a $100 USB UPS is the better answer.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> One portable power station sends a NAS a USB UPS shutdown signal: the <strong>EcoFlow DELTA 3 Plus</strong> ({buy:ecoflow-delta-3-plus-1024wh}). It shows up as a USB HID UPS, NUT 2.8.3 added basic support and StorageReview measured an 8 ms switchover, but no owner has yet reported a NAS shutting down cleanly from it: most NAS systems ship an older NUT, and a Synology owner says DSM does not see it.</p>
+<p>What to know: if the NAS must shut itself down on a USB signal today, a small UPS does it (APC Back-UPS BE600M1, $99.99 at Markertek on 2026-11-03). The DELTA 3 Plus is the pick for keeping a 2-bay NAS running about a day (910 Wh delivered in StorageReview's test, about 28 hours at 32 W including the station's own draw), with the shutdown handled by a NUT server you run yourself.</p>
+""",
+ "columns": [("link", "UPS data link"), ("nas", "What a NAS sees"), ("switch", "Switchover"), ("run2", "2-bay NAS (about 32 W)"), ("run4", "4-bay NAS (about 59 W)"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus",
+   "cells": {"link": "Yes: USB-C data port (USB 2.0 data cable not included), USB HID UPS", "nas": "NUT 2.8.3 and later: basic support; no clean NAS shutdown reported yet", "switch": "10 ms rated; just over 8 ms measured", "run2": "about 28 h", "run4": "about 15 h", "weight": "12.5 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3",
+   "cells": {"link": "No (Bluetooth only; one owner built a Raspberry Pi bridge to NUT)", "nas": "Nothing", "switch": "10 ms rated", "run2": "about 28 h", "run4": "about 15 h", "weight": "12.5 kg"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2",
+   "cells": {"link": "No data port found", "nas": "Nothing", "switch": "under 10 ms (one reviewer's oscilloscope)", "run2": "about 27 h", "run4": "about 15 h", "weight": "11.3 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2",
+   "cells": {"link": "No data port found", "nas": "Nothing", "switch": "under 20 ms (Jackery)", "run2": "about 28 h (rated capacity)", "run4": "about 15 h", "weight": "10.8 kg"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"link": "No data port found", "nas": "Nothing", "switch": "15 ms or less rated; no reboots in StorageReview's repeated tests", "run2": "about 60 h", "run4": "about 32 h", "weight": "24.2 kg"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"link": "No data port found", "nas": "Nothing", "switch": "20 ms rated; owners report desktops dropping", "run2": "about 31 h", "run4": "about 17 h", "weight": "16 kg"}},
+  {"brand": "EcoFlow", "model": "RIVER 3 Plus (286 Wh)", "url": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "cells": {"link": "Yes: USB-B port, cable included", "nas": "NUT 2.8.3 and later, but an open NUT bug never reports low battery; a QNAP did not see it", "switch": "10 ms rated; 9 ms measured", "run2": "about 7 h", "run4": "about 4 h", "weight": "not read", "price": "not read"}},
+  {"brand": "APC", "model": "Back-UPS BE600M1 (600 VA)", "url": "https://www.markertek.com/product/spc-be600m1/apc-be600m1-back-ups-es-600va-120v-1-usb-charging-port",
+   "cells": {"link": "Yes: standard USB HID UPS", "nas": "The usual NAS UPS: shutdown signal over USB", "switch": "6 ms typical, 10 ms max", "run2": "minutes, not hours (11–12 min at half load)", "run4": "minutes", "weight": "not read", "price": "$99.99 at Markertek (list $140)"}},
+  {"brand": "CyberPower", "model": "CP1500PFCLCD", "url": "https://www.shi.com/product/22053913",
+   "cells": {"link": "Yes: USB HID UPS, pure sine", "nas": "Shutdown signal over USB", "switch": "4 ms", "run2": "about 10 min at half load", "run4": "minutes", "weight": "not read", "price": "$249.95–264 (list $274.95)"}},
+ ],
+ "after": """
+<h2>How the DELTA 3 Plus talks to a NAS</h2>
+<p>EcoFlow's manual describes the link in an "Advanced Setup (DELTA 3 Plus only)" section: in UPS mode the station talks over one of its USB-C ports to a computer or NAS through a USB 2.0 data cable, which is not in the box, and EcoFlow's Power Manager software reads it. Plugged in, it enumerates as a standard USB HID power device ("EF-UPS-DELTA 3 Plus", ID 3746:ffff), and Network UPS Tools added basic support for it and the RIVER 3 Plus in release 2.8.3. Owner dumps in NUT's issue tracker show what it reports: on-line or on-battery, charge and runtime, with the low-battery point following the discharge limit set in EcoFlow's app (30 % in one dump). Two gaps showed up in that thread: the driver cannot tell the station to cut its outlets after the shutdown (one owner's host halted cleanly and the AC stayed on for over a minute), and the plain DELTA 3 has no data link at all.</p>
+<h2>Why a NAS may not see it yet</h2>
+<p>A NAS uses whatever NUT version its maker bundles, and the reports so far are older than 2.8.3: Debian 13 and Proxmox VE 9 ship 2.8.1 and TrueNAS owners report 2.8.0, while a pfSense owner on NUT 2.8.2 got "failed to match a subdriver". On the RIVER 3 Plus, which uses the same driver, a QNAP TS-269L showed nothing on its UPS page and a Synology owner says DSM does not list it; EcoFlow's Power Manager supported Windows and four Synology models at launch (ifun.de, March 2025) and EcoFlow's US download page still lists it as "coming soon". We found no report from Synology, QNAP, UGREEN UGOS, Unraid or TrueNAS of the DELTA 3 Plus shutting a NAS down cleanly, so treat it as a project, not a feature.</p>
+<h2>The two setups that work today</h2>
+<p>For a guaranteed shutdown, put a small USB UPS between the wall and the NAS and let the NAS read it natively; our <a href="/best-small-ups-for-home-nas">small UPS for a home NAS</a> page compares those. For runtime measured in hours, run NUT 2.8.3 or newer on a Linux box or Raspberry Pi connected to the DELTA 3 Plus by USB and point the NAS at it as a network UPS client in its UPS settings, after testing the shutdown with a real pull of the plug. The RIVER 3 Plus is smaller and comes with its cable, but its open NUT bug means the low-battery state never arrives; one owner let it drain to 0 % with the status unchanged.</p>
+<h2>Runtime, and the station's own draw</h2>
+<p>Makers' figures for drive access: Synology DS224+ 14.69 W, UGREEN DXP2800 16.38 W, Synology DS923+ about 35.5 W, UGREEN DXP4800 Plus 42.36 W. A power station adds its own inverter draw of roughly 15–17 W (BLUETTI AC180 manual, a DELTA 3 Classic measurement), about as much as a 2-bay NAS, which is why the table uses 32 W and 59 W. Runtimes are our arithmetic from measured delivered energy where it exists (910 Wh for the DELTA 3 Plus, 907 Wh for the C1000 Gen 2, about 1,910 Wh for the Elite 200 V2) and from rated capacity otherwise.</p>
+<h2>Switchover and battery care</h2>
+<p>All of these are standby UPS designs: the outlet switches to the inverter when the grid drops. StorageReview's measurements put older units outside their own claims (Anker SOLIX F2000 about 27 ms, EcoFlow DELTA 2 about 38 ms), while the DELTA 3 Plus measured just over 8 ms. A NAS's external power brick has no published hold-up time, so a unit at 10 ms or less is the safe choice. EcoFlow's manual asks for a discharge to 0 % and a recharge to 60 % every three months in storage and voids the warranty after six months unused; it gives no guidance for permanent UPS duty at 100 %, so set a charge limit in the app if you leave it on the wall.</p>
+""",
+ "sources": [
+  ("EcoFlow DELTA 3 Plus user manual (Advanced Setup, UPS mode, storage)", "https://www.rei.com/media/8f4778a4-a38d-4349-a975-84df009a5988"),
+  ("EcoFlow DELTA 3 user manual (no data link)", "https://bsai.com.mx/cdn/shop/files/Manual_EcoFlow_DELTA_3.pdf"),
+  ("StorageReview: EcoFlow DELTA 3 Plus review (8 ms switchover, 910 Wh delivered)", "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"),
+  ("Network UPS Tools release notes (2.8.3: EcoFlow River 3 Plus and Delta 3 Plus)", "https://raw.githubusercontent.com/networkupstools/nut/master/NEWS.adoc"),
+  ("NUT issue 2735: DELTA 3 Plus owner dumps, low-battery point, outlets stay on", "https://github.com/networkupstools/nut/issues/2735"),
+  ("NUT issue 3068: RIVER 3 Plus never reports low battery", "https://github.com/networkupstools/nut/issues/3068"),
+  ("Netgate forum: DELTA 3 Plus on pfSense NUT 2.8.2", "https://forum.netgate.com/post/1234866"),
+  ("Apollomaniacs: RIVER 3 Plus with a QNAP NAS", "https://apollomaniacs.com/knowhow_ups_ecoflow_river3_plus_en.htm"),
+  ("ifun.de: DELTA 3 Plus UPS function delayed (Power Manager support)", "https://www.ifun.de/ecoflow-delta-3-plus-die-usv-funktion-laesst-auf-sich-warten-249874/"),
+  ("EcoFlow US download page (Power Manager)", "https://www.ecoflow.com/us/support/download/index"),
+  ("computingforgeeks: power station vs UPS for a homelab (NUT versions, idle draw, measured switchovers)", "https://computingforgeeks.com/power-station-vs-ups-homelab/"),
+  ("Anker: power station as a UPS for a home server or NAS", "https://www.ankersolix.com/blogs/home-power-backup/portable-power-station-ups-home-server-nas"),
+  ("Synology DS224+ power consumption", "https://www.synology.com/en-us/products/DS224+"),
+  ("UGREEN DXP2800 power consumption", "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"),
+  ("UGREEN DXP4800 Plus power consumption", "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"),
+  ("TechPowerUp: Synology DS923+ review (power draw)", "https://techpowerup.com/review/synology-ds923-4-bay-nas"),
+  ("Markertek: APC BE600M1", "https://www.markertek.com/product/spc-be600m1/apc-be600m1-back-ups-es-600va-120v-1-usb-charging-port"),
+  ("SHI: CyberPower CP1500PFCLCD", "https://www.shi.com/product/22053913"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "can-a-power-station-be-a-ups-for-a-gaming-pc", "question": "G95 (power funnel x17: portable power station as a UPS for a gaming PC, switchover time)", "lead_first": True,
+ "title": "Can a portable power station be a UPS for a gaming PC (2026)? Measured switchover times, PSU hold-up, hours at 500 W",
+ "h1": "Can a portable power station replace a UPS for a gaming PC, and which ones switch over fast enough? (2026)",
+ "desc": "Using a portable power station as a UPS for a gaming PC: measured switchover times (EcoFlow DELTA 3 Plus just over 8 ms, BLUETTI Elite 300 8.9 ms, Anker SOLIX C1000 Gen 2 under 10 ms) against ATX power-supply hold-up rules, the 20 ms units that are marginal, hours of gaming at 500 W, and when a CyberPower or APC UPS is the better buy.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Yes, if the portable power station switches over in about 10 ms or less: the <strong>Anker SOLIX C1000 Gen 2</strong> ({buy:anker-solix-c1000-gen-2}) measured under 10 ms on a reviewer's oscilloscope with a desktop running a graphics benchmark, which stayed on, and its 2,000 W output covers any gaming PC, with about 1.8 hours of gaming at 500 W (907 Wh delivered in the same test).</p>
+<p>What to know: no one has published a pull-the-plug test with a named gaming PC. The 20 ms units are marginal for a gaming PC UPS (BLUETTI AC180, Jackery Explorer 1000 v2, EcoFlow RIVER 3): ATX 3.1 power supplies need only 12 ms of hold-up at full load, and AC180 owners report desktops dropping. For a clean save-and-shutdown, a CyberPower CP1500PFCLCD (4 ms, about 10 minutes at 500 W, $239.95–274.95) is the classic answer; the BLUETTI Elite 300 ({buy:bluetti-elite-300}) measured 8.9 ms and runs about 5 hours.</p>
+""",
+ "columns": [("switch", "Switchover: rated / measured"), ("ac", "AC output"), ("hours", "Hours at 500 W"), ("note", "Notes"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2",
+   "cells": {"switch": "under 10 ms / under 10 ms with a desktop under a GPU benchmark (one reviewer)", "ac": "2,000 W (bypass 1,800 W on Anker's AU and DE pages)", "hours": "about 1.8 (907 Wh measured)", "note": "About 17 W idle draw; 42 dB fan at full-speed charging", "weight": "11.3 kg"}},
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus",
+   "cells": {"switch": "10 ms / just over 8 ms (StorageReview)", "ac": "1,800 W", "hours": "about 1.8 (910 Wh measured)", "note": "Grid input must exceed the load in UPS mode; USB UPS data link", "weight": "12.5 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3",
+   "cells": {"switch": "10 ms / not measured", "ac": "1,800 W", "hours": "about 1.8", "note": "Same inverter as the Plus; no data link", "weight": "12.5 kg"}},
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300 (3 kWh)",
+   "cells": {"switch": "10 ms / 8.9 ms, a desktop under a GPU benchmark stayed on (one reviewer)", "ac": "2,400 W", "hours": "about 5", "note": "The long-outage pick", "weight": "26.3 kg"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2 (2 kWh)",
+   "cells": {"switch": "15 ms or less / no reboots in StorageReview's repeated tests (no ms figure)", "ac": "2,600 W", "hours": "about 3.5", "note": "Inside a 16 ms PSU, marginal for ATX 3.1's 12 ms floor", "weight": "24.2 kg"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"switch": "20 ms / owners report desktops dropping", "ac": "1,800 W", "hours": "about 1.9", "note": "Marginal for a PC", "weight": "16 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2",
+   "cells": {"switch": "under 20 ms (Jackery: not zero-delay like a professional UPS) / not measured", "ac": "1,500 W", "hours": "about 1.8 (rated capacity)", "note": "Marginal for a PC", "weight": "10.8 kg"}},
+  {"slug": "ecoflow-river-3-245wh", "model": "EcoFlow RIVER 3",
+   "cells": {"switch": "under 20 ms (Amazon listing)", "ac": "300 W", "hours": "No: a gaming PC exceeds 300 W", "note": "For a router or modem, not a PC", "weight": "3.5 kg"}},
+  {"brand": "CyberPower", "model": "CP1500PFCLCD", "url": "https://smarthomecompared.com/ups/cyberpower-cp1500pfclcd",
+   "cells": {"switch": "4 ms (maker)", "ac": "1,000 W, pure sine", "hours": "about 10 minutes (maker)", "note": "USB shutdown signal", "weight": "not read", "price": "$239.95–274.95"}},
+  {"brand": "APC", "model": "Back-UPS Pro BR1500MS2", "url": "https://www.markertek.com/product/apc-br1500ms2/apc-br1500ms2-back-ups-pro-1500va-sinewave-power-supply-10-outlets-2-usb-charging-ports-avr-lcd",
+   "cells": {"switch": "8 ms typical, 10 ms max (maker)", "ac": "900 W, pure sine", "hours": "minutes", "note": "USB shutdown signal", "weight": "not read", "price": "$339.99 at Markertek (list $478)"}},
+  {"brand": "Anker", "model": "SOLIX F2000 (older)", "url": "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups",
+   "cells": {"switch": "20 ms / about 27 ms measured", "ac": "2,400 W", "hours": "—", "note": "Measured slower than claimed", "weight": "—", "price": "not read"}},
+  {"brand": "EcoFlow", "model": "DELTA 2 (discontinued)", "url": "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups",
+   "cells": {"switch": "under 30 ms / about 38 ms measured", "ac": "1,800 W", "hours": "—", "note": "Passed \"just barely\" with a workstation", "weight": "—", "price": "not read"}},
+ ],
+ "after": """
+<h2>Why 10 ms is the line</h2>
+<p>When the grid drops, the PC keeps running on the energy stored in its power supply's capacitors until the station's inverter takes over. Seasonic's summary of the ATX rules: ATX 3.0 asks for 17 ms of hold-up at full load, ATX 3.1 relaxes it to 12 ms at full load and recommends 17 ms at 80 % load. Measured 750–1,000 W units land around 16–18 ms (hwbusters measured 17.6 ms on a Gigabyte AE1000PM and about 17 ms on a be quiet! Dark Power 14 1000 W; igor'sLAB over 17 ms on a Corsair RM850e), and the power-good signal drops a little earlier. A gaming load is not full load on most PSUs, which adds margin, but a 20 ms switch is longer than the hold-up of most supplies at any load, while 10 ms is inside it.</p>
+<h2>What the measurements show</h2>
+<p>StorageReview timed transfers with a Quarch module on a workstation: Jackery Explorer 2000 Plus 8.7 ms, a real Eaton 5PX G2 UPS 8.6 ms, BLUETTI AC60 and AC70 about 14 ms, UGREEN PowerRoam 1200 about 15.3 ms, Anker SOLIX F2000 about 27.4 ms against a 20 ms claim, EcoFlow DELTA 2 about 38.5 ms against under 30 ms. Its DELTA 3 Plus review measured just over 8 ms. The Technology Man measured the C1000 Gen 2 under 10 ms and the Elite 300 at 8.9 ms on an oscilloscope, each with a desktop running a graphics benchmark through the switch. AC180 owners on BLUETTI's forum report switch times outside its 20 ms spec and a desktop that went off in four short outages.</p>
+<h2>How long it lasts, and what it costs to leave on</h2>
+<p>A gaming PC under load draws about 350–650 W at the wall (KitGuru measured just under 510 W for an RTX 4080 Super system in Cyberpunk 2077 at 4K; LanOC 526 W peak for an RTX 4080 build), plus the monitor. The C1000 Gen 2 delivered 907 Wh at a steady 1 kW and the DELTA 3 Plus 910 Wh, so about 2.5 hours at 350 W, 1.8 at 500 W and 1.4 at 650 W, our arithmetic. Idle, the station's inverter draws about 17 W, roughly 150 kWh a year if it sits on UPS duty all year, and the battery is held near full; set a charge limit in the app where it has one. Use a pure sine wave unit (all of these are): one owner's gaming PC would not start on a modified-sine station.</p>
+<h2>Standby, not online</h2>
+<p>All of these are standby designs that switch on loss of grid, and in UPS mode the grid must supply more than the load (EcoFlow's manual). Online units with no switch at all exist at a higher price (the BLUETTI Apex 300 and the EcoFlow DELTA Pro Ultra's online outlets are described as 0 ms; we found no independent confirmation that either is double-conversion).</p>
+""",
+ "sources": [
+  ("StorageReview: portable power stations as a UPS (measured transfer times)", "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups"),
+  ("StorageReview: EcoFlow DELTA 3 Plus review", "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"),
+  ("StorageReview: BLUETTI Elite 200 V2 review", "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review"),
+  ("The Technology Man: Anker SOLIX C1000 Gen 2 review (switchover, 907 Wh, idle draw, noise)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
+  ("The Technology Man: BLUETTI Elite 300 review (8.9 ms)", "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/"),
+  ("Jackery: which products have UPS mode (under 20 ms)", "https://www.jackery.com/blogs/buying-advice/which-jackery-products-have-ups-mode"),
+  ("BLUETTI community: AC180 not working as a UPS", "https://community.bluettipower.com/t/ac180-not-working-as-ups/44216"),
+  ("Seasonic: ATX 3.0 vs ATX 3.1 hold-up time", "https://knowledge.seasonic.com/article/79-comparison-atx-3-0-vs-atx-3-1-standards"),
+  ("hwbusters: Gigabyte AE1000PM hold-up time", "https://hwbusters.com/psus/gigabyte-ae1000pm-pg5-1000w-atx-v3-1-psu-review/6/"),
+  ("hwbusters: be quiet! Dark Power 14 1000W hold-up time", "https://hwbusters.com/psus/be-quiet-dark-power-14-1000w-atx-v3-1-psu-review/6/"),
+  ("igor'sLAB: Corsair RM850e hold-up time", "https://www.igorslab.de/en/corsair-rm850e-atx-v3-1-power-supply-unit-test-when-the-big-brother-becomes-a-cannibal/6/"),
+  ("KitGuru: RTX 4080 Super system power draw", "https://www.kitguru.net/components/graphic-cards/dominic-moass/nvidia-rtx-4080-super-review/42/"),
+  ("LanOC: RTX 4080 Founders Edition system power", "https://lanoc.org/review/video-cards/nvidia-rtx-4080-founders-edition?start=9"),
+  ("Anker SOLIX C1000 Gen 2 (AU page: bypass 1,800 W, UPS 10 ms)", "https://www.ankersolix.com/au/products/c1000-gen2"),
+  ("EcoFlow DELTA 3 user manual (standby UPS, grid must exceed load)", "https://bsai.com.mx/cdn/shop/files/Manual_EcoFlow_DELTA_3.pdf"),
+  ("smarthomecompared: CyberPower CP1500PFCLCD", "https://smarthomecompared.com/ups/cyberpower-cp1500pfclcd"),
+  ("Markertek: APC BR1500MS2", "https://www.markertek.com/product/apc-br1500ms2/apc-br1500ms2-back-ups-pro-1500va-sinewave-power-supply-10-outlets-2-usb-charging-ports-avr-lcd"),
+  ("batteryskills: gaming PC on a modified-sine station", "https://batteryskills.com/can-a-portable-power-station-power-my-computer-during-a-ups-switchover-2/"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "1000wh-power-station-that-charges-in-under-an-hour", "question": "G96 (power funnel x17: 1,000 Wh power station that fully charges from the wall in under an hour)", "lead_first": True,
+ "title": "Which 1,000 Wh power station charges fully from the wall in under an hour (2026)? Measured times, fast-mode conditions, wall watts",
+ "h1": "Which 1,000 Wh portable power station fully charges from a wall outlet in under an hour? (2026)",
+ "desc": "Measured wall-charge times for 1 kWh-class power stations, not just claims: Anker SOLIX C1000 Gen 2 (47 min), DJI Power 1000 V2 (under 53 min), EcoFlow DELTA 3 Plus (55 min), Jackery Explorer 1000 v2 (just under an hour in Emergency mode), BLUETTI AC180 (about an hour in Turbo), with the app settings, battery temperature and outlet each one needs.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The <strong>Anker SOLIX C1000 Gen 2</strong> ({buy:anker-solix-c1000-gen-2}) is the 1,000 Wh power station measured fastest from a wall outlet: full in 47 minutes and 80 % in 36 in a reviewer's test, with its UltraFast mode switched on in the app. That mode needs the battery above 68 °F, or it charges far slower, so before a storm switch it on and keep the unit indoors.</p>
+<p>What to know: the under-an-hour charge also needs one free wall outlet: UltraFast draws about 1,600 W, around 13 A at 120 V, so a space heater or microwave on the same circuit can trip the breaker. Anker and Jackery both say to keep their fast modes for when it's needed, to spare the battery. The other measured sub-hour units are the DJI Power 1000 V2 (under 53 min), EcoFlow DELTA 3 Plus (55 min), the Jackery Explorer 1000 v2 in Emergency mode and the BLUETTI AC180 in Turbo (about an hour each).</p>
+""",
+ "columns": [("claim", "Maker's claim (0–100 %)"), ("measured", "Measured 0–100 %"), ("input", "Max AC input"), ("how", "What it needs"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
+   "cells": {"claim": "49 min", "measured": "47 min; 80 % in 36 min (UK mains, about 20 °C)", "input": "1,600 W UltraFast; 1,200 W normally", "how": "UltraFast on in the app; battery above 68 °F", "weight": "11.3 kg"}},
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus (1,024 Wh)",
+   "cells": {"claim": "56 min; 80 % in about 40 min", "measured": "55 min (The Solar Lab)", "input": "1,500 W", "how": "Default X-Stream; the app's speed limit is for 15 A plugs (StorageReview calls 1,500 W ideal on a 20 A circuit)", "weight": "12.5 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
+   "cells": {"claim": "56 min; 80 % in about 30 min", "measured": "not measured by a major reviewer", "input": "1,500 W", "how": "Same charger as the Plus", "weight": "12.5 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
+   "cells": {"claim": "about 1 h in Emergency mode; 1.6–1.7 h default", "measured": "just under 1 h in Emergency mode, 1 h 35 min standard (The Solar Lab); almost 2 h (OutdoorGearLab, mode not named)", "input": "1,200 W Emergency; 1,000 W standard", "how": "Emergency Charging on in the app before each charge", "weight": "10.8 kg"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
+   "cells": {"claim": "80 % in 45 min", "measured": "about 1 h in Turbo (about 2 h on a first charge while the unit was still warm); 1,458 W peak input", "input": "1,440 W Turbo; 1,000 W standard", "how": "Turbo on; a cool unit", "weight": "16 kg"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
+   "cells": {"claim": "80 % in about 1 h", "measured": "no independent test found", "input": "1,200 W fast", "how": "Fast mode", "weight": "13 kg"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
+   "cells": {"claim": "56 min; 80 % in 37 min", "measured": "under 53 min; 80 % under 40 min (UK, over 1,400 W)", "input": "about 1,400 W in Fast", "how": "Fast switch; drops to the slower rate after five fast charges in a row", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+  {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "cells": {"claim": "80 % in about 45 min with TurboBoost", "measured": "under 2 h in Standard (600 W); no Turbo full-charge test found", "input": "1,200 W Turbo", "how": "TurboBoost", "weight": "11.5 kg", "price": "$499 (ships Nov 12)"}},
+ ],
+ "after": """
+<h2>Before a storm</h2>
+<p>Charge where the battery is warm. Anker's FAQ says UltraFast only engages above 20 °C (68 °F) and charging is "significantly" slower between 0 and 20 °C; BLUETTI's AC180 took about two hours on a first charge while it was still warm from use and about one hour once it had cooled. Plug the station into an outlet with nothing else heavy on the circuit: 1,500–1,600 W is close to the 1,800 W a 15 A, 120 V circuit carries in total. No reviewer reported a tripped breaker, but none tested a shared circuit.</p>
+<h2>What fast charging costs</h2>
+<p>Every maker here slows itself or warns against routine use. Anker asks that UltraFast be used only when necessary to prolong battery life; Jackery's manual says Emergency Charging is not recommended for regular, long-term use; DJI's Power 1000 V2 falls back to its slower rate after five fast charges in a row; OutdoorGearLab warns that frequent turbo charging on the BLUETTI Elite 100 V2 degrades the battery. For storm prep, charge fast once and keep it topped up at the normal rate.</p>
+<h2>Measured, and where</h2>
+<p>The Anker, DJI and AC180 times come from The Technology Man in the UK on 230 V mains; the DELTA 3 Plus and Jackery times from The Solar Lab; the AC180's input watts from StorageReview. No source measured wall watts on a US 120 V outlet for any of these, so treat the minutes as the best case.</p>
+""",
+ "sources": [
+  ("The Technology Man: Anker SOLIX C1000 Gen 2 (47 min measured)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
+  ("Anker SOLIX C1000 Gen 2 FAQ (UltraFast above 20 °C)", "https://connectit.ie/pages/anker-solix-c1000-gen-2-portable-power-station-faqs"),
+  ("Anker SOLIX C1000 Gen 2 (Canada page: 49 min at 1,600 W)", "https://www.ankersolix.com/ca/c1000-gen2"),
+  ("The Solar Lab: EcoFlow DELTA 3 Plus review (55 min)", "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review"),
+  ("StorageReview: EcoFlow DELTA 3 Plus review (15 A and 20 A circuits)", "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"),
+  ("The Solar Lab: Jackery Explorer 1000 v2 review", "https://www.thesolarlab.com/review/jackery-1000-v2-review"),
+  ("OutdoorGearLab: Jackery Explorer 1000 v2", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2"),
+  ("Jackery Explorer 1000 user manual (Emergency Charging guidance)", "https://hampshiregenerators.co.uk/wp-content/uploads/2025/02/Jackery-Explorer-1000-v2-User-Manual.pdf"),
+  ("The Technology Man: BLUETTI AC180 review (Turbo charge, noise)", "https://thetechnologyman.com/bluetti-ac180-review-best-1800w-power-station-solar-generator-bluetti-350w-pv350-solar-panel"),
+  ("StorageReview: BLUETTI AC180 review (input watts by mode)", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
+  ("The Technology Man: DJI Power 1000 V2 review", "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("New Atlas: BLUETTI Elite 100 V2 review", "https://newatlas.com/outdoors/review-bluetti-elite-100-v2-portable-power-station"),
+  ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2-portable-power-station"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "quietest-1000wh-power-station-while-charging", "question": "G97 (power funnel x17: quietest 1,000 Wh power station while charging, bedroom or RV overnight)", "lead_first": True,
+ "title": "Which 1,000 Wh power station is quietest while charging (2026)? Measured dB at 1 m, silent modes, overnight in a bedroom or RV",
+ "h1": "Which 1,000 Wh portable power station stays quiet while it charges overnight? (2026)",
+ "desc": "Fan noise while charging, measured at one metre: BLUETTI AC180 about 37 dB in Silent mode and 47 dB in Turbo, Anker SOLIX C1000 Gen 2 about 42 dB at full speed and fans off at a 200 W charge, DJI Power 1000 V2 about 37 dB at full speed; EcoFlow and Jackery quiet-mode figures are claims. What a silent mode costs in charging time, and how to keep any unit quiet in a bedroom or RV.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The quiet 1,000 Wh power station of ours with a measured figure is the <strong>BLUETTI AC180</strong> ({buy:bluetti-ac180}): about 37 dB at one metre while charging in Silent mode, 1 dB above the reviewer's background, against about 47 dB in Turbo. Silent mode charges at about 270–280 W, so a full charge takes roughly four and a half hours, which suits a bedroom or an RV overnight.</p>
+<p>What to know: the measured numbers all come from one reviewer's meter at one metre, and nobody has measured EcoFlow or Jackery units while charging; their 22–30 dB figures are claims, and one DELTA 3 Plus reviewer found its fans cycling every minute. Any unit is quieter charging slowly: the Anker SOLIX C1000 Gen 2 measured about 42 dB at full speed and ran with its fans off at a 200 W charge. The quietest at full speed was the DJI Power 1000 V2 (about 37 dB), which we don't sell.</p>
+""",
+ "columns": [("fast", "Charging at full speed"), ("quiet", "Charging in its quiet mode"), ("qrate", "Quiet-mode rate and time to full"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
+   "cells": {"fast": "about 47 dB at 1 m (Turbo, measured)", "quiet": "about 37 dB at 1 m (Silent, measured)", "qrate": "283 W measured (BLUETTI says 260 W); about 4.5 h, our arithmetic", "weight": "16 kg"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
+   "cells": {"fast": "about 42 dB at 1 m (UltraFast, measured)", "quiet": "fans off at a 200 W charge (measured); Anker's Silent setting is 600 W", "qrate": "about 6 h at 200 W, about 2 h at 600 W, our arithmetic", "weight": "11.3 kg"}},
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus (1,024 Wh)",
+   "cells": {"fast": "not measured; T3 found the fans cycling every minute", "quiet": "EcoFlow claims under 30 dB at a 600 W load (output, not charging)", "qrate": "charge speed set in the app; no quiet-mode time published", "weight": "12.5 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
+   "cells": {"fast": "not measured", "quiet": "same claim as the Plus", "qrate": "charge speed set in the app", "weight": "12.5 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
+   "cells": {"fast": "not measured", "quiet": "Jackery claims 30 dB in its quiet charging mode (22 dB on its UK page)", "qrate": "no time published", "weight": "10.8 kg"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
+   "cells": {"fast": "not measured", "quiet": "400 W silent mode (manual), not measured", "qrate": "about 3 h at 400 W, our arithmetic", "weight": "13 kg"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
+   "cells": {"fast": "about 37 dB at 1 m at over 1,400 W (measured)", "quiet": "DJI claims 26 dB in Standard mode", "qrate": "600 W Standard", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+ ],
+ "after": """
+<h2>How the numbers were taken</h2>
+<p>The Technology Man measured each unit with a sound meter at one metre in the UK: the DJI Power 1000 V2 at about 37 dB charging at full speed ("one of the quietest power stations I've tested"), the AC180 at about 47 dB in Turbo and 37 dB in Silent, and the C1000 Gen 2 at about 42 dB in UltraFast. StorageReview measured the AC180's Silent input at 283 W, Turbo at 1,458 W. For scale, 37 dB is about the level of a quiet bedroom at night, and each 10 dB sounds roughly twice as loud.</p>
+<h2>Keeping any unit quiet overnight</h2>
+<p>Fans run to cool the charger and the battery, so the slower the charge, the quieter the unit: set the lowest AC charge rate in the app before bed (on the C1000 Gen 2 the reviewer found 200 W ran with the fans off), keep it out of direct sun and away from a wall that traps heat, and avoid charging and powering a heavy load at the same time. Fan noise also rises with what you run from it, which is a separate question from charging.</p>
+<h2>What we could not find</h2>
+<p>No measured dB while charging for the EcoFlow DELTA 3 or DELTA 3 Plus, the Jackery Explorer 1000 v2, the BLUETTI Elite 100 V2 or the ALLPOWERS P1800, and no maker publishes how long its quiet mode takes to fill the battery; the times in the table are capacity divided by the charge rate.</p>
+""",
+ "sources": [
+  ("The Technology Man: BLUETTI AC180 review (47 dB Turbo, 37 dB Silent)", "https://thetechnologyman.com/bluetti-ac180-review-best-1800w-power-station-solar-generator-bluetti-350w-pv350-solar-panel"),
+  ("StorageReview: BLUETTI AC180 review (Silent mode 283 W)", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
+  ("The Technology Man: Anker SOLIX C1000 Gen 2 review (42 dB, fans off at 200 W)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
+  ("The Technology Man: DJI Power 1000 V2 review (37 dB at full speed)", "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review"),
+  ("DJI store: Power 1000 V2 (26 dB claim)", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("T3: EcoFlow DELTA 3 Plus review (fans cycling)", "https://t3.com/active/outdoor-tech/ecoflow-delta-3-plus-review"),
+  ("StorageReview: EcoFlow DELTA 3 Plus review (noise claim by load)", "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"),
+  ("Jackery UK: Explorer 1000 v2 (quiet charging claim)", "https://uk.jackery.com/blogs/buying-guide/jackery-1000-v2-review"),
+  ("Best Buy: Jackery Explorer 1000 v2 listing (30 dB claim)", "https://www.bestbuy.com/site/6624207.p"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "1000wh-power-station-that-can-run-a-microwave", "question": "G98 (power funnel x17: 1,000 Wh power station that can run a microwave)", "lead_first": True,
+ "title": "Which 1,000 Wh power station can run a microwave, and for how long (2026)? Input watts vs cooking watts, reheats per charge",
+ "h1": "Which 1,000 Wh portable power station can actually run a microwave, and for how long? (2026)",
+ "desc": "Running a microwave from a 1 kWh power station: why a 1,000 W microwave draws 1,400–1,600 W from the outlet, which 1,000 Wh units have the AC output for it (Anker SOLIX C1000 Gen 2 at 2,000 W, the 1,800 W EcoFlow DELTA 3, BLUETTI AC180 and ALLPOWERS P1800, the 1,500 W Jackery Explorer 1000 v2), how many reheats a charge gives, and why no reviewer has metered one yet.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> A 1,000 Wh power station can run a microwave if its AC output beats the microwave's input watts on the nameplate, not its cooking watts: a "1,000 W" microwave draws about 1,400–1,600 W. The <strong>Anker SOLIX C1000 Gen 2</strong> ({buy:anker-solix-c1000-gen-2}) has the most headroom in the 1,000 Wh class at 2,000 W, and a charge covers roughly 15 two-minute reheats if nothing else runs (our arithmetic).</p>
+<p>What to know: no reviewer has metered a microwave on a 1,000 Wh unit yet, and one measured 1,849 W from a microwave on a larger BLUETTI, more than the 1,800 W limit of the EcoFlow DELTA 3, BLUETTI AC180 and ALLPOWERS P1800, so check the label inside the door first. The Jackery Explorer 1000 v2 (1,500 W) suits a 700 W microwave at about 1,050 W input, not a full-size one.</p>
+""",
+ "columns": [("ac", "AC continuous / surge"), ("fits", "Microwave it can run (nameplate input)"), ("reheats", "Two-minute reheats per charge"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
+   "cells": {"ac": "2,000 W / 3,000 W", "fits": "up to about 1,800 W input: most 1,000–1,200 W microwaves", "reheats": "about 15–18", "weight": "11.3 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
+   "cells": {"ac": "1,800 W / 3,600 W", "fits": "up to about 1,600 W input; tight for a 1,000 W GE at 1,580 W", "reheats": "about 15–18", "weight": "12.5 kg"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
+   "cells": {"ac": "1,800 W / 2,700 W", "fits": "up to about 1,600 W input", "reheats": "about 17–20", "weight": "16 kg"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
+   "cells": {"ac": "1,800 W / 3,600 W", "fits": "up to about 1,600 W input", "reheats": "about 15–18", "weight": "13 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
+   "cells": {"ac": "1,500 W / 3,000 W", "fits": "a 700–900 W microwave (about 1,050 W input), not a full-size one", "reheats": "about 15–18", "weight": "10.8 kg"}},
+  {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro (1,451 Wh)",
+   "cells": {"ac": "2,400 W (2,000 W below about 60 % charge) / 4,000 W", "fits": "any household microwave", "reheats": "about 22–25", "weight": "13 kg"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
+   "cells": {"ac": "2,600 W", "fits": "any household microwave", "reheats": "about 15–18", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+  {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "cells": {"ac": "1,800 W / 2,700 W", "fits": "up to about 1,600 W input", "reheats": "about 15–18", "weight": "11.5 kg", "price": "$499 (ships Nov 12)"}},
+ ],
+ "after": """
+<h2>Cooking watts and input watts</h2>
+<p>A microwave's advertised wattage is the cooking power; the nameplate (inside the door or on the back) gives what it draws from the outlet, about 1.4–1.6 times more. Examples from makers' sheets as quoted by BLUETTI: a 700 W GE (JES1072) 1,050 W input, a 900 W GE (JES1097) 1,050 W, a 1,000 W GE over-the-range (JVM6175) 1,580 W, a 1,200 W Panasonic (NN-SC67NS) 1,400 W. Panasonic's own page lists its inverter model NN-SN966S at 1,250 W cooking and 1,460 W input. An "inverter" microwave varies its power smoothly instead of cycling on and off, but still peaks near its nameplate. Digital Trends measured 1,849 W from a microwave on a BLUETTI AC500, which is why a 1,800 W station can trip on a full-size model.</p>
+<h2>How many reheats</h2>
+<p>Two minutes at about 1,500 W is about 50 Wh at the outlet; with about 85–90 % of the rated capacity delivered (907 Wh measured from the C1000 Gen 2 at a steady 1 kW), that is roughly 15–18 two-minute reheats from a 1,024 Wh unit, fewer if a fridge or lights share the charge. Anker's own estimate is about 36 minutes of microwave time on 1,000 Wh at 1,500 W and says it has not measured it. These are arithmetic, not tests.</p>
+<h2>Before you rely on it</h2>
+<p>Run the microwave alone on the station with nothing else plugged in, start on a short time and watch the station's output reading; if it shows an overload, a smaller microwave at around 1,000 W input is the fix, not a power-saving mode. Surge ratings (2,700–3,600 W) cover the start, but the continuous rating is what has to hold.</p>
+""",
+ "sources": [
+  ("BLUETTI: how many amps does a microwave pull (nameplate input watts)", "https://www.bluettipower.com/blogs/knowledge/how-many-amps-does-a-microwave-pull"),
+  ("Panasonic: NN-SN766S / NN-SN966S specifications", "https://help.na.panasonic.com/answers/features-and-specifications-microwave-oven-model-nn-sn766s-model-nn-sn966s/"),
+  ("Digital Trends: BLUETTI AC500 camping test (1,849 W microwave)", "https://www.digitaltrends.com/home/bluetti-ac500-power-station-camping-test/"),
+  ("Anker: how much backup power to run a microwave", "https://www.ankersolix.com/blogs/portable-power-station/how-much-backup-power-to-run-a-microwave"),
+  ("The Technology Man: Anker SOLIX C1000 Gen 2 (907 Wh delivered)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2-portable-power-station"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "can-a-1000wh-power-station-run-a-1500w-space-heater", "question": "G99 (power funnel x17: can a 1,000 Wh power station run a 1,500 W space heater, and how long)", "lead_first": True,
+ "title": "Can a 1,000 Wh power station run a 1,500 W space heater (2026)? About half an hour, and what keeps you warm longer",
+ "h1": "Can a 1,000 Wh portable power station run a 1,500 W space heater, and for how long? (2026)",
+ "desc": "A 1,500 W space heater on a 1,000 Wh power station runs about half an hour flat out, maybe 45 minutes with thermostat cycling; which 1 kWh units have the AC output for it (Anker SOLIX C1000 Gen 2, EcoFlow DELTA 3, BLUETTI AC180), the low setting, the measured runs on a 1.5 kWh unit, CPSC's plug-in rule, and the electric blanket that lasts a whole night.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Yes, but only for about half an hour: a 1,000 Wh power station runs a 1,500 W space heater for roughly 33 minutes flat out, a little longer if its thermostat cycles. The <strong>Anker SOLIX C1000 Gen 2</strong> ({buy:anker-solix-c1000-gen-2}) has the 2,000 W output to run one with headroom. For a night, an electric blanket at about 100 W lasts 8–10 hours from the same charge.</p>
+<p>What to know: these are calculations, not tests; no reviewer has timed a 1,500 W heater on a 1,000 Wh unit. The nearest measurements are on a 1.5 kWh Jackery: just under 90 minutes with a thermostat heater in an office with the window open, and 62 minutes at about 1,160 W. On its low setting (about 750 W) a 1,000 Wh unit gives about an hour. CPSC says to plug a heater directly into an outlet, never a power strip; on a station, use its own AC socket.</p>
+""",
+ "columns": [("ac", "AC continuous"), ("high", "1,500 W heater on high"), ("low", "On low (about 750 W)"), ("blanket", "Electric blanket (about 100 W)"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
+   "cells": {"ac": "2,000 W", "high": "about 35 min", "low": "about 70 min", "blanket": "about 8–9 h", "weight": "11.3 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
+   "cells": {"ac": "1,800 W", "high": "about 35 min", "low": "about 70 min", "blanket": "about 8–9 h", "weight": "12.5 kg"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
+   "cells": {"ac": "1,800 W", "high": "about 40 min", "low": "about 80 min", "blanket": "about 9–10 h", "weight": "16 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
+   "cells": {"ac": "1,500 W, no headroom", "high": "at its limit; not recommended", "low": "about 70 min", "blanket": "about 9 h", "weight": "10.8 kg"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2 (2 kWh)",
+   "cells": {"ac": "2,600 W", "high": "about 75 min", "low": "about 2.5 h", "blanket": "about 19 h", "weight": "24.2 kg"}},
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300 (3 kWh)",
+   "cells": {"ac": "2,400 W", "high": "about 1.7 h", "low": "about 3.4 h", "blanket": "about a day", "weight": "26.3 kg"}},
+  {"brand": "Jackery", "model": "Explorer 1500 (1,488 Wh, measured)", "url": "https://geekdad.com/2021/05/geekdad-review-jackerys-explorer-1500-may-be-the-ultimate-portable-power-station/",
+   "cells": {"ac": "1,800 W", "high": "just under 90 min with thermostat cycling (GeekDad)", "low": "—", "blanket": "—", "weight": "—", "price": "not read"}},
+ ],
+ "after": """
+<h2>The arithmetic</h2>
+<p>A heater on high draws its full 1,500 W while the element is on. A 1,024 Wh unit delivers about 870–910 Wh to an AC load (907 Wh measured from the C1000 Gen 2), so 900 Wh ÷ 1,500 W is about 36 minutes; we round down to "about 35" because the station's own draw and heat losses take a little more. A thermostat that switches the element off when the room warms stretches that: in GeekDad's test with the window wide open the heater ran just under 90 minutes on a Jackery Explorer 1500 that would last about 59 minutes at constant full draw. Expert Reviews ran a 2 kW heater on its first level (about 1.16 kW) for 62 minutes from a 1.5 kWh unit. Anker suggests a station rated 20–30 % above the heater, which is why a 1,500 W heater needs 1,800–2,000 W of continuous output.</p>
+<h2>Staying warm through a night</h2>
+<p>Heat the person, not the room: an electric throw draws about 50–80 W and a full or queen blanket about 80–200 W (Anker's figures), so 100 W gives 8–10 hours from a 1,000 Wh unit; a 12 V heated blanket at 50 W on the car port gives about 17 hours. A small ceramic heater on 500 W gives about 1.7 hours. A heater stays the tool for a short warm-up.</p>
+<h2>Safety</h2>
+<p>CPSC counts an average of 1,600 fires, 70 deaths and 150 injuries a year from portable heaters (2020–2022) and says to plug them directly into a wall outlet, never into an extension cord or power strip. With a power station, that means the station's own AC outlet, the heater on a hard, level floor, and three feet of clearance.</p>
+""",
+ "sources": [
+  ("GeekDad: Jackery Explorer 1500 review (1,500 W heater, just under 90 min)", "https://geekdad.com/2021/05/geekdad-review-jackerys-explorer-1500-may-be-the-ultimate-portable-power-station/"),
+  ("Expert Reviews: Jackery Explorer 1500 Pro review (62 min at about 1.16 kW)", "https://www.expertreviews.co.uk/energy/1418373/jackery-explorer-1500-pro-review"),
+  ("Anker: heaters and power stations compatibility guide", "https://www.ankersolix.com/blogs/battery/heaters-power-stations-compatibility-guide"),
+  ("Anker: battery for an electric blanket", "https://www.ankersolix.com/blogs/battery/battery-for-electric-blanket-guide"),
+  ("BLUETTI: battery-powered portable heater", "https://www.bluettipower.com/blogs/buying-guide/battery-powered-portable-heater"),
+  ("CPSC: tips for generators, furnaces and space heaters (2026)", "https://www.cpsc.gov/Newsroom/News-Releases/2026/Keep-Warm-and-Safe-This-Winter-Tips-for-Using-Generators-Furnaces-and-Space-Heaters"),
+  ("The Technology Man: Anker SOLIX C1000 Gen 2 (907 Wh delivered)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "power-station-for-a-home-oxygen-concentrator-power-outage", "question": "G100 (power funnel x17: power station to run a home oxygen concentrator during a power outage)", "lead_first": True,
+ "title": "Which power station can run a home oxygen concentrator in a power outage, and for how long (2026)? Hours by capacity, backup tanks first",
+ "h1": "Which portable power station can run a home oxygen concentrator during a power outage, and for how many hours? (2026)",
+ "desc": "Hours of a 5-litre home oxygen concentrator (Philips EverFlo, Drive DeVilbiss 525, Inogen At Home, Invacare Platinum) on a power station by capacity: about 2.5 h from 1 kWh, about 7 h from the 3 kWh BLUETTI Elite 300, about 12 h from an EcoFlow DELTA 3 expanded to 5 kWh. Why backup oxygen tanks and a utility medical-needs registration come first, the untested switchover, and portable concentrators on DC.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> A portable power station runs a home oxygen concentrator for a few hours, so it is a bridge, not the plan: backup oxygen tanks from your supplier come first. For one night, the <strong>BLUETTI Elite 300</strong> ({buy:bluetti-elite-300}) gives about 7 hours on a 5-litre concentrator rated 350 W (3 kWh, 2,400 W, 10 ms switchover); a 1,000 Wh unit gives about 2.5 hours.</p>
+<p>What to know: these hours are capacity divided by the makers' rated watts (Philips EverFlo 350 W, Drive 525 about 290–312 W, Inogen At Home 100 W at 2 L/min); no one has published a measured runtime with a home concentrator on a power station, and no maker has tested one riding through a 10 ms switchover. The EverFlo alarms when power fails. The American Lung Association says tanks last 24–48 hours depending on flow and to tell your utility you use oxygen.</p>
+""",
+ "columns": [("wh", "Capacity"), ("h350", "Hours at 350 W (EverFlo, 5 L)"), ("h280", "Hours at 280 W (2 L/min on many 5 L units)"), ("expand", "Expandable"), ("switch", "Switchover"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-elite-300", "model": "BLUETTI Elite 300",
+   "cells": {"wh": "3,014 Wh", "h350": "about 7", "h280": "about 9", "expand": "No", "switch": "10 ms", "weight": "26.3 kg"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3",
+   "cells": {"wh": "1,024 Wh; up to 5 kWh with extra batteries (1,024 Wh each)", "h350": "about 2.5; about 12 at 5 kWh", "h280": "about 3; about 15 at 5 kWh", "expand": "Yes, to 5 kWh", "switch": "10 ms", "weight": "12.5 kg"}},
+  {"slug": "bluetti-ac200l", "model": "BLUETTI AC200L",
+   "cells": {"wh": "2,048 Wh; 7,577.6 Wh with two B300K", "h350": "about 5; about 18 with two B300K", "h280": "about 6; about 23", "expand": "Yes (B300K, 2,764.8 Wh, $1,099 on 2026-11-03)", "switch": "20 ms", "weight": "see product page"}},
+  {"slug": "bluetti-elite-200-v2", "model": "BLUETTI Elite 200 V2",
+   "cells": {"wh": "2,073.6 Wh", "h350": "about 5", "h280": "about 6", "expand": "No", "switch": "15 ms or less", "weight": "24.2 kg"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2",
+   "cells": {"wh": "1,024 Wh", "h350": "about 2.5", "h280": "about 3", "expand": "No", "switch": "under 10 ms", "weight": "11.3 kg"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2",
+   "cells": {"wh": "1,070 Wh", "h350": "about 2.5", "h280": "about 3", "expand": "No", "switch": "under 20 ms (Jackery)", "weight": "10.8 kg"}},
+ ],
+ "after": """
+<h2>Tanks, the utility, and your supplier first</h2>
+<p>The American Lung Association's chief medical officer, Dr. Albert Rizzo, told NPR that suppliers should provide stand-alone tanks, that regular oxygen tanks can last 24 to 48 hours depending on the flow rate, and that you should tell your utility you depend on oxygen because many prioritise restoring power to those customers. CAIRE's concentrator manual says patients should have a backup oxygen source for a power outage. HHS's emPOWER program tracks more than 4.6 million Medicare beneficiaries who rely on electricity-dependent equipment for emergency planning. Ask your supplier how many tanks your prescribed flow needs for 48 hours, and keep them; a power station adds hours on top, it does not replace them.</p>
+<h2>How much a home concentrator draws</h2>
+<p>Makers' ratings: Philips EverFlo 350 W average; Drive DeVilbiss 525DS 310 W average and 275 W at 1.2 L/min or below, and the 525KS about 290 W at 2 L/min and 312 W at 5 L/min; Inogen At Home 100 W at 2 L/min and 275 W at 5 L/min; Invacare Platinum 5 400 W and Platinum 10 585 W (2006 service manual). A 10-litre unit at 585 W halves every runtime in the table. The hours are our arithmetic: usable energy (about 85 % of capacity through the inverter) divided by the rated draw. Start-up surge is not documented by these makers.</p>
+<h2>Switching over, and the alarm</h2>
+<p>Run through a station's UPS outlet, a concentrator keeps going only if the switch is short enough; these units switch in 10–20 ms, and we found no report of a concentrator tested through one. The EverFlo sounds a continuous alarm on power failure, so you will know if it drops; test it once with the station before you need it.</p>
+<h2>Portable concentrators</h2>
+<p>A portable concentrator (Inogen One G5 120 W maximum on DC, Philips SimplyGo 120–150 W) runs far longer from the same station, but most are pulse-dose, while many home prescriptions are continuous flow, so check with your clinician. Inogen's G5 manual requires a car socket fused for at least 15 A; the 10 A car ports on these stations fall short, so use the AC adapter.</p>
+""",
+ "sources": [
+  ("NPR: power outage safety with medical devices (American Lung Association)", "https://www.npr.org/sections/shots-health-news/2024/07/11/nx-s1-5035514/power-outage-safety-medical-devices-equipment"),
+  ("HHS emPOWER program", "https://empowerprogram.hhs.gov/"),
+  ("CAIRE Cortina manual (backup oxygen source)", "https://files.caireinc.com/Manuals/MN302_D.pdf"),
+  ("Philips EverFlo specifications (350 W)", "https://www.philips.com.au/healthcare/product/HC0044000/everflo-home-oxygen-system/specifications"),
+  ("Philips EverFlo user manual (power-failure alarm)", "https://ie.healthcare.airliquide.com/sites/alh_ie/files/2024-02/everflo-user-manual.pdf"),
+  ("Drive DeVilbiss 525 manual (power by flow)", "https://cdn.shopify.com/s/files/1/0558/4981/2162/files/drive_medical_manual_5_liter.pdf"),
+  ("Air Liquide: Drive 525KS spec sheet", "https://au.healthcare.airliquide.com/sites/alh_au/files/2026-03/drive_oxygen_concentrator_5l_525ks_spec_sheet.pdf"),
+  ("Inogen energy savings calculator (Inogen At Home watts)", "https://www.inogen.com/products/energy-savings-calculator/"),
+  ("Invacare Platinum service manual (2006)", "https://www.bioclinicalservices.com.au/invacare/clinical/invacare-platinum-series-oxygen-concentrators-service-manual-rev-d-aug-2006"),
+  ("Inogen One G5 user manual (DC, 15 A socket)", "https://ie.healthcare.airliquide.com/sites/alh_ie/files/2024-02/inogen_g5_english_user-manual-web.pdf"),
+  ("Air Liquide: Philips SimplyGo spec sheet", "https://au.healthcare.airliquide.com/sites/alh_au/files/2022-11/simplygo-spec-sheet.pdf"),
+  ("BLUETTI B300K expansion battery", "https://www.bluettipower.com/products/bluetti-b300k-expansion-battery"),
+  ("EcoFlow DELTA 3 Plus (expandable to 5 kWh)", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("B&H: EcoFlow DELTA 3 Extra Battery (1,024 Wh)", "https://www.bhphotovideo.com/c/product/1874512-REG/ecoflow_efdelta3_eb_delta_3_extra_battery.html"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "small-power-station-under-10-lb-100w-usb-c-laptop", "question": "G104 (power funnel x17: small power station under 10 lb that charges a laptop at 100 W USB-C for a weekend)", "lead_first": True,
+ "title": "Which small power station under 10 lb charges a laptop at 100 W USB-C for a weekend (2026)? Laptop charges per unit, ports, weight",
+ "h1": "Which small power station under 10 lb charges a laptop at 100 W over USB-C for a weekend away? (2026)",
+ "desc": "Small power stations under 10 lb for laptop charging over USB-C at 100 W or more: BLUETTI Elite 30 V2 (9.5 lb, 140 W + 100 W), EcoFlow RIVER 3 (7.7 lb, one 100 W port), Jackery Explorer 240 v2 and 300 Plus, the DC-only Anker SOLIX C300 DC and Jackery 300D. How many MacBook Air, MacBook Pro 14 and 16 charges each gives, measured usable energy, and why the Tenergy T320's 45 W port is too slow.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The <strong>BLUETTI Elite 30 V2</strong> ({buy:bluetti-elite-30-v2}) is the small power station under 10 lb (9.5 lb) we'd take for a weekend of laptop charging: two USB-C ports at 140 W and 100 W, so a MacBook Pro charges at full speed and a second laptop or phone shares it, 288 Wh for about 3.5 MacBook Air charges (MacRumors' count), and AC outlets too.</p>
+<p>What to know: no review measured how many Wh these deliver through USB-C, so laptop charges are estimates: about 4 for a 13-inch MacBook Air (53.8 Wh), 3 for a 14-inch MacBook Pro (72.4 Wh) and 2 for a 16-inch (100 Wh) from a 288 Wh unit. The lighter EcoFlow RIVER 3 ({buy:ecoflow-river-3-245wh}, 7.7 lb) has one 100 W USB-C port and 245 Wh. With no need for AC, the Anker SOLIX C300 DC is 6.2 lb with three USB-C ports.</p>
+""",
+ "columns": [("wh", "Capacity"), ("weight", "Weight"), ("usbc", "USB-C ports"), ("ac", "AC"), ("charges", "13-inch MacBook Air charges (estimate)")],
+ "rows": [
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh LiFePO4", "weight": "9.48 lb (4.3 kg)", "usbc": "140 W + 100 W; 2× USB-A 15 W", "ac": "600 W, 2 outlets", "charges": "3.5 (MacRumors); about 4 by arithmetic"}},
+  {"slug": "ecoflow-river-3-245wh", "model": "EcoFlow RIVER 3",
+   "cells": {"wh": "245 Wh LiFePO4 (210 Wh measured on AC)", "weight": "7.72 lb (3.5 kg)", "usbc": "one 100 W; 2× USB-A 12 W", "ac": "300 W, 1 outlet", "charges": "about 3"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh LiFePO4", "weight": "8.2 lb (3.7 kg)", "usbc": "one 45 W: too slow for a 100 W laptop", "ac": "200 W, 2 outlets", "charges": "about 4, slowly"}},
+  {"brand": "Anker", "model": "SOLIX C300 DC (no AC)", "url": "https://www.ankersolix.com/camping-battery-portable-power-station-a1726-a1722-pps",
+   "cells": {"wh": "288 Wh", "weight": "6.17 lb (Gadgeteer's spec table)", "usbc": "2× 140 W + 100 W + 15 W", "ac": "none", "charges": "about 4–5 (its sister C300X DC delivered 273 Wh over USB-C)", "price": "not read"}},
+  {"brand": "Jackery", "model": "Explorer 300D (no AC)", "url": "https://faq.jackery.com/hc/en-us/articles/52303653927835-Explorer-300D-Basic-Information",
+   "cells": {"wh": "288 Wh", "weight": "about 5.5 lb", "usbc": "2× 140 W", "ac": "none", "charges": "about 4", "price": "not read"}},
+  {"brand": "Jackery", "model": "Explorer 240 v2", "url": "https://jackery.com/products/jackery-explorer-240-v2-portable-power-station",
+   "cells": {"wh": "256 Wh", "weight": "7.94 lb", "usbc": "one 100 W + one 15 W", "ac": "300 W", "charges": "about 3.5", "price": "not read"}},
+  {"brand": "Jackery", "model": "Explorer 300 Plus", "url": "https://www.bestbuy.com/product/jackery-explorer-300-plus-portable-power-station",
+   "cells": {"wh": "288 Wh", "weight": "8.27 lb", "usbc": "one 100 W", "ac": "300 W", "charges": "about 4", "price": "not read"}},
+ ],
+ "after": """
+<h2>How many laptop charges, and why it's an estimate</h2>
+<p>Battery sizes: 13-inch MacBook Air M4 53.8 Wh, 15-inch about 66.5 Wh, 14-inch MacBook Pro 72.4 Wh, 16-inch about 100 Wh. The only instrumented USB-C test we found is techtest.org's on Anker's C300X DC, which delivered 270–273 Wh of its 288 Wh at 9, 20 and 28 V (about 95 %); charging a laptop also loses some energy inside the laptop. So a 288 Wh unit gives roughly 4–5 charges of a 13-inch Air, 3–3.5 of a 14-inch Pro and 2–2.5 of a 16-inch, before those losses; MacRumors counted 3.5 MacBook Air charges on the Elite 30 V2. StorageReview measured 210 Wh from the RIVER 3 on AC, 86 % of its rating, which is lower than USB-C delivery would be because of the inverter.</p>
+<h2>Ports decide the speed</h2>
+<p>A 14- or 16-inch MacBook Pro charges fastest at 96–140 W; a 100 W port charges it at near full speed, a 45 W port (Tenergy T320) slowly, and a gaming laptop's 180–240 W brick can't be replaced by any USB-C port here, only the AC outlet. Two USB-C ports matter when two people share a weekend: the Elite 30 V2 and the DC-only Anker and Jackery units have them, the RIVER 3 and Jackery 240 v2 have one at 100 W.</p>
+<h2>Under 10 lb, and what's just over</h2>
+<p>The EcoFlow RIVER 3 Plus (10.4 lb), Goal Zero Yeti 300 (under 14 lb), DJI Power 500 (about 16 lb) and our ALLPOWERS R600 (12.3 lb) are over the line. Weights are the makers' figures. MacRumors also measured the Elite 30 V2 losing about 10 % in four hours with its DC output on and nothing plugged in, so switch unused outputs off.</p>
+""",
+ "sources": [
+  ("BLUETTI Elite 30 V2 (ports, weight, price)", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
+  ("MacRumors: BLUETTI Elite 30 V2 review (3.5 MacBook Air charges, standby loss)", "https://www.macrumors.com/review/bluetti-elite-30-v2-power-station/"),
+  ("EcoFlow RIVER 3 user manual (ports, weight, UPS variants)", "https://manuals.plus/m/9f06b233da3b0b78c70e7282082e6f57a614db61374735780fbd9f9067c292d1"),
+  ("StorageReview: EcoFlow RIVER 3 review (210 Wh on AC)", "https://storagereview.com/review/ecoflow-river-3-review"),
+  ("StorageReview: EcoFlow RIVER 3 Plus review (weight)", "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support"),
+  ("Anker SOLIX C300 DC", "https://www.ankersolix.com/camping-battery-portable-power-station-a1726-a1722-pps"),
+  ("The Gadgeteer: Anker SOLIX C300 DC review", "https://the-gadgeteer.com/2024/11/26/anker-solix-c300-dc-portable-power-station-review/"),
+  ("techtest.org: Anker SOLIX C300X DC USB-C capacity test", "https://techtest.org/anker-solix-c300x-dc-im-test-die-dc-only-schwester-der-solix-c300-mit-140-w-usb-c/"),
+  ("Jackery: Explorer 300D basic information", "https://faq.jackery.com/hc/en-us/articles/52303653927835-Explorer-300D-Basic-Information"),
+  ("Jackery Explorer 240 v2", "https://jackery.com/products/jackery-explorer-240-v2-portable-power-station"),
+  ("MacRumors: 14-inch vs 16-inch MacBook Pro (battery)", "https://macrumors.com/guide/14-inch-vs-16-inch-macbook-pro"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage", "question": "G105 (power funnel x17: small power station to keep a Wi-Fi router and modem running through a power outage)", "lead_first": True,
+ "title": "Which small power station keeps a Wi-Fi router and modem running in a power outage, and for how long (2026)? Hours at 10–20 W, UPS switchover, 12 V tips",
+ "h1": "Which small power station keeps a Wi-Fi router and modem running through a power outage, and for how long? (2026)",
+ "desc": "Keeping a cable modem or fiber ONT and a Wi-Fi router online in an outage with a small power station: measured and rated draws (eero, Orbi, cable modems, ONTs), hours on the BLUETTI Elite 30 V2, EcoFlow RIVER 3, Jackery Explorer 240 v2 and Tenergy T320, why a 10 ms switchover matters, and running the router from 12 V or USB-C instead of the inverter.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> A small power station keeps a Wi-Fi router and modem running through a power outage for about half a day: the <strong>BLUETTI Elite 30 V2</strong> ({buy:bluetti-elite-30-v2}) gives roughly 12 hours at a 20 W router-plus-modem load (288 Wh), switches over in 10 ms or less so the router shouldn't reboot, and has 12 V barrel outputs that skip the inverter's losses.</p>
+<p>What to know: a modern router and modem draw about 8–20 W together (eero 6 4.4 W, Orbi 6–8 W per unit, a cable modem about 11.6 W, a fiber ONT 3–6 W), so hours are capacity × 85 % ÷ load, our arithmetic. The EcoFlow RIVER 3 ({buy:ecoflow-river-3-245wh}) gives about 10 hours, but its manual says the 20 ms variants are not for desktops, NAS or servers, and no one has tested whether a router rides through 20 ms.</p>
+""",
+ "columns": [("wh", "Capacity"), ("h20", "Hours at 20 W"), ("h12", "Hours at 12 W"), ("switch", "Switchover"), ("dc", "12 V / USB-C outputs"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "bluetti-elite-30-v2", "model": "BLUETTI Elite 30 V2",
+   "cells": {"wh": "288 Wh", "h20": "about 12", "h12": "about 14.5 (BLUETTI's claim, 4.5 W standby)", "switch": "10 ms or less", "dc": "2× DC5521 12 V 5 A, 12 V car port, USB-C 140 W + 100 W", "weight": "4.3 kg"}},
+  {"slug": "ecoflow-river-3-245wh", "model": "EcoFlow RIVER 3",
+   "cells": {"wh": "245 Wh", "h20": "about 10", "h12": "about 15", "switch": "20 ms on most variants; a 10 ms variant exists (check the listing)", "dc": "12.6 V car port (needs a barrel adapter), USB-C 100 W", "weight": "3.5 kg"}},
+  {"slug": "tenergy-t320-300wh-power-station", "model": "Tenergy T320",
+   "cells": {"wh": "300 Wh", "h20": "about 12.5", "h12": "about 20", "switch": "not published", "dc": "2× DC5521 12 V 8 A, car port, USB-C 45 W", "weight": "3.7 kg"}},
+  {"slug": "allpowers-r600-299wh", "model": "ALLPOWERS R600",
+   "cells": {"wh": "299 Wh", "h20": "about 12.5", "h12": "about 20", "switch": "10 ms or less", "dc": "12 V car port (needs a barrel adapter), 2× USB-C 100 W", "weight": "5.6 kg"}},
+  {"brand": "Jackery", "model": "Explorer 240 v2", "url": "https://jackery.com/products/jackery-explorer-240-v2-portable-power-station",
+   "cells": {"wh": "256 Wh", "h20": "about 11", "h12": "about 18", "switch": "20 ms (UL 1778 UPS, maker)", "dc": "12 V car port, USB-C 100 W", "weight": "3.6 kg", "price": "not read"}},
+ ],
+ "after": """
+<h2>What a router and modem draw</h2>
+<p>eero publishes standardised figures: eero 6 4.4 W, eero Pro 6E 7.5 W, eero Max 7 21.9 W. Netgear lists 6–8 W idle per Orbi unit. A Netgear CM2000 cable modem measured 11.6 W idle and 14.2 W under load (third-party review); an Arris SB4200 is rated 6 W. Users measured fiber ONTs at 2.75–6 W, though older ONTs with their own battery ran 15–25 W. A modem plus one router is typically 10–20 W; a mesh with three nodes in different rooms needs each node powered, which a single station can't do. Anker's guide puts router plus modem at 15–30 W, a vendor estimate.</p>
+<h2>Why switchover matters, and the DC route</h2>
+<p>Left on the wall as a UPS, the station must switch to battery fast enough that the router doesn't reboot; a reboot costs a few minutes offline and drops calls. The Elite 30 V2 and R600 are rated 10 ms or less; the RIVER 3's manual lists a 10 ms UPS variant and other variants with 20 ms "emergency power" that EcoFlow says not to use for desktops, NAS or servers, and the Jackery 240 v2 is 20 ms. Running the modem and router from the station's 12 V barrel outputs (most use 12 V barrel adapters; eero uses USB-C) avoids the inverter's own draw and keeps the outputs live without a switch; check each power brick's voltage and plug before buying a cable.</p>
+<h2>Leaving it on the wall all year</h2>
+<p>Set the AC output's auto-off timer to "never" (the RIVER 3 turns idle outputs off by default) and set a charge limit in the app where it has one; neither maker gives guidance on permanent duty at 100 %. MacRumors measured about 10 % lost in four hours from the Elite 30 V2 with DC on and nothing plugged in, so a router run all night from DC gets a little less than the table shows. A small 12 V mini UPS for routers is the cheaper single-purpose answer; we found no current US listing price to compare.</p>
+""",
+ "sources": [
+  ("eero: how much power does eero use", "https://eero.com/support/articles/how-much-power-does-eero-use"),
+  ("Netgear: how much power does my Orbi system use", "https://kb.netgear.com/31141/How-much-power-does-my-Orbi-system-use"),
+  ("thinkbroadband forums: fiber ONT power measurements", "https://forums.thinkbroadband.com/fibre/4765039-ont-power-consumption.html"),
+  ("Anker: power station for a Wi-Fi router", "https://www.ankersolix.com/blogs/portable-power-station/power-station-for-wifi-router"),
+  ("BLUETTI Elite 30 V2 (ports, UPS, router runtime claim)", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
+  ("EcoFlow RIVER 3 user manual (UPS variants, auto-off)", "https://manuals.plus/m/9f06b233da3b0b78c70e7282082e6f57a614db61374735780fbd9f9067c292d1"),
+  ("Jackery Explorer 240 v2 (UPS 20 ms)", "https://jackery.com/products/jackery-explorer-240-v2-portable-power-station"),
+  ("MacRumors: BLUETTI Elite 30 V2 review (standby loss)", "https://www.macrumors.com/review/bluetti-elite-30-v2-power-station/"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
 ]

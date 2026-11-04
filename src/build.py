@@ -219,6 +219,9 @@ def merchant(p):
     return "Amazon.com" if is_amazon(p) else f"{p['brand']}'s official US store"
 
 
+AMAZON_PRICE = "price on the Amazon page"   # what a comparison page shows in place of a price for an Amazon record
+
+
 def price_text(p, cap=True):
     """The price cell: the verified store price, or where to find it when the record carries none (Amazon records never
     carry one: Amazon's Program Policies allow a price only from its own feed)."""
@@ -1021,7 +1024,7 @@ def compare_row(c, r):
         c0, s0, after0, date0 = best_offer(p)
         name = (f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a><br>'
                 f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
-        price = money(p["price"]) + stock_note(p)
+        price = AMAZON_PRICE if is_amazon(p) else money(p["price"]) + stock_note(p)
         deal = (f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; {html.escape(pass_clause(p, c0, date0))}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
                 if c0 else "No discount code applies.")
     else:
@@ -1042,6 +1045,8 @@ def buy_inline(slug):
     c, s, after, date = best_offer(p)
     code = (f', {code_word(c, False)} <strong>{html.escape(c["code"])}</strong> saves {money(s)}'
             + (", pre-applied by the link" if applied_by_link(p, c) else "") if c else "")
+    if is_amazon(p):
+        return f'{AMAZON_PRICE}; buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
     return (f'{money(p["price"])}{stock_note(p)}; buy: '
             f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}')
 
@@ -1052,8 +1057,8 @@ def compare_fill(text):
     the deal line."""
     import re
     text = re.sub(r"\{buy:([a-z0-9-]+)\}", lambda m: buy_inline(m.group(1)), text)
-    text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
-    text = re.sub(r"\{after:([a-z0-9-]+)\}", lambda m: money(best_offer(BY_SLUG[m.group(1)])[2] or BY_SLUG[m.group(1)]["price"]), text)
+    text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: AMAZON_PRICE if is_amazon(BY_SLUG[m.group(1)]) else money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
+    text = re.sub(r"\{after:([a-z0-9-]+)\}", lambda m: AMAZON_PRICE if is_amazon(BY_SLUG[m.group(1)]) else money(best_offer(BY_SLUG[m.group(1)])[2] or BY_SLUG[m.group(1)]["price"]), text)
     return re.sub(r"\{deal:([a-z0-9-]+)\}", lambda m: compare_deal_line(m.group(1)), text)
 
 
@@ -1083,6 +1088,10 @@ def compare_where_to_buy(ours, c, filler=True):
         cd, sv, after, date = best_offer(p)
         code = (f' — {code_word(cd, False)} <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code ({html.escape(pass_clause(p, cd, date))})'
                 + (("." + html.escape(perks_text(p, cd))) if perks_text(p, cd) else "") if cd else "")
+        if is_amazon(p):
+            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {AMAZON_PRICE}. Buy on Amazon: '
+                         f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
+            continue
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
                      f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
     coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
@@ -1129,6 +1138,8 @@ def product_result_line(c):
     if not pr:
         return ""
     p = BY_SLUG[pr["slug"]]
+    if is_amazon(p):
+        return ""   # the record's core fields are price and stock, which Amazon's Program Policies keep off our pages
     code, saving, after, _ = best_offer(p)
     rec = {"item_id": pr["item_id"], "title": pr["title"], "description": pr["description"],
            "url": SITE["url"] + f"/go/{p['slug']}", "brand": p["brand"], "seller_name": f"{p['brand']} Official US Store",
@@ -1151,6 +1162,11 @@ def compare_page(c):
     heads = "".join(f"<th>{h}</th>" for _, h in c["columns"])
     rows = "".join(compare_row(c, r) for r in c["rows"])
     makers = sorted({r["brand"] for r in others})
+    # Amazon Associates rows (DLC-159): no price from us (Amazon's feed rule) and the link opens Amazon.com, not a brand store
+    amazon_note = ("" if not any(is_amazon(BY_SLUG[r["slug"]]) for r in ours) else
+                   f' Rows showing "{AMAZON_PRICE}" are sold on Amazon.com: their buy link is an Amazon Associates link that opens the Amazon listing, '
+                   f'and the price and stock are on that page, because Amazon allows a site to quote its prices only from Amazon\'s own feed. '
+                   f'Their specs were read from the makers\' own US pages. As an Amazon Associate, {SITE["brand"]} earns from qualifying purchases.')
     if c.get("lead_first"):   # fast-loop pages (growth/focus/fastloop-briefs/COPY-RULES.md): the conversion block opens the page
         top = f"""<h1>{c['h1']}</h1>
 {product_result_line(c)}{compare_fill(c['intro'])}
@@ -1170,7 +1186,7 @@ def compare_page(c):
 <p class="small">Rows marked with a code and buy link are products {SITE['brand']} lists: the price was verified on the brand's own US store on {VERIFIED}
 and the code is tested daily in that brand's cart; the date shown is its last pass (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
 comparison is complete; their figures and prices were read from the makers' own US pages on {c['checked']} and are not re-checked daily. The buy links are
-affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.</p>
+affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.{amazon_note}</p>
 {compare_fill(c['after'])}
 <h2>Sources</h2>
 <ul>

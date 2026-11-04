@@ -1,0 +1,107 @@
+{
+ "sources": [
+  {
+   "n": 0,
+   "kind": "major-reviewer",
+   "answers_it": false,
+   "why": "Single-product S2000 review; UPS mode mentioned but untested, no NAS shutdown signalling",
+   "evidence": "Anker quotes a transfer time of around 10ms, although I haven’t independently measured that or tested compatibility with individual computers.",
+   "quote_found": true
+  },
+  {
+   "n": 1,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Direct pick (RIVER 3 Max) with comparison table including shutdown communication column; no verifiable testing",
+   "evidence": "Its RIVER 3 Plus base has a maker-rated under-10 ms transfer and a USB-B communication port.",
+   "quote_found": true
+  },
+  {
+   "n": 2,
+   "kind": "brand-store",
+   "answers_it": false,
+   "why": "Anker blog explains why UPS signal is needed but names no product that provides it",
+   "evidence": "It does not mean the station can send a USB, SNMP, or network UPS event to a NAS.",
+   "quote_found": true
+  },
+  {
+   "n": 3,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text given",
+   "evidence": "",
+   "quote_found": false
+  },
+  {
+   "n": 4,
+   "kind": "listicle",
+   "answers_it": false,
+   "why": "Affiliate roundup on UPS mode generally; steers NAS owners to a dedicated UPS, no USB-shutdown pick",
+   "evidence": "Pick a dedicated UPS if: You have a single tower, a NAS, and zero tolerance for reboots.",
+   "quote_found": true
+  },
+  {
+   "n": 5,
+   "kind": "brand-store",
+   "answers_it": false,
+   "why": "Generic Anker UK explainer on UPS vs power station, no product with shutdown signalling",
+   "evidence": "They are generally stationary, have modest capacity and may include USB communication for automatic shutdown software.",
+   "quote_found": true
+  },
+  {
+   "n": 6,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text given",
+   "evidence": "",
+   "quote_found": false
+  },
+  {
+   "n": 7,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "About conventional UPS units for a NAS, not portable power stations",
+   "evidence": "Pick a pure sine unit with USB, confirm your NAS sees it, then pull the plug deliberately and watch it work.",
+   "quote_found": true
+  },
+  {
+   "n": 8,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text given",
+   "evidence": "",
+   "quote_found": false
+  },
+  {
+   "n": 9,
+   "kind": "unreadable",
+   "answers_it": false,
+   "why": "No text given",
+   "evidence": "",
+   "quote_found": false
+  },
+  {
+   "n": 10,
+   "kind": "off-target",
+   "answers_it": false,
+   "why": "Small-rack conventional UPS picks (CyberPower, APC), not power stations",
+   "evidence": "Start with CyberPower CP1500PFCLCD’s current a revision for a pure-sine NAS/rack UPS.",
+   "quote_found": true
+  },
+  {
+   "n": 11,
+   "kind": "niche-reviewer",
+   "answers_it": true,
+   "why": "Names River 3 Plus / Delta 3 Plus with NUT usbhid-ups support and notes other brands lack data; no hands-on test shown",
+   "evidence": "A NAS and you want lithium: the EcoFlow River 3 Plus, if you can run a recent NUT release and set an on-battery shutdown timer.",
+   "quote_found": true
+  }
+ ],
+ "verdict": "open",
+ "missing": "A checkable, hands-on shutdown test: plug a specific NAS (Synology DSM, QNAP, TrueNAS/NUT) into the RIVER 3 Plus / Delta 3 Plus by USB, confirm the NAS recognises it as a UPS, pull the plug, and show it shut down cleanly; plus current prices and which firmware/NUT versions are required, and whether any non-EcoFlow station offers the same.",
+ "why": "The only major reviewer (TechRadar) is a single-product S2000 review that explicitly did not test UPS compatibility and says nothing about USB shutdown signalling. Two Anker blog pages explain the concept without naming a product. Two niche sites (racksandwatts, computingforgeeks) answer it with specs and NUT compatibility pointing at the EcoFlow RIVER 3 Plus, but neither shows a verifiable shutdown test; the rest are off-target conventional-UPS pages, an affiliate listicle, or unreadable. A focused page with a tested USB shutdown on real NAS platforms, current prices and a direct pick would stand out.",
+ "results": 12,
+ "quotes_found": 8,
+ "chars_shown": 12415,
+ "chars_full": 143231
+}
