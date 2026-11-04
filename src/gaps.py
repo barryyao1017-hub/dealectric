@@ -6009,8 +6009,8 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
    "cells": {"claim": "80 % in 45 min", "measured": "about 1 h in Turbo (about 2 h on a first charge while the unit was still warm); 1,458 W peak input", "input": "1,440 W Turbo; 1,000 W standard", "how": "Turbo on; a cool unit", "weight": "16 kg"}},
   {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
    "cells": {"claim": "80 % in about 1 h", "measured": "no independent test found", "input": "1,200 W fast", "how": "Fast mode", "weight": "13 kg"}},
-  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
-   "cells": {"claim": "56 min; 80 % in 37 min", "measured": "under 53 min; 80 % under 40 min (UK, over 1,400 W)", "input": "about 1,400 W in Fast", "how": "Fast switch; drops to the slower rate after five fast charges in a row", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"claim": "56 min; 80 % in 37 min", "measured": "under 53 min; 80 % under 40 min (UK, over 1,400 W)", "input": "about 1,400 W in Fast", "how": "Fast switch; drops to the slower rate after five fast charges in a row", "weight": "about 14.2 kg", "price": "$699 (out of stock on 2026-11-03)"}},
   {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
    "cells": {"claim": "80 % in about 45 min with TurboBoost", "measured": "under 2 h in Standard (600 W); no Turbo full-charge test found", "input": "1,200 W Turbo", "how": "TurboBoost", "weight": "11.5 kg", "price": "$499 (ships Nov 12)"}},
  ],
@@ -6034,7 +6034,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("The Technology Man: BLUETTI AC180 review (Turbo charge, noise)", "https://thetechnologyman.com/bluetti-ac180-review-best-1800w-power-station-solar-generator-bluetti-350w-pv350-solar-panel"),
   ("StorageReview: BLUETTI AC180 review (input watts by mode)", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
   ("The Technology Man: DJI Power 1000 V2 review", "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review"),
-  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
   ("New Atlas: BLUETTI Elite 100 V2 review", "https://newatlas.com/outdoors/review-bluetti-elite-100-v2-portable-power-station"),
   ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2-portable-power-station"),
  ],
@@ -6063,8 +6063,8 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
    "cells": {"fast": "not measured", "quiet": "Jackery claims 30 dB in its quiet charging mode (22 dB on its UK page)", "qrate": "no time published", "weight": "10.8 kg"}},
   {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
    "cells": {"fast": "not measured", "quiet": "400 W silent mode (manual), not measured", "qrate": "about 3 h at 400 W, our arithmetic", "weight": "13 kg"}},
-  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
-   "cells": {"fast": "about 37 dB at 1 m at over 1,400 W (measured)", "quiet": "DJI claims 26 dB in Standard mode", "qrate": "600 W Standard", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"fast": "about 37 dB at 1 m at over 1,400 W (measured)", "quiet": "DJI claims 26 dB in Standard mode", "qrate": "600 W Standard", "weight": "about 14.2 kg", "price": "$699 (out of stock on 2026-11-03)"}},
  ],
  "after": """
 <h2>How the numbers were taken</h2>
@@ -6079,7 +6079,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("StorageReview: BLUETTI AC180 review (Silent mode 283 W)", "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"),
   ("The Technology Man: Anker SOLIX C1000 Gen 2 review (42 dB, fans off at 200 W)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
   ("The Technology Man: DJI Power 1000 V2 review (37 dB at full speed)", "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review"),
-  ("DJI store: Power 1000 V2 (26 dB claim)", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("DJI store: Power 1000 V2 (26 dB claim)", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
   ("T3: EcoFlow DELTA 3 Plus review (fans cycling)", "https://t3.com/active/outdoor-tech/ecoflow-delta-3-plus-review"),
   ("StorageReview: EcoFlow DELTA 3 Plus review (noise claim by load)", "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"),
   ("Jackery UK: Explorer 1000 v2 (quiet charging claim)", "https://uk.jackery.com/blogs/buying-guide/jackery-1000-v2-review"),
@@ -6110,8 +6110,8 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
    "cells": {"ac": "1,500 W / 3,000 W", "fits": "a 700–900 W microwave (about 1,050 W input), not a full-size one", "reheats": "about 15–18", "weight": "10.8 kg"}},
   {"slug": "allpowers-s2000-pro-1451wh", "model": "ALLPOWERS S2000 Pro (1,451 Wh)",
    "cells": {"ac": "2,400 W (2,000 W below about 60 % charge) / 4,000 W", "fits": "any household microwave", "reheats": "about 22–25", "weight": "13 kg"}},
-  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2",
-   "cells": {"ac": "2,600 W", "fits": "any household microwave", "reheats": "about 15–18", "weight": "about 14.2 kg", "price": "$798 (out of stock on 2026-11-03)"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"ac": "2,600 W", "fits": "any household microwave", "reheats": "about 15–18", "weight": "about 14.2 kg", "price": "$699 (out of stock on 2026-11-03)"}},
   {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
    "cells": {"ac": "1,800 W / 2,700 W", "fits": "up to about 1,600 W input", "reheats": "about 15–18", "weight": "11.5 kg", "price": "$499 (ships Nov 12)"}},
  ],
@@ -6129,7 +6129,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("Digital Trends: BLUETTI AC500 camping test (1,849 W microwave)", "https://www.digitaltrends.com/home/bluetti-ac500-power-station-camping-test/"),
   ("Anker: how much backup power to run a microwave", "https://www.ankersolix.com/blogs/portable-power-station/how-much-backup-power-to-run-a-microwave"),
   ("The Technology Man: Anker SOLIX C1000 Gen 2 (907 Wh delivered)", "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review"),
-  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
   ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2-portable-power-station"),
  ],
  "published": "2026-11-04",
@@ -6319,6 +6319,176 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
   ("EcoFlow RIVER 3 user manual (UPS variants, auto-off)", "https://manuals.plus/m/9f06b233da3b0b78c70e7282082e6f57a614db61374735780fbd9f9067c292d1"),
   ("Jackery Explorer 240 v2 (UPS 20 ms)", "https://jackery.com/products/jackery-explorer-240-v2-portable-power-station"),
   ("MacRumors: BLUETTI Elite 30 V2 review (standby loss)", "https://www.macrumors.com/review/bluetti-elite-30-v2-power-station/"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "lightest-1000wh-lifepo4-power-station-for-car-camping", "question": "G101 (power funnel x17: lightest 1,000 Wh LiFePO4 power station for car camping)", "lead_first": True,
+ "title": "What is the lightest 1,000 Wh LiFePO4 power station for car camping (2026)? Weight, Wh per pound, solar input",
+ "h1": "What is the lightest 1,000 Wh LiFePO4 power station to carry for car camping? (2026)",
+ "desc": "Every current 1 kWh-class LiFePO4 power station by weight and Wh per pound, from the makers' US pages: Jackery Explorer 1000 v2 (23.8 lb, 1,070 Wh), Jackery HomePower 1000 v2 (23.4 lb, no solar input), Anker SOLIX C1000 Gen 2 (24.9 lb), BLUETTI Elite 100 V2 (25 lb), EcoFlow DELTA 3 (27.6 lb), OUPES, Pecron, DJI, Dabbsson and ALLPOWERS, with solar input and handles for car camping.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The lightest 1,000 Wh LiFePO4 power station for car camping is the <strong>Jackery Explorer 1000 v2</strong> ({buy:jackery-explorer-1000-v2}): 23.8 lb for 1,070 Wh, the most capacity per pound of any current 1 kWh unit (45 Wh/lb), with a fold-flat handle and two solar inputs taking 400 W. Jackery's HomePower 1000 v2 is 0.4 lb lighter but lists no solar input, so it's a home-backup box, not a camping one.</p>
+<p>What to know: these are the makers' weights; no reviewer has published a scale reading (OutdoorGearLab gives 24.4 lb for the Explorer 1000 v2). If 1.1 lb more is fine, the Anker SOLIX C1000 Gen 2 ({buy:anker-solix-c1000-gen-2}, 24.9 lb) brings 2,000 W and a 49-minute charge. We found no lighter 1 kWh unit with NMC cells; Jackery's NMC Explorer 1000 Pro weighs more.</p>
+""",
+ "columns": [("wh", "Capacity"), ("weight", "Weight (maker)"), ("whlb", "Wh per lb"), ("ac", "AC output"), ("solar", "Solar input"), ("handle", "Carry")],
+ "rows": [
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2",
+   "cells": {"wh": "1,070 Wh", "weight": "23.8 lb (10.8 kg)", "whlb": "45.0", "ac": "1,500 W", "solar": "400 W, 2× DC 8 mm inputs", "handle": "Fold-flat handle"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2",
+   "cells": {"wh": "1,024 Wh", "weight": "24.9 lb (11.3 kg)", "whlb": "41.1", "ac": "2,000 W", "solar": "600 W, 1× XT60", "handle": "—"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3",
+   "cells": {"wh": "1,024 Wh", "weight": "27.6 lb (12.5 kg)", "whlb": "37.1", "ac": "1,800 W", "solar": "500 W, 1× XT60", "handle": "—"}},
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus",
+   "cells": {"wh": "1,024 Wh", "weight": "27.6 lb (12.5 kg)", "whlb": "37.1", "ac": "1,800 W", "solar": "1,000 W, 2× XT60", "handle": "—"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800",
+   "cells": {"wh": "1,024 Wh", "weight": "28.7 lb (13 kg)", "whlb": "35.7", "ac": "1,800 W", "solar": "650 W, 1× XT60", "handle": "—"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"wh": "1,152 Wh", "weight": "35.3 lb (16 kg, spec table)", "whlb": "32.6", "ac": "1,800 W", "solar": "500 W", "handle": "—"}},
+  {"brand": "Jackery", "model": "HomePower 1000 v2", "url": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "cells": {"wh": "1,024 Wh", "weight": "23.4 lb (10.6 kg)", "whlb": "43.8", "ac": "1,500 W", "solar": "none listed", "handle": "—", "price": "not read"}},
+  {"brand": "BLUETTI", "model": "Elite 100 V2", "url": "https://www.bluettipower.com/products/elite-100-v2",
+   "cells": {"wh": "1,024 Wh", "weight": "25 lb (11.5 kg)", "whlb": "41.0", "ac": "1,800 W", "solar": "1,000 W, one input", "handle": "Hidden handle", "price": "$499 (ships Nov 12)"}},
+  {"brand": "OUPES", "model": "Mega 1", "url": "https://oupes.com/Mega1-tundratactical",
+   "cells": {"wh": "1,024 Wh", "weight": "27.8 lb (12.6 kg)", "whlb": "36.8", "ac": "2,000 W", "solar": "800 W", "handle": "—", "price": "$509 with the store's code (list $699)"}},
+  {"brand": "Pecron", "model": "E1000LFP", "url": "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh",
+   "cells": {"wh": "1,024 Wh", "weight": "29 lb (13.5 kg)", "whlb": "35.3", "ac": "1,800 W", "solar": "600 W", "handle": "—", "price": "$399 (cached page)"}},
+  {"brand": "DJI", "model": "Power 1000 V2", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"wh": "1,024 Wh", "weight": "31.3 lb (14.2 kg)", "whlb": "32.7", "ac": "2,600 W max", "solar": "via a $325 charger accessory", "handle": "—", "price": "$699 (out of stock on 2026-11-03)"}},
+  {"brand": "Dabbsson", "model": "DBS1000 Pro", "url": "https://www.dabbsson.com/products/dbs1000pro-portable-power-station",
+   "cells": {"wh": "1,024 Wh", "weight": "34.39 lb (15.6 kg)", "whlb": "29.8", "ac": "2,000 W", "solar": "1,200 W (a bullet on the same page says 600 W)", "handle": "Carry handle", "price": "$619 (list $899)"}},
+ ],
+ "after": """
+<h2>Why Wh per pound</h2>
+<p>For carrying from the car to a campsite, what matters is how much energy each pound buys. The Explorer 1000 v2 carries 1,070 Wh in 23.8 lb (45 Wh/lb); the 1,024 Wh units from Anker and BLUETTI land at 41, EcoFlow's DELTA 3 pair at 37 because of their larger inverters and chargers, and DJI and Dabbsson near 30. The spread between the lightest and heaviest 1 kWh unit is over 10 lb.</p>
+<h2>What the lightest gives up</h2>
+<p>The Explorer 1000 v2 has the lowest AC output here (1,500 W), takes the least solar (400 W, so OutdoorGearLab estimates 3–4 hours of good sun to refill), and needs its Emergency Charging mode switched on in the app to reach about an hour on the wall. It is not expandable. For camping loads (a 12 V fridge, lights, phones, a laptop, a CPAP) none of that matters; for a microwave, a kettle or fast solar refills, the C1000 Gen 2 or DELTA 3 Plus is worth the extra pound or four.</p>
+<h2>Weights we could not check</h2>
+<p>Every weight in the table is the maker's; no outlet published a scale reading of a 1 kWh unit. OutdoorGearLab's review quotes 24.4 lb for the Explorer 1000 v2, and BLUETTI's AC180 page gives 37 lb in its copy and 35.3 lb in its spec table. The Anker SOLIX C1000X (the original 1,056 Wh model) is left out: we could not confirm its weight or that it is still sold new.</p>
+""",
+ "sources": [
+  ("Jackery: HomePower 1000 v2 (compare table with the Explorer 1000 v2)", "https://www.jackery.com/products/jackery-homepower-1000-v2"),
+  ("OutdoorGearLab: Jackery Explorer 1000 v2 review", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2"),
+  ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2"),
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("OUPES Mega 1", "https://oupes.com/Mega1-tundratactical"),
+  ("Pecron E1000LFP", "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
+  ("Dabbsson DBS1000 Pro", "https://www.dabbsson.com/products/dbs1000pro-portable-power-station"),
+  ("EcoFlow DELTA 3 Plus", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("Jackery Explorer 1000 Pro (NMC)", "https://ca.jackery.com/products/explorer-1000-pro-portable-power-station"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "expandable-1kwh-lifepo4-power-station-add-a-battery-later", "question": "G102 (power funnel x17: expandable 1 kWh LiFePO4 power station, add an extra battery later)", "lead_first": True,
+ "title": "Which 1 kWh LiFePO4 power station can you expand with an extra battery later (2026)? Max capacity, battery sizes, which ones can't",
+ "h1": "Which 1 kWh LiFePO4 power station can I start with and expand with an extra battery later? (2026)",
+ "desc": "Expandable 1 kWh-class LiFePO4 power stations compared: EcoFlow DELTA 3 and DELTA 3 Plus (1 kWh extra batteries to 5 kWh, and older DELTA 2 and DELTA Max packs fit), Jackery HomePower 1000 Plus v2 and DJI Power 1000 V2 (2 kWh packs past 11 kWh), BLUETTI AC180, OUPES Mega 1, Pecron E1000LFP and Dabbsson DBS1000 Pro, with the extra batteries' prices where the makers publish them, and the 1 kWh units that cannot expand (Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2, DELTA 3 Classic).",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> To start with a 1 kWh LiFePO4 power station and add an extra battery later in small steps, the <strong>EcoFlow DELTA 3</strong> ({buy:ecoflow-delta-3-1024wh}) takes 1,024 Wh extra batteries (21.1 lb each) up to 5 kWh and also accepts older DELTA 2, DELTA 2 Max and DELTA Max extra batteries. The plain DELTA 3 has the same expansion port as the Plus. If you may need more than 5 kWh, the Jackery HomePower 1000 Plus v2 and DJI Power 1000 V2 reach about 11 kWh with 2 kWh packs.</p>
+<p>What to know: several popular 1 kWh LiFePO4 power stations can't be expanded with an extra battery later at all: the Anker SOLIX C1000 Gen 2 (Anker dropped the port), the Jackery Explorer 1000 v2 and EcoFlow's cheaper DELTA 3 Classic. An extra battery costs about as much as a second station; makers that publish prices list $578–1,399 for 2–3 kWh packs.</p>
+""",
+ "columns": [("base", "Base capacity"), ("max", "Maximum with extra batteries"), ("pack", "Extra battery"), ("solo", "Pack charges on its own"), ("weight", "Base weight")],
+ "rows": [
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3",
+   "cells": {"base": "1,024 Wh", "max": "5 kWh", "pack": "DELTA 3 extra battery 1,024 Wh, 21.1 lb; DELTA 2, DELTA 2 Max, DELTA Max and DELTA Pro 3 extra batteries also fit", "solo": "not found", "weight": "27.6 lb"}},
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus",
+   "cells": {"base": "1,024 Wh", "max": "5 kWh", "pack": "Same as the DELTA 3", "solo": "not found", "weight": "27.6 lb"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180",
+   "cells": {"base": "1,152 Wh", "max": "4,224 Wh", "pack": "B300 3,072 Wh, $1,399 (sold out on 2026-11-03)", "solo": "—", "weight": "35.3 lb"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2",
+   "cells": {"base": "1,024 Wh", "max": "Not expandable", "pack": "—", "solo": "—", "weight": "24.9 lb"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2",
+   "cells": {"base": "1,070 Wh", "max": "Not expandable", "pack": "—", "solo": "—", "weight": "23.8 lb"}},
+  {"brand": "Jackery", "model": "HomePower 1000 Plus v2", "url": "https://www.jackery.com/products/jackery-homepower-1000-plus-v2",
+   "cells": {"base": "1,024 Wh", "max": "11 kWh", "pack": "Battery Pack 2000 Plus v2, 2,048 Wh (not the older packs)", "solo": "not found", "weight": "23.8 lb", "price": "not read"}},
+  {"brand": "DJI", "model": "Power 1000 V2", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"base": "1,024 Wh", "max": "11,264 Wh", "pack": "Expansion Battery 2000, 2,048 Wh, $699 (out of stock on 2026-11-03)", "solo": "not found", "weight": "31.3 lb", "price": "$699 (out of stock on 2026-11-03)"}},
+  {"brand": "OUPES", "model": "Mega 1", "url": "https://oupes.com/Mega1-tundratactical",
+   "cells": {"base": "1,024 Wh", "max": "5,120 Wh", "pack": "B2 2,048 Wh, $578", "solo": "Yes (OUPES: its own solar input)", "weight": "27.8 lb", "price": "$509 with the store's code"}},
+  {"brand": "Pecron", "model": "E1000LFP", "url": "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh",
+   "cells": {"base": "1,024 Wh", "max": "4,864 Wh", "pack": "EP3800-48V (sold as a $1,198 bundle with the station)", "solo": "not found", "weight": "29 lb", "price": "$399 (cached page)"}},
+  {"brand": "Dabbsson", "model": "DBS1000 Pro", "url": "https://www.dabbsson.com/products/dbs1000pro-portable-power-station",
+   "cells": {"base": "1,024 Wh", "max": "up to 4 DBS2000B per unit (10,240 Wh with two units)", "pack": "DBS2000B 2,048 Wh, 39.6 lb, $1,099", "solo": "Yes (Dabbsson: 1,200 W solar on the battery)", "weight": "34.39 lb", "price": "$619 (list $899)"}},
+  {"brand": "EcoFlow", "model": "DELTA 3 Classic", "url": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "cells": {"base": "1,024 Wh", "max": "No extra battery named by EcoFlow", "pack": "—", "solo": "—", "weight": "26.7 lb", "price": "$479 (list $599)"}},
+ ],
+ "after": """
+<h2>Small steps or big ones</h2>
+<p>EcoFlow's DELTA 3 grows in 1 kWh steps: one extra battery doubles it, four reach 5 kWh, each at 21.1 lb so one person can carry each piece. DJI, Jackery's HomePower 1000 Plus v2, OUPES and Dabbsson add 2 kWh at a time, which reaches further (DJI and Jackery to about 11 kWh) but means a 2 kWh, roughly 40 lb purchase for each step. For most homes, one step (2–3 kWh) covers a fridge and lights overnight, which any of these do.</p>
+<h2>Older batteries that fit</h2>
+<p>EcoFlow's compatibility table for the DELTA 3 series lists the DELTA 3, DELTA Pro 3, DELTA 2, DELTA 2 Max and DELTA Max extra batteries on the same XT150 port, which matters if you already own one from an older EcoFlow. Jackery's HomePower 1000 Plus v2 takes only its new Battery Pack 2000 Plus v2, not the older Explorer packs.</p>
+<h2>Before you add one later</h2>
+<p>Only DJI documents a firmware step (the original Power 1000 needs a wired update before its first expansion battery; the V2 does not). EcoFlow's extra battery shows a firmware update by its LED pattern, and one owner reported needing the app for it. Dabbsson and OUPES packs take solar on their own, so they can charge while the station is elsewhere. Buy the station whose port you will use: the Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2 and DELTA 3 Classic have none, and Anker's older C1000X, which expanded to 2,112 Wh with a BP1000, could not be confirmed as still sold new.</p>
+""",
+ "sources": [
+  ("EcoFlow DELTA 3 Plus (expandable to 5 kWh)", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("EcoFlow DELTA 3 user manual (extra-battery compatibility)", "https://bsai.com.mx/cdn/shop/files/Manual_EcoFlow_DELTA_3.pdf"),
+  ("Adorama: EcoFlow DELTA 3 extra battery (1,024 Wh, 21.1 lb)", "https://www.adorama.com/ecoflow-1024wh-smart-extra-battery-delta-3-plus-power-station/p/ecefdelta3pe"),
+  ("Jackery HomePower 1000 Plus v2", "https://www.jackery.com/products/jackery-homepower-1000-plus-v2"),
+  ("DJI store: Expansion Battery 2000", "https://store.dji.com/product/dji-power-expansion-battery-2000"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
+  ("BLUETTI expansion batteries", "https://www.bluettipower.com/collections/expansion-battery"),
+  ("BLUETTI AC180", "https://www.bluettipower.com/products/ac180"),
+  ("OUPES Mega 1", "https://oupes.com/Mega1-tundratactical"),
+  ("Pecron E1000LFP", "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh"),
+  ("Dabbsson DBS1000 Pro", "https://www.dabbsson.com/products/dbs1000pro-portable-power-station"),
+  ("Dabbsson DBS2000B", "https://www.dabbsson.com/products/dbs2000b-expandable-battery"),
+  ("EcoFlow DELTA 3 Classic", "https://us.ecoflow.com/products/delta-3-classic-portable-power-station"),
+ ],
+ "published": "2026-11-04",
+ "checked": "2026-11-03"},
+
+{"slug": "1kwh-power-station-with-1000w-solar-input-two-ports", "question": "G103 (power funnel x17: 1 kWh power station with 1,000 W of solar through two inputs)", "lead_first": True,
+ "title": "Which 1 kWh power station takes 1,000 W of solar through two inputs (2026)? Panels that fit, refill time, the single-input alternatives",
+ "h1": "Which 1 kWh power station takes 1,000 W of solar through two inputs so it refills in a couple of hours? (2026)",
+ "desc": "1 kWh-class power stations by solar input: the EcoFlow DELTA 3 Plus is the one that takes 1,000 W through two XT60 inputs (500 W each, 11–60 V), the BLUETTI Elite 100 V2 1,000 W on one, Dabbsson and DJI 1,200 W with caveats. Which panels fit each port, why two 400 W panels give only 800 W, and how long a refill takes.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The 1 kWh power station that takes 1,000 W of solar through two inputs is the <strong>EcoFlow DELTA 3 Plus</strong> ({buy:ecoflow-delta-3-plus-1024wh}): two XT60 ports at 500 W each (11–60 V), so one portable panel per port, and about 1.3–1.5 hours from empty in full sun (our arithmetic; EcoFlow claims 70 minutes). The Solar Lab ran two 415 W panels and got "really close to" 1,000 W combined.</p>
+<p>What to know: each of the two solar input ports caps at 500 W, so two 400 W panels give 800 W of solar input, not 1,000 W; reaching 1,000 W takes about 500 W of panel per port. One 400 W panel (about 48 V open-circuit) fits a port; two in series exceed its 60 V. With one solar port, the BLUETTI Elite 100 V2 also takes 1,000 W.</p>
+""",
+ "columns": [("solar", "Max solar input"), ("ports", "Inputs and voltage"), ("refill", "Refill at full input (arithmetic)"), ("ac", "AC output"), ("weight", "Weight")],
+ "rows": [
+  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus (1,024 Wh)",
+   "cells": {"solar": "1,000 W", "ports": "2× XT60, 500 W each, 11–60 V, 15 A", "refill": "about 1.3–1.5 h (EcoFlow claims 70 min)", "ac": "1,800 W", "weight": "27.6 lb"}},
+  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
+   "cells": {"solar": "500 W", "ports": "1× XT60, 11–60 V", "refill": "just under 3.5 h with one 400 W panel (one owner's test)", "ac": "1,800 W", "weight": "27.6 lb"}},
+  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
+   "cells": {"solar": "650 W", "ports": "1× XT60, 11–60 V, 13 A", "refill": "about 2 h", "ac": "1,800 W", "weight": "28.7 lb"}},
+  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
+   "cells": {"solar": "600 W", "ports": "1× XT60i, 11–60 V", "refill": "about 1.8 h (Anker)", "ac": "2,000 W", "weight": "24.9 lb"}},
+  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
+   "cells": {"solar": "500 W", "ports": "1 input, 12–60 V, 10 A", "refill": "about 2.5–3 h", "ac": "1,800 W", "weight": "35.3 lb"}},
+  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
+   "cells": {"solar": "400 W", "ports": "2× DC 8 mm, 16–60 V", "refill": "3–4 h (OutdoorGearLab estimate)", "ac": "1,500 W", "weight": "23.8 lb"}},
+  {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2",
+   "cells": {"solar": "1,000 W", "ports": "1 input, 12–60 V, 20 A", "refill": "70 min (BLUETTI claim)", "ac": "1,800 W", "weight": "25 lb", "price": "$499 (ships Nov 12)"}},
+  {"brand": "Dabbsson", "model": "DBS1000 Pro (1,024 Wh)", "url": "https://www.dabbsson.com/products/dbs1000pro-portable-power-station",
+   "cells": {"solar": "1,200 W (a bullet on the same page says 600 W)", "ports": "1 input, 12–60 V, 25 A", "refill": "1.2 h (Dabbsson claim)", "ac": "2,000 W", "weight": "34.39 lb", "price": "$619 (list $899)"}},
+  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
+   "cells": {"solar": "1,200 W only through DJI's $325 1.8 kW charger", "ports": "MC4 via the charger, 60 V max", "refill": "about 1 h", "ac": "2,600 W max", "weight": "31.3 lb", "price": "$699 (out of stock on 2026-11-03)"}},
+  {"brand": "OUPES", "model": "Mega 1 (1,024 Wh)", "url": "https://oupes.com/Mega1-tundratactical",
+   "cells": {"solar": "800 W", "ports": "12–78 V", "refill": "about 1.5 h", "ac": "2,000 W", "weight": "27.8 lb", "price": "$509 with the store's code"}},
+ ],
+ "after": """
+<h2>Two inputs, and why it matters</h2>
+<p>Portable 400–500 W panels run at 40–50 V open-circuit, which is near the 60 V ceiling of these XT60 inputs, so two panels can't go in series into one port. A unit with one input tops out at what a single panel gives (400–500 W) unless you wire two in parallel with a Y-branch and stay inside the port's current limit; the DELTA 3 Plus avoids that by taking each panel on its own MPPT input. The Elite 100 V2 and Dabbsson take 1,000 W or more on one port because they accept 20–25 A, so two panels in parallel work there.</p>
+<h2>What 1,000 W of panels really gives</h2>
+<p>Panels rarely deliver their rating: one owner measured 380–395 W at noon from a 400 W panel on a DELTA 3, 250–320 W under light tree cover, and just under 3.5 hours to fill from zero. The Solar Lab's two 415 W bifacial panels came close to 1,000 W combined on a DELTA 3 Plus without a logged refill time. Plan on 70–85 % of panel rating in good sun and much less in winter or cloud, so 1,024 Wh takes roughly 1.3–1.5 hours on a perfect day and most of a day otherwise.</p>
+<h2>Panel sizing per port</h2>
+<p>Each DELTA 3 Plus port takes up to 500 W and 15 A at 11–60 V: EcoFlow's own 400 W portable panel (about 48 V open-circuit) fits one per port, and a 500 W panel or two smaller panels in parallel reach the cap. Check a panel's open-circuit voltage on a cold morning, which rises above its label, against the 60 V limit before buying.</p>
+""",
+ "sources": [
+  ("EcoFlow DELTA 3 Plus (two XT60 inputs, 1,000 W)", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
+  ("EcoFlow DELTA 3 Plus user manual (input ratings)", "https://www.rei.com/media/8f4778a4-a38d-4349-a975-84df009a5988"),
+  ("The Solar Lab: EcoFlow DELTA 3 Plus review (two 415 W panels)", "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review"),
+  ("batteryskills: EcoFlow DELTA 3 with a 400 W panel (measured input)", "https://batteryskills.com/ef-ecoflow-delta-3-400w-solar-panel-review/"),
+  ("OutdoorGearLab: Jackery Explorer 1000 v2 review (solar estimate)", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2"),
+  ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2"),
+  ("Dabbsson DBS1000 Pro", "https://www.dabbsson.com/products/dbs1000pro-portable-power-station"),
+  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
+  ("OUPES Mega 1", "https://oupes.com/Mega1-tundratactical"),
  ],
  "published": "2026-11-04",
  "checked": "2026-11-03"},

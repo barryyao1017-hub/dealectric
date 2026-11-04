@@ -142,6 +142,18 @@ Records in `src/gaps.py` and products in `src/products.py` (UGREEN section).
 | G92 | /best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300 | Vatrer Group 24 $259.99 (150 A BMS, UL 1973; VIPD2026 5%); on the makers' own stores LiTime is $365.99 and Redodo $289.99, reseller listings $219–230 named; trolling-motor warranty question said | open ×3 |
 | G93 | /universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter | "Yes, but most travellers don't need one" first; TESSAN TC03 $43.99 (250 W, 2 AC, 2 USB-C, 2 USB-A); BESTEK $24.99–33.99 named; heating appliances excluded | open ×3 |
 
+| G94 | /power-station-as-a-ups-for-a-nas-usb-shutdown | "Partly": EcoFlow DELTA 3 Plus is the only station with a USB HID UPS link (NUT 2.8.3 basic support, 8 ms measured) but no clean NAS shutdown is reported; APC BE600M1 ($99.99) named for a guaranteed shutdown | open ×3 |
+| G95 | /can-a-power-station-be-a-ups-for-a-gaming-pc | Anker SOLIX C1000 Gen 2 (under 10 ms with a desktop under a GPU benchmark, 2,000 W); 20 ms units marginal against ATX 3.1's 12 ms; CyberPower CP1500PFCLCD named; Elite 300 (8.9 ms) for long outages | open ×3 |
+| G96 | /1000wh-power-station-that-charges-in-under-an-hour | C1000 Gen 2 (47 min measured, UltraFast in the app, battery above 68 °F); DJI 1000 V2, DELTA 3 Plus, Jackery 1000 v2, AC180 also under or near an hour | open ×3 |
+| G97 | /quietest-1000wh-power-station-while-charging | BLUETTI AC180 Silent mode 37 dB at 1 m (measured); C1000 Gen 2 fans off at 200 W; DJI Power 1000 V2 named as quietest at full speed; EcoFlow/Jackery dB are claims | open ×3 |
+| G98 | /1000wh-power-station-that-can-run-a-microwave | C1000 Gen 2 (2,000 W); nameplate input watts (1,400–1,600 W for a 1,000 W microwave) first; no metered test exists; 1,849 W measured on a larger unit | open ×3 |
+| G99 | /can-a-1000wh-power-station-run-a-1500w-space-heater | "About half an hour"; C1000 Gen 2 for headroom; electric blanket 8–10 h; CPSC plug-in rule; only measured runs are on a 1.5 kWh Jackery | open ×3 |
+| G100 | /power-station-for-a-home-oxygen-concentrator-power-outage | Backup tanks and utility registration first (ALA via NPR); BLUETTI Elite 300 about 7 h at 350 W, DELTA 3 to 5 kWh about 12 h (arithmetic); switchover with a concentrator untested | open ×3 |
+| G101 | /lightest-1000wh-lifepo4-power-station-for-car-camping | Jackery Explorer 1000 v2 (23.8 lb, 45 Wh/lb); HomePower 1000 v2 lighter but no solar input; C1000 Gen 2 at 24.9 lb | open ×3 |
+| G102 | /expandable-1kwh-lifepo4-power-station-add-a-battery-later | EcoFlow DELTA 3 for 1 kWh steps to 5 kWh and older DELTA packs; Jackery HomePower 1000 Plus v2 and DJI Power 1000 V2 named first for 11 kWh; C1000 Gen 2, Explorer 1000 v2, DELTA 3 Classic not expandable | open ×3 |
+| G103 | /1kwh-power-station-with-1000w-solar-input-two-ports | EcoFlow DELTA 3 Plus (2× 500 W XT60); two 400 W panels give 800 W; Elite 100 V2 1,000 W on one port | open ×3 |
+| G104 | /small-power-station-under-10-lb-100w-usb-c-laptop | BLUETTI Elite 30 V2 (9.5 lb, 140 W + 100 W USB-C); RIVER 3 lighter with one 100 W port; Anker C300 DC named for no-AC | open ×3 |
+| G105 | /small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage | BLUETTI Elite 30 V2 (about 12 h at 20 W, 10 ms or less, 12 V barrel outputs); RIVER 3's 20 ms variants flagged by EcoFlow's own manual | open ×3 |
 Parked: 140W TB5 dock (contested), MacBook Air M4 dual-monitor dock (contested), retractable-cable laptop power
 bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
 
@@ -345,3 +357,26 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   packs. The makers' own stores on 11-03 put LiTime's Group 24 Bluetooth at $365.99 and Redodo's at $289.99, so Vatrer's
   $259.99 is the cheapest on the brand stores and the reseller listings ($219–230) are named; G93 leads with "most
   travellers need no converter" before the TC03. No new product records; links-map unchanged, so no Worker deploy.
+- 2026-11-04, batch 17 (`x17-*`, run in a session forked from the Amazon Associates work; Opus 5.5): the power-station
+  cluster led by the five Amazon records shipped 11-03 (EcoFlow RIVER 3, DELTA 3, DELTA 3 Plus, Jackery Explorer 1000 v2,
+  Anker SOLIX C1000 Gen 2), screened for spec and fit intent (UPS behaviour, charge speed, noise, weight, expansion, solar,
+  high-wattage loads), not price, because Amazon's Program Policies keep prices off our pages. Demand: one Sonnet harvest
+  (Reddit unreachable; strongest recurring questions were PC and NAS UPS use and fan noise while charging). Twelve packs
+  through the OpenAI API (now reachable directly; this laptop was off the corporate proxy), plus a fan-noise pack; votes
+  (Sonnet 5.5 / Opus 5.5 / Fable 5.1): **twelve open ×3; time-of-use savings contested** (CNET-class reviewers already do
+  the payback math), parked. Seven Sonnet research agents (about 140 WebSearch calls, inside the 200 budget). Twelve pages
+  built (G94–G105), all passing the rank 1/3/6 gate; two needed the concern reworded in the query's own words (G102, G103).
+- Renderer and gate changes for Amazon picks: `build.py` comparison pages print "price on the Amazon page" and the tagged
+  amazon.com link for `amazon:us` records in the table, Where to buy and `{buy:}`/`{price:}`, skip the product-result
+  record for an Amazon pick (its fields are price and stock), and add an Amazon Associates sentence to the table's small
+  print; every existing page rebuilt byte-identical. `fastloop.py check` accepts `tag=dealectric-20` as the buy link and
+  "price on the Amazon page" as the price for those picks.
+- Honesty notes on the pages: G94 says first that no NAS has been reported shutting down cleanly from a power station's
+  USB signal and that a $100 USB UPS does it today; G98 and G99 say no metered microwave or 1,500 W heater run exists on a
+  1 kWh unit and label every runtime as arithmetic; G100 puts backup oxygen tanks and the utility's medical-needs list
+  before any station; G102 names the DJI and Jackery units that expand further before the DELTA 3; G97 names DJI's Power
+  1000 V2 as the quietest at full speed. Two research facts corrected in drafting: the plain DELTA 3 is also 1,024 Wh /
+  1,800 W (an agent said only the Plus), and the DJI Power 1000 V2 is $699 alone ($798 was the bag bundle).
+- Picks by program: Amazon records lead G94–G96, G98, G99, G101–G103; BLUETTI leads G97, G100, G104, G105 (with prices and
+  the DEALECTRIC code where it applies). Open: no measured idle draw for the DELTA 3 pair, no 120 V wall-watt
+  measurements for any fast charge, the RIVER 3 Amazon listing's UPS variant (10 ms or 20 ms) unchecked.
