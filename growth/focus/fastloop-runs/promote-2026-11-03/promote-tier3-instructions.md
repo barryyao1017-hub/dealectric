@@ -78,11 +78,13 @@ Other venues the tools could not read, if Barry has time (in the Pane): buggiesg
 
 # Section A. Live threads (tier A or B), by demand then freshness
 
-## Execution state (2026-11-03, 17:05 PT)
+## Execution state (2026-11-03, 17:40 PT)
 
-- **Filled, not posted:** T4 and T19 and T20 (MacRumors, logged in as barrryyao) and T2 (diysolarforum, logged in) are pasted into the reply editors in the Agent Chrome (localhost:9222), each tab scrolled to the editor with the Post reply button untouched. Screenshots: `screenshots/T4-macrumors-kvm.png`, `T19-macrumors-extender.png`, `T20-macrumors-4k144.png`, `T2-diysolarforum.png`. Barry reads each, edits if he wants (T2 carries a link that diysolarforum's Code of Conduct says earns a permanent ban; T19 and T20 are the evergreen MacRumors items, to post only if the thread shows on page 1 for a target query), and clicks Post reply himself.
-- **Why it took three tries:** the vault's approval window never appeared. agent-vault drew it with Tk from uv's non-framework CPython, which creates no window on macOS, so every approval timed out as "denied"; a native osascript dialog works (Barry clicked it at once). `agent-vault/src/agent_vault/approval.py` now shows the native dialog first on macOS (commit 7d0ce02 in the agent-vault repo). On the corporate network the vault's `bw` cannot resolve Bitwarden without the proxy, so logins need a non-corporate network until agent-vault passes proxy settings by network.
-- Every other task needs an account that does not exist yet (Cartaholics, Level1Techs, Home Assistant community, Slickdeals, Quora, Amazon's Blink forum, Best Buy, the blog comment). Claude never creates accounts; the sign-up tabs are open in the Agent Chrome. Once Barry has created one, the same paste-up-to-Post step applies (`scratchpad/paste.py <tab> <thread url> <text file> <png>` for XenForo editors).
+- **Filled, not posted (11 tasks):** MacRumors T4, T19, T20; diysolarforum T2; Home Assistant community T9; Level1Techs T1, T5, T8, T11, T13, T15. Each sits in its reply editor in the Agent Chrome (localhost:9222) with the Post/Reply button untouched; Level1Techs' composer was switched from rich text to markdown so the `**` markup posts as bold. Screenshots in `screenshots/` (`<task>-<venue>.png`). Barry reads each, edits, and clicks Post himself. T2's link risks a diysolarforum ban; T19/T20 only if on page 1; T11 may read as competitive on Level1Techs (the forum sells KVMs).
+- **Cartaholics T3, T7: blocked.** The new barrryyao account is "awaiting approval by an administrator", so the forum shows no reply editor. Once approved, run `paste.py` on the two threads (XenForo).
+- **Amazon's Blink forum T12, T14: at the Amazon OAuth consent step.** The forum signs in through Amazon; the Agent Chrome is already signed in to Amazon, and Amazon's consent page asks to share the profile with "AmazonForum" (Salesforce). Claude does not grant OAuth consent without Barry's say-so; the tab is left on the consent page.
+- **Still no account:** Slickdeals (T6, T10), Quora (T17, T18), Best Buy (T21). T16 is a blog comment form (no account; not filled, since the form posts on submit and Barry wanted to review first).
+- The vault's approval dialog had to be fixed first (Tk drew no window on macOS; native dialog now, agent-vault commit 7d0ce02). On the corporate network the vault's `bw` cannot reach Bitwarden without the proxy.
 
 ## T1. Reply on Level1Techs, "Homelab and/or NAS entry point advice request" (demand 3, posts 11-02 to 11-03)
 
