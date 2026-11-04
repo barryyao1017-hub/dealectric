@@ -78,12 +78,11 @@ Other venues the tools could not read, if Barry has time (in the Pane): buggiesg
 
 # Section A. Live threads (tier A or B), by demand then freshness
 
-## Execution state (2026-11-03, 15:50 PT)
+## Execution state (2026-11-03, 17:05 PT)
 
-- **Nothing is filled in yet.** The Agent Chrome (localhost:9222) has eight background tabs open: the MacRumors "KVM for 4k monitor" and "Foldable MacBook Screen Extender Q" threads and the diysolarforum thread, each parked on the forum's login page, plus the sign-up pages for Cartaholics, Level1Techs, the Home Assistant community, Slickdeals and Quora.
-- agent-vault's login prompts for macrumors.com and diysolarforum.com went unanswered on the desktop and timed out ("denied"), so Claude did not retry. **First step for Barry:** approve the two vault prompts when a session asks again; Claude then logs in and pastes T2, T4, T19 and T20 up to the Post button.
-- Every other task needs an account that does not exist yet (Cartaholics, Level1Techs, Home Assistant community, Slickdeals, Quora, Amazon's Blink forum, Best Buy, the blog comment). Claude never creates accounts; once Barry has, the same paste-up-to-Post step applies.
-- The GSC indexing requests for the eight shortlisted pages and the tier-1 links are done (see README.md); nothing in this file has been posted anywhere.
+- **Filled, not posted:** T4 and T19 and T20 (MacRumors, logged in as barrryyao) and T2 (diysolarforum, logged in) are pasted into the reply editors in the Agent Chrome (localhost:9222), each tab scrolled to the editor with the Post reply button untouched. Screenshots: `screenshots/T4-macrumors-kvm.png`, `T19-macrumors-extender.png`, `T20-macrumors-4k144.png`, `T2-diysolarforum.png`. Barry reads each, edits if he wants (T2 carries a link that diysolarforum's Code of Conduct says earns a permanent ban; T19 and T20 are the evergreen MacRumors items, to post only if the thread shows on page 1 for a target query), and clicks Post reply himself.
+- **Why it took three tries:** the vault's approval window never appeared. agent-vault drew it with Tk from uv's non-framework CPython, which creates no window on macOS, so every approval timed out as "denied"; a native osascript dialog works (Barry clicked it at once). `agent-vault/src/agent_vault/approval.py` now shows the native dialog first on macOS (commit 7d0ce02 in the agent-vault repo). On the corporate network the vault's `bw` cannot resolve Bitwarden without the proxy, so logins need a non-corporate network until agent-vault passes proxy settings by network.
+- Every other task needs an account that does not exist yet (Cartaholics, Level1Techs, Home Assistant community, Slickdeals, Quora, Amazon's Blink forum, Best Buy, the blog comment). Claude never creates accounts; the sign-up tabs are open in the Agent Chrome. Once Barry has created one, the same paste-up-to-Post step applies (`scratchpad/paste.py <tab> <thread url> <text file> <png>` for XenForo editors).
 
 ## T1. Reply on Level1Techs, "Homelab and/or NAS entry point advice request" (demand 3, posts 11-02 to 11-03)
 
