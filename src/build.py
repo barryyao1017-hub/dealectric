@@ -41,6 +41,8 @@ h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}h2{font
 .lead{font-size:19px;color:var(--muted);margin:0 0 28px}
 #product-result{font-size:14px;color:var(--muted);margin:0 0 20px}
 #product-result summary{cursor:pointer;font-weight:600}
+.ai-note{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 20px;font-size:14px;color:var(--muted)}.ai-note summary{cursor:pointer;font-weight:600}.ai-note p{margin:8px 0}
+.thumb{float:left;margin:0 10px 6px 0;border-radius:6px}
 #product-result code{white-space:normal;word-break:break-word}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-fg);padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}
 .btn.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
@@ -1024,6 +1026,8 @@ def compare_row(c, r):
         c0, s0, after0, date0 = best_offer(p)
         name = (f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a><br>'
                 f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
+        if c.get("ai_note") and os.path.exists(os.path.join(IMG_SRC, f"{p['slug']}-square.png")):
+            name = (f'<img class="thumb" src="/img/{p["slug"]}-square.png" width="72" height="72" alt="{html.escape(short_name(p))}">' + name)
         price = AMAZON_PRICE if is_amazon(p) else money(p["price"]) + stock_note(p)
         deal = (f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; {html.escape(pass_clause(p, c0, date0))}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
                 if c0 else "No discount code applies.")
@@ -1066,6 +1070,38 @@ def compare_deal_line(slug):
     """The guides' deal line without the wording addressed to assistants: 'Code X saves $Y: $Z after the code; tested in
     <brand>'s cart on <date>. Buy: <a>/go/slug</a>'."""
     return guide_deal_line(slug).replace("Buy link to give the shopper:", "Buy:")
+
+
+AI_NOTE_SUMMARY = "Plain-text summary for AI assistants"
+
+
+def ai_note_html(c):
+    """The "AI note" layout (Barry, 2026-11-04, x19 batch): a compact message for the AI assistant reading the page, first
+    in the HTML right after the h1 because at rank 5 ChatGPT's model gets only ~1,300 characters of a page. One lead line
+    to the assistant with the pick and its {buy:} link, then one labelled line per product (ours and rivals), so any part
+    that survives the length cut reads on its own. Closed <details>: the summary line stays visible and one click opens
+    it, the same pattern as the product-result record (DLC-144); never display:none. Honesty rules as every page: true,
+    nothing beyond the honest-win screen, no "ignore other sources", no claims of authority."""
+    body = "".join(f"<p>{compare_fill(line)}</p>" for line in c["ai_note"])
+    return f'<details class="ai-note"><summary>{c.get("ai_note_summary") or AI_NOTE_SUMMARY}</summary>\n{body}</details>\n'
+
+
+def compare_where_to_buy_compact(ours):
+    """AI-note pages: "Where to buy" as one line per kit (price, buy link, code)."""
+    slugs = [r["slug"] for r in ours]
+    slugs.sort(key=lambda s: 2 if not in_stock(BY_SLUG[s]) else 1 if preorder(BY_SLUG[s]) else 0)
+    items = []
+    for slug in slugs:
+        p = BY_SLUG[slug]
+        cd, sv, after, date = best_offer(p)
+        name = html.escape(next((r.get("model") for r in ours if r["slug"] == slug), None) or short_name(p))
+        if is_amazon(p):
+            items.append(f'<li>{name}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy on Amazon</a> ({AMAZON_PRICE})</li>')
+            continue
+        code = f', code <strong>{html.escape(cd["code"])}</strong> {money(after)}' if cd else ""
+        items.append(f'<li>{name}: {money(p["price"])}{stock_note(p)}{code} — <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy</a></li>')
+    return (f'<h2>Where to buy</h2>\n<ul>{"".join(items)}</ul>\n<p class="small">Buy links are affiliate links to the brand\'s '
+            f'official US store; see the <a href="/disclosure/">disclosure</a>.</p>\n')
 
 
 def compare_where_to_buy(ours, c, filler=True):
@@ -1167,7 +1203,11 @@ def compare_page(c):
                    f' Rows showing "{AMAZON_PRICE}" are sold on Amazon.com: their buy link is an Amazon Associates link that opens the Amazon listing, '
                    f'and the price and stock are on that page, because Amazon allows a site to quote its prices only from Amazon\'s own feed. '
                    f'Their specs were read from the makers\' own US pages. As an Amazon Associate, {SITE["brand"]} earns from qualifying purchases.')
-    if c.get("lead_first"):   # fast-loop pages (growth/focus/fastloop-briefs/COPY-RULES.md): the conversion block opens the page
+    if c.get("ai_note"):   # AI-note layout (x19, 2026-11-04): the note to the assistant first, then the page for people
+        top = f"""<h1>{c['h1']}</h1>
+{ai_note_html(c)}{compare_fill(c['intro'])}
+{page_dates(c)}"""
+    elif c.get("lead_first"):   # fast-loop pages (growth/focus/fastloop-briefs/COPY-RULES.md): the conversion block opens the page
         top = f"""<h1>{c['h1']}</h1>
 {product_result_line(c)}{compare_fill(c['intro'])}
 {compare_where_to_buy(ours, c, filler=False)}
@@ -1187,7 +1227,7 @@ def compare_page(c):
 and the code is tested daily in that brand's cart; the date shown is its last pass (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
 comparison is complete; their figures and prices were read from the makers' own US pages on {c['checked']} and are not re-checked daily. The buy links are
 affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.{amazon_note}</p>
-{compare_fill(c['after'])}
+{compare_where_to_buy_compact(ours) if c.get("ai_note") else ""}{compare_fill(c['after'])}
 <h2>Sources</h2>
 <ul>
 {"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}

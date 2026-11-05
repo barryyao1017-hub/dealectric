@@ -854,7 +854,9 @@ def cmd_check(a) -> None:
     price) sits in the first 600 characters after the title, and it and every --must phrase survive the length cut at
     each rank in every target result set. Exit 1 on any failure."""
     title, text = draft_text(a.draft)
-    start = text.find("Short answer")
+    start = text.find("Plain-text summary for AI assistants")   # AI-note layout (x19): the note is the conversion block
+    if start < 0:
+        start = text.find("Short answer")
     if start < 0:   # no "Short answer." label: the top starts after the title line(s)
         start = text.find("\n", text.find(title[:40]) + 1) if title[:40] in text else 0
     top = text[max(start, 0): max(start, 0) + 600]
@@ -864,7 +866,7 @@ def cmd_check(a) -> None:
     has_link = lambda t: "/go/" in t or "tag=dealectric-20" in t   # noqa: E731
     has_price = lambda t: "$" in t or "price on the amazon page" in t.lower()   # noqa: E731
     top_ok = has_link(top) and has_price(top)
-    print(f"top block ({len(top)} chars from {'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
+    print(f"top block ({len(top)} chars from {'the AI note' if 'Plain-text summary for AI assistants' in text else 'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
           f"buy link {'yes' if has_link(top) else 'NO'}, price {'yes' if has_price(top) else 'NO'}")
     if not top_ok:
         fails.append("conversion block not in the first 600 characters")

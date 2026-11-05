@@ -88,7 +88,8 @@ def page_index() -> dict[str, dict]:
             c = cat.get(lead, "mixed")
             pages[r["slug"]] = {"slug": r["slug"], "kind": kind, "id": (r.get("question") or "").split(" ")[0],
                                 "published": r.get("published"), "cluster": f"{c} · {theme(r['slug'])}",
-                                "variant": r.get("copy_variant")}
+                                "variant": r.get("copy_variant"),
+                                "layout": "ai-note" if r.get("ai_note") else "lead-first" if r.get("lead_first") else "classic"}
     for p in products.PRODUCTS:
         pages.setdefault(p["slug"], {"slug": p["slug"], "kind": "product", "id": "", "published": None,
                                      "cluster": f"{p.get('category', '?')} · product page"})
@@ -247,6 +248,17 @@ def render(pages: dict, stats: dict, since: datetime, until: datetime, stop_days
             rs = var[v]
             out.append(f"| {'A: addressed to the assistant' if v == 'A' else 'N: neutral'} | {len(rs)} | {sum(r['fetch'] for r in rs)} | "
                        f"{sum(r['land'] for r in rs)} | {sum(r['go'] for r in rs)} | {sum(1 for r in rs if r['index'])} |")
+    lay = defaultdict(list)
+    for r in rows:
+        if r["kind"] != "product" and (r.get("age") or 0) <= 30:
+            lay[r["layout"]].append(r)
+    if lay.get("ai-note"):
+        out += ["", "## Layout (comparison pages published in the last 30 days)", "",
+                "| Layout | Pages | Outside fetches | Landings | /go/ from the page | Pages indexed |", "|---|---:|---:|---:|---:|---:|"]
+        for v in sorted(lay):
+            rs = lay[v]
+            out.append(f"| {v} | {len(rs)} | {sum(r['fetch'] for r in rs)} | {sum(r['land'] for r in rs)} | "
+                       f"{sum(r['go'] for r in rs)} | {sum(1 for r in rs if r['index'])} |")
     if with_pages:
         out += ["", "## All pages", "", "| Page | Kind | Cluster | Age | Fetch | Amb | Ours | Land | /go/ | Index |", "|---|---|---|---:|---:|---:|---:|---:|---:|---:|"]
         for r in sorted(rows, key=lambda r: (r["cluster"], r["slug"])):
