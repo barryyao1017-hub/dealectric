@@ -40,6 +40,22 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   Check after a deploy: `python3.12 tools/landingcheck.py` (one tagged request of ours, marked `dlc_check=` and
   logged to the footprint log as `direct-fetch`; exit 0 when its row is in D1 and the page is unchanged).
 
+- `GET /hook/awin?k=<key>&tid=...` and the 30-minute cron (since 2026-11-05) — sale alerts: every new commission
+  emails Barry (barrryyao@gmail.com, a verified Email Routing destination) from `sales@mail.dealectric.com`, and writes
+  one row to D1 `sales` (unique per network + transaction id, so a sale alerts once).
+  - Awin: Toolbox → Transaction Notifications is Enabled, method GET, callback
+    `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!`.
+    The key is the Worker secret `AWIN_HOOK_KEY` (keychain `awin-hook-key`); a wrong key gets a 404.
+  - CJ: no publisher postback, so the cron trigger queries `publisherCommissions` (commissions.api.cj.com, CID 8096118)
+    over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret
+    `CJ_TOKEN`, keychain `cj-api-token`; developers.cj.com → Personal Access Tokens).
+  - Amazon Associates has no alert or API for this; check its dashboard.
+  - Email needs Email Routing on the sender's domain. It runs on the `mail` subdomain only, so the apex keeps its
+    Porkbun forwarding MX. Test the wiring end to end (sends a TEST email, stores nothing):
+    `curl "https://dealectric.com/hook/awin?k=$(security find-generic-password -a dealectric -s awin-hook-key -w)&tid=test1&c=1&amt=2&cr=bluetti-ac180.x"`
+    (`{"ok": true}`, or the send error with a 502).
+  - The daily update (`tools/dailyupdate.py`) still reads CJ as a backup.
+
 `src/links-map.json` is written by `python3 src/build.py`; rebuild the site before deploying when
 products or programs change.
 

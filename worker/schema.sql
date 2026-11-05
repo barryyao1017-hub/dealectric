@@ -64,6 +64,22 @@ CREATE TABLE IF NOT EXISTS agent_pages (
 );
 CREATE INDEX IF NOT EXISTS agent_pages_ts ON agent_pages (ts);
 
+-- Added 2026-11-05: one row per commission the Worker has alerted on (index.js "sale alerts"). CJ rows come from the
+-- 30-minute commissions API poll, Awin rows from its Transaction Notifications callback. Never written to the repo.
+CREATE TABLE IF NOT EXISTS sales (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts TEXT NOT NULL,            -- ISO 8601 UTC, when the Worker first saw it
+  network TEXT NOT NULL,       -- cj | awin
+  txn_id TEXT NOT NULL,        -- CJ commissionId / Awin transactionId
+  advertiser TEXT,
+  commission REAL,             -- publisher commission (USD on CJ; Awin's own currency field otherwise)
+  sale REAL,
+  currency TEXT,
+  sub_id TEXT,                 -- CJ shopperId (our sid) / Awin clickRef: <slug>.<click_id>, matches clicks.click_id
+  event_date TEXT,
+  UNIQUE (network, txn_id)
+);
+
 CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   ts TEXT NOT NULL,

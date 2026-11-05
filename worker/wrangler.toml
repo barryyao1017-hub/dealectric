@@ -23,6 +23,21 @@ routes = [
 [observability]
 enabled = true
 
+# Sale alerts (src/index.js): poll CJ's commissions API every 30 minutes and email each new sale. Secrets set with
+# wrangler secret put: CJ_TOKEN (CJ personal access token), AWIN_HOOK_KEY (shared key in Awin's notification URL).
+# The recipient must be a verified Email Routing destination; the sender's domain must have Email Routing on.
+[triggers]
+crons = ["*/30 * * * *"]
+
+[vars]
+CJ_CID = "8096118"
+SALE_MAIL_FROM = "sales@mail.dealectric.com"
+SALE_MAIL_TO = "barrryyao@gmail.com"
+
+[[send_email]]
+name = "SALE_MAIL"
+destination_address = "barrryyao@gmail.com"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "dealectric"
