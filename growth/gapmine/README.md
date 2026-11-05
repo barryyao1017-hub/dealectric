@@ -87,3 +87,20 @@ vote is only a last check against saturated results.
 
 Each step resumes from its own output. Re-running `news` → `launches` weekly keeps the launch lane fresh. The general
 lanes change slowly, so a monthly full run is enough.
+
+## Search volumes (2026-11-05)
+
+`report` ranks by **uncovered searches** = Bing US searches over the last 3 complete months, summed over the cluster's
+variants, × (1 − coverage). Clusters below the reporting threshold, or without a coverage reading, follow by the proxy.
+
+- **Source: Microsoft Advertising Ad Insight** (`gapmine.py msvolume`, client `tools/msads.py`): `GetHistoricalSearchCount`,
+  1,000 keywords per call, all devices, US English. 11,865 queries in 12 calls, no throttling. Account: customer
+  255121540 / ad account 187335032, no campaigns (nothing bills). Auth is Google OAuth (`IdentityProvider: Google`);
+  the refresh token comes from `tools/msads_auth.py` and lasts 7 days while the Google app is in testing mode. Keychain:
+  `msads-developer-token`, `google-oauth-msads-client-id`, `-client-secret`, `-refresh-token`.
+- **Bing Webmaster Keyword Research API** (`gapmine.py volume`): same Bing data as impressions, one query per call.
+  An undocumented daily cap stopped it after ~700 calls on 11-05 ("ThrottleUser" for 2.5 h+), so it is a cross-check only.
+- **Calibration** (`gapmine.py volcal`): 3,175 queries both report. Spearman 0.83, log-Pearson 0.83, Webmaster ≈ 0.20 ×
+  Ad Insight. The ranking uses one source (Ad Insight); don't mix raw counts from the two.
+- Gap on 11-05: only 35 clusters have a coverage reading, while 213 clusters with >1,000 searches have none. Coverage
+  (Bing top 10 through the Agent Chrome) is now the bottleneck, not volume.

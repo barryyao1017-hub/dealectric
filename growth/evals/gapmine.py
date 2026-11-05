@@ -598,8 +598,123 @@ def coverage(results: list[dict]) -> float:
 
 # ---------------------------------------------------------------- report
 
+BWT = "https://ssl.bing.com/webmaster/api.svc/json/"
+
+
+def bwt(method: str, **params) -> list | None:
+    """Bing Webmaster Tools API (key in the keychain as bing-webmaster-api-key, created 2026-11-05). Free; no published
+    rate limit, but measured 2026-11-05: one caller at ~1.6 calls/s ran 200 calls clean, while 4 parallel callers got
+    {"ErrorCode":4,"Message":"ERROR!!! ThrottleUser"} after ~150 calls, cleared within a minute. So: --workers 1."""
+    if not hasattr(bwt, "key"):
+        bwt.key = subprocess.run(["security", "find-generic-password", "-s", "bing-webmaster-api-key", "-w"],
+                                 capture_output=True, text=True).stdout.strip()
+    q = urllib.parse.urlencode({**params, "apikey": bwt.key})
+    for wait in (60, 60, 120, None):
+        raw = _get(f"{BWT}{method}?{q}", timeout=30)
+        if raw:
+            try:
+                return json.loads(raw).get("d")
+            except ValueError:
+                pass
+        if wait is None:
+            return None
+        time.sleep(wait)
+
+
+def _ms(d: str) -> int:
+    return int(re.search(r"-?\d+", d).group())
+
+
+def volume(args) -> None:
+    """Real Bing US search counts (Bing Webmaster Tools API). Per seed: GetRelatedKeywords for the seed and 'best <seed>'
+    (3-month window). Then GetKeywordStats (weekly series) for every variant of the top clusters, summed over the
+    latest 13 weeks. A query with no rows is below Bing's reporting threshold, itself a low-volume signal."""
+    import datetime as dt
+    end = date.today() - dt.timedelta(days=14)
+    start = end - dt.timedelta(days=89)
+    out = load("volume.json", {"volumes": {}})
+    out.setdefault("api_done", [])
+    out["window"] = [start.isoformat(), end.isoformat()]
+    done = set(out["api_done"])
+    seeds = sorted({s for v in BRANDS.values() for s in v["seeds"]})
+    jobs = [("rel", kw) for s in seeds for kw in (s, f"best {s}")]
+    for c in [c for c in clusters() if c["queries"]][: args.top]:
+        jobs += [("stats", x["q"]) for x in c["queries"]]
+    jobs = [j for j in dict.fromkeys(jobs) if f"{j[0]}|{j[1]}" not in done]
+    print(f"volume (API): {len(jobs)} calls", flush=True)
+
+    def one(job):
+        kind, kw = job
+        if kind == "rel":
+            return job, bwt("GetRelatedKeywords", q=kw, country="us", language="en-US", startDate=start.isoformat(), endDate=end.isoformat())
+        return job, bwt("GetKeywordStats", q=kw, country="us", language="en-US")
+
+    with cf.ThreadPoolExecutor(max_workers=args.workers) as ex:
+        for n, f in enumerate(cf.as_completed([ex.submit(one, j) for j in jobs]), 1):
+            (kind, kw), d = f.result()
+            if d is not None:
+                if kind == "rel":
+                    for r in d:
+                        q = (r.get("Query") or "").strip().lower()
+                        if q:
+                            out["volumes"][q] = max(out["volumes"].get(q, 0), int(r.get("Impressions") or 0))
+                elif d:
+                    last = max(_ms(r["Date"]) for r in d)
+                    out["volumes"][kw] = max(out["volumes"].get(kw, 0),
+                                             sum(int(r.get("Impressions") or 0) for r in d if _ms(r["Date"]) > last - 91 * 86400 * 1000))
+                out["api_done"].append(f"{kind}|{kw}")
+            if n % 100 == 0 or n == len(jobs):
+                save("volume.json", out)
+                print(f"volume {n}/{len(jobs)}: {len(out['api_done'])} done, {len(out['volumes'])} queries with counts", flush=True)
+    save("volume.json", out)
+
+
+def msvolume(args) -> None:
+    """Bing US search counts from Microsoft Advertising Ad Insight (tools/msads.py): last 3 complete months, all
+    devices, 1,000 keywords per call, for every variant of every cluster. Added 2026-11-05 when the Webmaster API hit
+    an undocumented daily cap after ~700 calls. Stored as volume.json["ms"]; calibrate() compares it with the
+    Webmaster counts."""
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+    import msads
+    out = load("volume.json", {"volumes": {}})
+    ms = out.setdefault("ms", {})
+    qs = [q for q in dict.fromkeys(x["q"] for c in clusters() for x in c["queries"]) if q not in ms and len(q) <= 100]
+    qs += [q for q in out.get("volumes", {}) if q not in ms and q not in qs and len(q) <= 100][: args.calib]
+    print(f"msvolume: {len(qs)} queries, {-(-len(qs) // 1000)} calls", flush=True)
+    for i in range(0, len(qs), 1000):
+        ms.update(msads.search_counts(qs[i:i + 1000]))
+        save("volume.json", out)
+        print(f"msvolume {min(i + 1000, len(qs))}/{len(qs)}: {sum(v is not None for v in ms.values())} with counts", flush=True)
+
+
+def volcal(args) -> None:
+    """Webmaster (impressions, ~3 months) vs Ad Insight (searches, 3 complete months) on queries both report."""
+    import statistics as st
+    out = load("volume.json", {})
+    wm, ms = out.get("volumes", {}), out.get("ms", {})
+    both = [(wm[q], ms[q]) for q in wm if ms.get(q) and wm[q]]
+    if len(both) < 20:
+        print(f"calibrate: only {len(both)} shared queries"); return
+    lw, lm = [math.log(a) for a, _ in both], [math.log(b) for _, b in both]
+    mw, mm = st.mean(lw), st.mean(lm)
+    r = sum((a - mw) * (b - mm) for a, b in zip(lw, lm)) / math.sqrt(sum((a - mw) ** 2 for a in lw) * sum((b - mm) ** 2 for b in lm))
+    rw, rm = (sorted(range(len(lw)), key=lambda i: v[i]) for v in (lw, lm))
+    rank = [0] * len(lw); rank2 = [0] * len(lw)
+    for k, i in enumerate(rw): rank[i] = k
+    for k, i in enumerate(rm): rank2[i] = k
+    rho = 1 - 6 * sum((a - b) ** 2 for a, b in zip(rank, rank2)) / (len(lw) * (len(lw) ** 2 - 1))
+    ratio = st.median(a / b for a, b in both)
+    out["calibration"] = {"shared": len(both), "pearson_log": round(r, 3), "spearman": round(rho, 3),
+                          "median_wm_over_ms": round(ratio, 3)}
+    save("volume.json", out)
+    print(json.dumps(out["calibration"]))
+
+
 def report(args) -> None:
     dep, sup, lab = load("depth.json", {}), load("supply.json", {}), load("supply_labels.json", {})
+    _v = load("volume.json", {})
+    # One source per ranking: Ad Insight when present (complete coverage), else the Webmaster counts.
+    vol = {q: v for q, v in _v.get("ms", {}).items() if v} or _v.get("volumes", {})
     rows = []
     for c in clusters():
         if not c["queries"]:
@@ -610,24 +725,30 @@ def report(args) -> None:
         sq = supply_query(lead)
         n_res = sum(1 for x in sup.get(sq, []) if x.get("rank"))
         cov = coverage(lab[sq]) if sq in lab and n_res >= MIN_RESULTS else None
+        searches = sum(vol.get(x["q"], 0) for x in c["queries"])   # Bing US, 3 months, summed over the cluster's variants
         rows.append({**c, "lead": lead, "demand": d if d >= 0 else None, "coverage": cov,
+                     "searches": searches, "lead_searches": vol.get(lead, 0),
+                     "open_searches": round(searches * (1 - cov)) if cov is not None and searches else None,
                      "opening": round(d * (1 - cov), 3) if d >= 0 and cov is not None else None,
                      "supply_query": sq,
                      "top10": [{"rank": r["rank"], "title": next((x["title"] for x in sup.get(sq, []) if x["rank"] == r["rank"]), ""),
                                 "kind": r["kind"], "dedicated": r["dedicated"]} for r in lab.get(sq, [])]})
-    rows.sort(key=lambda r: (-(r["opening"] or -1), -r["surface"]))
+    # Real counts first (uncovered searches), then the autocomplete proxy for clusters below Bing's threshold.
+    rows.sort(key=lambda r: (-(r["open_searches"] or 0), -(r["opening"] or -1), -r["surface"]))
     save("report.json", rows)
     brand_link = {b: v["linked"] for b, v in BRANDS.items()}
     L = [f"# Gap mining report ({RUN.name})", "",
          "opening = demand x (1 - coverage). demand: keystroke depth on Google + Bing autocomplete, 0..1 (1 = suggested "
          "after the first letter). coverage: position-weighted share of the live Bing top 10 that is a page written for "
          "the query, weighted by source kind. Brand-named queries and non-buying intents are excluded.", "",
-         "| # | cluster | lead query (coverage read on) | demand | coverage | opening | variants | Reddit comments (30 d) | brands | we cover |",
-         "|---:|---|---|---:|---:|---:|---:|---:|---|---|"]
+         "Ranked by **uncovered searches** = Bing US searches (3 months, Bing Webmaster Keyword Research, summed over the "
+         "cluster's variants) x (1 - coverage); clusters below Bing's reporting threshold follow, ranked by the proxy.", "",
+         "| # | cluster | lead query (coverage read on) | Bing searches 3 mo | demand proxy | coverage | uncovered searches | opening (proxy) | variants | brands | we cover |",
+         "|---:|---|---|---:|---:|---:|---:|---:|---:|---|---|"]
     for i, r in enumerate([r for r in rows if r["opening"] is not None][: args.show], 1):
         brands = ", ".join(b + ("" if brand_link.get(b) else "*") for b in r["brands"])
-        L.append(f"| {i} | {r['cluster']} | {r['lead']}" + (f" ({r['supply_query']})" if r['supply_query'] != r['lead'] else "") + f" | {r['demand']} | {r['coverage']} | **{r['opening']}** | "
-                 f"{len(r['queries'])} | {r['reddit_comments']} | {brands} | {', '.join(r['covered_by']) or '–'} |")
+        L.append(f"| {i} | {r['cluster']} | {r['lead']}" + (f" ({r['supply_query']})" if r['supply_query'] != r['lead'] else "") + f" | {r['searches'] or '<threshold'} | {r['demand']} | {r['coverage']} | **{r['open_searches'] or '–'}** | {r['opening']} | "
+                 f"{len(r['queries'])} | {brands} | {', '.join(r['covered_by']) or '–'} |")
     L += ["", "\\* brand approved but not linked yet.", ""]
     # Reddit lane: buying questions asked this month in the category's own subreddits, grouped by need
     red = [c for c in clusters() if c["reddit"]]
@@ -747,11 +868,12 @@ def backfill_report(args) -> None:
 def main() -> None:
     global RUN
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead"])
+    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead", "volume", "msvolume", "volcal"])
     ap.add_argument("--run", default=date.today().isoformat())
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--pause", type=float, default=4.0)
     ap.add_argument("--top", type=int, default=120, help="depth/supply: clusters to measure, by surface score")
+    ap.add_argument("--calib", type=int, default=3000, help="msvolume: extra Webmaster-counted queries fetched for calibration")
     ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--n", type=int, default=60, help="calibrate: sample size")
     ap.add_argument("--leads", type=int, default=1, help="depth: lead queries measured per cluster")
@@ -761,7 +883,7 @@ def main() -> None:
     RUN = ROOT / "growth/gapmine/runs" / args.run
     RUN.mkdir(parents=True, exist_ok=True)
     {"expand": expand, "reddit": reddit, "news": news, "launches": launches, "label": label, "depth": depth_step,
-     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head}[args.step](args)
+     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head, "volume": volume, "msvolume": msvolume, "volcal": volcal}[args.step](args)
 
 
 if __name__ == "__main__":

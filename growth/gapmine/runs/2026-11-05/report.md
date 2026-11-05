@@ -2,41 +2,35 @@
 
 opening = demand x (1 - coverage). demand: keystroke depth on Google + Bing autocomplete, 0..1 (1 = suggested after the first letter). coverage: position-weighted share of the live Bing top 10 that is a page written for the query, weighted by source kind. Brand-named queries and non-buying intents are excluded.
 
-| # | cluster | lead query (coverage read on) | demand | coverage | opening | variants | Reddit comments (30 d) | brands | we cover |
-|---:|---|---|---:|---:|---:|---:|---:|---|---|
-| 1 | mechanical vs membrane | mechanical keyboard vs regular keyboard | 0.846 | 0.297 | **0.595** | 6 | 0 | lofree* | – |
-| 2 | rechargeable aa for solar lights | rechargeable aa batteries for solar lights | 0.717 | 0.278 | **0.518** | 9 | 0 | tenergy | – |
-| 3 | kvm switch laptop and desktop | kvm switch for laptop and desktop | 0.579 | 0.185 | **0.472** | 7 | 0 | avaccess* | – |
-| 4 | bluetooth speaker for car | bluetooth speaker for car | 0.662 | 0.323 | **0.448** | 10 | 0 | marshall | – |
-| 5 | iphone wallet case | iphone case with wallet | 0.607 | 0.27 | **0.443** | 8 | 0 | esr | – |
-| 6 | cd player with bluetooth | cd player with bluetooth | 0.579 | 0.278 | **0.418** | 7 | 0 | teac* | – |
-| 7 | plug in solar with battery | plug in solar with battery | 0.474 | 0.152 | **0.402** | 16 | 0 | zendure* | – |
-| 8 | travel router with vpn | travel router with vpn | 0.717 | 0.509 | **0.352** | 9 | 0 | glinet* | – |
-| 9 | portable carplay with backup camera | portable carplay with backup camera | 0.435 | 0.199 | **0.348** | 8 | 0 | carputech* | – |
-| 10 | mini projector for phone | mini projector for phone | 0.435 | 0.2 | **0.348** | 6 | 0 | aurzen | – |
-| 11 | power bank with ac outlet | power bank with ac outlet | 0.487 | 0.324 | **0.329** | 6 | 0 | ugreen | – |
-| 12 | best rechargeable aa batteries | best rechargeable aa batteries | 0.56 | 0.457 | **0.304** | 21 | 0 | tenergy | – |
-| 13 | smartwatch standalone calls | smartwatch without phone | 0.435 | 0.348 | **0.284** | 8 | 0 | amazfit | – |
-| 14 | dog camera with treat dispenser | dog camera with treat dispenser | 0.607 | 0.606 | **0.239** | 13 | 0 | petcube | best-pet-camera-with-treat-dispenser-under-100 |
-| 15 | mechanical keyboard for office | mechanical keyboard for work | 0.518 | 0.557 | **0.229** | 14 | 0 | lofree* | – |
-| 16 | 3d printer for kids | 3d printer for kids | 0.656 | 0.66 | **0.223** | 17 | 0 | biqu* | – |
-| 17 | fitness tracker for women | fitness trackers for women | 0.782 | 0.721 | **0.218** | 6 | 0 | amazfit | – |
-| 18 | podcast microphone for iphone | podcast microphone for iphone | 0.426 | 0.497 | **0.214** | 7 | 0 | maono* | – |
-| 19 | best z-wave switch | best z-wave switches | 0.717 | 0.702 | **0.214** | 8 | 0 | minoston* | – |
-| 20 | dog camera no subscription | dog camera without subscription | 0.311 | 0.316 | **0.213** | 5 | 0 | petcube | – |
-| 21 | open ear with mic for calls | open ear headphones with mic | 0.435 | 0.541 | **0.2** | 15 | 0 | mojawa | – |
-| 22 | best mini projector | best mini projector | 0.401 | 0.513 | **0.195** | 18 | 0 | aurzen | – |
-| 23 | over ear headphones for office calls | over ear headphones with mic for work | 0.435 | 0.551 | **0.195** | 9 | 0 | marshall | – |
-| 24 | travel adapter for italy | travel adapter for italy | 0.607 | 0.741 | **0.157** | 6 | 0 | tessan | – |
-| 25 | smartwatch for iphone | best smartwatch for iphone | 0.368 | 0.613 | **0.142** | 10 | 0 | amazfit | best-smartwatch-for-iphone-two-week-battery |
-| 26 | mechanical keyboard for mac | mechanical keyboard for mac | 0.518 | 0.811 | **0.098** | 5 | 0 | lofree* | – |
-| 27 | home battery backup general | home battery backup (best home battery backup) | 0.846 | 0.904 | **0.081** | 18 | 0 | bluetti | best-solar-generator-for-power-outages |
-| 28 | bone conduction for running | best bone conduction headphones for running | 0.401 | 0.887 | **0.045** | 8 | 0 | mojawa | – |
-| 29 | noise cancelling headphones for flying | best noise cancelling headphones for airplane | 0.607 | 0.926 | **0.045** | 8 | 0 | soundcore | – |
-| 30 | best home battery backup | best home battery backup | 0.368 | 0.904 | **0.035** | 16 | 0 | bluetti, zendure* | best-solar-generator-for-power-outages |
-| 31 | best android tablet | best android tablet 2026 | 0.607 | 1.0 | **0.0** | 15 | 0 | blackview* | – |
-| 32 | vpn router for home | vpn router for home | 0.846 | 1.0 | **0.0** | 7 | 0 | glinet* | – |
-| 33 | best bluetooth speaker | best bluetooth speaker | 0.717 | 1.0 | **0.0** | 8 | 0 | marshall | – |
+Ranked by **uncovered searches** = Bing US searches (3 months, Bing Webmaster Keyword Research, summed over the cluster's variants) x (1 - coverage); clusters below Bing's reporting threshold follow, ranked by the proxy.
+
+| # | cluster | lead query (coverage read on) | Bing searches 3 mo | demand proxy | coverage | uncovered searches | opening (proxy) | variants | brands | we cover |
+|---:|---|---|---:|---:|---:|---:|---:|---:|---|---|
+| 1 | iphone wallet case | iphone case with wallet | 4068 | 0.607 | 0.27 | **2970** | 0.443 | 8 | esr | – |
+| 2 | fitness tracker for women | fitness trackers for women | 9314 | 0.782 | 0.721 | **2599** | 0.218 | 6 | amazfit | – |
+| 3 | 3d printer for kids | 3d printer for kids | 7024 | 0.656 | 0.66 | **2388** | 0.223 | 17 | biqu* | – |
+| 4 | home battery backup general | home battery backup (best home battery backup) | 21855 | 0.846 | 0.904 | **2098** | 0.081 | 18 | bluetti | best-solar-generator-for-power-outages |
+| 5 | cd player with bluetooth | cd player with bluetooth | 2584 | 0.579 | 0.278 | **1866** | 0.418 | 7 | teac* | – |
+| 6 | best rechargeable aa batteries | best rechargeable aa batteries | 3257 | 0.56 | 0.457 | **1769** | 0.304 | 21 | tenergy | – |
+| 7 | plug in solar with battery | plug in solar with battery | 1568 | 0.474 | 0.152 | **1330** | 0.402 | 16 | zendure* | – |
+| 8 | power bank with ac outlet | power bank with ac outlet | 1587 | 0.487 | 0.324 | **1073** | 0.329 | 6 | ugreen | – |
+| 9 | best mini projector | best mini projector | 1385 | 0.401 | 0.513 | **674** | 0.195 | 18 | aurzen | – |
+| 10 | bluetooth speaker for car | bluetooth speaker for car | 795 | 0.662 | 0.323 | **538** | 0.448 | 10 | marshall | – |
+| 11 | rechargeable aa for solar lights | rechargeable aa batteries for solar lights | 693 | 0.717 | 0.278 | **500** | 0.518 | 9 | tenergy | – |
+| 12 | smartwatch standalone calls | smartwatch without phone | 751 | 0.435 | 0.348 | **490** | 0.284 | 8 | amazfit | – |
+| 13 | mechanical keyboard for office | mechanical keyboard for work | 1006 | 0.518 | 0.557 | **446** | 0.229 | 14 | lofree* | – |
+| 14 | mechanical vs membrane | mechanical keyboard vs regular keyboard | 575 | 0.846 | 0.297 | **404** | 0.595 | 6 | lofree* | – |
+| 15 | travel router with vpn | travel router with vpn | 681 | 0.717 | 0.509 | **334** | 0.352 | 9 | glinet* | – |
+| 16 | best home battery backup | best home battery backup | 3107 | 0.368 | 0.904 | **298** | 0.035 | 16 | bluetti, zendure* | best-solar-generator-for-power-outages |
+| 17 | smartwatch for iphone | best smartwatch for iphone | 749 | 0.368 | 0.613 | **290** | 0.142 | 10 | amazfit | best-smartwatch-for-iphone-two-week-battery |
+| 18 | open ear with mic for calls | open ear headphones with mic | 506 | 0.435 | 0.541 | **232** | 0.2 | 15 | mojawa | – |
+| 19 | mechanical keyboard for mac | mechanical keyboard for mac | 820 | 0.518 | 0.811 | **155** | 0.098 | 5 | lofree* | – |
+| 20 | kvm switch laptop and desktop | kvm switch for laptop and desktop | 176 | 0.579 | 0.185 | **143** | 0.472 | 7 | avaccess* | – |
+| 21 | dog camera with treat dispenser | dog camera with treat dispenser | 352 | 0.607 | 0.606 | **139** | 0.239 | 13 | petcube | best-pet-camera-with-treat-dispenser-under-100 |
+| 22 | travel adapter for italy | travel adapter for italy | 496 | 0.607 | 0.741 | **128** | 0.157 | 6 | tessan | – |
+| 23 | dog camera no subscription | dog camera without subscription | 147 | 0.311 | 0.316 | **101** | 0.213 | 5 | petcube | – |
+| 24 | noise cancelling headphones for flying | best noise cancelling headphones for airplane | 1353 | 0.607 | 0.926 | **100** | 0.045 | 8 | soundcore | – |
+| 25 | mini projector for phone | mini projector for phone | 107 | 0.435 | 0.2 | **86** | 0.348 | 6 | aurzen | – |
 
 \* brand approved but not linked yet.
 
