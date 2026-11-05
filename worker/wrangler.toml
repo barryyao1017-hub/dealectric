@@ -26,7 +26,8 @@ enabled = true
 # Sale alerts (src/index.js): poll CJ's commissions API every 30 minutes and email each new sale. Secrets set with
 # wrangler secret put: CJ_TOKEN (CJ personal access token), AWIN_HOOK_KEY (shared key in Awin's notification URL).
 # The recipient must be a verified Email Routing destination; the sender's domain must have Email Routing on
-# (it is on for dealectric.com without Cloudflare's MX records, so Porkbun's mail forwarding keeps working).
+# (it is on for dealectric.com without Cloudflare's MX records, so Porkbun's mail forwarding keeps working). Gmail
+# accepts the mail only with the DKIM record cf2024-1._domainkey and Cloudflare in the apex SPF (README).
 [triggers]
 crons = ["*/30 * * * *"]
 

@@ -50,10 +50,14 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
     over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret
     `CJ_TOKEN`, keychain `cj-api-token`; developers.cj.com → Personal Access Tokens).
   - Amazon Associates has no alert or API for this; check its dashboard.
-  - Email Routing is switched on for dealectric.com without its DNS records, so the apex keeps its Porkbun
-    forwarding MX and SPF; Cloudflare's activity log shows the alerts as Delivered, but with SPF not covering
-    Cloudflare, Gmail may file them as spam (mark one "Not spam" / add a filter). Test the wiring end to end (sends a
-    TEST email, stores nothing):
+  - Email Routing is switched on for dealectric.com without its MX records, so the apex keeps its Porkbun forwarding
+    MX. Never press "Add missing records" on Email Routing → Settings: it would add Cloudflare's MX and take over the
+    forwarding. Sending needs only the two authentication records, added by hand on 2026-11-05: TXT
+    `cf2024-1._domainkey` (Cloudflare's DKIM key, as shown on that settings page) and Cloudflare in the one apex SPF,
+    `v=spf1 include:_spf.porkbun.com include:_spf.mx.cloudflare.net ~all`. Before them Cloudflare's activity log said
+    Delivered but Gmail never showed the mail. (Cloudflare's newer "Email Sending" product needs Workers Paid; the
+    `send_email` binding to a verified destination is free.) Test the wiring end to end (sends a TEST email, stores
+    nothing):
     `curl "https://dealectric.com/hook/awin?k=$(security find-generic-password -a dealectric -s awin-hook-key -w)&tid=test1&c=1&amt=2&cr=bluetti-ac180.x"`
     (`{"ok": true}`, or the send error with a 502).
   - The daily update (`tools/dailyupdate.py`) still reads CJ as a backup.
