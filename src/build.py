@@ -377,6 +377,8 @@ def codes_for(p):
     """[(code, saving)] that apply to one unit of p, biggest saving first. A code whose most recent cart test on this
     very product was rejected is left out for it (the daily sweep, tools/codesweep.py, tests every pair), and when the
     store's own answer is on record at the current price, that amount is the saving shown, not the arithmetic."""
+    if p.get("codes_excluded"):   # e.g. an item on sale where the brand's code excludes sale items (soundcore-c50i)
+        return []
     found = []
     for c in live_codes(p["brand"]):
         s = code_saving(c, p)

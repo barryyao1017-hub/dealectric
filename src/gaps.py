@@ -6964,4 +6964,319 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  ],
  "published": '2026-11-04', "checked": '2026-11-04'},
 # ======== x19 power-station batch, AI-note layout (end) ========
+# ======== x20 gap-mining batch (2026-11-05, DLC-168): clusters ranked by demand x uncovered share (growth/gapmine) ========
+# ---------------- G118: bluetti-apex-200-vs-apex-300 (launch lane) ----------------
+{"slug": 'bluetti-apex-200-vs-apex-300', "question": 'G118 (x20 gap mining, launch lane: Apex 200 vs Apex 300)', "lead_first": True,
+ "title": 'BLUETTI Apex 200 vs Apex 300 for home backup (2026): which one, by what you need to run',
+ "h1": 'BLUETTI Apex 200 vs Apex 300 for home backup (2026)',
+ "desc": "BLUETTI Apex 200 vs Apex 300 for home backup: 240 V output (only the Apex 300), capacity, inverter, weight, expansion and transfer-switch cost, with launch prices and the code that passed in BLUETTI's cart.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For home backup, the <strong>BLUETTI Apex 300</strong> ({buy:bluetti-apex-300}) is the one to buy if anything on your list is 240 V (well pump, central AC, electric dryer): it is the only Apex with a 240 V outlet (NEMA 14-50R, 120 V and 240 V at once). If everything is 120 V (fridge, freezer, furnace fan, lights, router, CPAP), the <strong>Apex 200</strong> ({buy:bluetti-apex-200}) wins: $400 less, 59 lb vs 84 lb, USB and 12 V ports built in, and the same six-battery expansion.</p>
+<p>A 240 V load also needs an electrician-installed transfer switch (BLUETTI's Home Integration Kit $699, or the AT1 automatic panel $1,299), and BLUETTI publishes no motor-start rating: a ½ HP well pump (about 2,100 W at start) is fine on the Apex 300, a 1 HP pump (about 7,200 W at start) is marginal.</p>
+""",
+ "columns": [('cap', 'Capacity'), ('ac', 'AC output'), ('v240', '240 V'), ('expand', 'Expansion'), ('weight', 'Weight'), ('ups', 'UPS'), ('ship', 'Status (2026-11-05)')],
+ "rows": [
+  {'slug': 'bluetti-apex-300', 'model': 'BLUETTI Apex 300', 'cells': {'cap': '2,764.8 Wh LiFePO4', 'ac': '3,840 W', 'v240': 'Yes: NEMA 14-50R, 120/240 V 50 A', 'expand': 'Up to 6× B300K, 19.35 kWh', 'weight': '83.8 lb', 'ups': '0 or 20 ms', 'ship': 'Ships from Nov 20 (BLUETTI)'}},
+  {'slug': 'bluetti-apex-200', 'model': 'BLUETTI Apex 200', 'cells': {'cap': '2,560 Wh LiFePO4', 'ac': '3,200 W (3,600 W with a battery or input)', 'v240': 'No (120 V and TT-30 only)', 'expand': 'Up to 6× B300K/B500K, 33.28 kWh', 'weight': '59.3 lb', 'ups': '≤15 ms, enabled in the app', 'ship': 'In stock'}},
+  {'brand': 'EcoFlow', 'model': 'DELTA Pro 3', 'url': 'https://us.ecoflow.com/products/delta-pro-3-portable-power-station', 'cells': {'cap': '4,096 Wh', 'ac': '4,000 W; 8,000 W surge', 'v240': 'Yes, 120 V or 240 V (not both at once)', 'expand': 'To 12 kWh per unit', 'weight': '113.5 lb', 'ups': '10 ms', 'ship': 'Listed', 'price': '$2,799 (EcoFlow, 2026-11-05)'}},
+  {'brand': 'Anker', 'model': 'SOLIX F3800 Plus', 'url': 'https://www.anker.com/products/f3800-plus', 'cells': {'cap': '3,840 Wh', 'ac': '6,000 W, 120/240 V', 'v240': 'Yes', 'expand': 'Yes', 'weight': 'Not checked', 'ups': 'Not checked', 'ship': 'Listed', 'price': 'About $2,400–2,600 (2026 listings; not checked today)'}},
+ ],
+ "after": """
+<h2>Which one, by what you run in an outage</h2>
+<ul>
+<li><strong>Fridge, freezer, furnace blower, lights, Wi-Fi, CPAP (all 120 V):</strong> Apex 200. A fridge averages 100–200 W and a gas-furnace blower 300–800 W while running, well inside 3,200 W; 2.56 kWh covers a fridge and the basics for about a day, and each B300K adds 2.76 kWh.</li>
+<li><strong>Anything 240 V (well pump, central AC, electric dryer or range, a 240 V sub-panel):</strong> Apex 300, wired in by an electrician. The Apex 200 cannot run these with any number of batteries.</li>
+<li><strong>Big motor starts (1 HP well pump, 4-ton AC):</strong> look at 6,000–8,000 W units such as Anker's F3800 Plus or EcoFlow's DELTA Pro 3 as well; both cost about $1,000 more.</li>
+</ul>
+<h2>What the full setup costs (BLUETTI US, 2026-11-05)</h2>
+<p>Apex 200 + B300K $2,199; Apex 200 + B500K + 30 A cable $2,799. Apex 300 + B300K $2,599; Apex 300 + B300K + Home Integration Kit $3,399. Expansion alone: B300K (2,764.8 Wh) $1,099, B500K (5,120 Wh) $1,789. The Apex 300 needs the Hub D1 ($299) for USB and 12 V. The Apex 200's $1,099 is BLUETTI's launch price for Nov 4–18; BLUETTI says $1,149 from Nov 19 and $1,199 from Dec 1.</p>
+<h2>Owner complaints worth knowing</h2>
+<p>Apex 300 owners on BLUETTI's forum report the fans running in UPS mode even with no load; a 30 A generator inlet doesn't match the Apex 300's 50 A outlet without an adapter cable; and BLUETTI's support asks detailed grounding and bonding questions before a panel hookup.</p>
+""",
+ "sources": [
+  ("BLUETTI Apex 200 (US store)", "https://www.bluettipower.com/products/apex-200-expandable-power-station"),
+  ("BLUETTI Apex 200 launch page", "https://www.bluettipower.com/pages/apex-200-expandable-power-station"),
+  ("BLUETTI Apex 300 (US store)", "https://www.bluettipower.com/products/apex-300-home-battery-backup"),
+  ("Electrek: BLUETTI Apex 200 launch (2026-11-04)", "https://electrek.co/2026/11/04/bluetti-apex-200-backs-up-your-home-and-powers-your-rv/"),
+  ("BLUETTI B500K", "https://www.bluettipower.com/products/b500k-expansion-battery"),
+  ("BLUETTI AT1 Smart Distribution Panel", "https://www.bluettipower.com/products/at1"),
+  ("Generatorchecker: 1 HP well-pump start test", "https://generatorchecker.pages.dev/best-for/well-pump-1hp"),
+  ("BLUETTI community: Apex 300 fans always on", "https://community.bluettipower.com/t/apex-300-fans-always-on/38935/9"),
+  ("BLUETTI community: Apex 300 to a 30 A inlet", "https://community.bluettipower.com/t/single-apex-300-to-30-amp-generator-inlet/40168"),
+  ("EcoFlow DELTA Pro 3", "https://us.ecoflow.com/products/delta-pro-3-portable-power-station"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G119: best-rechargeable-aa-batteries-for-solar-lights ----------------
+{"slug": 'best-rechargeable-aa-batteries-for-solar-lights', "question": 'G119 (x20 gap mining: rechargeable AA for solar lights)', "lead_first": True,
+ "title": 'Best rechargeable AA batteries for solar lights (2026): what capacity actually works',
+ "h1": 'Best rechargeable AA batteries for solar lights (2026)',
+ "desc": "Which rechargeable AA batteries to put in outdoor solar lights: 1.2 V NiMH in the 1,000–1,300 mAh range, why bigger mAh can make a solar light worse, cycle ratings, winter, and prices for Tenergy Solla, EBL, eneloop and others.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For outdoor solar lights, replace the cells with 1.2 V NiMH AA in the 1,000–1,300 mAh range: our pick is <strong>Tenergy Solla 1000 mAh</strong> ({buy:tenergy-solla-aa-1000mah-12-pack}), rated 2,000 cycles (EBL's solar AA: 1,200) and shipped charged. It is a narrow win: EBL's 1,300 mAh 12-pack costs less on Amazon. Bigger is not better: a small path-light panel may put only about 150 mAh into a cell on a sunny day, so 2,000 mAh cells can sit half-empty.</p>
+<p>The light, not the battery, usually sets the runtime: a cell only gives back what the panel put in that day, and in winter every NiMH gives shorter nights (eneloop is rated to -4 °F with reduced runtime). Lights built for 3.2 V LiFePO4 14500 cells cannot take any AA.</p>
+""",
+ "columns": [('cap', 'Capacity'), ('cycles', 'Rated cycles'), ('temp', 'Rated temp'), ('charged', 'Ships charged'), ('pack', 'Pack')],
+ "rows": [
+  {'slug': 'tenergy-solla-aa-1000mah-12-pack', 'model': 'Tenergy Solla 1000 mAh', 'cells': {'cap': '1,000 mAh NiMH', 'cycles': '2,000', 'temp': '-4 to 122 °F', 'charged': 'Yes', 'pack': '12 (24 for $25.99)'}},
+  {'slug': 'tenergy-solla-premium-aa-1300mah-12-pack', 'model': 'Tenergy Solla Premium 1300 mAh', 'cells': {'cap': '1,300 mAh NiMH', 'cycles': '2,000', 'temp': '-4 to 122 °F', 'charged': 'Yes', 'pack': '12 (8 for $14.49)'}},
+  {'slug': 'ebl-solar-aa-1300mah-12-pack', 'model': 'EBL Solar AA 1300 mAh', 'cells': {'cap': '1,300 mAh NiMH', 'cycles': '1,200', 'temp': '-4 to 140 °F', 'charged': 'No, charge first', 'pack': '12'}},
+  {'brand': 'Panasonic', 'model': 'eneloop 2000 mAh', 'url': 'https://www.amazon.com/dp/B00JHKSN5I', 'cells': {'cap': '2,000 mAh NiMH', 'cycles': '2,100', 'temp': 'to -4 °F', 'charged': 'Yes', 'pack': '8', 'price': '$23.99 on Amazon (2026-11-05)'}},
+  {'brand': 'Brightown', 'model': '2000 mAh', 'url': 'https://www.amazon.com/dp/B07V3JQS1Z', 'cells': {'cap': '2,000 mAh NiMH', 'cycles': '1,000', 'temp': 'Not stated', 'charged': '30%', 'pack': '12', 'price': '$9.99–11.99 on Amazon (2026-11-05)'}},
+  {'brand': 'Lightalent', 'model': '600 mAh', 'url': 'https://www.amazon.com/dp/B0B1Q9Y75D', 'cells': {'cap': '600 mAh NiMH', 'cycles': '1,000', 'temp': '-4 to 122 °F', 'charged': 'Not stated', 'pack': '12', 'price': '$9.98 on Amazon (2026-11-05)'}},
+ ],
+ "after": """
+<h2>Why new batteries still don't last the night</h2>
+<ul>
+<li><strong>The panel is the limit.</strong> One measured path light charged at about 20 mA, about 150 mAh on a sunny day; its owner's 600 mAh replacements never filled (All About Circuits forum). A bigger cell helps only if the panel can fill it, or if it banks several sunny days.</li>
+<li><strong>Dead cells in the pack</strong> show up in reviews of every brand here. Charge new cells once in a wall charger and swap a weak one before blaming the light.</li>
+<li><strong>NiCd lights:</strong> NiMH 1.2 V replaces NiCd 1.2 V; keep NiCd only where the light's manual asks for it.</li>
+<li><strong>Replace every 1–2 years.</strong> Cheap solar lights have no overcharge protection, so cells in full sun age fastest.</li>
+</ul>
+<h2>When a bigger cell is worth it</h2>
+<p>Lights with larger panels in all-day sun can fill 1,300 mAh (Tenergy Solla Premium). If you top cells up on a wall charger, eneloop's 2,000 mAh cells are the best AA made, at about three times the price per cell.</p>
+""",
+ "sources": [
+  ("Tenergy Solla 1000 mAh AA, 12-pack", "https://power.tenergy.com/tenergy-solla-rechargeable-nimh-aa-battery-1000mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/"),
+  ("Tenergy Solla Premium 1300 mAh AA", "https://power.tenergy.com/tenergy-solla-premium-rechargeable-nimh-aa-battery-1300mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/"),
+  ("Tenergy Solla on Amazon (ratings, Q&A on LiFePO4 lights)", "https://www.amazon.com/dp/B07T8XLW2W"),
+  ("EBL Solar AA 1300 mAh on Amazon", "https://www.amazon.com/dp/B0BKSC8P5X"),
+  ("All About Circuits: 20 mA solar-light charger", "https://forum.allaboutcircuits.com/threads/swapping-a-150-mah-battery-to-a-600-mah-when-charging-circuit-only-20ma.178883/"),
+  ("AnandTech forum: capacity depends on sunlight", "https://forums.anandtech.com/threads/rechargeable-battery-questions.2094733/post-30228737"),
+  ("BudgetLightForum: batteries for solar lights", "https://budgetlightforum.com/t/recommendations-for-rechargeable-batteries-for-solar-lights/226584"),
+  ("Hackaday: solar lamp teardown", "https://hackaday.com/2020/01/26/teardown-and-analysis-of-a-cheap-solar-lamp"),
+  ("Panasonic eneloop specifications", "https://www.panasonic.com/global/energy/products/eneloop/en/lineup/eneloop.html"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G120: best-travel-router-with-vpn-for-hotels ----------------
+{"slug": 'best-travel-router-with-vpn-for-hotels', "question": 'G120 (x20 gap mining: travel router with VPN)', "lead_first": True,
+ "title": 'Best travel router with VPN for hotels (2026): WireGuard speed and hotel login pages',
+ "h1": 'Best travel router with VPN for hotels (2026)',
+ "desc": "The travel routers with a VPN on the router, for hotels: WireGuard and OpenVPN speeds, how each handles hotel login (captive portal) pages, Tailscale, size and price, for GL.iNet Beryl AX, Beryl 7, Slate 7, TP-Link Roam and ASUS.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The travel router with VPN to get for hotels is the <strong>GL.iNet Beryl AX (GL-MT3000)</strong> ({buy:glinet-beryl-ax-gl-mt3000}): it runs WireGuard at up to 300 Mbps on the router (GL.iNet's figure, more than most hotel Wi-Fi delivers), supports Tailscale, and is the most-reviewed travel router on Amazon (4.5 stars on 5,493 ratings, 2026-11-05). For hotel login pages, its firmware (4.6+) pauses the VPN for the login page automatically and clones your laptop's MAC in one click.</p>
+<p>No travel router passes every hotel login page; if one won't load, ask the desk to whitelist the router's MAC. Tunnelling home over WireGuard or Tailscale on fast connections? The <strong>Beryl 7</strong> ({price:glinet-beryl-7-gl-mt3600be}) is rated 1,100 Mbps in the same 205 g body.</p>
+""",
+ "columns": [('wg', 'WireGuard (maker)'), ('ovpn', 'OpenVPN (maker)'), ('wifi', 'Wi-Fi'), ('ports', 'Ports'), ('weight', 'Weight'), ('portal', 'Hotel login help')],
+ "rows": [
+  {'slug': 'glinet-beryl-ax-gl-mt3000', 'model': 'GL.iNet Beryl AX (GL-MT3000)', 'cells': {'wg': '300 Mbps', 'ovpn': '150 Mbps', 'wifi': 'Wi-Fi 6 AX3000', 'ports': '2.5G WAN, 1G LAN, USB 3.0', 'weight': '196 g', 'portal': 'Auto login mode, MAC clone'}},
+  {'slug': 'glinet-beryl-7-gl-mt3600be', 'model': 'GL.iNet Beryl 7 (GL-MT3600BE)', 'cells': {'wg': '1,100 Mbps', 'ovpn': '1,000 Mbps', 'wifi': 'Wi-Fi 7 BE3600', 'ports': '2× 2.5G, USB 3.0', 'weight': '205 g', 'portal': 'Auto login mode, MAC clone'}},
+  {'brand': 'GL.iNet', 'model': 'Slate 7 (GL-BE3600)', 'url': 'https://www.gl-inet.com/en-us/products/gl-be3600/', 'cells': {'wg': '490 Mbps', 'ovpn': '385 Mbps', 'wifi': 'Wi-Fi 7 BE3600', 'ports': '2× 2.5G, touchscreen', 'weight': '295 g', 'portal': 'Auto login mode, MAC clone', 'price': '$159.99 (GL.iNet, 2026-11-05)'}},
+  {'brand': 'GL.iNet', 'model': 'Opal (GL-SFT1200)', 'url': 'https://www.gl-inet.com/en-us/products/gl-sft1200/', 'cells': {'wg': '65 Mbps', 'ovpn': '12 Mbps', 'wifi': 'Wi-Fi 5 AC1200', 'ports': '1 WAN + 2 LAN', 'weight': '145 g', 'portal': 'MAC clone; no Tailscale', 'price': '$39.99 (GL.iNet, 2026-11-05)'}},
+  {'brand': 'TP-Link', 'model': 'Roam 7 (TL-WR3602BE)', 'url': 'https://www.amazon.com/dp/B0FHZGXZH7', 'cells': {'wg': 'Not published', 'ovpn': 'Not published', 'wifi': 'Wi-Fi 7 (no 6 GHz)', 'ports': '2.5G WAN', 'weight': 'Not checked', 'portal': 'One-step portal login', 'price': '$87.99 on Amazon (2026-11-05)'}},
+  {'brand': 'ASUS', 'model': 'RT-AX57 Go', 'url': 'https://www.asus.com/us/networking-iot-servers/wifi-routers/asus-wifi-routers/rt-ax57-go/', 'cells': {'wg': '300 Mbps', 'ovpn': '150 Mbps', 'wifi': 'Wi-Fi 6 AX3000', 'ports': '1G WAN/LAN', 'weight': 'Not checked', 'portal': 'Captive-portal mode', 'price': '$99.00 on Amazon (2026-11-05)'}},
+ ],
+ "after": """
+<h2>What goes wrong in hotels, and the fix</h2>
+<ul>
+<li><strong>The login page won't appear</strong> (the most common complaint, on every brand): connect your phone or laptop to the router, let the router's login mode pass the hotel page through, or clone the laptop's MAC; failing that, ask the front desk to whitelist the router.</li>
+<li><strong>Slow VPN</strong> is usually the hotel's connection, the VPN server's upload or the MTU, not the router; GL.iNet's forum fixed one slow Slate AX by setting the MTU to 1380.</li>
+<li><strong>Work laptop on a corporate VPN:</strong> turn the router's VPN off for that device (policy routing), or the two VPNs stack and the laptop loses the internet.</li>
+<li><strong>Cruise ships:</strong> Royal Caribbean and Carnival list travel routers as prohibited items.</li>
+</ul>
+""",
+ "sources": [
+  ("GL.iNet Beryl AX (GL-MT3000)", "https://www.gl-inet.com/en-us/products/gl-mt3000/"),
+  ("GL.iNet Beryl 7 (GL-MT3600BE)", "https://www.gl-inet.com/en-us/products/gl-mt3600be/"),
+  ("GL.iNet docs: connecting to a hotspot with a captive portal", "https://docs.gl-inet.com/router/en/4/faq/connect_to_a_hotspot_with_captive_portal/"),
+  ("Amazon: Beryl AX listing and ratings", "https://www.amazon.com/dp/B0BPSGJN7T"),
+  ("Tailscale: Tailscale on the GL.iNet Beryl AX", "https://tailscale.com/blog/tailscale-glinet-travel-router-mt3000-beryl-ax"),
+  ("GL.iNet forum: Beryl AX and hotel Wi-Fi", "https://forum.gl-inet.com/t/cannot-connect-to-hotel-wifi-with-new-beryl-ax-ios-devices-work-fine/28269?page=5"),
+  ("GL.iNet forum: Slate AX WireGuard slow, MTU fix", "https://forum.gl-inet.com/t/slate-ax-flint-2-really-slow-with-wireguard-site-to-site-vpn/46980"),
+  ("Royal Caribbean travel-router ban", "https://www.royalcaribbeanblog.com/2024/12/06/royal-caribbean-cheaper-internet-travel-router-ban"),
+  ("ASUS RT-AX57 Go", "https://www.asus.com/us/networking-iot-servers/wifi-routers/asus-wifi-routers/rt-ax57-go/"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G121: best-kvm-switch-for-laptop-and-desktop-dual-monitor ----------------
+{"slug": 'best-kvm-switch-for-laptop-and-desktop-dual-monitor', "question": 'G121 (x20 gap mining: KVM for a laptop and a desktop)', "lead_first": True,
+ "title": 'Best KVM switch for a laptop and a desktop with dual monitors (2026): one cable, no window shuffle',
+ "h1": 'Best KVM switch for a laptop and a desktop, dual monitor (2026)',
+ "desc": "KVM switches and docks that share two monitors, a keyboard and a mouse between a work laptop and a desktop: one-cable USB-C, EDID emulation, laptop charging, and why Macs need a different setup; AV Access, TESmart, Level1Techs, Sabrent.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For a Windows work laptop and a desktop on two monitors, get the <strong>AV Access KD-E10</strong> ({buy:avaccess-kd-e10}): one USB-C cable from the laptop carries both 4K@60 screens and 100 W of charging, the desktop plugs in over HDMI and DisplayPort, and EDID emulation keeps your windows from rearranging every time you switch. On a MacBook it mirrors instead of extending (no Mac extends two monitors over USB-C MST).</p>
+<p>Mac laptop: the <strong>AV Access iDock M10</strong> ({price:avaccess-idock-m10}) extends two monitors through a two-plug USB-C cable on M4/M5 and any Pro/Max Mac; TESmart's HDC202-X24 ($699) does it over one Thunderbolt cable. Base M1/M2 MacBooks drive only one external display, whatever the dock (Apple).</p>
+""",
+ "columns": [('laptop', 'Laptop connection'), ('desktop', 'Desktop connection'), ('res', 'Max per monitor'), ('edid', 'EDID emulation'), ('pd', 'Laptop charging'), ('mac', 'Mac: two extended screens')],
+ "rows": [
+  {'slug': 'avaccess-kd-e10', 'model': 'AV Access KD-E10', 'cells': {'laptop': '1× USB-C (MST)', 'desktop': 'HDMI + DP + USB-B', 'res': '4K@60, 1440p@144', 'edid': 'Yes', 'pd': '100 W', 'mac': 'No (mirrors)'}},
+  {'slug': 'avaccess-idock-m10', 'model': 'AV Access iDock M10', 'cells': {'laptop': 'Dual-head USB-C (2 Mac ports)', 'desktop': 'HDMI + DP + USB', 'res': '4K@60', 'edid': 'Yes', 'pd': '100 W', 'mac': 'Yes on M4/M5, Pro/Max'}},
+  {'brand': 'TESmart', 'model': 'HDC202-X24', 'url': 'https://www.tesmart.com/products/HDC202-X24', 'cells': {'laptop': '1× Thunderbolt', 'desktop': 'HDMI/DP + USB', 'res': '4K@60, 1440p@120', 'edid': 'Yes', 'pd': '60 W', 'mac': 'Yes (one cable)', 'price': '$699 (TESmart, 2026-11-05; stock unclear)'}},
+  {'brand': 'TESmart', 'model': 'HDC202-P23', 'url': 'https://www.tesmart.com/collections/mac-and-laptop', 'cells': {'laptop': '1× USB-C (MST)', 'desktop': 'HDMI/DP + USB', 'res': '4K@60', 'edid': 'Yes', 'pd': 'Not checked', 'mac': 'No (mirrors)', 'price': '$419.99 (TESmart, 2026-11-05)'}},
+  {'brand': 'Level1Techs', 'model': 'DP 1.4 KVM, dual monitor / 2 computers', 'url': 'https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj', 'cells': {'laptop': 'DisplayPort only (laptop needs a dock)', 'desktop': '2× DP + USB', 'res': '4K@120', 'edid': 'No', 'pd': 'No', 'mac': 'Through a dock', 'price': 'From $520 (Level1Techs, 2026-11-05)'}},
+  {'brand': 'Sabrent', 'model': 'USB-CKDH', 'url': 'https://sabrent.com/products/usb-ckdh', 'cells': {'laptop': 'USB-C', 'desktop': 'USB-C only (most desktops lack video over USB-C)', 'res': '4K@60', 'edid': 'Not stated', 'pd': '60 W', 'mac': 'No', 'price': '$129.49 (Sabrent, 2026-11-05)'}},
+ ],
+ "after": """
+<h2>The three things that decide it</h2>
+<ul>
+<li><strong>One cable, two extended screens:</strong> Windows laptops do it over USB-C MST (the KD-E10). Macs don't support MST, so a Mac needs two cables (iDock M10) or Thunderbolt (TESmart X24), and base M1/M2 MacBooks stop at one external display.</li>
+<li><strong>EDID emulation:</strong> without it, each switch makes the laptop think the monitors were unplugged, so windows pile onto one screen; the most-cited complaint in KVM threads.</li>
+<li><strong>Locked-down work laptops:</strong> no software to install, and keyboard-hotkey switching often fails with gaming or NKRO keyboards, so a front-panel button (KD-E10) is the safe choice.</li>
+</ul>
+<p>Not on our list: AV Access's iDock B10 and B12 (8K desktop path, but no EDID emulation) and the older iDock C10 (60 W, and owner reports of flicker with an HP EliteBook). UGREEN's KVM-style switches carry no video.</p>
+""",
+ "sources": [
+  ("AV Access KD-E10", "https://www.avaccess.com/products/kd-e10/"),
+  ("AV Access iDock M10", "https://www.avaccess.com/products/idock-m10/"),
+  ("Apple: Mac external-display support (117373)", "https://support.apple.com/en-us/117373"),
+  ("Apple: MacBook Air M2 tech specs (one external display)", "https://support.apple.com/en-us/111867"),
+  ("TESmart: MacBook Air M4/M5 dual-monitor KVM guide", "https://www.tesmart.com/blogs/news/macbook-air-m4-m5-dual-monitor-kvm-setup-what-works-and-what-does-not"),
+  ("TESmart HDC202-X24", "https://www.tesmart.com/products/HDC202-X24"),
+  ("Level1Techs forum: employer laptop rearranges windows", "https://forum.level1techs.com/t/new-l1-kvm-win-10-laptop-dell-employer-provided-recalculates-window-position/182017"),
+  ("StarTech: why Windows resizes on a KVM switch", "https://startech.com/en-ch/faq/windows-resize-kvm-switch"),
+  ("AV Access community: iDock C10 flicker on an HP EliteBook", "https://community.avaccess.com/t/idock-c10-hp-elitebook-1040-g10-laptop-dual-monitor-intermittent-disconnect-and-or-screen-flickering/725"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G122: plug-in-solar-with-battery-for-apartments ----------------
+{"slug": 'plug-in-solar-with-battery-for-apartments', "question": 'G122 (x20 gap mining: plug-in solar with battery, CA SB 868)', "lead_first": True,
+ "title": "Plug-in solar with a battery for an apartment (2026): where it's legal and what you can buy",
+ "h1": 'Plug-in (balcony) solar with a battery for an apartment (2026)',
+ "desc": "Plug-in balcony solar with a battery in the US: the 10 states where it's legal and when, the 1,200 W cap and UL 3700 certification, the certified kits on sale, the wall-plug battery sold only in Utah, and the power station plus panel that needs no permit anywhere.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Outside Utah, the solar-with-a-battery setup an apartment can buy today with no permit, utility form or landlord wiring is a power station charged by a balcony panel: the <strong>BLUETTI AC180 + 200 W kit</strong> ({buy:bluetti-ac180-200w-solar-kit}), 1,152 Wh of LiFePO4 that runs a fridge, laptop or lights from the sun with no grid connection. It cuts your bill only by what you run from it: about 0.7 kWh on a sunny day from 200 W.</p>
+<p>Grid-tied plug-in solar is legal in 10 states (UT, ME, MD, VT, CO, CT now; CA, NH, VA on Jan 1, 2027; NJ in March 2027), capped at about 1,200 W with certified gear. A battery that plugs into the wall (EcoFlow STREAM Ultra) is sold only in Utah, and the cheapest certified plug-in kit, Bright Saver's 360 W ($432 + $29 membership), has no battery.</p>
+""",
+ "columns": [('type', 'Type'), ('battery', 'Battery'), ('solar', 'Solar'), ('cert', 'Certification'), ('where', 'Where you can use it')],
+ "rows": [
+  {'slug': 'bluetti-ac180-200w-solar-kit', 'model': 'BLUETTI AC180 + 200 W kit', 'cells': {'type': 'Power station + panel (off-grid)', 'battery': '1,152 Wh LiFePO4, 1,800 W AC', 'solar': '200 W folding (500 W max input)', 'cert': 'Not grid-tied, none needed', 'where': 'Every state; no landlord wiring'}},
+  {'slug': 'bluetti-elite-200-v2-200w-solar-kit', 'model': 'BLUETTI Elite 200 V2 + 200 W kit', 'cells': {'type': 'Power station + panel (off-grid)', 'battery': '2,073.6 Wh LiFePO4, 2,600 W AC', 'solar': '200 W (1,000 W max input)', 'cert': 'Not grid-tied, none needed', 'where': 'Every state'}},
+  {'brand': 'Bright Saver', 'model': '360 W balcony kit', 'url': 'https://www.brightsaver.org/balcony-solar-kits', 'cells': {'type': 'Grid-tied plug-in', 'battery': 'None', 'solar': '360 W, 11 lb glass-free panels for a railing', 'cert': 'UL 3700 inverter (Hoymiles HiFlow Pro)', 'where': 'States with a plug-in law', 'price': '$432 member + $29/yr (Bright Saver, 2026-11-05)'}},
+  {'brand': 'EcoFlow', 'model': 'STREAM Ultra', 'url': 'https://www.ecoflow.com/us/stream-ultra-home-solar-system', 'cells': {'type': 'Plug-in battery + inverter', 'battery': '1.92 kWh (expandable)', 'solar': 'Up to 1,200 W with microinverter', 'cert': 'UL 1741, IEEE 1547', 'where': 'Utah only (EcoFlow)', 'price': 'About $1,279–1,599 (search listings; not checked today)'}},
+  {'brand': 'Mango Power', 'model': 'S 1,200 W kit', 'url': 'https://learn.mangopower.com/products/mango-power-s-pipv/', 'cells': {'type': 'Grid-tied plug-in', 'battery': 'None', 'solar': '1,200 W, ground stands', 'cert': 'UL 3700 whole kit (Intertek)', 'where': 'States with a plug-in law', 'price': 'About $2,399 (search listing; not checked today)'}},
+  {'brand': 'Zendure', 'model': 'SolarFlow Kit (US)', 'url': 'https://us.zendure.com/products/solarflow-kit', 'cells': {'type': 'Plug-in battery system', 'battery': '2× 1.92 kWh', 'solar': '410 W panel, 900 W microinverter', 'cert': 'Microinverter UL 1741; no UL 3700 named', 'where': 'Sold out on the US store', 'price': '$3,932, sold out (Zendure US, 2026-11-05)'}},
+ ],
+ "after": """
+<h2>Is plug-in solar legal where I live?</h2>
+<p>Laws passed (Bright Saver's tracker, 2026-11-05): Utah (in force May 2025), Maine, Maryland, Vermont (July 2026), Colorado (August 2026, 1,920 W cap), Connecticut (October 2026), California, New Hampshire, Virginia (January 1, 2027) and New Jersey (March 2027); New York's bill awaits signature. California's SB 868 caps a home at 1,200 W and requires a certified device and a free online registration in place of an interconnection application. Your lease or HOA can still say no, and a power station with a panel never touches the building's wiring.</p>
+<h2>Does it pay back?</h2>
+<p>EnergySage puts an 800 W plug-in kit at 70–110 kWh a month, $13–20 off a bill at the $0.18 US average and $40–50 in California, New York or Hawaii, for a 2–5 year payback. A battery adds about $1,000 per kWh and rarely pays back on its own; buy one for outages and evening use, not savings.</p>
+<h2>Mounting on a balcony</h2>
+<p>Railing kits use light panels zip-tied or hooked on without drilling; a vertical railing panel makes noticeably less than a tilted one, and wind load is the main safety question in apartment threads.</p>
+""",
+ "sources": [
+  ("pv magazine USA: Newsom signs California plug-in solar bill (2026-10-01)", "https://pv-magazine-usa.com/2026/10/01/newsom-signs-california-plug-in-solar-bill-establishing-the-nations-largest-balcony-solar-market/"),
+  ("KPBS: California formally legalizes balcony solar", "https://www.kpbs.org/news/quality-of-life/2026/10/01/california-formally-legalizes-smaller-cheaper-balcony-solar-panels"),
+  ("Bright Saver: is plug-in solar legal (state tracker)", "https://www.brightsaver.org/is-plug-in-solar-legal"),
+  ("Bright Saver balcony solar kits", "https://www.brightsaver.org/balcony-solar-kits"),
+  ("Solar.com: which plug-in products have UL 3700", "https://www.solar.com/learn/ul-3700-certification-which-plug-in-solar-products-have-this-safety-stamp/"),
+  ("EnergySage: plug-in balcony solar panels", "https://www.energysage.com/news/plug-in-balcony-solar-panels/"),
+  ("EcoFlow STREAM Ultra", "https://www.ecoflow.com/us/stream-ultra-home-solar-system"),
+  ("Zendure US: SolarFlow Kit", "https://us.zendure.com/products/solarflow-kit"),
+  ("BLUETTI AC180 + 200 W solar kit", "https://www.bluettipower.com/products/ac180?variant=45427542491355"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G123: soundcore-aeroclip-2-vs-c50i (launch lane) ----------------
+{"slug": 'soundcore-aeroclip-2-vs-c50i', "question": 'G123 (x20 gap mining, launch lane: AeroClip 2 vs C50i)', "lead_first": True,
+ "title": 'Soundcore AeroClip 2 vs C50i (2026): which clip-on earbuds, for calls or for running',
+ "h1": 'Soundcore AeroClip 2 vs C50i (2026)',
+ "desc": "Soundcore AeroClip 2 vs C50i clip-on open-ear earbuds: call quality, fit while running, comfort over hours, battery, water rating, weight and price, and which buyer each one is for.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> Buy the <strong>AeroClip 2</strong> ({buy:soundcore-aeroclip-2}) only if calls are the job: six mics (4 MEMS + 2 bone-conduction) and the top certified speech-quality score among clip-on earbuds. For music, running and the gym, the <strong>C50i</strong> ({buy:soundcore-c50i}) is the better buy at about $40: runners report it doesn't slip over a 10K, it is lighter (5.5 g vs 6.2 g) and gets 7 h vs 8 h per charge.</p>
+<p>The AeroClip 2's firmer clip can feel tight after 1–2 hours (Expert Reviews), and both leak sound at moderate volume, so neither suits a quiet train or office.</p>
+""",
+ "columns": [('calls', 'Calls'), ('battery', 'Battery (buds / with case)'), ('water', 'Water'), ('weight', 'Weight'), ('bt', 'Bluetooth'), ('fit', 'Fit reports')],
+ "rows": [
+  {'slug': 'soundcore-aeroclip-2', 'model': 'soundcore AeroClip 2', 'cells': {'calls': '4 MEMS + 2 bone-conduction mics; G-MOS certified', 'battery': '8 h / 32 h', 'water': 'IP57', 'weight': '6.2 g', 'bt': '6.0, multipoint, LDAC', 'fit': 'Firm; tight for some after 1–2 h'}},
+  {'slug': 'soundcore-c50i', 'model': 'soundcore C50i', 'cells': {'calls': '2 mics', 'battery': '7 h / 28 h', 'water': 'IP55', 'weight': '5.5 g', 'bt': '6.0, multipoint', 'fit': 'Stays put running; comfortable for hours'}},
+  {'brand': 'soundcore', 'model': 'AeroClip (1st gen)', 'url': 'https://www.soundcore.com/products/a3388-aeroclip-open-earbuds', 'cells': {'calls': 'Not certified', 'battery': '8 h / 32 h', 'water': 'IP55', 'weight': '6.0 g', 'bt': '5.4, LDAC', 'fit': 'Not checked', 'price': '$129.99 (Soundcore, 2026-11-05)'}},
+  {'brand': 'Shokz', 'model': 'OpenDots One', 'url': 'https://shokz.com/products/opendots-one', 'cells': {'calls': 'Not certified', 'battery': '10 h / 40 h', 'water': 'IP54', 'weight': '6.5 g', 'bt': '5.4, multipoint', 'fit': 'Not checked', 'price': '$199.95, sold out on shokz.com (2026-11-05)'}},
+  {'brand': 'Bose', 'model': 'Ultra Open Earbuds', 'url': 'https://www.soundguys.com/product/bose-ultra-open/', 'cells': {'calls': 'Mic rated subpar (SoundGuys)', 'battery': '7.5 h / 26.5 h', 'water': 'IPX4', 'weight': '6 g', 'bt': '5.3, aptX Adaptive', 'fit': 'Not checked', 'price': 'About $279 (SoundGuys tracker)'}},
+ ],
+ "after": """
+<h2>Which buyer gets which</h2>
+<ul>
+<li><strong>Calls, office, commute:</strong> AeroClip 2. Expert Reviews rates it head and shoulders above rivals for calls; Guinness certified its speech-quality score (G-MOS) on 2026-08-31.</li>
+<li><strong>Running and the gym:</strong> C50i. The AeroClip 2's extra money buys mics, IP57, LDAC and a wireless-charging case, not a better fit.</li>
+<li><strong>Glasses:</strong> owners of both clip-on designs report no clash with glasses; no reviewer tested the AeroClip 2 with glasses.</li>
+</ul>
+<p>The C50i's $39.98 is Soundcore's sale price on its clip-on collection page on 2026-11-05 (the product page shows $69.99 less a $30 on-page coupon); our Soundcore code does not apply to sale items.</p>
+""",
+ "sources": [
+  ("soundcore AeroClip 2", "https://www.soundcore.com/products/d1105-aeroclip-2-clip-on-earbuds-with-clearest-calls"),
+  ("soundcore C50i", "https://www.soundcore.com/products/d1101-c50i-comfortable-clip-on-earbuds"),
+  ("soundcore clip-on earbuds collection (prices)", "https://www.soundcore.com/collections/clip-on-earbuds"),
+  ("Expert Reviews: AeroClip 2 review", "https://www.expertreviews.co.uk/technology/headphones-audio/anker-soundcore-aeroclip-2-review"),
+  ("TechCoffeeHouse: AeroClip 2 review", "https://techcoffeehouse.com/2026/10/01/soundcore-aeroclip-2-review/"),
+  ("PCWorld: the $40 open-ear buds (C50i)", "https://www.pcworld.com/article/3190180/a-pair-of-40-open-ear-buds-solved-my-headaches.html"),
+  ("Slickdeals: C50i owner comments", "https://slickdeals.net/f/19104490"),
+  ("GIGAZINE: C50i review (leakage)", "https://gigazine.net/gsc_news/en/20260418-anker-soundcore-c50i"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G124: ugreen-nexode-pro-vs-anker-prime-160w (launch lane) ----------------
+{"slug": 'ugreen-nexode-pro-vs-anker-prime-160w', "question": 'G124 (x20 gap mining, launch lane: Nexode Pro vs Anker Prime)', "lead_first": True,
+ "title": 'UGREEN Nexode Pro vs Anker Prime 160W charger (2026): ports, real split and weight',
+ "h1": 'UGREEN Nexode Pro vs Anker Prime 160W charger (2026)',
+ "desc": "UGREEN Nexode Pro 160W 5-port vs Anker Prime 160W 3-port: ports, what a laptop gets with a phone plugged in, throttling, weight, prices and the code that passed in UGREEN's cart; plus the 65 W and 100 W tiers.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> For a desk with a MacBook and more, the <strong>UGREEN Nexode Pro 160W 5-Port</strong> ({buy:ugreen-nexode-pro-160w-5-port}) beats the Anker Prime 160W on ports and price: two 140 W USB-C ports, a 100 W and a 30 W USB-C and a USB-A, against Anker's three USB-C ports and no USB-A at $149.99 list. For travel with one laptop, the <strong>Anker Prime 160W</strong> ({buy:anker-prime-160w-3-port-a2687}) is the better product: 220 g against about 360 g.</p>
+<p>Neither holds 140 W to a laptop once a phone is plugged in: both split to about 100 W + 60 W, and the Anker throttles to about 110 W after 20–25 minutes at full load (adamtalks.tech).</p>
+""",
+ "columns": [('ports', 'Ports'), ('single', 'One port alone'), ('two', 'Laptop + phone'), ('weight', 'Size / weight'), ('extras', 'Extras')],
+ "rows": [
+  {'slug': 'ugreen-nexode-pro-160w-5-port', 'model': 'UGREEN Nexode Pro 160W 5-Port', 'cells': {'ports': '4× USB-C + USB-A', 'single': '140 W (C1 or C2)', 'two': 'About 100 + 60 W', 'weight': '76 × 76 × 36 mm, ~360 g', 'extras': 'Display, foldable plug'}},
+  {'slug': 'anker-prime-160w-3-port-a2687', 'model': 'Anker Prime 160W 3-Port (A2687)', 'cells': {'ports': '3× USB-C', 'single': '140 W (any port)', 'two': '100 + 60 W', 'weight': '65 × 52 × 35 mm, 220 g', 'extras': 'Display, app; no cable'}},
+  {'brand': 'UGREEN', 'model': 'Nexode Pro 100W 3-Port', 'url': 'https://us.ugreen.com/products/ugreen-nexode-pro-100w-gan-fast-charger', 'cells': {'ports': '2× USB-C + USB-A', 'single': '100 W', 'two': '65 + 30 W', 'weight': '71 × 43 × 33 mm', 'extras': 'Page code UL15202', 'price': '$74.99 before the page code (UGREEN, 2026-11-05)'}},
+  {'brand': 'UGREEN', 'model': 'Nexode Pro 65W Ultra-Slim', 'url': 'https://us.ugreen.com/products/ugreen-nexode-pro-65w-ultra-slim-gan-fast-charger', 'cells': {'ports': '2× USB-C + USB-A', 'single': '65 W', 'two': 'Not checked', 'weight': '0.57 in thick, 104 g', 'extras': 'Page code UL15817', 'price': '$55.99 before the page code (UGREEN, 2026-11-05)'}},
+  {'brand': 'Anker', 'model': 'Prime 67W 3-Port (A2669)', 'url': 'https://www.anker.com/products/a2669-3-port-wall-charger', 'cells': {'ports': '2× USB-C + USB-A', 'single': '67 W', 'two': '65 W shared', 'weight': 'Not checked', 'extras': '', 'price': '$49.99 list, $34.99 sale (Anker, 2026-11-05)'}},
+ ],
+ "after": """
+<h2>Does the laptop cut out when a phone is plugged in?</h2>
+<p>Any multi-port charger re-splits its power when a device is added, and the laptop can pause for a second while it renegotiates. Owners report this more often on Anker's multi-port line (Slickdeals, Framework forum); Notebookcheck's one-hour, five-device test of the UGREEN 5-port held the laptop at a steady 56–58 W with four other devices attached. Neither maker documents it.</p>
+<h2>Which one for a 16-inch MacBook Pro</h2>
+<p>Full-speed charging needs 140 W: on 2021 models only over MagSafe 3, on 2023 and later also over USB-C with a 240 W cable (MacRumors). Either charger gives 140 W to one port when nothing else is plugged in; neither ships with that cable. Anker's 100 W Prime (A2688) was sold out on anker.com on 2026-11-05.</p>
+""",
+ "sources": [
+  ("UGREEN Nexode Pro 160W 5-Port", "https://us.ugreen.com/products/ugreen-nexode-pro-160w-usb-c-charger"),
+  ("Notebookcheck: UGREEN Nexode Pro 160W 5-port review", "https://www.notebookcheck.net/One-charger-for-almost-everything-5-port-Ugreen-Nexode-Pro-160W-review.1327965.0.html"),
+  ("Anker Prime 160W 3-port (A2687)", "https://www.anker.com/products/a2687-anker-prime-charger-160w-3-ports-gan"),
+  ("adamtalks.tech: Anker Prime 160W review (throttling)", "https://adamtalks.tech/reviews/anker-prime-160w-charger-review/"),
+  ("dashedyellowline: Anker Prime 160W measured split", "https://dashedyellowline.com/2026/07/11/anker-prime-160w-review-one-brick-instead-of-three/"),
+  ("Cult of Mac: UGREEN Nexode Pro 160W review", "https://www.cultofmac.com/reviews/ugreen-nexode-pro-160w-review"),
+  ("Framework forum: Anker power handshake flicker", "https://community.frame.work/t/anker-prime-67w-vs-anker-735-fixing-the-power-handshake-flicker/81040"),
+  ("MacRumors: 16-inch MacBook Pro USB-C fast charging", "https://www.macrumors.com/2023/11/07/16-inch-m3-macbook-pro-usb-c-fast-charge/"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+# ---------------- G125: best-power-bank-with-ac-outlet-for-laptop ----------------
+{"slug": 'best-power-bank-with-ac-outlet-for-laptop', "question": 'G125 (x20 gap mining: power bank with AC outlet)', "lead_first": True,
+ "title": 'Best power bank with an AC outlet for a laptop (2026): flight-legal picks and when to get a station',
+ "h1": 'Best power bank with an AC outlet for a laptop (2026)',
+ "desc": "Power banks with a real AC outlet for a laptop: which are under the 100 Wh airline limit, how much of the battery the AC outlet wastes, and when a small power station is the better buy; Goal Zero Sherpa 100AC, Omni 20+, BLUETTI Elite 30 V2, Tenergy T320.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best power bank with an AC outlet you can fly with is the <strong>Goal Zero Sherpa 100AC</strong> ({buy:goalzero-sherpa-100ac}): 94.7 Wh, under the 100 Wh carry-on limit, with a 100 W AC outlet and a 100 W USB-C port. Through the AC outlet expect about 70% of the battery to reach your laptop (about one charge of a 13-inch laptop); if your laptop charges over USB-C, use the USB-C port, which skips the inverter.</p>
+<p>Not flying and need hours of AC (CPAP at camp, a projector, a barrel-plug laptop all day)? A small power station beats any bank: the <strong>BLUETTI Elite 30 V2</strong> ({buy:bluetti-elite-30-v2}) has 288 Wh, 600 W AC and a 140 W USB-C port in 9.5 lb.</p>
+""",
+ "columns": [('wh', 'Battery'), ('ac', 'AC outlet'), ('usbc', 'USB-C out'), ('fly', 'Carry-on'), ('weight', 'Weight'), ('warranty', 'Warranty')],
+ "rows": [
+  {'slug': 'goalzero-sherpa-100ac', 'model': 'Goal Zero Sherpa 100AC', 'cells': {'wh': '94.7 Wh', 'ac': '100 W, modified sine', 'usbc': '100 W', 'fly': 'Yes (under 100 Wh)', 'weight': '2.1 lb', 'warranty': '2 years'}},
+  {'brand': 'Omnicharge', 'model': 'Omni 20+', 'url': 'https://www.omnicharge.co/products/omni-20', 'cells': {'wh': '71 Wh', 'ac': '100 W, modified sine', 'usbc': '60 W (plus 100 W DC barrel)', 'fly': 'Yes', 'weight': '1.35 lb', 'warranty': '1 year', 'price': '$249 (Omnicharge, 2026-11-05)'}},
+  {'slug': 'bluetti-elite-30-v2', 'model': 'BLUETTI Elite 30 V2 (station)', 'cells': {'wh': '288 Wh LiFePO4', 'ac': '600 W (1,500 W Power Lifting)', 'usbc': '140 W', 'fly': 'No (over 160 Wh)', 'weight': '9.5 lb', 'warranty': '5 years'}},
+  {'slug': 'tenergy-t320-300wh-power-station', 'model': 'Tenergy T320 (station)', 'cells': {'wh': '300 Wh', 'ac': '200 W pure sine', 'usbc': '45 W', 'fly': 'No', 'weight': '8.1 lb', 'warranty': '2 years'}},
+  {'brand': 'mophie', 'model': 'Powerstation Pro AC (Gen 2)', 'url': 'https://www.amazon.com/dp/B0BWSDWZ96', 'cells': {'wh': '27,000 mAh (about 100 Wh)', 'ac': '100 W', 'usbc': '60 W', 'fly': 'Yes', 'weight': 'Not checked', 'warranty': 'Not checked', 'price': 'About $150 on Amazon; 2.7 stars on 152 ratings (2026-11-05)'}},
+ ],
+ "after": """
+<h2>Can I fly with it?</h2>
+<p>The FAA allows spare lithium batteries up to 100 Wh in carry-on only; 101–160 Wh needs the airline's approval (two at most); above 160 Wh is not allowed. Every 250–300 Wh station is over the line, and so is ALLPOWERS's 154 Wh S200 without approval.</p>
+<h2>Why the AC outlet drains it fast</h2>
+<p>An AC outlet turns the battery's DC into 120 V, and the laptop's brick turns it back into DC: TechAdvisor measured about 70% end to end on a 99.9 Wh AC bank, and GearJunkie found a Sherpa 100AC nearly drained while a laptop gained 5% on AC. Use AC only for devices that have no USB-C or DC barrel option. Barrel-plug laptops that don't need 120 V can use a DC-output bank such as Omnicharge's Omni Mobile 25600 (92 Wh, 72 W DC, no AC).</p>
+<h2>What owners complain about</h2>
+<p>Unknown-brand AC banks dying within weeks (Reddit r/powerbanks, Amazon reviews of the mophie Gen 2), fans that run whenever the outlet is on, and banks that can't keep up with a laptop in use. Neither Baseus nor UGREEN sells an AC-outlet power bank in the US.</p>
+""",
+ "sources": [
+  ("FAA PackSafe: lithium batteries", "https://www.faa.gov/hazmat/packsafe/lithium-batteries"),
+  ("Goal Zero New Sherpa 100AC", "https://goalzero.com/products/new-sherpa-100ac-wireless-power-bank"),
+  ("GearJunkie: Sherpa 100AC and 100PC review", "https://gearjunkie.com/technology/goal-zero-sherpa-100ac-100pc-power-banks-review"),
+  ("Omnicharge Omni 20+", "https://www.omnicharge.co/products/omni-20"),
+  ("PCWorld: Omni 20 review (78.7% delivered)", "https://www.pcworld.com/article/3405516/omnicharge-omni-20-power-bank-review.html"),
+  ("Omnicharge Omni Mobile 25600 (DC, no AC)", "https://www.omnicharge.co/products/omni-mobile-25600"),
+  ("BLUETTI Elite 30 V2", "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"),
+  ("Reddit r/onebag: AC power bank thread", "https://www.reddit.com/r/onebag/comments/1oorb3l/"),
+  ("Reddit r/powerbanks: banks can't keep up with a Surface Go", "https://www.reddit.com/r/powerbanks/comments/1cs8eur/"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+# ======== x20 gap-mining batch (end) ========
+
 ]
