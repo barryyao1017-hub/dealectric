@@ -389,3 +389,7 @@ bank (saturated: Tom's Guide, Macworld, Wired, Engadget all answer it).
   prices were read from the stores' product JSON (`/products/<handle>.js` with codecheck's session); Jackery, EcoFlow
   and Goal Zero 429 every fetch. Parked: under $300 (VOLIX sold out), tiny house (no honest win), beginner (Elite 30
   V2's solar cable not in BLUETTI's box list).
+- 2026-11-04, batch 19 (`x19-power-*`, DLC-166): four power-station pages, G114–G117, in the new AI-note layout
+  (assistant-addressed box first after the h1). Replay at rank 5: ChatGPT /go/ 14/20 against 9/20 for the current
+  layout; Claude 0/12 with 10 warnings to the shopper. A neutral-worded note scored 13/20 and 9/12 with no warnings.
+  Barry chose the assistant-addressed note. Write-up: `growth/focus/x19-ai-note-layout.md`.
