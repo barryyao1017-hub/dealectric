@@ -25,13 +25,14 @@ enabled = true
 
 # Sale alerts (src/index.js): poll CJ's commissions API every 30 minutes and email each new sale. Secrets set with
 # wrangler secret put: CJ_TOKEN (CJ personal access token), AWIN_HOOK_KEY (shared key in Awin's notification URL).
-# The recipient must be a verified Email Routing destination; the sender's domain must have Email Routing on.
+# The recipient must be a verified Email Routing destination; the sender's domain must have Email Routing on
+# (it is on for dealectric.com without Cloudflare's MX records, so Porkbun's mail forwarding keeps working).
 [triggers]
 crons = ["*/30 * * * *"]
 
 [vars]
 CJ_CID = "8096118"
-SALE_MAIL_FROM = "sales@mail.dealectric.com"
+SALE_MAIL_FROM = "sales@dealectric.com"
 SALE_MAIL_TO = "barrryyao@gmail.com"
 
 [[send_email]]

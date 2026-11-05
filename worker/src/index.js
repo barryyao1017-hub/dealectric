@@ -328,9 +328,9 @@ function usage() {
 }
 
 // ---------------------------------------------------------------- sale alerts
-// Every new commission on CJ or Awin emails Barry (send_email binding SALE_MAIL, sent from Email Routing on the
-// mail.dealectric.com subdomain so the apex's Porkbun forwarding MX stays as is) and writes one row to D1 `sales`,
-// keyed by the network's own id so a re-sent or re-polled sale alerts once.
+// Every new commission on CJ or Awin emails Barry (send_email binding SALE_MAIL to a verified Email Routing
+// destination; Email Routing is on for dealectric.com without its DNS records, so the apex's Porkbun forwarding MX stays
+// as is) and writes one row to D1 `sales`, keyed by the network's own id so a re-sent or re-polled sale alerts once.
 //   Awin: Toolbox > Transaction Notifications calls GET /hook/awin?k=<AWIN_HOOK_KEY>&tid=!!!transactionId!!!&... on
 //         each recorded transaction (help.awin.com/developers/docs/transaction-notifications).
 //   CJ:   no publisher postback (deprecated 2019), so the cron trigger polls the commissions GraphQL API every 30 min

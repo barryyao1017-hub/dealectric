@@ -41,7 +41,7 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   logged to the footprint log as `direct-fetch`; exit 0 when its row is in D1 and the page is unchanged).
 
 - `GET /hook/awin?k=<key>&tid=...` and the 30-minute cron (since 2026-11-05) — sale alerts: every new commission
-  emails Barry (barrryyao@gmail.com, a verified Email Routing destination) from `sales@mail.dealectric.com`, and writes
+  emails Barry (barrryyao@gmail.com, a verified Email Routing destination) from `sales@dealectric.com`, and writes
   one row to D1 `sales` (unique per network + transaction id, so a sale alerts once).
   - Awin: Toolbox → Transaction Notifications is Enabled, method GET, callback
     `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!`.
@@ -50,8 +50,10 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
     over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret
     `CJ_TOKEN`, keychain `cj-api-token`; developers.cj.com → Personal Access Tokens).
   - Amazon Associates has no alert or API for this; check its dashboard.
-  - Email needs Email Routing on the sender's domain. It runs on the `mail` subdomain only, so the apex keeps its
-    Porkbun forwarding MX. Test the wiring end to end (sends a TEST email, stores nothing):
+  - Email Routing is switched on for dealectric.com without its DNS records, so the apex keeps its Porkbun
+    forwarding MX and SPF; Cloudflare's activity log shows the alerts as Delivered, but with SPF not covering
+    Cloudflare, Gmail may file them as spam (mark one "Not spam" / add a filter). Test the wiring end to end (sends a
+    TEST email, stores nothing):
     `curl "https://dealectric.com/hook/awin?k=$(security find-generic-password -a dealectric -s awin-hook-key -w)&tid=test1&c=1&amt=2&cr=bluetti-ac180.x"`
     (`{"ok": true}`, or the send error with a 502).
   - The daily update (`tools/dailyupdate.py`) still reads CJ as a backup.
