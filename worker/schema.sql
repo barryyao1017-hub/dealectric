@@ -14,12 +14,16 @@ CREATE TABLE IF NOT EXISTS clicks (
   bot_like INTEGER DEFAULT 0,  -- crude user-agent heuristic
   kind TEXT DEFAULT 'redirect', -- redirect (302 issued) | ai_fetch (AI assistant got the text page, no redirect)
   query TEXT,                  -- raw query string of the /go/ request, e.g. utm_source=chatgpt.com (ChatGPT sends no referrer)
-  utm_source TEXT              -- parsed utm_source, for grouping clicks by assistant
+  utm_source TEXT,             -- parsed utm_source, for grouping clicks by assistant
+  asn INTEGER                  -- client network (Cloudflare cf.asn); Google's networks count as bot_like
 );
 -- Added 2026-10-18 for databases created before these columns existed (each fails harmlessly once applied):
 -- ALTER TABLE clicks ADD COLUMN kind TEXT DEFAULT 'redirect';
 -- ALTER TABLE clicks ADD COLUMN query TEXT;
 -- ALTER TABLE clicks ADD COLUMN utm_source TEXT;
+-- Added 2026-11-06 (YouTube's link scanners posed as Windows Chrome; index.js SCANNER_ASNS):
+-- ALTER TABLE clicks ADD COLUMN asn INTEGER;
+-- ALTER TABLE landings ADD COLUMN asn INTEGER;
 CREATE INDEX IF NOT EXISTS clicks_ts ON clicks (ts);
 CREATE INDEX IF NOT EXISTS clicks_slug ON clicks (slug);
 CREATE INDEX IF NOT EXISTS clicks_click_id ON clicks (click_id);
@@ -40,7 +44,8 @@ CREATE TABLE IF NOT EXISTS landings (
   country TEXT,
   verified_bot TEXT,           -- Cloudflare verified-bot category, if any
   bot_like INTEGER DEFAULT 0,  -- same user-agent heuristic as clicks
-  purpose TEXT                 -- Sec-Purpose / Purpose header: set on browser prefetches and prerenders
+  purpose TEXT,                -- Sec-Purpose / Purpose header: set on browser prefetches and prerenders
+  asn INTEGER                  -- client network (Cloudflare cf.asn)
 );
 CREATE INDEX IF NOT EXISTS landings_ts ON landings (ts);
 CREATE INDEX IF NOT EXISTS landings_page ON landings (page);

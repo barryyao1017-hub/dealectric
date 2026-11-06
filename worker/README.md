@@ -12,7 +12,9 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   That keeps the tracked link in the assistant's answer and sends no bot click to the network (the
   2026-10-18 probe in growth/probes showed ChatGPT following the redirect and linking the merchant page).
   Such rows have `kind = 'ai_fetch'` in `clicks`; browser clicks have `kind = 'redirect'`. curl and other
-  generic clients keep the redirect.
+  generic clients keep the redirect. `bot_like` is 1 for a scanner-looking user agent and, since 2026-11-06, for any
+  request from Google's networks (`SCANNER_ASNS`; `clicks.asn` and `landings.asn` store the network): a new YouTube
+  video's links drew 12 hits in 2 s from Google's scanners, some posing as ordinary Windows Chrome.
 - `GET|POST /feedback` — accepts `message` (required), `kind`, `page`, `agent`, `contact` as query parameters
   or a JSON/form body; stores a row in D1 `feedback`; returns `{ok, ticket}`. A bare GET returns the usage doc.
   GET is allowed on purpose: most assistants only have a fetch-URL tool.

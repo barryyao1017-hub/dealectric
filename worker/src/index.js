@@ -136,17 +136,18 @@ async function logLanding(url, request, status, utm, env) {
   try { path = decodeURIComponent(path); } catch { /* malformed escape: keep it raw */ }
   const page = path.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
   return env.DB.prepare(
-    `INSERT INTO landings (ts, page, path, method, status, query, utm_source, referrer, user_agent, country, verified_bot, bot_like, purpose)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO landings (ts, page, path, method, status, query, utm_source, referrer, user_agent, country, verified_bot, bot_like, purpose, asn)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
     new Date().toISOString(), clip(page, 200), clip(url.pathname, 300), request.method, status,
     clip(url.search.slice(1), 300), clip(utm, 100), clip(request.headers.get("referer") || "", 500), clip(ua, 500),
     // A person's browser names its engine. ChatGPT's own backend fetches result URLs during a chat, utm tag included,
     // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
     // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
-    cf.country || "", cf.verifiedBotCategory || "", looksLikeBot(ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
+    cf.country || "", cf.verifiedBotCategory || "", botLike(cf, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
+    cf.asn || null,
   ).run();
 }
 
@@ -194,15 +195,15 @@ async function handleGo(url, request, env, ctx) {
   // ChatGPT linking exactly the merchant URL this page used to print.
   const aiFetch = isAiFetcher(cf, ua);
   const row = env.DB.prepare(
-    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind, query, utm_source)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind, query, utm_source, asn)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", looksLikeBot(ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", botLike(cf, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
-    clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100),
+    clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null,
   );
   // Don't make the response wait on the write.
   ctx.waitUntil(row.run().catch((e) => console.error("click insert failed", e)));
@@ -454,7 +455,17 @@ function clip(s, n) {
   return String(s).replace(/<[^>]*>/g, "").slice(0, n);
 }
 function looksLikeBot(ua) {
-  return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|gpt|claude|perplexity|anthropic/i.test(ua);
+  return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|safety|google-|gpt|claude|perplexity|anthropic/i.test(ua);
+}
+
+// Google's own networks (Google LLC, Google Cloud, YouTube). A link posted on YouTube is checked at once by Google's
+// scanners: on 2026-11-06 a new video's description links drew 12 /go/ hits and 4 landings within 2 s, some as
+// "Google-Safety" and some as ordinary Windows Chrome with four different versions. The user agent can't catch the
+// second kind, the network can. Shoppers don't browse from these networks.
+const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
+
+function botLike(cf, ua) {
+  return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn);
 }
 
 // ---------------------------------------------------------------- /x/<id> (DLC-115 replay calibration)
