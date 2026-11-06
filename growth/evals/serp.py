@@ -36,6 +36,11 @@ ENGINES = {
              "js": r"""JSON.stringify([...document.querySelectorAll('#b_results > li.b_algo')].map(li => {
                  const h = li.querySelector('h2'); const a = h && h.querySelector('a[href]');
                  return a ? {title: (h.textContent || a.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim(), url: a.href} : null; }).filter(Boolean))"""},
+    # Google (2026-11-06, srccal google vs openai): organic results are the <a> around each <h3> in #search. Google's
+    # "unusual traffic" page (/sorry/) is a block; fetch() returns a rank-0 row saying so and nothing is solved.
+    "google": {"url": "https://www.google.com/search?q={q}&hl=en&gl=us&pws=0&num=10",
+               "js": r"""JSON.stringify(location.pathname.startsWith('/sorry') ? [] : [...document.querySelectorAll('#search a[href^="http"] h3')].map(h => {
+                   const a = h.closest('a'); return a ? {title: h.textContent.replace(/\s+/g, ' ').trim(), url: a.href} : null; }).filter(Boolean))"""},
     "brave": {"url": "https://search.brave.com/search?q={q}&source=web",
               "js": r"""JSON.stringify([...document.querySelectorAll('[data-type="web"]')].map(s => {
                   const a = s.querySelector('a[href^="http"]'); const t = s.querySelector('.title, .snippet-title, h3, [class*="title"]');
@@ -86,7 +91,7 @@ def fetch(engine: str, query: str) -> list[dict]:
         for r in rows:
             u = E.strip_tracking(unwrap_bing(r["url"]) if engine == "bing" else r["url"])
             host = urllib.parse.urlsplit(u).netloc
-            if u in seen or not u.startswith("http") or host.endswith(("bing.com", "brave.com")):   # image cards, engine pages
+            if u in seen or not u.startswith("http") or host.endswith(("bing.com", "brave.com")) or host.startswith(("www.google.", "google.", "support.google.", "maps.google.")):   # image cards, engine pages
                 continue
             seen.add(u)
             out.append({"rank": len(out) + 1, "title": r["title"], "url": u, "domain": urllib.parse.urlsplit(u).netloc.removeprefix("www.")})

@@ -39,6 +39,7 @@ SOURCES = {
     # Paid or metered, explicit use only (not in PRIORITY, so the daily run never spends on them until calibrated):
     "dataforseo": dict(daily=150, life=None, key="dataforseo-api-password", pause=0),  # Bing SERP, Standard queue, $1/month cap
     "openai":     dict(daily=60, life=None, key=None, pause=1),          # OpenAI Responses web_search: OpenAI's own index
+    "google":     dict(daily=50, life=None, key=None, pause=20),         # Agent Chrome google.com; stops at the /sorry/ check
 }
 # DataForSEO (Barry 2026-11-06: "okay spending $1 a month"): Bing Organic SERP, Standard queue, billed per SERP of 10
 # results ($0.0006 on the pricing page, 2026-11-06). The `cost` DataForSEO returns on each task is logged as `usd` and
@@ -47,7 +48,7 @@ SOURCES = {
 MONTH_USD = {"dataforseo": 1.00}
 DFS = "https://api.dataforseo.com/v3/serp/bing/organic/"
 PRIORITY = ["serpapi", "bing", "tavily", "serper", "jina", "claude"]   # Bing-backed first; re-ordered by calibration
-STATUS_ORDER = PRIORITY + ["dataforseo", "openai"]
+STATUS_ORDER = PRIORITY + ["dataforseo", "openai", "google"]
 # Calibration vs Bing (gapmine.py srccal, 54 Bing-scored queries, 2026-11-05):
 #   claude  Spearman 0.29, gate (<0.4) agreement 27/54, open 37 vs Bing's 18 -> NOT used for gating (spam-heavy results)
 GATING = {"serpapi", "bing"}   # sources whose coverage may put a cluster in the page queue; others join after srccal >= 0.5
@@ -338,7 +339,21 @@ def _openai(q: str, k: str) -> tuple[int, str, list | None]:
     return 200, "", res
 
 
-FETCH = {"dataforseo": _dataforseo, "openai": _openai, "tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing}
+def _google(q: str, k: str) -> tuple[int, str, list | None]:
+    sys.path.insert(0, str(ROOT / "growth" / "evals"))
+    import serp
+    try:
+        rows = serp.fetch("google", q)
+    except Exception as e:  # noqa: BLE001
+        return 500, str(e), None
+    if rows and not rows[0].get("rank"):
+        note = rows[0].get("note", "")
+        blocked = re.search(r"sorry|unusual traffic|captcha|not a robot", note, re.I)
+        return (429 if blocked else 500), note, None   # 429 stops the source for the day; never solved
+    return 200, "", _norm([(r.get("title"), r.get("url")) for r in rows])
+
+
+FETCH = {"dataforseo": _dataforseo, "google": _google, "openai": _openai, "tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing}
 
 
 def fetch(source: str, query: str) -> list[dict] | None:
