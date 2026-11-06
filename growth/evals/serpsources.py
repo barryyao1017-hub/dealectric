@@ -36,8 +36,18 @@ SOURCES = {
     "serper":     dict(daily=100, life=2400, key="serper-api-key", pause=1),   # 2,500 one-time
     "jina":       dict(daily=50, life=900, key="jina-api-key", pause=2),       # 10M tokens one-time, >=10k/search
     "bing":       dict(daily=40, life=None, key=None, pause=6),          # Agent Chrome (CDP 9222); blocks after ~300
+    # Paid or metered, explicit use only (not in PRIORITY, so the daily run never spends on them until calibrated):
+    "dataforseo": dict(daily=150, life=None, key="dataforseo-api-password", pause=0),  # Bing SERP, Standard queue, $1/month cap
+    "openai":     dict(daily=60, life=None, key=None, pause=1),          # OpenAI Responses web_search: OpenAI's own index
 }
+# DataForSEO (Barry 2026-11-06: "okay spending $1 a month"): Bing Organic SERP, Standard queue, billed per SERP of 10
+# results ($0.0006 on the pricing page, 2026-11-06). The `cost` DataForSEO returns on each task is logged as `usd` and
+# summed per calendar month; the source stops at MONTH_USD. Login = the account email (keychain dataforseo-api-login),
+# password = the API password from the dashboard's API Access page (keychain dataforseo-api-password).
+MONTH_USD = {"dataforseo": 1.00}
+DFS = "https://api.dataforseo.com/v3/serp/bing/organic/"
 PRIORITY = ["serpapi", "bing", "tavily", "serper", "jina", "claude"]   # Bing-backed first; re-ordered by calibration
+STATUS_ORDER = PRIORITY + ["dataforseo", "openai"]
 # Calibration vs Bing (gapmine.py srccal, 54 Bing-scored queries, 2026-11-05):
 #   claude  Spearman 0.29, gate (<0.4) agreement 27/54, open 37 vs Bing's 18 -> NOT used for gating (spam-heavy results)
 GATING = {"serpapi", "bing"}   # sources whose coverage may put a cluster in the page queue; others join after srccal >= 0.5
@@ -60,26 +70,40 @@ def _rows() -> list[dict]:
     return out
 
 
-def _log(source: str, query: str, status: str, n: int = 0, note: str = "") -> None:
+def _log(source: str, query: str, status: str, n: int = 0, note: str = "", usd: float | None = None) -> None:
     LEDGER.parent.mkdir(parents=True, exist_ok=True)
+    row = {"ts": _dt.datetime.now().isoformat(timespec="seconds"), "date": today(), "source": source,
+           "q": query, "status": status, "n": n, "note": note[:200]}
+    if usd is not None:
+        row["usd"] = round(usd, 6)
     with LEDGER.open("a") as f:
-        f.write(json.dumps({"ts": _dt.datetime.now().isoformat(timespec="seconds"), "date": today(), "source": source,
-                            "q": query, "status": status, "n": n, "note": note[:200]}) + "\n")
+        f.write(json.dumps(row) + "\n")
 
 
 def usage(source: str, rows: list[dict] | None = None) -> dict:
     rows = _rows() if rows is None else rows
     mine = [r for r in rows if r["source"] == source]
     calls = [r for r in mine if r["status"] in ("ok", "short", "empty", "error")]   # every request that reached the provider
+    month = today()[:7]
     return {"today": sum(1 for r in calls if r["date"] == today()), "life": len(calls),
+            "month_usd": round(sum(r.get("usd") or 0 for r in mine if r["date"][:7] == month), 4),
             "stopped": any(r["status"] == "stopped" and r["date"] == today() for r in mine),
             "exhausted": any(r["status"] == "exhausted" for r in mine)}
 
 
 def key(source: str) -> str | None:
+    if source == "openai":
+        sys.path.insert(0, str(ROOT / "growth" / "evals"))
+        import evallib as E
+        return E.env_key("OPENAI_API_KEY")
     item = SOURCES[source]["key"]
     if not item:
         return ""
+    if source == "dataforseo":
+        login = subprocess.run(["security", "find-generic-password", "-s", "dataforseo-api-login", "-w"],
+                               capture_output=True, text=True).stdout.strip()
+        pw = subprocess.run(["security", "find-generic-password", "-s", item, "-w"], capture_output=True, text=True).stdout.strip()
+        return f"{login}:{pw}" if login and pw else None
     p = subprocess.run(["security", "find-generic-password", "-s", item, "-w"], capture_output=True, text=True)
     return p.stdout.strip() or None
 
@@ -87,6 +111,8 @@ def key(source: str) -> str | None:
 def room(source: str, rows: list[dict] | None = None) -> int:
     cfg, u = SOURCES[source], usage(source, rows)
     if u["stopped"] or u["exhausted"]:
+        return 0
+    if source in MONTH_USD and u["month_usd"] >= MONTH_USD[source]:
         return 0
     left = cfg["daily"] - u["today"]
     if cfg["life"] is not None:
@@ -196,7 +222,123 @@ def _bing(q: str, k: str) -> tuple[int, str, list | None]:
     return 200, "", _norm([(r.get("title"), r.get("url")) for r in rows])
 
 
-FETCH = {"tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing}
+def _dfs_call(method: str, path: str, auth: str, body=None) -> tuple[int, dict]:
+    args = ["-u", auth, "-X", method, DFS + path]
+    if body is not None:
+        args += ["-H", "Content-Type: application/json", "-d", json.dumps(body)]
+    code, text = _curl(args, timeout=60)
+    try:
+        return code, json.loads(text)
+    except ValueError:
+        return code, {"status_code": code, "status_message": text[:200]}
+
+
+DFS_STOP = {40100: 401, 40104: 401, 40207: 403, 40200: 402, 40210: 402, 40201: 403, 40203: 402, 40202: 429, 40209: 429}
+
+
+def _dfs_http(sc: int) -> int:
+    """DataForSEO answers HTTP 200 and puts its own code in the body (docs.dataforseo.com/v3/appendix/errors):
+    auth/verification/IP 40100/40104/40207, payment/funds/cost limit 40200/40210/40203, paused 40201, rate 40202/40209
+    stop the source; 40102 (no results) and 40101/40103 (engine error, retry) are per-task errors only."""
+    return DFS_STOP.get(sc, 500)
+
+
+def _dfs_items(task: dict) -> list:
+    res = (task.get("result") or [{}])[0] or {}
+    org = [i for i in res.get("items") or [] if i.get("type") == "organic"]
+    org.sort(key=lambda i: i.get("rank_group") or 99)
+    return _norm([(i.get("title"), i.get("url")) for i in org])
+
+
+def dataforseo_many(queries: list[str], wait_s: int = 2700) -> dict[str, list | None]:
+    """Post up to `room` queries in one Standard-queue call, then collect each task (free) until done or `wait_s`.
+    Every task's billed cost is logged as `usd` when it is posted; the month's total stops the source at MONTH_USD."""
+    out: dict[str, list | None] = {q: None for q in queries}
+    auth = key("dataforseo")
+    n = min(room("dataforseo"), len(queries))
+    if not auth or n <= 0:
+        return out
+    todo = queries[:n]
+    for i in range(0, len(todo), 100):
+        chunk = todo[i:i + 100]
+        code, d = _dfs_call("POST", "task_post", auth, [{"keyword": q, "location_code": 2840, "language_code": "en",
+                                                          "device": "desktop", "depth": 10, "tag": q[:255]} for q in chunk])
+        sc = d.get("status_code") or code
+        if sc != 20000:
+            if not _stop_if_quota("dataforseo", chunk[0], _dfs_http(sc) if sc >= 40000 else code, json.dumps(d)[:300]):
+                _log("dataforseo", chunk[0], "error", 0, f"task_post {sc}: {json.dumps(d)[:180]}")
+            return out
+        ids = {}
+        for t in d.get("tasks") or []:
+            q = (t.get("data") or {}).get("tag") or (t.get("data") or {}).get("keyword")
+            if t.get("status_code") == 20100 and q in out:
+                ids[t["id"]] = q
+                _log("dataforseo", q, "posted", 0, t["id"], usd=t.get("cost") or 0)
+            else:
+                _log("dataforseo", q or "?", "error", 0, f"{t.get('status_code')} {t.get('status_message')}")
+                if t.get("status_code") in DFS_STOP:
+                    _stop_if_quota("dataforseo", q or "?", _dfs_http(t["status_code"]), t.get("status_message") or "")
+                    return out
+        t0 = time.time()
+        while ids and time.time() - t0 < wait_s:
+            time.sleep(20)
+            for tid, q in list(ids.items()):
+                code, g = _dfs_call("GET", f"task_get/regular/{tid}", auth)
+                task = (g.get("tasks") or [{}])[0]
+                if task.get("status_code") == 20000:
+                    res = _dfs_items(task)
+                    out[q] = res
+                    _log("dataforseo", q, "ok" if len(res) >= 6 else "short" if res else "empty", len(res), tid)
+                    del ids[tid]
+                elif task.get("status_code") == 40102:   # no search results: a valid, empty reading
+                    out[q] = []
+                    _log("dataforseo", q, "empty", 0, tid)
+                    del ids[tid]
+                elif task.get("status_code") not in (40601, 40602, 20100, None):   # 40601/40602: handed / in queue
+                    _log("dataforseo", q, "error", 0, f"{task.get('status_code')} {task.get('status_message')}")
+                    del ids[tid]
+        for tid, q in ids.items():
+            _log("dataforseo", q, "error", 0, f"not ready after {wait_s}s: {tid}")
+    return out
+
+
+def _dataforseo(q: str, k: str) -> tuple[int, str, list | None]:
+    res = dataforseo_many([q]).get(q)
+    return (200, "", res) if res is not None else (599, "no result (logged)", None)
+
+
+def _openai(q: str, k: str) -> tuple[int, str, list | None]:
+    """One web search in OpenAI's own index (the Responses API web_search tool, US), as `fastloop.py pack --engine api`
+    runs it: the sources in the order returned, first 10. Titles come from the cached page text when we have it."""
+    sys.path.insert(0, str(ROOT / "growth" / "evals"))
+    import apiprobe as A
+    import evallib as E
+    started = E.now_iso()
+    status, resp = A.post({"model": "gpt-6-luna", "input": f'Run exactly one web search with this exact query, word for word: "{q}". '
+                           "Do not search again and do not open any page. Then reply only with the word DONE.",
+                           "store": False, "max_tool_calls": 1, "include": ["web_search_call.action.sources"],
+                           "tools": [{"type": "web_search", "user_location": {"type": "approximate", "country": "US"}}]}, k)
+    srcs = [s for it in resp.get("output", []) if it.get("type") == "web_search_call"
+            for s in ((it.get("action") or {}).get("sources") or [])]
+    E.footprint("openai-api", started, E.now_iso(), prompt=q, script="serpsources.py", run_id="srccal",
+                retrieved=[{"url": s.get("url")} for s in srcs], error=str(resp.get("error")) if status != 200 else None)
+    if status != 200:
+        return status, json.dumps(resp.get("error") or resp)[:300], None
+    u = resp.get("usage") or {}
+    _log("openai", q, "usage", 0, f"in {u.get('input_tokens')} out {u.get('output_tokens')}")
+    res = _norm([(s.get("title") or "", s.get("url")) for s in srcs])
+    try:   # OpenAI returns URLs only; the labeller reads title + URL, so take each page's title as the API pack does
+        import fastloop as F
+        F.fetch_all([{"url": r["url"]} for r in res])
+        for r in res:
+            if not r["title"]:
+                r["title"] = ((F.fetch_text(r["url"]).get("text") or "").strip().splitlines() or [""])[0][:120]
+    except Exception:  # noqa: BLE001  (a page that won't load keeps its URL only)
+        pass
+    return 200, "", res
+
+
+FETCH = {"dataforseo": _dataforseo, "openai": _openai, "tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing}
 
 
 def fetch(source: str, query: str) -> list[dict] | None:
@@ -215,7 +357,8 @@ def fetch(source: str, query: str) -> list[dict] | None:
         if not _stop_if_quota(source, query, code, body):
             _log(source, query, "error", 0, f"HTTP {code}: {body[:150]}")
         return None
-    _log(source, query, "ok" if len(res) >= 6 else "short" if res else "empty", len(res))   # short: cut-off page, no reading
+    if source != "dataforseo":   # dataforseo_many logs its own rows (with the task id)
+        _log(source, query, "ok" if len(res) >= 6 else "short" if res else "empty", len(res))   # short: cut-off page, no reading
     time.sleep(SOURCES[source]["pause"])
     return res
 
@@ -223,13 +366,15 @@ def fetch(source: str, query: str) -> list[dict] | None:
 def status() -> str:
     rows = _rows()
     lines = [f"{'source':9} {'today':>9} {'lifetime':>12}  state"]
-    for s in PRIORITY:
+    for s in STATUS_ORDER:
         c, u = SOURCES[s], usage(s, rows)
         k = key(s)
         state = ("no key (Barry adds it)" if k is None else "exhausted" if u["exhausted"] else
                  "stopped today" if u["stopped"] else "ok")
         life = f"{u['life']}/{c['life']}" if c["life"] else str(u["life"])
-        lines.append(f"{s:9} {u['today']:>4}/{c['daily']:<4} {life:>12}  {state}")
+        if s in MONTH_USD:
+            state += f", ${u['month_usd']:.4f} of ${MONTH_USD[s]:.2f} this month"
+        lines.append(f"{s:10} {u['today']:>4}/{c['daily']:<4} {life:>12}  {state}")
     return "\n".join(lines)
 
 

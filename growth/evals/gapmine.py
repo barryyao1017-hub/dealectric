@@ -647,34 +647,64 @@ def label_results(sup: dict, lab: dict, todo: list[str], save_as: str | None = N
     return usage
 
 
-def srccal(args) -> None:
-    """Does a free source's coverage track Bing's? Reads the Bing-scored lead queries (>= MIN_RESULTS results) on
-    `--source`, labels them the same way, and reports Spearman and gate agreement (coverage < 0.4 on both)."""
+def _src_readings(src: str, qs: list[str]) -> tuple[dict, dict]:
+    """Top-10 readings and labels of `src` for the queries, fetched (capped, ledgered) and labelled where missing.
+    `bing` is the Agent Chrome reading already in supply.json; every other source is cached in srccal_<src>.json."""
     import serpsources as S
+    if src == "bing":
+        return load("supply.json", {}), load("supply_labels.json", {})
+    ssup, slab = load(f"srccal_{src}.json", {}), load(f"srccal_{src}_labels.json", {})
+    todo = [q for q in qs if q not in ssup]
+    if todo and src == "dataforseo":   # one Standard-queue batch instead of one wait per query
+        got = S.dataforseo_many(todo)
+        for q, res in got.items():
+            if res is not None:
+                ssup[q] = res
+        save(f"srccal_{src}.json", ssup)
+        print(f"{src}: {sum(1 for r in got.values() if r is not None)}/{len(todo)} readings", flush=True)
+    else:
+        for q in todo:
+            res = S.fetch(src, q)
+            if res is None:
+                print(f"{src}: no reading for {q!r} (cap, key or error); stopping", flush=True)
+                break
+            ssup[q] = res
+            save(f"srccal_{src}.json", ssup)
+            print(f"{src}: {q!r} {len(res)} results", flush=True)
+    label_results(ssup, slab, [q for q in qs if q in ssup and q not in slab and ssup[q]], f"srccal_{src}_labels.json")
+    return ssup, slab
+
+
+def srccal(args) -> None:
+    """Does one source's coverage track another's? Default reference: the Agent Chrome Bing readings. Reads the
+    Bing-scored lead queries (>= MIN_RESULTS results) on `--source` (and on `--ref` when it isn't bing), labels each
+    top 10 the same way, and reports Spearman and gate agreement (coverage < 0.4 on both).
+    2026-11-06 (Barry): is a gap on Bing also a gap in OpenAI's index? `--source openai`, `--source dataforseo`,
+    `--source openai --ref dataforseo`."""
     sup, lab = load("supply.json", {}), load("supply_labels.json", {})
     qs = [q for q in lab if sum(1 for r in sup.get(q, []) if r.get("rank")) >= MIN_RESULTS and lab[q]]
-    src = args.source
-    ssup, slab = load(f"srccal_{src}.json", {}), load(f"srccal_{src}_labels.json", {})
-    for q in [q for q in qs if q not in ssup]:
-        res = S.fetch(src, q)
-        if res is None:
-            print(f"{src}: no reading for {q!r} (cap, key or error); stopping", flush=True)
-            break
-        ssup[q] = res
-        save(f"srccal_{src}.json", ssup)
-        print(f"{src}: {q!r} {len(res)} results", flush=True)
-    label_results(ssup, slab, [q for q in qs if q in ssup and q not in slab and ssup[q]], f"srccal_{src}_labels.json")
-    pairs = [(coverage(lab[q]), coverage(slab[q])) for q in qs if slab.get(q)]
+    if getattr(args, "n", None):   # a fixed sample: the first n in label order, the same set for every source pair
+        qs = qs[:args.n]
+    src, ref = args.source, (getattr(args, "ref", None) or "bing")
+    rsup, rlab = _src_readings(ref, qs)
+    ssup, slab = _src_readings(src, qs)
+    both = [q for q in qs if rlab.get(q) and slab.get(q)]
+    pairs = [(coverage(rlab[q]), coverage(slab[q])) for q in both]
     if len(pairs) < 5:
-        print(f"{src}: only {len(pairs)} paired readings"); return
+        print(f"{src} vs {ref}: only {len(pairs)} paired readings"); return
     rho = spearman([a for a, _ in pairs], [b for _, b in pairs])
-    agree = sum(1 for a, b in pairs if (a < 0.4) == (b < 0.4))
-    out = {"source": src, "n": len(pairs), "spearman": round(rho, 3), "gate_agree": agree,
-           "bing_open": sum(1 for a, _ in pairs if a < 0.4), "src_open": sum(1 for _, b in pairs if b < 0.4),
-           "pairs": {q: [coverage(lab[q]), coverage(slab[q])] for q in qs if slab.get(q)}}
-    save(f"srccal_{src}_result.json", out)
-    print(f"{src}: n={len(pairs)} Spearman {rho:.2f}; gate (<0.4) agrees on {agree}/{len(pairs)}; "
-          f"open on Bing {out['bing_open']}, on {src} {out['src_open']}")
+    agree = sum(1 for a, b in pairs if (a < GATE) == (b < GATE))
+    ru = {q: [r["url"].split("#")[0].rstrip("/") for r in rsup.get(q, []) if r.get("rank") and r.get("url")][:10] for q in both}
+    su = {q: [r["url"].split("#")[0].rstrip("/") for r in ssup.get(q, []) if r.get("rank") and r.get("url")][:10] for q in both}
+    overlap = [len(set(ru[q]) & set(su[q])) / max(len(ru[q]), 1) for q in both]
+    out = {"source": src, "ref": ref, "n": len(pairs), "spearman": round(rho, 3), "gate_agree": agree,
+           "ref_open": sum(1 for a, _ in pairs if a < GATE), "src_open": sum(1 for _, b in pairs if b < GATE),
+           "url_overlap_mean": round(sum(overlap) / len(overlap), 3),
+           "pairs": {q: [coverage(rlab[q]), coverage(slab[q])] for q in both}}
+    name = f"srccal_{src}_result.json" if ref == "bing" else f"srccal_{src}_vs_{ref}_result.json"
+    save(name, out)
+    print(f"{src} vs {ref}: n={len(pairs)} Spearman {rho:.2f}; gate (<{GATE}) agrees on {agree}/{len(pairs)}; "
+          f"open on {ref} {out['ref_open']}, on {src} {out['src_open']}; top-10 URL overlap {out['url_overlap_mean']:.0%}")
 
 
 MIN_RESULTS = 6   # fewer organic results than this = the page did not load fully; no coverage reading
@@ -1159,6 +1189,7 @@ def main() -> None:
     ap.add_argument("--force", action="store_true", help="seeds: redo brands already widened")
     ap.add_argument("--sources", default="serpapi,bing", help="daily: coverage sources allowed, by priority")
     ap.add_argument("--source", default="claude", help="srccal/supply: free SERP source (growth/evals/serpsources.py)")
+    ap.add_argument("--ref", default="bing", help="srccal: reference source (default: the Agent Chrome Bing readings)")
     ap.add_argument("--n", type=int, default=60, help="calibrate: sample size")
     ap.add_argument("--leads", type=int, default=1, help="depth: lead queries measured per cluster")
     ap.add_argument("--min-demand", type=float, default=0.3, help="supply: skip clusters whose lead query scores below this")
