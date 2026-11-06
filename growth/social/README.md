@@ -11,8 +11,8 @@ Barry, 2026-11-06: "create official accounts for dealectric." Claude can't creat
 | X | @dealectric | x.com/dealectric returns 404, so it looks free |
 | Pinterest | dealectric | Can't check logged out; try it at sign-up |
 
-Skipped: TikTok and Instagram (links in posts can't be clicked; little AI-citation value), and a Reddit brand account
-(DLC-38 stays Barry in person).
+Skipped: TikTok and Instagram (links in posts can't be clicked; little AI-citation value). Reddit: an official
+Dealectric account since 2026-11-06 (Barry reversed the earlier skip); rules in growth/outreach/reddit-brand-account.md.
 
 ## Profile text
 
