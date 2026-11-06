@@ -167,15 +167,21 @@ async function loadData(env) {
   if (cached && Date.now() - cached.at < CACHE_MS) return cached;
   const base = env.DATA_BASE || SITE;
   const get = async (path) => {
-    const r = await fetch(base + path, { cf: { cacheTtl: 300, cacheEverything: true } });
+    // Only successful answers are cached at the edge, so a file the origin hasn't published yet is retried.
+    const r = await fetch(base + path, { cf: { cacheTtlByStatus: { "200-299": 300, "400-599": 0 }, cacheEverything: true } });
     if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
     return r.json();
   };
-  const [offers, history] = await Promise.all([get("/offers.json"), get("/price-history.json").catch(() => ({ products: {} }))]);
+  let historyOk = true;
+  const [offers, history] = await Promise.all([
+    get("/offers.json"),
+    get("/price-history.json").catch((e) => { historyOk = false; console.error("price history", e); return { products: {} }; }),
+  ]);
   // Amazon Associates records stay on the site only: their tagged links and prices follow Amazon's own rules.
   const products = offers.products.filter((p) => p.offer && p.offer.network !== "Amazon Associates");
-  cached = { at: Date.now(), offers, products, history: history.products || {}, codesTested: offers.codes_last_tested };
-  return cached;
+  const data = { at: Date.now(), offers, products, history: history.products || {}, codesTested: offers.codes_last_tested };
+  if (historyOk) cached = data;   // a failed history fetch is used once, not kept for CACHE_MS
+  return data;
 }
 
 const STOP = new Set("a an and the for to of in on with my me i is it best good cheap under over that can will what which need want buy one".split(" "));
