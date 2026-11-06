@@ -95,3 +95,17 @@ CREATE TABLE IF NOT EXISTS feedback (
   reviewed_at TEXT             -- set by hand when acted on
 );
 CREATE INDEX IF NOT EXISTS feedback_ts ON feedback (ts);
+
+-- DLC-182: one row per MCP tool call on /mcp (src/mcp.js). No IP and no chat text.
+CREATE TABLE IF NOT EXISTS mcp_calls (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts TEXT NOT NULL,
+  tool TEXT NOT NULL,          -- search_products | check_codes | price_history
+  args TEXT,                   -- the tool arguments as JSON, clipped to 500 chars
+  results INTEGER,             -- how many products / codes / readings the call returned
+  client TEXT,                 -- the client's own name when it sends one in _meta
+  user_agent TEXT,
+  country TEXT,
+  verified_bot TEXT
+);
+CREATE INDEX IF NOT EXISTS mcp_calls_ts ON mcp_calls (ts);

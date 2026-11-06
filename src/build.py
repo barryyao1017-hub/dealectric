@@ -159,10 +159,11 @@ def image_ld(img, p):
             "copyrightNotice": f"© {SITE['brand']}", "license": SITE["url"] + "/terms/", "acquireLicensePage": SITE["url"] + "/contact/"}
 
 
-def tracked_link(p):
+def tracked_link(p, dest=None):
     """Return (network_url, network_name, program_dict) for a product: the raw CJ/Awin click URL.
     Pages and offers.json never link to it directly; they use go_link(), and the Worker in
-    worker/ redirects there after logging the click and setting the sub-ID (sid / clickref)."""
+    worker/ redirects there after logging the click and setting the sub-ID (sid / clickref).
+    dest overrides the destination (links_map's store_url: the product page instead of the checkout)."""
     net, key = p["program"].split(":")
     prog = LINKS[net][key]
     if net == "amazon":
@@ -170,7 +171,7 @@ def tracked_link(p):
         # pay nothing on a purchase that came through a "Redirecting Link" (an intermediate page the shopper did not
         # click on) and bar obscuring the referring site, so these links never pass through /go/ (go_link, links_map).
         return (f"https://www.amazon.com/dp/{p['asin']}?tag={prog['tag']}", "Amazon Associates", prog)
-    dest = buy_url(p)
+    dest = dest or buy_url(p)
     if net == "cj":
         return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(dest, safe='')}", "CJ Affiliate", prog)
     return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(dest, safe='')}", "Awin", prog)
@@ -256,6 +257,9 @@ def links_map():
                         # where the link lands (see landing()): cart = the store's checkout with the product in the cart
                         # (and the code applied); applied = the product page with the code attached for checkout
                         **({"cart": True} if landing(p) == "checkout" else {"applied": True} if landing(p) == "applied" else {}),
+                        # DLC-182: the ChatGPT app may not link straight to a checkout (OpenAI's app guidelines), so
+                        # /go/<slug>?via=app on a checkout record lands on the product page through this link instead.
+                        **({"store_url": tracked_link(p, dest=p["url"])[0]} if landing(p) == "checkout" else {}),
                         # Phase 2: the code and what it saves, so the text page hands over code and link together.
                         "code": c["code"] if c else None, "terms": c["terms"] if c else None, "saving": s if c else None,
                         "exclusive": is_exclusive(c),
@@ -1479,6 +1483,7 @@ def main():
               "downloads": [SITE["url"] + "/" + CSV_PRODUCTS, SITE["url"] + "/" + CSV_COMPARISONS],
               "products": [product_record(p) for p in PRODUCTS]}
     open(os.path.join(out, "offers.json"), "w").write(json.dumps(offers, indent=1, ensure_ascii=False))
+    open(os.path.join(out, "price-history.json"), "w").write(json.dumps(price_history(), indent=1, ensure_ascii=False))
     csv_exports(out)
     # Image sitemap extension (https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps):
     # lists each product page's images so image indexes (Google, Bing) find them without rendering the page.
@@ -1519,6 +1524,50 @@ def untracked_images(repo):
 
 
 CSV_PRODUCTS, CSV_COMPARISONS = "dealectric-products.csv", "dealectric-comparisons.csv"
+
+
+def price_history():
+    """DLC-182: the store's own cart price per product per day, read from the cart-check logs (growth/codes/
+    *-checks.jsonl, written by tools/codecheck.py and the daily sweep). Each check adds one unit of the product's default
+    variant to the brand's cart, so the price is what the store charged that day before any code: the cart total when
+    the code did not apply (automatic store discounts included), else the total plus the code's amount. One point per
+    day (the day's last check). Only products whose brand has codes under test appear. Published as /price-history.json
+    and read by the Worker's /mcp tools."""
+    import glob
+    def key(u):
+        s = urlsplit(u or "")
+        return s.netloc.lower().removeprefix("www."), s.path.rstrip("/").lower()
+    by_url = {key(p["url"]): p for p in PRODUCTS if not is_amazon(p)}
+    days = {}   # slug -> date -> (checked_at, price, available)
+    repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for f in sorted(glob.glob(os.path.join(repo, "growth", "codes", "*-checks.jsonl"))):
+        for line in open(f):
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            p = by_url.get(key(r.get("url")))
+            if not p or r.get("qty", 1) != 1 or not isinstance(r.get("total"), (int, float)) or not r.get("checked_at"):
+                continue
+            price = r["total"] + (r.get("code_amount") or 0) if r.get("applicable") else r["total"]
+            if price <= 0:
+                continue
+            d = r["checked_at"][:10]
+            old = days.setdefault(p["slug"], {}).get(d)
+            if not old or r["checked_at"] > old[0]:
+                days[p["slug"]][d] = (r["checked_at"], round(price, 2), r.get("variant_available"))
+    products = {}
+    for slug, by_day in sorted(days.items()):
+        pts = [{"date": d, "price": v[1], **({"in_stock": v[2]} if v[2] is not None else {})} for d, v in sorted(by_day.items())]
+        prices = [x["price"] for x in pts]
+        products[slug] = {"name": BY_SLUG[slug]["name"], "brand": BY_SLUG[slug]["brand"], "currency": "USD",
+                          "first": pts[0]["date"], "last": pts[-1]["date"], "low": min(prices), "high": max(prices),
+                          "points": pts}
+    return {"site": SITE["url"], "generated": datetime.date.today().isoformat(),
+            "method": "Price in the brand's own US store cart for one unit of the default variant, before any discount "
+                      "code (automatic store discounts included), one reading per day from Dealectric's daily cart test. "
+                      "Days without a reading are missing, not unchanged.",
+            "disclosure": SITE["url"] + "/disclosure/", "products": products}
 
 
 def citation():

@@ -8,6 +8,7 @@
 //   { "<slug>": { network: "cj"|"awin", url, merchant_url, brand, name, price, verified, page } }.
 import { EmailMessage } from "cloudflare:email";
 import LINKS from "./links-map.json";
+import { handleMcp } from "./mcp.js";
 
 const SITE = "https://dealectric.com";
 const FEEDBACK_KINDS = ["missing_product", "wrong_price", "broken_link", "wrong_spec", "question", "other"];
@@ -21,6 +22,13 @@ export default {
       if (url.pathname === "/feedback" || url.pathname === "/feedback/") return handleFeedback(url, request, env);
       if (url.pathname.startsWith("/x/")) return handleReplayPage(url, request, env);
       if (url.pathname === "/hook/awin") return handleAwinHook(url, env);
+      // DLC-182: the MCP server for the ChatGPT app directory and other MCP clients (src/mcp.js).
+      if (url.pathname === "/mcp" || url.pathname === "/mcp/") return handleMcp(request, env, ctx);
+      // OpenAI's domain check for the app submission: the token from the submission portal, set with
+      // `wrangler secret put OPENAI_APPS_CHALLENGE`; a 404 until then.
+      if (url.pathname === "/.well-known/openai-apps-challenge" && env.OPENAI_APPS_CHALLENGE) {
+        return new Response(env.OPENAI_APPS_CHALLENGE, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" } });
+      }
     } catch (err) {
       console.error(err);
       return json({ error: "internal error" }, 500);
@@ -170,7 +178,10 @@ async function handleGo(url, request, env, ctx) {
   // A short random click id. The affiliate network echoes the sub-ID back in its commission
   // reports, so a sale can be matched to one row in the clicks table.
   const clickId = crypto.randomUUID().replace(/-/g, "").slice(0, 10);
-  const dest = new URL(entry.url);
+  // DLC-182: links handed out by the MCP tools carry ?via=app. OpenAI's app guidelines bar linking straight to a
+  // checkout, so a record whose normal link opens the checkout (cart: true) lands on its product page instead.
+  const viaApp = url.searchParams.get("via") === "app";
+  const dest = new URL(viaApp && entry.store_url ? entry.store_url : entry.url);
   dest.searchParams.set(entry.network === "cj" ? "sid" : "clickref", `${slug}.${clickId}`);
 
   const cf = request.cf || {};

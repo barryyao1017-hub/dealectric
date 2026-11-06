@@ -62,6 +62,21 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
     (`{"ok": true}`, or the send error with a 502).
   - The daily update (`tools/dailyupdate.py`) still reads CJ as a backup.
 
+- `POST /mcp` (since 2026-11-06, DLC-182; `src/mcp.js`, brief `growth/chatgpt-app/brief.md`) — the MCP server for
+  the ChatGPT app directory and any other MCP client. Streamable HTTP, stateless JSON replies, no sign-in, no
+  sessions; `GET /mcp` answers 405 with a pointer. Three read-only tools: `search_products`, `check_codes`,
+  `price_history`. Data comes from `/offers.json` and `/price-history.json` on the origin (both written by
+  `src/build.py`; the price history is the cart price per day from `growth/codes/*-checks.jsonl`), cached 5 min, so the
+  daily sweep's push keeps the tools current with no redeploy. Amazon records are left out. Buy links carry `?via=app`,
+  and `/go/<slug>?via=app` on a checkout record (`cart: true`) lands on the product page through `store_url`, because
+  OpenAI's app rules bar linking straight to a checkout. Each tool call writes a row to D1 `mcp_calls` (tool, args,
+  result count, client name, user agent, country; no IP). `/.well-known/openai-apps-challenge` serves the Worker secret
+  `OPENAI_APPS_CHALLENGE` once it is set (OpenAI's domain check at submission).
+  Test locally: `python3 -m http.server 8799 --directory ../docs` and
+  `npx wrangler dev --local --port 8788 --var DATA_BASE:http://127.0.0.1:8799`, then
+  `npx @modelcontextprotocol/inspector --cli http://localhost:8788/mcp --transport http --method tools/list`.
+  Usage: `npx wrangler d1 execute dealectric --remote --command "SELECT ts, tool, args, results, client FROM mcp_calls ORDER BY id DESC LIMIT 20"`.
+
 `src/links-map.json` is written by `python3 src/build.py`; rebuild the site before deploying when
 products or programs change.
 
