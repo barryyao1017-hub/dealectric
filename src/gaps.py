@@ -7279,4 +7279,231 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": '2026-11-05', "checked": '2026-11-05'},
 # ======== x20 gap-mining batch (end) ========
 
+# ======== x21 gap-mining batch (2026-11-05, DLC-168): clusters ranked by uncovered Bing searches ========
+# ---------------- G126: best-rechargeable-aa-batteries ----------------
+{"slug": 'best-rechargeable-aa-batteries', "question": 'G126 (x21 gap mining: rechargeable AA batteries, ~18k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best rechargeable AA batteries (2026): which last longest, and which hold a charge in the drawer',
+ "h1": 'Best rechargeable AA batteries (2026)',
+ "desc": "Which rechargeable AA batteries last longest and hold their charge: Panasonic eneloop vs eneloop pro, Tenergy Premium Pro, IKEA Ladda and 1.5 V lithium AAs, with self-discharge, cycle and measured-capacity numbers, and which to buy for remotes, flashes, controllers and smart locks.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best rechargeable AA batteries are <strong>Panasonic eneloop</strong> ({buy:panasonic-eneloop-aa-8-pack}): 2,000 mAh, rated 2,100 cycles, and they keep 70% of their charge after 10 years in a drawer, where Amazon Basics 2,400 mAh keeps about 50% after one year. For camera flashes, the <strong>eneloop pro</strong> ({buy:panasonic-eneloop-pro-aa-4-pack}) measured 2,894 mAh (Trusted Reviews); for controllers and toys in bulk, <strong>Tenergy Premium Pro 2,800 mAh</strong> is sold 20 to a pack on Tenergy's store, about $2.15 a cell ({buy:tenergy-premium-pro-aa-2800mah-20-pack}).</p>
+<p>Why rechargeables seem to die in months: cheap cells lose charge just sitting, and no-name 1.5 V USB-C lithium AAs lose 20–84% a year (akkuvergleichstest.de). If a smart lock, thermostat or backlit remote reads 1.2 V cells as low, use a 1.5 V lithium AA such as <strong>XTAR 4,150 mWh</strong> ({buy:xtar-1-5v-aa-4150mwh-8-pack}), never in remotes, clocks or smoke detectors.</p>
+""",
+ "columns": [('cap', 'Capacity'), ('cycles', 'Cycles (maker)'), ('hold', 'Charge kept in storage'), ('volt', 'Voltage'), ('best', 'Best for')],
+ "rows": [
+  {'slug': 'panasonic-eneloop-aa-8-pack', 'model': 'Panasonic eneloop (BK-3MCCA)', 'cells': {'cap': '2,000 mAh min', 'cycles': '2,100', 'hold': '70% after 10 years', 'volt': '1.2 V NiMH', 'best': 'Remotes, mice, clocks, toys, most things'}},
+  {'slug': 'panasonic-eneloop-pro-aa-4-pack', 'model': 'Panasonic eneloop pro (BK-3HCCA)', 'cells': {'cap': '2,500 mAh min; 2,894 measured', 'cycles': '500', 'hold': '85% after 1 year', 'volt': '1.2 V NiMH', 'best': 'Camera flashes, high-drain gear'}},
+  {'slug': 'tenergy-premium-pro-aa-2800mah-20-pack', 'model': 'Tenergy Premium Pro 2,800 mAh', 'cells': {'cap': '2,800 mAh (maker; no independent test found)', 'cycles': '1,200', 'hold': '85% after 1 year', 'volt': '1.2 V NiMH', 'best': 'Controllers and toys, bought in bulk'}},
+  {'brand': 'IKEA', 'model': 'LADDA 2450 mAh', 'url': 'https://www.ikea.com/us/en/p/ladda-rechargeable-battery-hr06-aa-1-2v-50504692/', 'cells': {'cap': '2,450 mAh', 'cycles': '500', 'hold': 'Low self-discharge', 'volt': '1.2 V NiMH', 'best': 'High capacity cheaply, if an IKEA is near', 'price': '$11.99 for 4 (IKEA US, 2026-11-05)'}},
+  {'slug': 'xtar-1-5v-aa-4150mwh-8-pack', 'model': 'XTAR 1.5 V lithium AA', 'cells': {'cap': '4,150 mWh rated; 3,574 measured', 'cycles': 'Not comparable', 'hold': 'About 80% after 1 year', 'volt': '1.5 V regulated', 'best': 'Smart locks, thermostats that misread NiMH'}},
+ ],
+ "after": """
+<h2>Which rechargeable AA batteries last longest?</h2>
+<p>Two different things: run time per charge (capacity: eneloop pro and the 2,800 mAh cells win) and years of use (cycles and charge kept in storage: standard eneloop wins at 2,100 cycles and 70% after 10 years). High-capacity cells trade cycles for capacity: eneloop pro is rated 500 cycles against 2,100.</p>
+<h2>What owners complain about</h2>
+<p>Packs where half the cells stop holding a charge within a year (the most common theme in Amazon review summaries for EBL, Amazon Basics and no-name cells); devices that call 1.2 V cells "low"; fat cells that don't fit smoke detectors or toothbrushes; counterfeit eneloops in mixed Amazon stock (buy from a listing sold by Amazon or Panasonic); and cheap chargers that stop at about 70%.</p>
+<h2>Which charger</h2>
+<p>Use one that charges each slot on its own and stops on a voltage drop, not a timer. Tenergy's TN480U 8-bay ({buy:tenergy-tn480u-8-bay-nimh-charger}) does. 1.5 V lithium AAs need their own lithium charger. For solar lights, see <a href="/best-rechargeable-aa-batteries-for-solar-lights">rechargeable AA batteries for solar lights</a>.</p>
+<h2>Not recommended</h2>
+<p>No-name "3,600 mWh" USB-C lithium AAs (40–100% lost per year in tests), Tenergy's non-LSD Premium 2,500 mAh, and Amazon Basics for devices that sit for months.</p>
+""",
+ "sources": [
+  ("Trusted Reviews: eneloop pro AA review", "https://www.trustedreviews.com/reviews/eneloop-pro-aa"),
+  ("Trusted Reviews: Amazon Basics 2400 mAh AA review", "https://www.trustedreviews.com/reviews/amazon-basics-high-capacity-rechargeable-aa-2400mah"),
+  ("lygte-info.dk: AA NiMH comparator", "https://lygte-info.dk/review/batteries2012/CommonAAcomparator.php"),
+  ("akkuvergleichstest.de: lithium AA self-discharge tests", "https://www.akkuvergleichstest.de/"),
+  ("techtest.org: 15 lithium AA batteries compared", "https://techtest.org/15x-lithium-aa-akkus-im-vergleich-welcher-hat-die-hoechste-kapazitaet/"),
+  ("BudgetLightForum: 1.5 V Li-ion AA state of play", "https://budgetlightforum.com/t/state-of-play-of-1-5v-li-ion-aa-and-aaa/222667"),
+  ("Tenergy Premium Pro AA 20-pack", "https://power.tenergy.com/tenergy-premium-pro-rechargeable-aa-batteries-high-capacity-low-self-discharge-2800mah-nimh-aa-battery-20-pack/"),
+  ("IKEA LADDA AA", "https://www.ikea.com/us/en/p/ladda-rechargeable-battery-hr06-aa-1-2v-50504692/"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G127: best-iphone-case-with-wallet ----------------
+{"slug": 'best-iphone-case-with-wallet', "question": 'G127 (x21 gap mining: iPhone case with wallet / card holder, ~4k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best iPhone case with a wallet or card holder (2026): one-piece vs MagSafe wallet',
+ "h1": 'Best iPhone case with a wallet or card holder (2026)',
+ "desc": "iPhone case with a wallet or card holder: a one-piece card-slot case or a MagSafe wallet on a case, which falls off, which blocks wireless charging, and which holds the most cards; ESR Geo Wallet Boost, Smartish Wallet Slayer, Apple MagSafe wallet, ESR Geo Wallet Stand.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best iPhone case with a wallet is a MagSafe case plus the <strong>ESR Geo Wallet Boost</strong> ({buy:esr-geo-wallet-boost-halolock}): 4 cards and cash, built-in Find My and 1,800 g of magnet hold, which matters because wallets that slide off in a pocket are the top MagSafe complaint. For case and cards in one piece, the <strong>Smartish Wallet Slayer Vol. 1</strong> ({buy:smartish-wallet-slayer-vol1-iphone-17}) holds up to 4 cards and cash, but blocks wireless and MagSafe charging.</p>
+<p>Every MagSafe wallet has to come off to charge wirelessly, and hold also depends on a real MagSafe case behind it. Keep hotel key cards and parking passes away from the magnets; chip bank cards are fine (Apple).</p>
+""",
+ "columns": [('cards', 'Holds'), ('type', 'Type'), ('charge', 'Wireless charging'), ('findmy', 'Find My'), ('catch', 'Catch')],
+ "rows": [
+  {'slug': 'esr-geo-wallet-boost-halolock', 'model': 'ESR Geo Wallet Boost (HaloLock)', 'cells': {'cards': '4 cards + cash', 'type': 'MagSafe wallet', 'charge': 'Take it off', 'findmy': 'Yes, built in', 'catch': 'Needs a MagSafe case or ESR ring'}},
+  {'slug': 'smartish-wallet-slayer-vol1-iphone-17', 'model': 'Smartish Wallet Slayer Vol. 1', 'cells': {'cards': 'Up to 4 + cash', 'type': 'One-piece case', 'charge': 'No', 'findmy': 'No', 'catch': 'Cable charging only'}},
+  {'slug': 'esr-geo-wallet-stand-halolock', 'model': 'ESR Geo Wallet Stand (HaloLock)', 'cells': {'cards': '1–3 cards', 'type': 'MagSafe wallet + stand', 'charge': 'Take it off', 'findmy': 'Yes, built in', 'catch': 'Three cards at most'}},
+  {'brand': 'Apple', 'model': 'iPhone FineWoven Wallet with MagSafe', 'url': 'https://www.apple.com/shop/iphone/accessories/cases-protection', 'cells': {'cards': 'Up to 3', 'type': 'MagSafe wallet', 'charge': 'Take it off', 'findmy': 'Last known location only', 'catch': 'Slipping off is the top review theme'}},
+  {'brand': 'Mujjo', 'model': 'Full Leather Wallet Case (iPhone 17 Pro)', 'url': 'https://www.mujjo.com/products/full-leather-wallet-case-for-iphone-17-pro', 'cells': {'cards': '3 pockets', 'type': 'One-piece leather case', 'charge': 'MagSafe case; with cards in, not checked', 'findmy': 'No', 'catch': 'Price'}},
+ ],
+ "after": """
+<h2>One-piece case or MagSafe wallet?</h2>
+<p>A one-piece case can't fall off, but cards sit between the phone and the charger, so most block wireless charging (Smartish says so outright). A MagSafe wallet keeps the case slim and comes off for charging or tapping, but it can slide off in tight pockets. No product does cash, ID and wireless charging in one piece.</p>
+<h2>Will a magnetic wallet wipe my cards?</h2>
+<p>Apple warns that hotel key cards and other magnetic-stripe cards can be damaged by MagSafe magnets. Chip bank cards and ID cards aren't affected. Apple Pay still works with the wallet on; a few readers pick up a physical card first.</p>
+<h2>Not recommended</h2>
+<p>MOFT-style thin wallets on plain cases (slide off), Peak Design's wallet on cases that aren't Peak Design's (weaker hold), and Spigen Slim Armor CS for new iPhones (discontinued from iPhone 16).</p>
+""",
+ "sources": [
+  ("ESR Geo Wallet Boost (HaloLock)", "https://www.esrtech.com/products/geo-wallet-boost-halolock"),
+  ("Apple: MagSafe accessories and magnetic cards (HT211829)", "https://support.apple.com/en-us/HT211829"),
+  ("Apple Community: MagSafe wallet blocks charging", "https://discussions.apple.com/thread/254611054"),
+  ("Smartish: are Smartish cases MagSafe?", "https://smartish.com/blogs/news/are-smartish-cases-magsafe"),
+  ("MacRumors forum: do MagSafe wallets damage bank cards?", "https://forums.macrumors.com/threads/magsafe-wallets-do-they-damage-bank-cards.2440633"),
+  ("MacRumors forum: MagSafe wallet recommendations", "https://forums.macrumors.com/threads/magsafe-wallet-recommendation.2404506"),
+  ("9to5Mac: ESR Geo Wallet Boost", "https://9to5mac.com/2025/05/05/geo-wallet-boost/"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G128: best-fitness-tracker-for-women ----------------
+{"slug": 'best-fitness-tracker-for-women', "question": 'G128 (x21 gap mining: fitness tracker for women, ~9.3k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best fitness tracker for women (2026): small wrists, cycle tracking, no subscription',
+ "h1": 'Best fitness tracker for women (2026)',
+ "desc": "Best fitness tracker for women by what decides it: small-wrist fit (band sizes in mm), cycle and temperature tracking, subscriptions and battery; Garmin Lily 2 Active, Amazfit Active 2, Fitbit Inspire 3, Apple Watch SE 3, Oura Ring 4.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best fitness tracker for women is the <strong>Garmin Lily 2 Active</strong> ({buy:garmin-lily-2-active}): a 38 mm, 29 g watch whose band fits wrists from 110 mm (Fitbit Inspire 3 and Apple Watch SE 3 start at 130 mm, Amazfit Active 2 at 135 mm, and a loose band misreads heart rate and sleep), with GPS, a 9-day battery, cycle and pregnancy tracking and no subscription. Under $100: the <strong>Amazfit Active 2</strong> ({buy:amazfit-active-2-round}), with a 10-day battery and free cycle tracking.</p>
+<p>For temperature-based cycle and perimenopause insights, the Apple Watch SE 3 (iPhone only, 18 h battery) or Oura Ring 4 ($5.99 a month) do what bands don't.</p>
+""",
+ "columns": [('size', 'Case / weight'), ('wrist', 'Smallest wrist'), ('battery', 'Battery'), ('cycle', 'Cycle tracking'), ('fee', 'Subscription')],
+ "rows": [
+  {'slug': 'garmin-lily-2-active', 'model': 'Garmin Lily 2 Active', 'cells': {'size': '38 mm, 29 g', 'wrist': '110 mm', 'battery': '9 days', 'cycle': 'Cycle + pregnancy logging', 'fee': 'None'}},
+  {'slug': 'amazfit-active-2-round', 'model': 'Amazfit Active 2', 'cells': {'size': '44 mm, 29.5 g', 'wrist': '135 mm', 'battery': '10 days', 'cycle': 'Logging + predictions; Wild.AI app', 'fee': 'None'}},
+  {'slug': 'fitbit-inspire-3', 'model': 'Fitbit Inspire 3', 'cells': {'size': 'Band, 17.7 g', 'wrist': '130 mm (small band)', 'battery': '10 days', 'cycle': 'Logging, ovulation window, skin temperature', 'fee': 'Optional, $9.99/mo for insights'}},
+  {'brand': 'Apple', 'model': 'Apple Watch SE 3 (40 mm)', 'url': 'https://www.apple.com/apple-watch-se/', 'cells': {'size': '40 mm, 26.3 g', 'wrist': '130 mm', 'battery': '18 h', 'cycle': 'Wrist temperature, retrospective ovulation, perimenopause', 'fee': 'None; iPhone only', 'price': '$249 (apple.com, 2026-11-05)'}},
+  {'brand': 'Oura', 'model': 'Oura Ring 4', 'url': 'https://ouraring.com/', 'cells': {'size': 'Ring, sizes 4–15', 'wrist': 'n/a', 'battery': '8 days', 'cycle': 'Temperature-based cycle insights, perimenopause', 'fee': '$5.99/mo'}},
+ ],
+ "after": """
+<h2>What women say goes wrong</h2>
+<p>Trackers too big for small wrists (the theme in every women-specific thread found); heart-rate and sleep readings off when the band sits loose; subscription fatigue (Whoop stops working without its $199–359 a year); cycle predictions that miss for irregular cycles or perimenopause (calendar-based apps are only reliable for steady cycles, PMC8504278); and band breaks or rashes on cheap bands.</p>
+<h2>Which one by need</h2>
+<p>Small wrist and a jewelry look: Lily 2 Active, or Fitbit Inspire 3 on a budget. Temperature-based cycle tracking: Apple Watch SE 3 with an iPhone, or Oura Ring 4 if a ring suits you. No fee, under $100, a week or more of battery: Amazfit Active 2. Amazfit's cycle tracking is logging plus calendar prediction, not temperature-based.</p>
+<h2>Not recommended</h2>
+<p>Whoop (useless without the subscription), Samsung Galaxy Fit3 for iPhone owners (Android only), and the larger Amazfit Active Max and Balance 2 (48 mm and 47 mm cases) for small wrists.</p>
+""",
+ "sources": [
+  ("TechRadar: Garmin Lily 2 Active review", "https://www.techradar.com/health-fitness/fitness-trackers/garmin-lily-2-active-review"),
+  ("the5krunner: Garmin Lily 2 Active specs", "https://the5krunner.com/specs/garmin/lily-2-active/"),
+  ("Amazfit Active 2", "https://us.amazfit.com/products/active-2-round"),
+  ("Amazfit + Wild.AI women's wellness app", "https://us.amazfit.com/blogs/news/zepp-health-partners-with-wild-ai-to-offer-groundbreaking-womens-wellness-app-on-amazfit-smartwatches"),
+  ("Google Store: Fitbit Inspire 3", "https://store.google.com/us/product/fitbit_inspire_3?hl=en-US"),
+  ("Apple Watch SE", "https://www.apple.com/apple-watch-se/"),
+  ("Tom's Guide: fitness trackers are still falling short for women", "https://www.tomsguide.com/wellness/fitness-trackers/ive-been-writing-about-fitness-trackers-for-a-decade-10-years-later-they-are-still-falling-short-for-women"),
+  ("Mumsnet: fitness trackers for a small wrist", "https://www.mumsnet.com/talk/exercise/4844674-fitness-trackers-for-a-small-wrist"),
+  ("PMC8504278: accuracy of cycle-prediction apps", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8504278/"),
+  ("RecurDash: Whoop pricing", "https://recurdash.com/subscription-pricing/whoop"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G129: best-cd-player-with-bluetooth ----------------
+{"slug": 'best-cd-player-with-bluetooth', "question": 'G129 (x21 gap mining: CD player with Bluetooth, ~2.6k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best CD player with Bluetooth (2026): one that sends to headphones or a speaker',
+ "h1": 'Best CD player with Bluetooth (2026)',
+ "desc": "CD player with Bluetooth: which ones transmit to Bluetooth headphones or a speaker and which only receive from a phone, anti-skip, codecs and battery; FiiO DM13 BT, Shanling EC Play, Panasonic SC-PM270, and a transmitter for the player you own.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best CD player with Bluetooth that sends to headphones or a speaker is the <strong>FiiO DM13 BT</strong> ({buy:fiio-dm13-bt}): aptX HD and aptX Low Latency transmit, a 60-second anti-skip buffer and a 10-hour battery (about 8 h measured). Want a CD player with its own speakers that also plays your phone? The <strong>Panasonic SC-PM270</strong> ({buy:panasonic-sc-pm270}).</p>
+<p>Check which way the Bluetooth goes. Most "CD players with Bluetooth" (the Panasonic systems, Sony's boomboxes, every TEAC and Tascam) only receive from a phone and can't play a CD through Bluetooth headphones or a speaker. Already own a CD player? A $40-class transmitter such as the <strong>1Mii B06TX</strong> ({buy:1mii-b06tx-bluetooth-transmitter}) adds Bluetooth transmit through its optical, coaxial or RCA output.</p>
+""",
+ "columns": [('bt', 'Bluetooth'), ('codec', 'Codecs'), ('skip', 'Anti-skip'), ('power', 'Battery / power'), ('form', 'Type')],
+ "rows": [
+  {'slug': 'fiio-dm13-bt', 'model': 'FiiO DM13 BT', 'cells': {'bt': 'Transmits', 'codec': 'aptX HD, aptX LL, aptX, SBC', 'skip': '60 s buffer', 'power': '10 h rated, ~8 h measured', 'form': 'Portable'}},
+  {'brand': 'Shanling', 'model': 'EC Play', 'url': 'https://en.shanling.com/article/101206', 'cells': {'bt': 'Transmits and receives', 'codec': 'Transmit SBC only; receive LDAC', 'skip': 'Not published', 'power': '12 h rated', 'form': 'Portable', 'price': '$199 at launch (May 2026)'}},
+  {'slug': 'panasonic-sc-pm270', 'model': 'Panasonic SC-PM270', 'cells': {'bt': 'Receives only', 'codec': 'SBC', 'skip': 'n/a', 'power': 'Mains, 20 W', 'form': 'Compact system with speakers'}},
+  {'slug': '1mii-b06tx-bluetooth-transmitter', 'model': '1Mii B06TX transmitter', 'cells': {'bt': 'Transmits (add-on)', 'codec': 'aptX LL, aptX HD, SBC', 'skip': 'Your player', 'power': 'USB', 'form': 'Box for an existing player'}},
+ ],
+ "after": """
+<h2>What owners complain about</h2>
+<p>Pairing that fails or drops mid-song, or needs redoing at every power-on, on $25–90 portables (the most common review theme at Best Buy and Amazon); players bought to feed Bluetooth headphones that turn out to be receive-only; skipping despite "anti-skip"; cheap units dying within weeks; and battery life under the claim.</p>
+<h2>Home stereo to Bluetooth headphones</h2>
+<p>No mainstream component CD player transmits Bluetooth. Plug a transmitter into the player's optical or coaxial output; aptX Low Latency matters only for video and only if your headphones support it.</p>
+<h2>Not recommended</h2>
+<p>$25–90 no-name Bluetooth portables (pairing and durability complaints), and any TEAC or Tascam model if you need to send to headphones: their Bluetooth is receive-only, and TEAC's US PD-301-X has none.</p>
+""",
+ "sources": [
+  ("FiiO DM13 announcement and specs", "https://fiio.com/newsinfo/974464.html"),
+  ("Headfonics: FiiO DM13 review", "https://headfonics.com/fiio-dm13-review/"),
+  ("Audiophile Heaven: FiiO DM13 battery test", "https://www.audiophile-heaven.com/2025/04/spinning-music-and-weaving-sound-fiio-dm13-portable-cd-player.html"),
+  ("Shanling EC Play specs", "https://en.shanling.com/article/101206"),
+  ("B&H: Panasonic SC-PM270", "https://www.bhphotovideo.com/c/product/1830050-REG/panasonic_sc_pm270pp_k_20w_stereo_system_with.html"),
+  ("Tom's Guide forum: CD player with Bluetooth output for speakers", "https://forums.tomsguide.com/threads/im-looking-for-a-cd-player-that-as-bluetooth-output-so-i-can-connect-to-bluetooth-speakers.121180"),
+  ("Best Buy reviews: Memorex Bluetooth CD player", "https://www.bestbuy.com/site/reviews/memorex-portable-cd-player-with-bluetooth-black-with-bright-green-trim/6387706"),
+  ("TEAC USA support", "https://teac.jp/int/support/usa"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G130: best-mini-projector ----------------
+{"slug": 'best-mini-projector', "question": 'G130 (x21 gap mining: best mini projector, ~1.4k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best mini projector (2026): measured brightness, Netflix, fan noise and battery',
+ "h1": 'Best mini projector (2026)',
+ "desc": "Best mini projector by what owners get burned by: whether Netflix plays, measured vs box brightness, fan noise and battery; Nebula Capsule 3, XGIMI MoGo 4, Aurzen BOOM mini, and why most $50 minis disappoint.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best mini projector for most people is the <strong>Nebula Capsule 3</strong> ({buy:nebula-capsule-3-gtv}): 1080p, licensed Netflix on Google TV, and about 2.5 hours on battery, in a soda-can size. It is dim (123 lumens measured by RTINGS), so for a brighter picture on battery step up to the <strong>XGIMI MoGo 4</strong> ({buy:xgimi-mogo-4}), rated 450 ISO lumens.</p>
+<p>Will Netflix play? Only on projectors with licensed Netflix (Capsule 3, MoGo 4, Aurzen BOOM mini, Dangbei N2). Mirroring from a phone, and most cheap Android minis, give a black screen. Aurzen's own FAQ says its ZIP needs a $99.99 dongle for Netflix. On a budget, the plug-in <strong>Aurzen BOOM mini</strong> ({buy:aurzen-boom-mini}) has licensed Netflix and a 500 ANSI claim that no reviewer has measured yet.</p>
+""",
+ "columns": [('res', 'Native'), ('bright', 'Brightness'), ('netflix', 'Netflix'), ('battery', 'Battery'), ('noise', 'Fan')],
+ "rows": [
+  {'slug': 'nebula-capsule-3-gtv', 'model': 'Nebula Capsule 3 (Google TV)', 'cells': {'res': '1080p', 'bright': '200 ANSI rated; 123 measured', 'netflix': 'Licensed', 'battery': '~2.5 h', 'noise': '43.5 dBA'}},
+  {'slug': 'xgimi-mogo-4', 'model': 'XGIMI MoGo 4', 'cells': {'res': '1080p', 'bright': '450 ISO rated', 'netflix': 'Licensed', 'battery': '~2.5 h', 'noise': 'Not measured yet'}},
+  {'slug': 'aurzen-boom-mini', 'model': 'Aurzen BOOM mini', 'cells': {'res': '1080p (LCD)', 'bright': '500 ANSI claimed', 'netflix': 'Licensed', 'battery': 'None', 'noise': 'Not measured'}},
+  {'brand': 'Dangbei', 'model': 'N2', 'url': 'https://us.dangbei.com/products/dangbei-n2-white', 'cells': {'res': '1080p (LCD)', 'bright': '400 ISO rated', 'netflix': 'Licensed', 'battery': 'None', 'noise': 'Not measured', 'price': '$399 (Dangbei, 2026-11-05)'}},
+  {'slug': 'aurzen-zip-tri-fold-mini-projector', 'model': 'Aurzen ZIP (tri-fold)', 'cells': {'res': '720p', 'bright': '100 ANSI', 'netflix': 'Needs a $99.99 dongle', 'battery': '≤1.5 h', 'noise': '≤28 dB in Eco'}},
+ ],
+ "after": """
+<h2>What owners complain about</h2>
+<p>Brightness far below the box number (the most common theme: "lux" and "LED lumens" are not ANSI lumens; a "6,800 lux" mini measures about 420 ANSI at best); Netflix that won't play; fans loud at full brightness (XGIMI's MoGo 3 Pro measured 53 dBA in its brightest mode); batteries shorter than a film; and "4K supported" on 720p chips.</p>
+<h2>Are $50–100 mini projectors worth it?</h2>
+<p>Only with licensed Netflix and an ANSI figure on the spec sheet. Most "8,000 lumen" minis are 720p, measure around 100–260 lumens, run Netflix only through side-loaded apps and draw early-failure reviews. Dangbei's N2 Mini, often $149–229, is the step up that has licensed Netflix.</p>
+<h2>When the Aurzen ZIP makes sense</h2>
+<p>It folds to pocket size and mirrors a phone or Switch with no Wi-Fi, which suits camping and trips. As a Netflix projector it is the wrong buy: 720p, 100 ANSI and up to 1.5 hours.</p>
+""",
+ "sources": [
+  ("RTINGS: Samsung Freestyle 2nd Gen review (measured brightness)", "https://rtings.com/projector/reviews/samsung/the-freestyle-2nd-gen"),
+  ("CNET: Nebula Capsule Air review (measured 84–102 lumens)", "https://www.cnet.com/tech/home-entertainment/anker-nebula-capsule-air-review-little-led-can-can-light-a-little"),
+  ("ProjectorCentral: XGIMI MoGo 4", "https://www.projectorcentral.com/XGIMI-MoGo_4.htm"),
+  ("Aurzen CastPlay Pro dongle (Netflix on the ZIP)", "https://aurzen.com/products/aurzen-castplay-pro-usb-c-wireless-dongle"),
+  ("Aurzen BOOM mini", "https://aurzen.com/products/aurzen-boom-mini-smart-projector"),
+  ("Gizmodo: Aurzen ZIP review", "https://gizmodo.com/aurzen-zip-review-a-big-idea-but-a-tiny-disappointment-2000574328"),
+  ("Truth in Advertising: home projector brightness claims", "https://truthinadvertising.org/articles/what-you-should-know-about-home-projectors/"),
+  ("Android Authority: Dangbei N2 Mini review", "https://www.androidauthority.com/dangbei-n2-mini-projector-review-3573048"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+
+# ---------------- G131: best-3d-printer-for-kids ----------------
+{"slug": 'best-3d-printer-for-kids', "question": 'G131 (x21 gap mining: 3D printer for kids, ~7k Bing searches / 3 mo)', "lead_first": True,
+ "title": 'Best 3D printer for kids and teens (2026): safe, easy picks and what parents run into',
+ "h1": 'Best 3D printer for kids and teens (2026)',
+ "desc": "Best 3D printer for kids by age: the parent-run pick for 6–12, an enclosed, filtered printer for teens, hot-end temperatures, fumes (UL's school study), filament cost and whether kids keep using it; Bambu Lab A1 mini, Flashforge Adventurer 5M Pro, Toybox, Elegoo Centauri Carbon 2.",
+ "intro": """
+<p class="lead"><strong>Short answer.</strong> The best 3D printer for kids 7–12 is the <strong>Bambu Lab A1 mini</strong>: fully automatic calibration, 49 dB and a 180 mm bed, $199 on <a href="https://us.store.bambulab.com/products/a1-mini">Bambu Lab's own store</a>, less than on Amazon. For a teen printing alone, the enclosed <strong>Flashforge Adventurer 5M Pro</strong> ({buy:flashforge-adventurer-5m-pro}) adds HEPA + carbon filtration. Either way, print PLA and keep the printer out of bedrooms: UL's 2024 classroom study found both PLA and ABS raise ultrafine particles near the printer.</p>
+<p>Is it safe for little hands? Nozzles run at 260–350 °C and beds at 80 °C; an open-frame printer such as the A1 mini or Toybox leaves both within reach, an enclosed one doesn't. Parents in 2026 forum threads picked the A1 mini about 12 to 2 over Toybox; the 4-color A1 mini Combo is $299 on Bambu Lab's store.</p>
+""",
+ "columns": [('age', 'Best for'), ('enclosed', 'Enclosed / filter'), ('bed', 'Build size'), ('setup', 'Setup'), ('catch', 'Catch')],
+ "rows": [
+  {'brand': 'Bambu Lab', 'model': 'A1 mini', 'url': 'https://us.store.bambulab.com/products/a1-mini', 'cells': {'age': 'Ages 7–12 with a parent', 'enclosed': 'No (Bambu says don’t enclose it)', 'bed': '180 mm cube', 'setup': 'Fully automatic calibration', 'catch': 'Hot parts exposed', 'price': '$199; Combo $299 (Bambu Lab store, 2026-11-05)'}},
+  {'slug': 'flashforge-adventurer-5m-pro', 'model': 'Flashforge Adventurer 5M Pro', 'cells': {'age': 'Teens printing alone', 'enclosed': 'Yes, HEPA + carbon', 'bed': '220 mm cube', 'setup': 'Auto leveling', 'catch': 'Single color'}},
+  {'brand': 'Elegoo', 'model': 'Centauri Carbon 2', 'url': 'https://us.elegoo.com/products/centauri-carbon-2', 'cells': {'age': 'Teens, cheaper enclosed', 'enclosed': 'Yes, carbon filter only', 'bed': 'Not checked', 'setup': 'Auto calibration', 'catch': 'No HEPA', 'price': '$319 (Elegoo, 2026-11-05)'}},
+  {'brand': 'Toybox', 'model': 'Alpha Four', 'url': 'https://toybox.com/pages/toybox-alpha-four-3d-printer', 'cells': {'age': 'Ages 5–8, toy catalog', 'enclosed': 'No', 'bed': '75 × 80 × 90 mm', 'setup': 'One-touch from its app', 'catch': 'Outgrown fast; filament about $60/kg', 'price': 'From $199 bundle (Toybox, 2026-11-05)'}},
+ ],
+ "after": """
+<h2>Is a 3D printer worth it for kids?</h2>
+<p>The most common thread in parents' posts: the kid loves the first weeks, then the parent ends up doing the setup and fixing failed prints, and the printer gets sold within months. It lasts where a parent shares the hobby or the kid starts designing (Tinkercad is free and runs in a browser). Budget the parent's time, not only the $199.</p>
+<h2>Running costs and accounts</h2>
+<p>PLA costs about $11–20 a kilogram (Bambu PLA was $11–13 on sale on 2026-11-05); Toybox's own filament is $15 for 250 g. Bambu Lab's terms require an adult account or a guardian's agreement: teen accounts from 13, under-13 accounts set up by a parent.</p>
+<h2>Not recommended</h2>
+<p>Ender-style kits and Klipper DIY printers (frequent failed prints and tinkering), resin printers (liquid resin and fumes), ABS for kids, enclosing an A1 mini (Bambu advises against it), and no-name printers marketed "for kids".</p>
+""",
+ "sources": [
+  ("Bambu Lab A1 mini", "https://us.store.bambulab.com/products/a1-mini"),
+  ("Flashforge Adventurer 5M Pro", "https://www.flashforge.com/products/adventurer-5m-pro-3d-printer"),
+  ("UL Chemical Insights R360: 3D printer emissions in schools (2024)", "https://chemicalinsights.org/wp-content/uploads/2024/08/R360_3DP_081624.pdf"),
+  ("Bambu Lab forum: A1 mini enclosure, yes or no", "https://forum.bambulab.com/t/a1-mini-enlosure-yes-or-no/195972"),
+  ("Bambu Lab forum: what printer for a 13-year-old", "https://forum.bambulab.com/t/what-printer-for-a-13-year-old/259195"),
+  ("Reddit r/3Dprinting: starter printer for a 9-year-old", "https://www.reddit.com/r/3Dprinting/comments/1umfltv/starter_printer_for_9_year_old/"),
+  ("Reddit r/Parenting: my son wants a 3D printer", "https://www.reddit.com/r/Parenting/comments/1p4an2m/my_son_wants_a_3d_printer/"),
+  ("Bambu Lab minors' privacy notice", "https://bambulab.com/policies/page/minors-privacy-notice"),
+  ("Toybox Alpha Four", "https://toybox.com/pages/toybox-alpha-four-3d-printer"),
+ ],
+ "published": '2026-11-05', "checked": '2026-11-05'},
+# ======== x21 gap-mining batch (end) ========
+
+
 ]

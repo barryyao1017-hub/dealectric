@@ -44,6 +44,9 @@ ICONS = {
     "kvm-switch": '<rect x="4" y="6" width="17" height="12" rx="2"/><rect x="27" y="6" width="17" height="12" rx="2"/><rect x="12" y="28" width="24" height="10" rx="3"/><path d="M12 18v6h24v-6M24 24v4"/>',
     "usb-switch": '<rect x="6" y="18" width="36" height="12" rx="3"/><path d="M14 18V8h6M34 18V8h-6M14 30v10h6M34 30v10h-6"/><circle cx="24" cy="24" r="2"/>',
     "nas": '<rect x="8" y="6" width="32" height="36" rx="4"/><path d="M8 15h32M8 24h32M8 33h32"/><circle cx="34" cy="10.5" r="1.5"/><circle cx="34" cy="19.5" r="1.5"/><circle cx="34" cy="28.5" r="1.5"/><circle cx="34" cy="37.5" r="1.5"/>',
+    "cd-player": '<circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="5"/><path d="M24 10a14 14 0 0 1 14 14"/>',
+    "phone-wallet": '<rect x="12" y="4" width="24" height="40" rx="5"/><rect x="15" y="20" width="18" height="14" rx="2"/><path d="M15 25h18"/>',
+    "3d-printer": '<rect x="6" y="6" width="36" height="36" rx="3"/><path d="M6 14h36M20 14v8h8v-8M22 22l2 4 2-4"/><path d="M14 38h20v-6H14z"/>',
     "smartwatch": '<rect x="13" y="13" width="22" height="22" rx="6"/><path d="M18 13l2-9h8l2 9M18 35l2 9h8l2-9"/><path d="M24 19v5l3 3"/>',
 }
 
