@@ -46,5 +46,27 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   # The paced sweep can take a few hours when stores rate-limit (DLC-48); caffeinate -i keeps the Mac from idle-sleeping
   # until it ends (only for this process; no setting changes).
   /usr/bin/caffeinate -i python3.12 "$REPO/tools/codesweep.py" "$@"
-  end $?
+  rc=$?
+  # Daily $0 gap mining and page drafts (DLC-168/175, Barry's yes 2026-11-05; growth/gapmine/daily-plan.md). Runs only
+  # after a clean sweep on a clean src/ and docs/: gappage.py restores those with git checkout, which would discard
+  # sweep work. Drafts only, unless growth/gapmine/AUTOPUBLISH exists (Barry turns that on). Its own exit codes are
+  # logged on the "gapmine" lines; the end line keeps the sweep's code for tools/dailyupdate.py.
+  if [ "$rc" -eq 0 ] && [ -z "$(git status --porcelain -- src docs worker/src)" ]; then
+    echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) gapmine start"
+    /usr/bin/caffeinate -i python3.12 "$REPO/growth/evals/gapmine.py" daily; g1=$?
+    if [ -f "$REPO/growth/gapmine/AUTOPUBLISH" ]; then
+      /usr/bin/caffeinate -i python3.12 "$REPO/tools/gappage.py" next --publish; g2=$?
+    else
+      /usr/bin/caffeinate -i python3.12 "$REPO/tools/gappage.py" next; g2=$?
+    fi
+    # Commit the run's own records (queue, ledger, daily log, drafts, pool) so the other checkout sees them.
+    git add -- growth/gapmine growth/evals/runs/fastloop 2>/dev/null
+    if ! git diff --cached --quiet; then
+      git commit -q -m "gapmine: daily run $(date +%Y-%m-%d)" && { git push -q origin HEAD:main || echo "gapmine push failed (next run retries)"; }
+    fi
+    echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) gapmine end (daily exit $g1, page exit $g2)"
+  else
+    echo "gapmine skipped: sweep exit $rc or src/docs not clean"
+  fi
+  end $rc
 } >>"$LOG" 2>&1

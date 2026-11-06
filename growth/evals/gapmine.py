@@ -125,6 +125,8 @@ def ac(engine: str, prefix: str) -> list[str] | None:
 def expand(args) -> None:
     out = load("suggest.json", {"done": [], "queries": {}})
     seeds = [(b, s) for b, v in BRANDS.items() for s in v["seeds"]]
+    if getattr(args, "only_seeds", None) is not None:
+        seeds = [(b, s) for b, s in seeds if s in args.only_seeds]
     jobs = []
     for brand, seed in seeds:
         for t in STEMS + LETTERS:
@@ -156,6 +158,50 @@ def expand(args) -> None:
             done.add(key)
     out["done"] = sorted(done)
     save("suggest.json", out)
+
+
+SEEDS_SYSTEM = """You turn a consumer-electronics brand's US product range into shopper search seeds.
+A seed is the generic category noun phrase a shopper types (2-4 words, lowercase, no brand or model names), e.g.
+"portable power station", "magsafe wallet", "travel router". Give every distinct category the brand actually sells
+in the US (from the product titles when given, else from what you know), 4-14 seeds, most-searched first. Skip
+spare parts, cables-only accessories and anything the brand sells only outside the US."""
+SEEDS_SCHEMA = {"type": "object", "properties": {"seeds": {"type": "array", "items": {"type": "string"}}},
+                "required": ["seeds"]}
+
+
+def _shop_titles(home: str) -> list[str]:
+    """Product titles from a Shopify store's public /products.json (free; empty when the store isn't Shopify)."""
+    raw = _get(home.rstrip("/") + "/products.json?limit=250", timeout=20)
+    try:
+        return [p.get("title", "") for p in json.loads(raw or b"{}").get("products") or []][:250]
+    except ValueError:
+        return []
+
+
+def seeds_step(args) -> None:
+    """Widen each approved brand's seeds to every category it sells (Barry 11-05: the high-volume pool runs out in a
+    week on 80 seeds). New seeds are recorded under "seeds_added" with the date; `expand` picks them up."""
+    path = ROOT / "growth/gapmine/brands.json"
+    doc = json.loads(path.read_text())
+    links = json.loads((ROOT / "src/links.json").read_text())
+    homes = {k.replace("_us", ""): v.get("home") for net in ("cj", "awin") for k, v in links[net].items()}
+    for brand, v in doc["brands"].items():
+        if v.get("seeds_added") and not args.force:
+            continue
+        home = v.get("home") or homes.get(brand)
+        titles = _shop_titles(home) if home else []
+        user = f"BRAND: {brand}\nSTORE: {home or 'unknown'}\nEXISTING SEEDS: {', '.join(v['seeds'])}\n" + \
+               ("PRODUCT TITLES:\n" + "\n".join(t for t in titles if t) if titles else "PRODUCT TITLES: (not available)")
+        try:
+            r = E.claude_cli_json(SEEDS_SYSTEM, user[:30000], MODEL, SEEDS_SCHEMA, timeout=300) or {}
+        except Exception as e:  # noqa: BLE001
+            print(brand, "error", e, flush=True)
+            continue
+        new = [x.strip().lower() for x in r.get("seeds") or [] if x.strip() and x.strip().lower() not in v["seeds"]]
+        v["seeds"] = v["seeds"] + new
+        v["seeds_added"] = {"date": date.today().isoformat(), "seeds": new, "titles": len(titles)}
+        path.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
+        print(f"{brand}: +{len(new)} ({len(titles)} store titles): {', '.join(new)}", flush=True)
 
 
 def surface_score(rec: dict) -> float:
@@ -456,6 +502,8 @@ def label(args) -> None:
             by_seed.setdefault(r["seed"], []).extend(f"reddit: {p['title']}" for p in r["posts"] if p["comments"] >= 10)
     usage: dict = {}
     todo = [(s, qs) for s, qs in by_seed.items() if s not in out]
+    if getattr(args, "only_seeds", None) is not None:
+        todo = [(s, qs) for s, qs in todo if s in args.only_seeds]
 
     def one(seed, qs):
         res = {}
@@ -577,6 +625,56 @@ def supply(args) -> None:
                 lab[it["q"]] = it.get("results") or []
         save("supply_labels.json", lab)
     print("usage", usage)
+
+
+def label_results(sup: dict, lab: dict, todo: list[str], save_as: str | None = None) -> dict:
+    """Label each query's top 10 (kind + written-for-the-query) with voidscan's labeller, 8 queries per claude -p call."""
+    import voidscan as V
+    usage: dict = {}
+    for i in range(0, len(todo), 8):
+        batch = todo[i:i + 8]
+        user = "\n\n".join(f"QUERY: {q}\n" + "\n".join(f"{r['rank']}. {r['title']} | {r['url']}" for r in sup[q] if r.get("rank")) for q in batch)
+        try:
+            r = E.claude_cli_json(V.LABEL_SYSTEM, user, MODEL, V.LABEL_SCHEMA, timeout=300, usage=usage) or {}
+        except Exception as e:  # noqa: BLE001
+            print("label error", e, flush=True)
+            continue
+        for it in r.get("items") or []:
+            if it.get("q") in batch:
+                lab[it["q"]] = it.get("results") or []
+        if save_as:
+            save(save_as, lab)
+    return usage
+
+
+def srccal(args) -> None:
+    """Does a free source's coverage track Bing's? Reads the Bing-scored lead queries (>= MIN_RESULTS results) on
+    `--source`, labels them the same way, and reports Spearman and gate agreement (coverage < 0.4 on both)."""
+    import serpsources as S
+    sup, lab = load("supply.json", {}), load("supply_labels.json", {})
+    qs = [q for q in lab if sum(1 for r in sup.get(q, []) if r.get("rank")) >= MIN_RESULTS and lab[q]]
+    src = args.source
+    ssup, slab = load(f"srccal_{src}.json", {}), load(f"srccal_{src}_labels.json", {})
+    for q in [q for q in qs if q not in ssup]:
+        res = S.fetch(src, q)
+        if res is None:
+            print(f"{src}: no reading for {q!r} (cap, key or error); stopping", flush=True)
+            break
+        ssup[q] = res
+        save(f"srccal_{src}.json", ssup)
+        print(f"{src}: {q!r} {len(res)} results", flush=True)
+    label_results(ssup, slab, [q for q in qs if q in ssup and q not in slab and ssup[q]], f"srccal_{src}_labels.json")
+    pairs = [(coverage(lab[q]), coverage(slab[q])) for q in qs if slab.get(q)]
+    if len(pairs) < 5:
+        print(f"{src}: only {len(pairs)} paired readings"); return
+    rho = spearman([a for a, _ in pairs], [b for _, b in pairs])
+    agree = sum(1 for a, b in pairs if (a < 0.4) == (b < 0.4))
+    out = {"source": src, "n": len(pairs), "spearman": round(rho, 3), "gate_agree": agree,
+           "bing_open": sum(1 for a, _ in pairs if a < 0.4), "src_open": sum(1 for _, b in pairs if b < 0.4),
+           "pairs": {q: [coverage(lab[q]), coverage(slab[q])] for q in qs if slab.get(q)}}
+    save(f"srccal_{src}_result.json", out)
+    print(f"{src}: n={len(pairs)} Spearman {rho:.2f}; gate (<0.4) agrees on {agree}/{len(pairs)}; "
+          f"open on Bing {out['bing_open']}, on {src} {out['src_open']}")
 
 
 MIN_RESULTS = 6   # fewer organic results than this = the page did not load fully; no coverage reading
@@ -865,25 +963,213 @@ def backfill_report(args) -> None:
               f"outside fetches {sum(r['fetch'] for r in g)}; aged 6d+: landings {sum(r['land'] for r in old)}")
 
 
+# ---------------------------------------------------------------- daily $0 run (growth/gapmine/daily-plan.md)
+
+POOL = "pool"          # one accumulating run folder for the daily job
+SEEDS_PER_DAY = 8      # ~100 autocomplete calls per seed (Google, Bing, Amazon), paced
+MIN_SEARCHES = 500     # Ad Insight Bing US searches over 3 months, summed over the cluster's variants
+GATE = 0.4             # coverage below this goes to the page queue (vote and coverage agreed on 11-05)
+EXPAND_KEYS = None
+
+
+def _seed_done(seed: str, done: set) -> bool:
+    keys = [f"{eng}|{t.format(s=seed)}" for t in STEMS + LETTERS for eng in ("google", "bing") + (("amazon",) if t in STEMS else ())]
+    return all(k in done for k in keys)
+
+
+def lead_of(c: dict, dep: dict, vol: dict) -> str:
+    """The cluster's lead query: by keystroke depth where it was measured, else by Ad Insight searches."""
+    if any(x["q"] in dep for x in c["queries"][:3]):
+        return max(c["queries"][:3], key=lambda x: dep.get(x["q"], {}).get("demand", 0))["q"]
+    return max(c["queries"], key=lambda x: (vol.get(x["q"]) or 0, x["surface"]))["q"]
+
+
+MS_BLOCK = ROOT / "growth/gapmine/msads_blocked.json"
+WM_TO_MS = 5.0          # volcal 11-05: Webmaster ~= 0.20 x Ad Insight on 3,175 queries both report
+WM_DAILY = 300          # Webmaster GetKeywordStats calls per day (an undocumented cap stopped it after ~700 on 11-05)
+
+
+def vols() -> dict:
+    """Search counts on the Ad Insight scale: Ad Insight where it has them, else Webmaster x WM_TO_MS (estimated)."""
+    v = load("volume.json", {})
+    ms = {q: n for q, n in v.get("ms", {}).items() if n}
+    wm = {q: round(n * WM_TO_MS) for q, n in v.get("volumes", {}).items() if n and q not in ms}
+    return {**wm, **ms}
+
+
+def wm_fill(args) -> dict:
+    """Webmaster counts for cluster variants Ad Insight hasn't counted, at most WM_DAILY calls (fallback while Microsoft
+    Ads is blocked)."""
+    out = load("volume.json", {"volumes": {}})
+    out.setdefault("api_done", [])
+    done, ms = set(out["api_done"]), out.get("ms", {})
+    qs = [x["q"] for c in clusters() if c["queries"] and not c["covered_by"] for x in c["queries"][:6]]
+    qs = [q for q in dict.fromkeys(qs) if q not in ms and f"stats|{q}" not in done][:WM_DAILY]
+    got = 0
+    for q in qs:
+        d = bwt("GetKeywordStats", q=q, country="us", language="en-US")
+        if d is None:   # throttled or failed: stop for today, never retry in a loop
+            break
+        if d:
+            last = max(_ms(r["Date"]) for r in d)
+            out["volumes"][q] = sum(int(r.get("Impressions") or 0) for r in d if _ms(r["Date"]) > last - 91 * 86400 * 1000)
+            got += 1
+        out["api_done"].append(f"stats|{q}")
+    save("volume.json", out)
+    return {"asked": len(qs), "with_counts": got}
+
+
+def supply_daily(args) -> dict:
+    """Coverage for the biggest unscored clusters, through the capped free sources (serpsources.py), largest first."""
+    import serpsources as S
+    vol = vols()
+    dep, sup, lab = load("depth.json", {}), load("supply.json", {}), load("supply_labels.json", {})
+    src_of = load("supply_source.json", {})
+    rows = []
+    for c in clusters():
+        if not c["queries"] or c["covered_by"]:
+            continue
+        n = sum(vol.get(x["q"], 0) for x in c["queries"])
+        sq = supply_query(lead_of(c, dep, vol))
+        if n >= MIN_SEARCHES and not (sq in lab and sum(1 for r in sup.get(sq, []) if r.get("rank")) >= MIN_RESULTS):
+            rows.append((n, sq))
+    rows.sort(reverse=True)
+    read = {}
+    for n, sq in rows:
+        srcs = [x for x in S.available() if x in args.sources.split(",")]
+        if not srcs:
+            break
+        res = S.fetch(srcs[0], sq)
+        if res is None:
+            continue
+        sup[sq], src_of[sq] = res, srcs[0]
+        read[srcs[0]] = read.get(srcs[0], 0) + 1
+        save("supply.json", sup); save("supply_source.json", src_of)
+    label_results(sup, lab, [q for q in src_of if q not in lab and len(sup.get(q) or []) >= MIN_RESULTS], "supply_labels.json")
+    return {"unscored_over_min": len(rows), "read": read}
+
+
+def queue_step(args) -> list[dict]:
+    """Clusters that pass the gate (searches >= MIN_SEARCHES, coverage < GATE, no page of ours) join the page queue."""
+    qpath = ROOT / "growth/gapmine/queue.json"
+    queue = json.loads(qpath.read_text()) if qpath.exists() else []
+    have = {(x["seed"], x["cluster"]) for x in queue}
+    vol = vols()
+    dep, sup, lab = load("depth.json", {}), load("supply.json", {}), load("supply_labels.json", {})
+    src_of = load("supply_source.json", {})
+    added = []
+    for c in clusters():
+        if not c["queries"] or c["covered_by"] or (c["seed"], c["cluster"]) in have:
+            continue
+        lead = lead_of(c, dep, vol); sq = supply_query(lead)
+        if not (sq in lab and len(sup.get(sq) or []) >= MIN_RESULTS):
+            continue
+        n, cov = sum(vol.get(x["q"], 0) for x in c["queries"]), coverage(lab[sq])
+        import serpsources as S
+        if n >= MIN_SEARCHES and cov < GATE and src_of.get(sq, "bing") in S.GATING:
+            added.append({"seed": c["seed"], "cluster": c["cluster"], "lead": lead, "supply_query": sq, "searches": n,
+                          "coverage": cov, "uncovered": round(n * (1 - cov)), "source": src_of.get(sq, "bing"),
+                          "brands": c["brands"], "variants": [x["q"] for x in c["queries"][:10]],
+                          "queued": date.today().isoformat(), "status": "new"})
+    queue += sorted(added, key=lambda x: -x["uncovered"])
+    qpath.write_text(json.dumps(queue, indent=1) + "\n")
+    return added
+
+
+def prune_pool() -> None:
+    """Keep the pool's suggest.json small enough to commit (the daily job runs in another clone): once a seed is
+    labelled, only its labelled queries matter; the 'done' keys stay so nothing is fetched twice."""
+    sug, lab = load("suggest.json", {"done": [], "queries": {}}), load("labels.json", {})
+    keep = {}
+    for q, r in sug["queries"].items():
+        if r["seed"] not in lab or q in lab[r["seed"]]:
+            keep[q] = r
+    sug["queries"] = keep
+    (RUN / "suggest.json").write_text(json.dumps(sug, separators=(",", ":")))
+
+
+def daily(args) -> None:
+    """One unattended $0 pass: widen seeds -> expand a few new seeds -> label -> Ad Insight volume -> capped coverage
+    -> gate -> queue. Writes growth/gapmine/daily/<date>.md with readings per source against each cap."""
+    import serpsources as S
+    global BRANDS
+    log = {"date": date.today().isoformat()}
+    pool = ROOT / "growth/gapmine/runs" / POOL
+    if not (pool / "labels.json").exists():   # start the pool from the first full run
+        import shutil
+        for f in ("suggest.json", "labels.json", "volume.json", "supply.json", "supply_labels.json", "depth.json", "reddit.json"):
+            if (ROOT / "growth/gapmine/runs/2026-11-05" / f).exists():
+                shutil.copy(ROOT / "growth/gapmine/runs/2026-11-05" / f, pool / f)
+    seeds_step(args)
+    BRANDS = json.loads((ROOT / "growth/gapmine/brands.json").read_text())["brands"]
+    done = set(load("suggest.json", {"done": []})["done"])
+    pending = [s for v in BRANDS.values() for s in v["seeds"] if not _seed_done(s, done)]
+    args.only_seeds = set(pending[:SEEDS_PER_DAY])
+    log["seeds"] = {"pending": len(pending), "today": sorted(args.only_seeds)}
+    if args.only_seeds:
+        expand(args)
+    done = set(load("suggest.json", {"done": []})["done"])
+    labelled = set(load("labels.json", {}))
+    args.only_seeds = {s for v in BRANDS.values() for s in v["seeds"] if _seed_done(s, done) and s not in labelled}
+    if args.only_seeds:
+        label(args)
+    if MS_BLOCK.exists():   # Microsoft suspended the account on 11-05 (reinstatement is Barry's, DLC-178): don't retry
+        b = json.loads(MS_BLOCK.read_text())
+        log["msvolume"] = f"BLOCKED since {b['date']} (DLC-178: {b['reason'][:120]}); Webmaster fallback"
+    else:
+        try:
+            msvolume(args)
+            log["msvolume"] = "ok"
+        except Exception as e:  # noqa: BLE001
+            msg = str(e)
+            if "InvalidCredentials" in msg or '"Code":105' in msg:
+                MS_BLOCK.write_text(json.dumps({"date": date.today().isoformat(), "reason": msg[:300]}, indent=1) + "\n")
+                log["msvolume"] = "BLOCKED today (HTTP 401 code 105: Microsoft Ads account suspended, DLC-178); Webmaster fallback"
+            else:   # e.g. refresh token expired (tools/msads_auth.py, DLC-174)
+                log["msvolume"] = f"FAILED: {msg}"[:300]
+    if not log["msvolume"].startswith("ok"):
+        log["webmaster"] = wm_fill(args)
+        log["msvolume"] += f"; Webmaster counted {log['webmaster']['with_counts']} of {log['webmaster']['asked']} new variants (x{WM_TO_MS:g} to Ad Insight scale)"
+    prune_pool()
+    log["supply"] = supply_daily(args)
+    log["queued"] = [f"{x['cluster']} ({x['uncovered']} uncovered, cov {x['coverage']}, {x['source']})" for x in queue_step(args)]
+    log["sources"] = S.status()
+    d = ROOT / "growth/gapmine/daily"
+    d.mkdir(parents=True, exist_ok=True)
+    md = [f"# Gap mining daily run {log['date']}", "",
+          f"- Seeds: {len(log['seeds']['today'])} expanded today, {log['seeds']['pending']} pending: {', '.join(log['seeds']['today']) or '-'}",
+          f"- Ad Insight volume: {log['msvolume']}",
+          f"- Coverage: {log['supply']['unscored_over_min']} clusters >= {MIN_SEARCHES} searches unscored before today; read today: {log['supply']['read'] or 'none'}",
+          f"- Queued for pages (coverage < {GATE}): {len(log['queued'])}", *[f"  - {x}" for x in log["queued"]], "",
+          "## Free sources, used / cap", "", "```", log["sources"], "```"]
+    (d / f"{log['date']}.md").write_text("\n".join(md) + "\n")
+    print("\n".join(md))
+
+
 def main() -> None:
     global RUN
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead", "volume", "msvolume", "volcal"])
+    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead", "volume", "msvolume", "volcal", "srccal", "seeds", "daily", "queue"])
     ap.add_argument("--run", default=date.today().isoformat())
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--pause", type=float, default=4.0)
     ap.add_argument("--top", type=int, default=120, help="depth/supply: clusters to measure, by surface score")
     ap.add_argument("--calib", type=int, default=3000, help="msvolume: extra Webmaster-counted queries fetched for calibration")
     ap.add_argument("--show", type=int, default=60)
+    ap.add_argument("--force", action="store_true", help="seeds: redo brands already widened")
+    ap.add_argument("--sources", default="serpapi,bing", help="daily: coverage sources allowed, by priority")
+    ap.add_argument("--source", default="claude", help="srccal/supply: free SERP source (growth/evals/serpsources.py)")
     ap.add_argument("--n", type=int, default=60, help="calibrate: sample size")
     ap.add_argument("--leads", type=int, default=1, help="depth: lead queries measured per cluster")
     ap.add_argument("--min-demand", type=float, default=0.3, help="supply: skip clusters whose lead query scores below this")
     ap.add_argument("--min-surface", type=float, default=0.3, help="label: skip suggestions the engines barely push")
     args = ap.parse_args()
+    if args.step in ("daily", "queue"):
+        args.run = POOL
     RUN = ROOT / "growth/gapmine/runs" / args.run
     RUN.mkdir(parents=True, exist_ok=True)
     {"expand": expand, "reddit": reddit, "news": news, "launches": launches, "label": label, "depth": depth_step,
-     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head, "volume": volume, "msvolume": msvolume, "volcal": volcal}[args.step](args)
+     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head, "volume": volume, "msvolume": msvolume, "volcal": volcal, "srccal": srccal, "seeds": seeds_step, "daily": daily, "queue": queue_step}[args.step](args)
 
 
 if __name__ == "__main__":
