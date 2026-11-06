@@ -1,7 +1,10 @@
 #!/usr/bin/env python3.12
 """Render a Dealectric YouTube video and its Short from a script file (DLC-187).
 
-    python3.12 growth/video/render.py <id> [--only long|short] [--slides]
+    python3.12 growth/video/render.py <id> [--only long|short] [--slides] [--voice-ref <clip>]
+
+--voice-ref voices the narration with a local clone of the speaker in <clip> (Chatterbox, see clone_tts.py) and
+writes to out/<id>-clone/ instead. Keep the clip out of the repo (the repo is public): ~/dealectric-voice/.
 
 Reads growth/video/scripts/<id>.json and writes growth/video/out/<id>/ (gitignored):
   long.mp4  (1920x1080)   short.mp4 (1080x1920, under 60 s)
@@ -35,6 +38,9 @@ DISCLOSURE = ("Links above are affiliate links: they open each brand's official 
               "Associate Dealectric earns from qualifying purchases.")
 AI_NOTE = ("How this video is made: the script is written from Dealectric's published spec tables (makers' US pages) "
            "and the narration is an AI voice. No product was filmed; the slides are our own.")
+AI_NOTE_CLONE = ("How this video is made: the script is written from Dealectric's published spec tables (makers' US "
+                 "pages) and the narration is an AI voice made from a recording of Barry, who runs Dealectric. No "
+                 "product was filmed; the slides are our own.")
 
 CSS = """
 *{box-sizing:border-box;margin:0}html,body{width:%(w)dpx;height:%(h)dpx;overflow:hidden}
@@ -124,13 +130,46 @@ def shoot(doc, path, fmt, tmp):
 # "Dealectric" came back as "Dielectric", "LiFePO4" as "LEAF P04"). Of "Deal-ectric", "Deal-lectric", "Deel-ektrik" and
 # "Deal Electric", only the last transcribed back as "Deal ..." (2026-11-06). Captions keep the written form.
 SPEAK = [(r"\bDealectric\b", "Deal Electric"), (r"\bdealectric dot com\b", "deal electric dot com"),
-         (r"\bLiFePO4\b", "lithium iron phosphate")]
+         (r"\bLiFePO4\b", "lithium iron phosphate"),
+         # Barry's cloned voice (Chatterbox) read these as "allo powers" and "AC80" (2026-11-06).
+         (r"\bALLPOWERS\b", "All Powers"), (r"\bAC180\b", "A C one-eighty")]
+
+
+def spoken_form(text):
+    for pat, rep in SPEAK:
+        text = re.sub(pat, rep, text)
+    return text
+
+
+# Cloned voice (--voice-ref <clip>): Chatterbox, run locally in its own venv by clone_tts.py. About 2.3x slower than real
+# time on the M5 Pro's CPU (25 s of audio took 59 s on 2026-11-06), so all scenes go to one run and are cached by text.
+CLONE_PY = os.path.expanduser("~/venvs/chatterbox/bin/python")
+CLONE_SETTINGS = {"exaggeration": 0.5, "cfg": 0.5}
+# The clone said "Deal Electric" as "Dielelectric" in 2 of 3 tries; "Deel Electric" transcribed right 2 of 2 (2026-11-06).
+CLONE_SPEAK = [(r"\b[Dd]eal Electric\b", "Deel Electric"), (r"\bdeal electric dot com\b", "deel electric dot com")]
+
+
+def clone_paths(scenes, ref, cache):
+    ref_key = hashlib.sha1(open(ref, "rb").read()).hexdigest()[:12]
+    paths = []
+    for sc in scenes:
+        text = spoken_form(sc["say"])
+        for pat, rep in CLONE_SPEAK:
+            text = re.sub(pat, rep, text)
+        key =hashlib.sha1(f"chatterbox|{ref_key}|{json.dumps(CLONE_SETTINGS)}|{text}".encode()).hexdigest()[:16]
+        paths.append((text, os.path.join(cache, f"{key}.wav")))
+    todo = [{"text": t, "out": p} for t, p in paths if not os.path.exists(p)]
+    if todo:
+        jobs = os.path.join(cache, f"jobs-{ref_key}.json")
+        json.dump({"ref": os.path.abspath(ref), **CLONE_SETTINGS, "jobs": todo}, open(jobs, "w"))
+        print(f"cloning {len(todo)} scenes ...", flush=True)
+        subprocess.run([CLONE_PY, os.path.join(HERE, "clone_tts.py"), jobs], check=True)
+    return [p for _, p in paths]
 
 
 def tts(text, cache):
-    for pat, rep in SPEAK:
-        text = re.sub(pat, rep, text)
-    key = hashlib.sha1(f"{TTS_MODEL}|{VOICE}|{TTS_STYLE}|{text}".encode()).hexdigest()[:16]
+    text = spoken_form(text)
+    key =hashlib.sha1(f"{TTS_MODEL}|{VOICE}|{TTS_STYLE}|{text}".encode()).hexdigest()[:16]
     path = os.path.join(cache, f"{key}.mp3")
     if os.path.exists(path):
         return path
@@ -218,12 +257,13 @@ def describe(s, fmt, chapters):
     return f"TITLE: {title}\n\nDESCRIPTION:\n" + "\n\n".join(parts) + f"\n\nTAGS: {tags}\n"
 
 
-def render(s, fmt, slides_only):
-    out = os.path.join(HERE, "out", s["id"])
+def render(s, fmt, slides_only, voice_ref=None):
+    out = os.path.join(HERE, "out", s["id"] + ("-clone" if voice_ref else ""))
     os.makedirs(os.path.join(out, "slides"), exist_ok=True)
     cache = os.path.join(HERE, "out", "cache")
     os.makedirs(cache, exist_ok=True)
     scenes = s[fmt]
+    cloned = clone_paths(scenes, voice_ref, cache) if voice_ref and not slides_only else None
     with tempfile.TemporaryDirectory() as tmp:
         clips, timed, chapters, t = [], [], [], 0.0
         for i, sc in enumerate(scenes):
@@ -231,7 +271,7 @@ def render(s, fmt, slides_only):
             shoot(slide_html(sc["slide"], fmt), png, fmt, tmp)
             if slides_only:
                 continue
-            mp3 = tts(sc["say"], cache)
+            mp3 = cloned[i] if cloned else tts(sc["say"], cache)
             spoken = duration(mp3)
             dur = spoken + PAD
             c = os.path.join(tmp, f"c{i:02d}.mp4")
@@ -252,7 +292,10 @@ def render(s, fmt, slides_only):
     open(os.path.join(out, f"{fmt}.srt"), "w").write(srt_cues(timed))
     if chapters and chapters[0][0] > 0:
         chapters.insert(0, (0.0, "Intro"))
-    open(os.path.join(out, f"{fmt}.txt"), "w").write(describe(s, fmt, chapters))
+    desc = describe(s, fmt, chapters)
+    if voice_ref:
+        desc = desc.replace(AI_NOTE, AI_NOTE_CLONE)
+    open(os.path.join(out, f"{fmt}.txt"), "w").write(desc)
     total = duration(mp4)
     print(f"{s['id']} {fmt}: {total:.1f} s, {len(scenes)} scenes -> {mp4}")
     if fmt == "short" and total > 60:
@@ -264,11 +307,12 @@ def main(argv):
         sys.exit(__doc__)
     vid = argv[0]
     only = argv[argv.index("--only") + 1] if "--only" in argv else None
+    ref = argv[argv.index("--voice-ref") + 1] if "--voice-ref" in argv else None
     s = json.load(open(os.path.join(HERE, "scripts", f"{vid}.json")))
     for fmt in ("long", "short"):
         if only and fmt != only:
             continue
-        render(s, fmt, "--slides" in argv)
+        render(s, fmt, "--slides" in argv, ref)
 
 
 if __name__ == "__main__":

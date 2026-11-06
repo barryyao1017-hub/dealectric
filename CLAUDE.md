@@ -43,3 +43,5 @@ Three browsers, one name each. Use these names in chat, notes and briefs; never 
 - Legal name on official forms: Jiayi Yao; public name: Barry / Dealectric.
 - Affiliate links carry `rel="sponsored nofollow"`; disclosure page is required on every build.
 - Do not add tracking scripts, cookies, or JS-dependent content: the audience is AI crawlers and agents that don't execute JavaScript.
+  One exception (Barry, 2026-11-06): our own YouTube videos are embedded on the page they cover, as a lazy `youtube-nocookie.com` iframe plus a plain link and a VideoObject (`src/videos.json`, `video_block` in build.py); the page's text must stay complete without the video.
+- **Official YouTube channel**: "Dealectric", handle @Dealectric-JY (channel UCMTDeZQrT_8k_oOxNjQebFQ) on barrryyao@gmail.com, created 2026-11-06. Upload in YouTube Studio in the Agent Chrome, with Barry's yes per video (`growth/video/README.md`).

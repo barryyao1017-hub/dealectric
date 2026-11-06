@@ -50,6 +50,7 @@ h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}h2{font
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}.card h3{margin:0 0 6px}.card p{margin:0;color:var(--muted);font-size:15px}
 table{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
 .scroll{overflow-x:auto}
+.video{position:relative;aspect-ratio:16/9;margin:12px 0;background:#000;border-radius:8px;overflow:hidden}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;font-size:13.5px;line-height:1.5}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.95em}
 .note{border-left:3px solid var(--accent);padding:8px 14px;background:var(--card);border-radius:0 8px 8px 0;margin:18px 0;color:var(--muted);font-size:15px}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}footer .wrap{padding:22px 16px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
@@ -1198,7 +1199,33 @@ def product_result_line(c):
             f'<code>{body}</code></details>\n')
 
 
+VIDEOS = {k: v for k, v in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "videos.json"))).items()
+          if not k.startswith("_") and v.get("youtube_id")}
+
+
+def video_block(c):
+    """Our YouTube video for this page (DLC-187). Barry, 2026-11-06: embed it. A lazy youtube-nocookie iframe: no script
+    or cookie on our page, nothing loads until it scrolls near, and YouTube says it stores nothing until play. Agents
+    that don't run JavaScript get the link and the VideoObject; the page's text is complete without the video."""
+    v = VIDEOS.get(c["slug"])
+    if not v:
+        return "", None
+    vid, title = v["youtube_id"], html.escape(v["title"])
+    m, s = divmod(int(v["duration_s"]), 60)
+    watch = f"https://www.youtube.com/watch?v={vid}"
+    block = f"""<h2>Video: {title} ({m} min)</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{title}" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="small">On YouTube: <a href="{watch}">{title}</a>. The video has no prices; this page's prices and codes are current. Narration is an AI voice.</p>
+"""
+    ld = {"@type": "VideoObject", "name": v["title"], "description": v["description"],
+          "thumbnailUrl": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg", "uploadDate": v["uploaded"],
+          "duration": f"PT{m}M{s}S", "embedUrl": f"https://www.youtube.com/embed/{vid}", "url": watch,
+          "publisher": {"@type": "Organization", "name": SITE["brand"], "url": SITE["url"]}}
+    return block, ld
+
+
 def compare_page(c):
+    video_html, video_ld = video_block(c)
     ours = [r for r in c["rows"] if r.get("slug")]
     others = [r for r in c["rows"] if not r.get("slug")]
     heads = "".join(f"<th>{h}</th>" for _, h in c["columns"])
@@ -1233,7 +1260,7 @@ def compare_page(c):
 and the code is tested daily in that brand's cart; the date shown is its last pass (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
 comparison is complete; their figures and prices were read from the makers' own US pages on {c['checked']} and are not re-checked daily. The buy links are
 affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.{amazon_note}</p>
-{compare_where_to_buy_compact(ours) if c.get("ai_note") else ""}{compare_fill(c['after'])}
+{video_html}{compare_where_to_buy_compact(ours) if c.get("ai_note") else ""}{compare_fill(c['after'])}
 <h2>Sources</h2>
 <ul>
 {"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}
@@ -1245,6 +1272,8 @@ or <a href="/feedback">/feedback</a>.</p>
           "author": {"@type": "Organization", "name": SITE["brand"]}, "publisher": {"@type": "Organization", "name": SITE["brand"]},
           "datePublished": c["published"], "dateModified": max(price_days(c), default=c["checked"]), "url": SITE["url"] + compare_path(c),
           "about": [{"@type": "Product", "name": full_name(BY_SLUG[r["slug"]]), "url": SITE["url"] + f"/products/{r['slug']}/"} for r in ours]}
+    if video_ld:
+        ld["video"] = video_ld
     return (c["title"], c["desc"], body, ld)
 
 
