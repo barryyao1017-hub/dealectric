@@ -31,7 +31,7 @@ QUEUE = ROOT / "growth/gapmine/queue.json"
 DRAFTS = ROOT / "growth/gapmine/drafts"
 POOL = ROOT / "growth/gapmine/runs/pool"
 MODEL = "claude-fable-5-1"
-PAGES_PER_DAY = 3          # plan-usage cap (daily-plan.md, conflict 2); raise only with Barry's OK
+PAGES_PER_DAY = 10         # Barry 2026-11-06: "at least 10 pages per day" (was 3, plan-usage cap, daily-plan.md conflict 2)
 END_MARK = "# Brands whose own programs declined us"
 
 
