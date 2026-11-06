@@ -1,0 +1,97 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dealectric",
+  "version": "1.0.0",
+  "description": "Look up consumer electronics sold on brands' own US stores: the store's current price, the discount codes that worked in the brand's own cart in Dealectric's daily test, and the store's daily cart price history.",
+  "author": {
+    "name": "Dealectric",
+    "email": "hello@dealectric.com",
+    "url": "https://dealectric.com"
+  },
+  "homepage": "https://dealectric.com",
+  "keywords": ["shopping", "electronics", "prices", "discount codes", "power stations"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Dealectric",
+        "shortDescription": "Price and code checks",
+        "longDescription": "Dealectric checks consumer electronics sold on brands' own US online stores: portable power stations, solar generator kits, power banks, chargers, NAS drives, headphones, speakers, projectors and more, from brands such as BLUETTI, ALLPOWERS, Baseus, UGREEN, ESR and Soundcore.\n\nWhat it does:\n- Search products by need, category and budget, with each product's store price and the date it was read, stock, key specs and caveats.\n- Look up the discount codes for a product or brand. Each published code is re-tested every day by adding the product to the brand's own cart; results show what the code took off, the price after it and the date it last worked. When no code applied in the latest test, it says so.\n- Show a product's daily price in the brand's own cart (one unit, before any code) with the low, the high and the latest reading, so you can tell whether today's price is a typical one.\n\nWho it is for: US shoppers comparing electronics who want the store's real price and codes that have actually been checked.\n\nLimits: US stores only. Covers the products in Dealectric's catalog, not every product on the market. Prices change; every price and code result carries the date it was checked. Price history exists only for products in the daily code test. Purchases happen on the brand's own website; nothing is bought inside ChatGPT. Buy links are tracked: the brand pays Dealectric a commission on purchases made through them, at no extra cost to the shopper (https://dealectric.com/disclosure). No account or sign-in is needed.",
+        "developerName": "Dealectric",
+        "category": "Shopping",
+        "capabilities": ["Read"],
+        "websiteURL": "https://dealectric.com",
+        "supportURL": "https://dealectric.com/contact",
+        "privacyPolicyURL": "https://dealectric.com/privacy",
+        "termsOfServiceURL": "https://dealectric.com/terms",
+        "defaultPrompt": [
+          "Find a portable power station under $400 for camping and check its codes",
+          "Is there a discount code that works for the BLUETTI Elite 30 V2 today?",
+          "Is $1,199 a normal price for the BLUETTI Elite 300?"
+        ],
+        "brandColor": "#0B6B4F",
+        "brandColorDark": "#3FBF93",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png",
+        "composerIcon": "./assets/logo.png",
+        "composerIconDark": "./assets/logo-dark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find products for a need within a budget",
+              "prompt": "I need a portable power station under $400 for weekend camping. What are my options, and is there a working discount code?",
+              "tools_triggered": "search_products",
+              "expected_behavior": "Lists up to five power stations priced at or under $400 after the best code, each with the store price and the date it was read, the best code that passed the cart test with its saving and date, stock, and a buy link to the brand's own US store."
+            },
+            {
+              "description": "Check the codes for one product",
+              "prompt": "Is there a discount code that works for the BLUETTI Elite 30 V2 today?",
+              "tools_triggered": "check_codes",
+              "expected_behavior": "Returns the code or codes that worked on the BLUETTI Elite 30 V2 in BLUETTI's US cart, with the terms, the saving on this product, the price after the code and the date it last worked."
+            },
+            {
+              "description": "Judge today's price against the history",
+              "prompt": "Is $1,199 a normal price for the BLUETTI Elite 300, or should I wait?",
+              "tools_triggered": "price_history",
+              "expected_behavior": "Returns the Elite 300's daily cart prices in BLUETTI's US store since October 2026 with the low, the high and the latest reading and its date, and says where today's price sits between them. It does not predict future prices."
+            },
+            {
+              "description": "List a brand's products with working codes",
+              "prompt": "Which ALLPOWERS products have a discount code that works right now?",
+              "tools_triggered": "check_codes",
+              "expected_behavior": "Lists Dealectric's ALLPOWERS products with, for each, the best code that passed the latest cart test, its saving and the price after it, and the date of the test."
+            },
+            {
+              "description": "Handle a product outside the catalog",
+              "prompt": "Find me a working discount code for an iPhone 17 Pro.",
+              "tools_triggered": "check_codes",
+              "expected_behavior": "Reports that the product is not in Dealectric's catalog and does not invent a code. It may list the brands Dealectric covers."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Purchase or payment inside ChatGPT",
+              "prompt": "Buy the BLUETTI AC180 for me and pay with my saved card."
+            },
+            {
+              "description": "Unrelated request",
+              "prompt": "What's the weather in Seattle this weekend?"
+            },
+            {
+              "description": "General writing task with an electronics word in it",
+              "prompt": "Write a short poem about solar panels."
+            }
+          ]
+        },
+        "demo_recording_url": "REPLACE_WITH_VIDEO_URL",
+        "commerce": true,
+        "commerce_description": "The plugin does not sell anything or take payment in ChatGPT. It returns links to the product pages of brands' own US online stores, where any purchase happens. The links are affiliate links (CJ Affiliate and Awin): the brand pays Dealectric a commission on purchases made through them, at no extra cost to the shopper. Links never open a checkout page directly."
+      },
+      "publication": {
+        "countries": ["US"],
+        "release_notes": "First release: product search with store prices, discount codes re-tested daily in each brand's own US cart, and daily cart price history."
+      }
+    }
+  }
+}

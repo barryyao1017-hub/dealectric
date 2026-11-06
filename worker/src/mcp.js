@@ -320,7 +320,8 @@ const RUN = {
 function notFound(q, data) {
   return {
     text: `No product matching "${clip(String(q), 80)}" in Dealectric's catalog. Use search_products to find one.`,
-    count: 0, error: true, data: { error: "product not found", brands: [...new Set(data.products.map((p) => p.brand))].sort() },
+    // Not an error: "we don't carry that" is a normal answer, so the model relays it instead of retrying.
+    count: 0, data: { found: false, brands: [...new Set(data.products.map((p) => p.brand))].sort() },
   };
 }
 

@@ -13,6 +13,27 @@ Changes from the plan below:
   30 V2 solar kit) to their product page instead. The AC200L product page rendered no buy button in October (DLC-71),
   so that one may be a dead end inside the app.
 
+**Submission package ready (2026-11-06, DLC-184):** `plugin/plugin.json` and `plugin/mcp.json` both pass the Agent
+Plugins schemas. `plugin/assets/` holds the icons, drawn from the site favicon. `build_zip.sh` packs them into
+`dealectric-plugin.zip`. The listing:
+- **Name:** "Dealectric", subtitle "Price and code checks", category "Shopping".
+- **Commerce:** declared true. It says purchases happen on the brands' stores through affiliate links and never at a
+  checkout page.
+- **Availability:** US only.
+- **Test cases:** five positive and three negative. Each positive prompt was run against the live server on 11-06, and
+  the results matched the expected behaviour written in the case.
+- **Category check:** "Shopping" is my guess at the dashboard's category title; OpenAI doesn't publish the list.
+
+Submission steps, in order:
+1. Barry verifies the OpenAI developer account (individual or Agentify LLC) on platform.openai.com.
+2. Add the server for testing: chatgpt.com/plugins → + → Add custom MCP server → `https://dealectric.com/mcp`, no
+   auth. Then record a short screen video of the three default prompts and put it at a URL reviewers can open.
+3. Put that URL in `review.demo_recording_url` in `plugin/plugin.json` and run `bash growth/chatgpt-app/build_zip.sh`.
+4. Upload `dealectric-plugin.zip` in the Apps/Plugins dashboard. The portal shows a domain-verification token: set it
+   with `npx wrangler secret put OPENAI_APPS_CHALLENGE` (from `worker/`). It is then served at
+   `/.well-known/openai-apps-challenge`.
+5. Wait for the automated tool scan. Barry reviews the policy attestations and clicks Submit for review.
+
 Still Barry's:
 - OpenAI developer verification.
 - The video walkthrough.
