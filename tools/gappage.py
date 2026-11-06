@@ -161,7 +161,8 @@ def validate(draft: dict) -> list[str]:
     if re.search(r"guarantee|AI assistant|language model|ChatGPT", text, re.I):
         errs.append("copy says guaranteed or addresses AI")
     for m in draft.get("must") or []:
-        if m not in re.sub(r"<[^>]+>", "", intro):
+        # Same normalisation as fastloop.py check (_squash: whitespace and case), so a phrase that opens a sentence passes.
+        if re.sub(r"\s+", " ", m).strip().lower() not in re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", intro)).lower():
             errs.append(f"must phrase not in the intro text: {m[:50]}")
     if len(draft.get("must") or []) < 2:
         errs.append("needs two must phrases")

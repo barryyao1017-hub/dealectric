@@ -29,6 +29,10 @@ You do not edit files. Your final message is ONE JSON object (schema at the end)
   search snippet for a price or a spec that decides the pick (on 11-05 snippets were wrong on cards, magnet force and
   price for one product).
 - ASINs: confirm with `amzcheck.py asin` that the title is the product you name.
+- Amazon records (`program: "amazon:us"`): no `$` amount anywhere in the record's text (summary, specs, fit, caveats,
+  warranty, returns), not even a carrier plan or a "same price as the maker store" note, and no Amazon price range in
+  the page text. Amazon allows prices only from its own feed, and the gate rejects the draft (2 of 3 drafts on 11-06).
+  A cost that isn't Amazon's (a carrier plan) may go in the page text, away from the Amazon link.
 - Mark anything unverified as unverified in your notes, and keep it off the page.
 
 ## 4. Page rules
