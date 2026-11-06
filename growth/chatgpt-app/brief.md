@@ -109,6 +109,32 @@ the Agent Chrome.
 - **Use:** outside tool calls per week in D1, and `/go/` clicks and sales tagged `mcp`. There is no stop date (Barry's
   rule). Read it in the Daily report once live.
 
+## Similar apps (web research 2026-11-06)
+
+The details come from search snippets of ChatGPT directory listings, press releases and directory sites. The
+chatgpt.com listing pages need a login, so I didn't open them.
+
+| App | Where | What it does | Overlap with us |
+|---|---|---|---|
+| Price AI Assistant ("Find prices and coupons") | ChatGPT directory | Product search, retailer price comparison, coupons, cashback, restaurants | Broad version of `search_products` + codes |
+| Pricewatcha ("Product price analytics") | ChatGPT directory | Catalog price history (low, high, average, trend), watchlists, alerts | Same as `price_history`, plus alerts |
+| Refermate ("Find deals and rewards") | ChatGPT directory | Cashback, coupons, product alternatives; splits its commission with the user | Coupons, on an affiliate model |
+| Minty (Apr 2026) | ChatGPT directory | Cashback and coupon offers mid-chat; also sells brand spots | Coupons; ad-funded as well |
+| ShopBack, Cashback Hive | ChatGPT directory | Cashback rates, codes, tracked links by brand or category | Coupons with tracked links |
+| Klarna Shopping Search (May 2026) | ChatGPT directory | Price comparison across millions of products and many retailers | Broad version of `search_products` |
+| ShopSavvy | MCP server (no directory listing found) | Prices across 40k+ retailers, price history, buy-or-wait advice | `price_history` at scale |
+| Kindred | B2B API, MCP, data feed | 374k offers at 75k merchants, each "tested daily" by a checkout bot | Our cart-test claim, sold to apps |
+
+What this means:
+- **Approval risk is lower than this brief assumed.** At least four approved apps make money from affiliate commissions
+  on coupons and tracked links (Refermate, Minty, ShopBack, Cashback Hive). So "advertising vehicle" is evidently not read
+  as covering affiliate-funded deal apps.
+- **Our tested codes are not unique.** Kindred claims daily checkout tests at scale and sells them to agents and apps.
+  None of the consumer apps above says its codes are cart-tested, but any of them could buy Kindred's data.
+- **Our catalog is narrow.** We have 48 products from about a dozen direct-to-consumer brands. The others cover thousands
+  of merchants, and the cashback apps also pay the shopper. Where we can still win is depth on our brands' own stores:
+  the store's price on a given day, whether a code passed in that cart, and the price history for that store.
+
 ## Open questions this brief can't settle
 
 - Whether a reviewer reads "discount codes" in the description as advertising. Only a submission answers that.
