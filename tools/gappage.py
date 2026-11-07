@@ -220,7 +220,8 @@ def page_text(draft: dict, gnum: int, item: dict) -> str:
 
 
 def next_gnum() -> int:
-    nums = [int(x) for x in re.findall(r"\"question\": '(?:G)(\d+)", (ROOT / "src/gaps.py").read_text())]
+    # repr() quotes the question with " when it holds an apostrophe (e.g. "Nature's Generator", 11-06): match both
+    nums = [int(x) for x in re.findall(r"\"question\": ['\"]G(\d+)", (ROOT / "src/gaps.py").read_text())]
     return max(nums) + 1
 
 
@@ -343,6 +344,59 @@ def prepare_brand(draft: dict, item: dict) -> None:
         if res:
             sup[q] = res
             sup_p.write_text(json.dumps(sup, indent=1))
+    # Same gate as discovery (Barry 11-06, DLC-190): the brand's chosen query becomes a gap page only when Claude's
+    # coverage reading is under the Claude gate; otherwise the brand ships its product pages only.
+    import gapmine as GM
+    GM.RUN = POOL
+    lab = GM.load("supply_labels.json", {})
+    if sup.get(q) and q not in lab:
+        GM.label_results(sup, lab, [q], "supply_labels.json")
+    src = GM.load("supply_source.json", {})
+    src[q] = "claude"
+    GM.save("supply_source.json", src)
+    cov = GM.coverage(lab[q]) if lab.get(q) else None
+    item["coverage"] = cov
+    if cov is None or cov >= GM.gate_for("claude"):
+        draft["status"] = "products_only"
+        draft["gate_note"] = f"query {q!r} not open on Claude (coverage {cov}); products only"
+        for k in ("slug", "must", "page"):
+            draft.pop(k, None)
+
+
+def strip_amazon(draft: dict) -> str | None:
+    """While Amazon walls our lookups (work laptop, 11-06) an ASIN can't be confirmed, so competitor records on Amazon
+    become plain table rows linking the maker's page (named, not linked through Amazon). Refuses when the page's lead
+    pick (first {buy:} in the intro) is an Amazon record: that page waits for a real ASIN check."""
+    prods = draft.get("products") or []
+    amz = {p["slug"]: p for p in prods if p.get("program") == "amazon:us"}
+    if not amz:
+        return None
+    page = draft.get("page") or {}
+    m = re.search(r"\{buy:([a-z0-9-]+)\}", page.get("intro") or "")
+    if m and m.group(1) in amz:
+        return f"lead pick {m.group(1)} is an Amazon record"
+    for s, p in amz.items():
+        if not p.get("official_page"):
+            return f"{s} has no maker page to link instead"
+    draft["products"] = [p for p in prods if p["slug"] not in amz]
+    for k in ("intro", "after"):
+        t = page.get(k) or ""
+        for s in amz:
+            t = re.sub(r"\s*\(\{buy:%s\}\)" % re.escape(s), "", t)
+            t = t.replace("{buy:%s}" % s, amz[s]["model"])
+        page[k] = t
+    rows = []
+    for r in page.get("rows") or []:
+        if r.get("slug") in amz:
+            p = amz[r["slug"]]
+            cells = {k: v for k, v in (r.get("cells") or {}).items() if k != "price"}
+            rows.append({"brand": p["brand"], "model": r.get("model") or p["model"], "url": p["official_page"], "cells": cells})
+        else:
+            rows.append(r)
+    page["rows"] = rows
+    draft.setdefault("notes", "")
+    draft["notes"] += f" [11-06: Amazon records {', '.join(amz)} turned into maker-page rows; Amazon lookups were walled]"
+    return None
 
 
 def run_one(item: dict, do_publish, draft: dict | None = None) -> dict:
@@ -353,6 +407,11 @@ def run_one(item: dict, do_publish, draft: dict | None = None) -> dict:
     if draft.get("status") not in ("ok", "products_only"):
         return draft
     prepare_brand(draft, item)
+    pg = draft.get("page") or {}
+    keys = [c[0] for c in pg.get("columns") or []]
+    for r in pg.get("rows") or []:   # some drafts give cells as a list in column order (Zowietek, 11-06)
+        if isinstance(r.get("cells"), list):
+            r["cells"] = {k: v for k, v in zip(keys, r["cells"])}
     errs, imgs, n = gate(draft, item)
     if errs:
         restore(imgs)
@@ -398,6 +457,7 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=5)
     ap.add_argument("--kind", default="all", choices=["all", "gap", "brand"])
     ap.add_argument("--local", action="store_true", help="applyall/apply: commit each passing page locally, no push")
+    ap.add_argument("--no-amazon", action="store_true", help="apply: turn Amazon competitor records into maker-page rows (Amazon walled)")
     ap.add_argument("slug", nargs="?")
     ap.add_argument("--max", type=int, default=PAGES_PER_DAY)
     ap.add_argument("--publish", action="store_true")
@@ -410,6 +470,10 @@ def main() -> int:
     if a.cmd == "apply":
         d = json.loads((DRAFTS / f"{a.slug}.json").read_text())
         item = d.pop("item")
+        if a.no_amazon:
+            why = strip_amazon(d)
+            if why:
+                print(f"not applied: {why}"); return 1
         d = run_one(item, "local" if a.local else a.publish, d)
         print(json.dumps(d.get("gate"), indent=1), d.get("published", ""))
         return 0

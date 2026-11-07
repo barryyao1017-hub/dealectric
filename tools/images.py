@@ -19,6 +19,8 @@ OUT = os.path.join(REPO, "src", "img")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 # One line icon per category (48x48 viewBox, drawn with the stroke below).
+# A plain box-with-tag icon for categories added by brand drafts (11-06) until one is drawn for them.
+DEFAULT_ICON = '<rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 20h32M20 10v10M28 10v10"/>'
 ICONS = {
     "power-station": '<rect x="6" y="14" width="36" height="28" rx="4"/><path d="M16 14v-5h16v5"/><circle cx="16" cy="28" r="4"/><circle cx="30" cy="28" r="4"/><path d="M12 37h24"/>',
     "power-bank": '<rect x="13" y="4" width="22" height="40" rx="5"/><path d="M26 13l-6 10h7l-4 11"/>',
@@ -93,7 +95,7 @@ def card(p, square):
     spec_html = "".join(f"<div class='spec'><b>{html.escape(k)}</b><span>{html.escape(v)}</span></div>" for k, v in specs)
     return f"""<!doctype html><meta charset="utf-8"><style>{css}</style>
 <div class="top"><div><div class="brand">{html.escape(p['brand'])}</div><div class="cat">{html.escape(cat)}</div></div>
-<div class="icon"><svg viewBox="0 0 48 48">{ICONS[p['category']]}</svg></div></div>
+<div class="icon"><svg viewBox="0 0 48 48">{ICONS.get(p['category'], DEFAULT_ICON)}</svg></div></div>
 <div class="mid"><h1>{html.escape(name)}</h1>
 <div class="specs">{spec_html}</div></div>
 <div class="foot"><div>Specs from {html.escape(p['brand'])}'s official page · dealectric.com</div><div class="logo">Deal<i>ectric</i></div></div>"""

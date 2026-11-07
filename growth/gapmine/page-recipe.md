@@ -23,6 +23,11 @@ You do not edit files. Your final message is ONE JSON object (schema at the end)
 - Compare the maker store's price with Amazon's (`amzcheck.py asin`). Link the cheaper honest route; if the maker store
   is clearly cheaper than Amazon, link the maker (with no affiliate) rather than send shoppers to pay more.
 - If no approved program or Amazon listing has a product that wins any segment, return `"skip"` with the reason.
+- **Temporary (2026-11-06, remove when amzcheck answers again):** Amazon walls our ASIN lookups, so an Amazon record
+  can't pass the gate. Return no `amazon:us` records. Lead with an approved CJ/Awin/Rakuten brand where one honestly
+  wins a segment; name every Amazon-only product as a table row with `brand`, `model` and its maker's `url` (no
+  price), and write about it in the text by name without a `{buy:}` token. If the honest overall winner is
+  Amazon-only, say so in the lead by name, then give the segment our brand wins.
 
 ## 3. Verify every fact you print
 - Prices: re-read on the store (`storecheck.py`) or the maker page today; give the date 2026-MM-DD seen. Never trust a
