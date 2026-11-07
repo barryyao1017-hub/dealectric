@@ -3948,6 +3948,24 @@ PRODUCTS = [
  "fit": 'Kayak and canoe anglers running a 30 to 40 lb motor for a few hours, or a 55 lb motor mostly at low speed. Not enough for a full day of full-throttle running.',
  "caveats": ['About 1 hour at full throttle on a 55 lb motor (50 A draw); 2 to 3 hours at half speed.', 'The 60 A limit is rated for 30 minutes; a 55 lb motor at full throttle sits close to it.', 'Needs a 14.6 V LiFePO4 charger; a lead-acid charger will not fill it.', 'Will not accept a charge below 32°F, so charge it indoors in winter.']},
 
+{"slug": 'anker-solix-f3800-plus',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "category": 'power-station',
+ "name": 'Anker SOLIX F3800 Plus Portable Power Station, 3,840 Wh LFP, 6,000 W, 120/240 V',
+ "model": 'F3800 Plus (A1790P)',
+ "url": 'https://www.ankersolix.com/products/f3800-plus',
+ "official_page": 'https://www.ankersolix.com/f3800-plus',
+ "price": 2599.99,
+ "list_price": 2999.99,
+ "verified": '2026-11-07',
+ "specs": [('Capacity', '3,840 Wh LiFePO4, expandable to 53.8 kWh with two units and six BP3800 batteries'), ('AC output', '6,000 W continuous from one unit, 120 V and 240 V split-phase (12,000 W with two units)'), ('Home connection', 'Smart Home Power Kit (sub-panel, breaker, ground bar) $1,799.99; optional Anker electrician install $2,000 on 2026-11-07'), ('Charging', '3,200 W solar (dual MPPT, 11-165 V); 240 V bypass charging cable $399.99; 120 V wall charging limits 240 V output'), ('UPS switchover', '20 ms on the 120 V UPS-enabled outlets'), ('Weight', '136.7 lb net, built-in wheels and pull handle')],
+ "warranty": '5 years',
+ "returns": 'Anker SOLIX US store return policy; check the listing before ordering',
+ "summary": "The cheapest 6,000 W, 120/240 V battery with a maker-sold sub-panel kit and an optional electrician service. Base unit $2,599.99 with the store's auto-applied code on 2026-11-07 (list $2,999.99); the F3800 Plus + Smart Home Power Kit bundle was $4,799.99 the same day.",
+ "fit": 'Houses that need 240 V for a well pump, central air or a dryer, and want the battery wired to a transfer sub-panel rather than run on extension cords.',
+ "caveats": ["Idle draw is the weak spot: a reviewer measured 112 W with the inverter on and nothing plugged in, about 34 hours to empty. Anker's June 2025 firmware claims to halve that; no independent after-update measurement was found.", "The 240 V output cannot be used while the unit charges from a 120 V wall outlet (Anker's own listing).", 'Reaching 6,000 W of 240 V charging needs two expansion batteries; one unit alone charges at about 3,500 W from a generator.', "The '30 A' outlet is a 25 A outlet, which can trip appliances that expect a full 30 A.", 'At 136.7 lb it is a two-person lift up stairs even with the wheels.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
