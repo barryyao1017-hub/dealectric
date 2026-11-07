@@ -3500,6 +3500,23 @@ PRODUCTS = [
  "fit": 'Anyone buying an Aurzen projector who wants a flat white surface instead of a textured wall. Add it to the cart with the D1 or D1 MAX.',
  "caveats": ['Ships folded, so expect creases on first use; hang it a day ahead and pull the corners tight.', 'No stand or frame; buy a tripod screen if you have nothing to hang it from.', '120 inches needs about 11 to 12 ft of throw from an Aurzen projector and a dark setting.']},
 
+{"slug": 'lofree-flow-lite-2-84',
+ "brand": 'Lofree',
+ "program": 'cj:lofree',
+ "category": 'keyboard',
+ "name": 'Lofree Flow Lite 2 84 Low-Profile Mechanical Keyboard, 75%, plastic case, hot-swappable',
+ "model": 'Flow Lite 2 84',
+ "url": 'https://www.lofree.co/products/flow-lite-2-84-low-profile-mechanical-keyboard',
+ "official_page": 'https://www.lofree.co/products/flow-lite-2-84-low-profile-mechanical-keyboard',
+ "price": 109,
+ "verified": '2026-11-06',
+ "specs": [('Layout', '84 keys (75%), ANSI'), ('Switches', 'Lofree x Kailh Echo linear, full POM, 45 gf, hot-swappable (Kailh low-profile sockets)'), ('Case and mount', 'ABS plastic, gasket mount, about 22 mm tall'), ('Weight', 'about 536 g (1.2 lb)'), ('Keycaps', 'PBT double-shot'), ('Battery', '3,000 mAh; up to 100 h with backlight off (maker claim)'), ('Connectivity', 'Bluetooth 5.3, 2.4 GHz at 1,000 Hz, USB-C wired; status display'), ('Software', 'VIA and Lofree Hub (maker claim)')],
+ "warranty": '12 months from delivery (Lofree policy page)',
+ "returns": 'Lofree store: customer pays return shipping on non-defect returns; no fixed return window is published',
+ "summary": 'The plastic-case version of the Flow idea: same low-profile layout and 3,000 mAh battery, 45 gf linear switches, $50 less than the Flow 2 84.',
+ "fit": 'Budget low-profile typing, or a second board for travel where the aluminum case is not worth the weight.',
+ "caveats": ['New model with little independent testing; battery and software claims come from the maker.', 'Linear switches only in the box; no tactile or silent option.', "The original Flow Lite's keycaps turned shiny after about 40 hours in one review; not yet retested on the Lite 2."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
