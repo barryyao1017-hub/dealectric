@@ -1,0 +1,16 @@
+# Length-gate re-check after the selling-point and pre-apply changes (DLC-132), 2026-11-07
+
+`fastloop.py check` on the published `docs/<slug>.html`: every gap-mining page with a saved result set
+(`growth/evals/runs/fastloop/gmd-<slug>`, its draft's two must phrases, ranks 1/3/6), plus the three iterate targets
+(RV, kit under $500, ESR 25W) with their full packs, concern markers and ranks 1/3/5/6.
+
+**44 pass, 1 fails, 20 skipped (drafts never published, so there is no page).**
+
+- **Fails: /best-2kwh-power-station-for-rv.** The `/go/` link, the price and "20 A" survive in every cell of all 18
+  result sets. The other two concern markers, "converter" and "propane", are cut at rank 3 and below in 6 sets
+  (rv-r04, generic-17, rv-r05 nat-1, rv-n01, rv-n03 and more at rank 6). This is the trade made when the S2 product
+  line shipped on 11-02 (DLC-144: "the ship check used 20 A only"). Copy is unchanged, because the RV page is under a
+  live before/after reading (DLC-126, DLC-144). If the markers should stay, move "converter" and "propane" into the
+  short answer's first sentence after that reading.
+- **Pass (44):** best-2000wh-power-station, best-3d-scanner-for-3d-printing, best-3d-scanner-for-reverse-engineering, best-3d-scanner-for-small-objects, best-4g-lte-security-camera-no-wifi, best-bluetooth-speaker-for-car, best-bone-conduction-vs-regular-headphones, best-build-plate-for-pla, best-camera-for-bird-feeder, best-cassette-deck, best-cd-player-for-car, best-electric-screwdriver-for-electronics, best-fast-charging-power-bank, best-fitness-tracker-for-men, best-fitness-tracker-or-smartwatch, best-flashlight-with-laser-pointer, best-gaming-headset-for-xbox, best-gaming-headset-or-mic, best-inverter-for-well-pump, best-ldac-earbuds-under-100, best-lifepo4-battery-charger, best-lifepo4-battery-with-charger, best-mechanical-keyboard-for-typing, best-nas-with-drives-included, best-noise-cancelling-headphones-with-mic, best-open-ear-headphones-with-mic, best-open-ear-or-earbuds, best-portable-projector-with-screen, best-power-bank-allowed-on-plane, best-power-bank-for-laptop, best-power-strip-with-usb-ports, best-quiet-gaming-controller, best-self-heating-lithium-battery, best-smart-bird-feeder-with-camera, best-smartwatch-without-phone, best-solar-and-wind-generator, best-standalone-hdmi-recorder, best-trolling-motor-with-battery, best-usb-c-charger-for-laptop, best-usb-c-charger-with-block-and-cable, best-usb-xlr-microphone, best-wireless-gaming-headset-under-50, best-solar-generator-kit-under-500, iphone-17-25w-wireless-charger.
+- **Skipped (20):** best-240v-portable-power-station, best-3d-printer-for-abs, best-aux-cord, best-bone-conduction-or-headphones, best-budget-anamorphic-lens, best-cd-player-for-laptop, best-cheap-85mm-lens-for-sony, best-drawing-tablet-for-photo-editing, best-hummingbird-feeder-with-camera, best-low-profile-mechanical-keyboard-for-mac, best-phone-with-thermal-camera, best-robot-lawn-mower-for-1-4-acre, best-rugged-tablet, best-tesla-style-screen-for-silverado, best-variable-nd-filter-for-video, best-video-doorbell-no-subscription, best-waterproof-camera-for-snorkeling, best-window-security-camera, best-wireless-carplay-adapter-for-iphone, best-z-wave-outdoor-plug.
