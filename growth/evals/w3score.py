@@ -27,6 +27,7 @@ QUESTIONS = [ROOT / "growth" / "focus" / "loop-questions.json", ROOT / "growth" 
 FLAGS = ROOT / "growth" / "focus" / "readings" / "flags.json"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import storedcopy as SC  # noqa: E402  (OpenAI's crawl log and the stored-copy matcher, DLC-77)
+import linkpos as LP  # noqa: E402  (where the /go/ link sits, DLC-85; printed as the standing relay metrics, DLC-84)
 
 # Levers per arm, as in loop-design.md's lever log: (name, live from (UTC), first cart date only the lever's copy can
 # carry, marker phrases only the lever's copy has). Append a row when a lever ships.
@@ -277,9 +278,17 @@ def main() -> int:
     ap.add_argument("--candidates", action="store_true", help="print every flag candidate sentence")
     ap.add_argument("--baseline", action="store_true", help="R0: test cells not shown to be fresh count as baseline")
     ap.add_argument("--crawl", action="store_true", help="OAI-SearchBot fetches of each arm's page since its last lever")
+    ap.add_argument("--no-links", action="store_true", help="skip the /go/ relay metrics (linkpos.py)")
     a = ap.parse_args()
-    cells = score_run(Path(a.run).resolve(), baseline=a.baseline)
-    print(summary(cells))
+    try:
+        cells = score_run(Path(a.run).resolve(), baseline=a.baseline)
+    except FileNotFoundError as e:
+        # chatgpt/<cell>.json is gitignored: a checkout on another machine has scan.jsonl only. The relay metrics
+        # below still run from scan.jsonl (position and layout then read "unknown").
+        print(f"W3 scoring needs the raw answers, missing here: {e.filename}")
+        cells = []
+    if cells:
+        print(summary(cells))
     if UNANSWERED:
         print(f"\nUnanswered, no {EXPECTED_MODEL} answer: "
               + ", ".join(sorted({f"{u['cell']} ({u['tries']} tries, {u['model']})" for u in UNANSWERED})))
@@ -291,6 +300,10 @@ def main() -> int:
                 print(f"\n### {c['cell']} (flag: {c['flag']})")
                 for s in c["flag_candidates"]:
                     print("  -", s[:300])
+    if not a.no_links:   # DLC-84: /go/ rate, where it sits, card button destinations, wrong-product /go/, stored copy
+        rows = LP.load([Path(a.run).resolve()])
+        LP.add_stored(rows)
+        print(LP.relay_block(rows))
     if a.json:
         Path(a.json).write_text(json.dumps(cells, indent=1, ensure_ascii=False))
     return 0

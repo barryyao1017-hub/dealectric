@@ -5,6 +5,7 @@
     python3.12 growth/evals/visibility_scan.py --run-id 2026-10-28-visibility --limit 60
     python3.12 growth/evals/visibility_scan.py --run-id 2026-10-28-visibility --retest   # n=2 for every T2+ question
     python3.12 growth/evals/visibility_scan.py --run-id 2026-10-28-visibility --report   # growth/focus/visibility.md
+    python3.12 growth/evals/visibility_scan.py --run-id 2026-10-28-visibility --links    # /go/ relay metrics only
 
 Four shopper phrasings per product, none naming Dealectric: a deal or code question, "worth buying, where to buy",
 "best alternatives", and "best <category> under $<price>". Each runs once in a fresh temporary chat on chatgpt.com,
@@ -29,6 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ui  # noqa: E402
 import evallib as E  # noqa: E402
+import linkpos as LP  # noqa: E402  (where the /go/ link sits, DLC-85; standing relay metrics, DLC-84)
 
 ROOT = E.EVALS_DIR.parent.parent
 BANK = ROOT / "growth" / "focus" / "questions.json"
@@ -214,7 +216,15 @@ def run(args) -> int:
             break
         time.sleep(args.pace)
     log(events, {"at": E.now_iso(), "event": "end", "ok": n_ok})
+    print(links_report(args.run_id))
     return 0
+
+
+def links_report(run_id: str) -> str:
+    """DLC-84's standing /go/ relay metrics for a run, from its saved answers (no chats)."""
+    rows = LP.load([E.RUNS_DIR / run_id])
+    LP.add_stored(rows)
+    return LP.relay_block(rows)
 
 
 def report(run_id: str) -> None:
@@ -245,6 +255,7 @@ def report(run_id: str) -> None:
         lines.append(f"| {slug} | {net} | {len(rs)} | T{max(r['tier'] for r in rs)} | {sum(r['tier'] >= 5 for r in rs)} | "
                      f"{sum(r['tier'] >= 4 for r in rs)} | {sum(r['tier'] >= 2 for r in rs)} | {ph} |")
     ev = [json.loads(l) for l in (out / "events.jsonl").open()] if (out / "events.jsonl").exists() else []
+    lines += ["", "## /go/ relay (linkpos.py, DLC-84)", "", *links_report(run_id).strip().splitlines()[1:]]
     lines += ["", "## Throttle and model events", ""] + [f"- {e['at']} {e['event']}: " + ", ".join(
         f"{k}={v}" for k, v in e.items() if k not in ("at", "event")) for e in ev if e["event"] not in ("start", "end")]
     (ROOT / "growth" / "focus" / "visibility.md").write_text("\n".join(lines) + "\n")
@@ -265,7 +276,11 @@ def main() -> int:
     ap.add_argument("--n", type=int, default=1, help="runs per question")
     ap.add_argument("--stop-on-limit", action="store_true", help="exit 3 at the first downgraded answer")
     ap.add_argument("--report", action="store_true")
+    ap.add_argument("--links", action="store_true", help="print the /go/ relay metrics for --run-id and stop (no chats)")
     args = ap.parse_args()
+    if args.links:
+        print(links_report(args.run_id).strip())
+        return 0
     if args.bank:
         print(len(build_bank()), "questions ->", BANK)
         return 0

@@ -14,6 +14,7 @@ probes in `growth/probes/` for the weekly check (DLC-12) and feeds the tracked-l
 | `grade.py` | deterministic ladder + flags, failure class with the assistant's own explanation, LLM-judged rank, D1 join, browser spot-check (UI) merge |
 | `report.py` | `results.csv` and the scorecard `growth/probes/<run-id>-eval.md`; `--compare A B` for two iterations |
 | `iterreport.py` | the iteration report page (`loop/reports/iter-NN/index.html` + `shots/`): thesis, verdict, numbers, screenshots, next run, tokens and time; published as the "Dealectric Loop · Iteration N" artifact |
+| `linkpos.py` | DLC-85/84: layout of a ChatGPT answer (card / list / plain), where each `/go/` link sits (widget button, widget `<Link>`, inline markdown), card button destinations, wrong-product `/go/`, stored copy carrying `/go/`; takes run dirs or answer files; `w3score.py` and `visibility_scan.py --links` / `--report` print its relay block |
 | `evallib.py` | shared loaders, URL classification, D1 query, stamping, Wilson intervals, token accounting |
 | `footprint.jsonl` | one line per assistant chat or probe we run (since 2026-10-28), written by `evallib.footprint`; read by `tools/fetchwho.py`. Committed |
 | `runs/<run-id>/<assistant>/<qid>-<tier>-<n>.json` | one file per call: prompt, raw API response, answer text, citations, raw citation/annotation objects, consulted URLs, stamp |
