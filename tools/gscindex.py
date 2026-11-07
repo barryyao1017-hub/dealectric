@@ -2,7 +2,7 @@
 """Google Search Console URL inspection + Request indexing for one URL, in the agent's Chrome (localhost:9222, signed in
 as barrryyao). Promote tier 2 (chatgpt-discoverability skill, step 7b).
 
-    python3.12 tools/gscindex.py https://dealectric.com/<slug>
+    python3.12 tools/gscindex.py https://dealectric.com/<slug> [--skip-indexed]
 
 The tab is brought to the front (a background tab never focuses the inspect box), the URL is typed into the property
 home's inspect bar (the direct /search-console/inspect URL 404s), and the button is pressed with CDP mouse events (a
@@ -11,7 +11,7 @@ import sys, time, json
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import codesweep as C
-url = sys.argv[1]
+url = next(a for a in sys.argv[1:] if not a.startswith("--"))
 # authuser picks barrryyao, the property's owner: the agent's Chrome holds more than one Google account, and the default
 # one gets "you don't have access to this property" (2026-11-02)
 t = C.Tab("https://search.google.com/search-console?resource_id=sc-domain%3Adealectric.com&authuser=barrryyao%40gmail.com")
@@ -40,6 +40,9 @@ for i in range(40):
     if "REQUEST INDEXING" in txt.upper():
         break
 print("status:", [l for l in txt.splitlines() if any(k in l for k in ("URL is", "not on Google", "on Google", "unknown"))][:4])
+if "--skip-indexed" in sys.argv and any(l.strip() == "URL is on Google" for l in txt.splitlines()):
+    print("result: skipped, already on Google (no quota spent)")   # a recrawl request costs a slot (2026-11-07: tn438)
+    sys.exit(0)
 btn = t.eval("""(()=>{const b=[...document.querySelectorAll('span,div,button')].filter(e=>e.innerText&&e.innerText.trim().toUpperCase()==='REQUEST INDEXING'&&e.children.length===0).pop();
  if(!b) return null; b.scrollIntoView({block:'center'}); const r=b.getBoundingClientRect(); return [r.x+r.width/2, r.y+r.height/2]})()""")
 print("button at", btn)

@@ -71,33 +71,17 @@ AGENT_TAGS = ("muse", "chatgpt-agent", "signed-agent")
 
 def cdp_page(url: str, button: str, wait=(20, 15)) -> str:
     """Open `url` in a new tab of the agent's Chrome, click the button labelled `button`, return the page text."""
-    import websocket  # websocket-client, as tools/codesweep.py
-    tab = json.load(urllib.request.urlopen(urllib.request.Request(f"{CDP}/json/new?about:blank", method="PUT"), timeout=10))
-    ws = websocket.create_connection(tab["webSocketDebuggerUrl"], timeout=60, suppress_origin=True)
-    n = 0
-
-    def call(method, **params):
-        nonlocal n
-        n += 1
-        ws.send(json.dumps({"id": n, "method": method, "params": params}))
-        while True:
-            r = json.loads(ws.recv())
-            if r.get("id") == n:
-                return r.get("result", {})
-
-    def ev(js):
-        return call("Runtime.evaluate", expression=js, returnByValue=True, awaitPromise=True)["result"].get("value")
-
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import codesweep as C   # its Tab opens in the background (Target.createTarget background=true); /json/new raised the window
+    t = C.Tab(url)
     try:
-        call("Page.navigate", url=url)
         time.sleep(wait[0])
-        ev("(()=>{const b=[...document.querySelectorAll('button')].filter(x=>x.innerText.trim()===%s).pop();"
-           "if(b) b.click()})()" % json.dumps(button))
+        t.eval("(()=>{const b=[...document.querySelectorAll('button')].filter(x=>x.innerText.trim()===%s).pop();"
+               "if(b) b.click()})()" % json.dumps(button))
         time.sleep(wait[1])
-        return ev("location.href + '\\n' + document.body.innerText") or ""
+        return t.eval("location.href + '\\n' + document.body.innerText") or ""
     finally:
-        ws.close()
-        urllib.request.urlopen(f"{CDP}/json/close/{tab['id']}", timeout=10)
+        t.close()
 
 
 def cj_sales() -> tuple[list[dict], str | None]:
