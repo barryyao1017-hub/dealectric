@@ -186,6 +186,10 @@ def main() -> int:
           + " Awin not read yet.")
     if cj_err:
         print(f"  CJ: {cj_err}")
+        if "signed out" in cj_err:   # DLC-93: CJ drops the session every few days; a script can't sign in, the session can
+            print("  CJ SIGNED OUT. Fix in this session, then re-run this script: agent-vault list_accounts -> the cj.com "
+                  "account; open https://members.cj.com/member/login in the Agent Chrome (localhost:9222); call login "
+                  "(CJ's two-step form needs a second login call); check the report page opens.")
     for s in sales:
         print(f"  {'NEW ' if s in new else ''}{s['advertiser']}: sale {s['sale']}, commission {s['commission']}, "
               f"{s['status']}, event {s['event']} PT, posted {s['posted']} PT, coupon {s['coupon'] or 'none'}")

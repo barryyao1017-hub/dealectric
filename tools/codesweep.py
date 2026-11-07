@@ -661,6 +661,26 @@ def sh(cmd: list[str], timeout: float = 600, **kw) -> subprocess.CompletedProces
         return subprocess.CompletedProcess(cmd, 124, "", f"timed out after {timeout:.0f} s")
 
 
+def indexnow_urls(status: str) -> list[str]:
+    """DLC-87: the docs pages to send to IndexNow: new, removed, or changed in more than their dates (src/pagediff.py).
+    Bing asks for changed URLs only; before this every run resent ~80 pages whose only change was "last passed"."""
+    sys.path.insert(0, str(ROOT / "src"))
+    from pagediff import real_change
+    urls, skipped = [], 0
+    for line in status.splitlines():
+        path = line.split()[-1]
+        if not (path.startswith("docs/") and path.endswith(".html")):
+            continue
+        old = subprocess.run(["git", "show", f"HEAD:{path}"], cwd=ROOT, capture_output=True).stdout or None
+        new = (ROOT / path).read_bytes() if (ROOT / path).exists() else None
+        if real_change(old, new):
+            urls.append("https://dealectric.com/" + path[len("docs/"):-len(".html")].replace("index", ""))
+        else:
+            skipped += 1
+    log(f"indexnow: {len(urls)} pages changed in more than their dates; {skipped} date-only changes not sent")
+    return urls
+
+
 def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | None = None) -> None:
     before = (ROOT / "worker" / "src" / "links-map.json").read_bytes()
     r = sh([sys.executable, "src/build.py"])
@@ -669,6 +689,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
     log(r.stdout.strip().splitlines()[-1])
     map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
     st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
+    index_urls = indexnow_urls(st)   # DLC-87: decided against HEAD, before this run's commit
     if not st.strip():
         log("nothing changed; no commit")
         return
@@ -733,8 +754,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
             except subprocess.TimeoutExpired:
                 r = subprocess.CompletedProcess([], 124, "", "timed out after 600 s; deploy by hand")
             log("worker deployed" if r.returncode == 0 else f"worker deploy failed: {(r.stderr or r.stdout)[-400:]}")
-    changed_pages = [l.split()[-1] for l in st.splitlines() if l.split()[-1].startswith("docs/") and l.split()[-1].endswith(".html")]
-    urls = ["https://dealectric.com/" + p[len("docs/"):-len(".html")].replace("index", "") for p in changed_pages]
+    urls = index_urls
     if urls:
         time.sleep(90)   # let GitHub Pages publish before IndexNow fetches
         r = sh([sys.executable, "tools/indexnow.py", *urls[:200]])   # indexnow.py brings its own CA bundle (certifi or macOS's)

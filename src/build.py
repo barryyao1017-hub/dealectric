@@ -1716,7 +1716,9 @@ def previous_pages(flat):
 def sitemap_lastmod(flat, pages, lastmod):
     """DLC-77: give every sitemap URL an exact <lastmod>, the time its page last changed. A page whose bytes match the
     previous build keeps its old lastmod (or, the first time, its last commit time); a changed page gets now. The daily
-    cart check changes "last passed" on every coded page, so those pages carry the day's date: that is a real change."""
+    cart check changes "last passed" on every coded page; since DLC-94(a) (Barry, 2026-10-29) that date-only change no
+    longer moves lastmod (src/pagediff.py), so lastmod means a real edit: price, code, product or copy."""
+    from pagediff import real_change
     import re, subprocess
     repo = os.path.dirname(flat)
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -1725,8 +1727,9 @@ def sitemap_lastmod(flat, pages, lastmod):
         path = os.path.join(flat, name)
         if not os.path.exists(path):
             return None
-        if pages.get(name) != open(path, "rb").read():
-            return now
+        new = open(path, "rb").read()
+        if pages.get(name) != new and (real_change(pages.get(name), new) or not lastmod.get(loc)):
+            return now   # DLC-94(a): a page whose only change is the day's "last passed" date keeps its lastmod
         if lastmod.get(loc):
             return lastmod[loc]
         t = subprocess.run(["git", "log", "-1", "--format=%cd", "--date=format-local:%Y-%m-%dT%H:%M:%SZ", "--", f"docs/{name}"],
