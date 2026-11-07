@@ -57,6 +57,7 @@ CATEGORIES = {
     "keyboard": ('Keyboards', 'Mechanical and low-profile keyboards for desks, laptops and tablets.'),
     "cassette-deck": ('Cassette decks', 'Home cassette tape decks and CD/tape combo players for playing, recording and digitizing tapes.'),
     "flashlight": ('Flashlights', 'Handheld, flat and right-angle LED lights, including everyday-carry lights with UV or laser modes.'),
+    "robot-mower": ('Robot lawn mowers', 'Wire-free robotic mowers that map and cut a lawn on a schedule, compared by lawn rating, navigation type and slope.'),
 }
 
 PRODUCTS = [
@@ -3392,6 +3393,42 @@ PRODUCTS = [
  "summary": "A 25,000 mAh bank with two cables built in, so there is nothing to forget: one 140 W PD 3.1 cable for a laptop and a 65 W cable for a tablet or phone, plus a spare USB-C and USB-A port. It recharges at 90 W, faster than UGREEN's own 200 W model, and sells for about half the price of the 140 W banks above.",
  "fit": 'Travelers who carry a laptop, a tablet and a phone and want fast charging without carrying cables; best value in this group.',
  "caveats": ["No US lab test yet. Basic Tutorials' review of the EU unit measured about 95 W peak to a laptop with two other devices connected and found both USB-C outputs advertising a 100 W (20 V 5 A) top profile; take the 140 W figure as the maker's rating.", 'Three devices at once drop the total to 120 W.', 'Cables are short and do not retract; they clip magnetically to the side.', 'Display is hard to read in direct sunlight.', '1.2 lb and 5.7 in long; fits a bag, not a pocket.']},
+
+{"slug": 'mova-lidax-ultra-1000',
+ "brand": 'MOVA',
+ "program": 'cj:mova',
+ "category": 'robot-mower',
+ "name": 'MOVA LiDAX Ultra 1000 Robot Lawn Mower, 0.25 acre, 3D LiDAR, no RTK, no wire',
+ "model": 'LiDAX Ultra 1000',
+ "url": 'https://us.mova.tech/products/mova-lidax-ultra-1000-robot-lawn-mower',
+ "official_page": 'https://us.mova.tech/products/mova-lidax-ultra-1000-robot-lawn-mower',
+ "price": 1049,
+ "list_price": 1299,
+ "verified": '2026-11-06',
+ "specs": [('Lawn rating', 'Up to 0.25 acre (max mapping area)'), ('Navigation', '360° 3D LiDAR + AI camera (UltraView 2.0); no boundary wire, no RTK station, works without GPS'), ('Max slope', '45% (24°)'), ('Cutting width', '7.9 in'), ('Cutting height', '1.2–3.9 in, set in the app'), ('Battery', '4 Ah; 60–80 min mowing per charge; 60 min charge'), ('Noise', 'Under 57 dB (claimed)'), ('Drive', 'Rear-wheel drive, front casters'), ('Edge cutting', 'UltraTrim sliding deck, under 2 in from edges (claimed)'), ('Obstacles', 'AI recognizes 300+ object types; clears 1.6 in bumps; passes 23.6 in gaps'), ('Anti-theft', 'Lift alert, PIN, AirTag slot; 4G Link module optional'), ('Weather', 'Rain and snow sensor returns it to the dock')],
+ "warranty": 'Up to 3 years (MOVA US store); Best Buy lists 3 years parts and labor',
+ "returns": '30 days from delivery with a prepaid return label (MOVA US store policy)',
+ "summary": 'LiDAR mower rated for a quarter acre that maps and navigates with a spinning 3D LiDAR and a front camera instead of an RTK antenna, so it keeps working under trees, beside the house and inside a fenced yard where satellite mowers lose their fix. Cuts from 1.2 to 3.9 in, which covers tall-cut grasses like St. Augustine and fescue. At $1,049 it is $50 under the Navimow i210 AWD, $350 under the Dreame A3 AWD 1000 and $450 under the ECOVACS GOAT O1000 LiDAR PRO.',
+ "fit": 'Flat or gently sloped quarter-acre lots with shade, fences or a house close by, where an RTK mower would drop signal. Owners who will spend an hour mapping and marking no-go zones once.',
+ "caveats": ['Week-one rescues are common: New Atlas needed about 25 rescues on day one until it mapped no-go zones around a 2-in ledge, shrubs and a driveway lip, then ran 12-plus hours with none.', 'Obstacle detection is the main reviewer complaint: inside digital saw it drive into large flat objects, and Notebookcheck found small objects were only caught at the most sensitive setting. Turn sensitivity up and leave Obstacle Avoidance on Edges enabled.', 'Rear-wheel drive with front casters digs in on soft or sandy soil and side slopes; for roots and hills choose an AWD mower.', 'Measured edge strip was about 4 in in one test despite the 2-in claim; expect to trim around fences and the dock.', 'Runtime per charge is 60–80 min, so a full quarter acre takes several charge cycles across a day.']},
+
+{"slug": 'mova-lidax-ultra-2000',
+ "brand": 'MOVA',
+ "program": 'cj:mova',
+ "category": 'robot-mower',
+ "name": 'MOVA LiDAX Ultra 2000 Robot Lawn Mower, 0.5 acre, 3D LiDAR, no RTK, no wire',
+ "model": 'LiDAX Ultra 2000',
+ "url": 'https://us.mova.tech/products/mova-lidax-ultra-2000-robot-lawn-mower',
+ "official_page": 'https://us.mova.tech/products/mova-lidax-ultra-2000-robot-lawn-mower',
+ "price": 1199,
+ "list_price": 1799,
+ "verified": '2026-11-06',
+ "specs": [('Lawn rating', 'Up to 0.5 acre'), ('Navigation', '360° 3D LiDAR + AI camera (UltraView 2.0); no boundary wire, no RTK station'), ('Max slope', '45% (24°)'), ('Cutting width', '7.9 in'), ('Cutting height', '1.2–3.9 in, set in the app'), ('Battery', '5 Ah; 70–90 min mowing per charge; 65 min charge'), ('Noise', '57 dB (claimed)'), ('Drive', 'Rear-wheel drive, front casters'), ('Obstacles', '300+ object types recognized; clears 1.6 in bumps'), ('4G', 'Link module included with 1 free year of service for live tracking')],
+ "warranty": 'Up to 3 years (MOVA US store)',
+ "returns": '30 days from delivery with a prepaid return label (MOVA US store policy)',
+ "summary": 'Same LiDAR-plus-camera platform as the Ultra 1000 with a bigger 5 Ah battery, a half-acre rating and the 4G tracking module included. AppleInsider tested this model on a four-zone yard and scored it 4 of 5, noting it trims within about 2 in of edges and handled rain, but spun and dug on a dip and a side slope on the first run.',
+ "fit": 'Quarter-acre to half-acre lots that are mostly flat, where the owner wants fewer charge cycles per mow and built-in 4G tracking.',
+ "caveats": ['Rear-wheel drive: loose soil and side slopes can cause sliding and tread marks (AppleInsider).', 'Trimming is still needed around fences, the dock and other fixed obstacles.', 'The 4G Link service is free for one year; renewal cost is not stated on the product page.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
