@@ -55,6 +55,7 @@ CATEGORIES = {
     "baby-monitor": ('Baby monitors', 'Cameras paired with a handheld screen, with or without an app, for watching a sleeping child.'),
     "dash-cam": ('Dash cams', 'Windshield-mounted driving recorders with one to four cameras.'),
     "keyboard": ('Keyboards', 'Mechanical and low-profile keyboards for desks, laptops and tablets.'),
+    "cassette-deck": ('Cassette decks', 'Home cassette tape decks and CD/tape combo players for playing, recording and digitizing tapes.'),
 }
 
 PRODUCTS = [
@@ -3220,6 +3221,40 @@ PRODUCTS = [
  "summary": 'The original aluminum Flow, now discounted. Same gasket-mount typing feel as the Flow 2 but Bluetooth-only wireless, a 2,000 mAh battery and no key remapping.',
  "fit": 'Desk users who will keep it plugged in by USB-C and want the aluminum build for the least money.',
  "caveats": ['Bluetooth wake takes 2 to 5 seconds after sleep (XDA, tbray); several reviewers used it wired instead.', 'No 2.4 GHz dongle and no remapping.', '40-hour battery rating is short for a wireless board.', 'Switch variant availability was not re-read today; price and stock were.']},
+
+{"slug": 'teac-w-1200-dual-cassette-deck',
+ "brand": 'TEAC',
+ "program": 'cj:teac',
+ "category": 'cassette-deck',
+ "name": 'TEAC W-1200 Dual Cassette Deck, Black (Silver at the same price)',
+ "model": 'W-1200',
+ "url": 'https://teacusa.com/products/w-1200-dual-cassette-deck',
+ "official_page": 'https://teac.jp/int/product/w-1200/top',
+ "price": 599.99,
+ "verified": '2026-11-06',
+ "specs": [('Decks', 'Two one-way decks, each with its own record/play head and erase head; both record'), ('Tape types', 'Plays Type I, II and IV; records on Type I and II only'), ('Wow and flutter (rated)', '0.25% W.RMS'), ('Frequency response (rated)', '30 Hz–15 kHz ±4 dB (Type II); 30 Hz–13 kHz ±4 dB (Type I)'), ('Signal-to-noise (rated)', '59 dB A-weighted'), ('Noise reduction', 'Playback-only system compatible with Dolby B recordings; nothing on record'), ('Dubbing', 'One-touch tape-to-tape dubbing at normal speed; parallel recording to both decks'), ('USB', 'USB-B digital output, 8–48 kHz at 8 or 16-bit; needs recording software such as Audacity'), ('Mic input', 'One 1/4-inch mono mic jack with level control and mic mixing (no stereo mics)'), ('Pitch control', '±12%, deck 1 playback only'), ('Other I/O', 'RCA line in and out, 1/4-inch headphone jack'), ('Remote', 'RC-1331 remote and RCA cable included; no built-in timer'), ('Size and weight', '17.1 × 5.7 × 11.3 in; 9.3 lb'), ('Silver version', 'https://teacusa.com/products/teac-w-1200-dual-cassette-deck-silver')],
+ "warranty": '1 year parts and labor in the US (TEAC USA / Playback Distribution); valid only for purchases from TEAC USA or an authorized US dealer; heads and other wear parts excluded',
+ "returns": '30 days from delivery for unused units in original packaging with all accessories; RMA required; open-box and final-sale items are not returnable',
+ "summary": 'The W-1200 is the only consumer-branded cassette deck still made new with two recording decks, one-touch dubbing, a USB output for digitizing tapes and a remote. It is a 2-head, normal-speed design, so it plays and copies tapes cleanly but is not an audiophile recorder.',
+ "fit": 'Buyers who want a new, warrantied home deck to play, copy and digitize cassettes, or to record mixes, karaoke or meeting audio with a mic.',
+ "caveats": ['Rated wow and flutter is 0.25% W.RMS; bench tests of this mechanism range from 0.085% to 0.52%, so pitch is less stable than a serviced 3-head vintage deck.', 'Noise reduction works only on playback, so recordings you make are not Dolby-encoded.', 'No auto-reverse, no high-speed dubbing, no recording on metal (Type IV) tape, and the pitch control works only on deck 1 during playback.', 'Timer recording needs a separate outlet timer.', 'TEAC USA ships to the lower 48 states only.']},
+
+{"slug": 'teac-ad-850-se-cassette-deck-cd-player',
+ "brand": 'TEAC',
+ "program": 'cj:teac',
+ "category": 'cassette-deck',
+ "name": 'TEAC AD-850-SE Cassette Deck and CD Player with USB Recording, Black (Silver at the same price)',
+ "model": 'AD-850-SE',
+ "url": 'https://teacusa.com/products/ad-850-cassette-deck-cd-player',
+ "official_page": 'https://teac.jp/int/product/ad-850-se/top',
+ "price": 599.99,
+ "verified": '2026-11-06',
+ "specs": [('Sources', 'Single cassette deck (records), CD player (CD, CD-R/RW with MP3), USB flash drive playback and recording'), ('Cassette wow and flutter (rated)', '0.25% W.RMS'), ('Cassette frequency response (rated)', '50 Hz–12 kHz ±3 dB (Type I and II); metal tape playback only'), ('Cassette S/N (rated)', '59 dB weighted'), ('USB recording', 'MP3 at 128 kbps to a USB stick from CD, tape, line or mic'), ('CD section', '20 Hz–20 kHz ±2 dB, S/N 87 dB or more, 2.0 V RCA output'), ('Mic input', '1/4-inch mono jack with level control and two-step echo for karaoke'), ('Pitch control', 'About ±10%, tape playback only'), ('Outputs', 'RCA line out; needs an amplifier and speakers'), ('Size and weight', '17.1 × 5.7 × 11.3 in; 10.6 lb'), ('Silver version', 'https://teacusa.com/products/teac-ad-850-se-cassette-deck-cd-player-silver')],
+ "warranty": '1 year parts and labor in the US (TEAC USA / Playback Distribution); valid only for purchases from TEAC USA or an authorized US dealer',
+ "returns": '30 days from delivery for unused units in original packaging with all accessories; RMA required; open-box and final-sale items are not returnable',
+ "summary": 'A CD player and a recording cassette deck in one chassis, with a USB port that saves CDs, tapes or mic audio as 128 kbps MP3 files. It is the simplest way to copy CDs to tape or tapes to a USB stick without a computer.',
+ "fit": 'Shoppers who want CD and cassette in one box, or who want to digitize tapes to a USB stick without using a computer.',
+ "caveats": ['Only one cassette deck, so no tape-to-tape dubbing.', 'USB recordings are fixed at 128 kbps MP3, not CD quality.', 'No noise reduction is listed for the cassette section.', 'Timer functions need a separate outlet timer; needs its own amplifier and speakers.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
