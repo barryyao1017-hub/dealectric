@@ -129,8 +129,13 @@ CODE_STOP = {"NONE", "THIS", "THAT", "YOUR", "WITH", "FROM", "ONLY", "ENTER", "A
 def codes_in_text(text: str, known: dict[str, set[str]], universe: dict[str, dict]) -> dict:
     """Which codes the answer shows: `known` ({CODE: slugs it applies to} from offers.json), `universe` (every code
     in src/coupons.json), plus uppercase tokens the prose presents as a code. Returns the three disjoint lists."""
-    found_known = sorted({c for c in known if re.search(r"(?<![A-Z0-9])" + re.escape(c) + r"(?![A-Z0-9])", text, re.I)})
-    found_universe = sorted({c for c in universe if c not in known and re.search(r"(?<![A-Z0-9])" + re.escape(c) + r"(?![A-Z0-9])", text, re.I)})
+    # A code made only of letters is matched case-sensitively: BLUETTI's DEALECTRIC is also our name, so "Dealectric"
+    # and dealectric.com counted as the code in every answer (2026-11-07 Gemini check). Codes with digits stay
+    # case-insensitive (Save10, awin10).
+    def shown(c: str) -> bool:
+        return bool(re.search(r"(?<![A-Za-z0-9])" + re.escape(c) + r"(?![A-Za-z0-9])", text or "", 0 if c.isalpha() else re.I))
+    found_known = sorted({c for c in known if shown(c)})
+    found_universe = sorted({c for c in universe if c not in known and shown(c)})
     tokens = set()
     for m in CODE_TOKEN_RE.finditer(text or ""):
         t = m.group(1)

@@ -526,14 +526,23 @@ def _squash(s: str) -> str:
 
 GEMINI_HOST_RE = re.compile(r"^https?://([a-z0-9-]+\.)*(gemini\.google\.com|accounts\.google\.com|support\.google\.com|policies\.google\.com|gstatic\.com)(/|$)", re.I)
 GEMINI_READ_JS = r"""(() => {
+  // A background tab never runs Gemini's fade-in animations, so list items stay out of innerText (11-07: answers read
+  // as one line while the DOM held the whole list). Text comes from textContent, with a line break after each block.
   const resp = [...document.querySelectorAll('model-response')].pop();
   const msg = resp ? resp.querySelector('message-content') || resp : null;
-  const links = msg ? [...msg.querySelectorAll('a[href]')].map(a => ({href: a.href, text: (a.innerText || '').trim().slice(0, 200)})) : [];
+  let answer = '';
+  if (msg) {
+    const c = msg.cloneNode(true);
+    c.querySelectorAll('p,li,h1,h2,h3,h4,h5,h6,tr,pre,br,div.table-block').forEach(e => e.append('\n'));
+    c.querySelectorAll('td,th').forEach(e => e.append(' | '));
+    answer = c.textContent.replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
+  const links = msg ? [...msg.querySelectorAll('a[href]')].map(a => ({href: a.href, text: (a.textContent || '').trim().slice(0, 200)})) : [];
   const btns = [...document.querySelectorAll('button')].map(b => b.getAttribute('aria-label') || '');
-  return JSON.stringify({url: location.href, title: document.title, answer: msg ? msg.innerText : '', links,
+  return JSON.stringify({url: location.href, title: document.title, answer, links,
     streaming: btns.some(l => /stop/i.test(l)), send: btns.includes('Send message'),
     signed: !!document.querySelector('a[aria-label*="Google Account"]'),
-    error: (document.body.innerText.match(/Something went wrong|I encountered an error[^\n]*/) || [''])[0]});
+    error: (document.body.textContent.match(/Something went wrong|I encountered an error/) || [''])[0]});
 })()"""
 
 
