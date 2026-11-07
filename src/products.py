@@ -3430,6 +3430,23 @@ PRODUCTS = [
  "fit": 'Quarter-acre to half-acre lots that are mostly flat, where the owner wants fewer charge cycles per mow and built-in 4G tracking.',
  "caveats": ['Rear-wheel drive: loose soil and side slopes can cause sliding and tread marks (AppleInsider).', 'Trimming is still needed around fences, the dock and other fixed obstacles.', 'The 4G Link service is free for one year; renewal cost is not stated on the product page.']},
 
+{"slug": 'soundcore-space-2-pro',
+ "brand": 'Soundcore',
+ "program": 'cj:soundcore',
+ "category": 'headphones',
+ "name": 'soundcore Space 2 Pro Over-Ear Headphones with Thus AI for Clear Calls',
+ "model": 'Space 2 Pro (D1406)',
+ "url": 'https://us.soundcore.com/products/d1406-space-2-pro-over-ear-headphones-for-clear-calls',
+ "official_page": 'https://www.soundcore.com/products/d1406-space-2-pro-over-ear-headphones-for-clear-calls',
+ "price": 199.99,
+ "verified": '2026-11-06',
+ "specs": [('Call microphones', '6-mic array driven by the Thus AI chip'), ('ANC microphones', '8 mics, Adaptive ANC 3.0'), ('Battery', '30 h with ANC on, 60 h with ANC off, 20 h talk time'), ('Fast charge', '5 minutes for up to 8 hours'), ('Weight', '262 g (9.2 oz)'), ('Bluetooth', '6.1, multipoint (phone and laptop at once)'), ('Codecs', 'LDAC on Android, Hi-Res Wireless'), ('Drivers', '35 mm dual-material diaphragm'), ('Wired input', '3.5 mm AUX'), ('Water resistance', 'No IP rating')],
+ "warranty": '18 months (soundcore headphones warranty)',
+ "returns": '30 days on undamaged products bought from soundcore; buyer pays return shipping unless the item is defective',
+ "summary": 'Over-ear noise cancelling headphones built around call clarity: six microphones and an AI chip separate your voice from the room. Holds a Guinness World Records title for clearest wireless over-ear headphones for calls, and independent reviewers at Engadget, T3, AndroidGuys and Basic Tutorials all rated the call pickup as the standout feature.',
+ "fit": 'Remote workers and office users who take calls all day and have been told callers can hear their background. Pairs with a laptop and phone at the same time.',
+ "caveats": ['ANC is good but not Bose or Sony class; Engadget called it average on steady noise like fans and white-noise machines.', 'Bass-heavy out of the box; use the app EQ.', 'Ships with a soft pouch, not a hard case.', 'No IP rating, so not for the gym or rain.', 'LDAC and voice control shorten battery; one reviewer logged about 26 hours with ANC and LDAC.', 'The AI note-taker has a free tier, then a paid plan; the headphones work fine without it.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
