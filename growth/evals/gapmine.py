@@ -663,11 +663,17 @@ def _src_readings(src: str, qs: list[str]) -> tuple[dict, dict]:
         save(f"srccal_{src}.json", ssup)
         print(f"{src}: {sum(1 for r in got.values() if r is not None)}/{len(todo)} readings", flush=True)
     else:
+        misses = 0
         for q in todo:
             res = S.fetch(src, q)
-            if res is None:
-                print(f"{src}: no reading for {q!r} (cap, key or error); stopping", flush=True)
-                break
+            if res is None:   # one network blip (DNS failure seen 11-06) skips the query; three in a row, or a cap, stop
+                misses += 1
+                if misses >= 3 or S.room(src) <= 0 or S.key(src) is None:
+                    print(f"{src}: no reading for {q!r} (cap, key or 3 errors in a row); stopping", flush=True)
+                    break
+                print(f"{src}: no reading for {q!r} (error); skipping", flush=True)
+                continue
+            misses = 0
             ssup[q] = res
             save(f"srccal_{src}.json", ssup)
             print(f"{src}: {q!r} {len(res)} results", flush=True)
@@ -685,6 +691,21 @@ def srccal(args) -> None:
     qs = [q for q in lab if sum(1 for r in sup.get(q, []) if r.get("rank")) >= MIN_RESULTS and lab[q]]
     if getattr(args, "n", None):   # a fixed sample: the first n in label order, the same set for every source pair
         qs = qs[:args.n]
+    pool = getattr(args, "pool", "bing") or "bing"
+    if pool in ("backlog", "both"):   # 2026-11-06: widen past the Bing-scored set with the biggest unscored clusters
+        vol, dep = vols(), load("depth.json", {})
+        rows = []
+        for c in clusters():
+            if not c["queries"] or c["covered_by"]:
+                continue
+            n = sum(vol.get(x["q"], 0) for x in c["queries"])
+            sq = supply_query(lead_of(c, dep, vol))
+            if n >= MIN_SEARCHES and sq not in qs and not (sq in lab and sum(1 for r in sup.get(sq, []) if r.get("rank")) >= MIN_RESULTS):
+                rows.append((n, sq))
+        rows.sort(reverse=True)
+        back = list(dict.fromkeys(sq for _, sq in rows))[:getattr(args, "n_backlog", 110)]
+        qs = back if pool == "backlog" else qs + back
+        print(f"srccal sample: {len(qs)} queries ({len(back)} from the unscored backlog)", flush=True)
     src, ref = args.source, (getattr(args, "ref", None) or "bing")
     rsup, rlab = _src_readings(ref, qs)
     ssup, slab = _src_readings(src, qs)
@@ -701,10 +722,24 @@ def srccal(args) -> None:
            "ref_open": sum(1 for a, _ in pairs if a < GATE), "src_open": sum(1 for _, b in pairs if b < GATE),
            "url_overlap_mean": round(sum(overlap) / len(overlap), 3),
            "pairs": {q: [coverage(rlab[q]), coverage(slab[q])] for q in both}}
+    import random as _r
+    rng, boots = _r.Random(7), []
+    for _ in range(1000):   # bootstrap 95% interval for the Spearman, resampling clusters
+        smp = [pairs[rng.randrange(len(pairs))] for _ in pairs]
+        try:
+            boots.append(spearman([a for a, _ in smp], [b for _, b in smp]))
+        except Exception:  # noqa: BLE001  (a degenerate resample)
+            pass
+    boots.sort()
+    out["spearman_ci95"] = [round(boots[int(0.025 * len(boots))], 3), round(boots[int(0.975 * len(boots)) - 1], 3)] if boots else None
+    out["pool"] = pool
     name = f"srccal_{src}_result.json" if ref == "bing" else f"srccal_{src}_vs_{ref}_result.json"
+    if pool != "bing":
+        name = name.replace("_result.json", f"_{pool}_result.json")
     save(name, out)
     print(f"{src} vs {ref}: n={len(pairs)} Spearman {rho:.2f}; gate (<{GATE}) agrees on {agree}/{len(pairs)}; "
-          f"open on {ref} {out['ref_open']}, on {src} {out['src_open']}; top-10 URL overlap {out['url_overlap_mean']:.0%}")
+          f"open on {ref} {out['ref_open']}, on {src} {out['src_open']}; top-10 URL overlap {out['url_overlap_mean']:.0%}; "
+          f"Spearman 95% CI {out['spearman_ci95']}")
 
 
 MIN_RESULTS = 6   # fewer organic results than this = the page did not load fully; no coverage reading
@@ -1190,6 +1225,8 @@ def main() -> None:
     ap.add_argument("--sources", default="serpapi,bing", help="daily: coverage sources allowed, by priority")
     ap.add_argument("--source", default="claude", help="srccal/supply: free SERP source (growth/evals/serpsources.py)")
     ap.add_argument("--ref", default="bing", help="srccal: reference source (default: the Agent Chrome Bing readings)")
+    ap.add_argument("--pool", default="bing", choices=["bing", "backlog", "both"], help="srccal: Bing-scored set, unscored backlog, or both")
+    ap.add_argument("--n-backlog", type=int, default=110, help="srccal: queries taken from the unscored backlog, biggest first")
     ap.add_argument("--n", type=int, default=60, help="calibrate: sample size")
     ap.add_argument("--leads", type=int, default=1, help="depth: lead queries measured per cluster")
     ap.add_argument("--min-demand", type=float, default=0.3, help="supply: skip clusters whose lead query scores below this")

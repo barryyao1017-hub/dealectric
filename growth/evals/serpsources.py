@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import datetime as _dt
 import json
+import os
 import re
 import subprocess
 import sys
@@ -59,11 +60,22 @@ def today() -> str:
     return _dt.date.today().isoformat()
 
 
+def _retry(fn, tries: int = 10):
+    """OneDrive briefly locks files it is syncing ("Operation not permitted", seen 2026-11-06 mid-run); wait it out."""
+    for i in range(tries):
+        try:
+            return fn()
+        except PermissionError:
+            if i == tries - 1:
+                raise
+            time.sleep(3)
+
+
 def _rows() -> list[dict]:
     if not LEDGER.exists():
         return []
     out = []
-    for line in LEDGER.read_text().splitlines():
+    for line in _retry(LEDGER.read_text).splitlines():
         try:
             out.append(json.loads(line))
         except ValueError:
@@ -77,8 +89,10 @@ def _log(source: str, query: str, status: str, n: int = 0, note: str = "", usd: 
            "q": query, "status": status, "n": n, "note": note[:200]}
     if usd is not None:
         row["usd"] = round(usd, 6)
-    with LEDGER.open("a") as f:
-        f.write(json.dumps(row) + "\n")
+    def write():
+        with LEDGER.open("a") as f:
+            f.write(json.dumps(row) + "\n")
+    _retry(write)
 
 
 def usage(source: str, rows: list[dict] | None = None) -> dict:
@@ -115,7 +129,9 @@ def room(source: str, rows: list[dict] | None = None) -> int:
         return 0
     if source in MONTH_USD and u["month_usd"] >= MONTH_USD[source]:
         return 0
-    left = cfg["daily"] - u["today"]
+    # One-off override for a calibration Barry asked for (e.g. SERP_DAILY_CLAUDE=200); the daily run never sets it.
+    daily = int(os.environ.get(f"SERP_DAILY_{source.upper()}", cfg["daily"]))
+    left = daily - u["today"]
     if cfg["life"] is not None:
         left = min(left, cfg["life"] - u["life"])
     return max(left, 0)
