@@ -44,6 +44,7 @@ CATEGORIES = {
     "microphone": ('Microphones', 'USB, XLR and wireless microphones for podcasting, streaming, calls and video.'),
     "smart-plug": ('Smart plugs', 'Plug-in outlets you switch, dim or schedule from a hub or app, indoors or outdoors.'),
     "pen-tablet": ('Pen tablets', 'Screenless drawing tablets you use with a monitor for retouching, illustration and design.'),
+    "bird-feeder-camera": ('Bird feeder cameras', 'Smart bird and hummingbird feeders with a built-in camera, app alerts and species ID.'),
 }
 
 PRODUCTS = [
@@ -2256,6 +2257,42 @@ PRODUCTS = [
  "summary": "A low-cost 200 W MC4 folding panel to pair with the INFINITY 2000 PRO or HELIOS 3600; six of them reach the INFINITY's 1,200 W solar limit.",
  "fit": 'Anyone buying a Growatt station who wants an inexpensive matching panel with a standard MC4 plug.',
  "caveats": ['24 V open-circuit voltage means two panels in series may be needed for stations that want 30 V or more to start charging.', '200 W is a lab figure; expect 140–160 W in real sun.']},
+
+{"slug": 'birdfy-hum-feeder',
+ "brand": 'Birdfy',
+ "program": 'awin:birdfy',
+ "category": 'bird-feeder-camera',
+ "name": 'Birdfy Hum Feeder Smart Hummingbird Feeder with Camera, 1080p, built-in ant moat, 14 fl oz',
+ "model": 'Hum Feeder',
+ "url": 'https://www.birdfy.com/products/birdfy-hum-feeder-mini',
+ "official_page": 'https://support.birdfy.com/product/birdfy-hum-feeder-se/specifications/',
+ "price": 129.99,
+ "list_price": 199.99,
+ "verified": '2026-11-06',
+ "specs": [('Video', '1920 × 1080 at 20 fps, no night vision'), ('Battery', '9,000 mAh lithium-ion, USB charging (5 V / 1 A); solar panel optional'), ('Nectar tank', '14 fl oz, side-swivel feeding ports'), ('Ant protection', 'Built-in water ant moat; optional solar panel adds a second moat on the hanger'), ('Bird ID', 'AI recognition of 150+ hummingbird species, free in the Birdfy app'), ('Cloud', 'Auto-recorded clips kept 30 days free; no microSD slot'), ('Weather rating', 'IP66; 14 °F to 113 °F'), ('Wi-Fi', '2.4 GHz only, Bluetooth pairing'), ('Weight', '0.95 lb')],
+ "warranty": '2 years from Birdfy (warranty policy page)',
+ "returns": '30 days from receipt on birdfy.com; buyer pays return shipping unless the unit is defective',
+ "summary": 'A single-camera hummingbird feeder with a built-in ant moat, a 9,000 mAh battery and free species ID. The cheapest of the three main camera hummingbird feeders and the only one under 150 dollars with an ant moat.',
+ "fit": 'First camera hummingbird feeder, especially if ants or a monthly fee are your worry. Also the lightest and simplest to hang.',
+ "caveats": ["1080p video at 20 fps, not 2K; Bird Buddy's Pro takes sharper stills.", 'No motion sensitivity setting; a feeder swinging in wind can create empty clips.', 'Without the optional solar panel, heavy traffic (about 200 visits a day) meant recharging every 3 days in one review.', '2.4 GHz Wi-Fi only; the feeder needs Wi-Fi to record and upload.']},
+
+{"slug": 'birdfy-hum-feeder-duo',
+ "brand": 'Birdfy',
+ "program": 'awin:birdfy',
+ "category": 'bird-feeder-camera',
+ "name": 'Birdfy Hum Feeder Duo Dual-Camera Hummingbird Feeder, 2K, 20 fl oz',
+ "model": 'Hum Feeder Duo',
+ "url": 'https://www.birdfy.com/products/birdfy-hum-feeder',
+ "official_page": 'https://support.birdfy.com/product/birdfy-hum-feeder-duo/specifications/',
+ "price": 199.99,
+ "list_price": 319.99,
+ "verified": '2026-11-06',
+ "specs": [('Video', 'Two cameras, 2048 × 1536 at 25 fps; 1024 × 768 at 120 fps slow motion on the main camera'), ('Battery', '5,000 mAh lithium-ion, USB charging (5 V / 2 A); solar panel optional'), ('Nectar tank', '20 fl oz'), ('Ant protection', 'Built-in ant moat'), ('Bird ID', 'AI recognition of hummingbird species, free in the Birdfy app'), ('Cloud', 'Auto-recorded clips kept 30 days free; no microSD slot; no night vision'), ('Weather rating', 'IP66; 14 °F to 113 °F'), ('Wi-Fi', '2.4 GHz only'), ('Weight', '1.54 lb')],
+ "warranty": '2 years from Birdfy (warranty policy page)',
+ "returns": '30 days from receipt on birdfy.com; buyer pays return shipping unless the unit is defective',
+ "summary": 'The only hummingbird feeder with two cameras, so you get a front view and a side profile of the same visit, plus a 20 fl oz tank that needs fewer refills than the 14 fl oz feeders.',
+ "fit": 'Busy feeders with several hummingbirds, and anyone who wants 2K video from two angles without a subscription.',
+ "caveats": ['No motion sensitivity setting; one reviewer logged many empty clips on windy days.', 'Reviews mention the side camera fogging and nectar leaking if the base is not seated properly after refilling.', 'Smaller 5,000 mAh battery than the single-camera Hum Feeder; plan on the solar panel for a busy feeder.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
