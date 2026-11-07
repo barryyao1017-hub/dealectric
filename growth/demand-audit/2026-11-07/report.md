@@ -51,6 +51,19 @@ total). Files: `queries.json` (groups and member queries), `readings.json` (top 
 - Brand-review pages (row 4) break the 10-31 rule against brand-named queries, which was written for gap scoring;
   using them for page building is Barry's call.
 
+## What shipped (2026-11-07, Barry: "yes, incl. brand page")
+
+| Target query (baseline rank) | Page | Change |
+|---|---|---|
+| best solar generator with panels 2026 (#8) | /solar-generator-with-panels-included | short answer moved first with the query words; competitor prices re-read |
+| best solar generator for home use 2026 (–), for home backup (–) | /best-solar-generator-for-power-outages | title, H1, lead and link text retargeted; sold-out picks marked |
+| best home battery backup system 2026 (–) | /best-home-battery-backup-system (G174) | new |
+| bluetti power station review 2026 (–) | /best-bluetti-power-station (G175) | new, brand page |
+| 4patriots solar generator review 2026 alternatives (–) | /best-4patriots-solar-generator-alternative (G176) | new |
+
+All five pass `fastloop.py check` at ranks 1/3/6 on the OpenAI result sets above. New records: BLUETTI Elite 100 V2
+(Awin), Anker SOLIX F3800 Plus (Rakuten). Re-reads: DLC-197 (11-10), DLC-198 (11-14), DLC-199 (11-17, verdict).
+
 ## Recommendation
 Run a 10-day head-query test before building more long-tail pages: retitle and strengthen 2 near-miss pages (row 1,
 row 3), build 3 new head pages (rows 2, 4 one brand, 5), and re-read these 35 queries on days 3, 7 and 10 (~$0.40 per
