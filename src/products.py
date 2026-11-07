@@ -235,6 +235,8 @@ PRODUCTS = [
 
 # ---------------- BLUETTI (Awin 59271 for US store) ----------------
 {"slug": "bluetti-elite-200-v2", "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 46252054544603, "category": "power-station",
+ "newer": ("bluetti-apex-200", "BLUETTI's newer 2.5 kWh station (on sale since 2026-11-04) costs $200 more at $1,099 (launch price to Nov 18) "
+           "and adds what the Elite 200 V2 lacks: expansion batteries up to 33 kWh, a TT-30 RV outlet and 3,200 W."),
  "name": "BLUETTI Elite 200 V2 Portable Power Station", "model": "Elite 200 V2",
  "url": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station", "price": 899,
  "specs": [("Capacity", "2,073.6 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles to 80%"), ("AC output", "2,600 W continuous; 3,900 W Power Lifting; 4 outlets (9 outputs in all)"),
@@ -253,6 +255,9 @@ PRODUCTS = [
  "cart_variant": 44449450852571,
  # DLC-77 fact fix: in the description, catalog card and agent note, so a stale stored copy still says it is ending
  "phase_out": "On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early November 2026.",
+ # DLC-73 (2026-11-06): the product page links the successor right under the summary
+ "newer": ("bluetti-apex-200", "BLUETTI's replacement for the AC200L, on sale since 2026-11-04: 2,560 Wh, 3,200 W, the same TT-30 RV outlet, "
+           "expandable to 33 kWh, at $1,099 (launch price to Nov 18), $200 more than the AC200L's remaining stock."),
  "specs": [("Capacity", "2,048 Wh, expandable to 8,192 Wh (2× B300); 7,577.6 Wh with 2× B300K"), ("Chemistry", "LiFePO4, 3,000+ cycles to 80%"), ("AC output", "2,400 W continuous; 3,600 W Power Lifting; 4× 120 V + 1× TT-30 RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 48 V / 8 A DC port"), ("Solar input", "Up to 1,200 W, 12–145 V, 15 A"), ("AC input", "2,400 W; 80% in 45 min, full in ~1.5 h"),
            ("UPS", "20 ms"), ("Size / weight", "420 × 280 × 366 mm, 28.3 kg"), ("App", "Yes")],
@@ -456,6 +461,8 @@ PRODUCTS = [
  "caveats": ["Pre-order: ALLPOWERS dispatches from Dec 15, 2026 (checked 2026-11-02).", "One 200 W panel refills 1,024 Wh in about 1.5–2 sunny days; the station takes up to 650 W of panels.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
 
 {"slug": "allpowers-s2000-pro-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "instead": ("allpowers-r2500-v2-sp037-solar-kit", "If the station will mostly stay put (home backup, a van, a cabin), ALLPOWERS' own R2500 V2 kit has the same panel, "
+             "1,920 Wh of LiFePO4 instead of 1,451 Wh of NMC, and a 2,500 W inverter for about the same price, but the station weighs 29 kg against 13 kg."),
  "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
  "url": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel", "price": 848, "verified": "2026-11-02", "lowest_seen": {"price": 848, "date": "2026-11-02", "source": "our price checks"},
  "specs": [("Battery", "1,451 Wh, ternary lithium (NMC), not LiFePO4"), ("AC output", "2,400 W (4,000 W surge); rated 2,000 W once the battery is below about 60% (ALLPOWERS told one reviewer 70%)"), ("Panel", "1× SP037 400 W folding"),
@@ -465,6 +472,30 @@ PRODUCTS = [
  "fit": "Buyers who need to start big loads (well pumps, microwaves) more than they need cycle life.",
  "caveats": ["NMC chemistry: fewer cycles than LiFePO4.", "Before codes the kit costs the same as the station ($664) and panel ($299); with BULKRATE the two items were $857.07 in our 2026-10-29 cart test, $9.63 less than the kit with ALLPOWERS26.",
              "Usable capacity tested at 920 Wh on a 2023 unit and about 1,250–1,380 Wh on 2026 units (reviewers).", "The fan is loud when charging from the wall (owners).", "ALLPOWERS' page FAQ still gives the 2022 build's 650 W / 18–70 V solar input; current units take 1,000 W at 12–150 V."]},
+
+{"slug": "allpowers-r2500-v2-1920wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
+ "name": "ALLPOWERS R2500 V2 Portable Power Station (1,920 Wh, 2,500 W)", "model": "R2500 V2",
+ "url": "https://iallpowers.com/products/allpowers-r2500-v2-portable-power-station-2500w-1920wh?variant=48261423005849", "price": 649, "list_price": 1599, "verified": "2026-11-06",
+ # DLC-82 (2026-11-06): ALLPOWERS' LiFePO4 answer at the S2000 Pro's price; listed 2026-06-25, replaces the sold-out R2500 Plus
+ "specs": [("Capacity", "1,920 Wh LiFePO4, 3,500+ cycles (ALLPOWERS gives no end-of-life percentage)"), ("AC output", "4× 100–120 V, 2,500 W continuous; surge 4,000 W in the spec table, 5,000 W peak in the feature list"),
+           ("USB", "2× USB-C (200 W max), 2× USB-A 12 W, 2× USB-A 36 W"), ("DC", "Car port and 2× DC5525, 12 V / 10 A, 120 W"), ("Solar input", "1,000 W, 12–150 V, 20 A"),
+           ("AC input", "1,500 W; 0–100% in about 1.5 h (ALLPOWERS measured ~97 min); AC + solar together supported"), ("UPS", "15 ms"), ("Weight", "29 kg (63.9 lb)"), ("App", "Wi-Fi and Bluetooth")],
+ "warranty": "5 years per ALLPOWERS' product page (registration terms not checked)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
+ "summary": "ALLPOWERS' 1.92 kWh LiFePO4 station with a 2,500 W inverter and 1,000 W of solar input, for about the price of its lighter NMC S2000 Pro; the trade is weight, 29 kg against 13 kg.",
+ "fit": "Home backup, a van or a cabin, where the station mostly stays put and gets cycled often.",
+ "caveats": ["Heavy: 29 kg (63.9 lb) with hand-carry handles and no wheels.", "Surge is 4,000 W in ALLPOWERS' spec table and 5,000 W in its feature list; we quote the lower figure.",
+             "Not expandable; ALLPOWERS' expandable 2 kWh model was the R2500 Plus, now sold out.", "AC charging tops out at 1,500 W, below the 2,500 W output."]},
+
+{"slug": "allpowers-r2500-v2-sp037-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+ "name": "ALLPOWERS R2500 V2 + SP037 400 W Solar Generator Kit (1,920 Wh, 2,500 W)", "model": "R2500 V2 + 1× SP037",
+ "url": "https://iallpowers.com/products/allpowers-r2500-v2-sp037-400w-solar-panel-2500w-solar-generator-kit?variant=67800818614425", "price": 948, "list_price": 1799, "verified": "2026-11-06",
+ "specs": [("Battery", "1,920 Wh LiFePO4, 3,500+ cycles"), ("AC output", "2,500 W (4,000 W surge in the spec table)"), ("Panel", "1× SP037 400 W folding"),
+           ("Solar input", "1,000 W, 12–150 V, 20 A: one SP037 fits fully, with room for a second (ALLPOWERS sells a 2× SP037 version at $1,247)"), ("Solar recharge with this kit", "About 6–7 hours of good sun with one SP037 (our estimate)"), ("Weight", "Station 29 kg; panel extra")],
+ "warranty": "Station 5 years per ALLPOWERS' product page; SP037 2 years", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
+ "summary": "The same 400 W panel as the S2000 Pro kit on a 1.92 kWh LiFePO4 station: about 470 Wh more and a longer-lived chemistry for about the same money, at more than twice the station weight.",
+ "fit": "Home backup or a cabin system charged from the sun, where the station isn't carried around much.",
+ "caveats": ["Buying the station and the SP037 as two items with BULKRATE came to $852.62 in our 2026-10-29 cart test, less than the kit SKU with a 10% code; BULKRATE ends 2026-11-15.",
+             "Station weighs 29 kg (63.9 lb).", "ALLPOWERS gives the cycle rating as '3500+' with no end-of-life percentage."]},
 
 {"slug": "allpowers-volix-p300-100w-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
@@ -495,6 +526,17 @@ PRODUCTS = [
  "summary": "A 2 kWh LiFePO4 station that takes up to 1,000 W of solar, sold with one 200 W panel to start.",
  "fit": "Home backup for a fridge and essentials, with room to add panels later.",
  "caveats": ["BLUETTI's page says the 200 W panel ships from October 29.", "One 200 W panel uses a fifth of the station's 1,000 W solar input; a 2,000 Wh battery takes more than a day of sun to refill from it."]},
+
+{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+ # DLC-164 (2026-11-06): in the x18 replay ChatGPT picked Jackery's SG 2000 v2 + 2x200 W for its 400 W of panels; this is BLUETTI's 400 W kit
+ "name": "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W, 400 W of panels)", "model": "Elite 200 V2 + 2× 200 W panel",
+ "url": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l", "price": 1499, "verified": "2026-11-06",
+ "specs": [("Battery", "2,073.6 Wh LiFePO4, 6,000+ cycles to 80%"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panels", "2× BLUETTI 200 W (400 W)"),
+           ("Solar input", "1,000 W max, 12–60 V, 20 A"), ("Solar recharge with this kit", "About 6–7 hours of good sun with both panels (our estimate)"), ("UPS", "≤15 ms switchover"), ("Expandable", "No")],
+ "warranty": "5 years on the station (proof of purchase from an official store)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping",
+ "summary": "BLUETTI's 2 kWh LiFePO4 station with 400 W of panels, $1,499 at BLUETTI's US store, enough sun input to refill it in a long day.",
+ "fit": "Home backup for a fridge and essentials recharged from the sun, or an off-grid cabin weekend.",
+ "caveats": ["Not expandable: buy the Apex 200 if you may add batteries later.", "Recharge time is our estimate from 400 W of panels; BLUETTI doesn't publish one for this kit."]},
 
 {"slug": "bluetti-elite-30-v2-100w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI Elite 30 V2 + 100 W Solar Panel Kit (288 Wh, 600 W)", "model": "Elite 30 V2 + 100 W panel",

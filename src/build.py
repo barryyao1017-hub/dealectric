@@ -766,6 +766,18 @@ def deal_row(p, url):
     return f'\n<p><strong>Buy:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>{deal}{stock} · affiliate link</p>'
 
 
+def newer_block(p):
+    """DLC-73: a line pointing an older model's page at the brand's newer one ("newer": (slug, text) in products.py)."""
+    out = ""
+    for key, label in (("newer", "Newer model"), ("instead", "Consider instead")):   # DLC-82: "instead" for a same-brand alternative
+        if p.get(key):
+            slug, text = p[key]
+            name = html.escape(title_name(BY_SLUG[slug]))
+            out += (f'\n<p><strong>{label}: {name}.</strong> {html.escape(text)} '
+                    f'<a href="/products/{slug}/">See the {name} →</a></p>')
+    return out
+
+
 def product_page(p):
     _, net, prog = tracked_link(p)
     url = go_link(p)
@@ -777,7 +789,7 @@ def product_page(p):
     body = f"""
 <p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
 <h1>{html.escape(p['name'])}</h1>{deal_row(p, url)}
-<p class="lead">{html.escape(p['summary'])}</p>
+<p class="lead">{html.escape(p['summary'])}</p>{newer_block(p)}
 {offer_block(p, net, prog, url)}
 <figure><img src="{wide['path']}" width="{wide['width']}" height="{wide['height']}" alt="{html.escape(wide['alt'])}">
 <figcaption class="small">{html.escape(short_name(p))} at a glance. Image: Dealectric; specs from {html.escape(p['brand'])}'s official product page.</figcaption></figure>
