@@ -43,6 +43,9 @@ import run as R  # noqa: E402  (loop subset picker, log)
 CDP = os.environ.get("AGENT_CDP", "http://localhost:9222")
 APPS = {
     "chatgpt": {"model": "chatgpt.com, temporary chat, web search on", "ua_bucket": "openai"},
+    # DLC-88 (2026-11-07): gemini.google.com signed in as barrryyao in the agent Chrome, model "Gemini Auto". Gemini
+    # answers from Google's index copy (no live fetch seen on 10-28), so freshness = Googlebot's last crawl.
+    "gemini": {"model": "gemini.google.com, Gemini Auto, signed in", "ua_bucket": "google"},
 }
 ANSWER_TIMEOUT = 180
 SHOT_MAX_H = 4000         # px; full-page screenshot of the finished chat, saved as <qid>-<tier>-<n>.jpg next to the run file
@@ -521,7 +524,100 @@ def _squash(s: str) -> str:
     return re.sub(r"\s+", "", s or "")
 
 
-ASKERS = {"chatgpt": ask_chatgpt}
+GEMINI_HOST_RE = re.compile(r"^https?://([a-z0-9-]+\.)*(gemini\.google\.com|accounts\.google\.com|support\.google\.com|policies\.google\.com|gstatic\.com)(/|$)", re.I)
+GEMINI_READ_JS = r"""(() => {
+  const resp = [...document.querySelectorAll('model-response')].pop();
+  const msg = resp ? resp.querySelector('message-content') || resp : null;
+  const links = msg ? [...msg.querySelectorAll('a[href]')].map(a => ({href: a.href, text: (a.innerText || '').trim().slice(0, 200)})) : [];
+  const btns = [...document.querySelectorAll('button')].map(b => b.getAttribute('aria-label') || '');
+  return JSON.stringify({url: location.href, title: document.title, answer: msg ? msg.innerText : '', links,
+    streaming: btns.some(l => /stop/i.test(l)), send: btns.includes('Send message'),
+    signed: !!document.querySelector('a[aria-label*="Google Account"]'),
+    error: (document.body.innerText.match(/Something went wrong|I encountered an error[^\n]*/) || [''])[0]});
+})()"""
+
+
+def ask_gemini(prompt: str, shot_path: Path | None = None, fp: dict | None = None, search: bool = True) -> dict:
+    """One gemini.google.com chat (DLC-88), logged to the footprint log like ask_chatgpt."""
+    fp = dict(fp or {})
+    if shot_path is not None and not fp.get("run_id"):
+        try:
+            rel = Path(shot_path).resolve().relative_to(E.RUNS_DIR)
+            fp.setdefault("run_id", rel.parts[0])
+            fp.setdefault("prompt_id", Path(shot_path).stem)
+        except ValueError:
+            fp.setdefault("prompt_id", Path(shot_path).stem)
+    started, r, err = E.now_iso(), {}, None
+    try:
+        r = _ask_gemini(prompt, shot_path)
+        return r
+    except Exception as e:
+        err = f"{type(e).__name__}: {e}"
+        raise
+    finally:
+        E.footprint("gemini-ui", started, E.now_iso(), prompt=prompt, account="barrryyao", temporary=False,
+                    cited=[r.get("citations")], error=err, final_url=(r.get("response") or {}).get("final_url"), cdp=CDP, **fp)
+
+
+def _ask_gemini(prompt: str, shot_path: Path | None = None) -> dict:
+    tab = Tab("https://gemini.google.com/app")
+    try:
+        t0 = time.time()
+        state, last, same, sent, trace = None, None, 0, 0, []
+        while time.time() - t0 < ANSWER_TIMEOUT:
+            time.sleep(2)
+            try:
+                state = json.loads(tab.eval(GEMINI_READ_JS) or "null")
+            except Exception as e:  # noqa: BLE001
+                trace.append({"t": round(time.time() - t0, 1), "eval_error": str(e)[:120]})
+                continue
+            if not state:
+                continue
+            trace.append({"t": round(time.time() - t0, 1), "answer_len": len(state["answer"]), "streaming": state["streaming"]})
+            if not state["signed"] and time.time() - t0 > 20:
+                raise RuntimeError("gemini.google.com is signed out in the agent Chrome")
+            if not sent and state["signed"]:
+                # dismiss the first-run "Bear in mind" card, type the prompt, press Send
+                tab.eval("""(()=>{const g=[...document.querySelectorAll('button')].find(b=>b.innerText.trim()==='Got it'); if(g) g.click();
+                  const e=document.querySelector('.ql-editor'); if(!e) return 'no editor'; e.focus();
+                  document.execCommand('selectAll', false); document.execCommand('insertText', false, %s); return 'typed'})()""" % json.dumps(prompt))
+                time.sleep(1.5)
+                tab.eval("""(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.getAttribute('aria-label')==='Send message'); if(b) b.click(); return !!b})()""")
+                sent += 1
+                continue
+            if state["error"] and not state["answer"]:
+                raise RuntimeError(f"gemini error: {state['error'][:120]}")
+            if state["answer"] and not state["streaming"]:
+                same = same + 1 if state["answer"] == last else 0
+                last = state["answer"]
+                if same >= SETTLE_POLLS:
+                    break
+        if not state or not state["answer"]:
+            raise RuntimeError(f"no answer within {ANSWER_TIMEOUT}s; trace: " + json.dumps(trace[-6:])[:600])
+        shot = screenshot(tab, shot_path) if shot_path else None
+        links = [l for l in state["links"] if not GEMINI_HOST_RE.match(l["href"])]
+        cites = []
+        seen = set()
+        for l in links:
+            u = E.strip_tracking(l["href"])
+            if u not in seen:
+                seen.add(u)
+                cites.append({"url": l["href"], "title": l["text"], "source": "ui_href"})
+        finished = same >= SETTLE_POLLS
+        return {"model": APPS["gemini"]["model"], "request": {"url": "https://gemini.google.com/app", "method": "fresh tab, typed and sent"},
+                "response": {"final_url": state["url"], "title": state["title"], "links_all": state["links"], "answer": state["answer"]},
+                "text": state["answer"], "citations": cites, "raw_citations": links, "consulted": [], "queries": [],
+                "stop_reason": "settled" if finished else "timeout", "usage": None, "ui": True, "screenshot": shot,
+                "account": "barrryyao (signed in)", "temporary_chat": False, "trace": trace,
+                "notes": ["gemini.google.com signed in, regular chat (saved to the account's Gemini activity), agent Chrome via CDP, "
+                          "hrefs from the answer DOM; no search trace (Gemini exposes none in the page)"]
+                         + ([] if finished else ["answer still changing at timeout"]),
+                "latency_s": round(time.time() - t0, 1)}
+    finally:
+        tab.close()
+
+
+ASKERS = {"chatgpt": ask_chatgpt, "gemini": ask_gemini}
 
 
 # ---------------------------------------------------------------- driver
