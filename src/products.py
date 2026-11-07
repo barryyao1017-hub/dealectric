@@ -2669,6 +2669,38 @@ PRODUCTS = [
  "fit": 'Men who want Whoop-style recovery tracking without a yearly fee, and lifters who want a second sensor on the upper arm that broadcasts heart rate to gym machines.',
  "caveats": ['Auto-detected workouts are unreliable: DC Rainmaker logged 10 workouts on a day he did 2, so start sessions manually.', "Sleep onset was off by about 37 minutes on one night in DC Rainmaker's test; Apple, Garmin, Oura and Whoop were closer.", 'Daily strain caps at 100%, so a very hard day looks like a moderate one.', 'Max heart rate is fixed at 220 minus age, which skews zones for fit men.', 'The hook-and-loop strap is one size and may wear over time.', 'Training plans only work when paired with an Amazfit watch.']},
 
+{"slug": 'revopoint-inspire-2-3d-scanner',
+ "brand": 'Revopoint',
+ "program": 'awin:revopoint',
+ "category": '3d-scanner',
+ "name": 'Revopoint INSPIRE 2 3D Scanner, infrared structured light + 11-line laser, 0.05 mm accuracy, Wi-Fi 6 (Standard Edition)',
+ "model": 'INSPIRE 2',
+ "url": 'https://www.revopoint3d.com/products/infrared-laser-3d-scanner-inspire2',
+ "price": 494,
+ "verified": '2026-11-06',
+ "specs": [('Single-frame accuracy', 'up to 0.05 mm (precision up to 0.03 mm)'), ('Volumetric accuracy', '0.05 mm + 0.1 mm per meter of object length'), ('Light source', 'Class 1 infrared structured light plus an 11-line infrared laser mode for black and matte-metal parts'), ('Scan volume', '20 × 20 × 20 mm up to 2 × 2 × 2 m'), ('Working distance', '200 to 400 mm indoors'), ('Speed', 'up to 18 fps structured light; laser mode up to 90 fps on a PC with an Nvidia GPU'), ('Tracking modes', 'feature, marker, global marker'), ('Color', 'RGB camera, 1280 × 800'), ('Weight', '190 g (6.7 oz)'), ('Connection', 'USB-C, Wi-Fi 6, Bluetooth 4.1; phone scanning via Revo Scan, laser mode only in Revo Metro on a PC'), ('Export', 'STL, OBJ, PLY, 3MF, FBX, GLTF, ASC'), ('Edition', 'Standard: scanner, tripod and calibration board; Premium adds the power-bank mobile kit for phone scanning')],
+ "warranty": "2-year warranty on the scanner and 1 year on accessories, per Revopoint's warranty page",
+ "returns": '14-day return for refund and 30-day exchange from the Revopoint store',
+ "summary": 'The lightest full-featured hobby scanner: 0.05 mm accuracy, color capture, Wi-Fi scanning from a phone, and a laser mode that reads black or matte-metal parts without spray.',
+ "fit": 'Hobbyists who want to copy household parts, figures and medium objects for 3D printing without a $1,000 budget.',
+ "caveats": ['Laser mode runs only in Revo Metro on a Windows PC; Revopoint lists an Nvidia RTX 3060 class GPU and 16 GB RAM, and phone scanning is structured light only.', 'Handheld tracking drops on plain or symmetrical shapes; reviewers call it marker-hungry on small, awkward parts and marker removal can leave holes.', 'Chrome, mirror finishes and clear plastic still need scanning spray even in laser mode.', 'Plan on 15 to 30 minutes of cleanup per scan before a mesh is printable.']},
+
+{"slug": 'revopoint-metrox-3d-scanner',
+ "brand": 'Revopoint',
+ "program": 'awin:revopoint',
+ "category": '3d-scanner',
+ "name": 'Revopoint MetroX Blue Laser 3D Scanner, 14 cross lines, 0.03 mm accuracy (Standard Edition)',
+ "model": 'MetroX',
+ "url": 'https://www.revopoint3d.com/products/3d-laser-scanner-metrox',
+ "price": 749,
+ "verified": '2026-11-06',
+ "specs": [('Single-frame accuracy', 'up to 0.03 mm (precision up to 0.01 mm)'), ('Fused point distance', 'up to 0.05 mm'), ('Laser modes', '14 blue cross lines (up to 800,000 points/s) and 7 parallel lines for edges; markers required'), ('Full-field mode', '62-line blue structured light, up to 7,000,000 points/s, marker-free on feature-rich parts'), ('Scan volume', '10 × 10 × 10 mm up to 1 × 1 × 1 m'), ('Working distance', '200 to 400 mm'), ('Weight', '508 g (17.9 oz)'), ('Connection', 'USB-C to a PC plus a 12 V 3 A power adapter'), ('Software', 'Revo Metro on Windows')],
+ "warranty": "2-year warranty on the scanner and 1 year on accessories, per Revopoint's warranty page",
+ "returns": '14-day return for refund and 30-day exchange from the Revopoint store',
+ "summary": 'A blue-laser scanner for black and shiny mechanical parts: 0.03 mm accuracy, 10 mm minimum object, and cross-line laser modes that reviewers found handle shiny metal without spray.',
+ "fit": 'Makers reverse-engineering brackets, car parts and machined pieces into CAD, where crisp edges matter more than color.',
+ "caveats": ["Both laser modes need reflective markers on or around the part; owners report 'need more markers' errors and marker prep that takes longer than the scan.", 'Full-field structured-light mode still needs scanning spray on black or glossy surfaces.', 'Tethered: 508 g in hand plus a USB cable and a wall power brick, so it is a desk scanner, not a walk-around one.', 'Marker-free feature tracking in full-field mode is weak on plain shapes; one owner thread calls it terrible.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
