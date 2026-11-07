@@ -7611,9 +7611,9 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": '2026-11-06',
  "checked": '2026-11-06'},
 
-# ---------------- G138: best-fitness-tracker-or-smartwatch (gap mining daily) ----------------
+# ---------------- G169: best-fitness-tracker-or-smartwatch (gap mining daily) ----------------
 {"slug": 'best-fitness-tracker-or-smartwatch',
- "question": 'G138 (gap mining daily: fitness tracker vs smartwatch, 9980 Bing searches / 3 mo, coverage 0.215)',
+ "question": 'G169 (gap mining daily: fitness tracker vs smartwatch, 9980 Bing searches / 3 mo, coverage 0.215)',
  "lead_first": True,
  "title": 'Fitness tracker vs smartwatch: which to buy in 2026 (tested picks)',
  "h1": 'Fitness tracker or smartwatch? The honest pick for each kind of buyer',
