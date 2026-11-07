@@ -1,0 +1,144 @@
+<title>Buy-Link Handover Rethink</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch) with full-width evidence tables; a quiet memo with a single accent. */
+:root{
+  --bg:#fbfaf7; --fg:#1f2320; --muted:#5f6660; --rule:#d9d7cf; --panel:#f1efe8;
+  --accent:#0f6b5c; --accent-soft:#d9ece6; --warn:#9a4b12; --warn-soft:#f6e4d4;
+  --display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#16191a; --fg:#e7e6e0; --muted:#a2a79f; --rule:#343a38; --panel:#1f2425;
+  --accent:#5fc3ad; --accent-soft:#143c35; --warn:#e2a06a; --warn-soft:#3b2a1c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#16191a; --fg:#e7e6e0; --muted:#a2a79f; --rule:#343a38; --panel:#1f2425;
+  --accent:#5fc3ad; --accent-soft:#143c35; --warn:#e2a06a; --warn-soft:#3b2a1c; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-block:40px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:72ch;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:2.1rem;font-weight:600}
+h2{font-size:1.45rem;font-weight:600;margin-top:2.6rem;padding-top:1rem;border-top:1px solid var(--rule)}
+h3{font-size:1.1rem;font-weight:600;margin-top:1.6rem}
+p{margin:.8rem 0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.lede{font-size:1.12rem;color:var(--fg);margin-top:1rem}
+.lede strong{color:var(--accent)}
+.meta{color:var(--muted);font-size:.9rem}
+.verdict{background:var(--accent-soft);border-left:4px solid var(--accent);padding:.9rem 1.1rem;margin:1.4rem 0;border-radius:0 6px 6px 0}
+.verdict p{margin:.35rem 0}
+.flag{background:var(--warn-soft);border-left:4px solid var(--warn);padding:.8rem 1.1rem;margin:1.2rem 0;border-radius:0 6px 6px 0}
+.tablewrap{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.num{text-align:right;white-space:nowrap}
+.outcomes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:1.2rem 0}
+.outcome{background:var(--panel);padding:.9rem 1rem;border-radius:6px;min-width:0}
+.outcome .k{font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.outcome .v{font-family:var(--display);font-size:1.6rem;font-weight:600;margin:.2rem 0 .3rem}
+.outcome p{margin:0;font-size:.9rem}
+blockquote{margin:1rem 0;padding:.6rem 1rem;border-left:3px solid var(--rule);color:var(--muted);font-style:italic}
+ul,ol{padding-left:1.3rem}li{margin:.35rem 0}
+code{font-family:var(--mono);font-size:.88em;background:var(--panel);padding:.05em .35em;border-radius:3px}
+.opt{margin-top:1.4rem;padding-top:.4rem}
+.opt h3 span{font-family:var(--mono);font-size:.8rem;color:var(--accent);margin-right:.5rem}
+.tag{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;padding:.1em .5em;border-radius:3px;background:var(--panel);color:var(--muted);margin-left:.4rem;vertical-align:middle}
+.tag.rec{background:var(--accent-soft);color:var(--accent)}
+.tag.no{background:var(--warn-soft);color:var(--warn)}
+small{color:var(--muted)}
+a{color:var(--accent)}
+</style>
+<main>
+<p class="eyebrow">Dealectric · content strategy · 2026-11-07</p>
+<h1>What makes ChatGPT hand over our buy link</h1>
+<p class="lede">Answering the shopper's question well is table stakes. Every page in the result set does it, and ChatGPT fills the buy slot from its own catalog regardless. The link gets written into an answer only when <strong>the link itself is the answer</strong>: a price the catalog can't show, for a product the catalog can't vouch for, in reply to a question about price. Our pages are built for the wrong question.</p>
+<p class="meta">Evidence: 188 plain-prompt ChatGPT chats on 11-07 (one per gap page, gpt-6), 152 real ChatGPT-tagged buy clicks in D1 over 21 days, the under-$500 chat read in full, three winning competitor pages, and OpenAI's merchant and promotions documentation.</p>
+
+<div class="verdict">
+<p><strong>Recommendation.</strong> Split the site's content into two page kinds with different jobs. <em>Deal pages</em> (one per product and brand) exist to be handed over: a verifiable price-after-code record on one line, aimed at "discount code / cheapest / where to buy" questions. <em>Question pages</em> (gap and comparison) exist to be cited and to convert the shopper who lands: reference first, offer phrased as a checkable fact, no copy aimed at the assistant. Under both, build a trust layer the model can check: a public per-code verification log and a richer buy-link text page. Gate every new page on our pick beating the catalog's best on the query's own metric after the code.</p>
+<p><strong>First step, before any rewrite:</strong> a 40-chat deal-intent harvest to confirm that the clicks we already get come from price questions. It costs one quota window and decides the rest.</p>
+</div>
+
+<h2>1. Three outcomes, three different causes</h2>
+<p>A retrieved page ends in one of three places. They are not points on one scale, and the same copy change moves them in different directions.</p>
+<div class="outcomes">
+<div class="outcome"><div class="k">Ignored</div><div class="v">74%</div><p>of chats with our page in the results. The answer's facts came from a source the model trusts more: the maker's page, a retailer, official docs.</p></div>
+<div class="outcome"><div class="k">Cited, no link</div><div class="v">26%</div><p>We held a fact no primary source had: a kit price under a cap, charge time, weight per Wh. The citation pointed at our page, never at <code>/go/</code>.</p></div>
+<div class="outcome"><div class="k">Handed over</div><div class="v">0 / 113</div><p>in the test. Yet real shoppers click our links about 7 times a day, 76% of them straight from an answer with no page visit first.</p></div>
+</div>
+<p>That last contradiction is the finding. The test asked each page's own target query, a general "best X for Y" question. Real shoppers are asking something else, and whatever it is, it makes the model write our URL. The clicks cluster on five solar kits, four of them ALLPOWERS or small BLUETTI kits with a 5–10% code.</p>
+<div class="tablewrap"><table>
+<tr><th>Signal (21 days to 11-07)</th><th class="num">Count</th><th>What it says</th></tr>
+<tr><td>ChatGPT-tagged real-browser buy clicks</td><td class="num">152</td><td>Direct handover happens live.</td></tr>
+<tr><td>…with no visit to any of our pages in the 20 min before</td><td class="num">116 (76%)</td><td>The link was in the answer itself.</td></tr>
+<tr><td>…after landing on one of our pages first</td><td class="num">36 (24%)</td><td>The cite → page → buy path is real but secondary.</td></tr>
+<tr><td>Top click targets</td><td class="num">62</td><td>ALLPOWERS P1800 kits (SF200 32, SP037 30), both pre-orders shipping in December.</td></tr>
+<tr><td>Top landing pages</td><td class="num">28 / 26</td><td>/solar-generator-with-panels-included and /bluetti-ac200l.</td></tr>
+<tr><td>Assistant fetches of <code>/go/</code> before showing it</td><td class="num">501 total</td><td>ChatGPT-User reads our buy-link text page before deciding. It is our last word.</td></tr>
+</table></div>
+
+<h2>2. Why the buy slot is not ours on general questions</h2>
+<p>In a shopping answer the buy buttons come from OpenAI's catalog: merchant feeds with prices OpenAI verifies. The model picks which catalog records to show and cannot point one at us. Our link appears only when the model writes it as text or a button, copied from our page. So on "best X" questions three things have to happen at once, and today none of them does reliably:</p>
+<ol>
+<li><strong>The model must see the offer.</strong> At rank 3–6 it gets 1,000–1,500 characters of a page. Our conversion block is there, but it reads as a sales pitch, and the AI-addressed product record above it cut citation to 13% (vs 52% without it) on 11-07.</li>
+<li><strong>The offer must matter.</strong> BLUETTI's code is 5%. In the under-$500 chat the catalog showed an EcoFlow RIVER 2 Pro at 768 Wh for $429 from Sam's Club; our pick was a 288 Wh Elite 30 V2 at $465.50 after the code. No copy beats a worse product.</li>
+<li><strong>The model must believe it.</strong> It did relay the code once, and hedged in the same breath:</li>
+</ol>
+<blockquote>"Dealectric reports a $489.99 bundle price, reduced to $465.50 with code DEALECTRIC, last verified November 6. This is an affiliate-reported deal rather than an independently verified checkout price."</blockquote>
+<p>Then it sent the button to our page ("View bundle details"), not to <code>/go/</code>. The model has a category for us, <em>affiliate-reported</em>, and a category it prefers, <em>independently verified checkout price</em>. The catalog is in the second category by construction. We are in the first by default, and nothing on the page moves us out of it.</p>
+<p>The competitors that took the citations instead share a shape: the answer as reference material, numbers from named studies or the maker's manual, a named author or method, sales links below the analysis or absent. The gas-furnace page that beat ours quotes Lawrence Berkeley Lab furnace models and a Canadian blower study, states "this site hasn't run a furnace on any of these batteries", and sells nothing. Powersized's kit guide, cited twice against us, states where every price came from and the date, plus the kit's saving against the parts and its 30-day price median.</p>
+
+<h2>3. Where the link is necessary</h2>
+<p>The model writes our URL when leaving it out would make the answer worse. Three conditions produce that, and the live clicks fit all three:</p>
+<ul>
+<li><strong>The question is about price.</strong> "Is there a discount code for the P1800 kit", "cheapest way to get an AC180 with a panel". The code is the answer, and the catalog card can't carry a code. (The promotions API OpenAI gives merchants has amount-off, percent-off and free-shipping benefits and no code field, checked today.)</li>
+<li><strong>No trusted source covers the product.</strong> ALLPOWERS has no Consumer Reports, Wirecutter or RTINGS coverage and its catalog card is the brand's own. For that product we are the primary source, and our link is the route.</li>
+<li><strong>The saving is material and checkable.</strong> 10% on a $698 kit is $70 and gets relayed. 5% on a $490 kit gets a hedge.</li>
+</ul>
+<p>The inverse holds too. On a general question about a mainstream model, the model has a verified card for EcoFlow at Sam's Club. Our page can add a fact and earn a citation, but the link stays with the card. That is not a copy failure. It is the structure of the answer.</p>
+
+<h2>4. Options</h2>
+
+<div class="opt"><h3><span>A</span>Own the price question <span class="tag rec">recommended</span></h3>
+<p>Build deal pages per product and per brand whose title, H1 and opening line are the price question in the shopper's words: "<em>ALLPOWERS P1800 + SP037 discount code (November 2026): $628.20 after ALLPOWERS26, checked in the cart today</em>". The record on one line: store price, code, saving, price after, cart-test timestamp, what the link does, the next-best price elsewhere. Then the alternatives' store prices, so the page is also the honest comparison.</p>
+<p><strong>Trade-off.</strong> Demand per query is small and only exists for products shoppers already name. It is also exactly the demand that converted every click we have. The brand discount-code pages already exist; product-level ones and the query-transfer check (what ChatGPT searches for a deal question) do not.</p></div>
+
+<div class="opt"><h3><span>B</span>Make the code verifiable, not reported <span class="tag rec">recommended</span></h3>
+<p>Turn the daily sweep into a public record the model can read: one page per code with every day's result (date, product, cart subtotal, discount taken, pass or fail), linked from every code mention and from the <code>/go/</code> text page ChatGPT fetches 500 times a month. Change the wording from "Dealectric reports" to the observation itself: "checked in BLUETTI's cart 2026-11-07 06:37 PT: subtotal $489.99, code accepted, $465.50; 17 of 17 daily checks passed since 10-22". Add a method page that says plainly what we do (cart tests, daily) and don't do (product tests).</p>
+<p><strong>Trade-off.</strong> Cheap: the data exists in <code>src/coupons.json</code> and the sweep logs. The unknown is whether the "affiliate-reported" hedge is about evidence (fixable) or about the site's category (not fixable by copy). One replay A/B answers that.</p></div>
+
+<div class="opt"><h3><span>C</span>Reference-first question pages <span class="tag rec">recommended, with a change</span></h3>
+<p>The 11-07 plan's phase 1: remove the AI-addressed block from all 74 pages, open with the direct answer and its numbers, the mainstream models ChatGPT already names plus ours, sourced specs, author and method; offer below. Target citation 80%.</p>
+<p><strong>The change.</strong> Don't bury the offer entirely. Keep one line inside the top 1,200 characters, written as a checkable fact in the style of option B, not as a pitch. The question page's job is citation plus converting the 24% who land, so the human-facing buy block below the fold must be strong. Accept that direct handover on general questions stays near zero; that is the catalog's slot.</p>
+<p><strong>Trade-off.</strong> This reverses the "conversion block opens the page" copy rule of 11-01. That rule was measured in the replay on hand-over, which the live test now shows at 0 for this page kind. The rule stays right for deal pages.</p></div>
+
+<div class="opt"><h3><span>D</span>Gate pages on product, not on query <span class="tag rec">recommended</span></h3>
+<p>Build a page only when our pick, after the code, beats the catalog's best on the query's own metric (Wh per dollar under a cap, weight, charge time), or when no trusted source covers the product. Otherwise write a cite-only page or skip. Prefer in-stock: 62 of 152 clicks went to pre-order kits that cannot have produced a sale since 10-29.</p>
+<p><strong>Trade-off.</strong> Fewer pages. The 11-07 demand data already says most of the 173 gap pages have no visits, so this costs little.</p></div>
+
+<div class="opt"><h3><span>E</span>Join the catalog <span class="tag no">not available</span></h3>
+<p>OpenAI's merchant page admits merchants only and names no route for publishers or affiliates. The promotions API carries no codes. Asking BLUETTI to list our price in their feed would put the sale on their card, not our link. Re-check quarterly; nothing to build now.</p></div>
+
+<div class="flag"><p><strong>A trust risk to fix alongside.</strong> Twice on 11-07 ChatGPT credited us with "independent charging measurements" and "independent testing summarized by Dealectric". We ran no tests; those figures are makers' specs. The model values measured data and is reading our tables as if we measured them. Every spec table needs its provenance line in the first sentence of the section, both because it is true and because a later correction would cost exactly the trust option B is trying to build.</p></div>
+
+<h2>5. What to test, in order</h2>
+<div class="tablewrap"><table>
+<tr><th>#</th><th>Test</th><th>Cost</th><th>Decides</th></tr>
+<tr><td>1</td><td>Deal-intent harvest: 20 price questions on products we list (named kit, "discount code", "cheapest", "where to buy"), 2 chats each, plain prompt, in the app. Record ChatGPT's search words, whether our product or brand page is retrieved, and whether <code>/go/</code> is handed over.</td><td>~40 chats, one Plus window</td><td>Whether the 152 clicks come from price questions. If handover is above 30% there, option A is the main line. If it is near zero, the clicks have another source and we look again.</td></tr>
+<tr><td>2</td><td>Hedge A/B in the open-page replay: the under-$500 page as is vs the same page with option B wording and a linked verification log, 18 result sets, rank 5.</td><td>~72 chats</td><td>Whether "affiliate-reported" is about evidence. Score: code relayed without a hedge, and <code>/go/</code> written.</td></tr>
+<tr><td>3</td><td>The 11-07 plan's 30 + 30 reference-first A/B, with the offer line kept in the top block (option C), after OAI-SearchBot re-fetches.</td><td>~60 chats plus a crawl wait</td><td>Citation rate on question pages; pass bar 80%.</td></tr>
+</table></div>
+<p>Tests 1 and 2 need no crawl and can run tomorrow. Test 3 waits on the crawler either way.</p>
+
+<h2>6. Decisions</h2>
+<ol>
+<li>Adopt the two-kinds split (deal pages for handover, question pages for citation and landing conversion), or keep one template.</li>
+<li>Run test 1 before any rewrite, or start option B's verification log now in parallel (it helps both kinds and the data exists).</li>
+<li>Apply the product gate (option D) to the daily gap-mining drafts from now on.</li>
+</ol>
+<p><small>Sources in the repo: growth/evals/runs/2026-11-07-liveplain* (chats, serp-examples.md, page/citation-plan.html), D1 clicks and landings (worker/README.md), worker/src/index.js aiFetchPage, src/coupons.json, growth/focus/fastloop-briefs/COPY-RULES.md. External: chatgpt.com/merchants and developers.openai.com/commerce/specs/api/promotions, read 2026-11-07.</small></p>
+</main>
