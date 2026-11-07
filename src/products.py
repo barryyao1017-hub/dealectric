@@ -36,6 +36,7 @@ CATEGORIES = {
     "cd-player":       ("CD players",            "Portable and home CD players, and Bluetooth transmitters for the ones you own."),
     "phone-wallet":    ("Phone wallets & cases", "MagSafe wallets and iPhone cases that hold cards."),
     "3d-printer":      ("3D printers",           "Beginner FDM 3D printers, enclosed and open-frame."),
+    "electric-cooler": ('Electric coolers', 'Compressor fridge-coolers with built-in or removable batteries for cars, camping and tailgates.'),
 }
 
 PRODUCTS = [
@@ -1795,6 +1796,40 @@ PRODUCTS = [
  "summary": 'The cheapest usable option; fine at city speeds, drowned out on the highway.',
  "fit": "A spare for a second car or a teenager's first car when budget matters most.",
  "caveats": ['5 W is only a little louder than a phone speaker.', 'Amazon was cheaper than the soundcore store on 2026-11-05.']},
+
+{"slug": 'anker-solix-s5000',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "category": 'power-station',
+ "name": 'Anker SOLIX S5000 Portable Power Station, 5,024 Wh LFP, 4,500 W, 120/240 V',
+ "model": 'S5000',
+ "url": 'https://www.ankersolix.com/products/s5000-portable-power-station',
+ "official_page": 'https://www.ankersolix.com/s5000',
+ "price": 2499.99,
+ "list_price": 3599.99,
+ "verified": '2026-11-06',
+ "specs": [('Capacity', '5,024 Wh LFP (314 Ah cells), expandable to 30 kWh with five BP5000 batteries'), ('AC output', '4,500 W continuous, 8,000 W peak (fraction of a second)'), ('Voltage', '120 V and 240 V'), ('AC outlets', 'NEMA 5-20R (2,400 W each), TT-30R (3,600 W), L14-30R 240 V (4,500 W)'), ('USB', 'USB-C 100 W, USB-C 15 W, USB-A 12 W'), ('Solar input', '3,000 W total (2,000 W high-voltage + 1,000 W low-voltage)'), ('AC input', '1,800 W from 120 V; 4,500 W from 240 V (0 to 100% in 99 minutes)'), ('UPS switchover', '10 ms'), ('Idle draw', '8.8 W (120 V mode), 13.7 W (240 V mode), per Anker'), ('Cycle life', '10,000 cycles'), ('Weight', '97 lb, 10.6 × 22.0 × 15.2 in, wheels and pull handle'), ('Certification', 'UL 9540 and UL 9540A')],
+ "warranty": '5 years',
+ "returns": '30-day money-back guarantee on ankersolix.com',
+ "summary": 'The S5000 packs 5,024 Wh and a 4,500 W inverter with a 240 V L14-30 outlet into a 97 lb wheeled box. Its 8.8 W idle draw is the lowest in this class, which matters over a multi-day outage.',
+ "fit": 'Households that want the longest runtime per dollar for a well pump, fridge and furnace blower through a 240 V inlet or transfer switch.',
+ "caveats": ['Anker quotes 7 to 8 weeks to ship orders placed on or after 2026-11-01.', 'Launched 2026-10-27; no independent test reports yet.', "The 8,000 W peak lasts a fraction of a second; a pump's start surge has to fit under 4,500 W.", 'No NEMA 14-50 outlet, and it does not charge below 32 °F.', 'Only BP5000 batteries expand it; BP3800 and BP3000 packs do not fit.']},
+
+{"slug": 'anker-solix-everfrost-2-40l',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "category": 'electric-cooler',
+ "name": 'Anker SOLIX EverFrost 2 40L Electric Cooler (42 qt) with 288 Wh Removable Battery',
+ "model": 'EverFrost 2 40L',
+ "url": 'https://www.ankersolix.com/products/everfrost-2-40l-electric-cooler',
+ "price": 799.99,
+ "verified": '2026-11-06',
+ "specs": [('Capacity', '40 L / 42 qt, single zone'), ('Battery', '1 × 288 Wh LFP removable battery included; second bay for a spare'), ('Runtime', '52 h claimed on one battery (Eco mode, 39 °F inside, 77 °F ambient); The Gadgeteer measured about 51 h'), ('Temperature range', '-4 °F to 68 °F'), ('Inputs', 'AC 95 W, 12 to 30 V car or solar up to 100 W, USB-C 60 W'), ('Outputs', 'USB-C 60 W, USB-A 12 W'), ('Noise', 'Just under 50 dB in Max mode (The Gadgeteer)'), ('Weight', '55 lb net'), ('Water resistance', 'IPX3'), ('App', 'Anker app over Bluetooth and Wi-Fi')],
+ "warranty": "Anker 'hassle-free' warranty; length not stated on the product page",
+ "returns": '30-day money-back guarantee on ankersolix.com',
+ "summary": "A compressor cooler with a swappable 288 Wh battery that ran about 51 hours at 39 °F in The Gadgeteer's test. Tom's Guide picked it over the EcoFlow Glacier on battery life and price.",
+ "fit": 'Car campers and tailgaters who want fridge-level cold for two days without a power station.',
+ "caveats": ["Cooled to 43.5 °F, not 32 °F, in 15 minutes in The Gadgeteer's test.", 'Display can read up to 5 °F warmer than the actual interior.', '55 lb before food; wheels are a paid add-on.', 'Single zone; the 58 L model is the dual-zone one.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
