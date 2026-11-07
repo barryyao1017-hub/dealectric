@@ -53,6 +53,7 @@ CATEGORIES = {
     "camera-lens": ('Camera lenses', 'Interchangeable lenses for mirrorless and DSLR cameras, by mount and focal length.'),
     "security-camera": ('Security cameras', 'Indoor and outdoor cameras that record on motion and stream to a phone over Wi-Fi or 4G LTE.'),
     "baby-monitor": ('Baby monitors', 'Cameras paired with a handheld screen, with or without an app, for watching a sleeping child.'),
+    "dash-cam": ('Dash cams', 'Windshield-mounted driving recorders with one to four cameras.'),
 }
 
 PRODUCTS = [
@@ -3135,6 +3136,40 @@ PRODUCTS = [
  "summary": 'The biggest heated-chamber printer under $1,100. A 15.4-inch-square bed with a 65 °C chamber and 370 °C nozzle handles full-size ABS and nylon parts that the Plus5 and Creality K2 Plus cannot fit.',
  "fit": 'Shops that need ABS, ASA or nylon parts over 12.6 inches, or want to print several large parts per plate.',
  "caveats": ['Early owners reported firmware and extruder problems after updates; back up settings before flashing.', 'PLA clogs from heat creep if the chamber stays warm; QIDI sells a $199 Polar Cooler as the fix.', 'At 103 lb it is a two-person lift.', "QIDI's own comparison lists it at $1,049; we could not confirm a higher regular price."]},
+
+{"slug": 'botslab-w101-window-camera',
+ "brand": 'Botslab',
+ "program": 'awin:botslab',
+ "category": 'security-camera',
+ "name": 'Botslab W101 Window Camera, dual 2.5K lenses (outward and inward)',
+ "model": 'W101',
+ "url": 'https://www.botslab.com/products/botslab-w101-2-5k-dual-lens-window-security-camera',
+ "price": 66.99,
+ "list_price": 99.99,
+ "verified": '2026-11-06',
+ "specs": [('Lenses', 'Two: OutView lens faces outside through the glass, InView lens faces the room'), ('Resolution', '2.5K (2560 × 1440, 4 MP) on each lens'), ('Aperture', 'F1.0 on both lenses'), ('Night vision', 'Outward lens: full-color from ambient light, no infrared LEDs (no glass glare). Inward lens: infrared LEDs'), ('Mount', 'Magnetic base on an electrostatic film or adhesive pad against the inside of the glass; tool-free, no tilt'), ('Storage', 'microSD up to 512 GB (not included); optional Botslab cloud plan from $3.99/month'), ('Detection', 'AI human detection with alerts and custom zones on the outward lens; inward lens is live view only'), ('Power', 'USB-C, about 10 ft (3 m) cable; plug-in only'), ('Audio', 'Two-way audio'), ('Packs', '2-pack $126.99 on the Botslab store (2026-11-06)')],
+ "warranty": '1-year limited warranty; 6 more months when registered within the first year (Botslab US policy)',
+ "returns": '30 days from receipt on the Botslab store; return label cost is deducted unless the item is defective',
+ "summary": 'The only window camera with a second lens that looks back into the room. The outward lens records 2.5K color video at night without infrared, so nothing reflects off the glass; the inward lens uses infrared for a live view of the room.',
+ "fit": 'Renters and apartment owners who want one plug-in camera on a window that watches the driveway or walkway outside and the room inside, with continuous recording to a 512 GB card and no required subscription.',
+ "caveats": ['The inward lens is live view only: it does not record and has no motion detection.', 'The outward lens needs some outdoor light at night (porch light, streetlight); an unlit yard goes dark.', 'No tilt: the view is fixed straight out, so a window above a driveway shows mostly the far side.', 'A reviewer could not get Alexa or Google Assistant control working; there is no HomeKit.', 'Botslab is the overseas brand of Qihoo 360; Botslab says US customer footage is stored on servers in Virginia.', 'Digital zoom only; detail degrades past about 4x.']},
+
+{"slug": 'botslab-g980h-4-camera-dash-cam',
+ "brand": 'Botslab',
+ "program": 'awin:botslab',
+ "category": 'dash-cam',
+ "name": 'Botslab G980H 4-Camera Multi-Channel Dash Cam, 3K front + 1080p rear, left and right',
+ "model": 'G980H 4-Camera',
+ "url": 'https://www.botslab.com/products/botslab-dash-cam-g980h-multi-channel-4-cameras',
+ "price": 234.99,
+ "list_price": 334.99,
+ "verified": '2026-11-06',
+ "specs": [('Channels', 'Front 3K (2880 × 1620) + rear, left and right at 1080p, all at 25 fps'), ('Fields of view', 'Front 170°, each side 120°, rear 150°'), ('Side cameras', 'Magnetic snap-on, each swivels 90° to face the cabin or the side windows; detach to run 2 or 3 channels'), ('Screen', '3.18-inch touchscreen with 4-way split view'), ('GPS and Wi-Fi', 'Built-in GPS; 5.8 GHz Wi-Fi to the Botslab app'), ('Storage', '128 GB microSD included; up to 512 GB'), ('Power', 'Supercapacitor, rated -4 °F to 158 °F'), ('Parking modes', 'Sentry (motion), collision and time-lapse; all need the Type-C hardwire kit, sold separately'), ('Night', 'F1.8 lens, WDR (no HDR); 940 nm infrared LEDs on the side cameras')],
+ "warranty": '1-year limited warranty; 6 more months when registered within the first year (Botslab US policy)',
+ "returns": '30 days from receipt on the Botslab store; return label cost is deducted unless the item is defective',
+ "summary": 'A four-camera dash cam that covers the front at 3K and both sides and the rear at 1080p, with detachable magnetic side cameras, GPS and a 128 GB card in the box.',
+ "fit": 'Drivers who want side coverage for sideswipes and parking-lot dings on the road, or rideshare drivers who turn the side cameras inward, at a mid-range price.',
+ "caveats": ['No HDR: the front camera struggles with headlight glare at night, and the side and rear cameras blur in the dark.', 'Parking motion detection triggers only from the front camera; side cameras do not wake it.', 'Every parking mode needs the separate hardwire kit (the $275.99 bundle on the Botslab store adds the kit and a CPL filter).', 'Wide body: mounted under the mirror, the mirror can block one side camera; most owners mount it high and centered.', 'All channels record at 25 fps, which looks slightly jerky.', 'Botslab is the overseas brand of Qihoo 360; Botslab says US customer data is stored on servers in Virginia.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
