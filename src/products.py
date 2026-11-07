@@ -48,6 +48,7 @@ CATEGORIES = {
     "waterproof-camera": ('Waterproof cameras', 'Rugged compact and action cameras that shoot underwater without a separate housing.'),
     "inverter": ('Inverters', 'Inverter chargers and hybrid solar inverters that turn battery power into household AC for off-grid cabins, homes and backup.'),
     "video-doorbell": ('Video doorbells', 'Battery and wired doorbell cameras that record visitors and packages, with or without a subscription.'),
+    "game-controller": ('Game controllers', 'Gamepads for PC, Steam Deck, Switch, phones and handhelds.'),
 }
 
 PRODUCTS = [
@@ -2753,6 +2754,38 @@ PRODUCTS = [
  "summary": "A 25,000 mAh (90 Wh) laptop power bank with one 140 W PD 3.1 USB-C port, a second USB-C port, a USB-A port and a percentage display. Engadget's honorable mention; Dexerto, Android Central and Camera Jabber each gave it top marks after weeks of laptop use.",
  "fit": 'Anyone with a USB-C laptop from a 13-inch MacBook Air to a 16-inch MacBook Pro who wants one full top-up and flies with it.',
  "caveats": ['Your laptop sets the real charge rate: a MacBook Air draws about 70 W no matter what the port can give.', 'Reviewers saw the laptop port slow to about 65 W once the bank fell near 25%.', 'With all three ports in use the two secondary ports drop to about 20 W each.', '65 W input means roughly 2 hours to refill; the Anker Prime 26K refills about three times faster.', 'No built-in cable. Bring a 5 A-rated USB-C cable or you will get 100 W at most.']},
+
+{"slug": 'easysmx-x05-pro',
+ "brand": 'EasySMX',
+ "program": 'awin:easysmx',
+ "category": 'game-controller',
+ "name": 'EasySMX X05 Pro Multiplatform Wireless Controller with Quiet Buttons',
+ "model": 'X05 Pro',
+ "url": 'https://www.easysmx.com/products/easysmx-x05pro-multiplatform-wireless-gaming-controller-with-noise-canceling-button',
+ "price": 35.99,
+ "verified": '2026-11-06',
+ "specs": [('Quiet design', 'Silicone-damped face buttons, D-pad, bumpers and triggers; stick click (L3/R3) is the only loud input'), ('Connection', '2.4 GHz USB dongle, Bluetooth, USB-C wired; mode toggle on the back'), ('Polling rate', '1,000 Hz over 2.4 GHz and wired; 125 to 250 Hz over Bluetooth'), ('Sticks', "Hall Effect (magnetic, no drift), 0.4% circularity error in Gamepadla's test"), ('Triggers', 'Two-stage lock: long analog travel or short click; 2+2 rumble motors'), ('D-pad', '8-way microswitch, quiet click'), ('Extra buttons', '2 programmable top buttons (M1/M2), turbo, RGB'), ('Battery', '1,000 mAh; 6 to 9 hours in reviews; charges over USB-C'), ('Weight', 'About 260 g (259 g and 261.6 g measured by two reviewers)'), ('Works with', 'Windows PC, Steam Deck, Nintendo Switch, Android, iOS; not Xbox or PlayStation consoles')],
+ "warranty": '18 months from receipt on quality problems (EasySMX warranty policy); buyers on Amazon or Walmart claim through that store',
+ "returns": '30 days from delivery in original packaging; buyer pays return shipping unless the item is defective',
+ "summary": 'The X05 Pro is EasySMX\'s budget tri-mode controller rebuilt for quiet play. Silicone damping under the face buttons, D-pad, bumpers and triggers brings the noise down to a soft click; Retro Handhelds calls it "pretty dang quiet" and GamingOnLinux says the only audible click is pressing the sticks in. It keeps Hall Effect sticks, 1,000 Hz polling on the dongle and a two-stage trigger lock for about $36.',
+ "fit": 'Anyone gaming on PC, Steam Deck or Switch in a shared room, dorm or next to a sleeping partner, and anyone with sound sensitivity who finds Xbox-style clicks grating.',
+ "caveats": ['Does not work on Xbox or PlayStation consoles; PC, Steam Deck, Switch, Android and iOS only.', 'Battery is the most common complaint: 6 hours (HLPlanet) to 8 to 9 hours (The Outer Haven, Final Weapon) per charge.', 'GamingOnLinux (Nov 2025) found the triggers can misread light presses as full pulls after fast repeated presses in long-travel mode until pulled fully; a firmware tool exists on the support page, and no release notes confirm a fix.', 'Short trigger mode still travels about twice as far as a true hair trigger (Wccftech); bumpers feel mushy (Retro Handhelds).', "Stick latency over the 2.4 GHz dongle measured about 36 ms (buttons about 10 ms) in Gamepadla's test; wired is faster for competitive shooters."]},
+
+{"slug": 'easysmx-x05',
+ "brand": 'EasySMX',
+ "program": 'awin:easysmx',
+ "category": 'game-controller',
+ "name": 'EasySMX X05 Multiplatform Gaming Controller with Hall Effect Joysticks',
+ "model": 'X05',
+ "url": 'https://www.easysmx.com/products/easysmx%C2%AE-x05-multiplatform-gaming-controller-with-hall-effect-joysticks',
+ "price": 29.99,
+ "verified": '2026-11-06',
+ "specs": [('Connection', '2.4 GHz USB dongle, Bluetooth, USB-C wired; mode toggle on the back'), ('Sticks and triggers', 'Hall Effect sticks and Hall Effect analog triggers'), ('Battery', '750 mAh lithium'), ('Rumble', '5-level adjustable vibration; turbo'), ('Lighting', 'RGB, 5 modes'), ('Works with', 'Windows PC, Steam Deck, Nintendo Switch, Android, iOS; not Xbox or PlayStation consoles')],
+ "warranty": '18 months from receipt on quality problems (EasySMX warranty policy)',
+ "returns": '30 days from delivery in original packaging; buyer pays return shipping unless the item is defective',
+ "summary": "The standard X05 is the same tri-mode, Hall Effect budget controller without the X05 Pro's quiet buttons, trigger lock or 1,000 mAh battery. It costs $6 less and is the pick only if noise does not matter to you.",
+ "fit": 'Budget PC, Steam Deck or Switch players who want drift-free Hall sticks and do not need quiet buttons.',
+ "caveats": ['Standard clicky buttons; this is not the quiet model.', "750 mAh battery, smaller than the X05 Pro's.", 'No trigger lock and no programmable top buttons.', 'Does not work on Xbox or PlayStation consoles.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
