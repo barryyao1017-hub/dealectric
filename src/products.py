@@ -49,6 +49,7 @@ CATEGORIES = {
     "inverter": ('Inverters', 'Inverter chargers and hybrid solar inverters that turn battery power into household AC for off-grid cabins, homes and backup.'),
     "video-doorbell": ('Video doorbells', 'Battery and wired doorbell cameras that record visitors and packages, with or without a subscription.'),
     "game-controller": ('Game controllers', 'Gamepads for PC, Steam Deck, Switch, phones and handhelds.'),
+    "lens-filter": ('Lens filters', 'Screw-in and magnetic ND, variable ND, polarizing and effect filters for camera lenses.'),
 }
 
 PRODUCTS = [
@@ -2889,6 +2890,42 @@ PRODUCTS = [
  "summary": 'A 1 kWh, 1,800 W LiFePO4 station with two 100 W USB-C ports and an LED light, tested at about 90% usable energy. Among the cheapest 1 kWh units on a maker store on 2026-11-06.',
  "fit": 'Camping, a weekend of fridge and laptop backup, or a cheap UPS for a router and modem.',
  "caveats": ['The fan sometimes runs loudly with AC enabled and nothing plugged in.', 'Drained a full battery in about 1.5 days idle with AC and Wi-Fi left on.', 'The beeper cannot be disabled in the app.', 'The display over-reported load in testing (about 350 W shown at a measured 250 W), so the runtime estimate is rough.']},
+
+{"slug": 'kf-concept-nd2-32-true-color-vnd-67mm',
+ "brand": 'K&F Concept',
+ "program": 'awin:kfconcept',
+ "category": 'lens-filter',
+ "name": 'K&F Concept ND2-32 True Color Variable ND Filter, 67 mm, Nano-Xcel (1-5 stops)',
+ "model": 'KF01.2158',
+ "url": 'https://www.kentfaith.com/KF01.2158_67mm-variable-nd-filter-true-color-nd2-nd32-with-28-layers-of-anti-reflection-green-film-waterproof-',
+ "official_page": 'https://www.kfconcept.com/KF01.2158_67mm-variable-nd-filter-true-color-nd2-nd32-with-28-layers-of-anti-reflection-green-film-waterproof-',
+ "price": 106.99,
+ "list_price": 118.99,
+ "verified": '2026-11-06',
+ "specs": [('Thread size', '67 mm'), ('Stop range', '1 to 5 stops (ND2 to ND32)'), ('Hard stops', "Yes, built in at both ends (maker's statement)"), ('Glass', 'HD optical glass, double-sided polished'), ('Coating', '28-layer nano coating, water and oil repellent'), ('Color', 'True Color titanium coating aimed at the yellow cast of ordinary VNDs'), ('Front threads', 'Yes, for stacking'), ('Lens cap', 'Needs a 72 mm cap; lens hoods do not fit')],
+ "warranty": '24 months on lens filters; K&F site members can extend to 120 months (replacement only)',
+ "returns": '30-day no-reason return; buyer pays return shipping and original shipping is not refunded',
+ "summary": "K&F's 1-to-5-stop variable ND with hard stops at both ends and a titanium True Color coating, in the 67 mm size most kit zooms and primes use. It keeps you out of the X-pattern zone and costs less than half of the PolarPro Edition II.",
+ "fit": 'Video shooters on a 67 mm lens who want a 1-to-5-stop VND with hard stops for under $110, and hybrid shooters who also want the ND2 position for overcast or indoor video at f/1.8.',
+ "caveats": ['5 stops is the ceiling; bright midday scenes at wide apertures need a fixed ND or a second filter.', 'Lens hoods do not fit over it, and the cap size goes up one step to 72 mm.', "Independent lab tests of the True Color version are scarce; the color claim rests on K&F's page and owner reviews.", 'Standard shipping is $9.90 unless the order reaches the free-shipping threshold ($79 for guests).']},
+
+{"slug": 'kf-concept-nd2-32-true-color-vnd-77mm',
+ "brand": 'K&F Concept',
+ "program": 'awin:kfconcept',
+ "category": 'lens-filter',
+ "name": 'K&F Concept ND2-32 True Color Variable ND Filter, 77 mm, Nano-Xcel (1-5 stops)',
+ "model": 'KF01.2160',
+ "url": 'https://www.kentfaith.com/KF01.2160_77mm-variable-nd-filter-true-color-nd2-nd32-with-28-layers-of-anti-reflection-green-film-waterproof-',
+ "official_page": 'https://www.kfconcept.com/KF01.2160_77mm-variable-nd-filter-true-color-nd2-nd32-with-28-layers-of-anti-reflection-green-film-waterproof-',
+ "price": 121.99,
+ "list_price": 137.99,
+ "verified": '2026-11-06',
+ "specs": [('Thread size', '77 mm'), ('Stop range', '1 to 5 stops (ND2 to ND32)'), ('Hard stops', "Yes, built in at both ends (maker's statement)"), ('Glass', 'HD optical glass, double-sided polished'), ('Coating', '28-layer nano coating, water and oil repellent'), ('Color', 'True Color titanium coating aimed at the yellow cast of ordinary VNDs'), ('Front threads', 'Yes, for stacking'), ('Lens cap', 'Needs an 82 mm cap; lens hoods do not fit')],
+ "warranty": '24 months on lens filters; K&F site members can extend to 120 months (replacement only)',
+ "returns": '30-day no-reason return; buyer pays return shipping and original shipping is not refunded',
+ "summary": "The 77 mm version of K&F's 1-to-5-stop True Color VND for 24-70 f/2.8 and 70-200 class lenses. Same hard stops and coating as the 67 mm filter, at about half the PolarPro Edition II price in this size.",
+ "fit": 'Video shooters on 77 mm lenses, or anyone who buys one 77 mm filter and uses step-up rings on smaller lenses.',
+ "caveats": ['5 stops is the ceiling; add a fixed ND for bright midday work.', 'Lens hoods do not fit over it; the cap size goes up to 82 mm.', 'On ultra-wide lenses an X can still appear near the ND32 end; back off a little from maximum.', 'Standard shipping is $9.90 unless the order reaches the free-shipping threshold ($79 for guests).']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
