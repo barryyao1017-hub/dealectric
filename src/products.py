@@ -41,6 +41,7 @@ CATEGORIES = {
     "rugged-tablet": ('Rugged tablets', 'Android tablets with IP68 and MIL-STD-810H ratings built for camping, job sites and other rough use.'),
     "wind-turbine": ('Wind turbines', 'Small wind turbines that charge a portable power station or home battery.'),
     "rugged-phone": ('Rugged phones', 'Drop-, dust- and water-rated smartphones and feature phones, including models with built-in thermal cameras.'),
+    "microphone": ('Microphones', 'USB, XLR and wireless microphones for podcasting, streaming, calls and video.'),
 }
 
 PRODUCTS = [
@@ -2068,6 +2069,39 @@ PRODUCTS = [
  "summary": "The X7 Pro's thermal module and battery with twice the RAM, four times the storage, 18 W wireless charging and a 1,000-lumen floodlight. TechRadar and Digital Camera World named it the best rugged phone for thermal imaging.",
  "fit": 'Field workers who store a lot of thermal video and want the floodlight and faster wireless charging; the X7 Pro is the better value if you only need the thermal camera.',
  "caveats": ["Same 256×192 sensor as the X7 Pro behind the 512×384 marketing figure; readings ran a few degrees above an IR thermometer in Notebookcheck's test.", 'Notebookcheck measured the speaker at 92.6 dB, well under the 116 dB claim, and found no eSIM and single-band GNSS.', 'AGM sells some models in a US T-Mobile-only version; confirm which version you are ordering and check band 13 is absent before buying for Verizon.', "AGM's site showed a 10% off plus free earbuds banner for the G3 Pro on 2026-11-06; the discount is applied by AGM, not a code."]},
+
+{"slug": 'maono-pd400x-usb-xlr-dynamic-microphone',
+ "brand": 'Maono',
+ "program": 'awin:maono',
+ "category": 'microphone',
+ "name": 'Maono PD400X USB/XLR Dynamic Microphone',
+ "model": 'PD400X',
+ "url": 'https://www.maono.com/products/maono-pd400x-usb-xlr-podcasting-microphone',
+ "price": 154.99,
+ "list_price": 229.99,
+ "verified": '2026-11-06',
+ "specs": [('Type', 'Dynamic, cardioid'), ('Outputs', 'XLR and USB-C'), ('Mic gain range', '0 to +42 dB (USB mode)'), ('USB resolution', '24-bit / 48 kHz'), ('Frequency response', '40 Hz to 16 kHz'), ('Sensitivity', 'XLR -51 dBV; USB -8.5 dBFS/Pa max'), ('Max SPL', 'Over 130 dB'), ('Controls', 'Multi-function knob for gain, headphone volume and monitor mix; touch mute; button for 4 EQ modes (flat, high-pass, presence boost, both)'), ('Headphone jack', '3.5 mm, zero-latency monitoring (USB mode)'), ('In the box', 'Desktop stand base, foam windscreen, USB-C to USB-A cable, XLR cable')],
+ "warranty": 'Maono says quality defects on items bought from maono.com are covered by a warranty from the date of purchase; the policy page does not state a duration.',
+ "returns": '30 days from purchase on maono.com; buyer pays return shipping unless the item arrived defective or wrong.',
+ "summary": 'All-metal dynamic mic with both XLR and USB-C outputs. In USB mode it has a real gain knob, headphone monitoring with a mix control, tap-to-mute and four onboard EQ modes, which rivals in its price range skip.',
+ "fit": 'Streamers and solo podcasters buying their first serious mic who want to start on USB and move to an XLR interface later without buying a new mic.',
+ "caveats": ['The knob, mute and EQ modes work only in USB mode; over XLR it is a plain dynamic mic and the interface sets gain.', 'XLR sensitivity is -51 dBV, so entry-level interfaces may need an inline booster to reach healthy levels.', 'The desktop stand passes keyboard and desk taps into the recording; a boom arm fixes this.', 'The touch mute is easy to hit by accident.', 'Only a USB-C to USB-A cable is included; laptops with only USB-C ports need another cable.', 'Maono Link software has triggered antivirus false positives; Maono published a notice in November 2025.']},
+
+{"slug": 'maono-pd200x-usb-xlr-dynamic-microphone',
+ "brand": 'Maono',
+ "program": 'awin:maono',
+ "category": 'microphone',
+ "name": 'Maono PD200X USB/XLR Dynamic Microphone with RGB',
+ "model": 'PD200X',
+ "url": 'https://www.maono.com/products/maono-pd200x-dynamic-usb-and-xlr-internet-microphone',
+ "price": 89.99,
+ "verified": '2026-11-06',
+ "specs": [('Type', 'Dynamic, cardioid'), ('Outputs', 'XLR and USB-C'), ('Mic gain range', '0 to +42 dB (USB mode)'), ('USB resolution', '24-bit / 48 kHz'), ('Frequency response', '40 Hz to 16 kHz'), ('Sensitivity', 'XLR -52 dBV; USB -10.5 dBFS/Pa max'), ('Max SPL', 'Over 130 dB'), ('Controls', 'Dial for gain and headphone volume, touch mute, RGB light button'), ('Headphone jack', '3.5 mm (USB mode only)')],
+ "warranty": 'Maono says quality defects on items bought from maono.com are covered by a warranty from the date of purchase; the policy page does not state a duration.',
+ "returns": '30 days from purchase on maono.com; buyer pays return shipping unless the item arrived defective or wrong.',
+ "summary": 'Lighter, cheaper sibling of the PD400X with the same XLR plus USB-C outputs, 24-bit/48 kHz USB audio and a gain dial, plus RGB lighting. It needs a boom arm; it does not come with a desk stand.',
+ "fit": 'Budget streamers who want a hybrid mic with a gain dial and headphone jack and already own a boom arm.',
+ "caveats": ['No stand in the box; plan on a boom arm.', 'The dual-function dial is confusing at first because the indicator lights do not say which mode is active.', 'Headphone jack and software features work only in USB mode.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
