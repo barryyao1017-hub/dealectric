@@ -46,6 +46,7 @@ CATEGORIES = {
     "pen-tablet": ('Pen tablets', 'Screenless drawing tablets you use with a monitor for retouching, illustration and design.'),
     "bird-feeder-camera": ('Bird feeder cameras', 'Smart bird and hummingbird feeders with a built-in camera, app alerts and species ID.'),
     "waterproof-camera": ('Waterproof cameras', 'Rugged compact and action cameras that shoot underwater without a separate housing.'),
+    "inverter": ('Inverters', 'Inverter chargers and hybrid solar inverters that turn battery power into household AC for off-grid cabins, homes and backup.'),
 }
 
 PRODUCTS = [
@@ -2566,6 +2567,39 @@ PRODUCTS = [
  "summary": 'A compact hub with a real 65 W USB-C port, enough for a MacBook Air or a 13-inch laptop, plus three outlets, for $29.99 at the maker store.',
  "fit": 'Laptop users and travelers who want one small block instead of a laptop brick and a strip.',
  "caveats": ['No surge rating is listed; treat it as an outlet expander, not a surge protector.', 'The product page does not say how many of the 6 USB ports are USB-C or how 65 W splits across ports.', 'Three outlets only.']},
+
+{"slug": 'sungoldpower-6000w-48v-split-phase-inverter-charger',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "category": 'inverter',
+ "name": 'Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger (UL1741)',
+ "model": 'LFP series 6 kW 48 V split phase',
+ "url": 'https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger',
+ "price": 1220,
+ "list_price": 1743,
+ "verified": '2026-11-06',
+ "specs": [('Continuous output', '6,000 W pure sine wave'), ('Surge', '18,000 W for 20 seconds'), ('AC output', '120 V or 120/240 V split phase, 50/60 Hz selectable (SW4 switch)'), ('AC input', '240 V AC required for charging and pass-through'), ('Battery charger', '60 A, adjustable 0 to 100% via linear switch'), ('Battery', '48 V bank; lead-acid and lithium settings'), ('Transfer', 'Built-in automatic transfer switch, AC priority by default (battery priority via SW5)'), ('Generator', 'Auto generator start on low battery'), ('Design', 'Low-frequency transformer inverter'), ('Certification', 'UL 1741 (48 V model)'), ('Included', 'Remote control, battery temperature sensor cable')],
+ "warranty": 'Sun Gold Power states 12 or 36 months depending on product; its dealers list 2 years for this inverter',
+ "returns": '30 days, unused and in original packaging; buyer pays return shipping unless the unit is defective or wrong',
+ "summary": 'A transformer-type 6,000 W inverter charger that holds an 18,000 W surge for 20 seconds and makes 120/240 V split phase from a single unit, so a 240 V well pump starts without a second inverter or an autotransformer.',
+ "fit": 'Off-grid cabins and homesteads with a 240 V submersible pump, a 48 V battery bank and a generator for charging.',
+ "caveats": ['Needs a 240 V AC source (generator or grid) to charge or pass through; a 120 V-only generator cannot feed it.', 'Transformer design is heavy and idles higher than a high-frequency unit; plan for a ventilated, dry mounting spot.', 'No solar charge controller built in; add a separate MPPT controller for panels.', 'The $854 refurbished variant was out of stock on 2026-11-06; the price above is the brand-new 48 V unit.']},
+
+{"slug": 'sungoldpower-sph6548p-6-5kw-48v-hybrid-inverter',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "category": 'inverter',
+ "name": 'Sun Gold Power 6.5KW 48V Split Phase Solar Inverter SPH6548P (Wi-Fi monitor)',
+ "model": 'SPH6548P',
+ "url": 'https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor',
+ "price": 1035,
+ "verified": '2026-11-06',
+ "specs": [('Continuous output', '6,500 W pure sine wave'), ('Peak', '13,000 VA'), ('AC output', '120 V single phase or 120/240 V split phase'), ('Solar input', '2 MPPT controllers, 550 V max open-circuit'), ('Battery charging', 'Up to 140 A (solar plus AC)'), ('Battery', '48 V AGM, gel, flooded, lithium, user mode; battery-free start from grid or PV'), ('Parallel', 'Up to 6 units, 39 kW'), ('Modes', 'Four charging and four output priority modes, time-slot charging'), ('Certification', 'UL 1741 by ETL')],
+ "warranty": 'Sun Gold Power states 12 or 36 months depending on product',
+ "returns": '30 days, unused and in original packaging; buyer pays return shipping unless the unit is defective or wrong',
+ "summary": 'A budget all-in-one hybrid inverter with two MPPT solar inputs, 140 A of charging and split-phase output, for shoppers who want panels and pump on one box.',
+ "fit": 'Small off-grid systems that need solar charging built in and can accept a high-frequency design for pump starting.',
+ "caveats": ['13,000 VA peak with no published hold time; a hard-starting 1 HP-plus pump may need a soft starter.', 'Touchscreen and non-touchscreen Sun Gold hybrid models cannot be paralleled together.', 'Less owner history than the EG4 6000XP, which has a 5-year warranty.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
