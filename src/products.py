@@ -2412,6 +2412,24 @@ PRODUCTS = [
  "fit": 'Anyone charging a 14- or 16-inch laptop that wants more than 65 W, or a laptop plus phone at full phone speed.',
  "caveats": ['Heaviest option here at 9.9 oz; the prongs do not fold on the reviewed unit.', 'Only one of the two spare USB-C ports is a 100 W port; the other is 30 W.', 'The built-in cable is 2.5 ft; for a desk you may still want a long cable in the 100 W port.', 'Four devices at once drop the cable to 45 W.']},
 
+{"slug": 'ugreen-nasync-dh4300-plus',
+ "brand": 'UGREEN',
+ "program": 'cj:ugreen',
+ "category": 'nas',
+ "name": 'UGREEN NASync DH4300 Plus 4-Bay Home NAS, 8-core ARM, 8 GB, 2.5GbE, HDMI',
+ "model": 'DH4300 Plus',
+ "url": 'https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage',
+ "official_page": 'https://ai.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage',
+ "price": 399.99,
+ "list_price": 439.99,
+ "verified": '2026-11-06',
+ "specs": [('Bays', '4 × 3.5-inch / 2.5-inch SATA (drives not included)'), ('Max capacity', '120 TB (4 × 30 TB)'), ('RAID', 'Basic, JBOD, RAID 0, RAID 1, RAID 5'), ('Processor', '8-core Rockchip RK3588C (ARM)'), ('Memory', '8 GB LPDDR4X, not upgradeable'), ('Network', '1 × 2.5GbE'), ('Video out', 'HDMI, 4K at 60 Hz'), ('USB', '1 × USB-C front, 2 × USB-A rear'), ('M.2 slots', 'None'), ('Software', 'UGOS Pro with App Center, AI photo album, Docker (ARM images only)')],
+ "warranty": "2 years (UGREEN DH series); drives you add carry their own maker's warranty",
+ "returns": '30 days from delivery, unused and in original packaging',
+ "summary": "Four-bay version of UGREEN's beginner NAS line. Ships without drives; you add two to four SATA drives and get RAID 5 and a 2.5GbE port that the 2-bay DH2300 lacks.",
+ "fit": 'A home that wants to start with two drives and add two more later, or needs RAID 5 and 2.5GbE on a quiet ARM box.',
+ "caveats": ['No drives in the box; budget for NAS-rated drives.', '8 GB of memory is soldered and cannot be upgraded.', 'ARM processor: Docker works but many x86 containers are unavailable, and heavy video transcoding is beyond it.', 'Uses an external power brick, unlike the DH2300.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
