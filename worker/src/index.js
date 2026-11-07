@@ -54,12 +54,31 @@ async function passThrough(url, request, env, ctx) {
   ctx.passThroughOnException();
   const res = await fetch(request);
   const utm = url.searchParams.get("utm_source");
-  if (utm !== null) ctx.waitUntil(logLanding(url, request, res.status, utm, env).catch((e) => console.error("landing insert failed", e)));
+  const src = utm !== null ? utm : untaggedSource(request, res);
+  if (src !== null) ctx.waitUntil(logLanding(url, request, res.status, src, env).catch((e) => console.error("landing insert failed", e)));
   const agent = agentBrowser(request, env);
   if (!agent) return res;
   // Pages and text files only: the browser's stylesheet, image and font requests add nothing.
   if (/text\/html|text\/plain|text\/xml|application\/(json|xml)/.test(res.headers.get("content-type") || "")) ctx.waitUntil(logAgentPage(url, request, res.status, agent, env).catch((e) => console.error("agent_pages insert failed", e)));
   return tagLinks(res, agent);
+}
+
+// DLC-89 (2026-11-07): assistants whose links carry no utm_source. A page opened from one of these hosts, or in Meta's
+// in-app browser, is logged to `landings` with utm_source "ref:<name>" (the "ref:" prefix keeps them apart from real
+// tags, so ChatGPT counts that filter on utm_source='chatgpt.com' are unchanged). Pages only, not their images or
+// styles. Grok is reported to strip referrers, so expect little from it. landings.asn tells Meta's cloud browser apart.
+const AI_REFERRERS = [
+  [/(^|\.)(gemini|bard)\.google\.com$/, "ref:gemini"], [/(^|\.)meta\.ai$/, "ref:meta.ai"], [/(^|\.)muse\.ai$/, "ref:muse"],
+  [/(^|\.)grok\.com$/, "ref:grok"], [/(^|\.)x\.com$|^t\.co$/, "ref:x"], [/(^|\.)perplexity\.ai$/, "ref:perplexity"],
+  [/(^|\.)copilot\.microsoft\.com$/, "ref:copilot"], [/(^|\.)claude\.ai$/, "ref:claude"],
+];
+function untaggedSource(request, res) {
+  if (!/text\/html/.test(res.headers.get("content-type") || "")) return null;
+  let host = "";
+  try { host = new URL(request.headers.get("referer") || "").hostname.toLowerCase(); } catch { /* no or bad referrer */ }
+  for (const [re, name] of AI_REFERRERS) if (re.test(host)) return name;
+  if (/FBAN|FBAV|Instagram|WhatsApp/.test(request.headers.get("user-agent") || "")) return "ref:meta-app";
+  return null;
 }
 
 // ---------------------------------------------------------------- agent browsers (DLC-146)
