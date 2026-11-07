@@ -2653,6 +2653,22 @@ PRODUCTS = [
  "fit": 'A PC or PS5 gamer who wants the cheapest low-latency wireless set and never games on Xbox or a phone.',
  "caveats": ['No Bluetooth and no 3.5 mm port, so it cannot connect to a phone or an Xbox.', 'The 36-hour rating is with the RGB off.', 'No independent review with measurements exists yet.']},
 
+{"slug": 'amazfit-helio-strap',
+ "brand": 'Amazfit',
+ "program": 'cj:amazfit',
+ "category": 'smartwatch',
+ "name": 'Amazfit Helio Strap Screenless Fitness and Recovery Band, no subscription',
+ "model": 'Helio Strap',
+ "url": 'https://us.amazfit.com/products/helio-strap',
+ "price": 99.99,
+ "verified": '2026-11-06',
+ "specs": [('Form', 'Screenless band, worn on the wrist or upper arm'), ('Weight', '20 g'), ('Battery', '232 mAh, up to 10 days typical use'), ('Water resistance', '5 ATM'), ('Sensors', 'Optical heart rate, SpO2, skin temperature, accelerometer, gyroscope'), ('Connectivity', 'Bluetooth 5.2 LE; broadcasts heart rate to gym equipment and apps'), ('Phone', 'Android 7.0+ or iOS 15.0+, free Zepp app'), ('Subscription', 'None')],
+ "warranty": '1 year on devices bought from the Amazfit US store',
+ "returns": '30 days from purchase with an RMA; buyer prepays return shipping. November and December orders can be returned through January 31 or 45 days, whichever is longer.',
+ "summary": 'A 20 g screenless band that tracks heart rate, sleep, strain and recovery 24/7 with no membership fee. It runs about a week to 10 days per charge and can be worn on the upper arm, where optical heart rate holds up better during lifting.',
+ "fit": 'Men who want Whoop-style recovery tracking without a yearly fee, and lifters who want a second sensor on the upper arm that broadcasts heart rate to gym machines.',
+ "caveats": ['Auto-detected workouts are unreliable: DC Rainmaker logged 10 workouts on a day he did 2, so start sessions manually.', "Sleep onset was off by about 37 minutes on one night in DC Rainmaker's test; Apple, Garmin, Oura and Whoop were closer.", 'Daily strain caps at 100%, so a very hard day looks like a moderate one.', 'Max heart rate is fixed at 220 minus age, which skews zones for fit men.', 'The hook-and-loop strap is one size and may wear over time.', 'Training plans only work when paired with an Amazfit watch.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
