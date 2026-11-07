@@ -38,6 +38,7 @@ CATEGORIES = {
     "3d-printer":      ("3D printers",           "Beginner FDM 3D printers, enclosed and open-frame."),
     "electric-cooler": ('Electric coolers', 'Compressor fridge-coolers with built-in or removable batteries for cars, camping and tailgates.'),
     "3d-scanner": ('3D scanners', 'Handheld and desktop 3D scanners that turn real objects into printable or editable 3D models.'),
+    "rugged-tablet": ('Rugged tablets', 'Android tablets with IP68 and MIL-STD-810H ratings built for camping, job sites and other rough use.'),
 }
 
 PRODUCTS = [
@@ -1899,6 +1900,40 @@ PRODUCTS = [
  "summary": 'The small-object specialist. Its 0.02 mm point spacing resolves facial features and chainmail on 28 mm miniatures that 0.05 to 0.07 mm scanners blur.',
  "fit": "Tabletop miniature makers, jewelers and anyone scanning things under about 30 mm who can afford twice the Seal's price.",
  "caveats": ['Dark or glossy figures still need scanning spray.', '3DSourced reported alignment issues and weak color capture out of the box.', 'Needs a strong Windows PC for fusion; older laptops stall.']},
+
+{"slug": 'blackview-active-10-pro',
+ "brand": 'Blackview',
+ "program": 'awin:blackview',
+ "category": 'rugged-tablet',
+ "name": 'Blackview Active 10 Pro 5G Rugged Tablet, 10.95-inch, 12 GB + 256 GB, 30,000 mAh',
+ "model": 'Active 10 Pro',
+ "url": 'https://store.blackview.hk/products/active10-pro-price',
+ "price": 375,
+ "list_price": 539,
+ "verified": '2026-11-06',
+ "specs": [('Display', '10.95-inch IPS, 1920 × 1200, 90 Hz, 360 nits'), ('Battery', '30,000 mAh, 55 W wired charging, no wireless charging'), ('Weight', '2.7 lb (1,214 g), 0.77 in thick'), ('Chipset', 'MediaTek Dimensity 7300 (4 nm), 12 GB RAM, 256 GB or 512 GB'), ('Rating', 'IP68, IP69K, MIL-STD-810H'), ('Cellular', '5G and 4G LTE, dual SIM; LTE bands include 2, 4, 5, 12, 13, 66; 5G bands include n5, n41, n77 but not n2, n66 or n71; not certified by any US carrier'), ('Cameras', '108 MP rear, 20 MP infrared night vision, 50 MP front'), ('Extras', '400-lumen camping light, Harman Kardon stereo speakers, GPS/GLONASS/Galileo/BeiDou'), ('Software', 'Android 14 with DokeOS_P 4.0; Blackview promises an Android 15 update')],
+ "warranty": '12-month free repair warranty from Blackview for non-accidental faults; the buyer pays shipping to send the unit in and Blackview pays return shipping.',
+ "returns": "Return eligibility depends on the item; change-of-mind returns are at the buyer's shipping cost and must be arranged with support first. A 14-day cancellation right is stated for UK and EU orders only.",
+ "summary": 'The Active 10 Pro has the largest battery of any 5G rugged tablet under $400 we found: 30,000 mAh, which the one published review says lasts several days of moderate use. It adds a 400-lumen camping light, an infrared night-vision camera and a Dimensity 7300 chip, and it carries IP68, IP69K and MIL-STD-810H ratings.',
+ "fit": 'Campers, overlanders and anyone who wants a tablet that runs for days off-grid, uses the tablet as a backup light, and is on T-Mobile or AT&T. Not for anyone who needs Verizon, a light tablet, or guaranteed OS updates.',
+ "caveats": ['It weighs 2.7 lb, about three times a Samsung Galaxy Tab Active5, and reviewers compare holding it to holding a large power bank.', 'No US carrier certifies it. Its LTE bands match T-Mobile and AT&T, its 5G bands only partly match them, and owners of Blackview phones report Verizon rejects the devices.', 'Ships from overseas: free registered airmail takes 7 to 20 business days, DHL costs $40 extra, and import taxes may apply. Variants are listed with an EU plug charger, so US buyers need a plug adapter.', "On 2026-11-06 only the orange 256 GB ($375) and black 512 GB ($429) versions were in stock. Blackview's separate US storefront listed it at $489.99 and out of stock.", "Blackview's Trustpilot score is 2.2 of 5 with support delays and slow returns the most common complaints, and the promised Android 15 update was not confirmed delivered as of 2026-11-06."]},
+
+{"slug": 'blackview-active-8-pro',
+ "brand": 'Blackview',
+ "program": 'awin:blackview',
+ "category": 'rugged-tablet',
+ "name": 'Blackview Active 8 Pro Rugged Tablet, 10.36-inch, 8 GB + 256 GB, 22,000 mAh, 4G LTE',
+ "model": 'Active 8 Pro',
+ "url": 'https://store.blackview.hk/products/active-8-pro',
+ "price": 289,
+ "list_price": 406,
+ "verified": '2026-11-06',
+ "specs": [('Display', '10.36-inch IPS, 2000 × 1200'), ('Battery', '22,000 mAh, 33 W charging (50% in 105 minutes per Blackview)'), ('Weight', '2.2 lb (976 g), 0.66 in thick'), ('Chipset', 'MediaTek Helio G99 (6 nm), 8 GB RAM, 256 GB storage, microSD to 1 TB'), ('Rating', 'IP68, IP69K, MIL-STD-810H'), ('Cellular', '4G LTE only, dual SIM; LTE bands include 2, 4, 5, 12, 13, 66; not certified by any US carrier'), ('Cameras', '48 MP rear, 16 MP front'), ('Extras', 'Stylus included, quad Harman Kardon speakers, PC mode'), ('Software', 'DokeOS_P 3.0; launch units shipped Android 13 and the store page now lists Android 15')],
+ "warranty": '12-month free repair warranty from Blackview for non-accidental faults; the buyer pays shipping to send the unit in and Blackview pays return shipping.',
+ "returns": "Return eligibility depends on the item; change-of-mind returns are at the buyer's shipping cost and must be arranged with support first. A 14-day cancellation right is stated for UK and EU orders only.",
+ "summary": "The Active 8 Pro is the cheapest big-battery rugged tablet we found from a maker's own store: 22,000 mAh, a Helio G99 chip and IP68/IP69K/MIL-STD-810H ratings for $289. TechRadar scored it 90% and praised the battery; the trade-offs are 2.2 lb of weight and 4G only.",
+ "fit": "Budget buyers who want days of battery and a stylus for maps, manuals or kids' use, and who are on Wi-Fi, T-Mobile or AT&T.",
+ "caveats": ['Owners on GSMArena report it never received an Android version or security update after launch.', '4G LTE only, no 5G, and no US carrier certification; Verizon is not supported.', 'Ships from overseas with free 7 to 20 business-day airmail or $40 DHL, import taxes may apply, and the charger may come with an EU plug.', 'Reviewers call it very heavy for a 10-inch tablet at 2.2 lb.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
