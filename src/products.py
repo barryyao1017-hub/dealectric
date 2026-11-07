@@ -40,6 +40,7 @@ CATEGORIES = {
     "3d-scanner": ('3D scanners', 'Handheld and desktop 3D scanners that turn real objects into printable or editable 3D models.'),
     "rugged-tablet": ('Rugged tablets', 'Android tablets with IP68 and MIL-STD-810H ratings built for camping, job sites and other rough use.'),
     "wind-turbine": ('Wind turbines', 'Small wind turbines that charge a portable power station or home battery.'),
+    "rugged-phone": ('Rugged phones', 'Drop-, dust- and water-rated smartphones and feature phones, including models with built-in thermal cameras.'),
 }
 
 PRODUCTS = [
@@ -2035,6 +2036,38 @@ PRODUCTS = [
  "summary": 'The L6000 is the cheapest 240 V split-phase power station with a wind input. Its 6,000 W inverter runs a well pump or central-air circuit through a transfer switch, and it stacks up to five pods for multi-day outages.',
  "fit": 'Whole-home or well-pump backup where 240 V matters, with solar as the main charge source and wind as a top-up.',
  "caveats": ['Same 150 W wind ceiling as the L3600; the 350 W turbine is for the MyGrid 10K only.', "112 lb and no built-in wheels; the maker's cart is a separate purchase.", '1-year warranty.', 'A 240 V transfer switch and installation are extra.']},
+
+{"slug": 'agm-x7-pro',
+ "brand": 'AGM',
+ "program": 'awin:agm',
+ "category": 'rugged-phone',
+ "name": 'AGM X7 Pro Thermal Imaging Rugged Smartphone, 6 GB + 256 GB, 10,000 mAh, Android 16',
+ "model": 'X7 Pro',
+ "url": 'https://www.agmmobile.com/products/agm-x7-pro-thermal-imaging-rugged-smartphone',
+ "price": 599,
+ "verified": '2026-11-06',
+ "specs": [('Thermal camera', '256×192 sensor (12 µm), 512×384 upscaled output, 25 fps'), ('Thermal range', '-4 °F to 302 °F (L1) and 212 °F to 1,022 °F (L2)'), ('Chipset', 'MediaTek Dimensity 7300, 4 nm'), ('Memory', '6 GB RAM, 256 GB storage, microSD slot'), ('Battery', '10,000 mAh; 33 W wired, 15 W wireless'), ('Display', '6.72-inch 2400×1080 IPS, 120 Hz, 650 nits'), ('Weight', '375 g (13.2 oz)'), ('Protection', 'IP68, IP69K, MIL-STD-810H'), ('LTE bands', '1/2/3/4/5/7/8/12/17/18/19/20/26/28/38/39/40/41/66 (no band 13 or 71)'), ('5G bands', 'n1/2/3/5/7/8/20/26/28/38/40/41/66/77/78 (no n71)'), ('SIM', 'Dual nano-SIM plus eSIM'), ('Software', 'Android 16')],
+ "warranty": "1-year limited warranty from delivery under AGM's store terms",
+ "returns": '15 calendar days from delivery, for manufacturing defects only; AGM pays return shipping only when the defect is its fault',
+ "summary": 'The lightest way to get a 256×192-class thermal sensor in a phone. Same thermal module and 10,000 mAh battery as the G3 Pro at $100 less, with Android 16 and eSIM, in a 375 g (13.2 oz) body.',
+ "fit": 'Electricians, HVAC techs, home inspectors and hunters who want a thermal screening camera they can carry every day on T-Mobile or AT&T.',
+ "caveats": ['AGM markets 512×384; that is an upscaled output from a 256×192 sensor. Reviewers found temperature readings run a few degrees high, so treat it as a screening tool.', 'Unlocked import with no carrier certification: bands cover T-Mobile and AT&T but there is no LTE band 13 or 5G n71, so skip it for Verizon. Confirm VoLTE with your carrier by IMEI before porting a number.', 'Thermal use drains the battery quickly (androidpctv review), and the 6 GB RAM is modest for the price.', "Free AGM Buds 8 bundle shown on AGM's site 2026-11-06; bundles change."]},
+
+{"slug": 'agm-g3-pro',
+ "brand": 'AGM',
+ "program": 'awin:agm',
+ "category": 'rugged-phone',
+ "name": 'AGM G3 Pro Thermal Imaging Rugged Smartphone, 12 GB + 512 GB, 10,000 mAh, 1,000-lumen floodlight',
+ "model": 'G3 Pro',
+ "url": 'https://www.agmmobile.com/products/agm-g3-pro',
+ "price": 699,
+ "verified": '2026-11-06',
+ "specs": [('Thermal camera', '256×192 sensor (12 µm), 512×384 upscaled output, 25 fps'), ('Thermal range', '-4 °F to 302 °F and 212 °F to 1,022 °F (two ranges)'), ('Chipset', 'MediaTek Dimensity 7300'), ('Memory', '12 GB RAM, 512 GB UFS 3.1 storage, microSD slot'), ('Battery', '10,000 mAh; 33 W wired, 18 W wireless, reverse charging; Notebookcheck measured 40.9 h of Wi-Fi web use'), ('Display', '6.72-inch 2400×1080 IPS, 120 Hz; 637 nits measured'), ('Weight', '375 g (13.2 oz)'), ('Extras', '1,000-lumen floodlight, 5 W rear speaker, 3.5 mm jack, dedicated function key'), ('Protection', 'IP68, IP69K, MIL-STD-810H'), ('LTE bands', '1/2/3/4/5/7/8/12/17/18/19/20/26/28/38/39/40/41/66 (no band 13)'), ('5G bands', 'n1/2/3/5/7/8/20/26/28/38/40/41/66/77/78'), ('SIM', 'Dual nano-SIM, no eSIM'), ('Software', 'Android 15 at launch; AGM told Notebookcheck it plans 5 years of security patches')],
+ "warranty": "1-year limited warranty from delivery under AGM's store terms",
+ "returns": '15 calendar days from delivery, for manufacturing defects only; AGM pays return shipping only when the defect is its fault',
+ "summary": "The X7 Pro's thermal module and battery with twice the RAM, four times the storage, 18 W wireless charging and a 1,000-lumen floodlight. TechRadar and Digital Camera World named it the best rugged phone for thermal imaging.",
+ "fit": 'Field workers who store a lot of thermal video and want the floodlight and faster wireless charging; the X7 Pro is the better value if you only need the thermal camera.',
+ "caveats": ["Same 256×192 sensor as the X7 Pro behind the 512×384 marketing figure; readings ran a few degrees above an IR thermometer in Notebookcheck's test.", 'Notebookcheck measured the speaker at 92.6 dB, well under the 116 dB claim, and found no eSIM and single-band GNSS.', 'AGM sells some models in a US T-Mobile-only version; confirm which version you are ordering and check band 13 is absent before buying for Verizon.', "AGM's site showed a 10% off plus free earbuds banner for the G3 Pro on 2026-11-06; the discount is applied by AGM, not a code."]},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
