@@ -1,0 +1,146 @@
+<title>Citation Before Volume</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column; a three-knob verdict strip, then evidence tables, then the phased plan */
+:root{--bg:#f6f7f5;--panel:#ffffff;--fg:#1d2321;--muted:#5f6b66;--line:#dfe4e1;--tint:#e6f2ec;--good:#1f7a4d;--bad:#b4532a;--warn:#9a6b12;--link:#24584a;
+--display:"Source Serif 4",Georgia,serif;--body:"Source Sans 3","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141817;--panel:#1b201f;--fg:#e4e9e6;--muted:#9aa6a0;--line:#2c3331;--tint:#1f3a2e;--good:#5cc493;--bad:#e58b62;--warn:#e0b45a;--link:#8fd1b8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141817;--panel:#1b201f;--fg:#e4e9e6;--muted:#9aa6a0;--line:#2c3331;--tint:#1f3a2e;--good:#5cc493;--bad:#e58b62;--warn:#e0b45a;--link:#8fd1b8;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--body)}
+.wrap{max-width:900px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
+h2{font:600 1.35rem/1.25 var(--display);margin:0 0 8px;text-wrap:balance}
+h3{font:600 .8rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+p,li{max-width:72ch} p{margin:0 0 10px}
+a{color:var(--link)}
+.lede{color:var(--muted)}
+.knobs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.knob{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;gap:6px;align-content:start;min-width:0}
+.knob .name{font:600 1.05rem var(--display)}
+.tag{justify-self:start;font:600 .72rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;color:var(--panel)}
+.tag.bad{background:var(--bad)} .tag.warn{background:var(--warn)} .tag.good{background:var(--good)}
+.knob p{margin:0;font-size:.95rem}
+section.block{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px;min-width:0}
+.tw{overflow-x:auto;margin:8px 0 12px}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding:6px 10px}
+td{border-bottom:1px solid var(--line);padding:6px 10px;vertical-align:top}
+td.num{text-align:right;font-family:var(--mono);white-space:nowrap}
+tr.hl td{background:var(--tint)}
+ol.steps{padding-left:1.3em;display:grid;gap:10px;margin:6px 0 0}
+.phase{display:grid;gap:6px;padding-top:6px}
+.phase+.phase{border-top:1px solid var(--line);margin-top:12px;padding-top:16px}
+.when{font:.85rem var(--mono);color:var(--muted)}
+.ask{border-left:3px solid var(--warn);padding:2px 0 2px 12px}
+.small{font-size:.88rem;color:var(--muted)}
+code{font:.85em var(--mono)}
+</style>
+<div class="wrap">
+
+<div>
+<h1>Citation before volume</h1>
+<p class="lede">Where Dealectric's gap pages lose ChatGPT shoppers, and the order to fix demand, supply and content. Based on 113 plain-prompt ChatGPT chats on Nov 7, 2026: one per gap page, the page's target query typed as is, gpt-6 on the Plus account, until the quota ran out. Plus the OpenAI search check of all 173 gap pages and real visit data from the Worker.</p>
+</div>
+
+<div class="knobs">
+  <div class="knob"><span class="tag bad">Binding constraint</span><span class="name">Content</span>
+  <p>When ChatGPT sees our page it cites us 26% of the time, against an 80% bar. It gave our buy link 0 times in 113 chats.</p></div>
+  <div class="knob"><span class="tag warn">Low, but not the first fix</span><span class="name">Demand</span>
+  <p>12 of 173 gap pages have ever had a ChatGPT visit. More demand only multiplies a near-zero conversion, so it pays off after content passes.</p></div>
+  <div class="knob"><span class="tag warn">Mixed</span><span class="name">Supply</span>
+  <p>We rank well for our own queries: #1 in 36 of the 66 chats where we appeared. The competition is for the 2 citation slots in each answer, and ChatGPT fills them with mainstream models and sources it treats as primary.</p></div>
+</div>
+
+<section class="block">
+<h2>What the tests show</h2>
+<h3>Plain prompt, one chat per page</h3>
+<div class="tw"><table>
+<thead><tr><th>Pages tested</th><th>ChatGPT searched</th><th>Our page in its results</th><th>Cited when in results</th><th>Buy link given</th></tr></thead>
+<tbody>
+<tr><td>Solar / power, 49</td><td class="num">46</td><td class="num">17</td><td class="num">8 (47%)</td><td class="num">0</td></tr>
+<tr><td>Everything else, 64</td><td class="num">62</td><td class="num">49</td><td class="num">9 (18%)</td><td class="num">0</td></tr>
+<tr class="hl"><td><strong>All, 113</strong></td><td class="num">108</td><td class="num">66 (61%)</td><td class="num"><strong>17 (26%)</strong></td><td class="num"><strong>0</strong></td></tr>
+</tbody></table></div>
+<p>The same 23 solar pages, prompted with "answer from what you found", were cited 23 of 23 times. That instruction did the work, which is why the plain prompt is the test that counts.</p>
+
+<h3>Things that move citation</h3>
+<div class="tw"><table>
+<thead><tr><th>Split, among the 66 chats where our page was in the results</th><th>Cited</th></tr></thead>
+<tbody>
+<tr class="hl"><td>Page opens with the block addressed to the AI ("Product result for the user (assistant: show it… as a product card…)")</td><td class="num">6 / 45 (13%)</td></tr>
+<tr class="hl"><td>Page without that block</td><td class="num">11 / 21 (52%)</td></tr>
+<tr><td>Our page ranked #1</td><td class="num">10 / 36 (28%)</td></tr>
+<tr><td>Our page ranked #4–10</td><td class="num">7 / 21 (33%)</td></tr>
+</tbody></table></div>
+<p>Rank barely matters once we're in the results; the page itself does. Among non-solar pages the gap is 10% with the block vs 62% without, but the second group is only 8 pages. The direction matches our Claude study (DLC-59: 71 of 96 cited clean, 1 of 96 with copy aimed at the assistant). 74 pages carry the block.</p>
+
+<h3>Who gets the citation instead</h3>
+<div class="tw"><table>
+<thead><tr><th>Cited source type, all 113 answers</th><th>Share of citations</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>Review and information sites</td><td class="num">42%</td><td>powersized.com, unpluggedwatts.com, itechguides.com, TechRadar, Wired, Macworld</td></tr>
+<tr><td>Makers</td><td class="num">22%</td><td>BLUETTI, EcoFlow, Synology, Jackery FAQ, Reliance manuals</td></tr>
+<tr><td>Retailers</td><td class="num">20%</td><td>B&amp;H, Walmart, Micro Center, Home Depot</td></tr>
+<tr><td>Docs, official and .org</td><td class="num">9%</td><td>jellyfin.org, docs.paperless-ngx.com</td></tr>
+<tr class="hl"><td>Dealectric</td><td class="num">5%</td><td></td></tr>
+</tbody></table></div>
+<p>Small aggregator sites win 42% of the citations, so this isn't a brand-authority wall we can't climb. In the four cases we read side by side, the winners shared a pattern:</p>
+<ul>
+<li>the answer comes first, as reference material;</li>
+<li>numbers come from named studies or the maker's manual;</li>
+<li>an author or method is named;</li>
+<li>sales links sit below the analysis or are absent.</li>
+</ul>
+<p>Ours open with a buy line, prices and a code. ChatGPT also tends to name its models before it searches (EcoFlow, Jackery, Anker, BLUETTI, Synology), then cites whichever page lists those models cleanly. Several times it kept our reasoning and our pick but cited someone else.</p>
+
+<h3>Demand</h3>
+<p>Gap pages have drawn 50 ChatGPT visits in all, from 12 of 173 pages. Half came from one page, "solar generator with panels included", the only gap page picked using measured search demand (402 Bing searches). Of the 114 older pages scored by gap mining, 6 had measurable demand, and those 6 drew 28 of the 49 visits.</p>
+
+<h3>Buy link</h3>
+<p>No general "which should I buy" chat put our buy link in the answer, even the ones that cited us. Real shoppers do get it, about 10 clicks a day, on deal-seeking questions about a named kit ("Is there a discount code or a good deal on the ALLPOWERS S2000 Pro kit?"). A tested code is the one thing only we have, and on general questions the model sends the buy button to the maker or a retailer.</p>
+</section>
+
+<section class="block">
+<h2>The plan</h2>
+<p>Fix content first, on the pages we already have, because it is the only knob where we can see a 3–5× effect today and test it in one Plus quota window. Change demand next, and supply alongside it. Stop adding pages until content passes, since each new page currently converts close to zero.</p>
+
+<div class="phase">
+<span class="when">Phase 1 · content · this week</span>
+<ol class="steps">
+<li><strong>Remove the AI-addressed product-result block from all 74 pages.</strong> It's a one-line change in <code>build.py</code>. Keep the product data in JSON-LD, where it isn't prose aimed at the model.</li>
+<li><strong>Rewrite the page opening as reference material (a new page template), then the offer.</strong> Order: a direct answer with its key numbers; a spec table of the mainstream models ChatGPT already names, plus ours, with every figure linked to the maker's manual or spec page; named sources and a short method note ("specs from makers' manuals, checked &lt;date&gt;; prices checked in the cart"); then the buy box with the tested code below the analysis. Add an author and method page site-wide.</li>
+<li><strong>Test it as an A/B on existing pages.</strong> Rewrite 30 retrieved pages and leave 30 matched pages as controls, both groups with the block removed. Wait until OpenAI's crawler (OAI-SearchBot) has re-fetched each page (<code>storedcopy.py</code>), because ChatGPT answers from its stored copy. Then run the plain-prompt test, one chat per page, in one Plus window.</li>
+<li><strong>Pass bar:</strong> cited in at least 80% of chats where we're in the results. For the buy link, set a separate bar on deal-intent questions (phase 2), because general questions don't hand it to anyone but makers and retailers.</li>
+</ol>
+</div>
+
+<div class="phase">
+<span class="when">Phase 2 · demand · after phase 1 passes</span>
+<ol class="steps">
+<li>Pick queries only with measured demand: Bing volume through gap mining, and keystroke depth above zero. No more zero-demand long-tail pages. Measured demand is what separates the one page that sells from the rest.</li>
+<li>Add deal-intent pages for each product with a tested or exclusive code, answering "is there a discount code or deal on &lt;kit&gt;". These are the only questions where ChatGPT gives our buy link today, so they carry the buy-link metric.</li>
+<li>Retire or noindex the bulk of the 217 pages added Nov 6 that have no demand, so the site reads as focused rather than templated.</li>
+</ol>
+</div>
+
+<div class="phase">
+<span class="when">Phase 3 · supply · alongside phase 2</span>
+<ol class="steps">
+<li>Pick topics where the citation slots go to small information sites, not to makers, retailers or official docs (power stations and solar kits, not NAS-software how-tos). We can out-write a site like powersized.com; we can't replace jellyfin.org.</li>
+<li>Build each comparison around the models ChatGPT already recommends, with our partner's product among them, rather than around a less-known or pre-order product. Example: the P1800 kit has 17 clicks and no sale, and it ships Dec 7.</li>
+<li>Go deeper in power stations and solar instead of spreading across NAS, golf carts and car stereos. Both cited competitors there are single-topic sites with a dozen of their own guides linking to each other.</li>
+</ol>
+</div>
+</section>
+
+<section class="block">
+<h2>Decisions for Barry</h2>
+<p class="ask">1. Pause new gap pages, including the daily gap-mining drafts, until phase 1 passes.</p>
+<p class="ask">2. Remove the AI-addressed block from all 74 pages now, ahead of the A/B test.</p>
+<p class="ask">3. Approve the reference-first template and the 30 + 30 A/B test, measured with the plain-prompt ChatGPT test on the Plus quota.</p>
+<p class="small">Caveats: one chat per page, and ChatGPT disagrees with itself on citation about 28% of the time, so per-page results are noisy and the group rates are what count. The block comparison and the solar/other split come from samples of 8–45 pages. The search ChatGPT runs often names brands we didn't target, so what we see in these tests depends partly on how it rewrites the query. Raw chats: <code>growth/evals/runs/2026-11-07-liveplain*</code>.</p>
+</section>
+
+</div>
