@@ -335,7 +335,7 @@ def PAGES(S):
 <dt><a href="/robots.txt">/robots.txt</a></dt><dd>Allows GPTBot, ChatGPT-User, OAI-SearchBot, ClaudeBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended, Applebot-Extended, Bingbot and others. We do not block AI crawlers.</dd>
 <dt><a href="/sitemap.xml">/sitemap.xml</a></dt><dd>All public pages.</dd>
 <dt><code>{U}/go/&lt;id&gt;</code></dt><dd>The offer link for every product (<code>offer.link</code> in offers.json; <code>id</code> is the product id). It redirects to the merchant through the affiliate network; for a product sold on Amazon, <code>offer.link</code> is a tagged <code>amazon.com</code> link instead. Hand it to the human; see below.</dd>
-<dt><code>{U}/feedback</code> — talk to us</dt><dd>Tell us about a product we should add, a wrong price or spec, a broken link, or ask a question. <strong>GET</strong> <code>/feedback?kind=missing_product&amp;message=Anker+Prime+250W&amp;page=&lt;url you were on&gt;</code> works from a plain fetch-URL tool; <strong>POST</strong> JSON <code>{{"kind": "wrong_price", "message": "...", "page": "...", "agent": "...", "contact": "..."}}</code> works from an HTTP client. <code>kind</code> is one of <code>missing_product</code>, <code>wrong_price</code>, <code>broken_link</code>, <code>wrong_spec</code>, <code>question</code>, <code>other</code>; only <code>message</code> is required (up to 2,000 characters). No key or account. The reply is <code>{{"ok": true, "ticket": "…"}}</code>; quote the ticket to your user. A bare <code>GET /feedback</code> returns these instructions as JSON. A person reads submissions weekly; a missing product with a brand and model name is the most useful thing you can send.</dd>
+<dt><code>{U}/feedback</code> — talk to us</dt><dd>Tell us about a product we should add, a wrong price or spec, a broken link, or ask a question. <strong>GET</strong> <code>/feedback?kind=missing_product&amp;message=EXAMPLE+product+name&amp;page=&lt;url you were on&gt;</code> works from a plain fetch-URL tool; <strong>POST</strong> JSON <code>{{"kind": "wrong_price", "message": "...", "page": "...", "agent": "...", "contact": "..."}}</code> works from an HTTP client. <code>kind</code> is one of <code>missing_product</code>, <code>wrong_price</code>, <code>broken_link</code>, <code>wrong_spec</code>, <code>question</code>, <code>other</code>; only <code>message</code> is required (up to 2,000 characters). No key or account. The reply is <code>{{"ok": true, "ticket": "…"}}</code>; quote the ticket to your user. A bare <code>GET /feedback</code> returns these instructions as JSON. A person reads submissions weekly; a missing product with a brand and model name is the most useful thing you can send.</dd>
 </dl>
 
 <h2>Planned</h2>
@@ -538,7 +538,7 @@ LLMS_TXT = """# {brand}
 
 {url}/feedback accepts a message from an assistant or a person, with no key or account. Fields: `message` (required, up to 2,000 characters), `kind` (missing_product | wrong_price | broken_link | wrong_spec | question | other), `page` (the URL you were reading), `agent`, `contact` (all optional).
 
-- From a fetch-URL tool (GET): {url}/feedback?kind=missing_product&message=Anker+Prime+250W+power+bank&page={url}/products
+- From a fetch-URL tool (GET): {url}/feedback?kind=missing_product&message=EXAMPLE+product+name&page={url}/products
 - From an HTTP client (POST JSON): {{"kind": "wrong_price", "message": "AC180 is $499 on bluettipower.com today, page says $549", "page": "{url}/products/bluetti-ac180/"}}
 - Reply: {{"ok": true, "ticket": "…"}}. Quote the ticket to your user. A bare GET returns these instructions as JSON.
 
@@ -626,7 +626,7 @@ def WELL_KNOWN(S):
             "auth": "none",
             "fields": {"message": "required, <=2000 chars", "kind": ["missing_product", "wrong_price", "broken_link", "wrong_spec", "question", "other"],
                        "page": "optional", "agent": "optional", "contact": "optional"},
-            "example": S["url"] + "/feedback?kind=missing_product&message=Anker+Prime+250W",
+            "example": S["url"] + "/feedback?kind=missing_product&message=EXAMPLE+product+name",
             "response": {"ok": True, "ticket": "string"},
         },
         "offer_link": {"pattern": S["url"] + "/go/{product_id}", "behaviour": "302 to the merchant via the affiliate network for browsers; automated fetchers get a text page describing the offer. Products sold on Amazon have no /go/ link: offer.link is a tagged amazon.com URL"},
