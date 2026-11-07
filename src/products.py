@@ -3966,6 +3966,23 @@ PRODUCTS = [
  "fit": 'Houses that need 240 V for a well pump, central air or a dryer, and want the battery wired to a transfer sub-panel rather than run on extension cords.',
  "caveats": ["Idle draw is the weak spot: a reviewer measured 112 W with the inverter on and nothing plugged in, about 34 hours to empty. Anker's June 2025 firmware claims to halve that; no independent after-update measurement was found.", "The 240 V output cannot be used while the unit charges from a 120 V wall outlet (Anker's own listing).", 'Reaching 6,000 W of 240 V charging needs two expansion batteries; one unit alone charges at about 3,500 W from a generator.', "The '30 A' outlet is a 25 A outlet, which can trip appliances that expect a full 30 A.", 'At 136.7 lb it is a two-person lift up stairs even with the wheels.']},
 
+{"slug": 'bluetti-elite-100-v2',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "category": 'power-station',
+ "name": 'BLUETTI Elite 100 V2 Portable Power Station, 1,024 Wh LiFePO4, 1,800 W',
+ "model": 'Elite 100 V2',
+ "url": 'https://www.bluettipower.com/products/elite-100-v2-portable-power-station',
+ "official_page": 'https://www.bluettipower.com/products/elite-100-v2-portable-power-station',
+ "price": 499,
+ "verified": '2026-11-07',
+ "specs": [('Capacity', '1,024 Wh LiFePO4, 4,000+ cycles to 80%'), ('AC output', '1,800 W continuous, 2,700 W Power Lifting mode, 2 outlets'), ('USB-C', '1× 140 W + 1× 100 W; 2× USB-A, 2× DC5521, 12 V car port'), ('AC charging', '1,200 W TurboBoost, 0 to 80% in about 45 min'), ('Solar input', '1,000 W max (12 to 60 V, 20 A)'), ('Weight', '25 lb (11.5 kg), 12.6 × 8.5 × 9.8 in'), ('Noise', '30 dB or less under 600 W loads'), ('UPS', '10 ms switchover')],
+ "warranty": '5 years (Bluetti product-warranty-period page, 2026-11-07)',
+ "returns": '30-day money-back on the Bluetti store; full refund only if unused and complete, return shipping deducted',
+ "summary": 'The Elite 100 V2 replaces the AC180 at the same $499 store price with the same 1,800 W output, 10 lb less weight, double the solar input and a quieter fan. OutdoorGearLab measured 890 Wh delivered from the 1,024 Wh rating. It is the Bluetti to buy for camping, car trips and short outages.',
+ "fit": 'One person can carry it. Runs a coffee maker, electric cooler, CPAP, router and laptops; keeps a full-size fridge going for roughly 8 to 10 hours.',
+ "caveats": ["AC charging runs slower than rated below about 20% charge; a full wall charge took about 1 hr 40 min in The Solar Lab's test.", 'Eco mode shuts off very low loads; turn it off for a fridge or CPAP.', 'Turbo charging and some UPS settings need the app, which reviewers call glitchy.', 'No solar or car cable in the box.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
