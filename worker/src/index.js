@@ -183,7 +183,8 @@ async function handleGo(url, request, env, ctx) {
   // checkout, so a record whose normal link opens the checkout (cart: true) lands on its product page instead.
   const viaApp = url.searchParams.get("via") === "app";
   const dest = new URL(viaApp && entry.store_url ? entry.store_url : entry.url);
-  dest.searchParams.set(entry.network === "cj" ? "sid" : "clickref", `${slug}.${clickId}`);
+  // Sub-ID parameter per network: CJ sid, Rakuten u1 (2026-11-06), Awin clickref.
+  dest.searchParams.set(entry.network === "cj" ? "sid" : entry.network === "rakuten" ? "u1" : "clickref", `${slug}.${clickId}`);
 
   const cf = request.cf || {};
   const ua = request.headers.get("user-agent") || "";

@@ -54,8 +54,10 @@ def save_queue(q: list[dict]) -> None:
 def programs() -> dict:
     links = json.loads((ROOT / "src/links.json").read_text())
     out = {"amazon:us": "Amazon Associates (any product sold on amazon.com)"}
-    for net in ("cj", "awin"):
-        for k, v in links[net].items():
+    for net in ("cj", "awin", "rakuten"):
+        for k, v in links.get(net, {}).items():
+            if v.get("unused"):   # joined but deliberately not linked (e.g. Zendure: no US product, DLC-170)
+                continue
             out[f"{net}:{k}"] = f"{v.get('name') or k} — store {v.get('home')}"
     return out
 
@@ -66,6 +68,16 @@ def prompt_for(item: dict) -> str:
     sup = json.loads((POOL / "supply.json").read_text()).get(item["supply_query"], []) if (POOL / "supply.json").exists() else []
     ours = [f"{p['slug']} | {p['brand']} | {p['category']} | {p['program']} | {p['name']}" for p in P.PRODUCTS
             if p["category"] in {c for c in P.CATEGORIES}]
+    if item.get("kind") == "brand":
+        return "\n\n".join([
+            recipe,
+            (ROOT / "growth/gapmine/brand-recipe.md").read_text(),
+            f"## Today\n{today()}",
+            "## The brand\n" + json.dumps({k: item.get(k) for k in ("brand", "program", "store", "network_codes")}, indent=1),
+            "## Approved programs (program key -> brand and store)\n" + "\n".join(f"{k}: {v}" for k, v in programs().items()),
+            "## Categories (use one of these keys, or add one under new_categories)\n" + ", ".join(P.CATEGORIES),
+            "## Products already on the site (reuse these slugs; don't redefine them)\n" + "\n".join(ours),
+        ])
     return "\n\n".join([
         recipe,
         f"## Today\n{today()}",
@@ -108,7 +120,14 @@ def validate(draft: dict) -> list[str]:
     errs = []
     page, prods = draft.get("page") or {}, draft.get("products") or []
     slug = draft.get("slug") or ""
-    if not re.fullmatch(r"[a-z0-9-]{8,90}", slug):
+    only = draft.get("status") == "products_only"
+    newcats = draft.get("new_categories") or {}
+    for k, v in newcats.items():
+        if not re.fullmatch(r"[a-z0-9-]{3,20}", k) or not (isinstance(v, (list, tuple)) and len(v) == 2):
+            errs.append(f"bad new category {k!r}")
+    if only and not prods:
+        errs.append("products_only with no products")
+    if not only and not re.fullmatch(r"[a-z0-9-]{8,90}", slug):
         errs.append(f"bad slug {slug!r}")
     have = {p["slug"]: p for p in P.PRODUCTS}
     if slug in {g["slug"] for g in gaps.GAP_PAGES} or slug in have:
@@ -122,7 +141,7 @@ def validate(draft: dict) -> list[str]:
         new[s] = p
         if p.get("program") not in progs:
             errs.append(f"{s}: program {p.get('program')!r} not approved")
-        if p.get("category") not in P.CATEGORIES:
+        if p.get("category") not in P.CATEGORIES and p.get("category") not in newcats:
             errs.append(f"{s}: unknown category {p.get('category')!r}")
         for k in ("brand", "name", "model", "url", "specs", "summary", "fit", "caveats", "warranty", "returns"):
             if not p.get(k):
@@ -142,6 +161,8 @@ def validate(draft: dict) -> list[str]:
         else:
             if not isinstance(p.get("price"), (int, float)) or not p.get("verified"):
                 errs.append(f"{s}: our record needs a price and a verified date")
+    if only:
+        return errs
     known = set(have) | set(new)
     text = json.dumps(page)
     amazon = {s for s, p in {**have, **new}.items() if p.get("program") == "amazon:us"}
@@ -188,7 +209,9 @@ def product_text(p: dict) -> str:
 
 def page_text(draft: dict, gnum: int, item: dict) -> str:
     pg = dict(draft["page"])
-    rec = {"slug": draft["slug"], "question": f"G{gnum} (gap mining daily: {item['cluster']}, {item['searches']} Bing searches / 3 mo, coverage {item['coverage']})",
+    q = (f"G{gnum} (brand page for {item.get('brand')}: {item.get('lead')})" if item.get("kind") == "brand" else
+         f"G{gnum} (gap mining daily: {item['cluster']}, {item['searches']} Bing searches / 3 mo, coverage {item['coverage']})")
+    rec = {"slug": draft["slug"], "question": q,
            "lead_first": True, "title": pg["title"], "h1": pg["h1"], "desc": pg["desc"], "intro": "\n" + pg["intro"].strip() + "\n",
            "columns": [tuple(c) for c in pg["columns"]], "rows": pg["rows"], "after": "\n" + pg["after"].strip() + "\n",
            "sources": [tuple(s) for s in pg["sources"]], "published": today(), "checked": today()}
@@ -204,9 +227,15 @@ def next_gnum() -> int:
 def insert(draft: dict, item: dict) -> int:
     pp = ROOT / "src/products.py"
     s = pp.read_text()
+    for k, (label, desc) in (draft.get("new_categories") or {}).items():
+        if f'"{k}":' not in s[:s.index("PRODUCTS = [")]:
+            j = s.index("}", s.index("CATEGORIES = {"))
+            s = s[:j] + f'    "{k}": ({label!r}, {desc!r}),\n' + s[j:]
     add = "".join(product_text(p) for p in draft.get("products") or [])
     i = s.index(END_MARK)
     pp.write_text(s[:i] + add + s[i:])
+    if draft.get("status") == "products_only":
+        return None
     gp = ROOT / "src/gaps.py"
     g = gp.read_text()
     n = next_gnum()
@@ -253,7 +282,7 @@ def gate(draft: dict, item: dict) -> tuple[list[str], list[Path], int | None]:
     r = sh("python3.12", "tools/docsguard.py")
     if r.returncode:
         errs.append("docsguard: " + r.stdout[-200:])
-    if not errs:
+    if not errs and draft.get("status") != "products_only":
         pack = free_pack(item, draft["slug"])
         cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack, "--ranks", "1,3,6"]
         for m in draft["must"]:
@@ -281,31 +310,94 @@ def publish(draft: dict, item: dict, n: int, new_imgs: list[Path]) -> str:
     return "published"
 
 
-def run_one(item: dict, do_publish: bool, draft: dict | None = None) -> dict:
+def commit_local(draft: dict, item: dict, n, new_imgs: list[Path]) -> str:
+    """Batch mode (11-06): commit the passing page locally so a later failure's restore can't undo it; push, Worker
+    deploy and IndexNow happen once at the end of the batch."""
+    key = draft.get("slug") or ("brand-" + re.sub(r"[^a-z0-9]+", "-", (item.get("brand") or "x").lower()))
+    sh("git", "add", "docs", "src/gaps.py", "src/products.py", "src/img", "worker/src/links-map.json", "src/links.json",
+       *( [f"growth/evals/runs/fastloop/gmd-{draft['slug']}"[:200]] if draft.get("slug") else []), str(DRAFTS / f"{key}.json"), str(QUEUE))
+    what = (f"Gap page G{n} /{draft['slug']}" if n else f"Products for {item.get('brand')}") + \
+           (f": {item.get('brand')} brand page ({item.get('lead')})" if item.get("kind") == "brand" else f": {item.get('cluster')} (Claude coverage {item.get('coverage')})")
+    msg = (f"{what}\n\nResearched and gated by tools/gappage.py (Claude gap loop, DLC-192); products: "
+           f"{', '.join(p['slug'] for p in draft.get('products') or []) or 'none new'}.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n")
+    r = sh("git", "commit", "-q", "-m", msg)
+    return "committed" if r.returncode == 0 else "commit failed: " + (r.stderr or r.stdout)[-200:]
+
+
+def draft_key(draft: dict, item: dict) -> str:
+    return draft.get("slug") or ("brand-" + re.sub(r"[^a-z0-9]+", "-", (item.get("brand") or "x").lower()))
+
+
+def prepare_brand(draft: dict, item: dict) -> None:
+    """A brand draft names its own query: record it on the item and take the free Claude coverage reading for it, so
+    the check gate has a result set (free_pack) and the queue shows what the page targets."""
+    if item.get("kind") != "brand" or draft.get("status") != "ok" or not draft.get("query"):
+        return
+    q = draft["query"].strip()
+    item.update({"lead": q, "supply_query": q, "variants": draft.get("variants") or [q], "source": "claude"})
+    sup_p = POOL / "supply.json"
+    sup = json.loads(sup_p.read_text()) if sup_p.exists() else {}
+    if not sup.get(q):
+        import serpsources as S
+        res = S.fetch("claude", q)
+        if res:
+            sup[q] = res
+            sup_p.write_text(json.dumps(sup, indent=1))
+
+
+def run_one(item: dict, do_publish, draft: dict | None = None) -> dict:
     if sh("git", "status", "--porcelain", "src", "docs").stdout.strip():
         return {"status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
     draft = draft or research(item)
     DRAFTS.mkdir(parents=True, exist_ok=True)
-    if draft.get("status") != "ok":
+    if draft.get("status") not in ("ok", "products_only"):
         return draft
+    prepare_brand(draft, item)
     errs, imgs, n = gate(draft, item)
     if errs:
         restore(imgs)
         draft["gate"] = {"date": today(), "pass": False, "errors": errs}
     else:
         draft["gate"] = {"date": today(), "pass": True, "g": n}
-        if do_publish:
+        if do_publish == "local":
+            (DRAFTS / f"{draft_key(draft, item)}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
+            draft["published"] = commit_local(draft, item, n, imgs)
+        elif do_publish:
             (DRAFTS / f"{draft['slug']}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
             draft["published"] = publish(draft, item, n, imgs)
         else:
             restore(imgs)
-    (DRAFTS / f"{draft['slug']}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
+    (DRAFTS / f"{draft_key(draft, item)}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
     return draft
+
+
+def research_many(items: list[dict], workers: int) -> None:
+    """Research in parallel (claude -p touches nothing in src/), saving each draft with its item; gating stays serial."""
+    import concurrent.futures as cf
+    DRAFTS.mkdir(parents=True, exist_ok=True)
+    def one(item):
+        d = research(item)
+        key = draft_key(d, item)
+        (DRAFTS / f"{key}.json").write_text(json.dumps({**d, "item": item}, indent=1))
+        return item, d, key
+    q = load_queue()
+    with cf.ThreadPoolExecutor(max_workers=workers) as ex:
+        for item, d, key in ex.map(one, items):
+            for x in q:
+                if x is item or (x.get("kind") == item.get("kind") and x.get("cluster") == item.get("cluster") and x.get("brand") == item.get("brand")):
+                    x["status"] = "drafted" if d.get("status") in ("ok", "products_only") else ("skip" if d.get("status") == "skip" else "failed")
+                    x["draft"], x["tried"] = key, today()
+                    x["result"] = d.get("reason") or d.get("status")
+            save_queue(q)
+            print(f"{item.get('brand') or item['cluster']}: {d.get('status')} -> {key} {str(d.get('reason') or '')[:160]}", flush=True)
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["next", "apply", "status"])
+    ap.add_argument("cmd", choices=["next", "apply", "status", "research", "applyall"])
+    ap.add_argument("--workers", type=int, default=5)
+    ap.add_argument("--kind", default="all", choices=["all", "gap", "brand"])
+    ap.add_argument("--local", action="store_true", help="applyall/apply: commit each passing page locally, no push")
     ap.add_argument("slug", nargs="?")
     ap.add_argument("--max", type=int, default=PAGES_PER_DAY)
     ap.add_argument("--publish", action="store_true")
@@ -318,8 +410,29 @@ def main() -> int:
     if a.cmd == "apply":
         d = json.loads((DRAFTS / f"{a.slug}.json").read_text())
         item = d.pop("item")
-        d = run_one(item, a.publish, d)
+        d = run_one(item, "local" if a.local else a.publish, d)
         print(json.dumps(d.get("gate"), indent=1), d.get("published", ""))
+        return 0
+    kind_ok = lambda x: a.kind == "all" or (x.get("kind") == "brand") == (a.kind == "brand")
+    if a.cmd == "research":
+        items = [x for x in q if x["status"] == "new" and kind_ok(x)][: a.max]
+        research_many(items, a.workers)
+        return 0
+    if a.cmd == "applyall":
+        for x in [x for x in q if x["status"] == "drafted" and kind_ok(x)]:
+            path = DRAFTS / f"{x['draft']}.json"
+            d = json.loads(path.read_text()); d.pop("item", None)
+            d = run_one(x, "local" if a.local else a.publish, d)
+            g = d.get("gate") or {}
+            x["status"] = ("published" if d.get("published") == "published" else "committed" if d.get("published") == "committed"
+                           else "ready" if g.get("pass") else "failed")
+            x["slug"] = d.get("slug"); x["result"] = d.get("published") or g.get("errors") or d.get("reason") or ""
+            q2 = load_queue()   # keep other writers' changes; replace this item
+            for i, y in enumerate(q2):
+                if y.get("draft") == x.get("draft"):
+                    q2[i] = x
+            save_queue(q2); q = q2
+            print(f"{x.get('brand') or x['cluster']}: {x['status']} {x.get('slug') or ''} {str(x['result'])[:300]}", flush=True)
         return 0
     done = 0
     for item in [x for x in q if x["status"] == "new"]:

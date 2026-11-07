@@ -175,6 +175,8 @@ def tracked_link(p, dest=None):
     dest = dest or buy_url(p)
     if net == "cj":
         return (f"https://www.tkqlhce.com/click-{CJ_PID}-{prog['evergreen']}?sid={p['slug']}&url={quote(dest, safe='')}", "CJ Affiliate", prog)
+    if net == "rakuten":   # Rakuten Advertising deep link (2026-11-06, Anker SOLIX); u1 carries the sub-ID like sid/clickref
+        return (f"https://click.linksynergy.com/deeplink?id={prog['id']}&mid={prog['mid']}&murl={quote(dest, safe='')}&u1={p['slug']}", "Rakuten Advertising", prog)
     return (f"https://www.awin1.com/cread.php?awinmid={prog['mid']}&awinaffid={AWIN_AFFID}&clickref={p['slug']}&ued={quote(dest, safe='')}", "Awin", prog)
 
 
@@ -1300,12 +1302,13 @@ def and_list(xs):
 def networks_html():
     """DLC-79: the disclosure's network sentence, from the programs the live products use (products.py) and the
     approved programs in links.json, so it moves when a brand goes live instead of being retyped."""
-    names = {"cj": "CJ Affiliate", "awin": "Awin", "amazon": "Amazon Associates"}
+    names = {"cj": "CJ Affiliate", "awin": "Awin", "rakuten": "Rakuten Advertising", "amazon": "Amazon Associates"}
     used = {}
     for p in PRODUCTS:
         used.setdefault(p["program"].split(":")[0], set()).add(p["brand"])
     nets = [n for n in names if n in used]
-    count = {1: "one affiliate network", 2: "one of two affiliate networks", 3: "one of three affiliate networks"}[len(nets)]
+    count = {1: "one affiliate network", 2: "one of two affiliate networks", 3: "one of three affiliate networks",
+             4: "one of four affiliate networks"}[len(nets)]
     parts = and_list(f"<strong>{names[n]}</strong> ({', '.join(sorted(used[n], key=str.lower))})" for n in nets)
     live = {p["program"] for p in PRODUCTS}
     idle = {}

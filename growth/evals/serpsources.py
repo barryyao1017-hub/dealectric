@@ -48,11 +48,13 @@ SOURCES = {
 # password = the API password from the dashboard's API Access page (keychain dataforseo-api-password).
 MONTH_USD = {"dataforseo": 1.00}
 DFS = "https://api.dataforseo.com/v3/serp/bing/organic/"
-PRIORITY = ["serpapi", "bing", "tavily", "serper", "jina", "claude"]   # Bing-backed first; re-ordered by calibration
+PRIORITY = ["claude", "serpapi", "bing", "tavily", "serper", "jina"]   # Claude first since 11-06 (DLC-190)
 STATUS_ORDER = PRIORITY + ["dataforseo", "openai", "google"]
 # Calibration vs Bing (gapmine.py srccal, 54 Bing-scored queries, 2026-11-05):
 #   claude  Spearman 0.29, gate (<0.4) agreement 27/54, open 37 vs Bing's 18 -> NOT used for gating (spam-heavy results)
-GATING = {"serpapi", "bing"}   # sources whose coverage may put a cluster in the page queue; others join after srccal >= 0.5
+# 11-06 (DLC-190): against OpenAI's own index Bing is weak (Spearman 0.29) and Claude passes (0.64 on 142 clusters), so
+# Claude alone gates (at coverage < 0.3, gapmine.GATE_BY_SOURCE) until the paid OpenAI gate is adopted (DLC-191).
+GATING = {"claude"}
 STOP_WORDS = re.compile(r"quota|exceed|limit|credit|billing|payment|insufficient|upgrade|plan", re.I)
 
 

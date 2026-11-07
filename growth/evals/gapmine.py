@@ -1034,6 +1034,13 @@ POOL = "pool"          # one accumulating run folder for the daily job
 SEEDS_PER_DAY = 8      # ~100 autocomplete calls per seed (Google, Bing, Amazon), paced
 MIN_SEARCHES = 500     # Ad Insight Bing US searches over 3 months, summed over the cluster's variants
 GATE = 0.4             # coverage below this goes to the page queue (vote and coverage agreed on 11-05)
+# Barry 2026-11-06: gate on Claude's search alone ($0) until the business breaks even (DLC-190/191). Against OpenAI's
+# index on 142 clusters, Claude coverage < 0.3 picks with precision 0.70 / recall 0.80 (< 0.4: 0.58 / 0.82).
+GATE_BY_SOURCE = {"claude": 0.3}
+
+
+def gate_for(source: str) -> float:
+    return GATE_BY_SOURCE.get(source, GATE)
 EXPAND_KEYS = None
 
 
@@ -1131,7 +1138,7 @@ def queue_step(args) -> list[dict]:
             continue
         n, cov = sum(vol.get(x["q"], 0) for x in c["queries"]), coverage(lab[sq])
         import serpsources as S
-        if n >= MIN_SEARCHES and cov < GATE and src_of.get(sq, "bing") in S.GATING:
+        if n >= MIN_SEARCHES and cov < gate_for(src_of.get(sq, "bing")) and src_of.get(sq, "bing") in S.GATING:
             added.append({"seed": c["seed"], "cluster": c["cluster"], "lead": lead, "supply_query": sq, "searches": n,
                           "coverage": cov, "uncovered": round(n * (1 - cov)), "source": src_of.get(sq, "bing"),
                           "brands": c["brands"], "variants": [x["q"] for x in c["queries"][:10]],
@@ -1205,7 +1212,7 @@ def daily(args) -> None:
           f"- Seeds: {len(log['seeds']['today'])} expanded today, {log['seeds']['pending']} pending: {', '.join(log['seeds']['today']) or '-'}",
           f"- Ad Insight volume: {log['msvolume']}",
           f"- Coverage: {log['supply']['unscored_over_min']} clusters >= {MIN_SEARCHES} searches unscored before today; read today: {log['supply']['read'] or 'none'}",
-          f"- Queued for pages (coverage < {GATE}): {len(log['queued'])}", *[f"  - {x}" for x in log["queued"]], "",
+          f"- Queued for pages (coverage < {GATE_BY_SOURCE.get('claude', GATE)} on Claude): {len(log['queued'])}", *[f"  - {x}" for x in log["queued"]], "",
           "## Free sources, used / cap", "", "```", log["sources"], "```"]
     (d / f"{log['date']}.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
@@ -1222,7 +1229,7 @@ def main() -> None:
     ap.add_argument("--calib", type=int, default=3000, help="msvolume: extra Webmaster-counted queries fetched for calibration")
     ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--force", action="store_true", help="seeds: redo brands already widened")
-    ap.add_argument("--sources", default="serpapi,bing", help="daily: coverage sources allowed, by priority")
+    ap.add_argument("--sources", default="claude", help="daily: coverage sources allowed, by priority (Claude only since 11-06, DLC-190)")
     ap.add_argument("--source", default="claude", help="srccal/supply: free SERP source (growth/evals/serpsources.py)")
     ap.add_argument("--ref", default="bing", help="srccal: reference source (default: the Agent Chrome Bing readings)")
     ap.add_argument("--pool", default="bing", choices=["bing", "backlog", "both"], help="srccal: Bing-scored set, unscored backlog, or both")
