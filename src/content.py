@@ -19,7 +19,7 @@ def PAGES(S):
 <p class="small">New comparison: <a href="/iphone-17-25w-wireless-charger">which wireless charger gets an iPhone 17 the full 25W</a>, with the 30W adapter rule and why an old MagSafe or Qi2 charger stops at 15W.</p>
 <p class="small">New comparison: <a href="/best-2kwh-power-station-for-rv">the best 2kWh portable power station for an RV under $900</a>, with what a 30-amp RV plug really gets.</p>
 <p class="small">Solar generator kits: <a href="/solar-generator-with-panels-included">the best solar generator with panels included</a>, 15 portable power station and solar panel kits compared on battery, inverter, panel watts and price.</p>
-<p class="small">Also compared: <a href="/best-solar-generator-for-power-outages">the best solar generator for power outages and home backup</a> (capacity, expandable batteries, solar charging), <a href="/best-power-banks-for-flying">the best power banks for flying</a> (the airline rules, picks under 100 Wh) and <a href="/tesla-model-y-back-seat-screen">every Tesla Model Y back-seat screen option by model year</a>.</p>
+<p class="small">Also compared: <a href="/best-solar-generator-for-power-outages">the best solar generator for home use and backup</a> (capacity, expandable batteries, solar charging), <a href="/best-power-banks-for-flying">the best power banks for flying</a> (the airline rules, picks under 100 Wh) and <a href="/tesla-model-y-back-seat-screen">every Tesla Model Y back-seat screen option by model year</a>.</p>
 <p class="small">Screens and watches: <a href="/best-triple-screen-laptop-extender-for-macbook-air">the best triple screen laptop extender for a MacBook Air</a> (which work on an M1, M2 or M3), <a href="/best-portable-monitor-above-laptop-screen">the best portable monitor that sits above a laptop screen</a>, <a href="/best-watch-for-hyrox-under-150">the best watch for HYROX under $150</a>, <a href="/best-smartwatch-for-iphone-two-week-battery">the best smartwatch for iPhone with two weeks of battery</a> and <a href="/best-golf-watch-under-300-with-fitness-tracking">the best golf watch under $300 that is also a fitness tracker</a>.</p>
 
 <h2>Every code that worked, product by product (last cart test {S['codes_checked']})</h2>
@@ -166,7 +166,7 @@ def PAGES(S):
 
 <h2>5. UPS / pass-through</h2>
 <p>If the unit will sit between the wall and a device that must not lose power (modem, CPAP, aquarium), look for a stated <strong>UPS switchover time</strong> — typically under 20 ms for consumer units, which is fast enough for most electronics but is not a certified online UPS. Pass-through charging (powering devices while the unit itself charges) is common but check that it is supported on the ports you need.</p>
-<p class="small">For power outages and home backup: <a href="/best-solar-generator-for-power-outages">the best solar generator for power outages</a>, compared on capacity, expandable batteries and solar charging.</p>
+<p class="small">For power outages and home backup: <a href="/best-solar-generator-for-power-outages">the best solar generator for home use and power outages</a>, compared on capacity, expandable batteries and solar charging.</p>
 
 <h2>6. Ports and expandability</h2>
 <p>Count AC outlets and their total, USB-C ports and their wattage (100 W PD ports are now standard on mid-range units; 140 W PD 3.1 ports appear on premium models), and 12 V DC outputs. Larger models accept expansion batteries, sometimes doubling or tripling capacity; verify the expansion battery's price and availability before relying on that path.</p>
