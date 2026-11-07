@@ -47,6 +47,7 @@ CATEGORIES = {
     "bird-feeder-camera": ('Bird feeder cameras', 'Smart bird and hummingbird feeders with a built-in camera, app alerts and species ID.'),
     "waterproof-camera": ('Waterproof cameras', 'Rugged compact and action cameras that shoot underwater without a separate housing.'),
     "inverter": ('Inverters', 'Inverter chargers and hybrid solar inverters that turn battery power into household AC for off-grid cabins, homes and backup.'),
+    "video-doorbell": ('Video doorbells', 'Battery and wired doorbell cameras that record visitors and packages, with or without a subscription.'),
 }
 
 PRODUCTS = [
@@ -2700,6 +2701,42 @@ PRODUCTS = [
  "summary": 'A blue-laser scanner for black and shiny mechanical parts: 0.03 mm accuracy, 10 mm minimum object, and cross-line laser modes that reviewers found handle shiny metal without spray.',
  "fit": 'Makers reverse-engineering brackets, car parts and machined pieces into CAD, where crisp edges matter more than color.',
  "caveats": ["Both laser modes need reflective markers on or around the part; owners report 'need more markers' errors and marker prep that takes longer than the scan.", 'Full-field structured-light mode still needs scanning spray on black or glossy surfaces.', 'Tethered: 508 g in hand plus a USB cable and a wall power brick, so it is a desk scanner, not a walk-around one.', 'Marker-free feature tracking in full-field mode is weak on plain shapes; one owner thread calls it terrible.']},
+
+{"slug": 'aosu-video-doorbell-pro',
+ "brand": 'AOSU',
+ "program": 'awin:aosu',
+ "category": 'video-doorbell',
+ "name": 'AOSU Video Doorbell Pro, 2K, battery, with aosuBase Mini chime and local-storage hub',
+ "model": 'Video Doorbell Pro (V8P)',
+ "url": 'https://www.aosulife.com/products/video-doorbell-pro',
+ "official_page": 'https://www.aosulife.com/products/video-doorbell-pro',
+ "price": 95.99,
+ "list_price": 139.99,
+ "verified": '2026-11-06',
+ "specs": [('Resolution', '2K'), ('Field of view', '166° diagonal (133° horizontal, 103° vertical, 4:3 head-to-toe frame)'), ('Battery', 'Built-in, USB-C charged (about 6 hours to full); maker claims up to 180 days, its manual says 4 to 6 months at about 10 twenty-second events a day'), ('Recording', 'Clips saved to a microSD card in the indoor aosuBase Mini (up to 128 GB; card not included); no subscription needed for recording, playback, alerts or two-way talk'), ('In the box', 'Doorbell, aosuBase Mini (indoor chime, Wi-Fi extender and recorder), mounting bracket, USB-C cable, screws, security sticker'), ('Wi-Fi', '2.4 GHz only (802.11 b/g/n)'), ('Detection', 'PIR plus AI human detection, with motion zones and sensitivity settings'), ('Weather rating', 'IP65, 14°F to 131°F'), ('Smart home', 'Amazon Alexa and Google Assistant; no HomeKit, Matter or RTSP')],
+ "warranty": '12 months (AOSU advertises a 365-day warranty)',
+ "returns": '30 days from delivery in original, unused condition; buyer pays return shipping. The site banner currently says returns are extended to 60 days.',
+ "summary": 'The cheapest no-fee doorbell we found that keeps its recordings inside the house: the included aosuBase Mini plugs in indoors and acts as the chime, the Wi-Fi bridge and the recorder, so a stolen doorbell does not take the footage with it.',
+ "fit": 'Homes that want a chime and indoor recording in one box for under $100 and will not pay a monthly plan. Best when the base can sit between the router and the door.',
+ "caveats": ['You must add a microSD card (up to 128 GB) to the base before it records anything.', '2.4 GHz Wi-Fi only; keep the base within a room or two of the door.', "The 180-day battery claim assumes 3 to 5 short events a day; AOSU's forum shows owners getting about 2 months at busy doors.", 'Battery only; it does not take doorbell wiring.', 'Package and familiar-face detection are paid cloud features; person detection is free.']},
+
+{"slug": 'aosu-video-doorbell-r1-ultra',
+ "brand": 'AOSU',
+ "program": 'awin:aosu',
+ "category": 'video-doorbell',
+ "name": 'AOSU Video Doorbell R1 Ultra, 5MP, radar + PIR + AI detection, with aosuBase Mini',
+ "model": 'Video Doorbell R1 Ultra',
+ "url": 'https://www.aosulife.com/products/video-doorbell-r1-ultra',
+ "official_page": 'https://www.aosulife.com/products/video-doorbell-r1-ultra',
+ "price": 135.99,
+ "list_price": 199.99,
+ "verified": '2026-11-06',
+ "specs": [('Resolution', '5MP UHD with enhanced WDR'), ('Field of view', '166°, 4:3 head-to-toe frame'), ('Battery', 'Rechargeable; maker claims up to 180 days, varies with usage and settings; can also be hardwired'), ('Recording', 'Clips saved to the included aosuBase Mini indoors, 60-day loop recording, no subscription needed'), ('Detection', 'PIR, 24 GHz radar and AI combined, plus pry (tamper) detection'), ('In the box', 'Doorbell and aosuBase Mini (indoor chime, Wi-Fi extender and recorder)'), ('Weather rating', 'IP65'), ('Smart home', 'Amazon Alexa and Google Assistant; no HomeKit, Matter or RTSP')],
+ "warranty": '12 months (AOSU advertises a 365-day warranty)',
+ "returns": '30 days from delivery in original, unused condition; buyer pays return shipping. The site banner currently says returns are extended to 60 days.',
+ "summary": "AOSU's sharper doorbell adds a radar sensor to the usual PIR and AI, which is the hardware answer to the nuisance-alert complaint, and it can run on doorbell wiring. Storage is built into the indoor base with a 60-day loop.",
+ "fit": 'Busy doors near a sidewalk or road where shadows, cars and passers-by trigger PIR-only doorbells, and owners who want the base storage without buying a card.',
+ "caveats": ['Costs $40 more than the Pro; the extra buys radar detection, 5MP and wired power, not more battery.', 'Some owners report battery life well under the claim and one hardwired unit that stopped charging after two years.', 'Package and familiar-face detection need the paid cloud plan.', 'No HomeKit, Matter or RTSP, so it cannot feed Home Assistant or an NVR.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
