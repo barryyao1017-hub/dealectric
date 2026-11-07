@@ -2787,6 +2787,23 @@ PRODUCTS = [
  "fit": 'Budget PC, Steam Deck or Switch players who want drift-free Hall sticks and do not need quiet buttons.',
  "caveats": ['Standard clicky buttons; this is not the quiet model.', "750 mAh battery, smaller than the X05 Pro's.", 'No trigger lock and no programmable top buttons.', 'Does not work on Xbox or PlayStation consoles.']},
 
+{"slug": 'eksa-fenrir-s',
+ "brand": 'EKSA',
+ "program": 'awin:eksa',
+ "category": 'headphones',
+ "name": 'EKSA Fenrir S Wired Gaming Headset for Xbox, 50 mm drivers, 3.5 mm',
+ "model": 'Fenrir S (E7000)',
+ "url": 'https://www.eksa.net/products/eksa-fenrir-s-gaming-headset-for-ps4-ps5-pc-xbox-one-computer',
+ "official_page": 'https://www.eksa.net/products/eksa-fenrir-s-gaming-headset-for-ps4-ps5-pc-xbox-one-computer',
+ "price": 36.99,
+ "verified": '2026-11-06',
+ "specs": [('Connection', '3.5 mm 4-pole plug into the Xbox controller jack; USB-A plug powers the green ear-cup LEDs only'), ('Drivers', '50 mm dynamic, 32 ohm'), ('Weight', '10.7 oz with cable, 9.4 oz without (reviewer measurement of the E7000)'), ('Cable', 'About 6 ft, fabric-covered, fixed to the left ear cup; Y-splitter included for PC'), ('Microphone', 'Cardioid boom, rotates 120 degrees, fixed; mute switch on the ear cup'), ('Battery', 'None needed'), ('Works with', 'Xbox Series X|S, Xbox One (controllers with a 3.5 mm jack), PS5, PS4, PC, Switch, phones')],
+ "warranty": "Not confirmed: EKSA's warranty page did not load on 2026-11-06. The EKSA E1000 manual states 2 years, so ask EKSA before relying on it.",
+ "returns": "30 days, unused and in original packaging; buyer pays return shipping to EKSA's address in Shenzhen, China; sale items are not refundable",
+ "summary": 'A wired over-ear headset that plugs straight into the Xbox controller. Xbox Tavern scored the same design (sold as the E7000) 8.2 and praised the mic and the ear-cup comfort.',
+ "fit": 'Shoppers who want a cheap headset that works on any Xbox the moment it is plugged in, with no pairing, no charging and no dongle to lose.',
+ "caveats": ['The cable and the mic are fixed, so a broken cable means a new headset.', 'The USB plug only lights the LEDs; it carries no audio, and the LEDs will not light from a controller.', 'The mute switch has no status light, and lifting the boom does not mute it.', "Older Xbox One controllers without a 3.5 mm jack need Microsoft's Stereo Headset Adapter.", 'Returns ship to China at your cost, so check fit and mic within the 30-day window.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
