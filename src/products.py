@@ -3890,6 +3890,22 @@ PRODUCTS = [
  "fit": '16-inch MacBook Pro owners and anyone with a laptop rated above 100 W over USB-C who wants a smaller brick that also charges a phone.',
  "caveats": ["Only USB-C1 delivers 140 W, and only with a cable marked 240 W; a 16-inch MacBook Pro needs Apple's USB-C to MagSafe 3 cable for 140 W", 'No cable in the box', 'Two laptops at once get 65 W each', 'Few independent tests; owner reviews say it runs warm at full load']},
 
+{"slug": 'redodo-12v-50ah-bluetooth-trolling-motor-battery',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "category": 'lithium-battery',
+ "name": 'Redodo 12V 50Ah Bluetooth LiFePO4 Battery for Trolling Motors up to 70 lb Thrust',
+ "model": '12V 50Ah Bluetooth',
+ "url": 'https://www.redodopower.com/products/12v-50ah-smart-bluetooth-lithium-battery',
+ "price": 179.99,
+ "verified": '2026-11-06',
+ "specs": [('Energy', '640 Wh (12.8 V, 50 Ah), 100% usable'), ('Weight', '11.27 lb'), ('Max continuous discharge', '60 A for up to 30 minutes (store spec)'), ('Motor fit', '12 V trolling motors of 30 to 70 lb thrust'), ('Monitoring', 'Bluetooth 5.0 app: remaining capacity, cycle count, voltage, current'), ('Low-temperature protection', 'Charging stops below 32°F'), ('Cycle life', '4,000+ cycles, EV grade-A LiFePO4 cells'), ('Expansion', 'Up to 4 in parallel and 4 in series (10.24 kWh)'), ('Certifications', 'FCC, CE, RoHS, UN38.3; meets ABYC marine standards')],
+ "warranty": '5-year warranty (Redodo policy for batteries rated 50 Ah and larger)',
+ "returns": '30-day returns; Redodo pays return shipping only for defective, damaged or delayed orders',
+ "summary": 'The lightest honest option for a kayak or canoe trolling motor: 640 Wh in an 11.27 lb pack with a Bluetooth charge readout and a cold-charge lockout, for 12 V motors up to 70 lb thrust.',
+ "fit": 'Kayak and canoe anglers running a 30 to 40 lb motor for a few hours, or a 55 lb motor mostly at low speed. Not enough for a full day of full-throttle running.',
+ "caveats": ['About 1 hour at full throttle on a 55 lb motor (50 A draw); 2 to 3 hours at half speed.', 'The 60 A limit is rated for 30 minutes; a 55 lb motor at full throttle sits close to it.', 'Needs a 14.6 V LiFePO4 charger; a lead-acid charger will not fill it.', 'Will not accept a charge below 32°F, so charge it indoors in winter.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
