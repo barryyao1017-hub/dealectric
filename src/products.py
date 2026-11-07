@@ -45,6 +45,7 @@ CATEGORIES = {
     "smart-plug": ('Smart plugs', 'Plug-in outlets you switch, dim or schedule from a hub or app, indoors or outdoors.'),
     "pen-tablet": ('Pen tablets', 'Screenless drawing tablets you use with a monitor for retouching, illustration and design.'),
     "bird-feeder-camera": ('Bird feeder cameras', 'Smart bird and hummingbird feeders with a built-in camera, app alerts and species ID.'),
+    "waterproof-camera": ('Waterproof cameras', 'Rugged compact and action cameras that shoot underwater without a separate housing.'),
 }
 
 PRODUCTS = [
@@ -2463,6 +2464,24 @@ PRODUCTS = [
  "summary": 'The lower-cost Birdfy standalone camera: 2K video, a 5,200 mAh battery with a separate solar panel, and the same free lifetime bird ID and 30-day cloud as the 4K model.',
  "fit": 'Budget buyers with a 2.4 GHz network who want bird ID on an existing feeder and do not need 4K clips.',
  "caveats": ['2.4 GHz Wi-Fi only; it will not join a 5 GHz-only network.', 'The solar panel is a separate unit with a cable, so it needs its own sunny spot and a second mount.', 'IP65 rather than IP66; keep the charging port cover closed.', 'Same cloud-only storage as the 4K model: clips are deleted after 30 days unless saved.']},
+
+{"slug": 'om-system-tough-tg-7',
+ "brand": 'OM System',
+ "program": 'awin:omdigital',
+ "category": 'waterproof-camera',
+ "name": 'OM System Tough TG-7 Waterproof Camera, 12 MP, f/2.0 25–100 mm, Black',
+ "model": 'TG-7 (V110030BU000)',
+ "url": 'https://explore.omsystem.com/us/en/tg-7-black',
+ "official_page": 'https://explore.omsystem.com/us/en/tg-7',
+ "price": 579.99,
+ "list_price": 649.99,
+ "verified": '2026-11-06',
+ "specs": [('Waterproof', '50 ft (15 m) with no housing; IPX8'), ('Shockproof / crushproof / freezeproof', '6.9 ft (2.1 m) drop; 220 lb (100 kg); 14 °F (−10 °C)'), ('Sensor', '12 MP 1/2.3-inch BSI CMOS, sensor-shift stabilization'), ('Lens', '25–100 mm equivalent, f/2.0–4.9, 4× optical zoom'), ('Closest focus', '0.4 in (1 cm) in Microscope mode; 3.9 in (10 cm) normal'), ('Video', '4K at 30p; Full HD up to 120p; vertical video'), ('Still formats', 'RAW + JPEG; 20 fps burst'), ('Battery', 'LI-92B, about 330 shots per charge; USB-C charging'), ('Connectivity', 'Wi-Fi, Bluetooth, GPS, OI.Share app'), ('Weight', '8.8 oz (249 g) with battery and card'), ('Colors', 'Black or Red, same price')],
+ "warranty": '1-year manufacturer warranty; optional PROTECT plan adds 2 years',
+ "returns": '30 days from delivery on the OM System US store; buyer pays return shipping',
+ "summary": 'The rugged compact most snorkelers and divers pick for still photos: a bright f/2.0 lens, RAW capture, an underwater white-balance preset and a Microscope mode that focuses 0.4 in from the glass, all waterproof to 50 ft with no case.',
+ "fit": 'Snorkelers and shallow divers who want sharp photos of fish, coral and tiny reef life, and a camera that also survives hikes, beaches and kids.',
+ "caveats": ['Small 1/2.3-inch sensor: noisy below 20 ft or in murky water without a light.', 'Battery is rated for about 330 shots and drains fast with GPS on or in cold water; carry a spare.', 'Cannot shoot while charging over USB-C.', 'Video is behind GoPro and DJI action cameras; 4K tops out at 30 fps.', 'Screen is not touch-sensitive and is hard to read in direct sun.', 'Scuba past 50 ft needs the optional PT-059 housing.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
