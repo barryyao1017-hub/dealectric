@@ -2,7 +2,11 @@
 """Weekly price and stock check (DLC-9): read every Shopify product record's live price and availability from the
 store's /products/<handle>.js and list what differs from src/products.py. Read-only; it never edits the records.
 
-    python3.12 tools/pricecheck.py [--out growth/codes/<date>-prices.json] [slug ...]
+    python3.12 tools/pricecheck.py [--out growth/codes/<date>-prices.json] [--stock-out src/stock.json] [slug ...]
+
+--stock-out (DLC-201; the daily cart sweep runs it) writes {"date", "in_stock": {slug: bool}} for every record it could
+read. build.py lets that read override a record's in_stock, so a sold-out product's /go/ link opens its sold_out_alt
+and switches back by itself the day the store has it again. A record it could not read keeps its products.py value.
 
 The variant is the one the record names (?variant= in its URL, else cart_variant), else the first available one, the
 same rule the cart sweep uses. A store that answers 429 to this network (iallpowers.com and esrtech.com do to the work
@@ -81,8 +85,8 @@ def check(p: dict) -> dict:
 def main(argv: list[str]) -> int:
     args = [a for a in argv if not a.startswith("--")]
     outp = argv[argv.index("--out") + 1] if "--out" in argv else None
-    if outp:
-        args = [a for a in args if a != outp]
+    stockp = argv[argv.index("--stock-out") + 1] if "--stock-out" in argv else None
+    args = [a for a in args if a not in (outp, stockp)]
     rows = []
     for p in PRODUCTS:
         if args and p["slug"] not in args:
@@ -96,6 +100,13 @@ def main(argv: list[str]) -> int:
         time.sleep(1.5)
     if outp:
         Path(outp).write_text(json.dumps({"date": _dt.date.today().isoformat(), "rows": rows}, indent=1))
+    if stockp:
+        read = {r["slug"]: r["live_available"] for r in rows if "live_available" in r}
+        # UTC date, like the sweep's own date and VERIFIED comparisons in build.py
+        Path(stockp).write_text(json.dumps({"date": _dt.datetime.now(_dt.timezone.utc).date().isoformat(),
+                                            "in_stock": dict(sorted(read.items()))}, indent=1) + "\n")
+        flips = [f"{r['slug']} {'back in stock' if r['live_available'] else 'sold out'}" for r in rows if r.get("stock_diff")]
+        print(f"stock: {len(read)} read, {len(rows) - len(read)} unread; differs from products.py: {', '.join(flips) or 'none'}")
     return 0
 
 

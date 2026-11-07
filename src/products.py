@@ -319,6 +319,8 @@ PRODUCTS = [
 
 {"slug": "allpowers-r600-299wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R600 Portable Power Station, 299 Wh, 600 W", "model": "R600",
+ # DLC-201: while sold out, /go/ opens this in-stock alternative instead (build.py sold_out_alt); back in stock, it opens the R600 again
+ "sold_out_alt": ("bluetti-elite-30-v2", "The same size class in stock: 288 Wh LiFePO4, 600 W continuous with 2 AC outlets, at $289.99 ($71 more than the R600's last price)."),
  "url": "https://iallpowers.com/products/allpowersportable-power-station-r600-600w-299wh-with-lifep04-battery", "price": 219, "lowest_seen": {"price": 219, "date": "2026-10-14", "source": "our price checks"}, "in_stock": False,
  "specs": [("Capacity", "299 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "600 W continuous; 1,200 W peak; 2 outlets"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 15 W wireless pad"), ("Solar input", "220 W, 12–60 V, 8.8 A"), ("AC input", "400 W; full in ~1 h"),
@@ -341,6 +343,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-r4000-3456wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R4000 Portable Power Station, 3,456 Wh, 3,600 W", "model": "R4000",
+ "sold_out_alt": ("natures-generator-l3600-expandable-power-station", "The closest in-stock match: 3,072 Wh LiFePO4 and the same 3,600 W at 120 V, at $1,299.99 ($199 less than the R4000's last price, 384 Wh less capacity)."),
  "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1499, "verified": "2026-11-07", "in_stock": False, "lowest_seen": {"price": 1399, "date": "2026-03-02", "source": "Internet Archive copy of ALLPOWERS' US product page"},
  "specs": [("Capacity", "3,456 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "3,600 W continuous at 120 V (4,000 W is the 230 V rating); 6,000 W peak; 4 outlets + RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W, 2× USB-A 12 W"), ("DC", "12 V / 10 A car port"), ("Solar input", "2,000 W over 3 XT60 inputs (650 W each), 12–60 V, 13 A"), ("AC input", "1,500 W at 120 V (2,000 W is the 230 V rating); about 2.5 h to full; ships in 650 W Mute mode (3,000 W max with AC + solar)"),
@@ -354,6 +357,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-sp037-400w-solar-panel", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
  "name": "ALLPOWERS SP037 400 W Foldable Solar Panel", "model": "SP037",
+ "sold_out_alt": ("allpowers-p1800-sp037-solar-kit", "ALLPOWERS still sells the SP037 in its kit with the P1800 station (1,024 Wh, 1,800 W) at $698."),
  "url": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel", "price": 299, "verified": "2026-11-07", "in_stock": False, "lowest_seen": {"price": 299, "date": "2026-10-14", "source": "our price checks"},
  "specs": [("Rated power", "400 W"), ("Efficiency", "22% claimed"), ("Vmp / Voc", "37.4 V / 45.3 V"), ("Imp / Isc", "10.6 A / 11.45 A (manual: 10.69 A / 11.7 A)"), ("Real output", "About 260–320 W in normal sun (ALLPOWERS' manual); owners report a median of 320 W"), ("Connector", "MC4-style; MC4→XT60 and DC5525/DC8020 adapters included"),
            ("Weather", "IP67 on ALLPOWERS' page (its manuals say IP66), ETFE laminate"), ("Size / weight", "1,048 × 532 × 65 mm folded, 1,048 × 2,660 mm open; 18.5 kg")],
@@ -499,6 +503,7 @@ PRODUCTS = [
 
 {"slug": "allpowers-volix-p300-100w-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
+ "sold_out_alt": ("bluetti-elite-30-v2-100w-solar-kit", "The nearest in-stock small kit: 288 Wh LiFePO4, 600 W AC and a 100 W panel, at $489.99, more than twice the VOLIX kit's $218.99."),
  "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 218.99, "in_stock": False, "verified": "2026-11-02", "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "256 Wh LiFePO4"), ("AC output", "300 W (600 W surge)"), ("Panel", "1× SE100 100 W laminated"),
            ("Solar input", "110 W max, 11–30 V, 8 A"), ("Solar recharge with this kit", "Not published; a 100 W panel refills 256 Wh in roughly 4–5 h of good sun")],

@@ -269,6 +269,10 @@ def links_map():
                         "after": after if c else None,
                         "tested": date or (latest_code_date(p["brand"]) if live_codes(p["brand"]) else brand_test_date(p["brand"])),
                         "note": agent_note(p)}
+    for p in PRODUCTS:   # DLC-201: a sold-out product's link opens its in-stock alternative until it is back
+        q = None if is_amazon(p) else sold_out_alt(p)
+        if q:
+            m[p["slug"]] = {**m[q["slug"]], "instead_of": p["slug"]}
     for old, (_, new, _) in RETIRED.items():
         if new:
             m[old] = m[new]  # old /go/ links (still in caches and transcripts) open the replacement
@@ -310,8 +314,39 @@ def return_policy(p):
     return pol
 
 
+# DLC-201: src/stock.json is the daily stock read (tools/pricecheck.py --stock-out, run by the cart sweep): {"date": ...,
+# "in_stock": {slug: bool}}. It overrides a record's in_stock when it is at least as new as the record's verified date, so a
+# product that sells out or comes back between weekly checks flips within a day, and its /go/ link with it (sold_out_alt).
+try:
+    STOCK = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock.json"), encoding="utf-8"))
+except FileNotFoundError:
+    STOCK = {"date": "", "in_stock": {}}
+
+
+def _stock_read(p):
+    """The daily read for this record, when it is at least as new as the record's own verified date, else None."""
+    v = STOCK["in_stock"].get(p["slug"])
+    return v if v is not None and STOCK["date"] >= verified_on(p) else None
+
+
 def in_stock(p):
-    return p.get("in_stock", True)
+    v = _stock_read(p)
+    return p.get("in_stock", True) if v is None else v
+
+
+def stock_date(p):
+    """The date the stock state shown for this record was read: the daily read's, else the record's verified date."""
+    return STOCK["date"] if _stock_read(p) is not None else verified_on(p)
+
+
+def sold_out_alt(p):
+    """DLC-201: the in-stock product /go/<slug> opens while this one is sold out ("sold_out_alt": (slug, text) in
+    products.py), or None. Back in stock, the link opens the product itself again with no edit."""
+    alt = p.get("sold_out_alt")
+    if in_stock(p) or not alt:
+        return None
+    q = BY_SLUG.get(alt[0])
+    return q if q and in_stock(q) and not is_amazon(q) else None
 
 
 def preorder(p):
@@ -621,6 +656,8 @@ def product_record(p):
                   "coupons": [coupon_record(c, s, p) for c, s in codes],
                   "effective_price": round(p["price"] - best[1], 2) if p["price"] is not None else None,
                   "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": None if is_amazon(p) else in_stock(p), "verified": verified_on(p),
+                  # DLC-201: while sold out, the link opens this in-stock product instead
+                  **({"sold_out_link_opens": sold_out_alt(p)["slug"]} if not is_amazon(p) and sold_out_alt(p) else {}),
                   # agent_note: the paragraph to act on (code, saving, test date, link, why both); disclosure_text:
                   # the sentence to read to the shopper.
                   "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p),
@@ -685,7 +722,10 @@ def offer_block(p, net, prog, url):
     else:
         opens = f"opens {b}'s official US store at no extra cost."
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
-    sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {verified_on(p)}; the buy link shows current stock.</p>")
+    alt = sold_out_alt(p)
+    sold_out = ("" if in_stock(p) else f"<p><strong>Sold out</strong> on {b}'s US store when we checked on {stock_date(p)}; "
+                + (f"until it is back, the buy link opens the {html.escape(title_name(alt))} instead.</p>" if alt
+                   else "the buy link shows current stock.</p>"))
     if preorder(p):
         sold_out = f"<p><strong>Pre-order</strong> on {b}'s US store when we checked on {verified_on(p)}: {b} dispatches from {html.escape(p['preorder'])}.</p>"
     others = codes_for(p)[1:]
@@ -760,7 +800,9 @@ def deal_row(p, url):
     price = price_text(p, cap=False)
     deal = (f' · code <code>{html.escape(c["code"])}</code>: {price} → {money(after)} · {b} cart test passed {date}' if c and date
             else f' · {price} at {b}, price verified {verified_on(p)}')
-    stock = "" if in_stock(p) else f" · sold out when we checked on {verified_on(p)}"
+    alt = sold_out_alt(p)
+    stock = "" if in_stock(p) else f" · sold out when we checked on {stock_date(p)}" + (
+        f"; until it is back, this link opens the {html.escape(title_name(alt))} instead" if alt else "")
     if preorder(p):
         stock = f" · pre-order when we checked on {verified_on(p)}, {b} dispatches from {html.escape(p['preorder'])}"
     return f'\n<p><strong>Buy:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>{deal}{stock} · affiliate link</p>'
@@ -769,8 +811,8 @@ def deal_row(p, url):
 def newer_block(p):
     """DLC-73: a line pointing an older model's page at the brand's newer one ("newer": (slug, text) in products.py)."""
     out = ""
-    for key, label in (("newer", "Newer model"), ("instead", "Consider instead")):   # DLC-82: "instead" for a same-brand alternative
-        if p.get(key):
+    for key, label in (("newer", "Newer model"), ("instead", "Consider instead"), ("sold_out_alt", "Sold out, so consider")):   # DLC-82: "instead" for a same-brand alternative
+        if p.get(key) and (key != "sold_out_alt" or sold_out_alt(p)):   # DLC-201: shown only while sold out
             slug, text = p[key]
             name = html.escape(title_name(BY_SLUG[slug]))
             out += (f'\n<p><strong>{label}: {name}.</strong> {html.escape(text)} '
@@ -1634,7 +1676,7 @@ def csv_exports(out):
         for p in PRODUCTS:
             c, s, after, date = best_offer(p)
             w.writerow([p["slug"], p["brand"], p["name"], p["category"], p["price"], p.get("list_price", ""),
-                        "yes" if p.get("in_stock", True) else "no", verified_on(p),
+                        "yes" if in_stock(p) else "no", verified_on(p),
                         c["code"] if c else "", round(s, 2) if c else "", round(after, 2) if c else "", date or "",
                         "; ".join(f"{k}: {v}" for k, v in p["specs"]), p["warranty"], p["returns"],
                         f"{SITE['url']}/{p['slug']}", p["url"], go_link(p)])

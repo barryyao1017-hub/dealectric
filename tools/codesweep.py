@@ -652,6 +652,20 @@ def check_links(today: str, cmd: list[str] | None = None, timeout: float = LINKC
 
 # ---------------------------------------------------------------- publish
 
+def read_stock() -> str:
+    """DLC-201: re-read every Shopify record's stock into src/stock.json before the rebuild, so a product that sold out
+    since the weekly check sends its /go/ clicks to its sold_out_alt, and one that is back opens itself again. Never
+    raises: on a failure the previous stock.json stays and the build uses it."""
+    try:
+        r = sh([sys.executable, "tools/pricecheck.py", "--stock-out", "src/stock.json"], timeout=1500)
+    except Exception as e:  # noqa: BLE001
+        log(f"stock read: {type(e).__name__}: {e}; previous stock.json kept")
+        return ""
+    line = next((l for l in reversed(r.stdout.splitlines()) if l.startswith("stock:")), "")
+    log(line or f"stock read failed (exit {r.returncode}): {r.stderr.strip()[-300:]}")
+    return line
+
+
 def sh(cmd: list[str], timeout: float = 600, **kw) -> subprocess.CompletedProcess:
     """Run a command in the repo; one that hangs (a push waiting on credentials, say) fails after `timeout` seconds."""
     log("$ " + " ".join(cmd))
@@ -688,7 +702,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         raise SystemExit(f"build failed: {r.stderr[-800:]}")
     log(r.stdout.strip().splitlines()[-1])
     map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
-    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
+    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
     index_urls = indexnow_urls(st)   # DLC-87: decided against HEAD, before this run's commit
     if not st.strip():
         log("nothing changed; no commit")
@@ -699,7 +713,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
     import docsguard   # DLC-149: never stage a missing, truncated or duplicated docs/
     docsguard.check(str(ROOT))
     # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
-    sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
+    sh(["git", "add", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
            + (f"; {summary['unanswered']} unanswered (429 or error, not rejections)" if summary.get("unanswered") else "")
@@ -732,7 +746,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         if r.returncode != 0:
             raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
         docsguard.check(str(ROOT))
-        sh(["git", "add", "src/coupons.json", "docs", "worker/src/links-map.json", "growth/codes"])
+        sh(["git", "add", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"])
         r = sh(["git", "commit", "-q", "-m", msg])
         if r.returncode != 0:
             raise SystemExit(f"commit on top of main failed: {r.stderr[-400:]}")
@@ -791,6 +805,9 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         log(f"linkcheck hook: {type(e).__name__}: {e}; the sweep continues")
         links = "links: check failed (see the sweep log)"
+    stock = read_stock()
+    if stock:
+        links = (links + "\n\n" if links else "") + stock
     publish(today, summary, push=not args.no_push, deploy=not args.no_deploy, links=links)
     return 0
 
