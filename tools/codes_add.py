@@ -46,7 +46,7 @@ def main() -> int:
     import products as P
     importlib.reload(P)
     have = {p["slug"]: p for p in P.PRODUCTS}
-    keys = sys.argv[1:] or [f.stem for f in DRAFTS.glob("brand-*.json")]
+    keys = sys.argv[1:] or [f.stem for f in DRAFTS.glob("*.json") if '"codes"' in f.read_text()]
     today = _dt.date.today().isoformat()
     log = ROOT / f"growth/codes/{today}-checks.jsonl"
     cp = json.loads(COUPONS.read_text())

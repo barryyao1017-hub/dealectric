@@ -112,7 +112,7 @@ def main(logs):
             c["result"] = "inconclusive"
         else:
             c["result"] = "works" if any(t["discount"] > 0 for t in c["tests"]) else "rejected"
-    order = {"works": 0, "rejected": 1, "inconclusive": 2}
+    order = {"works": 0, "rejected": 1, "inconclusive": 2, "pending": 3}   # pending: added untested (DLC-192), first sweep decides
     data["codes"].sort(key=lambda c: (order[c["result"]], not c.get("publish"), c["brand"], c["code"].upper()))
     with open(path, "w") as f:
         f.write('{\n "_notes": ' + json.dumps(data["_notes"], ensure_ascii=False) + ',\n "checked": ' + json.dumps(data["checked"]) + ',\n "codes": [\n')

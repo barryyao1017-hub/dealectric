@@ -234,7 +234,9 @@ def browser_ok() -> str | None:
 # ---------------------------------------------------------------- what to check
 
 def live_published(codes: list[dict], today: str) -> list[dict]:
-    return [c for c in codes if c.get("publish") and c.get("result") == "works" and not (c.get("expires") and c["expires"] < today)]
+    """Published codes to re-test, plus "pending" ones (network- or brand-issued codes added untested, 2026-11-06, DLC-192):
+    the site shows a pending code nowhere; its first sweep with an answer makes it works (shown) or rejected."""
+    return [c for c in codes if c.get("publish") and c.get("result") in ("works", "pending") and not (c.get("expires") and c["expires"] < today)]
 
 
 def in_scope(c: dict, p: dict) -> bool:
@@ -254,6 +256,8 @@ def plan_checks(codes: list[dict]) -> list[dict]:
         qty = int(c.get("min_qty") or 1)
         for p in PRODUCTS:
             if not in_scope(c, p):
+                continue
+            if "/products/" not in p["url"]:   # not a Shopify product URL (EarFun, K&F, Xencelabs: 11-06); the cart check can't run
                 continue
             if c.get("min_order") and p["price"] * qty < c["min_order"]:
                 continue
