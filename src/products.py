@@ -2738,6 +2738,22 @@ PRODUCTS = [
  "fit": 'Busy doors near a sidewalk or road where shadows, cars and passers-by trigger PIR-only doorbells, and owners who want the base storage without buying a card.',
  "caveats": ['Costs $40 more than the Pro; the extra buys radar detection, 5MP and wired power, not more battery.', 'Some owners report battery life well under the claim and one hardwired unit that stopped charging after two years.', 'Package and familiar-face detection need the paid cloud plan.', 'No HomeKit, Matter or RTSP, so it cannot feed Home Assistant or an NVR.']},
 
+{"slug": 'ugreen-145w-25000mah-3-port-power-bank',
+ "brand": 'UGREEN',
+ "program": 'cj:ugreen',
+ "category": 'power-bank',
+ "name": 'UGREEN 145W 25000mAh 3-Port Power Bank (PD 3.1, 140 W single port)',
+ "model": 'PB205 (90597A)',
+ "url": 'https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop',
+ "price": 79.99,
+ "verified": '2026-11-06',
+ "specs": [('Capacity', '25,000 mAh (90 Wh), under the 100 Wh airline carry-on limit'), ('Max to one laptop', '140 W from one USB-C port (PD 3.1)'), ('Total output', '145 W across 2 USB-C + 1 USB-A'), ('Recharge', '65 W USB-C input, about 2 hours from empty'), ('Weight', '18.1 oz (513 g)'), ('Display', 'Digital battery-percentage display'), ('Cables', 'None built in; a 5 A (240 W-rated) USB-C cable is needed for 140 W')],
+ "warranty": "Not confirmed today: UGREEN's US store rate-limited our check. See the product page.",
+ "returns": 'Not confirmed today: see us.ugreen.com for the return window.',
+ "summary": "A 25,000 mAh (90 Wh) laptop power bank with one 140 W PD 3.1 USB-C port, a second USB-C port, a USB-A port and a percentage display. Engadget's honorable mention; Dexerto, Android Central and Camera Jabber each gave it top marks after weeks of laptop use.",
+ "fit": 'Anyone with a USB-C laptop from a 13-inch MacBook Air to a 16-inch MacBook Pro who wants one full top-up and flies with it.',
+ "caveats": ['Your laptop sets the real charge rate: a MacBook Air draws about 70 W no matter what the port can give.', 'Reviewers saw the laptop port slow to about 65 W once the bank fell near 25%.', 'With all three ports in use the two secondary ports drop to about 20 W each.', '65 W input means roughly 2 hours to refill; the Anker Prime 26K refills about three times faster.', 'No built-in cable. Bring a 5 A-rated USB-C cable or you will get 100 W at most.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
