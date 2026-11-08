@@ -1284,7 +1284,7 @@ def video_block(c):
 # Citation A/B test (DLC-208, Barry 2026-11-08; plan: growth/evals/runs/2026-11-07-liveplain/page/citation-ab-plan.html).
 # AB_PUSH on: no page renders an AI-addressed block (product-result record or AI note; DLC-206), and every gap page
 # shows the date it was last changed next to its H1. Flipped in the one push that ships group A and group B together.
-AB_PUSH = False
+AB_PUSH = True
 METHOD_V2 = "ab-2026-11"
 
 
