@@ -1,0 +1,130 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that BLUETTI's own store sells the AC180 with 400 W of its panels for less when bought as two parts ($769 AC180+200 W kit + $399 SP200L = $1,168, $1.01/Wh) than as its $1,232 'AC180+2*200W' bundle ($1.07/Wh). None states that the Anker C1000 Gen 2 only draws a full 400 W from a panel running at 29 V or more; below that its input tops out near 28 V × 8.2 A ≈ 230 W.",
+ "standout": 2,
+ "standout_why": "Compared against powersized.com/solar-generator-kits (cited; it lists Anker C1000 Gen 2 + 400 W at $1,349.99 with coupon, $1.32/Wh, 41.1 Wh/lb, and has no AC180 kit), voltandvalley.com (only the Jackery 1000 v2, with a 75%-derate refill of about 3.0 h), stormwatts.com bundle-vs-separate (AC180 + 2×200 W at $949 bundle / $1,297 separate, no voltage or current limits), and our own page ($1,232 for BLUETTI, no split-buy price, no input-current limits). None gives the cheaper two-part BLUETTI price from the maker's store, and none turns the stations' input voltage and current limits into the panel voltage a 400 W panel needs. All of them treat 400 W into a 500–600 W input as automatically full power.",
+ "decides": "Confirms that both BLUETTI and Anker can take a full 400 W only under a voltage condition, and cuts the BLUETTI row's best price from $1,232 to $1,168 (still about $1.01/Wh against the ALLPOWERS kit's roughly $0.68/Wh on our page, which I could not re-verify today). The value pick stays the same. It adds a buying tip for BLUETTI and a check-the-panel-voltage warning for anyone pairing a 400 W panel with the Anker.",
+ "candidates": [
+  "ALLPOWERS P1800 + SP037 400 W",
+  "BLUETTI AC180 + 2 × 200 W",
+  "Anker SOLIX C1000 Gen 2 + 400 W bifacial",
+  "EcoFlow DELTA 3 Plus + 400 W",
+  "Jackery Explorer 1000 v2",
+  "ABOK Elux1 + 400 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Bundle price, maker US store",
+   "value": "$1,232 (in stock)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Variant 'AC180+2*200W Solar | 1800W,1152Wh,400W Solar Kit', read with storecheck.py product. Same page: AC180 alone $499, 'AC180+200W Solar' $769 (compare-at $899)."
+  },
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Cheapest way to get 400 W from BLUETTI's store",
+   "value": "$1,168 ($64 below the bundle)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-08",
+   "note": "$769 AC180+200W kit + $399 single 200 W panel = $1,168. Other two-part route: $499 AC180 + $798 '2*200W Solar Panel' = $1,297."
+  },
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Cost per Wh of battery",
+   "value": "$1.07/Wh bundle; $1.01/Wh bought as two parts",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "$1,232 ÷ 1,152 Wh = $1.07; $1,168 ÷ 1,152 Wh = $1.01."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits",
+   "value": "500 W max, 12–60 V Voc, 10 A max",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 specs page",
+   "read": "2026-11-08",
+   "note": "Weight on the same page: 'About 35.27 lbs / 16kg'; capacity 1,152 Wh (36 Ah)."
+  },
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Panel voltage needed for the full 400 W",
+   "value": "at least 40 V operating",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 specs page",
+   "read": "2026-11-08",
+   "note": "400 W ÷ 10 A cap = 40 V. Below that, input is capped at V × 10 A, so the two panels need to run at 40 V or more (likely wired in series) to give their full rating."
+  },
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Fastest possible solar refill, empty to full",
+   "value": "2.9 h",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 specs page",
+   "read": "2026-11-08",
+   "note": "1,152 Wh ÷ 400 W = 2.88 h at full panel rating, before charging losses."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Station Wh per lb",
+   "value": "32.7 Wh/lb",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 specs page",
+   "read": "2026-11-08",
+   "note": "1,152 Wh ÷ 35.27 lb = 32.7."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input limits",
+   "value": "600 W max; 11–28 V at 8.2 A, 29–60 V at 14.5 A",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "As written on the page: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2 + 400 W",
+   "label": "Top input from a panel running below 29 V",
+   "value": "about 230 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "28 V × 8.2 A = 229.6 W. A 400 W panel needs to run at 29 V or more to use the 14.5 A band (29 V × 14.5 A = 420.5 W)."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2 + 400 W",
+   "label": "Fastest possible solar refill, empty to full",
+   "value": "2.6 h",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "1,024 Wh ÷ 400 W = 2.56 h at full panel rating, before losses. At the 230 W low-voltage cap: 1,024 ÷ 230 = 4.5 h."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Station Wh per lb",
+   "value": "41.1 Wh/lb",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "1,024 Wh ÷ 24.9 lb net = 41.1. Page also says the 400 W bundle ships in early December and the single unit from November 21."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS P1800 + SP037 US price, stock, station weight and input limits: storecheck.py returned HTTP 0 for allpowers.com, WebFetch failed with an expired certificate, and a curl call that skips the certificate check was not approved. Search found only EU/UK listings (€949), so I have no US $/Wh or refill figure for this kit.",
+  "Anker C1000 Gen 2 + 400 W bundle price: the ankersolix.com page shows no price, storecheck.py returned 404, and Off-Grid Source returned 429.",
+  "Operating voltage (Vmp) and Voc of the Anker 400 W bifacial panel and the BLUETTI SP200L, needed to confirm each kit reaches its full 400 W: ankersolix.com/products/ps400 returned 404, and the SP200L page text gave no electrical specs (WebFetch returned 429).",
+  "Panel weights for SP200L and the Anker 400 W bifacial, needed for whole-kit Wh per lb: those pages were rate-limited or returned 404.",
+  "EcoFlow DELTA 3 Plus + 400 W price and stock: storecheck.py returned HTTP 429 from us.ecoflow.com.",
+  "Jackery Explorer 1000 v2 400 W kit and ABOK Elux1 + 400 W (Walmart): not reached within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.7081295999999999
+ }
+}

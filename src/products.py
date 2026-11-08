@@ -4413,6 +4413,23 @@ PRODUCTS = [
  "fit": 'Shoppers who want 4K60 files from a console or PC without a computer.',
  "caveats": ["The 4K60 recording figure comes from the maker's spec table. I found no independent test.", 'Does not record HDCP-protected sources (maker).', 'Does not support HDR content (maker), so turn HDR off on the source.', 'The maker page gives no maximum storage capacity.']},
 
+{"slug": 'bluetti-ac180-2x200w-solar-kit',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'BLUETTI AC180 + 2× 200 W Solar Panel Kit (1,152 Wh, 1,800 W, 400 W of panels)',
+ "model": 'AC180 + 2 × SP200L',
+ "url": 'https://www.bluettipower.com/products/ac180',
+ "price": 1232,
+ "verified": '2026-11-08',
+ "specs": [('Battery', '1,152 Wh (36 Ah)'), ('AC output', '1,800 W rated, 2,700 W surge (Power Lifting, resistive loads)'), ('Solar input', '500 W max, 12–60 V Voc, 10 A'), ('Panels in the kit', '2 × 200 W SP200L (400 W)'), ('Cycle life', '3,500+ cycles to 80% of original capacity'), ('Station weight', 'about 35.27 lb'), ('AC charging', '0–80% in 45 min at 1,440 W')],
+ "warranty": '5 years (BLUETTI)',
+ "returns": "30 days from purchase at BLUETTI's store. The kit must be complete, unused and in its original packaging, and you pay return shipping, which BLUETTI takes out of the refund.",
+ "summary": "BLUETTI's own AC180 kit with two 200 W panels. In lab tests by Outdoor Life (980 Wh at about 380 W) and StorageReview (1,030 Wh at 350 W), the AC180 delivered the most measured AC energy of the roughly 1 kWh stations we compared.",
+ "fit": 'Buyers who want the most usable energy from a 1 kWh-class station with 400 W of matching panels, in stock at the maker.',
+ "caveats": ['The solar input is capped at 10 A, so the full 400 W needs the array at 40 V or more. Wire the two panels in series and keep the total open-circuit voltage under 60 V.', "BLUETTI's AC180 + 200 W kit ($769) plus one SP200L ($399) comes to $1,168, which is $64 less than this bundle.", 'At about 34 W, Outdoor Life measured only 620 Wh over 15.1 h.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

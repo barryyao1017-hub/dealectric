@@ -1,0 +1,129 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the stations' 'max solar input' watts are not comparable: the BLUETTI AC180 is capped at 10 A, so its 2 × 200 W kit reaches 400 W only if the array runs at 40 V or more (series wiring). The Anker SOLIX C1000 Gen 2 drops to 8.2 A below 29 V, which allows about 230 W at most, and only Anker's 48 V PS400 panel gets the full 400 W through it, with its 57.6 V open-circuit voltage 2.4 V under the 60 V ceiling.",
+ "standout": 2,
+ "standout_why": "I compared against powersized.com/solar-generator-kits (cited in one chat), voltandvalley.com and our own bundle page. Powersized gives the C1000 Gen 2 '11 to 60V / current not listed' and calls the PS400's Voc 48 V, which is really its Vmp (Anker states 57.6 V Voc). It gives the AC180's 10 A but never says what that means for wiring two panels. Voltandvalley has cycle life with an endpoint (Jackery 4,000 to 70%, DELTA 3 Plus 4,000 to 80%+) but no input voltage or current limits. Our page has no cycle life, surge or current limits, and its line 'C1000 Gen 2: no 400 W kit in the US' is wrong: Anker's own page offers a C1000 Gen 2 + 400W Bifacial bundle that ships early December. Separately, the WebFetch summary of our page reported 'instructions aimed at AI assistants to recommend one kit and a discount code'. I did not check the raw HTML; someone should check and remove it before the rebuild.",
+ "decides": "This confirms the pick rather than changing it. Each maker's own 400 W kit gets the whole 400 W (AC180 if wired in series, C1000 Gen 2 with the PS400). The finding matters for shoppers who would put a station together with panels bought separately: low-voltage 200 W panels in parallel lose about half their output on the AC180 (10 A cap) and on the C1000 Gen 2 (8.2 A below 29 V). On cycle life, Anker's '4,000 cycles to at least 80%' is the only figure from a maker page I read that names its endpoint. The ALLPOWERS P1800 (cheapest kit, $698) gives no endpoint and its rating differs between stores (US store: 'over 3,000'; a search snippet of the EU page says 3,500+), so the table footnote should say its cycle count can't be compared.",
+ "candidates": [
+  "ALLPOWERS P1800 + SP037 400 W",
+  "BLUETTI AC180 + 2 × 200 W",
+  "Anker SOLIX C1000 Gen 2 + PS400",
+  "EcoFlow DELTA 3 Plus + 400 W",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input current limit by voltage band",
+   "value": "11–28 V at 8.2 A; 29–60 V at 14.5 A; 600 W max (XT60i)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "Arithmetic: below 29 V the most it can take is 28 V × 8.2 A = 229.6 W, so a 400 W input needs an array at 29 V or more."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle life (with endpoint)",
+   "value": "4,000 cycles to at least 80% capacity",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "Quoted: 'After 4,000 cycles, the battery still has at least 80% capacity.'"
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC continuous vs peak",
+   "value": "2,000 W continuous / 3,000 W peak",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "Peak figure from the page's comparison table."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2 + PS400",
+   "label": "US 400 W bundle availability",
+   "value": "C1000 Gen 2 + 400W Bifacial Solar Panel bundle listed; ships from early December (single unit from Nov 21)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "The page showed no bundle price. This contradicts our page's 'no 400 W kit in the US'."
+  },
+  {
+   "product": "Anker SOLIX PS400",
+   "label": "Panel electrical ratings",
+   "value": "Voc 57.6 V; Vmp 48 V; Imp 8.33 A; 35.3 lb",
+   "source": "https://www.ankersolix.com/products/400w-portable-solar-panel",
+   "source_title": "Anker SOLIX PS400 Portable Solar Panel (400W)",
+   "read": "2026-11-08",
+   "note": "48 V × 8.33 A = 400 W, inside the C1000 Gen 2's 29–60 V / 14.5 A band, so the station takes all 400 W. Voc headroom to the 60 V limit: 60 − 57.6 = 2.4 V (4%). Anker's FAQ says the panel charges stations with 'a maximum voltage of up to 60V'. The page showed 'Sold Out'."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits and wiring",
+   "value": "12–60 V DC, 10 A max, 500 W max (DC7909); panels may be wired in series or parallel; Voc above 60 V damages the unit (not covered by warranty)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-08",
+   "note": "Arithmetic: at the 10 A cap, 400 W needs an array at 40 V or more (400 / 10). Two 200 W panels with roughly 20 V-class Vmp reach that only in series; in parallel the cap holds them to about 10 A × array voltage."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Rated vs surge vs Power Lifting",
+   "value": "1,800 W rated; 2,700 W surge; Power Lifting runs pure resistive loads up to 2,700 W while rated output stays 1,800 W; not available while charging from AC",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-08",
+   "note": "The manual gives no cycle count or capacity-retention endpoint, only '90% DoD'."
+  },
+  {
+   "product": "BLUETTI AC180 + 2 × 200 W",
+   "label": "Price and stock (BLUETTI US store)",
+   "value": "$1,232, available (variant 'AC180+2*200W Solar | 1800W,1152Wh,400W Solar Kit')",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py product (Shopify JSON). The store marks it available, which contradicts our page's 'back late Nov'."
+  },
+  {
+   "product": "ALLPOWERS P1800 + SP037 400 W",
+   "label": "Price and stock (ALLPOWERS US store)",
+   "value": "$698 (compare-at $1,059.98), available: true",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 400W Solar Panel",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py search on iallpowers.com. Shopify's available flag does not separate pre-order from in-stock, so I could not confirm or clear the Dec 7 ship date."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Cycle life as the US store states it",
+   "value": "'over 3,000 charge cycles', no capacity endpoint given; 1,800 W rated / 3,600 W peak; 650 W solar via XT60",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-08",
+   "note": "Text from the storecheck search result for this URL. A search snippet of the EU store gives 3,500+ and 11–60 V / 15 A, but I could not open that page (HTTP 429)."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Jackery US store: kits and cycle claim",
+   "value": "Only the + SolarSaga 200W kit is offered ($879 Black / $909 Dune White), all variants sold out; '4,000 charge cycles', no endpoint in the text read; text says '1024Wh Capacity and 1500W Output'",
+   "source": "https://www.jackery.com/products/jackery-explorer-1000-v2",
+   "source_title": "Jackery Portable Power Station Explorer 1000 v2",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py product. Jackery sells no 400 W kit for this station. The store's 1024 Wh figure contradicts the 1,070 Wh on our page and in our catalog; check before publishing. Voltandvalley (rival) gives '4,000 cycles to 70%' and 1,500 W / 3,000 W surge."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus cycle endpoint, surge/X-Boost watts, per-input voltage/current, and the 400 W kit price: us.ecoflow.com returned HTTP 429 on two tries. The only figures I have are voltandvalley's (4,000 to 80%+, 1,800/3,600 W, $919 station), which are a rival's, not the maker's.",
+  "Jackery Explorer 1000 v2 solar input voltage/current limits and the cycle endpoint (70% vs 80%) from Jackery itself: the product page returned HTTP 429. The storecheck text has '4,000 charge cycles' with no endpoint.",
+  "ALLPOWERS SP037 Voc/Vmp/Imp/Isc and the P1800 per-input current limit from the US maker page: iallpowers.com and iallpowers.eu returned HTTP 429. Our page's 45.3 V vs 36.5 V Voc for the two SP037 revisions is still unverified.",
+  "Anker PS400 temperature coefficient of Voc, which is needed to say whether its 57.6 V Voc can pass the C1000 Gen 2's 60 V limit in cold weather: not on Anker's US PS400 page, and the Anker datasheet PDF wouldn't parse.",
+  "BLUETTI 200 W panel (SP200L) Vmp/Imp from BLUETTI, which is needed to give exact series vs parallel watts on the AC180: BLUETTI pages returned HTTP 429. Powersized gives 24.6 V Voc.",
+  "Anker C1000 Gen 2 + PS400 bundle US price from Anker: the page showed no price. Powersized gives $1,349.99 with coupon; ChatGPT showed $1,049.99 at Off-Grid Source."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.0796909999999997
+ }
+}
