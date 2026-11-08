@@ -324,6 +324,20 @@ Return the full corrected draft plus a log.""",
     ])
 
 
+def fix_prompt(draft: dict, errs: list[str]) -> str:
+    return "\n\n".join([
+        COMMON_RULES.replace("TOOLS", str(ROOT / "tools")),
+        "## Your job: fix a page draft that failed its checks\nFix exactly these errors and nothing else. Missing facts "
+        "(a product's warranty, returns, a spec) must be read from the maker's own page today, with the source added to "
+        "the page's sources if it is a page figure. If a fact can't be sourced, drop what needs it (the product record and "
+        "its row, or the cell's column) rather than invent it. Banned wording: rewrite the sentence for the shopper.",
+        "## Errors\n" + "\n".join(f"- {e}" for e in errs),
+        f"## Today\n{today()}",
+        "## Draft\n" + json.dumps({k: v for k, v in draft.items() if k not in ("gate",)}, ensure_ascii=False),
+        '## Output JSON\n{"draft": <the full corrected draft, same shape>, "log": ["<what you changed and from which source>"]}',
+    ])
+
+
 # ---------------------------------------------------------------- research
 
 def query_for(slug: str, h: dict) -> str:
@@ -474,6 +488,13 @@ def apply(slug: str, local: bool) -> dict:
     if h and h.get("searched_as"):
         draft["searched_as"] = h["searched_as"]   # the latest harvest's search words (fresh chats after the research ran)
     errs = validate(draft, new_page)
+    if errs and not draft.get("fix_pass"):   # one sourced fix pass, then re-check
+        fx = claude(fix_prompt(draft, errs))
+        if fx.get("draft"):
+            keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug") if k in draft}
+            draft = {**fx["draft"], **keep, "status": "ok", "fix_pass": {"errors": errs, "log": fx.get("log")}}
+            jsave(d / "draft.json", draft)
+            errs = validate(draft, new_page)
     if errs:
         draft["gate"] = {"date": today(), "pass": False, "errors": errs}
         jsave(d / "draft.json", draft)
