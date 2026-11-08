@@ -3988,6 +3988,23 @@ PRODUCTS = [
  "fit": 'One person can carry it. Runs a coffee maker, electric cooler, CPAP, router and laptops; keeps a full-size fridge going for roughly 8 to 10 hours.',
  "caveats": ["AC charging runs slower than rated below about 20% charge; a full wall charge took about 1 hr 40 min in The Solar Lab's test.", 'Eco mode shuts off very low loads; turn it off for a fridge or CPAP.', 'Turbo charging and some UPS settings need the app, which reviewers call glitchy.', 'No solar or car cable in the box.']},
 
+{"slug": 'anker-nano-power-bank-10k-45w-a1638',
+ "brand": 'Anker',
+ "program": 'amazon:us',
+ "asin": 'B0FKN5RCV7',
+ "category": 'power-bank',
+ "name": 'Anker Nano Power Bank, 10,000 mAh, 45 W, built-in retractable USB-C cable (A1638)',
+ "model": 'A1638',
+ "url": 'https://www.amazon.com/dp/B0FKN5RCV7',
+ "price": None,
+ "verified": '2026-11-08',
+ "specs": [('Capacity', '10,000 mAh'), ('USB-C cable / port output', '5V⎓3A / 9V⎓3A / 10V⎓2.25A / 15V⎓3A / 20V⎓2.25A, 45 W max'), ('Per-phone maximum (Anker)', '45 W for Samsung, 40 W for iPhone 17 series, USB-C cable or port used alone'), ('USB-A output', '22.5 W max'), ('Two devices at once', '22.5 W total: 15 W on the cable, 7.5 W on the port'), ('Input', '30 W max (15V⎓2A)'), ('Weight', '0.51 lb'), ('Dimensions', '3.21 × 1.99 × 1.42 in'), ('Cable', 'Built-in retractable USB-C, about 2.3 ft')],
+ "warranty": '18 months (Anker US warranty policy, standard term for power banks outside the Prime, MagGo and PowerCore Reserve lines; the A1638 product page lists only "Hassle-Free Warranty")',
+ "returns": "Amazon's standard return window applies",
+ "summary": 'The only 10,000 mAh phone bank in this comparison whose maker states a per-phone figure for the iPhone 17 line (40 W) and for 45 W Galaxy models, with a retractable USB-C cable so there is nothing extra to carry.',
+ "fit": 'iPhone 17, 17 Pro and 17 Pro Max owners, and Galaxy S23+/S24+/S25+/S26+ and Ultra owners, who want the fastest wired charge from one pocket bank used with the phone alone.',
+ "caveats": ["The 45 W / 40 W figure applies with one device on the USB-C cable or port; two devices share 22.5 W (15 W + 7.5 W), below Apple's 18 W fast-charge threshold on both outputs", 'iPhone 14 and earlier need a USB-C to Lightning adapter, not included', 'Gigazine measured 34-36 W into a Pixel 10 Pro XL and a 160-minute recharge at 29 W input']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
