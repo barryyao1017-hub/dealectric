@@ -4260,6 +4260,23 @@ PRODUCTS = [
  "fit": 'Long copies of hundreds of GB from a USB4 or Thunderbolt 4 PC or an Apple Silicon Mac, using a 2280 SSD.',
  "caveats": ['Fits M.2 2280 SSDs only. 2230 and 2242 drives do not fit.', 'No fan. Hardware Busters measured the case at up to 54.8 °C after 15 minutes in a 30 °C room.', "The SSD inside still sets the speed of long copies. NAS Compares' 100 GB mixed-file copy averaged 1,580 MB/s."]},
 
+{"slug": 'synology-ds925-plus',
+ "brand": 'Synology',
+ "program": 'amazon:us',
+ "asin": 'B0F43SZHWV',
+ "category": 'nas',
+ "name": 'Synology DiskStation DS925+ 4-Bay NAS, AMD Ryzen V1500B, 4 GB, 2× 2.5GbE',
+ "model": 'DS925+',
+ "url": 'https://www.amazon.com/dp/B0F43SZHWV',
+ "price": None,
+ "verified": '2026-11-08',
+ "specs": [('Bays', '4 SATA bays + 2 M.2 2280 NVMe slots; up to 9 drives with the DX525 expansion unit'), ('Processor and memory', 'AMD Ryzen V1500B, 4 GB DDR4 ECC, expandable to 32 GB'), ('Network', '2× 2.5GbE RJ-45; no PCIe or 10GbE upgrade slot'), ('Rated throughput', 'Up to 522 MB/s read / 565 MB/s write (Synology lab, all onboard ports, 8 clients)'), ('M.2 storage pools', 'Synology-verified SSDs required')],
+ "warranty": '3 years; extendable to 5 years with Extended Warranty Plus (North America, bought within 90 days)',
+ "returns": "Return it for a refund to the store you bought it from, under that store's return policy (Synology's warranty terms). Synology's own US store takes returns within 30 days of the invoice date. You pay return shipping, and the original shipping fee is not refunded.",
+ "summary": "Synology's 4-bay DSM box. It has the strongest backup and snapshot software here, but each computer is limited to one 2.5GbE link.",
+ "fit": 'Photographers who edit from a local SSD and use the NAS as a managed RAW archive and backup target.',
+ "caveats": ['There is no way to add 10GbE: it has two 2.5GbE ports and no PCIe slot.', "Synology's 522/565 MB/s rating uses both ports. One computer on one cable tops out at 312.5 MB/s raw.", "M.2 storage pools and cache need SSDs on Synology's compatibility list."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

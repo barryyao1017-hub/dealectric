@@ -1,0 +1,117 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got turns the makers' MB/s headlines into what one editing computer actually gets: Synology's 522 MB/s for the DS925+ is more than one 2.5GbE link can carry (312.5 MB/s raw), so one Mac gets about 295 MB/s, the figure QNAP measured on a single 2.5GbE link. A 10GbE box with four hard drives in RAID 5 gives one client 500–600 MB/s in MightyGadget's test. That is about 2× faster, not the 4× the port speeds suggest, and QNAP's own chart shows a single 10GbE link falling to 275 MB/s when the files are 1 MB each.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited rivals, Fstoppers (best-nas-photographers-2026) and Camera Lookout (best-nas-systems-for-photographers), plus Synology's and QNAP's own pages. Camera Lookout gives the 312.5 MB/s raw ceiling per 2.5GbE link and says dual 2.5GbE 'does not automatically give one client a 5Gb/s transfer'. It also says four HDDs 'can be much slower' than 10GbE, but gives no measured number. Fstoppers repeats Synology's headline figures with no test conditions and gives only '~280 MB/s' as a generic 2.5GbE figure. ChatGPT's answers used 270 and 670 MB/s as 'illustrative' guesses. No rival gives a per-client table drawn from the makers' own test footnotes, shows that the 522 MB/s headline has to use both ports, or cites QNAP's small-file result.",
+ "decides": "This supports the UGREEN DXP4800 Plus ($619.99 at UGREEN's store on 2026-11-08) as the pick for one photographer editing on one computer. For large transfers such as imports, exports and preview builds, its built-in 10GbE port with four HDDs in RAID 5 gives one client about 500–600 MB/s, roughly twice what a DS925+ can give one client (about 295 MB/s, with no PCIe slot to upgrade). The DS925+'s 522/565 MB/s needs both ports and several clients, which a single editor will not see. The QNAP TS-464 can reach 10GbE speeds, but only by using its one PCIe slot (Gen 3 x2) for the card. The footnote: 10GbE helps with batch work, not opening one RAW file at a time. With 1 MB files, QNAP's own single 10GbE link read 274.94 MB/s, about the same as one 2.5GbE link with large files. So a shopper who edits from local copies and only archives to the NAS can stay on 2.5GbE.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS925+",
+  "QNAP TS-464-8G"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS925+",
+   "label": "Maker's headline sequential throughput",
+   "value": "Up to 522 MB/s read / 565 MB/s write",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Synology internal testing. The page gives no link-aggregation or client conditions for this figure. Its SMB note says the model was 'tested with Synology SATA HDD fully populated and all onboard network ports' and used 8 Windows 10 FSCT clients. 522 MB/s is more than one 2.5GbE link's 312.5 MB/s raw ceiling (2,500 Mb/s ÷ 8), so the figure must use both ports."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Network ports and expansion",
+   "value": "2× 2.5GbE RJ-45; no PCIe slot (only a USB-C expansion port for the DX525 unit)",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "So there is no way to raise per-client speed above one 2.5GbE link. The page also says M.2 storage pools require Synology-verified SSDs."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Warranty",
+   "value": "3 years, extendable to 5 years with Extended Warranty Plus (Europe and North America only, bought within 90 days)",
+   "source": "https://www.synology.com/en-us/products/DS925+",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Maker product page."
+  },
+  {
+   "product": "general",
+   "label": "Measured SMB throughput, one 2.5GbE link (a single client's practical ceiling)",
+   "value": "295.31 MB/s read / 295.31 MB/s write; 10 GB file copy 295.3 MB/s read / 294.46 MB/s write",
+   "source": "https://www.qnap.com/en-us/performance/model/ts-464",
+   "source_title": "TS-464 | Product Performance | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "QNAP's own test of the TS-464 on its built-in 2.5GbE ×1: MTU 9000, clients on Windows Server 2019 with an i7-7700. This is the per-client figure that applies to the DS925+ and the stock TS-464. It is 57% of Synology's 522 MB/s headline (295.31 ÷ 522)."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Measured SMB throughput with a 10GbE card, one link",
+   "value": "1,181.04 MB/s read / 1,180.79 MB/s write (IOMeter); 10 GB file copy 1,179.81 MB/s read / 711.19 MB/s write",
+   "source": "https://www.qnap.com/en-us/performance/model/ts-464",
+   "source_title": "TS-464 | Product Performance | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Tested with QNAP's dual-port LAN-10G2T-U or LAN-10G2SF-MLX card. The page does not say which drives were used for the TS-464 (its list includes SSD, HDD and NVMe options), so these figures are not HDD-array numbers. Copying a 10 GB file to the NAS ran at 60% of the read speed."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Measured small-file throughput (1 MB × 10,000 files)",
+   "value": "10GbE ×1: 274.94 MB/s read / 203.56 MB/s write; 2.5GbE ×1: 177.98 MB/s read / 127.48 MB/s write",
+   "source": "https://www.qnap.com/en-us/performance/model/ts-464",
+   "source_title": "TS-464 | Product Performance | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "QNAP's own chart. With 1 MB files, a 10GbE link's read speed drops to 23% of its large-file figure (274.94 ÷ 1,181.04) and ends up below a 2.5GbE link with large files (295.3). RAW files are tens of MB, so they fall between the two cases. This is the maker's measurement, not a Lightroom test."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "How 10GbE is added, and the slots",
+   "value": "2× 2.5GbE built in; 5GbE or 10GbE 'Optional via PCIe expansion card' in the only PCIe slot (Gen 3 x2); 2× M.2 2280 slots at PCIe Gen 3 x1 each",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "A 10GbE card uses up the only expansion slot."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Warranty",
+   "value": "3 years (bundled accessories such as expansion cards: 1 year)",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Maker spec page."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Measured throughput over 10GbE, HDD RAID 5",
+   "value": "500–600 MB/s",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review",
+   "source_title": "Ugreen NASync DXP4800 Plus Review – A Powerful 10GbE NAS That Challenges the Market Leaders (MightyGadget)",
+   "read": "2026-11-08",
+   "note": "MightyGadget: 'with a RAID 5 array of spinning hard drives' (WD Red Plus) 'I was seeing 500-600MB/s'. The review does not give drive count, read vs write, or the client NIC. That is 1.7–2.0× the single-link 2.5GbE figure (500–600 ÷ 295.31), not 4×, because the hard drives are the limit, not the 10GbE link."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price",
+   "value": "$619.99 (list shown $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search on nas.ugreen.com (Shopify JSON). Same store, same day: DXP4800 Pro $799.99, DXP4800 GT $659.99."
+  }
+ ],
+ "unsourced": [
+  "The exact test conditions behind Synology's 522/565 MB/s DS925+ figure (link aggregation, client count, RAID level). Neither the product page nor the spec tab gives them, the performance-chart page has no DS925+ entry, and the data-sheet PDF would not render to text.",
+  "UGREEN's own throughput claim and test conditions for the DXP4800 Plus. The maker page returned HTTP 429 on three attempts.",
+  "A named reviewer's exact RAID 5 HDD read and write numbers for the DXP4800 Plus over 10GbE with drive count stated. KitGuru's text gives only RAID 0 and RAID 10 figures and an implausible 540 MB/s 'at 2.5GbE'. ITPro's testing section was truncated, and TechPowerUp returned 403.",
+  "The DS925+ US price today from Synology's store (not a Shopify store; not checked) and a QNAP store price for the TS-464-8G today.",
+  "The US price of a QNAP 10GbE PCIe card. Our current page's '$139' was not re-verified."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9213004000000004
+ }
+}

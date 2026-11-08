@@ -1,0 +1,82 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that keeping RAW originals on a NAS only works with Lightroom Classic. Adobe sells the other app, Lightroom, as 'the cloud-based service' to 'create, edit, organize, store, and share your photos across any device', and both its $11.99/mo Lightroom plan and its $19.99/mo Photography plan include 1 TB, a tenth of a 10 TB RAW library. Adobe Community Experts add that 'Lightroom Classic needs local drives. Lightroom is the Cloud version' and that Classic 'doesn't use the Adobe Cloud to store full size/res photos'.",
+ "standout": 2,
+ "standout_why": "I compared against Fstoppers (cited) and Camera Lookout (cited), plus the Adobe community thread 'Lightroom Classic images stored on NAS - OFFICIAL Yes or No?' and the LrC 15.4 bug thread from ChatGPT's results, and our own current page. Fstoppers says to keep the catalog and previews on the internal SSD and budget for a computer-side 10GbE port. It also covers Synology DSM 7.3 restoring third-party hard drives. Camera Lookout says Adobe doesn't support a Classic catalog on a network volume, and that Smart Previews allow edits while originals are offline. All three ChatGPT answers assume Classic, and so does every rival page. None of them says the cloud-based Lightroom app stores the library in Adobe's cloud, and none gives its 1 TB plan limit against a 10 TB library. So a shopper who typed 'Lightroom' and uses the cloud app gets advice that doesn't fit their app. Our page already covers the catalog rule, Smart Previews and the Thunderbolt-adapter point, so none of those is new. No rival mentions the LrC 15.4/15.4.1 bug where catalog backups to an SMB NAS failed on macOS 26, or its August fix.",
+ "decides": "This doesn't change which box wins. It decides who the picks are for. The whole plan (originals on the NAS, catalog and previews on a local SSD, 2.5GbE or 10GbE link) depends on the shopper using Lightroom Classic. The page should say so in the first lines. For someone on the cloud-based Lightroom app, the library lives in Adobe's cloud under a 1 TB plan, so a NAS can only be a backup or export target. In that case the 10GbE premium (DXP4800 Plus or GT over the DS925+ or TS-464) buys little, and the bigger question is Adobe storage. For Classic users the picks stand. One extra line is worth adding: LrC 15.4 and 15.4.1 could not write catalog backups to SMB NAS shares on macOS 26, and Adobe's August (x.5) release fixed it. So update LrC before pointing backups at the NAS.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP4800 Pro",
+  "Synology DS925+",
+  "QNAP TS-464-8G"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What Adobe says Lightroom (the non-Classic app) is",
+   "value": "\"the cloud-based service that gives you everything you need to create, edit, organize, store, and share your photos across any device\"; \"The Adobe Lightroom plan comes with 1TB.\" \"You can always add more storage to your plan from your Adobe account.\" \"Adobe Lightroom Classic is optimized for desktop use.\"",
+   "source": "https://www.adobe.com/products/photoshop-lightroom.html",
+   "source_title": "Adobe Lightroom product page (adobe.com)",
+   "read": "2026-11-08",
+   "note": "Quoted from the maker's US product page. The page doesn't list sizes or prices for extra storage."
+  },
+  {
+   "product": "general",
+   "label": "Cloud storage in Adobe's Lightroom plans (US)",
+   "value": "Lightroom plan US$11.99/mo with 1 TB; Photography plan US$19.99/mo with 1 TB; Creative Cloud Pro US$34.99/mo promo (US$69.99/mo regular) with 100 GB",
+   "source": "https://www.adobe.com/products/photoshop-lightroom/plans.html",
+   "source_title": "Adobe Lightroom plans and pricing",
+   "read": "2026-11-08",
+   "note": "Monthly price on annual plans. A 10 TB RAW library is 10× the 1 TB included. The plans page lists no add-on storage tiers."
+  },
+  {
+   "product": "general",
+   "label": "Classic vs cloud Lightroom: where originals live (Adobe Community Experts)",
+   "value": "Sean McCormack: \"Realistically Lightroom Classic needs local drives. Lightroom is the Cloud version.\" Ian Lyons: \"Classic doesn't use the Adobe Cloud to store full size/res photos.\" Conrad_C: \"The main restriction is that the catalog has to be on local storage, not a network server.\" Synced Classic photos \"will be Smart Preview proxies, not originals\", limited to \"2560 pixels on the long side\".",
+   "source": "https://community.adobe.com/questions-675/understanding-storage-options-967560",
+   "source_title": "Understanding storage options | Adobe Community",
+   "read": "2026-11-08",
+   "note": "Adobe-badged Community Experts, posts dated Feb 10–13, 2023. These are not Adobe staff. Adobe's helpx pages that would state this officially returned HTTP 403 to my fetcher (see unsourced)."
+  },
+  {
+   "product": "general",
+   "label": "Adobe's rule on the Classic catalog vs photos on a network",
+   "value": "\"No, you can't store catalogs on a network, but you can store or share your photos on a network.\"",
+   "source": "https://community.adobe.com/questions-675/lightroom-classic-images-stored-on-nas-official-yes-or-no-975545",
+   "source_title": "Lightroom Classic images stored on NAS - OFFICIAL Yes or No? | Adobe Community",
+   "read": "2026-11-08",
+   "note": "The original poster quotes this from Adobe's Lightroom Classic catalog FAQ. I couldn't open the FAQ itself (HTTP 403). Community Expert Ian Lyons, Mar 19, 2024: \"The LrC catalog cannot be on a network drive, NAS, call it what you will. The photos can be.\" ChatGPT already gives this rule, so it's background, not the gap."
+  },
+  {
+   "product": "general",
+   "label": "LrC 15.4 / 15.4.1 catalog backups to SMB NAS shares failed",
+   "value": "Backups failed at the end of compression with \"unable to write to drive, check permissions and available space on the drives\" on macOS 26 (26.5–26.5.2), reported on Synology, TrueNAS Scale and UniFi UNAS 4 over SMB3. Adobe employee Rikk Flohr, Aug 4, 2026: \"The August release (x.5) contains an update regarding this issue.\" The original poster confirmed it fixed on Sep 6, 2026.",
+   "source": "https://community.adobe.com/bug-reports-674/p-lrc-15-4-15-4-1-cannot-create-catalog-backups-directly-on-smb-nas-shares-backup-fails-during-compression-1628839/index1.html",
+   "source_title": "P: LrC 15.4 & 15.4.1 Cannot create catalog backups directly on SMB NAS shares | Adobe Community",
+   "read": "2026-11-08",
+   "note": "Workarounds before the fix were backing up locally and then copying to the NAS, or rolling back to 15.3. In the same thread, Josef Carlin (Jun 27, 2026) reported that 15.4.1's 'Update DNG Preview & Metadata' corrupted new linear DNGs on SMB shares. The page I could read was cut off before any resolution of that second report."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Synology drive rules (Fstoppers)",
+   "value": "Fstoppers: DSM 7.3 \"restored support for third-party hard drives and SATA SSDs on 2025 and later models\" and DSM 7.4 keeps it; \"M.2 NVMe caching is still restricted to Synology-branded SSDs.\"",
+   "source": "https://fstoppers.com/guide/best-nas-photographers-2026",
+   "source_title": "Best NAS for Photographers in 2026 | Fstoppers",
+   "read": "2026-11-08",
+   "note": "A cited rival already has this, so it isn't new. It's listed so our DS925+ row ('Synology SSDs for pools') stays consistent with it."
+  }
+ ],
+ "unsourced": [
+  "Adobe helpx pages returned HTTP 403 to WebFetch, and a curl attempt was not permitted, so I couldn't read Adobe's own wording in: the Lightroom preferences page (whether the cloud app's 'storage location for originals' can be a mapped NAS), the Lightroom Classic catalog FAQ, the 'Migrate photos from Lightroom Classic to Lightroom' guide (a search snippet says originals are uploaded 'in their full resolution' to the cloud, but I didn't open it), the Classic-vs-Lightroom feature comparison, and 'Optimize Lightroom performance' (Camera Raw cache default and recommended size)",
+  "Adobe's add-on cloud storage tiers and prices beyond 1 TB: the plans page and product page say storage can be added but list no sizes or prices",
+  "An official Adobe statement on whether the cloud-based Lightroom app supports a NAS as its local originals location: the community threads I found only report conflicting staff replies from 2017–2021",
+  "Apple's guidance on SMB packet signing (support.apple.com/101442), which I saw only in a search snippet and didn't open. It wasn't decisive either way, since the snippet says signing is off by default from macOS 10.13.4"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9935892999999998
+ }
+}
