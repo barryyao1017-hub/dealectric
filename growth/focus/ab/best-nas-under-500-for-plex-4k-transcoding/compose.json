@@ -1,0 +1,182 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "None of the cited pages (Starry Hope, Terabytewise, NAS Decoded, ComputingForGeeks) says that the sub-$500 Synology DS225+/DS425+ hardware-transcode only after an unsupported kernel-module swap that must be re-run at every reboot, nor gives the graphics execution-unit counts (J4125 12, N5095 and N95 16, N100 and N150 24) that size each box's tone-mapping headroom; two of them recommend the DS225+ for exactly this job. This page adds both, plus the fact that the $399.49 TerraMaster F2-425 Plus is the 16-EU N95 model while the N150 model is $499.99 and out of stock at the maker.",
+ "slug": "best-nas-under-500-for-plex-4k-transcoding",
+ "must": [
+  "UGREEN NASync DXP2800",
+  "24 graphics execution units"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best NAS under $500 for Plex 4K hardware transcoding (2026)",
+  "h1": "Best NAS under $500 for Plex 4K hardware transcoding (2026)",
+  "desc": "The UGREEN NASync DXP2800 (Intel N100, 24 graphics EUs, $389.99) transcodes Plex 4K in hardware on stock firmware. Why the $399.49 TerraMaster F2-425 Plus is the 16-EU N95 model, and why Synology's DS225+ and DS425+ need a driver swap after every reboot.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS under $500 for Plex 4K hardware transcoding is the UGREEN NASync DXP2800: its Intel N100 has 24 graphics execution units and transcodes on stock firmware for $389.99, while the sub-$500 Synology DS225+ and DS425+ need a kernel-module swap after every reboot.</p>",
+  "columns": [
+   [
+    "cpu",
+    "CPU (graphics EUs × max clock)"
+   ],
+   [
+    "stock",
+    "Plex hardware transcoding on stock firmware"
+   ],
+   [
+    "install",
+    "Plex install path"
+   ],
+   [
+    "ram",
+    "RAM (max)"
+   ],
+   [
+    "io",
+    "Network / M.2"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "cpu": "Intel N100, 24 EU × 750 MHz (Intel ARK)",
+     "stock": "Yes: UGOS Pro exposes /dev/dri; no driver changes, nothing to redo after a reboot",
+     "install": "Docker container with /dev/dri/renderD128 mapped (Marius Hosting guide, tested with Plex 1.43.5)",
+     "ram": "8 GB DDR5 (Intel rates the N100 for 16 GB)",
+     "io": "1× 2.5GbE, 2× M.2 NVMe"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F2-425 Plus (Intel N150)",
+    "url": "https://www.terra-master.com/products/f2-425-plus",
+    "cells": {
+     "price": "$499.99 (maker, 2026-11-08), out of stock",
+     "cpu": "Intel N150, 24 EU × 1.0 GHz (Intel ARK)",
+     "stock": "Yes per TerraMaster's spec sheet (H.264/H.265 up to 4K60)",
+     "install": "TOS 7 app center; Plex itself publishes TerraMaster packages only for TOS 4 and TOS 5 & 6",
+     "ram": "8 GB DDR5 (32 GB per TerraMaster; Intel rates the N150 for 16 GB)",
+     "io": "2× 5GbE, 3× M.2 NVMe"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F2-425 Plus (Intel N95)",
+    "url": "https://www.terra-master.com/products/f2-425-plus",
+    "cells": {
+     "price": "$399.49 (maker, 2026-11-08)",
+     "cpu": "Intel N95, 16 EU × 1.2 GHz (Intel ARK)",
+     "stock": "Yes per TerraMaster's spec sheet (same case and ports as the N150 model)",
+     "install": "TOS app center; Plex publishes TerraMaster packages only for TOS 4 and TOS 5 & 6",
+     "ram": "8 GB (Intel rates the N95 for 16 GB)",
+     "io": "2× 5GbE, 3× M.2 NVMe"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F4-425",
+    "url": "https://www.terra-master.com/products/f4-425",
+    "cells": {
+     "price": "$386.99 (maker, 2026-11-08)",
+     "cpu": "Intel Celeron N5095, 16 EU × 750 MHz (Notebookcheck)",
+     "stock": "Yes: TerraMaster lists hardware-level H.265 decoding for Plex, Jellyfin and Emby (Notebookcheck)",
+     "install": "TOS app center; Plex TOS 5 & 6 package",
+     "ram": "4 GB DDR4",
+     "io": "1× 2.5GbE, no M.2 (Notebookcheck)"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F2-425",
+    "url": "https://www.terra-master.com/products/f2-425",
+    "cells": {
+     "price": "$299.99 (maker, 2026-11-08)",
+     "cpu": "Intel Celeron N5095, 16 EU × 750 MHz (Starry Hope, Notebookcheck)",
+     "stock": "Yes: Quick Sync listed; Starry Hope advises planning for one converted stream at a time",
+     "install": "TOS 6 app center; Plex TOS 5 & 6 package",
+     "ram": "4 GB DDR4 (16 GB max, Starry Hope)",
+     "io": "1× 2.5GbE, no M.2"
+    }
+   },
+   {
+    "brand": "Synology",
+    "model": "DiskStation DS225+",
+    "url": "https://www.synology.com/en-us/products/DS225+",
+    "cells": {
+     "price": "$364.29 (Amazon, 2026-11-08)",
+     "cpu": "Intel Celeron J4125, 12 EU × 750 MHz (Intel ARK)",
+     "stock": "No: Synology support says hardware transcoding 'is not supported on these two models'; the community fix reloads 11 kernel modules after every reboot (Blackvoid)",
+     "install": "Plex DSM 7.2.2+ package installs, but hardware transcoding fails with 'hwaccel initialisation returned error' (Plex forum)",
+     "ram": "2 GB DDR4 (6 GB max)",
+     "io": "1× 2.5GbE + 1× 1GbE, no M.2"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2>\n<p>Plex's HDR-to-SDR tone mapping and scaling run as shaders on the iGPU's execution units, so EUs times clock is the hardware headroom that decides how many tone-mapped 4K streams a NAS can hold. It is a proxy, not a measured stream count: no named lab has published simultaneous 4K HEVC transcode counts for any of these units.</p>\n<ul>\n<li><strong>Shader budget (EU × GHz):</strong> N150 24 × 1.0 = 24.0; N95 16 × 1.2 = 19.2; N100 24 × 0.75 = 18.0; N5095 16 × 0.75 = 12.0; J4125 12 × 0.75 = 9.0. Figures from Intel ARK and Notebookcheck.</li>\n<li><strong>Price for the step up:</strong> F2-425 Plus N150 $499.99 − DXP2800 $389.99 = $110.00 for 33% more iGPU clock, two 5GbE ports and a third M.2 slot, if it comes back into stock. The $399.49 F2-425 Plus is the N95 model: $9.50 more than the DXP2800 for 8 fewer execution units.</li>\n<li><strong>Price per EU·GHz:</strong> F2-425 Plus N95 $399.49 / 19.2 = $20.81; F2-425 Plus N150 $499.99 / 24.0 = $20.83; DXP2800 $389.99 / 18.0 = $21.67; F2-425 $299.99 / 12.0 = $25.00; F4-425 $386.99 / 12.0 = $32.25; DS225+ $364.29 / 9.0 = $40.48, and that engine is unreachable on stock DSM.</li>\n<li><strong>Plex's two CPU floors:</strong> hardware tone mapping on Linux, Docker and NAS needs Kaby Lake or newer; HEVC output on a NAS needs Jasper Lake or newer. N100, N150 and N95 clear both. N5095 sits on the HEVC line. J4125 (Gemini Lake) is below it, so a Synology on the J4125 can only hardware-encode H.264 even when the iGPU works.</li>\n<li><strong>Every option needs a Plex Pass:</strong> Plex calls hardware-accelerated streaming a premium feature. Budget for it alongside the drives.</li>\n</ul>\n<table>\n<thead><tr><th>Use</th><th>Fits</th><th>Why</th></tr></thead>\n<tbody>\n<tr><td>Two drives, HDR 4K to 1080p for a household, buy today</td><td>UGREEN NASync DXP2800</td><td>24 EUs, stock iGPU access, $389.99 in stock</td></tr>\n<tr><td>5GbE network and three NVMe slots, can wait for stock</td><td>TerraMaster F2-425 Plus (N150)</td><td>Largest shader budget under $500 at $499.99</td></tr>\n<tr><td>Four drive bays under $400, one transcode at a time</td><td>TerraMaster F4-425</td><td>N5095 meets Plex's HEVC floor; 4 GB RAM</td></tr>\n<tr><td>Cheapest Quick Sync box, mostly Direct Play</td><td>TerraMaster F2-425</td><td>$299.99; Starry Hope: plan for one converted stream</td></tr>\n<tr><td>Must be Synology</td><td>DS224+, not DS225+</td><td>Older DSM kernel still reaches the J4125 iGPU; H.264 output only</td></tr>\n</tbody>\n</table>\n<h2>Stock firmware or a script: how each NAS reaches the Quick Sync engine</h2>\n<p>Plex talks to Intel Quick Sync through VA-API, which needs the Linux i915 kernel driver to expose the iGPU as /dev/dri/renderD128. Every CPU in the table has Quick Sync on Intel's spec page; the difference is whether the NAS operating system exposes it.</p>\n<p><strong>UGREEN DXP2800.</strong> UGOS Pro has no native Plex package (Plex's download list covers Synology, QNAP, ASUSTOR, TerraMaster, Netgear, Unraid, Thecus, Seagate and WD, not UGREEN), so Plex runs as a Docker container. Marius Hosting's guide, updated 2026-10-31 and tested with Plex 1.43.5, maps /dev/dri/renderD128 and /dev/dri/card0 into the container and then enables hardware transcoding and HDR tone mapping in Plex's transcoder settings. Plex calls the device mount an advanced setup, but it is a one-time compose entry that survives reboots and firmware updates. {buy:ugreen-nasync-dxp2800}</p>\n<p><strong>TerraMaster F2-425 Plus, F4-425, F2-425.</strong> Plex and Emby install from TerraMaster's app center (Starry Hope), and TerraMaster's spec sheet lists H.264 and H.265 hardware transcoding up to 4K at 60 fps. One caution: Plex's own download manifest (version 1.43.5, 2026-10-23) lists TerraMaster packages for TOS 4 and TOS 5 & 6 only. The N150 F2-425 Plus ships TOS 7 and the 425 series is moving to TOS 7, so check that the app center build installs on your TOS version before relying on it; Docker is the fallback.</p>\n<p><strong>Synology DS225+ and DS425+.</strong> Both use the J4125, the same chip that hardware-transcodes on the DS224+ and DS423+. On the x25 models Plex logs 'failed setup for format vaapi: hwaccel initialisation returned error'. In the Plex forum thread, Synology Technical Support replies quoted on 2025-09-10 and 2025-09-15 say hardware transcoding 'is not supported on these two models' and that for products released in 2025 and beyond Synology will no longer provide the kernel graphics driver required to enable it. Plex's Synology engineer ChuckPa wrote that without the kernel drivers to access the ASIC via i915 there is nothing Plex can do. Luka Manestar's Blackvoid workaround (published 2025-09-23, updated 2026-07-15) removes the stock i915, drm_kms_helper and drm modules over SSH as root and inserts 11 replacement modules compiled per DSM version; the steps must run after each reboot via Task Scheduler, and Manestar labels it unofficial and unsupported by Synology. A forum user adds that tone mapping on 2160p video is the one thing the workaround still cannot do.</p>\n<table>\n<thead><tr><th>CPU</th><th>Graphics EUs</th><th>Max graphics clock</th><th>Plex HEVC output on NAS</th><th>Used in</th></tr></thead>\n<tbody>\n<tr><td>Intel N150 (Twin Lake, Q1 2025)</td><td>24</td><td>1.0 GHz</td><td>Yes</td><td>TerraMaster F2-425 Plus N150</td></tr>\n<tr><td>Intel N100 (Alder Lake-N, Q1 2023)</td><td>24</td><td>750 MHz</td><td>Yes</td><td>UGREEN DXP2800</td></tr>\n<tr><td>Intel N95 (Alder Lake-N, Q1 2023)</td><td>16</td><td>1.2 GHz</td><td>Yes</td><td>TerraMaster F2-425 Plus N95</td></tr>\n<tr><td>Intel Celeron N5095 (Jasper Lake, 2021)</td><td>16</td><td>750 MHz</td><td>Yes, at Plex's floor</td><td>TerraMaster F2-425, F4-425</td></tr>\n<tr><td>Intel Celeron J4125 (Gemini Lake, Q4 2019)</td><td>12</td><td>750 MHz</td><td>No, H.264 output only</td><td>Synology DS224+, DS225+, DS425+</td></tr>\n</tbody>\n</table>\n<h2>Not recommended</h2>\n<ul>\n<li><strong>Synology DS225+ and DS425+.</strong> Cheapest Intel Synology units, but the maker's own support says hardware transcoding is not supported, and the only route is a root-level module swap re-run at every boot and rebuilt for each DSM release.</li>\n<li><strong>Synology DS224+.</strong> Hardware transcoding works on its older DSM kernel, but the J4125 has half the execution units of the N100 and N150, cannot output HEVC under Plex's NAS rule, has two 1GbE ports and a 2-year warranty against 3 years on the DS225+.</li>\n<li><strong>UGREEN NASync DH2300 and DH4300 Plus.</strong> ARM processors with no Quick Sync engine, so Plex 4K is Direct Play only.</li>\n</ul>",
+  "sources": [
+   [
+    "Intel N100: 24 EUs, 750 MHz max graphics clock, Quick Sync yes, 16 GB max memory, Q1 2023",
+    "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+   ],
+   [
+    "Intel N150: 24 EUs, 1.0 GHz max graphics clock, Quick Sync yes, 16 GB max memory, Q1 2025",
+    "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html"
+   ],
+   [
+    "Intel N95: 16 EUs, 1.20 GHz max graphics clock, Quick Sync yes, 15 W, 16 GB max memory, Q1 2023",
+    "https://www.intel.com/content/www/us/en/products/sku/231800/intel-processor-n95-6m-cache-up-to-3-40-ghz/specifications.html"
+   ],
+   [
+    "Intel Celeron J4125: UHD Graphics 600, 12 EUs, 750 MHz burst, Quick Sync yes, 8 GB max memory, Q4 2019",
+    "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html"
+   ],
+   [
+    "Intel Celeron N5095: Jasper Lake UHD Graphics, 16 EUs, 450 to 750 MHz, 15 W (Notebookcheck)",
+    "https://www.notebookcheck.net/Intel-Celeron-N5095-Processor-Benchmarks-and-Specs.536303.0.html"
+   ],
+   [
+    "Plex: hardware-accelerated streaming requires Plex Pass; NAS HEVC output needs Jasper Lake or better; Docker needs the device bind-mounted",
+    "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/"
+   ],
+   [
+    "Plex: hardware HDR-to-SDR tone mapping on Linux, Docker and NAS requires Kaby Lake or newer and PMS 1.29.2+",
+    "https://support.plex.tv/articles/hdr-to-sdr-tone-mapping/"
+   ],
+   [
+    "Plex download manifest 1.43.5.11079: NAS packages for Synology, QNAP, ASUSTOR, TerraMaster TOS 4 and TOS 5 & 6, Netgear, Unraid, Thecus, Seagate, WD; no TOS 7, no UGREEN",
+    "https://plex.tv/api/downloads/5.json"
+   ],
+   [
+    "Blackvoid (Luka Manestar): x25 Synology stock i915 does not enable hardware transcoding; 11-module swap re-run after every reboot; Synology support quote",
+    "https://www.blackvoid.club/unlocking-plex-hw-transcoding-on-x25-synology-models/"
+   ],
+   [
+    "Plex forum: Synology support says hardware transcoding not supported on DS225+/DS425+ and no kernel graphics driver for 2025+ products; ChuckPa on i915; vaapi error",
+    "https://forums.plex.tv/t/synology-ds425-hardware-transcoding-issue/926093?page=4"
+   ],
+   [
+    "Marius Hosting: Plex in Docker on UGREEN NAS with /dev/dri/renderD128 and card0 mapped, Plex Pass mandatory, tested with Plex 1.43.5",
+    "https://mariushosting.com/how-to-install-plex-with-hardware-transcoding-on-your-ugreen-nas/"
+   ],
+   [
+    "UGREEN NASync DXP2800 $389.99 (compare-at $564.98), in stock, UGREEN US store, 2026-11-08",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "TerraMaster store: F2-425 Plus N150 $499.99 out of stock and N95 model $399.49; F2-425 $299.99; F4-425 $386.99, 2026-11-08",
+    "https://www.terra-master.com/products/f2-425-plus"
+   ],
+   [
+    "Synology DS225+ spec page: Celeron J4125, 2 GB DDR4 (6 GB max), 2.5GbE + 1GbE, 3-year warranty, no transcoding line",
+    "https://www.synology.com/en-us/products/DS225+#specs"
+   ]
+  ]
+ },
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 2.90362165
+ }
+}

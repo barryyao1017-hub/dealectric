@@ -1,0 +1,103 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured power figure for the UGREEN NASync DXP2800: OCinside measured about 7 W at idle and a 34.7 W peak under a combined CPU, RAM and disk stress test with two 4 TB WD Red Plus drives in RAID 1.",
+ "standout": 2,
+ "standout_why": "Compared against Starry Hope's best-NAS-for-Plex page (cites KitGuru ~24 W idle for the DXP4800 Plus and Notebookcheck 37–42 W for the DXP6800 Pro, both over $500, plus Lon.TV's N100 mini-PC transcode test, but nothing measured on any under-$500 NAS), Terabytewise (no measured figures at all, no named reviewer), and NAS Decoded (states it does no lab testing; no watts, dB or stream counts). None gives a named measurement for the DXP2800, F2-425 Plus, F4-425, F2-423 or AS5402T. Caveat: Starry Hope's separate DXP2800 model page (not in ChatGPT's results) does relay the OCinside figure, so it is new to the cited set rather than new to the web. No named reviewer's measured count of simultaneous 4K HEVC hardware transcodes on any candidate NAS could be found, so the angle cannot decide the pick.",
+ "decides": "Confirms rather than changes the pick: the DXP2800 idles near 7 W (roughly 61 kWh a year if left on), so the N100 2-bay is cheap to run as an always-on Plex box. For the F2-425 Plus and AS5402T only maker power/noise specs exist, not independent measurements, so the page should label them as such. Because no named lab has published a measured 4K-HEVC stream count for any candidate, the page should say that plainly instead of printing estimate tables like ChatGPT's '2–4 streams' row.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F4-425",
+  "TerraMaster F2-423",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Idle power, measured",
+   "value": "approx. 7 W",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "UGREEN NASync DXP2800 review – Practical testing (OCinside)",
+   "read": "2026-11-08",
+   "note": "OCinside: 'In idle mode, the NAS only requires approx. 7 watts.' Test unit fitted with two WD40EFPX 4 TB WD Red Plus drives in RAID 1 (Btrfs) plus NVMe SSDs listed on page 1 of the review; price note on page 1 dates testing to 12/2024. No author byline shown."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Peak power, measured",
+   "value": "34.7 W",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "UGREEN NASync DXP2800 review – Practical testing (OCinside)",
+   "read": "2026-11-08",
+   "note": "OCinside: 'We measured a maximum power consumption of 34.7 watts' under a combined CPU, RAM and hard-disk stress test. Same drive setup as the idle figure."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAID 1 write throughput, measured",
+   "value": "approx. 181 MB/s",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "UGREEN NASync DXP2800 review – Practical testing (OCinside)",
+   "read": "2026-11-08",
+   "note": "50 GB file written to the two-drive RAID 1 Btrfs volume in 290 s. iperf3 averaged 950 Mbit/s but on a 1 GbE test network, so it does not show the 2.5GbE port's limit."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Noise under drive access (relayed)",
+   "value": "34.2 dB",
+   "source": "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/",
+   "source_title": "UGREEN NASync DXP2800 – Starry Hope model page",
+   "read": "2026-11-08",
+   "note": "Starry Hope attributes 34.2 dB to ComputerBase with two IronWolf Pro 20 TB HDDs in access. Secondhand: the ComputerBase page itself was not opened, so treat as unverified until it is. UGREEN's own quiet-mode rating is 29–34 dB (maker spec)."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Power, maker spec (not independently measured)",
+   "value": "12 W hibernation / 31 W read-write",
+   "source": "https://www.starryhope.com/nas/models/terramaster-f2-425-plus/",
+   "source_title": "TerraMaster F2-425 Plus – Starry Hope model page",
+   "read": "2026-11-08",
+   "note": "TerraMaster spec with two Seagate 4 TB drives, N150 model. Noise spec 20 dB with two drives in standby at 1 m in a 17.3 dB(A) room. ITPro (Dave Mitchell, 23 Feb 2026) and Fstoppers (Zhen Siang Yang) both describe the fan as very quiet but publish no dB figure."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "5GbE SMB throughput, measured",
+   "value": "4.6 Gb/s read / 3.9 Gb/s write",
+   "source": "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price",
+   "source_title": "TerraMaster F2-425 Plus review: A versatile desktop NAS at a great price (ITPro)",
+   "read": "2026-11-08",
+   "note": "Dave Mitchell, ITPro, 23 Feb 2026, Iometer over 5GbE against a mirrored pool of two Kingston NVMe SSDs; iSCSI over dual-5GbE MPIO 7 Gb/s read / 5.1 Gb/s write. Figures confirmed via Starry Hope's summary; the ITPro page itself loaded only to the design section. CNX Software measured iperf3 at 4.71 Gb/s over 5GbE on a TerraMaster-supplied unit (https://www.cnx-software.com/2026/03/28/terramaster-f2-425-plus-nas-review-part-2-configuration-benchmarks-and-ai-enhanced-media-storage/). Not a transcoding measure."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Power and noise, maker spec (not independently measured)",
+   "value": "22.9 W operation / 12.7 W disk hibernation / 0.71 W sleep; 18.6 dB HDD idle",
+   "source": "https://nascompares.com/?p=66918",
+   "source_title": "Asustor AS5402T | NASCompares",
+   "read": "2026-11-08",
+   "note": "Spec table reproduced by NASCompares (Eddie Webguy, 25 Jul 2023). Drive configuration and measuring distance not stated. No Plex stream test on the page."
+  },
+  {
+   "product": "general",
+   "label": "Intel N100 concurrent Plex transcodes (relayed, mini PC not NAS)",
+   "value": "5 concurrent transcodes at about 35% CPU",
+   "source": "https://www.starryhope.com/nas/best-nas-for-plex/",
+   "source_title": "The Best NAS for Plex in 2026 Has an Intel Chip With Quick Sync (Starry Hope)",
+   "read": "2026-11-08",
+   "note": "Starry Hope (Jim Mendenhall, updated 2 Nov 2026) quotes Lon.TV's test of an Intel N100 mini PC: a 4K VP9 file and a Blu-ray MKV transcoded 'without significant CPU load', and five concurrent transcodes reached about 35% CPU. Mixed sources, not all 4K HEVC, and not run on a NAS; Lon.TV's own page not opened."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's or lab's measured count of simultaneous 4K HEVC-to-1080p hardware transcodes (with bitrate and HDR tone-mapping state) on any candidate NAS: UGREEN DXP2800, TerraMaster F2-425 Plus, F4-425, F2-423 or Asustor AS5402T. Searched NASCompares, Neowin, Android Central, ITPro, Fstoppers, CNX Software, Igor's Lab, Notebookcheck; none publishes one.",
+  "Neowin's measured power figures for the TerraMaster F4-425 Plus (search snippet: 45 W with four ST4000VN008 drives in read/write, 14 W in hibernation) and its DXP2800 and F2-425 reviews: every Neowin URL, including AMP versions, returned HTTP 403, so the figures could not be read on the page.",
+  "Android Central's AS5402T review (Plex hardware-transcoding verdict): the page and its Yahoo syndication both returned 403 or a truncated headline-only body.",
+  "Igor's Lab DXP2800 power-measurement page (page 8 of its review): HTTP 403.",
+  "Independently measured power draw and noise for the TerraMaster F2-425 Plus and F4-425 (only TerraMaster spec-sheet figures exist).",
+  "ComputerBase's primary page for the DXP2800 34.2 dB noise figure (only the Starry Hope relay was opened).",
+  "Any measurement at all for the TerraMaster F2-423 (N5095) or the base F4-425."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.8539375000000002
+ }
+}

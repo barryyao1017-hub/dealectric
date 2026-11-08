@@ -1,0 +1,114 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states Synology's own position, given in writing by Synology Technical Support (Dino Hsu, Sept 2025): for every product released in 2025 and later it will no longer ship the kernel graphics driver, so the DS225+ and DS425+ cannot hardware-transcode in Plex as shipped even though their J4125 can, and Plex's own NAS requirement for reliable HEVC output is a Jasper Lake or newer CPU, which the J4125 (Gemini Lake) in the DS224+/DS225+ does not meet.",
+ "standout": 2,
+ "standout_why": "Compared against starryhope.com (has Plex Pass, Kaby Lake tone-mapping rule, TOS 4-6 package note, but no Synology statement and no Jasper Lake HEVC-output rule), nasdecoded.com (wrongly says the DS225+'s J4125 'handles Plex hardware transcoding'), terabytewise.com (only 'confirm firmware exposes the iGPU'), computingforgeeks.com (says DS225+ ships without i915 modules and needs a community package, but gives no maker statement and treats it as a one-model quirk). None quotes Synology's policy that it applies to all 2025+ models, and none states Plex's Jasper Lake floor for HEVC output on NAS or that the Plex NAS download list (v1.43.5, Oct 2026) has no UGREEN entry.",
+ "decides": "Confirms the pick: UGREEN DXP2800 (N100, Alder Lake-N) and TerraMaster F2-425 Plus (N150, Twin Lake) clear every Plex compatibility bar (Plex Pass, Jasper Lake or newer for HEVC output, Kaby Lake or newer for hardware tone mapping). It removes every Synology Plus model under $500 from contention: the DS225+/DS425+ are excluded by Synology's own driver policy, and the DS224+ sits below Plex's HEVC-output floor and is on a 2-year warranty. It also pins the setup path per maker: UGREEN has no Plex package in Plex's download list, so the DXP2800 runs Plex in Docker with the GPU device bind-mounted, while TerraMaster has Plex packages for TOS 4 and TOS 5/6 but none listed for TOS 7.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "Synology DS224+",
+  "Synology DS225+",
+  "Synology DS425+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding requirements (NAS)",
+   "value": "Active Plex Pass; Intel Quick Sync CPU; 'NAS users will require JasperLake or better CPU to reliably transcode to HEVC output'; HEVC encoding needs Plex Media Server 1.41.3+; Docker needs the kernel GPU device bind-mounted into the container; not possible inside a virtual machine",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-08",
+   "note": "Quoted from Plex's requirements and NAS sections. Jasper Lake = N5095/N5105/N4505 (2021); Gemini Lake J4125 (DS224+/DS225+/DS425+) predates it. Alder Lake-N N100 and Twin Lake N150 are newer. TerraMaster entry requires PMS 1.13.9+."
+  },
+  {
+   "product": "general",
+   "label": "Plex hardware HDR-to-SDR tone mapping requirements (Linux, Docker, NAS)",
+   "value": "Intel 'Kaby Lake' or newer processor and Plex Media Server v1.29.2 or newer; macOS and FreeBSD get software tone mapping only; tone mapping is disabled if 'Disable video stream transcoding' is on",
+   "source": "https://support.plex.tv/articles/hdr-to-sdr-tone-mapping/",
+   "source_title": "HDR to SDR Tone Mapping | Plex Support",
+   "read": "2026-11-08",
+   "note": "Quoted from the Requirements table. N100 and N150 both satisfy it; Plex Pass still required."
+  },
+  {
+   "product": "general",
+   "label": "Plex Media Server NAS packages currently published",
+   "value": "v1.43.5.11079 for Synology (DSM 6, DSM 7, DSM 7.2.2+), QNAP, TerraMaster (TOS 4), TerraMaster (TOS 5 & 6), ASUSTOR, Netgear, Western Digital (OS 5 and OS 3), Seagate, Thecus, Unraid; no TOS 7 entry and no UGREEN entry",
+   "source": "https://plex.tv/api/downloads/5.json",
+   "source_title": "Plex downloads API (NAS section)",
+   "read": "2026-11-08",
+   "note": "Release timestamp 1792755866 = about 2026-10-23 UTC. Confirms UGREEN NASync must run Plex in Docker (UGOS Pro is not a Plex-supported NAS platform) and that TerraMaster units on TOS 7 have no TOS 7-labelled Plex build listed."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maker statement on hardware transcoding (via Technical Support)",
+   "value": "'We have disabled hardware transcoding via the kernel graphic driver'; 'starting with products released in 2025 and beyond ... we will no longer provide the driver required to enable it'; 'We have never indicated that the 25 series NAS supports hardware transcoding'; reason given: 'additional royalty fees'",
+   "source": "https://forums.plex.tv/t/synology-ds425-hardware-transcoding-issue/926093?page=5",
+   "source_title": "Synology DS425+ hardware transcoding issue - Plex Forum (page 5)",
+   "read": "2026-11-08",
+   "note": "Support replies signed 'Dino Hsu, Technical Support', pasted by forum user EZTutty on 2025-09-15 to 2025-09-17. Applies to DS225+ and DS425+ (both J4125). Secondhand quote of Synology support mail, not a Synology Knowledge Center page; no Knowledge Center article found."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Spec page: CPU, transcoding engine, memory, warranty",
+   "value": "Intel Celeron J4125, 4 cores, 2.0/2.7 GHz; no 'Hardware Transcoding Engine' line on the spec page; 2 GB DDR4 (max 6 GB, 1 slot); 3-year hardware warranty, extendable to 5",
+   "source": "https://www.synology.com/en-us/products/DS225+",
+   "source_title": "Synology DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Synology 'only guarantees full functionality, reliability, and performance for compatible drives'. Page does not mention Plex or video transcoding."
+  },
+  {
+   "product": "Synology DS224+",
+   "label": "Spec page: CPU, transcoding engine, memory, warranty",
+   "value": "Intel Celeron J4125, 4 cores, 2.0/2.7 GHz; no 'Hardware Transcoding Engine' line on the spec page; 2 GB DDR4 (max 6 GB); 2-year hardware warranty, extendable to 4",
+   "source": "https://www.synology.com/en-us/products/DS224+#specs",
+   "source_title": "Synology DS224+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Gemini Lake J4125 is older than Plex's stated 'JasperLake or better' floor for reliable HEVC output on NAS; H.264 output unaffected by that line."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maker US store price",
+   "value": "$389.99 (compare-at $564.98), in stock; DXP2800 GT (Ryzen R2514, no Quick Sync) $459.99; DXP2800 + docking station bundle $424.99; refurbished $269.99 out of stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on nas.ugreen.com. ChatGPT's $296.99 Walmart figure is not from the maker's store."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "TOS version and Plex app availability (named reviewer)",
+   "value": "Starry Hope: 'TerraMaster now lists TOS 7 for this unit' while ITPro, CNX Software and Fstoppers tested TOS 6; 'Plex and Emby install from the app center'; spec sheet lists H.264, H.265, MPEG-4, VC-1 hardware transcoding up to 4K at 60 fps",
+   "source": "https://www.starryhope.com/nas/models/terramaster-f2-425-plus/",
+   "source_title": "TerraMaster F2-425 Plus – Starry Hope",
+   "read": "2026-11-08",
+   "note": "Reviewer page, not the maker. Lists N150 model at $499.99 and N95 variant at $399.49, launch price $399.99 (Oct 2025). TerraMaster's own product page returned HTTP 429 on four attempts today."
+  },
+  {
+   "product": "general",
+   "label": "TerraMaster official guidance on Plex",
+   "value": "'Hardware-accelerated streaming on PLEX requires a Plex Pass account'; N4505 models under TOS 5.1.33 listed for H.265, MPEG-4 Part 2, MPEG-2, VC-1 hardware transcoding up to 4K (4096 x 2160) at 60 fps; N5095 models (F4-423, T6-423) named as 'good choices' for Plex",
+   "source": "https://terra-master.com/blogs/page/best-nas-for-video-decoding",
+   "source_title": "How to Choose the Best NAS for Plex 4K Video Hardware Decoding? – TerraMaster",
+   "read": "2026-11-08",
+   "note": "Maker blog; predates the 425 series, so it does not name the F2-425 Plus or N150."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster F2-425 Plus maker product page (price, warranty, Plex/Jellyfin/Emby app claim, TOS version shipped): terra-master.com returned HTTP 429 on four fetches and one storecheck.py call today.",
+  "UGREEN DXP2800 maker product page text (Docker/Plex statements, warranty, max RAM): nas.ugreen.com product page returned HTTP 429; only the Shopify price endpoint answered.",
+  "Plex's official NAS Compatibility article (support.plex.tv/articles/201373803-nas-compatibility): HTTP 403.",
+  "An official UGREEN support document for enabling Plex hardware transcoding in Docker on UGOS Pro: only third-party guides (Marius Hosting, NASCompares) surfaced in search; not opened.",
+  "A Synology Knowledge Center or spec-page statement on the 2025-series driver removal: none found; the Synology position is sourced only from support emails quoted on the Plex forum.",
+  "Whether a TOS 7-specific Plex package exists: Plex's download API lists only TOS 4 and TOS 5 & 6 builds; TerraMaster's TOS 7 release notes were not opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.90793895
+ }
+}

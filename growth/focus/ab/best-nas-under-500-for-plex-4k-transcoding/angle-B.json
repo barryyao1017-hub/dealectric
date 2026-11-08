@@ -1,0 +1,164 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that the TerraMaster F2-425 Plus's Intel N150 iGPU delivers 24 EU × 1.0 GHz = 24 EU·GHz of shader throughput for $399.49 ($16.65 per EU·GHz), 33% more than the UGREEN DXP2800's N100 (24 EU × 0.75 GHz = 18 EU·GHz, $389.99, $21.67 per EU·GHz) for a $9.50 price gap, with Synology's J4125 models at 12 EU × 0.75 GHz = 9 EU·GHz.",
+ "standout": 2,
+ "standout_why": "Compared against starryhope.com (prices, Plex Pass 3-year cost, idle watts for DXP4800 Plus/DXP6800 Pro only; no per-CPU iGPU figures), nasdecoded.com (no prices, no numbers), terabytewise.com (Quick Sync yes/no only), datacenterdisk.com (prices and core counts only), computingforgeeks.com (yearly electricity cost from TerraMaster/UGREEN rated watts at $0.20/kWh, so the power-cost derivation is already partly covered) and ChatGPT's own answer (unverified 'estimated 2–4 streams' table). None of them derive iGPU execution units × clock from Intel ARK or price per unit of iGPU throughput, which is the hardware budget that decides HDR tone-mapped 4K transcodes. It is not a 3 because no named reviewer has published measured simultaneous 4K HEVC transcode counts for any of these exact NAS units, so the proxy cannot be converted to a cost-per-stream figure.",
+ "decides": "Confirms the F2-425 Plus over the DXP2800 as the pick: for $9.50 more it buys 33% more iGPU shader clock on the same 24-EU layout (plus a third NVMe slot and dual 5GbE), and it rules out the Synology J4125 units (DS225+, DS425+) on hardware alone: half the execution units of the N100/N150 at the same 750 MHz, before the DSM iGPU-driver removal already noted on our page. The Asustor AS5402T's N5105 sits between them (19.2 EU·GHz) but at a higher Amazon price than either, so it stays a runner-up.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "Synology DS225+",
+  "TerraMaster F4-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, maker US store",
+   "value": "$389.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Shopify storecheck search on nas.ugreen.com; in stock. DXP2800 GT (Ryzen) $459.99; refurbished DXP2800 $269.99 but out of stock."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price, maker US store",
+   "value": "$399.49 (compare-at $499.99)",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Shopify storecheck search; in stock. Store text: 2-bay x86 hybrid NAS, quad-core, 8 GB RAM, 2× 5GbE."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price, maker US store",
+   "value": "$299.99",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Shopify storecheck search; in stock; no discount shown. Store text: Intel x86 quad-core, 4 GB RAM, 'hardware-level 4K H.265 decoding'. ComputingForGeeks listed it at $254.99 on 2026-10-24, so the maker price is higher today."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Price, Amazon (comparison only, do not print)",
+   "value": "$406.99",
+   "source": "https://www.amazon.com/dp/B0CM28JVWX",
+   "source_title": "Asustor AS5402T 2 Bays and 4 M.2 Slots DISKLESS NAS",
+   "read": "2026-11-08",
+   "note": "amzcheck asin; same price on ASIN B0C5MB5MTS (785 ratings). Policy: Amazon price used only to compare with maker/reseller prices."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Price, Amazon (comparison only, do not print)",
+   "value": "$364.29",
+   "source": "https://www.amazon.com/dp/B0FB7KQLR1",
+   "source_title": "Synology DS225+ Private Cloud Media Server (2-Bay Diskless NAS)",
+   "read": "2026-11-08",
+   "note": "amzcheck asin; 857 ratings, 83% five-star. Policy: comparison only."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Intel N100 iGPU spec",
+   "value": "24 EUs, 750 MHz max graphics clock, 6 W base power, Quick Sync yes, 16 GB max memory, launched Q1 2023",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 specifications – Intel ARK",
+   "read": "2026-11-08",
+   "note": "Maker spec page. GPU listed as Intel UHD Graphics."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Intel N150 iGPU spec",
+   "value": "24 EUs, 1.0 GHz max graphics clock, 6 W base power, Quick Sync yes, 16 GB max memory, launched Q1 2025",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel Processor N150 specifications – Intel ARK",
+   "read": "2026-11-08",
+   "note": "Maker spec page. Intel lists max memory 16 GB (memory-type dependent); our page's '32 GB' cell comes from TerraMaster, so flag the conflict."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Intel Celeron N5105 iGPU spec",
+   "value": "24 EUs, 450 MHz base / 800 MHz burst graphics clock, 10 W TDP, Quick Sync yes, 16 GB max memory, launched Q1 2021",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 specifications – Intel ARK",
+   "read": "2026-11-08",
+   "note": "Maker spec page."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Intel Celeron J4125 iGPU spec",
+   "value": "12 EUs, 250 MHz base / 750 MHz burst graphics clock, 10 W TDP, Quick Sync yes, 8 GB max memory, launched Q4 2019",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 specifications – Intel ARK",
+   "read": "2026-11-08",
+   "note": "Maker spec page; GPU is Intel UHD Graphics 600. Applies equally to DS224+ and DS425+ (same CPU)."
+  },
+  {
+   "product": "general",
+   "label": "Derived: iGPU shader budget (EUs × max graphics clock)",
+   "value": "N150 24.0 EU·GHz; N5105 19.2; N100 18.0; J4125 9.0",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel ARK spec pages (N150, N5105, N100, J4125 as cited above)",
+   "read": "2026-11-08",
+   "note": "24 × 1.0 = 24.0; 24 × 0.8 = 19.2; 24 × 0.75 = 18.0; 12 × 0.75 = 9.0. Method: the fixed-function Quick Sync decode/encode block is shared across these parts, but Plex's HDR-to-SDR tone mapping and scaling run as shaders on the execution units, so EU count × clock is the hardware headroom for tone-mapped 4K transcodes. It is a proxy, not a measured stream count."
+  },
+  {
+   "product": "general",
+   "label": "Derived: price per EU·GHz of iGPU throughput",
+   "value": "F2-425 Plus $16.65; AS5402T $21.20; DXP2800 $21.67; DS225+ $40.48",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "Maker-store and Amazon prices cited above divided by the EU·GHz figures",
+   "read": "2026-11-08",
+   "note": "$399.49 / 24.0 = $16.65; $406.99 / 19.2 = $21.20; $389.99 / 18.0 = $21.67; $364.29 / 9.0 = $40.48. AS5402T and DS225+ use Amazon comparison prices, so print the ranking, not those two dollar figures."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Derived: premium over DXP2800 for the iGPU step-up",
+   "value": "$9.50 for +33% iGPU clock (1.0 vs 0.75 GHz) on the same 24 EUs",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "TerraMaster and UGREEN US store prices cited above; Intel ARK clocks",
+   "read": "2026-11-08",
+   "note": "$399.49 − $389.99 = $9.50; 1.0 / 0.75 = 1.33. The $9.50 also buys a third NVMe slot and 2× 5GbE vs 1× 2.5GbE per our page's spec cells."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Measured idle power of the N150 4-bay sibling (NASCompares)",
+   "value": "13.3 W idle with 3 SSDs and no HDDs; 55 W idle with four 7,200 rpm HDDs; 61–63 W under read/write load",
+   "source": "https://nascompares.com/?p=84265",
+   "source_title": "The Terramaster F4-425 PLUS NAS Review – The New $500+ NAS Standard? – NAS Compares",
+   "read": "2026-11-08",
+   "note": "Derived yearly cost at the SSD-only idle figure: 13.3 W × 8,760 h / 1,000 = 116.5 kWh × $0.17/kWh = $19.80 per year. Sibling unit, not the F2-425 Plus itself; HDD figures are dominated by the four 7,200 rpm drives. NASCompares gives the F4-425 Plus price as $569.99 ($484.99 introductory), so the 4-bay Plus is over budget at list."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Measured Plex result for the same-generation Jasper Lake iGPU (NASCompares F4-423, N5105)",
+   "value": "All four 4K tests failed, including 4K HEVC 120 Mbps to 1080p 8 Mbps H.264; 1080p HEVC to H.264 played but with high CPU",
+   "source": "https://nascompares.com/2022/08/15/terramaster-f4-423-plex-media-server-nas-4k-1080p-tests-h-264-hevc/",
+   "source_title": "How Well Does the Terramaster F4-423 NAS Perform as a Plex Media Server? – NAS Compares",
+   "read": "2026-11-08",
+   "note": "Single-stream tests, default 4 GB RAM, 1GbE; the article does not say whether Plex hardware transcoding was enabled, so this is a floor, not a verdict on Quick Sync. Same Jasper Lake iGPU family as the F2-425's N5095 and the AS5402T's N5105."
+  },
+  {
+   "product": "general",
+   "label": "Rival derived figure already published (for standout context)",
+   "value": "ComputingForGeeks: DXP2800 $28.70/yr, F2-425 $38.54/yr, DS225+ $29.75/yr at $0.20/kWh from rated access watts",
+   "source": "https://computingforgeeks.com/best-2-bay-nas/",
+   "source_title": "Best 2-Bay NAS (2026): Backups, Plex, Beginners | ComputingForGeeks",
+   "read": "2026-11-08",
+   "note": "Rated-watt, worst-case arithmetic (access rating × 8,760 h). This is why a power-cost derivation alone would score 1, not 2."
+  }
+ ],
+ "unsourced": [
+  "Intel ARK page for the Celeron N5095 (F2-425 CPU): SKU guesses 212327, 212329 and 212330 redirected to the N6005, N5100 and N6000 pages, so the N5095's EU count and graphics clock are not sourced and the F2-425 has no EU·GHz figure.",
+  "Measured number of simultaneous 4K HEVC-to-1080p hardware transcodes on the UGREEN DXP2800, TerraMaster F2-425 Plus, F2-425, Asustor AS5402T or Synology DS224+/DS225+ from a named reviewer: searched NASCompares (DXP2800 review, F4-425 Plus review, F4-423 Plex test), CNX Software F2-425 Plus part 2, Neowin F2-425 and F4-425 Plus reviews (403), and the Reddit N100 HEVC test thread (TLS error). Only unnamed listicles give counts, so no cost-per-stream figure.",
+  "Measured idle power for the F2-425 Plus (2-bay) and DXP2800 from a named reviewer; only the F4-425 Plus sibling (NASCompares) and maker-rated figures were found.",
+  "Synology DS224+ diskless US price: Amazon search returned only drive bundles; synology.com was not opened within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.2274988
+ }
+}
