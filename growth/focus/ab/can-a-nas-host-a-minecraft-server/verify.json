@@ -1,0 +1,362 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "A",
+  "why_angle": "The two cited rivals (racksandwatts.com and esp32.co.uk) give CPU names, and in esp32's case mixed clock claims. Neither gives a single-thread benchmark or says that the DXP4800 Plus's 4.4 GHz applies to only one of its five cores, and neither mentions Minecraft. This page ranks each NAS on PassMark single-thread rating (3,197 vs 1,879 / 1,492 / 1,151 / 1,136). It shows Intel's 1 P-core + 4 E-core split, and it ties both to the single-threaded server tick using PaperMC's own wording.",
+  "slug": "can-a-nas-host-a-minecraft-server",
+  "must": [
+   "the best one is the UGREEN DXP4800 Plus",
+   "scores 3,197 in PassMark single-thread"
+  ],
+  "unsourced": [
+   "UGREEN's own spec pages for the DXP2800 and DXP4800 Plus. The nas.ugreen.com product pages returned HTTP 429 on 2026-11-08, although the store search still returned prices. The DXP4800 Plus RAM figures therefore come from KitGuru, and the DXP2800's 8 GB installed / 16 GB max come from The Gadgeteer (Julian Perry) and Intel's N100 limit.",
+   "TerraMaster F4-424 Pro and F2-425 Plus are left out of the table. TerraMaster's store names only an 'Intel Core i3 8-core' and a 'Quad-core' CPU, and both TerraMaster product pages returned 429. The i3-N305 and N150 PassMark figures appear in the text as chip examples only.",
+   "Which core UGOS gives a Docker container's main thread (P-core or E-core). I found no maker document or reviewer test.",
+   "Minecraft TPS or player counts measured by a named reviewer on any of these NAS units.",
+   "Today's Amazon prices and titles: amzcheck was blocked on 2026-11-08 on my run. The ASINs come from angle agent F's amzcheck read the same day."
+  ],
+  "products": [
+   {
+    "slug": "synology-ds925-plus",
+    "brand": "Synology",
+    "program": "amazon:us",
+    "asin": "B0F43SZHWV",
+    "category": "nas",
+    "name": "Synology DiskStation DS925+ 4-Bay NAS, AMD Ryzen V1500B, 4 GB DDR4 ECC, 2× 2.5GbE",
+    "model": "DS925+",
+    "url": "https://www.synology.com/en-us/products/DS925+",
+    "price": null,
+    "verified": "2026-11-08",
+    "specs": [
+     [
+      "CPU",
+      "AMD Ryzen V1500B, 4 cores / 8 threads, 2.2 GHz (no boost)"
+     ],
+     [
+      "Memory",
+      "4 GB DDR4 ECC installed, 2 slots, 32 GB max (2× 16 GB)"
+     ],
+     [
+      "Bays",
+      "4× 3.5\"/2.5\" SATA, expandable to 9 with DX525"
+     ],
+     [
+      "M.2",
+      "2× M.2 2280 NVMe, cache or storage pool"
+     ],
+     [
+      "Network",
+      "2× 2.5GbE RJ-45"
+     ],
+     [
+      "Power (Synology)",
+      "37.91 W access, 12.33 W HDD hibernation"
+     ]
+    ],
+    "warranty": "3 years, extendable to 5 years in North America (Synology)",
+    "returns": "Amazon return terms shown on the listing",
+    "summary": "A 4-bay Synology with ECC memory and DSM. For a game server, its CPU has the lowest PassMark single-thread rating in this comparison.",
+    "fit": "Buyers who want DSM for backups and file sharing first and run a game server only occasionally.",
+    "caveats": [
+     "PassMark single-thread 1,136 (14 samples), about 36% of the Pentium Gold 8505's 3,197",
+     "Synology withholds full warranty and support if non-Synology memory is installed",
+     "All memory modules must be identical (Synology)"
+    ]
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "brand": "Synology",
+    "program": "amazon:us",
+    "asin": "B0FB7KQLR1",
+    "category": "nas",
+    "name": "Synology DiskStation DS225+ 2-Bay NAS, Intel Celeron J4125, 2 GB DDR4",
+    "model": "DS225+",
+    "url": "https://www.synology.com/en-us/products/DS225+",
+    "price": null,
+    "verified": "2026-11-08",
+    "specs": [
+     [
+      "CPU",
+      "Intel Celeron J4125, 4 cores / 4 threads, 2.0 GHz base, 2.7 GHz turbo"
+     ],
+     [
+      "Memory",
+      "2 GB DDR4 non-ECC installed, 1 slot, 6 GB max (2 GB + 4 GB)"
+     ],
+     [
+      "Bays",
+      "2× 3.5\"/2.5\" SATA, hot-swappable"
+     ],
+     [
+      "Network",
+      "1× 1GbE + 1× 2.5GbE RJ-45"
+     ]
+    ],
+    "warranty": "",
+    "returns": "Amazon return terms shown on the listing",
+    "summary": "Synology's 2-bay Plus model. It is fine for files, but its CPU and 6 GB memory ceiling make it a weak Minecraft host.",
+    "fit": "File sharing and backups for a household; not a game server.",
+    "caveats": [
+     "PassMark single-thread 1,151, 61% of the DXP2800's N100 (1,879)",
+     "6 GB total memory ceiling, shared with DSM and every container",
+     "Synology withholds full warranty and support if non-Synology memory is installed"
+    ]
+   },
+   {
+    "slug": "qnap-ts-464-8g",
+    "brand": "QNAP",
+    "program": "amazon:us",
+    "asin": "B0BQ5TWCL8",
+    "category": "nas",
+    "name": "QNAP TS-464-8G 4-Bay NAS, Intel Celeron N5095, 8 GB DDR4, 2× 2.5GbE",
+    "model": "TS-464-8G",
+    "url": "https://www.qnap.com/en-us/product/ts-464",
+    "price": null,
+    "verified": "2026-11-08",
+    "specs": [
+     [
+      "CPU",
+      "Intel Celeron N5095, 4 cores / 4 threads, burst up to 2.9 GHz"
+     ],
+     [
+      "Memory",
+      "8 GB DDR4 installed, 2 SODIMM slots, 16 GB max (2× 8 GB)"
+     ],
+     [
+      "Bays",
+      "4× 3.5\" SATA, hot-swappable"
+     ],
+     [
+      "M.2",
+      "2× M.2 2280 PCIe Gen 3 x1"
+     ],
+     [
+      "Network",
+      "2× 2.5GbE"
+     ],
+     [
+      "Power (QNAP)",
+      "40.5 W operating, 21.6 W disk standby, drives fully populated"
+     ]
+    ],
+    "warranty": "",
+    "returns": "Amazon return terms shown on the listing",
+    "summary": "A 4-bay QNAP running QTS and Container Station, with 8 GB installed. It runs a Minecraft container, but its single-thread rating is below the cheaper DXP2800's.",
+    "fit": "Buyers already invested in QNAP's apps who want four bays.",
+    "caveats": [
+     "PassMark single-thread 1,492, 47% of the Pentium Gold 8505's 3,197",
+     "16 GB memory ceiling"
+    ]
+   }
+  ],
+  "page": {
+   "title": "Can a NAS host a Minecraft server for friends, and which one is best (2026)? RAM, clocks, Docker and reaching it from outside",
+   "h1": "Can a NAS host a Minecraft server for friends, and which one is best? (2026)",
+   "desc": "Yes, in Docker. We rank the UGREEN DXP4800 Plus, DXP2800, QNAP TS-464 and Synology DS925+ / DS225+ on the CPU figure a Minecraft server needs, single-thread speed, plus RAM and the Bedrock port changes.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> Yes, a NAS can host a Minecraft server for friends in Docker, and the best one is the UGREEN DXP4800 Plus. Its CPU scores 3,197 in PassMark single-thread, 2.1× the QNAP TS-464 and 2.8× the Synology DS925+, and a Minecraft Java server ticks its world on one thread.</p>",
+   "columns": [
+    [
+     "cpu",
+     "CPU and cores"
+    ],
+    [
+     "turbo",
+     "Top clock"
+    ],
+    [
+     "st",
+     "PassMark single-thread"
+    ],
+    [
+     "vs",
+     "vs DXP4800 Plus"
+    ],
+    [
+     "ram",
+     "RAM shipped / max"
+    ],
+    [
+     "bays",
+     "Bays"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp4800-plus",
+     "model": "UGREEN NASync DXP4800 Plus",
+     "cells": {
+      "cpu": "Intel Pentium Gold 8505: 1 P-core + 4 E-cores, 6 threads (Intel)",
+      "turbo": "4.4 GHz on the 1 P-core; 3.3 GHz on the E-cores (Intel)",
+      "st": "3,197",
+      "vs": "100%",
+      "ram": "8 GB DDR5 / 64 GB (KitGuru)",
+      "bays": "4"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "cpu": "Intel N100: 4 cores / 4 threads (PassMark)",
+      "turbo": "3.4 GHz (Intel)",
+      "st": "1,879",
+      "vs": "59%",
+      "ram": "8 GB DDR5 / 16 GB (The Gadgeteer, Intel)",
+      "bays": "2"
+     }
+    },
+    {
+     "slug": "qnap-ts-464-8g",
+     "model": "QNAP TS-464",
+     "cells": {
+      "cpu": "Intel Celeron N5095: 4 cores / 4 threads (QNAP)",
+      "turbo": "2.9 GHz burst (QNAP)",
+      "st": "1,492",
+      "vs": "47%",
+      "ram": "8 GB DDR4 / 16 GB (QNAP)",
+      "bays": "4"
+     }
+    },
+    {
+     "slug": "synology-ds925-plus",
+     "model": "Synology DS925+",
+     "cells": {
+      "cpu": "AMD Ryzen V1500B: 4 cores / 8 threads (Synology)",
+      "turbo": "2.2 GHz, no boost (Synology, PassMark)",
+      "st": "1,136 (14 samples)",
+      "vs": "36%",
+      "ram": "4 GB DDR4 ECC / 32 GB (Synology)",
+      "bays": "4"
+     }
+    },
+    {
+     "slug": "synology-ds225-plus",
+     "model": "Synology DS225+",
+     "cells": {
+      "cpu": "Intel Celeron J4125: 4 cores / 4 threads (Synology)",
+      "turbo": "2.7 GHz turbo (Synology)",
+      "st": "1,151",
+      "vs": "36%",
+      "ram": "2 GB DDR4 / 6 GB, one slot (Synology)",
+      "bays": "2"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><p>All five run Docker on x86, so all five can run a Minecraft Java server container. What separates them is how fast one core is, because that core runs the server's world tick. Single-thread figures are PassMark's averages for each CPU as of 8 November 2026. They are not measured inside these NAS units.</p><ul><li><strong>DXP4800 Plus vs DXP2800:</strong> 3,197 / 1,879 = <strong>1.70×</strong> the single-thread speed for $230 more ($619.99 − $389.99 at UGREEN's US store, 2026-11-08).</li><li><strong>DXP4800 Plus vs QNAP TS-464:</strong> 3,197 / 1,492 = <strong>2.14×</strong>.</li><li><strong>DXP4800 Plus vs Synology DS925+:</strong> 3,197 / 1,136 = <strong>2.81×</strong>. PassMark's V1500B figure rests on 14 samples, so treat it as approximate.</li><li><strong>The budget pick still beats the 4-bay rivals:</strong> the DXP2800's N100 rates 1,879 / 1,492 = 1.26× the TS-464's N5095 and 1,879 / 1,136 = 1.65× the DS925+'s V1500B.</li><li><strong>Speed per dollar:</strong> DXP4800 Plus 3,197 / 619.99 = 5.2 points per dollar; DXP2800 1,879 / 389.99 = 4.8. The faster box doesn't cost more per point.</li><li><strong>Synology's two models are level:</strong> DS925+ 1,136 vs DS225+ 1,151, a 1% gap. The 4-bay Synology is no faster a game host than the 2-bay one.</li><li><strong>Memory headroom:</strong> the DS225+ tops out at 6 GB in total (2 GB + 4 GB in one slot), shared by DSM and every container. The DXP4800 Plus ships with 8 GB DDR5 and takes up to 64 GB (KitGuru).</li></ul><table><thead><tr><th>Use</th><th>Fits</th><th>Deciding figure</th></tr></thead><tbody><tr><td>Java server for a friend group, plus four drives of storage and other Docker apps</td><td>UGREEN DXP4800 Plus</td><td>3,197 single-thread; 64 GB RAM ceiling</td></tr><tr><td>A smaller group, two drives, lowest price</td><td>UGREEN DXP2800</td><td>1,879 single-thread, higher than every QNAP and Synology here</td></tr><tr><td>You already use QNAP's QTS apps and want four bays</td><td>QNAP TS-464</td><td>1,492 single-thread; 8 GB shipped, 16 GB max</td></tr><tr><td>Backups and file sharing first, a game server rarely</td><td>Synology DS925+</td><td>ECC memory to 32 GB; 1,136 single-thread</td></tr></tbody></table><h2>One fast core decides it, and the DXP4800 Plus has exactly one</h2><p>PaperMC's Folia README describes standard Paper as single-threaded: <em>\"the current Paper (single threaded) can be viewed as one giant 'region' that encompasses all chunks in all worlds.\"</em> Folia, the multithreaded fork, asks for at least 16 cores and a large player count, so it doesn't suit a home NAS. A friends-sized server lives or dies on one core.</p><p>That is also why the \"4.4 GHz\" in UGREEN's listing needs a footnote. Intel's spec sheet for the Pentium Gold 8505 lists <strong>1 performance core at up to 4.40 GHz and 4 efficient cores at up to 3.30 GHz</strong>. Only one core reaches the advertised clock, and PassMark's single-thread test, which runs one thread, scores that fast core at 3,197. We have not seen a published test of which core UGOS gives a container's main thread. Even on an E-core, the ceiling is 3.3 GHz, above the TS-464's 2.9 GHz and the DS925+'s 2.2 GHz.</p><p>Core count and clock claims mislead in both directions:</p><ul><li><strong>More cores:</strong> Intel's 8-core i3-N305 has a slightly higher PassMark CPU Mark than the 8505 (9,337 vs 8,997, +3.8%), but its single-thread rating is 2,032. The 8505 is 3,197 / 2,032 = 1.57× faster on the thread Minecraft uses.</li><li><strong>Higher turbo:</strong> Intel's N150 is sold as \"up to 3.6 GHz\" against the N100's 3.4 GHz, yet PassMark rates them 1,889 vs 1,879, a 0.5% gap.</li><li><strong>No turbo at all:</strong> the DS925+'s Ryzen V1500B runs at 2.2 GHz with no boost. That is why a 4-bay Synology rates lowest here.</li></ul><h3>If any friend plays Bedrock</h3><p>GeyserMC says that from Bedrock 26.60 (27 October 2026) Bedrock clients stopped connecting over RakNet, the transport that old \"forward UDP 19132\" guides were written for. Bedrock players now join over Mojang's NetherNet. On any of these x86 boxes, two setups work:</p><ul><li><strong>Java server plus Geyser</strong> (build 1237 or later, NetherNet enabled): forward 19132 on <strong>both TCP and UDP</strong>, because NetherNet needs a TCP port for signaling. In Docker, GeyserMC points to <code>-DgeyserAdvertiseAddresses</code> for servers \"in containers or behind a NAT\".</li><li><strong>Bedrock Dedicated Server</strong> (itzg/minecraft-bedrock-server image): TCP 19132 for signaling, plus a UDP range set in <code>SERVER_UDP_PORTS</code> with at least one port per player. The README says \"BDS does not listen on UDP port 19132\". With the default max-players of 10, that means TCP 19132 plus 10 UDP ports.</li></ul><p>With either setup, keep the NAS admin page off the internet and forward only the game ports. {buy:ugreen-nasync-dxp4800-plus}</p><h2>Not recommended</h2><p><strong>Synology DS225+ as a Minecraft host.</strong> Its Celeron J4125 rates 1,151 single-thread, 61% of the DXP2800's N100 (1,151 / 1,879). It ships with 2 GB in a single slot and tops out at 6 GB. Synology also withholds full warranty and support if you fit non-Synology memory. It is fine as a file server, but your friends will be playing on its slowest component. The DXP2800 is the 2-bay to buy for this job. {buy:ugreen-nasync-dxp2800}</p><p><strong>Synology DS925+ bought mainly to run a game server.</strong> It is the slowest single thread in this table (1,136) and ships with 4 GB. Buy it for DSM and ECC memory, not for Minecraft.</p>",
+   "sources": [
+    [
+     "DXP4800 Plus price $619.99, in stock, UGREEN US store (read 2026-11-08)",
+     "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"
+    ],
+    [
+     "DXP2800 price $389.99, in stock, UGREEN US store (read 2026-11-08)",
+     "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+    ],
+    [
+     "Pentium Gold 8505: 1 P-core (4.40 GHz) + 4 E-cores (3.30 GHz), 6 threads, 15 W (Intel, read 2026-11-08)",
+     "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html"
+    ],
+    [
+     "Intel N100: 4 cores, 3.40 GHz, 16 GB max memory (Intel, read 2026-11-08)",
+     "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "PassMark single-thread: Pentium Gold 8505 3,197, N100 1,879, Ryzen V1500B 1,136 (14 samples) (read 2026-11-08)",
+     "https://www.cpubenchmark.net/compare/4775vs5157vs4304/Intel-Pentium-Gold-8505-vs-Intel-N100-vs-AMD-Ryzen-Embedded-V1500B"
+    ],
+    [
+     "PassMark single-thread: Celeron N5095 1,492, Celeron J4125 1,151, N150 1,889 (read 2026-11-08)",
+     "https://www.cpubenchmark.net/compare/4472vs3667vs6304/Intel-Celeron-N5095-vs-Intel-Celeron-J4125-vs-Intel-N150"
+    ],
+    [
+     "PassMark: i3-N305 single-thread 2,032, CPU Mark 9,337, 8 cores (read 2026-11-08)",
+     "https://www.cpubenchmark.net/compare/4331vs5157vs5213/Intel-Celeron-N5100-vs-Intel-N100-vs-Intel-i3-N305"
+    ],
+    [
+     "DXP4800 Plus: 8 GB DDR5 installed, 64 GB max, 4 bays (KitGuru, Simon Crisp, read 2026-11-08)",
+     "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/"
+    ],
+    [
+     "DXP2800: Intel N100 4C/4T, 8 GB DDR5 installed, expandable to 16 GB, 2 bays (The Gadgeteer, Julian Perry, read 2026-11-08)",
+     "https://the-gadgeteer.com/2025/10/07/ugreen-nasync-dxp2800-review-another-great-nas/"
+    ],
+    [
+     "DS925+: Ryzen V1500B 4C/8T 2.2 GHz, 4 GB ECC, 32 GB max, 4 bays (Synology, read 2026-11-08)",
+     "https://www.synology.com/en-us/products/DS925+#specs"
+    ],
+    [
+     "DS225+: Celeron J4125 2.7 GHz turbo, 2 GB, one slot, 6 GB max, 2 bays (Synology, read 2026-11-08)",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "TS-464: Celeron N5095 up to 2.9 GHz, 8 GB, 16 GB max, 4 bays (QNAP, read 2026-11-08)",
+     "https://www.qnap.com/en-us/product/ts-464/specs/hardware"
+    ],
+    [
+     "Paper's tick is single-threaded; Folia wants 16+ cores (PaperMC Folia README, read 2026-11-08 by angle agent A)",
+     "https://github.com/PaperMC/Folia"
+    ],
+    [
+     "Bedrock clients stop using RakNet with 26.60; Geyser 1237+ needs TCP and UDP 19132 (GeyserMC blog, read 2026-11-08 by angle agent D)",
+     "https://geysermc.org/blog/preparing-for-nethernet"
+    ],
+    [
+     "Bedrock Dedicated Server in Docker: TCP 19132 signaling, one UDP port per player (itzg README, read 2026-11-08 by angle agent D)",
+     "https://github.com/itzg/docker-minecraft-bedrock-server"
+    ]
+   ]
+  }
+ },
+ "checked": 94,
+ "changed": [
+  {
+   "where": "page.rows[ugreen-nasync-dxp2800].cells.ram",
+   "was": "16 GB max, Intel's N100 limit (Intel)",
+   "now": "8 GB DDR5 / 16 GB (The Gadgeteer, Intel)",
+   "why": "The Gadgeteer's review (Julian Perry, read 2026-11-08) lists 'Memory (RAM): 8GB DDR5, expandable up to 16GB' and 'Intel N100, 4 cores / 4 threads'. This fills the shipped-RAM gap with a source I opened. Added that source and updated unsourced[0] to match."
+  },
+  {
+   "where": "products[synology-ds925-plus].caveats[0]",
+   "was": "PassMark single-thread 1,136, about 36% of the Pentium Gold 8505's 3,197 (14-sample average)",
+   "now": "PassMark single-thread 1,136 (14 samples), about 36% of the Pentium Gold 8505's 3,197",
+   "why": "The 14 samples belong to the V1500B, not the 8505. PassMark shows 154 samples for the 8505, so the old wording pointed the sample count at the wrong chip."
+  },
+  {
+   "where": "page.after, 'No turbo at all' bullet",
+   "was": "That is why a 4-bay that costs about as much as the DXP4800 Plus rates lowest here.",
+   "now": "That is why a 4-bay Synology rates lowest here.",
+   "why": "The price comparison had no source. The DS925+ price is null in the draft and Amazon was walled, so the price claim was cut and the benchmark claim kept."
+  },
+  {
+   "where": "unsourced[0]",
+   "was": "UGREEN's own spec page ... I couldn't open a source for the DXP2800's installed 8 GB ...",
+   "now": "UGREEN's own spec pages ... DXP2800's 8 GB installed / 16 GB max come from The Gadgeteer (Julian Perry) and Intel's N100 limit.",
+   "why": "The DXP2800's installed RAM now has a source."
+  },
+  {
+   "where": "page.after, '4.4 GHz in UGREEN's listing'",
+   "was": "4.4 GHz in UGREEN's listing",
+   "now": "4.4 GHz in UGREEN's listing",
+   "why": "not re-read: the nas.ugreen.com product page returned HTTP 429 to storecheck product and WebFetch. Kept as recorded. Intel's page confirms 4.40 GHz max turbo for the 8505."
+  },
+  {
+   "where": "products[synology-ds225-plus].specs Bays 'hot-swappable'",
+   "was": "hot-swappable",
+   "now": "hot-swappable",
+   "why": "not re-read: Synology's DS225+ spec table shows a 'Hot Swappable Drive' row, but the value didn't render in the fetched text. Kept as recorded; nothing contradicts it."
+  },
+  {
+   "where": "prices $619.99 / $389.99",
+   "was": "$619.99 / $389.99",
+   "now": "$619.99 / $389.99",
+   "why": "Re-read 2026-11-08 with storecheck search on nas.ugreen.com: DXP4800 Plus 619.99 available, DXP2800 389.99 available. No change."
+  }
+ ],
+ "removed": [],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.6858775
+ }
+}

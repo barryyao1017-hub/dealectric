@@ -1,0 +1,81 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that since Bedrock 26.50 (September 2026) the Bedrock Dedicated Server uses Mojang's WebRTC-based NetherNet transport by default, and that since 26.60 (27 October 2026) Bedrock clients no longer connect over RakNet. The old 'forward UDP 19132' setup therefore stops working: you now need TCP 19132 for signaling plus a range of UDP ports with one port per player (or TCP+UDP on 19132 for Geyser). playit.gg also says Bedrock Dedicated Server 'can't connect to playit by itself', so it needs a WaterdogPE proxy.",
+ "standout": 2,
+ "standout_why": "racksandwatts.com and esp32.co.uk (both cited) never mention Minecraft, game servers, Bedrock/Java, port forwarding or tunnels. Their only 'ports' are LAN ports such as 10GbE. ChatGPT's answer only says to forward TCP 25565 or use a tunnel, and never covers Bedrock networking. Our own page (dealectric.com, read 2026-11-08) is now wrong: it gives the itzg Bedrock image as '19132 UDP' and recommends playit.gg with no caveat for Bedrock. The single-thread tick-loop point is already on our page, so it is not new.",
+ "decides": "This doesn't change which NAS wins, because the transport works the same on any x86 Docker NAS (DXP2800, DXP4800 Plus, TS-464, DS925+). It does decide whether the shopper's plan works if any friend plays Bedrock (phone, Windows, console via Geyser). Two setups now work. (1) A Java server (itzg/minecraft-server, TCP 25565) plus Geyser build 1237 or later with transport set to nethernet, and 19132 open on both TCP and UDP. On Docker, Geyser also needs -DgeyserAdvertiseAddresses, because GeyserMC says it is for servers 'in containers or behind a NAT'. (2) Bedrock Dedicated Server with TCP 19132, a UDP range of at least max-players ports (default 10) and the public IP set in SERVER_UDP_PORTS. On playit.gg, that means adding WaterdogPE with online-mode=false. Either way the page should keep the 'Java server + Geyser on an x86 NAS' route as the main recommendation and correct the Bedrock port row.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-464",
+  "Synology DS925+",
+  "TerraMaster F4-424 Pro"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Bedrock Dedicated Server default transport (Mojang 26.50 changelog, 'Dedicated server' section)",
+   "value": "\"NetherNet is now the default transport used by dedicated servers.\" (BDS 1.26.50.5; released 15 September 2026)",
+   "source": "https://minecraft.wiki/w/Bedrock_Edition_26.50",
+   "source_title": "Bedrock Edition 26.50 – Minecraft Wiki",
+   "read": "2026-11-08",
+   "note": "Mojang's changelog (https://www.minecraft.net/en-us/article/minecraft--bedrock-edition-26-50-changelog) timed out twice. This is the wiki's copy of the changelog line, and the wiki's release date."
+  },
+  {
+   "product": "general",
+   "label": "What NetherNet is; RakNet deprecation",
+   "value": "\"a peer-to-peer networking transport used in Bedrock Edition, built on WebRTC\"; \"In 26.60, RakNet was deprecated.\" The dedicated server's warning for non-NetherNet connections became an error in 26.60",
+   "source": "https://minecraft.wiki/w/NetherNet",
+   "source_title": "NetherNet – Minecraft Wiki",
+   "read": "2026-11-08",
+   "note": "Page last edited 30 October 2026."
+  },
+  {
+   "product": "general",
+   "label": "Bedrock clients stop using RakNet (GeyserMC project)",
+   "value": "\"With Minecraft: Bedrock Edition 26.60, planned for October 27th, 2026, Bedrock clients will stop connecting over RakNet.\" \"After that date, Bedrock players can't join servers that haven't made the switch.\"",
+   "source": "https://geysermc.org/blog/preparing-for-nethernet",
+   "source_title": "Preparing for NetherNet – GeyserMC blog (8 October 2026)",
+   "read": "2026-11-08",
+   "note": "Applies to the Java server + Geyser route that our page recommends for cross-play."
+  },
+  {
+   "product": "general",
+   "label": "Geyser NetherNet requirements",
+   "value": "Geyser build 1237 or later (NetherNet 'not enabled by default yet'). It \"needs a TCP port for signaling, in addition to the UDP port for gameplay\", and both default to 19132. -DgeyserAdvertiseAddresses is for servers \"in containers or behind a NAT\". clone-remote-port does not work with built-in signaling",
+   "source": "https://geysermc.org/blog/preparing-for-nethernet",
+   "source_title": "Preparing for NetherNet – GeyserMC blog",
+   "read": "2026-11-08",
+   "note": "Router rule for a Docker NAS: forward 19132 on TCP and UDP, not just UDP."
+  },
+  {
+   "product": "general",
+   "label": "Bedrock Dedicated Server ports in Docker (itzg/minecraft-bedrock-server)",
+   "value": "TCP 19132 = NetherNet signaling. A UDP range set by SERVER_UDP_PORTS (no default) carries gameplay: \"BDS uses one UDP port for each client connection\", so use a range \"with at least one port for each player (max-players, default 10)\". \"BDS does not listen on UDP port 19132.\" For internet play, put the public IP in SERVER_UDP_PORTS and \"forward all the ports\". UDP 7551 = LAN discovery, same subnet only. BDS 1.26.51 \"logs an error that NetherNet is the only supported transport\" for TRANSPORT=raknet",
+   "source": "https://github.com/itzg/docker-minecraft-bedrock-server",
+   "source_title": "itzg/docker-minecraft-bedrock-server README",
+   "read": "2026-11-08",
+   "note": "The fetch tool paraphrased parts of the README; the phrases in quotes are the README's wording. Example: 10 friends means forwarding TCP 19132 plus 10 UDP ports. This contradicts our page's '19132 UDP' row."
+  },
+  {
+   "product": "general",
+   "label": "Tunnel (playit.gg) with Bedrock Dedicated Server",
+   "value": "\"Bedrock Dedicated Server can't connect to playit by itself.\" You need WaterdogPE (Java 17 or newer) and the 'Minecraft Bedrock (NetherNet)' tunnel type, marked experimental. BDS moves to port 19142 with online-mode=false, and \"WaterdogPE still checks that every player is signed in to Xbox.\" For Bedrock players on a Java server, playit points to its separate Geyser guide",
+   "source": "https://playit.gg/support/minecraft-bedrock-nethernet/",
+   "source_title": "Setting up a Minecraft Bedrock server with playit",
+   "read": "2026-11-08",
+   "note": "Page shows no date. Our page currently recommends a playit container with no Bedrock caveat."
+  }
+ ],
+ "unsourced": [
+  "Mojang's own 26.50 changelog page and Bedrock Dedicated Server download page on minecraft.net: both fetches timed out (60 s, tried twice for the changelog). I used the Minecraft Wiki's copy of the changelog line instead. The download page would also have confirmed BDS's supported OS and CPU architecture (x86-64 only, which would rule out ARM NAS units such as the UGREEN DH2300/DH4300 for a native Bedrock server). I didn't source that, so it is left out.",
+  "Mojang's 26.60 changelog wording on RakNet. The '27 October 2026, clients stop using RakNet' date comes from GeyserMC's blog, not Mojang.",
+  "An official Mojang/Microsoft help article saying that Xbox, PlayStation and Switch Bedrock clients can't add a custom server IP. The search found only third-party hosting guides and a feedback.minecraft.net request, none of which I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.7531514
+ }
+}

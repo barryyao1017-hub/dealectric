@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Mojang's Bedrock Dedicated Server is built only for x86-64 (Windows 10 1703+ or Ubuntu 22.04+ on x86-64). On an ARM box such as the Raspberry Pi 5 or UGREEN's RK3588 DH line, the usual Docker image runs it only under box64 x86 emulation, while the Java server image runs natively on arm64. A Bedrock server also needs UDP 19132 open, not TCP 25565.",
+ "standout": 2,
+ "standout_why": "I compared racksandwatts.com (cited; covers the DXP2800, DS225+, DXP4800 Plus and DS925+) and esp32.co.uk (cited; covers the DS925+, TS-464, DXP4800 Plus and F4-425 Plus). Neither mentions Minecraft at all. Neither gives Docker image architecture, the x86 vs ARM limit for Bedrock, Geyser cross-play or the ports. Racksandwatts gives only memory ceilings, and esp32 says it names no approved RAM modules. Neither names Synology's approved module part numbers or the DS225+ one-slot limit (2 GB + 4 GB). ChatGPT's answer told the shopper to forward TCP 25565 for every edition, and it offered 'Bedrock Edition' as an option without saying which hardware can run it natively.",
+ "decides": "This confirms that the pick should be an x86 NAS: the DXP2800 or DXP4800 Plus (Intel), or the DS925+ (AMD). It rules out the cheaper ARM boxes (UGREEN DH4300 Plus at $399.99, Pi 5) when friends play Bedrock, because there the Mojang server runs only under box64 emulation; a Java server with Geyser is the arm64-native route. It also caps the DS225+ at 6 GB total RAM, using one approved Synology 4 GB module (D4NS01-4G), so it can't hold a 6–10 GB modded heap. The DS925+ takes up to 2×16 GB of Synology ECC modules (D4ES03-16G).",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH4300 Plus",
+  "Synology DS225+",
+  "Synology DS925+",
+  "QNAP TS-464",
+  "Raspberry Pi 5 (16 GB)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Bedrock Dedicated Server supported platforms",
+   "value": "Windows 10 version 10.0.15063 or later, or Windows Server 2016 or later. On Linux, 'Only Ubuntu 22.04 or later is officially supported', and it runs on 'any Linux distribution for the x86-64 architecture' with glibc 2.35 or later. No ARM build is listed.",
+   "source": "https://minecraft.wiki/w/Bedrock_Dedicated_Server",
+   "source_title": "Bedrock Dedicated Server – Minecraft Wiki",
+   "read": "2026-11-08",
+   "note": "Mojang's download page (minecraft.net/en-us/download/server/bedrock) timed out on two tries, so this comes from the community wiki that documents it. The wiki also recommends 'a quad-core x86/64 bit processor'."
+  },
+  {
+   "product": "general",
+   "label": "Bedrock Docker image (itzg/minecraft-bedrock-server:latest) architectures, and how arm64 runs",
+   "value": "Published for linux/amd64 and linux/arm64, last pushed 2026-11-01. The arm64 build installs box64 (an x86-64 emulator) to run Mojang's x86-64 binary.",
+   "source": "https://hub.docker.com/v2/repositories/itzg/minecraft-bedrock-server/tags/latest",
+   "source_title": "Docker Hub API – itzg/minecraft-bedrock-server tag latest",
+   "read": "2026-11-08",
+   "note": "The emulation detail is in the image's Dockerfile, https://raw.githubusercontent.com/itzg/docker-minecraft-bedrock-server/master/Dockerfile, read 2026-11-08: it contains 'ARG BOX64_PACKAGE=box64' and 'RUN ... /build/setup-arm64'. So on a Pi 5 or an RK3588 NAS, Bedrock runs translated, not natively."
+  },
+  {
+   "product": "general",
+   "label": "Java server Docker image (itzg/minecraft-server:latest) architectures",
+   "value": "Native linux/amd64, linux/arm64 and linux/riscv64, last pushed 2026-11-06",
+   "source": "https://hub.docker.com/v2/repositories/itzg/minecraft-server/tags/latest",
+   "source_title": "Docker Hub API – itzg/minecraft-server tag latest",
+   "read": "2026-11-08",
+   "note": "Java Edition needs no emulation on ARM, unlike Bedrock."
+  },
+  {
+   "product": "general",
+   "label": "Bedrock server network ports",
+   "value": "UDP 19132 (IPv4) and UDP 19133 (IPv6), for TRANSPORT=raknet. Example: '-p 19132:19132/udp -p 19133:19133/udp'",
+   "source": "https://raw.githubusercontent.com/itzg/docker-minecraft-bedrock-server/master/README.md",
+   "source_title": "itzg/docker-minecraft-bedrock-server README",
+   "read": "2026-11-08",
+   "note": "ChatGPT's answer told the shopper to forward TCP 25565, which is the Java Edition port. Bedrock friends need these UDP ports forwarded instead."
+  },
+  {
+   "product": "general",
+   "label": "Geyser cross-play bridge, supported versions",
+   "value": "Lets Bedrock players join a Java server. Currently supports Minecraft Bedrock 26.40–26.63 and Minecraft Java 26.3.",
+   "source": "https://geysermc.org/wiki/geyser/",
+   "source_title": "Geyser – GeyserMC Wiki",
+   "read": "2026-11-08",
+   "note": "This is the route for mixed Java and Bedrock friend groups. It also lets an arm64 box serve Bedrock players without running Mojang's x86-64 binary under emulation."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Memory slots, ceiling and approved module",
+   "value": "2 GB DDR4 non-ECC pre-installed, 1 slot in total, 6 GB maximum (2 GB + 4 GB). Compatible module: D4NS01-4G.",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. – Specifications",
+   "read": "2026-11-08",
+   "note": "Synology states that it 'will not provide complete product warranty or technical support if non-Synology memory modules' are used. With 6 GB total, DSM plus a 4 GB-or-larger Minecraft heap leaves little headroom."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Memory slots, ceiling and approved modules",
+   "value": "4 GB DDR4 ECC SODIMM pre-installed (4 GB × 1), 2 slots, 32 GB maximum (16 GB × 2). Approved modules: D4ES04-4G, D4ES03-8G, D4ES03-16G (DDR4 ECC).",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. – Specifications",
+   "read": "2026-11-08",
+   "note": "'For multi-module memory configurations, all modules must be identical and share the same model number.' The same non-Synology warranty caveat applies. CPU: AMD Ryzen V1500B, 64-bit (x86-64)."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "US price, maker store",
+   "value": "$399.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus – UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Taken from storecheck.py search on nas.ugreen.com. The product page itself then returned HTTP 429, so I couldn't read its specs. It is the ARM model in Dealectric's catalog that the Bedrock emulation limit applies to (RK3588C according to search results; that isn't maker-verified)."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "US price, maker store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search on nas.ugreen.com. It matches the $619.99 B&H card ChatGPT showed."
+  }
+ ],
+ "unsourced": [
+  "Mojang's own Bedrock server download page (minecraft.net/en-us/download/server/bedrock) timed out three times, so the x86-64-only platform list comes from minecraft.wiki, not the maker.",
+  "Whether UGREEN officially supports Docker on the DH4300 Plus and DH2300, and their CPU and RAM specs: nas.ugreen.com and ai.ugreen.com returned HTTP 429 on every try. Neowin's review returned 403, and TechRadar's review came back with no article text.",
+  "UGREEN DXP2800 maximum memory and module type from the maker page (HTTP 429). Only rival racksandwatts.com gives 16 GB.",
+  "Synology Container Manager's list of supported models: the package page's 'Applied Models' section was empty when fetched.",
+  "Prices for Synology modules D4NS01-4G and D4ES03-16G: I didn't look them up within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.8396600000000002
+ }
+}

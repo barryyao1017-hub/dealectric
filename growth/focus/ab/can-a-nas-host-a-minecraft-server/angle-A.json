@@ -1,0 +1,141 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the UGREEN DXP4800 Plus's advertised 4.4 GHz applies to only one of its five cores (1 P-core at 4.4 GHz; the four E-cores top out at 3.3 GHz), or that this one core gives it a PassMark single-thread rating of 3,197, against 1,879 for the DXP2800's N100, 2,032 for the 8-core i3-N305 and 1,136 for the DS925+'s V1500B. Single-thread speed is the figure that matters for Paper's single-threaded tick.",
+ "standout": 3,
+ "standout_why": "Compared against racksandwatts.com (cited) and esp32.co.uk (cited). Racksandwatts gives only CPU names and RAM ceilings, with no clocks, core split or benchmarks. Esp32.co.uk mixes clock types ('2.2GHz' for the V1500B, 'burst up to 2.9GHz' for the N5095, 'up to 3.6GHz' for the N150). It gives no clock at all for the 8505 and never mentions the P/E split. Neither page has a single-thread figure or mentions Minecraft. ChatGPT's own answer says 'single-core CPU performance' matters but never puts a number on any model. Our current page lists maker 'max clock' figures that can't be compared directly: a 1-P-core turbo, E-core turbos and a no-turbo base clock all sit in the same column.",
+ "decides": "It confirms the DXP4800 Plus as the pick on a number rather than a clock claim. Its one P-core scores 1.70× the N100 (3,197 / 1,879), 2.81× the DS925+ (3,197 / 1,136) and 1.57× the TerraMaster F4-424 Pro's i3-N305 (3,197 / 2,032). The F4-424 Pro's 8 cores look stronger on a spec sheet, and its multithread score is in fact slightly higher (9,337 vs 8,997), but Paper ticks the world on one thread, so the 8505 wins for Minecraft. The DS925+ costs about the same ($639.99 list vs $619.99) and has the slowest single thread in the table except the DS225+'s J4125. The F2-425 Plus's N150 scores the same as the N100 (1,889 vs 1,879, 0.5% apart), so its '3.6 GHz' buys nothing over the DXP2800's '3.4 GHz'.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-424 Pro",
+  "TerraMaster F2-425 Plus",
+  "QNAP TS-264",
+  "QNAP TS-464",
+  "Synology DS925+",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Intel Pentium Gold 8505 core split and per-core-type max turbo",
+   "value": "5 cores / 6 threads = 1 P-core (4.40 GHz max turbo) + 4 E-cores (3.30 GHz max turbo); 15 W base power; 64 GB max memory",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel® Pentium® Gold Processor 8505 – Intel ARK specifications",
+   "read": "2026-11-08",
+   "note": "The '4.4 GHz' in UGREEN and retailer listings is the turbo of the single P-core only. The other four cores are capped at 3.3 GHz, below the N150's 3.6 GHz."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "PassMark single-thread rating (Pentium Gold 8505)",
+   "value": "3,197 (CPU Mark 8,997; 154 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Pentium+Gold+8505&id=4808",
+   "source_title": "PassMark – Intel Pentium Gold 8505",
+   "read": "2026-11-08",
+   "note": "PassMark lists P-cores as '1 Cores, 2 Threads, 1.2 GHz Base, 4.4 GHz Turbo' and E-cores as '4 Cores, 4 Threads, 0.9 GHz Base, 3.3 GHz Turbo'. The figure is a database average across laptops and mini PCs, not measured in the NAS."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "PassMark single-thread rating (Intel N100)",
+   "value": "1,879 (CPU Mark 5,305; 4,162 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+N100&id=5157",
+   "source_title": "PassMark – Intel N100",
+   "read": "2026-11-08",
+   "note": "4 E-type cores / 4 threads, 0.7 GHz base, 3.4 GHz turbo, 6 W. The 8505 is 3,197 / 1,879 = 1.70× faster in single-thread."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Intel N100 maker limits",
+   "value": "4 cores / 4 threads, 3.40 GHz max turbo, 6 W TDP, 16 GB max memory (DDR4-3200 / DDR5-4800 / LPDDR5-4800)",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel® Processor N100 – Intel ARK specifications",
+   "read": "2026-11-08",
+   "note": "The DXP2800's '16 GB max' RAM ceiling is Intel's spec limit for the N100, not a UGREEN choice."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "PassMark single-thread rating (Intel Core i3-N305)",
+   "value": "2,032 (CPU Mark 9,337; 1,250 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i3-N305&id=5208",
+   "source_title": "PassMark – Intel Core i3-N305",
+   "read": "2026-11-08",
+   "note": "8 cores / 8 threads, 3.8 GHz turbo, 15 W. Its multithread score is 3.8% above the 8505 (9,337 vs 8,997), but its single-thread score is 36% lower (2,032 vs 3,197); the 8505 is 1.57× faster."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "PassMark single-thread rating (Intel N150)",
+   "value": "1,889 (CPU Mark 5,326; 2,287 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+N150&id=6304",
+   "source_title": "PassMark – Intel N150",
+   "read": "2026-11-08",
+   "note": "3.6 GHz turbo vs the N100's 3.4 GHz, yet single-thread is only 0.5% higher (1,889 vs 1,879). For Minecraft it is effectively equal to the DXP2800."
+  },
+  {
+   "product": "QNAP TS-264 / TS-464",
+   "label": "PassMark single-thread rating (Intel Celeron N5095)",
+   "value": "1,492 (CPU Mark 4,003; 629 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+N5095+%40+2.00GHz&id=4472",
+   "source_title": "PassMark – Intel Celeron N5095 @ 2.00GHz",
+   "read": "2026-11-08",
+   "note": "2.0 GHz base, 2.9 GHz turbo, 15 W. The 8505 is 2.14× faster (3,197 / 1,492). The TS-464 that ChatGPT showed at $639.00 is slower per thread than the $389.99 DXP2800."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "PassMark single-thread rating (AMD Ryzen Embedded V1500B)",
+   "value": "1,136 (CPU Mark 4,513; 14 samples, 'Medium' margin of error)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+Embedded+V1500B&id=3578",
+   "source_title": "PassMark – AMD Ryzen Embedded V1500B",
+   "read": "2026-11-08",
+   "note": "4C/8T at 2.2 GHz with no boost; 16 W typical TDP. The 8505 is 2.81× faster (3,197 / 1,136). The sample is small (14), so the figure is less certain."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "PassMark single-thread rating (Intel Celeron J4125)",
+   "value": "1,151 (CPU Mark 2,927 average; 697 samples)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+J4125+%40+2.00GHz&id=3667",
+   "source_title": "PassMark – Intel Celeron J4125 @ 2.00GHz",
+   "read": "2026-11-08",
+   "note": "2.0 GHz base, 2.7 GHz turbo, 10 W. Effectively tied with the DS925+'s V1500B on single-thread."
+  },
+  {
+   "product": "general",
+   "label": "Paper's tick is single-threaded",
+   "value": "Folia README: 'the current Paper (single threaded) can be viewed as one giant \"region\" that encompasses all chunks in all worlds'; Folia itself wants 'at least 16 cores (not threads)' and 'a sizeable player count'",
+   "source": "https://github.com/PaperMC/Folia",
+   "source_title": "PaperMC/Folia – GitHub README",
+   "read": "2026-11-08",
+   "note": "This is why the single-thread column, not core count or multithread score, decides a friends-sized Paper server. Folia (multithreaded) does not fit a home NAS: it wants 16+ cores and its README says to expect 0 plugin compatibility."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on nas.ugreen.com. Diskless. Matches the $619.99 B&H price ChatGPT showed."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on nas.ugreen.com. Diskless."
+  }
+ ],
+ "unsourced": [
+  "Whether UGOS (or TOS/QTS) schedules a Docker container's Minecraft main thread onto the 8505's single P-core rather than an E-core. I looked for UGREEN docs or a reviewer test of hybrid-core scheduling in UGOS and opened none: nas.ugreen.com and ai.ugreen.com returned HTTP 429. If the scheduler puts the thread on an E-core, its ceiling is 3.3 GHz, not 4.4 GHz.",
+  "UGREEN's own spec wording for the DXP4800 Plus CPU (to check whether it mentions P/E cores). Both UGREEN product pages returned HTTP 429.",
+  "CPUs of the newer UGREEN DXP4800 GT ($659.99), DXP2800 GT ($459.99) and DXP4800 Pro ($799.99), which appear in the US store search results on 2026-11-08. Their product pages returned HTTP 429, so they are not normalised here.",
+  "PassMark single-thread rating for the Intel Celeron N5105 (Asustor AS5402T) and for the Raspberry Pi 5's Cortex-A76 / BCM2712. Not fetched within the tool budget.",
+  "PassMark single-thread rating for the i5-1235U (DXP480T Plus / DXP6800 Pro / DXP8800 Plus upsell). The PassMark id I tried returned a different CPU (Apple M1 Ultra), and I did not retry.",
+  "A measured Minecraft TPS or player count on any of these NAS units at a fixed world and view distance. I did not find one within budget, so single-thread ratings stand in for game performance."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.7741822
+ }
+}
