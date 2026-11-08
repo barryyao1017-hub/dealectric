@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which NAS operating systems have a maker-documented WireGuard server. Only QNAP and Asustor document one. QNAP's QVPN Service 3.0 offers it on x86 models only, and the TS-264 is x86. Asustor's VPN Server 1.1.0.r327 adds it, and Asustor's own App Central AdGuard Home package covers the Nimbustor 2 Gen2's AS54 series, so that NAS can run DNS filtering and WireGuard without Docker. Synology DSM 7.3 and TerraMaster TOS 6 list only OpenVPN, L2TP/IPsec and PPTP, and UGREEN has no maker document for its WireGuard server.",
+ "standout": 2,
+ "standout_why": "I compared three pages. racksandwatts.com's 'Best NAS for a homelab (2026)' and its 'UGREEN DXP2800 vs Synology DS225+' page say nothing about WireGuard, VPN servers, Pi-hole, AdGuard or port 53; they only say each NAS runs Docker or Container Manager. The cited Synology Container Manager page lists no models or networking limits on the page as it loaded. ChatGPT's own answers said Synology needs a third-party WireGuard setup, and they cited our page for that. None of the result pages gives a native WireGuard and AdGuard matrix with the makers' model and firmware limits, and none mentions Asustor or QNAP at all. I did not open the other non-cited results (androidcentral, comparefoundry, bitdoze, nasdrives.ca), and I could not reread the cited UGREEN page because it returned HTTP 429.",
+ "decides": "This changes the pick for a shopper who wants both services as maker-supported apps, with no Docker, macvlan or port-53 workarounds. The Asustor Nimbustor 2 Gen2 (AS5402T, AS54 series) is the only candidate where the maker's own App Central lists both a WireGuard VPN Server and AdGuard Home for its series. The QNAP TS-264 has a documented WireGuard server, but DNS filtering still goes through Container Station. Our current page says the AS54 series is not on Asustor's VPN Server list. That is wrong: the list I read on 2026-11-08 includes AS54. On the Synology DS225+ and TerraMaster F2-425 Plus, WireGuard needs a container or a community package. The UGREEN DXP2800's built-in WireGuard is backed only by VPN Tracker, a VPN software vendor. The DXP2800 can stay the best-hardware pick, but not the 'it's built in' pick.",
+ "candidates": [
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "TerraMaster F2-425 Plus",
+  "GL.iNet Flint 2 (GL-MT6000)"
+ ],
+ "findings": [
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Native WireGuard server app and supported series",
+   "value": "VPN Server 1.1.0.r327 (last update 2024-04-17) adds WireGuard alongside PPTP, OpenVPN and L2TP/IPsec. The listing shows ADM 4.2.6 and these supported series: AS31, AS32, AS52, AS53, AS54, AS61, AS62, AS63, AS64, AS65, AS66, AS67, AS71, AS72, AS81, FS67",
+   "source": "https://www.asustor.com/en/app_central/app_detail?id=1600",
+   "source_title": "ASUSTOR App Central – VPN Server",
+   "read": "2026-11-08",
+   "note": "The changelog says 'New feature: Support WireGuard VPN'. The listing shows ADM 4.2.6 without calling it a minimum. AS54 is on the list, so our page's 'AS54 series not on the list' is wrong. The AS5402T-to-AS54 mapping comes from the model number; I did not open the Asustor product page."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "AdGuard Home as a maker-hosted App Central package",
+   "value": "AdGuard Home 0.107.79.r01, last update 2026-09-11, requires ADM 4.3.0. Supported series include AS54. Asustor tells users to set the Admin Web Interface port to 3000 on first run",
+   "source": "https://www.asustor.com/en/app_central/app_detail?id=1026",
+   "source_title": "ASUSTOR App Central – AdGuard Home",
+   "read": "2026-11-08",
+   "note": "The listing names 'Patrick' as maintainer and AdGuard as developer, and does not mention port 53 or 80 conflicts. Its full list has 25 entries: AS6, AS61, AS62, AS31, AS32, AS63, AS64, AS40, AS52, AS53, AS65, AS71, AS66, AS11, AS33, AS67, AS54, AS11TL, AS33v2, AS68, AS72, AS12, AS81, FS67, FS68."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "WireGuard server: OS and architecture limit",
+   "value": "WireGuard is only available on QVPN Service 3.0 running QTS 5.0 on x86 NAS models, so ARM models are excluded. The default port is 51820/UDP",
+   "source": "https://www.qnap.com/tr-tr/how-to/faq/con_show.php?cid=1949",
+   "source_title": "QNAP FAQ – How to set up a VPN server on QNAP NAS behind the router?",
+   "read": "2026-11-08",
+   "note": "The page was last modified 2023-05-19 and is QNAP's own wording. It names QTS 5.0; it says nothing about later QTS versions."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "CPU architecture and OS (meets the x86 rule)",
+   "value": "Intel Celeron N5095, 4 cores, 64-bit x86; QTS 6.1.0 or QuTS hero h6.1.0; 8 GB DDR4, 16 GB max",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP",
+   "read": "2026-11-08",
+   "note": "This is the TS-264-8G variant. x86 plus QTS 6.1 meets the FAQ's x86 rule. That QVPN 3.0 WireGuard runs on QTS 6.1 is my inference; QNAP does not state it."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "QNAP lab WireGuard throughput",
+   "value": "FTP 106 MB/s down and 104.6 MB/s up; HTTP 96.8 MB/s down and 91 MB/s up over WireGuard",
+   "source": "https://www.qnap.com/en-us/software/qvpn-service",
+   "source_title": "QVPN Service | QNAP",
+   "read": "2026-11-08",
+   "note": "QNAP Lab tested a TVS-872XT with 16 GB RAM on QTS 5.0.0.1785 and QVPN 3.0.739, not a TS-264. QNAP says figures may vary by environment."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Native VPN Server protocols (DSM 7.3)",
+   "value": "OpenVPN, L2TP over IPsec and PPTP only; WireGuard is not listed. Up to 40 concurrent connections, and Synology says the actual number varies by model",
+   "source": "https://www.synology.com/en-us/dsm/7.3/software_spec/vpn_server",
+   "source_title": "VPN Server | DSM 7.3 software specifications | Synology",
+   "read": "2026-11-08",
+   "note": "This is the maker's spec page."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Community WireGuard package (runfalk/synology-wireguard) status",
+   "value": "Archived read-only on 2026-02-17 and not updated since 2022. Release SPKs are for DSM 6 only; for DSM 7 the README says you must compile it yourself. It lists the geminilake platform (DS220+, DS720+) as working on DSM 7.0",
+   "source": "https://github.com/runfalk/synology-wireguard",
+   "source_title": "runfalk/synology-wireguard (GitHub)",
+   "read": "2026-11-08",
+   "note": "The package ships its own WireGuard kernel module, which implies DSM's kernel does not include one. The author points to vegardit's fork without having vetted it. The README warns a failed setup can make the NAS inaccessible. I saw no listing for the DS225+ or DSM 7.3."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Native VPN Server protocols (TOS 6)",
+   "value": "PPTP, OpenVPN and L2TP/IPsec; WireGuard is not mentioned",
+   "source": "https://help.terra-master.com/docs/TOS6/application/vpn-server",
+   "source_title": "VPN Server – TOS 6 Help | TerraMaster",
+   "read": "2026-11-08",
+   "note": "The doc is for TOS 6 and has no model notes. The toshelp.terra-master.com URL on our page now redirects to help.terra-master.com."
+  },
+  {
+   "product": "GL.iNet Flint 2 (GL-MT6000)",
+   "label": "AdGuard Home support and the VPN-policy exclusion",
+   "value": "GL-MT6000 (Flint 2) is on GL.iNet's AdGuard Home supported list. With 'Handle Client Requests' enabled, domain-based VPN policies and parental-control rules stop working",
+   "source": "https://docs.gl-inet.com/router/en/4/interface_guide/adguardhome/",
+   "source_title": "AdGuard Home – GL.iNet Router Docs 4",
+   "read": "2026-11-08",
+   "note": "These are firmware 4 docs and give no firmware minimum. Models on the unsupported list include the GL-AR750S, GL-MT300N-V2, GL-SFT1200, GL-E750 and GL-B1300. The listed Beryl AX (GL-MT3000) and Beryl 7 (GL-MT3600BE) are already in our catalog."
+  }
+ ],
+ "unsourced": [
+  "A UGREEN-authored document for a UGOS Pro WireGuard VPN Server. I searched ugreen.com and UGOS Pro release notes and found only VPN Tracker's guide (blog.vpntracker.com), which is a VPN software vendor, and forum threads. The UGREEN product and store pages returned HTTP 429, so I could not check them.",
+  "The UGOS Pro version that added WireGuard. I searched for release notes and the results were for UniFi OS, not UGOS.",
+  "The OS that ships on the TerraMaster F2-425 Plus (TOS 6 or TOS 7), and any WireGuard support in TOS 7. terra-master.com returned HTTP 429, and the only TOS 7 evidence is an undated forum post saying the beta has no WireGuard client.",
+  "An Asustor product page confirming that the Nimbustor 2 Gen2 is the AS5402T in the AS54 series. I did not open it.",
+  "Synology's applied-models list for Container Manager. The package page showed an empty 'Applied Models' section.",
+  "Live prices for every candidate. Store pages were rate-limited (HTTP 429) and I hit the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8543258
+ }
+}

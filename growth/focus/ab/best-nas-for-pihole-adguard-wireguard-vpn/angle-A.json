@@ -1,0 +1,104 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the makers' low idle figures are drive-hibernation numbers taken under different setups (UGREEN: one Seagate 2 TB drive; QNAP: all bays filled; Synology: setup not stated), or that UGREEN says Docker containers and always-active databases keep the drives from hibernating. So for a 24/7 DNS and VPN box the figures that compare are the drives-active ones: DXP2800 16.38 W, DS225+ 16.98 W, TS-264 29.086 W.",
+ "standout": 2,
+ "standout_why": "Compared against racksandwatts.com/guides/best-nas-for-a-homelab-2026 and racksandwatts.com/comparisons/ugreen-dxp2800-vs-synology-ds225-plus, which have no power figures and never mention WireGuard, VPN servers, Pi-hole, AdGuard or port 53. ChatGPT's three answers give no power figures either and only say 'low-power'. Our current page has the DXP2800's 5.2 W and 16.4 W but gives 'not read' for every other NAS. Its footnote says the two DXP2800 figures can't be compared, without saying which one applies to a Docker DNS box. The cited Synology Container Manager page and the cited UGREEN product page were not shown to have this.",
+ "decides": "This backs the DXP2800 as the NAS pick, and it adds a cost against the QNAP TS-264, the only maker-confirmed native WireGuard server among the candidates. With containers running, the drive-asleep figures (5.24 / 6.08 / 18.288 W) don't apply, because UGREEN itself says Docker containers and always-active databases block hibernation. The like-for-like figures are 16.38 W (DXP2800), 16.98 W (DS225+) and 29.086 W (TS-264). That works out to about 143 kWh, 149 kWh and 255 kWh a year. So the TS-264's built-in WireGuard costs about 111 kWh a year more than a DXP2800 running WireGuard in a container. The DS225+ has nearly the same power draw as the DXP2800, but its makers' page lists no M.2 slot, so containers can't be moved off the hard drives to let them sleep. Its VPN Server also has no WireGuard. Both points favour the DXP2800 or TS-264 for anyone who wants the drives to sleep. Also normalised: native WireGuard on the stock OS. QNAP QVPN: yes (QNAP's own page). Synology DSM VPN Server: no (OpenVPN, L2TP/IPsec, PPTP only). UGREEN UGOS Pro: OpenVPN and WireGuard according to VPN Tracker only; no UGREEN page found.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "TerraMaster F2-425 Plus",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maker power figures and test setup",
+   "value": "16.38 W drive access; 5.24 W low-power (hibernation) state; measured with one Seagate 2 TB HDD",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "How Much Power Does Your NAS Consume? (UGREEN)",
+   "read": "2026-11-08",
+   "note": "UGREEN: 'For HDD-based models, our published figures were measured under laboratory conditions with a Seagate 2TB hard drive.' The workload for the access figure isn't stated. 16.38 W × 8,760 h = 143.5 kWh a year."
+  },
+  {
+   "product": "general",
+   "label": "What stops the hibernation figure from applying (UGREEN's statement)",
+   "value": "Docker containers and VMs block drive hibernation; 'A NAS running Home Assistant or an always-active database may never reach its published hibernation state'",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "How Much Power Does Your NAS Consume? (UGREEN)",
+   "read": "2026-11-08",
+   "note": "UGREEN: 'Applications and scheduled jobs can prevent hibernation by accessing the storage pool', and it names 'Docker containers and virtual machines'. A Pi-hole or AdGuard Home container answering and logging DNS for the house all day is that kind of always-on workload. This is our inference from UGREEN's general statement, not a measurement of Pi-hole."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maker power figures",
+   "value": "16.98 W (Access); 6.08 W (HDD Hibernation)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specifications)",
+   "read": "2026-11-08",
+   "note": "The spec page doesn't state the drive count or model for the power test. 16.98 W × 8,760 h = 148.7 kWh a year. The page lists no M.2 slot, only 'SSD cache can be enabled with select compatible SSD', so containers run from the HDD volume. RAM is 2 GB DDR4, 6 GB max. Warranty is 3 years."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Maker power figures and test setup",
+   "value": "29.086 W operating (typical); 18.288 W disk standby; 'Tested with drives fully populated'",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 hardware specifications | QNAP",
+   "read": "2026-11-08",
+   "note": "Two bays filled, drive model not named, so this isn't the same setup as UGREEN's one-drive test. 29.086 W × 8,760 h = 254.8 kWh a year, 111.3 kWh more than the DXP2800's access figure. The TS-264 has 2× M.2 2280 PCIe Gen3 x1, 8 GB (16 GB max), 2× 2.5GbE and a 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "WireGuard server on the stock OS",
+   "value": "Yes: QVPN Service acts as a WireGuard, PPTP, OpenVPN, L2TP/IPsec and QBelt server",
+   "source": "https://www.qnap.com/en-uk/software/qvpn-service",
+   "source_title": "QVPN Service | QNAP",
+   "read": "2026-11-08",
+   "note": "Maker page. It gives no minimum QTS version; the lab setup it mentions ran QTS 5.0.0.1785."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "WireGuard server on the stock OS",
+   "value": "No: DSM VPN Server supports OpenVPN, L2TP over IPSec and PPTP",
+   "source": "https://www.synology.com/en-us/dsm/7.3/software_spec/vpn_server",
+   "source_title": "VPN Server | DSM 7.3 software specifications | Synology",
+   "read": "2026-11-08",
+   "note": "WireGuard isn't mentioned. The DS225+ spec page lists VPN Server 'Maximum Connections: 4'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "WireGuard server on the stock OS (third-party source only)",
+   "value": "VPN Tracker lists 'OpenVPN, WireGuard®' as supported VPN standards for the DXP2800",
+   "source": "https://www.vpntracker.com/us/vpndevice/745/UGREEN-NAS-DXP2800.html",
+   "source_title": "UGREEN NAS DXP2800 | VPN Tracker",
+   "read": "2026-11-08",
+   "note": "The page gives no UGOS Pro version and no date. VPN Tracker is a VPN client vendor, not UGREEN. No UGREEN page confirming it was found."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Reviewer-measured power",
+   "value": "29.2 W in operation with disks idle; 15.4 W disks in hibernation; 0.6 W S3 sleep; 36.8 W copying between HDDs",
+   "source": "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/4/",
+   "source_title": "ASUSTOR Nimbustor 2 Gen2 AS5402T review, page 4 (LinuxLinks)",
+   "read": "2026-11-08",
+   "note": "LinuxLinks tested with 2× 6 TB 7200 rpm HDDs and 2× NVMe SSDs, EuP disabled, WOL and WOW enabled. This is a wall-meter test with more drives than UGREEN's lab, so it isn't the same setup as the maker figures above. 29.2 W × 8,760 h = 255.8 kWh a year."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster F2-425 Plus power figures: the maker's US product page returned HTTP 429 twice. Search found only sister-model figures (F4-425 Plus, F2-223), which aren't usable.",
+  "TerraMaster TOS 6 VPN Server protocol list: not re-opened today (our page cites toshelp.terra-master.com), so it's left out of the findings.",
+  "Synology's power-test method (drive count and model) and its list of packages that block hibernation: both kb.synology.com articles load as empty shells when fetched.",
+  "A UGREEN page confirming UGOS Pro's VPN Server and its WireGuard tab: support.ugnas.com articles load empty, and no UGREEN product or support page found says so.",
+  "Asustor's own AS5402T power spec: the Asustor spec URL tried (p_id=86) is the AS6804T. Only reseller listings (22.9 W / 12.7 W / 0.71 W) were seen, as search snippets, and they weren't opened.",
+  "Live prices: the UGREEN store (storecheck and WebFetch) returned HTTP 429. No other store prices were read today.",
+  "Pi-hole FTL's database write interval, to show directly that it keeps drives awake: not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 0.9912548
+ }
+}

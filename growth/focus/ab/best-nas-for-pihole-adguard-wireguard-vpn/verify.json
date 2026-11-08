@@ -1,0 +1,175 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "D",
+  "why_angle": "None of the cited pages (Synology's Container Manager page, UGREEN's DXP2800 page, the racksandwatts guides) says that DSM 7.3 runs Linux 4.4.302+ while WireGuard entered the kernel in 5.6. That means the 'run WireGuard in a container on the DS225+' route fails on stock DSM. This page sets each NAS OS's WireGuard route and kernel next to the deciding specs, and the pick rests on UGOS Pro's 6.18 kernel.",
+  "slug": "best-nas-for-pihole-adguard-wireguard-vpn",
+  "must": [
+   "is the UGREEN DXP2800",
+   "Linux 4.4.302+, below the 5.6 kernel WireGuard needs"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS to run Pi-hole or AdGuard Home plus a WireGuard VPN for the house (2026): what works on each NAS OS",
+   "h1": "Best NAS to run Pi-hole or AdGuard Home plus a WireGuard VPN for the house (2026)",
+   "desc": "Which NAS runs Pi-hole or AdGuard Home plus a WireGuard VPN: UGOS Pro's 6.18 kernel can run WireGuard in Docker, Synology DSM's 4.4 kernel can't, and Asustor and QNAP build WireGuard into their own VPN apps.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS to run Pi-hole or AdGuard Home plus a WireGuard VPN for the house is the UGREEN DXP2800: its UGOS Pro kernel 6.18 is new enough for WireGuard in Docker. The Synology DS225+ runs Linux 4.4.302+, below the 5.6 kernel WireGuard needs, so the usual WireGuard containers fail.</p>",
+   "columns": [
+    [
+     "wg",
+     "WireGuard server route on the stock OS"
+    ],
+    [
+     "hw",
+     "CPU / RAM / M.2 (to keep containers off the hard drives)"
+    ],
+    [
+     "power",
+     "Maker-rated power, drives active / asleep"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "wg": "Docker container (wg-easy or linuxserver/wireguard); UGOS Pro 1.19.1 runs kernel 6.18 (Marius Hosting)",
+      "hw": "Intel N100; 8 GB DDR5 (16 GB max); 2× M.2 NVMe, usable as volumes (ComputerBase)",
+      "power": "16.38 W drive access / 5.24 W hibernation (UGREEN, one 2 TB HDD)"
+     }
+    },
+    {
+     "slug": "asustor-as5402t",
+     "model": "Asustor Nimbustor 2 Gen2 AS5402T",
+     "cells": {
+      "wg": "Built in: App Central VPN Server 1.1.0 adds WireGuard; AS54 series listed",
+      "hw": "Celeron N5105; 4 GB DDR4 (16 GB max); 4× M.2 PCIe 3.0 x1",
+      "power": "22.9 W operation / 12.7 W disk hibernation (Asustor)"
+     }
+    },
+    {
+     "slug": "qnap-ts-264-8g",
+     "model": "QNAP TS-264-8G",
+     "cells": {
+      "wg": "Built in: QVPN Service runs a WireGuard server",
+      "hw": "Celeron N5095, 64-bit x86; 8 GB DDR4 (16 GB max); 2× M.2 2280 PCIe Gen3 x1",
+      "power": "29.086 W operating / 18.288 W disk standby (QNAP, both bays filled)"
+     }
+    },
+    {
+     "slug": "synology-ds225-plus",
+     "model": "Synology DS225+",
+     "cells": {
+      "wg": "Not built in: DSM 7.3 VPN Server has OpenVPN, L2TP/IPsec and PPTP only; DSM 7.3.2 runs Linux 4.4.302+ (nelson.cloud, on a DS920+), so linuxserver/wireguard won't run",
+      "hw": "Celeron J4125; 2 GB DDR4 (6 GB max); no M.2 slot on the spec page",
+      "power": "16.98 W access / 6.08 W HDD hibernation (Synology)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Kernel against WireGuard:</strong> WireGuard joined mainline Linux in 5.6 (29 March 2020). UGOS Pro 1.19.1 runs 6.18, which is newer than 5.6. DSM 7.3.2 runs 4.4.302+, which is older than 5.6. A container that relies on the host's WireGuard module has nothing to load on DSM.</li><li><strong>Electricity over a year with drives active</strong> (maker's figure × 8,760 h): DXP2800 16.38 W → 143.5 kWh; DS225+ 16.98 W → 148.7 kWh; AS5402T 22.9 W → 200.6 kWh; TS-264 29.086 W → 254.8 kWh. The TS-264's built-in WireGuard costs 254.8 − 143.5 = 111.3 kWh a year more than the DXP2800 running WireGuard in a container. The test setups differ: UGREEN used one Seagate 2 TB drive, QNAP filled both bays, and Synology and Asustor don't tie a drive setup to their figures.</li><li><strong>Why the drives-active figure is the one to plan on:</strong> UGREEN says Docker containers and always-active databases that touch the storage pool can keep drives from hibernating. A DNS filter answering and logging every query in the house works that way all day. Put the containers on an NVMe volume so the hard drives can still sleep. The DS225+ spec page lists no M.2 slot for that.</li><li><strong>Room for containers:</strong> 8 GB (DXP2800, TS-264) ÷ 2 GB (DS225+) = 4× the memory before any upgrade.</li></ul><table><thead><tr><th>Your plan</th><th>Fits</th></tr></thead><tbody><tr><td>AdGuard Home or Pi-hole plus WireGuard in Docker, with file storage and backups</td><td>UGREEN DXP2800</td></tr><tr><td>Both as the maker's own apps, no Docker</td><td>Asustor AS5402T</td></tr><tr><td>WireGuard from the NAS OS's own VPN app, with 8 GB of RAM out of the box</td><td>QNAP TS-264-8G</td></tr><tr><td>You already own a Synology and only need remote access</td><td>DS225+ with OpenVPN in VPN Server (4 connections on this model)</td></tr></tbody></table><h2>WireGuard on each NAS OS: why the kernel version decides</h2><p>WireGuard is a Linux kernel feature. The two common containers, wg-easy and linuxserver/wireguard, don't bring their own copy. They use the host's kernel module, so the NAS OS's kernel decides whether they run. Pi-hole and AdGuard Home have no such requirement and run as ordinary containers. The DNS side only needs port 53 free.</p><ul><li><strong>UGREEN UGOS Pro (DXP2800):</strong> UGOS Pro 1.19.1.0126, released 31 August 2026, upgraded the kernel to 6.18 (Marius Hosting). Marius Hosting's UGREEN guide runs AdGuard Home in Docker with <code>network_mode: host</code>, moves its admin page from port 80 to 9080 and keeps DNS on port 53. Before you deploy, run <code>modprobe wireguard</code> over SSH to check the module loads. {buy:ugreen-nasync-dxp2800}</li><li><strong>Synology DSM (DS225+):</strong> nelson.cloud found DSM 7.3.2-86009 Update 3 'running on Linux v4.4.302+ which doesn't support WireGuard', and found that 'the linuxserver/wireguard image won't work'. That was on a DS920+. Synology's own VPN Server lists OpenVPN, L2TP over IPsec and PPTP. The way to get WireGuard is gpopesc's third-party kernel module, which covers DSM 7.2 to 7.4, lists the geminilake platform, was tested only on a DS920+ and installs with a root script. It is a third-party module, not a Synology package.</li><li><strong>Asustor ADM (AS5402T):</strong> VPN Server 1.1.0.r327 (2024-04-17) added 'Support WireGuard VPN' and lists the AS54 series. Asustor's App Central also carries AdGuard Home 0.107.79.r01 (2026-09-11), which needs ADM 4.3.0 and also lists AS54. Asustor says to set the admin web port to 3000 at first run. This is the one NAS here where both services install from the maker's own app store. {buy:asustor-as5402t}</li><li><strong>QNAP QTS (TS-264-8G):</strong> QNAP's QVPN Service runs a WireGuard server. The TS-264 is a 64-bit x86 Celeron N5095 on QTS 6.1.0. It also draws the most power here. {buy:qnap-ts-264-8g}</li></ul><h2>Not recommended</h2><p><strong>Synology DS225+ for this job.</strong> It runs Pi-hole or AdGuard Home fine, but WireGuard is the half it can't do on stock DSM. Its kernel is older than 5.6, its VPN Server has no WireGuard and allows 4 connections on this model, and the workaround is an unofficial kernel module. It also ships with 2 GB of RAM (6 GB max) and lists no M.2 slot to keep containers off the hard drives.</p>",
+   "sources": [
+    [
+     "DSM 7.3.2 runs Linux 4.4.302+ without WireGuard support, and linuxserver/wireguard won't work (nelson.cloud, DS920+, updated 2026-05-06; read 2026-11-08)",
+     "https://nelson.cloud/setting-up-wireguard-on-synology-dsm-7-using-docker-and-gluetun/"
+    ],
+    [
+     "WireGuard added to mainline Linux in 5.6, released 29 March 2020 (Kernel Newbies; read 2026-11-08)",
+     "https://kernelnewbies.org/Linux_5.6"
+    ],
+    [
+     "UGOS Pro 1.19.1.0126 (31 August 2026) upgraded the kernel to 6.18 (Marius Hosting; read 2026-11-08)",
+     "https://mariushosting.com/ugreen-nas-ugos-pro-1-19-1-0126-released/"
+    ],
+    [
+     "AdGuard Home in Docker on a UGREEN NAS: host network, admin port 9080, DNS port 53 (Marius Hosting, updated 2026-10-02; read 2026-11-08)",
+     "https://mariushosting.com/how-to-install-adguard-on-your-ugreen-nas/"
+    ],
+    [
+     "DXP2800: Intel N100, 8 GB DDR5 (16 GB max), 2× M.2 NVMe usable as cache or volumes, 1× 2.5GbE (ComputerBase, 2024-07-01; read 2026-11-08)",
+     "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/"
+    ],
+    [
+     "DXP2800 16.38 W drive access and 5.24 W published lower-power state, measured with one Seagate 2 TB HDD; Docker containers can block hibernation (UGREEN; read 2026-11-08)",
+     "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume"
+    ],
+    [
+     "DXP2800 UGREEN-stated power: 16.38 W during drive access and 5.24 W during drive hibernation (Need to Know IT, updated 2026-10-28; read 2026-11-08)",
+     "https://needtoknowit.com.au/blog/ugreen-dxp2800-review-australia-2-bay-pro-nas.md"
+    ],
+    [
+     "DS225+: Celeron J4125, 2 GB DDR4 (6 GB max), no M.2 listed, 16.98 W access and 6.08 W HDD hibernation, VPN Server max 4 connections (Synology; read 2026-11-08)",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "DSM 7.3 VPN Server supports OpenVPN, L2TP over IPsec and PPTP (Synology; read 2026-11-08)",
+     "https://www.synology.com/en-us/dsm/7.3/software_spec/vpn_server"
+    ],
+    [
+     "Third-party WireGuard kernel module for DSM 7.2/7.3/7.4, tested with a DS920+, geminilake listed (GitHub; read 2026-11-08)",
+     "https://github.com/gpopesc/wireguard-module-synology"
+    ],
+    [
+     "Asustor VPN Server 1.1.0.r327 adds WireGuard; AS54 series supported (Asustor App Central; read 2026-11-08)",
+     "https://www.asustor.com/en/app_central/app_detail?id=1600"
+    ],
+    [
+     "Asustor AdGuard Home 0.107.79.r01, ADM 4.3.0 required, AS54 supported, admin port 3000 at setup (Asustor App Central; read 2026-11-08)",
+     "https://www.asustor.com/en/app_central/app_detail?id=1026"
+    ],
+    [
+     "AS5402T: Celeron N5105, 4 GB (16 GB max), 4× M.2 PCIe 3.0 x1, 22.9 W operation and 12.7 W disk hibernation (Asustor; read 2026-11-08)",
+     "https://www.asustor.com/en/product/spec?p_id=81"
+    ],
+    [
+     "TS-264-8G: Celeron N5095 64-bit x86, 8 GB (16 GB max), 2× M.2 2280, QTS 6.1.0, 29.086 W operating and 18.288 W disk standby with drives fully populated (QNAP; read 2026-11-08)",
+     "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+    ],
+    [
+     "QVPN Service runs QNAP devices as WireGuard VPN servers (QNAP; read 2026-11-08)",
+     "https://www.qnap.com/en-us/software/qvpn-service"
+    ]
+   ]
+  }
+ },
+ "checked": 54,
+ "changed": [
+  {
+   "where": "sources: UGREEN power blog (ai.ugreen.com) label",
+   "was": "DXP2800 16.38 W drive access and 5.24 W hibernation, measured with one Seagate 2 TB HDD; Docker containers can block hibernation",
+   "now": "DXP2800 16.38 W drive access and 5.24 W published lower-power state, measured with one Seagate 2 TB HDD; Docker containers can block hibernation",
+   "why": "On 2026-11-08 the UGREEN blog table labels the 5.24 W column 'Published lower-power state', not hibernation. The 'hibernation' wording in the DXP2800 power cell is kept because Need to Know IT (read 2026-11-08) gives UGREEN's stated figures as '16.38W during drive access and 5.24W during drive hibernation'. UGREEN's own DXP2800 product page returned HTTP 429, so I could not re-read it. A Neowin review returned HTTP 403."
+  },
+  {
+   "where": "sources: added entry",
+   "was": "(none)",
+   "now": "DXP2800 UGREEN-stated power: 16.38 W during drive access and 5.24 W during drive hibernation (Need to Know IT, updated 2026-10-28; read 2026-11-08) — https://needtoknowit.com.au/blog/ugreen-dxp2800-review-australia-2-bay-pro-nas.md",
+   "why": "This is the readable source for the 'hibernation' label on the 5.24 W figure in the DXP2800 power cell."
+  },
+  {
+   "where": "after: Synology DSM bullet, last sentence",
+   "was": "Synology doesn't support it.",
+   "now": "It is a third-party module, not a Synology package.",
+   "why": "The gpopesc GitHub page (read 2026-11-08) says nothing about whether Synology supports the module. It is a third-party repository, and the new sentence states only that."
+  }
+ ],
+ "removed": [],
+ "log": [
+  "Verified on 2026-11-08 against the page: nelson.cloud gives DSM 7.3.2-86009 Update 3 and Linux v4.4.302+, and has the quotes 'which doesn't support WireGuard' and 'the linuxserver/wireguard image won't work'. The page was updated 2026-05-06. The DS920+ is named only in the page's Synology release-note link (model=DS920%2B), not in its text. I kept it because nothing contradicts it.",
+  "Verified: Kernel Newbies says Linux 5.6 was released Sun 29 Mar 2020 and added WireGuard.",
+  "Verified: Marius Hosting says UGOS Pro 1.19.1.0126 came out 31 August 2026 with kernel 6.18. The UGREEN AdGuard guide uses network_mode: host, changes the admin port from 80 to 9080, uses DNS port 53, and was updated 2 October 2026.",
+  "Verified: ComputerBase (1.7.2024) lists the N100, 8 GB DDR5 with 16 GB max, 2× M.2 usable as cache or as drives, and 1× 2.5GbE.",
+  "Verified: Synology's DS225+ spec page lists the J4125, 2 GB DDR4 with 6 GB max (2+4), no M.2, 16.98 W access, 6.08 W HDD hibernation, and VPN Server max 4. DSM 7.3 VPN Server lists OpenVPN, L2TP over IPSec and PPTP, with no WireGuard.",
+  "Verified: the gpopesc module covers DSM 7.2/7.3/7.4, lists geminilake, was tested on a DS920+ only, and installs with sudo sh ./install_module.sh.",
+  "Verified: Asustor VPN Server 1.1.0.r327 shows Last Update 2024-04-17 and 'Support WireGuard VPN', and lists AS54. AdGuard Home 0.107.79.r01 shows Last Update 2026-09-11, needs ADM 4.3.0, lists AS54, and says to set the admin port to 3000. The AS5402T spec page lists the N5105, 4 GB with 16 GB max, 4× M.2 PCIe 3.0 x1, 22.9 W operation and 12.7 W disk hibernation.",
+  "Verified: QNAP's TS-264 page lists the N5095 (64-bit x86), 8 GB with 16 GB max, 2× M.2 2280 PCIe Gen3 x1, QTS 6.1.0, 29.086 W operating and 18.288 W disk standby, tested with drives fully populated. QVPN Service runs QNAP devices as WireGuard servers.",
+  "Arithmetic re-checked: 16.38/16.98/22.9/29.086 W × 8,760 h = 143.5/148.7/200.6/254.8 kWh. 254.8 − 143.5 = 111.3. 8 ÷ 2 = 4.",
+  "No prices appear in the draft, so I re-read none. Every row has a slug, so prices come from Dealectric's records.",
+  "Not re-read: UGREEN's DXP2800 product page (HTTP 429) and Neowin's DXP2800 review (HTTP 403)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.5149001000000001
+ }
+}

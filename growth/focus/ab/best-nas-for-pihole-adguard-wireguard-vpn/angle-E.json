@@ -1,0 +1,102 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured idle power for any of the candidates. ComputerBase measured the UGREEN DXP2800 at 18.6 W idle with two HDDs and 7.3 W with the HDDs in standby, and the same lab measured the J4125 Synology DS224+ at 18.6 W idle and 3.5 W in standby. PC-WELT measured the QNAP TS-264-8G at 26.5 W idle. ServeTheHome measured the GL.iNet Flint 2 at 5.6 W idle, and CNX Software measured it at 834–889 Mbps as a WireGuard server. For an always-on DNS + VPN box that is a 3–5× gap in power draw.",
+ "standout": 2,
+ "standout_why": "I compared racksandwatts.com/guides/best-nas-for-a-homelab-2026 and racksandwatts.com/comparisons/ugreen-dxp2800-vs-synology-ds225-plus, which have only maker specs, no power, noise or VPN measurements, and never mention Pi-hole, AdGuard or WireGuard. comparefoundry.com's DS225+ vs DXP2800 page says it is based on maker documentation and has no measured figures. Synology's Container Manager page is the one ChatGPT cited, and it has no measurements. starryhope.com/nas/best-budget-nas (rank 14) gives one figure, OCinside's 'about 7 W at idle' for the DXP2800. It has no Synology, QNAP or router figures and no WireGuard throughput, and it does not say that DNS/VPN containers on the HDD volume keep the drives from sleeping. Our own page has UGREEN's lab figures and OCinside's, and lists 'not read' for the DS225+, TS-264 and Flint 2 idle draw.",
+ "decides": "This backs ChatGPT's own caveat that a router or Pi beats a NAS if the shopper needs only DNS + VPN, and it puts numbers on it. In ServeTheHome's test the Flint 2 idles at 5.6 W, about 49 kWh a year (5.6 W × 8,760 h). CNX Software measured it at 834–889 Mbps in WireGuard server mode. Jeff Geerling measured a Pi 5 8GB at 3.2 W, about 28 kWh a year. A DXP2800 whose HDDs keep spinning idles at 18.6 W in ComputerBase's test, about 163 kWh a year. For a shopper who also wants storage, the DXP2800 remains the NAS pick: ComputerBase measured it level with the Synology DS224+ at 18.6 W idle, and PC-WELT measured the QNAP TS-264 at 26.5 W idle, so it doesn't cost more to run. One condition goes with that pick: put the AdGuard/Pi-hole and WireGuard container data on the NVMe slot, not the HDD volume. Otherwise the HDDs can't reach the 7.3 W standby state.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "TerraMaster F2-425 Plus",
+  "GL.iNet Flint 2 (GL-MT6000)",
+  "Raspberry Pi 5 (8 GB)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Idle power, HDDs spinning",
+   "value": "18.6 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: Lautstärke und Leistungsaufnahme (ComputerBase, Frank Hüber, 2024-07-01)",
+   "read": "2026-11-08",
+   "note": "ComputerBase lab, wall power. Drives: 2× Seagate IronWolf Pro 20 TB plus 2× IronWolf 510 480 GB NVMe in RAID 1 as SSD cache."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power with HDDs in standby",
+   "value": "7.3 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: Lautstärke und Leistungsaufnahme (ComputerBase, 2024-07-01)",
+   "read": "2026-11-08",
+   "note": "Same setup. Only reachable if nothing writes to the HDD volume, so DNS query logs and container data have to live on NVMe. 18.6 − 7.3 = 11.3 W difference."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power while writing",
+   "value": "27.7 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: Lautstärke und Leistungsaufnahme (ComputerBase, 2024-07-01)",
+   "read": "2026-11-08",
+   "note": "File-transfer load, same drives. Noise was 30.0 dB(A) idle (below the meter's range) and 34.2 dB(A) during drive access."
+  },
+  {
+   "product": "Synology DS224+ (stand-in for the DS225+, same Celeron J4125)",
+   "label": "Idle / HDD standby / write power",
+   "value": "18.6 W / 3.5 W (7.0 W without extended standby) / 25.3 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: Lautstärke und Leistungsaufnahme (ComputerBase, 2024-07-01)",
+   "read": "2026-11-08",
+   "note": "Comparison values from the same ComputerBase chart. The DS224+ is the DS225+'s predecessor on the same J4125 platform, but the DS225+ adds a 2.5GbE port, so treat this as indicative and label it DS224+. Drives were not stated for the Synology units."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Idle / sleep / load / off power",
+   "value": "26.5 W / 16.8 W / 33.7 W / 1.9 W",
+   "source": "https://www.pcwelt.de/article/2997487/qnap-ts-264-8g-test-nas-multi-gigabit.html",
+   "source_title": "QNAP TS-264-8G im Test (PC-WELT, Ines Walke-Chomjakov, 2025-12-09)",
+   "read": "2026-11-08",
+   "note": "2× Seagate IronWolf ST4000NE001 4 TB in RAID 1, QTS 5.2.7. PC-WELT lists the higher power draw as a minus."
+  },
+  {
+   "product": "GL.iNet Flint 2 (GL-MT6000) router",
+   "label": "Idle power / max seen",
+   "value": "5.6 W idle; never above 12 W",
+   "source": "https://www.servethehome.com/gl-inet-gl-mt6000-flint-2-wifi-router-review-mediatek-openwrt/3/",
+   "source_title": "GL.iNet GL-MT6000 Flint 2 WiFi Router Review (ServeTheHome, Rohit Kumar, 2025-12-10)",
+   "read": "2026-11-08",
+   "note": "Noise stayed under STH's 34 dBA meter floor. 5.6 W × 8,760 h = 49 kWh a year."
+  },
+  {
+   "product": "GL.iNet Flint 2 (GL-MT6000) router",
+   "label": "WireGuard throughput, server mode",
+   "value": "889 Mbps (UP Xtreme → laptop) and 834 Mbps (laptop → UP Xtreme); 888–899 Mbps in client mode",
+   "source": "https://www.cnx-software.com/2024/01/15/gl-inet-flint-2-router-review-part-2-wifi-6-2-5gbe-wireguard-performance/",
+   "source_title": "GL.iNet Flint 2 router review – Part 2: WiFi 6, 2.5GbE, WireGuard performance (CNX Software, Jean-Luc Aufranc, 2024-01-15)",
+   "read": "2026-11-08",
+   "note": "iperf3 -t 60 over Gigabit Ethernet. Ubuntu 22.04 laptop and a UP Xtreme i11 as the WireGuard peer. This is the remote-access case the shopper asked about."
+  },
+  {
+   "product": "Raspberry Pi 5 (8 GB)",
+   "label": "Idle power",
+   "value": "3.2 W (8 GB, C1 stepping); 3.3 W (4 GB); 2.4 W (2 GB, D0 stepping)",
+   "source": "https://www.jeffgeerling.com/blog/2024/new-2gb-pi-5-has-33-smaller-die-30-idle-power-savings/",
+   "source_title": "New 2GB Pi 5 has 33% smaller die, 30% idle power savings (Jeff Geerling, 2024-08-29)",
+   "read": "2026-11-08",
+   "note": "Geerling's table, same test parameters across boards; no meter named. Supports our page's unsourced 'about 3 W'. 3.2 W × 8,760 h = 28 kWh a year. The DXP2800 with HDDs spinning: 18.6 W × 8,760 h = 163 kWh a year."
+  }
+ ],
+ "unsourced": [
+  "Synology DS225+ idle power measured by a named reviewer on a page I opened. NASCompares' review (2025-08-04, Rob Andrews) repeats only Synology's 16.98 W access / 6.08 W hibernation and doesn't give a test setup. The Dong Knows Tech figure (275 Wh per 24 h) and NASCompares' '10 W idle' appear only on starryhope.com's aggregator page, and the Dong Knows Tech review URL returned 404.",
+  "TerraMaster F2-425 Plus measured idle power. ITPro's review (Dave Mitchell, 2026-02-23) showed only the 48 W adapter in the part I could read. Starry Hope's 12 W is a maker figure. CNX Software's Part 2 (2026-03-28) wasn't opened because I ran out of budget.",
+  "Asustor AS5402T measured idle power: not searched (budget).",
+  "WireGuard throughput measured on any NAS (N100 DXP2800, J4125 DS225+) by a named lab. The only N100 figure found was an anonymous blog (parkroyk.blogspot.com, about 636–658 Mbps) and an unverified OpenWrt forum claim of over 4 Gbps, so I left both out.",
+  "IgorsLab's DXP2800 power page (0.6 W WoL / 5.6 W standby / 14.5 W transfer per the search snippet) returned 403, so it wasn't used."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9704411000000002
+ }
+}

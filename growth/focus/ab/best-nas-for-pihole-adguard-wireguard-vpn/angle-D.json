@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Synology DSM runs Linux 4.4.302+, while WireGuard entered the mainline kernel only in Linux 5.6, so the 'WireGuard in a container' route ChatGPT suggested for the DS225+ (wg-easy or linuxserver/wireguard, both of which rely on the host's kernel module) has no module to use on stock DSM.",
+ "standout": 3,
+ "standout_why": "Compared against racksandwatts.com's homelab guide and its DXP2800 vs DS225+ comparison (neither mentions WireGuard, VPN, kernel or port 53), synology.com's Container Manager page (no kernel or network-mode limits), wg-easy's GitHub README and its Getting Started page (only 'a suitable container runtime'), and our own current page. Our page says 'WireGuard in Docker (wg-easy or linuxserver/wireguard) needs the host kernel's wireguard module' and gives UGREEN's kernel (6.12). For Synology it only says 'no WireGuard (community SPK only)' and never says that DSM's 4.4 kernel lacks the module. ChatGPT told the shopper twice that on the DS225+ 'WireGuard requires a container or third-party solution', which suggests a container works. On stock DSM it does not.",
+ "decides": "This moves the DS225+ out of 'best overall' for this plan. Pi-hole or AdGuard Home in Container Manager is fine. A WireGuard server, though, needs either an unofficial third-party kernel module (gpopesc build, tested only on a DS920+, 'at your own risk' class), Synology's native OpenVPN instead, or a userspace tool such as Tailscale. Gluetun is a userspace VPN client, so it does not provide a home VPN server. The UGREEN DXP2800 is confirmed as the pick: UGOS Pro 1.19.1 moved to kernel 6.18, well past 5.6, so wg-easy can use in-kernel WireGuard. TerraMaster says TOS 6 is built on Linux 6.1 LTS, which is past 5.6, but one TOS 6 beta owner reported the system actually ran 5.15.59 with WireGuard not working. QNAP (QVPN) and GL.iNet ship WireGuard as a built-in server and avoid the question.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS225+",
+  "TerraMaster F2-425 Plus",
+  "QNAP TS-264",
+  "GL.iNet Flint 2 (GL-MT6000)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Linux kernel release that added WireGuard",
+   "value": "Linux 5.6, released 29 March 2020 ('This release adds Wireguard, an fast and secure VPN design that aims to replace other VPNs')",
+   "source": "https://kernelnewbies.org/Linux_5.6",
+   "source_title": "Linux_5.6 - Linux Kernel Newbies",
+   "read": "2026-11-08",
+   "note": "Any NAS OS kernel older than 5.6 lacks in-tree WireGuard unless the vendor or a third party backports a module."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "DSM kernel version and WireGuard container result",
+   "value": "DSM 7.3.2-86009 Update 3 'is running on Linux v4.4.302+ which doesn't support WireGuard'; 'the linuxserver/wireguard image won't work'",
+   "source": "https://nelson.cloud/setting-up-wireguard-on-synology-dsm-7-using-docker-and-gluetun/",
+   "source_title": "Setting up WireGuard on Synology DSM 7 using Docker and Gluetun (nelson.cloud)",
+   "read": "2026-11-08",
+   "note": "Measured on a DS920+ (model in the release-notes link). Post dated 2025-12-31, updated 2026-05-06. DSM uses one kernel line across x86 Plus models; Marius Hosting reported the 4.4.180+ to 4.4.302+ move with DSM 7.2. The author's workaround, Gluetun, is a userspace VPN client, so it does not provide a remote-access server."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "CPU",
+   "value": "Intel Celeron J4125, 4 cores, 2.0 GHz (2.7 GHz burst); 2 GB DDR4, up to 6 GB",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specs)",
+   "read": "2026-11-08",
+   "note": "The spec page links to the DSM 7.2 software spec. The J4125 is a Gemini Lake part, which places the unit on Synology's 'geminilake' package architecture by inference. Synology's CPU/arch KB table would not render, so this mapping is not read from Synology."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Community WireGuard kernel module for DSM",
+   "value": "gpopesc/wireguard-module-synology: 'for DSM 7.2, DSM 7.3, DSM 7.4 - tested with DS920+'; architectures listed include geminilake",
+   "source": "https://github.com/gpopesc/wireguard-module-synology",
+   "source_title": "gpopesc/wireguard-module-synology (GitHub)",
+   "read": "2026-11-08",
+   "note": "Third-party and not Synology's. The older runfalk/synology-wireguard project is archived; its README says 'it could render your NAS unaccessible if something goes wrong' and that its releases are DSM 6 only."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Older community package warning",
+   "value": "'You use everything here at your own risk... it could render your NAS unaccessible if something goes wrong'; DSM 7 requires compiling it yourself",
+   "source": "https://github.com/runfalk/synology-wireguard",
+   "source_title": "runfalk/synology-wireguard (GitHub, archived)",
+   "read": "2026-11-08",
+   "note": "The compatibility table lists geminilake models (DS220+, DS720+) as working."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "UGOS Pro kernel version",
+   "value": "UGOS Pro 1.19.1.0126 (31 Aug 2026): 'Upgraded the system kernel to version 6.18.'",
+   "source": "https://mariushosting.com/ugreen-nas-ugos-pro-1-19-1-0126-released/",
+   "source_title": "UGREEN NAS UGOS PRO 1.19.1.0126 Released (Marius Hosting)",
+   "read": "2026-11-08",
+   "note": "The post doesn't list models. Per the post, IDX models get 1.19.10.0022 instead, so the DH/DXP line, DXP2800 included, gets this build. 6.18 is past 5.6, so mainline WireGuard is available to wg-easy. I did not read the kernel config to confirm CONFIG_WIREGUARD."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "TOS 6 kernel base (maker's claim)",
+   "value": "'The kernel of TOS 6 is based on the latest Linux Kernel 6.1 LTS'",
+   "source": "https://www.terra-master.com/blogs/news/terramaster-tos-6",
+   "source_title": "TerraMaster TOS 6 (TerraMaster blog)",
+   "read": "2026-11-08",
+   "note": "The page shows two dates (15 Mar 2024 and 10 Oct 2025). A TerraMaster forum post (search snippet only, not opened) reported an F4-424 Pro on TOS 6.0.229 running kernel 5.15.59 with WireGuard not working. TOS 6's native VPN Server has no WireGuard."
+  },
+  {
+   "product": "general",
+   "label": "linuxserver/wireguard host-module requirement",
+   "value": "'All currently supported kernels should have the wireguard module built-in... However, the module may not be enabled. Make sure it is enabled prior to starting the container.' SYS_MODULE is 'Neccessary for loading Wireguard kernel module if it's not already loaded.'",
+   "source": "https://docs.linuxserver.io/images/docker-wireguard/",
+   "source_title": "wireguard - LinuxServer.io docs",
+   "read": "2026-11-08",
+   "note": "Shows that the container uses the host kernel's WireGuard rather than bringing its own."
+  }
+ ],
+ "unsourced": [
+  "Synology's own statement of the DSM 7.2/7.3 kernel version for the DS225+ (no Synology page opened states it); the 4.4.302+ figure comes from nelson.cloud on a DS920+",
+  "Synology KB 'What kind of CPU does my NAS have' row mapping DS225+ to geminilake (page content did not render via fetch)",
+  "UGREEN's own kernel config or release notes confirming CONFIG_WIREGUARD is enabled on UGOS Pro for the DXP2800",
+  "wg-easy's own documented host-kernel requirement (README and Getting Started list only a container runtime)",
+  "Kernel version TOS 6 actually ships on the F2-425 Plus as of current firmware"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.7722933000000001
+ }
+}
