@@ -163,12 +163,12 @@ def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
             except ValueError:
                 d = {"is_error": True, "result": (p.stderr or p.stdout)[-600:]}
             msg = str(d.get("result") or "")
-            if d.get("is_error") and re.search(r"overloaded|\b429\b|rate limit|try again", msg, re.I) and not re.search(r"usage limit|limit reached|out of (extra )?usage", msg, re.I):
+            if d.get("is_error") and re.search(r"overloaded|\b429\b|rate limit|try again", msg, re.I) and not re.search(r"usage limit|limit reached|reached your \w+ limit|out of (extra )?usage|usage credits", msg, re.I):
                 import time
                 time.sleep(90 * (attempt + 1))
                 continue
             break
-        if d.get("is_error") and re.search(r"usage limit|limit reached|out of (extra )?usage|weekly limit|session limit", msg, re.I):
+        if d.get("is_error") and re.search(r"usage limit|limit reached|reached your \w+ limit|out of (extra )?usage|weekly limit|session limit|usage credits", msg, re.I):
             if model.startswith("claude-fable"):
                 _fable_out.set()
                 print(f"[abpage] Fable out of usage ({msg[:120]}); Opus 5.5 high from now on", flush=True)
@@ -350,6 +350,9 @@ def query_for(slug: str, h: dict) -> str:
 
 def research(slug: str, new_page: bool = False, force: bool = False) -> dict:
     d = pdir(slug)
+    if not force and (d / "draft.json").exists():
+        dr = jload(d / "draft.json", {})
+        return {"slug": slug, "status": "drafted", "angle": dr.get("angle"), "model": "cached"}
     h = jload(d / "harvest.json")
     if not h or not h["chats"]:
         return {"slug": slug, "status": "no harvest"}
