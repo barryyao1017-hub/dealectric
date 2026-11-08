@@ -427,10 +427,14 @@ def validate(draft: dict, new_page: bool) -> list[str]:
         if r0.get("slug"):
             p0 = next((p for p in P.PRODUCTS + (draft.get("products") or []) if p["slug"] == r0["slug"]), {})
             name = name or p0.get("model") or p0.get("name") or ""
-        toks = [x for x in re.findall(r"[A-Za-z0-9-]+", name) if re.search(r"\d", x) and len(x) >= 3] or name.split()[:2]
-        ans = re.sub(r"<[^>]+>", "", pg.get("answer", ""))
-        if toks and not any(x.lower() in ans.lower() for x in toks):
-            errs.append(f"the answer's pick is not the first table row ({name!r}); put the pick first or add its row")
+        def toks_of(nm):
+            return [x.lower() for x in re.findall(r"[A-Za-z0-9-]+", nm or "") if re.search(r"\d", x) and len(x) >= 3]
+        ans = re.sub(r"<[^>]+>", "", pg.get("answer", "")).replace("Short answer.", "")
+        named = [m.group(0).lower() for m in re.finditer(r"\b[A-Za-z]*\d[A-Za-z0-9-]*\b", ans) if re.search(r"[A-Za-z]", m.group(0)) and len(m.group(0)) >= 3]
+        named = [x for x in named if not re.fullmatch(r"\d+(wh|w|v|ah|db|mah|gb|tb|mm|hz|khz|lb|kg|ms|h|a|c|f|k|p)s?", x)]
+        first = named[0] if named else None
+        if first and not any(first in x or x in first for x in toks_of(name)):
+            errs.append(f"the answer's first named model ({first}) is not the table's first row ({name!r}): the pick must lead the table")
     if not new_page:
         ex = _existing(draft["slug"])
         if pg.get("title") != ex["title"] or pg.get("h1") != ex["h1"]:
