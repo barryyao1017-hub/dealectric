@@ -1,0 +1,148 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much energy the EcoFlow units with a UPS data port actually delivered when StorageReview measured them: 910 Wh from the DELTA 3 Plus (88.9% of its 1,024 Wh) and 2.61 kWh from the DELTA 3 Ultra Plus (about 85% of 3,072 Wh). Those figures put real numbers on NAS runtimes, roughly 28 h for a 2-bay NAS and 15 h for a 4-bay NAS on the DELTA 3 Plus.",
+ "standout": 2,
+ "standout_why": "The only rival with named measurements is computingforgeeks.com (cited). It has StorageReview's switchover times: RIVER 3 Plus 9 ms, Jackery 2000 Plus 8.7 ms, Bluetti AC60 13.8 ms and others, plus 'just over 8 ms' for the DELTA 3 Plus with no source named. Its runtimes are its own estimates at 73% of nameplate, with no measured capacity. Picklog.cc already has one RIVER 3 Plus owner's 7.9 W self-consumption figure but no measured capacity. thepowerstationguide.com (cited) and racksandwatts.com only repeat maker figures or calculate their own. EcoFlow's pages are spec sheets. None gives the energy StorageReview or nextpit measured coming out of the DELTA 3 Plus or DELTA 3 Ultra Plus. None reports the October 2026 NUT owner result where the River 3 Plus did trigger a low-battery shutdown but its AC output stayed on. computingforgeeks says the unit doesn't raise low battery at all.",
+ "decides": "This backs the DELTA 3 Plus as the long-runtime pick with a data port. Two separate measurements (StorageReview 910 Wh, nextpit 950 Wh) support our page's runtimes of about 28 h at 32 W and 15 h at 59 W. They are an upper bound, though: one owner found NUT's low-battery point equals the app's discharge limit, so a 30% limit leaves about 637 Wh, or roughly 20 h at 32 W. For the RIVER 3 Plus, the October 2026 owner report means our cell 'an open NUT bug never reports low battery' should change. In that report on Ubuntu, upsmon did start a low-battery shutdown, but NUT has no shutdown command for the unit and the AC output stayed on for 60+ seconds. A NAS set to power back on when AC returns may therefore not restart. Measured switchover adds nothing new: all the data-port EcoFlows test at 8 to 9 ms (StorageReview), and computingforgeeks already has most of those numbers.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Ultra Plus",
+  "EcoFlow DELTA 3 Max Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured AC discharge, full to empty",
+   "value": "910 Wh (0.91 kWh), about 88.9% of rated 1,024 Wh",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – StorageReview (Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-08",
+   "note": "StorageReview discharge test from 100% to 0%. The review doesn't give the test load or duration. Runtime at our page's loads with no allowance for inverter overhead: 910/32 W = 28.4 h; 910/59 W = 15.4 h."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured recharge energy",
+   "value": "1,180 Wh from the wall to refill, 86.8% recharge efficiency",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – StorageReview",
+   "read": "2026-11-08",
+   "note": "Recharge from 0% to 100%, measured by StorageReview."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured UPS transfer time",
+   "value": "just over 8 ms (rated 10 ms)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – StorageReview",
+   "read": "2026-11-08",
+   "note": "StorageReview fully charged the unit with a workstation on the output, cut incoming power, and measured the switch from line to inverter with a Quarch Mains Power Analysis Module. computingforgeeks quotes this figure without naming StorageReview."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured usable capacity and efficiency",
+   "value": "950 Wh usable from 1,175 Wh put in, 81%",
+   "source": "https://www.nextpit.de/tests/ecoflow-delta-3-plus-test",
+   "source_title": "EcoFlow Delta 3 Plus im Test – nextpit (Thomas Kern, 2025-02-05)",
+   "read": "2026-11-08",
+   "note": "The article prints '950 kWh', which is clearly 950 Wh. Load and method aren't stated. It's a second measurement agreeing with StorageReview's 910 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "NUT low-battery threshold as reported over USB HID (owner)",
+   "value": "battery.charge.low = 30%, equal to the app's discharge-limit setting; the owner says it 'shuts of at battery.charge.low +1%'",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "From GitHub user ykuksenko, 2024-12-28, firmware V6.31.48.29. The same owner reported battery.runtime = 32 minutes, which they say covers the whole battery and ignores the discharge limit, so the runtime the NAS sees is unreliable. A 30% limit leaves about 0.7 × 910 = 637 Wh, roughly 20 h at 32 W. This is an owner report, not a lab measurement."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Measured UPS transfer time",
+   "value": "9 ms (rated under 10 ms)",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review – StorageReview (Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-08",
+   "note": "Same Quarch method with a workstation load. computingforgeeks already has this figure."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "StorageReview measured discharge (do not use)",
+   "value": "0.43 kWh discharged, 0.56 kWh to recharge",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review – StorageReview",
+   "read": "2026-11-08",
+   "note": "The review calls this 'slightly more than its rated capacity', but 430 Wh is 150% of the rated 286 Wh. It is likely a typo or a test with an extra battery attached, so it shouldn't feed a runtime figure."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "NUT shutdown behaviour (owner test, Oct 2026)",
+   "value": "upsmon logged 'battery is low' and halted the host; the AC output stayed on for 60+ s afterwards; 'Shutdown does nothing'",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "From GitHub user lethandriel, 2026-10-29: firmware V1.33.81.61, Ubuntu 26.04, NUT 2.8.4+really-2, subdriver 'EcoFlow HID 0.01'. The NUT driver has no shutdown function, so a host set to restart when AC returns may stay off. The issue is still open. An earlier report (HarlemSquirrel, 2026-09-10, Home Assistant NUT 2.8.5) saw the unit with no real power data."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Real-world runtime, PC + NAS (owner)",
+   "value": "about 25 minutes from 286 Wh at up to about 340 W",
+   "source": "https://www.apollomaniacs.com/knowhow_ups_ecoflow_river3_plus_en.htm",
+   "source_title": "Using the Portable Power Station as a UPS… How to use EcoFlow RIVER 3 Plus – Apollo Maniacs",
+   "read": "2026-11-08",
+   "note": "The author measured a QNAP TS-269LV2 at 27 to 31 W. Their QNAP showed 'no reaction' to the RIVER 3 Plus over USB. They say EcoFlow Power Manager supports only Windows 10/11 and four Synology models. No author name or date is shown on the page."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra Plus",
+   "label": "Measured UPS transfer time and discharge",
+   "value": "8.25 ms; 2.61 kWh delivered, about 85% of 3,072 Wh",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-max-plus-ultra-plus-review-scalable-portable-power-stations-for-home-and-off-grid-use",
+   "source_title": "EcoFlow DELTA 3 Max Plus / Ultra Plus Review – StorageReview (Dylan Dougherty, 2025-09-30)",
+   "read": "2026-11-08",
+   "note": "Load not stated. 2,610 Wh / 59 W = 44 h before inverter overhead is counted."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra Plus",
+   "label": "Measured idle draw",
+   "value": "about 24 W with both inverter sides on; 22 W with the 30 A outlet off",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-ultra-plus",
+   "source_title": "EcoFlow DELTA 3 Ultra Plus review – The Solar Lab",
+   "read": "2026-11-08",
+   "note": "The Solar Lab writes it as 'W per hour', a unit slip; it means watts. With 22 to 24 W of overhead, a 32 W NAS really draws about 54 to 56 W: 2,610/55 ≈ 47 h, not 82 h. The Solar Lab also measured about 85% AC efficiency. No author or date is shown on the page."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Measured UPS transfer time and discharge",
+   "value": "8 ms; 1.64 kWh delivered, about 80% of 2,048 Wh",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-max-plus-ultra-plus-review-scalable-portable-power-stations-for-home-and-off-grid-use",
+   "source_title": "EcoFlow DELTA 3 Max Plus / Ultra Plus Review – StorageReview",
+   "read": "2026-11-08",
+   "note": "Measured by StorageReview with the Quarch method."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured high-load AC efficiency",
+   "value": "82% running a 1,573 W load for 32 minutes",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus review – The Solar Lab",
+   "read": "2026-11-08",
+   "note": "Measured at heavy load, so it reflects NAS-level loads poorly. No author or date is shown on the page."
+  }
+ ],
+ "unsourced": [
+  "DELTA 3 Plus measured idle or pass-through self-consumption in watts: checked StorageReview, nextpit, The Solar Lab and NUT issue #2735 and found no figure. The Cybershack review URLs from search returned 404.",
+  "RIVER 3 Plus measured usable Wh from a named lab: StorageReview's 0.43 kWh is implausible against the rated 286 Wh, and the Cybershack review (search snippet: 226.8 Wh at 108 W, 79%) returned 404 when opened.",
+  "Lab-measured switchover or usable capacity for Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2 and BLUETTI AC180 at NAS-level loads. Not researched further because none has a UPS data port, so none can send a USB shutdown signal.",
+  "EcoFlow's official list of the four Synology models supported by Power Manager: searched and found no EcoFlow page with the list."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9383202000000002
+ }
+}

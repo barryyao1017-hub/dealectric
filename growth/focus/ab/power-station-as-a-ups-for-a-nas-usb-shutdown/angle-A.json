@@ -1,0 +1,120 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that stock Synology DSM 7.3.2 does not see an EcoFlow RIVER 3 Plus as a USB UPS (it shows \"No USB UPS Connected\"). It only works through EcoFlow's Power Manager NAS package, after hand-editing its port (3496 to 3493) and device name (nutdev1 to ups) and switching DSM to Synology UPS Server mode. Even then, several owners report that the NAS never shut down. So \"NUT 2.8.3+ support\" means support for anyone who runs current NUT, not for the NAS firmware people actually have.",
+ "standout": 2,
+ "standout_why": "I compared against computingforgeeks.com/power-station-vs-ups-homelab, racksandwatts.com, thepowerstationguide.com/blog/portable-power-station-vs-ups (cited), ankersolix.com's NAS UPS blog, and our own cited page. ComputingForGeeks already has: NUT 2.8.3 as the first release with support, Debian 13 and Proxmox 9 shipping 2.8.1, TrueNAS 25.10 users reporting 2.8.0, the RIVER 3 Plus low-battery bug, and the ignorelb workaround. The Power Station Guide only says Synology users 'have run it with NUT in Docker'. Racksandwatts says a NAS's bundled NUT 'can differ'. None of them names the Synology result on stock DSM (no USB UPS detected), the Power Manager package with its port and name edits, the reported failed shutdowns on DSM 7.3.2, or the QNAP TS-269L v2 showing no reaction. ChatGPT itself had to ask 'What NAS are you using?', and this table answers that question.",
+ "decides": "It confirms that no portable power station is a plug-and-play USB UPS for a Synology or QNAP on stock firmware. The RIVER 3 Plus and DELTA 3 Plus only make sense if the NAS can run current NUT itself (2.8.3 or later, which on Debian means forky or sid, not Debian 12 or 13) or can poll a separate NUT server. For a Synology or QNAP owner who wants an automatic shutdown, the pick is a conventional USB HID UPS (APC BE600M1, CyberPower CP1500PFCLCD). The EcoFlow is then a long-runtime source that you shut down on a timer, not one that sends a low-battery signal.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Ultra Plus",
+  "APC Back-UPS BE600M1",
+  "CyberPower CP1500PFCLCD"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "NUT release that first supports EcoFlow over USB HID",
+   "value": "NUT 2.8.3: \"Added basic support for EcoFlow River 3 Plus and Delta 3 Plus models\" (usbhid-ups)",
+   "source": "https://raw.githubusercontent.com/networkupstools/nut/master/NEWS.adoc",
+   "source_title": "Network UPS Tools NEWS.adoc (release notes)",
+   "read": "2026-11-08",
+   "note": "This is under 'Release notes for NUT 2.8.3 - what's new since 2.8.2'. The PLANNED 2.8.6 section adds 'USB drivers now prefer the longer of conflicting HID report descriptor lengths for EcoFlow devices using USB ID 3746:ffff', which gives a complete descriptor on affected River 3 Plus firmware. That means some RIVER 3 Plus firmware needs a NUT release that is not out yet."
+  },
+  {
+   "product": "general",
+   "label": "Support level in the NUT hardware compatibility list",
+   "value": "DELTA 3 Plus: USB, usbhid-ups, support level 3 ('based on publicly available protocol'). RIVER 3 Plus: listed with no driver or support level. No Bluetti, Anker or Jackery entries.",
+   "source": "https://networkupstools.org/stable-hcl.html?manufacturer=EcoFlow",
+   "source_title": "NUT Hardware Compatibility List (stable), EcoFlow",
+   "read": "2026-11-08",
+   "note": "The page footer shows NUT v2.8.5.x."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Status of NUT support issue",
+   "value": "Issue #2735 is still open with milestone 2.8.6. Early reports on NUT 2.7.4 and 2.8.2 lacked support. A maintainer said 2.8.4+ should include an 'Ecoflow HID' subdriver. USB ID 3746:ffff. Outlet and shutdown controls are not exposed (upsc returns 'Variable not supported by UPS' for the outlet delay timers).",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "Opened 2024-12-23. A user reports that upsmon logged 'battery is low' only when using an ignorelb threshold override."
+  },
+  {
+   "product": "general",
+   "label": "NUT version Debian ships (base of TrueNAS SCALE, OMV, Proxmox)",
+   "value": "bookworm (Debian 12) 2.8.0-7; trixie (Debian 13) 2.8.1-5; forky/sid 2.8.5-1",
+   "source": "https://packages.debian.org/search?keywords=nut-server&searchon=names&suite=all&section=all",
+   "source_title": "Debian package search: nut-server",
+   "read": "2026-11-08",
+   "note": "Both stable Debian releases ship a NUT older than 2.8.3, so stock packages on these do not recognise either EcoFlow unit. The page does not say which NAS OS uses which Debian release."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Synology DSM, stock USB detection and workaround",
+   "value": "On DSM 7.3.2-86009 Update 1 a reader reports 'No USB UPS Connected'. The working route is EcoFlow's Power Manager for NAS package (Power Manager NUT 1.0.3) with its NUT server edited from port 3496 to 3493 and device nutdev1 to ups, then DSM set to Synology UPS Server mode at the NAS's own IP.",
+   "source": "https://www.sandcomp.com/blog/en/2025/06/22/using-ecoflow-river-3-plus-as-a-ups-how-to-configure-synology-nas/",
+   "source_title": "Using EcoFlow River 3 Plus as a UPS: How to Configure Synology NAS (sandcomp)",
+   "read": "2026-11-08",
+   "note": "Guide dated 2025-06-22 and based on 'DSM 7.x'. The DSM build and 'No USB UPS Connected' come from reader comments dated 2026-02-25 and 2026-02-28 (DS423+, DS920+). A 2025-07-21 log shows the EcoFlow package's own NUT at 2.8.2. This is the walk-through for 'works only with a script'."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Synology shutdown outcome reported by owners (sandcomp comments)",
+   "value": "Commenter JJ (2026-01-28): no shutdown, standby boot loop. JJ (2026-02-28): no shutdown after the set delay. Anonymous (2026-02-28): emails received, no shutdown. DS920+ owner (2026-02-28): NAS unresponsive about 5 min after unplugging. Pippo (2026-02-25, DS423+): works after a upsmon.conf change. AIR (2026-05-05): says the reconnect problem was fixed.",
+   "source": "https://www.sandcomp.com/blog/en/2025/06/22/using-ecoflow-river-3-plus-as-a-ups-how-to-configure-synology-nas/",
+   "source_title": "Using EcoFlow River 3 Plus as a UPS: How to Configure Synology NAS (sandcomp)",
+   "read": "2026-11-08",
+   "note": "These are owner reports from the comment section, not tests by the site. Commenter gmajian notes that DSM goes into Safe Mode/standby instead of a full power-off on a UPS event."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "QNAP over USB",
+   "value": "With the EcoFlow connected to a QNAP TS-269L v2, Apollomaniacs reports 'there is no reaction on the NAS side even when it is connected'.",
+   "source": "https://www.apollomaniacs.com/knowhow_ups_ecoflow_river3_plus_en.htm",
+   "source_title": "Apollomaniacs: EcoFlow RIVER 3 Plus as a UPS",
+   "read": "2026-11-08",
+   "note": "The author used Power Manager 1.0.0.14 on Windows. The low-battery reminder in the app is fixed at 20%. Measured runtime was about 25 min at 85% charge, PC plus NAS, estimated max about 340 W."
+  },
+  {
+   "product": "general",
+   "label": "Other NAS OS: what the shipped NUT does with a RIVER 3 Plus",
+   "value": "Rockstor 5.1.0-0 on Leap 15.6 ships NUT 2.7.4. Upgrading to 2.8.4 (Tumbleweed) still left the NUT service stopping right after start.",
+   "source": "https://forum.rockstor.com/t/problems-with-nut/10813",
+   "source_title": "Problems with NUT - Rockstor forum",
+   "read": "2026-11-08",
+   "note": "Posts dated 2025-12-02. Rockstor community member Hooverdan wrote that the River 3 Plus is 'only supported with nut version 2.8.4 or higher', which differs from the NUT NEWS file's '2.8.3 basic support'."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "What EcoFlow states about NAS shutdown",
+   "value": "'connect RIVER 3 Plus to your PC or NAS via a USB-B port' with Power Manager, which 'notifies you when RIVER 3 Plus is running low... and initiates an automatic shutdown'. Switchover '<10 ms'. 286 Wh, 600 W, 10.4 lb.",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus (EcoFlow US)",
+   "read": "2026-11-08",
+   "note": "The page lists no supported operating systems or NAS brands. The shutdown claim depends on EcoFlow's software, not on the NAS's built-in UPS client. The weight fills the page's 'not read' cell: 10.4 lb is about 4.7 kg."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra Plus",
+   "label": "Price at maker US store",
+   "value": "$1,599 (compare-at $3,199)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-plus-portable-power-station-3072wh",
+   "source_title": "EcoFlow DELTA 3 Ultra Plus Portable Power Station (3072Wh), EcoFlow US store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search of us.ecoflow.com. The store copy says '10ms Auto-Switch: keep critical devices like NAS systems and servers running smoothly'. It makes no USB UPS-HID claim in that text."
+  }
+ ],
+ "unsourced": [
+  "Which NUT version Synology DSM 7.3 bundles: searched Synology docs, synoforum and powerfallback, and none states a version. Only sandcomp calls it 'outdated'.",
+  "Which NUT version QNAP QTS/QuTS hero and UGREEN UGOS Pro bundle, and whether either lists EcoFlow: not found.",
+  "The Debian base of TrueNAS 25.10: ComputingForGeeks reports users seeing NUT 2.8.0, but I did not open an iXsystems source.",
+  "Today's prices for the RIVER 3 Plus and DELTA 3 Plus at us.ecoflow.com: storecheck product returned HTTP 429 for both, and the RIVER 3 Plus US product page shows no price.",
+  "Maker statements on the DELTA 3 Plus data port and Power Manager support: ecoflow.com/us/delta-3-plus-portable-power-station returned 404.",
+  "EcoFlow's official list of NAS models supported by Power Manager: no EcoFlow download or support page found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0109472000000002
+ }
+}

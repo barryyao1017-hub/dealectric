@@ -1,0 +1,108 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that EcoFlow's USB HID link cannot cut the station's AC output after the NAS shuts down. NUT's open issue #2735 for the RIVER 3 Plus (firmware V1.33.81.61, Oct 2026) says 'Shutdown does nothing' and that the AC output 'stays live for 60+ seconds', so the NAS stays off when mains power returns. Nor does any result state that EcoFlow's own Power Manager software lists only the RIVER 3 Plus as a supported device, which leaves the DELTA 3 Plus and DELTA 3 Ultra without it.",
+ "standout": 2,
+ "standout_why": "I compared against computingforgeeks.com/power-station-vs-ups-homelab, racksandwatts.com, thepowerstationguide.com/blog/portable-power-station-vs-ups (cited), ankersolix.com's NAS UPS blog, jackery.com's UPS-mode blog and our current page. computingforgeeks already covers: usbhid-ups from NUT 2.8.3, Debian 13 and Proxmox VE 9 shipping NUT 2.8.1, TrueNAS 25.10 on 2.8.0, the RIVER 3 Plus low-battery bug (issue 3068) and a NUT 2.8.5 HID crash on the DELTA 3 Plus. thepowerstationguide mentions 'NUT in Docker' on Synology. None of them says the EcoFlow driver has no killpower or shutdown command, so automatic recovery is impossible. ChatGPT listed automatic recovery as a requirement in its own answer. None says EcoFlow's Power Manager supports only the RIVER 3 Plus. None says EcoFlow's Synology NUT package serves on port 3496 and names the device nutdev1, while DSM expects port 3493 and a device named ups. None says the DELTA 3 Ultra carries UPS-HID over its USB-C 140 W output port rather than a dedicated data port.",
+ "decides": "This confirms the RIVER 3 Plus as the only power station with a maker-documented NAS shutdown path: EcoFlow names it as the only device Power Manager supports, and the cable is in the box. It also limits what the RIVER 3 Plus can do. It can tell a NAS to shut down, but it cannot switch its AC off and back on, so the NAS will not restart by itself after an outage. DSM also needs manual config edits, and commenters on a DS920+ report it hanging instead of shutting down. Shoppers who need unattended recovery should get a conventional USB HID UPS (APC BE600M1 or CyberPower CP1500PFCLCD) or UGREEN's US3000 for NASync. The DELTA 3 Plus and DELTA 3 Ultra only work through generic NUT 2.8.3 or later, without EcoFlow software.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Ultra / Ultra Plus",
+  "EcoFlow DELTA 3",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180",
+  "APC Back-UPS BE600M1",
+  "CyberPower CP1500PFCLCD",
+  "UGREEN NAS UPS US3000"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "NUT shutdown / killpower support",
+   "value": "None. 'Shutdown does nothing'; the driver has no upsdrv_shutdown(); driver.flag.allow_killpower has no effect; AC output stays live for 60+ seconds after the host shuts down, so the station never cycles power and a NAS will not restart by itself when mains returns",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "Reported by user lethandriel on firmware V1.33.81.61. Last comment 2026-10-29. The issue is still open, marked Todo, milestone NUT 2.8.6. USB ID 3746:ffff. The same thread says the DELTA 3 Plus (firmware V6.31.48.29 tested) is 'almost identical'."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Low-battery event in NUT, workaround",
+   "value": "The low-battery threshold override with ignorelb 'works as expected' (one user, Oct 2026). This is a workaround for the missing low-battery report described in NUT issue 3068.",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "One user's report, not a NUT release note. Firmware versions reported in the thread: V1.32.76.52, V1.33.81.56 and V1.33.81.61."
+  },
+  {
+   "product": "EcoFlow Power Manager (PC/NAS UPS software)",
+   "label": "Supported power stations",
+   "value": "'Supported devices: RIVER 3 Plus' only. The section also shows 'Coming soon'.",
+   "source": "https://www.ecoflow.com/us/support/download/index",
+   "source_title": "EcoFlow US Download Center",
+   "read": "2026-11-08",
+   "note": "The DELTA 3 Plus, DELTA 3 Ultra and Ultra Plus are not listed, so on those models NAS shutdown depends on generic NUT usbhid-ups. The linked Power Manager manual (manuals.ecoflow.com) loads its content with JavaScript and returned no readable text."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Maker's statement of the data link",
+   "value": "Connect RIVER 3 Plus to a PC or NAS via the USB-B port to view status and outage logs. Power Manager 'notifies you when RIVER 3 Plus is running low' and 'initiates an automatic shutdown'.",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus | EcoFlow US",
+   "read": "2026-11-08",
+   "note": "The page names no supported OS or NAS brand. The cable in the box comes from a search summary, not a page I opened."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus + Synology DSM 7.x",
+   "label": "Fit of EcoFlow's Synology package with DSM's UPS service",
+   "value": "EcoFlow's Power Manager NUT package (PowerManagerNUT-x86_64-1.0.2 / 1.0.3 .spk) serves on port 3496 with device name nutdev1. DSM expects port 3493 and device name ups. DSM's bundled NUT 'may not recognize the EcoFlow device as a USB UPS'. Fixing this means editing run.sh, upsd.conf, ups.conf and eco_shutdown.sh, and updates may overwrite the edits. SA6400 not supported.",
+   "source": "https://www.sandcomp.com/blog/en/2025/06/22/using-ecoflow-river-3-plus-as-a-ups-how-to-configure-synology-nas/",
+   "source_title": "Using EcoFlow River 3 Plus as a UPS: How to Configure Synology NAS (Sandcomp, author 'albert')",
+   "read": "2026-11-08",
+   "note": "Posted 2025-06-22, updated 2025-10-17. The author does not report an automatic-shutdown test. Commenters on DSM 7.3.2-86009 Update 1 (DS920+, 423+) report a standby boot loop, or the NAS becoming unresponsive instead of shutting down."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra / Ultra Plus",
+   "label": "Port and cable for the UPS data link",
+   "value": "'Use a data cable to connect the USB-C-140W output port of the portable power station to the USB port of the device (supports USB 2.0 protocol)', then adjust settings on the NAS. The maker also says: 'Make sure the device (e.g., NAS device, PC, or laptop) supports UPS functionality'. Switchover <10 ms.",
+   "source": "https://www.ecoflow.com/ca/delta-3-ultra-plus-portable-power-station/support",
+   "source_title": "EcoFlow DELTA 3 Ultra Plus (3072Wh) support | EcoFlow CA",
+   "read": "2026-11-08",
+   "note": "The data link uses the 140 W USB-C output port, not a dedicated port. The page names no cable model, OS or NUT version. This is EcoFlow's Canadian page; I did not open the US equivalent."
+  },
+  {
+   "product": "general (NUT hardware compatibility list)",
+   "label": "Power stations in NUT's HCL",
+   "value": "Only EcoFlow is listed: DELTA 3 Plus (USB, usbhid-ups, support level 3 'based on publicly available protocol') and RIVER 3 Plus (USB, no driver or level filled in). No Anker, BLUETTI, Jackery, Goal Zero, ALLPOWERS, Growatt or OSCAL entries.",
+   "source": "https://networkupstools.org/stable-hcl.html?manufacturer=EcoFlow",
+   "source_title": "NUT Hardware Compatibility List",
+   "read": "2026-11-08",
+   "note": "List built from nut v2.8.5.1711, last updated 2026-11-07. The DELTA 3 Ultra is not listed."
+  },
+  {
+   "product": "Anker SOLIX (all)",
+   "label": "UPS communication to a NAS",
+   "value": "Anker names no SOLIX model with a USB, SNMP or network UPS signal: 'USB charging ports and app monitoring are not UPS communication'",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/portable-power-station-ups-home-server-nas",
+   "source_title": "Portable Power Station as a NAS UPS - Limits to Check - Anker SOLIX US",
+   "read": "2026-11-08",
+   "note": "Anker advises using a communication-capable UPS when the NAS needs shutdown signaling."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow Power Manager manual (manuals.ecoflow.com/eu/product/power-manager): supported OS and NAS versions, CPU architectures, shutdown behaviour. The page loads with JavaScript and returned no readable text, and I found no PDF.",
+  "RIVER 3 Plus user manual PDF (ecoflow-service-us-prod): wording on the USB-B port and the communication cable in the box. WebFetch returned only image data, and local text extraction needed approval I did not have.",
+  "DELTA 3 Plus user manual (device.report): wording on the USB-C data link and the cable not being included. The site returned HTTP 403.",
+  "UGREEN NAS UPS compatibility list (support.ugnas.com article 136 and nas-ca.ugreen.com/pages/compatibility): whether any EcoFlow or other power station is tested with UGOS Pro. The first page loads with JavaScript and the second returned HTTP 429.",
+  "QNAP compatible-UPS list: the old wiki URL redirects to a generic how-to page, so I could not check whether any power station is listed.",
+  "Synology's UPS compatibility list: whether any EcoFlow model appears. Not checked within the tool-call budget.",
+  "Jackery: whether any model (including the Explorer 1000 v2 and 5000 Plus) has a data or HID port. Jackery's UPS-mode blog was cut off before any such statement."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8814487
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the EcoFlow RIVER 3 Plus and DELTA 3 Plus give NUT no command to switch their AC output off and back on (no load.off, load.off.delay or shutdown.return), so after the NAS shuts itself down the station keeps its outlets live. If mains returns before the battery runs flat, the NAS never sees a power loss and stays off until someone presses its power button.",
+ "standout": 2,
+ "standout_why": "I compared against computingforgeeks.com (power-station-vs-ups-homelab), racksandwatts.com (portable-power-station-as-ups-for-router-modem-nas) and the cited thepowerstationguide.com (portable-power-station-vs-ups). They cover the NUT 2.8.3+ requirement, the usbhid-ups driver, the open low-battery bug and the ignorelb workaround. None of them says the stations cannot cut and restore their output, or what that means for the NAS powering back on. Our own current page has only a half-sentence on it ('the driver cannot tell the station to cut its outlets after the shutdown'), with no source and no consequence explained. I did not open itechguides, whichwatts, ankersolix, picklog or backup-power.org, so this comparison does not cover them.",
+ "decides": "This confirms the RIVER 3 Plus and DELTA 3 Plus as the only stations here that can signal a shutdown, but it adds a limit to the pick. They can shut a NAS down cleanly, yet they cannot bring it back by themselves after a short outage, because the 'restart after power failure' setting only fires when the NAS really loses power. A NAS the shopper needs to reach remotely, such as one serving a VPN, will stay off. Two things avoid that: a conventional HID UPS (the APC class), which exposes load-off-with-delay commands, or a timer or Wake-on-LAN workaround. The table's 'What a NAS sees' column should add 'won't power the NAS back on after a short outage'.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Plus",
+  "APC Back-UPS BE600M1"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Output-control commands the station gives NUT",
+   "value": "Only driver-level commands: driver.killpower, driver.reload, driver.reload-or-error, driver.reload-or-exit. No load.off, shutdown.return or shutdown.stayoff, and no ups.delay.shutdown variable.",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "Taken from the upscmd -l listing in the 27 Dec 2024 dump (driver.version 2.8.2), USB ID 3746:ffff. The issue is still open, milestone 2.8.6. A later commenter reports ups.timer.shutdown returns 'Variable not supported by UPS'. Maintainer jimklimov: 'With v2.8.4+ there should be an Ecoflow HID already'."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "AC output after the host's graceful shutdown (owner report)",
+   "value": "'the AC output stays live for 60+ seconds afterwards'; upsrw shows no writable device controls beyond driver.debug and driver.flag.allow_killpower",
+   "source": "https://github.com/networkupstools/nut/issues/2735",
+   "source_title": "EcoFlow River 3 Plus Support · Issue #2735 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "From a user comment dated 29 Oct 2026, not a maintainer. No maintainer on the page says whether the unit can cut its output."
+  },
+  {
+   "product": "general",
+   "label": "NUT on the power race",
+   "value": "'\"Smart\" UPSes typically handle this by using a command that forces the UPS to power the load off and back on'; without that, 'if the line power returns during the shutdown process, there is no way to power down the load'",
+   "source": "https://networkupstools.org/docs/FAQ.html",
+   "source_title": "Network UPS Tools FAQ (Q60: power came back during the shutdown)",
+   "read": "2026-11-08",
+   "note": "NUT's suggested workaround is 'to force your systems to reboot after some interval'."
+  },
+  {
+   "product": "general",
+   "label": "NUT shutdown design: why the UPS must cut the load",
+   "value": "'the UPS load should be turned off so that all devices that are attached to it are forcibly rebooted'; 'If your UPS just sits there and never resets the load, you are vulnerable to a power race'",
+   "source": "https://networkupstools.org/docs/user-manual.chunked/Configuration_notes.html",
+   "source_title": "NUT User Manual – Configuration notes (Shutdown design / Testing shutdowns)",
+   "read": "2026-11-08",
+   "note": "These are NUT's own words for the mechanism the EcoFlow stations lack."
+  },
+  {
+   "product": "general",
+   "label": "Synology NAS restart behaviour behind a UPS that does not cut power",
+   "value": "A Synology support reply says the 'Shut down UPS when the system enters Standby Mode' feature 'is removed in DSM 7.0 for the majority of UPS'. The forum poster reports the NAS won't restart 'unless the UPS completely shuts down through fully depleting its battery'.",
+   "source": "https://www.synoforum.com/threads/another-dsm7-regression-ups.6586/post-32011",
+   "source_title": "Another DSM7 regression: UPS – SynoForum (posts #5–#6, fredbert, 9 Aug 2021)",
+   "read": "2026-11-08",
+   "note": "The first quote is a Synology support reply relayed by a forum user. The second is that user's own report. Both concern DSM 7.0. I could not open Synology's own help page (it is rendered client-side)."
+  },
+  {
+   "product": "APC Back-UPS ES (BE650G2, same family as BE600M1)",
+   "label": "Output-control commands a conventional HID UPS gives NUT",
+   "value": "load.off, load.off.delay, shutdown.reboot, shutdown.stop; ups.delay.shutdown 20 s",
+   "source": "https://networkupstools.org/ddl/APC/Back-UPS_ES_650G2.html",
+   "source_title": "NUT Devices Dumps Library – APC Back-UPS ES 650G2",
+   "read": "2026-11-08",
+   "note": "usbhid-ups 2.8.1 dump dated 6 Aug 2026. This is the BE650G2 (UK), not the BE600M1 itself. NUT's DDL has no BE600M1 entry, so it is used here as the same-family stand-in."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "What EcoFlow says the USB-B port does",
+   "value": "'connect RIVER 3 Plus to your PC or NAS via a USB-B port, to view its status and outage time logs'; Power Manager 'initiates an automatic shutdown'; '<10 ms' switchover",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station | EcoFlow US",
+   "read": "2026-11-08",
+   "note": "The page says nothing about cutting or restoring output after the host shuts down, and lists no supported NAS operating systems. No current price was shown, only an expired Dec 2024 promotion."
+  },
+  {
+   "product": "general",
+   "label": "Power stations in NUT's hardware list",
+   "value": "Only two: Ecoflow Delta 3 Plus and Ecoflow River 3 Plus, both usbhid-ups over USB, support level 3",
+   "source": "https://raw.githubusercontent.com/networkupstools/nut/master/data/driver.list.in",
+   "source_title": "NUT data/driver.list.in (master)",
+   "read": "2026-11-08",
+   "note": "I read the first 100,000 of about 125,000 characters. No Anker, BLUETTI, Jackery, Goal Zero, ALLPOWERS, Growatt, OSCAL or DJI entries appeared in that part. The unread tail would include Vtoman and Zendure alphabetically, so those two were not checked."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Low-battery flag in NUT",
+   "value": "Issue still open; ups.status stays 'OB DISCHRG' with battery.charge 27 against override.battery.charge.low 50; no linked PR",
+   "source": "https://github.com/networkupstools/nut/issues/3068",
+   "source_title": "Ecoflow River 3 Plus not going into LB (Windows) · Issue #3068 · networkupstools/nut",
+   "read": "2026-11-08",
+   "note": "Already on rival pages (computingforgeeks). Included only to show it is still unfixed as of the latest comment, 14 Jul 2026."
+  }
+ ],
+ "unsourced": [
+  "A NUT device dump for the DELTA 3 Plus listing its instant commands: NUT's DDL has no Ecoflow directory (404), and issue 2735 shows command listings only for the RIVER 3 Plus, so the claim that the DELTA 3 Plus also has no load.off rests on the shared EcoFlow HID subdriver, not a dump.",
+  "Synology's own help text on 'Restart automatically after a power failure' and Standby Mode: the kb.synology.com UPS pages render client-side and returned only their titles.",
+  "Which NUT version Synology DSM 7.2/7.3, QNAP QTS and UGREEN UGOS Pro ship: searched, found no maker or release-note source.",
+  "A NUT DDL dump for the APC BE600M1 itself: none in NUT's DDL APC directory; the BE650G2 was used instead.",
+  "Whether EcoFlow Power Manager can tell the station to cut and restore its outlets after a NAS shutdown: the EcoFlow product page does not say, and I did not open the Power Manager manual.",
+  "UGREEN US3000's restart-on-power-restore behaviour with NASync: seen only in search snippets of support.ugnas.com/detail/article/en-US/442, which I did not open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9831089000000001
+ }
+}

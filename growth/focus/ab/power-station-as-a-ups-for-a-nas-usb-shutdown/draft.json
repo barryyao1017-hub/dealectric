@@ -1,0 +1,195 @@
+{
+ "status": "ok",
+ "angle": "C",
+ "why_angle": "The cited rivals cover NUT 2.8.3, the usbhid-ups driver and the RIVER 3 Plus low-battery bug, but none says EcoFlow's USB link cannot switch the station's AC off and back on after the NAS shuts down (NUT #2735: 'Shutdown does nothing', AC live 60+ s), so the NAS stays off after a short outage. None says EcoFlow's Power Manager lists only the RIVER 3 Plus, or that EcoFlow's Synology package needs port and device-name edits. This page puts those findings in the table and gives a separate pick for each segment, including a UPS that does restart the NAS (UGREEN US3000).",
+ "slug": "power-station-as-a-ups-for-a-nas-usb-shutdown",
+ "must": [
+  "The EcoFlow RIVER 3 Plus is the portable power station that can be a UPS for a NAS and send a USB shutdown signal",
+  "Its AC stays live 60+ seconds after the NAS shuts down"
+ ],
+ "products": [],
+ "unsourced": [
+  "RIVER 3 Plus base-unit price: us.ecoflow.com store search returned only the extra battery and accessories, the ecoflow.com/us product page shows no current price, and Amazon (amzcheck) returned nothing. Third-party retailer prices in search results were not used.",
+  "RIVER 3 Plus Amazon ASIN, needed to make it our product: amzcheck search returned nothing twice.",
+  "APC Back-UPS BE600M1 price, transfer time and data-port type: the se.com product page shows none of them, so it gets no table row and is named only as a class.",
+  "Whether the DELTA 3 Ultra can switch its AC off and back on over USB: NUT's hardware list and issue #2735 don't cover it, and EcoFlow's support page names no such control.",
+  "UGREEN US3000 product page specs: nas.ugreen.com returned HTTP 429. Its specs come from NASCompares, and its price ($109.99, 2026-11-08) from the store search.",
+  "Standby draw of the RIVER 3 Plus and DELTA 3 Plus in UPS mode: no lab figure, so all runtimes are upper bounds."
+ ],
+ "page": {
+  "title": "Which portable power station can be a UPS for a NAS and send a USB shutdown signal (2026)? Data ports, NUT support, runtimes",
+  "h1": "Which portable power station can act as a UPS for a NAS and signal it to shut down over USB? (2026)",
+  "desc": "Only EcoFlow's RIVER 3 Plus has maker software to shut a NAS down over USB, and it doesn't cut its AC afterwards, so the NAS stays off. NUT support, ports, runtimes.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The EcoFlow RIVER 3 Plus is the portable power station that can be a UPS for a NAS and send a USB shutdown signal: its USB-B port feeds EcoFlow Power Manager, whose only supported model it is. Its AC stays live 60+ seconds after the NAS shuts down, so the NAS won't restart alone.</p>",
+  "columns": [
+   [
+    "link",
+    "USB shutdown signal"
+   ],
+   [
+    "path",
+    "What runs the shutdown"
+   ],
+   [
+    "restart",
+    "After the NAS shuts down"
+   ],
+   [
+    "battery",
+    "Battery"
+   ],
+   [
+    "switch",
+    "Switchover"
+   ]
+  ],
+  "rows": [
+   {
+    "brand": "EcoFlow",
+    "model": "RIVER 3 Plus",
+    "url": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+    "cells": {
+     "link": "Yes: USB-B port to a PC or NAS (EcoFlow)",
+     "path": "EcoFlow Power Manager, which lists it as its only supported device; or NUT 2.8.3+ usbhid-ups",
+     "restart": "AC stays live 60+ s; “Shutdown does nothing” (NUT #2735), so the NAS stays off if mains returns before the battery runs out",
+     "battery": "286 Wh, 10.4 lb",
+     "switch": "9 ms (StorageReview)",
+     "price": "No price on EcoFlow's US store (2026-11-08)"
+    }
+   },
+   {
+    "slug": "ecoflow-delta-3-plus-1024wh",
+    "model": "EcoFlow DELTA 3 Plus",
+    "cells": {
+     "link": "Yes: USB-C, usbhid-ups, NUT support level 3",
+     "path": "NUT 2.8.3 or later only; not on Power Manager's list",
+     "restart": "Same EcoFlow HID driver (“almost identical”, NUT #2735): no command to switch its AC off and back on",
+     "battery": "1,024 Wh; 910 Wh delivered (StorageReview)",
+     "switch": "Just over 8 ms (StorageReview)"
+    }
+   },
+   {
+    "slug": "ugreen-nas-ups-us3000-120w",
+    "model": "UGREEN NAS UPS US3000",
+    "cells": {
+     "link": "Yes: USB cable to a UGREEN NAS (NASCompares)",
+     "path": "UGOS Pro's built-in UPS client; UGREEN NAS models with external DC input only",
+     "restart": "Restarted the NAS when power returned (NASCompares test)",
+     "battery": "43.2 Wh (12,000 mAh), 120 W DC",
+     "switch": "Instant in NASCompares' test (0 s spec)"
+    }
+   },
+   {
+    "brand": "EcoFlow",
+    "model": "DELTA 3 Ultra",
+    "url": "https://us.ecoflow.com/products/delta-3-ultra-series-portable-power-station",
+    "cells": {
+     "link": "Yes: USB 2.0 data over the USB-C 140 W output port (EcoFlow)",
+     "path": "The NAS's own UPS client, per EcoFlow; not in NUT's hardware list",
+     "restart": "EcoFlow's setup steps end at the NAS's UPS settings and name no control to switch the AC off and back on",
+     "battery": "3,072 Wh, 32.7 kg",
+     "switch": "Under 10 ms rated (EcoFlow)",
+     "price": "$1,299 (maker, 2026-11-08)"
+    }
+   },
+   {
+    "slug": "anker-solix-c1000-gen-2",
+    "model": "Anker SOLIX C1000 Gen 2",
+    "cells": {
+     "link": "No: “There's no data port” (ComputingForGeeks)",
+     "path": "Nothing; the NAS runs until the battery is empty",
+     "restart": "No shutdown signal, so the NAS loses power without warning when the battery runs out",
+     "battery": "1,024 Wh (ComputingForGeeks)",
+     "switch": "Under 10 ms rated by Anker (ComputingForGeeks)"
+    }
+   },
+   {
+    "slug": "bluetti-ac180",
+    "model": "BLUETTI AC180",
+    "cells": {
+     "link": "No: no data port on BLUETTI stations (ComputingForGeeks)",
+     "path": "Nothing; the NAS runs until the battery is empty",
+     "restart": "No shutdown signal, so the NAS loses power without warning when the battery runs out",
+     "battery": "1,152 Wh (ComputingForGeeks)",
+     "switch": "20 ms or less rated, with Grid Enhancement off (ComputingForGeeks)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>The runtimes below assume a 30 W NAS. Apollomaniacs measured a 2-bay QNAP TS-269L v2 at 27 to 31 W. They leave out the station's own standby draw, so treat them as ceilings.</p><ul><li><strong>RIVER 3 Plus, about 8.5 h:</strong> 286 Wh × 0.889 = 254 Wh; 254 ÷ 30 W = 8.5 h. The 0.889 is the DELTA 3 Plus's measured output ratio, borrowed. With a PC, display and network gear on it as well (about 340 W at most, by the author's estimate), Apollomaniacs got about 25 minutes from an 85% charge.</li><li><strong>DELTA 3 Plus, about 30 h:</strong> StorageReview measured 910 Wh delivered; 910 ÷ 30 W = 30 h. A DELTA 3 Plus owner in NUT issue #2735 found that NUT's low-battery point matched the app's discharge limit. With a 30% limit, 910 × 0.7 = 637 Wh, and 637 ÷ 30 W = 21 h before the shutdown starts.</li><li><strong>DELTA 3 Ultra, about 91 h:</strong> 3,072 Wh × 0.889 = 2,731 Wh; 2,731 ÷ 30 W = 91 h, using the same borrowed ratio. Capacity cost: $1,299 ÷ 3,072 Wh = $0.42 per Wh.</li><li><strong>UGREEN US3000, about 1.4 h at most:</strong> 43.2 Wh ÷ 30 W = 1.4 h. It is built to carry the NAS to a clean shutdown, not through a long outage; NASCompares quotes up to around ten minutes depending on workload.</li></ul><table><thead><tr><th>Your NAS and need</th><th>Fits</th></tr></thead><tbody><tr><td>UGREEN NAS with DC input: clean shutdown and automatic restart</td><td>UGREEN US3000</td></tr><tr><td>TrueNAS, Unraid, Proxmox or Linux, where you can run NUT 2.8.3 or later; many hours of runtime</td><td>EcoFlow DELTA 3 Plus</td></tr><tr><td>Windows PC plus NAS for a few hours, with EcoFlow's own software</td><td>EcoFlow RIVER 3 Plus</td></tr><tr><td>Two days or more on one charge</td><td>EcoFlow DELTA 3 Ultra</td></tr><tr><td>Synology or QNAP on stock firmware, no scripts, must restart by itself</td><td>A conventional USB HID UPS (APC Back-UPS class), not a power station</td></tr></tbody></table><h2>Why the NAS shuts down but doesn't come back on</h2><p>A conventional UPS handles an outage in two steps. First the NAS shuts down, then the UPS switches its outlets off and back on. The Network UPS Tools manual explains why: “the UPS load should be turned off so that all devices that are attached to it are forcibly rebooted”, and “If your UPS just sits there and never resets the load, you are vulnerable to a power race”. An APC Back-UPS ES 650G2 gives NUT the commands for the second step: load.off, load.off.delay and shutdown.reboot.</p><p>The EcoFlow stations only do the first step. In NUT issue #2735 the RIVER 3 Plus offers only driver commands: driver.killpower and the three driver.reload variants. On 2026-10-29 an owner running firmware V1.33.81.61 with NUT 2.8.4 reported that the low-battery shutdown ran, but “Shutdown does nothing” and “the AC output stays live for 60+ seconds afterwards”. The same thread calls the DELTA 3 Plus “almost identical”. The issue is still open, with its milestone set to NUT 2.8.6. If mains power returns before the battery runs out, the NAS never loses power, so its “power on when power returns” setting never triggers and it stays off until someone presses the button. If you need to reach the NAS remotely, plan a way to power it on remotely, or use a UPS that resets its outlets.</p><p>How the signal reaches the NAS differs by model:</p><ul><li><strong>RIVER 3 Plus:</strong> EcoFlow's US download center lists it as the only device Power Manager supports; on 2026-11-08 the page showed “Coming soon” instead of a download. On Synology, EcoFlow's NUT package serves on port 3496 as device “nutdev1”, while DSM's UPS client expects port 3493 and “ups”. Sandcomp's guide therefore edits the package's files and sets DSM to Synology UPS Server mode. Commenters report a standby boot loop or a NAS that never shut down, while one DS423+ owner on DSM 7.3.2 got it working after a upsmon.conf change. On a QNAP TS-269L v2, Apollomaniacs saw “no reaction on the NAS side”.</li><li><strong>DELTA 3 Plus:</strong> NUT 2.8.3 added “basic support” for it and the RIVER 3 Plus, and NUT's hardware list rates it support level 3 on the usbhid-ups driver. Power Manager doesn't list it, so the NAS has to run NUT 2.8.3 or later itself, or poll a separate machine that does. {buy:ecoflow-delta-3-plus-1024wh}</li><li><strong>DELTA 3 Ultra / Ultra Plus:</strong> EcoFlow sends the UPS data over the USB-C 140 W output port (USB 2.0) and says to “make sure the device (e.g., NAS device, PC, or laptop) supports UPS functionality”. NUT's hardware list does not include it.</li><li><strong>UGREEN US3000:</strong> a DC UPS for UGREEN NAS models with external DC input. In NASCompares' test the NAS “immediately began its shutdown process”, and “After power was restored, the UPS automatically triggered a restart of the NAS”. {buy:ugreen-nas-ups-us3000-120w}</li></ul><h2>Not recommended</h2><p><strong>BLUETTI AC180 and Anker SOLIX C1000 Gen 2</strong> for this job. Both can keep a NAS running through a brief outage: Anker rates the C1000 Gen 2 under 10 ms, and BLUETTI rates the AC180 at 20 ms or less with Grid Enhancement off. But ComputingForGeeks lists no data port for either brand's stations, so nothing tells the NAS to shut down, and it loses power without warning when the battery runs out.</p>",
+  "sources": [
+   [
+    "RIVER 3 Plus: USB-B port to a PC or NAS, Power Manager starts an automatic shutdown, 286 Wh, 10.4 lb, under 10 ms switchover (read 2026-11-08)",
+    "https://www.ecoflow.com/us/river-3-plus-portable-power-station"
+   ],
+   [
+    "Power Manager supported devices: RIVER 3 Plus only; “Coming soon” shown in place of a download (read 2026-11-08)",
+    "https://www.ecoflow.com/us/support/download/index"
+   ],
+   [
+    "RIVER 3 Plus has driver commands only; “Shutdown does nothing”, AC live 60+ s (2026-10-29, fw V1.33.81.61); DELTA 3 Plus “almost identical”; DELTA 3 Plus low-battery point matched the app's discharge limit; issue open, milestone 2.8.6 (read 2026-11-08)",
+    "https://github.com/networkupstools/nut/issues/2735"
+   ],
+   [
+    "NUT 2.8.3 added basic support for the EcoFlow River 3 Plus and Delta 3 Plus (read 2026-11-08)",
+    "https://raw.githubusercontent.com/networkupstools/nut/master/NEWS.adoc"
+   ],
+   [
+    "NUT hardware list: DELTA 3 Plus usbhid-ups support level 3; RIVER 3 Plus listed; no DELTA 3 Ultra, Anker or BLUETTI entries (read 2026-11-08)",
+    "https://networkupstools.org/stable-hcl.html?manufacturer=EcoFlow"
+   ],
+   [
+    "NUT shutdown design: the UPS should turn the load off so attached devices reboot; the power race (read 2026-11-08)",
+    "https://networkupstools.org/docs/user-manual.chunked/Configuration_notes.html"
+   ],
+   [
+    "APC Back-UPS ES 650G2 gives NUT the load.off, load.off.delay and shutdown.reboot commands (read 2026-11-08)",
+    "https://networkupstools.org/ddl/APC/Back-UPS_ES_650G2.html"
+   ],
+   [
+    "Synology: EcoFlow's NUT package on port 3496 as device nutdev1, edits needed for DSM's port 3493 and device ups; owner reports in the comments (read 2026-11-08)",
+    "https://www.sandcomp.com/blog/en/2025/06/22/using-ecoflow-river-3-plus-as-a-ups-how-to-configure-synology-nas/"
+   ],
+   [
+    "QNAP TS-269L v2 showed no reaction over USB; NAS draw 27 to 31 W; about 25 min runtime for PC plus NAS (read 2026-11-08)",
+    "https://www.apollomaniacs.com/knowhow_ups_ecoflow_river3_plus_en.htm"
+   ],
+   [
+    "DELTA 3 Ultra / Ultra Plus: UPS data over the USB-C 140 W port (USB 2.0), under 10 ms switchover, 32.7 kg (read 2026-11-08)",
+    "https://www.ecoflow.com/ca/delta-3-ultra-plus-portable-power-station/support"
+   ],
+   [
+    "DELTA 3 Plus: 910 Wh delivered from 1,024 Wh, switchover just over 8 ms, StorageReview (read 2026-11-08)",
+    "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"
+   ],
+   [
+    "RIVER 3 Plus: 9 ms measured switchover, StorageReview (read 2026-11-08)",
+    "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support"
+   ],
+   [
+    "UGREEN US3000: 43.2 Wh, 120 W DC, USB link to the NAS, NAS shut down and restarted in NASCompares' test (read 2026-11-08)",
+    "https://nascompares.com/review/ugreen-us3000-nas-ups-review/"
+   ],
+   [
+    "AC180 and C1000 Gen 2: no data port on Anker or BLUETTI stations, 1,152 Wh and 1,024 Wh, rated switchover 20 ms or less and under 10 ms, ComputingForGeeks (read 2026-11-08)",
+    "https://computingforgeeks.com/power-station-vs-ups-homelab/"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "portable power station USB HID UPS communication NAS shutdown supported models EcoFlow Bluetti 2026",
+  "portable power station USB UPS HID NAS shutdown Jackery Goal Zero",
+  "portable power station USB HID UPS communication NAS automatic shutdown models 2025 2026",
+  "EcoFlow DELTA Pro 3 USB UPS communication NAS shutdown NUT",
+  "portable power station USB HID UPS communication NAS shutdown NUT supported models 2026",
+  "EcoFlow Delta USB HID UPS NAS shutdown USB data port"
+ ],
+ "query": "which portable power station can be a ups for a nas and send a usb shutdown signal",
+ "verified_changes": 8,
+ "verified_removed": 0,
+ "gate": {
+  "date": "2026-11-08",
+  "pass": true,
+  "g": null
+ }
+}
