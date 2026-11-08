@@ -1,0 +1,94 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got gives a hot-weather daily energy figure or days on a power station. Dometic's own spec for the US CFX5 45 is 1.05 Ah/h at 32 °C (90 °F) outside and 4 °C (39 °F) inside. That works out to about 302 Wh a day, so a 1,024 Wh station (EcoFlow DELTA 3, Anker SOLIX C1000 Gen 2) lasts about 3.4 days in summer heat. OutdoorGearLab's 75 °F lab draw of 6.8 W gives about 6.3 days, so heat almost doubles the draw.",
+ "standout": 2,
+ "standout_why": "OutdoorGearLab (cited) measured steady draw only in a 75 °F lab: CFX5 45 6.8 W, BougeRV 23 8.3 W, Everfrost 40 5.8 W, 320–400 Wh per weekend. It has no hot-weather figure and doesn't size a power station. GearJunkie (top result) gives battery hours for a few self-powered models (EverFrost 2: 36 h; BLUETTI: 4 days at about 70 °F) plus a general '40–70 W when running' line, but no Wh per day. I couldn't open gearandhome (cited; TLS error) or Car and Driver (fetch blocked). ChatGPT's own line ('500Wh … roughly 1–2 days') gives no source and no ambient temperature.",
+ "decides": "It doesn't change which cooler to pick. It changes what to pair with it. For summer car camping, size the station at about 300 Wh per day for a 45 L compressor cooler, not the 160–200 Wh/day the 75 °F lab numbers suggest. A weekend in the heat needs about 600 Wh, which rules out 245–300 Wh stations (RIVER 3, Tenergy T320, ALLPOWERS R600) for anything past one night. The 1,024 Wh class is the right pairing for a 3-day trip. ChatGPT's '500 Wh ≈ 1–2 days' holds in heat (500/302 = 1.7 days) but undersells mild weather (500/163 = 3.1 days).",
+ "candidates": [
+  "BougeRV 23 Qt",
+  "BougeRV 42 Qt",
+  "BougeRV CRPRO30",
+  "ICECO VL45",
+  "Dometic CFX5 45",
+  "Anker SOLIX EverFrost 2 40L"
+ ],
+ "findings": [
+  {
+   "product": "Dometic CFX5 45",
+   "label": "Maker energy spec, hot ambient",
+   "value": "1.05 Ah/h at 12 V DC (32 °C ambient, 4 °C internal)",
+   "source": "https://www.dometic.com/en/product/cfx5-45-electric-cooler-97000050755",
+   "source_title": "Dometic CFX5 45 Electric Cooler (97000050755), US/CA page",
+   "read": "2026-11-08",
+   "note": "The page lists published markets 'CA, US'. Net weight 18.26 kg, volume 46 L, rated AC input 49 W. No price was shown (structured data had a placeholder and out-of-stock flag)."
+  },
+  {
+   "product": "Dometic CFX5 45",
+   "label": "Derived daily energy at 32 °C",
+   "value": "302 Wh/day",
+   "source": "https://www.dometic.com/en/product/cfx5-45-electric-cooler-97000050755",
+   "source_title": "Dometic CFX5 45 Electric Cooler (97000050755), US/CA page",
+   "read": "2026-11-08",
+   "note": "1.05 Ah/h × 12 V = 12.6 W; 12.6 W × 24 h = 302 Wh/day."
+  },
+  {
+   "product": "Dometic CFX5 45",
+   "label": "Derived days on a 1,024 Wh station, 32 °C vs 75 °F",
+   "value": "3.4 days at 32 °C; 6.3 days at 75 °F",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-powered-cooler",
+   "source_title": "The Best Electric Coolers | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-08",
+   "note": "Hot: 1,024 / 302 = 3.4 days (Dometic spec). Mild: OutdoorGearLab measured 6.8 W steady at 75 °F, set to 35 °F; 6.8 × 24 = 163 Wh/day; 1,024 / 163 = 6.3 days. Heat multiplier 12.6 / 6.8 = 1.85×. These are rated Wh before inverter/DC conversion loss, so treat them as upper bounds."
+  },
+  {
+   "product": "BougeRV 23 Qt",
+   "label": "Derived days on a 1,024 Wh station (75 °F)",
+   "value": "5.1 days",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-powered-cooler",
+   "source_title": "The Best Electric Coolers | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-08",
+   "note": "OutdoorGearLab measured 8.3 W steady DC at 75 °F; 8.3 × 24 = 199 Wh/day; 1,024 / 199 = 5.1 days. 19.8 lb empty. Upper bound before conversion loss."
+  },
+  {
+   "product": "ICECO VL45",
+   "label": "Derived days on a 1,024 Wh station (maker lab figure)",
+   "value": "2.9 days",
+   "source": "https://www.manualslib.com/manual/3718376/Iceco-Vl45.html",
+   "source_title": "Iceco VL45 Manual (STEEL VL45 Series), ManualsLib",
+   "read": "2026-11-08",
+   "note": "Manual lists 0.348 kWh per 24 h, 'only suitable for laboratory testing'. Ambient and setpoint are not stated, so it can't be compared directly with Dometic's 32 °C figure. 1,024 / 348 = 2.9 days."
+  },
+  {
+   "product": "Anker SOLIX EverFrost 2 40L",
+   "label": "Derived average draw from maker runtime claim",
+   "value": "5.5 W (133 Wh/day) at 77 °F",
+   "source": "https://www.ankersolix.com/products/everfrost-2-40l-electric-cooler",
+   "source_title": "Anker SOLIX EverFrost 2 40L Electric Cooler",
+   "read": "2026-11-08",
+   "note": "Anker claims 52 h on one 288 Wh battery: empty cooler, Eco mode, 39 °F inside, 77 °F ambient. 288 / 52 = 5.5 W; × 24 = 133 Wh/day. Solar input: a 100 W panel at 12–30 V, only with a battery in the cooler."
+  },
+  {
+   "product": "BougeRV CRPRO30",
+   "label": "Price, maker US store",
+   "value": "$234.99",
+   "source": "https://www.bougerv.com/products/crpro30-mini-fridge-for-car",
+   "source_title": "BougeRV CRPRO30 30 Quart 12V Portable Car Fridge Freezer",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py search of bougerv.com, listed as available. The White/marine variant is $229.99, which matches the price ChatGPT showed (Walmart)."
+  }
+ ],
+ "unsourced": [
+  "Hot-ambient (32 °C) consumption for the BougeRV 23 Qt, 42 Qt and CRPRO30, and for the ICECO VL45. Maker pages hit HTTP 429 on both bougerv.com and icecofreezer.com; the ICECO manual on ManualsLib gives 0.348 kWh/24h without stating conditions.",
+  "Dometic CFX5 45 US price: Dometic's US page shows only a placeholder, and REI returned 403. ChatGPT's $997 (Inca Overland) wasn't opened.",
+  "ICECO VL45 price on icecofreezer.com ($559 appears only in a search snippet; the page itself returned 429).",
+  "Anker SOLIX EverFrost 2 40L US price and weight: neither appeared on the Anker page text I could read, and storecheck returned 404.",
+  "Usable-Wh (DC output efficiency) for EcoFlow DELTA 3 / Anker SOLIX C1000 Gen 2 to turn rated 1,024 Wh into usable Wh. Not researched within budget, so days-per-charge figures are upper bounds.",
+  "I couldn't read gearandhome.com (cited rival; TLS error) or caranddriver.com (fetch blocked) to confirm they lack a hot-weather Wh/day figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.8062261000000001
+ }
+}
