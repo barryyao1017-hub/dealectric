@@ -1,0 +1,123 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a like-for-like named CPU measurement across its picks. In PassMark's CPU Mark the UGREEN DXP2800's N100 scores 5,305, the N5095 in the TerraMaster F2-423 and F2-425 scores 4,003 (32.5% lower), the J4125 in the Synology DS225+ scores 2,927 (45% lower) and the N95 in the Beelink ME Mini scores 5,278. None of those results gives any measured power or noise figure for the F2-425 or the Beelink ME Mini either.",
+ "standout": 2,
+ "standout_why": "I opened TechRadar's F2-424 review (cited), but only its title came back, so I have no figures from it. The others I read were verdictbits /reviews/best-nas-for-homelab/ (rank 4, not cited), bitdoze /best-nas-homelab-docker-proxmox/, rottenwifi's DXP2800 review and starryhope /nas/best-budget-nas/. Verdictbits already gives igor'sLAB's idle figures for the DXP2800 (5.6 W) and F2-424 (8.5 W), and starryhope gives OCinside's 7 W for the DXP2800. So rival pages already cover DXP2800 idle power. None of the rival pages has a CPU benchmark comparing N100, N5095, J4125 and N95. None has a named measurement for the F2-423, F2-425, Beelink ME Mini or DS225+. Bitdoze has no measurements at all. Rottenwifi gives only ComputerBase's verdict in words.",
+ "decides": "This confirms the DXP2800 as the pick for a Docker and VM learner. It has about 33% more CPU than the cheaper TerraMaster F2-423/F2-425 that ChatGPT suggested, which also ship with half the RAM (4 GB DDR4). It has 81% more CPU than the DS225+ we list. The Beelink ME Mini's N95 essentially matches the N100 on CPU (5,278 vs 5,305). The DIY Life measured the N150 ME Mini at about 8 W idle with two NVMe drives. That makes the ME Mini a real equal for an SSD-only plain-Linux lab, but it has no 3.5-inch bays. The F2-425's 11–12 W idle with two SSDs (Hardware Busters) is roughly double the DXP2800's 5.6 W SSD-only figure (igor'sLAB), and the F2-425 is the slower machine.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-423",
+  "TerraMaster F2-425",
+  "TerraMaster F2-424",
+  "Beelink ME Mini",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "CPU benchmark, Intel N100 (PassMark CPU Mark, multithread)",
+   "value": "5,305 (single-thread 1,879)",
+   "source": "https://www.cpubenchmark.net/compare/5157vs4296vs3667vs5161/Intel-N100-vs-Intel-Celeron-N5095-vs-Intel-Celeron-J4125-vs-Intel-N95",
+   "source_title": "PassMark CPU Benchmarks – Intel N100 vs Intel Celeron J4125",
+   "read": "2026-11-08",
+   "note": "Average of 4,162 user submissions from many devices, not a single unit. The page showed only the N100 and J4125 columns. Typical TDP is listed as 6 W."
+  },
+  {
+   "product": "TerraMaster F2-423 / F2-425",
+   "label": "CPU benchmark, Celeron N5095 (PassMark CPU Mark, multithread)",
+   "value": "4,003 (single-thread 1,492)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+N5095+%40+2.00GHz",
+   "source_title": "PassMark – Intel Celeron N5095 @ 2.00GHz",
+   "read": "2026-11-08",
+   "note": "629 samples. 4,003 / 5,305 = 0.755, so the N100 is 32.5% faster. PCWorld (Jon L. Jacobi, 2025-10-09) confirms the F2-425 uses the N5095 with 4 GB RAM."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "CPU benchmark, Celeron J4125 (PassMark CPU Mark, multithread)",
+   "value": "2,927 (single-thread 1,151)",
+   "source": "https://www.cpubenchmark.net/compare/5157vs4296vs3667vs5161/Intel-N100-vs-Intel-Celeron-N5095-vs-Intel-Celeron-J4125-vs-Intel-N95",
+   "source_title": "PassMark CPU Benchmarks – Intel N100 vs Intel Celeron J4125",
+   "read": "2026-11-08",
+   "note": "697 samples. 5,305 / 2,927 = 1.81, so the N100 is 81% faster."
+  },
+  {
+   "product": "Beelink ME Mini (N95 variant)",
+   "label": "CPU benchmark, Intel N95 (PassMark CPU Mark, multithread)",
+   "value": "5,278 (single-thread 1,890)",
+   "source": "https://www.cpubenchmark.net/cpu.php?cpu=Intel+N95",
+   "source_title": "PassMark – Intel N95",
+   "read": "2026-11-08",
+   "note": "1,440 samples. This is the variant ChatGPT showed ($299, 12 GB). It is within 0.5% of the N100."
+  },
+  {
+   "product": "Beelink ME Mini (N150 variant)",
+   "label": "Power at the wall: idle / write / max CPU",
+   "value": "~8 W / ~12 W / ~15 W",
+   "source": "https://www.the-diy-life.com/beelink-me-mini-tiny-silent-and-perfect-for-a-diy-nas",
+   "source_title": "Beelink ME Mini – Tiny, Silent, and Perfect for a DIY NAS? (The DIY Life)",
+   "read": "2026-11-08",
+   "note": "Michael Klements, 2025-06-16. Unit had the N150 and 12 GB LPDDR5, with two 2 TB Crucial P3 Plus NVMe drives installed. Same review: noise ~35 dB idle and ~36 dB under full load within 20 cm, CPU below 55 °C under stress, and ~280 MB/s on 46 GB video copies over 2.5GbE running TrueNAS."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Power: idle with two SSDs / standby",
+   "value": "11–12 W / ~1.1 W",
+   "source": "https://www.starryhope.com/nas/models/terramaster-f2-425/",
+   "source_title": "TerraMaster F2-425 · Starry Hope",
+   "read": "2026-11-08",
+   "note": "Starry Hope credits these figures to Hardware Busters. I could not open the Hardware Busters page itself. The same page quotes Ex-IT guy at about 10 W with no drives, 17 W idle with two HDDs and about 20 W during a sync of two 4 TB drives. It also gives Hardware Busters' noise figures at 1 m: 13.7 / 26.8 / 33.6 dB at low, medium and full fan."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Wired transfer speed, read / write",
+   "value": "292 MB/s / 202 MB/s (another tool gave ~260 / 270 MB/s)",
+   "source": "https://pcworld.com/article/2910872/terramaster-f2-425-review.html",
+   "source_title": "TerraMaster F2-425 review: A powerful NAS box for streaming & backups (PCWorld)",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, published 2025-10-09. Tested with one 2 TB SATA SSD over 2.5GbE. The initial client backup ran at about 250 GB/hour from an M4 Max Mac Studio."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power at the wall: standby / data transfer; noise idle / load",
+   "value": "5.6 W / 14.5 W; 33.2 / 35.6 dB(A)",
+   "source": "https://verdictbits.com/reviews/best-nas-for-homelab/",
+   "source_title": "Best NAS for a Homelab, Measured: Power, Noise and Speed (verdictbits)",
+   "read": "2026-11-08",
+   "note": "igor'sLAB measured these (published 2024-05-08), as reported by verdictbits. Tested with one NVMe SSD and no HDDs; noise taken at 40 cm against a 33.2 dB(A) room. Verdictbits, a rival page, already has this."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Power at the wall: standby / data transfer; noise idle / load",
+   "value": "8.5 W / 18.4 W; 33.4 / 36.4 dB(A)",
+   "source": "https://verdictbits.com/reviews/best-nas-for-homelab/",
+   "source_title": "Best NAS for a Homelab, Measured: Power, Noise and Speed (verdictbits)",
+   "read": "2026-11-08",
+   "note": "igor'sLAB measured these (published 2024-11-04), as reported by verdictbits. Same setup: one NVMe SSD, no HDDs."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Power: access / HDD hibernation; idle noise",
+   "value": "16.98 W / 6.08 W; 19.6 dB(A)",
+   "source": "https://nascompares.com/2025/08/04/synology-ds225-nas-review/",
+   "source_title": "Synology DS225+ NAS Review – Should You Buy? (NASCompares)",
+   "read": "2026-11-08",
+   "note": "Rob Andrews, 2025-08-04. NASCompares presents these as real-world figures but gives no drive setup or distance. They match Synology's spec-sheet numbers exactly, so treat them as probably copied from the spec, not independent measurements. Same page: component temperatures 32–37 °C under moderate load."
+  }
+ ],
+ "unsourced": [
+  "The Beelink ME Mini N95 variant's power and noise as measured by igor'sLAB (igorslab.de/beelink-me-mini-nas-im-test/8). WebFetch got a 403, and a curl download needed approval I didn't have.",
+  "A measured idle figure for the TerraMaster F2-423. igor'sLAB's F2-423 review (/en/nas-for-beginners-...-f2-423/5/) returned a 403. The search snippets showed only TerraMaster's own spec (11.4 W hibernation, 22.1 W read/write).",
+  "Notebookcheck's Cinebench R23 averages for N100, N5095, J4125 and N95. Every notebookcheck.net/.com comparison page returned a 403, so I used PassMark instead.",
+  "The original Hardware Busters F2-425 review. Search didn't find it, so its F2-425 power and noise figures come only from Starry Hope's summary.",
+  "Neowin's F2-425 review (both the reviews/ and amp/ URLs returned 403).",
+  "GSMArena's Beelink ME Mini review (402 Payment Required via tollbit).",
+  "TechRadar's F2-424 review (a cited rival). Only the page title came back, so I don't know whether it has any figures.",
+  "An independent DS225+ idle-power measurement with test conditions stated. NASCompares' numbers match the Synology spec."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9380213
+ }
+}

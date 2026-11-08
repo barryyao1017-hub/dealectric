@@ -1,0 +1,113 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which TerraMaster RAM sticks fit which 2-bay model. TerraMaster's own store sells DDR4-3200 8/16 GB sticks for the F2-423 and DDR5-4800 16/32 GB sticks for the F2-424 and F2-425 Plus, but none of its memory listings names the plain F2-425 ($299.99, 4 GB) that ChatGPT showed as a card.",
+ "standout": 2,
+ "standout_why": "I opened Bitdoze's 'Best NAS for Homelab (2026)'. It gives no maximum RAM for the DXP2800, says nothing about third-party OS on the DXP2800, and does not cover the F2-423 or F2-425 at all. The cited TerraMaster F2-424 spec page and the TechRadar F2-424 review returned HTTP 429 or were not opened, so I can't rule out that they give the F2-424's own RAM ceiling. That is a single-model spec, though, not the cross-model module list. ChatGPT's answer called the F2-425 'less headroom out of the box' and the F2-423 'budget for a RAM upgrade', but it named no compatible module and no ceiling for either one.",
+ "decides": "This backs ChatGPT's F2-423 'upgrade the RAM' advice: TerraMaster sells DDR4-3200 8 and 16 GB sticks naming it, though both were out of stock on 2026-11-08. It weakens the plain F2-425 as a Docker learning box, because TerraMaster sells no memory listed for it, so its 4 GB has no maker-sanctioned upgrade. The F2-425 Plus at $399.49 (8 GB DDR5, covered by TerraMaster's 16/32 GB DDR5 sticks) is the TerraMaster to name under the cap. The Synology DS225+ is capped at 6 GB in one slot, and Synology says its warranty does not fully cover non-Synology memory. For Docker learners that makes it the weakest x86 option on RAM. The DXP2800 is on the Debian wiki's list of tested UGREEN models for a plain Debian install, which supports it for the 'learn Linux' goal.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-423",
+  "TerraMaster F2-425",
+  "TerraMaster F2-425 Plus",
+  "Synology DS225+",
+  "Beelink ME Mini",
+  "Beelink ME Pro 2-Bay"
+ ],
+ "findings": [
+  {
+   "product": "TerraMaster F2-423",
+   "label": "Maker-sold RAM upgrade modules",
+   "value": "A-SRAMD4-8G (8 GB DDR4-3200, 1.2 V, $169.99) and A-SRAMD4-16G (16 GB DDR4-3200, 1.2 V, $299.99), both listed as 'dedicated for TerraMaster F2-423, F4-423, T6-423…'; both out of stock",
+   "source": "https://www.terra-master.com/products/a-sramd4-16g",
+   "source_title": "A-SRAMD4-16G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Read from the TerraMaster Shopify store with storecheck.py search 'F2-423'. The 8G listing is at https://www.terra-master.com/products/a-sramd4-8g. Both show available=false."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Maker-sold RAM upgrade modules",
+   "value": "A-SRAMD5-16G (16 GB DDR5-4800, 1.1 V, $469.99, in stock) lists F2-424 and others but not the F2-425 Plus; A-SRAMD5-32G (32 GB DDR5-4800, $699.99, out of stock) lists F4-425 Plus, F2-425 Plus, F2-424 and others",
+   "source": "https://www.terra-master.com/products/a-sramd5-32g",
+   "source_title": "A-SRAMD5-32G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "storecheck.py search 'F2-425' and 'memory'. The 16G listing is at https://www.terra-master.com/products/a-sramd5-16g. Its model list does not include the F2-425 Plus."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Maker-sold RAM modules for this model",
+   "value": "None. The plain F2-425 appears in no TerraMaster memory listing (A-SRAMD4-8G, A-SRAMD4-16G, A-SRAMD5-16G, A-SRAMD5-32G).",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Store description: 'Intel x86 quad-core processor and 4GB RAM', 2.5GbE, 2 × 30 TB bays. 'No sanctioned upgrade' is my inference from the four memory listings, not a TerraMaster statement."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price, TerraMaster US store",
+   "value": "$299.99",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "storecheck.py search result; available=true."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price, TerraMaster US store",
+   "value": "$399.49 (compare-at $499.99); '8GB RAM, 5Gbps x 2 RJ45'",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "storecheck.py search result; available=true. It fits under the $400 cap by $0.51."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Memory limits and third-party RAM",
+   "value": "2 GB DDR4 non-ECC installed, maximum 6 GB (2 GB + 4 GB), 1 slot. Synology says its warranty and technical support do not fully cover systems expanded with non-Synology memory.",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specs)",
+   "read": "2026-11-08",
+   "note": "The spec page also says 'Please consult our compatibility list before purchasing hard drives' and gives a 3-year warranty, extendable to 5 years in Europe and North America."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Debian install support (community)",
+   "value": "Listed as a tested model on the Debian wiki, with the DXP4800 and DXP8800 Plus. Steps: Ctrl+F12 for the boot menu (or Ctrl+F2 for the BIOS), then 'Disable the watchdog service'.",
+   "source": "https://wiki.debian.org/InstallingDebianOn/Ugreen",
+   "source_title": "InstallingDebianOn/Ugreen – Debian Wiki",
+   "read": "2026-11-08",
+   "note": "The wiki quotes UGREEN: 'If you choose to install a third-party system, there might be unknown compatibility issues. The official hardware warranty policy will remain unchanged.' It gives no source link for that quote, so this is a community page quoting the maker, not a UGREEN document. The eMMC-disable and force-UEFI notes are written for NVMe boot on the DXP4800."
+  },
+  {
+   "product": "Beelink ME Mini",
+   "label": "Price, Beelink store",
+   "value": "$525.00 (compare-at $629.00); 6 × M.2 slots (2230/2242/2280), up to 24 TB; dual 2.5G or 2.5G + 5G LAN; built-in PSU",
+   "source": "https://www.bee-link.com/products/beelink-me-mini-n150",
+   "source_title": "Beelink ME mini 6-slot Home Storage NAS Mini PC",
+   "read": "2026-11-08",
+   "note": "storecheck.py search 'ME Mini' returns the lowest variant price. The description mentions Crucial SSDs, so this price likely includes storage. The variant breakdown (product call) returned HTTP 429."
+  },
+  {
+   "product": "Beelink ME Pro 2-Bay",
+   "label": "Price, Beelink store",
+   "value": "$379.00 (compare-at $719.00); Intel N-series, 5GbE + 2.5GbE, swappable Intel/AMD/ARM motherboard; pre-sale, ships within 35 days",
+   "source": "https://www.bee-link.com/products/beelink-me-pro",
+   "source_title": "Beelink ME Pro 2-Bay",
+   "read": "2026-11-08",
+   "note": "storecheck.py search. This is a 2-bay HDD unit under $400 that ChatGPT did not show."
+  }
+ ],
+ "unsourced": [
+  "DXP2800 RAM maximum and M.2 lane/generation from UGREEN's own product or spec page. ai.ugreen.com and nas.ugreen.com returned HTTP 429 on 4 tries, and only retailers (Alza, a Malaysian reseller) gave '16 GB max'.",
+  "DXP2800 US price at UGREEN today: the store returned HTTP 429.",
+  "TerraMaster F2-425 (non-Plus) memory type, slot and whether it is soldered: the F2-425 spec page and product JSON returned HTTP 429. Neowin and CanonRumors reviews returned HTTP 403, and search snippets conflict (N5095/DDR4 single slot to 16 GB vs N95/DDR5).",
+  "TerraMaster's official statement on third-party OS and warranty for the F2-423/F2-424/F2-425: the F2-424 spec page (cited by ChatGPT) returned HTTP 429, so I could not compare against it.",
+  "Beelink ME Mini memory (soldered LPDDR5?) and the PCIe lanes per M.2 slot: the Beelink product page returned HTTP 429.",
+  "Synology's official statement that DSM 7.3 allows third-party HDDs on the DS225+: only press coverage (Tom's Hardware, NASCompares) turned up in search, and I opened none of it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0797913999999997
+ }
+}

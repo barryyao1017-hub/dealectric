@@ -1,0 +1,129 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what reaching 16 GB of RAM costs. RAM prices in November 2026 make that upgrade cost $112–$469.99. TerraMaster's own 16 GB DDR5 stick is $469.99, more than the F2-424 it fits ($379.99). That turns ChatGPT's advice to buy the 4 GB TerraMaster and 'budget for a RAM upgrade' into a box that ends up at or above the $400 cap. The 8 GB DXP2800 at $389.99 ($48.75 per GB as shipped) is the most usable RAM per dollar under the cap.",
+ "standout": 3,
+ "standout_why": "I opened bitdoze.com/best-nas-homelab-docker-proxmox and starryhope.com/nas/best-budget-nas. Both list each box's installed and maximum RAM. Neither prices a RAM upgrade or gives a cost to reach 16 GB. Bitdoze says the DS925+ 'ships with 4GB of RAM you'll want to upgrade immediately' with no price. Starryhope already has DXP2800 electricity (about $10 a year at 7 W), so running cost is not new. ChatGPT's own answer recommends the 4 GB F2-423 plus a RAM upgrade and never prices the upgrade. The TechRadar F2-424 review returned no body, so I could not compare it.",
+ "decides": "This confirms the UGREEN DXP2800 ($389.99, 8 GB) as the pick under $400 and moves the TerraMaster 4 GB boxes down for Docker and VM learning. A 4 GB box plus RAM lands at about $412 (F2-425 with third-party DDR4) up to $849.98 (F2-424 with TerraMaster's own 16 GB stick). The page should say: buy the 8 GB in the box, and if you upgrade later, use a third-party SO-DIMM rather than the maker's stick. In November 2026 a 16 GB DDR5 SO-DIMM alone costs about two-thirds of the DXP2800's price.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-424",
+  "TerraMaster F2-425",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-423",
+  "Beelink ME Mini"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price at maker's US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py search on nas.ugreen.com. Walmart's $296.99 in ChatGPT's card is not verified."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Installed / max RAM",
+   "value": "8 GB DDR5 / 16 GB max",
+   "source": "https://www.starryhope.com/nas/best-budget-nas/",
+   "source_title": "Best Budget NAS and Cheapest NAS Setups for 2026 | Starry Hope",
+   "read": "2026-11-08",
+   "note": "UGREEN's spec page returned HTTP 429, so this comes from Starry Hope. Our current page says one slot; I did not re-confirm that today."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Box price per GB of RAM as shipped",
+   "value": "$48.75 per GB",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "$389.99 / 8 GB = $48.75/GB"
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Cost to reach 16 GB",
+   "value": "about $647",
+   "source": "https://www.amazon.com/dp/B09S2MN8JH",
+   "source_title": "Crucial 16GB DDR5 4800MHz CL40 SODIMM CT16G48C40S5 – Amazon",
+   "read": "2026-11-08",
+   "note": "$389.99 box + $257 Crucial 16 GB DDR5-4800 SO-DIMM (replaces the 8 GB stick if there is one slot) = $646.99. The Amazon price is for comparison only and must not be printed (DLC-159). Say 'a third-party 16 GB DDR5 SO-DIMM costs about two-thirds of the box' instead."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Price at maker's US store",
+   "value": "$379.99, sold out",
+   "source": "https://www.terra-master.com/products/f2-424",
+   "source_title": "TERRAMASTER F2-424 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Store text: '8GB DDR5 memory (upgradable to 32GB)'."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "TerraMaster's 16 GB DDR5 stick (A-SRAMD5-16G)",
+   "value": "$469.99, in stock",
+   "source": "https://www.terra-master.com/products/a-sramd5-16g",
+   "source_title": "A-SRAMD5-16G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Listed as compatible with the F2-424. The stick costs $469.99 / $379.99 = 1.24× the NAS. The 32 GB stick (A-SRAMD5-32G) is $699.99 and sold out, and is listed for the F2-424 and F2-425 Plus. The 8 GB stick (A-SRAMD5-8G) is $269.99 and sold out."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Cost with an added 16 GB stick",
+   "value": "$849.98 with TerraMaster's stick; about $637 with a third-party one",
+   "source": "https://www.terra-master.com/products/a-sramd5-16g",
+   "source_title": "A-SRAMD5-16G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "$379.99 + $469.99 = $849.98; $379.99 + $257 (Amazon Crucial CT16G48C40S5, comparison only) = $636.99. The total RAM depends on slot count, which I did not source."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price at maker's US store",
+   "value": "$399.49 (compare-at $499.99), in stock, 8 GB",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Store text: '2-bay x.86 Hybrid NAS Quad-core 8GB RAM 5Gbps x 2 RJ45'. $399.49 / 8 GB = $49.94/GB. Our current page has $399 at launch and $424.99 at Walmart; replace those with this figure. TerraMaster's only listed upgrade for it is the 32 GB stick at $699.99 (sold out)."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price at maker's US store",
+   "value": "$299.99, in stock, 4 GB",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Store text: 'Intel x86 quad-core processor and 4GB RAM'. $299.99 / 4 GB = $75/GB, the worst RAM per dollar of the x86 boxes. ChatGPT's Newegg $254.99 is not verified."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Cost to reach 16 GB",
+   "value": "about $412",
+   "source": "https://www.amazon.com/dp/B08C4X9VR5",
+   "source_title": "Crucial 32GB DDR4 Kit (2x16GB) 3200MHz SODIMM CT2K16G4SFRA32A – Amazon",
+   "read": "2026-11-08",
+   "note": "$299.99 + ($224 kit / 2 = $112 per 16 GB DDR4 SO-DIMM) = $411.99, just over the cap. The Amazon price is for comparison only and must not be printed. Starry Hope lists the F2-425 as 4 GB DDR4 with 16 GB max. TerraMaster's store lists no DDR4 stick for the F2-425."
+  },
+  {
+   "product": "TerraMaster F2-423",
+   "label": "TerraMaster's DDR4 sticks",
+   "value": "16 GB $299.99; 8 GB $169.99 (both sold out)",
+   "source": "https://www.terra-master.com/products/a-sramd4-16g",
+   "source_title": "A-SRAMD4-16G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Listed as compatible with the F2-423. With ChatGPT's unverified Newegg box price: $224.99 + $299.99 = $524.98 using TerraMaster's stick, or $224.99 + $112 = $336.99 using a third-party one. The F2-423 itself is not listed on TerraMaster's US store."
+  }
+ ],
+ "unsourced": [
+  "Beelink ME Mini price and RAM by variant: bee-link.com returned HTTP 429 three times. A store search showed 'Beelink ME mini 6-slot Home Storage NAS Mini PC' at $525.00 (N150 URL), but I could not open the variant list to confirm the RAM and SSD configuration or an N95 price. ChatGPT's $299 Newegg figure is not verified.",
+  "DXP2800 slot count and maximum RAM from UGREEN's own spec page (HTTP 429 on nas.ugreen.com and ai.ugreen.com spec pages)",
+  "F2-424 and F2-425 memory slot count and memory type from TerraMaster's spec pages (HTTP 429)",
+  "A 16 GB DDR5 SO-DIMM price from a non-Amazon US retailer: Crucial.com, Micro Center and Newegg all blocked the fetch",
+  "F2-423 price at a store I could open"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0449629999999999
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the UGREEN DXP2800, its 'best overall' pick, has a BIOS watchdog that reboots the NAS every 3 minutes when UGOS isn't running. So the 'install Debian or Ubuntu directly' plan ChatGPT pushed only works after the shopper turns off the watchdog and the internal eMMC (the chip holding UGOS) in the BIOS. The Debian wiki lists the DXP2800 as a tested model with exactly those steps.",
+ "standout": 2,
+ "standout_why": "Compared against bitdoze.com/best-nas-homelab-docker-proxmox: it says nothing about running another OS on the DXP2800 and only says the DXP4800 Plus is 'officially' allowed. rottenwifi.com's DXP2800 review calls TrueNAS on it 'an advanced, unofficial route' and warns it may affect the warranty, but gives no mechanism or BIOS steps. ai.ugreen.com's Docker/Compose blog (cited) covers ARM64 vs AMD64 images but not SSH, root access, other operating systems or the watchdog. So ARM vs x86 is already covered by a cited rival, and the watchdog/eMMC mechanism is not. I couldn't read the cited terra-master.com F2-424 spec page (HTTP 429 every time) or the cited TechRadar F2-424 review (the fetch came back truncated), so those two weren't checked.",
+ "decides": "Confirms the DXP2800 pick for 'learn Linux': it can run plain Debian (the Debian wiki lists it as tested), and per the Debian wiki UGREEN says the hardware warranty stays the same. But the page must tell the beginner to disable the watchdog and eMMC in the BIOS first, or a fresh Debian, TrueNAS or Proxmox install reboots every 3 minutes, which looks like a broken install. A beginner who wants to stay on UGOS loses nothing: Docker and Compose Projects work out of the box on x86 DXP models.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-423",
+  "Beelink ME Mini",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "BIOS watchdog behaviour without UGOS",
+   "value": "Reboots every 3 minutes if UGOS is not detected, unless Watchdog Control is disabled in the BIOS",
+   "source": "https://nascompares.com/2024/08/16/how-to-install-truenas-on-a-ugreen-nas-full-guide/",
+   "source_title": "A Step-by-Step Guide to Install TrueNAS on a Ugreen NAS (NASCompares, Rob Andrews)",
+   "read": "2026-11-08",
+   "note": "Exact quote: 'Disable Watchdog Control to prevent the system from rebooting every 3 minutes if UGOS is not detected.' The guide covers UGREEN NASync models in general (posted 16 Aug 2024). The guide's BIOS key: 'repeatedly press the F12 and Delete keys'; its alternative section refers to Ctrl+F12."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Plain Debian install on the DXP2800 (project's own words)",
+   "value": "DXP2800 listed as tested; steps: 'Disable the watchdog service' and 'disable EMMC controller in BIOS' so it never boots into the UGREEN installer",
+   "source": "https://wiki.debian.org/InstallingDebianOn/Ugreen",
+   "source_title": "InstallingDebianOn/Ugreen – Debian Wiki",
+   "read": "2026-11-08",
+   "note": "Wiki last edited 2026-01-31. Tested models: DXP2800, DXP4800, DXP8800 Plus. Disabling the eMMC before installing to an NVMe drive leaves the UGOS installer partition on the eMMC intact, so the shopper can go back to UGOS. The wiki reports no hardware that fails to work under Debian."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Warranty with a third-party OS",
+   "value": "UGREEN policy as quoted: 'If you choose to install a third-party system, there might be unknown compatibility issues. The official hardware warranty policy will remain unchanged.'",
+   "source": "https://wiki.debian.org/InstallingDebianOn/Ugreen",
+   "source_title": "InstallingDebianOn/Ugreen – Debian Wiki",
+   "read": "2026-11-08",
+   "note": "The wiki gives no URL for UGREEN's policy. NASCompares (same guide as above) also says UGREEN made clear a third-party OS 'will not invalidate your hardware warranty' 'as long as the software does not negatively impact the hardware'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Third-party OS install steps on DXP2800 (owner report)",
+   "value": "Disable eMMC (internal UGOS boot device) and watchdog in the BIOS, set boot order, install TrueNAS SCALE from USB",
+   "source": "https://forums.truenas.com/t/truenas-on-ugreen-dxp2800/65018",
+   "source_title": "TrueNAS on ugreen DXP2800 – TrueNAS Community Forums",
+   "read": "2026-11-08",
+   "note": "Post by user MRi, 7 Apr 2026. This is an owner report, not a maker statement; included because it is specific to the DXP2800."
+  },
+  {
+   "product": "general",
+   "label": "Docker image architecture on UGREEN NAS (maker)",
+   "value": "DXP models use AMD64 (x86-64) images; the ARM-based DH4300 Plus needs ARM64 images; the DH2300 does not support Docker",
+   "source": "https://ai.ugreen.com/blogs/knowledge/docker-docker-compose-ugreen-nas",
+   "source_title": "How to Use Docker and Docker Compose on UGREEN NAS",
+   "read": "2026-11-08",
+   "note": "Page dated 2026-04-20. Quotes: 'Use an ARM64 image on the DH4300 Plus or an AMD64 image on a DXP model'; 'The DH4300 Plus and current DXP models support Docker, while the DH2300 does not.' Compose Projects are created in the UGOS Docker app without the command line. ChatGPT already cited this page, so it isn't new."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price, TerraMaster US store",
+   "value": "$299.99 (compare-at $299.99), in stock",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on terra-master.com. Store text: 'Intel x86 quad-core processor and 4GB RAM', 2.5GbE. ChatGPT showed $254.99 at Newegg."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price, TerraMaster US store",
+   "value": "$399.49 (compare-at $499.99), in stock",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on terra-master.com. Store text: '2-bay x.86 Hybrid NAS Quad-core 8GB RAM 5Gbps x 2 RJ45'. $0.51 under the $400 cap."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster F2-425 CPU model, RAM ceiling and whether TOS lives on the data drives (a search summary said a WinFuture review found no internal flash): the TerraMaster spec page and storecheck product read returned HTTP 429, and the Neowin and AppleInsider reviews returned HTTP 403. TechRadar's F2-425 review came back truncated.",
+  "TerraMaster's own statement on installing third-party OSes (TrueNAS, Unraid, Debian) on the F2-424/F2-425 and whether those units have a watchdog: no official support page turned up in search, and the cited F2-424 spec page was rate-limited (HTTP 429) on three tries.",
+  "UGREEN's own published wording on the BIOS watchdog: no UGREEN-hosted page turned up in two searches. The 3-minute figure comes from NASCompares and the steps from the Debian wiki.",
+  "Beelink ME Mini RAM (soldered or not) and PCIe lanes per M.2 slot: bee-link.com returned HTTP 429.",
+  "DXP2800 price today at UGREEN US: ai.ugreen.com returned HTTP 429. The ugreen.com Shopify search listed the DXP2800 at 1301.0, which doesn't look like a US-dollar price for the bare unit, so it's left out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8646779999999998
+ }
+}
