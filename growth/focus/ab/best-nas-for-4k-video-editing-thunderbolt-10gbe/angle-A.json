@@ -1,0 +1,144 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the 'Thunderbolt 4 / USB4, 40 Gb/s' ports on these NAS boxes normalise to three different things: QNAP's own spec caps Thunderbolt at 20 Gb/s IP networking (1,410 MB/s in QNAP's lab, with E1.S bays wired PCIe Gen3 x2), UGREEN quotes the 40 Gb/s link rate for the same SMB-over-IP arrangement with no maker throughput figure, and Asustor's 40 Gb/s USB4 ports 'will not connect to a computer or mac directly' at all.",
+ "standout": 2,
+ "standout_why": "WunderTech (cited) says only that UGREEN's Thunderbolt is 'still a network share' and gives no speed or lane figures. esp32.co.uk (cited) repeats QNAP's '20Gbps' and '1,410MB/s read' for the TBS-h574TX and lists the Asustor Lockerstor 6 Gen3 and Flashstor 6 Gen2 with '2 × USB4' as if that were a host link; it never says Asustor's USB4 is storage-only. The Post Flow (uncited) has IP-over-Thunderbolt and a 1.7 GB/s QNAP measurement but nothing on Asustor, UGREEN speeds or per-slot PCIe lanes. None of the twelve results gives the Asustor footnote, the Gen3 x2 E1.S bay wiring, or lines up UGREEN's 40 Gb/s claim against QNAP's 20 Gb/s for the same technology.",
+ "decides": "It removes Asustor (Lockerstor 4/6 Gen3, Flashstor Gen2) from the 'direct-cable to one workstation' tier that esp32.co.uk put them in; for a solo editor without a 10GbE switch the only real cable-direct options are the UGREEN DXP480T Plus/DXP6800 Pro/DXP8800 Plus and QNAP's TBS-h574TX/TVS-h874T, and all of them are SMB over an IP link, so expect about 1.4 GB/s (QNAP's own number) rather than the 5 GB/s a '40 Gb/s' spec implies. It also confirms that on the all-flash QNAP TBS-h574TX the per-bay Gen3 x2 wiring, not the Thunderbolt link, is the per-drive ceiling, and that Synology's DS925+/DS1825+ cannot build a flash tier from third-party NVMe at all.",
+ "candidates": [
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TBS-h574TX",
+  "QNAP TVS-h874T",
+  "Asustor Lockerstor 4 Gen3 (AS6804T)",
+  "Asustor Flashstor 12 Pro Gen2 (FS6812X)",
+  "Synology DS925+",
+  "Synology DS1825+",
+  "TerraMaster F8 SSD Plus"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt 4 stated bandwidth",
+   "value": "up to 20 Gb/s (Thunderbolt Networking, peer-to-peer)",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "TBS-h574TX | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "QNAP's page: 'QNAP Thunderbolt NAS adopts Thunderbolt Networking for peer-to-peer connection, up to 20Gbps' and 'delivering up to 20Gbps for 4K video editing'. The hardware spec page calls the ports Thunderbolt 4 and says they 'Support only Thunderbolt connections for Windows & Mac hosts and USB storage devices'. 20 Gb/s = 2,500 MB/s raw."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt 4 measured throughput, one direct-connected client",
+   "value": "1,410 MB/s read / 1,393 MB/s write",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "TBS-h574TX | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "QNAP Labs chart: i5-1235U model, QuTS hero h5.2.3.2970, 5× QNAP 3.84 TB E1.S NVMe in RAID 5, client Intel i9-12900E / Windows Server 2019 over Thunderbolt 4. 'Figures may vary by environment.' That is 56% of the stated 20 Gb/s and 28% of a 40 Gb/s Thunderbolt 4 link rate."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "E1.S bay PCIe wiring",
+   "value": "5× PCIe Gen3 x2 (M.2 2280 via pre-installed adapter, PCIe Gen3)",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx/specs/hardware",
+   "source_title": "TBS-h574TX hardware specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Spec line: '5 x E1.S up to 15mm (5x PCIe Gen3 x2)'. Gen3 x2 is about 1,970 MB/s raw per bay, so a Gen4 x4 SSD runs at under a third of its rating; the bay, not the Thunderbolt link, caps per-drive speed. Same on i5U-16G, i5-16G and i3-12G variants."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Network ports and warranty",
+   "value": "1× 10GBASE-T + 1× 2.5GbE; 3-year standard warranty (accessories 1 year)",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx/specs/hardware",
+   "source_title": "TBS-h574TX hardware specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "'1 x 10GBASE-T (10G/5G/2.5G/1G/100M)'; 'Standard Warranty: 3 years'."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt 4 stated bandwidth",
+   "value": "maximum 20 Gb/s (Thunderbolt Networking)",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "TVS-h874T | Thunderbolt 4 NAS | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "'The TVS-h874T adopts Thunderbolt Networking technology and provides maximum bandwidth of 20 Gbps.' Page publishes no Thunderbolt throughput chart; only 2× 2.5GbE (590/591 MB/s) and 2× 25GbE (3,838 write / 5,908 read MB/s) SMB charts, RAID 5 of 8× Samsung 860 EVO, IOmeter, Windows Server 2019."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "M.2, network and PCIe layout",
+   "value": "2× M.2 PCIe Gen4 x4; 2× 2.5GbE built in, 10GbE only by PCIe card; slot 1 Gen4 x16 free, slot 2 Gen4 x4 occupied by the Thunderbolt 4 card; 3-year warranty",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t/specs/hardware",
+   "source_title": "TVS-h874T hardware specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "'2 x M.2 2280 PCIe Gen 4 x4 slots'; '10GbE: Optional via PCIe expansion card'; '*Slot 2 is preinstalled with a Thunderbolt 4 AIC'. Thunderbolt ports 'Support only Thunderbolt connections for Windows & Mac hosts and USB storage devices'; third-party Thunderbolt storage not supported."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus / DXP6800 Pro / DXP8800 Plus",
+   "label": "Thunderbolt 4 link type and stated rate",
+   "value": "40 Gb/s link; still SMB network storage over a dedicated IP, not direct-attached",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "How to optimize Thunderbolt 4 NAS issues | UGREEN",
+   "read": "2026-11-08",
+   "note": "UGREEN names the DXP480T Plus, DXP6800 Pro and DXP8800 Plus, 'Each listed model has two physical Thunderbolt 4 ports'; 'Thunderbolt 4 provides a 40Gbps link'; 'A UGREEN NAS remains a network storage system when connected through Thunderbolt', the computer gets no 'direct control of the installed drives', access is by dedicated IP and SMB. Requires 'UGOS firmware 1.2.0.2121 or later' and a certified Thunderbolt 3/4/5 cable, not 'a standard USB-C charging cable'. 'Windows and macOS can produce different results because their network and SMB implementations differ.' UGREEN publishes no MB/s figure for the link. Page dated 10/01/2025 (format ambiguous)."
+  },
+  {
+   "product": "Asustor Lockerstor 4 Gen3 (AS6804T)",
+   "label": "USB4 port function",
+   "value": "40 Gb/s USB4 for external storage only; 'will not connect to a computer or mac directly through USB4 or Thunderbolt ports'",
+   "source": "https://www.asustor.com/en/product?p_id=86",
+   "source_title": "LOCKERSTOR 4 Gen3 (AS6804T) | ASUSTOR",
+   "read": "2026-11-08",
+   "note": "Page text: 'Plug in USB4, Thunderbolt 3 or Thunderbolt 4 storage devices to transfer your work and personal data', footnote quoted above. So the 40 Gb/s figure is a DAS-import port, not a host link. Asustor lab 10GbE figures: 1,675 MB/s read / 791 MB/s write, SMB Multichannel over 2× 10GbE, RAID 5; 4× M.2 'PCI Express 4.0', lanes per slot not stated; 2× 10GbE + 2× 5GbE."
+  },
+  {
+   "product": "Asustor Flashstor 12 Pro Gen2 (FS6812X)",
+   "label": "USB4 port function and 10GbE lab throughput",
+   "value": "2× USB4 up to 40 Gb/s, storage devices only, same 'will not connect to a computer or mac directly' footnote; 2,159 MB/s read / 1,095 MB/s write over 2× 10GbE SMB Multichannel, RAID 5",
+   "source": "https://www.asustor.com/en/product?p_id=91",
+   "source_title": "FLASHSTOR 12 Pro Gen2 (FS6812X) | ASUSTOR",
+   "read": "2026-11-08",
+   "note": "'Twelve M.2 slots for NVMe SSDs – Supports up to PCIe 4.0 x4' (a maximum, per-slot lanes not itemised). Asustor says the lab figures 'could vary in different environments' and ordinary desktops may not reproduce them. On a single 10GbE link the ceiling is the 1,250 MB/s line rate."
+  },
+  {
+   "product": "Synology DS925+ / DS1525+ / DS725+ (2025 Plus series)",
+   "label": "Third-party M.2 NVMe under DSM 7.3",
+   "value": "Not supported for new cache or pool creation; only migrated from an existing Synology system",
+   "source": "https://nascompares.com/guide/synology-dsm-7-3-nas-full-details-on-hdd-and-ssd-support/",
+   "source_title": "The Synology Hard Drive and SSD Support Change in DSM 7.3 Explained – What You Can/Cannot Do (NAS Compares, Rob Andrews, 8 Oct 2025)",
+   "read": "2026-11-08",
+   "note": "Quotes: 'The only exceptions to this open policy involve M.2 NVMe drives'; 'only listed M.2 models can be used for new cache or pool creation'; table: 'Not supported for new cache or pool creation; supported only if migrated from an existing system'. Article names DS1525+, DS925+, DS725+; the DS1825+ is not named in that section. The Post Flow (uncited result) says cache works with any drive and only pools need the list, which conflicts with this source."
+  },
+  {
+   "product": "general",
+   "label": "10GbE normalised",
+   "value": "1,250 MB/s line rate; about 1,100 MB/s real-world SMB",
+   "source": "https://thepostflow.com/post-production/data-management-and-storage/qnap-vs-synology-for-video-editing/",
+   "source_title": "QNAP vs Synology for Video Editing: The Real Differences in 2026 - The Post Flow",
+   "read": "2026-11-08",
+   "note": "'Real-world 10GbE moves around 1,100 MB/s'. WunderTech (cited) gives the 1,250 MB/s line rate. Both rival figures; included only so the Thunderbolt column can be read against them: QNAP's own 1,410 MB/s Thunderbolt result is about 1.3× a real 10GbE link, not 4×."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt measured by a named reviewer",
+   "value": "about 1.7 GB/s from a RAID array, about 1.3 GB/s from a single SSD",
+   "source": "https://thepostflow.com/post-production/data-management-and-storage/qnap-vs-synology-for-video-editing/",
+   "source_title": "QNAP vs Synology for Video Editing: The Real Differences in 2026 - The Post Flow",
+   "read": "2026-11-08",
+   "note": "'On the QNAP, measured throughput landed around 1.3 GB/s from a single SSD and about 1.7 GB/s from a RAID array'; 'It runs IP over Thunderbolt, which means your Mac sees a network share over a virtual ~20Gb link'. Client and drives not specified on the page. Uncited by ChatGPT but in its result list."
+  }
+ ],
+ "unsourced": [
+  "A measured Thunderbolt throughput figure for any UGREEN NASync (DXP480T Plus, DXP6800 Pro, DXP8800 Plus) from UGREEN or a named reviewer whose page I opened: UGREEN's blog and the ITPro DXP6800 Pro review (29 Apr 2024) give none; a '1.51 GB/s on a 100 GB copy' figure appeared only in a search snippet from a retailer listing and was not opened.",
+  "Per-slot PCIe lanes on the UGREEN DXP480T Plus (the two x4 / two x2 split on our page): nas.ugreen.com and ugreen.com returned HTTP 429 on four attempts; ocinside.de's spec table says only '4 x M.2 PCIe Gen 4'.",
+  "TerraMaster F8 SSD Plus per-slot lanes (PCIe 3.0 x1 on our page), 10GbE figure, price and warranty: terra-master.com returned HTTP 429 on three attempts.",
+  "Synology's own KB page on M.2 storage-pool eligibility (kb.synology.com URL returned 404); the DS1825+ specifically is not named in the NAS Compares M.2 section.",
+  "Asustor Flashstor 6 Gen2 (FS6806X) product page: not opened; the USB4 footnote was read on the 12 Pro Gen2 and Lockerstor 4 Gen3 pages.",
+  "Current USD prices for QNAP TBS-h574TX and TVS-h874T (QNAP US pages show no dollar amount) and for UGREEN DXP480T Plus (page blocked)."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 2.2578857499999994
+ }
+}

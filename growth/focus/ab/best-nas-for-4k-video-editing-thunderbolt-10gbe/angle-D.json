@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states, in the maker's words, that a UGREEN Thunderbolt link uses one computer and one NAS port with no bonding of the two ports, that an already-mapped share does not move from Ethernet to Thunderbolt when the cable is plugged in, and that QNAP caps its Thunderbolt Networking on the TVS-h874T at 20 Gbps despite 40 Gbps ports.",
+ "standout": 1,
+ "standout_why": "WunderTech (cited) already says the UGREEN Thunderbolt link needs UGOS 1.2.0.2121 and 'is still a network share, not direct-attached storage'; esp32.co.uk (cited) already gives 20 Gbps Thunderbolt networking for the QNAP TBS-h574TX and ProRes data rates; The Post Flow says 'not a true DAS connection' with a ~20 Gb virtual link and 1.3–1.7 GB/s measured; needtoknowit covers Resolve's PostgreSQL project library and local render cache. What they lack is UGREEN's own statements that the connection gives no direct control of the drives, uses one port with no port bonding or daisy-chain, that Windows and macOS SMB produce different speeds, that multiple Thunderbolt ports on a laptop can share one controller, and that the existing SMB mount must be re-mapped to the Thunderbolt IP. None has QNAP's 20 Gbps cap stated for the TVS-h874T specifically. These refine rather than overturn what the cited pages say.",
+ "decides": "Confirms the pick logic: 'Thunderbolt NAS' on UGREEN DXP6800 Pro/DXP480T Plus/DXP8800 Plus and QNAP TVS-h874T is IP networking over Thunderbolt mounted by SMB, so Premiere or Resolve see a network volume, media cache and render cache stay local, and the ceiling is one SMB session on one port (QNAP: 20 Gbps, about 2.5 GB/s raw) rather than 40 Gbps DAS. For a solo editor it is a switch-free alternative to 10GbE with at most roughly 2× its headroom; for two or more editors the 10GbE ports still decide, which favors dual-10GbE units (DXP6800 Pro, DXP8800 Plus, TerraMaster F6-424 Max) over Thunderbolt alone.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP8800 Plus",
+  "QNAP TVS-h874T",
+  "QNAP TBS-h574TX"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP6800 Pro / DXP480T Plus / DXP8800 Plus",
+   "label": "What the Thunderbolt 4 port is",
+   "value": "IP network link over Thunderbolt, mounted by SMB; not direct-attached storage",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "UGREEN NAS Thunderbolt 4: Setup and Speed Fixes",
+   "read": "2026-11-08",
+   "note": "UGREEN, dated 2025-10-01: 'A UGREEN NAS remains a network storage system when connected through Thunderbolt. It does not give the computer direct control of the installed drives.' Path given as Thunderbolt network connection → dedicated IP address → SMB or UGREEN NAS client. On macOS 'Apple identifies Thunderbolt Bridge as an IP network interface'; connect via Finder > Connect to Server. On Windows use Map network drive."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro / DXP480T Plus / DXP8800 Plus",
+   "label": "Firmware and host port requirement",
+   "value": "UGOS Pro 1.2.0.2121 or later; computer needs Thunderbolt 3 or later",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "UGREEN NAS Thunderbolt 4: Setup and Speed Fixes",
+   "read": "2026-11-08",
+   "note": "UGREEN lists DXP480T Plus, DXP6800 Pro and DXP8800 Plus as supported 'with UGOS firmware 1.2.0.2121 or later'; models without Thunderbolt ports 'Not supported'. 'A USB-C connector alone does not confirm Thunderbolt support.'"
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro / DXP480T Plus / DXP8800 Plus",
+   "label": "Link topology limits",
+   "value": "One computer, one NAS port; the two Thunderbolt ports are not combined into one faster SMB link; no daisy-chaining",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "UGREEN NAS Thunderbolt 4: Setup and Speed Fixes",
+   "read": "2026-11-08",
+   "note": "UGREEN: 'Our direct-connection procedure uses one computer and one NAS port' and 'does not combine both ports into a faster SMB link or rely on Thunderbolt daisy-chaining.' Also: 'Connecting the cable does not make an existing mapped share switch from Ethernet to Thunderbolt' (the share must be re-mounted at the Thunderbolt IP), and 'Several physical Thunderbolt ports on a computer can share the same controller and bandwidth.' UGREEN says to choose 10GbE when 'Several computers need high-speed access.'"
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro / DXP480T Plus / DXP8800 Plus",
+   "label": "Throughput the maker will commit to over Thunderbolt",
+   "value": "40 Gbps link; storage ceilings given as HDD 200–260 MB/s, SATA SSD 500–550 MB/s, 4-HDD RAID 5 600–700 MB/s, NVMe pool 'can exceed 1 GB/s'",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "UGREEN NAS Thunderbolt 4: Setup and Speed Fixes",
+   "read": "2026-11-08",
+   "note": "UGREEN: 'Thunderbolt 4 provides a 40Gbps link' but result depends on 'the client, SMB connection, NAS processor, storage pool, RAID configuration, file size, and background activity'; 'Windows and macOS can produce different results because their network and SMB implementations differ.' Figures labelled 'practical reference ranges, not guaranteed UGREEN NAS performance results.' No 20 Gbps figure on this page."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt Networking bandwidth cap",
+   "value": "20 Gbps maximum per QNAP, over 2× Thunderbolt 4 ports",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "TVS-h874T | Thunderbolt 4 NAS. Designed for creators and small studios | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "QNAP: 'Two Thunderbolt 4 Type-C ports come as standard to directly connect your Mac'; 'adopts Thunderbolt Networking technology' and 'provides maximum bandwidth of 20 Gbps'. 20 Gbps ÷ 8 = 2.5 GB/s raw, i.e. 2× a 10GbE line rate, before SMB overhead. Hosts: Apple Silicon (M1, M2) and Intel Macs, Windows PCs; macOS 13.5 or later stated. Page gives no Thunderbolt MB/s test; its SMB tests are 2× 2.5GbE (590/591 MB/s write/read) and 2× 25GbE (3,838/5,908 MB/s)."
+  },
+  {
+   "product": "general",
+   "label": "What a 10GbE link gives in MB/s",
+   "value": "1,250 MB/s raw line rate; about 1,000–1,100 MB/s real",
+   "source": "https://esp32.co.uk/best-nas-for-4k-video-editing-over-10gbe/",
+   "source_title": "Best NAS for 4K Video Editing over 10GbE – Esp32.co.uk",
+   "read": "2026-11-08",
+   "note": "Already in a cited rival; included only to anchor the 20 Gbps Thunderbolt comparison. Esp32 also gives ProRes 422 HQ ~110 MB/s, ProRes 4444 ~165 MB/s, 4444 XQ ~250 MB/s at 4K 24–30 fps."
+  }
+ ],
+ "unsourced": [
+  "Adobe's own Productions shared-storage guidance (prefer SMB over AFP/NFS; Media Cache Files and Database not supported on shared storage; 1 Gbps minimum, 10 Gbps recommended per workstation): helpx.adobe.com returned HTTP 403 on four URL variants, so only search snippets were seen and nothing is reported from them.",
+  "UGREEN support articles 607 and 609 (Thunderbolt direct connection setup): support.ugnas.com serves a JavaScript shell with no article text to the fetcher; the UGREEN blog above was used instead.",
+  "A measured macOS Thunderbolt-bridge MB/s figure for the DXP6800 Pro or DXP8800 Plus from a named reviewer: TechPowerUp's iDX6011 Pro review (which reportedly found Thunderbolt networking slower than 10GbE) returned HTTP 403; no other named measurement for these UGREEN models was opened.",
+  "Current UGREEN US store price for the DXP6800 Pro: nas.ugreen.com returned HTTP 429 on three attempts (storecheck.py and direct fetch).",
+  "Blackmagic's own manual wording on whether a disk-based Resolve project library may sit on a network share: only third-party summaries were found; not opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.4511336500000005
+ }
+}

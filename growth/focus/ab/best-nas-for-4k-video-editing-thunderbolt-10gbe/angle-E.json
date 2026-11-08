@@ -1,0 +1,121 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states an independent lab figure for any pick: StorageReview measured the UGREEN DXP6800 Pro at 2.26 GB/s read / 1.4 GB/s write (128K sequential, six WD Red Plus in RAID 6 over CIFS), and measured the QNAP TBS-h574TX at 1,850 MB/s read over Thunderbolt from an M1 Max MacBook Pro but only 1,015 MB/s read from a Windows 11 Thunderbolt 4 PC.",
+ "standout": 2,
+ "standout_why": "Both cited rivals were read in full. WunderTech's figures are UGREEN's own numbers (600–700 MB/s RAID 5) and line-rate arithmetic; it gives no Thunderbolt or SMB measurement at all. Esp32.co.uk's only measured figures are vendor labs (ASUSTOR ~1,180 MB/s, QNAP 1,410/1,393 MB/s for the TBS-h574TX) plus Apple's ProRes bitrates. Neither names an independent reviewer, and neither has the Mac-vs-Windows Thunderbolt split or the Liliputing DXP480T Plus Thunderbolt file-copy numbers. Our own page already carries the 1,850–1,930 MB/s Mac figure for the TBS-h574TX, so the new material is the DXP6800 Pro lab result, the Windows Thunderbolt result, and the DXP480T Plus 10GbE/Thunderbolt/power numbers.",
+ "decides": "It confirms the DXP6800 Pro as the HDD pick with a lab number (2.26 GB/s read from spinning disks in RAID 6 means an HDD array can feed a 10GbE editor without an SSD pool) and adds a decision rule the rivals lack: Thunderbolt only pays off on a Mac. On Windows, StorageReview's TBS-h574TX Thunderbolt 4 read (1,015 MB/s) barely beats its 10GbE read (868 MB/s), and Liliputing's DXP480T Plus Thunderbolt file copy (1,510 MB/s read) is about 40% above its 10GbE copy (1,090 MB/s). So a Windows editor should buy on 10GbE and skip the Thunderbolt premium; a Mac editor with ProRes 4444 XQ multicam gets a real gain from Thunderbolt on the TBS-h574TX.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TBS-h574TX",
+  "QNAP TVS-h874T",
+  "Synology DS1825+"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "128K sequential throughput, StorageReview lab",
+   "value": "2.26 GB/s read, 1.4 GB/s write",
+   "source": "https://www.storagereview.com/review/ugreen-dxp6800-pro-nas-review",
+   "source_title": "UGREEN DXP6800 Pro NAS Review (Lyle Smith, StorageReview)",
+   "read": "2026-11-08",
+   "note": "Published 2024-04-19. Six 4 TB WD Red Plus HDDs in RAID 6, CIFS/SMB share (iSCSI unavailable at test time), SSD bays unused. The article does not state which network link was used; 2.26 GB/s exceeds a single 10GbE port (1.25 GB/s max), so the result implies both 10GbE ports or a faster client path. Same test also recorded 4K random 190 IOPS read / 316 IOPS write, which shows HDD RAID 6 latency is the weak spot for scrubbing."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt from M1 Max MacBook Pro, ATTO, StorageReview lab",
+   "value": "1,929 MB/s write, about 1,850 MB/s read",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review (Vince Carnevale, StorageReview)",
+   "read": "2026-11-08",
+   "note": "Published 2024-04-02. Review unit Core i5-1340PE, 16 GB; five 3,840 GB SK hynix PE8110 E1.S SSDs in RAID 5 on QuTS hero (ZFS), compression/dedupe/QSAL off, SMB. ATTO at queue depth 8, 4 threads. Saturates the 20 Gb/s Thunderbolt networking link. Beats QNAP's own single-client claim of 1,637 write / 1,736 read."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt 4 from Windows 11 PC, Blackmagic Disk Speed Test, StorageReview lab",
+   "value": "1,182 MB/s write, 1,015 MB/s read",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review (Vince Carnevale, StorageReview)",
+   "read": "2026-11-08",
+   "note": "Same unit and RAID 5 pool as the Mac test. A Windows 10 desktop with a Thunderbolt 3 add-in card managed 1,650 write but only 70 MB/s read, which the reviewer blamed on the host PC. Windows Thunderbolt was 'only marginally better than 10GbE'."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "10GbE over switch, Blackmagic Disk Speed Test, Windows 10, StorageReview lab",
+   "value": "1,050 MB/s write, 868 MB/s read",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review (Vince Carnevale, StorageReview)",
+   "read": "2026-11-08",
+   "note": "Networked, not direct-attached. The older TVS-872XT on the same test gave 1,050 write / 968 read. NAS-to-NAS Thunderbolt copy between the two ran a steady 2.0 GB/s."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "10GbE 100 GB file copy, Liliputing (Ian W Morrison)",
+   "value": "1,090 MB/s read (8.72 Gb/s), 1,150 MB/s write (9.2 Gb/s)",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus review: A speedy NAS with 10 GbE networking and four M.2 SSD slots (Liliputing)",
+   "read": "2026-11-08",
+   "note": "Published 2024-09-10, UGOS Pro 1.0.0.1150. Samsung 990 Pro 1 TB SSDs in bays 1–2 (x4 lanes), RAID 0 ext4; client Intel NUC 13 Extreme. 'Read' = PC pulling from NAS. iperf3 on the 10GbE link was ~9.9 Gb/s each way, so the copy is essentially link-bound."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Thunderbolt 4 to PC, 100 GB file copy, Liliputing (Ian W Morrison)",
+   "value": "1,510 MB/s read (12.08 Gb/s), 1,420 MB/s write (11.36 Gb/s)",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus review: A speedy NAS with 10 GbE networking and four M.2 SSD slots (Liliputing)",
+   "read": "2026-11-08",
+   "note": "Same NUC 13 Extreme and RAID 0 pool. CrystalDiskMark sequential over Thunderbolt reached 2,136 MB/s read on the NUC and 2,464 read / 1,282 write MB/s on the best PC tried; iperf3 over Thunderbolt varied 9.6–22.5 Gb/s depending on host PC and OS, so Thunderbolt gains on Windows depend heavily on the host."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Power at the wall, Liliputing (Ian W Morrison)",
+   "value": "about 18 W idle, about 42 W reading, about 55 W writing",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus review: A speedy NAS with 10 GbE networking and four M.2 SSD slots (Liliputing)",
+   "read": "2026-11-08",
+   "note": "Measured with a meter on UPS-fed mains while copying a 100 GB file each way; powered off 1.4 W; CPU stress peaked 82 W. Noise about 40–42 dBA next to the unit during the copy, below 30 dBA idle, room at 19.6 °C."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Transfer speed on an M1 Max Mac Studio, Macworld (Thomas Bergbold)",
+   "value": "741 MB/s read, 596 MB/s write",
+   "source": "https://www.macworld.com/article/2550711/ugreen-nasync-dxp480t-plus-review.html",
+   "source_title": "UGREEN NASync DXP480T Plus review (Macworld)",
+   "read": "2026-11-08",
+   "note": "Published 2025-01-06. Article does not state the connection; the test used a Zyxel XGS1250-12 10GbE switch, so this is most likely 10GbE SMB from macOS, not Thunderbolt. SSDs not named. Use only as a macOS SMB data point."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "CrystalDiskMark 4K QD32 random, KitGuru (Simon Crisp)",
+   "value": "450 MB/s read, 278 MB/s write in RAID 5; 243 / 207 MB/s in RAID 6",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/all/1",
+   "source_title": "UGREEN NASync DXP4800 Plus 4-Bay NAS Review (KitGuru)",
+   "read": "2026-11-08",
+   "note": "Published 2024-05-28. Four 6 TB WD Red WD60EFRX tested in RAID 0/5/6/10. The page text does not label which port (2.5GbE or 10GbE) these CDM runs used and gives no sequential MB/s, so treat as a RAID-level comparison only, not a 10GbE throughput figure."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "ITPro test configuration (figures not retrievable)",
+   "value": "Core i7-12700E, 32 GB, four 22 TB WD Red Pro in RAID 5 (58 TB), two Kingston 480 GB NVMe mirrored system pool",
+   "source": "https://itpro.com/hardware/storage/qnap-tvs-h874t-review-the-thunderbolt-4-nas-you-need",
+   "source_title": "Qnap TVS-h874T review: The Thunderbolt 4 NAS you need (Dave Mitchell, ITPro)",
+   "read": "2026-11-08",
+   "note": "Published 2024-02-02. The fetched page text was cut before the performance section, so no throughput number is reported here. Configuration only."
+  }
+ ],
+ "unsourced": [
+  "QNAP TVS-h874T measured Thunderbolt 4 or 10GbE throughput by a named reviewer: ITPro's review page truncated before its results; Club386's review gives no throughput numbers; no Blackmagic Mac result found.",
+  "UGREEN DXP6800 Pro Thunderbolt-to-Mac or Thunderbolt-to-PC MB/s by a named reviewer: NASCompares result not found in search; ComputerBase's test is split over three pages and the fetched page 1 (Frank Hüber, 2024-06-06) carries no measurements.",
+  "UGREEN DXP6800 Pro ITPro Iometer figures (search snippet showed 8.9 Gbit/s read / 6 Gbit/s write, Dave Mitchell, 2024-04-29) could not be confirmed because the page text truncated before the performance section twice.",
+  "UGREEN DXP4800 Plus 10GbE sequential read/write from a named lab: TechPowerUp returned HTTP 403; KitGuru's page text has no sequential MB/s.",
+  "Synology DS1825+ independent 10GbE measurement with a PCIe card: only Synology's own 2,239 / 1,573 MB/s SSD claim surfaced.",
+  "TerraMaster F6-424 Max / F8 SSD Plus and Asustor Flashstor Gen2 / Lockerstor Gen3 named-lab measurements: not attempted within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.9771315500000004
+ }
+}

@@ -1,0 +1,115 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Asustor's USB4 ports on the Flashstor Gen2 and Lockerstor Gen3 cannot link a PC or Mac at all (AMD's USB4 driver allows only external drives and NAS-to-NAS), nor that QNAP's Thunderbolt NAS line needs macOS 13.5 or later and tops out at 20 Gb/s Thunderbolt Networking over a Thunderbolt 4 or 3 cable.",
+ "standout": 2,
+ "standout_why": "WunderTech (cited) covers the Synology card pairings (E10G22-T1-Mini for DS1525+, E10G30-T1 for DS1825+, none for DS925+), Synology's SSD-list rule for M.2 pools, and UGREEN's Thunderbolt firmware floor (UGOS 1.2.0.2121), so those are already taken. Esp32.co.uk (cited) says QNAP Thunderbolt networking reaches 20 Gb/s and that the Lockerstor 6 Gen3 has 'USB4, not Thunderbolt', but never says the USB4 port cannot host-link a computer, and gives no macOS floor or cable rule. Neither rival nor the other ten results states the Asustor exclusion or the QNAP macOS 13.5 requirement, and none has the UGREEN store's own prices for today.",
+ "decides": "It confirms the UGREEN DXP6800 Pro as the pick for a solo editor who wants one cable to the workstation: the maker-supported direct-link field is UGREEN (DXP6800 Pro, DXP8800 Plus, DXP480T Plus) and QNAP's T-series (TVS-h874T/h674T, TBS-h574TX). Asustor's Flashstor and Lockerstor Gen2/Gen3, TerraMaster and Synology are 10GbE-only for a host link, so their 'USB4' spec line should not sway a Mac editor. For QNAP buyers, a Mac must be on macOS 13.5 or later and the link is capped at 20 Gb/s regardless of the 40 Gb/s port rating; on the TVS-h874T the Thunderbolt card also consumes one of the two PCIe slots, leaving one for a 10/25GbE card.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TVS-h874T",
+  "QNAP TBS-h574TX",
+  "Asustor Flashstor 6 Gen2 / 12 Pro Gen2",
+  "Asustor Lockerstor 4 Gen3 (AS6804T)",
+  "Synology DS1825+",
+  "Synology DS925+"
+ ],
+ "findings": [
+  {
+   "product": "Asustor Flashstor Gen2 / Lockerstor Gen3",
+   "label": "USB4 host link to a PC or Mac",
+   "value": "Not supported; USB4 is limited to external storage devices and a direct link to another Lockerstor Gen3 or Flashstor Gen2",
+   "source": "https://www.asustor.com/en/knowledge?id=10",
+   "source_title": "ASUSTOR knowledge base: Can I connect my PC or Mac to my ASUSTOR NAS using USB4?",
+   "read": "2026-11-08",
+   "note": "Maker FAQ text: 'The Lockerstor Gen3 and Flashstor Gen2 series are based on AMD's current USB4 driver. AMD USB4 at the moment only supports external storage devices and direct connection between another Lockerstor Gen3 or Flashstor Gen2 series NAS.' Replaces the 'Mac bridge unverified' wording in our Asustor rows; host access is via the 10GbE/5GbE ports only."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt Networking bandwidth cap",
+   "value": "20 Gb/s maximum per link (ports are Thunderbolt 4)",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "QNAP TVS-h874T | Thunderbolt 4 NAS (US)",
+   "read": "2026-11-08",
+   "note": "Page text: 'adopts Thunderbolt Networking technology and provides maximum bandwidth of 20 Gbps.' Two Thunderbolt 4 Type-C ports standard."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Supported host computers and minimum macOS",
+   "value": "Apple silicon Macs (M1, M2 named), Intel Macs and Windows PCs; macOS 13.5 or later",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "QNAP TVS-h874T | Thunderbolt 4 NAS (US)",
+   "read": "2026-11-08",
+   "note": "Page text: 'works perfectly with Macs using Apple Silicon (such as M1 and M2 chips) and Intel processors, and Windows PCs' and 'System requirement: macOS 13.5 (or later)'. No Windows driver or cable requirement stated on the page."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "PCIe slot consumed by Thunderbolt",
+   "value": "1 of 2 PCIe Gen 4 slots is occupied by the dual Thunderbolt 4 card; the other takes up to a 25GbE card",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "QNAP TVS-h874T | Thunderbolt 4 NAS (US)",
+   "read": "2026-11-08",
+   "note": "Stated in a Profesional Review excerpt that QNAP reproduces on its own product page, not in QNAP's spec table. QNAP's page lists compatible cards: QXG-10G2T, QXG-10G1T, QXG-10G2T-X710, QXG-10G2SF-NXE, QXG-10G2SF-X710 (10GbE), QXG-25G2SF-CX6 and QXG-25G2SF-E810 (25GbE), QM2-2P10G1TB (M.2 + 10GbE)."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt host link: bandwidth, hosts, macOS floor, cable",
+   "value": "Up to 20 Gb/s Thunderbolt Networking; Mac (M1 and M2 named) or Windows workstations; macOS 13.5 or later; Thunderbolt 4 or Thunderbolt 3 cable",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "QNAP TBS-h574TX | Thunderbolt 4 all-flash NAS (US)",
+   "read": "2026-11-08",
+   "note": "Page text: 'QNAP Thunderbolt NAS adopts Thunderbolt Networking for peer-to-peer connection, up to 20Gbps'; 'Mac system requirement: macOS 13.5 (or later)'; 'Connect the TBS-h574TX to your Mac or Windows PC with Thunderbolt 4 / Thunderbolt 3 cables'. Two Thunderbolt 4 ports."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "SSD form-factor pairing",
+   "value": "5× E1.S PCIe NVMe bays; M.2 2280 SSDs fit only via the optional QDA-E1SM E1.S tray with M.2 adapter",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "QNAP TBS-h574TX | Thunderbolt 4 all-flash NAS (US)",
+   "read": "2026-11-08",
+   "note": "Page text: '5 x E1.S PCIe NVMe slots (M.2 2280 supported)' and 'Optional E1.S to M.2 SSD adapter enables hot-swappable M.2 SSD installation'; accessory listed as 'E1.S Tray w/ M.2 2280 adapter for TBS series NAS' (QDA-E1SM). Hot-swap is stated for E1.S drives."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Price, UGREEN US store",
+   "value": "$1,099.99 (compare-at $1,209.99), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage",
+   "source_title": "UGREEN NASync DXP6800 Pro",
+   "read": "2026-11-08",
+   "note": "Read from the Shopify store's product data via storecheck.py search on nas.ugreen.com; the product page itself returned HTTP 429 to direct reads today."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$1,369.99 (compare-at $1,509.99), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP8800 Plus",
+   "read": "2026-11-08",
+   "note": "Shopify store data via storecheck.py search."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-08",
+   "note": "Shopify store data via storecheck.py search; matches the $619.99 ChatGPT showed from Best Buy. This model has no Thunderbolt port."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own Thunderbolt direct-attach rules (support.ugnas.com article 609: macOS recommended, Windows needs manual driver install and may upload slower, link gets a 169.254.x.x address). The article body is JavaScript-rendered and returned empty to three reads, and curl was not permitted, so only a search snippet was seen; not used as a value.",
+  "UGREEN product-page Thunderbolt footnotes and the DXP480T Plus store price: nas.ugreen.com and ai.ugreen.com returned HTTP 429 on every product-page read today, and the store search did not list the DXP480T Plus.",
+  "Measured Thunderbolt-link throughput from a Mac to a UGREEN NAS (MB/s): looked for a named reviewer's figure; 9to5mac's UGREEN article has none and the nascompares thread returned HTTP 403.",
+  "QNAP's Windows-side requirements for the Thunderbolt link (Thunderbolt driver or controller generation) and any cable length limit: not stated on either QNAP US product page.",
+  "Adobe's own documentation statement that Premiere Pro's media cache is unsupported on network storage: only Adobe community-forum posts by staff were found, no help-center page."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 2.0995020500000003
+ }
+}

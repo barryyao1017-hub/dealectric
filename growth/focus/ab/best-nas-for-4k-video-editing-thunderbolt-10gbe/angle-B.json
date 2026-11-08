@@ -1,0 +1,155 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many 4K ProRes 422 HQ streams each candidate's *measured* path actually carries: 16 for the QNAP TBS-h574TX over Thunderbolt 4 on a Mac (1,850 MB/s), 9 for the UGREEN DXP480T Plus over 10GbE (1,059 MB/s), but only 3 for the UGREEN DXP6800 Pro's six-HDD RAID 5 over 10GbE (421 MB/s), against the 11-stream link ceiling rivals quote.",
+ "standout": 2,
+ "standout_why": "esp32.co.uk (cited) divides the raw 10GbE line rate by ProRes rates (11 / 7 / 5 streams) but never applies measured product throughput; wundertech.net (cited) gives UGREEN's own 600–700 MB/s RAID 5 claim for the DXP4800 Plus and a drive-count rule, with no codec rates or stream counts. Neither shows that a six-HDD RAID 5 on the DXP6800 Pro measured 421 MB/s over 10GbE (ComputerBase), a third of the link, nor derives Thunderbolt-on-Mac vs Thunderbolt-on-Windows stream counts for the TBS-h574TX (16 vs 9), nor prices per measured MB/s.",
+ "decides": "Confirms the DXP6800 Pro as the HDD-pool pick for a single editor (3–4 ProRes 422 HQ UHD streams from six IronWolf Pro drives, 6 from its NVMe volume), but shows that anyone cutting multicam or 4444 needs flash: the DXP480T Plus delivers 9 streams per 10GbE link for $0.85 per measured MB/s, and the TBS-h574TX 16 streams over Thunderbolt 4 on a Mac for $0.78 per MB/s, falling to 9 on Windows where TB4 networking measured barely above 10GbE. The 25 GB Thunderbolt copy on the DXP6800 Pro ran at 424 MB/s read, so Thunderbolt does not rescue an HDD pool.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP8800 Plus",
+  "QNAP TBS-h574TX"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "ProRes 422 HQ target data rate, 1920×1080 at 29.97 fps (Apple)",
+   "value": "220 Mb/s (27.5 MB/s)",
+   "source": "https://support.apple.com/en-us/102207",
+   "source_title": "Apple ProRes - Apple Support",
+   "read": "2026-11-08",
+   "note": "Apple's table also lists 422 Proxy 45, LT 102, 422 147, 4444 330, 4444 XQ 500 Mb/s at 1080p29.97. Page dated March 3, 2025."
+  },
+  {
+   "product": "general",
+   "label": "ProRes 422 HQ per-stream rate, 3840×2160 at 29.97 fps (derived)",
+   "value": "880 Mb/s = 110 MB/s",
+   "source": "https://support.apple.com/en-us/102207",
+   "source_title": "Apple ProRes - Apple Support",
+   "read": "2026-11-08",
+   "note": "UHD has 4× the pixels of 1080p and ProRes scales with pixel count: 220 Mb/s × 4 = 880 Mb/s ÷ 8 = 110 MB/s. Matches the ~880 Mb/s (~110 MB/s) figure esp32.co.uk states for 4K ProRes 422 HQ (read 2026-11-08). Same scaling gives 4444 at 165 MB/s and 4444 XQ at 250 MB/s."
+  },
+  {
+   "product": "general",
+   "label": "Link ceilings in ProRes 422 HQ UHD 29.97 streams",
+   "value": "2.5GbE 2 streams; 10GbE 11 streams; Thunderbolt 4 networking at 20 Gb/s 22 streams",
+   "source": "https://esp32.co.uk/best-nas-for-4k-video-editing-over-10gbe/",
+   "source_title": "Best NAS for 4K Video Editing over 10GbE – Esp32.co.uk",
+   "read": "2026-11-08",
+   "note": "312 MB/s ÷ 110 = 2.8 → 2; 1,250 ÷ 110 = 11.4 → 11; 2,500 ÷ 110 = 22.7 → 22. The 10GbE figure is already on the esp32 page; the 2.5GbE and TB4 ceilings are not. Whole streams only, no headroom for scrubbing."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Measured Thunderbolt 4 read on a Mac (StorageReview, ATTO, M1 Max MacBook Pro, RAID 5 of five 3.84 TB SK hynix PE8110 E1.S)",
+   "value": "1,850 MB/s read, 1,929 MB/s write",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review - StorageReview.com",
+   "read": "2026-11-08",
+   "note": "Review dated April 2, 2024, by Vince Carnevale. Derived: 1,850 ÷ 110 = 16.8 → 16 ProRes 422 HQ UHD streams; 1,850 ÷ 165 = 11 ProRes 4444 streams."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Measured Thunderbolt 4 read on Windows 11 (StorageReview, Blackmagic Disk Speed Test)",
+   "value": "1,015 MB/s read, 1,182 MB/s write",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review - StorageReview.com",
+   "read": "2026-11-08",
+   "note": "Derived: 1,015 ÷ 110 = 9.2 → 9 streams on Windows vs 16 on the Mac, from the same box and drives. 10GbE on Windows 10 measured 868 MB/s read → 868 ÷ 110 = 7.9 → 7 streams."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Price per measured MB/s (enclosure only)",
+   "value": "$0.78 per MB/s (Mac TB4); $1.67 per MB/s (10GbE)",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review - StorageReview.com",
+   "read": "2026-11-08",
+   "note": "$1,449 MSRP (i5/16 GB, April 2024, per StorageReview) ÷ 1,850 MB/s = $0.78; ÷ 868 MB/s = $1.67. Drives not included; QNAP's US page shows no price."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Measured 10GbE SMB read, RAID 5 of six Seagate IronWolf Pro 20 TB (ComputerBase, 5.9 GB file / 15 GB folder)",
+   "value": "420.7 MB/s file read, 320.2 MB/s folder read; 486.4 MB/s file write",
+   "source": "https://www.computerbase.de/2024-06/ugreen-dxp6800-pro-nas-10-gbe-test/2/",
+   "source_title": "Ugreen DXP6800 Pro im Test: Übertragungsraten und Backup - ComputerBase",
+   "read": "2026-11-08",
+   "note": "Review dated June 6, 2024, by Frank Hüber, early UGOS firmware. Derived: 420.7 ÷ 110 = 3.8 → 3 ProRes 422 HQ UHD streams from the HDD pool; 320.2 ÷ 110 → 2 for a folder of clips. Roughly a third of the 11-stream link ceiling."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Measured 10GbE SMB read, two-NVMe volume (Seagate IronWolf 510 480 GB), ComputerBase",
+   "value": "761.5 MB/s file read, 636.3 MB/s file write",
+   "source": "https://www.computerbase.de/2024-06/ugreen-dxp6800-pro-nas-10-gbe-test/2/",
+   "source_title": "Ugreen DXP6800 Pro im Test: Übertragungsraten und Backup - ComputerBase",
+   "read": "2026-11-08",
+   "note": "Derived: 761.5 ÷ 110 = 6.9 → 6 streams from the NVMe volume vs 3 from HDDs. With 2× 10GbE bonded, the SSD volume read 1,055.9 MB/s → 9 streams; the HDD volume read 499 MB/s → 4 streams."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Thunderbolt 4 direct-attach copy, 25 GB, HDD volume (ComputerBase, derived from stated times)",
+   "value": "about 424 MB/s read, 532 MB/s write",
+   "source": "https://www.computerbase.de/2024-06/ugreen-dxp6800-pro-nas-10-gbe-test/2/",
+   "source_title": "Ugreen DXP6800 Pro im Test: Übertragungsraten und Backup - ComputerBase",
+   "read": "2026-11-08",
+   "note": "ComputerBase states 0:59 read and 0:47 write for 25 GB over Thunderbolt 4: 25,000 MB ÷ 59 s = 424 MB/s; 25,000 ÷ 47 = 532 MB/s. Derived: 424 ÷ 110 = 3 streams, the same as 10GbE, because the HDD pool is the limit, not the link."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "US store price and price per measured MB/s",
+   "value": "$1,099.99 (list $1,209.99); $2.61 per MB/s on the HDD pool, $1.45 per MB/s on the NVMe volume",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage",
+   "source_title": "UGREEN NASync DXP6800 Pro - UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Price via storecheck on 2026-11-08, in stock, diskless. $1,099.99 ÷ 420.7 MB/s = $2.61; ÷ 761.5 = $1.45."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Measured 10GbE sequential read, two Gen4 NVMe in RAID 1, Mac Studio M2 Max direct-connected (ocinside)",
+   "value": "1,059 MB/s sequential read; 50 GB SMB copy about 730 MB/s read, 570 MB/s write",
+   "source": "https://ocinside.de/review/ugreen_dxp480t_plus/5",
+   "source_title": "Ugreen DXP480T Plus review - NAS performance - ocinside.de",
+   "read": "2026-11-08",
+   "note": "Derived: 1,059 ÷ 110 = 9.6 → 9 ProRes 422 HQ UHD streams at the benchmark rate; 730 ÷ 110 = 6.6 → 6 at the real 50 GB copy rate. Review page shows no date."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "US store price and price per measured MB/s",
+   "value": "$899.99 (list $1,124.98); $0.85 per MB/s",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP480T Plus - UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Price via storecheck on 2026-11-08, in stock, diskless. $899.99 ÷ 1,059 MB/s = $0.85."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "US store price",
+   "value": "$619.99 (list $1,129.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus - UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Via storecheck on 2026-11-08, in stock, diskless. Matches ChatGPT's Best Buy figure. Using UGREEN's 600–700 MB/s four-HDD RAID 5 claim as relayed by wundertech.net (read 2026-11-08): 600 ÷ 110 = 5 streams; claim not opened on UGREEN's own page, see unsourced."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "US store price",
+   "value": "$1,369.99 (list $1,509.99)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP8800 Plus - UGREEN NAS US store",
+   "read": "2026-11-08",
+   "note": "Via storecheck on 2026-11-08, in stock, diskless. Per wundertech.net's rule (1,250 ÷ 200–260 MB/s per drive ≈ 5–6 data drives) this is the smallest UGREEN that can fill 10GbE from HDDs alone."
+  }
+ ],
+ "unsourced": [
+  "Apple's ProRes white paper 4K data-rate table: the PDF downloaded but text extraction was blocked, so the 110 MB/s UHD figure is derived from Apple's 1080p figure × 4 and cross-checked against esp32.co.uk, not read from the table.",
+  "Blackmagic RAW data rates per compression ratio: Blackmagic's product page carries them only as an image, so no BRAW stream counts.",
+  "Sony XAVC HS / S-I 4K bit rates for an H.265 or All-Intra stream count: Sony's help guide and US product page would not load.",
+  "UGREEN's own 600–700 MB/s RAID 5 claim for the DXP4800 Plus and the DXP6800 Pro's Thunderbolt and warranty text: nas.ugreen.com product pages returned HTTP 429 three times; prices came through the store tool.",
+  "A named Thunderbolt 4 measurement for the DXP480T Plus on a Mac: only a Reddit user post (900–1,000 MB/s write, up to 2,000 MB/s read) exists, so it is left out."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 2.2437872000000003
+ }
+}
