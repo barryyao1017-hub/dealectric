@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a power station's own power-saving switch-off (BLUETTI ECO mode, EcoFlow AC timeout, Jackery Energy Saving Mode) cuts the AC outlet when the load stays low or comes and goes. A thermostat that cycles a reptile heater, or a small heat mat, is exactly that kind of load, so the heat can go off partway through an outage unless the owner turns the feature off before the power fails.",
+ "standout": 2,
+ "standout_why": "I compared against the cited animalstart.com smart-thermostat article, which covers thermostat backup batteries and inverters but never mentions power-station auto-off. The cited pets.co.uk winter vivarium page says to 'verify… automatic transfer behaviour' and lists thermostat cycling only as something that changes runtime. The Jackery Explorer 1000 V2 Basic Information FAQ, cited in chat 3, says Energy Saving Mode 'Supported' can be turned off, gives 20 ms switchover and 18 W standby, but gives no threshold and doesn't tie it to cycling heaters. Petco's two outage pages returned 403, so I couldn't check them. ChatGPT's own answers say a thermostat 'can significantly extend runtime', which is the opposite of the risk. Our current page's arithmetic leaves out both the auto-off risk and the station's own idle draw. So rivals have pieces, but none links low or cycling heater loads to the outlet shutting off.",
+ "decides": "This doesn't knock any candidate out, because BLUETTI, EcoFlow and Jackery all let you turn the feature off. It decides whether the plan works at all, so the page needs a 'before the outage: turn off ECO / set AC timeout to Never' step for each pick. It also changes the runtime table. Each station's own draw (AC180 about 15 W per BLUETTI's manual; Jackery 1000 v2 18 W standby per Jackery) is close to a 24 W heat mat's own draw, so the 'heat mat' runtimes are roughly 40% too long. Example: Elite 200 V2 at 2,073.6 Wh × 0.85 ÷ 24 W ≈ 73 h, but ÷ (24 + 15) W ≈ 45 h. That 15 W is the AC180's figure applied to the Elite as an illustration; I didn't find the Elite's own number. Small mats favour stations with a low or adjustable ECO threshold and low idle draw.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 30 V2",
+  "Tenergy T320"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off on low or no load",
+   "value": "AC output turns off when the load stays below a settable 15–30 W threshold for 1, 2, 3 or 4 hours (DC: 5–10 W)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 – Portable Power Station Manual (ManualsLib copy of the BLUETTI user manual)",
+   "read": "2026-11-08",
+   "note": "The manual says: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while' and 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' A 24 W heat mat sits inside that threshold range, and a thermostat in its off phase draws only a few watts. The manual doesn't give the default state. This is a third-party mirror; BLUETTI's own PDF (cdn.shopify.com/s/files/1/0536/3390/8911/files/AC180_User_Manual.pdf) downloaded, but the fetch tool couldn't pull its text."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Self-consumption",
+   "value": "about 15 W",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 – Portable Power Station Manual (ManualsLib copy)",
+   "read": "2026-11-08",
+   "note": "Manual: 'The self-consumption of AC180 is about 15W.' Against a 24 W mat: 1,152 Wh × 0.85 ÷ 24 W ≈ 41 h, but ÷ 39 W ≈ 25 h."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover time",
+   "value": "≤20 ms (longer when Grid Enhancement is on)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 – Portable Power Station Manual (ManualsLib copy)",
+   "read": "2026-11-08",
+   "note": "Manual: 'Switching time ≤20ms' and, for Grid Enhancement mode, 'the UPS takes longer to switch over and may be unable to provide instant emergency power to connected devices.'"
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "AC timeout under intermittent load",
+   "value": "An intermittent load can trigger automatic AC shutdown; EcoFlow says to set AC timeout to 'Never' in the app",
+   "source": "https://www.ecoflow.com/ph/blog/ecoflow-delta-3-faq",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station: Everything You Need to Know (EcoFlow PH)",
+   "read": "2026-11-08",
+   "note": "EcoFlow's page on the standard 1,024 Wh DELTA 3: 'An intermittent load can otherwise trigger automatic AC shutdown.' It's written about refrigerator backup, but a thermostat-cycled heater works the same way. The page doesn't give the default timeout. This is EcoFlow's Philippines site; I didn't find a US page saying the same."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "UPS transfer time",
+   "value": "<10 ms",
+   "source": "https://www.ecoflow.com/ph/blog/ecoflow-delta-3-faq",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station: Everything You Need to Know (EcoFlow PH)",
+   "read": "2026-11-08",
+   "note": "The page says it is not a zero-transfer UPS."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Energy Saving Mode / auto power-off",
+   "value": "Can be turned off ('Supported'); app auto power-off can be set to 'Never'",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-08",
+   "note": "This is the page ChatGPT cited in chat 3. It gives no threshold or duration. A third-party manual copy is reported to give ≤25 W / 12 h, but it returned 403, so that figure is left out."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Standby power and switchover",
+   "value": "18 W standby; switches to battery within 20 ms (not zero-interruption)",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-08",
+   "note": "The page doesn't say whether 18 W is the draw with AC on and nothing plugged in. 1,070 Wh × 0.85 ÷ 24 W ≈ 38 h; ÷ 42 W ≈ 22 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "ECO mode",
+   "value": "Shuts the unit off automatically after a period of little or no load; toggled from the screen menu",
+   "source": "https://aphnetworks.com/reviews/bluetti-elite-200-v2/2",
+   "source_title": "BLUETTI Elite 200 V2 Review – Page 2 – A Closer Look – Hardware (APH Networks)",
+   "read": "2026-11-08",
+   "note": "APH Networks: 'ECO mode shuts down the Elite 200 V2 automatically after a period of time when there is little to no load.' The same page says '15ms response time gives it UPS capabilities.' No threshold or duration given."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 ECO threshold, duration and default state: BLUETTI's support PDF (s4.bluettipower.com/.../996c1d0c-....pdf) and the EU manual on Shopify CDN either wouldn't give up their text or were too large to fetch; the manuals.plus mirror returned 403.",
+  "Whether ECO / AC timeout / Energy Saving Mode is on by default on the AC180, Elite 200 V2 and DELTA 3: no maker page I opened says so. A BLUETTI forum post claiming AC180 'AC-ECO' is on by default now redirects to the forum home page.",
+  "Whether the AC outlet comes back on its own after an ECO or timeout shutdown: the only claim (that it must be switched back on by hand) is from an AC200MAX forum thread, so it wasn't used for these models.",
+  "EcoFlow DELTA 3 (1,024 Wh) default AC timeout: a 12 h default appears only in DELTA 2 / DELTA 2 Max manuals; the DELTA 3 1500 manual PDFs didn't give up their text.",
+  "Jackery Explorer 1000 v2 Energy Saving threshold (reported as ≤25 W / 12 h in a third-party manual copy that returned 403) and the Jackery blog body, which didn't load.",
+  "BLUETTI Elite 30 V2 and Tenergy T320 auto-off behaviour and idle draw: not researched within the tool budget.",
+  "Elite 200 V2 and DELTA 3 AC no-load self-consumption: not found on maker pages or manuals I could read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9848083999999999
+ }
+}

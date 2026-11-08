@@ -1,0 +1,157 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much of a small reptile heater's runtime goes to the station's own draw. Jackery lists 18 W standby on the Explorer 1000 v2 and Gidon at The Technology Man measured about 17 W on the Anker SOLIX C1000 Gen 2, so with a 24 W heat mat about 43% of the battery heats nothing (18 / (24 + 18)). BLUETTI lists 4.5 W standby on the Elite 30 V2. Anker's default Smart AC mode also turns the inverter off after 15 minutes below 20 W, which would cut a thermostat-cycled emitter during its off period.",
+ "standout": 2,
+ "standout_why": "Compared against animalstart.com (cited), pets.co.uk (cited), our own page and ChatGPT's three answers; petco.com returned 403. animalstart gives only '100W heater for about 5 hours on a 500Wh battery' and says nothing about idle draw or auto-off. pets.co.uk gives only the formula Wh / watts, with no capacities, idle draw or auto-off. ChatGPT's tables leave out standby, saying 'before additional standby consumption' and 'excluding additional power-station standby draw'. Our page uses a flat, unsourced 15 W and never mentions ECO or auto-off modes. None of them gives a per-model idle figure or an auto-off threshold.",
+ "decides": "For a low-watt mat or a thermostat-cycled emitter, standby draw changes the ranking more than capacity does at the small end. The 288 Wh Elite 30 V2, at its stated 4.5 W, runs a 24 W mat about 8.6 h, against about 5.8 h if it drew 18 W like the Jackery. On 1 kWh stations the Anker C1000 Gen 2 (907 Wh measured, 17 W idle) and the Jackery 1000 v2 (1,070 Wh, 18 W standby) both come to about 22 h on a 24 W mat. The pick should say to turn off Anker's Smart AC mode (and the equivalent auto-off on any station) before relying on it with a thermostat. It also confirms the Elite 30 V2 only as a small-mat station.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI AC180",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured AC idle draw, no load",
+   "value": "about 17 W",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record Breaking Charge Speed: Anker SOLIX C1000 Gen 2 Power Station Review (The Technology Man, Gidon, 2025-11-04)",
+   "read": "2026-11-08",
+   "note": "Gidon turned Smart AC Output Mode off and left the unit with no load for 12 h from 100%. It ended at 80%. 20% of 1,024 Wh is about 205 Wh, and 205 / 12 is about 17 W."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Default AC auto-off rule",
+   "value": "Inverter off after 15 min when unused or below 20 W",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record Breaking Charge Speed: Anker SOLIX C1000 Gen 2 Power Station Review (The Technology Man)",
+   "read": "2026-11-08",
+   "note": "Quote: 'By default the Anker turns off its inverter after 15 minutes when it's not in use or using below 20W.' When a thermostat switches a heater off, the load drops to 0 W, so a cycling heater would lose power after 15 minutes off. Turn Smart AC mode off for reptile heat."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured delivered energy",
+   "value": "907 Wh at a constant 1 kW load (89% of 1,024 Wh)",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record Breaking Charge Speed: Anker SOLIX C1000 Gen 2 Power Station Review (The Technology Man)",
+   "read": "2026-11-08",
+   "note": "Ran 'just over 54 minutes and used 907 Wh'."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Hours on a 24 W heat mat (Smart AC off)",
+   "value": "about 22 h",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record Breaking Charge Speed: Anker SOLIX C1000 Gen 2 Power Station Review (The Technology Man)",
+   "read": "2026-11-08",
+   "note": "907 Wh / (24 W + 17 W) = 22.1 h. Uses the energy measured at 1 kW, so this is approximate at light load."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Hours with a 100 W emitter at 50% thermostat duty (Smart AC off)",
+   "value": "about 13.5 h",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record Breaking Charge Speed: Anker SOLIX C1000 Gen 2 Power Station Review (The Technology Man)",
+   "read": "2026-11-08",
+   "note": "907 Wh / (100 W × 0.5 + 17 W) = 13.5 h."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Standby power consumption (maker)",
+   "value": "18 W",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-08",
+   "note": "Same page: 1,070 Wh LiFePO4, about 10.8 kg, UPS switchover within 20 ms, and an Energy Saving Mode that can be turned off in the app. It gives no threshold or time for that mode."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Hours on a 24 W heat mat",
+   "value": "about 22 h",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-08",
+   "note": "1,070 Wh × 0.85 / (24 W + 18 W) = 21.7 h. The 0.85 usable factor is our page's assumption, not Jackery's. 18 / 42 = 43% of the energy goes to standby."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Hours with a 100 W emitter at 50% duty",
+   "value": "about 13.4 h",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-08",
+   "note": "1,070 × 0.85 / (50 + 18) = 13.4 h, with the 0.85 factor assumed."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Standby draw (maker claim) and price",
+   "value": "4.5 W standby; 288 Wh; $289.99",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-08",
+   "note": "Read with the Dealectric storecheck tool from BLUETTI's US store: 'Up to 50% less self-consumption and only 4.5W standby', with UPS switchover of 10 ms or less. In stock."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Hours on a 24 W heat mat",
+   "value": "about 8.6 h",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-08",
+   "note": "288 Wh × 0.85 / (24 + 4.5) = 8.6 h, with the 0.85 factor assumed. At an 18 W standby like the Jackery it would be 288 × 0.85 / 42 = 5.8 h."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Hours with a 100 W emitter at 50% duty",
+   "value": "about 4.5 h",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-08",
+   "note": "288 × 0.85 / (50 + 4.5) = 4.5 h, with the 0.85 factor assumed."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price and capacity",
+   "value": "$899.00; 2,073.6 Wh",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "Read with the storecheck tool from BLUETTI's US store. Available: true."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured delivered energy",
+   "value": "1.91 kWh at a load of about 1–1.1 kW",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview, Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-08",
+   "note": "1,910 / 2,073.6 = 92%. Weight 53.4 lb. The review says ECO mode can be set on AC or DC outputs 'to reduce idle power usage' but gives no idle wattage."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, capacity, weight",
+   "value": "$499.00; 1,024 Wh; 25 lb",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "Read with the storecheck tool from BLUETTI's US store. The page says UPS switchover is 10 ms. It gives no standby figure."
+  }
+ ],
+ "unsourced": [
+  "Idle or no-load AC draw for the BLUETTI Elite 200 V2, AC180 and Elite 100 V2. Not on the BLUETTI US store pages I read, and StorageReview gives none. The EU user manual PDF was too large to fetch, and the BLUETTI datasheet PDF returned 404.",
+  "Default threshold and timeout for BLUETTI's AC ECO mode on the Elite 200 V2. Only user reports for other models (AC200MAX: 4 h below 50 W) turned up, and I did not use them.",
+  "EcoFlow DELTA 3 (1,024 Wh) default AC timeout and no-load draw. The manuals.plus copy returned 403. The DELTA 3 1500 manual only says to set the AC timeout to 'never' for critical loads. I did not open EcoFlow's US product page.",
+  "Threshold and time for the Jackery Explorer 1000 v2 Energy Saving Mode. The Jackery FAQ only says it can be turned off.",
+  "Measured low-load efficiency for any candidate. I used an assumed 0.85 usable factor where no measured delivered energy was available (Jackery, Elite 30 V2).",
+  "Price for the Anker SOLIX C1000 Gen 2, Jackery 1000 v2 and EcoFlow DELTA 3. Not checked within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8959860999999999
+ }
+}
