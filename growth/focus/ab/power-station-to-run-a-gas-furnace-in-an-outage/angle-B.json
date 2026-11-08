@@ -1,0 +1,128 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many hours of full-rated sun a station's own solar kit needs to put back one night of furnace use (about 11 h for a 200 W panel against a 2,260 Wh PSC night), nor that at today's prices the BLUETTI Elite 200 V2 + 200 W kit ($1,199) costs exactly what the bare Elite 300 ($1,199) does while holding 45% less usable energy.",
+ "standout": 3,
+ "standout_why": "Outage Authority (cited) has per-model furnace-only runtime at 50%/77% duty and cost per rated Wh for two models (C2000 Gen 2 $0.49, Elite 200 V2 $0.67 at its 11-03 price of $1,399); UDPOWER has Wh-per-8-hour-night tables for generic loads; Capable Home has runtime at 800/490 W for three stations; Prepared States has generic 1/2 kWh figures. None gives nights-per-charge, refill hours from the kit's own panel, Wh per lb, or cost per usable Wh; and Outage Authority's $/Wh ranking is stale: Elite 200 V2 is $899 today, $0.43 per rated Wh, undercutting its recommended C2000 Gen 2.",
+ "decides": "For furnace backup buy stored capacity, not a panel: the Elite 300 at $1,199 gives about 2,562 usable Wh (1.1 mild PSC nights) for $0.47 per usable Wh, while the same $1,199 on the Elite 200 V2 + 200 W kit gives 1,763 usable Wh plus a panel that at full rating recovers only about 1/11 of a night per hour of sun. The $899 Elite 200 V2 is the value pick per usable Wh ($0.51) if 0.8 of a mild night is enough; the ALLPOWERS R4000 ($0.51 per usable Wh, 1.3 nights) is sold out today.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 200 V2 + 200 W solar kit",
+  "BLUETTI Elite 300 + 2x200 W solar kit",
+  "ALLPOWERS R4000",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Furnace running draw used for all derivations",
+   "value": "565 W PSC / 359 W ECM while burner on; 50% duty mild night, 77% at design low",
+   "source": "https://outageauthority.com/guides/gas-furnace-power-outage",
+   "source_title": "Can a Power Station Run Your Gas Furnace in an Outage? | Outage Authority",
+   "read": "2026-11-08",
+   "note": "Outage Authority quotes LBNL model and NRC field measurements: PSC blower 490 W + inducer 75 W = 565 W; ECM 284 W + 75 W = 359 W. Per hour of furnace: 565 × 0.5 = 282.5 Wh (PSC mild), 565 × 0.77 = 435 Wh (PSC design low), 359 × 0.5 = 179.5 Wh (ECM mild). One 8-hour night (night length per UDPOWER, https://udpwr.com/blogs/portable-power-station-knowledge/backup-generator-for-gas-furnace, read 2026-11-08): PSC mild 2,260 Wh, PSC design low 3,480 Wh, ECM mild 1,436 Wh. 85% usable assumed throughout."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price today",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-08",
+   "note": "Shopify storecheck; compare_at also $1,199. Page states 3,014.4 Wh, 2,400 W (4,800 W lifting), 10 ms UPS."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Cost per usable Wh",
+   "value": "$0.47 per usable Wh ($0.40 per rated Wh)",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-08",
+   "note": "3,014.4 × 0.85 = 2,562 usable Wh; $1,199 / 2,562 = $0.468."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Furnace hours and nights per charge",
+   "value": "PSC: 9.1 h at 50%, 5.9 h at 77%; ECM: 14.3 h at 50%, 9.3 h at 77%; 1.13 mild PSC nights, 0.74 design-low PSC nights, 1.8 mild ECM nights",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-08",
+   "note": "2,562 / 282.5 = 9.07 h; 2,562 / 435 = 5.9 h; 2,562 / 179.5 = 14.3 h; 2,562 / 276 = 9.3 h; nights = 2,562 / 2,260 = 1.13, 2,562 / 3,480 = 0.74, 2,562 / 1,436 = 1.78. Cost per mild PSC night of capacity: $1,199 / 1.13 = about $1,060."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price today",
+   "value": "$899.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "Shopify storecheck product endpoint; compare_at $899. Outage Authority read $1,399 on 2026-11-03, so its $0.67/Wh figure is stale."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cost per usable Wh and Wh per lb",
+   "value": "$0.51 per usable Wh ($0.43 per rated Wh); 38.8 Wh per lb",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "Page: 2,073.6 Wh, 53.4 lb (24.2 kg), 2,600 W AC, 1,000 W max solar input (12–60 V, 20 A), 1,800 W AC charge, 1.4 h full charge. 2,073.6 × 0.85 = 1,763 usable; $899 / 1,763 = $0.510; 2,073.6 / 53.4 = 38.8 Wh/lb."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Furnace hours and nights per charge",
+   "value": "PSC: 6.2 h at 50%, 4.1 h at 77%; ECM: 9.8 h at 50%, 6.4 h at 77%; 0.78 mild PSC nights, 1.23 mild ECM nights",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "1,763 / 282.5 = 6.24 h; 1,763 / 435 = 4.05 h; 1,763 / 179.5 = 9.8 h; 1,763 / 276 = 6.4 h; 1,763 / 2,260 = 0.78; 1,763 / 1,436 = 1.23. Cost per mild PSC night: $899 / 0.78 = about $1,150."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200 W solar kit",
+   "label": "Kit price and refill hours from its own panel",
+   "value": "$1,199.00; about 11.3 h of full-rated sun to replace one mild PSC night (7.2 h for an ECM night)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-08",
+   "note": "Storecheck search result, in stock. 2,260 Wh / 200 W = 11.3 h; 1,436 / 200 = 7.2 h. Panel rating is the best case; real November output is lower. Same price as the bare Elite 300, which holds 2,562 vs 1,763 usable Wh (45% more). The 2×200 W kit is $1,499 (https://www.bluettipower.com/products/elite-200-v2-2-sp200l): 2,260 / 400 = 5.7 h."
+  },
+  {
+   "product": "BLUETTI Elite 300 + 2x200 W solar kit",
+   "label": "Kit price and refill hours from its own panels",
+   "value": "$1,699.00; about 5.7 h of full-rated sun per mild PSC night, 3.6 h per ECM night",
+   "source": "https://www.bluettipower.com/products/elite-300-2-200w",
+   "source_title": "Elite 300+2*200W",
+   "read": "2026-11-08",
+   "note": "Page confirms $1,699 bundle and $1,199 bare; panel model not named, bundle title says 2 × 200 W. 2,260 / 400 = 5.65 h; 1,436 / 400 = 3.6 h. Elite 300 + 350 W is $1,649: 2,260 / 350 = 6.5 h."
+  },
+  {
+   "product": "ALLPOWERS R4000",
+   "label": "Price, availability, cost per usable Wh, furnace nights",
+   "value": "$1,499 (compare $3,299), sold out today; $0.51 per usable Wh; PSC 10.4 h at 50%, 6.8 h at 77%; 1.3 mild PSC nights",
+   "source": "https://iallpowers.com/products/allpowers-r4000-power-station",
+   "source_title": "ALLPOWERS R4000 Portable Power Station | 4000W 3456Wh",
+   "read": "2026-11-08",
+   "note": "Storecheck: available=false on the bare unit and every R4000 kit. 3,456 × 0.85 = 2,938 usable; $1,499 / 2,938 = $0.510; 2,938 / 282.5 = 10.4 h; 2,938 / 435 = 6.75 h; 2,938 / 2,260 = 1.3 nights. Page lists 2,000 W max solar input."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Cost per usable Wh and furnace nights (price from 2026-11-03)",
+   "value": "$0.80 per usable Wh at $2,799; PSC 12.3 h at 50%, 8.0 h at 77%; 1.54 mild PSC nights, 1.0 design-low PSC night",
+   "source": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "source_title": "EcoFlow DELTA Pro 3 Portable Power Station",
+   "read": "2026-11-03",
+   "note": "Store returned HTTP 429 twice today; price is the 2026-11-03 read already on our page, flagged as such. 4,096 × 0.85 = 3,482 usable; $2,799 / 3,482 = $0.804; 3,482 / 282.5 = 12.3 h; 3,482 / 435 = 8.0 h; 3,482 / 2,260 = 1.54; 3,482 / 3,480 = 1.0. The only candidate that covers a full design-low PSC night on one charge."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX F3800 Plus price today: storecheck search returned HTTP 404 on both anker.com and ankersolix.com.",
+  "EcoFlow DELTA Pro 3 price today: us.ecoflow.com returned HTTP 429 (Retry-After 60) on storecheck and on a direct fetch; used the 2026-11-03 read.",
+  "BLUETTI Elite 300 weight and max solar input: Tech Specs section is empty on the product page and the 2×200 W bundle page, so no Wh per lb or own-panel ceiling for it.",
+  "A furnace maker's nameplate blower amps (Goodman GMES80 spec sheet): the PDF fetched as binary and the sandbox blocked pdftotext and pypdf; the ecmdi listing and manualslib service manual carry no electrical table. Furnace draw therefore comes from Outage Authority's quoted LBNL/NRC figures, not from the LBNL report itself (that PDF also fetched as binary)."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 2.2551422
+ }
+}

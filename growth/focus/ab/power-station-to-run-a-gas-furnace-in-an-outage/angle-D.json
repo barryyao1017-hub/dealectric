@@ -1,0 +1,78 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a pass-through/UPS-mode power station can run the furnace fine while plugged into the wall and then drop it the instant it switches to inverter power, because the neutral-ground bond the furnace's flame-sense circuit relies on exists only while the station is on grid (EcoFlow DELTA 3 Plus owner case, The Cool Down, 2026-09-16).",
+ "standout": 2,
+ "standout_why": "Compared against Outage Authority (cited) and the Reliance TF manual (cited; PDF would not extract, so judged via Outage Authority's quotes). Outage Authority already has the mechanism in general: flame-sense current under 10 microamps, Goodman 'line polarity must be observed', ACHR 'reversed polarity means no flame sense', the bond lives at the main panel not the station, and Mike Sokol's claim that Jackery/Southwire/Bluetti leave neutral unbonded. What neither rival says is the timing trap: a station with AC pass-through/UPS mode inherits the house bond while plugged in, so a dry run with the wall cord connected proves nothing, and the failure appears only at switchover, which is exactly the outage moment. They also do not state that adding a bonding plug while the station is still plugged into the wall creates a second neutral-ground bond. The Watt Guide page could not be opened (certificate error).",
+ "decides": "Confirms the page's current line (listed furnace transfer switch, electrician decides bonding) but changes how the UPS column should be read: '10 ms', '15 ms' or '20 ms' switchover is not evidence a furnace will keep running, since the supply character changes at that moment. The page should tell the shopper to test with the station fully unplugged from the wall before an outage, and should not present the bonding plug as a fix for pass-through setups. It does not change which station wins on capacity.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "Anker SOLIX F3800",
+  "Jackery Explorer 1000 v2",
+  "Reliance Controls TF151"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Furnace failure at grid-to-inverter switchover",
+   "value": "Furnace ran on utility pass-through, stopped working once the unit switched to inverter power; owner's post: 'the neutral and ground are no longer bonded'",
+   "source": "https://www.thecooldown.com/green-tech/ecoflow-delta-3-plus-furnace-workaround-safety/",
+   "source_title": "EcoFlow Delta 3 Plus owner says common furnace workaround risks damage, gets a fail-safe redesign (Wyatt Fischer, The Cool Down, 2026-09-16)",
+   "read": "2026-11-08",
+   "note": "Owner report relayed by a named journalist; EcoFlow made no official statement in the article. Article also states a bonding plug used while the unit is still plugged into the wall creates a second bond (code violation) and may damage the station. The 'fail-safe redesign' in the headline is a commenter's relay concept, not an EcoFlow product change."
+  },
+  {
+   "product": "general",
+   "label": "Why a floating-neutral supply stops a furnace",
+   "value": "Flame-sense current 'usually less than 10 microamps'; Goodman: 'line polarity must be observed'; ACHR News: 'reversed polarity means no flame sense'; technicians check for 0.0 V between neutral and ground",
+   "source": "https://outageauthority.com/guides/gas-furnace-power-outage",
+   "source_title": "Can a Power Station Run Your Gas Furnace in an Outage? | Outage Authority",
+   "read": "2026-11-08",
+   "note": "Cited rival; these facts are already in ChatGPT's results and should not be presented as new. Outage Authority attributes the microamp figure to ACHR News and the polarity line to Goodman service instructions."
+  },
+  {
+   "product": "general",
+   "label": "Where the neutral-ground bond lives",
+   "value": "At the main panel, not at a portable station; Reliance Protran2 'is intended for a generator with a floating neutral' and does not switch the neutral",
+   "source": "https://outageauthority.com/guides/gas-furnace-power-outage",
+   "source_title": "Can a Power Station Run Your Gas Furnace in an Outage? | Outage Authority",
+   "read": "2026-11-08",
+   "note": "Cited rival quoting Reliance. Outage Authority also says Mike Sokol (2023) reports Jackery, Southwire and Bluetti leave neutral and ground unbonded, and that this is not model-specific and no manual it read confirms it."
+  },
+  {
+   "product": "Reliance Controls TF151 / TF201",
+   "label": "Installer requirement",
+   "value": "'should be connected by a licensed electrician or heating contractor'",
+   "source": "https://outageauthority.com/guides/gas-furnace-power-outage",
+   "source_title": "Can a Power Station Run Your Gas Furnace in an Outage? | Outage Authority",
+   "read": "2026-11-08",
+   "note": "Quoted via Outage Authority; the Reliance PDF itself (two copies) fetched as unextractable binary, so the exact manual wording was not read first-hand."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "EcoFlow US store check for a grounding/bonding accessory",
+   "value": "No grounding adapter listed; search returned EV X-Stream Adapter ($99), AC Generator Charging Adapter ($69), Smart Control Kit ($3,398)",
+   "source": "https://us.ecoflow.com/",
+   "source_title": "EcoFlow US store (storecheck search 'grounding adapter')",
+   "read": "2026-11-08",
+   "note": "Third-party EU listings show an EcoFlow ZMA003 C14 grounding adapter for DELTA Pro/Max, but it did not appear in the US store search."
+  }
+ ],
+ "unsourced": [
+  "A maker's own statement on whether the AC neutral is bonded to ground for BLUETTI AC200L / Elite 200 V2 / AC180: BLUETTI community moved to forum.bluettipower.com and returned 'Network unavailable' on both tries; the AC200L manual PDF on Shopify exceeded the 10 MB fetch limit.",
+  "EcoFlow DELTA Pro 3 manual grounding section: two copies (skanbatt.no 404, bsai.com.mx over 10 MB) could not be read; no EcoFlow support article on neutral-ground bonding surfaced in two searches.",
+  "Anker SOLIX F3800 grounding/bonding wording: the us.anker.com digital manual returned 429 then 404; the Lowe's 'F3800 and Home Power Panel Common Issues & Troubleshooting' PDF fetched as unextractable binary. A forum snippet claims the 240 V outlet floats until EV mode bonds it, unverified.",
+  "Jackery Explorer 1000 v2 neutral-ground statement: no official Jackery support page found, only forum reports of a floating output.",
+  "Furnace-maker fault-code wording tying 'not grounded' to lockout: search snippets show Payne ('status light flashes rapidly and furnace does not operate if polarity is incorrect or if the furnace is not grounded') and Trane ('115 VOLT AC POWER REVERSED OR IMPROPER GROUND'), but the Payne page failed on a certificate error and the Trane installer PDF fetched as unextractable binary, so neither was read.",
+  "The Watt Guide rival page (thewattguide.com) could not be opened: self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 2.3940843500000004
+ }
+}

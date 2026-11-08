@@ -1,0 +1,130 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured (not rated) usable AC output or a measured idle draw for any candidate station: StorageReview's Kill-A-Watt reading of 2.67 kWh out of the 3,014 Wh BLUETTI Elite 300 with an 8 ms switchover timed on a Quarch analyzer, The Solar Lab's 9.5 W idle on the Elite 200 V2 versus 15 W on the Elite 300, and Notebookcheck's 2,905 Wh (75 % of rating) from the Anker SOLIX F3800.",
+ "standout": 2,
+ "standout_why": "Compared against Outage Authority (cited), the Reliance TF manual (cited, PDF unreadable via fetch), and PreparedStates. Outage Authority is the strongest rival: it carries NRC Canada's measured blower draw (490 W PSC / 284 W ECM) and LBNL model values, but every station figure is a spec with an assumed 85 % usable fraction (e.g. 'Elite 200 v2 (1,763)', 'Delta Pro 3 (3,482)'), and it gives no idle draw or switchover time. PreparedStates uses DTE Energy rule-of-thumb furnace watts and a hypothetical 1,000 Wh station with no product measurements. Neither names a lab that measured a power station. The furnace-side draw itself is not new (NRC via Outage Authority), so this angle is new and useful for the station column rather than pick-deciding on its own.",
+ "decides": "Confirms the BLUETTI Elite 300 and Elite 200 V2 as the efficient picks for a cycling furnace load: measured 89 % (Elite 300) and 92 % (Elite 200 V2) of rated capacity delivered, with the lowest measured idle draws found (15 W and 9.5 W), which matters because a furnace at 40 % duty leaves the inverter idling 14 h a day (15 W × 24 h ≈ 360 Wh). It lowers the Anker SOLIX F3800 runtime below the page's 85 % assumption (Notebookcheck got 75 %: 2,905 Wh ≈ 12 h of PSC furnace at 240 W average, not 13.6 h), and raises the DELTA Pro 3 (Digital Trends averaged 3.7 kWh, ≈ 90 %, ≈ 15 h). The AC180's measured 950–1,030 Wh gives about 4 h of PSC furnace, confirming it as the marginal pick.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "BLUETTI AC200L",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 / F3800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured energy out, full to empty (StorageReview, Dylan Bryan)",
+   "value": "2.67 kWh out; 3.49 kWh in from wall",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "Bluetti Elite 300 Review: 3014Wh, 2400W, and an 8ms UPS Switchover in a 58-Pound Box",
+   "read": "2026-11-08",
+   "note": "Kill-A-Watt on the output side, load not specified; 2,670 / 3,014 Wh rated = 89 % delivered; 2.67 / 3.49 = 76 % round trip (my arithmetic). PSC furnace at 600 W × 40 % = 240 W plus 15 W idle: 2,670 / 255 ≈ 10.5 h. Article dated 2026-08-27."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured UPS switchover (StorageReview, Quarch power analyzer)",
+   "value": "8 ms line-to-battery; 8.25 ms battery-to-line",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "Bluetti Elite 300 Review: 3014Wh, 2400W, and an 8ms UPS Switchover in a 58-Pound Box",
+   "read": "2026-11-08",
+   "note": "Workstation on the AC output, line power pulled then restored; BLUETTI's spec is ≤10 ms. Relevant only if the furnace is fed through the station's pass-through rather than a transfer switch."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured idle draw, surge and efficiency (The Solar Lab)",
+   "value": "about 15 W idle, no load; 3,900 W surge reached; about 86 % efficiency; 2 h 44 min wall charge 0–100 %",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review",
+   "read": "2026-11-08",
+   "note": "No byline or date on the page (copyright 2026); surge load type and duration not stated. 15 W idle × 24 h = 360 Wh/day lost while the furnace is off-cycle."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured energy delivered and wall energy to recharge (StorageReview, Dylan Dougherty)",
+   "value": "1.91 kWh delivered; 2.44 kWh from wall",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-08",
+   "note": "Article dated 2025-04-25; discharge load not stated; 1,910 / 2,073.6 = 92 % of rating. UPS test ran 986 W–1.1 kW of servers/NAS through repeated unplugging with no reboots, but no switchover time was instrumented (15 ms is BLUETTI's claim). PSC furnace: 1,910 / (240 + 9.5) ≈ 7.7 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured idle draw, efficiency and surge (The Solar Lab)",
+   "value": "9.5 W idle; 94 % efficiency; 3,000 W surge held over 2 minutes",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review",
+   "source_title": "Bluetti Elite 200 V2 review",
+   "read": "2026-11-08",
+   "note": "No byline or date; load type for the surge not stated; The Solar Lab calls 94 % the highest efficiency it has seen in a power station. Lowest idle draw among the candidates measured here."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Overload behaviour (CleanTechnica, Zach S.)",
+   "value": "shut itself off at 3,300 W against a 2,600 W rating; required a reset",
+   "source": "https://cleantechnica.com/2025/07/07/bluetti-elite-200-v2-test-review/",
+   "source_title": "Bluetti Elite 200 V2 Test & Review",
+   "read": "2026-11-08",
+   "note": "Article dated 2025-07-07. Also metered a 953 W portable-AC compressor (7.2 A at 119.7 V) starting and running 45 min from 100 % to 61 %, which is a motor load heavier than a PSC blower; no furnace test."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable capacity (StorageReview, Kevin OBrien)",
+   "value": "1,030 Wh at a 350 W load; 1,360 Wh from wall for 0–100 %",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "Bluetti AC180 Portable Power Station Review",
+   "read": "2026-11-08",
+   "note": "Article dated 2023-05-26; AC-inverter losses included; 1,030 / 1,152 = 89 %. No surge or idle measurement. PSC furnace: 1,030 / 240 ≈ 4.3 h before idle losses."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable capacity and efficiency (OutdoorGearLab, Kenji Mowrey)",
+   "value": "950 Wh at an 80 % load; 82 % efficiency; 1.3 h average 0–100 % charge",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180",
+   "source_title": "Bluetti AC180 Review | Tested & Rated",
+   "read": "2026-11-08",
+   "note": "Article dated 2026-01-13; light-bar test jig run to shutdown; 18 % below the 1,152 Wh rating. OutdoorGearLab says it would hesitate to recommend it as a UPS but did not time the 20 ms claim."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured discharge capacity (Digital Trends, Simon Sage)",
+   "value": "3.7 kWh averaged across multiple cycles; about 5 kWh from wall to charge from 0 %",
+   "source": "https://digitaltrends.com/outdoors/ecoflow-delta-pro-3-review",
+   "source_title": "EcoFlow Delta Pro 3 review: This brute of a power station will power almost anything — even A/C",
+   "read": "2026-11-08",
+   "note": "Article dated 2024-06-25; load not stated; 3,700 / 4,096 = 90 %. Desktop kept running when wall power was cut but the <10 ms switchover is EcoFlow's spec, not timed. PSC furnace: 3,700 / 240 ≈ 15 h before idle losses."
+  },
+  {
+   "product": "Anker SOLIX F3800 (original, not Plus)",
+   "label": "Measured usable capacity (Notebookcheck, Marcus Schwarten)",
+   "value": "2,905 Wh at about 260 W constant draw over about 11 h to shutdown at 1 %; 4,669 Wh from wall for 1–100 %; 42 dB at 1 m while charging at 3,000 W",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review: The monster power station can even charge electric cars via solar power",
+   "read": "2026-11-08",
+   "note": "Published 2024-08-27, page updated 2026-10-05; 2,905 / 3,840 = 75 %, which Notebookcheck notes is below the 85–90 % smaller stations reach; round trip 62 %. Dealectric lists the F3800 Plus, which shares the 3,840 Wh rating but is a different unit; no Plus-specific measurement opened. PSC furnace: 2,905 / 240 ≈ 12 h."
+  },
+  {
+   "product": "general",
+   "label": "Rival baseline: measured furnace blower draw already on Outage Authority (NRC Canada field study)",
+   "value": "490 W PSC blower, 284 W ECM blower at heating speed; ECM 58 % of PSC power at 92 % of airflow",
+   "source": "https://outageauthority.com/guides/gas-furnace-power-outage",
+   "source_title": "Can a Power Station Run Your Gas Furnace in an Outage? | Outage Authority",
+   "read": "2026-11-08",
+   "note": "Included so the page does not present furnace draw as new; the rival's station figures are rated capacity × 85 %, not measurements."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC200L measured usable Wh and measured idle draw: Notebookcheck's hands-on (Polly Allcock, 2024-08-05) gives only Bluetti's 12 W self-consumption figure and a 45 min at 2,400 W estimate it says 'roughly tallies'; nextpit's review now redirects to inside-digital.de.",
+  "EcoFlow DELTA Pro 3 measured idle draw: The Solar Lab review URL returned 404; Digital Trends did not report it.",
+  "Anker SOLIX F3800 Plus-specific measured capacity: a PCMag Middle East syndication claims 4,248 Wh usable, above the 3,840 Wh rating, not opened or trusted.",
+  "Measured UPS switchover for the Elite 200 V2, AC180, DELTA Pro 3 and F3800: all reviewers opened quote the maker's figure.",
+  "ALLPOWERS R4000 and S2000 Pro, Jackery Explorer 1000 v2, Anker SOLIX C1000 Gen 2: no measurements searched within the call budget.",
+  "Named-lab measurement of a gas-furnace PSC blower inrush in watts or amps: only HVAC blogs with ranges (6–30 A) surfaced, no instrumented figure."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.2552929000000006
+ }
+}
