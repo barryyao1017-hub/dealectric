@@ -56,6 +56,7 @@ pre{background:var(--code);border:1px solid var(--line);border-radius:8px;paddin
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px}footer .wrap{padding:22px 16px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
 footer a{color:var(--muted)}
 .small{font-size:14px;color:var(--muted)}
+.searched{font-size:13px;color:var(--muted);margin:-4px 0 14px}.searched span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:3px 4px 0 0}
 dl dt{font-weight:600;margin-top:12px}dl dd{margin:2px 0 0 0;color:var(--muted)}
 img{max-width:100%;height:auto}figure{margin:18px 0}figure img{border:1px solid var(--line);border-radius:10px;display:block}
 .card img{border-radius:6px;margin-bottom:10px;display:block}
@@ -1280,7 +1281,95 @@ def video_block(c):
     return block, ld
 
 
+# Citation A/B test (DLC-208, Barry 2026-11-08; plan: growth/evals/runs/2026-11-07-liveplain/page/citation-ab-plan.html).
+# AB_PUSH on: no page renders an AI-addressed block (product-result record or AI note; DLC-206), and every gap page
+# shows the date it was last changed next to its H1. Flipped in the one push that ships group A and group B together.
+AB_PUSH = False
+METHOD_V2 = "ab-2026-11"
+
+
+def updated_line(c):
+    """'Updated <date>' under the H1: the last day the page's content changed (`updated`), else its publish date."""
+    return f'<p class="small">Updated {c.get("updated") or c["published"]}</p>\n'
+
+
+def method_line(c):
+    """One honest line on how the table was made (research-angles §6 H). No claim of hands-on testing."""
+    ours = any(r.get("slug") for r in c["rows"])
+    tail = (f" Rows with a Buy link are products {SITE['brand']} lists: the links are affiliate links, and their codes are "
+            f"re-tested in the brand's own cart every day (last check {latest_code_date()})." if ours else "")
+    return (f'<p class="small">How this table was made: each figure comes from the maker\'s own US product page or manual, '
+            f'or from the reviewer named next to it, checked {c["checked"]}. {SITE["brand"]} does not test units itself.{tail}</p>\n')
+
+
+def compare_row_v2(c, r):
+    """A v2 row: our products carry the /go/ link, the price after the code and the cart-test date in one Buy cell;
+    other brands carry the maker's dated price and no link but the maker's own page."""
+    cells = "".join(f"<td>{r['cells'].get(k, '')}</td>" for k, _ in c["columns"])
+    if r.get("slug"):
+        p = BY_SLUG[r["slug"]]
+        name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
+        if is_amazon(p):
+            price, buy = AMAZON_PRICE, f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">Buy on Amazon</a>'
+        else:
+            cd, sv, after, date = best_offer(p)
+            price = money(p["price"]) + stock_note(p) + f' <span class="small">({p["brand"]}, {verified_on(p)})</span>'
+            deal = ""
+            if cd:
+                t = borrowed_test(p, cd)
+                tested = (f"passed in {p['brand']}'s cart {elsewhere(p, t)}" if t else f"cart-tested {date}")
+                deal = (f'<br><strong>{money(after)}</strong> with code <strong>{html.escape(cd["code"])}</strong> '
+                        f'({"applied by the link; " if applied_by_link(p, cd) else ""}{html.escape(tested)})')
+            buy = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{deal}'
+    else:
+        name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>'
+                if r.get("url") else html.escape(r["brand"] + " " + r["model"]))
+        price, buy = r["cells"].get("price") or "", f'<span class="small">maker\'s store</span>' if r.get("url") else ""
+    if r.get("note"):
+        name += f'<br><span class="small">{r["note"]}</span>'
+    return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
+
+
+def compare_page_v2(c):
+    """Research-method page (DLC-208 group A and new gap pages from 2026-11-08): answer line, method line, the full
+    candidate table with buy links inside it, then what the differences mean, the angle section and sources.
+    No 'Where to buy' list above the table, no AI-addressed block, no 'Not confirmed' cells (the recipe drops them)."""
+    video_html, video_ld = video_block(c)
+    ours = [r for r in c["rows"] if r.get("slug")]
+    tags = "".join(f"<span>{html.escape(t)}</span>" for t in c.get("searched_as") or [])
+    heads = "".join(f"<th>{h}</th>" for _, h in c["columns"])
+    rows = "".join(compare_row_v2(c, r) for r in c["rows"])
+    body = f"""
+<!-- method {METHOD_V2}; angle {c.get('angle', '')} -->
+<h1>{c['h1']}</h1>
+<p class="small">Updated {c.get('updated') or c['published']}</p>
+{f'<p class="searched">Searched as: {tags}</p>' if tags else ''}
+{compare_fill(c['answer'])}
+{method_line(c)}<div class="scroll"><table>
+<tr><th>Model</th>{heads}<th>Price</th><th>Buy</th></tr>
+{rows}
+</table></div>
+{video_html}{compare_fill(c['after'])}
+<h2>Sources</h2>
+<ul>
+{"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}
+</ul>
+<p class="small">Published {c['published']}; updated {c.get('updated') or c['published']}. The buy links are affiliate links; see the <a href="/disclosure/">disclosure</a>. Corrections welcome at <a href="mailto:{SITE['email']}">{SITE['email']}</a> or <a href="/feedback">/feedback</a>.</p>
+"""
+    ld = {"@context": "https://schema.org", "@type": "Article", "headline": c["h1"], "description": c["desc"],
+          "author": {"@type": "Organization", "name": SITE["brand"]}, "publisher": {"@type": "Organization", "name": SITE["brand"]},
+          "datePublished": c["published"], "dateModified": c.get("updated") or c["published"], "url": SITE["url"] + compare_path(c),
+          "about": [{"@type": "Product", "name": full_name(BY_SLUG[r["slug"]]), "url": SITE["url"] + f"/products/{r['slug']}/"} for r in ours]}
+    if c.get("searched_as"):
+        ld["keywords"] = ", ".join(c["searched_as"])
+    if video_ld:
+        ld["video"] = video_ld
+    return (c["title"], c["desc"], body, ld)
+
+
 def compare_page(c):
+    if c.get("method") == METHOD_V2:
+        return compare_page_v2(c)
     video_html, video_ld = video_block(c)
     ours = [r for r in c["rows"] if r.get("slug")]
     others = [r for r in c["rows"] if not r.get("slug")]
@@ -1292,18 +1381,21 @@ def compare_page(c):
                    f' Rows showing "{AMAZON_PRICE}" are sold on Amazon.com: their buy link is an Amazon Associates link that opens the Amazon listing, '
                    f'and the price and stock are on that page, because Amazon allows a site to quote its prices only from Amazon\'s own feed. '
                    f'Their specs were read from the makers\' own US pages. As an Amazon Associate, {SITE["brand"]} earns from qualifying purchases.')
+    if AB_PUSH:   # DLC-206/208: neither AI block renders; the last-changed date sits under the H1
+        c = {k: v for k, v in c.items() if k not in ("ai_note", "product_result")}
+    upd = updated_line(c) if AB_PUSH else ""
     if c.get("ai_note"):   # AI-note layout (x19, 2026-11-04): the note to the assistant first, then the page for people
         top = f"""<h1>{c['h1']}</h1>
 {ai_note_html(c)}{compare_fill(c['intro'])}
 {page_dates(c)}"""
     elif c.get("lead_first"):   # fast-loop pages (growth/focus/fastloop-briefs/COPY-RULES.md): the conversion block opens the page
         top = f"""<h1>{c['h1']}</h1>
-{product_result_line(c)}{compare_fill(c['intro'])}
+{upd}{product_result_line(c)}{compare_fill(c['intro'])}
 {compare_where_to_buy(ours, c, filler=False)}
 {page_dates(c)}"""
     else:
         top = f"""<h1>{c['h1']}</h1>
-{product_result_line(c)}{page_dates(c)}
+{upd}{product_result_line(c)}{page_dates(c)}
 {compare_where_to_buy(ours, c)}
 {compare_fill(c['intro'])}"""
     body = f"""
@@ -1326,7 +1418,7 @@ or <a href="/feedback">/feedback</a>.</p>
 """
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": c["h1"], "description": c["desc"],
           "author": {"@type": "Organization", "name": SITE["brand"]}, "publisher": {"@type": "Organization", "name": SITE["brand"]},
-          "datePublished": c["published"], "dateModified": max(price_days(c), default=c["checked"]), "url": SITE["url"] + compare_path(c),
+          "datePublished": c["published"], "dateModified": c.get("updated") or max(price_days(c), default=c["checked"]), "url": SITE["url"] + compare_path(c),
           "about": [{"@type": "Product", "name": full_name(BY_SLUG[r["slug"]]), "url": SITE["url"] + f"/products/{r['slug']}/"} for r in ours]}
     if video_ld:
         ld["video"] = video_ld

@@ -1,0 +1,146 @@
+<title>Citation A/B Test Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--bg:#f7f6f2;--fg:#1d1c1a;--muted:#5d5a52;--line:#d9d5cb;--card:#ffffff;--accent:#0b6e4f;--accent-soft:#e3f1ea;--warn:#a1400f;--warn-soft:#fbe9dd;--a:#e3f1ea;--b:#ece9f6;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--fg:#ebe8e1;--muted:#a39f95;--line:#34363a;--card:#1f2124;--accent:#5fc49a;--accent-soft:#17352a;--warn:#f0a070;--warn-soft:#3a2416;--a:#17352a;--b:#2a2640;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17181a;--fg:#ebe8e1;--muted:#a39f95;--line:#34363a;--card:#1f2124;--accent:#5fc49a;--accent-soft:#17352a;--warn:#f0a070;--warn-soft:#3a2416;--a:#17352a;--b:#2a2640;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Iowan Old Style",serif;margin:0}
+main{max-width:900px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:2rem;line-height:1.15;margin:0 0 .35em;text-wrap:balance}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;text-wrap:balance;border-top:1px solid var(--line);padding-top:1.1em}
+h3{font-size:1.05rem;margin:1.4em 0 .4em}
+p{margin:.6em 0;max-width:68ch}.lede{font-size:1.08rem;color:var(--muted);max-width:70ch}
+.kicker{font:600 .75rem/1 -apple-system,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.6em}
+.verdict{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px;margin:1.4em 0;border-radius:6px}.verdict p{margin:.4em 0}
+table{border-collapse:collapse;width:100%;font:14px/1.4 -apple-system,system-ui,sans-serif;margin:.8em 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+ul,ol{padding-left:1.25em;max-width:70ch}li{margin:.35em 0}
+code{font:.85em var(--mono);background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+pre{font:.82em/1.45 var(--mono);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;overflow-x:auto;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1em 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;min-width:0}.card h3{margin:.2em 0 .4em;font-size:1rem}.card p,.card li{font-size:.95rem}
+.A td:first-child{border-left:4px solid var(--accent)}.B td:first-child{border-left:4px solid #7c6fb0}
+.small{font-size:.9rem;color:var(--muted)}
+.foot{color:var(--muted);font-size:.85rem;margin-top:3em;border-top:1px solid var(--line);padding-top:1em}
+details{margin:.6em 0}summary{cursor:pointer;font-weight:600}
+</style>
+<main>
+<div class="kicker">Dealectric · proposed Nov 8, 2026 · follows "Seen but not cited: what the winners had"</div>
+<h1>Citation A/B test: the research method against the current pages</h1>
+<p class="lede">Eighty-eight gap pages ChatGPT already retrieves for their own query, split in two. Group A is rebuilt with the research method below; group B stays as it is. Once OAI-SearchBot has re-fetched both, the plain-prompt scan runs again and the "seen but not cited" analysis is redone. What follows is how the test is set up, the method itself, how it is measured, and what it costs.</p>
+
+<div class="verdict">
+<p><strong>One decision baked in.</strong> The AI-addressed block comes off every page in both groups, in the same push. It is the largest known effect (rank-1 pages: 17% cited with it, 78% without) and it is going anyway (DLC-206). Leaving it on the control would make the test measure the block, not the method. Stripping it everywhere means the test measures only what the research method adds on top. Both groups are then re-fetched on the same days, so freshness is equal too.</p>
+<p><strong>What stays fixed in both groups:</strong> URL, title, H1 and the query words in the first sentence. Retrieval is already proven for these pages and this test is about the citation gate, not the retrieval gate.</p>
+<p><strong>The question the test answers:</strong> on pages the model already reads, does a page built on one fully researched fact get cited more often than the page we have today, by at least 20 points?</p>
+</div>
+
+<h2>1. Population and split</h2>
+<p>The 88 pages whose own page appeared in ChatGPT's results on Nov 7 (24 cited, 64 not). Pages the model never retrieved are excluded: their citation rate can't be measured. Stratified by category (NAS and home server, power and charging, other), by Nov 7 outcome (cited or not) and by rank bucket (1, 2–6, 7+), then assigned at random within each stratum, seed 20261108, stored in <code>page/ab-split.json</code>.</p>
+<div class="wrap"><table>
+<tr><th>Group</th><th class="n">Pages</th><th class="n">Cited on Nov 7</th><th class="n">Ranked #1</th><th class="n">NAS</th><th class="n">Power</th><th class="n">Other</th></tr>
+<tr class="A"><td><strong>A · rebuilt</strong></td><td class="n">44</td><td class="n">10</td><td class="n">19</td><td class="n">16</td><td class="n">11</td><td class="n">17</td></tr>
+<tr class="B"><td><strong>B · control</strong></td><td class="n">44</td><td class="n">14</td><td class="n">19</td><td class="n">15</td><td class="n">15</td><td class="n">14</td></tr>
+</table></div>
+<p class="small">The prior-cited count is 10 vs 14; the analysis uses each page's Nov 7 outcome as a covariate, so the imbalance costs a little power, not validity. Two of the three pages named in DLC-207 (microwave, Jellyfin) landed in the control; DLC-207 is folded into this test rather than run beside it.</p>
+<details><summary>Group A, the 44 pages to rebuild</summary>
+<ul class="small">
+<li>NAS: /best-nas-for-4k-video-editing-thunderbolt-10gbe · /best-nas-under-500-for-docker-immich-home-assistant · /thunderbolt-5-ssd-enclosure-worth-it-macbook-pro-m4 · /best-nas-under-500-for-plex-4k-transcoding · /best-nas-for-veeam-macrium-windows-image-backups · /best-nas-for-unraid-truenas · /nas-that-runs-home-assistant-os-vm-zigbee · /can-a-nas-host-a-minecraft-server · /power-station-as-a-ups-for-a-nas-usb-shutdown · /best-40gbps-nvme-enclosure-no-throttling · /best-nas-for-pihole-adguard-wireguard-vpn · /best-nas-for-proxmox-virtual-machines-home-lab · /best-nas-for-photographers-10tb-raw-lightroom · /kvm-switch-for-a-mac-and-pc-4k-144hz · /best-nas-for-music-streaming-navidrome-plexamp · /best-nas-with-thunderbolt-4-direct-to-mac</li>
+<li>Power and charging: /best-65w-travel-charger-interchangeable-plugs · /best-solar-generator-kit-under-1000-for-home-backup · /best-smartwatch-for-iphone-two-week-battery · /1000wh-power-station-with-400w-solar-panel-bundle · /best-usb-c-charger-with-block-and-cable · /expandable-1kwh-lifepo4-power-station-add-a-battery-later · /power-station-to-run-a-pellet-smoker-overnight · /power-station-to-keep-reptile-heat-on-in-a-power-outage · /power-station-for-starlink-mini-and-macbook-off-grid · /best-lifepo4-battery-charger · /ups-for-a-bambu-lab-3d-printer-power-outage</li>
+<li>Other: /best-usb-switch-two-computers-keyboard-mouse-ssd · /best-triple-screen-laptop-extender-16-inch-1920x1200 · /best-20000mah-power-bank-under-50 · /best-swimming-headphones-with-mp3-storage-under-100 · /best-quiet-gaming-controller · /best-open-ear-headphones-with-mic · /best-fast-charging-power-bank · /best-flashlight-with-laser-pointer · /best-iphone-case-with-wallet · /best-watch-for-hyrox-under-150 · /best-golf-watch-under-300-with-fitness-tracking · /best-3d-scanner-for-reverse-engineering · /soundcore-aeroclip-2-vs-c50i · /best-3d-scanner-for-small-objects · /best-wireless-gaming-headset-under-50 · /best-travel-router-with-vpn-for-hotels · /best-standalone-hdmi-recorder</li>
+</ul></details>
+<details><summary>Group B, the 44 control pages (block stripped, nothing else)</summary>
+<ul class="small">
+<li>NAS: /best-nas-under-400-for-jellyfin · /best-all-in-one-home-server-under-800-docker-plex-vms · /best-4-bay-nas-10gbe-under-700 · /best-nas-for-nextcloud-self-hosted-cloud · /best-8-bay-nas-under-1500-home-media · /best-nas-under-400-for-a-beginner-home-lab · /best-6-bay-nas-10gbe-intel-transcoding · /best-nas-under-1000-for-small-office-10-users · /best-nas-to-replace-google-photos-family-library · /best-alternative-to-synology-4-bay-nas-home · /best-nas-for-audiobookshelf-calibre-web · /best-2-bay-nas-under-300-home · /best-nas-for-frigate-security-cameras · /best-nas-for-paperless-ngx-document-archive · /best-nas-to-record-reolink-cameras-24-7</li>
+<li>Power and charging: /best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300 · /power-station-to-run-a-gas-furnace-in-an-outage · /best-48v-lithium-golf-cart-battery-kit-with-charger-club-car · /lightest-1000wh-lifepo4-power-station-for-car-camping · /quietest-1000wh-power-station-while-charging · /1000wh-power-station-that-charges-in-under-an-hour · /1000wh-power-station-that-can-run-a-microwave · /best-2000wh-solar-generator-kit-with-panels · /best-solar-generator-kit-under-500 · /usb-c-charger-two-laptops-100w · /qi2-car-charger-that-keeps-iphone-cool · /best-4patriots-solar-generator-alternative · /best-2kwh-power-station-for-rv · /solar-generator-with-panels-included · /power-station-for-a-home-oxygen-concentrator-power-outage</li>
+<li>Other: /best-65w-gan-universal-travel-adapter-under-50 · /cheapest-10-inch-double-din-android-head-unit-wireless-carplay · /best-triple-screen-laptop-extender-for-macbook-air · /best-power-bank-with-ac-outlet-for-laptop · /best-portable-projector-with-screen · /ugreen-nexode-pro-vs-anker-prime-160w · /best-portable-monitor-above-laptop-screen · /best-pet-camera-with-treat-dispenser-under-100 · /best-noise-cancelling-headphones-with-mic · /best-electric-screwdriver-for-electronics · /best-ldac-earbuds-under-100 · /best-cassette-deck · /best-power-bank-for-steam-deck · /best-4g-lte-security-camera-no-wifi</li>
+</ul></details>
+
+<h2>2. The research method (group A)</h2>
+<p>One page at a time, three roles: a researcher, a verifier, a builder. The researcher is a Fable subagent with web search; it never touches the browser. Every page ends with a structured record, not prose, and the page is generated from the record.</p>
+
+<h3>Step 1 · Read what the model already did</h3>
+<p>From the Nov 7 chat for this page: the words ChatGPT searched with, the 12 results it got, the products it recommended and the reason it gave for each, and which result each citation backed. This is the candidate set and the competitor set, free. The researcher reads the two or three cited rival pages in full.</p>
+
+<h3>Step 2 · Name the gap in one sentence</h3>
+<p>"No result in the Nov 7 set states X." X must be one of the eight angles, chosen because the model's own answer needed it and had to hedge or go without:</p>
+<div class="grid">
+<div class="card"><h3>A · Normalise</h3><p>Specs makers state differently: cycle life to 80% vs 70%, surge vs continuous, cooking vs input watts, transcoding on stock firmware vs with a script.</p></div>
+<div class="card"><h3>B · Derive</h3><p>The number the question really asks: Wh per lb, reheats per charge, hours at a duty cycle, refill hours from the kit's own panel. Arithmetic shown in one line.</p></div>
+<div class="card"><h3>C · Compatibility</h3><p>Exact pairings: pack, cable, firmware, generation exclusions. One source and date per cell.</p></div>
+<div class="card"><h3>D · Mechanism</h3><p>The one paragraph of why: flame rectification, PCIe x1 lanes, driverless Quick Sync, USB passthrough limits, with the maker's or standard's words.</p></div>
+<div class="card"><h3>E · Named measurements</h3><p>Notebookcheck's idle watts, RTINGS' mic score, the two sites that publish fan dB, collected side by side with each name and number.</p></div>
+<div class="card"><h3>F · Whole category</h3><p>Every model the model might pick, priced, with the one reason each loses.</p></div>
+<div class="card"><h3>G · Price of record</h3><p>Every product in the table priced from the maker's store with a date; ours with the after-code price; kit vs parts where kits exist.</p></div>
+<div class="card"><h3>H · Method line</h3><p>Always present. "Figures from each maker's US product page or manual, checked &lt;date&gt;. We don't test units. We earn a commission on links marked Buy; codes are re-tested in the brand's cart daily."</p></div>
+</div>
+<p>One angle done completely, plus F, G and H on every page. A how-to page (furnace, reptile heat, oxygen concentrator) takes D as its angle; a compatibility page takes C; a "best X" page usually takes A or E.</p>
+
+<h3>Step 3 · Research, cell by cell</h3>
+<ul>
+<li><strong>Candidate set</strong> = the model's picks on Nov 7 + the catalog cards it showed + our products + anything the cited rivals carry that fits the constraint. Usually five to eight products.</li>
+<li><strong>Every cell has a source URL and a date.</strong> First the maker's US product page, then the manual or spec PDF, then a named reviewer with a number. A cell that can't be sourced after those three is not written as "Not confirmed": the column or the row is dropped, and the sources list says what was looked for and not found.</li>
+<li><strong>Every product is priced</strong> from the maker's store (or the retailer the model showed) with the date. Our products carry the after-code price and the cart-test date from the sweep.</li>
+<li><strong>Named judgement only.</strong> "Notebookcheck measured 14.8 W idle" is allowed; "reviewers say it's quiet" is not.</li>
+<li><strong>Output</strong>: a JSON record (<code>growth/focus/ab/&lt;slug&gt;.json</code>): gap sentence, angle, candidate rows with cells and sources, the derived figures with their arithmetic, the mechanism paragraph with its source, the method line.</li>
+</ul>
+
+<h3>Step 4 · Verify</h3>
+<p>A second subagent opens every source URL in the record and checks the cell against it. A cell that fails is removed, not corrected from memory. The verifier's log is kept with the record. This is the trust layer: it is what makes "checked &lt;date&gt;" true.</p>
+
+<h3>Step 5 · Build</h3>
+<p>The page is generated from the record by a new <code>gaps.py</code> record shape (<code>"method": "ab-2026-11"</code>), which turns off the AI block and the "Where to buy" list and renders:</p>
+<ol>
+<li><strong>H1</strong>, unchanged.</li>
+<li><strong>Answer line</strong> (≤300 characters): the answer to the question's mechanism, in the query's words, naming the pick and the derived figure. No link in this line.</li>
+<li><strong>Method line</strong> (≤220 characters), angle H.</li>
+<li><strong>The table</strong>, full candidate set, every cell filled, with a Buy column: our products get the <code>/go/</code> link, the after-code price and the cart-test date; others get the maker's price and date and no link.</li>
+<li><strong>What the differences mean</strong>: the derived figures with the arithmetic, and a "which fits which use" table.</li>
+<li><strong>The angle section</strong>: the mechanism, compatibility detail or collected measurements.</li>
+<li><strong>Sources</strong>: one line per figure.</li>
+</ol>
+<p>Gate before push: <code>fastloop.py check --ranks 1,3,6</code>. At rank 6 (~1,300 characters) the model must receive the answer line, the method line and the first rows of the table; the table therefore starts within 700 characters of the H1. The rules that stay: no copy addressed to an assistant, never "guaranteed", "tested daily in &lt;brand&gt;'s cart, last passed &lt;date&gt;".</p>
+
+<h3>What group B gets</h3>
+<p>The AI block removed, by the same build flag, and nothing else. Their "Where to buy" lists, tables and "Not confirmed" cells stay as they are. Their rebuild date equals group A's, since both ship in one push.</p>
+
+<h2>3. Measurement</h2>
+<div class="wrap"><table>
+<tr><th>What</th><th>How</th></tr>
+<tr><td><strong>Primary</strong>: cited when retrieved</td><td>Our page in the results and linked in the answer (in-text cite or source pill), per chat. Same protocol as Nov 7: the page's target query typed as is into a fresh temporary chat, signed in, no instructions, gpt-6 answers only (downgraded chats re-run). <strong>Two chats per page</strong>, groups interleaved, same days. 176 chats.</td></tr>
+<tr><td>Still retrieved</td><td>Page present in the results at all, and its rank. Guards against the rebuild changing retrieval; titles are fixed, so this should not move.</td></tr>
+<tr><td>Which text got cited</td><td>The sentence each Dealectric citation backs, classified by angle. This feeds the method: which of A–H earns citations.</td></tr>
+<tr><td>Our pick carried · hedge · hand-over</td><td>The answer names our product; the answer carries "affiliate-reported" or similar next to our figure; a <code>/go/</code> link or our code appears in the answer.</td></tr>
+<tr><td>Outside traffic</td><td>D1 landings and <code>/go/</code> clicks tagged chatgpt.com per page, four weeks after the push, A vs B. Slow and noisy; reported, not decisive.</td></tr>
+</table></div>
+<p><strong>Pre-registered call.</strong> Success is group A's cited-when-retrieved rate at least 20 points above group B's, over 2 chats × 44 pages per group, with a 90% interval that excludes zero. Two chats on the same page agree on citation 72% of the time, so a single reading has a standard error of roughly 7 points per group; 20 points is about two standard errors on the difference. Per-page outcome is scored as 0, ½ or 1 and compared within strata.</p>
+<p><strong>Two readings.</strong> Reading 1 once every page in both groups has a fresh stored copy (the daily <code>storedcopy.py</code> check on OAI-SearchBot fetches; pages not yet re-fetched are held out of the reading, not scored on the old copy). Reading 2 one week later, same protocol, to check the result holds. The call is made on reading 2.</p>
+
+<h2>4. Timeline and cost</h2>
+<div class="wrap"><table>
+<tr><th>Days</th><th>Work</th><th>Who</th></tr>
+<tr><td>1–5</td><td>44 records researched and verified: four researcher subagents in parallel, about 1–2 hours of agent time per page, one verifier pass each. Build flag and template in <code>build.py</code>; <code>fastloop.py check</code> on all 44.</td><td>Claude</td></tr>
+<tr><td>6</td><td>One push: 44 rebuilt pages + block stripped on all 88 (and the other 400-odd gap pages, since the block is going everywhere). IndexNow for all; GSC inspection not needed. Worker redeploy if the link map changed.</td><td>Claude</td></tr>
+<tr><td>6–14</td><td>Re-fetch wait. The Nov 3 batch took 1–4 days per page; pages linked from the home and category pages are fetched sooner, so every rebuilt page gets a line on the pages OAI-SearchBot fetches most.</td><td>OpenAI's crawler</td></tr>
+<tr><td>~14–15</td><td>Reading 1: 176 chats on the Agent Chrome, human pace, about two days on the Plus account.</td><td>Claude</td></tr>
+<tr><td>~21–22</td><td>Reading 2, same. Then the redone "seen but not cited" page and the call.</td><td>Claude</td></tr>
+</table></div>
+<p>Barry's touch: none outward. No new accounts, no outreach, no emails. The ChatGPT chats are on our own Plus account, same as Nov 7. New gap pages pause until reading 2, as the Citation Before Volume plan proposed.</p>
+
+<h2>5. Risks and what is held fixed</h2>
+<ul>
+<li><strong>Retrieval shifts.</strong> Title, H1 and the first sentence's query words are kept; if a rebuilt page drops out of the results in reading 1, it is reported as a retrieval loss and excluded from the citation rate, so a body rewrite that costs retrieval is caught rather than hidden.</li>
+<li><strong>Freshness.</strong> Both groups ship in one push, so the stored copies are equally fresh. Pages in either group not re-fetched by reading 1 are held out.</li>
+<li><strong>Catalog changes.</strong> ChatGPT's product cards and prices change daily and apply to both groups alike; interleaving the chats on the same days keeps that even.</li>
+<li><strong>Regression on the 24 already-cited pages.</strong> Ten are in group A. The per-stratum analysis shows if the rebuild costs any of them.</li>
+<li><strong>The honest limits.</strong> A page that is not retrieved teaches us nothing here; this test says nothing about new pages or about hand-over of the deal pages, which is the separate harvest (DLC-203).</li>
+</ul>
+
+<h2>6. What a win and a loss each mean</h2>
+<p><strong>A win</strong> (A ahead by 20+ points on reading 2): the method becomes the standard for every gap page, the remaining 44 are rebuilt, and the per-angle citation counts say which angles to lead with. <strong>A loss</strong> (no difference): the citation gate is not about page content at the level we can control, and the budget moves fully to the deal pages and the supply loop. <strong>A split</strong> (A ahead on one category only): the method is kept for that category and the others get a second look at why.</p>
+
+<p class="foot">Split: <code>growth/evals/runs/2026-11-07-liveplain/page/ab-split.json</code> (seed 20261108). Baseline: the Nov 7 plain runs. Analysis of the baseline: "Seen but not cited: what the winners had that we didn't".</p>
+</main>

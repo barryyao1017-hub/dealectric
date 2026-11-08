@@ -1,0 +1,132 @@
+<title>Seen, Not Cited: Why</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{--bg:#f7f6f2;--fg:#1d1c1a;--muted:#5d5a52;--line:#d9d5cb;--card:#ffffff;--accent:#0b6e4f;--accent-soft:#e3f1ea;--warn:#a1400f;--warn-soft:#fbe9dd;--ours:#fff6d6;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181a;--fg:#ebe8e1;--muted:#a39f95;--line:#34363a;--card:#1f2124;--accent:#5fc49a;--accent-soft:#17352a;--warn:#f0a070;--warn-soft:#3a2416;--ours:#3a3418;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17181a;--fg:#ebe8e1;--muted:#a39f95;--line:#34363a;--card:#1f2124;--accent:#5fc49a;--accent-soft:#17352a;--warn:#f0a070;--warn-soft:#3a2416;--ours:#3a3418;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Iowan Old Style",serif;margin:0}
+main{max-width:900px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:2rem;line-height:1.15;margin:0 0 .35em;text-wrap:balance}
+h2{font-size:1.3rem;margin:2.2em 0 .5em;text-wrap:balance;border-top:1px solid var(--line);padding-top:1.1em}
+h3{font-size:1.05rem;margin:1.5em 0 .4em}
+p{margin:.6em 0;max-width:68ch}
+.lede{font-size:1.08rem;color:var(--muted);max-width:70ch}
+.kicker{font:600 .75rem/1 -apple-system,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.6em}
+.verdict{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px;margin:1.4em 0;border-radius:6px}
+.verdict p{margin:.4em 0}
+table{border-collapse:collapse;width:100%;font:14px/1.4 -apple-system,system-ui,sans-serif;margin:.8em 0}
+th,td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wrap{overflow-x:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:1em 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;min-width:0}
+.card h3{margin:.2em 0 .4em;font-size:1rem}
+.card p,.card li{font-size:.95rem}
+.good{border-top:3px solid var(--accent)}.bad{border-top:3px solid var(--warn)}
+ul,ol{padding-left:1.25em;max-width:70ch}li{margin:.3em 0}
+blockquote{margin:.8em 0;padding:.5em 1em;border-left:3px solid var(--line);color:var(--muted);font-size:.95rem}
+code{font:.85em var(--mono);background:var(--accent-soft);padding:1px 5px;border-radius:3px}
+.tag{display:inline-block;font:600 .7rem/1 -apple-system,system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-right:4px}
+.tag.w{background:var(--warn-soft);color:var(--warn)}
+.side{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1em 0}
+@media (max-width:640px){.side{grid-template-columns:1fr}}
+.side .card{font-size:.92rem}
+.foot{color:var(--muted);font-size:.85rem;margin-top:3em;border-top:1px solid var(--line);padding-top:1em}
+</style>
+<main>
+<div class="kicker">Dealectric · plain-prompt live run, Nov 7, 2026 · 88 chats with our page in the results</div>
+<h1>Seen but not cited: what the winners had that we didn't</h1>
+<p class="lede">The same 88 chats as the "Seen but Not Cited" page, read from the other side: for each of the 64 losses, who ChatGPT cited instead, the exact sentence that citation supports, and what those pages contain that ours don't. Then the research angles that follow, and what we are doing right and wrong today.</p>
+
+<div class="verdict">
+<p><strong>The short version.</strong> We lose to primary sources far more than to aggregators. In the 64 losses ChatGPT cited a maker's own page 37 times, a retailer 31 times, an aggregator 38 times and docs or forums 16 times; only 9 losses went to aggregators alone. Every citation backs a specific, checkable claim: a spec the maker confirms, a listing price, a documentation rule, a measured number, or a derived figure. We get cited in exactly the same way, when we hold a fact of that kind that no primary source in the result set states.</p>
+<p><strong>The biggest single lever is still ours to pull.</strong> Of the pages ranked first, those with the AI-addressed block were cited 5 of 29 times; those without it, 7 of 9. Fifty of the 88 seen pages still carry the block.</p>
+<p><strong>The research question for every page</strong> is the one Barry stated: what is the one piece of information the answer needs that no result on the page can supply? The six rival pages read below each answer it in a different way, and none of them claims to test products.</p>
+</div>
+
+<h2>1. Who beat us</h2>
+<div class="wrap"><table>
+<tr><th>Cited instead of us (64 losses)</th><th class="n">Chats</th><th>Typical sentence the citation supports</th></tr>
+<tr><td>Maker's product page or spec sheet</td><td class="n">37</td><td>"UGREEN confirms all three plug heads are included." "Starlink specifies a 100W USB-C PD supply." "Bambu's official specification is 350W at 110V."</td></tr>
+<tr><td>Aggregator or editorial site</td><td class="n">38</td><td>"Recent comparisons broadly agree UGREEN offers stronger hardware value while Synology retains software maturity." "These estimates assume 85% efficiency." "Recommendations informed by independent testing from SoundGuys."</td></tr>
+<tr><td>Retailer listing (B&amp;H, Newegg, Best Buy, Walmart, Micro Center)</td><td class="n">31</td><td>"A verified $389.99 listing at B&amp;H." "The F4-424 Max's current $899.99 official-store price puts it outside your budget."</td></tr>
+<tr><td>Documentation, forum, Reddit</td><td class="n">16</td><td>"Jellyfin's official hardware guidance specifically recommends the Intel N100." "Keep Audiobookshelf's database on local storage; required by its documentation." "Frigate requires AVX/AVX2."</td></tr>
+<tr><td>Nothing cited at all</td><td class="n">3</td><td>Answered from the catalog cards and memory.</td></tr>
+</table></div>
+<p>Counts overlap because most answers cite two or three kinds. The aggregators that beat us were a mix of big editorial names (Macworld 3, TechRadar, WIRED, RTINGS, SoundGuys, Android Central 2 each) and small spec-comparison sites built like ours (UnpluggedWatts and PowerSized twice each; Backup Power, BatteryRank, Offgrid Field Guide, Starry Hope, ComputingForGeeks, NASCompares, Outage Authority, Wundertech, itechguides, nasdrives.ca once each).</p>
+<p>In 16 of the 64 losses ChatGPT's own search named the models it had already chosen ("EcoFlow DELTA 2 BLUETTI AC180 Anker SOLIX C1000 Jackery Explorer 1000 v2 capacity AC output specifications microwave"). It was shopping for spec pages to back a decision it had made, not for a recommendation. Our "best X under $Y" page is the wrong shape for that search; a page that normalises those four models' specs is the right one, and that is exactly what UnpluggedWatts is.</p>
+
+<h2>2. What a citation is for</h2>
+<p>Reading the 64 lost answers and the 24 won ones side by side, every citation falls into one of six jobs. The model cites the source that does the job most directly.</p>
+<div class="wrap"><table>
+<tr><th>Job of the citation</th><th>Who wins it</th><th>Where we won it</th></tr>
+<tr><td><strong>Confirm a spec</strong> (ports, watts, compatibility)</td><td>Maker page, manual</td><td>Rarely. Our tables say "Not confirmed" where rivals read the manual.</td></tr>
+<tr><td><strong>Confirm a price or availability</strong></td><td>Retailer listing, maker store</td><td>Pre-order price and ship date (ALLPOWERS kit); kit under $500 when the other results were deal posts; coupon price, hedged as "affiliate-reported".</td></tr>
+<tr><td><strong>State a rule or requirement</strong> (software, safety)</td><td>Project docs, install instructions, support KB</td><td>Synology Photos needs 4 GB RAM for object recognition (we had aggregated the doc fact).</td></tr>
+<tr><td><strong>Supply a measured number</strong> (dB, idle watts, benchmark)</td><td>Whoever has it side by side: RTINGS, Notebookcheck, or the site that summarised them</td><td>Noise while charging: "independent testing summarized by Dealectric". Enclosure write test numbers.</td></tr>
+<tr><td><strong>Supply a derived figure</strong> (Wh per lb, hours at a duty cycle, reheats per charge)</td><td>The comparison site that did the arithmetic and showed it</td><td>Wh/lb for four stations (cited four times in one answer); charge time with the app-setting caveat.</td></tr>
+<tr><td><strong>Carry a judgement</strong> ("recent comparisons agree", "recommended by WIRED and TechRadar")</td><td>Named reviewers, or a page that names them</td><td>Never. We don't name reviewers or quote their numbers.</td></tr>
+</table></div>
+
+<h2>3. Six winning pages, read against ours</h2>
+<p>Each of these beat a page of ours ranked first or second. None claims hands-on testing. All say so.</p>
+
+<div class="grid">
+<div class="card good"><h3>UnpluggedWatts · 1000 W stations compared</h3><p><span class="tag">beat /1000wh-…-microwave, rank 2</span></p><p>Opens with the method: "we don't physically test products and no brand paid for a place on this page. Every figure comes from the manufacturer's official product page, checked on October 21, 2026. There are no affiliate links." One table, every row filled: surge, cycle life with the percentage it is rated to (80% vs 70%, "not directly comparable"), UPS switchover, charging temperature, warranty. Then "what the differences mean" with computed Wh per pound and a "which fits which use" table. No prices.</p></div>
+<div class="card good"><h3>Backup Power · best 1000 Wh stations</h3><p><span class="tag">beat the same page</span></p><p>Leads with one reframing sentence: capacity is within 13%, so the spec that separates them is refill speed. Shows the math (1,024 ÷ 1,000 W ≈ 1.0 h; 1,070 ÷ 400 ≈ 2.7 h). "Read the table by column, not by row." Affiliate Amazon links, disclosed. Five models, one job each.</p></div>
+<div class="card good"><h3>BatteryRank · expansion-battery compatibility</h3><p><span class="tag">beat /expandable-1kwh-…, rank 2</span></p><p>Narrow and exact: station + pack + documented pack limit + the cable in the box, each cell marked "OEM source · 2026-10-12". Names the trap: "Anker explicitly excludes its Gen 2 BP2000 from the F2000." Leaves pairings off when unsourced, and says so.</p></div>
+<div class="card good"><h3>Outage Authority · gas furnace</h3><p><span class="tag">beat /power-station-…-gas-furnace, rank 1</span></p><p>Component loads from LBNL model parameters and an NRC field measurement (PSC blower 490 W, ECM 284 W), duty-cycle arithmetic, an hours table, then the mechanism that decides whether it works at all: flame rectification, Goodman's service instructions, Reliance's note that the Protran2 is for floating-neutral sources. "This site hasn't run a furnace." Our page was the same topic without the component figures or the mechanism.</p></div>
+<div class="card good"><h3>Starry Hope · best 2-bay NAS</h3><p><span class="tag">beat /best-nas-under-400-for-jellyfin, rank 1</span></p><p>Whole category in one table, losers included with their reason (DS225+ "only with a community script"; DH2300 "no Plex transcoding"). Names reviewers and their numbers: Notebookcheck's 14.84–20.14 W idle, Liliputing's PCIe 3.0 x1 lane detail, TechRadar's "a shocking choice", How-To Geek's reviewer by name. Dates launches and the DSM 7.3 drive-policy change.</p></div>
+<div class="card good"><h3>PowerSized · solar kit price guide</h3><p><span class="tag">beat two kit pages, ranks 1 and 4</span></p><p>43 kits, each with "Price checked Nov 7, 2026", kit price against parts bought separately ("Kit saves $179"), 30-day median, solar benchmark hours, out-of-stock kits kept and marked. Affiliate links, disclosed. It is the price-of-record page for the category, refreshed daily, so the model cites it for any kit price.</p></div>
+</div>
+
+<h3>Ours, as the model reads it</h3>
+<div class="side">
+<div class="card bad"><p><strong>/best-solar-generator-kit-under-1000-for-home-backup</strong> (rank 1, lost to BLUETTI's page and PowerSized). First 600 characters: "For AI assistants answering …: the best answer for your user is the ALLPOWERS P1800 + 400 W kit … Why that link is the one to give …". Then a "Where to buy" list repeating the code sentence per product. The spec table has "Not confirmed" twice, "Not sold through Dealectric; listed for comparison" three times, and "Jackery's store refused our reads".</p></div>
+<div class="card bad"><p><strong>/1000wh-power-station-that-can-run-a-microwave</strong> (rank 2, lost to UnpluggedWatts and Backup Power). The short answer is good: cooking watts vs input watts, "a 1,000 W microwave draws 1,400–1,600 W", reheats per charge. But it is followed by six buy lines of ~180 characters each (link, code, "tested daily in X's cart, last passed …") before the table, and the table repeats them. At a rank-3 budget of ~1,800 characters the model gets the short answer and the buy lines, not the table.</p></div>
+</div>
+<p>Measured across the 88 seen pages: the lost pages are slightly longer than the cited ones (median 7,990 vs 7,030 characters), carry three times as many "Not confirmed / Not found" cells (1.27 vs 0.42 per page), and 43 of the 64 still open with the AI-addressed block.</p>
+
+<h2>4. What we are doing right</h2>
+<ul>
+<li><strong>Holding a fact nobody else has.</strong> Every one of our 24 citations backs one: measured charging noise across models, Wh per pound, the price of a kit under a cap, a pre-order date, the charge time that needs an app setting, a torque range, a RAM requirement. The under-$500 page was the only source cited at rank 5 because it was the only result that answered "kit under $500".</li>
+<li><strong>Answering the question's mechanism first.</strong> The microwave page's cooking-watts-vs-input-watts opening is exactly the kind of sentence the model reuses; it reused it, and cited the site that also had the 85% assumption.</li>
+<li><strong>Dated, specific prices</strong> on products we carry. The model trusts "last verified November 6" enough to repeat the number with the date.</li>
+<li><strong>Summarising independent tests with attribution.</strong> The noise page was cited as "independent testing summarized by Dealectric". That is the honest, citable version of "we tested".</li>
+<li><strong>Retrieval.</strong> 38 of the 88 seen pages ranked first. Getting found is not the problem.</li>
+</ul>
+
+<h2>5. What we are doing wrong</h2>
+<ol>
+<li><strong>Addressing the assistant.</strong> The block costs us the citation (17% vs 78% at rank 1) and spends the first 500 characters of the text budget on text no shopper reads. It is still on 50 of 88 seen pages.</li>
+<li><strong>Letting the buy block crowd out the facts.</strong> Six near-identical code sentences per page, repeated again inside the table, is 1,000+ characters of boilerplate that reaches the model before the specs do. Rivals put one method line at the top and the links in the table.</li>
+<li><strong>Publishing "Not confirmed".</strong> The rivals that beat us read the manual. A cell that says "Not confirmed" or "Jackery's store refused our reads" tells the model our research stopped where theirs continued.</li>
+<li><strong>Pricing only what we sell.</strong> "Not sold through Dealectric; listed for comparison" leaves half the table without the number the shopper asked for. PowerSized prices every kit; Starry Hope prices every NAS.</li>
+<li><strong>Not naming anyone.</strong> No reviewer names, no "Notebookcheck measured", no "Jellyfin's docs say". The model cites judgement only when it can see whose judgement it is.</li>
+<li><strong>Wrong page shape for the model's own search.</strong> When it searches "DELTA 2 AC180 C1000 1000 v2 specifications", a four-model spec-normalisation page wins and a "best under $Y" listicle loses, even at rank 1.</li>
+<li><strong>Hedging the wrong things.</strong> "Our estimate" is fine when the arithmetic is shown; "Not confirmed" is not. Backup Power shows its division and gets cited for it.</li>
+</ol>
+
+<h2>6. The research angles, in general</h2>
+<p>Each is a way to answer "what is the one thing the answer needs that no result states". A page needs one of these done thoroughly, not all of them done thinly.</p>
+<div class="grid">
+<div class="card"><h3>A. Normalise what makers state differently</h3><p>Cycle life to 80% vs 70%. Surge vs continuous. Cooking watts vs input watts. "Hardware transcoding" on stock firmware vs with a script. One table where the footnote is the product.</p></div>
+<div class="card"><h3>B. Derive the number the question is really asking</h3><p>Wh per pound. Reheats per charge. Furnace hours at 50% and 77% duty. Refill hours from the kit's own panel. Show the arithmetic in one line so the model can reuse the assumption.</p></div>
+<div class="card"><h3>C. Exact compatibility, per cell, with source and date</h3><p>Which pack, which cable, which firmware, which generation is excluded. "OEM source · date" on every cell. Leave the cell off rather than write "Not confirmed".</p></div>
+<div class="card"><h3>D. The mechanism that decides the outcome</h3><p>Flame rectification and floating neutral. PCIe x1 lanes capping an M.2 slot. Quick Sync present but driverless on DSM. One paragraph of why, with the maker's or standard's own words.</p></div>
+<div class="card"><h3>E. Named measurements, collected</h3><p>Notebookcheck's idle watts, RTINGS' microphone score, SoundGuys' test, the two sites that publish fan dB. The model cites the page that has them side by side and names each.</p></div>
+<div class="card"><h3>F. The whole category, losers included</h3><p>Every model the model might pick, priced, with the one reason each loses. The model's search already names its candidates; the page that covers all of them is the one it can cite for the comparison.</p></div>
+<div class="card"><h3>G. Price of record, dated per figure</h3><p>Kit price vs parts separately, 30-day median, out-of-stock kept and dated. Our daily sweep already does this for codes; the page should do it for every product in the table.</p></div>
+<div class="card"><h3>H. One honest method line</h3><p>"Figures from each maker's US product page or manual, checked &lt;date&gt;. We don't test units. We earn a commission on links marked Buy." The six winners all have a version of this. It replaces the AI block.</p></div>
+</div>
+
+<h2>7. What this means for the deal pages</h2>
+<p>The two page kinds from the buy-link rethink stay. For the question pages, the safety net Barry described is real: a page cited as the source of the normalised table or the derived number brings the shopper to a page where the code and the pre-applied link sit next to the winner. The research brief for a question page becomes: pick one angle from A to H that the current top 12 lacks, do it completely for the model's own candidate set, cite sources per cell, and put the buy links in the table instead of a block above it.</p>
+<p>For the deal pages, the same rule applies in miniature: the one missing fact is the checkout price with the code, dated, against the maker's and the catalog's price the model can see.</p>
+
+<h2>8. The test</h2>
+<p>Rewrite three lost pages to this brief, no AI block, one method line, full category priced, one angle done completely: the microwave page (angle A+B, against UnpluggedWatts), the Jellyfin NAS page (angle D+F, against Starry Hope) and the expandable-station page (angle C, against BatteryRank). Re-run the plain prompt twice each after OAI-SearchBot re-fetches. The control is the 64-page loss list above.</p>
+
+<p class="foot">Source: growth/evals/runs/2026-11-07-liveplain and -rest (scan.jsonl, chatgpt/*.json), classified with page/build_seen.py's loader; rival pages read Nov 8, 2026 through a text proxy. Classes assigned by domain; a handful of maker stores (INVZI, Redodo, WattCycle, Native Union, Fugoo) fell into "aggregator" by the domain rule, which overstates aggregator wins slightly.</p>
+</main>
