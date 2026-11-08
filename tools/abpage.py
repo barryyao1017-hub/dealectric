@@ -313,7 +313,13 @@ Open every source URL in the draft below and check every figure in the answer, t
 against them (and against the maker's page where a cell names no source). Prices: re-read today.
 - A figure that its source doesn't support: correct it if the source gives the right value, otherwise remove it (drop
   the cell's column for all rows if it leaves a hole, or the row). Never invent a replacement.
-- A source that doesn't load or doesn't hold the claim: remove it from sources and re-check what relied on it.
+- A source that loads but doesn't hold the claim: remove it from sources and re-check what relied on it.
+- A source that won't load for you (HTTP 403/429, timeout, bot wall) is NOT a failed claim: try another copy of the
+  same fact (the maker's manual, a retailer listing, an archived copy). If none loads, keep the figure as the research
+  agents recorded it today and note it in the log as "not re-read: <why>". Remove a figure only when a page you could
+  read contradicts it or holds something else.
+- Rows with a "slug" are products Dealectric lists: their price and code come from Dealectric's own daily-checked
+  records, not from the cells, so never remove such a row over a price you couldn't re-read.
 - Keep everything else exactly as written: same keys, same HTML, same must phrases unless you had to change them (then
   keep them exact substrings of the answer).
 Return the full corrected draft plus a log.""",
