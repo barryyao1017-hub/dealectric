@@ -1,0 +1,51 @@
+
+/* Layout: one reading column; each example is a band with its result table, our row tinted */
+:root{--bg:#f6f7f5;--panel:#ffffff;--fg:#1d2321;--muted:#5f6b66;--line:#dfe4e1;--ours:#e6f2ec;--hit:#1f7a4d;--miss:#b4532a;--link:#24584a;
+--display:"Source Serif 4",Georgia,serif;--body:"Source Sans 3","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141817;--panel:#1b201f;--fg:#e4e9e6;--muted:#9aa6a0;--line:#2c3331;--ours:#1f3a2e;--hit:#5cc493;--miss:#e58b62;--link:#8fd1b8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141817;--panel:#1b201f;--fg:#e4e9e6;--muted:#9aa6a0;--line:#2c3331;--ours:#1f3a2e;--hit:#5cc493;--miss:#e58b62;--link:#8fd1b8;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--body)}
+.wrap{max-width:980px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1{font:600 2rem/1.15 var(--display);margin:0;text-wrap:balance}
+.lede{color:var(--muted);max-width:68ch;margin:6px 0 0}
+.key{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px}
+.key h3{margin:0 0 6px;font:600 .8rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.key ol{margin:0;padding-left:1.2em;display:grid;gap:6px;max-width:75ch}
+.ex{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:grid;gap:10px;min-width:0}
+.ex header{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pill{font:600 .75rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;color:var(--panel)}
+.pill.hit{background:var(--hit)} .pill.miss{background:var(--miss)}
+.rank{font:.85rem var(--mono);color:var(--muted)}
+h2{font:600 1.15rem var(--mono);margin:0;overflow-wrap:anywhere}
+a{color:var(--link)}
+.note{margin:0;max-width:75ch}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0}
+dt{color:var(--muted);font-size:.85rem} dd{margin:0;min-width:0}
+.q{font:.85rem/1.5 var(--mono);overflow-wrap:anywhere}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding:6px 8px}
+td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}
+td.n{font-family:var(--mono);color:var(--muted);width:2ch} td.dom{white-space:nowrap} td.d{white-space:nowrap;color:var(--muted)}
+td.t a{color:var(--fg);text-decoration-color:var(--line)}
+tr.ours td{background:var(--ours)} tr.ours td.dom{font-weight:600}
+.cite{color:var(--hit);font-weight:600;white-space:nowrap}
+.extra{margin:0;font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+.ans{margin:0;font-size:.9rem;color:var(--muted);max-width:80ch} .ans span{font-weight:600;color:var(--fg);margin-right:6px}
+@media (max-width:560px){dl{grid-template-columns:1fr} td.d{display:none} th:nth-child(4){display:none}}
+.toc{display:flex;gap:8px 18px;flex-wrap:wrap;font-size:.9rem}
+.band{margin:12px 0 0;font:600 .85rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+details.ex>summary{cursor:pointer;list-style:none;display:grid;gap:6px}
+details.ex>summary::-webkit-details-marker{display:none}
+details.ex>summary h2::before{content:"▸ ";color:var(--muted)} details.ex[open]>summary h2::before{content:"▾ "}
+details.ex>summary h2{font-size:1rem}
+details.answer{border-top:1px solid var(--line);padding-top:8px}
+details.answer>summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted)}
+.md{white-space:pre-wrap;font-size:.92rem;max-width:80ch;margin-top:8px;overflow-wrap:anywhere}
+.md.rendered{white-space:normal}
+.md h1,.md h2,.md h3{font:600 1rem var(--body);margin:14px 0 4px}
+.md p{margin:6px 0} .md ul,.md ol{margin:6px 0;padding-left:1.3em}
+.md table{font-size:.85rem;margin:8px 0;display:block;overflow-x:auto}
+.cp{display:inline-block;font:600 .7rem var(--body);padding:0 6px;border-radius:99px;background:var(--ours);color:var(--hit);vertical-align:1px}
+figure{margin:8px 0} figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:4px;display:block}
+figcaption{font-size:.8rem;color:var(--muted);margin-top:4px}
