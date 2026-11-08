@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got gives the lowest battery voltage a solar maintainer's controller needs before it will start charging. OptiMate's own pages give 4 V for the lithium-capable Solar DUO 20W (TM522-D2) and 1 V for the lead-acid-only Solar 20W (TM522-2). So a battery that has been run nearly or fully flat may get no charge from the panel at all.",
+ "standout": 2,
+ "standout_why": "I opened three rival pages. energyforthetaking.com/best-12v-solar-battery-charger-maintainer covers panel sizing against a 20–50 mA parasitic drain and says LiFePO4 needs a profile with no float stage, but it gives no start voltage and says nothing about cigarette-lighter sockets or night drain. solarbatteryscout.com/best-solar-battery-maintainer says it is AI-generated and has none of these mechanisms. gopowersolar.com's 10W-vs-20W post comes closest: it says LiFePO4 must not be charged below freezing and that the BMS 'will disconnect at low voltage'. It still gives no maintainer start-voltage figure. ChatGPT's own answer only says a maintainer 'won't reliably recover a severely discharged battery', with no number. The SUNER manual pages on manuals.plus and manualsee returned 403 or unreadable PDF data, and the SUNER product pages returned 429, so I could not check whether they state a threshold.",
+ "decides": "This confirms the plan works only on a battery that already has some voltage left. If the battery may sit long enough to go very flat, or for lithium packs (a 12 V LiFePO4 that has gone into BMS low-voltage disconnect), choose a maintainer with a stated low start voltage and a lithium mode, then check the battery's voltage before relying on the panel. Among the products I could source, the OptiMate Solar DUO is the only one with a published start threshold (4 V) and dark-hours draw (under 0.5 mA). I could not source the same figures for the SUNER, VEVOR or Battery Tender units that ChatGPT showed. That is a gap in their documentation, not proof that they perform worse.",
+ "candidates": [
+  "OptiMate Solar DUO 20W (TM522-D2)",
+  "OptiMate Solar 20W (TM522-2)",
+  "SUNER POWER 12W Solar Battery Charger Maintainer Ultra",
+  "SUNER POWER BC-20W Solar Battery Charger Ultra",
+  "VEVOR 20W 12V Solar Battery Charger",
+  "Battery Tender 35W Solar 12V Battery Charger (021-1174)"
+ ],
+ "findings": [
+  {
+   "product": "OptiMate Solar DUO 20W (TM522-D2)",
+   "label": "Lowest battery voltage at which charging starts ('Low Volt Start')",
+   "value": "4 V",
+   "source": "https://optimate1.com/product/tm522d2/",
+   "source_title": "OptiMate Solar DUO 20W - OptiMate",
+   "read": "2026-11-08",
+   "note": "Maker's page: 'SAVE: Low Volt Start of 4V'. It saves flat batteries 'from as low as 4V'. The page does not say whether it can wake a LiFePO4 whose BMS has cut off its terminals."
+  },
+  {
+   "product": "OptiMate Solar DUO 20W (TM522-D2)",
+   "label": "Battery chemistries supported",
+   "value": "12 V lead-acid and 12.8 V / 13.2 V LiFePO4 (4-series LFP only)",
+   "source": "https://optimate1.com/product/tm522d2/",
+   "source_title": "OptiMate Solar DUO 20W - OptiMate",
+   "read": "2026-11-08",
+   "note": "Maker's page names the system voltages but gives no absorption or float setpoints and no low-temperature lithium cutoff. The FAQ on the related Solar 20W page says the DUO is 'suitable ONLY for 4 series cell Lithium Ferrous Phosphate or Lithium Iron Phosphate batteries'."
+  },
+  {
+   "product": "OptiMate Solar DUO 20W (TM522-D2)",
+   "label": "Current drawn from the battery in the dark (monitor mode)",
+   "value": "<0.5 mA",
+   "source": "https://optimate1.com/product/tm522d2/",
+   "source_title": "OptiMate Solar DUO 20W - OptiMate",
+   "read": "2026-11-08",
+   "note": "Maker's spec: 'Draws less than 0.5mA during monitor mode'. That is at most 0.012 Ah/day (0.5 mA × 24 h)."
+  },
+  {
+   "product": "OptiMate Solar DUO 20W (TM522-D2)",
+   "label": "Lowest rated operating temperature",
+   "value": "-20 °C (-4 °F)",
+   "source": "https://optimate1.com/product/tm522d2/",
+   "source_title": "OptiMate Solar DUO 20W - OptiMate",
+   "read": "2026-11-08",
+   "note": "This is a general operating limit for the controller, not a lithium charge cutoff."
+  },
+  {
+   "product": "OptiMate Solar 20W (TM522-2)",
+   "label": "Lowest battery voltage at which charging starts ('Low Volt Start')",
+   "value": "1 V",
+   "source": "https://optimate1.com/product/optimate-solar-20w-solar-panel/",
+   "source_title": "OptiMate Solar 20W - OptiMate",
+   "read": "2026-11-08",
+   "note": "Maker's spec sheet: 'Low Volt Start of 1V'. Recovers 'dead flat' sulphated batteries 'from as low as 1V'. Lead-acid only (STD/AGM/GEL, 2–240 Ah). Panel 22 V max, average output 1.66 A max with 3–5 A pulses. The maker's site files this model under 'Obsolete'."
+  },
+  {
+   "product": "general",
+   "label": "Solar controller start condition (charge-controller maker's own words)",
+   "value": "Charging starts when PV voltage is 5 V above battery voltage and continues while it stays 1 V above",
+   "source": "https://www.victronenergy.com/media/pg/Manual_SmartSolar_MPPT_75-10_up_to_100-20/en/troubleshooting.html",
+   "source_title": "8. Troubleshooting – Victron SmartSolar MPPT 75/10 up to 100/20 manual",
+   "read": "2026-11-08",
+   "note": "Victron is not one of the candidates. It is quoted for the mechanism. The same page: the charger 'should activate as soon it receives power from the battery, the PV supply, or both', and a lithium BMS can switch the charger off 'due to full batteries or low temperatures (below ~5°C)'."
+  },
+  {
+   "product": "general",
+   "label": "LiFePO4 cold-charging and BMS low-voltage disconnect (closest rival coverage)",
+   "value": "LiFePO4 must not be charged below freezing; the BMS disconnects at low voltage",
+   "source": "https://gopowersolar.com/blogs/learning-center/solar-trickle-charger-rv-battery-storage-10w-vs-20w",
+   "source_title": "Solar Trickle Charger for RV Battery Storage: 10W vs 20W",
+   "read": "2026-11-08",
+   "note": "This page was among ChatGPT's results but not cited. It is the rival that already covers part of this angle. It gives no maintainer start-voltage threshold. It sizes panels with watts × peak sun hours × 0.7 ÷ 12.8 V: about 1–3 Ah/day from 10 W in winter, against 3.6–7 Ah/day drawn by an RV with its disconnect left on."
+  }
+ ],
+ "unsourced": [
+  "SUNER POWER 12W / BC-20W Ultra minimum start voltage and charge setpoints per mode: sunerpower.com product pages returned HTTP 429 to both WebFetch and storecheck.py. The manuals.plus pages for B0DHD52WDM and B07XNZZHK5 returned 403 or a PDF I couldn't parse. A search found only that the BC-10W 'will automatically start once the built-in smart controller detects the battery', with no voltage, and that was a search snippet I did not open.",
+  "VEVOR 20W solar maintainer controller type, minimum start voltage and lithium support: I did not reach a VEVOR page within the tool budget.",
+  "Battery Tender 35W (021-1174) minimum start voltage, lithium handling and price: batterytender.com returned 429 twice.",
+  "Whether any candidate can wake a 12 V LiFePO4 whose BMS has disconnected (0 V at terminals): no maker page I opened states it.",
+  "Prices: none checked today. The Shopify stores (SUNER, Tecmate, Battery Tender) rate-limited me and I did not try Walmart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.8705164
+ }
+}

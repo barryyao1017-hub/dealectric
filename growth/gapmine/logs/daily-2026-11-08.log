@@ -1,0 +1,27 @@
+expand: 1192 autocomplete calls
+expand 250/1192: 14291 queries, failed {}
+expand 500/1192: 14842 queries, failed {}
+expand 750/1192: 16209 queries, failed {}
+expand 1000/1192: 16958 queries, failed {}
+expand 1192/1192: 18211 queries, failed {}
+label rechargeable c batteries: 89 items
+label rechargeable d batteries: 80 items
+label rechargeable 9v battery: 101 items
+label cr123a battery: 127 items
+label lithium rechargeable batteries: 136 items
+label 18650 battery: 153 items
+label nimh battery pack: 119 items
+label solar charger: 192 items
+usage {'calls': 10, 'input_tokens': 20, 'output_tokens': 57463, 'cache_read_input_tokens': 47152, 'cache_creation_input_tokens': 92496, 'total_cost_usd_list': 0.94937}
+Traceback (most recent call last):
+  File "/Users/j0y0825/code/dealectric/growth/evals/gapmine.py", line 1304, in <module>
+    main()
+  File "/Users/j0y0825/code/dealectric/growth/evals/gapmine.py", line 1299, in main
+    {"expand": expand, "reddit": reddit, "news": news, "launches": launches, "label": label, "depth": depth_step,
+  File "/Users/j0y0825/code/dealectric/growth/evals/gapmine.py", line 1259, in daily
+    log["queued"] = [f"{x['cluster']} ({x['uncovered']} uncovered, cov {x['coverage']}, {x['source']})" for x in queue_step(args)]
+                                                                                                                 ^^^^^^^^^^^^^^^^
+  File "/Users/j0y0825/code/dealectric/growth/evals/gapmine.py", line 1176, in queue_step
+    have = {(x["seed"], x["cluster"]) for x in queue}
+             ~^^^^^^^^
+KeyError: 'seed'
