@@ -4800,93 +4800,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  'published': '2026-11-03', "updated": '2026-11-08',
  'checked': '2026-11-03'},
 
-{'slug': 'best-swimming-headphones-with-mp3-storage-under-100',
- 'question': 'G91 (Awin brands: swimming headphones with built-in MP3 storage under $100)',
- 'lead_first': True,
- 'product_result': {'slug': 'mojawa-run-plus-bone-conduction-32gb',
-                    'item_id': 'MOJAWA-RUN-PLUS',
-                    'title': 'MOJAWA Run Plus, IP68, 32 GB',
-                    'description': 'Bone conduction, 32 GB MP3 for the pool, Bluetooth 5.0 on land, 8-hour battery. $99.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0603/1012/6834/files/run-plus-headphones-with-2026-new-version-badge.png'},
- 'title': 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
- 'h1': 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
- 'desc': "Which swimming headphones with built-in MP3 storage cost under $100: MOJAWA's Run Plus ($99.99, IP68 bone conduction, 32 GB, Bluetooth 5.0 on land, "
-         "8 hours) against MOJAWA's Purra Swim, Shokz's OpenSwim Pro and OpenSwim, H2O Audio's Tri 2 Pro, Naenka's Runner Diver and Nank's Diver2 Pro, with "
-         "RTINGS's verdict on the sound, why Bluetooth does not work underwater and the prices seen on 2026-11-03.",
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>MOJAWA Run Plus</strong> ({buy:mojawa-run-plus-bone-conduction-32gb}), the best '
-          'swimming headphones with built-in MP3 storage under $100: $99.99 on 2026-11-03 (list $129.99) for IP68 bone-conduction headphones with 32 GB of '
-          "onboard music, Bluetooth 5.0 for dry land and about 8 hours of play. Shokz's OpenSwim Pro has the same 32 GB with better-reviewed sound at "
-          "$179.95–229.95; the only rival near $100 we found, H2O Audio's original Tri, has 8 GB.</p>\n"
-          "<p>What to know: Bluetooth does not travel through water, so every swim headphone plays from onboard storage in the pool and the Run Plus's 32 GB "
-          "(about 8,000 songs) is the figure that matters; Shokz's original OpenSwim has 4 GB and no Bluetooth at all, H2O Audio's Tri 2 Pro has 8 GB at "
-          "$199.99, and Naenka's Runner Diver about 16 GB. The honest part is the sound: RTINGS rates the Run Plus's audio as poor even for bone conduction "
-          "and prefers the Shokz OpenRun Pro for dry land, while Tom's Guide found it comfortable and fine in and out of the water, so this is a pool purchase "
-          "first. MOJAWA's Purra Swim ($169.99) keeps the 32 GB and stretches the battery to 15 hours; the Run Plus gets 8 hours (Headphones Addict measured 8 "
-          "h 43 min) against the OpenSwim Pro's 6 hours in MP3 mode. MOJAWA gives 30-day returns and a 2-year warranty through official channels; the $129.99 "
-          '"2026 Edition" is the same model in new colours.</p>\n',
- 'columns': [('storage', 'Onboard storage'), ('water', 'Water rating'), ('battery', 'Battery'), ('bt', 'Bluetooth')],
- 'rows': [{'slug': 'mojawa-run-plus-bone-conduction-32gb',
-           'model': 'MOJAWA Run Plus',
-           'cells': {'storage': '32 GB', 'water': 'IP68, 2 m', 'battery': '8 h (8 h 43 min measured)', 'bt': '5.0, land only'}},
-          {'slug': 'mojawa-purra-swim-32gb-bone-conduction',
-           'model': 'MOJAWA Purra Swim',
-           'cells': {'storage': '32 GB', 'water': 'IP68, 2 m', 'battery': '15 h (MOJAWA, 50% volume)', 'bt': '5.0, land only'}},
-          {'brand': 'Shokz',
-           'model': 'OpenSwim Pro',
-           'url': 'https://shokz.com/products/openswimpro',
-           'cells': {'storage': '32 GB',
-                     'water': 'IP68',
-                     'battery': '9 h Bluetooth, 6 h MP3',
-                     'bt': 'Yes',
-                     'price': '$229.95 list; $179.95 street; $139.99 in an REI sale (date unclear), 2026-11-03'}},
-          {'brand': 'Shokz',
-           'model': 'OpenSwim (original)',
-           'url': 'https://shokz.com/',
-           'cells': {'storage': '4 GB', 'water': 'IP68', 'battery': 'not read', 'bt': 'No', 'price': 'not read'}},
-          {'brand': 'H2O Audio',
-           'model': 'Tri 2 Pro Multi-Sport',
-           'url': 'https://www.techradar.com/health-fitness/fitness-headphones/h2o-audio-tri-2-pro-multi-sport-review-a-triathletes-dream',
-           'cells': {'storage': '8 GB', 'water': 'IPX8', 'battery': 'not read', 'bt': 'Yes', 'price': '$199.99, 2026-11-03'}},
-          {'brand': 'Naenka',
-           'model': 'Runner Diver',
-           'url': 'https://www.techradar.com/reviews/naenka-runner-diver',
-           'cells': {'storage': 'about 16 GB (unconfirmed)', 'water': 'IPX8', 'battery': 'about 10 h', 'bt': 'Yes', 'price': '$169.99 at launch (2022)'}},
-          {'brand': 'Nank',
-           'model': 'Runner Diver2 Pro',
-           'url': 'https://www.techradar.com/health-fitness/fitness-headphones/nank-runner-diver2-pro-review',
-           'cells': {'storage': 'not read', 'water': 'not read', 'battery': 'not read', 'bt': 'Yes', 'price': 'about $160, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>Why storage, not Bluetooth</h2>\n'
-          '<p>Radio at Bluetooth frequencies dies within an inch of water, so a swim headphone is an MP3 player on your cheekbones. 32 GB holds a library; 4 '
-          "or 8 GB holds a few playlists. Loading is drag-and-drop over USB, and MOJAWA's and Shokz's units both switch to Bluetooth out of the pool. Use the "
-          'included earplugs: bone conduction underwater sounds clearer with the ear canal blocked.</p>\n'
-          '<h2>The sound, honestly</h2>\n'
-          "<p>RTINGS measured the Run Plus's frequency response consistency as bad and calls its sound poor even for bone conduction, recommending the Shokz "
-          'OpenRun Pro for most people and reserving the Run Plus for swimmers who need the storage. Tom\'s Guide found it light, comfortable and "up there '
-          'with" the OpenSwim in the water; Headphones Addict liked the natural mids but heard the bass distort, and GamingTrend called the underwater '
-          'performance excellent. Buy it for the pool, not as your only pair.</p>\n'
-          '<h2>Battery and charging</h2>\n'
-          '<p>8 hours rated and 8 h 43 min measured at 50% volume, with a 5-minute charge good for about 1.5 hours; the OpenSwim Pro gets 6 hours in MP3 mode '
-          'and the Purra Swim 15 hours on a magnetic USB charger in 2 hours.</p>\n'
-          '<h2>Fit</h2>\n'
-          '<p>Open-ear loops that sit on the cheekbones; some wearers report top-of-ear pressure after an hour or so, and the loops can press on glasses '
-          'frames, so goggles with thin straps fit better than thick ones.</p>\n'
-          '<h2>Returns and warranty</h2>\n'
-          "<p>A 30-day money-back guarantee and a 2-year warranty on purchases through MOJAWA's official channels. A refurbished Run Plus was $59.99 on "
-          'mojawa.com on 2026-11-03.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>The Run Plus's headphone weight and multipoint support, any independent review of the Purra Swim, the exact Naenka storage figure, and the date "
-          "of Shokz's $139.99 REI price.</p>\n",
- 'sources': [('MOJAWA Run Plus', 'https://mojawa.com/products/run-plus-waterproof-bone-conduction-headphones'),
-             ('MOJAWA Purra Swim', 'https://mojawa.com/products/purra-swim-bone-conduction-headphones-best-swimming-headphones'),
-             ('MOJAWA refund policy', 'https://mojawa.com/pages/refund-policy'),
-             ('RTINGS: MOJAWA Run Plus review', 'https://www.rtings.com/headphones/reviews/mojawa/run-plus-bone-conduction'),
-             ("Tom's Guide: MOJAWA Run Plus review", 'https://tomsguide.com/reviews/mojawa-run-plus'),
-             ('Shokz OpenSwim Pro', 'https://shokz.com/products/openswimpro'),
-             ('Headphones Addict: MOJAWA Run Plus review', 'https://headphonesaddict.com/mojawa-run-plus-review/')],
- 'published': '2026-11-03',
- 'checked': '2026-11-03'},
+# ---------------- best-swimming-headphones-with-mp3-storage-under-100 (research method ab-2026-11, 2026-11-08) ----------------
+{"slug": 'best-swimming-headphones-with-mp3-storage-under-100',
+ "question": 'G91 (Awin brands: swimming headphones with built-in MP3 storage under $100)',
+ "method": 'ab-2026-11',
+ "angle": 'E',
+ "searched_as": ['best swimming headphones built in mp3 under $100 2026 NANK Runner Diver2 H2O Audio FINIS Duo prices', 'best swimming headphones built in mp3 under $100 2026 Nank Runner Diver2 Tayogo SHOKZ alternatives', 'best swimming headphones built in mp3 under 100 dollars 2026 review NANK Runner Diver2 Tayogo'],
+ "title": 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
+ "h1": 'Best swimming headphones with built-in MP3 storage under $100 (2026)',
+ "desc": "The MOJAWA Run Plus has 32 GB, IP68 and a battery Headphones Addict timed at 8 h 43 min. We compare it with the Jabees 7Seven, a refurbished Run Plus and H2O Audio's STREAM 3 PRO, priced on 2026-11-08.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best swimming headphones with built-in MP3 storage under $100 are the MOJAWA Run Plus: 32 GB of built-in MP3 storage, IP68 to 2 m, and a battery Headphones Addict timed at 8 h 43 min at 50% volume, then recharged in 50 minutes.</p>',
+ "columns": [('storage', 'MP3 storage'), ('water', 'Water rating (depth, time)'), ('runtime', 'Battery: measured or rated, and by whom'), ('form', 'What you get')],
+ "rows": [{'slug': 'mojawa-run-plus-bone-conduction-32gb', 'model': 'MOJAWA Run Plus', 'cells': {'storage': '32 GB', 'water': "IP68, 2 m for up to 2 h (MOJAWA's rating, as quoted by Headphones Addict)", 'runtime': '8 h 43 min measured at 50% volume, full charge in 50 min (Headphones Addict)', 'form': 'One-piece bone-conduction headset, 29.7 g, with Bluetooth and MP3 modes'}}, {'brand': 'MOJAWA', 'model': 'Run Plus (Refurbished)', 'url': 'https://www.mojawa.com/products/run-plus-bone-conduction-headphones-refurbished', 'cells': {'storage': '32 GB (MOJAWA listing)', 'water': 'IP68 (MOJAWA listing)', 'runtime': 'Same model Headphones Addict timed at 8 h 43 min when new', 'form': "Refurbished Run Plus sold on MOJAWA's own store", 'price': '$59.99 (maker, 2026-11-08)'}}, {'brand': 'Jabees', 'model': '7Seven', 'url': 'https://www.jabees.com/products/7seven-bone-conduction-swimming-headphones-waterproof-ip68', 'cells': {'storage': '32 GB (New Atlas)', 'water': 'IP68, 1.5 m in fresh water; not suited to salt water (New Atlas)', 'runtime': "6 h MP3 / 5 h Bluetooth at 60% volume, Jabees' claim; New Atlas did not time it. About 2 h to charge", 'form': 'One-piece silicone-wrapped headset, 38 g (New Atlas), with Bluetooth and MP3 modes', 'price': '$59.99 (maker, 2026-11-08)'}}, {'brand': 'H2O Audio', 'model': 'STREAM 3 PRO + SURGE BC headphones', 'url': 'https://h2oaudio.com/products/stream-3-pro-with-playlist', 'cells': {'storage': '8 GB', 'water': 'IPX8, 12 ft (3 m) (H2O Audio)', 'runtime': "7 h, H2O Audio's rating", 'form': 'Player that mounts on the goggle strap, with wired SURGE headphones; the headphone-free option at $99.99 is sold out', 'price': '$129.00 (maker, 2026-11-08)'}}],
+ "after": '\n<h2>What the differences mean</h2><ul><li><strong>Swims per charge.</strong> Run Plus: 8.72 h measured ÷ 0.75 h = 11 full 45-minute swims. Jabees 7Seven: 6 h claimed ÷ 0.75 h = 8. STREAM 3 PRO: 7 h claimed ÷ 0.75 h = 9.</li><li><strong>Time on the charger.</strong> Run Plus: 8.72 h of play ÷ 0.83 h of charging = about 10 h of music per hour on the cable. 7Seven: 6 h ÷ 2 h = 3 h per hour.</li><li><strong>Price.</strong> $99.99 − $59.99 = $40 between a new Run Plus and either the 7Seven or a refurbished Run Plus.</li><li><strong>Depth.</strong> The Run Plus is rated to 2 m and the 7Seven to 1.5 m, so the Run Plus has 0.5 m more margin for pool dives.</li><li><strong>Storage.</strong> 32 GB ÷ 8 GB = 4 times the music on the Run Plus or 7Seven compared with the STREAM 3 PRO or the 7Seven Air.</li></ul><table><thead><tr><th>Use</th><th>Fits</th></tr></thead><tbody><tr><td>Laps most days, plus runs on land</td><td>MOJAWA Run Plus: 11 timed swims per charge, 50-minute recharge. {buy:mojawa-run-plus-bone-conduction-32gb}</td></tr><tr><td>Same headset for $40 less</td><td>Run Plus (Refurbished) from MOJAWA\'s store</td></tr><tr><td>Cheapest new 32 GB headset for pool swimming</td><td>Jabees 7Seven, rated to 1.5 m in fresh water</td></tr><tr><td>Salt water</td><td>Not the 7Seven: New Atlas says it isn\'t suited to salt water</td></tr><tr><td>Player on the goggle strap with in-ear earplugs</td><td>H2O Audio STREAM 3 PRO, but only at $129.00 with headphones</td></tr></tbody></table><h2>Battery: who timed what</h2><p>Built-in storage matters because Bluetooth stops at the water\'s surface. H2O Audio\'s own product page says "Bluetooth does NOT work underwater", so the music has to live on the headset. The figure that decides how often you charge is runtime, and only one model here has been put on a clock by a named tester:</p><ul><li><strong>MOJAWA Run Plus:</strong> Headphones Addict (Peter Susic, 2023-08-01) played music at 50% volume until the battery ran out at 8 h 43 min, then recharged it from 0 to 100% in 50 minutes. MOJAWA\'s own rating is 8 h at 75% volume. The review doesn\'t say whether the test ran in MP3 or Bluetooth mode. GamingTrend (Ron Burke) saw roughly 1 h from empty to full but repeated MOJAWA\'s runtime claim without testing it.</li><li><strong>Jabees 7Seven:</strong> New Atlas (Bronwyn Thompson, 2025-10-19) writes that "we didn\'t track it exactly" against Jabees\' 5 h Bluetooth / 6 h MP3 claim at 60% volume, and calls that claim "probably a stretch". The review puts a full charge at about 2 h.</li><li><strong>H2O Audio STREAM 3 PRO:</strong> 7 h, H2O Audio\'s figure. <strong>FINIS Duo:</strong> up to 7 h and 4 GB according to FINIS\'s own manual. We couldn\'t confirm a current US price for the Duo on 2026-11-08, so it isn\'t in the table.</li></ul><p>All of these players need music files you own, copied over from a computer. H2O Audio\'s STREAM DM page states that an Apple Music subscription doesn\'t let you download the files to its players. If you can spend more than $100, MOJAWA\'s Purra Swim is $169.99, has 32 GB and is rated for 15 h, which works out to 15 ÷ 0.75 = 20 swims per charge. {buy:mojawa-purra-swim-32gb-bone-conduction}</p><h2>Not recommended</h2><p><strong>H2O Audio STREAM 3 PRO at "$99.99".</strong> On 2026-11-08 the $99.99 option on H2O Audio\'s store comes with no headphones and is sold out. Every version that includes SURGE headphones costs $129.00, which is $29 over the budget, and it holds 8 GB against 32 GB on the Run Plus. H2O\'s goggle-mounted SONAR was sold out in both bundles when checked the same day.</p><p><strong>Jabees 7Seven Air, if you want the 32 GB 7Seven.</strong> Jabees sells it alongside the 7Seven for $49.99, but it has 8 GB of MP3 memory. Jabees also lists each magnetic charging cable as exclusive to its own model. Check that the name on the box is "7Seven", not "7Seven Air", before you pay.</p>\n',
+ "sources": [('Run Plus price $99.99 (compare-at $149.99), MOJAWA US store, read 2026-11-08', 'https://www.mojawa.com/products/run-plus-waterproof-bone-conduction-headphones'), ('Run Plus measured 8 h 43 min at 50% volume, 50-min full charge, 29.7 g, 32 GB, IP68 2 m / 2 h (MOJAWA rating), Headphones Addict, read 2026-11-08', 'https://headphonesaddict.com/mojawa-run-plus-review/'), ('Run Plus about 1 h empty-to-full charge, GamingTrend, read 2026-11-08', 'https://gamingtrend.com/reviews/mojawa-run-plus-bone-conduction-headphones-review-massive-sound-under-the-waves/'), ('Run Plus (Refurbished) $59.99, 32 GB, IP68, MOJAWA US store, read 2026-11-08', 'https://www.mojawa.com/products/run-plus-bone-conduction-headphones-refurbished'), ('Jabees 7Seven price $59.99, IP68, Bluetooth and MP3 modes, Jabees store, read 2026-11-08', 'https://www.jabees.com/products/7seven-bone-conduction-swimming-headphones-waterproof-ip68'), ('Jabees 7Seven 32 GB, 5 h BT / 6 h MP3 claim not timed, ~2 h charge, 1.5 m fresh water, not suited to salt water, 38 g, New Atlas, read 2026-11-08', 'https://newatlas.com/consumer-tech/bone-conducting-swimming-headphones'), ('Jabees 7Seven Air $49.99, 8 GB, IP68, 27.5 g, Jabees store, read 2026-11-08', 'https://www.jabees.com/products/7seven-air-cushioned-bone-conduction-swimming-headphones'), ("7Seven charging cable 'Exclusive to 7Seven', Jabees store, read 2026-11-08", 'https://www.jabees.com/products/7seven-charging-cable'), ('STREAM 3 PRO: $99.99 no-headphone option sold out, $129.00 with SURGE headphones, 8 GB, 7 h, IPX8 12 ft, Bluetooth does not work underwater, H2O Audio store, read 2026-11-08', 'https://h2oaudio.com/products/stream-3-pro-with-playlist'), ("Apple Music subscription files can't be downloaded to the player, H2O Audio STREAM DM page, read 2026-11-08", 'https://h2oaudio.com/products/stream-dual-mode-waterproof-mp3-player-with-bluetooth'), ('H2O Audio SONAR sold out in both bundles ($99.99 and $139.99), H2O Audio store, read 2026-11-08', 'https://h2oaudio.com/collections/sports/products/sonar-underwater-headphones'), ('FINIS Duo up to 7 h, 4 GB, MP3/WMA, FINIS manual via ManualsLib, read 2026-11-08', 'https://www.manualslib.com/manual/3619094/Finis-Duo.html'), ('MOJAWA Purra Swim $169.99, 32 GB, 15 h rated, MOJAWA US store, read 2026-11-08', 'https://www.mojawa.com/products/purra-swim-bone-conduction-headphones-best-swimming-headphones')],
+ "published": '2026-11-03',
+ "checked": '2026-11-08',
+ "updated": '2026-11-08'},
 
 {'slug': 'best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300',
  'question': 'G92 (Awin brands: 12V 100Ah Group 24 LiFePO4 with Bluetooth for a trolling motor under $300)',
