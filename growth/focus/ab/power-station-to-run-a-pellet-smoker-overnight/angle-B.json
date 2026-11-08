@@ -1,0 +1,165 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that the power station's own AC inverter keeps drawing about 10–16 W all night (The Gadgeteer: 10 W on the Elite 200 V2; The Solar Lab: about 16 W on the Elite 100 V2). Against a measured 35 W smoker, that adds 29–46% to an overnight cook. A 12-hour cook then takes about 540–612 Wh from the battery, not the 420 Wh the smoker itself uses. So a 1 kWh station covers about 1.7 overnight cooks and the 2 kWh Elite 200 V2 covers about 3.7.",
+ "standout": 2,
+ "standout_why": "I compared five pages. The Traeger support page (cited) gives grill nameplate watts and nothing about stations. Volt & Valley uses a flat 80% usable figure and an assumed 50 W draw. EcoFlow's blog uses a flat 0.85 and the BLUETTI blog a flat 0.8, and both rest on estimates. Generatorchecker uses a flat 0.70 derate with no idle figure. None of them gives a measured inverter idle draw for any station or separates that fixed hourly cost from the smoker load. At 35 W, a 0.85 derate allows only about 6 W of loss, well below the 10–16 W that reviewers found. Our own current page guesses 10–20 W of inverter draw without a source.",
+ "decides": "It confirms that 1 kWh is the minimum for one 12-hour night. The Elite 100 V2 runs one night with about 400 Wh left, not the 2+ nights that 0.85-derate arithmetic suggests. It also argues for the Elite 200 V2 when the shopper wants two back-to-back nights without recharging, and it costs less per overnight cook. Our table's '1' for 1 kWh units stands. For the Elite 200 V2, the sourced arithmetic gives about 3.7 rather than 2–3.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "Jackery Explorer 1000 v2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Measured pellet smoker energy use, 6-hour cook",
+   "value": "210 Wh over 6 h (35 W running, about 194 W for several minutes at startup)",
+   "source": "https://rvelectricity.substack.com/p/pellet-smoker-energy-use",
+   "source_title": "RVelectricity – Pellet Smoker Energy Use (Mike Sokol, Apr 30, 2024)",
+   "read": "2026-11-08",
+   "note": "Z Grills smoker (model not named) on a Jackery Explorer 1000. Cook was 3 h at 225°F, then about 3 h at 275°F. 210 Wh ÷ 6 h = 35 W average including startup. The post doesn't give the outside temperature or how it was measured."
+  },
+  {
+   "product": "general",
+   "label": "Smoker energy at the outlet for a 12-hour overnight cook (derived)",
+   "value": "420 Wh",
+   "source": "https://rvelectricity.substack.com/p/pellet-smoker-energy-use",
+   "source_title": "RVelectricity – Pellet Smoker Energy Use",
+   "read": "2026-11-08",
+   "note": "35 W × 12 h = 420 Wh. Scaled linearly from one measured 6-hour cook. Cold nights will push it higher."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC idle draw (AC and DC left on)",
+   "value": "10 W",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer – BLUETTI Elite 200 V2 review (Greg Cleveland, 2025-01-06, updated 2026-11-02)",
+   "read": "2026-11-08",
+   "note": "The page writes '10w/h with AC and DC left on'. I read that as a 10 W rate, which is the same as 10 Wh per hour."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable capacity",
+   "value": "about 2,000 Wh (>93% of 2,073.6 Wh)",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer – BLUETTI Elite 200 V2 review",
+   "read": "2026-11-08",
+   "note": "The review doesn't name the load used for the capacity test."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Battery Wh per 12-hour smoke (derived)",
+   "value": "540 Wh",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer + RVelectricity",
+   "read": "2026-11-08",
+   "note": "(35 W smoker + 10 W idle) × 12 h = 540 Wh. This treats the 10 W idle as the whole conversion overhead at this light load."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "12-hour overnight cooks per charge (derived)",
+   "value": "3.7",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer + RVelectricity",
+   "read": "2026-11-08",
+   "note": "2,000 Wh usable ÷ 540 Wh = 3.7."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2600W 2073.6Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py product."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cost per overnight cook of capacity (derived)",
+   "value": "$243 per 12-hour cook",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI store + The Gadgeteer + RVelectricity",
+   "read": "2026-11-08",
+   "note": "$899 ÷ 3.7 cooks = $243. That works out to $899 ÷ 2,000 usable Wh = $0.45 per usable Wh."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "AC idle draw (inverter on, no load)",
+   "value": "about 16 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-100-v2",
+   "source_title": "The Solar Lab – BLUETTI Elite 100 V2 review",
+   "read": "2026-11-08",
+   "note": "The Solar Lab says it 'calculated' this figure and doesn't describe the method. The same review measured inverter efficiency at about 80% but doesn't state the load."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Battery Wh per 12-hour smoke (derived)",
+   "value": "612 Wh",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-100-v2",
+   "source_title": "The Solar Lab + RVelectricity",
+   "read": "2026-11-08",
+   "note": "(35 W + 16 W idle) × 12 h = 612 Wh. The Solar Lab's 80% efficiency figure gives a lower 525 Wh (420 ÷ 0.80). I used the idle-based figure because the load is light."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "12-hour overnight cooks per charge (derived)",
+   "value": "1.7",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 product page (1,024 Wh, 25 lb) + The Solar Lab",
+   "read": "2026-11-08",
+   "note": "1,024 Wh rated ÷ 612 Wh = 1.67. I had no measured usable capacity, so this uses the rated figure and is an upper bound."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search. The product page also shows US$499.00."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Cost per overnight cook of capacity (derived)",
+   "value": "$299 per 12-hour cook",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI store + The Solar Lab + RVelectricity",
+   "read": "2026-11-08",
+   "note": "$499 ÷ 1.67 cooks = $299. That's about $56 more per cook than the Elite 200 V2."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$499.00, listed as available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search: available=true. This conflicts with our page's 'Back late Nov', so recheck stock before publishing."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker-stated standby draw",
+   "value": "4.5 W",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-60w-solar",
+   "source_title": "BLUETTI Elite 30 V2+60W Solar (BLUETTI US store listing)",
+   "read": "2026-11-08",
+   "note": "Maker claim ('only 4.5W standby'), and it doesn't say whether the AC inverter is on. If it holds with AC on: 288 Wh ÷ (35 + 4.5 W) = 7.3 h, which is not a 12-hour night."
+  }
+ ],
+ "unsourced": [
+  "Measured AC idle draw and usable capacity for the Jackery Explorer 1000 v2, BLUETTI AC180 and ALLPOWERS P1800. I searched for reviewer idle measurements and found none, so I didn't derive cooks per charge for these three.",
+  "Jackery Explorer 1000 v2 price on jackery.com. The store search returned only the 1000 Plus, HomePower 1000 v2 and other models. I didn't try Amazon.",
+  "ALLPOWERS P1800 price. storecheck.py on allpowers.com returned HTTP 0.",
+  "The Elite 200 V2 usable-capacity test load. The Gadgeteer doesn't state it. Backup Power Hub's page, which search results credited with a 2,065 Wh test, actually reports no measured test.",
+  "Enough Watts pellet-grill page. The fetch failed with an SSL certificate error, so I couldn't compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8715217
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a named, measured energy use for a whole pellet-smoker cook on battery: Mike Sokol (RVelectricity) ran a Z Grills smoker from a Jackery Explorer 1000 and measured about 194 W at ignition, 35 W while running and 0.21 kWh (210 Wh) over a 6-hour rib cook. Applied to a 12-hour overnight cook, that is about 420 Wh. Reviewer-measured usable output of 850–910 Wh from the 1 kWh stations covers that about twice, but only if the inverter's own draw stays small.",
+ "standout": 2,
+ "standout_why": "I compared it with the two cited pages and the top unclaimed result. Traeger Support (cited in all three chats) gives one watt figure per model (for example D2 110 W, Non-WiFIRE 300 W) and says startup draws more, but gives no Wh for a cook and says nothing about power stations. The Pit Boss 3 Series manual (cited in one chat) is where ChatGPT got its 1,000 W inverter advice; it has no measured draw. Volt & Valley gives a 40–60 W running band and an 80% usable capacity, and both are its own assumptions, labelled as such; it reports no tests. ChatGPT's own tables (30–80 W, 240–1,100 Wh per cook) are 'planning estimates'. None of these pages has a measured smoker cook or a measured usable output from any station it names.",
+ "decides": "This confirms a roughly 1 kWh LiFePO4 station as the pick and shows ChatGPT's 'at least 500 Wh' floor and 200–400 W startup band are about right. The measured 35 W × 12 h = 420 Wh, plus a few Wh for ignition. That is less than half of the usable output reviewers measured: Notebookcheck got 850 Wh from the Anker SOLIX C1000 Gen 2 and OutdoorGearLab got 910 Wh from the Jackery Explorer 1000 v2. So 'cooks per charge' for the 1 kWh rows could read 2, not 1. The catch is inverter self-consumption. If it is around 15 W (New Atlas, for the BLUETTI AC180, without saying whether it was measured), it adds about 180 Wh per 12 hours and pushes a 1 kWh unit back toward 1–1.5 cooks. That makes idle draw the figure that decides between the 1 kWh rows. The BLUETTI Elite 30 V2 is ruled out for a 12-hour cook on arithmetic alone: 420 Wh is more than its rated 288 Wh before any losses. The measured 194 W ignition peak is well within its 600 W AC output, so it would only cover roughly a 6–7 hour cook.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Measured pellet-smoker draw and energy over a cook on a power station",
+   "value": "~194 W ignition for 'several minutes'; 35 W running (auger + electronics); 0.21 kWh (210 Wh) over 6 hours",
+   "source": "https://rvelectricity.com/pellet-smoker-energy-use/",
+   "source_title": "Pellet Smoker Energy Use - RVelectricity",
+   "read": "2026-11-08",
+   "note": "Measured by Mike Sokol (RVelectricity). Published 2024-04-30, updated 2025-08-01; the test date is given only as 'last Sunday'. Basic Z Grills pellet smoker run from a Jackery Explorer 1000 (original, not v2) charged by a 100 W panel. 3-2-1 ribs: 3 h at 225°F, then 275°F. Weather not reported. Our arithmetic: 210 Wh / 6 h = 35 Wh/h, so 12 h ≈ 420 Wh plus ignition."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured usable AC output",
+   "value": "850 Wh (83% of rated 1,024 Wh)",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster, but... Anker Solix C1000 Gen 2 power station review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Marcus Schwarten, Notebookcheck, published 2025-12-21, updated 2026-10-05. Continuous load of about 250 W at 230 V (European unit; Notebookcheck says the US version differs in some points), run until shutdown at 1%. Notebookcheck says the result was lower with a fluctuating load but gives no number. AC charging took 1,110 Wh (~92%). No idle draw reported. Our arithmetic: 850 / 420 ≈ 2.0 twelve-hour cooks at the measured 35 W, before inverter self-consumption."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured usable AC output",
+   "value": "910 Wh (85% of rated 1,070 Wh)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2",
+   "source_title": "Jackery Explorer 1000 v2 review - OutdoorGearLab",
+   "read": "2026-11-08",
+   "note": "Kenji Mowrey, OutdoorGearLab, 2026-07-23. Load and conditions for the discharge test are not stated. No idle draw reported. Our arithmetic: 910 / 420 ≈ 2.2 twelve-hour cooks at 35 W, before inverter self-consumption."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured efficiency at near-maximum load",
+   "value": "87.5% (37.5 min against an expected 43 min at 1,479 W); held up to 1,560 W for 10 min; 2,200 W surge for a couple of seconds before shutting off",
+   "source": "https://www.thesolarlab.com/review/jackery-1000-v2-review",
+   "source_title": "Jackery 1000 V2 Review - The Solar Lab",
+   "read": "2026-11-08",
+   "note": "The Solar Lab (no author or date on the page; footer © 2026). The test was at a heavy load and does not tell you the efficiency at a smoker's ~35 W. No idle figure reported."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge",
+   "value": "1.91 kWh (~92% of rated 2,073.6 Wh); 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview)",
+   "read": "2026-11-08",
+   "note": "Dylan Dougherty, StorageReview, 2025-04-25. Discharge load not stated; the % is our calculation. ECO mode is described as cutting idle draw but no figure is given. Our arithmetic: 1,910 / 420 ≈ 4.5 twelve-hour cooks at 35 W before self-consumption."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Self-consumption with output on, and low-load runtime",
+   "value": "self-consumption 'around 15 W'; a 40 W fridge ran 'more like 50 hours' against BLUETTI's 17-hour claim; ~950 W standard AC charging in their tests",
+   "source": "https://newatlas.com/outdoors/bluetti-ac180-portable-power-station-review",
+   "source_title": "Review: Bluetti AC180 hits the portable power station sweet spot (New Atlas)",
+   "read": "2026-11-08",
+   "note": "Noel McKeegan, New Atlas, 2023-05-04. The 15 W figure and '~85% inverter efficiency' are stated without saying whether they were measured or taken from a spec, so use them as a stated figure, not a lab measurement. A fridge cycles, so the 50 h runtime is not a constant 40 W load. Our arithmetic: 15 W × 12 h = 180 Wh of overhead, about 43% on top of the 420 Wh smoker load."
+  }
+ ],
+ "unsourced": [
+  "A measured AC idle draw (no load) from a named reviewer for the Jackery Explorer 1000 v2, Anker SOLIX C1000 Gen 2, BLUETTI Elite 100 V2, Elite 200 V2, Elite 30 V2 and ALLPOWERS P1800. I looked in Notebookcheck (C1000 Gen 2 and Elite 100 V2 reviews), OutdoorGearLab, The Solar Lab (Jackery review and its idle-consumption how-to page), StorageReview and The Gadgeteer. None gives a measured figure. The Gadgeteer's '10w/h with AC and DC left on' for the Elite 200 V2 reads as a spec. Trend Xplore's 17 W for the Jackery v2 is from a low-authority site and I did not open it.",
+  "Measured usable output for the BLUETTI Elite 100 V2 (Notebookcheck's 2026-01-06 review gives only charging and appliance-load figures), BLUETTI Elite 30 V2 and ALLPOWERS P1800.",
+  "A measured kWh for a whole Traeger or Pit Boss cook from a named reviewer. The only measured cook I found was the Z Grills one on RVelectricity.",
+  "Efficiency measured at a 30–50 W load for any candidate. All the capacity tests I found used loads of 250 W or more, or did not state the load.",
+  "Enough Watts pellet-grill page (a rival result): it would not load because of an SSL certificate error, so I could not check whether it reports measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.835313
+ }
+}

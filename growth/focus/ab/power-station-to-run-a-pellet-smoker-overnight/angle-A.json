@@ -1,0 +1,93 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the power stations it recommended can switch their AC outlet off by themselves when the load is light, or that a Traeger D2 grill holding temperature draws about 10–20 W. That puts the grill at or below those cut-off levels: the Anker SOLIX C1000 Gen 2 turns its inverter off after 15 minutes under 20 W by default (The Technology Man), and the BLUETTI Elite 100 V2's Eco mode cuts AC below a 10–40 W level set in the app (New Atlas). Either can stop the auger and fan in the middle of the night unless the setting is turned off.",
+ "standout": 2,
+ "standout_why": "I read three pages: the cited Traeger 'Grill Watt & Amp Usage' page, Volt & Valley's pellet-grill picks and our own page. Traeger gives the D2's running amps but never mentions inverters or power stations. Volt & Valley recommends the Anker SOLIX C1000 Gen 2 and Jackery 1000 v2 for overnight cooks but says nothing about idle draw, auto-off or eco mode, and it assumes 80% of the battery is usable. Our page lists AC auto-off and usable capacity as missing. ChatGPT's three answers recommend the C1000 Gen 2, the Elite 100 V2 and the Jackery 1000 v2 with no word on low-load shutoff. I did not open homepowerfacts, enoughwatts, the BLUETTI and EcoFlow blogs or gearbrain, so one of them may mention it.",
+ "decides": "This mostly adds a required setting rather than ruling a station out. With an Anker C1000 Gen 2, turn off Smart AC Output before an overnight cook. With a BLUETTI Elite 100 V2, turn off Eco mode or set the AC level to its 10 W minimum. Otherwise a D2 Traeger idling at about 10–20 W can lose power and the fire goes out. It also shrinks capacity: The Technology Man measured about 17 W inverter overhead on the C1000 Gen 2, which is roughly 200 Wh over 12 hours, as much as the grill uses. That backs the 1 kWh minimum and makes the 2 kWh Elite 200 V2 safer for 12-hour or cold-night cooks.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 100 V2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Traeger D2 running current after heat-up (120 V)",
+   "value": "0.08–0.17 A, about 10–20 W",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Traeger rates D2 grills at 110 W / 0.9 A and says the draw 'drops to 0.08–0.17 A after heating'. 0.08 A × 120 V = 9.6 W and 0.17 A × 120 V = 20.4 W. Non-WiFIRE grills drop to 0.4–0.8 A (48–96 W), which is above every low-load cut-off found here."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Low-load AC shutoff (default)",
+   "value": "Inverter off after 15 min below 20 W",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record-Breaking Charge Speed? Anker Solix C1000 Gen 2 Power Station Review (The Technology Man, 2025-11-04)",
+   "read": "2026-11-08",
+   "note": "The Technology Man: 'By default the Anker turns off its inverter after 15 minutes when it's not in use or using below 20W.' He turned off Smart AC Output Mode to stop it. A D2 Traeger at 9.6–20.4 W is under the 20 W line for most of its range."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Inverter no-load draw (measured)",
+   "value": "about 17 W (20% of 1,024 Wh lost in 12 h with AC on and no load)",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record-Breaking Charge Speed? Anker Solix C1000 Gen 2 Power Station Review (The Technology Man, 2025-11-04)",
+   "read": "2026-11-08",
+   "note": "100% to 80% over 12 h with Smart AC off. 0.20 × 1,024 Wh ÷ 12 h ≈ 17 W, so about 205 Wh of overhead on a 12-hour cook. A D2 at 10–20 W uses about 120–245 Wh in the same 12 hours."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Usable AC energy (measured)",
+   "value": "907 Wh of 1,024 Wh at a 1 kW load (89%)",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record-Breaking Charge Speed? Anker Solix C1000 Gen 2 Power Station Review (The Technology Man, 2025-11-04)",
+   "read": "2026-11-08",
+   "note": "Measured with a constant 1 kW heater. At a smoker's 20–60 W the fixed inverter overhead takes a much larger share, so expect less."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle life (maker basis)",
+   "value": "4,000 cycles to at least 80% capacity",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "Maker: 'After 4,000 cycles, the battery still has at least 80% capacity.' Same page lists 2,000 W AC (3,000 W peak) and 1,024 Wh. The page has no Smart AC auto-off text."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Eco-mode AC cut-off level",
+   "value": "Adjustable from 10 to 40 W in the app; Eco mode must be off for low-power loads to keep running",
+   "source": "https://newatlas.com/outdoors/review-bluetti-elite-100-v2-portable-power-station",
+   "source_title": "Review: Bluetti Elite 100 V2 portable power station lightens the load (New Atlas, Noel McKeegan, 2025-10-06)",
+   "read": "2026-11-08",
+   "note": "McKeegan: thresholds 'can be adjusted in the app (5–20 W for DC, 10–40 W for AC)', and you must 'shut the power saving Eco mode off so that the power keeps flowing'. He gives no time delay and doesn't say whether Eco is on out of the box."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Self-consumption and usable capacity (reviewer)",
+   "value": "about 10 W self-consumption; about 850–900 Wh usable of 1,024 Wh",
+   "source": "https://newatlas.com/outdoors/review-bluetti-elite-100-v2-portable-power-station",
+   "source_title": "Review: Bluetti Elite 100 V2 portable power station lightens the load (New Atlas, Noel McKeegan, 2025-10-06)",
+   "read": "2026-11-08",
+   "note": "McKeegan: 'self-consumption rate of around 10 W'. Usable figure from his 90% depth-of-discharge × 90% inverter arithmetic; the article prints '850-900-W', which reads as Wh. 10 W × 12 h = 120 Wh of overhead per overnight cook."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 Energy Saving Mode: search snippets say AC ≤25 W turns all outputs off after 12 h, on by default. I opened two manual PDFs (mrsolar.com, hampshiregenerators.co.uk) but their text was compressed and unreadable, notice-facile returned 403, and jackery.com returned 429. Not stated as a fact. If true, a full 12-hour D2 cook would hit it.",
+  "The C1000 Gen 2 auto-off rule in Anker's own manual: the US user-guide PDF and the Anker Japan A1763 manual were over 10 MB, and device.report returned 403. A search snippet quotes Anker's original-C1000 FAQ as 15 W/15 min, so the official Gen 2 wording may differ from the reviewer's 20 W.",
+  "BLUETTI's own statement of the Elite 100 V2 / AC180 Eco default and time delay: bluettipower.com product page hit a redirect loop, the manuals.plus copies returned 403, and the community forum redirected to its homepage. Forum snippets mention 4 h, unverified.",
+  "Low-load auto-off for the BLUETTI Elite 200 V2, BLUETTI AC180 and ALLPOWERS P1800: not reached within the tool budget.",
+  "Prices: not checked for this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9488751
+ }
+}

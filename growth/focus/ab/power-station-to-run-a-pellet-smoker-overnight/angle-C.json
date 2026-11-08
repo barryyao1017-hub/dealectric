@@ -1,0 +1,68 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180's ECO mode turns its AC outlets off when the load stays under a set 15–30 W for 1–4 hours, or that a Traeger D2 grill draws only about 10–20 W once it is up to temperature (0.08–0.17 A at 120 V, per Traeger), so with ECO on the outlet can switch off and the fire goes out mid-cook.",
+ "standout": 2,
+ "standout_why": "I compared Traeger Support (the only page ChatGPT cited every time; it gives D2 running amps but says nothing about inverters or power stations), the Pit Boss 3 Series manual (cited; it covers only the 1,000 W inverter for ignition), Volt & Valley, the BLUETTI pellet-grill blog, the EcoFlow pellet-smoker guide and our own current page. None of them mentions ECO mode, AC auto-off, low-load shutoff or a station's outlet-timeout rules. EcoFlow and our page cover pure sine wave only. The BLUETTI blog says WiFIRE Traegers draw a steady 10–20 W but never links that to its own ECO cutoff. I score it 2 rather than 3 because I could not source the ECO default or threshold for the Elite 200 V2, Elite 100 V2 or Explorer 1000 v2, so it can't yet rank one station above another.",
+ "decides": "This doesn't change capacity sizing (about 1 kWh still fits a 12-hour cook). It adds a required setup step and a comparison column. On any BLUETTI unit, ECO must be off before an overnight cook, because a D2 Traeger idling at about 10–20 W sits below the AC180's lowest selectable 15–30 W cutoff. Anker's C1000 outlets shut off only when no plug is detected for 15 minutes, with no wattage rule, so a plugged-in grill keeps power. That makes the Anker C1000 (the card ChatGPT showed at $449.99) the safer choice if the shopper won't change settings. Anker's −20 °C to 40 °C discharge range also covers a cold overnight cook.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 100 V2",
+  "Anker SOLIX C1000",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode AC auto-off threshold and delay",
+   "value": "AC output turns off when the load stays below a user-set 15–30 W (DC: 5–10 W) for 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.de/manual/988223/Bluetti-Ac180.html?page=18",
+   "source_title": "Bluetti AC180 manual, page 18 (5. Appendix, FAQ Q4), ManualsLib mirror, English text",
+   "read": "2026-11-08",
+   "note": "Quoted: 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours' and 'the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' This is a mirror of BLUETTI's manual. I could not read the text of the BLUETTI-hosted PDF (cdn.shopify.com AC180_User_Manual.pdf); it would not parse. The page gives no default threshold or delay."
+  },
+  {
+   "product": "general (Traeger D2 grills)",
+   "label": "Running current after heat-up, 120 V",
+   "value": "0.08–0.17 A (about 10–20 W); startup 110 W / 0.9 A",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.08 A × 120 V = 9.6 W and 0.17 A × 120 V = 20.4 W. The whole range sits below or inside the AC180's 15–30 W ECO cutoff, so ECO can switch off the outlet during a long cook. Non-WiFIRE grills run 0.4–0.8 A (48–96 W) after heating, which is above the cutoff. Traeger lists Touchscreen grills at a single 95 W with no running figure. The page mentions generators but not inverters or power stations."
+  },
+  {
+   "product": "Anker SOLIX C1000",
+   "label": "AC outlet auto-off rule",
+   "value": "Outlet turns off only if no plug is detected for more than 15 minutes; with outputs off and no load, the unit powers off after 12 hours (standby time can be set in the Anker app)",
+   "source": "https://service.anker.com/article-description/Anker-SOLIX-C1000-C1000X-Portable-Power-Station-USER-GUIDE-A1761-en-GB",
+   "source_title": "Anker SOLIX C1000/C1000X Portable Power Station USER GUIDE (A1761), en-GB",
+   "read": "2026-11-08",
+   "note": "Quoted: 'The AC outlets can intelligently identify whether a plug is inserted' and they turn off 'if no plug is detected for more than 15 minutes.' The guide states no wattage threshold, so a plugged-in grill drawing 10–20 W should keep the outlet on. This is the en-GB edition of the A1761 guide, so check it against the US edition. It covers the C1000 Gen 1 (the card ChatGPT showed), not the Gen 2."
+  },
+  {
+   "product": "Anker SOLIX C1000",
+   "label": "Discharge temperature range",
+   "value": "-4°F to 104°F (-20°C to 40°C); charging 32°F to 104°F (0°C to 40°C)",
+   "source": "https://service.anker.com/article-description/Anker-SOLIX-C1000-C1000X-Portable-Power-Station-USER-GUIDE-A1761-en-GB",
+   "source_title": "Anker SOLIX C1000/C1000X Portable Power Station USER GUIDE (A1761), en-GB",
+   "read": "2026-11-08",
+   "note": "This matters for cold overnight cooks. The unit can run the grill below freezing but can't be recharged below 0°C."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 ECO default (on or off at shipment, default threshold and delay): the BLUETTI-hosted PDF and the Lowes copy wouldn't parse as text, and manuals.plus returned 403.",
+  "BLUETTI Elite 200 V2 and Elite 100 V2 ECO threshold and delay: the Elite 200 V2 EU manual PDF was over the fetch size limit, the Elite 100 V2 manuals.plus page returned 403, and the BLUETTI community threads now redirect to forum.bluettipower.com.",
+  "Jackery Explorer 1000 v2 AC auto-off or energy-saving threshold: the only manual I fetched (mrsolar.com) turned out to be the older Explorer 1000 (AU) and its text wasn't readable. I didn't reach Jackery's US user-guide page.",
+  "Anker SOLIX C1000 Gen 2 (A1763) outlet auto-off rule and discharge temperature: the US user guide PDF on Anker's CDN was over the fetch size limit. Search snippets mention a 15-minute no-plug rule, but I didn't open a page that confirms it.",
+  "ALLPOWERS P1800 AC auto-off or ECO behaviour: not researched; I ran out of budget.",
+  "US prices for these candidates: not checked today. Prices are outside this angle, and the storecheck/amzcheck shell tools needed permission I didn't have."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9411819
+ }
+}

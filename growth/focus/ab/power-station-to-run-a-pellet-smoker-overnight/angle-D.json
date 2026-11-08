@@ -1,0 +1,73 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a Traeger D2 grill holding temperature draws only 0.08–0.17 A (about 10–20 W at 120 V). That sits inside the low-load window where the BLUETTI AC180's ECO mode switches AC off after 1–4 hours. The Jackery Explorer 1000 v2 ships with Energy Saving Mode on and turns all outputs off after 12 hours at low load. Either can kill the grill partway through the night.",
+ "standout": 2,
+ "standout_why": "I compared against the Traeger support page (the only cited source), our current page, Volt & Valley, the BLUETTI pellet-grill blog and the EcoFlow pellet-smoker guide. Traeger gives the 0.08–0.17 A D2 running figure but never mentions power stations. None of the other four mention ECO mode, AC auto-off, low-load shutoff or idle timeouts. They all assume 30–60 W or 40–60 W of steady draw, which hides that a D2 grill runs below these stations' auto-off thresholds. The BLUETTI blog only says that if power drops, 'the auger stops, and your bark is history.'",
+ "decides": "This finding confirms the plan works rather than changing the pick. Any 1 kWh-class LiFePO4 unit already listed has enough energy. For an overnight cook, the page needs one setup step: turn off AC ECO on the BLUETTI AC180 (app or setting mode) and Energy Saving Mode on the Jackery Explorer 1000 v2 before lighting the grill, or the AC can shut off unattended. A Traeger power-loss shutdown leaves the fire out until someone restarts it. The finding also argues against relying on the 25–30 W auto-off defaults with low-draw D2 or WiFIRE grills. It does not by itself rank one station above another.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Traeger D2 grill running current after heat-up (120 V)",
+   "value": "0.08–0.17 A (about 9.6–20.4 W); rated 110 W / 0.9 A",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Traeger's table, 'running (after heating)' column. Watts are my arithmetic: 0.08 A × 120 V = 9.6 W and 0.17 A × 120 V = 20.4 W. Non-WiFIRE grills are listed at 0.4–0.8 A running (48–96 W). Traeger says draw 'drops significantly' once set temperature is reached. The page does not mention power stations or inverters."
+  },
+  {
+   "product": "general",
+   "label": "Traeger non-WiFIRE grill running current after heat-up (120 V)",
+   "value": "0.4–0.8 A (about 48–96 W); rated 300 W / 2.5 A",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Watts are my arithmetic at 120 V. These grills sit above the AC180 and Jackery low-load windows, so the auto-off risk applies mainly to D2-controller grills."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC ECO mode low-load auto-off window",
+   "value": "AC output turns off when load stays within a selectable 15–30 W threshold for a selectable 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=14",
+   "source_title": "Bluetti AC180 User Manual (page 14) – ManualsLib",
+   "read": "2026-11-08",
+   "note": "Manual text: 'the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' The ECO table lists Power '15W-30W' (AC) and '5W-10W' (DC), with Duration '1, 2, 3, 4 hours'. The column labels are only implied by the nearby AC/DC output headings. Set under Setting mode with the DC power button, or in the BLUETTI app. A D2 Traeger at 9.6–20.4 W falls inside or below this window."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Energy Saving Mode auto-off",
+   "value": "On by default; all outputs turn off after 12 hours when nothing is connected or the load is at or below a set value",
+   "source": "https://www.teklib.com/library/jackery-explorer1000v2-power-station-manual/",
+   "source_title": "Jackery EXPLORER 1000 V2 power station User Manual – Teklib",
+   "read": "2026-11-08",
+   "note": "Quoted text: 'the product turns the Energy Saving Mode on by default' and 'the device will automatically turn off all outputs after 12 hours'. The trigger is when 'no device is connected or the connected device is less than or equal to a certain value'. An overnight-plus cook of 12 h or more with a 10–20 W D2 grill can reach this cutoff."
+  },
+  {
+   "product": "general",
+   "label": "Traeger lists power loss as a cause of mid-cook shutoff",
+   "value": "'Power outage or tripped outlet/breaker' is a listed cause of WiFIRE grills shutting off mid-cook",
+   "source": "https://support.traeger.com/hc/en-us/articles/15272110913179",
+   "source_title": "WiFIRE Grill Shuts off Mid-Cook – Traeger Support",
+   "read": "2026-11-08",
+   "note": "The article does not say whether the grill relights automatically when power returns. So if the station's AC cuts out, the cook stops until someone intervenes."
+  }
+ ],
+ "unsourced": [
+  "The exact Jackery Explorer 1000 v2 AC low-load threshold. A search snippet quoting the v2 manual said 'AC Output ≤25W', but the official r.jackery.net and solarpowersupply manual PDFs would not render through the fetch tool, and the Teklib page says only 'a certain value'.",
+  "Whether BLUETTI AC180 AC ECO is on by default and what its factory threshold and time are. The manual page I opened gives only the 15–30 W / 1–4 h ranges. 'Default 4 hours' and 'enabled by default' appear only in a third-party blog and a community post, which I did not open.",
+  "AC low-load auto-off thresholds and defaults for the BLUETTI Elite 200 V2, Anker SOLIX C1000 Gen 2, ALLPOWERS P1800 and EcoFlow DELTA 3. I did not reach their manuals within the tool budget.",
+  "Whether a Traeger, Pit Boss or Recteq controller relights on its own after AC power returns, in the maker's words. Traeger's mid-cook shutoff article does not say, and the only claims I found were owner forum posts."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9016771000000001
+ }
+}

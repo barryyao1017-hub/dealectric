@@ -1,0 +1,98 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that on BLUETTI's US store today the 1,152 Wh AC180 is in stock at $499, the same price as the 1,024 Wh Elite 100 V2 ChatGPT showed, and that a non-WiFIRE Traeger at its stated 0.4–0.8 A after heat-up uses about 576–1,152 Wh in 12 hours, which can exceed what any of ChatGPT's ~1 kWh cards hold, while the 2,073.6 Wh Elite 200 V2 at $899 covers it.",
+ "standout": 2,
+ "standout_why": "I compared against Traeger Support (cited in all three chats; it gives per-model watts and post-heating amps but no watt-hours per cook and no stations), Volt & Valley (prices four stations, but the AC180 and the 2 kWh class aren't among them, and its runtimes assume a flat 50 W, which isn't measured) and ChatGPT's own cards ($449.99 C1000 at Micro Center, $499 Elite 100 V2, $509 Jackery from Eco Solar Kits, $729 AC180 from an unnamed seller). None prices the AC180 at BLUETTI's $499, none puts price per Wh side by side, and none turns Traeger's amp figures into a 12-hour watt-hour total. That total is what rules out 1 kWh units for older Traegers. I could not open the cited Pit Boss manual's text (compressed PDF), so I can't compare against its 1,000 W inverter claim.",
+ "decides": "At $499 the AC180 beats the Elite 100 V2 on capacity at the same price, and it beats ChatGPT's $729 AC180 card by $230, so it should be the 1 kWh-class pick. Our page's AC180 stock cell ('Back late Nov') is out of date: it is in stock today. If the shopper's grill is a non-WiFIRE Traeger (300 W rated, 0.4–0.8 A after heat-up), the 12-hour total can pass 1 kWh, so the Elite 200 V2 at $899 (2,073.6 Wh) becomes the safe pick. A Traeger D2 (0.08–0.17 A, about 10–20 W) needs only about 115–245 Wh at the plug, so a 1 kWh unit gives several nights and even the 288 Wh Elite 30 V2 at $289.99 is borderline. The ALLPOWERS P1800 is the cheapest per Wh ($399 for 1,024 Wh), but I couldn't open its product page to resolve whether it ships now or is a pre-order.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS P1800",
+  "Jackery Explorer 1000 v2",
+  "Anker SOLIX C1000",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 2 Pro",
+  "EcoFlow RIVER 3 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Traeger non-WiFIRE grill draw",
+   "value": "300 W / 2.5 A rated at 120 V; drops to 0.4–0.8 A after heating",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.4–0.8 A × 120 V = 48–96 W; × 12 h = 576–1,152 Wh at the plug, before inverter loss and igniter start. The top of that range is more than the 1,024–1,070 Wh rated capacity of every ~1 kWh card ChatGPT showed."
+  },
+  {
+   "product": "general",
+   "label": "Traeger D2 grill draw",
+   "value": "110 W / 0.9 A rated at 120 V; drops to 0.08–0.17 A after heating",
+   "source": "https://support.traeger.com/hc/en-us/articles/4407219875611-Grill-Watt-Amp-Usage",
+   "source_title": "Grill Watt & Amp Usage – Traeger Support",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.08–0.17 A × 120 V ≈ 10–20 W; × 12 h ≈ 115–245 Wh at the plug. The page also lists Woodridge at 535 W and Touchscreen (grill only) at 95 W, with no post-heating figure for either."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$499.00, available (1,152 Wh, 1,800 W AC)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py on the product JSON; base variant available=true. $499 / 1,152 Wh = $0.43 per Wh. ChatGPT's card showed $729 from an unnamed seller. Our page says 'Back late Nov', which is out of date."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$499.00, available (1,024 Wh, 1,800 W AC)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "Where it loses: same $499 as the AC180 but 128 Wh less ($0.49 per Wh). Its advantages, from the maker's listing: 25 lb, 10 ms UPS."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$899.00, available (2,073.6 Wh, 2,600 W AC)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "$899 / 2,073.6 Wh = $0.43 per Wh, the same rate as the AC180. It is the only in-stock candidate that covers a non-WiFIRE Traeger's 1,152 Wh worst case with margin. Where it loses: $400 more than the AC180 when the grill is a D2 or other low-draw model."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$289.99, available (288 Wh, 600 W AC, 1,500 W lifting)",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-08",
+   "note": "The listing states 4.5 W standby. Where it loses: 288 Wh covers at most a D2 Traeger's ~115–245 Wh for 12 hours, and falls far short of a non-WiFIRE's 576–1,152 Wh."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Price, ALLPOWERS US store",
+   "value": "$399.00 (1,024 Wh, 1,800 W AC, 3,600 W peak)",
+   "source": "https://www.iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-08",
+   "note": "Price from storecheck.py search JSON, which flagged it available=true. $0.39 per Wh, the lowest of the candidates. The product page itself returned HTTP 429 twice, so the pre-order vs in-stock status our page shows ('ships from Dec 7') is unverified. Where it loses: same ~1 kWh ceiling as the AC180, so not enough for the non-WiFIRE worst case."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 price at jackery.com: the product page returned HTTP 429 on storecheck.py and WebFetch, and the store search didn't list the 1000 v2. ChatGPT's cards showed $499 and $509 (Eco Solar Kits), and Volt & Valley lists $559; I couldn't open the maker's page.",
+  "Anker SOLIX C1000 and C1000 Gen 2 prices at Anker's US store: anker.com and ankersolix.com Shopify endpoints and the guessed product URLs returned 404. ChatGPT's cards showed $449.99 (Micro Center, C1000) and $699.99 (C1000 Gen 2); I didn't open the Micro Center page.",
+  "EcoFlow RIVER 2 Pro price at us.ecoflow.com: HTTP 429. ChatGPT's card showed $394.37 from an unnamed seller.",
+  "EcoFlow RIVER 3 Plus price: not attempted within the call budget.",
+  "BLUETTI AC180 AC ECO-mode default (load threshold and hours before AC auto-off, and whether it is on out of the box). This matters because a D2 Traeger's 10–20 W idle could trip it overnight. The maker's PDF manual (cdn.shopify.com AC180_User_Manual.pdf) is compressed and local pdftotext needed approval; manuals.plus returned 403. Search snippets suggested 10–30 W over 1–4 h, but per the rules I'm not using unopened snippets.",
+  "Pit Boss 3 Series manual's inverter and igniter wattage text (cited by ChatGPT): the PDF is compressed and WebFetch couldn't read the text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.0238163000000002
+ }
+}
