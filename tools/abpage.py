@@ -419,27 +419,34 @@ def validate(draft: dict, new_page: bool) -> list[str]:
         for k, _ in pg.get("columns") or []:
             if not str((r.get("cells") or {}).get(k, "")).strip():
                 errs.append(f"empty cell {k} in {r.get('slug') or r.get('model')}")
-    rows = pg.get("rows") or []
-    if rows:   # the answer's pick must be the table's first row (11-08: a verifier dropped the pick's row)
-        import products as P
-        r0 = rows[0]
-        name = r0.get("model") or ""
-        if r0.get("slug"):
-            p0 = next((p for p in P.PRODUCTS + (draft.get("products") or []) if p["slug"] == r0["slug"]), {})
-            name = name or p0.get("model") or p0.get("name") or ""
-        def toks_of(nm):
-            return [x.lower() for x in re.findall(r"[A-Za-z0-9-]+", nm or "") if re.search(r"\d", x) and len(x) >= 3]
-        ans = re.sub(r"<[^>]+>", "", pg.get("answer", "")).replace("Short answer.", "")
-        named = [m.group(0).lower() for m in re.finditer(r"\b[A-Za-z]*\d[A-Za-z0-9-]*\b", ans) if re.search(r"[A-Za-z]", m.group(0)) and len(m.group(0)) >= 3]
-        named = [x for x in named if not re.fullmatch(r"\d+(wh|w|v|ah|db|mah|gb|tb|mm|hz|khz|lb|kg|ms|h|a|c|f|k|p)s?", x)]
-        first = named[0] if named else None
-        if first and not any(first in x or x in first for x in toks_of(name)):
-            errs.append(f"the answer's first named model ({first}) is not the table's first row ({name!r}): the pick must lead the table")
     if not new_page:
         ex = _existing(draft["slug"])
         if pg.get("title") != ex["title"] or pg.get("h1") != ex["h1"]:
             errs.append("title or h1 changed (fixed in the A/B test)")
     return errs
+
+
+def pick_check(draft: dict) -> list[str]:
+    """The answer's recommended product must be the table's first row, and the line under the H1 must not contradict
+    the answer (11-08: a verifier dropped the pick's row and the page said 'Pick: Denon' under an answer for Yamaha)."""
+    import products as P
+    pg = draft.get("page") or {}
+    names = []
+    for r in (pg.get("rows") or [])[:4]:
+        if r.get("slug"):
+            p = next((p for p in P.PRODUCTS + (draft.get("products") or []) if p["slug"] == r["slug"]), {})
+            names.append(f'{p.get("brand", "")} {r.get("model") or p.get("model") or p.get("name") or r["slug"]}')
+        else:
+            names.append(f'{r.get("brand", "")} {r.get("model", "")}')
+    prompt = ("A buying page opens with this answer paragraph:\n" + re.sub(r"<[^>]+>", "", pg.get("answer", "")) +
+              "\n\nIts comparison table's rows, in order:\n" + "\n".join(f"{i + 1}. {n}" for i, n in enumerate(names)) +
+              '\n\nWhich product does the answer recommend overall? Is it row 1? Reply with ONE JSON object: '
+              '{"pick": "<product the answer recommends>", "is_row_1": true|false}')
+    r = claude(prompt, tools=False, timeout=600)
+    if r.get("status") == "error" or "is_row_1" not in r:
+        return []   # the check couldn't run; don't block on it
+    return [] if r["is_row_1"] else [f"the answer recommends {r.get('pick')!r} but the table's first row is {names[0] if names else '-'!r}: "
+                                     "the pick must be the first row (add its row, sourced, if it is missing)"]
 
 
 def record_text(draft: dict, old: dict | None, gnum: int | None) -> str:
@@ -506,14 +513,14 @@ def apply(slug: str, local: bool) -> dict:
     h = jload(d / "harvest.json")
     if h and h.get("searched_as"):
         draft["searched_as"] = h["searched_as"]   # the latest harvest's search words (fresh chats after the research ran)
-    errs = validate(draft, new_page)
+    errs = validate(draft, new_page) + pick_check(draft)
     if errs and not draft.get("fix_pass"):   # one sourced fix pass, then re-check
         fx = claude(fix_prompt(draft, errs))
         if fx.get("draft"):
             keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug") if k in draft}
             draft = {**fx["draft"], **keep, "status": "ok", "fix_pass": {"errors": errs, "log": fx.get("log")}}
             jsave(d / "draft.json", draft)
-            errs = validate(draft, new_page)
+            errs = validate(draft, new_page) + pick_check(draft)
     if errs:
         draft["gate"] = {"date": today(), "pass": False, "errors": errs}
         jsave(d / "draft.json", draft)
