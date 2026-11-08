@@ -1,0 +1,118 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got ties Victron's under-voltage-protection reset to lithium batteries. Victron's own manual says the Blue Smart IP65 resets a tripped UVP on a Li-ion battery and starts charging. Its Li-ion mode also stops at 14.2 V with float disabled, and Victron warns not to charge Li-ion below 0 °C but describes no automatic low-temperature cut-off. So the $160–176 Victron can wake a BMS that has shut off, just like the $83 Redodo 20A and $103 LiTime 20A, while NOCO's only way is Force Mode, which switches its protections off.",
+ "standout": 1,
+ "standout_why": "Victron's cited product page (victronenergy.com/chargers/blue-smart-ip65-charger) already says 'revive deeply discharged batteries with automatic under-voltage protection reset', but it never names lithium or a BMS. The cited spec page shows 14.2 V Li-ion absorption with no float, but says nothing about 0 V or UVP. powergearguide.com warns in general terms about force and recovery modes but names no product. rvpartsgiant.com covers NOCO's 1 V start and 0 V Force Mode but says nothing about Victron or a BMS. clampandcrank.com mentions BMS only in general terms. epicvanlife.com only repeats '0V Activation' from the LiTime product title. The rival pages leave out the manual's Li-ion section, which ties the UVP reset to Li-ion and closes the BMS-wake question for Victron. gearranking.com and solargenadvisor.com would not load (certificate error), so they were not checked.",
+ "decides": "This confirms that every candidate except NOCO can restart a 12 V LiFePO4 pack whose BMS has shut off from low voltage without bypassing any protection. Our row saying Victron's wake is 'Not stated by the dealer' should change to 'Yes, automatic UVP reset (Victron manual)'. BMS wake therefore no longer separates Victron from Redodo or LiTime. The pick turns on price per amp: Redodo 20A at $82.99 against LiTime 20A at $102.99. NOCO's 0 V route through Force Mode is the weak one, and the NOCO guide's actual text is still unsourced. One caution belongs on the page: none of these chargers is documented to cut off when cold, so for winter charging the low-temperature cut-off has to come from the battery's own BMS.",
+ "candidates": [
+  "Redodo 14.6V 20A LiFePO4 Charger",
+  "Redodo 14.6V 10A LiFePO4 Charger",
+  "LiTime 12V (14.6V) 20A LiFePO4 Charger",
+  "NOCO GENIUS10",
+  "Victron Energy Blue Smart IP65 12/15"
+ ],
+ "findings": [
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Wakes a lithium battery whose under-voltage protection has tripped",
+   "value": "Yes, automatic: 'If the charger is connected to a battery where under voltage protection (UVP) has tripped, it will automatically reset UVP and start charging; many other chargers will not recognise a battery in this state.'",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/features---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 3. Features",
+   "read": "2026-11-08",
+   "note": "From feature item '9. Lithium Ion compatible' in the maker's online manual."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Recovery of a battery from 0 V",
+   "value": "'The charger will attempt to recharge a severely discharged battery (even down to 0V) with low current and then resume normal charging once the battery voltage has risen sufficiently'",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/features---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 3. Features",
+   "read": "2026-11-08",
+   "note": "Feature item '13. Recovery function'. The Operation section adds that a test stage ends once a charge pulse lifts the battery above 12.5 V, or after 2 minutes."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Li-ion (LiFePO4) mode voltages, 12 V",
+   "value": "14.2 V absorption; float N/A; storage 13.5 V. No temperature compensation in Li-ion mode",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "In the same manual, the charge-voltage table on the Operation page shows float and storage as 'Disabled' for Li-ion, with fixed absorption as the default. The other models on this page charge to 14.6 V."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Current and minimum Li-ion battery size",
+   "value": "15 A max, 4 A low-current mode. Minimum Li-ion capacity 30 Ah in max mode (≤0.5C), 8 Ah in low mode. Max battery 150 Ah (≥0.1C)",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "The 12/15 row of the spec table."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Li-ion charge time, maker's worked example",
+   "value": "100 Ah fully discharged battery on a 10 A charger: 9.5 h bulk plus about 0.5 h absorption = 10 h",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/operation---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 4. Operation (4.5.2 Li-ion based chemistry)",
+   "read": "2026-11-08",
+   "note": "Scaling Victron's example to 15 A: 95 Ah ÷ 15 A ≈ 6.3 h bulk + 0.5 h ≈ 6.8 h, which matches our page's 'About 7 h'. This is our arithmetic, not a Victron figure."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Low-temperature charging",
+   "value": "Warning only: 'Do not charge Li-ion batteries if the battery temperature is below 0°C.' The manual describes no automatic low-temperature cut-off",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/features---bsc---psc.html",
+   "source_title": "Victron Blue Smart IP65 Charger (120V) manual, 3. Features",
+   "read": "2026-11-08",
+   "note": "The Advanced Configuration page lists no low-temperature cut-off setting either (checked the same day). The rated operating range is -20 to 50 °C, from the spec page."
+  },
+  {
+   "product": "Redodo 14.6V 20A LiFePO4 Charger",
+   "label": "BMS wake and charge algorithm",
+   "value": "'can activate lithium battery protected by BMS'; '3-stage Pre-charge/constant current/constant voltage charge algorithm'; 14.6 V, 20 A; 2-year warranty",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "Product text read through storecheck.py search on the Redodo Shopify store."
+  },
+  {
+   "product": "Redodo 14.6V 20A LiFePO4 Charger",
+   "label": "Price, Redodo US store",
+   "value": "$82.99 (compare-at $119.99), in stock, 2026-11-08",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "storecheck.py. That is $20.00 below the LiTime 20A at $102.99, the price ChatGPT showed (LiTime's store returned HTTP 429 today, so this was not rechecked)."
+  },
+  {
+   "product": "Redodo 14.6V 10A LiFePO4 Charger",
+   "label": "BMS wake, spec and price",
+   "value": "'can activate lithium battery protected by BMS'; 14.6 V, 10 A; Pre-charge/CC/CV; 2-year warranty; $59.99 on 2026-11-08",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-10a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 10A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "storecheck.py search result."
+  },
+  {
+   "product": "Redodo 14.6V 40A LiFePO4 Charger",
+   "label": "0 V pre-charge",
+   "value": "'there's a pre-charge mode for the charger, which makes it capable of charging LiFePO4 battery from 0V to reactivate the dead LiFePO4 battery'; $179.99 on 2026-11-08",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-40a-lifepo4-upgrade-handle-battery-charger",
+   "source_title": "Redodo 14.6V 40A Ultra Fast Handle LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "storecheck.py search result. Redodo's own text: about 5 h to fully charge 12 V 200 Ah."
+  }
+ ],
+ "unsourced": [
+  "NOCO GENIUS10 Force Mode wording (below 1 V, protections disabled, 5-minute duration) and the 12V Lithium mode charge voltage and BMS note. no.co/genius10, no.co/genius10/specs, manuals.plus, manualmachine.com and batterymart.com all returned 403, the no.co UK user-guide PDF returned 404, and the no.co data-sheet PDF came back as image-only binary that could not be read. The text was seen only in search snippets, so it is not used here.",
+  "LiTime 12V 20A '0V activation' wording and today's price: litime.com returned HTTP 429 to both WebFetch and storecheck.py.",
+  "Whether Victron's Li-ion UVP reset works on a pack whose BMS has opened the circuit completely (0 V at the terminals) rather than just tripping under-voltage. The manual says 'UVP has tripped' and 'even down to 0V' but never says BMS.",
+  "gearranking.com (both pages) and solargenadvisor.com could not be checked for BMS-wake claims because of TLS certificate errors."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9206376000000003
+ }
+}

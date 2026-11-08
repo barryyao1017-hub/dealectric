@@ -1,0 +1,57 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured output for any of the candidate chargers. Two named testers have published figures: RCexplained clamped a steady 19.95 A from a 14.6 V 20 A LiTime-type charger into a 100 Ah LiFePO4 battery, and Auto Median saw the NOCO GENIUS10 top off a LiFePO4 battery at about 14.2 V in lithium mode, then hold about 13.6 V. NOCO's lithium setting is 14.6 V.",
+ "standout": 2,
+ "standout_why": "I compared against clampandcrank.com, powergearguide.com, epicvanlife.com and rvpartsgiant.com (the Victron vs NOCO post). Each one either says it does no testing or reports no measurements. Clamp & Crank says 'We publish no measured charge curves, because we do not measure them.' PowerGearGuide says its picks are 'not presented as firsthand performance tests.' Epic Van Life and RV Parts Giant give only specs and arithmetic. The cited Victron spec page gives rated figures only: 94% max efficiency, 0.5 W standby, 14.2 V Li-ion absorption. I could not open gearranking.com (both pages) or solargenadvisor.com because WebFetch hit a self-signed certificate error, so I did not check those three. The finding is new against every page I could read, but the sources are thin. Neither tester names a model number for the charger, Auto Median names no instrument, and neither says when the test was run.",
+ "decides": "It confirms the pick but does not change it. One named clamp reading shows a 14.6 V 20 A LiFePO4 charger really delivering its rated 20 A (19.95 A), which backs the 'about 5 h for 100 Ah' figure for the 20 A class (Redodo / LiTime). It also suggests a fix for our page: the NOCO GENIUS10 cell says '14.6 V, 10 A in 12 V lithium mode', but Auto Median measured a top-off around 14.2 V and maintenance around 13.6 V. Write 14.6 V as NOCO's setting and add the measured top-off with Auto Median's name on it. Neither test covers the Redodo or the Victron, so nothing measured separates the Redodo from the LiTime.",
+ "candidates": [
+  "Redodo 14.6V 20A LiFePO4 charger",
+  "Redodo 14.6V 10A LiFePO4 charger",
+  "LiTime 12V (14.6V) 20A",
+  "LiTime 12V (14.6V) 40A",
+  "NOCO GENIUS10",
+  "Victron Energy Blue Smart IP65 12/15"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 12V (14.6V) 20A",
+   "label": "Measured charging current into a 100 Ah LiFePO4 battery",
+   "value": "19.95 A steady",
+   "source": "https://www.radiocontrolinfo.com/lead-time-14-6v-20a-charger-test/",
+   "source_title": "14.6V 20A LiFePO4 Battery Charger Test - RCexplained (RCe Team, published 2026-01-08)",
+   "read": "2026-11-08",
+   "note": "Measured with a DC amp clamp on its 40 A range. The article calls the unit the 'Lead Time 14.6V 20A model' in the test section and a 'Li Time charger' in the intro, and gives no model number, so the match to the LiTime 20A listing is likely but not certain. Output voltage was not measured (14.6 V is the rating). The 'just under five hours' 0–100% figure is the author's arithmetic from the current, not a timed charge. No temperature readings or cutoff test."
+  },
+  {
+   "product": "NOCO GENIUS10",
+   "label": "Measured top-off and maintenance voltage in 12 V lithium mode",
+   "value": "about 14.2 V top-off, about 13.6 V maintenance",
+   "source": "https://automedian.com/noco-genius10-battery-charger-review/",
+   "source_title": "NOCO GENIUS10 Battery Charger Review - Auto Median (Chris Perling)",
+   "read": "2026-11-08",
+   "note": "Battery: a 20 Ah LiFePO4 discharged to 11.5 V. The page names no instrument, gives no current or charge time, and shows no publish date (footer © 2025). The page also describes a Force Mode recovery of a LiFePO4 battery that had dropped 'below 5V' but gives no figures for it. Contrast: NOCO's lithium-mode setting is 14.6 V, as on our current page."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Maker-rated efficiency, standby power and Li-ion absorption voltage (spec, not a measurement; context for the NOCO reading)",
+   "value": "94% max efficiency; 0.5 W standby; 14.2 V Li-ion absorption; full rated output up to 30 °C (86 °F)",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "9. Technical specifications - Blue Smart IP65 Charger 120V manual (Victron Energy)",
+   "read": "2026-11-08",
+   "note": "These are Victron's rated figures from a page ChatGPT cited, so they are not new. They are here because the Victron's rated Li-ion absorption (14.2 V) matches what Auto Median measured from the NOCO, which narrows the practical gap between the two on charge voltage."
+  }
+ ],
+ "unsourced": [
+  "A named measurement of output current or voltage for the Redodo 14.6V 20A and 10A chargers. I searched for reviewer and forum tests. The only Redodo-specific reading was an Amazon.de buyer review mentioned in a search summary, which I did not open and which is not a named tester.",
+  "A named measurement of lithium-mode current, efficiency or charge time for the Victron Blue Smart IP65 12/15. Searches covering Practical Sailor, Explorist.life and Mobile Solar Power turned up only specs and retailer copy, plus one old forum post about a flooded lead-acid battery.",
+  "A named measurement of lithium-mode current or a timed charge for the NOCO GENIUS10. The Jeep Gladiator Forum measured-data thread (in AGM mode, per the search summary), the Partzilla NOCO test and the DIY Solar Forum NOCO thread all returned HTTP 403, so I could not open them. Best Batteries (Christophe Delpuech, 2026-09-07) marks delivered power and charging precision as 'not measured'.",
+  "A measured output voltage or timed full charge for the LiTime 20A and 40A chargers. Notebookcheck's LiTime review (Stephen Pereyra) covers a 60 A LiTime charger and gives no charger figures. Happy TechFam's '14-16A' claim has no author, instrument or battery named, so I left it out.",
+  "The NOCO GENIUS10 lithium-mode voltage from NOCO's own pages. no.co/genius10/specs returned 403, and the GENIUS10 data sheet PDF did not extract as readable text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8101942999999998
+ }
+}

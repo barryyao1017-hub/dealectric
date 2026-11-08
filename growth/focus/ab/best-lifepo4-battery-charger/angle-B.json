@@ -1,0 +1,121 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states the cost per amp of charge current for the dedicated 12 V LiFePO4 chargers: Redodo 20A $4.15/A and LiTime 40A $4.18/A, against about $10/A for the NOCO GENIUS10 (2026-11-08 store prices).",
+ "standout": 2,
+ "standout_why": "Clamp & Crank (clampandcrank.com, read 2026-11-08) works out dollars per amp only for NOCO GENIUS10/5/2 ($99.87 → $9.99/A) and has no price for the Victron. PowerGearGuide (read 2026-11-08) gives no prices, so it has no cost per amp. Its only charge-time math is a generic 50 Ah-replacement table (amps into amp-hours) for NOCO, Victron and Battery Tender, and it covers no Redodo or LiTime unit. Both rivals do the simple 100 Ah ÷ amps hours sum, so the charge-time figures below are not new. Only the $/A comparison across Redodo and LiTime units is. I could not read gearranking.com (both URLs) or solargenadvisor.com because of a TLS certificate error, so I can't rule out that they have a $/A table. That is why this scores 2 and not 3. The cited Victron and NOCO pages have no prices.",
+ "decides": "This backs the Redodo 14.6V 20A as the value pick: $82.99 for 20 A is $4.15/A, the lowest of any 12 V charger checked, and twice the current of the NOCO GENIUS10 for less money. It also changes the 200 Ah pick. The LiTime 40A ($167.19, $4.18/A) undercuts the Redodo 40A ($179.99, $4.50/A) for the same 40 A and 2.5 h CC refill of 100 Ah. The Redodo 10A ($6.00/A) costs more per amp than either 20A unit, so the 10A tier only makes sense for batteries under 50 Ah. The Victron 12/15 is the slower premium choice. It takes at least 6.7 h for 100 Ah and stops at 14.2 V in Li-ion mode, against 14.6 V for the others.",
+ "candidates": [
+  "Redodo 14.6V 20A",
+  "Redodo 14.6V 10A",
+  "Redodo 14.6V 40A",
+  "LiTime 12V (14.6V) 20A",
+  "LiTime 12V (14.6V) 40A",
+  "LiTime 12V (14.6V) 10A",
+  "NOCO GENIUS10",
+  "Victron Energy Blue Smart IP65 12/15"
+ ],
+ "findings": [
+  {
+   "product": "Redodo 14.6V 20A",
+   "label": "Cost per amp of charge current",
+   "value": "$4.15/A",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "$82.99 (compare-at $119.99, in stock) ÷ 20 A = $4.15/A. Price read from the Redodo Shopify store with storecheck.py."
+  },
+  {
+   "product": "Redodo 14.6V 20A",
+   "label": "Hours to refill a 12 V 100 Ah battery from empty (CC lower bound)",
+   "value": "5.0 h",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "100 Ah ÷ 20 A = 5.0 h. Matches the maker's claim of 100 Ah to 50% in 2.5 h. The CV tail adds time."
+  },
+  {
+   "product": "Redodo 14.6V 10A",
+   "label": "Cost per amp of charge current",
+   "value": "$6.00/A",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-10a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 10A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "$59.99 (compare-at $99.99) ÷ 10 A = $6.00/A. 100 Ah ÷ 10 A = 10 h. The maker says 50 Ah to 50% in 2.5 h."
+  },
+  {
+   "product": "Redodo 14.6V 40A",
+   "label": "Cost per amp of charge current",
+   "value": "$4.50/A",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-40a-lifepo4-upgrade-handle-battery-charger",
+   "source_title": "Redodo 14.6V 40A Ultra Fast Handle LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "$179.99 (compare-at $259.99) ÷ 40 A = $4.50/A. 200 Ah ÷ 40 A = 5.0 h, which matches the maker's 'about only 5 hours' for 200 Ah."
+  },
+  {
+   "product": "LiTime 12V (14.6V) 20A",
+   "label": "Cost per amp of charge current",
+   "value": "$5.15/A",
+   "source": "https://www.litime.com/products/12v-20a-lifepo4-battery-charger",
+   "source_title": "LiTime 12V (14.6V) 20A LiFePO4 Charger – For 12V LiFePO4 Batteries",
+   "read": "2026-11-08",
+   "note": "$102.99 (compare-at $149.99) ÷ 20 A = $5.15/A. That is $20.00 more than the Redodo 20A for the same 20 A and 5.0 h CC refill of 100 Ah. Price read from the LiTime store search with storecheck.py because the product page returned HTTP 429."
+  },
+  {
+   "product": "LiTime 12V (14.6V) 40A",
+   "label": "Cost per amp of charge current",
+   "value": "$4.18/A",
+   "source": "https://www.litime.com/products/40a-charger-for-12v-lifepo4-battery",
+   "source_title": "LiTime 12V (14.6V) 40A Mountable Lithium Battery Charger with Handle",
+   "read": "2026-11-08",
+   "note": "$167.19 (compare-at $249.99) ÷ 40 A = $4.18/A. That is $12.80 less than the Redodo 40A. The maker says it fully charges 100 Ah in 2.5 h and 200 Ah in 5 h (100 ÷ 40 = 2.5 h)."
+  },
+  {
+   "product": "LiTime 12V (14.6V) 10A",
+   "label": "Cost per amp of charge current",
+   "value": "$7.00/A",
+   "source": "https://www.litime.com/products/litime-12v-10a-lithium-battery-charger",
+   "source_title": "LiTime 12V (14.6V) 10A LiFePO4 Battery Charger Rechargeable for 12V Batteries",
+   "read": "2026-11-08",
+   "note": "$69.99 ÷ 10 A = $7.00/A. The IP65 version is $79.99 ÷ 10 A = $8.00/A (https://www.litime.com/products/12v-10a-lifepo4-battery-charger-ip65-waterproof)."
+  },
+  {
+   "product": "NOCO GENIUS10",
+   "label": "Cost per amp of charge current",
+   "value": "$9.99/A",
+   "source": "https://clampandcrank.com/battery-chargers/best-lithium-battery-chargers",
+   "source_title": "Best Lithium (LiFePO4) Battery Chargers | Clamp & Crank",
+   "read": "2026-11-08",
+   "note": "Clamp & Crank's $99.87 ÷ 10 A = $9.99/A. ChatGPT's card price of $99.99 gives $10.00/A. Amazon (B07W3QT226) also showed $99.87 today, which I used only to cross-check and which is not for printing. 100 Ah ÷ 10 A = 10 h."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Hours to refill a 12 V 100 Ah battery (CC lower bound)",
+   "value": "6.7 h at 15 A; 25 h in 4 A low-current mode",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "9. Technical specifications (Blue Smart IP65 Charger 120V manual)",
+   "read": "2026-11-08",
+   "note": "100 Ah ÷ 15 A = 6.7 h; 100 ÷ 4 = 25 h. Victron's Li-ion absorption is 14.2 V with float 'N/A', against 14.6 V for the Redodo and LiTime units."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "AC energy drawn to refill a 12.8 V 100 Ah battery at max efficiency",
+   "value": "about 1.36 kWh",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "9. Technical specifications (Blue Smart IP65 Charger 120V manual)",
+   "read": "2026-11-08",
+   "note": "100 Ah × 12.8 V = 1,280 Wh ÷ 0.94 'Max efficiency' = 1,362 Wh. Standby is 0.5 W, so leaving it connected all year uses 0.5 W × 8,760 h = 4.4 kWh/yr."
+  }
+ ],
+ "unsourced": [
+  "Victron Blue Smart IP65 12/15 (120 V) US price: no Victron store. bluemarine.com failed with a TLS certificate error, and an Amazon search found only the 12/10 (B07FGGCYKC) and 12/5 listings. So there is no $/A for the Victron.",
+  "NOCO GENIUS10 price on no.co (403 Forbidden) and its datasheet specs (the PDF would not render as text), including 12 V lithium-mode voltage, efficiency and AC input watts.",
+  "Charging efficiency or AC input power for the Redodo and LiTime AC chargers: not on their product listings, so I could only work out wall energy per refill for the Victron.",
+  "Rival pages gearranking.com (lithium ranking and the GENIUS10 vs Victron compare) and solargenadvisor.com: TLS certificate errors, so I couldn't check whether they already give a $/A comparison."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8788685
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the four picks' lithium charge voltages side by side. Victron's Li-ion mode stops at 14.2 V and then holds the battery at 13.5 V with no float, while the Redodo and LiTime 20 A chargers go to 14.6 V and then shut off. Peak charging power is about 213 W for the Victron 12/15 (15 A × 14.2 V) against about 292 W for the 20 A units (20 A × 14.6 V), and Victron gives full rated output only up to 30 °C.",
+ "standout": 1,
+ "standout_why": "Victron's technical-specifications page (cited by ChatGPT) lists the 14.2 V / 13.5 V Li-ion figures, but only for Victron. powergearguide.com also gives Victron's 14.2 V absorption and 13.5 V storage but never mentions 14.4 V or 14.6 V and states no NOCO lithium voltage. clampandcrank.com states no lithium voltages at all. epicvanlife.com gives only a generic 14.2–14.6 V range and lists 14.6 V for LiTime from a listing title. rvpartsgiant.com states no voltage for either brand. None of them puts 14.2 V against 14.6 V, works out charging power in watts, or mentions that Victron's output drops above 30 °C. I couldn't open gearranking.com (both pages) or solargenadvisor.com because of a TLS certificate error, so I didn't compare against them.",
+ "decides": "Confirms the 20 A, 14.6 V pick (Redodo 20A at $82.99 today) for a shopper who wants a 12 V LiFePO4 battery filled fast and full. It delivers about 37% more power than the Victron 12/15 and charges to 14.6 V, then shuts off. The Victron fits a battery left connected for months, as on a boat: it charges more gently to 14.2 V and then holds at 13.5 V. It is not the 'faster 15 A' choice its amp rating suggests. Separately, our table's Victron row 'Wakes a shut-off BMS: Not stated by the dealer' should change: Victron's own product page says the charger revives a battery 'even from 0 volts'.",
+ "candidates": [
+  "Redodo 14.6V 20A",
+  "Redodo 14.6V 10A",
+  "Redodo 14.6V 40A",
+  "LiTime 12V (14.6V) 20A",
+  "NOCO GENIUS10",
+  "Victron Energy Blue Smart IP65 12/15"
+ ],
+ "findings": [
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Li-ion mode charge voltages (absorption / float / storage)",
+   "value": "14.2 V / none / 13.5 V",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Blue Smart IP65 Charger 120V manual – 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "12 V models, Li-ion row of the charge-voltage table. The same table gives Normal mode as 14.4/13.8/13.2 V and High as 14.7/13.8/13.2 V. Li-ion mode has no float stage."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Charge current, max / low mode",
+   "value": "15 A / 4 A",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Blue Smart IP65 Charger 120V manual – 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "Peak power in Li-ion mode works out to 15 A × 14.2 V ≈ 213 W."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Temperature range and output derating",
+   "value": "-20 to 50 °C; full rated output only up to 30 °C",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Blue Smart IP65 Charger 120V manual – 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "Wording on the page: '-20 to 50°C (-4 to 122°F) with full rated output up to 30°C (86°F)'. Relevant to a charger mounted in an engine bay or a hot RV bay."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Efficiency and standby draw",
+   "value": "94% max efficiency (12 V models); 0.5 W standby",
+   "source": "https://www.victronenergy.com/media/pg/Blue_Smart_IP65_Charger_120V_manual/en/technical-specifications---bsc---psc.html",
+   "source_title": "Blue Smart IP65 Charger 120V manual – 9. Technical specifications",
+   "read": "2026-11-08",
+   "note": "Both figures are stated by the maker."
+  },
+  {
+   "product": "Victron Energy Blue Smart IP65 12/15",
+   "label": "Deeply discharged battery revival",
+   "value": "Applies low current to revive a battery 'even from 0 volts'",
+   "source": "https://www.victronenergy.com/chargers/blue-smart-ip65-charger",
+   "source_title": "Victron Energy – Blue Smart IP65 Charger",
+   "read": "2026-11-08",
+   "note": "From the maker's product page; it doesn't say whether this covers a battery whose BMS has disconnected. Our current table says 'Not stated by the dealer'. Same page: 5-year standard warranty, operation -20 to +50 °C."
+  },
+  {
+   "product": "Redodo 14.6V 20A",
+   "label": "Output, charge algorithm, price",
+   "value": "14.6 V, 20 A; pre-charge → constant current → constant voltage → cut off (no float); $82.99 (list $119.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py from the Redodo US Shopify store. Maker claim: 100 Ah to 50% in 2.5 h. Says it can activate a lithium battery whose BMS has shut off. 2-year warranty. Peak power 20 A × 14.6 V ≈ 292 W, about 37% more than the Victron 12/15 in Li-ion mode (≈213 W)."
+  },
+  {
+   "product": "Redodo 14.6V 10A",
+   "label": "Output, algorithm, price",
+   "value": "14.6 V, 10 A; pre-charge/constant current/constant voltage then cut off; $59.99 (list $99.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-10a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 10A LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py. 2-year warranty. Can activate a BMS-protected battery."
+  },
+  {
+   "product": "Redodo 14.6V 40A",
+   "label": "Output, charge time claim, price",
+   "value": "14.6 V, 40 A; about 5 h for a 200 Ah battery; $179.99 (list $259.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-40a-lifepo4-upgrade-handle-battery-charger",
+   "source_title": "Redodo 14.6V 40A Ultra Fast Handle LiFePO4 Battery Charger",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py. Pre-charge mode can charge 'from 0V'. Built-in fan."
+  },
+  {
+   "product": "general",
+   "label": "How rival pages handle charge voltage",
+   "value": "powergearguide gives Victron 14.2 V only; epicvanlife gives a generic 14.2–14.6 V range; clampandcrank and rvpartsgiant give no lithium voltages",
+   "source": "https://powergearguide.com/best-lifepo4-battery-chargers/",
+   "source_title": "Best LiFePO4 Battery Chargers (Top Models Compared & Buying Guide)",
+   "read": "2026-11-08",
+   "note": "Also read: https://epicvanlife.com/best-12v-lithium-battery-chargers/, https://clampandcrank.com/battery-chargers/best-lithium-battery-chargers and https://www.rvpartsgiant.com/blogs/blog/victron-blue-smart-ip65-vs-noco-genius-rv-battery-charger, all on 2026-11-08."
+  }
+ ],
+ "unsourced": [
+  "NOCO GENIUS10 12V Lithium mode charge voltage and lithium-mode maintenance behaviour. Couldn't read it from: no.co/genius10/specs (HTTP 403), the GENIUS10 data sheets dated 01.09.2026 and 04.10.2024 (image-only PDFs with no extractable text), the UK and JP user-guide PDFs (404), the manuals.plus and manualmachine mirrors (403), the batterymart listing (403), or manualshive (TLS error). Our page's '14.6 V in 12 V lithium mode' for NOCO is still unverified.",
+  "LiTime 12V 20A and 40A spec pages and today's prices: litime.com returned HTTP 429 to both WebFetch and storecheck.py. The $102.99 from 2026-11-06 hasn't been rechecked.",
+  "Victron Blue Smart IP65 12/15 120V US price today: not checked.",
+  "Victron Li-ion absorption duration and behaviour with a BMS-disconnected battery: the 120V manual PDF is image-only and the operation.html page returned 404.",
+  "gearranking.com (list and compare pages) and solargenadvisor.com: couldn't open them (self-signed certificate error), so I didn't check them for charge-voltage coverage."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9272968000000001
+ }
+}
