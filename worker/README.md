@@ -15,6 +15,12 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   generic clients keep the redirect. `bot_like` is 1 for a scanner-looking user agent and, since 2026-11-06, for any
   request from Google's networks (`SCANNER_ASNS`; `clicks.asn` and `landings.asn` store the network): a new YouTube
   video's links drew 12 hits in 2 s from Google's scanners, some posing as ordinary Windows Chrome.
+- `GET /self-exclude` (2026-11-07) — marks the browser that opens it as one of ours: a one-year `dlx_self=1` cookie,
+  after which that browser's `/go/` clicks and tagged landings are stored with `bot_like = 2` and so drop out of every
+  shopper count (`tools/dailyupdate.py`, `tools/fetchwho.py` and the queries below all take `bot_like = 0`). Open it
+  once in each of Barry's browsers (Personal Chrome profiles, phone, Pane, Agent Chrome); `/self-exclude?off` clears
+  it. Linked from nowhere, noindex. It is the only cookie the site ever sets, and it only ever marks our own browsers;
+  D1 stores no IP, so nothing else can tell Barry's clicks from a shopper's after the fact.
 - `GET|POST /feedback` — accepts `message` (required), `kind`, `page`, `agent`, `contact` as query parameters
   or a JSON/form body; stores a row in D1 `feedback`; returns `{ok, ticket}`. A bare GET returns the usage doc.
   GET is allowed on purpose: most assistants only have a fetch-URL tool.

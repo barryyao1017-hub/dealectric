@@ -22,6 +22,7 @@ export default {
       if (url.pathname === "/feedback" || url.pathname === "/feedback/") return handleFeedback(url, request, env);
       if (url.pathname.startsWith("/x/")) return handleReplayPage(url, request, env);
       if (url.pathname === "/hook/awin") return handleAwinHook(url, env);
+      if (url.pathname === "/self-exclude") return handleSelfExclude(url, request);
       // DLC-182: the MCP server for the ChatGPT app directory and other MCP clients (src/mcp.js).
       if (url.pathname === "/mcp" || url.pathname === "/mcp/") return handleMcp(request, env, ctx);
       // OpenAI's domain check for the app submission: the token from the submission portal, set with
@@ -163,7 +164,8 @@ async function logLanding(url, request, status, utm, env) {
     // A person's browser names its engine. ChatGPT's own backend fetches result URLs during a chat, utm tag included,
     // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
     // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
-    cf.country || "", cf.verifiedBotCategory || "", botLike(cf, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
+    cf.country || "", cf.verifiedBotCategory || "",
+    selfExcluded(request) ? 2 : botLike(cf, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
     cf.asn || null,
@@ -220,7 +222,7 @@ async function handleGo(url, request, env, ctx) {
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", botLike(cf, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
     clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null,
@@ -486,6 +488,39 @@ const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
 
 function botLike(cf, ua) {
   return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn);
+}
+
+// ---------------------------------------------------------------- /self-exclude (2026-11-07)
+// Barry's own browsers. Opening /self-exclude once in a browser sets a one-year cookie there; every /go/ click and
+// tagged landing from that browser is then stored with bot_like=2 ("ours"), so the daily update, fetchwho.py and the
+// README's queries (all bot_like=0) leave it out, while the row still exists for debugging. Nothing else on the site
+// sets or reads a cookie (the no-tracking rule is about visitors; this flag only ever marks our own browsers), the
+// path is linked from nowhere and noindex. /self-exclude?off clears it. Harmless to a stranger: they only hide
+// themselves from our counts. D1 has no IP, so this is the only way to tell Barry's clicks from a shopper's.
+const SELF_COOKIE = "dlx_self";
+
+function selfExcluded(request) {
+  return new RegExp(`(?:^|;\\s*)${SELF_COOKIE}=1(?:;|$)`).test(request.headers.get("cookie") || "");
+}
+
+function handleSelfExclude(url, request) {
+  const off = url.searchParams.has("off");
+  const was = selfExcluded(request);
+  const cookie = off
+    ? `${SELF_COOKIE}=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax`
+    : `${SELF_COOKIE}=1; Path=/; Max-Age=31536000; Secure; HttpOnly; SameSite=Lax`;
+  const body = off
+    ? `Self-exclusion OFF for this browser${was ? " (it was on)" : " (it was already off)"}.\nIts clicks and landings count as a visitor's again.\nTurn it back on: ${SITE}/self-exclude\n`
+    : `Self-exclusion ON for this browser${was ? " (renewed)" : ""}.\nIts /go/ clicks and tagged landings are stored with bot_like=2 and left out of every shopper count for a year.\nTurn it off: ${SITE}/self-exclude?off\n`;
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "set-cookie": cookie,
+      "cache-control": "no-store",
+      "x-robots-tag": "noindex, nofollow",
+    },
+  });
 }
 
 // ---------------------------------------------------------------- /x/<id> (DLC-115 replay calibration)
