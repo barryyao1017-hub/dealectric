@@ -1,0 +1,186 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that on a base-M4 MacBook Pro (Thunderbolt 4, 40 Gb/s) a $149–$232 Thunderbolt 5 enclosure reads 1 TB in the same 4 min 23 s as a $54.90 USB4 enclosure, while on an M4 Pro/Max the measured gain is only about 1 min 36 s to 1 min 49 s per TB read, and the ORICO X50 Pro's measured 3,000 MB/s write on a TB5 Mac makes a 1 TB write take 5 min 33 s, slower than the TB4 rung.",
+ "standout": 2,
+ "standout_why": "Cited rivals: the two ACASIS product pages list prices and 80Gbps claims but no time or per-port figures; DPReview gives ratios (1.2–1.8x) with no MB/s, no prices and no timings; OWC's blog gives MB/s per interface but no prices or copy times. Uncited picklog.cc already derives $/GB/s and 1 TB time, but only from claimed speeds and Sept-2026 prices, with no base-M4 case, no write-side figures and no DIY-vs-prebuilt cost per TB. Nothing in the result set puts today's prices against measured reads and writes or against the base M4's 40 Gb/s cap.",
+ "decides": "Confirms 'no' for a base M4 MacBook Pro: every TB5 enclosure runs at the 3,800 MB/s TB4 rung there, so the $94–$177 premium over a $54.90 USB4 enclosure buys zero seconds. For M4 Pro/Max it narrows the pick: OWC Express 1M2 80G (6,000/5,500 measured) and UGREEN fanless (6,511/6,001 measured) deliver the TB5 gain on both reads and writes, while the ORICO X50 Pro's measured 3,000 MB/s write on a TB5 Mac is no better than USB4 for card offloads. It also undercuts ChatGPT's 'add a 990 Pro' advice: at Samsung's $639.99 for 2 TB, enclosure + drive costs $839.98 versus $749.99 for OWC's own prebuilt 1M2 80G 2 TB.",
+ "candidates": [
+  "OWC Express 1M2 80G",
+  "ACASIS TB501 Pro",
+  "ACASIS TB501 Max",
+  "ACASIS TB504mini",
+  "ORICO X50 Pro",
+  "Satechi DotDisk",
+  "UGREEN 80Gbps Thunderbolt 5 enclosure (fanless, SKU 95583)",
+  "ACASIS TBU405Air (USB4 baseline)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Base M4 MacBook Pro port speed",
+   "value": "Thunderbolt 4, up to 40 Gb/s",
+   "source": "https://support.apple.com/en-us/121552",
+   "source_title": "MacBook Pro (14-inch, M4, 2024) - Tech Specs",
+   "read": "2026-11-08",
+   "note": "Apple spec page: 'Three Thunderbolt 4 (USB-C) ports' with 'Thunderbolt 4 (up to 40Gb/s)'. Sets the ceiling for every enclosure below on a base M4."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Enclosure price today",
+   "value": "$199.99 (0 TB DIY)",
+   "source": "https://eshop.macsales.com/shop/owc-express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "Same page: 1 TB $489.00, 2 TB $749.99, 4 TB $1,349.99. Claimed: over 6,000 MB/s on TB5/USB4 80G, up to 3,800 MB/s on Thunderbolt 4, up to 2,800 on TB3. 2-year warranty."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Time to read / write 1 TB on a TB5 Mac",
+   "value": "2 min 47 s read, 3 min 2 s write",
+   "source": "https://www.macworld.com/article/668458/best-external-ssd-for-mac.html",
+   "source_title": "Best External SSD for Mac 2026 | Macworld",
+   "read": "2026-11-08",
+   "note": "Macworld measured about 6 GB/s read and 5.5 GB/s write. 1,000,000 MB / 6,000 MB/s = 167 s; 1,000,000 / 5,500 = 182 s."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Time to read 1 TB on a base M4 (TB4) MacBook Pro",
+   "value": "4 min 23 s",
+   "source": "https://eshop.macsales.com/shop/owc-express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "OWC's own TB4 figure 3,800 MB/s: 1,000,000 / 3,800 = 263 s. Applies to any TB5 enclosure on the base M4, which is capped at 40 Gb/s."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Time saved per 1 TB read, M4 Pro/Max vs base M4",
+   "value": "1 min 36 s",
+   "source": "https://www.macworld.com/article/668458/best-external-ssd-for-mac.html",
+   "source_title": "Best External SSD for Mac 2026 | Macworld",
+   "read": "2026-11-08",
+   "note": "263 s at 3,800 MB/s (TB4 rung, OWC page) minus 167 s at 6,000 MB/s (Macworld measured) = 96 s."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Price per measured GB/s on TB5",
+   "value": "$33.33 per GB/s",
+   "source": "https://eshop.macsales.com/shop/owc-express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "$199.99 / 6.0 GB/s (Macworld measured read)."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "DIY build vs OWC prebuilt, 2 TB",
+   "value": "$839.98 DIY vs $749.99 prebuilt, DIY costs $89.99 more",
+   "source": "https://www.samsung.com/us/computing/memory-storage/solid-state-drives/990-pro-pcie-4-0-nvme-ssd-2tb-mz-v9p2t0b-am/",
+   "source_title": "Samsung 990 PRO PCIe 4.0 NVMe SSD 2TB",
+   "read": "2026-11-08",
+   "note": "Samsung US store 990 PRO 2 TB (no heatsink) $639.99 + enclosure $199.99 = $839.98, i.e. $420/TB. OWC's 1M2 80G 2 TB configuration is $749.99 on the OWC page read today, i.e. $375/TB. Enclosure is 24% of the DIY total."
+  },
+  {
+   "product": "ACASIS TB501 Pro",
+   "label": "Enclosure price today",
+   "value": "$174 (strikethrough $299)",
+   "source": "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5",
+   "source_title": "Acasis 80Gbps M.2 NVMe SSD Enclosure Compatible with Thunderbolt 5",
+   "read": "2026-11-08",
+   "note": "ACASIS Shopify store via storecheck. Intel JHL9480 (B2), Gen5 SSD support, manual fan auto-start at 55 °C. Basic TB501Pro (no Gen5) $149 at acasis.com/products/acasis-80gbps-m-2-nvme-ssd-enclosure-compatible-with-thunderbolt-5-copy; TB501 Max (auto fan + 60 W PD) $179; TB504mini fanless $179 claiming 6,168 read / 6,831 write."
+  },
+  {
+   "product": "ACASIS TB501 Pro",
+   "label": "Premium over a USB4 enclosure, base M4 MacBook Pro",
+   "value": "$119.10 for 0 s saved",
+   "source": "https://www.acasis.com/products/acasis-thunderbolt-3-nvme-m-2-ssd-enclosure-lightweight-aluminum-8tb-capacity-plug-play-for-laptops-tbu405air",
+   "source_title": "Acasis 40Gbps M.2 NVMe SSD Enclosure Compatible with Thunderbolt 4/3 (TBU405Air)",
+   "read": "2026-11-08",
+   "note": "$174 − $54.90 (ACASIS TBU405Air 40Gbps, Intel JHL7440, storecheck today). Both are capped at 40 Gb/s on a base M4. Same arithmetic: basic TB501Pro +$94.10, OWC 1M2 80G +$145.09, Satechi DotDisk +$145.09, ORICO X50 Pro +$177.09."
+  },
+  {
+   "product": "ACASIS TB501 Pro",
+   "label": "Price per claimed GB/s on TB5",
+   "value": "$29.00 per GB/s (claimed, not measured)",
+   "source": "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5",
+   "source_title": "Acasis 80Gbps M.2 NVMe SSD Enclosure Compatible with Thunderbolt 5",
+   "read": "2026-11-08",
+   "note": "$174 / 6.0 GB/s. No independent measurement found for the TB501 Pro, so this is the only candidate figure based on a claim."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Amazon price today",
+   "value": "$231.99",
+   "source": "https://www.amazon.com/dp/B0FX4LQMPM",
+   "source_title": "ORICO 80Gbps M.2 NVMe SSD Enclosure PCIE 5.0 Silent Fanless ... X50PRO",
+   "read": "2026-11-08",
+   "note": "amzcheck ASIN B0FX4LQMPM, 66% five-star of 2,224 ratings. For comparison only; not to be printed."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Time to read / write 1 TB on a TB5 Mac",
+   "value": "2 min 47 s read, 5 min 33 s write",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review: This Thunderbolt 5 enclosure hits 6,000 MB/s | Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Notebookcheck, Blackmagic Disk Speed Test on a MacBook Pro 16 M5 (TB5) with a TeamGroup MP44 2 TB: about 6,000 read, about 3,000 write. 1,000,000 / 6,000 = 167 s; 1,000,000 / 3,000 = 333 s. The write time is longer than the 263 s a TB4 port allows, so this enclosure gives no write-side gain on an M4 Pro/Max."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Price per measured GB/s on TB5",
+   "value": "$38.67 per GB/s read, $77.33 per GB/s write",
+   "source": "https://www.amazon.com/dp/B0FX4LQMPM",
+   "source_title": "ORICO 80Gbps M.2 NVMe SSD Enclosure ... X50PRO",
+   "read": "2026-11-08",
+   "note": "$231.99 / 6.0 and $231.99 / 3.0, using Notebookcheck's Mac measurements."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Time to read 1 TB on a TB4 host",
+   "value": "4 min 10 s",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review | Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Notebookcheck measured about 4,000 read / over 3,700 write on a Razer Blade 16 (Thunderbolt 4). 1,000,000 / 4,000 = 250 s. Closest sourced proxy for a base-M4 MacBook Pro."
+  },
+  {
+   "product": "UGREEN 80Gbps Thunderbolt 5 enclosure (fanless, SKU 95583)",
+   "label": "Time to read / write 1 TB on TB5",
+   "value": "2 min 34 s read, 2 min 47 s write",
+   "source": "https://www.macwelt.de/article/2807262/ugreen-thunderbolt-5-ssd-gehaeuse-test.html",
+   "source_title": "UGREEN Thunderbolt 5 SSD-Gehäuse im Test | Macwelt",
+   "read": "2026-11-08",
+   "note": "Macwelt (5 Jul 2025), AJA System Test Lite with a Samsung 990 Pro 4 TB: 6,511 read / 6,001 write; Kingston KC3000: 6,211 / 5,908. 1,000,000 / 6,511 = 154 s; 1,000,000 / 6,001 = 167 s. 34 °C idle, 40 °C under stress (DriveDx). Host Mac not named. Time saved vs TB4 rung: 263 − 154 = 109 s = 1 min 49 s."
+  },
+  {
+   "product": "Satechi DotDisk",
+   "label": "Enclosure price today",
+   "value": "$199.99",
+   "source": "https://satechi.net/products/dotdisk-80gbps-ssd-enclosure",
+   "source_title": "DotDisk 80Gbps SSD Enclosure – Satechi",
+   "read": "2026-11-08",
+   "note": "Satechi Shopify store via storecheck. Satechi's own USB4 Slim NVMe enclosure (3,840 MB/s claimed) is $119.99 on the same store, so the TB5 premium within Satechi is $80. No measured speed found, so no $/GB/s computed."
+  },
+  {
+   "product": "general",
+   "label": "TB5 vs USB4 ratio measured by a named reviewer",
+   "value": "1.2x to 1.8x in synthetic benchmarks, not 2x",
+   "source": "https://www.dpreview.com/reviews/2098773643/usb-4-thunderbolt-5-ssd-owc-sandisk-speeds-roundup/",
+   "source_title": "Do photographers need the fastest external SSD? | DPReview",
+   "read": "2026-11-08",
+   "note": "DPReview on a 2024 MacBook Pro M4 Pro: OWC Envoy Ultra (TB5) vs SanDisk Extreme Pro USB4; no MB/s or timings published. Consistent with the 1.58x (6,000 / 3,800) used in the time-saved arithmetic above."
+  }
+ ],
+ "unsourced": [
+  "UGREEN US store prices for the 80Gbps TB5 enclosures (SKU 95583 fanless, SKU 45789 with fan) and the 40Gbps enclosure with fan (SKU 15976): ugreen.com returned HTTP 429 on every fetch and the Shopify tool returned a placeholder price, so no UGREEN $/GB/s or premium was computed",
+  "Measured speed of the ACASIS TBU405Air 40Gbps baseline enclosure on a Mac: the product page returned HTTP 429; OWC's 3,800 MB/s TB4 figure was used for the 40 Gb/s rung instead",
+  "Any independent measurement for the ACASIS TB501 Pro, TB501 Max, TB504mini or Satechi DotDisk on a Mac",
+  "Host Mac used in Macwelt's UGREEN test",
+  "A Finder (real file copy) timing for any TB5 enclosure on an M4 Pro/Max MacBook Pro; Macworld's only copy timing is for the Sonnet Echo 13 dock",
+  "Current TerraMaster D1 SSD Pro US price"
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.1287828500000003
+ }
+}

@@ -4056,6 +4056,23 @@ PRODUCTS = [
  "fit": "A PC desk used for music, video and calls, with the speakers within arm's reach.",
  "caveats": ["Creative rates it at 10 W RMS from a PC's USB-C port. The 30 W RMS rating needs a separate 30 W USB PD adapter, and that PD port carries power only.", 'The only Bluetooth codec is SBC.']},
 
+{"slug": 'owc-express-1m2-80g',
+ "brand": 'OWC',
+ "program": 'amazon:us',
+ "asin": 'B0FKPGF3BH',
+ "category": 'ssd-enclosure',
+ "name": 'OWC Express 1M2 80G USB4 80Gb/s Portable NVMe M.2 SSD Enclosure (fanless)',
+ "model": 'Express 1M2 80G',
+ "url": 'https://www.amazon.com/dp/B0FKPGF3BH',
+ "price": None,
+ "verified": '2026-11-08',
+ "specs": [('Interface', 'USB4 80 Gb/s, Thunderbolt 5 compatible; works on Thunderbolt 4, USB4 40 Gb/s and Thunderbolt 3 (Mac) hosts'), ('Maker speed by host', 'Over 6,000 MB/s on Thunderbolt 5 or USB4 80 Gb/s; up to 3,800 MB/s on Thunderbolt 4; up to 2,800 MB/s on Thunderbolt 3'), ('Measured', '6,319 MB/s read, 5,776 MB/s write on a Mac Studio M4 Max over a one-hour Blackmagic run (Macwelt); 6,856 / 5,550 MB/s on a MacBook Pro M5 Pro (Phototrend)'), ('Cooling', 'Fanless aluminium heatsink, bus powered'), ('SSD support', '2280 or 2242 NVMe M.2, single or double sided, up to 8 TB; PCIe 5.0 drives only if they average 11 W or less'), ('Included cable', 'About 20 cm (Phototrend)')],
+ "warranty": '2-year OWC Limited Warranty for the enclosure alone',
+ "returns": "Per Amazon's return policy for the listing",
+ "summary": 'Fanless 80 Gb/s NVMe enclosure that two named testers measured above 6,300 MB/s read and 5,500 MB/s write on Thunderbolt 5 Macs, with minimal throttling after an hour of sustained load.',
+ "fit": 'MacBook Pro M4 Pro or M4 Max owners who want a silent enclosure for a PCIe 4.0 drive such as the Samsung 990 Pro.',
+ "caveats": ['On a base M4 MacBook Pro the Thunderbolt 4 port caps it near 3,800 MB/s.', 'The included cable is short, about 20 cm.', 'PCIe 5.0 SSDs must average 11 W or less; OWC names the Samsung 9100 Pro as a passing example.', 'No USB 3.x fallback is claimed; PCs need a Thunderbolt 4, Thunderbolt 5 or USB4 port.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

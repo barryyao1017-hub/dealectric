@@ -1,0 +1,122 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Thunderbolt 5's storage gain is a PCIe-tunnel step (Intel: 'double the PCI Express data throughput', built on PCIe Gen 4) that only an M4 Pro/Max port exposes, that OWC's own ladder puts the same 80G enclosure at 'over 6000MB/s' on TB5 but 'up to 3800MB/s' on a TB4 port like the base M4's, that Howard Oakley found full TB5 speed needs macOS 15.3 or later, and that OWC limits PCIe Gen 5 SSDs inside to about 11 W average.",
+ "standout": 2,
+ "standout_why": "Compared against the three cited pages: DPReview (M4 Pro MacBook Pro test; says TB5 was 1.2-1.8x USB4 'not quite realizing the theoretical 2x' and gives no cause), OWC's how-to-choose blog (only 'your drive's speed is capped by your computer's port', no figures per port) and the ACASIS product pages (could not be opened: HTTP 429 on every attempt, so their content is unverified). None explains why ~6,000 MB/s is the ceiling, none gives the TB4-host fallback number from the maker, none mentions the macOS 15.3 requirement, and none gives the Gen 5 SSD power limit. Uncited rank-4 picklog.cc does state the 64 Gbps PCIe Gen4 x4 wall (via Sabrent and ChargerLAB), so the wall itself is only partly new; the Apple-port mapping, the OWC per-host ladder, the 15.3 note and the 11 W limit are new.",
+ "decides": "Confirms the pick is conditional on the chip, and sharpens it: a TB5 enclosure on a base M4 MacBook Pro (Apple: 'Thunderbolt 4 (up to 40Gb/s)') is a TB4 device, OWC's own figure 'up to 3800MB/s', so the shopper should buy a 40 Gbps USB4 enclosure instead. On M4 Pro/Max (Apple: 'Thunderbolt 5 (up to 120Gb/s)') the enclosure reaches 'over 6000MB/s', and Oakley's measured ceiling is about 6 GB/s, so a PCIe 4.0 SSD (990 Pro class) is the right pairing; a PCIe 5.0 SSD adds no bandwidth and OWC warns it must average 11 W or less in the bus-powered 1M2 80G. The shopper must also run macOS 15.3 or later for full TB5 speed. Any TB5 enclosure on an M4 MacBook Pro keeps TRIM and SMART (Oakley: NVMe interface trims; SMART works over Thunderbolt/USB4, not USB 3.x), so that does not separate the candidates.",
+ "candidates": [
+  "ACASIS TB501 Pro",
+  "OWC Express 1M2 80G",
+  "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure (SKU 95583)",
+  "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure with Cooling Fan (SKU 45789)",
+  "ORICO X50 Pro",
+  "Satechi DotDisk",
+  "TerraMaster D1 SSD Pro"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Intel: what Thunderbolt 5 changes for storage",
+   "value": "80 Gbps bi-directional; up to 120 Gbps Bandwidth Boost for displays; 'Double the PCI Express data throughput for faster storage and external graphics'; built on 'PCI Express Gen 4' and 'USB4 V2'",
+   "source": "https://www.intel.com/content/www/us/en/newsroom/news/intel-introduces-thunderbolt-5-standard.html",
+   "source_title": "Intel Introduces Thunderbolt 5 Connectivity Standard (2023-09-12)",
+   "read": "2026-11-08",
+   "note": "Intel gives no Gbps figure for PCIe on this page. Arithmetic: a PCIe Gen 4 x4 link is 4 lanes × 16 GT/s × 128/130 ≈ 63 Gbps ≈ 7.9 GB/s raw each way; a Gen 3 x4 link (Thunderbolt 4) is half, ≈ 3.9 GB/s. That is why TB5 enclosures top out near 6-7 GB/s and TB4 near 3-3.8 GB/s, well below the 80 or 40 Gbps link number."
+  },
+  {
+   "product": "general",
+   "label": "Apple: ports on MacBook Pro 14-inch M4 (2024)",
+   "value": "Three Thunderbolt 4 (USB-C) ports: 'Thunderbolt 4 (up to 40Gb/s)', 'USB 4 (up to 40Gb/s)'",
+   "source": "https://support.apple.com/en-us/121552",
+   "source_title": "MacBook Pro (14-inch, M4, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-08",
+   "note": "Base M4 chip. A TB5 enclosure plugged in here negotiates Thunderbolt 4 / USB4 40 Gbps; the TB5 PCIe step is unavailable."
+  },
+  {
+   "product": "general",
+   "label": "Apple: ports on MacBook Pro 14-inch M4 Pro or M4 Max (2024)",
+   "value": "Three Thunderbolt 5 (USB-C) ports: 'Thunderbolt 5 (up to 120Gb/s)', 'USB 4 (up to 120Gb/s)'",
+   "source": "https://support.apple.com/en-us/121553",
+   "source_title": "MacBook Pro (14-inch, M4 Pro or M4 Max, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-08",
+   "note": "Only these two chips give the shopper a TB5 port. Apple states the link rate, not the PCIe tunnel rate."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Maker's real-world speed by host port",
+   "value": "USB4 80Gb/s or Thunderbolt 5 host: 'Over 6000MB/s'; USB4 40Gb/s host: 'Over 3800MB/s'; Thunderbolt 4 host: 'Up to 3800MB/s'; Thunderbolt 3 host (Mac only): 'Up to 2800MB/s'",
+   "source": "https://www.owc.com/solutions/express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "OWC adds 'Performance will vary depending on drive and application used.' The TB4 row is what a base M4 MacBook Pro gets from this enclosure. Price not shown on the page without selecting a configuration."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "PCIe Gen 5 SSD power limit inside the enclosure",
+   "value": "Gen 5 SSD should consume '11 watts or less on average'",
+   "source": "https://www.owc.com/solutions/express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "OWC: 'PCIe Gen 5 NVMe M.2 SSDs require careful selection and verification of manufacturer specifications'. Bus-powered, fanless, 'No distracting fan'; warranty '2-year OWC Limited Warranty for enclosure only' (3-year when bought with OWC storage). Accepts 2280 or 2242 NVMe M.2."
+  },
+  {
+   "product": "OWC Express 1M2 (40 Gbps model, for comparison)",
+   "label": "Maker's speed on Apple silicon USB4 port vs PC",
+   "value": "Apple Silicon Macs (M1 to M5), USB4 40Gb/s: 3189MB/s; USB4 40Gb/s or Thunderbolt 4 port on a PC: 3836MB/s; USB-C 10Gb/s: 990MB/s",
+   "source": "https://www.owc.com/solutions/express-1m2",
+   "source_title": "OWC Express 1M2",
+   "read": "2026-11-08",
+   "note": "Shows what a 40 Gbps enclosure gives a base M4 MacBook Pro; OWC states Macs get less than PCs on the same 40 Gbps port. Footnote: 'Fully compatible with PCIe Gen 3 and later SSDs with best performance attained with Gen 4 and later.' Included cable 0.3 m."
+  },
+  {
+   "product": "general",
+   "label": "Howard Oakley: macOS version needed for full Thunderbolt 5 speed",
+   "value": "'macOS 15.3 or later is required for full TB5 performance'",
+   "source": "https://eclecticlight.co/2025/02/04/macos-sequoia-15-3-has-improved-thunderbolt-5-performance/",
+   "source_title": "macOS Sequoia 15.3 has improved Thunderbolt 5 performance – The Eclectic Light Company (2025-02-04)",
+   "read": "2026-11-08",
+   "note": "Mac mini M4 Pro. Through a TB5 dock, USB4 SSD write rose from 2.3 to 3.8 GB/s and TB3 SSD write from 0.42 to 1.6 GB/s on updating 15.2 to 15.3. Single TB5 SSD was 'around 150%' of a USB4 SSD and '180-250%' of a TB3 SSD."
+  },
+  {
+   "product": "general",
+   "label": "Howard Oakley: measured TB5 vs USB4 SSD and the ceiling",
+   "value": "5.2 / 5.5 GB/s read / write on Mac mini M4 Pro over TB5; 3.1 / 3.1 GB/s over USB4 on MacBook Pro M3 Pro; 'the maximum transfer rate it can achieve over its 80 Gb/s works out at 6 GB/s'",
+   "source": "https://eclecticlight.co/2025/01/30/thunderbolt-5-ssds-are-promising-but-fill-their-cache-quicker/",
+   "source_title": "Thunderbolt 5 SSDs are promising, but fill their cache quicker – The Eclectic Light Company (2025-01-30)",
+   "read": "2026-11-08",
+   "note": "Oakley calls a maker's 6.7 GB/s claim 'bogus'. Same TB5 SSD dropped from about 5.5 to 1.4 GB/s write after roughly 50 GB (SLC cache), so sustained write depends on the SSD chosen, not the enclosure. SSD model not named; macOS version not stated."
+  },
+  {
+   "product": "general",
+   "label": "Howard Oakley: TRIM and SMART over Thunderbolt/USB4 vs USB 3.x on macOS",
+   "value": "'APFS and HFS+ will only Trim SSDs with an NVMe interface'; 'macOS can only access SMART indicators over FireWire, Thunderbolt and USB4 connections, and not over USB 3.x or earlier'",
+   "source": "https://eclecticlight.co/2024/04/09/which-external-drives-have-trim-and-smart-support/",
+   "source_title": "Which external drives have Trim and SMART support? – The Eclectic Light Company (2024-04-09)",
+   "read": "2026-11-08",
+   "note": "OWC Express 1M2 on Apple silicon over USB4: full TRIM and SMART; same enclosure on an Intel Mac in USB 3.x fallback: TRIM but no SMART. Every M4 MacBook Pro port is TB4 or TB5, so any TB5 NVMe enclosure keeps both; this does not separate the candidates."
+  },
+  {
+   "product": "general",
+   "label": "DPReview test on M4 Pro MacBook Pro (cited rival)",
+   "value": "TB5 drive (OWC Envoy Ultra) 'around 1.2 to 1.8 times faster' than USB4 drive in synthetic tests, 'not quite realizing the theoretical 2x'",
+   "source": "https://www.dpreview.com/reviews/2098773643/usb-4-thunderbolt-5-ssd-owc-sandisk-speeds-roundup/",
+   "source_title": "Do photographers need the fastest external SSD? We tested three to find out | DPReview (2026-01-17)",
+   "read": "2026-11-08",
+   "note": "No MB/s figures and no mechanism given; the PCIe Gen 4 x4 tunnel and SLC cache explain the sub-2x result."
+  }
+ ],
+ "unsourced": [
+  "Intel's own numeric PCIe tunnel figures (64 Gbps for Thunderbolt 5 vs 32 Gbps for Thunderbolt 4): the Thunderbolt 5 Tech Brief PDF at thunderbolttechnology.net did not render to text, the intel.com Thunderbolt 5 page redirected to a 404, and thunderbolttechnology.net/tech has no requirements table; only a search snippet of Intel's messaging guide shows the 64/32 pairing, so it is not used as a value.",
+  "Intel JHL9480 datasheet or ARK page stating the controller's downstream PCIe Gen 4 x4 link: no ARK entry found for JHL9480 (only JHL9540, listed as x4 Gen 4 Barlow Ridge).",
+  "ACASIS TB501 Pro US product page content and price: both cited acasis.com URLs returned HTTP 429 on three WebFetch attempts and via storecheck.py.",
+  "UGREEN US Thunderbolt 5 enclosure page (ladder of speeds by host, PCIe 5.0 SSD support, price): HTTP 429 via WebFetch and storecheck.py.",
+  "Apple statement of the PCIe tunnel bandwidth of its Thunderbolt 5 or Thunderbolt 4 ports: the tech-specs pages list only 120Gb/s and 40Gb/s link rates.",
+  "A named measurement of a TB5 enclosure on a base M4 MacBook Pro (TB4 port): only OWC's maker figure of 'up to 3800MB/s' on a Thunderbolt 4 host was found."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 2.2863120999999995
+ }
+}

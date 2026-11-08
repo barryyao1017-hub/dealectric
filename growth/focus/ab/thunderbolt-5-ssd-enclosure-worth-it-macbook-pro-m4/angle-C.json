@@ -1,0 +1,128 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the maker-declared SSD exclusions differ by enclosure: UGREEN's fan model (SKU 45789) excludes all PCIe 5.0 SSDs including the Samsung 9100 and has no USB 2/3 fallback (Thunderbolt 3 only on macOS 15+), while OWC's Express 1M2 80G allows Gen 5 drives only if they average 11 W or less and ACASIS's current TB501 Pro/Max claims native Gen 5 support and recommends the 9100 Pro.",
+ "standout": 2,
+ "standout_why": "Compared against the cited ACASIS product pages (one was rate-limited; the Shopify data for the other was read), DPReview's roundup and OWC's buying guide. ChatGPT's answer says only that the '$149 basic' ACASIS lacks PCIe 5.0 and that newer ones have it; DPReview gives no SSD or cable pairing rules; OWC's blog says nothing about Gen 5 power limits, drive sizes or fallback modes. None of them states UGREEN's Gen 5 / Samsung 9100 exclusion, the no-USB-3-fallback limit, OWC's 11 W Gen 5 ceiling, or Apple's own cable spec (1 m passive, 120 Gb/s on TB5, 80 Gb/s on TB4/USB4, 240 W). Apple's support page confirming base M4 = Thunderbolt 4 and M4 Pro/Max = Thunderbolt 5 is already stated by ChatGPT, so that part is not new.",
+ "decides": "It confirms ChatGPT's pairing of a PCIe 4.0 Samsung 990 Pro with any of the three enclosures, but adds the decisive exclusions a shopper hits if they already own or plan a Gen 5 drive: with the UGREEN fan model it is unsupported by the maker, with the OWC it must average 11 W or less (OWC names the 9100 Pro as a passing example), and ACASIS is the only one of the three that claims unrestricted native Gen 5 support. It also narrows the pick for anyone who needs to plug the drive into a plain USB 3 port (older Mac, dock, PC): UGREEN says its fan enclosure is not backward compatible with USB 2/3, whereas our page already notes ORICO's X50 Pro and UGREEN's finned model carry a USB fallback controller. Base-M4 buyers get Thunderbolt 4 ports only, so OWC's own figure of up to 3,800 MB/s applies and the TB5 premium is wasted.",
+ "candidates": [
+  "ACASIS TB501 Pro",
+  "ACASIS TB501-Max",
+  "OWC Express 1M2 80G",
+  "UGREEN 80Gbps Thunderbolt 5 NVMe enclosure with fan (SKU 45789)",
+  "Apple Thunderbolt 5 (USB-C) Pro Cable 1 m"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Which MacBook Pro M4 has Thunderbolt 5 ports",
+   "value": "14-inch MacBook Pro with Pro or Max chip (2024 or later) and 16-inch MacBook Pro (2024 or later): Thunderbolt 5; 14-inch MacBook Pro with M4 chip: Thunderbolt 4",
+   "source": "https://support.apple.com/109523",
+   "source_title": "Identify the ports on your Mac - Apple Support",
+   "read": "2026-11-08",
+   "note": "Apple lists the 14-inch M4 (non-Pro) under Thunderbolt 4 alongside M1 Pro–M3 Max, M5 and M6; Thunderbolt 5 is assigned only to 'Pro or Max chip introduced in 2024 or later'."
+  },
+  {
+   "product": "general",
+   "label": "Base M4 14-inch MacBook Pro port spec",
+   "value": "Three Thunderbolt 4 (USB-C) ports, Thunderbolt 4 up to 40 Gb/s, USB 4 up to 40 Gb/s",
+   "source": "https://support.apple.com/en-us/121552",
+   "source_title": "MacBook Pro (14-inch, M4, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-08",
+   "note": "Maker spec page for the base chip."
+  },
+  {
+   "product": "general",
+   "label": "M4 Pro / M4 Max 14-inch MacBook Pro port spec",
+   "value": "Three Thunderbolt 5 (USB-C) ports, Thunderbolt 5 up to 120 Gb/s, USB 4 up to 120 Gb/s, DisplayPort 2.1",
+   "source": "https://support.apple.com/en-us/121553",
+   "source_title": "MacBook Pro (14-inch, M4 Pro / M4 Max, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-08",
+   "note": "The 120 Gb/s figure is Apple's Bandwidth Boost spec; storage uses the 80 Gb/s symmetric mode."
+  },
+  {
+   "product": "Apple Thunderbolt 5 (USB-C) Pro Cable 1 m",
+   "label": "Cable rating by host port",
+   "value": "Thunderbolt 5 data up to 120 Gb/s; Thunderbolt 4, Thunderbolt 3 and USB4 up to 80 Gb/s; USB 3.2 Gen 2 up to 10 Gb/s; 240 W power",
+   "source": "https://support.apple.com/en-us/118204",
+   "source_title": "About Apple Thunderbolt Pro cables - Apple Support",
+   "read": "2026-11-08",
+   "note": "Apple's Thunderbolt 4 Pro cable on the same page is rated 40 Gb/s and 100 W, so a TB4 Pro cable caps a TB5 enclosure at 40 Gb/s. Apple's store page for the 1 m cable (MDW94AM/A) showed no price text when read."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "SSD compatibility and exclusions",
+   "value": "2280 or 2242 NVMe, single- or double-sided, up to 8 TB; PCIe Gen 5 drives only if they consume 11 W or less on average during sustained read/write (OWC names Samsung 9100 Pro as an example)",
+   "source": "https://www.owc.com/solutions/express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G - OWC",
+   "read": "2026-11-08",
+   "note": "Footnote 3 on the page; bus-power limit is the stated reason. 2230 is not mentioned."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Speed by host port (maker claim)",
+   "value": "Over 6,000 MB/s on USB4 80 Gb/s or Thunderbolt 5; over 3,800 MB/s on USB4 40 Gb/s; up to 3,800 MB/s on Thunderbolt 4; up to 2,800 MB/s on Thunderbolt 3 (Mac only)",
+   "source": "https://www.owc.com/solutions/express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G - OWC",
+   "read": "2026-11-08",
+   "note": "The Thunderbolt 4 line is the figure that applies to a base-M4 MacBook Pro. Warranty: 2-year for enclosure only, 3-year for pre-configured units. Ships with a 'USB4 cable', length not stated."
+  },
+  {
+   "product": "UGREEN 80Gbps Thunderbolt 5 NVMe enclosure with fan (SKU 45789)",
+   "label": "Maker-stated exclusions",
+   "value": "Does not support M.2 B-Key / M&B-Key SATA NGFF SSDs, PCIe 5.0 SSDs or the Samsung 9100 SSD; 2280 M-Key / M&B-Key NVMe only; up to 8 TB; not backward compatible with USB 2/3; Thunderbolt 3 only on computers running macOS 15 or higher; fan runs from 40 °C",
+   "source": "https://www.ugreen.com/en-ca/products/ca-45789",
+   "source_title": "UGREEN 80Gbps M.2 NVMe SSD Enclosure with Cooling Fan (ca-45789) - UGREEN Canada",
+   "read": "2026-11-08",
+   "note": "UGREEN's Canadian store page (same SKU number as the US listing). The US pages at us.ugreen.com and ugreen.com returned HTTP 429 on every attempt, so the US wording could not be checked today. Claimed TB5 speed on the page: up to 7,000 MB/s."
+  },
+  {
+   "product": "ACASIS TB501 Pro",
+   "label": "Maker-stated SSD and host compatibility",
+   "value": "Native PCIe Gen 5 NVMe support, backward compatible with Gen 4/Gen 3; recommends Samsung 9100 Pro / 990 Pro / 980 Pro, WD SN850 / SN850X, Crucial P3 Plus; SSDs with integrated heatsinks exceed internal dimensions and are not recommended; requires a Thunderbolt 5 or USB4 host port (Apple computers 2015 or later with TB5/USB4 ports)",
+   "source": "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5",
+   "source_title": "Acasis 80Gbps M.2 NVMe SSD Enclosure Compatible with Thunderbolt 5 - ACASIS",
+   "read": "2026-11-08",
+   "note": "Read from the Shopify product JSON via storecheck.py because the HTML page returned 429. Page describes a 'new PCBA design with Intel JHL9480(B2)'. TB501 Pro: manual fan button, auto-start at 55 °C, no PD charging. TB501-Max: automatic fan plus 60 W PD pass-through, listed unavailable today. This contradicts ChatGPT's claim that the basic version lacks PCIe 5.0 support, at least for the current listing."
+  },
+  {
+   "product": "ACASIS TB501 Pro",
+   "label": "Price today",
+   "value": "$174.00 (compare-at $299.00), Space Gray or Silver, in stock; TB501-Max $179.00, out of stock",
+   "source": "https://www.acasis.com/products/acasis-80gbps-ssd-enclosure-with-intel-jhl9480-chip-compatible-with-thunderbolt-5",
+   "source_title": "Acasis 80Gbps M.2 NVMe SSD Enclosure Compatible with Thunderbolt 5 - ACASIS",
+   "read": "2026-11-08",
+   "note": "Shopify variant prices via storecheck.py; ChatGPT showed $149–$179."
+  },
+  {
+   "product": "general",
+   "label": "macOS version for full Thunderbolt 5 performance",
+   "value": "macOS 15.3 or later; on a Mac mini M4 Pro through a TB5 dock a USB4 SSD wrote 2.3 GB/s under 15.2 and 3.8 GB/s under 15.3, a TB3 SSD 0.42 GB/s vs 1.6 GB/s",
+   "source": "https://eclecticlight.co/2025/02/04/macos-sequoia-15-3-has-improved-thunderbolt-5-performance/",
+   "source_title": "macOS Sequoia 15.3 has improved Thunderbolt 5 performance - The Eclectic Light Company",
+   "read": "2026-11-08",
+   "note": "Howard Oakley's measurements with a Kensington SD5000T5 dock; the TB5 SSD itself was unnamed. Result 10 in ChatGPT's search, not cited in its answer."
+  },
+  {
+   "product": "general",
+   "label": "TB5 vs USB4 real-world gain on an M4 Pro MacBook Pro",
+   "value": "Thunderbolt 5 drive 1.2 to 1.8 times faster than a 40 Gb/s USB4 drive; USB4 2.5 to 6.4 times faster than USB 3.2 Gen 2",
+   "source": "https://www.dpreview.com/reviews/2098773643/usb-4-thunderbolt-5-ssd-owc-sandisk-speeds-roundup/",
+   "source_title": "Do photographers need the fastest external SSD? We tested three to find out - DPReview",
+   "read": "2026-11-08",
+   "note": "Drives: Samsung T7 Shield, SanDisk Extreme Pro USB4, OWC Envoy Ultra TB5, each on its bundled cable. No absolute MB/s given, no macOS version stated."
+  }
+ ],
+ "unsourced": [
+  "UGREEN US store wording for the Gen 5 / Samsung 9100 exclusion and the included cable length on both TB5 enclosures (us.ugreen.com and ugreen.com returned HTTP 429 on every attempt; only the Canadian page could be read).",
+  "ACASIS included cable length and rating, and ACASIS warranty length (the Shopify product text mentions a warranty period without stating it).",
+  "OWC Express 1M2 80G included cable length and current OWC store price (the product page showed no price text).",
+  "Apple's US store price for the Thunderbolt 5 (USB-C) Pro Cable 1 m (store page text had no price; only third-party retailers list it).",
+  "Whether the ACASIS TB501 Pro variant ChatGPT called the '$149 basic version' is still sold without PCIe 5.0 support; the current listing claims native Gen 5 support for both TB501 Pro and TB501-Max."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.9134737000000004
+ }
+}

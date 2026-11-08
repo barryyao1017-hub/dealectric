@@ -1,0 +1,142 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states what the makers' '80Gbps / up to 6,000–7,061 MB/s' claims shrink to on a Mac in a named tester's hands: every JHL9480 enclosure hangs the SSD on a PCIe 4.0 x4 (64 Gb/s) link, reads land at 6,000–6,500 MB/s, writes range from about 3,000 MB/s (Notebookcheck, ORICO X50 Pro on a TB5 MacBook Pro) to 5,776–6,001 MB/s (Macwelt, OWC 1M2 80G and UGREEN D705), sustained writes fall to about 1.4 GB/s once the SSD's roughly 50 GB SLC cache fills (Eclectic Light), and on a base-M4 Thunderbolt 4 port the same enclosure reads about 3,186 MB/s (TerraMaster's own base M4 Mac mini run).",
+ "standout": 2,
+ "standout_why": "Compared against the three cited rivals and the top uncited result. The two Acasis product pages claim 'Read&Write Speed Over 6000MB/s' with no host, SSD or method stated. DPReview gives only multipliers (TB5 drive 1.2–1.8x a USB4 drive in unnamed synthetics, no gain in real tasks) and no MB/s. The OWC blog gives interface rungs (900–1,000 / 2,700–3,000 / over 6,000 MB/s) and says the port caps the drive, but nothing on writes, cache or the PCIe link. Picklog (rank 4, not cited) already has the 64 Gb/s x4 Gen4 ceiling and OWC's 'up to 3,800 MB/s on TB4', so that half is only partly new. None of the eleven results has a measured write on a Mac for any candidate, the write-vs-claim spread between enclosures, the post-cache write figure, or a measured base-M4 number.",
+ "decides": "Splits the answer by chip exactly where the shopper question does. Base M4 MacBook Pro: TerraMaster's own base-M4 Mac mini run (about 3,186 MB/s read) and Eclectic Light's USB4 figure (about 3.4 GB/s) show a TB5 enclosure delivers 40 Gb/s-rung speed there, so it is not worth the premium over a USB4 enclosure. M4 Pro/Max: the claimed read/write numbers are near-identical across enclosures, so the measured Mac write is what separates them: Macwelt measured 6,001 MB/s write on the UGREEN D705 (fan) and 5,776 MB/s on the OWC Express 1M2 80G (one-hour run, minimal throttling), while Notebookcheck measured about 3,000 MB/s write on the ORICO X50 Pro on a TB5 MacBook Pro against a 5,800 MB/s claim. That supports UGREEN or OWC over ORICO for write-heavy work, and the post-cache 1.4 GB/s figure says the SSD's cache size (bigger on 4 TB than 1 TB) matters more than the enclosure for 50 GB+ copies. Caveat: TB5 enclosures accept PCIe 5.0 drives only as compatibility, never for speed; the link is Gen4 x4 in all of them, and Notebookcheck's Gen5 Z540 was not detected in the ORICO at all.",
+ "candidates": [
+  "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure with fan (D705)",
+  "OWC Express 1M2 80G",
+  "ORICO X50 Pro",
+  "TerraMaster D1 SSD Pro",
+  "ACASIS TB501Pro",
+  "Satechi DotDisk 80Gbps"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What '80Gbps' normalises to at the SSD",
+   "value": "PCIe 4.0 x4 link (64 Gb/s) inside every Intel JHL9480 enclosure",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-thunderbolt-5-80gbps-m-2-nvme-ssd-enclosure-d705/",
+   "source_title": "Teardown of UGREEN Thunderbolt 5 80Gbps M.2 NVMe SSD Enclosure (D705) – ChargerLAB",
+   "read": "2026-11-08",
+   "note": "ChargerLAB: the JHL9480 'supports four PCIe lanes configured as x4 Gen 4'. 4 lanes x 16 GT/s = 64 Gb/s raw, about 8,000 MB/s before encoding and protocol overhead, which is why no vendor claims more than about 7,000 MB/s. Teardown dated 2025-08-20. The ORICO, TerraMaster and ACASIS pages name the same JHL9480 chip."
+  },
+  {
+   "product": "UGREEN D705 (fan)",
+   "label": "Measured on a Mac vs claim",
+   "value": "6,511 MB/s read, 6,001 MB/s write (Samsung 990 Pro 4 TB); 6,211 / 5,908 with a Kingston KC3000 2 TB",
+   "source": "https://www.macwelt.de/article/2807262/ugreen-thunderbolt-5-ssd-gehaeuse-test.html",
+   "source_title": "Ugreen Thunderbolt 5 SSD-Gehäuse im Test – Macwelt",
+   "read": "2026-11-08",
+   "note": "AJA System Test Lite; Mac host and macOS version not stated in the article. Temperatures via DriveDx: 34 °C idle, 40 °C under stress with the KC3000; rates 'remained stable in the endurance test', duration not stated. PWM fan, 1 m Thunderbolt 5 cable in the box, PCIe 4.0 SSDs only per Macwelt, up to 8 TB. Published 2025-07-05."
+  },
+  {
+   "product": "UGREEN D705 (fan)",
+   "label": "Teardown: fan, cable, fallback bridge",
+   "value": "PWM fan Yeehon YB3004H05P 5 V 0.1 A; cable about 81 cm, e-marked 80 Gb/s and 240 W; no USB-to-NVMe bridge chip found",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-thunderbolt-5-80gbps-m-2-nvme-ssd-enclosure-d705/",
+   "source_title": "Teardown of UGREEN Thunderbolt 5 80Gbps M.2 NVMe SSD Enclosure (D705) – ChargerLAB",
+   "read": "2026-11-08",
+   "note": "Chips found: Intel JHL9480 and an Infineon CYPM1322-97BZXI USB-C PD controller only. A plain USB 3.x host needs a bridge such as RTL9210 or JMS583 to see an NVMe drive; ChargerLAB names none, so treat the D705's USB 3.x fallback as unverified. Supports 2280 only, up to 8 TB. Teardown dated 2025-08-20."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Maker's speed by host port",
+   "value": "Over 6,000 MB/s on TB5 / USB4 80G; over 3,800 on USB4 40G; up to 3,800 on TB4; up to 2,800 on TB3 (Mac only)",
+   "source": "https://www.owc.com/solutions/express-1m2-80g",
+   "source_title": "OWC Express 1M2 80G",
+   "read": "2026-11-08",
+   "note": "Headline measured by OWC with a 2 TB OWC Aura IV in a Mac Studio (2025) M3 Ultra running AJA System Test. Footnote says PCs, Chromebooks and Surface need a TB4, TB5 or USB4 port, i.e. no USB 3.x fallback is claimed. Fanless aluminium heatsink. 2280 or 2242, up to 8 TB. OWC recommends a Gen5 SSD that draws 11 W or less on average. Enclosure warranty stated as 2 years. Cable length and USD price not shown on the page."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Measured on a Mac vs claim",
+   "value": "6,319 MB/s read, 5,776 MB/s write (OWC Aura IV) on a Mac Studio M4 Max",
+   "source": "https://www.macwelt.de/article/2960935/owc-express-1m2-80g-test.html",
+   "source_title": "OWC Express 1M2 80G im Test – Macwelt",
+   "read": "2026-11-08",
+   "read_note": "",
+   "note": "One-hour Blackmagic Disk Speed Test endurance run; Macwelt says the Aura IV 'only had to be throttled minimally' for heat and the case felt barely warm. For scale, the older 40G Express 1M2 reached 3,665 / 3,257 and a MacBook Air M3 port 3,283 / 2,982. Cons list: short included cable, length not stated. Bare enclosure from €250 in Germany. Published 2025-12-08."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Measured on a TB5 Mac vs claim",
+   "value": "6,000 MB/s read, about 3,000 MB/s write on a MacBook Pro 16 M5 TB5 port; rated 6,000 / 5,800",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review: This Thunderbolt 5 enclosure hits 6,000 MB/s – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Blackmagic Disk Speed Test, TeamGroup MP44 2 TB (PCIe 4.0, rated 7,000 read) inside; macOS version not stated. On a Razer Blade 16 (2025) TB4 port: about 4,000 read, over 3,700 write (CrystalDiskMark / AS SSD). DiskSpd sustained read QD8 averaged 6,916 MB/s with no thermal throttling. A PCIe 5.0 TeamGroup Z540 was 'not detected by the system at all'. $329 as a 1 TB bundle on Amazon; the bare case is not sold in the US per Notebookcheck."
+  },
+  {
+   "product": "TerraMaster D1 SSD Pro",
+   "label": "Claimed TB5 vs measured on base M4 and USB 3.2",
+   "value": "7,061 read / 6,816 write claimed (990 Pro 4 TB, Mac mini M4 Pro, TB5); about 3,186 MB/s read on a base M4 Mac mini TB4 port; about 1,000 MB/s on USB 3.2 Gen 2",
+   "source": "https://www.cnx-software.com/2026/01/22/terramaster-d1-ssd-pro-a-thunderbolt-5-fanless-ssd-enclosure-with-80gbps-bandwidth-7gb-s-practical-performance/",
+   "source_title": "TerraMaster D1 SSD Pro – A Thunderbolt 5 fanless SSD enclosure with 80Gbps bandwidth, 7GB/s practical performance – CNX Software",
+   "read": "2026-11-08",
+   "note": "All three figures are TerraMaster's own benchmarks as reported by CNX, not independent. Intel JHL9480 plus a bridge CNX calls 'likely JMS583'. Slot is 'PCIe 4.0 x4 electrical' and accepts PCIe 3.0/4.0/5.0 drives up to 8 TB, i.e. Gen5 is compatibility only. Passive fins and pads, 36–49 °C under load. 0.3 m TB5 cable. $249.99 on Amazon, $211.99 after a 15% coupon and at the TerraMaster store, as of the 2026-01-22 article."
+  },
+  {
+   "product": "ACASIS TB501Pro",
+   "label": "Claim as stated, with no host",
+   "value": "'Read&Write Speed Over 6000MB/s'; dual chip JHL9480 + RTL9210; 2-year warranty",
+   "source": "https://acasis.in/product/tb501pro/",
+   "source_title": "ACASIS 80Gbps M.2 NVMe SSD Enclosure for MacBook/Mini M4 Pro – acasis.in",
+   "read": "2026-11-08",
+   "note": "No host, SSD or benchmark named for the claim; no TB4 or USB 3.x throughput figure given. RTL9210 is the USB fallback bridge, so unlike the OWC it should mount on USB 3.x hosts. Claims support for PCIe Gen5 SSDs (Samsung 9100 Pro) and 2230/2242/2260/2280 up to 8 TB. Fan threshold not stated ('a certain threshold'). This is the Indian distributor page; the US store returned HTTP 429 on three attempts."
+  },
+  {
+   "product": "general",
+   "label": "Sustained write after the SLC cache fills (TB5 SSD on a Mac mini M4 Pro)",
+   "value": "About 5.5 GB/s for roughly 50 GB (about 10 s), then about 1.4 GB/s",
+   "source": "https://eclecticlight.co/2025/01/30/thunderbolt-5-ssds-are-promising-but-fill-their-cache-quicker/",
+   "source_title": "Thunderbolt 5 SSDs are promising, but fill their cache quicker – The Eclectic Light Company",
+   "read": "2026-11-08",
+   "note": "Howard Oakley, Stibium with three consecutive 53 GB writes; the TB5 drive is a pre-built unit (OWC, LaCie or Sabrent, not named), but the cache belongs to the NAND, so the same applies to whatever SSD goes in an enclosure. His calculated TB5 figures: 5.2 GB/s read, 5.5 GB/s write; Blackmagic showed 4.8 / 5.2. He puts the practical TB5 maximum at about 6 GB/s and says Blackmagic and AmorphousDiskMark cannot show the cache cliff. USB4 drives: about 3.1 GB/s each way, 'typically around 3.4 GB/s'; TB3 cannot exceed 3 GB/s."
+  },
+  {
+   "product": "general",
+   "label": "macOS version matters for TB5-port writes",
+   "value": "macOS 15.3 raised writes on a Mac mini M4 Pro TB5 port from 0.42 to 1.6 GB/s (TB3 SSD) and from 2.3 to 3.8 GB/s (USB4 SSD)",
+   "source": "https://eclecticlight.co/2025/02/04/macos-sequoia-15-3-has-improved-thunderbolt-5-performance/",
+   "source_title": "macOS Sequoia 15.3 has improved Thunderbolt 5 performance – The Eclectic Light Company",
+   "read": "2026-11-08",
+   "note": "Stibium, 53 GB per test. A dd test reported in the same article gave 4.08 GB/s write and 6.53 GB/s read on the M4 Pro TB5 port (target drive not stated). Oakley recommends macOS 15.3 or later for any TB5 peripheral."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals actually state",
+   "value": "DPReview: TB5 drive 1.2–1.8x a USB4 drive in unnamed synthetics on an M4 Pro MacBook Pro, no MB/s, no noticeable real-task gain. OWC blog: 900–1,000 / 2,700–3,000 / over 6,000 MB/s rungs, 'your drive's speed is capped by your computer's port'",
+   "source": "https://www.dpreview.com/reviews/2098773643/usb-4-thunderbolt-5-ssd-owc-sandisk-speeds-roundup/",
+   "source_title": "Do photographers need the fastest external SSD? We tested three to find out – DPReview",
+   "read": "2026-11-08",
+   "note": "OWC blog read the same day at https://www.owc.com/blog/how-to-choose-a-portable-ssd-speed-interface-and-ruggedness-explained. Neither mentions PCIe lanes, write speeds on Macs, SLC cache, or the 64 Gb/s link."
+  },
+  {
+   "product": "general",
+   "label": "Uncited rank-4 result already covers the lane ceiling",
+   "value": "Picklog: 'four Gen 4 lanes carry 64Gbps'; OWC 3,800 MB/s on TB4; a Hacker News poster saw about 7.1 GB/s whole-file reads on OWC 1M2 80G units regardless of drive; Acasis fan starts at 55 °C, UGREEN at 40 °C",
+   "source": "https://picklog.cc/blog/thunderbolt-5-ssd-enclosure",
+   "source_title": "Thunderbolt 5 SSD Enclosure: 14 Listings, 64Gbps Is the Wall – Picklog",
+   "read": "2026-11-08",
+   "note": "Picklog read vendor pages on 2026-09-11 and owns none of the enclosures. Its fan-start temperatures are its reading of the Acasis and UGREEN pages, which I could not open. It has no measured write figures and no measured base-M4 figure."
+  }
+ ],
+ "unsourced": [
+  "ACASIS US store price and fan-start temperature for the TB501Pro: both cited acasis.com URLs returned HTTP 429 on three attempts, via WebFetch and storecheck.",
+  "UGREEN US page for the 80Gbps TB5 enclosure (price, US-page claimed speeds, SKU 95583 vs 45789 mapping to the D705 Macwelt and ChargerLAB tested): HTTP 429 twice.",
+  "Satechi DotDisk 80Gbps page (controller, fallback, cable, price): HTTP 429.",
+  "Intel ARK specification table for the JHL9480 confirming PCIe 4.0 x4: the search returned only the page title; the x4 Gen4 figure rests on ChargerLAB's teardown.",
+  "OWC Express 1M2 80G included cable length: not on the OWC page or in Macwelt's review.",
+  "A measured write speed on any Mac for the ACASIS TB501Pro: none found at the maker or a named reviewer.",
+  "The Mac model and macOS version behind Macwelt's UGREEN D705 figures: not stated in the article.",
+  "A measured TB4-port figure on a base M4 MacBook Pro specifically: only TerraMaster's own base M4 Mac mini run (about 3,186 MB/s) was found."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 2.25316105
+ }
+}

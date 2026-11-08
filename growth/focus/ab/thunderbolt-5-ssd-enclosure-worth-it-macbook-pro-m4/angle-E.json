@@ -1,0 +1,171 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured Thunderbolt 5 read/write figure for any bare enclosure, and in particular that Notebookcheck measured the ORICO X50 Pro at about 6,000 MB/s read but only about 3,000 MB/s write on a TB5 MacBook Pro, while Phototrend measured the OWC Express 1M2 80G at 6,856 / 5,550 MB/s and Macwelt measured the UGREEN TB5 enclosure at 6,511 / 6,001 MB/s with a Samsung 990 Pro.",
+ "standout": 3,
+ "standout_why": "Cited rivals: DPReview (Jan 2026) tested an OWC Envoy Ultra portable drive, not an enclosure, on an M4 Pro MacBook Pro and published only ratios (TB5 1.2-1.8x USB4 in synthetics) with no MB/s, no tool, no temperatures. OWC's blog (Jul 2026) gives only maker claims (>6,000 MB/s) and a 5,000 MB/s theoretical calculation. The two Acasis product pages are maker claims (>6,000 MB/s). Uncited top results: Macworld (Jun 2026) has PCWorld-protocol numbers for the OWC 1M2 80G (~6 GB/s read, 5.5 GB/s write, host unstated) but none of the other enclosures; picklog.cc is a listing roundup; Eclectic Light (Feb 2025) measured a TB5 dock, not an enclosure. None of them puts named lab figures for the OWC, UGREEN, ORICO and Satechi enclosures side by side, and none shows the Mac write-speed gap between enclosures.",
+ "decides": "Confirms TB5 is only worth it on an M4 Pro/M4 Max (every measured TB5 figure above 6,000 MB/s came from a TB5 host; the same OWC enclosure on a TB4 MacBook Pro measured 3,354 / 3,263 MB/s). Among enclosures it moves the pick toward the OWC Express 1M2 80G (6,856 / 5,550 MB/s measured, fanless) or the UGREEN fanned unit (6,511 / 6,001 MB/s, 40 C under stress) and away from the ORICO X50 Pro for write-heavy work, since its measured Mac write was about half its read. PCWorld's 450 GB write test ranks the OWC 1M2 80G and TerraMaster D1 SSD Pro ahead of the Satechi DotDisk, which also runs warm with an audible fan. The ACASIS TB501Pro, ChatGPT's top pick, has no independent TB5 measurement I could open.",
+ "candidates": [
+  "OWC Express 1M2 80G",
+  "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure",
+  "ORICO X50 Pro",
+  "ACASIS TB501Pro",
+  "Satechi DotDisk",
+  "TerraMaster D1 SSD Pro"
+ ],
+ "findings": [
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Sequential read / write on a Thunderbolt 5 MacBook Pro",
+   "value": "6,856 / 5,550 MB/s",
+   "source": "https://phototrend.fr/2026/07/test-owc-express-1m2-80g/",
+   "source_title": "Test OWC Express 1M2 80G : un boîtier SSD USB4 80 Gb/s très rapide, à condition d'avoir la bonne machine",
+   "read": "2026-11-08",
+   "note": "Louis Royer, Phototrend, 28 Jul 2026. MacBook Pro 16-inch M5 Pro over Thunderbolt 5, OWC Aura Ultra IV 1 TB (PCIe 4.0) inside. Tool for the TB5 run not stated; macOS runs used AmorphousDiskMark. Exceeds OWC's own spec-sheet maximum of 6,347 / 5,601 MB/s."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Same enclosure on a Thunderbolt 4 Mac",
+   "value": "3,354 / 3,263 MB/s",
+   "source": "https://phototrend.fr/2026/07/test-owc-express-1m2-80g/",
+   "source_title": "Test OWC Express 1M2 80G (Phototrend)",
+   "read": "2026-11-08",
+   "note": "Louis Royer, MacBook Pro 14-inch M2 Pro, Thunderbolt 4, AmorphousDiskMark. Shows what a base-M4 (TB4) MacBook Pro owner would get from the same enclosure. Included cable about 20 cm; 288 g bare."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Sustained large copy on a TB4 Windows host",
+   "value": "269 GB in about 2 min 50 s, dipping to 1-1.8 GB/s",
+   "source": "https://phototrend.fr/2026/07/test-owc-express-1m2-80g/",
+   "source_title": "Test OWC Express 1M2 80G (Phototrend)",
+   "read": "2026-11-08",
+   "note": "Louis Royer, Huawei MateBook X Pro 2024, Thunderbolt 4. Copy started a little above 2 GB/s then sawtoothed between 1 and 1.8 GB/s; author calls it 'performances en dents de scie'. Limited by the Aura Ultra IV's cache, not the TB5 link."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "Overall read / write under PCWorld's test protocol",
+   "value": "about 6 GB/s read, 5.5 GB/s write",
+   "source": "https://www.macworld.com/article/668458/best-external-ssd-for-mac.html",
+   "source_title": "Best External SSD for Mac 2026: Fast and reliable storage | Macworld",
+   "read": "2026-11-08",
+   "note": "Cliff Joseph, Macworld, updated 23 Jun 2026, quoting PCWorld's protocol; host not stated. Macworld lists it at $219.99 at OWC. The same page lists no UGREEN, ACASIS, ORICO, Satechi or TerraMaster enclosure."
+  },
+  {
+   "product": "OWC Express 1M2 80G",
+   "label": "CrystalDiskMark SEQ1M Q8T1 read / write; RND4K Q1T1 read / write",
+   "value": "6,239 / 6,071 MB/s; 65.95 / 114.46 MB/s",
+   "source": "https://ssd-tester.com/owc_express_1m2_80g.html",
+   "source_title": "OWC Express 1M2 80G SSD Enclosure (ssd-tester.com)",
+   "read": "2026-11-08",
+   "note": "Benchmark run dated 28 Apr 2026, page credits 'Markus'. Host system and SSD inside not named on the page, so treat as a Windows TB5 ceiling figure, not a Mac result."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Sequential read / write on a Thunderbolt 5 MacBook Pro",
+   "value": "about 6,000 / about 3,000 MB/s",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review: This Thunderbolt 5 enclosure hits 6,000 MB/s",
+   "read": "2026-11-08",
+   "note": "Christian Hintze, Notebookcheck, 22 May 2026 (updated 5 Oct 2026). MacBook Pro 16 M5, Blackmagic Disk Speed Test, TeamGroup MP44 2 TB (PCIe 4.0) inside. The same SSD writes 5,700 MB/s internally in a Lenovo Legion Pro 5, so the write ceiling is the enclosure/host path. A PCIe 5.0 TeamGroup Z540 was not detected by the enclosure."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Sustained read, DiskSpd QD8, Thunderbolt 5",
+   "value": "6,916 MB/s average (5,993-6,937)",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Christian Hintze. DiskSpd 2.0.17 read loop; reference figures in the same run: MP44 internal 7,062, ZikeDrive Z666 (USB4) 3,017, PicoDrive 4,054. Notebookcheck reports no drop during the loop and no °C figure, only 'stays cool'. Enclosure alone 207 euros in Germany; $329 with 1 TB on Amazon at review time."
+  },
+  {
+   "product": "ORICO X50 Pro",
+   "label": "Same enclosure on a Thunderbolt 4 Windows laptop",
+   "value": "about 4,000 read / over 3,700 write MB/s",
+   "source": "https://www.notebookcheck.net/ORICO-X50PRO-review-This-Thunderbolt-5-enclosure-hits-6-000-MB-s.1303108.0.html",
+   "source_title": "ORICO X50PRO review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Christian Hintze, Razer Blade 16 (2025), CrystalDiskMark and AS SSD. On TB4 the write is actually higher than on the TB5 Mac, which points to a Mac-side write limit for this enclosure."
+  },
+  {
+   "product": "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure",
+   "label": "Sequential read / write, AJA System Test Lite",
+   "value": "6,511 / 6,001 MB/s with Samsung 990 Pro 4 TB; 6,211 / 5,908 MB/s with Kingston KC3000 2 TB",
+   "source": "https://www.macwelt.de/article/2807262/ugreen-thunderbolt-5-ssd-gehaeuse-test.html",
+   "source_title": "Ugreen Thunderbolt 5 SSD-Gehäuse im Test (Macwelt)",
+   "read": "2026-11-08",
+   "note": "Thomas Bergbold, Macwelt, 5 Jul 2025. Host Mac not named in the text; UGREEN SKU not named, but the unit tested has a PWM temperature-controlled fan and a 1 m Thunderbolt 5 cable, which matches the fanned SKU 45789 rather than the fanless fins SKU 95583. Our current page attributes these figures to the fanless row; that should move."
+  },
+  {
+   "product": "UGREEN 80Gbps Thunderbolt 5 M.2 NVMe SSD Enclosure",
+   "label": "SSD temperature idle / under stress test (DriveDx)",
+   "value": "34 °C / 40 °C",
+   "source": "https://www.macwelt.de/article/2807262/ugreen-thunderbolt-5-ssd-gehaeuse-test.html",
+   "source_title": "Ugreen Thunderbolt 5 SSD-Gehäuse im Test (Macwelt)",
+   "read": "2026-11-08",
+   "note": "Thomas Bergbold, measured on the Kingston KC3000; transfer rates stayed stable through the extended test, which he credits to the fan. Stress-test duration not given."
+  },
+  {
+   "product": "Satechi DotDisk",
+   "label": "Ranking in PCWorld's 48 GB and 450 GB transfer tests",
+   "value": "Slower than OWC 1M2 80G in CrystalDiskMark 4K and 48 GB transfers; 'a tad slower' than TerraMaster D1 SSD Pro and OWC 1M2 80G in the 450 GB write; never throttled",
+   "source": "https://pcworld.com/article/3134009/satechi-dotdisk-ssd-enclosure-review.html",
+   "source_title": "Satechi DotDisk SSD enclosure review (PCWorld)",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, PCWorld, 25 May 2026. Asus Z890-Creator (Core Ultra 5 225, Thunderbolt 5 on board), Windows 11, Crucial T710 2 TB PCIe 5.0 inside; OWC unit had an Aura Ultra IV. Numeric MB/s and seconds are in chart images only and could not be read. Jacobi says the DotDisk 'runs pretty warm despite the fan' and the 1-inch fan is audible under sustained load; a TeamGroup GE Pro ran considerably hotter than the T710. 12-inch TB5 cable included. $199.99 at Satechi, Amazon, B&H; he lists OWC 1M2 80G at $220 and TerraMaster D1 SSD Pro at $250 retail."
+  },
+  {
+   "product": "ACASIS TB501Pro",
+   "label": "Fan behaviour, weight and size (measured by ASCII.jp)",
+   "value": "Fan goes to full speed as the SSD nears 50 °C; 138 g; 56.5 x 116 x 19.8 mm",
+   "source": "https://ascii.jp/elem/000/004/298/4298869/",
+   "source_title": "ASCII.jp review of ACASIS Thunderbolt 5 enclosures",
+   "read": "2026-11-08",
+   "note": "Tadashi Fujita, ASCII.jp, 15 Jul 2025. Fan has an on/off switch next to the TB port; noise described as not bothersome in daily use, no dB figure. The article's throughput figures (around 900 MB/s) are not on a TB5 host and are not usable for this question. About 30,000 yen with coupons at the time."
+  },
+  {
+   "product": "general",
+   "label": "TB5 vs USB4 vs USB 3.2 Gen 2 on an M4 Pro MacBook Pro (cited rival's only test data)",
+   "value": "TB5 1.2-1.8x USB4; USB4 2.5-6.4x USB 3.2 Gen 2, synthetic benchmarks only",
+   "source": "https://www.dpreview.com/reviews/2098773643/usb-4-thunderbolt-5-ssd-owc-sandisk-speeds-roundup/",
+   "source_title": "Do photographers need the fastest external SSD? We tested three to find out | DPReview",
+   "read": "2026-11-08",
+   "note": "17 Jan 2026. Drives were OWC Envoy Ultra 2 TB (TB5), SanDisk Extreme Pro 2 TB (USB4), Samsung T7 Shield 1 TB. No MB/s, no tool named, no temperatures. Conclusion: TB5 'never felt like a bottleneck' but was not noticeably faster than USB4 in Lightroom, Premiere or Final Cut; most photographers can stop at USB4."
+  },
+  {
+   "product": "general",
+   "label": "TB5 SSD vs USB4 and TB3 SSDs on an M4 Pro Mac mini, Stibium 53 GB",
+   "value": "TB5 SSD about 150% of the USB4 SSD and 180-250% of the TB3 SSD",
+   "source": "https://eclecticlight.co/2025/02/04/macos-sequoia-15-3-has-improved-thunderbolt-5-performance/",
+   "source_title": "macOS Sequoia 15.3 has improved Thunderbolt 5 performance – The Eclectic Light Company",
+   "read": "2026-11-08",
+   "read_note": "",
+   "note": "Howard Oakley, 4 Feb 2025, Mac mini M4 Pro, macOS 15.3, Stibium (53 GB per test). SSD brands withheld. Also from his comments: a LaCie TB5 2 TB wrote at 5.5 GB/s for about 2 minutes then fell to 2.2 GB/s once its ~50 GB SLC cache filled, recovering after 6 minutes. Useful caveat that sustained write is set by the SSD's cache, not the enclosure."
+  },
+  {
+   "product": "general",
+   "label": "OWC Envoy Ultra (TB5 portable, same OWC lineage) measured by Macworld",
+   "value": "Blackmagic 5.2 GB/s; AmorphousDiskMark 6.5 GB/s read; ATTO nearly 7 GB/s read, 5.57 GB/s write",
+   "source": "https://www.macworld.com/article/668458/best-external-ssd-for-mac.html",
+   "source_title": "Best External SSD for Mac 2026 | Macworld",
+   "read": "2026-11-08",
+   "note": "Cliff Joseph, updated 23 Jun 2026; host not stated. The article's write figures conflict (5 GB/s in the pros list, 'only around 1.5GBps' in the body), so use read only."
+  }
+ ],
+ "unsourced": [
+  "ACASIS TB501Pro measured read/write on a Thunderbolt 5 Mac: a Medium review (ideas-with-wings) returned HTTP 403 twice; its search snippet showed 6,652 / 5,649 MB/s on an M4 Pro MacBook Pro but I did not open the page, so it is excluded. ASCII.jp's figures were not on a TB5 host. The Acasis product page itself returned HTTP 429.",
+  "TerraMaster D1 SSD Pro measurements: Neowin review returned HTTP 403 on both the AMP and desktop URLs, so the 7,061 MB/s and 39 °C figures on our current page could not be re-verified today. PCWorld's 450 GB ranking (ahead of the DotDisk) is text only.",
+  "PCWorld's numeric CrystalDiskMark MB/s and 48 GB / 450 GB seconds for the DotDisk, OWC 1M2 80G, TerraMaster D1 SSD Pro and LaCie Rugged SSD Pro5: chart images only, not readable.",
+  "Macwelt's host Mac for the UGREEN test and the exact UGREEN SKU tested (fan present and 1 m cable point to SKU 45789, not confirmed).",
+  "Independent read/write measurement for the fanless UGREEN fins enclosure (SKU 95583) specifically: none found; the makiuto video page (M4 Pro Mac mini, 990 Pro 4 TB, 23 Dec 2025) lists chapters but no numbers.",
+  "Independent read/write MB/s for the Satechi DotDisk: only Satechi's internal figures (5,937.5 read / 6,415.5 write, Samsung 9100 Pro, MacBook Pro M4 Pro/Max) exist; PCWorld's numbers are chart-only.",
+  "iSystem.gr's 4 Jan 2026 test of the Acasis TBU501 Pro, LaCie Rugged SSD Pro5, OWC Envoy Ultra and Sonnet Echo 13 on an M4 Pro Mac mini (Blackmagic 5 GB and AJA 10 GB, three runs averaged): results are in chart images only, no numbers in text, no named author.",
+  "Any named measurement of OWC Express 1M2 80G on an M4 Pro or M4 Max MacBook Pro specifically; Phototrend's TB5 host was an M5 Pro MacBook Pro.",
+  "Surface temperature in °C for the ORICO X50 Pro (Notebookcheck says only 'stays cool') and for the OWC Express 1M2 80G (Phototrend gives none).",
+  "Fan noise in dB for any candidate."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.1601109000000003
+ }
+}
