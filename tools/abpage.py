@@ -419,6 +419,8 @@ def validate(draft: dict, new_page: bool) -> list[str]:
         for k, _ in pg.get("columns") or []:
             if not str((r.get("cells") or {}).get(k, "")).strip():
                 errs.append(f"empty cell {k} in {r.get('slug') or r.get('model')}")
+    if new_page and not any(r.get("slug") for r in pg.get("rows") or []):
+        errs.append("NO_LISTED_PRODUCT: no row is a product we list, so the page has no buy link (recipe: skip)")
     if not new_page:
         ex = _existing(draft["slug"])
         if pg.get("title") != ex["title"] or pg.get("h1") != ex["h1"]:
@@ -513,7 +515,15 @@ def apply(slug: str, local: bool) -> dict:
     h = jload(d / "harvest.json")
     if h and h.get("searched_as"):
         draft["searched_as"] = h["searched_as"]   # the latest harvest's search words (fresh chats after the research ran)
-    errs = validate(draft, new_page) + pick_check(draft)
+    for r in (draft.get("page") or {}).get("rows") or []:   # "Sony" + "Sony XAV-AX6000" rendered "Sony Sony ..."
+        if r.get("brand") and str(r.get("model", "")).lower().startswith(r["brand"].lower() + " "):
+            r["model"] = r["model"][len(r["brand"]) + 1:]
+    errs = validate(draft, new_page)
+    if any(e.startswith("NO_LISTED_PRODUCT") for e in errs):
+        draft["gate"] = {"date": today(), "pass": False, "skipped": True, "errors": errs}
+        jsave(d / "draft.json", draft)
+        return {"slug": draft.get("slug"), "status": "skipped: no product we list"}
+    errs += pick_check(draft)
     if errs and not draft.get("fix_pass"):   # one sourced fix pass, then re-check
         fx = claude(fix_prompt(draft, errs))
         if fx.get("draft"):
