@@ -1,0 +1,94 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the 20 W USB-C port on the Anker 351 (A9192), ChatGPT's 'best overall value' pick in both chats, only gives 20 W when both USB-A ports are empty, since the two USB-A ports share 5 V/3 A, so it charges phones but not laptops; nor do they state APC's rule that plugging a non-APC surge strip into an APC UPS's output can void its Equipment Protection Policy.",
+ "standout": 2,
+ "standout_why": "I compared against honestfred.com (it names the Anker 351 with 2,100 J but gives no USB-C wattage or port-sharing condition and says nothing about UPSs or power stations) and against ChatGPT's own answers, which call USB-C 'useful for phone and tablet charging' and repeat the cited Illinois guide's general 'plug strips directly into wall outlets, not into other strips'. That covers daisy-chaining in general, but not the Anker port-sharing limit, the UPS warranty effect or the 1,250 W cap on TESSAN strips. I could not read the two cited pages: tomsguide.com came back almost empty (121 characters) and goodhousekeeping.com blocked the fetch, so either may carry the Anker USB-C figure. That is why this is a 2 and not a 3.",
+ "decides": "It confirms the Anker 351 as a value AC strip but rules it out as a laptop or multi-device USB charger. It gives 20 W from USB-C only with the USB-A ports empty, so a shopper who wants USB-C laptop charging needs a separate GaN charger plugged into one of its outlets. For shoppers who own a UPS or a power station, it adds a rule: plug the UPS into the wall and the strip into the wall, never the strip into the UPS output (APC). Anker SOLIX says the same and allows only a strip without surge protection on a UPS. TESSAN's PS07 strips cap AC at 1,250 W, against 1,875 W on the Anker, so a 1,500 W appliance is over its limit.",
+ "candidates": [
+  "Anker 351 Power Strip (A9192), 12 outlets, 2,100 J",
+  "Belkin PivotPlug 12-Outlet BP112230-08, 4,320 J",
+  "Eaton Tripp Lite Isobar6Ultra, 3,330 J",
+  "Eaton Tripp Lite Protect It 12-Outlet TLP1208SAT",
+  "CyberPower 12-outlet 3,000 J (listed by ChatGPT as B1206)",
+  "TESSAN PS07 surge protector power strip"
+ ],
+ "findings": [
+  {
+   "product": "Anker 351 Power Strip (A9192)",
+   "label": "When the USB-C port gives its full 20 W",
+   "value": "20 W (PIQ 3.0) only when both USB-A ports are not in use",
+   "source": "https://www.anker.com/products/a9192",
+   "source_title": "Anker 351 Power Strip | Anker US",
+   "read": "2026-11-08",
+   "note": "The maker's US page says: '20W USB-C charging is only available when the 2 USB-A ports are not in use.' 20 W is a phone or tablet rate, well below the 45 to 100 W most laptops draw over USB-C. The page does not say what the USB-C port gives when a USB-A port is in use."
+  },
+  {
+   "product": "Anker 351 Power Strip (A9192)",
+   "label": "USB-A output",
+   "value": "2 ports, 5 V/3 A (15 W) total, 2.4 A max per port",
+   "source": "https://www.anker.com/products/a9192",
+   "source_title": "Anker 351 Power Strip | Anker US",
+   "read": "2026-11-08",
+   "note": "15 W = 5 V × 3 A, shared by both USB-A ports."
+  },
+  {
+   "product": "Anker 351 Power Strip (A9192)",
+   "label": "Max AC load and price",
+   "value": "15 A / 1,875 W at 125 V AC; 12 outlets; 2,100 J; $28.99",
+   "source": "https://www.anker.com/products/a9192",
+   "source_title": "Anker 351 Power Strip | Anker US",
+   "read": "2026-11-08",
+   "note": "The $28.99 price is from Anker's US store and matches the Walmart price ChatGPT showed. The page does not state the cord length."
+  },
+  {
+   "product": "general (APC Back-UPS and Smart-UPS)",
+   "label": "Surge strip, power strip or extension cord on a UPS output",
+   "value": "Not recommended for all Back-UPS and Smart-UPS models. A non-APC surge protector, power strip or extension cord on an APC UPS output can void the Equipment Protection Policy; the standard 3-year product warranty is kept. An APC-brand strip keeps both.",
+   "source": "https://www.se.com/us/en/faqs/FA158852/",
+   "source_title": "Using surge strips with APC's Back-UPS and Smart-UPS products (FA158852), last modified 4/1/2026",
+   "read": "2026-11-08",
+   "note": "Reasons the FAQ gives: the strip can hide part of the load from the UPS, a UPS plugged into a surge strip may switch to battery more often, and the ground the UPS needs for surge protection can be compromised. It tells you to plug the UPS straight into the wall and use a PDU for more outlets."
+  },
+  {
+   "product": "general (UPS / battery backup)",
+   "label": "Power strip on a battery backup",
+   "value": "Only a strip without surge protection. 'You can plug a power strip into a UPS, but only if it does not have surge protection.'",
+   "source": "https://www.ankersolix.com/blogs/battery/battery-backup-surge-protector-safe",
+   "source_title": "Can You Plug a Surge Protector into a Battery Backup: 2026 Answers (Anker SOLIX, 2026-07-05)",
+   "read": "2026-11-08",
+   "note": "Anker SOLIX says two protectors can 'compete', send the UPS to battery when it doesn't need to and wear the battery faster. For power stations the article only says to avoid extra power strips 'unless explicitly approved by the manufacturer'."
+  },
+  {
+   "product": "TESSAN PS07",
+   "label": "Max AC load and USB output",
+   "value": "8 AC outlets, up to 1,250 W in total; 2× USB-C (PD up to 20 W) + 2× USB-A (up to 12 W each); $28.99",
+   "source": "https://www.tessan.com/products/surge-protector-power-strip-ps07",
+   "source_title": "TESSAN 20W Surge Protector Power Strip PS07",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py search on tessan.com; a direct product fetch returned HTTP 429. The page gives both '2000J' and '2100J'. Its 1,250 W cap is below a 1,500 W hair dryer or heater and below the Anker 351's 1,875 W. Cord options listed: 5, 10 and 15 ft flat cord with a 0.31-inch flat plug."
+  },
+  {
+   "product": "Belkin PivotPlug BP112230-08",
+   "label": "Outlet layout for bulky adapters",
+   "value": "12 outlets: 8 rotating + 4 fixed; 4,320 J; 8 ft cord",
+   "source": "https://www.belkin.com/support-article?articleNum=205612",
+   "source_title": "Getting to know the Belkin PivotPlug 12-Outlet Surge Protector, 8 ft. Cord, BP112230-08",
+   "read": "2026-11-08",
+   "note": "The Belkin support article gives no amp rating and no dollar amount for the Connected Equipment Warranty."
+  }
+ ],
+ "unsourced": [
+  "The current Eaton/Tripp Lite statement on plugging a surge protector into a UPS, and the Isobar6Ultra's specs and Ultimate Lifetime Insurance terms. eaton.com SKU pages timed out twice and the tripplite.eaton.com support links only redirected. The only wording I saw ('null and void' / 'may void the UPS warranty') was in search snippets and on third-party manual sites.",
+  "Exclusions in Belkin's US Connected Equipment Warranty (plug directly into the wall, no daisy-chaining, no UPS). The October 2025 PDF at s3.belkin.com downloaded but its text could not be extracted; the daisy-chain and UPS wording I saw was only in older third-party manual snippets.",
+  "Whether any power-station maker (EcoFlow, Jackery, BLUETTI, Anker SOLIX) allows or forbids a surge strip on a station's AC output. No maker manual or FAQ turned up, and the Anker SOLIX article does not say.",
+  "Amp rating and connected-equipment warranty amount for the Belkin BP112230-08, from Belkin's US product page (only regional pages and the support article came up).",
+  "Specs and maker page for the 'CyberPower B1206' and the Tripp Lite TLP1208SAT. Not researched within the tool budget.",
+  "Tom's Guide and Good Housekeeping pick details: Tom's Guide returned almost no text and Good Housekeeping blocked the fetch, so I could not check whether they state the Anker USB-C sharing limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0612518000000002
+ }
+}
