@@ -1,0 +1,114 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 200 V2's '1,000 W solar input' is a single 12–60 V, 20 A input. BLUETTI's own SP200L kit panels are 24.6 V open-circuit, so at most two can be wired in series (49.2 V; three would be 73.8 V, over the 60 V limit). At the 20 A cap that limits the kit's panels to under 984 W however many you add, so the advertised 1,000 W can't be reached with them.",
+ "standout": 2,
+ "standout_why": "I compared against powersized.com/solar-generator-kits (cited in all three chats) and theoutagebrief.com 2kWh shootout (cited). Powersized gives Elite 200 V2 as '1,000 W, 12–60 V, 20 A' and states the general rule that panels in series add their Voc and must stay under the maximum. Its only worked example is Jackery SolarSaga 200 W on the Explorer 1000 v2. It never applies the rule to the Elite 200 V2 with its own SP200L panels or to the 20 A current cap. Theoutagebrief gives only maximum solar watts per model (DELTA 2 Max 1,000 W, Explorer 2000 v2 400 W, AC200L 1,200 W, C2000 Gen 2 800 W), with no voltage, amps or wiring. I couldn't read unpluggedwatts.com (SSL certificate error). ChatGPT's own answers sell the Elite 200 V2 on 'up to 1,000W solar input' and 'future solar expansion' without this limit.",
+ "decides": "It confirms the Elite 200 V2 + 2×200 W kit ($1,499 on BLUETTI's US store, 2026-11-08) as a good 400 W starter kit: two SP200L in series is 49.2 V Voc, inside the 60 V window. It also removes the 'expand to 1,000 W of solar' argument for buying it with SP200L panels: adding more SP200L panels can't reach 1,000 W. That argument needs panels with a higher operating voltage. A shopper who expects to grow solar past about 800–900 W should compare stations with two solar inputs (Powersized lists DELTA 2 Max as 2 × 500 W) or a wider voltage window (AC200L at 12–145 V per Powersized). The page should give this as a hard limit from BLUETTI's own figures, not as a test result.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2×200 W (SP200L)",
+  "BLUETTI Elite 200 V2 + 200 W (SP200L)",
+  "BLUETTI Elite 200 V2 + 350 W",
+  "Jackery Solar Generator 2000 v2",
+  "EcoFlow DELTA 2 Max + 2×220 W",
+  "EcoFlow DELTA 3 Max + 400 W",
+  "Anker SOLIX C2000 Gen 2 + 400 W",
+  "Anker SOLIX S2000 + 200 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input limit",
+   "value": "1,000 W max, 12 V to 60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Compare table: '1,000W Max., 12V to 60V, 20A Max.' FAQ Q1: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. 1,000 W ÷ 20 A = 50 V, so the full rating needs the array to work at 50 V or more."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage (Voc)",
+   "value": "24.6 V",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-08",
+   "note": "Page says 'Open Circuit Voltage (OCV): 24.6V'. BLUETTI US store: $399 (compare-at $1,197), in stock, read with storecheck on 2026-11-08."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Short-circuit current (Isc)",
+   "value": "10.8 A",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-08",
+   "note": "Page says 'Short Circuit Current (Isc): 10.8A'. Two strings in parallel give 21.6 A Isc, just over the station's 20 A input limit, so a third parallel string adds nothing."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + SP200L",
+   "label": "Most SP200L panels in series on one input",
+   "value": "2 panels (49.2 V Voc); 3 would be 73.8 V, over the 60 V maximum",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-08",
+   "note": "Arithmetic from BLUETTI's own figures: 24.6 V × 2 = 49.2 V, which is ≤ 60 V. 24.6 V × 3 = 73.8 V, which is > 60 V. Station limit is 12–60 V (elite-200-v2-2-sp200l page). Cold weather raises Voc, so two in series also leaves room for that."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + SP200L",
+   "label": "Most solar power possible with SP200L panels",
+   "value": "Under 984 W (a strict upper bound, so the 1,000 W rating is out of reach)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Upper bound = longest legal string's Voc (49.2 V) × 20 A input cap = 984 W. A panel always works below its Voc, so real harvest is lower. I did not compute an operating-point figure because I couldn't open SP200L's Vmp on a maker page (see unsourced)."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Battery and AC output",
+   "value": "2,073.6 Wh (54 Ah); 2,600 W total AC, 120 V",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Page says '2,073.6Wh (54 Ah)' and '2,600W in total, 120V,21.6A'. In the box: AC charging cable, documentation, unit, grounding screw. No solar cables or series/parallel connectors are listed."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×200 W (SP200L)",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,499.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "storecheck product read: price 1499.0, compare_at 1499.0, available true."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200 W (SP200L)",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-08",
+   "note": "storecheck search result: price 1199.0, available true."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 350 W",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,449.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-pv350",
+   "source_title": "BLUETTI Elite 200 V2+350W Solar",
+   "read": "2026-11-08",
+   "note": "storecheck search result: price 1449.0, available true. There is also a 2×350 W kit at $2,148.00 (https://www.bluettipower.com/products/elite-200-v2-2-pv350d). I did not read the 350 W panel's Voc, so I can't say how it wires to this input."
+  }
+ ],
+ "unsourced": [
+  "SP200L maximum-power voltage and current (Vmp/Imp). Search snippets say about 20.5 V / 9.7 A. BLUETTI's US page doesn't list them, BLUETTI's AU page and the Wellbots listing returned HTTP 429, and the notice-facile manual returned 403. That is why the 2s2p operating ceiling (about 800 W) is left out.",
+  "Elite 200 V2 solar port count and connector. The US kit page doesn't list them. A search snippet said BLUETTI's FAQ calls it a single DC input, but I didn't open that page.",
+  "EcoFlow DELTA 3 Max solar input (number of ports, volts, amps). I opened no EcoFlow page. Search results conflict: one input at 500 W versus 2 × 500 W.",
+  "Anker SOLIX C2000 Gen 2 solar input current and number of ports. I opened no Anker page; snippets give only 800 W, 60 V.",
+  "Jackery Explorer 2000 v2 and EcoFlow DELTA 2 Max solar specs from the makers. I only saw them on Powersized (2000 v2: 11–60 V, two 8 mm DC ports, 400 W total; DELTA 2 Max: 2 × 500 W, 11–60 V, 15 A) and didn't open the makers' pages.",
+  "unpluggedwatts.com comparison (cited in chat 1). Fetch failed with an SSL certificate error, so I couldn't check whether it covers this limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9191845999999999
+ }
+}

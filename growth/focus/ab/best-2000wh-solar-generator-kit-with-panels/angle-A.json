@@ -1,0 +1,122 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the 2 kWh kits rate cycle life to different end points (Jackery Explorer 2000 v2: 4,000+ cycles to 70%; EcoFlow DELTA 2 Max: 3,000+ cycles to 80%), or that the higher second AC figure means different things: Jackery's 4,400 W and DELTA 3 Max's 4,800 W are surge ratings, BLUETTI's 3,900 W is a mode for purely resistive loads, and EcoFlow names its 3,400 W 'X-Boost' rather than surge.",
+ "standout": 2,
+ "standout_why": "I compared against theoutagebrief.com/2026/10/17, powersized.com/solar-generator-kits and generatorandbackup.com, all cited. Theoutagebrief.com lists continuous and surge AC, but has no cycle life and no solar voltage. Powersized.com has solar W, V and A per station, but no cycle life and no surge, and it gives one unlabeled output figure. Generatorandbackup.com mixes the two bases without saying so: it gives the DELTA 2 Max 3,000 cycles to 80% and the Explorer 1000 v2 70%, and gives no rating for the 2000 v2. It also writes 3,400 W X-Boost with the note 'not labeled as surge'. None puts the four cycle and AC-peak claims on one basis. unpluggedwatts.com (cited) would not load because of a self-signed certificate error, so it was not compared.",
+ "decides": "This confirms rather than overturns ChatGPT's picks. A footnoted table shows Jackery's larger cycle count (4,000) is measured to a lower end point (70%) than EcoFlow's 3,000 (80%), so the two counts can't be compared as raw numbers. It also shows the BLUETTI Elite 200 V2 (ChatGPT's 'my pick') has no published surge figure: its 3,900 W applies only to resistive loads such as heaters and kettles, not motor start-up. For a fridge or well pump, the published surge leaders are DELTA 3 Max (4,800 W) and Jackery 2000 v2 (4,400 W). The 2000 v2's 400 W solar ceiling also means any kit with more than 400 W of panels, such as the 500 W SolarSaga 500 X bundle, can't charge faster than 400 W.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 200 W",
+  "BLUETTI Elite 200 V2 + 2 × 200 W",
+  "EcoFlow DELTA 2 Max + 2 × 220 W",
+  "EcoFlow DELTA 3 Max solar generator",
+  "Jackery Solar Generator 2000 v2",
+  "Anker SOLIX C2000 Gen 2 + 400 W",
+  "Anker SOLIX S2000 + 200 W"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Cycle life (maker basis)",
+   "value": "3,000+ cycles to 80% of original capacity",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-2-max-solar-generator",
+   "source_title": "EcoFlow DELTA 2 Max Solar Generator",
+   "read": "2026-11-08",
+   "note": "Maker's US store text: 'Get 10 years of daily use until hitting 80% of its original capacity... 3000+ cycles.' Read with storecheck.py search."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Cycle life (maker basis, retailer spec table)",
+   "value": "4,000+ cycles to 70% capacity",
+   "source": "https://www.mrsolar.com/jackery-explorer-2000-v2-portable-power-station/",
+   "source_title": "Jackery Explorer 2000 v2 2042Wh Portable Power Station (Mr. Solar)",
+   "read": "2026-11-08",
+   "note": "Jackery's own store returned HTTP 429, and its store text gives no cycle figure, so this is a retailer's spec table. The end point differs from EcoFlow's (70% vs 80%). Throughput to each end point: 4,000 × 2,042 Wh ≈ 8.2 MWh to 70%; DELTA 2 Max 3,000 × 2,048 Wh ≈ 6.1 MWh to 80%. These cannot be converted to one basis without a fade curve. If fade were linear, which is Dealectric's assumption and not a maker figure, 4,000 cycles to 70% would be about 2,670 cycles to 80% (4,000 × 20/30)."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Solar input limits",
+   "value": "2 × DC 8 mm; 11–16 V ⎓ 8 A / 16–60 V ⎓ 12 A; 400 W max combined",
+   "source": "https://www.mrsolar.com/jackery-explorer-2000-v2-portable-power-station/",
+   "source_title": "Jackery Explorer 2000 v2 2042Wh Portable Power Station (Mr. Solar)",
+   "read": "2026-11-08",
+   "note": "400 W is the total for both ports. A kit with more than 400 W of panels (for example the 500 W SolarSaga 500 X bundle listed by powersized.com) still charges at no more than 400 W."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "AC continuous vs surge",
+   "value": "2,200 W continuous / 4,400 W surge",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2",
+   "read": "2026-11-08",
+   "note": "Maker's store text: '2200W continuous output (4400W surge)'. Read with storecheck.py search."
+  },
+  {
+   "product": "Jackery Solar Generator 2000 v2",
+   "label": "Price on jackery.com",
+   "value": "$1,239 (compare-at $1,799); pre-order, ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2",
+   "read": "2026-11-08",
+   "note": "The store text doesn't say which panels the $1,239 variant includes. Powersized.com lists Explorer 2000 v2 + 2 × SolarSaga 100 Air (200 W) at $1,239 and + 2 × SolarSaga 200W at $1,649. Our current page shows $1,649 'search listing, undated' and should be updated."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC continuous vs second figure",
+   "value": "2,600 W continuous; 3,900 W Power Lifting for pure resistive loads only; no surge figure published",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Maker page: Power Lifting supports 'pure resistive loads of up to 3,900W'. The UK maker page (bluettipower.co.uk/products/elite-200-v2-portable-power-station) says the same. This is not a surge rating for motor start-up the way Jackery's and EcoFlow DELTA 3 Max's are."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limits",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 1,000 W ÷ 20 A = 50 V, so the full 1,000 W needs a string running at 50 V or more and still inside the 60 V limit. The 2 × 200 W kit tops out at its 400 W panel rating whatever the headline. Powersized.com gives the SP200L Voc as 24.6 V, so two in series ≈ 49 V Voc, which fits the 60 V window."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 kits",
+   "label": "Prices on bluettipower.com",
+   "value": "+ 200 W $1,199; + 2 × 200 W $1,499; + 350 W $1,449 (all available)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search of bluettipower.com, 2026-11-08."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "AC continuous vs X-Boost",
+   "value": "2,400 W rated; 'up to 3,400W' with X-Boost (EcoFlow doesn't call it surge)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-2-max-solar-generator",
+   "source_title": "EcoFlow DELTA 2 Max Solar Generator",
+   "read": "2026-11-08",
+   "note": "Store text: 'With X-Boost mode get up to 3400W output power'. Kit price $1,579 (2 × 220 W bifacial), available. Up to 1,000 W solar input. 5-year warranty on the station, 12 months on the 220 W panel."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "AC continuous vs surge vs X-Boost",
+   "value": "2,400 W continuous; 4,800 W surge; X-Boost to 3,400 W",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Max Solar Generator",
+   "read": "2026-11-08",
+   "note": "Store text: '2400W Powerful Output: 4800W surge output. With X-Boost mode... up to 3400W'. Here EcoFlow lists surge and X-Boost as separate numbers, which confirms X-Boost is not surge. Kit price $1,249 (compare-at $1,998). The store text doesn't say which panels it includes. 'Up to 5-year warranty' = 3 years standard + 2 with app registration."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 200 V2 cycle life and its end point. Search results cite '6,000+ cycles to 80%' from BLUETTI's UK pages, but the UK maker page I opened (bluettipower.co.uk) has an empty spec section, and the US product page doesn't state it.",
+  "EcoFlow DELTA 3 Max solar input (W, V, A) and cycle rating. Only a snippet (solarkontor.de: 500 W, 11–60 V, 13 A) was found; us.ecoflow.com product JSON and ecoflow.com spec pages returned 429/404.",
+  "Anker SOLIX C2000 Gen 2 and S2000 cycle life, end point, surge and solar V/A. us.ankersolix.com returned 429 and storecheck returned 404.",
+  "Jackery Explorer 2000 v2 figures from the maker's own page or manual. jackery.com product pages returned 429; the JE-2000D manual PDF on manuals.plus downloaded but couldn't be parsed.",
+  "Which panels are in the $1,239 Jackery and $1,249 EcoFlow DELTA 3 Max store kits; the store text didn't say.",
+  "unpluggedwatts.com (a cited rival) couldn't be compared: fetch failed with a self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1616247000000002
+ }
+}

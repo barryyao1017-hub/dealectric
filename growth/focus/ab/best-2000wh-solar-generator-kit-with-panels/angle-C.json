@@ -1,0 +1,97 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's 350 W panel, sold on BLUETTI's US store as the Elite 200 V2 + 2×350W kit ($2,148), has a 33 V open-circuit voltage, so two in series reach 66 V. That is over the Elite 200 V2's 60 V solar-input limit, so the kit's panels cannot be wired in series. BLUETTI's own 200 W panel (24.6 V) can take a two-panel series string (49.2 V).",
+ "standout": 2,
+ "standout_why": "I compared against four pages. powersized.com/solar-generator-kits (cited) lists the Elite 200 V2 at 12–60 V, 20 A, XT60, does the series-voltage arithmetic only for Jackery SolarSaga panels, and covers only the Elite 200 V2 + 200W kit. theoutagebrief.com (cited) gives wattage caps only (Jackery 2000 v2 400 W, not expandable; DELTA 2 Max 1,000 W; C2000 Gen 2 800 W) with no voltage, connector or panel-pairing limits. generatorandbackup.com (cited) says DELTA 2 Max is 'expandable to 6 kWh' without naming the battery, and gives no voltage, connector or panel-pairing limits for the Elite 200 V2. unpluggedwatts.com (cited) could not be read: TLS certificate error. None of them checks the Voc of the panels inside BLUETTI's bundles against the station's 60 V limit, and none mentions the 350 W bundles.",
+ "decides": "This confirms the pick, not overturns it: for the BLUETTI Elite 200 V2, the 2×200W kit ($1,499, BLUETTI store, 2026-11-08) is the bundle whose panels can go in series within the station's 60 V limit. The 2×350W kit costs $649 more, and BLUETTI's US kit and panel pages list no parallel connector for it. They list one 20 A MC4-to-XT60 cable per 350 W panel. For EcoFlow, the store names the DELTA 2 Max's expansion battery (up to two DELTA 2 Max Smart Extra Batteries, 6,144 Wh), which supports ChatGPT's 'best for expansion' label. EcoFlow's DELTA 3 Max series text lists '2–10kWh expandable' and Smart Generator pairing only under DELTA 3 Max Plus. Also, ChatGPT's '$1,429 DELTA 3 Max' price matches EcoFlow's DELTA 3 Max Plus Solar Generator listing; the plain DELTA 3 Max Solar Generator is $1,249.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 200W",
+  "BLUETTI Elite 200 V2 + 2×200W",
+  "BLUETTI Elite 200 V2 + 2×350W",
+  "EcoFlow DELTA 2 Max Solar Generator (2×220W)",
+  "EcoFlow DELTA 3 Max Solar Generator",
+  "EcoFlow DELTA 3 Max Plus Solar Generator",
+  "Jackery Solar Generator 2000 v2 (2×200W)",
+  "Anker SOLIX C2000 Gen 2 + 400W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limits",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar",
+   "read": "2026-11-08",
+   "note": "Maker US kit page, spec line '1,000W Max., 12V to 60V, 20A Max.' The page does not state the connector type or port count. In the box: AC charging cable, documentation, Elite 200 V2, grounding screw; no adapters listed."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel (in Elite 200 V2 + 350W / 2×350W kits)",
+   "label": "Open-circuit voltage and fit with Elite 200 V2",
+   "value": "33 V Voc per panel; 2 in series = 66 V, above the Elite 200 V2's 60 V limit",
+   "source": "https://www.bluettipower.com/products/bluetti-350w-solar-panel-2",
+   "source_title": "BLUETTI 350W Solar Panel × 2 | 700W",
+   "read": "2026-11-08",
+   "note": "Page states '33V open-circuit voltage (Voc)', MC4 connectors, and one 20A MC4-to-XT60 cable (1.5 m) per panel. No parallel or Y connector is listed. Elite 200 V2 is on its compatible-station list. Arithmetic: 2 × 33 V = 66 V > 60 V. The single 350W panel page (https://www.bluettipower.com/products/350w-solar-panel) gives the same 33 V. The US kit URL slug is 'pv350d'."
+  },
+  {
+   "product": "BLUETTI SP200L 200W panel (in Elite 200 V2 + 200W / 2×200W kits)",
+   "label": "Electrical specs and series fit",
+   "value": "24.6 V Voc, 10.8 A Isc; 2 in series = 49.2 V (within 60 V); 3 in series = 73.8 V (over 60 V)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-08",
+   "note": "Page lists OCV 24.6 V, Isc 10.8 A, MC4, and Elite 200 V2 on its compatibility list. Its FAQ says 'Mixing different solar panels is not encouraged in general'. Panel price $399 (compare-at $1,197). Series arithmetic is ours."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 kits",
+   "label": "Kit prices, BLUETTI US store",
+   "value": "+200W $1,199; +2×200W $1,499; +350W $1,449; +2×350W $2,148; all listed available",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-08",
+   "note": "Shopify store data via storecheck search. Other URLs: /products/elite-200-v2-sp200l, /products/elite-200-v2-pv350, /products/elite-200-v2-2-pv350d. The +350W page says the panel 'ships from 12.25'."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Expansion battery and solar input",
+   "value": "Up to two DELTA 2 Max Smart Extra Batteries (6,144 Wh total); up to 1,000 W solar",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-2-max-solar-generator",
+   "source_title": "EcoFlow DELTA 2 Max Solar Generator",
+   "read": "2026-11-08",
+   "note": "EcoFlow US store listing text, $1,579, available, 'Pre-order: Ships in mid October' text still shown. 220W bifacial panel warranty 12 months; DELTA 2 Max 5 years."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max vs DELTA 3 Max Plus",
+   "label": "Expansion as stated by EcoFlow",
+   "value": "'2–10kWh expandable' and Smart Generator pairing listed only for DELTA 3 Max Plus; DELTA 3 Max listed with '4 ways to charge' vs Plus '5 ways'",
+   "source": "https://us.ecoflow.com/products/delta-3-max-series-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Max Series Portable Power Station (2048Wh)",
+   "read": "2026-11-08",
+   "note": "Store listing text, read through Shopify data because the HTML page returned HTTP 429. It also says 'Adapter is required to connect the 800W Alternator Charger with DELTA 3 Max Plus.' EcoFlow does not say outright that DELTA 3 Max is not expandable; this is what the listing lists by model."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max / Max Plus Solar Generator",
+   "label": "Kit prices, EcoFlow US store",
+   "value": "DELTA 3 Max Solar Generator $1,249 (compare-at $1,998); DELTA 3 Max Plus Solar Generator $1,429 (compare-at $2,499); DELTA 3 Max Series Solar Generator (PV220W) from $1,149",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Max Solar Generator",
+   "read": "2026-11-08",
+   "note": "Shopify store data via storecheck search; all listed available. Max Plus URL: https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-solar-generator. The panel wattage in each kit could not be read (page fetch got HTTP 429)."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI 350 W panel Vmp/Isc/Imp from a BLUETTI page: the US pages leave Tech Specs empty. I wanted these to work out what two panels in parallel would deliver through the 20 A input. Non-BLUETTI listings in search results gave 13.8 A Isc for the PV350D, but the one I tried to open (ferntech.co.nz) returned 404.",
+  "Elite 200 V2 solar port count and connector from BLUETTI: the kit page doesn't state it. The manual PDF from s4.bluettipower.com downloaded but text extraction wasn't allowed; the EU manual was over 10 MB; the manuals.plus copy returned 403.",
+  "Elite 200 V2 expansion battery compatibility: the BLUETTI kit page asks 'Is the Elite 200 V2 expandable with B80, B300, or B230?' but the answer wasn't on the page.",
+  "EcoFlow DELTA 3 Max solar input (voltage, current, port count) from EcoFlow: us.ecoflow.com returned HTTP 429 and the ecoflow.com/us spec URL returned 404. Retailer figures (500 W, 11–60 V, 13 A) were in snippets only.",
+  "Jackery Explorer 2000 v2 solar input, connector and expansion from Jackery: jackery.com returned HTTP 429.",
+  "Anker SOLIX C2000 Gen 2 solar input and expansion battery: the ankersolix.com product URL I tried returned 404.",
+  "unpluggedwatts.com (cited by ChatGPT) could not be read: TLS certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1085610000000001
+ }
+}
