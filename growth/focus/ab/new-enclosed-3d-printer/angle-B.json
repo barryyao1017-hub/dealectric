@@ -1,0 +1,124 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out the cost of a heated chamber in dollars per liter of build space. On QIDI's own US store, the QIDI Q2 costs $449 for 18.66 L ($24.06 per liter). The QIDI Q2C has the same 270 × 270 × 256 mm volume for $349 ($18.70 per liter), and its listing does not mention the Q2's 65 °C active chamber heating. On QIDI's own figures, the heated chamber costs $100. The Q2's 280 W heater can use up to 2.8 kWh over a 10-hour ABS print, on top of the printer's 350 W rating.",
+ "standout": 1,
+ "standout_why": "I compared against the two cited pages I could open. firstlayerlab.com/enclosed-3d-printers (2026-09-28) gives build volumes and passive or active chamber type but no prices or power figures. 3dprintgearlab.com/best/corexy-3d-printer (2026-11-04) lists prices and build volumes for 18+ enclosed printers, including the Q2 at $449 and the Q2C at $349, so a reader could do the per-liter math. It does not state a price per liter. It marks the Q2C's chamber as 'not stated', so it never shows the $100 as the price of heating, and it gives no heater wattage or energy figures. I could not open the cited Popular Mechanics page, so I can't rule out that it covers this. Since a cited rival already has the inputs, this is new arithmetic rather than a new fact.",
+ "decides": "This supports ChatGPT's split: the QIDI Q2 for ABS, ASA and nylon, where an actively heated chamber matters, and a cheaper passive printer otherwise. It also adds an option ChatGPT never mentioned. A shopper printing only PLA or PETG can buy the QIDI Q2C for $349, the same build volume as the Q2 for $100 less ($18.70 vs $24.06 per liter). The extra $100 for the Q2 only pays off for engineering filaments. Dealectric already lists the qidi-q2 (awin:qidi), so a Q2 vs Q2C section would point to a product we can link.",
+ "candidates": [
+  "QIDI Q2",
+  "QIDI Q2C",
+  "Bambu Lab P2S",
+  "Bambu Lab P1S",
+  "Creality K1C",
+  "Flashforge Adventurer 5M Pro",
+  "QIDI Plus5"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Q2",
+   "label": "Price, QIDI US store",
+   "value": "$449.00 (compare-at $649.00), in stock",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer",
+   "read": "2026-11-08",
+   "note": "storecheck.py search on qidi3d.com. The store listing says 'Build volume 270×270×256 mm … Max 370°C nozzle temperature, Second-Gen 65℃ active chamber heating, 3-in-1 Air Filtration'."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Build volume in liters",
+   "value": "18.66 L",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer",
+   "read": "2026-11-08",
+   "note": "27.0 × 27.0 × 25.6 cm = 18,662 cm³ = 18.66 L"
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Price per liter of build volume",
+   "value": "$24.06 per L",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer",
+   "read": "2026-11-08",
+   "note": "$449 / 18.66 L = $24.06 per L"
+  },
+  {
+   "product": "QIDI Q2C",
+   "label": "Price, QIDI US store",
+   "value": "$349.00, in stock",
+   "source": "https://qidi3d.com/products/q2c",
+   "source_title": "QIDI Q2C 3D Printer",
+   "read": "2026-11-08",
+   "note": "storecheck.py search on qidi3d.com. The store listing says 'Build volume 270×270×256 mm, Compatible with QIDI Box' and does not mention active chamber heating."
+  },
+  {
+   "product": "QIDI Q2C",
+   "label": "Price per liter of build volume",
+   "value": "$18.70 per L",
+   "source": "https://qidi3d.com/products/q2c",
+   "source_title": "QIDI Q2C 3D Printer",
+   "read": "2026-11-08",
+   "note": "$349 / 18.66 L (27.0 × 27.0 × 25.6 cm) = $18.70 per L"
+  },
+  {
+   "product": "QIDI Q2 vs Q2C",
+   "label": "Store price difference at the same build volume",
+   "value": "$100",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer",
+   "read": "2026-11-08",
+   "note": "$449 − $349 = $100 at an identical 270 × 270 × 256 mm volume. The 65 °C active chamber heating appears in the Q2 listing and not in the Q2C listing. I did not open a Q2C spec sheet to confirm it has no heater."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Power rating: printer plus chamber heater",
+   "value": "350 W printer + 280 W chamber heater, 630 W combined",
+   "source": "https://botland.store/qidi-3d-printers/29377-3d-printer-qidi-q2.html",
+   "source_title": "3D printer QIDI Q2 – Botland",
+   "read": "2026-11-08",
+   "note": "Retailer spec table: 'Printer power rating 350 W; Chamber heating power 280 W; max chamber temperature 65°C'. 350 + 280 = 630 W. QIDI's own spec page returned HTTP 429, so I used the retailer."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Most energy the chamber heater can use on a 10-hour ABS print",
+   "value": "2.8 kWh at most",
+   "source": "https://botland.store/qidi-3d-printers/29377-3d-printer-qidi-q2.html",
+   "source_title": "3D printer QIDI Q2 – Botland",
+   "read": "2026-11-08",
+   "note": "280 W × 10 h = 2.8 kWh. This is an upper bound assuming the heater runs at full power the whole time. Real use will be lower once the chamber reaches temperature."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Build volume in liters, and chamber type",
+   "value": "16.78 L, passive with airflow flap",
+   "source": "https://firstlayerlab.com/enclosed-3d-printers/",
+   "source_title": "Enclosed 3D Printers: When You Need One and What to Buy",
+   "read": "2026-11-08",
+   "note": "256 × 256 × 256 mm = 25.6³ cm³ = 16.78 L. Taken from a cited rival because Bambu's spec page and wiki returned HTTP 402/403."
+  },
+  {
+   "product": "Creality K1C",
+   "label": "Build volume in liters, and chamber type",
+   "value": "12.10 L, passive",
+   "source": "https://firstlayerlab.com/enclosed-3d-printers/",
+   "source_title": "Enclosed 3D Printers: When You Need One and What to Buy",
+   "read": "2026-11-08",
+   "note": "22.0 × 22.0 × 25.0 cm = 12,100 cm³ = 12.10 L"
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab P2S and P1S prices today: us.store.bambulab.com returned HTTP 402 or 404 through storecheck and WebFetch, and bambulab.com/en-us/p2s/specs returned 403. I saw 3dprintgearlab's prices (P2S $449, P1S $349, dated 2026-11-04) but did not use them as today's prices.",
+  "Bambu Lab P2S power and chamber temperature (1000 W max at 110 V, 200 W steady state for PLA, about 50 °C passive chamber): I saw these only in search snippets. The Bambu wiki, 3dsaga.com and shop3duniverse.com returned 402 or 429.",
+  "Creality K1C (2025) price and power rating: the creality.com product URL returned 404 and the store.creality.com search returned 404.",
+  "Flashforge Adventurer 5M Pro price and power rating: the us.flashforge.com storecheck search failed with HTTP 0. I did not try Amazon.",
+  "QIDI Plus5 price per liter at today's store price: I didn't run a store check for it before the fetch tools hit rate limits.",
+  "A spec sheet confirming the QIDI Q2C has no active chamber heater: qidi3d.com tech-spec pages returned HTTP 429.",
+  "A measured average wall power for any candidate during an ABS print with the chamber heated, which I needed for a measured kWh-per-print figure: no named reviewer measurement found within the budget.",
+  "A sourced US residential electricity rate to turn the 2.8 kWh into dollars: not looked up, so I left the dollar figure out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.7118665999999998
+ }
+}

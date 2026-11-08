@@ -1,0 +1,110 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got gives the P2S's chamber ceiling. It has no chamber heater: its only heat is the bed, held in by a motorized airflow flap that switches to recirculation, which tops out at about 50 °C. The QIDI Q2 adds a separate 280 W PTC chamber heater (rated 350 W + 280 W) that holds up to 65 °C whatever the bed is doing.",
+ "standout": 1,
+ "standout_why": "I compared against firstlayerlab.com/enclosed-3d-printers (cited), 3dprintgearlab.com/best/corexy-3d-printer (cited), layerwalker.com/3d-printer-enclosed and findmy3dprinter.com/buying-guides/enclosed-3d-printer. Popular Mechanics, also cited, blocked fetching. Firstlayerlab already explains passive (bed-heated) vs active chambers, gives the Q2's 65 °C, says the P1S chamber 'cannot be precisely controlled' and notes the P2S draws cool air from outside for PLA. It also covers opening the lid for PLA and filtration. Layerwalker gives a generic 'about 35 to 45 °C' for passive chambers. 3dprintgearlab only says 'no active heating listed' for the P2S. findmy3dprinter gives no chamber temperature in °C. None of them gives a P2S chamber ceiling (about 50 °C) or how its recirculation flap works. None gives the Q2 heater's 280 W figure or that it heats independently of the bed. The core passive-vs-active point is already on the cited rival, so this only adds detail.",
+ "decides": "This backs ChatGPT's split. If the shopper mostly prints PLA, PETG or small ABS/ASA parts, the P2S works: its bed heat, held in by the flap, reaches about 50 °C, and in cooling mode it pulls in outside air so PLA can print with the door shut. If they print large ABS/ASA parts, PC or nylon, they need a heater that works independently of the bed, and among the cards shown only the QIDI Q2 has one (65 °C, 280 W PTC). The P1S, K1C and Adventurer 5M Pro all rely on bed heat alone. The Q2 heater pushes the rated draw to 630 W, which does not affect a standard 15 A US outlet. For a PLA-only buyer the Q2's heater is no advantage. QIDI's own blog lists heat creep among the risks of too much chamber heat.",
+ "candidates": [
+  "QIDI Q2",
+  "Bambu Lab P2S",
+  "Bambu Lab P1S",
+  "Creality K1C",
+  "Flashforge Adventurer 5M Pro"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber heating type and max temperature",
+   "value": "2nd-gen PTC heater, independent chamber heating, up to 65 °C",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "Spec table: 'Chamber Temperature(PTC Heater) 2nd Gen Up to 65° C Independent Chamber Heating'. Page copy: 'Chamber heating improves bonding for materials like ABS, PC, ABS-GF, and more.'"
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Rated power including chamber heater",
+   "value": "350 W + 280 W (chamber heating)",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "Maker's spec table. The chamber heater adds 280 W on top of 350 W, so up to 630 W combined."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Price, QIDI US store, Standard variant",
+   "value": "$449.00 (regular $499.00)",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "Read from the product page. storecheck.py returned HTTP 429 (rate limit), so the price comes from the page text."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Air filtration",
+   "value": "G3 pre-filter + H12 HEPA + coconut-shell activated carbon",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "Maker's spec table: '3-in-1 Air Filter'."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Chamber heating and ceiling",
+   "value": "No active chamber heater; passive heat regulation up to 50 °C via an automatic airflow-switching flap",
+   "source": "https://www.gigaparts.com/bambu-lab-p2s-3d-printer.html",
+   "source_title": "Bambu Lab P2S 3D Printer – GigaParts",
+   "read": "2026-11-08",
+   "note": "Retailer spec table: 'Enclosed with Adaptive Airflow System (Passive heat regulation up to 50°C)'. FAQ: 'No, the P2S does not have an active chamber heating function... automatic switching flap that controls internal and external air circulation.' This is retailer copy. Bambu's own pages returned 403/402. Polymaker's wiki (below) contradicts it."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Price, GigaParts",
+   "value": "$449.00 after mail-in rebate (VIP price); $549.00 regular",
+   "source": "https://www.gigaparts.com/bambu-lab-p2s-3d-printer.html",
+   "source_title": "Bambu Lab P2S 3D Printer – GigaParts",
+   "read": "2026-11-08",
+   "note": "Bambu's US store could not be checked (storecheck HTTP 404; WebFetch 402)."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Chamber heating, conflicting third-party claim",
+   "value": "Polymaker wiki says the P2S chamber is 'actively heated, capable of reaching 60°C'",
+   "source": "https://wiki.polymaker.com/the-basics/3d-printers/popular-printers/bambu-lab",
+   "source_title": "Bambu Lab – Polymaker Wiki",
+   "read": "2026-11-08",
+   "note": "Contradicts GigaParts and 3dprintgearlab ('no active heating listed'). Bambu's own spec page was blocked, so I could not settle it. Don't publish 60 °C for the P2S without Bambu's spec sheet."
+  },
+  {
+   "product": "Bambu Lab P1S",
+   "label": "Passive chamber max temperature",
+   "value": "~50 °C",
+   "source": "https://wiki.polymaker.com/the-basics/3d-printers/popular-printers/bambu-lab",
+   "source_title": "Bambu Lab – Polymaker Wiki",
+   "read": "2026-11-08",
+   "note": "Polymaker (filament maker): 'The chamber temperature can reach roughly 50°C maximum passively without active heating' (P1S and X1C)."
+  },
+  {
+   "product": "general",
+   "label": "Maker's guidance on which materials need a heated chamber",
+   "value": "PLA: usually no; ABS: yes, recommended; PC: strongly recommended; PA/nylon: recommended for many cases",
+   "source": "https://au.qidi3d.com/blogs/news/temperature-controlled-chamber",
+   "source_title": "What Is a Temperature-Controlled Chamber in 3D Printing? – QIDI (2023-08-28)",
+   "read": "2026-11-08",
+   "note": "QIDI also writes: 'A passive heated chamber does not have a separate chamber heater' and 'too much chamber heat can cause poor overhangs, sagging details, heat creep, or softened printed parts.' No °C thresholds given."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab's own P2S chamber spec (heater or not, max °C). bambulab.com/en-us/p2s and /en/p2s returned 403, us.store.bambulab.com returned 402, and wiki.bambulab.com/en/p2s/manual/airflow-system returned 402. Bash fetches needed approval and weren't run.",
+  "Bambu US store prices for the P2S and P1S. storecheck.py returned HTTP 404 for both product and search.",
+  "A filament maker's minimum chamber temperature for PC or PA/nylon in °C. Only third-party guides gave 50–60 °C; no Bambu or Polymaker material page stating it was opened.",
+  "QIDI Q2 time to reach 65 °C. Not on QIDI's product page, and no measured figure from a named reviewer was found.",
+  "Chamber temperatures for the Creality K1C and Flashforge Adventurer 5M Pro. I didn't research these within the call budget. Both are enclosed with no chamber heater (per 3dprintgearlab's listing)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8686239000000001
+ }
+}

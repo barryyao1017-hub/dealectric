@@ -1,0 +1,102 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Bambu Lab P2S's own '50 °C chamber' figure is a passive limit with no heater: it comes from bed heat held in by an automatic air flap, and owners log about 37–52 °C depending on the aux-fan setting. The QIDI Q2's '65 °C' is a setpoint held by a dedicated 280 W chamber heater. The two figures look comparable but are not.",
+ "standout": 2,
+ "standout_why": "I read three rival pages. firstlayerlab.com (cited) lists P1S/P2S/K1C chamber temperature as 'Not stated' and calls the P2S 'Passive, with an airflow flap'. It gives the Q2 '65 °C active PTC' but no heater wattage. 3dprintgearlab.com (cited) says the P2S has 'no active heating listed', gives no chamber number and no heater power, and only adds the general line 'Enclosed isn't heated'. layerwalker.com (rank 3) gives a general 35–45 °C for passive boxes but no P2S number, and does not mention Bambu's 50 °C claim or the aux-fan effect. None of them puts Bambu's 50 °C figure next to QIDI's 65 °C on the same basis (heater watts and how the temperature is reached), and none cites owner logs that show the P2S range moving with the fan setting. I could not open Popular Mechanics (cited) or The Verge (fetch blocked), so I can't say what they contain.",
+ "decides": "This supports ChatGPT's split pick. For PLA and PETG, the P2S's passive chamber is enough. For ABS, ASA and nylon, the Q2 at the same $449 has a 280 W heater that holds 65 °C. The P2S's 50 °C is a best case that one owner logged at 37–42 °C with the right aux fan at 100% in heating mode. It also warns shoppers off the QIDI Q2C ($349): it has the same 270 × 270 × 256 mm build volume, but its US store blurb doesn't list chamber heating, while the Q2's blurb does.",
+ "candidates": [
+  "Bambu Lab P2S",
+  "QIDI Q2",
+  "QIDI Q2C",
+  "Bambu Lab P1S",
+  "Creality K1C",
+  "Flashforge Adventurer 5M Pro"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Chamber temperature as stated (how it's reached)",
+   "value": "Up to 50 °C, passive: 'Passive heat regulation up to 50°C'. FAQ: 'does not have an active chamber heating function'",
+   "source": "https://www.gigaparts.com/bambu-lab-p2s-3d-printer.html",
+   "source_title": "Bambu Lab P2S 3D Printer – GigaParts",
+   "read": "2026-11-08",
+   "note": "US retailer spec table and FAQ. The chamber is regulated 'through its fully enclosed chamber and an automatic switching flap'. No heater, so the chamber heater wattage is 0 W. I used this because bambulab.com returned 403/402."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "US price",
+   "value": "$449.00 after mail-in rebate (regular $549.00)",
+   "source": "https://www.gigaparts.com/bambu-lab-p2s-3d-printer.html",
+   "source_title": "Bambu Lab P2S 3D Printer – GigaParts",
+   "read": "2026-11-08",
+   "note": "Shown as the 'VIP price' after a mail-in rebate."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Owner-measured chamber temperature while printing ABS",
+   "value": "37–42 °C with right aux fan at 100% in heating mode; 50–52 °C with right aux fan off",
+   "source": "https://forum.bambulab.com/t/abs-printing-p2s-ams-2-pro/245911",
+   "source_title": "ABS printing. P2S+AMS 2 pro – Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "Forum user Druaka, 2026-04-01, reading the P2S chamber sensor. Bed temperature and room temperature not given. User report, not a lab test."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Owner-reported steady chamber temperature for ABS",
+   "value": "About 45 °C, 'fairly consistently for ABS'",
+   "source": "https://forum.bambulab.com/t/chamber-heater-for-p2s/246824",
+   "source_title": "Chamber heater for P2S – Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "Forum user TriumphTR7, 2026-04-14, with a recirculating filter setup. Bed temperature and ambient not stated."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber temperature as stated (how it's reached)",
+   "value": "Up to 65 °C, active: 'Independent chamber heating up to 65°C'",
+   "source": "https://www.3djake.com/qidi-tech/q2",
+   "source_title": "QIDI Tech Q2 – 3DJake",
+   "read": "2026-11-08",
+   "note": "Retailer spec sheet. The QIDI US store blurb (storecheck) also reads 'Second-Gen 65℃ active chamber heating'."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Rated power split (chamber heater wattage)",
+   "value": "350 W + 280 W chamber heating",
+   "source": "https://www.3djake.com/qidi-tech/q2",
+   "source_title": "QIDI Tech Q2 – 3DJake",
+   "read": "2026-11-08",
+   "note": "The 280 W is a dedicated chamber heater, compared with 0 W on the P2S. Filtration on the same page: G3 pre-filter + H12 HEPA + coconut-shell activated carbon. Nozzle ≤370 °C, bed ≤120 °C."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "US price (maker store)",
+   "value": "$449.00 (compare-at $848.00), in stock",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search of us.qidi3d.com. The product page itself returned 429."
+  },
+  {
+   "product": "QIDI Q2C",
+   "label": "US price and chamber heating claim",
+   "value": "$349.00 (compare-at $549.00); store blurb lists no chamber heating",
+   "source": "https://us.qidi3d.com/products/q2c",
+   "source_title": "QIDI Q2C 3D Printer – QIDI US store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search. The blurb gives a 270×270×256 mm build volume, MET-certified, QIDI Box compatible. The Q2 blurb's '65℃ active chamber heating' line is missing here."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab's own wording for the P2S '50 °C' chamber figure on bambulab.com/en-us/p2s, wiki.bambulab.com and us.store.bambulab.com. All returned 403/402, so I used the GigaParts retailer copy.",
+  "A named reviewer's logged P2S chamber temperature with bed temperature and ambient stated (looked for Tom's Hardware and The Verge; The Verge fetch was blocked). Only forum owner reports were found.",
+  "A measured QIDI Q2 time to heat the chamber to 65 °C or a held temperature from a named reviewer. None found; the 5–8 min figure I saw is for the Plus4, not the Q2.",
+  "QIDI's own Q2 spec page (qidi3d.com / us.qidi3d.com product page and wiki.qidi3d.com returned 429 or empty), so heater wattage comes from 3DJake.",
+  "Chamber temperature claims and filtration grade for the Creality K1C and Flashforge Adventurer 5M Pro from the makers' US pages. flashforge.com returned 429 and I ran out of budget for Creality."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.8487255999999999
+ }
+}

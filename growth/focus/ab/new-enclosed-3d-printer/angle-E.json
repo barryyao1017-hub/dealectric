@@ -1,0 +1,74 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured chamber temperature for any of these printers. CNC Kitchen's thermocouples read 50.3 °C and 54.1 °C inside the Bambu Lab P2S's passive chamber, with the bed at 100–110 °C. Clever Creations timed the Creality K1C's chamber at 30 minutes to rise from 25 °C to its 38 °C maximum.",
+ "standout": 2,
+ "standout_why": "I compared three pages. firstlayerlab.com is cited in chat 1. 3dprintgearlab.com is cited in both chats. layerwalker.com is a top result that wasn't cited. All three give 'Passive' with no temperature for the P2S, P1S and K1C. For the Q2 they give only QIDI's claimed 65 °C. layerwalker gives an unattributed '35 to 45 °C' for passive enclosures in general. None of them reports a measured chamber temperature, noise level, power draw or print time for any candidate. I could not open popularmechanics.com (cited in chat 2) or theverge.com, so I could not check those two.",
+ "decides": "The measurements back ChatGPT's split pick and make it more precise. The P2S's passive chamber was measured at about 50–54 °C, which is far warmer than the K1C's measured 38 °C maximum. That makes the P2S a fair choice for occasional ABS/ASA. It also weakens the K1C as a choice for ABS. The case for the QIDI Q2's 65 °C active heater rests only on QIDI's own claim, because I found no independent measurement of it. So the Q2 pick for engineering filaments stays plausible but is not measured.",
+ "candidates": [
+  "Bambu Lab P2S",
+  "QIDI Q2",
+  "Bambu Lab P1S",
+  "Creality K1C",
+  "Flashforge Adventurer 5M Pro"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Measured chamber temperature, passive (CNC Kitchen, Stefan Hermann)",
+   "value": "50.3 °C and 54.1 °C on two in-chamber thermocouple channels; 'around 50 °C or more' with the bed at 100–110 °C",
+   "source": "https://cnckitchen.com/blog/bambu-lab-p2s-review",
+   "source_title": "The P2S Is the Upgrade No One Expected – But Everyone Wanted! (CNC Kitchen, 2025-10-14)",
+   "read": "2026-11-08",
+   "note": "Thermocouple readings come from a photo caption. The text ties 'around 50 °C or more' to a 100–110 °C bed. No heat-up time is given, and the caption doesn't state the bed setpoint."
+  },
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Measured bed temperature spread (CNC Kitchen, FLIR thermal camera)",
+   "value": "98.9 °C center, 90.1 °C corner",
+   "source": "https://cnckitchen.com/blog/bambu-lab-p2s-review",
+   "source_title": "The P2S Is the Upgrade No One Expected – But Everyone Wanted! (CNC Kitchen, 2025-10-14)",
+   "read": "2026-11-08",
+   "note": "FLIR thermal image of the heated bed. The center-to-corner difference is 8.8 °C."
+  },
+  {
+   "product": "Creality K1C",
+   "label": "Measured chamber heat-up and maximum, passive (Clever Creations)",
+   "value": "25 °C to 38 °C maximum in 30 minutes",
+   "source": "https://clevercreations.org/creality-k1c-review/",
+   "source_title": "Creality K1C Review: Minor Upgrades With Little Innovation | Clever Creations",
+   "read": "2026-11-08",
+   "note": "Lid on, all fans off. The bed setpoint for this test isn't stated. The page has no publication date; image paths suggest about March 2024. In the same review the bed peaked at about 95 °C when set to 100 °C."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Measured noise (AndroidPCTV, Kim)",
+   "value": "56 dB in normal use; 65 dB with the QIDI Box attached",
+   "source": "https://androidpctv.com/qidi-q2-qidi-box-review/",
+   "source_title": "QIDI Q2 QIDI BOX, Review: CoreXY AMS 3D Printer (AndroidPCTV)",
+   "read": "2026-11-08",
+   "note": "No distance or method stated. The byline shows both 2025-08-20 and 2025-08-28. Same review: PLA Benchy printed in 20 minutes, ABS Buddha in 18 minutes."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Measured noise and Benchy time (3Dwork, JJR)",
+   "value": "50–60 dB during normal printing; Benchy in about 18 minutes",
+   "source": "https://3dwork.io/en/qidi-q2-review/",
+   "source_title": "QIDI Q2 Series + QIDI Box: Review (3Dwork, 2026-04-07)",
+   "read": "2026-11-08",
+   "note": "No distance, meter or method stated. 3Dwork names the fans and the Box feed mechanism as the main noise sources. QIDI Box color changes took 2–3 minutes each. The 65 °C chamber figure in this review is the maker's spec, not a measurement."
+  }
+ ],
+ "unsourced": [
+  "A measured QIDI Q2 chamber temperature or heat-up time from a named reviewer. The Tom's Hardware and TechRadar Q2 reviews returned only their titles. The Printables 'Chamber Heat Insulation for Qidi Q2' post, which reportedly says a stock Q2 chamber takes at least an hour to reach 65 °C, returned 403. The '8–10 minutes to 65 °C' figure appears only on qiditech3dprinter.com, a QIDI-branded blog, with no stated method.",
+  "A measured chamber temperature for the Bambu Lab P1S from a named reviewer. I found only forum posts and unattributed guides.",
+  "Any named measurement for the Flashforge Adventurer 5M Pro (noise, chamber temperature, power).",
+  "A measured noise figure for the P2S or K1C with a stated distance from a named lab. Tom's Hardware's P2S review page returned only its title, and Notebookcheck has only a P2S launch article, not a review.",
+  "Measured power draw at the wall for any candidate. QIDI's 350 W + 280 W figure for the Q2 is a rating, not a measurement."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9540029000000001
+ }
+}
