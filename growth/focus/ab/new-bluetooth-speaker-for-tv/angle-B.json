@@ -1,0 +1,81 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states a measured wired delay for any picked soundbar: the Sony HT-S100F measures 62 ms over HDMI ARC and 70 ms over optical (Gadget Review). That is 1.5–1.7 film frames at 24 fps, under the ITU-R BT.1359 lip-sync detectability limit of 125 ms audio lag. The portable pick, Bose SoundLink Flex (2nd Gen), has no AUX input, and its measured 7 h 03 min battery covers only 2 full 3-hour TV evenings per charge.",
+ "standout": 2,
+ "standout_why": "I compared against geekchamp.com (Nov 2026), itechguides.com's cited connection guide, and thegoodatheist.net. I could not read itechguides.com's main list (fetch timed out) or What Hi-Fi's cited page (it came back truncated). Geekchamp gives only PCWorld's general 'up to about 150 ms' for Bluetooth and says plainly that it has no per-product measurement. The itechguides guide gives no millisecond figures at all. Thegoodatheist gives general ranges ('100-200ms' Bluetooth, ARC/optical 'under 40ms') and no measurement for any model. The HT-S100F's measured 62/70 ms contradicts that 'under 40ms' claim. None of the pages turns a delay into frames or compares it with a lip-sync threshold. None gives evenings per charge for a portable speaker used with a TV, and none flags that the Flex has no wired input.",
+ "decides": "It confirms ChatGPT's soundbar-over-portable advice and makes it measurable. On the budget pick (HT-S100F), connecting by cable keeps the delay at 1.5–1.7 frames, inside the ITU detectability limit. Portable speakers like the Bose Flex 2 have no AUX input, so they must use the TV's Bluetooth output (if the TV has one), and they need charging every 2 evenings. The page should recommend the cable (ARC) route on the soundbar, and treat a portable speaker as a second option only for TVs with Bluetooth audio out.",
+ "candidates": [
+  "Sony HT-S100F",
+  "Sony HT-SD40",
+  "Samsung HW-B630F",
+  "Bose SoundLink Flex (2nd Gen)"
+ ],
+ "findings": [
+  {
+   "product": "Sony HT-S100F",
+   "label": "Measured audio delay, HDMI ARC, in 24 fps frames",
+   "value": "62 ms = 1.5 frames",
+   "source": "https://www.gadgetreview.com/sony-ht-s100f-review",
+   "source_title": "Sony HT-S100F Review (Gadget Review, Nikshep Myle, updated 2023-12-20)",
+   "read": "2026-11-08",
+   "note": "62 ms ÷ 41.7 ms per frame (1000/24) = 1.49 frames. The page quotes 'measuring 62ms via ARC and 70ms via Optical' but does not describe the test procedure."
+  },
+  {
+   "product": "Sony HT-S100F",
+   "label": "Measured audio delay, optical, in 24 fps frames",
+   "value": "70 ms = 1.7 frames",
+   "source": "https://www.gadgetreview.com/sony-ht-s100f-review",
+   "source_title": "Sony HT-S100F Review (Gadget Review, Nikshep Myle, updated 2023-12-20)",
+   "read": "2026-11-08",
+   "note": "70 ms ÷ 41.7 ms = 1.68 frames"
+  },
+  {
+   "product": "Sony HT-S100F",
+   "label": "Margin under the ITU-R BT.1359 detectability limit for audio lag (ARC)",
+   "value": "63 ms of margin (62 ms vs 125 ms)",
+   "source": "https://en.wikipedia.org/wiki/Audio-to-video_synchronization",
+   "source_title": "Audio-to-video synchronization (Wikipedia, citing ITU-R BT.1359-1)",
+   "read": "2026-11-08",
+   "note": "125 − 62 = 63 ms. Wikipedia: detectability is '45 ms lead to 125 ms lag'. The ITU PDF downloaded but I could not extract its text, so this is from a secondary source. If the TV adds its own delay, that uses up part of the margin."
+  },
+  {
+   "product": "general",
+   "label": "Stricter broadcast lip-sync limit (ATSC IS-191), as a frame budget",
+   "value": "45 ms lag = 1.1 frames at 24 fps",
+   "source": "https://en.wikipedia.org/wiki/Audio-to-video_synchronization",
+   "source_title": "Audio-to-video synchronization (Wikipedia)",
+   "read": "2026-11-08",
+   "note": "45 ÷ 41.7 = 1.08 frames. The HT-S100F's 62 ms ARC delay exceeds this stricter limit but stays under the ITU detectability limit."
+  },
+  {
+   "product": "Bose SoundLink Flex (2nd Gen)",
+   "label": "TV evenings per charge at 3 h per evening (measured runtime)",
+   "value": "2.3 evenings (7 h 03 min measured)",
+   "source": "https://www.soundguys.com/bose-soundlink-flex-2nd-gen-review-125253",
+   "source_title": "Bose SoundLink Flex (2nd Gen) review (SoundGuys, Dave Carr, 2025-06-19)",
+   "read": "2026-11-08",
+   "note": "7.05 h ÷ 3 h = 2.35, so 2 full evenings. Bose's 12 h claim ÷ 3 = 4 evenings. SoundGuys measured with its standard battery test."
+  },
+  {
+   "product": "Bose SoundLink Flex (2nd Gen)",
+   "label": "Wired input / codecs",
+   "value": "No AUX input; SBC and AAC, plus aptX on Snapdragon Sound Android phones",
+   "source": "https://www.soundguys.com/bose-soundlink-flex-2nd-gen-review-125253",
+   "source_title": "Bose SoundLink Flex (2nd Gen) review (SoundGuys, Dave Carr, 2025-06-19)",
+   "read": "2026-11-08",
+   "note": "With no AUX input, a TV can only connect over Bluetooth, so the TV must support Bluetooth audio output."
+  }
+ ],
+ "unsourced": [
+  "Measured Bluetooth latency (ms) for the Sony HT-S100F, Sony HT-SD40, Samsung HW-B630F and Bose SoundLink Flex 2nd Gen. RTINGS has these numbers but its pages show them as 'Lock ms' (paywalled) and the comparison tools would not render. Gadget Review, SoundGuys and Headphonecheck give no Bluetooth figure.",
+  "ARC and optical latency for the Sony HT-SD40 and Samsung HW-B630F. I did not find an openable measurement within the tool budget.",
+  "Maker's US store prices: electronics.sony.com blocks fetching, two bose.com product URLs returned 404, and the Amazon check returned nothing. Gadget Review's $118 Amazon price for the HT-S100F is undated and was not used.",
+  "The ITU-R BT.1359-1 thresholds from the ITU PDF itself: it downloaded, but its text could not be extracted. The figure above comes from Wikipedia's citation."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.7860594000000003
+ }
+}
