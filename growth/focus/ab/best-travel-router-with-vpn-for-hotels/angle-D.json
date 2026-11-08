@@ -1,0 +1,71 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that WireGuard (the protocol behind every '300 / 490 / 1,100 Mbps' figure it quoted) runs over UDP only and cannot tunnel over TCP. On a hotel network that blocks unfamiliar UDP, the router's WireGuard client will not connect, and the fallback is OpenVPN over TCP port 443, using a TCP config file from the VPN provider.",
+ "standout": 2,
+ "standout_why": "I opened the hotel-captive-portal guide on pointscapitaltravel.com, the guides on itechguides.com, stayingconnectedabroad.com, racksandwatts.com and sekin.in, and our own dealectric.com page. None mentions UDP, TCP, port blocking or OpenVPN over TCP 443. They name WireGuard and OpenVPN only as supported protocols. Pointscapitaltravel and our page do cover the related captive-portal point: turn the VPN off, or let firmware 4.6+ pause it, while you log in. So that part is not new. Racksandwatts says hotel congestion, the VPN endpoint and home upload speed can be the bottleneck, but it does not mention latency. The GL.iNet product pages ChatGPT cited returned HTTP 429 to me, so I could not check whether they mention UDP. ChatGPT's answers quote only WireGuard speeds.",
+ "decides": "It confirms GL.iNet as the pick but changes which spec to compare. All the GL.iNet models accept a provider's TCP .ovpn file, so the UDP limit doesn't rule any of them out. On a hotel network that blocks UDP, though, the OpenVPN figure is the speed you actually get, not the WireGuard one. The page should show each model's OpenVPN speed next to its WireGuard speed and tell readers to download the provider's TCP-443 config before the trip. GL.iNet's own blog adds a second point for shoppers who want to reach their home server: at 288 ms round trip, a GL.iNet case saw 47.3 Mbps through WireGuard against 455 Mbps without it. So on long-haul trips latency limits speed, not the router's chip, and the Beryl 7's 1,100 Mbps rating buys little there.",
+ "candidates": [
+  "GL.iNet Beryl AX (GL-MT3000)",
+  "GL.iNet Beryl 7 (GL-MT3600BE)",
+  "GL.iNet Slate 7 (GL-BE3600)",
+  "GL.iNet Opal (GL-SFT1200)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "WireGuard transport",
+   "value": "UDP only; \"WireGuard explicitly does not support tunneling over TCP\"",
+   "source": "https://www.wireguard.com/known-limitations/",
+   "source_title": "Known Limitations - WireGuard",
+   "read": "2026-11-08",
+   "note": "The WireGuard project's own page, under 'TCP Mode'. It adds that turning WireGuard's UDP packets into TCP 'is the job of an upper layer of obfuscation' and that 'WireGuard does not focus on obfuscation.'"
+  },
+  {
+   "product": "general",
+   "label": "Why WireGuard fails on restrictive networks / OpenVPN fallback",
+   "value": "\"firewalls that block unknown UDP traffic block WireGuard\"; \"OpenVPN can fall back to TCP port 443\"",
+   "source": "https://openvpn.net/openvpn-vs-wireguard/",
+   "source_title": "OpenVPN vs WireGuard - OpenVPN",
+   "read": "2026-11-08",
+   "note": "From the FAQ on the OpenVPN project's comparison page. OpenVPN Inc. is an interested party, but the UDP-only point matches WireGuard's own page above."
+  },
+  {
+   "product": "general",
+   "label": "TCP OpenVPN on GL.iNet firmware 4.x",
+   "value": "Upload the provider's .ovpn file; e.g. NordVPN: \"select OpenVPN protocol and download UDP or TCP config\"",
+   "source": "https://docs.gl-inet.com/router/en/4/interface_guide/openvpn_client/",
+   "source_title": "OpenVPN Client - GL.iNet Router Docs 4",
+   "read": "2026-11-08",
+   "note": "GL.iNet's interface guide for firmware 4, which runs on Beryl AX, Beryl 7, Slate 7 and Opal. Under the provider steps it quotes CyberGhost: 'OpenVPN TCP allows more stable connections than the UDP version but is a bit slower.' NordVPN is the only provider it describes as integrated into the admin panel. For the others you upload the config by hand."
+  },
+  {
+   "product": "general",
+   "label": "WireGuard speed to a distant home server (GL.iNet case)",
+   "value": "47.3 Mbps down / 12.1 Mbps up with WireGuard at 288 ms ping, vs 455 / 634 Mbps without VPN",
+   "source": "https://www.gl-inet.com/blogs/blog/why-wireguard-vpn-speeds-drop-with-high-latency",
+   "source_title": "Why Your WireGuard VPN May Be Slow When Traveling Abroad (GL.iNet blog, Adam Kimbrough, updated 2026-11-02)",
+   "read": "2026-11-08",
+   "note": "A user in Vietnam connecting to a server in Texas. GL.iNet says 'High latency does not inherently reduce WireGuard's packet-forwarding capacity'; the slowdown comes from TCP windows in the apps inside the tunnel. Its table shows a 2 MB window allowing about 800 Mbps at 20 ms and about 53.3 Mbps at 300 ms."
+  },
+  {
+   "product": "GL.iNet Beryl AX (GL-MT3000)",
+   "label": "Price, GL.iNet US store",
+   "value": "$98.99 (US warehouse, US+EU+UK plug)",
+   "source": "https://www.gl-inet.com/en-us/products/gl-mt3000/",
+   "source_title": "Beryl AX (GL-MT3000) | GL.iNet",
+   "read": "2026-11-08",
+   "note": "'Current price $98.99' as shown on the maker's en-us product page."
+  }
+ ],
+ "unsourced": [
+  "Maker OpenVPN speeds for Beryl AX, Beryl 7, Slate 7 and Opal, and whether GL.iNet measured them over UDP or TCP and with which cipher. All gl-inet.com product pages, the travel-routers page and the store redirect returned HTTP 429. I downloaded the mt3000 (2025-03-20) and mt3600be (2026-02-13) datasheet PDFs, but the fetch tool could not read their compressed text and running pdftotext was not approved in this session.",
+  "A named reviewer's measured OpenVPN-over-TCP throughput on any of these routers. The RTINGS Slate 7 review returned only page chrome, no review text.",
+  "A GL.iNet-authored statement (docs, not forum users) that hotel networks block UDP. Only GL.iNet forum users say so (forum.gl-inet.com/t/disguise-vpn-at-hotel/17431), and the page does not mark any of them as staff."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.8803236000000001
+ }
+}

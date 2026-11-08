@@ -1,0 +1,109 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Beryl 7 and Slate 7 need a USB-C PD source that negotiates 9 V/3 A or 12 V/2.5 A, with GL.iNet staff warning the Beryl 7 'may not function properly' on 5 V/3 A alone, while the Beryl AX does not speak PD/QC at all and runs on plain 5 V. That decides which power bank or charger runs each router from a hotel desk or airport seat.",
+ "standout": 2,
+ "standout_why": "I compared against sekin.in, itechguides.com and stayingconnectedabroad.com, the top non-maker results, plus the GL.iNet product pages ChatGPT cited (gl-inet.com was rate-limiting, so I read GL.iNet's docs and blog instead). sekin.in says only that Beryl 7 'also supports USB-C Power Delivery' and Slate 7 has 'USB-C PD input', with no volts or watts, and tells readers to check specs themselves. itechguides gives Beryl AX '5V/3A' but no PD voltages for Beryl 7 or Slate 7, and no minimum. stayingconnectedabroad says nothing about power. None mentions Tailscale. None says Tailscale on these routers is beta, or that GL.iNet advises against running it at the same time as the WireGuard/OpenVPN client, which is the setup ChatGPT's 'connect to my home network' option implies.",
+ "decides": "This confirms Beryl 7 as the pick but adds a condition: pair it with a PD charger or power bank whose port supplies 9 V/3 A (27 W) or more, not a 20 W port or a 5 V-only bank. Beryl AX stays the easy choice for anyone running off a basic 5 V USB power bank, because it draws under 8 W at 5 V and doesn't need PD. For shoppers who want both a commercial VPN and a link home, all three GL.iNet picks support Tailscale (Opal doesn't), but GL.iNet says not to run Tailscale alongside the WireGuard/OpenVPN client, so it's one or the other on the router.",
+ "candidates": [
+  "GL.iNet Beryl 7 (GL-MT3600BE)",
+  "GL.iNet Beryl AX (GL-MT3000)",
+  "GL.iNet Slate 7 (GL-BE3600)",
+  "GL.iNet Opal (GL-SFT1200)"
+ ],
+ "findings": [
+  {
+   "product": "GL.iNet Beryl 7 (GL-MT3600BE)",
+   "label": "USB-C power input profiles",
+   "value": "USB Type-C PD: 5 V/3 A, 9 V/3 A, 12 V/2.5 A",
+   "source": "https://www.gl-inet.com/en-eu/blogs/blog/glinet-launches-beryl-7-travel-router",
+   "source_title": "GL.iNet launches Beryl 7 travel router (GL.iNet blog, Feb 2026)",
+   "read": "2026-11-08",
+   "note": "Quoted: 'Beryl 7 can be powered with USB Type-C Power Delivery (5V/3A, 9V/3A, 12V/2.5A input)'. GL.iNet's Beryl 7 user guide (docs.gl-inet.com/router/en/4/user_guide/gl-mt3600be/) adds 'With PD compatibility, it can be powered using a standard phone charger cable' and lists the power supply as 'TYPE-C30DIC'. 9 V × 3 A = 27 W; 12 V × 2.5 A = 30 W."
+  },
+  {
+   "product": "GL.iNet Beryl 7 (GL-MT3600BE)",
+   "label": "Minimum practical power source",
+   "value": "9 V/3 A or 12 V/2.5 A PD. On 5 V/3 A alone it 'may not function properly'",
+   "source": "https://forum.gl-inet.com/t/beryl-7-cannot-power-external-2-5-hdd-ssd/68935",
+   "source_title": "Beryl 7: Cannot power external 2.5'' HDD/SSD (GL.iNet forum)",
+   "read": "2026-11-08",
+   "note": "will.qiu, marked GL.iNet on the thread, 27 May 2026: 'Please note that when only 5V/3A power is available, the Beryl 7 may not function properly' and asked whether the user had the original adapter or one giving 9V/3A or 12V/2.5A. User wayoftheworld quoted the admin-panel tip 'Please ensure that the power supply voltage exceeds 9V/3A'. They reported a 20 W PD port on an Anker 65 W block was insufficient, while its 45 W port and the GL.iNet adapter worked. The 20 W failure is one user's report."
+  },
+  {
+   "product": "GL.iNet Beryl 7 (GL-MT3600BE)",
+   "label": "Fixed 12 V (non-PD) adapter",
+   "value": "Works per GL.iNet; original or reputable PD adapter still recommended",
+   "source": "https://forum.gl-inet.com/t/beryl7-mt3600-12v-power-supply/69072",
+   "source_title": "Beryl7 - MT3600 - 12v power supply? (GL.iNet forum)",
+   "read": "2026-11-08",
+   "note": "will.qiu, 1 Jun 2026: 'a 12V non-PD power adapter can power the MT3600BE normally without issues… we still recommend using the original power adapter or a PD power adapter from a reputable manufacturer'. His badge wasn't visible on this thread; he is marked GL.iNet on the HDD/SSD thread above."
+  },
+  {
+   "product": "GL.iNet Beryl 7 (GL-MT3600BE)",
+   "label": "Plug converters in box",
+   "value": "3 converters (EU, UK, AU)",
+   "source": "https://docs.gl-inet.com/router/en/4/user_guide/gl-mt3600be/",
+   "source_title": "GL-MT3600BE (Beryl 7) User Guide – GL.iNet docs",
+   "read": "2026-11-08",
+   "note": "Package contents: power adapter plus '3 x Converters (EU, UK, and AU Plugs)'. The same guide says the USB 3.0 port supports phone/USB-dongle tethering and cellular USB modems."
+  },
+  {
+   "product": "GL.iNet Slate 7 (GL-BE3600)",
+   "label": "USB-C power input profiles",
+   "value": "Type-C PD: 5 V/3 A, 9 V/3 A, 12 V/2.5 A (max 30 W)",
+   "source": "https://docs.gl-inet.com/router/en/4/user_guide/gl-be3600/",
+   "source_title": "GL-BE3600 (Slate 7) User Guide – GL.iNet docs",
+   "read": "2026-11-08",
+   "note": "Quoted: 'It also supports Type-C PD power supply (5V/3A, 9V/3A, 12V/2.5A)'. Box: US power adapter plus '3 x Converters (EU, UK, and AU Plugs)'. USB 3.0 port supports tethering and cellular USB modems."
+  },
+  {
+   "product": "GL.iNet Beryl AX (GL-MT3000)",
+   "label": "PD/QC support and draw",
+   "value": "No PD/QC; needs stable 5 V; under 8 W with no USB device attached",
+   "source": "https://forum.gl-inet.com/t/gl-mt3000-power-supply-question/55831",
+   "source_title": "Gl-MT3000 power supply question (GL.iNet forum)",
+   "read": "2026-11-08",
+   "note": "Forum user 'bruce', 17 Mar 2025 (no staff badge visible in the page text): 'When there is no USB device connected, the power consumption is < 8 W', '[unofficial supplies must] output a stable 5V voltage and a peak current 2A', 'MT3000 does not support the PD/QC protocol. Recommended official power supply.' In a separate thread (forum.gl-inet.com/t/alternate-power-supply-for-beryl-ax-gl-mt3000/33651), user naisanza (Aug 2024) said an Anker 65 W and an Anker 30 W charger did not power it, while Anker 100 W and 150 W chargers did. Other users there report PD chargers working, so results vary by charger."
+  },
+  {
+   "product": "general",
+   "label": "Tailscale support by model",
+   "value": "Supported: Beryl AX (GL-MT3000), Beryl 7 (GL-MT3600BE), Slate 7 (GL-BE3600), Slate AX. Unsupported: Opal (GL-SFT1200). Needs firmware v4.2+",
+   "source": "https://docs.gl-inet.com/router/en/4/interface_guide/tailscale/",
+   "source_title": "Tailscale – GL.iNet Router Docs 4",
+   "read": "2026-11-08",
+   "note": "From the page's 'Supported Models' and unsupported lists. 'available since firmware v4.2'. Some v4.2+ models lack it 'due to insufficient memory'."
+  },
+  {
+   "product": "general",
+   "label": "Tailscale and VPN client conflict",
+   "value": "Beta. GL.iNet does not recommend running Tailscale at the same time as the OpenVPN Client, WireGuard Client, ZeroTier, GoodCloud Site to Site or AstroWarp",
+   "source": "https://docs.gl-inet.com/router/en/4/interface_guide/tailscale/",
+   "source_title": "Tailscale – GL.iNet Router Docs 4",
+   "read": "2026-11-08",
+   "note": "Quoted: 'This feature is currently in beta, and may have some bugs' and 'not recommended to use Tailscale simultaneously with any of the following features: OpenVPN Client, WireGuard Client, GoodCloud Site to Site, ZeroTier, AstroWarp'. Subnet routes only take effect after approval in the Tailscale Admin Console."
+  },
+  {
+   "product": "general",
+   "label": "Kill switch firmware requirement",
+   "value": "Global and per-tunnel VPN Kill Switch since firmware v4.8",
+   "source": "https://docs.gl-inet.com/router/en/4/interface_guide/vpn_dashboard/",
+   "source_title": "VPN Dashboard – GL.iNet Router Docs 4",
+   "read": "2026-11-08",
+   "note": "Quoted: 'Since firmware v4.8, GL.iNet routers support Kill Switch configuration for the global VPN connection, as well as for each individual VPN tunnel.' Tunnel groups 'do not perform failover between groups'."
+  }
+ ],
+ "unsourced": [
+  "A GL.iNet maker page or datasheet stating Beryl AX power input in V/A: gl-inet.com product pages and the GL.iNet store returned HTTP 429 all session, the mt3000 datasheet PDF couldn't be read as text, and the manuals.plus copy of the manual returned 403. Only forum posts and itechguides' '5V/3A' were reachable.",
+  "Today's GL.iNet US store prices for Beryl 7, Slate 7 and Beryl AX: gl-inet.com and storecheck.py on store.gl-inet.com failed (rate limit / non-JSON response). The only price read was the Beryl AX product page's 'CN warehouse - US+EU+UK plug - $98.99' variant, and the Beryl 7 blog's $139.99 is a February 2026 launch price.",
+  "Which providers are built into the GL.iNet VPN dashboard: the docs page shows the list only as an image, and only PureVPN is named in text.",
+  "Power input and Tailscale/VPN coexistence for TP-Link Roam 7 and ASUS RT-AX57 Go: I ran out of tool budget before opening their maker pages.",
+  "Beryl 7 USB port output (5 V/2 A as the datasheet reportedly states): seen only as a user's paraphrase of the datasheet, which I couldn't open as text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9650113000000002
+ }
+}
