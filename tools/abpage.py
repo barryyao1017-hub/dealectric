@@ -176,11 +176,18 @@ def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
             continue
         if d.get("is_error"):
             return {"status": "error", "reason": msg[:400], "model": model}
-        m = re.search(r"\{.*\}", msg, re.S)
-        try:
-            out = json.loads(m.group(0)) if m else {"status": "error", "reason": "no JSON in the reply"}
-        except ValueError as e:
-            out = {"status": "error", "reason": f"bad JSON: {e}", "raw": msg[-2000:]}
+        out = None
+        dec = json.JSONDecoder()
+        for i in [m.start() for m in re.finditer(r"\{", msg)][:40]:   # the first complete JSON object in the reply
+            try:
+                obj, _ = dec.raw_decode(msg[i:])
+            except ValueError:
+                continue
+            if isinstance(obj, dict) and len(json.dumps(obj)) > 40:
+                out = obj
+                break
+        if out is None:
+            out = {"status": "error", "reason": "no parsable JSON in the reply", "raw": msg[-2000:]}
         out["_meta"] = {"model": model, "effort": effort, "turns": d.get("num_turns"), "cost_usd_list": d.get("total_cost_usd")}
         return out
     return last or {"status": "error", "reason": "no model answered"}
