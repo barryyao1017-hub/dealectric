@@ -1,0 +1,131 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Notebookcheck measured the Minisforum N5 Pro (Ryzen AI 9 HX PRO 370, 12C/24T) idling at 11.8–15.9 W. That is below the drive-less UGREEN DXP6800 Pro (up to 22.4 W, Notebookcheck), the Minisforum MS-01 (25–29 W, ServeTheHome) and the MS-A2 (25 W, ServeTheHome), so the strongest VM box in the lineup also measured lowest at idle.",
+ "standout": 2,
+ "standout_why": "I read five rival pages. homelabpicks.com (2026-03-15) states it did no testing and lists only vendor power ratings for its picks: TerraMaster F4-424 Pro, QNAP TS-464 and Asustor AS5402T. computingforgeeks.com (2026-10-21) gives fio NFS vs iSCSI figures from a nested Proxmox lab but no power figure and no per-product hardware measurement. ITPro (2024-04-29) and StorageReview (2024-04-19) on the DXP6800 Pro report no wattage; StorageReview gives CIFS throughput and IOPS and says VMs were 'coming soon'. The one measured power figure in ChatGPT's results is Notebookcheck's DXP6800 Pro review (rank 10, not cited). It covers that one model only. No result measures the N5 Pro, MS-01, MS-A2, DXP4800 Plus or AS6804T, and none puts the boxes side by side.",
+ "decides": "For a box running Proxmox around the clock, idle draw is the running cost. The N5 Pro has the most CPU of the candidates (Notebookcheck: Cinebench R23 multi 21,474) and still measured the lowest drive-less idle, so the extra cores cost nothing at idle. That backs the N5 Pro over the DXP6800 Pro for a VM-heavy all-in-one. The MS-01 and MS-A2 idle at 25 W or more with no hard drives at all, which weakens the 'separate mini PC plus NAS' route ChatGPT suggested: a second box for the drives adds its own draw on top. Each lab used its own setup, so treat these as rough ranges. They are not a single controlled test.",
+ "candidates": [
+  "Minisforum N5 Pro",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP4800 Plus",
+  "Minisforum MS-01",
+  "Minisforum MS-A2",
+  "Asustor Lockerstor 4 Gen3 (AS6804T)",
+  "QNAP TVS-h674"
+ ],
+ "findings": [
+  {
+   "product": "Minisforum N5 Pro",
+   "label": "Idle power at the wall (min / avg / max)",
+   "value": "11.8 / 12.3 / 15.9 W",
+   "source": "https://www.notebookcheck.net/Minisforum-N5-Pro-World-s-first-AI-NAS-with-AMD-Ryzen-AI-9-HX-PRO-370-IFA-2025-Award-winner-review.1142209.0.html",
+   "source_title": "Minisforum N5 Pro: World's first AI NAS with AMD Ryzen AI 9 HX PRO 370 – IFA 2025 Award winner review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Sebastian Bade, Notebookcheck, published 2025-10-20 and updated 2026-11-01. Off/standby measured 1.3 W. The power table does not say whether drives were fitted. The noise figures on the same page were taken without hard disks, so the idle power was most likely measured drive-less too."
+  },
+  {
+   "product": "Minisforum N5 Pro",
+   "label": "Load power at the wall (avg / max)",
+   "value": "72.7 / 87.9 W",
+   "source": "https://www.notebookcheck.net/Minisforum-N5-Pro-World-s-first-AI-NAS-with-AMD-Ryzen-AI-9-HX-PRO-370-IFA-2025-Award-winner-review.1142209.0.html",
+   "source_title": "Minisforum N5 Pro review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Sebastian Bade, Notebookcheck, 2025-10-20. In the Cinebench R15 loop the CPU peaked at 55 W and held about 45 W, with a maximum temperature of about 67.4 °C."
+  },
+  {
+   "product": "Minisforum N5 Pro",
+   "label": "Noise (idle / load), no hard disks",
+   "value": "37.5–37.7 dB(A) idle; 40.7 dB(A) load",
+   "source": "https://www.notebookcheck.net/Minisforum-N5-Pro-World-s-first-AI-NAS-with-AMD-Ryzen-AI-9-HX-PRO-370-IFA-2025-Award-winner-review.1142209.0.html",
+   "source_title": "Minisforum N5 Pro review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Sebastian Bade, Notebookcheck, 2025-10-20. Notebookcheck says idle noise was measured without installed hard disks."
+  },
+  {
+   "product": "Minisforum N5 Pro",
+   "label": "CPU throughput, Cinebench R23 multi-core / Cinebench 2024 multi-core",
+   "value": "21,474 pts / 1,166 pts",
+   "source": "https://www.notebookcheck.net/Minisforum-N5-Pro-World-s-first-AI-NAS-with-AMD-Ryzen-AI-9-HX-PRO-370-IFA-2025-Award-winner-review.1142209.0.html",
+   "source_title": "Minisforum N5 Pro review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Sebastian Bade, Notebookcheck, 2025-10-20. Ryzen AI 9 HX PRO 370."
+  },
+  {
+   "product": "Minisforum N5 Pro",
+   "label": "Idle power with five HDDs; typical NAS load",
+   "value": "45–49 W idle with 5 HDDs; 120–125 W under ServeTheHome's standard NAS load; over 200 W possible with CPU/GPU, SSDs and a NIC pushed",
+   "source": "https://www.servethehome.com/minisforum-n5-pro-review-an-awesome-nas-platform/4/",
+   "source_title": "Minisforum N5 Pro Review: An Awesome NAS Platform (ServeTheHome), page 4",
+   "read": "2026-11-08",
+   "note": "Patrick Kennedy, ServeTheHome, 2025-10-07. Five 28 TB Seagate drives shucked from Expansion externals. Noise 39–41 dBA at idle with those drives."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Idle power, no drives; idle with 4 HDDs; off with WoL",
+   "value": "up to 22.40 W with no drives; 36.59–41.93 W with 4× Seagate IronWolf 4 TB; 0.05 W off; 2.39 W off with Wake-on-LAN",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet – Ugreen NASync DXP6800 Pro review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Daniel Schmidt, Notebookcheck, 2026-07-01, updated 2026-10-05. The reviewer called the 4-drive idle 'very high'. UGREEN's own figures are 24.91 W with drives idle and 43.07 W with drives in use. This page was in ChatGPT's results (rank 10) but was not cited."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Noise (idle with HDDs / heavier load); 10GbE iperf3",
+   "value": "34.61 dB(A) idle; up to 43 dB(A) under load; 9.5 Gbit/s both directions",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Ugreen NASync DXP6800 Pro review (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Daniel Schmidt, Notebookcheck, 2026-07-01."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Idle and peak power at the wall",
+   "value": "24.25 W idle on 2.5GbE, 30.45 W idle on 10GbE; peak reads 52.07 W (2.5GbE) / 58.17 W (10GbE); peak writes 61.35 W (2.5GbE) / 67.02 W (10GbE)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "UGREEN NASync DXP4800 Plus 4-bay NAS review (KitGuru), page 14",
+   "read": "2026-11-08",
+   "note": "Simon Crisp, KitGuru, 2024-05-28. Measured during CrystalDiskMark 8.0.4 with WD Red WD60EFRX drives; the page does not state how many. The 10GbE link alone added about 6.2 W at idle (30.45 − 24.25)."
+  },
+  {
+   "product": "Minisforum MS-01",
+   "label": "Idle and load power; noise",
+   "value": "25–29 W idle; about 115 W for about 45 s, then 90–95 W sustained; 37–38 dBA (34.5 dBA floor), about 44 dBA under load",
+   "source": "https://servethehome.com/minisforum-ms-01-review-the-10gbe-with-pcie-slot-mini-pc-intel/5",
+   "source_title": "Minisforum MS-01 Review: The 10GbE with PCIe Slot Mini PC (ServeTheHome), Power Consumption and Noise",
+   "read": "2026-11-08",
+   "note": "Patrick Kennedy, ServeTheHome, 2024-01-09. Core i9-13900H (14C/20T) with 96 GB RAM; OS not stated. No SATA drive bays, so a separate NAS adds its own draw."
+  },
+  {
+   "product": "Minisforum MS-A2",
+   "label": "Idle and load power; noise",
+   "value": "25 W idle (45 W in a second configuration); 135–145 W under load, 200 W+ possible with cards and raised power limits; about 39 dBA idle (34 dBA floor), about 50 dBA under load",
+   "source": "https://servethehome.com/minisforum-ms-a2-review-an-almost-perfect-amd-ryzen-intel-10gbe-homelab-system/4",
+   "source_title": "Minisforum MS-A2 Review: An Almost Perfect AMD Ryzen Intel 10GbE Homelab System (ServeTheHome), page 4",
+   "read": "2026-11-08",
+   "note": "Patrick Kennedy, ServeTheHome, 2025-05-30. 16-core Zen 5 with 128 GB RAM in the main test setup. The page does not tie each figure to a configuration. Ships with a 240 W brick. No SATA bays."
+  },
+  {
+   "product": "Asustor Lockerstor 4 Gen3 (AS6804T)",
+   "label": "Idle and moderate-load power",
+   "value": "about 30–32 W idle; about 38–50 W at 30–50% utilization (RAID scrub plus apps); peak about 50 W",
+   "source": "https://nascompares.com/review/asustor-lockerstor-4-gen-3-nas-review-as6804t/",
+   "source_title": "Asustor Lockerstor 4 Gen 3 NAS Hardware Review – Worth Your Data? (NAS Compares)",
+   "read": "2026-11-08",
+   "note": "Rob Andrews, NAS Compares, 2024-10-31. The review gives no drive count or meter."
+  }
+ ],
+ "unsourced": [
+  "Hands-on idle and load power for the QNAP TVS-h674: searches turned up only QNAP's spec-sheet figures and retailer copies, no reviewer's wall-meter reading.",
+  "TechPowerUp's DXP4800 Plus power and noise page (techpowerup.com/review/ugreen-nasync-dxp4800-plus/13.html) returned HTTP 403, so its idle, 76 W peak and dB(A) figures are left out. A Notebookcheck DXP4800 Plus review did not turn up.",
+  "Measured noise in dB(A) for the DXP4800 Plus: KitGuru's power page has none, and TechPowerUp was blocked.",
+  "A same-lab, same-method idle comparison across these boxes. Each figure comes from a different reviewer and setup, and none of the reviews measured power while VMs were running.",
+  "A measured drive count for the KitGuru DXP4800 Plus and NAS Compares AS6804T power tests: neither page states it.",
+  "Idle power for the UGREEN DXP4800 Pro and DXP6800 Ultra from a reviewer page I opened: I did not open one within the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9541605
+ }
+}

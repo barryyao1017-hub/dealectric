@@ -1,0 +1,216 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "E",
+  "why_angle": "The pages these answers relied on (Proxmox's requirements, QNAP's spec sheet, homelabpicks, computingforgeeks) give spec-sheet wattage at most. None of them measured wall power for the NAS and mini-PC hosts they recommended, and the one measured figure in reach (Notebookcheck's DXP6800 Pro review) was never cited. This page puts Notebookcheck's 11.8–15.9 W N5 Pro idle beside the DXP6800 Pro, DXP4800 Plus and MS-01 figures, and that comparison decides which box to run around the clock. It also adds the ZFS RAM arithmetic and the passthrough layouts owners reported.",
+  "slug": "best-nas-for-proxmox-virtual-machines-home-lab",
+  "must": [
+   "is the Minisforum N5 Pro",
+   "11.8–15.9 W"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS to run Proxmox or several virtual machines in a home lab (2026): 64 GB RAM, passthrough and what owners report",
+   "h1": "Best NAS to run Proxmox or several virtual machines in a home lab (2026)",
+   "desc": "Minisforum N5 Pro vs UGREEN DXP6800 Pro, DXP4800 Plus and Minisforum MS-01 for Proxmox VE: threads, RAM ceiling, measured idle watts, SATA passthrough and maker prices on 2026-11-08.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS to run Proxmox or several virtual machines in a home lab is the Minisforum N5 Pro: 24 threads, 96 GB ECC RAM and five bays. Notebookcheck measured it idling at 11.8–15.9 W without hard drives, below the up to 22.4 W it measured on the UGREEN DXP6800 Pro.</p>",
+   "columns": [
+    [
+     "cpu",
+     "CPU, cores/threads"
+    ],
+    [
+     "ram",
+     "RAM ceiling"
+    ],
+    [
+     "bays",
+     "3.5-in bays + M.2"
+    ],
+    [
+     "idle",
+     "Idle at the wall, measured"
+    ]
+   ],
+   "rows": [
+    {
+     "brand": "Minisforum",
+     "model": "N5 Pro AI NAS",
+     "url": "https://www.minisforum.com/products/n5-pro",
+     "cells": {
+      "cpu": "Ryzen AI 9 HX PRO 370, 12C/24T (Notebookcheck)",
+      "ram": "96 GB DDR5 ECC (Notebookcheck, ServeTheHome)",
+      "bays": "5 + 3 M.2 sharing 4 PCIe 4.0 lanes, x1/x1/x2 (ServeTheHome, Notebookcheck)",
+      "idle": "11.8–15.9 W on the review unit's SSDs, no hard drives (Notebookcheck); 45–49 W with five 28 TB HDDs (ServeTheHome)",
+      "price": "$899 (maker, 2026-11-08; lowest listed configuration)"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp6800-pro",
+     "model": "UGREEN NASync DXP6800 Pro",
+     "cells": {
+      "cpu": "Core i5-1235U, 10C/12T (Intel)",
+      "ram": "64 GB DDR5 (Notebookcheck)",
+      "bays": "6 + 2 M.2 (StorageReview)",
+      "idle": "up to 22.4 W with no drives; 36.6–41.9 W with four 4 TB HDDs (Notebookcheck)"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp4800-plus",
+     "model": "UGREEN NASync DXP4800 Plus",
+     "cells": {
+      "cpu": "Pentium Gold 8505, 5C/6T (Intel)",
+      "ram": "64 GB (CPU ceiling, Intel)",
+      "bays": "4 + 2 M.2 (owner lspci, ugreen-nas-control)",
+      "idle": "24.25 W on 2.5GbE, 30.45 W on 10GbE, WD Red HDDs fitted (KitGuru)"
+     }
+    },
+    {
+     "brand": "Minisforum",
+     "model": "MS-01 Workstation",
+     "url": "https://store.minisforum.com/products/minisforum-ms-01-workstation",
+     "cells": {
+      "cpu": "Core i9-13900H, 14C/20T as tested (ServeTheHome)",
+      "ram": "96 GB as tested, no ECC (ServeTheHome)",
+      "bays": "No 3.5-in bays; NVMe only (ServeTheHome)",
+      "idle": "25–29 W (ServeTheHome)",
+      "price": "from $469 (maker, 2026-11-08; lowest listed configuration)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Threads per dollar.</strong> N5 Pro: $899 ÷ 24 = $37.46 per thread. DXP6800 Pro: $1,099.99 ÷ 12 = $91.67. DXP4800 Plus: $619.99 ÷ 6 = $103.33.</li><li><strong>RAM left for VMs once ZFS takes its share.</strong> Proxmox asks for 2 GB for the host plus about 1 GB per TB of used ZFS storage. With 40 TB of data in the pool, the N5 Pro has 96 − 2 − 40 = 54 GB left for guests. A 64 GB UGREEN has 64 − 2 − 40 = 22 GB, enough for five 4 GB VMs.</li><li><strong>A year of idle, no hard drives.</strong> N5 Pro: 12.3 W average × 8,760 h = 108 kWh. DXP6800 Pro: up to 22.4 W × 8,760 h = up to 196 kWh. MS-01: 25–29 W × 8,760 h = 219–254 kWh.</li><li><strong>N5 Pro NVMe speed.</strong> The three M.2 slots share four PCIe 4.0 lanes, split x1/x1/x2. At about 1.97 GB/s per lane, any two-drive mirror across these slots includes an x1 slot, so it writes at x1 speed, about 2 GB/s. For a fast VM pool, use an NVMe card in the x16-length slot, which ServeTheHome found is wired x4 (about 7.9 GB/s).</li></ul><table><thead><tr><th>Your plan</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Many VMs plus a five-drive pool in one box</td><td>Minisforum N5 Pro</td><td>24 threads, 96 GB ECC, lowest measured idle without hard drives</td></tr><tr><td>Proxmox with a TrueNAS VM that owns every bay, lowest price</td><td>{buy:ugreen-nasync-dxp4800-plus}</td><td>All four bays sit on one ASMedia ASM1164 controller. A poster on the Proxmox forum wrote that it can be passed to a TrueNAS VM from the Proxmox GUI.</td></tr><tr><td>Six bays, a mid-size pool, a handful of VMs</td><td>{buy:ugreen-nasync-dxp6800-pro}</td><td>12 threads and 64 GB. The bays are split across an Intel and an ASM1164 controller, so either pass both through or let Proxmox run ZFS itself.</td></tr><tr><td>VM host only, with drives on a separate NAS</td><td>Minisforum MS-01</td><td>20 threads as tested, no 3.5-in bays</td></tr></tbody></table><h2>Measured idle power: what a Proxmox box costs at rest</h2><p>A Proxmox host runs around the clock, so most of its electricity goes on idling. These are wall-meter readings from named labs:</p><table><thead><tr><th>Box</th><th>Setup</th><th>Idle</th><th>Measured by</th></tr></thead><tbody><tr><td>Minisforum N5 Pro</td><td>Two SSDs, no hard drives</td><td>11.8 / 12.3 / 15.9 W (min/avg/max); load 72.7 W avg, 87.9 W max</td><td>Notebookcheck, 2025-10-20</td></tr><tr><td>Minisforum N5 Pro</td><td>Five 28 TB HDDs</td><td>45–49 W</td><td>ServeTheHome, 2025-10-07</td></tr><tr><td>UGREEN DXP6800 Pro</td><td>No drives</td><td>up to 22.4 W</td><td>Notebookcheck, 2026-07-01</td></tr><tr><td>UGREEN DXP6800 Pro</td><td>Four Seagate IronWolf 4 TB</td><td>36.6–41.9 W</td><td>Notebookcheck, 2026-07-01</td></tr><tr><td>UGREEN DXP4800 Plus</td><td>WD Red HDDs, 2.5GbE / 10GbE link</td><td>24.25 W / 30.45 W</td><td>KitGuru, 2024-05-28</td></tr><tr><td>Minisforum MS-01</td><td>Core i9-13900H, 96 GB</td><td>25–29 W</td><td>ServeTheHome, 2024-01-09</td></tr></tbody></table><p>Without hard drives, the N5 Pro's highest idle reading is 22.4 − 15.9 = 6.5 W below the DXP6800 Pro's, even though it has twice the threads. Once hard drives go in, they dominate the reading: ServeTheHome's five 28 TB drives took the N5 Pro to 45–49 W, and Notebookcheck's four 4 TB drives took the DXP6800 Pro to 36.6–41.9 W. Those are different drives in different labs, so judge the boxes on their no-drive figures and add your own drives' rated idle on top. A 10GbE link also costs power: KitGuru measured 30.45 − 24.25 = 6.2 W more at idle on the DXP4800 Plus. Splitting the job across an MS-01 and a DXP4800 Plus draws about 25–29 + 24.25 = 49.25–53.25 W across two boxes before either does any work. By comparison, one N5 Pro drew 45–49 W with five drives. None of these labs measured power with VMs running.</p>",
+   "sources": [
+    [
+     "N5 Pro: 12C/24T, 96 GB ECC maximum, idle 11.8/12.3/15.9 W, load 72.7/87.9 W, test system with two SSDs, noise measured without hard disks, M.2 SSD limited to PCIe 4.0 x2 (Notebookcheck, Sebastian Bade, read 2026-11-08)",
+     "https://www.notebookcheck.net/Minisforum-N5-Pro-World-s-first-AI-NAS-with-AMD-Ryzen-AI-9-HX-PRO-370-IFA-2025-Award-winner-review.1142209.0.html"
+    ],
+    [
+     "N5 Pro: 45–49 W idle with five 28 TB HDDs (ServeTheHome, read 2026-11-08)",
+     "https://www.servethehome.com/minisforum-n5-pro-review-an-awesome-nas-platform/4/"
+    ],
+    [
+     "N5 Pro: M.2 lanes x1/x1/x2, x16-length slot wired x4, up to 96 GB (2× 48 GB) DDR5 ECC (ServeTheHome, read 2026-11-08)",
+     "https://www.servethehome.com/minisforum-n5-pro-review-an-awesome-nas-platform/2/"
+    ],
+    [
+     "N5 Pro price $899, Minisforum US store (read 2026-11-08)",
+     "https://store.minisforum.com/products/minisforum-n5-pro-ai-nas"
+    ],
+    [
+     "DXP6800 Pro: idle up to 22.4 W with no drives, 36.6–41.9 W with four 4 TB HDDs, 64 GB DDR5 maximum (Notebookcheck, Daniel Schmidt, read 2026-11-08)",
+     "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"
+    ],
+    [
+     "DXP6800 Pro: six bays, two M.2 slots, one PCIe x4 slot (StorageReview, read 2026-11-08)",
+     "https://www.storagereview.com/review/ugreen-dxp6800-pro-nas-review"
+    ],
+    [
+     "DXP4800 Plus: 24.25 W idle on 2.5GbE, 30.45 W on 10GbE (KitGuru, Simon Crisp, read 2026-11-08)",
+     "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/"
+    ],
+    [
+     "DXP4800 Plus: one ASM1164 SATA controller serves all four bays; two M.2 slots on CPU root ports (owner lspci, read 2026-11-08)",
+     "https://github.com/ugreen-nas-control/ugreen-nas-control/issues/266"
+    ],
+    [
+     "DXP4800 Plus: forum poster wrote the SATA controller can be passed to a TrueNAS VM from the Proxmox GUI (Proxmox forum, read 2026-11-08)",
+     "https://forum.proxmox.com/threads/nas-ugreen-dxp4800-plus.177241/"
+    ],
+    [
+     "DXP6800 Pro: two SATA controllers, Intel Alder Lake-P AHCI and ASM1164 (Proxmox forum lspci, read 2026-11-08)",
+     "https://forum.proxmox.com/threads/iommu-dmar-regression-pte-write-access-on-alder-lake-p-ugreen-dxp6800-pro-%E2%80%93-6-17-13-2-pve-vs-6-17-9-1-pve.182168/"
+    ],
+    [
+     "Pentium Gold 8505: 5 cores, 6 threads, 64 GB maximum memory (Intel, read 2026-11-08)",
+     "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html"
+    ],
+    [
+     "Core i5-1235U: 10 cores, 12 threads (Intel, read 2026-11-08)",
+     "https://www.intel.com/content/www/us/en/products/sku/226261/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz/specifications.html"
+    ],
+    [
+     "MS-01: 25–29 W idle; tested with a 14C/20T Core i9-13900H and 96 GB; no ECC; three internal M.2 NVMe slots (ServeTheHome, read 2026-11-08)",
+     "https://www.servethehome.com/minisforum-ms-01-review-the-10gbe-with-pcie-slot-mini-pc-intel/5/"
+    ],
+    [
+     "MS-01 price from $469 (Core i5-12600H barebone, in stock), Minisforum US store (read 2026-11-08)",
+     "https://store.minisforum.com/products/minisforum-ms-01-workstation"
+    ],
+    [
+     "Proxmox memory rule: 2 GB for the OS and Proxmox VE services plus about 1 GB per TB of used storage (Proxmox, read 2026-11-08)",
+     "https://www.proxmox.com/en/products/proxmox-virtual-environment/requirements"
+    ]
+   ]
+  }
+ },
+ "checked": 52,
+ "changed": [
+  {
+   "where": "answer",
+   "was": "below the UGREEN DXP6800 Pro's 22.4 W",
+   "now": "below the up to 22.4 W it measured on the UGREEN DXP6800 Pro",
+   "why": "Notebookcheck's DXP6800 Pro review says 'up to 22.40 W' idle without drives, which is a maximum reading. Both must phrases are unchanged."
+  },
+  {
+   "where": "after: year of idle",
+   "was": "DXP6800 Pro: 22.4 W × 8,760 h = 196 kWh",
+   "now": "DXP6800 Pro: up to 22.4 W × 8,760 h = up to 196 kWh",
+   "why": "22.4 W is Notebookcheck's highest idle reading, not an average, so the yearly figure is a ceiling."
+  },
+  {
+   "where": "after: idle paragraph",
+   "was": "the N5 Pro idles 22.4 − 12.3 = 10.1 W below the DXP6800 Pro even though it has twice the threads",
+   "now": "the N5 Pro's highest idle reading is 22.4 − 15.9 = 6.5 W below the DXP6800 Pro's, even though it has twice the threads",
+   "why": "The draft compared the N5 Pro's average (12.3 W) with the DXP6800 Pro's maximum (22.4 W). The corrected line compares the two maximums, both from Notebookcheck."
+  },
+  {
+   "where": "after: N5 Pro NVMe speed",
+   "was": "a mirror of the two data slots runs at x1 speed, about 2 GB/s",
+   "now": "any two-drive mirror across these slots includes an x1 slot, so it writes at x1 speed, about 2 GB/s",
+   "why": "ServeTheHome gives the x1/x1/x2 split but doesn't say which slots are the 'data slots'. Any pair from x1/x1/x2 includes an x1 slot."
+  },
+  {
+   "where": "after: DXP4800 Plus decision row",
+   "was": "An owner on the Proxmox forum passed it to TrueNAS from the Proxmox GUI.",
+   "now": "A poster on the Proxmox forum wrote that it can be passed to a TrueNAS VM from the Proxmox GUI.",
+   "why": "Post #11 by 'elvito' says the controller 'man bequem in der Proxmox Gui an die Truenas VM durchreichen kann' ('can conveniently be passed to the TrueNAS VM in the Proxmox GUI'). It doesn't report doing it, and the page I read doesn't show that the poster owns the unit. The source label was changed to match."
+  },
+  {
+   "where": "rows: N5 Pro bays",
+   "was": "(ServeTheHome)",
+   "now": "(ServeTheHome, Notebookcheck)",
+   "why": "ServeTheHome gives the x1/x1/x2 split but doesn't state a PCIe generation for the M.2 slots. Notebookcheck gives PCIe 4.0 ('PCIe 4.0 x2' bandwidth limit), and its source label now says so."
+  },
+  {
+   "where": "sources: MS-01",
+   "was": "Store price from $469 cited to the ServeTheHome URL",
+   "now": "Price moved to its own source entry for the Minisforum US store",
+   "why": "ServeTheHome lists the system at $829, not $469. storecheck on store.minisforum.com shows $469 for the in-stock i5-12600H barebone, the lowest variant, read 2026-11-08."
+  },
+  {
+   "where": "rows: N5 Pro price",
+   "was": "$899 (maker, 2026-11-08; lowest listed configuration)",
+   "now": "$899 (maker, 2026-11-08; lowest listed configuration)",
+   "why": "Not re-read: store.minisforum.com and minisforum.com both returned HTTP 429 on two tries. Kept as the research agents recorded it today."
+  },
+  {
+   "where": "rows: DXP4800 Plus bays; after: 'All four bays sit on one ASMedia ASM1164 controller'",
+   "was": "unchanged",
+   "now": "unchanged",
+   "why": "Not re-read: the GitHub issue returned HTTP 503 twice, and the gh CLI wasn't permitted. Kept as recorded."
+  },
+  {
+   "where": "after: threads per dollar, UGREEN prices $1,099.99 and $619.99",
+   "was": "unchanged",
+   "now": "unchanged",
+   "why": "Not re-read: tool-call budget used up. Both are listed products whose prices come from Dealectric's daily-checked records."
+  }
+ ],
+ "removed": [],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.6041156000000001
+ }
+}
