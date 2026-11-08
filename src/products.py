@@ -4446,6 +4446,22 @@ PRODUCTS = [
  "fit": "Shoppers who charge two USB-C devices at once and don't want to carry cables.",
  "caveats": ['Baseus says charging may slow when several devices are connected, because the output is shared.', "Some retailer listings called 'EnerFill FC11 20000mAh' are 22.5 W units. Match SKU E00311 / E0031100.", 'No independent capacity or sustained-output bench test of this model has been published yet.']},
 
+{"slug": 'easysmx-s05-pro',
+ "brand": 'EasySMX',
+ "program": 'awin:easysmx',
+ "category": 'game-controller',
+ "name": 'EasySMX S05 Pro Switch Wireless Gaming Controller with Silicone-Damped Buttons, TMR Sticks and Charging Dock',
+ "model": 'S05 Pro',
+ "url": 'https://www.easysmx.com/products/easysmx-s05-pro-switch-gaming-controller-for-switch-2-wake-up-tmr-sticks-whisphertech-button-immersive-rumble',
+ "price": 54.99,
+ "verified": '2026-11-08',
+ "specs": [('Quiet design', "'Silicone-damped buttons reduce clicking noise' (EasySMX)"), ('D-pad', "'Smooth disc-pivot D-pad' (EasySMX)"), ('Platforms', 'Nintendo Switch and Switch 2, one-button wake-up'), ('Connections', '2.4 GHz receiver, Bluetooth, USB cable (receiver in box)'), ('Battery', '1,000 mAh, up to 20 h (maker claim)'), ('In the box', 'Controller, charging dock, 2.4 GHz receiver, USB cable'), ('Extras', 'NFC amiibo, six-axis motion, four rumble motors, TMR sticks')],
+ "warranty": "18 months from receipt on everything sold in EasySMX's store (EasySMX Warranty Policy)",
+ "returns": '30 days from delivery for a full refund, for any reason, if the item is undamaged and in its original packaging (EasySMX Refund Policy)',
+ "summary": "EasySMX's Switch-focused pad with silicone-damped buttons, Switch 2 wake-up and a charging dock in the box.",
+ "fit": 'Switch or Switch 2 players who want quiet buttons and a dock in one purchase.',
+ "caveats": ['EasySMX does not say which buttons are damped.', "We have no named reviewer's ear test for it yet.", 'Built around Switch and Switch 2; EasySMX names no PC support on the listing.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
