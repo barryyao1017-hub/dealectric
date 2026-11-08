@@ -155,14 +155,20 @@ def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
             continue
         cmd = [E.claude_cli(), "-p", prompt, "--model", model, "--effort", effort, "--output-format", "json"]
         cmd += (["--tools", "WebSearch,WebFetch,Bash", "--allowedTools", *allowed] if tools else ["--tools", ""])
-        with SLOTS:
-            p = subprocess.run(cmd + list(E.CLI_ISOLATION), capture_output=True, text=True, timeout=timeout, cwd=E.cli_cwd())
-        try:
-            d = json.loads(p.stdout)
-        except ValueError:
-            d = {"is_error": True, "result": (p.stderr or p.stdout)[-600:]}
-        msg = str(d.get("result") or "")
-        if d.get("is_error") and re.search(r"usage limit|rate limit|limit reached|out of (extra )?usage|quota|overloaded|429", msg, re.I):
+        for attempt in range(4):   # transient 429 / overloaded: wait and retry the same model
+            with SLOTS:
+                p = subprocess.run(cmd + list(E.CLI_ISOLATION), capture_output=True, text=True, timeout=timeout, cwd=E.cli_cwd())
+            try:
+                d = json.loads(p.stdout)
+            except ValueError:
+                d = {"is_error": True, "result": (p.stderr or p.stdout)[-600:]}
+            msg = str(d.get("result") or "")
+            if d.get("is_error") and re.search(r"overloaded|\b429\b|rate limit|try again", msg, re.I) and not re.search(r"usage limit|limit reached|out of (extra )?usage", msg, re.I):
+                import time
+                time.sleep(90 * (attempt + 1))
+                continue
+            break
+        if d.get("is_error") and re.search(r"usage limit|limit reached|out of (extra )?usage|weekly limit|session limit", msg, re.I):
             if model.startswith("claude-fable"):
                 _fable_out.set()
                 print(f"[abpage] Fable out of usage ({msg[:120]}); Opus 5.5 high from now on", flush=True)
