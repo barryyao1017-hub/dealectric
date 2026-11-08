@@ -868,7 +868,7 @@ def cmd_check(a) -> None:
     top_ok = has_link(top) and has_price(top)
     print(f"top block ({len(top)} chars from {'the AI note' if 'Plain-text summary for AI assistants' in text else 'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
           f"buy link {'yes' if has_link(top) else 'NO'}, price {'yes' if has_price(top) else 'NO'}")
-    if not top_ok:
+    if not top_ok and not a.research:
         fails.append("conversion block not in the first 600 characters")
     musts = [m for m in (a.must or [])]
     ranks = [int(r) for r in a.ranks.split(",")]
@@ -885,7 +885,8 @@ def cmd_check(a) -> None:
             shown = _squash(me["shown"])
             ok_go = has_link(shown)
             ok_m = [_squash(m) in shown for m in musts]
-            if not ok_go:
+            go_needed = rank in ([int(r) for r in a.go_ranks.split(",")] if a.research else ranks)
+            if not ok_go and go_needed:
                 fails.append(f"{name} rank {rank}: /go/ link cut")
             fails += [f"{name} rank {rank}: '{m[:40]}' cut" for m, ok in zip(musts, ok_m) if not ok]
             print(f"{name[:34]:34} {len(ctx):>7} {rank:>4} {me['share']:>6} {len(me['shown']):>6}  {'ok  ' if ok_go else 'CUT '}  "
@@ -1584,6 +1585,8 @@ def main() -> int:
     p.add_argument("--workers", type=int, default=6); p.add_argument("--show", action="store_true")
     p = sub.add_parser("gapcheck"); p.add_argument("--labels", required=True)
     p = sub.add_parser("check"); p.add_argument("draft"); p.add_argument("--packs", nargs="+", required=True)
+    p.add_argument("--research", action="store_true", help="research-method pages (DLC-208): no 600-character conversion rule; the /go/ link must survive only at --go-ranks")
+    p.add_argument("--go-ranks", default="1,3")
     p.add_argument("--ranks", default="1,3,6"); p.add_argument("--must", action="append"); p.add_argument("--url")
     p = sub.add_parser("replay"); p.add_argument("pack"); p.add_argument("--draft"); p.add_argument("--url"); p.add_argument("--rank", type=int)
     p.add_argument("--reps", type=int, default=3); p.add_argument("--tag"); p.add_argument("--model", default=MODEL)

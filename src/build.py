@@ -1330,6 +1330,22 @@ def compare_row_v2(c, r):
     return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
 
 
+def pick_line(c):
+    """' · Our pick: <model>, $X with code C: <link>' for the first row when it is a product we list. One line, in the
+    page's first 500-character chunk, which the length model always keeps (fastloop.cut); the rest of the links sit in
+    the table."""
+    r = c["rows"][0] if c["rows"] else {}
+    if not r.get("slug"):
+        return ""
+    p = BY_SLUG[r["slug"]]
+    name = html.escape(r.get("model") or short_name(p))
+    if is_amazon(p):
+        return f' · Pick: {name}, buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+    cd, sv, after, date = best_offer(p)
+    price = f"{money(after)} with code {html.escape(cd['code'])}" if cd else money(p["price"])
+    return f' · Pick: {name}, {price}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+
+
 def compare_page_v2(c):
     """Research-method page (DLC-208 group A and new gap pages from 2026-11-08): answer line, method line, the full
     candidate table with buy links inside it, then what the differences mean, the angle section and sources.
@@ -1342,9 +1358,9 @@ def compare_page_v2(c):
     body = f"""
 <!-- method {METHOD_V2}; angle {c.get('angle', '')} -->
 <h1>{c['h1']}</h1>
-<p class="small">Updated {c.get('updated') or c['published']}</p>
-{f'<p class="searched">Searched as: {tags}</p>' if tags else ''}
+<p class="small">Updated {c.get('updated') or c['published']}{pick_line(c)}</p>
 {compare_fill(c['answer'])}
+{f'<p class="searched">Searched as: {tags}</p>' if tags else ''}
 {method_line(c)}<div class="scroll"><table>
 <tr><th>Model</th>{heads}<th>Price</th><th>Buy</th></tr>
 {rows}

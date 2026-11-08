@@ -265,7 +265,9 @@ line, the table's Price and Buy columns, sources and the disclosure):
 - answer: ONE paragraph, at most 300 characters of text, as
   <p class="lead"><strong>Short answer.</strong> ...</p>
   It answers the question's mechanism in the question's own words, names the pick and carries the angle's deciding
-  figure. No link and no {buy:} token in it.
+  figure. Use as many of ChatGPT's own search words (listed under "ChatGPT searched") as read naturally: the length
+  model ChatGPT applies keeps the passages that share the most words with its query. No link and no {buy:} token in
+  it (the renderer puts the first row's buy link under the H1, so put the pick first in rows when it is ours).
 - columns: 3-6 [key, label] pairs carrying the angle's finding and the deciding specs (not price: the renderer adds it).
 - rows: 4-8 candidates, the pick first. Our products: {"slug", "model", "cells"}. Others: {"brand", "model", "url"
   (maker page), "cells"} and cells.price = "$X (maker, YYYY-MM-DD)". Every cell filled from a source; drop a column
@@ -443,7 +445,9 @@ def apply(slug: str, local: bool) -> dict:
     if not draft:
         return {"slug": slug, "status": "no draft"}
     new_page = bool(draft.get("new_page"))
-    if sh("git", "status", "--porcelain", "src", "docs").stdout.strip():
+    dirty = [l for l in sh("git", "status", "--porcelain", "src", "docs").stdout.splitlines()
+             if not l.endswith(("docs/offers.json", "docs/price-history.json"))]   # rewritten with today's date on every build
+    if dirty:
         return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
     errs = validate(draft, new_page)
     if errs:
@@ -473,7 +477,7 @@ def apply(slug: str, local: bool) -> dict:
     if r.returncode:
         errs.append("docsguard: " + r.stdout[-200:])
     if not errs:
-        cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack_from_harvest(slug), "--ranks", "1,3,6"]
+        cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack_from_harvest(slug), "--ranks", "1,3,6", "--research"]
         for m in draft["must"]:
             cmd += ["--must", m]
         r = sh(*cmd)
