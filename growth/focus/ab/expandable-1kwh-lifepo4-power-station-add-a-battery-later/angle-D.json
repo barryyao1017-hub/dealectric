@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the AC180's add-on pack feeds the station only through its 500 W (12–60 V) solar/DC input in Power Bank Mode. Under any load above 500 W, the AC180's own 1,152 Wh battery still drains, at the load minus 500 W.",
+ "standout": 1,
+ "standout_why": "I opened stormwatts.com (cited), batteryrank.com (cited), watthourlab.com (cited) and offgridfieldguide.com (cited). offgridfieldguide already says the AC180 has 'no dedicated battery port' and that B80/B230/B300 packs connect 'by cable through the DC input, for up to 4,224Wh'. stormwatts lists the AC180 as not expandable, and ChatGPT's third answer already says 'power-bank mode … isn't equivalent to integrated expansion'. None of them gives the 500 W ceiling on that path, the Power Bank Mode requirement, or the separate P090D cable. None says what that ceiling means at loads above 500 W. batteryrank and stormwatts only say to 'confirm the cable' for EcoFlow's extra-battery port. watthourlab and batteryrank say a pack adds Wh, not W. The core mechanism is already partly out there, so only the 500 W consequence is new.",
+ "decides": "The AC180 belongs with the 'can't truly expand' models, not alongside the DELTA 3 / 3 Plus, Jackery 1000 Plus / HomePower 1000 Plus v2, DJI Power 1000 V2 and OUPES Mega 1. Its pack is an external charger capped at 500 W, not a battery on the station's internal bus, and it needs a separate P090D cable. Our page's AC180 row ('max 4,224 Wh', B300) should say this. The B300 is also sold out at $1,399 today. The pick stays a model with a dedicated extra-battery port, such as the EcoFlow DELTA 3 / 3 Plus.",
+ "candidates": [
+  "BLUETTI AC180",
+  "EcoFlow DELTA 3",
+  "EcoFlow DELTA 3 Plus",
+  "Jackery HomePower 1000 Plus v2",
+  "DJI Power 1000 V2",
+  "OUPES Mega 1"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "How the B80/B230/B300 connect",
+   "value": "Through cables, with the battery in Power Bank Mode: 'To connect B80 batteries, you'll need the Aviation to DC7909 cable' and 'the P090D cable is required for B230/B300 batteries.' 'Please make sure the batteries are in Power Bank Mode.'",
+   "source": "https://www.bluettipower.com.au/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station (BLUETTI Australia)",
+   "read": "2026-11-08",
+   "note": "Verbatim FAQ text on BLUETTI's own Australian page. The same FAQ says 'Currently, the AC180 supports capacity expansion with B80, B230, or B300 batteries' and that the cable was 'expected to start selling in late June'. The US page could not be opened (HTTP 429), so the US wording is unverified."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar/DC input the pack feeds through",
+   "value": "500 W max, open-circuit voltage 12–60 V DC, 10 A",
+   "source": "https://www.bluettipower.com.au/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station (BLUETTI Australia)",
+   "read": "2026-11-08",
+   "note": "Spec line 'Solar Input: 500W Max., VOC 12-60VDC, 10A'. The page does not itself say 'DC input' next to the expansion FAQ. I linked the pack to this input because the FAQ cable ends in DC7909, which is the AC180's solar/DC input, and because offgridfieldguide.com says the packs connect 'through the DC input'. My arithmetic: at an 1,800 W load the internal battery drains at about 1,300 W (1,800 − 500), so the pack slows the drain but cannot carry the load."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Connection as stated by a cited rival",
+   "value": "'no dedicated battery port'; B80/B230/B300 connect 'by cable through the DC input, for up to 4,224Wh'",
+   "source": "https://offgridfieldguide.com/compare/1000wh-power-stations/",
+   "source_title": "Jackery vs EcoFlow vs Bluetti vs Anker 1000Wh (2026)",
+   "read": "2026-11-08",
+   "note": "Shows the rival already has the DC-input part of the mechanism. It gives no wattage cap and does not mention the cable or Power Bank Mode."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "US price and stock today",
+   "value": "$499 (compare-at $499), in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py product (Shopify JSON) for the AC180-only variant."
+  },
+  {
+   "product": "BLUETTI B300",
+   "label": "US price and stock today",
+   "value": "$1,399 (compare-at $1,699), sold out",
+   "source": "https://www.bluettipower.com/products/b300",
+   "source_title": "BLUETTI B300 Expansion Battery | 3,072Wh",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py product. The listing also says the B300 recharges by its own solar input 'at a 200W maximum', and car or lead-acid charging needs the D050S."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Extra-battery connection as stated by a cited rival",
+   "value": "The native DELTA 3 Series pack is 'plug-and-play into the extra-battery port'. The DELTA Pro 3 Extra Battery fits 'via an Alternator Charger XT150 Output Cable'.",
+   "source": "https://stormwatts.com/articles/expansion-battery-compatibility-power-stations/",
+   "source_title": "Expansion Battery Compatibility Chart: Which Add-Ons Fit Which Power Station | StormWatts",
+   "read": "2026-11-08",
+   "note": "A rival's wording, not EcoFlow's. It is the contrast with the AC180: a dedicated port, not a charge input. I could not read EcoFlow's own manual (see unsourced)."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI US AC180 FAQ wording. A search summary said it reads 'the AC180 doesn't support capacity expansion with B80, B230, or B300 batteries, but it can be charged by these batteries through Power Bank Mode'. bluettipower.com and bluettipower.ca returned HTTP 429 on every attempt, so I did not use this.",
+  "EcoFlow's own wording on how the DELTA 3 / 3 Plus Smart Extra Battery connects: the Extra Battery Port, whether to power off before connecting, and the charge/discharge order. us.ecoflow.com returned HTTP 429. The DELTA 3 Plus manual PDFs (EcoFlow OSS and the webstaurantstore copy) came back as image-only or unreadable text. Bash text extraction was not permitted, and manuals.plus returned 403.",
+  "EcoFlow DELTA 3 Series Smart Extra Battery price today. storecheck.py and WebFetch both got HTTP 429 from us.ecoflow.com.",
+  "The real rate at which the B300 refills the AC180 through P090D in Power Bank Mode. No BLUETTI page or named reviewer I could open gives a measured watt figure. Only the 500 W input ceiling is sourced.",
+  "thiswatt.com (cited) could not be read: self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9077594
+ }
+}
