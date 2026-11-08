@@ -1,0 +1,122 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much current each charger pulls from the 12 V socket at full load against the 10 A / 120 W limit most owner's manuals set: Anker 535 is rated 7.2 A in, Anker Nano 75W 8 A in, UGREEN 145W 17.8 A in, and the Anker 167.5W needs at least 14.0 A before losses, so the two high-power picks cannot reach rated output through a 10 A socket.",
+ "standout": 2,
+ "standout_why": "Soldermag (opened) gives no socket amperage, fuse limit, input current or price for any pick. ChatGPT's own answer says 'provided your car socket supports the load' with no number. Wired (cited) and thisUSB could not be opened (fetch blocked / TLS error), so I cannot confirm they lack it; a Wired text grep was not possible. Anker's own 535 page (opened) also shows the two-device split is 9 W + 9 W on USB-C2 + USB-A, which neither ChatGPT nor Soldermag's main text states for two devices.",
+ "decides": "For a car whose manual caps the socket at 120 W / 10 A (Mazda CX-90 wording; 2011 Toyota RAV4 'less than 10 A'), the Anker Nano 75W retractable (8 A rated input, 80% of fuse) is the highest-output pick that fits; the Anker 535 (7.2 A, 72%) also fits but drops to 9 W per port when its USB-C2 and USB-A are both used. The UGREEN 145W (17.8 A max input, 178% of a 10 A fuse, 119% of 15 A) and Anker 167.5W (167.5 W / 12 V = 14.0 A minimum before conversion loss) only make sense on a 20 A socket, which undercuts ChatGPT's 'best high power' pick for ordinary cars. On $/W the Nano 75W is $0.40/W vs Belkin 42W $0.59/W.",
+ "candidates": [
+  "Anker 535 Car Charger 67W (A2731)",
+  "Anker Nano 75W Retractable Car Charger (A2738)",
+  "Belkin BoostCharge 42W Dual Car Charger (CCB005)",
+  "Anker Nano 167.5W 3-Port Car Charger (A2737 / B27370A1)",
+  "UGREEN Nexode 145W Retractable Car Charger (EC604)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Typical 12 V socket limit (maker manual)",
+   "value": "120 W, 10 A",
+   "source": "https://mazda.ca/en/digital-owners-manual/2024/cx-90-phev/contents/67150100.html",
+   "source_title": "Mazda 2024 CX-90 PHEV Digital Owner's Manual: Accessory Sockets",
+   "read": "2026-11-08",
+   "note": "Manual text: 'Only use accessories that have a maximum power consumption of 120 W (DC12V-10A) or below.'"
+  },
+  {
+   "product": "general",
+   "label": "12 V socket limit, Toyota",
+   "value": "less than 10 A",
+   "source": "https://www.manualsdir.com/manuals/746437/toyota-2011-rav4.html?page=347",
+   "source_title": "Toyota 2011 RAV4 Owner's Manual, Power outlets (p. 347)",
+   "read": "2026-11-08",
+   "note": "'12 V: Accessories that use less than 10 A.' Third-party manual archive, Toyota text."
+  },
+  {
+   "product": "Anker 535 Car Charger 67W (A2731)",
+   "label": "Rated input current and share of a 10 A socket",
+   "value": "7.2 A at 12–24 V = 72% of a 10 A fuse",
+   "source": "https://www.anker.com/products/b2731",
+   "source_title": "Anker 535 Car Charger (67W) – anker.com",
+   "read": "2026-11-08",
+   "note": "Spec: 'Input 12V-24V⎓7.2A'. 7.2 / 10 = 0.72. Rated-input implied floor efficiency 67 W / (12 V × 7.2 A) = 78%. Page shows Sold Out, no price."
+  },
+  {
+   "product": "Anker 535 Car Charger 67W (A2731)",
+   "label": "Two-device split, USB-C2 + USB-A",
+   "value": "9 W + 9 W",
+   "source": "https://www.anker.com/products/b2731",
+   "source_title": "Anker 535 Car Charger (67W) – anker.com",
+   "read": "2026-11-08",
+   "note": "Anker: 'When using both the USB-C 2 and USB-A ports at the same time, the maximum power output for each port is 9W.' Three devices: USB-C1 45 W. Single USB-C max 20 V⎓3.35 A = 67 W."
+  },
+  {
+   "product": "Anker Nano 75W Retractable Car Charger (A2738)",
+   "label": "Rated input current and share of a 10 A socket",
+   "value": "8 A at 12 V (4 A at 24 V) = 80% of a 10 A fuse",
+   "source": "https://www.chargerlab.com/teardown-of-anker-nano-75w-car-charger-a2738/",
+   "source_title": "ChargerLab: Teardown of Anker Nano 75W Car Charger (A2738), 2026-01-08",
+   "read": "2026-11-08",
+   "note": "Label quoted 'Input: 12V8A, 24V4A'. 8 / 10 = 0.80. Cable 45 W max (20 V⎓2.25 A), USB-C port 30 W max, total 75 W; ports independently powered per ChargerLab."
+  },
+  {
+   "product": "Anker Nano 75W Retractable Car Charger (A2738)",
+   "label": "Price and cost per rated watt",
+   "value": "$29.99 = $0.40/W",
+   "source": "https://www.anker.com/products/a2738",
+   "source_title": "Anker Nano 75W USB-C Car Charger with Retractable Cable – anker.com",
+   "read": "2026-11-08",
+   "note": "29.99 / 75 = 0.40. Retractable cable 29.5 in. Bulk $20.32 each for 10+."
+  },
+  {
+   "product": "Belkin BoostCharge 42W Dual Car Charger (CCB005)",
+   "label": "Price and cost per rated watt",
+   "value": "$24.99 = $0.59/W",
+   "source": "https://www.belkin.com/dual-car-charger-with-pps-42w/P-CCB005.html",
+   "source_title": "Belkin BoostCharge Dual Car Charger with PPS 42W – belkin.com",
+   "read": "2026-11-08",
+   "note": "24.99 / 42 = 0.595. Ports: 30 W USB-C PD + 12 W USB-A = 42 W total. Belkin page lists no input current."
+  },
+  {
+   "product": "UGREEN Nexode 145W Retractable Car Charger (EC604)",
+   "label": "Rated max input current vs socket fuse",
+   "value": "17.8 A = 178% of a 10 A fuse, 119% of 15 A, 89% of 20 A",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-nexode-car-charger-145w-with-retractable-usb%E2%80%91c-cable-ec604/",
+   "source_title": "ChargerLab: Teardown of UGREEN Nexode Car Charger 145W with Retractable USB-C Cable (EC604), 2025-08-26",
+   "read": "2026-11-08",
+   "note": "Label quoted 'Input: 12–24V⎓17.8A Max'. 17.8/10 = 1.78; 17.8/15 = 1.19; 17.8/20 = 0.89. Per-port max: USB-C2 100 W (20 V⎓5 A), cable 60 W (20 V⎓3 A), USB-A 30 W; total 145 W. On a 120 W socket, best case output is under 120 W regardless of the 145 W rating."
+  },
+  {
+   "product": "Anker Nano 167.5W 3-Port Car Charger (A2737 / B27370A1)",
+   "label": "Minimum input current at full rated output (before losses)",
+   "value": "14.0 A at 12 V = 140% of a 10 A fuse",
+   "source": "https://www.centralcomputer.com/anker-b27370a1-nano-car-charger-167-5w-3-ports.html",
+   "source_title": "Central Computers: Anker B27370A1 Nano Car Charger (167.5W 3 Ports)",
+   "read": "2026-11-08",
+   "note": "Retailer spec 'Maximum Output Power 167.50 W', 'Input Voltage 12 V DC'. 167.5 W / 12 V = 13.96 A at 100% efficiency; real draw is higher. Exceeds a 10 A socket; over a 15 A socket once any conversion loss is counted."
+  },
+  {
+   "product": "Anker Nano 167.5W 3-Port Car Charger (A2737 / B27370A1)",
+   "label": "US retailer price and cost per rated watt",
+   "value": "$29.99 = $0.18/W (Special Order, out of stock)",
+   "source": "https://www.centralcomputer.com/anker-b27370a1-nano-car-charger-167-5w-3-ports.html",
+   "source_title": "Central Computers: Anker B27370A1 Nano Car Charger (167.5W 3 Ports)",
+   "read": "2026-11-08",
+   "note": "29.99 / 167.5 = 0.179. Anker US store (us.anker.com/products/a2737) returned HTTP 429 four times, so Anker's own price ($53.99 per ChatGPT) was not verified."
+  }
+ ],
+ "unsourced": [
+  "Anker 167.5W (A2737) rated input current: Anker's quick-start PDF (lp.ankerjapan.com B2737QSG.pdf and the Amazon-hosted A2737 PDF) reportedly states 12.0 V 18.2 A / 24.0 V 9.2 A, but both PDFs downloaded as image-only/compressed streams and text extraction was blocked, so the 18.2 A figure is search-snippet only and omitted from findings.",
+  "Anker 167.5W per-port split with 2 or 3 devices and Anker US price: us.anker.com and ca.anker.com returned HTTP 429 on every attempt.",
+  "UGREEN 145W US price and official multi-port distribution table: us.ugreen.com returned HTTP 429 on three attempts (direct fetch and storecheck.py).",
+  "Anker 535 (A2731) current US price: anker.com shows Sold Out with no price; ChatGPT's $29.99 unverified.",
+  "Belkin 42W rated input current: Belkin product page lists none; only a Best Buy Q&A snippet (12–24 V) found, not opened.",
+  "Honda 180 W / 15 A accessory socket rating: seen only in search snippets of manualslib/manualowl Accord and CR-V manuals; Honda techinfo and honda.ca pages opened had no wattage.",
+  "Measured conversion efficiency for any candidate: neither ChargerLab teardown reports it, so socket-side draw at partial load could not be computed.",
+  "Wired's cited article (best-usb-car-chargers) and thisUSB's two guides could not be opened (fetch blocked / TLS error), so their contents were not compared directly."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 40,
+  "cost_usd_list": 1.67578745
+ }
+}

@@ -1,0 +1,141 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Michael Barton (Techtest.org) measured the Anker Nano 167.5W (A2737) holding its 100 W port for only 6:38 minutes before cutting out, versus about 5 minutes for the UGREEN CD293 130W, about 15 minutes for the Baseus BSCC-ZX-CCL 152.5W, and roughly one hour at 140 W for the UGREEN EC706 150W, all on a 12 V socket.",
+ "standout": 3,
+ "standout_why": "SolderMag (opened 2026-11-08) says outright it has 'not completed bench testing' and gives spec-sheet watts only. Hitech Century's UGREEN 145W review (opened) reports no meter, no temperature and no duration. ChargerLAB's teardowns (opened) give measured PDOs and dimensions but no load or thermal duration test. WIRED (cited by ChatGPT) and thisUSB could not be opened from this environment (domain blocked / TLS error), so I compared against what ChatGPT quoted from WIRED: it named the 167.5W as top pick with no sustained-load figure. None of the readable pages states how long any car charger actually sustains 100 W before thermal cutback, which is the figure that separates 'laptop-capable' marketing from real laptop charging.",
+ "decides": "It overturns the 'best high power' pick. The Anker 167.5W that ChatGPT and WIRED put at the top delivers its headline 100 W for under 7 minutes on a 12 V socket, then cycles off and on; the UGREEN CD293 130W is worse at about 5 minutes then ~45 W. For anyone charging a laptop on a drive, the UGREEN EC706 150W (held 140 W for about an hour before dropping to 65 W, 86.5–96.3 % efficiency) or the Baseus BSCC-ZX-CCL (about 15 minutes at 100 W) are the measured better choices; for phone-only use the hold time is irrelevant and the Anker Nano 75W retractable's measured PDOs (45 W cable, 30 W port, PPS capped at 11 V/3 A = 33 W) confirm it is fine.",
+ "candidates": [
+  "Anker Nano Car Charger 167.5W (A2737)",
+  "UGREEN CD293 130W Car Charger",
+  "Baseus BSCC-ZX-CCL 152.5W Car Charger",
+  "UGREEN EC706 150W Car Charger",
+  "Anker Nano 75W Retractable Car Charger (A2738)",
+  "UGREEN Nexode 145W Retractable Car Charger (EC604)",
+  "Anker 535 Car Charger 67W"
+ ],
+ "findings": [
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Time holding full 100 W port output before thermal cutoff (Michael Barton, Techtest.org)",
+   "value": "6 min 38 s (then cuts out and cycles, not a gradual throttle)",
+   "source": "https://techtest.org/anker-vs-ugreen-und-baseus-der-anker-a2737-nano-car-charger-1675-w-im-test/",
+   "source_title": "Anker vs. UGREEN und Baseus: der Anker A2737 Nano Car Charger 167,5 W im Test",
+   "read": "2026-11-08",
+   "note": "Published 2025-08-26. Load was a Framework 16 laptop drawing around 90 W ('6:38 Minuten mit voller Leistung (um die 90 W)'); conclusion rounds to 'nur um die 6-7 Minuten 100 W'. Reviewer says the charger switches off briefly to cool and then resumes rather than throttling."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Measured efficiency range (Michael Barton, Techtest.org)",
+   "value": "85.8 % to 93.3 %",
+   "source": "https://techtest.org/anker-vs-ugreen-und-baseus-der-anker-a2737-nano-car-charger-1675-w-im-test/",
+   "source_title": "Anker vs. UGREEN und Baseus: der Anker A2737 Nano Car Charger 167,5 W im Test",
+   "read": "2026-11-08",
+   "note": "'Diese schwankte bei mir im Test zwischen 85,8 % und 93,3 %.' Measured body 75 mm long, 36 mm diameter. Article lists USB-C2 PDOs as 5V/3A, 9V/3A only (27 W PD) with PPS 5–11 V on both C ports; Anker's US page markets C2 as 45 W."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Anker US store price",
+   "value": "$53.99 (page shows 'Save $16.20')",
+   "source": "https://www.anker.com/products/a2737",
+   "source_title": "Anker Nano Car Charger (167.5W, 3 Ports)",
+   "read": "2026-11-08",
+   "note": "Page lists USB-C1 100 W, USB-C2 45 W; USB-A wattage and multi-port split not stated on the page."
+  },
+  {
+   "product": "UGREEN CD293 130W Car Charger",
+   "label": "Time holding 100 W before throttling (Michael Barton, Techtest.org)",
+   "value": "5 min, then drops to about 45 W",
+   "source": "https://techtest.org/das-ugreen-cd293-130-w-kfz-ladegeraet-im-test/",
+   "source_title": "Das UGREEN CD293 130 W KFZ-Ladegerät im Test",
+   "read": "2026-11-08",
+   "note": "Published 2025-08-17. 'Dieses konnte bei mir eine Leistung von 100 W ganze 5 Minuten aushalten. Nach diesen 5 Minuten drosselt sich das Ladegerät auf ±45 W herunter.' Reviewer calls it 'extreme Temperaturdrosselung' and recommends it only conditionally."
+  },
+  {
+   "product": "UGREEN CD293 130W Car Charger",
+   "label": "Measured efficiency range (Michael Barton, Techtest.org)",
+   "value": "89.9 % to 98.5 %",
+   "source": "https://techtest.org/das-ugreen-cd293-130-w-kfz-ladegeraet-im-test/",
+   "source_title": "Das UGREEN CD293 130 W KFZ-Ladegerät im Test",
+   "read": "2026-11-08",
+   "note": "Highest at low load, falling as load rises. Voltage stability rated 'extrem gut' with no numeric value."
+  },
+  {
+   "product": "Baseus BSCC-ZX-CCL 152.5W Car Charger",
+   "label": "Time holding 100 W before throttling (Michael Barton, Techtest.org)",
+   "value": "about 15 min (14 min on the Framework 16), then 40–45 W",
+   "source": "https://techtest.org/baseus-bscc-zx-ccl-kfz-ladegeraet-mit-1525-w-im-test-eine-heisse-angelegenheit/",
+   "source_title": "Baseus BSCC-ZX-CCL KFZ Ladegerät mit 152,5 W im Test, eine heiße Angelegenheit",
+   "read": "2026-11-08",
+   "note": "Published 2025-08-03. 100 W constant load from an electronic load and a Framework 16, on a 12 V system. Efficiency 'recht konstant' at 91–92 %. Reviewer confirms it really delivers 100 W / 152.5 W total (100 + 30 + 22.5). Temperature shown only as a photo, no °C."
+  },
+  {
+   "product": "UGREEN EC706 150W Car Charger",
+   "label": "Time holding 140 W on the USB-C2 port before throttling (Michael Barton, Techtest.org)",
+   "value": "about 1 hour, then drops to 65 W",
+   "source": "https://techtest.org/ugreen-ec706-150w-kfz-ladegeraet-test-kfz-ladegeraet-mit-140-w-usb-c-port/",
+   "source_title": "UGREEN EC706 150W KFZ Ladegerät Test, KFZ Ladegerät mit 140 W USB C Port!",
+   "read": "2026-11-08",
+   "note": "Published 2024-11-03. 'nach rund einer Stunde auf 65 W herunter.' Reviewer says about 100 W appears sustainable continuously ('scheint das Ladegerät auch konstant halten zu können') but gives no duration. The A2737 review names the EC706 as the better choice for sustained high output."
+  },
+  {
+   "product": "UGREEN EC706 150W Car Charger",
+   "label": "Measured efficiency range (Michael Barton, Techtest.org)",
+   "value": "86.5 % to 96.3 %",
+   "source": "https://techtest.org/ugreen-ec706-150w-kfz-ladegeraet-test-kfz-ladegeraet-mit-140-w-usb-c-port/",
+   "source_title": "UGREEN EC706 150W KFZ Ladegerät Test, KFZ Ladegerät mit 140 W USB C Port!",
+   "read": "2026-11-08",
+   "note": "'Im Test schwankte die Effizienz zwischen 96,3 % und 86,5 %.' Falls with load; reviewer attributes part of the loss to car-socket contact resistance. External heat described as 'noch recht erträglich', no °C given."
+  },
+  {
+   "product": "Anker Nano 75W Retractable Car Charger (A2738)",
+   "label": "Measured PDOs per output (ChargerLAB, POWER-Z KM003C)",
+   "value": "Cable: 5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2.25A (45 W) + PPS 5–11V/3A; USB-C port: 5V/3A, 9V/3A, 12V/2.5A, 15V/2A (30 W) + PPS 5–11V/3A",
+   "source": "https://www.chargerlab.com/teardown-of-anker-nano-75w-car-charger-a2738/",
+   "source_title": "Teardown of Anker Nano 75W Car Charger (A2738)",
+   "read": "2026-11-08",
+   "note": "Published 2026-01-08. Measured at 24 V DC input; article says 14 V input gave identical PDOs. PPS tops out at 11 V × 3 A = 33 W on either output. Measured cable 72 cm (spec says 75 cm), body 49.09 × 49.97 × 29.06 mm, 76 g. No load-test wattage reported."
+  },
+  {
+   "product": "UGREEN Nexode 145W Retractable Car Charger (EC604)",
+   "label": "Measured PDOs per output (ChargerLAB, POWER-Z KM003C)",
+   "value": "USB-C2: up to 20V/5A (100 W) + PPS 5–21V/5A; retractable cable: up to 20V/3A (60 W) + PPS 5–11V/3A; USB-C1: up to 12V/2.5A (30 W) + PPS 5–11V/3A",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-nexode-car-charger-145w-with-retractable-usb%e2%80%91c-cable-ec604",
+   "source_title": "Teardown of UGREEN Nexode Car Charger 145W with Retractable USB-C Cable (EC604)",
+   "read": "2026-11-08",
+   "note": "Published 2025-08-26. Measured at 12 V DC input; 24 V gave identical PDOs. Measured cable about 70 cm, body 105.63 × 62.21 × 36.41 mm, 118 g. The 100 W port carries full-range PPS 5–21 V/5 A, unlike the Anker A2738 whose PPS stops at 11 V. No load or thermal duration test."
+  },
+  {
+   "product": "Anker 535 Car Charger 67W",
+   "label": "Measured single-device output on a meter (Gigazine, log1h_ik)",
+   "value": "USB-A: 5.10 V × 1.39 A ≈ 7.1 W into a tablet; USB-C: 8.62 V × 1.25 A ≈ 10.8 W into a PowerIQ 3.0 device",
+   "source": "https://gigazine.net/gsc_news/en/20230725-anker-535-car-charger-review",
+   "source_title": "Anker 535 Car Charger review",
+   "read": "2026-11-08",
+   "note": "Published 2023-07-25. Meters: COOWOO USB Current Voltage Trigger Meter (USB-A) and Root R USB Type-C checker. Watts are my arithmetic from the quoted V × A; the loads were low-draw devices so these are not the charger's maximum. Weight 29 g, body about 6.2 cm long. No multi-port measurement."
+  },
+  {
+   "product": "general",
+   "label": "What the rival guides measured",
+   "value": "SolderMag: no bench tests ('We have not completed bench testing on every model below'); Hitech Century UGREEN 145W review: real-world use only, no meter, no temperature, no duration",
+   "source": "https://www.soldermag.com/posts/best-usb-c-car-chargers-2026",
+   "source_title": "Best USB-C Car Chargers (2026): Phone and Laptop Picks",
+   "read": "2026-11-08",
+   "note": "Hitech Century review at https://hitechcentury.com/?p=94236 (dated 2026-01-17, author 'kevin') also opened 2026-11-08. Both report spec-sheet watts only."
+  }
+ ],
+ "unsourced": [
+  "WIRED's best USB car chargers page (both URLs ChatGPT cited): wired.com and the Wayback Machine are blocked from this environment, so I could not verify what measurements, if any, WIRED's hands-on testing reports.",
+  "thisUSB guides (best USB-C car chargers; Anker Nano 75W vs UGREEN 145W) and TheTestedHub: TLS 'self signed certificate' error on fetch, not read.",
+  "Belkin BoostCharge 42W: no named reviewer or lab with a metered output, temperature or efficiency figure; only retailer spec pages (30 W USB-C + 12 W USB-A) and Belkin's '50 % in 26 minutes' claim.",
+  "Anker 535 67W: no measured multi-port split or sustained-load test by a named reviewer; only the Gigazine low-load meter readings above and conflicting listing figures for the 2- and 3-port split.",
+  "Anker Nano 167.5W (A2737): no surface temperature in °C and no 12 V input current; Techtest reports only hold time and efficiency range.",
+  "UGREEN Nexode 145W retractable (EC604) and Anker Nano 75W (A2738): no sustained-load or efficiency measurement by any named reviewer; ChargerLAB measured PDOs and dimensions only.",
+  "Android Central's '3 reliable 100W car chargers' article: page body did not load, so any test figures it holds are unverified."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.5601125
+ }
+}

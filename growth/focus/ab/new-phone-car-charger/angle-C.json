@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Tesla rates the Model Y 12V socket at 12 A continuous (16 A peak) while UGREEN labels its 145 W retractable charger for 17.8 A input and Anker's 167.5 W charger needs at least 14 A at 12 V just to make its rated output, so only the Anker 535 (7.2 A input) fits a Tesla or a 10 A-fused socket at full rating.",
+ "standout": 3,
+ "standout_why": "Compared against soldermag.com and supergrail.com (both opened): supergrail gives 12–24 V input for the Anker 535 and UGREEN 130 W, a generic '10 A fuse' example and the 5 A e-marked cable rule; soldermag gives the 45+9+9 W three-port split. Neither names a vehicle socket rating or any charger's rated input amps. The two cited WIRED pages could not be opened (wired.com and archive blocked); ChatGPT's paraphrase of WIRED says only 'provided your car socket supports the load' with no number. thisusb.com and dashanddrive.com failed on TLS and were not read.",
+ "decides": "It overturns the 'best high power' pick for EV and small-car owners: a Tesla's 12 A socket can supply roughly 150 W input, so the 145 W UGREEN (17.8 A label) and 167.5 W Anker (≥14 A by arithmetic) cannot hit their ratings there, and Anker's own test by techtest.org shows the A2737 cycles off rather than throttling. The Anker 535 at 7.2 A is the only candidate whose maker-rated draw fits every 10 A socket, but Anker US lists it sold out today, so the realistic 'fits-any-socket' pick becomes the Anker 75 W retractable (45 W cable + 30 W port). It also confirms a protocol limit: the Anker 75 W's PPS stops at 11 V 3 A, so Samsung 45 W Super Fast Charging 2.0 only runs on UGREEN's C2 port (PPS 5–21 V 5 A).",
+ "candidates": [
+  "Anker 535 Car Charger 67W (A2731)",
+  "Anker Nano Car Charger 75W retractable (A2738)",
+  "Anker Nano Car Charger 167.5W 3-port (A2737)",
+  "UGREEN Nexode 145W retractable car charger (EC604 / 55910)",
+  "Belkin BoostCharge Dual Car Charger 42W (CCB005)"
+ ],
+ "findings": [
+  {
+   "product": "general (Tesla Model Y)",
+   "label": "12V socket rating",
+   "value": "12 A continuous, 16 A peak",
+   "source": "https://www.tesla.cn/ownersmanual/modely/en_cn/GUID-A1DF67DE-94B4-4859-98B4-B0A5D342FAB3.html",
+   "source_title": "Tesla Model Y Owner's Manual – Interior Electronics (low voltage power outlet)",
+   "read": "2026-11-08",
+   "note": "Tesla's own manual mirror; exact text 'suitable for accessories requiring up to 12A continuous draw (16A peak)'. Power only when vehicle in use or a user is detected unless 'Keep Accessory Power On' is enabled. Tesla recommends against non-Tesla accessories. At a nominal 12.5 V, 12 A ≈ 150 W input."
+  },
+  {
+   "product": "UGREEN Nexode 145W retractable (EC604)",
+   "label": "rated input",
+   "value": "12–24 V, 17.8 A max",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-nexode-car-charger-145w-with-retractable-usb%E2%80%91c-cable-ec604/",
+   "source_title": "ChargerLAB – Teardown of UGREEN Nexode Car Charger 145W with Retractable USB-C Cable (EC604)",
+   "read": "2026-11-08",
+   "note": "Read from UGREEN's product label photographed by ChargerLAB. 17.8 A exceeds Tesla's 12 A continuous and any 10 A or 15 A accessory fuse. UGREEN US page returned HTTP 429 three times."
+  },
+  {
+   "product": "UGREEN Nexode 145W retractable (EC604)",
+   "label": "per-port PDO and PPS",
+   "value": "C2: 20 V 5 A (100 W), PPS 5–21 V 5 A; retractable cable: 20 V 3 A (60 W), PPS 5–11 V 3 A; C1: 12 V 2.5 A (30 W), PPS 5–11 V 3 A; USB-A: 12 V 2.5 A",
+   "source": "https://www.chargerlab.com/teardown-of-ugreen-nexode-car-charger-145w-with-retractable-usb%E2%80%91c-cable-ec604/",
+   "source_title": "ChargerLAB – Teardown of UGREEN Nexode EC604",
+   "read": "2026-11-08",
+   "note": "Measured with KM003C at 12 V input; ChargerLAB reports identical PDOs at simulated 24 V input. Only C2 can satisfy Samsung 45 W Super Fast Charging 2.0 (needs PPS ≥20 V 2.25 A). Protocols: PD3.0, PPS, QC3.0/4+/5, SCP, FCP, AFC."
+  },
+  {
+   "product": "Anker Nano Car Charger 75W retractable (A2738)",
+   "label": "output limits",
+   "value": "cable: 20 V 2.25 A (45 W), PPS 5–11 V 3 A (30 W); port: 15 V 2 A (30 W), PPS 5–11 V 3 A",
+   "source": "https://service.anker.com/product-description/a08J1000000Yc0EIAS",
+   "source_title": "Anker Support – Anker Nano Car Charger (75W, USB-C Port, Built-In Retractable USB-C Cable) specifications",
+   "read": "2026-11-08",
+   "note": "PPS tops out at 11 V 3 A on both outputs, so Samsung's 45 W PPS tier is not reachable; 45 W over fixed 20 V PD works for MacBook Air-class laptops. Anker's page does not state input current or the two-device split."
+  },
+  {
+   "product": "Anker 535 Car Charger 67W (A2731)",
+   "label": "rated input and port split",
+   "value": "12–24 V DC, 7.2 A; 3 ports: C1 45 W via PD/PPS; C2 + USB-A together: 9 W each; single USB-C: 20 V 3.35 A (67 W)",
+   "source": "https://www.anker.com/products/b2731",
+   "source_title": "Anker 535 Car Charger (67W) – Anker US",
+   "read": "2026-11-08",
+   "note": "7.2 A is the only candidate input rating under Tesla's 12 A continuous and a 10 A fuse. Anker US shows 'Sold out / Notify Me' today, no base price displayed. Includes 3.2 ft USB-C to USB-C cable (rating not stated)."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "minimum input current at 12 V (arithmetic)",
+   "value": "≥14.0 A at 100 % efficiency; ≈15.0–16.3 A at techtest.org's measured 85.8–93.3 % efficiency",
+   "source": "https://techtest.org/anker-vs-ugreen-und-baseus-der-anker-a2737-nano-car-charger-1675-w-im-test/",
+   "source_title": "techtest.org – Anker vs. UGREEN und Baseus: der Anker A2737 Nano Car Charger 167,5 W im Test",
+   "read": "2026-11-08",
+   "note": "167.5 W ÷ 12 V = 13.96 A; ÷ 0.933 = 14.96 A; ÷ 0.858 = 16.27 A. techtest measured the A2737 holding ~90 W on a Framework 16 for 6:38 min then switching off and cycling, versus UGREEN CD293 (~5 min at 100 W then ~40 W) and Baseus BSCC-ZX-CCL (~15 min then ~40 W). techtest lists C1 PDOs 5 V/9 V/15 V 3 A, 20 V 5 A and PPS 5–11 V up to 5 A on both USB-C ports; C2 at 27 W PD in their test."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "price and stock, Anker US",
+   "value": "$53.99, in stock",
+   "source": "https://www.anker.com/products/a2737",
+   "source_title": "Anker Nano Car Charger (167.5W, 3 Ports) – Anker US",
+   "read": "2026-11-08",
+   "note": "Page shows 100 W USB-C1 and 45 W USB-C2; the spec tab with input current did not render in the fetched content."
+  },
+  {
+   "product": "Belkin BoostCharge Dual Car Charger 42W (CCB005)",
+   "label": "ports, PPS, cable, stock",
+   "value": "USB-C 30 W PD 3.0 with PPS + USB-A 12 W; no cable in box; $24.99, out of stock, 'Coming Soon by Tue Nov 24 2026'",
+   "source": "https://www.belkin.com/boostcharge-dual-car-charger-42w/CCB005btBK.html",
+   "source_title": "Belkin BoostCharge Dual Car Charger 42W – Belkin US",
+   "read": "2026-11-08",
+   "note": "Belkin's compatibility list includes MacBook Air 13\" M1/M2 and Nintendo Switch 2; Belkin's 21-min iPhone 0–50 % claim was measured with a USB-C to USB-C cable that is not included in the standalone SKU. Input voltage is not stated on the page."
+  },
+  {
+   "product": "general",
+   "label": "what rivals already state",
+   "value": "supergrail: 12–24 V input for Anker 535 and UGREEN 130 W, '5A e-marked cable' for >60 W, 10 A fuse as example only; soldermag: Anker 535 45+9+9 W split",
+   "source": "https://supergrail.com/guides/best-usb-c-car-chargers/",
+   "source_title": "Best USB-C Car Chargers in 2026 | SuperGrail",
+   "read": "2026-11-08",
+   "note": "Also read https://www.soldermag.com/posts/best-usb-c-car-chargers-2026 (2026-11-08), which says it is research-based without full bench testing. Neither page gives any charger's rated input amps or a vehicle socket rating."
+  }
+ ],
+ "unsourced": [
+  "Anker A2737 rated input '12.0 V 18.2 A / 24.0 V 9.2 A': appears in search snippets of Anker's quick start guide (lp.ankerjapan.com B2737QSG.pdf and m.media-amazon.com 91ruhwpuCGL.pdf) but both PDFs are image-only with no text layer and the anker.com/ankerjapan.com spec tabs returned HTTP 429, so the figure could not be read directly; the arithmetic minimum above is used instead.",
+  "Anker A2737 two-port and three-port split table (e.g., 100 W + 45 W vs. 100 W + 45 W + 22.5 W) from an Anker document; retailer snippets say '145 W max with two ports', not opened on an Anker page.",
+  "Anker A2738 75 W retractable: input voltage/current and Anker US price/stock; us.anker.com/products/a2738 returned HTTP 429 on three attempts.",
+  "UGREEN EC604 multi-port split combinations and which pairing reaches 145 W from UGREEN's own page; us.ugreen.com and ugreen.com regional pages all returned HTTP 429.",
+  "Belkin CCB005 rated input voltage/current from Belkin (retail listings disagree: 12–24 V vs 12 V vs 15 V).",
+  "WIRED's cited article text (wired.com and web.archive.org both blocked), so its exact compatibility statements could not be compared.",
+  "Whether the Anker A2737's included 3.3 ft cable is 5 A e-marked (required for 100 W); not stated on the Anker page read."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 44,
+  "cost_usd_list": 1.83592915
+ }
+}

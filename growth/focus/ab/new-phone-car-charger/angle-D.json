@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a car's 12 V accessory socket is fused at 10 A (120 W, Toyota) to 15 A (180 W, Honda) or 12 A continuous (Tesla), so the 167.5 W Anker it recommends as 'best high power' can only draw its full rating on sockets rated for roughly 15 A or more, and the 145 W / 167.5 W figures are per-vehicle ceilings, not guaranteed outputs.",
+ "standout": 3,
+ "standout_why": "Compared against WIRED (cited; fetch blocked both times, so judged from ChatGPT's summary which only says 'provided your car socket supports the load' with no number), soldermag (read in full: no fuse, amp, 24 V or input figure anywhere; closest is 'Assuming every car socket can sustain high output gracefully' listed as a mistake, with no number), and thisUSB (both URLs failed TLS). None gives a socket amp or watt rating from a car maker, none gives the charger's input current, and none names the thermal cutoff behaviour techtest.org measured. Anker's own US and Canada product pages do not list input voltage or current at all, so the shopper cannot get this from the maker's page either.",
+ "decides": "It demotes the Anker Nano 167.5W from a default 'best high power' pick to a conditional one: on a Toyota-class 10 A socket the socket can supply at most 120 W before the fuse, which is below the charger's 145 W two-port rating, let alone 167.5 W; on a Honda-class 15 A socket 180 W is the ceiling with no headroom for conversion losses. For a 12 V passenger car the realistic pick is a charger whose total rating sits at or under 120 W (Anker 535 67 W, Anker Nano 75 W retractable, UGREEN 100 W class), and the 145 W to 167.5 W units make sense only when the shopper has checked their owner's manual for a 15 A socket or drives a 24 V truck. It also adds a named measurement: techtest.org found the A2737 holds about 90 to 100 W for only 6 min 38 s before cutting out and cycling, whereas the UGREEN and Baseus units it compared throttle to about 40 W and keep charging.",
+ "candidates": [
+  "Anker Nano Car Charger 167.5W (A2737)",
+  "Anker 535 Car Charger 67W",
+  "Anker Nano 75W Retractable Car Charger",
+  "UGREEN Nexode 145W Retractable Car Charger (EC604)",
+  "UGREEN 130W USB-C Car Charger",
+  "Belkin BoostCharge 42W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Toyota 12 V accessory outlet current limit",
+   "value": "10 A at 12 V",
+   "source": "https://www.manualsdir.com/manuals/746437/toyota-2011-rav4.html?page=347",
+   "source_title": "TOYOTA 2011 RAV4 Owner's Manual, page 347 (copy hosted on manualsdir.com)",
+   "read": "2026-11-08",
+   "note": "Verbatim: '12 V: Accessories that use less than 10 A.' 10 A × 12 V = 120 W socket ceiling. Toyota-hosted copy not reached; this is a third-party copy of the maker's manual."
+  },
+  {
+   "product": "general",
+   "label": "Honda accessory power socket rating",
+   "value": "180 W (15 A) at 12 V DC",
+   "source": "https://www.manualslib.com/manual/1431921/Honda-Cr-V.html?page=226",
+   "source_title": "2011 Honda CR-V Owner's Manual, page 226 (copy hosted on manualslib.com)",
+   "read": "2026-11-08",
+   "note": "Verbatim: 'The accessory power socket is designed to supply power for 12 volt DC accessories that are rated 180 watts or less (15 amps)'; also 'To prevent battery drain, only use the power socket with the engine running.' Honda's own techinfo.honda.com page failed on a certificate error."
+  },
+  {
+   "product": "general",
+   "label": "Tesla Model Y low-voltage power socket rating",
+   "value": "12 A continuous, 16 A peak",
+   "source": "https://www.manualslib.com/manual/2602707/Tesla-Y-2019.html?page=22",
+   "source_title": "Tesla Model Y Owner's Manual (software 2022.16), page 22 (copy hosted on manualslib.com)",
+   "read": "2026-11-08",
+   "note": "Verbatim: 'The power socket is suitable for accessories requiring up to 12A continuous draw (16A peak).' Also: vehicles built after about November 2021 run the socket at a nominal 16 V, so accessories 'must support 16V DC input to function.' Tesla recommends against non-Tesla accessories in this socket."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Per-port and total output",
+   "value": "USB-C1 100 W, USB-C2 45 W, USB-A 22.5 W, 167.5 W total",
+   "source": "https://www.anker.com/ca/products/a2737",
+   "source_title": "Anker Nano Car Charger (167.5W, 3 Ports) | Anker Canada",
+   "read": "2026-11-08",
+   "note": "Page text: 'the first USB-C port delivering a powerful 100W', 'the second USB-C port providing 45W', 'the USB-A port adding an additional 22.5W'. Neither the US nor the Canada page lists input voltage or input current. Product code on image files: B27370A1."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Price, Anker US store",
+   "value": "$53.99",
+   "source": "https://www.anker.com/products/a2737",
+   "source_title": "Anker Nano Car Charger (167.5W, 3 Ports) | Anker US",
+   "read": "2026-11-08",
+   "note": "Page shows '$53.99' and 'Save $16.20'. Matches the price ChatGPT showed."
+  },
+  {
+   "product": "Anker Nano Car Charger 167.5W (A2737)",
+   "label": "Sustained 100 W duration before thermal cutoff (techtest.org measurement)",
+   "value": "6 min 38 s at about 90 W, then shut off",
+   "source": "https://techtest.org/anker-vs-ugreen-und-baseus-der-anker-a2737-nano-car-charger-1675-w-im-test/",
+   "source_title": "Anker vs. UGREEN und Baseus: der Anker A2737 Nano Car Charger 167,5 W im Test (techtest.org)",
+   "read": "2026-11-08",
+   "note": "Verbatim: 'Das Anker A2737 konnte bei mir das Framework 16 6:38 Minuten mit voller Leistung (um die 90 W) versorgen.' Conclusion says 'nur um die 6-7 Minuten 100 W bereitstellen'. The charger cuts out, cools, and cycles back on rather than throttling; the UGREEN CD293 and Baseus BSCC-ZX-CCL throttle to about 40 W and keep charging. Efficiency measured 85.8 to 93.3 %. techtest.org states the 100 W port 'bietet seine volle Leistung auch in einem 12 V PKW' but does not report input current or the test bench voltage."
+  },
+  {
+   "product": "general",
+   "label": "Socket ceiling arithmetic",
+   "value": "120 W (10 A socket) / 144 W (12 A socket) / 180 W (15 A socket) at 12.0 V, before charger conversion losses",
+   "source": "https://www.manualsdir.com/manuals/746437/toyota-2011-rav4.html?page=347",
+   "source_title": "TOYOTA 2011 RAV4 Owner's Manual, page 347 (arithmetic from the fuse ratings above)",
+   "read": "2026-11-08",
+   "note": "Amps × 12.0 V. Applying techtest.org's measured 85.8 to 93.3 % efficiency, a 10 A socket supports about 103 to 112 W of USB output, a 15 A socket about 154 to 168 W. Alternator voltage near 14 V raises these by roughly 15 % with the engine running."
+  }
+ ],
+ "unsourced": [
+  "Anker A2737 input rating. A search snippet of Anker Japan's quick start guide (lp.ankerjapan.com/hubfs/aoos/manual/B2737QSG.pdf) reads 'Input 12.0V 18.2A / 24.0V 9.2A', which would exceed every socket rating above, but the PDF opened as unreadable compressed streams in WebFetch, local extraction was blocked by the sandbox, and ankerjapan.com and ca.anker.com returned HTTP 429. Not reported as a value.",
+  "UGREEN Nexode 145W retractable car charger (EC604) US price and input spec: not listed on ugreen.com US (storecheck returned only power banks for '145W' and no car charger); UGREEN PH/IT pages in search snippets list 12 V input only while the MY page says 12 to 24 V, unopened, so omitted.",
+  "Anker 535 67W (A2732) and Anker Nano 75W retractable input specs: anker.com/products/a2732 returned 404; no maker input figure sourced.",
+  "WIRED cited page (both URLs) could not be fetched from this environment; thisUSB pages failed TLS. Comparison for those relies on ChatGPT's quoted summary and the soldermag page, which was read in full."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 1.43490935
+ }
+}
