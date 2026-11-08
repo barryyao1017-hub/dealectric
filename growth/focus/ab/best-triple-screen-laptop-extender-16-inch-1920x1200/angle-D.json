@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that every 16-inch Apple-silicon MacBook Pro natively drives at least two external displays, so base-chip workarounds don't apply to a 16-inch Mac, or that the USB-graphics drivers behind 'driver required' extenders (DisplayLink, Silicon Motion InstantView) block HDCP-protected video such as Netflix and Prime Video on every screen of the Mac, including the built-in one, while they are connected.",
+ "standout": 3,
+ "standout_why": "I checked the UPERFECT '8 Best Triple Screen Laptop Extenders' blog, which one chat cited. It says only that 'base MacBook M1 and M2 chip models only support one external display'. It says nothing about M3, Pro or Max chips, 16-inch MacBook Pros, HDCP or Screen Recording. ChatGPT's own answer carried the base-M1/M2/M3 caveat to a 16-inch laptop and offered the driver-based FOPO S788 as the fix, with no word on protected-content playback. Our current page says only 'UsbDisplay driver' for the S788. I could not open the cited FOPO S11, FOPO S788 and VueXtend pages (HTTP 429) or the Best Buy MagHub pages (timeouts). So I can't rule out that those maker listings carry a protected-content note. None of the result titles or snippets suggested one.",
+ "decides": "For a 16-inch MacBook Pro, the Mac caveat that pushed ChatGPT toward driver-based extenders doesn't apply. The 2021 M1 Pro already drives two external displays natively, and the current M5 Pro drives three. So a driver-free two-screen extender is the pick, as long as each screen gets its own native video output: the INVZI MagHub Dual Lite (USB-C plus mini-HDMI per its Best Buy listing title) or the FOPO S11. Driver-based units (FOPO S788, MagHub Trio 'Driver Required') add a third screen. On a Mac they cost you protected streaming on all screens, and on macOS 15 and later the Screen Recording permission they need may have to be renewed periodically. Only someone who needs three external screens, or has a laptop without two video-capable outputs, should take that trade.",
+ "candidates": [
+  "INVZI MagHub Dual Lite 16",
+  "FOPO S11",
+  "FOPO S788",
+  "INVZI MagHub Trio 16",
+  "Mobile Pixels Trio 3 Pro"
+ ],
+ "findings": [
+  {
+   "product": "general (Apple MacBook Pro 16-inch, 2021)",
+   "label": "Native external display support, M1 Pro / M1 Max",
+   "value": "M1 Pro: up to two external displays up to 6K at 60 Hz alongside the full-resolution built-in display. M1 Max: up to three 6K plus one 4K external display.",
+   "source": "https://support.apple.com/111901",
+   "source_title": "MacBook Pro (16-inch, 2021) - Technical Specifications - Apple Support",
+   "read": "2026-11-08",
+   "note": "Apple's wording: 'Simultaneously supports full native resolution on the built-in display at 1 billion colors and: Up to two external displays with up to 6K resolution at 60Hz at over a billion colors (M1 Pro)'. This is the first Apple-silicon 16-inch, and it already meets the two-screen need without a driver."
+  },
+  {
+   "product": "general (Apple MacBook Pro 16-inch, current)",
+   "label": "Chips on the current 16-inch model and native external display support",
+   "value": "The 16-inch is offered only with M5 Pro or M5 Max. M5 Pro supports up to three external displays and M5 Max up to four, over any combination of Thunderbolt and HDMI ports.",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro with Liquid Retina XDR Display - Technical Specifications - Apple",
+   "read": "2026-11-08",
+   "note": "The base M6 is listed for the 14-inch only. The two-display limit that ChatGPT raised applies to base-chip machines, and no current 16-inch MacBook Pro uses one."
+  },
+  {
+   "product": "general (DisplayLink USB graphics on macOS)",
+   "label": "Protected-video blocking with a DisplayLink display attached",
+   "value": "Turning on 'Screen Recording' for DisplayLink software disables HDCP playback system-wide on macOS, including on displays driven by the Mac's own graphics.",
+   "source": "https://kb.plugable.com/en_US/why-doesnt-streaming-video-play-correctly-when-using-a-docking-station-with-my-mac",
+   "source_title": "Why Doesn't Streaming Video Play Correctly When Using a Docking Station With My Mac? (Plugable KB 1606801, updated 2026-07-29)",
+   "read": "2026-11-08",
+   "note": "Plugable: 'This disables HDCP system-wide because there is no differentiation within macOS' between DisplayLink displays and native ones. Its workaround is native Alt Mode or Thunderbolt video instead of DisplayLink."
+  },
+  {
+   "product": "general (Silicon Motion InstantView USB graphics)",
+   "label": "HDCP support",
+   "value": "Not supported. With an SMI USB-graphics product connected and working, copy-protected content (Blu-ray, Netflix, Amazon Prime Video) won't display on any monitor, including the laptop's built-in display. To watch it, you have to unplug the product.",
+   "source": "https://kb.plugable.com/ja_JP/do-silicon-motion-graphics-adapters-and-docking-stations-work-on-macos",
+   "source_title": "[macOS] Plugable 社 Silicon Motion 技術使用製品と macOS のサポートについて (updated 2024-02-28)",
+   "read": "2026-11-08",
+   "note": "The Japanese page states this; I translated it. The quoted originals are 'Silicon Motion 技術は HDCP（コピー保護機能）非対応のため' and 'どのモニターであっても（ノートシステムの内蔵ディスプレイ含む）'. The English version of the same article, updated 2026-07-30, doesn't mention HDCP."
+  },
+  {
+   "product": "general (Silicon Motion InstantView on macOS)",
+   "label": "Screen Recording permission requirement",
+   "value": "Required for the extended screens to show anything. On macOS 15 Sequoia and newer it may need to be renewed periodically.",
+   "source": "https://kb.plugable.com/en_US/my-silicon-motion-based-usb-docking-station-or-usb-video-adapter-is-not-working-as-expected",
+   "source_title": "My Silicon Motion-based USB Docking Station or USB Video Adapter Is Not Working As Expected (Plugable KB, updated 2026-08-28)",
+   "read": "2026-11-08",
+   "note": "Quote: 'The macOS screen recording permission is required so InstantView can access the screen information'. Also: 'macOS may require the screen recording permission to be renewed periodically.'"
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "When the driver is needed on a Mac (named reviewer)",
+   "value": "Macworld's Simon Jary connected the two screens with the two included USB-C cables. Software is needed only on plain M1/M2 Macs and the MacBook Neo, or to run both screens from a single cable. Any Mac 'as or more powerful than a standard M1/M2/M3' sets up both screens without it.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, 2026-04-02)",
+   "read": "2026-11-08",
+   "note": "Tested on a 14-inch MacBook Pro; the review doesn't name the chip. It shows the same pattern: two native cables need no driver, while one cable or a base chip needs the USB-graphics driver."
+  },
+  {
+   "product": "general (driver-free extender cabling, FOPO 12-inch triple)",
+   "label": "Video path per screen on driver-free extenders",
+   "value": "Each screen needs its own power and video cable: USB-C with DisplayPort to a video-capable laptop port, or mini-HDMI plus separate power. In the worst case that is two cables per screen.",
+   "source": "https://www.notebookcheck.net/FOPO-12-inch-triple-monitor-extender-review-Clunky-and-more-fragile-than-standalone-portable-monitors.636422.0.html",
+   "source_title": "FOPO 12-inch triple monitor extender review (Notebookcheck, Allen Ngo, 2022-07-23)",
+   "read": "2026-11-08",
+   "note": "This is an older 12-inch FOPO model tested on Windows (HP Pavilion Plus 14), where the screens 'should appear as two ordinary external monitors to Windows'. I'm using it only for the general two-video-outputs requirement, not for any 16-inch candidate's specs."
+  }
+ ],
+ "unsourced": [
+  "Which USB-graphics chip and driver the FOPO S788 and INVZI MagHub Trio use (DisplayLink, Silicon Motion or another). The FOPO store returned HTTP 429 every time, the Best Buy MagHub Trio page timed out, and a search for the S788 driver name turned up no maker page.",
+  "The INVZI MagHub Dual Lite 16 connection details and macOS notes from the maker or Best Buy page. invzi.com failed in storecheck (HTTP 0) and Best Buy timed out twice. The USB-C plus mini-HDMI connection comes only from the Best Buy listing titles.",
+  "FOPO S11 connection and Mac notes from fopomonitor.com (HTTP 429 from WebFetch and storecheck).",
+  "VueXtend Tri 16 connection and Mac notes from vuextend.com (HTTP 429).",
+  "Apple spec pages for the 16-inch M2 Pro/Max, M3 Pro/Max and M4 Pro/Max generations. I read only the 2021 M1 Pro/Max page and the current M5 Pro/Max specs page.",
+  "Prices: I didn't read any today, because the FOPO, INVZI and Best Buy pages wouldn't load."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9864418000000001
+ }
+}

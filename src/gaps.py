@@ -4594,131 +4594,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  'published': '2026-11-03', "updated": '2026-11-08',
  'checked': '2026-11-03'},
 
-{'slug': 'best-triple-screen-laptop-extender-16-inch-1920x1200',
- 'question': 'G88 (Awin brands: triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels)',
- 'lead_first': True,
- 'product_result': {'slug': 'fopo-s788-16-inch-triple-laptop-screen-extender',
-                    'item_id': 'FOPO-S788',
-                    'title': 'FOPO S788, three 16-inch 1920×1200 screens',
-                    'description': '3× 16-inch IPS 16:10, 100% sRGB, fits 12–18.5-inch laptops, driver-based, PD supply included, 2.64 kg. $499.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0663/7495/9316/files/bdd2095567ed5ee49cd4fc6878a5ea98.png'},
- 'title': 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
- 'h1': 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
- 'desc': "Which triple-screen laptop extender gives a 16-inch laptop three 1920×1200 (16:10) panels: FOPO's S788 ($499.99, 100% sRGB, 12–18.5-inch fit, 2.64 "
-         "kg, driver-based with a PD supply in the box) against FOPO's S788C and S980, Mobile Pixels' Trio Max and Trio 3 Pro, Kwumsy's P2 Pro, UPERFECT's "
-         "16-inch QHD triple and LIMINK's 14-inch, with the driver and Mac caveats and the prices seen on 2026-11-03.",
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>FOPO S788</strong> ({buy:fopo-s788-16-inch-triple-laptop-screen-extender}), the best '
-          "triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels: $499.99 on 2026-11-03 (list $999.99; FOPO's banner code takes 10% more "
-          'off) for three 16-inch 16:10 IPS screens at 100% sRGB, a 12–18.5-inch laptop fit, a PD power supply in the box and 2.64 kg. Every other triple at '
-          'this size we found is 1080p or costs more.</p>\n'
-          "<p>What to know: the S788 is a USB display-driver device, not a native display connection. It needs FOPO's UsbDisplay driver (and Screen Recording "
-          'permission on a Mac), a USB-C or dual-head USB-A data cable and its own power supply, and FOPO lists Windows 10/11 and macOS from 2019 including '
-          "M1, M2 and M3; on a base M-series chip the driver is what makes three extra screens possible at all. Mobile Pixels' Trio Max (14.1-inch, 1080p, "
-          "$512.99 at Staples) and Kwumsy's P2 Pro (13.3-inch, $529.99) are smaller for the money, UPERFECT's 16-inch triple is 2560 × 1600 at $639.99 "
-          "early-bird ($849.99 list), and LIMINK's 14-inch 1080p was $139.99 at Walmart. Fit is by laptop dimensions, not just the screen diagonal; FOPO gives "
-          '30-day returns and a 1-year warranty, 2 years for registered buyers.</p>\n',
- 'columns': [('panels', 'Panels'), ('fit', 'Laptop fit'), ('mac', 'Mac'), ('power', 'Driver / power'), ('weight', 'Weight')],
- 'rows': [{'slug': 'fopo-s788-16-inch-triple-laptop-screen-extender',
-           'model': 'FOPO S788',
-           'cells': {'panels': '3 × 16-inch IPS, 1920 × 1200, 100% sRGB',
-                     'fit': '12–18.5-inch',
-                     'mac': 'macOS 2019+, M1/M2/M3 listed',
-                     'power': 'UsbDisplay driver; PD supply included',
-                     'weight': '2.64 kg'}},
-          {'brand': 'FOPO',
-           'model': 'S788C 16-inch / S780C 14-inch',
-           'url': 'https://www.fopomonitor.com/products/fopo-s788c-16-inch-triple-laptop-screen-extender',
-           'cells': {'panels': '3 × 16 or 14-inch, 1920 × 1200',
-                     'fit': '12–16.5-inch',
-                     'mac': 'M1–M4 listed; driver required',
-                     'power': 'Driver; power per laptop',
-                     'weight': 'not read',
-                     'price': '$599.99 (16) / $499.99 (14) on 2026-11-03'}},
-          {'brand': 'FOPO',
-           'model': 'S980 15.3-inch',
-           'url': 'https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender',
-           'cells': {'panels': '3 × 15.3-inch, 1920 × 1200, 250 nits',
-                     'fit': '12–18.5-inch',
-                     'mac': 'M1/M2/M3 listed',
-                     'power': 'Driver + separate PD power',
-                     'weight': '2.6 kg',
-                     'price': '$599.99 (list $999.99) on 2026-11-03'}},
-          {'brand': 'Mobile Pixels',
-           'model': 'Trio Max',
-           'url': 'https://mobilepixels.us/pages/xebec-comparison',
-           'cells': {'panels': '2 × 14.1-inch, 1920 × 1080',
-                     'fit': '13–17-inch',
-                     'mac': 'Yes via USB (driver)',
-                     'power': 'USB-powered',
-                     'weight': '2.2–3.9 lb (sources conflict)',
-                     'price': '$512.99 Staples (Trio Max 2.0), 2026-11-03'}},
-          {'brand': 'Mobile Pixels',
-           'model': 'Trio 3 Pro',
-           'url': 'https://www.shi.com/product/50445665/Mobile-Pixels-Trio-3-Pro',
-           'cells': {'panels': '2 × 14.1-inch, 2240 × 1400',
-                     'fit': 'not read',
-                     'mac': 'not verified',
-                     'power': 'not read',
-                     'weight': '1.87 kg',
-                     'price': 'CHF 399 (Swiss listing, out of stock); no US price read'}},
-          {'brand': 'Kwumsy',
-           'model': 'P2 Pro',
-           'url': 'https://www.mbreviews.com/?p=16358',
-           'cells': {'panels': '2 × 13.3-inch, 1080p',
-                     'fit': '13.3–16.5-inch',
-                     'mac': 'Worked on an M1 MacBook Pro after drivers (reviewer)',
-                     'power': 'Drivers',
-                     'weight': 'not read',
-                     'price': '$529.99, 2026-11-03'}},
-          {'brand': 'UPERFECT',
-           'model': '16-inch QHD triple',
-           'url': 'https://uperfect.com/products/triple-laptop-screen-extender',
-           'cells': {'panels': '2 × 16-inch, 2560 × 1600 (14 and 15.6-inch 1080p versions)',
-                     'fit': 'not read',
-                     'mac': 'not verified',
-                     'power': 'Two USB-C + mini-HDMI',
-                     'weight': 'not read',
-                     'price': '$639.99 early-bird (list $849.99), 2026-11-03'}},
-          {'brand': 'LIMINK',
-           'model': '14-inch triple',
-           'url': 'https://www.walmart.com/ip/LIMINK-Portable-Triple-Monitor-Extender-14inch-Screen-Used-15-17inch-Laptop-Workstation-Expansion-FHD-1080P-Folding-IPS-Tri-Screen-Fits-Mac-Windows-N/1837878974',
-           'cells': {'panels': '2 × 14-inch, 1080p',
-                     'fit': '15–17-inch',
-                     'mac': 'Listed',
-                     'power': 'not read',
-                     'weight': 'not read',
-                     'price': '$139.99 (was $299.99) at Walmart, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>Why 1920 × 1200 matters on a 16-inch laptop</h2>\n'
-          "<p>A 16-inch laptop's own panel is 16:10. Side screens at 1920 × 1200 line up with it and give the same vertical room for documents; the 1080p 16:9 "
-          "panels on most extenders sit shorter next to it. The S788's three panels are IPS, 100% sRGB, 60 Hz and 25 ms, with brightness buttons and an OSD; "
-          "FOPO's spec sheet gives a 388 × 244 × 41.3 mm folded size and a 344.7 × 215.4 mm active area per screen.</p>\n"
-          '<h2>Driver, not native</h2>\n'
-          "<p>FOPO's S788 page says it plainly: a driver-based setup, not a driver-free one. Windows installs UsbDisplay on its own when online; a Mac needs "
-          'the driver installed by hand and Screen Recording permission granted, and company-managed laptops may block the install. The upside is that a base '
-          'M1, M2 or M3 Mac, which Apple limits to one native external display, drives all three through the driver. Expect some latency and no HDR; it is a '
-          'workspace, not a gaming rig.</p>\n'
-          '<h2>Weight and fit</h2>\n'
-          "<p>2.64 kg clamps onto the laptop, so a thin 16-inch machine will want the rear support FOPO builds in; Notebookcheck's review of FOPO's 12-inch "
-          'model called the format clunky and more fragile than two standalone portable monitors, which is the honest alternative if you never move the setup. '
-          "FOPO's fit range is 12–18.5 inches, subject to the laptop's physical dimensions and clearance.</p>\n"
-          '<h2>Code and returns</h2>\n'
-          '<p>FOPO prints its own 10% code on its site; we applied it in the cart on 2026-11-03 and it took $49.99 off the S788. Returns are 30 days; the '
-          'warranty is 1 year on hardware, with a second year for registered members. A PD power supply, carrying case, cables and a driver USB drive come in '
-          'the box.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          '<p>The weights of the FOPO S788C and most rivals, whether the Trio 3 Pro and UPERFECT units use DisplayLink or need separate power, and any '
-          "2025–2026 triple-extender review from Tom's Hardware, PCMag or AppleInsider (search returned none).</p>\n",
- 'sources': [('FOPO S788', 'https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender'),
-             ('FOPO S980', 'https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender'),
-             ('FOPO warranty policy', 'https://www.fopomonitor.com/pages/warranty-policy'),
-             ('Notebookcheck: FOPO 12-inch triple extender review',
-              'https://www.notebookcheck.net/FOPO-12-inch-triple-monitor-extender-review-Clunky-and-more-fragile-than-standalone-portable-monitors.636422.0.html'),
-             ('Mobile Pixels comparison page', 'https://mobilepixels.us/pages/xebec-comparison'),
-             ('UPERFECT triple laptop screen extender', 'https://uperfect.com/products/triple-laptop-screen-extender')],
- 'published': '2026-11-03',
- 'checked': '2026-11-03'},
+# ---------------- best-triple-screen-laptop-extender-16-inch-1920x1200 (research method ab-2026-11, 2026-11-08) ----------------
+{"slug": 'best-triple-screen-laptop-extender-16-inch-1920x1200',
+ "question": 'G88 (Awin brands: triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels)',
+ "method": 'ab-2026-11',
+ "angle": 'D',
+ "searched_as": ['best dual screen laptop extender 16 inch 1920x1200 2026 reviews specifications', '16 inch laptop triple screen extender two 1920x1200 displays 16 inch 2026 best', '16 inch laptop screen extender dual 1920x1200 16:10 2026 best'],
+ "title": 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
+ "h1": 'Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026)',
+ "desc": 'Two 16-inch 1920×1200 16:10 screens for a 16-inch laptop: which dual-screen extenders run without a driver, what a 16-inch MacBook Pro drives natively, and maker prices checked 2026-11-08.',
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels is the FOPO S11: two 16-inch 1920×1200 16:10 displays on native video, no driver. A 16-inch MacBook Pro\'s M5 Pro drives three external displays, so both screens extend.</p>',
+ "columns": [('screens', 'Added screens (total with laptop)'), ('panels', 'Panels'), ('video', 'Video path'), ('mac16', 'On a 16-inch MacBook Pro'), ('weight', 'Weight')],
+ "rows": [{'slug': 'fopo-s11-dual-16-inch-laptop-screen-extender', 'model': 'FOPO S11', 'cells': {'screens': '2 (3 displays)', 'panels': '2 × 16-inch 1920×1200 IPS, 300 cd/m², 800:1', 'video': 'Native: one full-featured USB-C per screen, or HDMI-to-mini-HDMI plus USB power; no driver', 'mac16': 'Both screens natively; FOPO lists M1–M3 Pro/Max as supported', 'weight': '2 kg'}}, {'slug': 'fopo-s9g-dual-16-inch-laptop-screen-extender', 'model': 'FOPO S9G', 'cells': {'screens': '2 (3 displays)', 'panels': '2 × 16-inch 1920×1200 IPS, 16:10, detachable', 'video': 'Native: video-capable USB-C, or USB-C + HDMI with separate USB power', 'mac16': 'Needs two video outputs; the M5 Pro has three (Apple)', 'weight': '2.4 kg (UPERFECT)'}}, {'slug': 'mobile-pixels-trio-3-pro', 'model': 'Mobile Pixels Trio 3 Pro', 'cells': {'screens': '2 (3 displays)', 'panels': '2 × 14-inch 2240×1400, 300 nits (Macworld)', 'video': 'Two USB-C cables; driver only for plain M1/M2 Macs and the MacBook Neo (Macworld)', 'mac16': 'Fits 13–16-inch MacBooks; both screens with no driver on Pro/Max (Macworld)', 'weight': '1.9 kg (Macworld)'}}, {'slug': 'fopo-s788-16-inch-triple-laptop-screen-extender', 'model': 'FOPO S788', 'cells': {'screens': '3 (4 displays)', 'panels': '3 × 16-inch 1920×1200 IPS, 16:10', 'video': 'USB-C or dual-head USB-A to USB-C; FOPO driver required; PD power supply', 'mac16': 'Driver install; allow UsbDisplay under Screen Recording; FOPO lists M1–M3 Macs', 'weight': '2.64 kg'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Cost per added screen:</strong> S9G $299.99 ÷ 2 = $150.00; S788 $499.99 ÷ 3 = $166.66; S11 $399.99 ÷ 2 = $200.00; S788C 16-inch $599.99 ÷ 3 = $200.00; Trio 3 Pro $433.49 ÷ 2 = $216.75 (maker stores, 2026-11-08).</li><li><strong>Weight hung per added screen:</strong> S788 2.64 kg ÷ 3 = 0.88 kg; Trio 3 Pro 1.9 kg ÷ 2 = 0.95 kg; S11 2 kg ÷ 2 = 1.0 kg; S9G 2.4 kg ÷ 2 = 1.2 kg (UPERFECT's figure).</li><li><strong>1920×1200 vs 1920×1080:</strong> 1200 ÷ 1080 = 1.11, so a 16:10 panel shows 11% more rows of a document or spreadsheet than a 1080p panel of the same width.</li><li><strong>Triple vs quad:</strong> the S11, S9G and Trio 3 Pro give laptop + 2 = 3 displays. Despite its 'Triple' name, the S788 gives laptop + 3 = 4 displays.</li></ul><table><thead><tr><th>Your setup</th><th>Fits best</th><th>Why</th></tr></thead><tbody><tr><td>16-inch MacBook Pro, any Apple-silicon generation</td><td>FOPO S11 {buy:fopo-s11-dual-16-inch-laptop-screen-extender}</td><td>No driver; FOPO names Pro/Max chips as supported; streaming still works</td></tr><tr><td>16-inch Windows laptop with a full-featured USB-C port plus HDMI</td><td>FOPO S9G {buy:fopo-s9g-dual-16-inch-laptop-screen-extender}</td><td>Same 1920×1200 16:10 format for $100 less, detachable screens</td></tr><tr><td>Laptop with only one video-capable port, or none</td><td>FOPO S788</td><td>Runs over USB with a driver, and adds a third screen</td></tr><tr><td>13–16-inch MacBook, sharper panels wanted</td><td>Mobile Pixels Trio 3 Pro {buy:mobile-pixels-trio-3-pro}</td><td>2240×1400 on 14-inch panels at 1.9 kg, but smaller than 16-inch</td></tr></tbody></table><h2>Will both screens work on a 16-inch laptop without a driver?</h2><p>A driver-free extender shows up as two ordinary external monitors, so the laptop has to drive two external displays itself. Each screen needs its own video path: a USB-C port that carries video (DisplayPort Alt Mode or Thunderbolt) or HDMI. FOPO's S9G listing warns that a charging-only USB-C port cannot carry video.</p><p><strong>16-inch MacBook Pro:</strong> Apple has never sold a 16-inch MacBook Pro with a base chip. The first Apple-silicon 16-inch from 2021 drives up to two external displays with the M1 Pro and three at 6K plus one at 4K with the M1 Max. Today's 16-inch comes only with the M5 Pro, which drives three external displays over any mix of Thunderbolt and HDMI, or the M5 Max, which drives four. Its ports are three Thunderbolt 5 USB-C ports plus HDMI. The one-display limit applies to base M1 and M2 Macs, and FOPO's S11 listing excludes only base M1, M2 and M3 chips. Every 16-inch MacBook Pro can therefore run both S11 screens natively.</p><p><strong>What a driver costs you:</strong> FOPO's S788 setup asks you to install its driver and allow UsbDisplay under Screen Recording on a Mac. Plugable documents what USB-graphics drivers do on macOS. Once DisplayLink software has Screen Recording permission, macOS turns off HDCP system-wide, including on displays the Mac drives itself. With a Silicon Motion USB-graphics device connected, protected video such as Netflix, Prime Video and Blu-ray will not play on any screen, the laptop's own included. Plugable also notes that macOS 15 and later may ask you to renew the Screen Recording permission from time to time. FOPO does not say which chip UsbDisplay uses, but both families Plugable documents block protected video. Expect to unplug the S788 before you stream.</p><h2>Not recommended</h2><p><strong>FOPO S788 for a three-screen setup on a 16-inch MacBook Pro.</strong> {buy:fopo-s788-16-inch-triple-laptop-screen-extender} adds a third 16-inch screen and is the cheapest per screen at $166.66. However, it reaches the Mac only through a USB driver, with an extra power supply and the protected-video trade-off above, and FOPO's spec list names M1–M3 Macs only. A 16-inch MacBook Pro already drives two native screens, so for laptop + 2 the S11 does the job without those costs. Choose the S788 only if you want four displays, or if your laptop lacks two video-capable outputs.</p>\n",
+ "sources": [('FOPO S11 price, 2 × 16-inch 1920×1200, 300 cd/m², 800:1, 2 kg, 12–18.5-inch fit, driver not required, Mac chip support (read 2026-11-08)', 'https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender'), ('FOPO S9G price, detachable 2 × 16-inch 1920×1200 16:10 IPS, video-capable USB-C or USB-C + HDMI, 1-year warranty and 30-day returns (read 2026-11-08)', 'https://www.fopomonitor.com/products/fopo-s9g-dual-screen-extender'), ('FOPO S788 price, three 16-inch 1920×1200 screens, 2.64 kg, driver and UsbDisplay Screen Recording step, M1–M3 macOS list (read 2026-11-08)', 'https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender'), ('FOPO S788C 16-inch variant price of $599.99 (read 2026-11-08)', 'https://www.fopomonitor.com/products/fopo-s788c-16-inch-triple-laptop-screen-extender'), ('16-inch MacBook Pro chips (M5 Pro, M5 Max), external display counts and ports (read 2026-11-08)', 'https://www.apple.com/macbook-pro/specs/'), ('MacBook Pro 16-inch 2021: M1 Pro up to two external displays, M1 Max three 6K plus one 4K (read 2026-11-08)', 'https://support.apple.com/en-us/111901'), ('Plugable: DisplayLink Screen Recording permission disables HDCP system-wide on macOS (read 2026-11-08)', 'https://kb.plugable.com/en_US/why-doesnt-streaming-video-play-correctly-when-using-a-docking-station-with-my-mac'), ('Plugable: Silicon Motion USB graphics do not support HDCP, and protected video fails on every monitor including the built-in one (read 2026-11-08)', 'https://kb.plugable.com/ja_JP/do-silicon-motion-graphics-adapters-and-docking-stations-work-on-macos'), ('Plugable: InstantView needs Screen Recording permission, which macOS 15+ may ask you to renew (read 2026-11-08)', 'https://kb.plugable.com/en_US/my-silicon-motion-based-usb-docking-station-or-usb-video-adapter-is-not-working-as-expected'), ('Macworld (Simon Jary, 2026-04-02): Trio 3 Pro 2 × 14-inch 2240×1400, 300 nits, 1.9 kg, fits 13–16-inch MacBooks, driver needed only on plain M1/M2 and the MacBook Neo (read 2026-11-08)', 'https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html'), ("Mobile Pixels Trio 3 Pro price of $433.49 at the maker's store (read 2026-11-08)", 'https://mobilepixels.us/products/trio'), ('UPERFECT lists the FOPO S9G at 300 nits and 2.4 kg (read 2026-11-08)', 'https://uperfect.com/blogs/portable-monitor/best-triple-screen-laptop-extenders')],
+ "published": '2026-11-03',
+ "checked": '2026-11-08',
+ "updated": '2026-11-08'},
 
 {'slug': 'solar-panel-for-blink-outdoor-4-without-a-camera-bundle',
  'question': 'G89 (Awin brands: solar panel for a Blink Outdoor 4 sold separately)',
