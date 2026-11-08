@@ -1,0 +1,112 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Samsung's 45W 'Super Fast Charging 2.0' needs a 45W adapter plus a 5A cable, or that the built-in retractable cables on these 'charger with cable' blocks top out at 3 A. On the UGREEN X605, the retractable cable's PPS range is 5–21 V at up to 3 A, and only the separate USB-C port offers 5–11 V at up to 4.5 A. ESR also rates its Xtend 45W at up to 3 A.",
+ "standout": 2,
+ "standout_why": "Whoa Home (rank 3/4) is the only rival I could read that touches this. It says PPS is 'what a Samsung needs for Super Fast Charging', 'for 100 W the cable must be rated for 5 A', and 'A cheap cable silently limits a 140 W charger to 60 W'. It never says Samsung's 45W mode needs a 5A cable, and it never mentions built-in or retractable cables. Tom's Hardware's best-chargers page came back truncated with no body text, and Android Authority returned 403, so I could not check either one. ChatGPT's own answer says the Anker 45W is 'better for compatible Samsung phones that support 45W fast charging' but never mentions the cable rating.",
+ "decides": "For a shopper with a Galaxy S22–S24 Ultra or Plus (45W-capable), every retractable 'block with cable' on our page except possibly the UGREEN 100W cuts charging to the 25W class through its built-in cable. That covers the UGREEN X605 (3 A cable), the ESR Xtend 45W (3 A max) and the Anker Nano 35W (no PPS listed, 3 A max). On the X605 they need the separate USB-C port and their own 5A cable. For a 45W Samsung phone, a block that ships with a separate cable fits better, such as the Anker Nano 45W A2692 with PPS 5–11 V at 5 A. Anker says S25+ and S25 Ultra reach Super Fast Charging with a 3A cable too, but Samsung's US page says a 3A cable 'won't work well' for 2.0, so the safe advice is a 5A cable. This does not change anything for iPhone buyers.",
+ "candidates": [
+  "UGREEN Nexode 65W Retractable (X605)",
+  "ESR Xtend 45W Retractable (2D001)",
+  "Anker Nano Charger 35W Retractable (A2658)",
+  "Belkin UltraCharge Retractable 67W (WCH022)",
+  "UGREEN Nexode 100W Retractable",
+  "Anker Nano Charger 45W with USB-C cable (A2692)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Samsung requirement for Super Fast Charging 2.0",
+   "value": "45W or 60W USB-C adapter plus a 5A-rated USB-C cable; 'A 3A cable won't work well here'",
+   "source": "https://www.samsung.com/us/support/troubleshoot/TSG10013503/",
+   "source_title": "Samsung Galaxy device is not fast charging | Samsung US",
+   "read": "2026-11-08",
+   "note": "Same page, for 25W Super Fast Charging: 'Use a 25W USB-C adapter. A 3A-rated cable might work but could limit the speed.'"
+  },
+  {
+   "product": "general",
+   "label": "Samsung Galaxy S24 guide: what triggers 'super fast charging 2.0'",
+   "value": "'45W TA + 5A cable (E-marked)'; 'Super-fast charging will not function with a standard charger'; 'Standard S24 cables only support 25W charging'",
+   "source": "https://www.samsung.com/uk/support/mobile-devices/how-to-use-super-fast-charging-on-galaxy-s24-ultra-s24-plus-and-s24/",
+   "source_title": "How to use super fast charging on Galaxy S24 Ultra, S24+ and S24 | Samsung UK",
+   "read": "2026-11-08",
+   "note": "Samsung UK support page. It does not use the word PPS."
+  },
+  {
+   "product": "UGREEN Nexode 65W Retractable (X605)",
+   "label": "PPS range on the built-in retractable cable",
+   "value": "5–21 V at up to 3 A; fixed PD 60 W (20 V / 3 A max)",
+   "source": "https://techtest.org/ugreen-x605-test-65w-ladegeraet-mit-ausziehbarem-usb-c-kabel-im-test/",
+   "source_title": "UGREEN X605 Test: 65W Ladegerät mit ausziehbarem USB-C Kabel im Test (techtest.org, Michael Barton, 2025-07-04)",
+   "read": "2026-11-08",
+   "note": "Barton writes: 'Anscheinend nutzt hier UGREEN ein Kabel, das auf 3A limitiert ist' (UGREEN appears to use a cable limited to 3 A). He infers, without measuring, a ceiling of 25–30 W for Samsung phones before the S25 Ultra. I could not open ugreen.com to confirm (HTTP 429)."
+  },
+  {
+   "product": "UGREEN Nexode 65W Retractable (X605)",
+   "label": "PPS range on the separate USB-C port",
+   "value": "5–11 V at up to 4.5 A; fixed PD 65 W (20 V / 3.25 A)",
+   "source": "https://techtest.org/ugreen-x605-test-65w-ladegeraet-mit-ausziehbarem-usb-c-kabel-im-test/",
+   "source_title": "UGREEN X605 Test: 65W Ladegerät mit ausziehbarem USB-C Kabel im Test (techtest.org, Michael Barton, 2025-07-04)",
+   "read": "2026-11-08",
+   "note": "11 V × 4.5 A ≈ 49.5 W, so this port can feed Samsung's 45W PPS mode, but only through a separate 5A cable. Barton loaded the port at 65 W for more than 4 hours: it passed, reached about 90 °C, and ran at 79–90% efficiency."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable (2D001)",
+   "label": "Output range (maker support page)",
+   "value": "5–20 V, up to 3 A, 45 W max total when both ports are in use; protocols PD3.0, PD2.0, QC3.0, QC2.0, UFCS, AVS, PPS",
+   "source": "https://www.esrtech.com/en-ca/apps/help/product/2d001",
+   "source_title": "ESR Xtend 45W Retractable Charger, help page (2D001)",
+   "read": "2026-11-08",
+   "note": "ESR's US store listing (via storecheck search) says 'supports PD 3.2 AVS and PPS' and 'up to 45W output with dynamic 45–60W power adjustment', with a 3.1 ft built-in cable. A 3 A ceiling rules out Samsung's 5 A / 45W mode."
+  },
+  {
+   "product": "Anker Nano Charger 35W Retractable (A2658)",
+   "label": "Output profiles",
+   "value": "5V⎓3A / 9V⎓3A / 15V⎓2.33A / 20V⎓1.75A (35 W max); no PPS ranges listed",
+   "source": "https://www.anker.com/products/a2658-35w-retractable-usb-c-charger",
+   "source_title": "Anker Nano Charger (35W, Built-In Retractable USB-C Cable) | Anker US",
+   "read": "2026-11-08",
+   "note": "The page lists Galaxy S25/S24/S23/S22 as compatible but makes no Super Fast Charging claim. Price shown: $29.99."
+  },
+  {
+   "product": "Anker Nano Charger 45W with USB-C cable (A2692)",
+   "label": "PPS profiles and Anker's Samsung cable note",
+   "value": "PPS 5.0–11.0 V⎓5.0 A (45 W max); 4.5–21.0 V⎓2.25 A; 5.0–16.0 V⎓3.0 A. Anker: 'Samsung S22 to S24+ and Ultra models require 5A cables to enable Super Fast Charging'; 'both 3A and 5A cables support Super Fast Charging for S25+ and S25 Ultra'",
+   "source": "https://www.anker.com/products/a2692-45w-usb-c-fast-charger",
+   "source_title": "Anker Nano Charger (45W) with USB-C to USB-C Cable | Anker US",
+   "read": "2026-11-08",
+   "note": "Comes with a 6 ft USB-C cable, but the page gives no 3A/5A rating for it. Price shown: $25.99. This is probably the '45W ... Anker Charger with USB-C Cable' card ChatGPT showed for $29.99, but I did not confirm the match."
+  },
+  {
+   "product": "general",
+   "label": "Anker support: 45W label conditions",
+   "value": "The 'Super fast charging 2.0' label needs a 5A (100 W) USB-C cable, a 45W-capable Samsung, and a charger that follows the '9V/5A PPS protocol'. Most Anker 45W PPS chargers show only 'Super fast charging', with charge time 'nearly the same'.",
+   "source": "https://service.anker.com/article-description/Why-does-my-Samsung-phone-not-appear-Super-fast-charging-2-0",
+   "source_title": "Why does my Samsung phone not appear \"Super fast charging 2.0\"? | Anker Support",
+   "read": "2026-11-08",
+   "note": "The article also says the label may not appear when several ports are in use, because each port gets less power."
+  },
+  {
+   "product": "Belkin UltraCharge Retractable 67W (WCH022)",
+   "label": "Maker page: protocol and cable rating",
+   "value": "'Up to 67W from a single port'; lists Galaxy S21–S25 as compatible; $39.99, out of stock until Wed Nov 11 2026",
+   "source": "https://www.belkin.com/p/retractable-gan-wall-charger-67w/WCH022dqWH.html",
+   "source_title": "UltraCharge Retractable GaN Wall Charger 67W | Belkin US",
+   "read": "2026-11-08",
+   "note": "The page lists no PPS ranges, no PD profiles, and no ampere rating for the retractable cable."
+  }
+ ],
+ "unsourced": [
+  "Belkin WCH022: PPS ranges and the built-in cable's current rating. Belkin's US page lists neither, and searches found only retailer listings, no lab test.",
+  "UGREEN Nexode 100W Retractable: PPS ranges and whether its 100 W built-in cable is a 5A e-marked cable. ugreen.com returned HTTP 429 on every attempt, and storecheck returned no body text.",
+  "UGREEN X605: confirmation from UGREEN's own page of the 3 A cable limit (blocked by HTTP 429). The figure comes from techtest.org only.",
+  "ESR Xtend 45W: exact PPS voltage and current range. ESR gives only a combined '5–20V and up to 3A'.",
+  "A measured charging test of a Galaxy S24/S25 Ultra on any of these built-in cables. No reviewer I found reported one.",
+  "Tom's Hardware best-chargers page (truncated) and Android Authority (403): I could not read them to check whether they cover the 5A-cable requirement."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0565560999999999
+ }
+}
