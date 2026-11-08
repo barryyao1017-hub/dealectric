@@ -129,7 +129,7 @@ def harvest(slug: str, runs: list[str]) -> dict:
     seen = {(x["chat"], x["at"]) for x in old["chats"]}
     allc = old["chats"] + [x for x in chats if (x["chat"], x["at"]) not in seen]
     tags = []
-    for ch in allc:
+    for ch in sorted(allc, key=lambda x: x.get("at") or "", reverse=True):   # newest search first: what ChatGPT types today
         for q in ch["queries"]:
             q = re.sub(r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\b\s*", "", q).strip()
             q = re.sub(r"\s{2,}", " ", q)

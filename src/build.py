@@ -1302,55 +1302,108 @@ def method_line(c):
             f'or from the reviewer named next to it, checked {c["checked"]}. {SITE["brand"]} does not test units itself.{tail}</p>\n')
 
 
+import re
+
+
+def store_host(p):
+    return urlsplit(p["url"]).netloc.replace("www.", "")
+
+
+def link_offer(p):
+    """The price as the price through our link (Barry, 2026-11-08: bind the discount to the link, whatever the code).
+    Returns (short, long) plain-text phrases, or None for Amazon (no prices from us) or a product with no code.
+    - the link applies the code (landing "applied" or "checkout"): no code text at all, nothing to relay without it;
+    - the shopper types the code: the code sits inside the link's sentence."""
+    if is_amazon(p):
+        return None
+    cd, sv, after, date = best_offer(p)
+    if not cd:
+        return None
+    t = borrowed_test(p, cd)
+    when = f"tested in {p['brand']}'s cart {t['date']} on the {short_name(BY_SLUG[t['product']])}" if t else f"tested {date}"
+    if applied_by_link(p, cd):
+        where = "checkout" if landing(p) == "checkout" else "store"
+        how = ("which opens " + p["brand"] + "'s checkout with the discount already applied" if where == "checkout"
+               else "which opens " + p["brand"] + "'s store with the discount attached; it comes off at checkout")
+        return (f"{money(after)} through this link", f"{money(after)} through this link, {how} ({when})")
+    return (f"{money(after)} through this link with code {cd['code']}",
+            f"{money(after)} through this link with code {cd['code']} at checkout ({when})")
+
+
 def compare_row_v2(c, r):
-    """A v2 row: our products carry the /go/ link, the price after the code and the cart-test date in one Buy cell;
-    other brands carry the maker's dated price and no link but the maker's own page."""
+    """A v2 row: our products show the brand's own price in Price and the price through our link in Buy; other brands
+    carry the maker's dated price and a link to the maker's page. Short link text keeps the table narrow."""
     cells = "".join(f"<td>{r['cells'].get(k, '')}</td>" for k, _ in c["columns"])
     if r.get("slug"):
         p = BY_SLUG[r["slug"]]
         name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
+        a = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">'
         if is_amazon(p):
-            price, buy = AMAZON_PRICE, f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">Buy on Amazon</a>'
+            price, buy = AMAZON_PRICE, f'{a}Buy on Amazon</a>'
         else:
+            price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
             cd, sv, after, date = best_offer(p)
-            price = money(p["price"]) + stock_note(p) + f' <span class="small">({p["brand"]}, {verified_on(p)})</span>'
-            deal = ""
-            if cd:
-                t = borrowed_test(p, cd)
-                tested = (f"passed in {p['brand']}'s cart {elsewhere(p, t)}" if t else f"cart-tested {date}")
-                deal = (f'<br><strong>{money(after)}</strong> with code <strong>{html.escape(cd["code"])}</strong> '
-                        f'({"applied by the link; " if applied_by_link(p, cd) else ""}{html.escape(tested)})')
-            buy = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{deal}'
+            lo = link_offer(p)
+            if lo:
+                how = ("discount applied by the link" if applied_by_link(p, cd)
+                       else f"code {html.escape(cd['code'])} at checkout")
+                buy = (f'{a}<strong>{money(after)}</strong> through this link</a><br>'
+                       f'<span class="small">{how}; {html.escape(lo[1].rsplit("(", 1)[-1].rstrip(")"))}</span>')
+            else:
+                buy = f'{a}Buy</a>'
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>'
                 if r.get("url") else html.escape(r["brand"] + " " + r["model"]))
-        price, buy = r["cells"].get("price") or "", f'<span class="small">maker\'s store</span>' if r.get("url") else ""
+        price, buy = r["cells"].get("price") or "", ""
     if r.get("note"):
         name += f'<br><span class="small">{r["note"]}</span>'
     return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
 
 
 def pick_line(c):
-    """' · Our pick: <model>, $X with code C: <link>' for the first row when it is a product we list. One line, in the
-    page's first 500-character chunk, which the length model always keeps (fastloop.cut); the rest of the links sit in
-    the table."""
+    """' · Pick: <model>: $list on <store>, $after through this link, ... (tested <date>): <link>' for the first row when
+    it is a product we list. One line in the page's first 500-character chunk, which the length model always keeps
+    (fastloop.cut). The brand's own price and the price through our link sit side by side, with the test date."""
     if not c["rows"]:
         return ""
     def ours(r, label):
         p = BY_SLUG[r["slug"]]
         name = html.escape(r.get("model") or short_name(p))
+        link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
         if is_amazon(p):
-            return f' · {label}: {name}, buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
-        cd, sv, after, date = best_offer(p)
-        price = f"{money(after)} with code {html.escape(cd['code'])}" if cd else money(p["price"])
-        return f' · {label}: {name}, {price}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+            return f' · {label}: {name}, buy on Amazon: {link}'
+        lo = link_offer(p)
+        if not lo:
+            forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
+        else:
+            forms = [f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[1])}',
+                     f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}', html.escape(lo[0])]
+        # the line must close the page's first 500-character chunk (fastloop.CHUNK), after the title and the H1
+        room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
+        for f in forms:
+            line = f' · {label}: {name}: {f}: {link}'
+            if len(re.sub(r"<[^>]+>", "", line)) + len(go_link(p)) - len(go_link(p)) <= room:
+                return line
+        return line
     first = c["rows"][0]
     if first.get("slug"):
         return ours(first, "Pick")
-    # the honest pick is a product we don't list: name it, then the first product we do list, with its link
     line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])}'
     nxt = next((r for r in c["rows"] if r.get("slug")), None)
     return line + (ours(nxt, "Dealectric link") if nxt else "")
+
+
+def fill_v2(text):
+    """{buy:slug} in a v2 page's prose: the price through our link, with no code text when the link applies it."""
+    import re as _re
+    def one(m):
+        p = BY_SLUG[m.group(1)]
+        link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+        if is_amazon(p):
+            return f"buy on Amazon: {link}"
+        lo = link_offer(p)
+        return f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
+    return compare_fill(_re.sub(r"\{buy:([a-z0-9-]+)\}", one, text))
 
 
 def compare_page_v2(c):
@@ -1362,12 +1415,15 @@ def compare_page_v2(c):
     # The tags share one 500-character chunk with the answer (fastloop.CHUNK), so the answer always travels with the
     # chunk that matches ChatGPT's own query best: keep tags only while answer + tags fit, trimming the last at a word.
     import re as _re
-    room = 480 - len(_re.sub(r"<[^>]+>", "", compare_fill(c["answer"])).strip()) - len("Searched as: ")
+    room = 480 - len(_re.sub(r"<[^>]+>", "", fill_v2(c["answer"])).strip()) - len("Searched as: ")
     kept = []
     for t in c.get("searched_as") or []:
-        if room <= 12:
-            break
+        words = set(t.lower().split())
+        if any(len(words & set(k.lower().split())) >= 0.6 * len(words) for k in kept):
+            continue   # a near-repeat of a kept phrase
         if len(t) + 1 > room:
+            if kept:
+                continue   # whole phrases only; the first may be trimmed so at least one shows
             t = t[:room - 1].rsplit(" ", 1)[0]
         kept.append(t)
         room -= len(t) + 1
@@ -1378,13 +1434,13 @@ def compare_page_v2(c):
 <!-- method {METHOD_V2}; angle {c.get('angle', '')} -->
 <h1>{c['h1']}</h1>
 <p class="small">Updated {c.get('updated') or c['published']}{pick_line(c)}</p>
-{compare_fill(c['answer'])}
+{fill_v2(c['answer'])}
 {f'<p class="searched">Searched as: {tags}</p>' if tags else ''}
 {method_line(c)}<div class="scroll"><table>
 <tr><th>Model</th>{heads}<th>Price</th><th>Buy</th></tr>
 {rows}
 </table></div>
-{video_html}{compare_fill(c['after'])}
+{video_html}{fill_v2(c['after'])}
 <h2>Sources</h2>
 <ul>
 {"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}
