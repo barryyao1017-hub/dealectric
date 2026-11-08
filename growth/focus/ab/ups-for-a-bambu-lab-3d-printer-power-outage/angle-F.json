@@ -1,0 +1,141 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that a LiFePO4 station claiming a ≤10 ms UPS switchover with 980 W pass-through (BLUETTI Elite 30 V2) costs $289.99 on the maker's store, the same money as the 1500 VA lead-acid UPSes it recommended, or that EcoFlow's own store sells the DELTA 3 Classic (same 1,024 Wh, 1,800 W and 10 ms auto-switch claim) at $479, $100 below the $579 DELTA 3 it showed.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Bambu forum thread 'Power Interruption Alert! Which UPS for a P1S+AMS?' (forum.bambulab.com/t/41205), which names models (CP1500PFCLCD, a 750 VA unit, APC Smart-UPS 1500, a 2000 VA/1200 W unit) but gives no prices and no measured transfer times, and against the Bambu spec and quick-start PDFs, which have no backup-device content. Only ChatGPT's own cards had prices (CyberPower $239.95, APC $299.99/$339.99, DELTA 3 $579, Anker C1000 $449.99, and an unpriced AC180). None of them puts a maker-store price on a ≤10 ms LiFePO4 unit at UPS money, or mentions the cheaper DELTA 3 Classic.",
+ "decides": "This reframes the flicker pick. At the same price as a CyberPower or APC 1500 VA UPS, the Elite 30 V2 claims the same class of switchover (≤10 ms). Its 980 W pass-through covers the P1S's 350 W maximum at 110 V, and it holds about 245 usable Wh (about 1.6 h at 150 W) where the lead-acid UPSes give tens of minutes. For whole-print outages, the 1 kWh pick at the maker's price becomes the DELTA 3 Classic at $479 (10 ms claim) instead of the $579 DELTA 3. The AC180 ($499) and P1800 ($399) are cheaper per Wh, but our page records a 20 ms switchover for both, double the 10 ms claims.",
+ "candidates": [
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BR1500MS2",
+  "EcoFlow DELTA 3",
+  "EcoFlow DELTA 3 Classic",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C1000 / C1000 Gen 2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 200 V2",
+  "ALLPOWERS P1800",
+  "ALLPOWERS R600",
+  "Jackery Explorer 1000 v2",
+  "Tenergy T320"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$289.99 (in stock)",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (Blush Pink)",
+   "read": "2026-11-08",
+   "note": "storecheck product; single variant, compare_at also $289.99 (not a sale price)."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover and pass-through",
+   "value": "≤10 ms switchover; 980 W bypass; 600 W rated, 1,500 W lifting; 288 Wh LFP",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (Blush Pink)",
+   "read": "2026-11-08",
+   "note": "Maker's claim: 'Seamless switch with 980W bypass power'. The 980 W bypass is above the P1S's 350 W maximum at 110 V (Bambu spec, also holmes4's ~350 W startup peak on 120 V in forum thread 41205). Runtime: 288 Wh × 0.85 ÷ 150 W ≈ 1.6 h. Where it loses: 288 Wh won't finish a long print."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (in stock; list $1,232)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "storecheck search on bluettipower.com. 1,152 Wh, 1,800 W. Where it loses: our page records a 20 ms switchover, double the DELTA 3 / Elite 30 V2 claims. I didn't re-open a BLUETTI source for the 20 ms figure in this pass."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00 (in stock)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "storecheck search. Where it loses: $899 for 2,073.6 Wh only pays off when an outage must cover a 10-hour print. A 1 kWh unit covers about 5.7 h at 150 W (1,024 × 0.85 ÷ 150)."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Price, EcoFlow US store",
+   "value": "$579.00 (in stock)",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "storecheck search. Same price as ChatGPT's Best Buy card ($579). 1,800 W AC, 1–5 kWh expandable, 5-year warranty per store text. Where it loses: the DELTA 3 Classic is $100 cheaper with the same capacity, output and 10 ms claim."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price and UPS claim, EcoFlow US store",
+   "value": "$479.00 (in stock); 1,024 Wh; 1,800 W (3,600 W surge); 10 ms auto-switch",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-08",
+   "note": "storecheck search text from EcoFlow's store: '10ms Auto-Switch: Keep critical devices like NAS systems and servers running smoothly'; 'Up to 5-Year Warranty: 3-year standard + 2-year on app registration'. Runtime: 1,024 × 0.85 ÷ 150 ≈ 5.8 h."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Price, ALLPOWERS US store",
+   "value": "$399.00 (listed available; list $1,059.98)",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-08",
+   "note": "storecheck search returned available: true. Our page says 'pre-order, ships Dec 7', so re-check before publishing. The product-page fetch hit HTTP 429. Where it loses: our page records a 20 ms switchover from the manual."
+  },
+  {
+   "product": "ALLPOWERS R600",
+   "label": "Price, ALLPOWERS US store",
+   "value": "$218.00 (Beige listing out of stock; list $499)",
+   "source": "https://iallpowers.com/products/allpowers-r600-beige-portable-power-station-600w-299wh-lifepo4-battery",
+   "source_title": "ALLPOWERS R600 Beige Portable Power Station 600W 299Wh LiFePO4 Battery",
+   "read": "2026-11-08",
+   "note": "storecheck search; only the Beige listing showed up. Where it loses: that listing is out of stock today."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Rating and warranty, CyberPower datasheet",
+   "value": "1,500 VA / 1,000 W; 3-year warranty including battery",
+   "source": "https://dl4jz3rbrsfum.cloudfront.net/documents/CyberPower_DS_CP1500PFCLCD.pdf",
+   "source_title": "CyberPower CP1500PFCLCD datasheet",
+   "read": "2026-11-08",
+   "note": "The runtime chart and transfer time weren't in the extractable text. Where it loses: sealed lead-acid gives minutes, not hours. The cited forum thread offers only guesses (30–45 min, ~20 min), with no measurement."
+  },
+  {
+   "product": "APC Back-UPS Pro BR1500MS2",
+   "label": "Rating, APC/Schneider US product page",
+   "value": "1,500 VA / 900 W; page shows no price and says 'Non-Stock'",
+   "source": "https://www.se.com/us/en/product/BR1500MS2/apc-back-ups-pro-1500va-sinewave-ups-battery-backup-and-surge-protector-10-outlets-2-usb-charging-ports-avr-lcd-interface/",
+   "source_title": "APC Back-UPS Pro 1500VA Sinewave UPS BR1500MS2 | Schneider Electric",
+   "read": "2026-11-08",
+   "note": "No maker price, transfer time or runtime on the fetched page. Where it loses: lead-acid runtime, and at ChatGPT's $299.99–339.99 it costs more than the Elite 30 V2."
+  },
+  {
+   "product": "general",
+   "label": "P1S draw on 120 V, cited forum thread",
+   "value": "100–130 W printing; ~350 W startup peak",
+   "source": "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205",
+   "source_title": "Power Interruption Alert! - Which UPS for a P1S+AMS? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "holmes4's measurement. The thread gives no UPS prices and no measured transfer times. Heisenberg's '20 ms is fine' claim has no source."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 3 Plus price on us.ecoflow.com: store search returned only RIVER 3 Plus extra batteries and accessories, and /products/river-3-plus-portable-power-station returned 404.",
+  "Anker SOLIX C1000 / C1000 Gen 2 maker price: anker.com and ankersolix.com storecheck both returned 404; ChatGPT's $449.99 card not verified.",
+  "CyberPower CP1500PFCLCD maker price and runtime at 150 W: the cyberpowersystems.com product page returned 405 and the datasheet runtime chart wasn't in extractable text. Newegg's $239.95 from ChatGPT not reopened.",
+  "APC BR1500MS2 price, transfer time and runtime at 150 W: se.com page lists none.",
+  "DELTA 3 Classic vs DELTA 3 differences (expandability, ports): the product page fetch hit HTTP 429.",
+  "BLUETTI AC180 switchover time on BLUETTI's own page: not shown in the product text I pulled.",
+  "Jackery Explorer 1000 v2, BLUETTI Elite 100 V2, EcoFlow DELTA 3 Plus and Tenergy T320 maker prices today: not checked within the tool budget.",
+  "Any lab measurement of a power station actually holding a P1S through a mains cut: not found within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 0.9593379999999999
+ }
+}

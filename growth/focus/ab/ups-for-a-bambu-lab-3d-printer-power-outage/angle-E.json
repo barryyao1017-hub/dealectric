@@ -1,0 +1,106 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured switchover time for any power station. StorageReview timed the switch from wall to battery with a Quarch Mains Power Analysis Module and got 9 ms for the EcoFlow RIVER 3 Plus and just over 8 ms for the EcoFlow DELTA 3 Plus. No measured figure exists for the BLUETTI AC180 (rated 20 ms) or the BLUETTI Elite 200 V2 (rated 15 ms).",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: Bambu forum thread 41205 (Which UPS for a P1S+AMS), forum thread 91609 (P1S mid-print power loss), the Bambu P1S Quick Start and Tech Specs PDFs, and our own page. I also checked the uncited P1S power-consumption thread 173002 and the CyberPower datasheets. The forum threads give only user power readings and guesses: holmes4 saw about 100–130 W while printing and about 350 W at startup on 120 V. Heisenberg called 20 ms 'standard' without a source. None of them has a lab-measured transfer time or a measured usable capacity for any candidate. In all three chats ChatGPT said a power station's advertised UPS time 'does not guarantee' and told the shopper to test it. The measured figures fill exactly that gap. Our page already lists '9 ms measured' for the RIVER 3 Plus but doesn't say who measured it or when.",
+ "decides": "This supports the flicker-proof pick among power stations: the only candidates with a lab-measured sub-10 ms switchover are the EcoFlow RIVER 3 Plus (short outages) and the EcoFlow DELTA 3 Plus (long outages). The AC180, Elite 200 V2 and ALLPOWERS units have only maker ratings of 10–20 ms. No one has measured whether a P1S itself rides through a given gap, so a 'test it yourself' line still belongs on the page. StorageReview's measured usable capacities confirm the runtime column roughly. At a 150 W PLA average: AC180 1,030 Wh ≈ 6.9 h (our page says 6.4), Elite 200 V2 1,910 Wh ≈ 12.7 h (page says 11.5), DELTA 3 Plus 910 Wh ≈ 6.1 h.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS P1800",
+  "ALLPOWERS R600",
+  "Anker SOLIX C1000 Gen 2",
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BR1500MS2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "UPS switchover time, measured",
+   "value": "9 ms (rated <10 ms)",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review",
+   "source_title": "EcoFlow RIVER 3 Plus Review – StorageReview (Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-08",
+   "note": "StorageReview fully charged the unit with a workstation plugged in, cut the incoming power and timed the change from line to inverter with a Quarch Mains Power Analysis Module."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Discharge, measured",
+   "value": "0.43 kWh (430 Wh) reported vs 286 Wh rated",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review",
+   "source_title": "EcoFlow RIVER 3 Plus Review – StorageReview (Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-08",
+   "note": "The review calls this 'slightly more than its rated capacity' and doesn't explain the gap. It may be a test with an extra battery or a typo. Don't use it for runtime."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "UPS switchover time, measured",
+   "value": "just over 8 ms (rated 10 ms)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – StorageReview (Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-08",
+   "note": "Same Quarch Mains Power Analysis Module method: workstation plugged in, incoming power removed."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Usable AC energy, measured",
+   "value": "910 Wh of 1,024 Wh rated (about 89 %)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – StorageReview (Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-08",
+   "note": "Full 100 %→0 % discharge. 910 Wh ÷ 150 W PLA average ≈ 6.1 h. 910 ÷ 250 W ≈ 3.6 h."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Usable AC energy, measured",
+   "value": "1,030 Wh of 1,152 Wh rated, at a 350 W load",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review – StorageReview (Kevin OBrien, 2023-05-26)",
+   "read": "2026-11-08",
+   "note": "Inverter losses are included. 350 W happens to equal the P1S's 110 V maximum. 1,030 ÷ 150 W ≈ 6.9 h (our page: about 6.4). 1,030 ÷ 250 W ≈ 4.1 h. The same review measured 1,360 Wh drawn from the wall for a 0→100 % charge (about 80 % charging efficiency). It did not measure the switchover; it only repeats the 20 ms rating."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Usable energy, measured",
+   "value": "1,910 Wh of 2,073.6 Wh rated",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review – StorageReview (Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-08",
+   "note": "Discharge load not stated. 1,910 ÷ 150 W ≈ 12.7 h. 1,910 ÷ 250 W ≈ 7.6 h. Switchover was not timed: StorageReview unplugged and replugged the wall input several times with lab systems drawing 986 W–1.1 kW and had no dropouts, and quotes BLUETTI's 15 ms claim."
+  },
+  {
+   "product": "Bambu Lab P1S",
+   "label": "Startup peak draw at 120 V, measured by an owner",
+   "value": "about 375 W (about 2.5 A) at startup; same running current as a P2S",
+   "source": "https://forum.bambulab.com/t/p2s-draws-3x-the-current/213330",
+   "source_title": "P2S draws 3x the current – Bambu Lab Community Forum (posts by Tony1, 2025-12-03 and 2025-12-05)",
+   "read": "2026-11-08",
+   "note": "Tony1 confirmed 120 V and compared clips of both printers: '1000w vs 375w at startup' (P2S vs P1S). Meter not named. This matches Bambu's 350 W at 110 V rating, and shows that ChatGPT's '~1,000 W at 110–120 V' table rows are wrong for a US P1S."
+  },
+  {
+   "product": "Bambu Lab P1S",
+   "label": "Heat-up spike at 220 V and its duration, measured by an owner",
+   "value": "850 W peak for the first 30–60 s, then about 30–70 W (cool plate); 315–350 W with a PEI plate",
+   "source": "https://forum.bambulab.com/t/p1s-power-consumption/173002",
+   "source_title": "P1S power Consumption – Bambu Lab Community Forum (posts by comecome, 2025-06-19, 2025-06-22 and 2025-07-14)",
+   "read": "2026-11-08",
+   "note": "comecome logged every second in Home Assistant at 220 V. A later post puts the burst at 15–30 s. The 220 V figure is not the US case, but it shows the peak lasts under a minute."
+  }
+ ],
+ "unsourced": [
+  "A measured UPS switchover time for the BLUETTI AC180, Elite 200 V2, Elite 30 V2, ALLPOWERS P1800/R600 or Anker SOLIX C1000 Gen 2. I checked StorageReview's AC180 and Elite 200 V2 reviews (neither timed it) and searched for oscilloscope or Quarch tests; I found only maker ratings and The Gadgeteer's untimed desk tests.",
+  "StorageReview's measured 27.4 ms for the Anker SOLIX F2000 (rated 20 ms), 38.5 ms for the EcoFlow DELTA 2 and 13.8 ms for the BLUETTI AC60. These appear only secondhand in a computingforgeeks.com table (updated 2026-10-19). StorageReview's own F2000 review (2023-12-14) has no transfer time, and I couldn't find a StorageReview DELTA 2 or AC60 page.",
+  "A measured transfer time for the CyberPower CP1500PFCLCD or APC BR1500MS2 by a named reviewer. Only the makers' 4 ms and 8–10 ms ratings were found.",
+  "A named reviewer or lab test showing a Bambu P1S printing through a switchover on a given power station, or the longest dropout the P1S's power supply can ride through. I searched forums and reviews and found only anecdotes, such as jym.mails using a RIVER 3 Plus with a P1S without reporting an unplug test.",
+  "A P1S power-draw measurement at 120 V by a named lab or magazine (Tom's Hardware, All3DP, 3DPrint.com). Only owner forum readings were found, and the Bambu wiki power-consumption page returned HTTP 402."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0260264
+ }
+}

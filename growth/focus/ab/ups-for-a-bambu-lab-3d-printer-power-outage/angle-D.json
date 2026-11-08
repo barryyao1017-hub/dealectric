@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the P1S's internal 24 V supply is only 108 W and powers everything except the heated bed, which runs straight off the mains. A line flicker or sag therefore reboots the printer through that small supply, and the CyberPower datasheet says its AVR fixes low-voltage sags 'without switching to battery mode'. A forum owner reported P1S printers freezing mid-print during brownouts on an EcoFlow DELTA 2 used as a UPS.",
+ "standout": 2,
+ "standout_why": "I compared this against the cited forum thread 41205 (Power Interruption Alert), the cited thread 91609 (P1S mid-print power loss) and the P1S spec PDF that ChatGPT cited. In 41205, holmes4 says only that 'the bed draws directly from line voltage', which is part of the finding. None of the cited pages names the 108 W internal supply, separates a brownout from a full outage, or reports how a power station behaved in a sag. In 41205, post 5 asks whether a 20 ms transfer is acceptable and gets no answer. In 91609, no one reports a transfer time or names the printer's supply. The DELTA 2 brownout report sits in an uncited result from the second chat (forum 56939/4), and ChatGPT did not pass it on in any of the three answers.",
+ "decides": "It confirms a line-interactive sine-wave UPS with AVR, such as the CyberPower CP1500PFCLCD, as the pick for flickers. Most flickers are sags rather than full outages, and the AVR raises low voltage without a battery transfer, so the printer's 108 W electronics supply never sees a gap. For long outages, a power station can still go behind or alongside the UPS, but the page should not promise that a power station's UPS mode keeps a P1S running through brownouts, because a P1S owner's DELTA 2 did not. Bed sizing on 120 V stays at the 350 W peak.",
+ "candidates": [
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BR1500MS2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3",
+  "EcoFlow RIVER 3 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab P1S",
+   "label": "Internal power supply rating and what it powers",
+   "value": "24 V, 108 W, input 100–240 V; 'It powers all systems except the heated bed.' Part no. FAC059",
+   "source": "https://www.3djake.com/bambu-lab/internal-power-supply-24v-108w",
+   "source_title": "Bambu Lab Internal Power Supply (24V 108W), P1P, P1S, X1, X1C – 3DJake",
+   "read": "2026-11-08",
+   "note": "This is a reseller's listing of Bambu's spare part, with compatibility given as P1P, P1S, X1 and X1C. The printer's electronics, motors, hotend and controller run through this supply, so its hold-up time decides whether a millisecond transfer causes a reboot."
+  },
+  {
+   "product": "Bambu Lab P1S",
+   "label": "Heated bed is fed from the mains, not the PSU",
+   "value": "Bed draws line voltage directly; on 120 V startup 'tops out at around 350' W, and printing settles at 100–130 W",
+   "source": "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205",
+   "source_title": "Power Interruption Alert! - Which UPS for a P1S+AMS? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "These are figures from forum user holmes4 on 120 V. A fixed resistive bed on mains explains why the bed's draw is about 1,000 W at 220–240 V but about 350 W at 120 V."
+  },
+  {
+   "product": "Bambu Lab X1C (same bed design as P1 series)",
+   "label": "Bed on mains, switched by contactor",
+   "value": "'The heatbed does not run through a power supply' (mugglesmuggle); the contactor 'is switched on off 3 times in about 1~1.5 sec' at print start (Jelbert)",
+   "source": "https://forum.bambulab.com/t/powersuply-glitches-on-the-net-at-start-print/149123",
+   "source_title": "Powersuply glitches on the net at start print - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "These are community posts with no Bambu staff reply. They support the split-power design: a mains bed plus a small DC supply."
+  },
+  {
+   "product": "EcoFlow DELTA 2",
+   "label": "Owner report: UPS mode during brownouts with P1S printers",
+   "value": "'doesn't reliably function as a UPS for 3D printers'; in brownouts two printers stopped mid-print with heads and beds frozen, and resuming after a restart left large print defects",
+   "source": "https://forum.bambulab.com/t/is-ecoflow-delta-2-worth-the-money/56939",
+   "source_title": "Is Ecoflow Delta 2 worth the money? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "designrama ran three P1S printers (opening post, 2024-02-09), posted an update on 2024-10-17 and later wrote 'My Delta2 died'. The same user had written in March 2024 that the switch 'doesn't interrupt the printers at all'. On the same thread, MZip reports that an X1C on a DELTA Pro kept printing through storms. This is user evidence with no measured transfer times."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "AVR handles sags without a battery transfer",
+   "value": "'AVR increases the AC power and maintains a safe voltage level without switching to battery mode'; line-interactive; 1,500 VA / 1,000 W; 3-year warranty including the battery",
+   "source": "https://dl4jz3rbrsfum.cloudfront.net/documents/CyberPower_DS_CP1500PFCLCD.pdf",
+   "source_title": "CyberPower CP1500PFCLCD datasheet (PDF)",
+   "read": "2026-11-08",
+   "note": "This is the maker's datasheet. Because a sag is corrected on the transformer instead of by a battery transfer, the P1S's 108 W supply does not face a switchover gap during brownouts."
+  }
+ ],
+ "unsourced": [
+  "Hold-up time in ms for Bambu's 108 W internal supply (FAC059). I checked the 3DJake listing, search results and Bambu's store, and none gives it. The Bambu US store (us.store.bambulab.com/products/internal-power-supply) and its myshopify mirror refused my fetcher.",
+  "Bambu's own wording on the bed being 'directly powered by the electric supply' with a 0.9–1 power factor. The page is wiki.bambulab.com/en/general/power-consumption, and it returned HTTP 402 every time. I only saw the wording in search snippets, so I did not use it as a finding.",
+  "CyberPower CP1500PFCLCD transfer time and the input voltage range it handles before switching to battery. The product page returned 405, and the datasheet text I got cut off before those rows.",
+  "BLUETTI AC180 UPS wording and its behaviour in brownouts. bluettipower.com returned 429.",
+  "The P1S tech-spec PDF (store.bblcdn.com) gave no readable text, and I had no local PDF text extractor."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8592480999999997
+ }
+}

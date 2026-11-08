@@ -1,0 +1,132 @@
+{
+ "angle": "A",
+ "gap": "None of the results ChatGPT got says that BLUETTI's own US store sells the Elite 100 V2 (1,024 Wh, '10ms UPS Backup') at the same $499 as the AC180 that ChatGPT showed as a card, whose switchover BLUETTI states as 20 ms. So at the same price, one station switches over in half the time the other does.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Bambu forum thread 'Power Interruption Alert! Which UPS for a P1S+AMS?', the 'My Experience with a P1S Mid-Print Unexpected Utility Power Loss' thread, the P1S tech-spec and quick-start PDFs, and our current page. ChatGPT's own answer gives the AC180's 20 ms. In the forum thread, Heisenberg says a 20 ms transfer 'still does not interrupt the print', but that is an assumption nobody tested. None of these pages names a same-price station with a 10 ms spec. Our current page lists the AC180 at 20 ms but does not list the Elite 100 V2 at all. None of them turns the CyberPower's 'minutes at half load' figure into delivered Wh, so a 1500 VA UPS can't be compared with a 1 kWh power station. None notes that EcoFlow and Jackery give their older or bigger models 20–30 ms 'EPS' or 'switchover' times and their newer ones 10 ms.",
+ "decides": "For keeping a P1S printing through a flicker, switchover time is the spec that matters, and a shorter one gives more margin. A 1 kWh station at $499 is now available from BLUETTI with a 10 ms rating (Elite 100 V2) instead of 20 ms (AC180). That makes the Elite 100 V2 the better 1 kWh pick at the same price. The AC180 drops to second place, because it has 128 Wh more capacity but a switchover twice as long. The CyberPower CP1500PFCLCD (4 ms typical) is still the safest pick for flickers only. Its vendor figures work out to about 83 Wh delivered at 500 W, roughly a twelfth of a 1 kWh station, so it is not a choice for riding out an outage. No published test shows a P1S rebooting on a 20 ms transfer, so the page should present this as spec margin, not as proven failure.",
+ "candidates": [
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "CyberPower CP1500PFCLCD",
+  "EcoFlow DELTA 3 Plus",
+  "Jackery HomePower 1000 v2",
+  "EcoFlow RIVER 3 Plus",
+  "BLUETTI Elite 30 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, capacity and UPS switchover (maker US store)",
+   "value": "$499.00 (compare-at $499); 1,024 Wh; 1,800 W (2,700 W lifting); '10ms UPS Backup'; LiFePO4 'over 4,000 cycles' (the store does not state the end-of-life capacity %)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py on the Shopify listing; available. The cycle count has no '% capacity' figure, so it can't be compared directly with the AC180's 'to 80%' rating."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price (maker US store)",
+   "value": "$499.00 (compare-at $499)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py; available. Same price as the Elite 100 V2."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover, cycle life, warranty (maker page)",
+   "value": "'automatically switches over in just 20ms during a power outage'; '3,500+ Cycles to 80% Original Capacity'; 5-year warranty; 1,800 W continuous / 2,700 W surge; the page states no UPS bypass-power limit",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-08",
+   "note": "The AC180's 20 ms is twice the Elite 100 V2's 10 ms at the same $499. The AC180 has 1,152 Wh against 1,024 Wh, which is 128 Wh more, or about 0.7 h more at 150 W after an 85% usable-energy factor."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover and bypass limit",
+   "value": "'≤10ms Pro-Grade UPS Backup: Seamless switch with 980W bypass power'; 600 W rated / 1,500 W lifting; 'Over 3,000 cycles' (no % stated)",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar (BLUETTI store)",
+   "read": "2026-11-08",
+   "note": "Bundle with a 100 W panel, $489.99. The 980 W bypass is far above the 350 W P1S peak on 110 V, so in UPS mode the grid-powered printer is not limited by the 600 W inverter."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Capacity, transfer time and runtime turned into delivered energy",
+   "value": "1,500 VA / 1,000 W; 4 ms typical transfer; 10 min at half load, 2.5 min at full load, which is about 83 Wh delivered at 500 W and about 42 Wh at 1,000 W; sealed lead-acid, RB1290X2 pack; pure sine wave on battery",
+   "source": "https://web2.cyberpower.com/global/en/product/sku/cp1500pfclcda",
+   "source_title": "CP1500PFCLCDa | CyberPower",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 500 W × 10/60 h = 83 Wh; 1,000 W × 2.5/60 h = 42 Wh. At 150 W, delivered energy would be higher than 83 Wh (lead-acid gives more at lighter loads), but CyberPower publishes no figure at that load. Compared with a ~1,000 Wh station at 85% usable (~870 Wh), the UPS holds roughly a tenth to a twelfth as much. This is the 'CPA' global SKU page. The US cyberpowersystems.com page returned HTTP 405."
+  },
+  {
+   "product": "EcoFlow DELTA 3 series",
+   "label": "Switchover as EcoFlow states it",
+   "value": "'10ms Auto-Switch' (DELTA 3 Max / Max Plus / Ultra Plus listings); DELTA 3 Plus solar bundle $919; '3000+ cycles' to '80% of its original capacity'; 5-year warranty",
+   "source": "https://us.ecoflow.com/products/delta-3-series-solar-generator-pv220w",
+   "source_title": "EcoFlow DELTA 3 Plus Solar Generator (PV220W)",
+   "read": "2026-11-08",
+   "note": "The 10 ms figure is printed on the Max/Ultra Plus listings in the same storecheck search (https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh). The DELTA 3 Plus bundle text I read does not repeat it."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Pro",
+   "label": "Older EcoFlow 'EPS' wording for comparison",
+   "value": "'<30ms EPS auto-switch'; $369; 768 Wh / 800 W",
+   "source": "https://us.ecoflow.com/products/river-2-pro-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Pro Portable Power Station",
+   "read": "2026-11-08",
+   "note": "Footnote for the table: EcoFlow uses 'EPS' for its 30 ms generation and 'Auto-Switch 10 ms' for DELTA 3. A shopper who sees 'UPS/EPS' on a card should check the number in ms."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "Switchover (maker US store)",
+   "value": "$549 (compare-at $1,049); 1,024 Wh; 1,500 W; 'sub-10ms switchover'; '6,000+ cycles' (no % stated)",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-08",
+   "note": "On the same store, the Explorer 2000 v2 is listed as 'Switchover happens in under 20ms' and the Explorer 300 as '4,000+ charge cycles to 70% capacity'. Those are the two normalisation traps this angle is about: a 20 ms rating against a 10 ms one, and a cycle life counted to 70% against one counted to 80%."
+  },
+  {
+   "product": "general",
+   "label": "Owner report: P1P/P1S kept printing on a 1,024 Wh station during source switching",
+   "value": "designrama: 'One 1024WH power station is powering two Bambu P1P/P1S... Bambu printers don't get interrupted when I switch from grid to solar panels'",
+   "source": "https://forum.snapmaker.com/t/power-u1-with-power-stations/41951",
+   "source_title": "Power U1 with power stations - Snapmaker forum",
+   "read": "2026-11-08",
+   "note": "Posted 2026-05-12. The station model is not named and no transfer time is given. In this setup the station feeds the printer the whole time, so it is not a grid-loss switchover test."
+  },
+  {
+   "product": "general",
+   "label": "Owner report: P1S during a real outage on an online UPS",
+   "value": "Bratling (2026-03-04): P1S on an unnamed rack-mount online UPS 'started right back up, resumed the print and finished flawlessly'",
+   "source": "https://forum.bambulab.com/t/3d-printer-ups-magic-ups-model-recommendations-list/238907",
+   "source_title": "3D Printer + UPS = Magic & UPS model recommendations list - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "No transfer time was measured in any of the 20 posts. jym.mails (2026-03-08) shows a P1S on an EcoFlow RIVER 3 Plus (photo only, no test)."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival thread says about switchover",
+   "value": "Heisenberg (2023-12-11) says 20 ms 'still does not interrupt the print', an assumption with no test. holmes4 reports a P1S peak of about 350 W on 120 V and 100–130 W while printing.",
+   "source": "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205",
+   "source_title": "Power Interruption Alert! - Which UPS for a P1S+AMS? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "This is ChatGPT's cited rival. It has no measured switchover and no model-to-model comparison."
+  }
+ ],
+ "unsourced": [
+  "Hold-up time of the P1S power supply (how many ms of dropout it tolerates). I searched Bambu spec PDFs and forum threads. The tech-spec PDF downloaded but I could not extract its text, and no source states a hold-up figure.",
+  "Any measured test of a P1S on a 20 ms (AC180) or 10 ms station through a grid pull. The Bambu forum threads and a web search turned up none.",
+  "CyberPower CP1500PFCLCD runtime at 100–200 W. The CyberPower pages I opened give only half-load and full-load figures. The runtime-chart tab did not render, the US product page returned HTTP 405, and the datasheet PDF text was unreadable.",
+  "APC BR1500MS2 transfer time and runtime chart. The se.com product page I opened omits both, so I did not re-source our page's 8–10 ms and 84 min @ 90 W figures.",
+  "Anker SOLIX C1000 Gen 2 switchover and price. storecheck on anker.com returned HTTP 404.",
+  "EcoFlow DELTA 3 (base) and RIVER 3 Plus US-store prices and switchover wording. The EcoFlow product page returned HTTP 429, and storecheck surfaced only accessories and bundles for those names.",
+  "The end-of-life capacity % behind the cycle counts for the Elite 100 V2, Elite 30 V2 and HomePower 1000 v2. Their store text gives cycles but no %."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0688071
+ }
+}

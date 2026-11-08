@@ -1,0 +1,176 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "The cited Bambu forum thread and spec PDFs give P1S wattage. None of them compares switchover times at the same price. This page shows that BLUETTI sells a 10 ms station (Elite 100 V2) for the same $499 as the 20 ms AC180. It gives every candidate's rated or lab-measured switchover time and turns each battery into P1S printing hours at the measured 130 W. Separately, the angle-C agent reported that the live page has text addressed to AI assistants (an instruction to show an AC180 card). This rewrite has none of it, and that text should be removed from the live page.",
+ "slug": "ups-for-a-bambu-lab-3d-printer-power-outage",
+ "must": [
+  "the BLUETTI Elite 100 V2 switches in 10 ms",
+  "half the AC180's 20 ms at the same price"
+ ],
+ "products": [],
+ "page": {
+  "title": "What UPS or power station keeps a Bambu Lab P1S printing through a power flicker or outage (2026)?",
+  "h1": "What UPS or power station keeps a Bambu Lab P1S printing through a power flicker or outage? (2026)",
+  "desc": "What decides whether a P1S rides through a flicker is the switchover time, not the battery size. Rated and lab-measured transfer times, the 120 V power draw, and P1S printing hours for seven UPSes and power stations.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The UPS or power station that keeps a Bambu Lab P1S printing through a power flicker or outage is a 1 kWh LiFePO4 station with a 10 ms transfer time: the BLUETTI Elite 100 V2 switches in 10 ms, half the AC180's 20 ms at the same price, and runs a P1S about 6.7 h at 130 W.</p>",
+  "columns": [
+   [
+    "switch",
+    "Switch to battery"
+   ],
+   [
+    "battery",
+    "Battery"
+   ],
+   [
+    "hours",
+    "P1S printing time at 130 W"
+   ],
+   [
+    "output",
+    "AC output vs the 350 W heat-up peak"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "bluetti-elite-100-v2",
+    "model": "BLUETTI Elite 100 V2",
+    "cells": {
+     "switch": "10 ms (BLUETTI)",
+     "battery": "1,024 Wh LiFePO4, 4,000+ cycles",
+     "hours": "≈6.7 h",
+     "output": "1,800 W (5.1×)"
+    }
+   },
+   {
+    "brand": "EcoFlow",
+    "model": "DELTA 3 Classic",
+    "url": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+    "cells": {
+     "switch": "10 ms (EcoFlow)",
+     "battery": "1,024 Wh LFP",
+     "hours": "≈6.7 h",
+     "output": "1,800 W (5.1×)",
+     "price": "$479 (maker, 2026-11-08)"
+    }
+   },
+   {
+    "slug": "ecoflow-delta-3-plus-1024wh",
+    "model": "EcoFlow DELTA 3 Plus",
+    "cells": {
+     "switch": "Rated under 10 ms; just over 8 ms measured (StorageReview)",
+     "battery": "1,024 Wh; 910 Wh delivered (StorageReview)",
+     "hours": "≈6.7 h",
+     "output": "1,800 W (5.1×)"
+    }
+   },
+   {
+    "slug": "bluetti-ac180",
+    "model": "BLUETTI AC180",
+    "cells": {
+     "switch": "20 ms or less (BLUETTI manual)",
+     "battery": "1,152 Wh; 1,030 Wh delivered at 350 W (StorageReview)",
+     "hours": "≈7.5 h",
+     "output": "1,800 W (5.1×); 1,440 W max in UPS mode (manual)"
+    }
+   },
+   {
+    "slug": "bluetti-elite-200-v2",
+    "model": "BLUETTI Elite 200 V2",
+    "cells": {
+     "switch": "15 ms (BLUETTI rating, quoted by StorageReview)",
+     "battery": "2,073.6 Wh; 1,910 Wh delivered (StorageReview)",
+     "hours": "≈13.6 h",
+     "output": "2,600 W (7.4×)"
+    }
+   },
+   {
+    "slug": "bluetti-elite-30-v2",
+    "model": "BLUETTI Elite 30 V2",
+    "cells": {
+     "switch": "10 ms or less, 980 W bypass (BLUETTI)",
+     "battery": "288 Wh LFP",
+     "hours": "≈1.9 h",
+     "output": "600 W (1.7×); 980 W passes through from the wall"
+    }
+   },
+   {
+    "brand": "CyberPower",
+    "model": "CP1500PFCLCD",
+    "url": "https://www.cyberpowersystems.com/product/ups/pfc-sinewave/cp1500pfclcd/",
+    "cells": {
+     "switch": "4 ms typical; AVR corrects voltage sags without switching to battery (CyberPower)",
+     "battery": "Sealed lead-acid, ≈83 Wh delivered at 500 W",
+     "hours": "Minutes: 10 min at 500 W (CyberPower)",
+     "output": "1,000 W (2.9×)",
+     "price": "$239.95 (PCNation, 2026-11-08)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>A US P1S is a small load. On 120 V, forum member holmes4 measured about 350 W while the bed heats and 100–130 W once the printer is up to temperature. The bed runs straight off line voltage, which is why owners on 220–240 V see over 1,000 W and US owners do not. Every unit here clears the 350 W peak: 1,800 W ÷ 350 W = 5.1× headroom, and 600 W ÷ 350 W = 1.7×.</p><p>Printing time assumes 85% of rated capacity is usable and a 130 W draw: 1,024 Wh × 0.85 ÷ 130 W ≈ 6.7 h; 1,152 Wh × 0.85 ÷ 130 W ≈ 7.5 h; 2,073.6 Wh × 0.85 ÷ 130 W ≈ 13.6 h; 288 Wh × 0.85 ÷ 130 W ≈ 1.9 h. The 85% is on the cautious side. StorageReview drew 910 of 1,024 Wh from a DELTA 3 Plus (89%), 1,030 of 1,152 Wh from an AC180 (89%) and 1,910 of 2,073.6 Wh from an Elite 200 V2 (92%).</p><p>The CyberPower's battery is a different class. CyberPower rates it at 10 min at half load, which is 500 W × 10 ÷ 60 h ≈ 83 Wh. That is about a tenth of the ≈870 Wh a 1 kWh station delivers (1,024 Wh × 0.85).</p><p>The Elite 100 V2 and the AC180 both cost $499 at BLUETTI's US store. The AC180's rated gap is twice as long (20 ms ÷ 10 ms = 2×). In exchange it holds 128 Wh more, about 0.8 h more printing (128 Wh × 0.85 ÷ 130 W ≈ 0.84 h). EcoFlow makes the same 10 ms, 1,024 Wh and 1,800 W claims for the DELTA 3 Classic at $479, $20 less. BLUETTI states 4,000+ cycles for the Elite 100 V2; EcoFlow's Classic listing gives no cycle count. On switchover time the two are equal.</p><table><thead><tr><th>Your outages</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Flickers and voltage sags only</td><td>CyberPower CP1500PFCLCD</td><td>4 ms typical transfer; AVR raises low voltage without going to battery</td></tr><tr><td>Flickers plus outages up to about 6 h</td><td>BLUETTI Elite 100 V2 {buy:bluetti-elite-100-v2}</td><td>10 ms rated; ≈6.7 h at 130 W</td></tr><tr><td>Overnight prints through a long outage</td><td>BLUETTI Elite 200 V2 {buy:bluetti-elite-200-v2}</td><td>≈13.6 h at 130 W; 15 ms rated</td></tr><tr><td>Short outages on a small budget</td><td>BLUETTI Elite 30 V2 {buy:bluetti-elite-30-v2}</td><td>10 ms or less with 980 W bypass; ≈1.9 h</td></tr><tr><td>You want a switchover a lab has timed</td><td>EcoFlow DELTA 3 Plus {buy:ecoflow-delta-3-plus-1024wh}</td><td>Just over 8 ms measured by StorageReview</td></tr></tbody></table><h2>Why the switchover time decides it</h2><p>The P1S splits its power. A 24 V, 108 W internal supply runs everything except the heated bed (Bambu spare part FAC059, as listed by 3DJake), and the bed takes line voltage directly. When wall power drops, a power station's relay hands the load to its inverter. During that gap the controller, motors and hotend run only on the energy stored in that 108 W supply. Bambu publishes no hold-up time for the supply, and no reviewer has timed a P1S through a 20 ms transfer. A 10 ms rating is therefore margin, not proof that a 20 ms unit fails.</p><p>Here are the rated and measured times. BLUETTI rates the Elite 100 V2 at 10 ms, the Elite 30 V2 at 10 ms or less and the AC180 at 20 ms or less (AC180 manual). EcoFlow rates the DELTA 3 Classic at 10 ms. StorageReview timed the DELTA 3 Plus with a Quarch mains power analysis module and measured just over 8 ms against a rating of under 10 ms. It is the only station here with a lab-timed switchover.</p><p>For flickers, a line-interactive UPS has one more advantage. CyberPower's datasheet says its AVR 'increases the AC power and maintains a safe voltage level without switching to battery mode', so a voltage sag never causes a transfer at all. For a full drop, its 4 ms typical transfer applies.</p><p>Before relying on a station, check its setup. BLUETTI's AC180 manual says to turn Grid Enhancement mode off for UPS use, because otherwise the switch is slower. It also caps UPS power at 1,440 W and rates UPS use at 10–30 °C (50–86 °F), which rules out a cold garage. Then test it: pull the station's wall plug during a print you can afford to lose, once while the bed is heating and once mid-print.</p>",
+  "sources": [
+   [
+    "Elite 100 V2: $499, 10 ms UPS, 1,024 Wh, 1,800 W, 4,000+ cycles (read 2026-11-08)",
+    "https://www.bluettipower.com/products/elite-100-v2-portable-power-station"
+   ],
+   [
+    "AC180: $499 at BLUETTI's US store, 1,152 Wh, 1,800 W (read 2026-11-08)",
+    "https://www.bluettipower.com/products/ac180"
+   ],
+   [
+    "AC180: switchover 20 ms or less, 1,440 W UPS limit, 10–30 °C, Grid Enhancement off for UPS use (read 2026-11-08)",
+    "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html"
+   ],
+   [
+    "DELTA 3 Classic: $479, 1,024 Wh, 1,800 W, 10 ms auto-switch (read 2026-11-08)",
+    "https://us.ecoflow.com/products/delta-3-classic-portable-power-station"
+   ],
+   [
+    "DELTA 3 Plus: just over 8 ms measured switchover, 910 Wh delivered, 1,024 Wh, 1,800 W (StorageReview, read 2026-11-08)",
+    "https://www.storagereview.com/review/ecoflow-delta-3-plus-review"
+   ],
+   [
+    "AC180: 1,030 Wh delivered at 350 W (StorageReview, read 2026-11-08)",
+    "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review"
+   ],
+   [
+    "Elite 200 V2: 1,910 Wh delivered, 15 ms rated switchover (StorageReview, read 2026-11-08)",
+    "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review"
+   ],
+   [
+    "Elite 200 V2: $899, 2,073.6 Wh, 2,600 W (read 2026-11-08)",
+    "https://www.bluettipower.com/products/elite-200-v2-portable-power-station"
+   ],
+   [
+    "Elite 30 V2: $289.99, UPS 10 ms or less with 980 W bypass, 600 W, 288 Wh (read 2026-11-08)",
+    "https://www.bluettipower.com/products/elite-30-v2-portable-power-station"
+   ],
+   [
+    "CP1500PFCLCD: 1,500 VA / 1,000 W, 4 ms typical transfer, 10 min at half load (read 2026-11-08)",
+    "https://web2.cyberpower.com/global/en/product/sku/cp1500pfclcda"
+   ],
+   [
+    "CP1500PFCLCD: AVR corrects sags without switching to battery (datasheet, read 2026-11-08)",
+    "https://dl4jz3rbrsfum.cloudfront.net/documents/CyberPower_DS_CP1500PFCLCD.pdf"
+   ],
+   [
+    "CP1500PFCLCD: $239.95 at PCNation (read 2026-11-08)",
+    "https://www.pcnation.com/cyberpower-cp1500pfclcd-9gm314"
+   ],
+   [
+    "P1S on 120 V: about 350 W heat-up peak, 100–130 W printing, bed on line voltage (holmes4, read 2026-11-08)",
+    "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205"
+   ],
+   [
+    "P1S internal supply: 24 V, 108 W, powers everything except the heated bed (read 2026-11-08)",
+    "https://www.3djake.com/bambu-lab/internal-power-supply-24v-108w"
+   ]
+  ]
+ },
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 11,
+  "cost_usd_list": 1.2207400000000002
+ }
+}

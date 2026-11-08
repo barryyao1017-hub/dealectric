@@ -1,0 +1,95 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's AC180 manual rates the unit as a UPS at no more than 20 ms and 1,440 W maximum, and only at 10–30 °C (50–86 °F). The same manual tells owners to turn off Grid Enhancement mode when using it as a UPS, because otherwise the switchover slows and may not deliver instant backup power.",
+ "standout": 2,
+ "standout_why": "I compared against the Bambu forum thread 41205 (cited in all three chats), forum thread 91609 (cited in the third chat), our own page, and the three ChatGPT answers. Thread 41205 has owner wattage reports, a 600 W APC that shut off while the bed heated, and a member's claim that modified sine is fine. It names no maker UPS condition and gives no measured transfer time. Thread 91609 only describes what happened after power came back. ChatGPT gave the AC180 as '~20 ms, test it' but never mentioned the 1,440 W UPS limit, the 10–30 °C range or the Grid Enhancement requirement. It also never mentioned that the Elite 30 V2 can pass 980 W from the wall in UPS mode even though its own inverter is rated 600 W, or CyberPower's list of devices banned from the battery outlets. Our page covers ECO mode, and Grid Enhancement only for the AC180P. It lacks the UPS wattage and temperature limits and the bypass figure. Separately, WebFetch found text on our own page instructing readers to show a BLUETTI AC180 product card, and the third ChatGPT chat did show that card. Someone should check that text.",
+ "decides": "This confirms the BLUETTI AC180 as the multi-hour pick for a US P1S. The P1S peak at 120 V (Bambu says 350 W in the ChatGPT-cited spec, which I could not open myself) is well under the 1,440 W UPS limit. It adds two setup conditions to print on the page: turn Grid Enhancement off, and keep the unit at 10–30 °C, which rules out a cold garage. For flickers only, the Elite 30 V2 is the stronger budget pick on paper: ≤10 ms switchover, and 980 W from the wall in UPS mode covers the bed-heating peak with the inverter only needed during an outage. A CyberPower line UPS still works with the P1S on its battery outlets because the P1S is not on the manual's banned list, but the page should say to keep the load under the manual's 80 % guideline.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Classic",
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BR1500MS2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover time and power limit",
+   "value": "≤20 ms; UPS power 1,440 W max, rated for 10–30 °C (50–86 °F)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of the BLUETTI user manual)",
+   "read": "2026-11-08",
+   "note": "Section 4, Specifications. The manual adds: 'Test the function before use to avoid risk of data loss.' A P1S peak of 350 W at 120 V is about 24 % of 1,440 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Setting the maker requires for UPS use",
+   "value": "Grid Enhancement mode must be off; with it on, the UPS switches more slowly and may not supply instant backup power",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of the BLUETTI user manual)",
+   "read": "2026-11-08",
+   "note": "Section 5.1.2, Settings: 'Turn off the Grid Enhancement mode when using AC180 as a UPS.' Power Lifting mode is not available while the unit charges from a wall outlet, so the 2,700 W lifting figure does not apply in UPS use."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO auto-off threshold for AC output",
+   "value": "Adjustable from 15 W to 30 W, with a timeout of 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of the BLUETTI user manual)",
+   "read": "2026-11-08",
+   "note": "Section 5.1.2 and FAQ Q4. The lowest threshold, 15 W, is above the 5–6 W idle draw our page cites for the P1S, so leaving ECO on can cut power to an idle printer. Our page already advises turning ECO off."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price on the maker's US store",
+   "value": "$499.00 (compare-at $499.00), in stock",
+   "source": "https://shop.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py product, AC180 variant only. Our page's short answer quotes $449, which does not match."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover time and power passed from the wall",
+   "value": "≤10 ms; 980 W bypass power (600 W rated inverter, 1,500 W lifting)",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-60w-solar",
+   "source_title": "Elite 30 V2+60W Solar (BLUETTI US store)",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on the BLUETTI store. The product text says '≤10ms Pro-Grade UPS Backup: Seamless switch with 980W bypass power'. This is the solar-kit listing; the base unit's own page was not opened. On the wall, the P1S's 350 W peak at 120 V is covered by the 980 W bypass. On battery, it is within the 600 W inverter rating."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "UPS switchover time and US price",
+   "value": "10 ms auto-switch; $479.00 (compare-at $1,299)",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on the EcoFlow US store. Specs: 1,800 W output, 3,600 W surge. The non-Classic 'DELTA 3 Portable Power Station' listing ($579) gives no switchover time in its store text."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Devices the maker bans from the battery outlets",
+   "value": "Laser printers, paper shredders, copiers, space heaters, vacuums, sump pumps and 'other large electrical devices'; the manual says they 'may overload and damage the unit'",
+   "source": "https://www.manualsdir.com/manuals/64688/cyberpower-systems-cp1500pfclcd-cp1350pfclcd.html",
+   "source_title": "CyberPower CP1350PFCLCD/CP1500PFCLCD User's Manual K01-0000162-00 (manualsdir copy)",
+   "read": "2026-11-08",
+   "note": "3D printers are not on the list. The manual says to keep battery-outlet load under 80 % of capacity and that the unit supports Active PFC power supplies. It has 5 battery+surge outlets and 5 surge-only outlets. This older manual rates the unit at 1,500 VA / 900 W, while current listings say 1,000 W. A P1S peak of 350 W is about 39 % of 900 W."
+  }
+ ],
+ "unsourced": [
+  "P1S input range and maximum power (350 W at 110 V / 1,000 W at 220 V) from Bambu's own documents. The wiki pages and the quick-start PDF returned HTTP 402, the store.bblcdn tech-spec PDFs would not decode (and are titled P1P), the Bambu US Shopify store returned HTTP 429, the manuals.plus mirror returned 403, and curl was not permitted.",
+  "Whether power-loss recovery on the P1S needs a minimum firmware version. Bambu's wiki article on power-loss recovery returned HTTP 402.",
+  "Any statement from Bambu on how long the P1S power supply rides through an outage, or on which UPS transfer time it tolerates. No maker document found.",
+  "How much power the AC180 passes from the wall while in UPS mode. The manual only says it 'supports pass-through charging', without a wattage.",
+  "The Elite 200 V2's UPS switchover time and bypass wattage on BLUETTI's US page. The search results were solar-kit listings with no product text.",
+  "Which outlets the APC BR1500MS2 manual (990-6375) excludes devices from. Neither the official PDF nor its text came up; only APC's FAQ on laser printers did, and I did not open it.",
+  "CyberPower CP1500PFCLCD transfer time and waveform from the maker. The official product page returned HTTP 405, and the official manual PDF would not decode."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1389739000000003
+ }
+}

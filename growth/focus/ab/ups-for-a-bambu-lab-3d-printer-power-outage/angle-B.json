@@ -1,0 +1,125 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what an hour of P1S backup costs per station: at the 100–130 W a 120 V P1S draws once warm (holmes4's measurement), the BLUETTI AC180 ($499, about 7.5 h) and Elite 200 V2 ($899, about 13.6 h) both cost about $66 per printing-hour, while the 288 Wh Elite 30 V2 ($289.99, about 1.9 h) costs about $154.",
+ "standout": 2,
+ "standout_why": "I read the Bambu forum thread 'Which UPS for a P1S+AMS?' (cited in all three chats) and the 'P1S power Consumption' thread. The quick-start and tech-spec PDFs ChatGPT cited would not render as text. The forum threads give watt readings but no runtime or price for any power station; the only runtime is arekxyz's untested '30-45 min max' for an APC Smart-UPS 1500 VA at 230 V. ChatGPT's own answers and our current page work out hours at an assumed 150 W, not at the measured 120 V draw, and neither gives a price per hour of outage covered or says that the 1 kWh and 2 kWh classes cost the same per hour.",
+ "decides": "This confirms a lithium station of 1 kWh or more as the outage pick and makes the choice between them a matter of runtime, not value. The AC180 and Elite 200 V2 both cost about $66 per printing-hour, so buy the Elite 200 V2 only if prints run longer than about 7.5 h, because it covers about 13.6 h, enough for an overnight print. A 288–300 Wh unit costs more than twice as much per hour and lasts under 2 h, so it suits flickers and short outages. Every 600 W station has about 1.7× headroom over the 120 V heat-up peak of about 350 W. The Tenergy T320 (200 W continuous) stays off the list.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS R600",
+  "ALLPOWERS P1800",
+  "EcoFlow RIVER 3 Plus",
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BR1500MS2",
+  "Tenergy T320"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "P1S steady printing draw at 120 V",
+   "value": "100–130 W",
+   "source": "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205",
+   "source_title": "Power Interruption Alert! - Which UPS for a P1S+AMS? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "From forum user holmes4 on 120 V: 'Once at temperature, the draw varies between 100 and 130W.' Steady-state printing given as about 120–130 W. I use 130 W as the duty point for every figure below."
+  },
+  {
+   "product": "general",
+   "label": "P1S heat-up peak at 120 V vs 240 V",
+   "value": "about 350 W at 120 V; over 1,000 W at 240 V",
+   "source": "https://forum.bambulab.com/t/power-interruption-alert-which-ups-for-a-p1s-ams/41205",
+   "source_title": "Power Interruption Alert! - Which UPS for a P1S+AMS? - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "holmes4: the 120 V startup draw 'tops out at around 350' and the 240 V startup 'can exceed 1000W'. The bed runs on line voltage, which is why the peak is higher at 240 V. Also in this thread, breach10ck's 600 W APC at 220 V shut off on a 1,000 W bed spike. That failure applies to 220 V, not to US 120 V."
+  },
+  {
+   "product": "general",
+   "label": "Heat-up peak duration (owner log, 220 V)",
+   "value": "850 W for the first 30–60 s, then 30–70 W (PLA)",
+   "source": "https://forum.bambulab.com/t/p1s-power-consumption/173002",
+   "source_title": "P1S power Consumption - Bambu Lab Community Forum",
+   "read": "2026-11-08",
+   "note": "comecome logged the draw every second in Home Assistant over a 2 h PLA print at 220 V. Other replies disputed the 850 W figure. It shows the peak lasts under a minute and adds almost nothing to the energy a print uses."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (in stock)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "Checked with storecheck.py. The listing title gives 1,152 Wh and 1,800 W AC."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Printing hours at 130 W / cost per printing-hour",
+   "value": "about 7.5 h / about $66 per h",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "1,152 Wh × 0.85 usable (same assumption as our page) = 979 Wh; 979 / 130 W = 7.5 h; $499 / 7.5 h = $66.5 per h. The 1,800 W inverter is 5.1× the 350 W peak."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00 (in stock)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "Checked with storecheck.py. The listing title gives 2,073.6 Wh and 2,600 W."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Printing hours at 130 W / cost per printing-hour",
+   "value": "about 13.6 h / about $66 per h",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-08",
+   "note": "2,073.6 Wh × 0.85 = 1,763 Wh; 1,763 / 130 W = 13.6 h; $899 / 13.6 h = $66.2 per h. Same value per hour as the AC180, with 1.8× the runtime."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, BLUETTI US store; UPS and standby specs",
+   "value": "$289.99 (in stock); ≤10 ms UPS, 600 W rated, 4.5 W standby",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (Blush Pink)",
+   "read": "2026-11-08",
+   "note": "Checked with storecheck.py. The price is for the Blush Pink listing. The copy says '≤10ms Pro-Grade UPS Backup', '600W Rated Power, 1500W Lifting Power' and 'only 4.5W standby'."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Printing hours at 130 W / cost per printing-hour",
+   "value": "about 1.9 h / about $154 per h",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (Blush Pink)",
+   "read": "2026-11-08",
+   "note": "288 Wh × 0.85 = 245 Wh; 245 / 130 W = 1.9 h; $289.99 / 1.9 h = $154 per h. The 600 W rating is 1.7× the 350 W peak (600 / 350)."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Price, PCNation",
+   "value": "$239.95; 1,500 VA / 1,000 W; 3-year warranty including batteries",
+   "source": "https://www.pcnation.com/cyberpower-cp1500pfclcd-9gm314",
+   "source_title": "CyberPower CP1500PFCLCD - PCNation",
+   "read": "2026-11-08",
+   "note": "The page gives no runtime or battery Ah figures. The 1,000 W rating is 2.9× the 120 V heat-up peak. tree_frog in forum thread 41205 reports about five of these running P1-series printers on 120 V for five years."
+  }
+ ],
+ "unsourced": [
+  "Bambu's own power page (wiki.bambulab.com/en/general/power-consumption, which has measured P1S PLA and ABS kWh per test print): WebFetch got HTTP 402 and curl needed approval I didn't have. A search snippet showed P1S ABS at 0.032–0.043 kWh for a 16 m 3 s print, but I couldn't open the page, so it is left out.",
+  "Bambu's 350 W at 110 V / 1,000 W at 220 V rating: the P1S tech-spec PDF (store.bblcdn.com) would not render as text. The 350 W figure above comes from holmes4's forum post instead.",
+  "CyberPower CP1500PFCLCD runtime at 100–150 W and battery Ah: the cyberpowersystems.com product page returned 405, the datasheet PDF would not render, Micro Center returned 403 and PCNation has no runtime figures. So the UPS has no sourced runtime at the P1S load.",
+  "APC BR1500MS2 runtime at 130 W and transfer time: the se.com product page had no runtime chart or transfer time in the content returned.",
+  "ALLPOWERS R600 and P1800 prices today: storecheck on allpowers.com returned HTTP 0, and WebFetch of the R600 page failed on an expired TLS certificate.",
+  "EcoFlow RIVER 3 Plus price and capacity today: storecheck on the us.ecoflow.com product URL returned HTTP 429, so its cost per printing-hour is left out.",
+  "A measured P1S draw at 120 V with ABS and a heated chamber, needed to work out the ABS duty-cycle hours: none found from the maker, the manual or a named reviewer."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9146884
+ }
+}
