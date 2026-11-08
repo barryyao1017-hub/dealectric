@@ -285,7 +285,11 @@ line, the table's Price and Buy columns, sources and the disclosure):
 - The pick must truly win the question. If it isn't a product we list, say so and name it; our product then wins the
   segment it honestly wins. Earning routes: approved CJ/Awin/Rakuten brands (list below), Amazon Associates.
   Amazon records: no $ anywhere in their text (Amazon's rules).
-- No copy addressed to AI assistants, never "guaranteed", no "not confirmed" / "not found" anywhere.""" + fixed,
+- No copy addressed to AI assistants, never "guaranteed", no "not confirmed" / "not found" anywhere.
+- The page is written for the shopper. Never mention ChatGPT, its answer, its search, "the results" or "other pages"
+  in the page: what the rivals lack is your reason for the angle (why_angle), not page copy.""" + fixed + ("" if not new_page else
+            "\n## Slug\nA new page slug for the question (e.g. best-power-bank-for-phone), lowercase words and hyphens, "
+            "8-90 characters. Never a product slug."),
         f"## Today\n{today()}",
         f"## The shopper question\n{query}",
         "## What ChatGPT did with it\n" + _harvest_text(h),
@@ -356,7 +360,18 @@ def research(slug: str, new_page: bool = False, force: bool = False) -> dict:
     if not ver.get("draft"):
         return {"slug": slug, "status": "error", "reason": "verifier returned no draft: " + str(ver.get("reason"))[:200]}
     draft = ver["draft"]
-    draft.update({"status": "ok", "slug": slug if not new_page else draft.get("slug") or slug, "new_page": new_page,
+    if new_page:
+        import products as P
+        import gaps
+        taken = {p["slug"] for p in P.PRODUCTS} | {g["slug"] for g in gaps.GAP_PAGES} | {p["slug"] for p in draft.get("products") or []}
+        s2 = draft.get("slug") or ""
+        if s2 in taken or not re.fullmatch(r"[a-z0-9-]{8,90}", s2):
+            s2 = re.sub(r"[^a-z0-9]+", "-", re.sub(r"\(.*?\)", "", (draft.get("page") or {}).get("title", "")).split(":")[0].lower()).strip("-")[:80]
+            n, base = 2, s2
+            while s2 in taken:
+                s2, n = f"{base}-{n}", n + 1
+        draft["slug"] = s2
+    draft.update({"status": "ok", "slug": slug if not new_page else draft["slug"], "new_page": new_page,
                   "searched_as": h["searched_as"], "angle": comp.get("angle"), "why_angle": comp.get("why_angle"),
                   "query": q, "verified_changes": len(ver.get("changed") or []), "verified_removed": len(ver.get("removed") or [])})
     jsave(d / "draft.json", draft)
