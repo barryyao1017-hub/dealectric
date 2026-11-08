@@ -1,0 +1,148 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a PlayStation 5 sends HDCP by default, so none of these recorders will record it until the shopper turns off \"Enable HDCP\" (AVerMedia gives the path as Settings > System). The same results also don't say that Xbox Series X|S and Switch drop HDCP once media apps are closed, or that a Blu-ray player's HDMI output always has HDCP and can't be recorded.",
+ "standout": 2,
+ "standout_why": "I compared against the cited ClonerAlliance RecDual Dongle page, the cited UHD Pro product and knowledgebase pages, and the cited Hauppauge listing on streameez. I also tried the cited AVerMedia ER330 datasheet PDF, but its text could not be extracted. All three ChatGPT answers say only that HDCP-protected video \"generally cannot be recorded.\" The RecDual page is the closest: it says \"Any HDCP protected sources are NOT supported\" and that the device has no HDR support (\"turn off relevant settings from the video source\"). Neither it nor any other rival page says which sources send HDCP by default or how to turn it off. They don't say that HDCP is on by default on PS5 but can be turned off, or that Blu-ray HDCP can't be turned off. They also don't say that UHD Pro records only in SDR, so an HDR source has to be turned off at the console.",
+ "decides": "This doesn't change the ranking. Each maker says in its own words that its recorder won't record HDCP: Zowietek says \"ZowieREC does not support HDCP\", the ER330 page says \"does not support viewing/recording/streaming of HDCP protected signals\", and the RecDual page says \"Any HDCP protected sources are NOT supported\". The fix is on the source, not the recorder. A PS5, Xbox, Switch or camera works with any pick once HDCP is off on the PS5 and HDR is turned off. A Blu-ray player or a streaming app won't record on any of them. So the page should give the PS5 HDCP and HDR steps, and should not promise disc or streaming recording.",
+ "candidates": [
+  "Zowietek ZowieREC 4K HDMI Video Recorder",
+  "ClonerAlliance UHD Pro",
+  "ClonerAlliance UHD Pro Max",
+  "AVerMedia EzRecorder 330",
+  "Blackmagic Design HyperDeck Shuttle HD",
+  "ClonerAlliance RecDual Dongle",
+  "Hauppauge HD PVR Pro 60"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PS5 HDCP default and how to turn it off",
+   "value": "HDCP is on by default; Settings > System, turn off \"Enable HDCP\"",
+   "source": "https://www.avermedia.com/support/faq/Z71K716p",
+   "source_title": "AVerMedia FAQ: What is HDCP and how could I fix HDCP message appear on my preview?",
+   "read": "2026-11-08",
+   "note": "AVerMedia lists this under PlayStation 4/5. It is a maker FAQ written for AVerMedia capture hardware generally, not a page for one model."
+  },
+  {
+   "product": "general",
+   "label": "Sony on capture devices with PS5",
+   "value": "\"PS5 will allow the use of external HDMI-based capture devices by disabling HDCP in the Settings menu.\"",
+   "source": "https://blog.playstation.com/2020/11/09/ps5-the-ultimate-faq/",
+   "source_title": "PS5: The Ultimate FAQ (PlayStation Blog)",
+   "read": "2026-11-08",
+   "note": "Sony's own wording, from a 2020 launch FAQ. It doesn't give the menu path; the path above is AVerMedia's."
+  },
+  {
+   "product": "general",
+   "label": "Sources that always carry HDCP",
+   "value": "Blu-ray players/recorders: HDMI output is always HDCP-protected and can't be captured. PS3: HDCP is on for all HDMI output and can't be turned off in the menu. Netflix and Disney+ can't be captured whatever the settings.",
+   "source": "https://www.avermedia.com/support/faq/Z71K716p",
+   "source_title": "AVerMedia FAQ: What is HDCP and how could I fix HDCP message appear on my preview?",
+   "read": "2026-11-08",
+   "note": "AVerMedia's wording, paraphrased slightly."
+  },
+  {
+   "product": "general",
+   "label": "Xbox Series X|S and Nintendo Switch HDCP",
+   "value": "Closing media apps should disable HDCP; if it stays on, restart the console",
+   "source": "https://www.avermedia.com/support/faq/Z71K716p",
+   "source_title": "AVerMedia FAQ: What is HDCP and how could I fix HDCP message appear on my preview?",
+   "read": "2026-11-08",
+   "note": "These consoles have no HDCP toggle in this guidance; HDCP turns on only when a media app is open."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K HDMI Video Recorder",
+   "label": "HDCP recording",
+   "value": "\"ZowieREC does not support HDCP.\"",
+   "source": "https://zowietek.com/knowledge-base/4k-hdmi-video-recorder/general-4k-hdmi-video-recorder/does-it-support-hdcp/",
+   "source_title": "Zowietek knowledge base: Does it support HDCP?",
+   "read": "2026-11-08",
+   "note": "The answer comes after character 100,000 of the page, so I read it with a second fetch at that offset."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K HDMI Video Recorder",
+   "label": "HDR recording",
+   "value": "\"No, it doesn't support HDR.\"",
+   "source": "https://zowietek.com/knowledge-base/4k-hdmi-video-recorder/general-4k-hdmi-video-recorder/does-the-recorder-support-hdr/",
+   "source_title": "Zowietek knowledge base: Does the recorder support HDR?",
+   "read": "2026-11-08",
+   "note": "Quoted from the knowledge-base category page at https://zowietek.com/knowledge-base/category/4k-hdmi-video-recorder; I did not open the article itself."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K HDMI Video Recorder",
+   "label": "Recording from a 4K60 source",
+   "value": "Accepts 4K60 and 1080p120 input and loops out 4K60 or 1080p120; recording and streaming drop to 1080p60",
+   "source": "https://zowietek.com/knowledge-base/4k-hdmi-video-recorder/general-4k-hdmi-video-recorder/does-it-support-recording-4k60/",
+   "source_title": "Zowietek knowledge base: Does it support recording 4k60?",
+   "read": "2026-11-08",
+   "note": "Quoted from the knowledge-base category page; I did not open the article itself. This matches the current page's 'Records 1080p60, loops out 4K60'."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K HDMI Video Recorder",
+   "label": "Storage file system",
+   "value": "USB flash drive and TF card must be FAT32 or exFAT",
+   "source": "https://zowietek.com/knowledge-base/upgrade-troubleshooting/",
+   "source_title": "Zowietek knowledge base: Upgrade Troubleshooting",
+   "read": "2026-11-08",
+   "note": "Quoted from the knowledge-base category page; I did not open the troubleshooting page itself. It is written for firmware upgrades."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "HDR handling",
+   "value": "\"UHD Pro captures in SDR, so an HDR signal has to be converted before it is recorded.\" Fix: \"On a PS5 or Xbox, set the video output to SDR\"",
+   "source": "https://www.cloner-alliance.com/help/knowledgebase/why-picture-washed-out-hdmi-color-range-cloneralliance-uhd-pro",
+   "source_title": "Why do the HDMI output and recorded video look washed out on ClonerAlliance UHD Pro?",
+   "read": "2026-11-08",
+   "note": "The same article says the source, recorder and display should all use the same RGB range (Limited or Full). When they don't match, \"blacks are lifted to grey\"."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "Recording from a 4K60 source",
+   "value": "\"4K@60fps video sources can be recorded at up to 4K@30fps\"",
+   "source": "https://www.cloner-alliance.com/cloneralliance-uhd-pro/",
+   "source_title": "ClonerAlliance UHD Pro product page",
+   "read": "2026-11-08",
+   "note": "The page also says it writes MP4 to exFAT, NTFS and FAT/FAT32, and that \"Smart TVs and TV Antennas are NOT supported as input video sources.\" I found no HDCP wording on this page."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro Max",
+   "label": "PS5 setup per maker",
+   "value": "PS5: \"Enable 4K output, HDR off\"",
+   "source": "https://www.cloner-alliance.com/help/knowledgebase/connection-guide-cloneralliance-uhd-pro-max",
+   "source_title": "Connection guide for ClonerAlliance UHD Pro Max",
+   "read": "2026-11-08",
+   "note": "The guide gives no PS5 HDCP step. Its only HDCP mention is the checklist item \"Test HDCP handling\"."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "HDCP recording",
+   "value": "\"ER330 does not support viewing/recording/streaming of HDCP protected signals.\"",
+   "source": "https://www.avermedia.com/rs/product-detail/ER330",
+   "source_title": "AVerMedia | Standalone Video Recording | EzRecorder 330",
+   "read": "2026-11-08",
+   "note": "Footnote on the maker page. The same page says \"EzRecorder 330 does not support USB flash drives\", lists max recording 1080p60 and pass-through 4Kp60, and says to split external drives over 2 TB into partitions of 2 TB or less."
+  },
+  {
+   "product": "ClonerAlliance RecDual Dongle",
+   "label": "HDCP and HDR",
+   "value": "\"Any HDCP protected sources are NOT supported\"; does not support HDR content",
+   "source": "https://www.cloner-alliance.com/recdual-dongle",
+   "source_title": "ClonerAlliance RecDual Dongle - Portable HDMI & USB-C Video Recorder",
+   "read": "2026-11-08",
+   "note": "This is the cited rival page, so this part of the finding is already in ChatGPT's results. It records 1080p60 and passes 4K60 through; file systems are FAT32, exFAT and NTFS."
+  }
+ ],
+ "unsourced": [
+  "Blackmagic HyperDeck Shuttle HD HDCP behaviour: I looked on the Blackmagic product page (via search results), the April 2022 manual excerpts and the tech-spec PDF copies, and found no HDCP statement. The current cell 'Not stated by the maker' is still correct.",
+  "Sony's own PS5 menu path for 'Enable HDCP': the old manuals.playstation.net user-guide URL redirects to playstation.com/help, and the playstation.com support search found the setting only for PS4. The path comes from AVerMedia's FAQ; Sony's own wording is limited to the 2020 PS5 FAQ.",
+  "ClonerAlliance UHD Pro's own HDCP statement: none on the UHD Pro product page or knowledgebase overview. 'HDCP protected sources are NOT supported' shows up only in search results for the UHD Pro Max page and the Box Pro Pocket guide; I did not open those pages.",
+  "Hauppauge HD PVR Pro 60 HDCP and standalone-mode requirements: the cited streameez page gives only the title and $129.90; I did not open a Hauppauge spec page.",
+  "AVerMedia ER330 datasheet PDF (EN_ER330_DS_20260618_TH.pdf): fetched, but the text could not be extracted (the fetch returned binary and running pdftotext needed approval), so I used the ER330 product page instead."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8153895
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a named tester, Dennis S. (Medium, 14 Feb 2021), found the AVerMedia EzRecorder 330 limits NAS recordings to 11 Mbps by default (it reached 51 Mbps HEVC only after he modified the device) and adds at least one frame of input lag on passthrough outside gaming mode.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT cited. These were the ClonerAlliance UHD Pro maker page (re-opened 2026-11-08), the RecDual Dongle page, the AVerMedia ER330 datasheet PDF, the Hauppauge HD PVR Pro 60 page on streameez, and the top uncited result pixelandparts.org. The maker pages give only encoder settings and the maker's own claims. The UHD Pro page lists bitrate settings of 8, 16, 24, 32 and 50 Mbps and passthrough latency under 90 ms. None of them gives a bitrate or delay that a named person measured. pixelandparts.org (2026-09-21) has no measurements at all. ChatGPT pitched the EzRecorder 330 for NAS recording in two of the chats, but no page it saw gives the low default NAS bitrate. The ER330 datasheet is a PDF that came back as image-only, and I couldn't extract its text, so I can't rule out that it states the NAS limit. That is why this scores 2, not 3.",
+ "decides": "This confirms the EzRecorder 330 is the weaker choice for anyone who wants to record to a NAS. Dennis S. found its NAS recordings limited to 11 Mbps by default, against up to 50 Mbps on the UHD Pro's settings list. It also confirms the 1080p numbers for the UHD Pro are modest: Game Tyrant measured 7–13 Mbps at 1080p on the high-quality setting. That works out to about 3.2–5.9 GB per hour, so a 1 TB drive holds well over 150 hours. Neither measurement changes the top pick on its own. Both are from about 2021, and later ER330 firmware may have raised the NAS limit, which I did not check. No named measurements exist for the Zowietek ZowieREC 4K, the UHD Pro Max, the HD PVR Pro 60 or the HyperDeck Shuttle HD, so no pick can rest on measured data for those four.",
+ "candidates": [
+  "Zowietek ZowieREC 4K",
+  "ClonerAlliance UHD Pro",
+  "ClonerAlliance UHD Pro Max",
+  "AVerMedia EzRecorder 330",
+  "Blackmagic Design HyperDeck Shuttle HD",
+  "Hauppauge HD PVR Pro 60"
+ ],
+ "findings": [
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Default NAS recording bitrate limit (tester)",
+   "value": "11 Mbps",
+   "source": "https://medium.com/feed/@notdennis",
+   "source_title": "Dennis S. (@notdennis), 'Testing & hacking the AVerMedia EzRecorder 330 (ER330)', Medium, published 2021-02-14",
+   "read": "2026-11-08",
+   "note": "Dennis S. tested the ER330 on updated firmware. He describes 'the low bitrate limit for NAS recordings (11 Mbps)'. I read the article through the author's Medium RSS feed because the article page (https://medium.com/@notdennis/testing-hacking-the-avermedia-ezrecorder-330-er330-ca9a33509b57) returned HTTP 403. The test is from 2021, and later firmware may have changed this limit."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Highest NAS bitrate reached after modification (tester)",
+   "value": "51 Mbps HEVC; higher values crashed",
+   "source": "https://medium.com/feed/@notdennis",
+   "source_title": "Dennis S. (@notdennis), 'Testing & hacking the AVerMedia EzRecorder 330 (ER330)', Medium, 2021-02-14",
+   "read": "2026-11-08",
+   "note": "He reached this only after getting root access to the device, which an ordinary buyer can't do. He cites 50 Mbps as the limit of the HiSilicon encoder chip. His test clips were Breath of the Wild and Fast RMX recorded in HEVC at 51 Mbps."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Live-streaming bitrate (tester)",
+   "value": "4.5 Mbps default limit; 7–8 Mbps to Twitch after modification",
+   "source": "https://medium.com/feed/@notdennis",
+   "source_title": "Dennis S. (@notdennis), 'Testing & hacking the AVerMedia EzRecorder 330 (ER330)', Medium, 2021-02-14",
+   "read": "2026-11-08",
+   "note": "He calls the default 'a rather stingy bitrate of 4.5 Mbps'. He reports the encoder 'always seems to be in VBR mode'. His sample was Breath of the Wild in H.264 at 7 Mbps, checked in the Twitch recording."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Passthrough delay (tester, judged not measured)",
+   "value": "At least 1 frame in standard mode; no significant delay in gaming mode",
+   "source": "https://medium.com/feed/@notdennis",
+   "source_title": "Dennis S. (@notdennis), 'Testing & hacking the AVerMedia EzRecorder 330 (ER330)', Medium, 2021-02-14",
+   "read": "2026-11-08",
+   "note": "He gives no figure in milliseconds. One frame at 60 fps is about 16.7 ms (my arithmetic)."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Hours recorded without a crash (reviewer)",
+   "value": "About 30 hours, no crashes or errors",
+   "source": "https://www.how2shout.com/review/avermedia-ezrecorder-330-review.html",
+   "source_title": "AVerMedia EzRecorder 330 Review - H2S Media (Sarbasish Basu), last updated 2022-02-02",
+   "read": "2026-11-08",
+   "note": "The reviewer says 'we have generated around 30 hours of content' with no crashes or errors. He also says NAS recordings get a lower bitrate than USB or microSD but gives no number."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "Measured 1080p recording bitrate (reviewer)",
+   "value": "7–13 Mbps at 1080p on the high-quality setting",
+   "source": "https://gametyrantindustries.squarespace.com/news/cloner-alliance-uhd-pro-review-a-great-standalone-1080p-recording-solution",
+   "source_title": "Cloner Alliance UHD Pro Review: A Great Standalone 1080P Recording Solution - Game Tyrant (Ryan Engstrom)",
+   "read": "2026-11-08",
+   "note": "The page has no exact date, only 'about 5 years ago', so roughly 2021. My arithmetic: 7 Mbps × 3,600 s ÷ 8 ≈ 3.2 GB per hour, and 13 Mbps ≈ 5.9 GB per hour. The reviewer did not test 4K bitrate. He also writes that passthrough was limited to 1080p, which conflicts with the 4K60 passthrough listed on today's maker page. That suggests his unit had older firmware or he described it wrongly."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "Passthrough latency (maker figure, not a test)",
+   "value": "Under 90 ms; bitrate settings 8/16/24/32/50 Mbps",
+   "source": "https://www.cloner-alliance.com/cloneralliance-uhd-pro/",
+   "source_title": "ClonerAlliance UHD Pro - Standalone 4K H.265/H.264 HDMI Video & Gaming Recorder",
+   "read": "2026-11-08",
+   "note": "This is the maker's spec table and nobody independent measured it. It is included only so the tester figures can be compared with it. The page gives no file size per hour and no power draw."
+  }
+ ],
+ "unsourced": [
+  "Zowietek ZowieREC 4K: I searched for hands-on reviews with measured bitrate, file size, passthrough delay or power draw. I found only the maker's manual, a quick-start guide and shop listings.",
+  "ClonerAlliance UHD Pro Max: I searched for reviews by name. I found only shop listings, desertcart copies of listings and a ShopSavvy summary of buyer reviews, with no measurements.",
+  "Hauppauge HD PVR Pro 60: I searched for a standalone-mode test of file size or bitrate. I found only the maker's 8/12/20 Mbps settings and buyer reviews. The Outerhaven's 2017 review covers the older HD PVR 60, not the Pro 60.",
+  "Blackmagic HyperDeck Shuttle HD: I looked for measured file size per hour, power draw and recording tests. The AVNetwork review by Chuck Gloman (2022-09-07) gives no figures. The only power figure is the maker's 20 W maximum, and nobody measured it.",
+  "AVerMedia EzRecorder 330 on microSD or USB drive: I looked for measured recording bitrate and passthrough delay in milliseconds. Dennis S. reports only the NAS and streaming bitrates. Japanese sources (kakaku.com, AV Watch) list specs only.",
+  "No measured power draw or heat figures from any named tester for any of the six candidates."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9386957000000001
+ }
+}

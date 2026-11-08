@@ -1,0 +1,139 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Zowietek ZowieREC 4K records only 1080p60 when its source sends 4K60 or 1080p120 (it can still pass that signal through), so a PS5 or Xbox at its 4K60 default gets 1080p files, while the ClonerAlliance UHD Pro records 4K30 from the same source.",
+ "standout": 3,
+ "standout_why": "I compared against the cited pages: the ClonerAlliance UHD Pro product page and knowledgebase, the RecDual Dongle page, the AVerMedia EzRecorder 330 product page (rs locale, cited in chat 3), the EzRecorder 330 datasheet and the Hauppauge HD PVR Pro 60 listing on streameez. None of ChatGPT's results came from zowietek.com. ChatGPT's own ZowieREC card in chat 2 said 'Records up to 4K30 ... Supports 4K60 passthrough', which suggests 4K recording from a 4K60 console. Several facts in my angle are already on cited pages and are not new: the UHD Pro's 8 TB HDD and GPT/MBR support, its Smart TV exclusion and its 4K60-to-4K30 recording; the RecDual's lack of HDR and its need for DP Alt Mode; and the ER330's 2 TB partition rule, missing USB flash support and lack of HDCP support.",
+ "decides": "For console players (PS5 or Xbox at 4K60) who want 4K files, this moves the pick from the $199 ZowieREC 4K to the ClonerAlliance UHD Pro or UHD Pro Max. The ZowieREC only gives 4K30 files when the source itself outputs 4K30. If 1080p60 is enough, the ZowieREC and the EzRecorder 330 stay valid. Note that the EzRecorder 330 cannot use USB flash drives and needs drives over 2 TB partitioned to 2 TB.",
+ "candidates": [
+  "Zowietek ZowieREC 4K HDMI Video Recorder",
+  "ClonerAlliance UHD Pro",
+  "ClonerAlliance UHD Pro Max",
+  "AVerMedia EzRecorder 330 / 330G",
+  "Blackmagic Design HyperDeck Shuttle HD",
+  "ClonerAlliance RecDual Dongle",
+  "Hauppauge HD PVR Pro 60"
+ ],
+ "findings": [
+  {
+   "product": "Zowietek ZowieREC 4K",
+   "label": "Recording from a 4K60 or 1080p120 source",
+   "value": "Accepts 4K60 and 1080p120 input and loops it out at 4K60 or 1080p120. Recording and streaming are downgraded to 1080p60.",
+   "source": "https://zowietek.com/knowledge-base/4k-hdmi-video-recorder/general-4k-hdmi-video-recorder/can-it-record-4k60-or-1080p120/",
+   "source_title": "Can it record 4K60 or 1080P120? – Zowietek knowledge base",
+   "read": "2026-11-08",
+   "note": "Quoted from the article body: 'Yes, it supports 4K60 and 1080P120 input, with loop-out at 4K60 or 1080P120,' ... 'recording and streaming are downgraded to 1080P60.' The article has no date."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K",
+   "label": "4K loop-out by source rate",
+   "value": "A 4K60 input loops out at 4K60; a 4K30 input loops out at 4K30",
+   "source": "https://zowietek.com/knowledge-base/category/4k-hdmi-video-recorder",
+   "source_title": "4k hdmi video recorder – Zowietek knowledge base category",
+   "read": "2026-11-08",
+   "note": "From the 'Can HDMI output 4k?' entry as shown on the category page."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K",
+   "label": "HDCP sources",
+   "value": "Not supported. With an HDCP source the Dashboard shows 'Check HDMI Setting'.",
+   "source": "https://zowietek.com/knowledge-base/4k-hdmi-video-recorder/general-4k-hdmi-video-recorder/does-it-support-hdcp/",
+   "source_title": "Does it support HDCP? – Zowietek knowledge base",
+   "read": "2026-11-08",
+   "note": "Quoted: 'ZowieREC does not support HDCP.' The Zowietek PS5 connection guide for the encoder line says to turn HDCP off in the console's system settings."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K",
+   "label": "HDMI input version and cables",
+   "value": "HDMI 2.0 input. HDMI 2.1 or 8K cables work only if they are backward compatible with 2.0.",
+   "source": "https://zowietek.com/knowledge-base/category/4k-hdmi-video-recorder",
+   "source_title": "4k hdmi video recorder – Zowietek knowledge base category",
+   "read": "2026-11-08",
+   "note": "From the 'Does it support 2.1 or 8k hdmi cables?' entry as shown on the category page."
+  },
+  {
+   "product": "Zowietek ZowieREC 4K",
+   "label": "Excluded sources and playback",
+   "value": "Cannot record Smart TV apps directly; a separate HDMI source device is needed. Plays back only files the recorder itself made.",
+   "source": "https://zowietek.com/knowledge-base/category/4k-hdmi-video-recorder",
+   "source_title": "4k hdmi video recorder – Zowietek knowledge base category",
+   "read": "2026-11-08",
+   "note": "From the 'Can I record videos directly from a Smart TV?' and Dish Network external-drive playback entries."
+  },
+  {
+   "product": "Zowietek ZowieBox (same NAS stack, 'Zowietek series products')",
+   "label": "NAS protocol",
+   "value": "CIFS only, no NFS; SMB 1.0, 2.0 and 3.0 (3.0 is the default, changed with vers= in the mount options)",
+   "source": "https://zowietek.com/knowledge-base/4k-video-encoder-decoder/general-4k-video-encoder-decoder/how-to-use-nas-to-save-video-file/",
+   "source_title": "How to use NAS to save video file – Zowietek knowledge base",
+   "read": "2026-11-08",
+   "note": "The guide is written for the ZowieBox and says 'Zowietek series products support SMB1.0, SMB2.0 and SMB3.0'. It does not name the ZowieREC."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "Storage limits and file systems",
+   "value": "USB flash drives up to 512 GB, external HDD up to 8 TB, microSD; exFAT, NTFS or FAT/FAT32; GPT and MBR",
+   "source": "https://www.cloner-alliance.com/cloneralliance-uhd-pro/",
+   "source_title": "ClonerAlliance UHD Pro - Standalone 4K H.265/H.264 HDMI Video & Gaming Recorder",
+   "read": "2026-11-08",
+   "note": "Already on a cited rival page. The page gives no microSD capacity limit."
+  },
+  {
+   "product": "ClonerAlliance UHD Pro",
+   "label": "4K60 source and source exclusions",
+   "value": "A 4K60 source records at up to 4K30 with 4K60 passthrough; 4K60 capture works only over the USB-C 3.0 UVC link to a PC. 'Smart TVs and TV Antennas are NOT supported as input video sources.' Mini or Micro HDMI sources need a Type-A adapter (not included).",
+   "source": "https://www.cloner-alliance.com/cloneralliance-uhd-pro/",
+   "source_title": "ClonerAlliance UHD Pro - Standalone 4K H.265/H.264 HDMI Video & Gaming Recorder",
+   "read": "2026-11-08",
+   "note": "Already on a cited rival page. The page has no HDCP or HDR statement."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Storage compatibility",
+   "value": "microSD up to 512 GB; USB flash drives not supported; USB HDD or SSD over 2 TB must be split into partitions of 2 TB or less; NAS over 4 TB must be split into partitions of 4 TB or less",
+   "source": "https://www.avermedia.com/rs/product-detail/ER330",
+   "source_title": "AVerMedia | Standalone Video Recording | EzRecorder 330",
+   "read": "2026-11-08",
+   "note": "Quoted: 'EzRecorder 330 does not support USB flash drives.' and 'For drives larger than 2TB, please create a partition of 2TB or less before use.' This page was cited in chat 3, so the fact is not new. The page names no NAS protocol."
+  },
+  {
+   "product": "AVerMedia EzRecorder 330",
+   "label": "Inputs, passthrough and HDCP",
+   "value": "Accepts 2160p, 1080p, 1080i, 720p, 576p, 576i, 480p and 480i; passes through up to 4Kp60; records up to 1080p60 in H.264 or H.265 with AAC; does not record HDCP-protected signals",
+   "source": "https://www.avermedia.com/rs/product-detail/ER330",
+   "source_title": "AVerMedia | Standalone Video Recording | EzRecorder 330",
+   "read": "2026-11-08",
+   "note": "Quoted: 'ER330 does not support viewing/recording/streaming of HDCP protected signals'."
+  },
+  {
+   "product": "ClonerAlliance RecDual Dongle",
+   "label": "HDR, USB-C input and HDCP",
+   "value": "No HDR content (turn HDR off on the source); the USB-C DP input needs DisplayPort Alt Mode on the source; HDCP sources are not supported; files are FAT32, exFAT or NTFS",
+   "source": "https://www.cloner-alliance.com/recdual-dongle",
+   "source_title": "ClonerAlliance RecDual Dongle - Portable HDMI & USB-C Video Recorder",
+   "read": "2026-11-08",
+   "note": "Already on a cited rival page. Records 1080p60 H.264 with 4K60 passthrough."
+  },
+  {
+   "product": "Blackmagic Design HyperDeck Shuttle HD",
+   "label": "Accepted formats and media",
+   "value": "SD (NTSC, PAL), 720p50 and 720p59.94, 1080p23.98 to 1080p60. The 2160p standards are tied to the 4K Pro model. Records H.264, ProRes or DNxHD to SD or UHS-II cards or USB disks formatted ExFAT or HFS+. 12 V DC power, supply included. US$575.",
+   "source": "https://www.blackmagicdesign.com/products/hyperdeckshuttle/techspecs/W-HYD-17",
+   "source_title": "HyperDeck Shuttle – Tech Specs | Blackmagic Design",
+   "read": "2026-11-08",
+   "note": "The ExFAT and HFS+ wording covers the whole HyperDeck Shuttle line. The page has no HDCP statement. MSRP includes duties but excludes sales tax and shipping."
+  }
+ ],
+ "unsourced": [
+  "ZowieREC 4K HDR handling and maximum microSD size: the Zowietek knowledge base category page and the 'Does it support HDCP?' article say nothing on either, and the 2025 spec sheet PDF (zowietek.com/wp-content/uploads/2025/03/4K-HDMI-Video-Recorder.pdf) would not extract to text. A search snippet gave 'FAT32 up to 2TB, exFAT without limit', but I could not open that page to confirm it.",
+  "ClonerAlliance UHD Pro HDR handling, maximum microSD size and an HDCP statement on a maker page: the product page and knowledgebase do not state them, and I found no official manual PDF on static.cloner-alliance.com (only third-party copies, which I did not use).",
+  "AVerMedia EzRecorder 330G vs 330 differences and the 330G's US-store stock: shop-us.avermedia.com returned HTTP 429. The ER330 datasheet PDF (EN_ER330_DS_20260618_TH.pdf) would not extract to text, so I could not check whether it repeats the 2 TB partition rule or names a NAS protocol (SMB version).",
+  "Hauppauge HD PVR Pro 60 standalone media limits (SD card size, file system, HDCP, HDR): the Hauppauge webstore page failed with a TLS certificate error, and the streameez listing states none of them.",
+  "HyperDeck Shuttle HD HDCP behaviour: the Blackmagic tech specs page has no HDCP statement, and I did not reach the manual within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8659190000000001
+ }
+}
