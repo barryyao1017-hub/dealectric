@@ -449,6 +449,9 @@ def apply(slug: str, local: bool) -> dict:
              if not l.endswith(("docs/offers.json", "docs/price-history.json"))]   # rewritten with today's date on every build
     if dirty:
         return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
+    h = jload(d / "harvest.json")
+    if h and h.get("searched_as"):
+        draft["searched_as"] = h["searched_as"]   # the latest harvest's search words (fresh chats after the research ran)
     errs = validate(draft, new_page)
     if errs:
         draft["gate"] = {"date": today(), "pass": False, "errors": errs}
