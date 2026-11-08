@@ -1359,7 +1359,19 @@ def compare_page_v2(c):
     No 'Where to buy' list above the table, no AI-addressed block, no 'Not confirmed' cells (the recipe drops them)."""
     video_html, video_ld = video_block(c)
     ours = [r for r in c["rows"] if r.get("slug")]
-    tags = "".join(f"<span>{html.escape(t)}</span>" for t in c.get("searched_as") or [])
+    # The tags share one 500-character chunk with the answer (fastloop.CHUNK), so the answer always travels with the
+    # chunk that matches ChatGPT's own query best: keep tags only while answer + tags fit, trimming the last at a word.
+    import re as _re
+    room = 480 - len(_re.sub(r"<[^>]+>", "", compare_fill(c["answer"])).strip()) - len("Searched as: ")
+    kept = []
+    for t in c.get("searched_as") or []:
+        if room <= 12:
+            break
+        if len(t) + 1 > room:
+            t = t[:room - 1].rsplit(" ", 1)[0]
+        kept.append(t)
+        room -= len(t) + 1
+    tags = "".join(f"<span>{html.escape(t)}</span>" for t in kept)
     heads = "".join(f"<th>{h}</th>" for _, h in c["columns"])
     rows = "".join(compare_row_v2(c, r) for r in c["rows"])
     body = f"""
