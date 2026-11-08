@@ -1,0 +1,114 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the word 'immutable' or 'lock' means different things across NAS brands. On the Synology DS225+, an immutable snapshot can't be deleted by anyone until its protection period ends. On the QNAP TS-264 the same protection exists only after a switch from QTS to QuTS hero h6, and then deleting a protected folder needs a Secure Deletion USB key. On Asustor, TerraMaster and UGREEN, a 'locked' snapshot is only skipped by automatic cleanup and can still be deleted by hand. A third-party UGREEN API client found that a locked snapshot 'is deleted just the same' through the API. This matters because Veeam Agent and Macrium write to an SMB share whose credentials sit on every PC.",
+ "standout": 2,
+ "standout_why": "I compared against these Synology pages: the cited Snapshot Replication spec (en-us 7.4), the cited ABB spec (en-global 7.4), the cited ABB requirements KB, the 'How to back up your Synology NAS' KB, and ChatGPT's answer. The Snapshot Replication spec only says immutable snapshots exist 'on supported Synology models', with no model list and no protection period. The ABB spec says nothing about immutability. ChatGPT wrote 'immutable snapshots where supported' without saying which NAS supports them. Every result ChatGPT got is a Synology page, so none of them compares Synology's immutability with QNAP's QuTS-hero-only immutability or with the softer Asustor, TerraMaster and UGREEN locks. That cross-brand comparison is new. It confirms the Synology pick rather than overturning it, which is why I scored 2 and not 3.",
+ "decides": "This confirms the Synology DS225+ as the pick when the backup target is an SMB share written by Veeam Agent Free or Macrium. Its product page says it supports immutable snapshots, so a ransomware-hit PC holding the share password can't delete the snapshot behind the backup files. The QNAP TS-264 can match this, but only after a switch from its default QTS to QuTS hero h6.0.2 (TS-264 is on the applicable-models list). The cells for the Asustor AS5402T, TerraMaster F2-425 Plus and UGREEN DXP2800/DH2300 should read 'lock (stops automatic cleanup, can still be deleted)', not anything that suggests immutability. A cheap 2-bay is fine if a second offline copy covers ransomware. If the NAS snapshot is meant to be the ransomware layer, that rules out every candidate except Synology Plus and QuTS-hero QNAP.",
+ "candidates": [
+  "Synology DS225+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "TerraMaster F2-425 Plus",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "Synology DS223j"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Immutable snapshots",
+   "value": "Supported: 'Defend against malware ransomware with immutable snapshots'; 'Safeguard critical LUNs and shared folders with automated immutable snapshots'",
+   "source": "https://www.synology.com/en-us/products/DS225+",
+   "source_title": "DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Maker's US product page. The same page lists Intel Celeron J4125, 2 GB DDR4, 1GbE + 2.5GbE, and a 3-year warranty extendable to 5."
+  },
+  {
+   "product": "general",
+   "label": "Synology Snapshot Replication limits",
+   "value": "Immutable snapshots 'available on supported Synology models'; 1,024 snapshots per shared folder (128 if the folder is in a tiering plan); 65,536 per system; minimum schedule interval 5 minutes",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/snapshot_replication",
+   "source_title": "Snapshot Replication Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "A cited rival page. It gives no model list and no protection-period range."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Active Backup for Business destination and concurrency",
+   "value": "Windows PC backup destination 'must use the Btrfs file system'; up to 10 concurrent PC backups with less than 8 GB RAM; the spec doesn't mention immutable backups",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/abb",
+   "source_title": "Active Backup for Business Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "A cited rival page. The DS225+ ships with 2 GB, so it falls in the 10-concurrent tier, which is plenty for 3 PCs."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Default OS and QuTS hero switch",
+   "value": "'The TS-264 uses the QTS operating system by default'; 'Switching to QuTS hero is supported starting from QTS 5.2.1'; QuTS hero needs 'At least 16GB RAM for Inline Data Deduplication' (unit has 8 GB onboard)",
+   "source": "https://www.qnap.com/en-us/product/ts-264",
+   "source_title": "TS-264 | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "The product page doesn't mention immutable snapshots. It also lists Celeron N5095, 2× 2.5GbE and a 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Immutable snapshots (QuTS hero h6.0)",
+   "value": "Protection policy 'prohibits automatic deletion by the system and/or manual deletion by a user' with a user-set expiration time",
+   "source": "https://www.qnap.com/hu-hu/release-notes/quts_hero/overview/h6.0.0",
+   "source_title": "QuTS hero h6.0 Series | Release Notes",
+   "read": "2026-11-08",
+   "note": "QuTS hero only. None of the QNAP pages I opened mention immutable snapshots under QTS."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Deleting folders protected by immutable snapshots (QuTS hero h6.0.2.3591)",
+   "value": "TS-264 and TS-464 are on the applicable-models list; 'Administrators need USB key files to delete... LUNs or shared folders that contain... immutable snapshots that have not yet expired'",
+   "source": "https://www.qnap.com/en-us/release-notes/quts_hero/h6.0.2.3591/20260819",
+   "source_title": "QuTS hero h6.0.2.3591 Release Notes | QNAP",
+   "read": "2026-11-08",
+   "note": "Released 2026-08-24. This fixes a gap that QNAP staff acknowledged in an h6.0.0 community thread, where deleting a shared folder also deleted its immutable snapshot."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Snapshot lock (ADM Snapshot Center)",
+   "value": "'When a snapshot is locked, it will not be removed automatically'; when the limit is reached with all snapshots locked, 'Users need to manually remove the locked snapshots'; 256-snapshot limit; minimum schedule interval 5 minutes",
+   "source": "https://www.asustor.com/online/online_help_V5?id=73",
+   "source_title": "ASUSTOR online help V5 – Snapshot Center",
+   "read": "2026-11-08",
+   "note": "The lock only exempts a snapshot from automatic cleanup; there's no time-based protection period. The only WORM mention is about restoring volume snapshots that contain WORM folders."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Snapshot lock (TOS 6)",
+   "value": "Snapshots can be locked 'to ensure permanent preservation'; retention is 'Always retain snapshots' or 'Limit by snapshot count'; no WORM, immutability or protection period described",
+   "source": "https://help.terra-master.com/docs/TOS6/backup/snapshot",
+   "source_title": "Snapshot | TOS 6 Help – TerraMaster",
+   "read": "2026-11-08",
+   "note": "The page doesn't say who can unlock or delete a locked snapshot."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Snapshot lock enforcement (UGOS Pro)",
+   "value": "'A locked snapshot is deleted just the same'; 'is_locked is a hint the web UI honours, not a rule the API enforces'",
+   "source": "https://docs.rs/crate/ugos-client/latest/source/src/api/snapshot.rs",
+   "source_title": "ugos-client 0.23.0 – src/api/snapshot.rs (docs.rs)",
+   "read": "2026-11-08",
+   "note": "Third-party open-source client. The author says this was 'Verified against a live NAS on 2026-08-19' but doesn't name the firmware. Present it as the ugos-client author's test, not UGREEN's statement. The same applies to the DH2300 if it runs the same Snapshot app, which I didn't verify."
+  }
+ ],
+ "unsourced": [
+  "Synology immutable-snapshot protection period (minimum and maximum days) and whether admins can delete before expiry: the KB pages what_is_an_immutable_snapshot (en-us, en-au, en-global) render only the title through the fetcher, and curl wasn't approved. The search snippet's '7–14 days recommended' wasn't read on the page, so I left it out.",
+  "Whether the Synology DS425+ and DS223j support immutable snapshots: the KB page which_synology_nas_models_support_WriteOnce_and_secure_snapshots rendered empty. I didn't open either product page.",
+  "Immutable snapshots on QNAP QTS 5.2 (the TS-264's default OS): the TS-264 page, the immutable-storage solution page and the QuTS hero release notes tie the feature only to QuTS hero. I found no QTS document either way.",
+  "QuTS hero immutable-snapshot period range in days: the h6.0.0 and h6.0.2 release notes and the immutable-storage page give none.",
+  "UGREEN's own documentation of snapshot lock or immutability: support.ugnas.com article 654 rendered only the title '知识中心'.",
+  "Whether an Asustor or TerraMaster admin can unlock and delete a locked snapshot from the UI in one step: neither help page describes the unlock procedure.",
+  "Prices: not re-checked for this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8714571999999998
+ }
+}

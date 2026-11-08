@@ -1,0 +1,374 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "The cited Synology spec and KB pages say only that immutable snapshots exist 'on supported Synology models'. They name no models, give no protection period and make no comparison across brands. This page shows which NAS keeps a snapshot of the Veeam/Macrium SMB share that the share login saved on every PC can't delete: Synology's immutable snapshots, QNAP's that work only on QuTS hero, and the locks on Asustor, TerraMaster and UGREEN that only stop automatic cleanup.",
+ "slug": "best-nas-for-veeam-macrium-windows-image-backups",
+ "must": [
+  "is the Synology DS225+",
+  "can't be deleted by anyone for the protection period (Synology suggests 7–14 days)"
+ ],
+ "products": [
+  {
+   "slug": "synology-ds225-plus",
+   "brand": "Synology",
+   "program": "amazon:us",
+   "asin": "B0FB7KQLR1",
+   "category": "nas",
+   "name": "Synology DS225+ 2-Bay NAS, Intel Celeron J4125, 2.5GbE (diskless)",
+   "model": "DS225+",
+   "url": "https://www.amazon.com/dp/B0FB7KQLR1",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron J4125, 4 cores"
+    ],
+    [
+     "Memory",
+     "2 GB DDR4, 6 GB max"
+    ],
+    [
+     "Network",
+     "1× 1GbE + 1× 2.5GbE"
+    ],
+    [
+     "Bays",
+     "2"
+    ],
+    [
+     "Snapshots",
+     "Immutable snapshots (DSM 7.2 or later)"
+    ],
+    [
+     "Power (maker)",
+     "16.98 W access, 6.08 W HDD hibernation"
+    ]
+   ],
+   "warranty": "3 years, extendable to 5 with Extended Warranty Plus",
+   "returns": "Set by the seller on the Amazon listing",
+   "summary": "A 2-bay Synology with immutable snapshots. A snapshot of the backup share can't be deleted by any account until its protection period ends.",
+   "fit": "Nightly Veeam Agent or Macrium Reflect images from a few Windows PCs to an SMB share, where the NAS snapshot is the ransomware safety net.",
+   "caveats": [
+    "Ships with 2 GB of RAM (6 GB max)",
+    "Only one of its two ports is 2.5GbE",
+    "Two bays: a mirrored pair gives you one drive's capacity"
+   ]
+  },
+  {
+   "slug": "synology-ds425-plus",
+   "brand": "Synology",
+   "program": "amazon:us",
+   "asin": "B0F895RV3K",
+   "category": "nas",
+   "name": "Synology DS425+ 4-Bay NAS, Intel Celeron J4125, 2.5GbE, 2× M.2 (diskless)",
+   "model": "DS425+",
+   "url": "https://www.amazon.com/dp/B0F895RV3K",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron J4125"
+    ],
+    [
+     "Memory",
+     "2 GB DDR4, 6 GB max"
+    ],
+    [
+     "Network",
+     "1× 1GbE + 1× 2.5GbE"
+    ],
+    [
+     "Bays",
+     "4 × 3.5-inch SATA + 2 × M.2 2280 NVMe"
+    ],
+    [
+     "Snapshots",
+     "Automated immutable snapshots with custom retention"
+    ],
+    [
+     "Power (maker)",
+     "28.25 W access, 6.10 W HDD hibernation"
+    ]
+   ],
+   "warranty": "3 years, extendable to 5 with Extended Warranty Plus",
+   "returns": "Set by the seller on the Amazon listing",
+   "summary": "The 4-bay version of the DS225+, with the same immutable snapshots and processor, plus two M.2 slots.",
+   "fit": "The same Veeam/Macrium setup when you expect the images and their history to need more than two drives.",
+   "caveats": [
+    "Ships with 2 GB of RAM (6 GB max)",
+    "Only one of its two ports is 2.5GbE",
+    "Draws 28.25 W while being accessed, against 16.98 W for the DS225+"
+   ]
+  },
+  {
+   "slug": "qnap-ts-264-8g",
+   "brand": "QNAP",
+   "program": "amazon:us",
+   "asin": "B0GTWWJK9V",
+   "category": "nas",
+   "name": "QNAP TS-264-8G 2-Bay NAS, Intel Celeron N5095, 8 GB, 2× 2.5GbE",
+   "model": "TS-264-8G",
+   "url": "https://www.amazon.com/dp/B0GTWWJK9V",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron N5095, quad-core"
+    ],
+    [
+     "Memory",
+     "8 GB DDR4"
+    ],
+    [
+     "Network",
+     "2× 2.5GbE"
+    ],
+    [
+     "Bays",
+     "2"
+    ],
+    [
+     "Operating system",
+     "QTS by default; QuTS hero from QTS 5.2.1"
+    ],
+    [
+     "Power (maker)",
+     "29.086 W operating, 18.288 W disk standby"
+    ]
+   ],
+   "warranty": "3 years, extendable to 5",
+   "returns": "Set by the seller on the Amazon listing",
+   "summary": "A 2-bay QNAP with 8 GB of RAM. Immutable snapshots come only after you switch it from QTS to QuTS hero h6.",
+   "fit": "Shoppers who want ZFS and will run QuTS hero h6.0.2 or later.",
+   "caveats": [
+    "Ships with QTS, and QNAP documents immutable snapshots for QuTS hero",
+    "QuTS hero wants 16 GB of RAM for inline deduplication; this unit has 8 GB",
+    "Draws 18.288 W with its disks in standby"
+   ]
+  },
+  {
+   "slug": "asustor-as5402t",
+   "brand": "Asustor",
+   "program": "amazon:us",
+   "asin": "B0C5MB5MTS",
+   "category": "nas",
+   "name": "Asustor Nimbustor 2 Gen2 AS5402T 2-Bay NAS, Intel Celeron N5105, 4 GB, 2× 2.5GbE, 4× M.2",
+   "model": "AS5402T",
+   "url": "https://www.amazon.com/dp/B0C5MB5MTS",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron N5105, quad-core, 2.0 GHz (2.9 GHz burst)"
+    ],
+    [
+     "Memory",
+     "4 GB DDR4, 16 GB max"
+    ],
+    [
+     "Network",
+     "2× 2.5GbE"
+    ],
+    [
+     "Bays",
+     "2 + 4 × M.2 2280 NVMe"
+    ],
+    [
+     "Snapshots",
+     "Btrfs snapshot lock (256 max)"
+    ],
+    [
+     "Power (maker)",
+     "22.9 W operating, 12.7 W disks hibernating"
+    ]
+   ],
+   "warranty": "3 years",
+   "returns": "Set by the seller on the Amazon listing",
+   "summary": "A 2-bay Asustor with four M.2 slots. Its snapshot lock stops only automatic cleanup and has no protection period.",
+   "fit": "A Veeam/Macrium SMB target when you also keep a second, offline copy of the images.",
+   "caveats": [
+    "Locked snapshots can still be removed by hand",
+    "Draws 12.7 W with its disks hibernating, about twice the Synology figure"
+   ]
+  }
+ ],
+ "page": {
+  "title": "Best NAS for nightly image backups of three Windows PCs with Veeam Agent Free or Macrium Reflect (2026)",
+  "h1": "Best NAS for nightly image backups of three Windows PCs with Veeam Agent Free or Macrium Reflect (2026)",
+  "desc": "For Veeam Agent Free or Macrium Reflect images on an SMB share, the Synology DS225+ wins: its immutable snapshots can't be deleted until the period ends. Asustor, TerraMaster and UGREEN offer only snapshot locks.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for nightly image backups of three Windows PCs with Veeam Agent Free or Macrium Reflect is the Synology DS225+. Its immutable snapshots of the SMB network share can't be deleted by anyone for the protection period (Synology suggests 7–14 days).</p>",
+  "columns": [
+   [
+    "snapshot",
+    "Snapshot protection"
+   ],
+   [
+    "deletable",
+    "Can it be deleted by hand early?"
+   ],
+   [
+    "hw",
+    "CPU / RAM"
+   ],
+   [
+    "lan",
+    "Network"
+   ],
+   [
+    "bays",
+    "Bays"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "snapshot": "Immutable snapshots (DSM 7.2+)",
+     "deletable": "No, not by anyone until the period ends (Synology, quoted by iFeeltech)",
+     "hw": "Intel Celeron J4125, 2 GB DDR4",
+     "lan": "1× 1GbE + 1× 2.5GbE",
+     "bays": "2"
+    }
+   },
+   {
+    "slug": "synology-ds425-plus",
+    "model": "Synology DS425+",
+    "cells": {
+     "snapshot": "Immutable snapshots (DSM 7.2+)",
+     "deletable": "No, not by anyone until the period ends (Synology, quoted by iFeeltech)",
+     "hw": "Intel Celeron J4125, 2 GB DDR4",
+     "lan": "1× 1GbE + 1× 2.5GbE",
+     "bays": "4 + 2 M.2"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "snapshot": "Snapshot lock",
+     "deletable": "Yes: in the ugos-client author's test against a UGOS NAS, a locked snapshot was deleted through the API",
+     "hw": "Intel N100, 8 GB DDR5",
+     "lan": "1× 2.5GbE",
+     "bays": "2 + 2 M.2"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F2-425 Plus",
+    "url": "https://shop.terra-master.com/products/f2-425-plus",
+    "cells": {
+     "snapshot": "Snapshot lock",
+     "deletable": "The TOS 6 help page describes no protection period",
+     "hw": "Quad-core x86, 8 GB",
+     "lan": "2× 5GbE",
+     "bays": "2"
+    }
+   },
+   {
+    "slug": "qnap-ts-264-8g",
+    "model": "QNAP TS-264-8G",
+    "cells": {
+     "snapshot": "Immutable only on QuTS hero h6; ships with QTS",
+     "deletable": "On QuTS hero: no, until expiry; deleting the folder needs a USB key file",
+     "hw": "Intel Celeron N5095, 8 GB",
+     "lan": "2× 2.5GbE",
+     "bays": "2"
+    }
+   },
+   {
+    "slug": "asustor-as5402t",
+    "model": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+    "cells": {
+     "snapshot": "Snapshot lock (256 max)",
+     "deletable": "Yes, by hand; the lock only stops automatic cleanup (ADM help)",
+     "hw": "Intel Celeron N5105, 4 GB DDR4",
+     "lan": "2× 2.5GbE",
+     "bays": "2 + 4 M.2"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>Energy for this job assumes one hour of access a night and the drives asleep for the other 23 hours. The figures are each maker's access and hibernation/standby watts:</p><ul><li>Synology DS225+: 16.98 W × 1 h + 6.08 W × 23 h = 156.8 Wh a day, or 57.2 kWh a year.</li><li>Synology DS425+: 28.25 × 1 + 6.10 × 23 = 168.6 Wh a day, or 61.5 kWh a year.</li><li>UGREEN DXP2800 (spec list in The Gadgeteer's review): 16.38 × 1 + 5.24 × 23 = 136.9 Wh a day, or 50.0 kWh a year.</li><li>Asustor AS5402T: 22.9 × 1 + 12.7 × 23 = 315.0 Wh a day, or 115.0 kWh a year.</li><li>QNAP TS-264: 29.086 × 1 + 18.288 × 23 = 449.7 Wh a day, or 164.1 kWh a year. That is 2.9 times the DS225+ (164.1 ÷ 57.2).</li></ul><p>Bays: two drives in a mirror give one drive's capacity (2 × 8 TB mirrored = 8 TB). Four bays let you add drives later without replacing the pair.</p><table><thead><tr><th>Your situation</th><th>Fits</th></tr></thead><tbody><tr><td>The NAS snapshot is your ransomware safety net, and two drives are enough</td><td>Synology DS225+ {buy:synology-ds225-plus}</td></tr><tr><td>Same, but you want room for more than two drives</td><td>Synology DS425+</td></tr><tr><td>You already rotate a second, offline copy and want the lowest running energy</td><td>UGREEN NASync DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>You want 5GbE ports and keep an offline copy</td><td>TerraMaster F2-425 Plus</td></tr><tr><td>You want ZFS and will move the NAS to QuTS hero h6</td><td>QNAP TS-264-8G</td></tr></tbody></table><h2>Immutable or only locked: what a ransomware-hit PC can delete</h2><p>Veeam Agent and Macrium Reflect write the images to an SMB network share on the NAS. Veeam's guide says the account the job uses needs Full Control of that share. If you enter no credentials, Veeam connects as NT AUTHORITY\\SYSTEM, so on a home network you give it a NAS user. That login is saved on each PC, and Full Control lets anything using it delete the image files. What survives is the snapshot of the share underneath, but only if the NAS refuses to delete that snapshot too.</p><ul><li><strong>Synology DS225+ and DS425+:</strong> both product pages list immutable snapshots. iFeeltech's guide (Nandor Katai, updated 2026-10-27) quotes Synology: an immutable snapshot \"cannot be removed by any means until its protection period ends\", and the shared folder, volume or storage pool that holds it can't be deleted before then either. The guide adds that Synology recommends a 7–14-day period and that the feature needs DSM 7.2 or later.</li><li><strong>QNAP TS-264:</strong> \"uses the QTS operating system by default\". QNAP documents immutable snapshots for QuTS hero h6.0, whose protection policy \"prohibits automatic deletion by the system and/or manual deletion by a user\" until an expiry you set. Since QuTS hero h6.0.2.3591, which lists the TS-264, deleting a shared folder that holds unexpired immutable snapshots needs a USB key file. QNAP also says QuTS hero needs 16 GB of RAM for inline deduplication, and the TS-264 has 8 GB.</li><li><strong>Asustor AS5402T:</strong> in ADM's Snapshot Center, a locked snapshot \"will not be removed automatically\". When all 256 snapshot slots fill with locked ones, \"users need to manually remove\" them. There is no protection period.</li><li><strong>TerraMaster F2-425 Plus:</strong> TOS 6 lets you lock snapshots \"to ensure permanent preservation\". Its help page describes no protection period and no immutability.</li><li><strong>UGREEN DXP2800:</strong> the author of the open-source ugos-client library tested the UGOS API against a live NAS on 2026-08-19 (the code doesn't name the model) and wrote that \"a locked snapshot is deleted just the same\" through the API, calling the lock \"a hint the web UI honours\". This is that author's test, not a statement from UGREEN.</li></ul><p>To make the Synology protection count, give each PC its own NAS user and folder. Run Veeam's daily job (it keeps 7 days of restore points by default), and schedule a daily immutable snapshot of the backup share with a 7–14-day period. On PCs that sleep in Modern Standby, Veeam \"does not start scheduled backups\", so turn on \"Backup once powered on\" or keep the PCs awake at backup time.</p><h2>Not recommended</h2><p><strong>The QNAP TS-264 as it ships, holding your only copy.</strong> On its default QTS, QNAP documents no immutable snapshots; it documents them for QuTS hero. Its 18.288 W disk-standby draw is three times the DS225+'s 6.08 W hibernation figure (18.288 ÷ 6.08 = 3.0). Switched to QuTS hero h6.0.2, it matches Synology's protection, but it still uses 164.1 kWh a year against the DS225+'s 57.2.</p>",
+  "sources": [
+   [
+    "Synology DS225+: immutable snapshots, Celeron J4125, 2 GB, 1GbE + 2.5GbE, 16.98 W access / 6.08 W hibernation, 3-year warranty (read 2026-11-08)",
+    "https://www.synology.com/en-us/products/DS225+#specs"
+   ],
+   [
+    "Synology DS425+: automated immutable snapshots, Celeron J4125, 2 GB, 4 bays + 2 M.2, 28.25 W / 6.10 W (read 2026-11-08)",
+    "https://www.synology.com/en-us/products/DS425+"
+   ],
+   [
+    "Synology immutable snapshots can't be removed until the protection period ends; 7–14 days recommended; DSM 7.2+ (iFeeltech, Nandor Katai, read 2026-11-08)",
+    "https://ifeeltech.com/blog/synology-snapshots-explained"
+   ],
+   [
+    "QNAP TS-264: QTS by default, QuTS hero from QTS 5.2.1, 16 GB for inline dedupe, Celeron N5095, 8 GB, 2× 2.5GbE (read 2026-11-08)",
+    "https://www.qnap.com/en-us/product/ts-264"
+   ],
+   [
+    "QNAP TS-264 power: 29.086 W operating, 18.288 W disk standby (read 2026-11-08)",
+    "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+   ],
+   [
+    "QuTS hero h6.0 immutable snapshot policy prohibits automatic and manual deletion until expiry (read 2026-11-08)",
+    "https://www.qnap.com/hu-hu/release-notes/quts_hero/overview/h6.0.0"
+   ],
+   [
+    "QuTS hero h6.0.2.3591: USB key file needed to delete folders with unexpired immutable snapshots; TS-264 listed (read 2026-11-08)",
+    "https://www.qnap.com/en-us/release-notes/quts_hero/h6.0.2.3591/20260819"
+   ],
+   [
+    "Asustor ADM Snapshot Center: locked snapshots aren't removed automatically, can be removed by hand; 256 limit (read 2026-11-08)",
+    "https://www.asustor.com/online/online_help_V5?id=73"
+   ],
+   [
+    "Asustor AS5402T: Celeron N5105, 4 GB, 2× 2.5GbE, 4 M.2, 22.9 W / 12.7 W, 3-year warranty (read 2026-11-08)",
+    "https://www.asustor.com/en/product/spec?p_id=81"
+   ],
+   [
+    "TerraMaster TOS 6 snapshot lock for 'permanent preservation'; no protection period (read 2026-11-08)",
+    "https://help.terra-master.com/docs/TOS6/backup/snapshot"
+   ],
+   [
+    "TerraMaster F2-425 Plus: quad-core Intel N150, 8 GB DDR5, 2× 5GbE, 2 bays (ITPro, Dave Mitchell, read 2026-11-08)",
+    "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price"
+   ],
+   [
+    "UGREEN UGOS snapshot lock deleted through the API in the ugos-client author's 2026-08-19 test (read 2026-11-08)",
+    "https://docs.rs/crate/ugos-client/latest/source/src/api/snapshot.rs"
+   ],
+   [
+    "UGREEN DXP2800: Intel N100, 8 GB DDR5, 1× 2.5GbE, 2 bays + 2 M.2, 16.38 W / 5.24 W (The Gadgeteer, Julian Perry, read 2026-11-08)",
+    "https://the-gadgeteer.com/2025/10/07/ugreen-nasync-dxp2800-review-another-great-nas/"
+   ],
+   [
+    "Veeam Agent shared folder: Full Control credentials, NT AUTHORITY\\SYSTEM without them, 7-day default retention (read 2026-11-08)",
+    "https://helpcenter.veeam.com/docs/agentforwindows/userguide/backup_job_share.html"
+   ],
+   [
+    "Veeam Agent Free/Workstation schedule: no scheduled backups during Modern Standby; 'Backup once powered on' (read 2026-11-08)",
+    "https://helpcenter.veeam.com/docs/agentforwindows/userguide/backup_job_schedule_free_desktop.html"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Synology DSM Btrfs snapshots SMB backup Veeam Agent Windows Macrium Reflect NAS network share compatibility 2026",
+  "Veeam Agent Free Windows backup shared folder NAS SMB backup target limitations Macrium Reflect NAS image backup Synology snapshots",
+  "Veeam Agent for Microsoft Windows free edition network shared folder backup limitations 2026 Macrium Reflect NAS SMB backup",
+  "Synology DS423+ DS925+ Btrfs snapshots specifications"
+ ],
+ "query": "best nas for nightly image backups of three windows pcs with veeam agent free or macrium reflect",
+ "verified_changes": 6,
+ "verified_removed": 1,
+ "gate": {
+  "date": "2026-11-08",
+  "pass": true,
+  "g": null
+ }
+}

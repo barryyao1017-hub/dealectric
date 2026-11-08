@@ -1,0 +1,140 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how fast these NAS boxes actually take a Windows image. Blackvoid timed Synology Active Backup for Business making the first full backup of a Windows 11 PC to a DS225+: 60.3 GB in just under 12 minutes (85 MB/s), stored as just over 40 GB after deduplication. ComputerBase measured the DS425+ writing one 5.9 GB file over SMB, the route Veeam Agent and Macrium Reflect use, at 259.51 MB/s.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT cited: Synology's Active Backup for Business spec page (dsm/7.4/software_spec/abb, opened; it has only limits like '10 concurrent file server backups', with no MB/s, minutes or watts), the Snapshot Replication spec page, the Active Backup 'Requirements and Limitations' KB page and the 'How can I back up my Synology NAS' KB page. All four are vendor feature and limit pages with no reviewer measurements. ChatGPT's answer gives no throughput, backup time or power figure for the DS425+, DS225+ or TS-464, and our current page has none either. None of the pages compares measured SMB write speed, timed image backups or wall power across the candidates.",
+ "decides": "This confirms the pick rather than changing it. Every 2.5GbE candidate with a named test writes large single files over SMB at about 160–265 MB/s: DS225+ 263, DS425+ 259.51, TS-264 223.40, DXP2800 160.26. At 250 MB/s, a 500 GB first full image takes about 33 minutes; even Blackvoid's measured 85 MB/s for Active Backup works out to about 98 minutes. Three PCs' nightly incrementals fit easily on any of them, so throughput doesn't separate the picks. Measured power separates them more: ComputerBase measured the 4-bay DS425+ at 26.7 W idle and 44.3 W writing. Dong Ngo measured about 275 Wh per day for the DS225+ with two drives, which averages to about 11.5 W. That supports the 2-bay DS225+ for a three-PC household. The small-file results (DXP2800 39.90 MB/s, TS-264 42.43 MB/s) don't matter here, because images are written as large files.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Active Backup for Business first full backup of a Windows 11 PC",
+   "value": "60.3 GB in just under 12 min, average 85 MB/s, CPU about 20%; stored as just over 40 GB after deduplication",
+   "source": "https://www.blackvoid.club/synology-ds225-review/",
+   "source_title": "Synology DS225+ review (Blackvoid, Luka Manestar, 2025-09-08)",
+   "read": "2026-11-08",
+   "note": "One client over 2.5GbE. The transfer paused twice. Blackvoid doesn't say whether the PC's own disk limited the speed. Arithmetic: at 85 MB/s a 500 GB first image takes about 98 minutes."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "SMB transfer speed with one large file",
+   "value": "263 MB/s from NAS to Mac (2:14 min); 282 MB/s from Mac to NAS (2:05 min); iperf3 about 280 MB/s",
+   "source": "https://www.blackvoid.club/synology-ds225-review/",
+   "source_title": "Synology DS225+ review (Blackvoid, Luka Manestar, 2025-09-08)",
+   "read": "2026-11-08",
+   "note": "34.51 GB file between a Mac Studio and the NAS. Two HAT3310-8T 7,200 rpm drives in RAID 0 over 2.5GbE. Blackvoid recorded CPU at about 25% while the NAS was writing. The published direction labels conflict, so the 263 and 282 MB/s figures are reported as written."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Measured energy use",
+   "value": "about 275 Wh per 24 hours (about 11.5 W average)",
+   "source": "https://dongknows.com/synology-ds225-review/",
+   "source_title": "Synology DS225+ review (Dong Knows Tech, Dong Ngo, 2025-08-04)",
+   "read": "2026-11-08",
+   "note": "Two hard drives installed. Average = 275 Wh ÷ 24 h. The review gives no separate idle or load watts."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "SMB write speed, single 5.9 GB file",
+   "value": "259.51 MB/s write, 280.03 MB/s read (AES-256 encrypted: 265.10 / 277.34)",
+   "source": "https://www.computerbase.de/artikel/storage/synology-ds425-nas-test.94384/seite-2",
+   "source_title": "Synology DS425+ NAS im Test (ComputerBase, Frank Hüber, 2025-10-20)",
+   "read": "2026-11-08",
+   "note": "Four Synology HAT5310-20T drives in RAID 5, one 2.5GbE port. Writing a 15 GB folder of 4,000 files: 191.18 MB/s. In the same chart, the DS224+ (1GbE) managed 112.97 MB/s writing the single file."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Measured power and noise",
+   "value": "26.7 W idle, 44.3 W writing, 5.9 W with drives asleep; 34.6 dB(A) idle, 35.9 dB(A) with drives in use",
+   "source": "https://www.computerbase.de/artikel/storage/synology-ds425-nas-test.94384/seite-3",
+   "source_title": "Synology DS425+ NAS im Test: SSD-Cache, Lautstärke, Leistungsaufnahme und Fazit (ComputerBase, 2025-10-20)",
+   "read": "2026-11-08",
+   "note": "The power table doesn't state the drives; the transfer tests on page 2 used four 20 TB HAT5310 drives. Arithmetic: 26.7 W around the clock is about 234 kWh a year."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "SMB transfer, single file (ComputerBase comparison chart)",
+   "value": "365.93 MB/s write, 584.52 MB/s read",
+   "source": "https://www.computerbase.de/artikel/storage/synology-ds425-nas-test.94384/seite-2",
+   "source_title": "Synology DS425+ NAS im Test (ComputerBase, 2025-10-20)",
+   "read": "2026-11-08",
+   "note": "Comparison value from the DS425+ test chart. The page I read doesn't state the link speed or drives for this model."
+  },
+  {
+   "product": "QNAP TS-264 (8 GB)",
+   "label": "Transfer speeds",
+   "value": "4K film file 223.40 MB/s write, 261.41 MB/s read; NAS Performance Tester 8,000 MB 247.31 write / 284.89 read; 2 GB small-file backup 42.43 MB/s write",
+   "source": "https://www.pcworld.com/article/3014710/qnap-turbostation-ts-264-8g-review.html",
+   "source_title": "QNAP TurboStation TS-264-8G review (PCWorld, Ines Walke-Chomjakov, 2025-12-23)",
+   "read": "2026-11-08",
+   "note": "Two Seagate IronWolf ST4000NE001 4 TB drives in RAID 1, one 2.5GbE port used, QTS 5.2.7.3297."
+  },
+  {
+   "product": "QNAP TS-264 (8 GB)",
+   "label": "Measured power",
+   "value": "26.5 W idle, 33.7 W load, 16.8 W sleep, 1.9 W off",
+   "source": "https://www.pcworld.com/article/3014710/qnap-turbostation-ts-264-8g-review.html",
+   "source_title": "QNAP TurboStation TS-264-8G review (PCWorld, 2025-12-23)",
+   "read": "2026-11-08",
+   "note": "Same setup: two 4 TB IronWolf drives in RAID 1."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Transfer speeds",
+   "value": "4K film file 160.26 MB/s write, 170.45 MB/s read; NAS Performance Tester 8,000 MB 161.79 / 170.75; 2 GB in 4,195 files backup 39.90 MB/s write",
+   "source": "https://www.pcwelt.de/article/2436535/ugreen-nasync-dxp2800-test.html",
+   "source_title": "Ugreen NASync DXP2800 im Test (PC-WELT, Ines Walke-Chomjakov, 2024-09-19)",
+   "read": "2026-11-08",
+   "note": "RAID 1 with Btrfs, UGOS Pro 1.0.0.0779, 2.5GbE. Same author and test suite as the PCWorld TS-264 review, so the two are directly comparable."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power",
+   "value": "17.0 W idle, 27.5 W load, 13.3 W standby, 0.9 W off",
+   "source": "https://www.pcwelt.de/article/2436535/ugreen-nasync-dxp2800-test.html",
+   "source_title": "Ugreen NASync DXP2800 im Test (PC-WELT, 2024-09-19)",
+   "read": "2026-11-08",
+   "note": "The page as I read it said these were measured with no drives installed. That is odd next to RAID 1 transfer tests, so treat the drive state as unclear."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "SMB sequential write (iozone3)",
+   "value": "1 GB file: about 111 MB/s write, about 279 MB/s read (two HDDs in TRAID, no cache); about 206 MB/s write with an NVMe SSD cache; 10 GB file with bonded ports: 152 MB/s write from a 2.5GbE client",
+   "source": "https://www.cnx-software.com/2026/03/28/terramaster-f2-425-plus-nas-review-part-2-configuration-benchmarks-and-ai-enhanced-media-storage/",
+   "source_title": "TerraMaster F2-425 Plus NAS review Part 2 (CNX Software, Jean-Luc Aufranc, 2026-03-28)",
+   "read": "2026-11-08",
+   "note": "The client was limited to 2.5GbE, so the NAS's 5GbE ports weren't used to the full. iperf3 measured 4.71 Gbit/s each way. Measured on a unit TerraMaster supplied."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Measured power",
+   "value": "29.2 W idle with drives spinning, 36.8 W copying a 9 GB file, 15.4 W with drives hibernating, 0.6 W in S3 sleep",
+   "source": "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/4/",
+   "source_title": "Asustor Nimbustor 2 Gen2 AS5402T Review, page 4 (LinuxLinks, Steve Emms, 2024-03-18)",
+   "read": "2026-11-08",
+   "note": "Two 6 TB 7,200 rpm drives plus two NVMe SSDs, EuP mode off, Wake on LAN/WAN on."
+  }
+ ],
+ "unsourced": [
+  "QNAP TS-464: I couldn't find a named reviewer's measured SMB MB/s or wall power. StorageReview (2022-10-11, opened) gives sequential results only as percentages against the TS-453D, and its power figures (40.536 W typical, 21.618 W in drive sleep) are QNAP's spec values. I didn't open NAS Compares' 24-hour power test (one 22 TB drive).",
+  "Synology DS225+ idle and load watts as separate measured numbers: Blackvoid's 16.98 W and 6.08 W match Synology's spec sheet, and Dong Ngo gives only 275 Wh per 24 h.",
+  "TerraMaster F2-425 Plus measured power: CNX Software Part 2 has none, and I found no other named reviewer measurement.",
+  "Asustor AS5402T measured SMB throughput by a named reviewer: only vendor or retailer figures (561–566 MB/s) turned up.",
+  "A timed Veeam Agent Free or Macrium Reflect image backup to any candidate NAS by a named reviewer: none found. The closest is Blackvoid's Active Backup for Business test on the DS225+.",
+  "Synology DS425+ measured throughput from NAS Compares: its review (2025-08-25, opened) has no MB/s figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0084629999999999
+ }
+}

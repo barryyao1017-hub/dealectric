@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that Windows 11 24H2 Pro requires SMB signing and blocks guest access to shares. Because of that, the Veeam Agent (or Macrium) target has to be a NAS share that allows signing, opened with a named NAS user account. If you skip credentials, Veeam connects as NT AUTHORITY\\SYSTEM. Also, Veeam's scheduled nightly job won't start on a PC that is sleeping in Modern Standby.",
+ "standout": 2,
+ "standout_why": "I compared it against the pages ChatGPT cited: Synology's ABB spec for DSM 7.4 (en-global), the Snapshot Replication spec, the ABB Requirements and Limitations KB (its body came back empty when fetched) and the 'How can I back up my Synology NAS' KB. Our current page also lacks it. The ABB spec covers only Synology's own agent: Btrfs destination, Windows 7 SP1 to 11, NTFS, no 4Kn or Storage Spaces. It says nothing about SMB signing, guest access or the credentials a third-party agent such as Veeam or Macrium needs to write to a share. None of these pages mentions Modern Standby or wake timers. ChatGPT's answer named 'SMB compatibility' as a factor but never said what that compatibility actually requires.",
+ "decides": "It confirms the plan rather than changing which NAS to buy. Every candidate runs a Samba-based SMB server, so each can work, as long as you create a NAS user per PC (or one backup user), give it Full Control of the share, enter those credentials in the Veeam or Macrium job and in the recovery media, and leave guest access off. What really decides whether 'nightly' happens is the PCs, not the NAS: on a laptop or desktop that sleeps in Modern Standby, Veeam won't start the scheduled job, so set 'Backup once powered on' or keep the PCs awake. With Veeam Free, each PC gets exactly one backup job, has no synthetic fulls, and keeps 7 days of restore points by default. That favours a NAS with Btrfs snapshots underneath for longer history, which points to the DS225+/DS425+, DXP2800, F2-425 Plus or AS5402T over the ext4-only DS223j.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "Synology DS223j"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Windows 11 24H2 SMB signing requirement by edition",
+   "value": "Microsoft: 'Windows 11, version 24H2 Enterprise, Pro, and Education require both outbound and inbound SMB signing.' 'Windows 11, version 24H2 Home edition doesn't require outbound or inbound SMB signing.'",
+   "source": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing",
+   "source_title": "Control SMB signing behavior | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Page ms.date 2025-08-13, updated 2025-09-15. If a third-party SMB server doesn't allow signing, the connection fails with STATUS_INVALID_SIGNATURE (0xc000a000). Microsoft's advice is to enable signing on the third-party server."
+  },
+  {
+   "product": "general",
+   "label": "Required signing also blocks guest shares",
+   "value": "Microsoft: 'Requiring SMB signing also disables guest access to shares.' Its documented error reads 'You can't access this shared folder because your organization's security policies block unauthenticated guest access.' Microsoft does not recommend disabling signing as a workaround.",
+   "source": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing",
+   "source_title": "Control SMB signing behavior | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "So a NAS share opened with guest access, which many home setups use, fails from Windows 11 24H2 Pro PCs."
+  },
+  {
+   "product": "general",
+   "label": "Microsoft's ordered fixes for a NAS under 24H2",
+   "value": "1) 'Enable SMB signing in your third-party NAS.' 2) 'Disable guest access in your third-party NAS.' 3) 'Enable a username and password in your third-party NAS.' Microsoft also states 'SMB signing cannot be used with guest credentials' and 'Guest fallback is disabled on Windows 11 Pro edition.'",
+   "source": "https://techcommunity.microsoft.com/blog/filecab/accessing-a-third-party-nas-with-smb-in-windows-11-24h2-may-fail/4154300",
+   "source_title": "Accessing a third-party NAS with SMB in Windows 11 24H2 may fail (Microsoft Storage team blog)",
+   "read": "2026-11-08",
+   "note": "Posted 2024-05-29, updated 2024-06-14. The post gives no performance figure."
+  },
+  {
+   "product": "general",
+   "label": "SMB signing algorithms",
+   "value": "SMB 2.02 uses HMAC-SHA256. SMB 3.0 added AES-CMAC. Windows 11 / Server 2022 added AES-128-GMAC signing acceleration.",
+   "source": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/overview-server-message-block-signing",
+   "source_title": "Overview of Server Message Block signing - Windows Server | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Page ms.date 2026-02-12. If either side requires signing, the session is signed: if the client requires it, the session is signed whatever the server's setting."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Agent shared-folder credentials",
+   "value": "If 'This share requires access credentials' is not selected, Veeam Agent 'will connect to the shared folder using the NT AUTHORITY\\SYSTEM account'. Credentials you enter need 'Full Control access permissions on this shared folder', in DOMAIN\\UserName format. Default retention is 7 days.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/backup_job_share.html",
+   "source_title": "Shared Folder Settings - Veeam Agent for Microsoft Windows 13 User Guide",
+   "read": "2026-11-08",
+   "note": "Build 13.1.2.812, page updated 2025-10-29. On a home workgroup with no domain, the SYSTEM account can't authenticate to the NAS by name, so in practice you enter a NAS user (HOSTNAME\\user). This is my inference from the Veeam and Microsoft pages together; neither states it outright."
+  },
+  {
+   "product": "general",
+   "label": "Veeam bare-metal restore from a share",
+   "value": "Veeam Recovery Media asks for a UNC path and, if the share needs it, a username and password with Full Control in DOMAIN\\UserName or HOSTNAME\\UserName format.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/baremetal_share.html",
+   "source_title": "Shared Folder Settings (bare-metal restore) - Veeam Agent for Microsoft Windows 13 User Guide",
+   "read": "2026-11-08",
+   "note": "Page updated 2026-11-06, build 13.1.2.812. The same NAS account has to be available at restore time."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Agent Free edition limits",
+   "value": "One backup job per computer (to a local drive, a shared folder or a Veeam repository). Free lacks synthetic full backups, the Veeam CBT driver, backup cache, GFS long-term retention, parallel disk processing and application-aware processing.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/license_editions.html",
+   "source_title": "Product Editions - Veeam Agent for Microsoft Windows 13 User Guide",
+   "read": "2026-11-08",
+   "note": "Page updated 2026-03-27. One job per PC is enough for this shopper: 3 PCs means 3 separate jobs, each to its own folder on the NAS."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Free/Workstation daily schedule and Modern Standby",
+   "value": "'Everyday — select this option to start the job at specific time daily.' On Modern Standby PCs Veeam 'does not start scheduled backups while your computer is in Modern Standby'. It also cannot wake a PC whose power plan disallows wake timers. 'Backup once powered on' runs the missed job when the PC wakes, after 'a delay of several minutes' on Modern Standby machines.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/backup_job_schedule_free_desktop.html",
+   "source_title": "Scheduling Settings in Free and Workstation Editions - Veeam Agent for Microsoft Windows 13 User Guide",
+   "read": "2026-11-08",
+   "note": "Page updated 2025-11-26, build 13.1.2.812. This decides whether the backups actually run nightly on sleeping laptops and recent desktops."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Active Backup for Business PC limits (cited rival)",
+   "value": "Backup destination must be Btrfs. Windows 7 SP1 to 11 with NTFS. No 4Kn disks, Storage Spaces or VHDs. Triggers include screen lock, sign-out and startup.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/abb",
+   "source_title": "Active Backup for Business Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Read as the rival baseline. It says nothing about SMB signing, guest access or third-party agents."
+  }
+ ],
+ "unsourced": [
+  "Macrium Reflect Free end-of-life wording: macrium.com/product-support-policy returned HTTP 403 and blog.macrium.com redirected to the blog index. Secondary sources (Neowin, Ask Leo) say security patches ended 2024-01-01, but I didn't use them.",
+  "Synology DSM's default SMB server-signing setting and its option names, from a Synology page: the DSM File Services help page came back with no body. Only third-party guides describe Control Panel > File Services > SMB > Advanced.",
+  "Measured SMB-signing throughput cost on the ARM NAS units (Synology DS223j RTD1619B, UGREEN DH2300) versus the x86 ones: I found no maker figure or named-reviewer measurement.",
+  "Macrium Reflect X rescue media (WinPE) credential and signing behaviour when restoring from a NAS share: I didn't research it within the call budget.",
+  "Default SMB signing settings in QNAP QTS, UGREEN UGOS, TerraMaster TOS 6 and Asustor ADM: not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0562307999999998
+ }
+}

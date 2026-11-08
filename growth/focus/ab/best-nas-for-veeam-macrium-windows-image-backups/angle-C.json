@@ -1,0 +1,122 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Veeam Agent for Windows cannot wake a PC that uses Modern Standby for a scheduled backup and does not start scheduled backups while the PC is in Modern Standby, and that Veeam Free allows only one backup job. They also don't state that the NAS makers' own image agents need BitLocker turned off before backup (QNAP HDP PC Agent) or decrypted (Synology ABB on DSM 7.3), while Veeam only needs the volume unlocked.",
+ "standout": 2,
+ "standout_why": "I compared against these rival pages: the cited Synology ABB DSM 7.4 spec, the Snapshot Replication 7.4 spec, the ABB Requirements and Limitations KB, and the top result, the ABB 7.2 spec. The ABB 7.4 spec covers x86-64-only agents, 4Kn disks, Storage Spaces, dynamic disks and the Btrfs destination. It has no matches for 'BitLocker'. None of the Synology pages say anything about Veeam or Macrium scheduling, Modern Standby, Veeam Free's one-job limit or Veeam's BitLocker handling. ChatGPT's answer tells the shopper 'Nightly incrementals: Yes' for Veeam Agent Free and gives no wake or sleep caveat. The cited ABB KB page returned only navigation through WebFetch, so I couldn't check it directly. The DSM 7.3 ABB spec is not among the cited pages, and its BitLocker sentence is missing from the 7.4 spec that ChatGPT cited.",
+ "decides": "This confirms that a basic SMB NAS is enough when the PCs run Veeam Agent Free. Veeam supports a network shared folder target, a daily schedule and unlocked BitLocker volumes. The Modern Standby limit applies whichever NAS you buy, so the page should tell shoppers to leave the PCs awake or plugged in at the backup time, or to use the backup-on-lock or log-off triggers. It weakens the argument that 'Synology Active Backup for Business may eliminate your need for Veeam or Macrium', and the same goes for QNAP's HDP PC Agent. On BitLocker-encrypted PCs, both makers tell you to decrypt or turn BitLocker off first, and both say BitLocker has to be turned back on after a full restore. So for encrypted PCs, Veeam to a share on any Btrfs NAS (DS225+, DXP2800, TS-264) is the cleaner route than the NAS maker's agent. If shoppers buy a DS225+ or DS425+, they can fit their own hard drives on DSM 7.3. M.2 pools and cache still need drives from Synology's list.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "Asustor AS5402T",
+  "Synology DS223j"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Veeam Agent Free edition: number of backup jobs and targets",
+   "value": "One backup job, aimed at a local drive, a network shared folder or a Veeam backup repository",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/license_editions.html",
+   "source_title": "Product Editions – Veeam Agent for Microsoft Windows User Guide (build 13.1.2.812)",
+   "read": "2026-11-08",
+   "note": "Quote: 'you can configure only one backup job targeted at a local drive, network shared folder, or Veeam backup repository'. Each PC gets one job, so you can't, for example, send one PC to both the NAS and a USB drive."
+  },
+  {
+   "product": "general",
+   "label": "Features missing from Veeam Agent Free",
+   "value": "No synthetic full backup, Veeam CBT driver, backup cache, GFS long-term retention, object storage or Cloud Connect target. Monthly and periodic schedules, custom retries and backup windows are Server-edition only.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/license_editions.html",
+   "source_title": "Product Editions – Veeam Agent for Microsoft Windows User Guide (build 13.1.2.812)",
+   "read": "2026-11-08",
+   "note": "The same page lists features available in Workstation and Server, and the Free edition lacks these."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Agent Free and Workstation: daily schedule",
+   "value": "Can start at a set time daily or on chosen weekdays, plus event triggers (Lock, Log off, When backup target is connected)",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/scheduled_backup_free_workstation.html",
+   "source_title": "Scheduling Options in Free and Workstation Editions – Veeam Agent for Microsoft Windows",
+   "read": "2026-11-08",
+   "note": "Quote: 'You can schedule the backup job to start at specific time daily or on specific week days.' The event triggers come from https://helpcenter.veeam.com/docs/agentforwindows/userguide/scheduled_backup_events.html, read 2026-11-08."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Agent: waking PCs for a nightly backup when they use Modern Standby",
+   "value": "Not possible. Veeam 'will not be able to wake it up for a scheduled backup due to OS limitations' and 'does not start scheduled backups while the computer is in Modern Standby'.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/schedule_wakeup.html",
+   "source_title": "Computer Wake Up from Sleep – Veeam Agent for Microsoft Windows (build 13.1.2.812)",
+   "read": "2026-11-08",
+   "note": "PCs with classic standby are woken by default unless power settings forbid it. If the wake fails, the backup does not run, but there is an option to run missed backups later. During a running job, Veeam postpones idle sleep."
+  },
+  {
+   "product": "general",
+   "label": "Veeam Agent: BitLocker, CPU and NAS target requirements",
+   "value": "BitLocker volumes 'must be unlocked at the moment when Veeam Agent starts the backup'. Needs an x64 CPU (ARM64 isn't listed). Windows 11 22H2–26H2 or Windows 10 22H2. The NAS must 'represent itself as SMB (CIFS) share'. Disks must use 512-byte or 4 KB sectors.",
+   "source": "https://helpcenter.veeam.com/docs/agentforwindows/userguide/system_requirements.html",
+   "source_title": "System Requirements – Veeam Agent for Microsoft Windows (build 13.1.2.812)",
+   "read": "2026-11-08",
+   "note": "No decryption needed, unlike the NAS makers' agents below."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Active Backup for Business PC agent: BitLocker",
+   "value": "'BitLocker-encrypted computers must be decrypted before backup to ensure encrypted data is available after restoration'",
+   "source": "https://www.synology.com/en-us/dsm/7.3/software_spec/abb",
+   "source_title": "Active Backup for Business Technical Specifications (DSM 7.3) | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "The DSM 7.4 version of the spec (https://www.synology.com/en-us/dsm/7.4/software_spec/abb, read 2026-11-08), which ChatGPT cited, has no matches for 'BitLocker'. It's unclear whether the limit was removed or just left out. The 7.3 spec also says 4Kn disks are not supported, and the 7.4 spec lists the agent as Windows on x86-64 processors. This applies to the DS425+ too."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "HDP PC Agent (formerly NetBak PC Agent): BitLocker and Windows support",
+   "value": "'Please make sure to turn off BitLocker encryption before backing up your computer with HDP PC Agent'. Turn BitLocker back on after a full restore. Supports Windows 10 64-bit 1607+, Windows 11 and Windows Server 2016–2025. Needs HDP for PC/VM v2.3.0 on the NAS.",
+   "source": "https://www.qnap.com/en/software/hdp-pc-agent",
+   "source_title": "HDP PC Agent | QNAP",
+   "read": "2026-11-08",
+   "note": "The page also says 'Backup Explorer cannot display files encrypted using BitLocker'. Bare-metal restore needs HDP Recovery Media Creator (USB or ISO)."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Third-party HDDs in 2025 Plus models",
+   "value": "2025 model-year DiskStation Plus, Value and J Series running DSM 7.3 support installing third-party drives and creating storage pools on them. 'Creation of M.2 based storage pool and cache still requires drives on the HCL.'",
+   "source": "https://www.synology.com/en-global/company/news/article/dsm73",
+   "source_title": "Synology Releases DiskStation Manager 7.3 … Expanded Storage Flexibility | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Released 8 Oct 2025, updated 13 Oct 2025. I'm treating the DS225+ and DS425+ as 2025 model-year Plus units, but I couldn't confirm that on a model-specific Synology page (see unsourced). This makes ChatGPT's '2 × 8 TB NAS-rated CMR HDDs' advice workable on those models."
+  },
+  {
+   "product": "general",
+   "label": "Macrium Reflect X licensing",
+   "value": "Licensed per computer ('requiring a separate licensed copy for each computer'). Sold on annual plans. Home is for non-commercial use only. A lapsed plan leaves the software in 'restore-only' mode.",
+   "source": "https://kbx.macrium.com/macrium-reflect-x/macrium-reflect-x-licensing-policy",
+   "source_title": "Macrium Reflect X Licensing Policy",
+   "read": "2026-11-08",
+   "note": "So three PCs need three Reflect X licences that renew every year. That's the cost ChatGPT's 'Generally paid' row leaves out."
+  },
+  {
+   "product": "general",
+   "label": "Macrium Reflect X: PC won't wake for a scheduled backup",
+   "value": "'the system may not be able to wake from sleep to run a backup'. If 'Run task as soon as possible after a scheduled start is missed' is off, the task fails with error 0x800710E0. Fix: turn on 'Wake the computer to run this task' and allow wake timers in the Windows power plan.",
+   "source": "https://kbx.macrium.com/macrium-reflect-x/pc-wont-wake-from-sleep-to-run-backups",
+   "source_title": "PC won't wake from sleep to run backups – Macrium Reflect X KB",
+   "read": "2026-11-08",
+   "note": "The KB article doesn't mention Modern Standby. Macrium's blog post on Modern Standby redirected to the blog index, so I couldn't read it."
+  }
+ ],
+ "unsourced": [
+  "Macrium Reflect Free end-of-support dates and last supported Windows version: macrium.com/product-support-policy and the Neowin article both returned 403. Search snippets gave 1 Jan 2024 and Windows 11 22H2, but I didn't open a page that confirms them.",
+  "Macrium Reflect X support for ARM64 (Copilot+) PCs: Macrium's 'reflect-x-is-here' blog returned 403. I didn't open the kbx system-requirements page.",
+  "Whether Synology ABB on DSM 7.4 still needs BitLocker decrypted: the 7.4 spec is silent, and the ABB Requirements and Limitations KB page rendered empty through WebFetch.",
+  "A Synology page per model (Drive_compatibility_policies KB) confirming that the DS225+ and DS425+ are covered by the DSM 7.3 third-party HDD policy: the KB page rendered empty.",
+  "A Microsoft page saying Windows 11 turns device encryption or BitLocker on by default on new PCs: not looked up because of the tool-call budget.",
+  "UGREEN, TerraMaster and Asustor documents on their own image-backup agents: not checked, because those models are SMB-only targets for Veeam and Macrium on our page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0298475999999999
+ }
+}

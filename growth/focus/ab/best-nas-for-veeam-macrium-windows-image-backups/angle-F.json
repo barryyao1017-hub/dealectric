@@ -1,0 +1,171 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got gives a price for any NAS. The cited Synology spec and KB pages list none. ChatGPT's cards put the DS225+ at $429.99 and the DS425+ at $769.99 (Micro Center), but today the makers' own US stores sell 2-bay Intel boxes with 8 GB of RAM for less: UGREEN DXP2800 at $389.99 and TerraMaster F2-425 Plus at $399.49. The cheapest Synology, the DS223j, now supports Btrfs and Snapshot Replication from DSM 7.2-64570, which is enough for a Veeam or Macrium SMB target.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Synology ABB 7.4 spec page (no prices or model list; it only gives concurrency limits), the cited Snapshot Replication spec page and KB backup tutorial (Synology-only, no prices), and the cited ABB requirements KB page, whose fetched copy had no body text. None of the cited or top results name a non-Synology model or give any price. Only ChatGPT's own cards had prices, from a retailer (Micro Center) whose page I could not open (403). Maker-store prices for UGREEN and TerraMaster, and the DS223j's Btrfs support, appear on none of them.",
+ "decides": "This confirms that for Veeam Agent Free or Macrium Reflect (which only need an SMB share), a $390–400 2-bay Intel box with 8 GB from UGREEN (DXP2800, $389.99) or TerraMaster (F2-425 Plus, $399.49) costs less than ChatGPT's $429.99 DS225+ card. The DS425+ at $769.99 is a 4-bay box for a workload ChatGPT itself called light. The Synology Plus models are worth paying for only if the shopper drops Veeam/Macrium for Active Backup for Business. ABB's limit of 10 concurrent PC backups under 8 GB RAM covers three PCs on a stock 2 GB DS225+. The DS223j (Btrfs + Snapshot Replication, $209.99 on Amazon) is the floor for a Synology SMB target. Its 1 GB RAM and single 1GbE port are the reason it loses. Our page wrongly lists it as having no snapshots (ext4) and must be corrected.",
+ "candidates": [
+  "Synology DS425+",
+  "Synology DS225+",
+  "Synology DS223j",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "TerraMaster F2-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maker US store price",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-08",
+   "note": "storecheck.py Shopify search of nas.ugreen.com. The product-variant call returned HTTP 429, so this is the search-listed default price. The DXP2800 + dock bundle is $424.99 and the DXP2800 GT is $459.99."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Maker US store price",
+   "value": "$239.99 (compare-at $394.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300",
+   "read": "2026-11-08",
+   "note": "storecheck.py search of nas.ugreen.com. Cheapest 2-bay in the field from a maker store."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Maker US store price",
+   "value": "$399.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus",
+   "read": "2026-11-08",
+   "note": "storecheck.py search of nas.ugreen.com. A 4-bay box for about the price of ChatGPT's 2-bay DS225+ card ($429.99)."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Maker US store price",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-08",
+   "note": "storecheck.py search of nas.ugreen.com. Amazon B0D22JRHZB is the same $619.99 (comparison only, not for print)."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Maker US store price",
+   "value": "$399.49 (compare-at $499.99), in stock; listed as Quad-core, 8GB RAM, 2× 5Gbps RJ45",
+   "source": "https://shop.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus",
+   "read": "2026-11-08",
+   "note": "storecheck.py search of shop.terra-master.com. The same store lists the F2-425 (4 GB) at $299.99 and the F4-425 Plus at $599.99."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Btrfs and Snapshot Replication support",
+   "value": "Btrfs for internal drives and Snapshot Replication, both 'available from DSM 7.2-64570'; 1 GB DDR4, 1× 1GbE (MTU 1500), Realtek RTD1619B 1.7 GHz, 2-year warranty",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DS223j | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Contradicts our page's 'none (ext4)' cell. Active Backup for Business is not mentioned on this spec page. It loses on 1 GB RAM and a single 1GbE port."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Amazon price (comparison only)",
+   "value": "$209.99 diskless",
+   "source": "https://www.amazon.com/dp/B0C8814GKB",
+   "source_title": "Synology 2-Bay DiskStation DS223j (Diskless)",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. Under DLC-159 our pages do not print Amazon prices. Use this only to rank the field."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Specs from maker page",
+   "value": "Celeron J4125 4C/4T 2.0/2.7 GHz; 2 GB DDR4 default, 6 GB max (one slot); 1× 1GbE + 1× 2.5GbE; 3-year warranty (5 with Extended Warranty Plus); no price on page, only 'Where to buy'",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "The spec list does not name Active Backup for Business explicitly. It says 'Consolidate and automate backup tasks for PCs, file servers, VMs…'."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Amazon price (comparison only)",
+   "value": "$364.29 diskless",
+   "source": "https://www.amazon.com/dp/B0FB7KQLR1",
+   "source_title": "Synology DS225+ Private Cloud Media Server … (2-Bay Diskless NAS)",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. $65.70 under the $429.99 Micro Center price ChatGPT showed. Not for print (DLC-159)."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Amazon price (comparison only)",
+   "value": "$579.97 diskless",
+   "source": "https://www.amazon.com/dp/B0F895RV3K",
+   "source_title": "Synology DS425+ Private Cloud Media Server … (4-Bay Diskless NAS)",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. $190.02 under the $769.99 Micro Center price ChatGPT showed. Not for print (DLC-159). It loses for this question on cost: 4 bays for three PCs that ChatGPT called a light workload."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Amazon price (comparison only)",
+   "value": "$599.00 (B0BQ5TWCL8); $639.00 (B0GN3ZW73Q), both TS-464-8G-US",
+   "source": "https://www.amazon.com/dp/B0BQ5TWCL8",
+   "source_title": "QNAP TS-464-8G-US 4 Bay Desktop NAS",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. ChatGPT showed $639.00 at B&H. The B&H page returned 403, so that price is not verified. It loses on price against the $399.99 UGREEN DH4300 Plus 4-bay from the maker store."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Specs from maker page",
+   "value": "Celeron N5095 quad-core up to 2.9 GHz; 8 GB DDR4; 2× 2.5GbE; 3-year warranty (extendable to 5); no price on the page",
+   "source": "https://www.qnap.com/en-us/product/ts-264",
+   "source_title": "TS-264 | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "The 'List price' field is empty and the Buy button is a JavaScript placeholder. The QNAP store search through storecheck failed (not Shopify-parsable)."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Amazon price (comparison only)",
+   "value": "$489.00",
+   "source": "https://www.amazon.com/dp/B0GTWWJK9V",
+   "source_title": "QNAP TS-264-8G-US 2 Bay Desktop NAS",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. About $90–100 more than the UGREEN DXP2800 ($389.99) or TerraMaster F2-425 Plus ($399.49) maker-store prices for the same 2-bay, 8 GB, Intel class. That gap is the reason it loses for an SMB-only target. Not for print."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Amazon price (comparison only)",
+   "value": "$406.99",
+   "source": "https://www.amazon.com/dp/B0C5MB5MTS",
+   "source_title": "Asustor AS5402T 2 Bay NAS Storage for Content Creators & Video Editors",
+   "read": "2026-11-08",
+   "note": "amzcheck.py asin. Asustor has no US maker store that I found. Not for print."
+  },
+  {
+   "product": "general",
+   "label": "Active Backup for Business concurrent PC backup limit by RAM",
+   "value": "10 concurrent PC/server/VM backups under 8 GB RAM; 30 at 8–31 GB; 50 at 32 GB+. Destination must be Btrfs. Recovery Media Creator needs 2.5 GB free on the system volume and 1 GB on the USB/ISO.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/abb",
+   "source_title": "Active Backup for Business Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "This is the cited rival page. Three PCs fit well under the 10-task limit on a stock 2 GB DS225+, so RAM does not restrict the ABB route here. The page states no device-count or licence limits."
+  }
+ ],
+ "unsourced": [
+  "Micro Center live prices for Synology DS425+ ($769.99) and DS225+ ($429.99), as shown by ChatGPT: both product pages returned HTTP 403, and search snippets don't count as price sources.",
+  "B&H live price for QNAP TS-464 ($639.00, as shown by ChatGPT): the page returned HTTP 403.",
+  "Synology US maker-store price for any model: the Synology product pages list no price, only 'Where to buy'.",
+  "QNAP official store price for TS-264/TS-464: storecheck search on shop.qnap.com failed, and the product page's list-price field is empty.",
+  "Synology's official list of models that support Active Backup for Business, to confirm the 'x64 Plus only' claim on our page: the package page and the DS225+/DS223j spec pages don't list it, and the KB requirements page loaded without body text.",
+  "UGREEN DXP2800 per-variant price: the storecheck product call returned HTTP 429, so only the search-listed price is used."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9175272999999998
+ }
+}
