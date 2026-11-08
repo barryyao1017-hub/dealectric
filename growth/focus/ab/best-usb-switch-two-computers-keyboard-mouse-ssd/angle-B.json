@@ -1,0 +1,100 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out whether a bus-powered switch can actually power the SSD. The sum: a USB 3.x SSD can draw up to 0.9 A, and a keyboard and mouse at one USB 2.0 unit load each add 0.2 A, so the three need 1.1 A (5.5 W). The UGREEN CM691 passes on up to 2.4 A from a USB-C host, which leaves 1.3 A spare. A USB-A host port is only required to supply 0.9 A, which is 0.2 A less than the three devices need. That makes the shopper's own 'is one computer USB-A?' question a question about power, not just speed.",
+ "standout": 2,
+ "standout_why": "I compared against the cited UGREEN product pages, digitaldesksolutions.com (2026-10-28) and our own 2026-11-03 page. digitaldesksolutions does one 1,400 mA vs 900 mA sum for a made-up webcam setup on a generic USB 3.0 switch. It doesn't name a product's power budget and doesn't treat the USB-A host case. The UGREEN page says the switch 'can output 5V2A' from a USB-A port without saying that a spec-minimum USB-A 3.x port only supplies 0.9 A. Our page gives 12 W and 9 W budgets (the 9 W rests on '1.8 A', but the store page now says 2 A) and never subtracts the devices. No page compares the SSD's draw with the host port's minimum. All of them, ours included, already give 100 GB copy times at 10 vs 5 Gbps, so that sum adds nothing new.",
+ "decides": "This confirms the UGREEN CM691 ($40.99 today; the $69.99 ChatGPT showed in one chat is the store's struck-through compare-at price) as the pick when both computers have USB-C: a keyboard, mouse and USB-spec SSD leave 1.3 A (6.5 W) spare. If either computer only has USB-A, the bus-powered CM691 and ATEN US3342 can't be counted on to power the SSD, since a 0.9 A port is 0.2 A short of the 1.1 A load. ATEN in fact requires a 5 V 3 A host. For that case the page should send the shopper to a switch with its own power input: Cable Matters 201160 with its optional adapter, or UGREEN's 7-port 10Gbps model with its included adapter.",
+ "candidates": [
+  "UGREEN USB-C Switch CM691 (2-in 4-out, 10Gbps)",
+  "Cable Matters 201160",
+  "ATEN US3342",
+  "UGREEN 2-in 7-Out USB 3.2 Switch 10Gbps (75087)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Price, UGREEN US store",
+   "value": "$40.99 (compare-at $69.99), in stock",
+   "source": "https://us.ugreen.com/products/ugreen-usbc-switch-2-port",
+   "source_title": "UGREEN USBC Switch - 2-Port, 4 x USB 3.2, 10Gbps Data",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py product. The $69.99 'Listed' price in ChatGPT's third chat is this struck-through compare-at price."
+  },
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Power available to the four ports",
+   "value": "Up to 2.4 A (12.0 W) from a USB-C host; 5 V 2 A (10.0 W) from a USB-A host",
+   "source": "https://us.ugreen.com/products/ugreen-usbc-switch-2-port",
+   "source_title": "UGREEN USBC Switch - 2-Port, 4 x USB 3.2, 10Gbps Data",
+   "read": "2026-11-08",
+   "note": "Quote: 'When connected to a USB-C laptop port, this device can output a Max 2.4A … When connected to a USB-A laptop port … the switch only can output 5V2A.' 2.4 A × 5 V = 12.0 W; 2 A × 5 V = 10.0 W. Our page's '1.8 A from USB-A' should become 2 A."
+  },
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Spare current with keyboard + mouse + SSD, USB-C host",
+   "value": "1.3 A (6.5 W) spare",
+   "source": "https://us.ugreen.com/products/ugreen-usbc-switch-2-port",
+   "source_title": "UGREEN USBC Switch - 2-Port, 4 x USB 3.2, 10Gbps Data",
+   "read": "2026-11-08",
+   "note": "Load = SSD 0.9 A (USB 3.x high-power limit) + keyboard 0.1 A + mouse 0.1 A (one USB 2.0 unit load each), from en.wikipedia.org/wiki/USB_3.0 = 1.1 A. Spare: 2.4 − 1.1 = 1.3 A; 1.3 A × 5 V = 6.5 W."
+  },
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Current short on a USB-A 3.x host port at its spec minimum",
+   "value": "0.2 A short (0.9 A supplied vs 1.1 A load)",
+   "source": "https://en.wikipedia.org/wiki/USB_3.0",
+   "source_title": "USB 3.0 - Wikipedia",
+   "read": "2026-11-08",
+   "note": "Quote: 'For high-power SuperSpeed devices, the limit is six unit loads, or 900 mA (4.5 W).' A USB-A host port is only required to supply 0.9 A, but the load is 1.1 A: 0.9 − 1.1 = −0.2 A. UGREEN's 2 A from USB-A only applies if the host port supplies more than the spec requires."
+  },
+  {
+   "product": "general",
+   "label": "Ceiling on a spec-compliant portable SSD's draw",
+   "value": "≤0.9 A at 5 V (4.5 W) on USB 3.x",
+   "source": "https://www.samsung.com/ca/memory-storage/portable-ssd/t7-shield-1tb-black-external-storage-nvme-1050-mbs-mu-pe1t0s-am/",
+   "source_title": "Samsung Portable SSD T7 Shield 1TB (MU-PE1T0S/AM)",
+   "read": "2026-11-08",
+   "note": "Samsung: 'The T7 Shield complies with official USB power specifications'; interface 'USB 3.2 Gen.2 (10Gbps)', up to 1,050 MB/s read. Combined with Wikipedia's 900 mA limit this caps the drive at 4.5 W. It's an upper bound, not a measurement."
+  },
+  {
+   "product": "ATEN US3342",
+   "label": "Host power required, and spare power after the switch's own draw and the three devices",
+   "value": "Host must supply 5 V 3 A (15 W); about 9.1 W spare",
+   "source": "https://www.aten.com/global/en/products/usb-solutions/docks-and-switches/us3342/",
+   "source_title": "ATEN US3342 2-Port USB-C Gen 2 Sharing Switch with Power Pass-through",
+   "read": "2026-11-08",
+   "note": "ATEN: host 'should be at least 5V, 3A'; switch draws 'DC5V:0.43W' typical; 'No drivers or external power adapter needed'; PD pass-through to 85 W needs an extra USB-C adapter; 2× USB-C 3.2 Gen 2 cables (1 m); 0.26 kg. 15 − 0.43 − 5.5 = 9.07 W. The 3 A requirement rules out a standard USB-A host port (0.9 A)."
+  },
+  {
+   "product": "Cable Matters 201160",
+   "label": "Power input",
+   "value": "Optional power port, adapter not included; Cable Matters recommends using it 'to prevent connection issues or disconnections due to insufficient host power'",
+   "source": "https://cablematters.com/pc-1751-136-4-port-usb-a-usb-c-switch-with-remote-control.aspx",
+   "source_title": "Cable Matters 4-Port USB-A & USB-C Switch with Remote Control (201160)",
+   "read": "2026-11-08",
+   "note": "All ports up to 10Gbps (2× USB-A, 2× USB-C). The page names external hard drives as power-hungry devices. The page shows no price. The URL on our current page (pc-1591-131) now leads to an RJ11 phone cable and needs replacing with pc-1751-136."
+  },
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Cost per 10Gbps device port",
+   "value": "$10.25 per port",
+   "source": "https://us.ugreen.com/products/ugreen-usbc-switch-2-port",
+   "source_title": "UGREEN USBC Switch - 2-Port, 4 x USB 3.2, 10Gbps Data",
+   "read": "2026-11-08",
+   "note": "$40.99 ÷ 4 ports = $10.25. The page also says cables longer than 0.8 m 'may cause a drop in transmission speed'; the included cables are 0.8 m."
+  }
+ ],
+ "unsourced": [
+  "SSD speed measured through any of these switches: searched for CrystalDiskMark or MB/s results for the UGREEN CM691, Cable Matters 201160 and ATEN US3342 and found only maker claims, no named reviewer's measurement.",
+  "Measured power draw of a portable SSD: tried AnandTech's T7 Shield 4TB review (the site now redirects to its forums), Tom's Hardware's T7 Shield review page 3 (the content came back cut off) and Samsung's English T7 Shield manual PDF (couldn't extract text), so the drive load is taken as the 0.9 A USB 3.x spec ceiling.",
+  "Rating of the Cable Matters 201160's optional adapter (5 V 3 A appears only in search snippets): the maker's product page doesn't state it, the manual PDF URL returned a 'page does not exist' error and the manuals.plus copy returned 403.",
+  "Current price for the Cable Matters 201160 and ATEN US3342: the Cable Matters page shows a blank price field and ATEN's page lists no US price. Amazon and B&H were not checked because I ran out of tool calls.",
+  "Actual current draw of a typical keyboard and mouse: the sum uses one USB 2.0 unit load (100 mA) each. A device can declare up to 500 mA, which would raise the load to 1.9 A."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0137584000000002
+ }
+}

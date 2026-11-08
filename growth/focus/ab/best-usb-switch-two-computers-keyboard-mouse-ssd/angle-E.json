@@ -1,0 +1,61 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a named, dated measurement of what an SSD actually delivers on a 10Gbps link compared with a 5Gbps link. ssd-tester.com (Markus, tested 2026-07-08) measured 1,048 MB/s read and 1,025 MB/s write on a 10Gbps UGREEN path. Binary Tides (Silver Moon) measured about 398–401 MB/s read and 360 MB/s write on a 5Gbps USB 3.0 link. No reviewer we could find has published a measurement taken through any of the candidate switches themselves.",
+ "standout": 1,
+ "standout_why": "I compared against the cited us.ugreen.com CM691 page (UGREEN's US store returned HTTP 429 to both WebFetch and storecheck, so I could not read it today), digitaldesksolutions.com (2026-10-28), techradar.com (only the title loaded) and the manuals.plus/Newegg listings. Digital Desk Solutions already gives the 5Gbps vs 10Gbps gap, but only as theory ('Roughly 500 MB/s' vs 'Roughly 1 GB/s'), and it says 'Nobody on the team used or measured these units.' None of the rivals gives a named lab's measured MB/s. None has a measurement through a switch either, and nobody else does. So our page can add measured numbers in place of rounded theory, but it cannot add a benchmark of a switch.",
+ "decides": "This supports the 10Gbps pick (UGREEN CM691 / Cable Matters 201160) over the 5Gbps budget switches. Measured 5Gbps throughput (about 400 MB/s read) is roughly 2.6× below measured 10Gbps throughput (about 1,048 MB/s read). The two tests used different drives (SATA MX500 vs an NVMe enclosure), so the ratio describes each link class and not one drive. It also weakens ChatGPT's line that a 5Gbps switch is 'fine' for a SATA SSD: in Binary Tides' test, a SATA MX500 on a 5Gbps link read about 400 MB/s. The finding does not pick between the 10Gbps candidates, because nobody has measured them.",
+ "candidates": [
+  "UGREEN USB-C Switch CM691 (2 PC, 4× USB 3.2 Gen 2, 10Gbps)",
+  "UGREEN 2-in 7-Out USB 3.2 Switch 75087 (10Gbps)",
+  "Cable Matters 201160 USB-A & USB-C Switch with Remote (10Gbps)",
+  "ATEN US3342 (10Gbps, PD pass-through)",
+  "ATEN US3324 (5Gbps)",
+  "IOGEAR GUS432 (5Gbps)",
+  "UGREEN USB 3.0 4-Port Sharing Switch (5Gbps)",
+  "Sabrent USB-SW30 (5Gbps)",
+  "Plugable USB3-SWITCH2 (5Gbps)",
+  "UGREEN USB 2.0 switch SKU 30767 (480Mbps)"
+ ],
+ "findings": [
+  {
+   "product": "general (10Gbps USB 3.2 Gen 2 link, UGREEN CM578 enclosure)",
+   "label": "Measured sequential read/write on a 10Gbps link",
+   "value": "1,048.30 MB/s read / 1,025.14 MB/s write (CrystalDiskMark SEQ1M Q8T1); 952.48 / 916.48 MB/s (SEQ1M Q1T1); 971.10 / 953.67 MB/s (AS SSD Seq)",
+   "source": "https://ssd-tester.com/ugreen_cm578_10gbps_enclosure.html",
+   "source_title": "TEST: UGREEN CM578 10Gbps SSD Enclosure",
+   "read": "2026-11-08",
+   "note": "Measured by ssd-tester.com (author 'Markus'); the page says the test was run on 08 July 2026. The interface is listed as USB 3.2 Gen 2x1 (10 Gbit/s). The SSD and host are not named on this page. This is a direct connection to an enclosure, not through a switch. It is the measured ceiling a 10Gbps switch such as the CM691 could pass on."
+  },
+  {
+   "product": "general (5Gbps USB 3.0 / 3.2 Gen 1 link, Orico enclosure + Crucial MX500 1TB)",
+   "label": "Measured sequential read/write on a 5Gbps link",
+   "value": "397.558–400.912 MB/s read / 360.472–360.784 MB/s write (CrystalDiskMark SEQ1M Q8T1); 393.013–395.012 / 338.291–339.897 MB/s (SEQ1M Q1T1)",
+   "source": "https://www.binarytides.com/?p=14809",
+   "source_title": "Crucial MX500 1TB Sata Internal SSD Speed Test with USB Enclosure (Binary Tides)",
+   "read": "2026-11-08",
+   "note": "Measured by Silver Moon (Binary Tides). The article is dated 2025-05-21 and the runs 2023-04-27. The author confirmed SuperSpeed (5Gbps) operation in USB Device Tree Viewer. Two rounds are given as ranges. Direct connection, not through a switch. Compared with the 10Gbps result above: 1,048.30 / 397.558 ≈ 2.6× (read). The drives differ (SATA vs NVMe), so this compares link classes, not one drive."
+  },
+  {
+   "product": "ATEN US3342",
+   "label": "Hands-on review: measured figures",
+   "value": "No measurements published. The review says the four output ports share 10 W (5 V / 2 A) from the host, and that PD pass-through goes up to 85 W with a third-party power pack.",
+   "source": "https://www.gadgetguy.com.au/aten-us3342-4-port-usb-c-gen-2-sharing-switch/",
+   "source_title": "ATEN US3342 4-port USB-C Gen 2 sharing switch (GadgetGuy)",
+   "read": "2026-11-08",
+   "note": "Written by Ray Shaw, dated 05/11/2019. The power figures are ATEN's stated specs repeated in the review, not measurements. He wrote that the Bezel X software is 'embryonic at V1.0.001'. Latest in Tech's review (2020-12-18, https://latestintech.com/aten-us3342-2-port-usb-c-sharing-switch-review/) also reports no numbers and names no author."
+  }
+ ],
+ "unsourced": [
+  "SSD throughput (MB/s) measured through any candidate switch (UGREEN CM691, UGREEN 75087, Cable Matters 201160, ATEN US3342/US3324, IOGEAR GUS432, Sabrent USB-SW30, Plugable USB3-SWITCH2). I searched for RTINGS, Notebookcheck, Tom's Hardware/Guide, How-To Geek, 9to5Mac, MacSources, lon.tv and Reddit and found no named test. The AliExpress 'wiki' page with through-switch CrystalDiskMark figures (1,069/1,031 vs 1,087/1,052 MB/s) names no author and calls itself possibly AI-generated, so I left it out.",
+  "Measured switching time (seconds for the SSD and HID devices to reconnect) for any candidate: I found no named measurement.",
+  "Measured bus power or current available to an SSD on the CM691 or 201160: only maker claims, and the UGREEN US page was rate-limited (HTTP 429) so I could not open it.",
+  "A Kingston measurement of the same XS2000 drive across USB 3.2 Gen 1/Gen 2/Gen 2x2: the blog page returned HTTP 403, so I did not use the snippet figure (1,068.63/1,038.85 MB/s).",
+  "TechRadar's 2026-10-24 KVM article (in ChatGPT's results): the article text did not load, so I could not check it for figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8839238
+ }
+}

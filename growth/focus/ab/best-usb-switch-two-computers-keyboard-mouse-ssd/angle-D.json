@@ -1,0 +1,64 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the UGREEN CM691 has no power input of its own: UGREEN's manual rates its only supply as 'USB-C 5.0V 2.4A Max' from the active computer, so the keyboard, mouse and SSD together get at most 12 W, and only when that computer's USB-C port offers more than the 900 mA (4.5 W) USB 3 baseline.",
+ "standout": 1,
+ "standout_why": "I compared against the cited us.ugreen.com CM691 page and the top uncited pages (digitaldesksolutions.com, pickslab.net, techwisereviews.com). I couldn't open the UGREEN US page or ugreen.com/products/25164: both returned HTTP 429 on every try, including through storecheck.py. digitaldesksolutions.com already covers the general idea: 'One USB 3.0 port is specified for roughly 900 mA' and 'If a drive keeps disconnecting, check power before blaming the cable.' But its SSD draw ('Up to 900 mA') is, in its own words, 'round-number estimates, not measurements of any product', and it gives no limit for any specific switch. pickslab.net only says 'the switch is bus powered, so a powered hub is the safer route' about the Sabrent USB-SW30. techwisereviews.com says nothing about power. ChatGPT's third answer already said the CM691 'relies on host USB power rather than a dedicated power adapter'. Our own page's power cell says 'Bus-powered, up to 2.4 A from a USB-C host'. So the mechanism is partly out there already. What's new is the hard 2.4 A ceiling from UGREEN's manual and the 900 mA baseline it falls to when the host port advertises no more.",
+ "decides": "For a keyboard, mouse and SATA or low-power SSD, the CM691 stays a sound pick if both computers have USB-C ports that supply 1.5 A or 3 A. If the SSD is a high-draw NVMe enclosure, or either computer only gives the 900 mA baseline (including through a USB-A adapter), the CM691 has no way to take more power. The page should then point to a switch with its own power input: UGREEN's 2-in 7-out 10Gbps switch (model 75087, sold with a power adapter per the Newegg Business listing ChatGPT cited) or the Cable Matters 201160 (optional 5 V 3 A adapter on our current page). I did not re-open either source this session.",
+ "candidates": [
+  "UGREEN USB-C Switch CM691 (25164)",
+  "UGREEN 2-in 7-Out USB 3.2 Switch 75087",
+  "Cable Matters 201160",
+  "ATEN US3342"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Power supply input (the switch's only power source)",
+   "value": "USB-C 5.0 V 2.4 A max (12 W)",
+   "source": "https://www.manualslib.com/manual/3466404/Ugreen-Cm691.html",
+   "source_title": "UGREEN CM691 Manual (ManualsLib)",
+   "read": "2026-11-08",
+   "note": "Spec table, page 2: 'Power Supply Input USB-C 5.0V 2.4A Max'. No DC or adapter input is listed. 5.0 V × 2.4 A = 12 W, shared by every downstream device, including the keyboard and mouse."
+  },
+  {
+   "product": "UGREEN USB-C Switch CM691",
+   "label": "Data rate",
+   "value": "USB 3.2 Gen 2, up to 10 Gbps",
+   "source": "https://www.manualslib.com/manual/3466404/Ugreen-Cm691.html",
+   "source_title": "UGREEN CM691 Manual (ManualsLib)",
+   "read": "2026-11-08",
+   "note": "Manual: 'USB 3.2 Gen 2, supports transfer rate of up to 10Gbps'. The manual's notes and troubleshooting text says nothing about drives, insufficient power or which PC gets priority."
+  },
+  {
+   "product": "general",
+   "label": "USB-C current a port supplies",
+   "value": "900 mA baseline; 1.5 A or 3.0 A only if the port advertises USB Type-C Current",
+   "source": "https://en.wikipedia.org/wiki/USB_hardware",
+   "source_title": "USB hardware – Wikipedia",
+   "read": "2026-11-08",
+   "note": "Quote: 'USB-C devices support power currents of 1.5 A and 3.0 A over the 5 V power bus in addition to baseline 900 mA.' 900 mA × 5 V = 4.5 W, so a host offering only the baseline gives the CM691 well under its 2.4 A rating. This is secondary: the USB-IF spec text itself was not opened."
+  },
+  {
+   "product": "general",
+   "label": "What a rival page says about SSD draw through a bus-powered switch",
+   "value": "Portable SSD estimated at 'Up to 900 mA'; keyboard, mouse dongle, webcam and SSD together about 1.4 A (7 W)",
+   "source": "https://digitaldesksolutions.com/best-ugreen-usb-switches-for-sharing-peripherals/",
+   "source_title": "Best UGREEN USB Switches for Sharing a Keyboard, Mouse and Drives Between Two Computers | Digital Desk Solutions",
+   "read": "2026-11-08",
+   "note": "Recorded to show what the rival page covers, not as evidence: it says 'The assumptions below are round-number estimates, not measurements of any product.'"
+  }
+ ],
+ "unsourced": [
+  "Measured bus-power draw of a 10Gbps NVMe portable SSD. A search snippet credited AnandTech's Silicon Power PX10 review with a 4.35 W peak, but at-web1.www.anandtech.com failed with a self-signed certificate, www.anandtech.com redirects to its forums, web.archive.org is blocked for this tool, and the Tom's Hardware PX10 review returned only its title.",
+  "CM691 output limit on a USB-A host: search snippets disagree (5 V 2 A said to be from ugreen.com, 1.8 A on the reseller site ugreencharger.it.com). ugreen.com/products/25164 and us.ugreen.com returned HTTP 429, and the Newegg and Newegg Business listings returned HTTP 403.",
+  "Whether the CM691 gives PC 1 priority when both computers are connected and on (that could pull the SSD away from PC 2): the rule shows only in snippets of listings for other UGREEN switches, and the CM691 manual doesn't mention it.",
+  "Cable Matters 201160 power-adapter wording: the URL on our current page now opens an RJ11 telephone-cable page with no price or specs.",
+  "USB-IF's own spec text for the 900 mA USB 3.x baseline and Type-C Current 1.5 A / 3 A: only Wikipedia was opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8251695
+ }
+}
