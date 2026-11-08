@@ -38,6 +38,19 @@ details{margin:.6em 0}summary{cursor:pointer;font-weight:600}
 <p><strong>The question the test answers:</strong> on pages the model already reads, does a page built on one fully researched fact get cited more often than the page we have today, by at least 20 points?</p>
 </div>
 
+<h2>As run, Nov 8, 2026</h2>
+<div class="verdict">
+<p><strong>Shipped Nov 8.</strong> All 88 test pages changed in one push. The same day, 17 new gap pages were built with the method, which is now the standard for new pages.</p>
+<ul>
+<li><strong>Barry's changes to the plan.</strong> Every angle is researched, then the one that stands out against the Nov 7 competitors is picked. ChatGPT's own search words appear as tags on group A. An "Updated" date sits under the H1 on both groups. Every page with real ChatGPT shopper landings was moved into group B, where it got only the block removal and the date.</li>
+<li><strong>Split after the move.</strong> Group A has 44 pages and 0 shopper landings. Group B has 44 pages and all 49 landings. Four pages swapped places within their category.</li>
+<li><strong>Same-day baselines, before the push.</strong> Each page got two plain-prompt chats. Group A: our page retrieved in 74 of 88 chats and cited in 25, or 34%. Group B: retrieved in 69 and cited in 24, or 35%. The groups start level.</li>
+<li><strong>How a page is made.</strong> Six research agents run per page, one per angle (A–F), then a composer, a verifier that opens every source, one fix pass, and a check that the answer's pick leads the table. A gate then checks that the answer and the buy link survive the length cut. Research ran on Fable 5.1 at high effort until its usage limit, then on Opus 5.5 at high effort. Tool: <code>tools/abpage.py</code>.</li>
+<li><strong>Layout of a rebuilt page.</strong> The H1, then "Updated date · Pick: model, price with code, link". Next the answer, then the search-phrase tags, sized so they share the answer's 500-character passage. Then the method line, the full table with prices and buy links, what the differences mean, the angle section and sources.</li>
+<li><strong>Reading 1.</strong> It runs once OpenAI's crawler has re-fetched each page after the push. Pages it hasn't re-fetched are held out. Push record: <code>growth/focus/ab/push.json</code>.</li>
+</ul>
+</div>
+
 <h2>1. Population and split</h2>
 <p>The 88 pages whose own page appeared in ChatGPT's results on Nov 7 (24 cited, 64 not). Pages the model never retrieved are excluded: their citation rate can't be measured. Stratified by category (NAS and home server, power and charging, other), by Nov 7 outcome (cited or not) and by rank bucket (1, 2–6, 7+), then assigned at random within each stratum, seed 20261108, stored in <code>page/ab-split.json</code>.</p>
 <div class="wrap"><table>
