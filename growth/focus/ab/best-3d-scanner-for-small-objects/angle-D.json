@@ -1,0 +1,99 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that these scanners line up their frames by tracking something they can see, and that this fails on the small, smooth or symmetric parts the shopper means. Creality's CR-Scan Raptor blue-laser mode, which ChatGPT picked for small mechanical parts, always needs retroreflective markers with at least 4 in frame. CNC Kitchen found that NIR mode needs no markers but resolves less detail. The MINI 2 needs a marker topper on a turntable for featureless objects, and the markerless Seal had trouble with symmetrical parts and needed reference markers added in 3D Printing Industry's test.",
+ "standout": 2,
+ "standout_why": "Of the cited rivals: 3dprinting.com (Best Small Format 3D Scanners) says only that handhelds need 'a feature-rich subject to track on' and that most scanners have a 10–15 mm minimum. It never says the Raptor's laser mode needs markers or that the Seal has trouble with symmetrical parts. makermachinesatlas.com says 'a small turntable, markers and removable spray can matter more than portability' but doesn't explain why. print3dindex.com returned HTTP 403, so I couldn't compare it. One uncited result, 3dprinterworld.com's MINI 2 review, already covers part of this: feature vs marker tracking, the marked turntable topper, and that a plain cylinder gives the scanner 'fewer clues'. None of the pages I opened says the Raptor's high-detail mode always needs markers (at least 4 in frame), or that the Seal had trouble with symmetrical parts.",
+ "decides": "This mostly confirms MINI 2 and Seal for small objects and adds a condition to the Raptor. A small part only takes up a small slice of the scanner's view, and a smooth or symmetric one gives shape tracking little to match. The plan works only with a marker reference (MINI 2 plus the $29.90 marked turntable topper or $19.90 markers in Marker Tracking) or with enough surface detail. The Raptor's 0.02 mm blue-laser mode is the one ChatGPT put forward for small mechanical parts, and it always needs retroreflective markers, at least 4 in frame. A 10–20 mm bracket can't hold 4 markers itself, so they have to go on a marked scan table around it. That means the Raptor is not a markerless pick for small parts. The Seal's marker-free tracking is fine on detailed figurines, but on symmetric or flat-faced parts 3D Printing Industry had to add reference markers.",
+ "candidates": [
+  "Revopoint MINI 2",
+  "3DMakerpro Seal",
+  "3DMakerpro Seal Lite",
+  "Creality CR-Scan Raptor"
+ ],
+ "findings": [
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Blue-laser mode needs markers",
+   "value": "Blue laser 'always needs retroreflective markers'; at least 4 overlapping marker points in frame at all times",
+   "source": "https://cnckitchen.com/blog/3d-scanning-tips-creality-raptor",
+   "source_title": "10 Tips for Better 3D Scans (feat. Creality CR-Scan Raptor) – CNC Kitchen",
+   "read": "2026-11-08",
+   "note": "Stefan Hermann, CNC Kitchen, 2024-09-14: 'near infrared tracks on geometry and needs no markers, blue laser resolves far more detail but always needs retroreflective markers'; 'we need at least 4 overlapping points always in frame'; for smaller parts he uses 'a scan table which already has a ton of points attached'."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Price, Creality US store",
+   "value": "$879.00 (list $1,499.00)",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner | Metrology Grade Accuracy, 7 Blue Laser Lines",
+   "read": "2026-11-08",
+   "note": "Same price as the B&H card ChatGPT showed."
+  },
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Price, Revopoint US store",
+   "value": "$829.00 (compare-at $1,469.00), in stock",
+   "source": "https://store.revopoint3d.com/products/industry-3d-scanner-mini",
+   "source_title": "MINI 2 3D Scanner: Blue Light丨Precision 0.02 mm",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on store.revopoint3d.com (Shopify search API)."
+  },
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Maker's fix for featureless objects",
+   "value": "Portable Turntable, $29.90, 'comes with a Turntable Topper with pre-placed marker points for easier featureless object scanning'",
+   "source": "https://store.revopoint3d.com/products/potable-turntable",
+   "source_title": "Portable Turntable – Revopoint store",
+   "read": "2026-11-08",
+   "note": "Maker's own product text, read with storecheck.py search on the Revopoint store. The topper puts the markers around the object, so tiny parts don't need dots stuck on them."
+  },
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Marker accessory",
+   "value": "Highly Reflective Markers, $19.90: '3 mm and 6 mm markers or quick-to-apply marker tape to make featureless objects easily 3D scannable'",
+   "source": "https://store.revopoint3d.com/products/markers-for-3d-scanning",
+   "source_title": "Highly Reflective Markers – Revopoint store",
+   "read": "2026-11-08",
+   "note": "Maker's product text, read with storecheck.py. Markers are 3 or 6 mm wide, so on a 10–20 mm object they belong on the turntable, not the part."
+  },
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Tracking modes and capture area",
+   "value": "Feature tracking (shape) or marker tracking (reflective dots); capture area 52 × 64 mm at 120 mm, 168 × 132 mm at 250 mm; working distance 120–250 mm",
+   "source": "https://www.3dprinterworld.com/revopoint-mini-2-review/",
+   "source_title": "Revopoint MINI 2 Review – 3D Printer World",
+   "read": "2026-11-08",
+   "note": "Owen Marsh, updated 2026-09-08: 'a plain cylinder or repeating pattern gives it fewer clues'; 'A marked turntable topper can help when you don't want dots on the object, provided the scanner can see enough of them.' At the closest range, a 15 mm part takes up about 7% of the 52 × 64 mm view (15×15 / 3,328 mm²)."
+  },
+  {
+   "product": "3DMakerpro Seal",
+   "label": "Markerless tracking on symmetric parts",
+   "value": "Has trouble with symmetrical or large flat parts; reference markers had to be added",
+   "source": "https://3dprintingindustry.com/news/review-3dmakerpro-seal-an-affordable-user-friendly-and-high-quality-3d-scanner-228206/",
+   "source_title": "Review: 3DMakerpro Seal, an affordable, user-friendly and high-quality 3D scanner – 3D Printing Industry",
+   "read": "2026-11-08",
+   "note": "Alex Tyrer-Jones, 2024-02-08: 'no markers are needed during the 3D scanning process' but 'This can pose problems when attempting to align multiple scans of parts that are symmetrical or possess large flat surfaces'; 'reference markers had to be added to improve the results'; 'Using the turntable mode, the Seal achieved very good results'; spray was needed on black, metallic and reflective surfaces."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage, cited 3dprinting.com",
+   "value": "Handhelds 'need a steady arm and a feature-rich subject to track on'; 10–15 mm minimum object size; MINI 2 capture area 52 × 64 mm at 120 mm",
+   "source": "https://3dprinting.com/scanners/best-small-format-3d-scanners/",
+   "source_title": "Best Small Format 3D Scanners 2026 | 3DPrinting.com",
+   "read": "2026-11-08",
+   "note": "Doesn't mention the Raptor's laser-mode marker requirement or the Seal's trouble with symmetric parts."
+  }
+ ],
+ "unsourced": [
+  "Revopoint's own MINI 2 tracking spec ('Tracking Methods Feature/Marker') and its support page line on marker points: store.revopoint3d.com and global.revopoint3d.com support pages returned HTTP 429 on every try, and the download.revopoint3d.com brochure PDF failed with a TLS certificate mismatch.",
+  "Creality's own wording that blue-laser mode needs markers: store.creality.com and creality.com product pages give no tracking or marker spec, and the manuals.plus Raptor manual PDF came back as unreadable compressed binary.",
+  "3DMakerpro's own tracking-mode documentation for the Seal and Seal Lite (whether they have a marker mode at all): 3dmakerpro.com/products/seal came back empty, and storecheck.py search on 3dmakerpro.com failed with a JSON decode error.",
+  "print3dindex.com (a cited rival) returned HTTP 403, so I couldn't check whether it already covers tracking or markers."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0227917999999998
+ }
+}

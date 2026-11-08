@@ -1,0 +1,120 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that the MINI 2's closest single frame (52 × 64 mm at 120 mm) covers 3,328 mm², 2.25× less area than the Seal's 100 × 75 mm frame (7,500 mm²), or that a 20 mm part spans 38% of the MINI 2's short side against 27% on the Seal. The price per detail point is also new: the Seal costs $22.70 per point across 1 mm ($454 ÷ 20) and the Seal Lite $15.05 ($215 ÷ 14.3).",
+ "standout": 1,
+ "standout_why": "I compared against three pages. 3dprinting.com small-format (cited) lists the inputs: MINI 2 52×64 mm at 120 mm, Seal and Seal Lite 100×75 mm, point distance 0.05 / 0.07 mm, and prices of about $699 and $359. It computes no frame area, frame fill or cost per point. Maker Machines Atlas (cited) gives no field of view (FOV) and no minimum object size; its only arithmetic is an ownership range of list price plus $50–$500. CompareFoundry (cited in the third chat) gives no FOV or price and computes nothing. Print3DIndex (cited) returned 403 and I could not read it. The derivation is new, but a reader could work it out from the cited 3dprinting.com page, and that page's prices are now out of date (the Seal is $454 today, not about $699). That is why I scored it 1, not 2.",
+ "decides": "It supports the MINI 2 for parts under about 30 mm: its near frame is 2.25× smaller, so a small object fills more of each frame. It supports the Seal and Seal Lite as the value picks. At today's 3DMakerpro store prices the Seal ($454) is $375 under the MINI 2 ($829), and the Seal Lite ($215) is $614 under. ChatGPT priced the Seal at $559.99 and \"~$450–$700\", which is wrong against the maker store today. I can't confirm or rule out the Raptor and Einstar Vega for tiny parts because I couldn't open their spec pages.",
+ "candidates": [
+  "Revopoint MINI 2",
+  "3DMakerpro Seal",
+  "3DMakerpro Seal Lite",
+  "Creality CR-Scan Raptor",
+  "SHINING 3D Einstar Vega"
+ ],
+ "findings": [
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Price, Standard Edition, Revopoint US store",
+   "value": "$829.00 (compare-at $1,469)",
+   "source": "https://store.revopoint3d.com/products/industry-3d-scanner-mini",
+   "source_title": "MINI 2 3D Scanner: Blue Light丨Precision 0.02 mm",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py store search JSON; listed as available. Matches the $829 ChatGPT showed."
+  },
+  {
+   "product": "3DMakerpro Seal",
+   "label": "Price, 3DMakerpro US store",
+   "value": "$454.00 (compare-at $699)",
+   "source": "https://store.3dmakerpro.com/products/seal",
+   "source_title": "Seal 3D Scanner",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py store search JSON; listed as available. ChatGPT showed $559.99 in one chat and \"~$450–$700\" in another."
+  },
+  {
+   "product": "3DMakerpro Seal Lite",
+   "label": "Price, 3DMakerpro US store",
+   "value": "$215.00 (compare-at $359)",
+   "source": "https://store.3dmakerpro.com/products/seal-lite",
+   "source_title": "Seal Lite 3D Scanner",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py store search JSON; listed as available."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Price, Creality store",
+   "value": "$879.00 (was $1,499)",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "Creality CR-Scan Raptor, Metrology Grade Accuracy, 7 Blue Laser Lines",
+   "read": "2026-11-08",
+   "note": "The page showed the price but no spec table."
+  },
+  {
+   "product": "Revopoint MINI 2",
+   "label": "Single-frame area at nearest working distance",
+   "value": "3,328 mm² (52 × 64 mm at 120 mm)",
+   "source": "https://www.3dprinterworld.com/revopoint-mini-2-review/",
+   "source_title": "Revopoint MINI 2 Review – 3D Printer World (Owen Marsh)",
+   "read": "2026-11-08",
+   "note": "52 × 64 = 3,328 mm². The same 52×64 mm at 120 mm and 168×132 mm at 250 mm also appear on https://3dprinting.com/scanners/best-small-format-3d-scanners/ (read 2026-11-08). The maker page returned 429 every time I tried."
+  },
+  {
+   "product": "3DMakerpro Seal / Seal Lite",
+   "label": "Single-frame area",
+   "value": "7,500 mm² (100 × 75 mm)",
+   "source": "https://3dprinting.com/scanners/best-small-format-3d-scanners/",
+   "source_title": "Best Small Format 3D Scanners 2026 | 3DPrinting.com",
+   "read": "2026-11-08",
+   "note": "100 × 75 = 7,500 mm². 7,500 ÷ 3,328 = 2.25, so the Seal's frame covers 2.25× the area of the MINI 2's near frame. This source gives no working distance for the Seal."
+  },
+  {
+   "product": "general",
+   "label": "Share of the frame's short side filled by a 20 mm part",
+   "value": "MINI 2 38%; Seal / Seal Lite 27%",
+   "source": "https://3dprinting.com/scanners/best-small-format-3d-scanners/",
+   "source_title": "Best Small Format 3D Scanners 2026 | 3DPrinting.com",
+   "read": "2026-11-08",
+   "note": "MINI 2: 20 ÷ 52 = 0.38 at 120 mm. Seal: 20 ÷ 75 = 0.27. Uses the FOV figures above; 20 mm is an example part size."
+  },
+  {
+   "product": "3DMakerpro Seal",
+   "label": "Scan points across a 1 mm feature, and cost per point",
+   "value": "20 points; $22.70 per point",
+   "source": "https://3dprinting.com/scanners/best-small-format-3d-scanners/",
+   "source_title": "Best Small Format 3D Scanners 2026 | 3DPrinting.com",
+   "read": "2026-11-08",
+   "note": "1 ÷ 0.05 mm point distance = 20. $454 (store price, 2026-11-08) ÷ 20 = $22.70."
+  },
+  {
+   "product": "3DMakerpro Seal Lite",
+   "label": "Scan points across a 1 mm feature, and cost per point",
+   "value": "14.3 points; $15.05 per point",
+   "source": "https://3dprinting.com/scanners/best-small-format-3d-scanners/",
+   "source_title": "Best Small Format 3D Scanners 2026 | 3DPrinting.com",
+   "read": "2026-11-08",
+   "note": "1 ÷ 0.07 mm = 14.3. $215 ÷ 14.3 = $15.05."
+  },
+  {
+   "product": "3DMakerpro Seal / Seal Lite",
+   "label": "Multi-Axis Turntable add-on, maximum object size and price",
+   "value": "100 mm max object; $199",
+   "source": "https://store.3dmakerpro.com/products/multi-axis-turntable",
+   "source_title": "Multi-Axis Turntable",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py store search JSON: compatible with Seal and Seal Lite, Bluetooth 5.0, 1,662 g. Seal + turntable = $454 + $199 = $653."
+  }
+ ],
+ "unsourced": [
+  "MINI 2 point distance: sources conflict and I could not open the maker page to settle it. 3dprinting.com lists 0.05 mm resolution; CompareFoundry and Maker Machines Atlas list 0.02 mm point spacing. revopoint3d.com and store.revopoint3d.com returned 429 on every try, and the brochure PDF at download.revopoint3d.com failed a TLS certificate check. Because of this I left out the MINI 2's points across 1 mm and its cost per point.",
+  "Seal and Seal Lite working distance and FOV from the maker: 3dmakerpro.com/pages/seal and /products/seal returned empty pages, and store.3dmakerpro.com product pages returned 429. The FOV figures above come from 3dprinting.com.",
+  "Creality CR-Scan Raptor point distance, near FOV and minimum object size: the Creality store page had no spec table, the wiki URL I tried returned 404, and B&H returned 403.",
+  "SHINING 3D Einstar Vega specs and price: einstar.com returned 429.",
+  "Print3DIndex rival page (cited): WebFetch returned 403 and the curl fallback was not approved, so I could not check whether it already gives frame-area or cost-per-point figures.",
+  "Camera pixel counts for any candidate, which would give true pixels per mm² on the object. No source I opened publishes them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.7699972999999999
+ }
+}
