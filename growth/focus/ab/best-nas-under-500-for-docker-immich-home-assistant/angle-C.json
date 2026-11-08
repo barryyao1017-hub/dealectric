@@ -1,0 +1,86 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Home Assistant OS (the version with add-ons) needs a VM with 2 GB RAM, 2 vCPUs and UEFI boot, and that Synology's Virtual Machine Manager only runs on a NAS with more than 2 GB of memory, so the DS225+ as shipped (2 GB, one slot) cannot host it until a 4 GB module is added, while UGREEN limits its VM app to the DXP series and gives the DH2300 neither Docker nor VMs.",
+ "standout": 2,
+ "standout_why": "Compared against homelabwise.com (best-nas-plex-immich), nasdecoded.com (best-nas-under-500), bitdoze.com (best-nas-homelab-docker-proxmox) and starryhope.com (best-2-bay-nas). They state RAM ceilings (DXP2800 16 GB, DS225+ 6 GB, F2-425 Plus 32 GB), the F2-425 Plus PCIe 3.0 x1 M.2 lanes, UGREEN's third-party-OS warranty stance and Synology's DSM 7.3 drive-list reversal. None mentions Home Assistant OS at all, none states a VM requirement for any NAS OS, and none ties Synology's '>2 GB memory' VMM rule to the DS225+ stock configuration. The Immich Quick Sync /dev/dri passthrough and Jasper Lake CQP note are also absent from all four.",
+ "decides": "Confirms the UGREEN DXP2800 pick for a shopper who wants full Home Assistant OS with add-ons: it is a DXP model, so UGOS Pro gives it both Docker and the Virtual Machine app, and 8 GB stock leaves room for a 2 GB HAOS VM plus Immich. It rules out the UGREEN DH2300 (no Docker, no VMs) and demotes the Synology DS225+, which must first be upgraded to 6 GB before Virtual Machine Manager will run, with Synology withholding full warranty if the module is not Synology-branded. For Immich transcoding on the N5095/N5105 models (TerraMaster F2-425, Asustor AS5402T/AS6702T, QNAP TS-264) the shopper must also set Immich's constant-quality mode to CQP and pass /dev/dri into the container.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "Synology DS225+",
+  "UGREEN NASync DH2300",
+  "TerraMaster F2-425",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "QNAP TS-264"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Home Assistant OS in a VM: minimum resources and boot mode",
+   "value": "2 GB RAM, 2 vCPUs, UEFI boot required",
+   "source": "https://www.home-assistant.io/installation/alternative",
+   "source_title": "Alternative installation methods - Home Assistant",
+   "read": "2026-11-08",
+   "note": "Page states 'Memory: 2 GB of RAM', 'Processors: 2 vCPUs' and 'Home Assistant requires UEFI to boot'. Images offered: .vdi for VirtualBox, .qcow2 for KVM/Proxmox, .ova for VMware ESXi. Unraid default disk 32 GB."
+  },
+  {
+   "product": "general",
+   "label": "Home Assistant Container (Docker) exclusions",
+   "value": "No add-ons ('apps'); no out-of-the-box Thread or Z-Wave",
+   "source": "https://www.home-assistant.io/installation/",
+   "source_title": "Installation - Home Assistant",
+   "read": "2026-11-08",
+   "note": "Page says Container installs 'don't have access to apps', that Thread and Z-Wave are controlled by apps with 'no out-of-the-box support for these on Container installations', and that running it on a NAS 'requires a virtual machine or NAS app'."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Virtual Machine Manager memory gate vs stock RAM",
+   "value": "VMM needs more than 2 GB; DS225+ ships with 2 GB, 1 slot, 6 GB max (2 GB + 4 GB)",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Specifications - DSM 7.4 - Synology",
+   "read": "2026-11-08",
+   "note": "VMM spec: 'Virtual machines can run only on Synology NAS devices with more than 2 GB of memory'; VM data 'can be stored only on Btrfs volumes'; disk images .img/.vmdk/.vdi/.vhd/.vhdx/.qcow2. Stock RAM and slot count from the DS225+ spec page (https://www.synology.com/en-us/products/DS225+#specs, read 2026-11-08), which also lists VMM with 'recommended instances: 2'. Arithmetic: 2 GB stock is not 'more than 2 GB', so the 4 GB module is a prerequisite for a HAOS VM."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Third-party memory warranty exclusion",
+   "value": "Non-Synology RAM voids complete warranty and technical support",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ Specifications - Synology",
+   "read": "2026-11-08",
+   "note": "Footnote: 'Synology will not provide complete product warranty or technical support if non-Synology memory modules are used'. Page also says Synology 'only guarantees full functionality, reliability, and performance for compatible drives'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "UGOS Pro Docker and Virtual Machine support by model family",
+   "value": "DXP models: Docker + Virtual Machine app; DH4300 Plus: Docker only; DH2300: neither",
+   "source": "https://esp32.co.uk/how-to-install-home-assistant-on-ugreen-nasync/",
+   "source_title": "How to Install Home Assistant on UGREEN NASync (esp32.co.uk, 2026-10-03)",
+   "read": "2026-11-08",
+   "note": "Guide states 'Current DXP models: Docker and Virtual Machine Manager. DH4300 Plus: Docker, but no Virtual Machine Manager. DH2300: no official Docker or Virtual Machine Manager support' and cites UGREEN's own page https://ai.ugreen.com/pages/solution-software, which returned HTTP 429 on every attempt today. It also says UGREEN's VM documentation accepts .img, .qcow2, .vdi and .vmdk disk images, so the official HAOS KVM .qcow2 imports directly. Named third-party source; confirm against the UGREEN FAQ before publishing as a maker statement."
+  },
+  {
+   "product": "general",
+   "label": "Immich Intel Quick Sync requirements inside Docker",
+   "value": "/dev/dri must be passed into the container; Jasper Lake (N5095/N5105) needs CQP mode; VP9 needs 9th-gen or newer",
+   "source": "https://docs.immich.app/features/hardware-transcoding",
+   "source_title": "Hardware Transcoding | Immich",
+   "read": "2026-11-08",
+   "note": "Backends: NVENC, Quick Sync, RKMPP, VAAPI. Page states 'Jasper Lake and Elkhart Lake CPUs need the constant quality mode set to CQP' (applies to TerraMaster F2-425 N5095, Asustor AS5402T/AS6702T N5105, QNAP TS-264 N5095). ARM RKMPP needs a supported Rockchip SoC and only RK3588 does hardware tone-mapping; the DH2300's RK3576 is not RK3588. Raspberry Pi unsupported; only Linux or Windows via WSL2 hosts."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own Docker/VM-by-model FAQ (nas.ugreen.com and ai.ugreen.com /pages/solution-software) and the UGOS Pro Virtual Machine support article (support.ugnas.com articles 59 and 229): every fetch returned HTTP 429 or an empty 'Knowledge Center' shell, so the model-family rule is sourced only via esp32.co.uk.",
+  "UGREEN DXP2800 maker spec page (RAM maximum, M.2 PCIe generation and lane count, today's US price): HTTP 429 on nas.ugreen.com, ai.ugreen.com and ugreen.com; direct downloads were not permitted in this session.",
+  "TerraMaster F2-425 Plus maker page (RAM maximum, M.2 lane spec, VirtualBox/VM support in TOS 6, power draw): HTTP 429 on the US and en-gb URLs, 404 on the guessed /us/ URL. The PCIe 3.0 x1 figure on our page remains Liliputing's, via Starry Hope.",
+  "UGREEN NAS UPS US3000 compatible-model list (which DXP/DH models it supports): HTTP 429 on both UGREEN store domains.",
+  "Synology's applied-models list for Virtual Machine Manager and Container Manager: the package pages rendered without the model list; DS225+ VMM support is inferred only from the VMM block on the DS225+ spec page.",
+  "Asustor ADM VirtualBox app requirements for AS5402T/AS6702T: not attempted within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 44,
+  "cost_usd_list": 2.2268544500000003
+ }
+}

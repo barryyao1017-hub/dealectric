@@ -1,0 +1,197 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "B",
+  "why_angle": "HomelabWise quotes Immich's 6 GB minimum and the makers' RAM ceilings, Starry Hope gives a generic watts-to-dollars line, and NAS Decoded and Bitdoze give neither; none subtracts Immich's RAM plus Home Assistant OS's 2 GB VM from each enclosure's stock and maximum RAM, which is the arithmetic that decides this question and rules the Synology DS225+ out.",
+  "slug": "best-nas-under-500-for-docker-immich-home-assistant",
+  "must": [
+   "UGREEN NASync DXP2800",
+   "leaves 6 GB free after Immich's 8 GB and a 2 GB Home Assistant OS VM"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS under $500 for Docker containers like Immich and Home Assistant (2026)",
+   "h1": "Best NAS under $500 for Docker, Immich and Home Assistant (2026)",
+   "desc": "RAM left for Docker after Immich and a Home Assistant OS VM, enclosure by enclosure: UGREEN DXP2800 vs TerraMaster F2-425 Plus, F2-425, Synology DS225+.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS under $500 for Docker containers like Immich and Home Assistant is the UGREEN NASync DXP2800: Intel N100, 8 GB stock, $389.99 at UGREEN. Upgraded to 16 GB it leaves 6 GB free after Immich's 8 GB and a 2 GB Home Assistant OS VM.</p>",
+   "columns": [
+    [
+     "cpu",
+     "CPU"
+    ],
+    [
+     "ram",
+     "RAM shipped (maker maximum)"
+    ],
+    [
+     "headroom",
+     "RAM left after Immich + Home Assistant OS VM"
+    ],
+    [
+     "lan",
+     "LAN"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "cpu": "Intel N100, 4 cores, Quick Sync",
+      "ram": "8 GB DDR5, one SO-DIMM slot; 16 GB maximum (UGREEN, via The Gadgeteer), the same as Intel's N100 ceiling",
+      "headroom": "0 GB at stock 8 GB with Immich at its 6 GB minimum; 6 GB at 16 GB with Immich at its 8 GB recommendation. UGOS Pro Virtual Machine app runs Home Assistant OS",
+      "lan": "1× 2.5GbE"
+     }
+    },
+    {
+     "brand": "TerraMaster",
+     "model": "F2-425 Plus",
+     "url": "https://www.terra-master.com/products/f2-425-plus",
+     "cells": {
+      "price": "$399.49 (maker, 2026-11-08)",
+      "cpu": "Intel N150, 4 cores (ITPro, Dave Mitchell)",
+      "ram": "8 GB DDR5, one SO-DIMM slot; 32 GB maximum per TerraMaster (ITPro). Intel rates the N150 at 16 GB",
+      "headroom": "0 GB at stock 8 GB; 22 GB at 32 GB, or 6 GB at Intel's 16 GB rating. Three M.2 NVMe slots for the Immich database",
+      "lan": "2× 5GbE"
+     }
+    },
+    {
+     "brand": "TerraMaster",
+     "model": "F2-425",
+     "url": "https://www.terra-master.com/products/f2-425",
+     "cells": {
+      "price": "$299.99 (maker, 2026-11-08)",
+      "cpu": "Intel x86 quad-core (TerraMaster store listing)",
+      "ram": "4 GB (TerraMaster store listing)",
+      "headroom": "−4 GB: 4 GB is below Immich's 6 GB minimum, so Immich runs only with machine learning disabled and nothing is left for a Home Assistant OS VM",
+      "lan": "1× 2.5GbE"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2>\n<p>Immich's own requirements page asks for 6 GB of RAM minimum and 8 GB recommended, and says a 4 GB machine can run it only with machine learning disabled. Home Assistant's installation page says a Container (Docker) install has no Apps, the add-on store, and no out-of-the-box Thread or Z-Wave. To get full Home Assistant on a NAS you run Home Assistant OS as a virtual machine, which Home Assistant specifies at 2 GB of RAM, 2 vCPUs and UEFI boot. Subtracting those two from each enclosure's RAM gives the table's headroom column:</p>\n<ul>\n<li><strong>UGREEN DXP2800:</strong> 8 − 6 − 2 = 0 GB at stock. After the one-slot upgrade to 16 GB, 16 − 8 − 2 = 6 GB, with Immich at its recommended 8 GB.</li>\n<li><strong>TerraMaster F2-425 Plus:</strong> 8 − 6 − 2 = 0 GB at stock. At TerraMaster's 32 GB ceiling, 32 − 8 − 2 = 22 GB. Intel's spec sheet rates the N150 at 16 GB, which gives 16 − 8 − 2 = 6 GB, the same as the DXP2800.</li>\n<li><strong>TerraMaster F2-425:</strong> 4 − 6 = −2 GB before Home Assistant is counted. Immich's no-machine-learning mode needs all 4 GB.</li>\n<li><strong>Synology DS225+:</strong> at its 6 GB maximum, 6 − 8 − 2 = −4 GB. At stock 2 GB it fails Synology's own rule that virtual machines run only on a NAS with more than 2 GB of memory.</li>\n<li><strong>Asustor AS5402T:</strong> 4 − 6 − 2 = −4 GB at stock; 16 − 8 − 2 = 6 GB after filling both slots with 8 GB modules.</li>\n</ul>\n<table>\n<thead><tr><th>Use</th><th>Fits</th><th>Why</th></tr></thead>\n<tbody>\n<tr><td>Immich with machine learning plus Home Assistant OS with add-ons, 2 bays</td><td>UGREEN DXP2800 with a 16 GB module</td><td>6 GB left for other containers, Virtual Machine app on the DXP series, lowest maker price of the x86 pair</td></tr>\n<tr><td>The same, with room to grow past 16 GB or to use 5GbE</td><td>TerraMaster F2-425 Plus</td><td>22 GB left at TerraMaster's 32 GB ceiling, three M.2 slots, two 5GbE ports, $9.50 more at the makers' stores</td></tr>\n<tr><td>Cheapest 2-bay file server, Immich without machine learning</td><td>TerraMaster F2-425</td><td>$299.99, but 4 GB leaves no room for Home Assistant OS</td></tr>\n</tbody>\n</table>\n<p>{buy:ugreen-nasync-dxp2800}</p>\n<h2>Memory budget, VM support and running cost</h2>\n<p>Immich's requirements page also says the Postgres database should live on a local SSD, never a network share, so the M.2 slots matter: the DXP2800 has two, the F2-425 Plus three (ITPro), and the Synology DS225+ none. Synology's Virtual Machine Manager specification states that VMs run only on a NAS with more than 2 GB of memory and only on Btrfs volumes, and that it imports qcow2 images, which is the format Home Assistant publishes for KVM. Synology's DS225+ page lists 2 GB, one slot and a 6 GB maximum, and warns that non-Synology memory modules void complete warranty and technical support. For UGREEN, the esp32.co.uk guide to installing Home Assistant on NASync (3 October 2026) states that current DXP models get Docker and the Virtual Machine app, the DH4300 Plus gets Docker only, and the DH2300 gets neither; it imports the qcow2 image with UEFI boot. Asustor lists VirtualBox as an official ADM app for the AS5402T. We did not verify VM support in TOS 6 on TerraMaster's own pages, so this page makes no claim about it; the F2-425 Plus figures above are hardware only.</p>\n<p>Electricity barely separates the x86 boxes. At the EIA's August 2026 US residential average of 18.16 ¢/kWh, the DXP2800's UGREEN-rated 16.38 W in access is 16.38 × 8.76 = 143.5 kWh, or $26.06 a year. Tim Kutzner at igor'sLAB measured 14.5 W at the wall during transfers with one NVMe SSD and no HDDs, which is 127.0 kWh, or $23.07 a year, and 5.6 W in standby; noise was 33.2 dB(A) at 40 cm, equal to the room floor. Synology's rated 16.98 W for the DS225+ is $27.01 a year. Asustor's rated 22.9 W for the AS5402T is $36.43 a year, about $10 more than the DXP2800.</p>\n<h2>Not recommended</h2>\n<p><strong>Synology DS225+</strong> for this workload. Its 6 GB hard ceiling equals Immich's minimum, sits 2 GB under Immich's recommendation, and leaves nothing for the Home Assistant OS VM; at stock 2 GB Virtual Machine Manager will not run at all, and the only approved upgrade route is Synology's own 4 GB module. <strong>UGREEN DH2300</strong>: no official Docker or VM support in UGOS Pro per the esp32.co.uk guide. <strong>TerraMaster F2-425</strong> at stock: 4 GB means Immich without machine learning and no VM.</p>",
+   "sources": [
+    [
+     "UGREEN DXP2800 price $389.99 at UGREEN's US NAS store, read 2026-11-08",
+     "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+    ],
+    [
+     "TerraMaster F2-425 Plus $399.49 at TerraMaster's US store, read 2026-11-08",
+     "https://www.terra-master.com/products/f2-425-plus"
+    ],
+    [
+     "TerraMaster F2-425 $299.99, Intel x86 quad-core, 4 GB RAM, 2.5GbE at TerraMaster's US store, read 2026-11-08",
+     "https://www.terra-master.com/products/f2-425"
+    ],
+    [
+     "Immich requirements: 6 GB minimum, 8 GB recommended, machine learning off at 4 GB, database on local SSD",
+     "https://docs.immich.app/install/requirements"
+    ],
+    [
+     "Home Assistant OS as a VM: 2 GB RAM, 2 vCPUs, UEFI boot, qcow2 image for KVM",
+     "https://www.home-assistant.io/installation/alternative"
+    ],
+    [
+     "Home Assistant Container has no Apps (add-ons), no out-of-the-box Thread or Z-Wave",
+     "https://www.home-assistant.io/installation/"
+    ],
+    [
+     "TerraMaster F2-425 Plus: N150, 8 GB DDR5 in one slot upgradeable to 32 GB, three M.2 NVMe slots, dual 5GbE (ITPro, Dave Mitchell, 23 February 2026)",
+     "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price"
+    ],
+    [
+     "Intel Processor N150 maximum memory 16 GB, one channel",
+     "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html"
+    ],
+    [
+     "Intel Processor N100: 4 cores, maximum memory 16 GB, one channel, Quick Sync Video",
+     "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "UGREEN DXP2800: Intel N100, 8 GB DDR5 expandable to 16 GB, two M.2 slots, one 2.5GbE, 16.38 W access / 5.24 W hibernation (The Gadgeteer, Julian Perry)",
+     "https://the-gadgeteer.com/2025/10/07/ugreen-nasync-dxp2800-review-another-great-nas/"
+    ],
+    [
+     "DXP2800 measured at the wall: 0.6 W off, 5.6 W standby, 14.5 W transferring, 33.2 / 35.6 dB(A) (igor'sLAB, Tim Kutzner)",
+     "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/"
+    ],
+    [
+     "UGOS Pro Docker and Virtual Machine app by model: DXP both, DH4300 Plus Docker only, DH2300 neither; qcow2 import, UEFI (esp32.co.uk, 3 October 2026)",
+     "https://esp32.co.uk/how-to-install-home-assistant-on-ugreen-nasync/"
+    ],
+    [
+     "Synology DS225+: J4125, 2 GB, one slot, 6 GB maximum, no M.2 line in the spec, 16.98 W access, non-Synology memory warranty footnote",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "Synology Virtual Machine Manager: VMs only on a NAS with more than 2 GB of memory, Btrfs only, qcow2 import, UEFI boot",
+     "https://www.synology.com/en-us/dsm/software_spec/vm_manager"
+    ],
+    [
+     "Asustor AS5402T: 4 GB in one of two slots, 16 GB maximum, four M.2 PCIe 3.0 x1, VirtualBox app, 22.9 W operation",
+     "https://www.asustor.com/product/spec?p_id=81"
+    ],
+    [
+     "US average residential electricity price 18.16 ¢/kWh, August 2026 (EIA Table 5.6.A)",
+     "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a"
+    ]
+   ]
+  }
+ },
+ "checked": 71,
+ "changed": [
+  {
+   "where": "after, 'Memory budget' paragraph, first sentence",
+   "was": "the Postgres database and library should live on a local SSD, never a network share",
+   "now": "the Postgres database should live on a local SSD, never a network share",
+   "why": "Immich's requirements page (read 2026-11-08) says only the Postgres database should use local SSD and never a network share; it gives no such rule for the library."
+  },
+  {
+   "where": "after, 'Memory budget' paragraph, Synology sentence",
+   "was": "lists 2 GB soldered, one slot and a 6 GB maximum",
+   "now": "lists 2 GB, one slot and a 6 GB maximum",
+   "why": "Synology's DS225+ spec page (read 2026-11-08) lists 2 GB DDR4, 1 slot, 6 GB (2 GB + 4 GB) maximum but uses neither 'soldered' nor 'onboard'."
+  },
+  {
+   "where": "rows[1].cells.headroom (F2-425 Plus) and the matching ITPro sources entry",
+   "was": "Three M.2 2280 slots",
+   "now": "Three M.2 NVMe slots",
+   "why": "ITPro (Dave Mitchell, 23 Feb 2026) says 'three internal M.2 NVMe' slots and does not give the 2280 form factor; TerraMaster's product page returned HTTP 429 so the form factor could not be confirmed."
+  },
+  {
+   "where": "after, 'Memory budget' paragraph, last sentence",
+   "was": "TerraMaster's own pages did not load for us this week, so this page makes no claim about VM support in TOS 6; the F2-425 Plus figures above are hardware only.",
+   "now": "We did not verify VM support in TOS 6 on TerraMaster's own pages, so this page makes no claim about it; the F2-425 Plus figures above are hardware only.",
+   "why": "TerraMaster's store did load today (both prices read 2026-11-08 via storecheck), so the 'did not load' statement was false; the VM-support claim remains unverified and is still withheld."
+  },
+  {
+   "where": "after, 'Not recommended', UGREEN DH2300",
+   "was": "4 GB soldered, below Immich's minimum, and no official Docker or VM support in UGOS Pro per the esp32.co.uk guide",
+   "now": "no official Docker or VM support in UGOS Pro per the esp32.co.uk guide",
+   "why": "The 4 GB soldered figure had no source in the draft and UGREEN's store pages returned HTTP 429 (nas.ugreen.com and the ai.ugreen.com redirect), so it could not be verified; the Docker/VM statement is supported by the esp32.co.uk guide."
+  },
+  {
+   "where": "page.desc",
+   "was": "UGREEN DXP2800 vs TerraMaster F2-425 Plus, F2-425, DH4300 Plus, Synology DS225+.",
+   "now": "UGREEN DXP2800 vs TerraMaster F2-425 Plus, F2-425, Synology DS225+.",
+   "why": "DH4300 Plus row removed (see removed)."
+  },
+  {
+   "where": "sources",
+   "was": "one TerraMaster entry covering both prices at the F2-425 Plus URL",
+   "now": "separate entries for F2-425 Plus ($399.49) and F2-425 ($299.99, Intel x86 quad-core, 4 GB, 2.5GbE); added Intel N100 spec page",
+   "why": "F2-425 price and the row's CPU/RAM/LAN cells were read from the F2-425 listing (storecheck search, 2026-11-08), not the Plus page; the DXP2800 row's 'Intel's N100 ceiling' and 'Quick Sync' claims had no listed source, so the Intel N100 spec page I opened (4 cores, 16 GB max, Quick Sync Video: Yes) was added."
+  }
+ ],
+ "removed": [
+  {
+   "where": "rows[3] UGREEN NASync DH4300 Plus (cpu '8-core ARM', ram '8 GB', lan '1× 2.5GbE', headroom '2 GB ...'), the DH4300 Plus bullet in the after list ('8 − 6 = 2 GB'), and the 'Four bays for a large photo library' row of the Use table",
+   "why": "The 8-core ARM, 8 GB and 2.5GbE cells named no source and UGREEN's DH4300 Plus product page could not be opened (HTTP 429 on nas.ugreen.com, the ai.ugreen.com redirect, and the store tool); the headroom arithmetic depends on the unverified 8 GB. The esp32.co.uk-sourced statement that the DH4300 Plus gets Docker only is kept in the prose."
+  }
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 41,
+  "cost_usd_list": 1.5358395500000002
+ }
+}

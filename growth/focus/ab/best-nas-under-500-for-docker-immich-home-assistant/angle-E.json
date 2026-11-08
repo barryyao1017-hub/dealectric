@@ -1,0 +1,178 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states an independent wall-socket measurement for the UGREEN DXP2800 (igor'sLAB: 5.6 W standby, 14.5 W during transfers with one NVMe, 33.2/35.6 dB(A) at 40 cm) set beside NAS Compares' 10 W idle / 21 W full-load figures for the Synology DS225+ and its observation that DSM alone uses 28–38% of the DS225+'s 2 GB RAM before any container is installed.",
+ "standout": 2,
+ "standout_why": "Compared against homelabwise.com (DXP2800 16.38/5.24 W, DS225+ 16.98/6.08 W, all UGREEN/Synology ratings), nasdecoded.com (no measurements, generic 280 MB/s 2.5GbE estimate), bitdoze.com (unattributed 20–35 W estimate) and starryhope.com best-2-bay (one Notebookcheck figure, 14.84–20.14 W idle for the DXP2800 GT, and a Liliputing PCIe x1 note). None gives a named, independent power or noise measurement for the sub-$500 candidates themselves, none gives a measured RAM-headroom figure for the DS225+, and none gives measured SMB/iperf throughput for the F2-425 Plus. The DXP2800 and DS225+ numbers are new and bear directly on Docker suitability; they do not overturn the pick, so 2 rather than 3.",
+ "decides": "Confirms the UGREEN DXP2800 as the pick: igor'sLAB measured 14.5 W at the wall while transferring and 5.6 W in standby with an NVMe-only setup, which is the configuration a Docker/Immich user would run before adding HDDs, and noise stayed at the 33.2 dB(A) room floor at idle. It argues against the Synology DS225+ for Immich: NAS Compares found DSM already consuming 28–38% of the 2 GB at idle, leaving roughly 1.2–1.4 GB for Immich's server, database and ML containers before an upgrade, and its measured 10 W idle / 21 W load is not enough of a power advantage to offset that. The Beelink ME mini (8 W idle, 15 W max CPU, measured by Michael Klements on TrueNAS) is the lowest-power option but has no SATA bays. The F2-425 Plus's 5GbE is real in iperf3 (4.71 Gbit/s per CNX Software) but two HDDs only wrote at 110 MB/s uncached, so the dual 5GbE does not help a two-HDD Immich library much. The DXP2800 GT measured by Notebookcheck is quieter (29.11 dB(A)) but at $509.99 is over budget.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP2800 GT",
+  "Synology DS225+",
+  "TerraMaster F2-425 Plus",
+  "Beelink ME mini",
+  "TerraMaster F2-425",
+  "TerraMaster F4-424",
+  "UGREEN NASync DXP4800",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power at the wall, off/WoL (igor'sLAB)",
+   "value": "0.6 W",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test – Seite 8 (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-08",
+   "note": "Measured at the socket with one NVMe SSD installed and all other drives removed; published 2024-05-08, last modified 2025-05-31."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power at the wall, standby (igor'sLAB)",
+   "value": "5.6 W",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test – Seite 8 (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-08",
+   "note": "One NVMe SSD installed, no HDDs; wall measurement. Compare UGREEN's own 5.24 W hibernation rating quoted by homelabwise."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power at the wall, data transfer (igor'sLAB)",
+   "value": "14.5 W",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test – Seite 8 (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-08",
+   "note": "One NVMe SSD, no HDDs; the review's closest figure to load. No separate idle or CPU-stress figure given."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Noise at 40 cm (igor'sLAB)",
+   "value": "33.2 dB(A) idle, 35.6 dB(A) load",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test – Seite 8 (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-08",
+   "note": "Room noise floor was also 33.2 dB(A), so idle was indistinguishable from the room; one NVMe SSD, no HDDs."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power idle / peak, two HDDs (OCinside, via Starry Hope)",
+   "value": "about 7 W idle, 34.7 W peak",
+   "source": "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/",
+   "source_title": "UGREEN NASync DXP2800 – Starry Hope model page",
+   "read": "2026-11-08",
+   "note": "Starry Hope attributes to OCinside, December 2024: two HDDs in RAID 1 on Btrfs; peak during combined CPU, RAM and disk stress. OCinside page itself not opened; secondhand."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Noise with two IronWolf Pro 20TB in access (ComputerBase, via Starry Hope)",
+   "value": "34.2 dB",
+   "source": "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/",
+   "source_title": "UGREEN NASync DXP2800 – Starry Hope model page",
+   "read": "2026-11-08",
+   "note": "Starry Hope attributes to ComputerBase, undated; ComputerBase page not opened; secondhand."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Power, two WD Red HDDs spinning (Notebookcheck)",
+   "value": "14.84–20.14 W idle, 31.12 W all 4 cores loaded, 35.9 W CPU+drives max",
+   "source": "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html",
+   "source_title": "Small, fast, and surprisingly quiet: Ugreen NASync DXP2800 GT review (Notebookcheck, Daniel Schmidt)",
+   "read": "2026-11-08",
+   "note": "Review dated 2026-10-13; Ryzen-based sibling of the DXP2800. Price in review $509.99 (Amazon), over the $500 ceiling."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Noise at 30 cm (Notebookcheck)",
+   "value": "29.11 dB(A) idle, up to 41 dB(A) at drive-access peaks, 47 dB(A) fan at startup",
+   "source": "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html",
+   "source_title": "Small, fast, and surprisingly quiet: Ugreen NASync DXP2800 GT review (Notebookcheck, Daniel Schmidt)",
+   "read": "2026-11-08",
+   "note": "Two WD Red HDDs installed; startup fan peak not reproduced in normal operation."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM used by DSM at idle with no apps installed (NAS Compares)",
+   "value": "28–38% of 2 GB",
+   "source": "https://nascompares.com/2025/08/04/synology-ds225-nas-review/",
+   "source_title": "Synology DS225+ NAS Review – Should You Buy? (NAS Compares, Rob Andrews)",
+   "read": "2026-11-08",
+   "note": "Posted 2025-08-04. Arithmetic: 28–38% of 2,048 MB is about 570–780 MB used, leaving roughly 1.2–1.4 GB for containers before a RAM upgrade."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Noise at idle and temperatures (NAS Compares)",
+   "value": "19.6 dB(A) idle; 32–37 °C under sustained moderate CPU and disk activity",
+   "source": "https://nascompares.com/2025/08/04/synology-ds225-nas-review/",
+   "source_title": "Synology DS225+ NAS Review – Should You Buy? (NAS Compares, Rob Andrews)",
+   "read": "2026-11-08",
+   "note": "The 19.6 dB(A) matches Synology's rating, so may be quoted rather than measured; the temperature range is the author's own observation. Article also repeats Synology's 16.98 W access / 6.08 W hibernation ratings."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Power idle / full load, drives installed (NAS Compares, via Starry Hope)",
+   "value": "10 W idle, 21 W at full CPU load",
+   "source": "https://www.starryhope.com/nas/models/synology-ds225-plus/",
+   "source_title": "Synology DiskStation DS225+ – Starry Hope model page",
+   "read": "2026-11-08",
+   "note": "Starry Hope attributes to NAS Compares' test and companion video (16–17 W at 50% CPU); also cites Trusted Reviews 13 W peak with two WD drives (May 2026) and Dong Knows Tech about 275 Wh per 24 h with two HDDs. Secondhand; the NAS Compares article text I read gives only Synology's ratings."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "iperf3 to a 10GbE client over one 5GbE port (CNX Software)",
+   "value": "4.71 Gbit/s each direction",
+   "source": "https://www.cnx-software.com/2026/03/28/terramaster-f2-425-plus-nas-review-part-2-configuration-benchmarks-and-ai-enhanced-media-storage/",
+   "source_title": "TerraMaster F2-425 Plus NAS review – Part 2 (CNX Software, Jean-Luc Aufranc)",
+   "read": "2026-11-08",
+   "note": "Published 2026-03-28; 4.70 Gbit/s bidirectional. No power or noise measured in the review."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "SMB sequential read / write, two HDDs, no cache (CNX Software)",
+   "value": "279 MB/s read, 110 MB/s write",
+   "source": "https://www.cnx-software.com/2026/03/28/terramaster-f2-425-plus-nas-review-part-2-configuration-benchmarks-and-ai-enhanced-media-storage/",
+   "source_title": "TerraMaster F2-425 Plus NAS review – Part 2 (CNX Software, Jean-Luc Aufranc)",
+   "read": "2026-11-08",
+   "note": "iozone 16 M sequential; with a 256 GB Apacer NVMe as Hyper Cache (read-write) write rose to 206 MB/s, read unchanged at 277 MB/s; 4K random read 9.9 vs 12.4 MB/s. Two bonded 2.5GbE clients combined: 249 MB/s read, 325 MB/s write."
+  },
+  {
+   "product": "Beelink ME mini",
+   "label": "Power, two NVMe, TrueNAS (The DIY Life)",
+   "value": "about 8 W idle, 12 W writing, 15 W max CPU load",
+   "source": "https://www.the-diy-life.com/beelink-me-mini-tiny-silent-and-perfect-for-a-diy-nas",
+   "source_title": "Beelink ME Mini – Tiny, Silent, and Perfect for a DIY NAS? (The DIY Life, Michael Klements)",
+   "read": "2026-11-08",
+   "note": "Published 2025-06-16; CPU under 55 °C in stress test; noise about 35 dB idle / 36 dB full load, audible only within 20 cm. Price quoted $209 barebone, $329 with 2 TB, $429 with 4 TB."
+  },
+  {
+   "product": "Beelink ME mini",
+   "label": "2.5GbE SMB transfer (The DIY Life)",
+   "value": "about 260 MB/s write, 245 MB/s read (1 GB file); about 280 MB/s both ways on a 46 GB file",
+   "source": "https://www.the-diy-life.com/beelink-me-mini-tiny-silent-and-perfect-for-a-diy-nas",
+   "source_title": "Beelink ME Mini – Tiny, Silent, and Perfect for a DIY NAS? (The DIY Life, Michael Klements)",
+   "read": "2026-11-08",
+   "note": "Same results on the single-lane and dual-lane M.2 slots; TrueNAS installed by the reviewer."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages ChatGPT got actually measure",
+   "value": "maker ratings only, except one Notebookcheck DXP2800 GT idle figure on starryhope.com",
+   "source": "https://homelabwise.com/hardware/best-nas-plex-immich/",
+   "source_title": "Best NAS for Plex and Immich (2026) | HomelabWise",
+   "read": "2026-11-08",
+   "note": "homelabwise: UGREEN 16.38/5.24 W and Synology 16.98/6.08 W ratings; nasdecoded.com/best-nas-under-500: no measurements; bitdoze.com: unattributed 20–35 W estimate; starryhope.com/nas/best-2-bay-nas: Notebookcheck 14.84–20.14 W idle for the GT only. All read 2026-11-08."
+  }
+ ],
+ "unsourced": [
+  "Independent measured power draw for the TerraMaster F2-425 Plus (CNX Software part 2 did not measure it; Neowin's F2-425 and F2-425 Pro reviews returned HTTP 403, and the Pro is a different unit).",
+  "igor'sLAB English page and TechPowerUp F4-424 power page (18 W idle in the search snippet) returned HTTP 403; the TechPowerUp figure is therefore left out.",
+  "Neowin's UGREEN DXP2800 review power and noise figures (HTTP 403 on both the normal and AMP URL).",
+  "A named reviewer's measured Immich machine-learning throughput (photos per second for CLIP or face detection) on an Intel N100 or N150 NAS; the only timed run found was on an 8th-gen Intel NUC, not a candidate.",
+  "Measured power or noise for the UGREEN DXP4800 (non-Plus), TerraMaster F4-425 and Asustor AS5402T from a named lab.",
+  "Primary NAS Compares power figures for the DS225+ (10 W idle / 21 W load): the written review text I read quotes only Synology's ratings, so the measured numbers rest on Starry Hope's summary of the companion video."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 2.0204948999999996
+ }
+}

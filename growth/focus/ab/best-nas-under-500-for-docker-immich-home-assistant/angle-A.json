@@ -1,0 +1,175 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that, normalised against Intel's own memory ceilings, the TerraMaster F2-425 Plus's advertised 32 GB RAM maximum is double what Intel rates the N150 for (16 GB), while the Synology DS225+'s 6 GB ceiling equals Immich's stated 6 GB minimum and sits below Immich's 8 GB recommendation, so only the N100/N150 units reach Immich's recommended RAM on a maker-backed figure.",
+ "standout": 2,
+ "standout_why": "Compared against homelabwise.com (gives UGREEN/Synology RAM maxes but no Intel ceiling or Immich requirement), nasdecoded.com (maker RAM maxes only, no power or HA detail), bitdoze.com (no RAM max for DXP2800, no HAOS-vs-Container distinction), starryhope.com (lists 32 GB for F2-425 Plus unchallenged; says UGREEN permits TrueNAS/Unraid but nothing on stock VM support). None of them put the maker RAM ceiling next to Intel's ARK figure, none quote Immich's own 6 GB minimum / 8 GB recommended, and none say that Home Assistant Container lacks Apps (add-ons) and one-click updates so the shopper needs a VM-capable NAS OS to get full Home Assistant. Dealectric's current page also lacks all three.",
+ "decides": "Confirms the UGREEN DXP2800 as the pick and narrows the gap the F2-425 Plus appeared to have: on Intel-rated memory both top out at 16 GB (single channel, one slot), so the TerraMaster's 32 GB is a maker claim beyond the CPU spec, not a verified advantage. Rules the Synology DS225+ out for Immich with machine learning: its 6 GB hard ceiling meets only Immich's minimum and leaves nothing for a Home Assistant OS VM. The HA finding (Container has no Apps/add-ons or one-click updates; HAOS is built for VMs) means the shopper should buy a NAS whose stock OS runs VMs: Synology lists 2 recommended VM instances on the DS225+ and Asustor lists VirtualBox as an official app for the AS5402T; UGREEN's and TerraMaster's own VM pages could not be opened this session.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "Synology DS225+",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "Beelink ME mini"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Intel N100 maximum memory (CPU vendor)",
+   "value": "16 GB, 1 memory channel, Quick Sync Video yes, 6 W TDP",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 Specifications",
+   "read": "2026-11-08",
+   "note": "Intel notes the max is 'dependent on memory type'. This is the ceiling for the UGREEN DXP2800."
+  },
+  {
+   "product": "general",
+   "label": "Intel N150 maximum memory (CPU vendor)",
+   "value": "16 GB, 1 memory channel, Quick Sync Video yes, 6 W base power",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel Processor N150 Specifications",
+   "read": "2026-11-08",
+   "note": "Ceiling for the TerraMaster F2-425 Plus and Beelink ME mini. TerraMaster's advertised 32 GB (as reported on starryhope.com) is 2x Intel's figure; treat 16 GB as the vendor-backed ceiling."
+  },
+  {
+   "product": "general",
+   "label": "Intel Celeron J4125 maximum memory (CPU vendor)",
+   "value": "8 GB, 2 memory channels, Quick Sync Video yes, 10 W TDP",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 Specifications",
+   "read": "2026-11-08",
+   "note": "Synology caps the DS225+ at 6 GB, 2 GB below the CPU's rated 8 GB, because 2 GB is soldered and the single slot takes a 4 GB module."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM shipped / slots / maker maximum",
+   "value": "2 GB DDR4 non-ECC soldered, 1 slot, max 6 GB (2 GB + 4 GB D4NS01-4G)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ Specifications",
+   "read": "2026-11-08",
+   "note": "No M.2 slots. 6 GB equals Immich's stated minimum and is under its 8 GB recommendation; leaves no headroom for an HAOS VM."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "VM support on stock firmware",
+   "value": "Recommended Virtual Machine Instances: 2; Recommended Virtual DSM: 2 (1 free license)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ Specifications",
+   "read": "2026-11-08",
+   "note": "Virtual Machine Manager figures as published by Synology. Container Manager is not named on the spec page."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Power draw (maker, conditions)",
+   "value": "16.98 W access, 6.08 W HDD hibernation",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ Specifications",
+   "read": "2026-11-08",
+   "note": "Drive model and count not given on the spec page; Synology links to a separate test-method article."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "RAM shipped / slots / maker maximum",
+   "value": "4 GB DDR4 SO-DIMM (1x4 GB), 2 slots, max 16 GB (2x8 GB)",
+   "source": "https://www.asustor.com/product/spec?p_id=81",
+   "source_title": "ASUSTOR AS5402T Specifications",
+   "read": "2026-11-08",
+   "note": "Two slots, so it reaches 16 GB with 2 modules; mixed capacities supported per Asustor."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "M.2 slots and lanes",
+   "value": "4x M.2 2280 NVMe, PCIe 3.0 x1 each",
+   "source": "https://www.asustor.com/product/spec?p_id=81",
+   "source_title": "ASUSTOR AS5402T Specifications",
+   "read": "2026-11-08",
+   "note": "x1 Gen3 is about 1 GB/s per slot; fine for an Immich Postgres volume."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "VM support on stock firmware",
+   "value": "VirtualBox listed as an official ADM app (Windows, Linux, Solaris, macOS guests)",
+   "source": "https://www.asustor.com/product/spec?p_id=81",
+   "source_title": "ASUSTOR AS5402T Specifications",
+   "read": "2026-11-08",
+   "note": "Docker/Portainer not named on this spec page."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Power draw (maker, conditions)",
+   "value": "22.9 W operation, 12.7 W disk hibernation, 0.71 W sleep",
+   "source": "https://www.asustor.com/product/spec?p_id=81",
+   "source_title": "ASUSTOR AS5402T Specifications",
+   "read": "2026-11-08",
+   "note": "Drive count not stated; a footnote names a Seagate IronWolf 16 TB test HDD."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price (maker US store)",
+   "value": "$389.99 (compare-at $564.98); bundle with docking station $424.99; refurbished $269.99 out of stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-08",
+   "note": "Shopify product JSON via storecheck.py; the HTML spec page returned HTTP 429 three times."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM shipped / maker maximum / power draw (as published by UGREEN, read on a reviewer page)",
+   "value": "8 GB DDR5, max 16 GB; 16.38 W drive access, 5.24 W hibernation",
+   "source": "https://homelabwise.com/hardware/best-nas-plex-immich/",
+   "source_title": "Best NAS for Plex and Immich (2026) | HomelabWise",
+   "read": "2026-11-08",
+   "note": "Third-tier source: UGREEN's own page could not be opened (429). 16 GB equals Intel's N100 ceiling exactly."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price (maker US store)",
+   "value": "$399.49 (compare-at $499.99), 8 GB RAM, 2x 5GbE",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Shopify product JSON via storecheck.py; the HTML page returned HTTP 429. Sibling prices same call: F2-425 $299.99, F4-425 $386.99, F4-425 Plus $599.99."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Maker-stated RAM maximum (read on a reviewer page)",
+   "value": "32 GB",
+   "source": "https://www.starryhope.com/nas/best-2-bay-nas/",
+   "source_title": "Best 2-Bay NAS for Home Use in 2026 | Starry Hope",
+   "read": "2026-11-08",
+   "note": "Third-tier source. Intel rates the N150 at 16 GB, so the 32 GB claim is 2x the CPU vendor's ceiling."
+  },
+  {
+   "product": "general",
+   "label": "Immich hardware requirements",
+   "value": "RAM minimum 6 GB, recommended 8 GB (4 GB only with machine learning disabled); CPU 2 cores minimum, 4 recommended; ML container needs x86-64-v2 on amd64; Postgres on local SSD, never a network share",
+   "source": "https://docs.immich.app/install/requirements",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-08",
+   "note": "Postgres needs at least 2 GB if Docker limits are set. This is the yardstick for the RAM column."
+  },
+  {
+   "product": "general",
+   "label": "Home Assistant Container vs Home Assistant OS",
+   "value": "Container has no Apps (add-ons), no out-of-the-box Thread/Z-Wave, no one-click updates; HA OS is designed for single-board computers or virtual machines",
+   "source": "https://www.home-assistant.io/installation/",
+   "source_title": "Installation - Home Assistant",
+   "read": "2026-11-08",
+   "note": "So a Docker-only NAS gives a reduced Home Assistant; full HA needs a NAS OS that runs VMs."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own spec page for the DXP2800 (RAM slot type, stated 16 GB max, M.2 PCIe lanes, power test conditions): nas.ugreen.com and ai.ugreen.com returned HTTP 429 on three attempts; figures above come from homelabwise.com.",
+  "UGREEN's FAQ stating which NASync models support the Virtual Machine app (DXP series yes, DH series no) and that it imports QCOW2 images: ai.ugreen.com/pages/solution-software returned HTTP 429; only search snippets seen.",
+  "TerraMaster's own F2-425 Plus spec page (32 GB max, 3x M.2 PCIe 3.0 x1, VirtualBox in TOS 6, power figures): terra-master.com HTML returned 429 and the /us/ path 404; only the Shopify price JSON was readable.",
+  "Owner reports of 32 GB working in the DXP2800 (nascompares.com, digitec.ch Q&A): seen only as search snippets, pages not opened; no 48 GB report found.",
+  "Beelink ME mini spec page (12 GB soldered LPDDR5, 6x M.2 lanes, price): bee-link.com returned HTTP 429 twice.",
+  "Intel N5105 ARK maximum memory for the Asustor AS5402T comparison: not opened within the call budget.",
+  "Home Assistant's VM minimum (2 GB RAM, 2 vCPU) for the RAM-budget arithmetic: HA VM docs page not opened; seen only in a search snippet."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.8832604999999996
+ }
+}

@@ -1,0 +1,183 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that at the makers' own US stores today the TerraMaster F2-425 Plus ($399.49, terra-master.com, 2026-11-08) costs only $9.50 more than the UGREEN DXP2800 ($389.99, nas.ugreen.com, 2026-11-08) while being the only sub-$500 2-bay x86 NAS whose maker sells a 32 GB RAM upgrade for it, against the DXP2800's 16 GB ceiling.",
+ "standout": 2,
+ "standout_why": "ChatGPT's own answer priced the F2-425 Plus at $449.99 (B&H) and the DXP2800 at $296.99 (Walmart), a $153 gap that makes the TerraMaster look like the expensive option. homelabwise.com (checked 2026-11-02) prices the DXP2800 at $389.99 on UGREEN's store but never mentions the F2-425 Plus. bitdoze.com prices only the DXP2800 ($339.99 Amazon, Oct 23) under $500 and never lists the F2-425 Plus. nasdecoded.com prints no prices at all except 'about $360' for the DS225+ and lists the F4-424, not the F2-425 Plus. None of them price the F4-425 ($386.99 maker) or DH4300 Plus ($399.99 maker) either, and none quotes Immich's own 6 GB minimum / 8 GB recommended RAM figure that disqualifies every 2 GB and 4 GB enclosure in this bracket out of the box.",
+ "decides": "At maker prices the DXP2800 and F2-425 Plus are effectively the same money, so the pick turns on headroom: Immich's docs want 8 GB and only let 4 GB systems run with machine learning disabled, and a shopper stacking Home Assistant plus 5–15 more containers hits the DXP2800's 16 GB ceiling first. That tips the maker-store pick to the F2-425 Plus (N150, 32 GB ceiling, 3 NVMe, dual 5GbE) unless the shopper actually sees the $296.99 Walmart DXP2800 listing ChatGPT showed, which we could not open. Everything else under $500 at the makers loses on RAM: F4-425 (4 GB, N5095), F2-425 (4 GB), DH2300 (4 GB ARM), DS225+ (2 GB, 6 GB max), and the DXP4800 Plus and F4-425 Plus are over budget at $619.99 and $599.99.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "TerraMaster F4-425",
+  "TerraMaster F4-425 Plus",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DH2300",
+  "Synology DS225+",
+  "Beelink ME mini",
+  "Beelink ME Pro 2-Bay",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "QNAP TS-264"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maker US store price",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "Shopify storefront via storecheck.py. Refurbished unit listed at $269.99 but out of stock. Loses on a 16 GB RAM ceiling (per UGREEN as reported by homelabwise.com, 2026-11-02) and a single 2.5GbE port."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM ceiling",
+   "value": "8 GB DDR5 single SODIMM, 16 GB max",
+   "source": "https://homelabwise.com/hardware/best-nas-plex-immich/",
+   "source_title": "Best NAS for Plex and Immich (2026) | HomelabWise",
+   "read": "2026-11-08",
+   "note": "HomelabWise attributes the figure to UGREEN's product page (checked 2026-11-02); the UGREEN product page itself returned HTTP 429 on three attempts today."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Maker US store price",
+   "value": "$399.49 (compare-at $499.99), in stock",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Store listing text: '2-bay x.86 Hybrid NAS Quad-core 8GB RAM 5Gbps x 2 RJ45'. $9.50 more than the DXP2800 at the makers; ChatGPT showed $449.99 at B&H. Loses on software: NAS Decoded (2026-10-17) calls TOS less mature with a smaller app catalog and past security-hardening criticism."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "32 GB RAM upgrade sold by maker",
+   "value": "A-SRAMD5-32G 32 GB DDR5-4800 module, listed for the F2-425 Plus, $699.99 and out of stock",
+   "source": "https://www.terra-master.com/products/a-sramd5-32g",
+   "source_title": "A-SRAMD5-32G – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Listing text: '32GB memory stick dedicated for TerraMaster F4-425 Plus, F2-425 Plus, F2-424, F4-424...'. Confirms the 32 GB ceiling; the maker's own module is impractically priced and out of stock, so a third-party DDR5 SODIMM is the realistic route."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Maker US store price",
+   "value": "$299.99, in stock",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "Listing text: Intel x86 quad-core, 4 GB RAM, one 2.5GbE port. Loses because 4 GB is below Immich's 6 GB minimum out of the box."
+  },
+  {
+   "product": "TerraMaster F4-425",
+   "label": "Maker US store price",
+   "value": "$386.99 (compare-at $429.99), in stock",
+   "source": "https://www.terra-master.com/products/f4-425",
+   "source_title": "F4-425 – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "ChatGPT showed $429.99 at B&H with Intel N5095 and 4 GB RAM. Loses on 4 GB base RAM, below Immich's 6 GB minimum."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Maker US store price",
+   "value": "$599.99 (compare-at $649.99), in stock",
+   "source": "https://www.terra-master.com/products/f4-425-plus",
+   "source_title": "F4-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "4-bay sibling of the F2-425 Plus (quad-core, 8 GB, dual 5GbE). Loses on price: $99.99 over budget."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Maker US store price",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "The non-Plus DXP4800 that ChatGPT showed at $499.99 (Micro Center) is not listed on UGREEN's US store; only Plus, Pro and GT appear. Refurbished Plus at $449.99 is out of stock. Loses on price: $119.99 over budget."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Maker US store price",
+   "value": "$399.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "4-bay, 8 GB, ARM (per Dealectric's own catalog name). Loses because it is ARM rather than x86 with Quick Sync, which ChatGPT set as the minimum spec; Immich does support arm64 per its docs."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Maker US store price",
+   "value": "$239.99 (compare-at $394.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300 – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "Loses on 4 GB soldered RAM (below Immich's 6 GB minimum) and ARM CPU."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maker spec: RAM and ports",
+   "value": "2 GB DDR4, 6 GB max (2 GB + 4 GB); 1× 1GbE + 1× 2.5GbE; 16.98 W access / 6.08 W hibernation",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-08",
+   "note": "No M.2 slots listed. Loses because 2 GB stock is below Immich's 6 GB minimum and even the 6 GB maximum is under the 8 GB recommendation; Synology shows no price."
+  },
+  {
+   "product": "Beelink ME mini",
+   "label": "Maker US store price",
+   "value": "$525.00 (compare-at $629.00), in stock, as listed",
+   "source": "https://www.bee-link.com/products/beelink-me-mini-n150",
+   "source_title": "Beelink ME mini 6-slot Home Storage NAS Mini PC",
+   "read": "2026-11-08",
+   "note": "Price from the store search result; the product page returned HTTP 429 twice so the variant (likely with a bundled Crucial SSD) could not be read. Loses on price as listed and on having no SATA HDD bays (6× M.2 only)."
+  },
+  {
+   "product": "Beelink ME Pro 2-Bay",
+   "label": "Maker US store price",
+   "value": "$379.00 (compare-at $719.00), pre-sale, ships within 35 days",
+   "source": "https://www.bee-link.com/products/beelink-me-pro",
+   "source_title": "Beelink ME Pro 2-Bay",
+   "read": "2026-11-08",
+   "note": "Listing text: Intel N-series up to 25 W TDP, 5GbE + 2.5GbE, swappable motherboard. Loses because it is a pre-sale with no RAM figure in the listing and no NAS OS included."
+  },
+  {
+   "product": "general",
+   "label": "Immich system requirements",
+   "value": "RAM minimum 6 GB, recommended 8 GB; CPU minimum 2 cores, recommended 4; 4 GB systems only with machine learning disabled; amd64 and arm64 supported",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-08",
+   "note": "Disqualifies every 2 GB and 4 GB enclosure under $500 at stock RAM: DS225+, F2-425, F4-425, DH2300."
+  },
+  {
+   "product": "general",
+   "label": "Home Assistant Container limitation",
+   "value": "Container installs have no access to apps (add-ons); Thread and Z-Wave lack out-of-the-box support on Container",
+   "source": "https://www.home-assistant.io/installation/",
+   "source_title": "Installation - Home Assistant",
+   "read": "2026-11-08",
+   "note": "Confirms ChatGPT's caveat; the page gives no x86 RAM figure."
+  },
+  {
+   "product": "general",
+   "label": "Rival DXP2800 prices",
+   "value": "$389.99 UGREEN store (homelabwise, 2026-11-02); $339.99 Amazon (bitdoze, 2026-10-23)",
+   "source": "https://www.bitdoze.com/best-nas-homelab-docker-proxmox/",
+   "source_title": "Best NAS for Homelab (2026): UGREEN vs TerraMaster vs Synology",
+   "read": "2026-11-08",
+   "note": "bitdoze lists the DXP2800 as the only sub-$500 pick and never mentions the F2-425 Plus."
+  }
+ ],
+ "unsourced": [
+  "Synology DS225+ US price today: B&H product page returned HTTP 403 and Synology's page shows no price.",
+  "UGREEN DXP4800 (non-Plus) price: Micro Center page returned HTTP 403 and the model is absent from UGREEN's US store.",
+  "UGREEN DXP2800 $296.99 Walmart listing ChatGPT showed: not opened, seller unknown.",
+  "Asustor AS5402T and QNAP TS-264 US maker-store prices: shop.asustor.com and store.qnap.com both returned HTTP 404.",
+  "Beelink ME mini variant breakdown (barebone vs SSD bundle): product page returned HTTP 429 twice.",
+  "TerraMaster F2-425 Plus CPU model and M.2 slot count from the maker's product page: page returned HTTP 429; only the store listing summary (quad-core, 8 GB, 2× 5GbE) was read.",
+  "Cited Reddit thread r/immich 'Mini PC suggestions': both www and old.reddit.com fetches blocked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.90887385
+ }
+}

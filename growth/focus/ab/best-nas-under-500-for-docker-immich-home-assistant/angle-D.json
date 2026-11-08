@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Immich's machine-learning container, since Immich v3, requires the x86-64-v2 microarchitecture level on amd64 (and that Synology's Virtual Machine Manager will only run VMs such as Home Assistant OS on a NAS with more than 2 GB of RAM, which the stock 2 GB DS225+ fails).",
+ "standout": 2,
+ "standout_why": "Compared against homelabwise.com (best-nas-plex-immich), nasdecoded.com (best-nas-under-500), bitdoze.com (best-nas-homelab-docker-proxmox), starryhope.com (best-2-bay-nas) and ChatGPT's own answer. None mentions any CPU instruction-set or microarchitecture-level requirement for Immich, none mentions Immich dropping x86-64-v1 after v2.7.5, and none states the 2 GB RAM floor for Synology VMM or that USB passthrough is a VM-only feature. ChatGPT already covers that Home Assistant Container lacks the add-on store, so that part is not new. The x86-64-v2 fact confirms rather than overturns the N100/N150 picks, since every x86 candidate (N100, N150, N5095, N5105, J4125) meets v2 per the SSE4.2 listing on Intel ARK; it does rule out the ARM UGREEN DH2300 only indirectly (Immich supports arm64 but the DH2300 has no Docker).",
+ "decides": "Confirms the UGREEN DXP2800 (N100) and TerraMaster F2-425 Plus (N150) as safe picks: both list AVX2 on Intel ARK, so they clear Immich v3's x86-64-v2 floor with headroom. The Jasper Lake and Gemini Lake candidates (TerraMaster F2-425 N5095, Asustor N5105, Synology DS225+ J4125) also clear x86-64-v2 because Intel lists SSE4.2 for them, so Immich ML still runs; what they lack is AVX2 (x86-64-v3), which Immich does not currently require. The Synology DS225+ is the one pick where the mechanism bites: Synology's VMM only runs VMs on units with more than 2 GB of memory, so the stock 2 GB DS225+ cannot run Home Assistant OS as a VM (the route needed for add-ons and a Zigbee/Z-Wave USB stick via VMM's USB passthrough) until the shopper adds RAM. Home Assistant Container on any of them needs privileged mode plus host networking and a /dev/tty device mapping per Home Assistant's own compose example, so the NAS Docker GUI must expose those three settings or the shopper needs Compose.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "Synology DS225+",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "QNAP TS-264",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich machine-learning CPU floor (amd64)",
+   "value": "x86-64-v2 microarchitecture level or higher, since Immich v3; last x86-64-v1 build is v2.7.5",
+   "source": "https://docs.immich.app/install/requirements",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-08",
+   "note": "Verbatim: 'Since v3, the machine learning container on amd64 requires the >= x86-64-v2 microarchitecture level. If you are unable to support this instruction set, the last version to support x86-64-v1 is v2.7.5. Note that this release is no longer supported, and you must run a matching immich-server version.' Same page: CPU minimum 2 cores, recommended 4; RAM minimum 6 GB, recommended 8 GB; with only 4 GB Immich can run with ML disabled; Postgres needs at least 2 GB if Docker resource limits are used; Immich requires Docker with the Compose plugin and the 'docker compose' command (docker-compose is unsupported); library and database should be on local SSD, never a network share; NTFS/exFAT/FAT32 do not work."
+  },
+  {
+   "product": "general",
+   "label": "Symptom when CPU is below the floor",
+   "value": "ML workers crash with SIGILL / exit code 132",
+   "source": "https://docs.immich.app/FAQ",
+   "source_title": "FAQ | Immich",
+   "read": "2026-11-08",
+   "note": "FAQ 'Why does the machine learning service report workers crashing?': 'If it mentions SIGILL (note the lack of a K) or error code 132, it most likely means your server's CPU is incompatible with Immich.'"
+  },
+  {
+   "product": "general",
+   "label": "What x86-64-v2 requires",
+   "value": "CMPXCHG16B, LAHF-SAHF, POPCNT, SSE3, SSSE3, SSE4.1, SSE4.2 (2008 Nehalem-class); x86-64-v3 adds AVX, AVX2, BMI1/2, F16C, FMA, LZCNT, MOVBE",
+   "source": "https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels",
+   "source_title": "x86-64 - Wikipedia (Microarchitecture levels)",
+   "read": "2026-11-08",
+   "note": "GCC's x86 options page (https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html, read 2026-11-08) defers the level definitions to the x86-64 psABI; the Wikipedia table reproduces the psABI list. Immich needs v2, not v3, so AVX2 is not required."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Intel N100 instruction set extensions",
+   "value": "SSE4.1, SSE4.2, AVX2 (meets x86-64-v2 and v3); 4 cores, 6 W TDP, Quick Sync Video yes, 16 GB max memory, 9 PCIe Gen3 lanes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 Specifications",
+   "read": "2026-11-08",
+   "note": "Intel ARK 'Instruction Set Extensions: Intel SSE4.1, Intel SSE4.2, Intel AVX2'. The 16 GB ceiling is Intel's; UGREEN's DXP2800 page lists 16 GB max in our table."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Intel Celeron J4125 instruction set extensions",
+   "value": "SSE4.2 only listed (no AVX/AVX2): meets x86-64-v2, not v3; 4 cores, 10 W, Quick Sync yes, 8 GB max memory, PCIe 2.0, 6 lanes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 Specifications",
+   "read": "2026-11-08",
+   "note": "Intel ARK 'Instruction Set Extensions: Intel SSE4.2'. Wikipedia Goldmont Plus (https://en.wikipedia.org/wiki/Goldmont_Plus, read 2026-11-08) lists MMX through SSE4.2, AES-NI, SHA, no AVX. Intel's 8 GB ceiling is above Synology's 6 GB official max."
+  },
+  {
+   "product": "TerraMaster F2-425 / QNAP TS-264 / Asustor AS5402T",
+   "label": "Intel Celeron N5095 and N5105 instruction set extensions",
+   "value": "SSE4.2 only listed (no AVX/AVX2): meets x86-64-v2, not v3; 4 cores, 10 W, Quick Sync yes, 16 GB max memory",
+   "source": "http://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 Specifications",
+   "read": "2026-11-08",
+   "note": "Intel's N5095 URL 301-redirects to the N5105 spec page; both are Jasper Lake (Tremont). Wikipedia Tremont (https://en.wikipedia.org/wiki/Tremont_(microarchitecture), read 2026-11-08) lists MMX through SSE4.2, AES-NI, SHA and no AVX for Jasper Lake N5095/N5105."
+  },
+  {
+   "product": "general",
+   "label": "Home Assistant Container Docker requirements",
+   "value": "privileged: true, network_mode: host, /run/dbus mount (for Bluetooth), devices: /dev/ttyUSB0 for a Zigbee/Z-Wave stick; no Apps (add-ons)",
+   "source": "https://www.home-assistant.io/installation/linux",
+   "source_title": "Linux - Home Assistant (Container install)",
+   "read": "2026-11-08",
+   "note": "Official compose example lines: 'privileged: true', 'network_mode: host', '- /run/dbus:/run/dbus:ro', 'devices: - /dev/ttyUSB0:/dev/ttyUSB0'. Page: 'This installation type does not have access to apps.' Installation overview (https://www.home-assistant.io/installation/, read 2026-11-08): 'Home Assistant Operating System is the recommended installation type for most users.' A NAS Docker GUI must expose privileged, host network and device mapping, or the shopper needs Compose."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Virtual Machine Manager prerequisites",
+   "value": "VMs run only on NAS with more than 2 GB memory; Btrfs volume required; USB 2.0/3.0 passthrough supported (not on Virtual DSM); UEFI and Legacy boot; qcow2/img/vmdk/vdi/vhd/vhdx images",
+   "source": "https://www.synology.com/en-us/dsm/software_spec/vm_manager",
+   "source_title": "Virtual Machine Manager | Synology",
+   "read": "2026-11-08",
+   "note": "Verbatim: 'Virtual machines can run only on Synology NAS devices with more than 2 GB of memory.' 'Virtual machine data can be stored only on Btrfs volumes.' 'Supports USB 2.0/3.0 passthrough (not supported on Virtual DSM).' 'Supported boot modes: UEFI BIOS, Legacy BIOS.' The DS225+ ships with 2 GB per our table, so Home Assistant OS as a VM needs the RAM upgrade first. Synology's supported-model list is a separate page not opened."
+  },
+  {
+   "product": "general",
+   "label": "Immich ML hardware acceleration backends",
+   "value": "OpenVINO (Intel GPUs such as Iris Xe and Arc), CUDA, ROCm, ARM NN (Mali), RKNN (Rockchip); Linux Docker Compose only; container needs /dev/dri",
+   "source": "https://docs.immich.app/features/ml-hardware-acceleration",
+   "source_title": "Hardware-Accelerated Machine Learning | Immich",
+   "read": "2026-11-08",
+   "note": "Page: 'Integrated GPUs are more likely to experience issues than discrete GPUs, especially for older processors or servers with low RAM'; 'Expect higher RAM usage when using OpenVINO compared to CPU processing'; 'The instructions and configurations here are specific to Docker Compose.' No minimum Intel generation is stated, so no claim that N100 or J4125 iGPU is or is not supported."
+  }
+ ],
+ "unsourced": [
+  "Immich v3.0.0 release date and release-note wording on the x86-64-v2 change: github.com/immich-app/immich/releases/tag/v3.0.0 timed out; the releases list only showed v3.3.0 (07 Oct) through v3.4.0-rc.3 (06 Nov) with v3.3.6 as latest.",
+  "A primary Intel source confirming POPCNT, CMPXCHG16B and LAHF-SAHF on J4125 / N5095 / N5105 (Intel ARK lists only SSE4.2; Wikipedia Goldmont Plus and Tremont pages list SSE4.2 but not POPCNT). The x86-64-v2 conclusion for these CPUs rests on SSE4.2 being present and the level being Nehalem-2008 class.",
+  "UGREEN's own UGOS Pro support article on virtual machines and USB passthrough: the support.ugnas.com article fetched returned only a 'Knowledge Center' heading; third-party guides (privatehomelab.com, raspberry.tips, esp32.co.uk) say USB passthrough is a VM-only toggle in UGOS Pro, not opened or quoted here.",
+  "Whether UGREEN's Docker app, TerraMaster TOS 6 and Asustor ADM expose privileged mode, host network and /dev/tty device mapping in the GUI (Home Assistant Container's three requirements).",
+  "Synology's VMM supported-model list confirming DS225+ is on it.",
+  "The cited Reddit thread (r/immich mini_pc_suggestions) could not be opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.8142222000000001
+ }
+}
