@@ -1,0 +1,95 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that thermal throttling happens inside the SSD itself. The drive's own firmware drops to lower-power states once its composite temperature passes the drive's own thermal-management thresholds. The drive counts each of those events and the seconds spent in them in its standard NVMe health log (Thermal Management Temperature 1/2 transition count and total time). Comparing those counters before and after a long copy is how you tell real throttling from the SLC-cache slowdown that ChatGPT and itechguides could not separate.",
+ "standout": 2,
+ "standout_why": "I compared five pages. ChatGPT's own answer says only that 'the NVMe SSD or USB4 controller overheats' and that SLC-cache exhaustion 'can also be' the cause. It gives no way to tell the two apart. itechguides.com (cited) says 'The SSD may be thermal-throttling or its write cache may be exhausted' and, in its own words, does not explain controller versus SSD temperature or the bandwidth cap. owc.com/solutions/express-1m2 (cited) only claims 'You'll never have to worry about thermal throttling', with no mechanism, numbers or controller. The OWC blog (rank 3, not cited) says to pick efficient drives 'to minimize throttling in sustained writes' but gives no threshold and no power budget. Our current Dealectric page lists results by enclosure but never says the SSD makes the throttle decision, and never mentions the bus-power budget. Tom's Hardware (cited) would not load past its title. None of these pages names the NVMe throttle counters or the 15 W bus-power limit shared by the bridge chip, the SSD and any fan.",
+ "decides": "This shifts the advice from which enclosure to which enclosure plus which SSD. No enclosure can switch off throttling. It can only keep the SSD under thresholds the SSD's maker sets, and on bus power it has a limited power budget. A Thunderbolt 4 port must supply at least 15 W to accessories, and a plain USB4 port is required to supply half that. That supports the fan model (UGREEN CM642) for multi-hundred-GB copies paired with an efficient Gen4 SSD rather than a Gen5 one. It also gives the page a test anyone can repeat, which rivals lack: log the drive's thermal-management counters during a long copy. If they don't move while speed drops, the cause is the SLC cache, not heat. Caveat: I did not confirm that every ASM2464PD enclosure passes the NVMe health log through to the host. One commenter saw a UGREEN CM850 show up as 'ASMT 2464 USB drive (UAS)' in USBView.",
+ "candidates": [
+  "UGREEN CM642 (15976) with fan",
+  "OWC Express 1M2",
+  "TerraMaster D1 SSD Plus",
+  "UGREEN CM850",
+  "Sabrent EC-U4TN",
+  "Hyper HyperDrive Next USB4",
+  "ASUS ProArt PA40SU"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What a thermal-throttle event is, per the NVMe health log (libnvme field definition)",
+   "value": "thm_temp1_trans_count: 'the number of times the controller transitioned to lower power active power states' (or took vendor-specific thermal action); thm_temp1_total_time: 'the number of seconds that the controller had transitioned to lower power active power states'. Both read 0 if it never happened or the drive doesn't implement it.",
+   "source": "https://man.archlinux.org/man/nvme_smart_log-libnvme3.2.en",
+   "source_title": "nvme_smart_log(2), libnvme 3.2 man page",
+   "read": "2026-11-08",
+   "note": "Mirrors the SMART/Health Information log in the NVMe spec. The SSD's controller, not the enclosure bridge, makes and records the throttle decision. A matching pair of fields exists for Thermal Management Temperature 2 (heavy throttle)."
+  },
+  {
+   "product": "general",
+   "label": "Time the SSD spends above its own warning temperature (NVMe health log)",
+   "value": "warning_temp_time: minutes the composite temperature is at or above WCTEMP but below CCTEMP; critical_comp_time: minutes at or above CCTEMP",
+   "source": "https://man.archlinux.org/man/nvme_smart_log-libnvme3.2.en",
+   "source_title": "nvme_smart_log(2), libnvme 3.2 man page",
+   "read": "2026-11-08",
+   "note": "WCTEMP and CCTEMP are set by the SSD's maker, so the throttle point depends on which SSD goes in the enclosure, not on the enclosure."
+  },
+  {
+   "product": "general",
+   "label": "Minimum bus power a Thunderbolt 4 port must give accessories, and PCIe tunnel bandwidth",
+   "value": "15 W (stated as 'double USB4', i.e. 7.5 W for USB4); PCIe tunnel 32 Gbps, 'up to 3GB/s'",
+   "source": "https://bit-tech.net/news/tech/laptops/intel-sheds-further-light-on-thunderbolt-4/1/",
+   "source_title": "Intel sheds further light on Thunderbolt 4, bit-tech (Matthew Lambert, 9 Jul 2020)",
+   "read": "2026-11-08",
+   "note": "Quote: 'the minimum PC port power for accessories remains at 15W (double USB4)'. The 7.5 W USB4 figure is 15 ÷ 2 from that sentence. Intel's own comparison page redirected to a 404, and Intel's messaging-guide PDF could not be read here."
+  },
+  {
+   "product": "general",
+   "label": "Usable 40 Gb/s throughput that caps any sustained figure",
+   "value": "'~3-4 GB/s' on USB4/TB4 hosts, '~2.8 GB/s on many TB3 Macs'; 'over 3800MB/s' in 40 Gb/s mode",
+   "source": "https://www.owc.com/blog/can-usb4-v2-and-thunderbolt-5-enclosures-deliver-pcie-gen5-speeds",
+   "source_title": "Can USB4 v2 and Thunderbolt 5 Enclosures Deliver PCIe Gen5 Speeds? (OWC blog, 2025-10-06)",
+   "read": "2026-11-08",
+   "note": "OWC also tells buyers to pick efficient drives 'to minimize throttling in sustained writes'. It gives no temperature threshold."
+  },
+  {
+   "product": "general",
+   "label": "Power left for the SSD in a bus-powered USB4/TB enclosure (enthusiast estimate)",
+   "value": "About 10 W at best out of 15 W",
+   "source": "https://dancharblog.wordpress.com/2024/01/01/list-of-ssd-enclosure-chipsets-2022/comment-page-1/",
+   "source_title": "List of fastest USB4 ASM2464PD, JHL9480, and JHL7440 SSD enclosures, Dan S. Charlton blog",
+   "read": "2026-11-08",
+   "note": "Dan Charlton (blog author, comment of 10 Aug 2024): 'you only have 15 watts shared between the ssd and controller chip' and 'these chips run hot so I reckon you have at best 10 watts to actually use for the SSD'. This is his estimate, not a measurement. A fan, as on the CM642, also draws from the same bus power."
+  },
+  {
+   "product": "UGREEN CM642 (15976) with fan",
+   "label": "How UGREEN says the fan is controlled",
+   "value": "PWM fan, speed adjusted automatically 'to maintain normal temperatures'; no trigger temperature published",
+   "source": "https://www.ugreen.com/en-ca/products/ca-15976",
+   "source_title": "UGREEN Tool-Free 40Gbps NVMe SSD Enclosure with Fan (ugreen.com/en-ca)",
+   "read": "2026-11-08",
+   "note": "Taken from the search listing of UGREEN's own page. The US product page returned HTTP 429 on both WebFetch and storecheck.py, so I did not open this page myself. Treat the wording as unverified until it is reopened."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Maker's throttling claim",
+   "value": "'You'll never have to worry about thermal throttling'; 'Patented Heat Sink Design: Prevents throttling'; no controller, SSD temperature, power figure or price on the page",
+   "source": "https://www.owc.com/solutions/express-1m2",
+   "source_title": "OWC Express 1M2: Portable USB4 NVMe M.2 SSD Solution",
+   "read": "2026-11-08",
+   "note": "This is a maker claim with no test conditions. Under the NVMe mechanism above, it cannot override the throttle thresholds of whatever SSD is installed."
+  }
+ ],
+ "unsourced": [
+  "ASM2464PD power draw (W) and its own thermal limit: searched for ASMedia product page or datasheet; none found, only an expansion-board listing with no wattage.",
+  "WCTEMP or throttle temperature for common SSDs from the makers: WD lists 0–85 °C operating for the SN850X with no throttle point; samsung.com 990 PRO spec page redirected to samsung.com/ssd and was not opened. smarthdd.com database values (90/94 °C) are not maker sources.",
+  "UGREEN CM642 fan start temperature and whether the fan runs on 7.5 W USB4 ports: not on UGREEN listings found; US page rate-limited (HTTP 429).",
+  "Whether the ASM2464PD passes the NVMe SMART/Health log (thermal-management counters) to the host in USB4/Thunderbolt mode: one commenter on Dan Charlton's blog saw a UGREEN CM850 report as 'ASMT 2464 USB drive (UAS)' in USBView, which suggests possibly not. No maker or smartmontools statement found.",
+  "Intel primary source for the 15 W Thunderbolt 4 / 7.5 W USB4 accessory-power minimum: Intel's comparison page returned a 404 redirect, and its messaging-guide PDF could not be text-extracted here, so bit-tech's report of Intel's briefing is used instead.",
+  "A controlled test logging SSD temperature and throttle counters in the same 40 Gb/s enclosure with and without a fan: none found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9753248
+ }
+}

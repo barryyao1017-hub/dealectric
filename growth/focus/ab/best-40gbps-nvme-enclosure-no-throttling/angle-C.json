@@ -1,0 +1,93 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that OWC's own Express 1M2 manual says it runs at only USB 10Gb/s on Thunderbolt 3 hosts. Sabrent rates its fan-cooled EC-U4TN at 2,700 MB/s over Thunderbolt, against 990 MB/s in OWC's table for a 10Gb/s link. So on an Intel Thunderbolt 3 Mac or PC, ChatGPT's quiet fanless pick is about a third as fast as a fan model before any throttling starts.",
+ "standout": 2,
+ "standout_why": "I compared against itechguides.com (cited), soldermag.com (rank 5, not cited), owc.com/solutions/express-1m2 (cited) and our current page. The owc.com product page says the 1M2 'Works with … Thunderbolt 3' but its speed table has no Thunderbolt 3 row. Itechguides calls the 1M2 'a documented option for compatible Thunderbolt 3 Mac systems' and only adds that 'Thunderbolt 3 behavior varies'. Soldermag only says some ports 'silently fall back to slower modes'. Our page has no host-compatibility column at all. The Tom's Hardware page came back empty, so I could not check it. None of them state the 10Gb/s limit on Thunderbolt 3 or the heatsink-SSD exclusion in OWC's manual.",
+ "decides": "This settles the pick for shoppers whose host is Thunderbolt 3 (Intel Mac or older PC): avoid the OWC Express 1M2, which OWC caps at USB 10Gb/s there. Prefer an enclosure whose maker states a Thunderbolt speed: Sabrent EC-U4TN says 2,700 MB/s over Thunderbolt and has a fan. It confirms the existing picks for Apple silicon and USB4/TB4 PCs (OWC: 3,189 MB/s on Apple silicon, 3,836 MB/s on a PC). Two caveats for every pick: use the 40Gbps cable in the box, and don't use an SSD with a heatsink in the 1M2.",
+ "candidates": [
+  "UGREEN CM642 (SKU 15976)",
+  "OWC Express 1M2",
+  "Sabrent EC-U4TN",
+  "TerraMaster D1 SSD Plus",
+  "ASUS ProArt PA40SU"
+ ],
+ "findings": [
+  {
+   "product": "OWC Express 1M2",
+   "label": "Speed on Thunderbolt 3 hosts",
+   "value": "Limited to USB 10Gb/s",
+   "source": "https://eshop.macsales.com/manuals/owc-express-1m2-support-manual",
+   "source_title": "OWC Express 1M2 support manual (macsales.com)",
+   "read": "2026-11-08",
+   "note": "Exact wording, said twice (including §3.3): 'hosts with Thunderbolt 3 ports will experience limited performance up to USB 10Gb/s.' OWC's product page gives 990 MB/s for a 10Gb/s USB-C link, so expect that ceiling on Thunderbolt 3."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "SSD exclusions",
+   "value": "NVMe SSDs with a heatsink are not supported; NVMe 2230/2242/2280 only, single- or double-sided; some high-power SSDs may need more power than the enclosure supplies",
+   "source": "https://eshop.macsales.com/manuals/owc-express-1m2-support-manual",
+   "source_title": "OWC Express 1M2 support manual (macsales.com)",
+   "read": "2026-11-08",
+   "note": "Quotes: 'NVMe SSDs with a heatsink will not fit and are not supported.' 'Select high power-draw NVMe SSDs may require more power than provided by the OWC Express 1M2.' 2260 is not listed."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Host exclusions",
+   "value": "Does not mount as the third bus-powered device on some Macs; not compatible with the PS5's front USB-C or USB-A ports",
+   "source": "https://eshop.macsales.com/manuals/owc-express-1m2-support-manual",
+   "source_title": "OWC Express 1M2 support manual (macsales.com)",
+   "read": "2026-11-08",
+   "note": "From the manual's notes section. Operating temperature is rated 5–35 °C."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Speed by host (maker table)",
+   "value": "Apple silicon M1–M5 over USB4: 3,189 MB/s; PC USB4 or Thunderbolt 4 port: 3,836 MB/s; 10Gb/s USB-C port (iPad, Mac or PC): 990 MB/s",
+   "source": "https://www.owc.com/solutions/express-1m2",
+   "source_title": "OWC Express 1M2: Portable USB4 NVMe M.2 SSD Solution",
+   "read": "2026-11-08",
+   "note": "The 3,836 MB/s figure is CrystalDiskMark with a 2 TB Aura Ultra IV in an Alienware x14 R2 (footnote 1). The page says it 'Works with … Thunderbolt 3' but has no Thunderbolt 3 row. In the box: 0.3 m (12 in) 40Gb/s cable. Needs a PCIe Gen 3 or later SSD. Warranty: 2 years for the enclosure alone."
+  },
+  {
+   "product": "Sabrent EC-U4TN",
+   "label": "Speed by host (maker)",
+   "value": "Up to 3,900 MB/s on USB4, 2,700 MB/s on Thunderbolt, 1,000 MB/s on USB 3.2; takes 2230/2242/2260/2280; has a fan; $89.99",
+   "source": "https://sabrent.com/products/ec-u4tn",
+   "source_title": "Sabrent USB4 M.2 PCIe NVMe SSD Enclosure (EC-U4TN)",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py from the store's product data; price is sabrent.com's on 2026-11-08. Sabrent writes 'Thunderbolt' without a version. Since USB4 and TB4 hosts are covered by the 3,900 figure, 2,700 MB/s most likely means Thunderbolt 3, but the page does not say so. The full page returned HTTP 429, so I could not read the FAQ or exclusions."
+  },
+  {
+   "product": "UGREEN CM642 (SKU 15976)",
+   "label": "Cable dependency",
+   "value": "Older USB-C cables gave '10Gbps-like performance'; use the cables in the box (USB-C to USB-C and USB-A to USB-C)",
+   "source": "https://www.pcworld.com/article/2583028/ugreen-cm642-ssd-enclosure-review.html",
+   "source_title": "PCWorld: UGREEN CM642 SSD enclosure review (Jon L. Jacobi, 2025-02-11)",
+   "read": "2026-11-08",
+   "note": "Jacobi: 'Be sure to use these rather than older Type-C cables to ensure 40Gbps performance.' He says USB4 runs at 40Gbps on Apple hardware but did not test a Thunderbolt 3 host. He reports the enclosure takes any 2230–2280 NVMe SSD of any capacity, tested with an 8 TB WD SN850X, and saw no thermal issues on a 450 GB write. Price then: $109.99 on Amazon."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival says about Thunderbolt 3",
+   "value": "Calls the Express 1M2 'a documented option for compatible Thunderbolt 3 Mac systems'; gives no Thunderbolt 3 speed",
+   "source": "https://www.itechguides.com/recommend-me-a-usb4-tb4-5-nvme-enclosure-the-right-pick-for-40gbps-and-80gbps-hosts/",
+   "source_title": "Recommend Me a USB4/TB4/5 NVMe Enclosure: Best Picks (itechguides)",
+   "read": "2026-11-08",
+   "note": "Read to compare against. It also says 'Thunderbolt 3 behavior varies across platforms' but never mentions the 10Gb/s limit OWC's manual states."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own US page for the CM642 / SKU 15976 (ugreen.com/products/usa-15976) returned HTTP 429 to both WebFetch and storecheck four times. I could not open its Thunderbolt 3 claim, cable rating, heatsink exclusion or US price. A search snippet quoted UGREEN copy saying 'Thunderbolt 3, USB4 or higher ports are required … to reach the 40Gbps speed', but I did not open that page, so I left it out.",
+  "Measured speed of any ASM2464PD enclosure (UGREEN CM642, OWC 1M2, Sabrent EC-U4TN) on an Intel Mac's Thunderbolt 3 port: I searched for a named reviewer's test and found only forum posts and a Hacker News comment that disagree with each other.",
+  "TerraMaster D1 SSD Plus compatibility by host (Thunderbolt 3 speed, SSD sizes, heatsink exclusion): terra-master.com returned HTTP 429 twice.",
+  "Sabrent EC-U4TN's full page (exclusions, cable in the box, fan control, warranty terms): HTTP 429. Only the store's product data was readable.",
+  "OWC Express 1M2 US price: neither owc.com nor macsales.com showed a price, and B&H returned 403.",
+  "ASUS ProArt PA40SU compatibility by host: not researched, because I ran out of my tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9669594
+ }
+}

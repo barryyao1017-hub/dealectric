@@ -4243,6 +4243,23 @@ PRODUCTS = [
  "fit": "Buyers already invested in QNAP's apps who want four bays.",
  "caveats": ["PassMark single-thread 1,492, 47% of the Pentium Gold 8505's 3,197", '16 GB memory ceiling']},
 
+{"slug": 'terramaster-d1-ssd-plus',
+ "brand": 'TerraMaster',
+ "program": 'amazon:us',
+ "asin": 'B0FCS7YYY6',
+ "category": 'ssd-enclosure',
+ "name": 'TerraMaster D1 SSD Plus 40Gbps USB4 M.2 NVMe SSD Enclosure (diskless, fanless)',
+ "model": 'D1 SSD Plus',
+ "url": 'https://www.amazon.com/dp/B0FCS7YYY6',
+ "price": None,
+ "verified": '2026-11-08',
+ "specs": [('Interface', 'USB4 40Gbps; works with Thunderbolt 5/4/3 and USB 3.2/3.1/3.0 (TerraMaster)'), ('Maker speed claim', 'Up to 3,853 MB/s read, 3,707 MB/s write (TerraMaster)'), ('SSD size', 'M.2 2280 NVMe only'), ('Cooling', 'Fanless, sealed aluminium alloy chassis'), ('Sustained write', '2,550–2,600 MB/s in an AJA 1 GB loop, no early throttling (NAS Compares)'), ('Stress test', '15 minutes in a 30 °C room, 54.8 °C maximum, no thermal throttling (Hardware Busters)')],
+ "warranty": '2 years (TerraMaster)',
+ "returns": "Amazon's return policy for the listing applies",
+ "summary": 'A fanless USB4 40Gbps enclosure for M.2 2280 NVMe SSDs. It has the most named long-run results of the enclosures compared here. NAS Compares measured writes holding at 2,550–2,600 MB/s with no early throttling. Hardware Busters saw no throttling over 15 minutes in a 30 °C room.',
+ "fit": 'Long copies of hundreds of GB from a USB4 or Thunderbolt 4 PC or an Apple Silicon Mac, using a 2280 SSD.',
+ "caveats": ['Fits M.2 2280 SSDs only. 2230 and 2242 drives do not fit.', 'No fan. Hardware Busters measured the case at up to 54.8 °C after 15 minutes in a 30 °C room.', "The SSD inside still sets the speed of long copies. NAS Compares' 100 GB mixed-file copy averaged 1,580 MB/s."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

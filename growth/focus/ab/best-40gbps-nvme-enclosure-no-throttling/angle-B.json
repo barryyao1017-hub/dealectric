@@ -1,0 +1,95 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that Windows' default 'Quick Removal' write-cache policy cut the UGREEN CM642's single-queue sequential write from 2,523.54 to 1,375.07 MB/s in cdrinfo's test. On 1 TB that is about 12.1 minutes instead of about 6.6, a slowdown that has nothing to do with heat.",
+ "standout": 2,
+ "standout_why": "I read itechguides (cited), soldermag and our own page. itechguides has sustained figures only for the OWC Envoy Ultra (about 1,350 and 1,700 MB/s), which is not a 40Gbps enclosure; its other figures are maker claims. Soldermag says it has not measured sustained performance. Our page has no MB/s or time-per-TB figure. None of the three mentions the Windows write-cache policy. I could not open Tom's Hardware's enclosure roundup (cited) or the OWC page ChatGPT cited at rank 2: WebFetch returned only the Tom's Hardware title, and a reader proxy got HTTP 403. So I can't rule out that Tom's Hardware has a comparable number.",
+ "decides": "The UGREEN CM642 pick stands; only its own figures change. With Windows' Quick Removal setting on, a one-file copy runs at about half the enclosure's speed, so 'no throttling' is worth little unless the shopper switches the drive to Better Performance. This is one enclosure on one SSD (Crucial T710), so it does not rank the CM642 against the OWC Express 1M2 or TerraMaster D1 SSD Plus. PCWorld also says the CM642's 450 GB write time was slower than a couple of 20Gbps USB 3.2×2 SSDs it had tested. That fits ChatGPT's caveat that on long copies the SSD inside, not the 40Gbps link, sets the speed.",
+ "candidates": [
+  "UGREEN CM642 40Gbps with cooling fan",
+  "OWC Express 1M2",
+  "TerraMaster D1 SSD Plus",
+  "ASUS ProArt PA40SU",
+  "Sabrent EC-U4TN",
+  "UGREEN CM850",
+  "Hyper HyperDrive Next USB4"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN CM642 40Gbps with cooling fan",
+   "label": "Time to write 1 TB at single-queue sequential write, Better Performance policy (write cache on)",
+   "value": "6.6 min",
+   "source": "https://www.cdrinfo.com/d7/content/ugreen-cm642-usb40-enclosure?page=2",
+   "source_title": "Ugreen CM642 USB4.0 Enclosure (Tests page), CDRinfo",
+   "read": "2026-11-08",
+   "note": "CrystalDiskMark 9 SEQ1M Q1T1 write 2,523.54 MB/s; 1,000,000 MB / 2,523.54 MB/s = 396 s = 6.6 min. Crucial T710 2TB Gen5 SSD, Intel JHL8540 host, ASUS ProArt X670E, Windows 11. This is a benchmark rate projected over 1 TB, not a measured 1 TB copy."
+  },
+  {
+   "product": "UGREEN CM642 40Gbps with cooling fan",
+   "label": "Time to write 1 TB at single-queue sequential write, Quick Removal policy (write cache off, the Windows default for removable drives)",
+   "value": "12.1 min",
+   "source": "https://www.cdrinfo.com/d7/content/ugreen-cm642-usb40-enclosure?page=2",
+   "source_title": "Ugreen CM642 USB4.0 Enclosure (Tests page), CDRinfo",
+   "read": "2026-11-08",
+   "note": "SEQ1M Q1T1 write 1,375.07 MB/s with cache off (CDRinfo: -46%); 1,000,000 / 1,375.07 = 727 s = 12.1 min, which is 5.5 min more per TB than with cache on. Same test setup as above."
+  },
+  {
+   "product": "UGREEN CM642 40Gbps with cooling fan",
+   "label": "Time to write 1 TB at queue-depth-8 sequential write, cache on vs off",
+   "value": "5.8 min vs 7.1 min",
+   "source": "https://www.cdrinfo.com/d7/content/ugreen-cm642-usb40-enclosure?page=2",
+   "source_title": "Ugreen CM642 USB4.0 Enclosure (Tests page), CDRinfo",
+   "read": "2026-11-08",
+   "note": "SEQ1M Q8T1 write 2,869.04 MB/s (cache on), 2,338.04 MB/s (cache off). 1,000,000/2,869.04 = 349 s = 5.8 min; 1,000,000/2,338.04 = 428 s = 7.1 min. CDRinfo: ATTO write levels off at about 2.68 GB/s from 512 KB blocks; SSD 38-39 °C idle, about 45 °C under load, 50 °C recorded maximum."
+  },
+  {
+   "product": "UGREEN CM642 40Gbps with cooling fan",
+   "label": "Price per GB/s of measured write",
+   "value": "$38.34 per GB/s",
+   "source": "https://us.ugreen.com/products/ugreen-40gbps-m-2-nvme-enclosure-with-cooling-fan",
+   "source_title": "UGREEN 40Gbps Hard Drive Enclosure with Cooling Fan, UGREEN US store",
+   "read": "2026-11-08",
+   "note": "$109.99 at us.ugreen.com today (storecheck, in stock, no discount) / 2.869 GB/s (CDRinfo SEQ1M Q8T1 write) = $38.34 per GB/s. PCWorld listed $110 when reviewed in Feb 2025."
+  },
+  {
+   "product": "UGREEN CM642 40Gbps with cooling fan",
+   "label": "450 GB write compared with 20Gbps drives",
+   "value": "slower than a couple of USB 3.2×2 20Gbps SSDs (PCWorld; times shown only in charts)",
+   "source": "https://www.pcworld.com/article/2583028/ugreen-cm642-ssd-enclosure-review.html",
+   "source_title": "Ugreen CM642 SSD enclosure review: Fast, roll-your-own USB4 storage, PCWorld",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, Feb 11, 2025, with an 8TB WD SN850X inside. PCWorld: 'This is a decent 450GB write time, but actually slower than a couple of USB 3.2×2 20Gbps SSDs we've tested' and 'The CM642 never suffered any thermal related issues.' No seconds appear in the text, so I could not work out MB/s."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Time to write 1 TB at Macworld's measured write speed",
+   "value": "6.1 min",
+   "source": "https://www.macworld.com/article/2428449/owc-express-1m2-review.html",
+   "source_title": "OWC Express 1M2 review, Macworld",
+   "read": "2026-11-08",
+   "note": "AJA System Test Lite write 2,736 MB/s; 1,000,000 / 2,736 = 366 s = 6.1 min. Thomas Bergbold (Aug 19, 2024) ran Blackmagic Disk Speed Test for about an hour; the rate 'did not drop' and the case reached about 40 °C. Macworld does not name the SSD or say how much data was written, so this does not show a 1 TB copy running past the SSD's cache."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "OWC's claimed peak and the test behind it",
+   "value": "up to 3,836 MB/s (USB4 PC); 3,189 MB/s to Apple Silicon Macs",
+   "source": "https://www.owc.com/solutions/express-1m2",
+   "source_title": "OWC Express 1M2: Portable USB4 NVMe M.2 SSD Solution",
+   "read": "2026-11-08",
+   "note": "Maker figure with a 2.0TB OWC Aura Ultra IV in a Dell Alienware x14 R2 (i7-13620H). OWC claims 'consistent maximum performance without thermal throttling' but publishes no sustained test. Warranty 2 years for the enclosure alone."
+  }
+ ],
+ "unsourced": [
+  "Tom's Hardware's 30-minute Iometer sustained-write results for the UGREEN, Cable Matters and OWC enclosures (search snippets said 135-142 s above 3 GB/s, then 1,600-1,800 MBps). WebFetch got only the page title, a reader proxy got HTTP 403 and web.archive.org could not be fetched, so I left the figures out.",
+  "PCWorld's 450 GB write times in seconds for the CM642, CM850 and TerraMaster D1 SSD Plus: in both reviews they appear only in chart images, so I could not compute average MB/s or minutes per TB.",
+  "TechRadar's UGREEN 40Gbps and TerraMaster D1 SSD Plus reviews (WebFetch returned only the page title) and Neowin's D1 SSD Plus review (HTTP 403): looked for long-copy MB/s and temperatures.",
+  "Measured sustained or long-copy MB/s for the ASUS ProArt PA40SU, Sabrent EC-U4TN, TerraMaster D1 SSD Plus and HyperDrive Next: none found on a page I could open.",
+  "Price of the enclosure-only OWC Express 1M2 (OWCUS4EXP1MT01) on owc.com: the page showed no price or SKU for that configuration, so I could not work out its price per GB/s.",
+  "Post-cache write speed and SLC cache size of the reviewers' SSDs (WD SN850X 8TB, Crucial T710 2TB), needed to estimate a full 1 TB copy time including the post-cache drop: not sourced."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1801584999999999
+ }
+}

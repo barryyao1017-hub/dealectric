@@ -1,0 +1,103 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the long-copy rate next to the headline speed. Makers advertise 3,707–3,900 MB/s from short benchmarks. ASUS's own 30-minute claim for the PA40SU works out to about 1,644 MB/s. PCWorld's 450 GB write on the UGREEN CM642, ChatGPT's 'best for sustained transfers' pick, was slower than a couple of 20Gbps (about 2 GB/s) USB 3.2×2 SSDs, even though the enclosure 'never suffered any thermal related issues'.",
+ "standout": 2,
+ "standout_why": "Compared against owc.com/solutions/express-1m2 (cited), itechguides (cited), soldermag and Tom's Hardware as quoted in ChatGPT's answer. OWC's page has the Mac vs PC split (3,189 vs 3,836 MB/s), so that part is already covered. itechguides gives long-write figures (1,350/1,700 MB/s) only for OWC's ready-made Envoy Ultra SSD, not for any empty enclosure. ChatGPT's own answer gives Tom's 1.4–1.8 GB/s drop as a general caveat. None of them turns ASUS's '2960 GB in 30 minutes' into MB/s. None says that PCWorld's 450 GB write on the CM642 was slower than 20Gbps drives. Soldermag says 'thermal throttling' for OWC and ACASIS with no numbers. ChatGPT and our current page both report the CM642 450 GB test only as 'no thermal trouble'. Rivals have the general idea that long writes fall to cache speed, but not these per-product figures, so it scores 2 rather than 3.",
+ "decides": "The CM642 stays the pick for long copies, but for a narrower reason: in PCWorld's 450 GB test it finished without the thermal dropout that stopped the UGREEN CM850, not because it holds about 3.8 GB/s. On copies of hundreds of GB, the SSD's speed after its cache fills and the copy tool (PCWorld saw Explorer vs FastCopy differences on the PA40SU) limit speed more than the enclosure's fan does. The table should show three numbers for each enclosure: the maker's peak, the host-specific cap (Apple Silicon or Thunderbolt), and any long-copy figure. The footnote should say that a 'no throttle' long write lands around 1.6–2 GB/s.",
+ "candidates": [
+  "UGREEN CM642 (40Gbps with cooling fan)",
+  "OWC Express 1M2",
+  "TerraMaster D1 SSD Plus",
+  "ASUS ProArt PA40SU",
+  "Sabrent EC-U4TN",
+  "ACASIS TBU405 Pro"
+ ],
+ "findings": [
+  {
+   "product": "ASUS ProArt PA40SU",
+   "label": "Maker's sustained-transfer claim converted to an average rate",
+   "value": "2,960 GB in 30 minutes = about 1,644 MB/s average",
+   "source": "https://press.asus.com/news/press-releases/asus-proart-pa40su-usb4-ssd-enclosure-creators/",
+   "source_title": "ASUS Announces ProArt PA40SU USB4 SSD Enclosure (press release, April 21, 2026)",
+   "read": "2026-11-08",
+   "note": "Quote: 'In internal ASUS tests, PA40SU transferred up to 2960GB of data continuously over a 30-minute period.' Arithmetic: 2,960,000 MB ÷ 1,800 s = 1,644 MB/s, about 43% of a 3,800 MB/s USB4 peak. The release does not name the SSD or host, and does not say whether this was reads or writes. The fan is described as a 'four-level smart cooling fan'."
+  },
+  {
+   "product": "UGREEN CM642 (40Gbps with cooling fan)",
+   "label": "PCWorld 450 GB write vs 20Gbps drives",
+   "value": "450 GB write was 'actually slower than a couple of USB 3.2×2 20Gbps SSDs'; 'never suffered any thermal related issues'",
+   "source": "https://www.pcworld.com/article/2583028/ugreen-cm642-ssd-enclosure-review.html",
+   "source_title": "Ugreen CM642 SSD enclosure review: Fast, roll-your-own USB4 storage (PCWorld, Feb 11, 2025)",
+   "read": "2026-11-08",
+   "note": "Test SSD: WD SN850X 8TB. Host: Z790, i5-12400, Windows 11. Controller: ASM2464PD. The same review calls USB 3.2×2 '20Gbps (roughly 2GBps)', so the 450 GB write averaged under about 2 GB/s. The exact rate is shown only in a chart image. The 48 GB copy was 'fastest ever for a USB4 SSD'. The UGREEN CM850 'required removing its silicon sleeve to complete our 450GB write'."
+  },
+  {
+   "product": "UGREEN CM642 (40Gbps with cooling fan)",
+   "label": "Price, maker's US store",
+   "value": "$109.99",
+   "source": "https://us.ugreen.com/products/ugreen-40gbps-m-2-nvme-enclosure-with-cooling-fan",
+   "source_title": "UGREEN 40Gbps Hard Drive Enclosure with Cooling Fan (us.ugreen.com)",
+   "read": "2026-11-08",
+   "note": "From storecheck search of us.ugreen.com: price 109.99, compare_at 109.99, in stock. A direct product fetch returned HTTP 429."
+  },
+  {
+   "product": "ASUS ProArt PA40SU",
+   "label": "PCWorld long-copy and temperature",
+   "value": "450 GB write 'very lackluster' under Windows Explorer, better with FastCopy; enclosure about 140 °F with a Crucial T710 (PCIe 5.0), about 125 °F with a Crucial P3 (PCIe 4.0)",
+   "source": "https://pcworld.com/article/3151972/asus-pa40su-40gbps-ssd-enclosure-review.html",
+   "source_title": "Asus PA40SU 40Gbps SSD enclosure review: Easy install, handsome, fast (PCWorld, Jun 22, 2026)",
+   "read": "2026-11-08",
+   "note": "Host: ProArt Z890-Creator, Core Ultra 5 225, Windows 11 24H2. The reviewer saw no thermal throttling and called the fan 'overly quiet'. Price when reviewed: $120. The rate depends on the copy tool, so the same enclosure gets different long-copy results under Explorer and FastCopy."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Headline speed by host, and what it was measured on",
+   "value": "3,836 MB/s on a USB4 or Thunderbolt 4 PC; 3,189 MB/s on Apple Silicon Macs (M1–M5); 990 MB/s on 10Gb/s USB-C",
+   "source": "https://www.owc.com/solutions/express-1m2",
+   "source_title": "OWC Express 1M2: Portable USB4 NVMe M.2 SSD Solution",
+   "read": "2026-11-08",
+   "note": "Footnote: measured with a 2.0TB OWC Aura Ultra IV in an Alienware x14 R2 (i7-13620H), CrystalDiskMark, 64GB file. It does not say whether the figure is read or write. The Mac figure is 83% of the PC figure (3,189 ÷ 3,836). Warranty: 2 years for the empty enclosure, 3 years for configured units. The page shows no price."
+  },
+  {
+   "product": "TerraMaster D1 SSD Plus",
+   "label": "Maker speed claim and price",
+   "value": "Up to 3,853 MB/s read and 3,707 MB/s write; $89.99",
+   "source": "https://shop.terra-master.com/products/d1-ssd-plus",
+   "source_title": "D1 SSD Plus (TerraMaster store)",
+   "read": "2026-11-08",
+   "note": "The store calls these 'real-world tests' but names no SSD or host. Fanless sealed aluminium, '2-Year Worry-Free Warranty'. Price from storecheck: 89.99, compare_at 89.99."
+  },
+  {
+   "product": "Sabrent EC-U4TN",
+   "label": "Maker speed claim by host type, and price",
+   "value": "Up to 3,900 MB/s on USB4, 2,700 MB/s on Thunderbolt, 1,000 MB/s on USB 3.2; $89.99",
+   "source": "https://sabrent.com/products/ec-u4tn",
+   "source_title": "USB4 M.2 PCIe NVMe SSD Enclosure (sabrent.com)",
+   "read": "2026-11-08",
+   "note": "Sabrent's Thunderbolt figure is 69% of its USB4 figure (2,700 ÷ 3,900). It has an integrated cooling fan; fan behaviour is not described. In stock per storecheck."
+  },
+  {
+   "product": "ACASIS TBU405 Pro",
+   "label": "Listing speed, test SSD, and fan control",
+   "value": "Tested up to 2,805 MB/s read and 2,734 MB/s write with a Samsung 980 Pro on a MacBook; fan switched on by hand",
+   "source": "https://www.itechguides.com/recommend-me-a-usb4-tb4-5-nvme-enclosure-the-right-pick-for-40gbps-and-80gbps-hosts/",
+   "source_title": "Recommend Me a USB4/TB4/5 NVMe Enclosure: Best Picks (iTechguides, 2026-08-18)",
+   "read": "2026-11-08",
+   "note": "iTechguides quotes the Amazon listing: 'Press the switch to activate the fan.' The fan is manual, not temperature-triggered. The rival page already has this, so it is not new."
+  }
+ ],
+ "unsourced": [
+  "UGREEN CM642 maker speed claim, its test SSD and host, and the fan trigger temperature or noise rating. us.ugreen.com and eu.ugreen.com returned HTTP 429 on every product fetch, and a web search turned up no published fan-start temperature.",
+  "PCWorld's exact 450 GB write rates (MB/s or time) for the CM642 and PA40SU. They appear only in chart images that could not be read as text.",
+  "Test SSD, host, and read/write direction for ASUS's '2960GB in 30 minutes' claim. The press release does not say, and the ASUS Edge Up article returned HTTP 403.",
+  "OWC Express 1M2 current US price. owc.com shows no price, and the Amazon search through amzcheck returned no results.",
+  "Test SSD and host behind TerraMaster's 3,853/3,707 MB/s and Sabrent's 3,900/2,700 MB/s claims. Neither store page names them.",
+  "Tom's Hardware enclosure roundup figures (2,965 MB/s, 108.5 °F, the 1.4–1.8 GB/s extended-write drop). The page fetch was truncated before the listings, so these could not be checked against the source."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9405837
+ }
+}

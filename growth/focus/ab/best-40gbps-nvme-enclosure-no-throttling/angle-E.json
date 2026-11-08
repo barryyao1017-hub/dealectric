@@ -1,0 +1,151 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Macworld ran a one-hour Blackmagic test on the OWC Express 1M2 (Thomas Bergbold, Aug 19 2024): the transfer rate did not drop and the case reached about 40 °C. Hardware Busters ran a 15-minute stress test on the TerraMaster D1 SSD Plus in a 30 °C room (Sep 4 2025) and saw no thermal throttling, with a 54.8 °C maximum.",
+ "standout": 2,
+ "standout_why": "I compared against four pages. itechguides.com (cited) gives only OWC's and Satechi's own speed figures, no temperatures and no throttling data. It says only that a drive 'may eventually throttle'. soldermag.com (rank 5) has no measurements at all and calls the OWC Express 1M2 'poor thermal performance' without a test behind it. ChatGPT's own answer says the OWC's 'independent extended-write results are mixed', and our current page cites only a vendor blog claiming 'moderate to severe throttling' for it. I also tried the cited Tom's Hardware best-picks page (dated 2022-11-18), but it would not load beyond its title, so I could not check it. None of these pages names a long-duration test with a duration, a temperature and a result for the OWC 1M2 or the D1 SSD Plus. ChatGPT got PCWorld's 450 GB CM642 result through our page, so that one is not new.",
+ "decides": "The finding backs the passive pick: the OWC Express 1M2 (one hour, no speed drop, about 40 °C) and the TerraMaster D1 SSD Plus (15 minutes at 30 °C ambient, no throttling, 54.8 °C maximum; NAS Compares 2,550–2,600 MB/s write in an AJA loop) both have named long-run tests with no throttling. That undercuts the 'mixed' and 'poor thermal' claims. The fan pick, the UGREEN CM642, still has PCWorld's 450 GB write with no thermal issues. Its sibling the CM850 lost the drive during that same write with its sleeve on, which shows enclosure cooling matters on the same chip. The page can then say that the one named failure under a long load went to the sleeved CM850 and the passive ZIKE Z666. The finned OWC and TerraMaster bodies and the fan-cooled CM642 held up in every named test.",
+ "candidates": [
+  "UGREEN CM642",
+  "UGREEN CM850",
+  "OWC Express 1M2",
+  "TerraMaster D1 SSD Plus",
+  "Unitek SolidForce Reefer TurboCool (S1242AGY)",
+  "ACASIS TBU405 Pro M1",
+  "ZIKE Z666",
+  "Sabrent EC-U4TN",
+  "ASUS ProArt PA40SU",
+  "Hyper HyperDrive Next USB4"
+ ],
+ "findings": [
+  {
+   "product": "OWC Express 1M2",
+   "label": "One-hour sustained transfer: did speed drop",
+   "value": "No drop in transfer rate after 1 hour",
+   "source": "https://www.macworld.com/article/2428449/owc-express-1m2-review.html",
+   "source_title": "OWC Express 1M2 review (Macworld)",
+   "read": "2026-11-08",
+   "note": "Thomas Bergbold for Macwelt, translated by Roman Loyola. Published Aug 19, 2024. Blackmagic Disk Speed Test run for about one hour. The article gives no MB/s figure for the long run and does not name the SSD inside the fully configured unit."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "Case temperature after 1 hour of load",
+   "value": "about 40 °C",
+   "source": "https://www.macworld.com/article/2428449/owc-express-1m2-review.html",
+   "source_title": "OWC Express 1M2 review (Macworld)",
+   "read": "2026-11-08",
+   "note": "Same run. The fins and underside were 'noticeably warm' at 30 minutes. The measuring method is not stated."
+  },
+  {
+   "product": "OWC Express 1M2",
+   "label": "AJA System Test Lite (short run)",
+   "value": "2,736 MB/s write, 2,980 MB/s read",
+   "source": "https://www.macworld.com/article/2428449/owc-express-1m2-review.html",
+   "source_title": "OWC Express 1M2 review (Macworld)",
+   "read": "2026-11-08",
+   "note": "Macworld, Aug 19 2024. A burst benchmark, not a sustained one."
+  },
+  {
+   "product": "TerraMaster D1 SSD Plus",
+   "label": "15-minute sustained stress test: max temperature and throttling",
+   "value": "54.8 °C maximum, about 55 °C plateau, no thermal throttling",
+   "source": "https://hwbusters.com/peripherals/terramaster-d1-ssd-plus-40gbps-nvme-enclosure-review/4/",
+   "source_title": "TerraMaster D1 SSD Plus 40Gbps NVMe Enclosure Review, page 4 (Hardware Busters)",
+   "read": "2026-11-08",
+   "note": "Hardware Busters, Sep 4 2025. CrystalDiskMark looped for 15 minutes in a 30 °C room. Idle was about 36 °C and normal loads about 42–44 °C. IR readings were 55.2, 51.7 and 54.8 °C. The page names neither the SSD nor the host, and gives no MB/s for the stress run."
+  },
+  {
+   "product": "TerraMaster D1 SSD Plus",
+   "label": "Sustained AJA 1 GB loop write, and temperatures after more than 5 minutes of large-file writes",
+   "value": "2,550–2,600 MB/s write (3,000–3,100 MB/s read), no throttling; SSD 44–45 °C, enclosure 41–42 °C",
+   "source": "https://nascompares.com/review/terramaster-d1-ssd-review/amp/",
+   "source_title": "Terramaster D1 SSD Review – Performance Made Sustainable? (NAS Compares)",
+   "read": "2026-11-08",
+   "note": "Rob Andrews, NAS Compares. The page shows only '1 year ago', no exact date. The SSD is an unnamed PCIe Gen4 x4 drive. A 100 GB mixed-content transfer took 63 s at an average of 1,580 MB/s."
+  },
+  {
+   "product": "TerraMaster D1 SSD Plus",
+   "label": "SSD temperature at the end of a near-full 1.9 TB write",
+   "value": "73 (unit not printed; presumably °C), falling to 60 in under a minute",
+   "source": "https://www.gizmochina.com/?p=698066",
+   "source_title": "TerraMaster D1 Plus Portable SSD Enclosure Review (Gizmochina)",
+   "read": "2026-11-08",
+   "note": "Alex Su, Gizmochina, Jul 28 2025. Ambient was 27 (room temperature). The SSD was an unnamed Gen4 drive. The review gives no MB/s over time and does not say whether the drive throttled. The case temperature kept rising for the whole run."
+  },
+  {
+   "product": "TerraMaster D1 SSD Plus",
+   "label": "450 GB write vs UGREEN CM850 with the same SSD",
+   "value": "D1 won the 450 GB write ('a major win'); no figure printed in the text",
+   "source": "https://www.pcworld.com/article/2848105/terramaster-d1-ssd-plus-enclosure-review.html",
+   "source_title": "TerraMaster D1 SSD Plus enclosure review (PCWorld)",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, Aug 20 2025. Both enclosures used a Samsung 9100 Pro 4TB on a Z890 test bed. The numbers are only in chart images. Price when reviewed: $109.99."
+  },
+  {
+   "product": "UGREEN CM642",
+   "label": "450 GB write",
+   "value": "Completed with no thermal issues; fastest unpopulated USB4 enclosure PCWorld had tested",
+   "source": "https://www.pcworld.com/article/2583028/ugreen-cm642-ssd-enclosure-review.html",
+   "source_title": "UGREEN CM642 SSD enclosure review (PCWorld)",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, Feb 11 2025. 8TB WD SN850X on an i5-12400 / Z790 Thunderbolt 4 test bed. The times are only in charts. The text says the 450 GB time was slower than a couple of 20 Gbps USB 3.2x2 SSDs. Price when reviewed: $110."
+  },
+  {
+   "product": "UGREEN CM642",
+   "label": "Temperature under benchmark load, and large-file copy",
+   "value": "26 °C idle → 34 °C → 43 °C, then stable; copy averaged 650 MB/s write and 980 MB/s read",
+   "source": "https://www.it-connect.fr/test-ugreen-cm642-boitier-ssd-nvme-compatible-usb4/",
+   "source_title": "Test UGREEN CM642 – Un boitier pour SSD NVMe compatible USB4 (IT-Connect)",
+   "read": "2026-11-08",
+   "note": "Florian Burnel, May 1 2024. Samsung 990 Pro in a Geekom IT13 (USB4). The copy size and the temperature method are not stated. Commenters point out that 650/980 MB/s looks like USB 3.2 speed, so don't use the copy figure as a USB4 result."
+  },
+  {
+   "product": "UGREEN CM642",
+   "label": "Case temperature after 10–15 minutes of work",
+   "value": "below 55 °C",
+   "source": "https://hi-tech.ua/en/article/ugreen-m2-cm642-nvme-ssd-pocket-review/",
+   "source_title": "Ugreen M2 CM642 NVMe SSD Pocket Review: Speed and Protection (hi-tech.ua)",
+   "read": "2026-11-08",
+   "note": "Andrew Writter, Jul 22 2024. Measured in summer heat. The workload, SSD and ambient temperature are not stated. Weak evidence."
+  },
+  {
+   "product": "UGREEN CM850",
+   "label": "450 GB write with the silicone sleeve on",
+   "value": "The drive disappeared mid-write; the write finished with the sleeve off or a fan over it",
+   "source": "https://www.macworld.com/article/2585804/ugreen-cm850-usb4-enclosure-review.html",
+   "source_title": "UGREEN CM850 USB4 enclosure review (Macworld)",
+   "read": "2026-11-08",
+   "note": "Jon L. Jacobi, Feb 7 2025. 8TB WD SN850X on PCWorld's Thunderbolt 4 test bed. The author attributes it to 'no doubt' thermal issues. Same ASM2464PD chip as the CM642. Price when reviewed: $89.99."
+  },
+  {
+   "product": "Unitek SolidForce Reefer TurboCool (S1242AGY)",
+   "label": "CrystalDiskMark SEQ1M Q8T1 on USB4, and long write",
+   "value": "3,268.40 MB/s write, 3,363.08 MB/s read; about 600 GB written 'past saturation'",
+   "source": "https://www.back2gaming.com/review/unitek-solidforce-reefer-turbocool-usb4-enclosure/",
+   "source_title": "Unitek SolidForce Reefer TurboCool USB4 M.2 SSD Enclosure Review: 40Gbps With a Fan (Back2Gaming)",
+   "read": "2026-11-08",
+   "note": "BossMac Suba, last updated Oct 8 2026. Kingston NV3 2TB on a Ryzen 9 9950X. Room temperature was 28 °C. The review gives no MB/s over time and no drive temperature. Price stated: $92.99 at the Unitek store."
+  },
+  {
+   "product": "ZIKE Z666 vs ACASIS TBU405 Pro M1",
+   "label": "Write stress test of more than 50 minutes",
+   "value": "The ZIKE Z666 (passive) overheated; the ACASIS TBU405 Pro M1 (fan) did not",
+   "source": "https://makiuto.github.io/p/zike-vs-acasis-thermal-throttling-stress-test-thunderbolt-usb4-ssd-enclosur.html",
+   "source_title": "ZIKE VS ACASIS Thermal Throttling Stress Test Thunderbolt USB4 SSD Enclosures - Apple Silicon M4 Mac",
+   "read": "2026-11-08",
+   "note": "David Harry's video, published Dec 23 2025, reposted on this page. WD SN850X 4TB in both enclosures on an Apple Silicon M4 Mac, measured with Blackmagic before and after. No MB/s or temperature figures are given."
+  }
+ ],
+ "unsourced": [
+  "Exact 48 GB and 450 GB copy times or MB/s for the UGREEN CM642, CM850 and TerraMaster D1 SSD Plus. PCWorld and Macworld put them only in chart images, and the text has no numbers.",
+  "The Tom's Hardware ASUS ProArt PA40SU figures that ChatGPT quoted (about 2,965 MB/s on a 50 GB copy, 108.5 °F after 30 minutes). I found no Tom's Hardware PA40SU review in search, and the cited Tom's Hardware best-picks page would not render beyond its title.",
+  "Any named independent long-copy measurement for the Sabrent EC-U4TN, Satechi USB4 NVMe SSD Pro, ORICO AAGM2 or HyperDrive Next beyond what our page already has.",
+  "MB/s-over-time (throttle curve) data for any 40 Gbps enclosure from a named lab such as Tom's Hardware or Notebookcheck. None turned up within the tool budget.",
+  "The SSD model in Macworld's OWC Express 1M2 one-hour test, and the MB/s it held during that run."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9328685
+ }
+}
