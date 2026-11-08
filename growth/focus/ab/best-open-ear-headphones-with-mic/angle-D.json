@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a Bluetooth Classic headset (HFP) can only use its mic by switching to mono audio, at 8 kHz or wideband quality that Microsoft calls 'closer to an AM radio'. On Windows, stereo audio with the mic on needs LE Audio on both the PC (Windows 11 24H2 or newer) and the earbuds. Shokz OpenFit 2 and Soundcore AeroFit 2 don't support LE Audio.",
+ "standout": 2,
+ "standout_why": "I opened the rival pages and searched each for HFP/HSP, mono or narrowband call audio, sound dropping while the mic is on, LE Audio/LC3 and USB dongles. RealBuyerExperiences (cited) lists mic counts and multipoint for a phone plus a laptop, but nothing on profiles. Digital Trends' OpenFit 2 vs AeroFit 2 (cited) says both use Bluetooth 5.4 and neither supports LE Audio, but it never says what that means for calls on a PC. Openear Club's Work and Phone Calls pages (Work is cited) only mention that the OpenComm2 UC comes with a USB adapter that 'presents the headset to a locked-down work machine without needing its Bluetooth stack'. SoundGuys (cited) mentions LE Audio/LC3 only as lower latency on Sony LinkBuds Open. The RTINGS best-list and OpenComm2 2025 review pages and the TechRadar page returned only navigation or a title, so I couldn't check them. uat.soundcore.com (cited) returned HTTP 401. None of the pages I could read explain the HFP mono and narrowband limit or the LE Audio requirement for stereo audio with the mic on in Windows.",
+ "decides": "This confirms the boom-mic or USB-dongle headset for laptop and Zoom/Teams use, and it changes how the earbud picks should be described. Over Bluetooth Classic, every candidate turns call-side playback into mono with HFP sound quality as soon as the PC uses its mic. Buyers who want to keep stereo playback with the mic on, such as gamers or people sharing video in meetings, need LE Audio on both the earbuds and a Windows 11 24H2 PC with factory LE support. The two earbuds with confirmed status (Shokz OpenFit 2 and Soundcore AeroFit 2) don't support it. For phone calls only, this limit doesn't affect the pick.",
+ "candidates": [
+  "Shokz OpenComm2 (2025)",
+  "Shokz OpenComm2 UC",
+  "Shokz OpenFit 2",
+  "Soundcore AeroFit 2",
+  "Soundcore AeroClip 2",
+  "Shokz OpenDots 2",
+  "Bose Ultra Open Earbuds (2nd Gen)",
+  "Nuroum OpenEar Pro 2",
+  "Shokz OpenMeet UC"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why sound quality drops when a Bluetooth Classic headset mic is in use",
+   "value": "A2DP 'doesn't allow the microphone to be used'. HFP 'allows the microphone to be used but plays back audio in mono with lower fidelity than A2DP'.",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/-/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality – Windows OS Platform Blog (Microsoft, 2025-08-26)",
+   "read": "2026-11-08",
+   "note": "Microsoft's own explanation of the Bluetooth Classic profile split. This is the reason a PC call switches the earbuds into a different mode."
+  },
+  {
+   "product": "general",
+   "label": "HFP voice sample rate",
+   "value": "8 kHz on the original HFP codec. Wideband voice doubles it (16 kHz) but is 'still closer to an AM radio'.",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/-/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality – Windows OS Platform Blog (Microsoft, 2025-08-26)",
+   "read": "2026-11-08",
+   "note": "16 kHz is my arithmetic from Microsoft saying wideband 'doubled' 8 kHz."
+  },
+  {
+   "product": "general",
+   "label": "LE Audio voice sample rate (TMAP super wideband)",
+   "value": "32 kHz, in stereo while the mic is active on Windows 11 24H2 with an updated Bluetooth audio driver",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/-/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality – Windows OS Platform Blog (Microsoft, 2025-08-26)",
+   "read": "2026-11-08",
+   "note": "Before this feature, Windows LE Audio 'was limited to playing super wideband audio in mono while using voice'."
+  },
+  {
+   "product": "general",
+   "label": "Windows requirement for stereo audio with the mic on",
+   "value": "PC 'running Windows 11, version 24H2 or newer' with 'integrated support for Bluetooth LE from the factory', plus earbuds 'that support Bluetooth LE Audio'. Otherwise 'you will hear mono audio when the microphone is used'.",
+   "source": "https://support.microsoft.com/en-us/windows/hardware/bluetooth/configuring-bluetooth-le-audio-quality-settings-on-windows-11",
+   "source_title": "Configuring Bluetooth LE Audio quality settings on Windows 11 – Microsoft Support",
+   "read": "2026-11-08",
+   "note": "Setting path: Settings > System > Sound > [LE Audio device] > Format > 'Format when microphone is active' (Mono/Stereo). The page shows no publication date."
+  },
+  {
+   "product": "Shokz OpenFit 2",
+   "label": "LE Audio support",
+   "value": "None. It has Bluetooth 5.4, which 'is capable of supporting LE Audio and Auracast', but the earbuds don't support either; codecs are SBC and AAC.",
+   "source": "https://www.digitaltrends.com/home-theater/shokz-openfit-2-vs-soundcore-aerofit-2/",
+   "source_title": "Shokz OpenFit 2 vs. Soundcore AeroFit 2 – Digital Trends (2025-03-06)",
+   "read": "2026-11-08",
+   "note": "Named reviewer comparison. Combined with Microsoft's requirement, PC calls over Bluetooth use mono HFP."
+  },
+  {
+   "product": "Soundcore AeroFit 2",
+   "label": "LE Audio support",
+   "value": "None. Same Digital Trends finding: Bluetooth 5.4 hardware, but LE Audio isn't supported; codecs are SBC, AAC and LDAC.",
+   "source": "https://www.digitaltrends.com/home-theater/shokz-openfit-2-vs-soundcore-aerofit-2/",
+   "source_title": "Shokz OpenFit 2 vs. Soundcore AeroFit 2 – Digital Trends (2025-03-06)",
+   "read": "2026-11-08",
+   "note": "LDAC is A2DP-only, so it can't be used while the mic is on."
+  },
+  {
+   "product": "Shokz OpenComm2 UC",
+   "label": "Role of the USB adapter, as a rival describes it",
+   "value": "'a USB adapter that presents the headset to a locked-down work machine without needing its Bluetooth stack'",
+   "source": "https://openearclub.com/open-ear/best-open-ear-earbuds-for-work",
+   "source_title": "Best Open-Ear Earbuds for Work (2026) – Openear Club",
+   "read": "2026-11-08",
+   "note": "Quoted to show what the rivals already cover: the dongle is there, but the HFP/mono mechanism isn't explained. This is not a maker source."
+  },
+  {
+   "product": "Soundcore AeroClip 2",
+   "label": "Price, Anker soundcore US store",
+   "value": "$169.99",
+   "source": "https://us.soundcore.com/products/d1105-aeroclip-2-clip-on-earbuds-with-clearest-calls",
+   "source_title": "Anker soundcore AeroClip 2 | Guinness-Certified Clip-On Earbuds for Clear Calls",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search of us.soundcore.com, in stock. Store copy: '4 mics and 2 VPUs', LDAC, 6.2 g per earbud. A follow-up product query got HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "Whether the Shokz Loop110 USB adapter (OpenComm2 UC, Nuroum and OpenMeet dongles) keeps music in stereo or switches to mono/wideband HFP while the mic is on. Shokz.com returned HTTP 429 to WebFetch and storecheck. The OpenComm2 UC spec-sheet PDF on headsetsdirect.com was over 10 MB and didn't load. The Shokz data-sheet PDF on cdn.shopify.com had no readable text. Search results only list A2DP/AVRCP/HSP/HFP profiles, and I didn't open a page confirming them.",
+  "LE Audio/LC3 support for the Soundcore AeroClip 2. The us.soundcore.com product page got HTTP 429 from storecheck, and the store snippet and search results mention only LDAC, AAC and SBC.",
+  "LE Audio/LC3 support for the Bose Ultra Open Earbuds (2nd Gen) and the Shokz OpenDots 2. Search found LE Audio only on Bose QuietComfort Ultra Headphones (2nd Gen) firmware. I didn't open a Bose or Shokz spec page.",
+  "Prices for the Shokz OpenComm2 (2025), OpenComm2 UC, OpenFit 2 and OpenDots 2 on shokz.com (HTTP 429)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8558406000000001
+ }
+}
