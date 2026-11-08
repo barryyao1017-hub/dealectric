@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that UGREEN NASync boxes have a BIOS watchdog that reboots the NAS every 3 minutes when UGOS isn't the running OS, so Unraid or TrueNAS only stays up if you first plug in a monitor and keyboard and turn off the watchdog in the BIOS (Advanced tab, or the FAST tab on i5 models).",
+ "standout": 2,
+ "standout_why": "I opened the two cited pages. needtoknowit.com.au ('TrueNAS and Unraid on UGREEN DXP NAS: What Actually Works') covers fan control, LEDs, boot device and the iGPU but never mentions a watchdog, a BIOS reboot or an interval. NASCompares' F4-424 Pro buyer's guide says installing TrueNAS or Unraid is 'VERY EASY' and has nothing on the BIOS, watchdog or boot. The Unraid plugin thread (result 11) covers fan chips (ITE IT8613E on the DXP6800 Pro) and LEDs over I2C, with no watchdog. ChatGPT's answer said 'watchdog settings… deserve attention' and pointed to those pages, but none of them says what the watchdog does or how to turn it off. Our own current page says 'disable the watchdog timer' but not what happens if you don't. Also new against every rival: Unraid 7.3 (12 May 2026) boots from internal NVMe, SSD or eMMC, which contradicts ChatGPT's table row 'Boot: Typically USB'.",
+ "decides": "The UGREEN picks (DXP4800 Plus, DXP6800 Pro, DXP2800) still stand, but the setup step is required, not optional: without it the box reboots in a loop, and you need HDMI, a keyboard and a few minutes in the BIOS before the watchdog itself reboots it. Separately, Unraid 7.3 internal boot makes TerraMaster's awkward internal USB stick (the motherboard has to come out to swap it) and the 'Unraid needs USB' assumption less important. Install Unraid to an NVMe or eMMC device and keep the flash drive only as the license key, or drop it entirely with TPM licensing. TrueNAS's 20 GB minimum boot device rules out Asustor's 8 GB eMMC but not the DXP2800's 32 GB eMMC.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-424 Pro",
+  "Asustor Lockerstor 4 Gen2 (AS6704T)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync (DX/DXP series)",
+   "label": "BIOS watchdog behaviour under a third-party OS",
+   "value": "Reboots every 3 minutes if UGOS is not detected; 'Watchdog Timer' / 'Watchdog Settings' under the Advanced tab, or the FAST tab on i5 models",
+   "source": "https://nascompares.com/guide/unraid-on-a-ugreen-nas-installation-guide/",
+   "source_title": "A Step-by-Step Guide to Running UnRAID on a Ugreen NAS – NAS Compares (Rob Andrews, 11 Jul 2024)",
+   "read": "2026-11-08",
+   "note": "Reviewer's install guide. The article says the watchdog prevents 'rebooting every 3 minutes if UGOS is not detected' and is to be disabled 'to prevent the system from shutting down during installation'. A reader comment warns you have 'only a few minutes before the watchdog boots' while you are in the BIOS. Readers disagree on the BIOS key (F12+Delete, Ctrl+F12 or Ctrl+F2)."
+  },
+  {
+   "product": "UGREEN NASync (DX/DXP series)",
+   "label": "What Watchdog Control does",
+   "value": "'checks what operating system the NAS is booted to and reboots every 3 minutes if it's not UGOS'; when disabled, 'your NAS will stay booted'",
+   "source": "https://www.howtogeek.com/how-to-replace-the-os-on-almost-any-nas/",
+   "source_title": "The ultimate NAS jailbreak: How to bypass BIOS watchdogs and install TrueNAS on pre-built hardware – How-To Geek (Patrick Campanale, 2 Mar 2026)",
+   "read": "2026-11-08",
+   "note": "A second named reviewer with the same 3-minute figure. The article describes this watchdog only for UGREEN; for TerraMaster's F4 SSD it describes a 'UTOS Boot First' BIOS toggle, not a watchdog. A monitor on the HDMI port and a keyboard are needed."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Symptom if the watchdog is left on, Unraid",
+   "value": "'Unraid will randomly reboot'; BIOS reached with Ctrl+F12 at the UGREEN logo",
+   "source": "https://mightygadget.com/how-to-install-unraid-on-a-ugreen/",
+   "source_title": "How to install Unraid on a Ugreen NASync DXP4800 Plus – Mighty Gadget (James Smythe, updated 3 Jul 2026)",
+   "read": "2026-11-08",
+   "note": "Model-specific confirmation for the DXP4800 Plus. The author also recommends disabling the NVMe drive that holds UGOS in the BIOS so it can't be wiped by accident."
+  },
+  {
+   "product": "general (Unraid)",
+   "label": "Unraid internal boot",
+   "value": "Since Unraid 7.3.0 (12 May 2026), installs and boots from 'an internal drive: NVMe, SSD, eMMC, or an existing storage device'; optional two-device ZFS mirror; with TPM licensing 'pull the flash drive entirely and your license stays put'",
+   "source": "https://unraid.net/blog/unraid-7-3-0",
+   "source_title": "Unraid 7.3.0 Stable Now Available – Unraid blog",
+   "read": "2026-11-08",
+   "note": "The Create Bootable Media docs page (https://docs.unraid.net/unraid-os/getting-started/set-up-unraid/create-your-bootable-media/, read 2026-11-08) says 'you still need this USB drive to start a new server'. So the stick is still needed for first setup, but it no longer has to be the permanent boot device."
+  },
+  {
+   "product": "general (Unraid)",
+   "label": "Internal boot device and license device count",
+   "value": "Internal boot SSD/NVMe devices count toward the attached-device limit; one eMMC device and one USB device are excluded",
+   "source": "https://docs.unraid.net/unraid-os/getting-started/set-up-unraid/internal-boot-faq/",
+   "source_title": "Internal Boot FAQ (7.3+) – Unraid Docs",
+   "read": "2026-11-08",
+   "note": "Booting Unraid from a NAS's built-in eMMC (32 GB on the DXP2800 per our page; 8 GB on the AS6704T) would not use up a license device slot, but an NVMe boot drive would. The page shows no date."
+  },
+  {
+   "product": "general (TrueNAS)",
+   "label": "TrueNAS boot device and storage guidance",
+   "value": "Minimum recommended boot volume 20 GB; USB drives and SATA DOMs 'vary too widely in quality' for the boot pool; 'Avoid using USB-connected hard disks for primary storage'; 8 GB RAM for up to eight drives",
+   "source": "https://www.truenas.com/docs/scale/gettingstarted/tnhardwareguide/",
+   "source_title": "TrueNAS Hardware Guide (TrueNAS 28 Early docs, last modified 2026-09-11)",
+   "read": "2026-11-08",
+   "note": "Comparison: 8 GB eMMC (Asustor AS6704T) < 20 GB, so TrueNAS needs an NVMe or SSD there; 32 GB eMMC (UGREEN DXP2800) ≥ 20 GB. The DXP2800 eMMC size is from our current page, not re-opened today."
+  }
+ ],
+ "unsourced": [
+  "An official UGREEN help-center or manual page that documents the BIOS watchdog and its 3-minute interval: searched UGREEN support terms and found only reviewer guides, the Debian wiki ('Disable the watchdog service', no interval) and a ZimaOS DXP2800 page that returned HTTP 429.",
+  "UGREEN's warranty wording on third-party OS from UGREEN's own site: found only secondhand, quoted on the Debian wiki.",
+  "Whether the TerraMaster F4-424 Pro, Asustor AS6704T or QNAP TS-464 have a BIOS watchdog that triggers under a third-party OS: no maker or reviewer source either way.",
+  "Whether these NAS boards expose a firmware TPM (Intel PTT) that Unraid 7.3 TPM licensing can use: not checked within the tool budget.",
+  "A confirmed Unraid 7.3 internal-boot install on a specific UGREEN or Asustor eMMC: no named source found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.7240187
+ }
+}

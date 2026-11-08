@@ -1,0 +1,111 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Notebookcheck measured its 'best overall' pick, the UGREEN DXP6800 Pro, at 36.6–41.9 W idle with four HDDs. That is about 13–18 W more than the 4-bay boxes: 23.8 W for the TerraMaster F4-424 Pro (Notebookcheck) and 24.25 W for the UGREEN DXP4800 Plus on 2.5GbE (KitGuru). Running 24/7, that is roughly 115–160 kWh a year more.",
+ "standout": 2,
+ "standout_why": "I read both pages ChatGPT cited. NASCompares' 'Terramaster F4-424 Pro – Should You Buy?' has no measured figures, only the CPU's 7 W TDP rating. NeedToKnowIT's 'TrueNAS and Unraid on UGREEN DXP' (updated 2026-10-04) has no watt, dB or throughput figures. The Notebookcheck F4-424 Pro review (rank 7, not cited) does carry the F4-424 Pro's 23.8 W idle and 33.7 dB idle. No result has the DXP6800 Pro or DXP4800 Plus measurements, and none puts the candidates side by side. The power and noise measurements are new. Only the F4-424 Pro baseline was already in ChatGPT's results.",
+ "decides": "For an always-on Unraid/TrueNAS box, this supports our 4-bay picks (DXP4800 Plus, F4-424 Pro) over ChatGPT's DXP6800 Pro as the default. The 6-bay i5 box costs about 13–18 W more at idle in Notebookcheck's test. It only pays off if you need the bays or the CPU. KitGuru's figures also show the 10GbE link costs about 6 W at idle on the DXP4800 Plus (24.25 W vs 30.45 W), which a 2.5GbE-only buyer can avoid. The comparison is not like-for-like: drives and labs differ. It supports the pick but doesn't decide it alone.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "TerraMaster F4-424 Pro",
+  "TerraMaster F4-425 Pro",
+  "QNAP TS-464",
+  "Asustor Lockerstor 4 Gen2 (AS6704T)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Idle power, four HDDs (Notebookcheck)",
+   "value": "36.59–41.93 W",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet: Ugreen NASync DXP6800 Pro review – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Daniel Schmidt, published 2026-07-01, updated 2026-10-05. Four Seagate IronWolf 4 TB drives, stock UGOS Pro. The reviewer calls this 'very high'. Notebookcheck did not measure under load. The 24.91/43.07 W figures in the review are UGREEN's own."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Idle power, no drives (Notebookcheck)",
+   "value": "up to 22.40 W",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet: Ugreen NASync DXP6800 Pro review – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Same review. Off: 0.05 W; off with Wake-on-LAN: 2.39 W."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Noise (Notebookcheck)",
+   "value": "34.61 dB(A) idle with HDDs; up to 43 dB(A) under intensive tasks",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet: Ugreen NASync DXP6800 Pro review – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "The review doesn't give the measuring distance. iPerf3 over 10GbE: 9.5 Gbit/s both ways."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Idle power, HDDs (Notebookcheck)",
+   "value": "23.8 W average",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review: Alder Lake-N i3-N300, 32 GB RAM, 4 HDDs and 2 SSDs in the NAS – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Klaus Hinum, 2024-03-11, updated 2026-10-05. Two WD Red WD40EFRX 4 TB HDDs plus an Intel 760p 512 GB SSD, stock TOS, averaged over a longer period. Off: 0.9–1.5 W. Note this was two HDDs, against four in the DXP6800 Pro test."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Idle power, SSD-only (Notebookcheck update)",
+   "value": "6.7 W idle; 19.7 W while copying a game from a Windows PC",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review: Alder Lake-N i3-N300, 32 GB RAM, 4 HDDs and 2 SSDs in the NAS – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Two WD_BLACK SN850X 4 TB in RAID 0, no HDDs, TOS 6.0.240 beta. Shows the N300 platform itself idles in single-digit watts."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Noise and throughput (Notebookcheck)",
+   "value": "33.7 dB idle (HDDs audible), 45.4 dB max during boot at 15 cm; 296 MB/s read, 210 MB/s write over 10GbE adapter",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review: Alder Lake-N i3-N300, 32 GB RAM, 4 HDDs and 2 SSDs in the NAS – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Fan at 875 rpm. Throughput from NAS Performance Tester 1.7 on a Razer Blade 16 with a Sonnet Solo 10G. The NAS itself has 2× 2.5GbE, which caps throughput at about 296 MB/s."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Idle and peak power at the wall (KitGuru)",
+   "value": "Idle 24.25 W (2.5GbE link) / 30.45 W (10GbE link); peak read 52.07 / 58.17 W; peak write 61.35 / 67.02 W",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "Ugreen NASync DXP4800Plus 4-bay NAS Review – KitGuru (page 14, Power Consumption)",
+   "read": "2026-11-08",
+   "note": "Simon Crisp, 2024-05-28. WD Red WD60EFRX drives (the page doesn't say how many), stock UGOS. Peaks during the CrystalDiskMark 8.0.4 suites. With the 10GbE link up, idle rises by 6.2 W (30.45 − 24.25)."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Power under Unraid (named forum owners)",
+   "value": "about 23–25 W with HDDs spun down (foo_fighter); about 30 W spun down, 41–45 W under load (Wura)",
+   "source": "https://forums.unraid.net/topic/180295-optimizing-ugreen-dxp-4800-plus-on-unraid/",
+   "source_title": "Optimizing UGREEN DXP 4800 Plus on Unraid – Unraid forums",
+   "read": "2026-11-08",
+   "note": "Both posts 2024-11-23. foo_fighter read the figure off a UPS, with an SSD and a Coral USB running Frigate, after `powertop --auto` and Unraid's 'best efficiency' power mode, with the 10G NIC disabled in BIOS. Wura used only the AutoFan plugin, disk count not stated. These are owner measurements, not lab figures. They're the only figures I found for this box under a third-party OS."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Idle and active power, four 22 TB HDDs (NASCompares)",
+   "value": "about 24.6 W idle, about 53.3 W active (averages)",
+   "source": "https://nascompares.com/guide/qnap-ts-464-and-22tb-wd-red-pro-power-consumption-and-price-testing/",
+   "source_title": "How Much Does it Cost to Run a NAS 24×7? QNAP & WD – NASCompares",
+   "read": "2026-11-08",
+   "note": "Rob Andrews, 2022. Four WD Red Pro 22 TB (WD221KFGX) in RAID 5, measured with a GOSUND smart plug. The article gives 24-hour totals of 0.59 and 1.28, labelled 'kW' but meaning kWh. Averages: 0.59/24 = 24.6 W, 1.28/24 = 53.3 W."
+  }
+ ],
+ "unsourced": [
+  "Measured power and noise for the TerraMaster F4-425 Pro: Neowin's review returned 403. Search snippets showed 45 W / 14 W and 20.9 dB(A), but I couldn't open the page to confirm they were Neowin's own measurements. Notebookcheck's F4-425 Pro hands-on (Hannes Brecher, 2026-07-04) gives no watt or dB figures, only a CPU temperature of up to 94 °C under sustained load.",
+  "Measured power for the Asustor Lockerstor 4 Gen2 (AS6704T): TweakTown's review returned 403. I couldn't find Guru3D's power page. Retailer listings only repeat Asustor's 35 W / 17.3 W / 0.88 W spec.",
+  "TechPowerUp's and igor'sLAB's DXP4800 Plus power and noise pages (both 403). Snippets suggested 33.5 dB(A) (TechPowerUp) and 33.2 dB(A) at 40 cm (igor'sLAB), but I didn't open either page.",
+  "A named lab measuring any of these boxes under TrueNAS SCALE or Unraid instead of the stock OS. The TrueNAS forum thread on intel_idle compares two different machines (145 W vs 66 W), so it doesn't isolate the effect and I left it out.",
+  "Measurements for the Synology DS925+ and the UGREEN DXP2800: I didn't search for these within the budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9751359999999999
+ }
+}

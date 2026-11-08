@@ -1,0 +1,173 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "Neither cited page says what happens to each box's fans once Unraid or TrueNAS replaces the stock OS. NASCompares says only that the install is 'VERY EASY', and needtoknowit gives a general lm-sensors caveat that names no models. This page shows, model by model, which plugin version works (confirmed on the DXP4800 Plus on 2026-11-07), where TrueNAS needs an out-of-tree it87 module, that QNAP's driver request was closed as not accepted, and that Asustor's fan stays at a fixed 20% PWM.",
+ "slug": "best-nas-for-unraid-truenas",
+ "must": [
+  "UGREEN NASync DXP4800 Plus",
+  "37–41 °C"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best prebuilt NAS for Unraid or TrueNAS (2026): 4-bay x86 boxes under $700",
+  "h1": "Best prebuilt NAS for Unraid or TrueNAS (2026)",
+  "desc": "What the fans do after you install Unraid or TrueNAS on a UGREEN, TerraMaster or QNAP NAS, which plugin or driver each box needs, and what each costs today.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best prebuilt NAS for Unraid or TrueNAS in 2026 under $700 is the UGREEN NASync DXP4800 Plus: install Unraid 7.3.4 and its fans and LEDs work through a plugin; under TrueNAS its stock auto fan held drives at 37–41 °C during a backup.</p>",
+  "columns": [
+   [
+    "fan_unraid",
+    "Fans under Unraid"
+   ],
+   [
+    "fan_truenas",
+    "Fans under TrueNAS"
+   ],
+   [
+    "ram",
+    "RAM as shipped"
+   ],
+   [
+    "net",
+    "Network"
+   ],
+   [
+    "idle",
+    "Idle at the wall (measured)"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "model": "UGREEN NASync DXP4800 Plus",
+    "cells": {
+     "fan_unraid": "Work through the UGREEN NAS Control plugin 5.5.0 on Unraid 7.3.4. LEDs and beeper also work; power-button presses are ignored (owner report confirmed by the maintainer, 2026-11-07)",
+     "fan_truenas": "The stock auto fan runs. To read or tune it you build the out-of-tree it87 module against the running kernel (Oscar Molnar)",
+     "ram": "8 GB DDR5 (KitGuru)",
+     "net": "10GbE + 2.5GbE (KitGuru)",
+     "idle": "24.25 W on the 2.5GbE link, 30.45 W on 10GbE (KitGuru)"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F4-424 Pro",
+    "url": "https://www.terra-master.com/products/f4-424-pro",
+    "cells": {
+     "fan_unraid": "Set in the BIOS (Notebookcheck); the setting holds under any OS",
+     "fan_truenas": "Set in the BIOS (Notebookcheck); no module to build",
+     "ram": "32 GB DDR5 (Notebookcheck)",
+     "net": "2× 2.5GbE (Notebookcheck)",
+     "idle": "23.8 W (Notebookcheck)"
+    }
+   },
+   {
+    "brand": "QNAP",
+    "model": "TS-464-8G",
+    "url": "https://store.qnap.com/ts-464-8g-us.html",
+    "cells": {
+     "price": "$639.00 (maker, 2026-11-08)",
+     "fan_unraid": "The QNAP-EC plugin (ich777) reads and sets fan PWM; the TS-464 is on its supported list",
+     "fan_truenas": "TrueNAS has no QNAP embedded-controller driver. The request to add one was closed as 'Not Accepted' on 2025-10-10, and the thread's workaround is running the fans at 100%",
+     "ram": "8 GB (the -8G model, QNAP)",
+     "net": "2× 2.5GbE plus a PCIe slot for 10GbE (QNAP)",
+     "idle": "24.5 W with 4× 22 TB HDDs (NASCompares)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp6800-pro",
+    "model": "UGREEN NASync DXP6800 Pro",
+    "cells": {
+     "fan_unraid": "A 'verified' plugin model: fans, LEDs and watchdog (Unraid 7.2+)",
+     "fan_truenas": "The it87 module is only 'partially supported' (UGREEN-Fan-Control README)",
+     "ram": "8 GB, expandable to 64 GB (Notebookcheck)",
+     "net": "2× 10GbE (Notebookcheck)",
+     "idle": "36.59–41.93 W with 4 HDDs (Notebookcheck)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>Price per bay:</strong> DXP4800 Plus $155.00 ($619.99 ÷ 4); TS-464-8G $159.75 ($639.00 ÷ 4); DXP6800 Pro $183.33 ($1,099.99 ÷ 6).</li><li><strong>Running cost of two more bays:</strong> idling 24/7, the DXP4800 Plus uses about 212 kWh a year (24.25 W × 8.76), and the DXP6800 Pro uses 321–367 kWh (36.59–41.93 W × 8.76). That is 108–155 kWh more a year. The two labs used different drives, so read this as a rough gap.</li><li><strong>Turning on 10GbE:</strong> on the DXP4800 Plus, a live 10GbE link adds 6.2 W at idle (30.45 − 24.25), about 54 kWh a year.</li><li><strong>RAM for TrueNAS:</strong> TrueNAS asks for at least 8 GB. All four boxes meet that as shipped, and the F4-424 Pro's 32 GB is four times the minimum (32 ÷ 8).</li></ul><table><thead><tr><th>Your use</th><th>Best fit</th><th>Why</th></tr></thead><tbody><tr><td>Unraid, 4 drives, under $700</td><td>DXP4800 Plus</td><td>Plugin fan and LED control, 10GbE, lowest price per bay</td></tr><tr><td>TrueNAS with no driver work</td><td>TerraMaster F4-424 Pro</td><td>Fan set in the BIOS, 32 GB RAM</td></tr><tr><td>6 drives, VMs, dual 10GbE</td><td>DXP6800 Pro</td><td>A verified plugin model; costs about 12–18 W more at idle</td></tr><tr><td>Unraid on QNAP hardware</td><td>TS-464-8G</td><td>The QNAP-EC plugin covers it; QNAP's store quotes a 2–4 week lead time</td></tr></tbody></table><h2>What happens to the fans after you install Unraid or TrueNAS</h2><p>A NAS maker's own OS drives the fan chip directly. Replace that OS and fan control depends on whether the new OS has a driver for the chip: an ITE it87-family chip on UGREEN, an ITE8528 embedded controller on QNAP, or an IT8625E on Asustor. Some boards instead keep a BIOS fan setting that works under any OS.</p><p><strong>UGREEN on Unraid:</strong> the community UGREEN NAS Control plugin runs on Unraid 7.2+ without a kernel module, so Unraid updates don't break it. The plugin lists the DXP6800 Pro and DXP4800 GT as verified and the DXP4800 Plus as community-tested. On 2026-11-07 a DXP4800 Plus owner confirmed that fans, LEDs, the case view and the beeper all work on Unraid 7.3.4 with plugin 5.5.0. The maintainer recorded the report. The one gap is that a press on the power button isn't registered.</p><p><strong>UGREEN on TrueNAS:</strong> TrueNAS doesn't ship a driver that can read or set the fan. Oscar Molnar compiled the it87 module from groeck/it87 in a Debian container and loaded it with insmod. With the stock auto fan, his drives ran at 37–41 °C during a backup and the box measured 41 dB at idle. The UGREEN-Fan-Control project warns that the module must be built for the exact kernel release it loads on. It lists the DXP6800 Pro as only partially supported.</p><p><strong>Disable the UGREEN watchdog first:</strong> UGREEN's BIOS watchdog reboots the NAS every 3 minutes if UGOS isn't running, per NASCompares. Connect a monitor and keyboard, open the BIOS (NASCompares says to press F12 and Delete repeatedly at power-on, or Ctrl+F12) and turn off the watchdog under Advanced, or under FAST on i5 models. Do it quickly, before the timer reboots the box. Once Unraid is installed, the plugin's README says to keep the BIOS watchdog armed: the plugin feeds it, so only a frozen box reboots.</p><p><strong>TerraMaster F4-424 Pro:</strong> Notebookcheck notes that the fan is adjustable in the BIOS. It ran at 875 rpm and measured 33.7 dB at idle in their test. Because it's a BIOS setting, the same speed applies under Unraid or TrueNAS. TerraMaster's newer F4-425 Pro (Intel N350, 16 GB, dual 5GbE) boots Unraid 7 from a rear USB port, according to <a href=\"https://github.com/itsfja/Install-unraid-on-a-TerraMaster-F4-425-Pro\">an owner's install guide</a>. That guide doesn't cover the fan, so the F4-425 Pro stays out of the table until owners publish fan results.</p><p><strong>QNAP TS-464:</strong> on Unraid, ich777's QNAP-EC plugin (updated 2026-11-06) loads the embedded-controller module and can write fan PWM values. On TrueNAS, the request to bundle the qnap8528 driver was closed as not accepted. The workaround given in that thread is to run the fans at 100%.</p><p>For an Unraid build, the {buy:ugreen-nasync-dxp4800-plus} has the best-documented fan support of the boxes under $700. If you need six bays, the {buy:ugreen-nasync-dxp6800-pro} is the plugin's other verified model.</p><h2>Not recommended</h2><p><strong>Asustor Lockerstor 4 Gen2 (AS6704T) for TrueNAS.</strong> On TrueNAS SCALE 25.x its IT8625E fan chip stays at a fixed 20% PWM whatever the CPU or disk temperature (forum user sakej, 2026-06-10). The power button does nothing, and the disk LEDs stay static, so a degraded pool looks the same as a healthy one. Full fan control needs a DKMS module and TrueNAS developer mode, and iXsystems turns away support requests from systems running that way.</p>",
+  "sources": [
+   [
+    "DXP4800 Plus on Unraid 7.3.4 with plugin 5.5.0: fans, LEDs, case view and beeper work; power-button press not registered; maintainer confirmed 2026-11-07 (read 2026-11-08)",
+    "https://github.com/ugreen-nas-control/ugreen-nas-control/issues/266"
+   ],
+   [
+    "UGREEN NAS Control plugin: Unraid 7.2+, no kernel module; DXP4800 GT and DXP6800 Pro verified, DXP4800 Plus community-tested; fans, LEDs and watchdog (keep it armed in the BIOS, the plugin feeds it) (read 2026-11-08)",
+    "https://github.com/ugreen-nas-control/ugreen-nas-control"
+   ],
+   [
+    "TrueNAS on the DXP4800 Plus: it87 built out of tree; stock auto fan 41 dB idle, drives 37–41 °C during a backup (Oscar Molnar, 2026-02-08; read 2026-11-08)",
+    "https://blog.tymscar.com/posts/ugreen4800plusquiet/"
+   ],
+   [
+    "it87 module must be built for the exact running kernel; DXP6800 Pro partially supported (read 2026-11-08)",
+    "https://github.com/0n1cOn3/UGREEN-Fan-Control"
+   ],
+   [
+    "UGREEN BIOS watchdog reboots every 3 minutes without UGOS; where to disable it (read 2026-11-08)",
+    "https://nascompares.com/guide/unraid-on-a-ugreen-nas-installation-guide/"
+   ],
+   [
+    "DXP4800 Plus: 8 GB DDR5; idle 24.25 W (2.5GbE) and 30.45 W (10GbE) at the wall (read 2026-11-08)",
+    "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/"
+   ],
+   [
+    "F4-424 Pro: fan adjustable in the BIOS, 875 rpm, 33.7 dB idle; 32 GB DDR5; 2× 2.5GbE; 23.8 W idle (read 2026-11-08)",
+    "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html"
+   ],
+   [
+    "F4-425 Pro owner's Unraid 7 install guide: boots from a rear USB port; Intel Core 3 N350, 16 GB DDR5, dual 5GbE; no fan coverage (read 2026-11-08)",
+    "https://github.com/itsfja/Install-unraid-on-a-TerraMaster-F4-425-Pro"
+   ],
+   [
+    "DXP6800 Pro: 8 GB RAM (up to 64 GB), 2× 10GbE, 36.59–41.93 W idle with 4 HDDs (read 2026-11-08)",
+    "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"
+   ],
+   [
+    "QNAP-EC Unraid plugin reads and writes fan PWM; TS-464 on the supported list; updated 2026-11-06 (read 2026-11-08)",
+    "https://ca.unraid.net/apps/qnap-ec-1u3uzwb08juj93"
+   ],
+   [
+    "TrueNAS request to bundle the qnap8528 QNAP fan driver closed as Not Accepted, 2025-10-10 (read 2026-11-08)",
+    "https://forums.truenas.com/t/not-accepted-feature-request-include-qnap8528-driver-for-fan-control-on-qnap-devices/29245"
+   ],
+   [
+    "QNAP TS-464 idle about 24.5 W (0.59 kWh over 24 h) with 4× 22 TB WD Red Pro (read 2026-11-08)",
+    "https://nascompares.com/guide/qnap-ts-464-and-22tb-wd-red-pro-power-consumption-and-price-testing/"
+   ],
+   [
+    "TS-464-8G: $639.00 at QNAP's US store on 2026-11-08; 2× 2.5GbE, PCIe slot for 10GbE; 2–4 week lead time",
+    "https://store.qnap.com/ts-464-8g-us.html"
+   ],
+   [
+    "TS-464-8G: 8 GB DDR4 SODIMM on board; 2× 2.5GbE (read 2026-11-08)",
+    "https://www.qnap.com/en-us/product/ts-464/specs/hardware"
+   ],
+   [
+    "Asustor Lockerstor Gen2 on TrueNAS SCALE 25.x: fan fixed at 20% PWM, power button and LEDs don't work (read 2026-11-08)",
+    "https://forums.truenas.com/t/asustor-lockerstor-gen2-on-truenas-fan-control-power-button-shutdown-and-status-leds-dont-work/66386"
+   ],
+   [
+    "TrueNAS minimum of 8 GB RAM (read 2026-11-08)",
+    "https://www.truenas.com/docs/scale/gettingstarted/tnhardwareguide/"
+   ]
+  ],
+  "unsourced": [
+   "F4-424 Pro and F4-425 Pro prices today: terra-master.com returned HTTP 429 to storecheck.py and WebFetch, including a retry after the 60-second Retry-After wait on 2026-11-08. No price was used.",
+   "why_angle's needtoknowit claim: the draft gives no URL for it, so it wasn't checked."
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "2026 best prebuilt NAS install Unraid TrueNAS UGREEN DXP6800 Pro TerraMaster F4-424 Pro compatibility",
+  "2026 best prebuilt NAS install Unraid TrueNAS UGREEN DXP4800 Plus Aoostar WTR Pro Minisforum N5 Pro compatibility",
+  "2026 best prebuilt NAS install Unraid TrueNAS UGREEN DXP4800 Plus Minisforum N5 Pro compatibility"
+ ],
+ "query": "best prebuilt nas for unraid or truenas",
+ "verified_changes": 16,
+ "verified_removed": 3,
+ "gate": {
+  "date": "2026-11-08",
+  "pass": true,
+  "g": null
+ }
+}

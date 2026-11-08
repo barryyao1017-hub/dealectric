@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Unraid 7.3 (released 12 May 2026) no longer needs a USB stick: it can boot from a NAS's internal NVMe, SSD or eMMC and tie the license to a TPM 2.0 chip. Moving the license to the TPM blacklists the old USB key, and rolling back to 7.2.6 or earlier is not allowed afterward. One Unraid forum user reported this working on a UGREEN DXP6800 Pro and a DXP480T Plus using the old UGOS NVMe.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited rivals and ChatGPT's own answer. needtoknowit.com.au ('TrueNAS and Unraid on UGREEN DXP', checked 30 Sep 2026) says only that Unraid 'installs via USB boot'. It names no Unraid version and does not cover the watchdog, eMMC or BIOS settings. Its fan advice is generic: lm-sensors and Community Applications plugins, with no model list. NASCompares' F4-424 Pro guide covers only TerraMaster's warranty stance and links its own install guides. It says nothing on boot device, BIOS, fans or LEDs. ChatGPT's table also says Unraid boot is 'Typically USB'. None of these mention Unraid 7.3 internal boot or TPM licensing, the ugreen-nas-control plugin's model list (Unraid 7.2+), or TrueNAS's 8 GB RAM minimum. I did not open TechRadar, WunderTech or the two Unraid plugin threads that ChatGPT got but did not cite.",
+ "decides": "Two pick-relevant points. (1) The 'boot from USB' assumption on our page and in ChatGPT's answer is out of date for Unraid. On 7.3 or later, the UGREEN DXP's internal NVMe or eMMC can be the boot drive. The DXP6800 Pro is the only model with both a reported internal-boot-plus-TPM success and 'verified' status in the LED and fan plugin, which supports it as the 6-bay Unraid pick. The DXP4800 Plus is community-tested: LEDs, fans and beeper work on Unraid 7.3.4, but the power-button press is not registered. (2) For TrueNAS, the Asustor AS6704T and Synology DS925+ ship with 4 GB of RAM. That is below TrueNAS's documented 8 GB minimum, so they need a RAM upgrade before they qualify. The UGREEN units, the 8 GB QNAP TS-464-8G and the 32 GB F4-424 Pro meet it. For the F4-424 Pro, Unraid's docs say licensing is separate from boot method. My inference: that may let a buyer boot from NVMe with a license stick in an external port and avoid swapping the internal stick. Neowin says that swap means taking out the motherboard. No source confirms this on that model.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-424 Pro",
+  "Asustor Lockerstor 4 Gen2 AS6704T",
+  "QNAP TS-464-8G"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Unraid internal boot and TPM licensing release",
+   "value": "Unraid 7.3.0 stable, released 12 May 2026: Internal Boot from NVMe, SSD, eMMC or an existing storage device, with an optional two-device boot pool; TPM-based licensing anchors the license to the motherboard so the flash drive can be removed",
+   "source": "https://unraid.net/blog/unraid-7-3-0",
+   "source_title": "Unraid 7.3.0 Stable Now Available",
+   "read": "2026-11-08",
+   "note": "Maker (Lime Technology) release post. It says TPM 2.0 is 'often enabled through firmware with no dedicated chip required' but does not name Intel PTT."
+  },
+  {
+   "product": "general",
+   "label": "Unraid internal-boot eligibility and rollback limit",
+   "value": "The boot device must use in-tree drivers: ahci, mmc, mpt3sas, mvsas, nvme, smartpqi, usb-storage or uas. 'Do not roll back to 7.2.6 or earlier after enabling internal boot or TPM-based licensing.'",
+   "source": "https://docs.unraid.net/unraid-os/release-notes/7.3.0/",
+   "source_title": "Unraid 7.3.0 release notes",
+   "read": "2026-11-08",
+   "note": "mmc covers the eMMC that UGOS ships on; nvme covers the DXP's M.2 slots. The notes also say 'All new and replacement keys use TPM-based licensing when possible.' No minimum boot-device size is stated."
+  },
+  {
+   "product": "general",
+   "label": "Unraid TPM licensing rules",
+   "value": "Needs a TPM 2.0 device that Unraid can detect; otherwise 'Move License to TPM' is missing. Secure Boot must stay disabled. Moving 'blacklists the license on the original USB device'. Not supported inside a VM. TPM is 'not a hard requirement'.",
+   "source": "https://docs.unraid.net/unraid-os/troubleshooting/tpm-licensing-faq/",
+   "source_title": "Unraid TPM Licensing FAQ",
+   "read": "2026-11-08",
+   "note": "No VM support means TPM licensing does not apply if Unraid runs as a Proxmox guest on the NAS. You can move back to USB through the license replacement flow."
+  },
+  {
+   "product": "general",
+   "label": "Unraid boot method vs license method",
+   "value": "'The licensing method is independent of the boot method.' A license USB must have the FAT volume label UNRAID (or match unraidlabel=, 11 characters or fewer). Internal boot devices count toward the attached-storage-device limit. Disable Secure Boot if you see a 'prohibited by secure boot policy' error.",
+   "source": "https://docs.unraid.net/unraid-os/getting-started/set-up-unraid/internal-boot-faq/",
+   "source_title": "Unraid Internal Boot FAQ (7.3+)",
+   "read": "2026-11-08",
+   "note": "On machines without TPM 2.0, internal boot still works with flash licensing, but the license stick must be present."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Unraid 7.3 internal boot plus TPM license, user report",
+   "value": "Forum user manilx reported (13 May 2026, post #1622573) that they 'Migrated 2 Ugreen NAS, DXP480T and DXP6800 Pro, to boot from internal (old UGOS) nvme and also move licenses to TPM'.",
+   "source": "https://forums.unraid.net/topic/198745-unraid-730-stable-now-available/",
+   "source_title": "Unraid 7.3.0 Stable Now Available (Unraid forums)",
+   "read": "2026-11-08",
+   "note": "One named user report, not a UGREEN document. It also covers the DXP480T Plus. No such report was found for the DXP4800 Plus, DXP2800 or any TerraMaster."
+  },
+  {
+   "product": "general",
+   "label": "ugreen-nas-control Unraid plugin model matrix",
+   "value": "Requires Unraid 7.2+ on x86 UGREEN NAS. Verified: DXP4800 GT and DXP6800 Pro. Community-tested: DXP480T Plus, DXP2800, DXP2800 GT, DXP4800, DXP4800 Plus / Pro, DXP8800 Plus, DX4600 Pro and DX4700+. Expected but untested: DXP6800 / Plus / Ultra, DXP8800 / Pro / Ultra, DXP2800S, DXP4800S and others. ARM UGREEN models cannot run Unraid.",
+   "source": "https://github.com/ugreen-nas-control/ugreen-nas-control",
+   "source_title": "ugreen-nas-control (GitHub)",
+   "read": "2026-11-08",
+   "note": "Community project, not UGREEN. It controls UGREEN's fan controllers, LED chips and watchdog. The README does not mention TrueNAS."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Unraid 7.3.4 hardware-support report",
+   "value": "LEDs (6 at I2C 0x3a), fan control (fan2 CPU, fan3 case), case view and beeper confirmed. The power-button press is not registered (power-on from off works). The mainboard temperature is a fixed ~28 °C ACPI value. Tested on BIOS AMI 5.27 (01/09/2025) with an IT8613E fan chip.",
+   "source": "https://github.com/ugreen-nas-control/ugreen-nas-control/issues/266",
+   "source_title": "Model report: DXP4800 Plus / Pro, Issue #266",
+   "read": "2026-11-08",
+   "note": "Reported by ivolution on 7 Nov 2026 and confirmed by maintainer j3n57h0m45. Plugin 5.5.0, kernel 6.18.58-Unraid."
+  },
+  {
+   "product": "general",
+   "label": "UGREEN LED driver for TrueNAS and other OSes",
+   "value": "miskcoo's ugreen_leds_controller lists these as tested: DX4600 Pro, DX4700+, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP6800 Pro, DXP8800 Plus and DXP480T Plus. TrueNAS support is through issue #13 and prebuilt modules, with no SCALE version named. Disk-LED mapping on the DXP6800 Pro differs from other models.",
+   "source": "https://github.com/miskcoo/ugreen_leds_controller",
+   "source_title": "miskcoo/ugreen_leds_controller (GitHub)",
+   "read": "2026-11-08",
+   "note": "On TrueNAS, LED control needs an out-of-tree kernel module that must match the installed build. No plugin system covers this, unlike Unraid."
+  },
+  {
+   "product": "general",
+   "label": "TrueNAS minimum hardware",
+   "value": "Any x86_64 CPU, 8 GB memory, a 20 GB SSD boot device, and two identically sized devices per pool. USB drives and SATA DOMs are discouraged as boot devices. 'Intel and Chelsio interfaces are the best-supported options.'",
+   "source": "https://www.truenas.com/docs/scale/gettingstarted/tnhardwareguide/",
+   "source_title": "TrueNAS Hardware Guide (TrueNAS docs)",
+   "read": "2026-11-08",
+   "note": "The page is labelled 'TrueNAS 28 (Early)'. Stock RAM from our current page: Asustor AS6704T 4 GB and Synology DS925+ 4 GB (both below 8 GB); QNAP TS-464-8G 8 GB, UGREEN DXP4800 Plus and DXP2800 8 GB (meet it); F4-424 Pro 32 GB."
+  },
+  {
+   "product": "UGREEN NASync DXP4800",
+   "label": "BIOS steps for a third-party OS",
+   "value": "Press Ctrl+F12 (or Ctrl+F2) for BIOS and boot menu. Disable the eMMC controller in BIOS so the box never boots the UGOS installer (this also keeps the UGOS partition intact). Choose 'Force UEFI installation' to boot from NVMe. Disable the watchdog.",
+   "source": "https://wiki.debian.org/InstallingDebianOn/Ugreen",
+   "source_title": "InstallingDebianOn/Ugreen (Debian Wiki)",
+   "read": "2026-11-08",
+   "note": "Tested models: DXP2800, DXP4800 and DXP8800 Plus. The wiki quotes UGREEN's warranty: 'If you choose to install a third-party system, there might be unknown compatibility issues.' It does not link the warranty page."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "TerraMaster third-party OS warranty stance (reviewer)",
+   "value": "NASCompares: TerraMaster has 'made it official online that although they do not encourage users to do this, they will not deny any warranty claims from users who perform this OS change'.",
+   "source": "https://nascompares.com/guide/terramaster-f4-424-pro-nas-should-you-buy/amp/",
+   "source_title": "Terramaster F4-424 Pro NAS – Should You Buy? – NAS Compares",
+   "read": "2026-11-08",
+   "note": "The rival page ChatGPT cited already has this. It does not link a TerraMaster document."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own warranty text on third-party OSes. Searching found the carve-out on us.ugreen.com/pages/warranty and regional copies, but us., www., en-ca and uk. all returned HTTP 429, and the Bash fallback was not approved. Only the Debian wiki's quote was read.",
+  "A TerraMaster-published document on third-party OS installs or warranty. Searches returned only NASCompares and Neowin.",
+  "Whether the BIOS of the TerraMaster F4-424 Pro, UGREEN DXP4800 Plus, DXP2800, Asustor AS6704T or QNAP TS-464-8G exposes TPM 2.0 (Intel PTT) for Unraid TPM licensing. A search on model plus TPM/PTT found nothing.",
+  "Unraid 7.3 internal boot reports on the DXP4800 Plus, DXP2800 or any TerraMaster. The 7.3.0 forum thread and searches name only the DXP480T and DXP6800 Pro.",
+  "TerraMaster 'F4-425 Pro' (shown by ChatGPT at $559.99 on Newegg): no maker page, NIC chip or third-party-OS report checked within budget.",
+  "iXsystems TrueNAS Mini current models and price: not checked within budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0539363999999998
+ }
+}

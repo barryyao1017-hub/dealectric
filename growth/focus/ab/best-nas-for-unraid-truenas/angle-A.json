@@ -1,0 +1,148 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says, model by model, what the fans do once Unraid or TrueNAS replaces the stock OS. On the TerraMaster F4-424 Pro you set the fan in the BIOS (Notebookcheck). On UGREEN boxes, TrueNAS needs a hand-built out-of-tree it87 module, and the Unraid plugin's fan control covers only the DXP6800 Pro and DXP4800 GT (DXP4800 Plus: LEDs only, in plugin v3.2). On the Asustor Lockerstor 4 Gen2 under TrueNAS SCALE 25.x the fan sits at a fixed 20% PWM whatever the CPU or disk temperature.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited pages, NASCompares (F4-424 Pro 'should you buy') and needtoknowit.com.au (TrueNAS and Unraid on UGREEN DXP), plus the TerraMaster and UGREEN result pages. NASCompares says Unraid and TrueNAS install 'VERY EASILY' and says nothing about fan control after the swap. Needtoknowit gives only a general caveat ('fan control requires manual lm-sensors and fancontrol configuration', 'some systems retain hardware-controlled curves') and never says which model does what. It names no driver, no Unraid plugin or which models it covers, and no fixed-PWM failure. It also mislabels the DXP4800 Pro's CPU against its own range statement. Neither page covers Asustor or puts the brands side by side. That makes this new and useful. It is not a 3 because needtoknowit already says the problem exists.",
+ "decides": "It confirms the TerraMaster F4-424 Pro as the low-friction choice for TrueNAS: Notebookcheck says the fan is adjustable in the BIOS, so no kernel module is needed. For Unraid on UGREEN it moves the pick toward the DXP6800 Pro (or DXP4800 GT): the plugin's own table gives those two fan control, while the DXP4800 Plus gets LEDs only in v3.2. It counts against the Asustor AS6704T for TrueNAS, because the fan sits at a fixed 20% PWM out of the box. The footnote for the table: on UGREEN under TrueNAS, fan control only works through an out-of-tree module, and that module must be rebuilt against the exact kernel after every TrueNAS update.",
+ "candidates": [
+  "TerraMaster F4-424 Pro",
+  "TerraMaster F4-425 Pro",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP6800 Pro",
+  "Asustor Lockerstor 4 Gen2 (AS6704T)"
+ ],
+ "findings": [
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Fan control without TOS",
+   "value": "Fan adjustable in the BIOS; ran at 875 RPM in Notebookcheck's test",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review: Alder Lake-N i3-N300, 32 GB RAM, 4 HDDs and 2 SSDs in the NAS - Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Notebookcheck, 2024-03-11: 'Fan is also adjustable in the bios.' The review doesn't say whether the BIOS setting is a temperature curve or a fixed speed. Noise: 33.7 dB idle, 45.4 dB max during boot."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "RAM: official maximum vs what ships",
+   "value": "Officially up to 16 GB DDR5-4800; ships with a single 32 GB stick",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review - Notebookcheck",
+   "read": "2026-11-08",
+   "note": "The 32 GB that ships is already twice the stated maximum, so 32 GB is the real ceiling to compare. The DXP4800 Plus is 64 GB across two SO-DIMMs (KitGuru). NASCompares notes the same 16 GB inconsistency, so this part is not new."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Power at the wall",
+   "value": "23.8 W idle with HDDs; 6.7 W idle with 2 NVMe and no HDDs; 25 W under backup load",
+   "source": "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html",
+   "source_title": "TerraMaster F4-424 Pro review - Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Measured by Notebookcheck on TOS. Drive configurations differ from KitGuru's DXP4800 Plus test."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Price",
+   "value": "$759.99 (compare-at $859.99), in stock",
+   "source": "https://www.terra-master.com/products/f4-424-pro",
+   "source_title": "F4-424 Pro – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py on the Shopify store. Our page currently says $699.99, which is out of date."
+  },
+  {
+   "product": "TerraMaster F4-425 Pro",
+   "label": "Price",
+   "value": "$629.99 (compare-at $799.99), in stock; Intel N350 8-core, 16 GB DDR5, dual 5GbE",
+   "source": "https://www.terra-master.com/products/f4-425-pro",
+   "source_title": "F4-425 Pro – TerraMaster Official Store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py. ChatGPT showed $559.99 at Newegg; I did not check Newegg."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Fan control under TrueNAS",
+   "value": "TrueNAS lacks the driver; an out-of-tree it87 module (groeck/it87) built against the host kernel headers is needed to read or set fan speed",
+   "source": "https://blog.tymscar.com/posts/ugreen4800plusquiet/",
+   "source_title": "How To Quiet A Ugreen 4800 Plus Without Sacrificing Drive Temps (Oscar Molnar)",
+   "read": "2026-11-08",
+   "note": "Oscar Molnar, 2026-02-08: 'the drivers I needed to read and set fan speeds were not there'. He compiled it87.ko in a Debian bookworm container and loaded it with insmod. Measured: stock with auto fan, 41 dB idle and drives at 36/39/36 °C; fan at 100%, 52 dB and 31/33/30 °C."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "What breaks the module",
+   "value": "The it87 module must be built against the exact running kernel; the DKMS build can fail after a kernel update",
+   "source": "https://github.com/0n1cOn3/UGREEN-Fan-Control",
+   "source_title": "UGREEN Fan Control (GitHub)",
+   "read": "2026-11-08",
+   "note": "The README lists the DXP2800, DXP4800, DXP8800 and iDX6011/Pro as supported, the DXP6800 Pro as 'partially supported', and says the it87 driver does not apply to the DXP2800 GT or DXP4800 GT. It says the driver was upstreamed to the latest Linux kernel in April 2026 but does not confirm that TrueNAS ships it."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Fan control under Unraid (plugin)",
+   "value": "Fan control in the 'UGREEN NAS Control' plugin (ITE IT8613E); needs Unraid 7.0+ per the main post",
+   "source": "https://forums.unraid.net/topic/201044-plugin-ugreen-nas-control-led-fan-and-system-control-for-ugreen-dxdxp-nas",
+   "source_title": "[Plugin] UGREEN NAS Control – LED, fan and system control for UGREEN DX/DXP NAS - Unraid forums",
+   "read": "2026-11-08",
+   "note": "Main post (v3.2): 'Fan control exists only for the two models whose wiring is known' (DXP6800 Pro and DXP4800 GT). The plugin needs no kernel module, so Unraid kernel updates don't break it. A v5.0.0 reply says it adds fan control for more models, naming the DXP2800 GT and iDX6011 Pro, and requires Unraid 7.2+. That conflicts with the main post."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Fan control under Unraid (plugin)",
+   "value": "LEDs only (front and rear case views); no fan control in the plugin's v3.2 model table",
+   "source": "https://forums.unraid.net/topic/201044-plugin-ugreen-nas-control-led-fan-and-system-control-for-ugreen-dxdxp-nas",
+   "source_title": "[Plugin] UGREEN NAS Control - Unraid forums",
+   "read": "2026-11-08",
+   "note": "Table row 'DXP4800 / Plus / Pro: LEDs confirmed'. A DXP8800 Plus user's hwmon listing shows the it8613 with it87 loaded but no fan or PWM entries."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "RAM max, M.2, power at the wall",
+   "value": "64 GB DDR5-4800 (2 SO-DIMM); 2× M.2 2280 PCIe 4.0; 24.25 W idle (2.5GbE), 30.45 W idle (10GbE), 67.02 W peak writes (10GbE)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/all/1",
+   "source_title": "UGREEN NASync DXP4800 Plus 4-bay NAS review - KitGuru (Simon Crisp)",
+   "read": "2026-11-08",
+   "note": "KitGuru, 2024-05-28, on UGOS Pro with a 140 mm fan that is 'very loud' under heavy load. Lane width per M.2 slot is not stated."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS store",
+   "read": "2026-11-08",
+   "note": "From storecheck.py. Same store, same day: DXP4800 GT $659.99, DXP4800 Pro $799.99."
+  },
+  {
+   "product": "Asustor Lockerstor 4 Gen2 (AS6704T)",
+   "label": "Fan under TrueNAS SCALE 25.x",
+   "value": "Fixed 20% PWM regardless of CPU or disk temperature; power button and status LEDs also don't work without the platform driver",
+   "source": "https://forums.truenas.com/t/asustor-lockerstor-gen2-on-truenas-fan-control-power-button-shutdown-and-status-leds-dont-work/66386",
+   "source_title": "ASUSTOR Lockerstor Gen2 on TrueNAS: fan control, power button shutdown, and status LEDs don't work - TrueNAS forums",
+   "read": "2026-11-08",
+   "note": "Forum user sakej, 2026-06-10: the IT8625E Super I/O chip 'defaults to a fixed 20% PWM regardless of CPU or disk temps'. Covers the AS6702T, AS6704T and AS6706T."
+  },
+  {
+   "product": "general",
+   "label": "IT8613E support in stock TrueNAS",
+   "value": "Not recognised by the bundled it87; reported fans at full speed; workaround suggestions are force_id=0x8620 or a fixed curve in UEFI",
+   "source": "https://forums.truenas.com/t/it8613e-super-i-o-chip-support-in-truenas-scale/31377",
+   "source_title": "IT8613E Super I/O Chip support in TrueNAS SCALE - TrueNAS forums",
+   "read": "2026-11-08",
+   "note": "Thread from 2025-01-18 about an N100 board using the same Super I/O chip as UGREEN DXP models. The related feature request to update it87 was closed (last activity 2025-12-31). No iXsystems staff reply identified."
+  }
+ ],
+ "unsourced": [
+  "Lane width per M.2 slot from the makers (UGREEN DXP4800 Plus and DXP6800 Pro product pages and the TerraMaster F4-424 Pro spec page): every attempt returned HTTP 429. TechPowerUp and Neowin returned 403. KitGuru says only 'PCIe 4.0' and NASCompares only 'x2 or x1', so I left lane counts out.",
+  "Maker-stated maximum RAM for the F4-424 Pro and DXP6800 Pro: the maker pages returned 429. The F4-424 Pro figure comes from Notebookcheck and the DXP4800 Plus figure from KitGuru.",
+  "Whether the UGREEN BIOS fan curve follows CPU temperature only: one search snippet said so, but neither the GitHub README nor Oscar Molnar's post states it.",
+  "QNAP TS-464 fan behaviour under TrueNAS or Unraid: not researched within the tool budget.",
+  "Exactly which models the Unraid plugin v5.0.0 adds fan control for: the main post describes v3.2, and the v5.0.0 reply names only the DXP2800 GT and iDX6011 Pro, so DXP4800 Plus fan support in v5.0.0 is unconfirmed.",
+  "Newegg F4-425 Pro and Best Buy DXP6800 Pro prices that ChatGPT showed: not opened. The DXP6800 Pro's UGREEN store price was not in the search results."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9175423
+ }
+}
