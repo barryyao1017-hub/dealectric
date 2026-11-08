@@ -198,7 +198,7 @@ def run(args) -> int:
                        finished_at=E.now_iso(), run_id=args.run_id, downgraded=downgraded)
             s = score(rec, q)
             (out / "chatgpt" / f"{cell}.json").write_text(json.dumps(rec, indent=1, ensure_ascii=False, default=str))
-            if s["tier"] < 3 and shot.exists():
+            if s["tier"] < 2 and shot.exists():   # keep it whenever our page was in the results (Barry, 11-08)
                 shot.unlink()
             log(out / "scan.jsonl", {"cell": cell, "qid": q["qid"], "slug": q["slug"], "phrasing": q["phrasing"], "n": n,
                                      "started_at": started, "latency_s": rec.get("latency_s"), "models": models,

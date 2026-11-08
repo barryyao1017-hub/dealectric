@@ -48,7 +48,7 @@ APPS = {
     "gemini": {"model": "gemini.google.com, Gemini Auto, signed in", "ua_bucket": "google"},
 }
 ANSWER_TIMEOUT = 180
-SHOT_MAX_H = 4000         # px; full-page screenshot of the finished chat, saved as <qid>-<tier>-<n>.jpg next to the run file
+SHOT_MAX_H = 12000        # CSS px at scale 1; full-length screenshot of the finished chat, saved next to the run file
 SHOT_QUALITY = 70
 SETTLE_POLLS = 3          # consecutive 2 s polls with identical text before the answer counts as finished
 AD_RE = re.compile(r"[?&](oppref|olref)=|utm_source=oa\b", re.I)
@@ -499,8 +499,12 @@ def _ask_chatgpt(prompt: str, shot_path: Path | None = None, search: bool = True
 
 
 def screenshot(tab: Tab, path: Path) -> str | None:
-    """Full-page JPEG of the finished chat (capped at SHOT_MAX_H px), saved next to the run file for the iteration
-    report. Returns the file name, or None when the capture failed (the run file still counts)."""
+    """Full-length JPEG of the finished chat (capped at SHOT_MAX_H CSS px), saved next to the run file for the
+    iteration report. Returns the file name, or None when the capture failed (the run file still counts).
+
+    The chat scrolls inside its own container, so the page itself is one window tall and a plain capture showed only
+    the first screen (every shot up to 11-07). So: grow the viewport by the container's hidden height, let the whole
+    conversation lay out, scroll it to the top, capture, then restore the window size."""
     try:
         # Park the pointer and close any hover popover (a citation chip under the cursor opens a sources card that
         # covers the answer), then let the layout settle.
@@ -509,15 +513,42 @@ def screenshot(tab: Tab, path: Path) -> str | None:
         tab.call("Input.dispatchKeyEvent", type="keyUp", key="Escape", code="Escape", windowsVirtualKeyCode=27)
         time.sleep(0.5)
         m = tab.call("Page.getLayoutMetrics")
-        cs = m.get("cssContentSize") or m.get("contentSize") or {}
-        clip = {"x": 0, "y": 0, "width": cs.get("width") or 1200, "height": min(cs.get("height") or 900, SHOT_MAX_H), "scale": 1}
-        r = tab.call("Page.captureScreenshot", format="jpeg", quality=SHOT_QUALITY, captureBeyondViewport=True, clip=clip)
+        vp = m.get("cssLayoutViewport") or m.get("layoutViewport") or {}
+        w, h = int(vp.get("clientWidth") or 1280), int(vp.get("clientHeight") or 900)
+        hidden = tab.eval(SCROLLER_HIDDEN_JS) or 0
+        full = min(h + int(hidden), SHOT_MAX_H)
+        tab.call("Emulation.setDeviceMetricsOverride", width=w, height=full, deviceScaleFactor=1, mobile=False)
+        try:
+            for _ in range(4):        # a taller window can reveal more to lay out; grow until nothing is hidden
+                time.sleep(1.0)
+                more = int(tab.eval(SCROLLER_HIDDEN_JS) or 0)
+                if more <= 0 or full >= SHOT_MAX_H:
+                    break
+                full = min(full + more, SHOT_MAX_H)
+                tab.call("Emulation.setDeviceMetricsOverride", width=w, height=full, deviceScaleFactor=1, mobile=False)
+            tab.eval("document.querySelectorAll('*').forEach(el => { if (el.scrollTop) el.scrollTop = 0; })")
+            time.sleep(0.5)
+            m = tab.call("Page.getLayoutMetrics")
+            cs = m.get("cssContentSize") or m.get("contentSize") or {}
+            clip = {"x": 0, "y": 0, "width": w, "height": min(max(cs.get("height") or 0, full), SHOT_MAX_H), "scale": 1}
+            r = tab.call("Page.captureScreenshot", format="jpeg", quality=SHOT_QUALITY, captureBeyondViewport=True, clip=clip)
+        finally:
+            tab.call("Emulation.clearDeviceMetricsOverride")
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(base64.b64decode(r["data"]))
         return path.name
     except Exception as e:  # noqa: BLE001
         R.log(f"screenshot failed for {path.name}: {e}")
         return None
+
+
+# Height of the conversation hidden below the window, in CSS px: the most any wide element's content overflows it.
+# Not filtered on overflow-y: ChatGPT's transcript box is overflow "clip" inside the scroller (11-08).
+SCROLLER_HIDDEN_JS = """(() => { let best = 0;
+  for (const el of document.querySelectorAll('*')) {
+    if (el.clientWidth < innerWidth / 3) continue;
+    best = Math.max(best, el.scrollHeight - el.clientHeight); }
+  return best; })()"""
 
 
 def _squash(s: str) -> str:

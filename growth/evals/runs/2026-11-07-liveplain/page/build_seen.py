@@ -146,6 +146,17 @@ def main():
     secs_m = "".join(section(c, collapsed=True) for c in miss)
     secs_h = "".join(section(c, collapsed=True) for c in hits)
     css = Path(PAGE / "seen.css").read_text()
+
+    def cited_domains(c):
+        ds = []
+        for p in c.get("cite_pills") or []:
+            d = urlparse(p.get("url") or "").netloc.replace("www.", "")
+            if d and d not in ds:
+                ds.append(d)
+        return ", ".join(ds) or "nothing (no sources linked)"
+    index_rows = "".join(
+        f'<tr><td class="n">#{c["_rank"]}</td><td><a href="#{e(c["slug"][:48])}">/{e(c["slug"])}</a></td><td class="extra">{e(cited_domains(c))}</td></tr>'
+        for c in sorted((c for c in seen if c["_tier"] < 4), key=lambda c: (c["_rank"], c["slug"])))
     page = f'''<meta charset="utf-8">
 <title>Seen but Not Cited</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -153,12 +164,13 @@ def main():
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
 <style>{css}</style>
 <div class="wrap">
-<div><h1>Seen but not cited</h1><p class="lede">Every Dealectric gap page whose own page showed up in ChatGPT's search results, from one plain chat each on Nov 7, 2026: the page's target query typed as is into a fresh temporary chat (signed in, Plus), no instructions. {len(seen)} chats had our page in the results; ChatGPT cited it in {len(seen) - n_miss} and left it out in {n_miss}. Each table lists the results the app handed the model, in its order; our rows are tinted and "Cited" marks the sources the answer linked. Under each is ChatGPT's full answer, rebuilt from the saved chat (product cards and images left out). Screenshots exist only for chats that cited us: the scan deletes the rest, and each one shows only the first screen.</p></div>
+<div><h1>Seen but not cited</h1><p class="lede">Every Dealectric gap page whose own page showed up in ChatGPT's search results, from one plain chat each on Nov 7, 2026: the page's target query typed as is into a fresh temporary chat (signed in, Plus), no instructions. {len(seen)} chats had our page in the results; ChatGPT cited it in {len(seen) - n_miss} and left it out in {n_miss}. Each table lists the results the app handed the model, in its order; our rows are tinted and "Cited" marks the sources the answer linked. Under each is ChatGPT's full answer, rebuilt from the saved chat (product cards and images left out). Screenshots exist only for chats that cited us (the scan deleted the rest), and each shows only the first screen; from the next run the scan keeps a full-length screenshot of every chat where our page is in the results.</p></div>
 <div class="key"><h3>What stands out</h3><ol>
 <li>ChatGPT often names the models it plans to recommend in its own search, then cites pages that back those models: often the maker's product page or docs.</li>
 <li>We get cited when we hold the one fact the answer needs that no primary source has: a kit price under a cap, measured noise, weight per Wh across brands.</li>
 <li>When a retailer, maker or documentation page has the same facts, the answer cites that page instead, even if ours ranks first and agrees with it (the Jellyfin NAS case).</li>
 </ol></div>
+<div class="key" id="index"><h3>All {n_miss} seen but not cited, best rank first</h3><div class="tw"><table><thead><tr><th>Rank</th><th>Our page</th><th>Cited instead</th></tr></thead><tbody>{index_rows}</tbody></table></div></div>
 <nav class="toc"><a href="#annotated">Annotated examples (7)</a><a href="#all-miss">All other seen, not cited ({len(miss)})</a><a href="#all-hit">Cited, for contrast ({len(hits)})</a></nav>
 <h3 class="band" id="annotated">Annotated examples</h3>
 {secs_a}
@@ -170,6 +182,8 @@ def main():
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <script>
 (function(){{
+  function openHash(){{ var t=location.hash && document.getElementById(location.hash.slice(1)); if(t && t.tagName==='DETAILS'){{ t.open=true; t.scrollIntoView(); }} }}
+  window.addEventListener('hashchange', openHash); openHash();
   if(!window.marked) return;   // without the library each answer stays as the plain saved text
   document.querySelectorAll('.md[data-md]').forEach(function(el){{
     var s=document.getElementById('md-'+el.dataset.md); if(!s) return;
