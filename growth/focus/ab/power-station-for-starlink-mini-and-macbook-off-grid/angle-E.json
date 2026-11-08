@@ -1,0 +1,128 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured figure for the power station's own drain: The Technology Man measured the Anker SOLIX C1000 Gen 2 losing 20% of its charge in 12 hours with the AC inverter on and nothing plugged in (about 17 W). With only the DC side on, the charge stayed at 100%. Over an 8-hour workday that inverter drain adds about 136 Wh to a Starlink Mini plus MacBook Air load of about 320 Wh, and the measured draws (Mini about 21 W, MacBook Air M4 8.7 to 29.9 W) are well below the 450 Wh a day ChatGPT planned for.",
+ "standout": 2,
+ "standout_why": "I opened starsurf.com's Starlink Mini power station guide. It has no measurement by a named reviewer or lab: the Mini figures (25–40 W) come from Starlink's spec sheet, it says nothing about MacBook draw, and it works out usable capacity with an unattributed 0.85 factor. ChatGPT's answers also used 25–40 W for the Mini and an assumed 85% usable capacity, called them estimates and not measured runtimes, and said only 'avoid leaving the AC inverter running' with no number attached. The cited Starlink Help Center pages give rated supply needs (a 100 W USB-C PD source), not measured draw, and they rendered empty when I fetched them. The Verge pages could not be fetched. Among the results ChatGPT got, none gives a measured inverter idle draw, a measured DC-side usable capacity, or a measured MacBook draw.",
+ "decides": "The measurements support powering everything from DC and USB-C and switching the inverter off. Measured usable capacities in the 1 kWh class sit close together (Anker C1000 Gen 2: 850–907 Wh on AC and 844 Wh on DC; Jackery 1000 v2: 910 Wh; BLUETTI AC180: 950–983 Wh; EcoFlow DELTA 3 Plus: 910 Wh). The inverter idle drain (about 14–17 W) changes the result more than which station you buy. On DC, 844 Wh ÷ about 320 Wh a day is about 2.6 workdays for the Anker C1000 Gen 2. Running through the inverter adds about 136 Wh a day, so roughly 850 ÷ 456 is about 1.9 days, which happens to be ChatGPT's own figure. That favours a station with two 100 W+ USB-C ports, such as the Anker C1000 Gen 2 (2× 140 W, per our page) or the BLUETTI Elite 200 V2 (2× 100 W), so the Mini and the MacBook both avoid the inverter. The AC180 has only one 100 W USB-C port (per our page), so the second device would have to go through AC or 12 V. For multiple days, StorageReview measured 1.91 kWh out of the Elite 200 V2, about 6 workdays at 320 Wh by the same arithmetic.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180",
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Measured average draw",
+   "value": "about 21 W average; 21–40 W range; 40 W+ peaks only in the first 1–2 minutes after power-on",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (WirelessMoves, Martin Sauter)",
+   "read": "2026-11-08",
+   "note": "Posted 2025-01-05. No meter named. A 60 W USB-C power bank caused a boot loop; a 100 W PD bank worked."
+  },
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Measured steady-state and boot draw",
+   "value": "20–30 W steady once connected; 40–50 W during boot",
+   "source": "https://www.dishytech.com/starlink-mini-review/",
+   "source_title": "My Starlink Mini Review After 6 Months (DishyTech, Colby Baber)",
+   "read": "2026-11-08",
+   "note": "Dated 2024-12-16. No meter or setup described."
+  },
+  {
+   "product": "general (Apple MacBook Air 13 M4)",
+   "label": "Measured system power draw",
+   "value": "idle 1.9 / 8.7 / 8.8 W (min/avg/max); load 29.9 W avg, 30.8 W max; 53.8 Wh battery; 16 h 13 min Wi-Fi browsing",
+   "source": "https://www.notebookcheck.net/The-passively-cooled-M4-SoC-makes-the-competition-look-old-Apple-MacBook-Air-13-M4-entry-review.1002534.0.html",
+   "source_title": "Notebookcheck: Apple MacBook Air 13 M4 entry review",
+   "read": "2026-11-08",
+   "note": "Base M4 model. The page carries a 04/20/2025 rating badge; I saw no reviewer byline. 8 h at 8.7–29.9 W is about 70–240 Wh."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Inverter idle (no-load) self-consumption",
+   "value": "about 17 W (100% to 80% in 12 h with AC on and nothing plugged in); DC on for 12 h: no measurable drain",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record-Breaking Charge Speed? Anker Solix C1000 Gen 2 Power Station Review (The Technology Man, Gidon)",
+   "read": "2026-11-08",
+   "note": "Published 2025-11-04, with Smart AC mode off. Arithmetic: 20% × 1,024 Wh = 205 Wh over 12 h = about 17 W; 17 W × 8 h = 136 Wh per workday."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured usable capacity, DC and AC",
+   "value": "844 Wh from the car outlet at 8 A (86%); 907 Wh AC at a 1 kW resistive load (89%)",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record-Breaking Charge Speed? Anker Solix C1000 Gen 2 Power Station Review (The Technology Man, Gidon)",
+   "read": "2026-11-08",
+   "note": "Published 2025-11-04. 844 ÷ 320 Wh/day is about 2.6 workdays when both devices run from DC."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured AC usable capacity (EU unit)",
+   "value": "850 Wh (83%) at about 250 W, 230 V; AC charge drew 1,110 Wh (about 92%)",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Notebookcheck: Anker Solix C1000 Gen 2 power station review (Marcus Schwarten)",
+   "read": "2026-11-08",
+   "note": "Published 2025-12-21. European version; the article says the US model differs in some points. It reports no DC or USB-C capacity and no idle figure."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured usable capacity",
+   "value": "910 Wh of 1,070 Wh (85%); 563 Wh/hr wall charge rate",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2",
+   "source_title": "GearLab: Jackery Explorer 1000 v2 review (Kenji Mowrey)",
+   "read": "2026-11-08",
+   "note": "Dated 2026-07-23. Test load not stated. No USB-C or DC measurement."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable capacity",
+   "value": "950 Wh of 1,152 Wh (82%) at 80% load",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180",
+   "source_title": "GearLab: Bluetti AC180 review (Kenji Mowrey)",
+   "read": "2026-11-08",
+   "note": "Dated 2026-01-13. Light-bar test jig, run until fully drained."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured capacity and inverter idle drain",
+   "value": "983 Wh AC at about 1,000 W (85%); 997 Wh DC at 8 A (87%); inverter on with no load: about 5% per 4 h (about 14 W); DC on for 12 h: no change in charge",
+   "source": "https://thetechnologyman.com/bluetti-ac180-review-best-1800w-power-station-solar-generator-bluetti-350w-pv350-solar-panel",
+   "source_title": "Bluetti AC180 Review | Best 1800W Power Station Solar Generator? (The Technology Man, Gidon)",
+   "read": "2026-11-08",
+   "note": "Published 2023-09-07. Arithmetic: 5% × 1,152 Wh = 57.6 Wh per 4 h = about 14 W. The author calls the idle figure hard to measure precisely."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured discharge, 100% to 0%",
+   "value": "910 Wh of 1,024 Wh; recharge drew 1,180 Wh",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "StorageReview: EcoFlow DELTA 3 Plus review (Dylan Dougherty)",
+   "read": "2026-11-08",
+   "note": "Published 2025-01-02. Load not stated. No idle or USB-C figure."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge",
+   "value": "1.91 kWh of 2,073.6 Wh; recharge drew 2.44 kWh",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: Portable Power Meets Lab-Grade Reliability – BLUETTI Elite 200 V2 Review (Dylan Dougherty)",
+   "read": "2026-11-08",
+   "note": "Published 2025-04-25. Discharge load not stated; the UPS test ran at 986 W–1.1 kW. 1,910 ÷ 320 Wh is about 6 workdays."
+  }
+ ],
+ "unsourced": [
+  "Measured USB-C output efficiency at a low (20–60 W) load for any candidate. Notebookcheck, GearLab, StorageReview and The Technology Man report only AC or car-outlet figures.",
+  "Measured inverter idle drain for the Jackery Explorer 1000 v2, EcoFlow DELTA 3 Plus and BLUETTI Elite 200 V2. GearLab and StorageReview do not report it.",
+  "A named reviewer's measured runtime of a Starlink Mini plus MacBook on one specific power station. The Verge's Mini and Peakdo reviews could not be fetched.",
+  "Starlink's official average and idle draw for the Mini. The Help Center pages and spec-sheet PDF did not render, so I left out Starlink's own figures.",
+  "Measured draw for a MacBook Pro 14/16 (not looked up within the call budget)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8811550000000001
+ }
+}

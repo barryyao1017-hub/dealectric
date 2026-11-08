@@ -1,0 +1,95 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2, ChatGPT's top pick, has only one USB-C port that can supply the Starlink Mini's required 100 W (20 V/5 A) contract. Anker's own spec table gives USB-C 2 140 W max, while USB-C1 shares 20 W max with USB-A. So ChatGPT's advice to run both the MacBook and the Mini from USB-C does not work on that station. One of them has to go on the 120 W 12 V car socket or on the AC inverter.",
+ "standout": 2,
+ "standout_why": "I checked the Starlink requirement on Dishwits (dishwits.com/starlink-backup-power), KiloHour (kilohour.com/guides/how-long-will-a-power-station-run-starlink), StarSurf (starsurf.com/best-power-station-for-starlink-mini) and Notebookcheck. All four say the Mini needs a 100 W (20 V/5 A) USB-C source or 12–48 V DC. StarSurf only adds 'headroom for laptops'. KiloHour lists the C1000 Gen 2 as 'USB-C 140 W, 12 V 120 W' without saying it is the only fast port. None of them says that, with a laptop and the Mini on one station, the Mini needs its own 100 W-capable port, or names which stations have one such port and which have two. ChatGPT's third answer only says to 'check the station's individual port ratings'. I could not render Starlink's own help articles, so this comparison covers the rival pages above plus ChatGPT's answers.",
+ "decides": "It doesn't remove the C1000 Gen 2, but it changes how the page tells you to wire it, and it favors stations with two 100 W USB-C ports for an all-DC setup. On the C1000 Gen 2, put the MacBook on USB-C 2 (up to 140 W) and the Mini on the 12 V/10 A (120 W) car socket through the Mini's 12–48 V DC barrel input. The other option is the Mini on USB-C 2 and the MacBook's charger on AC, which costs inverter losses and cuts the days. Our page's 'USB-C: 2× 140 W' cell for the C1000 Gen 2 contradicts Anker's spec table and must be fixed. The BLUETTI Elite 200 V2 and AC200L rows claim 2× 100 W USB-C. If that holds today, they run both devices on DC with no inverter. That favors them for multi-day trips, but this session didn't confirm it from the maker.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "BLUETTI AC200L",
+  "ALLPOWERS P1800",
+  "EcoFlow DELTA 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Only USB-C port able to supply 20 V/5 A (100 W)",
+   "value": "USB-C 2: 5V⎓3A, 9V⎓3A, 15V⎓3A, 20V⎓3A, 20V⎓5A, 28V⎓5A (140 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Anker SOLIX US)",
+   "read": "2026-11-08",
+   "note": "Anker's spec table has no separate high-power line for any other USB-C port. It lists only USB-A, 'USB-A and USB-C1 Total' and USB-C 2. The 20V⎓5A profile is the contract the Mini's USB-C to barrel cable needs."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Second USB-C port (USB-C1) shared limit",
+   "value": "USB-A and USB-C1 total: 20 W max (USB-A alone 5V⎓2.4A, 12 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Anker SOLIX US)",
+   "read": "2026-11-08",
+   "note": "At 20 W max, USB-C1 can't run the Mini (needs 100 W) and can't usefully charge a MacBook during work. Our current page's '2× 140 W' cell contradicts the maker's table."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "12 V car socket output (DC route for the Mini)",
+   "value": "12V⎓10A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Anker SOLIX US)",
+   "read": "2026-11-08",
+   "note": "120 W is above the Mini's 100 W minimum supply rating, and 12 V is inside its 12–48 V DC input range as quoted by Dishwits (see the general finding). That leaves USB-C 2 free for the MacBook, with no inverter in the path."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Net weight",
+   "value": "24.9 lb (11.3 kg)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Anker SOLIX US)",
+   "read": "2026-11-08",
+   "note": "24.9 lb × 0.4536 = 11.3 kg. No price was shown on the page, only multi-unit discounts."
+  },
+  {
+   "product": "general",
+   "label": "Starlink Mini power input (as quoted by a named site)",
+   "value": "12–48 V DC input, or USB-C PD with Starlink's USB-C to barrel jack cable from a 100 W, 20 V/5 A source; draw 25–40 W (spec sheet), 20–40 W (Help Center)",
+   "source": "https://dishwits.com/starlink-backup-power/",
+   "source_title": "Starlink backup power: what can run a Mini, Standard or V5 kit – Dishwits",
+   "read": "2026-11-08",
+   "note": "Dishwits quotes Starlink's spec sheet and Help Center. Starlink's own help articles, spec PDF and specifications page did not return readable text to my fetch tool, so this is second-hand. Dishwits says: 'a Mini needs one USB-C port that holds 100 W (20 V/5 A) or a 12–48 V DC output.'"
+  },
+  {
+   "product": "general",
+   "label": "Starlink Mini minimum power source rating (named reviewer)",
+   "value": "minimum 100 W output",
+   "source": "https://www.notebookcheck.net/PeakDo-LinkPower-1-is-a-power-bank-that-securely-attaches-to-the-Starlink-Mini.1066243.0.html",
+   "source_title": "PeakDo LinkPower 1 is a power bank that securely attaches to the Starlink Mini – Notebookcheck",
+   "read": "2026-11-08",
+   "note": "Notebookcheck: 'The Starlink Mini can be powered by a power bank, provided it has a minimum output of 100W.' It also lists a 12 V car battery as a supported source."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "US price",
+   "value": "$899.00 (base unit); bundles $1,099.00–$2,148.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station (BLUETTI US)",
+   "read": "2026-11-08",
+   "note": "The page shows a Black Friday Early Access promotion (Nov 5–18). The US page lists car input of 96 W (12 V) / 192 W (24 V), but no USB-C output lines, so I could not re-verify the 2× 100 W claim there."
+  }
+ ],
+ "unsourced": [
+  "Starlink's own wording for the Mini's power requirement (help articles a7fe6525…, fba85643…, 18836c7e…, the spec sheet PDF and starlink.com/specifications?spec=5). None returned readable text to WebFetch, and my shell tools could not extract the downloaded PDF.",
+  "Jackery Explorer 1000 v2 per-port USB-C ratings. jackery.com returned HTTP 429 three times and storecheck also got 429. Search snippets from retailers show one 100 W and one 30 W USB-C port, while Wellbots says 2× 100 W, so I wrote no value. Our page's '2× 100 W' cell needs checking.",
+  "BLUETTI Elite 200 V2 and AC200L per-port USB-C ratings, and whether both ports hold 20 V/5 A at the same time. The BLUETTI US and UK product pages showed no USB output lines.",
+  "ALLPOWERS P1800 USB-C ratings and whether its two ports share the '140 W max'. allpowers.com failed with an expired certificate, and search found no P1800 manual.",
+  "A maker or Starlink statement that the Mini's USB-C to barrel cable shuts off when the port renegotiates below 20 V/5 A. This appeared only in a Reddit post and fixoryhq search snippets that I did not open.",
+  "Anker SOLIX C1000 Gen 2 current US price. The Anker SOLIX page showed none, and I did not try Amazon this session."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 0.9553282999999999
+ }
+}

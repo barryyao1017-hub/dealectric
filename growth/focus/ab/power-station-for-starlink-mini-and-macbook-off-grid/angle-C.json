@@ -1,0 +1,93 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the Starlink Mini can run from a power station's 12 V car outlet through Starlink's own Mini Car Adapter (12–24 V in, 60 W out), which leaves the station's one full-power USB-C port free for the MacBook. Anker's US spec table for the SOLIX C1000 Gen 2 gives the 20V/5A, 140 W rating only to USB-C 2 and puts USB-C 1 in a 20 W total shared with USB-A, so on that station the Mini and the MacBook can't both run from USB-C.",
+ "standout": 2,
+ "standout_why": "Pages compared: the cited Starlink help articles (both JavaScript-only; their 100 W / 20V/5A figure is confirmed by the Mini spec sheet), starsurf.com (says only '100 W USB-C PD or 12–48 V DC' and 'a 12 V DC connection or a suitable USB-C PD adapter', names no adapter or ports) and kilohour.com (says 'check the port lists 20 V/5 A' and counts car ports of 60 W or more, but says nothing about two USB-C ports sharing a power budget or about Starlink's car adapter). None of the three ChatGPT answers names the Mini Car Adapter or says which port on a named station can power the Mini and which the MacBook. ChatGPT only said: 'If you need two USB-C outputs, check the station's individual port ratings.'",
+ "decides": "This confirms the C1000 Gen 2 as a 1 kWh pick but changes how it gets wired. If USB-C 1 really is capped at 20 W, the MacBook takes the 140 W USB-C 2 and the Mini goes on the 12V/10A (120 W) car outlet through the Starlink Mini Car Adapter. That avoids the AC inverter, which is the efficiency point ChatGPT raised without saying how. Our current page cell 'C1000 Gen 2: 2× 140 W' disagrees with Anker's US spec table and needs fixing. Rule for every candidate: the station needs either two USB-C ports that each offer 20V/5A at the same time, or one such port plus a 12 V car outlet rated about 60 W or more for the Mini Car Adapter.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Starlink Mini DC input rating",
+   "value": "12–48 V, 60 W",
+   "source": "https://www.starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "Starlink Mini Specifications (spec sheet PDF)",
+   "read": "2026-11-08",
+   "note": "Read through the r.jina.ai text render of Starlink's PDF. Same sheet: average consumption 25–40 W, operating range −30 °C to 50 °C."
+  },
+  {
+   "product": "general",
+   "label": "Starlink Mini USB-C power requirement",
+   "value": "USB PD 100 W, 20 V/5 A minimum, with Starlink's USB-C to Barrel Jack Cable accessory",
+   "source": "https://www.starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "Starlink Mini Specifications (spec sheet PDF)",
+   "read": "2026-11-08",
+   "note": "A USB-C port that lacks the 20V/5A profile (65 W ports, or a 20 W shared port) does not meet Starlink's stated minimum."
+  },
+  {
+   "product": "general",
+   "label": "Starlink Mini Car Adapter: input, output and contents",
+   "value": "Accepts 12–24 V; USB-C output rated 60 W; kit = 12 V adapter plus 5 m (16.4 ft) Mini USB-C cable; DishyTech paid $45 at Starlink",
+   "source": "https://www.dishytech.com/starlink-mini-12v-car-adapter-review/",
+   "source_title": "Starlink Mini 12V Car Adapter Review – DishyTech",
+   "read": "2026-11-08",
+   "note": "DishyTech says the adapter 'can be plugged into a vehicle, RV, or portable power station' and that they ran it from an EcoFlow River 2. DishyTech quotes Starlink's product page: 'the car adapter and USB-C cable can't be used with other devices.' The cable LED turns red if the source is incompatible or the adapter overheats. The $45 price is DishyTech's purchase, not today's Starlink price."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C ports as listed in Anker's US spec table",
+   "value": "USB-C 2: 5V/3A, 9V/3A, 15V/3A, 20V/3A, 20V/5A, 28V/5A (140 W max). 'USB-A and USB-C1 Total: 20W Max'. USB-A: 5V/2.4A (12 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W",
+   "read": "2026-11-08",
+   "note": "Copied line by line from the page's Output table, which references manual part A1763. As read, only USB-C 2 meets Starlink's 20V/5A minimum. Check the A1763 manual before publishing, because our page and other retailers say '2× 140 W'."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Car outlet rating",
+   "value": "12 V, 10 A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W",
+   "read": "2026-11-08",
+   "note": "120 W is above the Mini's 60 W input rating and within the car adapter's 12–24 V input, so this outlet can run the Mini through the Mini Car Adapter."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price at BLUETTI US store",
+   "value": "$499.00 (AC180 alone); $769 with 200 W solar panel",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py product; variant marked available."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker cable that converts the car outlet to DC5521",
+   "value": "12V/24V DC Power Cable, $19.90: converts the cigarette-lighter port on the AC60/AC180/B230/B300 to a DC5521 port for 12 V devices",
+   "source": "https://www.bluettipower.com/products/cigarette-lighter-plugmale-to-dc5521female",
+   "source_title": "12V/24V DC Power Cable – BLUETTI",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py search result text. Shows the AC180 has a 12 V cigarette-lighter outlet that can take the Starlink Mini Car Adapter. The outlet's amp rating was not read."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 USB-C count and per-port 20V/5A profile, and car outlet amp rating: bluettipower.com product page returned HTTP 429; manual not reached",
+  "Jackery Explorer 1000 v2: whether both USB-C ports offer 20V/5A at once, and the car port rating; jackery.com returned HTTP 429 on WebFetch and storecheck",
+  "EcoFlow DELTA 3 Plus USB-C per-port profiles and car outlet rating: us.ecoflow.com returned HTTP 429",
+  "Starlink's own text for the Mini Car Adapter's compatible sources and exclusions: the Starlink help article (8a0d11cd-ff87-83a0-5a42-fca892b14cff) and the 'How can I power my Starlink Mini?' article render only through JavaScript, so their wording is known only from a search snippet and is not used",
+  "Today's Starlink price for the Mini Car Adapter: the Starlink shop was not opened",
+  "Anker A1763 manual, to settle whether USB-C 1 is really capped at 20 W shared with USB-A: anker.com and service.ankersolix.com URLs returned 404, and the B&H spec page returned 403"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8057390000000001
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that, using measured inputs (Starlink Mini about 21 W average per Wirelessmoves, MacBook Air M4 about 3.3 W in Notebookcheck's 150-nit Wi-Fi test, and BLUETTI Elite 100 V2 at about 80% usable at double-digit-watt loads per techreviewer.de), one 8-hour workday uses about 195 Wh and a 1,024 Wh station lasts about 4.2 workdays, not the 1.9 days ChatGPT gave.",
+ "standout": 3,
+ "standout_why": "I compared against starsurf.com and kilohour.com, ChatGPT's own answers, and the Starlink help pages it cited. None of them has a measured laptop figure. ChatGPT assumed 10–25 W for a MacBook Air and 450 Wh a day. Starsurf has no laptop at all and uses a flat 0.85 factor with 35 W for the Mini. Kilohour has no laptop, uses 33 W for the Mini, and applies the same 90%/95% defaults to every model. No page applies a station's own tested efficiency at a 20–30 W load, and none works out days at a measured duty cycle.",
+ "decides": "The days are shorter than the rated figure suggests, because the station loses more at low loads. The light-day load is also about half what ChatGPT assumed. So a 1 kWh LiFePO4 station with two 20 V/5 A USB-C ports (BLUETTI Elite 100 V2, $499, 25 lb) covers about 4 light workdays, or about 2 at the worst case (Mini at 40 W, MacBook at max brightness). That makes the 2 kWh, 40–52 lb class ChatGPT suggested for 'multi-day' unnecessary unless the dish runs 24 h (about 1.5 days per charge). A 200 W kit panel refills a light day in about 1 h at its nameplate output.",
+ "candidates": [
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Starlink Mini measured average draw",
+   "value": "21 W average (range 21–40 W; peaks above 40 W for the first 1–2 min after power-on)",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (Wirelessmoves)",
+   "read": "2026-11-08",
+   "note": "Wirelessmoves ran the Mini from an Anker power station and read the draw there. It names no meter and doesn't say which side of the station it measured."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air 13 M4 average draw during light work (derived)",
+   "value": "3.3 W at 150 nits; 7.6 W at max brightness",
+   "source": "https://www.notebookcheck.net/The-passively-cooled-M4-SoC-makes-the-competition-look-old-Apple-MacBook-Air-13-M4-entry-review.1002534.0.html",
+   "source_title": "Notebookcheck: Apple MacBook Air 13 M4 entry review",
+   "read": "2026-11-08",
+   "note": "53.8 Wh ÷ 16.22 h (Wi-Fi test at 150 cd/m²) = 3.3 W; 53.8 Wh ÷ 7.08 h (max brightness) = 7.6 W. Notebookcheck also measured 29.9 W average under full load, which is not a workday average."
+  },
+  {
+   "product": "general",
+   "label": "Energy for one 8-hour workday (derived)",
+   "value": "195 Wh light; 381 Wh worst case",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Wirelessmoves + Notebookcheck (above)",
+   "read": "2026-11-08",
+   "note": "Light: 8 h × (21 W + 3.3 W) = 195 Wh. Worst case: 8 h × (40 W + 7.6 W) = 381 Wh. Dish left on 24 h: 21 W × 24 + 3.3 W × 8 = 531 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Usable energy at low (double-digit-watt) loads",
+   "value": "about 80% of 1,024 Wh = about 819 Wh",
+   "source": "https://en.techreviewer.de/bluetti-elite-100-v2-test/",
+   "source_title": "techreviewer.de: Bluetti Elite 100 V2 test",
+   "read": "2026-11-08",
+   "note": "Same review: 946 Wh drawn at a constant 500 W. Below that, self-consumption weighs more, and usable energy falls to about 80% at loads 'in the double digits'. 1,024 × 0.80 = 819 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "USB-C ports able to power the Mini (20 V/5 A)",
+   "value": "2: 100 W (20 V/5 A) and 140 W (20 V/5 A, 28 V/5 A)",
+   "source": "https://en.techreviewer.de/bluetti-elite-100-v2-test/",
+   "source_title": "techreviewer.de: Bluetti Elite 100 V2 test",
+   "read": "2026-11-08",
+   "note": "The Mini and the MacBook can each have a 20 V/5 A port without the AC inverter."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Workdays per charge (derived)",
+   "value": "4.2 light / 2.1 worst case / 1.5 with dish on 24 h",
+   "source": "https://en.techreviewer.de/bluetti-elite-100-v2-test/",
+   "source_title": "techreviewer.de + Wirelessmoves + Notebookcheck",
+   "read": "2026-11-08",
+   "note": "819 ÷ 195 = 4.2; 819 ÷ 381 = 2.1; 819 ÷ 531 = 1.5."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, weight, Wh per lb, cost per workday",
+   "value": "$499; 25 lb; 32.8 usable Wh/lb; $119 per light workday of storage",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh (BLUETTI US store)",
+   "read": "2026-11-08",
+   "note": "storecheck shows $499, in stock. The maker page lists 1,024 Wh, 11.5 kg (25 lb), and 1,000 W solar max. 819 ÷ 25 = 32.8 Wh/lb; $499 ÷ 4.2 = $119."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Hours of kit-panel sun to refill one workday (derived)",
+   "value": "about 1.0 h light / 1.9 h worst case, at the 200 W panel's nameplate",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-200w-solar",
+   "source_title": "Elite 100 V2 + 200W (BLUETTI US store)",
+   "read": "2026-11-08",
+   "note": "Kit $699. 195 Wh ÷ 200 W = 0.98 h; 381 ÷ 200 = 1.9 h. Real panel output falls short of nameplate, and I found no measured derate."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and rated capacity; rated-only workdays",
+   "value": "$499 (compare-at $1,232); 1,152 Wh; at most 5.9 light workdays at the rated figure",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh (BLUETTI US store)",
+   "read": "2026-11-08",
+   "note": "storecheck data. 1,152 ÷ 195 = 5.9 at rated capacity. I opened no low-load test, so the real figure will be lower, about 4.7 if the Elite 100 V2's 80% applied (not measured on the AC180)."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Kit price with its own 200 W panel",
+   "value": "$1,199 (Elite 200 V2 + 200W Solar)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar (BLUETTI US store)",
+   "read": "2026-11-08",
+   "note": "storecheck data, in stock. Same refill math as the Elite 100 V2 kit: about 1 h of nameplate sun per light workday."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "US store listing",
+   "value": "The Explorer 1000 v2 did not appear in a jackery.com search. HomePower 1000 v2 (1,024 Wh) lists at $549 (compare-at $1,049).",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2 (Jackery US store)",
+   "read": "2026-11-08",
+   "note": "storecheck search for 'Explorer 1000 v2' on jackery.com. The 1000 v2 may have been renamed; I didn't confirm that."
+  }
+ ],
+ "unsourced": [
+  "Starlink's own published Mini average (rivals cite 25–40 W). The starlink.com help pages and the Mini product page returned no text to WebFetch, and the spec-sheet PDF couldn't be parsed, so I used Wirelessmoves' measured 21–40 W instead.",
+  "Measured usable Wh at a low (20–50 W) USB-C load for the AC180, Elite 200 V2, Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2 and EcoFlow DELTA 2 Max. I found a low-load figure only for the Elite 100 V2 (techreviewer.de).",
+  "AC180 weight and USB-C port ratings from the maker page (bluettipower.com returned HTTP 429 twice).",
+  "DC/USB-only standby draw for any candidate. BLUETTI gives 4.5 W only for the Elite 30 V2, and the Cybershack 10 W figure for the Elite 100 V2 is an assumption, not a measurement.",
+  "Today's maker-store prices for the Anker SOLIX C1000 Gen 2 (anker.com storecheck returned 404) and the EcoFlow DELTA 2 Max (not checked; out of call budget).",
+  "A measured real-world yield for BLUETTI's 200 W kit panel, so refill hours are given at nameplate only.",
+  "A measured light-work average for a MacBook Pro 14/16. Only the Air M4 was sourced."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.956697
+ }
+}

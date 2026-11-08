@@ -1,0 +1,213 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that a power station's \"2× USB-C\" can mean very different things for this setup. Starlink says the Mini needs a 100 W (20 V/5 A) USB-C PD supply. A Jackery retailer page lists the Explorer 1000 v2's ports as 1 × 100 W + 1 × 30 W, so only one port can run the Mini and the MacBook gets 30 W at most from USB-C. The Anker SOLIX C1000 Gen 2 lists a 140 W (28 V/5 A) USB-C port and a separate small USB-C1 that shares 20 W with USB-A.",
+ "standout": 2,
+ "standout_why": "I compared against starsurf.com (best power station for Starlink Mini, 2026-11-01), which says only that the Mini needs a '100 W USB-C PD' port and does not discuss per-port versus total ratings. I compared against kilohour.com (2026-10-24), which lists ports as 'USB-C 100 W' or '140 W', says 'All 49 US models we track list a USB-C port rated 100 W or more', and never covers running a laptop and the Mini from USB-C at the same time or a 30 W second port. ChatGPT's own answers cite only the Starlink help pages for the 100 W PD need, and one of them recommended the Jackery Explorer 1000 v2 without the 100 W + 30 W split. The Starlink help pages loaded empty (they need JavaScript), so I could not reread them. Our current page says the Jackery 1000 v2 has '2× 100 W', which this finding contradicts. No rival I read puts maker cycle-life claims on the same basis: Jackery's is to 70%, while Anker, BLUETTI and EcoFlow quote to 80%.",
+ "decides": "Among the 1 kWh picks ChatGPT showed (Anker SOLIX C1000 Gen 2, Jackery Explorer 1000 v2, Anker C1000), the Jackery can run the Mini or a MacBook Pro from USB-C, not both at full power. The second laptop has to use the inverter or the 12 V car port with an adapter, and the inverter's idle draw lowers runtime (kilohour assumes 10 W for AC versus 2 W for DC). On listed ports, the Anker SOLIX C1000 Gen 2 is the better 1 kWh pick for an all-USB-C workday. Days per charge barely change: OutdoorGearLab measured 910 Wh usable from the Jackery's 1,070 Wh, about the same as the 85% derate ChatGPT used. The footnote on cycle life also favours Anker and BLUETTI: the same '4,000 cycles' is claimed to 80% by Anker and BLUETTI but to 70% by Jackery.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow DELTA 3 Plus",
+  "Jackery Explorer 1500 v2",
+  "Jackery Explorer 2000 v2",
+  "EcoFlow DELTA 3 Max Plus"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "USB-C outputs, per port",
+   "value": "1 × 100 W PD + 1 × 30 W PD",
+   "source": "https://www.mrsolar.com/jackery-explorer-1000v2-portable-power-station/",
+   "source_title": "Jackery Explorer 1000v2 1070Wh Portable Power Station – Mr. Solar",
+   "read": "2026-11-08",
+   "note": "Retailer spec row, quoted as written. Jackery's own US page returned HTTP 429 three times, so I could not open the maker page. Other search listings give the same 100 W / 30 W split, with the 30 W port at 20 V⎓1.5 A max, but I did not open them. Only the 100 W port meets Starlink's stated 100 W / 20 V 5 A need, so a MacBook on the other port gets 30 W at most."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Car port",
+   "value": "12 V / 10 A max",
+   "source": "https://www.mrsolar.com/jackery-explorer-1000v2-portable-power-station/",
+   "source_title": "Jackery Explorer 1000v2 1070Wh Portable Power Station – Mr. Solar",
+   "read": "2026-11-08",
+   "note": "Retailer spec row. This is the DC route for a second device without starting the inverter."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Cycle life as stated",
+   "value": "4,000 cycles to 70%+ capacity",
+   "source": "https://www.mrsolar.com/jackery-explorer-1000v2-portable-power-station/",
+   "source_title": "Jackery Explorer 1000v2 1070Wh Portable Power Station – Mr. Solar",
+   "read": "2026-11-08",
+   "note": "The end point is 70%, while Anker C1000 Gen 2 and BLUETTI Elite 100 V2 state 4,000 cycles to 80%. The same cycle count does not mean the same wear."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Price (retailer)",
+   "value": "$499.00 (was $799.00)",
+   "source": "https://www.mrsolar.com/jackery-explorer-1000v2-portable-power-station/",
+   "source_title": "Jackery Explorer 1000v2 1070Wh Portable Power Station – Mr. Solar",
+   "read": "2026-11-08",
+   "note": "This is a retailer price, not the maker store, because jackery.com returned 429. ChatGPT showed $699 at Jackery in its 2026-11-08 chat."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Warranty (retailer listing)",
+   "value": "3 years standard + 2 years extended with registration (spec row); the warranty tab says 24 + 12 months",
+   "source": "https://www.mrsolar.com/jackery-explorer-1000v2-portable-power-station/",
+   "source_title": "Jackery Explorer 1000v2 1070Wh Portable Power Station – Mr. Solar",
+   "read": "2026-11-08",
+   "note": "The page contradicts itself, so check this against Jackery before publishing."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured usable energy",
+   "value": "910 Wh of a rated 1,070 Wh (85%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2",
+   "source_title": "Jackery Explorer 1000 v2 Review – OutdoorGearLab",
+   "read": "2026-11-08",
+   "note": "OutdoorGearLab, Kenji Mowrey, 2026-07-23: 'we measured 910 Wh out of its advertised 1,070 Wh'. The test load was not stated. At 320 / 560 Wh per day: 910 / 320 = 2.8 days and 910 / 560 = 1.6 days."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C output (USB-C 2 row)",
+   "value": "140 W max (5 V 3 A … 20 V 5 A, 28 V 5 A)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "Maker US spec table, quoted as written. The table includes 20 V⎓5 A, which is the profile Starlink asks for. The fetched table showed only a 'USB-C 2' row for the high-power port. Third-party listings say there are two 140 W ports, but I did not confirm a second 140 W row on the maker page."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Shared low-power USB budget",
+   "value": "USB-A and USB-C1 total 20 W max; USB-A 12 W max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "USB-C1 is a phone-class port. It cannot run the Mini or a MacBook."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Car charger output",
+   "value": "12 V⎓10 A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "Maker spec table."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle life as stated",
+   "value": "at least 80% capacity after 4,000 cycles",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "Quoted: 'After 4,000 cycles, the battery still has at least 80% capacity.'"
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Net weight",
+   "value": "24.9 lb",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – ankersolix.com",
+   "read": "2026-11-08",
+   "note": "Maker spec table. Our page says 'about 11.3 kg', which matches."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price (maker US store)",
+   "value": "$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "From storecheck.py product. compare_at is also $499."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Cycle life as stated",
+   "value": "4,000+ cycles to 80% of original capacity",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "Maker page text. Same basis as Anker, not Jackery's 70%."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Weight",
+   "value": "11.5 kg (25 lb)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-08",
+   "note": "Maker page text."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Standby draw as stated",
+   "value": "4.5 W standby",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "BLUETTI Elite 30 V2 + 100W Solar – bluettipower.com",
+   "read": "2026-11-08",
+   "note": "Maker store text: 'Up to 50% less self-consumption and only 4.5W standby'. Over 8 h that is 36 Wh, about 12% of the 288 Wh pack. This is the only maker-stated standby figure I found among the candidates. Bundle price with a 100 W panel: $489.99."
+  },
+  {
+   "product": "Jackery Explorer 1500 v2",
+   "label": "Price (maker US store)",
+   "value": "$849.00 (compare at $1,439)",
+   "source": "https://www.jackery.com/products/jackery-explorer-1500-v2-portable-power-station",
+   "source_title": "Jackery Explorer 1500 v2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "From a storecheck.py search of jackery.com. ChatGPT showed $999 at B&H."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Price (maker US store)",
+   "value": "$999.00 (compare at $1,379), pre-order, ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-08",
+   "note": "From a storecheck.py search. The store text says 'Sold out due to high demand'. ChatGPT showed $949 at Renewable Outdoors."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Cycle life as stated",
+   "value": "3,000+ cycles, 10 years of daily use until 80% of original capacity",
+   "source": "https://us.ecoflow.com/products/delta-3-series-solar-generator-pv220w",
+   "source_title": "EcoFlow DELTA 3 Plus Solar Generator (PV220W)",
+   "read": "2026-11-08",
+   "note": "Maker store text from storecheck.py. Same 80% basis as Anker and BLUETTI, but a lower cycle count. Bundle price $919."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Price (maker US store)",
+   "value": "$1,149.00 (2,048 Wh)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Plus Portable Power Station (2048Wh)",
+   "read": "2026-11-08",
+   "note": "From a storecheck.py search."
+  },
+  {
+   "product": "general",
+   "label": "Rival idle assumptions (AC vs DC)",
+   "value": "10 W inverter idle (AC) vs 2 W idle (DC), assumed",
+   "source": "https://kilohour.com/guides/how-long-will-a-power-station-run-starlink/",
+   "source_title": "How Long Will a Power Station Run Starlink or Starlink Mini? – kilohour",
+   "read": "2026-11-08",
+   "note": "These are labelled default assumptions, not measurements. Over 8 h, putting the second laptop on AC adds about 64 Wh per day under these defaults ((10 − 2) W × 8 h)."
+  }
+ ],
+ "unsourced": [
+  "Starlink Mini's exact power specs from Starlink's own pages: the help articles loaded empty (JavaScript), and the spec-sheet PDF would not parse in WebFetch. Local pdftotext was not approved. The 100 W / 20 V 5 A requirement comes from ChatGPT's cited answer and from starsurf.com.",
+  "Jackery Explorer 1000 v2 port ratings, price and warranty on jackery.com: the page returned HTTP 429 three times, so I used the Mr. Solar retailer page.",
+  "Whether the Anker SOLIX C1000 Gen 2's maker page lists a second 140 W USB-C port (the fetched table showed only 'USB-C 2'), and its current US maker-store price (no price was rendered).",
+  "Anker SOLIX C1000 Gen 2 measured usable Wh: OutdoorGearLab's 890 Wh appeared only in a search snippet, and I did not open that review.",
+  "Measured standby or idle draw with only DC/USB-C on, for the Anker C1000 Gen 2, Jackery 1000 v2, BLUETTI Elite 100 V2 and EcoFlow DELTA 3 Plus. I looked for maker spec tables and lab reviews and found none.",
+  "Per-port USB-C ratings for the BLUETTI Elite 100 V2 (the maker page's Tech Specs section was empty) and the EcoFlow DELTA 3 Plus (us.ecoflow.com returned 429)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9985714000000002
+ }
+}
