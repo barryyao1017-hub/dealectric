@@ -356,6 +356,23 @@ def query_for(slug: str, h: dict) -> str:
 
 def research(slug: str, new_page: bool = False, force: bool = False) -> dict:
     d = pdir(slug)
+    import os
+    lock = d / ".lock"
+    try:
+        fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode()); os.close(fd)
+    except FileExistsError:
+        pid = lock.read_text().strip()
+        if pid.isdigit() and Path(f"/proc/{pid}").exists() or (pid.isdigit() and subprocess.run(["kill", "-0", pid], capture_output=True).returncode == 0):
+            return {"slug": slug, "status": "locked by another process"}
+        lock.write_text(str(os.getpid()))   # stale lock from a stopped process
+    try:
+        return _research(slug, new_page, force, d)
+    finally:
+        lock.unlink(missing_ok=True)
+
+
+def _research(slug: str, new_page: bool, force: bool, d: Path) -> dict:
     if not force and (d / "draft.json").exists():
         dr = jload(d / "draft.json", {})
         return {"slug": slug, "status": "drafted", "angle": dr.get("angle"), "model": "cached"}
