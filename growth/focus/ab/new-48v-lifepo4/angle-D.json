@@ -1,0 +1,126 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the Epoch 48V 100Ah V2-T Elite, ChatGPT's 'best premium' pick, sends its BMS data only as CAN bus at 500 kbit/s to a Victron GX device (Cerbo GX, Ekrano GX, Cerbo GX Mk2). Its page names no RS485 and no other inverter brand, while the EG4 LifePower4 V2 and Pytes E-Box 48100R have both CAN and RS485 ports and let you pick the inverter protocol. So on a non-Victron hybrid inverter the Epoch cannot run closed-loop, and the inverter has to be programmed by hand.",
+ "standout": 2,
+ "standout_why": "Compared against: liveoffthegrid.com/specs/batteries (cited). It has a comms column that says only 'CAN/RS485' for EG4 and Pytes, does not list Epoch, and says it has 'no compatibility list, and no inverter pairing guidance'. ownyourelectricity.com/articles/48-volt-lithium-battery says 'The battery BMS must communicate with your hybrid inverter' but names no protocol and does not cover Epoch. wildjoule.com/best-48v-off-grid-battery says EG4 V2 has 'closed-loop communication with most major inverters' but does not mention Epoch or Victron-only comms. The cited EG4 V2 spec-sheet PDF came back as binary and I could not read it, so I can't rule out that it lists inverter brands. No page I read says the Epoch talks only to a Victron GX device. gearranking.com failed with an SSL error and was not checked.",
+ "decides": "The finding decides the pick by inverter brand. Shoppers with a Victron MultiPlus or Quattro and a GX device get full closed-loop control (DVCC) from the Epoch. Anyone on an EG4, Sol-Ark, Growatt, Luxpower or Sun Gold Power hybrid should take the EG4 LifePower4 V2 or the Pytes E-Box 48100R: both have CAN and RS485 with a selectable protocol (EG4 sets it with a Protocol 6 DIP switch or P06-LUX; Pytes posts setup videos for Sol-Ark, SMA, Victron, Growatt, Luxpower and others). The Epoch also now costs $2,599, not the $2,399 ChatGPT showed. It is rated 80 A continuous, cannot be wired in series, and its page lists only cell- and fuse-level UL listings, not a whole-pack UL 1973.",
+ "candidates": [
+  "EG4 LifePower4 48V V2 100Ah (SR-48-100-LP4-IN-03)",
+  "Pytes E-Box 48100R (V5)",
+  "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+  "LiTime 48V 100Ah Golf Cart Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite",
+   "label": "Inverter communication link",
+   "value": "CAN bus at 500 kbit/s to a compatible Victron GX device (Cerbo GX, Ekrano GX, Cerbo GX Mk2), 'Victron-ready communication with DVCC support'. No RS485 or other inverter brand named. Fallback is programming MultiPlus/Quattro by hand.",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Maker's product page. Also says to set the VE.Can port speed on the GX to 500 kbit/s."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite",
+   "label": "Price",
+   "value": "$2,599",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Maker's US store, SKU C48100A-A. ChatGPT's card showed $2,399."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite",
+   "label": "BMS continuous current",
+   "value": "80 A continuous discharge (250 A for 10 s). 80 A continuous charge from all sources combined (90 A for 5 s).",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "80 A × 51.2 V ≈ 4.1 kW continuous per battery."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite",
+   "label": "Series / parallel limits",
+   "value": "Up to 16 in parallel (1,600 Ah, 81.92 kWh). Series and series-parallel not supported.",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Maker's page."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite",
+   "label": "Safety listings stated",
+   "value": "UL 1642, UL 9540A and IEC 62619:2022 cells, plus a UL 60691 internal fuse. No whole-pack UL 1973 listed.",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Lists cell and component listings only. Also IP67 and internal heating (charges down to -30 °C ambient when charge current is available)."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2 100Ah",
+   "label": "Communication ports and protocol selection",
+   "value": "CAN bus and RS485 ports plus a new Protocol 6 DIP switch. Closed-loop supported with up to 64 batteries in parallel (327.7 kWh).",
+   "source": "https://eg4electronics.com/introducing-the-eg4-lifepower4-48v-v2-battery/",
+   "source_title": "Introducing the EG4 LifePower4 48V V2 Battery",
+   "read": "2026-11-08",
+   "note": "Maker announcement dated 2024-08-20. It says the CAN port allows 'a wider range of inverters without needing a Communication Hub' but names no brands."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2 100Ah",
+   "label": "Auto-ID (IN-03) and certifications",
+   "value": "Auto-ID adds automatic addressing that simplifies closed-loop setup 'with other EG4 batteries and inverters'. UL 1973, UL 9540A, UL 9540 pending. 10-year warranty. 100 A internal BMS.",
+   "source": "https://eg4electronics.com/categories/batteries/lifepower4-48v-v2/",
+   "source_title": "EG4 LiFePower4 48V v2 100Ah Lithium Iron Phosphate Battery",
+   "read": "2026-11-08",
+   "note": "Maker page covers models SR-48-100-LP4-IN-02 and -IN-03, SKU EG4LP48V100AV2. The IN-02 listing at signaturesolar.com shows 'Currently unavailable' (read 2026-11-08). That listing says 'UL1973 Recognized Component … UL9540 Listed with EG4 18kPV-12LV'."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2 100Ah",
+   "label": "Closed-loop protocol setting",
+   "value": "Set the master battery's CAN protocol to 'P06-LUX'; the setting on the master alone covers the whole bank. Use 'EG4' for older EG4 inverters. Set the inverter's battery type to Lithium.",
+   "source": "https://eg4electronics.com/blog/news/unlocking-seamless-communication-a-bms-setup-guide-for-eg4-batteries-and-inverters",
+   "source_title": "Unlocking Seamless Communication: A BMS Setup Guide for EG4 Batteries and Inverters",
+   "read": "2026-11-08",
+   "note": "Maker guide dated 2023-11-20. The P06-LUX and 'EG4' settings are shown for the LL-S and WallMount batteries with the 6000XP and 18kPV. The LifePower4 is shown set to master with the 6000XP. Only EG4 inverters are covered."
+  },
+  {
+   "product": "Pytes E-Box 48100R (V5)",
+   "label": "Communication and inverter integrations",
+   "value": "CAN/RS485. 'Compatible with most inverter brands'. Integration videos for Sol-Ark, SMA, Must, SRNE, Victron, MPP Solar, Megarevo, Luxpower and Growatt. Up to 96 in parallel.",
+   "source": "https://www.pytesess.com/Low-Voltage-Battery/E-Box-48100R.html",
+   "source_title": "48V Lfp Battery-Lifepo4 Battery-Exporter-For Sale-Vendor (Pytes E-Box 48100R)",
+   "read": "2026-11-08",
+   "note": "Maker page. Case studies also mention Solis and Deye."
+  },
+  {
+   "product": "Pytes E-Box 48100R (V5)",
+   "label": "Listings, cycles, warranty",
+   "value": "UL9540 Ed.2 (2020), UL9540A, UL1973, CEC, SGIP, IEC62619, UN38.3. ≥6,000 cycles at 0.5C, 25 °C, 90% DoD. 10-year warranty. 51.2 V nominal (47.5–57.6 V).",
+   "source": "https://www.pytesess.com/Low-Voltage-Battery/E-Box-48100R.html",
+   "source_title": "48V Lfp Battery-Lifepo4 Battery-Exporter-For Sale-Vendor (Pytes E-Box 48100R)",
+   "read": "2026-11-08",
+   "note": "Maker page gives an ambient range of -10 to 50 °C but no separate charge-temperature range."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of BMS–inverter comms",
+   "value": "Comms column definition only: 'A supported protocol lets the battery manage its own charge profile and report real state of charge to the inverter.' No pairing or compatibility guidance.",
+   "source": "https://liveoffthegrid.com/specs/batteries",
+   "source_title": "LiFePO4 batteries compared: specs, limits, and price",
+   "read": "2026-11-08",
+   "note": "The rival page ChatGPT cited. Epoch is not in its 48 V rows."
+  }
+ ],
+ "unsourced": [
+  "LiTime 48V 100Ah Golf Cart Bluetooth: comms ports (whether it has CAN or RS485 for an inverter, or Bluetooth only) and whether it is rated for solar/inverter storage. litime.com and ca.litime.com returned HTTP 429 on every try, including storecheck.py. The manuals.plus PDF (B0CZKY4H8C) was image-only. The barchart.com LiTime press release about an RS485 golf-cart model came back empty. Amazon ASIN B0CZKY4H8C confirms the 200A BMS and Bluetooth only, and its price is not for publication.",
+  "EG4 LifePower4 V2 Auto-ID (IN-03) spec sheet details (comms protocol list, named compatible inverters, charge-temperature limits). The cited PDF came back as binary, and local PDF extraction needed approval that was not granted.",
+  "EG4 LifePower4 V2 and Pytes E-Box 48100R current US prices. EG4's own page shows no price, and the Signature Solar IN-02 listing is 'Currently unavailable'. Not checked further in the tool budget.",
+  "Sun Gold Power SPH6548P (a Dealectric listing) BMS protocol list and compatible batteries. Search found only Sun Gold Power battery manuals, not the inverter's own document."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.8951721999999999
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Pytes is the only one of the four suggested brands on Victron's own tested-battery list, where Victron requires Pytes BMS firmware 1.10.18 or later, GX firmware v3.31 or later and VE.Bus firmware 469 or later. EG4, Epoch and LiTime are not on that list, even though Epoch sells its 48V 100Ah as Victron-ready. The same results also leave out that EG4 lets a LifePower4 V2 share a bank with a V1 only when the V2 is set as master and the V1 runs firmware v3.40.",
+ "standout": 2,
+ "standout_why": "I checked five rival pages. liveoffthegrid.com/specs/batteries (cited) lists only 'CAN/RS485' for the EG4 V2 and Pytes V5 and names no inverter pairings, parallel limits or rules on mixing generations. The EG4 V2 Auto-ID spec sheet (cited) did not load as text, so I could not compare against it. On ownyourelectricity.com the advice is 'check compatibility lists before buying', with no list given. wildjoule.com tells readers to 'confirm it in Victron's own compatibility notes' but does not say who is on that list, never mentions mixing V1 and V2, and gives no firmware floors. ecosolarkits.com sends readers to the inverter maker's list and does not cover the EG4 LifePower4 at all. None of them names Victron's tested list, the Pytes firmware floor, EG4's V1/V2 master rule, or Epoch's ban on series wiring.",
+ "decides": "For a shopper with a Victron system (Cerbo GX or MultiPlus), this backs the Pytes V5 over the Epoch 'premium Victron' pick ChatGPT gave. Pytes is the only one of the four that Victron itself has tested, and the page can state the firmware versions it needs. Epoch's Victron CAN support is Epoch's own claim, not Victron's, and Epoch also forbids series and series-parallel wiring. For a shopper who already owns LifePower4 V1 packs, this confirms the EG4 V2 as the pick, provided the V2 is set as master and both packs are on the stated firmware.",
+ "candidates": [
+  "EG4 LifePower4 48V V2 (SR-48-100-LP4-IN-02/03)",
+  "Pytes V5 / E-Box 48100R 51.2V 100Ah",
+  "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+  "LiTime 48V 100Ah Golf Cart Bluetooth 200A BMS"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Brands on Victron's tested-battery list",
+   "value": "Pytes is listed. EG4, Epoch, LiTime and SOK are not.",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:start",
+   "source_title": "Victron Energy – Battery compatibility",
+   "read": "2026-11-08",
+   "note": "Page last modified 2026-09-23. Victron also writes that 'many additional 3rd party batteries are also compatible with Victron, and are recommended by local dealers', so being absent means Victron has not tested the brand, not that it fails."
+  },
+  {
+   "product": "Pytes V5 / E-Box 48100R",
+   "label": "Minimum firmware for Victron closed-loop",
+   "value": "Pytes BMS 1.10.18 (shown as v18.1 on GX/VRM); GX v3.31; VE.Bus 469; Multi RS 1.16",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:pytes",
+   "source_title": "Victron Energy – Pytes battery compatibility",
+   "read": "2026-11-08",
+   "note": "Page last modified 2024-10-25. Victron says Pytes firmware older than 1.10.18 'will still connect but are not supported, and may charge/discharge cycle when at 100% state of charge'."
+  },
+  {
+   "product": "Pytes V5 / E-Box 48100R",
+   "label": "Victron hookup Victron requires",
+   "value": "BMS-Can (500 kbit/s) or VE.Can port; VE.Can to CAN-bus BMS type A cable (ASS030710018) with a VE.Can terminator; DVCC on, SVS and STS off. All 48V Multis, Quattros, RS units and BlueSolar/SmartSolar MPPTs are listed as compatible",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:pytes",
+   "source_title": "Victron Energy – Pytes battery compatibility",
+   "read": "2026-11-08",
+   "note": "Victron says the MPPTs must be connected over VE.Direct or VE.Can for charge regulation."
+  },
+  {
+   "product": "Pytes V5 / E-Box 48100R",
+   "label": "Maker's limits",
+   "value": "Up to 96 units in parallel; CAN/RS485; ≥6,000 cycles at 90% DoD (0.5C, 25 °C, 70% retention); UL9540 Ed.2, UL9540A, UL1973; 10-year warranty",
+   "source": "https://www.pytesess.com/Low-Voltage-Battery/E-Box-48100R.html",
+   "source_title": "Pytes – E-Box 48100R 48V LFP battery",
+   "read": "2026-11-08",
+   "note": "The page names inverter brands only through logos and videos (Sol-Ark, SMA, Victron, Growatt, Luxpower, SRNE, MPP Solar and others). It gives no model-by-model list."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2",
+   "label": "Mixing V1 and V2 in one bank",
+   "value": "Allowed if the V2 is set as master battery. Connect only comms pins 7 and 8 so the V2 does not trigger rapid shutdown. The V1 must run firmware v3.40",
+   "source": "https://forum.eg4electronics.com/community/troubleshooting/compatibility-of-6500ex-48-inverter-and-lifepower4v1-v2-batteries/",
+   "source_title": "EG4 Community Forum – Compatibility of 6500EX-48 inverter and LifePower4 V1/V2 batteries",
+   "read": "2026-11-08",
+   "note": "From an answer by Jared (EG4 admin) on 2024-10-21. He links EG4's 'V2 Communication with V1' PDF (eg4electronics.com/wp-content/uploads/2024/09/EG4-Lifepower4-V2-Communication-with-V1.pdf), which my fetch tool could not read as text."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2",
+   "label": "Firmware for EG4 6000EX/6500EX inverters",
+   "value": "V2 needs firmware Z02T04; units shipped without it may need an update",
+   "source": "https://forum.eg4electronics.com/community/troubleshooting/compatibility-of-6500ex-48-inverter-and-lifepower4v1-v2-batteries/",
+   "source_title": "EG4 Community Forum – Compatibility of 6500EX-48 inverter and LifePower4 V1/V2 batteries",
+   "read": "2026-11-08",
+   "note": "EG4 admin: this version 'resolves a known issue with legacy communication between the V2 and the 6000EX'. He also states that the V2 'is compatible with the 6500EX inverter'."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2",
+   "label": "Maker's limits",
+   "value": "Up to 64 units in parallel; CAN and RS485; >6,000 cycles at 80% DoD; UL 1973 and UL 9540A; UL 9540 certificate only as the EG4 18kPV + CAB LifePower4 v2 ESS; 10-year warranty; model numbers SR-48-100-LP4-IN-02 and -IN-03",
+   "source": "https://eg4electronics.com/categories/batteries/lifepower4-48v-v2/",
+   "source_title": "EG4 Electronics – LifePower4 48V V2",
+   "read": "2026-11-08",
+   "note": "The page lists no closed-loop inverters by model. The only system-level UL 9540 pairing shown is with the 18kPV."
+  },
+  {
+   "product": "EG4 LifePower4 48V V2",
+   "label": "UL 9540 pairing on the retailer page",
+   "value": "UL9540 listed with EG4 18kPV-12LV; Protocol 6 DIP switch for picking the inverter",
+   "source": "https://signaturesolar.com/eg4-lifepower4-v2-lithium-battery-48v-100ah-server-rack-battery-ul1973-ul9540a-10-year-warranty",
+   "source_title": "Signature Solar – EG4-LifePower4 V2 Lithium Battery 48V 100AH",
+   "read": "2026-11-08",
+   "note": "Both Signature Solar listings for this battery said 'Currently unavailable… not currently sold' on 2026-11-08 and showed no price."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+   "label": "Victron pairing as Epoch states it",
+   "value": "Native CAN at 500 kbit/s with Cerbo GX, Ekrano GX or Cerbo GX Mk2; under DVCC the battery sets the charge limits",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "This is Epoch's claim. Epoch is not on Victron's tested list (page modified 2026-09-23). Epoch names no non-Victron inverters; those must be set to the charge profile by hand."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+   "label": "Wiring exclusions",
+   "value": "No series and no series-parallel wiring; up to 16 in parallel (1,600 Ah / 81.92 kWh), all matched C48100A-A units of the same age, capacity and state of charge; never charge above 58.0 V; 80 A continuous charge and discharge",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Epoch treats the C48100A (V2 Elite) as a separate model with a built-in fuse, and says a parallel bank must be matched C48100A-A units."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+   "label": "Price on Epoch's US store",
+   "value": "$2,599 (in stock)",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "ChatGPT's card showed $2,399 for '48V 100Ah V2 Elite'. That may be the C48100A rather than the V2-T (C48100A-A), so the two figures may not describe the same product."
+  },
+  {
+   "product": "Epoch 48V 100Ah V2-T Elite (C48100A-A)",
+   "label": "Cold-weather charging and warranty",
+   "value": "Heated: charges down to -30 °C (-22 °F) ambient; IP67; 11-year limited warranty (5 years free repair or replacement, then 40% off MSRP through year 11)",
+   "source": "https://www.epochbatteries.com/products/48v-100ah-victron-marine-lithium",
+   "source_title": "Epoch 48V 100Ah V2-T Elite LiFePO4 | Victron, Heated, BT",
+   "read": "2026-11-08",
+   "note": "Epoch says charging at that temperature works 'when charge current is available'. Discharge works down to -20 °C."
+  }
+ ],
+ "unsourced": [
+  "EG4 LifePower4 V2 price today: EG4's page shows none, and both Signature Solar listings say 'currently unavailable' with no price. I left the $1,470.99 from ChatGPT's card unverified.",
+  "EG4 V2 inverter list by model and the Protocol 6 DIP-switch table: these are in EG4's Connections & Paralleling Guide, V1-communication PDF and IN-03 Auto-ID spec sheet, which my fetch tool returned as unreadable binary (Bash PDF extraction needed approval).",
+  "LiTime 48V 100Ah golf cart battery: which carts it fits, excluded models or years, controller limits, price and whether it can be used with solar inverters. litime.com returned HTTP 429 on both product URLs, and I would not rely on search snippets.",
+  "Pytes V5 US price and rules on mixing V5 with earlier E-Box units: the Pytes product page states neither, and the Pytes inverter compatibility list is a third-party-hosted PDF I could not read.",
+  "Store prices via storecheck.py and amzcheck.py: running the tools needed Bash approval I did not have."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9520965000000001
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab discharged the EG4 LifePower4 V2 48V 100Ah from full to empty under a 97.5 Ah load and logged about 103 Ah before the BMS shut it off. That is slightly above the 100 Ah rating, and it is the only named capacity measurement I found for any of ChatGPT's four picks.",
+ "standout": 1,
+ "standout_why": "I compared against the cited liveoffthegrid.com/specs/batteries page and the cited EG4 V2 spec sheet. I also checked these uncited results: sunforgelab.com, wildjoule.com and ownyourelectricity.com. The liveoffthegrid page is manufacturer specs only and has no measurements. WildJoule says it has not installed or tested the batteries. Own Your Electricity built its picks from spec sheets and installer feedback and has no lab data. SunForgeLab, which ChatGPT got but did not cite, already measured 102 Ah at 0.2C on the sibling EG4 LL-S. So a rival page has part of the EG4 capacity story, just for a different model. The Solar Lab figure is new for the LifePower4 V2, but it is thin: no byline, no date, no test equipment named, and the reviewer said the Ah reading spiked at the end, so the efficiency measurement was not precise.",
+ "decides": "It weakly confirms ChatGPT's 'best overall' EG4 LifePower4 V2 pick: the one hands-on test found about the rated 100 Ah delivered, and the BMS cut off charging and discharging after 24 hours in a freezer. I found no named measurement for the Pytes V5, the Epoch 48V 100Ah V2 Elite, the LiTime 48V 100Ah golf cart battery or the SOK SK48V100. Measurements cannot rank these batteries against each other, so the page should not claim they do.",
+ "candidates": [
+  "EG4 LifePower4 V2 48V 100Ah",
+  "Pytes V5 51.2V 100Ah",
+  "Epoch 48V 100Ah V2 Elite",
+  "LiTime 48V 100Ah Golf Cart Bluetooth",
+  "SOK SK48V100 48V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "EG4 LifePower4 V2 48V 100Ah",
+   "label": "Full discharge, Ah logged before BMS cutoff",
+   "value": "about 103 Ah (100 Ah rated)",
+   "source": "https://www.thesolarlab.com/review/eg4-48v-100ah-v2-lifepower4-battery-review",
+   "source_title": "EG4 LifePower4 V2 server rack battery (The Solar Lab)",
+   "read": "2026-11-08",
+   "note": "The Solar Lab ran it from 100% to 0% under a load it calls '97.5Ah'. The Ah count rose to about 103 Ah before the BMS shut down, and the reviewer said that spike prevented a precise efficiency figure. No test equipment, temperature or cutoff voltage is given. The page has no author byline and no publish date, only 'Copyright © 2026'. A second read of the page did not repeat the 103 Ah figure, so confirm it before publishing."
+  },
+  {
+   "product": "EG4 LifePower4 V2 48V 100Ah",
+   "label": "Short overload (surge) test",
+   "value": "110 A for 10 s with no BMS trip or overheating (rated 100 A)",
+   "source": "https://www.thesolarlab.com/review/eg4-48v-100ah-v2-lifepower4-battery-review",
+   "source_title": "EG4 LifePower4 V2 server rack battery (The Solar Lab)",
+   "read": "2026-11-08",
+   "note": "The page writes it as 'pushed it up to 110Ah for a 10-second surge'. Ah is used loosely here, and amps is meant. The page has no date."
+  },
+  {
+   "product": "EG4 LifePower4 V2 48V 100Ah",
+   "label": "Cold cutoff test",
+   "value": "BMS blocked charging and discharging after 24 h in a deep freezer",
+   "source": "https://www.thesolarlab.com/review/eg4-48v-100ah-v2-lifepower4-battery-review",
+   "source_title": "EG4 LifePower4 V2 server rack battery (The Solar Lab)",
+   "read": "2026-11-08",
+   "note": "The freezer temperature is not stated. This is a pass/fail check, not a number. The cited liveoffthegrid page lists the V2 as unheated with a 32 °F minimum charge temperature (spec)."
+  },
+  {
+   "product": "EG4 LL-S 48V 100Ah (sibling model, for context)",
+   "label": "Delivered capacity at 0.2C",
+   "value": "102 Ah (about 5.22 kWh, calculated as 102 Ah × 51.2 V); measured BMS cutoffs 44.0 V low, 57.6 V high",
+   "source": "https://sunforgelab.com/blog/reviews/best-lifepo4-batteries-2026/",
+   "source_title": "Best LiFePO4 Batteries for Solar in 2026: Tested and Compared | SunForgeLab",
+   "read": "2026-11-08",
+   "note": "Tested by Anthony at SunForgeLab. Published 2026-04-03, updated 2026-04-09. Method: full charge to the manufacturer's cutoff, then a 0.2C discharge to the low-voltage cutoff, totalling Ah. ChatGPT got this page but did not cite it, so this is not new to the rival set."
+  }
+ ],
+ "unsourced": [
+  "Delivered capacity, round-trip efficiency or idle draw measured by a named reviewer for the Pytes V5. Searched for reviews and capacity tests and found only retailer listings and Pytes datasheets (rated ≥95% efficiency at 0.2C, 25 °C, 90% DoD).",
+  "Any named measurement for the Epoch 48V 100Ah V2 Elite. Every result was a retailer listing, two of them with 'no reviews yet'.",
+  "A named capacity test of the LiTime 48V 100Ah golf cart battery. The only measured figure was one anonymous marketplace review (78 Ah, BMS cut off at 52.5 V) on a listing that may not be the LiTime product, so I left it out.",
+  "A named capacity test of the SOK SK48V100. Found only retailer and spec-aggregator pages.",
+  "Will Prowse's (willapproved.com) figures for these models. His 48V UL-certified page, updated November 2026, has measured data only for the ECO-WORTHY Cubix 100, and only as a chart image, tested at 100 A charge and discharge. His 48V budget page covers only Yixiang. The 'Amazon 48V Best Seller Server Rack Batteries Tested' video page (youtube.com/watch?v=PBO2QLZ3mtQ) returned no description or figures.",
+  "An idle or self-consumption draw measured by any named tester for any candidate.",
+  "The text of the cited EG4 V2 spec sheet PDF. WebFetch returned unreadable binary and the local pdftotext call was not approved, so I did not check the spec-sheet figures against the measurements.",
+  "The gearranking.com rival page, which failed with a TLS certificate error, so I could not check it for measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.8810404000000001
+ }
+}
