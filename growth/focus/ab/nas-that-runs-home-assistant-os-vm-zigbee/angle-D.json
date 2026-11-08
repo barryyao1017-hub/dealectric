@@ -1,0 +1,124 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the mechanism that decides whether a passed-through Zigbee stick keeps working. The KVM/libvirt layer gives a USB device a device number at connect time, and only the physical port number stays the same (libvirt's own words). When a stick resets or re-enumerates, the VM keeps waiting for the old number. Sticks also differ: a ConBee II (CDC-ACM, /dev/ttyACM) failed on a UGREEN VM where a Sonoff ZBDongle-E, which uses a WCH CH34x-family serial bridge, worked straight away. The Home Assistant ZBT-2 disappears from Synology VMM during its mandatory first firmware flash.",
+ "standout": 1,
+ "standout_why": "The cited rivals have none of this. QNAP's FAQ only says USB 3.2 Gen 1 passthrough 'is dependent upon the guest operating system' and lists guest kernels. Synology's VMM 7.4 spec only says 'Supports USB 2.0/3.0 passthrough (not supported on Virtual DSM)'. Neither mentions device numbering, re-enumeration or the type of serial chip. UGREEN articles 642 and 911 load by JavaScript and returned no text, so I couldn't compare them. Two pieces exist in uncited results. homelabhaven.com (#18) explains the Synology device-number re-pinning, but only with a ConBee II and without a source. GitHub issues #146834 (#26) and #162157 (#25) hold the maintainer's chip-difference comment and the ZBT-2 dropout. No page connects these to libvirt's definition or tells the shopper which stick to choose. Our current page reports the ConBee II failures but not the cause.",
+ "decides": "The finding moves the deciding factor from NAS brand to stick. All three NAS VM apps can pass a USB device through. Whether it survives a reboot, replug or firmware flash depends on how the hypervisor rebinds it and on the stick's USB-serial bridge. For the pick: on UGREEN, Synology or QNAP, use a stick that has been reported working under VM passthrough (Sonoff ZBDongle-E on UGREEN). Avoid the ConBee II. If buying a ZBT-2, flash its firmware on another computer before passing it through. Expect to restart the VM, not just HAOS, after the stick drops. This supports ChatGPT's network-coordinator fallback (SMLIGHT SLZB-06), which avoids USB re-enumeration entirely, and makes it stronger.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "Sonoff ZBDongle-E",
+  "Home Assistant Connect ZBT-2",
+  "dresden elektronik ConBee II",
+  "SMLIGHT SLZB-06"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "How KVM/libvirt identifies a passed-through USB device",
+   "value": "By vendor/product ID, or by host address using a device number or a port. 'The device number is assigned when the device connects', while 'the port number is a stable identifier of the physical host port'. startupPolicy 'mandatory' (the default) fails if the device is missing.",
+   "source": "https://libvirt.org/formatdomain.html",
+   "source_title": "libvirt: Domain XML format (USB/PCI/SCSI hostdev)",
+   "read": "2026-11-08",
+   "note": "Read the hostdev section at characters 200000–300000 of the page. This is the upstream definition behind 'breaks after reboot/replug'. A re-enumerated stick gets a new device number."
+  },
+  {
+   "product": "general",
+   "label": "Home Assistant's own VM USB instruction",
+   "value": "For KVM: 'If you have a USB dongle to attach, you need to add the option --hostdev busID.deviceId', with IDs found via lsusb. The page also says 'your dongle could be on another bus and/or with another device ID'.",
+   "source": "https://www.home-assistant.io/installation/linux/",
+   "source_title": "Linux - Home Assistant",
+   "read": "2026-11-08",
+   "note": "HA's official example binds by bus and device number, which libvirt says is assigned at connect time. HA also requires UEFI and at least 2 GB RAM and 2 vCPUs."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Synology VMM USB passthrough scope",
+   "value": "'Supports USB 2.0/3.0 passthrough (not supported on Virtual DSM)'",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Says nothing about serial devices, re-enumeration or hot re-attach. Applies to all VMM-capable models, including the DS225+."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Why VMM passthrough breaks after a VM reboot (reviewer analysis)",
+   "value": "The stick 're-enumerates on a new device number' while the libvirt hostdev is 'still pinned to the old USB device number'. VMM still shows it as paired 'because it's matching on vendor/product'. Fix: rebind by vendor:product (ConBee II 0x1cf1:0x0030).",
+   "source": "https://homelabhaven.com/posts/2026-07-28-synology-usb-passthrough-vm-reboot-fix/",
+   "source_title": "Synology USB Passthrough Breaks After a VM Reboot",
+   "read": "2026-11-08",
+   "note": "homelabhaven.com calls this 'a confirmed Synology VMM behavior' but cites no source. Only a ConBee II was tested."
+  },
+  {
+   "product": "Home Assistant Connect ZBT-2",
+   "label": "ZBT-2 drops out of Synology VMM during first-time firmware install",
+   "value": "Wizard hangs on 'Installing Zigbee firmware'. Supervisor shows /dev/ttyACM1 added then removed, and VMM shows 'Failed to read USB device'. Replugging doesn't fix it; only a full VM restart does. Reported on an RS1221+ (Feb 3, 2026, lxndrp), a DS923+ (Feb 4, 2026, PlasmaPod) and a Synology NAS (May 25, 2026, dennisdenn070). The issue is still open with no maintainer diagnosis.",
+   "source": "https://github.com/home-assistant/core/issues/162157",
+   "source_title": "ZBT-2 first-time installation fails during recommended setup procedure on virtualised HAOS · Issue #162157",
+   "read": "2026-11-08",
+   "note": "Workarounds from lxndrp and PlasmaPod: flash the ZBT-2 on a desktop first, then attach it, or reboot the VM from VMM rather than from the HA UI. dennisdenn070's theory that the stick resets during flashing is unconfirmed."
+  },
+  {
+   "product": "Home Assistant Connect ZBT-2",
+   "label": "ZBT-2 USB bridge and radio",
+   "value": "Silicon Labs MG24 radio behind an 'ESP32-S3 (USB-serial bridge)', 460800 baud, $49 MSRP",
+   "source": "https://www.home-assistant.io/connect/zbt-2/",
+   "source_title": "Home Assistant Connect ZBT-2",
+   "read": "2026-11-08",
+   "note": "The page doesn't mention VMs or passthrough. The $49 price is HA's recommended MSRP, not a store price."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "ConBee II fails, Sonoff ZBDongle-E works, same UGREEN VM passthrough",
+   "value": "ZHA error 'The serial port is locked by another application' with a ConBee II passed to HAOS on a UGREEN VM (DXP2800 per jfmilke, who also tried virsh attach-device). Maintainer puddly (2025-06-18): 'The Conbee II and the Sonoff-E sticks have different USB to serial converter chips', and suggested the hypervisor may be mangling the ConBee's USB data. ttarzan01 (2025-06-17): a SONOFF ZBDongle-E was passed through and 'I was able to use it immediately in ZHA'.",
+   "source": "https://github.com/home-assistant/core/issues/146834",
+   "source_title": "ZHA: setup error for ConBee 2 ZigBee dongle (VM on UGREEN NAS) · Issue #146834",
+   "read": "2026-11-08",
+   "note": "puddly (2025-06-17) called it 'a configuration issue with the VM and not something ZHA can fix'. The reporter closed the issue on 2025-07-20 after switching sticks. No UGOS version was given."
+  },
+  {
+   "product": "dresden elektronik ConBee II",
+   "label": "ConBee II device path on Linux",
+   "value": "/dev/ttyACM0 (Phoscon's Zigbee2MQTT example)",
+   "source": "https://phoscon.de/en/conbee2/install",
+   "source_title": "Phoscon ConBee II installation",
+   "read": "2026-11-08",
+   "note": "ttyACM means a CDC-ACM device. Phoscon also advises a USB 2.0 socket with an extension cable away from USB 3.0 devices."
+  },
+  {
+   "product": "Sonoff ZBDongle-E",
+   "label": "Sonoff ZBDongle-E radio, driver family and price",
+   "value": "EFR32MG21-based. Windows/macOS drivers listed are WCH 'CH343SER' / 'ch34xser_macos-main'. USD$19.90.",
+   "source": "https://itead.cc/product/zigbee-3-0-usb-dongle/",
+   "source_title": "Itead SONOFF Zigbee 3.0 USB Dongle",
+   "read": "2026-11-08",
+   "note": "The WCH CH34x-family driver shows a vendor serial bridge (ttyUSB), unlike the ConBee II's CDC-ACM. Itead doesn't name the exact chip part."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "QNAP Virtualization Station USB passthrough condition",
+   "value": "USB 3.2 Gen 1 passthrough 'is dependent upon the guest operating system'. Supported Linux guests have kernel 3.4.6 or later. Otherwise use a host USB 2.0 port.",
+   "source": "https://www.qnap.com/en-us/how-to/faq/article/does-virtualization-station-support-usb-3-0-passthrough",
+   "source_title": "Does Virtualization Station support USB 3.2 Gen 1 passthrough? | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "HAOS runs a modern Linux kernel, so the guest-OS condition is met. The FAQ says nothing about re-enumeration or serial sticks."
+  }
+ ],
+ "unsourced": [
+  "UGREEN Knowledge Center articles 642 (USB device passthrough) and 911 (hardware passthrough): both load by JavaScript and returned only the heading '知识中心' (Knowledge Center), so I couldn't confirm whether UGOS binds by vendor/product, device number or port, or what 911's 'not supported' covers.",
+  "Synology KB 'Virtual Machine' help page: returned only navigation, no USB rules (VM-off requirement, one-VM-per-device limit).",
+  "Whether Synology VMM, UGOS or QNAP Virtualization Station bind passed-through USB by device number or by vendor/product, in the maker's own words. Only homelabhaven's unsourced Synology claim exists.",
+  "Exact USB-serial chip part number of the Sonoff ZBDongle-E (CH9102F is often cited) on a SONOFF page: sonoff.tech returned HTTP 429 twice.",
+  "Smart Home Junkie DXP4800 GT guide (stick model, UGOS version, sponsorship): TLS certificate error on fetch.",
+  "Whether the ZBT-2 changes USB vendor/product ID or only its device number when it resets during flashing: not stated by Home Assistant or in issue #162157."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.7805497
+ }
+}

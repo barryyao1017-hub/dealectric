@@ -1,0 +1,282 @@
+{
+ "status": "ok",
+ "angle": "B",
+ "why_angle": "The rival pages give Synology's 'more than 2 GB' VM rule and Home Assistant's 2 GB VM minimum separately. None of them subtracts the HAOS VM from each NAS's shipped RAM. This page does: 6 GB left on the DXP2800, TS-264 and DXP4800 Plus, 2 GB on the DS925+, and none on a stock DS225+, which cannot start a VM at all.",
+ "slug": "nas-that-runs-home-assistant-os-vm-zigbee",
+ "must": [
+  "the UGREEN DXP2800",
+  "8 GB leaves 6 GB after the 2 GB HAOS VM"
+ ],
+ "products": [
+  {
+   "slug": "qnap-ts-264-8g",
+   "brand": "QNAP",
+   "program": "amazon:us",
+   "asin": "B0BLJ97L82",
+   "category": "nas",
+   "name": "QNAP TS-264-8G 2-Bay NAS, Intel Celeron N5095, 8 GB DDR4, 2× 2.5GbE",
+   "model": "TS-264-8G-US",
+   "url": "https://www.amazon.com/dp/B0BLJ97L82",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron N5095, 4 cores / 4 threads"
+    ],
+    [
+     "Memory",
+     "8 GB DDR4, 16 GB maximum (2× SODIMM)"
+    ],
+    [
+     "USB",
+     "2× USB 2.0 + 2× USB 3.2 Gen 2 Type-A"
+    ],
+    [
+     "Virtualization",
+     "Virtualization Station, at least 4 GB RAM required, 4 suggested VMs"
+    ]
+   ],
+   "warranty": "3 years (QNAP)",
+   "returns": "Amazon's standard return policy",
+   "summary": "2-bay NAS whose 8 GB leaves 6 GB free after a 2 GB Home Assistant OS VM. QNAP documents USB passthrough in Virtualization Station.",
+   "fit": "Buyers who want a maker-documented USB passthrough path for a Zigbee stick, with spare USB 2.0 ports for QNAP's fallback.",
+   "caveats": [
+    "QNAP says USB 3.2 Gen 1 passthrough depends on the guest OS; if it fails, use a host USB 2.0 port",
+    "Costs more than the UGREEN DXP2800, which has the same 8 GB"
+   ]
+  },
+  {
+   "slug": "synology-ds925-plus",
+   "brand": "Synology",
+   "program": "amazon:us",
+   "asin": "B0F43SZHWV",
+   "category": "nas",
+   "name": "Synology DiskStation DS925+ 4-Bay NAS, AMD Ryzen V1500B, 4 GB DDR4 ECC",
+   "model": "DS925+",
+   "url": "https://www.amazon.com/dp/B0F43SZHWV",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "AMD Ryzen V1500B, 4 cores / 8 threads, 2.2 GHz"
+    ],
+    [
+     "Memory",
+     "4 GB DDR4 ECC, 32 GB maximum (16 GB × 2)"
+    ],
+    [
+     "USB",
+     "2× USB 3.2 Gen 1"
+    ],
+    [
+     "Virtualization",
+     "Virtual Machine Manager, 8 recommended VM instances, USB 2.0/3.0 passthrough"
+    ]
+   ],
+   "warranty": "3 years (Synology)",
+   "returns": "Amazon's standard return policy",
+   "summary": "4-bay Synology that can run a Home Assistant OS VM as shipped, but with only 2 GB left for DSM after a 2 GB VM.",
+   "fit": "Synology owners who will add memory and want VMM's USB 2.0/3.0 passthrough.",
+   "caveats": [
+    "4 GB fitted leaves 2 GB for DSM next to a 2 GB HAOS VM, so plan a RAM upgrade",
+    "Home Assistant Connect ZBT-2 drops out of VMM during its first firmware install (GitHub home-assistant/core #162157); flash it on a desktop first"
+   ]
+  },
+  {
+   "slug": "synology-ds225-plus",
+   "brand": "Synology",
+   "program": "amazon:us",
+   "asin": "B0FB7KQLR1",
+   "category": "nas",
+   "name": "Synology DiskStation DS225+ 2-Bay NAS, Intel Celeron J4125, 2 GB DDR4",
+   "model": "DS225+",
+   "url": "https://www.amazon.com/dp/B0FB7KQLR1",
+   "price": null,
+   "verified": "2026-11-08",
+   "specs": [
+    [
+     "CPU",
+     "Intel Celeron J4125, 4 cores / 4 threads"
+    ],
+    [
+     "Memory",
+     "2 GB DDR4 non-ECC, 6 GB maximum (2 GB + 4 GB, module D4NS01-4G)"
+    ],
+    [
+     "USB",
+     "2× USB 3.2 Gen 1"
+    ],
+    [
+     "Virtualization",
+     "Virtual Machine Manager; VMs run only on NAS with more than 2 GB of memory"
+    ]
+   ],
+   "warranty": "3 years (Synology)",
+   "returns": "Amazon's standard return policy",
+   "summary": "2-bay Synology that cannot run any VM as shipped: its 2 GB is not above VMM's 2 GB floor. With the D4NS01-4G module (6 GB) it has 4 GB left after a 2 GB HAOS VM.",
+   "fit": "Only for buyers who add Synology's 4 GB module before setting up Home Assistant OS.",
+   "caveats": [
+    "As shipped (2 GB) Virtual Machine Manager will not run a VM",
+    "6 GB maximum caps headroom at 4 GB after a 2 GB HAOS VM"
+   ]
+  }
+ ],
+ "page": {
+  "title": "Which NAS runs Home Assistant OS as a virtual machine with a Zigbee stick (2026)? UGOS, Synology VMM, QNAP, and the passthrough problem",
+  "h1": "Which NAS runs Home Assistant OS as a virtual machine with a Zigbee stick? (2026)",
+  "desc": "How much RAM each NAS has left after a 2 GB Home Assistant OS VM, how UGOS, Synology VMM and QNAP Virtualization Station pass a Zigbee stick through, and which sticks work.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The NAS that runs Home Assistant OS as a virtual machine with a Zigbee stick for the least money is the UGREEN DXP2800: UGOS passes the USB stick through, and its 8 GB leaves 6 GB after the 2 GB HAOS VM. A stock Synology DS225+ (2 GB) can't start a VM.</p>",
+  "columns": [
+   [
+    "ram",
+    "RAM as shipped"
+   ],
+   [
+    "left",
+    "RAM left after a 2 GB HAOS VM"
+   ],
+   [
+    "vm",
+    "VM app and host rule"
+   ],
+   [
+    "usb",
+    "USB passthrough"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "ram": "8 GB DDR5 (raspberry.tips)",
+     "left": "6 GB (8 − 2); 4 GB with HAOS given 4 GB",
+     "vm": "UGOS Pro Virtual Machines, DXP series only; imports QCOW2",
+     "usb": "Per device: turn on the VM's USB controller, then add the stick (raspberry.tips)"
+    }
+   },
+   {
+    "slug": "qnap-ts-264-8g",
+    "model": "QNAP TS-264-8G",
+    "cells": {
+     "ram": "8 GB DDR4, 16 GB max",
+     "left": "6 GB (8 − 2)",
+     "vm": "Virtualization Station; needs at least 4 GB RAM",
+     "usb": "USB 3.2 Gen 1 if guest kernel is 3.4.6+, else one of its 2 USB 2.0 ports (QNAP)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "model": "UGREEN NASync DXP4800 Plus",
+    "cells": {
+     "ram": "8 GB DDR5-4800, up to 64 GB (KitGuru)",
+     "left": "6 GB (8 − 2); 62 GB at 64 GB",
+     "vm": "UGOS Pro Virtual Machines, DXP series only",
+     "usb": "Same UGOS per-device USB passthrough as the DXP2800"
+    }
+   },
+   {
+    "slug": "synology-ds925-plus",
+    "model": "Synology DS925+",
+    "cells": {
+     "ram": "4 GB DDR4 ECC, 32 GB max",
+     "left": "2 GB (4 − 2); 30 GB at 32 GB",
+     "vm": "Virtual Machine Manager; VMs only above 2 GB RAM, Btrfs volumes only",
+     "usb": "USB 2.0/3.0 passthrough (Synology)"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "ram": "2 GB DDR4, 6 GB max with D4NS01-4G",
+     "left": "None as shipped (VMM needs more than 2 GB); 4 GB at 6 GB",
+     "vm": "Virtual Machine Manager; VMs only above 2 GB RAM, Btrfs volumes only",
+     "usb": "USB 2.0/3.0 passthrough (Synology)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>UGREEN DXP2800:</strong> 8 GB − 2 GB for the Home Assistant OS VM = 6 GB left for UGOS, Docker and file sharing. raspberry.tips gave HAOS 4 GB and 2 cores (8 − 4 = 4 GB left) and measured 15–17 W at the wall with the VM idle.</li><li><strong>QNAP TS-264:</strong> 8 GB is above QNAP's 4 GB minimum for Virtualization Station, and 8 − 2 = 6 GB is left after the VM.</li><li><strong>UGREEN DXP4800 Plus:</strong> 8 − 2 = 6 GB as shipped. KitGuru lists two SO-DIMM slots taking up to 64 GB, so 64 − 2 = 62 GB.</li><li><strong>Synology DS925+:</strong> 4 − 2 = 2 GB left for DSM as shipped. At its 32 GB maximum, 32 − 2 = 30 GB.</li><li><strong>Synology DS225+:</strong> the 2 GB fitted is not \"more than 2 GB\", so Virtual Machine Manager runs no VM. With Synology's D4NS01-4G module, 6 − 2 = 4 GB.</li><li><strong>UGREEN price step:</strong> $619.99 − $389.99 = $230 more for the DXP4800 Plus's two extra bays (UGREEN store, 2026-11-08).</li></ul><table><thead><tr><th>Use</th><th>Fits</th></tr></thead><tbody><tr><td>Cheapest NAS that runs the HAOS VM with a USB Zigbee stick and 6 GB to spare</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>USB passthrough documented by the maker, with spare USB 2.0 ports</td><td>QNAP TS-264-8G {buy:qnap-ts-264-8g}</td></tr><tr><td>4 bays and room to grow RAM for more VMs</td><td>UGREEN DXP4800 Plus {buy:ugreen-nasync-dxp4800-plus}</td></tr><tr><td>Staying on Synology DSM</td><td>DS925+ with added memory {buy:synology-ds925-plus}</td></tr><tr><td>Home Assistant only, no file storage</td><td>Home Assistant Green ($199 MSRP) + Connect ZBT-2 ($49 MSRP) = $248, about 1.7 W idle, no passthrough to set up</td></tr></tbody></table><h2>RAM left for Home Assistant OS, and getting the Zigbee stick through</h2><p>Home Assistant sets the minimum for its OS as a virtual machine at 2 GB RAM, 2 vCPUs and UEFI boot. Each NAS maker adds its own host rule on top. Synology runs VMs only on a NAS with more than 2 GB and keeps VM data on Btrfs volumes. QNAP's Virtualization Station needs at least 4 GB. UGREEN's Virtual Machines app runs on the DXP series only.</p><p>All three VM apps hand a single USB device to the VM, not a whole port. Synology lists USB 2.0/3.0 passthrough. QNAP passes USB 3.2 Gen 1 through when the guest's Linux kernel is 3.4.6 or newer, which HAOS meets, and otherwise points you to a host USB 2.0 port. The TS-264 has two of them. On UGOS you turn on the VM's USB controller, then add the stick under USB devices (raspberry.tips). Which stick you use matters as much as the NAS:</p><ul><li><strong>Sonoff ZBDongle-E:</strong> passed through to HAOS on a UGREEN VM, an owner reported they could \"use it immediately in ZHA\" (GitHub home-assistant/core #146834).</li><li><strong>ConBee II:</strong> on the same kind of UGREEN VM, ZHA reported \"The serial port is locked by another application\". Home Assistant developer puddly noted that the two sticks use different USB-to-serial chips and called it a VM configuration issue (#146834).</li><li><strong>Home Assistant Connect ZBT-2:</strong> on Synology VMM (DS923+, RS1221+), its first-time firmware install fails and the stick drops out of the VM until the whole VM is restarted (#162157, still open). Owners there flash it on a desktop first, then pass it through.</li></ul><h2>Not recommended</h2><p><strong>Synology DS225+ as shipped.</strong> Its 2 GB sits exactly at Virtual Machine Manager's floor, and VMM needs more than that, so Home Assistant OS won't start as a VM until you add the 4 GB D4NS01-4G module. Even then the 6 GB maximum leaves 4 GB beside the VM. The DXP2800 and TS-264 leave 6 GB without any upgrade.</p><p><strong>UGREEN DH2300 and DH4300 Plus.</strong> UGREEN's own virtualization guide says the Virtual Machines app is \"unavailable on the DH2300 and DH4300 Plus\", so neither can run Home Assistant OS as a virtual machine.</p>",
+  "sources": [
+   [
+    "Home Assistant OS VM minimum: 2 GB RAM, 2 vCPUs, UEFI boot",
+    "https://www.home-assistant.io/installation/linux/"
+   ],
+   [
+    "Synology VMM: VMs only on NAS with more than 2 GB, Btrfs volumes only, USB 2.0/3.0 passthrough",
+    "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm"
+   ],
+   [
+    "DS225+: 2 GB DDR4 fitted, 6 GB maximum, D4NS01-4G module",
+    "https://www.synology.com/en-us/products/DS225+#specs"
+   ],
+   [
+    "DS925+: 4 GB DDR4 ECC fitted, 32 GB maximum",
+    "https://www.synology.com/en-us/products/DS925+#specs"
+   ],
+   [
+    "TS-264: 8 GB DDR4, 16 GB max, 2× USB 2.0, Virtualization Station needs at least 4 GB",
+    "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+   ],
+   [
+    "QNAP Virtualization Station USB 3.2 Gen 1 passthrough depends on guest OS; USB 2.0 fallback",
+    "https://www.qnap.com/en-us/how-to/faq/article/does-virtualization-station-support-usb-3-0-passthrough"
+   ],
+   [
+    "DXP2800: 8 GB DDR5, HAOS VM setup, per-device USB passthrough, 15–17 W with VM idle (raspberry.tips)",
+    "https://raspberry.tips/en/smart-home/home-assistant-ugreen-nas-setup"
+   ],
+   [
+    "DXP4800 Plus: 8 GB DDR5-4800, up to 64 GB (KitGuru, Simon Crisp)",
+    "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/"
+   ],
+   [
+    "UGREEN Virtual Machines app: DXP series, unavailable on DH2300 and DH4300 Plus",
+    "https://ai.ugreen.com/blogs/how-to/setup-nas-virtualization-guide"
+   ],
+   [
+    "DXP2800 $389.99, UGREEN store, 2026-11-08",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "DXP4800 Plus $619.99, UGREEN store, 2026-11-08",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"
+   ],
+   [
+    "Sonoff ZBDongle-E works and ConBee II fails on a UGREEN VM",
+    "https://github.com/home-assistant/core/issues/146834"
+   ],
+   [
+    "ZBT-2 first firmware install fails on HAOS in Synology VMM",
+    "https://github.com/home-assistant/core/issues/162157"
+   ],
+   [
+    "Home Assistant Green: $199 MSRP, 4 GB RAM, about 1.7 W idle",
+    "https://www.home-assistant.io/green/"
+   ],
+   [
+    "Home Assistant Connect ZBT-2: $49 MSRP",
+    "https://www.home-assistant.io/connect/zbt-2/"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Synology Virtual Machine Manager USB passthrough Zigbee Home Assistant OS supported",
+  "QNAP Virtualization Station USB passthrough Home Assistant OS Zigbee",
+  "UGREEN UGOS virtual machine USB passthrough Zigbee Home Assistant",
+  "Synology Virtual Machine Manager USB passthrough Zigbee Home Assistant OS DSM 7",
+  "UGREEN UGOS virtual machine USB passthrough Home Assistant Zigbee",
+  "Synology Virtual Machine Manager USB passthrough Home Assistant Zigbee USB dongle DS923"
+ ],
+ "query": "which nas runs home assistant os as a virtual machine with a zigbee stick",
+ "verified_changes": 2,
+ "verified_removed": 1,
+ "gate": {
+  "date": "2026-11-08",
+  "pass": true,
+  "g": null
+ }
+}

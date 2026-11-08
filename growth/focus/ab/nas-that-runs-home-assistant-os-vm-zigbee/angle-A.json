@@ -1,0 +1,132 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts these together: a stock Synology DS225+ ships with exactly 2 GB, Synology's VMM rule says VMs run only on a NAS with more than 2 GB, and Home Assistant says an HAOS VM needs at least 2 GB. So the DS225+ cannot run an HAOS VM until a RAM module is added, even though its spec sheet lists '2 recommended VM instances'. On a 2 GB DS220+, VMM offered the auto-generated VM only 272 MB.",
+ "standout": 1,
+ "standout_why": "I compared against the cited Synology VMM 7.4 spec page, the cited QNAP USB 3.2 Gen 1 FAQ and terabytewise.com, which ChatGPT got but did not cite. Synology's VMM page states the 'more than 2 GB' rule but names no model. Terabytewise says the DS225+ ships with 2 GB and that 'that minimum is all the memory they have', but it never cites the VMM floor or the 272 MB a 2 GB unit leaves for a VM. The QNAP FAQ covers only guest-OS USB 3 support. It does not mention QNAP's 4 GB minimum for Virtualization Station or its advice to keep VMs at or below 50% of RAM. No rival lays out each maker's RAM floor and USB passthrough wording side by side, but the key DS225+ conclusion can be pieced together from two of them.",
+ "decides": "It rules out a stock DS225+ for an HAOS VM, so 'DS225+ / DS925+' on our page should become 'DS925+, or a DS225+ only with an added 4 GB module'. The DS925+ (4 GB ECC, 8 recommended VM instances) and the QNAP TS-264 (8 GB, where Virtualization Station needs at least 4 GB and QNAP advises giving VMs at most 50% of memory, leaving about 4 GB for HAOS) both clear the 2 GB HAOS minimum out of the box. On USB, all three main makers pass through a single device rather than a whole port or controller, so USB support doesn't separate them. On QNAP the only USB-speed caveat is guest-OS USB 3 support, which HAOS's Linux kernel meets, and the TS-264 also has USB 2.0 ports. UGREEN's DH2300 and DH4300 Plus cannot run VMs at all, so only the DXP models qualify.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS925+",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH4300 Plus",
+  "TerraMaster F4-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minimum resources for an HAOS VM",
+   "value": "2 GB RAM, 2 vCPUs, UEFI boot; the KVM image is .qcow2, VirtualBox .vdi, VMware .vmdk",
+   "source": "https://www.home-assistant.io/installation/linux/",
+   "source_title": "Linux - Home Assistant",
+   "read": "2026-11-08",
+   "note": "The page lists 'Memory: 2 GB of RAM' and 'Processors: 2 vCPUs' under minimum resources and says 'Home Assistant requires UEFI to boot'. It describes a 32 GB default disk only in the Unraid steps. For KVM, USB dongles are passed with --hostdev busID.deviceId, i.e. per device."
+  },
+  {
+   "product": "Synology (all VMM models)",
+   "label": "Host RAM floor, file system and USB passthrough type for Virtual Machine Manager",
+   "value": "VMs run only on a NAS with more than 2 GB of memory; VM data only on Btrfs volumes; USB 2.0/3.0 passthrough; at least one CPU thread reserved for the host; UEFI or Legacy BIOS boot",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Quoted: 'Virtual machines can run only on Synology NAS devices with more than 2 GB of memory.' USB passthrough is listed as unsupported only for Virtual DSM, not for ordinary VMs. The page gives no USB device count."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Fitted RAM against the VMM floor",
+   "value": "2 GB DDR4 non-ECC fitted, 6 GB max (2 GB + 4 GB), 1 slot; spec sheet lists 2 recommended VM instances",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "The 2 GB fitted is not 'more than 2 GB', so a stock unit falls below VMM's floor and below HAOS's own 2 GB VM minimum. The '2 recommended VM instances' line is footnoted: 'The specifications vary depending on system configuration and memory size.' CPU: Celeron J4125, 4C/4T. USB: 2× USB 3.2 Gen 1."
+  },
+  {
+   "product": "Synology DS220+ (2 GB sibling, used as evidence for DS225+ behaviour)",
+   "label": "RAM VMM left for an HAOS VM on a 2 GB unit",
+   "value": "272 MB with 1 CPU",
+   "source": "https://community.home-assistant.io/t/ram-blocking-ha-supervisor-installation-on-synology-nas-virtual-machine/511022",
+   "source_title": "RAM blocking HA Supervisor installation on Synology NAS virtual machine - Home Assistant Community",
+   "read": "2026-11-08",
+   "note": "From user Bettina's post on 2023-01-01: a DS220+ with 2 GB got 'only 272 MB with 1 CPU'. With less RAM assigned the VM booted but got no IP address. Protoncek replied that Synology officially supports adding a 4 GB stick, for 6 GB total. This is a different model with the same 2 GB configuration and VMM, so treat it as indicative for the DS225+."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Fitted RAM and VM headroom",
+   "value": "4 GB DDR4 ECC fitted, 32 GB max (16 GB × 2); 8 recommended VM instances; 2× USB 3.2 Gen 1",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "CPU: AMD Ryzen V1500B, 4C/8T, 2.2 GHz. Giving HAOS its 2 GB minimum leaves 2 GB for DSM; this is arithmetic, not a Synology figure. The DS925neo+ has the same layout with non-ECC memory."
+  },
+  {
+   "product": "QNAP (Virtualization Station)",
+   "label": "Host RAM floor and VM memory cap",
+   "value": "x86 NAS with 4 GB RAM, QTS 4.3.4+ or QuTS hero h4.5.0+; QNAP recommends limiting virtualization apps to at most 50% of memory; USB passthrough unsupported for VMs under the beta High Availability feature",
+   "source": "https://www.qnap.com/en-us/software/virtualization-station",
+   "source_title": "Virtualization Station | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "The 50% advice sits next to the line 'ZFS uses 50% of the host memory for the ARC by default', so it is aimed at QuTS hero. The USB passthrough exclusion applies only to the beta HA (two-NAS failover) feature, not to standalone VMs."
+  },
+  {
+   "product": "QNAP (Virtualization Station)",
+   "label": "USB passthrough type and guest-OS condition",
+   "value": "USB 3.2 Gen 1 (5 Gbps) passthrough depends on the guest OS (Linux kernel 3.4.6+); otherwise plug the device into a host USB 2.0 port",
+   "source": "https://www.qnap.com/en-us/how-to/faq/article/does-virtualization-station-support-usb-3-0-passthrough",
+   "source_title": "Does Virtualization Station support USB 3.2 Gen 1 passthrough? | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Last modified 2024-07-10. HAOS runs a recent Linux kernel, so it meets the kernel 3.4.6+ condition. Zigbee coordinators are USB full-speed devices, so the USB 2.0 fallback costs them nothing; that last point is my inference, not QNAP's."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "RAM, USB ports and VM note",
+   "value": "8 GB DDR4 fitted, 16 GB max (2 × SODIMM); 2× USB 2.0 + 2× USB 3.2 Gen 2 Type-A; Virtualization Station note 'At least 4 GB RAM is required'; 4 suggested VM instances",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 | Hardware specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "CPU: Celeron N5095, 4C/4T. Under QNAP's 50%-of-memory advice, 8 GB leaves 4 GB for VMs, enough for HAOS at 2–4 GB (my arithmetic). The USB 2.0 ports are the ones QNAP's FAQ points to as the fallback."
+  },
+  {
+   "product": "UGREEN NASync DH2300 / DH4300 Plus",
+   "label": "VM support",
+   "value": "Virtual machines unavailable on DH2300 and DH4300 Plus; VMs are a DXP-series feature",
+   "source": "https://ai.ugreen.com/blogs/how-to/setup-nas-virtualization-guide",
+   "source_title": "How to Host VMs on UGREEN NAS",
+   "read": "2026-11-08",
+   "note": "Quoted: 'It is unavailable on the DH2300 and DH4300 Plus.' The page date reads 12/01/2026, which is 12 January 2026 in day/month format. The guide gives no minimum RAM and does not say whether USB or PCIe passthrough is supported. A troubleshooting line about 'a USB device already assigned to another VM' implies devices are assigned one per VM. Import formats: IMG, VMDK, QCOW2, VDI; ISO/ISO.GZ; OVA."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "How a USB stick reaches the HAOS VM",
+   "value": "Enable the USB controller in the VM's advanced settings, then add the stick under 'USB devices' (per device, not per port); HAOS given 2 vCPU / 4 GB of the 8 GB DDR5; UEFI required",
+   "source": "https://raspberry.tips/en/smart-home/home-assistant-ugreen-nas-setup",
+   "source_title": "Home Assistant on a UGREEN NAS – VM Guide | raspberry.tips",
+   "read": "2026-11-08",
+   "note": "Article dated 2026-10-21, UGOS Pro (updated 1.7 to 1.12), HAOS 18.2 qcow2. The author says Zigbee stick passthrough is the next article, so this guide does not test a stick. Default MacVTap bridge mode cut the VM off from the NAS; the author switched to a Linux bridge."
+  },
+  {
+   "product": "Synology (VMM) with Home Assistant Connect ZBT-2",
+   "label": "Known first-setup failure on virtualised HAOS",
+   "value": "Firmware install step fails ('Failed to flash firmware'); device drops from the VM until detached and reattached; issue open since 2026-02-03",
+   "source": "https://github.com/home-assistant/core/issues/162157",
+   "source_title": "ZBT-2 first-time installation fails during recommended setup procedure on virtualised HAOS · Issue #162157",
+   "read": "2026-11-08",
+   "note": "Reported on an RS1221+ and a DS923+ running VMM, and on a non-Synology host on 2026-07-18. Workarounds from users: reboot the VM from VMM rather than from the HA UI, or flash the firmware on a desktop first. No maintainer reply. ChatGPT's results already include this (rank 25, not cited), so it adds nothing new."
+  }
+ ],
+ "unsourced": [
+  "UGREEN KB articles 642 (USB device passthrough) and 911 (hardware passthrough): both pages render in JavaScript, WebFetch returned only the heading '知识中心' and running curl needed approval I didn't have, so UGREEN's own wording on device vs whole-port passthrough and its UGOS version scope is left out.",
+  "UGREEN's official minimum RAM for the Virtual Machines app: its VM guide and the raspberry.tips guide give none.",
+  "TerraMaster's staff statement that USB devices cannot be passed to TOS VMs: the forum page (viewtopic.php?p=50908) returned HTTP 403.",
+  "Synology's Knowledge Center list of VMM-capable models, with any note on 2 GB models: the KB URL returned only navigation.",
+  "The exact VMM error or allocatable RAM on a 2 GB DS225+ itself: only DS220+ (272 MB) and DS224+ owner reports turned up.",
+  "UGREEN DXP4800 GT Zigbee passthrough details (smarthomejunkie.net) and privatehomelab.com's Docker-vs-VM write-up: both failed TLS certificate checks in WebFetch.",
+  "Prices: not checked, since this angle doesn't need them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9277529
+ }
+}

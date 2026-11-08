@@ -1,0 +1,130 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how much RAM each NAS has left once Home Assistant's own 2 GB VM minimum is taken out. On a stock Synology DS225+ the answer is none: it ships with 2 GB, and Synology runs VMs only on units with more than 2 GB. The DS925+ keeps 2 GB for DSM, while the QNAP TS-264-8G and UGREEN DXP2800 each keep 6 GB.",
+ "standout": 2,
+ "standout_why": "Synology's VMM spec page (cited by ChatGPT) gives the 'more than 2 GB' rule but no per-model RAM. home-assistant.io/installation/linux gives the 2 GB / 2 vCPU HAOS minimum but no NAS models. raspberry.tips (top result for UGREEN) gives the VM 4 GB of the DXP2800's 8 GB and measured 15–17 W idle, but it covers one model only and never subtracts anything for Synology or QNAP. QNAP's and UGREEN's passthrough FAQs have no RAM or power numbers. ChatGPT's answer says '8 GB minimum recommended' without linking it to any model's base RAM. Our current page notes the 'needs >2 GB' rule in the Synology cell, but it never does the subtraction or says a stock DS225+ cannot start a VM. I could not open the smarthomejunkie DXP4800 GT guide (certificate error).",
+ "decides": "This takes the Synology DS225+ out of the 'buy and run' group: it needs a RAM module before VMM will start any VM. It also shows the DS925+ (4 GB ECC) leaves only 2 GB for DSM next to a 2 GB HAOS VM, so an upgrade is realistically required there too. The 8 GB QNAP TS-264 and UGREEN DXP2800 run HAOS out of the box with 6 GB to spare. So on headroom the pick goes to TS-264 or DXP2800; Zigbee passthrough reliability is still the separate deciding factor. The power figures add that any NAS host draws roughly 10× more always-on energy than a Home Assistant Green (about 140–255 kWh a year against 14.9 kWh). That matters only if the NAS would not otherwise be running 24/7.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS925+",
+  "QNAP TS-264-8G",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Home Assistant Green"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "HAOS VM minimum resources",
+   "value": "2 GB RAM, 2 vCPUs, UEFI boot required; 32 GB default disk (Unraid example)",
+   "source": "https://www.home-assistant.io/installation/linux/",
+   "source_title": "Linux - Home Assistant",
+   "read": "2026-11-08",
+   "note": "Used as the RAM subtracted for every NAS below."
+  },
+  {
+   "product": "general",
+   "label": "Synology VMM host RAM rule and USB passthrough",
+   "value": "VMs run only on Synology NAS with more than 2 GB memory; USB 2.0/3.0 passthrough supported (not on Virtual DSM)",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Same page: VMM reserves at least one CPU thread for the host."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM left after a 2 GB HAOS VM",
+   "value": "0 GB at stock (VMM will not run); 4 GB after upgrading to the 6 GB maximum",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. specs",
+   "read": "2026-11-08",
+   "note": "Ships 2 GB DDR4 non-ECC; VMM needs >2 GB, so no VM at stock. Upgraded: 6 GB − 2 GB = 4 GB. Power: 16.98 W access, 6.08 W HDD hibernation; 2× USB 3.2 Gen 1; 3-year warranty."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "RAM left after a 2 GB HAOS VM",
+   "value": "2 GB at stock; 30 GB at the 32 GB maximum",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. specs",
+   "read": "2026-11-08",
+   "note": "4 GB DDR4 ECC − 2 GB = 2 GB; 32 GB − 2 GB = 30 GB. AMD Ryzen V1500B 4C/8T; 2× USB 3.2 Gen 1; 37.91 W access, 12.33 W HDD hibernation; 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "RAM left after a 2 GB HAOS VM",
+   "value": "6 GB at stock; 14 GB at the 16 GB maximum",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "8 GB − 2 GB = 6 GB; 16 GB − 2 GB = 14 GB. Celeron N5095 4C/4T; 2× USB 2.0 + 2× USB 3.2 Gen 2 Type-A; 18.288 W disk standby, 29.086 W typical (drives fully populated); 3-year warranty."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM left after a 2 GB HAOS VM",
+   "value": "6 GB at stock (4 GB in raspberry.tips' 4 GB-VM setup)",
+   "source": "https://raspberry.tips/en/smart-home/home-assistant-ugreen-nas-setup",
+   "source_title": "Home Assistant on a UGREEN NAS – VM Guide | raspberry.tips",
+   "read": "2026-11-08",
+   "note": "raspberry.tips states 8 GB DDR5 total and gives the VM 4 GB and 2 of the N100's cores. 8 − 2 = 6 GB at the HA minimum; 8 − 4 = 4 GB as configured. The author has not yet tested Zigbee passthrough ('Next up, we will pass a Zigbee stick through')."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Always-on energy with the HAOS VM idle",
+   "value": "about 140 kWh/year",
+   "source": "https://raspberry.tips/en/smart-home/home-assistant-ugreen-nas-setup",
+   "source_title": "Home Assistant on a UGREEN NAS – VM Guide | raspberry.tips",
+   "read": "2026-11-08",
+   "note": "raspberry.tips measured 15–17 W with the HA VM active and idle; 16 W × 8,760 h = 140.2 kWh (range 131–149 kWh)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 (nas.ugreen.com, via storecheck.py)",
+   "read": "2026-11-08",
+   "note": "$389.99 / 6 GB left after HAOS = $65 per spare GB."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus (nas.ugreen.com, via storecheck.py)",
+   "read": "2026-11-08",
+   "note": "Same storecheck search also returned DXP4800 GT $659.99 and DXP2800 GT $459.99."
+  },
+  {
+   "product": "Synology DS225+ / DS925+ / QNAP TS-264",
+   "label": "Always-on energy from maker power figures",
+   "value": "DS225+ 148.7 kWh/yr; DS925+ 332.1 kWh/yr; TS-264 160.2–254.8 kWh/yr",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP (US); Synology DS225+/DS925+ spec pages",
+   "read": "2026-11-08",
+   "note": "DS225+ 16.98 W × 8,760 h = 148.7 kWh; DS925+ 37.91 W × 8,760 = 332.1 kWh; TS-264 18.288 W × 8,760 = 160.2 kWh (standby) to 29.086 W × 8,760 = 254.8 kWh (typical). Uses the maker's access/operating figures with drives, because a running VM likely keeps the system awake. Synology figures are on https://www.synology.com/en-us/products/DS225+#specs and https://www.synology.com/en-us/products/DS925+#specs."
+  },
+  {
+   "product": "Home Assistant Green",
+   "label": "Always-on energy and price",
+   "value": "14.9 kWh/year; $199 MSRP",
+   "source": "https://www.home-assistant.io/green/",
+   "source_title": "Home Assistant Green",
+   "read": "2026-11-08",
+   "note": "Idle ~1.7 W at 12 V × 8,760 h = 14.9 kWh; load ~3 W. 4 GB LPDDR4X, 32 GB eMMC. No built-in Zigbee: the page points to Connect ZBT-2."
+  }
+ ],
+ "unsourced": [
+  "UGREEN DXP2800 and DXP4800 Plus RAM (installed/maximum) and power figures from UGREEN's own product page: nas.ugreen.com, ai.ugreen.com and nas-eu.ugreen.com all returned HTTP 429. DXP2800 RAM is taken from raspberry.tips; DXP4800 Plus RAM is left out.",
+  "QNAP TS-264 current US price: Best Buy's search page showed the listing without a price, and the product page timed out. QNAP has no US store.",
+  "Synology DS225+ / DS925+ current US price: Synology has no US direct store, and I did not open a retailer page.",
+  "Home Assistant Connect ZBT-2 price: not opened today.",
+  "Whether a running VM stops HDD hibernation on Synology or QNAP: no maker statement found. The energy maths uses access/operating figures for that reason.",
+  "smarthomejunkie.net DXP4800 GT guide (VM RAM, stick model, behaviour after reboot): the page failed with a certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.7625872999999999
+ }
+}

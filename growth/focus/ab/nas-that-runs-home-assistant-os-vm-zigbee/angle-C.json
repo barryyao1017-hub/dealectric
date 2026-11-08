@@ -1,0 +1,105 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Synology DS225+ ships with 2 GB of RAM while Virtual Machine Manager runs VMs only on NAS units with more than 2 GB, so a stock DS225+ can't run a Home Assistant OS VM until the D4NS01-4G module is added.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Synology VMM 7.4 spec, QNAP's USB passthrough FAQ, UGREEN KB 642 and 911, and the SmartHomeJunkie DXP4800 GT guide. The Synology spec gives the 'more than 2 GB' rule but names no models and gives no stock RAM. ChatGPT recommended the DS923+/DS925+ and never named the DS225+. None of the cited pages connects the rule to the DS225+'s 2 GB. Of the top results, GitHub #162157 (Synology VMM drops the ZBT-2 during its firmware flash) appeared in ChatGPT's results but was not cited, so that finding is only partly new. None of the rival pages mentions that UGREEN's DH-series NAS units can't run VMs at all.",
+ "decides": "Our current page lists the DS225+ as a Synology pick. Its row should say the 2 GB unit can't run a VM as shipped and needs Synology's D4NS01-4G module (6 GB total). The DS925+ (4 GB) and the QNAP TS-264 (8 GB, above Virtualization Station's 4 GB minimum) work as shipped. The UGREEN DH2300 and DH4300 Plus, which Dealectric lists, should be marked unable to run Home Assistant OS as a VM. A buyer of the Home Assistant ZBT-2 stick who plans to use Synology VMM should be told to flash the stick on a desktop first.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS925+",
+  "QNAP TS-264",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH4300 Plus",
+  "Home Assistant Connect ZBT-2"
+ ],
+ "findings": [
+  {
+   "product": "general (Synology VMM)",
+   "label": "Minimum NAS memory to run any VM",
+   "value": "VMs run only on Synology NAS with more than 2 GB of memory; VM data must be on a Btrfs volume",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "Quoted: 'Virtual machines can run only on Synology NAS devices with more than 2 GB of memory.' 'Virtual machine data can be stored only on Btrfs volumes.'"
+  },
+  {
+   "product": "general (Synology VMM)",
+   "label": "USB passthrough scope",
+   "value": "USB 2.0/3.0 passthrough for VMs; not supported on Virtual DSM",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/vmm",
+   "source_title": "Virtual Machine Manager Technical Specifications | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "The page gives no per-VM limit on USB devices. Disk image import is listed as IMG, VMDK, VDI, VHD, VHDX and QCOW2, so the HAOS KVM .qcow2 image can be imported."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Installed / maximum RAM and compatible module",
+   "value": "2 GB DDR4 non-ECC installed; 6 GB maximum (2 GB + 4 GB); module D4NS01-4G",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specs)",
+   "read": "2026-11-08",
+   "note": "2 GB is not 'more than 2 GB', so the stock unit is below VMM's VM threshold. Adding the D4NS01-4G gives 6 GB. CPU Intel Celeron J4125, two USB 3.2 Gen 1 ports, 2 recommended VM instances, 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Virtualization Station memory requirement vs installed",
+   "value": "At least 4 GB RAM required; TS-264-8G ships with 8 GB (max 16 GB); 4 suggested VMs",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Spec lists Virtualization Station for QTS 6.1.0 and QuTS hero h6.1.0. CPU Celeron N5095. USB: 2× USB 2.0 and 2× USB 3.2 Gen 2 Type-A. 3-year warranty."
+  },
+  {
+   "product": "general (QNAP Virtualization Station)",
+   "label": "USB 3.2 Gen 1 passthrough condition",
+   "value": "Depends on guest OS (Linux kernel 3.4.6 or later listed); if the guest lacks support, use a host USB 2.0 port",
+   "source": "https://www.qnap.com/en-us/how-to/faq/article/does-virtualization-station-support-usb-3-0-passthrough",
+   "source_title": "Does Virtualization Station support USB 3.2 Gen 1 passthrough? | QNAP (US)",
+   "read": "2026-11-08",
+   "note": "Last modified 2024-07-10. No NAS model, chipset or device-count exclusions are stated. The TS-264 has two USB 2.0 ports available for the fallback."
+  },
+  {
+   "product": "general (Home Assistant OS VM)",
+   "label": "VM image formats and firmware requirement",
+   "value": "Images offered: KVM/Proxmox .qcow2, VirtualBox .vdi, VMware ESXi .ova; HAOS requires UEFI (non-Secure-Boot OVMF); minimum 2 GB RAM, 2 vCPUs",
+   "source": "https://www.home-assistant.io/installation/alternative",
+   "source_title": "Alternative - Home Assistant",
+   "read": "2026-11-08",
+   "note": "Home Assistant's own Synology and QNAP sections describe Docker/Container installs, not HAOS VMs. It says its Synology container instructions 'do not correctly configure the container to access the USB devices' (Z-Wave and Bluetooth sticks named). Both brands therefore need the VM route for HAOS with a USB stick."
+  },
+  {
+   "product": "Home Assistant Connect ZBT-2",
+   "label": "First-time firmware install on HAOS in Synology VMM",
+   "value": "Fails with 'Failed to install firmware' / 'Failed to probe running application type'; stick not detected again until reattached or VM restarted",
+   "source": "https://github.com/home-assistant/core/issues/162157",
+   "source_title": "ZBT-2 first-time installation fails during recommended setup procedure on virtualised HAOS · Issue #162157 · home-assistant/core",
+   "read": "2026-11-08",
+   "note": "Reporter used a Synology RS1221+; another reporter a DS923+. A user's analysis says the ZBT-2 resets during flashing and VMM drops the passthrough without reconnecting. No maintainer has replied. Issue still open after a 2026-10-17 comment. User-reported workarounds: flash the stick on a desktop with the Nabu Casa toolbox, or reboot the VM from the hypervisor."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Virtual machine support",
+   "value": "None: Dong Ngo lists 'no virtual machine support'; Rockchip RK3588 ARM, 8 GB RAM, not expandable",
+   "source": "https://dongknows.com/ugreen-nasync-dh4300-plus-review/",
+   "source_title": "UGREEN NASync DH4300 Plus review | Dong Knows Tech (Dong Ngo, 2025-09-04)",
+   "read": "2026-11-08",
+   "note": "Named reviewer used as fallback; the maker's FAQ page returned HTTP 429 on three tries. Docker is available. This excludes the DH4300 Plus, which Dealectric lists, from a HAOS VM build."
+  }
+ ],
+ "unsourced": [
+  "UGREEN maker statement that DH-series NAS (DH2300, DH4300 Plus) don't support VMs: ai.ugreen.com/pages/solution-software (redirected from nas.ugreen.com) returned HTTP 429 on every try, and support.ugnas.com article 59 rendered as an empty 'Knowledge Center' shell.",
+  "Text of UGREEN KB 642 (USB device passthrough) and 911 (hardware passthrough), including model, UGOS Pro version and exclusion lines: both pages are JavaScript-rendered and came back empty; shell fetch was not permitted.",
+  "Synology's official stable VMM applied-models list confirming DS225+ and DS925+: the spec page links to it but I didn't open it, and the VMM 2.8.0 beta page I opened had no model list.",
+  "Synology VMM per-VM USB device limit and whether a USB device can be attached only with the VM powered off: the kb.synology.com help page rendered with no body.",
+  "Nabu Casa / Home Assistant official guidance on the ZBT-2 in virtual machines: no support.nabucasa.com page turned up, only community threads.",
+  "Exact SMLIGHT, SONOFF or ConBee stick compatibility per NAS VM from any maker document: no maker publishes a stick-by-NAS matrix that I could find within the tool budget.",
+  "SmartHomeJunkie DXP4800 GT guide details (stick model, UGOS version): the site's TLS certificate failed verification and the page wouldn't load."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.9471730000000002
+ }
+}
