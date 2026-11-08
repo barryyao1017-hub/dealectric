@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the Synology DS225+ (recommended in all three chats with a generic '2 × 4 TB NAS HDD' setup) has only been able to build storage pools on non-Synology hard drives since DSM 7.3 (Synology, October 8, 2025). M.2 pools and caches still need drives on Synology's compatibility list. It also doesn't say that Plex's paywall on remote streaming covers only video, so Plexamp music streaming is not affected.",
+ "standout": 2,
+ "standout_why": "Compared against the cited rival pages: Plex 'Sonic Analysis for Music', which covers x86-only, Plex Pass for the server admin, PMS v1.24.0+ and no FreeBSD/TrueNAS; Plex 'Plex Media Server Requirements'; Navidrome Overview; and UGREEN's Navidrome guide, which already says the DH2300 has no Docker. I also compared against the uncited top results (Navidrome Docker docs, QNAP and Plex NAS pages). None of them states Synology's drive policy for the 2025 Plus series or the DSM version that lifts it. All three ChatGPT answers present Plex Pass as optional or needed for offline downloads. None says that remote Plexamp music streaming is outside the April 2025 remote-playback requirement. Our current page has neither fact.",
+ "decides": "This confirms the DS225+ as a pick only if DSM is on 7.3 or later before the pool is built with third-party HDDs such as IronWolf or WD Red. Keep the SSD-for-database advice for the UGREEN DXP2800 or QNAP TS-264. Synology's DS225+ spec lists only two SATA bays and no M.2, and its M.2 pools need drives on Synology's compatibility list anyway. Plex's remote-streaming paywall covers only video, so Plexamp music isn't affected. The Navidrome-vs-Plexamp choice therefore comes down to Sonic Analysis (x86 plus Plex Pass), not remote-streaming cost. That supports an x86 box (DXP2800, DS225+ or TS-264) over the ARM DH2300.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "UGREEN NASync DH2300",
+  "TerraMaster F2-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Third-party drive storage pools",
+   "value": "Supported from DSM 7.3 (released 2025-10-08) on 2025 model-year DiskStation Plus, Value and J Series: 'will support installation and storage pool creation with third-party drives'",
+   "source": "https://www.synology.com/en-global/company/news/article/dsm73/compatibility",
+   "source_title": "Synology Releases DiskStation Manager 7.3, Bringing Efficient Data Tiering, Enhanced Security, AI-Powered Collaboration, and Expanded Storage Flexibility",
+   "read": "2026-11-08",
+   "note": "Synology's press release, with an update noted October 13. The DS225+ is a 2025 Plus-series model. The release does not name individual models."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "M.2 pool / cache exclusion",
+   "value": "'Creation of M.2 based storage pool and cache still requires drives on the HCL'",
+   "source": "https://www.synology.com/en-global/company/news/article/dsm73/compatibility",
+   "source_title": "Synology Releases DiskStation Manager 7.3 … Expanded Storage Flexibility",
+   "read": "2026-11-08",
+   "note": "Footnote in the DSM 7.3 release. Applies to 2025 models that have M.2 slots."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Drive bays and SSD cache",
+   "value": "2 × 3.5\" SATA HDD / 2.5\" SATA SSD; 'SSD cache can be enabled with select compatible SSD'; no M.2 slot listed",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "The spec page also says 'Please consult our compatibility list before purchasing hard drives.'"
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "CPU / RAM",
+   "value": "Intel Celeron J4125 (4C/4T, 2.0–2.7 GHz); 2 GB DDR4 non-ECC, max 6 GB (2 GB + 4 GB, 1 slot)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": "x86, so Plex Sonic Analysis is supported per Plex's x86/x86-64 rule."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Warranty",
+   "value": "3 years; extendable to 5 years with Extended Warranty Plus (Europe and North America only)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-08",
+   "note": ""
+  },
+  {
+   "product": "general",
+   "label": "Plex remote-streaming paywall vs Plexamp music",
+   "value": "Requirements for remote streaming 'apply only to movies/TV/video media… This does not affect music or photo streaming to our dedicated Plexamp and Plex Photos apps'",
+   "source": "https://www.plex.tv/plans/",
+   "source_title": "Plex plans",
+   "read": "2026-11-08",
+   "note": "The plans page did not load Plex Pass prices, so prices are omitted. Plex Pass still unlocks Plexamp members-only features such as 'Sonic Sage, Guest DJ, Mix Builders'."
+  },
+  {
+   "product": "general",
+   "label": "Plex Sonic Analysis platform limits",
+   "value": "x86/x86-64 only (ARM unsupported except M1 Macs via Rosetta 2); Windows, macOS or 64-bit Linux; PMS v1.24.0+; Plex Pass on the server admin account; FreeBSD/FreeNAS/TrueNAS not supported (Docker suggested instead); sonic features only in Plexamp",
+   "source": "https://support.plex.tv/articles/sonic-analysis-music/",
+   "source_title": "Sonic Analysis for Music | Plex Support",
+   "read": "2026-11-08",
+   "note": "A rival already cites this. It is included for the compatibility matrix and doesn't count as new."
+  },
+  {
+   "product": "general",
+   "label": "Navidrome Docker image architectures",
+   "value": "linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64; examples map port 4533",
+   "source": "https://www.navidrome.org/docs/installation/docker/",
+   "source_title": "Installing with Docker | Navidrome",
+   "read": "2026-11-08",
+   "note": "So Navidrome runs on every candidate that has Docker, ARM or x86."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Docker / Navidrome",
+   "value": "'The DH2300 does not support Docker and therefore cannot run Navidrome using this guide'",
+   "source": "https://ai.ugreen.com/blogs/how-to/set-up-navidrome-on-nas",
+   "source_title": "How to Install Navidrome on UGREEN NAS with Docker",
+   "read": "2026-11-08",
+   "note": "The same page lists Docker-capable models: DH4300 Plus, DXP2800, DXP2800 GT, DXP4800 Plus/Pro/GT, DXP480T Plus, DXP6800 Pro, DXP8800 Plus. A rival already cites it."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "CPU / RAM / M.2",
+   "value": "Intel Celeron N5095 (4C/4T, up to 2.9 GHz); 8 GB DDR4, max 16 GB (2 × 8 GB); 2 × M.2 2280 PCIe Gen3 x1; 3-year warranty (accessories 1 year)",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 hardware specs | QNAP",
+   "read": "2026-11-08",
+   "note": "M.2 SSDs are not hot-swappable, per the page."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price (maker's US store)",
+   "value": "$389.99 (compare-at $564.98), in stock; DXP2800 GT $459.99",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py. ChatGPT showed $389.99 at Newegg and $296.99 at Walmart."
+  }
+ ],
+ "unsourced": [
+  "Whether the DXP2800's two M.2 slots can hold a storage pool (for a Navidrome/Plex database) or only a cache: UGREEN's product page returned 429, and my parse of the saved store JSON was blocked.",
+  "Whether the QNAP TS-264's M.2 slots can be a storage pool or cache only: the spec page's SSD cache row was blank. The QNAP datasheet was not checked.",
+  "TerraMaster F2-425 Plus specs, M.2 use and TOS Docker/Plex support: terra-master.com returned 429.",
+  "Plex's 'NAS Devices and Limitations' and 'Requirements for remote playback of personal media' support articles: both returned 403. The music exemption is sourced from plex.tv/plans instead.",
+  "Synology KB 'Drive compatibility policies' (DSM 7.3+) per-model rules: the page rendered only its title.",
+  "Plex Pass prices: the plex.tv/plans price widget did not load."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8219468000000002
+ }
+}
