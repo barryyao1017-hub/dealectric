@@ -280,7 +280,7 @@ PRODUCTS = [
  "fit": "Laptop-first mobile work, camping, CPAP backup.",
  "caveats": ["288 Wh is small — about four laptop charges.", "Solar input tops out at 28 V, so most 100 W+ folding panels (and the ALLPOWERS SP037) are too high-voltage for it.", "Not airline-legal."]},
 
-{"slug": "bluetti-elite-300", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-elite-300", "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 48309260058843, "category": "power-station",
  "name": "BLUETTI Elite 300 Portable Power Station", "model": "Elite 300",
  "url": "https://www.bluettipower.com/products/elite-300-portable-power-station", "price": 1199,
  "specs": [("Capacity", "3,014.4 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles"), ("AC output", "2,400 W continuous; 4,800 W Power Lifting; 4× 120 V + 1× TT-30"),
@@ -291,7 +291,7 @@ PRODUCTS = [
  "fit": "Multi-day home backup or off-grid work where it will mostly sit in one place.",
  "caveats": ["Not expandable: BLUETTI says it cannot link to its B80/B230/B300/B500K batteries.", "$1,199 on BLUETTI's US store on 2026-11-02 (store data, no compare-at price); it was $1,099 via an automatic cart discount off $1,699 on 11-01 and $500 off on 10-22, so the price moves."]},
 
-{"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-ac180", "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 44099774480603, "category": "power-station",
  "name": "BLUETTI AC180 Portable Power Station", "model": "AC180",
  "url": "https://www.bluettipower.com/products/ac180", "price": 499, "verified": "2026-11-07",
  "specs": [("Capacity", "1,152 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "1,800 W continuous; 2,700 W Power Lifting; 4 outlets"),
@@ -1222,7 +1222,7 @@ PRODUCTS = [
  "fit": "Owners of a 48 V Club Car replacing a bank of flooded lead-acid batteries who want one box with the charger included.",
  "caveats": ["On 2026-11-03 the cart took an automatic $78.99 'Limited-Time Discount' off the $1,579.99 page price; Vatrer's banner code VIPD2026 did not apply to this kit.", "Vatrer quotes 5,376–5,736 Wh for the 48 V 105 Ah family across its pages; 51.2 V × 105 Ah is 5,376 Wh.", "1993–2013 Club Cars may need the on-board computer bypassed for a lithium conversion (a common dealer note, not from Vatrer).", "46.5 kg shipping weight; the 10-year term needs registration and activation before first use."]},
 
-{"slug": "vatrer-12v-100ah-group-24-bluetooth-150a", "brand": "Vatrer", "program": "awin:vatrer", "category": "lithium-battery",
+{"slug": "vatrer-12v-100ah-group-24-bluetooth-150a", "brand": "Vatrer", "program": "awin:vatrer", "cart_variant": 45089890304158, "category": "lithium-battery",
  "name": "Vatrer 12V 100Ah Group 24 LiFePO4 Battery, Bluetooth, 150A BMS (UL 1973)", "model": "12V 100Ah Group 24, Bluetooth, 1 pack",
  "url": "https://vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery", "price": 259.99, "list_price": 359.99,
  "specs": [("Capacity", "100 Ah, 1,280 Wh"), ("BMS", "150 A continuous"), ("Low-temperature protection", "Stops charging below 32 °F"), ("App", "Bluetooth: state of charge, voltage, current, temperature"), ("Listing", "UL 1973 (Vatrer's page)"), ("Housing", "IP65 ABS, Group 24 footprint"), ("Weight", "About 11 kg shipping weight")],
@@ -1294,7 +1294,7 @@ PRODUCTS = [
  "fit": "Cat owners covering a whole room with one camera.",
  "caveats": ["Records no history without Petcube Care; Wyze's Cam Pan v4 and TP-Link's Tapo pan cameras record to a microSD card for a similar price.", "Corded; no battery."]},
 
-{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "category": "portable-monitor",
+{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "cart_variant": 62712052089202, "category": "portable-monitor",
  "name": "FOPO S788 16-inch Triple Laptop Screen Extender, 3× 1920×1200 IPS", "model": "S788",
  "url": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender", "price": 499.99, "list_price": 999.99,
  "specs": [("Displays", "Three 16-inch IPS panels, 1920 × 1200 each, 16:10, non-touch"), ("Panel", "100% sRGB, 60 Hz, 25 ms, W-LED"), ("Fits", "12–18.5-inch laptops (physical fit, FOPO's range)"), ("Connection", "USB-C, or dual-head USB-A to USB-C; display driver (UsbDisplay) required; external PD power supply included"), ("Systems", "Windows 10/11; macOS from 2019 including M1, M2, M3 (FOPO's list)"), ("Size and weight", "388 × 244 × 41.3 mm folded; 2.64 kg"), ("In the box", "Extender, carrying case, PD power supply, cables, driver USB drive")],
@@ -1905,7 +1905,7 @@ PRODUCTS = [
  "fit": 'Car campers and tailgaters who want fridge-level cold for two days without a power station.',
  "caveats": ["Cooled to 43.5 °F, not 32 °F, in 15 minutes in The Gadgeteer's test.", 'Display can read up to 5 °F warmer than the actual interior.', '55 lb before food; wheels are a paid add-on.', 'Single zone; the 58 L model is the dual-zone one.']},
 
-{"slug": '3dmakerpro-seal-3d-scanner',
+{"slug": '3dmakerpro-seal-3d-scanner', "cart_variant": 40638302093381,
  "brand": '3DMakerpro',
  "program": 'awin:3dmakerpro',
  "category": '3d-scanner',
@@ -1922,7 +1922,7 @@ PRODUCTS = [
  "fit": 'Hobbyists and small-shop users scanning small mechanical parts, figurines, knobs, brackets and other objects that fit in two hands, for 3D printing or CAD reference.',
  "caveats": ['Shiny, black and metallic parts need matte scanning spray, which then has to be washed off.', 'Tracking can drop on smooth, symmetrical or featureless parts; add surface features or use the optional turntable.', 'JMStudio has a learning curve and has crashed on low-spec PCs; meshes are dense and usually need cleanup before printing.', "Standard package ships with no tripod or turntable; the maker's multi-axis turntable is a separate purchase.", "3DMakerpro's own store has recent reviews complaining about slow shipping and support; retailers such as MatterHackers and Best Buy also stock it."]},
 
-{"slug": '3dmakerpro-seal-lite-3d-scanner',
+{"slug": '3dmakerpro-seal-lite-3d-scanner', "cart_variant": 40668717580357,
  "brand": '3DMakerpro',
  "program": 'awin:3dmakerpro',
  "category": '3d-scanner',
@@ -1939,7 +1939,7 @@ PRODUCTS = [
  "fit": 'Budget buyers who need the shape of small parts for 3D printing and do not need color.',
  "caveats": ['No color texture; geometry only.', '0.07 mm resolution softens fine detail such as faces and chainmail on 28 mm miniatures.', 'Same spray and tracking limits as the Seal on shiny, dark or featureless parts.', 'A 2-star B&H owner review titled it a disappointment; exact complaints could not be read.']},
 
-{"slug": '3dmakerpro-mole-3d-scanner',
+{"slug": '3dmakerpro-mole-3d-scanner', "cart_variant": 40519384137797,
  "brand": '3DMakerpro',
  "program": 'awin:3dmakerpro',
  "category": '3d-scanner',
@@ -2139,7 +2139,7 @@ PRODUCTS = [
  "fit": 'Field workers who store a lot of thermal video and want the floodlight and faster wireless charging; the X7 Pro is the better value if you only need the thermal camera.',
  "caveats": ["Same 256×192 sensor as the X7 Pro behind the 512×384 marketing figure; readings ran a few degrees above an IR thermometer in Notebookcheck's test.", 'Notebookcheck measured the speaker at 92.6 dB, well under the 116 dB claim, and found no eSIM and single-band GNSS.', 'AGM sells some models in a US T-Mobile-only version; confirm which version you are ordering and check band 13 is absent before buying for Verizon.', "AGM's site showed a 10% off plus free earbuds banner for the G3 Pro on 2026-11-06; the discount is applied by AGM, not a code."]},
 
-{"slug": 'maono-pd400x-usb-xlr-dynamic-microphone',
+{"slug": 'maono-pd400x-usb-xlr-dynamic-microphone', "cart_variant": 40470569287745,
  "brand": 'Maono',
  "program": 'awin:maono',
  "category": 'microphone',
@@ -2156,7 +2156,7 @@ PRODUCTS = [
  "fit": 'Streamers and solo podcasters buying their first serious mic who want to start on USB and move to an XLR interface later without buying a new mic.',
  "caveats": ['The knob, mute and EQ modes work only in USB mode; over XLR it is a plain dynamic mic and the interface sets gain.', 'XLR sensitivity is -51 dBV, so entry-level interfaces may need an inline booster to reach healthy levels.', 'The desktop stand passes keyboard and desk taps into the recording; a boom arm fixes this.', 'The touch mute is easy to hit by accident.', 'Only a USB-C to USB-A cable is included; laptops with only USB-C ports need another cable.', 'Maono Link software has triggered antivirus false positives; Maono published a notice in November 2025.']},
 
-{"slug": 'maono-pd200x-usb-xlr-dynamic-microphone',
+{"slug": 'maono-pd200x-usb-xlr-dynamic-microphone', "cart_variant": 41944228692033,
  "brand": 'Maono',
  "program": 'awin:maono',
  "category": 'microphone',
@@ -2324,7 +2324,7 @@ PRODUCTS = [
  "fit": 'Anyone buying a Growatt station who wants an inexpensive matching panel with a standard MC4 plug.',
  "caveats": ['24 V open-circuit voltage means two panels in series may be needed for stations that want 30 V or more to start charging.', '200 W is a lab figure; expect 140–160 W in real sun.']},
 
-{"slug": 'birdfy-hum-feeder',
+{"slug": 'birdfy-hum-feeder', "cart_variant": 49365287403800,
  "brand": 'Birdfy',
  "program": 'awin:birdfy',
  "category": 'bird-feeder-camera',
@@ -2342,7 +2342,7 @@ PRODUCTS = [
  "fit": 'First camera hummingbird feeder, especially if ants or a monthly fee are your worry. Also the lightest and simplest to hang.',
  "caveats": ["1080p video at 20 fps, not 2K; Bird Buddy's Pro takes sharper stills.", 'No motion sensitivity setting; a feeder swinging in wind can create empty clips.', 'Without the optional solar panel, heavy traffic (about 200 visits a day) meant recharging every 3 days in one review.', '2.4 GHz Wi-Fi only; the feeder needs Wi-Fi to record and upload.']},
 
-{"slug": 'birdfy-hum-feeder-duo',
+{"slug": 'birdfy-hum-feeder-duo', "cart_variant": 49262417674520,
  "brand": 'Birdfy',
  "program": 'awin:birdfy',
  "category": 'bird-feeder-camera',
@@ -2444,7 +2444,7 @@ PRODUCTS = [
  "fit": 'Phone-and-laptop travelers who want one block that charges a 13-inch MacBook Air or similar laptop through the built-in cable and still has two spare ports.',
  "caveats": ['The built-in cable tops out at 60 W; the full 65 W only comes from the separate USB-C port with your own 5 A cable.', 'Power sharing is not dynamic: plugging anything into the USB-A port drops the USB-C port to 7.5 W (Macworld).', 'At 2.3 ft the cable reaches a nightstand, not a sofa; the Belkin 67W and ESR Xtend 45W reel out about a foot more.', 'The reel cannot be replaced if it fails; the two standard ports still work.', "About 6.9 oz and cube-shaped, so it is heavier than UGREEN's slim Nexode Pro 65W and can sit loosely in worn outlets."]},
 
-{"slug": 'esr-xtend-45w-retractable-charger',
+{"slug": 'esr-xtend-45w-retractable-charger', "cart_variant": 49563430912227,
  "brand": 'ESR',
  "program": 'awin:esr_us',
  "category": 'usb-c-charger',
@@ -2548,7 +2548,7 @@ PRODUCTS = [
  "fit": 'Snorkelers and shallow divers who want sharp photos of fish, coral and tiny reef life, and a camera that also survives hikes, beaches and kids.',
  "caveats": ['Small 1/2.3-inch sensor: noisy below 20 ft or in murky water without a light.', 'Battery is rated for about 330 shots and drains fast with GPS on or in cold water; carry a spare.', 'Cannot shoot while charging over USB-C.', 'Video is behind GoPro and DJI action cameras; 4K tops out at 30 fps.', 'Screen is not touch-sensitive and is hard to read in direct sun.', 'Scuba past 50 ft needs the optional PT-059 housing.']},
 
-{"slug": 'redodo-12v-100ah-self-heating-lifepo4',
+{"slug": 'redodo-12v-100ah-self-heating-lifepo4', "cart_variant": 41538219180122,
  "brand": 'Redodo',
  "program": 'awin:redodo',
  "category": 'lithium-battery',
@@ -2565,7 +2565,7 @@ PRODUCTS = [
  "fit": 'RV, van and cabin owners whose battery sits in an unheated bay and who need to charge from solar, shore power or a DC-DC charger when it is below freezing.',
  "caveats": ['No Bluetooth; you cannot watch cell temperature or state of charge from a phone.', 'Redodo lists a minimum charge current of about 10 A to start the heater; a small solar panel on a cloudy morning may not trigger it.', 'Redodo says this model must not be wired in series or parallel with its non-heated 12V 100Ah batteries.', "Heating from -4°F to charging temperature takes well over an hour by Redodo's own figures.", 'Not a starter battery and not rated for golf carts; trolling motors of 30 to 70 lb thrust only.']},
 
-{"slug": 'redodo-12v-100ah-group-24-bluetooth-low-temp',
+{"slug": 'redodo-12v-100ah-group-24-bluetooth-low-temp', "cart_variant": 41413897912410,
  "brand": 'Redodo',
  "program": 'awin:redodo',
  "category": 'lithium-battery',
@@ -2900,7 +2900,7 @@ PRODUCTS = [
  "fit": 'Small shops that want pro-tier laser line counts and the tightest claimed accuracy under $1,000 and already own a recent gaming-class PC.',
  "caveats": ['Same body, weight and marker needs as the MetroX; the gains are speed and claimed accuracy, not new modes.', 'Heavier PC demands than the MetroX: Intel i7 13th Gen class CPU and an RTX 3060 at minimum.', 'Runs on the Revo Metro software that owners report crashing at high frame counts in version 5.8.5.', 'Launched December 2025, so there are fewer independent tests than for the MetroX.', 'The $1,049 Advanced Edition adds only magnetic marker blocks.']},
 
-{"slug": 'oscal-powermax-6000-3600wh-240v',
+{"slug": 'oscal-powermax-6000-3600wh-240v', "cart_variant": 50116542038236,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -2918,7 +2918,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a 240 V well pump, dryer or mini-split plus a refrigerator and lights, or RV and workshop use, when you want 6,000 W at 240 V without paying $2,700 or more.',
  "caveats": ['Pre-sale on 2026-11-06: the store listed shipping around November 26.', 'OSCAL does not name the 240 V receptacle type. Confirm NEMA 14-50 versus L14-30 with support before buying an inlet cord or transfer switch.', 'A lab test measured about 2,960 Wh usable (82% of rated) on average, and only 66% at a slow 100 W AC load.', 'No OSCAL app; the unit pairs through the generic Smart Life app with basic controls.', 'No IP rating; splash and dust resistant only, so keep it sheltered.', "OSCAL's own pages disagree on warranty wording (5 years in the spec table, 4-year+ in a comparison table); the policy page says 60 months."]},
 
-{"slug": 'oscal-powermax-3600-se-3600wh',
+{"slug": 'oscal-powermax-3600-se-3600wh', "cart_variant": 67899068743900,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -2935,7 +2935,7 @@ PRODUCTS = [
  "fit": 'Multi-day backup for a refrigerator, freezer, CPAP, lights and electronics when nothing in the house needs 240 V.',
  "caveats": ['No 240 V output; it will not run a 240 V well pump or dryer.', 'The store page shows the EU version; confirm the US outlet layout before buying.', 'Few independent reviews of this model.']},
 
-{"slug": 'oscal-powermax-1800-se-1024wh',
+{"slug": 'oscal-powermax-1800-se-1024wh', "cart_variant": 50116360700124,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -3036,7 +3036,7 @@ PRODUCTS = [
  "fit": 'Sony shooters who want an aperture ring and breathing-free focus pulls for video at well under the price of a native 85.',
  "caveats": ['Costs $140 more than the SE Mark II and focuses less closely (0.85 m).', 'Could be sharper at f/1.8; peak sharpness is f/4 to f/5.6.', "The aperture ring's A position can slip out of auto by accident.", 'Autofocus is smooth rather than fast; not a sports lens.', 'Background blur can get busy in cluttered scenes.']},
 
-{"slug": 'arenti-go3g-4g-lte-camera',
+{"slug": 'arenti-go3g-4g-lte-camera', "cart_variant": 62817539424415,
  "brand": 'Arenti',
  "program": 'awin:arenti',
  "category": 'security-camera',
@@ -3054,7 +3054,7 @@ PRODUCTS = [
  "fit": 'A remote spot with usable 4G coverage where you want motion clips and an occasional live look for the least money.',
  "caveats": ['Needs its own data plan after the free trial; the plan is bought inside the Arenti app and the price is not shown outside it. Listings disagree on whether the trial is 3 or 7 days.', '4G only: no Wi-Fi fallback, and you cannot swap in a 5G or eSIM plan.', "Arenti's Trustpilot score is 2.8 out of 5 from 61 reviews, with slow support the most common complaint.", 'Check that the listing you buy includes the solar panel; the camera-only price may not.']},
 
-{"slug": 'arenti-go1-outdoor-camera-solar-kit',
+{"slug": 'arenti-go1-outdoor-camera-solar-kit', "cart_variant": 62864134439071,
  "brand": 'Arenti',
  "program": 'awin:arenti',
  "category": 'security-camera',
@@ -3072,7 +3072,7 @@ PRODUCTS = [
  "fit": 'A driveway, yard or porch within reach of 2.4 GHz Wi-Fi.',
  "caveats": ['Needs Wi-Fi; it is not a cellular camera.', 'Spec details were read from retailer listings, not the Arenti page, which could not be loaded on 2026-11-06.']},
 
-{"slug": 'arenti-ainanny-b2-baby-monitor-2-cam',
+{"slug": 'arenti-ainanny-b2-baby-monitor-2-cam', "cart_variant": 62578846892191,
  "brand": 'Arenti',
  "program": 'awin:arenti',
  "category": 'baby-monitor',
@@ -3194,7 +3194,7 @@ PRODUCTS = [
  "fit": 'Shops that need ABS, ASA or nylon parts over 12.6 inches, or want to print several large parts per plate.',
  "caveats": ['Early owners reported firmware and extruder problems after updates; back up settings before flashing.', 'PLA clogs from heat creep if the chamber stays warm; QIDI sells a $199 Polar Cooler as the fix.', 'At 103 lb it is a two-person lift.', "QIDI's own comparison lists it at $1,049; we could not confirm a higher regular price."]},
 
-{"slug": 'botslab-w101-window-camera',
+{"slug": 'botslab-w101-window-camera', "cart_variant": 53534560026916,
  "brand": 'Botslab',
  "program": 'awin:botslab',
  "category": 'security-camera',
@@ -3211,7 +3211,7 @@ PRODUCTS = [
  "fit": 'Renters and apartment owners who want one plug-in camera on a window that watches the driveway or walkway outside and the room inside, with continuous recording to a 512 GB card and no required subscription.',
  "caveats": ['The inward lens is live view only: it does not record and has no motion detection.', 'The outward lens needs some outdoor light at night (porch light, streetlight); an unlit yard goes dark.', 'No tilt: the view is fixed straight out, so a window above a driveway shows mostly the far side.', 'A reviewer could not get Alexa or Google Assistant control working; there is no HomeKit.', 'Botslab is the overseas brand of Qihoo 360; Botslab says US customer footage is stored on servers in Virginia.', 'Digital zoom only; detail degrades past about 4x.']},
 
-{"slug": 'botslab-g980h-4-camera-dash-cam',
+{"slug": 'botslab-g980h-4-camera-dash-cam', "cart_variant": 50741246689572,
  "brand": 'Botslab',
  "program": 'awin:botslab',
  "category": 'dash-cam',
@@ -3362,7 +3362,7 @@ PRODUCTS = [
  "fit": "Owners of 200 Ah to 400 Ah 12 V banks who want Redodo's pre-charge mode and a mountable case.",
  "caveats": ["LiTime's 12V 40A charger does the same job for less today.", "Check your battery's maximum charge current; some 100 Ah batteries cap it at 50 A or less, and 40 A into a 100 Ah battery is 0.4C."]},
 
-{"slug": 'wuben-x5-3-in-1-class-3r',
+{"slug": 'wuben-x5-3-in-1-class-3r', "cart_variant": 49785167872240,
  "brand": 'Wuben',
  "program": 'awin:wuben',
  "category": 'flashlight',
@@ -3379,7 +3379,7 @@ PRODUCTS = [
  "fit": 'Mechanics, inspectors, trainers and anyone who points at things for a living and wants a laser strong enough for daylight without a sealed battery or a proprietary charger.',
  "caveats": ['Turbo is brief: independent testing shows about 400 lm sustained after the first minute.', 'Cool, slightly green tint with roughly 65 to 70 CRI; no high-CRI option.', 'IP65: rain-proof, not for submersion.', 'Mode dial sits where it often takes two hands to change modes.', 'The 3R laser version ships only to the US and Canada and must never be aimed at eyes, vehicles or aircraft.']},
 
-{"slug": 'wuben-x5-3-in-1-class-1',
+{"slug": 'wuben-x5-3-in-1-class-1', "cart_variant": 49960590377200,
  "brand": 'Wuben',
  "program": 'awin:wuben',
  "category": 'flashlight',
@@ -3447,7 +3447,7 @@ PRODUCTS = [
  "fit": 'Travelers who carry a laptop, a tablet and a phone and want fast charging without carrying cables; best value in this group.',
  "caveats": ["No US lab test yet. Basic Tutorials' review of the EU unit measured about 95 W peak to a laptop with two other devices connected and found both USB-C outputs advertising a 100 W (20 V 5 A) top profile; take the 140 W figure as the maker's rating.", 'Three devices at once drop the total to 120 W.', 'Cables are short and do not retract; they clip magnetically to the side.', 'Display is hard to read in direct sunlight.', '1.2 lb and 5.7 in long; fits a bag, not a pocket.']},
 
-{"slug": 'mova-lidax-ultra-1000',
+{"slug": 'mova-lidax-ultra-1000', "cart_variant": 47255944626412,
  "brand": 'MOVA',
  "program": 'cj:mova',
  "category": 'robot-mower',
@@ -3465,7 +3465,7 @@ PRODUCTS = [
  "fit": 'Flat or gently sloped quarter-acre lots with shade, fences or a house close by, where an RTK mower would drop signal. Owners who will spend an hour mapping and marking no-go zones once.',
  "caveats": ['Week-one rescues are common: New Atlas needed about 25 rescues on day one until it mapped no-go zones around a 2-in ledge, shrubs and a driveway lip, then ran 12-plus hours with none.', 'Obstacle detection is the main reviewer complaint: inside digital saw it drive into large flat objects, and Notebookcheck found small objects were only caught at the most sensitive setting. Turn sensitivity up and leave Obstacle Avoidance on Edges enabled.', 'Rear-wheel drive with front casters digs in on soft or sandy soil and side slopes; for roots and hills choose an AWD mower.', 'Measured edge strip was about 4 in in one test despite the 2-in claim; expect to trim around fences and the dock.', 'Runtime per charge is 60–80 min, so a full quarter acre takes several charge cycles across a day.']},
 
-{"slug": 'mova-lidax-ultra-2000',
+{"slug": 'mova-lidax-ultra-2000', "cart_variant": 47255944298732,
  "brand": 'MOVA',
  "program": 'cj:mova',
  "category": 'robot-mower',
@@ -4328,7 +4328,7 @@ PRODUCTS = [
  "fit": 'For shoppers who will schedule the NAS to sleep overnight.',
  "caveats": ['LinuxLinks measured 29.2 W running with disks idle (2 × 6 TB 7,200 rpm HDDs plus 2 NVMe SSDs)']},
 
-{"slug": 'fopo-s11-dual-16-inch-laptop-screen-extender',
+{"slug": 'fopo-s11-dual-16-inch-laptop-screen-extender', "cart_variant": 62712053236082,
  "brand": 'FOPO',
  "program": 'awin:fopo',
  "asin": None,
@@ -4345,7 +4345,7 @@ PRODUCTS = [
  "fit": '16-inch laptops with two video-capable outputs, including every Apple-silicon 16-inch MacBook Pro.',
  "caveats": ['FOPO says base M1, M2 and M3 chips are not supported for the dual-extension setup', 'A charging-only USB-C port cannot carry video, so each screen needs a video-capable USB-C port or HDMI']},
 
-{"slug": 'fopo-s9g-dual-16-inch-laptop-screen-extender',
+{"slug": 'fopo-s9g-dual-16-inch-laptop-screen-extender', "cart_variant": 62712053006706,
  "brand": 'FOPO',
  "program": 'awin:fopo',
  "asin": None,
