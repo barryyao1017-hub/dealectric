@@ -1,0 +1,56 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says how much of a 20,000 mAh bank actually reaches a device. Anker's support article shows how: multiply the cell's mAh by 3.7 V, convert to 5 V and apply a conversion efficiency of about 82%. Done for a 20,000 mAh bank, that gives about 12,100 mAh at 5 V (about 61 Wh), not 20,000 mAh.",
+ "standout": 1,
+ "standout_why": "I compared four rival pages. power-verdict.com/power-banks (2026-11-02) says 'The mAh figure is at about 3.7 V; conversion to USB voltage loses part of it' but gives no delivered figure. rosenberryrooms.com uses 3.7 V only to get 74 Wh for the airline limit. itechguides.com says 'Real device runtime is lower after voltage conversion' with no number. verdict-reviews.com lists nominal Wh only. So rivals have the idea but not the number or a maker's own method. None of the four gives the 20V/PPS output profiles or a port-sharing table for the INIU Carry, INIU Cougar, Baseus FC11 or Anker Zolo 30W. That is the mechanism that would actually decide the pick, and I could not source it (see unsourced).",
+ "decides": "This confirms the pick rather than changing it. Every candidate is 20,000 mAh of 3.7 V cells, so the conversion loss hits them all about equally and doesn't separate them. Its use on the page is to correct a claim. Two of the three ChatGPT answers promised '3–4 full smartphone charges'. The honest basis is about 61 Wh reaching the device (74 Wh × 0.82, using Anker's figure). The pick between 45 W and 65 W banks for laptop use still depends on whether a port offers a 20 V profile and how output is split across ports. I could not open a source for either today.",
+ "candidates": [
+  "INIU Carry 20K 45W (P51L-E2)",
+  "INIU Cougar 20K 65W (P62-E1)",
+  "Baseus EnerFill FC11 20K 45W",
+  "Anker Zolo 20K 30W built-in USB-C (A1689)",
+  "EcoFlow RAPID Power Bank 20K 45W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why a power bank's rated capacity is lower than its cell mAh (maker's method)",
+   "value": "Cells at about 3.7 V; rated output calculated at 5 V; boost conversion 'typically around 82% efficiency'. Worked example: 10,000 mAh → 37 Wh → 7,400 mAh at 5 V → × 0.82 = 6,068 mAh",
+   "source": "https://service.anker.com/article-description/Why-Is-the-Rated-Capacity-Marked-on-a-Power-Bank-Lower-Than-Expected",
+   "source_title": "Why Is the Rated Capacity Marked on a Power Bank Lower Than Expected? (Anker Support)",
+   "read": "2026-11-08",
+   "note": "Anker's quoted words: 'the rated output capacity of the power bank is often calculated at a standard output voltage of 5V' and 'Rated Capacity = 7,400mAh × 0.82 = 6,068mAh'."
+  },
+  {
+   "product": "general",
+   "label": "Same method applied to a 20,000 mAh bank",
+   "value": "about 74 Wh at the cells; about 14,800 mAh at 5 V before losses; about 12,100 mAh (about 61 Wh) at 5 V after 82% conversion",
+   "source": "https://service.anker.com/article-description/Why-Is-the-Rated-Capacity-Marked-on-a-Power-Bank-Lower-Than-Expected",
+   "source_title": "Why Is the Rated Capacity Marked on a Power Bank Lower Than Expected? (Anker Support)",
+   "read": "2026-11-08",
+   "note": "My arithmetic using Anker's formula: 20 Ah × 3.7 V = 74 Wh; 74 Wh / 5 V = 14.8 Ah; 14.8 Ah × 0.82 = 12.14 Ah; 74 Wh × 0.82 = 60.7 Wh. The 82% is Anker's typical figure, not a measurement of any candidate. At 20 V laptop output the per-model efficiency may differ."
+  },
+  {
+   "product": "Baseus EnerFill FC11 20K 45W",
+   "label": "Port outputs and multi-device count",
+   "value": "each of the two built-in USB-C cables up to 45 W; ports include 45 W USB-C and 33 W USB-A; four devices at once",
+   "source": "https://www.notebookcheck.net/Baseus-releasing-new-20K-45W-portable-power-bank-globally.1229345.0.html",
+   "source_title": "Baseus releasing new 20K 45W portable power bank globally (Notebookcheck)",
+   "read": "2026-11-08",
+   "note": "Notebookcheck news report, not a measurement. It gives no figure for total output when several ports are used at once. Its prices ($29.99 at Amazon, $39.99 RRP) are from launch, not today's price."
+  }
+ ],
+ "unsourced": [
+  "Port-sharing tables (total output when two or more ports are used at once) for the INIU Carry P51L-E2, INIU Cougar P62-E1, Baseus FC11, Anker Zolo A1689 and EcoFlow RAPID 20K. iniushop.com, baseus.com, anker.com (CA) and the storecheck tool all returned HTTP 429. manuals.plus and Newegg returned 403. A search snippet claimed P62-E1 'OUT1+OUT2: 65W (Max)', but another storefront said 45W+20W, and I could not open either page.",
+  "INIU Cougar P62-E1 USB-C voltage profiles (a snippet said 20V⎓3.25A on OUT1 and 36 W on OUT2). I could not open the maker page or the manual (manuals.plus/asin/B0DB86W481, 403).",
+  "Whether the 45 W banks (INIU Carry, Baseus FC11, EcoFlow RAPID 20K) offer a 20 V PD profile, and whether any candidate supports PPS (Samsung 45 W Super Fast Charging). Maker pages were rate-limited.",
+  "Rated capacity at 5 V printed by each maker for the five candidates (for example on the label or in the manual spec table). I could not open any product page or manual.",
+  "Today's maker-store prices for all candidates. Shopify stores returned 429 to both storecheck.py and WebFetch."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.8821183000000002
+ }
+}

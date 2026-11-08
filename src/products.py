@@ -4430,6 +4430,22 @@ PRODUCTS = [
  "fit": 'Buyers who want the most usable energy from a 1 kWh-class station with 400 W of matching panels, in stock at the maker.',
  "caveats": ['The solar input is capped at 10 A, so the full 400 W needs the array at 40 V or more. Wire the two panels in series and keep the total open-circuit voltage under 60 V.', "BLUETTI's AC180 + 200 W kit ($769) plus one SP200L ($399) comes to $1,168, which is $64 less than this bundle.", 'At about 34 W, Outdoor Life measured only 620 Wh over 15.1 h.']},
 
+{"slug": 'baseus-enerfill-fc11-20000mah-45w',
+ "brand": 'Baseus',
+ "program": 'awin:baseus_us',
+ "category": 'power-bank',
+ "name": 'Baseus EnerFill FC11 Power Bank with Dual Built-in USB-C Cables, 20,000 mAh, 45 W',
+ "model": 'EnerFill FC11 20K 45W (E00311)',
+ "url": 'https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-built-in-usb-c-cables-20000mah-45w',
+ "price": 39.99,
+ "verified": '2026-11-08',
+ "specs": [('Capacity', '20,000 mAh'), ('Built-in cables', 'Two USB-C, up to 45 W each (Notebookcheck)'), ('Other ports', 'USB-C 45 W, USB-A 33 W (Notebookcheck)'), ('Devices at once', 'Four (Notebookcheck)'), ('Input', '30 W USB-C (Notebookcheck)'), ('Weight', 'About 362 g (Baseus)'), ('Low-current mode', 'Yes, for earbuds and watches (Baseus)')],
+ "warranty": 'Baseus standard warranty (not stated on the product page)',
+ "returns": '7-day no-reason return; 30-day defect guarantee (baseus.com refund policy, read 2026-11-08)',
+ "summary": 'A 20,000 mAh, 45 W bank with two built-in USB-C cables, so two phones can charge with no loose cables.',
+ "fit": "Shoppers who charge two USB-C devices at once and don't want to carry cables.",
+ "caveats": ['Baseus says charging may slow when several devices are connected, because the output is shared.', "Some retailer listings called 'EnerFill FC11 20000mAh' are 22.5 W units. Match SKU E00311 / E0031100.", 'No independent capacity or sustained-output bench test of this model has been published yet.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

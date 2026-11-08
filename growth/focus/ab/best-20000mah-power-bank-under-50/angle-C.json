@@ -1,0 +1,92 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states the PPS profiles that decide Samsung Galaxy fast-charging speed. Anker's spec sheet caps the Zolo 20K 30W (A1689) USB-C PPS at 5–11 V 2.75 A, which is about 30 W, so it cannot reach Samsung's 45 W. Techtest.org measured INIU's 20K 65W BI-B62 at PPS 3.3–15 V up to 4.5 A on USB-C 1, and says that is enough for a Galaxy S23 Ultra to charge at its full 45 W.",
+ "standout": 2,
+ "standout_why": "I compared against power-verdict.com/power-banks (2026-11-02), verdict-reviews.com's 20000mAh category page (2026-10-10), the itechguides.com October 2026 deals page and our own current page. power-verdict says nothing about PPS or Samsung Super Fast Charging, and its only protocol mentions are 'PD 3.0 and QC 4.0' (NOBIS) and 22.5 W claims. verdict-reviews says the INIU P62-E1 'charges a MacBook Air fully' but gives no PPS or phone-protocol information. itechguides only warns that 'listing wattage does not establish compatibility' and names no protocols. The Best Buy and Walmart results are store listings, and none of them was read for PPS. No rival gives a voltage or amp profile for any pick.",
+ "decides": "This splits the pick by phone. Galaxy S-series Ultra or Plus owners who want 45 W should take the INIU Cougar 65W. A named reviewer measured 45 W-capable PPS on its predecessor, the BI-B62, and the second USB-C port also offers PPS 3.3–11 V 4.5 A. These owners should skip the Anker Zolo 20K 30W, whose maker spec caps PPS at 2.75 A up to 11 V and the whole bank at 30 W. For iPhone owners nothing changes, because Apple phones charge over plain USB-PD. The Baseus FC11 page says it has a Low Current Mode and that output is shared when several devices charge. Anker's UK page confirms pass-through charging and a double-tap low-current mode on the Zolo. These details help the multi-device and earbuds cases but don't change the top pick.",
+ "candidates": [
+  "INIU Cougar 20K 65W (P62-E1)",
+  "INIU Carry 20K 45W (P51L-E2)",
+  "Baseus EnerFill FC11 20K 45W (E00311)",
+  "Anker Zolo 20K 30W built-in cable (A1689)",
+  "EcoFlow RAPID 20K 45W built-in cable"
+ ],
+ "findings": [
+  {
+   "product": "Anker Zolo 20K 30W built-in USB-C cable (A1689)",
+   "label": "USB-C output profiles incl. PPS",
+   "value": "5V 3A / 9V 3A / 12V 2.5A / 15V 2A / 20V 1.5A; PPS 5–11 V at 2.75 A; SCP 5–10 V 2.25 A",
+   "source": "https://service.anker.com/product-description/a08J1000000XzfPIAS/anker-zolo-power-bank-20k-30w-builtin-usbc-cable",
+   "source_title": "Anker Zolo Power Bank (20K, 30W, Built-In USB-C Cable) – Anker service product description",
+   "read": "2026-11-08",
+   "note": "Quoted from Anker's support spec page. The same page also lists 'Input: 100-240V ~ 50-60Hz 1.5A', which looks like charger data mixed into the page, so I used only the USB-C rows. 11 V × 2.75 A = 30.25 W, which matches the 30 W total. That is below the 45 W Samsung Super Fast Charging 2.0 tier."
+  },
+  {
+   "product": "Anker Zolo 20K 30W built-in USB-C cable (A1689)",
+   "label": "Total output / input / pass-through / low-current mode",
+   "value": "30 W max total; 20 W input (about 2.5 h full recharge with a 20 W charger); pass-through supported; low-current mode toggled by double-pressing the power button; 318 g",
+   "source": "https://www.anker.com/uk/products/a1689",
+   "source_title": "Anker Zolo Power Bank (20K, 30W, Built-In USB-C Cable) – Anker UK",
+   "read": "2026-11-08",
+   "note": "This is the UK page because https://www.anker.com/products/a1689 returned 404 for the US store. The page names the iPhone 15 (0–57% in 30 min) and the Samsung S24 (3.79 full charges). It does not mention laptops or the Switch."
+  },
+  {
+   "product": "INIU Cougar 20K 65W (BI-B62, predecessor of P62-E1)",
+   "label": "USB-C 1 output profiles incl. PPS",
+   "value": "PD 5V/9V/12V/15V at 3 A and 20V at 3.25 A (65 W); PPS 3.3–15 V up to 4.5 A",
+   "source": "https://techtest.org/iniu-bi-b62-20000-mah-powerbank-mit-65w-leistung-im-test-empfehlung",
+   "source_title": "INIU BI-B62 20000 mAh Powerbank mit 65W Leistung im Test, Empfehlung! – Techtest.org (Michael Barton)",
+   "read": "2026-11-08",
+   "note": "Michael Barton read these profiles with a USB meter; the article is dated 2023-12-05. He writes that a Galaxy S23 Ultra can charge at the full 45 W over this PPS range. Caveat: the test covers the BI-B62, and I could not open INIU's US page for the current P62-E1 because it returned HTTP 429 three times, so I have not confirmed the P62-E1 keeps these profiles. Our page and verdict-reviews describe the P62-E1 the same way: 65 W / 36 W / 18 W ports and 45 W input."
+  },
+  {
+   "product": "INIU Cougar 20K 65W (BI-B62, predecessor of P62-E1)",
+   "label": "USB-C 2 output profiles incl. PPS",
+   "value": "PD 5V/9V/12V at 3 A (36 W, no 15 V or 20 V step); PPS 3.3–11 V up to 4.5 A",
+   "source": "https://techtest.org/iniu-bi-b62-20000-mah-powerbank-mit-65w-leistung-im-test-empfehlung",
+   "source_title": "INIU BI-B62 20000 mAh Powerbank mit 65W Leistung im Test, Empfehlung! – Techtest.org (Michael Barton)",
+   "read": "2026-11-08",
+   "note": "There is no 20 V on this port, so laptops that need 20 V will only charge from USB-C 1. Barton also says the USB-A port's advertised SuperVOOC and DASH/WARP protocols failed in practice: a Realme phone aborted fast charging. Treat USB-A as 18 W QC only."
+  },
+  {
+   "product": "INIU Cougar 20K 65W (BI-B62, predecessor of P62-E1)",
+   "label": "Measured usable capacity",
+   "value": "63.6–68.3 Wh (17,202–18,473 mAh at the 3.7 V cell rating) out of 74 Wh rated",
+   "source": "https://techtest.org/iniu-bi-b62-20000-mah-powerbank-mit-65w-leistung-im-test-empfehlung",
+   "source_title": "INIU BI-B62 20000 mAh Powerbank mit 65W Leistung im Test, Empfehlung! – Techtest.org (Michael Barton)",
+   "read": "2026-11-08",
+   "note": "Barton reports this as 86–92% of rated capacity, worst to best case. 74 Wh rated is under the 100 Wh carry-on limit."
+  },
+  {
+   "product": "Baseus EnerFill FC11 20K 45W (SKU E0031100)",
+   "label": "Maker-stated multi-device behaviour, low-current mode, compatibility list, price",
+   "value": "'Charging may slow when powering multiple devices, as output is shared'; 'Low Current Mode' listed; compatible list starts with iPhone 17 / 17 Air / 17 Pro / 17 Pro Max / 16 and also names MacBooks, Pixels, Galaxy phones, iPads and AirPods; about 362 g; $39.99 (a code brings it to $28.99)",
+   "source": "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-built-in-usb-c-cables-20000mah-45w",
+   "source_title": "Baseus EnerFill FC11 Power Bank with Cables 20000mAh 45W – Baseus US",
+   "read": "2026-11-08",
+   "note": "The page gives no per-port voltage profiles, no PPS, no input rating and no Wh. Its only use exclusions are shipping ones: it does not deliver to AK, HI, US territories or APO/FPO addresses."
+  },
+  {
+   "product": "Baseus EnerFill FC11 20K 45W",
+   "label": "Per-port outputs",
+   "value": "Each of the two built-in USB-C cables up to 45 W; USB-C port 45 W; USB-A port 33 W; 30 W USB-C input",
+   "source": "https://www.notebookcheck.net/Baseus-releasing-new-20K-45W-portable-power-bank-globally.1229345.0.html",
+   "source_title": "Baseus releasing new 20K 45W portable power bank globally – Notebookcheck (Polly Allcock)",
+   "read": "2026-11-08",
+   "note": "The article is dated 2026-02-18. Notebookcheck says 'it is unclear how the power is distributed when multiple outputs are in use'. It gives an S25 Ultra figure of 60% in 30 min but makes no PPS claim. Several retailer listings sold as 'EnerFill FC11 20000mAh' are 22.5 W units, so match SKU E0031100 or E00311."
+  }
+ ],
+ "unsourced": [
+  "INIU Cougar P62-E1: the maker's own per-port and PPS profile. The INIU US, UK-main and EU-main product pages and storecheck.py all returned HTTP 429. The manuals.plus copies of the manual (B0DB895CWT) returned 403.",
+  "INIU Carry 20K 45W (P51L-E2): PPS profile, Samsung 45 W support and pass-through. iniushop.com search returned HTTP 429, and I found no named reviewer.",
+  "EcoFlow RAPID 20K 45W: PPS and Samsung Super Fast Charging 2.0 claim and price. A search snippet mentioned PPS for Samsung SFC 2.0 at $41.39, but the us.ecoflow.com and eu.ecoflow.com pages and storecheck.py all returned HTTP 429, so I could not open the page to confirm.",
+  "Baseus FC11: PPS ranges and how output is split across ports. The maker page doesn't list them, and the manuals.plus E00311 manual returned 403.",
+  "Samsung's own document giving the PPS current and voltage needed for 25 W and 45 W Super Fast Charging. I didn't fetch it because of the tool budget. The Anker 45 W exclusion above rests only on the 30 W total-output arithmetic."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9092131999999999
+ }
+}
