@@ -1,0 +1,126 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the $17,833.09 FreeScan UE Pro2 price ChatGPT showed is no US price at all: it equals 3D Printing Canada's CAD 24,999 listing converted to dollars. It also gives no US price for the EinScan Rigil ($4,999 at MatterHackers) or the FreeScan Combo+ ($14,999 at Top3DShop). 3D Scanner Match, the cited buyer page, marks all three 'quote needed'.",
+ "standout": 2,
+ "standout_why": "I compared against 3dscannermatch.com/3d-scanners/reverse-engineering (cited twice), invenio3d.com.au (cited) and trimechmanufacturing.com SHINING 3D Buyers Guide 2026 (cited). 3D Scanner Match already lists the low end: MetroX $749, MetroX Pro $907, Raptor $879 and Raptor Pro $1,499. It also already gives Raptor plus QUICKSURFACE Lite as $1,419. For the HandySCAN BLACK Elite, FreeScan Combo and EinScan Rigil it shows 'quote needed', with no prices. Invenio gives only price tiers ('Premium', 'Entry to mid'). TriMech gives no prices at all. None of them prices the $5k to $25k band, and none notices that ChatGPT's UE Pro2 price is a converted Canadian listing.",
+ "decides": "This confirms the budget pick and does not overturn it. The MetroX line, from $749 on Revopoint's store, stays the value choice. The next step up costs real money: the EinScan Rigil is $4,999 with no CAD software listed, and its laser volumetric accuracy of 0.04 + 0.06 mm/m is looser than the 0.02 + 0.04 mm/m MetroX Pro figure on our page. The first verifiable US price at metrology grade is the Combo+ at $14,999. The UE Pro2 has no US list price ChatGPT could show, and Creaform sells only by quote. So the page can tell a shopper under about $5k that every listed figure above the MetroX/Raptor tier is either a quote or a Canadian price.",
+ "candidates": [
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creality CR-Scan Raptor",
+  "Creality Raptor Pro",
+  "Revopoint INSPIRE 2",
+  "SHINING 3D EinScan Rigil",
+  "SHINING 3D FreeScan Combo+",
+  "SHINING 3D FreeScan UE Pro2",
+  "Creaform HandySCAN 3D PRO",
+  "Creaform HandySCAN 3D BLACK Elite",
+  "Revopoint MetroY Ultra"
+ ],
+ "findings": [
+  {
+   "product": "Revopoint MetroX",
+   "label": "Price, maker US store (series entry price)",
+   "value": "$749.00 (compare-at $1,948)",
+   "source": "https://www.revopoint3d.com/products/3d-laser-scanner-metrox",
+   "source_title": "Revopoint MetroX & MetroX Pro: Blue Laser Line and Full-field Structured Light 3D Scanner",
+   "read": "2026-11-08",
+   "note": "From storecheck.py search on revopoint3d.com. $749 is the lowest variant on the shared MetroX/MetroX Pro product page and is shown as available. The product call that lists each variant returned HTTP 429, so I couldn't price the MetroX Pro variant on its own."
+  },
+  {
+   "product": "Revopoint MetroY Ultra",
+   "label": "Price, maker US store",
+   "value": "$1,856.00 (compare-at $6,889)",
+   "source": "https://www.revopoint3d.com/products/metroy-ultra-metrology-solution",
+   "source_title": "Revopoint MetroY Ultra: High-Performance Wireless 3D Scanner for Small to Medium Workpieces",
+   "read": "2026-11-08",
+   "note": "Came up in the same Revopoint store search. It's Revopoint's step up from the MetroX, and none of ChatGPT's results mention it. The ball plate listing says Revo Metro's measurement module is 'currently available only for MetroY Ultra and MetroY Ultra CMM'. That is an inspection feature the MetroX lacks."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Price, maker US store",
+   "value": "$879.00 (was $1,499.00)",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner – Creality Store",
+   "read": "2026-11-08",
+   "note": "Read with WebFetch. The same price as ChatGPT's B&H card."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Scan-to-CAD software, sold separately",
+   "value": "QUICKSURFACE Lite (1-year) $540.00 add-on; no CAD software bundled",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner – Creality Store",
+   "read": "2026-11-08",
+   "note": "$879 + $540 = $1,419 before tax. 3D Scanner Match already states this total, so it isn't new."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Price, maker US store",
+   "value": "$1,499.00 (was $1,999.00); with Scan Bridge and manual turntable, $1,763.99",
+   "source": "https://store.creality.com/products/creality-raptor-pro-3d-scanner",
+   "source_title": "Creality Raptor Pro 3D Scanner – Creality Store",
+   "read": "2026-11-08",
+   "note": "No CAD software is bundled. QUICKSURFACE Lite is the same $540/yr add-on. Where it loses: at $1,499 it costs about twice the $749 MetroX entry price."
+  },
+  {
+   "product": "SHINING 3D EinScan Rigil",
+   "label": "Price, US retailer",
+   "value": "$4,999.00",
+   "source": "https://www.matterhackers.com/r/QiFoc5",
+   "source_title": "Shining 3D Einscan Rigil Wireless Handheld 3D Scanner – MatterHackers",
+   "read": "2026-11-08",
+   "note": "The same figure as ChatGPT's B&H card, which I couldn't open. In the box: scanner, 4× 6000 mAh batteries, case, calibration board and markers. No EXModel, Geomagic or QUICKSURFACE is listed."
+  },
+  {
+   "product": "SHINING 3D EinScan Rigil",
+   "label": "Volumetric accuracy (retailer spec)",
+   "value": "Laser HD up to 0.04 + 0.06 mm/m; IR Rapid up to 0.1 + 0.3 mm/m",
+   "source": "https://www.matterhackers.com/r/QiFoc5",
+   "source_title": "Shining 3D Einscan Rigil Wireless Handheld 3D Scanner – MatterHackers",
+   "read": "2026-11-08",
+   "note": "Where it loses: it costs about $4,250 more than the $749 MetroX, and its laser volumetric figure is looser than the MetroX Pro's 0.02 + 0.04 mm/m (from our page, read 2026-11-06). What the extra money buys is standalone, wireless operation."
+  },
+  {
+   "product": "SHINING 3D FreeScan Combo+",
+   "label": "Price, US retailer",
+   "value": "$14,999.00 (shown beside $18,499.00, which looks like the former price); in stock, 2–3 week lead time",
+   "source": "https://top3dshop.com/product/shining-3d-freescan-combo-plus-3d-scanner",
+   "source_title": "Shining 3D FreeScan Combo+ 3D Scanner – Top3DShop",
+   "read": "2026-11-08",
+   "note": "Scan accuracy up to 0.02 mm; volumetric 0.02 + 0.033 mm/m (retailer spec). ChatGPT's '$11,999 listed configuration' at the Afinia 3D Store could not be opened: afinia3d.com search returned 404."
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Price at the retailer ChatGPT showed",
+   "value": "CAD $24,999.00, in stock",
+   "source": "https://3dprintingcanada.com/search?q=freescan+ue+pro2",
+   "source_title": "Search: freescan ue pro2 – 3D Printing Canada",
+   "read": "2026-11-08",
+   "note": "ChatGPT's card read $17,833.09. 17,833.09 / 24,999 = 0.7134, which looks like a CAD→USD conversion, not a US price. The product page itself returned HTTP 429, so this figure comes from the store's own search results page. Where it loses: there is no US list price, and it costs about 33× the $749 MetroX entry price."
+  },
+  {
+   "product": "general",
+   "label": "Software and price coverage on the cited buyer page",
+   "value": "HandySCAN BLACK Elite, FreeScan Combo and EinScan Rigil all marked 'Quote needed'; Geomagic Design X 'sold by quote'; QUICKSURFACE Pro €1,700/yr",
+   "source": "https://3dscannermatch.com/3d-scanners/reverse-engineering/",
+   "source_title": "3D Scanners for Reverse Engineering: Scanner + CAD Software – 3D Scanner Match",
+   "read": "2026-11-08",
+   "note": "This is the rival baseline. Its prices date from October 2026."
+  }
+ ],
+ "unsourced": [
+  "MetroX Pro Standard variant price on revopoint3d.com today: the variant call to the store returned HTTP 429 twice. 3D Scanner Match lists $907 (October 2026), and our page lists $907 (2026-11-06).",
+  "Creaform HandySCAN 3D PRO and BLACK Elite price: Creaform's PRO series page and its technical specifications page both returned 404, and the brochure PDF couldn't be read. I found no US retailer list price; ChatGPT and rivals show quote only.",
+  "Afinia 3D Store FreeScan Combo/Combo+ $11,999 price shown by ChatGPT: the Afinia store search returned 404 and the store tool returned 404.",
+  "B&H prices for the Raptor ($879) and Rigil ($4,999) as shown on ChatGPT's cards: I didn't open B&H. I priced both at Creality's store and MatterHackers instead.",
+  "Revopoint INSPIRE 2 price today: not rechecked within the budget (our page shows from $494, 2026-11-06).",
+  "A US retailer list price for the FreeScan UE Pro2: none opened. The reseller figures in search snippets ($32,999, $50,241) were not opened, so I didn't use them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.8101899000000001
+ }
+}

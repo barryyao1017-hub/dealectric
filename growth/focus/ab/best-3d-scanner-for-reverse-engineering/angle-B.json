@@ -1,0 +1,113 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got turns a scanner's volumetric-accuracy formula (a mm + b mm/m) into the worst-case error on a part of a stated size; for example, the HandySCAN 3D PRO works out to 0.038 mm on a 300 mm part and 0.080 mm on a 1 m part, and the FreeScan UE Pro2 with photogrammetry to 0.035 mm on a 1 m part.",
+ "standout": 2,
+ "standout_why": "I compared against the three cited rival pages and the Creaform page. 3dscannermatch.com/3d-scanners/reverse-engineering gives prices only, with no accuracy figures at all. trimechmanufacturing.com's SHINING 3D buyers guide gives single figures such as 'accurate to 20 microns' and talks about volumetric accuracy only in words. invenio3d.com.au gives single figures, for example HandySCAN BLACK Elite ±0.025 mm and FreeScan UE Pro 0.02 mm, and does no part-size arithmetic. Creaform's own page is the source of the PRO formula but does not apply it to a part. None of them shows that the headline single-frame figure (0.02–0.03 mm) roughly doubles or triples across a 1 m part.",
+ "decides": "It confirms the step-up pick for large parts. Over 1 m, the FreeScan UE Pro2 with photogrammetry (0.035 mm) holds less than half the worst-case error of the HandySCAN 3D PRO without MaxSHOT (0.080 mm), even though their headline accuracies are about the same (0.02 mm vs 0.030 mm). For parts of about 300 mm or less, the two are within 0.014 mm of each other (0.0245 vs 0.038 mm). That difference matters only below a ±0.05 mm fit tolerance. The budget pick (MetroX vs Raptor) cannot be decided from this run, because their maker formulas could not be opened today (HTTP 429/404).",
+ "candidates": [
+  "Creaform HandySCAN 3D PRO",
+  "SHINING 3D FreeScan UE Pro2",
+  "SHINING 3D EinScan Rigil",
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creality CR-Scan Raptor",
+  "Creality Raptor Pro"
+ ],
+ "findings": [
+  {
+   "product": "Creaform HandySCAN 3D PRO",
+   "label": "Volumetric accuracy (default, no MaxSHOT)",
+   "value": "0.020 mm + 0.060 mm/m",
+   "source": "https://tech-labs.com/resources/creaform/handyscan-3d-pro-series",
+   "source_title": "HandySCAN 3D PRO Series (Tech-Labs, Creaform reseller)",
+   "read": "2026-11-08",
+   "note": "The Creaform US technical-specifications URL returned HTTP 404 today, so this is the reseller's copy of the maker's spec. The same page gives accuracy up to 0.030 mm and weight 920 g (2.0 lb)."
+  },
+  {
+   "product": "Creaform HandySCAN 3D PRO",
+   "label": "Worst-case volumetric error, 300 mm part",
+   "value": "0.038 mm",
+   "source": "https://tech-labs.com/resources/creaform/handyscan-3d-pro-series",
+   "source_title": "HandySCAN 3D PRO Series (Tech-Labs, Creaform reseller)",
+   "read": "2026-11-08",
+   "note": "0.020 + 0.060 × 0.3 = 0.038 mm"
+  },
+  {
+   "product": "Creaform HandySCAN 3D PRO",
+   "label": "Worst-case volumetric error, 1 m part",
+   "value": "0.080 mm",
+   "source": "https://tech-labs.com/resources/creaform/handyscan-3d-pro-series",
+   "source_title": "HandySCAN 3D PRO Series (Tech-Labs, Creaform reseller)",
+   "read": "2026-11-08",
+   "note": "0.020 + 0.060 × 1.0 = 0.080 mm, which is 2.7× the 0.030 mm headline accuracy"
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Volumetric accuracy with photogrammetry",
+   "value": "0.02 mm + 0.015 mm/m",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 (SHINING 3D)",
+   "read": "2026-11-08",
+   "note": "Maker page. The same page gives accuracy 0.02 mm and weight 950 g. It does not state the standard-mode (no photogrammetry) formula and refers to the brochure, which was too large to fetch."
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Worst-case volumetric error, 300 mm part (photogrammetry)",
+   "value": "0.0245 mm",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 (SHINING 3D)",
+   "read": "2026-11-08",
+   "note": "0.02 + 0.015 × 0.3 = 0.0245 mm"
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Worst-case volumetric error, 1 m part (photogrammetry)",
+   "value": "0.035 mm",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 (SHINING 3D)",
+   "read": "2026-11-08",
+   "note": "0.02 + 0.015 × 1.0 = 0.035 mm, vs 0.080 mm for the HandySCAN 3D PRO without MaxSHOT"
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Price",
+   "value": "$879.00",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner (Creality store)",
+   "read": "2026-11-08",
+   "note": "Crossed-out $1,499.00. The page lists no accuracy or weight figures."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Price",
+   "value": "$1,499.00",
+   "source": "https://store.creality.com/products/creality-raptor-pro-3d-scanner",
+   "source_title": "Creality Raptor Pro 3D Scanner (Creality store)",
+   "read": "2026-11-08",
+   "note": "Crossed-out $1,999.00. The bundle with Scan Bridge+ and Manual Turntable is $1,763.99. The page lists no accuracy or weight figures."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Price (lowest variant on combined MetroX & MetroX Pro listing)",
+   "value": "$749.00",
+   "source": "https://www.revopoint3d.com/products/3d-laser-scanner-metrox",
+   "source_title": "Revopoint MetroX & MetroX Pro: Blue Laser Line and Full-field Structured Light 3D Scanner",
+   "read": "2026-11-08",
+   "note": "From the storecheck.py search of the Revopoint Shopify store (compare-at $1,948, available). Fetching the product page for per-variant prices returned HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "Revopoint MetroX and MetroX Pro volumetric-accuracy formulas (our page says 0.03 + 0.1 mm/m and 0.02 + 0.04 mm/m): the revopoint3d.com product page returned HTTP 429 three times, so they could not be re-verified today. The per-variant MetroX Pro price failed for the same reason.",
+  "Creality CR-Scan Raptor and Raptor Pro volumetric-accuracy formulas: neither Creality store page lists them. I did not reach the Creality wiki or a manual within the budget.",
+  "SHINING 3D EinScan Rigil volumetric accuracy (search snippets say Laser HD 0.04 + 0.06 mm/m and IR 0.1 + 0.4 mm/m): the einstar.com spec page returned HTTP 429 twice, the B&H page returned 403, and the brochure PDF was too large to fetch. The Rigil price ($4,999 at B&H, as ChatGPT showed) was not opened either.",
+  "FreeScan UE Pro2 standard-mode (no photogrammetry) volumetric formula: the maker page omits it and the brochure PDF was too large to fetch.",
+  "HandySCAN 3D PRO volumetric accuracy with MaxSHOT, and the maker's own spec page: the creaform3d.com technical-specifications URLs (en and ko) returned 404, and the brochure PDF on ib-caddy could not be parsed.",
+  "Prices for the HandySCAN 3D PRO and FreeScan UE Pro2 (for cost per mm of error): no US maker price is published, and the $17,833.09 3D Printing Canada listing was not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.764157
+ }
+}

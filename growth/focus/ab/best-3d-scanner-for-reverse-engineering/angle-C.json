@@ -1,0 +1,95 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which computers the budget picks need. Creality's CR-Scan Raptor manual lists macOS 11.7.7 or later on Apple M1/M2/M3 chips with 16 GB RAM, and on Windows 10/11 64-bit it suggests an i7 7th-gen CPU, an NVIDIA card with 6 GB VRAM and 16 GB RAM. Creality sells its Scan Bridge ($299) for the 'Sermoon S1 & Raptor Series' only, and Otter owners must buy a separate version.",
+ "standout": 2,
+ "standout_why": "I compared three pages ChatGPT cited and checked each for OS, GPU and accessory compatibility. 3dscannermatch.com/3d-scanners/reverse-engineering says only 'Check RAM, OS and app requirements first' and that the VEGA Pro path 'requires a Windows workstation'. It gives no GPU or macOS facts for any scanner, and it calls the Raptor pick 'not Raptor Pro or a Scan Bridge bundle'. trimechmanufacturing.com's SHINING 3D buyers guide covers only tethered, wireless or on-board processing, with no OS, GPU or PC specs. invenio3d.com.au says nothing about OS or GPU requirements. ChatGPT's answers never say whether a Mac can drive any of the recommended scanners, or whether a Windows PC needs an NVIDIA card. Of the two Creaform URLs ChatGPT cited, the technical-specifications page returned HTTP 404 for me on 2026-11-08. I did not fetch the second one (handyscan-3d-pro-series/), so it is unchecked.",
+ "decides": "For a Mac user, the Raptor is the budget pick that has a maker-documented Apple-silicon path (M1/M2/M3, 16 GB). For a Windows user, Creality suggests an NVIDIA GPU with at least 6 GB VRAM, which adds cost if the PC has integrated graphics. This confirms Raptor versus MetroX as the budget pair, but a full head-to-head needs MetroX's own requirements, which I could not open (see unsourced). On the Revopoint side, the maker's ball-plate listing says its Revo Metro measurement module is 'currently available only for MetroY Ultra and MetroY Ultra CMM models'. So a MetroX buyer gets no Revo Metro accuracy-verification software and should budget separately for inspection software.",
+ "candidates": [
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creality CR-Scan Raptor",
+  "Creality Raptor Pro",
+  "SHINING 3D EinScan Rigil",
+  "SHINING 3D FreeScan UE Pro2",
+  "Creaform HandySCAN 3D PRO"
+ ],
+ "findings": [
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Computer requirements, macOS",
+   "value": "macOS 11.7.7 or later; Apple M1/M2/M3 series processor; 16 GB RAM or more",
+   "source": "https://www.manualslib.de/manual/1458008/Creality-Cr-Scan-Raptor.html?page=9",
+   "source_title": "Creality CR-SCAN RAPTOR Bedienungsanleitung, page 9 of 85",
+   "read": "2026-11-08",
+   "note": "This is the maker's manual (German edition) hosted on ManualsLib. Quoted text: 'macOS: 11.7.7 and above', 'Apple M1/M2/M3 series processors', '16GB or higher'. The manual names no Mac GPU requirement."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Computer requirements, Windows (suggested)",
+   "value": "Windows 10/11 64-bit; suggested i7 7th-gen CPU, NVIDIA graphics card with 6 GB VRAM, 16 GB RAM",
+   "source": "https://www.manualslib.de/manual/1458008/Creality-Cr-Scan-Raptor.html?page=9",
+   "source_title": "Creality CR-SCAN RAPTOR Bedienungsanleitung, page 9 of 85",
+   "read": "2026-11-08",
+   "note": "The manual words this as a suggested configuration ('i7-Gen7 CPU, Nvidia graphics card (6GB VRAM), 16GB memo...', truncated in the source). On this page it does not say an NVIDIA card is mandatory."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Scan Bridge accessory compatibility",
+   "value": "'Scan Bridge for Sermoon S1& Raptor Series' $299.00; a separate 'Scan Bridge for Otter' $279.00",
+   "source": "https://store.creality.com/products/creality-scan-bridge",
+   "source_title": "Creality Scan Bridge, Creality store",
+   "read": "2026-11-08",
+   "note": "The store page says 'Please pick your correct version(Otter or Raptor) before placing your order!' It does not name Raptor Pro separately or list which scan modes work over the bridge."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Store price and listed add-ons",
+   "value": "$879.00 (list $1,499.00); add-ons: QUICKSURFACE Lite 1-year $540.00, Scan Bridge $299.00, 'Turntable & Handle Tripod Kit for Otter/Raptor/Sermoon S1' $26.75",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner | Metrology Grade Accuracy, 7 Blue Laser Lines",
+   "read": "2026-11-08",
+   "note": "The scan-to-CAD software (QUICKSURFACE Lite) is a paid 1-year add-on on the maker's store and is not included at $879."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Store price and Scan Bridge bundle",
+   "value": "$1,499.00 (list $1,999.00); Raptor Pro+ combo with Scan Bridge and manual turntable $1,763.99",
+   "source": "https://store.creality.com/products/creality-raptor-pro-3d-scanner",
+   "source_title": "Creality Raptor Pro 3D Scanner, Creality store",
+   "read": "2026-11-08",
+   "note": "The page lists no system requirements."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Revo Metro measurement module exclusion",
+   "value": "Revo Metro's measurement software module is 'currently available only for MetroY Ultra and MetroY Ultra CMM models'; the Accuracy Verification Ball Plate ($499) itself 'is compatible with any scanner'",
+   "source": "https://www.revopoint3d.com/products/ball-plate",
+   "source_title": "Accuracy Verification Ball Plate, Revopoint store",
+   "read": "2026-11-08",
+   "note": "Read through the Shopify store data with storecheck.py search on revopoint3d.com. The listing's Key Notes 1-3 also say 'Revo Measure can perform measurements on any ball plate.' By the maker's wording, MetroX and MetroX Pro are left out of Revo Metro."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "MetroX-specific accessories on maker store",
+   "value": "Calibration board for MetroX and MetroY $42 (used with the calibration wizard in Revo Scan MetroX and Revo Metro); Tripod and Scanner Cradle for MetroX $45; Metro Series power adapter + USB-C to USB-C cable $39; MetroX series from $749",
+   "source": "https://www.revopoint3d.com/products/3d-laser-scanner-metrox",
+   "source_title": "Revopoint MetroX & MetroX Pro: Blue Laser Line and Full-field Structured Light 3D Scanner",
+   "read": "2026-11-08",
+   "note": "All from the same store search. The calibration board is listed at https://www.revopoint3d.com/products/calibration-board-metrox. The $749 is the lowest variant price returned by the store search."
+  }
+ ],
+ "unsourced": [
+  "Revopoint MetroX / MetroX Pro computer requirements (Windows CPU/RAM/GPU; macOS chip; whether base M1/M2 is excluded). The maker's support-metrox page, NEWS-METROX page, the global.revopoint3d.com product page and the storecheck product call all returned HTTP 429. The Revopedia user manual rendered empty, and the manuals.plus copy returned 403. Search snippets suggested macOS 11+ on M1 Pro/Max/Ultra with 16 GB and Windows with 32 GB RAM, but I did not open them, so I left them out.",
+  "Whether MetroX works only with 'Revo Scan 5 MetroX' rather than standard Revo Scan. I saw this only in a snippet; the Revopedia page did not render.",
+  "Creality Raptor Pro computer requirements (i7 10th-gen / 8 GB VRAM / 32 GB recommended per snippet). The manuals.plus quick guide returned 403 and the Creality wiki performance page rendered empty.",
+  "SHINING 3D EinScan Rigil and FreeScan UE Pro2 PC/OS/GPU requirements. The einscan.com Rigil URL returned 404, and I ran out of my call budget before trying the brochure PDF.",
+  "Creaform HandySCAN 3D PRO software and CAD-platform compatibility (VXelements, Scan-to-CAD Pro). The technical-specifications URL ChatGPT cited returned 404; I did not fetch the main product page.",
+  "Whether the Scan Bridge supports Raptor Pro and which Raptor modes work through it. The Creality store page says only 'Raptor Series'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 0.92054
+ }
+}

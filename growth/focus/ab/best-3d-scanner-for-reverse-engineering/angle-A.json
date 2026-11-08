@@ -1,0 +1,103 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got turns the scanners' stated volumetric accuracy into error over a real part length. At 1 m the EinScan Rigil's Laser HD spec (0.04 + 0.06 mm/m) works out to ±0.10 mm, and its IR Rapid spec (0.1 + 0.4 mm/m) to ±0.50 mm. The FreeScan UE Pro2 with photogrammetry (0.02 + 0.015 mm/m) works out to ±0.035 mm. That puts the Rigil's laser mode exactly at the '±0.1 mm mechanical fit' limit that ChatGPT's own filter offers, its IR mode far past it, and the UE Pro2 about 3× tighter.",
+ "standout": 2,
+ "standout_why": "I compared against the cited invenio3d.com.au buyer's guide, the cited trimechmanufacturing.com SHINING 3D 2026 guide and 3dscannermatch.com's reverse-engineering page. invenio3d gives only headline figures ('0.02mm' UE Pro, 'up to ±0.025mm' BLACK Elite) and says large parts raise 'cumulative alignment errors' without putting a number on it. TriMech gives no accuracy figure for the Rigil or UE Pro2 and calls volumetric accuracy 'accuracy over longer distances' with no numbers. 3dscannermatch gives no accuracy numbers at all. None of them separates per-frame from volumetric accuracy, works the mm/m formula out at any part length, or notes which spec cites a test standard. ChatGPT's own answer puts per-frame or point figures (Creaform 'up to 0.030 mm', MetroX Pro '0.02 mm per frame') next to the Rigil's volumetric '0.04 mm + 0.06 mm/m' as if they could be compared.",
+ "decides": "This confirms the higher tier and sharpens the middle one. For parts around 1 m that need ±0.05 mm or better, only the UE Pro2 with photogrammetry meets it on its stated spec (±0.035 mm). The Rigil should only be recommended in Laser HD mode for ±0.1 mm work, and its IR Rapid mode (±0.30 mm at 500 mm) is shape-capture only. The budget picks (MetroX, MetroX Pro, Raptor, Raptor Pro) can only be placed once their mm/m figures come from the maker. Creality's US store pages publish no accuracy figure at all, so the page can't quote one from the store.",
+ "candidates": [
+  "SHINING 3D FreeScan UE Pro2",
+  "SHINING 3D EinScan Rigil",
+  "Creaform HandySCAN 3D PRO",
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creality CR-Scan Raptor",
+  "Creality Raptor Pro"
+ ],
+ "findings": [
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Accuracy (maker headline)",
+   "value": "0.02 mm",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 | SHINING 3D",
+   "read": "2026-11-08",
+   "note": "From the Technical Data block. It is a single figure with no length term, so it is not a whole-part number."
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Volumetric accuracy with photogrammetry",
+   "value": "0.02 mm + 0.015 mm/m (±0.0275 mm at 0.5 m; ±0.035 mm at 1 m)",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 | SHINING 3D",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.02 + 0.015 × L(m). The page does not give the standard-mode (no photogrammetry) volumetric figure; it says 'For full specs please refer to the brochure'."
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro2",
+   "label": "Accuracy test standard",
+   "value": "VDI/VDE 2634 Part 3 and ISO 10360, tested in an ISO/IEC 17025 accredited lab",
+   "source": "https://www.shining3d.com/metrology-solutions/laser-handheld-3d-scanner/freescan-ue-pro2",
+   "source_title": "FreeScan UE Pro2 | SHINING 3D",
+   "read": "2026-11-08",
+   "note": "The FAQ adds that this is 'subject to the actual certificates issued'. Of the spec pages I opened, this is the only one that names a test standard."
+  },
+  {
+   "product": "SHINING 3D EinScan Rigil",
+   "label": "Volumetric accuracy, Laser HD mode",
+   "value": "up to 0.04 mm + 0.06 mm/m (±0.07 mm at 0.5 m; ±0.10 mm at 1 m)",
+   "source": "https://www.einstar.com/pages/einscan-rigil-specs",
+   "source_title": "EinScan Rigil Specification",
+   "read": "2026-11-08",
+   "note": "Same for the 32 GB and 24 GB versions. Arithmetic: 0.04 + 0.06 × L(m). The page gives no single-frame figure and names no test standard (no VDI/VDE 2634 or ISO 10360), unlike the UE Pro2."
+  },
+  {
+   "product": "SHINING 3D EinScan Rigil",
+   "label": "Volumetric accuracy, IR Rapid mode",
+   "value": "up to 0.1 mm + 0.4 mm/m (±0.30 mm at 0.5 m; ±0.50 mm at 1 m)",
+   "source": "https://www.einstar.com/pages/einscan-rigil-specs",
+   "source_title": "EinScan Rigil Specification",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.1 + 0.4 × L(m). At 1 m the error is 5× the Laser HD figure, so the 'blue-laser and infrared modes' ChatGPT promoted are not two equal options for reverse engineering."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Accuracy figure on the maker's US store page",
+   "value": "none published; price $879.00 (compare-at $1,499.00)",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner | Metrology Grade Accuracy, 7 Blue Laser Lines",
+   "read": "2026-11-08",
+   "note": "The page title says 'Metrology Grade Accuracy', but the page has no single-frame or volumetric number, no test condition and no standard."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Accuracy figure on the maker's US store page",
+   "value": "none published; price $1,499.00 (compare-at $1,999.00)",
+   "source": "https://store.creality.com/products/creality-raptor-pro-3d-scanner",
+   "source_title": "Creality Raptor Pro 3D Scanner | Creality Store",
+   "read": "2026-11-08",
+   "note": "The only performance claim is 'High-Speed, Ultra-Precise Scanning', with no number. The page points to the Creality Download Center or Wiki for specs."
+  },
+  {
+   "product": "general",
+   "label": "Rival pages work out accuracy at a part length",
+   "value": "0 of 3 checked",
+   "source": "https://invenio3d.com.au/best-3d-scanner-for-reverse-engineering-in-2026-a-buyers-guide-for-australian-engineers/",
+   "source_title": "Best 3D Scanner for Reverse Engineering in 2026: A Buyer's Guide for Australian Engineers",
+   "read": "2026-11-08",
+   "note": "Also checked https://trimechmanufacturing.com/uki/shining-3d-buyers-guide-2026/ and https://3dscannermatch.com/3d-scanners/reverse-engineering/ on 2026-11-08. None gives a per-frame vs volumetric split or error at a given length."
+  }
+ ],
+ "unsourced": [
+  "Revopoint MetroX and MetroX Pro volumetric accuracy: revopoint3d.com (US and global/en-uk) and the storecheck tool both returned HTTP 429 every time, so I could not open the maker page. A search summary says Revopoint lists MetroX as 0.025 mm + 0.05 mm × L and MetroX Pro as 0.02 mm + 0.04 mm × L. Our current page says MetroX is '0.03 mm + 0.1 mm/m', which may be wrong and needs checking on the maker page before we publish.",
+  "Creaform HandySCAN 3D PRO volumetric accuracy and test standard: the EN and KO technical-specifications pages returned 404. The ib-caddy brochure PDF downloaded, but I could not extract its text (local PDF tools need approval). Search summaries cite 0.020 mm + 0.060 mm/m, and 0.030 mm + 0.015 mm/m with MaxSHOT, but I did not open a source for these.",
+  "FreeScan UE Pro2 standard-mode (no photogrammetry) volumetric accuracy: not on the maker page. Search summaries say 0.02 + 0.03 mm/m from the Shining 3D brochure PDF, which I did not open.",
+  "Creality CR-Scan Raptor and Raptor Pro volumetric accuracy and standard: neither US store page gives a figure, and wiki.creality.com and creality.com product URLs returned 404. Search summaries cite 0.02 + 0.08 mm/m under ISO 10360-8 for the Raptor Pro blue laser, but only from resellers.",
+  "EinScan Rigil single-frame accuracy: the maker spec page gives none. The only figure I saw was in a 3dtechvalley search summary, and it contradicts the maker's volumetric spec."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 0.9663383999999998
+ }
+}

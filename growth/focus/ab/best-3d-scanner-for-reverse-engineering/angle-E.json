@@ -1,0 +1,68 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that CNC Kitchen (Stefan Hermann) measured the Creality CR-Scan Raptor with a 100.25 mm ball bar and got 100.24, 100.25 and 100.22 mm. The largest error was 0.03 mm, against Creality's 0.02 mm claim, which is about 0.3 mm per metre. No result states that CNC Kitchen's ball-bar test of the Raptor Pro stayed within about ±0.02 mm with one reading slightly outside spec.",
+ "standout": 2,
+ "standout_why": "Pages compared: the rivals ChatGPT cited (3dscannermatch.com reverse-engineering page, which says 'We have not tested these scanners ourselves' and gives only dated prices; invenio3d.com.au, which gives only maker specs; the Creaform HandySCAN PRO page, which is a maker claim) and the top results 3dprinting.com/3d-scanners/, smashingrobotics.com and our own current page. 3dprinting.com and invenio3d give only maker accuracy figures. Smashingrobotics says it ran a gauge-block check on the MetroX Pro but publishes no values and names no tester. Our current page mentions a Raptor Pro ball-bar result of 'within about ±0.02 mm' but does not say who measured it. None of these pages names CNC Kitchen or gives the Raptor's three measured ball-bar lengths. print3dindex.com returned 403 and could not be checked.",
+ "decides": "The finding confirms the Raptor as a budget pick for mechanical reverse engineering. It is the only under-$1,000 candidate with a published, named measurement against a reference length: 0.03 mm worst case over 100 mm, roughly at its 0.02 mm claim. It also shows the shopper that real error grows with length (about 0.3 mm/m measured on the Raptor). For the MetroX and MetroX Pro, the only named check is igor'sLAB's statement that the MetroX reaches 0.03 mm on an ideal rectangular block (caliper vs CAD), with no numbers published. So the MetroX's lead in maker-claimed accuracy (0.02 mm + 0.04 mm/m for the Pro) has not been independently measured. The finding does not change who wins at the pro tier, because I found no independent measurements for the Rigil, the FreeScan UE Pro2 or the HandySCAN.",
+ "candidates": [
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creality CR-Scan Raptor",
+  "Creality Raptor Pro",
+  "SHINING 3D EinScan Rigil",
+  "SHINING 3D FreeScan UE Pro2",
+  "Creaform HandySCAN 3D PRO / BLACK"
+ ],
+ "findings": [
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Ball-bar centre distance, three scans (CNC Kitchen, Stefan Hermann)",
+   "value": "100.24 mm, 100.25 mm and 100.22 mm against a nominal 100.25 mm; largest error 0.03 mm (about 0.3 mm/m)",
+   "source": "https://cnckitchen.com/blog/3d-scanning-tips-creality-raptor",
+   "source_title": "10 Tips for Better 3D Scans (feat. Creality CR-Scan Raptor) – CNC Kitchen",
+   "read": "2026-11-08",
+   "note": "Article dated 2024-09-14. The bar was two 10 mm ball bearings. The nominal length came from the outer span measured with calipers, minus twice the ball radius. The bar was scanned in three orientations, and the STL was analysed in GOM Inspect by fitting spheres and measuring the distance between their centres. The scan mode is not stated. The errors are -0.01, 0.00 and -0.03 mm. The 0.03 mm worst case is 0.01 mm over Creality's '0.02 mm at 100 mm' laser claim."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Ball-bar test on ~150 mm and ~250 mm bars (CNC Kitchen, Raptor Pro vs Revopoint Metro Y Pro)",
+   "value": "Most readings within about ±0.02 mm of the reference length; one reading slightly outside spec",
+   "source": "https://www.cnckitchen.com/blog/creality-raptor-pro-vs-revopoint-metro-y-pro",
+   "source_title": "Creality Raptor Pro vs. Revopoint Metro Y Pro: Which 3D Scanner Should You Buy? – CNC Kitchen",
+   "read": "2026-11-08",
+   "note": "Article dated 2026-09-06. Each bar is two ceramic spheres on a carbon-fibre rod. Readings were taken in parallel-line, cross-line and full-field modes, on different days and in different orientations, and sphere centres were measured in ScanRuler. The individual values are only shown as bar charts in the article. Creality's spec of 0.02 mm + 0.08 mm/m works out to 0.032 mm allowed at 150 mm and 0.04 mm at 250 mm. In the same article the Metro Y Pro (not a candidate here) stayed within ±0.03 mm, with two short-bar readings slightly outside spec."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Scan-to-scan difference on real parts (CNC Kitchen)",
+   "value": "About 0.1 mm at the edges of a Vespa front scan; about ±0.05 mm over most of an N64 controller",
+   "source": "https://www.cnckitchen.com/blog/creality-raptor-pro-vs-revopoint-metro-y-pro",
+   "source_title": "Creality Raptor Pro vs. Revopoint Metro Y Pro: Which 3D Scanner Should You Buy? – CNC Kitchen",
+   "read": "2026-11-08",
+   "note": "These are differences between the Raptor Pro and Metro Y Pro scans of the same part, not errors against a reference, so they show agreement between the two scanners rather than absolute accuracy."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Effective accuracy check (igor'sLAB, Igor Wallossek)",
+   "value": "Reaches 0.03 mm on an ideal rectangular block (caliper vs CAD)",
+   "source": "https://www.igorslab.de/revoscan-metrox-im-test-guter-und-noch-bezahlbarer-3d-scanner-fuer-die-richtige-zielgruppe/6/",
+   "source_title": "Revopoint MetroX im Test – Guter und noch bezahlbarer 3D Scanner für die richtige Zielgruppe (page 6 of 9) – igor'sLAB",
+   "read": "2026-11-08",
+   "note": "Article dated 2025-03-27. Original German: 'Man erreicht die 0.03 mm mit einem idealen, rechteckigen Messkörper also durchaus (Messchieber vs. CAD).' The page publishes no nominal or measured dimensions, so this is a named conclusion rather than a data table. The English version of page 6 returned 403."
+  }
+ ],
+ "unsourced": [
+  "MetroX Pro: I looked for a named ball-bar, gauge-block or sphere measurement (igor'sLAB, CNC Kitchen, 3DWithUs, 3dprinting.com, Creative Bloq, 3dtechvalley searches) and found none with published figures. Smashingrobotics claims a gauge-block check but gives no values and names no tester.",
+  "MetroX (original): reviews by 3DWithUs (Max Funkner), 3dprinting.com (Phillip Keane) and Creative Bloq repeat only the maker's 0.03 mm figure. The Creative Bloq page loaded without its body text, and Tom's Hardware's review did not show up in search.",
+  "EinScan Rigil: I looked for an independent ball-bar, gauge-block or caliper test and found only SHINING 3D's own factory certificate method (VDI/VDE 2634, 1,000 mm sphere bar) and retailer specs.",
+  "FreeScan UE Pro2 and Creaform HandySCAN 3D PRO/BLACK: I found no named third-party measurements, only maker specs on rival pages.",
+  "Raptor Pro: the individual ball-bar readings from CNC Kitchen are shown only as images, and 3DPrint.com's 'Accuracy Test From Prusa Core One' (Orville Wright IV, 2025-05-08) also publishes results only as images, so no per-reading numbers could be sourced.",
+  "Raptor scan mode for the 2024 CNC Kitchen ball-bar test is not stated in the article."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8287182
+ }
+}

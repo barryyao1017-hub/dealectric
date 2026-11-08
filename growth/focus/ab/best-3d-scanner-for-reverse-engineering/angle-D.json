@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the per-metre term in a handheld scanner's volumetric-accuracy spec is multiplied by the length of the object being scanned (Revopoint: 'L is the length of the object'). For a reverse-engineering part, the error to expect is therefore base + rate × part length: about 0.06 mm for MetroX vs 0.032 mm for MetroX Pro on a 300 mm part. Creaform measures its figure as sphere spacing on a calibrated length artefact; Revopoint gives no test conditions.",
+ "standout": 1,
+ "standout_why": "I compared against TriMech's SHINING 3D buyer's guide (cited), 3dscannermatch's reverse-engineering page (cited) and our own dealectric page. TriMech defines volumetric accuracy only as 'accuracy over longer distances' and gives no numbers or scaling. 3dscannermatch has no volumetric figures and does not mention VDI/VDE 2634. Our page lists the 'a + b mm/m' figures but never says what L is and never does the arithmetic. ChatGPT's own answer quoted the Rigil's '0.04 mm + 0.06 mm/m' and said to prefer 'verified volumetric accuracy', so the rivals have part of this. What none of them gives is the scaling by part length, the worked error for a given part size, or the fact that Creaform states its test method and Revopoint does not. The Creaform page cited in the chats (handyscan-3d-pro-series) returned 404 when I opened it, so I could not check what it says.",
+ "decides": "This lets the page turn the shopper's tolerance into a pick. With the claimed specs, a part up to about 300 mm can be held near ±0.03-0.04 mm by MetroX Pro (0.032 mm) or HandySCAN 3D PRO (0.038 mm). Standard MetroX at its originally published spec reaches 0.06 mm, which is fine for '±0.1 mm mechanical fit' but not '±0.05 mm precision'. At 1 m the gap widens: MetroX 0.13 mm, MetroX Pro 0.06 mm, HandySCAN PRO 0.08 mm, HandySCAN PRO with MaxSHOT 0.045 mm. On paper this favours MetroX Pro over standard MetroX for anyone at or below ±0.05 mm. It also tells larger-part buyers to add photogrammetry (MaxSHOT or Revopoint's Global Marker mode). One caution: only Creaform states how its figure is measured (sphere spacing on a calibrated length artefact). Revopoint's figure has no stated test method, so the two sets of numbers are not measured the same way.",
+ "candidates": [
+  "Revopoint MetroX",
+  "Revopoint MetroX Pro",
+  "Creaform HandySCAN 3D PRO",
+  "Creality Raptor Pro",
+  "SHINING 3D EinScan Rigil"
+ ],
+ "findings": [
+  {
+   "product": "Revopoint MetroX",
+   "label": "Volumetric accuracy formula and meaning of L",
+   "value": "0.03 mm + 0.1 mm × L (m), where 'L is the length of the object'; single-frame accuracy up to 0.03 mm",
+   "source": "https://www.cnx-software.com/2024/11/04/revopoint-metrox-3d-scanner-blue-laser-scanning-breakthrough-at-an-appealing-price/",
+   "source_title": "Revopoint MetroX 3D scanner – Blue laser scanning breakthrough at an appealing price (CNX Software, sponsored post)",
+   "read": "2026-11-08",
+   "note": "This is Revopoint's own spec table, republished in a post CNX marks as sponsored and advertiser-supplied (2024-11-04). The Revopoint store returned HTTP 429 on every attempt, so I could not open the maker page itself. Worked example: 300 mm part = 0.03 + 0.1×0.3 = 0.06 mm; 1 m part = 0.13 mm."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Volumetric accuracy as now listed by a US reseller",
+   "value": "0.025 mm + 0.05 mm × L (m), L = length of the object; single-frame accuracy up to 0.02 mm",
+   "source": "https://www.matterhackers.com/store/l/revopoint-metrox-laser-3d-scanner/sk/MMMWPMEV",
+   "source_title": "Revopoint MetroX Laser 3D Scanner – MatterHackers",
+   "read": "2026-11-08",
+   "note": "This conflicts with the 0.03 + 0.1 figure on our page. It may be a revised spec. The listing is for the Advanced Edition and gives no price. It lists the tracking methods as 'Feature, Marker, Global Marker', with Global Marker for 'increased volumetric accuracy'. A reseller is not one of the three allowed source tiers, so check against Revopoint's page before publishing."
+  },
+  {
+   "product": "Revopoint MetroX Pro",
+   "label": "Volumetric accuracy",
+   "value": "0.02 mm + 0.04 mm/m (as on our current page)",
+   "source": "https://dealectric.com/best-3d-scanner-for-reverse-engineering",
+   "source_title": "Best 3D scanner for reverse engineering (2026) · Dealectric",
+   "read": "2026-11-08",
+   "note": "Taken from our page. I could not re-open Revopoint's page (HTTP 429). Worked example: 300 mm part = 0.02 + 0.04×0.3 = 0.032 mm; 1 m part = 0.06 mm."
+  },
+  {
+   "product": "Creaform HandySCAN 3D PRO",
+   "label": "Accuracy, volumetric accuracy and how each is measured",
+   "value": "Accuracy up to 0.030 mm ('typical value for diameter measurement on a calibrated sphere artefact'); volumetric accuracy 0.020 mm + 0.060 mm/m ('value for spheres spacing measurement on a calibrated length artefact')",
+   "source": "https://www.goengineer.com/3d-scanners/creaform/handyscan-pro",
+   "source_title": "Creaform HandySCAN 3D PRO Series – GoEngineer",
+   "read": "2026-11-08",
+   "note": "Creaform's spec table and footnotes as republished by its US reseller. Creaform's own English PRO pages returned 404 today. Worked example: 300 mm = 0.020 + 0.060×0.3 = 0.038 mm; 1 m = 0.08 mm. No price; quote only."
+  },
+  {
+   "product": "Creaform HandySCAN 3D PRO",
+   "label": "Volumetric accuracy with MaxSHOT Next | Elite photogrammetry",
+   "value": "0.030 mm + 0.015 mm/m; footnote: 'cannot be superior to the default accuracy for a given model'",
+   "source": "https://www.goengineer.com/3d-scanners/creaform/handyscan-pro",
+   "source_title": "Creaform HandySCAN 3D PRO Series – GoEngineer",
+   "read": "2026-11-08",
+   "note": "Photogrammetry lowers the per-metre term from 0.060 to 0.015 mm/m. It overtakes the default only past about 0.22 m: 0.020 + 0.060L = 0.030 + 0.015L at L ≈ 0.22 m. At 1 m: 0.045 mm vs 0.08 mm."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Store price (MetroX & MetroX Pro listing, lowest variant)",
+   "value": "$749 (compare-at $1,948)",
+   "source": "https://www.revopoint3d.com/products/3d-laser-scanner-metrox",
+   "source_title": "Revopoint MetroX & MetroX Pro: Blue Laser Line and Full-field Structured Light 3D Scanner",
+   "read": "2026-11-08",
+   "note": "Read via storecheck.py search on the Revopoint Shopify store. The variant-level read failed (HTTP 429), so the Pro variant's price is not re-confirmed today."
+  },
+  {
+   "product": "Creality Raptor Pro",
+   "label": "Store price",
+   "value": "$1,499 (was $1,999)",
+   "source": "https://store.creality.com/products/creality-raptor-pro-3d-scanner",
+   "source_title": "Creality Raptor Pro 3D Scanner – Creality Store",
+   "read": "2026-11-08",
+   "note": "Read from the product page. The accuracy specs were behind 'Show more' and not in what I could read. storecheck.py product returned 404."
+  }
+ ],
+ "unsourced": [
+  "Whether any Revopoint or Creality volumetric-accuracy figure is measured to VDI/VDE 2634 Part 3 or in an ISO 17025 lab: not stated on MatterHackers, CNX or the Creality store page; the Revopoint store was rate-limited (HTTP 429) on every attempt",
+  "Creaform's own statement of the HandySCAN 3D PRO acceptance-test standard: the English PRO pages and BLACK-series technical-spec page all returned 404; the brochure PDF downloaded but could not be converted to text without a shell approval",
+  "Revopoint maker-page confirmation of the current MetroX volumetric spec (0.03 + 0.1 vs 0.025 + 0.05 mm/m) and of the MetroX Pro 0.02 + 0.04 mm/m figure",
+  "Creality Raptor Pro and CR-Scan Raptor volumetric-accuracy formula and the meaning of L on Creality's own page (specs sit behind a collapsed section the fetch did not return)",
+  "SHINING 3D EinScan Rigil volumetric accuracy at the maker's page (I did not open it; ChatGPT's answer quoted 0.04 mm + 0.06 mm/m)"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.8622324000000001
+ }
+}
