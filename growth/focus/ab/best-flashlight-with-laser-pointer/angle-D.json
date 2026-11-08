@@ -1,0 +1,89 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that how bright a laser looks equals its power times the eye's sensitivity at its wavelength. By the CIE 1988 photopic table, the eye's sensitivity is 0.710 at 520 nm and 0.885 at 532 nm (green) but 0.107 at 650 nm (red). That makes a green laser look about 6.6–8.3× brighter than a red laser of the same power. Because the laser class caps power (Class 2 at 1 mW, Class 3R at 5 mW), a green Class 3R laser can look about 5× brighter than a green Class 2 laser like the Klein 56074, and about 33× brighter than a 1 mW, 650 nm red Class 2 laser.",
+ "standout": 2,
+ "standout_why": "I compared against our own page (dealectric.com/best-flashlight-with-laser-pointer, opened 2026-11-08). It says only that 'A red laser looks far dimmer to the eye than a green one of the same power' and that 'Only a Class 3R laser reads clearly in daylight'. It gives no number and no mechanism, and lists no laser wavelength. In the third chat, ChatGPT itself said green is 'generally easier to see', with no figure. I could not open the cited rival pages: Popular Mechanics' ArkPro Ultra review was blocked to the fetch tool and Yahoo Tech returned 403. The Klein 56074 maker page gives class and power (Class 2, <1 mW) but no wavelength and nothing on how bright it looks. None of the pages I could read combine the class power cap with the eye's wavelength sensitivity.",
+ "decides": "This confirms that the main pick should be a green Class 3R light (the US Wuben X5 3R or the US Olight ArkPro) for anyone who wants to point at things at a distance or in daylight. The arithmetic: the 5 mW Class 3R cap × 0.710 = 3.55 brightness-weighted mW. A Class 2 green like the Klein 56074 (<1 mW) gives under 0.71, and a 1 mW, 650 nm red Class 2 gives 0.107. So ChatGPT's 'Best for work' Klein 56074 has at most a fifth of a 3R laser's visible brightness, and its red budget picks (Hyper Tough, Coast PM50R, Fenix E06R, Klein 56040) are far dimmer still. The same arithmetic means a Class 1 green at the 0.39 mW our page lists for the Wuben X5 Class 1 (0.39 × 0.710 = 0.277) would still look about 2.6× brighter than a 1 mW, 650 nm red. That gives the X5 Class 1 a sourced reason to rank above red lasers for workplaces that ban Class 3R.",
+ "candidates": [
+  "Wuben X5 (Class 3R)",
+  "Wuben X5 (Class 1)",
+  "Olight ArkPro",
+  "Olight ArkPro Ultra",
+  "Wurkkos HD01 Pro",
+  "Klein Tools 56074",
+  "Klein Tools 56040",
+  "Hyper Tough 400 Lumen LED Pen Light with Red Laser"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "CIE photopic luminous efficiency V(λ) at green wavelengths",
+   "value": "0.503 at 510 nm, 0.710 at 520 nm, 0.862 at 530 nm, 0.885 at 532 nm",
+   "source": "https://donklipstein.com/photopic.html",
+   "source_title": "C.I.E. Photopic Luminous Efficiency Function",
+   "read": "2026-11-08",
+   "note": "A reproduction of the CIE 1988 table in 1 nm steps. CIE's own dataset (cie.co.at datatable, CIE 018:2019) was not opened. V(λ) is the eye's relative daylight sensitivity, with 555 nm = 1."
+  },
+  {
+   "product": "general",
+   "label": "CIE photopic luminous efficiency V(λ) at red wavelengths",
+   "value": "0.217 at 635 nm, 0.107 at 650 nm",
+   "source": "https://donklipstein.com/photopic.html",
+   "source_title": "C.I.E. Photopic Luminous Efficiency Function",
+   "read": "2026-11-08",
+   "note": "Arithmetic: 0.710 / 0.107 = 6.6× (520 nm green vs 650 nm red at equal mW). 0.885 / 0.107 = 8.3× (532 nm vs 650 nm). 0.710 / 0.217 = 3.3× (520 nm vs 635 nm)."
+  },
+  {
+   "product": "general",
+   "label": "Power cap for visible continuous-wave lasers by class",
+   "value": "Class 2: 1 mW; Class 3R: 5 mW",
+   "source": "https://en.wikipedia.org/wiki/Laser_safety",
+   "source_title": "Laser safety - Wikipedia",
+   "read": "2026-11-08",
+   "note": "Quoted: 'Class 2 lasers are limited to 1 mW continuous wave' and 'Visible continuous lasers in Class 3R are limited to 5 mW.' Class 2 relies on the blink reflex, which 'will limit the exposure to no more than 0.25 seconds'. Arithmetic: a 5 mW green at 520 nm gives 5 × 0.710 = 3.55 brightness-weighted mW, against 1 × 0.107 = 0.107 for a 1 mW red at 650 nm, about 33×."
+  },
+  {
+   "product": "general",
+   "label": "FDA hazard description of Class 3R (FDA Class IIIa)",
+   "value": "'Depending on power and beam area, can be momentarily hazardous when directly viewed'",
+   "source": "https://www.fda.gov/radiation-emitting-products/home-business-and-entertainment-products/laser-products-and-instruments",
+   "source_title": "Laser Products and Instruments | FDA",
+   "read": "2026-11-08",
+   "note": "The FDA describes Class 1 as 'Considered non-hazardous' and says Class 2 hazard 'increases when viewed directly for long periods of time'. The page gives no mW limits."
+  },
+  {
+   "product": "Klein Tools 56074",
+   "label": "Laser color, class and power",
+   "value": "Green, Class 2, <1 mW",
+   "source": "https://www.kleintools.com/catalog/flashlights-and-work-lights/rechargeable-slim-profile-led-pocket-flashlight-laser",
+   "source_title": "Rechargeable Slim-Profile LED Pocket Flashlight with Laser (56074) | Klein Tools",
+   "read": "2026-11-08",
+   "note": "No wavelength listed. Arithmetic, assuming a green laser between 510 and 532 nm: <1 mW × 0.50–0.885 = under 0.5–0.885 brightness-weighted mW, which is at most a fifth of a 5 mW Class 3R green at the same wavelength."
+  },
+  {
+   "product": "Klein Tools 56074",
+   "label": "White light output",
+   "value": "1,000 lm turbo; 400 lm high; 200 lm medium; 100 lm low",
+   "source": "https://www.kleintools.com/catalog/flashlights-and-work-lights/rechargeable-slim-profile-led-pocket-flashlight-laser",
+   "source_title": "Rechargeable Slim-Profile LED Pocket Flashlight with Laser (56074) | Klein Tools",
+   "read": "2026-11-08",
+   "note": "From Klein's own spec list. No list price on the page."
+  }
+ ],
+ "unsourced": [
+  "Wuben X5 laser power and wavelength (5 mW Class 3R, 0.39 mW Class 1): wubenlight.com returned HTTP 429 on all four tries (WebFetch and storecheck). The figures are on our own page only and were not re-verified today.",
+  "Olight ArkPro and ArkPro Ultra laser wavelength and power. Search snippets show 510–530 nm and ≤5 mW Class 3R, with a ≤0.39 mW Class 1 mode on some listings. Olight's store page came back truncated. The ArkPro Class 3R manual (Version G, m.media-amazon.com PDF) was not readable through the fetch tool, and running pdftotext locally needed approval I did not have. Adorama, GoingGear, Brightguy and manuals.plus returned 403 or 429.",
+  "Klein 56074 laser wavelength in nm: not on Klein's product page. The 56074 datasheet PDF was not readable through the fetch tool.",
+  "Klein 56040 red laser class, power and wavelength: the pdf.lowes.com manual was not readable through the fetch tool.",
+  "Wavelength and power of the red lasers in the Hyper Tough pen light, Coast PM50R, Fenix E06R and Black+Decker 1300 lm: not looked up because I ran out of tool calls.",
+  "The 0.39 mW Class 1 limit for visible continuous-wave lasers (IEC 60825-1): the Wikipedia Laser safety page gives no Class 1 mW figure, and I did not open the IEC standard.",
+  "Popular Mechanics' ArkPro Ultra review and Yahoo Tech's laser flashlight test: both blocked (fetch refused and 403), so I could not check them for a laser brightness or wavelength statement.",
+  "Wurkkos HD01 Pro laser class and wavelength: not reached within the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 35,
+  "cost_usd_list": 1.0114470999999998
+ }
+}

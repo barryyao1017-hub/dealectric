@@ -1,0 +1,94 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that running the Wuben X5 on its four-AAA backup drops Turbo from 1,300 lm to 850 lm. The AAA cells go straight into the battery bay behind a rear panel (Wuben ships no holder), and a reviewer ran it on Eneloop NiMH cells.",
+ "standout": 2,
+ "standout_why": "I compared against our current dealectric.com page, which I opened. It says 'four AAA cells run all three lights' but gives no output on AAA and doesn't say whether an adapter is needed. Both ChatGPT answers only say 'replaceable battery and AAA backup compatibility' and give no limits. I could not open the cited rival pages: Popular Mechanics (ArkPro Ultra review), Lowe's (Klein) and Yahoo Tech (the 'flashlight of the future' test) all refused the fetch with 403 errors. So I can't rule out that one of them mentions AAA output. Those pages cover Olight and Klein lights, which have sealed batteries, so the X5's AAA behavior is unlikely to be there.",
+ "decides": "It supports the X5 as the pick for 'replaceable battery / works off store batteries'. Our page now has to say the AAA fallback is a reduced mode (850 lm Turbo instead of 1,300 lm). It also strengthens the contrast with the Olight ArkPro: its 2,000 mAh battery is built in, charges only by USB-C or Olight's magnetic MCC cable, and 1Lumen says the light won't work out of the box until it's been on a charger. The Class 3R X5 is limited to certain countries (a BLF reviewer quotes Wuben: US and Canada), so buyers elsewhere get the Class 1 version.",
+ "candidates": [
+  "Wuben X5 (Class 3R)",
+  "Wuben X5 (Class 1)",
+  "Olight ArkPro",
+  "Olight ArkPro Ultra",
+  "Klein Tools 56074",
+  "Klein Tools 56040"
+ ],
+ "findings": [
+  {
+   "product": "Wuben X5",
+   "label": "White-light output on AAA vs Li-ion pack",
+   "value": "AAA: Turbo 850→400 lm (1 min + 1 h), High 350 lm 2 h, Medium 150 lm 5 h, Low 50 lm 15 h, Eco 1 lm 200 h. Li-ion pack: Turbo 1,300→400 lm",
+   "source": "https://www.wubenlight.com/blogs/news/wuben-x5-why-replaceable-batteries-matter-for-edc",
+   "source_title": "Wuben X5: Why Replaceable Batteries Matter for EDC (Wuben blog)",
+   "read": "2026-11-08",
+   "note": "From the maker's own runtime table. Only Turbo is lower on AAA (850 vs 1,300 lm). Wuben says AAA keeps 'the same practical runtime across most brightness levels'. The table doesn't say which AAA chemistry it used."
+  },
+  {
+   "product": "Wuben X5",
+   "label": "AAA backup: cell count and fitting",
+   "value": "4 × AAA, inserted directly through a rear flip-open panel. Reviewer ran it on Eneloop NiMH, and all three lights still worked, 'slightly dimmer'",
+   "source": "https://budgetlightforum.com/t/review-wuben-x5-edc-light/235211",
+   "source_title": "[Review] Wuben X5 EDC Light (BudgetLightForum, worrub918, 2026-09-23)",
+   "read": "2026-11-08",
+   "note": "No holder or adapter is mentioned. roma58's BLF review (2026-06-10) says a silkscreen under the rear buttons shows which way the AAA cells go."
+  },
+  {
+   "product": "Wuben X5",
+   "label": "Rechargeable pack and charging",
+   "value": "ABN1200 Li-ion, 1,200 mAh / 4.44 Wh, removable. USB-C input 5 V/1.2 A, about 1.5 h per the manual (measured 1 h 20 min on a 5 V/2 A adapter, 1.2 A max). Light runs while charging except High and Turbo white",
+   "source": "https://budgetlightforum.com/t/wuben-x5-review-flat-3-in-1-1300lm/233443",
+   "source_title": "WUBEN X5 review - Flat 3-in-1 - 1300lm (BudgetLightForum, roma58, 2026-06-10)",
+   "read": "2026-11-08",
+   "note": "Box listed: X5 with clip and battery installed, Type-C charging cord, H1.5 hex wrench, manual. No AAA holder in the box."
+  },
+  {
+   "product": "Wuben X5 (Class 3R)",
+   "label": "Where the Class 3R version is sold",
+   "value": "US and Canada only, per Wuben's product text quoted by the reviewer",
+   "source": "https://budgetlightforum.com/t/review-wuben-x5-edc-light/235211",
+   "source_title": "[Review] Wuben X5 EDC Light (BudgetLightForum, worrub918)",
+   "read": "2026-11-08",
+   "note": "The quote reads 'X5 LASER 3R version is only for customers in the US and Canada right now.' Outside those countries, Wuben offers the Class 1 version."
+  },
+  {
+   "product": "Wuben X5 (Class 3R)",
+   "label": "Laser power stated by maker blog",
+   "value": "515 nm green, 3 mW, Class 3R",
+   "source": "https://www.wubenlight.com/blogs/news/wuben-x5-review-three-light-sources-one-everyday-carry-tool",
+   "source_title": "Wuben X5 Review: Three Light Sources, One Everyday Carry Tool (Wuben blog)",
+   "read": "2026-11-08",
+   "note": "This conflicts with our page's '5 mW Class 3R'. Class 3R allows up to 5 mW, so 5 mW may be the class limit rather than the actual output. Check against the product page before publishing."
+  },
+  {
+   "product": "Wuben X5",
+   "label": "Price, maker US store",
+   "value": "$79.99 (compare-at $99.99) for both the Class 3R and Class 1 versions. X5 Bundle Sale (Class 1) $99.98",
+   "source": "https://www.wubenlight.com/products/wuben-x5-compact-flashlight",
+   "source_title": "WUBEN X5 3-in-1 1300 Lumens Compact EDC Flashlight (Class 3R Version)",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py search on wubenlight.com. The full product fetch then hit HTTP 429. Class 1 URL: https://www.wubenlight.com/products/wuben-x5-3-in-1-1300-lumens-edc-rechargeable-bright-flashlight"
+  },
+  {
+   "product": "Olight ArkPro",
+   "label": "Battery and charging compatibility",
+   "value": "2,000 mAh built-in LiPo, not replaceable. Charges by USB-C port (C-to-C works) or Olight's proprietary MCC magnetic tail cable (MCC 1 A cable in box). Olight specifies about 1.5 h on USB-C and about 3 h on MCC; measured 1 h 36 min at about 7 W. Ships locked and won't work until connected to a charger",
+   "source": "https://1lumen.com/review/olight-arkpro/",
+   "source_title": "Olight ArkPro review (1Lumen, Sept 2025)",
+   "read": "2026-11-08",
+   "note": "1Lumen lists the box as ArkPro, MCC cable, manual and UV card, with no dock or cradle. Laser listed as green about 520 nm, Class 3R, but 1Lumen's own figures conflict (3 or 5 mW)."
+  }
+ ],
+ "unsourced": [
+  "Wuben X5 product page wording on Class 3R regions: a search snippet says US, Australia and Canada, but wubenlight.com returned HTTP 429 three times so I couldn't open it. I used the BLF quote (US and Canada) instead.",
+  "Whether Wuben lists allowed AAA chemistries (alkaline, NiMH, 1.5 V lithium) or excludes any: not in the Wuben blog posts or either BLF review I opened.",
+  "Olight ArkPro US product page (olight.com/store/arkpro-series-flat-edc-flashlight): the page came back empty past the title, so I couldn't get price, box contents, dock compatibility or laser class by region. The ArkPro manual PDF (m.media-amazon.com) downloaded but its text couldn't be extracted without shell approval.",
+  "Whether the ArkPro's 'magnetic dock' (named by focuscamera.com in a search snippet) is a separate accessory, and whether it fits the Arkfeld Pro or Ultra: I found no Olight document.",
+  "Klein Tools 56074 battery and charging from the maker: the kleintools.com URL I tried returned 404, and Lowe's returned 403.",
+  "The cited rival pages (Popular Mechanics ArkPro Ultra review, Lowe's Klein page, Yahoo Tech test) returned 403 errors, so I couldn't check them directly for AAA or compatibility statements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9410777000000002
+ }
+}
