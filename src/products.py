@@ -269,7 +269,7 @@ PRODUCTS = [
              "on 2026-10-28, so our buy link opens BLUETTI's checkout with the AC200L in the cart.",
              "Fewer cycles (3,000+) than the Elite 200 V2 (6,000+).", "Heavier at 28 kg."]},
 
-{"slug": "bluetti-elite-30-v2", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-elite-30-v2", "cart_variant": 47190054568155, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Elite 30 V2 Portable Power Station", "model": "Elite 30 V2",
  "url": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station", "price": 289.99,
  "specs": [("Capacity", "288 Wh"), ("Chemistry", "LiFePO4, 3,000+ cycles"), ("AC output", "600 W continuous; 1,500 W Power Lifting; 2 outlets (9 outputs in all)"),
@@ -512,7 +512,7 @@ PRODUCTS = [
  "fit": "Weekend camping and blackout basics on a budget.",
  "caveats": ["300 W inverter: no kettles, hair dryers or microwaves.", "This is the SE100 laminated-panel version; the SP027 panel version is $216.99 and the SF100 version was sold out."]},
 
-{"slug": "bluetti-ac180-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-ac180-200w-solar-kit", "cart_variant": 45427542491355, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI AC180 + 200 W Solar Panel Kit (1,152 Wh, 1,800 W)", "model": "AC180 + 200 W panel",
  "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 769, "list_price": 899, "verified": "2026-11-05",
  "specs": [("Battery", "1,152 Wh LiFePO4"), ("AC output", "1,800 W; 2,700 W Power Lifting for resistive loads"), ("Panel", "1× BLUETTI 200 W folding"),
@@ -522,7 +522,7 @@ PRODUCTS = [
  "fit": "Camping and outage backup where a 1 kWh station and one carry-size panel are enough.",
  "caveats": ["Sold as a variant of the AC180 page; choose \"AC180+200W Solar\" on the store.", "200 W of panel recharges a 1,152 Wh battery in most of a sunny day; add a second panel for faster refills.", "Dealectric's daily code check tests the AC180 listing's first variant, not this kit."]},
 
-{"slug": "bluetti-elite-200-v2-200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-200-v2-200w-solar-kit", "cart_variant": 46645791162587, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
  "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199,
  "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
@@ -532,7 +532,7 @@ PRODUCTS = [
  "fit": "Home backup for a fridge and essentials, with room to add panels later.",
  "caveats": ["BLUETTI's page says the 200 W panel ships from October 29.", "One 200 W panel uses a fifth of the station's 1,000 W solar input; a 2,000 Wh battery takes more than a day of sun to refill from it."]},
 
-{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "cart_variant": 46252055363803, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  # DLC-164 (2026-11-06): in the x18 replay ChatGPT picked Jackery's SG 2000 v2 + 2x200 W for its 400 W of panels; this is BLUETTI's 400 W kit
  "name": "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W, 400 W of panels)", "model": "Elite 200 V2 + 2× 200 W panel",
  "url": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l", "price": 1499, "verified": "2026-11-06",
@@ -1353,7 +1353,7 @@ PRODUCTS = [
              "Owners report the fan running often; one Amazon review reports a dead unit in week three."]},
 
 # ---------------- x20 gap-mining batch (2026-11-05, DLC-168): Apex, Solla, GL.iNet, AV Access, AeroClip 2 / C50i, Nexode Pro 160W ----------------
-{"slug": "bluetti-apex-200", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-apex-200", "cart_variant": 50933675655387, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Apex 200 Expandable Power Station (2,560 Wh, 3,200 W, 120 V)", "model": "Apex 200",
  "url": "https://www.bluettipower.com/products/apex-200-expandable-power-station", "price": 1099, "list_price": 1399, "verified": "2026-11-05",
  "specs": [("Capacity", "2,560 Wh LiFePO4; 6,000+ cycles to 70%"), ("AC output", "3,200 W continuous (3,600 W with an expansion battery or AC/solar input); 5,400 W Power Lifting for resistive loads"),
@@ -1367,7 +1367,7 @@ PRODUCTS = [
              "$1,099 is BLUETTI's launch price for Nov 4–18 (BLUETTI says $1,149 Nov 19–30 and $1,199 Dec 1–5); compare-at $1,399.",
              "UPS mode must be switched on in the app; BLUETTI's manual excludes servers and medical equipment from UPS use."]},
 
-{"slug": "bluetti-apex-300", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-apex-300", "cart_variant": 47351562174683, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Apex 300 Home Battery Backup (2,764.8 Wh, 3,840 W, 120/240 V)", "model": "Apex 300",
  "url": "https://www.bluettipower.com/products/apex-300-home-battery-backup", "price": 1499, "list_price": 1699, "verified": "2026-11-05",
  "specs": [("Capacity", "2,764.8 Wh LiFePO4; 6,000+ cycles to 80%"), ("AC output", "3,840 W; 7,680 W Lifting Power (a resistive-load mode, not a motor-start rating)"),
@@ -3971,7 +3971,7 @@ PRODUCTS = [
  "fit": 'Houses that need 240 V for a well pump, central air or a dryer, and want the battery wired to a transfer sub-panel rather than run on extension cords.',
  "caveats": ["Idle draw is the weak spot: a reviewer measured 112 W with the inverter on and nothing plugged in, about 34 hours to empty. Anker's June 2025 firmware claims to halve that; no independent after-update measurement was found.", "The 240 V output cannot be used while the unit charges from a 120 V wall outlet (Anker's own listing).", 'Reaching 6,000 W of 240 V charging needs two expansion batteries; one unit alone charges at about 3,500 W from a generator.', "The '30 A' outlet is a 25 A outlet, which can trip appliances that expect a full 30 A.", 'At 136.7 lb it is a two-person lift up stairs even with the wheels.']},
 
-{"slug": 'bluetti-elite-100-v2',
+{"slug": 'bluetti-elite-100-v2', "cart_variant": 47048282177755,
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "category": 'power-station',
@@ -4413,7 +4413,7 @@ PRODUCTS = [
  "fit": 'Shoppers who want 4K60 files from a console or PC without a computer.',
  "caveats": ["The 4K60 recording figure comes from the maker's spec table. I found no independent test.", 'Does not record HDCP-protected sources (maker).', 'Does not support HDR content (maker), so turn HDR off on the source.', 'The maker page gives no maximum storage capacity.']},
 
-{"slug": 'bluetti-ac180-2x200w-solar-kit',
+{"slug": 'bluetti-ac180-2x200w-solar-kit', "cart_variant": 45791800885467,
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
