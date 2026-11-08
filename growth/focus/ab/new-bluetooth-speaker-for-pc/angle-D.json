@@ -1,0 +1,139 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Windows switches a Bluetooth speaker that supports the Hands-Free Profile to mono playback at 8 kHz or 16 kHz as soon as any app opens that speaker's microphone input. Microsoft says this happens on Windows 11 and that Windows 10 discards the stereo stream outright. Microsoft also lists only SBC, AAC, aptX Classic and aptX Adaptive (aptX Adaptive only on select Qualcomm radios) as Windows A2DP codecs, so a mic-less, A2DP-only speaker such as the Creative Pebble Pro, or a wired USB-C connection, avoids the problem.",
+ "standout": 2,
+ "standout_why": "I read stackandvalue.com (cited) in full. It lists only connection types (Pebble Pro 'connects over USB-C, Bluetooth 5.3, or a 3.5mm cable', Z407, R1280DBs, Klipsch) and says nothing about Bluetooth profiles, Hands-Free/HFP, codecs or what Windows does when a mic is opened. I could not check the other cited pages. TechRadar, Tom's Hardware, Tom's Guide (the roundup and the Pebble Pro review) and PC Gamer each returned only a title of about 110 to 130 characters to the fetcher, and Wired blocked the fetch, so those pages may cover it. ChatGPT's own answers only say Bluetooth 'can introduce audio delay' and suggest wired for gaming and calls. They never name the HFP mono switch, and the second chat even offers 'Work and video calls' as a use case. I scored 2 rather than 3 because most of the rival pages could not be checked.",
+ "decides": "For a PC used for both media and calls, pick a speaker that is A2DP-only with no built-in mic, or one with a wired USB-C audio input. That confirms the Creative Pebble Pro (A2DP only, SBC, USB audio, no built-in mic) as the safe default. A single portable speaker with a hands-free mic, such as the Marshall Emberton III, is a poor PC choice when calls matter. The moment Teams or Discord opens its mic, Windows drops the speaker to mono 8 kHz or 16 kHz, and the Emberton III has no wired audio input to fall back on (its USB-C is listed only for charging). The Creative T60 lists HFP alongside A2DP, so Windows 11 creates a mic input for it. Over Bluetooth, keep the PC's default mic set to something else, or use the T60's USB-C audio. A further point for the Pebble Pro: the 30 W RMS figure needs a separate 30 W USB PD adapter, which is not included. Powered from a PC port it is 10 W RMS.",
+ "candidates": [
+  "Creative Pebble Pro",
+  "Creative T60",
+  "Creative Pebble V3",
+  "Logitech Z407",
+  "Edifier M60",
+  "Edifier G2000 II",
+  "Marshall Emberton III"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Windows A2DP codecs, in the order Windows picks them",
+   "value": "aptX Adaptive (lossless): Windows 11 24H2 only, 'only supported on select Windows devices with compatible Qualcomm Bluetooth radios'; AAC: Windows 11 21H2 and later, not supported on Windows 10; aptX Classic: Windows 10 1507 and later; SBC: Windows 10 1507 and later. LDAC is not in the table.",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Microsoft: 'Windows starts from the top of the list, and chooses the first codec supported by both the host and the audio device for A2DP playback.' Page ms.date 2024-11-14, updated 2025-07-18."
+  },
+  {
+   "product": "general",
+   "label": "Hands-Free Profile audio format on Windows",
+   "value": "Mono only: narrowband 8 kHz (SBC) or wideband 16 kHz (mSBC)",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Microsoft: 'HFP supports concurrent monaural capture (microphone) and monaural playback'. Also: 'Some wideband capable audio devices aren't compatible with the Bluetooth radio in select Windows devices, causing these devices to revert to narrowband mode.'"
+  },
+  {
+   "product": "general",
+   "label": "When Windows 11 switches from stereo A2DP to mono HFP",
+   "value": "When any app opens the device's microphone input, or creates a playback stream in the Communications category",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Microsoft: 'If an audio device supports HFP, a single output and single input endpoint are created'. 'if media is playing and the device is in A2DP mode, and then the microphone is opened, the device switches to HFP mode.' Other audio is 'resampled to match the HFP endpoint'."
+  },
+  {
+   "product": "general",
+   "label": "Windows 10 behaviour in HFP mode",
+   "value": "Stereo output is discarded while the device is in Hands-Free mode",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "Microsoft: 'any audio streaming to the stereo output is discarded.' On Windows 10, separate '{Device Name} Stereo' and '{Device Name} Hands-Free' endpoints are created."
+  },
+  {
+   "product": "general",
+   "label": "Bluetooth LE Audio on Windows",
+   "value": "Introduced in Windows 11 22H2 (KB5026446). The LC3 codec must come from the hardware vendor's audio driver stack or Bluetooth controller. Stereo music and game playback formats go up to 48 kHz, 2 channels, 96 kbps.",
+   "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-low-energy-audio",
+   "source_title": "Bluetooth Low Energy (LE) Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-08",
+   "note": "This means LE Audio-ready speakers only get LE Audio on PCs whose Bluetooth hardware and drivers implement it. It is not a fix for every PC."
+  },
+  {
+   "product": "Creative Pebble Pro",
+   "label": "Bluetooth profile, codec and mic",
+   "value": "Bluetooth 5.3; codec SBC only; profile '(A2DP) Wireless Stereo Bluetooth' only; no built-in mic listed (has a 3-pole microphone port and a 4-pole headset port); 'USB audio and power'",
+   "source": "https://us.creative.com/p/speakers/creative-pebble-pro",
+   "source_title": "Creative Pebble Pro Minimalist 2.0 USB-C Computer Speakers with Bluetooth 5.3 and Customizable RGB Lighting - Creative Labs (United States)",
+   "read": "2026-11-08",
+   "note": "No HFP is listed, so by Microsoft's rules no Bluetooth mic input is created and playback stays on A2DP."
+  },
+  {
+   "product": "Creative Pebble Pro",
+   "label": "Power output by power source",
+   "value": "Up to 10 W RMS (20 W peak) from a 10 W USB-C port or adapter; up to 30 W RMS (60 W peak) with a 30 W USB PD adapter, which is not included",
+   "source": "https://us.creative.com/p/speakers/creative-pebble-pro",
+   "source_title": "Creative Pebble Pro - Creative Labs (United States)",
+   "read": "2026-11-08",
+   "note": "As quoted on Creative's spec section."
+  },
+  {
+   "product": "Creative Pebble Pro",
+   "label": "Price, Creative US store",
+   "value": "$66.49 (marked Promo)",
+   "source": "https://us.creative.com/p/speakers/creative-pebble-pro",
+   "source_title": "Creative Pebble Pro - Creative Labs (United States)",
+   "read": "2026-11-08",
+   "note": "Matches the $66.49 card in the second ChatGPT chat."
+  },
+  {
+   "product": "Creative T60",
+   "label": "Bluetooth profiles, codec and mic",
+   "value": "Bluetooth 5.0; codec SBC; profiles '(A2DP) Advanced Audio Distribution Profile, (HFP) Hands-free Profile'; no built-in mic listed, has an input to 'Connect to an external microphone'; USB-C audio streaming (USB-C to USB-A converter included); up to 30 W RMS, 60 W peak",
+   "source": "https://us.creative.com/p/speakers/creative-t60",
+   "source_title": "Creative T60 - Creative Labs (United States)",
+   "read": "2026-11-08",
+   "note": "Because HFP is listed, Windows 11 creates an input endpoint for the T60 over Bluetooth. If an app selects it as the mic, playback switches to mono HFP."
+  },
+  {
+   "product": "Creative T60",
+   "label": "Price, Creative US store",
+   "value": "$94.99 (marked promo)",
+   "source": "https://us.creative.com/p/speakers/creative-t60",
+   "source_title": "Creative T60 - Creative Labs (United States)",
+   "read": "2026-11-08",
+   "note": "ChatGPT's card showed $99.99."
+  },
+  {
+   "product": "Marshall Emberton III",
+   "label": "Built-in mic, Bluetooth and inputs",
+   "value": "Built-in microphone for 'hands-free talking'; Bluetooth 5.3 LE, 'Bluetooth LE Audio-ready', Auracast; no wired audio input listed (USB-C cable listed for charging)",
+   "source": "https://www.marshall.com/us/en/product/emberton-iii",
+   "source_title": "Marshall Emberton III | Marshall US",
+   "read": "2026-11-08",
+   "note": "As a hands-free device on a PC without LE Audio, it falls under Microsoft's HFP switch whenever an app opens its mic."
+  },
+  {
+   "product": "Marshall Emberton III",
+   "label": "Price, Marshall US store",
+   "value": "$179.99",
+   "source": "https://www.marshall.com/us/en/product/emberton-iii",
+   "source_title": "Marshall Emberton III | Marshall US",
+   "read": "2026-11-08",
+   "note": "Read from the maker page, not through storecheck.py."
+  }
+ ],
+ "unsourced": [
+  "Edifier M60 codec list (SBC/LDAC) and USB-C input format: us.edifier.com and ca.edifier.com both returned HTTP 429 three times. A search snippet suggested LDAC plus Android 8.0 and a 96 kHz claim, which I left out because I could not open the page. If confirmed, the point would be that the M60's LDAC has no effect from a Windows PC, since LDAC is absent from Microsoft's codec table.",
+  "Logitech Z407 profiles and mic: the Logitech product and support pages did not come up in search; only retailer and manuals.plus listings (micro-USB audio, 3.5 mm, Bluetooth 5.0), which I did not use.",
+  "Bluetooth latency in milliseconds for any candidate: no maker spec or named-reviewer figure was opened.",
+  "Edifier G2000 II and Creative Pebble V3 profiles and codecs: not researched within the tool budget.",
+  "Whether TechRadar, Tom's Hardware, Tom's Guide and PC Gamer mention HFP or hands-free mode: these pages returned only titles to the fetcher and Wired blocked fetching, so the gap is confirmed only against stackandvalue.com and ChatGPT's own answers."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8729222000000001
+ }
+}

@@ -4039,6 +4039,23 @@ PRODUCTS = [
  "fit": 'Tidy front-seat charging for two phones or a phone plus a 100 W laptop in a car with a 20 A socket.',
  "caveats": ['17.8 A rated input exceeds 10 A and 15 A accessory sockets.', 'USB-C1 and USB-A drop to 7.5 W each when all four outputs are used.', 'Sale price $33.49 on 2026-11-08; regular price $49.99.']},
 
+{"slug": 'creative-pebble-pro',
+ "brand": 'Creative',
+ "program": 'amazon:us',
+ "asin": 'B0DXW25R3D',
+ "category": 'speaker',
+ "name": 'Creative Pebble Pro 2.0 USB-C Desktop Speakers with Bluetooth 5.3, RGB, Black',
+ "model": 'Creative Pebble Pro',
+ "url": 'https://www.amazon.com/dp/B0DXW25R3D',
+ "price": None,
+ "verified": '2026-11-08',
+ "specs": [('Output', 'Up to 10 W RMS (2 × 5 W) from a 10 W USB-C port; up to 30 W RMS (2 × 15 W) with a 30 W USB PD adapter, not included'), ('Bluetooth', '5.3, A2DP only, SBC'), ('Wired inputs', 'USB-C audio and power on one cable, 3.5 mm AUX-in'), ('Ports', '4-pole headset port, 3-pole microphone port'), ('In the box', 'USB-C to USB-C cable 1.5 m, USB-C to USB-A cable 1.5 m, 3.5 mm AUX cable 1.2 m; no power adapter')],
+ "warranty": '1-year limited hardware warranty (Creative)',
+ "returns": "30 days from the order date when bought from Creative's US store. The speakers must come back in mint, resaleable condition in the original packaging with everything in the box, and the buyer pays return postage on non-defective items (Creative)",
+ "summary": 'A small 2.0 desktop pair that plays from a PC over one USB-C cable or over Bluetooth. Creative lists only the A2DP stereo profile and no built-in mic, so the speakers stay in stereo when a call app opens a microphone.',
+ "fit": "A PC desk used for music, video and calls, with the speakers within arm's reach.",
+ "caveats": ["Creative rates it at 10 W RMS from a PC's USB-C port. The 30 W RMS rating needs a separate 30 W USB PD adapter, and that PD port carries power only.", 'The only Bluetooth codec is SBC.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
