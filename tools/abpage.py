@@ -419,6 +419,18 @@ def validate(draft: dict, new_page: bool) -> list[str]:
         for k, _ in pg.get("columns") or []:
             if not str((r.get("cells") or {}).get(k, "")).strip():
                 errs.append(f"empty cell {k} in {r.get('slug') or r.get('model')}")
+    rows = pg.get("rows") or []
+    if rows:   # the answer's pick must be the table's first row (11-08: a verifier dropped the pick's row)
+        import products as P
+        r0 = rows[0]
+        name = r0.get("model") or ""
+        if r0.get("slug"):
+            p0 = next((p for p in P.PRODUCTS + (draft.get("products") or []) if p["slug"] == r0["slug"]), {})
+            name = name or p0.get("model") or p0.get("name") or ""
+        toks = [x for x in re.findall(r"[A-Za-z0-9-]+", name) if re.search(r"\d", x) and len(x) >= 3] or name.split()[:2]
+        ans = re.sub(r"<[^>]+>", "", pg.get("answer", ""))
+        if toks and not any(x.lower() in ans.lower() for x in toks):
+            errs.append(f"the answer's pick is not the first table row ({name!r}); put the pick first or add its row")
     if not new_page:
         ex = _existing(draft["slug"])
         if pg.get("title") != ex["title"] or pg.get("h1") != ex["h1"]:

@@ -1334,16 +1334,23 @@ def pick_line(c):
     """' · Our pick: <model>, $X with code C: <link>' for the first row when it is a product we list. One line, in the
     page's first 500-character chunk, which the length model always keeps (fastloop.cut); the rest of the links sit in
     the table."""
-    r = c["rows"][0] if c["rows"] else {}
-    if not r.get("slug"):
+    if not c["rows"]:
         return ""
-    p = BY_SLUG[r["slug"]]
-    name = html.escape(r.get("model") or short_name(p))
-    if is_amazon(p):
-        return f' · Pick: {name}, buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
-    cd, sv, after, date = best_offer(p)
-    price = f"{money(after)} with code {html.escape(cd['code'])}" if cd else money(p["price"])
-    return f' · Pick: {name}, {price}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+    def ours(r, label):
+        p = BY_SLUG[r["slug"]]
+        name = html.escape(r.get("model") or short_name(p))
+        if is_amazon(p):
+            return f' · {label}: {name}, buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+        cd, sv, after, date = best_offer(p)
+        price = f"{money(after)} with code {html.escape(cd['code'])}" if cd else money(p["price"])
+        return f' · {label}: {name}, {price}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+    first = c["rows"][0]
+    if first.get("slug"):
+        return ours(first, "Pick")
+    # the honest pick is a product we don't list: name it, then the first product we do list, with its link
+    line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])} (maker\'s store)'
+    nxt = next((r for r in c["rows"] if r.get("slug")), None)
+    return line + (ours(nxt, "Dealectric link") if nxt else "")
 
 
 def compare_page_v2(c):
