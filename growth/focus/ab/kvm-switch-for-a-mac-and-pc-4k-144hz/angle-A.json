@@ -1,0 +1,130 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Apple rates the M2 Pro to M4 Max MacBook Pros for 4K above 60 Hz only on their HDMI port, with Thunderbolt listed at 6K 60 Hz. The same results also don't state that every DP 1.4 '4K144' claim needs DSC because 4K144 at 8-bit RGB carries 28.67 Gb/s of active pixels against DP 1.4's 25.92 Gb/s payload. Together these favour an HDMI 2.1 KVM over the USB-C-to-DisplayPort route ChatGPT and Level1Techs suggest.",
+ "standout": 2,
+ "standout_why": "I compared against these pages: the TESmart HDMI 2.1 gaming guide (cited) and the TESmart DSC blog (cited), which say 4K144 'often depends on timing and color settings', give no Gb/s figure for 4K144 and tell Mac buyers to 'confirm the external-display limits of the exact Mac model'. The Level1Techs KVM FAQ (cited) already says DP 1.4 4K144 works only with DSC ('Without DSC, no') and recommends a USB-C-to-DP cable for Macs, so that half is partly covered. The Level1Techs single-monitor store page (cited) lists 4K120 only. The TESmart DKS202-MC24 and HKS202-M24 pages (cited) were rate-limited for page reads, but the store data shows the problem below. None of these pages gives Apple's per-port refresh limits for each chip, Apple's note that adapters aren't supported at 4K240 over HDMI, the fact that the 2021 M1 Pro/Max HDMI port tops out at 4K60, or that TESmart's own resolution list for the 'Dual 4K144Hz' HKS202-M24 contains no 4K144 mode.",
+ "decides": "The pick now depends on which Mac the shopper has. With an M2 Pro, M3 Pro or M4 Pro/Max MacBook Pro, the only port Apple rates for 4K above 60 Hz is HDMI. So an HDMI 2.1 KVM whose maker lists a 4K high-refresh mode is the sourced path: the TESmart HDK202-M24 lists 'Dual 4K@144Hz/160Hz (DSC 1.2a)', and the HKS201-M24 lists 4K240 (DSC). A DP 1.4 KVM fed by USB-C-to-DP (Level1Techs, TESmart DKS202-M24) has no Apple 4K144 rating on those Macs and needs DSC at 4K144 in any case. With a 2021 M1 Pro/Max, an HDMI KVM caps the Mac at 4K60. M5 Pro/Max is rated for 4K144 over Thunderbolt or HDMI, so either KVM type is possible. The current page's 'use the monitor's KVM' advice still holds, because a direct HDMI cable avoids the middle device, and Apple says to 'Connect displays directly to your Mac for best results'.",
+ "candidates": [
+  "TESmart HKS201-M24",
+  "TESmart HDK202-M24",
+  "TESmart HKS202-M24",
+  "TESmart DKS202-M24",
+  "Level1Techs DP 1.4 KVM single monitor two computer",
+  "UGREEN 8K DisplayPort KVM"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "DP 1.4 (HBR3) usable video payload",
+   "value": "25.92 Gb/s (32.4 Gb/s raw over four lanes)",
+   "source": "https://vesa.org/featured-articles/vesa-rolls-out-early-certification-program-for-video-source-and-display-products-using-hbr3-high-bandwidth-link-rate/",
+   "source_title": "VESA Rolls Out Early Certification Program for Video Source and Display Products Using HBR3 High-Bandwidth Link Rate",
+   "read": "2026-11-08",
+   "note": "VESA: 'combined audio/video payload data rate of 25.92 Gbps'. Arithmetic for 4K144 at 8-bit RGB, active pixels only: 3840×2160×144×24 bit = 28.67 Gb/s, which exceeds 25.92 before any blanking is added. 4K120 gives 23.89 Gb/s, which fits. At 10-bit, 4K144 needs 35.83 Gb/s. So a DP 1.4 KVM's '4K144' always means DSC (or chroma subsampling), whatever the label says."
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM single monitor two computer",
+   "label": "Rated mode without DSC vs 4K144",
+   "value": "'up to 4k/120hz or 8k/30hz'; DSC supported; 4K144 not listed on the product page; 'Overclocking not supported'; 'This KVM does not support monitor emulation'",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-single-monitor-2computer-64pfg-7l6da",
+   "source_title": "1.4 Display Port KVM Switch - Single Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-08",
+   "note": "The FAQ cited by ChatGPT adds: 4K/144 'is compatible because of DSC... Without DSC, no.'"
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM single monitor two computer",
+   "label": "Price",
+   "value": "from $350.00, Sold Out",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-single-monitor-2computer-64pfg-7l6da",
+   "source_title": "1.4 Display Port KVM Switch - Single Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-08",
+   "note": "Maker's store"
+  },
+  {
+   "product": "TESmart HDK202-M24",
+   "label": "How the 4K144 claim is qualified",
+   "value": "'Dual 4K@144Hz/160Hz gaming (DSC 1.2a)'; 3840×2160@240Hz (DSC); 'Dedicated HDMI 2.1 (48Gbps) + DP 1.4 per device'; $499.99, unavailable",
+   "source": "https://www.tesmart.com/products/hdk202-m24",
+   "source_title": "HDMI 2.1 & DP 1.4 Dual 4K144Hz KVM Switch Gaming Dock for 2 PCs & 2 Monitors – TESmart",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py (Shopify product data) because the HTML page returned HTTP 429. This is the only TESmart listing that labels its 4K144 mode as DSC."
+  },
+  {
+   "product": "TESmart HKS201-M24",
+   "label": "Listed modes (single monitor, 2 PCs, HDMI 2.1)",
+   "value": "7680×4320@60Hz (DSC), 5120×1440@120Hz (DSC), 3840×2160@240Hz (DSC), 3440×1440@144Hz, 2560×1440@240Hz, 1920×1080@240Hz; VRR; EDID emulation; $269.00, in stock",
+   "source": "https://www.tesmart.com/products/hks201-m24",
+   "source_title": "8K60Hz HDMI 2.1 2x1 KVM Switch Pro Hub for 2 PCs – TESmart",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py. 4K144 is not listed on its own; the only 4K high-refresh entry is 4K240, which is marked DSC. Whether a Mac negotiates DSC through it is not stated."
+  },
+  {
+   "product": "TESmart HKS202-M24",
+   "label": "Title claim vs resolution list",
+   "value": "Titled 'HDMI 2.1 Dual 4K144Hz'; resolution list reads 'Up to 7680x4320@60Hz with 4:4:4... compatible with 3840x2160@60Hz / 2560x1440@120Hz / 3440x1440@100Hz / 1920x1080@240Hz'; $359.00, in stock",
+   "source": "https://www.tesmart.com/products/hks202-m24",
+   "source_title": "HDMI 2.1 Dual 4K144Hz KVM Switch Gaming Dock for 2 PCs & 2 Monitors – TESmart",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py. ChatGPT cited this page and showed it at $359 as 'the strongest HDMI candidate', but its own mode list contains no 3840×2160 mode above 60 Hz. The v2 URL has the same text and price."
+  },
+  {
+   "product": "TESmart DKS202-M24",
+   "label": "4K144 claim on DP 1.4",
+   "value": "'backward compatibility for 4K (2160p) @ 60Hz, 120Hz, and 144Hz'; no DSC label on the 4K144 line; $329.90, in stock",
+   "source": "https://www.tesmart.com/products/dks202-m24",
+   "source_title": "2×2 DP 1.4 KVM for 2 PCs | Dual 8K60/4K144, EDID & G-Sync – TESmart",
+   "read": "2026-11-08",
+   "note": "Read through storecheck.py. By the VESA arithmetic above, its 4K144 must be a DSC mode."
+  },
+  {
+   "product": "Apple MacBook Pro M4 Pro / M4 Max (2024)",
+   "label": "External display refresh by port",
+   "value": "Thunderbolt: up to 6K at 60Hz; HDMI: 4K at 144Hz (alongside Thunderbolt displays) or one display at 4K 240Hz / 8K 60Hz",
+   "source": "https://support.apple.com/en-us/121553",
+   "source_title": "MacBook Pro (14-inch, M4 Pro or M4 Max, 2024) - Tech Specs",
+   "read": "2026-11-08",
+   "note": "Apple's spec rates no Thunderbolt mode above 60 Hz at 4K-class resolution. A 4K high-refresh rating appears only on HDMI."
+  },
+  {
+   "product": "Apple MacBook Pro M3 Pro / M3 Max (Nov 2023)",
+   "label": "External display refresh by port",
+   "value": "Thunderbolt: up to 6K at 60Hz; HDMI: 4K at 144Hz in multi-display configurations, or one display at 4K 240Hz / 8K 60Hz",
+   "source": "https://support.apple.com/en-us/117736",
+   "source_title": "MacBook Pro (14-inch, M3 Pro or M3 Max, Nov 2023) - Tech Specs",
+   "read": "2026-11-08",
+   "note": "Same split as the M4 Pro/Max: high refresh is rated on HDMI only."
+  },
+  {
+   "product": "Apple MacBook Pro M5 Pro / M5 Max / M6",
+   "label": "External display refresh (any port)",
+   "value": "M5 Pro/Max: displays up to 4K at 144Hz 'over any combination of Thunderbolt and HDMI ports', one or two at 4K 240Hz; M6: two at 4K 165Hz or one at 4K 240Hz; Thunderbolt 5 = 'native DisplayPort 2.1 speeds' (M5 Pro/Max)",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-08",
+   "note": "From the current generation, Apple rates 4K144 over Thunderbolt too, so a DP KVM fed by USB-C becomes a rated path."
+  },
+  {
+   "product": "Apple Macs (HDMI)",
+   "label": "HDMI 4K240 / 8K60 eligibility and adapter caveat",
+   "value": "MacBook Pro with M2 Pro or later (2023+): up to 4K 240Hz and 8K 60Hz; 'Adapters aren't supported for these resolutions and refresh rates. Connect displays directly to your Mac for best results.' MacBook Pro 2021 and later otherwise: up to 4K 60Hz over HDMI",
+   "source": "https://support.apple.com/en-us/108928",
+   "source_title": "Connect to HDMI from your Mac - Apple Support",
+   "read": "2026-11-08",
+   "note": "The 2021 M1 Pro/Max MacBook Pro falls in the 4K60 HDMI tier, so an HDMI 2.1 KVM caps that Mac at 4K60. Apple doesn't mention KVMs, but its 'connect directly' advice applies to any middle device."
+  }
+ ],
+ "unsourced": [
+  "Whether Apple Silicon MacBook Pros negotiate DSC through a DP 1.4 KVM at 4K144. I looked at the Level1Techs FAQ and the Level1Techs Mac thread (forum.level1techs.com/t/231019); no staff member or tester reports a result.",
+  "An Apple statement that M1–M4 Pro/Max Thunderbolt ports can or cannot drive 4K144. The tech specs list only 6K60 for Thunderbolt.",
+  "HDMI 2.1 FRL payload after encoding overhead (needed to show 4K144 10-bit fits without DSC). TESmart gives only '48Gbps'; I did not open an HDMI Forum page.",
+  "A full resolution table for TESmart HKS201-M24 / HKS202-M24 from a manual. tesmart.com HTML returned HTTP 429 and manuals.plus returned 403; store data came from storecheck.py only.",
+  "UGREEN 8K DisplayPort KVM US price and DSC labelling. us.ugreen.com was not reached within the tool-call budget.",
+  "Any independent (named reviewer) test of a KVM holding 4K144 with a MacBook Pro."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1123854999999998
+ }
+}

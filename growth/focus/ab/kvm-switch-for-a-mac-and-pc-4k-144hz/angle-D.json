@@ -1,0 +1,119 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states Apple's per-port limits. For MacBook Pros with M2 Pro/Max, M3 Pro/Max and M4/M4 Pro/M4 Max, Apple documents 4K at 144 Hz only on the HDMI port, and lists the Thunderbolt/USB-C ports at 6K 60 Hz. The 2021 M1 Pro/Max tops out at 4K 60 Hz on HDMI. Only the current M5 Pro/Max and M6 models list 4K 144 Hz or more over any combination of Thunderbolt and HDMI.",
+ "standout": 3,
+ "standout_why": "I compared against the pages ChatGPT cited: the Level1Techs KVM FAQ, the Level1Techs single-monitor 2-computer store page, TESmart's DSC blog post and TESmart's HDMI 2.1 gaming KVM guide. The ChatGPT answers themselves add nothing here: they ask 'Which MacBook Pro?' but never say why it matters. Level1Techs explains that 144 Hz through its DP 1.4 KVMs works only because of DSC. It tells Mac owners to use a DP KVM with a Moshi USB-C-to-DP cable, but it never quotes Apple's own limits. TESmart's DSC post says Macs lack native DisplayPort, so a conversion path must carry the DSC mode. TESmart's HDMI 2.1 guide only says 'Mac users should also confirm the external-display limits of the exact Mac model.' None of these pages gives the Apple-documented port and Hz limits per chip. That fact sorts the shopper into three cases: an HDMI 2.1 path, a DP path, or no 4K 144 Hz at all.",
+ "decides": "For an M2 Pro through M4 MacBook Pro, the only Apple-documented 4K 144 Hz output is the HDMI port. So the Mac's side of the switch should be HDMI 2.1, either through an HDMI 2.1 KVM such as the TESmart HKS201-M24 or into the monitor's own HDMI 2.1 input when using the monitor's KVM, with the PC on DisplayPort. A DP 1.4 KVM such as the Level1Techs depends on a USB-C-to-DP plus DSC path that Apple does not document for those chips. On top of that, Level1Techs' own spec is 4K 120 Hz, with 144 Hz only through DSC. This also corrects our current top row. It puts the Mac on the monitor's USB-C (DP Alt Mode), which Apple documents only to 6K 60 Hz on these chips, so the Mac should go on the monitor's HDMI 2.1 input instead. For an M1 Pro/Max (2021), Apple documents no 4K 144 Hz output at all, so no switch fixes it. For the M5 Pro/Max and M6, Apple lists 4K 144 Hz or more on any port, including Thunderbolt, so DP and USB-C paths are documented too.",
+ "candidates": [
+  "TESmart HKS201-M24",
+  "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+  "TESmart DKS202-M24",
+  "UGREEN 8K DisplayPort KVM 2-in-1-out",
+  "Gigabyte M27UP (monitor with built-in KVM)"
+ ],
+ "findings": [
+  {
+   "product": "Apple MacBook Pro (M4 / M4 Pro, 2024)",
+   "label": "4K 144/240 Hz port per Apple",
+   "value": "Thunderbolt: 'up to 6K resolution at 60 Hz'; HDMI: 'one external display with up to 4K resolution at 144 Hz', or a single display at 'up to 4K resolution at 240 Hz using the HDMI port'",
+   "source": "https://support.apple.com/guide/macbook-pro/apd8cdd74f57/2024/mac/15",
+   "source_title": "Use an external display with your MacBook Pro (Apple Support, 2024 / macOS 15)",
+   "read": "2026-11-08",
+   "note": "Apple ties 144 Hz and 240 Hz only to the HDMI port. Every Thunderbolt configuration is listed at 6K 60 Hz. The guide does not mention DSC."
+  },
+  {
+   "product": "Apple MacBook Pro (M4 Max, 2024)",
+   "label": "4K 144/240 Hz port per Apple",
+   "value": "Up to three displays at '6K resolution at 60 Hz using the Thunderbolt ports' plus 'one external display with up to 4K resolution at 144 Hz using the HDMI port'; or 4K 240 Hz on the HDMI port",
+   "source": "https://support.apple.com/guide/macbook-pro/apd8cdd74f57/2024/mac/15",
+   "source_title": "Use an external display with your MacBook Pro (Apple Support, 2024 / macOS 15)",
+   "read": "2026-11-08",
+   "note": "Same pattern as M4 Pro: high refresh is documented on HDMI only."
+  },
+  {
+   "product": "Apple MacBook Pro 14-inch (M3 Pro / M3 Max, Nov 2023)",
+   "label": "4K 144/240 Hz port per Apple",
+   "value": "'up to 6K resolution at 60Hz over Thunderbolt' and 'one external display with up to 4K resolution at 144Hz over HDMI'; HDMI output: 'up to 8K resolution at 60Hz or 4K resolution at 240Hz'",
+   "source": "https://support.apple.com/en-us/117736",
+   "source_title": "MacBook Pro (14-inch, M3 Pro or M3 Max, Nov 2023) - Tech Specs - Apple Support",
+   "read": "2026-11-08",
+   "note": "The same page lists 'native DisplayPort output over USB-C', with no Hz figure above 6K 60 Hz."
+  },
+  {
+   "product": "Apple MacBook Pro (M2 Pro / M2 Max, 2023)",
+   "label": "4K 144/240 Hz port per Apple",
+   "value": "HDMI 'up to 4K resolution at 144 Hz' (alongside a Thunderbolt display), or a single display at 'up to 4K resolution at 240 Hz' on HDMI; Thunderbolt 'up to 6K resolution at 60 Hz'",
+   "source": "https://support.apple.com/guide/macbook-pro/apd8cdd74f57/2023/mac/14",
+   "source_title": "Use an external display with your MacBook Pro (Apple Support, 2023 / macOS 14)",
+   "read": "2026-11-08",
+   "note": "This guide version covers M2 Pro/Max only, not M3."
+  },
+  {
+   "product": "Apple MacBook Pro 14-inch (M1 Pro / M1 Max, 2021)",
+   "label": "HDMI and Thunderbolt display limits per Apple",
+   "value": "HDMI: 'one display with up to 4K resolution at 60Hz'; Thunderbolt: 'up to 6K resolution at 60Hz'",
+   "source": "https://support.apple.com/kb/SP854",
+   "source_title": "MacBook Pro (14-inch, 2021) - Technical Specifications - Apple Support",
+   "read": "2026-11-08",
+   "note": "Apple documents no 4K above 60 Hz on any port for this model, so a KVM cannot add 144 Hz on the Mac side."
+  },
+  {
+   "product": "Apple MacBook Pro (M5 Pro / M5 Max / M6, current)",
+   "label": "4K high-refresh support per Apple",
+   "value": "M5 Pro and M5 Max: up to three or four displays at '6K at 60Hz or 4K at 144Hz' over 'any combination of Thunderbolt and HDMI ports', and 4K 240 Hz on one or two displays. M6 14-inch: two displays at '4K at 165Hz', or one at 4K 240 Hz. The Thunderbolt 5 ports on the M5 Pro/Max 'support native DisplayPort 2.1 speeds'; the Thunderbolt 4 ports on the M6 support 'native DisplayPort 1.4 speeds'.",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro with Liquid Retina XDR Display - Technical Specifications - Apple",
+   "read": "2026-11-08",
+   "note": "Only on these current models does Apple document 4K 144 Hz over Thunderbolt/USB-C. A DP 1.4 KVM still caps the link at DP 1.4, so DSC is still needed (see Level1Techs FAQ)."
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM (all models)",
+   "label": "Why 144 Hz works through a DP 1.4 KVM",
+   "value": "'It is compatible because of DSC (Display Stream Compression). Without DSC, no.'; active cables/adapters 'will reduce your bandwidth to DisplayPort 1.2', which limits the link to 'about 4K@30~60Hz'",
+   "source": "https://forum.level1techs.com/t/official-l1techs-kvm-faq-ultimate-guide-help/186196",
+   "source_title": "[Official] L1Techs KVM FAQ -- Ultimate Guide & Help! - Level1Techs Forums",
+   "read": "2026-11-08",
+   "note": "Rival page that ChatGPT cited. For Macs it recommends a DP KVM plus the Moshi USB-C-to-DP cable and calls '99% of other USB-C To DisplayPort cables' incorrect. It does not quote Apple's port limits."
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+   "label": "Official refresh spec and emulation",
+   "value": "'up to 4k/120hz or 8k/30hz'; '144hz @ 1440p (Overclocking not supported)'; 'DisplayStream Compression Supported'; 'This KVM does not support monitor emulation'; from $350.00, Sold Out",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-single-monitor-2computer-64pfg-7l6da",
+   "source_title": "1.4 Display Port KVM Switch - Single Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-08",
+   "note": "The official 144 Hz figure is at 1440p, not 4K. The page also gives macOS instructions for turning off automatic Spaces rearrangement after the re-handshake on switching."
+  },
+  {
+   "product": "general",
+   "label": "What the KVM must do for a DSC mode (TESmart)",
+   "value": "A KVM 'must maintain the link negotiation and transport the DSC-dependent signal without reducing the supported mode'; 'Most Mac computers do not provide native full-size DisplayPort outputs'",
+   "source": "https://www.tesmart.com/blogs/news/why-display-stream-compression-dsc-is-important-to-video-compression",
+   "source_title": "Does a KVM Switch Need DSC for 4K240Hz or 8K60Hz? – TESmart",
+   "read": "2026-11-08",
+   "note": "Rival page that ChatGPT cited. It lists 4K144/165 as 'Often depends on timing and color settings' and gives no bandwidth figure."
+  },
+  {
+   "product": "TESmart HKS202-M24 / HDK202-M24",
+   "label": "Mac advice and DSC modes in TESmart's HDMI 2.1 guide",
+   "value": "'Mac users should also confirm the external-display limits of the exact Mac model'; 4K 240 Hz listed as a DSC mode on both models; 'For 4K 120Hz or 144Hz, verify the exact HDMI modes supported by the GPU and monitor'",
+   "source": "https://www.tesmart.com/blogs/news/a-guide-to-selecting-hdmi-2-1-kvm-switches-for-gaming",
+   "source_title": "HDMI 2.1 Gaming KVM Guide: Bandwidth, VRR, EDID, DSC and Dual-Monitor – TESmart",
+   "read": "2026-11-08",
+   "note": "Rival page that ChatGPT cited. It tells Mac owners to check their limits but does not state them, and gives no FRL/Gbps figure for 4K 144 Hz."
+  }
+ ],
+ "unsourced": [
+  "TESmart HKS201-M24 product page and price: tesmart.com returned HTTP 429 to WebFetch and storecheck.py on every try. A search snippet says the page gives '4K@120Hz HDR (12bit), with up to 4K@144Hz/165Hz via DSC', but I could not open it to confirm whether 4K 144 Hz on HDMI is native FRL or needs DSC.",
+  "TESmart HKS201-M24 manual (support.tesmart.com attachment 42184254709657): the PDF downloaded but the fetch tool could not read its compressed text, and running pdftotext on it was not approved, so its spec lines were not read.",
+  "TESmart HKS202-M24 product page (supported-mode table): HTTP 429.",
+  "An Apple statement on whether M2 Pro–M4 MacBook Pros output DSC over HDMI or over USB-C DisplayPort: I looked for an Apple support page, and Apple's guides and specs above do not mention DSC.",
+  "The HDMI 2.1 FRL rate needed for uncompressed 4K 144 Hz 8-bit RGB, from HDMI Forum or a maker page: not opened, so no bandwidth arithmetic is included."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1015967000000002
+ }
+}

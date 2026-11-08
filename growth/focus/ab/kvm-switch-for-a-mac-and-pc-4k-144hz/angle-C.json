@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which MacBook Pro chips can send 4K 144 Hz into an HDMI 2.1 KVM. Apple's own spec pages limit the HDMI port to 4K 60 Hz on the 2021 M1 Pro MacBook Pro and to 4K 120 Hz on the base M3 (Nov 2023). The M2 Pro (2023) and later reach 4K 240 Hz. Apple also says adapters aren't supported at those HDMI rates, so the Mac's own HDMI port has to go straight into the switch.",
+ "standout": 3,
+ "standout_why": "I read these cited pages: the TESmart HDMI 2.1 gaming KVM guide, the TESmart DisplayPort-vs-HDMI blog, the L1Techs KVM FAQ and the Level1Techs single-monitor 2-computer store page. I also read the uncited top result, the dockgearhq 2026 4K KVM roundup. The TESmart pages only say to 'confirm the external-display limits of the exact Mac model' and to expect USB-C-to-DP adapters. Neither TESmart page gives any Apple chip's HDMI limits. The L1Techs FAQ covers Macs only through a Moshi USB-C-to-DP cable recommendation. The dockgearhq page lists Mac external-display counts but not the HDMI refresh limit for each chip, and it never mentions Apple's no-adapter rule. In all three chats ChatGPT asked the shopper which MacBook Pro they own because that 'will determine which one to buy', but none of its sources answered that question.",
+ "decides": "The Mac's chip decides the switch type. With an M2 Pro/Max (2023) or later, base M4/M5/M6, or M3/M4/M5 Pro/Max, the Mac's built-in HDMI port can feed an HDMI 2.1 KVM such as the TESmart HKS201-M24 at 4K 144 Hz alongside the PC. It must be a direct HDMI cable, not a USB-C-to-HDMI adapter. With an M1 Pro/Max or base M3 MacBook Pro, the HDMI side stops at 4K 60 Hz or 4K 120 Hz. Those Macs need the USB-C DP Alt Mode route into a DisplayPort KVM, using a DP Alt Mode USB-C-to-DP cable (Cable Matters says its switch 'is not natively compatible with computers with a USB-C port'). On that route, 4K 144 Hz depends on DSC working end to end (Cable Matters FAQ; L1Techs FAQ: 'Without DSC, no'), and Level1Techs officially rates its switch only to 4K 120 Hz. This keeps our page's verdict of using the monitor's built-in KVM for M1 Pro and base M3 owners, and it allows an HDMI 2.1 KVM for M2 Pro and later.",
+ "candidates": [
+  "TESmart HKS201-M24",
+  "TESmart HKS202-M24",
+  "TESmart DKS202-M24",
+  "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+  "Cable Matters 202070 DP 1.4 KVM",
+  "UGREEN 8K DisplayPort KVM 2-in-1-out"
+ ],
+ "findings": [
+  {
+   "product": "Apple MacBook Pro 14-inch 2021 (M1 Pro)",
+   "label": "HDMI port maximum output",
+   "value": "one display, up to 4K at 60 Hz",
+   "source": "https://support.apple.com/en-us/111902",
+   "source_title": "MacBook Pro (14-inch, 2021) - Technical Specifications",
+   "read": "2026-11-08",
+   "note": "Apple text: 'Support for one display with up to 4K resolution at 60Hz'. An HDMI 2.1 KVM cannot get 4K 144 Hz from this Mac's HDMI port. Its Thunderbolt ports are rated 'up to two external displays with up to 6K resolution at 60Hz'."
+  },
+  {
+   "product": "Apple MacBook Pro 14-inch (M3, Nov 2023)",
+   "label": "HDMI port maximum output",
+   "value": "one display, up to 4K at 120 Hz",
+   "source": "https://support.apple.com/en-us/117735",
+   "source_title": "MacBook Pro (14-inch, M3, Nov 2023) - Technical Specifications",
+   "read": "2026-11-08",
+   "note": "Apple text: 'Support for one display with up to 4K resolution at 120Hz (M3)'. This page covers the base M3 only. The M3 Pro/Max are on the HDMI 4K 240 Hz list in Apple's 108928 article."
+  },
+  {
+   "product": "Apple MacBook Pro 14-inch 2023 (M2 Pro)",
+   "label": "HDMI port maximum output",
+   "value": "one display, up to 8K at 60 Hz or 4K at 240 Hz",
+   "source": "https://support.apple.com/en-us/111340",
+   "source_title": "MacBook Pro (14-inch, 2023) - Technical Specifications",
+   "read": "2026-11-08",
+   "note": "Apple text: 'Support for one display with up to 8K resolution at 60Hz or 4K resolution at 240Hz'. 4K 144 Hz over HDMI falls within this range."
+  },
+  {
+   "product": "general (Apple Mac HDMI)",
+   "label": "Macs whose HDMI port does 4K 240 Hz / 8K 60 Hz, and adapter rule",
+   "value": "MacBook Pro with M4, M5, M6, M2 Pro, M3 Pro, M4 Pro or Max, or M5 Pro or Max (2023 or later); 'Adapters aren't supported for these resolutions and refresh rates. Connect displays directly to your Mac'",
+   "source": "https://support.apple.com/en-us/108928",
+   "source_title": "Connect to HDMI from your Mac - Apple Support",
+   "read": "2026-11-08",
+   "note": "The page's published date is 5 Nov 2026. It says to use an Ultra High Speed 48 Gbps HDMI cable for 8K. 4K 144 Hz is not named separately. The page does not mention switches, hubs or docks, so whether a KVM in the HDMI path counts as an 'adapter' is not stated."
+  },
+  {
+   "product": "Apple MacBook Pro (M6 / M5 Pro / M5 Max, current)",
+   "label": "External display support over Thunderbolt/HDMI",
+   "value": "M6: two displays up to 4K 165 Hz or one up to 4K 240 Hz; Thunderbolt 4 at native DP 1.4 speeds. M5 Pro: three up to 4K 144 Hz or one at 4K 240 Hz; M5 Max: four up to 4K 144 Hz or two at 4K 240 Hz; Thunderbolt 5 at native DP 2.1 speeds",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Technical Specifications - Apple",
+   "read": "2026-11-08",
+   "note": "On current models the USB-C/Thunderbolt route to a DisplayPort KVM is rated for 4K 144 Hz and above by the Mac. Whether the KVM keeps that rate is a separate question."
+  },
+  {
+   "product": "Cable Matters 202070 DP 1.4 KVM",
+   "label": "Mac / USB-C compatibility and 4K144 condition",
+   "value": "macOS compatible; 'not natively compatible with computers with a USB-C port' (needs a DP Alt Mode USB-C-to-DP cable/adapter); 4K 144/240 Hz only 'when connected to a DP 1.4 host that supports Display Stream Compression (DSC)'; 'This switch has no EDID emulation'",
+   "source": "https://cablematters.com/pc-1431-135-usb-30-kvm-switch-displayport-14-for-2-computers.aspx",
+   "source_title": "Cable Matters USB 3.0 KVM Switch DisplayPort 1.4 for 2 Computers (202070)",
+   "read": "2026-11-08",
+   "note": "Taken from the maker's FAQ and feature list. The page also says 'macOS supports up to 4K@240Hz external display on compatible systems'. No price amount was shown."
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+   "label": "Official limits and Mac exclusion",
+   "value": "up to 4K 120 Hz per DP 1.4 input; DSC supported; 'Overclocking not supported'; known issue with 2013 Mac Pro DP output; no cables included; from $350, sold out",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-single-monitor-2computer-64pfg-7l6da",
+   "source_title": "1.4 Display Port KVM Switch - Single Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-08",
+   "note": "The store page shows a $ price that changes with the USB option and does not say USD. The only Mac exclusion it names is the 2013 Mac Pro."
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVMs (general)",
+   "label": "Mac cable pairing and 4K144 condition",
+   "value": "Moshi USB-C to DisplayPort cable recommended for Macs, other USB-C-to-DP cables excluded ('99% of other USB-C To DisplayPort cables'); 4K 144 Hz 'compatible because of DSC... Without DSC, no'; keep total GPU-to-monitor run to about 10 ft (3 m) or less",
+   "source": "https://forum.level1techs.com/t/official-l1techs-kvm-faq-ultimate-guide-help/186196",
+   "source_title": "[Official] L1Techs KVM FAQ -- Ultimate Guide & Help!",
+   "read": "2026-11-08",
+   "note": "This is a cited rival, so the cable pairing alone is not new. The FAQ also says Macs can have trouble when USB hubs are attached and suggests an Anker hub that is 'not a hub of hubs'."
+  }
+ ],
+ "unsourced": [
+  "TESmart HKS201-M24, HKS202-M24 and DKS202-M24: Mac notes, mode tables and US prices. tesmart.com returned HTTP 429 on four tries through WebFetch and storecheck.py.",
+  "Moshi USB-C to DisplayPort cable: I looked for a 4K 144 Hz or DSC rating on Moshi's own page and found none. Retailer listings say 5K60 / HBR3 / DP 1.3, so I'm not claiming it carries 4K 144 Hz.",
+  "Cable Matters 202070 US price: the maker's page showed a 'Price:' label with no amount.",
+  "Whether Apple's 'adapters aren't supported' line covers an HDMI KVM in the path: Apple 108928 does not mention switches. I found no maker or named-reviewer test of an M2 Pro or later MacBook Pro holding 4K 144 Hz through an HDMI 2.1 KVM."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0941115000000003
+ }
+}

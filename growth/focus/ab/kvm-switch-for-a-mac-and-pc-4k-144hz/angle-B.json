@@ -1,0 +1,129 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states the arithmetic: uncompressed 4K at 144 Hz and 8-bit colour needs 31.35 Gb/s, which is 121% of the 25.92 Gb/s a DisplayPort 1.4 (HBR3) KVM can carry (151% at 10-bit). 4K at 120 Hz and 8-bit fills 99.6% of that link. So every DP 1.4 KVM's '4K144' claim depends on DSC, while an HDMI 2.1 48G link carries 4K144 at 10-bit uncompressed at 93% of its 42.0 Gb/s.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: TESmart's HDMI 2.1 gaming guide, TESmart's DSC blog, the Level1Techs KVM FAQ, and the Level1Techs single-monitor 2-computer store page. I also read the product pages ChatGPT showed (TESmart HKS201-M24). The L1 FAQ says 4K144 works 'because of DSC… Without DSC, no', and TESmart's DSC blog says 4K144 'often depends on timing and color settings'. So the conclusion is partly covered. None of these pages gives a Gb/s figure for 4K144, the 25.92 Gb/s HBR3 payload, or the HDMI 2.1 headroom. None explains why Level1Techs rates its switch at exactly 4K120 (99.6% of HBR3).",
+ "decides": "On a DP 1.4 KVM (Level1Techs, TESmart DKS202-M24, StarTech D86A2, UGREEN 25962), 4K144 only works if DSC works end to end, Mac included. That is the very part ChatGPT kept telling the shopper to 'verify'. The finding favours connecting a MacBook Pro (M2 Pro/Max or later) from its own HDMI port, with no adapter, to an HDMI 2.1 48G KVM. That link has the headroom for 4K144 without compression. One catch: TESmart's HKS201-M24 page lists 4K144/165 as running 'through DSC' and makes no Mac claim, so no switch is proven to carry 4K144 uncompressed. This supports the current page's lead pick (use the monitor's built-in KVM, a direct link with no DSC middleman). It does not overturn it.",
+ "candidates": [
+  "TESmart HKS201-M24",
+  "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+  "TESmart DKS202-M24",
+  "StarTech D86A2-2-PORT-8K-KVM",
+  "UGREEN 25962 8K DisplayPort KVM 2 in 1 out"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "DisplayPort 1.4 (HBR3, 4 lanes) payload",
+   "value": "25.92 Gb/s (32.40 Gb/s raw)",
+   "source": "https://en.wikipedia.org/wiki/DisplayPort",
+   "source_title": "DisplayPort – Wikipedia",
+   "read": "2026-11-08",
+   "note": "4 × 8.10 Gb/s × 8/10 (8b/10b encoding) = 25.92 Gb/s"
+  },
+  {
+   "product": "general",
+   "label": "Uncompressed 3840×2160 @ 144 Hz data rate",
+   "value": "31.35 Gb/s at 8 bpc; 39.19 Gb/s at 10 bpc (CVT-RB v2 timing)",
+   "source": "https://en.wikipedia.org/wiki/DisplayPort",
+   "source_title": "DisplayPort – Wikipedia",
+   "read": "2026-11-08",
+   "note": "The table marks 4K144 as needing DSC on HBR3 and fitting UHBR10 and above without it"
+  },
+  {
+   "product": "general",
+   "label": "4K144 load on a DP 1.4 KVM link",
+   "value": "121% at 8-bit, 151% at 10-bit",
+   "source": "https://en.wikipedia.org/wiki/DisplayPort",
+   "source_title": "DisplayPort – Wikipedia",
+   "read": "2026-11-08",
+   "note": "31.35 / 25.92 = 1.21; 39.19 / 25.92 = 1.51. Over 100%, so DSC (or chroma subsampling) is required"
+  },
+  {
+   "product": "general",
+   "label": "4K120 load on a DP 1.4 KVM link",
+   "value": "99.6% at 8-bit (25.82 Gb/s); 124% at 10-bit (32.27 Gb/s)",
+   "source": "https://en.wikipedia.org/wiki/DisplayPort",
+   "source_title": "DisplayPort – Wikipedia",
+   "read": "2026-11-08",
+   "note": "25.82 / 25.92 = 0.996. This is why DP 1.4 KVMs are rated '4K120' uncompressed"
+  },
+  {
+   "product": "general",
+   "label": "HDMI 2.1 (FRL 48G) payload",
+   "value": "42.0 Gb/s (48.0 Gb/s raw); HDMI 2.0 14.4 Gb/s",
+   "source": "https://en.wikipedia.org/wiki/HDMI",
+   "source_title": "HDMI – Wikipedia",
+   "read": "2026-11-08",
+   "note": "Usable rate after FEC overhead, per the article's spec table"
+  },
+  {
+   "product": "general",
+   "label": "4K144 load on an HDMI 2.1 48G link",
+   "value": "75% at 8-bit, 93% at 10-bit",
+   "source": "https://en.wikipedia.org/wiki/HDMI",
+   "source_title": "HDMI – Wikipedia",
+   "read": "2026-11-08",
+   "note": "31.35 / 42.0 = 0.75; 39.19 / 42.0 = 0.93. Data rates come from the DisplayPort article's CVT-RB v2 table. A monitor's own HDMI timing may have more blanking, which would narrow the 7% margin at 10-bit"
+  },
+  {
+   "product": "TESmart HKS201-M24",
+   "label": "Link, 4K144 mode, price",
+   "value": "HDMI 2.1 up to 48 Gb/s; '4K@120Hz with 12-bit HDR or up to 4K@144Hz/165Hz through DSC'; $269.00",
+   "source": "https://www.tesmart.com/products/hks201-m24",
+   "source_title": "8K60Hz 2×1 HDMI KVM Switch for 2 PCs – EDID, LAN & USB 3.2 | TESmart",
+   "read": "2026-11-08",
+   "note": "The vendor ties 4K144 to DSC even though 48G could carry it uncompressed (75–93% load). EDID emulation built in; HDMI 2.1 VRR, G-Sync/FreeSync compatible; no Mac-specific statement. Price from a WebFetch of the product page (storecheck returned HTTP 429)"
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+   "label": "Rated mode, price",
+   "value": "'up to 4k/120hz or 8k/30hz', DSC supported, overclocking not supported; from $350.00, Sold Out",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-single-monitor-2computer-64pfg-7l6da",
+   "source_title": "1.4 Display Port KVM Switch - Single Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-08",
+   "note": "4K120 at 8-bit = 99.6% of HBR3, matching the rating. 4K144 needs 121%, hence DSC. No monitor emulation: the monitor re-handshakes on every switch"
+  },
+  {
+   "product": "Level1Techs DP 1.4 KVM Single Monitor Two Computer",
+   "label": "4K144 condition (maker FAQ)",
+   "value": "4K144 'is compatible because of DSC… Without DSC, no'",
+   "source": "https://forum.level1techs.com/t/official-l1techs-kvm-faq-ultimate-guide-help/186196",
+   "source_title": "[Official] L1Techs KVM FAQ -- Ultimate Guide & Help!",
+   "read": "2026-11-08",
+   "note": "For Macs the FAQ recommends a Moshi USB-C to DisplayPort cable. It does not say whether a Mac reaches 4K144 through the KVM"
+  },
+  {
+   "product": "general",
+   "label": "MacBook Pro HDMI output",
+   "value": "4K up to 240 Hz on MacBook Pro with M2 Pro/Max or M3 Pro/Max (2023 or later); requires an Ultra High Speed 48 Gb/s HDMI cable, connected directly with no adapter",
+   "source": "https://support.apple.com/en-us/102236",
+   "source_title": "Use an HDMI display with Mac – Apple Support",
+   "read": "2026-11-08",
+   "note": "The page does not mention 144 Hz or KVMs"
+  },
+  {
+   "product": "general",
+   "label": "Current MacBook Pro display outputs",
+   "value": "M6 14-inch: Thunderbolt 4 at 'native DisplayPort 1.4 speeds'; M5 Pro/M5 Max: Thunderbolt 5 at 'native DisplayPort 2.1 speeds'; all list one display up to 4K 240 Hz over Thunderbolt or HDMI",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-08",
+   "note": "Through a DP 1.4 KVM even a Thunderbolt 5 Mac is held to HBR3 (25.92 Gb/s), so 4K144 needs DSC. UHBR13.5 would carry 4K144 at 10-bit at 75% (39.19 / 52.22), but no DP 2.1 KVM candidate was sourced"
+  }
+ ],
+ "unsourced": [
+  "TESmart DKS202-M24 price and whether its 4K144 mode uses DSC: tesmart.com returned HTTP 429 on two WebFetch attempts and on storecheck",
+  "StarTech D86A2 official 4K144/DSC footnote and US price: the startech.com product page loaded only navigation and the CDW page returned 403. Retailer search snippets mention 'DSC support required', but I did not open those pages, so the claim is not used",
+  "UGREEN 25962 DP KVM official spec and US price: storecheck search on us.ugreen.com found no DisplayPort KVM listing; only resellers (PB Tech, desertcart) list it, with conflicting 4K120/144/240 claims",
+  "HKS201-M24 FRL lane configuration (FRL 6 × 48G versus 40G): the product page states only 'up to 48Gbps'",
+  "Any tested report of a MacBook Pro holding 4K 144 Hz through a named KVM over HDMI or USB-C: the MacRumors thread '4k 144hz kvm switch pc mac' returned 403; nothing else found",
+  "Whether Apple Silicon Macs output DSC over HDMI or USB-C to third-party displays: no Apple or maker source found. Apple's HDMI 4K240 claim (54.84 Gb/s at 8-bit, above 42.0) could also be met with 4:2:0 chroma, so it does not prove DSC"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9173755999999998
+ }
+}
