@@ -1,0 +1,92 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Gough Lui, testing against a Rohde & Schwarz NGM202 reference supply (0.05% basic accuracy), found the XTAR VX4's capacity readings ran 2–3% high, 2.78% at worst, and that the VX4 draws about 530 mW from the wall while idle with its backlight off.",
+ "standout": 1,
+ "standout_why": "I read the four cited rival pages. 1lumen's VC4SL review (Dave, April 2022) gives measured charge current (3060 mA) and end voltage (4.19 V) but no capacity-accuracy or standby figure. Tim McMahon's VX4 review (August 2024) gives finish voltages of 4.097–4.177 V and one capacity cross-check: 6174 mAh on the VX4 against 6163 mAh on an Atorch DL24. So the rivals already cover part of the capacity-accuracy point. M0MNF's VC4SL review (April 2025) has no measurements, only the maker's current options. The manuals.plus Vapcell S4 Plus V3 page is just the manual. None of them gives a systematic capacity error measured against a lab-grade reference, or any idle power draw. HKJ's drain and termination figures for the S4+ are also missing from the rival pages, but they cover the original S4+, not the V3 that ChatGPT showed.",
+ "decides": "This confirms the VX4 as a sound pick for people who want to grade 18650 cells: its capacity figures are trustworthy within 3%, leaning slightly high, so a cell that reads 2,900 mAh is really about 2,820 mAh or more. It doesn't change the order of picks. For the VC4SL, the two named measurements of end voltage, 4.19 V from 1lumen and about 4.16 V from SammysHP, both fall at or just under 4.2 V. That backs it as a charger that doesn't overcharge, at the cost of a slightly short full charge. I found no independent measurements of the Vapcell S4 Plus V3 or the Tenergy TN270, which Dealectric lists, so neither can be backed with a named number.",
+ "candidates": [
+  "XTAR VC4SL",
+  "XTAR VX4 V2",
+  "Vapcell S4 Plus V3",
+  "XTAR VC2SL",
+  "XTAR SC2",
+  "Tenergy TN270"
+ ],
+ "findings": [
+  {
+   "product": "XTAR VX4",
+   "label": "Capacity-test error vs reference (Gough Lui)",
+   "value": "+2–3% (overestimates), worst case 2.78%; all results within 3%",
+   "source": "https://goughlui.com/?p=51255",
+   "source_title": "Gough's Tech Zone – XTAR VX4 Visible Mixer review",
+   "read": "2026-11-08",
+   "note": "Gough Lui, posted 2024-12-04. Reference was a Rohde & Schwarz NGM202 two-quadrant supply with battery simulation (0.05% basic accuracy). He says a third-party check found 2.83%, in line with his result. AU set with the C1902A 20 W USB-C PD adapter."
+  },
+  {
+   "product": "XTAR VX4",
+   "label": "Idle draw from the wall (Gough Lui)",
+   "value": "≈530 mW with backlight off; ≈651 mW with backlight on; adapter alone 47.8 mW",
+   "source": "https://goughlui.com/?p=51255",
+   "source_title": "Gough's Tech Zone – XTAR VX4 Visible Mixer review",
+   "read": "2026-11-08",
+   "note": "Gough Lui, 2024-12-04, measured at the AC side. He estimates the running cost at about $1.71 a year at 30c/kWh. DC-side quiescent current with backlight off: 24.8 mA at 12 V and 20.9 mA at 5 V."
+  },
+  {
+   "product": "XTAR VX4",
+   "label": "Li-ion termination current (Gough Lui)",
+   "value": "below 100 mA most of the time (fixed)",
+   "source": "https://goughlui.com/?p=51255",
+   "source_title": "Gough's Tech Zone – XTAR VX4 Visible Mixer review",
+   "read": "2026-11-08",
+   "note": "Gough Lui, 2024-12-04. With the included 20 W adapter he reports 3 A on one slot, 2 A each on two, and 1 A each on four. With a third-party 65 W charger without PPS, the VX4 negotiated 9 V 1.25 A (11.25 W) instead of 12 V."
+  },
+  {
+   "product": "XTAR VX4",
+   "label": "Li-ion end-of-charge voltage (Tim McMahon)",
+   "value": "4.097–4.177 V across 11 charge and grade runs",
+   "source": "https://timmcmahon.com.au/posts/xtar-vx4/",
+   "source_title": "XTAR VX4 Charger Review :: Tim McMahon",
+   "read": "2026-11-08",
+   "note": "Tim McMahon, August 2024, at a room temperature of 12 °C. Spec is 4.2 ± 0.05 V. He also got 6174 mAh on the VX4 vs 6163 mAh on an Atorch DL24 for an XTAR 26650 at 0.28 A. This rival page is cited by ChatGPT."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Measured 18650 charge current and end voltage (1lumen)",
+   "value": "3060 mA; 4.19 V end voltage; 3000 mAh 18650 charged in 1.2 h",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "Dave at 1lumen, April 2022, single cell. A 4000 mAh 21700 took 1.5 h at 3060 mA. The display was almost 0.1 V off a multimeter on some cells. This rival page is cited by ChatGPT."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Li-ion end-of-charge voltage (SammysHP)",
+   "value": "about 4.16 V",
+   "source": "https://budgetlightforum.com/t/xtar-vc4sl-charger-review/68770",
+   "source_title": "XTAR VC4SL charger review – BudgetLightForum (SammysHP)",
+   "read": "2026-11-08",
+   "note": "SammysHP, 2021-12-03: 'Li-ion batteries were charged to about 4.16 V in my tests.' He also saw the display read 4.20 V when the real voltage was 3.9 V, and judged the IR readings 'not very accurate'."
+  },
+  {
+   "product": "Vapcell S4+ (original, not V3)",
+   "label": "Termination current and drain on a cell left in the charger with power off (HKJ)",
+   "value": "≈100 mA termination current; 2.2 mA Li-ion drain with power off",
+   "source": "https://lygte-info.dk/review/Review%20Charger%20Vapcell%20S4%2B%20fast%20charger%20UK.html",
+   "source_title": "Vapcell S4+ fast charger – lygte-info.dk (HKJ)",
+   "read": "2026-11-08",
+   "note": "HKJ (Henrik Jensen). The review is undated on the page and covers the original S4+, not the V3 that ChatGPT showed. Four cells at 3 A from 12 V drew about 4.5 A, cells reached 45–47 °C, and the heatsink 69 °C. He found the displayed internal resistance about half the actual value."
+  }
+ ],
+ "unsourced": [
+  "Independent measurements of the Vapcell S4 Plus V3 (end voltage, termination current, capacity accuracy). HKJ only reviewed the original S4+. The makiuto.github.io V3 review (2025-12-23) has no measurements, and the BLF V3 thread's first page has none either.",
+  "Lab measurements of the XTAR VC4SL's termination current, its drain with power off, or capacity-test accuracy. HKJ's index lists only the VC4S, not the VC4SL. I found no Gough Lui VC4SL review. 1lumen and M0MNF don't measure these.",
+  "Independent measurements of the Tenergy TN270, the 18650 charger Dealectric lists. HKJ reviewed only the Tenergy T4s, and the search returned only retailer listings.",
+  "Named measurements of the XTAR VC2SL, XTAR SC2, XTAR VP4L Plus and XTAR VC8S. HKJ's index lists only older relatives (VC2/VC2S, VP4 Plus Dragon, VC8), and I ran out of call budget to search further."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.7712251
+ }
+}

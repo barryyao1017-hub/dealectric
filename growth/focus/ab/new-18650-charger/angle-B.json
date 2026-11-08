@@ -1,0 +1,108 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how long a full four-cell load of 18650s takes on each charger. The pages it got give per-slot amps, or a single-cell time, or a four-cell time for one charger only. Our arithmetic floor for four 3,000 mAh cells: about 1 h on a Vapcell S4 Plus V3 (3 A × 4), 3 h on an XTAR VC4SL or VX4 (1 A × 4), and 12 h on a Tenergy TN270 (0.5 A × 2 bays, two loads).",
+ "standout": 2,
+ "standout_why": "Compared against 1lumen.com VC4SL (cited), m0mnf.com (cited), timmcmahon.com.au VX4 (cited), xtar.cc comparison, beamandbattery.com and besttacticalflashlighttoday.net. 1Lumen and M0MNF give the VC4SL's 3A×1/2A×2/1A×4 split and a single-cell time of 1.2 h (3,000 mAh at 3,060 mA) but no four-cell time. Tim McMahon lists the VX4's 1Ax4 spec and only tested one channel. xtar.cc gives only the maximum current, 3 A, with no split by number of loaded slots. Beam & Battery has no all-bay currents or times. Besttacticalflashlighttoday has part of it: about 3.5 h for four 3,000 mAh cells on the Nitecore UMS4 and 1 A each for four on the VC4SL. It has no figure for the Vapcell or the Tenergy, and nothing that compares the four-slot rate across chargers. ChatGPT's own answer says the S4 Plus does 'up to 3A per slot simultaneously' but never turns that into time saved.",
+ "decides": "This confirms the split ChatGPT hinted at, now as hours. ChatGPT's 'best overall' picks (VC4SL, VX4) drop to 1 A per slot when all four bays are full, so a full load takes 3 h or more. The Vapcell S4 Plus V3 is rated to keep 3 A in every bay, about 1 h, so it's the pick for anyone who regularly charges four cells at once. The VC4SL/VX4 stay the value picks for one or two cells, where they reach 3 A or 2 A. Dealectric's own listed Tenergy TN270 (0.5 A, 2 bays) needs about 12 h of constant-current time for four cells, so the page shouldn't pitch it as a fast 18650 pick.",
+ "candidates": [
+  "XTAR VC4SL",
+  "XTAR VX4 (V2)",
+  "Vapcell S4 Plus V3",
+  "Tenergy TN270"
+ ],
+ "findings": [
+  {
+   "product": "XTAR VC4SL",
+   "label": "Li-ion charge current per slot by number of cells loaded",
+   "value": "3 A with 1 cell, 2 A each with 2, 1 A each with 4",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "1Lumen: 'if you put in 2 cells then it will charge them at up to 2A each (4A total) and 4 at a time only goes up to 1A'. Full speed needs a QC USB-C source of about 18 W. M0MNF (m0mnf.com/reviews/battcharge.php) states the same 4×1 A / 2×2 A / 1×3 A split."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Measured single-cell charge time, 3,000 mAh 18650 at 3 A",
+   "value": "1.2 h",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "1Lumen table: 18650 (3000 mAh), 3,060 mA, 1.2 h, ended at 4.19 V. The constant-current floor is 3.0 Ah ÷ 3.06 A = 0.98 h, so the constant-voltage tail added about 0.2 h (about 20%) in this test. The review doesn't say how many bays were loaded."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Derived: constant-current time to charge four 3,000 mAh 18650s at once",
+   "value": "3.0 h (floor; add the CV tail)",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "3.0 Ah ÷ 1 A per slot (4 loaded) = 3.0 h. Power check: 4 × 4.2 V × 1 A = 16.8 W, inside the roughly 18 W QC input 1Lumen gives. Besttacticalflashlighttoday gives about 3.5 h for four 3,000 mAh cells at 1 A on a similar 4-bay charger, which fits floor plus tail."
+  },
+  {
+   "product": "XTAR VX4 (V2)",
+   "label": "Li-ion constant-current spec and input",
+   "value": "3 A × 1 / 2 A × 2 / 1 A × 4; input USB-C PD 20 W (12 V 1.67 A)",
+   "source": "https://timmcmahon.com.au/posts/xtar-vx4/",
+   "source_title": "XTAR VX4 Charger Review :: Tim McMahon",
+   "read": "2026-11-08",
+   "note": "Tim McMahon's spec table reads '3Ax1 / 2Ax2 / 1Ax4 / 0.5Ax4 / 0.25Ax4'. His conclusion says it is 'limited to charging one channel at 3A'. He also found the selected current isn't always what you get: 3,000 mA selected gave 1,000 mA on a Sanyo NCR18650GA."
+  },
+  {
+   "product": "XTAR VX4 (V2)",
+   "label": "Derived: constant-current time to charge four 3,000 mAh 18650s at once",
+   "value": "3.0 h (floor; add the CV tail)",
+   "source": "https://timmcmahon.com.au/posts/xtar-vx4/",
+   "source_title": "XTAR VX4 Charger Review :: Tim McMahon",
+   "read": "2026-11-08",
+   "note": "3.0 Ah ÷ 1 A per slot (4 loaded) = 3.0 h. Power check: 4 × 4.2 V × 1 A = 16.8 W, under the 20 W PD input."
+  },
+  {
+   "product": "Vapcell S4 Plus V3",
+   "label": "Li-ion charge current per slot and total",
+   "value": "0.25 to 3 A per slot in 7 steps; 12 A total (3 A × 4); 12 V DC input, 12 V 5 A supply included",
+   "source": "https://www.akkuteile.de/en/vapcell-s4-plus-professional-universal-analysis-charger-for-li-ion-nimh-nicd-batteries_500523_2739",
+   "source_title": "Vapcell S4 plus professional universal analysis charger for Li-Ion, NIMH, NiCd batteries – akkuteile.de",
+   "read": "2026-11-08",
+   "note": "SOURCE TIER: retailer spec sheet, not maker or manual. The manuals.plus V3 manual that ChatGPT cited returned 403 to me, so check this against the manual before publishing. akkuteile: 'Total power 12A / 3A per charging slot'. It doesn't name the version, so V3 is assumed. The Makiuto review (makiuto.github.io, 23 Dec 2025, no named author) repeats the product claim 'Three Amp Charge Rate Available on All Bays at One Time'; it is a claim, not a measurement. Power check: 4 × 4.2 V × 3 A = 50.4 W, under a 12 V × 5 A = 60 W supply, so the claim is electrically plausible."
+  },
+  {
+   "product": "Vapcell S4 Plus V3",
+   "label": "Derived: constant-current time to charge four 3,000 mAh 18650s at once",
+   "value": "1.0 h (floor; about 1.2 h with a tail like 1Lumen's single-cell VC4SL test)",
+   "source": "https://www.akkuteile.de/en/vapcell-s4-plus-professional-universal-analysis-charger-for-li-ion-nimh-nicd-batteries_500523_2739",
+   "source_title": "Vapcell S4 plus professional universal analysis charger for Li-Ion, NIMH, NiCd batteries – akkuteile.de",
+   "read": "2026-11-08",
+   "note": "3.0 Ah ÷ 3 A per slot (4 loaded) = 1.0 h, versus 3.0 h on a VC4SL or VX4 with four loaded, so about 3× faster for a full load. Only valid if the cell's datasheet allows 3 A charging."
+  },
+  {
+   "product": "Tenergy TN270",
+   "label": "Charge rate, slots and price",
+   "value": "500 mA per 18650; 2 slots; $18.99, in stock",
+   "source": "https://power.tenergy.com/tenergy-tn270-li-ion-18650-18500-14500-fast-battery-charger/",
+   "source_title": "Tenergy TN270 Li-ion 18650/18500/14500 Fast Battery Charger",
+   "read": "2026-11-08",
+   "note": "Maker's US store: 'Charge Rate 18650: 500mA', 'Charging Slots 2', AC 100 to 240 V input. Ships in 1 business day."
+  },
+  {
+   "product": "Tenergy TN270",
+   "label": "Derived: constant-current time to charge four 3,000 mAh 18650s",
+   "value": "12 h (two loads of 6 h; floor)",
+   "source": "https://power.tenergy.com/tenergy-tn270-li-ion-18650-18500-14500-fast-battery-charger/",
+   "source_title": "Tenergy TN270 Li-ion 18650/18500/14500 Fast Battery Charger",
+   "read": "2026-11-08",
+   "note": "3.0 Ah ÷ 0.5 A = 6 h per load × 2 loads (2 bays) = 12 h. A single 2-cell load takes 6 h."
+  }
+ ],
+ "unsourced": [
+  "Today's prices for the XTAR VC4SL, XTAR VX4 V2 and Vapcell S4 Plus V3. 18650batterystore.com, the store whose prices ChatGPT showed ($24.99 VC4SL, $41.99 VX4, $12.99 SC2), returned HTTP 429 for both storecheck and WebFetch. batteryjunction.com also returned 429. illumn.com returned 403. xtar.cc gives only July 2025 Amazon reference prices (VC4SL $32.99, VX4 $42.99), which aren't today's. So no cost-per-amp figure for the XTAR and Vapcell chargers.",
+  "XTAR SC2 per-slot current with two cells loaded. ChatGPT said 2 A × 2, and the 18650batterystore title says '3A', but I couldn't open the spec page (429). SC2 price $12.99 seen in the 18650batterystore search result on 2026-11-08, not on the product page.",
+  "Vapcell S4 Plus V3 from the maker's page or manual: the manuals.plus manual and device.report manual both returned 403, and the datasheet at rcscomponents.kiev.ua was an unreadable PDF. I found no measured four-bay 3 A charge time from a named reviewer.",
+  "Any measured four-bays-loaded charge time for the VC4SL, VX4 or S4 Plus V3. 1Lumen and Tim McMahon tested single channels only."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 0.9148132000000001
+ }
+}

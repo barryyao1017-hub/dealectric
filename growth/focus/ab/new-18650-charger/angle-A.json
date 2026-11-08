@@ -1,0 +1,139 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the chargers on one basis: total amps with four 18650s loaded and the input power that makes it possible. On that basis the XTAR VC4SL and VX4 both deliver 4 A in total (1 A × 4) because they run on 18–20 W of USB-C power. The Vapcell S4 Plus V3 delivers 12 A (3 A × 4) only because it comes with a 12 V / 5 A (60 W) DC wall adapter. So the '3 A max' that all three advertise means one cell on the XTARs and every cell on the Vapcell.",
+ "standout": 1,
+ "standout_why": "I compared against 1lumen's VC4SL review (cited), Tim McMahon's VX4 review (cited), M0MNF's VC4SL review (cited) and XTAR's own VX4 vs VC4SL vs VP4L Plus comparison (top result). 1lumen and McMahon each give the 3A×1 / 2A×2 / 1A×4 split for their one charger, and ChatGPT's answer already says the S4 Plus V3 does 3 A per slot at once. None of these pages puts the chargers side by side by total current and input watts. None explains that the 1 A × 4 limit comes from the arithmetic (4 × 3 A × 4.2 V ≈ 50 W, more than an 18–20 W USB-C input can supply). None says the S4 Plus's 12 A depends on its own 60 W DC adapter rather than USB-C. XTAR's comparison page lists 'Max 3A' for both the VX4 and VC4SL and gives no per-slot split. The pieces are already out there. Only the side-by-side table and its footnote are new, so 1.",
+ "decides": "This confirms the split ChatGPT hinted at and makes it concrete. For someone charging one or two 18650s, the VC4SL ($24.99) or VX4 is enough, because 3 A on one slot charged a 3000 mAh 18650 in 1.2 h in 1lumen's test. For someone who regularly fills all four bays, the VC4SL and VX4 fall back to 1 A each, which works out to roughly 3 h of constant-current charging for 3000 mAh cells. The S4 Plus V3 ($39.99) keeps 3 A on all four, about 1 h of constant-current charging, but you have to plug in its 12 V brick. The XTARs can run off a USB-C power bank or phone charger. The S4 Plus V3 should be the 'charge four at once' pick, not just the 'enthusiast' pick.",
+ "candidates": [
+  "XTAR VC4SL",
+  "XTAR VX4",
+  "Vapcell S4 Plus V3",
+  "XTAR Dragon VP4L Plus",
+  "XTAR SC2"
+ ],
+ "findings": [
+  {
+   "product": "XTAR VC4SL",
+   "label": "Charge current by number of cells loaded",
+   "value": "3 A × 1 / 2 A × 2 (4 A total) / 1 A × 4 (4 A total)",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "1lumen: 'can charge a single cell with a current up to 3A', two cells 'at up to 2A each (4A total)', '4 at a time only goes up to 1A.' Its spec sheet lists input as 5V 3A / 9V 2A (QC3.0, about 18 W). From a USB-A port it 'only charg[ed] at 2A'."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Measured single-slot 3 A charge, 18650",
+   "value": "3,060 mA; 3,000 mAh 18650 charged in 1.2 h; ended at 4.19 V",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "1lumen's own measurement table, one cell in the charger."
+  },
+  {
+   "product": "XTAR VX4",
+   "label": "Charge current by number of cells loaded (Li-ion 3.6 V and LiFePO4)",
+   "value": "3 A × 1 / 2 A × 2 / 1 A × 4 / 0.5 A × 4 / 0.25 A × 4",
+   "source": "https://timmcmahon.com.au/posts/xtar-vx4/",
+   "source_title": "XTAR VX4 Charger Review :: Tim McMahon",
+   "read": "2026-11-08",
+   "note": "From the spec table McMahon reproduces. His conclusion: the VX4 is 'limited to charging one channel at 3A'. Input: 'USB-C PD 20W (12V/1.67A)'. On QC3 9V/2A or 5V/2A input it 'will work but the charging current might be limited.' Cut-off current ≤150 mA; Li-ion cut-off voltage 4.2 ± 0.05 V."
+  },
+  {
+   "product": "XTAR VX4",
+   "label": "Capacity-test (Grade) discharge current",
+   "value": "300 mA (measured 280–290 mA)",
+   "source": "https://timmcmahon.com.au/posts/xtar-vx4/",
+   "source_title": "XTAR VX4 Charger Review :: Tim McMahon",
+   "read": "2026-11-08",
+   "note": "McMahon: Grade mode is 'limited to a 300mA discharge current'. A 6,000 mAh 26650 graded at 280 mA read 6,174 mAh. His Atorch DL24 load tester gave 6,163 mAh at 0.28 A and 5,791 mAh at 5 A, so a VX4 grade figure is a low-current capacity."
+  },
+  {
+   "product": "XTAR VX4 / VC4SL / VP4L Plus",
+   "label": "Maker's input spec and 'max charge current'",
+   "value": "VX4: PD2.0 12V 1.67A / QC3.0 9V 2A / 5V 2A USB-C, max 3 A. VC4SL: QC3.0 (5V 3A / 9V 2A) USB-C, max 3 A. VP4L Plus: 12V 3A DC, max 2 A",
+   "source": "https://www.xtar.cc/news/xtar-charger-comparison-vx4-vs.-vc4sl-vs.-vp4l-plus.html?p=27370",
+   "source_title": "XTAR Charger Comparison: VX4 VS. VC4SL VS. VP4L PLUS - XTAR",
+   "read": "2026-11-08",
+   "note": "XTAR's page gives 'Max 3A' with no per-slot split, which is the figure that needs normalising. Arithmetic: 4 cells × 3 A × 4.2 V ≈ 50 W of charge output, against about 18 W (QC3.0 9V×2A) or 20 W (PD 12V×1.67A) of input. That gap is why both USB-C models fall to 1 A × 4."
+  },
+  {
+   "product": "Vapcell S4 Plus V3",
+   "label": "Charge current and input",
+   "value": "3 A per slot, 12 A total; input 12 V / 5 A (60 W) DC adapter included",
+   "source": "https://www.18650batterystore.com/products/vapcell-s4-plus",
+   "source_title": "Vapcell S4 Plus V3.0 - Universal Fast Battery Charger - 18650 Battery Store",
+   "read": "2026-11-08",
+   "note": "Store spec: 'Max charge of 3A per slot, 12A Total', options 0.25/0.5/1/1.5/2/2.5/3 A, 'Input – 12V / 5A', and the box includes a 'DC Wall Adapter'. Arithmetic: 12 V × 5 A = 60 W, enough for about 50 W of output."
+  },
+  {
+   "product": "Vapcell S4 Plus V3",
+   "label": "Reviewer-stated charge and discharge capability",
+   "value": "3 A on all four bays at once (12 A total); 1 A discharge on bays 1 and 4",
+   "source": "https://makiuto.github.io/p/vapcell-s4-plus-v3-3a-four-bay-fast-charger-review.html",
+   "source_title": "Vapcell S4 Plus V3 3A Four Bay Fast Charger Review (Todderbert), 2025-12-23",
+   "read": "2026-11-08",
+   "note": "Todderbert: 'Three Amp Charge Rate Available on All Bays at One Time', 'A total of Twelve Amps can be Delivered to your Cells at Once', 'One Amp Discharge Rate on Bays One and Four'. Under things that 'Could be Added or Improved on' they list 'USB C Input', which means the charger has no USB-C power input. These are stated features, not measurements."
+  },
+  {
+   "product": "general",
+   "label": "Time to charge four 3,000 mAh 18650s (constant-current phase, my arithmetic)",
+   "value": "About 3 h at 1 A per cell (VC4SL, VX4 with 4 loaded) vs about 1 h at 3 A per cell (S4 Plus V3)",
+   "source": "https://1lumen.com/battery-charger-review/xtar-vc4sl/",
+   "source_title": "Xtar VC4SL battery charger review | 1Lumen.com",
+   "read": "2026-11-08",
+   "note": "3,000 mAh ÷ 1,000 mA = 3 h; 3,000 ÷ 3,000 = 1 h, plus the CV taper. 1lumen measured 1.2 h total for one 3,000 mAh cell at 3,060 mA, which is the real-world figure for the 3 A case."
+  },
+  {
+   "product": "XTAR VC4SL",
+   "label": "Price (18650 Battery Store)",
+   "value": "$24.99 (listed as out of stock)",
+   "source": "https://www.18650batterystore.com/products/xtar-vc4sl",
+   "source_title": "XTAR VC4SL 4 Bay Digital LCD Battery Charger - 18650 Battery Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py (Shopify product data). Matches the $24.99 ChatGPT showed."
+  },
+  {
+   "product": "Vapcell S4 Plus V3",
+   "label": "Price (18650 Battery Store)",
+   "value": "$39.99 (listed as out of stock)",
+   "source": "https://www.18650batterystore.com/products/vapcell-s4-plus",
+   "source_title": "Vapcell S4 Plus V3.0 - Universal Fast Battery Charger - 18650 Battery Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py."
+  },
+  {
+   "product": "XTAR Dragon VP4L Plus",
+   "label": "Price (18650 Battery Store)",
+   "value": "$74.99 (compare-at $79.99), in stock",
+   "source": "https://www.18650batterystore.com/products/xtar-dragon-vp4-plus",
+   "source_title": "XTAR Dragon VP4L Plus 4 Bay Digital Battery Charger - 18650 Battery Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py. ChatGPT showed $67.99 from an unnamed retailer."
+  },
+  {
+   "product": "XTAR SC2",
+   "label": "Price (18650 Battery Store)",
+   "value": "$12.99 (compare-at $14.99), in stock",
+   "source": "https://www.18650batterystore.com/products/xtar-sc2",
+   "source_title": "XTAR SC2 USB Portable 3A Speedy Battery Charger - 18650 Battery Store",
+   "read": "2026-11-08",
+   "note": "Read with storecheck.py. Same price ChatGPT showed."
+  }
+ ],
+ "unsourced": [
+  "Vapcell S4 Plus V3 maker spec sheet or manual: Vapcell has no official product page that I could find. The manuals.plus copies of the V3 manual returned 403, so the per-slot discharge options, total discharge current and Li-ion termination current are not sourced from the maker.",
+  "Discharge cut-off voltage in capacity-test mode for the VC4SL, VX4 and S4 Plus V3. This was the second thing to normalise, since mAh readings at a 2.5 V vs 2.8 V cut-off are not comparable. No page I opened gives it. Figures of 2.5 V and 2.7 V for the S4+ appeared only in search snippets.",
+  "VC4SL Grade-mode discharge current: 300 mA appeared only in a forum search snippet. The Alex Kwa and 1lumen reviews I opened don't give it.",
+  "Whether the S4 Plus V3 can reach 12 A on a USB-C PD supply through Vapcell's optional adapter. Only forum snippets said PD limits the current, and I didn't open a page that confirms it.",
+  "XTAR VP4L Plus per-slot split (a retailer snippet said 2 A only on the outer two slots). The illumn page returned 403 and I didn't open XTAR's manual.",
+  "XTAR VX4 US price today: 18650 Battery Store doesn't list it and I found no other US store. ChatGPT showed $41.99.",
+  "Tenergy TN270 (on Dealectric's list) per-slot current and price: the storecheck call to power.tenergy.com returned HTTP 404, and I ran out of budget before trying another URL."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9835599999999999
+ }
+}
