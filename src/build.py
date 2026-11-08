@@ -1348,7 +1348,7 @@ def pick_line(c):
     if first.get("slug"):
         return ours(first, "Pick")
     # the honest pick is a product we don't list: name it, then the first product we do list, with its link
-    line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])} (maker\'s store)'
+    line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])}'
     nxt = next((r for r in c["rows"] if r.get("slug")), None)
     return line + (ours(nxt, "Dealectric link") if nxt else "")
 
