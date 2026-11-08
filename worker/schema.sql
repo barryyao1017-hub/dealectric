@@ -82,6 +82,8 @@ CREATE TABLE IF NOT EXISTS sales (
   currency TEXT,
   sub_id TEXT,                 -- CJ shopperId (our sid) / Awin clickRef: <slug>.<click_id>, matches clicks.click_id
   event_date TEXT,
+  voucher TEXT,                -- code on the order: CJ coupon / Awin voucherCode (added 2026-11-08, DLC-209:
+                               --   existing DB: ALTER TABLE sales ADD COLUMN voucher TEXT)
   UNIQUE (network, txn_id)
 );
 

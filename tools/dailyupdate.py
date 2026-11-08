@@ -4,14 +4,17 @@
 health.
 
   python3.12 tools/dailyupdate.py            # one-line summary first, then details
-  python3.12 tools/dailyupdate.py --no-cj    # skip CJ (no agent Chrome)
+  python3.12 tools/dailyupdate.py --no-cj    # skip the CJ API call
 
 Sources:
 - D1 `clicks` (wrangler, read-only): kind='redirect', bot_like=0, utm_source='chatgpt.com', minus user agents that
   are scanners or ours (REAL_UA below). A shopper is one (Pacific day, user agent) pair.
-- CJ Commission Detail, Last 30 Days, read from the agent's Chrome over CDP (localhost:9222, signed in to CJ). Every
-  row counts toward the North Star; a row posted in the last 26 h is NEW and gets matched to that brand's /go/ clicks.
-  Awin is not read yet: its sales would be missing from the count.
+- CJ commissions API (commissions.api.cj.com, publisher CID 8096118, personal access token in the keychain item
+  cj-api-token; since 2026-11-08, DLC-209: the Commission Detail page needed a CJ web session that kept signing out).
+  Last 30 days by posting date; every row counts toward the North Star; a row posted in the last 26 h is NEW and gets
+  matched to that brand's /go/ clicks.
+- Awin: the Worker's D1 `sales` rows (network='awin', written by Awin's Transaction Notifications callback, with the
+  voucher code since 2026-11-08). Awin has no cheap read API for us; the callback is the record.
 - The sweep log's last 'codesweep end' line.
 
 Nothing is written to the repo: commission and order IDs stay out of the public history.
@@ -21,8 +24,9 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
-import time
+import urllib.error
 import urllib.request
 from collections import Counter
 from datetime import datetime, timedelta, timezone
@@ -37,11 +41,9 @@ from products import PRODUCTS  # noqa: E402
 
 PT = ZoneInfo("America/Los_Angeles")
 GOAL = 10
-CDP = "http://localhost:9222"
-CJ_REPORT = "https://members.cj.com/member/app/redirect?view=pubTransactions"
+CJ_API = "https://commissions.api.cj.com/query"
+CJ_CID = "8096118"          # the publisher *company* id the API authorizes (not the PID 101901491 used in links)
 SWEEP_LOG = Path.home() / "Library/Logs/claude-automations/dealectric-codesweep.log"
-CJ_COLS = ["commission_id", "advertiser", "action_type", "sale", "discount", "commission", "corrected", "status",
-           "action_name", "website", "ad_id", "posted", "event", "order_id", "coupon", "cross_device"]
 
 
 def real_ua(ua: str) -> bool:
@@ -69,42 +71,75 @@ def chatgpt_clicks(now: datetime, sources: tuple[str, ...] = ("chatgpt.com",)) -
 AGENT_TAGS = ("muse", "chatgpt-agent", "signed-agent")
 
 
-def cdp_page(url: str, button: str, wait=(20, 15)) -> str:
-    """Open `url` in a new tab of the agent's Chrome, click the button labelled `button`, return the page text."""
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
-    import codesweep as C   # its Tab opens in the background (Target.createTarget background=true); /json/new raised the window
-    t = C.Tab(url)
-    try:
-        time.sleep(wait[0])
-        t.eval("(()=>{const b=[...document.querySelectorAll('button')].filter(x=>x.innerText.trim()===%s).pop();"
-               "if(b) b.click()})()" % json.dumps(button))
-        time.sleep(wait[1])
-        return t.eval("location.href + '\\n' + document.body.innerText") or ""
-    finally:
-        t.close()
+def keychain(service: str) -> str:
+    r = subprocess.run(["security", "find-generic-password", "-s", service, "-w"], capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else ""
 
 
-def cj_sales() -> tuple[list[dict], str | None]:
+def cj_sales(now: datetime) -> tuple[list[dict], str | None]:
+    """CJ commissions posted in the last 30 days (the API's maximum window), newest last."""
+    tok = keychain("cj-api-token")
+    if not tok:
+        return [], "no cj-api-token in the keychain (developers.cj.com -> Personal Access Tokens)"
+    iso = lambda t: t.strftime("%Y-%m-%dT%H:%M:%SZ")  # noqa: E731
+    q = ('{ publisherCommissions(forPublishers: ["%s"], sincePostingDate: "%s", beforePostingDate: "%s") '
+         '{ count payloadComplete records { commissionId advertiserName actionStatus postingDate eventDate lockingDate '
+         'pubCommissionAmountUsd saleAmountUsd correctionReason coupon shopperId orderId } } }'
+         % (CJ_CID, iso(now - timedelta(days=30)), iso(now + timedelta(hours=1))))
+    req = urllib.request.Request(CJ_API, data=json.dumps({"query": q}).encode(),
+                                 headers={"authorization": "Bearer " + tok, "content-type": "application/json"})
     try:
-        text = cdp_page(CJ_REPORT, "RUN REPORT")
-    except Exception as e:  # noqa: BLE001 - any CDP failure means "CJ not read"
-        return [], f"agent Chrome not reachable ({e.__class__.__name__}: {e})"
-    if "members.cj.com" not in text.split("\n", 1)[0] or "Commission ID" not in text:
-        return [], "CJ report not shown (signed out?): " + text.split("\n", 1)[0][:120]
+        with urllib.request.urlopen(req, timeout=60) as r:
+            body = json.load(r)
+    except urllib.error.HTTPError as e:
+        try:
+            body = json.load(e)
+        except Exception:  # noqa: BLE001
+            return [], f"CJ API HTTP {e.code}"
+    except Exception as e:  # noqa: BLE001
+        return [], f"CJ API unreachable ({e.__class__.__name__}: {e})"
+    if body.get("errors"):
+        return [], "CJ API error: " + str(body["errors"][0].get("message", body["errors"][0]))[:160]
     rows = []
-    for line in text[text.index("Commission ID"):].splitlines():
-        cells = [c.strip() for c in line.split("\t")]
-        if len(cells) >= 15 and re.fullmatch(r"\d{6,}", cells[0]):
-            rows.append(dict(zip(CJ_COLS, cells)))
-    return rows, None
+    for r in body["data"]["publisherCommissions"]["records"]:
+        status = r.get("actionStatus") or "?"
+        if r.get("correctionReason"):
+            status += f" (corrected: {r['correctionReason']})"
+        rows.append({"network": "CJ", "id": str(r["commissionId"]), "advertiser": r.get("advertiserName") or "?",
+                     "sale": r.get("saleAmountUsd"), "commission": r.get("pubCommissionAmountUsd"), "status": status,
+                     "posted": r.get("postingDate") or "", "event": r.get("eventDate") or "",
+                     "locks": r.get("lockingDate") or "", "coupon": r.get("coupon") or "", "sub_id": r.get("shopperId") or ""})
+    return sorted(rows, key=lambda x: x["posted"]), None
 
 
-def cj_time(s: str) -> datetime | None:
-    """CJ shows '29-Oct-2026 8:30' in the account's time zone, taken to be Pacific."""
+def awin_sales(now: datetime) -> tuple[list[dict], str | None]:
+    """Awin transactions the Worker recorded in the last 30 days (D1 `sales`). Status is not known here: Awin
+    validates within about 30 days and a reversal arrives as a negative-commission row."""
+    since = (now - timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%S")
+    rows, err = E.d1_query("SELECT ts, txn_id, advertiser, commission, sale, sub_id, event_date, voucher FROM sales "
+                           f"WHERE network='awin' AND ts >= '{since}' ORDER BY ts")
+    out = [{"network": "Awin", "id": str(r["txn_id"]), "advertiser": r.get("advertiser") or "?", "sale": r.get("sale"),
+            "commission": r.get("commission"), "status": "recorded (Awin validates in ~30 days)",
+            "posted": r["ts"], "event": r.get("event_date") or "", "locks": "", "coupon": r.get("voucher") or "",
+            "sub_id": r.get("sub_id") or ""} for r in rows]
+    return out, err
+
+
+def when(s: str) -> datetime | None:
+    """CJ gives ISO 8601 UTC ('2026-10-29T15:30:36Z'); Awin's callback gives '2026-11-07 20:57:03' (UTC) and D1 ts
+    is ISO UTC."""
+    if not s:
+        return None
     try:
-        return datetime.strptime(s, "%d-%b-%Y %H:%M").replace(tzinfo=PT)
+        return datetime.fromisoformat(s.replace("Z", "+00:00").replace(" ", "T")).replace(
+            tzinfo=timezone.utc) if "+" not in s and not s.endswith("Z") else datetime.fromisoformat(s.replace("Z", "+00:00"))
     except ValueError:
         return None
+
+
+def pt(s: str) -> str:
+    d = when(s)
+    return d.astimezone(PT).strftime("%Y-%m-%d %H:%M") if d else (s or "?")
 
 
 def sweep_health(today: str) -> str:
@@ -124,16 +159,16 @@ def sweep_health(today: str) -> str:
     return "sweep ok" if day == today else f"sweep MISSED (last {day})"
 
 
-def money(s: str) -> float:
+def money(s) -> float:
     try:
-        return float(s.replace("$", "").replace(",", ""))
+        return float(str(s).replace("$", "").replace(",", ""))
     except ValueError:
         return 0.0
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--no-cj", action="store_true", help="skip the CJ report (needs the agent's Chrome)")
+    ap.add_argument("--no-cj", action="store_true", help="skip the CJ API call")
     args = ap.parse_args()
 
     now = datetime.now(timezone.utc)
@@ -151,34 +186,38 @@ def main() -> int:
     agent_y = [c for c in agent_clicks if pt_day(c["ts"]) == yday]
     agent_w = [c for c in agent_clicks if pt_day(c["ts"]) in week]
 
-    sales, cj_err = ([], "skipped") if args.no_cj else cj_sales()
-    new = [s for s in sales if (t := cj_time(s["posted"])) and now - t <= timedelta(hours=26)]
+    cj, cj_err = ([], "skipped") if args.no_cj else cj_sales(now)
+    awin, awin_err = awin_sales(now)
+    sales = cj + awin
+    credited = [s for s in sales if money(s["commission"]) > 0]   # corrections (negative rows) don't count
+    new = [s for s in sales if (t := when(s["posted"])) and now - t <= timedelta(hours=26)]
     brand_of = {p["slug"]: p["brand"].lower() for p in PRODUCTS}
 
-    parts = [f"North Star {len(sales)}/{GOAL} (30d, CJ)" if not cj_err else "North Star ?/10 (CJ not read)",
+    missing = [n for n, e in (("CJ", cj_err), ("Awin", awin_err)) if e]
+    parts = [f"North Star {len(credited)}/{GOAL} (30d, CJ+Awin)" if not missing
+             else f"North Star {len(credited)}+?/{GOAL} ({' and '.join(missing)} not read)",
              f"ChatGPT clicks yday {len(y)} ({len(shoppers_y)} shoppers), 7d {len(w)} ({len(shoppers_w)})"
              if not d1_err else "ChatGPT clicks ? (D1 error)"]
     if new:
-        parts.append("NEW SALE: " + ", ".join(f"{s['advertiser']} ${money(s['commission']):.2f}" for s in new))
-    elif not cj_err:
+        parts.append("NEW SALE: " + ", ".join(f"{s['advertiser']} ${money(s['commission']):.2f} ({s['network']})" for s in new))
+    elif not missing:
         parts.append("no new sale")
     parts.append(sweep_health(today))
     print(" · ".join(parts))
 
-    print(f"\nNorth Star: {len(sales)} of {GOAL} credited sales in CJ's last 30 days"
-          + (f", ${sum(money(s['commission']) for s in sales):.2f} commission." if sales else ".")
-          + " Awin not read yet.")
+    print(f"\nNorth Star: {len(credited)} of {GOAL} credited sales in the last 30 days (CJ {len(cj)}, Awin {len(awin)})"
+          + (f", ${sum(money(s['commission']) for s in sales):.2f} commission." if sales else "."))
     if cj_err:
         print(f"  CJ: {cj_err}")
-        if "signed out" in cj_err:   # DLC-93: CJ drops the session every few days; a script can't sign in, the session can
-            print("  CJ SIGNED OUT. Fix in this session, then re-run this script: agent-vault list_accounts -> the cj.com "
-                  "account; open https://members.cj.com/member/login in the Agent Chrome (localhost:9222); call login "
-                  "(CJ's two-step form needs a second login call); check the report page opens.")
+    if awin_err:
+        print(f"  Awin (D1): {awin_err}")
     for s in sales:
-        print(f"  {'NEW ' if s in new else ''}{s['advertiser']}: sale {s['sale']}, commission {s['commission']}, "
-              f"{s['status']}, event {s['event']} PT, posted {s['posted']} PT, coupon {s['coupon'] or 'none'}")
+        print(f"  {'NEW ' if s in new else ''}{s['network']} {s['advertiser']}: sale ${money(s['sale']):.2f}, "
+              f"commission ${money(s['commission']):.2f}, {s['status']}, order {pt(s['event'])} PT, "
+              f"seen {pt(s['posted'])} PT, code {s['coupon'] or 'none'}, sub-ID {s['sub_id'] or 'none'}"
+              + (f", locks {pt(s['locks'])} PT" if s["locks"] else ""))
         if s in new:
-            ev = cj_time(s["event"])
+            ev = when(s["event"])
             adv = s["advertiser"].lower()
             near = [c for c in clicks if brand_of.get(c["slug"]) == adv and ev
                     and timedelta(0) <= ev - datetime.fromisoformat(c["ts"].replace("Z", "+00:00")) <= timedelta(days=30)]

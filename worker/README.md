@@ -52,12 +52,17 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   emails Barry (barrryyao@gmail.com, a verified Email Routing destination) from `sales@dealectric.com`, and writes
   one row to D1 `sales` (unique per network + transaction id, so a sale alerts once).
   - Awin: Toolbox → Transaction Notifications is Enabled, method GET, callback
-    `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!`.
+    `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!&vc=!!!voucherCode!!!`
+    (`vc` added 2026-11-08, DLC-209: a voucher-attributed order arrives with no clickRef and a click time equal to the
+    order time, so the code is the only thing that ties it to us; stored in `sales.voucher`, printed in the alert).
     The key is the Worker secret `AWIN_HOOK_KEY` (keychain `awin-hook-key`); a wrong key gets a 404.
   - CJ: no publisher postback, so the cron trigger queries `publisherCommissions` (commissions.api.cj.com, CID 8096118)
     over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret
     `CJ_TOKEN`, keychain `cj-api-token`; developers.cj.com → Personal Access Tokens).
+  - CJ's `coupon` field goes into `sales.voucher` too.
   - Amazon Associates has no alert or API for this; check its dashboard.
+  - `tools/dailyupdate.py` reads the CJ API itself (same token, from the keychain) and the Awin rows from D1 `sales`,
+    so the daily update's North Star count covers both networks (since 2026-11-08).
   - Email Routing is switched on for dealectric.com without its MX records, so the apex keeps its Porkbun forwarding
     MX. Never press "Add missing records" on Email Routing → Settings: it would add Cloudflare's MX and take over the
     forwarding. Sending needs only the two authentication records, added by hand on 2026-11-05: TXT

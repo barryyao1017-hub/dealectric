@@ -366,7 +366,8 @@ function usage() {
 // destination; Email Routing is on for dealectric.com without its DNS records, so the apex's Porkbun forwarding MX stays
 // as is) and writes one row to D1 `sales`, keyed by the network's own id so a re-sent or re-polled sale alerts once.
 //   Awin: Toolbox > Transaction Notifications calls GET /hook/awin?k=<AWIN_HOOK_KEY>&tid=!!!transactionId!!!&... on
-//         each recorded transaction (help.awin.com/developers/docs/transaction-notifications).
+//         each recorded transaction (help.awin.com/developers/docs/transaction-notifications); &vc=!!!voucherCode!!!
+//         names the code a voucher-attributed order used (no clickref, click time = order time), DLC-209.
 //   CJ:   no publisher postback (deprecated 2019), so the cron trigger polls the commissions GraphQL API every 30 min
 //         with a personal access token (CJ_TOKEN secret, CJ_CID var) over the last 3 days of posting dates.
 // Setup and test command: worker/README.md.
@@ -380,6 +381,7 @@ async function handleAwinHook(url, env) {
   const sale = {
     network: "awin", txn_id: tid, advertiser: awinBrand(p.get("mid"), sub), commission: num(p.get("c")),
     sale: num(p.get("amt")), currency: clip(p.get("cur") || "USD", 10), sub_id: sub, event_date: clip(p.get("date") || "", 40),
+    voucher: clip(p.get("vc") || "", 60),   // &vc=!!!voucherCode!!! in the callback (DLC-209, 2026-11-08)
   };
   if (tid.startsWith("test")) {
     try {
@@ -407,7 +409,7 @@ async function pollCj(env) {
   const iso = (t) => new Date(t).toISOString().replace(/\.\d+Z$/, "Z");
   const query = `{ publisherCommissions(forPublishers: ["${env.CJ_CID}"], sincePostingDate: "${iso(now - 3 * 864e5)}", ` +
     `beforePostingDate: "${iso(now + 36e5)}") { count payloadComplete records { commissionId advertiserName postingDate ` +
-    `eventDate pubCommissionAmountUsd saleAmountUsd shopperId } } }`;
+    `eventDate pubCommissionAmountUsd saleAmountUsd shopperId coupon } } }`;
   const res = await fetch("https://commissions.api.cj.com/query", {
     method: "POST",
     headers: { authorization: `Bearer ${env.CJ_TOKEN}`, "content-type": "application/json" },
@@ -419,16 +421,17 @@ async function pollCj(env) {
     await recordSale(env, {
       network: "cj", txn_id: String(r.commissionId), advertiser: r.advertiserName, commission: num(r.pubCommissionAmountUsd),
       sale: num(r.saleAmountUsd), currency: "USD", sub_id: clip(r.shopperId || "", 200), event_date: r.eventDate || "",
+      voucher: clip(r.coupon || "", 60),
     });
   }
 }
 
 async function recordSale(env, s) {
   const r = await env.DB.prepare(
-    `INSERT OR IGNORE INTO sales (ts, network, txn_id, advertiser, commission, sale, currency, sub_id, event_date)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT OR IGNORE INTO sales (ts, network, txn_id, advertiser, commission, sale, currency, sub_id, event_date, voucher)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(new Date().toISOString(), s.network, s.txn_id, clip(s.advertiser || "", 100), s.commission, s.sale,
-    s.currency, s.sub_id, s.event_date).run();
+    s.currency, s.sub_id, s.event_date, s.voucher || "").run();
   // The row is kept even if the email fails: the daily update still reads CJ, and the network still has the sale.
   if (r.meta.changes) await notifySale(env, s, false).catch((e) => console.error("sale alert email failed", e));
 }
@@ -442,6 +445,7 @@ async function notifySale(env, s, test) {
   const text = [
     `${s.network.toUpperCase()} recorded a ${s.commission < 0 ? "correction" : "new sale"}: ${what}.`,
     slug ? `Link clicked: ${SITE}/go/${slug} (click id ${(s.sub_id || "").split(".")[1] || "?"} in D1 clicks).` : "No sub-ID on the sale.",
+    s.voucher ? `Code used: ${s.voucher}.` : "No code on the sale.",
     s.event_date ? `Order time: ${s.event_date}` : "",
     test ? "This is a test of the alert wiring; no sale happened." : "",
   ].filter(Boolean).join("\n");
