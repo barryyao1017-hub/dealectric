@@ -4362,6 +4362,23 @@ PRODUCTS = [
  "fit": '16-inch Windows laptops or Macs with two video-capable outputs, for buyers who will check their ports themselves.',
  "caveats": ["FOPO's page lists no brightness or weight. UPERFECT lists 300 nits and 2.4 kg", 'FOPO says compatibility varies by exact model, especially on MacBooks']},
 
+{"slug": 'amazfit-bip-max',
+ "brand": 'Amazfit',
+ "program": 'cj:amazfit',
+ "asin": None,
+ "category": 'smartwatch',
+ "name": 'Amazfit Bip Max, 2.07" AMOLED',
+ "model": 'Bip Max',
+ "url": 'https://us.amazfit.com/products/bip-max',
+ "price": 99.99,
+ "verified": '2026-11-08',
+ "specs": [('Display', '2.07-inch AMOLED'), ('HYROX modes', 'HYROX Race, HYROX PFT, HYROX Training'), ('Battery, typical use', 'Up to 20 days'), ('Battery, heavy use', 'Up to 10 days'), ('Continuous GPS', 'Up to 40 h'), ('Weight', '52.6 g with strap'), ('Storage', '4 GB for maps')],
+ "warranty": "1-year limited warranty from the purchase date, for watches bought from Amazfit's US online store",
+ "returns": '30 days from purchase for a full refund at us.amazfit.com. You need an RMA number and pay the return shipping. Orders placed in November or December can be returned until January 31 or for 45 days, whichever is longer.',
+ "summary": "Amazfit's $99.99 big-screen watch with HYROX Race, PFT and Training modes and a rated 20 days of battery.",
+ "fit": 'HYROX athletes who want race and training modes on one watch for about $100 and can live with a heavier, larger watch.',
+ "caveats": ["You advance each run and station segment yourself today. The5krunner, reporting Zepp's roadmap, puts automatic switching for Bip Max in December 2026. That is a schedule, not a shipped update.", 'At 52.6 g with strap it is about 10 g heavier than an Active 2 with its strap (42.4 g, Notebookcheck).', "Not on Amazfit's Stryd indoor-pace list, so indoor run pace comes from the wrist.", "The US store listing says 'advanced Hybrid Training tools'. The HYROX mode names come from Amazfit's UK spec list.", 'Dark Blue was out of stock at Amazfit US on 2026-11-08. Silver and Carbon Gray were in stock.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
