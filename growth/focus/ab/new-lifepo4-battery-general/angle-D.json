@@ -1,0 +1,128 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BMS continuous-discharge rating is the hard cap on the inverter one battery can feed, and that Vatrer's Group 24 100Ah carries a 150A BMS (150 A × 12.8 V = 1,920 W) where LiTime and Redodo Group 24 batteries stop at 100 A (1,280 W) and Epoch's 105Ah at 105 A, so a 1,500 W inverter runs on one Vatrer but trips a single LiTime, Redodo or Epoch.",
+ "standout": 2,
+ "standout_why": "exploringoffgrid.com (cited) does say a 100A BMS is about 1,280 W and that a 2,000 W inverter needs two 100Ah batteries in parallel, and batterytrail.com (cited) tabulates 100 A continuous for Battle Born, Renogy, LiTime, Dakota and CHINS, but neither names any 100Ah Group 24 battery with a higher BMS rating, neither lists Vatrer or Redodo, and neither converts the amps into which inverter size works on one battery. ChatGPT's answer only says '100A continuous or higher' without saying what the number buys. Epoch's own 'recommended 52.5 A sustained' and 'heater needs a charger supplying at least 0.5 A' also appear on no rival page.",
+ "decides": "For a shopper who will run a 12 V inverter: 100 A BMS batteries (LiTime Group 24 Bluetooth, Redodo Group 24 Bluetooth) are limited to 1,280 W from a single unit and Redodo's own page excludes water pumps, electric jacks and mowers; the Vatrer 12V 100Ah Group 24 (150A BMS, $259.99, UL 1973) is the only Group 24 100Ah candidate confirmed on the maker's page to carry a 1,500 W inverter alone, and it is cheaper than the LiTime pick ChatGPT led with ($311.09). For shoppers without an inverter the 100 A batteries are fine and the finding confirms LiTime/Redodo as value picks. Every candidate stops charging at 32°F; only the Epoch Essential and the Vatrer/LiTime heated versions can charge below that, and Epoch's heater only works while a charger is connected.",
+ "candidates": [
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS",
+  "LiTime 12V 100Ah Group 24 Bluetooth",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Epoch 12V 105Ah Essential Series Heated Bluetooth",
+  "Battle Born 12V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth",
+   "label": "BMS continuous discharge",
+   "value": "150 A (1,920 W at 12.8 V)",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery for RVs and Trolling Motors with Bluetooth and 150A BMS",
+   "read": "2026-11-08",
+   "note": "Maker's page text via the store's product API: 'Its 150A Smart BMS provides the current headroom needed when your RV is running an inverter'. Arithmetic ours: 150 A × 12.8 V = 1,920 W. A 1,500 W inverter at 90 % efficiency draws about 130 A at 12.8 V, under 150 A but over 100 A."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth",
+   "label": "Price",
+   "value": "$259.99 (compare-at $359.99)",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery with Bluetooth and 150A BMS",
+   "read": "2026-11-08",
+   "note": "Shopify store product API, in stock."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth",
+   "label": "Low-temperature charge cutoff",
+   "value": "charging stops below 32°F",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery with Bluetooth and 150A BMS",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'The BMS stops charging below 32°F'. Certification stated as UL 1973."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Bluetooth",
+   "label": "BMS continuous discharge and output power",
+   "value": "100 A, 1,280 W; 500 A peak for 1 s",
+   "source": "https://www.litime.com/products/12v-100ah-group-24-smart-bluetooth",
+   "source_title": "LiTime 12V 100Ah Group 24 Bluetooth Lithium Deep Cycle Battery",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'LiTime's latest 100A BMS ... 1280Wh of high energy, 1280W of large output Power. 500A/1S peak discharge current'. Max 4P4S. Price $311.09 today on the same page."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 (non-Bluetooth)",
+   "label": "Continuous discharge and charge current",
+   "value": "100 A discharge / 100 A charge",
+   "source": "https://www.litime.com/products/12v-100ah-group-24-lithium-battery",
+   "source_title": "LiTime 12V 100Ah Group 24 Deep Cycle Lithium Battery",
+   "read": "2026-11-08",
+   "note": "Maker's words: '100A Continuous Discharge/Charge Current, 400A/1S'. $278.99 today."
+  },
+  {
+   "product": "LiTime 12V 100Ah Plus (Group 31)",
+   "label": "Low-temperature cutoff thresholds used by LiTime's BMS",
+   "value": "charge stops at 32°F (0°C), discharge stops at -4°F (-20°C)",
+   "source": "https://www.litime.com/products/12v-100ah-electric-outboard-trolling-motor-battery",
+   "source_title": "LiTime 12V 100Ah Plus Marine Deep Cycle Battery with Bluetooth",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'Charging stops at 32°F (0°C) and discharging stops at -4°F (-20°C)'. The Group 24 Bluetooth page states 'low-temp cut-off protection' without the figures; thresholds here are from the sibling model."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "BMS and excluded loads",
+   "value": "100 A BMS; not for water pumps, electric jacks, lifts, pool vacuums or mowers",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'NOT suitable for use as a starter battery, golf cart battery, or for high-power applications such as water pumps, electric jacks, elevator lifts, pool vacuums, or mowers'. The 100 A rating is from Redodo's 12V 100Ah series page ('Advanced 100A BMS protections', https://www.redodopower.com/products/redodo-12v-100ah-lifepo4-all-scenario-solutions-solar-rv-marine-battery). Price $259.99 today."
+  },
+  {
+   "product": "Redodo 12V 100Ah Ultra-Mini Bluetooth",
+   "label": "Low-temperature thresholds used by Redodo's BMS",
+   "value": "charge pauses below 32°F, resumes above 41°F; discharge stops below -4°F",
+   "source": "https://www.redodopower.com/products/redodo-ultra-mini-12v-100ah-bluetooth-small-lithium-battery-group-22nf-size",
+   "source_title": "Redodo 12V 100Ah Ultra-Mini Lithium LiFePO4 Battery",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'pauses charging below 32°F (0°C) and resumes above 41°F (5°C), while discharging automatically stops below -4°F (-20°C)'. Same 5°C recovery hysteresis stated on Redodo's 120Ah Group 24 page."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Series Heated Bluetooth",
+   "label": "BMS discharge limits",
+   "value": "105 A max continuous, 52.5 A recommended sustained, 200 A for 10 s",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Epoch 12V 105Ah Heated & Bluetooth LiFePO4 Battery (12105A-H)",
+   "read": "2026-11-08",
+   "note": "Maker's spec table. Price $549. Group 24, 22.1 lb, 4S4P, 11-year limited warranty."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Series Heated Bluetooth",
+   "label": "Low-temperature charging and heater condition",
+   "value": "charging disabled at 32°F, resumes at 41°F; heater runs only with a charger supplying at least 0.5 A",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Epoch 12V 105Ah Heated & Bluetooth LiFePO4 Battery (12105A-H)",
+   "read": "2026-11-08",
+   "note": "Maker's words: 'Charging disabled at 0°C / 32°F; resumes automatically at 5°C / 41°F' and heating requires 'Charger connected and supplying at least 0.5A'. Charging with heat rated to -4°F."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals already state",
+   "value": "100 A BMS ≈ 1,280 W; 2,000 W inverter needs two 100Ah batteries in parallel",
+   "source": "https://exploringoffgrid.com/articles/best-lifepo4-batteries",
+   "source_title": "Best LiFePO4 Batteries for Off-Grid (2026)",
+   "read": "2026-11-08",
+   "note": "Used to judge standout. batterytrail.com's spec database lists 100 A continuous for Battle Born, Renogy, LiTime, Dakota and CHINS and does not mention inverters."
+  }
+ ],
+ "unsourced": [
+  "Battle Born 12V 100Ah BMS continuous and surge current, 25°F low-temp cutoff and today's price: battlebornbatteries.com returned HTTP 429 on three attempts; batterytrail.com lists 100 A continuous / 200 A 30 s but that is a third-party table, so left out.",
+  "LiTime 12V 100Ah Max (150A BMS, 1,920 W per its URL slug): litime.com product page returned HTTP 429, so the rating, size and price are not confirmed from an opened page.",
+  "Vatrer's own watt figure for the 150 A Group 24 (whether it states 1,920 W): full product page returned HTTP 429; the 150 A figure comes from the store's product API text and the watts are our arithmetic.",
+  "Renogy 12V 100Ah Smart manual (BMS cutoff and delay): the PDF URL ChatGPT got redirected to Renogy's manuals index with no spec text.",
+  "Epoch 12V 100Ah Eco Series continuous discharge: retailers disagree (100 A vs 120 A) and the Epoch spec sheet PDF had no extractable text layer."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.3161654999999994
+ }
+}
