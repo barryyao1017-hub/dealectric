@@ -165,7 +165,7 @@ async function logLanding(url, request, status, utm, env) {
     // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
     // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
     cf.country || "", cf.verifiedBotCategory || "",
-    selfExcluded(request) ? 2 : botLike(cf, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
+    selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
     cf.asn || null,
@@ -222,13 +222,15 @@ async function handleGo(url, request, env, ctx) {
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
     clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null,
   );
   // Don't make the response wait on the write.
-  ctx.waitUntil(row.run().catch((e) => console.error("click insert failed", e)));
+  ctx.waitUntil(row.run()
+    .then(() => flagBurst(env, ua, cf, url.searchParams.get("utm_source") || ""))
+    .catch((e) => console.error("click insert / burst check failed", e)));
 
   if (aiFetch) return aiFetchPage(slug, entry);
 
@@ -481,7 +483,10 @@ function clip(s, n) {
   return String(s).replace(/<[^>]*>/g, "").slice(0, n);
 }
 function looksLikeBot(ua) {
-  return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|safety|google-|gpt|claude|perplexity|anthropic/i.test(ua);
+  return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|safety|google-|gpt|claude|perplexity|anthropic|dataprovider/i.test(ua)
+    // DLC-211 (2026-11-09): iOS 13.2.3 is the stock fake user agent of scraper kits (hundreds of untagged clicks from
+    // cloud networks in 11 countries, none ever from ChatGPT), and a bare "Mozilla/5.0 (compatible)" is no browser.
+    || /iPhone OS 13_2_3 /.test(ua) || /^Mozilla\/5\.0 \(compatible\)$/.test(ua.trim());
 }
 
 // Google's own networks (Google LLC, Google Cloud, YouTube). A link posted on YouTube is checked at once by Google's
@@ -490,8 +495,34 @@ function looksLikeBot(ua) {
 // second kind, the network can. Shoppers don't browse from these networks.
 const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
 
-function botLike(cf, ua) {
-  return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn);
+// Cloud and hosting networks that sent only untagged, scripted clicks (DLC-211, 2026-11-09): Tencent Cloud, AWS, OVH,
+// DigitalOcean, Hetzner, Akamai/Linode. A shopping agent's cloud browser may come from one of these too, so a click
+// carrying an agent tag (utm_source muse / chatgpt-agent / signed-agent, set on pages served to a verified agent) is
+// never flagged by network. Microsoft (8075) is left off on purpose: ChatGPT's own browsing runs on Azure.
+const HOSTING_ASNS = new Set([132203, 45090, 14618, 16509, 16276, 14061, 24940, 63949]);
+const AGENT_TAGS = new Set(["muse", "chatgpt-agent", "signed-agent"]);
+
+function botLike(cf, ua, utm = "") {
+  return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn) || (HOSTING_ASNS.has(cf.asn) && !AGENT_TAGS.has(utm));
+}
+
+// Burst rule (DLC-211): one browser opening 5+ different offers within 60 s is a link checker or scraper, not a
+// shopper (a buyer on 11-08 opened 3 in 3 minutes; a GB crawler on 11-09 opened 109 in 3 s with an ordinary Windows
+// Chrome agent). Checked after the click is stored, off the response path; when it trips, every unflagged click from
+// that browser (same user agent, country and network) in the window is set to bot_like=1, so the first few are caught too.
+const BURST_WINDOW_MS = 60_000;
+const BURST_SLUGS = 5;
+
+async function flagBurst(env, ua, cf, utm) {
+  if (AGENT_TAGS.has(utm)) return;
+  const since = new Date(Date.now() - BURST_WINDOW_MS).toISOString();
+  const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
+  const args = [clip(ua, 500), cf.country || "", cf.asn || 0, since];
+  const r = await env.DB.prepare(`SELECT COUNT(DISTINCT slug) AS n FROM clicks WHERE ${same}`).bind(...args).first();
+  if ((r?.n || 0) < BURST_SLUGS) return;
+  await env.DB.prepare(
+    `UPDATE clicks SET bot_like = 1 WHERE ${same} AND bot_like = 0 AND IFNULL(utm_source, '') NOT IN ('muse', 'chatgpt-agent', 'signed-agent')`,
+  ).bind(...args).run();
 }
 
 // ---------------------------------------------------------------- /self-exclude (2026-11-07)
