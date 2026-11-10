@@ -1,0 +1,128 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Minn Kota's '4–6 hour' charge time for its 10 A-per-bank models can cover only 40–60 Ah. The arithmetic for a 100 Ah lithium trolling battery run down to 20% (80 Ah to put back) is about 8 h at 10 A per bank, 13.3 h on 6 A banks (MK 318 PCL) and 16 h on the 5 A banks of the NOCO GEN5X3. NOCO's GEN-series manual also limits each GEN5X3 bank to batteries of up to 120 Ah, against 230 Ah per bank for the GENPRO10X series.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited Minn Kota help pages (PCL specs, and the Battery Charger Selection Guide with its 4–6 h / 10–12 h / 3–5 h charge-time column and no stated battery size), plus boatdealsdirect.com, williamswordsmith.com and sonar-wise.com. boatdealsdirect repeats Minn Kota's 4–6 h figure and gives only a 'half-charged 100 Ah at 10 A ≈ 5 h' example. williamswordsmith lists amps but no charge times. sonar-wise (a result, not cited) has the closest arithmetic: 84 Ah back at 6/10/15 A gives 14/8.4/5.6 h. But it covers only Minn Kota models and leaves out NOCO's per-bank battery-size limits (120 Ah on GEN5X3, 230 Ah on GENPRO). None of the pages notes that NOCO's amp ratings apply 'when above 0°C', or sets NOCO's 14.6 V lithium mode beside Minn Kota's 14.5 V maximum. NOCO's own spec page (cited by ChatGPT) gave HTTP 403 every time, so I could not check what it says.",
+ "decides": "This removes ChatGPT's 'overnight' picks for anyone running a 100 Ah lithium battery hard. The GEN5X3 (5 A/bank, about 16 h) and MK 318 PCL (6 A/bank, about 13.3 h) won't refill a 20%-SoC battery overnight. 10 A per bank (NOCO GENPRO10X3 or Minn Kota MK 330 PCL, about 8 h) is the minimum for an overnight refill. For back-to-back fishing days, 15 A per bank (MK 345 PCL, about 5.3 h) is the pick, but Minn Kota sizes a generator for it at 700 W against 450 W for the MK 330 PCL. On lithium voltage, the GENPRO10X3 (14.6 V) and Minn Kota PCL (14.5 V max) are effectively the same, so voltage does not separate them.",
+ "candidates": [
+  "NOCO GENPRO10X3",
+  "Minn Kota MK 330 PCL",
+  "Minn Kota MK 345 PCL",
+  "Minn Kota MK 318 PCL",
+  "NOCO GEN5X3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minn Kota PCL published charge times (basis not stated)",
+   "value": "6 A/bank: 10–12 h; 10 A/bank: 4–6 h; 15 A/bank: 3–5 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "The column is labelled 'Charge Time* (Hours)'. The page defines the asterisk only as 'Obsolete Charger Model' and gives no battery size or depth of discharge. Working backwards, 4–6 h × 10 A = 40–60 Ah replaced."
+  },
+  {
+   "product": "general",
+   "label": "Hours to refill a 100 Ah LiFePO4 from 20% SoC (80 Ah), bulk only",
+   "value": "5 A: 16 h; 6 A: 13.3 h; 10 A: 8 h; 15 A: 5.3 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "My arithmetic: 80 Ah ÷ per-bank amps. Per-bank amps come from Minn Kota's table and the NOCO manuals below. This is a lower bound: it assumes full rated current for the whole charge and ignores the absorption tail and charger losses."
+  },
+  {
+   "product": "Minn Kota MK 330 PCL",
+   "label": "Output",
+   "value": "3 banks × 10 A (30 A total)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Maker table."
+  },
+  {
+   "product": "Minn Kota MK 345 PCL",
+   "label": "Output",
+   "value": "3 banks × 15 A (45 A total)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Maker table."
+  },
+  {
+   "product": "Minn Kota MK 318 PCL",
+   "label": "Output",
+   "value": "3 banks × 6 A (18 A total)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Maker table."
+  },
+  {
+   "product": "Minn Kota MK 330 PCL",
+   "label": "Minimum generator output",
+   "value": "450 W",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Minn Kota: the generator wattage 'must be higher than the power required by the battery charger', with sine-wave output. Other PCL values: MK 318 PCL 270 W, MK 345 PCL 700 W, MK 440 PCL 600 W, MK 460 PCL 900 W."
+  },
+  {
+   "product": "Minn Kota MK 345 PCL",
+   "label": "Minimum generator output",
+   "value": "700 W",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Same table."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota safety timer with parallel batteries",
+   "value": "Charger shuts off if parallel batteries exceed its time limit (limit not published)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Matters for anyone paralleling two lithium batteries on one bank to get more capacity."
+  },
+  {
+   "product": "Minn Kota PCL (all models)",
+   "label": "Lithium charge voltage",
+   "value": "14.5 V max",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/14476351755159-Precision-Charger-Lithium-PCL-Features-Specifications-and-Manuals-2021-present",
+   "source_title": "Precision Charger Lithium (PCL) Features, Specifications and Manuals (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Page says 'Max voltage of 14.5V' and tells owners to confirm it with their battery maker. The same page says the chargers are not compatible with single 24 V or 36 V lithium batteries, and that they wake 12 V LiFePO4 batteries from standby automatically."
+  },
+  {
+   "product": "NOCO GENPRO10X3",
+   "label": "Charge modes per bank (voltage / current / max battery)",
+   "value": "12V 14.5 V; AGM 14.8 V; Lithium 14.6 V; each 10 A, batteries up to 230 Ah",
+   "source": "https://manualslib.mx/manual/785489/Noco-Genius-Genpro-Serie.html?page=4",
+   "source_title": "NOCO Genius GENPRO Serie Guía De Usuario Y Garantía página 4 (manualslib mirror of NOCO manual)",
+   "read": "2026-11-10",
+   "note": "The manual covers GENPRO10X1–X4. Its footnote reads: peak voltage measured at 25 °C, and the amperage rating is bulk amperage above 0 °C. Lithium mode is only for batteries with a built-in BMS. A search snippet claimed 14.8 V for lithium, but the opened page puts 14.8 V on AGM and 14.6 V on lithium. NOCO's own spec page returned 403."
+  },
+  {
+   "product": "NOCO GEN5X3",
+   "label": "Charge modes per bank (voltage / current / max battery)",
+   "value": "12V 14.5 V; AGM 14.8 V; Lithium 14.6 V; each 5 A, batteries up to 120 Ah",
+   "source": "https://manualslib.mx/manual/770843/Noco-Genius-Gen-Serie.html?page=4",
+   "source_title": "NOCO Genius GEN Serie manual página 4 (manualslib mirror of NOCO manual)",
+   "read": "2026-11-10",
+   "note": "Manual covers GEN5X1/X2/X3. Same footnote: 'Amperage Rating Is Bulk Amperage When Above 0°C'. At 5 A, 80 Ah back takes about 16 h, so ChatGPT's 'good for overnight charging' doesn't hold for a drained 100 Ah battery."
+  }
+ ],
+ "unsourced": [
+  "NOCO GENPRO10X3 and GEN5X3 AC input current or watts. no.co spec pages and the NOCO FAQ returned HTTP 403, and no manual page I opened lists input power.",
+  "Minn Kota PCL lithium bulk/absorption/float voltages and safety-timer hours from the PCL manual PDFs. The PDFs are encrypted and gave no text.",
+  "ProMariner ProSportHD 20 Plus: whether its 20 A is total or per bank, and its lithium voltage. promariner.com redirects to promariner.navico.com and I found no maker spec page. Retailer snippets conflict and I did not open them.",
+  "Today's maker-store prices for the candidates. NOCO store gave 403/404 to storecheck, and the Minn Kota MK 345 PCL product page came back empty.",
+  "Output current below 0 °C for NOCO chargers. The manuals rate amps only above 0 °C and give no cold-weather figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9773855
+ }
+}

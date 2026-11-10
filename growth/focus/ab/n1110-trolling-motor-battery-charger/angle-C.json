@@ -1,0 +1,136 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got names a charger for the case it raised itself, a single 24V or 36V LiFePO4 trolling battery: Minn Kota PCL and NOCO GENPRO are 12V-per-bank only, while Redodo sells a 29.2V 20A charger for 24V packs ($109.99) and a 43.8V 25A IP65 charger for 36V packs ($149.99), and Dakota Lithium sells 28.8V 10A ($60) and 43.2V 8A ($100) chargers.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited Minn Kota help pages (PCL Features/Specs and the Battery Charger Selection Guide) and the uncited 'Using the PCL' page. They say Minn Kota chargers are '12 Volt battery systems only' and 'not compatible with single 24V and 36V Lithium Batteries', so rivals cover the exclusion. None of them names a charger that does work. ChatGPT's own answer stops at 'requires a charger specifically compatible with that voltage'. The cited no.co GENPRO10X3 specs page returned 403 to me, and gearranking.com/marine-chargers/lithium/ failed on a certificate error, so I could not check those two. This rating assumes neither names a 29.2V or 43.x V charger.",
+ "decides": "It splits the pick by battery setup. With separate 12V batteries (one per bank), multi-bank 12V onboard chargers stay the picks: NOCO GENPRO10X3 Lithium mode 14.6V and Minn Kota PCL max 14.5V. Both sit inside Redodo's 14.4V ±0.2V 12V LiFePO4 window. With one single 24V or 36V LiFePO4 pack, every charger ChatGPT listed is excluded. The shopper needs a single-output charger matched to the pack's voltage, such as Redodo 29.2V 20A / 43.8V 25A or Dakota 28.8V / 43.2V, and should use the battery maker's own charger because Redodo (2×/3×14.6V) and Dakota (2×/3×14.4V) use different setpoints.",
+ "candidates": [
+  "NOCO GENPRO10X3",
+  "Minn Kota MK 330PCL",
+  "Minn Kota MK 345PCL",
+  "Minn Kota MK 318PCL",
+  "NOCO GEN5X3",
+  "NOCO GENIUS10",
+  "Redodo 29.2V 20A MINI LiFePO4 charger",
+  "Redodo 43.8V 25A LiFePO4 charger (36V)",
+  "Redodo 14.6V 20A LiFePO4 charger",
+  "Dakota Lithium 36V 8A LiFePO4 charger",
+  "Dakota Lithium 24V 10A LiFePO4 charger"
+ ],
+ "findings": [
+  {
+   "product": "Minn Kota Precision Charger Lithium (PCL) series",
+   "label": "Single 24V/36V lithium battery compatibility",
+   "value": "Not compatible: 'The Minn Kota Chargers are not compatible with single 24V and 36V Lithium Batteries.'",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/14476351755159-Precision-Charger-Lithium-PCL-Features-Specifications-and-Manuals-2021-present",
+   "source_title": "Precision Charger Lithium (PCL) Features, Specifications and Manuals (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Cited rival page. It also lists supported chemistries per bank: 12V AGM, 12V flooded, 12V LiFePO4. Gel is not listed for PCL."
+  },
+  {
+   "product": "Minn Kota Precision Charger Lithium (PCL) series",
+   "label": "Maximum lithium charge voltage",
+   "value": "14.5 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/9172889739543-Using-the-Precision-Charger-Lithium-PCL-2021-present",
+   "source_title": "Using the Precision Charger Lithium (PCL) (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Quote: 'ensure our Max voltage of 14.5V meets the specifications of the Battery Manufacturer'. The page says lithium charging 'will stay in Bulk Mode until the process is complete' and that the factory default bank type is Flooded Lead Acid, so each bank must be switched to Lithium."
+  },
+  {
+   "product": "Minn Kota Precision Charger Lithium (PCL) series",
+   "label": "DC output cord length and extension limit",
+   "value": "6 ft per DC cord; 15 ft maximum extension with MK-EC-15; fuse holder within 7 in of the battery terminal",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/9172889739543-Using-the-Precision-Charger-Lithium-PCL-2021-present",
+   "source_title": "Using the Precision Charger Lithium (PCL) (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Same page: 'Do not shorten the DC output cords'. This is in a result ChatGPT got (uncited), so it is not a gap."
+  },
+  {
+   "product": "Minn Kota chargers (all families)",
+   "label": "System voltage and series wiring",
+   "value": "12V battery systems only; batteries wired in series cannot be charged from one bank",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Cited rival page. It lists PCL models 106/110/212/220/230/318/330/345/440/460/550PCL, says lithium support covers 'certain 12V Lithium (LiFePO4)' batteries, and lists gel only for the obsolete PC chargers."
+  },
+  {
+   "product": "NOCO GENPRO10X3",
+   "label": "Charge-mode voltages and limits (GENPRO series, 10A per bank)",
+   "value": "12V Lithium 14.6 V / 10 A / up to 230 Ah; 12V AGM 14.8 V; 12V wet/gel/EFB/calcium 14.5 V; Repair 16.5 V / 1.5 A; Lithium mode 'for use on batteries with Battery Management Systems (BMS) only'",
+   "source": "https://manualslib.mx/manual/785489/Noco-Genius-Genpro-Serie.html?page=4",
+   "source_title": "NOCO Genius GENPRO Serie Guía De Usuario Y Garantía, página 4 (manualslib copy)",
+   "read": "2026-11-10",
+   "note": "Third-party host of NOCO's Spanish GENPRO-series guide covering GENPRO10X1–10X4. It gives one table for all four models: 'Peak Voltage Measured At 25°C'. Every mode is 12V, with no 24V or 36V mode. no.co returned 403, so I could not read the English original."
+  },
+  {
+   "product": "Redodo 29.2V 20A MINI LiFePO4 charger",
+   "label": "Battery voltage it fits and price",
+   "value": "For 24V LiFePO4 batteries; 29.2 V, 20 A; $109.99 (compare-at $229.99), in stock",
+   "source": "https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size",
+   "source_title": "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger Ultra Fast AC-DC Charger",
+   "read": "2026-11-10",
+   "note": "Read from Redodo's US Shopify store with storecheck.py search. A direct product fetch later returned HTTP 429. Maker's claim: a 24V 100Ah pack charges in 5 h. 29.2 V = 2 × 14.6 V. The listing gives no waterproof rating."
+  },
+  {
+   "product": "Redodo 43.8V 25A LiFePO4 charger",
+   "label": "Battery voltage it fits, protection and price",
+   "value": "For 36V (38.4V) LiFePO4 batteries; 43.8 V, 25 A; IP65; 100–240 V input; $149.99 (compare-at $199.99), in stock",
+   "source": "https://www.redodopower.com/products/redodo-43-8v-25a-lithium-battery-charger-for-36v38-4v-lifepo4-batteries",
+   "source_title": "Redodo 43.8V 25A Lithium Battery Charger for 36V(38.4V) LiFePO4 Batteries",
+   "read": "2026-11-10",
+   "note": "Read from Redodo's US store with storecheck.py search; the direct product fetch returned 429. 43.8 V = 3 × 14.6 V. Single output, so it fits a single 36V pack, not three separate 12V batteries."
+  },
+  {
+   "product": "Redodo 14.6V 20A LiFePO4 charger",
+   "label": "Battery it fits and price",
+   "value": "Only for 12V (12.8V) LiFePO4; 14.6 V, 20 A, with BMS wake-up; $82.99 (compare-at $119.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-10",
+   "note": "From Redodo store search data. Single output: a 24V setup built from two 12V batteries needs one charger per battery or a multi-bank charger. Redodo also lists a 14.6V/18.25V 10A IP65 waterproof marine charger at $92.99."
+  },
+  {
+   "product": "Redodo 12V 100Ah LiFePO4 (budget)",
+   "label": "Trolling-motor thrust range and charger pairing",
+   "value": "Recommended for 30–70 lb thrust trolling motors; 5 h full charge with a 14.6V 20A LiFePO4 charger; not for starter batteries or golf carts",
+   "source": "https://www.redodopower.com/products/12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah LiFePO4 Lithium Battery | Best Budget | For RV, Solar, Trolling Motor",
+   "read": "2026-11-10",
+   "note": "From Redodo store search data; price $242.99. Maker's claim, not measured."
+  },
+  {
+   "product": "Dakota Lithium 36V 8A LiFePO4 charger",
+   "label": "Output voltage, current and price",
+   "value": "43.2 V, 8 A; $100; maker says under 8 h for a Dakota 36V 60Ah and under 12 h for a 36V 100Ah",
+   "source": "https://dakotalithium.com/products/36v-8a-lithium-lifepo4-battery-charger",
+   "source_title": "36V 8A LiFePO₄ Battery Charger – Dakota Lithium",
+   "read": "2026-11-10",
+   "note": "From Dakota Lithium's US store via storecheck.py search. 43.2 V = 3 × 14.4 V, a lower setpoint than Redodo's 43.8 V, so match the charger to the battery maker."
+  },
+  {
+   "product": "Dakota Lithium 24V 10A LiFePO4 charger",
+   "label": "Output voltage, current and price",
+   "value": "28.8 V, 10 A; 100–240 V AC input; $60; listed for marine and trolling-motor 24V lithium systems",
+   "source": "https://dakotalithium.com/products/24v-10a-lifepo4-battery-charger",
+   "source_title": "24V 10A LiFePO₄ Battery Charger – Dakota Lithium",
+   "read": "2026-11-10",
+   "note": "From Dakota Lithium's US store via storecheck.py search. 28.8 V = 2 × 14.4 V."
+  }
+ ],
+ "unsourced": [
+  "Official English NOCO GENPRO10X3 charge-mode table and today's price: no.co/genpro10x3 and /specs returned HTTP 403, so the 14.6 V lithium figure comes from a manualslib copy of NOCO's Spanish GENPRO guide.",
+  "NOCO GEN5X3 lithium-mode voltage: the GEN-series North America guide PDF (cdn.shopify.com) came back as compressed binary I couldn't read, and no.co was blocked.",
+  "Minn Kota PCL lithium low-temperature charge limits and per-chemistry absorption/float voltages: the 6/10 A PCL manual PDF is AES-encrypted, local pdftotext was not permitted, and the help pages don't cover low temperature.",
+  "Minn Kota MK 330PCL / MK 345PCL / MK 318PCL prices today: the minnkota.johnsonoutdoors.com on-board charger listing returned empty content.",
+  "Redodo trolling battery low-temperature charge cutoff (search snippet said 0 °C cutoff, 5 °C resume) and charge voltage 14.4 V ±0.2 V: redodopower.com product pages returned HTTP 429 to both WebFetch and storecheck product, so I could not open them.",
+  "Waterproof rating of the Redodo 29.2V 20A MINI charger: none stated in the store data I read.",
+  "Whether gearranking.com/marine-chargers/lithium/ names a 24V or 36V lithium charger: fetch failed with a self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1462226999999998
+ }
+}

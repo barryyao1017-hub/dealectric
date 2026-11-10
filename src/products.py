@@ -5390,6 +5390,38 @@ PRODUCTS = [
  "fit": 'Homes that want about 60 kWh of storage with automatic switchover in the box and more output than a single 12 kW inverter.',
  "caveats": ['The 10 kW turbo per module lasts 90 minutes, and only with 2 or more batteries on that module', 'Three modules on one Power Dock top out at 22.8 kW rated, far from 60 kW', 'Installation is not included in the store price']},
 
+{"slug": 'redodo-43-8v-25a-lifepo4-charger',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "category": 'battery-charger',
+ "name": 'Redodo 43.8V 25A LiFePO4 Battery Charger for 36V (38.4V) lithium batteries, IP65',
+ "model": '43.8V 25A',
+ "url": 'https://www.redodopower.com/products/redodo-43-8v-25a-lithium-battery-charger-for-36v38-4v-lifepo4-batteries',
+ "price": 149.99,
+ "verified": '2026-11-10',
+ "specs": [('Output', '43.8 V, 25 A'), ('Battery', '36V (38.4V) LiFePO4'), ('Water rating', 'IP65, waterproof output connector and cap'), ('Input', '100–240 V AC'), ('Charge stages', 'CC, CV, cutoff')],
+ "warranty": '2 years (Redodo: all lithium battery chargers)',
+ "returns": '30 days (Redodo). Redodo pays return shipping for a defective product, late delivery or a damaged package. For any other reason, return shipping comes out of the refund.',
+ "summary": 'Single-output 43.8 V LiFePO4 charger for one 36V lithium trolling battery. IP65 with a sealed, capped output connector.',
+ "fit": 'Anglers whose 36V trolling motor runs on one 36V LiFePO4 pack, which multi-bank 12V onboard chargers cannot charge.',
+ "caveats": ['Single output: it does not charge three separate 12V batteries.', 'LiFePO4 only.', "Check the pack's maximum charge current before pairing it with a 25 A charger."]},
+
+{"slug": 'redodo-29-2v-20a-mini-lifepo4-charger',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "category": 'battery-charger',
+ "name": 'Redodo 29.2V 20A MINI LiFePO4 Battery Charger for 24V lithium batteries',
+ "model": '29.2V 20A MINI',
+ "url": 'https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size',
+ "price": 109.99,
+ "verified": '2026-11-10',
+ "specs": [('Output', '29.2 V, 20 A'), ('Battery', '24V LiFePO4'), ('Maker charge time', '24V 100Ah in 5 h'), ('Wake-up', 'Pre-charge mode recovers sleeping batteries')],
+ "warranty": '2 years (Redodo: all lithium battery chargers)',
+ "returns": '30 days (Redodo). Redodo pays return shipping for a defective product, late delivery or a damaged package. For any other reason, return shipping comes out of the refund.',
+ "summary": 'Compact 29.2 V LiFePO4 charger for one 24V lithium trolling battery. Redodo quotes 5 h for a 24V 100Ah pack.',
+ "fit": 'Boats with one 24V LiFePO4 trolling pack, charged at the dock or in the garage.',
+ "caveats": ['The listing gives no water rating, so charge under cover rather than on deck.', 'Single output, LiFePO4 only.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
