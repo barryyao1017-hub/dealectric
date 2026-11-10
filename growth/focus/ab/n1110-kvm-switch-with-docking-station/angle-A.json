@@ -1,0 +1,91 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that, of its five picks, only the TESmart HDC202-X24 can run two extended monitors natively from a MacBook with no DisplayLink driver, because its Thunderbolt link carries more than one DisplayPort stream instead of using MST. One cited rival (Dock Gear HQ) labels the X24 'Mirrors (MST)' on macOS.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited plus a third result: Dock Gear HQ 'Best Docking Stations with Built-In KVM Switch' (cited), ThunderboltLaptop 'Best Dual Monitor KVM Switches' (cited), and Dock Gear HQ 'Best KVM Switches for Dual Monitor Setups'. Dock Gear HQ's table gives the X24 'Mirrors (MST)' on macOS and never discusses the Mac in its write-up. TESmart's own 2026 article says the opposite. ThunderboltLaptop doesn't list the X24 at all and names StarTech's DisplayLink dock as the way to extend on a Mac. Both rivals already cover the charging split (C20 60 W each, StarTech 90/45 W, Sabrent and X24 60 W to one host only), so that part of the table is not new. Neither rival says that the KD-E10's '100W' is just your own laptop charger passing through, and neither repeats Sabrent's 'permanent damage' warning for hosts that aren't Thunderbolt-certified.",
+ "decides": "It changes the Mac answer. ChatGPT sent Mac + Windows buyers to the StarTech 129N because it uses DisplayLink. For one MacBook plus one desktop, where the Mac's chip supports two external displays (TESmart names the M4/M5 MacBook Air), the X24 extends both monitors natively with no driver. That avoids DisplayLink's limits: StarTech blocks copy-protected (DRM) video per ThunderboltLaptop, and TESmart says DisplayLink needs care for HDR, color-critical work and fast-refresh gaming. For two laptops, the X24 doesn't fit because its second input is a desktop on DP or HDMI. There, and on Macs limited to one external display, the StarTech is still the only one of the five that extends two screens. It confirms that the AV Access C20 and KD-E10 are Windows picks only, since AV Access lists both as 'Mirrored' on a MacBook.",
+ "candidates": [
+  "AV Access iDock C20",
+  "StarTech 129N-USBC-KVM-DOCK",
+  "AV Access KD-E10",
+  "Sabrent SB-TB4K Thunderbolt 4 KVM Switch",
+  "TESmart HDC202-X24"
+ ],
+ "findings": [
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "How it drives two monitors from a Mac",
+   "value": "Thunderbolt link carrying more than one DisplayPort stream; TESmart recommends it for 'native dual-display output from an M4/M5 MacBook Air'",
+   "source": "https://www.tesmart.com/blogs/news/macbook-air-m4-m5-dual-monitor-kvm-setup-what-works-and-what-does-not",
+   "source_title": "TESmart: MacBook Air M4/M5 Dual Monitor KVM Setup: What Works and What Does Not (2026-07-07)",
+   "read": "2026-11-10",
+   "note": "Exact quote: 'A supported Thunderbolt connection can transport more than one DisplayPort stream along with USB or PCIe data.' The same article warns against treating the HDC202-P23 (single USB-C path using MST) as the same design, because over MST 'the two external displays may mirror or only one may extend.' It is the only TESmart model the article recommends for two extended displays on a Mac, and only for one MacBook Air plus one desktop."
+  },
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "Maker's caveat on Macs limited to one external display",
+   "value": "Dual extended output cannot be achieved even through a Thunderbolt 4 KVM",
+   "source": "https://www.tesmart.com/blogs/news/thunderbolt-4-vs-usb-c-which-tesmart-dual-monitor-kvm-switch-fits-your-workflow",
+   "source_title": "TESmart: Thunderbolt 4 vs. USB-C: Which TESmart Dual-Monitor KVM Switch Fits Your Workflow? (2025-07-02)",
+   "read": "2026-11-10",
+   "note": "Quotes: the X24 'Supports multi-display output via Thunderbolt technology, enabling MST-like functionality ... even on macOS devices that do not natively support MST'. Also: 'Some Apple Silicon Macs ... only support one external display due to hardware limitations ... Even when connected to a Thunderbolt 4 KVM switch, dual extended display output cannot be achieved.'"
+  },
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "Rival's macOS entry, which contradicts the maker",
+   "value": "'Mirrors (MST)'",
+   "source": "https://dockgearhq.com/blog/best-docking-stations-with-built-in-kvm-switch-2026",
+   "source_title": "Dock Gear HQ: Best Docking Stations with Built-In KVM Switch (2026), updated 2026-10-10",
+   "read": "2026-11-10",
+   "note": "This is the cited rival's comparison-table entry. Its write-up never discusses the X24 on a Mac. The same page gives the X24 'up to 60W to PC1 only' and says it is 'Thunderbolt-compatible, not Thunderbolt-certified' (TESmart says certification is in progress)."
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "MacBook display mode / charging while both laptops are docked / price",
+   "value": "Mirrored on a MacBook (extended on Windows); 60 W to each laptop at the same time; $259.99–$272.98",
+   "source": "https://www.avaccess.com/products/idock-c20/",
+   "source_title": "AV Access iDock C20 product page",
+   "read": "2026-11-10",
+   "note": "Note 1: 'Most MacOS devices only support DP SST mode, so two duplicate contents will be displayed.' FAQ: 'provides power to both connected laptops simultaneously.' Included adapter is DC 20V/10A (200 W, my arithmetic). Each laptop's link is labelled USB 3.2 Gen 2x1 'up to 20Gb/s', but data through the dock is 5 Gb/s, and four of its USB-A ports are USB 2.0 (480 Mb/s). The $259.99 low end matches ChatGPT's card; the page doesn't say which kit costs which price."
+  },
+  {
+   "product": "AV Access KD-E10",
+   "label": "What the '100W charging' actually is / MacBook display mode / price",
+   "value": "Passes through your laptop's own charger (dock's own adapter is 12 V 3 A); Mirrored on a MacBook; $169.99",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "AV Access KD-E10 product page",
+   "read": "2026-11-10",
+   "note": "Footnote 1: 'When charging your laptop, please additionally use your laptop's original adapter.' The box includes '1x Power Adapter (DC 12V 3A)', which is 36 W (my arithmetic), so the dock cannot supply 100 W itself. Also: 'MacOS doesn't support USB C MST ... two duplicate contents will be displayed.' Marketing says '20Gbps USB C port', but the spec sheet gives 5 Gb/s data on the downstream USB-C port."
+  },
+  {
+   "product": "Sabrent SB-TB4K Thunderbolt 4 KVM Switch",
+   "label": "Host requirement / charging / price and stock",
+   "value": "Thunderbolt-certified hosts only ('Permanent damage can occur when used with uncertified devices'); up to 60 W PD 3.0 bypass charging; $299.99, listed unavailable on sabrent.com",
+   "source": "https://sabrent.com/products/sb-tb4k",
+   "source_title": "Sabrent Thunderbolt 4 KVM Switch (store listing data)",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of sabrent.com, which returned available=false. The product page itself returned HTTP 429 every time. Listing text: dual displays up to 4K@60Hz 'for systems that support DP Alt Mode (DisplayPort 1.4)'; it 'Supports EDID, MST'. Dock Gear HQ (opened) says it 'charges only the active host at up to 60W', so the idle laptop gets nothing."
+  },
+  {
+   "product": "StarTech 129N-USBC-KVM-DOCK",
+   "label": "How it extends two monitors on a Mac / charging split",
+   "value": "DisplayLink: extended on all Macs including M1/M2/base M3 after installing the driver; 90 W to the active laptop, 45 W to the standby one",
+   "source": "https://thunderboltlaptop.com/best-dual-monitor-kvm-switches/",
+   "source_title": "ThunderboltLaptop: Best Dual Monitor KVM Switches in 2026 (cited by ChatGPT)",
+   "read": "2026-11-10",
+   "note": "Named reviewer page, used because StarTech's own US page loaded only navigation. Quote: 'delivers 90W to whichever laptop is active and 45W to the standby laptop'. Also says it 'blocks DRM-protected content'. Dock Gear HQ gives the same split from a 180 W adapter."
+  }
+ ],
+ "unsourced": [
+  "TESmart HDC202-X24 price ($699.00 in ChatGPT's card and a search snippet), stock, and the FAQ line 'all other Macs can run dual extended displays through the HDC202-X24 PC1 port'. Both tesmart.com product URLs and storecheck.py returned HTTP 429 every time, so I never opened the page.",
+  "Sabrent SB-TB4K behaviour on macOS (extended or mirrored, and which Mac chips). The maker page returned HTTP 429, and Dock Gear HQ only says it 'keeps video in the host's Thunderbolt domain', with no Mac result.",
+  "StarTech 129N maker spec sheet and US price. The startech.com product page loaded only navigation, so the 90/45 W and DisplayLink figures come from the named reviewer pages above. I didn't verify ChatGPT's $326.59 or find which retailer it came from.",
+  "Apple's per-chip count of supported external displays (which MacBook Air/Pro chips support two). support.apple.com/en-us/101571 only links out per model and gives no counts."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.1045124
+ }
+}

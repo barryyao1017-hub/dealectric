@@ -1,0 +1,146 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a single-cable USB-C KVM dock can run dual 4K at 60 Hz only if the laptop's USB-C port outputs DisplayPort 1.4 with DSC (Display Stream Compression). Without DSC, a DP Alt Mode link that also carries USB 3 data has room for only one 4K60 stream or two 2560×1600 streams. Docks like the iDock C20 and KD-E10 advertise both dual 4K60 over MST and 5 Gb/s USB on that same laptop cable.",
+ "standout": 2,
+ "standout_why": "I compared five rival pages. Dock Gear HQ's built-in-KVM page (cited) and ThunderboltLaptop's dual-monitor page (cited) both cover macOS mirroring over MST and DisplayLink. Dock Gear HQ also covers base M1/M2 display limits and the iDock M10's two-cable design. ThunderboltLaptop covers M3 lid-closed operation. ChatGPT's own answer repeats the MST mirroring warning. Dock Gear HQ's best-kvm-switches-2026 page (cited) mentions DSC only for 8K/4K144 modes on the Sabrent and TESmart. Tried Tested Reviewed (rank 1) mentions DSC nowhere. None of the five says that dual 4K60 from one USB-C cable depends on the host having DSC, or that DP Alt Mode trades video lanes against USB 3 data. ThunderboltLaptop also claims that M3 Pro, M3 Max and M4 Macs 'support native dual extended via MST'. AV Access's own pages contradict that: they say macOS doesn't support USB-C MST and the M10 gets two extended screens by using two cables.",
+ "decides": "This mainly affects Windows buyers. The iDock C20 ($259.99, ChatGPT's top pick) and the KD-E10 ($169.99) give two extended 4K60 screens only on a laptop whose USB-C port supports DP Alt Mode, MST and, for dual 4K60 alongside USB 3 data, DP 1.4 DSC. Older or iGPU-limited laptops will run at lower resolution or refresh, as C20 owners report seeing on the maker's page. Those buyers should either confirm DSC in their laptop's specs or pick a dock that doesn't depend on it: Thunderbolt (Sabrent), DisplayLink (StarTech 129N), or the iDock M10, which takes two uncompressed DP Alt Mode streams over two cables. For Macs this confirms ChatGPT's warning: the C20 and KD-E10 mirror. The M10 extends to two screens on M4/M5 or Pro/Max chips, and on a base M3 only with the lid closed.",
+ "candidates": [
+  "AV Access iDock C20",
+  "AV Access KD-E10",
+  "AV Access iDock M10",
+  "StarTech 129N-USBC-KVM-DOCK",
+  "Sabrent Thunderbolt 4 KVM Switch SB-TB4K",
+  "TESmart HDC202-X24"
+ ],
+ "findings": [
+  {
+   "product": "AV Access iDock C20",
+   "label": "Laptop-port requirement for two extended displays",
+   "value": "USB-C port must support DP Alt Mode and DP MST; video input listed as 'Dual 4K@60Hz video (MST)'",
+   "source": "https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/",
+   "source_title": "AV Access iDock C20 KVM Switch Docking Station",
+   "read": "2026-11-10",
+   "note": "Maker's important note 1: 'For the extended display mode on two screens, please make sure that your USB C port supports DP alt and DP MST.'"
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "Data rate on the laptop link alongside dual 4K60",
+   "value": "Up to 5 Gb/s USB data together with dual 4K UHD video over each 20 Gb/s USB-C laptop link",
+   "source": "https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/",
+   "source_title": "AV Access iDock C20 KVM Switch Docking Station",
+   "read": "2026-11-10",
+   "note": "Maker copy: 'With dual 20Gbps USB C ports, iDock C20 delivers dual 4K UHD videos, data transfer up to 5Gbps'. Sending USB 3 data on the same cable needs the 2-lane DP Alt Mode split (Newnex finding below), so dual 4K60 then depends on host DSC. AV Access does not state the DSC requirement. A buyer review on the page (Matthew Wills, 2025-01-10) says one laptop's UHD graphics 'only allows for 30Hz at 4K'."
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "macOS behaviour",
+   "value": "Mirrored on MacBooks (extended on Windows)",
+   "source": "https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/",
+   "source_title": "AV Access iDock C20 KVM Switch Docking Station",
+   "read": "2026-11-10",
+   "note": "Maker: 'MacOS doesn't support USB C MST, so external monitors will show duplicate content.'"
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "Charging per laptop",
+   "value": "60 W per laptop, both at once",
+   "source": "https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/",
+   "source_title": "AV Access iDock C20 KVM Switch Docking Station",
+   "read": "2026-11-10",
+   "note": "Maker: 'simultaneous charging (up to 60W per laptop)'; DC 20 V/10 A supply."
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "Price, AV Access US store",
+   "value": "$259.99 to $272.98 (the higher figure is the C20 + EXB01 remote button kit)",
+   "source": "https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/",
+   "source_title": "AV Access iDock C20 KVM Switch Docking Station",
+   "read": "2026-11-10",
+   "note": "Price range shown on the maker's page; the two kits are not priced separately."
+  },
+  {
+   "product": "AV Access KD-E10",
+   "label": "Laptop video path, data rate and macOS behaviour",
+   "value": "Laptop USB-C carries two streams over DP MST; laptop USB-C data up to 5 Gb/s; MacBooks mirrored",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "AV Access KD-E10",
+   "read": "2026-11-10",
+   "note": "Spec table lists Windows 'Extended' and MacBook 'Mirrored'. Maker: 'MacOS doesn't support USB-C MST'. Desktop side uses DP 1.4a and HDMI 2.0b inputs plus USB-B, so the desktop doesn't depend on DP Alt Mode."
+  },
+  {
+   "product": "AV Access KD-E10",
+   "label": "Price and laptop charging, AV Access US store",
+   "value": "$169.99; up to 100 W to the laptop",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "AV Access KD-E10",
+   "read": "2026-11-10",
+   "note": "Maker page price and charging figure."
+  },
+  {
+   "product": "AV Access iDock M10",
+   "label": "How it avoids MST on a Mac",
+   "value": "Dual-head USB-C cable (or two separate USB-C cables); two USB-C/Thunderbolt ports needed; DP Alt video 'without compression'",
+   "source": "https://www.avaccess.com/products/idock-m10/",
+   "source_title": "AV Access iDock M10",
+   "read": "2026-11-10",
+   "note": "Maker FAQ: 'Two USB-C/Thunderbolt ports are required on the MacBook for dual extended displays.'"
+  },
+  {
+   "product": "AV Access iDock M10",
+   "label": "Extended displays by Apple chip",
+   "value": "M1/M2: 1 external (second monitor goes black); base M3: two extended with lid closed, mirroring with lid open; M4/M5 and Pro/Max: two extended",
+   "source": "https://www.avaccess.com/products/idock-m10/",
+   "source_title": "AV Access iDock M10",
+   "read": "2026-11-10",
+   "note": "From the maker FAQ and chart. M5 appears in the chart but not in the FAQ list."
+  },
+  {
+   "product": "AV Access iDock M10",
+   "label": "Price and charging, AV Access US store",
+   "value": "$289.99; up to 100 W to the MacBook",
+   "source": "https://www.avaccess.com/products/idock-m10/",
+   "source_title": "AV Access iDock M10",
+   "read": "2026-11-10",
+   "note": "Maker page price; DC 20 V/6 A supply."
+  },
+  {
+   "product": "general",
+   "label": "DP Alt Mode lane split vs USB data",
+   "value": "2-lane mode: USB 3.2 Gen 2x1 (10 Gb/s) data plus one 4K60 or two 2560×1600 at 60 Hz; 4-lane mode: two 4K60 but USB 2.0 data only",
+   "source": "https://newnex.com/technology-articles-dp-alt-mode-over-usb-c.php",
+   "source_title": "Exploring DisplayPort Alt Mode over USB-C (Newnex Technology)",
+   "read": "2026-11-10",
+   "note": "Newnex: the 2-lane mode is 'commonly adopted by USB-C docking stations'. Arithmetic: HBR3 is 8.1 Gb/s per lane, and 8b/10b coding gives 2 lanes = 12.96 Gb/s payload. One 3840×2160×60×24-bit stream is about 11.9 Gb/s of active pixels before blanking, so two streams (about 24 Gb/s or more) can't fit in 2 lanes without compression."
+  },
+  {
+   "product": "general",
+   "label": "Standard's own wording on lane sharing",
+   "value": "DP Alt Mode may use 1 or 2 of the 4 lanes so 'the other two lanes can be used for SuperSpeed USB data at the same time'",
+   "source": "https://vesa.org/featured-articles/vesa-brings-displayport-to-new-usb-type-c-connector/",
+   "source_title": "VESA Brings DisplayPort to New USB Type-C Connector (VESA, 2014-09-22)",
+   "read": "2026-11-10",
+   "note": "VESA press release from when DP Alt Mode launched."
+  },
+  {
+   "product": "general",
+   "label": "Host requirement for dual 4K60 over one USB-C MST link",
+   "value": "DP 1.4 with DSC (or DP 2.1); DP 1.4 without DSC may lack bandwidth for dual 4K60; DP 1.2 typically limited to dual 1080p60",
+   "source": "https://kb.plugable.com/does-my-laptop-support-the-plugable-ud-msth2-what-to-check-before-buying",
+   "source_title": "Does My Laptop Support the Plugable UD-MSTH2? What to Check Before Buying (Plugable KB, updated 2026-08-28)",
+   "read": "2026-11-10",
+   "note": "Plugable is a dock maker writing about its own USB-C MST dock, so this is a maker statement but not AV Access's. It also says USB-C ports that list only data speed or charging don't confirm video support, and that macOS gives one extended display and one mirrored."
+  }
+ ],
+ "unsourced": [
+  "Whether the iDock C20 and KD-E10 run their laptop USB-C link in 2-lane or 4-lane DP Alt Mode, and which MST hub chip they use. Not stated on the AV Access product pages, the iDock series page, or the manuals.plus listings in search results.",
+  "An AV Access statement that dual 4K60 on the C20 or KD-E10 needs DSC on the host. The maker pages require only DP Alt and MST.",
+  "Which laptop CPU or GPU generations output DP 1.4 DSC over USB-C. The StarTech MST14CD122DP page I opened had no host-requirement text; a search snippet citing Intel 12th gen wasn't opened, so it isn't used. The SIIG dock page returned HTTP 429.",
+  "Apple's own wording on MST support. Search found no support.apple.com page stating it, so the Mac findings rely on AV Access and Plugable."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 19,
+  "cost_usd_list": 0.9318468000000003
+ }
+}

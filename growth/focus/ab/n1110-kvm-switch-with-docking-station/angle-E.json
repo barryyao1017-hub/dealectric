@@ -1,0 +1,102 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a named reviewer timed a switch on any of these docks: Dan S. Charlton measured the Sabrent Thunderbolt 4 KVM (SB-TB4K) bringing USB devices back within 1-2 s but the monitors only after about 5 s, and found that it charges one laptop at a time, capped at 60 W.",
+ "standout": 1,
+ "standout_why": "I compared against the cited dockgearhq.com 'Best KVM Switches for Dual Monitor Setups', dockgearhq.com 'Best Docking Stations with Built-In KVM Switch', thunderboltlaptop.com 'Best Dual Monitor KVM Switches' and the top-ranked triedtestedreviewed.com page. None of them has a measurement of its own or one from a named reviewer. Their switch times are the maker's '2-3 seconds' or unnamed owner reports: dockgearhq says 'a few seconds ... over 20 seconds for dual 4K recovery' for the Sabrent. All their wattages are ratings. Dockgearhq already says, from the spec, that the Sabrent and TESmart give 60 W to the active host only. So the new part is a named, timed switch and a measured USB-port power limit, not the charging point itself.",
+ "decides": "This confirms that the Thunderbolt picks lose on charging and switching. The Sabrent SB-TB4K was measured at about 5 s to bring the monitors back, and only the active laptop charges. The TESmart HDC202-X24 was confirmed at about 60 W, and its front USB ports dropped out of spec past 8.5-9 W each. So for 'two laptops, both charging', the AV Access iDock C20 (rated 60 W to each laptop at once) stays the pick, though nobody has timed or measured it independently. The Sabrent is also listed as unavailable on sabrent.com today at $299.99, which weakens it as ChatGPT's #2 pick.",
+ "candidates": [
+  "AV Access iDock C20",
+  "Sabrent Thunderbolt 4 KVM Switch SB-TB4K",
+  "StarTech 129N-USBC-KVM-DOCK",
+  "AV Access KD-E10",
+  "TESmart HDC202-X24"
+ ],
+ "findings": [
+  {
+   "product": "Sabrent SB-TB4K",
+   "label": "Time to switch (USB devices / monitors)",
+   "value": "USB keyboard, mouse and devices detected within 1-2 s; monitors about 5 s to register",
+   "source": "https://dancharblog.wordpress.com/2023/07/13/sabrent-thunderbolt-4-kvm-dock-teardown-and-review/",
+   "source_title": "Sabrent Thunderbolt 4 KVM Dock Teardown and Review (Dan S. Charlton, 2023-07-13)",
+   "read": "2026-11-10",
+   "note": "Hands-on test with a Surface Laptop Studio, a Dell Latitude 5420 and an eGPU, plus monitor simulator dongles. The switch button itself responds instantly (LED). No timing tool is named."
+  },
+  {
+   "product": "Sabrent SB-TB4K",
+   "label": "Laptop charging",
+   "value": "60 W maximum, one laptop at a time",
+   "source": "https://dancharblog.wordpress.com/2023/07/13/sabrent-thunderbolt-4-kvm-dock-teardown-and-review/",
+   "source_title": "Sabrent Thunderbolt 4 KVM Dock Teardown and Review (Dan S. Charlton, 2023-07-13)",
+   "read": "2026-11-10",
+   "note": "Rated 20 V × 3 A. Included power supply is 120 W (24 V × 5 A). Charlton says to keep USB and Thunderbolt downstream draw near 50 W to hold 60 W laptop charging, leaving about 10 W for the dock."
+  },
+  {
+   "product": "Sabrent SB-TB4K",
+   "label": "USB 3.2 port power",
+   "value": "about 15 W per port",
+   "source": "https://dancharblog.wordpress.com/2023/07/13/sabrent-thunderbolt-4-kvm-dock-teardown-and-review/",
+   "source_title": "Sabrent Thunderbolt 4 KVM Dock Teardown and Review (Dan S. Charlton, 2023-07-13)",
+   "read": "2026-11-10",
+   "note": "Above the 12 W BC1.2 rating. No Ethernet port, so no network test."
+  },
+  {
+   "product": "Sabrent SB-TB4K",
+   "label": "Maker price and stock",
+   "value": "$299.99, listed as unavailable",
+   "source": "https://sabrent.com/products/sb-tb4k",
+   "source_title": "Thunderbolt 4 KVM Switch – Sabrent",
+   "read": "2026-11-10",
+   "note": "From the Shopify store data via storecheck.py: available=false, no compare-at price."
+  },
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "Front USB port power",
+   "value": "8.5-9 W per port before voltage fell below 4.5 V; about 15 W across both front ports; one port pushed past about 10-11 W shut down",
+   "source": "https://dancharblog.wordpress.com/2025/05/02/tesmart-hdc202-x24-thunderbolt-4-kvm-teardown-and-review/",
+   "source_title": "TESmart HDC202-X24 Thunderbolt 4 KVM teardown and review (Dan S. Charlton, 2025-05-02, updated 2025-08-16)",
+   "read": "2026-11-10",
+   "note": "Measured with a USB power tester (model not named). TESmart rates these ports at 7.5 W each."
+  },
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "Laptop charging",
+   "value": "about 60 W, as advertised",
+   "source": "https://dancharblog.wordpress.com/2025/05/02/tesmart-hdc202-x24-thunderbolt-4-kvm-teardown-and-review/",
+   "source_title": "TESmart HDC202-X24 Thunderbolt 4 KVM teardown and review (Dan S. Charlton, 2025-05-02)",
+   "read": "2026-11-10",
+   "note": "Charlton's wording is 'indeed limited to ~60W as advertised'. He does not say how he measured it."
+  },
+  {
+   "product": "TESmart HDC202-X24",
+   "label": "Display modes confirmed",
+   "value": "1440p at 75 Hz and 1080p worked; 4K60, 1440p120, 3440×1440 at 100 Hz and 1080p240 were not verified",
+   "source": "https://dancharblog.wordpress.com/2025/05/02/tesmart-hdc202-x24-thunderbolt-4-kvm-teardown-and-review/",
+   "source_title": "TESmart HDC202-X24 Thunderbolt 4 KVM teardown and review (Dan S. Charlton, 2025-05-02)",
+   "read": "2026-11-10",
+   "note": "The limit was his own monitors, one of them an old DVI display that worked from only one of the two HDMI outputs. Monitors switched 'almost instantly' (not timed). He did not test USB or Thunderbolt throughput."
+  },
+  {
+   "product": "AV Access iDock C20",
+   "label": "Maker's rated switching time and charging",
+   "value": "2-3 s average switch; up to 60 W to each laptop at the same time; $259.99-$272.98",
+   "source": "https://www.avaccess.com/products/idock-c20/",
+   "source_title": "iDock C20 USB C KVM Docking Station for 2 Laptops – AV Access",
+   "read": "2026-11-10",
+   "note": "Maker's claims, not a measurement. The price range covers kit options and the page doesn't say which price goes with which."
+  }
+ ],
+ "unsourced": [
+  "Named-reviewer measured switch time, charging watts or Ethernet throughput for the AV Access iDock C20. Searched for teardowns and hands-on reviews; the Gadget Flow review (Lauren Wadowsky, 2024-08-29) only repeats '2-3 seconds' and 'up to 60W' with no test method, and the other hits are AV Access blog posts or affiliate roundups.",
+  "Named-reviewer measurements for the AV Access KD-E10. The only named coverage is PCWorld's 2026-07-31 deal post ($170), which has no tests.",
+  "Any independent hands-on review of the StarTech 129N-USBC-KVM-DOCK with figures. I found only retailer listings and a sponsored Mac Fan article.",
+  "RTINGS, Notebookcheck, ServeTheHome, Tom's Hardware or PCMag measurements for any of the five candidates. Searched and found none.",
+  "Idle power draw of any candidate dock.",
+  "TESmart HDC202-X24 maker price today. tesmart.com returned HTTP 429 to storecheck twice."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9914426000000002
+ }
+}

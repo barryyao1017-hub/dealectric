@@ -5357,6 +5357,23 @@ PRODUCTS = [
  "fit": 'Two USB-C laptops with DisplayPort Alt Mode sharing one high-refresh monitor.',
  "caveats": ["TESmart: a laptop whose charging protocol doesn't support 20 V 'may only receive 7.5W'. Mac and ThinkPad Yoga/T/P/X owners should check before ordering.", "Both laptops' USB-C ports must carry DisplayPort Alt Mode video."]},
 
+{"slug": 'avaccess-idock-c20',
+ "brand": 'AV Access',
+ "program": 'awin:avaccess',
+ "asin": None,
+ "category": 'kvm-switch',
+ "name": 'AV Access iDock C20 KVM Docking Station for 2 Laptops and 2 Monitors',
+ "model": 'iDock C20',
+ "url": 'https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/',
+ "price": 259.99,
+ "verified": '2026-11-10',
+ "specs": [('Computers', 'Two USB-C laptops; each port needs DP Alt Mode and DP MST for two extended screens'), ('Laptop charging', 'Up to 60 W to each laptop at the same time'), ('Power adapter', '20 V 10 A (200 W)'), ('Video out', '2× HDMI 2.0 (HDCP 2.2), up to two 4K 60 Hz; 3440×1440 at 60 Hz; 5120×1440 limited to 3840×1080'), ('Display mode', 'Extended on Windows, mirrored on a MacBook'), ('USB', '2× USB-A 5 Gb/s, 4× USB-A 2.0 (480 Mb/s), 1× USB-C 5 Gb/s'), ('Ethernet', 'Gigabit, RJ-45'), ('Switching', 'Panel button or optional remote, average 2-3 s (AV Access rating)')],
+ "warranty": '1-year limited warranty on the main unit (AV Access)',
+ "returns": '30 days to return it for your money back (AV Access)',
+ "summary": 'KVM dock for two USB-C laptops that charges both at 60 W each from one 200 W adapter and drives two 4K 60 Hz HDMI screens with no driver.',
+ "fit": 'Two Windows laptops that each draw 60 W or less, sharing two monitors, a keyboard, a mouse and Ethernet.',
+ "caveats": ["On a MacBook the two screens mirror, because macOS doesn't support USB-C MST (AV Access)", "Each laptop's USB-C port must support DP Alt Mode and DP MST for two extended screens", 'A 5120×1440 super-ultrawide is limited to 3840×1080', 'Four of the USB-A ports are USB 2.0', '$259.99 is the dock alone; the $272.98 option is the kit with the EXB01 remote button']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
