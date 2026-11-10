@@ -1,0 +1,85 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the four \"built-in memory\" cams use the term for two different setups. On the 70mai M500, the eMMC is the only storage and holds the loop recordings. On DDPAI's Z90 line, the 64GB eMMC works together with a microSD card of up to 512GB under DDPAI's D²save \"Dual-Storage System\". I could not open a page showing which footage stays on the eMMC once a card is inserted.",
+ "standout": 1,
+ "standout_why": "I checked the pages ChatGPT cited. The DDPAI Z90 Master page (rank 6) is summed up in ChatGPT's answer as 'Built-in memory plus optional microSD expansion'. The 70mai M500 store page (rank 9) and InCarTec's M500 and 70mai listings (ranks 3 and 13) say 'Built-in eMMC'. The REDTIGER F77 page (rank 15) and the M800 manual (rank 16) are the others. Together they already cover that the DDPAI has eMMC plus microSD and the 70mai/REDTIGER have eMMC only. None of them gives eMMC hours per capacity or eMMC endurance, or shows on a page I opened which footage lands on the eMMC when a card is fitted. The useful version of this finding would be loop hours per GB at each model's top resolution, or 'the eMMC only keeps event clips once a card is in'. I could not source either one, so what I can add is only part of a finding. Most maker pages returned HTTP 429, and device.report, manuals.plus and pbtech returned 403.",
+ "decides": "This mostly confirms the pick and changes price more than ranking. Dealectric already lists the DDPAI Z90 Pro, which DDPAI's US store sells for $199 today. It is a three-camera model (front 4K, rear 2K, interior 3K) with the same '64GB eMMC + 512GB microSD' D²save storage. That is $100 under the Z90 Master ChatGPT showed ($299). A shopper who strictly wants no card at all is better matched by the 70mai M500 (eMMC only). The page should say in plain words that the DDPAI eMMC sits alongside a card and does not replace it.",
+ "candidates": [
+  "70mai M500",
+  "70mai M800",
+  "REDTIGER F77",
+  "DDPAI Z90 Master",
+  "DDPAI Z90 Pro (New)",
+  "DDPAI N5 Pro"
+ ],
+ "findings": [
+  {
+   "product": "DDPAI Z90 Master",
+   "label": "Price, DDPAI US store",
+   "value": "$299.00 (compare-at $639.00), in stock",
+   "source": "https://www.ddpai.com/en-us/products/z90-master",
+   "source_title": "Z90 Master – DDPAI US store",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py's search of the DDPAI US Shopify store for 'Z90 Master'. The tool returned the product URL with a doubled /en-us/en-us/ path."
+  },
+  {
+   "product": "DDPAI Z90 Pro (New)",
+   "label": "Price, DDPAI US store",
+   "value": "$199.00 (compare-at $549.00), in stock",
+   "source": "https://www.ddpai.com/en-us/products/z90-pro",
+   "source_title": "Z90 Pro (New) – DDPAI US store",
+   "read": "2026-11-10",
+   "note": "From the same storecheck search. Dealectric already lists ddpai-z90-pro (awin:ddpai)."
+  },
+  {
+   "product": "DDPAI Z90 Pro (New)",
+   "label": "Storage design as the maker states it",
+   "value": "\"D²save Dual-Storage System (64GB eMMC + 512GB MicroSD Expandable)\"",
+   "source": "https://www.ddpai.com/en-us/products/z90-pro",
+   "source_title": "Z90 Pro (New) – DDPAI US store",
+   "read": "2026-11-10",
+   "note": "Quoted from the store's product text, which also says 'Triple Vision 4K (Front) + 2K (Rear) + 3K (Interior) Recording'. The two capacities are listed side by side. The page does not say what share of footage goes to each."
+  },
+  {
+   "product": "70mai M500",
+   "label": "Recording resolution / frame rate",
+   "value": "2592 × 1944 at 30 fps",
+   "source": "https://www.incartec.co.uk/product/70mai-m500-2-7k-hdr-dash-cam-built-in-emmc-170-fov",
+   "source_title": "70mai M500 2.7K HDR Dash Cam UK | InCarTec",
+   "read": "2026-11-10",
+   "note": "Retailer page (the UK twin of ChatGPT's cited rank 3). The page gives no bitrate, so I could not work out hours per GB."
+  },
+  {
+   "product": "70mai M500",
+   "label": "eMMC read / write speed (maker-stated, via retailer)",
+   "value": "up to 230 MB/s read, 150 MB/s write",
+   "source": "https://www.incartec.co.uk/product/70mai-m500-2-7k-hdr-dash-cam-built-in-emmc-170-fov",
+   "source_title": "70mai M500 2.7K HDR Dash Cam UK | InCarTec",
+   "read": "2026-11-10",
+   "note": "The page says these figures are 'as stated by 70mai'. It also says: 'Standard recordings are stored using loop recording. Protected emergency files are stored separately.' Here the eMMC is the only storage."
+  },
+  {
+   "product": "70mai M500",
+   "label": "UK retail price",
+   "value": "£121.00 incl. VAT",
+   "source": "https://www.incartec.co.uk/product/70mai-m500-2-7k-hdr-dash-cam-built-in-emmc-170-fov",
+   "source_title": "70mai M500 2.7K HDR Dash Cam UK | InCarTec",
+   "read": "2026-11-10",
+   "note": "UK price only. I could not read the US price because 70mai.store returned HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "70mai M500 and M800 US prices and capacity variants on 70mai.store: every attempt (WebFetch and storecheck) returned HTTP 429.",
+  "Loop recording hours per eMMC capacity at max resolution for the M500, M800, F77 and Z90 Master. I looked on the maker pages and the M800 manual PDF. The PDF text could not be extracted (the parse returned compressed streams, and pdftotext needed approval).",
+  "What DDPAI D²save writes to the 64GB eMMC once a microSD card is inserted. A search snippet credited DDPAI's FAQ with overwrite thresholds of 90%/85% without a card and 80% with one, plus a 'front camera only' limit on the Z40. When I opened ddpai.com/au/?p=16700 it held only 2.75k characters of navigation, and ddpai.com/ph/dash-cam-features/d2save/ returned 429.",
+  "REDTIGER F77 eMMC capacities, whether it has a microSD slot, and its price: shopredtiger.shop did not resolve, redtigercam.com returned 429, and the device.report manual returned 403.",
+  "eMMC write endurance (TBW or P/E cycles) for any of the candidates. No maker or retailer page I opened gives it.",
+  "AZDOME M560-3CH 64GB storage behaviour: the device.report manual returned 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.7432293
+ }
+}
