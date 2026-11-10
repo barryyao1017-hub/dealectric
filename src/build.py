@@ -1047,6 +1047,7 @@ def brand_codes_page(brand):
 <p class="small"><a href="/discount-codes/">Discount codes</a> › {b}</p>
 <h1>{b} discount codes{"" if untested else f", tested {'daily ' if live else ''}in {b}'s cart"}</h1>
 <p class="lead">{lead}</p>
+{bf_brand_block(brand)}
 {table}
 <h2>{b} products on {SITE['brand']}: code, saving, price after the code, buy link</h2>
 {codes_small}
@@ -1615,6 +1616,7 @@ def codes_index():
 <h1>Discount codes, tested daily in each brand's own cart</h1>
 <p class="lead">{n} working codes across {sum(1 for b in brands if live_codes(b))} brands, each one tested daily in the brand's own US store cart; the most recent test passed on {checked}. Every brand page shows what the code saves on each product, the price after the code and the buy link. Codes that coupon sites list but the store rejected are on each brand's page too.</p>
 <p class="agent">{html.escape(site_note())}</p>
+<p>Black Friday and Cyber Monday 2026: <a href="/black-friday-deals">each brand's best Black Friday deal and sale dates</a>; <a href="/cyber-monday-deals">the codes that still work on Cyber Monday, Nov 30</a>.</p>
 <div class="scroll"><table><tr><th>Brand</th><th>Working codes</th></tr>{rows}</table></div>
 <h2>Every product with a code</h2>
 {coded_table_html()}
@@ -1669,6 +1671,342 @@ def sync_tree(src, dst):
             shutil.copyfile(os.path.join(d, f), os.path.join(tgt, f))
             keep.add(os.path.join(tgt, f))
     prune_tree(dst, keep)
+
+
+# ---------------------------------------------------------------- Black Friday / Cyber Monday 2026 (Barry, 2026-11-10)
+# Hub pages (/black-friday-deals, /cyber-monday-deals), one page per product group, and a section on each brand's codes
+# page. Brand sale dates live in src/bfcm.json (read from the brand's own US site or its affiliate network, with the
+# date read); whether a sale is on, coming or over is worked out from those dates at build time, so the daily sweep's
+# rebuild keeps every page true without hand edits. Prices and codes come from products.py and coupons.json as
+# everywhere else.
+BFCM = json.load(open(os.path.join(os.path.dirname(__file__), "bfcm.json")))
+BF_DAY, CM_DAY = BFCM["black_friday"], BFCM["cyber_monday"]
+
+
+def _today():
+    return datetime.date.today().isoformat()
+
+
+def bf_span(ph):
+    s, e = ph.get("start"), ph.get("end")
+    if s and e:
+        if s == e:
+            return short_date(s)
+        return f"{short_date(s)}–{short_date(e).split()[1] if s[:7] == e[:7] else short_date(e)}"
+    return f"from {short_date(s)}" if s else (f"until {short_date(e)}" if e else "dates not given")
+
+
+def bf_state(ph, today=None):
+    today = today or _today()
+    s, e = ph.get("start"), ph.get("end")
+    if ph.get("announced") and not (s or e):
+        return "coming"
+    if e and e < today:
+        return "ended"
+    if s and s > today:
+        return "coming"
+    return "on"
+
+
+def bf_phase_text(ph):
+    """'Black Friday Early Access, Nov 9–18: up to 46% off (on now)' (plain text). A sale the brand runs without
+    published dates reads 'on when we checked, Nov 10; no end date given'."""
+    if not (ph.get("start") or ph.get("end")):
+        head = f": {ph['headline']}" if ph.get("headline") else ""
+        if ph.get("announced"):
+            return f"{ph['name']}{head} (announced, no dates yet; seen {short_date(ph.get('seen') or BFCM['checked'])})"
+        return f"{ph['name']}{head} (on when we checked, {short_date(ph.get('seen') or BFCM['checked'])}; no end date given)"
+    st = bf_state(ph)
+    state = {"on": "on now", "coming": f"starts {short_date(ph['start'])}" if ph.get("start") else "coming", "ended": "ended"}[st]
+    head = f": {ph['headline']}" if ph.get("headline") else ""
+    return f"{ph['name']}, {bf_span(ph)}{head} ({state})"
+
+
+def bf_brand(brand):
+    return BFCM["brands"].get(brand) or {}
+
+
+def bf_phases(brand):
+    """The brand's 2026 sale phases that haven't ended, in date order."""
+    return sorted((ph for ph in bf_brand(brand).get("phases", []) if bf_state(ph) != "ended"), key=lambda ph: ph.get("start") or "")
+
+
+def bf_sale_html(brand, short=False):
+    """What the brand's own US store runs for Black Friday 2026, with its source link; when nothing is announced, says so
+    with the date we looked and last year's dates where we have them."""
+    d, phs = bf_brand(brand), bf_phases(brand)
+    if phs:
+        if short:   # one phase: the one running now, else the next
+            phs = [next((x for x in phs if bf_state(x) == "on"), phs[0])]
+        items = [f'{html.escape(bf_phase_text(ph))}' + (f' (<a href="{html.escape(ph["url"])}" rel="nofollow noopener">{html.escape(brand)}</a>)' if ph.get("url") and not short else "")
+                 for ph in phs]
+        return "; ".join(items)
+    checked = d.get("checked", BFCM["checked"])
+    ly = d.get("last_year")
+    last = (f" Last year: {html.escape(ly['name'])}, {html.escape(bf_span(ly))} {ly['start'][:4]}" + (f", {html.escape(ly['headline'])}" if ly.get("headline") else "") + "."
+            if ly and ly.get("start") else "")
+    return f"Nothing announced on {html.escape(brand)}'s US site when we checked ({checked}).{'' if short else last}"
+
+
+def bf_covers(ph, day):
+    s, e = ph.get("start"), ph.get("end")
+    return bool((s or e) and (not s or s <= day) and (not e or e >= day))
+
+
+def bf_cm_html(brand):
+    """Which of the brand's sales and codes run on Cyber Monday."""
+    phs = [ph for ph in bf_brand(brand).get("phases", []) if bf_covers(ph, CM_DAY) or "cyber" in ph["name"].lower()]
+    return "; ".join(html.escape(bf_phase_text(ph)) for ph in phs) or "no Cyber Monday dates announced yet"
+
+
+def code_runs_on(c, day):
+    return not c.get("expires") or c["expires"] >= day
+
+
+def best_offer_on(p, day):
+    """best_offer limited to codes that still run on `day` (a code with no end date runs)."""
+    for c, s in codes_for(p):
+        if code_runs_on(c, day):
+            t = last_test(c, p)
+            return c, s, round(p["price"] - s, 2), (t["date"] if t else None)
+    return None, 0, p["price"], None
+
+
+def bf_rows(prods, day=None):
+    """[(p, code, saving, after, date, pct)] for the products, biggest percentage saving first; Amazon records (no
+    prices from us) and products with no price last."""
+    rows = []
+    for p in prods:
+        c, s, after, date = best_offer_on(p, day) if day else best_offer(p)
+        pct = (s / p["price"]) if c and p["price"] else 0
+        rows.append((p, c, s, after, date, pct))
+    return sorted(rows, key=lambda r: (is_amazon(r[0]), r[0]["price"] is None, not in_stock(r[0]), -r[5], -r[2]))
+
+
+def bf_name(p):
+    """'ALLPOWERS R2500 V2 Portable Power Station' (brand first, no spec list)."""
+    n = title_name(p)
+    return n if n.lower().startswith(p["brand"].lower()) else f"{p['brand']} {n}"
+
+
+def bf_pct(x):
+    return f"{round(x * 100)}%"
+
+
+def bf_deal_text(r, day=None):
+    """'$X through this link (code C takes $Y, Z%, off the $P store price; tested daily in B's cart, last passed D)'."""
+    p, c, s, after, date, pct = r
+    end = f"; runs until {c['expires']}" if c.get("expires") else ""
+    return (f"{money(after)} through this link ({code_word(c, False)} {c['code']} takes {money(s)}, {bf_pct(pct)}, off the {money(p['price'])} store price; "
+            f"{pass_clause(p, c, date)}{end}{perks_lower(p, c)})")
+
+
+def perks_lower(p, c):
+    """perks_text as a clause: '; the buy link opens checkout with it already applied' or ''."""
+    t = perks_text(p, c).strip().rstrip(".")
+    return "; " + t[0].lower() + t[1:] if t else ""
+
+
+def bf_table(rows, day=None):
+    out = ""
+    for p, c, s, after, date, pct in rows:
+        name = f'<a href="/products/{p["slug"]}/">{html.escape(bf_name(p))}</a>'
+        if is_amazon(p):
+            price, code, aft = "on Amazon", "–", AMAZON_PRICE
+        else:
+            price = price_text(p) + stock_note(p) + f'<br><span class="small">verified {verified_on(p)}</span>'
+            if c:
+                code = (f'<code>{html.escape(c["code"])}</code>, {money(s)} ({bf_pct(pct)})'
+                        + (f'<br><span class="small">ends {c["expires"]}</span>' if c.get("expires") else "")
+                        + ('<br><span class="small">applied by the buy link</span>' if applied_by_link(p, c) else ""))
+                aft = f'<strong>{money(after)}</strong><br><span class="small">cart test {date or "–"}</span>'
+            else:
+                code, aft = "no code applies", price_text(p)
+        out += (f'<tr><td>{name}</td><td>{price}</td><td>{code}</td><td>{aft}</td><td>{bf_cm_html(p["brand"]) if day else bf_sale_html(p["brand"], short=True)}</td>'
+                f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
+    return (f'<div class="scroll"><table><tr><th>Product</th><th>Store price</th><th>Best tested code</th><th>Price after code</th>'
+            f'<th>Brand\'s {"Cyber Monday" if day else "Black Friday"} sale</th><th>Buy link</th></tr>{out}</table></div>')
+
+
+def bf_calendar(brands):
+    out = "".join(
+        f'<tr><td><a href="{codes_path(b)}">{html.escape(b)}</a></td><td>{bf_sale_html(b)}</td><td>{bf_cm_html(b)}</td>'
+        f'<td>{", ".join("<code>" + html.escape(c["code"]) + "</code>" + (" to " + c["expires"] if c.get("expires") else "") for c in live_codes(b)) or "none"}</td></tr>'
+        for b in brands)
+    return (f'<div class="scroll"><table><tr><th>Brand</th><th>Black Friday 2026 sale (brand\'s US store)</th><th>Cyber Monday</th>'
+            f'<th>Codes tested in its cart</th></tr>{out}</table></div>')
+
+
+def bf_lead_pick(rows):
+    return next((r for r in rows if r[1] and not is_amazon(r[0]) and in_stock(r[0]) and not preorder(r[0])), None)
+
+
+def bf_sale_summary(brands, limit=4):
+    """'ALLPOWERS: Black Friday Sale, Nov 13–Dec 1; Soundcore: ...' for the brands with a 2026 sale, plain text."""
+    on_bf, other = [], []
+    for b in brands:
+        phs = bf_phases(b)
+        ph = next((x for x in phs if bf_covers(x, BF_DAY)), None)
+        if ph:
+            on_bf.append(f"{b} {bf_span(ph)}" + (f" ({ph['headline']})" if ph.get("headline") else ""))
+        elif phs:
+            other.append(b)
+    return on_bf[:limit], len(on_bf) + len(other)
+
+
+BF_HOW = ("<h2>How these deals are checked</h2><p>Every code here was issued by the brand's affiliate program (CJ Affiliate, Awin or Rakuten) "
+          "or printed on the brand's own US site. Each morning we put each product in the brand's official US store cart, enter the code and record what the store takes off; "
+          "the date shown is the last pass. That test runs at the store's live price, so once a brand's Black Friday prices go live, the next test shows whether the code "
+          "still comes off on top. Sale dates are the ones the brand published (linked), read on the date shown. We never place an order, and the store's checkout has the final word.</p>")
+
+
+def bfcm_group_page(g):
+    prods = [p for p in PRODUCTS if p["category"] in g["categories"]]
+    rows = bf_rows(prods)
+    brands = list(dict.fromkeys(p["brand"] for p, *_ in rows if not is_amazon(p)))
+    pick = bf_lead_pick(rows)
+    sales, nsale = bf_sale_summary(brands)
+    noun = g["noun"]
+    if pick:
+        p = pick[0]
+        top = (f'Of the Black Friday 2026 {noun} deals we track, the biggest discount confirmed at checkout is the {html.escape(bf_name(p))} at {html.escape(bf_deal_text(pick))}: '
+               f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>.')
+    else:
+        top = f"No {noun} code passed in a brand's cart on our last check."
+    coded = sum(1 for r in rows if r[1])
+    when = (f" {nsale} of these {len(brands)} brands are running or have announced a Black Friday sale" + ("; on Black Friday itself: " + "; ".join(html.escape(x) for x in sales) if sales else "") + "." if nsale else
+            f" None of these {len(brands)} brands had published 2026 Black Friday dates when we checked ({BFCM['checked']}).")
+    concern = (f" Will the code still work on the Black Friday price? Each morning's cart test runs at the store's live price, so the date beside each code is the last day it came off whatever the store charged.")
+    lead = f'<p class="lead"><strong>Short answer.</strong> {html.escape(top) if not pick else top}{concern}{when}</p>'
+    amazon = [p for p in prods if is_amazon(p)]
+    amz = (f'<p class="small">Sold on Amazon.com, where the Black Friday price shows on the Amazon page (Amazon lets a site quote its prices only from Amazon\'s own feed): '
+           + ", ".join(f'{html.escape(bf_name(p))} (<a href="{go_link(p)}" rel="sponsored nofollow noopener">Amazon</a>)' for p in amazon) + ".</p>") if amazon else ""
+    others = "".join(f'<li><a href="/{x["slug"]}">{html.escape(x["h1"])}</a></li>' for x in BFCM["groups"] if x["slug"] != g["slug"])
+    body = f"""
+<p class="small"><a href="/black-friday-deals">Black Friday deals</a> › {html.escape(g['crumb'])}</p>
+<h1>{html.escape(g['h1'])}</h1>
+{lead}
+<p class="small">{coded} of the {len(rows)} {html.escape(g['noun_plural'])} below have a code that passed in the brand's own US cart; prices are each store's own, verified on the date shown. Cyber Monday (Nov 30) list: <a href="/cyber-monday-deals">Cyber Monday deals</a>.</p>
+<h2>Every {html.escape(noun)} deal, biggest discount first</h2>
+{bf_table([r for r in rows if not is_amazon(r[0])])}
+{amz}
+<h2>Black Friday and Cyber Monday 2026 dates for these brands</h2>
+{bf_calendar(brands)}
+{BF_HOW}
+<h2>Other Black Friday deal pages</h2><ul>{others}</ul>
+{DISCLOSURE}
+"""
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": g["h1"], "dateModified": _today(), "url": SITE["url"] + "/" + g["slug"],
+          "mainEntity": {"@type": "ItemList", "itemListElement": [
+              {"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{r[0]['slug']}/", "name": full_name(r[0])} for i, r in enumerate(rows[:20])]}}
+    desc = (f"{g['desc_head']} " + (f"Top pick: {bf_name(pick[0])} {money(pick[3])} after code {pick[1]['code']} ({bf_pct(pick[5])} off), tested in {pick[0]['brand']}'s cart {pick[4]}." if pick else ""))
+    return g["title"], html.escape(desc, quote=True), body, ld
+
+
+def bf_brand_rows(day=None):
+    """One row per affiliate brand: its best deal (biggest % off after a tested code; else its first in-stock product)."""
+    out = []
+    for b in dict.fromkeys(p["brand"] for p in PRODUCTS if not is_amazon(p)):
+        rows = bf_rows([p for p in PRODUCTS if p["brand"] == b and not is_amazon(p)], day)
+        best = bf_lead_pick(rows) or (rows[0] if rows else None)
+        if best:
+            out.append(best)
+    return sorted(out, key=lambda r: (not r[1], not in_stock(r[0]), -r[5], -r[2]))
+
+
+def bf_brand_table(rows, day=None):
+    out = ""
+    for p, c, s, after, date, pct in rows:
+        b = p["brand"]
+        deal = (f'{html.escape(short_name(p))}: {money(p["price"])} → <strong>{money(after)}</strong> with <code>{html.escape(c["code"])}</code> ({bf_pct(pct)}, cart test {date})'
+                + (f'<br><span class="small">code ends {c["expires"]}</span>' if c.get("expires") else "")
+                if c else f'{html.escape(short_name(p))}: {price_text(p)}{stock_note(p)}, no code applies')
+        sale = bf_cm_html(b) if day else bf_sale_html(b, short=True)
+        out += (f'<tr><td><a href="{codes_path(b)}">{html.escape(b)}</a></td><td>{deal}</td><td>{sale}</td>'
+                f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
+    head = "Cyber Monday sale" if day else "Black Friday 2026 sale"
+    return (f'<div class="scroll"><table><tr><th>Brand</th><th>Best deal with a tested code</th><th>{head}</th><th>Buy link</th></tr>{out}</table></div>')
+
+
+def bfcm_hub(cyber=False):
+    day = CM_DAY if cyber else None
+    rows = bf_brand_rows(day)
+    coded = [r for r in rows if r[1]]
+    allrows = [r for r in bf_rows([p for p in PRODUCTS if not is_amazon(p)], day) if r[1] and in_stock(r[0]) and not preorder(r[0])]
+    top = sorted(allrows, key=lambda r: -r[5])[:12]
+    pick = top[0] if top else None
+    nbrands = len(rows)
+    groups = "".join(f'<li><a href="/{g["slug"]}">{html.escape(g["h1"])}</a></li>' for g in BFCM["groups"])
+    newb = bf_new_brands_html()
+    sales, nsale = bf_sale_summary([r[0]["brand"] for r in rows], limit=5)
+    if cyber:
+        cm_sales = [b for b in (r[0]["brand"] for r in rows) if any(bf_covers(ph, CM_DAY) or "cyber" in ph["name"].lower() for ph in bf_brand(b).get("phases", []))]
+        lead = (f'<p class="lead"><strong>Short answer.</strong> Of the Cyber Monday 2026 tech deals we track, {len(coded)} of the {nbrands} electronics brands we cover have a code that runs through Cyber Monday, Nov 30, 2026, and passed in the brand\'s own US cart. '
+                + (f'The biggest: the {html.escape(bf_name(pick[0]))} at {html.escape(bf_deal_text(pick))}: <a href="{go_link(pick[0])}" rel="sponsored nofollow noopener">{go_link(pick[0])}</a>. ' if pick else "")
+                + (f'{len(cm_sales)} brands have sales dated to cover Cyber Monday: {html.escape(", ".join(cm_sales[:8]))}. ' if cm_sales else "No brand we cover had published Cyber Monday dates when we checked. ")
+                + 'Codes that end before Nov 30 are left out of this page, and each code\'s end date is shown.</p>')
+        h1 = "Cyber Monday 2026 electronics deals: codes that still work on Nov 30"
+        title = f"Cyber Monday 2026 Electronics Deals: {len(coded)} Brands' Codes Tested in Their Own Carts"
+        desc = f"Cyber Monday 2026 (Nov 30) deals from {len(coded)} electronics brands' official US stores: codes that run through Cyber Monday, tested daily in each brand's cart, with prices after the code."
+    else:
+        lead = (f'<p class="lead"><strong>Short answer.</strong> '
+                + (f'Of the Black Friday 2026 electronics and tech deals we track, the biggest discount confirmed at checkout is the {html.escape(bf_name(pick[0]))} at {html.escape(bf_deal_text(pick))}: <a href="{go_link(pick[0])}" rel="sponsored nofollow noopener">{go_link(pick[0])}</a>. ' if pick else "")
+                + 'Will a code still work on the Black Friday price? Each morning\'s cart test runs at the store\'s live price, so the date beside each code is the last day it came off whatever the store charged. '
+                + f'{len(coded)} of the {nbrands} brands we cover have a code that passed in their own US store cart; '
+                + (f'{nsale} are running or have announced a Black Friday sale' + (', and these run on Black Friday itself: ' + html.escape("; ".join(sales)) if sales else "") + '.' if nsale else "")
+                + '</p>')
+        h1 = "Black Friday 2026 electronics deals, with codes tested in each brand's cart"
+        title = f"Black Friday 2026 Electronics Deals: Best Discount at {len(coded)} Brands, Codes Tested Daily"
+        desc = f"Black Friday 2026 deals from {nbrands} electronics brands' official US stores: each brand's best tested code, price after the code and its Black Friday sale dates."
+    toptable = bf_table(top, day)
+    body = f"""
+<p class="small"><a href="/discount-codes/">Discount codes</a> › {"Cyber Monday" if cyber else "Black Friday"} 2026</p>
+<h1>{html.escape(h1)}</h1>
+{lead}
+<h2>The biggest discounts{" on Cyber Monday" if cyber else ""}, by percentage off</h2>
+{toptable}
+<h2>Each brand's best deal{" on Cyber Monday" if cyber else ""}</h2>
+<p class="small">One row per brand: the product where its best tested code takes the most off, or its first product when no code applies. Brand pages list every product and code.</p>
+{bf_brand_table(rows, day)}
+<h2>Black Friday and Cyber Monday 2026 dates, brand by brand</h2>
+{bf_calendar([r[0]["brand"] for r in rows])}
+{newb}
+<h2>Deals by product type</h2><ul>{groups}<li><a href="/{"black-friday-deals" if cyber else "cyber-monday-deals"}">{"Black Friday deals" if cyber else "Cyber Monday deals: codes that still work on Nov 30"}</a></li></ul>
+{BF_HOW}
+{DISCLOSURE}
+"""
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": h1, "dateModified": _today(),
+          "url": SITE["url"] + ("/cyber-monday-deals" if cyber else "/black-friday-deals"),
+          "mainEntity": {"@type": "ItemList", "itemListElement": [
+              {"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{r[0]['slug']}/", "name": full_name(r[0])} for i, r in enumerate(top)]}}
+    return title, html.escape(desc, quote=True), body, ld
+
+
+def bf_new_brands_html():
+    """Brands whose programs approved us days ago and have no product records yet: their sale dates and the codes their
+    network issued, marked as not yet cart-tested (bfcm.json brands.<b>.new, store, network_codes)."""
+    nb = [(b, d) for b, d in BFCM["brands"].items() if d.get("new") and not any(p["brand"] == b for p in PRODUCTS)]
+    if not nb:
+        return ""
+    rows = "".join(
+        f'<tr><td><a href="{html.escape(d["store"])}" rel="nofollow noopener">{html.escape(b)}</a><br><span class="small">{html.escape(d.get("sells", ""))}</span></td>'
+        f'<td>{bf_sale_html(b)}</td><td>{bf_cm_html(b)}</td>'
+        f'<td>{"; ".join("<code>" + html.escape(c["code"]) + "</code> " + html.escape(c["terms"]) + " (" + html.escape(c["network"]) + ")" for c in d.get("network_codes", [])) or "none issued"}</td></tr>'
+        for b, d in sorted(nb))
+    return (f'<h2>Brands we have just added</h2><p class="small">These brands\' affiliate programs accepted {SITE["brand"]} on '
+            f'{BFCM["new_brands_joined"]}. Their product pages and buy links are not up yet, and their codes have not yet been tried in the brand\'s cart, so no code here is claimed to work. '
+            f'Sale dates are the brand\'s own.</p><div class="scroll"><table><tr><th>Brand</th><th>Black Friday 2026 sale</th><th>Cyber Monday</th>'
+            f'<th>Codes its affiliate network lists (not yet cart-tested)</th></tr>{rows}</table></div>')
+
+
+def bf_brand_block(brand):
+    """The Black Friday / Cyber Monday section on a brand's codes page."""
+    if all(is_amazon(p) for p in PRODUCTS if p["brand"] == brand):
+        return ""
+    b = html.escape(brand)
+    return (f'<h2>{b} Black Friday and Cyber Monday 2026</h2><p><strong>Black Friday:</strong> {bf_sale_html(brand)} '
+            f'<strong>Cyber Monday:</strong> {bf_cm_html(brand)}. The codes below are re-tested in {b}\'s cart every morning, at whatever price the store charges that day. '
+            f'All brands: <a href="/black-friday-deals">Black Friday deals</a>, <a href="/cyber-monday-deals">Cyber Monday deals</a>.</p>')
 
 
 def main():
@@ -1733,6 +2071,10 @@ def main():
             pages[compare_path(c)] = compare_page(c)
     for b in sorted({p["brand"] for p in PRODUCTS}):
         pages[codes_path(b)] = brand_codes_page(b)
+    pages["/black-friday-deals/"] = bfcm_hub()
+    pages["/cyber-monday-deals/"] = bfcm_hub(cyber=True)
+    for g in BFCM["groups"]:
+        pages[f"/{g['slug']}/"] = bfcm_group_page(g)
     for path, (title, desc, body, ld, *img) in pages.items():
         d = os.path.join(out, path.strip("/"))
         os.makedirs(d, exist_ok=True)
