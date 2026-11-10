@@ -1,5 +1,110 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that only the EPO (auto-shutoff) Power Watchdog Gen II has a disconnect that can cut or restore the RV's power, remotely too. It trips below 104 V or above 132 V and reconnects only after 90 seconds of stable power. The household plug ChatGPT also showed (Kasa EP40) is limited to 15 A / 1,875 W in total across both outlets and needs a 2.4 GHz Wi-Fi network, against the 30 A / 3,600 W of an RV shore connection.",
+ "standout": 1,
+ "standout_why": "Compared against the pages ChatGPT got. rvupgradestore.com's PWD30EPOW listing (cited) already gives the 104 V / 132 V cutoff, 30 A / 3,600 W and a bare 'Remote Power Control' callout, so part of the finding is already there. Its result titles also separate 'with Auto Shutoff' models from plain ones. The two cited hughesautoformers.com URLs now 301-redirect to powerwatchdog.com, which could not be opened (certificate error). No result page states the 90-second reconnect delay. None says in plain words that you can 'cut or restore power to your RV remotely' only on the EPO unit. None gives the Kasa EP40's 15 A-in-total / 1,875 W limit or its 2.4 GHz-only Wi-Fi requirement, though ChatGPT's own answer warned in general terms against household plugs on shore power.",
+ "decides": "If the shopper wants a 'smart plug' that can switch the whole RV off and on from a phone, the pick has to be an EPO model (PWD30EPOW / PWD50EPOW), because that is where the remote cut/restore and auto-shutoff are described. The non-EPO PWD30W / PWD50W listings describe only monitoring, alerts and surge absorption. ChatGPT's $169.99 'Gen II 30A' card therefore may not switch anything. A Kasa EP40 or Minoston MP22Z only fits single 120 V loads under 15 A inside the coach. The Kasa also needs a 2.4 GHz Wi-Fi network in the RV, and the Minoston needs a Z-Wave hub (retailer listings only).",
+ "candidates": [
+  "Hughes Power Watchdog Gen II PWD30EPOW (30A Wi-Fi, EPO)",
+  "Hughes Power Watchdog Gen II PWD30W (30A Wi-Fi, non-EPO)",
+  "Hughes Power Watchdog Gen II PWD50W (50A Wi-Fi, non-EPO)",
+  "Kasa EP40 Outdoor Smart Plug",
+  "Minoston MP22Z Z-Wave 800 Outdoor Smart Plug"
+ ],
+ "findings": [
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Remote power switching (EPO model)",
+   "value": "\"Cut or restore power to your RV remotely from anywhere in the world\"",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-with-auto-shutoff-154740.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector with Auto Shutoff (Camping World, item 154740)",
+   "read": "2026-11-10",
+   "note": "Retailer copy on the model page for PWD30EPOW. The same page says EPO units cut power to the coach as soon as a fault is detected."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Auto-shutoff voltage thresholds",
+   "value": "cuts power below 104 V or above 132 V",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-with-auto-shutoff-154740.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector with Auto Shutoff (Camping World, item 154740)",
+   "read": "2026-11-10",
+   "note": "rvupgradestore.com's PWD30EPOW page gives the same thresholds: 'Power cuts automatically when voltage drops to 104V or below, or rises to 132V or higher.'"
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Reconnect delay after a fault",
+   "value": "90 s of stable power before it turns power back on automatically",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-with-auto-shutoff-154740.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector with Auto Shutoff (Camping World, item 154740)",
+   "read": "2026-11-10",
+   "note": "Matches Bob Dawson's Trailer Life piece on rv.com, which says power is restored once 'safe levels are back for 90 seconds' (https://www.rv.com/archive/power-broker-power-watchdog-epo-surge-protector)."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Rating",
+   "value": "30 A, 3,600 W max, 2,300 J, 120 V AC",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector (RV Upgrades)",
+   "read": "2026-11-10",
+   "note": "Spec table on the retailer page that ChatGPT cited. 3,600 W = 30 A × 120 V."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Price",
+   "value": "$279.99 (list $379.99)",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector (RV Upgrades)",
+   "read": "2026-11-10",
+   "note": "Sale price as shown on the retailer ChatGPT cited. Camping World shows 'Was $339.99' with a lower price only in the cart."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Control without internet",
+   "value": "App release notes 1.0.14: \"Users can connect the device via Bluetooth in the absence of Internet.\" Description: \"Use Bluetooth to set up the device and connect it to hotspots.\"",
+   "source": "https://apps.apple.com/app/id6470001594",
+   "source_title": "Power Watchdog WiFi (App Store, seller HUGHES AUTOFORMERS, LLC)",
+   "read": "2026-11-10",
+   "note": "Maker's own app listing. Control from away needs the unit joined to a Wi-Fi hotspot with internet. At the site, Bluetooth works without one."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30W",
+   "label": "Functions described on the non-EPO listing",
+   "value": "fault monitoring with phone alerts, energy meter, replaceable surge module; no auto-shutoff or remote power control listed",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-154738.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector (Camping World, item 154738)",
+   "read": "2026-11-10",
+   "note": "The page says it 'continuously monitors for a range of faults' and 'will immediately alert you'. It shows 'Was $169.99', the same figure as ChatGPT's 'Gen II 30A' card. Overtons' PWD50W page also lists Wi-Fi/Bluetooth but no shutoff or power control."
+  },
+  {
+   "product": "Kasa EP40 Outdoor Smart Plug",
+   "label": "Load rating",
+   "value": "Input 125 V~, 60 Hz, 15 A; output 15 A maximum load in total, 1/2 HP motor; 1,875 W max",
+   "source": "https://kasasmart.com/us/products/smart-plugs/kasa-smart-wi-fi-outdoor-plug",
+   "source_title": "Outdoor Smart Plug with 2 Outlets | EP40 (Kasa)",
+   "read": "2026-11-10",
+   "note": "'In total' means both outlets share 15 A. That is half the 30 A (3,600 W) a TT-30 RV shore connection carries."
+  },
+  {
+   "product": "Kasa EP40 Outdoor Smart Plug",
+   "label": "Network requirement",
+   "value": "Existing secured Wi-Fi network, 2.4 GHz only (802.11 b/g/n); free Kasa app and account required; must plug into a GFCI receptacle outdoors or in wet locations",
+   "source": "https://kasasmart.com/us/products/smart-plugs/kasa-smart-wi-fi-outdoor-plug",
+   "source_title": "Outdoor Smart Plug with 2 Outlets | EP40 (Kasa)",
+   "read": "2026-11-10",
+   "note": "Maker page, quoted verbatim. It links to Amazon and shows no price."
+  }
+ ],
+ "unsourced": [
+  "A Hughes/Power Watchdog statement that the non-EPO Gen II (PWD30W/PWD50W) has no disconnect and cannot cut power. powerwatchdog.com product pages and the shop failed with a certificate error. The Gen II PWD30EPOW manual PDF (manuals.plus) and the PWD-3050EPO-H manual (invertersrus.com) came back as unreadable image-only text. Retailer pages only leave the feature out.",
+  "Maker-store (powerwatchdog.com) prices for PWD30W, PWD30EPOW, PWD50W and PWD50EPOW. The shop page would not load (certificate error), and curl from the shell was not permitted.",
+  "Whether the Gen II's Wi-Fi supports 2.4 GHz only or 5 GHz too. Not on the App Store listing or the retailer pages opened.",
+  "Minoston MP22Z rating (15 A / 1,875 W) and hub requirement from Minoston's own page or manual. Only retailer and marketplace listings turned up in search, none opened.",
+  "Kasa EP40 current US price from a maker store. The Kasa page links to Amazon only, and amzcheck was not run."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9685416
+ }
 }

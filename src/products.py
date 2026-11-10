@@ -4580,6 +4580,23 @@ PRODUCTS = [
  "fit": 'Pair with the Argus Eco Ultra, which ships without a panel.',
  "caveats": ['Check that the listing ships the USB-C version (Solar Panel 2); the Eco Ultra charges over USB-C.']},
 
+{"slug": 'kasa-ep40-outdoor-smart-plug',
+ "brand": 'Kasa',
+ "program": 'amazon:us',
+ "asin": 'B091FXH2FR',
+ "category": 'smart-plug',
+ "name": 'Kasa Outdoor Smart Plug EP40, 2 outlets, Wi-Fi, IP64',
+ "model": 'EP40',
+ "url": 'https://www.amazon.com/dp/B091FXH2FR',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Rated load', '15 A / 1,875 W in total across both outlets, 1/2 HP motor'), ('Input', '125 V~, 60 Hz, 15 A'), ('Network', 'Existing secured 2.4 GHz Wi-Fi only (802.11 b/g/n), no hub'), ('Weather rating', 'IP64, -4 °F to 122 °F'), ('Voice control', 'Amazon Alexa, Google Assistant')],
+ "warranty": '2-year limited warranty from TP-Link USA (smart plugs bought on or after 1 Sep 2023). Replacements are usually factory refurbished, and the warranty gives no refunds or returns in most cases.',
+ "returns": "If bought from TP-Link's US store: refund within 30 days of delivery with proof of purchase. You need an RMA, you pay return shipping, and the plug must be undamaged with all accessories. Returns are accepted only from the contiguous US.",
+ "summary": 'Two-outlet Wi-Fi plug for switching single 120 V appliances, such as lights, a fan or a small dehumidifier, inside or outside an RV, with no hub.',
+ "fit": "RV owners who want app or voice control of one or two small appliances over the coach's 2.4 GHz Wi-Fi or a hotspot.",
+ "caveats": ['15 A / 1,875 W is shared by both outlets, about half of a 30 A RV service: never use it on the shore-power feed or the rooftop A/C.', 'Works only on a 2.4 GHz Wi-Fi network, and must plug into a GFCI receptacle outdoors or in wet locations.', 'No surge protection or voltage cutoff is listed.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

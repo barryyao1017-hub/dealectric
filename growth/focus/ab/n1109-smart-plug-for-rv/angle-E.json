@@ -1,5 +1,77 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states that no named reviewer or lab has published bench measurements (trip voltage, reconnect time, current-reading accuracy) for the Hughes Power Watchdog Gen II or the Kasa plugs; the only independent figures are Mike Sokol's general EMS behaviour (shuts off about 8 to 180 s after voltage goes above about 128 V or below about 105 V; RVelectricity, 12 Oct 2026), which matches the maker's 104 V / 132 V cutoffs.",
+ "standout": 1,
+ "standout_why": "I compared against rvupgradestore.com PWD30EPOW (cited), which already lists 2,300 J, a 104 V low cutoff and a 132 V high cutoff. hughesautoformers.com/power-watchdog-2nd-gen and /product/pwd30-epo (cited) now 301-redirect to powerwatchdog.com, whose pages failed to load (self-signed certificate) and could not be read. None of the rival pages has a third-party measurement, but I found none to add either. Sokol's piece gives only generic EMS timing and thresholds, and Getaway Couple only repeats spec joule ratings.",
+ "decides": "It doesn't change the pick. No named measurement separates the Power Watchdog Gen II from Progressive Industries or Southwire on protection, so a page has to compare them on maker specs (cutoffs, joules, Wi-Fi app, EPO shutoff) and price. Sokol's general EMS description supports ChatGPT's advice to put an EMS-type 30/50 A unit at the pedestal and keep 15 A plugs for single appliances. A useful price fact: rvupgradestore.com showed the PWD30EPOW on sale at $279.99 on 2026-11-10, against the $379.99 list price ChatGPT quoted.",
+ "candidates": [
+  "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+  "Hughes Power Watchdog 30A (PWD30W)",
+  "Progressive Industries EMS-PT30X",
+  "Southwire Surge Guard 30A",
+  "Kasa Outdoor Smart Plug EP40/EP40A",
+  "Kasa Smart Plug Mini EP25",
+  "Minoston MP22Z Z-Wave 800 Outdoor Plug"
+ ],
+ "findings": [
+  {
+   "product": "general (EMS surge protectors)",
+   "label": "Shutoff delay and trip thresholds, as described by a named RV electrical writer",
+   "value": "Shuts off 8 s (after a long outage is restored) up to 180 s; trips above ~128 V or below ~105 V",
+   "source": "https://rvelectricity.substack.com/p/advanced-surge-protector-operation",
+   "source_title": "Advanced Surge Protector operation - by Mike Sokol (RVelectricity)",
+   "read": "2026-11-10",
+   "note": "Post dated 2026-10-12. These are Sokol's general figures for EMS units, not a bench test of any named brand; he describes no testing in the post."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+   "label": "Low / high auto-shutoff voltage (retailer-listed spec)",
+   "value": "104 V and below / 132 V and above",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector | RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "Spec, not a measurement. Same page: 2,300 J, input range 100–145 V, 3,600 W max, Wi-Fi + Bluetooth, 4 lb. The page states no response time."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+   "label": "Price at RV Upgrade Store",
+   "value": "$279.99 sale (list $379.99)",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector | RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "ChatGPT showed $379.99 'manufacturer listed'. Same page lists PWD30W at $189.95 and PWD50EPOW at $338.99."
+  },
+  {
+   "product": "Progressive Industries EMS-PT30X vs Hughes Power Watchdog PWD30 EPO",
+   "label": "Joule ratings compared by named reviewers (spec, not measured)",
+   "value": "EMS-PT30X up to 1,790 J; PWD30 EPO 2,400 J; EMS-PT50X 3,580 J; PWD50 EPO 4,800 J",
+   "source": "https://www.getawaycouple.com/progressive-industries-vs-power-watchdog-portable-surge-protectors-2/",
+   "source_title": "Progressive Industries vs Power Watchdog Portable Surge Protectors - Getaway Couple (Jason & Rae Miller)",
+   "read": "2026-11-10",
+   "note": "Published 2021-08-05 and covers the earlier PWD30 EPO; the Gen II PWD30EPOW is listed at 2,300 J on rvupgradestore. The authors report no voltage or amp measurements of their own."
+  },
+  {
+   "product": "Kasa Outdoor Smart Plug (2-outlet, model not named)",
+   "label": "TechGearLab test scores",
+   "value": "Overall 65/100 (#5 of 8): Setup 5.0, Reliability 7.0, Interface 8.0, Voice 8.0; rated max 1.875 kW",
+   "source": "https://www.techgearlab.com/reviews/smart-home/smart-plug/tp-link-kasa-outdoor",
+   "source_title": "TP-Link Kasa Outdoor Review - TechGearLab (Max Mutter)",
+   "read": "2026-11-10",
+   "note": "Review dated 2019-09-03, so this is an older model. Power-cut test: only one of the two sockets came back immediately; the other took a while to reboot. The review reports no energy monitoring, range or standby figures."
+  }
+ ],
+ "unsourced": [
+  "A bench or lab measurement by a named reviewer of the Power Watchdog Gen II's actual trip voltage, reconnect delay (maker says 90 s) or app voltage/current accuracy: searched RVelectricity (Mike Sokol) Substack, rvtravel.com (403), Getaway Couple, and RV review roundups; Sokol says only that he did 'casual testing' and signed an NDA, with no brand figures.",
+  "Brand-specific open-ground trigger thresholds: Sokol's 'Open Ground Testing' post (2024-05-13) says they differ by brand but gives no per-brand figures.",
+  "Measured trip points for Progressive Industries EMS-PT30X or Southwire Surge Guard from a named tester: only forum anecdotes found.",
+  "Measured energy-monitoring accuracy and standby draw for the Kasa EP25 / EP40A by a named reviewer: Wirecutter and PCMag were not fetchable, TechGearLab didn't measure them, and the blog claims of '~2%' had no traceable method.",
+  "Hughes/Power Watchdog maker pages (powerwatchdog.com/surge-protectors, /shop): would not load (self-signed certificate chain), so I couldn't confirm maker specs or prices there; the cited hughesautoformers.com URLs now 301-redirect to powerwatchdog.com.",
+  "Any named measurement for the Minoston MP22Z Z-Wave outdoor plug: none found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8937419999999999
+ }
 }

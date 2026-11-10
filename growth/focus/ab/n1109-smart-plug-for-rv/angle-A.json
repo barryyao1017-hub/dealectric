@@ -1,5 +1,114 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the $169.99 Power Watchdog Gen II 30A (PWD30W) only lights red, shows an error code and sends an app alert when it detects a fault, while the Gen II 30A EPO version is the one that cuts power below 104 V or above 132 V and turns it back on after 90 s of stable power, even though both take the same replaceable surge module (RSM30W).",
+ "standout": 2,
+ "standout_why": "I compared against the cited rvupgradestore PWD30EPOW page. It gives 2,300 J and the 104 V / 132 V cutoffs, but only for the EPO model. ChatGPT's own answer just says 'provides surge protection' for the $169.99 Gen II and 'automatic safety shutoff' for the EPO. No result explains that the non-EPO unit doesn't disconnect on low or high voltage. None shows that the extra $110–$210 for the EPO buys the shutoff relay and not a bigger surge rating, since one surge module fits both. None gives Southwire Surge Guard's 102 V low cutoff for comparison. I couldn't open the powerwatchdog.com pages ChatGPT cited (certificate error), so I couldn't check whether the maker states the difference there.",
+ "decides": "For a whole-RV smart device, the cheaper Gen II PWD30W is a surge protector with a monitor and alerts: it doesn't disconnect the RV in a brownout or when voltage runs high. Shoppers who want automatic protection at the pedestal should get the PWD30EPOW (seen at $279.99 on sale, list $379.99) or another full-protection unit such as the Southwire Surge Guard 34931 (cuts out under 102 V). Low campground voltage is what damages AC compressors, so the shutoff is the feature that matters. Buy the PWD30W only if alerts are enough for you. The 15 A Kasa or Minoston plugs are only for single appliances inside the RV.",
+ "candidates": [
+  "Hughes Power Watchdog Gen II 30A WiFi PWD30W",
+  "Hughes Power Watchdog Gen II 30A WiFi EPO PWD30EPOW",
+  "Southwire Surge Guard 34931",
+  "Progressive Industries EMS-PT30X",
+  "Kasa Outdoor Smart Plug EP40",
+  "Minoston MP22Z"
+ ],
+ "findings": [
+  {
+   "product": "Hughes Power Watchdog Gen II 30A WiFi EPO (PWD30EPOW)",
+   "label": "Surge energy rating",
+   "value": "2,300 J",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector – RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "Listed as 'Energy Dissipation 2,300 joules'. ChatGPT cited this page."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A WiFi EPO (PWD30EPOW)",
+   "label": "Voltage shutoff thresholds",
+   "value": "cuts power at 104 V and below, and at 132 V and above",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector – RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "Also protects against open ground, open neutral and overcurrent. Has a replaceable surge module and a limited lifetime warranty."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A WiFi EPO (PWD30EPOW)",
+   "label": "Price at RV Upgrade Store",
+   "value": "$279.99 sale (list $379.99)",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector – RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "ChatGPT's card showed $379.99, the list price. The maker's store (powerwatchdog.com) wouldn't load, so this is a retailer price."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A EPO, portable (etrailer HU42VR)",
+   "label": "Restore delay after a fault",
+   "value": "90 s",
+   "source": "https://www.etrailer.com/RV-Surge-Protector/Hughes-Autoformers/HU42VR.html",
+   "source_title": "Hughes Autoformers Portable Power Watchdog Surge Protector, 30 Amp – etrailer",
+   "read": "2026-11-10",
+   "note": "The page says power comes back automatically after 90 s of stable power. It also gives 104 V / 132 V shutoff and 2,300 J, and says 'Emergency Power Off cuts connection in the event of an error'. Price $339.99."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen I 50A vs Gen II",
+   "label": "Surge rating, Gen I vs Gen II",
+   "value": "Gen I 50A: 6,100 J; Gen II (HU42VR, 30A EPO): 2,300 J",
+   "source": "https://www.etrailer.com/question-800699.html",
+   "source_title": "What is the Joules Rating for the Watchdog Gen II Surge Protector – etrailer",
+   "read": "2026-11-10",
+   "note": "From etrailer expert Jon G.'s answer. Older listings that quote ~6,000 J describe the Gen I 50A, not the Gen II units on sale now. This compares a 50A unit with a 30A unit, so it's not a like-for-like drop."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A WiFi (PWD30W, non-EPO)",
+   "label": "What it does on a fault",
+   "value": "lights red, shows one of nine error codes and sends an app alert; the listing never says it disconnects power",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-154738.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector – Camping World",
+   "read": "2026-11-10",
+   "note": "Item #154738, 'Was $169.99' (the price on ChatGPT's card), sale price only shown in the cart. Wi-Fi + Bluetooth, replaceable surge module, works with RV Whisper. No joule rating on the page. Compare the etrailer EPO listing, which says EPO 'cuts connection'."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A (PWD30W and PWD30EPOW)",
+   "label": "Shared surge module",
+   "value": "RSM30W replacement surge module fits PWD30EPOW, PWD30EPOHW and PWD30W",
+   "source": "https://www.campingworld.com/power-watchdog-gen-ii-30-amp-wifi-portable-surge-protector-154738.html",
+   "source_title": "Power Watchdog Gen II 30-Amp WiFi Portable Surge Protector – Camping World",
+   "read": "2026-11-10",
+   "note": "The compatibility wording came from a search result for Camping World's RSM30W listing (item 154744), and I didn't open that page. Treat it as unconfirmed until that page is read. Inference: the same module means the same surge rating (2,300 J), so the EPO premium pays for the disconnect relay, not more surge capacity."
+  },
+  {
+   "product": "Southwire Surge Guard 34931 (30A portable, wireless)",
+   "label": "Voltage protection thresholds",
+   "value": "low under 102 V, high over 132 V",
+   "source": "https://www.southwire.com/power-management/recreational-power/30a-portable-surge-guard-wireless/p/34931",
+   "source_title": "30A PORTABLE SURGE GUARD, WIRELESS 34931 – Southwire",
+   "read": "2026-11-10",
+   "note": "Maker page lists 'Low (<102V) / High (>132V) voltage' among protections, along with power surges, open ground, open neutral and an overheating plug/receptacle. The low cutoff is 2 V below Hughes' 104 V. No joule rating or price on the page."
+  },
+  {
+   "product": "Hughes Power Watchdog PWD30 (Gen I, Bluetooth, non-EPO)",
+   "label": "Retailer claim on disconnect",
+   "value": "says 'disconnects on low or high voltage conditions' but gives no thresholds; list $159.95, sale $114.49",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30-30-Amp-Power-Watchdog-p/pwd30.htm",
+   "source_title": "Hughes Autoformers PWD30 30 Amp Power Watchdog RV Surge Protector and Voltage Monitor – RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "This retailer text conflicts with Hughes' own split between EPO (auto shutoff) and non-EPO models, and the PWD30W page doesn't describe a disconnect. Check the maker's manual before stating it either way for Gen I."
+  }
+ ],
+ "unsourced": [
+  "Power Watchdog maker pages (powerwatchdog.com /surge-protectors, /shop, home) for specs and US store prices: WebFetch failed with a self-signed certificate error, and curl wasn't approved.",
+  "Hughes Gen II manuals (PWD50, PWD50EPOW) on manuals.plus for the spec tables and a maker statement on non-EPO behaviour: the site returned 403.",
+  "Joule rating of the non-EPO PWD30W: not on the Camping World page.",
+  "Joule rating and reset delay of the Gen II 50A models: only retailer snippets, no page opened.",
+  "Progressive Industries EMS-PT30X joules (1,790 J in snippets), voltage cutoffs and reset delay: the United RV Parts product page returned 429, and I found no maker page.",
+  "Southwire 34931 joule rating (2,450 J in snippets) and 128 s reset delay: not on Southwire's product page.",
+  "Kasa Outdoor Smart Plug EP40 load rating (per outlet or combined) and whether it works without internet: kasasmart.com returned a 500 error.",
+  "Tractor Supply page for PWD30W (Q&A on missing EPO): the fetch timed out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9148668999999999
+ }
 }

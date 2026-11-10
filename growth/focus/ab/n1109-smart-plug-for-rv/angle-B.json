@@ -1,5 +1,110 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got states that a 15 A outdoor smart plug (Kasa EP40 or Minoston MP22Z, 1,875 W total) can carry only about 52% of the 3,600 W a 30 A RV pedestal delivers. It also doesn't say what the Wi-Fi Watchdog's extra cost buys per watt: $279.99 / 3,600 W = $0.078 per W for the PWD30EPOW, against $0.032 per W for the plain PWD30.",
+ "standout": 1,
+ "standout_why": "Compared against the cited rival pages. The rvupgradestore PWD30EPOW page, cited in chat 2, already states the 3,600 W maximum load. The cited Hughes pages (hughesautoformers.com/power-watchdog-2nd-gen/ and /product/pwd30-epo/) now 301-redirect to powerwatchdog.com, which would not load (TLS certificate error), so I could not read their current text. ChatGPT's answer already says household smart plugs should not go between the pedestal and the RV, but only in words. No page puts the plug's capacity next to the 30 A service as a number, and none prices the Wi-Fi/EPO premium per watt or per amp.",
+ "decides": "This confirms ChatGPT's split rather than changing the pick. A 15 A smart plug covers about half of a 30 A service, and the Kasa EP40 is rated for no more than a 1/2 HP motor. So it belongs on single appliances inside the RV, and the shore-power device should be a 30 A or 50 A Watchdog. On cost, the 50 A PWD50EPOW is about $8.00 per amp against $9.33 per amp for the 30 A PWD30EPOW, so it does not cost more per amp. The plain PWD30 at $114.49 costs about 41% of the PWD30EPOW's $279.99. What the extra $165.50 buys is Wi-Fi/Bluetooth app monitoring and kWh logging. For in-RV switching, Dealectric's Minoston MP22Z has the same 1,875 W rating as the Kasa EP40 at $26.35, which is $0.014 per W, but it needs a Z-Wave hub.",
+ "candidates": [
+  "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+  "Hughes Power Watchdog 30A (PWD30)",
+  "Hughes Power Watchdog Gen II 50A Wi-Fi EPO (PWD50EPOW)",
+  "Kasa Outdoor Smart Plug EP40",
+  "Minoston MP22Z Z-Wave 800 Outdoor Smart Plug"
+ ],
+ "findings": [
+  {
+   "product": "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+   "label": "Price",
+   "value": "$279.99 (list $379.99)",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector - RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "Retailer that ChatGPT cited. Its list price matches the $379.99 ChatGPT showed."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+   "label": "Max load / surge rating / cutoffs",
+   "value": "30 A, 3,600 W; 2,300 J; cuts power at 104 V and below and at 132 V and above",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector - RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "As stated on the retailer page. The page also lists Wi-Fi + Bluetooth, live V/A/W, kWh since hookup, and a fault log."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 30A Wi-Fi EPO (PWD30EPOW)",
+   "label": "Cost per watt of protected capacity",
+   "value": "$0.078 per W",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector - RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "$279.99 / 3,600 W = $0.0778 per W. Per amp: $279.99 / 30 A = $9.33 per A."
+  },
+  {
+   "product": "Hughes Power Watchdog 30A (PWD30)",
+   "label": "Price and cost per watt",
+   "value": "$114.49 (list $159.95); $0.032 per W",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30-30-Amp-Power-Watchdog-p/pwd30.htm",
+   "source_title": "Hughes Autoformers PWD30 30 Amp Power Watchdog RV Surge Protector and Voltage Monitor - RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "Rated 30 A continuous on TT-30. $114.49 / (30 A x 120 V = 3,600 W) = $0.0318 per W. The page says it disconnects on high or low voltage but gives no thresholds and lists no Bluetooth or Wi-Fi."
+  },
+  {
+   "product": "general",
+   "label": "Extra cost of the Wi-Fi/EPO Gen II 30A over the plain PWD30",
+   "value": "$165.50 (PWD30 costs 41% of the PWD30EPOW)",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector - RV Upgrade Store",
+   "read": "2026-11-10",
+   "note": "$279.99 - $114.49 = $165.50; $114.49 / $279.99 = 0.41. Same retailer on the same day. PWD30 price from https://www.rvupgradestore.com/Hughes-PWD30-30-Amp-Power-Watchdog-p/pwd30.htm."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II 50A Wi-Fi EPO (PWD50EPOW)",
+   "label": "Price, rating, cutoffs, cost per amp",
+   "value": "$399.99; 50 A; shuts off below 104 V or above 132 V, restores after 90 s of stable power; $8.00 per A",
+   "source": "https://www.explosivepowersports.com/hughes-autoformer-pwd50epow-power-watchdog-gen-ii-wifi-smart-surge-protector-with-auto-shutoff-50a-portable-pwd50epow",
+   "source_title": "Hughes Autoformer PWD50EPOW Power Watchdog Gen II WiFi Smart Surge Protector with Auto Shutoff, 50A Portable - Explosive Powersports",
+   "read": "2026-11-10",
+   "note": "$399.99 / 50 A = $8.00 per A, against $9.33 per A for the PWD30EPOW. The page lists no watts or joules."
+  },
+  {
+   "product": "Kasa Outdoor Smart Plug EP40",
+   "label": "Rated load",
+   "value": "15 A maximum in total across both outlets, 1,875 W, 1/2 HP motor; 125 V 60 Hz; IP64; -4 to 122 °F; 2.4 GHz Wi-Fi only",
+   "source": "https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wi-fi-outdoor-plug",
+   "source_title": "Kasa Smart Wi-Fi Outdoor Plug (EP40) - Kasa Smart",
+   "read": "2026-11-10",
+   "note": "Maker's US page. The limit is a combined total, not per outlet."
+  },
+  {
+   "product": "Kasa Outdoor Smart Plug EP40",
+   "label": "Share of a 30 A RV service it can carry",
+   "value": "52%",
+   "source": "https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wi-fi-outdoor-plug",
+   "source_title": "Kasa Smart Wi-Fi Outdoor Plug (EP40) - Kasa Smart",
+   "read": "2026-11-10",
+   "note": "1,875 W / 3,600 W = 0.52. The 3,600 W figure for a 30 A service comes from the PWD30EPOW page on rvupgradestore."
+  },
+  {
+   "product": "Minoston MP22Z Z-Wave 800 Outdoor Smart Plug",
+   "label": "Price, rating, cost per watt",
+   "value": "$26.35; 15 A, 1,875 W, 125 V 60 Hz, IP65; $0.014 per W",
+   "source": "https://www.minoston.com/products/minoston-z-wave-800-series-smart-plug-for-outdoor-and-indoor-mp22z",
+   "source_title": "Minoston Z-Wave 800 Series Smart Plug for Outdoor and Indoor (MP22Z)",
+   "read": "2026-11-10",
+   "note": "Read from the maker's Shopify store via storecheck.py. $26.35 / 1,875 W = $0.0141 per W. Needs a Z-Wave hub. Like the EP40, it can carry 1,875 / 3,600 = 52% of a 30 A service."
+  }
+ ],
+ "unsourced": [
+  "Kasa EP40 price today: the TP-Link US store returned HTTP 429 to storecheck.py, kasasmart.com shows no price, and I did not try Amazon.",
+  "Current Power Watchdog maker prices: powerwatchdog.com/shop, /surge-protectors and the redirected hughesautoformers.com pages would not load (TLS certificate error / HTTP 0).",
+  "PWD50EPOW maximum watts and joules: not stated on the Explosive Powersports page. Zoro returned 403 and Tractor Supply timed out. I left out a 12,000 W figure because no opened page states two 120 V legs.",
+  "Running amps and locked-rotor amps for a 13,500 BTU rooftop RV A/C from a maker spec sheet: the Dometic US listing page gives no electrical figures, so I can't show a number for why a 15 A, 1/2 HP-rated plug can't run the A/C.",
+  "Standby draw of the Kasa EP25, EP40 or Minoston MP22Z, which would give Wh per day from an RV battery when boondocking: no maker spec, and no named reviewer measurement found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8929760999999999
+ }
 }

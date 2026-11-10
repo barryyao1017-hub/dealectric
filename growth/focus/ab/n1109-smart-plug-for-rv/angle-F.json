@@ -1,5 +1,143 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the $169.99 Gen II 30A Power Watchdog it showed (PWD30W) is described as alert-only and has no remote power cut. Retailers describe remote cut-and-restore of RV power only for the EPO WiFi models. That costs $279.99 (PWD30EPOW at RV Upgrade Store) to $399.99 (PWD50-EPOW at United RV Parts), versus $18.99 for a 15 A / 1,875 W Kasa EP40 that can only switch a single appliance.",
+ "standout": 2,
+ "standout_why": "I compared against the cited RV Upgrade Store PWD30EPOW page, which lists 'Remote Power Control' as a callout with no description and says nothing about the non-EPO model. Two other cited Hughes URLs (power-watchdog-2nd-gen, pwd30-epo) 301-redirect to powerwatchdog.com, and powerwatchdog.com/shop and /surge-protectors would not load for me (self-signed certificate error), so I could not confirm whether the maker's own shop separates the two. ChatGPT's first answer shows the PWD30W at $169.99 for 'Monitors RV shore power from your phone' and suggests 'remote power control' only for the EPO. Neither its answer nor the pages I could read gives the price ladder or says that only the EPO models switch power remotely.",
+ "decides": "For 'a smart plug for the whole RV' (remote on/off of shore power), the cheapest qualifying unit is the 30 A EPO WiFi model. The PWD30W ($169.99) and PWD50W ($249.99) are monitors with alerts, not remote switches. The EMS-PT30X ($145.99) has no app or remote control in its listing, and the 15 A plugs (Kasa EP40, our Minoston MP22Z) are limited to 1,875 W inside the RV. The Minoston also needs a Z-Wave hub, which few RVs have, so the Kasa EP40 is the in-RV pick and the PWD30EPOW is the whole-RV pick.",
+ "candidates": [
+  "Hughes Power Watchdog Gen II PWD30W (30A WiFi)",
+  "Hughes Power Watchdog Gen II PWD50W (50A WiFi)",
+  "Hughes Power Watchdog Gen II PWD30EPOW (30A WiFi, EPO)",
+  "Hughes Power Watchdog Gen II PWD50-EPOW (50A WiFi, EPO)",
+  "Hughes Power Watchdog PWD30 (Gen I, Bluetooth)",
+  "Hughes PWD30-EPO-H (hardwired)",
+  "Progressive Industries EMS-PT30X",
+  "Kasa EP40 Outdoor Smart Plug",
+  "Kasa EP40M Matter Outdoor Plug",
+  "Kasa EP25P2 Smart Plug Mini 2-pack",
+  "Minoston MP22Z Z-Wave 800 Outdoor Plug (ours)"
+ ],
+ "findings": [
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Price (RV Upgrade Store, the retailer ChatGPT cited)",
+   "value": "$279.99 sale, $379.99 list",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector",
+   "read": "2026-11-10",
+   "note": "$100 below the $379.99 'manufacturer listed' price ChatGPT showed. I could not load the maker's store, powerwatchdog.com (SSL certificate error)."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Shutoff thresholds and surge rating",
+   "value": "Cuts power at 104 V and below, 132 V and above; 2,300 J",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30EPOW-30A-Smart-Surge-Protector-p/08-7864.htm",
+   "source_title": "Hughes PWD30EPOW 30A WiFi RV Surge Protector",
+   "read": "2026-11-10",
+   "note": "Spec table: 'Energy Dissipation 2,300 joules'. Input range 100–145 V."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30EPOW",
+   "label": "Remote cut and restore of RV power from the app",
+   "value": "Yes: 'Cut or restore power to your RV remotely via the mobile app'; restores 90 s after a fault clears",
+   "source": "https://electricmotorwarehouse.com/hughes-pwd30epow-30a-gen-ii-power-watchdog-smart-rv-surge-protector-epo-wifi/",
+   "source_title": "Hughes PWD30EPOW 30A Gen II Power Watchdog Smart RV Surge Protector EPO WiFi",
+   "read": "2026-11-10",
+   "note": "This retailer lists it at $339.95. RV PRO (2024-07-01) says Gen II comes in 30 and 50 A 'with or without the Emergency Power Off feature' and lets users 'remotely cut and restore power to the RV' (https://rv-pro.com/?p=95328, read 2026-11-10)."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD30W",
+   "label": "Price and what the app controls",
+   "value": "$169.99 at United RV Parts ($199.99 compare-at). The app controls only the bay light; no remote power cut is described",
+   "source": "https://unitedrvparts.com/products/hughes-gen-ii-30-amp-wifi-surge-protector-pwd30w-portable",
+   "source_title": "Hughes | Gen II – 30 Amp WiFi Surge Protector | PWD30W",
+   "read": "2026-11-10",
+   "note": "On a fault: 'the Watchdog turns red and displays the specific error code' and sends a phone notification. Electric Motor Warehouse's PWD30W page ($169.95, 2,400 J) describes the app as 'live power monitoring data' and says the light 'can be dimmed or turned off via the mobile app', with no power on/off (https://electricmotorwarehouse.com/hughes-power-watchdog-pwd30w-30a-gen-ii-smart-rv-surge-protector-wifi/, read 2026-11-10). Vanlife Outfitters also lists it at $169.99 (storecheck)."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD50W",
+   "label": "Price",
+   "value": "$249.99 ($279.99 compare-at)",
+   "source": "https://unitedrvparts.com/products/hughes-gen-ii-50-amp-wifi-surge-protector-pwd50w-portable",
+   "source_title": "Hughes | Gen II – 50 Amp WiFi Surge Protector | PWD50W",
+   "read": "2026-11-10",
+   "note": "From the storecheck search of unitedrvparts.com (cited by ChatGPT's results list)."
+  },
+  {
+   "product": "Hughes Power Watchdog Gen II PWD50-EPOW",
+   "label": "Price",
+   "value": "$399.99 ($449.99 compare-at)",
+   "source": "https://unitedrvparts.com/products/hughes-gen-ii-50-amp-wifi-bluetooth-surge-protector-pwd50-epow-auto-shutoff-portable",
+   "source_title": "Hughes | Gen II - 50 Amp WiFi & Bluetooth Surge Protector | PWD50-EPOW | Auto Shutoff | Portable",
+   "read": "2026-11-10",
+   "note": "From storecheck. The URL slug was truncated in the output and rebuilt from the title pattern; verify before linking. Same store: 30 A EPOW $339.99, hardwired PWD30EPOH-W $319.99, 50 A PWD50EPOH-W $379.99."
+  },
+  {
+   "product": "Hughes Power Watchdog PWD30 (Gen I, Bluetooth)",
+   "label": "Price and protection",
+   "value": "$114.49 sale ($159.95 list); disconnects on low or high voltage and reconnects after a delay",
+   "source": "https://www.rvupgradestore.com/Hughes-PWD30-30-Amp-Power-Watchdog-p/pwd30.htm",
+   "source_title": "Hughes Autoformers PWD30 30 Amp Power Watchdog RV Surge Protector and Voltage Monitor",
+   "read": "2026-11-10",
+   "note": "Bluetooth only (image caption), so the shopper cannot control it from away from the campsite."
+  },
+  {
+   "product": "Progressive Industries EMS-PT30X",
+   "label": "Price",
+   "value": "$145.99 ($399.99 compare-at)",
+   "source": "https://unitedrvparts.com/products/progressive-industries-portable-rv-ems-surge-protector-ems-pt30x-30-amp",
+   "source_title": "Progressive Industries | Portable RV EMS Surge Protector | EMS-PT30X | 30 Amp",
+   "read": "2026-11-10",
+   "note": "The description lists a 'Built-in Scrolling Digital Display' with no app or wireless control mentioned, so it loses on 'smart'. progressiveindustries.net now 301-redirects to navico.com."
+  },
+  {
+   "product": "Kasa EP40 Outdoor Smart Plug",
+   "label": "Load limit and ratings",
+   "value": "15 A / 1,875 W total for 2 outlets, IP64, 2.4 GHz Wi-Fi only, -4 °F to 122 °F",
+   "source": "https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wi-fi-outdoor-plug",
+   "source_title": "Kasa Smart Wi-Fi Outdoor Plug (EP40)",
+   "read": "2026-11-10",
+   "note": "The maker's page shows no price and links to Amazon. 1,875 W shared by both outlets means it cannot carry the shore-power feed or a 13.5k BTU RV air conditioner and electric water heater at once."
+  },
+  {
+   "product": "Kasa EP40 Outdoor Smart Plug",
+   "label": "Price (Amazon)",
+   "value": "$18.99",
+   "source": "https://www.amazon.com/dp/B091FXH2FR",
+   "source_title": "Kasa Outdoor Smart Plug, Smart Home Wi-Fi Outlet with 2 Sockets, EP40",
+   "read": "2026-11-10",
+   "note": "amzcheck. 81% five-star of 5,874 ratings. ChatGPT showed $23.49. For comparison only; our pages don't print Amazon prices."
+  },
+  {
+   "product": "Kasa EP40M Matter Outdoor Plug",
+   "label": "Price (Amazon)",
+   "value": "$23.99",
+   "source": "https://www.amazon.com/dp/B0CVMXZMDM",
+   "source_title": "Kasa Matter Smart Outdoor Plug, Dual Outlet, EP40M, No Hub Required",
+   "read": "2026-11-10",
+   "note": "amzcheck. 82% five-star of 13,778 ratings."
+  },
+  {
+   "product": "Minoston MP22Z (ours)",
+   "label": "Price, load limit and hub requirement",
+   "value": "$26.35; 15 A / 1,875 W, IP65; needs a Z-Wave hub",
+   "source": "https://www.minoston.com/products/minoston-z-wave-800-series-smart-plug-for-outdoor-and-indoor-mp22z",
+   "source_title": "Minoston Z-Wave 800 Series Smart Plug for Outdoor and Indoor (MP22Z)",
+   "read": "2026-11-10",
+   "note": "storecheck. Alexa and Google control 'requires a Z-Wave certified hub', so it loses to the hub-free Wi-Fi Kasa EP40 in an RV unless the shopper already runs Hubitat or SmartThings on board."
+  }
+ ],
+ "unsourced": [
+  "Prices and model specs from the maker's own store (powerwatchdog.com/shop, /surge-protectors): WebFetch failed with a self-signed certificate error, storecheck returned HTTP 0, and curl needed approval. Hughes prices above are from RV Upgrade Store, United RV Parts and Electric Motor Warehouse.",
+  "A maker statement that the non-EPO PWD30W/PWD50W cannot cut power remotely: two retailer pages describe only alerts and light control for those models, and the Hughes manual or spec PDF was not opened.",
+  "Kasa EP25P2 2-pack price today: amzcheck search returned no EP25P2 ASIN.",
+  "Southwire Surge Guard Bluetooth/app models and prices: the cited Southwire PDFs and a retailer price were not opened within the tool budget.",
+  "Progressive Industries EMS-PT30X maker page and spec sheet: progressiveindustries.net redirects to navico.com, which I did not open, so voltage thresholds and joules are not given."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.8694575000000001
+ }
 }
