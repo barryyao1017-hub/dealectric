@@ -71,6 +71,7 @@ CATEGORIES = {
     "trail-camera": ('Trail cameras', 'Motion-triggered outdoor cameras for wildlife, hunting and property watch, with no-glow night vision and battery or solar power.'),
     "drone": ('Drones', 'Camera and thermal drones for game recovery, search, inspection and aerial photos.'),
     "portable-ac": ('Portable air conditioners', 'Battery and DC-powered air conditioners for tents, vans, trucks and boats.'),
+    "smartphone": ('Smartphones', 'Unlocked Android phones sold in the US, compared on screens, carriers, NFC and what is left out.'),
 }
 
 PRODUCTS = [
@@ -5107,6 +5108,41 @@ PRODUCTS = [
  "summary": 'The Mark 3 air conditioner on its own, for buyers who already own Mark 3 batteries or have a 48 V DC supply.',
  "fit": 'Owners who already have Mark 3 batteries or a 48 V DC system and want a second unit.',
  "caveats": ['No battery included. Mark 3 batteries are sold separately ($839 each on 2026-11-10).', 'Check what power adapter is in the box before you order.']},
+
+{"slug": 'nuu-b40-5g',
+ "brand": 'NUU',
+ "program": 'awin:nuu',
+ "category": 'smartphone',
+ "name": 'NUU B40 5G Unlocked Android Phone with 1.6-inch Rear AMOLED Screen, 8 GB / 256 GB',
+ "model": 'B40 5G',
+ "url": 'https://nuumobile.com/product/b40-5g-android-smartphone/',
+ "official_page": 'https://nuumobile.com/product/b40-5g-android-smartphone/',
+ "price": 249.99,
+ "list_price": 299.99,
+ "verified": '2026-11-10',
+ "specs": [('Rear screen', '1.6-inch AMOLED "Vista Display", 460 × 228, up to 500 nits'), ('Main screen', '6.7-inch curved AMOLED, 2400 × 1080, 120 Hz'), ('Chip', 'MediaTek Dimensity 7025'), ('Memory', '8 GB RAM, 256 GB storage'), ('Cameras', '64 MP main + 2 MP macro on the back, 16 MP front'), ('Battery', '5,000 mAh, 33 W wired charging'), ('Software', 'Android 15; no update schedule published'), ('Networks', 'T-Mobile and T-Mobile-based carriers (Metro, Mint and others)'), ('NFC', 'No'), ('Headphone jack', 'No'), ('Weight', '6.5 oz (185 g)')],
+ "warranty": '1 year from purchase. NUU repairs or replaces defects. You pay shipping to the repair center. Water and accidental damage are not covered.',
+ "returns": "30 days from the invoice date when bought from NUU's store. The phone must be as new, with all accessories and the box, and you need an RMA by email. The return policy page says the buyer pays return shipping, but the product page advertises free returns.",
+ "summary": 'A budget 5G phone with a small AMOLED screen on the back. It shows the time, notifications and music controls, and works as a viewfinder so you can take selfies with the main camera.',
+ "fit": 'Best for people on T-Mobile, Mint or Metro who want a rear screen for main-camera selfies and quick glances without spending flip-phone money.',
+ "caveats": ["Works only on T-Mobile's network and carriers that use it. Not for Verizon or AT&T.", 'No NFC, so no tap-to-pay with Google Wallet.', "NUU publishes no OS or security update schedule. One reviewer's phone got no update in its first two months.", 'No headphone jack, no published water-resistance rating, and the 2 MP macro camera adds little.']},
+
+{"slug": 'nuu-x10-5g',
+ "brand": 'NUU',
+ "program": 'awin:nuu',
+ "category": 'smartphone',
+ "name": 'NUU X10 5G Unlocked Android Phone, 6.8-inch 90 Hz, 4 GB / 128 GB, headphone jack, microSD, NFC',
+ "model": 'X10 5G',
+ "url": 'https://nuumobile.com/product/x10-android-smartphone/',
+ "official_page": 'https://nuumobile.com/product/x10-android-smartphone/',
+ "price": 269.99,
+ "verified": '2026-11-10',
+ "specs": [('Screen', '6.8-inch HD+, 90 Hz'), ('Chip', 'MediaTek Dimensity 6100+'), ('Memory', '4 GB RAM, 128 GB storage, microSD up to 512 GB'), ('Cameras', '50 MP main + 2 MP + VGA on the back, 8 MP front'), ('Battery', '5,000 mAh'), ('Software', 'Android 16; no update schedule published'), ('Networks', 'T-Mobile, AT&T (Network Ready) and Verizon (approved; one-time IMEI registration for 5G)'), ('NFC', 'Yes'), ('Headphone jack', 'Yes, 3.5 mm'), ('SIM', 'Single SIM'), ('In the box', 'Charger, cable, case and screen protector')],
+ "warranty": '1 year from purchase. NUU repairs or replaces defects. You pay shipping to the repair center. Water and accidental damage are not covered.',
+ "returns": "30 days from the invoice date when bought from NUU's store. The phone must be as new, with all accessories and the box, and you need an RMA by email. The return policy page says the buyer pays return shipping.",
+ "summary": "NUU's phone for every major US network, with NFC, a headphone jack and a microSD slot. It ships with Android 16.",
+ "fit": 'For Verizon or AT&T users who want an inexpensive unlocked phone with a headphone jack and tap-to-pay. It has no rear screen.',
+ "caveats": ['The 6.8-inch screen is HD+ (720p class), not Full HD.', 'Single SIM only.', 'NUU publishes no OS or security update schedule.', 'No fast-charging wattage is listed.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
