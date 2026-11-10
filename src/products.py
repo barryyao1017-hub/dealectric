@@ -65,6 +65,7 @@ CATEGORIES = {
     "tire-inflator": ('Tire inflators', 'Portable and cordless tire inflators for car, bike, motorcycle and ball inflation.'),
     "build-plate": ('Build plates', 'Magnetic spring-steel print surfaces for FDM 3D printers.'),
     "tablets": ('Tablets', 'Android tablets, including ones sold with a keyboard cover.'),
+    "phone-case": ('Phone cases', 'Phone cases and the straps and lanyards that clip to them.'),
 }
 
 PRODUCTS = [
@@ -4665,6 +4666,23 @@ PRODUCTS = [
  "summary": "The 13.1-inch version of the S10 FE. It had the longest Wi-Fi browsing runtime of these tablets in Notebookcheck's tests.",
  "fit": 'Shoppers who type away from a charger all day and want a bigger screen without paying Ultra prices.',
  "caveats": ['The keyboard is sold separately, and the Slim cover has no trackpad.', 'The USB 2.0 port cannot drive an external monitor (Notebookcheck).', 'At 664 g it is heavier than the 497 g S10 FE.']},
+
+{"slug": 'apple-crossbody-strap-black',
+ "brand": 'Apple',
+ "program": 'amazon:us',
+ "asin": 'B0HJBD439M',
+ "category": 'phone-case',
+ "name": 'Apple Crossbody Strap, Black',
+ "model": 'Apple Crossbody Strap',
+ "url": 'https://www.amazon.com/dp/B0HJBD439M',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Length', '108–208 cm (42.5–81.9 in), adjusted with embedded magnets and stainless steel sliders'), ('Material', '100% recycled PET yarns'), ('Fits iPhone 18 Pro / Pro Max', 'Apple TechWoven, Silicone and Clear Case with MagSafe'), ('Fits iPhone 17 Pro / Pro Max', 'Apple TechWoven and Silicone Case with MagSafe'), ('Fits iPhone 17 and 17e', 'Apple Silicone Case with MagSafe'), ('Fits iPhone Air', 'iPhone Air Bumper and iPhone Air Case with MagSafe'), ('Attachment', "Connectors thread through openings in the case's bottom corners; strap snaps on")],
+ "warranty": '1-year Apple limited warranty against defects in materials and workmanship, from the date of original retail purchase',
+ "returns": '14 days from the date you receive it, when bought from Apple (Apple US sales policy)',
+ "summary": "Apple's adjustable crossbody strap for select Apple iPhone cases, with a 100 cm adjustment range.",
+ "fit": 'Owners of an Apple Silicone or TechWoven case (any listed model), or the redesigned iPhone 18 Pro Clear Case, who want a long, adjustable crossbody strap.',
+ "caveats": ['Does not fit the iPhone 17 Pro / Pro Max Clear Case or cases without the two bottom-corner openings.', 'No wristlet in the box; Apple sells the Wrist Strap separately.', 'Contains magnets that Apple says may interfere with medical devices.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
