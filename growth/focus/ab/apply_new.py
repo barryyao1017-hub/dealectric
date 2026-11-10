@@ -4,7 +4,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools"))
 import abpage as A
-Q = [q["slug"] for q in json.loads((ROOT / "growth/focus/ab-harvest-new-2026-11-08.json").read_text())["questions"]]
+import os
+DAY = os.environ.get("DAY", "2026-11-08")
+Q = [q["slug"] for q in json.loads((ROOT / f"growth/focus/ab-harvest-new-{DAY}.json").read_text())["questions"]]
 tried = {}
 while True:
     pending = 0
@@ -25,7 +27,7 @@ while True:
         r = A.apply(s, local=True)
         tried[s] = (A.AB / s / "draft.json").stat().st_mtime
         print("APPLY " + json.dumps(r, ensure_ascii=False)[:600], flush=True)
-    feed = (ROOT / "growth/focus/ab/feed-new.log").read_text() if (ROOT / "growth/focus/ab/feed-new.log").exists() else ""
+    feed = (ROOT / f"growth/focus/ab/feed-new-{DAY}.log").read_text() if (ROOT / f"growth/focus/ab/feed-new-{DAY}.log").exists() else ""
     if pending == 0 and "FEED DONE" in feed:
         break
     time.sleep(90)

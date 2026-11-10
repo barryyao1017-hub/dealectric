@@ -5,8 +5,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "tools"))
 import abpage as A
-Q = json.loads((ROOT / "growth/focus/ab-harvest-new-2026-11-08.json").read_text())["questions"]
-RUN = "2026-11-08-ab-harvest-new"
+import os
+DAY = os.environ.get("DAY", "2026-11-08")
+Q = json.loads((ROOT / f"growth/focus/ab-harvest-new-{DAY}.json").read_text())["questions"]
+RUN = f"{DAY}-ab-harvest-new"
 started = set()
 ex = ThreadPoolExecutor(max_workers=2)
 futs = {}
