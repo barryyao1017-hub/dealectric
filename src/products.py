@@ -4512,6 +4512,23 @@ PRODUCTS = [
  "fit": "Cabins and small off-grid homes that need 240 V loads and want the battery to refill within one day's sun.",
  "caveats": ["The 14.4 kWh/day figure is SunGoldPower's 3,600 W × 4 h with no allowance for heat, wiring or charging losses.", 'The $4,949 price is for the 10.24 kWh version. The listing also offers 16.07 kWh.', "SunGoldPower's listing gives no no-load draw for the 8,000 W inverter, so leave room in the battery for the inverter running overnight."]},
 
+{"slug": 'jabra-speak2-55',
+ "brand": 'Jabra',
+ "program": 'amazon:us',
+ "asin": 'B0BWL1MN5F',
+ "category": 'speaker',
+ "name": 'Jabra Speak2 55 Wireless Bluetooth Speakerphone, 4 noise-cancelling mics, certified for Zoom and Google Meet (UC), Dark Grey',
+ "model": 'Jabra Speak2 55 (UC)',
+ "url": 'https://www.amazon.com/dp/B0BWL1MN5F',
+ "price": None,
+ "verified": '2026-11-09',
+ "specs": [('Microphones', '4 digital MEMS beamforming mics, 150–7,000 Hz'), ('Mic pickup range', 'Up to 2.3 m (7.55 ft)'), ('Speaker bandwidth', '100–20,000 Hz music mode; 150–7,000 Hz speak mode'), ('Talk time', 'Up to 12 h'), ('Charge time', 'Up to 2.5 h at 1 A; up to 5 h at 0.5 A'), ('Computer connection', 'USB-C or USB-A cable only'), ('Bluetooth', '5.1, up to 30 m (98 ft), for smartphone/tablet only; A2DP, AVRCP, BLE, HFP'), ('USB Bluetooth adapter', 'Not included'), ('Weight', '280 g (9.88 oz)'), ('Protection', 'IP64')],
+ "warranty": '2 years (Jabra product page, technical specs, read 2026-11-09)',
+ "returns": "Free 100-day returns when bought from Jabra's US store, jabra.com (Jabra product page, read 2026-11-09)",
+ "summary": 'A portable speakerphone built around its microphones. It has four beamforming mics with a stated 2.3 m pickup range, connects to a laptop by USB cable and to a phone by Bluetooth, and Jabra rates it for up to 12 hours of talk time.',
+ "fit": 'Zoom, Google Meet and Teams calls from a laptop, plus phone calls over Bluetooth, for one person or a small room up to 4.5 × 4.5 m.',
+ "caveats": ['Its Bluetooth is for phones and tablets only. A computer needs the USB cable, and no USB Bluetooth adapter is in the box.', 'This is the UC variant. The Microsoft Teams variant, with a dedicated Teams button, is a separate listing.', 'It is a speakerphone with one 50 mm driver, not a party speaker. PCQuest measured 5 h 24 min of music at 100% volume.', 'Showed as sold out on jabra.com on 2026-11-09.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

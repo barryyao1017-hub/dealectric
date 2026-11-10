@@ -1,0 +1,120 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Bluetooth's music profile (A2DP) carries sound one way only, so once a computer opens a Bluetooth speaker's microphone it switches to the Hands-Free Profile: mono playback and capture at 8 kHz or 16 kHz, with any stereo music stream thrown away.",
+ "standout": 2,
+ "standout_why": "I compared the cited Jabra Speak2 55 overview and buy pages, the cited Bose SoundLink Flex (2nd Gen) product page and Bose's support spec page (that one rendered empty for me). The Jabra page lists the profiles 'A2DP, AVRCP, BLE (for Google Fast Pair), HFP' and gives separate music-mode (100–20,000 Hz) and speak-mode (150–7,000 Hz) bandwidths. It also limits Bluetooth to 'smartphone/tablet only'. So a rival has part of this, but it never explains that using the mic forces the narrower mode. The Bose page lists 'Built-in Microphone' and 'Speakerphone' but says nothing about call quality or computers. No rival page says that a Bluetooth speaker used as a laptop mic drops to mono 8/16 kHz. None says that Bose's special-edition Flex units have no mic, or that the JBL Clip 5 cannot take calls.",
+ "decides": "This splits the answer by use case. For phone calls, any speaker with HFP and a built-in mic works (Bose SoundLink Flex 2nd Gen non-SE, Marshall Emberton III). For Zoom or Teams on a laptop, a Bluetooth speaker's mic forces Windows into HFP: mono at 8/16 kHz, with stereo output discarded. That supports ChatGPT's choice of a speakerphone, but the Jabra Speak2 55 must connect to the computer by USB, because Jabra says its Bluetooth is for smartphone/tablet only and it ships without a USB Bluetooth adapter. Two exclusions follow. The JBL Clip 5 has no call function (JBL Support). Bose special-edition SoundLink Flex units, serial numbers starting 086252 or 086253, have no microphone. Buyers should check either one before choosing it as a 'speaker with microphone'.",
+ "candidates": [
+  "Jabra Speak2 55",
+  "Bose SoundLink Flex (2nd Gen)",
+  "Marshall Emberton III",
+  "JBL PartyBox On-The-Go Essential",
+  "JBL Clip 5",
+  "Tribit StormBox Micro 3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "A2DP cannot carry microphone audio",
+   "value": "A2DP is output-only. Microphone capture requires HFP.",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-09",
+   "note": "Quote: 'A2DP only supports audio output from the host to the audio device. When audio capture (for example, voice capture using the microphone in the audio devices) is used, it's necessary to use HFP instead.' Page ms.date 2024-11-14."
+  },
+  {
+   "product": "general",
+   "label": "HFP audio format on Windows",
+   "value": "Mono playback and mono capture, narrowband 8 kHz or wideband 16 kHz",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-09",
+   "note": "Quote: 'HFP supports concurrent monaural capture (microphone) and monaural playback.' Wideband 16 kHz from Windows 10 1703 / Windows 11 21H2. Microsoft adds: 'Some wideband capable audio devices aren't compatible with the Bluetooth radio in select Windows devices, causing these devices to revert to narrowband mode.'"
+  },
+  {
+   "product": "general",
+   "label": "What happens to music when the mic opens",
+   "value": "Windows 10: the device switches to HFP and stereo audio is discarded. Windows 11: switches to HFP whenever an app opens the mic and resamples other playback to 8/16 kHz.",
+   "source": "https://learn.microsoft.com/windows-hardware/drivers/bluetooth/bluetooth-classic-audio",
+   "source_title": "Bluetooth Classic Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-09",
+   "note": "Quote (Windows 10): 'the device switches into HFP mode, and any audio streaming to the stereo output is discarded.' Quote (Windows 11): 'if the microphone is used during a VoIP call, which puts the headset into HFP mode at 8kHz or 16kHz, and another application plays audio to the same device at 48kHz, the sound is resampled to match the HFP endpoint.'"
+  },
+  {
+   "product": "general",
+   "label": "LE Audio removes the trade-off",
+   "value": "Stereo playback while the mic is in use, for example 48 kHz stereo render with 32 kHz mono capture (Windows 11 LE Audio, introduced in 22H2 KB5026446)",
+   "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/bluetooth/bluetooth-low-energy-audio",
+   "source_title": "Bluetooth Low Energy (LE) Audio - Windows drivers | Microsoft Learn",
+   "read": "2026-11-09",
+   "note": "Quote: 'Bluetooth LE Audio closes the gap with improved audio fidelity and reduced latency by adding support for stereo playback while the microphone is in use.' This needs LE Audio on both the PC radio/driver and the speaker. Page ms.date 2025-05-05."
+  },
+  {
+   "product": "Jabra Speak2 55",
+   "label": "Computer connection",
+   "value": "USB-C or USB-A to the computer; Bluetooth 'for smartphone/tablet only'; 'comes without USB Bluetooth adapter'",
+   "source": "https://www.jabra.com/business/speakerphones/jabra-speak-series/jabra-speak2-55",
+   "source_title": "Jabra Speak2 55 | Overview",
+   "read": "2026-11-09",
+   "note": "The same page says wired and Bluetooth can be connected at once (computer by cable, phone by Bluetooth). Bluetooth 5.1, range up to 30 m/98 ft, 2 simultaneous Bluetooth connections. The buy page showed 'Sold out' and no price."
+  },
+  {
+   "product": "Jabra Speak2 55",
+   "label": "Bluetooth profiles and speak-mode bandwidth",
+   "value": "A2DP, AVRCP, BLE (Google Fast Pair), HFP. Speaker 100–20,000 Hz in music mode, 150–7,000 Hz in speak mode. Mic 150–7,000 Hz. Four beamforming MEMS mics, pickup up to 2.3 m.",
+   "source": "https://www.jabra.com/business/speakerphones/jabra-speak-series/jabra-speak2-55",
+   "source_title": "Jabra Speak2 55 | Overview",
+   "read": "2026-11-09",
+   "note": "The 150–7,000 Hz speak-mode band matches 16 kHz wideband sampling (8 kHz Nyquist), the same ceiling as HFP wideband on Windows."
+  },
+  {
+   "product": "Bose SoundLink Flex (2nd Gen)",
+   "label": "Microphone / speakerphone and price",
+   "value": "'Built-in Microphone'; sound option 'Speakerphone'; up to 12 h battery; $199.00 (Blue Dusk Plaid)",
+   "source": "https://www.bose.com/p/speakers/SLFLXII-SPEAKERWIRELESS-COL26.html?dwvar_SLFLXII-SPEAKERWIRELESS-COL26_color=BLUE+DUSK+PLAID&quantity=1",
+   "source_title": "Shop SoundLink Flex Bluetooth Speaker (2nd Gen) | Bose",
+   "read": "2026-11-09",
+   "note": "The page states no Bluetooth version or profiles; its battery footnote mentions 'Bluetooth A2DP audio'. Its FAQ covers answering phone calls only. ChatGPT showed $159.00 for Black; I read only the Blue Dusk Plaid price."
+  },
+  {
+   "product": "Bose SoundLink Flex (2nd Gen)",
+   "label": "Special-edition units have no mic",
+   "value": "Special-edition units 'do not contain a microphone and do not have speakerphone functionality'; serial numbers begin 086252 or 086253",
+   "source": "https://support.bose.co.uk/article/microphone-does-not-pick-up-sound-soundlink-flex-portable-speaker-2nd-gen",
+   "source_title": "Microphone does not pick up sound | Bose SoundLink Flex Portable Speaker (2nd Gen)",
+   "read": "2026-11-09",
+   "note": "Bose UK support article. The page also gives a 33 ft (10 m) range guideline for calls."
+  },
+  {
+   "product": "Marshall Emberton III",
+   "label": "Microphone and Bluetooth",
+   "value": "'Built-in microphone: Simple hands-free talking'; Bluetooth 5.3 LE; 'Bluetooth LE Audio-ready' (Auracast); $179.99",
+   "source": "https://www.marshall.com/us/en/product/emberton-iii",
+   "source_title": "Marshall Emberton III (Marshall US)",
+   "read": "2026-11-09",
+   "note": "Marshall's FAQ says LE Audio will work 'once there are source devices on the market'. The page lists no profiles or codecs."
+  },
+  {
+   "product": "JBL Clip 5",
+   "label": "Call support",
+   "value": "Music playback only; does not make or receive phone calls",
+   "source": "https://www.bestbuy.com/site/questions/jbl-clip-5-portable-bluetooth-speaker-2024-purple/6582045",
+   "source_title": "Questions & Answers – JBL Clip 5 (Best Buy)",
+   "read": "2026-11-09",
+   "note": "The answer is labeled 'Answered 2 years ago by JBL Support': 'Our JBL Clip 5 is designed for music playback only and does not support making or receiving phone calls.' jbl.com returned 403."
+  }
+ ],
+ "unsourced": [
+  "JBL PartyBox On-The-Go Essential: I looked for JBL's own statement that the included wireless mic is a UHF karaoke/PA mic (470–960 MHz per retailer snippets) that goes only to the speaker, not to a phone or PC for calls. jbl.com returned 403 and I did not open a JBL support page, so I have no maker-sourced mic or price figures.",
+  "Tribit StormBox Micro 3: I looked for the maker's page confirming the built-in call mic and Bluetooth version (search snippets say 6.0; one retailer says 5.3). I did not open tribit.com.",
+  "Bose SoundLink Flex (2nd Gen) Bluetooth version and profile list (HFP): support.bose.com spec pages rendered empty for me. The Bluetooth 5.3 and HFP figures appeared only in search snippets.",
+  "Jabra Speak2 55 US price: the jabra.com buy page shows 'Sold out' and no price. I could not extract text from the tech-sheet PDFs (binary) to confirm USB super-wideband vs Bluetooth wideband.",
+  "Bluetooth SIG HFP 1.9 spec text giving the LC3-SWB 32 kHz rate: I did not open the SIG specification."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9283900000000003
+ }
+}
