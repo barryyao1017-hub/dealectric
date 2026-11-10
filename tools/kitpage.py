@@ -166,6 +166,30 @@ def kit_errors(draft: dict) -> list[str]:
     return errs
 
 
+def product_errors(draft: dict) -> list[str]:
+    """gappage's checks on the draft's new product records (fields, program, category, Amazon listing), with
+    amzcheck retried while Amazon walls it (11-10: 3 of 5 ASINs blocked on one pass, found on the next)."""
+    import gappage, amzcheck, time
+    real = amzcheck.listing
+    def patient(a):
+        for i in range(5):
+            info = real(a)
+            if info.get("found") or not info.get("blocked"):
+                return info
+            time.sleep(15 * (i + 1))
+        return info
+    amzcheck.listing = patient
+    try:
+        errs = gappage.validate({**draft, "status": "products_only"}) if draft.get("products") else []
+    finally:
+        amzcheck.listing = real
+    if any("unknown category" in e for e in errs):
+        import products as P
+        errs.append("for an unknown category use one of these keys: " + ", ".join(P.CATEGORIES) +
+                    "; or add it under the draft's top-level \"new_categories\": {key: [label, one-line description]}")
+    return errs
+
+
 def write_kit(draft: dict) -> None:
     """Add (or replace) the kit in src/kits.py."""
     k = dict(draft["kit"])
@@ -184,14 +208,14 @@ def apply(slug: str, local: bool) -> dict:
     draft = A.jload(d / "draft.json")
     if not draft:
         return {"slug": slug, "status": "no draft"}
-    errs = kit_errors(draft)
+    errs = kit_errors(draft) + product_errors(draft)
     if errs and not draft.get("kit_fix"):
         fx = A.claude(A.fix_prompt(draft, errs + ["(this page sells a kit: keep the 'kit' key, same shape)"]))
         if fx.get("draft"):
             keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug", "kit_page") if k in draft}
             draft = {**fx["draft"], **keep, "status": "ok", "kit_fix": {"errors": errs, "log": fx.get("log")}}
             A.jsave(d / "draft.json", draft)
-            errs = kit_errors(draft)
+            errs = kit_errors(draft) + product_errors(draft)
     if errs:
         return {"slug": slug, "status": "failed", "errors": errs}
     if not local:
