@@ -1,5 +1,81 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "A",
+ "gap": "No result ChatGPT got states that an HDBaseT link is limited to 10.2 Gbps, so a 4K60 4:4:4 signal (an 18 Gbps feed) has to be compressed to cross it. OREI still calls its UHD14-EXB400-K 'uncompressed' at 394 ft for 4K60 4:4:4. AV Access rates its own 18 Gbps HDBaseT extender at only 131 ft for that same signal.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited OREI support articles (UHD12-EX115-K and UHD14-EXB400-K) and the other OREI support pages in the results. They give each product's distance at each resolution and say '18Gbps'. None of them mentions HDBaseT's 10.2 Gbps limit or compression, and none gives another maker's 4K60 4:4:4 distance to compare with. So the shopper sees 394 ft and 115 ft both labelled '4K60 4:4:4, 18 Gbps', with nothing to show the two figures can't be measured on the same basis.",
+ "decides": "ChatGPT's 'best for long distances' pick (OREI UHD14-EXB400-K, 394 ft at 4K60) is the figure that conflicts with the 10.2 Gbps HDBaseT limit and with AV Access's 131 ft rating for 4K60 4:4:4. It is also listed as 'Unavailable' on orei.com today. For full 4K60 4:4:4/HDR, the safe way to compare is each maker's own 4K60 distance figure: about 115 ft (OREI UHD12-EX115-K), 131 ft (AV Access over Cat6a/7) and 196 ft (J-Tech, chroma not stated). A run longer than that should be treated as 1080p, or as possibly compressed 4K, until the maker says otherwise. The finding supports the OREI 1x2 for runs under 115 ft and makes the long-distance pick doubtful.",
+ "candidates": [
+  "OREI UHD12-EX115-K",
+  "OREI UHD14-EXB400-K",
+  "J-Tech Digital JTECH-14EX60-AE",
+  "AV Access 4KEX70-H2 (1x1 reference, not a splitter)"
+ ],
+ "findings": [
+  {
+   "product": "OREI UHD12-EX115-K",
+   "label": "Distance by resolution (1x2, Cat6/6a/7)",
+   "value": "4K60 4:4:4: 115 ft / 35 m; 4K30: 164 ft / 50 m; 1080p60: 197 ft / 60 m; 18 Gbps",
+   "source": "https://support.orei.com/hc/en-us/articles/41705360744855-UHD12-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD12-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "The headline '115ft' is the 4K60 figure, so it already compares like with like. The article does not mention compression. HDR10/HDR10+/HLG/Dolby Vision, HDCP 2.2, one-way PoC to the receivers."
+  },
+  {
+   "product": "OREI UHD14-EXB400-K",
+   "label": "Distance by resolution (1x4, HDBaseT)",
+   "value": "4K60 4:4:4: 394 ft / 120 m; 1080p60: 492 ft / 150 m; 18 Gbps",
+   "source": "https://support.orei.com/hc/en-us/articles/41705363294487-UHD14-EXB400-K-Overview-and-Use-Cases",
+   "source_title": "UHD14-EXB400-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "The support article states the distance at 4K60 4:4:4 and gives no compression spec. The title says '400ft', which is the 394 ft figure rounded up."
+  },
+  {
+   "product": "OREI UHD14-EXB400-K",
+   "label": "Maker store claims, price and stock",
+   "value": "$429.00 (compare-at $699.99), shown as 'Unavailable'; says it 'delivers uncompressed UHD video' at 394 ft at 4K60 (4:4:4)",
+   "source": "https://www.orei.com/products/uhd14-exb400k-ultrahd-hdmi-extender-splitter-over-cat-400feet",
+   "source_title": "4K HDBaseT 1x4 HDMI Extender Splitter (Loop) - 400ft (cat6) - UHD14-EXB400-K | OREI",
+   "read": "2026-11-10",
+   "note": "The page contradicts itself. The feature text gives 394 ft for 4K@60Hz, but the spec section lists 393 ft against '4K@30HZ'. The feature text says CAT6/6a/7; the spec section lists CAT5e/6/7. The page gives no HDBaseT version, chipset or colour depth at 4K60."
+  },
+  {
+   "product": "general",
+   "label": "HDBaseT bandwidth limit",
+   "value": "10.2 Gbps; 4K60 4:4:4 8-bit is an 18 Gbps feed that has to be compressed (e.g. CYP's AVLC) to pass over HDBaseT",
+   "source": "https://www.installation-international.com/?p=4349",
+   "source_title": "Clever compression technology announced – Installation (ISE Daily), 2018-02-06",
+   "read": "2026-11-10",
+   "note": "Installation's wording: 'despite HDBaseT's 10.2Gbps bandwidth limitation, AVLC can pass the 18Gbps data feeds ... up to and including 4K@60Hz (4:4:4, 8-bit)' by compressing them. This is a 2018 trade-press report about one vendor's compression; it is not the HDBaseT Alliance's own spec text."
+  },
+  {
+   "product": "AV Access 4KEX70-H2",
+   "label": "4K60 4:4:4 distance for an 18 Gbps HDBaseT extender (reference)",
+   "value": "4K60 4:4:4 8-bit: 131 ft / 40 m on Cat6a/7, 115 ft / 35 m on Cat5e/6; 1080p60 (36bpp): 230 ft / 70 m on Cat6a/7, 197 ft / 60 m on Cat5e/6; $156.72",
+   "source": "https://www.avaccess.com/products/4kex70-h2/",
+   "source_title": "AV Access 4KEX70-H2 70m/230ft 4K HDMI Extender over HDBaseT",
+   "read": "2026-11-10",
+   "note": "This is a 1x1 extender, not a splitter. It's here to show how another maker rates the same 18 Gbps HDBaseT class: the '70m/230ft' in its title is the 1080p figure, and at 4K60 4:4:4 it is rated 131 ft, a third of OREI's 394 ft. The page doesn't mention compression. AV Access is a Dealectric affiliate (awin:avaccess)."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Maker-stated distance, price and stock",
+   "value": "'Extend 4K@60Hz HDMI signal up to 196ft' over a single Cat5e/6 (per receiver); HDR10 and HLG; HDMI 2.0/HDCP 2.2; $302.49; available: false",
+   "source": "https://www.jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet w/ Audio Extraction, PoC, 4K Downscaling – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "Read with the Dealectric storecheck.py tool (Shopify product data), because WebFetch got HTTP 429. Neither the store copy nor the product description gives chroma (4:4:4 vs 4:2:0) or bandwidth in Gbps, so the 196 ft '4K@60Hz' figure can't be put on the same 4:4:4 basis as OREI's. The maker store shows it out of stock."
+  }
+ ],
+ "unsourced": [
+  "J-Tech JTECH-14EX60-AE chroma, colour depth and bandwidth at 4K60, and a distance table by resolution: jtechdigital.com returned HTTP 429 three times, Newegg returned 403, and the store text gives only '4K@60Hz up to 196ft'.",
+  "OREI UHD12-EX115-K price on orei.com today: the WebFetch on orei.com returned 429 and storecheck.py returned HTTP 0 on two product URLs. The $139.99 figure appears only in ChatGPT's card and search snippets, which I did not count.",
+  "OREI UHD14-EXB400-K colour depth at 4K60 and the HDBaseT chipset or compression method (ICT/AVLC/DSC): the manual PDF (cdn.shopify.com/.../UHD14-EXB400-K_Manual.pdf) downloaded but WebFetch couldn't read its text, and running pdftotext/curl locally needed approval I didn't have.",
+  "A named reviewer's measurement of any of these units at their rated 4K60 distance: no time was left in the tool budget to look."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9356475000000001
+ }
 }

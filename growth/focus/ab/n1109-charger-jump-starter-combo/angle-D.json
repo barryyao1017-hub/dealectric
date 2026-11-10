@@ -1,5 +1,100 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 100A Schumacher charger it showed (the SC1281 family) starts an engine only by boosting the battery already in the car: it has to be plugged into a 120 V outlet and clamped to an installed battery, a battery under 2 V needs 5 minutes of charging before you crank, each crank is limited to 7 seconds, and repeated cranking triggers a forced 180-second cool-down.",
+ "standout": 1,
+ "standout_why": "I compared this against all the results ChatGPT got. The two cited pages (Schumacher's Battery Chargers archive and Advance Auto's SC1309 page) would not load for me, and ChatGPT's answer itself only said 'require an electrical outlet'. ChatGPT did get the SC1309 owner's manual on ManualsLib (results 2–5) but did not cite it, and its page 10 has the same rules: 7 s crank, 5-minute pre-charge under 2 V, 180 s cool-down, and a warning against using engine start without a battery installed. So the rule was already in a result ChatGPT got, just for the 200A model and not the 100A one. BatteryTrail (result 12, not cited) covers part of the other route: the Battery Tender Charge N Start plugs into 120 V AC, and Battery Tender's guidance is a 3–5 s crank. It does not say whether the jump pack works away from the outlet.",
+ "decides": "This settles whether the shopper's plan works. A plug-in Schumacher 'engine starter' is not a jump starter you can carry. It needs an outlet within cord reach of the car, it boosts the car's own battery and will not work without one, and a battery that is fully flat (under 2 V) needs 5 minutes of charging before it will crank. If the shopper wants one box that jumps the car anywhere and also charges the battery at home, the better choice is a unit with its own internal pack. Battery Tender says the Charge N Start jumps from its internal lithium cells whether or not the charger side is running, but it only charges the car battery from wall power.",
+ "candidates": [
+  "Schumacher SC1281L",
+  "Schumacher SC1309",
+  "Schumacher SC1341L",
+  "Battery Tender Charge N Start 4120",
+  "Battery Tender Charge N Start 1120"
+ ],
+ "findings": [
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine-start power source",
+   "value": "Live grounded 120 V AC outlet required",
+   "source": "https://www.manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 of 24 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Engine Start step 2: 'Connect the charger to a live grounded 120V AC outlet.' The manual is for the SC1281. Schumacher's store now lists the SC1281L, the revision that adds LiFePO4 support."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine start needs an installed battery",
+   "value": "Using Engine Start without a battery installed in the vehicle could damage the vehicle's electrical system",
+   "source": "https://www.manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 of 24 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Warning in the Engine Start section. The charger supplies its rated 100 A into the car battery and the starter circuit together. It cannot crank the car on its own."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Pre-charge before cranking a deeply flat battery",
+   "value": "5 min of charging if the battery is under 2 V or in extreme cold, and 5 more min after each failed start",
+   "source": "https://www.manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 of 24 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Quotes: 'During extremely cold weather, or if the battery is under 2 volts, charge the battery for 5 minutes before cranking the engine.' and 'If the engine fails to start, charge the battery for 5 more minutes before attempting to crank the engine again.'"
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine-start duty cycle",
+   "value": "7 s maximum crank; forced 3 min (180 s) cool-down after repeated cranking within the 3-min ready period",
+   "source": "https://www.manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 of 24 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "A search snippet said 3 s, but the page I opened says 'Crank the engine until it starts or 7 seconds pass.' Cool-down quote: 'the charger enters a mandatory 3 minute (180 second) cool down state.'"
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Engine-start rules (same mechanism, 200 A model)",
+   "value": "7 s crank, 5 min pre-charge under 2 V, 180 s mandatory cool-down, no use without an installed battery",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=10",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual, page 10 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "This page was in ChatGPT's results but was not cited. Page 8 of the same manual describes Engine Start as 'Always use in combination with a battery.'"
+  },
+  {
+   "product": "Schumacher SC1281L",
+   "label": "Maker's ratings",
+   "value": "100 A engine start (12 V); 30–12 A boost; 6–2 A charge; 6 V/12 V; standard, AGM, deep-cycle and 12 V LiFePO4",
+   "source": "https://www.schumacherelectric.com/products/6-2-30-100a-6v-12v-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter … SC1281L",
+   "read": "2026-11-10",
+   "note": "Taken from the store's product JSON with storecheck.py search. The listing had no price (0.0). This matches the 100A / 6A / 30A boost card ChatGPT showed."
+  },
+  {
+   "product": "Battery Tender Charge N Start (1100/1120/4120)",
+   "label": "Jump source and charging source",
+   "value": "Jumps from internal lithium-ion cells whether or not the charger side is active; charges the vehicle battery and tops off the pack only on wall power",
+   "source": "https://www.batterytender.com/blogs/battery-tender-blog/charge-n-start-battery-tender-jump-starter-charger-explained-2026",
+   "source_title": "Battery Tender blog: Charge N Start explained (2026)",
+   "read": "2026-11-10",
+   "note": "Quotes: 'The jump function operates independently whether or not the ISM charger side is active.' and, on wall power, the ISM charger 'simultaneously maintains the vehicle battery and tops off the internal jump pack.' The page says the two sides are 'electrically isolated.' It lists jump ratings of 1,000 A peak for the 1100 and 1,200 A for the 1120 and 4120."
+  },
+  {
+   "product": "Battery Tender Charge N Start",
+   "label": "Crank limit (BatteryTrail citing Battery Tender)",
+   "value": "3–5 s per attempt",
+   "source": "https://www.batterytrail.com/posts/jump-starter-and-battery-charger-combos-worth-it/",
+   "source_title": "Jump Starter and Battery Charger Combos: Worth It? | BatteryTrail",
+   "read": "2026-11-10",
+   "note": "BatteryTrail writes: 'Battery Tender's guidance is to crank no more than 3 to 5 seconds.' The page also says the unit 'plugs into a standard 120V AC outlet.'"
+  }
+ ],
+ "unsourced": [
+  "Prices on the makers' stores today: schumacherelectric.com and batterytender.com both returned HTTP 429 to storecheck.py and WebFetch, and Schumacher's store JSON shows no price for the SC1281L. Battery Tender's blog lists $139.95 / $149.95 / $179.95 for the 1100 / 1120 / 4120, but that is a blog page, not the product page, so I did not use it as a price.",
+  "Charge N Start internal pack capacity (mAh/Wh): Battery Tender's explainer blog does not give it, the product page was rate-limited, and the manuals.plus 1120 manual returned 403.",
+  "Whether the Charge N Start can jump a battery below a set voltage, or has a manual override: not stated on the Battery Tender blog, and the manual was unreachable (403).",
+  "The cited Schumacher Battery Chargers archive and Advance Auto SC1309 pages: one returned 429 and the other timed out, so I could not read what they say about the engine-start mechanism."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.9136744
+ }
 }

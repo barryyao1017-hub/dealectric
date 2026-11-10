@@ -1,5 +1,125 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "C",
+ "gap": "No result ChatGPT got states which solar panels each plug-in microinverter can take: the APsystems EZ1-LV accepts 18 A per input across two inputs (25 A short-circuit) with a 27–45 V tracking range and recommended 315–660+ Wp modules, while each Hoymiles HiFlow Pro LV takes one module at 14–16 A and 64 V max, so a large modern panel above 14 A fits the EZ1-LV but is current-limited on the smaller HiFlow models.",
+ "standout": 2,
+ "standout_why": "I compared against solarwaypoint.com/best-plug-in-solar-systems (cited), balconysolarkits.us/kits (cited) and pluginsolarcheck.com/kits/certifications (cited). Each one names output VA, certifications and circuit conditions. pluginsolarcheck and Solar Waypoint already give the EZ1-LV's dedicated 10 A circuit or Class A GFCI condition and its locking PIPV plug. balconysolarkits.us and pluginsolarcheck both say outright that they do not list panel Voc, Isc or input current. None of the three gives a panel-to-inverter pairing limit (input voltage, input current, module wattage range, panels per unit) for any inverter.",
+ "decides": "This supports ChatGPT's EZ1-LV pick for a two-panel build. It is the only candidate with two 18 A inputs and a published 315–660+ Wp module range, so one unit can run two current large-format panels. The HiFlow Pro LV is one panel per unit, and the model has to match the panel: the 360/391/420 models allow 14 A, the 450 allows 15 A and the 500 allows 16 A. A shopper pairing a high-current panel with the $149 HMS-360 would lose output. Panels must stay under the 60–64 V input ceiling. That rules out series-wiring two panels into one input, and it rules out high-voltage rooftop strings.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+  "EcoFlow STREAM Microinverter (US, 1200 W)"
+ ],
+ "findings": [
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Panels per unit",
+   "value": "1 or 2 solar panels per EZ1",
+   "source": "https://usa.apsystems.com/ez1-consumers/",
+   "source_title": "EZ1 – Consumers - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Maker's US page: 'Connect one or two solar panels to a single EZ1'. It also says 'Low-voltage DC design—under 60V'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Max input current per channel",
+   "value": "18 A per input, 2 independent MPPT inputs",
+   "source": "https://pv-magazine-usa.com/2026/07/17/apsystems-introduces-plug-in-microinverter-for-u-s-balcony-and-diy-solar-markets/",
+   "source_title": "pv magazine USA, Ryan Kennedy: APsystems introduces plug-in microinverter for U.S. balcony and DIY solar markets",
+   "read": "2026-11-10",
+   "note": "The maker's datasheet and manual links redirect to apsystems.filecloudonline.com, which failed with a self-signed certificate error. Figure taken from the named trade publication."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Short-circuit current capability per input",
+   "value": "25 A",
+   "source": "https://pv-magazine-usa.com/2026/07/17/apsystems-introduces-plug-in-microinverter-for-u-s-balcony-and-diy-solar-markets/",
+   "source_title": "pv magazine USA, Ryan Kennedy",
+   "read": "2026-11-10",
+   "note": "Quoted: '25 A short-circuit current capability'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "MPPT voltage range",
+   "value": "27–45 V",
+   "source": "https://pv-magazine-usa.com/2026/07/17/apsystems-introduces-plug-in-microinverter-for-u-s-balcony-and-diy-solar-markets/",
+   "source_title": "pv magazine USA, Ryan Kennedy",
+   "read": "2026-11-10",
+   "note": "Quoted: 'between 27 V and 45 V'. The maker's page gives the DC ceiling only as 'under 60V'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Recommended PV module power",
+   "value": "315 Wp to 660+ Wp",
+   "source": "https://pv-magazine-usa.com/2026/07/17/apsystems-introduces-plug-in-microinverter-for-u-s-balcony-and-diy-solar-markets/",
+   "source_title": "pv magazine USA, Ryan Kennedy",
+   "read": "2026-11-10",
+   "note": "Quoted: 'recommended PV module power ratings ranging from 315 Wp to upwards of 660 Wp'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Units per branch circuit",
+   "value": "Up to 2 EZ1-LV units on one branch circuit; up to 2 registered per system in the app",
+   "source": "https://pv-magazine-usa.com/2026/07/17/apsystems-introduces-plug-in-microinverter-for-u-s-balcony-and-diy-solar-markets/",
+   "source_title": "pv magazine USA, Ryan Kennedy",
+   "read": "2026-11-10",
+   "note": "The app limit comes from the maker's page https://usa.apsystems.com/ez1-consumers/ : 'You can register up to two EZ1 microinverters per system.' The CSA conditions (dedicated 10 A circuit or bidirectional Class A GFCI) are already on the rival pages."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price and paired accessories (maker's US store)",
+   "value": "$325.00 for the inverter; EZ1 Dual Parallel Bus Cable $47.00 (2 m) / $59.00 (4 m); APmeter zero-export control $90.00",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "A 5 m power cord is included. Free shipping covers the lower 48 states only, and orders are limited to 5 units. The page showed no stock status in the read."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "Max input voltage",
+   "value": "64 V (all five models)",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-10",
+   "note": "The maker's US page says 64 V. Retailer solar-electric.com lists 60 V for the HMS-360. The maker's figure is used here."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "Max input current by model",
+   "value": "14 A (HMS-360, -391, -420); 15 A (HMS-450); 16 A (HMS-500)",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-10",
+   "note": "One MPPT per unit, so one panel per inverter."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "Commonly used module power by model",
+   "value": "HMS-360: 280–470+ W; HMS-391: 300–510+ W; HMS-420: 320–540+ W; HMS-450: 360–600+ W; HMS-500: 400–670+ W",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-10",
+   "note": "Rated output 360/391/420/450/500 VA at 120 V (range 90–150 V). CEC peak efficiency 95.5%."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "HMS-360 short-circuit current, start-up voltage, MPPT range",
+   "value": "20 A Isc; 22 V start-up; 16–60 V MPPT",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV - Northern Arizona Wind & Sun",
+   "read": "2026-11-10",
+   "note": "Retailer spec table. The maker's datasheet PDF downloaded, but I could not extract its text. The retailer listed the HMS-360 at $157.51."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow STREAM Microinverter (US): a search summary said EcoFlow's US page calls it 'exclusively compatible with EcoFlow STREAM Ultra' and gives 3 MPPTs, 60 V max, 14 A and 450 W per MPPT. The maker's page (two URLs), Shopify storecheck and the shopsolarkits.com retailer page all returned HTTP 429, so this is left out.",
+  "APsystems EZ1-LV maker datasheet, manual and PV Module Selection Guidelines: the usa.apsystems.com document links redirect to apsystems.filecloudonline.com, which failed with a self-signed certificate error. The global.apsystems.com datasheet PDF downloaded, but its text could not be extracted. So the maker's own 60 V max-input, 18 A and 25 A figures are not cited; pv magazine is used instead.",
+  "Hoymiles HiFlow Pro LV short-circuit current for the 391–500 models and the maximum units per circuit: the maker's US page does not list them, and text could not be extracted from the maker's datasheet PDF.",
+  "EZ1-LV battery pairing (for example, AC-coupling with a portable power station): the maker's EZ1 pages do not mention batteries."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8832501
+ }
 }

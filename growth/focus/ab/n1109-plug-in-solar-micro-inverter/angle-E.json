@@ -1,5 +1,74 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states the California Energy Commission's lab-tested weighted efficiency for the US 120 V plug-in microinverters: APsystems EZ1-LV 95%, Hoymiles HMS-360/391/420-1WM-LV (HiFlow Pro LV) 95.5%, NEP BDM-1200-LV 96.5%, with no 120 V EcoFlow entry on the list.",
+ "standout": 2,
+ "standout_why": "I opened four of the rival pages. Solar Waypoint (cited) says outright that it ran no hands-on tests and uses only published specs. The balconysolarkits.us tracker (cited) gives only output ratings and calls its 'Verified' labels primary-source reads, not lab data. pluginsolarcheck.com/kits/certifications (cited) covers certification status only, with no efficiency or standby figures. howtogosolar.org lists maker ratings for mostly EU or rooftop models and names no lab. None of them gives a measured or CEC-listed efficiency for any 120 V plug-in inverter. None mentions the CEC Solar Equipment List.",
+ "decides": "It mostly confirms the EZ1-LV pick rather than changing it. The EZ1-LV is on California's grid-support list, where its 95% weighted efficiency is a point below the 96% peak on the APsystems datasheet. The Hoymiles HiFlow Pro LV sizes ChatGPT recommended are 0.5 point higher, but only the 360, 391 and 420 W models are listed, not the 450 or 500. ChatGPT's 'higher-output option to watch', the EcoFlow STREAM Microinverter, has no 120 V entry on the list. NEP's BDM-1200-LV, which turned up in ChatGPT's results but was never recommended, lists 1.2 kW at 96.5%, the highest of the plug-in-class 120 V microinverters. The gaps are small: 1.5 points is about 15 kWh a year per 1,000 kWh of DC input. So the finding mainly tells shoppers which inverters a US state lab list covers, rather than ranking them by efficiency.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+  "EcoFlow STREAM Microinverter (US)",
+  "Northern Electric & Power BDM-1200-LV",
+  "Enphase IQ8M"
+ ],
+ "findings": [
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "CEC weighted efficiency",
+   "value": "95%",
+   "source": "https://solarequipment.energy.ca.gov/Home/InverterSolarList/1000?page=7",
+   "source_title": "Grid Support Solar Inverters - Solar Equipment List - California Energy Commission",
+   "read": "2026-11-10",
+   "note": "Row 'EZ1-LV {120V}', manufacturer Altenergy Power System Inc. (APsystems): 900 VA, 120 Vac grid-support microinverter, max continuous output 0.915 kW. CEC weighted efficiency averages efficiencies measured at several load points under the CEC/Sandia test protocol. The list shows no last-updated date. The row is identical to APsystems' DS3-LV {120V} (0.915 kW, 95%). The datasheet claims 96% peak."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360/391/420-1WM-LV)",
+   "label": "CEC weighted efficiency",
+   "value": "95.5% (all three listed sizes)",
+   "source": "https://solarequipment.energy.ca.gov/Home/InverterSolarList?ManufacturerID=-1&ModelNameID=-1&Submit=Search&Rows=200&sort=NominalVoltage&sortdir=ASC",
+   "source_title": "Grid Support Solar Inverters - Solar Equipment List - California Energy Commission (sorted by nominal voltage)",
+   "read": "2026-11-10",
+   "note": "Listed max continuous output: HMS-360-1WM-LV 0.366 kW, HMS-391-1WM-LV 0.398 kW, HMS-420-1WM-LV 0.427 kW, all 120 Vac, all 95.5%. No HMS-450-1WM-LV or HMS-500-1WM-LV row appeared among the 22 120 V rows."
+  },
+  {
+   "product": "Northern Electric & Power BDM-1200-LV",
+   "label": "CEC weighted efficiency",
+   "value": "96.5%",
+   "source": "https://solarequipment.energy.ca.gov/Home/InverterSolarList?ManufacturerID=-1&ModelNameID=-1&Submit=Search&Rows=200&sort=NominalVoltage&sortdir=ASC",
+   "source_title": "Grid Support Solar Inverters - Solar Equipment List - California Energy Commission (sorted by nominal voltage)",
+   "read": "2026-11-10",
+   "note": "Row 'BDM-1200-LV {120V}': 1.2 kW, 120 Vac grid-support microinverter, max continuous output 1.1935 kW. The sibling BDM-1600-LV is also listed at 96.5% (1.597 kW). This is NEP's 'Liberty plug-in inverter', which appeared in ChatGPT's results (bertelectric.com, northernep.com) but not in its answer."
+  },
+  {
+   "product": "EcoFlow STREAM Microinverter (US)",
+   "label": "CEC grid-support listing at 120 V",
+   "value": "No 120 V EcoFlow entry among the list's 22 120 V rows (EcoFlow appears only with 208 V hybrid PCS units)",
+   "source": "https://solarequipment.energy.ca.gov/Home/InverterSolarList?ManufacturerID=-1&ModelNameID=-1&Submit=Search&Rows=200&sort=NominalVoltage&sortdir=ASC",
+   "source_title": "Grid Support Solar Inverters - Solar Equipment List - California Energy Commission (sorted by nominal voltage)",
+   "read": "2026-11-10",
+   "note": "The list holds 2,208 records. Sorting by nominal voltage ascending puts all 120 V rows at the top, and I read all 22 of them. This is an absence on one state list, not a measurement."
+  },
+  {
+   "product": "EcoFlow STREAM Microinverter (UK/EU 800 W version)",
+   "label": "Measured daily generation, Mighty Gadget (James Smythe)",
+   "value": "2.12, 3.85, 2.32 and 3.35 kWh/day (20–23 June 2026); 14.7 kWh total for June",
+   "source": "https://mightygadget.com/ecoflow-stream-microinverter-review/",
+   "source_title": "EcoFlow Stream Microinverter Review - Affordable plug in solar to cover base load and reduce electricity bills - Mighty Gadget",
+   "read": "2026-11-10",
+   "note": "Review dated 2026-06-25. UK 800 W unit, not the US 1,200 W model. Two 460 W JA Solar panels leaned against a wall in a broadly north-facing, partly shaded garden during a heatwave. Shows real yield from a poor siting, not inverter efficiency. The review reports no standby draw and no peak watts."
+  }
+ ],
+ "unsourced": [
+  "An independent bench or lab measurement (efficiency curve, night/standby draw, measured peak AC output) of any US 120 V plug-in inverter from a named reviewer such as RTINGS, Notebookcheck, c't, CNET or Stiftung Warentest. Searches turned up only maker specs, retailer copy and forum posts. chargedreviews.com/inverters/apsystems-ez1-lv says it does no independent testing.",
+  "A measured night tare (standby draw) for the EZ1-LV, HiFlow Pro LV or BDM-1200-LV. The CEC table I read has no night-tare column, and the EZ1-LV's 20 mW figure is only a maker datasheet claim.",
+  "Stiftung Warentest or c't measured efficiencies for the EU EZ1-M or HMS-800W-2T. Search showed only the test.de overview (bifacial 800 W kits) and no numbers. I did not open the paywalled reports, and they cover EU 230 V hardware anyway.",
+  "CEC weighted efficiency for the Hoymiles HMS-450-1WM-LV and HMS-500-1WM-LV, which were not among the 120 V rows on the CEC list.",
+  "Enphase IQ8M: its CEC entries are 240 V/208 V rooftop units. I did not pull its row because it is not a plug-in product."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0597825
+ }
 }

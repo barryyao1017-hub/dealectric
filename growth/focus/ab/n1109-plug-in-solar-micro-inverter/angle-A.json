@@ -1,5 +1,126 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "A",
+ "gap": "No result ChatGPT got turns the VA ratings into amps on the house circuit: APsystems EZ1-LV 900 VA = 7.5 A and Hoymiles HiFlow Pro LV 360–500 VA = 3.0–4.17 A, so one EZ1 uses 75% of the 10 A dedicated circuit that rivals cite as its install condition, and the two-unit '1,800 W on a standard 15A circuit' setup on APsystems' own consumer page adds 15 A, the full rating of a 15 A circuit.",
+ "standout": 2,
+ "standout_why": "Compared against solarwaypoint.com (cited), balconysolarkits.us (cited), pluginsolarcheck.com/kits/certifications (cited) and usa.apsystems.com EZ1 pages (cited). All give output only in VA or W. SolarWaypoint says outright that it gives no output current, efficiency or continuous-vs-peak figures. SolarWaypoint and PluginSolarCheck mention the EZ1's 10 A dedicated-circuit condition but do not give amps per inverter. None put APsystems' '1,800 W on a standard 15A circuit' claim next to that 10 A condition. None give Hoymiles' rated output current or its 95.5% CEC peak efficiency.",
+ "decides": "This confirms the EZ1-LV as the two-panel pick, but only as a single unit: one unit at 7.5 A fits a 10 A dedicated circuit, while two units add 15 A. For a shopper who can't add a dedicated circuit, the HiFlow Pro LV adds only 3.0–4.17 A per unit. That makes it the low-load choice for one panel, which ChatGPT's 'budget' label doesn't explain.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+  "EcoFlow STREAM Microinverter (US)"
+ ],
+ "findings": [
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Max continuous AC output",
+   "value": "900 VA",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Product page says 'Max output power reaching 900VA'. It gives no W figure, no output current and no efficiency. The consumer page (usa.apsystems.com/ez1-consumers/) says 'Up to 900W AC output', so the maker uses both VA and W."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Nominal AC output current",
+   "value": "7.5 A at 120 V (range 105.6–132 V)",
+   "source": "https://ussolarsupplier.com/products/apsystems-ez1-microinverter-plug-in-dual-module-inverter-for-120v-circuits",
+   "source_title": "APsystems EZ1 Microinverter – US Solar Supplier",
+   "read": "2026-11-10",
+   "note": "Retailer copy of the datasheet table. It matches the arithmetic 900 VA ÷ 120 V = 7.5 A. The maker's datasheet PDF could not be text-extracted. The page also lists max input current 18 A × 2, MPPT 27–45 V, peak efficiency 96%, and 'Maximum Units Supported: 2'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Maker's circuit claim for two units",
+   "value": "1,800 W on a standard 15 A circuit (2 × 7.5 A = 15 A)",
+   "source": "https://usa.apsystems.com/ez1-consumers/",
+   "source_title": "EZ1 – Consumers - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Quote from a video description on the page (video dated 2026-10-12): 'Two EZ1 units can even be paired together for up to 1,800W of plug-in solar power on a standard 15A circuit.' Arithmetic: 1,800 W ÷ 120 V = 15 A, the full rating of a 15 A circuit. pv magazine USA (Ryan Kennedy, 2026-07-17) also reports 'Up to two EZ1-LV units can be connected in a single branch circuit.'"
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Install condition as reported by a cited rival",
+   "value": "Dedicated 10 A circuit; 7.5 A is 75% of 10 A",
+   "source": "https://pluginsolarcheck.com/kits/certifications",
+   "source_title": "Which plug-in solar kits are UL 3700 certified? - PluginSolarCheck",
+   "read": "2026-11-10",
+   "note": "PluginSolarCheck lists 'a dedicated 10 A circuit' among the EZ1-LV installation conditions. SolarWaypoint says 'intended for dedicated circuits with a 10-amp breaker'. Neither page converts 900 VA to amps. This condition conflicts with APsystems' two-unit, 15 A circuit claim above."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "Rated output by model",
+   "value": "360 / 391 / 420 / 450 / 500 VA at 120 V (range 90–150 V)",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-10",
+   "note": "Maker page. One MPPT per unit. Max input current is 14 A (360/391/420), 15 A (450) or 16 A (500). Max input voltage is 64 V."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "CEC peak efficiency",
+   "value": "95.50% (all five models)",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-10",
+   "note": "Labelled 'CEC peak efficiency', which is not CEC weighted efficiency. APsystems' only published figure is a 96% peak, which is not CEC-labelled, so the two can't be fairly compared."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV HMS-360-1WM-LV",
+   "label": "Rated AC output current",
+   "value": "3.0 A at 120 V",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV 1-in-1 series plug-in microinverter - Northern Arizona Wind & Sun",
+   "read": "2026-11-10",
+   "note": "Retailer copy of the datasheet table. 360 VA ÷ 120 V = 3.0 A, which matches. By the same arithmetic the 500 VA model is 500 ÷ 120 = 4.17 A. The maker's datasheet PDF could not be text-extracted. Certifications listed: UL 1741, UL 3700, IEEE 1547."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "System cap (as stated by cited rivals)",
+   "value": "Up to 4 units / 1,200 W per system (1,200 W ÷ 120 V = 10 A)",
+   "source": "https://pluginsolarcheck.com/kits/certifications",
+   "source_title": "Which plug-in solar kits are UL 3700 certified? - PluginSolarCheck",
+   "read": "2026-11-10",
+   "note": "balconysolarkits.us/kits/ also gives 'up to 4 units and 1,200 W per home'. The amp conversion is my own arithmetic. I did not find this cap on the Hoymiles US page."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price, maker US store",
+   "value": "$325.00",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Free shipping to the lower 48 states. SolarWaypoint (2026-11-04) reported the direct store as sold out. I didn't check stock today."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price, retailer",
+   "value": "$281.78 (Northern Arizona Wind & Sun); $299.99 sale, $369.00 regular (US Solar Supplier)",
+   "source": "https://www.solar-electric.com/apsystems-ez1-lv-na-140219-balcony-solar-microinverter.html",
+   "source_title": "APsystems EZ1-LV-NA 140219 Balcony Solar microinverter",
+   "read": "2026-11-10",
+   "note": "The second price is from https://ussolarsupplier.com/products/apsystems-ez1-microinverter-plug-in-dual-module-inverter-for-120v-circuits, read 2026-11-10."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV HMS-360-1WM-LV",
+   "label": "Price, retailer",
+   "value": "$157.51",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV - Northern Arizona Wind & Sun",
+   "read": "2026-11-10",
+   "note": "Hoymiles has no US direct store. The page doesn't say whether shipping is included."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow STREAM Microinverter (US) output current. A search result suggested 10 A max at 120 V with 1,200 W nominal, but both us.ecoflow.com product URLs returned HTTP 429, so this is left out.",
+  "Text of the APsystems EZ1-LV maker datasheet (global.apsystems.com EZ-series_EZ1-LV.pdf) and the Hoymiles HiFlow Pro LV NA datasheet PDF. Both downloaded, but WebFetch couldn't decode them and local extraction was blocked. The current figures come from retailer copies of the tables plus VA ÷ V arithmetic.",
+  "CEC weighted efficiency for the EZ1-LV and HiFlow Pro LV. I checked the maker pages and the retailer copies of the spec tables; neither publishes it.",
+  "Breaker size and units-per-circuit in APsystems' own EZ1-LV manual. The manuals.plus copy returned 403, and the maker product page doesn't state either.",
+  "The NEC or UL 3700 rule on continuous backfeed for a 15 A receptacle circuit (whether 15 A of inverter output is allowed). I didn't open a code or standard source, so the page should not assert an 80% limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8865262000000003
+ }
 }

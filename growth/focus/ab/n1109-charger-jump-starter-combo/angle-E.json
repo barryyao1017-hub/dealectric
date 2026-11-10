@@ -1,5 +1,99 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured figure for a plug-in charger/engine starter, such as CarXplorer's Jordan Matthews cranking a drained 5.3L V8 Silverado at 25°F in under 60 seconds with the 100 A Schumacher SC1308 after a 2-minute 30 A boost, and charging a half-drained deep-cycle battery to full in 9.5 hours at 6 A.",
+ "standout": 2,
+ "standout_why": "I compared against the cited schumacherelectric.com charger archive and Advance Auto SC1309 page. The cited Schumacher page returned HTTP 429 and the Advance Auto page timed out, so I could not open either; per ChatGPT's own answer they supplied ratings and prices only. I also read the top results. Clamp & Crank (Ryder M., updated 2026-09-29) says outright that its picks come from maker specs and owner feedback, with no hands-on testing. Autogearlab (David D. Stover, 2026-09-04) and BatteryTrail (2026-10-28) list only rated amps. None gives a measured crank, charge time or float voltage. I could not open Road & Track's 'Tested' page, so I can't rule out that it has measured figures.",
+ "decides": "This supports ChatGPT's cheaper 100 A class (SC1281 / SC1308, about $79) over the $127–130 wheeled 150–200 A units for most cars and even a V8 pickup. One named tester started a drained 5.3L V8 in the cold after only a 2-minute boost. The cost is slow charging at 6 A: a half-drained battery took 9.5 h. The Drive's test of the 250 A manual SC1667 shows the bigger units start engines almost instantly, but a dead battery still needed about 4.5 h of 10 A cycles. The extra amps buy cranking headroom, not a much shorter charge.",
+ "candidates": [
+  "Schumacher SC1281",
+  "Schumacher SC1308",
+  "Schumacher SC1309",
+  "Schumacher SC1667"
+ ],
+ "findings": [
+  {
+   "product": "Schumacher SC1308",
+   "label": "Engine start on a drained truck (CarXplorer, Jordan Matthews)",
+   "value": "Cranked and started a drained 5.3L V8 Chevy Silverado in under 60 s at 25 °F, after a 2-minute 30 A boost",
+   "source": "https://carxplorer.com/schumacher-sc1308-battery-charger-review/",
+   "source_title": "Schumacher SC1308 Battery Charger Review: Worth It? - CarXplorer",
+   "read": "2026-11-10",
+   "note": "Hands-on garage test. Article dated 2026-04-19, footer says last updated 2026-11-07. Over 28 days in an unheated garage at about 20–45 °F. One tester, one vehicle."
+  },
+  {
+   "product": "Schumacher SC1308",
+   "label": "Charge time, 50%-depleted deep-cycle marine battery (CarXplorer, Jordan Matthews)",
+   "value": "9.5 h to full on the 6 A setting",
+   "source": "https://carxplorer.com/schumacher-sc1308-battery-charger-review/",
+   "source_title": "Schumacher SC1308 Battery Charger Review: Worth It? - CarXplorer",
+   "read": "2026-11-10",
+   "note": "Garage test, 2026-04-19. The article does not give the battery's Ah rating."
+  },
+  {
+   "product": "Schumacher SC1308",
+   "label": "Float cutoff voltage and display accuracy (CarXplorer, Jordan Matthews)",
+   "value": "Output cut at about 14.2 V; the display matched an external multimeter within 0.1 V; held an AGM motorcycle battery on float for 14 days with no overcharge",
+   "source": "https://carxplorer.com/schumacher-sc1308-battery-charger-review/",
+   "source_title": "Schumacher SC1308 Battery Charger Review: Worth It? - CarXplorer",
+   "read": "2026-11-10",
+   "note": "Checked with an external multimeter. Article 2026-04-19."
+  },
+  {
+   "product": "Schumacher SC1308",
+   "label": "Maker ratings (to compare with SC1281)",
+   "value": "100 A 12 V engine start, 12–30 A boost, 6–2 A charge/maintain, 2 A 6 V; supports standard, AGM, deep-cycle and 12 V LiFePO4",
+   "source": "https://shop.schumacherelectric.com/products/100a-6v-12v-fully-automatic-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter, 6-in-1 ... SC1308L",
+   "read": "2026-11-10",
+   "note": "Maker spec. The listing is the SC1308L. Same start, boost and charge ratings as the SC1281L below, so CarXplorer's test is the closest measured stand-in for ChatGPT's 100 A card."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Maker ratings",
+   "value": "100 A engine start, 30–12 A boost, 6–2 A charge, 6 V/12 V; standard, AGM, deep-cycle and 12 V LiFePO4; built-in battery and alternator tester",
+   "source": "https://shop.schumacherelectric.com/products/6-2-30-100a-6v-12v-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter, 5-in-1 ... SC1281L",
+   "read": "2026-11-10",
+   "note": "Maker spec, not a measurement. I found no named hands-on measurement of the SC1281 itself."
+  },
+  {
+   "product": "Schumacher SC1667",
+   "label": "Engine start (The Drive, Hank O'Hop)",
+   "value": "Started a John Deere 310B backhoe (219 cu in engine) almost instantly from a battery at about 11 V",
+   "source": "https://www.thedrive.com/guides-and-gear/review-schumacher-sc1666-sc1667-manual-battery-charger-and-jump-starter",
+   "source_title": "Review: Schumacher SC1667/SC1666 Manual Battery Charger and Jump Starter",
+   "read": "2026-11-10",
+   "note": "Hands-on test published 2024-04-11. Rated 250 A start, 10/20/50 A charge settings, 135-minute timer."
+  },
+  {
+   "product": "Schumacher SC1667",
+   "label": "Recovery of a dead battery (The Drive, Hank O'Hop)",
+   "value": "A battery at about 2 V reached full charge after several 10 A cycles, about 4.5 h in total",
+   "source": "https://www.thedrive.com/guides-and-gear/review-schumacher-sc1666-sc1667-manual-battery-charger-and-jump-starter",
+   "source_title": "Review: Schumacher SC1667/SC1666 Manual Battery Charger and Jump Starter",
+   "read": "2026-11-10",
+   "note": "2024-04-11. Separately, a Battery Tender Junior 800 on a group 34 battery at a similar charge level finished about 15 min before the Schumacher did on a group 24 battery at 10 A; the reviewer called that comparison 'apples to oranges'."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Charge time, 105 Ah battery (Automoblog, Kristin McClure)",
+   "value": "About 16 h to full",
+   "source": "https://www.automoblog.com/reviews/products/car-battery-chargers/",
+   "source_title": "Best Car Battery Chargers (2026) - Automoblog",
+   "read": "2026-11-10",
+   "note": "Published 2025-05-04. The page says a team member tested each product on a 2004 Subaru Forester with a multimeter, but it does not say whether the 16 h was measured or calculated. Treat it as weak."
+  }
+ ],
+ "unsourced": [
+  "Road & Track's 'Best Car Battery Chargers and Maintainers of 2026, Tested' (2025-12-10): WebFetch could not reach the site and a curl attempt was not approved, so I don't know its measured figures.",
+  "Popular Mechanics' 2023 'Best Conventional Charger/Starter' test of the SC1281 (cited by Schumacher's blog): the domain is blocked to my search and fetch tools, so I have no measured SC1281 figure from a named lab.",
+  "A named, method-stated measurement of the SC1281 or SC1309 engine start or charge time: the hits were spec tables, customer reviews, or a site whose DNS lookup failed (toolproreview.com).",
+  "Today's prices: the Schumacher store (shop.schumacherelectric.com) returned $0.00 for every product. I did not check Walmart, which ChatGPT showed, so the $79.00 / $80.48 / $126.99 / $129.64 card prices are unverified."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9558054
+ }
 }
