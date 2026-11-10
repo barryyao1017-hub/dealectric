@@ -4462,6 +4462,22 @@ PRODUCTS = [
  "fit": 'Switch or Switch 2 players who want quiet buttons and a dock in one purchase.',
  "caveats": ['EasySMX does not say which buttons are damped.', "We have no named reviewer's ear test for it yet.", 'Built around Switch and Switch 2; EasySMX names no PC support on the listing.']},
 
+{"slug": 'kf-concept-nd2-400-vnd-67mm',
+ "brand": 'K&F Concept',
+ "program": 'awin:kfconcept',
+ "category": 'lens-filter',
+ "name": 'K&F Concept ND2-400 Variable ND Filter, 67 mm, Nano-Xcel (1-9 stops as labelled)',
+ "model": 'KF01.1463',
+ "url": 'https://www.kfconcept.com/KF01.1463_nd2-400-67mm-variable-neutral-density-filter-nano-xcel',
+ "price": 79.99,
+ "verified": '2026-11-09',
+ "specs": [('Range', 'ND2–ND400 (K&F lists 1 to 9 stops; log2 400 = 8.6 stops)'), ('Thread', '67 mm (title and description; the page FAQ also says 82 mm)'), ('Reflectivity', '0.2%'), ('Coating', '28-layer multi-coating, Japanese AGC glass'), ('Frame', '7.4 mm'), ('Lens cap', '72 mm recommended (description)')],
+ "warranty": '24-month standard warranty on lens filters (K&F warranty page). It covers K&F-branded products bought from K&F or an authorized K&F reseller.',
+ "returns": '30-day refund or replacement (K&F product page)',
+ "summary": 'A 67 mm variable ND that runs from ND2 to ND400. That is enough to film at f/2.8 or f/1.8 at 1/50 s in full sun, and it costs less than the 1–5 stop True Color model.',
+ "fit": 'Video on f/2.8 zooms and f/1.8–f/1.4 primes in daylight, and any shooter who wants one filter for f/16 to about f/1.1.',
+ "caveats": ["K&F's page claims no X-pattern control, and a buyer review on that page reports an X past the ND400 mark. On wide lenses, stay below the maximum.", 'The page names both 67 mm and 82 mm threads. Check the 67 mm marking on the product you receive.', "0.2% reflectivity, against 0.1% on K&F's ND2-32 True Color."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
