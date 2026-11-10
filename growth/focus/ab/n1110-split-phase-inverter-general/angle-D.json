@@ -1,0 +1,77 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the EG4 6000XP, its 'best value' and 'budget off-grid' pick, can deliver only about 3,000 W on each 120 V leg and does not shift load between legs. Its 6,000 W rating is a 240 V total, so a house with 4,000 W of 120 V loads on one leg overloads the inverter even though the total is under 6,000 W.",
+ "standout": 2,
+ "standout_why": "I opened three of the pages ChatGPT got: ecosolarkits.com/blogs/guides/eg4-vs-sol-ark (cited), solar-electric.com's hybrid inverter buying guide (cited) and solargearscout.com/guides/off-grid-vs-hybrid-inverter (cited). Each one only says the models are '120/240V split-phase'. None gives a per-leg (L-N) rating, mentions unbalanced loads, or explains how a high-frequency unit makes its two 120 V legs. The EG4 18kPV maker page doesn't give a per-leg figure either. I couldn't open the fourth cited page, gearranking.com/hybrid-inverters/split-phase/: WebFetch failed on a self-signed certificate. I haven't scored it 3 because the 3,000 W figure comes from a named reviewer, not from EG4's own document that I could read.",
+ "decides": "The finding qualifies the 6000XP pick. The shopper typed 'split phase', which suggests a house panel full of 120 V circuits. On the 6000XP, any single leg above about 3,000 W trips the inverter, so the shopper has to balance circuits between L1 and L2 or choose another unit. Choose a bigger hybrid like the 18kPV or Sol-Ark 15K, with higher per-leg headroom, or a low-frequency transformer unit like the Sun Gold Power 6000W LF or Schneider XW Pro. The page should tell shoppers to add up the 120 V loads on each leg before buying, not to compare only the headline wattage.",
+ "candidates": [
+  "EG4 6000XP",
+  "EG4 18kPV",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "Schneider Conext XW Pro 6848",
+  "Sun Gold Power 6000W 48V Split Phase (LF)",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Maximum continuous output per 120 V leg",
+   "value": "3,000 W per leg (6,000 W total at 240 V)",
+   "source": "https://solartechonline.com/blog/eg4-6000xp-complete-guide/",
+   "source_title": "EG4 6000XP Complete Guide: Specs, Installation, and Real-World Performance (2025), Jonathan Richter, SolarTech Online, 2025-08-11",
+   "read": "2026-11-10",
+   "note": "Quoted verbatim: 'Per-leg limitation: 3000W maximum per 120V leg.' The article doesn't say EG4 is the source of this figure. A search snippet also showed it as 'max continuous line wattage 3000W' in EG4's spec sheet, but I couldn't extract that PDF's text, so it isn't used here."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Load balancing between legs, and what happens on overload",
+   "value": "No automatic balancing: 4,000 W on one 120 V leg overloads the inverter while total load is under 6,000 W",
+   "source": "https://solartechonline.com/blog/eg4-6000xp-complete-guide/",
+   "source_title": "EG4 6000XP Complete Guide: Specs, Installation, and Real-World Performance (2025), Jonathan Richter, SolarTech Online",
+   "read": "2026-11-10",
+   "note": "Quoted verbatim: 'the 6000XP cannot automatically balance loads between legs'. The troubleshooting section names the symptom: the inverter shuts down with total load under 6,000 W, caused by 'More than 3000W on single 120V leg.'"
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Continuous AC output and output voltage (maker page)",
+   "value": "12 kW continuous; split-phase 120/240 V or 120/208 V; up to 10 units in parallel for 120 kW",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-18kpv-12lv-all-in-one-hybrid-inverter/",
+   "source_title": "EG4 18kPV-12LV All-in-One Hybrid Inverter, EG4 Electronics",
+   "read": "2026-11-10",
+   "note": "The maker page gives only the 240 V total. It has no per-leg (L-N) rating and no unbalanced-load figure, so the maker doesn't publish this limit on its product page."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase (LF)",
+   "label": "Topology, split-phase output and price (maker US store)",
+   "value": "Low-frequency inverter/charger with auto-transfer switch; 'requires 240VAC input and can provide 120VAC or 240VAC output'; UL1741; $1,220.00 (compare-at $4,713)",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger, Sun Gold Power",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on sungoldpower.com (Shopify JSON). The store text calls it 'Low frequency' but gives no per-leg rating. A later product fetch returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Split-phase output, rated power and price (maker US store)",
+   "value": "Split-phase 120/240 V or single-phase 120 V output; 6,500 W rated, 13,000 VA peak; UL 1741 (ETL) for off-grid; $1,035.00",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P, Sun Gold Power",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on sungoldpower.com. The store text gives no per-leg (L-N) rating."
+  }
+ ],
+ "unsourced": [
+  "EG4 6000XP per-leg rating in EG4's own spec sheet: I downloaded eg4electronics.com/wp-content/uploads/2024/04/EG4-6000XP-Inverter-Spec-Sheet.pdf and ressupply.com/documents/eg4/6000XP_Data_Sheet.pdf, but couldn't extract their text (compressed PDF streams, and the extraction tools weren't approved). santansolar.com spec sheet 1.2.1 wasn't tried. The ManualsLib manual excerpt has no per-leg row.",
+  "Sol-Ark 15K-2P off-grid L-N (120 V) continuous rating from Sol-Ark: the sol-ark.com brochure URL returned 404, the solartown.com manual returned 403, and the practicalpreppers.com mirror of the SK150-0001 Rev5 datasheet wouldn't extract. The retailer sunwatts.com lists '4800W 40A L-N (120V)' off-grid and '6000W 50A L-N' with grid or generator, but the same listing says 8,000 W L-L off-grid, while other listings say 12,000 W. It looks mixed with 12K data and isn't a maker source, so I left it out.",
+  "EG4 18kPV and FlexBOSS21 per-leg (L-N) rating: not on the EG4 18kPV product page. I didn't check the FlexBOSS21 within the tool budget.",
+  "Schneider Conext XW Pro 6848 unbalanced-load capability: not researched within the tool budget.",
+  "Sun Gold Power 6000W LF and SPH6548P per-leg rating or unbalanced-load spec: the product pages returned HTTP 429, and the store search text has no such figure.",
+  "Whether gearranking.com/hybrid-inverters/split-phase/ (cited by ChatGPT) mentions per-leg limits: WebFetch failed on a self-signed certificate, and the curl fallback wasn't approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0339833
+ }
+}

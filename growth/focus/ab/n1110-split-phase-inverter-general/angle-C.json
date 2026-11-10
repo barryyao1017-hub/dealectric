@@ -1,0 +1,78 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that EG4's own warranties for the 18kPV (10-year) and the 6000XP (5-year) exclude 'damages incurred from voltage or current spikes due to open-loop lithium battery communications'. So the battery has to talk closed-loop with the inverter or the inverter's warranty doesn't cover that damage, and EG4's product pages only promise closed-loop with EG4 48V batteries.",
+ "standout": 2,
+ "standout_why": "I read three rival pages. ecosolarkits.com/blogs/guides/eg4-vs-sol-ark (cited) says EG4 inverters are 'designed around EG4 and BigBattery lithium batteries' and that the 6000XP parallels up to 16 units. It says nothing about EG4's warranty and gives no 18kPV parallel count or GridBOSS limit. solar-electric.com's buying guide (cited) covers only the Sol-Ark warranty, which excludes damage from batteries that aren't on Sol-Ark's list, and doesn't mention EG4 at all. solargearscout.com/guides/off-grid-vs-hybrid-inverter (cited) gives only generic rules: same model in parallel, use a battery type the maker lists. I couldn't read gearranking.com/hybrid-inverters/split-phase (cited) because of an SSL certificate error.",
+ "decides": "ChatGPT's 'best overall value' pick, the EG4 18kPV, still stands. But the page should say it suits buyers who use EG4 batteries, or another closed-loop battery on EG4's list, because pairing it with an open-loop battery leaves spike damage outside the 10-year warranty. A buyer who wants to mix battery brands should look at the Sol-Ark, whose warranty rule is similar but tied to its own approved list. The finding also separates the two EG4 cards: the 6000XP has half the warranty term (5 years against 10). And a whole-home build through EG4's GridBOSS is limited to three inverters, even though the 18kPV parallels up to 10 on its own.",
+ "candidates": [
+  "EG4 18kPV",
+  "EG4 6000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "Sol-Ark 18K-2P",
+  "Schneider Conext XW Pro 6848",
+  "Sun Gold Power 6000W 48V Split Phase Inverter Charger"
+ ],
+ "findings": [
+  {
+   "product": "EG4 18kPV",
+   "label": "Warranty exclusion for open-loop battery communication",
+   "value": "10-year parts or product replacement. Excludes 'Damages incurred from a voltage or current spikes due to open-loop lithium battery communications' (exclusion 10)",
+   "source": "https://eg4electronics.com/warranty/warranty-18kpv-12lv-inverter/?psku=IV-12000-HYB-AW-00",
+   "source_title": "EG4 18kPV All-In-One Hybrid Inverter warranty (EG4 Electronics)",
+   "read": "2026-11-10",
+   "note": "Read on the maker's warranty page. The linked document is named 18kPV-12LV-Warranty-Document-1.1.0. The page also excludes 'unauthorized firmware updates/upgrades/patches' and says the product must be bought from an EG4-approved vendor."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Warranty term and exclusion for open-loop battery communication",
+   "value": "5-year parts or product replacement. Excludes 'Damages incurred from voltage or current spikes due to open-loop lithium battery communications'",
+   "source": "https://eg4electronics.com/warranty/warranty-eg4-6000xp-all-in-one-off-grid-inverter/",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter warranty (EG4 Electronics)",
+   "read": "2026-11-10",
+   "note": "Read on the maker's warranty page. 'Product that is not purchased through an EG4 approved vendor is not covered under this warranty.'"
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Maximum units in parallel",
+   "value": "10 units, 120 kW combined output",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-18kpv-12lv-all-in-one-hybrid-inverter/",
+   "source_title": "EG4 18kPV-12LV All-In-One Hybrid Inverter (EG4 Electronics)",
+   "read": "2026-11-10",
+   "note": "Stated in Key Specifications and again in the FAQ. The page lists UL 1741 SB, CEC and CSIP and says grid export is allowed subject to the utility. It says the unit works with '48V EG4 or other battery brands' and links Battery Compatibility List v1.0.1, but I couldn't open that PDF."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Maximum units in parallel",
+   "value": "16 units, 96 kW continuous AC",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter (EG4 Electronics)",
+   "read": "2026-11-10",
+   "note": "The page says closed-loop communication supports EG4 48V batteries and links the 'EG4 6000XP Battery Compatibility List', with no version shown. It describes grid input only 'for supplemental charging'. The generator port takes up to 7 kW. It is UL 1741 certified, and UL 9540 when paired with the WallMount Indoor 280 battery."
+  },
+  {
+   "product": "EG4 FlexBOSS21 / EG4 18kPV",
+   "label": "Inverters per GridBOSS",
+   "value": "Up to 3 inverters, each delivering up to 90 A",
+   "source": "https://eg4electronics.com/flexboss21-vs-18kpv-comparing-two-of-eg4s-inverter-options/",
+   "source_title": "FlexBOSS21 vs 18kPV: Comparing Two of EG4's Inverter Options (EG4 Electronics, 2024-12-05)",
+   "read": "2026-11-10",
+   "note": "From EG4's own article: 'Both the FlexBOSS21 and 18kPV integrate with EG4's GridBOSS', and 'GridBOSS allows for up to three inverters'. For the FlexBOSS21, generator input and 200 A bypass are handled through the GridBOSS."
+  }
+ ],
+ "unsourced": [
+  "Sol-Ark 15K-2P and 18K-2P approved battery list and parallel limit: Sol-Ark's LV Battery Integration Guide Rev7 returned 404 on both sol-ark.com and www.sol-ark.com, the 15K-2P datasheet PDF had no readable text, and only dealer pages give the 12-unit figure.",
+  "Contents of EG4's battery compatibility lists for the 18kPV (v1.0.1) and the 6000XP: Santan Solar's copy returned 403, and the EG4 PDFs had no readable text.",
+  "FlexBOSS21 standalone parallel limit: EG4's spec sheet PDF had no readable text, and dealer pages disagree (10 or 16 units).",
+  "Whether EG4 allows mixing 18kPV and FlexBOSS21 units in one parallel group: no maker document I opened addresses it.",
+  "Whether the retailers ChatGPT showed (PowerGen Store, Ben's Deals) are EG4-approved vendors, which the warranty requires: I found no official EG4 dealer list.",
+  "Compatibility details for the Schneider Conext XW Pro 6848 and the Sun Gold Power 6000W split-phase unit: not researched within the tool budget.",
+  "Rival page gearranking.com/hybrid-inverters/split-phase: the fetch failed with a self-signed certificate error, so I couldn't check what it says."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0926411
+ }
+}

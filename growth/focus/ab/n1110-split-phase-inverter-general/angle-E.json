@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a named tester's measured idle draw. The Solar Lab measured the Sol-Ark 15K at 97 W in standby and the EG4 18kPV at 60–70 W idling on battery, about 0.65–0.89 kWh a day more for the Sol-Ark. SunForgeLab measured the EG4 6000XP at 55–65 W idle and 94.2% battery-to-AC efficiency.",
+ "standout": 2,
+ "standout_why": "I opened three cited rivals. ecosolarkits.com/blogs/guides/eg4-vs-sol-ark uses spec sheets only, with no idle or efficiency figure and no named tester. solar-electric.com's hybrid buying guide uses datasheets only, with no idle figure. solargearscout.com/guides/off-grid-vs-hybrid-inverter says it 'has not tested any inverter' and lists no idle draw. Among the uncited top results, wildjoule.com/best-hybrid-inverter gives only EG4's rated '~70W' for the 18kPV and an unsourced 19 W for Victron, and says it has not tested any of them. None of these pages has a measured idle figure for the Sol-Ark 15K or the 6000XP. I could not open the cited gearranking.com page (TLS certificate error), so I can't rule out that it has one.",
+ "decides": "This backs ChatGPT's EG4 18kPV pick over the Sol-Ark 15K for off-grid and battery-heavy use. In The Solar Lab's tests the two have the same 12 kW battery output, but the Sol-Ark idled 27–37 W higher: (97−70)×24 = 0.65 kWh/day to (97−60)×24 = 0.89 kWh/day, or about 237–324 kWh a year taken from the battery. The Sol-Ark also costs more. Sol-Ark keeps the edge for heavy motor loads, since the same reviewer started a 10,000 W surge compressor while the 15K was already at full rated load. For the budget pick, SunForgeLab's 6000XP data shows a real-world cost: 55–65 W idle (1.3–1.6 kWh/day) and 90.8% efficiency below 500 W.",
+ "candidates": [
+  "EG4 18kPV",
+  "Sol-Ark 15K-2P",
+  "EG4 6000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 18K-2P",
+  "Schneider Conext XW Pro 6848",
+  "Victron MultiPlus-II 48/5000 120V"
+ ],
+ "findings": [
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle draw, measured (standby)",
+   "value": "97 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K Hybrid Inverter Review | The Solar Lab",
+   "read": "2026-11-10",
+   "note": "The Solar Lab says the unit 'seemed to have an idle draw of 97W when it was in standby' after weeks of testing. No method is given. The page shows no byline or article date, only a ©2026 footer. 97 W × 24 h = 2.33 kWh/day."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Surge test, measured",
+   "value": "Started a 10,000 W surge compressor while at maximum rated load (done twice); ran at full 15 kW output with no drop noticed",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K Hybrid Inverter Review | The Solar Lab",
+   "read": "2026-11-10",
+   "note": "Load-test result reported by the reviewer. No test duration is given."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle draw, measured (on battery)",
+   "value": "60–70 W (about 1.2 A from battery)",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? | The Solar Lab",
+   "read": "2026-11-10",
+   "note": "The reviewers have the unit installed in their garage. No method is described. No byline or article date, only a ©2026 footer. 60–70 W × 24 h = 1.44–1.68 kWh/day."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Battery charging through AC bypass, measured",
+   "value": "11,400 W",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? | The Solar Lab",
+   "read": "2026-11-10",
+   "note": "The reviewers 'got it right up to 11,400W' under high load. The rating is 12,000 W. They also ran a 15 kW heater on battery alone. The 97.5% efficiency on the page is EG4's spec, not their measurement."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw, measured",
+   "value": "55–65 W",
+   "source": "https://sunforgelab.com/blog/reviews/eg4-6000xp-review/",
+   "source_title": "EG4 6000XP Hybrid Inverter Review: 18 Months of Real-World Data | SunForgeLab",
+   "read": "2026-11-10",
+   "note": "Anthony, SunForgeLab, published 2026-04-03, updated 2026-04-09. Measured 'when energized but not serving a load', with no method given. The reviewer works this out to 1.3–1.6 kWh per 24 h."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Battery-to-AC inverting efficiency, measured",
+   "value": "94.2% at 1,000–3,000 W; 90.8% under 500 W; 93.5% at 4,000–6,000 W; PV-to-battery charging 97.1%",
+   "source": "https://sunforgelab.com/blog/reviews/eg4-6000xp-review/",
+   "source_title": "EG4 6000XP Hybrid Inverter Review: 18 Months of Real-World Data | SunForgeLab",
+   "read": "2026-11-10",
+   "note": "Anthony, SunForgeLab (2026-04-03, updated 2026-04-09). Averages over 'several full-day cycles', PV → battery → AC load."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Transfer time and noise, measured",
+   "value": "12 ms average transfer (oscilloscope); 47 dB at 3 ft at 3,000 W load",
+   "source": "https://sunforgelab.com/blog/reviews/eg4-6000xp-review/",
+   "source_title": "EG4 6000XP Hybrid Inverter Review: 18 Months of Real-World Data | SunForgeLab",
+   "read": "2026-11-10",
+   "note": "The noise meter is not named, and load conditions for the transfer test are not stated."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle draw, measured (context: EG4's larger off-grid split-phase unit)",
+   "value": "107 W (2.1 A from battery)",
+   "source": "https://www.thesolarlab.com/review/eg4-12-000xp-inverter-review",
+   "source_title": "EG4 12,000XP Inverter Review | The Solar Lab",
+   "read": "2026-11-10",
+   "note": "The Solar Lab: 'We measured it at 107W (2.1A from battery)'. In their test it shut down after about 30 s when a roughly 10,000 W compressor surge hit on top of a 10,800 W load. No article date."
+  }
+ ],
+ "unsourced": [
+  "Maker-rated idle draw for the EG4 18kPV (search snippets say ~70 W normal / ~18 W standby) and the Sol-Ark 15K-2P (snippets say 90 W, SK150-0001 Rev5). The datasheet PDFs came back as unreadable compressed binary, Sol-Ark's product page and Spanish datasheet returned 404, and the 6000XP sheet on santansolar returned 403. I could not compare measured against rated values from a page I actually read.",
+  "A named measurement of idle draw or efficiency for the Victron MultiPlus-II 48/5000 120V. WildJoule's 19 W has no source, and SunForgeLab's 18–25 W is a comparison figure it did not measure.",
+  "A named measurement for the Schneider Conext XW Pro 6848. I found only a forum user's ~40 W, from a search snippet I did not open.",
+  "Named measurements for the EG4 FlexBOSS21 and Sol-Ark 18K-2P. My searches turned up no reviewer test of either.",
+  "The cited gearranking.com split-phase ranking could not be read (TLS certificate error), so I could not check whether it has measured figures.",
+  "Article dates for The Solar Lab reviews. The pages show no byline or date, only a ©2026 footer, so the 'read' date is the only date I can give."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8286893000000001
+ }
+}

@@ -1,0 +1,104 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how much of the headline split-phase rating you can draw on one 120 V leg. EG4's 6000XP manual caps output current at 25 A, which works out to about 3,000 W on a single 120 V leg, half its 6 kW label. EG4's 18kPV manual says that unit can take up to 8 kW of imbalance between L1 and L2.",
+ "standout": 2,
+ "standout_why": "I read four of the pages ChatGPT got. Eco Solar Kits 'EG4 vs Sol-Ark 2026' (cited) gives battery-only vs with-solar output and surge durations of 0.5 s, 10 s and 10 min, and it already warns that surge numbers can't be compared directly. So surge is covered. It says nothing about 120 V per-leg output, imbalance or idle draw. NAZ Solar Electric's buying guide (cited) gives battery-only vs grid output and 10 s / 0.5 s surge but has no per-leg or idle figures. Solar Gear Scout's 'Off-Grid vs Hybrid' guide (cited) says surge lasts anywhere from 0.5 s to 300 s but gives no per-leg limits. I could not open gearranking.com (cited) because of an SSL certificate error, so I can't say whether it covers this. Every page I read lists one total wattage at 240 V and never says how much of it a 120 V-heavy home can use.",
+ "decides": "This matters most for ChatGPT's 'best budget off-grid' pick. If a cabin or shop runs mostly 120 V loads, the EG4 6000XP behaves like a 3 kW inverter per leg, not 6 kW, so the shopper may need two units or a different inverter. The EG4 18kPV handles up to 8 kW of imbalance, which supports keeping it as the value pick for whole-home backup where loads are rarely balanced. I couldn't open a source for the Sol-Ark 15K's per-leg rating, so the comparison table has to footnote it as missing rather than fill it in.",
+ "candidates": [
+  "EG4 18kPV",
+  "EG4 6000XP",
+  "Sol-Ark 15K-2P",
+  "Sol-Ark 18K-2P",
+  "EG4 FlexBOSS21",
+  "Schneider Conext XW Pro 6848",
+  "Sun Gold Power 6000W 48V Split Phase Inverter Charger",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "EG4 18kPV",
+   "label": "L1/L2 load imbalance it can carry",
+   "value": "up to 8 kW",
+   "source": "https://www.manualslib.com/manual/3570402/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual p.33, split-phase service section: 'The inverter can withstand up to 8kW of imbalance between L1 and L2.' The same section advises keeping loads as balanced as possible."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle consumption, normal vs standby",
+   "value": "~70 W normal / ~18 W standby",
+   "source": "https://www.manualslib.com/manual/3570402/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual p.6 spec table: 'IDLE CONSUMPTION (NORMAL | STANDBY MODE) ~70W | ~18W'. At 70 W the unit uses about 1.7 kWh a day."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Rated AC output",
+   "value": "12 kW continuous",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-18kpv-12lv-all-in-one-hybrid-inverter/",
+   "source_title": "EG4 18kPV-12LV All-in-One Hybrid Inverter (EG4 Electronics)",
+   "read": "2026-11-10",
+   "note": "The maker's page gives only 'AC Output: 12kW continuous' and does not split on-grid from battery output."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Price",
+   "value": "$3,999.99",
+   "source": "https://signaturesolar.com/eg4-18kpv-hybrid-inverter-eg4-18kpv-12lv-48v-split-phase-120-240vac-ul1741-cec/",
+   "source_title": "EG4 18kPV Hybrid Inverter (Signature Solar)",
+   "read": "2026-11-10",
+   "note": "Signature Solar is EG4's US store. The page shows $4,898.00 struck through. ChatGPT also showed $3,999.99, at PowerGen Store."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Max continuous AC output current",
+   "value": "25 A at 240 V",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html",
+   "source_title": "EG4 6000XP User Manual v1.2 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "The manual's FAQ says '25A at 240V' and points to p.5. The p.5 output table was cut off in the copy I read. 25 A × 240 V = 6,000 W, which matches the rating. Each leg conductor carries the same 25 A, so a load on only one 120 V leg tops out at 25 A × 120 V = 3,000 W. That per-leg figure is my arithmetic, not the manual's wording."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Per-leg 120 V limit, surge and idle (named third party)",
+   "value": "3,000 W per 120 V leg; surge 12 kW for 3.5 s / 11 kW for 5 s; idle 50 W on battery, 30 W on PV only",
+   "source": "https://solartechonline.com/blog/eg4-6000xp-complete-guide/",
+   "source_title": "EG4 6000XP Complete Guide (SolarTech, Jonathan Richter, 2025-08-11)",
+   "read": "2026-11-10",
+   "note": "SolarTech says 'Per-leg limitation: 3000W maximum per 120V leg' and that 4,000 W on one leg overloads the inverter. That matches the 25 A arithmetic above. SolarTech cites a source only for the idle figure (Signature Solar and ShopSolar, no link)."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Max continuous AC output and price",
+   "value": "15,000 W; $5,669.33",
+   "source": "https://www.solar-electric.com/sol-ark-sa-15k-pre-wired-hybrid-inverter-system.html",
+   "source_title": "Sol-Ark 15K-2P Limitless Pre-wired Hybrid Inverter System (NAZ Solar Electric)",
+   "read": "2026-11-10",
+   "note": "NAZ's product page has no per-leg, battery-only, surge or idle figures. Its buying guide (a cited rival) gives 12 kW battery-only and 24 kVA for 10 s off-grid surge."
+  },
+  {
+   "product": "general",
+   "label": "Surge figures quoted by rivals over different time windows",
+   "value": "0.5 s (EG4 12kPV, FlexBOSS18), 10 s (Sol-Ark 12K/15K/18K), 10 min (EG4 18kPV: 13.5 kW without PV, 14.7 kW with PV)",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared (Eco Solar Kits)",
+   "read": "2026-11-10",
+   "note": "This rival page already has the surge-duration point, so it isn't new. It gives the 6000XP's 12 kW surge with no duration."
+  }
+ ],
+ "unsourced": [
+  "Sol-Ark 15K-2P and 18K-2P per-leg 120 V or imbalance rating. Sol-Ark's 15K product and knowledge-hub URLs returned 404, WebFetch couldn't read the datasheet PDF text, the Portlandia specs page returned 429, and the search pointed to the 15K installation manual but I didn't open it. The figure needs to come from the 15K-2P manual's unbalanced-load section.",
+  "EG4 18kPV spec-sheet line 'continuous line wattage 8000W per 120V'. I saw it only in a search snippet because WebFetch couldn't extract text from the spec-sheet PDFs, so I used the manual's 8 kW imbalance statement instead.",
+  "EG4 6000XP per-leg limit in EG4's own words. The manual's p.5 output table was truncated, and EG4's and Signature Solar's 6000XP product URLs returned 404.",
+  "EG4 FlexBOSS21, Schneider XW Pro 6848 and both Sun Gold Power units (Dealectric lists them) per-leg or imbalance ratings. I didn't research these within the tool budget.",
+  "Temperature derating curves for any candidate. I found no maker figure on a page I could read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0170649999999999
+ }
+}

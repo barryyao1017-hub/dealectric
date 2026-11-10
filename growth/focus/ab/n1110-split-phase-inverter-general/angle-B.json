@@ -1,0 +1,111 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out the yearly energy the inverter burns just by being switched on (idle W × 8,760 h): about 788 kWh/yr for the Sol-Ark 15K, 613 kWh/yr for the EG4 18kPV, 438 kWh/yr for the EG4 6000XP and 70 kWh/yr for the Schneider XW Pro 6848. None works the 18kPV's daily idle draw (1.68 kWh) out as about 12% of a 14.3 kWh battery.",
+ "standout": 1,
+ "standout_why": "I compared against the cited ecosolarkits.com/blogs/guides/eg4-vs-sol-ark, solar-electric.com's buying guide and solargearscout.com/guides/off-grid-vs-hybrid-inverter, plus the top uncited results liveoffthegrid.com/specs/inverters and wildjoule.com (best hybrid inverter, best off-grid inverter). Ecosolarkits already lists battery-only cost per kW. Liveoffthegrid already shows idle W × 24 = Wh/day and cost per kW for 10 split-phase models. Wildjoule states 1.7 kWh/day for the 18kPV and 1.2 kWh/day for the 6000XP. What's missing everywhere: yearly idle energy, idle as a share of a battery bank, and a fix for liveoffthegrid's Sol-Ark 15K cost per kW, which divides by the 15 kW PV-assisted rating instead of the 12 kW battery-only rating. That fix moves it from $383 to $479 per kW. These add to the rivals' figures but don't give the page a new fact.",
+ "decides": "It backs the EG4 18kPV as the value pick for whole-home hybrid use: about $333–$408 per battery-only kW against the Sol-Ark 15K's $471–$479, and it idles 20 W lower (613 vs 788 kWh/yr). For off-grid cabins the EG4 6000XP is cheapest per kW ($250). The Schneider XW Pro costs the most per kW ($544) but wastes about 1/9 the 18kPV's idle energy, about 1/11 the Sol-Ark 15K's and about 1/6 the 6000XP's. That matters on a small battery with little winter sun. Dealectric's own Sun Gold Power 6000W unit is cheap at $203/kW but has no MPPT, so it needs a separate solar charge controller, and every variant showed as sold out on 2026-11-10.",
+ "candidates": [
+  "EG4 18kPV",
+  "EG4 6000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "Schneider Conext XW Pro 6848",
+  "Sun Gold Power 6000W 48V Split Phase Inverter Charger"
+ ],
+ "findings": [
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle energy per day and per year",
+   "value": "1,680 Wh/day; 613 kWh/yr",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-10",
+   "note": "Idle draw 70 W per liveoffthegrid (wildjoule.com/best-hybrid-inverter also says 'about 70W in normal mode'). 70 W × 24 h = 1,680 Wh; 70 W × 8,760 h = 613 kWh. I couldn't extract text from the maker spec sheet PDF."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle as share of a 14.3 kWh battery per day",
+   "value": "11.7%/day",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-10",
+   "note": "1.68 kWh ÷ 14.3 kWh = 11.7%. 14.3 kWh is an example bank size I chose, not a product spec."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Cost per battery-only kW",
+   "value": "$408/kW at $4,898; $333/kW at $4,000",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "$4,898 ÷ 12 kW battery-only = $408. The $4,000 list price is from liveoffthegrid (recorded 2026-08-19): $4,000 ÷ 12 = $333."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle energy per day and per year",
+   "value": "2,160 Wh/day; 788 kWh/yr",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-10",
+   "note": "Idle 90 W. 90 × 24 = 2,160 Wh; 90 × 8,760 = 788 kWh."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Cost per battery-only kW",
+   "value": "$471/kW at $5,650; $479/kW at $5,750",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "$5,650 ÷ 12 kW = $471. Ecosolarkits and the solar-electric.com buying guide both give 12 kW battery-only (15 kW only while PV is producing). Liveoffthegrid divides $5,750 by 15 kW to get $383; on the 12 kW battery-only rating it is $5,750 ÷ 12 = $479."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle energy per year; cost per kW",
+   "value": "438 kWh/yr; $250/kW",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "Ecosolarkits: $1,499 ÷ 6 kW = $250. Idle 50 W per liveoffthegrid.com/specs/inverters and wildjoule.com/best-off-grid-inverter: 50 × 8,760 = 438 kWh/yr."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Cost per battery-only kW",
+   "value": "$300/kW",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "$3,599.99 ÷ 12 kW battery-only = $300 (16 kW only with solar/grid)."
+  },
+  {
+   "product": "Schneider Conext XW Pro 6848",
+   "label": "Idle energy per year; cost per kW",
+   "value": "70 kWh/yr; $544/kW",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-10",
+   "note": "Idle 8 W × 8,760 h = 70 kWh. $3,699 ÷ 6.8 kW = $544. The 8 W is liveoffthegrid's figure; I couldn't confirm whether it is search mode or full-on idle."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Inverter Charger",
+   "label": "Cost per continuous kW",
+   "value": "$203/kW",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-10",
+   "note": "$1,220 (compare-at $1,743) ÷ 6 kW = $203. All variants showed as sold out. No built-in MPPT: the FAQ says it needs an external solar controller. 60 A charger, UL1741 (48V model)."
+  }
+ ],
+ "unsourced": [
+  "Idle and power-saver draw for the Sun Gold Power 6000W 48V split-phase: a search snippet said 81 W / 30 W, but the maker page I opened has no figure and the SolarTown spec PDF returned 403. I used no snippet value.",
+  "Idle draw for the Sun Gold Power SPH6548P: wildjoule says it isn't published, and the SPH user manual PDF on Shopify CDN had no readable text, so I couldn't confirm it covers that model.",
+  "Maker spec-sheet confirmation of idle draw and battery-only output for the EG4 18kPV and 6000XP: both spec PDFs downloaded but had no readable text, and the eg4electronics.com 18kPV page lists no idle figure.",
+  "Today's maker-store prices for EG4 (Signature Solar) and Sol-Ark: storecheck was blocked (HTTP 403 on sungoldpower.com) and I didn't run it for the others within the tool budget, so EG4 and Sol-Ark costs per kW use ecosolarkits' and liveoffthegrid's posted prices.",
+  "Gearranking split-phase list (cited by ChatGPT): fetch failed with a TLS certificate error, so I couldn't compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8210503
+ }
+}
