@@ -69,6 +69,7 @@ CATEGORIES = {
     "battery-box": ('Battery boxes', 'Battery boxes and smart battery boxes for 12V trolling-motor and marine batteries.'),
     "amplifier": ('Amplifiers', 'Stereo, 2.1 and subwoofer amplifiers that power passive speakers and passive subwoofers.'),
     "trail-camera": ('Trail cameras', 'Motion-triggered outdoor cameras for wildlife, hunting and property watch, with no-glow night vision and battery or solar power.'),
+    "hdmi-extender": ('HDMI extender', 'Matched transmitter and receiver pairs that carry an HDMI signal over Cat cable farther than an HDMI cable reaches.'),
 }
 
 PRODUCTS = [
@@ -4887,6 +4888,40 @@ PRODUCTS = [
  "summary": "BLUETTI's 20 A cable from MC4 solar panel leads to a station's XT60 input.",
  "fit": "BLUETTI's US cable page lists it for the Elite 200 V2, Elite 300 and Elite 400; the Elite 200 V2 ships without a solar charging cable.",
  "caveats": ["Length and wire gauge are not stated on BLUETTI's US listing."]},
+
+{"slug": 'panasonic-pt-vmz62',
+ "brand": 'Panasonic',
+ "program": 'amazon:us',
+ "asin": 'B0H46WFD51',
+ "category": 'projector',
+ "name": 'Panasonic PT-VMZ62 6,500-Lumen WUXGA Laser 3LCD Projector, White',
+ "model": 'PT-VMZ62',
+ "url": 'https://www.amazon.com/dp/B0H46WFD51',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Brightness', '6,500 lm (ANSI)'), ('Resolution', 'WUXGA, 1920×1200'), ('Throw ratio', '1.09–1.77:1, 1.6× manual zoom'), ('Image size', '30–300 in'), ('Lens shift', '+44% vertical, ±20% horizontal'), ('Keystone', 'Vertical ±25°, horizontal ±35°'), ('Noise', '35 dB Normal and Eco, 25 dB Quiet 2'), ('Power', '280 W Normal, 215 W Eco, 320 W max (3.3 A), AC 100–240 V'), ('Inputs', '2× HDMI, 1× DIGITAL LINK RJ-45 (HDBaseT compliant), LAN, D-sub 15 computer, D-sub 9 serial, USB-A'), ('Light source life', '20,000 h to 50% output (Normal), 24,000 h (Eco)'), ('Weight', 'Approx. 6.9 kg (15.2 lb)')],
+ "warranty": "Panasonic's US projector warranty, linked from the Amazon listing's Warranty & Support section (2026-11-10)",
+ "returns": "Amazon's return policy for the listing",
+ "summary": 'A 6,500-lumen WUXGA laser projector for a sanctuary with the lights on. It draws 280 W in Normal mode and weighs 15.2 lb.',
+ "fit": 'Medium sanctuaries where the ceiling mount sits about 1.1–1.8 times the screen width from the screen (11.6–18.8 ft for a 150-inch 16:10 screen).',
+ "caveats": ["Panasonic's spec file for this model is marked tentative.", "For a mount farther than 1.77× the screen width from the screen, the lens can't zoom out far enough. Panasonic's Digital Zoom Extender reaches 2.21:1 by cropping the image digitally rather than with the lens.", 'Its HDMI inputs accept 4K only at 30p.']},
+
+{"slug": 'avaccess-4kex70-h2-hdbaset-extender',
+ "brand": 'AV Access',
+ "program": 'amazon:us',
+ "asin": 'B073QL6YT3',
+ "category": 'hdmi-extender',
+ "name": 'AV Access 4KEX70-H2 HDBaseT HDMI Extender Kit (transmitter + receiver), up to 230 ft',
+ "model": '4KEX70-H2',
+ "url": 'https://www.amazon.com/dp/B073QL6YT3',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Reach, 1080p@60 36bpp', '60 m / 197 ft on Cat5e/6; 70 m / 230 ft on Cat6a/7'), ('Reach, 4K@60 4:4:4 HDR', '35 m / 115 ft on Cat5e/6; 40 m / 131 ft on Cat6a/7'), ('Passive HDMI for comparison', '15 m / 49 ft at 1080p; 10 m / 33 ft at 4K30'), ('Resolutions', 'Includes 1920×1200@60 (VESA); up to 4096×2160@60'), ('Power', 'One DC 18 V 1 A adapter at either end powers both units; 12.8 W max for the pair'), ('In the box', 'Transmitter, receiver, 18 V adapter, IR emitter, IR receiver, 4 mounting brackets, 2 Phoenix connectors, manual'), ('Extras', 'HDCP 2.2, 2-way IR, RS-232')],
+ "warranty": '1-year limited warranty on the main unit (AV Access warranty policy, read 2026-11-10)',
+ "returns": "Amazon's return policy for the listing",
+ "summary": "A matched HDBaseT transmitter and receiver that carries the booth computer's HDMI picture to a ceiling projector over one Cat cable. It reaches four times as far as a plain HDMI cable at 1080p.",
+ "fit": 'Cable routes from the booth to the projector longer than 49 ft and up to 197 ft on Cat5e/6 or 230 ft on Cat6a.',
+ "caveats": ['AV Access says it works only over a direct cable from transmitter to receiver, not through an Ethernet switch.', "One transmitter works with only one receiver. Plug the receiver into the projector's HDMI input. AV Access doesn't say the transmitter works with a projector's built-in HDBaseT port.", 'At 4K the reach drops to 115 ft on Cat5e/6.', "The Cat cable isn't included. Use T568B straight-through cable, as AV Access recommends."]},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
