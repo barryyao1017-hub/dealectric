@@ -1,5 +1,63 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured latency for any HDMI-over-Cat6 transport; the only named measurement found is SC&T's own 100 m 4K60 test, which recorded under 1 ms for HDBaseT 3.0, about 40 ms for 1G SwiftSync and 40–300 ms for an H.265 extender. It did not test any candidate kit.",
+ "standout": 1,
+ "standout_why": "I compared against the two cited OREI help-center pages (UHD12-EX115-K and UHD14-EXB400-K) and checked the other OREI support results by title. The cited pages give rated distances, 18 Gbps bandwidth and power draw (8.28 W and 35 W), but no latency figure and no measured result of any kind. The SC&T latency numbers are therefore new to the shopper. They are weak, though: a maker that sells all three technologies ran the test on its own hardware. No candidate kit was tested and no independent lab took part, so this does little to set a Dealectric page apart.",
+ "decides": "It does not change the pick. At most it supports one general point. HDBaseT kits such as the OREI UHD14-EXB400-K send uncompressed video and add negligible delay (SC&T measured under 1 ms for HDBaseT 3.0, and the OREI kit's HDBaseT version wasn't confirmed). Compressed H.265 'over IP' extenders can add 40–300 ms, which matters for gaming or lip-sync. No source tested the OREI UHD12-EX115-K, the J-Tech JTECH-14EX60-AE or the OREI UHD14-EXB400-K, so no measurement separates the three candidates.",
+ "candidates": [
+  "OREI UHD12-EX115-K",
+  "J-Tech Digital JTECH-14EX60-AE",
+  "OREI UHD14-EXB400-K"
+ ],
+ "findings": [
+  {
+   "product": "general (SC&T HE02U-4K6G, HDBaseT 3.0)",
+   "label": "Measured latency, 4K60 over 100 m of CAT cable",
+   "value": "<1 ms",
+   "source": "https://www.sct.com.tw/articles/hdmi-transmission-technology-test-report-hdbaset3-h265-swiftsync",
+   "source_title": "HDBaseT vs H.265 vs SwiftSync: 4K HDMI Extender Latency Comparison",
+   "read": "2026-11-10",
+   "note": "Test by Smart Cabling & Transmission Corp. (SC&T), dated 2025-10-22, which makes and sells the products tested. Setup: a PC sending 4K60 into an HDMI splitter feeding three extenders on 100 m runs. A quad-view matrix showed the outputs, and a 4K capture box recorded them against on-screen millisecond timers, with mouse and window-drag tests. Not a candidate product."
+  },
+  {
+   "product": "general (SC&T HKM01-4K6G, 1G SwiftSync IP)",
+   "label": "Measured latency, same 100 m test",
+   "value": "~40 ms",
+   "source": "https://www.sct.com.tw/articles/hdmi-transmission-technology-test-report-hdbaset3-h265-swiftsync",
+   "source_title": "HDBaseT vs H.265 vs SwiftSync: 4K HDMI Extender Latency Comparison",
+   "read": "2026-11-10",
+   "note": "Same SC&T test and method as above. The page gives no separate figures for 4K30 and 4K60."
+  },
+  {
+   "product": "general (unnamed H.265 HDMI extender)",
+   "label": "Measured latency, same 100 m test",
+   "value": "40–300 ms",
+   "source": "https://www.sct.com.tw/articles/hdmi-transmission-technology-test-report-hdbaset3-h265-swiftsync",
+   "source_title": "HDBaseT vs H.265 vs SwiftSync: 4K HDMI Extender Latency Comparison",
+   "read": "2026-11-10",
+   "note": "Same SC&T test. The H.265 unit has no model number on the page. 40–300 ms is roughly 2.4–18 frames at 60 Hz (÷16.7 ms per frame)."
+  },
+  {
+   "product": "general (Steetek HT202P, 1:1 extender, not a splitter)",
+   "label": "Reviewer-measured delay over a 130 ft CAT6 run",
+   "value": "<1 ms",
+   "source": "https://www.propelrc.com/best-hdmi-extenders-over-ethernet/",
+   "source_title": "8 Best HDMI Extenders Over Ethernet (November 2026)",
+   "read": "2026-11-10",
+   "note": "Richard J. Gross, Propel RC, page dated 2026-09-17. He writes 'I measured less than 1ms of delay' but describes no method or instrument. Not a candidate product, and it's an affiliate roundup, so this is low weight."
+  }
+ ],
+ "unsourced": [
+  "Measured input lag or latency for the OREI UHD12-EX115-K, the J-Tech Digital JTECH-14EX60-AE or the OREI UHD14-EXB400-K from RTINGS, TechRadar, PCMag, TechHive/Macworld, Tom's Hardware, CNET, Wirecutter, Audioholics, Sound & Vision or Residential Systems. Searches turned up no review of these kits from any of those outlets.",
+  "A measured maximum working distance at 4K60 over Cat6 for any candidate kit. OREI publishes only rated distances: 115 ft for the UHD12-EX115-K and 394 ft for the UHD14-EXB400-K. Retailer listings give 196 ft for the J-Tech, but I didn't open J-Tech's own product page.",
+  "Measured power draw or heat for any candidate kit. OREI states only the rated maximums: 8.28 W for the UHD12-EX115-K and 35 W for the UHD14-EXB400-K.",
+  "Whether the J-Tech JTECH-14EX60-AE compresses video (it's sold as 'over Ethernet'). Retailer listings don't say, and I didn't open J-Tech's spec sheet.",
+  "Which HDBaseT version the OREI UHD14-EXB400-K uses. I didn't open its spec sheet, so the SC&T HDBaseT 3.0 figure can't be applied to it directly."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 15,
+  "cost_usd_list": 0.7316028
+ }
 }

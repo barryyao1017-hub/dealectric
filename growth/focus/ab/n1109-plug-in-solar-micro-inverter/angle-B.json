@@ -1,5 +1,146 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got gives each inverter's yearly output in kWh or its price per yearly kWh. In NREL PVWatts v8 for Kansas City, a 900 VA APsystems EZ1-LV with matched panels makes about 1,288 kWh a year at a 20° tilt and about 865 kWh hung flat (vertical) on a balcony. That works out to $0.25 to $0.38 of inverter price per yearly kWh. A 360 VA Hoymiles HiFlow Pro LV makes about 515 kWh (20° tilt) or 346 kWh (vertical), which is $0.31 to $0.46 per yearly kWh.",
+ "standout": 2,
+ "standout_why": "I read Solar Waypoint (cited), pluginsolarcheck.com/kits/compare and howtogosolar.org. Solar Waypoint has $/VA ($0.36 for the EZ1-LV, $0.41 for the HiFlow 360) and amps (VA ÷ 120 V), so cost per rated watt and amps already exist. Its only yearly figure is a general example (0.5 to 1.5 kWh a day, or 183 to 548 kWh a year) that it calls 'not a product forecast'. pluginsolarcheck lists $/W of panel but no kWh, payback or amps. howtogosolar gives no production figures and does not cover the EZ1-LV, HiFlow Pro or STREAM. None of them gives yearly kWh for each inverter, cost per yearly kWh, or the drop for panels hung vertically on a balcony railing.",
+ "decides": "This supports ChatGPT's pick of the EZ1-LV. It gives 2.5× the yearly energy of a 360 VA HiFlow Pro LV (1,288 vs 515 kWh) at a lower inverter cost per yearly kWh ($0.25 vs $0.31). At the US average rate that is about $234 vs $94 a year. It also matters for balcony buyers: hanging the panels vertically cuts yearly output by about a third. From November to January, though, a vertical array makes more than one at 20° (December: 98.4 vs 80.6 kWh per kW), so railing mounts lose mostly in summer. Caveats: the APsystems page carries a 5-unit order limit, and two rival pages say the EZ1-LV is sold out. I could not source the EcoFlow STREAM's AC rating, so it is left out of the comparison.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360-1WM-LV)",
+  "Hoymiles HiFlow Pro LV (HMS-500-1WM-LV)",
+  "EcoFlow STREAM Microinverter",
+  "Northern Electric Power BDM-1200-LV (Liberty)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PVWatts yearly AC yield per kW of panels, 20° tilt, south-facing",
+   "value": "1,430.9 kWh/kW per year (capacity factor 16.3%)",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=1&module_type=0&losses=14&array_type=0&tilt=20&azimuth=180&dc_ac_ratio=1.0&lat=39.10&lon=-94.58",
+   "source_title": "NREL (NLR) PVWatts v8.5.0 API, Kansas City MO, NSRDB weather file 751490",
+   "read": "2026-11-10",
+   "note": "Settings: standard module, 14% system losses, fixed open rack, panel watts equal to inverter rating (DC/AC ratio 1.0). Kansas City is near the middle of the US."
+  },
+  {
+   "product": "general",
+   "label": "PVWatts yearly AC yield per kW of panels, vertical (balcony railing), south-facing",
+   "value": "960.5 kWh/kW per year (capacity factor 11.0%)",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=1&module_type=0&losses=14&array_type=0&tilt=90&azimuth=180&dc_ac_ratio=1.0&lat=39.10&lon=-94.58",
+   "source_title": "NREL (NLR) PVWatts v8.5.0 API, Kansas City MO",
+   "read": "2026-11-10",
+   "note": "960.5 / 1,430.9 = 0.67, so a vertical mount makes 33% less over a year. In December the vertical array makes 98.4 kWh/kW against 80.6 kWh/kW at 20° tilt."
+  },
+  {
+   "product": "general",
+   "label": "US average residential electricity price",
+   "value": "18.16 ¢/kWh (August 2026)",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly Table 5.6.A",
+   "read": "2026-11-10",
+   "note": "Latest month in the table. August 2025 was 17.57 ¢/kWh."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Maximum continuous output",
+   "value": "900 VA",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Same page: 2 inputs with separate MPPT, 12-year warranty, CSA-certified to UL 3700."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price, APsystems US store",
+   "value": "$325.00",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "Free shipping to the lower 48 states, 5-unit order limit. Solar Waypoint (checked 2026-11-03) and pluginsolarcheck both list it as sold out. The maker page as read did not show stock status."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Yearly AC output with 900 W of panels",
+   "value": "≈1,288 kWh/yr at 20° tilt; ≈865 kWh/yr vertical",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=1&module_type=0&losses=14&array_type=0&tilt=20&azimuth=180&dc_ac_ratio=1.0&lat=39.10&lon=-94.58",
+   "source_title": "NREL (NLR) PVWatts v8.5.0 API, Kansas City MO",
+   "read": "2026-11-10",
+   "note": "0.9 kW × 1,430.9 = 1,287.8 kWh; 0.9 kW × 960.5 = 864.5 kWh."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Inverter price per yearly kWh, and yearly bill offset",
+   "value": "$0.25 per yearly kWh (20° tilt) / $0.38 (vertical); ≈$234/yr (20° tilt) / ≈$157/yr (vertical)",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-10",
+   "note": "$325 / 1,287.8 = $0.252; $325 / 864.5 = $0.376; 1,287.8 × $0.1816 = $233.9; 864.5 × $0.1816 = $157.0. Inverter only, no panels. Assumes all output offsets bought power."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360-1WM-LV)",
+   "label": "Rated output, specs, price",
+   "value": "360 VA, 3.0 A rated output, $157.51",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV 1-in-1 series plug-in microinverter (Northern Arizona Wind & Sun)",
+   "read": "2026-11-10",
+   "note": "Also on this page: max input current 14 A, MPPT 16–60 V, peak efficiency 95.5%, UL 1741 / UL 3700 / IEEE 1547. Stock status not shown. The 360 VA rating is confirmed on hoymiles.com/us/products/hiflow-pro-lv-series.html, which lists CEC efficiency of 95.5% and one MPPT."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360-1WM-LV)",
+   "label": "Yearly AC output with 360 W of panels",
+   "value": "≈515 kWh/yr at 20° tilt; ≈346 kWh/yr vertical",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=1&module_type=0&losses=14&array_type=0&tilt=20&azimuth=180&dc_ac_ratio=1.0&lat=39.10&lon=-94.58",
+   "source_title": "NREL (NLR) PVWatts v8.5.0 API, Kansas City MO",
+   "read": "2026-11-10",
+   "note": "0.36 kW × 1,430.9 = 515.1 kWh; 0.36 kW × 960.5 = 345.8 kWh."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360-1WM-LV)",
+   "label": "Inverter price per yearly kWh, and yearly bill offset",
+   "value": "$0.31 per yearly kWh (20° tilt) / $0.46 (vertical); ≈$94/yr (20° tilt) / ≈$63/yr (vertical)",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV (Northern Arizona Wind & Sun)",
+   "read": "2026-11-10",
+   "note": "$157.51 / 515.1 = $0.306; $157.51 / 345.8 = $0.455; 515.1 × $0.1816 = $93.5; 345.8 × $0.1816 = $62.8."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-500-1WM-LV)",
+   "label": "Yearly AC output with 500 W of panels",
+   "value": "≈715 kWh/yr at 20° tilt; ≈480 kWh/yr vertical",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles",
+   "read": "2026-11-10",
+   "note": "Rated 500 VA, 16 A max input, 400–670+ W commonly used module. 0.5 × 1,430.9 = 715.4 kWh; 0.5 × 960.5 = 480.3 kWh (PVWatts runs above)."
+  },
+  {
+   "product": "EcoFlow STREAM Microinverter",
+   "label": "Price, EcoFlow US store",
+   "value": "$369.00, in stock",
+   "source": "https://us.ecoflow.com/products/stream-microinverter",
+   "source_title": "EcoFlow STREAM Microinverter (EcoFlow US store, via storecheck)",
+   "read": "2026-11-10",
+   "note": "Store text: UL 1741 certified, 10-year warranty, plug-in install 'currently permitted in Utah, Maryland, Connecticut and Colorado'."
+  },
+  {
+   "product": "Northern Electric Power BDM-1200-LV (Liberty)",
+   "label": "CEC weighted efficiency and recommended max PV",
+   "value": "95.5% CEC; 1,200 Wp recommended max PV; 2 inputs at 17 A each",
+   "source": "https://northernep.com/products/microinverters/liberty-plug-in-inverter/",
+   "source_title": "BDM-1200-LV - NEP – Northern Electric Power",
+   "read": "2026-11-10",
+   "note": "The page's spec table is labelled 'BDM 800' and says 800 W rated AC, so the 1200-LV's AC rating is unclear. Lists UL 1741 but not UL 3700. Left out of the yield math."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow STREAM Microinverter AC output rating: the EcoFlow US product page returned HTTP 429 twice, and the storecheck text has no wattage. Without it I could not work out its yearly kWh or $ per yearly kWh.",
+  "BDM-1200-LV rated AC output and price: the NEP page's table is for the BDM 800, and the July 2025 datasheet PDF was not opened.",
+  "EZ1-LV and HiFlow Pro LV CEC/peak efficiency from the maker datasheets: the PDFs (global.apsystems.com EZ-series_EZ1-LV.pdf and the solar-electric.com mirrors) came back as binary I could not read, and pdftotext was not permitted.",
+  "HMS-500-1WM-LV price: not checked. storecheck on ussolarsupplier.com and self2solar.com returned HTTP 429.",
+  "EZ1-LV current in-stock status and a second retailer price: SanTan $275 appears only on Solar Waypoint, and the self2solar storecheck returned HTTP 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9155697000000003
+ }
 }

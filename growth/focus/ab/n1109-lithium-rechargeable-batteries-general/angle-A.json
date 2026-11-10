@@ -1,5 +1,166 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "A",
+ "gap": "No result ChatGPT got states that once you swap printed ratings for measured energy, the 38% capacity lead the XTAR 4150 mWh AA has over the EBL 3000 mWh AA on the label shrinks to roughly 0.5–4.5%: XTAR measured 3,420 mWh (82% of its rating) and EBL measured 3,273–3,404 mWh (109–113% of its rating).",
+ "standout": 2,
+ "standout_why": "I checked against charge-test.com (cited in both chats), lightandmatter.org (cited in chat 2), xtar.cc test results and best-batteries.com. digitalcameraworld.com came back truncated and xtardirect's product page returned HTTP 429, so I could not compare against either. Charge-test gives the XTAR measured figures (CLR 4300 at 86% of its rating, XTAR 4150 at 3,420 mWh) but does not test EBL or Pale Blue. Light And Matter gives EBL's measured 3,273–3,404 mWh but does not compare it with XTAR. Each half is already published on a cited page. No page puts them side by side or says that the label gap mostly disappears. No page states an end-of-life point for any maker's cycle-life claim. Charge-test does not test above 1 A, so how the cells hold up at higher current is only on xtar.cc, which ChatGPT got but did not cite.",
+ "decides": "ChatGPT called the XTAR 4150 'best overall' for 'high capacity' and the EBL 3000 mWh 'budget'. On measured energy the two are close: within about 5%, or 6–11% if you use XTAR's own 0.25 A figure (3,605 mWh). So the pick between them should rest on price per pack, charger fit and high-current behaviour, not on the mWh printed on the label. The XTAR CLR 4300 is still the measured capacity leader at 3,703 mWh. Its lead shrinks at high drain: about 2,300–2,440 mAh at 2 A against 2,676 mAh at 1 A. Caveat: the XTAR and EBL figures come from different test rigs (charge-test averaged 0.1/0.4/1 A; Light And Matter used an XTAR VX4 V2 with no current stated). This is directional, not a head-to-head test.",
+ "candidates": [
+  "XTAR 1.5V AA 4150mWh",
+  "XTAR 1.5V AA CLR 4300",
+  "EBL 1.5V AA 3000mWh Li-ion",
+  "Paleblue AA USB-C (PB-AA-C)"
+ ],
+ "findings": [
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "Rated energy / charge",
+   "value": "4,150 mWh / 2,500 mAh",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-4150mwh-battery-set",
+   "source_title": "XTAR 4150mWh/2500mAh 1.5V AA Lithium Battery with Low Voltage Indicator – XTARdirect",
+   "read": "2026-11-10",
+   "note": "Read from the maker's Shopify store data with storecheck search. A full page fetch returned HTTP 429. 4,150 / 1.5 V = 2,767 mAh, so XTAR's stated 2,500 mAh is not mWh divided by 1.5."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "Measured energy",
+   "value": "3,420 mWh average (82% of rated 4,150 mWh)",
+   "source": "https://charge-test.com/best-rechargeable-lithium-aa-batteries-in-2026-xtar-clr-4300-tested/",
+   "source_title": "Best Rechargeable Lithium AA Batteries in 2026? XTAR CLR 4300 Tested - Charge-Test",
+   "read": "2026-11-10",
+   "note": "Charge-Test average over 0.1 A, 0.4 A and 1 A discharges. Cutoff voltage not stated. 3,420 / 4,150 = 0.824."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "Measured energy at low current (maker-hosted)",
+   "value": "3,605 mWh; 2,352–2,422 mAh per cell (avg 2,392 mAh) at ~0.25 A",
+   "source": "https://www.xtar.cc/1-5v-li-ion-battery-test-results",
+   "source_title": "XTAR 1.5V Li-ion Battery Test Results | Independent Review Data & Performance",
+   "read": "2026-11-10",
+   "note": "The page does not name who measured capacity. It is a maker-hosted page, so treat it as the upper bound. 3,605 / 4,150 = 87%."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "Cycle-life claim",
+   "value": "'more than 1200 times' and '1000+ life cycles' on the same product page; no end-of-life capacity point stated",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-4150mwh-battery-set",
+   "source_title": "XTAR 4150mWh/2500mAh 1.5V AA Lithium Battery with Low Voltage Indicator – XTARdirect",
+   "read": "2026-11-10",
+   "note": "Both figures appear in the store's own product description text. Neither says what remaining capacity counts as end of life (e.g. 80% or 70%)."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "Price, maker US store",
+   "value": "$24.99",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-4150mwh-battery-set",
+   "source_title": "XTAR 4150mWh/2500mAh 1.5V AA Lithium Battery with Low Voltage Indicator – XTARdirect",
+   "read": "2026-11-10",
+   "note": "storecheck search result, available. Default-variant price. I could not confirm the pack size because the product endpoint returned 429. ChatGPT's card showed $24.99 as a 4-pack."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Rated vs measured energy",
+   "value": "Rated 4,300 mWh / 2,700 mAh; measured 3,703 mWh / 2,625 mAh average (86% of rated mWh)",
+   "source": "https://charge-test.com/best-rechargeable-lithium-aa-batteries-in-2026-xtar-clr-4300-tested/",
+   "source_title": "Best Rechargeable Lithium AA Batteries in 2026? XTAR CLR 4300 Tested - Charge-Test",
+   "read": "2026-11-10",
+   "note": "12 runs: 4 cells at 0.1, 0.4 and 1 A, charged on an XTAR MX4. Per current: 3,690 mWh / 2,586 mAh at 0.1 A; 3,699 / 2,613 at 0.4 A; 3,719 / 2,676 at 1 A. Ranked 1st of about 20 models."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Capacity vs discharge current, above 1 A",
+   "value": "2,599–2,739 mAh at 1 A; 2,465–2,594 mAh at 1.5 A; 2,298–2,438 mAh at 2 A. Rated 2.5 A max; 3.6 A burst before protection trips",
+   "source": "https://www.xtar.cc/1-5v-li-ion-battery-test-results",
+   "source_title": "XTAR 1.5V Li-ion Battery Test Results | Independent Review Data & Performance",
+   "read": "2026-11-10",
+   "note": "Maker-hosted page crediting Gough Lui for capacity and Sven Greiner for the burst test; 2 cells. At 2 A the cell gives about 9–14% less charge than at 1 A. Charge-Test did not test above 1 A."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Cycle-life claim",
+   "value": "'Over 1200 Cycles'; no end-of-life capacity point stated",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-clr-4300-rechargeable-lithium-battery",
+   "source_title": "XTAR 1.5V AA CLR 4300 Rechargeable Li-ion battery – XTARdirect",
+   "read": "2026-11-10",
+   "note": "From the store's product text via storecheck search."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Price, maker US store",
+   "value": "$25.99",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-clr-4300-rechargeable-lithium-battery",
+   "source_title": "XTAR 1.5V AA CLR 4300 Rechargeable Li-ion battery – XTARdirect",
+   "read": "2026-11-10",
+   "note": "storecheck search result, available. Default-variant price; pack size not confirmed because of 429."
+  },
+  {
+   "product": "EBL 1.5V AA 3000mWh Li-ion",
+   "label": "Rated energy",
+   "value": "3,000 mWh (no mAh stated by maker)",
+   "source": "https://www.eblofficial.com/products/lithium-aa-batteries-with-rechargeable-battery-charger",
+   "source_title": "EBL 1.5V Rechargeable Lithium AA Batteries with Charger for Cameras, Toys & Game Controllers",
+   "read": "2026-11-10",
+   "note": "From the store's product text via storecheck search: 'High Capacity: 3000mWh (AA)'."
+  },
+  {
+   "product": "EBL 1.5V AA 3000mWh Li-ion",
+   "label": "Measured energy",
+   "value": "3,273–3,404 mWh measured directly (109–113% of rated); 2,197–2,356 mAh, avg 2,292 mAh",
+   "source": "https://www.lightandmatter.org/2026/equipment-reviews/review-ebl-rechargeable-3000mwh-aa-lithium-ion-batteries/",
+   "source_title": "Review: EBL Rechargeable 3000mWh AA Lithium-Ion Batteries – Light And Matter",
+   "read": "2026-11-10",
+   "note": "XTAR VX4 V2 charger, full charge then full discharge, all 8 cells tested twice. Discharge current not stated. 3,273 / 3,000 = 1.091; 3,404 / 3,000 = 1.135. Against the XTAR 4150's 3,420 mWh (Charge-Test), XTAR leads by 0.5–4.5%, compared with 38% on the labels (4,150 vs 3,000). The rigs differ, so this is directional only."
+  },
+  {
+   "product": "EBL 1.5V AA 3000mWh Li-ion",
+   "label": "Cycle-life claim",
+   "value": "'Up to 1,200 Recharge Cycles' (maker); a reviewer separately prints 'up to 1600 times'; no end-of-life point from either",
+   "source": "https://www.eblofficial.com/products/lithium-aa-batteries-with-rechargeable-battery-charger",
+   "source_title": "EBL 1.5V Rechargeable Lithium AA Batteries with Charger for Cameras, Toys & Game Controllers",
+   "read": "2026-11-10",
+   "note": "The 1,600 figure is from the Light And Matter review (read 2026-11-10), which does not give its source. The maker's 1,200 is the figure to use."
+  },
+  {
+   "product": "EBL 1.5V AA 3000mWh Li-ion",
+   "label": "Price (reviewer-reported)",
+   "value": "$24.99 for 8 AA with charger; $29.49 for batteries alone",
+   "source": "https://www.lightandmatter.org/2026/equipment-reviews/review-ebl-rechargeable-3000mwh-aa-lithium-ion-batteries/",
+   "source_title": "Review: EBL Rechargeable 3000mWh AA Lithium-Ion Batteries – Light And Matter",
+   "read": "2026-11-10",
+   "note": "Price as of the review (2026-10-24), not today's store price. On 2026-11-10 the EBL store search listed the AA + charger bundle at $29.99 (default variant; I could not confirm which bundle)."
+  },
+  {
+   "product": "Paleblue AA USB-C (PB-AA-C)",
+   "label": "Capacity",
+   "value": "≈1,700 mAh (2,550 mWh) at 1.5 V",
+   "source": "https://us.best-batteries.com/cells/xtar-lr-3000mah-aa/",
+   "source_title": "Xtar LR 3000mAh: AA USB-C battery test - Best Batteries",
+   "read": "2026-11-10",
+   "note": "Best Batteries' comparison table, labelled 'observed data, for guidance only', with no method given. I could not open the maker page (HTTP 429). By label, 2,550 mWh is 61% of the XTAR 4150's rating and 85% of the EBL's."
+  },
+  {
+   "product": "Paleblue AA USB-C (PB-AA-C)",
+   "label": "Cycle-life claim and price, maker US store",
+   "value": "'1000+ Charge Cycles'; $20.99 (compare-at $89.99)",
+   "source": "https://paleblueearth.com/products/pale-blue-lithium-rechargeable-aa-batteries-usb-c",
+   "source_title": "AA USB-C Rechargeable Batteries – Paleblue",
+   "read": "2026-11-10",
+   "note": "From storecheck search of the maker store, available. Default-variant price; the text says one cable charges 'four batteries at once', so this is probably the 4-pack, but I could not confirm it. ChatGPT showed $41.99 for an 8-pack. No end-of-life point stated."
+  }
+ ],
+ "unsourced": [
+  "Paleblue AA rated capacity and max discharge current from the maker: paleblueearth.com product pages returned HTTP 429 three times. A search snippet gave AAA figures only (2.5 A continuous), which I did not use for the AA.",
+  "EBL 3000 mWh AA max continuous discharge current: not in the EBL store text I could read, and Light And Matter only says the cells 'can overheat in high power-draw situations'.",
+  "End-of-life criterion (capacity % at which cycle life ends) for any of XTAR, EBL or Paleblue: none of the store texts or reviews I read state one.",
+  "Independent cycle-life test for the XTAR 4150, CLR 4300, EBL or Paleblue AA: xtar.cc lists none for these models, and Charge-Test says its results don't establish longevity.",
+  "Confirmed pack sizes for today's XTAR 4150 ($24.99), CLR 4300 ($25.99) and Paleblue ($20.99) store prices: product endpoints returned 429, so I could not work out price per measured Wh.",
+  "Today's price for the EBL 3000 mWh AA 4-pack without a charger on eblofficial.com: store search returned only charger bundles and a 3300 mWh micro-USB 4-pack ($22.99).",
+  "Amazon prices: skipped (not attempted within the tool budget).",
+  "digitalcameraworld.com buying guide content: the fetch returned only the title (truncated), so I could not check what it says."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8643021
+ }
 }

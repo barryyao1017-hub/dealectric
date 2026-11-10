@@ -1,5 +1,110 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "C",
+ "gap": "None of the results ChatGPT got says that, of the four Schumacher combos it showed, only the small ones (100 A SC1281L/SC1308L and 50 A SC1305) are listed by Schumacher for 12 V lithium (LiFePO4) batteries, while the wheeled 200 A SC1309 is limited by its manual to 'only 6V and 12V LEAD-ACID (STD or AGM)' and the wheeled 150 A SC1364 to standard and AGM, so a shopper with a LiFePO4 starting battery should take the small unit, not the big wheeled one.",
+ "standout": 2,
+ "standout_why": "Rival pages compared: clampandcrank.com (best combos, 2026-09-29) lists the SC1281 as 'Standard lead-acid, AGM and gel' with no lithium. plainprepper.com lists the SC1281 as '12 V LiFePO4' but covers no other Schumacher model. batterytrail.com names the SC1309 as a top combo pick but states no battery chemistry for any model. The cited schumacherelectric.com category page and Advance Auto SC1309 page would not load (HTTP 429 and timeout). The SC1309 manual on ManualsLib (result #6, not cited) states lead-acid STD/AGM only, but no result compares chemistry support across the models ChatGPT showed. None of them explains that lithium support depends on the 'L' suffix (SC1281L/SC1308L), and two reviews say the plain SC1308 is not LiFePO4-compatible.",
+ "decides": "If the car, boat or powersport vehicle has a 12 V LiFePO4 battery, the pick is the 100 A SC1281L/SC1308L (6 V/12 V) or the 50 A SC1305 (12 V only), not the wheeled SC1309 or SC1364 that ChatGPT offered for trucks and SUVs. With a flooded or AGM battery, the wheeled units stay valid, but the SC1309 manual excludes gel batteries. If you need 24 V, only the SC1352 (12 V/24 V) covers it.",
+ "candidates": [
+  "Schumacher SC1281L",
+  "Schumacher SC1308L",
+  "Schumacher SC1305",
+  "Schumacher SC1309",
+  "Schumacher SC1364",
+  "Schumacher SC1325",
+  "Schumacher SC1352"
+ ],
+ "findings": [
+  {
+   "product": "Schumacher SC1281L",
+   "label": "Battery types supported (maker)",
+   "value": "6 V and 12 V standard, AGM and deep-cycle, plus 12 V lithium (LiFePO4). 100 A engine start, 30–12 A boost, 6–2 A charge.",
+   "source": "https://www.schumacherelectric.com/products/6-2-30-100a-6v-12v-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter, 5-in-1 Solution ... SC1281L",
+   "read": "2026-11-10",
+   "note": "Product text read from Schumacher's own Shopify store data with storecheck.py search. The text says 'It supports both 6V and 12V batteries, including standard, AGM, deep-cycle, and 12V lithium (LiFePO4) battery types'. The direct page fetch returned HTTP 429."
+  },
+  {
+   "product": "Schumacher SC1308L",
+   "label": "Battery types supported (maker)",
+   "value": "Standard, AGM, deep-cycle and 12 V lithium (LiFePO4). 100 A 12 V engine start, 6 V/12 V auto-detect.",
+   "source": "https://www.schumacherelectric.com/products/100a-6v-12v-fully-automatic-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter, 6-in-1 Solution ... SC1308L",
+   "read": "2026-11-10",
+   "note": "Maker store product text: 'compatible with standard, AGM, deep-cycle, and 12V lithium (LiFePO4) batteries'."
+  },
+  {
+   "product": "Schumacher SC1305",
+   "label": "Battery types and voltage (maker)",
+   "value": "12 V only. Standard, AGM and lithium (LiFePO4). 50 A engine start, 10 A boost, 6–2 A charge.",
+   "source": "https://www.schumacherelectric.com/products/6-2-10-50a-12v-fully-automatic-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 50A Engine Starter, 3-in-1 Solution ... For 12V ... SC1305",
+   "read": "2026-11-10",
+   "note": "Maker store product text: 'safely and efficiently charge and maintain standard, AGM, and lithium (LiFePO4) batteries'. The title says 12 V only."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Battery types allowed by manual",
+   "value": "Only 6 V and 12 V lead-acid (standard or AGM). No lithium or gel listed.",
+   "source": "https://www.manualslib.com/manual/3533580/Schumacher-Sc1309.html",
+   "source_title": "SCHUMACHER SC1309 OWNER'S MANUAL (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual text: 'Use charger for charging only 6V and 12V LEAD-ACID (STD or AGM) rechargeable batteries.' Document no. 0099002156-02, which also covers the SC1353. I used the ManualsLib copy because Schumacher's site returned HTTP 429."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Engine-start exclusion (manual)",
+   "value": "Do not use engine start without a battery installed in the vehicle.",
+   "source": "https://www.manualslib.com/manual/3533580/Schumacher-Sc1309.html",
+   "source_title": "SCHUMACHER SC1309 OWNER'S MANUAL (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual text: 'WARNING: Using the Engine Start feature WITHOUT a battery installed in the vehicle could cause damage.'"
+  },
+  {
+   "product": "Schumacher SC1364",
+   "label": "Battery types and voltage (maker)",
+   "value": "12 V only. Standard and AGM. 150 A engine start, 20 A boost, wheeled.",
+   "source": "https://www.schumacherelectric.com/products/150a-12v-automatic-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric Wheeled Automatic 6A Car Battery Charger and 150A Engine Starter ... For 12V ... SC1364",
+   "read": "2026-11-10",
+   "note": "Maker store product text: 'works with standard and AGM batteries across gas and diesel vehicles'. This matches the 150 A wheeled card ChatGPT showed."
+  },
+  {
+   "product": "Schumacher SC1325",
+   "label": "Battery types (maker)",
+   "value": "6 V and 12 V standard, AGM, gel and deep-cycle. No lithium. 250 A (12 V) / 125 A (6 V) engine start.",
+   "source": "https://www.schumacherelectric.com/products/250a-6-12v-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric Wheeled Automatic 6A Car Battery Charger and 250A Engine Starter ... SC1325",
+   "read": "2026-11-10",
+   "note": "Maker store product text: 'compatible with 6V and 12V standard, AGM, gel, and deep-cycle batteries'. The SC1326 (275 A) and SC1400 (300 A) maker texts list the same four types and no lithium."
+  },
+  {
+   "product": "Schumacher SC1352",
+   "label": "System voltage (maker)",
+   "value": "12 V and 24 V. 250 A at 12 V / 125 A at 24 V engine start. 40 A (12 V) / 20 A (24 V) boost.",
+   "source": "https://www.schumacherelectric.com/products/6-2-40-20-250-125a-12-24v-automatic-battery-charger-engine-starter",
+   "source_title": "Schumacher SC1352 ... For 12V/24V ... SC1352",
+   "read": "2026-11-10",
+   "note": "This is the only combo in Schumacher's store search results that covers 24 V systems. The others are 6 V/12 V or 12 V only."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of SC1281 chemistry",
+   "value": "clampandcrank lists the SC1281 as 'Standard lead-acid, AGM and gel'. plainprepper lists '6 V and 12 V lead-acid, 12 V LiFePO4'. Neither names the 'L' revision.",
+   "source": "https://clampandcrank.com/battery-chargers/best-jump-starter-and-battery-charger-combos",
+   "source_title": "Best Jump Starter and Battery Charger Combos | Clamp & Crank",
+   "read": "2026-11-10",
+   "note": "Also read https://plainprepper.com/battery-charger-and-jump-starter/ on 2026-11-10. The two rivals disagree, and Schumacher's store lists lithium only for the SC1281L/SC1308L product names. The original SC1281 manual (manualslib.com/manual/2094420) says only 'charges and maintains 6V and 12V batteries'."
+  }
+ ],
+ "unsourced": [
+  "Whether engine-start and boost modes are allowed on a LiFePO4 battery with the SC1281L/SC1308L, and whether lithium mode is 12 V only. I looked for the SC1281L/SC1308L owner's manual on schumacherelectric.com (HTTP 429 every try), ManualsLib (only the non-L SC1281/SC1308 manuals are there) and manuals.plus (HTTP 403).",
+  "Current US prices for SC1281L, SC1308L, SC1305, SC1309 and SC1364. Schumacher's store data returned price 0.0 (no direct sale shown). The Advance Auto page timed out, and the Walmart prices ChatGPT showed were not checked.",
+  "SC1309 engine-start crank time and cool-down limits. The ManualsLib excerpt I opened did not include them, and the SC1281 manual excerpt was cut off at 'Crank time varies with the amount of'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9872221999999999
+ }
 }

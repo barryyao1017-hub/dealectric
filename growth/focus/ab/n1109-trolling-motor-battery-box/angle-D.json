@@ -1,5 +1,102 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the LiTime Group 24/27/31 box's only breaker is a 16A unit, so it has no breaker rated for a trolling motor (Minn Kota's chart calls for 30–60A). The same is true of the NOCO BG31, which has no breaker at all. That leaves the Newport Smart Battery Box as the only box ChatGPT recommended that is still made and has a motor breaker built in, and Newport says that 60A breaker suits only its 62 lb motor. Its 36, 40, 46, 55 and 86 lb motors need a second, smaller breaker.",
+ "standout": 2,
+ "standout_why": "Pages compared: the cited Minn Kota amp-draw and wiring guides, which give breaker sizes by thrust but don't mention battery boxes. The cited Minn Kota Battery Power Center page, which gives its 60A and 10A breakers. The Newport Smart Battery Box FAQ (cited), which lists 60A and 10A breakers and says the meter can't read lithium. Newport's circuit-breaker article came back as result 7 in the second chat, uncited. It says the box's 60A breaker is 'much larger than the needs of most of the motors', and ChatGPT reduced that to a vague 'isn't automatically correct'. ChatGPT also said to 'check the motor-circuit protection rating' on the LiTime and SUNAPEX boxes and never answered that. None of these pages says the LiTime box has only a 16A breaker, and none sets out which of the four boxes actually protects a motor of a given thrust.",
+ "decides": "Choosing the box comes down to the motor's thrust. Minn Kota 50–55 lb motors and the Newport 62 lb motor match the Newport box's built-in 60A breaker, so the Newport box ($69.99) works as sold. Minn Kota 30–45 lb motors (30–50A) and Newport 36–55 lb motors (40–50A) are a different case. With the Newport box they need a second breaker of the correct size, and Newport warns that skipping it 'can damage your motor'. That makes the plain NOCO BG31 plus an inline breaker of the right size a fair alternative. The LiTime box only protects its accessory sockets, so the shopper must add a 30–60A breaker for the motor. With a lithium battery, Newport's store listing says the Smart Battery Box is 'Not compatible with lithium batteries'. The LiTime box, which says it is 'suitable for Lithium', plus a separate breaker is the safer recommendation there.",
+ "candidates": [
+  "Newport Smart Battery Box",
+  "NOCO BG31 Snap-Top Battery Box",
+  "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+  "Minn Kota Battery Power Center (no longer manufactured)",
+  "SUNAPEX Smart Battery Box 12V/24V Power Center"
+ ],
+ "findings": [
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Breaker suits only some Newport motors",
+   "value": "Built-in 60A breaker. Newport says only its 62 lb motor needs 60A. Its 36 lb motor needs 40A, and its 40, 46, 55 and 86 lb motors need 50A, so they need 'an additional circuit breaker'.",
+   "source": "https://newportvessels.com/blogs/accessories/circuit-breaker-compatibility-and-installation",
+   "source_title": "Circuit Breaker Compatibility and Installation – Newport",
+   "read": "2026-11-10",
+   "note": "Newport's wording: 'Considering the circuit breaker is much larger than the needs of most of the motors, an additional circuit breaker is needed to protect them.' Also: 'Failure to use the correct circuit breaker with the Smart Battery Box can damage your motor.' The second breaker can go on the box's external posts or between the battery and the lid's positive lead."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Breakers and interior size",
+   "value": "60A breaker for the motor and 10A for accessories. Interior is 13-3/8 in L × 7-3/8 in W × 10 in H. The LED battery meter 'is not compatible with Lithium batteries'.",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "The FAQ says the 86 lb motors and other models need a separate breaker. ChatGPT cited this page."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Price and lithium status on the store listing",
+   "value": "$69.99, in stock. The listing says '*Not compatible with lithium batteries'.",
+   "source": "https://newportvessels.com/products/smart-battery-box",
+   "source_title": "Smart Battery Box – Newport",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of the Newport Shopify store. A direct page fetch returned HTTP 429. The store listing calls the whole box incompatible with lithium, while the FAQ only says the meter is."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota breaker size by thrust",
+   "value": "30 lb: 30A at 12 V. 40–45 lb: 50A at 12 V. 50–55 lb: 60A at 12 V. 70 lb: 50A at 24 V. 80 lb: 60A at 24 V. 101 lb: 50A at 36 V. 112 lb: 60A at 36 V.",
+   "source": "https://minnkota.johnsonoutdoors.com/us/support/trolling-motor-installation-guides/trolling-motor-wiring-and-battery-guide",
+   "source_title": "Trolling Motor Wiring and Battery Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "From the 'Conductor Gauge and Circuit Breaker Sizing Table'. Cited by ChatGPT, so this is not new by itself. It shows that a 60A box breaker is oversized for Minn Kota 30–45 lb motors."
+  },
+  {
+   "product": "general",
+   "label": "Where Minn Kota puts the breaker",
+   "value": "On the positive battery terminal, 'as close as possible to the battery / batteries'. Minn Kota recommends following ABYC standards.",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/24943541720471-Trolling-Motor-Amp-Draw-Circuit-Breakers-Fuses-and-Extending-the-Battery-Leads",
+   "source_title": "Trolling Motor Amp Draw, Circuit Breakers, Fuses, and Extending the Battery Leads – Minn Kota",
+   "read": "2026-11-10",
+   "note": "QUEST motors are designed to draw no more than 60A, and breakers above 60A should not be used with them. Motors ship with 5 ft 10 AWG leads."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+   "label": "Only breaker is 16A",
+   "value": "One 16A breaker that trips 'as the DC is over 16A'. The sockets are 2 × 15A cigarette sockets, 1 × QC 3.0 and 1 × USB-C. The battery connects with 6 AWG silicone cable and M8 ring terminals. Interior is 14 × 8.11 × 8.66 in. Listed as 'suitable for Lithium, Gel, Sealed, and Flooded'. $84.99 (was $179.99), in stock.",
+   "source": "https://www.litime.com/products/litime-portable-battery-box-for-marine-rv-use-built-in-voltmeter-fits-group-24-27-size-batteries",
+   "source_title": "LiTime Group 24/27/31 Marine Battery Box, Built-in Voltmeter",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of the LiTime Shopify store. A direct fetch returned HTTP 429. The listing names no other breaker. Any 30 lb or larger motor needs a 30–60A breaker by Minn Kota's chart, so 16A is no motor protection. ChatGPT showed this box at $92.99."
+  },
+  {
+   "product": "LiTime 12V 100Ah LiFePO4 (Group 31)",
+   "label": "Battery height vs. LiTime box interior",
+   "value": "Battery is 13 × 6.77 × 8.43 in. The box interior is 8.66 in tall, leaving about 0.23 in of headroom.",
+   "source": "https://www.litime.com/products/like-new-litime-12v-100ah-lifepo4-lithium-battery",
+   "source_title": "【Like New】LiTime 12V 100Ah LiFePO4 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search. Arithmetic: 8.66 − 8.43 = 0.23 in. LiTime's 24V 100Ah Group 31 battery (9.45 in tall) is warned as possibly not fitting 'Standard sealed Group 31 battery boxes'."
+  },
+  {
+   "product": "Minn Kota Battery Power Center",
+   "label": "Breakers, fit and lithium",
+   "value": "60A breaker for the motor and 10A for accessories. Fits Group 24 and 27. 'Lithium batteries can be used', but 'The battery meter will always show fully charged' with lithium. No longer manufactured.",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/5678471347863-Battery-Power-Center-No-Longer-Manufactured",
+   "source_title": "Battery Power Center (No Longer Manufactured) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Cited by ChatGPT. Its 60A breaker has the same problem as Newport's for Minn Kota 30–45 lb motors."
+  }
+ ],
+ "unsourced": [
+  "The ABYC E-11 rule on how far a breaker can sit from the battery (7, 40 or 72 inches). Blue Sea Systems' pages (bluesea.com/resources/99 and its newsletter and development mirrors) returned HTTP 403, and Minn Kota's pages only say 'as close as possible'.",
+  "The SUNAPEX 12V/24V Power Center's breaker rating and which circuit it covers, from SUNAPEX itself. Only aggregator snippets mentioned a 16A switch, and I did not open a maker page or manual.",
+  "NOCO BG31 interior dimensions from NOCO. I did not open the maker data sheet, and retailers give 14 × 6.7–7.1 × 9.6–9.8 in. I left these out.",
+  "Whether the LiTime box's external motor posts have any fuse, stated directly by LiTime. Its product page returned HTTP 429. The store listing names only the 16A breaker.",
+  "The text of the Newport Smart Battery Box PDF manual (the breaker and lithium sections). The PDF downloaded, but I could not extract its text in this session.",
+  "Newport's article 'Using the Smart Battery Box LED Meter with Lithium Batteries', which would explain why the store listing calls the whole box incompatible with lithium. I could not find its URL."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9552807000000002
+ }
 }

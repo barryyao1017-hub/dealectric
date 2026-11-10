@@ -1,5 +1,99 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the J-Tech JTECH-14EX60-AE downscales 4K to 1080p at the receiver end so 4K and 1080p TVs can share one kit, and that it runs 4K60 to 196 ft over Cat5e, while OREI's own pages for both cited OREI kits list one EDID setting for every output, mention no scaler and call for Cat6 or better.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited OREI support articles (UHD12-EX115-K and UHD14-EXB400-K). Both give an EDID dial or DIP table that sets one format for the whole kit (1080p up to 4K60 4:4:4 HDR, or copy from the loop-out or a CAT/HDBT output). Neither mentions downscaling or says what happens when a 1080p TV and a 4K TV are connected. Both name CAT6/CAT6a/CAT7 cable only. They already cover the no-network-switch rule, one-way PoC and the lack of 4K120, so those are not new. No result covers the J-Tech kit, which ChatGPT showed as 'Best overall 1×4'.",
+ "decides": "If the shopper is mixing a 4K TV with an older 1080p TV, or reusing Cat5e already in the walls, the J-Tech JTECH-14EX60-AE is the pick among the three ChatGPT showed. J-Tech says it scales 4K down to 1080p at the receiver and runs 4K60 over Cat5e/6. On the OREI kits, a mixed setup means choosing one EDID setting for every screen, either all 1080p or a 4K signal the 1080p set may not take. OREI also names only CAT6/6a/7 cable. If every TV is 4K60 and there is new Cat6, the OREI UHD14-EXB400-K is still the long-run choice (394 ft at 4K60 over HDBaseT). One catch: J-Tech's own store listed the JTECH-14EX60-AE at $302.49 with available=false on 2026-11-10.",
+ "candidates": [
+  "J-Tech Digital JTECH-14EX60-AE (JTD-3145)",
+  "OREI UHD12-EX115-K",
+  "OREI UHD14-EXB400-K"
+ ],
+ "findings": [
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Mixed-resolution displays",
+   "value": "4K to 1080p downscaling on the receiver end, 'so that users can utilize different resolution monitors within their setup'",
+   "source": "https://jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet w/ Audio Extraction, PoC, 4K Downscaling – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "Product description text read with storecheck.py search on jtechdigital.com. J-Tech's resource page (resource.jtechdigital.com/products/3145) also says it downscales 4K to 1080p 'on the receiver end'. Neither page says whether it is automatic or set by a switch."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Cable and reach at 4K60",
+   "value": "60 m (196 ft) at 4K@60Hz per receiver over a single Cat5e/6 cable",
+   "source": "https://resource.jtechdigital.com/products/3145",
+   "source_title": "J-Tech Digital 4K 60Hz 1x4 HDMI Extender Splitter w/ Audio Extraction, PoC, 4K Downscale, and EDID",
+   "read": "2026-11-10",
+   "note": "Maker's resource page states '60m (196ft.) at 4K@60Hz'. The product page states 'up to 196ft. over single Cat5e/6 ethernet cable (per receiver)'. Listed as HDMI 2.0, HDCP 2.2, HDR10 and HLG, 18 Gbps."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Power and kit contents",
+   "value": "PoC: only the transmitter needs power (12 V/2 A adapter included). Kit is 1 transmitter and 4 receivers. Mirrors one source to all displays.",
+   "source": "https://resource.jtechdigital.com/products/3145",
+   "source_title": "J-Tech Digital 4K 60Hz 1x4 HDMI Extender Splitter w/ Audio Extraction, PoC, 4K Downscale, and EDID",
+   "read": "2026-11-10",
+   "note": "Max power 12.5 W. Operating temperature -5 to 40 °C."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Price and stock, maker store",
+   "value": "$302.49, available = false",
+   "source": "https://jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "Read from the Shopify product data with storecheck.py search. The price matches the $302.49 card ChatGPT showed. The store showed it not available for purchase on this date."
+  },
+  {
+   "product": "OREI UHD12-EX115-K",
+   "label": "EDID handling across both receivers",
+   "value": "One EDID dial for the kit: 1080p, 1080i, 1080p 3D, 4K30 4:4:4, 4K60 4:2:0, 4K60 4:4:4, 4K60 4:4:4 HDR, or copy from HDMI LOOP OUT, CAT OUT 1 or CAT OUT 2. No scaler or downscaling is mentioned.",
+   "source": "https://support.orei.com/hc/en-us/articles/41705360744855-UHD12-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD12-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "On mixed screens the article says only 'Use EDID management when there is ... mixed display capability' and 'For 4K@60Hz, the display must support 4K@60Hz input.'"
+  },
+  {
+   "product": "OREI UHD12-EX115-K",
+   "label": "Cable and reach",
+   "value": "CAT6/CAT6a/CAT7. 115 ft (35 m) at 4K60, 164 ft (50 m) at 4K30, 197 ft (60 m) at 1080p60. Must not pass through a network switch or router.",
+   "source": "https://support.orei.com/hc/en-us/articles/41705360744855-UHD12-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD12-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "Already on a cited rival page. Included for comparison with J-Tech's 196 ft at 4K60 over Cat5e/6."
+  },
+  {
+   "product": "OREI UHD14-EXB400-K",
+   "label": "EDID handling across four HDBaseT receivers",
+   "value": "One EDID DIP or RS-232 setting for all outputs (1080p up to 4K60 4:4:4 HDR, or copy from LOOP OUT or HDBT OUT 1-4). No scaler or downscaling is mentioned.",
+   "source": "https://support.orei.com/hc/en-us/articles/41705363294487-UHD14-EXB400-K-Overview-and-Use-Cases",
+   "source_title": "UHD14-EXB400-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "Reach is 394 ft (120 m) at 4K60 and 492 ft (150 m) at 1080p60 over CAT6/6a/7. No network switches. Patch panels are allowed but 'may reduce distance'. The article covers only the four included receivers and says nothing about third-party HDBaseT receivers."
+  },
+  {
+   "product": "general",
+   "label": "How OREI splitters with a scaler handle mixed 4K/1080p screens",
+   "value": "OREI splitters that do scale compare display EDIDs and may drop every output to the lowest common format. Its BK-102A FAQ gives the example of a 4K HDR TV and a 1080p SDR TV both getting 1080p SDR. Its TV-EDID-mode splitters downscale only the 1080p outputs when OUT 1 is a 4K set.",
+   "source": "https://support.orei.com/hc/en-us/articles/41705451418007-BK-102A-Overview-and-Use-Cases",
+   "source_title": "BK-102A Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "From the search summary of OREI's support articles. I did not open this page myself, so treat it as background and not a pick-deciding fact."
+  }
+ ],
+ "unsourced": [
+  "How the JTECH-14EX60-AE downscaling is turned on (automatic per receiver from the display's EDID, or a switch). The maker page doesn't say, and the manual PDF (cdn.sanity.io, 12 pages, Canva-made) came back as binary. Extracting its text with pdftotext needed approval I didn't have.",
+  "The JTECH-14EX60-AE EDID DIP switch table, its chroma at 4K60 (4:4:4 or 4:2:0), and whether J-Tech forbids running it through a network switch. I looked on the maker page, the resource page and the manual. Newegg and CDW returned 403, and Best Buy timed out.",
+  "Today's prices for the OREI UHD12-EX115-K and UHD14-EXB400-K on orei.com. storecheck.py returned HTTP 0 and WebFetch got 429 on orei.com.",
+  "Whether OREI's UHD14-EXB400-K receivers work with other makers' HDBaseT transmitters or receivers. The maker article doesn't cover it.",
+  "An AV Access (awin:avaccess, an existing Dealectric program) HDMI extender splitter. The search turned up only the AV Access 4KSP14-S, a plain 1x4 splitter with no extender, on retailer pages. I found no avaccess.com page for an HDBaseT or Cat6 splitter-extender."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9681824
+ }
 }

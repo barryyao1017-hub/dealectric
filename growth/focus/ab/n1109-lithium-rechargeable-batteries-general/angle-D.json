@@ -1,5 +1,118 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that XTAR's 1.5 V AA cells have their own charge-management chip and take 4.75–5.5 V only from a charger that supports XTAR's 1.5 V Li-ion protocol. That means a NiMH charger won't do it, and XTAR's own store says its VX4 V1 charger cannot charge the CLR 4300 that ChatGPT made its top pick.",
+ "standout": 2,
+ "standout_why": "Charge-test (cited) lists 'MX4, L4 Pro, VX4, L4 and L8' as compatible chargers for the CLR 4300 and says to use 'a charger explicitly compatible' with the cells. It gives no VX4 version caveat and doesn't explain why other chargers fail. Light And Matter (cited) says a NiMH charger 'won't work' with the EBL cells, but it doesn't explain why and doesn't cover XTAR. Light And Matter also covers the EBL cells' sudden full-to-empty cutoff, and Charge-test covers the CLR 4300's sloped tail, so the low-battery-warning part of this mechanism is already partly covered. Digital Camera World returned only its title to my fetch, so I could not check its text. ChatGPT's own answer says only 'Requires a compatible charger' and doesn't name which chargers work.",
+ "decides": "This confirms the XTAR CLR 4300 as the pick only if it's bought with a charger XTAR lists as compatible: the L4 Pro, MX4, L4 or L8, or a VX4 V2 but not a V1. The cheapest sure route is XTAR's USA L4 Pro + 4× CLR 4300 bundle at $39.99, against $26.99 for the batteries alone. Someone who already owns a NiMH charger, such as the Tenergy TN480U that Dealectric lists, can't charge these cells with it. The same mechanism explains each candidate's low-battery behaviour: the EBL holds 1.5 V and then cuts off, the XTAR 4150 steps down to 1.1 V, and the CLR 4300 declines linearly to about 1.0 V. In devices that judge charge by voltage, only the stepped and sloped designs give a warning before the device dies.",
+ "candidates": [
+  "XTAR 1.5V AA CLR 4300",
+  "XTAR 1.5V AA 4150mWh",
+  "Pale Blue AA USB-C",
+  "EBL 1.5V AA 3000mWh",
+  "XTAR AA 4100mWh USB-C"
+ ],
+ "findings": [
+  {
+   "product": "XTAR VX4 V1 charger vs XTAR 1.5V AA CLR 4300",
+   "label": "Charger compatibility notice (maker's store)",
+   "value": "VX4 V1 not compatible with XTAR CLR and LR series 1.5 V Li-ion cells, including the AA CLR 4300",
+   "source": "https://xtardirect.com/products/xtar-vx4-visible-mixer-15v-36v-37v-li-ion-32v-lifepo4-12v-ni-mh-batteries-charger-and-battery-capacity-tester",
+   "source_title": "XTAR VX4 V2 Visible Mixer 1.5V/3.6V/3.7V Li-Ion 3.2V LiFePO4 1.2V Ni-MH Batteries Charger and Battery Capacity Tester – XTARdirect",
+   "read": "2026-11-10",
+   "note": "Read through storecheck (Shopify product data). Exact wording: 'The VX4 V1 version charger is not compatible with XTAR CLR and XTAR LR series 1.5V Li-ion batteries, including but not limited to: 1.5V AA CLR4300 … CLR3300 … LR3000 … LR2000 … the VX4 V2 charger is compatible.' VX4 V2 price $41.99 on 2026-11-10."
+  },
+  {
+   "product": "general (XTAR 1.5 V Li-ion AA/AAA)",
+   "label": "Why ordinary chargers fail",
+   "value": "Charge-management IC is inside each cell; the cells 'must use chargers that support the 1.5V Li-ion protocol'; NiMH chargers may fail to charge or under-charge them",
+   "source": "https://www.xtar.cc/1-5v-li-ion-battery-test-results",
+   "source_title": "XTAR 1.5V Li-ion Battery Test Results",
+   "read": "2026-11-10",
+   "note": "XTAR's own page. It also says that in third-party tests with the LR 3000, the Vapcell BL4 and Soshine chargers worked and a Liitokala charger did not recognise the cell."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Charging input (maker spec)",
+   "value": "4.75–5.5 V at 0.45 ± 0.05 A; about 2.6 h with a dedicated 1.5 V AA charger",
+   "source": "https://www.xtar.cc/product/xtar-1-5v-aa-clr-4300mwh-2700mah-lithium-battery.html",
+   "source_title": "XTAR AA 1.5V CLR 4300 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "The charger supplies about 5 V and the regulator inside the cell does the charging. A NiMH charger ends its charge around 1.4–1.5 V per cell, so it can't feed this input. That last point is my inference from the maker's spec."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Max continuous discharge current",
+   "value": "2.5 A",
+   "source": "https://www.xtar.cc/product/xtar-1-5v-aa-clr-4300mwh-2700mah-lithium-battery.html",
+   "source_title": "XTAR AA 1.5V CLR 4300 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "XTAR's test-results page says Sven Greiner measured a 3.6 A burst before the protection tripped."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Recommended chargers (maker spec)",
+   "value": "L4 Pro, MX4, L4, L8 (one version of the page also lists VX4)",
+   "source": "https://www.xtar.cc/product/xtar-1-5v-aa-clr-4300mwh-2700mah-lithium-battery.html",
+   "source_title": "XTAR AA 1.5V CLR 4300 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "The VX4 listing is inconsistent across versions of the page. The store's V1/V2 notice settles it."
+  },
+  {
+   "product": "general (1.5 V Li-ion AA)",
+   "label": "Low-battery behaviour by discharge-curve class",
+   "value": "CV: holds 1.5 V then cuts off suddenly, no warning. CSR: holds 1.5 V then steps down to 1.1 V (XTAR AA 4150). CLR: holds 1.5 V then falls linearly to 1.0 V (XTAR CLR 4300, about 1.05 V near empty). LR: falls linearly from 1.5 V to 1.0 V (XTAR LR 3000)",
+   "source": "https://www.xtar.cc/1-5v-li-ion-battery-test-results",
+   "source_title": "XTAR 1.5V Li-ion Battery Test Results",
+   "read": "2026-11-10",
+   "note": "XTAR uses akkutests.de's classification. Its stated reason for the slope is that it 'allows compatible devices to detect the falling voltage and provide a low-battery indication before shutdown.'"
+  },
+  {
+   "product": "EBL 1.5V AA 3000mWh",
+   "label": "Regulator behaviour near empty (reviewer)",
+   "value": "Constant 1.5 V until empty; the device's battery gauge drops from full to empty at once",
+   "source": "https://www.lightandmatter.org/2026/equipment-reviews/review-ebl-rechargeable-3000mwh-aa-lithium-ion-batteries/",
+   "source_title": "Review: EBL Rechargeable 3000mWh AA Lithium-Ion Batteries – Light And Matter",
+   "read": "2026-11-10",
+   "note": "The reviewer saw this in a Nikon N90s and a Pentax 645. In a Godox TT685 flash at full power, recycle time was 10.72–17.55 s, against 2.23 s for the best NiMH, because overheating protection throttled the cells. This is a cited rival, so it is not new."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "US price, XTAR store (USA warehouse)",
+   "value": "$26.99 4-pack; $49.98 8-pack; $39.99 with L4 Pro charger + 4 cells; $76.97 with L8 Pro + 8 cells",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-clr-4300-rechargeable-lithium-battery",
+   "source_title": "XTAR 1.5V AA CLR 4300 Rechargeable Li-ion battery – XTARdirect",
+   "read": "2026-11-10",
+   "note": "storecheck product variants. Shipping from the China warehouse is $1 cheaper for each option."
+  },
+  {
+   "product": "XTAR L4 Pro",
+   "label": "Charger that handles both NiMH and 1.5 V Li-ion",
+   "value": "$15.90; charges AA/AAA NiMH and 1.5 V Li-ion, detects battery type automatically, each slot independent",
+   "source": "https://xtardirect.com/products/xtar-l4-pro-smart-charger-for-aa-aaa-12v-ni-mh-and-15v-lithium-battery",
+   "source_title": "XTAR L4 Pro Smart Charger for AA/AAA 1.2V NI-MH and 1.5V Lithium battery – XTARdirect",
+   "read": "2026-11-10",
+   "note": "storecheck search result on xtardirect.com."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150mWh",
+   "label": "US price, XTAR store",
+   "value": "$24.99 (4-pack set); store title says 'with Low Voltage Indicator'",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-4150mwh-battery-set",
+   "source_title": "XTAR 4150mWh/2500mAh 1.5V AA Lithium Battery with Low Voltage Indicator – XTARdirect",
+   "read": "2026-11-10",
+   "note": "storecheck search result. The price matches ChatGPT's card. The full product page returned HTTP 429, so I could not read the variants or max current."
+  }
+ ],
+ "unsourced": [
+  "Pale Blue AA USB-C max continuous current and how its output behaves near empty: paleblueearth.com product and technical-specifications pages returned HTTP 429 to both WebFetch and storecheck. Retailer listings say 3.3 A continuous for the Voyager AA and 1.5 A for the PB-AA-C, but these are not maker pages, so I left them out.",
+  "XTAR 1.5V AA 4150mWh max discharge current: the xtardirect product page returned HTTP 429, and the xtar.cc test-results page gives no rating for this model.",
+  "EBL 1.5V AA 3000mWh max discharge current: Light And Matter gives no amp rating, and I did not reach EBL's own product page within the call budget.",
+  "The technical reason the VX4 V1 can't charge CLR/LR cells: XTAR states the incompatibility but I found no maker or reviewer explanation."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.8023607000000003
+ }
 }

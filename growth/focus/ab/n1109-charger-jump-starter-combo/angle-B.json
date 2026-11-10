@@ -1,5 +1,93 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got gives hours to recharge: Schumacher's own manual chart says a 6 A combo like the SC1281 or SC1309 needs 10 h to refill a half-flat 1000 CCA truck battery and 4 h for a 300 CCA car battery (30 h and 12 h on the 2 A maintain rate), and a 10 A timer-wheeled unit like the SC1446 delivers at most 22.5 Ah per full 135-minute timer turn.",
+ "standout": 2,
+ "standout_why": "Checked clampandcrank.com's combo roundup (2026-09-29), autogearlab.com's top-10 list (2026-09-04) and batterytrail.com's 'worth it?' post (2026-10-28). Clampandcrank only says the SC1281 recharges 'in hours rather than overnight'. Autogearlab says simple Ah division is 'only an estimate' and gives no hours. Batterytrail lists amp ratings but no battery capacities, so nothing can be worked out from it. None of them gives an engine-start crank/rest cycle beyond Battery Tender's '3 to 5 seconds'. The two pages ChatGPT cited could not be reread today: the Schumacher category page returned HTTP 429 and the Advance Auto page was offline for maintenance. ChatGPT's own answer gave amps and prices but no time figures.",
+ "decides": "This confirms rather than overturns ChatGPT's picks. Every plug-in combo it showed charges at 6 A, so all of them refill a battery equally slowly, about 10 h for a large truck battery. They differ only in engine-start amps and price, so the shopper should choose on cranking amps (100 A for cars, 150–200 A for trucks) rather than expect any of them to charge faster. If faster recharging matters, a 10 A unit cuts the 1000 CCA case to 7 h, but the manual-timer wheeled models (SC1446, SC1667) need the 135-minute timer reset about 4 times to get there. A shopper who wants a hands-off overnight recharge should pick an automatic 6 A unit (SC1281L or SC1309) over a timer-wheeled one.",
+ "candidates": [
+  "Schumacher SC1281L",
+  "Schumacher SC1308L",
+  "Schumacher SC1305",
+  "Schumacher SC1309",
+  "Schumacher SC1437",
+  "Schumacher SC1446",
+  "Schumacher SC1667"
+ ],
+ "findings": [
+  {
+   "product": "Schumacher SC1281 (6 A charge / 100 A engine start)",
+   "label": "Hours to recharge a 50%-discharged battery at 6 A (maker's chart)",
+   "value": "300 CCA car: 4 h; 1000 CCA truck: 10 h; 50 Ah marine: 5 h; 105 Ah marine: 11 h",
+   "source": "https://manualslib.es/manual/112851/Schumacher-Sc1281.html?page=6",
+   "source_title": "Schumacher SC1281 owner's manual, page 6 (charging time chart)",
+   "read": "2026-11-10",
+   "note": "Chart columns are 2/6/8/10 A. The text extraction lost the row labels, so the pairing with the printed size list (6 Ah, 32 Ah, 300 CCA, 1000 CCA, 50 Ah, 105 Ah) is inferred from the order. Manual: 'Times are based on a 50% discharged battery.' This is the older SC1281 manual; the current SC1281L has the same 6 A / 100 A ratings."
+  },
+  {
+   "product": "Schumacher SC1309 (6 A charge / 40 A boost / 200 A engine start)",
+   "label": "Same charging-time chart in the SC1309 manual",
+   "value": "6 A column: 2 / 5 / 4 / 10 / 5 / 11 h; 2 A column: 6 / 15 / 12 / 30 / 15 / 33 h",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=9",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual, page 9 of 30 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Identical figures to the SC1281 chart, so Schumacher's 6 A combos refill a battery at the same speed. The 40 A boost runs only 'during the first 10 minutes, if needed, and then switch[es] to the Charge rate', so boost does not shorten the total much: at most 40 A × 1/6 h = 6.7 Ah."
+  },
+  {
+   "product": "Schumacher SC1281 / SC1309",
+   "label": "Recharge-time penalty of the 2 A maintain rate versus 6 A",
+   "value": "3× longer: 1000 CCA truck battery 30 h vs 10 h",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=9",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual, page 9 of 30 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "30 h ÷ 10 h = 3.0, from the chart's 2 A and 6 A columns. This matters for 1–2 A combo packs such as the Charge N Start 1100 named on batterytrail.com."
+  },
+  {
+   "product": "Schumacher SC1446 (10 A charge / 200 A engine start, 135-min timer)",
+   "label": "Maximum charge per full timer turn, and turns to refill a 1000 CCA battery",
+   "value": "22.5 Ah per turn; about 4 turns (7 h)",
+   "source": "https://www.schumacherelectric.com/products/6v-12v-200a-manual-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric Wheeled Manual 10A Car Battery Charger and 200A Engine Starter, SC1446",
+   "read": "2026-11-10",
+   "note": "10 A × 135/60 h = 22.5 Ah. 7 h (the 10 A column of the SC1281/SC1309 chart) × 60 ÷ 135 = 3.1, so 4 timer settings. Specs come from the Schumacher store listing read through storecheck today; a direct page fetch returned 429. The chart is from Schumacher's automatic-charger manuals, applied here as an inference because the SC1446 manual could not be opened. The SC1667 (10 A / 250 A, same 135-min timer) gives the same 22.5 Ah per turn."
+  },
+  {
+   "product": "Schumacher SC1437 (6 A charge / 150 A engine start, 135-min timer)",
+   "label": "Maximum charge per full timer turn, and turns to refill a 1000 CCA battery",
+   "value": "13.5 Ah per turn; 5 turns (10 h)",
+   "source": "https://www.schumacherelectric.com/products/12v-150a-manual-battery-charger-engine-starter",
+   "source_title": "Schumacher Electric Wheeled Manual 6A Car Battery Charger and 150A Engine Starter, SC1437",
+   "read": "2026-11-10",
+   "note": "6 A × 2.25 h = 13.5 Ah. 600 min ÷ 135 = 4.4, so 5 timer settings. Uses the same chart inference as the SC1446."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Engine-start duty cycle",
+   "value": "Crank ≤7 s; 2 min of charging before the first crank; 180 s forced cool-down after repeated cranks; 5 min recharge after a failed attempt, which allows at most about 11 attempts per hour",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=10",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual, page 10 of 30 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "3600 s ÷ (300 s recharge + 7 s crank) = 11.7, so 11 attempts per hour. The manual also calls for 5 min of charging first in extreme cold or when the battery is under 2 V."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine-start crank limit",
+   "value": "3 s per attempt",
+   "source": "https://manualslib.es/manual/112851/Schumacher-Sc1281.html?page=6",
+   "source_title": "Schumacher SC1281 owner's manual, page 6",
+   "read": "2026-11-10",
+   "note": "Quote: 'Crank the engine until it starts or 3 seconds pass.' This page gives no rest interval."
+  }
+ ],
+ "unsourced": [
+  "Today's prices for the SC1281L, SC1305, SC1308L, SC1309, SC1437 and SC1446. The Schumacher store returned HTTP 429 every time, including through storecheck, and its search listing showed $0.00. Walmart, which ChatGPT showed, put up a bot check. Advance Auto was offline. O'Reilly, Ace Hardware and Northern Tool returned 403. Without prices I could not compute cost per engine-start amp.",
+  "The SC1446, SC1437 and SC1667 manuals' own charge-time chart and engine-start crank/rest cycle. The manuals.plus PDF returned 403 and the Schumacher pages returned 429.",
+  "The current SC1281L manual. The chart and 3 s crank limit above come from the older SC1281 manual.",
+  "Unit weights for every candidate, so I could not compute amps per lb."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8444213999999999
+ }
 }

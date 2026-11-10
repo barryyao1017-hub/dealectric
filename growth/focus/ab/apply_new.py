@@ -25,9 +25,11 @@ while True:
         if tried.get(s) == mt:
             continue
         r = A.apply(s, local=True)
+        if "uncommitted" in str(r.get("reason", "")):   # another writer's build in progress: retry next round
+            continue
         tried[s] = (A.AB / s / "draft.json").stat().st_mtime
         print("APPLY " + json.dumps(r, ensure_ascii=False)[:600], flush=True)
-    feed = (ROOT / f"growth/focus/ab/feed-new-{DAY}.log").read_text() if (ROOT / f"growth/focus/ab/feed-new-{DAY}.log").exists() else ""
+    feed = (ROOT / f"growth/focus/ab/feed-new-{DAY}{os.environ.get('FEEDSUF', '')}.log").read_text() if (ROOT / f"growth/focus/ab/feed-new-{DAY}{os.environ.get('FEEDSUF', '')}.log").exists() else ""
     if pending == 0 and "FEED DONE" in feed:
         break
     time.sleep(90)

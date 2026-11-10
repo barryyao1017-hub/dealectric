@@ -1,101 +1,93 @@
 {
  "angle": "A",
- "gap": "No result ChatGPT got states that the AT-LP70X/LP70XBT's built-in preamp delivers 252 mV line out at 1 kHz, 5 cm/s, versus 140 mV (−17 dBV) for both Fluance RT81 and RT81+. On the same powered speaker, the Audio-Technica plays about 5 dB louder at the same knob position (20·log10(252/140) = 5.1 dB). Fluance publishes the same 140 mV for the RT81+, even though its cartridge is hotter.",
+ "gap": "No result ChatGPT got states the built-in preamp's line-out voltage. Audio-Technica rates the AT-LP70X at 252 mV (240 mV for the AT-LP120XUSB) at 1 kHz, 5 cm/sec. Fluance rates both the RT81 and the RT81+ at 140 mV (−17 dBV) with no test condition. That is about 5 dB less signal into the same powered speakers, from a preamp with about 4–5 dB less implied gain (32 dB and 31 dB, against A-T's stated 36 dB).",
  "standout": 2,
- "standout_why": "Compared against valveandvinyl.com/turntables/crosley-alternatives, platterandplinth.com/turntables/best-with-preamp, stylusandsound.com/best-turntables-with-built-in-preamp and fewbetter.com (rank 1; it has no turntable content at all). Valve & Vinyl already normalises the weighting mismatch (AT 'WTD' wow and flutter vs Fluance's unqualified 0.2%; Fluance's A-weighted 67 dB / unweighted 60 dB S/N vs AT's unqualified >55 dB). It also gives AT's 36 dB gain, but it says line output is 'not published' for every deck. Stylus & Sound quotes the RT81+'s 140 mV line output alone and never compares it. Platter & Plinth gives no line-output figure. No page sets 252 mV beside 140 mV or points out that Fluance's line figure doesn't change when the cartridge does.",
- "decides": "This confirms rather than overturns ChatGPT's pick, but it sharpens it. For a shopper plugging straight into powered speakers or an AUX input, the AT-LP70X/LP70XBT gives the stronger line signal (about 1.8× the voltage, about 5 dB). The Fluance RT81/RT81+ need more volume-knob travel and will sound quieter than phone or streamer sources on the same input. SECRETS' reviewer named 'higher output (0.5 volts)' as an improvement they wanted on the RT81. The Fluance case rests instead on its true preamp bypass and its published A-weighted S/N. Going from RT81 to RT81+ (+$50) buys the VM95E cartridge, not a louder line out, by Fluance's own spec.",
+ "standout_why": "I compared against valveandvinyl.com/crosley-alternatives and platterandplinth.com/turntables/best-with-preamp, both opened 2026-11-10. Valve & Vinyl gives A-T's '36 dB nominal gain' and the RT81's weighted and unweighted S/N. Its own gaps note says no product on the page states a line output in mV, and it gives no gain figure for the RT81. Platter & Plinth gives no output level for any of its six picks. It lists only the PS-LX3BT's relative gain steps (−4/0/+6 dB). Valve & Vinyl already covers the differences in S/N and wow-and-flutter weighting (A-weighted, DIN-B, WTD), so that is not new. fewbetter.com, ranked #1, now serves an unrelated product list with no turntables.",
+ "decides": "This supports ChatGPT's pick of the AT-LP70X for a shopper who will plug straight into powered speakers. Its line out is about 1.8× the voltage of the RT81 and RT81+ (20·log10(252/140) ≈ 5.1 dB). All of them sit below the −10 dBV (316 mV) consumer line reference, and the Fluance pair sits furthest below it. The Fluance therefore needs more volume from the speakers or amp to play as loud. The RT81+'s stronger cartridge (4.0 mV against 3.5 mV) does not raise its stated line output, which stays at 140 mV. As a result, upgrading from the RT81 to the RT81+ gives no extra level at the LINE output, going by Fluance's own figures.",
  "candidates": [
   "Audio-Technica AT-LP70X",
-  "Audio-Technica AT-LP70XBT",
   "Fluance RT81",
   "Fluance RT81+",
-  "Sony PS-LX310BT"
+  "Audio-Technica AT-LP120XUSB",
+  "Sony PS-LX3BT",
+  "Audio-Technica AT-LP70XBT"
  ],
  "findings": [
   {
    "product": "Audio-Technica AT-LP70X",
-   "label": "Line output level (built-in preamp ON)",
-   "value": "252 mV nominal at 1 kHz, 5 cm/s",
-   "source": "https://www.lpgear.com/product/ATLP70X.html",
-   "source_title": "Audio-Technica AT-LP70X Fully Automatic Belt-Drive Turntable – LP Gear",
-   "read": "2026-11-09",
-   "note": "Dealer page reproducing AT's spec sheet. audio-technica.com (en-us, en-ca, en-au) returned HTTP 403 to the fetcher, so the maker page could not be opened directly."
+   "label": "Line output (built-in preamp ON)",
+   "value": "252 mV nominal at 1 kHz, 5 cm/sec (≈ −12.0 dBV)",
+   "source": "https://musicredone.com/products/audio-technica-at-lp70x-fully-automatic-belt-drive-turntable-black-grey",
+   "source_title": "Audio-Technica AT-LP70X Fully Automatic Belt-Drive Turntable (Black/Grey) – Music Redone",
+   "read": "2026-11-10",
+   "note": "This is a retailer page that reproduces A-T's spec block. audio-technica.com (en-us, en-ca, en-au, en-gb) returned HTTP 403 to every fetch. Conversion: 20·log10(0.252 V) = −11.97 dBV."
   },
   {
    "product": "Audio-Technica AT-LP70X",
-   "label": "Phono output / preamp gain",
-   "value": "4.0 mV nominal at 1 kHz, 5 cm/s; 36 dB nominal gain, RIAA equalized",
-   "source": "https://www.lpgear.com/product/ATLP70X.html",
-   "source_title": "Audio-Technica AT-LP70X Fully Automatic Belt-Drive Turntable – LP Gear",
-   "read": "2026-11-09",
-   "note": "Consistency check: 4.0 mV × 10^(36/20) = 4.0 × 63.1 = 252 mV, which matches the stated line level. Same page lists W&F < 0.25% (WTD) and S/N > 55 dB with no weighting stated."
+   "label": "Phono output and preamp gain",
+   "value": "4.0 mV nominal at 1 kHz, 5 cm/sec; 36 dB nominal gain, RIAA equalized",
+   "source": "https://musicredone.com/products/audio-technica-at-lp70x-fully-automatic-belt-drive-turntable-black-grey",
+   "source_title": "Audio-Technica AT-LP70X Fully Automatic Belt-Drive Turntable (Black/Grey) – Music Redone",
+   "read": "2026-11-10",
+   "note": "Check: 252/4.0 = 63×, and 20·log10(63) = 36.0 dB, which matches the stated gain. The page also lists wow and flutter <0.25% (WTD) and S/N >55 dB, with no weighting given for the S/N."
   },
   {
-   "product": "Audio-Technica AT-LP70XBT",
-   "label": "Line output level, adjustability",
-   "value": "252 mV fixed (at 1 kHz, 5 cm/s with 4.0 mV cartridge output); no variable line out or volume control",
-   "source": "https://www.bestbuy.com/site/questions/audio-technica-at-lp70xbt-bs-black-silver/6585264?page=2",
-   "source_title": "Audio-Technica AT-LP70XBT – Questions & Answers – Best Buy",
-   "read": "2026-11-09",
-   "note": "Answer posted by the 'AudioTechnica' account, shown as about 10 months old."
-  },
-  {
-   "product": "Fluance RT81",
-   "label": "Line output level (built-in preamp ON)",
-   "value": "140 mV (−17 dBV)",
-   "source": "https://www.fluance.com/rt81-high-fidelity-vinyl-turntable-record-player-with-premium-cartridge-diamond-needle",
-   "source_title": "RT81 Hi-Fi Vinyl Turntable Record Player with Diamond Needle – Fluance",
-   "read": "2026-11-09",
-   "note": "Fluance states no test velocity or frequency and no preamp gain (it names only a Texas Instruments preamp IC). Implied gain with the stated 3.5 mV AT95E: 20·log10(140/3.5) = 32.0 dB, about 4 dB below AT's 36 dB, assuming the same reference velocity. Versus the LP70X: 20·log10(252/140) = 5.1 dB quieter."
+   "product": "Audio-Technica AT-LP120XUSB",
+   "label": "Line output and phono output",
+   "value": "LINE 240 mV nominal at 1 kHz, 5 cm/sec (≈ −12.4 dBV); PHONO 4 mV; gain 36 dB nominal",
+   "source": "https://goknight.com/audio-technica-at-lp120xusb-bk-direct-drive-turntable/",
+   "source_title": "Audio-Technica AT-LP120XUSB-BK Direct-Drive Turntable – GoKnight",
+   "read": "2026-11-10",
+   "note": "This is a retailer page that reproduces A-T's spec block, because A-T's own pages returned 403. Implied gain: 240/4 = 60×, which is 35.6 dB. The page also lists wow and flutter <0.2% (WTD) at 3 kHz (JIS) and S/N >50 dB with no weighting."
   },
   {
    "product": "Fluance RT81",
-   "label": "Price, S/N, wow and flutter",
-   "value": "$299.99; S/N 67 dB or higher (A-weighted, 20 kHz LPF), 60 dB or higher (unweighted, 20 kHz LPF); W&F 0.2% (method not stated)",
+   "label": "Line output (built-in preamp ON)",
+   "value": "140 mV (−17 dBV), no test frequency or velocity stated",
    "source": "https://www.fluance.com/rt81-high-fidelity-vinyl-turntable-record-player-with-premium-cartridge-diamond-needle",
-   "source_title": "RT81 Hi-Fi Vinyl Turntable Record Player with Diamond Needle – Fluance",
-   "read": "2026-11-09",
-   "note": "The page shows both 'Add to Cart' and 'Notify Me', so stock status is unclear. Bypass: 'all electronics bypassed when using external preamp'."
+   "source_title": "RT81 Hi-Fi Vinyl Turntable Record Player with Diamond Needle - Walnut | Fluance",
+   "read": "2026-11-10",
+   "note": "This is the maker's US page. Unlike A-T, Fluance gives no 1 kHz, 5 cm/sec condition, so the two figures are comparable only if Fluance used the usual reference. Against the AT-LP70X: 20·log10(252/140) = 5.1 dB lower."
+  },
+  {
+   "product": "Fluance RT81",
+   "label": "Phono output, implied preamp gain, price",
+   "value": "3.5 mV (±3 dB); implied gain ≈ 32.0 dB; $299.99",
+   "source": "https://www.fluance.com/rt81-high-fidelity-vinyl-turntable-record-player-with-premium-cartridge-diamond-needle",
+   "source_title": "RT81 Hi-Fi Vinyl Turntable Record Player with Diamond Needle - Walnut | Fluance",
+   "read": "2026-11-10",
+   "note": "Gain is my arithmetic: 140/3.5 = 40×, and 20·log10(40) = 32.0 dB. Fluance publishes no gain figure. The page also gives S/N of 67 dB or higher (A-weighted, 20 kHz LPF) and 60 dB or higher (unweighted), wow and flutter 0.2% with no weighting, a 'Texas Instruments preamp IC', and 'all electronics bypassed' when an external preamp is used."
   },
   {
    "product": "Fluance RT81+",
-   "label": "Line output level vs cartridge output",
-   "value": "140 mV (−17 dBV) line, with a 4.0 mV AT-VM95E cartridge; $349.99",
-   "source": "https://www.fluance.com/rt81-plus-elite-high-fidelity-vinyl-turntable-glossblack",
-   "source_title": "Fluance RT81+ Elite High Fidelity Vinyl Turntable – Piano Black",
-   "read": "2026-11-09",
-   "note": "The line figure is identical to the RT81's, even though the cartridge is 1.2 dB hotter (20·log10(4.0/3.5)). Either the gain is lower (implied 20·log10(140/4.0) = 30.9 dB) or the line figure is shared spec copy. Fluance publishes no gain to settle which. S/N and W&F are identical to the RT81's."
+   "label": "Line output, phono output, price",
+   "value": "LINE 140 mV (−17 dBV); PHONO 4.0 mV (±3 dB); implied gain ≈ 30.9 dB; $349.99",
+   "source": "https://www.fluance.com/rt81-plus-elite-high-fidelity-vinyl-turntable",
+   "source_title": "RT81+ Elite High Fidelity Vinyl Turntable | Fluance",
+   "read": "2026-11-10",
+   "note": "The phono output rises from 3.5 mV to 4.0 mV with the AT-VM95E cartridge, but the stated line output stays at 140 mV. Implied gain: 140/4.0 = 35×, which is 30.9 dB. So either the preamp gain differs, or the 140 mV is a fixed figure that was not re-rated for the new cartridge. Fluance does not say which."
   },
   {
    "product": "Fluance RT81",
-   "label": "Named reviewer judgement on preamp output",
-   "value": "Listed 'Higher output (0.5 volts) from the phono preamplifier' as a wanted improvement",
+   "label": "Reviewer remark on preamp output",
+   "value": "The reviewer did not measure output level. He 'would like to see a higher output from the phono preamplifier'",
    "source": "https://hometheaterhifi.com/reviews/vinyl/turntables/fluance-rt81-turntable-cartridge-phono-preamplifier-review/",
-   "source_title": "Fluance RT81 Turntable, Cartridge, and Phono Preamplifier Review – SECRETS of Home Theater and High Fidelity",
-   "read": "2026-11-09",
-   "note": "The review's spec table gives 140 mV (labelled 'phono output'). The reviewer called the built-in stage 'sufficient in an entry-level turntable' and took no measurement."
-  },
-  {
-   "product": "general",
-   "label": "Rival coverage of line output",
-   "value": "Valve & Vinyl lists AT 36 dB gain but says line output is 'not published'; Stylus & Sound quotes RT81+ 140 mV only, with no cross-brand comparison",
-   "source": "https://valveandvinyl.com/turntables/crosley-alternatives",
-   "source_title": "Crosley Alternatives — Entry Turntables That Publish Their Numbers | Valve & Vinyl",
-   "read": "2026-11-09",
-   "note": "Also checked https://stylusandsound.com/best-turntables-with-built-in-preamp/ and https://platterandplinth.com/turntables/best-with-preamp (read 2026-11-09)."
+   "source_title": "Fluance RT81 Turntable, Cartridge, and Phono Preamplifier Review | Secrets of Home Theater and High Fidelity",
+   "read": "2026-11-10",
+   "note": "John E. Johnson, Jr., 15 June 2016. He measured low-frequency motor noise 25 dB below the signal and could not bench-measure wow and flutter. The review's spec table labels 140 mV as 'phono output', but Fluance labels it as the line output."
   }
  ],
  "unsourced": [
-  "AT-LP70X line output from audio-technica.com itself: the en-us, en-ca and en-au pages all returned HTTP 403, so I used the LP Gear dealer spec sheet plus AT's own Best Buy Q&A answer.",
-  "AT US store price for AT-LP70X / LP70XBT: the store returned 403. LP Gear lists the LP70X at $269.00, which differs from ChatGPT's $249.00, so the current maker price is unverified.",
-  "Sony PS-LX310BT line output, phono output and price: electronics.sony.com could not be fetched, and Valve & Vinyl also reports Sony returned 403.",
-  "Fluance's test conditions (frequency and stylus velocity) for its 140 mV line figure and the gain of its Texas Instruments preamp stage: neither is on the RT81 or RT81+ product pages, and I could not open a Fluance manual PDF.",
-  "A bench measurement of either deck's actual line-out voltage from a named reviewer: SECRETS published none, and no other measurement was found within budget."
+  "Sony PS-LX3BT line output in mV. Third-party search results quote Sony spec pages as listing only 'Output level 2.5 mV' plus gain select Low −4 / Mid 0 / High +6 dB. I could not open any Sony page to confirm: electronics.sony.com was blocked to the fetcher, and sony.co.uk and sony-asia.com returned 403. No manual or named reviewer found.",
+  "Audio-Technica AT-LP70XBT line output in mV. I did not reach any A-T page, manual or retailer spec block for it.",
+  "Audio-Technica's own US product pages and PDF manuals for the AT-LP70X and AT-LP120XUSB. audio-technica.com returned HTTP 403 on every regional site I tried, and zzounds.com also returned 403. The A-T figures above come from retailer pages that reproduce A-T's spec block.",
+  "Today's US price at Audio-Technica's store for the AT-LP70X and AT-LP120XUSB, blocked by the same 403s. The listenup.com Shopify listing I found is open-box clearance ($159.00), not new stock.",
+  "Fluance's test condition (frequency, groove velocity) for its 140 mV line output. Neither product page states one, and I did not open the RT80/RT81/RT81P user manual v2.6 PDF to check."
  ],
  "_meta": {
   "model": "claude-opus-5-5",
   "effort": "high",
-  "turns": 25,
-  "cost_usd_list": 0.7758938999999999
+  "turns": 33,
+  "cost_usd_list": 0.934793
  }
 }

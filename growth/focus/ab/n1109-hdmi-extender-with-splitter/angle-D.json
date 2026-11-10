@@ -1,5 +1,91 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the OREI extender splitters use one EDID setting, chosen on a dial or copied from one display, to tell the source what single format to send, and their pages say nothing about scaling. J-Tech says its JTECH-14EX60-AE 'supports 4K > 1080P downscaling feature on the receiver end, so that users can utilize different resolution monitors within their setup'.",
+ "standout": 2,
+ "standout_why": "I read the two cited OREI pages (UHD12-EX115-K and UHD14-EXB400-K) and the top-ranked uncited page (UHD14-EX115-K). All three only say to 'Use EDID management when there is no video, wrong resolution, audio compatibility issue, or mixed display capability'. They list single presets (1080p up to 4K60 4:4:4 HDR) or 'copy EDID' from one output, and none mentions scaling or downscaling. The point that the CAT runs cannot go through a network switch is already on both cited pages ('This is not an AV-over-IP system'), so it is not a gap. ChatGPT's J-Tech card did list '4K downscaling', but no page it got explains why a house with mixed TVs needs it.",
+ "decides": "The setup to check is one 4K source feeding a mix of 4K TVs and older 1080p TVs. With the OREI kits, the source sends one format to every receiver, set by the EDID dial or copied from one display. A 4K preset can leave a 1080p TV with no picture, and a 1080p preset makes every TV 1080p. My conclusion, not a maker quote: J-Tech's receiver-end 4K>1080p downscale is the only feature among ChatGPT's three picks that lets both kinds of TV share a source. That makes the JTECH-14EX60-AE the pick for mixed-TV homes, and either OREI kit is fine when every TV is 4K. Note that J-Tech's own store lists the JTECH-14EX60-AE as not available on 2026-11-10.",
+ "candidates": [
+  "J-Tech Digital JTECH-14EX60-AE",
+  "OREI UHD12-EX115-K",
+  "OREI UHD14-EXB400-K",
+  "OREI UHD14-EX115-K"
+ ],
+ "findings": [
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Mixed-resolution display support",
+   "value": "4K > 1080p downscaling at the receiver end, 'so that users can utilize different resolution monitors within their setup'",
+   "source": "https://jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet w/ Audio Extraction, PoC, 4K Downscaling – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "Quoted from the product description on the maker's Shopify store, read with storecheck.py search. A direct page fetch returned HTTP 429. The description does not say whether downscaling is automatic or set per receiver."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Distance and compliance",
+   "value": "4K@60Hz up to 196 ft over a single Cat5e/6 cable per receiver; HDMI 2.0, HDCP 2.2; HDR10 and HLG; 1 in, 4 out plus local loop-out",
+   "source": "https://jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet w/ Audio Extraction, PoC, 4K Downscaling – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "From the maker's store product JSON."
+  },
+  {
+   "product": "J-Tech Digital JTECH-14EX60-AE",
+   "label": "Price and stock, J-Tech store",
+   "value": "$302.49, listed as not available",
+   "source": "https://jtechdigital.com/products/jtech-14ex60-ae-jtd-3145-4k-60hz-1x4-hdmi-extender-splitter-over-ethernet-w-audio-extraction-poc-4k-downscalin",
+   "source_title": "4K 60Hz 1x4 HDMI Extender Splitter Over Ethernet w/ Audio Extraction, PoC, 4K Downscaling – J-Tech Digital",
+   "read": "2026-11-10",
+   "note": "storecheck.py search returned price 302.49 and available: false. The price matches what ChatGPT showed."
+  },
+  {
+   "product": "OREI UHD12-EX115-K",
+   "label": "EDID handling",
+   "value": "EDID dial presets 1080p, 1080i, 1080p 3D, 4K30 4:4:4, 4K60 4:2:0, 4K60 4:4:4, 4K60 4:4:4 HDR; Copy EDID from HDMI LOOP OUT, CAT OUT 1 or CAT OUT 2; PC control mode. No scaling mentioned.",
+   "source": "https://support.orei.com/hc/en-us/articles/41705360744855-UHD12-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD12-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "The page says to use EDID management for 'mixed display capability' but does not describe per-output scaling. The EDID tells the source which one format to output."
+  },
+  {
+   "product": "OREI UHD12-EX115-K",
+   "label": "Distance by resolution",
+   "value": "4K@60Hz 115 ft (35 m); 4K@30Hz 164 ft (50 m); 1080p@60Hz 197 ft (60 m); 18 Gbps, 4K60 4:4:4, HDCP 2.2; PoC to receivers, max 8.28 W",
+   "source": "https://support.orei.com/hc/en-us/articles/41705360744855-UHD12-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD12-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "The page also says 'This is not an AV-over-IP system'. Each receiver must connect directly to the transmitter, not through a switch."
+  },
+  {
+   "product": "OREI UHD14-EXB400-K",
+   "label": "EDID handling and distance",
+   "value": "Same EDID preset list set by DIP switch or RS-232, plus Copy EDID; no scaling mentioned. HDBaseT 4K@60Hz 394 ft (120 m), 1080p@60Hz 492 ft (150 m); transmitter 35 W, 24 V/2.7 A",
+   "source": "https://support.orei.com/hc/en-us/articles/41705363294487-UHD14-EXB400-K-Overview-and-Use-Cases",
+   "source_title": "UHD14-EXB400-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "The page says 'This product is an HDBaseT splitter extender, not an AV-over-IP system'. No switches or routers between the transmitter and receivers."
+  },
+  {
+   "product": "OREI UHD14-EX115-K",
+   "label": "EDID handling and distance",
+   "value": "EDID dial: preset, copy from loop out or CAT outputs 1–4, or PC control; 'Different displays support different formats'; no scaling mentioned. 4K@60Hz 115 ft, 4K@30Hz 164 ft, 1080p@60Hz 197 ft",
+   "source": "https://support.orei.com/hc/en-us/articles/41705361802903-UHD14-EX115-K-Overview-and-Use-Cases",
+   "source_title": "UHD14-EX115-K Overview and Use Cases – OREI",
+   "read": "2026-11-10",
+   "note": "This is the top-ranked result ChatGPT got (rank 1, not cited)."
+  }
+ ],
+ "unsourced": [
+  "OREI's own wording on its separate 'Downscaler' splitters (UHD-PRO104 / UHD-PRO102), which would show that OREI sells scaling as a separate feature. orei.com returned HTTP 429 or a certificate error, and storecheck.py returned HTTP 0.",
+  "Today's OREI store prices for UHD12-EX115-K and UHD14-EXB400-K. The OREI Shopify store blocked storecheck.py (HTTP 0), so I used neither the $139.99 nor the $429.00 that ChatGPT showed.",
+  "J-Tech JTECH-14EX60-AE manual: whether downscaling is automatic or set per receiver, and whether 196 ft holds at 4K60. The product page returned HTTP 429 three times, and a web search found no manual for this model.",
+  "OREI UHD12-EX115-K manual EDID DIP table. The Shopify-hosted PDF downloaded but text extraction was not allowed, and the manuals.online and B&H copies returned 403.",
+  "Amazon prices were not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8948943999999999
+ }
 }

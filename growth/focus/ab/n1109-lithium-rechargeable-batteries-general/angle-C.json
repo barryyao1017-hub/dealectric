@@ -1,5 +1,175 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "C",
+ "gap": "No result ChatGPT got states that EBL itself says its 1.5 V rechargeable lithium AA cells (the 3000 mWh budget pick) \"Can't use for apple mouse and keyboard, Can't use for blink series\". Blink's own spec sheet for the Outdoor 4 calls for \"2 AA 1.5V lithium metal batteries (non-rechargeable)\".",
+ "standout": 2,
+ "standout_why": "Pages I opened: Charge-Test (cited). It already gives the CLR 4300 chargers (MX4, L4 Pro, VX4, L4, L8) and says not to assume any AA charger works, so the XTAR charger list is not new. Light And Matter (cited) says NiMH chargers won't work and warns against flashes, but says nothing about Blink or Apple input devices. RedRecs says only that XTAR \"requires specific charger\" and mentions no device exclusions. The Digital Camera World guide and its EBL review came back truncated, so I couldn't check them. I did not open reviewed.com, rottenwifi or elektroda. None of the pages I could read state EBL's own Blink and Apple exclusions, or that XTAR's older LC8 charger can't charge some 1.5 V cells.",
+ "decides": "This narrows the budget pick rather than overturning the ranking. EBL rules its own 3000 mWh cells out of Blink cameras and Apple mice and keyboards, and Blink specifies non-rechargeable lithium-metal AAs. A shopper buying for a Blink camera or Apple peripherals should not take ChatGPT's 'best budget' EBL card. One of EBL's own bundle pages contradicts this by listing 'Blink cameras', which is a reason to flag the exclusion instead of trusting the listing. For the XTAR picks, charging needs a 1.5 V Li-ion charger that supplies 4.75–5.5 V. That rules out NiMH-only chargers, and XTAR's own LC8 has a stated exclusion. The Dealectric page should pair XTAR cells with the L4 Pro or L8 Pro, which charge both 1.5 V Li-ion and NiMH.",
+ "candidates": [
+  "XTAR 1.5V AA CLR 4300",
+  "XTAR 1.5V AA 4150 mWh",
+  "Pale Blue AA USB-C Rechargeable",
+  "EBL 1.5V AA 3000 mWh rechargeable lithium",
+  "XTAR L4 Pro charger",
+  "XTAR L8 Pro charger"
+ ],
+ "findings": [
+  {
+   "product": "EBL 1.5V AA 3000 mWh rechargeable lithium (4-pack + 4-slot USB charger)",
+   "label": "Device exclusions stated by maker",
+   "value": "\"Can't use for apple mouse and keyboard, Can't use for blink series\"",
+   "source": "https://www.eblofficial.com/products/ebl-4-pack-aa-1-5v-rechargeable-lithium-batteries-with-4-slot-usb-smart-battery-charger-for-aa-aaa-rechargeable-li-ion-battery",
+   "source_title": "EBL 4-Pack AA 1.5V Rechargeable Lithium Batteries with 4-Slot USB Smart Battery Charger",
+   "read": "2026-11-10",
+   "note": "Read from the maker's Shopify store with storecheck.py search. The store listed this bundle at $38.32."
+  },
+  {
+   "product": "EBL 1.5V rechargeable lithium AA/AAA with charger",
+   "label": "Blink exclusion stated by maker",
+   "value": "\"Note: This battery is NOT suitable for the Blink outdoor camera series.\"",
+   "source": "https://www.eblofficial.com/products/ithium-aa-aaa-batteries-with-battery-charger",
+   "source_title": "EBL 1.5V Rechargeable Lithium AA AAA Batteries with Charger for Cameras, Toys, Remotes & Smart Home Devices",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search; listed at $29.99. The same page says the included charger handles \"1-8pcs 1.2V Ni-MH Ni-CD or 1.5V Li-Ion AA AAA\"."
+  },
+  {
+   "product": "EBL 1.5V rechargeable lithium AA with charger",
+   "label": "Conflicting maker claim",
+   "value": "\"Ideal for high-drain devices like digital cameras, Blink cameras, trail cameras\"",
+   "source": "https://www.eblofficial.com/products/lithium-aa-batteries-with-rechargeable-battery-charger",
+   "source_title": "EBL 1.5V Rechargeable Lithium AA Batteries with Charger for Cameras, Toys & Game Controllers",
+   "read": "2026-11-10",
+   "note": "Contradicts EBL's two pages above. Listed at $29.99 (compare-at $39.99). The bundle charger is described as \"compatible with both 1.5V Li-ion and 1.2V Ni-MH/Ni-CD AA/AAA\", with USB-C input."
+  },
+  {
+   "product": "EBL 1.5V AA 3000 mWh rechargeable lithium, 4-pack",
+   "label": "Maker price, battery only",
+   "value": "$31.48 (4-pack)",
+   "source": "https://www.eblofficial.com/products/ebl-aa-lithium-batteries-1-5v-3000mwh-rechargeable-aa-batteries-4-pack",
+   "source_title": "EBL AA Lithium Batteries, 1.5V 3000mWh Rechargeable AA Batteries 4 Pack",
+   "read": "2026-11-10",
+   "note": "Taken from the storecheck.py search result. The product-page lookup returned HTTP 429. ChatGPT showed $22.99 at another retailer."
+  },
+  {
+   "product": "EBL lithium battery charger",
+   "label": "Charger power-adapter requirement",
+   "value": "2.0 A USB adapter required; \"do not use 1.0A adapter\"",
+   "source": "https://www.eblofficial.com/products/battery-charger-with-1-5v-aa-aaa-li-ion-batteries",
+   "source_title": "EBL Lithium Battery Charger with 1.5V AA AAA Li-ion Batteries",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search; listed at $37.07 bundled with cells."
+  },
+  {
+   "product": "Blink Outdoor 4",
+   "label": "Battery the camera maker specifies",
+   "value": "\"2 AA 1.5V lithium metal batteries (non-rechargeable)\"",
+   "source": "https://blink.helpjuice.com/en_GB/outdoor4-camera-tech-specs",
+   "source_title": "Blink Outdoor 4 Technical Specifications",
+   "read": "2026-11-10",
+   "note": "The page neither approves nor bans rechargeable lithium AAs. It only names non-rechargeable lithium-metal cells. Relevant to Dealectric's Wasserstein Blink solar panel listing."
+  },
+  {
+   "product": "general (1.5V Li-ion AA such as XTAR)",
+   "label": "Charging requirement",
+   "value": "4.75–5.5 V charging voltage at 0.4–0.5 A from a 1.5 V Li-ion charger; the cells use an internal 3.6 V cell. Standard 3.6/3.7 V Li-ion chargers cut off around 4.2 V and \"may damage\" the battery or charger.",
+   "source": "https://xtar.cc/?p=7793",
+   "source_title": "XTAR – Top 7 Chargers for 1.5V AA Lithium-Ion Batteries (2024-02-15)",
+   "read": "2026-11-10",
+   "note": "This is a maker blog post, so it is promotional. It names the XTAR MX4 as having the widest compatibility of the chargers compared."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Charging spec, in-cell controller",
+   "value": "Charge controller is inside the cell; charging voltage 4.75–5.5 V, current 0.45 A, just under 3 h. SammysHP names the XTAR VX4 or MX4 as the kind of charger required.",
+   "source": "https://budgetlightforum.com/t/review-xtar-1-5v-aa-clr-4300/228708",
+   "source_title": "[Review] XTAR 1.5V AA CLR 4300 – SammysHP, BudgetLightForum (2025-05-16)",
+   "read": "2026-11-10",
+   "note": "SammysHP measured about 3,800 mWh available energy, against about 2,400 mWh for NiMH."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Maker-listed chargers (via cited rival)",
+   "value": "MX4, L4 Pro, VX4, L4, L8",
+   "source": "https://charge-test.com/best-rechargeable-lithium-aa-batteries-in-2026-xtar-clr-4300-tested/",
+   "source_title": "Best Rechargeable Lithium AA Batteries in 2026? XTAR CLR 4300 Tested – Charge-Test",
+   "read": "2026-11-10",
+   "note": "The rival already states this, so it is not new. XTAR's own product page returned HTTP 429. Charge-Test measured 3,703 mWh on average across 0.1, 0.4 and 1 A."
+  },
+  {
+   "product": "XTAR 1.5V AA CLR 4300",
+   "label": "Maker price",
+   "value": "$25.99",
+   "source": "https://xtardirect.com/products/xtar-15v-aa-clr-4300-rechargeable-lithium-battery",
+   "source_title": "XTAR 1.5V AA CLR 4300 Rechargeable Li-ion battery – XTARdirect",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search result, available. Pack size not confirmed because the product lookup returned HTTP 429. The listing text gives 2,700 mAh and over 1,200 cycles."
+  },
+  {
+   "product": "XTAR LC8 charger",
+   "label": "Stated exclusion",
+   "value": "\"This charger cannot charge 1.5V AA 3300mWh and AAA 1200mWh lithium-ion batteries.\" Applies to \"XTAR 1.5V Lithium Battery with Indicator AA/AAA\".",
+   "source": "https://xtardirect.com/products/xtar-lc8-charger-for-1-5v-aa-aaa-lithium-battery-with-low-voltage-indication",
+   "source_title": "XTAR LC8 charger for 1.5V AA AAA lithium battery with Low-Voltage Indication",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search result; $9.90. The same text also says it will \"fully charge 8 x AAA 1.5V 1200mWh\" in 1.5 h, so the maker's own page contradicts itself on AAA 1200 mWh. Treat the LC8 as cleared only for XTAR's indicator-type cells."
+  },
+  {
+   "product": "XTAR L4 Pro charger",
+   "label": "Supported chemistries",
+   "value": "AA/AAA NiMH and 1.5 V Li-ion, mixed per slot, auto-detects type; $15.90",
+   "source": "https://xtardirect.com/products/xtar-l4-pro-smart-charger-for-aa-aaa-12v-ni-mh-and-15v-lithium-battery",
+   "source_title": "XTAR L4 Pro Smart Charger for AA/AAA 1.2V NI-MH and 1.5V Lithium battery",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search. Size 102×80×27.5 mm, 87 g."
+  },
+  {
+   "product": "XTAR L8 Pro charger",
+   "label": "Supported chemistries",
+   "value": "8 slots, AA/AAA NiMH and 1.5 V Li-ion, auto-detection; $27.99 (compare-at $35.99)",
+   "source": "https://xtardirect.com/products/xtar-l8-pro-smart-charger-8-slots-for-aa-aaa-12v-ni-mh-and-15v-li-ion-battery",
+   "source_title": "XTAR L8 Pro 8-Slot Smart Battery Charger – AA & AAA NiMH/Li-ion, LCD Display, USB-C",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search."
+  },
+  {
+   "product": "XTAR L8 BOX charger",
+   "label": "Third-party cell claim",
+   "value": "\"Works with most AA/AAA 1.5V Li-ion and 1.2V NiMH rechargeable batteries on the market\"; 8 Li-ion cells in 2.6 h",
+   "source": "https://xtardirect.com/products/xtar-l8-box-8-slot-rechargeable-battery-charger-for-aa-aaa-15v-li-ion-and-12v-ni-mh-batteries",
+   "source_title": "XTAR L8 BOX 8-Slot Rechargeable Battery Charger",
+   "read": "2026-11-10",
+   "note": "The maker says \"most\", not all. It names no brands. The store showed $2.99, which looks like an add-on price, so I'm not using it."
+  },
+  {
+   "product": "Pale Blue AA USB-C Rechargeable",
+   "label": "Charging method and maker price",
+   "value": "Charges through its own USB-C port with the included cable, four cells at once, in about 1 h; $20.99 listed",
+   "source": "https://paleblueearth.com/products/pale-blue-lithium-rechargeable-aa-batteries-usb-c",
+   "source_title": "AA USB-C Rechargeable Batteries – Paleblue",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search result (compare-at $89.99). Pack size for the $20.99 variant not confirmed because the product lookup returned HTTP 429. ChatGPT showed $41.99 for an 8-pack."
+  },
+  {
+   "product": "general (NiMH chargers)",
+   "label": "NiMH charger compatibility",
+   "value": "\"the one you've been using for the past 10 years for your NiMH batteries won't work\"",
+   "source": "https://www.lightandmatter.org/2026/equipment-reviews/review-ebl-rechargeable-3000mwh-aa-lithium-ion-batteries/",
+   "source_title": "Review: EBL Rechargeable 3000mWh AA Lithium-Ion Batteries – Matthew Gore, Light And Matter (2026-10-24)",
+   "read": "2026-11-10",
+   "note": "The cited rival already states this. Gore measured 3,273–3,404 mWh and called the cells \"Not good in camera flash or other high-draw applications\" (Godox TT685 recycle up to 8× slower than NiMH)."
+  }
+ ],
+ "unsourced": [
+  "XTAR's own CLR 4300 and 4150 mWh product pages, which should list compatible chargers: xtardirect returned HTTP 429 to storecheck and WebFetch, and the xtar.cc product URL I tried returned 404.",
+  "EBL's named compatible charger models (M7011, M7012, ALL4, ALL8): these appeared only in a search snippet. I couldn't open the page that states them.",
+  "Pale Blue device exclusions, charging temperature and the pack size of the $20.99 variant: the product page returned HTTP 429.",
+  "Whether XTAR or Pale Blue cells are approved or excluded for Blink cameras: no maker statement opened. Blink's spec page names only non-rechargeable lithium-metal AAs.",
+  "Whether Dealectric's Tenergy TN480U and TN438 chargers refuse 1.5 V Li-ion AAs: I didn't open Tenergy's pages. Their catalog names say NiMH only.",
+  "The Digital Camera World guide and its EBL review: both came back truncated, so I couldn't check whether they mention Blink or Apple exclusions."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9861992000000002
+ }
 }
