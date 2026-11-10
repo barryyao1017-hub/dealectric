@@ -1,0 +1,91 @@
+{
+ "angle": "B",
+ "gap": "None of the results ChatGPT got says that a 2-PC, 1-monitor KVM rated '4K 60 Hz' tops out at 497.7 million pixels per second. A 1440p 144 Hz monitor needs 530.8 Mpx/s (6.7% more), so the $54.99 UGREEN and the $129.99 TESmart HKS201-P23 that ChatGPT recommended cap a 1440p monitor at 120 Hz. TESmart's cheapest 2-PC, 1-monitor model that lists 1440p above 120 Hz is the HKS201-M24 at $269.",
+ "standout": 3,
+ "standout_why": "I opened the two pages ChatGPT cited. DeskDNA (best-kvm-switch) lists the UGREEN's modes (4K@60, 1440p@120, 1080p@240) and says 'HDMI covers 4K@60Hz / 1080p@240Hz' and 'DisplayPort 1.4 is required for 4K@144Hz'. It never says that 4K60 does not mean 1440p 144 Hz, and it gives no pixel-rate or bandwidth math. iTechGuides gives no Gbps figure for any video mode and never mentions 1440p 144 Hz. Neither page explains that the mode lists come from one fixed pixel-rate ceiling, and neither puts a price on going past it.",
+ "decides": "This splits ChatGPT's pick by monitor. For 4K60, 3440×1440 at 100 Hz or 1080p at 240 Hz, the cheap HDMI 2.0 switch is enough and the UGREEN/TESmart HKS201-P23 recommendation holds. For a 1440p 144/165 Hz gaming monitor, which is the most common upgrade, those switches hold it to 120 Hz. The right pick becomes the TESmart HKS201-M24 ($269, lists 2560×1440@240 Hz and 3440×1440@144 Hz). That costs $139.01 more than the HKS201-P23, still well under ChatGPT's $449.85 StarTech. ChatGPT's own follow-up question about the monitor's refresh rate is where this number belongs.",
+ "candidates": [
+  "UGREEN HDMI KVM Switch 2-in-1-out 4K 60Hz",
+  "TESmart HKS201-P23",
+  "TESmart HKS201-M24",
+  "StarTech D86A2-2-PORT-8K-KVM"
+ ],
+ "findings": [
+  {
+   "product": "TESmart HKS201-P23",
+   "label": "Price and rated modes (maker store)",
+   "value": "$129.99; HDMI 2.0; 3840×2160@60 Hz, 3440×1440@100 Hz, 2560×1440@120 Hz, 1920×1080@240 Hz",
+   "source": "https://www.tesmart.com/products/hks201-p23",
+   "source_title": "2 Port KVM Switch Kit HDMI 4K60Hz with USB 3.0 Docking Station, 2 PCs 1 Monitor – TESmart",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py product search on tesmart.com. Listed in stock. The -v2 listing has the same price and specs."
+  },
+  {
+   "product": "TESmart HKS201-P23",
+   "label": "Pixel-rate ceiling implied by its own mode list",
+   "value": "497.7 Mpx/s",
+   "source": "https://www.tesmart.com/products/hks201-p23",
+   "source_title": "2 Port KVM Switch Kit HDMI 4K60Hz with USB 3.0 Docking Station, 2 PCs 1 Monitor – TESmart",
+   "read": "2026-11-10",
+   "note": "3840×2160×60 = 497,664,000 px/s. 1920×1080×240 = 497,664,000 px/s (identical). 3440×1440×100 = 495,360,000. 2560×1440×120 = 442,368,000. Every listed mode is at or below 497.7 Mpx/s. Active pixels only, no blanking."
+  },
+  {
+   "product": "general",
+   "label": "1440p 144 Hz pixel rate vs a 4K60 rating",
+   "value": "530.8 Mpx/s, 6.7% above 4K60's 497.7 Mpx/s",
+   "source": "https://www.tesmart.com/products/hks201-p23",
+   "source_title": "2 Port KVM Switch Kit HDMI 4K60Hz with USB 3.0 Docking Station, 2 PCs 1 Monitor – TESmart",
+   "read": "2026-11-10",
+   "note": "2560×1440×144 = 530,841,600 px/s; 530.8 / 497.7 = 1.067. This exceeds the ceiling implied by the switch's own list, and 1440p@144 is not listed. At 165 Hz: 2560×1440×165 = 608.3 Mpx/s (+22%). Active pixels only, so the real link load including blanking is higher still."
+  },
+  {
+   "product": "UGREEN HDMI KVM Switch 2-in-1-out 4K 60Hz",
+   "label": "Rated modes and price (reviewer page)",
+   "value": "$70; 4K@60 Hz, 1440p@120 Hz, 1080p@240 Hz (same 497.7 Mpx/s ceiling)",
+   "source": "https://www.deskdna.com/gear/monitors/best-kvm-switch",
+   "source_title": "Best KVM Switch for 2 Computers (2026) | DeskDNA",
+   "read": "2026-11-10",
+   "note": "DeskDNA lists these modes for the UGREEN 2-PC/1-monitor HDMI KVM. Its top mode at 1440p is 120 Hz. 1920×1080×240 = 3840×2160×60 = 497.7 Mpx/s, the same ceiling as the TESmart HKS201-P23. ChatGPT showed $54.99 at Micro Center; I could not open that listing."
+  },
+  {
+   "product": "TESmart HKS201-M24",
+   "label": "Price and rated modes (maker store)",
+   "value": "$269.00; HDMI 2.1; 2560×1440@240 Hz, 3440×1440@144 Hz, 1920×1080@240 Hz; 3840×2160@240 Hz and 7680×4320@60 Hz with DSC; VRR",
+   "source": "https://www.tesmart.com/products/hks201-m24",
+   "source_title": "8K60Hz HDMI 2.1 2x1 KVM Switch Pro Hub for 2 PCs – TESmart",
+   "read": "2026-11-10",
+   "note": "2560×1440×240 = 884.7 Mpx/s and 3440×1440×144 = 713.3 Mpx/s, both listed without a DSC label. That covers 1440p at 144 and 165 Hz (530.8 and 608.3 Mpx/s). Listed in stock."
+  },
+  {
+   "product": "TESmart HKS201-M24",
+   "label": "Price premium over HKS201-P23 to get 1440p above 120 Hz",
+   "value": "$139.01",
+   "source": "https://www.tesmart.com/products/hks201-m24",
+   "source_title": "8K60Hz HDMI 2.1 2x1 KVM Switch Pro Hub for 2 PCs – TESmart",
+   "read": "2026-11-10",
+   "note": "$269.00 − $129.99 = $139.01, both prices from tesmart.com today. For comparison, ChatGPT's high-refresh pick (StarTech DP 1.4) was $449.85 at TeciSoft, $180.85 more than the HKS201-M24."
+  },
+  {
+   "product": "general",
+   "label": "4K 144 Hz data rate vs DisplayPort 1.3/1.4 link",
+   "value": "28.7 Gbps of 8-bit pixel data vs a 32.4 Gbps raw link",
+   "source": "https://vesa.org/featured-articles/vesa-publishes-displayport-standard-version-1-4/",
+   "source_title": "VESA Publishes DisplayPort Standard Version 1.4 – VESA",
+   "read": "2026-11-10",
+   "note": "3840×2160×144×24 bit = 28.67 Gbps. VESA's page: 'DP 1.3 increased the maximum link bandwidth to 32.4 Gbps', and DP 1.4 is 'the first DP standard to take advantage of' DSC. The line-coding overhead that leaves less than 28.7 Gbps of payload is not stated on that page. Consistent with this, TESmart labels its 4K@240 mode '(DSC)'."
+  }
+ ],
+ "unsourced": [
+  "UGREEN maker page and model number for the 2-PC/1-monitor HDMI 2.0 KVM: the us.ugreen.com store search returned no HDMI KVM, ugreen.com returned 429, Best Buy CA and Newegg returned 403, and the comx PDF did not render as text. I used DeskDNA for its modes instead.",
+  "Micro Center's $54.99 UGREEN price that ChatGPT showed: I could not find or open the listing.",
+  "StarTech D86A2-2-PORT-8K-KVM US price and whether 4K 144 Hz needs DSC: the startech.com page I opened showed only '8K 60Hz DisplayPort' and a 'USB 5Gbps Hub'. The DSC note appears only in retailer search snippets, which I did not open.",
+  "HDMI 2.0's 18 Gbps maximum bandwidth from hdmi.org: /spec/hdmi2_0 returned 404, so the derivation uses each switch's own published mode list as its ceiling rather than the HDMI spec.",
+  "Amazon prices: amzcheck.py search returned nothing (walled)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9684827
+ }
+}
