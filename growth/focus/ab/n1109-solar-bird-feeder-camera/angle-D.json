@@ -1,0 +1,101 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the maker's solar panel stops charging the battery below 32°F (0°C). Kiwibit says its panel \"will not charge the battery below 0°C\", and Birdfy puts the solar-charging range at 32–104°F. Both feeders still run below freezing, Birdfy to 14°F and Kiwibit to −4°F, so through a freezing spell the battery only drains and is not refilled, however sunny it is.",
+ "standout": 2,
+ "standout_why": "I opened birdfeederlab.com, feederfield.com and reviewed.com. BirdFeederLab only says the panel 'may not fully keep up' on short, overcast winter days and needs 4–6 hours of direct sun. Feeder Field says 'lithium batteries hold less charge in the cold' and plans for winter USB-C top-ups, and it notes that its 14°F and −5°F figures are operating ranges, not charging limits. Reviewed.com says nothing about winter or cold charging. None of them says that charging stops below freezing. The two cited pages, WIRED and Good Housekeeping, would not load for me, by WebFetch or by curl, so I could not check them.",
+ "decides": "This settles whether 'solar powered' works year-round. In a yard that stays below 32°F for days, a solar feeder from any of these makers runs on its battery alone. It still works, but you have to charge it indoors by hand. So in cold climates battery size matters more than panel wattage. My own reasoning, which no source states: Birdfy's 9,000 mAh feeders (Feeder 2 series, Feeder Metal 2 4K) should outlast the 5,000 mAh Soliom BF08 and Bird Buddy's 3,800–3,900 mAh units on a cold, non-charging stretch. In mild climates the finding changes nothing.",
+ "candidates": [
+  "Birdfy Feeder Metal 2 4K",
+  "Birdfy Feeder 2 Pro",
+  "Birdbuddy Pro Solar",
+  "Kiwibit Bird Feeder 2 Pro",
+  "Soliom BF08"
+ ],
+ "findings": [
+  {
+   "product": "general (all Birdfy feeders)",
+   "label": "Solar-charging temperature range",
+   "value": "32°F to 104°F (0°C to 40°C) ambient",
+   "source": "https://support.birdfy.com/help/FAQ-Troubleshooting/",
+   "source_title": "Birdfy Support – FAQ Troubleshooting",
+   "read": "2026-11-09",
+   "note": "Quote: 'Make sure the ambient temperature while charging with the solar panel is between 0℃ and 40℃ (32℉ and 104℉).' The same page says 'Solar panels are primarily designed to maintain your device's battery level, not to charge it from 0% to 100% quickly' and that more than 200 Moment videos a day may outrun the panel. The page names no model, and it says 'all Birdfy products are compatible with solar panels.'"
+  },
+  {
+   "product": "Birdfy Feeder Metal 2 4K",
+   "label": "Working temperature (wider than charging range)",
+   "value": "14°F to 113°F (−10°C to 45°C)",
+   "source": "https://support.birdfy.com/product/birdfy-feeder-metal-2-4k/Specifications/",
+   "source_title": "Birdfy Feeder Metal 2 4K Specifications – Birdfy Support",
+   "read": "2026-11-09",
+   "note": "The spec page lists no charging temperature. Between 14°F and 32°F the feeder runs, but the FAQ's 32°F floor means the panel will not charge it."
+  },
+  {
+   "product": "Birdfy Feeder Metal 2 4K",
+   "label": "Battery / solar / Wi-Fi",
+   "value": "9,000 mAh; built-in 2 W solar panel; 2.4 GHz / 5 GHz Wi-Fi; DC 5V/2A charging",
+   "source": "https://support.birdfy.com/product/birdfy-feeder-metal-2-4k/Specifications/",
+   "source_title": "Birdfy Feeder Metal 2 4K Specifications – Birdfy Support",
+   "read": "2026-11-09",
+   "note": "Taken from the spec table."
+  },
+  {
+   "product": "Birdfy Feeder Metal 2 4K",
+   "label": "Price, Birdfy US store",
+   "value": "$199.99 (compare-at $279.99), in stock",
+   "source": "https://www.birdfy.com/products/birdfy-feeder-metal-4k",
+   "source_title": "Birdfy Feeder Metal 2 4K - Smart Bird Feeder with Camera",
+   "read": "2026-11-09",
+   "note": "From the storecheck.py search of the Birdfy Shopify store. A direct product fetch returned HTTP 429 (rate-limited)."
+  },
+  {
+   "product": "Birdfy Feeder 2 / 2 Pro / 2 Duo",
+   "label": "Battery, panel, working temp, Wi-Fi",
+   "value": "9,000 mAh each; 2 Pro includes 3 W panel, Duo 5 W, Feeder 2 panel optional; working 14°F to 113°F (−10°C to 45°C); 2.4 GHz Wi-Fi",
+   "source": "https://support.birdfy.com/product/birdfy-feeder-2-series/Specifications/",
+   "source_title": "Birdfy Feeder 2 Series Specifications – Birdfy Support",
+   "read": "2026-11-09",
+   "note": "No charging temperature listed here. The 32°F solar-charging floor comes from the Birdfy FAQ."
+  },
+  {
+   "product": "Kiwibit (Beako) smart bird feeder",
+   "label": "Solar charging below freezing",
+   "value": "No charging below 0°C (32°F); operates down to −4°F (−20°C)",
+   "source": "https://kiwibit.com/blogs/smart-bird-feeder/the-ultimate-winter-backyard-birdwatching-guide-tips-for-feeding-care-and-cold-weather-safety",
+   "source_title": "The Ultimate Winter Backyard Birdwatching Guide – Kiwibit (Dec 7, 2025)",
+   "read": "2026-11-09",
+   "note": "Quotes: 'battery charging is automatically restricted below 0°C to protect battery health' and 'The solar panel will not charge the battery below 0°C, which is normal and ensures long-term battery safety.' The post names only the Beako feeder, not the Bird Feeder 2 Pro by name."
+  },
+  {
+   "product": "Birdbuddy (all camera modules)",
+   "label": "Cold-weather battery behavior",
+   "value": "Battery drains faster below 32°F (0°C); cameras operate to −4°F (−20°C); warm the module to room temperature before charging",
+   "source": "https://blog.mybirdbuddy.com/post/winter-is-coming",
+   "source_title": "Winter is Coming – Birdbuddy blog (Nov 20, 2025)",
+   "read": "2026-11-09",
+   "note": "Quotes: 'any extended exposure to temperatures below 32°F / 0°C will cause the battery to drain faster', 'Always warm the module to room temperature before charging', 'Charge the camera indoors at room temperature', and 'Prolonged exposure below –4°F (–20°C) can even lead to permanent battery degradation.' Bird Buddy does not state a solar-roof cutoff temperature."
+  },
+  {
+   "product": "Birdbuddy (all camera modules)",
+   "label": "Store-inside threshold",
+   "value": "Below −5°F / −20°C or above 120°F / 50°C, temporarily store the feeder inside",
+   "source": "https://support.mybirdbuddy.com/hc/en-us/articles/25028536121745",
+   "source_title": "Device Care Guidelines – Birdbuddy",
+   "read": "2026-11-09",
+   "note": "This is an operating and storage limit, not a charging limit. The page gives no charging temperature."
+  }
+ ],
+ "unsourced": [
+  "Bird Buddy's solar-roof charging temperature cutoff: I checked the Device Care Guidelines support page, the Pro Solar product page (which shows no specs to a fetch) and the Winter is Coming blog post. None of them gives a number for charging; the blog only says to warm the module before charging.",
+  "Soliom BF08 charging or working temperature: I found nothing from Soliom. The only manual with temperatures was for a generic Spy Store feeder, not Soliom.",
+  "Kiwibit Bird Feeder 2 Pro charging temperature by model name: the support article at support.kiwibit.com would not load (self-signed certificate error), and the blog post names only Beako.",
+  "Bird Buddy Pro Solar US price on mybirdbuddy.com today: the product page showed no price to a fetch.",
+  "Whether the WIRED and Good Housekeeping pages (the two ChatGPT cited) mention charging below freezing: both failed to load for me."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8335708000000001
+ }
+}
