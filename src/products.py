@@ -67,6 +67,7 @@ CATEGORIES = {
     "tablets": ('Tablets', 'Android tablets, including ones sold with a keyboard cover.'),
     "phone-case": ('Phone cases', 'Phone cases and the straps and lanyards that clip to them.'),
     "battery-box": ('Battery boxes', 'Battery boxes and smart battery boxes for 12V trolling-motor and marine batteries.'),
+    "amplifier": ('Amplifiers', 'Stereo, 2.1 and subwoofer amplifiers that power passive speakers and passive subwoofers.'),
 }
 
 PRODUCTS = [
@@ -4701,6 +4702,39 @@ PRODUCTS = [
  "summary": 'A 12 V battery box with a 60 A motor breaker, a 10 A accessory breaker, external motor terminals, USB and a 12 V socket. Its 10 in interior height clears a tall Group 31 AGM.',
  "fit": 'A single 12 V lead-acid or AGM battery powering a Newport 62 lb or Minn Kota 50–55 lb motor, which match the 60 A breaker. Smaller motors also need their own smaller breaker.',
  "caveats": ["Newport's store listing says it is not compatible with lithium batteries. Its FAQ says the LED meter is the part that cannot read lithium.", "Newport specifies 40 A for its 36 lb motor and 50 A for its 40, 46, 55 and 86 lb motors, so those motors need their own breaker in addition to the box's 60 A one.", 'The USB port is rated 0.5 A at 5 V (2.5 W).']},
+
+{"slug": 'fosi-audio-m03-subwoofer-amplifier',
+ "brand": 'Fosi Audio',
+ "program": 'awin:fosiaudio',
+ "category": 'amplifier',
+ "name": 'Fosi Audio M03 Subwoofer Mono Amplifier, TPA3255, 32 V supply included',
+ "model": 'M03',
+ "url": 'https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier',
+ "price": 76.49,
+ "list_price": 89.99,
+ "verified": '2026-11-10',
+ "specs": [('Channels', '1 (mono)'), ('Amp chip', 'TI TPA3255 Class D'), ('Rated power', 'Fosi lists 150 W and 200 W at 4 Ω in different places; Audiophonics lists 120 W at 4 Ω'), ('Speaker load', '4–8 Ω'), ('Modes', 'SUB (with low-pass) or full-range PBTL, set with a front switch'), ('Low-pass', 'Adjustable knob; Fosi lists 20–200 Hz in one place and 20–300 Hz in another'), ('Input', '1× RCA line level (no speaker-level input listed)'), ('Power supply', '32 V / 5 A adapter included'), ('Auto on / standby', 'None listed; front power switch')],
+ "warranty": '24 months (Fosi Audio)',
+ "returns": '30-day return window on the Fosi Audio store',
+ "summary": "A small single-channel TPA3255 amp with a low-pass filter. It powers a passive subwoofer from a receiver's or amp's sub (LFE) output, and the power supply is in the box.",
+ "fit": 'For people who already have an AV receiver or stereo amp with a sub out and want to add or revive a passive subwoofer for the least money.',
+ "caveats": ['Real output is lower than the box number, and the included 32 V supply limits peak power.', 'RCA line input only: a stereo amp with no sub out needs a different amp, such as one with speaker-level inputs.', "Fosi's page lists no auto-on, so you switch it on and off by hand or from a switched outlet.", 'Rated for 4–8 Ω; check the impedance on older 3 Ω home-theater-in-a-box subs.', 'Audiophonics in France lists it as discontinued. The US Fosi store showed it in stock on 2026-11-10.']},
+
+{"slug": 'fosi-audio-bt30d-pro',
+ "brand": 'Fosi Audio',
+ "program": 'awin:fosiaudio',
+ "category": 'amplifier',
+ "name": 'Fosi Audio BT30D Pro 2.1 Channel Bluetooth Amp, with 32 V / 5 A supply',
+ "model": 'BT30D Pro',
+ "url": 'https://fosiaudio.com/products/fosi-audio-bt30d-pro-bluetooth-5-0-2-1-channel-540w-power-amplifier',
+ "price": 109.99,
+ "verified": '2026-11-10',
+ "specs": [('Channels', '2 speaker channels + 1 passive subwoofer channel (2.1)'), ('Amp chips', 'Two TI TPA3255 Class D'), ('Rated power', '165 W × 2 + 350 W at 4 Ω (Fosi rating); one reviewer estimated about 40–50 W per speaker and about 100 W to the sub'), ('Sub controls', 'SUB FREQ 0–300 Hz and SUB VOL knobs'), ('Extra output', '3.5 mm full-range pre-out for a powered sub'), ('Inputs', 'Bluetooth 5.0 and RCA'), ('Speaker load', '2–8 Ω (Fosi FAQ)'), ('Power supply', '32 V / 5 A included; a 48 V / 5 A bundle costs more, and Fosi says it needs a fan')],
+ "warranty": "24 months on Fosi's product page (one section of its instruction page says 18 months)",
+ "returns": '30-day return window on the Fosi Audio store',
+ "summary": 'A compact 2.1 amp with a real amplified passive-sub channel and its own sub crossover and level knobs. It drives a pair of passive bookshelf speakers and a passive sub from one box.',
+ "fit": 'For people building or rescuing a 2.1 system (passive bookshelf speakers plus a passive sub, or the passive parts of an old home-theater-in-a-box) who want one amp with Bluetooth.',
+ "caveats": ['Power ratings are inflated: AudioReviews.org estimated about 100 W to the sub on the stock 32 V supply.', 'The SUB FREQ knob has no Hz markings, so you set the crossover by ear.', 'It runs warm and makes a small click at power-off (AudioReviews.org).', 'Bluetooth has to be reconnected by hand after each power-up. No aptX, and no optical input.', 'Not enough for a large 12–15 inch home-theater sub in a big room.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
