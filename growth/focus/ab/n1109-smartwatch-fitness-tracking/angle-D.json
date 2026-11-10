@@ -1,5 +1,105 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states the pairing mechanism in the makers' own words: Samsung's compatibility table lists iOS as 'Not supported' for the Galaxy Watch8 series (Android 12.0 or higher, 1.5 GB RAM), Apple requires iPhone 11 or later on iOS 27 for Series 12 / SE 3, and Garmin's manual says text replies are 'available only for compatible Android phones' because the phone, not the watch, sends the SMS, so a Garmin Venu 4 on an iPhone shows texts but cannot answer them.",
+ "standout": 2,
+ "standout_why": "Tech Advisor (cited) only says Apple Watch is 'the obvious choice for iPhone users' and Wear OS for Android, with no OS versions, no Samsung iOS statement and nothing on iPhone text replies. NBC News (uncited top result) says Galaxy Watch 8 is 'compatible with all Android phones' and that ECG, irregular-rhythm and sleep-apnea need a Samsung phone, but gives no minimum Android/RAM, no explicit iOS 'Not supported' and nothing on Garmin reply limits. Android Authority and Wired (cited) returned 403 / blocked, so I could not compare them; ChatGPT's own answer only says 'iPhone & Android' for Garmin and Fitbit. The Samsung-phone-only health features are therefore partly covered (NBC), while the Garmin-on-iPhone reply limit and the maker-stated OS floors are new.",
+ "decides": "The phone in the shopper's pocket decides the shortlist before any fitness metric does. iPhone owners: Galaxy Watch8/Watch9 and Pixel Watch are out (Samsung: iOS 'Not supported'); Apple Watch SE 3 / Series 12 need iPhone 11+ on iOS 27; Garmin Venu 4 (and Lily 2 Active) and Amazfit pair fine but cannot reply to texts from the wrist. Android owners: Apple Watch is out; Galaxy Watch8 needs Android 12.0+ with 1.5 GB RAM, and blood pressure needs Android 12+ / Wear OS 4.0 with ECG tied to a Galaxy phone via the Galaxy Wearable app. This confirms Garmin Venu 4 as the only pick on ChatGPT's list that works on both platforms, with the reply-to-text caveat for iPhone users.",
+ "candidates": [
+  "Garmin Venu 4",
+  "Apple Watch Series 12",
+  "Apple Watch SE 3",
+  "Samsung Galaxy Watch8",
+  "Samsung Galaxy Watch9",
+  "Google Pixel Watch 4",
+  "Fitbit Versa 4",
+  "Garmin Lily 2 Active"
+ ],
+ "findings": [
+  {
+   "product": "Apple Watch Series 12 / SE 3 / Ultra 4",
+   "label": "Required phone",
+   "value": "iPhone 11 or later (incl. iPhone SE 2nd gen or later) with iOS 27 or later",
+   "source": "https://www.apple.com/apple-watch-series-12/specs/",
+   "source_title": "Apple Watch Series 12 - Technical Specifications - Apple",
+   "read": "2026-11-10",
+   "note": "Quoted from the System Requirements section: 'iPhone 11 or later, including iPhone SE (2nd generation or later), with iOS 27 or later'. No Android pairing path is offered. The Series 11 specs URL now redirects to the same statement naming Series 12, Ultra 4 and SE 3."
+  },
+  {
+   "product": "Samsung Galaxy Watch8 (and Watch8 Classic)",
+   "label": "Required phone OS",
+   "value": "Android 12.0 or higher with 1.5 GB RAM or higher; iOS: Not supported",
+   "source": "https://www.samsung.com/ae/support/mobile-devices/devices-and-operating-systems-that-work-with-samsung-galaxy-watch/",
+   "source_title": "What devices and operating systems work with the Samsung Galaxy Watch",
+   "read": "2026-11-10",
+   "note": "Row 'Galaxy Watch8 series'. Same floor for Samsung and non-Samsung Android phones; non-Samsung notes 'Certain models and tablets not supported'. Samsung's US product page footnote states a lower floor, 'Android 11.0 or above and minimum 1.5 gigabyte Memory', so the two Samsung pages disagree by one Android version; the compatibility table is the more specific document."
+  },
+  {
+   "product": "Samsung Galaxy Watch9 / Watch Ultra2",
+   "label": "Required phone OS",
+   "value": "Android 13.0 or higher, 1.5 GB RAM or higher; iOS: Not supported",
+   "source": "https://www.samsung.com/ae/support/mobile-devices/devices-and-operating-systems-that-work-with-samsung-galaxy-watch/",
+   "source_title": "What devices and operating systems work with the Samsung Galaxy Watch",
+   "read": "2026-11-10",
+   "note": "Row 'Galaxy Watch9 & Watch Ultra2'. Relevant because ChatGPT's second chat carded the Galaxy Watch9."
+  },
+  {
+   "product": "Samsung Galaxy Watch8",
+   "label": "Blood pressure / ECG phone requirement",
+   "value": "Blood pressure: Android 12 or later, Watch/Wear OS 4.0; ECG: pair with a Galaxy smartphone via the Galaxy Wearable app",
+   "source": "https://www.samsung.com/us/apps/samsung-health-monitor/",
+   "source_title": "Samsung Health Monitor | Apps & Services | Samsung US",
+   "read": "2026-11-10",
+   "note": "Footnote 6 for blood pressure quoted verbatim. ECG section instructs pairing with a 'Galaxy smartphone'; no iOS mention anywhere on the page. Sleep apnea feature is 'on a compatible Samsung Galaxy Watch and phone', adults 22+."
+  },
+  {
+   "product": "Samsung Galaxy Watch8",
+   "label": "Sleep coaching phone requirement",
+   "value": "Samsung Health app v6.24 or above and must be paired with Samsung Galaxy smartphones (Android 11 and above)",
+   "source": "https://www.samsung.com/us/watches/galaxy-watch8/",
+   "source_title": "Galaxy Watch8 | Samsung US",
+   "read": "2026-11-10",
+   "note": "Footnote on the US product page. Same page: 40 mm Graphite Bluetooth model starts at $299.99 before trade-in on 2026-11-10."
+  },
+  {
+   "product": "Garmin (vívoactive 6 manual; same note across Garmin Connect watches)",
+   "label": "Text reply from watch",
+   "value": "Available only for compatible Android phones; the preset reply is sent by the phone as an SMS",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-8C2C402F-55AC-431F-9CF2-1442B89CE149/EN-US/GUID-73EB3305-E1BD-4AD8-B6AA-EFCDA3156CCB.html",
+   "source_title": "Replying to a Text Message - vívoactive 6 Owner's Manual",
+   "read": "2026-11-10",
+   "note": "Quoted: 'NOTE: This feature is available only for compatible Android™ phones.' The mechanism is that the watch asks the paired phone to send the SMS; iOS offers no such path to third-party watches, so iPhone users get notifications but no reply. The identical topic appears in Garmin's Instinct Crossover AMOLED and Lily 2 manuals (search results); I did not open a Venu 4-specific copy."
+  },
+  {
+   "product": "Garmin Venu 4",
+   "label": "Phone platforms",
+   "value": "Pairs with Bluetooth phones on iPhone and Android (no cellular)",
+   "source": "https://www.nbcnews.com/select/shopping/best-smartwatches-rcna248847",
+   "source_title": "Best Smartwatches of 2026: Our Editors' Top Tested Picks - NBC News",
+   "read": "2026-11-10",
+   "note": "NBC lists Venu 4 as 'Compatible with: iPhone and Android'. Garmin's Venu 4 owner's manual (search result) points to garmin.com/ble for phone compatibility, which redirected to a Garmin support FAQ that returned 403."
+  },
+  {
+   "product": "Samsung Galaxy Watch 8 (rival statement)",
+   "label": "Samsung-phone-only health features",
+   "value": "ECG readings, irregular heart rhythm notifications and sleep apnea detection only when paired with a Samsung phone",
+   "source": "https://www.nbcnews.com/select/shopping/best-smartwatches-rcna248847",
+   "source_title": "Best Smartwatches of 2026: Our Editors' Top Tested Picks - NBC News",
+   "read": "2026-11-10",
+   "note": "Already stated by NBC (uncited result #5/#8); included so the page does not claim it as new."
+  }
+ ],
+ "unsourced": [
+  "Google Pixel Watch 4 phone requirement in Google's own words (support.google.com/googlepixelwatch/answer/12651633 returned 404 twice; Google Store Pixel Watch 4 page truncated)",
+  "Fitbit Versa 4 supported iOS/Android versions and Google-account requirement (Google Store Versa 4 page truncated; fitbit.com redirects there)",
+  "Garmin Connect minimum iOS/Android versions (garmin.com/ble redirects to support.garmin.com FAQ pvL8aWsaLU2iKyvF8VrpP9, which returned 403)",
+  "Garmin's own US Venu 4 product page and price (search returned only retailers; Tech Advisor quotes Garmin at $549.99 but I did not open garmin.com)",
+  "Android Authority and Wired cited pages (403 / blocked), so their compatibility statements could not be compared",
+  "Amazfit (Zepp app) minimum iOS/Android versions for the Dealectric-listed Amazfit watches"
+ ],
+ "_meta": {
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.92970285
+ }
 }
