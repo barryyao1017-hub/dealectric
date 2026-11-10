@@ -22,11 +22,16 @@ import codesweep as C  # noqa: E402
 import build as B  # noqa: E402
 
 OUT = ROOT / "src/kits-tested.json"
+C.EVAL_TIMEOUT = 900.0   # the cart script waits out 429s (up to ~10 min)
 
 CART_JS = r"""
 (async () => {
-  const j = async (u, body) => { const r = await fetch(u, body ? {method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify(body)} : {});
-                                 if (!r.ok) throw new Error(u + " HTTP " + r.status); return r.json(); };
+  // Shopify answers 429 "Too many attempts" to bursts of cart calls (BLUETTI, 2026-11-10): wait and retry
+  const j = async (u, body) => { for (let i = 0; i < 5; i++) {
+                                   const r = await fetch(u, body ? {method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify(body)} : {});
+                                   if (r.status === 429) { await new Promise(res => setTimeout(res, 40000 * (i + 1))); continue; }
+                                   if (!r.ok) throw new Error(u + " HTTP " + r.status); return r.json(); }
+                                 throw new Error(u + " HTTP 429 after retries"); };
   await j("/cart/clear.js", {});
   await j("/cart/add.js", {items: ITEMS});
   const out = {};
@@ -54,7 +59,10 @@ def store_kit(k: dict) -> dict:
     try:
         for _ in range(40):
             time.sleep(1)
-            if (t.eval("location.origin") or "") == f"https://{host}" and (t.eval("document.readyState") or "") != "loading":
+            o = t.eval("location.origin") or ""
+            # a store may move to another host of the same shop (us.ankersolix.com -> www.ankersolix.com)
+            if o.startswith("https://") and o.split("//")[1].split(".", 1)[-1] == host.split(".", 1)[-1] and (t.eval("document.readyState") or "") != "loading":
+                host = o.split("//")[1]
                 break
         else:
             return {"pass": False, "error": f"store page did not load on {host} ({t.eval('location.href')})"}
@@ -64,7 +72,7 @@ def store_kit(k: dict) -> dict:
             if i.get("variant"):
                 variants[i["slug"]] = int(i["variant"]); continue
             path = B.urlsplit(B.BY_SLUG[i["slug"]]["url"]).path.rstrip("/")
-            js = ("fetch(%s + '.js').then(r => r.json()).then(d => { const want = %s.toLowerCase();"
+            js = ("(async () => { for (let i = 0; i < 5; i++) { const r = await fetch(%s + '.js'); if (r.status === 429) { await new Promise(s => setTimeout(s, 30000 * (i + 1))); continue; } return r.json(); } })().then(d => { const want = %s.toLowerCase();"
                   " const v = d.variants.find(v => v.available && (!want || v.title.toLowerCase().includes(want))) || d.variants[0];"
                   " return {id: v.id, title: d.title + ' / ' + v.title, available: v.available}; })") % (json.dumps(path), json.dumps(i.get("option", "")))
             v = t.eval(js)
