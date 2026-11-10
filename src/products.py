@@ -64,6 +64,7 @@ CATEGORIES = {
     "electric-screwdriver": ('Electric screwdrivers', 'Cordless electric and precision screwdrivers for electronics repair, PC building and household fixes.'),
     "tire-inflator": ('Tire inflators', 'Portable and cordless tire inflators for car, bike, motorcycle and ball inflation.'),
     "build-plate": ('Build plates', 'Magnetic spring-steel print surfaces for FDM 3D printers.'),
+    "tablets": ('Tablets', 'Android tablets, including ones sold with a keyboard cover.'),
 }
 
 PRODUCTS = [
@@ -4630,6 +4631,40 @@ PRODUCTS = [
  "summary": "The Xbox version of SteelSeries' Arctis Nova 5. It is the only Nova 5 model SteelSeries builds for Xbox, and one dongle covers Xbox, PlayStation and PC.",
  "fit": 'One wireless headset for a home with a PC, a PlayStation and an Xbox.',
  "caveats": ['Set the dongle switch to Xbox on an Xbox Series X|S or Xbox One, and to USB on a PC or PlayStation.', 'SoundGuys measured 42 h 10 min on the dongle, short of the 60 h headline.', 'There is no 3.5 mm input, so a flat battery cannot be bridged with a cable.', 'PlayStation does not support ChatMix (SteelSeries).']},
+
+{"slug": 'samsung-galaxy-tab-s10-fe-128gb-wifi',
+ "brand": 'Samsung',
+ "program": 'amazon:us',
+ "asin": 'B0DVZWKCDV',
+ "category": 'tablets',
+ "name": 'Samsung Galaxy Tab S10 FE 128GB Wi-Fi Android Tablet, US Version, Gray',
+ "model": 'Galaxy Tab S10 FE, 128 GB Wi-Fi',
+ "url": 'https://www.amazon.com/dp/B0DVZWKCDV',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Wi-Fi browsing runtime (Notebookcheck)', '14 h 47 min'), ('Measured max brightness (Notebookcheck)', '667 cd/m²'), ('Battery', '8,000 mAh'), ('Weight (Notebookcheck)', '497 g'), ('USB-C', 'USB 2.0; no wired monitor output (Notebookcheck)'), ('Keyboard', 'Sold separately; Book Cover Keyboard AI Key (EF-DX725) has a trackpad and attaches by pogo pins')],
+ "warranty": "Samsung's standard 12-month (1-year) limited warranty, which covers tablets launched in 2023 or later (Samsung US warranty page)",
+ "returns": 'Bought from Samsung.com or the Shop Samsung app: 15 days from delivery, with a 5% restocking fee on tablets unless the item is damaged or defective. Bought from another retailer, such as Amazon: return it to that retailer under its own policy (Samsung US return policy)',
+ "summary": "Samsung's lower-priced 128 GB Wi-Fi tablet. It ran longer than the Galaxy Tab S11 and S11 Ultra in Notebookcheck's Wi-Fi browsing test, and Samsung sells a pogo-pin keyboard with a trackpad for it.",
+ "fit": "Shoppers who want a laptop-style Android tablet with a trackpad keyboard for email, documents and browsing, for the lowest total cost in Samsung's lineup.",
+ "caveats": ['The keyboard is sold separately.', 'The USB 2.0 port cannot drive an external monitor (Notebookcheck).', 'The trackpad keyboard weighs 423 g, almost as much as the tablet (497 g).']},
+
+{"slug": 'samsung-galaxy-tab-s10-fe-plus-128gb-wifi',
+ "brand": 'Samsung',
+ "program": 'amazon:us',
+ "asin": 'B0DVZSB68P',
+ "category": 'tablets',
+ "name": 'Samsung Galaxy Tab S10 FE+ 13.1-inch 128GB Wi-Fi Android Tablet, US Version, Blue',
+ "model": 'Galaxy Tab S10 FE+, 128 GB Wi-Fi',
+ "url": 'https://www.amazon.com/dp/B0DVZSB68P',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Wi-Fi browsing runtime (Notebookcheck)', '18 h 56 min'), ('Measured max brightness (Notebookcheck)', '789 cd/m²'), ('Battery', '10,090 mAh'), ('Weight (Notebookcheck)', '664 g'), ('USB-C', 'USB 2.0; no wired monitor output (Notebookcheck)'), ('Keyboard', 'Sold separately; the Slim AI Key cover (EF-DX620) has no trackpad, and the full Book Cover Keyboard adds one')],
+ "warranty": "Samsung's standard 12-month (1-year) limited warranty, which covers tablets launched in 2023 or later (Samsung US warranty page)",
+ "returns": 'Bought from Samsung.com or the Shop Samsung app: 15 days from delivery, with a 5% restocking fee on tablets unless the item is damaged or defective. Bought from another retailer, such as Amazon: return it to that retailer under its own policy (Samsung US return policy)',
+ "summary": "The 13.1-inch version of the S10 FE. It had the longest Wi-Fi browsing runtime of these tablets in Notebookcheck's tests.",
+ "fit": 'Shoppers who type away from a charger all day and want a bigger screen without paying Ultra prices.',
+ "caveats": ['The keyboard is sold separately, and the Slim cover has no trackpad.', 'The USB 2.0 port cannot drive an external monitor (Notebookcheck).', 'At 664 g it is heavier than the 497 g S10 FE.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
