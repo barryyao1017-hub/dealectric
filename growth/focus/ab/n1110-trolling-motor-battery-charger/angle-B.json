@@ -1,0 +1,112 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how long each charger takes to refill one 100 Ah LiFePO4 trolling battery from empty: about 16.7 h at 6 A per bank, 10 h at 10 A and 6.7 h at 15 A. Minn Kota's '4–6 h' for its 10 A models works out to only 40–60 Ah put back.",
+ "standout": 2,
+ "standout_why": "I read the Minn Kota Battery Charger Selection Guide (cited). Its charge-time chart gives 10–12 h for 6 A per bank, 4–6 h for 10 A and 3–5 h for 15 A, but never says what battery size those times assume. I also read the Minn Kota PCL specs page (cited). It only says 'Shorter charge times', with no figures. williamswordsmith.com lists amps per bank but has no prices, no battery Ah and no hours. NOCO's GENPRO10X3 specs page (cited) returned 403 to both of my tools, so I could not check it. gearranking.com (both pages) and boatdealsdirect.com failed with a certificate error, so I did not see whether they compute hours per Ah. None of the pages I could open turns amps per bank into hours for a 100 Ah lithium battery.",
+ "decides": "It weakens ChatGPT's 'best value' MK 318 PCL (6 A per bank), which ChatGPT called 'excellent for overnight charging'. That charger needs about 16.7 h to refill a flat 100 Ah lithium battery, so it is not an overnight charger for a shopper who fishes days back to back. 10 A per bank (MK 330 PCL, GENPRO10X3) gives about 10 h, a long night. 15 A per bank (MK 345 PCL) gives about 6.7 h, the only onboard Minn Kota PCL tier that fits a short night. If the boat can take a single-bank portable charger, Redodo's 14.6 V 20 A charger refills the same battery in about 5 h for $82.99 at Redodo's store (about $4.15 per amp).",
+ "candidates": [
+  "Minn Kota MK 318 PCL",
+  "Minn Kota MK 330 PCL",
+  "Minn Kota MK 345 PCL",
+  "NOCO GENPRO10X3",
+  "Redodo 14.6V 10A LiFePO4 charger",
+  "Redodo 14.6V 20A LiFePO4 charger",
+  "Redodo 14.6V 40A LiFePO4 charger"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Battery being refilled (input)",
+   "value": "101–105 Ah usable from a 12 V 100 Ah LiFePO4 trolling battery; $233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "Redodo's US store, read with storecheck. The 100 Ah rating is the input for all the hours below. Dealectric lists this battery (redodo-12v-100ah-trolling-motor-low-temp)."
+  },
+  {
+   "product": "Minn Kota MK 318 PCL",
+   "label": "Hours to refill a flat 100 Ah LiFePO4 battery, per bank",
+   "value": "≈16.7 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 6 A per bank = 16.7 h, counting the constant-current stage only. Minn Kota's own chart gives 10–12 h for this model, which works out to 60–72 Ah put back (6 A × 10–12 h)."
+  },
+  {
+   "product": "Minn Kota MK 330 PCL",
+   "label": "Hours to refill a flat 100 Ah LiFePO4 battery, per bank",
+   "value": "≈10 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 10 A per bank = 10 h. Minn Kota's chart gives 4–6 h, which is 10 A × 4–6 h = 40–60 Ah, less than 60% of one 100 Ah battery. The same output applies to the MK 110/220/440/550 PCL."
+  },
+  {
+   "product": "Minn Kota MK 345 PCL",
+   "label": "Hours to refill a flat 100 Ah LiFePO4 battery, per bank",
+   "value": "≈6.7 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 15 A per bank = 6.7 h. Minn Kota's chart gives 3–5 h, which is 15 A × 3–5 h = 45–75 Ah. The same output applies to the MK 230/460 PCL."
+  },
+  {
+   "product": "general",
+   "label": "Doubling banks onto one battery",
+   "value": "\"Connecting a second bank to one battery will charge the battery almost twice as fast\"",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "On a 12 V single-battery boat, two 15 A banks on one battery: 100 Ah ÷ 30 A ≈ 3.3 h."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota PCL lithium charge voltage",
+   "value": "14.5 V max",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/14476351755159-Precision-Charger-Lithium-PCL-Features-Specifications-and-Manuals-2021-present",
+   "source_title": "Precision Charger Lithium (PCL) Features, Specifications and Manuals (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "The page also says the PCL chargers do not work with single 24 V or 36 V lithium batteries. Redodo's own chargers top out at 14.6 V."
+  },
+  {
+   "product": "Redodo 14.6V 10A LiFePO4 charger",
+   "label": "Refill hours for 100 Ah and cost per amp",
+   "value": "≈10 h; $6.00 per amp ($59.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-10a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 10A LiFePO4 Battery Charger",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 10 A = 10 h; $59.99 ÷ 10 A = $6.00/A. Redodo's own claim of 50 Ah to 50% in 2.5 h is 25 Ah ÷ 10 A, so the method matches. Single bank."
+  },
+  {
+   "product": "Redodo 14.6V 20A LiFePO4 charger",
+   "label": "Refill hours for 100 Ah and cost per amp",
+   "value": "≈5 h; $4.15 per amp ($82.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger",
+   "source_title": "Redodo 14.6V 20A LiFePO4 Battery Charger",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 20 A = 5 h, which matches Redodo's battery page ('5-hour fast charging time with a 14.6V 20A' charger); $82.99 ÷ 20 A = $4.15/A. Single bank, lithium only."
+  },
+  {
+   "product": "Redodo 14.6V 40A LiFePO4 charger",
+   "label": "Refill hours for 100 Ah and cost per amp",
+   "value": "≈2.5 h; $4.50 per amp ($179.99)",
+   "source": "https://www.redodopower.com/products/redodo-14-6v-40a-lifepo4-upgrade-handle-battery-charger",
+   "source_title": "Redodo 14.6V 40A Ultra Fast Handle LiFePO4 Battery Charger",
+   "read": "2026-11-10",
+   "note": "100 Ah ÷ 40 A = 2.5 h; $179.99 ÷ 40 A = $4.50/A. Redodo states about 5 h for 200 Ah. Check the battery's maximum charge current before using it on a 100 Ah battery."
+  }
+ ],
+ "unsourced": [
+  "Minn Kota MK 318/330/345 PCL US prices: minnkota.johnsonoutdoors.com product and category pages rendered empty in WebFetch, and amzcheck returned nothing. So there is no cost per amp for Minn Kota.",
+  "NOCO GENPRO10X3 amps per bank and price: no.co/genpro10x3 and /specs returned 403, storecheck returned 404, and the batteryjunction.com and emarineinc.com pages returned 429. 10 A per bank appears only in a search snippet, so I left the GENPRO10X3 out of the hours figures.",
+  "Minn Kota PCL AC input current and efficiency, needed for a wall-energy figure: not on the help pages I read, and I had no tool calls left to open the PCL manual PDF.",
+  "Exact length of the constant-voltage tail on a LiFePO4 charge, for any of these chargers: no source found. All hours above count only the constant-current stage, Ah ÷ A.",
+  "gearranking.com/marine-chargers and boatdealsdirect.com comparison: both pages failed with a certificate error, so I could not check whether they already give hours per Ah."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9146237999999998
+ }
+}

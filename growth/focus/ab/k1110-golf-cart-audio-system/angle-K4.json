@@ -1,0 +1,127 @@
+{
+ "angle": "K4",
+ "gap": "No result ChatGPT got states that Fugoo, an approved store, sells its IP67 Tough 2.0 speaker as a 2-pack for $99.99, which is $19.98 less than two singles at $59.99 each ($119.98) and makes a no-wiring two-speaker golf cart set in one cart that needs no 48V-to-12V reducer.",
+ "standout": 2,
+ "standout_why": "I read three rival pages. golfcartbase.com is the cited one: it names only an Ehaho 26-inch soundbar at $149.99 on Amazon and gives no reducer amp rating, fuse size or bundle. cartvoltage.com was not cited but was in the results. It covers the reducer rules (input ceiling above 58.4V, 30A minimum with lights, 10-20A soundbar fuse) and gives a $60-$200 range for portable IP67 speakers, but it names no product, store or bundle and links only to Amazon search pages. mtx.com is the other cited page and returned HTTP 403, so I could not compare against it. ChatGPT's own answer lists 'portable Bluetooth speakers' as a type but shows no product or price. None of these pages names a single-store set or a bundle SKU that is cheaper than the items bought separately. This is a 2 and not a 3 because the bundle answers the cheaper 'portable' path. It does not settle the hardwired soundbar kit, which is what most of the results are about.",
+ "kit_items": [
+  "Speakers (no-wiring path): Fugoo Tough 2.0 2-Pack. Both speakers are IP67, the store says each plays for 20 hours, and they pair with each other, so nothing has to be wired to the cart's 36/48V pack.",
+  "Speaker (hardwired path): BOSS Audio BRT26RGB 26-inch 12V soundbar, sold on Amazon. It is the mid-price card ChatGPT showed. I could not open its spec sheet, so its current draw is unsourced.",
+  "Voltage reducer (hardwired path, 48V carts): Vatrer 48V/72V to 12V 25A/335W DC-DC converter at $79.99. Its title rates it for 48V and 72V systems, so a 51.2V lithium pack charging at 58.4V falls inside its rated input class. Its 25A is below the 30A minimum that cartvoltage.com recommends when lights share the reducer.",
+  "Voltage reducer (36V carts): Vatrer 36V to 12V 25A/335W converter at $79.99.",
+  "Inline fuse on the soundbar's positive lead, using the size the soundbar maker specifies (cartvoltage.com says this is typically 10-20A), mounted close to the reducer."
+ ],
+ "carts": [
+  {
+   "store": "Fugoo (awin:fugoo), fugoo.com",
+   "items": [
+    "Fugoo TOUGH 2.0 Waterproof Bluetooth Speaker (2-Pack) | https://www.fugoo.com/products/tough2pack | $99.99 (compare-at $199.99) | 2026-11-10",
+    "Fugoo TOUGH 2.0 Rugged Outdoor Bluetooth Speaker (single, for comparison) | https://www.fugoo.com/products/tough | $59.99 (compare-at $99.99) | 2026-11-10"
+   ],
+   "bundle_sku": "TOUGH 2.0 2-Pack at $99.99. Two singles cost 2 × $59.99 = $119.98, so the 2-pack is $19.98 cheaper and is the SKU to use. Fugoo's store search for 'mount' found no mount, so the set has no golf-cart mount from the same store. I found no free gift."
+  },
+  {
+   "store": "Vatrer (awin:vatrer), vatrerpower.com",
+   "items": [
+    "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W | https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer | $79.99 (compare-at $128.99) | 2026-11-10",
+    "Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit (UL 2271) | https://vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery | $1,579.99 (compare-at $2,399.99) | 2026-11-10"
+   ],
+   "bundle_sku": "None found. The conversion kit includes the battery, charger, LCD monitor, cables and terminal covers, but the store does not list a converter in it. Vatrer sells no speaker or soundbar (store search for 'speaker' returned only batteries). This cart covers the power side only and cannot hold the audio."
+  },
+  {
+   "store": "Amazon (amazon:us)",
+   "items": [
+    "BOSS Audio Systems BRT26RGB 26-inch sound bar | https://www.amazon.com/dp/B08GXYJS1B | price not read (amzcheck blocked) | 2026-11-10",
+    "48V-to-12V 30A voltage reducer and inline fuse holder | not identified (amzcheck search returned nothing) | price not read | 2026-11-10"
+   ],
+   "bundle_sku": "Not checked. Amazon blocked the tool."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Fugoo Tough 2.0 2-Pack",
+   "label": "price today",
+   "value": "$99.99 (compare-at $199.99)",
+   "source": "https://www.fugoo.com/products/tough2pack",
+   "source_title": "TOUGH 2.0 Waterproof Bluetooth® Speaker (2-Pack)",
+   "read": "2026-11-10",
+   "note": "Read from the store's catalog with storecheck.py search. Opening the product page itself returned HTTP 429."
+  },
+  {
+   "product": "Fugoo Tough 2.0 (single)",
+   "label": "price today",
+   "value": "$59.99 (compare-at $99.99)",
+   "source": "https://www.fugoo.com/products/tough",
+   "source_title": "TOUGH 2.0 Rugged Outdoor Bluetooth® speaker",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. 2 × $59.99 = $119.98, which is $19.98 more than the 2-pack."
+  },
+  {
+   "product": "Fugoo Tough 2.0",
+   "label": "weatherproofing and battery",
+   "value": "IP67; can be submerged in 3 ft of water for 30 min; 20-hour battery; pairs with any other FUGOO 2.0 speaker",
+   "source": "https://www.fugoo.com/products/tough",
+   "source_title": "TOUGH 2.0 Rugged Outdoor Bluetooth® speaker",
+   "read": "2026-11-10",
+   "note": "Maker's own feature text from the store catalog. The 20-hour figure is the maker's claim, not a measured result."
+  },
+  {
+   "product": "Vatrer 48V/72V to 12V converter",
+   "label": "rating and price",
+   "value": "25 A / 335 W, 48V and 72V input class, $79.99 (compare-at $128.99)",
+   "source": "https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. The rating comes from the product title. The page asks for installation in a spot with good heat dissipation, with the converter's base touching metal under heavy load. 335 W ÷ 25 A works out to about 13.4 V output, but that is my arithmetic, not a published figure."
+  },
+  {
+   "product": "Vatrer 36V to 12V converter",
+   "label": "rating and price",
+   "value": "25 A / 335 W, $79.99 (compare-at $128.99)",
+   "source": "https://vatrerpower.com/products/vatrer-36v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 36V to 12V Golf Cart Power Buck Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "storecheck.py search."
+  },
+  {
+   "product": "Vatrer 48V 105Ah golf cart conversion kit",
+   "label": "price and contents",
+   "value": "$1,579.99 (compare-at $2,399.99); includes battery, matched charger, LCD monitor, connection accessories, cables and terminal covers",
+   "source": "https://vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery",
+   "source_title": "【UL 2271】 Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. The store does not list a 12V converter among the kit contents."
+  },
+  {
+   "product": "general",
+   "label": "reducer sizing per rival",
+   "value": "Input ceiling above 58.4 V; 30 A minimum with lights, 40 A for a large amplified bar; soundbar fuse typically 10-20 A",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "This is what the rival page already states, recorded as the baseline. It puts Vatrer's 25 A converter below its 30 A recommendation for setups that include lights."
+  },
+  {
+   "product": "Redodo (awin:redodo)",
+   "label": "golf-cart audio and power items",
+   "value": "No 48V-to-12V reducer or speaker. Golf cart items are the 48V 100Ah battery ($836.99) and the conversion kit ($1,149.99)",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "storecheck.py searches for 'converter' and '48V to 12V' returned only batteries and inverters."
+  }
+ ],
+ "unsourced": [
+  "BOSS BRT26RGB price, current draw and fuse rating: amzcheck.py is blocked on Amazon, and the manual PDF (manuals.plus/asin/B08GXYJS1B.pdf) had no readable text through WebFetch.",
+  "Amazon price and ASIN for a 48V-to-12V 30A reducer and an inline fuse: amzcheck.py search returned nothing.",
+  "Vatrer 48V/72V converter's exact input voltage range, output voltage and waterproof rating: the product page returned HTTP 429 to both storecheck.py and WebFetch, three times.",
+  "Fugoo 2-pack box contents (mounts, cables) and whether the two speakers play as a stereo pair or only as linked speakers: the product page returned HTTP 429.",
+  "MTX golf cart audio page (cited by ChatGPT): HTTP 403, so its kits and prices could not be compared.",
+  "A golf-cart or roll-bar speaker mount in any approved store: none found at Fugoo, and Soundcore, EarFun and Marshall were not checked within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0288004000000002
+ }
+}

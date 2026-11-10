@@ -1,0 +1,119 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Keychron puts the same 2,600 mAh battery in the magnetic K3 HE and the mechanical K3 Ultra 8K yet rates them at up to 55 h and up to 550 h. The low-profile wireless pick that has Rapid Trigger gives up about 90% of its runtime for that analog sensing. The mechanical boards that keep long runtimes (K3 Ultra 8K, K3 Max, G915 X) can't do Rapid Trigger, because their switches fire at one fixed point (1.3 mm on the G915 X).",
+ "standout": 1,
+ "standout_why": "Compared against mkbguide.com (top result in both chats, uncited), geekgamingtricks.com (top result in both chats, uncited) and the cited NuPhy, RTINGS and Tom's Hardware pages. mkbguide already gives the K3 HE at about 55 h and the K3 Ultra at 'up to 550 hours'. It never says the two use the same 2,600 mAh battery, so it can't separate the cost of magnetic sensing from a bigger battery. It also doesn't explain why a mechanical switch can't do Rapid Trigger. geekgamingtricks covers the sensing difference ('tracks magnetic position' vs 'registers at a predetermined point') and Valve's August 2024 CS2 SOCD/Snap Tap rule, so those angles are already taken. RTINGS's low-profile page returned no article body when fetched. The cited NuPhy page returned HTTP 429 every time.",
+ "decides": "This confirms the split ChatGPT made but adds a cost it never stated. For Rapid Trigger with adjustable actuation, buy a magnetic board: the NuPhy Air75 HE or Logitech G515 RAPID TKL (both wired only), or the Keychron K3 HE if you need wireless. The K3 HE's wireless comes at a cost: Keychron rates it at 55 h from 2,600 mAh, and Notebookcheck measured about 27 h at maximum backlight over 2.4 GHz. That works if you charge it every few days, not if you want to charge it about once a month. Chat 2's 'gaming' picks (G915 X TKL, K3 Max) can't do Rapid Trigger or adjustable actuation at all. They suit shoppers who value wireless runtime over FPS strafing.",
+ "candidates": [
+  "NuPhy Air75 HE",
+  "Keychron K3 HE",
+  "Logitech G515 RAPID TKL",
+  "Logitech G915 X LIGHTSPEED TKL",
+  "Keychron K3 Max",
+  "Keychron K3 Ultra 8K"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "How a linear Hall sensor reads key position",
+   "value": "Output responds proportionally to magnetic flux density (continuous analog position, not on/off)",
+   "source": "https://www.ti.com/product/DRV5055",
+   "source_title": "DRV5055 | Ratiometric linear hall effect sensor with analog output | TI.com",
+   "read": "2026-11-10",
+   "note": "TI's own words: 'a linear Hall-effect sensor that responds proportionally to magnetic flux density.' This is the property Rapid Trigger and adjustable actuation depend on. I don't know which sensor part Keychron or NuPhy use; Keychron's K2 HE page says TMR sensors. This is a general mechanism, not a K3 HE part spec."
+  },
+  {
+   "product": "Keychron K3 HE",
+   "label": "Switch and analog features",
+   "value": "Keychron Ultra-Fast Lime low-profile magnetic switch (Hall Effect sensing); Rapid Trigger; adjustable actuation 0.2–2.9 mm",
+   "source": "https://www.keychron.com/products/keychron-k3-he-wireless-magnetic-switch-custom-keyboard",
+   "source_title": "Keychron K3 HE Wireless Magnetic Switch Custom Keyboard",
+   "read": "2026-11-10",
+   "note": "Read via the Shopify product data (storecheck.py)."
+  },
+  {
+   "product": "Keychron K3 HE",
+   "label": "Battery and rated runtime",
+   "value": "2,600 mAh, up to 55 hours",
+   "source": "https://www.keychron.com/products/keychron-k3-he-wireless-magnetic-switch-custom-keyboard",
+   "source_title": "Keychron K3 HE Wireless Magnetic Switch Custom Keyboard",
+   "read": "2026-11-10",
+   "note": "Maker claim; Notebookcheck's test says it holds with backlight off."
+  },
+  {
+   "product": "Keychron K3 HE",
+   "label": "Polling rate and connectivity",
+   "value": "1,000 Hz; 2.4 GHz, Bluetooth and wired; N-key rollover wireless and wired",
+   "source": "https://www.keychron.com/products/keychron-k3-he-wireless-magnetic-switch-custom-keyboard",
+   "source_title": "Keychron K3 HE Wireless Magnetic Switch Custom Keyboard",
+   "read": "2026-11-10",
+   "note": "Notebookcheck's spec table gives 125 Hz over Bluetooth."
+  },
+  {
+   "product": "Keychron K3 HE",
+   "label": "US price, Keychron store",
+   "value": "$119.99",
+   "source": "https://www.keychron.com/products/keychron-k3-he-wireless-magnetic-switch-custom-keyboard",
+   "source_title": "Keychron K3 HE Wireless Magnetic Switch Custom Keyboard",
+   "read": "2026-11-10",
+   "note": "storecheck.py: price 119.99, compare_at 119.99, available true."
+  },
+  {
+   "product": "Keychron K3 Ultra 8K",
+   "label": "Battery and rated runtime (mechanical control case)",
+   "value": "2,600 mAh, up to 550 hours; 8,000 Hz polling incl. wireless; Keychron Milk POM mechanical switches",
+   "source": "https://www.keychron.com/products/keychron-k3-ultra-8k-wireless-custom-mechanical-keyboard",
+   "source_title": "Keychron K3 Ultra 8K Wireless Custom Mechanical Keyboard",
+   "read": "2026-11-10",
+   "note": "Same maker, same 75% low-profile K3 chassis, same 2,600 mAh battery as the K3 HE. 550 h / 55 h = 10×, so the magnetic board's rated runtime is 10% of the mechanical one's. The page lists no Rapid Trigger or adjustable actuation. Store price $109.99."
+  },
+  {
+   "product": "Keychron K3 HE",
+   "label": "Measured battery drain, max backlight over 2.4 GHz",
+   "value": "3.6% per hour ≈ 27 hours per charge",
+   "source": "https://www.notebookcheck.net/Keychron-K3-HE-review-Low-profile-magnetic-keyboard-punches-way-above-its-weight-class.1274872.0.html",
+   "source_title": "Keychron K3 HE review: Low-profile magnetic keyboard punches way above its weight class (Notebookcheck, Julian van der Merwe)",
+   "read": "2026-11-10",
+   "note": "Notebookcheck also called Keychron's 55 h backlight-off claim 'accurate in our testing'. It saw double inputs at 0.2 mm actuation with 0.1 mm Rapid Trigger sensitivity and fixed them by raising the setting to 0.3 mm. Review published 2026-06-05, updated 2026-10-05. 100 / 3.6 = 27.8 h."
+  },
+  {
+   "product": "Logitech G915 X LIGHTSPEED TKL",
+   "label": "Switch and actuation",
+   "value": "Low-profile GL mechanical switches, fixed 1.3 mm actuation point; no adjustable actuation or Rapid Trigger listed",
+   "source": "https://www.logitechg.com/en-us/shop/p/g915-x-tkl-wireless",
+   "source_title": "G915 X TKL Wireless RGB Gaming Keyboard | Logitech G",
+   "read": "2026-11-10",
+   "note": "Height 22.6 mm. Tri-mode: LIGHTSPEED 2.4 GHz, Bluetooth, wired. Logitech's page lists no battery hours or polling rate."
+  },
+  {
+   "product": "Logitech G915 X LIGHTSPEED TKL",
+   "label": "US price, Logitech G store",
+   "value": "$209.99 (list $229.99)",
+   "source": "https://www.logitechg.com/en-us/shop/p/g915-x-tkl-wireless",
+   "source_title": "G915 X TKL Wireless RGB Gaming Keyboard | Logitech G",
+   "read": "2026-11-10",
+   "note": "Matches the $209.99 Newegg price ChatGPT showed."
+  },
+  {
+   "product": "Keychron K3 Max",
+   "label": "Switches, battery, polling, price",
+   "value": "Gateron / Keychron low-profile mechanical switches; 1,550 mAh, up to 73 hours; 1,000 Hz; $89.99 (list $109.99)",
+   "source": "https://www.keychron.com/products/keychron-k3-max-qmk-via-wireless-custom-mechanical-keyboard",
+   "source_title": "Keychron K3 Max QMK/VIA Wireless Custom Mechanical Keyboard",
+   "read": "2026-11-10",
+   "note": "Mechanical contact switches with no Rapid Trigger or adjustable actuation listed. This is the chat-2 'best value' gaming pick."
+  }
+ ],
+ "unsourced": [
+  "NuPhy Air75 HE US price, actuation range, Rapid Trigger sensitivity, polling rate and wired-only status from nuphy.com: both nuphy.com and pay.nuphy.com returned HTTP 429 every time I tried, through WebFetch and storecheck.py. mkbguide gives 0.1–3.3 mm and 8,000 Hz wired, but I didn't confirm that on NuPhy's page.",
+  "A maker or datasheet statement that magnetic-keyboard Hall/TMR sensors draw current continuously, which would explain why the K3 HE gets 55 h vs 550 h on the same battery. Keychron's HE pages give runtimes but no reason. TI's DRV5055 datasheet PDF downloaded, but I couldn't extract its ICC table. Only vendor blogs (AttackShark) make the claim.",
+  "Logitech G915 X LIGHTSPEED TKL battery hours and polling rate: Logitech's US product page lists neither.",
+  "Logitech G515 RAPID TKL magnetic switch specs and price from logitechg.com: I didn't open the page within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0468581
+ }
+}

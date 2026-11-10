@@ -1,0 +1,110 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a class-D sub amp's output is capped by its supply voltage, so the Fosi Audio M03 cannot reach its rated power on the 32 V / 5 A brick it ships with: Fosi says 'you need a more powerful power supply to get the MAX power output', and the ideal ceiling at 32 V is about 128 W into 4 Ω and 64 W into 8 Ω, below its own 150–200 W (4 Ω) and 100–120 W (8 Ω) ratings.",
+ "standout": 2,
+ "standout_why": "The two cited B&H compare pages (NX3000D vs XLS1002/EPQ304/A800 and NX3000D vs XLS1502) returned HTTP 403 and could not be opened. Going by their titles and by ChatGPT's answer built on them, they are spec tables for rack pro amps. They cover none of the small TPA3255 sub amps and nothing about how supply voltage limits power. ChatGPT's answer covers impedance, RMS power, crossover and DSP only. It never says the NX3000D has no RCA input, which is the jack an AV receiver's sub out uses, and it never mentions supply limits. Those B&H tables probably list input connector types, which is why this scores 2 and not 3. The Sweetwater category pages are product grids with no mechanism text.",
+ "decides": "For a home passive sub fed from an AV receiver's RCA sub out, the Fosi M03 is the only candidate here that takes RCA directly, has its own 20–300 Hz low-pass and costs under $100. Its real power, though, depends on the supply: plan on about 128 W at 4 Ω with the included 32 V brick and buy Fosi's 48 V supply to approach the rating (ideal ceiling about 288 W at 4 Ω). The sub must be 4–8 Ω. The Crown XLS 1002 also takes RCA. The Behringer NX3000D lists only XLR/TRS combo inputs, so it needs an RCA-to-XLR/TRS cable. The Dayton SPA250DSP is a plate amp that mounts in a 9.25 x 6.25 in cutout in the sub's own cabinet, so it only fits a DIY or modified box.",
+ "candidates": [
+  "Fosi Audio M03",
+  "Behringer NX3000D",
+  "Crown XLS 1002",
+  "Dayton Audio SPA250DSP"
+ ],
+ "findings": [
+  {
+   "product": "Fosi Audio M03",
+   "label": "Maker's statement on supply vs power",
+   "value": "Ships with a 32 V 5 A adapter; DC input range 24–48 V; 'you need a more powerful power supply to get the MAX power output' (Fosi sells a separate 48 V 5 A GaN supply)",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier (fosiaudio.com)",
+   "read": "2026-11-10",
+   "note": "Fosi US product page, opened directly. This page also contains text addressed to AI agents, which I ignored."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Rated output power (maker, conflicting)",
+   "value": "150 W RMS at 4 Ω / 120 W at 8 Ω (feature bullets); 200 W RMS at 4 Ω / 100 W at 8 Ω (spec table); load 4–8 Ω",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier (fosiaudio.com)",
+   "read": "2026-11-10",
+   "note": "The same page gives two different ratings, and neither says which supply voltage it was measured at."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Ideal output ceiling with the included 32 V supply (Dealectric arithmetic)",
+   "value": "≈128 W into 4 Ω, ≈64 W into 8 Ω at 32 V; ≈288 W into 4 Ω at 48 V; brick input limit 160 W",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier (fosiaudio.com)",
+   "read": "2026-11-10",
+   "note": "A bridge-tied (BTL/PBTL) class-D output swings at most ±PVDD across the load, so the ideal maximum sine power is PVDD²/(2·R). 32²/(2·4) = 128 W; 32²/(2·8) = 64 W; 48²/(2·4) = 288 W. Real output is lower because of losses. The 32 V × 5 A = 160 W brick also limits sustained output. The voltages come from Fosi's page; the formula is standard."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Amplifier chip limits (TI)",
+   "value": "TPA3255: PVDD 18–53.5 V; 315 W stereo into 4 Ω BTL and 600 W mono into 2 Ω PBTL at 10% THD+N; 260 W / 480 W at 1% THD+N; minimum load 2 Ω",
+   "source": "https://www.ti.com/product/TPA3255",
+   "source_title": "TPA3255 product page, Texas Instruments",
+   "read": "2026-11-10",
+   "note": "TI's headline figures need a supply near the top of the 18–53.5 V range. The datasheet PDF (SLASEA8A) could not be parsed to confirm the exact PVDD test condition. Fosi rates the M03 for 4–8 Ω, not the chip's 2 Ω."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Inputs/outputs and low-pass",
+   "value": "1× RCA input, 1× subwoofer output, 1× speaker terminal; low-pass 20–300 Hz, active only in SUB mode",
+   "source": "https://www.audiophonics.fr/en/integrated-amplifiers/fosi-audio-m03-p-18706.html",
+   "source_title": "FOSI AUDIO M03 Mono + Subwoofer Amplifier, Audiophonics",
+   "read": "2026-11-10",
+   "note": "This retailer lists the supply range as 24–36 V DC and the power as 120 W at 4 Ω, which conflicts with Fosi's 24–48 V. Fosi's own page doesn't name the input jack."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Price, Fosi US store",
+   "value": "$76.49 (sale; regular $89.99)",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier (fosiaudio.com)",
+   "read": "2026-11-10",
+   "note": "storecheck.py returned HTTP 429, so the price was read from the product page."
+  },
+  {
+   "product": "Behringer NX3000D",
+   "label": "Input connectors and power",
+   "value": "XLR and 1/4\" TRS combo inputs (no RCA listed); 2× 1500 W into 2 Ω, 2× 900 W into 4 Ω, 3000 W into 4 Ω bridged; crossover 3 filter types up to 48 dB/oct",
+   "source": "https://www.behringer.com/en/products/0106-AAP",
+   "source_title": "NX3000D, Behringer",
+   "read": "2026-11-10",
+   "note": "An AV receiver's sub out is an RCA jack, so this amp needs an RCA-to-XLR/TRS cable. No 8 Ω rating is listed."
+  },
+  {
+   "product": "Crown XLS 1002",
+   "label": "Inputs and sensitivity",
+   "value": "XLR, 1/4\" and RCA inputs; selectable sensitivity 1.4 Vrms or 0.775 Vrms",
+   "source": "https://www.crownaudio.com/en/products/xls-1002",
+   "source_title": "XLS 1002, Crown Audio",
+   "read": "2026-11-10",
+   "note": "Takes an AV receiver's RCA sub out directly. The page's '2400W at 4Ω bridged' looks like series boilerplate and wasn't used."
+  },
+  {
+   "product": "Dayton Audio SPA250DSP",
+   "label": "Form factor, power, auto-on",
+   "value": "Plate amp, cutout 9.25\" H × 6.25\" W; 250 W RMS into 4 Ω (THD+N <0.1%); Auto mode goes to standby after 20 min without signal and wakes in ≤1 s",
+   "source": "https://daytonaudio.com/product/1526/spa250dsp-250w-subwoofer-plate-amplifier-with-dsp",
+   "source_title": "SPA250DSP 250W Subwoofer Plate Amplifier with DSP, Dayton Audio",
+   "read": "2026-11-10",
+   "note": "Mounts in a cutout in the sub cabinet, so it doesn't suit a finished passive sub without cutting the box."
+  }
+ ],
+ "unsourced": [
+  "Cited B&H compare pages (NX3000D vs XLS1002/EPQ304/A800; NX3000D vs XLS1502): HTTP 403 via WebFetch, so I couldn't see what they say about inputs or bridging.",
+  "TI TPA3255 datasheet power-vs-PVDD curve and the PVDD test condition for the 315 W / 600 W figures: the PDF downloaded but couldn't be parsed, and the HTML viewer leaves those sections out.",
+  "Independent bench measurement of Fosi M03 output at 32 V vs 48 V (looked for ASR-style reviews; found none).",
+  "Crown XLS 1002 low-pass range, bridged ratings and bridge minimum load from Crown itself (the product page doesn't list them, and the Harman datasheet PDF couldn't be parsed).",
+  "Behringer NX3000D input sensitivity (not on Behringer's page).",
+  "Current prices for Crown XLS 1002, Behringer NX3000D and Dayton SPA250DSP (B&H blocked; maker pages show no price)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.105778
+ }
+}

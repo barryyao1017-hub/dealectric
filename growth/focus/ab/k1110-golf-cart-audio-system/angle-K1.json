@@ -1,0 +1,118 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got works out how much a hardwired soundbar costs at the 48V pack once the reducer's loss is counted: a 30 A reducer at its stated ≥90% efficiency can pull up to about 8.3 A from the pack (360 W ÷ 0.9 ÷ 48 V), and a 200 W RMS bar at full volume pulls about 4.7 A (17 A × 12 V ÷ 0.9 ÷ 48 V). Those currents size the fuse on the pack side. The rivals give only the 12V-side fuse and current.",
+ "standout": 1,
+ "standout_why": "I compared golfcartbase.com (cited), cartvoltage.com, nicksgolfcarts.com, extremekartz.com and blog.burtonacoustix.com. mtx.com (cited) returned 403 and was not read. golfcartbase gives no numbers at all. cartvoltage already gives the two figures that decide the set: a reducer with an input ceiling above 58.4V, and 30A as the minimum with lights (17A at full volume for a 200W RMS bar, 'about 5A from a 48V pack'). nicksgolfcarts already gives the parked-drain problem: 0.25 to 2 A idle draw flattens a pack in 2 to 3 weeks, so wire the reducer through a key-switched trigger. The only thing missing from all of them is the pack-side arithmetic that counts reducer efficiency, which gives the input-side fuse size. That is useful but does not decide the set. The finding that would have stood out, the reducer's own no-load current over winter storage, I could not source from a page I opened.",
+ "kit_items": [
+  "Soundbar: BOSS Audio BRT26RGB, 26 in, amplified, IPX5, Bluetooth. ChatGPT already showed it at $239.98, and Amazon still lists it at that price today.",
+  "Voltage reducer: a 48V-to-12V, 30A continuous unit rated for 36–60V input, such as the Hornet Energy HN-VRD-12V-30A (36–60V, 30A, up to 95%) or the FridayParts 30A/360W unit (36–60V, ≥90%, IP55). A 60V ceiling clears the 58.4V lithium charge ceiling that cartvoltage gives. 30A covers the roughly 17A full-volume bar plus about 4A of horn and lights with margin, per cartvoltage. I could not confirm an Amazon listing for either unit.",
+  "Pack-side inline fuse: about 10A on the reducer's 48V input lead. The reducer's 30A × 12V = 360W, divided by 0.9 efficiency and 48V, is 8.3A at most. This is arithmetic only; the reducer maker publishes no input-fuse value.",
+  "12V-side fuse at the value the soundbar maker specifies (cartvoltage: typically 10–20A), plus a key-switched trigger or toggle on the reducer feed so the bar's idle draw stops when the cart is parked (nicksgolfcarts)."
+ ],
+ "carts": [
+  {
+   "store": "Amazon",
+   "items": [
+    "BOSS Audio Systems BRT26RGB IPX5 Bluetooth ATV Sound Bar, 26 in | https://www.amazon.com/dp/B08GXYJS1B | $239.98 | 2026-11-10"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BOSS Audio BRT26RGB",
+   "label": "Amazon price",
+   "value": "$239.98",
+   "source": "https://www.amazon.com/dp/B08GXYJS1B",
+   "source_title": "BOSS Audio Systems BRT26RGB IPX5 Weatherproof Bluetooth ATV Sound Bar - 26 Inches Wide",
+   "read": "2026-11-10",
+   "note": "Read with amzcheck.py asin B08GXYJS1B (not blocked, 271 ratings). This is the same price ChatGPT showed. For comparison only; the page does not print Amazon prices."
+  },
+  {
+   "product": "general",
+   "label": "Soundbar current at 12V",
+   "value": "about 5 A at normal volume; up to about 17 A at full volume for a 200 W RMS bar; horn about 4 A; peak just over 20 A",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "These are cartvoltage's figures, which set its 30 A reducer minimum. It also says '20A at 12V is about 5A from a 48V pack' but ignores reducer loss."
+  },
+  {
+   "product": "general",
+   "label": "Reducer input ceiling for lithium carts",
+   "value": "above 58.4 V",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "Quote: 'Use a reducer with an input ceiling above 58.4V.' A rival already states this, so it is not the gap. A 30–55 V reducer, as titled in one Walmart listing, would fail this test."
+  },
+  {
+   "product": "FridayParts 48V to 12V 30A 360W DC converter",
+   "label": "Input range / output / efficiency / enclosure / price",
+   "value": "36–60 V in; 12 V, 30 A out; ≥90% max efficiency; IP55; US$60.18 member price (US$70.62 list)",
+   "source": "https://www.fridayparts.com/dc-converter-48v-to-12v-step-down-reducer-30a-30amp-360w-0a-30a-for-golf-cart-ezogo",
+   "source_title": "DC Converter 48V to 12V Step Down Reducer 30A 360W 0A~30A for Golf Cart E-Z-GO",
+   "read": "2026-11-10",
+   "note": "The 60 V ceiling is 1.6 V above the 58.4 V lithium charge ceiling. The page says 'Don't use it to charge a battery!!!'. FridayParts is not an approved store, so this is for spec reference only."
+  },
+  {
+   "product": "Hornet Energy HN-VRD-12V-30A",
+   "label": "Input range / output / efficiency / price",
+   "value": "36–60 V DC in; 12 V DC, 30 A continuous out; up to 95% efficiency; $79.99 (out of stock)",
+   "source": "https://wildaboutcarts.com/hornet-energy-30a-voltage-reducer-48v-51v-to-12v-dc-converter-for-golf-carts-evs/",
+   "source_title": "Hornet Energy 30A Voltage Reducer – 48V/51V to 12V DC Converter for Golf Carts & EVs",
+   "read": "2026-11-10",
+   "note": "Spec lines are from the page body, read at offset 100000. Wild About Carts is not an approved store; spec reference only."
+  },
+  {
+   "product": "general",
+   "label": "Pack-side current, reducer at full rating",
+   "value": "about 8.3 A at 48 V",
+   "source": "https://www.fridayparts.com/dc-converter-48v-to-12v-step-down-reducer-30a-30amp-360w-0a-30a-for-golf-cart-ezogo",
+   "source_title": "DC Converter 48V to 12V Step Down Reducer 30A 360W 0A~30A for Golf Cart E-Z-GO",
+   "read": "2026-11-10",
+   "note": "30 A × 12 V = 360 W output; 360 W ÷ 0.90 = 400 W input; 400 W ÷ 48 V = 8.3 A. This gives about a 10 A fuse on the 48 V input lead. The fuse value is my arithmetic, not a maker spec."
+  },
+  {
+   "product": "general",
+   "label": "Pack-side current, 200 W RMS bar",
+   "value": "about 4.7 A at full volume; about 1.4 A at normal volume (48 V)",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "Full: 17 A × 12 V = 204 W ÷ 0.90 (FridayParts ≥90%) = 227 W ÷ 48 V = 4.7 A. Normal: 5 A × 12 V = 60 W ÷ 0.90 = 67 W ÷ 48 V = 1.4 A. Four hours at normal volume uses about 267 Wh from the traction pack."
+  },
+  {
+   "product": "general",
+   "label": "Parked idle drain",
+   "value": "0.25–2 A at idle; flattens a pack in 2–3 weeks parked",
+   "source": "https://nicksgolfcarts.com/golf-cart-bluetooth-speakers/",
+   "source_title": "Golf Cart Bluetooth Speakers: Power, Mounting and What Actually Sounds Good - Nick's Golf Carts",
+   "read": "2026-11-10",
+   "note": "This is the bar's idle draw, not the reducer's. Nick's advice: 'Wire the reducer through a key-switched trigger.' A rival already covers this."
+  },
+  {
+   "product": "general",
+   "label": "Reducer size for a standard bar",
+   "value": "10–20 A reducer typical; 30 A continuous recommended",
+   "source": "https://extremekartz.com/blogs/extreme-blogging/golf-cart-stereo-ultimate-guide-2026",
+   "source_title": "Ultimate Golf Cart Stereo Guide for 2026 – Extreme Kartz",
+   "read": "2026-11-10",
+   "note": "A rival covers reducer amp sizing; the page has no input ceiling, no-load current or storage advice."
+  }
+ ],
+ "unsourced": [
+  "BOSS BRT26RGB operating voltage range, fuse rating and current draw: bossaudio.com returned 429 and manuals.plus returned 403. The manualslib copy was not opened.",
+  "Reducer no-load (quiescent) current. Search snippets showed 10 mA (Newegg) and a buyer-measured 13.5 mA at 48 V (Desert Cart), but both pages returned 403, so I left the figures out. This was the storage-drain finding: 10 mA over 90 days is 21.6 Ah, about a fifth of a 105 Ah pack.",
+  "Vatrer 48V 105Ah Club Car kit capacity (5.37 kWh / 51.2 V per snippet) and its 58.4 V 20 A charger: vatrerpower.com and storecheck both returned HTTP 429.",
+  "An Amazon listing and price for a 36–60 V, 30 A reducer: amzcheck search returned no results, and I had no verified ASIN.",
+  "mtx.com Golf Cart Audio Systems page (a cited rival): HTTP 403, so it was not compared.",
+  "golfcartstuff.com owner's guide: DNS failure, so it was not compared."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9047868
+ }
+}

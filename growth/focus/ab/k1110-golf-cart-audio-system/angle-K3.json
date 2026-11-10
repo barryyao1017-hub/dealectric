@@ -1,0 +1,112 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that on a cart converted to a lithium kit with a shunt battery monitor (the Redodo 48V 100Ah kit ships with a 500 A shunt), the 48V-to-12V reducer's negative has to land on the shunt's load side and not on the battery's negative post; if it goes on the post, the monitor never counts the soundbar's draw and shows more charge than the pack holds.",
+ "standout": 2,
+ "standout_why": "Pages compared: golfcartbase.com (cited by ChatGPT), cartvoltage.com, extremekartz.com and nicksgolfcarts.com. Between them they already cover the reducer itself, reducer amp sizing (10 to 40 A), a reducer input rating above 58.4 V for lithium, never tapping one battery or part of the pack, running the soundbar negative back to the reducer, switching the reducer with the key, and ground-loop whine. None of them mentions a shunt or battery monitor; extremekartz and nicksgolfcarts have no shunt or monitor content at all. I could not open mtx.com (403) and did not read golfcartstuff, burtonacoustix, oceanrockaudio or golfcartsmodified. The finding changes how the kit is wired, not which products go in it, so it scores 2, not 3.",
+ "kit_items": [
+  "48V-to-12V reducer: Vatrer 48V/72V to 12V Golf Cart Power Converter, 25 A / 335 W. The 48V/72V input in its name covers a 48 V lithium pack charged to 58.4 V. 25 A sits inside the 20 to 30 A range rivals give for a soundbar plus lights, though it is under cartvoltage's 30 A floor and the 40 A it calls for with bars like the Wet Sounds Stealth 6 Ultra. Its own store sells it, the same store that sells the Vatrer 48V kit Dealectric already lists.",
+  "Lithium pack with monitor (only if the shopper is converting at the same time): Redodo 48V 100Ah golf cart kit (battery, 58.4 V 18 A charger, 500 A shunt monitor), already listed by Dealectric. The shunt is what makes this trap apply.",
+  "Soundbar: a 12 V amplified bar, for example the BOSS Audio BRT26RGB ChatGPT showed. Amazon blocked my checker, so I have no price.",
+  "Inline fuse on the reducer's 12 V output, sized to the soundbar maker's spec (cartvoltage says typically 10 to 20 A)."
+ ],
+ "carts": [
+  {
+   "store": "Vatrer (vatrerpower.com)",
+   "items": [
+    "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W | https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer | $79.99 (compare-at $128.99), in stock | 2026-11-10",
+    "Vatrer 48V 105Ah Club Car Lithium Battery conversion kit (charger + LCD monitor) | https://vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries | $1,579.99 (compare-at $2,399.99), in stock | 2026-11-10"
+   ],
+   "bundle_sku": "none"
+  },
+  {
+   "store": "Redodo (redodopower.com)",
+   "items": [
+    "Redodo 48V (51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit (battery, 58.4 V 18 A charger, 500 A shunt monitor) | https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit | $1,149.99 (compare-at $1,999.99), in stock | 2026-11-10"
+   ],
+   "bundle_sku": "The kit itself is Redodo's bundle (battery + charger + shunt monitor) at $1,149.99; the store sells no reducer or soundbar"
+  },
+  {
+   "store": "Amazon",
+   "items": [],
+   "bundle_sku": "none (amzcheck returned nothing, so Amazon was skipped)"
+  }
+ ],
+ "findings": [
+  {
+   "product": "general (any shunt battery monitor)",
+   "label": "Load negatives tied straight to the battery are not measured",
+   "value": "Any negative cable on the battery other than the shunt carries current the monitor 'cannot' measure; all other negatives 'MUST' go to the shunt's system/load terminal",
+   "source": "https://community.victronenergy.com/t/shunt-battery-monitor-not-reading-the-correct-soc-amps-missing-solar-decreasing-daily-or-other-misreading-problems/87",
+   "source_title": "Shunt / battery monitor not reading the correct SOC/Amps… (Victron Community)",
+   "read": "2026-11-10",
+   "note": "Opening post by pwfarnell, 3 July 2024, a pinned troubleshooting topic on Victron's own forum. It is general to shunts, not golf-cart specific. The page shows no reply or report count for this topic."
+  },
+  {
+   "product": "general (shunt wiring)",
+   "label": "Shunt sides",
+   "value": "Battery negative cable to the shunt's B- side; load negatives (inverter in their example) to the P- terminal",
+   "source": "https://richsolar.com/blogs/news/how-to-hook-up-a-battery-monitor-with-shunt",
+   "source_title": "How to Hook Up a Battery Monitor with A Shunt (Rich Solar)",
+   "read": "2026-11-10",
+   "note": "Maker how-to, no author or date, © 2026. It does not say what happens when a load bypasses the shunt; the Victron post covers that."
+  },
+  {
+   "product": "Redodo 48V 100Ah Golf Cart Conversion Kit",
+   "label": "Kit contents and price",
+   "value": "Battery + 58.4 V 18 A charger + 500 A battery monitor with shunt; $1,149.99",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of the Shopify store's product JSON (title, price, body text). A direct page fetch returned HTTP 429. The listing names no reducer."
+  },
+  {
+   "product": "Vatrer 48V/72V to 12V Golf Cart Power Converter",
+   "label": "Rating and price",
+   "value": "48V/72V in, 12 V out, 25 A / 335 W; $79.99",
+   "source": "https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of the store JSON. The rating comes from the product title; the body text says to keep the base against metal for heat under heavy load. The full product page returned 429/403, so I have no numeric input range."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Club Car conversion kit",
+   "label": "Kit contents and price",
+   "value": "Dedicated charger, LCD monitor, mounting bracket, installation accessories; $1,579.99",
+   "source": "https://vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah Club Car Lithium Battery for DS Precedent Tempo and Onward",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search of the store JSON. I could not confirm whether the LCD monitor runs off a shunt or off the BMS."
+  },
+  {
+   "product": "general (200 W RMS soundbar)",
+   "label": "Draw from a 48 V pack",
+   "value": "About 1 to 2 A at normal volume; about 17 A at 12 V at full volume",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "This is a rival page (rank 3, not cited), used only to size the effect. Arithmetic: 1 to 2 A over a 4-hour outing is 4 to 8 Ah, so a 100 Ah shunt monitor overstates charge by about 4 to 8% per outing until it resyncs at full charge."
+  },
+  {
+   "product": "general (lithium 48 V)",
+   "label": "Resting voltage and standby draw",
+   "value": "A charged 48 V lithium pack 'can sit above 54V'; a Bluetooth bar's standby draw is 0.25 to 2 A",
+   "source": "https://nicksgolfcarts.com/golf-cart-bluetooth-speakers/",
+   "source_title": "Golf Cart Bluetooth Speakers: Power, Mounting and What Actually Sounds Good",
+   "read": "2026-11-10",
+   "note": "Rival page (rank 6). It has nothing on shunts or monitors."
+  }
+ ],
+ "unsourced": [
+  "A golf-cart maker or lithium-kit document (Redodo or Vatrer manual) that states the reducer-negative-to-load-side rule for golf carts. The Redodo 500A monitor manual on manuals.plus returned 403, the kit page returned 429, and two reducer instruction PDFs (Reliance 13-068, VOLT-0010) downloaded but I could not extract their text.",
+  "A golf-cart forum thread with a date and a count of owners reporting a monitor that read high because of an audio or reducer load. I found no such thread.",
+  "Club Car OBC carts (1995–2008 DS): forum search results say the reducer's negative must return through B- at the controller so the OBC counts the current, but I did not open those cartaholics threads.",
+  "Vatrer converter: numeric input range, isolated or non-isolated, waterproof rating and wiring diagram (product page 429/403).",
+  "Amazon prices for any soundbar or reducer: amzcheck.py returned nothing."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2274948
+ }
+}

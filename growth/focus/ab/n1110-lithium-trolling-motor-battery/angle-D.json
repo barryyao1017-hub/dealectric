@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Minn Kota tells owners of its brushed (non-QUEST) motors to keep the motor at 85% speed (Speed 8.5) or lower on lithium. Its reason is that LiFePO4 holds a higher voltage that can be \"too powerful\" for motors built for flooded lead-acid, and running at full speed \"can result in damage.\" Its QUEST motors are the ones it calls \"optimized for use with LiFePO4.\"",
+ "standout": 2,
+ "standout_why": "I opened the cited Ionic trolling-motor category page and three of the top results: TrollCove, which is specifically about Minn Kota, plus Florida Fishing Kayaks and MinorMania. None of them mentions brushed motors, a speed cap, or lithium voltage harming a motor built for lead-acid. MinorMania only refers vaguely to 'older forum threads' about voltage spikes. The Ionic page already says the BMS continuous rating must cover the motor's max amp draw (its example is a 112 lb, 36 V motor drawing 52 A), and Florida Fishing Kayaks and MinorMania already cover the 14.4–14.6 V lithium charge profile, so those points are not new. Wired2Fish, the other cited page, returned HTTP 403, so I could not check it.",
+ "decides": "This settles whether the plan works without losing anything. On a QUEST-series Minn Kota, any LiFePO4 pack whose BMS continuous rating covers the motor's draw is a straight drop-in. On a brushed Minn Kota (Endura, Traxxis, older Terrova or Ultrex), Minn Kota's own help center says to cap the motor at 85% speed, so the shopper gives up top speed. That makes cheap 100A-BMS packs such as LiTime and Redodo the sensible buy over the $795–$849 premium batteries, because the extra output can't be used. A second check from the same article: if the boat has a Minn Kota PCL on-board charger, its 14.5 V maximum must fall within the battery maker's charge spec.",
+ "candidates": [
+  "LiTime 12V 100Ah TM",
+  "Dakota Lithium 12V 100Ah",
+  "Ionic Lithium 12V 100Ah",
+  "Battle Born 12V 100Ah",
+  "Renogy 12V 100Ah Trolling Motor Battery",
+  "Redodo 12V 100Ah Lithium Trolling Motor Battery (Group 31, low-temp cutoff)",
+  "Redodo 12V 50Ah Bluetooth Trolling Motor Battery"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minn Kota brushed motors on lithium: speed limit",
+   "value": "Keep at 85% speed (Speed 8.5) or lower",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations (Minn Kota Help Center)",
+   "read": "2026-11-10",
+   "note": "Exact quote: \"it's recommended to limit the motor speed to 85%, or Speed 8.5 or lower.\" Also: \"Running the motor at maximum speed with lithium batteries can result in damage.\" The reason given is that lithium holds a higher voltage for longer, which can be \"too powerful for motors designed specifically for flooded lead-acid batteries.\" The article says this applies to brushed motors and contrasts them with QUEST motors. Article last updated 2026-01-14."
+  },
+  {
+   "product": "general",
+   "label": "What happens if the battery's continuous rating is below the motor's max draw",
+   "value": "The BMS \"will restrict power to the motor\", which can cause shut-offs, erratic running, and i-Pilot/Spot-Lock problems",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations (Minn Kota Help Center)",
+   "read": "2026-11-10",
+   "note": "Minn Kota says to make sure the batteries \"provide enough continuous discharge amperage to run the motor at its max amp draw.\" Its per-thrust chart is only an image (RequiredContinuousDischargeAmperage.png) that I could not read."
+  },
+  {
+   "product": "general",
+   "label": "Highest charge voltage from Minn Kota PCL on-board chargers",
+   "value": "14.5 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations (Minn Kota Help Center)",
+   "read": "2026-11-10",
+   "note": "Minn Kota: \"It important to ensure our Max voltage of 14.5V meets the specifications of the Battery Manufacturer.\" Charge current is per bank; for example, the MK 330PCL gives 10 A per bank."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota QUEST motors and lithium",
+   "value": "\"optimized for use with LiFePO4 lithium-ion battery cells\"",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/23868412132375-Using-a-QUEST-Trolling-Motor-2023-present",
+   "source_title": "Using a QUEST Trolling Motor (2023-present) (Minn Kota Help Center)",
+   "read": "2026-11-10",
+   "note": "The same page says that on lithium, battery monitoring resets state of charge to 100% after the system has been off for 10 hours. Article last updated 2026-10-13."
+  },
+  {
+   "product": "Ionic Lithium 12V 100Ah",
+   "label": "BMS discharge rating",
+   "value": "100 A continuous, 350 A peak (3 s)",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "From the spec table on the maker's category page. Up to 4 in series for the 12 V models. Price shown: $649.00 sale (Dual Purpose + Bluetooth)."
+  },
+  {
+   "product": "Ionic Lithium 36V 50Ah",
+   "label": "Series wiring",
+   "value": "Parallel only, never in series",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "Ionic: \"the 36V 50Ah is parallel-only and must never be wired or charged in series.\" Price $799.00 sale."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (Group 31, low-temp cutoff)",
+   "label": "BMS surge current, low-temp charge cutoff, price",
+   "value": "300 A for 5 s, 500 A for 1 s; stops charging below 32°F (0°C) and resumes above 41°F (5°C); $233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "Read through Shopify storecheck search output on the maker's US store. Redodo rates it for 30–70 lb motors. A direct page fetch hit HTTP 429."
+  },
+  {
+   "product": "Redodo 12V 50Ah Bluetooth Trolling Motor Battery",
+   "label": "Max continuous discharge, price",
+   "value": "60 A; $179.99",
+   "source": "https://www.redodopower.com/products/12v-50ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 50Ah Bluetooth Battery for Trolling Motors (Up to 70lb Thrust)",
+   "read": "2026-11-10",
+   "note": "Read through storecheck search output. Maker text: \"max continuous discharging current of 60A\"; up to 4P4S."
+  }
+ ],
+ "unsourced": [
+  "Minn Kota's max amp draw by thrust and voltage: the help-center chart is an image I could not read, and the Ultrex 2024 manual PDF was too large to open. I left out the 58 A and 60 A QUEST figures I saw only in a search snippet of a Defender listing.",
+  "LiTime 12V 100Ah TM: BMS continuous and peak current, series limit and price. The maker's page and storecheck both returned HTTP 429.",
+  "Redodo 12V 100Ah trolling battery: BMS continuous rating. The store text gives only surge figures, and the product page returned HTTP 429.",
+  "Which current Minn Kota model lines are brushed (Endura, Traxxis, PowerDrive, non-QUEST Terrova/Ultrex). The Minn Kota article does not list model names, and I did not find a maker page that does.",
+  "Dakota Lithium, Battle Born and Renogy 12V 100Ah: BMS continuous rating. The Dakota page returned HTTP 429, and I did not reach Battle Born or Renogy within the tool-call budget.",
+  "Wired2Fish buyer's guide (cited by ChatGPT): returned HTTP 403, so I could not check it for the brushed-motor point."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8941784
+ }
+}

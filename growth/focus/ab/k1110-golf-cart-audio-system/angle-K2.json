@@ -1,0 +1,109 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the Victron Orion-Tr 48/12-20A isolated converter accepts 32–70 V input. That window covers a 48 V lead-acid cart, and it also covers a 48 V (51.2 V) lithium conversion whose included charger runs at 58.4 V, as on the Vatrer and Redodo kits. Its output is only 20 A continuous at a trimmable 10–15 V, so a powered soundbar plus cart lights needs a second unit in parallel (Victron says these can be paralleled) or a lighter load.",
+ "standout": 1,
+ "standout_why": "Cited golfcartbase.com says only that 12 V gear needs a DC-DC reducer 'with enough continuous current'. It gives no input range, no amp figure and nothing on lithium. The cited mtx.com page returned 403 and I could not read it. Uncited cartvoltage.com (rank 3) already says to use a reducer with an input ceiling above 58.4 V and to size it at 30 A or more for a 200 W RMS soundbar with lights and horn. It names the Victron Orion-Tr but gives no input window and no output-current limit, and it does not tie 58.4 V to a named lithium kit's charger. A top result already has part of the finding, so the score is 1.",
+ "kit_items": [
+  "48→12 V converter: Victron Orion-Tr 48/12-20A isolated (ORI481224110). Its 32–70 V input covers 48 V lead-acid and lithium packs up to the 58.4 V charge voltage. Output trims from 10 to 15 V, which suits soundbars that shut down at high input voltage (cartvoltage.com reports this for an ECOXGEAR bar at about 14.2 V). It is rated 20 A continuous, so add a second unit in parallel if the soundbar and lights together need more than 20 A.",
+  "Powered 12 V soundbar: a 12 V DC bar fused at 10–15 A on its own positive lead, such as the ECOXGEAR SoundExtreme SE26. Its 15 A blade fuse and 12 VDC / 10 A input come from search results and retailer listings that I could not open, so they are not in findings.",
+  "Battery context, not part of the audio cart: if the cart has been converted to Vatrer or Redodo 48 V lithium, the included charger is 58.4 V, so the converter's input must go above 58.4 V. The Orion-Tr's 70 V maximum does."
+ ],
+ "carts": [],
+ "findings": [
+  {
+   "product": "Victron Orion-Tr 48/12-20A (ORI481224110)",
+   "label": "Input voltage range",
+   "value": "32–70 V",
+   "source": "https://www.solar-electric.com/victron-energy-orion-tr-48-12-20a-dc-dc-converter.html",
+   "source_title": "Victron Energy Orion-Tr 48/12-20A DC-DC Isolated Converter",
+   "read": "2026-11-10",
+   "note": "Retailer spec table. Victron's own datasheet PDF downloaded but could not be converted to text here."
+  },
+  {
+   "product": "Victron Orion-Tr 48/12-20A (ORI481224110)",
+   "label": "Continuous output current",
+   "value": "20 A at nominal output voltage",
+   "source": "https://www.solar-electric.com/victron-energy-orion-tr-48-12-20a-dc-dc-converter.html",
+   "source_title": "Victron Energy Orion-Tr 48/12-20A DC-DC Isolated Converter",
+   "read": "2026-11-10",
+   "note": "20 A × 12 V ≈ 240 W, which matches the '240W' in Victron's file list."
+  },
+  {
+   "product": "Victron Orion-Tr 48/12-20A (ORI481224110)",
+   "label": "Output voltage adjust range",
+   "value": "10–15 V",
+   "source": "https://www.solar-electric.com/victron-energy-orion-tr-48-12-20a-dc-dc-converter.html",
+   "source_title": "Victron Energy Orion-Tr 48/12-20A DC-DC Isolated Converter",
+   "read": "2026-11-10",
+   "note": "Output can be set below a soundbar's high-voltage shutdown point."
+  },
+  {
+   "product": "Victron Orion-Tr 48/12-20A (ORI481224110)",
+   "label": "Price (solar-electric.com, not an approved program)",
+   "value": "$113.90",
+   "source": "https://www.solar-electric.com/victron-energy-orion-tr-48-12-20a-dc-dc-converter.html",
+   "source_title": "Victron Energy Orion-Tr 48/12-20A DC-DC Isolated Converter",
+   "read": "2026-11-10",
+   "note": "Reference price only. The retailer is not an approved store."
+  },
+  {
+   "product": "Victron Orion-Tr isolated series",
+   "label": "Paralleling, remote on/off, enclosure",
+   "value": "All models short-circuit proof and can be paralleled to increase output current; remote on/off works from a low-power switch; IP43 with screw terminals facing down",
+   "source": "https://www.victronenergy.com/dc-dc-converters/orion-tr-dc-dc-converters-isolated",
+   "source_title": "Orion-Tr DC-DC converters isolated – Victron Energy",
+   "read": "2026-11-10",
+   "note": "The same page lists an input fuse 'on 12V and 24V input models only'. It does not list one for 48 V input models, so plan to fuse the 48 V feed externally. That last step is my inference: the page does not say it."
+  },
+  {
+   "product": "Vatrer 48V 105Ah ICON / EZGO / Narrow lithium golf cart kits",
+   "label": "Included charger",
+   "value": "58.4 V 18 A LiFePO4 charger",
+   "source": "https://vatrerpower.com/products/vatrer-48v-105ah-ez-go-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah EZGO Lithium Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "Read from the store's product data with storecheck. The pack therefore reaches about 58.4 V while charging, which is inside the Orion-Tr's 70 V maximum. Kit price is $1,579.99."
+  },
+  {
+   "product": "Redodo 48V (51.2V) 100Ah Bluetooth golf cart conversion kit",
+   "label": "Nominal voltage and charger",
+   "value": "51.2 V nominal; 58.4 V 18 A charger",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "Read from the store's product data with storecheck. Price is $1,149.99."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: reducer input ceiling and sizing",
+   "value": "Use a reducer with an input ceiling above 58.4 V; 30 A minimum for a 200 W RMS soundbar plus lights and horn; soundbar fuse typically 10–20 A",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "Rank-3 result ChatGPT did not cite. Also reports that the ECOXGEAR SoundExtreme may shut down above about 14.2 V input."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: cited install guide",
+   "value": "No reducer input range, amp rating, lithium note, fuse value or wire gauge",
+   "source": "https://golfcartbase.com/blog/how-to-install-golf-cart-stereo/",
+   "source_title": "How to Install a Stereo or Soundbar in a Golf Cart",
+   "read": "2026-11-10",
+   "note": "Says 12 V units wired to 36/48 V 'can destroy it' and that ground should return to the reducer, not the chassis. Names the Ehaho 26\" soundbar at $149.99."
+  }
+ ],
+ "unsourced": [
+  "Amazon prices and ASINs for the Victron Orion-Tr 48/12-20A, ECOXGEAR SE26 and BOSS BRT26RGB: amzcheck search returned nothing (Amazon appears walled). No approved brand store sells golf cart soundbars or 48→12 V reducers, so I cannot build a one-store cart.",
+  "Victron's own datasheet figures (under-voltage shutdown, no-load current, isolation rating) for the 48/12-20: the PDF downloaded but could not be converted to text, the HTML manual URL returned 404, and the retailer page doesn't list them.",
+  "ECOXGEAR SoundExtreme SE26 input range, current draw and fuse from the maker's manual: the Shopify-hosted PDF could not be converted to text and manuals.plus returned 403. 12 VDC / 10 A and a 15 A fuse come only from search snippets.",
+  "BOSS BRT26RGB input voltage and fuse: bossaudio.com returned 429. Sonic Electronix lists the unit as discontinued with no electrical specs.",
+  "ECOXGEAR 4-Channel EV amplifier's direct 48–72 V input (which would avoid needing a reducer): seen only in search snippets and a press article. The maker's user guide PDF could not be converted to text.",
+  "MTX golf cart audio library page: returned 403, so I could not compare it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1054344
+ }
+}

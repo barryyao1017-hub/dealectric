@@ -1,0 +1,103 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Minn Kota's PCL applies no temperature compensation in lithium mode, while a typical LiFePO4 trolling battery's own BMS refuses charge below 32°F (Redodo: resumes only above 41°F). So in cold weather the battery, not the charger, decides whether an onboard charger left plugged in overnight puts any charge back.",
+ "standout": 2,
+ "standout_why": "I compared five pages. Minn Kota PCL Features/Specs (cited) covers per-bank chemistry, lithium wake-up and the 14.5 V maximum, but says nothing about lithium in the cold. Minn Kota Battery Charger Selection Guide (cited) covers series batteries, one bank per battery and 12 V systems only, and gives no low-temperature guidance. BoatDealsDirect has standby wake-up and Victron's 14.2 V figure, but nothing on charging below 32°F. Williams Wordsmith never mentions cold-weather charging or a low-temperature cutoff. I could not open NOCO's cited specs page (no.co returned HTTP 403) or GearRanking (TLS error). The rivals already cover wake-up, the 14.5 V maximum and the lack of support for single 24 V/36 V lithium batteries. None ties the charger to the battery's charge cutoff at freezing.",
+ "decides": "For any of the multi-bank chargers ChatGPT named, the fact confirms the 'one bank per 12 V battery, chemistry set per bank' plan. It adds one condition that decides whether charging works at all: an angler charging lithium in late fall, winter or early spring needs a battery whose BMS has a low-temperature charge cutoff, or self-heating. No charger setting replaces that. The PCL's temperature compensation does not apply to lithium, and Minn Kota publishes no cold limit. A practical pairing is a PCL or GENPRO bank on a Redodo low-temp-cutoff battery, or the Redodo self-heating model for below-freezing launches. Expect no charge until the battery warms above 41°F. The PCL's 14.5 V maximum sits 0.1 V under Redodo's recommended 14.6 V charger. Minn Kota itself tells buyers to check that against the battery maker's spec.",
+ "candidates": [
+  "NOCO GENPRO10X3",
+  "Minn Kota MK 330 PCL",
+  "Minn Kota MK 345 PCL",
+  "Minn Kota MK 318 PCL",
+  "NOCO GEN5X3",
+  "NOCO GENIUS10",
+  "Redodo 14.6V 10A LiFePO4 Charger",
+  "Redodo 14.6V 20A LiFePO4 Charger"
+ ],
+ "findings": [
+  {
+   "product": "Minn Kota PCL series (MK 318/330/345 PCL)",
+   "label": "Temperature compensation in lithium mode",
+   "value": "Not applied: 'not required for Lithium Batteries'",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/9172889739543-Using-the-Precision-Charger-Lithium-PCL-2021-present",
+   "source_title": "Using the Precision Charger Lithium (PCL) (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "The page also says that in lithium mode 'the charger will stay in Bulk Mode until the process is complete'. The only temperature figure it gives is a 122°F maximum recommended charging room temperature. It states no low-temperature limit for lithium. This page was in ChatGPT's results but was not cited."
+  },
+  {
+   "product": "Minn Kota PCL series",
+   "label": "Lithium standby wake-up",
+   "value": "Auto Start restarts a lithium battery from standby 'a set number of times' (count not published)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Minn Kota: 'If the BMS detects an undesirable condition it will electrically disconnect the battery terminal from the lithium cells… This is called Standby Mode.' The charger may show 'check connection'. 'Most lithium batteries require that you remove all electrical connections to the battery before it will turn back on.'"
+  },
+  {
+   "product": "Minn Kota PCL series",
+   "label": "Maximum charge voltage",
+   "value": "14.5 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Minn Kota asks buyers to 'ensure our Max voltage of 14.5V meets the specifications of the Battery Manufacturer'. The same page says 'not compatible with single 24V and 36V Lithium Batteries.' The cited PCL specs page also gives 14.5 V maximum."
+  },
+  {
+   "product": "Minn Kota PCL series",
+   "label": "Battery type per bank, and series wiring",
+   "value": "Each bank set separately (Lithium, Flooded, AGM/High Performance AGM, Equalize). The setting is kept in memory when AC/DC power is removed. Series or parallel banks charge without removing jumpers.",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/9172889739543-Using-the-Precision-Charger-Lithium-PCL-2021-present",
+   "source_title": "Using the Precision Charger Lithium (PCL) (2021-present) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Quote: 'each charger bank must be set to match the connected battery type'. The charger 'can charge independent batteries or combinations of batteries hooked in series or parallel' without disconnecting switches or jump wires."
+  },
+  {
+   "product": "general",
+   "label": "Series batteries and banks",
+   "value": "Batteries wired in series cannot be charged with one bank. Minn Kota chargers are for 12 V battery systems only.",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-10",
+   "note": "This cited rival already has it. Included as the baseline for how banks map to batteries. The guide also says 'Lithium batteries can shut themselves off after extensive use or under certain conditions.'"
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (Low Temp Protection)",
+   "label": "Low-temperature charge cutoff",
+   "value": "Charging stops below 32°F (0°C) and resumes above 41°F (5°C)",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "Read from the store's product JSON with storecheck.py search. Quote: 'automatic cutting off of charging when the battery temperature is lower than 32°F (0℃), and automatically resumes the charging process when the temperature is higher than 41°F (5℃)'. Store price $233.99 on 2026-11-10. Dealectric lists this battery as redodo-12v-100ah-trolling-motor-low-temp."
+  },
+  {
+   "product": "Redodo 12V 50Ah Bluetooth Trolling Motor Battery",
+   "label": "Low-temperature charge cutoff",
+   "value": "Stops charging below 0°C (32°F)",
+   "source": "https://www.redodopower.com/products/12v-50ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 50Ah Bluetooth Battery for Trolling Motors (Up to 70lb Thrust)",
+   "read": "2026-11-10",
+   "note": "Read from the store's product JSON with storecheck.py search. Store price $179.99 on 2026-11-10."
+  },
+  {
+   "product": "Redodo 12V 100Ah LiFePO4 (budget)",
+   "label": "Recommended charger",
+   "value": "14.6 V 20 A LiFePO4 charger, about 5 h to full",
+   "source": "https://www.redodopower.com/products/12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah LiFePO4 Lithium Battery | Best Budget",
+   "read": "2026-11-10",
+   "note": "Read from the store's product JSON with storecheck.py search. Arithmetic: 14.6 V recommended minus the PCL's 14.5 V maximum = 0.1 V, which is the gap Minn Kota tells buyers to check with the battery maker. Arithmetic: 100 Ah ÷ 20 A = 5 h, which matches Redodo's figure. At the 10 A per bank of an MK 330 PCL or GENPRO10X3 bank, that becomes about 10 h."
+  }
+ ],
+ "unsourced": [
+  "NOCO GENPRO10X3 lithium-mode charge voltage, whether modes are set per bank, Force Mode behaviour on a BMS-disconnected lithium battery, and low-temperature behaviour in lithium mode. no.co/genpro10x3/specs and no.co/support/gen-faq returned HTTP 403, and the manualmachine.com GENPRO user guide returned 403. I saw per-bank modes, 1 V detection and Force Mode only in a search summary, never on an opened page.",
+  "PCL lithium bulk/absorption voltages, the minimum battery voltage before Auto Start engages, and the number of wake-up attempts. The PCL 6/10 A manual PDF (johnsonoutdoors.widen.net) is AES-encrypted, and I could not extract its text in this session.",
+  "Redodo trolling battery spec table (charge-voltage range, charge-temperature range). The product page returned HTTP 429. The cutoff and recovery temperatures above come from the store's own product description instead.",
+  "Whether a PCL or GENPRO bank resumes charging by itself when a BMS low-temperature cutoff clears, or latches an error after its Auto Start attempts run out. Neither maker documents this on a page I could open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0221128
+ }
+}

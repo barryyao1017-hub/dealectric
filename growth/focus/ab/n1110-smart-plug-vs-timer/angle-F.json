@@ -1,0 +1,101 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got puts the two cited TP-Link pages side by side to show that the Kasa EP10, which ChatGPT picked as 'best for simple timers', is not on the list of plugs with the on-device Auto-Off Timer. That list covers all Tapo plugs plus only Kasa EP40M, KP125M and EP25 V2. On the EP10, 'shut off X minutes after every switch-on' has to be built as a Kasa Smart Action, and TP-Link says those automations need the plug online.",
+ "standout": 1,
+ "standout_why": "I compared against the two cited pages, tapo.com/us/faq/83 and tp-link.com/us/support/faq/947, and against the Kasa EP10 product page. FAQ 83 already lists which plugs have Auto-Off, and FAQ 947 already says Smart Actions need internet, so each half of the finding is on a cited page. No page links the two to ChatGPT's own EP10 pick. My price findings add little: TP-Link, Kasa and Tapo pages show no prices, Amazon was walled, Home Depot and B&H returned 403, and Best Buy timed out. So I could not open a page with today's price for any card ChatGPT showed.",
+ "decides": "It backs ChatGPT's Tapo pick, the TP15 / P125M with Matter, for anyone who wants the plug to turn off on its own after every manual switch-on, the 'Automatic shutoff' option ChatGPT offered. For that use it moves the Kasa EP10 behind the Kasa EP25 V2 or any Tapo plug. Our Minoston Z-Wave plugs (MP22Z $26.35, MP24Z $28.89) do have schedules and countdown timers, but they lose for this shopper because they need a Z-Wave hub. None of the three ChatGPT-picked plugs I could check needs a hub (Kasa EP10, Kasa EP25, Tapo TP15). The Defiant is labelled 'Powered by Hubspace', but I did not open a page that confirms it works without a hub.",
+ "candidates": [
+  "Kasa EP10 (Smart Plug Ultra Mini 15A, EP10P2 2-pack)",
+  "Tapo P125M (3-pack)",
+  "Tapo TP15 Mini Smart Wi-Fi Plug with Matter",
+  "Kasa EP25",
+  "Defiant HPPA11AWB4 Hubspace Smart Plug & Timer 4-pack",
+  "Kasa EP40 Outdoor (Dealectric)",
+  "Minoston MP22Z (Dealectric)",
+  "Minoston MP22ZD (Dealectric)",
+  "Minoston MP24Z (Dealectric)",
+  "Tapo P105",
+  "Tapo P110M",
+  "Kasa KP125M"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plugs with the device-level Auto-Off Timer",
+   "value": "All Tapo smart plugs, plus Kasa EP40M, KP125M and EP25 V2 only",
+   "source": "https://www.tapo.com/us/faq/83/",
+   "source_title": "How to Set Up Schedule, Away Mode, and Timer for TP-Link Plug/Bulb/Switch in the Tapo App | Tapo",
+   "read": "2026-11-10",
+   "note": "Auto-Off turns the plug off a set time after each switch-on and is set in Device Settings. Kasa EP10 and EP40 (non-M) are not on the list."
+  },
+  {
+   "product": "general",
+   "label": "Kasa auto-off workaround and its internet need",
+   "value": "Smart Action with the same plug as trigger and action plus a Delay Action; multi-device Smart Actions 'use automation, so the devices must be connected to the internet'",
+   "source": "https://www.tp-link.com/us/support/faq/947/",
+   "source_title": "Kasa Schedule, Away Mode and Timer Setup for Smart Plugs, Bulbs and Switches | TP-Link",
+   "read": "2026-11-10",
+   "note": "The page's own example is a KP105 that turns off 10 minutes after it turns on. The internet requirement is stated for Smart Actions/automations. The page does not say whether single-device schedules run offline."
+  },
+  {
+   "product": "Kasa EP10",
+   "label": "Timer features stated by the maker",
+   "value": "Weekly schedule, countdown timer (on or off), Away mode; 15 A / 1800 W resistive; sold as EP10, EP10P2 (2-pack), EP10P4 (4-pack)",
+   "source": "https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-mini-ep10",
+   "source_title": "Kasa Smart Wi-Fi Plug Mini (EP10)",
+   "read": "2026-11-10",
+   "note": "The page has no price, only Buy Now links to Amazon. It does not mention Matter or energy monitoring."
+  },
+  {
+   "product": "Tapo TP15 Mini Smart Wi-Fi Plug, Matter",
+   "label": "Maker MSRP at launch",
+   "value": "$19.99 1-pack / $29.99 2-pack / $49.99 3-pack",
+   "source": "https://tapo.com/us/news/331",
+   "source_title": "Tapo Matter smart plug and switches launch at Best Buy (TP-Link press release)",
+   "read": "2026-11-10",
+   "note": "This is the June 26, 2023 launch MSRP, not today's price. The release says the plug has an 'Auto-Off Timer' that turns off connected devices left on for a set time. ChatGPT showed $13.99 at Best Buy, but the Best Buy page timed out twice, so I could not check it."
+  },
+  {
+   "product": "Minoston MP22Z (Dealectric)",
+   "label": "Price, maker store",
+   "value": "$26.35, in stock",
+   "source": "https://minoston.com/products/minoston-z-wave-800-series-smart-plug-for-outdoor-and-indoor-mp22z",
+   "source_title": "Minoston Z-Wave 800 Series Smart Plug for Outdoor and Indoor (MP22Z)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py. The listing states schedule and countdown timer, IP65, 15 A / 1875 W, and 'requires a Z-Wave certified hub'. That hub requirement is why it loses for a shopper who wants an app timer with no hub."
+  },
+  {
+   "product": "Minoston MP22ZD (Dealectric)",
+   "label": "Price, maker store",
+   "value": "$27.20, in stock",
+   "source": "https://minoston.com/products/minoston-z-wave-800-series-dimmer-smart-plug-for-outdoor-and-indoor-mp22zd",
+   "source_title": "Minoston Z-Wave 800 Series Dimmer Smart Plug for Outdoor and Indoor (MP22ZD)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py. It needs a Z-Wave hub and is limited to 400 W (150 W for LED/CFL), so it only suits light strings."
+  },
+  {
+   "product": "Minoston MP24Z (Dealectric)",
+   "label": "Price, maker store",
+   "value": "$28.89, in stock",
+   "source": "https://minoston.com/products/minoston-z-wave-800-series-dual-smart-plug-for-outdoor-and-indoor-mp24z",
+   "source_title": "Minoston Z-Wave 800 Series Dual Smart Plug for Outdoor and Indoor (MP24Z)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py. It has 2 independently controlled outlets with schedule and timer, IP65, and needs a Z-Wave hub. The hub-free Wi-Fi sibling, MP24W, is listed at $17.84 but shows as unavailable."
+  }
+ ],
+ "unsourced": [
+  "Today's price for the Kasa EP10P2 2-pack ($19.99 on ChatGPT's card): the maker page has no price and only links to Amazon, and amzcheck.py returned nothing (walled).",
+  "Today's price for the Tapo P125M 3-pack ($49.99 on ChatGPT's card): the tapo.com product listing has no prices and Amazon was walled.",
+  "Today's Best Buy price for the Tapo TP15 1-pack ($13.99 on ChatGPT's card, SKU 6544395): the Best Buy page timed out twice in WebFetch, and saving the page with curl needed an approval I did not have.",
+  "Today's price for the Kasa EP25 ($35.99 at Cladby Home on ChatGPT's card): no Cladby Home store page turned up in search, and the B&H EP25 8-pack page returned 403.",
+  "Today's Home Depot price for the Defiant HPPA11AWB4 4-pack ($32.98 on ChatGPT's card): homedepot.com returned 403. A search snippet said $29.97, but I did not open the page, so the figure is not used.",
+  "Today's price for the Kasa EP40 outdoor plug (Dealectric): I ran out of tool budget before checking a retailer page, and Amazon was walled anyway.",
+  "Whether single-device Kasa or Tapo schedules run without internet: neither cited FAQ says."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8491497
+ }
+}

@@ -1,0 +1,126 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got says that the only approved store selling a golf-cart audio part, Vatrer, sells its 25 A / 335 W 12 V reducer as two separate $79.99 models (36V, and 48V/72V), or that Vatrer asks for the reducer's base to sit against metal to shed heat under long, heavy load.",
+ "standout": 1,
+ "standout_why": "I read golfcartbase.com (cited), cartvoltage.com and nicksgolfcarts.com on 2026-11-10. mtx.com (cited) returned HTTP 403. All three pages I read already cover the core rules: a 12 V reducer is required on 36/48 V carts, size it for the load (cartvoltage says at least 30 A, 40 A for big bars; Nick's says 10 A for a bar alone, 20 A with lights), fuse near the source, run the negative to the reducer or pack and not the frame, wire the reducer to the key switch, and check the reducer's input range against lithium charge voltage (cartvoltage gives 58.4 V). None of them names a reducer that can be bought with the speaker in one approved cart. None gives Vatrer's separate 36 V and 48 V/72 V SKUs or its instruction to bolt the base to metal. Nick's covers only part of the heat point ('dry, ventilated'). The fact is new but does not decide the set, and two rival pages give reducer sizing that disagrees (10–20 A vs 30 A+), so a 25 A unit falls between them.",
+ "kit_items": [
+  "12 V reducer: Vatrer 48V/72V to 12V 25A/335W (or the separate Vatrer 36V to 12V 25A model for 36 V carts). It is the only reducer in an approved store. 25 A covers a soundbar alone by Nick's 10 A rule and a bar plus LED lights by Nick's 20 A rule. It is below cartvoltage's 30 A minimum for a bar with lights.",
+  "Hardwired 12 V soundbar: bought on Amazon, because no approved non-Amazon store sells a golf-cart soundbar. cartvoltage names the ECOXGEAR SoundExtreme 18-inch (about $300, IP66) and the Wet Sounds Stealth 6 Ultra HD (about $400–480, IP67, 200 W RMS). The BOSS BRT26RGB that ChatGPT showed is marked discontinued at Sonic Electronix.",
+  "Inline fuse holder on the reducer's output: sized to the soundbar maker's spec. cartvoltage says 10–20 A is typical, fitted close to the reducer.",
+  "Key-switch relay or the reducer's enable lead: so the bar and reducer draw nothing while parked. Nick's puts Bluetooth amp idle draw at 0.25–2 A.",
+  "Wire and loom: negative run to the reducer or pack negative. Never tap 12 V from the middle of the battery string (Nick's)."
+ ],
+ "carts": [
+  {
+   "store": "Vatrer (vatrerpower.com)",
+   "items": [
+    "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W | https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer | $79.99 (compare-at $128.99, in stock) | 2026-11-10",
+    "Vatrer 36V to 12V Golf Cart Power Buck Converter, 25A/335W (36 V carts only) | https://vatrerpower.com/products/vatrer-36v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer | $79.99 (compare-at $128.99, in stock) | 2026-11-10"
+   ],
+   "bundle_sku": "none"
+  },
+  {
+   "store": "Amazon",
+   "items": [
+    "Hardwired 12 V golf-cart soundbar (ECOXGEAR SoundExtreme / Wet Sounds Stealth 6 Ultra HD / BOSS BRT26RGB) | Amazon search returned nothing (walled) | price skipped | 2026-11-10"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "Vatrer 48V/72V to 12V Golf Cart Power Converter",
+   "label": "price, maker store",
+   "value": "$79.99 (compare-at $128.99), available",
+   "source": "https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on vatrerpower.com. Product-page reads after that hit HTTP 429/403."
+  },
+  {
+   "product": "Vatrer 48V/72V to 12V Golf Cart Power Converter",
+   "label": "rated output",
+   "value": "25 A / 335 W",
+   "source": "https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "From the maker's product title. 335 W ÷ 25 A ≈ 13.4 V nominal output."
+  },
+  {
+   "product": "Vatrer 48V/72V to 12V Golf Cart Power Converter",
+   "label": "installation requirement",
+   "value": "base must contact metal for heat conduction under long full or heavy load",
+   "source": "https://vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 48V/72V to 12V Golf Cart Power Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "Store text: 'For long-term full load or heavy load applications, it is important to maintain good contact between the bottom surface of the converter and other metal surfaces to facilitate heat conduction.'"
+  },
+  {
+   "product": "Vatrer 36V to 12V Golf Cart Power Buck Converter",
+   "label": "price, maker store",
+   "value": "$79.99 (compare-at $128.99), a separate SKU from the 48V/72V model",
+   "source": "https://vatrerpower.com/products/vatrer-36v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer",
+   "source_title": "Vatrer 36V to 12V Golf Cart Power Buck Converter, 25A/335W DC to DC Voltage Reducer",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. The buyer must match the SKU to the cart's pack voltage."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit",
+   "label": "included charger",
+   "value": "58.4 V 18 A; kit $1,579.99",
+   "source": "https://vatrerpower.com/products/vatrer-48v-golf-cart-lithium-battery-conversion-kit",
+   "source_title": "Vatrer 48V 105Ah Narrow Lithium Golf Cart Battery with 200A BMS",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. A reducer on a Vatrer-lithium cart sees up to 58.4 V while charging."
+  },
+  {
+   "product": "general",
+   "label": "reducer sizing, cartvoltage",
+   "value": "30 A minimum with lights, 40 A for larger amplified bars; 200 W RMS bar ≈ 5 A normal, ≈ 17 A full volume; fuse 10–20 A",
+   "source": "https://cartvoltage.com/best-golf-cart-bluetooth-speaker-soundbar/",
+   "source_title": "Best Golf Cart Bluetooth Speakers and Soundbars (+ Lithium Wiring)",
+   "read": "2026-11-10",
+   "note": "Rival page, ChatGPT result #3."
+  },
+  {
+   "product": "general",
+   "label": "reducer sizing and idle drain, Nick's Golf Carts",
+   "value": "10 A for a soundbar alone, 20 A with LED lights, 30 A for amp + sub + head unit; Bluetooth amp idle 0.25–2 A",
+   "source": "https://nicksgolfcarts.com/golf-cart-bluetooth-speakers/",
+   "source_title": "Golf Cart Bluetooth Speakers: Power, Mounting and What Actually Sounds Good",
+   "read": "2026-11-10",
+   "note": "Rival page, ChatGPT result #6. Also covers key-switch enable and no mid-string tap."
+  },
+  {
+   "product": "Ehaho 26-inch UTV Sound Bar",
+   "label": "only product named by the cited GolfCartBase page",
+   "value": "$149.99",
+   "source": "https://golfcartbase.com/blog/how-to-install-golf-cart-stereo/",
+   "source_title": "How to Install a Stereo or Soundbar in a Golf Cart",
+   "read": "2026-11-10",
+   "note": "Cited rival. Gives no reducer amp rating, fuse size, or lithium advice."
+  },
+  {
+   "product": "BOSS Audio BRT26RGB",
+   "label": "retailer status",
+   "value": "listed discontinued; $329.99 'priced per pair'; IPX-5; 26 in",
+   "source": "https://www.sonicelectronix.com/item-192919-Boss-BRT26RGB.html",
+   "source_title": "Boss BRT26RGB | Sonic Electronix",
+   "read": "2026-11-10",
+   "note": "ChatGPT showed this bar at $239.98. bossaudio.com returned HTTP 429 three times."
+  }
+ ],
+ "unsourced": [
+  "Vatrer 48V/72V converter input voltage range, no-load current, IP rating and whether it has an enable/ignition lead: the maker page returned 403/429. A Temgot listing that looks identical says 40–90 V in and 13.5 V ±0.5 V out, but that is another brand, so I left it out.",
+  "BOSS BRT26RGB fuse rating, current draw and power-lead type: bossaudio.com returned 429, the ManualsLib manual showed only its cover, and Sonic Electronix lists none of them.",
+  "Amazon prices for the BOSS BRT26RGB, ECOXGEAR SoundExtreme, Wet Sounds Stealth 6 Ultra HD and the JBL 21-inch 12 V soundbar: amzcheck.py search returned nothing (walled).",
+  "MTX golf-cart system models, prices and power specs: mtx.com/library-golf-cart-audio returned HTTP 403.",
+  "soundcore Boom 2 Plus price as a no-wiring alternative: storecheck on soundcore.com returned HTTP 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9555578
+ }
+}

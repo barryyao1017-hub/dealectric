@@ -1,0 +1,109 @@
+{
+ "angle": "B",
+ "gap": "None of the results ChatGPT got say what a timer plug costs to run on its own: using Brian Dorey's measured 0.56 W idle and 1.22 W with the relay on, that comes to about $0.89 to $1.94 per plug per year at the August 2026 US average rate of 18.16¢/kWh. Over five years that is roughly what each plug costs to buy.",
+ "standout": 2,
+ "standout_why": "I opened the two cited TP-Link/Tapo timer FAQs (tp-link.com/us/support/faq/947 and tapo.com/us/faq/83) and four top-ranked roundups: stackandvalue, techgearden, rottenwifi and pickedproperly. None gives a standby or idle wattage, a yearly running cost, or a schedule limit, except stackandvalue's single line for the Tapo P115: 'Up to 32 schedules per plug'. Stackandvalue already does price per plug, so that derivation isn't new. The standby-cost figure is new, but the only named measurement I found is of an older Kasa HS10x, not of ChatGPT's picks. It can't rank the candidates against each other, so it isn't a 3.",
+ "decides": "It confirms rather than changes the pick. A Wi-Fi timer plug's own draw is small: under $2 a year even with the relay held on, and a 4-pack left on all the time is under about $8 a year. So for 'smart plug with timer', choose on timer features, not on running cost. On features, the cited Tapo FAQ lists Auto-Off only for Kasa EP40M, KP125M, EP25 V2 and all Tapo plugs. The Kasa EP10, which ChatGPT called 'best for simple timers', isn't on that list. A shopper who wants an automatic shut-off every time the plug turns on should get a Tapo plug or the EP25 V2 instead.",
+ "candidates": [
+  "Kasa EP10 (Ultra Mini 15A)",
+  "Tapo P125M",
+  "Defiant HPPA11AWB (Hubspace)",
+  "Kasa EP25",
+  "Minoston MP22Z (Dealectric listing)",
+  "Kasa EP40 (Dealectric listing)"
+ ],
+ "findings": [
+  {
+   "product": "Kasa HS10x (older Kasa plug; stand-in for current Kasa/Tapo minis)",
+   "label": "Measured idle draw, relay off",
+   "value": "0.56 W",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Kasa Smart Plug by TP-Link Power Consumption Modification (Brian Dorey, 25 Oct 2020)",
+   "read": "2026-11-10",
+   "note": "Brian Dorey measured this with a Hopi power meter. His post says 4.085 kWh/yr, but 0.56 W × 8,760 h = 4.91 kWh/yr, so I used my own figure."
+  },
+  {
+   "product": "Kasa HS10x (older Kasa plug; stand-in for current Kasa/Tapo minis)",
+   "label": "Measured draw with relay on, plug's own consumption",
+   "value": "1.22 W",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Kasa Smart Plug by TP-Link Power Consumption Modification (Brian Dorey, 25 Oct 2020)",
+   "read": "2026-11-10",
+   "note": "Brian Dorey, Hopi meter. 1.22 W × 8,760 h = 10.69 kWh/yr. His post says 8.93 kWh/yr, which doesn't match his own wattage."
+  },
+  {
+   "product": "general",
+   "label": "US average residential electricity price, Aug 2026 (preliminary)",
+   "value": "18.16 ¢/kWh",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly, Table 5.6.A",
+   "read": "2026-11-10",
+   "note": "Latest month shown. August 2025 was 17.57 ¢/kWh."
+  },
+  {
+   "product": "Kasa HS10x (older Kasa plug; stand-in for current Kasa/Tapo minis)",
+   "label": "Derived yearly cost of the plug's own draw, idle (relay off)",
+   "value": "$0.89 per plug per year",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Brian Dorey measurement × EIA Table 5.6.A rate",
+   "read": "2026-11-10",
+   "note": "0.56 W × 8,760 h ÷ 1,000 = 4.91 kWh × $0.1816 = $0.89/yr"
+  },
+  {
+   "product": "Kasa HS10x (older Kasa plug; stand-in for current Kasa/Tapo minis)",
+   "label": "Derived yearly cost of the plug's own draw, relay on all the time",
+   "value": "$1.94 per plug per year",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Brian Dorey measurement × EIA Table 5.6.A rate",
+   "read": "2026-11-10",
+   "note": "1.22 W × 8,760 h ÷ 1,000 = 10.69 kWh × $0.1816 = $1.94/yr. A timer plug spends part of each day on and part off, so its real cost falls between $0.89 and $1.94."
+  },
+  {
+   "product": "general (4-pack, e.g. Defiant HPPA11AWB4)",
+   "label": "Derived yearly cost of four plugs' own draw",
+   "value": "$3.56–$7.76 per year",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Brian Dorey measurement × EIA Table 5.6.A rate",
+   "read": "2026-11-10",
+   "note": "4 × $0.89 = $3.56 (idle) to 4 × $1.94 = $7.76 (relay always on). This assumes Defiant plugs draw about the same as the measured Kasa, which nobody has measured."
+  },
+  {
+   "product": "Tapo P125M",
+   "label": "Rated max load",
+   "value": "1,800 W @ 120 V, 15 A, 1/6 HP motor",
+   "source": "https://www.tapo.com/us/product/tapo-p125m-smart-plug/v1/1-pack/specs",
+   "source_title": "Tapo P125M Specifications (Tapo US)",
+   "read": "2026-11-10",
+   "note": "Spec page lists 'General Use / Resistive Load', 2.4 GHz, Bluetooth 4.2 for setup only. It gives no power consumption or standby figure."
+  },
+  {
+   "product": "Kasa EP10 / Kasa EP25 V2 / Tapo plugs",
+   "label": "Which models support Auto-Off",
+   "value": "Kasa EP40M, KP125M, EP25 V2 and all Tapo smart plugs (EP10 not listed)",
+   "source": "https://www.tapo.com/us/faq/83/",
+   "source_title": "How to Set Up Schedule, Away Mode, and Timer for TP-Link Plug/Bulb/Switch in the Tapo App",
+   "read": "2026-11-10",
+   "note": "This comes from a page ChatGPT cited, so it isn't the gap. I include it because it bears on whether the EP10 suits the 'shut off after 1 hour every time' case."
+  },
+  {
+   "product": "Tapo P115",
+   "label": "Schedules per plug (as reported by a rival)",
+   "value": "up to 32",
+   "source": "https://www.stackandvalue.com/best-smart-plugs-2026/",
+   "source_title": "Best Smart Plugs of 2026 (Stack and Value)",
+   "read": "2026-11-10",
+   "note": "From a roundup, not the maker. TP-Link's own US FAQs give no schedule limit."
+  }
+ ],
+ "unsourced": [
+  "Standby or idle wattage for the Kasa EP10, Kasa EP25, Tapo P125M and Defiant HPPA11AWB. Not on the Tapo P125M US spec page or the TP-Link timer FAQs. The EP25 datasheet PDF wouldn't parse, and the Kasa EP10/EP25 pages returned HTTP 500. I found no named reviewer who measured these models; the only measurement is Brian Dorey's on an older HS10x.",
+  "Today's price per plug for each candidate. Amazon (amzcheck) returned nothing for EP10 2-pack and P125M 3-pack searches. storecheck returned 404 for kasasmart.com and tapo.com, so they aren't Shopify stores. Home Depot's Defiant 4-pack page (HPPA11AWB4) returned 403, and I wouldn't use the search-snippet price. The Kasa EP10 and EP25 product pages returned HTTP 500.",
+  "Maximum schedule count and countdown/Auto-Off length for Kasa and Tapo plugs from TP-Link's own pages. Neither the US Kasa FAQ 947 nor Tapo FAQ 83 gives a number."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8373792
+ }
+}

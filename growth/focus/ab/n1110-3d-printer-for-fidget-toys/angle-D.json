@@ -1,0 +1,90 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Bambu's own stock slicer profiles for the A1 mini apply no elephant-foot compensation (\"elefant_foot_compensation\": \"0\"). The A1 profile applies only 0.075 mm, while Bambu's X1C/P1S profiles inherit 0.15 mm. On the A1 mini the shopper has to set this one field to about 0.15 mm, or the squished first layer can weld the 0.2 mm print-in-place gaps at the base.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages and the top result. The cited extruly.com A1 Mini guide (2026-11-09) blames fused joints on first-layer squish and load-cell Z offset, but it never mentions elephant-foot compensation. The cited aemind.com fidget page (2026-10-16) only says 'tune tolerances if parts fuse' and gives no first-layer figures. The cited Tom's Hardware page returned no usable text when I fetched it, so I couldn't check it. The top result, 3dprintgearlab.com, recommends a first-layer horizontal expansion of -0.15 to -0.2 mm and says 0.2 mm is the usual design clearance. That part of the mechanism is in the rivals. What none of them says is that the A1 mini ships with 0 mm compensation, so the shopper has to change the setting.",
+ "decides": "The finding confirms the A1 mini as the pick, with one condition: in Bambu Studio, set Elephant foot compensation from 0 to 0.15 mm, the value Bambu's own X1C/P1S profiles use. That brings the first layer into line with the -0.15 to -0.2 mm that print-in-place guides recommend. The A1 ships at 0.075 mm, half of that. Neither printer is ruled out, because the fix is one slicer field. But it gives a concrete reason why the joints of a first fidget on a stock A1 mini can come off the plate welded at the base, and it tells the shopper what to change.",
+ "candidates": [
+  "Bambu Lab A1 mini",
+  "Bambu Lab A1",
+  "Bambu Lab A1 mini Combo (AMS lite)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What elephant-foot compensation does (Bambu Studio's own tooltip)",
+   "value": "\"Shrink the initial layer on build plate to compensate for elephant foot effect\"; unit mm, min 0, code default 0",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/src/libslic3r/PrintConfig.cpp",
+   "source_title": "BambuStudio src/libslic3r/PrintConfig.cpp (bambulab/BambuStudio, master)",
+   "read": "2026-11-10",
+   "note": "Definition of the elefant_foot_compensation option (coFloat) in Bambu Studio's source."
+  },
+  {
+   "product": "Bambu Lab A1 mini",
+   "label": "Stock elephant-foot compensation, 0.20mm Standard profile",
+   "value": "0 mm",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/process/0.20mm%20Standard%20@BBL%20A1M.json",
+   "source_title": "0.20mm Standard @BBL A1M.json (BambuStudio profiles, master)",
+   "read": "2026-11-10",
+   "note": "The file inherits fdm_process_single_0.20, which sets 0.15 mm, then overrides it with \"elefant_foot_compensation\": \"0\". The profile is for the A1 mini 0.4 mm nozzle."
+  },
+  {
+   "product": "Bambu Lab A1 mini",
+   "label": "Stock elephant-foot compensation, 0.16mm High Quality profile",
+   "value": "0 mm",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/process/0.16mm%20High%20Quality%20@BBL%20A1M.json",
+   "source_title": "0.16mm High Quality @BBL A1M.json (BambuStudio profiles, master)",
+   "read": "2026-11-10",
+   "note": "Inherits fdm_process_single_0.16 and overrides with \"elefant_foot_compensation\": \"0\". compatible_printers is 'Bambu Lab A1 mini 0.4 nozzle'. This is the 0.16 mm layer height extruly recommends for small fidgets, so the override applies there too."
+  },
+  {
+   "product": "Bambu Lab A1",
+   "label": "Stock elephant-foot compensation, 0.20mm Standard profile",
+   "value": "0.075 mm",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/process/0.20mm%20Standard%20@BBL%20A1.json",
+   "source_title": "0.20mm Standard @BBL A1.json (BambuStudio profiles, master)",
+   "read": "2026-11-10",
+   "note": "Inherits fdm_process_single_0.20 (0.15 mm) and overrides it to 0.075 mm. compatible_printers is 'Bambu Lab A1 0.4 nozzle'."
+  },
+  {
+   "product": "general",
+   "label": "Bambu's base 0.20 mm process value (inherited by X1C / X1 / P1S / X1E Standard profiles)",
+   "value": "0.15 mm",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/process/fdm_process_single_0.20.json",
+   "source_title": "fdm_process_single_0.20.json (BambuStudio profiles, master)",
+   "read": "2026-11-10",
+   "note": "\"elefant_foot_compensation\": \"0.15\". '0.20mm Standard @BBL X1C.json' inherits this file and does not override the key (checked the same day), so those printers get 0.15 mm."
+  },
+  {
+   "product": "general",
+   "label": "First-layer shrink that print-in-place guides recommend, and typical design clearance",
+   "value": "-0.15 to -0.2 mm first-layer horizontal expansion; 0.2 mm default clearance (0.25 / 0.3 mm variants for less-calibrated printers)",
+   "source": "https://www.3dprintgearlab.com/best/best-3d-printer-for-fidget-toys/",
+   "source_title": "Best 3D Printer for Fidget Toys 2026: Print-in-Place Gears & Spinners, Ranked (3dprintgearlab.com)",
+   "read": "2026-11-10",
+   "note": "These are the rival page's figures, used as the benchmark: it says the values are 'commonly recommended in print-in-place design guides'. The A1 mini's stock 0 mm is 0.15-0.2 mm short of that range. The A1's 0.075 mm is about half of it."
+  },
+  {
+   "product": "general",
+   "label": "Bambu base first-layer vs normal line width",
+   "value": "0.5 mm first layer vs 0.42 mm normal",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/process/fdm_process_common.json",
+   "source_title": "fdm_process_common.json (BambuStudio profiles, master)",
+   "read": "2026-11-10",
+   "note": "\"initial_layer_line_width\": \"0.5\", \"line_width\": \"0.42\", \"initial_layer_print_height\": \"0.2\". I did not check whether the A1M profiles override these. The first layer is deliberately extruded wider, and elephant-foot compensation exists to offset that."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab's own A1 mini and A1 product pages (bambulab.com/en-us/a1-mini and /a1). Both returned HTTP 403, so I could not quote Bambu's wording on how auto-leveling and auto Z-offset work.",
+  "The Bambu wiki page on elephant-foot compensation (wiki.bambulab.com). It returned HTTP 402, so I have no recommended value in Bambu's own words beyond the profile files.",
+  "Today's US prices for the A1 mini and A1 at Bambu's US store. storecheck.py returned HTTP 404 for both the search and the product URL, so prices are left out.",
+  "Any statement from Bambu on why the A1M profiles set elephant-foot compensation to 0 (for example, that the A1 mini's nozzle-based Z-offset makes it unnecessary). I found no changelog or wiki text, so I don't claim a reason.",
+  "A named reviewer's measured result of print-in-place joints fusing on a stock A1 mini compared with 0.15 mm compensation. I didn't find one within budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.6869045999999999
+ }
+}

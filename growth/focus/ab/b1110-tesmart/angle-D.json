@@ -1,0 +1,99 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that on a TESmart 8-port KVM, hotkey switching only works when the keyboard is in the dedicated keyboard/mouse port. If the keyboard sits in a USB 2.0/3.0 hub port, which is TESmart's own fix for keyboards that fail in the dedicated port (it names Roccat and some Microsoft models), hotkeys stop working. The shopper then has to change between the 8 PCs with the front buttons, the IR remote or RS232/LAN.",
+ "standout": 1,
+ "standout_why": "I compared against officekithq.com (rank 2), mamalinux.com (7), virtual-pc.com (8) and workcocoon.com (9). officekithq has part of this, but only for the GREATHTEK: 'the keyboard and mouse connect to the K/M port to support hotkey switching.' mamalinux and virtual-pc give hotkey key combos (Scroll Lock + Scroll Lock + n) and talk about EDID emulation and USB 2.0 vs 3.0 speed. None of them says that hub/pass-through ports cannot do hotkeys. None says that the usual fix for a keyboard that won't work in the dedicated port costs you hotkey switching. None says this for the TESmart HKS801 models, which are the $399 card ChatGPT showed and what Dealectric lists. No rival mentions chroma format or that USB 3.0 can interfere with 2.4 GHz receivers.",
+ "decides": "This confirms the pick rather than changing it. Any of the three TESmart 8-port units works with a plain wired keyboard in the dedicated port. A shopper with a Roccat keyboard, some Microsoft keyboards, a programmable or macro board, or a wireless keyboard may have to move it to a hub port. That shopper loses hotkey switching across 8 machines, so the front-panel buttons, IR remote and RS232/LAN control on the HKS801-P23 and L23 become the real way to switch. The page should say this before the shopper buys on the strength of hotkeys.",
+ "candidates": [
+  "TESmart HKS801-P23",
+  "TESmart HKS801-L23",
+  "TESmart HKS801-M24",
+  "TESmart HKS801-EB23"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Hotkeys only work from the dedicated keyboard/mouse ports",
+   "value": "TESmart: 'The KVM switch is designed to support the hotkey function only on these dedicated ports.' 'If your keyboard is connected to a USB 2.0/3.0 port on the KVM switch, the hotkey function will not work.'",
+   "source": "https://support.tesmart.com/hc/en-us/articles/19201091645337-The-Hotkey-Function-Does-Not-Work",
+   "source_title": "The Hotkey Function Does Not Work – TESmart Support",
+   "read": "2026-11-10",
+   "note": "Maker's support article. It applies across TESmart KVMs and does not name a model."
+  },
+  {
+   "product": "general",
+   "label": "TESmart's fix for incompatible keyboards is the hub port, which has no hotkeys",
+   "value": "The article lists keyboards reported as incompatible, including Roccat and 'certain Microsoft keyboard models'. For those, it says to plug the keyboard into the USB 2.0/3.0 ports instead of the dedicated ports. It also says to close driver software for brands such as Logitech and Razer.",
+   "source": "https://support.tesmart.com/hc/en-us/articles/19201091645337-The-Hotkey-Function-Does-Not-Work",
+   "source_title": "The Hotkey Function Does Not Work – TESmart Support",
+   "read": "2026-11-10",
+   "note": "Putting this together with the finding above: a keyboard moved to a hub port works but cannot trigger hotkey switching."
+  },
+  {
+   "product": "general",
+   "label": "Hub ports are pass-through; dedicated port needed for hotkeys",
+   "value": "'For reliable hotkey functionality, keyboards must always be connected to the dedicated keyboard port.' Regular USB ports run in passthrough mode and don't take part in hotkey detection. TESmart lists wireless, Bluetooth or macro-enabled keyboards as a common cause of hotkey problems.",
+   "source": "https://www.tesmart.com/blogs/news/how-tesmart-kvm-hotkeys-work",
+   "source_title": "How TESmart KVM Hotkeys Work – TESmart blog",
+   "read": "2026-11-10",
+   "note": "Maker's blog. Early models used Scroll Lock as the trigger key and later ones use Right Ctrl."
+  },
+  {
+   "product": "general",
+   "label": "Why hub ports are more compatible, plus a 2.4 GHz receiver warning",
+   "value": "Hub ports 'mimic a direct connection to the computer, reducing compatibility issues since they lack dedicated chips.' 'USB-IF has indicated that USB 3.0 can cause interference with 2.4GHz wireless mouse and keyboard receivers.' Hotkey switching 'only operates with' the dedicated USB 1.1 keyboard port.",
+   "source": "https://www.tesmart.com/blogs/news/kvm-switches-for-wired-and-wireless-keyboard-and-mouse-integration",
+   "source_title": "KVM Switches for Wired and Wireless Keyboard and Mouse Integration – TESmart blog",
+   "read": "2026-11-10",
+   "note": "Maker's blog. This is the mechanism: the dedicated port has a chip that reads keystrokes for hotkeys, and the hub ports pass USB straight through."
+  },
+  {
+   "product": "TESmart HKS801-P23",
+   "label": "Price and video/USB/control spec",
+   "value": "$399.00, in stock. HDMI 2.0 4K@60Hz, USB 3.0 (5 Gbps), an EDID emulator on each input. Control by IR, front panel, keyboard hotkeys or RS232/LAN.",
+   "source": "https://www.tesmart.com/products/hks801-p23",
+   "source_title": "Upgraded 8 Port HDMI KVM Switch with USB 3.0 (5Gbps), 4K60Hz, and RS232/LAN Control – TESmart",
+   "read": "2026-11-10",
+   "note": "Read from the tesmart.com Shopify store data with storecheck.py search. Same $399.00 as the ChatGPT card. Fetching the HTML page directly returned HTTP 429."
+  },
+  {
+   "product": "TESmart HKS801-L23",
+   "label": "Price and resolution claim",
+   "value": "$143.99 (compare-at $239.99), in stock. The title says '4K30Hz' but the description says 'up to 3840x2160@60Hz'. RS232/LAN, IR, front panel and hotkey control.",
+   "source": "https://www.tesmart.com/products/hks801-l23",
+   "source_title": "8 Port HDMI KVM Switch 4K30Hz Support RS232/LAN – TESmart",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on tesmart.com. The maker's own title and body text disagree on refresh rate, so trust the title's 4K30 until the manual says otherwise."
+  },
+  {
+   "product": "TESmart HKS801-M24",
+   "label": "Price and video spec",
+   "value": "$599.00, in stock. HDMI 2.1, 48 Gbps, up to 8K@60Hz 4:4:4, 4K@60/120/144Hz, VRR/ALLM, DSC 1.2a, LAN control. Hotkeys are Scroll Lock or Right Ctrl.",
+   "source": "https://www.tesmart.com/products/hks801-m24",
+   "source_title": "HDMI 2.1 8K60Hz 8x1 KVM Switch for 8 PCs & 1 Monitor – TESmart",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on tesmart.com."
+  },
+  {
+   "product": "TESmart HKS801-EB23",
+   "label": "Price and USB",
+   "value": "$229.00, in stock. USB 2.0, 'resolutions up to 4K@60Hz on compatible devices' despite '4K30Hz' in the title. EDID on each input, RS232/LAN.",
+   "source": "https://www.tesmart.com/products/hks801-eb23",
+   "source_title": "8 Port HDMI KVM Switch 4K30Hz Support RS232/LAN, Upgraded – TESmart",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on tesmart.com. Not in the Dealectric catalog."
+  }
+ ],
+ "unsourced": [
+  "How many dedicated keyboard/mouse ports and how many USB 3.0 hub ports the HKS801-P23 has. The official manual PDF (support.tesmart.com/hc/ja/article_attachments/40997468506777) downloaded but its text could not be extracted, and the HTML product page returned HTTP 429 on four tries.",
+  "Whether the HKS801-P23 runs 4K@60Hz at 4:4:4 or 4:2:0. It is not in the store data, and the product page and manual were unreadable.",
+  "The HDMI version and bandwidth of the HKS801-L23, needed to settle its 4K30 vs 4K60 claim. The manuals.plus copy of its manual returned 403.",
+  "Whether pass-through mode is on by default on the HKS801 models. The support article says only that it is on by default on newer units without indicators, and names no model."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9096441000000001
+ }
+}

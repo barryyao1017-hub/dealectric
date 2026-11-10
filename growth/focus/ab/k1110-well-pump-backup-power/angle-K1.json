@@ -1,0 +1,109 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a battery station waiting 24/7 for the pressure switch spends more on its own idle draw than on the pump. Zelpio measured the Anker SOLIX F3800 Plus at about 112 W idle, which is 2,688 Wh a day. A 1/2 HP pump needs about 480 Wh for a family's 300 gallons. So 3,840 Wh lasts about 1.2 days, not the '4 hours of pump time / 2,400 gallons' the rivals work out, and the solar panels have to be sized for the idle draw, not the pump.",
+ "standout": 3,
+ "standout_why": "I read offgridbenchmark.com, the most complete rival. It has Franklin locked-rotor amps, starting VA, the F3800's 9,000 W surge and a run-time sum of 3,840 Wh ÷ 960 W ≈ 4 h ≈ 2,400 gal. It counts pump hours only and never mentions the station's idle draw, daily household water use, or how many panel watts are needed. thewell.guide gives generator charts, says only that tank drawdown is 'a few gallons', and has no Wh figures. holdbackup.com gives only a volts × amps example. The other results are generator-sizing calculators going by their titles (I did not open them). ChatGPT's own answer gives only HP-to-watts ranges. The idle-draw finding changes both items in the kit: battery Wh and panel watts.",
+ "kit_items": [
+  "240 V power station whose surge beats the pump's locked-rotor VA: the Anker SOLIX F3800 Plus (3,840 Wh, 6,000 W from a 120/240 V L14-30R outlet, 2 × 1,600 W solar inputs). Its 9,000 W surge (offgridbenchmark's figure, read for the F3800) covers a 1/2 HP 2-wire motor at 32.2 A × 230 V = 7,406 VA. It was sold out on ankersolix.com today.",
+  "In-stock alternative: the OSCAL PowerMax 6000 (3,600 Wh, 6,000 W, 7,200 W surge, 120/240 V). It suits only 3-wire 1/2 HP pumps: 23 A × 230 V = 5,290 VA fits under 7,200 W, but a 2-wire 1/2 HP needs 7,406 VA, which is more than 7,200 W.",
+  "Solar panels sized for the station's idle draw plus the pump, not the pump alone: about 3.2 kWh a day means roughly 1,000 W or more of panels under my assumption of 4 sun-hours × 0.75. The single 400 W panel in OSCAL's bundle covers the pump's 480 Wh but not the idle draw.",
+  "240 V connection: an L14-30 cord to a generator inlet with a transfer switch or interlock. The L14-30R outlet is listed on Anker's page. I did not research or price a specific product."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX F3800 Plus | https://www.ankersolix.com/products/f3800-plus | sold out, no price shown ('Price Loading') | 2026-11-10"
+   ],
+   "bundle_sku": "Two bundles were listed without prices: '2× Anker SOLIX F3800 Plus + Smart Home Power Kit' and 'F3800 Plus + Expansion Battery + Smart Home Power Kit'. No solar bundle was shown."
+  },
+  {
+   "store": "OSCAL (store.oscal.hk)",
+   "items": [
+    "OSCAL Solar Generator Kit 6000W (PowerMax 6000 + PM400 SE 400 W panel) | https://store.oscal.hk/products/oscal-solar-generator-kit-6000wpowermax-6000-pm-400se-solar-panel | $1,969.98 (compare-at $3,999.98), in stock | 2026-11-10",
+    "OSCAL PowerMax 6000 (unit only) | https://store.oscal.hk/products/oscal-powermax-6000-price | $1,659.99, in stock | 2026-11-10"
+   ],
+   "bundle_sku": "OSCAL Solar Generator Kit 6000W (PowerMax 6000 + PM400 SE 400W), $1,969.98"
+  }
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Locked-rotor amps, Franklin 4-inch 230 V single-phase",
+   "value": "1/2 HP: 23 A (3-wire), 32.2 A (2-wire); 3/4 HP: 34.2 A / 40.7 A; 1 HP: 41.8 A / 48.7 A",
+   "source": "https://www.offgridbenchmark.com/learn/generator-for-well-pump/",
+   "source_title": "Generator for a Well Pump: Sizing, 240 V and Safety (offgridbenchmark)",
+   "read": "2026-11-10",
+   "note": "The page cites the Franklin Electric 2026 AIM manual. I tried to read the manual PDF (webtrol.com/assets/franklin-aim-manual.pdf) directly, but its text could not be extracted. Starting VA = LRA × 230 V, for example 32.2 × 230 = 7,406 VA."
+  },
+  {
+   "product": "general",
+   "label": "1/2 HP 230 V submersible, maximum-load watts",
+   "value": "960 W",
+   "source": "https://www.offgridbenchmark.com/learn/generator-for-well-pump/",
+   "source_title": "Generator for a Well Pump: Sizing, 240 V and Safety (offgridbenchmark)",
+   "read": "2026-11-10",
+   "note": "offgridbenchmark uses 960 W as the 1/2 HP maximum, citing Franklin AIM. Franklin AIM gives 6.0 A at maximum load for the 244505; I did not open that row myself. Upper-bound draw used below."
+  },
+  {
+   "product": "general",
+   "label": "Household water use",
+   "value": "more than 300 gal/day per average American family at home",
+   "source": "https://www.epa.gov/watersense/how-we-use-water",
+   "source_title": "How We Use Water | US EPA WaterSense",
+   "read": "2026-11-10",
+   "note": "Pump energy: 300 gal ÷ 10 GPM (offgridbenchmark's assumed flow) = 30 min × 960 W = 480 Wh/day, or 1.6 Wh per gallon at maximum load."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Idle (no-load) draw, measured",
+   "value": "about 112 W",
+   "source": "https://www.zelpio.com/blog/anker-solix-f3800-plus-review/",
+   "source_title": "Anker SOLIX F3800 Plus review (Zelpio, 2026-08-23)",
+   "read": "2026-11-10",
+   "note": "Zelpio did not say whether 120 V or 240 V was on. Over 24 h: 112 × 24 = 2,688 Wh, plus 480 Wh for the pump = 3,168 Wh/day, so 3,840 ÷ 3,168 ≈ 1.2 days. Zelpio also measured an AC capacity of 83% of rated. Anker's blog (2025-06-27) says a firmware update cut idle draw by 50% but gives no watts."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Peak load handled before shutoff, measured",
+   "value": "about 7,200 W",
+   "source": "https://www.zelpio.com/blog/anker-solix-f3800-plus-review/",
+   "source_title": "Anker SOLIX F3800 Plus review (Zelpio)",
+   "read": "2026-11-10",
+   "note": "Zelpio did not say what the load was. 7,200 W is just under 7,406 VA (1/2 HP 2-wire at 230 V), so a 2-wire pump is marginal; a 3-wire 1/2 HP needs 5,290 VA."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Capacity / 240 V output / solar input",
+   "value": "3,840 Wh; NEMA L14-30R 120/240 V, 25 A, 6,000 W max; 2 × (11–165 V, 17 A, 1,600 W) = 3,200 W solar",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-10",
+   "note": "The page says the 240 V output cannot be used while charging from 120 V AC. Surge watts are not listed. Sold out today."
+  },
+  {
+   "product": "OSCAL PowerMax 6000",
+   "label": "Surge / capacity / voltage",
+   "value": "6,000 W (7,200 W surge), 3,600 Wh, 120 V/240 V dual-voltage output",
+   "source": "https://store.oscal.hk/products/oscal-powermax-6000-price",
+   "source_title": "OSCAL PowerMax 6000 Portable Power Station 6000W (Surge 7200W) 3600Wh",
+   "read": "2026-11-10",
+   "note": "7,200 W is less than 7,406 VA, so it does not fit a 2-wire 1/2 HP pump. It covers a 3-wire 1/2 HP (5,290 VA) but not a 3-wire 3/4 HP (34.2 × 230 = 7,866 VA)."
+  }
+ ],
+ "unsourced": [
+  "OSCAL PowerMax 6000 idle draw and solar input watts/voltage: I did not open the spec page within the budget.",
+  "Anker F3800 Plus surge watts from Anker: not on its US product page. The 9,000 W figure is offgridbenchmark's, for the original F3800.",
+  "Franklin AIM table rows read directly: the manual PDF's text could not be extracted, so the figures come through offgridbenchmark's citation.",
+  "Peak sun hours and system derate for panel sizing: I used 4 h × 0.75 as an assumption, not a sourced figure. An NREL PVWatts figure for the shopper's location would replace it.",
+  "Pump flow rate: 10 GPM is offgridbenchmark's assumption, not a maker's pump curve.",
+  "Amazon prices: amzcheck was blocked on all Anker ASINs.",
+  "BLUETTI Apex 300: the product page redirect-looped and store search returned only Apex 200 listings."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0438219
+ }
+}

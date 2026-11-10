@@ -1,0 +1,65 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how long the screen stays black when you switch. The only timed figure I could source comes from a forum user, Skyzoomer on AnandTech. Their UGREEN 4K60 one-monitor, two-PC HDMI KVM went black for 5 s switching from Windows 10 to Windows 11 and 7 s switching back. A GREATHTEK unit they swapped in switched both PCs in about 2.5 s.",
+ "standout": 1,
+ "standout_why": "DeskDNA was cited in both chats and reviewed in September 2026. It gives no measured figures. Its only timing claim is an unattributed 'about a second' for the peripheral-only USB switch, and it describes EDID emulation without testing it. iTechGuides was cited and published 2026-08-12. It has no measurements and names no tester, but it does say the UGREEN listing states 'EDID emulation is not supported', which is part of the reason switching is slow. Neither page gives a switch time. The Cuttles page says outright 'I haven't personally used or tested these switches' and has no latency figures. GamingPCGuru (Alex Chen) only estimates 'the usual one to two seconds'. So a timed black-screen figure would be new. The best one I found, though, comes from a forum user, not a reviewer or lab, and the post gives no UGREEN model number. That makes it too weak to build a page on. I could not read thisusb.com because of a TLS certificate error.",
+ "decides": "ChatGPT's top pick was the UGREEN 4K60 HDMI KVM. A named user timed 5–7 s of black screen on a UGREEN 4K60 one-monitor HDMI KVM, and the UGREEN listing quoted by iTechGuides says it has no EDID emulation. Together these weakly suggest that frequent switchers should prefer a switch with EDID emulation, such as the TESmart units DeskDNA describes. No named reviewer has timed the TESmart HKS201-P23 or the StarTech DP 1.4 KVM, so there is nothing measured to compare against. This finding cannot decide the pick by itself.",
+ "candidates": [
+  "UGREEN HDMI KVM Switch 2-in-1-out 4K 60Hz (15707)",
+  "TESmart HKS201-P23 (HKS0201A3U)",
+  "StarTech.com 2-Port DisplayPort 1.4 KVM 8K60/4K144",
+  "Level1Techs DisplayPort 1.4 KVM (single monitor)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN HDMI KVM, 4K@60Hz, 1 monitor / 2 computers (model number not given)",
+   "label": "Black-screen time on switch, Windows 10 → Windows 11 PC",
+   "value": "5 s",
+   "source": "https://forums.anandtech.com/threads/kvm-switches-in-5-7-seconds.2624303/",
+   "source_title": "KVM switches in 5-7 seconds (AnandTech Forums)",
+   "read": "2026-11-10",
+   "note": "Forum user Skyzoomer, posted 2024-12-19. Quote: 'Monitor goes black for 5 seconds, then the Win11 desktop displays.' One 4K 60 Hz monitor over HDMI. This is a user's timing, not a lab measurement, and the method is not described."
+  },
+  {
+   "product": "UGREEN HDMI KVM, 4K@60Hz, 1 monitor / 2 computers (model number not given)",
+   "label": "Black-screen time on switch, Windows 11 → Windows 10 PC",
+   "value": "7 s",
+   "source": "https://forums.anandtech.com/threads/kvm-switches-in-5-7-seconds.2624303/",
+   "source_title": "KVM switches in 5-7 seconds (AnandTech Forums)",
+   "read": "2026-11-10",
+   "note": "Same user, same post. Quote: 'Monitor goes black for 7 seconds, then the Win10 desktop displays.'"
+  },
+  {
+   "product": "GREATHTEK HDMI KVM (model not named)",
+   "label": "Switch time, both PCs",
+   "value": "about 2.5 s",
+   "source": "https://forums.anandtech.com/threads/kvm-switches-in-5-7-seconds.2624303/",
+   "source_title": "KVM switches in 5-7 seconds (AnandTech Forums)",
+   "read": "2026-11-10",
+   "note": "Skyzoomer's update of 2025-02-06 after replacing the UGREEN on the same setup. Quote: 'Switches both PCs in about 2.5 seconds.'"
+  },
+  {
+   "product": "UGREEN HDMI KVM 2 PCs / 1 monitor",
+   "label": "EDID emulation (listing claim cited by a rival)",
+   "value": "not supported",
+   "source": "https://www.itechguides.com/the-best-kvm-switches-for-single-dual-monitor-usb-c-and-high-refresh-setups/",
+   "source_title": "Best KVM Switches: Single, Dual-Monitor, USB-C & 4K120 Picks (iTechGuides)",
+   "read": "2026-11-10",
+   "note": "This is a listing claim, not a measurement. I include it because it explains the re-handshake delay above, and because a rival already has it, which lowers the standout score."
+  }
+ ],
+ "unsourced": [
+  "A switch time timed by a reviewer or lab (stopwatch or capture card) for the UGREEN 4K60 HDMI KVM, TESmart HKS201-P23 or StarTech 2-port DP 1.4 KVM. I searched for Tom's Hardware, PCWorld, TechRadar, PCMag, Wirecutter, XDA/How-To Geek and The Gadgeteer and found no such review.",
+  "Measured USB 3.0 throughput in MB/s (e.g. CrystalDiskMark through the switch) for any candidate. Only the 5 Gbps spec turned up.",
+  "Measured power draw in watts for any candidate. The only figure was a SpecPicks catalog '36 W' for the HKS201-P23, which is not a measurement.",
+  "Confirmation from a reviewer that the StarTech DP 1.4 KVM or the Level1Techs DP 1.4 KVM actually ran 4K 144 Hz / 120 Hz. The igorslab.de test of the Level1Techs dual-monitor DP 1.4 KVM returned 403 and could not be read, and in any case it covers a dual-monitor model.",
+  "The DPReview 'KVM switch delays' thread, which reportedly has a 7 s HDMI KVM figure. It returned 403, so I left it out.",
+  "thisusb.com/guides/best-kvm-switches (result #4), which I could not read because of a self-signed certificate error. I don't know whether it has measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0577927
+ }
+}

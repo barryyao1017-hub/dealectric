@@ -1,0 +1,121 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that TP-Link's Kasa and Tapo plugs keep running their schedules and timers when the internet is down but stop running them after a power cut until they get back online to reset their clocks, or that the plugs' '15 A' rating covers only 1/6 HP for motors.",
+ "standout": 2,
+ "standout_why": "The two pages ChatGPT cited are TP-Link FAQ 947 (Kasa) and Tapo FAQ 83. Neither gives any limit or says how schedules behave offline: 947 says only that multi-device automations need internet, and 83 says the same plus which models have native Auto-Off. Neither mentions the 32-rule cap per device, the clock reset needed after a power cut, the Timer > Schedule > Away priority, the fact that Kasa Away Mode can't run past midnight, or any motor rating. The top uncited result, itechguides (2026-08-13), lists schedules and Auto-Off for the P125M but says nothing about how the plugs behave after a power cut, how many schedules they hold or what HP they handle. It only says 'Test the appliance after power loss.' The other top results (timerone, worthrated, pickedproperly, techgearden, stackandvalue, rottenwifi) weren't opened; timerone failed with a certificate error. So these findings are new compared with the pages I read, but not proven new against every result.",
+ "decides": "This confirms Kasa or Tapo for the usual lamp-or-fan schedule: the schedules are stored on the plug and run with the internet down. It changes the pick in two cases. (1) If the timer must recover by itself after a power cut while the internet is also out, as in a cabin, a holiday house or an aquarium during a storm, these plugs stop running schedules until they're back online. That points to the plain programmable timer ChatGPT offered as its 'No Wi-Fi required' option. (2) For a motor load such as a pump, dehumidifier or compressor, the '15 A' headline drops to a 1/6 HP motor rating on both the EP10 and the P125M. Within TP-Link, Tapo beats Kasa for overnight away/vacation lighting, because Tapo Away Mode can run past midnight and Kasa's can't. For 'shut off X minutes after every turn-on', the P125M has a built-in Auto-Off setting on every Tapo plug. On the EP10, TP-Link's own FAQs only show it done as a Smart Action, and automations need the internet.",
+ "candidates": [
+  "Kasa EP10 (Smart Plug Ultra Mini 15A)",
+  "Tapo P125M",
+  "Kasa EP25",
+  "Defiant HPPA11AWB4 (Hubspace)",
+  "Kasa EP40",
+  "Minoston MP22Z"
+ ],
+ "findings": [
+  {
+   "product": "general (Kasa EP10, EP40, Tapo P125M and other listed plugs)",
+   "label": "Do schedules, timers and Away Mode run without internet?",
+   "value": "Yes: they run from the plug itself",
+   "source": "https://www.tp-link.com/us/support/faq/2463/",
+   "source_title": "Common questions about Schedule Timer Away mode of Smart Home devices | TP-Link",
+   "read": "2026-11-10",
+   "note": "Q2 answer: 'Yes'. Applies-to list includes Kasa EP10, EP40, EP40A, EP40M, HS103, KP115, KP125 family and Tapo P105, P110, P110M, P115, P125, P125M. EP25 and KP125M are not on the list."
+  },
+  {
+   "product": "general (same TP-Link plugs)",
+   "label": "Behaviour after a power cut",
+   "value": "Schedules, timers and Away Mode stop working until the plug gets back online to reset its clock",
+   "source": "https://www.tp-link.com/us/support/faq/2463/",
+   "source_title": "Common questions about Schedule Timer Away mode of Smart Home devices | TP-Link",
+   "read": "2026-11-10",
+   "note": "Q2: after a power outage devices 'need to reconnect to the internet to resynchronize the device time', otherwise these features stop working. This is the footnote to 'works offline': it does, but only while the plug stays powered."
+  },
+  {
+   "product": "general (same TP-Link plugs)",
+   "label": "Schedule rules per device",
+   "value": "32 rules per device; each rule controls one device",
+   "source": "https://www.tp-link.com/us/support/faq/2463/",
+   "source_title": "Common questions about Schedule Timer Away mode of Smart Home devices | TP-Link",
+   "read": "2026-11-10",
+   "note": "Q1: 'You can set up as many as 32 rules for each smart device.' Tapo's plug FAQ gives the same figure (32 schedules per Tapo plug): https://www.tp-link.com/us/support/faq/3417/, read 2026-11-10."
+  },
+  {
+   "product": "general (same TP-Link plugs)",
+   "label": "Which feature wins when they conflict",
+   "value": "Timer > Schedule > Away Mode",
+   "source": "https://www.tp-link.com/us/support/faq/2463/",
+   "source_title": "Common questions about Schedule Timer Away mode of Smart Home devices | TP-Link",
+   "read": "2026-11-10",
+   "note": "Q7, quoted. A countdown overrides that day's schedule."
+  },
+  {
+   "product": "Kasa vs Tapo",
+   "label": "Away Mode past midnight",
+   "value": "Tapo: yes (set the end time earlier than the start time); Kasa: no, start and end must be on the same day",
+   "source": "https://www.tp-link.com/us/support/faq/2463/",
+   "source_title": "Common questions about Schedule Timer Away mode of Smart Home devices | TP-Link",
+   "read": "2026-11-10",
+   "note": "Q6. So a Kasa EP10 can't run an evening-to-1 a.m. vacation-lighting window as one Away Mode rule; a Tapo P125M can."
+  },
+  {
+   "product": "Tapo P125M",
+   "label": "Maximum load",
+   "value": "15 A, 1800 W at 120 V (general use / resistive load); 1/6 HP motor",
+   "source": "https://www.tp-link.com/us/home-networking/smart-plug/tapo-p125m/",
+   "source_title": "Tapo P125M product page (TP-Link US)",
+   "read": "2026-11-10",
+   "note": "Specifications tab: '15 A, 1800W @120V~, 1/6 HP Motor' under 'General Use / Resistive Load'. 1/6 HP is about 124 W of shaft power. Motor start-up current is why this is far below 1800 W."
+  },
+  {
+   "product": "Tapo P125M",
+   "label": "Timer features and offline control",
+   "value": "Schedule, Auto-Off, Away Mode; local control through the Tapo app or an already set-up Matter app with no internet",
+   "source": "https://www.tp-link.com/us/home-networking/smart-plug/tapo-p125m/",
+   "source_title": "Tapo P125M product page (TP-Link US)",
+   "read": "2026-11-10",
+   "note": "Auto-Off: 'Automatically turns off a connected device after the device is left on for a set time.' Bluetooth is for setup only."
+  },
+  {
+   "product": "Kasa EP10",
+   "label": "Maximum load",
+   "value": "15 A, 1/6 HP motor; 1800 W (general use, resistive load); 100–120 VAC",
+   "source": "https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-mini-ep10",
+   "source_title": "Kasa Smart Wi-Fi Plug Mini (EP10)",
+   "read": "2026-11-10",
+   "note": "Same motor footnote as the P125M. The page lists Smart Schedules, an 'Auto-Off Timer' ('Set a timer to turn off your connected device automatically as needed') and Away Mode, and says nothing about local control."
+  },
+  {
+   "product": "Kasa EP10",
+   "label": "Native auto-off on every turn-on",
+   "value": "Not on TP-Link's list of plugs with the built-in Auto-Off setting (all Tapo plugs plus Kasa EP40M, KP125M, EP25 V2)",
+   "source": "https://www.tapo.com/us/faq/83/",
+   "source_title": "How to Set Up Schedule, Away Mode, and Timer for TP-Link Plug/Bulb/Switch in the Tapo App | Tapo",
+   "read": "2026-11-10",
+   "note": "Kasa FAQ 947 (https://www.tp-link.com/us/support/faq/947/, read 2026-11-10) shows auto-off done as a Smart Action (trigger: turn on; action: turn off after a delay) and says automations need the devices online. My inference: on the EP10, 'shut off N minutes after every turn-on' depends on the internet, while a countdown or schedule doesn't. The EP10 product page's 'Auto-Off Timer' wording doesn't say which way it works."
+  },
+  {
+   "product": "Tapo plugs",
+   "label": "Smart Actions with no internet",
+   "value": "Not available without a hub",
+   "source": "https://www.tp-link.com/us/support/faq/3417/",
+   "source_title": "Tapo Smart Plug: Frequently Asked Questions Answered | TP-Link",
+   "read": "2026-11-10",
+   "note": "Quote: 'Smart Actions are not available without a hub — a hub is required to enable them.' Local app control works without internet."
+  }
+ ],
+ "unsourced": [
+  "Prices for Kasa EP10 2-pack, Tapo P125M 3-pack and Kasa EP25: the Amazon tool (amzcheck search) returned no results, the Kasa EP25 page returned HTTP 500, and the TP-Link US store wasn't checked.",
+  "Defiant HPPA11AWB4 (Hubspace) price, motor/HP rating, and whether its schedules are stored on the plug and survive a Wi-Fi or power outage: Home Depot returned 403, and I found no Hubspace page that answers it.",
+  "Maximum countdown-timer length and Auto-Off range on Kasa and Tapo plugs: not on TP-Link FAQs 83, 947, 2463 or 3417, or on the product pages.",
+  "Kasa EP25 load rating and whether FAQ 2463's offline and power-cut behaviour applies to it (EP25 isn't on its applies-to list): the EP25 product page returned HTTP 500 and I couldn't extract text from its PDFs.",
+  "Battery-backed clock specs for a plain programmable plug-in timer, to set against the clock reset these plugs need after a power cut: not researched within the call budget.",
+  "Minoston MP22Z and Kasa EP40 timer/offline behaviour: not opened (EP40 is on the FAQ 2463 applies-to list)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0831297999999998
+ }
+}

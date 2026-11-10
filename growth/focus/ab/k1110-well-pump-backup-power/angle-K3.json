@@ -1,0 +1,110 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that the Anker SOLIX F3800 Plus cuts its 240V output while it is recharging from 120V AC, so a 240V well pump stops whenever the station is topped up from a 120V generator or wall outlet unless Anker's $399.99 240V Bypass Charging Cable is added. None states either that the Growatt HELIOS 3600 only gives 240V when two units are paired through a $139 Double Voltage Power Hub.",
+ "standout": 3,
+ "standout_why": "I opened offgridbenchmark.com (2026-11-02), holdbackup.com (2026-10-26) and thewell.guide (2026-10-22), plus Anker's own well-pump guide, which offgridbenchmark cites. All four cover 240V versus 120V, transfer switches and backfeed, and starting surge. offgridbenchmark and thewell.guide also cover 2-wire versus 3-wire pumps, and offgridbenchmark covers Franklin's start and stop order and its warning about soft starters. offgridbenchmark lists the Anker SOLIX F3800 Plus as a 240V station but does not say the 240V output stops while the unit charges on 120V AC. None of the four mentions recharging while the pump runs, pass-through or bypass charging, or that some '240V capable' stations need a second unit and a hub. Anker's well-pump guide says a 240V pump starts only if the battery system's LRA covers the pump's LRA, but it never mentions the F3800 Plus charging limit. This decides what goes in the cart: an F3800 Plus kit that will be recharged from a generator needs the bypass cable, and a Growatt kit needs two HELIOS 3600 units plus the hub, not one.",
+ "kit_items": [
+  "240V power station that gives split-phase 240V from one unit: Anker SOLIX F3800 Plus. Its store listing says 120V/240V and 6,000W AC per unit, with NEMA TT-30P and L14-30 ports. One unit covers the pump, so you don't need a second station.",
+  "240V recharge path that keeps the pump running: Anker SOLIX 240V Bypass Charging Cable for F3800 Plus. Anker sells it for 'Simultaneous 240V Fast Charging and Power Output' from a 240V wall outlet or gas generator. Without it, charging on 120V AC disables the 240V output the pump needs.",
+  "House connection: the Anker Smart Home Power Kit bundle (F3800 Plus + Smart Home Power Kit). Hardwired pumps need transfer equipment installed by an electrician, which all three rival pages also say.",
+  "Alternative set (Growatt store): 2× Growatt HELIOS 3600 + Growatt Double Voltage Power Hub. Growatt only offers 240V when two units are paired, and the hub provides one NEMA 6-20 and two NEMA L14-30 outlets. A single HELIOS 3600 is the wrong buy for a 240V pump."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX US (us.ankersolix.com)",
+   "items": [
+    "Anker SOLIX F3800 Plus + Smart Home Power Kit | https://us.ankersolix.com/products/f3800-plus-smart-home-power-kit-new | $4,799.99 | 2026-11-10",
+    "Anker SOLIX 240V Bypass Charging Cable for F3800 Plus (Wall Outlet or Generator) | https://us.ankersolix.com/products/generator-input-adapter | $399.99 | 2026-11-10"
+   ],
+   "bundle_sku": "Anker's own bundle 'Anker SOLIX F3800 Plus + Smart Home Power Kit', $4,799.99 (2026-11-10). The bypass cable is not part of it. Cart total with the cable is $5,199.98."
+  },
+  {
+   "store": "Growatt portable store (growattportable.com)",
+   "items": [
+    "Growatt HELIOS 3600 Portable Power Station ×2 | https://www.growattportable.com/products/growatt-helios-3600-portable-power-station | $1,198.98 each (compare-at $3,337.00) | 2026-11-10",
+    "Growatt Double Voltage Power Hub | https://www.growattportable.com/products/growatt-double-voltage-power-hub | $139.00 | 2026-11-10"
+   ],
+   "bundle_sku": "none found. Cart total: 2 × $1,198.98 + $139.00 = $2,536.96."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240V output while charging on 120V AC",
+   "value": "240V output is unavailable while the unit charges via 120V AC",
+   "source": "https://us.ankersolix.com/products/f3800-plus-smart-home-power-kit-new",
+   "source_title": "Anker SOLIX F3800 Plus + Smart Home Power Kit",
+   "read": "2026-11-10",
+   "note": "Anker's own listing text: 'Dual-Voltage AC Output: 120V & 240V, 6,000W AC output... (Note: The 240V output cannot be used while the device is charging via 120V AC.)' The same note appears on the 2× F3800 Plus + Smart Home Power Kit and F3800 Plus + Expansion Battery listings. Read through the store's catalog data with storecheck.py; WebFetch of the page returned HTTP 429. What it means for a well pump: if you recharge from a 120V generator or a standard wall outlet during an outage, a 240V pump loses power."
+  },
+  {
+   "product": "Anker SOLIX 240V Bypass Charging Cable for F3800 Plus",
+   "label": "Fix for the 120V-charging limit, and price",
+   "value": "$399.99; 'Simultaneous 240V Fast Charging and Power Output'",
+   "source": "https://us.ankersolix.com/products/generator-input-adapter",
+   "source_title": "Anker SOLIX 240V Bypass Charging Cable for F3800 Plus (Wall Outlet or Generator)",
+   "read": "2026-11-10",
+   "note": "Listing text: 'Fully Compatible with F3800 Plus & Home Power Panel. Supports Gas Generators & Wall Outlet Bypass.' Other F3800 Plus listings say 'Compatible with 240V gas generators (6,000W bypass)'. Read through storecheck.py search."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC output and ports",
+   "value": "120V/240V, 6,000W AC per unit; NEMA TT-30P and L14-30 ports",
+   "source": "https://us.ankersolix.com/products/f3800-plus-smart-home-power-kit-new",
+   "source_title": "Anker SOLIX F3800 Plus + Smart Home Power Kit",
+   "read": "2026-11-10",
+   "note": "Store listing text. The listing also says 3.84 kWh base capacity, expandable to 26.9 kWh, with the BP3800 at $1,999.99."
+  },
+  {
+   "product": "Growatt HELIOS 3600",
+   "label": "How it gets 240V",
+   "value": "240V only when two HELIOS 3600 units are paired",
+   "source": "https://www.growattportable.com/products/growatt-helios-3600-portable-power-station",
+   "source_title": "Growatt HELIOS 3600 Portable Power Station",
+   "read": "2026-11-10",
+   "note": "Listing text: 'Support 240V whole-home power when parallel two HELIOS 3600s'. A single unit's AC ports are listed as 'TT-30 AC & 30A Anderson', and the listing gives 3,686 Wh and 3,600W. Price $1,198.98 (compare-at $3,337.00). Dealectric's catalog name for growatt-helios-3600 says '240 V capable' without this condition."
+  },
+  {
+   "product": "Growatt Double Voltage Power Hub",
+   "label": "Accessory needed for 240V from HELIOS 3600",
+   "value": "$139.00; links two HELIOS 3600 for 7,200W; one NEMA 6-20 and two NEMA L14-30 outlets",
+   "source": "https://www.growattportable.com/products/growatt-double-voltage-power-hub",
+   "source_title": "Growatt Double Voltage Power Hub",
+   "read": "2026-11-10",
+   "note": "Listing text: 'Connect two HELIOS 3600 units... By linking two HELIOS 3600 units, you can achieve an impressive 7200W output... comes with one NEMA 6-20 and two NEMA L14-30'."
+  },
+  {
+   "product": "general",
+   "label": "Anker's start rule for 240V pumps (maker guidance)",
+   "value": "Pump starts only if the battery system's LRA rating is at least the pump's LRA; Anker cites a typical 7,000 W surge lasting 3 s",
+   "source": "https://www.ankersolix.com/blogs/battery/well-pump-battery-backup",
+   "source_title": "Well Pump Battery Backup: Keep Your Water Running During Power Outages (Anker, 2026-03-25, updated 2026-10-10)",
+   "read": "2026-11-10",
+   "note": "The LRA table covers only the E10 system: up to 120 A with one E10 and one battery module, up to 155 A with two or more modules, and up to 275 A with two E10 units. The guide says nothing about the F3800 Plus 120V-charging limit or about bypass charging."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages leave out",
+   "value": "None of offgridbenchmark, holdbackup or thewell.guide mentions recharging during use, pass-through or bypass charging, or 240V that needs two units",
+   "source": "https://www.offgridbenchmark.com/learn/generator-for-well-pump/",
+   "source_title": "Generator for a Well Pump: Sizing, 240 V and Safety",
+   "read": "2026-11-10",
+   "note": "Pages also opened: https://holdbackup.com/guides/portable-generator-for-well-pump and https://www.thewell.guide/guides/generator-for-well-pump. offgridbenchmark's own text says it does not cover neutral bonding, VFDs, constant-pressure systems or GFCI."
+  }
+ ],
+ "unsourced": [
+  "F3800 Plus surge or peak watts and how long the surge lasts: the store catalog text gave no surge figure, and the product page and manual returned HTTP 429 or redirected (powerequipmentdirect PDF → fergusonhome).",
+  "What the Anker Smart Home Power Kit contains (panel model, circuits, whether install needs an electrician): the product page returned HTTP 429.",
+  "Neutral-ground bonding (bonded or floating) for the F3800 Plus and HELIOS 3600, and whether a transfer switch has to switch the neutral to avoid GFCI or code problems: no maker document found in the searches or pages I opened.",
+  "Whether a single BLUETTI Apex 300 gives 240V or needs a second unit or the Home Integration Kit: some BLUETTI bundle listings are tagged '120V/240V', but I found no maker spec or manual line; the BLUETTI community thread 'Single Apex 300 to 30-amp generator inlet' now redirects to forum home and could not be read.",
+  "HELIOS 3600 surge rating: not in the store catalog text, and the product page returned HTTP 429.",
+  "Forum report counts for the F3800 Plus 120V-charging trap or the single-HELIOS 240V trap: no dated threads found within the call budget.",
+  "Franklin Electric AIM locked-rotor amps for 2-wire versus 3-wire 230V motors: the AIM manual URL resolved to the resource-library landing page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0708288
+ }
+}
