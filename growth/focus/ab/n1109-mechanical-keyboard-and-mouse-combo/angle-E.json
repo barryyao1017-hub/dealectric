@@ -1,5 +1,52 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured input latency for any keyboard in these combos. The only lab figure I could open is Gamepadla's 21.51 ms average over the dongle (22.47 ms over Bluetooth) for Logitech's MX Keys S, which is not mechanical. I could not open a single named measurement for any mechanical keyboard or mouse ChatGPT showed.",
+ "standout": 1,
+ "standout_why": "I opened four rival pages on 2026-11-10. keyboardverdict.com (rank 1) says 'we don't test products ourselves', and its only figures are maker specs such as the RedThunder K10's 3,800 mAh battery and the MX Master 3S's 8,000 DPI. reviewed.com (rank 3) gives only typing results ('over 80 wpm' on the MK270/MK320) and no latency, noise or measured battery. mechkeyfoundry.com (rank 5) quotes only Logitech claims (MX Master 3S 70 days, MX Mechanical Mini 15 days with backlight) and says the author took no measurements. gamingreviewguide.com (rank 6) says it uses 'manufacturer specifications ... rather than in-house testing'. deskfinds.com (rank 4) returned 403. So every rival has zero lab numbers, which makes a measurement new. But the one figure I could open is for the MX Keys S, a combo that keyboardverdict and mechkeyfoundry already flag as 'mechanical feel', not mechanical. That makes it useful context rather than a fact that decides the pick.",
+ "decides": "It doesn't change the pick. The Gamepadla figure only gives a reference point for Logitech's non-mechanical office combo: about 21.5 ms average with roughly 6 ms jitter over either the dongle or Bluetooth. That fits an office board and is not a gaming result. A latency comparison that would decide between the gaming combos (HyperX Alloy Origins Core + Pulsefire Haste vs the Redragon S136/S168 vs the MSI Forge GK320) or confirm the MX Mechanical as the office pick needs RTINGS or TechPowerUp. Neither could be opened in this run, so this angle should not anchor the page unless those pages are fetched in another way.",
+ "candidates": [
+  "Logitech MX Mechanical + MX Master 3S",
+  "HyperX Alloy Origins Core + Pulsefire Haste (bundle)",
+  "Redragon S136 (K628 + mouse)",
+  "Redragon S168 (K673 PRO + M693)",
+  "Redragon S131",
+  "Redragon BS8773",
+  "MSI Forge GK320 Combo",
+  "Logitech MX Keys S + MX Master 3S (non-mechanical reference)"
+ ],
+ "findings": [
+  {
+   "product": "Logitech MX Keys S",
+   "label": "Keyboard input latency, USB receiver (Gamepadla test #6387)",
+   "value": "9.92 ms min / 21.51 ms avg / 33.09 ms max, 5.94 ms jitter",
+   "source": "https://gamepadla.com/logitech-mx-keys-s.html",
+   "source_title": "Gamepadla – Logitech MX Keys S",
+   "read": "2026-11-10",
+   "note": "Tested 2025-08-30 by John Punch using the Prometheus 82 method: physical actuation with a contact sensor as the timing reference, measured until the PC software registers the input. Windows 11 build 10.0.26100, program v5.3.2.0, DInput. Scissor-switch board, not mechanical; kept as the reference for Logitech's 'mechanical feel' combo that rival pages list."
+  },
+  {
+   "product": "Logitech MX Keys S",
+   "label": "Keyboard input latency, Bluetooth (Gamepadla test #6388)",
+   "value": "10.4 ms min / 22.47 ms avg / 33.99 ms max, 6.35 ms jitter",
+   "source": "https://gamepadla.com/logitech-mx-keys-s.html",
+   "source_title": "Gamepadla – Logitech MX Keys S",
+   "read": "2026-11-10",
+   "note": "Same session, method and tester as #6387. Bluetooth averages 0.96 ms slower than the receiver (22.47 − 21.51)."
+  }
+ ],
+ "unsourced": [
+  "RTINGS Logitech MX Mechanical latency over receiver and Bluetooth, plus key press/release figures. A search snippet showed about 12.4 ms over the receiver, but the review and compare pages render as navigation only in WebFetch, and a direct download with curl was refused permission, so the figure is left out.",
+  "RTINGS Logitech MX Master 3S click latency (receiver and Bluetooth) and measured weight. The review and the 'review updates' discussion page render without the test data.",
+  "HyperX Pulsefire Haste Wireless click latency and measured weight from RTINGS (no test data rendered) and TechPowerUp (single-page and page 5 both returned 403). I didn't confirm whether ChatGPT's bundle card is the Haste or the Haste 2.",
+  "HyperX Alloy Origins Core latency from RTINGS: the review URL I guessed returned 404.",
+  "Gamepadla latency for the Logitech MX Mechanical (guessed URL returned 404) and a Gamepadla keyboard index page (404).",
+  "Any lab measurement (latency, measured battery, noise in dBA) for the Redragon K673 PRO / S168, K628 / S136, S131, BS8773 and the MSI Forge GK320. Searches found only shop pages and Tom's Guide's K673 Pro review. That page came back truncated in WebFetch and its inkl mirror returned 403, so its typing-test result (87 WPM / 94.34% in a snippet) is not used.",
+  "deskfinds.com rival page (rank 4) returned 403, so I couldn't check whether it has any measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.8870362999999999
+ }
 }

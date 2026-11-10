@@ -1,5 +1,94 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got states that Redragon's own US store sells the S136 combo (K628 75% tri-mode keyboard + M693 mouse, one shared 2.4 GHz dongle) open-box for $29.99, half its $59.99 new price; or that the Logitech MX Mechanical + MX Master 3S pair costs $269.98 bought separately on logitech.com today ($179.99 + $89.99), not the $279.98 mechkeyfoundry prints.",
+ "standout": 1,
+ "standout_why": "I compared against keyboardverdict.com and mechkeyfoundry.com; deskfinds.com returned 403. keyboardverdict prices Redragon's S101M-KS and RedThunder K10 but not the S136, and gives the MX pair only as a '~$215-230' range. mechkeyfoundry already adds up the MX pair, at $279.98 using the older $99.99 mouse price, and gives the MX battery figures I meant to derive from: 15 days with backlight on and 70 days for the mouse. That leaves only price deltas as new, and they are small. I couldn't compute the angle's real number, the days a combo runs before the first device needs charging at a stated duty cycle, for any budget combo ChatGPT showed. Redragon's store rate-limited every product-page request (HTTP 429), and its PDF manual wouldn't parse.",
+ "decides": "It only confirms the budget pick and doesn't decide anything. The S136 is the one ChatGPT-shown combo I could price at the maker today: $59.99 new, or $29.99 open-box from the same store. Without sourced battery hours for the K628 and M693 I can't rank it against the S168 or BS8773 on days between charges. That runtime comparison would be the deciding figure if a later pass can open the Redragon spec pages.",
+ "candidates": [
+  "Redragon S136 (K628 + M693)",
+  "Redragon S168 (K673 PRO + M693)",
+  "Redragon BS8773",
+  "Redragon S131",
+  "MSI Forge GK320 Combo",
+  "HyperX Alloy Origins Core + Pulsefire Haste bundle",
+  "Logitech MX Mechanical + MX Master 3S"
+ ],
+ "findings": [
+  {
+   "product": "Redragon S136 (K628 + M693)",
+   "label": "Maker US store price, new",
+   "value": "$59.99",
+   "source": "https://www.redragonshop.com/products/redragon-bs136-tri-mode-gaming-keyboard-and-mouse-combo",
+   "source_title": "K628 75% Mechanical Gaming Keyboard M693 Gaming Mouse Tri-Modes Combo – Redragon Shop",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search of redragonshop.com: listed as available, with no compare-at price. Same price as the ChatGPT card ($59.99)."
+  },
+  {
+   "product": "Redragon S136 (K628 + M693)",
+   "label": "Maker US store price, open-box",
+   "value": "$29.99 (compare-at $59.99)",
+   "source": "https://www.redragonshop.com/products/open-box-k628-keyboard-m693-mouse",
+   "source_title": "(Open-box) K628 75% Mechanical Gaming Keyboard M693 Gaming Mouse Tri-Modes Combo – Redragon Shop",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search, listed as available. Saving: 59.99 − 29.99 = $30.00, which is 50% off new."
+  },
+  {
+   "product": "Redragon S136 (K628 + M693)",
+   "label": "Maker-stated features",
+   "value": "78-key 75% layout, hot-swap sockets, linear switches; one shared 2.4 GHz dongle for keyboard and mouse; mouse max 7,200 DPI (800/1200/1600/2400/7200), 7 programmable buttons",
+   "source": "https://www.redragonshop.com/products/redragon-bs136-tri-mode-gaming-keyboard-and-mouse-combo",
+   "source_title": "K628 75% Mechanical Gaming Keyboard M693 Gaming Mouse Tri-Modes Combo – Redragon Shop",
+   "read": "2026-11-10",
+   "note": "Taken from the product text returned by storecheck.py search."
+  },
+  {
+   "product": "Logitech MX Mechanical",
+   "label": "Maker US store price",
+   "value": "$179.99",
+   "source": "https://www.logitech.com/en-us/products/keyboards/mx-mechanical.920-010547.html",
+   "source_title": "Logitech MX Mechanical Wireless Keyboard",
+   "read": "2026-11-10",
+   "note": "Price as shown on logitech.com en-us."
+  },
+  {
+   "product": "Logitech MX Master 3S",
+   "label": "Maker US store price",
+   "value": "$89.99 (was $99.99, 10% off)",
+   "source": "https://www.logitech.com/en-us/products/mice/mx-master-3s.910-006557.html",
+   "source_title": "Logitech MX Master 3S Performance Wireless Mouse",
+   "read": "2026-11-10",
+   "note": "Price as shown on logitech.com en-us."
+  },
+  {
+   "product": "Logitech MX Mechanical + MX Master 3S",
+   "label": "Cost of the pair bought separately at the maker",
+   "value": "$269.98",
+   "source": "https://www.logitech.com/en-us/products/keyboards/mx-mechanical.920-010547.html",
+   "source_title": "Logitech MX Mechanical Wireless Keyboard (plus MX Master 3S page)",
+   "read": "2026-11-10",
+   "note": "179.99 + 89.99 = $269.98. That is $10.00 under mechkeyfoundry's $279.98, which used 99.99 for the mouse. The MX Master 3S price comes from https://www.logitech.com/en-us/products/mice/mx-master-3s.910-006557.html."
+  },
+  {
+   "product": "general",
+   "label": "Price gap, maker-sourced premium pair vs maker-sourced budget combo",
+   "value": "$209.99 more (4.5×)",
+   "source": "https://www.redragonshop.com/products/redragon-bs136-tri-mode-gaming-keyboard-and-mouse-combo",
+   "source_title": "Redragon Shop S136 combo, with logitech.com MX pages",
+   "read": "2026-11-10",
+   "note": "269.98 − 59.99 = 209.99; 269.98 / 59.99 = 4.50."
+  }
+ ],
+ "unsourced": [
+  "Battery capacity (mAh) and runtime (hours, backlight on/off) for the Redragon K628 keyboard and M693 mouse in the S136. Every request to the redragonshop.com product page returned HTTP 429. The S136 User Guide PDF (cdn.shopify.com/.../Redragon_BS136_Combo_User_Manual.pdf) downloaded, but WebFetch couldn't read its compressed text and local PDF extraction wasn't approved. The manuals.plus mirror returned 403.",
+  "Days before the first device needs charging at 8 h/day for the S136, S168 and BS8773. Not computed, because the runtime inputs above are unsourced.",
+  "Maker prices and battery specs for the Redragon S168, BS8773 and S131 and the MSI Forge GK320 Combo. I ran out of tool budget after the Redragon rate limit.",
+  "HyperX Alloy Origins Core + Pulsefire Haste bundle price and the mouse's battery hours on hp.com. The hp.com Pulsefire Haste Wireless page timed out, and search didn't turn up a US hp.com listing for this exact bundle.",
+  "Logitech MX Mechanical and MX Master 3S battery claims and their footnote conditions on logitech.com. The spec section loads dynamically and wasn't in the fetched page, and the combo URL I tried returned 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.7672742000000001
+ }
 }

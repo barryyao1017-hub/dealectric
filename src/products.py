@@ -4597,6 +4597,23 @@ PRODUCTS = [
  "fit": "RV owners who want app or voice control of one or two small appliances over the coach's 2.4 GHz Wi-Fi or a hotspot.",
  "caveats": ['15 A / 1,875 W is shared by both outlets, about half of a 30 A RV service: never use it on the shore-power feed or the rooftop A/C.', 'Works only on a 2.4 GHz Wi-Fi network, and must plug into a GFCI receptacle outdoors or in wet locations.', 'No surge protection or voltage cutoff is listed.']},
 
+{"slug": 'redragon-s136-k628-m693-combo',
+ "brand": 'Redragon',
+ "program": 'amazon:us',
+ "asin": 'B0D8MD5RLL',
+ "category": 'keyboard',
+ "name": 'Redragon S136 Wireless Mechanical Keyboard and Mouse Combo, K628 PRO 75% + M693 mouse, one shared 2.4 GHz dongle',
+ "model": 'S136 (K628 PRO + M693)',
+ "url": 'https://www.amazon.com/dp/B0D8MD5RLL',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Keyboard', 'K628 PRO, 75% layout, 78 keys, quiet linear mechanical switches, hot-swap sockets'), ('Receiver', "One shared 2.4 GHz dongle for keyboard and mouse (Redragon: 'An Advanced common 2.4GHz dongle shared')"), ('Connection', 'Tri-mode combo (Redragon listing title)'), ('Mouse', 'M693, 5 on-board DPI levels: 800/1200/1600/2400/7200'), ('Mouse buttons', '7 programmable, 2 side macro buttons'), ('Software', 'Redragon S136 driver offered as a Windows download only')],
+ "warranty": '2 years on new products bought from Redragonshop.com, covering defects in materials and workmanship (Redragon warranty page, read 2026-11-10)',
+ "returns": 'Redragonshop.com orders: return within 7 days of receipt for a full refund or a replacement; the buyer pays return shipping (Redragon refund policy, read 2026-11-10)',
+ "summary": 'A 75% hot-swap mechanical keyboard and a 7,200 DPI mouse that share one 2.4 GHz dongle, so the whole set takes a single USB port.',
+ "fit": 'Windows gamers and office users who want a wireless mechanical keyboard with mouse on one receiver.',
+ "caveats": ['Redragon offers the customization software (macros, lighting, DPI) for Windows only.', "Redragon's combo listing does not give the mouse's polling rate or battery hours.", "Sharing one dongle ties both devices to that receiver. Replacing the mouse with another brand's means adding that mouse's own receiver."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
