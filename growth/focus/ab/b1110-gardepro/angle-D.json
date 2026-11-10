@@ -1,0 +1,126 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the GardePro Link 1.0 camera cannot join Wi-Fi at all: it talks to its hub over the 802.11ah long-range protocol (Wi-Fi HaLow, which the Wi-Fi Alliance says runs below 1 GHz), and the hub must be wired by Ethernet to a DHCP router. The E8 3.0 Pro and E9 3.0 Pro join a 2.4 GHz home network directly and do not support Live View in that mode, so the camera's distance from the house depends on which radio it uses, not on camera specs.",
+ "standout": 1,
+ "standout_why": "I compared against the three cited pages. The GardePro E8 3.0 Pro overview and the E9 3.0 Pro page say 2.4 GHz and no Live View in Home WiFi mode. They give no router range or security requirements. The E9 product page returned HTTP 429, so I used GardePro's E9 3.0 Pro overview doc instead. Magnolia Trail Camera already says the Link hub 'plugs into your router with an Ethernet cable' and uses its own long-range signal 'rated at about 1,600 feet', and it puts a typical router's outdoor reach at 100–150 ft. None of these pages name 802.11ah or HaLow, say the radio is below 1 GHz, say the R3 camera cannot join Wi-Fi directly, or give the hub's antenna and mounting advice. I also checked itechguides and lenstroop, and neither mentions any of this. Magnolia already gives the practical result, so the new part is the reason behind it.",
+ "decides": "It confirms ChatGPT's split by distance rather than changing the pick. Within a typical router's 2.4 GHz outdoor reach (Magnolia: 100–150 ft in clear line of sight, less through leaves), choose the E8 3.0 Pro or E9 3.0 Pro. Beyond that, choose the Link 1.0. Its camera never uses home Wi-Fi: it uses an 802.11ah link to a wired hub rated 1,600 ft typical. That needs a free Ethernet port on a DHCP router, and it is the only one of the three with remote Live View.",
+ "candidates": [
+  "GardePro E8 3.0 Pro",
+  "GardePro E9 3.0 Pro",
+  "GardePro Link 1.0 (Hub + R3 2.0 Pro)"
+ ],
+ "findings": [
+  {
+   "product": "GardePro Link 1.0 (Hub + R3 2.0 Pro)",
+   "label": "Camera-to-hub radio",
+   "value": "802.11ah long-range wireless protocol; 'Cameras cannot connect directly to WiFi'",
+   "source": "https://gardepro.com/apps/docs/long-range-wifi-camera/link-1-0-r3-pro-hub-product-overview",
+   "source_title": "Link 1.0 (R3 Pro + Hub) Product Overview",
+   "read": "2026-11-10",
+   "note": "These are GardePro's own words. The page does not give a frequency band."
+  },
+  {
+   "product": "GardePro Link 1.0 (Hub + R3 2.0 Pro)",
+   "label": "Hub-to-router connection",
+   "value": "Ethernet cable to a DHCP-enabled home router; hub powered by a PoE adapter; up to 16 cameras per hub",
+   "source": "https://gardepro.com/apps/docs/long-range-wifi-camera/link-1-0-r3-pro-hub-product-overview",
+   "source_title": "Link 1.0 (R3 Pro + Hub) Product Overview",
+   "read": "2026-11-10",
+   "note": "Only a wired hub connection is described. The page mentions no Wi-Fi uplink for the hub."
+  },
+  {
+   "product": "GardePro Link 1.0 (Hub + R3 2.0 Pro)",
+   "label": "Hub-to-camera range (maker)",
+   "value": "1,600 ft / 485 m typical; up to 3,000 ft / 1 km in open air",
+   "source": "https://gardepro.com/apps/docs/long-range-wifi-camera/link-1-0-r3-pro-hub-product-overview",
+   "source_title": "Link 1.0 (R3 Pro + Hub) Product Overview",
+   "read": "2026-11-10",
+   "note": "Maker's claim, not a measurement. The page also calls it 'nearly 20× farther than traditional WiFi trail cameras'."
+  },
+  {
+   "product": "GardePro Link 1.0 (Hub + R3 2.0 Pro)",
+   "label": "Hub antenna and placement",
+   "value": "Standard 2.4 dBi omnidirectional antenna, optional 8 dBi fiberglass antenna; example of moving from a 4 ft post to a 12 ft structure; foliage absorbs signal 'especially when the vegetation is wet'",
+   "source": "https://gardepro.com/apps/docs/long-range-wifi-trail-camera-faq/how-do-walls-height-and-trees-affect-the-gardepro-link-hub-and-camera-signal",
+   "source_title": "How Do Walls, Height, and Trees Affect the GardePro Link Hub and Camera Signal?",
+   "read": "2026-11-10",
+   "note": "GardePro's FAQ. It gives no signal-strength levels."
+  },
+  {
+   "product": "general",
+   "label": "Wi-Fi HaLow band and range",
+   "value": "Operates in sub-1 GHz spectrum; approximately 1 km range; 'strong wall penetration'",
+   "source": "https://www.wi-fi.org/discover-wi-fi/wi-fi-certified-halow",
+   "source_title": "Wi-Fi CERTIFIED HaLow | Wi-Fi Alliance",
+   "read": "2026-11-10",
+   "note": "This page does not itself say 'IEEE 802.11ah'. Linking GardePro's '802.11ah' to HaLow is the industry name, not a quote from either page."
+  },
+  {
+   "product": "GardePro E8 3.0 Pro",
+   "label": "Home Wi-Fi band and Live View",
+   "value": "Joins a 2.4 GHz home Wi-Fi network; Live View not available in Home WiFi mode (only in on-site Direct Connection mode, up to 165 ft / 50 m in open areas)",
+   "source": "https://gardepro.com/apps/docs/home-wifi-camera/e8-30-pro---product-overview",
+   "source_title": "E8 3.0 Pro - Product Overview",
+   "read": "2026-11-10",
+   "note": "The 165 ft figure is for phone-to-camera Direct Connection, not for camera-to-router range."
+  },
+  {
+   "product": "GardePro E9 3.0 Pro",
+   "label": "Home Wi-Fi band and Live View",
+   "value": "Connects to a 2.4 GHz home Wi-Fi network; 'Live View is not supported in Home WiFi Mode'",
+   "source": "https://gardepro.com/apps/docs/home-wifi-camera/e9-30-pro---product-overview",
+   "source_title": "E9 3.0 Pro - Product Overview",
+   "read": "2026-11-10",
+   "note": "The E9 product page returned HTTP 429, so this comes from GardePro's help-centre overview."
+  },
+  {
+   "product": "general",
+   "label": "Typical router outdoor reach (rival page)",
+   "value": "Roughly 100–150 ft outdoors with a clear line of sight, much less through walls and leaves",
+   "source": "https://www.magnoliatrailcamera.com/best-wifi-trail-camera/",
+   "source_title": "Best Trail Camera That Connects to Home WiFi (and What Doesn't) | Magnolia Trail Camera",
+   "read": "2026-11-10",
+   "note": "Already on a cited rival page. Included only to compare against the 1,600 ft HaLow link."
+  },
+  {
+   "product": "GardePro E8 3.0 Pro",
+   "label": "Price, gardepro.com",
+   "value": "$119.99 (compare-at $249.99), in stock",
+   "source": "https://gardepro.com/products/gardepro-e8-3-0-pro-wi-fi-trail-camera",
+   "source_title": "GardePro E8 3.0 Pro 4K Home Wi-Fi Trail Camera",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search. The product call for variants returned HTTP 429."
+  },
+  {
+   "product": "GardePro E9 3.0 Pro",
+   "label": "Price, gardepro.com",
+   "value": "$119.99, in stock",
+   "source": "https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera",
+   "source_title": "GardePro E9 3.0 Pro Home WiFi Trail Camera",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search. Magnolia lists it as a pre-order shipping 2027-03-01, but the store shows it in stock."
+  },
+  {
+   "product": "GardePro Link 1.0 (Hub + R3 2.0 Pro)",
+   "label": "Price, gardepro.com",
+   "value": "$79.99 shown as the listing's lowest price",
+   "source": "https://gardepro.com/products/gardepro-link-3000ft-long-range-wifi-trail-camera",
+   "source_title": "GardePro Link 1.0 3000ft(1km) Long-Range WiFi Trail Camera",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search. The variant list (hub + camera bundles) was blocked by HTTP 429, so this may be a camera-only or lowest variant, not the hub bundle. The listing says US & Canada only."
+  }
+ ],
+ "unsourced": [
+  "Wi-Fi security modes (WPA2, WPA3 or mixed) supported by the E8 3.0 Pro and E9 3.0 Pro in Home WiFi mode, and whether they fail on routers that broadcast 2.4 and 5 GHz under one network name: not in GardePro's overviews, the help-centre index or a search.",
+  "Signal strength (RSSI) needed for the E8 or E9 3.0 Pro to stay on the home network: GardePro publishes no figure.",
+  "The US frequency of the Link 1.0's 802.11ah radio (for example 902–928 MHz): GardePro gives no band, the Wi-Fi Alliance page says only 'sub-1 GHz', the Morse Micro page returned 404 and the CNX Software page returned 403.",
+  "An independent range test of the Link 1.0 hub-to-camera link: the store cites a TrailCamPro rating, but I did not find or open a TrailCamPro range figure.",
+  "Link 1.0 variant prices for hub + camera bundles: gardepro.com returned HTTP 429 for both the product endpoint and the page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8785419000000001
+ }
+}

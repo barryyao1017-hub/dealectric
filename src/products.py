@@ -5226,6 +5226,22 @@ PRODUCTS = [
  "fit": 'A DIY 4 Ω subwoofer box you are building or can cut to fit the plate.',
  "caveats": ['Needs a 9.25 × 6.25 in cutout, so it does not suit a finished passive sub without rework.', 'Dayton rates it only into 4 Ω.', 'Full DSP access needs the PC software.']},
 
+{"slug": 'gardepro-e8-3-0-pro-home-wifi',
+ "brand": 'GardePro',
+ "program": 'awin:gardepro',
+ "category": 'trail-camera',
+ "name": 'GardePro E8 3.0 Pro 4K Home Wi-Fi Trail Camera, joins 2.4 GHz home Wi-Fi, 7,800 mAh battery',
+ "model": 'E8 3.0 Pro',
+ "url": 'https://gardepro.com/products/gardepro-e8-3-0-pro-wi-fi-trail-camera',
+ "price": 119.99,
+ "verified": '2026-11-10',
+ "specs": [('Home network', 'Joins 2.4 GHz home Wi-Fi (Home WiFi mode)'), ('Live View', 'Direct Connection mode only; not supported in Home WiFi mode'), ('Direct-connect range', '165 ft (50 m) in open areas, dual external antennas'), ('Sensor / video', '5 MP CMOS sensor, 4K video with sound'), ('Trigger', '0.1 s'), ('Night vision', '940 nm no-glow'), ('Battery', '7,800 mAh rechargeable; SP300 / SP1000 solar compatible')],
+ "warranty": "1 year + 1 extra year when bought from the GardePro Shop (2 years in total), from the original purchase date. It covers defects in materials and workmanship, with repair or a comparable replacement at GardePro's option. It applies to the original buyer from an authorized dealer, needs proof of purchase, and excludes misuse, damage from wild animals and normal wear.",
+ "returns": '30 days from receiving the product, if it is unused and in its original packaging with proof of purchase. The buyer usually pays return shipping, but GardePro pays it when the return is due to a quality issue or its own error.',
+ "summary": "GardePro's home-router trail camera with the same price, battery and Wi-Fi modes as the E9 3.0 Pro, and AI that identifies and tags wildlife by species.",
+ "fit": 'Cameras within reach of your 2.4 GHz router, such as a yard, a garden or a field edge near the house.',
+ "caveats": ['No Live View over home Wi-Fi; live view works only with your phone at the camera.', 'Its 4K video comes from a 5 MP sensor (4K is 8.3 MP).', 'GardePro publishes no camera-to-router distance.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
