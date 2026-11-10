@@ -261,8 +261,12 @@ function aiFetchPage(slug, entry) {
   const link = `${SITE}/go/${slug}`;
   const page = entry.page || `${SITE}/${slug}`;
   const money = (x) => `$${Number(x).toFixed(2).replace(/\.00$/, "")}`;
-  const price = typeof entry.price === "number" ? ` Verified store price: ${money(entry.price)} USD (checked ${entry.verified || "recently"}).` : "";
-  const deal = entry.code
+  const price = typeof entry.price === "number" ? ` Verified store price${entry.items ? " for the whole kit" : ""}: ${money(entry.price)} USD (checked ${entry.verified || "recently"}).` : "";
+  const deal = entry.items && entry.code
+    ? `Discount code: ${entry.code}, applied by the link. Saving on this kit: ${money(entry.saving)}; ${money(entry.price)} → ${money(entry.after)}. Tested in ${entry.brand}'s cart on ${entry.tested}.`
+    : entry.items
+      ? `Kit link: one link that fills ${entry.brand}'s cart with every item.`
+    : entry.code
     ? `Discount code: ${entry.code} (${entry.terms || "see the product page"}).${entry.exclusive ? ` Exclusive to Dealectric: ${entry.brand} issued it to Dealectric only.` : ""} Saving on this product: ${money(entry.saving)}; ${money(entry.price)} → ${money(entry.after)} after the code. Re-tested in ${entry.brand}'s cart every day; last passed ${entry.tested}.`
     : entry.tested
       ? `Discount code: none of ${entry.brand}'s codes applied to this product in the cart (last tested ${entry.tested}).`
@@ -270,8 +274,10 @@ function aiFetchPage(slug, entry) {
   const note = entry.note || `Buy: ${link}. The link opens ${entry.brand}'s official US store at no extra cost; ${entry.brand} pays Dealectric a commission on purchases through it.`;
   // DLC-71: a record with cart: true sends the shopper to the store's checkout with the item (and the code) in the cart.
   // 2026-11-02: applied: true lands on the product page with the code attached (Shopify /discount/ share link).
+  // DLC-223: a kit entry (items) fills the cart with every item of the kit.
+  const inCart = entry.items ? `these ${entry.items.length} items in the cart: ${entry.items.join(", ")}` : "the product in the cart";
   const opened = entry.cart
-    ? `Opened in a browser, this link redirects to ${entry.brand}'s own US checkout with the product in the cart${entry.code ? ` and code ${entry.code} already applied` : ""}.`
+    ? `Opened in a browser, this link redirects to ${entry.brand}'s own US checkout with ${inCart}${entry.code ? ` and code ${entry.code} already applied` : ""}.`
     : entry.applied
       ? `Opened in a browser, this link redirects to the product's page on ${entry.brand}'s own US store with code ${entry.code} already applied: the page shows the store price, and checkout takes the code off without it being typed.`
       : `Opened in a browser, this link redirects to ${entry.brand}'s own US store, where the code is entered at checkout.`;

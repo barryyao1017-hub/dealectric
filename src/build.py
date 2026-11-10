@@ -122,6 +122,7 @@ from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
 from focus import BUYBOX, DEAL_ROW
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
+from kits import KITS
 from urllib.parse import quote, urlsplit
 import html
 import sys
@@ -270,6 +271,20 @@ def links_map():
                         "after": after if c else None,
                         "tested": date or (latest_code_date(p["brand"]) if live_codes(p["brand"]) else brand_test_date(p["brand"])),
                         "note": agent_note(p)}
+    for k in KITS:   # DLC-223: a store kit's /go/ link opens the store's checkout with every item in the cart
+        if kit_is_amazon(k) or not kit_test(k):
+            continue   # Amazon kits link amazon.com's Add-to-Cart form directly (kit_link); an untested kit has no link yet
+        p0, t = kit_products(k)[0][0], kit_test(k)
+        url, _, _ = tracked_link({**p0, "slug": k["slug"]}, dest=kit_cart_url(k))
+        m[k["slug"]] = {"network": p0["program"].split(":")[0], "url": url, "merchant_url": p0["url"], "brand": p0["brand"],
+                        "name": f"{p0['brand']} {k['name']}: " + " + ".join(kit_item_names(k)),
+                        "price": t["list"] if t else None, "verified": t["date"] if t else None,
+                        "page": f"{SITE['url']}/{k['page']}", "cart": True,
+                        "items": kit_item_names(k),
+                        "code": t.get("code") if t else None, "terms": None,
+                        "saving": round(t["list"] - t["after"], 2) if t and t.get("code") else None,
+                        "exclusive": False, "after": t["after"] if t and t.get("code") else None,
+                        "tested": t["date"] if t else None, "note": None}
     for p in PRODUCTS:   # DLC-201: a sold-out product's link opens its in-stock alternative until it is back
         q = None if is_amazon(p) else sold_out_alt(p)
         if q:
@@ -1386,6 +1401,13 @@ def pick_line(c):
             if len(re.sub(r"<[^>]+>", "", line)) + len(go_link(p)) - len(go_link(p)) <= room:
                 return line
         return line
+    if c.get("kit"):   # DLC-223: a kit page's pick is the kit, one link that fills the cart
+        k = KIT_BY_SLUG[c["kit"]]
+        room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
+        line = " · " + kit_line(k)
+        if len(re.sub(r"<[^>]+>", "", line)) > room:
+            line = " · " + kit_line(k, short=True)
+        return line
     first = c["rows"][0]
     if first.get("slug"):
         return ours(first, "Pick")
@@ -1404,7 +1426,100 @@ def fill_v2(text):
             return f"buy on Amazon: {link}"
         lo = link_offer(p)
         return f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
-    return compare_fill(_re.sub(r"\{buy:([a-z0-9-]+)\}", one, text))
+    return compare_fill(fill_kits(_re.sub(r"\{buy:([a-z0-9-]+)\}", one, text)))
+
+
+# ---------------------------------------------------------------- kits (DLC-223)
+KIT_BY_SLUG = {k["slug"]: k for k in KITS}
+try:
+    KIT_TESTS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "kits-tested.json"), encoding="utf-8"))
+except FileNotFoundError:
+    KIT_TESTS = {}
+
+
+def kit_products(k):
+    return [(BY_SLUG[i["slug"]], i.get("qty", 1)) for i in k["items"]]
+
+
+def kit_is_amazon(k):
+    return all(is_amazon(p) for p, _ in kit_products(k))
+
+
+def kit_check(k):
+    """A kit fills one cart: every item from the same brand store (with a Shopify variant), or every item on Amazon."""
+    ps = kit_products(k)
+    if len(ps) < 2:
+        raise SystemExit(f"kit {k['slug']}: fewer than 2 items")
+    if kit_is_amazon(k):
+        return
+    if any(is_amazon(p) for p, _ in ps) or len({store_host(p) for p, _ in ps}) > 1 or len({p["program"] for p, _ in ps}) > 1:
+        raise SystemExit(f"kit {k['slug']}: items span more than one cart ({sorted({store_host(p) for p, _ in ps})})")
+
+
+def kit_variant(k, i):
+    """The item's Shopify variant: set on the kit, else the one tools/kitcheck.py resolved from the product page."""
+    return i.get("variant") or (KIT_TESTS.get(k["slug"]) or {}).get("variants", {}).get(i["slug"])
+
+
+def kit_test(k):
+    """The last passing cart test (tools/kitcheck.py): {"date", "list", "after", "code", "pass"} or None."""
+    t = KIT_TESTS.get(k["slug"])
+    if not t or not t.get("pass"):
+        return None
+    if not t.get("amazon") and any(not kit_variant(k, i) for i in k["items"]):
+        return None   # a store kit's link needs every item's variant
+    return t
+
+
+def kit_cart_url(k):
+    """Shopify cart permalink with every item, plus the code when it passed in this cart."""
+    p0 = kit_products(k)[0][0]
+    s = urlsplit(p0["url"])
+    t = kit_test(k)
+    return (f"{s.scheme}://{s.netloc}/cart/" + ",".join(f"{kit_variant(k, i)}:{i.get('qty', 1)}" for i in k["items"])
+            + (f"?discount={quote(t['code'])}" if t and t.get("code") else ""))
+
+
+def kit_link(k):
+    """Store kit: dealectric.com/go/<kit>. Amazon kit: amazon.com's Add-to-Cart form as a link, with our tag."""
+    if kit_is_amazon(k):
+        q = "&".join(f"ASIN.{n}={BY_SLUG[i['slug']]['asin']}&Quantity.{n}={i.get('qty', 1)}" for n, i in enumerate(k["items"], 1))
+        return f"https://www.amazon.com/gp/aws/cart/add.html?AssociateTag={LINKS['amazon']['us']['tag']}&{q}"
+    return f"{SITE['url']}/go/{k['slug']}"
+
+
+def kit_item_names(k):
+    return [(f"{q} × " if q > 1 else "") + short_name(p) for p, q in kit_products(k)]
+
+
+def kit_line(k, label="Kit", short=False):
+    """One line: what is in the kit, its price through the link (store kits with a passing test) and the link."""
+    names = " + ".join(html.escape(n) for n in kit_item_names(k))
+    url = kit_link(k)
+    a = f'<a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a>'
+    n = len(k["items"])
+    word = {2: "both", 3: "all three", 4: "all four", 5: "all five"}.get(n, f"all {n}")
+    if kit_is_amazon(k):
+        return f"{label}: {html.escape(k['name'])} ({names}), one Amazon link that puts {word} in your Amazon cart: {a}"
+    p0, t = kit_products(k)[0][0], kit_test(k)
+    if not t:
+        return f"{label}: {html.escape(k['name'])} ({names}), one link that opens {p0['brand']}'s checkout with {word} in the cart: {a}"
+    if short:
+        price = f"{money(t['after'] if t.get('code') else t['list'])} through this link for {word}"
+    elif t.get("code"):
+        price = (f"{money(t['list'])} on {store_host(p0)}, {money(t['after'])} through this link, which opens {p0['brand']}'s "
+                 f"checkout with {word} in the cart and the discount already applied (tested {t['date']})")
+    else:
+        price = f"{money(t['list'])} on {store_host(p0)} (checked {t['date']}), one link that opens {p0['brand']}'s checkout with {word} in the cart"
+    return f"{label}: {html.escape(k['name'])} ({names}): {price}: {a}"
+
+
+def fill_kits(text):
+    return re.sub(r"\{kit:([a-z0-9-]+)\}", lambda m: kit_line(KIT_BY_SLUG[m.group(1)], label="The kit"), text)
+
+
+for _k in KITS:
+    kit_check(_k)
 
 
 def compare_page_v2(c):
