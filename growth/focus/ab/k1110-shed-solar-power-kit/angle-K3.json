@@ -1,0 +1,109 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that BLUETTI's 350W panel has a 33 V open-circuit voltage, so two of them in series reach 66 V, over the 60 V solar-input limit on both the Elite 200 V2 and the AC180. The Elite 200 V2 + 2×350W bundle therefore has to be wired in parallel, and neither the bundle's box list nor the panel's box list includes the MC4 Y-branch connectors that parallel wiring needs.",
+ "standout": 2,
+ "standout_why": "I compared against ecosolarkits.com (cited), wattfolk.com (cited) and cleanpowerguide.com. Ecosolarkits says only that you should confirm your power station's input voltage and watt limits, and it gives no panel voltages. Wattfolk says 'Wire in series for 24V or in parallel for 12V' for an ECO-WORTHY kit and generally tells you to 'confirm your power station's input voltage and watt limits'. Cleanpowerguide says to size from cold-weather open-circuit voltage but names no product. None of them names a bundle whose own two panels break the station's 60 V limit in series, or the connector that is missing. The obvious trap, LiFePO4 not charging below 32°F, is already on ecosolarkits ('should not be charged below about 32°F unless they have self-heating') and on wattfolk, so it doesn't stand out. I could not read agripure.org (cited) or solargenadvisor.com (rank 1) because both failed with a self-signed certificate error.",
+ "kit_items": [
+  "power station: BLUETTI Elite 200 V2. Its solar input takes 12–60 V at up to 20 A and 1,000 W, which is twice the AC180's 10 A, so a high-current panel isn't clipped as hard.",
+  "solar panel: one BLUETTI 350W Solar Panel. At 33 V open-circuit it sits inside the 12–60 V window as a single panel, and it ships with its own 20A MC4-to-XT60 cable, so you need no extra adapter or wiring choice.",
+  "avoid: Elite 200 V2 + 2×350W ($2,148) unless you add MC4 Y-branch connectors and wire the panels in parallel. In series they reach 66 V. In parallel the station still caps input at 20 A.",
+  "avoid for a 350W pair: AC180. Its input is capped at 12–60 V and 10 A, so two 350W panels go over the limit in series and are clipped to 10 A in parallel."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 350W Solar | https://www.bluettipower.com/products/elite-200-v2-pv350 | $1,449.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+350W Solar, $1,449.00 (the store's own bundle; the product page notes the 350W panel ships from 12.25)"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input limits",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "From the page FAQ: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. The same line appears on https://www.bluettipower.com/products/elite-200-v2-2-sp200l."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "Open-circuit voltage (Voc)",
+   "value": "33 V",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Page text: '33V open-circuit voltage (Voc)'. Vmp, Isc and Imp are not stated on the page."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 350W Solar Panel",
+   "label": "Series voltage of the bundle's two panels vs the station's limit",
+   "value": "66 V in series vs 60 V max input",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Arithmetic: 2 × 33 V = 66 V, which is 6 V over the 60 V limit on the Elite 200 V2 page. This is at standard test conditions. Open-circuit voltage rises in cold weather, so the margin only gets worse in winter. The panels must go in parallel, where the station caps input current at 20 A."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "What ships in the box",
+   "value": "1 × panel, 1 × 20A MC4-to-XT60 solar charging cable (1.5 m)",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "One single-input cable per panel. The box list includes no MC4 Y-branch or parallel connector. Price $649.00 (storecheck, 2026-11-10)."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×350W Solar bundle",
+   "label": "Box list on the bundle page",
+   "value": "AC charging cable ×1, documentation ×1, Elite 200 V2 ×1, grounding screw ×1",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "No parallel or Y-branch connector is listed for the $2,148.00 bundle (price from storecheck, 2026-11-10). The page says nothing about series or parallel wiring. Its FAQ question about third-party panels shows no answer."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input",
+   "value": "500 W max, 12–60 V DC open-circuit, 10 A",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review (StorageReview, Kevin OBrien, 2023-05-26)",
+   "read": "2026-11-10",
+   "note": "From StorageReview's spec table. With two 33 V panels, series wiring gives 66 V (over the limit) and parallel wiring is held to 10 A by the station. The AC180 costs $499.00 alone at https://www.bluettipower.com/products/ac180 (storecheck, 2026-11-10). I could not open the US page itself because it returned HTTP 429."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Operating and storage temperature",
+   "value": "Operating −4 to 104 °F (−20 to 40 °C); storage 32 to 104 °F (0 to 40 °C)",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review (StorageReview, Kevin OBrien, 2023-05-26)",
+   "read": "2026-11-10",
+   "note": "StorageReview lists no separate charging-temperature range. The listed storage minimum of 32 °F matters for a unit left in an unheated shed over winter."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Cold-weather charging behavior",
+   "value": "Charging stops below 32 °F (0 °C). 100 W heating pads switch on below 32 °F and off at 41 °F (5 °C), then charging resumes. Discharge stops below −4 °F.",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery (Redodo store)",
+   "read": "2026-11-10",
+   "note": "Text read from the Redodo store's product search data with storecheck. A direct WebFetch of the page returned HTTP 429. Price $251.99 on 2026-11-10. This is relevant to a DIY 12 V shed build, but rivals already cover the general freezing-charge rule."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI SP200L (200W) open-circuit voltage and short-circuit current. Search snippets give 24.62 V and 10.24 A, but the BLUETTI AU page, Wellbots and US Solar Supplier all returned HTTP 429, so I couldn't confirm that two SP200L in series stay under 60 V.",
+  "Elite 200 V2 charging-temperature range and any self-heating feature. The US product page doesn't list them, the official manual PDF couldn't be read as text, and the manuals.plus mirror returned 403. Search snippets conflict (−20 °C vs 0 °C lower limit).",
+  "Whether the Elite 200 V2 has one or two solar input ports. That decides whether parallel needs a Y-branch or a second cable. Neither BLUETTI page I opened says.",
+  "BLUETTI's own statement on series vs parallel wiring for the AC180. A snippet points to a FAQ recommending series, but the US AC180 page returned HTTP 429.",
+  "A dated forum thread with a head count of people who wired two 350W BLUETTI panels in series into a 60 V station. My one forum search returned only maker blogs and generic cold-weather posts.",
+  "Amazon prices. I didn't check them because the cart is one BLUETTI-store bundle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2555383
+ }
+}

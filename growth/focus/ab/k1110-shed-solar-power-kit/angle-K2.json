@@ -1,0 +1,126 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the two BLUETTI SP200L panels in BLUETTI's own Elite 200 V2 + 2×200 W kit have to be wired in series. In series they make 49.2 V open-circuit, inside the station's 12–60 V window. In parallel they make 21.6 A short-circuit, over its 20 A maximum. A third panel fits neither way (73.8 V in series, 32.4 A in parallel), so the store's 3-panel option is too much for this station.",
+ "standout": 2,
+ "standout_why": "Eco Solar Kits (cited) gives no panel Voc, no input voltage window and no series/parallel advice. It only says same-brand folding panels 'plug straight in, with no adapters'. On this kit that is incomplete: the station's box lists only an AC cable, and the panels connect by MC4. Wattfolk (cited) says to 'wire in series for 24V or in parallel for 12V' for an ECO-WORTHY kit and tells readers to check the station's input limits, but gives no numbers. Its 12 V-kit habit of parallel wiring is the wrong choice here. AgriPure (cited) could not be read: WebFetch failed with an SSL certificate error and the curl fallback was not approved. Its coverage of this is unchecked. None of the pages I read does Voc/Isc arithmetic against a named station's input window.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh, 2,600 W AC). Its solar input is 12–60 V and 20 A max, up to 1,000 W. That takes two SP200L panels in series (49.2 V, 10.8 A).",
+  "Solar panels: 2× BLUETTI SP200L 200 W (MC4, Voc 24.6 V, Isc 10.8 A). Two in series sit inside the station's window. Two in parallel go over the 20 A cap. Do not add a third panel.",
+  "Cable: BLUETTI Solar Charging Cable (20A MC4 to XT60). The Elite 200 V2 box lists only the unit, an AC charging cable, a grounding screw and documentation. I did not open a page confirming the station's solar port is XT60, so check this before relying on it."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar (bundle) | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10",
+    "BLUETTI Solar Charging Cable (20A MC4 to XT60) | https://www.bluettipower.com/products/apex300-solar-charging-cable | $29.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 on 2026-11-10. Bought separately: Elite 200 V2 $899.00 + SP200L 2-pack $798.00 = $1,697.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input window",
+   "value": "12–60 V, 20 A max, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station (US store), FAQ Q1",
+   "read": "2026-11-10",
+   "note": "Same figures appear in the StorageReview spec table (Dylan Dougherty, 2025-04-25): '1,000W Max., 12V to 60V, 20A Max.'"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "What's in the box",
+   "value": "Elite 200 V2 ×1, AC charging cable ×1, grounding screw ×1, documentation ×1; no solar cable listed",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station (US store)",
+   "read": "2026-11-10",
+   "note": "The bundle URL elite-200-v2-2-sp200l showed the same base-unit box list. bluettipower.eu gives the same list."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage / short-circuit current",
+   "value": "Voc 24.6 V; Isc 10.8 A; MC4 connector; IP67; 8.14 kg",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (US store)",
+   "read": "2026-11-10",
+   "note": "Some other listings give Isc 10.24 A. Even then, two panels in parallel make 20.48 A, still over 20 A, so the conclusion is the same."
+  },
+  {
+   "product": "Elite 200 V2 + 2× SP200L",
+   "label": "Series wiring fits the input window",
+   "value": "49.2 V Voc, 10.8 A Isc",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (US store) + Elite 200 V2 FAQ Q1",
+   "read": "2026-11-10",
+   "note": "Arithmetic: 2 × 24.6 V = 49.2 V, which is under the 60 V maximum. Current stays at 10.8 A, which is under 20 A."
+  },
+  {
+   "product": "Elite 200 V2 + 2× SP200L",
+   "label": "Parallel wiring goes over the current cap",
+   "value": "21.6 A Isc against a 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station (US store), FAQ Q1",
+   "read": "2026-11-10",
+   "note": "Arithmetic: 2 × 10.8 A = 21.6 A, which is more than the station's 20 A max."
+  },
+  {
+   "product": "Elite 200 V2 + 3× SP200L",
+   "label": "Third panel fits neither way",
+   "value": "73.8 V in series (over 60 V); 32.4 A in parallel (over 20 A)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (US store), sold in 1-, 2- and 3-panel versions",
+   "read": "2026-11-10",
+   "note": "Arithmetic: 3 × 24.6 V = 73.8 V; 3 × 10.8 A = 32.4 A. The store sells a 3×200 W version for $1,197, but on one Elite 200 V2 input the most these panels can supply is 2 in series, 400 W."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Permanent outdoor mounting",
+   "value": "Roof installation: 'No'; 'Please do not leave it in the rain or water for a long time'",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (US store), FAQ",
+   "read": "2026-11-10",
+   "note": "This is a folding portable panel. On a shed, BLUETTI's own FAQ means it should be set out on sunny days and stored when not in use. It is not a roof-mounted array."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Mixing panels",
+   "value": "'Mixing different solar panels is not encouraged in general'; use the same type and vendor",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (US store), FAQ",
+   "read": "2026-11-10",
+   "note": "Matters if a shopper adds a different panel to the 2-panel kit later."
+  },
+  {
+   "product": "BLUETTI Solar Charging Cable (20A MC4 to XT60)",
+   "label": "Price",
+   "value": "$29.00",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable (20A MC4 to XT60), BLUETTI US store",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search. The store listing returned no product description, so it does not confirm which stations the cable fits."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 bundles",
+   "label": "Prices",
+   "value": "Base unit $899.00; + 1×200 W $1,199.00; + 2×200 W $1,499.00; SP200L 2-pack alone $798.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar (US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search and product. The base-unit price comes from the US product page."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 charging temperature range. Search snippets give 0–40 °C, but neither page I opened states it: the BLUETTI US and EU product pages have no temperature specs, StorageReview lists only operating (-20–40 °C) and storage temperatures, and CleanTechnica gives none. The BLUETTI manual mirror on manuals.plus returned 403.",
+  "That the Elite 200 V2's solar port is XT60, and that the 20 A MC4-to-XT60 cable is listed for it. I saw this only in search snippets from BLUETTI's EU and AU stores. The US cable page returned 429 and the store listing has no compatibility text.",
+  "SP200L temperature coefficient of Voc, needed to check the series voltage at the panel's -25 °C minimum operating temperature. It is not on the US product page, and the manual mirror (notice-facile) returned 403.",
+  "Whether the SP200L box includes an MC4-to-station cable. The US panel page I opened lists no box contents.",
+  "AgriPure's cited shed page could not be read (SSL certificate error), so I could not check whether it already covers the series/parallel limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0039869
+ }
+}

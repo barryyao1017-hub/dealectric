@@ -1,0 +1,179 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that a 12 V 100 Ah LiFePO4 battery like WEIZE's lists a 100 A maximum continuous discharge, which is about 1,280 W at 12.8 V, so the 2,000 W inverter in ChatGPT's $999.99 'complete workshop kit' cannot deliver its rated 2,000 W from one battery (2,000 W ÷ 12.8 V ≈ 156 A before inverter losses).",
+ "standout": 2,
+ "standout_why": "I compared against the two cited rivals I could open. ecosolarkits.com explains inverter continuous and surge sizing and gives a current limit (50 A standard, 100 A max) only for the 48 V Sungold battery. It says 'a small kit can have plenty of stored energy and still trip the moment a compressor starts', but it never ties a 12 V 100 Ah battery's BMS current to a 2,000 W inverter. wattfolk.com covers inverter surge and PWM vs MPPT and says nothing about battery discharge current. Both already say LiFePO4 must not charge below freezing without low-temperature protection or self-heating, so the cold-shed fact is not new. agripure.org (cited in chat 1) would not load because of a TLS certificate error, so I could not check it. I did not open the uncited top results (solargenadvisor, kratopower, cleanpowerguide).",
+ "kit_items": [
+  "Power source with battery and inverter in one: BLUETTI AC180 (1,152 Wh, 1,800 W continuous AC, 2,700 W Power Lifting for resistive loads only). It avoids the 12 V battery-current cap that limits ChatGPT's WEIZE kit, and BLUETTI sells it as one SKU with a 200 W panel ($769) or two 200 W panels ($1,232).",
+  "Solar panel: the BLUETTI 200 W portable panel in the store's AC180+200W bundle. The AC180 accepts 500 W max at 12–60 V and 10 A max, so one 200 W panel is within its limits. A second panel adds more only if wiring keeps current at or under 10 A and Voc at or under 60 V (panel Voc and Isc not sourced).",
+  "Placement: the AC180's operating range is 0–40 °C (output drops to 1,500 W at 30–40 °C), so in an unheated shed it has to come indoors in freezing weather. The cited rivals already say this."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI (bluettipower.com)",
+   "items": [
+    "BLUETTI AC180 + 200W Solar (variant 45427542491355) | https://www.bluettipower.com/products/ac180 | $769.00 (compare-at $899.00) | 2026-11-10",
+    "BLUETTI AC180 + 2×200W Solar, 400 W (variant 45791800885467) | https://www.bluettipower.com/products/ac180 | $1,232.00 | 2026-11-10",
+    "BLUETTI AC180 + SP100L, 100 W (variant 44868697620699) | https://www.bluettipower.com/products/ac180 | $679.00 | 2026-11-10"
+   ],
+   "bundle_sku": "AC180+200W Solar, $769.00, one variant on the AC180 product page"
+  },
+  {
+   "store": "BLUETTI (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 200W Solar | https://www.bluettipower.com/products/elite-200-v2-sp200l | $1,199.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 + 2×200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Elite 200 V2+200W Solar $1,199.00; Elite 200 V2+2*200W Solar $1,499.00"
+  },
+  {
+   "store": "WEIZE (weizeus.com), not an approved program, rival set ChatGPT showed",
+   "items": [
+    "WEIZE 400W 12V Complete Off-Grid Solar Starter Kit (100Ah LiFePO4, 40A MPPT, 2000W inverter) | https://www.weizeus.com/products/weize-400w-12v-complete-off-grid-solar-starter-kit-with-mppt-controller-2000w-inverter-100ah-battery | $999.99 (compare-at $1,499.99) | 2026-11-10",
+    "WEIZE 400W 12V Complete Off-Grid 2560Wh Extended Runtime Kit (2×100Ah) | https://www.weizeus.com/products/weize-400w-12v-complete-off-grid-solar-starter-kit-with-mppt-controller-2000w-inverter-100ah-battery-copy | $1,199.99 | 2026-11-10"
+   ],
+   "bundle_sku": "Both are the maker's own kits; prices come from the store's search feed, because the product page itself returned HTTP 429"
+  },
+  {
+   "store": "Renogy (renogy.com), not an approved program, rival set ChatGPT showed",
+   "items": [
+    "Renogy 200W 12V Starter Solar Panel Kit (Wanderer Li 30A PWM; no battery or inverter) | https://www.renogy.com/products/200-watt-12-volt-solar-starter-kit | $229.99 | 2026-11-10",
+    "Renogy 400W 12V Starter Solar Panel Kit (base config, panels + controller) | https://www.renogy.com/products/renogy-400w-12v-general-off-grid-solar-kit | $394.99 | 2026-11-10",
+    "Renogy 400W 12V Complete Solar Panel Kit with 2.4kWh Batteries | https://www.renogy.com/products/400w-12-volt-complete-solar-kit-with-two-100ah-deep-cycle-agm-lifepo4-batteries | $1,899.99 | 2026-11-10",
+    "Renogy 2000W 12V Pure Sine Wave Inverter | https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter | $285.99 | 2026-11-10"
+   ],
+   "bundle_sku": "200W Starter Kit $229.99 (ChatGPT showed $299.09)"
+  },
+  {
+   "store": "Amazon",
+   "items": [
+    "Renogy 200W Solar Panel Kit 12V Starter Kit + 30A PWM Charge Controller (B0FSZX86S5) | https://www.amazon.com/dp/B0FSZX86S5 | $258.45 (for comparison only; pages don't print Amazon prices) | 2026-11-10"
+   ],
+   "bundle_sku": "none; buyer adds battery, inverter and fuses separately"
+  }
+ ],
+ "findings": [
+  {
+   "product": "WEIZE 12V 100Ah Bluetooth Group 24 LiFePO4",
+   "label": "Max continuous discharge current",
+   "value": "100 A (500 A peak for 3 s)",
+   "source": "https://www.weizeus.com/products/weize-12v-100ah-bluetooth-lifepo4-lithium-battery-group-24-deep-cycle-battery",
+   "source_title": "WEIZE 12V 100Ah Bluetooth Group 24 LiFePO4 Battery, Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "Spec table: 'Allowed Max. Charge/Discharge Current 100A/100A'. 12.8 V × 100 A = 1,280 W at the battery. A 2,000 W inverter at its rating draws 2,000 / 12.8 ≈ 156 A before losses. WEIZE's 12V 100Ah Mini lists the same 100 A max (200 A peak). The kit page returned HTTP 429, so I could not confirm which WEIZE 100Ah model ships in the $999.99 kit."
+  },
+  {
+   "product": "WEIZE 12V 100Ah Bluetooth Group 24 LiFePO4",
+   "label": "Operating charge temperature",
+   "value": "0–45 °C (32–113 °F)",
+   "source": "https://www.weizeus.com/products/weize-12v-100ah-bluetooth-lifepo4-lithium-battery-group-24-deep-cycle-battery",
+   "source_title": "WEIZE 12V 100Ah Bluetooth Group 24 LiFePO4 Battery, Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "The cited rivals already say this (ecosolarkits, wattfolk)."
+  },
+  {
+   "product": "WEIZE 400W 12V Complete Off-Grid Solar Starter Kit",
+   "label": "Price on maker store",
+   "value": "$999.99 (compare-at $1,499.99)",
+   "source": "https://www.weizeus.com/products/weize-400w-12v-complete-off-grid-solar-starter-kit-with-mppt-controller-2000w-inverter-100ah-battery",
+   "source_title": "WEIZE 400W 12V Complete Off-Grid Solar Starter Kit | with 100Ah LiFePO4 Battery, 40A MPPT Controller & 2000W Pure Sine Wave Inverter",
+   "read": "2026-11-10",
+   "note": "Taken from the store's search feed (storecheck); the HTML page returned 429. The price matches what ChatGPT showed."
+  },
+  {
+   "product": "Renogy 200W 12V Starter Solar Panel Kit",
+   "label": "Price on maker store",
+   "value": "$229.99",
+   "source": "https://www.renogy.com/products/200-watt-12-volt-solar-starter-kit",
+   "source_title": "200W 12V Starter Solar Panel Kit",
+   "read": "2026-11-10",
+   "note": "ChatGPT showed $299.09. The kit includes the Wanderer Li 30A PWM controller (Sealed, Gel, Flooded and Lithium modes). No battery, inverter or fuses. Renogy says it averages 500 Wh/day at 5 sun-hours."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter",
+   "label": "Efficiency / peak",
+   "value": ">90% efficiency, 4,000 W peak",
+   "source": "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter",
+   "source_title": "2000W 12V Pure Sine Wave Inverter",
+   "read": "2026-11-10",
+   "note": "At 90%, 2,000 W AC needs about 2,222 W DC, or about 174 A at 12.8 V, well above a 100 A BMS. A 100 A BMS therefore supports about 1,150 W AC (1,280 × 0.9)."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limit",
+   "value": "500 W max, Voc 12–60 V DC, 10 A",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-10",
+   "note": "The 10 A ceiling limits how much a second panel adds, depending on wiring."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC output",
+   "value": "1,800 W continuous; 2,700 W Power Lifting (resistive loads only); 1,152 Wh",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-10",
+   "note": "Operating temperature reads 0–40 °C on garbled page text, with output limited to 1,500 W at 30–40 °C."
+  },
+  {
+   "product": "BLUETTI AC180 + 200W Solar",
+   "label": "Bundle price",
+   "value": "$769.00 (compare-at $899.00); +2×200W $1,232.00; +SP100L $679.00; AC180 alone $499.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-10",
+   "note": "Shopify variant prices via storecheck product"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200W Solar",
+   "label": "Bundle price",
+   "value": "$1,199.00; with 2×200W $1,499.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-10",
+   "note": "storecheck search"
+  },
+  {
+   "product": "Renogy 400W 12V Complete Solar Panel Kit with 2.4kWh Batteries",
+   "label": "Price on maker store",
+   "value": "$1,899.99 (compare-at $2,599.99)",
+   "source": "https://www.renogy.com/products/400w-12-volt-complete-solar-kit-with-two-100ah-deep-cycle-agm-lifepo4-batteries",
+   "source_title": "400W 12V Complete Solar Panel Kit with 2.4kWh Batteries",
+   "read": "2026-11-10",
+   "note": "Renogy markets it for 'garden sheds' and 'tool sheds'. It uses a Rover 40A MPPT."
+  },
+  {
+   "product": "general (cited rival ecosolarkits.com)",
+   "label": "Rival picks and prices",
+   "value": "Jackery Solar Generator 1000 v2 + SolarSaga 200W $879 (top pick); Jackery 300 v2 + SolarSaga 40 Air $379; Rich Solar 12V 400W Complete Kit $1,629.99 (sold out); Sungold SGKT-3PRO $2,485",
+   "source": "https://ecosolarkits.com/blogs/guides/how-much-solar-power-for-a-shed",
+   "source_title": "How Much Solar Power Does a Shed Need? Kit Sizing (2026) | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "Prices as printed on the rival page, not re-checked at the makers. Eco Solar Kits sells everything it recommends."
+  },
+  {
+   "product": "general (cited rival wattfolk.com)",
+   "label": "Rival picks",
+   "value": "ECO-WORTHY 200W kit with 30A PWM (best overall); Renogy 100W starter with 30A PWM; generic 400W foldable $246.49; Renogy 400W portable",
+   "source": "https://wattfolk.com/solar-panel-for-shed/",
+   "source_title": "Best Solar Panel for Shed: 5 Top Picks and Sizing Guide (2026)",
+   "read": "2026-11-10",
+   "note": "No battery current or BMS limits discussed."
+  }
+ ],
+ "unsourced": [
+  "The battery model and BMS rating inside the WEIZE $999.99 kit: the kit page and its .json both returned HTTP 429, and WEIZE's installation guide names no models. The 100 A figure comes from WEIZE's standalone 12V 100Ah batteries.",
+  "Surge rating of the WEIZE kit's 2,000 W inverter: not on the installation guide, and the kit page was walled.",
+  "Voc, Isc and Vmp of the BLUETTI 200 W panel in the AC180 bundle (SP200L page returned 429). Needed to say whether 2×200 W must go in series to stay under the AC180's 10 A input.",
+  "The 'Complete 200W Solar Kit with Battery & Inverter, $1,399.99' card ChatGPT showed: brand and store not identifiable from the truncated title, so not priced.",
+  "agripure.org cited rival page: TLS certificate error, not read.",
+  "Anker SOLIX and ALLPOWERS shed bundles: not priced (tool-call budget)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0485239
+ }
+}

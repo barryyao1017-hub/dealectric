@@ -1,0 +1,130 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got says that a power station left with its AC inverter on in an empty shed burns about 15 W around the clock. Hobotech measured 88 Wh in 6 h on the BLUETTI Elite 200 V2, which works out to about 352 Wh a day. That is about 94% of one 200 W panel's northern-winter harvest (200 W × 2.5 h × 0.75 = 375 Wh), so a winter shed needs the 2 × 200 W panels (750 Wh) or the AC switched off or put in ECO mode between uses.",
+ "standout": 2,
+ "standout_why": "I read ecosolarkits.com (cited in both chats) and wattfolk.com (cited in chat 2) on 2026-11-10. Both give daily-Wh, panel and battery formulas and the warning that LiFePO4 can't charge below freezing. Neither gives an inverter idle or standby draw, a self-discharge figure, or any line that adds the station's own consumption to the daily load. I couldn't open agripure.org (cited in chat 1) or solargenadvisor.com (top result in chat 1) because of a self-signed-certificate error, so I can't rule out that they cover it. If they don't, this finding decides the set: one 200 W panel versus two, or a must-do setting. That would make it a 3.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh LiFePO4, 2,600 W AC). StorageReview measured 1.91 kWh delivered, enough for ecosolarkits' 1,020 Wh/day hobby-workshop example with one day spare. 2,600 W continuous covers that page's 1,900 W saw-plus-lights inverter target.",
+  "Solar panels: 2 × BLUETTI 200 W SP200L (400 W), not 1 × 200 W. In winter, 400 W × 2.5 h × 0.75 = 750 Wh/day, which covers the 352 Wh/day AC idle draw plus about 400 Wh of real load. One panel (375 Wh) is used up by idle alone. 400 W is well under the station's 1,000 W / 12–60 V / 20 A solar input.",
+  "Setting, not a product: switch AC off when you leave the shed, or turn on the Elite 200 V2's ECO mode or Auto Sleep (StorageReview names both). With only DC on, Hobotech measured 144 Wh/day instead of 352 Wh/day.",
+  "Solar cable (MC4 to the station's input): BLUETTI's Australian Elite 200 V2 page says the station doesn't include one. I couldn't confirm whether the US 2 × 200 W bundle includes it."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com, awin:bluetti_us / cj:bluetti)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2*200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10",
+    "Same items bought separately: Elite 200 V2 | https://www.bluettipower.com/products/elite-200-v2-2-sp200l (base-unit price shown on the page) | $899.00 | 2026-11-10",
+    "Same items bought separately: BLUETTI 200W Portable Solar Panel, 2*200W variant | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $798.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 on 2026-11-10 (in stock). Bought separately it's $899 + $798 = $1,697, so the bundle saves $198. The single-panel bundle (elite-200-v2-sp200l) is $1,199."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "No-load draw with the AC inverter on (measured)",
+   "value": "about 15 W (88 Wh in 6 h; about 352 Wh per 24 h)",
+   "source": "https://hobotech.tv/blog/bluetti-elite-200-v2-crazy-efficient-2600w-portable-solar-power-station/",
+   "source_title": "BLUETTI Elite 200 v2 — crazy efficient 2600W portable solar power station (HOBOTECH Tom, 2024-11-13)",
+   "read": "2026-11-10",
+   "note": "Phantom-load test, AC on, nothing plugged in. 88 Wh ÷ 6 h = 14.7 W; × 24 h = 352 Wh/day. Hobotech calls it 'a very exceptional 15w at idle for a 2600w inverter'."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "No-load draw with only the DC outputs on (measured)",
+   "value": "about 6 W (72 Wh in 12 h; about 144 Wh per 24 h)",
+   "source": "https://hobotech.tv/blog/bluetti-elite-200-v2-crazy-efficient-2600w-portable-solar-power-station/",
+   "source_title": "BLUETTI Elite 200 v2 — crazy efficient 2600W portable solar power station (HOBOTECH Tom)",
+   "read": "2026-11-10",
+   "note": "72 Wh ÷ 12 h = 6 W. Running 12 V lights from DC with the AC off saves about 208 Wh/day against AC idle (352 − 144)."
+  },
+  {
+   "product": "general",
+   "label": "Winter harvest of one 200 W panel compared with the station's AC idle draw",
+   "value": "375 Wh/day harvest against 352 Wh/day idle (about 94%)",
+   "source": "https://ecosolarkits.com/blogs/guides/how-much-solar-power-for-a-shed",
+   "source_title": "How Much Solar Power Does a Shed Need? Kit Sizing (2026) | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "Eco Solar Kits' formula: panel W × peak sun h × 0.75, with northern winter at 2–3.5 sun h. Using 2.5 h: 200 × 2.5 × 0.75 = 375 Wh, and 352 ÷ 375 = 94%. With 2 × 200 W: 750 Wh, so idle takes 47% and about 398 Wh is left for loads."
+  },
+  {
+   "product": "general",
+   "label": "Rival's daily-load example (hobby workshop)",
+   "value": "1,020 Wh/day; 400 W of panels and 1.1 kWh minimum battery",
+   "source": "https://ecosolarkits.com/blogs/guides/how-much-solar-power-for-a-shed",
+   "source_title": "How Much Solar Power Does a Shed Need? Kit Sizing (2026) | Eco Solar Kits",
+   "read": "2026-11-10",
+   "note": "4 LED × 15 W × 4 h + saw 1,400 W × 0.25 h + charger 100 W × 2 h + radio 20 W × 4 h + fan 50 W × 3 h. If the AC is left on 24 h, the true daily need is 1,020 − (idle already in the load hours, about 15 W × 4 h = 60) + 352 ≈ 1,312 Wh. The page doesn't account for this."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured energy delivered from full",
+   "value": "1.91 kWh",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (Dylan Dougherty, StorageReview, 2025-04-25)",
+   "read": "2026-11-10",
+   "note": "Discharge test. 1.91 ÷ 2.0736 = 92% of rated. AC idle alone empties a full battery in 1,910 ÷ 352 ≈ 5.4 sunless days. Hobotech's AC capacity test gave 1,990 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Rated capacity and AC output",
+   "value": "2,073.6 Wh; 2,600 W continuous (3,900 W Power Lifting, resistive loads only)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "From the maker's US page. 2,600 W covers Eco Solar Kits' 1,900 W target for a 1,400 W saw plus 160 W of lights."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limit",
+   "value": "12–60 V, 20 A max, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "From the US page FAQ. 2 × 200 W = 400 W, 40% of the 1,000 W limit, so you can add a third panel later."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Operating and storage temperature",
+   "value": "operating −20 to 40 °C (−4 to 104 °F); storage −10 to 40 °C (14 to 104 °F)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview)",
+   "read": "2026-11-10",
+   "note": "From the review's spec table. The charging temperature isn't listed there. Storage below 14 °F is outside spec, which matters for an unheated shed in a northern winter."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar cable in the box",
+   "value": "not included (Australian listing)",
+   "source": "https://www.bluettipower.com.au/products/elite-200-v2-portable-power-station",
+   "source_title": "Elite 200 V2 Portable Power Station (BLUETTI Australia)",
+   "read": "2026-11-10",
+   "note": "The page says 'The Elite 200 V2 does not include a solar charging cable.' The US page lists the box contents as an AC cable, the unit, documents and a grounding screw, with no solar cable."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "US price",
+   "value": "$399 (1×), $798 (2×)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py product. The page says MC4 connectors and up to 23.4% cell efficiency."
+  }
+ ],
+ "unsourced": [
+  "SP200L open-circuit voltage and short-circuit current from a BLUETTI page. Search snippets give 24.62 V Voc and 10.24 A Isc (2 in series = 49.2 V, under the 60 V limit; 2 in parallel = 20.5 A Isc, just over the 20 A limit). The bluettipower.ca, bluettipower.com.au and US product pages and wellbots.com all returned HTTP 429, so I didn't use the figures.",
+  "Elite 200 V2 charge-temperature lower limit and whether it self-heats. Not on the US or Australian product pages or in StorageReview's spec table; the manuals.plus manual returned 403.",
+  "Elite 200 V2 self-discharge rate in storage and BLUETTI's advice on how often to top it up in storage. No maker page I opened states either.",
+  "Whether the US Elite 200 V2 + 2×200W bundle includes the MC4 solar cable, and which input connector the station uses. The US kit page lists no box contents for the panels.",
+  "A BLUETTI-staff self-consumption figure (reported in search as 6 W DC / 15 W AC). The community thread redirected to the forum home page, so I couldn't open it.",
+  "agripure.org and solargenadvisor.com, to check whether they mention idle draw. Both failed with a self-signed-certificate error.",
+  "Amazon prices. I didn't check them because the whole kit fills one BLUETTI cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9617962000000001
+ }
+}
