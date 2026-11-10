@@ -4614,6 +4614,23 @@ PRODUCTS = [
  "fit": 'Windows gamers and office users who want a wireless mechanical keyboard with mouse on one receiver.',
  "caveats": ['Redragon offers the customization software (macros, lighting, DPI) for Windows only.', "Redragon's combo listing does not give the mouse's polling rate or battery hours.", "Sharing one dongle ties both devices to that receiver. Replacing the mouse with another brand's means adding that mouse's own receiver."]},
 
+{"slug": 'steelseries-arctis-nova-5x',
+ "brand": 'SteelSeries',
+ "program": 'amazon:us',
+ "asin": 'B0D2YC9GM9',
+ "category": 'headphones',
+ "name": 'SteelSeries Arctis Nova 5X Wireless Multi-System Gaming Headset, Black',
+ "model": 'Arctis Nova 5X',
+ "url": 'https://www.amazon.com/dp/B0D2YC9GM9',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Connections', '2.4 GHz USB-C dongle with an Xbox / USB switch, plus Bluetooth 5.3'), ('Platforms (SteelSeries)', 'Xbox Series X|S, Xbox One, PS5 Pro, PS5, PS4, PC, Mac, handhelds including ROG Ally and Steam Deck'), ('Battery', '60 h claimed by SteelSeries; 42 h 10 min measured on the 2.4 GHz dongle by SoundGuys'), ('Weight', '265 g (SteelSeries)'), ('Wired audio', 'None; wireless only (SoundGuys)')],
+ "warranty": 'SteelSeries gives at least 1 year of limited warranty from the date of purchase in North America. It covers manufacturing defects only, and you need proof of purchase. SteelSeries says these terms apply to steelseries.com purchases. If you bought elsewhere, the claim may have to go through that seller.',
+ "returns": 'SteelSeries gives 30 days to return orders from steelseries.com, and it pays return shipping on orders outside the UK. Orders placed from November 20 to January 2 can be returned up to 45 days after purchase.',
+ "summary": "The Xbox version of SteelSeries' Arctis Nova 5. It is the only Nova 5 model SteelSeries builds for Xbox, and one dongle covers Xbox, PlayStation and PC.",
+ "fit": 'One wireless headset for a home with a PC, a PlayStation and an Xbox.',
+ "caveats": ['Set the dongle switch to Xbox on an Xbox Series X|S or Xbox One, and to USB on a PC or PlayStation.', 'SoundGuys measured 42 h 10 min on the dongle, short of the 60 h headline.', 'There is no 3.5 mm input, so a flat battery cannot be bridged with a cable.', 'PlayStation does not support ChatMix (SteelSeries).']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
