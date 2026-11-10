@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that TESmart's 8-port HDMI KVMs read hotkeys only from the dedicated keyboard/mouse ports, or that TESmart names keyboards that fail on those ports: Logitech MX series, Roccat, Dell KB813-type keyboards with a card slot, and some Microsoft models. TESmart's fix is to move the keyboard to a standard USB port, but hotkey switching stops working there.",
+ "standout": 2,
+ "standout_why": "I read officekithq.com (best 8-port, 5 picks), mamalinux.com (8 best 8-port for home lab, which includes the 'TESmart 8X1' rackmount) and workcocoon.com (8-port guide). They cover EDID, which cables come in the box, USB 2.0 vs 3.0 and cascading. mamalinux says 'IP configuration on Linux requires a Windows application', and officekithq passes on MT-VIKI's 'states support for wireless keyboards'. None of the three says which keyboard port handles hotkeys or names any keyboard the maker excludes. workcocoon names no 8-port product at all. ChatGPT cited none of the results, and its answer says nothing about which keyboards work.",
+ "decides": "This confirms the TESmart HKS801 line is a sound pick, with a caveat for shoppers who use Logitech MX, Roccat or Dell KB813-style keyboards. Those keyboards may not work on the K/M ports. On the other USB ports they type, but switching then needs the front panel, the IR remote or RS232/LAN on P23/L23. On the M24, the store lists front-panel buttons, hotkeys, mouse wheel double-click and IR remote as switching methods, and separately says it has a LAN port for TCP/IP remote control. Under the same terms, the L23 ($143.99 today) beats the P23 ($399) only when 4K30 is enough. The P23's 4K60 and the M24's VRR / G-Sync / FreeSync are what the extra money buys.",
+ "candidates": [
+  "TESmart HKS801-P23",
+  "TESmart HKS801-M24",
+  "TESmart HKS801-L23",
+  "TESmart HKS801-EB23",
+  "StarTech R8AD122-KVM-SWITCH",
+  "AUTYUE 8 in 1 Out HDMI KVM Switch"
+ ],
+ "findings": [
+  {
+   "product": "TESmart 8-port HDMI KVMs (general)",
+   "label": "Ports that accept hotkeys",
+   "value": "Only the dedicated keyboard and mouse ports. A keyboard plugged into a USB 2.0/3.0 port types but cannot send hotkeys.",
+   "source": "https://support.tesmart.com/hc/en-us/articles/19201091645337-The-Hotkey-Function-Does-Not-Work",
+   "source_title": "TESmart Support: The Hotkey Function Does Not Work",
+   "read": "2026-11-10",
+   "note": "TESmart's wording: 'The KVM switch is designed to support the hotkey function only on these dedicated ports.' The article recommends the USB 2.0/3.0 ports for keyboards that won't work on the K/M ports."
+  },
+  {
+   "product": "TESmart KVMs (general)",
+   "label": "Keyboards TESmart reports as incompatible on the dedicated K/M ports",
+   "value": "Dell KB813 and similar keyboards with a card slot; Logitech MX series; Roccat; some Microsoft keyboard models",
+   "source": "https://support.tesmart.com/hc/en-us/articles/19201091645337-The-Hotkey-Function-Does-Not-Work",
+   "source_title": "TESmart Support: The Hotkey Function Does Not Work",
+   "read": "2026-11-10",
+   "note": "TESmart's stated cause is proprietary protocols or excessive bandwidth. The article's 'applicable product line' header says Dual/Triple Monitor KVM, but its model list also names single-monitor 8-port units (HKS0801A1U, HKS0801A30)."
+  },
+  {
+   "product": "TESmart HKS801-E23 (formerly HKS0801A1U)",
+   "label": "Changing the hotkey trigger",
+   "value": "Not supported. HKS0801A1U, HKS0801A30, HKS1601A1U and HKS1601A10 are listed as models where the hotkey cannot be changed.",
+   "source": "https://support.tesmart.com/hc/en-us/articles/19201091645337-The-Hotkey-Function-Does-Not-Work",
+   "source_title": "TESmart Support: The Hotkey Function Does Not Work",
+   "read": "2026-11-10",
+   "note": "The link from HKS0801A1U to HKS801-E23 comes from TESmart's support article title 'HKS801-E23 Previously Named HKS0801A1U'. That title appeared in search results; I did not open the article. The E23 shows as unavailable ($309.99) in the TESmart store data."
+  },
+  {
+   "product": "TESmart KVMs (general)",
+   "label": "Keyboard types the maker flags for hotkey trouble",
+   "value": "Wireless, Bluetooth or macro-enabled keyboards, and keyboard software that remaps keys. Standard USB ports 'operate in passthrough mode and do not participate in hotkey detection'.",
+   "source": "https://www.tesmart.com/blogs/news/how-tesmart-kvm-hotkeys-work",
+   "source_title": "How TESmart KVM Hotkeys Work (TESmart blog, 2026-01-16)",
+   "read": "2026-11-10",
+   "note": "Maker's own blog post. It names no models."
+  },
+  {
+   "product": "TESmart HKS801-P23",
+   "label": "Price, video and OS support",
+   "value": "$399.00; HDMI 2.0, up to 3840x2160 @ 60 Hz; USB 3.0 (5 Gbps); EDID emulator on each input; maker lists Unix, Windows, Debian, Ubuntu, Fedora, macOS X, Raspbian and Raspberry Pi",
+   "source": "https://www.tesmart.com/products/hks801-p23",
+   "source_title": "Upgraded 8 Port HDMI KVM Switch with USB 3.0 (5Gbps), 4K60Hz, and RS232/LAN Control – TESmart",
+   "read": "2026-11-10",
+   "note": "From TESmart's Shopify product data via storecheck, and the /a/shop/ product page opened the same day. The page's tags also say 'Features: USB 2.0', which contradicts the USB 3.0 title. The page lists no 1440p/120 Hz modes and no package contents."
+  },
+  {
+   "product": "TESmart HKS801-L23",
+   "label": "Price, video and adapter compatibility",
+   "value": "$143.99 (compare-at $239.99); 4K30 in the title, though the body text says up to 3840x2160 @ 60 Hz; supports single-link DVI-D sources and displays through HDMI-to-DVI adapters",
+   "source": "https://www.tesmart.com/products/hks801-l23",
+   "source_title": "8 Port HDMI KVM Switch 4K30Hz Support RS232/LAN – TESmart",
+   "read": "2026-11-10",
+   "note": "From TESmart's Shopify product data via storecheck. The title says 4K30Hz and the description says up to 3840x2160@60Hz. That contradiction is the maker's own. The listing shows available."
+  },
+  {
+   "product": "TESmart HKS801-EB23",
+   "label": "Successor and price",
+   "value": "$229.00; USB 2.0; TESmart describes it as an upgraded chip 'for broader compatibility and stability', with 4K@60Hz 'on compatible devices'",
+   "source": "https://www.tesmart.com/products/hks801-eb23",
+   "source_title": "8 Port HDMI KVM Switch 4K30Hz Support RS232/LAN, Upgraded for Broader Compatibility and Stability – TESmart",
+   "read": "2026-11-10",
+   "note": "From TESmart's Shopify product data via storecheck."
+  },
+  {
+   "product": "TESmart HKS801-M24",
+   "label": "Price, included cables and HDMI 2.1 features",
+   "value": "$599.00; 8 × KVM cables (HDMI+USB) included; HDMI 2.1 48 Gbps, 8K60 4:4:4, 4K at 60/120/144 Hz; VRR (G-Sync, FreeSync), FVA, ALLM, HDR10, Dolby Vision; HDCP 2.3; DSC 1.2a; LAN port for TCP/IP control",
+   "source": "https://www.tesmart.com/products/hks801-m24",
+   "source_title": "HDMI 2.1 8K60Hz 8x1 KVM Switch for 8 PCs & 1 Monitor – TESmart",
+   "read": "2026-11-10",
+   "note": "From TESmart's Shopify product data via storecheck. The /a/shop/ page shows $599.00. Switching methods listed: front panel, Scroll Lock / Right-Ctrl hotkeys, mouse wheel double-click and IR remote. RS232 is not listed for this 8-port model, though the 16-port M24 lists it."
+  }
+ ],
+ "unsourced": [
+  "HKS801-P23 box contents and USB port layout: I downloaded TESmart's official manual PDF (support.tesmart.com/hc/ja/article_attachments/40997468506777) but could not extract its text here. The product page doesn't list them either.",
+  "HKS801-M24 USB port layout and any Apple Silicon or USB-C laptop exclusions: TESmart's product page returned HTTP 429 or omitted them, and the manuals.plus mirror returned 403.",
+  "Any maker-stated rule on Logitech Bolt or Unifying receivers for TESmart's 8-port K/M ports. I found only Apple Community user reports, which don't meet the sourcing rule.",
+  "Compatibility documents for StarTech R8AD122-KVM-SWITCH and the AUTYUE 8-port models ChatGPT showed. I did not open them within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9480926999999999
+ }
+}
