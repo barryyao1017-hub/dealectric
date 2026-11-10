@@ -4478,6 +4478,23 @@ PRODUCTS = [
  "fit": 'Video on f/2.8 zooms and f/1.8–f/1.4 primes in daylight, and any shooter who wants one filter for f/16 to about f/1.1.',
  "caveats": ["K&F's page claims no X-pattern control, and a buyer review on that page reports an X past the ND400 mark. On wide lenses, stay below the maximum.", 'The page names both 67 mm and 82 mm threads. Check the 67 mm marking on the product you receive.', "0.2% reflectivity, against 0.1% on K&F's ND2-32 True Color."]},
 
+{"slug": 'tessan-65w-gan-universal-travel-adapter-wta09',
+ "brand": 'TESSAN',
+ "program": 'awin:tessan',
+ "asin": None,
+ "category": 'travel-adapter',
+ "name": 'TESSAN 65W GaN Universal Travel Adapter, 2 AC + 3× USB-C + 2× USB-A (WTA09)',
+ "model": 'WTA09',
+ "url": 'https://www.tessan.com/products/65w-gan-universal-travel-adapter-wta09',
+ "price": 27.99,
+ "verified": '2026-11-09',
+ "specs": [('Plug sliders', 'Type C (most of Europe incl. Italy, Switzerland), Type G (UK, Ireland), Type I, Type A'), ('AC outlets', '2: universal front outlet (all plugs except South Africa) and a 2-prong side outlet (US/Japan)'), ('USB-C3', '65 W max (single-port use)'), ('USB-C1, C2, A1, A2', '15 W max per port'), ('Protection', 'Double 10 A fuse; no surge protection'), ('Voltage', 'For 100–250 V devices; not a voltage converter'), ('Size', '2.72 × 1.97 × 2.16 in'), ('Weight', '7.18 oz')],
+ "warranty": "12 to 24 months depending on the model, per TESSAN's warranty policy; the exact term for each model is printed in the manual in the box",
+ "returns": 'Within 7 business days of delivery if unused and in the original packaging, or within 30 business days if the product has a manufacturing defect; proof of purchase required, and TESSAN sends a return shipping label once the return is approved',
+ "summary": 'Universal slider adapter with Type C and Type G plugs for all of Europe, including the UK and Ireland, two AC outlets and a 65 W USB-C port (C3) that charges a USB-C laptop without its own brick.',
+ "fit": 'Travellers to the UK plus the continent, or anyone charging a USB-C laptop, phone and more from one wall socket.',
+ "caveats": ['Only USB-C3 gives 65 W, and only when used alone; the other four USB ports stop at 15 W each.', "Its Type C pins fall under the Europlug standard's 2.5 A at 250 V (about 575 W on 230 V); TESSAN does not state a higher pin rating, so keep hair dryers and other heat tools off it.", 'Not a voltage converter: devices must accept 100–250 V.', 'The side AC outlet is 2-prong only; a 3-prong US cord needs the front outlet.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
