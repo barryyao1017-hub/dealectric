@@ -1,0 +1,142 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that a power station used as the UPS for an existing sump pump has to be set up for that job. On the BLUETTI AC180, ECO mode switches the AC output off after 1, 2, 3 or 4 hours at or below a 15–30 W load, and a sump pump draws close to nothing between cycles. If ECO is left on, the first hours of an outage without inflow can leave the pump unpowered. Grid Enhancement also has to be off, or the advertised ≤20 ms switchover gets slower.",
+ "standout": 2,
+ "standout_why": "Pages I read: the Consumer Reports buying guide, the CR 'Best Sump Pump Backup Systems' page, belowthesill.com/sump-pumps/backup and anvilfield.com's field guide. None of them covers portable power stations, UPS switchover, ECO auto-off or motor start surge. CR's guide says nothing about power stations or inverters. Belowthesill and Anvilfield mention no power station or UPS settings, and Anvilfield only says 'Lithium options exist'. ChatGPT's own answer lists 'Inverter + battery' at $400–$1,500+ with no setup caveat. Pages I did not open: ferguson.com, pumpendium.com, capablehome.com, callhome.help, angi.com, burlingtoncountyplumbers.com, secamerica.com, the ICLR booklets, SSPMA and a2gov. One of those could cover this, so the score is 2, not 3.",
+ "kit_items": [
+  "Independent DC backup pump: Wayne ESP25 (Amazon lists it as ESP25n). It is a second 12 V pump with its own float, so it covers both a power cut and a failed primary pump. Wayne rates it at 1,680 GPH at 10 ft of lift and builds in an alarm that sounds while the DC pump runs.",
+  "Battery for the DC pump: Wayne WSB1275, a 75 Ah maintenance-free battery. Wayne's ESP25 page recommends it and says it is sold separately, so the ESP25 alone is not a working set.",
+  "Alternative, power for the existing AC pump: BLUETTI AC180 power station (1,152 Wh LiFePO4, 1,800 W rated, ≤20 ms UPS switchover). It only covers power loss, not a failed or stuck primary pump. For this job ECO must be off, Grid Enhancement must be off, and the pump's start surge has to fit within the AC180's limits. The manual warns that motors may start at 2–4× their rated power.",
+  "High-water alarm: ChatGPT and CR both recommend one. Not sourced or priced here."
+ ],
+ "carts": [
+  {
+   "store": "Amazon",
+   "items": [
+    "WAYNE 12 Volt Battery Backup Sump Pump ESP25n (ASIN B07GJXRZ1V) | https://www.amazon.com/dp/B07GJXRZ1V | $279.99 | 2026-11-10"
+   ],
+   "bundle_sku": "none found. The WSB1275 battery's Amazon listing was not located, so this cart is missing the battery the pump needs."
+  },
+  {
+   "store": "BLUETTI (bluettipower.com, awin:bluetti_us / cj:bluetti)",
+   "items": [
+    "BLUETTI AC180 | https://www.bluettipower.com/products/ac180 | $499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Only solar bundles, none built for sump use: AC180 + SP100L $679.00, AC180 + 200 W solar $769.00, AC180 + 2×200 W $1,232.00, AC180 + 350 W $1,088.00 (350 W panel out of stock). The page says the AC180 is out of stock with restock expected late November, and also says 'ships from 12.14'."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off",
+   "value": "AC output turns off after 1, 2, 3 or 4 h at a 15–30 W load (DC: 5–10 W)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual: 'the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' It does not say whether ECO is on by default. Between cycles a float-switched sump pump draws close to nothing, so with ECO on the output can switch off before the next rise in water."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover time",
+   "value": "≤20 ms",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "The manual says to turn off Grid Enhancement for UPS use, because with it on 'the UPS takes longer to switch over'. It also says 'Test the function before use.' The UPS section lists '1440W Max.' without saying whether that is output or input."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Motor start warning and surge",
+   "value": "1,800 W rated; 2,700 W surge; motors may start at 2–4× rated power",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "The 2,700 W Power Lifting mode is for 'pure resistive loads' only (heaters, irons), is off by default, and does not help a pump motor. The manual says motor/compressor devices 'can easily overload the AC180'."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, capacity, chemistry",
+   "value": "$499.00; 1,152 Wh; LiFePO4, 3,500+ cycles; 1,800 W AC across 4 × 120 V outlets",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-10",
+   "note": "Standalone price with no separate sale price shown. Stock notice conflicts: 'out of stock, expected restock: Late-November' and 'ships from 12.14'."
+  },
+  {
+   "product": "Wayne ESP25",
+   "label": "Pumping rate",
+   "value": "2,900 GPH at 0 ft; 2,340 GPH at 5 ft; 1,680 GPH at 10 ft; 600 GPH at 15 ft",
+   "source": "https://www.waynepumps.com/esp25",
+   "source_title": "Wayne ESP25 12 Volt Reinforced Thermoplastic Battery Back Up System",
+   "read": "2026-11-10",
+   "note": "Maker page. 10 ft matches CR's test lift."
+  },
+  {
+   "product": "Wayne ESP25",
+   "label": "Battery requirement",
+   "value": "12 V battery required, sold separately; recommended: Wayne WSB1275, 75 Ah maintenance-free",
+   "source": "https://www.waynepumps.com/esp25",
+   "source_title": "Wayne ESP25 12 Volt Reinforced Thermoplastic Battery Back Up System",
+   "read": "2026-11-10",
+   "note": "The page does not mention lithium and gives no charger amperage ('Premium smart charging technology'). It has an audible alarm while the DC pump runs and mentions no Wi-Fi."
+  },
+  {
+   "product": "Wayne ESP25n",
+   "label": "Amazon price",
+   "value": "$279.99",
+   "source": "https://www.amazon.com/dp/B07GJXRZ1V",
+   "source_title": "WAYNE 12 Volt Battery Backup Sump Pump Coated Steel ESP25n",
+   "read": "2026-11-10",
+   "note": "From amzcheck.py asin B07GJXRZ1V (not blocked). Same price ChatGPT showed for 'Wayne ESP25 Upgraded'. For comparison only; the page does not print Amazon prices."
+  },
+  {
+   "product": "Wayne CDU800",
+   "label": "Primary pump spec",
+   "value": "1/2 HP, 120 V PSC motor; 3,840 GPH at 10 ft",
+   "source": "https://www.waynepumps.com/cdu800",
+   "source_title": "Wayne CDU800 1/2 HP Cast Iron Submersible Sump Pump",
+   "read": "2026-11-10",
+   "note": "The page lists no running amps, so I could not work out power-station runtime or check its start surge against the AC180."
+  },
+  {
+   "product": "general",
+   "label": "Consumer Reports battery guidance",
+   "value": "Battery usually sold separately; 12 V deep-cycle; AGM $150–$400, lasts up to 7 years; flooded $100–$250, 3–5 years; CR tested with a 75 Ah AGM at 10 ft lift; '7 to 8 hours of active pumping time'",
+   "source": "https://www.consumerreports.org/home-garden/sump-pumps/buying-guide/",
+   "source_title": "Sump Pump Backup System Buying Guide - Consumer Reports",
+   "read": "2026-11-10",
+   "note": "Cited rival. Does not mention power stations, inverters or generators."
+  },
+  {
+   "product": "general",
+   "label": "CR recently tested models",
+   "value": "Combo: Wayne WSS30VN. Battery: Basement Watchdog BWE, Zoeller STBC101, Superior Pump 92900, Star STBB100. Water-powered: Liberty SJ10A-EYE and SJ10, Basepump RB750, Star STWB140, K2 ASP00001K, Zoeller 540-0005",
+   "source": "https://www.consumerreports.org/home-garden/sump-pumps/best-sump-pump-backup-systems-of-the-year-a4309816655/",
+   "source_title": "Best Sump Pump Backup Systems - Consumer Reports",
+   "read": "2026-11-10",
+   "note": "Cited rival. Recommended picks are behind the paywall and no prices are shown."
+  },
+  {
+   "product": "general",
+   "label": "Rival lithium mention",
+   "value": "'Lithium options exist and run longer for the weight, at a higher price'; 75–120 Ah typical; replace on a 3–5 year horizon",
+   "source": "https://anvilfield.com/field-guides/plumbing/sump-pump-battery-backup-protection/",
+   "source_title": "Sump pump battery backup and basement flood protection field guide - Anvilfield",
+   "read": "2026-11-10",
+   "note": "Uncited result ChatGPT got. No products, power stations or UPS."
+  }
+ ],
+ "unsourced": [
+  "Running watts or amps and locked-rotor or start surge for a typical 1/3–1/2 HP primary pump. Wayne's CDU800 page lists no amps. The Zoeller M53's 9.7 A appeared only in search snippets, and I could not open the Zoeller catalog PDF. Without this, power-station runtime and the surge-fit check against the AC180 could not be done.",
+  "Whether the AC180 ships with ECO mode on or off. The manual says only that it can be toggled.",
+  "Amazon listing and price for the Wayne WSB1275 75 Ah battery. Search found only Home Depot, Zoro and SupplyHouse; I opened none of them, and none is an approved cart store.",
+  "Whether the Wayne ESP25 charger supports LiFePO4. Wayne's page does not mention lithium, and the manual pages I opened show only lead-acid warnings. That leaves open whether Redodo or Vatrer 12 V LiFePO4 batteries from approved programs could replace the WSB1275.",
+  "Basement Watchdog BWE / BW-27AGM and Wayne WSS30VN prices. Amazon search through amzcheck returned nothing, and I did not open a Basement Watchdog maker page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9820556000000005
+ }
+}

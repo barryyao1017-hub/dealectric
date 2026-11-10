@@ -1,0 +1,78 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that a portable power station used as a sump pump's battery backup can switch its own AC outlets off during an outage: BLUETTI's AC-ECO mode cuts AC output after 1–4 hours of low or no load, and a pump draws almost nothing between cycles. Its manual says ECO is on by default, and ECO does not run while the station is charging from the wall, so it only acts once grid power is gone. ECO must be turned off in the BLUETTI app before you rely on the station.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited Consumer Reports pages: the Sump Pump Backup System Buying Guide and Best Sump Pump Backup Systems. The buying guide covers AGM vs flooded batteries, the shared discharge line, backflow devices and well water. It says nothing about chargers, GFCI, power stations or inverters. The best-of page names 11 tested pumps and only says to use a '12-volt deep-cycle marine battery', with no word on power stations or inverters either. ChatGPT's own answer offers 'Inverter + battery' as an option but gives no setup warning. None of them mentions auto-off or ECO behaviour. I scored this 2, not 3, because the finding decides a setting and a test, not which products go in the cart.",
+ "kit_items": [
+  "Power station: BLUETTI AC180 (1,152 Wh, 1,800 W AC). BLUETTI sells it in the approved store, and its manual gives an AC switchover time under 20 ms. Turn AC-ECO off in the BLUETTI app first.",
+  "The existing AC sump pump plugs straight into the AC180. The 2,700 W 'Power Lifting' figure is not motor surge headroom: in BLUETTI's AC200P L manual, that mode is described as for resistive loads only. Test the pump's start on the station before you depend on it."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI AC180 Portable Power Station 1,152 Wh 1,800 W | https://www.bluettipower.com/products/ac180 | $499.00 (compare-at $1,232) | 2026-11-10"
+   ],
+   "bundle_sku": "none for sump use; the store's 'AC180+BLUETTI Charger 1' bundle is $748.00 (https://www.bluettipower.com/products/ac180-bluetti-charger-1-dc-input-cable), and that charger only adds a DC input, so it isn't needed here"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off window and threshold",
+   "value": "AC output turns off after 1, 2, 3 or 4 hours at a load below 10–30 W (AC); both settings can be changed only in the BLUETTI app",
+   "source": "https://the-gadgeteer.com/2023/06/15/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 portable power station review (Lee Shipman, The Gadgeteer, 2023-06-15)",
+   "read": "2026-11-10",
+   "note": "Lee Shipman: 'The while here is 1, 2, 3 or 4 hours, and the low load is 10W – 30W for AC loads.' He found no way to change it from the front buttons. A sump pump draws close to 0 W between cycles, so ECO counts it as 'no load'."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover time",
+   "value": "under 20 ms",
+   "source": "https://the-gadgeteer.com/2023/06/15/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 portable power station review (Lee Shipman, The Gadgeteer)",
+   "read": "2026-11-10",
+   "note": "Lee Shipman quotes the manual: 'switching time is less than 20 milliseconds'. In his test a TV did not notice the switchover."
+  },
+  {
+   "product": "BLUETTI AC200P L (same BLUETTI ECO firmware family)",
+   "label": "ECO default state and when it acts",
+   "value": "AC-ECO and DC-ECO are 'enabled by default'; AC-ECO 'is not available when the AC200P L is charging from an AC source'",
+   "source": "https://manualslib.mx/manual/899447/Bluetti-Ac200P-L.html?page=21",
+   "source_title": "Bluetti AC200P L user manual, p.21 (ManualsLib mirror)",
+   "read": "2026-11-10",
+   "note": "This is why the trap stays hidden: while the station is on the wall ECO is off, so the pump works in every test. It switches on once the outage starts. The manual also says Power Lifting is 'only suitable for resistive loads', which a pump motor is not. This is a different model from the AC180. I couldn't open the AC180 or Elite 200 V2 manual text to confirm the same default for them."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price today, BLUETTI US store",
+   "value": "$499.00 (compare-at $1,232.00), in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-10",
+   "note": "From storecheck.py run against the BLUETTI Shopify store. The listing also gives '1,800W AC Output / 2,700W Power Lifting Mode'."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival guide says about batteries",
+   "value": "Covers AGM vs flooded lead-acid only; no lithium, charger, GFCI, power station or inverter guidance",
+   "source": "https://www.consumerreports.org/home-garden/sump-pumps/buying-guide/",
+   "source_title": "Sump Pump Backup System Buying Guide (Consumer Reports)",
+   "read": "2026-11-10",
+   "note": "Says 'Always consult the pump manufacturer's recommendations for the correct battery type'. The best-of page (https://www.consumerreports.org/home-garden/sump-pumps/best-sump-pump-backup-systems-of-the-year-a4309816655/) asks only for a '12-volt deep-cycle marine battery'."
+  }
+ ],
+ "unsourced": [
+  "A forum thread with a date and number of reports of a basement flooding because a power station's ECO mode cut the sump pump. Search snippets point to BLUETTI community threads ('AC Output Turns Off Randomly?', 'Elite 200V2 UPS & Sleep settings'). community.bluettipower.com now 301-redirects to forum.bluettipower.com, and I couldn't fetch the Wayback Machine copies, so neither the thread nor a report count is included.",
+  "Whether AC-ECO is on by default on the AC180 and the Elite 200 V2 specifically. The Elite 200 V2 manual PDF on cdn.shopify.com was over the fetch size limit, the s4.bluettipower.com support PDF came back as compressed text I couldn't read, and manuals.plus returned 403.",
+  "The AC180's surge rating for motor loads, as opposed to Power Lifting for resistive loads, and the locked-rotor starting watts of a typical 1/3 HP sump pump. I didn't find a maker page that states either.",
+  "Whether the built-in lead-acid chargers in Wayne ESP25 and Basement Watchdog units can charge a LiFePO4 battery such as the Redodo or Vatrer 12V 100Ah. Only search snippets came up; I didn't open a maker document that states it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0421344
+ }
+}

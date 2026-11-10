@@ -1,0 +1,117 @@
+{
+ "angle": "K4",
+ "gap": "No result ChatGPT got states that the 'Apex + B300K' bundles on BLUETTI's own store cost $1 more than buying the same two items separately ($2,199 vs $2,198 for the Apex 200, $2,599 vs $2,598 for the Apex 300). It also doesn't state that the 'Lifting Power' figure on these power stations is not a motor-surge rating, so it can't be used to judge whether a sump pump will start.",
+ "standout": 2,
+ "standout_why": "I compared against Consumer Reports' 'Best Sump Pump Backup Systems' page (cited, opened 2026-11-10) and ChatGPT's two answers. CR only says backup and combo units 'typically require a 12-volt deep-cycle marine battery, which is sold separately'. It tested with a 75 Ah marine battery and names no retailer, bundle, price or battery chemistry. ChatGPT gives an 'inverter + battery' range of $400–$1,500+. It names no power station and no expansion battery, and says nothing about surge versus lifting power or what a one-store cart costs. I did not open the uncited results (Ferguson, Pumpendium, Angi, ICLR, SSPMA). Amazon prices for the dedicated-pump kit could not be checked.",
+ "kit_items": [
+  "Power station with UPS mode (keeps the existing AC primary pump running): BLUETTI Apex 300. BLUETTI's own sump-pump guide names it for whole-home protection. It has 2,764.8 Wh and 3,840 W output, and its lifting power (7,680 W, which is not a surge rating) is the only one in that guide above the top of its 1/2 HP surge range (4,100 W).",
+  "Expansion battery: BLUETTI B300K for Apex 300/200 (2,764.8 Wh LiFePO4). It doubles storage to 5,529.6 Wh. Buy it as a separate line item, because the Apex+B300K bundle costs $1 more.",
+  "Lower-cost alternative: BLUETTI Apex 200 (2,560 Wh, 3,200 W continuous, UPS rated ≤15 ms, enabled in the BLUETTI app). Its page lists no surge rating, only 5,400 W 'Lifting Power', so it fits a 1/3 HP pump more safely than a 1/2 HP one.",
+  "Dedicated battery backup pump (Amazon route): Wayne ESP25 plus Wayne's own WSB1275 75 Ah deep-cycle battery, which the ESP25 manual names. The battery is not included. Amazon prices could not be checked."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US store (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 | https://www.bluettipower.com/products/apex-300-home-battery-backup | $1,499.00 (compare-at $1,699) | 2026-11-10",
+    "BLUETTI B300K for Apex 300/200 | https://www.bluettipower.com/products/apex-300-b300k-expansion-battery | $1,099.00 (compare-at $1,199) | 2026-11-10"
+   ],
+   "bundle_sku": "Apex 300 + B300K, https://www.bluettipower.com/products/apex-300-b300k, $2,599.00. That is $1 more than the $2,598 for the two items separately, so use the separate items. Free gift: none listed. The Apex 200 page shows 'Extra BF Savings' of $50 off orders of $2,000+ (not confirmed on the Apex 300 page)."
+  },
+  {
+   "store": "BLUETTI US store (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 200 | https://www.bluettipower.com/products/apex-200-expandable-power-station | $1,099.00 (compare-at $1,399, 'Super Early-Bird') | 2026-11-10",
+    "BLUETTI B300K for Apex 300/200 | https://www.bluettipower.com/products/apex-300-b300k-expansion-battery | $1,099.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Apex 200 + B300K, https://www.bluettipower.com/products/apex-200-b300k, $2,199.00. That is $1 more than the $2,198 for the two items separately, so use the separate items. No free gift on the Apex 200 page. The page shows 'Extra BF Savings' of $50 off orders of $2,000+, $100 off $3,000+ and $150 off $4,000+, and either cart reaches the first tier."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300 + B300K",
+   "label": "Bundle price vs items bought separately",
+   "value": "Bundle $2,599.00; separate $1,499.00 + $1,099.00 = $2,598.00",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "Apex 300 + B300K (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Read from the Shopify product JSON with storecheck.py search. Apex 300 at /products/apex-300-home-battery-backup is $1,499; B300K for Apex 300/200 at /products/apex-300-b300k-expansion-battery is $1,099. The bundle costs $1 more."
+  },
+  {
+   "product": "BLUETTI Apex 200 + B300K",
+   "label": "Bundle price vs items bought separately",
+   "value": "Bundle $2,199.00; separate $1,099.00 + $1,099.00 = $2,198.00",
+   "source": "https://www.bluettipower.com/products/apex-200-b300k",
+   "source_title": "Apex 200 + B300K (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search. The Apex 200 product page also shows the bundle at $2,199. The bundle costs $1 more."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "UPS switchover time",
+   "value": "≤15 ms; UPS mode must be enabled in the BLUETTI app",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "Apex 200 Versatile Power Station (BLUETTI US)",
+   "read": "2026-11-10",
+   "note": "The page warns that the transfer 'may not meet every device's requirements'."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Rated AC output / published surge",
+   "value": "3,200 W continuous; no surge rating listed, only 5,400 W 'Lifting Power'",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "Apex 200 Versatile Power Station (BLUETTI US)",
+   "read": "2026-11-10",
+   "note": "Lifting Power is BLUETTI's mode for resistive loads, not a motor-start rating. See the sump pump guide finding."
+  },
+  {
+   "product": "general",
+   "label": "Sump pump running and starting watts",
+   "value": "1/3 HP: about 800 W running, 1,300–2,900 W surge. 1/2 HP: about 1,050 W running, 2,150–4,100 W surge. Size the inverter's surge rating to at least 1.5× the pump's starting watts.",
+   "source": "https://bluettipower.com/blogs/buying-guide/how-long-can-bluetti-power-sump-pump",
+   "source_title": "How Long Can a BLUETTI Portable Power Station Power a Sump Pump? (BLUETTI Team, 2026-10-05)",
+   "read": "2026-11-10",
+   "note": "These figures come from the maker's own blog. The same blog says the Elite 100 V2 is not recommended as a primary sump pump backup."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Runtime on a 1/3 HP pump (BLUETTI's estimate)",
+   "value": "11.0–16.6 h with the pump cycling 10–15 min per hour; about 2.1 h continuous on a 1/2 HP pump",
+   "source": "https://bluettipower.com/blogs/buying-guide/how-long-can-bluetti-power-sump-pump",
+   "source_title": "How Long Can a BLUETTI Portable Power Station Power a Sump Pump?",
+   "read": "2026-11-10",
+   "note": "BLUETTI's formula is Wh × 0.8 ÷ running W. My arithmetic with the B300K added (5,529.6 Wh): 5,529.6 × 0.8 ÷ 800 W = 5.5 h continuous on a 1/3 HP pump, or about 22–33 h at 10–15 min of running per hour."
+  },
+  {
+   "product": "general",
+   "label": "Battery for a backup pump (Consumer Reports)",
+   "value": "12 V deep-cycle marine battery, sold separately; CR tested with 75 Ah",
+   "source": "https://www.consumerreports.org/home-garden/sump-pumps/best-sump-pump-backup-systems-of-the-year-a4309816655/",
+   "source_title": "Best Sump Pump Backup Systems - Consumer Reports",
+   "read": "2026-11-10",
+   "note": "No retailers, prices or bundles on the page."
+  },
+  {
+   "product": "Wayne ESP25",
+   "label": "Battery included?",
+   "value": "No: 'A battery (not included) must be installed to operate the back-up sump pump'",
+   "source": "https://www.manualsdir.com/manuals/221712/wayne-esp25-353501-001-cducap725-wss20-wss10-wss30.html",
+   "source_title": "Wayne ESP25 manual, form 353501-001 (2/09), page 1",
+   "read": "2026-11-10",
+   "note": "This is an older 2009 manual revision. Later pages with battery specs were not readable in the excerpt I opened."
+  }
+ ],
+ "unsourced": [
+  "Amazon prices for Wayne ESP25, Wayne WSB1275 battery, Wayne WSS30VN combo and Basement Watchdog systems: amzcheck.py returned blocked:true for the test ASIN, and search returned nothing.",
+  "Whether the Wayne ESP25 charger accepts AGM or LiFePO4 (for example a Vatrer or Redodo 12 V 100 Ah): the waynepumps.com product URL returned 404, the Home Depot manual PDF came back as unreadable binary and I wasn't allowed to convert it locally, and page 1 on manualsdir has no battery-type text.",
+  "Published surge (peak) rating for the Apex 300 and Apex 200: both pages and BLUETTI's sump-pump blog give only 'Lifting Power' (7,680 W / 5,400 W), not a motor-surge figure.",
+  "Whether the Apex 300 product page shows the same 'Extra BF Savings' tiers as the Apex 200 page: I didn't open the Apex 300 page.",
+  "A sump-pump item from any approved brand store other than BLUETTI: Vatrer's store search for 'sump pump' returned nothing, and Redodo returned only a general 24 V 100 Ah battery ($469.99) with no sump-pump product."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9791709999999999
+ }
+}

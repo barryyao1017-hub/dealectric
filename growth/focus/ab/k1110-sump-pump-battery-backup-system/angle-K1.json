@@ -1,0 +1,106 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a power station used as sump-pump backup has to have its AC-ECO auto-off disabled. BLUETTI's manual says AC-ECO ships enabled and turns the AC off when output stays below a set level for a set time. An idle sump pump draws 0 W between cycles, so during an outage the outlet can be dead when the float rises. BLUETTI's 'Lifting Power' figure is a resistive-load mode, so it is not headroom for starting a motor.",
+ "standout": 2,
+ "standout_why": "I compared against the three cited Consumer Reports pages (buying guide, buying guide duplicate, best backup systems) and SEC America's selection guide. CR sizes only 12 V deep-cycle batteries: 75–120 Ah, about 7–8 h of active pumping, tested with a 75 Ah AGM at 10 ft lift. CR publishes no amp, watt, surge, inverter or power-station figures. SEC America gives no sizing figures at all. ChatGPT's own answer lists 'inverter + battery' with no setup caveat. None of them mention auto-off, UPS behavior or motor-start limits. I rate this 2, not 3: the 'ECO on by default' text is from BLUETTI's sibling AC200P L manual, because the Elite 100 V2 manual PDF would not render as text for me.",
+ "kit_items": [
+  "Battery and inverter for the existing 120 V AC primary pump: BLUETTI Elite 100 V2. It has 1,024 Wh of LiFePO4 and 1,800 W of continuous AC. It switches to battery in ≤10 ms (UPS), so it can sit plugged in between the wall and the pump. It refills 80% in 45 min on 1,200 W AC. After setup, turn AC-ECO off in the app or with the buttons.",
+  "Setting, not a product: power the pump from the power station's AC outlet and confirm AC-ECO is off. Size by the pump's nameplate amps: runtime h ≈ 1,024 Wh ÷ (nameplate A × 120 V × fraction of time the pump runs). I could not source a typical pump's amps or start surge, so check the nameplate rather than BLUETTI's 2,700 W 'Lifting Power' figure."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 100 V2 | https://www.bluettipower.com/products/elite-100-v2-portable-power-station | $499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Battery capacity and chemistry",
+   "value": "1,024 Wh (20 Ah), LiFePO4",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-10",
+   "note": "Maker's US product page. For comparison, CR's test battery holds 12 V × 75 Ah = 900 Wh nominal, so 1,024 Wh ÷ 900 Wh ≈ 1.14× that battery's nominal energy."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "AC output",
+   "value": "1,800 W continuous, 120 V, 15 A; '2,700 W Lifting Power'",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-10",
+   "note": "The page gives no separate surge or peak figure for motors. 'Lifting Power' is BLUETTI's resistive-load mode (see the AC200P L manual finding), so it does not show that a pump motor can start."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "UPS switchover time",
+   "value": "≤10 ms",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-10",
+   "note": "Maker's claim: 'Switches to battery power in just 10 ms'. This lets the unit stay inline between the wall outlet and the pump."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "AC refill time",
+   "value": "80% in 45 min at 1,200 W AC input",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-10",
+   "note": "0.8 × 1,024 Wh = 819 Wh in 0.75 h, about 1,092 W average into the battery. When the grid returns between storms, it is mostly refilled in under an hour."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, maker's US store",
+   "value": "$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-10",
+   "note": "storecheck.py product: variant 'Elite 100 V2', price 499.0, available true."
+  },
+  {
+   "product": "BLUETTI AC200P L (sibling model, same maker)",
+   "label": "AC-ECO default and behavior",
+   "value": "AC-ECO and DC-ECO enabled by default; AC turns off when output stays below a set level for a set time; AC-ECO unavailable while charging from AC",
+   "source": "https://manualslib.mx/manual/899447/Bluetti-Ac200P-L.html?page=21",
+   "source_title": "BLUETTI AC200P L User Manual, section 9.5 ECO Mode (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Manual quote: 'The AC-ECO and DC-ECO modes are enabled by default to save energy.' Implication: while the grid is up, ECO is inactive. Once the grid fails, an idle pump (0 W between cycles) can trigger the shut-off. This is the AC200P L manual, not the Elite 100 V2 manual. The Elite 100 V2 manual lists a '5.4 ECO Mode' section, but its PDF would not render as text for me."
+  },
+  {
+   "product": "BLUETTI AC200P L (sibling model, same maker)",
+   "label": "Power Lifting Mode scope",
+   "value": "Resistive loads only, 2,400–3,600 W; actual operating power stays at 2,400 W",
+   "source": "https://manualslib.mx/manual/899447/Bluetti-Ac200P-L.html?page=21",
+   "source_title": "BLUETTI AC200P L User Manual, section 9.4 Power Lifting Mode (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "Examples given are kettles, hair dryers and electric blankets. So a 'Lifting Power' figure does not count toward starting a pump motor."
+  },
+  {
+   "product": "general",
+   "label": "Battery sizing the cited rival gives",
+   "value": "75–120 Ah 12 V deep-cycle; 7–8 h of active pumping per full charge; CR test battery 75 Ah AGM at 10 ft lift",
+   "source": "https://www.consumerreports.org/home-garden/sump-pumps/buying-guide/",
+   "source_title": "Sump Pump Backup System Buying Guide - Consumer Reports",
+   "read": "2026-11-10",
+   "note": "This is the rival baseline. It gives no amps, watts, surge, inverter or power-station figures."
+  }
+ ],
+ "unsourced": [
+  "Running amps and start (locked-rotor) current of a typical 1/3 HP and 1/2 HP primary pump (Zoeller M53, Wayne CDU790/CDU800). zoellerpumps.com returned 404; the Ferguson, SupplyHouse, Pollard and USABlueBook pages returned 403; the Wayne manual PDF would not render; the ManualsHive copy failed TLS. So the runtime arithmetic stays a formula built on the pump's nameplate amps.",
+  "Elite 100 V2 motor surge or peak watts. The product page lists only 1,800 W rated and 2,700 W 'Lifting Power'. The support page and manual PDF (s4.bluettipower.com/...0f613cd7.pdf) did not render as text.",
+  "Elite 100 V2's own AC-ECO default, low-load threshold and timeout. The manual lists a section '5.4 ECO Mode', but I could not read it. Forum threads describing a 4-hour timeout redirect to forum.bluettipower.com, so I could not open them.",
+  "Elite 100 V2 self-consumption (idle watts) with AC on and no load. Nothing opened gives a maker figure or a named measurement, so I can't say how many hours of standby the 1,024 Wh covers.",
+  "Duty cycle (fraction of time the pump runs) during heavy rain. None of the opened sources gives a figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9424910999999998
+ }
+}
