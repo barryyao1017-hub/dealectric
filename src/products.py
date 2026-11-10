@@ -4977,6 +4977,23 @@ PRODUCTS = [
  "fit": "A 1-1/2 in. backup-pump discharge line, as in the preferred install where the backup gets its own line (Wayne's Method 1).",
  "caveats": ["The main pump's discharge line needs its own check valve too. If yours doesn't have one, buy a second valve."]},
 
+{"slug": 'bluetti-sora-500-solar-panel',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'solar-panel',
+ "name": 'BLUETTI SORA 500 Portable Solar Panel, 500 W',
+ "model": 'SORA 500',
+ "url": 'https://www.bluettipower.com/products/500w-portable-solar-panel',
+ "price": 849.0,
+ "verified": '2026-11-10',
+ "specs": [('Rated power', '500 W'), ('Open-circuit voltage (Voc)', '49.1 V (Impulse Gamer)'), ('Vmp / Imp', '40.92 V / 12.22 A (Impulse Gamer)'), ('Short-circuit current (Isc)', '13.31 A (Impulse Gamer)'), ('Connector', 'MC4')],
+ "warranty": "12 months, BLUETTI's term for all its solar panels and accessories. Claims need proof of purchase from BLUETTI or an authorized seller (BLUETTI warranty policy)",
+ "returns": '30 days from purchase for a full refund, if the panel is unused, complete and in its original package. The buyer pays return shipping (BLUETTI refund policy)',
+ "summary": "BLUETTI's 500 W foldable MC4 panel. At 49.1 V open-circuit and 13.31 A short-circuit, one panel fits each of the Apex 300's 12–60 V, 20 A solar inputs.",
+ "fit": 'Use two, one on each Apex 300 input, for 1,000 W.',
+ "caveats": ['Impulse Gamer (Andrew Paul) averaged closer to 400 W per panel in Australian winter testing.', "Impulse Gamer lists an MC4-to-XT60 adapter cable in the box of the unit it reviewed. The US product page doesn't list box contents.", "Two panels in parallel on one input would exceed the input's 20 A limit (2 × 13.31 A). More than two panels needs BLUETTI's SolarX 4K."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
