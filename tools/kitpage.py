@@ -166,6 +166,31 @@ def kit_errors(draft: dict) -> list[str]:
     return errs
 
 
+PRODUCT_KEYS = ["slug", "brand", "program", "asin", "category", "name", "model", "url", "official_page", "price", "list_price",
+                "verified", "codes_excluded", "specs", "warranty", "returns", "summary", "fit", "caveats"]
+
+
+def normalize_products(draft: dict, before: list[dict]) -> list[dict]:
+    """Fix passes sometimes return product records in their own shape (price "$29", price_date, warranty_source...):
+    merge each over the record it replaces and keep only products.py's keys, with a numeric price."""
+    old = {p["slug"]: p for p in before}
+    out = []
+    for p in draft.get("products") or []:
+        m = {**old.get(p.get("slug"), {}), **{k: v for k, v in p.items() if v not in (None, "", [])}}
+        if isinstance(m.get("price"), str):
+            n = re.sub(r"[^0-9.]", "", m["price"])
+            m["price"] = float(n) if n else None
+        if m.get("program", "").startswith("amazon:"):
+            m["price"] = None
+        if isinstance(m.get("specs"), dict):
+            m["specs"] = [[k.replace("_", " ").capitalize(), str(v)] for k, v in m["specs"].items()]
+        m.setdefault("verified", A.today())
+        if not m.get("name") and m.get("brand") and m.get("model"):
+            m["name"] = f"{m['brand']} {m['model']}"
+        out.append({k: m[k] for k in PRODUCT_KEYS if k in m})
+    return out
+
+
 def product_errors(draft: dict) -> list[str]:
     """gappage's checks on the draft's new product records (fields, program, category, Amazon listing), with
     amzcheck retried while Amazon walls it (11-10: 3 of 5 ASINs blocked on one pass, found on the next)."""
@@ -213,7 +238,9 @@ def apply(slug: str, local: bool) -> dict:
         fx = A.claude(A.fix_prompt(draft, errs + ["(this page sells a kit: keep the 'kit' key, same shape)"]))
         if fx.get("draft"):
             keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug", "kit_page") if k in draft}
+            before = draft.get("products") or []
             draft = {**fx["draft"], **keep, "status": "ok", "kit_fix": {"errors": errs, "log": fx.get("log")}}
+            draft["products"] = normalize_products(draft, before)
             A.jsave(d / "draft.json", draft)
             errs = kit_errors(draft) + product_errors(draft)
     if errs:
