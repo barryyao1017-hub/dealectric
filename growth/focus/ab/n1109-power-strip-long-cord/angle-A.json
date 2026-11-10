@@ -1,0 +1,78 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the long-cord strips' watt ratings use different voltages: Tripp Lite's '1,800 W' and GoGreen's '1,875 W' are the same 15 A (15 A × 120 V vs 15 A × 125 V), while TESSAN's own long-cord flat-plug line runs from 1,875 W (15 A) down to 1,250 W (10 A), so 'watts' on these cards compares unlike things.",
+ "standout": 1,
+ "standout_why": "I read rottenwifi.com (2026-09-30), which already does part of this. It gives cord AWG, 15 A/1,800 W and a 500 V UL 1449 VPR for the 6–10 ft Belkin BE112234-10 and Tripp Lite TLP606B. It also shows a 10 ft SUPERDANNY at 1,250 W/10 A. It does not convert 1,800 W vs 1,875 W to amps and covers nothing over 10 ft. I could not read gearlark.com (TLS certificate error) or the Home Depot, Office Depot, Walmart and Eaton result pages (timeouts or bot walls), so I cannot rule out that one of them states it.",
+ "decides": "This confirms rather than changes the pick, and only in part. It shows that ChatGPT's 25 ft Tripp Lite card ('1800W rating') can carry as much as the GoGreen 15 ft (1,875 W): both are 15 A. Per the retailer page I opened, though, the Tripp Lite PS725B is a plain power strip with no surge protection mentioned. The finding that could decide the pick is that the TESSAN 25 ft 4-outlet strip may be rated 10 A/1,250 W, a third less than the others. I could only see that in a search summary and could not open a page that states it, so it cannot be published yet.",
+ "candidates": [
+  "GoGreen Power GG-16315-15 (6 outlets, 15 ft)",
+  "TESSAN Flat Plug Extension Cord 25 FT, 4 outlets + 3 USB, 900 J (Amazon B0CLJ5FJ23)",
+  "TESSAN Flat Plug Surge Protector Power Strip 1026 (8 outlets, 5–25 ft)",
+  "Tripp Lite PS725B Power It! 7-outlet, 25 ft",
+  "Eaton Tripp Lite SS361220 (12 outlets, 15 ft, 1,650 J)",
+  "Eaton Tripp Lite SS741515 (16 outlets, 15 ft, 450 J)",
+  "DEWENWILS 6-outlet 15 ft surge protector"
+ ],
+ "findings": [
+  {
+   "product": "GoGreen Power GG-16315-15",
+   "label": "Current rating, surge rating, cord, listing",
+   "value": "15 A / 1,875 W circuit breaker; 1,200 J; 15 ft cord; UL and cUL; $39.95",
+   "source": "https://www.globalindustrial.com/p/gogreen-power-gg-16315-15-6-outlet-surge-protector-15ft-cord-white",
+   "source_title": "GoGreen Power Surge Protected Power Strip, 6 Outlets, 15A, 1200 Joules, 15' Cord – Global Industrial",
+   "read": "2026-11-09",
+   "note": "Retailer page; GoGreen has no US store I could find. The page lists 3 conductors but no AWG. 1,875 W = 15 A × 125 V. I have not confirmed that this is the $16.58 Home Depot card ChatGPT showed."
+  },
+  {
+   "product": "Tripp Lite PS725B",
+   "label": "Current rating, cord, surge protection",
+   "value": "15 A resettable breaker; 1,800 W; 25 ft (7.62 m) cord; no surge protection or joule rating on the page",
+   "source": "https://fleetnetwork.ca/products/tripp-lite-power-it-7-outlet-power-strip-25-ft-cord-black-housing-nema-5-15p-7-x-nema-5-15r-25-ft-cord-120-v-ac-voltage-ps725b.html",
+   "source_title": "Tripp Lite Power It! 7-Outlet Power Strip, 25 ft Cord, Black Housing (PS725B) – Fleet Network",
+   "read": "2026-11-09",
+   "note": "This is a Canadian retailer, used because the Eaton maker page (eaton.com/us/en-us/skuPage.PS725B.html) timed out twice. 1,800 W = 15 A × 120 V, the same current as GoGreen's 1,875 W. ChatGPT's card was truncated to 'PS72…', so the match to PS725B is inferred from 7 outlets + 25 ft + 1,800 W."
+  },
+  {
+   "product": "TESSAN Flat Plug Surge Protector Power Strip 1026",
+   "label": "Rated load, surge rating, cord options, price",
+   "value": "8 outlets at 1,875 W max; 900 J; listed as 'Long Extension Cord 5-25 Ft'; $27.99 (compare-at $55.99)",
+   "source": "https://www.tessan.com/products/flat-plug-surge-protector-power-strip-1026",
+   "source_title": "TESSAN Flat Plug Surge Protector Power Strip 1026",
+   "read": "2026-11-09",
+   "note": "Read through storecheck.py search on tessan.com. The product-detail call returned HTTP 429, so I could not see per-length variant prices or check whether 1,875 W applies to every length. The same body text also says '5 Feet low profile extension cord'. 1,875 W = 15 A × 125 V."
+  },
+  {
+   "product": "TESSAN (same store, other long-cord models)",
+   "label": "Watt ratings across TESSAN's own flat-plug line",
+   "value": "PS02: 1,625 W, 1,800 J (5 ft); PS07: 1,250 W, 2,100 J (5 ft); PS09: 1,250 W, 1,050 J (10 ft)",
+   "source": "https://www.tessan.com/products/10-ft-surge-protector-pd-20w-ps09",
+   "source_title": "TESSAN 10 FT Surge Protector PD 20W PS09",
+   "read": "2026-11-09",
+   "note": "Read through storecheck.py search on tessan.com. The PS02 text is from https://www.tessan.com/products/tessan-12-outlet-extender-with-4-usb-2-usb-c-surge-protector-power-strip-5ft and the PS07 text from https://www.tessan.com/products/flat-extension-cord-surge-protector-power-strip-ps07. At 125 V, 1,625 W = 13 A and 1,250 W = 10 A. Within one brand, a higher joule figure comes with a lower current rating, so joules and watts have to be read separately."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of AWG and VPR",
+   "value": "Belkin BE112234-10: 10 ft, 14 AWG, 15 A/1,800 W, 500 V UL 1449; Tripp Lite TLP606B: 6 ft, 14 AWG SJT, 900 J, 500 V VPR; SUPERDANNY 10 ft: 1,250 W/10 A",
+   "source": "https://rottenwifi.com/best-extension-cord-surge-protectors-what-to-buy-for-extra-reach-and-surge-protection/",
+   "source_title": "Best Corded Surge Protectors: Belkin BE112234-10 vs. TLP606B – RottenWiFi",
+   "read": "2026-11-09",
+   "note": "This is a rival page (result 5), recorded so the gap can be judged against it. Nothing on it is longer than 10 ft."
+  }
+ ],
+ "unsourced": [
+  "Rated watts/amps of the TESSAN 25 ft 4-outlet + 3 USB strip (Amazon B0CLJ5FJ23 / B0CXLMFBGJ). A search summary said a tessan.com page states '1250W, 10A Max, 125V' with the 25 FT variant out of stock at $34.99. tessan.com returned HTTP 429 three times and Amazon's page returned 503, so I never opened a page that states it.",
+  "Cord gauge (AWG) of every long-cord candidate: GoGreen GG-16315-15, TESSAN 25 ft, Tripp Lite PS725B, DEWENWILS 15 ft. Global Industrial lists conductors but no gauge, and the Eaton pages timed out.",
+  "UL 1449 VPR (clamping voltage) for GoGreen GG-16315-15, the TESSAN 25 ft, Eaton SS361220 and SS741515. The Eaton SKU pages for SS361220, TLM615SA and PS725B timed out, and Office Depot timed out.",
+  "Maker-page confirmation for Tripp Lite PS725B: I used a retailer page instead.",
+  "DEWENWILS 15 ft specs: Walmart showed a bot check and I found no maker page.",
+  "TESSAN 15 ft 8-outlet (the $36.99 Best Buy card): no page opened.",
+  "GearLark's article (result 6): TLS certificate error, so I could not check whether it already normalises amps or watts."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.9156629000000003
+ }
+}

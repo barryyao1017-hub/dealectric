@@ -1,0 +1,85 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that Tripp Lite's Power It! power-strip manual forbids plugging the strip into an extension cord or adapter that drops the ground pin, or into an ungrounded outlet. That rules out the common fix of adding a 2-prong adapter or a second cord to reach further.",
+ "standout": 1,
+ "standout_why": "I compared against rottenwifi.com (result 5, opened). It already says not to plug one strip into another, not to use indoor strips outdoors, and to keep heaters off consumer strips. It says nothing about ungrounded outlets, ground-dropping adapters, NEMA plug types or 20 A circuits. gearlark.com (result 6) failed to open with a TLS certificate error. The Eaton SKU pages (results 7–8), Newegg (9–10, 403), Office Depot (3–4, timeout), Walmart (2, bot wall) and CRST (11–12, 429) would not load, so I could not check what they say. Only part of my finding is new against what I could read.",
+ "decides": "It confirms the pick rather than changing it. Buy the cord length you need instead of planning to extend a shorter strip, and plug into a grounded 3-prong outlet. On Tessan's own store, its 5–25 ft flat-plug model 1026 is rated 1875 W across 8 outlets, while its 10 ft PS09 and 5 ft PS07 are rated 1250 W. So for a long cord with full 15 A capacity, the 1026 is the Tessan to pick. I could not open the Eaton page for SS361220, so its plug type is still open. If it uses a NEMA 5-20P plug, it will not fit an ordinary household outlet.",
+ "candidates": [
+  "Tripp Lite PS725B Power It! 7-outlet 25 ft",
+  "TESSAN Flat Plug Surge Protector Power Strip 1026 (5–25 ft)",
+  "TESSAN PS09 10 ft surge protector",
+  "Tripp Lite SS361220 12-outlet 15 ft",
+  "GoGreen Power 6-outlet 15 ft surge protector",
+  "DEWENWILS 6-outlet 15 ft surge protector"
+ ],
+ "findings": [
+  {
+   "product": "Tripp Lite PowerIt! power strip (model 932619 manual)",
+   "label": "Extension cords and adapters",
+   "value": "\"DO NOT use with extension cords or adapters that eliminate the connection to ground.\"",
+   "source": "https://www.manualsdir.com/manuals/210134/tripp-lite-powerit-power-strip-932619.html",
+   "source_title": "Tripp Lite PowerIt! Power Strip 932619 User Manual",
+   "read": "2026-11-09",
+   "note": "This is Tripp Lite's own manual, read on the manualsdir.com mirror because tripplite.eaton.com manual links redirect away and eaton.com timed out. It covers model 932619 and is not specific to the PS725B."
+  },
+  {
+   "product": "Tripp Lite PowerIt! power strip (model 932619 manual)",
+   "label": "Required wall outlet",
+   "value": "\"DO NOT connect to an ungrounded outlet\"; install into \"a standard 3-wire grounded 120V AC 60 Hz outlet\"",
+   "source": "https://www.manualsdir.com/manuals/210134/tripp-lite-powerit-power-strip-932619.html",
+   "source_title": "Tripp Lite PowerIt! Power Strip 932619 User Manual",
+   "read": "2026-11-09",
+   "note": "Same document."
+  },
+  {
+   "product": "Tripp Lite PowerIt! power strip (model 932619 manual)",
+   "label": "Where it can be used",
+   "value": "\"designed for indoor use only\"; keep away from moisture and from heat sources such as radiators and heat registers",
+   "source": "https://www.manualsdir.com/manuals/210134/tripp-lite-powerit-power-strip-932619.html",
+   "source_title": "Tripp Lite PowerIt! Power Strip 932619 User Manual",
+   "read": "2026-11-09",
+   "note": "The manual does not mention medical equipment, aquariums, 20 A circuits, or plugging one strip into another."
+  },
+  {
+   "product": "TESSAN Flat Plug Surge Protector Power Strip 1026",
+   "label": "Cord length range, load rating, surge rating, price",
+   "value": "5–25 ft cord options; 8 AC outlets, 1875 W max; 900 J; USB ports 15 W max total; from $27.99 (compare-at $55.99)",
+   "source": "https://www.tessan.com/products/flat-plug-surge-protector-power-strip-1026",
+   "source_title": "TESSAN Flat Plug Surge Protector Power Strip 1026",
+   "read": "2026-11-09",
+   "note": "Read from Tessan's US Shopify store with storecheck.py search. The product page itself then returned HTTP 429, so I could not confirm the price of each cord length. $27.99 is the listed starting price."
+  },
+  {
+   "product": "TESSAN PS09 10 ft surge protector",
+   "label": "Load rating, surge rating, price",
+   "value": "9 AC outlets, 1250 W max; 1050 J; 10 ft flat cord; $31.99 (compare-at $46.99)",
+   "source": "https://www.tessan.com/products/10-ft-surge-protector-pd-20w-ps09",
+   "source_title": "TESSAN 10 FT Surge Protector PD 20W PS09",
+   "read": "2026-11-09",
+   "note": "From the storecheck.py search of tessan.com. At 120 V, 1250 W is about 10.4 A, below a 15 A circuit's 1800 W."
+  },
+  {
+   "product": "general (rival page)",
+   "label": "What the cited rival already covers",
+   "value": "Says never plug a power strip or surge protector into another; keep heaters, hair dryers, kettles and air conditioners off consumer strips; no indoor strips outdoors; Belkin BE112234-10 has a 10 ft 14 AWG cord, Tripp Lite TLP606B a 6 ft 14 AWG SJT cord at 15 A with 900 J",
+   "source": "https://rottenwifi.com/best-extension-cord-surge-protectors-what-to-buy-for-extra-reach-and-surge-protection/",
+   "source_title": "Best Corded Surge Protectors: Belkin BE112234-10 vs. TLP606B",
+   "read": "2026-11-09",
+   "note": "This is the baseline I measured the gap against. The page covers no strip longer than 10 ft and does not mention NEMA plug types or ungrounded outlets."
+  }
+ ],
+ "unsourced": [
+  "Plug type of the Tripp Lite SS361220 (NEMA 5-15P or 5-20P). Distributor listings disagree: Levata says 5-20P and a Connection.com URL says 5-15P. eaton.com/us/en-us/skuPage.SS361220.html timed out three times. I downloaded the spec PDF from camcor.com but could not extract its text, and the DigiKey datasheet returned 404.",
+  "Tripp Lite PS725B maker specs (plug, cord gauge, UL standard, whether it has surge protection, warranty). The eaton.com SKU page and Best Buy both timed out, and the tripplite.eaton.com URL redirects to eaton.com.",
+  "Load rating, cord gauge and warnings for each TESSAN 1026 cord length (does 25 ft keep 1875 W?). The tessan.com product page returned HTTP 429 three times.",
+  "DEWENWILS 15 ft and GoGreen Power 15 ft specs and stated exclusions. Walmart showed a bot wall, and I did not reach Home Depot or the maker pages within the call budget.",
+  "CRST 12- and 16-outlet 15 ft strip specs. crsttech.com returned HTTP 429.",
+  "gearlark.com rival page, which failed with a TLS certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 0.9351052000000001
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got puts a number on how much voltage a long cord loses at full load. Worked out from the cord's gauge, the Tripp Lite PS725B's 25 ft 14 AWG SJT cord drops about 1.9 V (1.6% of 120 V) and turns about 28 W into heat at its 15 A breaker limit. A 25 ft 16 AWG cord at the same 15 A would drop about 3.0 V (2.5%) and give off about 45 W.",
+ "standout": 2,
+ "standout_why": "I compared against rottenwifi.com's corded-surge-protector page, which ranked #5 and was read 2026-11-09. It lists AWG for its Belkin (14 AWG, 10 ft) and Tripp Lite TLP606B (14 AWG, 6 ft) picks and says only that 'longer, thinner cords can have greater voltage drop and heating under load'. It gives no volts, percent or watts, and it doesn't cover any 15–25 ft model that ChatGPT showed. The retailer and maker results (Home Depot, Walmart, Office Depot, Newegg, Eaton, CRST) are spec and category listings with no derived figures. Walmart showed a bot wall, and the two Eaton pages timed out. I couldn't read gearlark.com (#6) because of an SSL certificate error, so I can't rule out that it has this.",
+ "decides": "This backs ChatGPT's 25 ft pick only where the cord is 14 AWG. The PS725B's sourced 14 AWG / 15 A cord loses 1.6% at full load, which is within the 3%-or-less branch-circuit guidance electricians commonly use (I did not source that guideline). A 16 AWG cord of the same length at the same current loses about 60% more voltage and gives off about 60% more heat. So a 25 ft strip whose maker won't state the gauge, like the TESSAN 25 ft card ChatGPT showed, should be kept to lighter loads. The page should tell shoppers to check AWG before length. The PS725B has a circuit breaker but no surge protection, so a shopper who needs surge protection has to make a different trade-off.",
+ "candidates": [
+  "Tripp Lite PS725B (25 ft, 7 outlets)",
+  "TESSAN Flat Plug Surge Protector Power Strip 1026 (5–25 ft)",
+  "GoGreen Power GG-16315-15 (15 ft, 6 outlets)",
+  "Eaton Tripp Lite SS361220 (15 ft, 12 outlets)",
+  "CRST 12-Outlet Metal Power Strip (15 ft)",
+  "DEWENWILS 6-outlet 15 ft"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Copper conductor resistance by AWG",
+   "value": "14 AWG: 8.2 Ω/1000 m; 16 AWG: 13 Ω/1000 m",
+   "source": "https://www.engineeringtoolbox.com/wire-gauges-d_419.html",
+   "source_title": "Engineering ToolBox – American Wire Gauge (AWG)",
+   "read": "2026-11-09",
+   "note": "This is the input for every voltage-drop figure below. Converted per foot: 14 AWG ≈ 2.50 Ω/1000 ft, 16 AWG ≈ 3.96 Ω/1000 ft."
+  },
+  {
+   "product": "Tripp Lite PS725B",
+   "label": "Cord spec",
+   "value": "25 ft, 14 gauge SJT, 15 A breaker, 1800 W, 7× NEMA 5-15R",
+   "source": "https://markertek.com/product/trl-ps725b/tripp-lite-ps725b-power-it-7-outlet-power-strip-25-foot-cord-black-housing",
+   "source_title": "Tripp Lite PS725B Power It 7-Outlet Power Strip 25 Foot Cord Black Housing – Markertek",
+   "read": "2026-11-09",
+   "note": "Spec lines quoted: 'Input Cord Length (ft.): 25', 'Input Cord Gauge Type: 14 gauge; SJT', 'Circuit Breaker (amps): 15', 'Output (Watts): 1800'. The page says it exceeds IEEE 587 Cat A/B and doesn't mention UL. The Eaton maker page timed out."
+  },
+  {
+   "product": "Tripp Lite PS725B",
+   "label": "Voltage drop at full 15 A load",
+   "value": "≈1.9 V (1.6% of 120 V)",
+   "source": "https://markertek.com/product/trl-ps725b/tripp-lite-ps725b-power-it-7-outlet-power-strip-25-foot-cord-black-housing",
+   "source_title": "Markertek PS725B spec + Engineering ToolBox AWG table",
+   "read": "2026-11-09",
+   "note": "2 × 25 ft = 15.24 m loop × 8.2 Ω/km = 0.125 Ω; 0.125 Ω × 15 A = 1.87 V; 1.87 / 120 = 1.6%."
+  },
+  {
+   "product": "Tripp Lite PS725B",
+   "label": "Heat given off in the cord at full 15 A load",
+   "value": "≈28 W",
+   "source": "https://www.engineeringtoolbox.com/wire-gauges-d_419.html",
+   "source_title": "Engineering ToolBox AWG table + Markertek PS725B spec",
+   "read": "2026-11-09",
+   "note": "I²R = 15² × 0.125 Ω = 28 W."
+  },
+  {
+   "product": "general",
+   "label": "Same 25 ft cord in 16 AWG at 15 A, for comparison",
+   "value": "≈3.0 V drop (2.5% of 120 V), ≈45 W cord heat",
+   "source": "https://www.engineeringtoolbox.com/wire-gauges-d_419.html",
+   "source_title": "Engineering ToolBox – American Wire Gauge (AWG)",
+   "read": "2026-11-09",
+   "note": "15.24 m × 13 Ω/km = 0.198 Ω; × 15 A = 2.97 V; 15² × 0.198 = 44.6 W. This is about 59% more than 14 AWG at the same length and current."
+  },
+  {
+   "product": "TESSAN Flat Plug Surge Protector Power Strip 1026",
+   "label": "Rating and lengths (maker store)",
+   "value": "8 outlets + 3 USB, 1875 W max, 900 J, cord lengths 5–25 ft; store listing from $27.99",
+   "source": "https://tessan.com/products/flat-plug-surge-protector-power-strip-1026",
+   "source_title": "TESSAN Flat Plug Surge Protector Power Strip 1026 – tessan.com",
+   "read": "2026-11-09",
+   "note": "Read from the tessan.com Shopify catalogue through storecheck search. $27.99 is the listing's lead price, and I could not tie it to the 25 ft variant. 1875 W / 125 V = 15 A. The store text gives no cord gauge."
+  },
+  {
+   "product": "GoGreen Power GG-16315-15",
+   "label": "Rating",
+   "value": "15 ft cord, 15 A / 1875 W breaker, 1,200 J, UL and cUL",
+   "source": "https://www.globalindustrial.com/p/gogreen-power-gg-16315-15-6-outlet-surge-protector-15ft-cord-white",
+   "source_title": "GoGreen Power Surge Protected Power Strip, 6 Outlets, 15A, 1200 Joules, 15' Cord – Global Industrial",
+   "read": "2026-11-09",
+   "note": "No gauge on the page, so I didn't compute a voltage drop. Home Depot's product page returned 403."
+  }
+ ],
+ "unsourced": [
+  "TESSAN 25 ft (1026 and the 4-outlet 25 ft model) cord gauge: tessan.com product page returned HTTP 429 three times, Newegg listing returned 403, search results gave no TESSAN gauge",
+  "TESSAN 25 ft variant price on tessan.com: product endpoint rate-limited (429); only the listing's lead price of $27.99 was readable",
+  "GoGreen GG-16315-15 cord gauge: only a Walmart search snippet said 14-gauge SJT; Home Depot and B&H returned 403 and Global Industrial lists no gauge",
+  "Tripp Lite PS725B price at Best Buy (the retailer ChatGPT showed): page timed out; Eaton maker page timed out; Connection and Zoro returned 403. I left out cost per foot",
+  "Eaton Tripp Lite SS361220 cord gauge: Eaton SKU page timed out",
+  "CRST 12-outlet 15 ft gauge and price: crsttech.com returned 429",
+  "DEWENWILS 15 ft gauge and price: Walmart showed a bot check",
+  "A sourced 3% voltage-drop guideline (NEC informational note) to anchor the threshold: not looked up within the tool budget"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.7896531999999999
+ }
+}
