@@ -1,0 +1,138 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the Fosi Audio M03 (the sub amp Dealectric lists, $76.49 today) is rated only for 4–8 Ω loads, so it cannot drive a 2 Ω subwoofer or a dual-voice-coil sub wired to 2 Ω. The 2 Ω-rated choices among the candidates are Fosi's own M01-BT (2–8 Ω) or the Behringer NX3000D (2 x 1,500 W at 2 Ω).",
+ "standout": 2,
+ "standout_why": "The two cited rivals are B&H compare pages (EPQ304 / XLS1002 / NX3000D / A800, and NX3000D vs XLS1502). Both returned HTTP 403 to me, so I am judging from their titles and from ChatGPT's answer, which cites them. Those pages cover only Behringer and Crown rack amps. The Sweetwater results are category listings, ChurchSoundCalc covers church PA, and the B&H PDFs are 2015 and 2019 catalogs. None of these covers the Fosi M03, the M01-BT or the Dayton SPA250DSP, so none can give their load ranges. ChatGPT itself only says 'match the amplifier to the subwoofer's 2Ω, 4Ω, or 8Ω load' and never gives a limit for any amp. The B&H spec tables probably do list Crown and Behringer power at each load, so the rack-amp half of the finding is likely already covered there.",
+ "decides": "The pick depends on the sub's impedance. For a 4 Ω or 8 Ω passive home sub fed from an AVR's RCA sub out, the Fosi M03 works ($76.49, RCA in, 20–200 Hz low-pass), but Fosi says the supplied 32 V/5 A brick does not reach rated maximum power (DC input goes up to 48 V). For a 2 Ω load, rule out the M03 and the Dayton SPA250DSP (rated only into 4 Ω). Pick the Fosi M01-BT (2–8 Ω, $89.99) or the NX3000D in stereo mode (2 x 1,500 W at 2 Ω, $339). The NX3000D is rated down to 4 Ω when bridged. The Dayton SPA250DSP is a plate amp that needs a 9.25 x 6.25 in cutout in the sub's cabinet, so it only suits DIY enclosures you can cut. The Crown XLS 1002 is the only rack candidate whose maker page I opened that lists RCA inputs (alongside XLR and 1/4 in), so it connects directly to an AVR sub out.",
+ "candidates": [
+  "Fosi Audio M03",
+  "Fosi Audio M01-BT",
+  "Behringer NX3000D",
+  "Crown XLS 1002",
+  "Dayton Audio SPA250DSP"
+ ],
+ "findings": [
+  {
+   "product": "Fosi Audio M03",
+   "label": "Rated load range (terminating impedance)",
+   "value": "4–8 Ω",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "From the spec table in Fosi's US Shopify store, read with storecheck.py. No 2 Ω rating is given."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "RMS power",
+   "value": "200 W at 4 Ω, 100 W at 8 Ω (spec table); the bullet copy on the same page says 150 W at 4 Ω and 120 W at 8 Ω",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "The maker's page contradicts itself. Quote the lower figures, or both."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Power supply",
+   "value": "32 V / 5 A supply included; DC input range 24–48 V",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "Fosi's wording: 'you need a more powerful power supply to get the MAX power output'."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Low-pass (SUB) range and modes",
+   "value": "Bass range 20–200 Hz in the spec table (the bullet copy says 20–300 Hz); a SUB/PBTL switch; drives passive and powered subwoofers",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "The page contradicts itself here too."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Price, Fosi US store",
+   "value": "$76.49 (compare-at $89.99), in stock",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search JSON."
+  },
+  {
+   "product": "Fosi Audio M01-BT",
+   "label": "Rated load range and power",
+   "value": "2–8 Ω; 220 W RMS at 4 Ω, 110 W at 8 Ω; Bluetooth and RCA inputs; 24 V/4.5 A supply",
+   "source": "https://fosiaudio.com/products/fosi-audio-m01-bt-bluetooth-one-channel-mono-amplifier-for-home-speakers",
+   "source_title": "Fosi Audio M01-BT Bluetooth Subwoofer Mono Amp",
+   "read": "2026-11-10",
+   "note": "From the maker's store spec table. Fosi notes the M01-BT 'is not suitable for active speakers'. Price $89.99."
+  },
+  {
+   "product": "Behringer NX3000D",
+   "label": "Power by load",
+   "value": "2 x 900 W at 4 Ω; 2 x 1,500 W at 2 Ω; 3,000 W bridged into 4 Ω",
+   "source": "https://www.guitarcenter.com/Behringer/NX3000D-3000W-Power-Amplifier-With-DSP-1500000236164.gc",
+   "source_title": "Behringer NX3000D 3000W Power Amplifier With DSP | Guitar Center",
+   "read": "2026-11-10",
+   "note": "Retailer listing, used because the behringer.com page returned HTTP 500. Bridged rating is 4 Ω, so a 2 Ω sub needs one channel in stereo mode."
+  },
+  {
+   "product": "Behringer NX3000D",
+   "label": "Price, Guitar Center",
+   "value": "$339.00",
+   "source": "https://www.guitarcenter.com/Behringer/NX3000D-3000W-Power-Amplifier-With-DSP-1500000236164.gc",
+   "source_title": "Behringer NX3000D 3000W Power Amplifier With DSP | Guitar Center",
+   "read": "2026-11-10",
+   "note": "Matches the price ChatGPT showed. No stock status was shown, only an Add to Cart button."
+  },
+  {
+   "product": "Crown XLS 1002",
+   "label": "Inputs and input sensitivity",
+   "value": "XLR, 1/4 in and RCA inputs; sensitivity selectable at 1.4 Vrms or 0.775 Vrms",
+   "source": "https://www.crownaudio.com/en/products/xls-1002",
+   "source_title": "Crown XLS 1002 product page",
+   "read": "2026-11-10",
+   "note": "Maker page. RCA input means it connects directly to an AVR's sub out."
+  },
+  {
+   "product": "Crown XLS 1002",
+   "label": "Rated power",
+   "value": "350 W per channel at 4 Ω",
+   "source": "https://www.crownaudio.com/en/products/xls-1002",
+   "source_title": "Crown XLS 1002 product page",
+   "read": "2026-11-10",
+   "note": "The maker's spec table is an image, and the datasheet and manual PDFs could not be text-extracted, so the 2 Ω and bridged figures are not sourced (see unsourced)."
+  },
+  {
+   "product": "Dayton Audio SPA250DSP",
+   "label": "Rated load and power",
+   "value": "250 W RMS into 4 Ω, THD+N <0.1%",
+   "source": "https://daytonaudio.com/product/1526/spa250dsp-250w-subwoofer-plate-amplifier-with-dsp",
+   "source_title": "SPA250DSP 250W Subwoofer Plate Amplifier with DSP",
+   "read": "2026-11-10",
+   "note": "The maker page lists no other load rating."
+  },
+  {
+   "product": "Dayton Audio SPA250DSP",
+   "label": "Mounting cutout and I/O",
+   "value": "Cutout 9.25 in H x 6.25 in W (unit 10.25 x 7.25 x 2.125 in); analog balanced and unbalanced inputs; line-level high-pass output only",
+   "source": "https://daytonaudio.com/product/1526/spa250dsp-250w-subwoofer-plate-amplifier-with-dsp",
+   "source_title": "SPA250DSP 250W Subwoofer Plate Amplifier with DSP",
+   "read": "2026-11-10",
+   "note": "A plate amp, so the sub's cabinet must be cut to fit it. It is not a standalone box."
+  }
+ ],
+ "unsourced": [
+  "Crown XLS 1002 power at 2 Ω and 8 Ω, bridged power, and minimum bridged load. The maker's spec table is an image; the datasheet and owner's manual PDFs on adn.harmanpro.com came back as unreadable binary; Full Compass returned 403 and World Wide Stereo returned 429. Search snippets give 550 W at 2 Ω and 1,100 W bridged at 4 Ω, but I did not open a page showing them.",
+  "Behringer NX3000D input connectors (whether there is an RCA input) and a stereo 8 Ω figure. behringer.com returned 500, manualowl returned 403, and Vintage King returned 429 through storecheck. Snippets say XLR and TRS only.",
+  "Behringer NX3000D discontinued status. Only seen in search snippets (Bax-shop UK, zZounds), not opened.",
+  "Dayton SPA250DSP low-pass range, speaker-level input, and current US price. The maker page gives no LPF range, the manual PDF could not be extracted, and Parts Express returned an empty page.",
+  "Contents of the two cited B&H compare pages (both returned 403), so I could not check which per-load ratings they print.",
+  "Crown XLS 1002 price today (ChatGPT showed $500.00). No retailer page loaded."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0167026999999997
+ }
+}

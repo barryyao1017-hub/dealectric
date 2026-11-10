@@ -1,0 +1,109 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got points out that the watt figures on these amps are measured under different conditions. Dayton rates the SPA250DSP at 250 W RMS into 4 Ω at under 0.1% THD+N. Behringer gives the NX3000D's 900 W/1,500 W per channel with no conditions at all. TI rates the TPA3255 chip at 10% THD+N (600 W) and only 480 W at 1%. The Fosi M03's own page gives 200 W RMS and 150 W RMS for the same 4 Ω load, and its 32 V/5 A power brick is rated 160 W, so it can't supply the 200 W spec.",
+ "standout": 2,
+ "standout_why": "ChatGPT's answer cited the two B&H compare pages. Both returned HTTP 403 to WebFetch, so I couldn't check what they say about rating conditions. Going by the answer as shown and the retailer and distributor pages that came up, the NX3000D, XLS 1002 and SPA250DSP all appear as bare watt figures. ChatGPT calls the NX3000D a '1,500-watt' amp, which is Behringer's 2 Ω figure, and it compares that number against Crown's 4 Ω number. It tells the shopper to go by RMS rather than peak, but it never says that one of its three picks has no stated conditions and another has fixed ones. The Fosi M03 is the amp Dealectric lists, and none of the results mention it or its power-supply limit.",
+ "decides": "This confirms the dedicated-amp picks but changes how to size them. Read the power figure at the sub's own impedance, and trust it only when the conditions are given. Dayton's 250 W into 4 Ω at under 0.1% THD+N is the only one of the three cards with stated conditions. The NX3000D's 900 W/ch into 4 Ω (not 1,500 W) has none, so treat it as headroom rather than a guaranteed continuous figure. For the Fosi M03 as shipped, size to the 150 W RMS into 4 Ω figure. That makes it a match for subs rated about 150 W or less. Getting near 200 W needs a stronger supply than the 32 V/5 A brick, within the 24–48 V input range.",
+ "candidates": [
+  "Behringer NX3000D",
+  "Crown XLS 1002",
+  "Dayton Audio SPA250DSP",
+  "Fosi Audio M03"
+ ],
+ "findings": [
+  {
+   "product": "Fosi Audio M03",
+   "label": "Stated RMS power, spec table",
+   "value": "200 W RMS at 4 Ω; 100 W RMS at 8 Ω",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "From the spec table on the maker's US store page, read with storecheck.py. No THD or supply voltage is given for these figures. The only THD figure in the table is a separate '≤0.03%' line."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Stated RMS power, description text on the same page",
+   "value": "150 W RMS at 4 Ω; 120 W RMS at 8 Ω (described as 'up to 200 W' maximum)",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "The page contradicts itself: it says 150 W and 200 W RMS for the same 4 Ω load, and 120 W vs 100 W at 8 Ω."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Included power supply vs rated power",
+   "value": "32 V / 5 A brick included (32 × 5 = 160 W input); DC input range 24–48 V",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "The page itself says: 'The package comes with a 32V/5A power supply, you need a more powerful power supply to get the MAX power output.' The brick is rated for 160 W, which is less than the 200 W RMS spec. Some of that 160 W is also lost inside the amp, so 200 W RMS can't be reached with the supplied brick. My arithmetic, using the page's own figures."
+  },
+  {
+   "product": "Fosi Audio M03",
+   "label": "Price, maker US store",
+   "value": "$76.49 (compare-at $89.99), in stock",
+   "source": "https://fosiaudio.com/products/subwoofer-amplifier-m03-300watts-mono-amp-full-frequency-and-sub-bass-switchable-amplifier",
+   "source_title": "Fosi Audio M03 Subwoofer Mono Amplifier",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search on fosiaudio.com."
+  },
+  {
+   "product": "general (TI TPA3255, the chip in the Fosi M03)",
+   "label": "Chip power at 10% vs 1% THD+N",
+   "value": "PBTL mono into 2 Ω: 600 W at 10% THD+N vs 480 W at 1%. BTL stereo into 4 Ω: 315 W at 10% vs 260 W at 1%. Supply range 18–53.5 V.",
+   "source": "https://www.ti.com/product/TPA3255",
+   "source_title": "TPA3255 product page, Texas Instruments",
+   "read": "2026-11-10",
+   "note": "The same chip gives 20% less power at 1% THD+N than at 10% (480/600). Headline Class-D figures are usually the 10% numbers. The product page doesn't give the supply voltage behind these figures, and the datasheet PDF wouldn't extract."
+  },
+  {
+   "product": "Behringer NX3000D",
+   "label": "Maker power rating and conditions",
+   "value": "2 × 1,500 W into 2 Ω; 2 × 900 W into 4 Ω; 3,000 W into 4 Ω bridged. No THD, frequency, RMS/peak or channels-driven conditions given.",
+   "source": "https://www.behringer.com/en/products/0106-AAP",
+   "source_title": "NX3000D, Behringer",
+   "read": "2026-11-10",
+   "note": "Behringer's product page gives no 8 Ω figure. ChatGPT's '1,500-watt' card uses the 2 Ω figure. Most home passive subs are 4 Ω or 8 Ω, and at 4 Ω the stated figure is 900 W/ch."
+  },
+  {
+   "product": "Behringer NX3000D",
+   "label": "Built-in protection and DSP",
+   "value": "'Zero-Attack' limiters; crossover up to 48 dB/octave; 8 parametric + 2 dynamic EQ; DC, LF and thermal protection per channel",
+   "source": "https://www.behringer.com/en/products/0106-AAP",
+   "source_title": "NX3000D, Behringer",
+   "read": "2026-11-10",
+   "note": "The limiter is how you cap 900 W/ch to a smaller sub's rating."
+  },
+  {
+   "product": "Dayton Audio SPA250DSP",
+   "label": "Maker power rating and conditions",
+   "value": "250 W RMS into 4 Ω, THD+N <0.1%",
+   "source": "https://daytonaudio.com/product/1526/spa250dsp-250w-subwoofer-plate-amplifier-with-dsp",
+   "source_title": "SPA250DSP 250W Subwoofer Plate Amplifier with DSP, Dayton Audio",
+   "read": "2026-11-10",
+   "note": "The only candidate whose maker page gives load and distortion together. The page says 'PC-based GUI software enables full access to the DSP functions'; the front panel has only a single-knob LCD."
+  },
+  {
+   "product": "Crown XLS 1002",
+   "label": "Maker headline rating",
+   "value": "350 W per channel at 4 Ω. The same page's text also says it 'can drive 2400W at 4Ω bridged'.",
+   "source": "https://www.crownaudio.com/en/products/xls-1002",
+   "source_title": "XLS 1002, Crown Audio",
+   "read": "2026-11-10",
+   "note": "The page states no conditions for the 350 W (it lists 'THD < 0.5%' with no power level). Crown's full power table is in an image and a datasheet PDF, and neither would extract. The 2,400 W bridged claim doesn't fit a 2 × 350 W amp: the search-result retail listings (Thomann snippet, not opened) give 1,100 W bridged at 4 Ω and 700 W at 8 Ω. Treat 2,400 W as an error on the maker's page."
+  }
+ ],
+ "unsourced": [
+  "Crown XLS 1002 power-rating conditions (THD %, 1 kHz vs 20 Hz–20 kHz, FTC, both channels driven) and its 8 Ω, 2 Ω and bridged figures. The maker page holds them in an image, and the datasheet (adn.harmanpro.com XLS_DC2_Datasheet_Web_050615) and owner's manual PDFs wouldn't extract to text through WebFetch; local pdftotext/pypdf needed approval. Fullcompass and Sweetwater returned 403.",
+  "Behringer NX3000D 8 Ω rating and any measurement conditions: none on behringer.com. I looked for an independent bench test (AudioScienceReview, named reviewers) and found only user reviews. A diyAudio post about a 20 Hz sustained test of an 'NX3000' sat behind a browser check.",
+  "Measured output for the Crown XLS 1002/1502: the AudioScienceReview XLS 1502 review thread didn't come up in search, so I couldn't open it.",
+  "TPA3255 supply voltage behind TI's 600 W/315 W ratings, and the PBTL 4 Ω power at 32 V. The datasheet PDF (ti.com/lit/ds/symlink/tpa3255.pdf) wouldn't extract.",
+  "Current prices for the NX3000D ($339), XLS 1002 ($500) and SPA250DSP ($411.99) as ChatGPT showed them. Its source was B&H, which returned 403, and the Parts Express page came back empty. Prices are left out rather than carried over from the chat."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.0335115999999998
+ }
+}
