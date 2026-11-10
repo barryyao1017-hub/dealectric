@@ -56,34 +56,37 @@ def store_kit(k: dict) -> dict:
     for p, _ in ps[1:]:
         codes += [c["code"] for c, _ in B.codes_for(p) if c["code"] not in codes]
     t = C.Tab(f"https://{host}/")
+    on_store = False
     try:
         for _ in range(40):
             time.sleep(1)
             o = t.eval("location.origin") or ""
-            # a store may move to another host of the same shop (us.ankersolix.com -> www.ankersolix.com)
-            if o.startswith("https://") and o.split("//")[1].split(".", 1)[-1] == host.split(".", 1)[-1] and (t.eval("document.readyState") or "") != "loading":
-                host = o.split("//")[1]
-                break
-        else:
-            return {"pass": False, "error": f"store page did not load on {host} ({t.eval('location.href')})"}
-        time.sleep(2)
-        variants = {}
-        for i in k["items"]:   # resolve each item's variant from its product page's .js on the store origin
-            if i.get("variant"):
-                variants[i["slug"]] = int(i["variant"]); continue
-            path = B.urlsplit(B.BY_SLUG[i["slug"]]["url"]).path.rstrip("/")
-            js = ("(async () => { for (let i = 0; i < 5; i++) { const r = await fetch(%s + '.js'); if (r.status === 429) { await new Promise(s => setTimeout(s, 30000 * (i + 1))); continue; } return r.json(); } })().then(d => { const want = %s.toLowerCase();"
-                  " const v = d.variants.find(v => v.available && (!want || v.title.toLowerCase().includes(want))) || d.variants[0];"
-                  " return {id: v.id, title: d.title + ' / ' + v.title, available: v.available}; })") % (json.dumps(path), json.dumps(i.get("option", "")))
-            v = t.eval(js)
-            print(f"  {i['slug']}: variant {v}")
-            variants[i["slug"]] = v["id"]
-            time.sleep(1)
-        items = [{"id": variants[i["slug"]], "quantity": i.get("qty", 1)} for i in k["items"]]
-        t.fresh_cart(host)
-        res = t.eval(CART_JS.replace("ITEMS", json.dumps(items)).replace("CODES", json.dumps(codes)))
+            if o and o != "null" and (t.eval("document.readyState") or "") != "loading":
+                on_store = o == f"https://{host}"
+                if on_store or o.startswith("https://"):
+                    break
+        if on_store:
+            time.sleep(2)
+            variants = {}
+            for i in k["items"]:   # resolve each item's variant from its product page's .js on the store origin
+                if i.get("variant"):
+                    variants[i["slug"]] = int(i["variant"]); continue
+                path = B.urlsplit(B.BY_SLUG[i["slug"]]["url"]).path.rstrip("/")
+                js = ("(async () => { for (let i = 0; i < 5; i++) { const r = await fetch(%s + '.js'); if (r.status === 429) { await new Promise(s => setTimeout(s, 30000 * (i + 1))); continue; } return r.json(); } })().then(d => { const want = %s.toLowerCase();"
+                      " const v = d.variants.find(v => v.available && (!want || v.title.toLowerCase().includes(want))) || d.variants[0];"
+                      " return {id: v.id, title: d.title + ' / ' + v.title, available: v.available}; })") % (json.dumps(path), json.dumps(i.get("option", "")))
+                v = t.eval(js)
+                print(f"  {i['slug']}: variant {v}")
+                variants[i["slug"]] = v["id"]
+                time.sleep(1)
+            items = [{"id": variants[i["slug"]], "quantity": i.get("qty", 1)} for i in k["items"]]
+            t.fresh_cart(host)
+            res = t.eval(CART_JS.replace("ITEMS", json.dumps(items)).replace("CODES", json.dumps(codes)))
     finally:
         t.close()
+    if not on_store:   # the browser was sent to another host (us.ankersolix.com -> www.ankersolix.com): plain HTTP
+        print(f"  {host}: the agent's Chrome left the store host; cart test over plain HTTP")
+        res, variants = store_kit_plain(k, host, codes)
     if not isinstance(res, dict):
         return {"pass": False, "error": f"no cart result ({res!r})"[:300]}
     base = res[""]
@@ -102,6 +105,31 @@ def store_kit(k: dict) -> dict:
     if missing:
         row["error"] = f"variants not in the cart: {missing}"
     return row
+
+
+def store_kit_plain(k: dict, host: str, codes: list[str]) -> dict:
+    """The same cart test over plain HTTP (tools/codecheck.py session) for a store that sends the agent's Chrome to
+    another, non-Shopify host (us.ankersolix.com -> www.ankersolix.com, 2026-11-10)."""
+    import codecheck
+    call = codecheck.session(wait_on_429=True, pause=1.0)
+    base = f"https://{host}"
+    variants = {}
+    for i in k["items"]:
+        if i.get("variant"):
+            variants[i["slug"]] = int(i["variant"]); continue
+        d = call(f"{base}{B.urlsplit(B.BY_SLUG[i['slug']]['url']).path.rstrip('/')}.js")
+        want = (i.get("option") or "").lower()
+        v = next((v for v in d["variants"] if v.get("available") and (not want or want in v["title"].lower())), d["variants"][0])
+        print(f"  {i['slug']}: variant {v['id']} {d['title']} / {v['title']} available {v.get('available')}")
+        variants[i["slug"]] = v["id"]
+    call(f"{base}/cart/add.js", {"items": [{"id": variants[i["slug"]], "quantity": i.get("qty", 1)} for i in k["items"]]})
+    res = {}
+    for code in codes:
+        call(f"{base}/cart/update.js", {"discount": code})
+        res[code] = call(f"{base}/cart.js")
+    call(f"{base}/cart/update.js", {"discount": ""})
+    res[""] = call(f"{base}/cart.js")
+    return res, variants
 
 
 def link_check(k: dict) -> bool:
