@@ -1,5 +1,121 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got states that, by Club Car's own Onward spec pages, a lead-acid Onward keeps only about 25–38% of its first-year range after four years while the lithium versions keep 80–92%, or that the $1,150–$1,580 48V conversion kits store 5.12–5.38 kWh, 28–34% more than the Onward's 4.0 kWh base lithium pack, at $225–$294 per kWh.",
+ "standout": 2,
+ "standout_why": "I compared against the cited clubcar.com/en-us/personal/golf-carts page (prices and speeds only, no kWh, range or weight), clubcar.com/en/lithium-ion (only speed, the 375 A controller and IP67, no capacity), ttgolfcarts.com inventory (no lithium listings with specs) and the Advantage Golf Cars E-Z-GO Liberty ELiTE listing (price and 8-year battery warranty, no capacity). None gives pack kWh, charger watts, the lead-acid vs lithium weight gap, the range after four years, or cost per kWh. ChatGPT's own answer gave generic ranges ('30–60 miles', '3–6 hours') with no model-specific numbers.",
+ "decides": "This backs ChatGPT's 'lithium over lead-acid' advice with Club Car's own figures: on the Onward, lithium sheds 248–310 lb and holds most of its range after four years, while lead-acid ends up with about a third. For the 'upgrade an existing cart' branch, which ChatGPT offered but never priced, the Redodo 48V 100Ah kit ($1,149.99, $225/kWh, 5.6 h refill) beats the Vatrer 48V 105Ah kit ($1,579.99, $294/kWh, about 5.8 h) on cost per kWh. Either kit holds more energy than Club Car's 4.0 kWh base lithium, though less than its 7.0 kWh XR pack.",
+ "candidates": [
+  "Club Car Onward 2 Passenger Base Li-Ion",
+  "Club Car Onward 2 Passenger XR Li-Ion",
+  "Club Car Onward 4 Passenger Li-Ion",
+  "E-Z-GO RXV / Freedom RXV ELiTE Lithium",
+  "Redodo 48V 100Ah Golf Cart Conversion Kit",
+  "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit"
+ ],
+ "findings": [
+  {
+   "product": "Club Car Onward 2 Passenger",
+   "label": "Pack energy and charger",
+   "value": "Base Li-Ion 4.0 kWh with 650 W HF shelf charger; XR Li-Ion 7.0 kWh with 900 W HF shelf charger",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-2-passenger/specifications",
+   "source_title": "Onward 2 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "Taken from the maker's spec page."
+  },
+  {
+   "product": "Club Car Onward 2 Passenger",
+   "label": "Derived refill time from the maker's own charger",
+   "value": "Base about 6.2 h; XR about 7.8 h",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-2-passenger/specifications",
+   "source_title": "Onward 2 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "4.0 kWh ÷ 0.65 kW = 6.2 h; 7.0 kWh ÷ 0.90 kW = 7.8 h. This is a floor: it assumes the 650/900 W rating is DC output and ignores the slowdown near full charge. Club Car publishes no hours, only 'up to 40% faster than lead-acid'."
+  },
+  {
+   "product": "Club Car Onward 2 Passenger",
+   "label": "Weight saved by lithium (Total Vehicle Weight)",
+   "value": "310 lb (base Li) / 248 lb (XR Li) lighter than lead-acid",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-2-passenger/specifications",
+   "source_title": "Onward 2 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "975 lb lead-acid − 665 lb base Li = 310 lb; 975 − 727 lb XR = 248 lb."
+  },
+  {
+   "product": "Club Car Onward 2 Passenger",
+   "label": "Share of first-year range left after four years",
+   "value": "Flooded lead-acid 30–33%; HP Li-Ion 80–88%; HP Li-Ion Extended Range 89–92%",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-2-passenger/specifications",
+   "source_title": "Onward 2 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "Club Car's estimated range: lead-acid 30–50 mi in year 1, 10–15 mi after 4 years (10/30 = 33%, 15/50 = 30%); HP Li 25–40 → 20–35 mi (20/25 = 80%, 35/40 = 88%); HP Li ER 45–60 → 40–55 mi (40/45 = 89%, 55/60 = 92%). Club Car says range depends on operating conditions."
+  },
+  {
+   "product": "Club Car Onward 2 Passenger",
+   "label": "Derived first-year miles per kWh",
+   "value": "Base Li 6.3–10 mi/kWh; XR Li 6.4–8.6 mi/kWh",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-2-passenger/specifications",
+   "source_title": "Onward 2 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "25–40 mi ÷ 4.0 kWh; 45–60 mi ÷ 7.0 kWh. I matched 'HP Lithium-Ion' to Base and 'Extended Range' to XR by name; the page does not state the mapping."
+  },
+  {
+   "product": "Club Car Onward 4 Passenger",
+   "label": "Share of first-year range left after four years (non-lifted)",
+   "value": "Flooded lead-acid 25–38%; HP Li-Ion 86–90%; HP Li-Ion Extended Range 86–91%",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts/onward-4-passenger/specifications",
+   "source_title": "Onward 4 Passenger Golf Cart Specifications and Dimensions | Club Car",
+   "read": "2026-11-10",
+   "note": "Lead-acid 20–40 → 5–15 mi (5/20 = 25%, 15/40 = 38%); HP Li 20–35 → 18–30 mi (18/20 = 90%, 30/35 = 86%); ER 35–55 → 30–50 mi (30/35 = 86%, 50/55 = 91%). Packs are the same 4.0 / 7.0 kWh. Curb weight is 1,070 lb lead-acid vs 797 lb lithium, 273 lb lighter."
+  },
+  {
+   "product": "Redodo 48V 100Ah Golf Cart Conversion Kit",
+   "label": "Cost per kWh, refill time, weight saved",
+   "value": "$224.61/kWh; 5.6 h; 301 lb lighter than lead-acid",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "Price $1,149.99 (compare-at $1,999.99) via storecheck. $1,149.99 ÷ 5.12 kWh = $224.61/kWh. 100 Ah ÷ 18 A (58.4 V charger included) = 5.6 h, which matches Redodo's stated 5.6 h. Weight: 383 lb lead-acid − 82 lb = 301 lb, per Redodo. 5.12 ÷ 4.0 = 1.28, so 28% more energy than the Onward base Li pack. Kit includes battery, charger and 500 A shunt monitor."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit",
+   "label": "Cost per kWh and refill time",
+   "value": "$293.90/kWh; about 5.8 h",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah Club Car Lithium Battery for DS Precedent Tempo and Onward",
+   "read": "2026-11-10",
+   "note": "Price $1,579.99 (compare-at $2,399.99) via storecheck search. $1,579.99 ÷ 5.376 kWh = $293.90/kWh. The 58.4 V 18 A charger rating comes from the same-price Vatrer EZGO / ICON / narrow 48V 105Ah kit pages (https://www.vatrerpower.com/products/vatrer-48v-105ah-ez-go-golf-cart-batteries); 105 Ah ÷ 18 A = 5.8 h. 5.376 ÷ 4.0 = 1.34, so 34% more energy than the Onward base Li pack. Kit includes charger, LCD monitor and bracket."
+  },
+  {
+   "product": "E-Z-GO Freedom RXV ELiTE Lithium (MY25)",
+   "label": "Pack voltage and weight",
+   "value": "ELiTE 2.2, 56.7 V lithium; dry weight 615 lb, curb weight 662 lb",
+   "source": "https://ezgo.txtsv.com/personal/models/past-models/MY25freedom-rxv",
+   "source_title": "2025 Freedom RXV Golf Cart Specifications - E-Z-GO",
+   "read": "2026-11-10",
+   "note": "E-Z-GO gives no Ah or kWh rating, so I could not compute kWh-based figures. Charger: ELiTE Light World Charger 120/230 VAC."
+  },
+  {
+   "product": "E-Z-GO Liberty ELiTE 4.2 Lithium (2026)",
+   "label": "Dealer price and battery warranty",
+   "value": "$17,098 total; 8-year limited battery warranty",
+   "source": "https://www.advantagegolfcars.com/New-Inventory-2026-E-Z-GO-Golf-Cart-Liberty-ELiTE-4-2-Lithium-Golf-Car-Gainesville-19210337",
+   "source_title": "2026 E-Z-GO Liberty ELiTE 4.2 Lithium Golf Car | Advantage Golf Cars",
+   "read": "2026-11-10",
+   "note": "Dealer listing; government fees excluded."
+  }
+ ],
+ "unsourced": [
+  "E-Z-GO ELiTE pack Ah/kWh: looked on the ezgo.txtsv.com MY25 Freedom RXV spec page (gives voltage only), the RXV sell-sheet PDF (could not extract text) and thegolfwire.com's Sept 30, 2026 Samsung SDI gen-3 article (no capacity). Dealer listings giving 60 Ah or 74 Ah were search snippets only, not opened.",
+  "Club Car extra cost for lithium and XR lithium over lead-acid, and lithium battery warranty years: not on the clubcar.com Onward 2/4 pages or spec pages. The Onward sell-sheet PDF could not be parsed.",
+  "Club Car Onward charge time in hours: the maker says only 'up to 40% faster than lead-acid'. The 6.2 / 7.8 h figures above are my arithmetic from charger watts.",
+  "Vatrer Club Car variant's own charger amps and battery weight: the product page returned 403 to WebFetch and 429 to storecheck. Charger rating is from the same-price EZGO/ICON variants; the Yamaha variant lists 102.3 lb, but I did not confirm the Club Car variant's weight.",
+  "Coleman Powersports CGC3 pack Ah/kWh and Walmart price: not researched within the tool budget.",
+  "Amazon prices: not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9499279000000002
+ }
 }

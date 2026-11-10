@@ -1,5 +1,92 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "D",
+ "gap": "No result ChatGPT got states that on a Club Car Precedent the stock charger works through the cart's On-Board Computer (OBC), which is built to charge lead-acid batteries, so a lithium swap means bypassing the OBC and using a 58.4 V lithium charger, which the Vatrer and Redodo 48 V kits include.",
+ "standout": 2,
+ "standout_why": "I opened the cited clubcar.com/en-us/personal/golf-carts page. It mentions lithium only as a powertrain option with 'no upkeep' and regenerative braking. It says nothing about chargers, the OBC, the BMS, voltage or converting a lead-acid cart. The cited T&T 4-passenger inventory page showed no listings and never uses the word lithium. The uncited clubcar.com/en/lithium-ion page says factory lithium is 'Available on new Tempo vehicles' and says nothing about retrofitting. ChatGPT asked the shopper whether they want a new cart or a battery upgrade, but none of its results explains what makes an upgrade work on an existing cart.",
+ "decides": "If the shopper is upgrading a Club Car Precedent or a later DS, a 48 V battery alone won't work. The PowerDrive/OBC charging path has to be bypassed and replaced with a lithium charger. That favours complete kits that ship with a matched 58.4 V charger: the Vatrer 48V 105Ah Club Car kit at $1,579.99 or the Redodo 48V 100Ah kit at $1,149.99. It rules out a battery-only purchase that relies on the old charger. If the shopper is buying a new cart, the factory lithium Onward or Tempo avoids the problem, since Club Car integrates the pack, a 375 A controller and a CAN-bus Vehicle Control Module.",
+ "candidates": [
+  "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit",
+  "Redodo 48V 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+  "Club Car Onward Lithium",
+  "Club Car Tempo Lithium",
+  "E-Z-GO RXV ELiTE"
+ ],
+ "findings": [
+  {
+   "product": "general (Club Car PowerDrive Plus / OBC carts)",
+   "label": "OBC sits in the charging circuit",
+   "value": "\"The negative terminal of the receptacle is connected to the onboard computer\"; the OBC \"will retain in memory the amount of charge needed to fully replenish the batteries\"",
+   "source": "https://www.manualslib.com/manual/829065/Club-Car-1998.html?page=75",
+   "source_title": "Club Car 1998 Maintenance and Service Manual Supplement, p. 14-3 (ManualsLib mirror)",
+   "read": "2026-11-10",
+   "note": "Club Car's own service manual, read on a third-party mirror. It describes the PowerDrive / PowerDrive Plus charge circuit and also warns \"DO NOT BYPASS THE SENSE LEAD FUSE!\". It says nothing about battery chemistry."
+  },
+  {
+   "product": "general (Club Car Precedent)",
+   "label": "OBC bypass required for a lithium conversion",
+   "value": "\"the OBC must be bypassed using a jumper harness, because the OBC's charging profile is incompatible with lithium chemistry\"; bypass \"mandatory on most 48V Club Car models\"",
+   "source": "https://www.roypow.com/blog/club-car-lithium-conversion-guide/",
+   "source_title": "ROYPOW, Club Car Lithium Conversion Guide: Everything You Need Before You Buy",
+   "read": "2026-11-10",
+   "note": "Published 2026-06-24 with no author credited. ROYPOW sells lithium conversion kits. It ties the OBC to the Precedent (2004 to present) and later DS models."
+  },
+  {
+   "product": "Club Car Tempo / Onward (factory lithium)",
+   "label": "Controller rating",
+   "value": "375 A (Tempo and Onward); 450 A (Carryall)",
+   "source": "https://www.clubcar.com/en/lithium-ion",
+   "source_title": "Club Car Lithium Ion Vehicles | Maintenance-Free Power",
+   "read": "2026-11-10",
+   "note": "The same page names a Vehicle Control Module on CAN bus, an IP67 steel battery case and a 1,000 W dynamic brake resistor. It says the pack is 'Available on new Tempo vehicles' and lists no voltage or kWh."
+  },
+  {
+   "product": "Club Car Onward",
+   "label": "Starting MSRP",
+   "value": "2-passenger $10,099; 4-passenger $11,299 (lifted $11,699); 6-passenger $15,799 (lifted $16,199)",
+   "source": "https://www.clubcar.com/en-us/personal/golf-carts",
+   "source_title": "Personal Transportation | Club Car® Golf Carts",
+   "read": "2026-11-10",
+   "note": "These are starting MSRPs. The page gives no separate price for the lithium powertrain."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit",
+   "label": "Price and fitment",
+   "value": "$1,579.99 (compare-at $2,399.99); for 48V Club Car DS, Precedent, Tempo, Onward; kit includes dedicated charger, LCD monitor, mounting bracket",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah Club Car Lithium Battery for DS Precedent Tempo and Onward",
+   "read": "2026-11-10",
+   "note": "Read through the storecheck.py store search, which pulls Vatrer's own Shopify product data. A direct page fetch got HTTP 403/429. The listing doesn't say whether an OBC bypass harness is included."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Lithium Golf Cart Battery (all 48 V variants)",
+   "label": "BMS current",
+   "value": "200 A continuous; 400 A peak; up to 600 A surge (600 A for 3 s on the EZGO listing); 10.24 kW",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery",
+   "source_title": "【UL 2271】 Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit",
+   "read": "2026-11-10",
+   "note": "From the store's own product data (storecheck search). The EZGO variant lists a 58.4 V 18 A lithium charger. 200 A × 51.2 V = 10.24 kW, which matches the stated figure."
+  },
+  {
+   "product": "Redodo 48V 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "label": "Price and kit contents",
+   "value": "$1,149.99 (compare-at $1,999.99); battery + 58.4 V 18 A charger (5.6 h) + battery monitor; 5,120 Wh; '5000W High Output'",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit | For Club Car, EZGO, ICON, Yamaha",
+   "read": "2026-11-10",
+   "note": "From the store's own product data (storecheck search). A direct fetch got HTTP 429. 5,000 W ÷ 51.2 V ≈ 98 A, which is about half of Vatrer's 200 A continuous rating. Redodo doesn't publish a BMS amp figure in this text."
+  }
+ ],
+ "unsourced": [
+  "Club Car's own wording that the PowerDrive/ERIC charger is lead-acid only and stops working once the OBC is bypassed. The Club Car-hosted PowerDrive 3 manual (manuals.clubcar.com) and the 2007 Precedent owner's manual PDF came back as compressed binary that WebFetch couldn't read, and local PDF text extraction needed approval. Forum posts (cartaholics.com) say this, but they aren't a maker source.",
+  "Whether the Vatrer Club Car kit or the Redodo kit includes an OBC bypass harness. vatrerpower.com returned 403 to direct fetches and redodopower.com returned 429.",
+  "Redodo 48V 100Ah BMS continuous and peak discharge current in amps. Not found in the product text that storecheck returned.",
+  "Stock controller amperage for older Club Car Precedent and E-Z-GO TXT/RXV carts, needed to compare against the 200 A BMS. No maker page was opened.",
+  "E-Z-GO's wording on RXV regenerative braking when a full lithium pack refuses charge current. Search turned up only forum reports and mirrored owner's guides that don't cover charge state."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9774472000000001
+ }
 }
