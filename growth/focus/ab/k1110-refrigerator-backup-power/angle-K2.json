@@ -1,0 +1,109 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that BLUETTI's own 350W Solar Panel has a 33 V open-circuit voltage, so two of them wired in series give 66 V, which is above the Elite 200 V2's 12–60 V solar input. BLUETTI still sells the 'Elite 200 V2 + 2×350W Solar' bundle ($2,148), and its in-the-box list has no parallel (Y) connector. For a solar-recharged fridge backup, that pair has to be wired in parallel, or the shopper should use the 2×200W bundle instead.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages. basc.pnnl.gov (PNNL/DOE) covers surge (up to 3× running watts), EnergyGuide kWh/365 and the fact that 1–2 kWh with PV runs a fridge for many hours. It gives no input voltage window and names no panel or station. itechguides.com lists 10 ms UPS claims and FridgePower + BlueCell 200 expansion to 8,064 Wh, so that part of the angle is already covered. It also says to 'verify the accessory and input voltage against the exact model' but gives no voltage window for any model and never names a panel-to-station mismatch. Neither page gives the Elite 200 V2's 12–60 V/20 A/1,000 W PV limit or a panel Voc. I did not open ranks 2–3 and 5–17 (solargenadvisor, powerstations.reviews, stormwatts and others), so one of them could state a voltage window. The finding only decides the solar part of the set, not whether the fridge runs, so I scored it 2, not 3.",
+ "kit_items": [
+  "power station: BLUETTI Elite 200 V2 (2,073.6 Wh LFP, 2,600 W continuous). It is already in Dealectric's catalog and ChatGPT also showed it as a card. Its PV input is 12–60 V / 20 A / 1,000 W max on BLUETTI's US page.",
+  "solar panels: BLUETTI 200W Portable Solar Panel ×2 (SP200L), sold in BLUETTI's own 'Elite 200 V2 + 2×200W Solar' bundle. The 200 W panels are recommended over the 2×350W bundle because two 350 W panels (33 V Voc each) exceed the 60 V input in series. Whether two SP200L panels in series stay under 60 V is unconfirmed: I could not open a BLUETTI page for the SP200L Voc (see unsourced).",
+  "alternative station if the shopper wants a fridge-specific UPS unit: BLUETTI FridgePower (2,016 Wh, 1,800 W / 3,600 W surge, <10 ms UPS, expands with BlueCell 200 to 8,064 Wh). The base $949 listing and the $999 'FridgePower + Display 1' listing differ by $50, which suggests the base unit ships without the detachable Display 1. BLUETTI's page does not say that outright."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 (station only, price shown on bundle page) | https://www.bluettipower.com/products/elite-200-v2-2-pv350d | $899.00 | 2026-11-10",
+    "BLUETTI 200W Portable Solar Panel (single / 2× variant) | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $399.00 / $798.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 (also: Elite 200 V2+200W Solar $1,199.00; Elite 200 V2+350W Solar $1,449.00; Elite 200 V2+2*350W Solar $2,148.00, which needs parallel wiring)"
+  },
+  {
+   "store": "BLUETTI US (bluettipower.com), FridgePower alternative",
+   "items": [
+    "BLUETTI FridgePower | https://www.bluettipower.com/products/fridgepower-battery-backup | $949.00 | 2026-11-10",
+    "BLUETTI FridgePower + Display 1 | https://www.bluettipower.com/products/fridgepower-display-1 | $999.00 | 2026-11-10"
+   ],
+   "bundle_sku": "FridgePower + BC200, $1,699.00 (compare-at $1,799.00); FridgePower + BC200 + Display 1, $1,849.00"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "solar (PV) input window",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-10",
+   "note": "From the page FAQ: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. I saw the same text on the elite-200-v2-2-pv350d page."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "open-circuit voltage (Voc)",
+   "value": "33 V",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel",
+   "read": "2026-11-10",
+   "note": "The page says 'a 33V open-circuit voltage (Voc)'. It ships with a 20A MC4-to-XT60 cable (1.5 m), lists the Elite 200 V2 and Elite 100 V2 as compatible, and gives no series/parallel guidance."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×350W Solar",
+   "label": "series-wiring conflict",
+   "value": "2 × 33 V = 66 V Voc in series, which is 6 V over the 60 V max input",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar",
+   "read": "2026-11-10",
+   "note": "Arithmetic uses the two BLUETTI pages above. Voc rises further in cold weather. The bundle's 'IN THE BOX' lists only the AC charging cable, documentation, Elite 200 V2 and grounding screw, with no Y/parallel connector. Bundle price $2,148.00."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC output / AC input",
+   "value": "2,600 W continuous (Power Lifting up to 3,900 W on pure resistive loads only); AC input 1,800 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-10",
+   "note": "The 3,900 W Power Lifting figure is for resistive loads, so it does not cover a fridge compressor start. No surge rating is given."
+  },
+  {
+   "product": "BLUETTI FridgePower",
+   "label": "capacity, output, UPS, expansion",
+   "value": "2,016 Wh LFP; 1,800 W continuous / 3,600 W surge; <10 ms UPS switching; expandable to 8,064 Wh; 4 W idle draw",
+   "source": "https://www.bluettipower.com/products/fridgepower-battery-backup",
+   "source_title": "BLUETTI FridgePower",
+   "read": "2026-11-10",
+   "note": "Expansion bundles use BC200 (BlueCell 200). The UPS bypass/pass-through max power is not stated on the page."
+  },
+  {
+   "product": "BLUETTI FridgePower",
+   "label": "display add-on pricing",
+   "value": "FridgePower $949.00 vs FridgePower + Display 1 $999.00",
+   "source": "https://www.bluettipower.com/products/fridgepower-battery-backup",
+   "source_title": "BLUETTI FridgePower",
+   "read": "2026-11-10",
+   "note": "Prices are from storecheck.py search of bluettipower.com on 2026-11-10. The 'detachable magnetic display' is sold as Display 1. The page does not say outright whether the $949 base unit includes a screen."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "price and connector",
+   "value": "$399.00 single; $798.00 for 2; MC4 connectors",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py product. The listing text says 'Compatible With Most Solar Generators with MC4 Connectors'."
+  }
+ ],
+ "unsourced": [
+  "SP200L open-circuit voltage and Isc. The US product page and bluettipower.ca/.com.au all returned HTTP 429, and the US Shopify data has no spec text. A search snippet suggests about 24.62 V Voc / 10.24 A Isc (2 in series ≈ 49 V, under 60 V), but I did not open a page that confirms it, so it is not used as a figure.",
+  "350W panel Isc/Imp, needed to check whether two in parallel exceed the Elite 200 V2's 20 A limit. The BLUETTI US page's Tech Specs section is empty. Search results conflicted (13.8 A vs 10.8 A, possibly mixing PV350 and PV350D), and the US PV350D page redirect-looped or returned 404.",
+  "Elite 200 V2 UPS switch time and bypass/pass-through limit. The 'Does Elite 200 V2 have a UPS function?' FAQ answer is blank on BLUETTI's US pages. The Elite 200 V2 manual PDF downloaded, but text extraction (pdftotext) was not approved in this session, and the manuals.plus mirror returned 403.",
+  "Elite 200 V2 expansion battery compatibility (B80/B230/B300). The FAQ question appears on BLUETTI's page with no answer shown.",
+  "FridgePower solar input voltage window and UPS bypass max power. The FridgePower page leaves the solar and simultaneous charge/discharge FAQ answers blank, and I found no FridgePower manual.",
+  "Any maker statement on inverter-compressor refrigerators or extension cords with these stations. Neither the BLUETTI Elite 200 V2 nor the FridgePower page addresses it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0506949999999997
+ }
+}

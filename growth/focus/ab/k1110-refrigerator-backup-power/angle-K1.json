@@ -1,0 +1,125 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a BLUETTI Elite 200 V2 running a 630 kWh/yr fridge uses about 1,966 Wh a day once you add the station's own 10 W idle draw (240 Wh a day). At that load, the 200 W solar bundle would need about 10.7 hours at full rated output every day to keep up. That is not possible, so the 2×200 W bundle (about 5.3 rated-output hours) is the smallest kit that can sustain the fridge on sun.",
+ "standout": 3,
+ "standout_why": "I compared the cited basc.pnnl.gov page (630 kWh/yr example and surge guidance, with no solar recharge time or formula), the cited itechguides page (runtime = Wh ÷ W, maker UPS claims and the FridgePower's 4 W standby, but no calculation of the solar watts needed to keep up), stormwatts (kWh/yr to battery Wh/day at 0.85, with no idle draw, solar or refill time), usablekwh (says the solar ceiling 'turns a two-day outage into an indefinite one' but has no panel-vs-load arithmetic or idle draw) and powerstations.reviews (sends readers to another page for the sun-hours math). None of them checks the panel watts against the fridge's daily Wh plus the station's idle Wh, and that check decides between the 200 W and 2×200 W bundles from the same store.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh, 2,600 W). Storage Review measured 1.91 kWh delivered. That is about 23 h for a 630 kWh/yr fridge plus 10 W idle: 1,910 Wh ÷ 81.9 W. Its 1,000 W, 12–60 V, 20 A solar input has room for 400 W of panels.",
+  "Solar panels: 2× BLUETTI 200 W, sold as the store's Elite 200 V2 + 2×200 W bundle. Daily need is about 1,966 Wh AC, or about 2,140 Wh into the battery at the 92% Storage Review measured. 400 W supplies that in about 5.3 h at full rated output. 200 W would need about 10.7 h, so one panel cannot keep up.",
+  "Optional for larger fridges or cloudy regions: the Elite 200 V2 + 2×350 W bundle (700 W). 2,140 Wh ÷ 700 W ≈ 3.1 h at full rated output."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 (variant 46252055363803), in stock 2026-11-10"
+  },
+  {
+   "store": "BLUETTI US (bluettipower.com), alternatives",
+   "items": [
+    "BLUETTI Elite 200 V2 + 200W Solar | https://www.bluettipower.com/products/elite-200-v2-sp200l | $1,199.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 + 350W Solar | https://www.bluettipower.com/products/elite-200-v2-pv350 | $1,449.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 + 2×350W Solar | https://www.bluettipower.com/products/elite-200-v2-2-pv350d | $2,148.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Each is the store's own bundle at the price shown. The 200 W bundle is listed for comparison only, because one 200 W panel cannot keep up with a 630 kWh/yr fridge."
+  }
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Example refrigerator daily energy",
+   "value": "630 kWh/yr ≈ 1.7 kWh/day; extreme summer heat can raise daily use by 20% or more",
+   "source": "https://basc.pnnl.gov/resource-guides/emergency-air-conditioning-and-food-refrigeration",
+   "source_title": "Emergency Air Conditioning and Food Refrigeration | Building America Solution Center",
+   "read": "2026-11-10",
+   "note": "630,000 Wh ÷ 365 = 1,726 Wh/day ≈ 71.9 W average. The page's own advice is to pick a fridge under 2 kWh/day."
+  },
+  {
+   "product": "general",
+   "label": "Example startup surge",
+   "value": "3.5 A fridge ≈ 420 W running, ≈ 800 W to start; older or side-by-side units up to 2,000 W",
+   "source": "https://basc.pnnl.gov/resource-guides/emergency-air-conditioning-and-food-refrigeration",
+   "source_title": "Emergency Air Conditioning and Food Refrigeration | Building America Solution Center",
+   "read": "2026-11-10",
+   "note": "3.5 A × 120 V = 420 W. The Elite 200 V2's 2,600 W rated output is above the 2,000 W worst case BASC cites."
+  },
+  {
+   "product": "general",
+   "label": "Efficient fridge daily energy (StormWatts table)",
+   "value": "400 kWh/yr ≈ 1,096 Wh/day ≈ 46 W average",
+   "source": "https://stormwatts.com/articles/power-station-for-refrigerator-during-outage/",
+   "source_title": "How Big a Power Station Do You Need to Run a Refrigerator During an Outage? | StormWatts",
+   "read": "2026-11-10",
+   "note": "Adding 240 Wh/day of station idle gives 1,336 Wh AC. ÷ 0.92 ≈ 1,452 Wh into the battery, which is ≈ 3.6 h at full rated output on 400 W of panels or ≈ 7.3 h on 200 W."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Capacity, output, solar and AC input (maker's Canadian page)",
+   "value": "2,073.6 Wh; 2,600 W rated; Power Lifting to 3,900 W (resistive only); PV 12–60 V, 20 A, 1,000 W max; AC input 1,800 W max",
+   "source": "https://shop-ca.bluettipower.com/products/bluetti-elite-200-v2",
+   "source_title": "Elite 200 V2 – BLUETTI Canada",
+   "read": "2026-11-10",
+   "note": "The US product pages would not load (redirect loop). 400 W and 700 W of panels are both under the 1,000 W cap."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured AC energy delivered and to recharge",
+   "value": "1.91 kWh discharged; 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (Dylan Dougherty, StorageReview, 2025-04-25)",
+   "read": "2026-11-10",
+   "note": "1,910 ÷ 2,073.6 = 92% of rated capacity delivered as AC; 1.91 ÷ 2.44 ≈ 78% round trip on AC charging. On-battery runtime for a 630 kWh/yr fridge plus 10 W idle: 1,910 Wh ÷ (71.9 + 10) W ≈ 23.3 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw with AC and DC outputs on (maker spec as quoted by reviewer)",
+   "value": "10 W",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 portable power station review (Greg Cleveland, The Gadgeteer)",
+   "read": "2026-11-10",
+   "note": "This is a quoted spec, not a measurement ('Low idle consumption, 10w/h with AC and DC left on'). 10 W × 24 h = 240 Wh/day. Added to 1,726 Wh that makes 1,966 Wh/day AC. ÷ 0.92 ≈ 2,137 Wh into the battery, which is ≈ 10.7 h at full rated output on 200 W, ≈ 5.3 h on 400 W and ≈ 3.1 h on 700 W."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×200W Solar",
+   "label": "Bundle price, US store",
+   "value": "$1,499.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-10",
+   "note": "storecheck.py product; compare_at is the same price, so no discount is shown."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200W Solar",
+   "label": "Bundle price, US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-10",
+   "note": "storecheck.py product. For $300 more, the 2×200 W bundle is the one that can keep up with a 1.7 kWh/day fridge."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 350W / 2×350W Solar",
+   "label": "Bundle prices, US store",
+   "value": "$1,449.00 (1×350 W); $2,148.00 (2×350 W)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search of bluettipower.com. 350 W alone needs 2,137 ÷ 350 ≈ 6.1 h at full rated output for the 630 kWh/yr fridge."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's own Elite 200 V2 self-consumption figure (reported as about 15 W with AC on in a BLUETTI FAQ and a community staff reply). bluettipower.com, bluettipower.eu, bluettipower.co.uk and ie.bluettipower.eu all redirect-looped or returned 429, and the community forum redirected to its home page. At 15 W the idle draw would be 360 Wh/day, making the daily need about 2,086 Wh AC.",
+  "Elite 200 V2 UPS transfer time: the maker's Canadian FAQ heading had no answer, and StorageReview quotes a 15 ms claim but did not measure it.",
+  "Usable sun-hours for a given US location and month. NREL PVWatts would not resolve from WebFetch, and running it through curl was not approved, so the panel arithmetic is in hours at full rated output, not site-specific kWh.",
+  "BLUETTI SP200L / PV350 electrical specs (Voc, Imp) needed to confirm series wiring under the 60 V / 20 A input. The maker pages redirect-looped and the retailer page returned 429; only search snippets gave Voc 24.62 V and Imp 9.75 A, so I did not use them.",
+  "Standalone Elite 200 V2 price on bluettipower.com today: the store search returned only bundles."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0293454000000002
+ }
+}

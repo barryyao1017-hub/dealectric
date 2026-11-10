@@ -1,0 +1,106 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that power stations ship with an AC ECO / auto-off timer, on by default on BLUETTI units, that turns the AC outlet off when the load stays low, which is what a fridge looks like between compressor cycles. The fridge then stays off until someone turns AC back on, so the timer has to be disabled (BLUETTI AC-ECO off; EcoFlow AC timeout set to 'Never') before you trust the station with the fridge.",
+ "standout": 2,
+ "standout_why": "I read the two cited pages (basc.pnnl.gov, itechguides.com 'keep a refrigerator running'), plus stormwatts.com, powerstations.reviews and ankersolix.com. None of them mentions ECO mode, AC auto-off, idle shutdown or AC timeout. They cover surge, UPS transfer time, defrost load (basc, ankersolix), extension cords (itechguides, stormwatts) and inverter idle draw (ankersolix). The ankersolix page says the station keeps drawing power between compressor cycles but never says the station may switch its AC outlet off. I could not open solargenadvisor.com, unpluggedwatts.com or powerstations.org because of a certificate error, so I did not compare against them. I scored this 2 and not 3 because the fix is a setting, not a different product. It still decides whether the kit works unattended, which is the 'automatic backup' option ChatGPT offered.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh LiFePO4, 2,600 W continuous). Dealectric already lists it and sells it through awin:bluetti_us. It is the unit ChatGPT showed at $899. 2 kWh covers ChatGPT's own '16–24 h' tier. Its AC-ECO setting can be switched in the BLUETTI app (StorageReview), and that switch is the setup step this page should tell buyers to do first.",
+  "Optional recharge for outages longer than one battery: the BLUETTI store's own 'Elite 200 V2 + 200W Solar' bundle ($1,199) instead of the bare unit, to refill the station during a multi-day outage."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 Portable Power Station | https://www.bluettipower.com/products/elite-200-v2-portable-power-station | $899.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+200W Solar, $1,199.00 (https://www.bluettipower.com/products/elite-200-v2-sp200l). Elite 200 V2 + Charger 2, $1,299.00 (https://www.bluettipower.com/products/charger-2-elite-200-v2). Both read 2026-11-10."
+  }
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Maker tells fridge-backup owners to set the AC timeout to Never",
+   "value": "\"For continuous refrigerator backup, check the AC timeout setting in the EcoFlow app and set it to 'Never' where appropriate.\" / \"An intermittent load can otherwise trigger automatic AC shutdown.\"",
+   "source": "https://www.ecoflow.com/ph/blog/ecoflow-delta-3-faq",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station: Everything You Need to Know",
+   "read": "2026-11-10",
+   "note": "EcoFlow's own FAQ, Philippines site, page dated 2026/10/10. I did not find a US-site copy. It does not state the factory-default timeout."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "UPS transfer time",
+   "value": "less than 10 ms; \"This is not a zero-transfer-time UPS.\"",
+   "source": "https://www.ecoflow.com/ph/blog/ecoflow-delta-3-faq",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station: Everything You Need to Know",
+   "read": "2026-11-10",
+   "note": "Maker FAQ, quoted as written."
+  },
+  {
+   "product": "BLUETTI AC70P",
+   "label": "ECO mode default and low-load cutoff (BLUETTI manual)",
+   "value": "Enabled by default; AC/DC output turns off when the load is below 40 W (or the user-set power) \"for a while\"",
+   "source": "https://manualslib.mx/manual/889014/Bluetti-Ac70P.html?page=17",
+   "source_title": "Bluetti AC70P manual, section 8.2 ECO Mode (ManualsLib, p.17 of 72)",
+   "read": "2026-11-10",
+   "note": "Exact quotes: \"ECO Mode is a power-saving mode that is enabled by default.\" \"When connecting a small power device, disable the ECO Mode for a successful and uninterrupted charge experience.\" The page gives no duration. This is a BLUETTI manual for a sibling model, not the Elite 200 V2; I use it to show BLUETTI's default behaviour."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "ECO mode can be set separately on AC and DC",
+   "value": "\"The ECO mode can be toggled on either AC or DC outputs to reduce idle power usage.\"",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: Portable Power Meets Lab-Grade Reliability, BLUETTI Elite 200 V2 Review (Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-10",
+   "note": "Named reviewer. The review gives no threshold or default state. It also lists 'UPS Switch Time 15ms' as BLUETTI's claim and an 'Auto Sleep timer ... set to one minute'."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Power Lifting is for resistive loads only, so it does not help a compressor start",
+   "value": "2,600 W continuous; Power Lifting \"supports pure resistive loads of up to 3,900W\"",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh (BLUETTI US)",
+   "read": "2026-11-10",
+   "note": "A second trap: the 3,600–3,900 W 'peak' figures buyers see (StorageReview quotes both) refer to Power Lifting for resistive loads. The US product page gives no surge rating for inductive (motor) loads. The page lists no UPS switch time or standby watts. The box contains the unit, an AC charging cable, documentation and a grounding screw."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00 (compare-at $899.00), in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-10",
+   "note": "From storecheck.py product. Same store, same date: the Elite 200 V2+200W Solar bundle is $1,199.00 and the Elite 200 V2 + Charger 2 bundle is $1,299.00."
+  },
+  {
+   "product": "general",
+   "label": "Defrost cycle adds load (rival already covers this)",
+   "value": "\"refrigerators also go through a defrost cycle that can periodically increase power use for several minutes\"",
+   "source": "https://basc.pnnl.gov/resource-guides/emergency-air-conditioning-and-food-refrigeration",
+   "source_title": "Emergency Air Conditioning and Food Refrigeration | Building America Solution Center",
+   "read": "2026-11-10",
+   "note": "A cited rival. Recorded so the page does not present the defrost point as new."
+  },
+  {
+   "product": "general",
+   "label": "Extension-cord warning (rival already covers this)",
+   "value": "\"Connect the refrigerator directly unless the manufacturer explicitly permits a particular extension cord or transfer device.\"",
+   "source": "https://www.itechguides.com/can-a-portable-power-station-keep-a-refrigerator-running-during-an-outage/",
+   "source_title": "Portable Power Station for a Refrigerator: Watt, Surge and Runtime Sizing (itechguides)",
+   "read": "2026-11-10",
+   "note": "A cited rival. The same page covers UPS transfer-time risk but says nothing about ECO or auto-off."
+  }
+ ],
+ "unsourced": [
+  "The Elite 200 V2's own ECO default state, watt threshold and timer. The official US manual PDF (s4.bluettipower.com) was over the fetch size limit, a second BLUETTI PDF came back as unreadable compressed data, and manuals.plus and device.report returned 403. A search snippet says the Elite 200 V2 manual has AC-ECO on by default and says to disable it for refrigerators, but I did not open that text, so I left it out of findings.",
+  "How many forum users report a fridge thawing after ECO or auto-off cut the power. community.bluettipower.com threads (e.g. 'AC200MAX switches off AC unasked', 'Help disabling ECO Mode') now redirect to forum.bluettipower.com's home page and I could not open them.",
+  "The Elite 200 V2's surge rating for inductive or motor loads, as opposed to Power Lifting for resistive loads. It is not on the US product page and not in the StorageReview review.",
+  "The EcoFlow DELTA 3's factory-default AC timeout value. The FAQ only says to set it to 'Never'.",
+  "Whether solargenadvisor.com, unpluggedwatts.com and powerstations.org mention ECO or auto-off. All three failed with a self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 1.1272623
+ }
+}
