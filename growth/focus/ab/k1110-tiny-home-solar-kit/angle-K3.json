@@ -1,0 +1,105 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that the 48V LiFePO4 rack batteries in these complete off-grid kits come in a standard version and a self-heating version, or that Sun Gold Power's SGR-8K10E ships with the standard SG48100P, while the maker's self-heating SGH48100T warms itself below 41°F (5°C) and costs $152 more per battery at the same store. For a tiny home whose battery sits in an unheated closet or hitch box, that choice decides whether solar can charge the battery on cold days.",
+ "standout": 2,
+ "standout_why": "I compared Renogy's product text for the cited 1200W/2500W/4800W 48V Cabin Kit (renogy.com/products/1200w-2500w-tiny-house-home-cabin-kit), its Cabin Solution 1.2kW page (renogy-1-2kw-essential-kit) and its 2.5kW Essential Plus page, all read through the store's search endpoint. None of that text mentions charging temperature, low-temperature charge protection or a self-heating battery option. They list panels, the 48V 3500W inverter, DC breakers and Bluetooth only. Both ChatGPT answers gave sizing tables and one caveat that starting prices can leave out batteries, and neither said anything about cold-weather charging. I could only see about 1,000 characters of each Renogy page, because the full pages returned HTTP 429, so a spec tab further down could mention it. That is why I scored this 2 and not 3.",
+ "kit_items": [
+  "Complete off-grid kit: Sun Gold Power SGR-8K10E (8,000 W 48V inverter with 120/240V split-phase output, two 51.2V 100Ah SG48100P batteries for 10.24 kWh, eight 450 W panels). It is one SKU in one store, it already includes the DC and PV breakers and the 50 ft PV extension cable, and it gives the 240V output a tiny home's well pump or mini-split needs.",
+  "Battery choice for an unheated install: Sun Gold Power SGH48100T self-heating 51.2V 100Ah, in place of the kit's SG48100P. The maker says it heats itself below 41°F (5°C) and has low-temperature charging protection. It is the same 51.2V 100Ah server-rack size and is sold for the same Sun Gold inverters. Sun Gold already ships self-heating 'T' versions of its 10K and 20K kits (SGR-10K25T, SGR-20K30T), but I could not confirm that an SGR-8K10E T version exists."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power SGR-8K10E Off-Grid Solar Kit 8000W 48V 120/240V, 10.24kWh, 8 x 450W | https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e | $4,949.00 | 2026-11-10"
+   ],
+   "bundle_sku": "SGR-8K10E is itself the store's bundle at $4,949.00 (list $9,183.00) on 2026-11-10. It ships with SG48100P batteries, which do not self-heat."
+  },
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power 2X SGH48100T Server Rack 48V 100Ah Self-Heating | https://sungoldpower.com/products/2x-sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating | $2,061.00 | 2026-11-10",
+    "Sun Gold Power 2 X SG48100P 48V 100Ah Server Rack (non-heating, for comparison) | https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Self-heating batteries come in a 2-pack (2X SGH48100T, $2,061.00) and a 4-pack (4X SGH48100T, $4,104.00). I found no 8K kit bundle that includes them."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Battery included in kit",
+   "value": "2 x SG48100P 51.2V 100Ah (10.24 kWh)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-10",
+   "note": "Product text read through the store's Shopify search endpoint (storecheck.py). It says 'two SUNGOLDPOWER 51.2V 100Ah SG48100P server rack LiFePO4 batteries' and does not mention self-heating."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Price",
+   "value": "$4,949.00 (compare-at $9,183.00)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W ... SGR-8K10E",
+   "read": "2026-11-10",
+   "note": "Read through the store search endpoint, which showed it as available."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Inverter output and PV input",
+   "value": "8,000 W, 120V/240V single-phase or split-phase; dual MPPT, up to 11,000 W PV; up to 180 A combined solar + AC charging",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W ... SGR-8K10E",
+   "read": "2026-11-10",
+   "note": "Maker's product text."
+  },
+  {
+   "product": "Sun Gold Power SGH48100T",
+   "label": "Self-heating thresholds",
+   "value": "Heater turns on below 41°F (5°C) and off at 53.6°F (12°C); BMS has low-temperature charging protection",
+   "source": "https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating",
+   "source_title": "SGH48100T Server Rack 48V 100AH Lithium Battery Self-Heating",
+   "read": "2026-11-10",
+   "note": "Maker text: 'ensures that your battery remains charged during cold winter conditions and is not affected by the surrounding ambient temperature.' It lists SunGoldPower, EG4, Growatt, Victron and others as compatible inverters over RS485/CAN."
+  },
+  {
+   "product": "Sun Gold Power SGH48100T vs SG48100P",
+   "label": "Price of the self-heating upgrade",
+   "value": "$1,035.00 vs $883.00 each (+$152); 2-pack $2,061.00 vs $1,953.00 (+$108)",
+   "source": "https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating",
+   "source_title": "SGH48100T Server Rack 48V 100AH Lithium Battery Self-Heating",
+   "read": "2026-11-10",
+   "note": "SG48100P prices come from https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p and https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p, read the same day through the store search endpoint. The SG48100P listing text says the BMS monitors temperature and protects against overheating, but it does not mention heating or low-temperature charging."
+  },
+  {
+   "product": "Sun Gold Power SGR-10K25T / SGR-20K30T",
+   "label": "Maker sells self-heating kit versions",
+   "value": "'The SGH48100T batteries included with the SGR-10K25T solar kit are equipped with a self-heating function'; the SGR-20K30T kit has the same note",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-12-x-550-watts-solar-panels-25-6kwh-lithium-battery-10kw-solar-inverter-48vdc-120v-240v-sgr-10k25s",
+   "source_title": "OFF GRID SOLAR KIT 12 X 550 WATTS ... SGR-10K25S",
+   "read": "2026-11-10",
+   "note": "Sun Gold puts the heated battery in its 'T' kit versions and the plain SG48100P in its 'E', 'S' and 'P' versions, so a shopper has to choose by kit code."
+  },
+  {
+   "product": "Renogy self-heating batteries (general)",
+   "label": "Self-heating needs sustained charge current",
+   "value": "Renogy's self-heating listings state a stable charge current above 4 A per battery (12V 100Ah), above 10 A (24V 200Ah) and at least 15 A (12V 200Ah); heating does not work with a PWM controller or a small charger",
+   "source": "https://www.renogy.com/products/duoheat-tech-core-mini-12v-100ah-lithium-iron-phosphate-battery",
+   "source_title": "Renogy (search result set incl. self-heating battery listings and wanderthewest.com 'cold weather lithium charging' thread)",
+   "read": "2026-11-10",
+   "note": "These figures come from search summaries only. I did not open the pages because Renogy returned HTTP 429, so treat this as a lead. It does not decide the pick."
+  }
+ ],
+ "unsourced": [
+  "The SG48100P charging-temperature range (believed to be 0–45°C). Sun Gold's datasheet PDFs on cdn.shopify.com (SG48100P, dated 2024-11-22) downloaded but came back as unreadable compressed streams, and local PDF text extraction was not permitted. The solartown.com and enfsolar.com copies returned 403, device.report returned 403, and the sungoldpower.com product page returned 429.",
+  "The complete Renogy cited kit pages (spec tab, battery model, any cold-weather note). renogy.com returned HTTP 429 on every product fetch, renogysolartech.com failed with a certificate error, and Home Depot returned 403, so I compared only against the roughly 1,000-character store search text.",
+  "Whether an SGR-8K10E version with SGH48100T batteries (an 'SGR-8K10T') exists. The kit product page returned 429, so I could not list its variants.",
+  "A dated forum thread with a count of owners whose LiFePO4 bank stopped charging in cold weather in a tiny home or cabin. diysolarforum.com ('Did I brick my LiFePO4 batteries – cold temp charging') and wanderthewest.com appeared in search results, but I did not open them within the tool budget.",
+  "Amazon prices were not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0953325999999997
+ }
+}

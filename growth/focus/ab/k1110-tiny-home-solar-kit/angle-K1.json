@@ -1,0 +1,127 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states how many days a battery-plus-panel bundle takes to refill once the inverter's idle draw is subtracted. Take BLUETTI's Apex 300 + B300K + 2×200 W bundle ($3,499, 5,529.6 Wh, 400 W of panels). The Apex 300's stated 20 W idle loss is 480 Wh a day. At 4 full-sun hours the panels make 1,600 Wh, which leaves 1,120 Wh a day for the battery and loads, so refilling the battery from empty takes about 4.9 sunny days. The Apex 300 + 2×B300K + 2×500 W bundle needs about 2.4.",
+ "standout": 2,
+ "standout_why": "I compared against the two answers ChatGPT gave the shopper, which included a panel-watts vs battery-kWh table (400–800 W with 1–3 kWh, and so on) and a kit-budget table. Neither gives daily solar yield, inverter idle draw, or days to refill, and neither mentions a per-port solar voltage or current limit. I could not open the cited Renogy pages (renogy.com/products/1200w-2500w-tiny-house-home-cabin-kit and /collections/tiny-home-kits) because they returned HTTP 429 to both WebFetch and storecheck. I have not checked whether Renogy's own pages state yield or refill days, so I score 2, not 3. Sun Gold Power's kit text does state daily yield (14.4 kWh at 4 sun hours for 3,600 W), but it gives no idle loss and no refill time, and Sun Gold Power was not among ChatGPT's results.",
+ "kit_items": [
+  "Inverter/battery hub: BLUETTI Apex 300 (2,764.8 Wh, 3,840 W, 120 V and 240 V outputs). The 240 V output covers a tiny home's 240 V loads. Its stated 20 W idle loss sets a 480 Wh/day baseline, and the solar arithmetic has to cover that first.",
+  "Expansion battery: 2× BLUETTI B300K (2,764.8 Wh each, for 8,294.4 Wh in total). That gives about 2 days of a 3.5 kWh/day tiny-home load plus idle: 8,294.4 ÷ (3,500 + 480) = 2.08 days.",
+  "Panels: 2× BLUETTI 500 W (1,000 W in total), not the 2×200 W bundle. 1,000 W × 4 h = 4,000 Wh/day, minus 480 Wh idle, leaves 3,520 Wh/day net, which roughly covers a 3.5 kWh/day load. The 400 W bundle nets only 1,120 Wh/day.",
+  "Solar wiring limit: the Apex 300's built-in DC inputs are 2× XT60 rated 12–60 V and 20 A max (Notebookcheck). Each panel string must stay under 60 V open-circuit. That rules out rooftop-style high-voltage strings unless you add a SolarX 4K (needed for the 4,000 W solar input), which is not in the 500 W bundle."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2×B300K + 2×500W | https://www.bluettipower.com/products/apex-300-2-b300k-2-500w | $5,499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "Apex 300 + 2*B300K + 2*500W, $5,499.00 (store bundle, 3,840 W / 8,294.4 Wh / 1,000 W solar). Smaller alternatives from the same store: Apex 300+B300K+2*350W $3,998.00 (700 W solar, https://www.bluettipower.com/products/apex-300-b300k-2-200w); Apex 300+B300K+2*200W $3,499.00 (400 W solar, https://www.bluettipower.com/products/apex-300-b300k-2-200w-1); Apex 300+B300K+SolarX 4K $3,099.00 (no panels, https://www.bluettipower.com/products/apex-300-b300k-solarx-4k)"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle loss",
+   "value": "20 W",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-2-200w-1",
+   "source_title": "Apex 300+B300K+2*200W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "Maker's page: the design cuts 'idle loss to just 20W'. 20 W × 24 h = 480 Wh/day, which is 8.7% of a 5,529.6 Wh bank and 5.8% of an 8,294.4 Wh bank every day."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Capacity / AC output",
+   "value": "2,764.8 Wh; 3,840 W; powers 120 V and 240 V devices simultaneously",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-2-200w-1",
+   "source_title": "Apex 300+B300K+2*200W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "Maker's page. The page gives no separate continuous and surge figures."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in DC/solar input limit",
+   "value": "2× XT60, 12–60 V, 20 A max each",
+   "source": "https://www.notebookcheck.net/Bluetti-APEX-300-battery-storage-system-review-More-than-just-a-balcony-power-station.1083982.0.html",
+   "source_title": "Notebookcheck: Bluetti APEX 300 battery storage system review (Christian Hintze)",
+   "read": "2026-11-10",
+   "note": "From Notebookcheck's photo caption. Because open-circuit voltage must stay at or below 60 V, the operating voltage is below 60 V, so the power per port is below 20 A × 60 V = 1,200 W. Notebookcheck did not measure peak solar input (the weather didn't allow it)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "4,000 W solar input requires add-on",
+   "value": "4,000 W solar only with SolarX 4K; full charge in 1.9 h with 4 kW solar (maker claim)",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-2-200w-1",
+   "source_title": "Apex 300+B300K+2*200W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "Maker's footnote: '* Requires a SolarX 4K.' The 2×200 W, 2×350 W and 2×500 W bundles do not list a SolarX 4K."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Price (station alone)",
+   "value": "$1,499.00 (list $1,699.00); ships from early December",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-2-200w-1",
+   "source_title": "Apex 300+B300K+2*200W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "Black Friday Early Access, Nov 5–18, per the page."
+  },
+  {
+   "product": "BLUETTI B300K",
+   "label": "Capacity / price",
+   "value": "2,764.8 Wh (51.2 V, 54 Ah) LiFePO4, 6,000+ cycles; $1,099.00",
+   "source": "https://www.bluettipower.com/products/b300k",
+   "source_title": "B300K Expansion Battery | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "Maker's page. Compatible with Apex 300, Apex 200, AC300, AC500, AC200L, AC200MAX."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + 2×200W",
+   "label": "Refill days from empty at 4 sun-hours, net of idle",
+   "value": "≈4.9 days",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-2-200w-1",
+   "source_title": "Apex 300+B300K+2*200W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "400 W × 4 h = 1,600 Wh; 1,600 − 480 idle = 1,120 Wh/day; 5,529.6 ÷ 1,120 = 4.94 days, assuming panels at rated output and no other loads. Bundle price $3,499.00 (storecheck, 2026-11-10). The 4 full-sun-hour basis is the one Sun Gold Power uses (see the SGR-8K10E finding)."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2×B300K + 2×500W",
+   "label": "Refill days from empty at 4 sun-hours, net of idle",
+   "value": "≈2.4 days",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k-2-500w",
+   "source_title": "Apex 300 + 2*B300K + 2*500W | BLUETTI US",
+   "read": "2026-11-10",
+   "note": "1,000 W × 4 h = 4,000 Wh; 4,000 − 480 = 3,520 Wh/day; 8,294.4 ÷ 3,520 = 2.36 days. Price $5,499.00 (storecheck, 2026-11-10)."
+  },
+  {
+   "product": "BLUETTI 500W Solar Panel (SORA 500)",
+   "label": "Price / connector",
+   "value": "$849.00 each; MC4",
+   "source": "https://www.bluettipower.com/products/500w-portable-solar-panel",
+   "source_title": "BLUETTI SORA 500 Portable Solar Panel | 500W",
+   "read": "2026-11-10",
+   "note": "The page also lists 'Apex 300 + 500W' $2,499 and 'Apex 300 + 2 × 500W' $3,299 bundles. The page gives no electrical specs."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Maker's daily-yield basis",
+   "value": "≈14.4 kWh/day from 3,600 W of panels under 4 hours of full sunlight; 10.24 kWh battery; $4,949.00",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH ... SGR-8K10E",
+   "read": "2026-11-10",
+   "note": "Read through storecheck's store search output. The product page itself returned 429. 8 × 450 W × 4 h = 14.4 kWh. Used only as a cross-check for the 4-sun-hour basis."
+  }
+ ],
+ "unsourced": [
+  "Electrical specs (Voc, Vmp) for the BLUETTI SP200L and SORA 500 panels: the maker pages returned 429 or had no spec table, and Wellbots returned 429. Without them I can't confirm how many panels can go in series under the Apex 300's 60 V ceiling.",
+  "Whether the B300K has its own solar input: the BLUETTI B300K page and the search results don't state one.",
+  "Apex 300 charging temperature range and storage/recharge-interval guidance: the official manual PDF (s4.bluettipower.com) was over the 10 MB fetch limit.",
+  "A measured idle draw for the Apex 300: Notebookcheck's review doesn't give one. The 20 W figure is BLUETTI's own claim.",
+  "Renogy's cited cabin-kit and tiny-home-kits pages: HTTP 429 on every attempt, so I couldn't check whether they state daily yield or refill time.",
+  "Sun Gold Power SGM-5K5E and SGR-8K10E inverter idle consumption and PV input limits: product pages returned 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0755429999999997
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that Sun Gold Power's SGR-8K10E kit includes PV wiring for just one string (one 25 A PV breaker and one 50 ft PV extension cable set) even though its 8 kW inverter has two MPPT inputs. So all eight 450 W panels (30.08 V Vmp each) go in one series string of about 240.6 V Vmp, which stays under the inverter's 500 VDC open-circuit maximum, and the second MPPT input stays free for more panels later.",
+ "standout": 2,
+ "standout_why": "I compared this against the Current Connected EG4 TinyHome kit page (a top result, opened 2026-11-10). It gives its own inverter's PV window (Fortress Solo 6.5K, 150–450 Vdc MPPT, 550 Vdc maximum) and the panel Voc/Vmp. It does not say how to wire the panels into strings or confirm battery-to-inverter communication, and it does not cover the Sun Gold Power kit at all. I tried the cited Renogy 1200W/2500W 48V cabin kit page (renogy.com/products/1200w-2500w-tiny-house-home-cabin-kit) but it returned HTTP 429, so I could not check its wording. Its stringing details apply to Renogy hardware in any case, not to this kit. I scored 2 rather than 3 because the finding that would have decided the set (splitting the panels 4+4 across both MPPTs drops below the MPPT voltage floor) depends on a 125–425 V MPPT range I could not open from a maker or manual page. That is listed under unsourced.",
+ "kit_items": [
+  "inverter: Sun Gold Power 8 kW 48 V split-phase all-in-one inverter (120/240 V, 2 MPPT, 500 VDC maximum open-circuit). It is the inverter in the SGR-8K10E. The kit page says it supports up to 11,000 W of PV and talks to the batteries over RS485.",
+  "battery: 2 × Sun Gold Power SG48100P 51.2 V 100 Ah LiFePO4 server-rack batteries (10.24 kWh). They match the inverter's 48 V DC bus, and the kit page says both inverter and batteries support RS485. The kit includes a 250 A busbar and 2 × 2/0 AWG cable sets to join the two batteries.",
+  "solar panels: 8 × Sun Gold Power 450 W bifacial N-type panels (3,600 W total, 30.08 V Vmp each), with 8 sets of Z-brackets. One series string is 8 × 30.08 = 240.6 V Vmp, inside the inverter's 500 VDC open-circuit limit. The kit ships one 25 A PV breaker and one 50 ft PV extension set, which suits a single string.",
+  "DC protection and wiring: 200 A DC breaker, 25 A PV breaker and 2/0 AWG cables are all in the kit, so nothing has to come from another store. Racking beyond the Z-brackets is not listed."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com, awin:sungoldpower)",
+   "items": [
+    "Sun Gold Power SGR-8K10E Off-Grid Solar Kit (8,000 W 48 V 120/240 V inverter, 2 × SG48100P 10.24 kWh, 8 × 450 W panels) | https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e | $4,949.00 | 2026-11-10"
+   ],
+   "bundle_sku": "SGR-8K10E is the store's own bundle at $4,949.00 (2026-11-10). The product page showed a compare-at price of $7,614.00, while the store's search data showed $9,183.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Kit price",
+   "value": "$4,949.00",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-10",
+   "note": "The page and the storecheck search both gave $4,949. storecheck reported it as available, but the rendered page showed a sold-out marker on the battery-option variants. Check stock before publishing."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "PV wiring hardware included",
+   "value": "1 × 25 A PV breaker, 1 set × 50 ft solar extension cables (inverter PV input)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "SGR-8K10E product page",
+   "read": "2026-11-10",
+   "note": "From the 'what is included' list. That is one PV circuit, even though the inverter has two MPPTs. The larger SGR-10K kits ship 2 × 25 A PV breakers and 2 cable sets."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Inverter MPPT count and PV ceiling (kit page)",
+   "value": "Dual MPPT, up to 11,000 W PV input, up to 180 A combined solar + AC charging",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "SGR-8K10E product page",
+   "read": "2026-11-10",
+   "note": "The kit's 3,600 W of panels uses about a third of the stated PV ceiling."
+  },
+  {
+   "product": "Sun Gold Power 8KW 48V Split Phase Solar Inverter",
+   "label": "Maximum PV open-circuit voltage",
+   "value": "500 VDC",
+   "source": "https://sungoldpower.com/products/8kw-off-grid-solar-inverter-ul1741",
+   "source_title": "8KW 48V Split Phase Solar Inverter",
+   "read": "2026-11-10",
+   "note": "Taken from the maker store's product text via storecheck search: 'Max.Voltage of Open Circuit : 500VDC', 2 MPPT, split-phase or 120 V single-phase, UL 1741 by ETL. Standalone price is $1,305.00. A direct page fetch returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E panels",
+   "label": "Panel Vmp and single-string voltage",
+   "value": "30.08 V per panel; 240.6 V for 8 in series",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "SGR-8K10E product page",
+   "read": "2026-11-10",
+   "note": "Arithmetic: 8 × 30.08 V = 240.64 V. This is operating voltage (Vmp), not Voc. A cold-weather Voc check against the 500 V limit needs the panel Voc and its temperature coefficient (see unsourced). The manual filename on the page is SGN-450-BDG5. The page URL says '415-watts' but the title says 450 W."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Battery-inverter communication",
+   "value": "RS485",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "SGR-8K10E product page",
+   "read": "2026-11-10",
+   "note": "Exact wording: 'The 48V inverter and 51.2V LiFePO4 batteries support RS485 communication'. The page does not name the cable, pinout or inverter battery-type setting."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "DC side hardware included",
+   "value": "200 A DC breaker, 2 sets × 2/0 AWG cables, 250 A busbar, 8 sets Z-brackets",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "SGR-8K10E product page",
+   "read": "2026-11-10",
+   "note": "The busbar joins the two SG48100P batteries. The SGR-8K10T (single SG48200T) and SGR-8K16P (PowerMax 314 Ah) variants list one cable set and no busbar."
+  },
+  {
+   "product": "general (rival: Current Connected EG4 TinyHome kit)",
+   "label": "Rival's inverter PV window",
+   "value": "MPPT 150–450 Vdc, maximum 550 Vdc per MPPT, 18 A maximum Isc per MPPT (Fortress Solo 6.5K)",
+   "source": "https://www.currentconnected.com/product/quick-full-solar-installation-kit",
+   "source_title": "Complete EG4 Off-Grid TinyHome Solar Installation Kit — Current Connected",
+   "read": "2026-11-10",
+   "note": "The rival page does not give a series/parallel layout and does not confirm inverter-battery communication. Headline price is $9,998.77."
+  }
+ ],
+ "unsourced": [
+  "SGN-450-BDG5 panel Voc (a search snippet said 35.03 V), Isc (16.05 A) and Voc temperature coefficient (-0.28 %/K). The Solaris-shop datasheet PDF I fetched could not be read as text, the Solaris product page shows specs only as an image, and the maker's panel page returned HTTP 429. Without these I can't do the cold-weather Voc check (8 × Voc corrected for cold, against 500 VDC).",
+  "The 8 kW inverter's MPPT operating window (125–425 Vdc per search snippets) and maximum PV current per MPPT (22 A per snippet). I tried the maker's inverter page (HTTP 429), the SPH8-10KW manual PDF on the maker's Shopify CDN (could not read the text), manuals.plus (HTTP 403), offgridsource, offgridstores and kratopower (all HTTP 429). If 125 V is confirmed, a 4+4 split across both MPPTs (4 × 30.08 = 120.3 V Vmp) would fall below the MPPT floor, which would require the single 8-panel string.",
+  "Exact inverter model number for the kit (SPH8048P vs SPH8K48SP): the kit page only shows a manual filename 'SPH8-10KW'.",
+  "The RS485 cable, pinout and inverter battery-protocol setting for the SG48100P. They are not on the kit page, and the manual PDF could not be read.",
+  "The cited Renogy 1200W/2500W 48V cabin kit page returned HTTP 429, so I could not check its stringing or communication wording against this finding."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2162231000000003
+ }
+}
