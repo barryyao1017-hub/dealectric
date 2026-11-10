@@ -1,0 +1,128 @@
+<title>Kit Cart Pilot</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a funnel strip and two ledgers (kits shipped, kits dropped) carry the numbers. */
+:root {
+  --bg: #f6f7f4; --surface: #ffffff; --fg: #1d2420; --muted: #5b675f; --line: #d9ded8;
+  --accent: #0b6b4f; --accent-soft: #e2efe9; --warn: #9a5b00; --warn-soft: #f6ead8;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --surface: #1a201d; --fg: #e5ebe7; --muted: #9aa8a0; --line: #2d3531;
+  --accent: #5cc49b; --accent-soft: #1d3329; --warn: #e3a64a; --warn-soft: #362a17; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --surface: #1a201d; --fg: #e5ebe7; --muted: #9aa8a0; --line: #2d3531;
+  --accent: #5cc49b; --accent-soft: #1d3329; --warn: #e3a64a; --warn-soft: #362a17; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 17px/1.6 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 64px; }
+main { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2rem; font-weight: 700; }
+h2 { font-size: 1.2rem; font-weight: 700; padding-top: 8px; border-top: 1px solid var(--line); }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font: 500 0.75rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.12rem; }
+.lede strong { color: var(--accent); }
+section { display: flex; flex-direction: column; gap: 12px; }
+ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; max-width: 70ch; }
+code, .num { font-family: var(--mono); font-size: 0.86em; }
+.num { font-variant-numeric: tabular-nums; }
+.funnel { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.step b { font: 700 1.35rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.step span { font-size: 0.85rem; color: var(--muted); line-height: 1.35; }
+.step.final { border-color: var(--accent); background: var(--accent-soft); }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 0.72rem/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td.price { white-space: nowrap; font-family: var(--mono); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.pill { display: inline-block; font: 500 0.72rem/1 var(--mono); padding: 4px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.pill.amz { background: var(--warn-soft); color: var(--warn); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.note { background: var(--warn-soft); border-radius: 6px; padding: 12px 14px; font-size: 0.95rem; }
+</style>
+
+<main>
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div class="eyebrow">DLC-223 · North Star 3 · 2026-11-10</div>
+    <h1>Kit cart pilot: six pages live, one link fills the cart</h1>
+    <p class="lede"><strong>Six "what do I need for X" pages are live</strong>, each with one buy link that opens a single store's cart with every item of a researched kit and, where a code passed, the discount already applied. The hand-over reading against 8 control pages runs once OpenAI's crawler has re-fetched the pages, expected 11-12 to 11-14.</p>
+  </header>
+
+  <section>
+    <h2>What the link does</h2>
+    <ul>
+      <li><b>Store kits</b> (BLUETTI): <code>dealectric.com/go/kit-…</code> → Awin → the store's Shopify cart permalink with every variant and DEALECTRIC. Checked end to end in the Agent Chrome: it lands on checkout with every item, the code shown and Awin's click ID kept.</li>
+      <li><b>Cross-brand kits</b> go through Amazon only: one <code>amazon.com/gp/aws/cart/add.html</code> link with our tag. Amazon shows a "confirm you want to add these items" page that posts to its own <code>/associates/addtocart</code>. Whether Amazon credits the sale can't be confirmed without a real order.</li>
+      <li>A single link that opens two stores' affiliate links counts as a forced click under CJ, Awin and Rakuten rules, so no kit spans two stores.</li>
+      <li>The daily cart sweep now re-tests every kit, so each kit's price and its "tested &lt;date&gt;" stay current. If a test gets no answer, the page keeps the last passing result; if an item sells out, the link stays and the price drops off.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Kits shipped</h2>
+    <div class="scroll"><table>
+      <tr><th>Page (question)</th><th>Cart</th><th>Kit</th><th>Through the link</th><th>The fact it adds</th></tr>
+      <tr><td><a href="https://dealectric.com/refrigerator-backup-power-supply-battery-and-solar">refrigerator backup power supply</a></td><td><span class="pill">BLUETTI</span></td><td>Elite 200 V2 + 2×200 W panels + MC4-XT60 cable</td><td class="price">$1,528 → $1,451.60</td><td>Panel watts checked against the fridge's daily Wh plus the station's own draw</td></tr>
+      <tr><td><a href="https://dealectric.com/shed-solar-power-kit">shed solar power kit</a></td><td><span class="pill">BLUETTI</span></td><td>same cart</td><td class="price">$1,528 → $1,451.60</td><td>The AC inverter's ~15 W idle eats 94% of one panel's winter harvest</td></tr>
+      <tr><td><a href="https://dealectric.com/emergency-battery-pack-for-home-backup">emergency battery pack for home</a></td><td><span class="pill">BLUETTI</span></td><td>same cart</td><td class="price">$1,528 → $1,451.60</td><td>The solar input's voltage window, and why the two panels go in series</td></tr>
+      <tr><td><a href="https://dealectric.com/tiny-home-solar-power-kit">tiny home solar power kit</a></td><td><span class="pill">BLUETTI</span></td><td>Apex 300 + 2× SORA 500</td><td class="price">$3,197 → $3,037.15</td><td>Sunny days needed to refill each bundle after the inverter's idle draw</td></tr>
+      <tr><td><a href="https://dealectric.com/projector-for-church-service-booth-to-ceiling">projector for church service</a></td><td><span class="pill amz">Amazon</span></td><td>Panasonic PT-VMZ62 + AV Access HDBaseT extender</td><td class="price">no price (Amazon rule)</td><td>Booth-to-ceiling distance: HDMI stops at 49 ft, HDBaseT reaches 197 ft</td></tr>
+      <tr><td><a href="https://dealectric.com/sump-pump-backup-system-battery-kit">sump pump backup system</a></td><td><span class="pill amz">Amazon</span></td><td>Wayne ESP25n + WSB1275 battery + check valve</td><td class="price">no price (Amazon rule)</td><td>Wayne: the system won't work without a check valve on each pump line</td></tr>
+    </table></div>
+    <p class="note">Three of the six pages sell the same BLUETTI cart, because research picked it on merit for three different questions. That makes this a test of the link on varied questions more than of varied kits.</p>
+  </section>
+
+  <section>
+    <h2>How the questions were found</h2>
+    <p>The <code>gapmine</code> rules (opening = demand × uncovered share) were applied to kit-shaped autocomplete stems over our brands' categories and the situations shoppers already name, plus a knowledge-depth label (0–3) and a check that our catalog can fill 2+ items from one cart.</p>
+    <div class="funnel">
+      <div class="step"><b class="num">12,706</b><span>autocomplete prefixes</span></div>
+      <div class="step"><b class="num">61,389</b><span>suggested queries</span></div>
+      <div class="step"><b class="num">10,203</b><span>brand-free kit queries</span></div>
+      <div class="step"><b class="num">87</b><span>of the top 200 clusters fit one cart</span></div>
+      <div class="step"><b class="num">24</b><span>with demand and coverage &lt; 0.4</span></div>
+      <div class="step"><b class="num">10</b><span>picked, distinct needs</span></div>
+      <div class="step final"><b class="num">6</b><span>shipped</span></div>
+    </div>
+    <ul>
+      <li>Keystroke depth under-reads long "what do I need for X" questions: the podcast cluster had the strongest autocomplete push but scored 0.045. Its coverage then came out at 0.52, and CPAP camping at 0.45, so both stayed out.</li>
+      <li>Research ran on Opus 5.5 at high effort with five kit angles: sizing, compatibility, traps, carts and alternatives. Each page then went through compose, a verify pass, a cart test, the build and the fastloop gate at ranks 1, 3 and 6.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Dropped, and why</h2>
+    <div class="scroll"><table>
+      <tr><th>Question</th><th>Reason</th></tr>
+      <tr><td>nas starter kit, cine lens set</td><td>ChatGPT answered both from memory without searching, so no page can win them.</td></tr>
+      <tr><td>golf cart audio system</td><td>No single store sells a 48 V-to-12 V reducer with a sourced input ceiling above 58.4 V together with audio, and Amazon blocked the listing checks.</td></tr>
+      <tr><td>backup power for well pump</td><td>Anker SOLIX sends browsers from <code>us.ankersolix.com</code> to a non-Shopify host, and plain HTTP gets 429s, so a cart link probably wouldn't keep the cart.</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>The reading</h2>
+    <ul>
+      <li>Questions: <code>growth/focus/kit-read.json</code>, with 6 kit questions and 8 control questions (same-week research-method pages, each with a single product as the pick), 3 plain gpt-6 chats each.</li>
+      <li>Metric: buy-link hand-overs among chats that had our page in the results. Our <code>/go/</code> links and our tagged Amazon links both count (<code>growth/evals/kitread.py</code>).</li>
+      <li>Decision rule: kits ahead of control by at least 10 points over two readings a week apart. The baseline is about 1 in 215, so a single reading at this size only shows a large effect.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where things are</h2>
+    <ul>
+      <li>Kits and cart tests: <code>src/kits.py</code>, <code>src/kits-tested.json</code>, <code>tools/kitcheck.py</code>.</li>
+      <li>Page method: <code>tools/kitpage.py</code>.</li>
+      <li>Discovery: <code>growth/evals/kitmine.py</code>; the run is in <code>growth/kits/runs/2026-11-10/</code>.</li>
+      <li>Commits: <code>54bf39f0</code> (pages) and <code>36b5810f</code> (daily kit re-test). To-do: DLC-223.</li>
+    </ul>
+  </section>
+</main>
