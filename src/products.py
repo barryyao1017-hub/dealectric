@@ -4872,6 +4872,38 @@ PRODUCTS = [
  "fit": 'Several gaming or editing PCs that share one 4K 120 to 144 Hz monitor.',
  "caveats": ["TESmart's product text mentions a LAN port for TCP/IP control, but its spec table lists only four switching methods for the 8-port model. Ask TESmart before you rely on network control.", 'You only get 144 Hz if the GPU, cables and monitor all support HDMI 2.1.']},
 
+{"slug": 'ddpai-z90-pro',
+ "brand": 'DDPAI',
+ "program": 'awin:ddpai',
+ "category": 'dash-cam',
+ "name": 'DDPAI Z90 Pro 4K Dash Cam, front + rear, 64 GB built-in eMMC + microSD',
+ "model": 'Z90 Pro (2CH)',
+ "url": 'https://store.ddpai.com/products/z90-pro',
+ "price": 199.0,
+ "verified": '2026-11-10',
+ "specs": [('Cameras', '4K front (Sony STARVIS 2 IMX678) + 1440p rear; interior camera in 3-channel bundles'), ('Built-in memory', '64 GB eMMC'), ('Card slot', 'microSD up to 512 GB'), ('Crash clips', 'Kept on the internal eMMC (D²save); records without a card'), ('Screen', '3-inch'), ('Wi-Fi', '5 GHz'), ('Operating temperature', '-4 to 158 °F (-20 to 70 °C)'), ('4G (optional bundle)', 'Remote live view, alerts, two-way voice')],
+ "warranty": '1-year limited warranty on dash cams bought from the DDPAI store; accessories 3 months.',
+ "returns": 'Returns are set up by email with DDPAI (ecommerce@ddpai.com) before you ship anything. Ask for the return address first.',
+ "summary": 'A front and rear 4K dash cam that records to 64 GB of built-in memory first and keeps crash clips there. Older loop video moves to a microSD card of up to 512 GB.',
+ "fit": 'Drivers who want front and rear video, no subscription, and no risk of losing a crash clip to a dead microSD card.',
+ "caveats": ['New model with few long-term owner reports so far.', 'Make sure the bundle you choose says 2CH (front + rear) before you check out.', 'Crash clips are stored in internal memory, so you download them in the DDPAI app over Wi-Fi. The card only holds older loop video.', 'Owners of other DDPAI models report a flaky app and firmware restarts.', '4G features need the 4G bundle and a SIM. US owners of the Z60 Pro reported trouble with data-only SIMs.']},
+
+{"slug": 'ddpai-n5-pro',
+ "brand": 'DDPAI',
+ "program": 'awin:ddpai',
+ "category": 'dash-cam',
+ "name": 'DDPAI N5 Pro 4K + 2K Dash Cam, 64 GB built-in eMMC + microSD',
+ "model": 'N5 Pro',
+ "url": 'https://store.ddpai.com/products/n5-pro-dash-cam',
+ "price": 259.0,
+ "verified": '2026-11-10',
+ "specs": [('Cameras', '4K front + 2K (1440p) rear; 3K 60 fps mode'), ('Built-in memory', '64 GB eMMC'), ('Card slot', 'microSD up to 512 GB'), ('Crash clips', 'Saved to internal eMMC if the card fails (D²save 2.0)'), ('Screen', 'None (compact body behind the mirror)'), ('Power backup', 'Supercapacitor'), ('Wi-Fi', 'Wi-Fi 6, 5 GHz'), ('Operating temperature', '-4 to 158 °F (-20 to 70 °C)'), ('Parking', 'Radar wake-up with the separate Radar Accessory')],
+ "warranty": '1-year limited warranty on dash cams bought from the DDPAI store; accessories 3 months.',
+ "returns": 'Returns are set up by email with DDPAI (ecommerce@ddpai.com) before you ship anything. Ask for the return address first.',
+ "summary": 'A small, screenless front and rear dash cam with the same 64 GB of built-in memory and microSD backup as the Z90 Pro.',
+ "fit": 'Drivers who want a camera that disappears behind the mirror, with optional radar wake-up for parking.',
+ "caveats": ['Costs $60 more than the Z90 Pro for the same 64 GB of built-in memory.', "Radar parking needs the Radar Accessory, sold separately ($80 at DDPAI's store on 2026-11-10).", "DDPAI doesn't name the image sensors in the material we found.", 'Launched in February 2026, so owner reports are still few.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
