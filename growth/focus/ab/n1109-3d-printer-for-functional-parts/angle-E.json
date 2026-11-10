@@ -1,0 +1,83 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured chamber temperature. Thomas Sanladerer (Toms3D) measured about 50 °C inside a Prusa CORE One during an ABS print, against about 40 °C maximum in a Bambu Lab X1 Carbon, which also has a passive enclosure like the P2S. 3DPrint.com measured the CORE One's ASA calibration parts within 0.05 mm on 100 mm.",
+ "standout": 2,
+ "standout_why": "I opened both pages ChatGPT cited. goodprints3d.com gives no measured figures at all and says only that the CORE One has 'active temperature control', with no number. 3dprinterlab.net gives Bambu's 65 °C spec for the X2D and calls the P1S enclosure 'not heated'. It has no measurements. Of the top uncited results, speakcad.com/blog/best-3d-printer-for-functional-parts lists the CORE One as 'passive to about 55 °C', which is a spec with no tester named. It has no noise, accuracy or strength figures. None of the three pages names anyone who measured anything.",
+ "decides": "For ABS, ASA or nylon parts, chamber heat is what separates ChatGPT's $449 P2S from the $1,149 CORE One+. Toms3D's side-by-side shows the CORE One's bed-heated, regulated chamber running about 10 °C warmer than a passive Bambu enclosure (about 50 °C vs about 40 °C), and the CORE One made the more accurate ABS part. This backs the CORE One+ for engineering materials, at the cost of about 30 minutes of preheat in a cool room. Two caveats: these tests used the original CORE One and the X1C, not the CORE One+ and P2S on the cards. For PLA and PETG parts the A1 and P2S stay the value picks. The QIDI Q2 that Dealectric lists has a 65 °C active chamber heater, and TechRadar's test puts its accuracy about level with the CORE One's (0.128 mm average X/Y error).",
+ "candidates": [
+  "Bambu Lab A1",
+  "Bambu Lab P2S",
+  "Prusa CORE One+",
+  "QIDI Q2"
+ ],
+ "findings": [
+  {
+   "product": "Prusa CORE One (original; the CORE One+ shares the enclosure design)",
+   "label": "Chamber temperature during an ABS print (Toms3D)",
+   "value": "about 50 °C",
+   "source": "https://toms3d.org/2025/02/11/finally-prusa-takes-on-bambu-core-one-review-and-x1c-comparison/",
+   "source_title": "Finally, Prusa takes on Bambu! CORE One review (and X1C comparison) – Toms3D (Thomas Sanladerer), 2025-02-11",
+   "read": "2026-11-09",
+   "note": "Quote: 'The Core One eventually reached about 50°C after a couple of layers of ABS'. The chamber is heated by the bed; there is no dedicated heater. Prusa rates it to 55 °C."
+  },
+  {
+   "product": "Prusa CORE One (original)",
+   "label": "Preheat time before an ABS print in a cool room (Toms3D)",
+   "value": "about 30 min to reach 40 °C",
+   "source": "https://toms3d.org/2025/02/11/finally-prusa-takes-on-bambu-core-one-review-and-x1c-comparison/",
+   "source_title": "Finally, Prusa takes on Bambu! CORE One review (and X1C comparison) – Toms3D, 2025-02-11",
+   "read": "2026-11-09",
+   "note": "Quote: 'the printer paused for about half an hour to get the chamber to 40°C before starting my ABS print'. The test was in a cool basement. 40 °C is PrusaSlicer's default minimum start temperature for high-temperature filaments."
+  },
+  {
+   "product": "Bambu Lab X1 Carbon (passive enclosure, same approach as the P2S)",
+   "label": "Maximum chamber temperature in the same ABS comparison (Toms3D)",
+   "value": "about 40 °C",
+   "source": "https://toms3d.org/2025/02/11/finally-prusa-takes-on-bambu-core-one-review-and-x1c-comparison/",
+   "source_title": "Finally, Prusa takes on Bambu! CORE One review (and X1C comparison) – Toms3D, 2025-02-11",
+   "read": "2026-11-09",
+   "note": "Quote: the CORE One 'managed to produce the most accurate part when compared to the X1C (chamber reached ~40°C max)'. This is the X1C, not the P2S. It is a proxy for Bambu's unheated enclosures, not a P2S measurement."
+  },
+  {
+   "product": "Prusa CORE One (original)",
+   "label": "ASA dimensional accuracy (3DPrint.com, Orville Wright IV)",
+   "value": "X 100.03 / Y 100.05 / Z 100.00 mm on 100 mm targets; XY diagonals 150.03 / 150.03 mm on 150 mm; XZ 135.07 / YZ 135.08 mm on 135 mm",
+   "source": "https://3dprint.com/316927/prusa-core-one-innovating-or-catching-up/",
+   "source_title": "Prusa CORE One: Innovating or Catching Up? – 3DPrint.com, 2025-04-17",
+   "read": "2026-11-09",
+   "note": "Printed in ASA. Worst error is 0.08 mm on 135 mm (0.06%). On the 100 mm axes the worst is 0.05 mm (0.05%). Print settings were not stated."
+  },
+  {
+   "product": "Prusa CORE One (original)",
+   "label": "Noise while printing (3DPrint.com)",
+   "value": "about 48 dB average, peaks about 60 dB, lows about 40 dB",
+   "source": "https://3dprint.com/316927/prusa-core-one-innovating-or-catching-up/",
+   "source_title": "Prusa CORE One: Innovating or Catching Up? – 3DPrint.com, 2025-04-17",
+   "read": "2026-11-09",
+   "note": "The reviewer says the average at higher speeds is 'much closer to the 60db peaks'. Meter distance was not stated."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Dimensional accuracy and print-quality score (TechRadar test, as summarized by QIDI)",
+   "value": "0.128 mm average X/Y error; 29/30 print-quality benchmark",
+   "source": "https://qidi3d.com/ja/blogs/user-stories/workshop-3d-printer-review-six-months",
+   "source_title": "TechRadar's QIDI Q2 Review: Six Months of Reliable Printing (QIDI-hosted summary of the TechRadar review by Jennings)",
+   "read": "2026-11-09",
+   "note": "This is the maker's own summary. The TechRadar original (https://www.techradar.com/pro/qidi-q2-3d-printer-review) would not load past its title, so the figures need checking against TechRadar before they go on the page. The 65 °C active chamber heating is QIDI's spec, not a measurement."
+  }
+ ],
+ "unsourced": [
+  "A named measurement of the Bambu Lab P2S chamber temperature. A search snippet credits Tom's Hardware with about 33 °C, but the page (tomshardware.com/3d-printing/bambu-lab-p2s-review, US and UK editions) loads only its title, so I left the figure out. Toms3D's P2S review (2026-01-15) and Hackster's P2S review give no chamber figure. All3DP's P2S article only says there is no active heating.",
+  "P2S dimensional accuracy and noise from a named reviewer. The TechRadar P2S review loads only its title. A reseller blog cites TechRadar for about 0.15 mm average XY error, which I did not use. The noise figures I found came only from forums and low-authority sites.",
+  "Any measurements specific to the Prusa CORE One+ (every measured figure above is for the original CORE One).",
+  "Bambu Lab A1 named measurements (noise, accuracy). I ran out of tool budget before searching. It is open-frame, so a chamber temperature does not apply.",
+  "QIDI Q2 chamber warm-up time to 65 °C from a named tester. The Tom's Hardware Q2 review loads only its title.",
+  "Today's prices were not checked; they fall outside this angle and the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0018166000000002
+ }
+}

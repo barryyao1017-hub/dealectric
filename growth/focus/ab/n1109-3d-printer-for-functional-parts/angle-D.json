@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Bambu Lab P2S it called its 'best all-around choice' for ABS and ASA has no chamber heater at all. Its chamber is warmed only by the bed and hotend. Prusa caps the CORE One+ chamber at 55 °C, while QIDI's Q2 costs the same $449 as the P2S card and has 65 °C active chamber heating.",
+ "standout": 2,
+ "standout_why": "I compared the two cited pages and the top result. goodprints3d.com (cited) picks the P2S and gives no chamber temperature for any printer. It credits the P2S only with 'hardened-steel extrusion hardware'. 3dprinterlab.net (cited) says the older P1S enclosure 'is not a heated chamber' and that the X2D heats to 65 °C, but it never covers the P2S. It names the QIDI Plus5 only as 'not picked'. speakcad.com (rank 1, not cited) gives a passive ~55 °C for the CORE One and 65 °C for the H2D, and says 'large ABS, ASA and PA parts want a heated chamber'. It does not cover the P2S or QIDI Q2. No page says the P2S chamber has no heater, and none points to the actively heated printer at the P2S price. The rivals have part of the principle, so this is a 2, not a 3.",
+ "decides": "For PLA and PETG parts this changes nothing: an open A1 or a P2S is fine. For large ABS or ASA parts, and for nylon or PC, chamber heat decides whether the plan works. The P2S chamber only gets as warm as its bed and hotend make it. The CORE One+ stops at 55 °C and ships with a brass 290 °C nozzle. The QIDI Q2 (Dealectric lists it on awin:qidi) adds 65 °C active heating and a 370 °C nozzle at the P2S's $449. That makes the Q2 the better-matched pick at that price for the 'automotive or heat-resistant parts' branch ChatGPT offered. I have no Bambu-sourced P2S figure, so the page should say the P2S works for PETG and small ASA parts and not claim more.",
+ "candidates": [
+  "Bambu Lab P2S",
+  "Bambu Lab A1",
+  "Prusa CORE One+ (Gen 2)",
+  "QIDI Q2",
+  "QIDI Plus5",
+  "QIDI Max4"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab P2S",
+   "label": "Chamber heating",
+   "value": "No active chamber heater; the chamber is warmed by the build plate and hotend",
+   "source": "https://www.hackster.io/news/bambu-p2s-details-are-here-661b3d65f99e",
+   "source_title": "Bambu P2S Details Are Here (Hackster.io, Cameron Coward)",
+   "read": "2026-11-09",
+   "note": "Cameron Coward wrote that 'There isn't any active heating element' and that 'the heat from the build plate and hot end will bring the chamber up to temperatures suitable for the filament in use.' He gives no °C figure. This is launch coverage; the page shows only '1 year ago' and quotes a tentative $549 US price, not today's price. Bambu's own spec pages would not load for me (see unsourced)."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2)",
+   "label": "Max chamber temperature",
+   "value": "55 °C / 131 °F; Prusa's comparison table lists 'Active chamber heating: Yes (up to 55 °C)' and 'up to 60 °C' for the CORE One L",
+   "source": "https://www.prusa3d.com/product/prusa-core-one/",
+   "source_title": "Prusa CORE One+ (Gen 2) | Original Prusa 3D printers directly from Josef Prusa",
+   "read": "2026-11-09",
+   "note": "The page does not say whether a dedicated heater or the heatbed supplies the heat. It says a top vent closes for high-temperature materials and that the printer 'monitors temperatures at all times and adjusts automatically.'"
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2)",
+   "label": "Stock nozzle and max nozzle temperature",
+   "value": "Brass High-flow Prusa Nozzle CHT 0.4 mm; 290 °C / 554 °F",
+   "source": "https://www.prusa3d.com/product/prusa-core-one/",
+   "source_title": "Prusa CORE One+ (Gen 2) | Original Prusa 3D printers directly from Josef Prusa",
+   "read": "2026-11-09",
+   "note": "The stock nozzle is brass, not hardened, so CF or GF filled filaments need a nozzle bought separately. Prusa lists materials as 'PLA, PETG, Flex, PVA, PC, PP, CPE, PVB (Advanced: ABS, ASA, HIPS, PA)'."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2)",
+   "label": "Price, Prusa store",
+   "value": "$1,202.78 assembled; $925 kit",
+   "source": "https://www.prusa3d.com/product/prusa-core-one/",
+   "source_title": "Prusa CORE One+ (Gen 2) | Original Prusa 3D printers directly from Josef Prusa",
+   "read": "2026-11-09",
+   "note": "ChatGPT's card showed $1,149.00."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber heating, nozzle temperature, price",
+   "value": "Second-gen 65 °C active chamber heating; max 370 °C nozzle; 270 × 270 × 256 mm; $449 (compare-at $649), in stock",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer (QIDI US store)",
+   "read": "2026-11-09",
+   "note": "Read with the Dealectric storecheck.py Shopify search of qidi3d.com, using the listing's own title, price and description text. A full product-page fetch returned HTTP 429 three times, so the heater wattage and nozzle material were not read. $449 matches ChatGPT's P2S card price."
+  },
+  {
+   "product": "general",
+   "label": "Why ABS needs a warm enclosure (Prusa's words)",
+   "value": "ABS: 'Significant warping'; parts 'tend to shrink slightly' (about 1-2%) on cooling; 'the printer should be inside an enclosure with a higher ambient temperature'; bed at least 100 °C (80-110 °C by object size)",
+   "source": "https://help.prusa3d.com/article/abs_2058",
+   "source_title": "ABS | Prusa Knowledge Base",
+   "read": "2026-11-09",
+   "note": "This is the mechanism: the part shrinks as it cools, so a hotter chamber means less temperature drop between layers. Prusa gives no specific chamber °C target for ABS."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab's own P2S chamber spec and today's P2S price: bambulab.com/en-us/p2s returned HTTP 403, wiki.bambulab.com P2S specs returned HTTP 402, us.store.bambulab.com returned HTTP 402, and the storecheck.py search returned HTTP 404.",
+  "A Bambu statement on whether the open-frame A1 suits ABS or ASA: the Bambu wiki ABS printing guide returned HTTP 402.",
+  "A measured P2S chamber temperature from a named reviewer: the Tom's Hardware P2S review returned only its title and the All3DP launch article returned HTTP 403. The ~50 °C figures I saw came from forum posts and unnamed summary sites, which I did not use.",
+  "QIDI Q2 chamber heater wattage, stock nozzle material and QIDI's own explanation of chamber heating: the full product page returned HTTP 429 three times.",
+  "A maker-stated minimum chamber temperature for nylon or PC: help.prusa3d.com/article/nylon_2059 returned Prusa's PETG article instead, and the Bambu filament guides were walled (HTTP 402)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9679817000000001
+ }
+}
