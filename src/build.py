@@ -1489,7 +1489,7 @@ def kit_link(k):
 
 
 def kit_item_names(k):
-    return [(f"{q} × " if q > 1 else "") + short_name(p) for p, q in kit_products(k)]
+    return [(f"{q} × " if q > 1 else "") + title_name(p) for p, q in kit_products(k)]
 
 
 def kit_line(k, label="Kit", short=False):
@@ -1504,9 +1504,12 @@ def kit_line(k, label="Kit", short=False):
     p0, t = kit_products(k)[0][0], kit_test(k)
     if not t:
         return f"{label}: {html.escape(k['name'])} ({names}), one link that opens {p0['brand']}'s checkout with {word} in the cart: {a}"
-    if short:
-        price = f"{money(t['after'] if t.get('code') else t['list'])} through this link for {word}"
-    elif t.get("code"):
+    if short:   # the pick line when the long one doesn't fit the first chunk: drop the item list, keep price and how
+        how = (f"{money(t['after'])} through this link, which opens {p0['brand']}'s checkout with {word} in the cart and the "
+               f"discount applied (tested {t['date']})" if t.get("code") else
+               f"{money(t['list'])} (checked {t['date']}), one link that opens {p0['brand']}'s checkout with {word} in the cart")
+        return f"{label}: {html.escape(k['name'])}: {how}: {a}"
+    if t.get("code"):
         price = (f"{money(t['list'])} on {store_host(p0)}, {money(t['after'])} through this link, which opens {p0['brand']}'s "
                  f"checkout with {word} in the cart and the discount already applied (tested {t['date']})")
     else:
