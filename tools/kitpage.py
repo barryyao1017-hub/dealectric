@@ -191,18 +191,33 @@ def normalize_products(draft: dict, before: list[dict]) -> list[dict]:
     return out
 
 
+def agent_listing(asin: str) -> dict | None:
+    """Amazon's product page read in the Agent Chrome (background tab) when amzcheck's plain HTTP is walled (DLC-193)."""
+    import codesweep as C, time
+    try:
+        t = C.Tab(f"https://www.amazon.com/dp/{asin}")
+    except Exception:  # noqa: BLE001
+        return None
+    try:
+        time.sleep(8)
+        title = (t.eval("(document.querySelector('#productTitle') || {}).innerText || ''") or "").strip()
+    finally:
+        t.close()
+    return {"asin": asin, "found": bool(title), "title": title, "blocked": False, "via": "agent-chrome"} if title else None
+
+
 def product_errors(draft: dict) -> list[str]:
     """gappage's checks on the draft's new product records (fields, program, category, Amazon listing), with
     amzcheck retried while Amazon walls it (11-10: 3 of 5 ASINs blocked on one pass, found on the next)."""
     import gappage, amzcheck, time
     real = amzcheck.listing
     def patient(a):
-        for i in range(5):
+        for i in range(3):
             info = real(a)
             if info.get("found") or not info.get("blocked"):
                 return info
             time.sleep(15 * (i + 1))
-        return info
+        return agent_listing(a) or info
     amzcheck.listing = patient
     try:
         errs = gappage.validate({**draft, "status": "products_only"}) if draft.get("products") else []
