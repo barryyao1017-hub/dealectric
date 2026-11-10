@@ -1,0 +1,101 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that two BLUETTI 350W panels (33 V open-circuit voltage, or Voc, each) wired in series reach 66 V, over the BLUETTI Elite 200 V2's 12–60 V solar input. BLUETTI sells exactly that pair as the $2,148 'Elite 200 V2+2*350W Solar' bundle, so those panels must be wired in parallel. Two BLUETTI 200W (SP200L) panels in series reach 49.2 V, which is within the limit.",
+ "standout": 2,
+ "standout_why": "I compared five pages. EnergySage (cited) only says to 'choose your own panels as long as they fall within the power station's solar input specs', with no figures and no warning about series wiring. OutdoorGearLab (cited) lists adapter-cable traps (Jackery, DJI, Goal Zero) but nothing on panel voltage or series/parallel wiring. BackupPowerHub's home-backup page covers the Elite 200 V2 (120 V only, can't add batteries, 15 ms UPS switchover) and its fridge page covers surge and UPS settings, but neither mentions Voc, series/parallel wiring or the 60 V limit. backup-power.org was not opened. The finding is new and useful. It decides how the bundle is wired more than which products go in it, so it scores 2, not 3.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh, 120 V). It already has a backup page and ready-made solar bundles. Its PV input is 12–60 V / 20 A, 1,000 W max, according to BLUETTI's US page.",
+  "Solar panels: 2× BLUETTI 200W (SP200L) for series wiring, because 2 × 24.6 V = 49.2 V Voc, which is under 60 V. If you choose 2× BLUETTI 350W instead, wire them in parallel only, because 2 × 33 V = 66 V Voc in series is over 60 V.",
+  "Solar cable: an MC4-to-XT60 cable. BLUETTI's 350W panel ships with a 20 A, 1.5 m one. The Elite 200 V2's own in-box list has no solar cable."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar bundle | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 + 2×350W Solar bundle (wire in parallel only) | https://www.bluettipower.com/products/elite-200-v2-2-pv350d | $2,148.00 | 2026-11-10",
+    "BLUETTI 200W Portable Solar Panel (SP200L) | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $399.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI 'Elite 200 V2+2*200W Solar', $1,499.00 on 2026-11-10 (store search). Also 'Elite 200 V2+2*350W Solar', $2,148.00 on 2026-11-10 (store product check)."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input limit",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "From the page FAQ: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. The same line appears on the 2×200W bundle page."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "Open-circuit voltage (Voc)",
+   "value": "33 V per panel",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Two in series: 2 × 33 V = 66 V, which is 6 V over the Elite 200 V2's 60 V input ceiling. That is at standard test conditions; Voc rises in cold weather (not quantified here). So the 2×350W bundle has to be wired in parallel."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "What's in the box",
+   "value": "1 panel + 1 × 20 A MC4-to-XT60 solar charging cable (1.5 m). No parallel/Y connector listed.",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "The page also lists the Elite 200 V2 as a compatible model, but says nothing about series or parallel wiring."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "Open-circuit voltage / short-circuit current",
+   "value": "24.6 V Voc, 10.8 A Isc per panel",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "In series: 2 × 24.6 V = 49.2 V, within 12–60 V. In parallel: 2 × 10.8 A = 21.6 A of short-circuit current, over the 20 A input rating. So for this pair, series is the wiring that stays inside both limits. Price $399.00."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "In the box",
+   "value": "AC charging cable, documentation, the Elite 200 V2, grounding screw (no solar cable listed)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "Only the base unit's in-box list is shown. Neither bundle page lists bundle-level contents."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 bundles",
+   "label": "Price today",
+   "value": "Elite 200 V2+2*200W Solar $1,499.00; Elite 200 V2+2*350W Solar $2,148.00; Elite 200 V2+200W Solar $1,199.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar (BLUETTI US store)",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search/product on bluettipower.com; all listed as available."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of solar wiring traps",
+   "value": "Only a generic 'within the power station's solar input specs' line; no Voc or series/parallel figures",
+   "source": "https://www.energysage.com/energy-storage/solar-generators-overview/",
+   "source_title": "Best Solar Generators In 2026 | EnergySage",
+   "read": "2026-11-10",
+   "note": "OutdoorGearLab (cited) and BackupPowerHub (both pages) also have no Voc or series/parallel content (pages opened 2026-11-10)."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's official Elite 200 V2 manual PDFs (s4.bluettipower.com and the cdn.shopify.com EU manual) for the exact Voc warning, whether the solar cable is a Y-branch with two MC4 pairs, and what happens on overvoltage. The files are over 10 MB, so the web fetch tool could not read them, and local text extraction needed approval I didn't have.",
+  "BLUETTI forum threads ('Solar & Elite 200 V2', 'Comparison Guide on Elite 200 V2…', 'Solar panel SP200L - parallel versus series') that, per search snippets only, discuss the 60 V series limit and a Y connector. community.bluettipower.com now redirects to the forum home page and forum.bluettipower.com returned 'Network unavailable', so I have no user counts or dates.",
+  "Vmp, Imp and Isc for the BLUETTI 350W panel (not on its store page), needed to work out the real watts two panels in parallel deliver under the 20 A cap.",
+  "Bundle-level box contents for the Elite 200 V2 + 2×200W bundle: whether an MC4-to-XT60 cable or series/parallel connector is included. The bundle pages show only the base unit's box list, and the SP200L page shows box contents only as an image.",
+  "How much Voc rises in cold weather for these panels (temperature coefficient): not on either BLUETTI panel page.",
+  "An MC4 parallel/Y connector sold on bluettipower.com: a store search for 'MC4' returned none."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0896145000000002
+ }
+}

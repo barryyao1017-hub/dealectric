@@ -1,0 +1,93 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 200 V2 accepts solar only inside a 12–60 V, 20 A window (1,000 W max), or that its box holds no solar charging cable. A buyer adding BLUETTI's own 200 W panels must wire them in a way that stays under 60 V and 20 A. This matters most for the 3×200 W panel pack BLUETTI sells alongside it, which BLUETTI's own page does not fit-check against the station.",
+ "standout": 2,
+ "standout_why": "I compared against backuppowerhub.com home-backup and fridge-backup pages and EnergySage (cited). Backuppowerhub lists the Elite 200 V2 only as '1,000W solar, not expandable, no 240V' and gives no panel Voc window or connector for any model. EnergySage gives only maximum solar watts and says to 'stay within the unit's voltage and wattage limits' without stating them. None gives the 12–60 V / 20 A window or the missing cable. I did not score it 3 because I could not open a maker page for the panel's open-circuit voltage, so the series/parallel arithmetic that would decide the panel count is unsourced.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh, 2,600 W continuous). Its PV input is 12–60 V / 20 A / 1,000 W max per BLUETTI's US page, so any panel set must stay under 60 V and 20 A. Not expandable and no 240 V (per backuppowerhub), so it suits fridge-and-essentials backup, not panel-wired whole-home.",
+  "Solar panels: 2× BLUETTI 200 W Portable Solar Panel (SP200L, MC4 leads). BLUETTI's own kit pairs exactly two with the Elite 200 V2. I avoid the 3-panel pack because I could not confirm from a BLUETTI page that three fit the 60 V / 20 A window.",
+  "Solar charging cable: required, because BLUETTI's in-the-box list for the Elite 200 V2 has no solar cable. I could not confirm which connector the station uses, so the exact cable is unconfirmed."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2*200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 Portable Power Station (station only) | https://www.bluettipower.com/products/elite-200-v2-portable-power-station | $899.00 | 2026-11-10",
+    "BLUETTI 200W Portable Solar Panel, 2*200W variant (panels only) | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $798.00 | 2026-11-10",
+    "BLUETTI Elite 200 V2 + 2*350W Solar (bigger alternative) | https://www.bluettipower.com/products/elite-200-v2-2-pv350d | $2,148.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 on 2026-11-10. Buying the two items separately costs $899 + $798 = $1,697, so the bundle saves $198."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input window",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-10",
+   "note": "Product page FAQ text: 'Elite 200 V2: 12V-60V/20A, 1,000W max'. The same line appears on the elite-200-v2-2-sp200l bundle page, read the same day."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "In the box",
+   "value": "AC charging cable ×1, documentation ×1, Elite 200 V2 ×1, grounding screw ×1 (no solar charging cable)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-10",
+   "note": "The bundle page elite-200-v2-2-sp200l lists the same in-box items and names no MC4 adapter or parallel connector."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Capacity / continuous output / AC input",
+   "value": "2,073.6 Wh / 2,600 W / 1,800 W",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-10",
+   "note": "Power Lifting up to 3,900 W is for pure resistive loads only, per the same page."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel",
+   "label": "Connector and pack sizes sold",
+   "value": "MC4 connectors; sold as 1× ($399), 2× ($798) and 3× ($1,197) variants",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-10",
+   "note": "Read through the Shopify product JSON with storecheck.py. The page text says 'Compatible With Most Solar Generators with MC4 Connectors' and gives no list of stations."
+  },
+  {
+   "product": "BLUETTI Solar Extension Cable",
+   "label": "Spec and parallel wiring rule",
+   "value": "MC4 male + female, 5 m / 10 m, 30 A max; parallel setup needs 1 cable set per panel; $59",
+   "source": "https://www.bluettipower.com/products/bluetti-solar-extension-cable",
+   "source_title": "BLUETTI Solar Extension Cable",
+   "read": "2026-11-10",
+   "note": "From the store search result text via storecheck.py."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of Elite 200 V2",
+   "value": "Not expandable; no 240 V; 1,000 W solar input; no Voc window or connector given",
+   "source": "https://backuppowerhub.com/home-backup-power-stations/",
+   "source_title": "Best Portable Power Stations for Home Backup (2026)",
+   "read": "2026-11-10",
+   "note": "This shows what rivals already cover. The page also says panel connections need an electrician-installed inlet box or transfer switch fed from a NEMA 14-50 or L14-30 outlet, and it lists neither outlet for the Elite 200 V2."
+  }
+ ],
+ "unsourced": [
+  "Open-circuit voltage (Voc) and short-circuit current (Isc) of the BLUETTI SP200L 200 W panel. Search snippets showed 24.62 V and 10.24 A, but the BLUETTI US, CA and AU product pages all returned HTTP 429 and the manual mirrors returned 403, so I never opened a page showing these numbers. Without them I cannot state whether two panels in series stay under 60 V or whether three panels (in series, or in parallel against the 20 A cap) fit the Elite 200 V2.",
+  "Elite 200 V2 solar input connector type (XT60, DC7909 or other) and which BLUETTI MC4 cable it needs. The US manual PDF was over 10 MB and the support PDF would not extract to text, so I could not read either.",
+  "BLUETTI's own series/parallel wiring guidance for the Elite 200 V2 and the 200 W or 350 W panels. It was not on the product or bundle pages I opened.",
+  "Voc and Isc of the BLUETTI 350 W panel (PV350D) used in the $2,148 bundle. I did not find a page for it in the store search.",
+  "Elite 200 V2 AC outlet types (whether any TT-30R or 30 A outlet exists for an inlet box). This was not on the product page I opened.",
+  "UPS switchover time for the Elite 200 V2. The FAQ question appears on the product page but its answer was not shown."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0789287
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that BLUETTI's own Elite 200 V2 + 2× 200 W kit uses only 400 W of the station's 1,000 W (12–60 V, 20 A) solar input, or that a third SP200L panel can't simply be added in series (3 × 26.1 V Voc = 78.3 V, over the 60 V limit). In good sun the kit's two panels give about 300–340 W, so the 2.44 kWh StorageReview measured to refill an empty Elite 200 V2 takes roughly 7–8 hours of full sun, not the 2.4 hours BLUETTI quotes for its 1,000 W maximum.",
+ "standout": 2,
+ "standout_why": "I compared against backuppowerhub.com/best-power-station-for-refrigerator-backup (lists solar input watts but says nothing on Voc, series/parallel wiring or solar refill time; the Elite 200 V2 appears only in its 'Also worth a look' section) and solarpowerauditor.com/home-backup/best-power-station-home-backup (gives a 2×100 W solar refill time of 13 h 49 min for the Elite 200 V2 but no voltage window or panel-count limit, and nothing on the BLUETTI SP200L kit). Neither page covers how the panels in the kit fit the station's voltage and current limits, or how long the actual kit takes to refill. That decides how many panels, and which panel, go in the cart. Partial overlap: backuppowerhub has its own SP200L review (not in ChatGPT's results) saying series wiring is 'not recommended' for some BLUETTI stations, but it does not do the Elite 200 V2 arithmetic.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2. 2,073.6 Wh LiFePO4 and 2,600 W continuous (BLUETTI). Measured usable output is 1,902 Wh (Solar Power Auditor) or 1.91 kWh (StorageReview). A 500 kWh/yr fridge averages 500 ÷ 8.76 ≈ 57 W, so 1,902 Wh ÷ 57 W ≈ 33 h on the fridge alone.",
+  "Solar: 2× BLUETTI SP200L 200 W panels, bought as the store's Elite 200 V2 + 2×200W bundle. Two in parallel (about 18 A) or two in series (52.2 V Voc) both stay inside the 12–60 V / 20 A input. The 400 W of panels uses 40% of the 1,000 W input, so plan for about one full sunny day per refill.",
+  "Wall charging: the built-in 1,800 W AC input. 1,800 W ÷ 120 V = 15 A, the full rating of a typical 15 A household circuit, so charge it on a circuit with nothing else heavy running. StorageReview measured 2.44 kWh drawn to put back 1.91 kWh (about 78% round trip)."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar (SP200L) | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-10"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 (bought separately: station $899.00 + 2×200W panel $798.00 = $1,697.00, so the bundle saves $198)"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, station only",
+   "value": "$899.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,073.6Wh",
+   "read": "2026-11-10",
+   "note": "storecheck.py search on the BLUETTI US Shopify store; in stock"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×200W Solar",
+   "label": "Bundle price",
+   "value": "$1,499.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-10",
+   "note": "storecheck.py product; in stock. Other bundles: 1×200W $1,199; 1×350W $1,449; 2×350W $2,148"
+  },
+  {
+   "product": "BLUETTI SP200L 200W",
+   "label": "Price, panel only",
+   "value": "$399.00 each; 2-pack $798.00",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-10",
+   "note": "storecheck.py product variants. $899 + $798 = $1,697 bought separately, against $1,499 for the bundle"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Capacity / output",
+   "value": "2,073.6 Wh LiFePO4; 2,600 W continuous; Power Lifting mode up to 3,900 W for resistive loads",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-10",
+   "note": "Maker's US product page"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limits",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-10",
+   "note": "From the page's FAQ comparison. 60 V × 20 A = 1,200 W, capped at 1,000 W"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC charging input",
+   "value": "1,800 W max; 80% in 1.1 h, full in 1.4 h",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-10",
+   "note": "1,800 W ÷ 120 V = 15 A, the full rating of a 15 A branch circuit"
+  },
+  {
+   "product": "BLUETTI SP200L 200W",
+   "label": "Panel voltage",
+   "value": "Voc 26.1 V; Vmp 22 V",
+   "source": "https://backuppowerhub.com/?p=4371",
+   "source_title": "Bluetti SP200L 200W Solar Panel Review: Efficiency, Compatibility, and Value (2026), Andrew Harrington, BackupPowerHub",
+   "read": "2026-11-10",
+   "note": "Named reviewer's spec figure; the maker's page returned HTTP 429. Series: 2 × 26.1 = 52.2 V (+10% cold margin, per BackupPowerHub's compatibility guide = 57.4 V, under 60 V); 3 × 26.1 = 78.3 V, over the 60 V limit. Parallel current is estimated as 200 W ÷ 22 V ≈ 9.1 A per panel, so 2 panels ≈ 18.2 A (under 20 A) and 3 panels ≈ 27.3 A (over)"
+  },
+  {
+   "product": "BLUETTI SP200L 200W",
+   "label": "Real-world output",
+   "value": "75–85% of 200 W (about 150–170 W) in good sun",
+   "source": "https://backuppowerhub.com/?p=4371",
+   "source_title": "Bluetti SP200L 200W Solar Panel Review (2026), Andrew Harrington, BackupPowerHub",
+   "read": "2026-11-10",
+   "note": "BackupPowerHub cites owner-community data, not its own measurement. Two panels ≈ 300–340 W"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable capacity and recharge energy",
+   "value": "1.91 kWh delivered; 2.44 kWh drawn to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review, Dylan Dougherty, StorageReview, 2025-04-25",
+   "read": "2026-11-10",
+   "note": "1.91 ÷ 2.44 ≈ 78% round trip. This was measured on AC charging; the solar charging loss may be lower. Refill from 2×SP200L: 2,440 Wh ÷ 300–340 W ≈ 7.2–8.1 h of full sun; using the solar-only need of about 1,910 Wh, ≈ 5.6–6.4 h"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable capacity",
+   "value": "1,902 Wh (91.7% of 2,073.6 Wh); 41 h on fridge + router",
+   "source": "https://solarpowerauditor.com/home-backup/best-power-station-home-backup/",
+   "source_title": "Best Power Stations for Home Backup (2026), Tested, Solar Power Auditor",
+   "read": "2026-11-10",
+   "note": "Bench measurement. Solar Power Auditor's runtime math assumes a 45 W average fridge draw"
+  },
+  {
+   "product": "general",
+   "label": "Fridge average draw from the EnergyGuide label",
+   "value": "kWh/yr ÷ 8.76 = average watts (500 kWh/yr ≈ 57 W)",
+   "source": "https://backuppowerhub.com/best-power-station-for-refrigerator-backup/",
+   "source_title": "Best Refrigerator Battery Backup: 7 Power Stations (2026), BackupPowerHub",
+   "read": "2026-11-10",
+   "note": "57 W × 24 h ≈ 1,370 Wh/day. 1,902 Wh ÷ 57 W ≈ 33 h on the Elite 200 V2"
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's own Voc/Isc figures for the SP200L: the US, Canadian and Australian BLUETTI product pages all returned HTTP 429, and the manualsfile and notice-facile manual copies returned 403. Search snippets show 24.62 V Voc / 10.24 A Isc (not used because unopened), which conflicts with BackupPowerHub's 26.1 V",
+  "Elite 200 V2 storage guidance (charge level and how often to top it up in storage) and self-discharge rate: snippets point to a manual saying 50–80% charge and a top-up every 3–6 months, but the manuals.plus copy returned 403 and BLUETTI's product page does not state it",
+  "Elite 200 V2 idle/standby draw with the AC inverter on: not on BLUETTI's page or in StorageReview's review",
+  "AC charging wattage in Standard/Silent mode (to keep it under the 80% continuous-load level of a 15 A circuit): StorageReview names the modes without wattages, and BLUETTI's page gives only 1,800 W max",
+  "Amazon prices: not checked, because the cart is BLUETTI's own store bundle"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9994096
+ }
+}
