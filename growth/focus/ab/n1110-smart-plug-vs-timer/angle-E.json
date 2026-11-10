@@ -1,0 +1,76 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got says how much power the timer plug uses while it sits idle. Community measurements in the Home Assistant Powercalc library put the Kasa EP10 at 0.58 W and the Kasa KP125M at 0.475 W, which is about 4–5 kWh a year for each plug.",
+ "standout": 2,
+ "standout_why": "I read the two cited rivals, tp-link.com/us/support/faq/947 (Kasa schedule, away mode and timer) and tapo.com/us/faq/83 (Tapo schedule, timer and auto-off). Both only explain how to set up schedules, countdowns and auto-off. Neither gives any measured figure or even the most schedules a plug can hold. The top uncited result, itechguides.com's 2026 smart plug roundup, also has no measurements. It lists only maker load ratings (15 A, 1,800 W) and prices, and credits 'hands-on testing' to PCMag, WIRED, Engadget and T3 without any numbers. timerone.com would not load because of a certificate error. So an idle-draw figure is new. It is not decisive: the figures come from named individual contributors, not a magazine lab, and there is no matched figure for the Tapo P125M or the Defiant plug.",
+ "decides": "It supports the pick rather than changing it. A timer plug stays plugged in all year, and the measured idle draw of about 0.5–0.6 W (about 4–5 kWh a year) is too small to separate the Kasa candidates. The EP10 (0.58 W) and the energy-monitoring KP125M (0.475 W relay off) are about the same. Choose on timer features instead: Tapo's FAQ lists auto-off for all Tapo plugs but only the EP40M, KP125M and EP25 V2 among Kasa models, so it excludes the EP10. For this question, I found no named lab measurement of latency or timer accuracy that would change the ranking.",
+ "candidates": [
+  "Kasa EP10 (Smart Plug Ultra Mini 15A)",
+  "Kasa EP25",
+  "Kasa KP125M",
+  "TP-Link Tapo P125M",
+  "TP-Link Tapo Smart Wi-Fi Plug Mini with Matter",
+  "Defiant 15A Wi-Fi/Bluetooth Indoor Smart Plug"
+ ],
+ "findings": [
+  {
+   "product": "Kasa EP10",
+   "label": "Standby power, relay off (plug's own draw)",
+   "value": "0.58 W",
+   "source": "https://library.powercalc.nl/profiles/tp-link/ep10",
+   "source_title": "TP-Link Kasa Smart WiFi Plug Mini (EP10) · Powercalc profile library",
+   "read": "2026-11-10",
+   "note": "Measured by hand by contributor Thiago Oliveira, using a TP-Link Kasa KP125M as the meter. Profile created 2025-01-20 and updated 2026-09-13. 0.58 W × 8,760 h = 5.08 kWh a year."
+  },
+  {
+   "product": "Kasa EP10",
+   "label": "Own draw with relay on (profile 'max power')",
+   "value": "1.09 W",
+   "source": "https://library.powercalc.nl/profiles/tp-link/ep10",
+   "source_title": "TP-Link Kasa Smart WiFi Plug Mini (EP10) · Powercalc profile library",
+   "read": "2026-11-10",
+   "note": "Same contributor and meter as above. This is the plug's own draw with the relay closed, not the load it can switch (15 A)."
+  },
+  {
+   "product": "Kasa KP125M",
+   "label": "Standby power, relay off (plug's own draw)",
+   "value": "0.475 W",
+   "source": "https://library.powercalc.nl/profiles/tp-link/kp125m",
+   "source_title": "TP-Link Kasa KP125M · Powercalc profile library",
+   "read": "2026-11-10",
+   "note": "Measured by hand by contributor dxmnkd316, using an Eve Energy Matter (20EBU4101) as the meter. Profile created 2025-01-19 and updated 2026-08-31. 0.475 W × 8,760 h = 4.16 kWh a year. The KP125M is the Matter/Apple Home version of the energy-monitoring Kasa mini plug that sits alongside the EP25."
+  },
+  {
+   "product": "Kasa KP125M",
+   "label": "Own draw with relay on (profile 'max power')",
+   "value": "0.92 W",
+   "source": "https://library.powercalc.nl/profiles/tp-link/kp125m",
+   "source_title": "TP-Link Kasa KP125M · Powercalc profile library",
+   "read": "2026-11-10",
+   "note": "The same page also shows 0.92 W in a 'standby power on' field. I read it as the relay-on own draw, not a second standby figure."
+  },
+  {
+   "product": "Kasa HS10 (older Kasa plug, not a current candidate)",
+   "label": "Own draw idle / relay on",
+   "value": "0.56 W idle; 1.22 W relay on",
+   "source": "https://www.briandorey.com/post/kasa-smart-plug-by-tp-link-power-consumption-mod",
+   "source_title": "Kasa Smart Plug by TP-Link Power Consumption Modification (Brian Dorey)",
+   "read": "2026-11-10",
+   "note": "Brian Dorey measured these with a Hopi power meter. The post is dated 2020-10-25 and does not name a region. He gives 4.085 kWh a year idle and 8.93 kWh a year relay on. This is only a cross-check showing that Kasa plugs measured by different people land around 0.5–0.6 W idle."
+  }
+ ],
+ "unsourced": [
+  "Tapo P125M own standby draw: I found no named reviewer or lab measurement, there is no Powercalc profile at /tp-link/p125m or /tp-link/tapo-p125m (both 404), and the tapo.com US P125M specs page returned 404.",
+  "Kasa EP25 own standby draw: there is no Powercalc profile at /tp-link/ep25 (404). TP-Link's EP25(US) datasheet PDF downloaded, but WebFetch couldn't read it, and the shell text extraction (pdftotext) needed approval and did not run.",
+  "Defiant 15A smart plug (Home Depot) and the Tapo Mini with Matter sold at Best Buy for $13.99: I found no named measurement of standby draw or response time.",
+  "Response time and latency for any candidate: TechRadar's P125M review page came back cut off after the headline, Wirecutter's smart plug guide (nytimes.com) cannot be fetched, and TechHive's EP10 review returned 410 Gone.",
+  "A named test of timer or schedule accuracy, or of schedules running with the internet down: I found only TP-Link community forum posts from users and staff, with no test method or figures.",
+  "Accuracy of energy monitoring on the EP25 and KP125M against a reference meter: only SEO-style pages with no named tester or method (for example 'within 1 W of a Kill-A-Watt'), so I left them out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8684206
+ }
+}

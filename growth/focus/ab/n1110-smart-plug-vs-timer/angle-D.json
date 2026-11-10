@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a Kasa/Tapo plug stores its schedules on the plug and keeps running them with the internet down, but after a power cut it stops running them until it gets back online and resyncs its clock. TP-Link staff (Wayne-TP) said so on TP-Link's community forum: 'if the smart plug experiences a power cut, the schedule will not continue until the smart plug reconnects to the internet to synchronize device time.'",
+ "standout": 2,
+ "standout_why": "I compared against both pages ChatGPT cited and one uncited top result. The cited TP-Link Kasa FAQ 947 (updated 2026-04-17) only says that multi-device Smart Actions need the internet, plus a tip to sync the device time. The cited Tapo FAQ 83 (updated 2026-09-29) says multi-device automations need the internet and that the time zone syncs only when the device is on the local network or discoverable over Bluetooth. Neither says whether single-device schedules or timers run offline, and neither covers what happens after a power outage. itechguides.com (uncited, ranked 5th) only advises 'Test the appliance after power loss' and lists 'remote and local control, schedules' for the P125M, with nothing on how the plug keeps time. I could not open timerone.com because of a TLS certificate error, so it is not compared.",
+ "decides": "This confirms Kasa/Tapo Wi-Fi plugs as the pick for an ordinary indoor timer on reliable home Wi-Fi with internet. Schedules live on the plug, so a router or ISP outage does not stop them. There are up to 32 schedules per Tapo plug, and Auto-Off runs on every Tapo plug and on Kasa EP40M, KP125M and EP25 V2. But if the plug will run where power cuts are common, or with no internet (a garage on a hotspot, a cabin, a router-reboot plug), a power cut stops the schedule until the plug gets back online. For that case the page should point the shopper to the 'No Wi-Fi required' outlet timer that ChatGPT only mentioned in passing. Or, as TP-Link staff suggest, set the plug's power-on Default State and add repeat OFF schedules. The Minoston Z-Wave plugs Dealectric lists are not a standalone timer pick: they need a Z-Wave hub to set up and run schedules.",
+ "candidates": [
+  "TP-Link Tapo P125M",
+  "Kasa EP25",
+  "Kasa EP10",
+  "Kasa EP40",
+  "Defiant 15A Wi-Fi/Bluetooth Smart Plug & Timer",
+  "Minoston MP22Z"
+ ],
+ "findings": [
+  {
+   "product": "general (Tapo P100; TP-Link plug schedules)",
+   "label": "Schedules run with the internet down, but stop after a power cut until the clock resyncs",
+   "value": "Schedules keep running offline. After a power cut they do not resume until the plug reconnects to the internet",
+   "source": "https://community.tp-link.com/en/home/forum/topic/717924",
+   "source_title": "Does Tapo P100 'remember' schedules when internet is off? – TP-Link Community",
+   "read": "2026-11-10",
+   "note": "Reply by Wayne-TP dated 2024-11-26, marked 'Recommended Solution'. The -TP handle means TP-Link staff, but the page shows no title. Quotes: 'Smart plug's schedule continues to function when the internet is down.' / 'if the smart plug experiences a power cut, the schedule will not continue until the smart plug reconnects to the internet to synchronize device time.' / 'the device time may become inaccurate over time.'"
+  },
+  {
+   "product": "general (Tapo P100; TP-Link plug schedules)",
+   "label": "A power outage interrupts the plug's timekeeping",
+   "value": "After power returns, the plug must get back online and recalibrate its time before schedules run again",
+   "source": "https://community.tp-link.com/en/home/forum/topic/668200",
+   "source_title": "Tapo P100 on ac power loss does not resume schedule when power is back – TP-Link Community",
+   "read": "2026-11-10",
+   "note": "Reply by Wayne-TP dated 2024-05-23, marked recommended solution: 'power outages can interrupt the device's time calculation.' On 2024-05-24 the same staff member wrote 'A smart plug can only remain smart when it is online.' The suggested workaround is to set the Default State to the plug's usual mode and add several OFF schedules (up to 32). No staff reply in the thread says whether the plug has a battery-backed clock."
+  },
+  {
+   "product": "Tapo smart plugs",
+   "label": "Works without internet; Smart Actions need a hub; schedule limit",
+   "value": "Controllable from the Tapo app on the local network with no internet. Smart Actions need a hub. Up to 32 schedules per plug",
+   "source": "https://www.omadanetworks.com/en/support/faq/3417/",
+   "source_title": "Tapo Smart Plug FAQ: Common Questions About Features, Setup, and Compatibility",
+   "read": "2026-11-10",
+   "note": "TP-Link FAQ 3417, mirrored on TP-Link's Omada site, last updated 2026-11-05. Q10: 'Yes, the Tapo smart plug can be controlled via the Tapo app on your local network. However, Smart Actions are not available without a hub.' Q13: 'You can set up to 32 schedules per Tapo smart plug.' The FAQ does not say whether stored schedules fire offline."
+  },
+  {
+   "product": "Tapo smart plugs; Kasa EP40M, KP125M, EP25 V2",
+   "label": "Auto-Off timer support, and the conditions for time-zone sync",
+   "value": "Auto-Off is on all Tapo smart plugs and on Kasa EP40M, KP125M and EP25 V2. The device time zone syncs only when the device is on the local network or discoverable over Bluetooth",
+   "source": "https://www.tapo.com/us/faq/83/",
+   "source_title": "How to Set Up Schedule, Away Mode, and Timer for TP-Link Plug/Bulb/Switch in the Tapo App | Tapo",
+   "read": "2026-11-10",
+   "note": "A page ChatGPT cited, last updated 2026-09-29. Quote: 'The Auto-Off Timer automatically turns off the connected appliance after a set duration every time it is turned on.' Changing the time zone means resetting and reconfiguring the device. Multi-device automations 'require the smart device to be connected to the internet to operate.'"
+  },
+  {
+   "product": "Kasa smart plugs",
+   "label": "What the cited Kasa FAQ says about running offline",
+   "value": "Only multi-device Smart Actions are said to need the internet. The page says nothing on single-device schedules offline or after a power cut",
+   "source": "https://www.tp-link.com/us/support/faq/947/",
+   "source_title": "Kasa Schedule, Away Mode and Timer Setup for Smart Plugs, Bulbs and Switches | TP-Link",
+   "read": "2026-11-10",
+   "note": "Last updated 2026-04-17. Says 'the devices must be connected to the internet' for Smart Actions, and tells users to sync time via Me > Settings > Location and Time before setting up automations."
+  },
+  {
+   "product": "Minoston MP22Z",
+   "label": "Hub requirement and price",
+   "value": "Needs a Z-Wave certified hub (SmartThings, Hubitat, Vera and others). $26.35 at minoston.com",
+   "source": "https://www.minoston.com/products/minoston-z-wave-800-series-smart-plug-for-outdoor-and-indoor-mp22z",
+   "source_title": "Minoston Z-Wave 800 Series Smart Plug for Outdoor and Indoor (MP22Z)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py on the Shopify store; in stock. Product text: 'compatible with ALEXA and GOOGLE ASSISTANT (requires a Z-Wave certified hub)'. The sibling MP22ZP listing says '[Z-Wave hub required]' and 'Pair Z-Wave outlet with your hub … use your cellphone to … schedule an event.' Load rating: 15 A / 1875 W at 125 V."
+  }
+ ],
+ "unsourced": [
+  "Whether Kasa or Tapo plugs contain a battery-backed real-time clock: no maker spec page, manual or staff reply I opened says either way.",
+  "An official tp-link.com/tapo.com FAQ (not a community staff reply) on schedule behavior after a power cut: none came up in two searches. The maker's words come only from Wayne-TP posts on community.tp-link.com.",
+  "Kasa-specific wording on schedules after power loss: the EP25 (2-pack) US user guide PDF downloaded but I could not extract its text, and Kasa FAQ 947 does not cover it.",
+  "Defiant Wi-Fi/Bluetooth plug (Home Depot): whether its timer runs offline or after power loss. No maker page was opened.",
+  "Whether Matter schedules for the Tapo P125M set in Apple Home run on the plug or on the home hub: no maker or Apple page was opened.",
+  "timerone.com rival page: it failed to open (self-signed certificate error), so I could not check whether it covers offline or power-loss behavior."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.8213323
+ }
+}
