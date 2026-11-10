@@ -1,0 +1,102 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how much power the kit inverters draw when idle (the EG4 6000XP draws about 50 W, which is roughly 1.2 kWh a day or about 12% of the 10.2 kWh kit battery before any appliance runs), or that the rated surge figures can't be compared: EG4's 12,000 W claim lasts about 3.5 s and The Solar Lab measured 7.3–7.5 kW, SunGoldPower gives 13,000 VA with no duration, and ECO-WORTHY gives 6,000 W with no duration.",
+ "standout": 2,
+ "standout_why": "I compared against the cited EnergySage page, the cited ecosolarkits.com guide, and preparedstates.com, which ranked first. None of the three states idle or no-load draw for any inverter. EnergySage lists continuous watts only and no surge figures. Ecosolarkits mixes 'peak VA' with 'surge W' and gives no durations. Preparedstates uses 'surge' and 'peak' without defining either and gives no durations. Ecosolarkits gives battery cycle counts without depth of discharge or end-of-life conditions. None of them works out what idle draw does to a battery's daily budget.",
+ "decides": "The finding mostly changes how to size the kit. It only partly changes which kit to pick. On a 10.2 kWh kit like the EG4 6000XP package ChatGPT ranked first, about 12% of the battery goes to the inverter idling each day, so a cabin buyer should plan for about 1.2 kWh a day before any load. ChatGPT's surge ranking favours EG4 6000XP (12 kW), then SunGoldPower (13 kVA), then ECO-WORTHY (6 kW), but that ranking isn't sound: the units differ (W vs VA), no durations are given except EG4's, and EG4's measured surge was 7.3–7.5 kW. That makes the 3.5 kW ECO-WORTHY kit look weaker for well pumps than the headline numbers suggest, and it makes EG4 vs SunGoldPower a tie on what can actually be checked. One more fix: ECO-WORTHY's $2,499.99 1560W kit includes one 48V 100Ah (5.12 kWh) battery, which answers the 'confirm battery capacity' caveat ChatGPT left open.",
+ "candidates": [
+  "EG4 6000XP complete off-grid kit (10.2 kWh)",
+  "SunGoldPower SGR-6510E 6.5kW kit (SPH6548P)",
+  "ECO-WORTHY 1560W 48V complete off-grid kit",
+  "EG4 13kW complete off-grid kit",
+  "Renogy 400W complete solar kit (2kW inverter, 2×100Ah)"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle consumption (maker)",
+   "value": "as low as 30 W (with PV)",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter/",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter | EG4 Electronics",
+   "read": "2026-11-09",
+   "note": "EG4's page gives only the best case, with PV connected (daytime). It gives no battery-only figure. 30 W × 24 h = 0.72 kWh/day."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw, reviewer-checked",
+   "value": "about 50 W (0.9–1.2 A DC)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review – The Solar Lab",
+   "read": "2026-11-09",
+   "note": "The Solar Lab: 'it floated between 0.9 to 1.2 amps, which is right in line with the 50 watt idle listed in the specs.' The page names no reviewer and gives no date. My arithmetic: at 51.2 V nominal, 0.9–1.2 A = 46–61 W. 50 W × 24 h = 1.2 kWh/day = 11.7% of the 10.24 kWh battery in the EG4 6000XP kit ChatGPT showed (10.2 kWh)."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge: claimed vs measured",
+   "value": "12,000 W for ~3.5 s claimed; 7.3–7.5 kW for 3–5 s measured",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review – The Solar Lab",
+   "read": "2026-11-09",
+   "note": "The Solar Lab quotes the spec ('a surge capacity of up to 12,000 watts for about 3.5 seconds') and reports its test ('it managed between 7.3 and 7.5kW for 3 to 5 seconds'). EG4's own product page lists no surge figure."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Continuous output / max PV input",
+   "value": "6 kW / 8 kW PV, 100–480 VDC",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter/",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter | EG4 Electronics",
+   "read": "2026-11-09",
+   "note": "Maker page. The 99% figure on the page is MPPT efficiency, not battery-to-AC efficiency."
+  },
+  {
+   "product": "SunGoldPower SPH6548P (in SGR-6510E kit)",
+   "label": "Rated vs peak output",
+   "value": "6,500 W rated; 13,000 VA peak (no duration stated)",
+   "source": "https://www.solaris-shop.com/sungoldpower-6-5kw-48v-split-phase-solar-inverter-sph6548p",
+   "source_title": "SunGoldPower 6.5kW 48V Split Phase Solar Inverter SPH6548P – Solaris",
+   "read": "2026-11-09",
+   "note": "The peak is in VA, not W, and has no duration, so it can't be compared directly with EG4's 12,000 W / 3.5 s. The same text ('Max Peak Power: 13,000VA') appears in the sungoldpower.com product listing returned by storecheck on 2026-11-09."
+  },
+  {
+   "product": "SunGoldPower SGR-6510E",
+   "label": "Price and contents (maker store)",
+   "value": "$4,959.00 (compare-at $7,629): 6.5 kW inverter, 8×450 W panels (3.6 kW), 2×51.2V 100Ah LiFePO4 (10.24 kWh)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-6500w-48vdc-120-240vac-lifepo4-10-24kwh-lithium-battery-8-x-415w-solar-panels-sgr-6510e",
+   "source_title": "Off-Grid Solar Kit 6500W 48VDC 120/240VAC LifePo4 10.24KWH Lithium Battery 8 X 450W Solar Panels SGR-6510E",
+   "read": "2026-11-09",
+   "note": "From storecheck.py search on sungoldpower.com. Matches ChatGPT's $4,959 card."
+  },
+  {
+   "product": "ECO-WORTHY 1560W 48V complete off-grid kit",
+   "label": "Price and included battery (maker store)",
+   "value": "$2,499.99 (compare-at $2,999.99); 1× 48V (51.2 V) 100Ah server-rack battery = 5.12 kWh; 8×195 W bifacial panels",
+   "source": "https://www.eco-worthy.com/products/1560w-48v-8x-bifacial-195w-complete-off-grid-solar-kit",
+   "source_title": "ECO-WORTHY 1560W 48V (8x195W) Complete Off Grid Solar Kit",
+   "read": "2026-11-09",
+   "note": "From storecheck.py search on eco-worthy.com. 51.2 V × 100 Ah = 5.12 kWh. This settles ChatGPT's 'confirm battery capacity' caveat."
+  },
+  {
+   "product": "ECO-WORTHY 3500W 48V AIO (in 1560W kit)",
+   "label": "Rated vs peak, efficiency, power-saving threshold",
+   "value": "3,500 W rated; 6,000 W peak (no duration); 92% efficiency; power-saving mode engages at load ≤50 W",
+   "source": "https://www.eco-worthy.com/products/3500w-solar-off-grid-inverter-charger-48v-dc-to-120v-ac-split-phase-power-inverter",
+   "source_title": "ECO-WORTHY 3500W Solar Off-grid AIO Inverter, 48Vdc to 120Vac, 4400W@150V PV Input",
+   "read": "2026-11-09",
+   "note": "'Power Saving Mode: Load ≤50W' is the load below which the mode engages, not the idle draw. Max PV input is 4,400 W on the standalone inverter page but 5,000 W in the kit-page spec block, so the maker contradicts itself. Max PV Voc is 145 VDC."
+  }
+ ],
+ "unsourced": [
+  "SunGoldPower SPH6548P no-load / power-saving consumption: sungoldpower.com returned HTTP 429. The Solaris product page doesn't list it. The SunGoldPower manual PDF on cdn.shopify.com came back as binary I couldn't extract, and manuals.plus returned 403.",
+  "EG4 6000XP idle draw by mode (battery-only, AC) from EG4's own spec sheet: the eg4electronics.com and ressupply.com PDFs came back as compressed binary I couldn't extract. The ≈50 W battery figure comes from The Solar Lab, not the maker.",
+  "ECO-WORTHY 3500W AIO actual idle/no-load watts: the maker page gives only the power-saving threshold. I didn't reach the manual.",
+  "Peak/surge duration for SunGoldPower SPH6548P and ECO-WORTHY 3500W: neither maker page gives one.",
+  "Battery cycle life with DoD / end-of-life condition for the kit batteries (EG4, SG48100P '7,000+ cycles', ECO-WORTHY 48V 100Ah, Renogy 12V 100Ah): I ran out of tool budget and Renogy returned 429.",
+  "EG4 13kW kit and Renogy 400W kit inverter idle and surge specs: I didn't reach them within budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9908746999999999
+ }
+}

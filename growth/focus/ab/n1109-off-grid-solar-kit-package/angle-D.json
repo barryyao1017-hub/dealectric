@@ -1,0 +1,55 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a whole-home all-in-one inverter draws power around the clock even with nothing switched on: EG4's own manual puts the 6000XP's standby draw at about 50 W on battery. That is about 1.2 kWh a day, or about 12% of the 10.24 kWh battery in ChatGPT's top-pick EG4 kit, used before any appliance runs.",
+ "standout": 2,
+ "standout_why": "I compared against ecosolarkits.com/blogs/guides/best-off-grid-solar-kits (cited), energysage.com/solar/what-does-it-mean-to-go-off-the-grid (cited) and the #1 result preparedstates.com/kit/off-grid-solar-kits. The rivals already cover two other mechanisms. First, 120 V versus 120/240 V split-phase output: ecosolarkits and preparedstates both name the 120 V-only SunGoldPower kits. Second, LiFePO4 not charging below about 32 °F: ecosolarkits and preparedstates both say it. ecosolarkits also gives a PV limit of '450-500 V DC open circuit' but no cold-weather correction. None of the three pages gives an inverter idle or standby draw, and none says this draw cuts into the battery's overnight capacity. EnergySage covers none of these technical points.",
+ "decides": "This doesn't knock any kit out, but it changes how the battery should be sized and makes ChatGPT's 'Weekend cabin 5–10 kWh' line misleading. With a 6000XP-class inverter left on, about 1.2 kWh a day goes to the inverter itself, so a 10.24 kWh EG4 kit has about 9 kWh for loads before any depth-of-discharge reserve. For a 5 kWh cabin bank the idle draw alone would be about a quarter of the battery. It favors a bigger battery, or an inverter set to power-saving or switched off when the cabin is empty. I could not source the idle figures for the competing SunGoldPower and ECO-WORTHY kits, so the brands can't be ranked on this yet.",
+ "candidates": [
+  "EG4 6000XP Complete Off-Grid Kit (3.32 kW PV, 10.24 kWh)",
+  "SunGoldPower 6.5kW Complete Kit (SPH6548P)",
+  "ECO-WORTHY 1560W Complete Kit (3500W 48V all-in-one)",
+  "EG4 13kW Complete Off-Grid Kit",
+  "Renogy 400W Complete Solar Kit"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle consumption (standby mode), on battery",
+   "value": "≈50 W",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual (v1.2, ©2024 EG4 Electronics), specifications table p.5, ManualsLib",
+   "read": "2026-11-09",
+   "note": "Row 'IDLE CONSUMPTION (STANDBY MODE*)': W/ PV <30W, w/ Battery ≈50W, w/ AC <50W. The extracted text lost the table's column alignment, so the values were matched to their modes by position; check against the PDF spec sheet. Arithmetic: 50 W × 24 h = 1.2 kWh a day, and 1.2 ÷ 10.24 kWh (the battery in ChatGPT's EG4 kit) = 11.7%."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle consumption, with PV",
+   "value": "<30 W",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual (v1.2), specifications table p.5, ManualsLib",
+   "read": "2026-11-09",
+   "note": "The manual's p.6 footnote reads '*Idle consumption value tested with constant 300VDC PV source.' So the low figure applies only while the panels are producing. At night the inverter runs on the battery at the ≈50 W figure."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle wattage (maker product page)",
+   "value": "as low as 30 W (with PV)",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter/",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter, EG4 Electronics",
+   "read": "2026-11-09",
+   "note": "The maker's page quotes only the best-case, with-PV idle figure and leaves out the ≈50 W on-battery figure from the manual. The same page lists 'DC Input Voltage Range 100-480 VDC' and split-phase 120/240 V output at 6 kW. It links spec sheet v1.4.4 (https://eg4electronics.com/wp-content/uploads/2024/04/EG4-6000XP-Inverter-Spec-Sheet.pdf), but that PDF's text could not be extracted."
+  }
+ ],
+ "unsourced": [
+  "SunGoldPower SPH6548P (inverter in the SunGoldPower 6.5kW kit) no-load or idle draw: sungoldpower.com product page returned HTTP 429 twice and solartown.com returned 403. SunGoldPower's 'BluePower SP6548' manual PDF on its Shopify CDN downloaded, but its text could not be extracted. An Off Grid Stores search snippet gives 95 W/100 W, but that is for the 8 kW SPH8048P, and I did not open it.",
+  "ECO-WORTHY 3500W 48V all-in-one (inverter in the 1560W kit) no-load draw: the US and Canadian eco-worthy.com product pages both returned HTTP 429. A search snippet mentions a power-saving mode at load ≤50 W, but I did not open the page.",
+  "Renogy 2000W inverter (in the Renogy 400W kit at Home Depot) no-load draw: I did not reach it within the tool budget.",
+  "A named reviewer's measurement of the 6000XP idle draw: the only test I found, thesolarlab.com, has no reviewer name or date and gives 0.9–1.2 A without a voltage, so I left it out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.7568968000000001
+ }
+}

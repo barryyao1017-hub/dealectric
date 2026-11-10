@@ -4495,6 +4495,23 @@ PRODUCTS = [
  "fit": 'Travellers to the UK plus the continent, or anyone charging a USB-C laptop, phone and more from one wall socket.',
  "caveats": ['Only USB-C3 gives 65 W, and only when used alone; the other four USB ports stop at 15 W each.', "Its Type C pins fall under the Europlug standard's 2.5 A at 250 V (about 575 W on 230 V); TESSAN does not state a higher pin rating, so keep hair dryers and other heat tools off it.", 'Not a voltage converter: devices must accept 100–250 V.', 'The side AC outlet is 2-prong only; a 3-prong US cord needs the front outlet.']},
 
+{"slug": 'sungoldpower-sgr-8k10e-off-grid-solar-kit',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'Sun Gold Power SGR-8K10E Complete Off-Grid Solar Kit, 8,000 W 120/240 V inverter, 10.24 kWh LiFePO4, 8 × 450 W panels',
+ "model": 'SGR-8K10E',
+ "url": 'https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e',
+ "price": 4949.0,
+ "verified": '2026-11-09',
+ "specs": [('Inverter', '8,000 W, 48 V, 120 V/240 V single- or split-phase output, Wi-Fi monitoring'), ('Solar panels', '8 × 450 W N-type (3,600 W)'), ('Battery', '2 × SG48100P 51.2 V 100 Ah LiFePO4 (10.24 kWh), UL1973 and UL9540A'), ('Max PV input', '11,000 W, dual MPPT'), ('Charging', 'up to 180 A combined solar + AC'), ('Expansion', 'up to 6 inverters in parallel (48,000 W); batteries up to 63 in parallel'), ("Maker's daily-energy figure", 'about 14.4 kWh/day at 4 hours of full sun')],
+ "warranty": 'SG48100P batteries: 10 years. SunGoldPower 450 W N-type panels: 12 years materials and workmanship, 30-year linear performance.',
+ "returns": '30 days from delivery, undamaged, in the original packaging with all accessories. The buyer pays shipping both ways unless the item arrived damaged or defective, or was the wrong or an extra item. Kits bought from another authorized seller go back through that seller.',
+ "summary": 'A complete 48 V off-grid package: an 8 kW split-phase inverter, 3.6 kW of panels and 10.24 kWh of LiFePO4. The panels can refill the battery from empty in about 2.8 peak-sun hours (10,240 Wh ÷ 3,600 W).',
+ "fit": "Cabins and small off-grid homes that need 240 V loads and want the battery to refill within one day's sun.",
+ "caveats": ["The 14.4 kWh/day figure is SunGoldPower's 3,600 W × 4 h with no allowance for heat, wiring or charging losses.", 'The $4,949 price is for the 10.24 kWh version. The listing also offers 16.07 kWh.', "SunGoldPower's listing gives no no-load draw for the 8,000 W inverter, so leave room in the battery for the inverter running overnight."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

@@ -1,0 +1,92 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab measured the EG4 6000XP idling at 0.9–1.2 A from the battery, about 46–61 W at a 51.2 V pack. The same lab measured the bigger EG4 12000XP at 107 W (2.1 A), against EG4's own 70 W figure. Over a day that idle draw uses roughly 11–14% of a 10.2 kWh kit battery before any load runs.",
+ "standout": 2,
+ "standout_why": "I read both cited pages and the top result. EnergySage's off-grid page (cited) lists unattributed specs: efficiency, panel W, inverter W, battery Ah. It reports no measured idle draw or test result. Eco Solar Kits' best off-grid kits page (cited) says 'Specs come from the manufacturer data on each product page', and its only performance numbers are the author's estimates using kW × 4 h × 0.75. Prepared States (result #1) says 'We haven't installed them ourselves; every spec is from the maker's own listing.' None of the three gives a measured idle draw, overload or surge result, or cold-cutoff test for any inverter or battery in these kits.",
+ "decides": "This backs the 6000XP-based kit as ChatGPT's 'best overall for cabins'. Its measured idle (about 46–61 W) is roughly half the 12000XP's measured 107 W. The 12000XP's 107 W is about 2.6 kWh a day, or about 12.5% of the 20.5 kWh battery in a large kit. That makes the bigger EG4 inverter a poor fit for small or part-time loads. The ECO-WORTHY 48V server-rack battery failed The Solar Lab's freezer test: it still put out 52 V at -20 °C when its BMS should have cut off. That counts against ECO-WORTHY for cold-climate cabins, unless the kit uses a different battery.",
+ "candidates": [
+  "EG4 6000XP Complete Off-Grid Solar Kit (Off-Grid Source)",
+  "SunGoldPower 6.5kW Complete Kit (SPH6548P)",
+  "ECO-WORTHY 1560W Complete Kit",
+  "EG4 13kW Complete Off-Grid Kit",
+  "Renogy 400W Complete Solar Kit"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw from battery, measured",
+   "value": "0.9–1.2 A (≈46–61 W at 51.2 V nominal)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review: Is it the Ultimate All-in-One Solar Power Solution? (The Solar Lab)",
+   "read": "2026-11-09",
+   "note": "The Solar Lab says the unit 'floated between 0.9 to 1.2 amps', which it calls 'right in line with the 50 watt idle listed in the specs'. The review gives no battery voltage. The watt range is our arithmetic at the 51.2 V LFP nominal. Over 24 h that is about 1.1–1.5 kWh/day, or 11–14% of the 10.2 kWh battery in ChatGPT's #1 kit. The page shows no author or publish date."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Overload trip point and surge, measured",
+   "value": "Tripped at 6.25 kW continuous; surged 7.3–7.5 kW for 3–5 s",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-09",
+   "note": "The Solar Lab pushed it 'past its rating of 6kw to 6.25kW' before it tripped. It also passed through about 2,000 W each from the solar and AC inputs. The page gives no ambient temperature or input voltage."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Maker's idle figure (for comparison)",
+   "value": "about 30 W per unit",
+   "source": "https://eg4electronics.com/why-choose-the-eg4-12000xp-over-two-6000xps/",
+   "source_title": "Why Choose the EG4 12000XP Over Two 6000XPs (EG4 Electronics)",
+   "read": "2026-11-09",
+   "note": "EG4 blog post dated 2024-12-09: two 6000XPs 'consume about 30W each'. The Solar Lab's measured 0.9–1.2 A works out to about 46–61 W, above this figure."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle draw from battery, measured",
+   "value": "107 W (2.1 A)",
+   "source": "https://www.thesolarlab.com/review/eg4-12-000xp-inverter-review",
+   "source_title": "EG4 12000XP Inverter Review: The Ultimate Off-Grid Power Solution? (The Solar Lab)",
+   "read": "2026-11-09",
+   "note": "Quote: 'We measured it at 107W (2.1A from battery)'. Over 24 h that is about 2.57 kWh/day, or about 12.5% of a 20.5 kWh bank. EG4's own blog (dated 2024-12-09) gives 70 W. In the same review it ran a balanced 12,000 W load all day, and it shut down after about 30 s at 10.8 kW plus a roughly 10 kW compressor surge. I have not confirmed this inverter is the one in ChatGPT's 'EG4 13kW Complete Off-Grid Kit'. No author or date on the page."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Maker's idle figure (for comparison)",
+   "value": "70 W",
+   "source": "https://eg4electronics.com/why-choose-the-eg4-12000xp-over-two-6000xps/",
+   "source_title": "Why Choose the EG4 12000XP Over Two 6000XPs (EG4 Electronics)",
+   "read": "2026-11-09",
+   "note": "EG4: 'the 12000XP has a slightly higher idle wattage (70W)'. The Solar Lab measured 107 W, 37 W (53%) higher."
+  },
+  {
+   "product": "EG4 WallMount 100Ah (51.2 V, 5.12 kWh)",
+   "label": "Discharge, surge and cold-cutoff tests",
+   "value": "125 A surge for 10 s; sustained 100 A; BMS blocked charge and discharge at -20 °C (-4 °F)",
+   "source": "https://www.thesolarlab.com/review/eg4-100ah-wallmount-battery-review",
+   "source_title": "EG4 100Ah WallMount Battery Review (The Solar Lab)",
+   "read": "2026-11-09",
+   "note": "Freezer test: the cold cutoff worked. The review reports no measured capacity in kWh. Two of these batteries would make 10.24 kWh, matching the '10.2 kWh' in ChatGPT's #1 kit, but I have not confirmed that kit uses this battery. No author or date on the page."
+  },
+  {
+   "product": "ECO-WORTHY 48V (51.2 V) 100Ah server-rack battery",
+   "label": "Low-temperature cutoff test",
+   "value": "Still output 52 V at -20 °C (-4 °F): failed",
+   "source": "https://www.thesolarlab.com/review/ecoworthy-48v-server-rack-battery",
+   "source_title": "EcoWorthy 48V Server Rack Battery Review (The Solar Lab)",
+   "read": "2026-11-09",
+   "note": "In The Solar Lab's freezer test the battery 'still output 52V' when the BMS should have blocked discharge, and the reviewers count it as a failed cutoff test. No capacity measurement is reported. I have not confirmed this battery ships in the ECO-WORTHY 1560W kit ChatGPT showed. No author or date on the page."
+  }
+ ],
+ "unsourced": [
+  "Measured idle draw or efficiency for the SunGoldPower SPH6548P 6.5 kW inverter. I searched for Will Prowse, DIY Solar Power and The Solar Lab tests and checked The Solar Lab's review index. Found none, only retailer spec listings.",
+  "Measured idle draw for the ECO-WORTHY 3.5 kW all-in-one inverter. I found only maker and retailer listings. A DIY Solar Forum user review returned 403.",
+  "Any named measurement of the Renogy 400W kit's 2 kW inverter or its 100Ah batteries. I searched for a Will Prowse capacity test and checked The Solar Lab's index: no Renogy review there, and no sourced Ah figure anywhere.",
+  "EG4's 6000XP and 12000XP spec-sheet PDFs (RES Supply, Signature Solar) downloaded but I couldn't extract their text, so their idle footnotes ('tested with 300 VDC PV source') are not quoted from the page. The EG4 blog figures above stand in for them.",
+  "Which inverter and battery are in ChatGPT's 'EG4 13kW Complete Off-Grid Kit' and ECO-WORTHY 1560W kit. I did not open those retailer listings."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0735346000000001
+ }
+}
