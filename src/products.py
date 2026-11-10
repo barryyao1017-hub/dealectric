@@ -68,6 +68,7 @@ CATEGORIES = {
     "phone-case": ('Phone cases', 'Phone cases and the straps and lanyards that clip to them.'),
     "battery-box": ('Battery boxes', 'Battery boxes and smart battery boxes for 12V trolling-motor and marine batteries.'),
     "amplifier": ('Amplifiers', 'Stereo, 2.1 and subwoofer amplifiers that power passive speakers and passive subwoofers.'),
+    "trail-camera": ('Trail cameras', 'Motion-triggered outdoor cameras for wildlife, hunting and property watch, with no-glow night vision and battery or solar power.'),
 }
 
 PRODUCTS = [
@@ -4735,6 +4736,40 @@ PRODUCTS = [
  "summary": 'A compact 2.1 amp with a real amplified passive-sub channel and its own sub crossover and level knobs. It drives a pair of passive bookshelf speakers and a passive sub from one box.',
  "fit": 'For people building or rescuing a 2.1 system (passive bookshelf speakers plus a passive sub, or the passive parts of an old home-theater-in-a-box) who want one amp with Bluetooth.',
  "caveats": ['Power ratings are inflated: AudioReviews.org estimated about 100 W to the sub on the stock 32 V supply.', 'The SUB FREQ knob has no Hz markings, so you set the crossover by ear.', 'It runs warm and makes a small click at power-off (AudioReviews.org).', 'Bluetooth has to be reconnected by hand after each power-up. No aptX, and no optical input.', 'Not enough for a large 12–15 inch home-theater sub in a big room.']},
+
+{"slug": 'gardepro-link-1-0-hub-r3-2-0-pro',
+ "brand": 'GardePro',
+ "program": 'awin:gardepro',
+ "category": 'trail-camera',
+ "name": 'GardePro Link 1.0 Long-Range WiFi Trail Camera System (Hub + R3 2.0 Pro), 1,600 ft typical range, no data plan',
+ "model": 'Link 1.0 Hub + R3 2.0 Pro',
+ "url": 'https://gardepro.com/products/gardepro-r3-2-0-pro-wi-fi-trail-camera',
+ "official_page": 'https://gardepro.com/products/gardepro-r3-2-0-pro-wi-fi-trail-camera',
+ "price": 239.99,
+ "verified": '2026-11-10',
+ "specs": [('How it connects', 'Hub plugs into your router by Ethernet (powered over Ethernet); the camera talks to the hub over a long-range wireless link'), ('Rated reach, camera to hub', '1,600 ft (485 m) typical; up to 3,000 ft (1 km) in open air (maker)'), ('Cameras per hub', 'Up to 16'), ('Video', '4K'), ('Night vision', '940 nm no-glow infrared, up to 100 ft (30 m)'), ('Detection', 'Three PIR sensors plus on-camera AI that tells people from animals'), ('Power', 'Built-in 7,800 mAh rechargeable battery; GardePro SP300 or SP1000 solar panel optional'), ('Ongoing cost', 'No subscription required (maker, seen 2026-11-10); free cloud plan keeps 3 days'), ('Price seen 2026-11-10', '$239.99 with a 64 GB SD card; $224.99 without; add-on R3 2.0 Pro camera $179.99 with card'), ('Sold for', 'US and Canada only')],
+ "warranty": '2 years when bought from the GardePro store',
+ "returns": '30 days from delivery, unused and in original packaging; buyer prepays return shipping unless the item is faulty or GardePro made an error',
+ "summary": 'A trail camera system built for remote alerts at home without a cellular plan. The hub sits on your router and the R3 2.0 Pro camera sends photos, video and alerts to it from up to 1,600 ft away in typical use, rated at 3,000 ft in open air.',
+ "fit": 'Homeowners, farms and small acreages with home internet who want alerts from a camera too far from the house for normal Wi-Fi, and no monthly fee.',
+ "caveats": ["The hub needs a wired Ethernet connection to your router. It can't join your network over Wi-Fi.", "Trees and hills cut range a lot. One owner's camera got 3 of 5 signal bars at 202 ft behind small trees and would not connect near the rated distance.", "One owner says live view sometimes connects right away and sometimes doesn't, and that recording can start late on fast animals.", "The R3 2.0 Pro only works with the Link 1.0 hub. Other GardePro cameras can't join it.", 'No use on land with no internet. For that, you need a cellular camera.', "A February 2026 owner review said live view and cloud storage needed a paid plan. GardePro's page now says they are free (seen 2026-11-10)."]},
+
+{"slug": 'gardepro-e9-3-0-pro-home-wifi',
+ "brand": 'GardePro',
+ "program": 'awin:gardepro',
+ "category": 'trail-camera',
+ "name": 'GardePro E9 3.0 Pro Home WiFi Trail Camera, 4K, joins 2.4 GHz home Wi-Fi, 7,800 mAh battery',
+ "model": 'E9 3.0 Pro',
+ "url": 'https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera',
+ "official_page": 'https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera',
+ "price": 119.99,
+ "verified": '2026-11-10',
+ "specs": [('How it connects', 'Joins your 2.4 GHz home Wi-Fi directly (no hub), or links straight to your phone on site'), ('Direct-to-phone range', 'Up to 165 ft (50 m) in the open (maker)'), ('Live view', 'Only in direct-to-phone mode, not over home Wi-Fi'), ('Over home Wi-Fi', 'Motion alerts, photo and video previews, remote HD requests, sharing'), ('Trigger speed', '0.1 s (maker)'), ('Night vision', '940 nm no-glow infrared, up to 100 ft (30 m)'), ('Detection', 'Three PIR sensors plus on-camera AI that tags species'), ('Power', 'Built-in 7,800 mAh rechargeable battery; GardePro SP300 or SP1000 solar panel optional'), ('Ongoing cost', 'No cellular plan and no monthly fee (maker)')],
+ "warranty": '2 years when bought from the GardePro store',
+ "returns": '30 days from delivery, unused and in original packaging; buyer prepays return shipping unless the item is faulty or GardePro made an error',
+ "summary": 'A 4K no-glow trail camera that joins your home 2.4 GHz Wi-Fi itself, so motion alerts and previews reach your phone anywhere, with no hub and no data plan.',
+ "fit": 'Backyard feeders, gardens and driveways where your phone already gets a strong 2.4 GHz signal from the router.',
+ "caveats": ['Range is only as far as your home Wi-Fi reaches outdoors. A camera at the back fence or barn may drop off.', 'No live view over home Wi-Fi. You have to stand near the camera for live view.', "2.4 GHz only. The camera won't join a 5 GHz-only network.", 'The store showed $119.99 on 2026-11-10. Solar-panel bundles cost more.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
