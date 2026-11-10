@@ -1,0 +1,100 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much tool-change time and waste a full job adds. Per 1,000 tool changes, the Prusa CORE One+ INDX spends about 3.3 h swapping (12 s each) and wastes about 13 g of filament (0.013 g each). The Snapmaker U1 spends about 1.4 h (5 s each). So on a print with many colour changes, the INDX's low-waste nozzle swap adds about 1.9 h per 1,000 changes.",
+ "standout": 1,
+ "standout_why": "I compared against the two cited rival pages, 3dprinteray.com/toolchanger-printers (2026-10-14) and 3dtoolchangers.com/printers. 3dprinteray gives the inputs, about 5 s for the U1 swap and about 12 s for the INDX change, plus the XL+ cost per extra head. It never turns them into hours or grams for a whole job. It also doesn't give the INDX's 0.013 g waste per change, and neither page gives any purge or waste figure. Tom's Hardware's best-picks page came back truncated, so I couldn't check it. The per-tool prices in my fetch summaries were worked out by the fetch tool, not stated on either page.",
+ "decides": "For dense multicolour work (thousands of changes per plate), this favours the U1 or Creator 5 Pro on time, since a full toolhead swaps in about 5 s. The INDX makes sense when the buyer cares more about nozzle or material variety and near-zero waste (13 g per 1,000 changes) than about speed. Its 8-tool configuration also brings the price per tool close to the budget machines: $281 assembled, $244 as a kit.",
+ "candidates": [
+  "Snapmaker U1",
+  "Flashforge Creator 5 Pro",
+  "Prusa CORE One+ (Gen 2) INDX",
+  "Prusa XL+ 5-toolhead",
+  "Bambu Lab H2C"
+ ],
+ "findings": [
+  {
+   "product": "Snapmaker U1",
+   "label": "Tool swap time (maker claim)",
+   "value": "5 s per toolhead swap",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Footnote: typical result from Snapmaker lab tests, for reference only. Four preheated toolheads, 270 × 270 × 270 mm."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Swap overhead per 1,000 tool changes",
+   "value": "1.39 h (83 min)",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "1,000 × 5 s = 5,000 s = 1.39 h. 1,000 changes is roughly a 4-colour print with 3 changes per layer over 333 layers."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Total waste on maker test prints vs a shared-nozzle printer",
+   "value": "Castle Tower 87.42 g vs 586.02 g (−85.1%); 4-colour Dragon 80.68 g vs 309.75 g (−74.0%)",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Snapmaker lab figures. U1 waste includes supports, prime tower, nozzle clearing and flow calibration. The page gives no per-swap figure."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Tool change time and waste per change (maker spec)",
+   "value": "about 12 s and about 0.013 g per change",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Spec table: 'Color change About 12 seconds, about 0.013 g of waste.' Build volume with INDX is 248 × 205 × 270 mm."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Swap overhead and waste per 1,000 tool changes",
+   "value": "3.33 h and 13 g",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "1,000 × 12 s = 12,000 s = 3.33 h. 1,000 × 0.013 g = 13 g. Against the U1: (12 − 5) s × 1,000 = 7,000 s = 1.94 h longer."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Price per tool, US",
+   "value": "$499.75 (4-tool assembled), $281.13 (8-tool assembled), $424.75 (4-tool kit), $243.63 (8-tool kit); $62.50 per added tool going from 4 to 8",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "$1,999/4; $2,249/8; $1,699/4; $1,949/8; ($2,249 − $1,999)/4. Prices from the maker page, final price calculated at checkout."
+  },
+  {
+   "product": "Flashforge Creator 5 Pro",
+   "label": "Price per toolhead, US maker store",
+   "value": "$212.25 ($849 sale, list $949)",
+   "source": "https://www.flashforge.com/products/flashforge-creator-5-pro",
+   "source_title": "Flashforge Creator 5 Pro 3D Printer",
+   "read": "2026-11-10",
+   "note": "$849/4 = $212.25. At list, $949/4 = $237.25. Read with storecheck.py; in stock. Store copy: 4 independent toolheads, active heated chamber up to 65 °C, 'Zero Purge Waste'."
+  },
+  {
+   "product": "Prusa XL+ 5-toolhead",
+   "label": "Assembled 5-head price in a named review (historic, not today's price)",
+   "value": "$3,999",
+   "source": "https://makezine.com/article/digital-fabrication/3d-printing-workshop/3d-printer-review-prusa-xl-with-5-tool-heads/",
+   "source_title": "3D Printer Review: Prusa XL With 5 Tool Heads (Make:, Caleb Kraft)",
+   "read": "2026-11-10",
+   "note": "Dated 2024, so not today's price. Kraft gives no swap time in seconds. His multicolour test had the comparison Bambu wasting 'roughly 9.5 more meters of filament' than the XL."
+  }
+ ],
+ "unsourced": [
+  "Snapmaker U1 US price today: storecheck on us.snapmaker.com returned HTTP 429, so I have no U1 price per tool.",
+  "Flashforge Creator 5 Pro swap time: flashforge.com product page returned 429 three times and the All3DP launch article returned 403. Search snippets mention 7 s (maker) and 4–6 s (one review), but I couldn't open either source.",
+  "Bambu Lab H2C full hotend-swap time, purge grams per change, and US price: bambulab.com returned 403 and the US store 402/404. The Tom's Hardware review came back truncated. Stacksheriff only cites the ~8 s induction heat-up, which is not the full swap.",
+  "Prusa XL+ swap time and today's 5-head US price: Prusa's page says only 'Tools are swapped in seconds', and its configurator showed 'Loading price'. Make: gives no seconds figure. 3dtested.com returned 525."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.8515423999999999
+ }
+}

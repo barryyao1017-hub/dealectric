@@ -1,0 +1,118 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that a 100 × 100 mm fill engrave at 0.1 mm line spacing takes at least about 4.2 minutes on the Bambu Lab H2D 10 W laser (400 mm/s) and at least about 16.7 minutes on the Snapmaker Artisan 10 W laser (100 mm/s). The two machines cost almost the same today: $1,949 for the H2D combo and $1,799 for the Artisan.",
+ "standout": 2,
+ "standout_why": "I compared against desktop3dprinters.us/topics/3d-printer-laser-combos (the page cited in chat 1), desktop3dprinters.us/lists/3d-printers-with-laser-engraver (rank 1, not cited) and 3dengr.com/best-3d-printers-with-laser-engraver (cited in both chats). The cited combos page already works out Bambu's laser price premium ($600 for 10 W, $1,300 for 40 W, using launch prices) and its cost per watt ($60/W and $32.50/W). Any per-watt or premium figure from me would add nothing, so I left those out. The rank-1 list page gives Bambu's 400 and 1,000 mm/s engraving speeds. It does not give a speed for the Artisan's laser, and it never turns speed into job time. 3dengr gives no speeds, areas or prices for any model. None of the three pages compares engraving time, or laser area per dollar at today's prices, between the two machines ChatGPT ranked at the top.",
+ "decides": "This splits the pick by use case and supports ChatGPT's order with numbers. For someone who mostly engraves, the H2D 10 W combo goes about 4 times faster at top speed for $150 more. The Artisan's laser covers about twice the area for $150 less (1,600 cm² vs 837 cm²) and also includes CNC. So it wins on large flat jobs and carving, not on speed.",
+ "candidates": [
+  "Bambu Lab H2D Laser Combo 10W (with AMS 2 Pro)",
+  "Snapmaker Artisan 3-in-1 (10W laser)",
+  "Snapmaker Artisan with 40W laser module add-on"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab H2D Laser Combo 10W",
+   "label": "Price today (US retailer)",
+   "value": "$1,949 (regular $2,149; sale runs through Nov 30)",
+   "source": "https://www.dynamism.com/3d-printers/desktop-3d-printers/bambu-lab-h2dl.html",
+   "source_title": "Bambu Lab H2D Laser Combo - 10W | Dynamism",
+   "read": "2026-11-10",
+   "note": "The box contents include the H2D Laser Edition, AMS 2 Pro, 10 W laser and cutting module. ChatGPT's card showed the same $1,949 at B&H, but B&H returned 403 and I could not open it. Bambu's US store also returned 402/403."
+  },
+  {
+   "product": "Bambu Lab H2D Laser Combo 10W",
+   "label": "10 W laser max engraving speed / work area",
+   "value": "400 mm/s; 310 × 270 mm",
+   "source": "https://www.dynamism.com/3d-printers/desktop-3d-printers/bambu-lab-h2dl.html",
+   "source_title": "Bambu Lab H2D Laser Combo - 10W | Dynamism",
+   "read": "2026-11-10",
+   "note": "The retailer's spec table also lists '10 W ± 1 W' and a 5 mm max cut in basswood plywood. Bambu's own spec pages could not be opened (403/402)."
+  },
+  {
+   "product": "Snapmaker Artisan 3-in-1 (10W laser)",
+   "label": "Price today (maker's US store)",
+   "value": "$1,799 (compare-at $5,046)",
+   "source": "https://us.snapmaker.com/products/snapmaker-artisan-3-in-1-3d-printer",
+   "source_title": "Snapmaker Artisan 3-in-1 3D Printer | Snapmaker US store",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search of us.snapmaker.com. The product page then returned 429, so I could not read which variant this price belongs to. ChatGPT's card showed $2,599 at RobotShop."
+  },
+  {
+   "product": "Snapmaker Artisan 3-in-1 (10W laser)",
+   "label": "Work area / laser cut depth / enclosure",
+   "value": "400 × 400 × 400 mm; 5 mm basswood plywood in one pass with the 10 W laser (15 mm with the 40 W); enclosure included",
+   "source": "https://www.snapmaker.com/snapmaker-artisan",
+   "source_title": "Snapmaker Artisan – One Machine Does It All",
+   "read": "2026-11-10",
+   "note": "The maker's page gives one 400 mm work area for all three functions. It marks 'Enclosure Included' for both models and calls the enclosure a 'Laser Class 1 Safety Enclosure'."
+  },
+  {
+   "product": "Snapmaker Artisan 3-in-1 (10W laser)",
+   "label": "10 W laser module max work speed",
+   "value": "6,000 mm/min (= 100 mm/s)",
+   "source": "https://matterhackers.com/store/l/snapmaker-high-power-laser-module-10w/sk/M9GH6TZ9",
+   "source_title": "Snapmaker High Power Laser Module - 10W | MatterHackers",
+   "read": "2026-11-10",
+   "note": "The listing says 'work speed as high as 6000 mm/min', spot 0.05 × 0.2 mm, and 'Attach this Laser Module to your Snapmaker 2.0 or Snapmaker Artisan'. Snapmaker's own US/EU module pages and wiki returned 429 or empty, so I used this retailer copy of the maker's spec. Conversion: 6,000 ÷ 60 = 100 mm/s."
+  },
+  {
+   "product": "Bambu Lab H2D Laser Combo 10W",
+   "label": "Derived: shortest fill-engrave time, 100 × 100 mm at 0.1 mm line spacing",
+   "value": "≈ 4.2 min",
+   "source": "https://www.dynamism.com/3d-printers/desktop-3d-printers/bambu-lab-h2dl.html",
+   "source_title": "Bambu Lab H2D Laser Combo - 10W | Dynamism",
+   "read": "2026-11-10",
+   "note": "(100 mm ÷ 0.1 mm = 1,000 lines) × 100 mm = 100,000 mm; 100,000 ÷ 400 mm/s = 250 s ≈ 4.2 min. This is a best case at max rated speed, ignoring acceleration, overscan and travel. The 0.1 mm line spacing is my chosen duty setting, not a maker figure."
+  },
+  {
+   "product": "Snapmaker Artisan 3-in-1 (10W laser)",
+   "label": "Derived: shortest fill-engrave time, 100 × 100 mm at 0.1 mm line spacing",
+   "value": "≈ 16.7 min",
+   "source": "https://matterhackers.com/store/l/snapmaker-high-power-laser-module-10w/sk/M9GH6TZ9",
+   "source_title": "Snapmaker High Power Laser Module - 10W | MatterHackers",
+   "read": "2026-11-10",
+   "note": "100,000 mm ÷ 100 mm/s = 1,000 s ≈ 16.7 min. Same best-case assumptions as the H2D figure, so the Artisan's 10 W is 4× slower than the H2D's 10 W."
+  },
+  {
+   "product": "Bambu Lab H2D Laser Combo 10W",
+   "label": "Derived: laser area per dollar",
+   "value": "0.43 cm² per $",
+   "source": "https://www.dynamism.com/3d-printers/desktop-3d-printers/bambu-lab-h2dl.html",
+   "source_title": "Bambu Lab H2D Laser Combo - 10W | Dynamism",
+   "read": "2026-11-10",
+   "note": "31 × 27 cm = 837 cm²; 837 ÷ $1,949 = 0.43 cm²/$."
+  },
+  {
+   "product": "Snapmaker Artisan 3-in-1 (10W laser)",
+   "label": "Derived: laser area per dollar",
+   "value": "0.89 cm² per $",
+   "source": "https://www.snapmaker.com/snapmaker-artisan",
+   "source_title": "Snapmaker Artisan – One Machine Does It All",
+   "read": "2026-11-10",
+   "note": "40 × 40 cm = 1,600 cm²; 1,600 ÷ $1,799 (us.snapmaker.com, 2026-11-10) = 0.89 cm²/$. That is about 2.1× the H2D 10 W combo."
+  },
+  {
+   "product": "Snapmaker Artisan with 40W laser module add-on",
+   "label": "40 W laser module price (maker's US store)",
+   "value": "$429 (compare-at $999)",
+   "source": "https://us.snapmaker.com/products/snapmaker-20w-and-40w-laser-module-with-air-assist",
+   "source_title": "Snapmaker 40W Laser Module with Air Assist | Snapmaker US store",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search. Listed as compatible with the Artisan and Class 4. $1,799 + $429 = $2,228 for an Artisan with a 40 W laser. The store also says the Artisan enclosure 'is not available for online purchase'."
+  }
+ ],
+ "unsourced": [
+  "Max engraving speed of Bambu's 40 W H2D laser. I searched Bambu's US store, bambulab.com specs, the wiki and the H2D Laser Full Combo PDF, and all of them returned 402/403. The rank-1 rival lists 1,000 mm/s, but I could not open a maker page to confirm it.",
+  "Today's price for the H2D Laser Full Combo 40 W. Bambu's US store and the B&H page ChatGPT showed both returned 403.",
+  "Max work speed of Snapmaker's 40 W laser module. The us/eu.snapmaker.com module pages and wiki.snapmaker.com returned 429 or empty.",
+  "Which Artisan variant or bundle the $1,799 US-store price covers (10 W standard vs other bundles). The product page returned 429.",
+  "Tom's Hardware's H2D review (measured job times, reviewer name). The page came back truncated to its title.",
+  "The Artisan brochure's 1.5 mm basswood cutting-speed table. The Shopify-hosted PDF's text layer could not be read, and the local pdftotext run was not approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 0.9037655
+ }
+}

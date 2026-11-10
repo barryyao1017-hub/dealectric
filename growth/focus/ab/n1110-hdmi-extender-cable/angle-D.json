@@ -1,0 +1,70 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Cable Matters active 48Gbps extension only works with its female socket facing the source and its male plug in the display, so it can extend a run only at the TV end. Reversed, for example as a short port-saver plugged into a PS5 or PC, it 'will not work'.",
+ "standout": 2,
+ "standout_why": "Compared against the cited iTechGuides guide, the cited Cable Matters page and ChatGPT's answer. iTechGuides says only that active cables are 'normally directional', with ends marked Source/Display, and that reversing them 'generally will not work'. It never says which end of a male-to-female extension is the source end. ChatGPT just wrote 'directional'. The Cable Matters page does say 'female connector must be connected to the source device', but ChatGPT left out that practical consequence. The UGREEN HD151 cited page (bestways.com) returned HTTP 429, so I could not read it. hdmi.org's Ultra High Speed cable page says nothing about extension cables.",
+ "decides": "The active Cable Matters cable fits only setups where the extension is the last piece before the TV (source → existing cable → female socket → active extension → male plug into TV). It can't be the short stub plugged into a console or GPU, which is a common reason people buy one. For that use, or when the direction is unknown, the passive UGREEN HD151 is the safer pick, with no direction or USB power to manage. The Cable Matters cable may also need its Micro-B USB power lead, which Cable Matters calls 'optional but recommended' for longer runs or 8K. That's because a source supplies extra cable power only if it supports HDMI Cable Power, according to hdmi.org.",
+ "candidates": [
+  "UGREEN HD151 HDMI 2.1 Extension Cable (40447 1 m / 40450 2 m)",
+  "Cable Matters 48Gbps Active 8K HDMI Extension Cable, Male to Female (Product ID 300046)"
+ ],
+ "findings": [
+  {
+   "product": "Cable Matters 48Gbps Active 8K HDMI Extension Cable, Male to Female",
+   "label": "Required orientation",
+   "value": "Female socket to the source (computer, PS5), male plug to the display (TV, monitor, projector). Reversed, it does not work.",
+   "source": "https://www.cablematters.com/pc-1330-142-48gbps-active-8k-hdmi-extension-cable-male-to-female.aspx",
+   "source_title": "48Gbps Active 8K HDMI Extension Cable",
+   "read": "2026-11-10",
+   "note": "FAQ wording: 'The female connector must be connected to the source device (computer, PS5)' and 'the male connector to the display (TV, monitor, projector)'. 'Reversing the direction will not work.' Description: 'Connect the male HDMI plug to TV and the female HDMI socket to another HDMI cable.' 'This cable is NOT bi-directional.' The same text appears on the pc-1330-139 URL."
+  },
+  {
+   "product": "Cable Matters 48Gbps Active 8K HDMI Extension Cable, Male to Female",
+   "label": "External power",
+   "value": "Micro-B USB power port with USB cable included. Power is 'optional but recommended, especially for longer distances or 8K signals'.",
+   "source": "https://www.cablematters.com/pc-1330-142-48gbps-active-8k-hdmi-extension-cable-male-to-female.aspx",
+   "source_title": "48Gbps Active 8K HDMI Extension Cable",
+   "read": "2026-11-10",
+   "note": "Also: 'Connect the included USB cable for extra power if experiencing video issues.' The page gives no current or voltage figure."
+  },
+  {
+   "product": "Cable Matters 48Gbps Active 8K HDMI Extension Cable, Male to Female",
+   "label": "Length",
+   "value": "6.6 ft (only size listed in the selector). The copy says 'Extend an 8K cable run by 5 meters (16.4 feet)'.",
+   "source": "https://www.cablematters.com/pc-1330-139-48gbps-active-8k-hdmi-extension-cable.aspx",
+   "source_title": "48Gbps Active 8K HDMI Extension Cable",
+   "read": "2026-11-10",
+   "note": "ChatGPT's card said 'Up to 16.4 ft', but the selectable cable length on the page is 6.6 ft. The page has no Ultra High Speed HDMI certification claim. It only says 'as specified in HDMI 2.1 standard'."
+  },
+  {
+   "product": "general",
+   "label": "HDMI Cable Power: why active cables carry a USB lead",
+   "value": "Active cables can draw power from the HDMI connector only if both the cable and the source support HDMI Cable Power. Otherwise they need a separate power connector (typically USB Micro-B or USB-C). Reversed active cables cause no damage but do not work.",
+   "source": "https://www.hdmi.org/spec2sub/cablepower",
+   "source_title": "HDMI Cable Power",
+   "read": "2026-11-10",
+   "note": "hdmi.org wording: cables 'include a separate power connector for use with source devices that do not support the HDMI Cable Power feature'. 'active cables can only be attached in one direction'. The page gives no current figure."
+  },
+  {
+   "product": "general",
+   "label": "Scope of Ultra High Speed certification",
+   "value": "The certification program covers cables named 'Ultra96 HDMI Cable and Ultra High Speed HDMI Cable'. They need a certification label on the package and the name on the jacket. The page does not mention extension, male-to-female or coupler cables.",
+   "source": "https://www.hdmi.org/spec2sub/ultrahdmicables",
+   "source_title": "Ultra High Speed HDMI Cable - Bandwidth Up To 48Gbps",
+   "read": "2026-11-10",
+   "note": "Neither candidate's page I opened (Cable Matters) claims the certification label."
+  }
+ ],
+ "unsourced": [
+  "UGREEN HD151 limit on the length of the connected cable for 8K60/4K240. A search snippet attributed this note to the Datablitz retailer page: 'HDMI male cable (30AWG) does not exceed 2m (6.6ft) when using a 1m extension cable', and 1 m with the 6.6 ft extension. That page returned HTTP 429 three times, the manuals.plus HD151 manual returned 403, Amazon AU returned 503, and us.ugreen.com does not list the HD151, so I could not open any of them.",
+  "UGREEN HD151 US price and official specs. It is not in the us.ugreen.com Shopify search, amzcheck search did not surface it, and bestways.com returned 429.",
+  "Cable Matters active extension price. The price field is blank on cablematters.com. Amazon listings B08CVSWCFC (6.6 ft) and B094K2L85J (3.3 ft) were found by title, but I did not run a price check on them.",
+  "Current drawn by the Cable Matters cable and the HDMI +5V current a standard source must supply. Neither Cable Matters nor hdmi.org's Cable Power page gives a figure. The public HDMI spec text is not available."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0056327999999999
+ }
+}

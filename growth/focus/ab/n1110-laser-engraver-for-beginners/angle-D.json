@@ -1,0 +1,108 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that xTool's own M2 FAQ says 'xTool M2 is not compatible with LightBurn or XCS': the top pick runs only on xTool Studio. It also does not state that LightBurn's developer said on 2026-09-30 that its driver doesn't fully support the budget Falcon A1C yet.",
+ "standout": 2,
+ "standout_why": "I compared against maker-wise.com (cited). Its M2 entry says nothing about software. It only says in general that 'xTool and Glowforge work best in their own apps' and that 'LightBurn Core costs $99 and is worth it once you run more than one machine', so it covers part of this and never says the M2 is locked out. ChatGPT's own answer gives 'LightBurn compatibility' as a Falcon A1 plus but says nothing about the M2 or A1C. I could not read Tom's Hardware (cited) or the xTool beginner guide (cited): WebFetch returned only their titles, so I couldn't check them for this point.",
+ "decides": "This confirms the M2 as the easiest first machine for someone who stays in the maker's app. It does not remove the M2 as a pick. It does decide the pick for a beginner who wants to move up to LightBurn later or run a second machine in one program: xTool says the M2 is locked to xTool Studio, so the Falcon A1 10W fits that plan. Don't push the A1C as the LightBurn-ready budget option, because LightBurn's own developer says A1C support is incomplete and framing over Wi-Fi failed in a user's test.",
+ "candidates": [
+  "xTool M2 10W",
+  "Creality Falcon A1 10W",
+  "Creality Falcon A1C",
+  "Creality Falcon A1 Pro 20W"
+ ],
+ "findings": [
+  {
+   "product": "xTool M2",
+   "label": "Software compatibility",
+   "value": "\"xTool M2 is not compatible with LightBurn or XCS.\" Compatible software: xTool Studio (Windows/macOS)",
+   "source": "https://support.xtool.com/article/3324",
+   "source_title": "xTool M2 FAQ",
+   "read": "2026-11-10",
+   "note": "Maker's support FAQ, which shows an update date of Nov 5, 2026. A third-party manual site (notice-facile.com) lists LightBurn as compatible. The maker's own statement takes precedence."
+  },
+  {
+   "product": "xTool M2",
+   "label": "Offline operation limit",
+   "value": "Can run without the software connected, but offline it \"can only process the task last executed on the device\"",
+   "source": "https://support.xtool.com/article/3324",
+   "source_title": "xTool M2 FAQ",
+   "read": "2026-11-10",
+   "note": "Connects over USB or Wi-Fi, per the same FAQ."
+  },
+  {
+   "product": "xTool M2",
+   "label": "Laser class and blue-module wavelength",
+   "value": "Class 1; 445 nm ±15 nm (10/20/40 W blue modules); optional 3 W 1,064 nm IR module",
+   "source": "https://support.xtool.com/article/3324",
+   "source_title": "xTool M2 FAQ",
+   "read": "2026-11-10",
+   "note": "The FAQ says the blue module 'is not suitable for processing highly reflective materials, such as mirror-finished metals, unoxidized aluminum, copper, and mirror-finished stainless steel.'"
+  },
+  {
+   "product": "xTool M2",
+   "label": "Price, xTool US store",
+   "value": "$499 (compare-at $1,899)",
+   "source": "https://www.xtool.com/products/xtool-m2-color-craft-laser-cutter-engraver",
+   "source_title": "xTool M2 Color Craft Laser Cutter & Engraver",
+   "read": "2026-11-10",
+   "note": "storecheck.py search of xtool.com. This is the listing's headline price. The variant lookup hit HTTP 429, so the store data does not show which laser power the $499 includes."
+  },
+  {
+   "product": "Creality Falcon A1C",
+   "label": "LightBurn driver status",
+   "value": "LightBurn developer Jeremy Lee, 2026-09-30: \"we haven't updated the driver to support the A1C fully yet\"; \"Console GCode and User Macros will NOT work on any of the Falcons over HTTP\"",
+   "source": "https://forum.lightburnsoftware.com/t/creality-falcon-a1c-support/192852",
+   "source_title": "Creality Falcon A1C support - LightBurn Software Forum",
+   "read": "2026-11-10",
+   "note": "The user (zyberbob, 2026-09-29) connected an A1C 10W over Wi-Fi with the 'Creality Falcon' HTTP device type. Home and jog worked; Frame did not. LightBurn forum staff member Aaron.F (2026-10-09) suggested the GRBL device type as the workaround 'until we get Creality's feedback about the API differences for the A1C.'"
+  },
+  {
+   "product": "Creality Falcon A1 10W",
+   "label": "Price and safety, Creality Falcon US store",
+   "value": "$549 (compare-at $599); Class 1 enclosure that 'automatically stops if the lid is opened'",
+   "source": "https://www.crealityfalcon.com/products/falcon-a1-10w-enclosed-laser-engraver-and-cutter",
+   "source_title": "Creality Falcon A1 10W Diode Laser Engraver and Cutter",
+   "read": "2026-11-10",
+   "note": "From storecheck.py search of crealityfalcon.com. The product page itself returned HTTP 429. ChatGPT showed $466.99 at Micro Center, which I did not check."
+  },
+  {
+   "product": "Creality Falcon A1C",
+   "label": "Price, Creality Falcon US store",
+   "value": "$269 with AI camera (compare-at $399); $242 basic version without camera (compare-at $369)",
+   "source": "https://www.crealityfalcon.com/products/creality-falcon-a1c-laser-engraver-with-ai-camera",
+   "source_title": "Creality Falcon A1C Laser Engraver with AI Camera",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. Basic version URL: https://www.crealityfalcon.com/products/creality-falcon-a1c-laser-engraver"
+  },
+  {
+   "product": "Creality Falcon A1 Pro 20W",
+   "label": "Price, Creality Falcon US store",
+   "value": "$1,099",
+   "source": "https://www.crealityfalcon.com/products/falcon-a1-pro-20w-dual-laser-engraver",
+   "source_title": "Creality Falcon A1 Pro 20W Dual-laser Engraver",
+   "read": "2026-11-10",
+   "note": "storecheck.py search. ChatGPT showed $879.99 at Micro Center, which I did not check."
+  },
+  {
+   "product": "Creality Falcon A1C",
+   "label": "Class 1 caveat in maker's words",
+   "value": "\"Open-cover or other specific operating modes may have different safety classifications.\"",
+   "source": "https://www.creality.com/products/falcon-a1c",
+   "source_title": "Creality Falcon A1C",
+   "read": "2026-11-10",
+   "note": "Footnote 3 on the maker's product page. The page names no software beyond 'PC and app control'."
+  }
+ ],
+ "unsourced": [
+  "A Creality statement that the Falcon A1 10W supports LightBurn. The crealityfalcon.com product page returned HTTP 429 twice, the Creality wiki LightBurn guides (falcon-a1c, falcon-a1-pro) rendered empty in WebFetch, and creality.com/products/falcon-a1 returned 404. Only retailer listings (dronenerds, wellbots) state it, and those are not usable as a source.",
+  "Which laser power xTool's $499 M2 listing includes. The variant data request returned HTTP 429.",
+  "Whether xTool Studio needs an account login for basic laser jobs. xTool support pages say login is required only for AImake, Cloud Space and cloud fonts. I found no page that covers basic offline use.",
+  "Whether Tom's Hardware (cited) or the xTool beginner guide (cited) mention M2 or A1C software lock-in. Both pages came back truncated to their titles."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9638675000000003
+ }
+}

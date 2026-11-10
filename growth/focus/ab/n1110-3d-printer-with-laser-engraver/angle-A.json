@@ -1,0 +1,120 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that the two '40 W' lasers make the same one-pass claim (15 mm basswood plywood) but differ on everything else. Snapmaker gives its Artisan 40 W spot as 0.1 × 0.15 mm (0.015 mm²) and Bambu gives the H2D 40 W spot as 0.14 × 0.2 mm (0.028 mm²), so the Artisan has about 1.9× the stated power per mm² and 2.06× the laser bed (400 × 400 vs 310 × 250 mm). At 10 W it reverses: the H2D's 0.0042 mm² spot is 2.4× denser than the Artisan's 0.01 mm². Also, the $1,799 base Artisan ships the 10 W module, not the 40 W.",
+ "standout": 2,
+ "standout_why": "I read four of the pages ChatGPT got. desktop3dprinters.us/topics/3d-printer-laser-combos (cited) gives wattages, work areas and laser class but no spot sizes, and never says whether the watts are optical. desktop3dprinters.us/lists/3d-printers-with-laser-engraver (rank 1, not cited) gives Bambu's spot sizes and the Artisan's 400 × 400 mm area but says outright that it has no Snapmaker spot size, so it can't compare them. 3dengr.com (cited) gives only '10W or 40W diode', with no spot, area or cut depth. engraverpicker.com gives the H2D 15 mm cut and work areas but never mentions the Artisan. None of them puts spot area, power per mm², cut claim and bed area side by side, and none notes that neither maker says whether the rating is optical output. I could not open the Tom's Hardware review or the TechRadar page: Tom's returned only the title and I did not try TechRadar.",
+ "decides": "It sharpens the split ChatGPT already made. If you mostly laser-cut, or work on big sheets, the Artisan Premium (or a base Artisan plus the $429 40 W module) gives the larger bed and the tighter stated 40 W spot for the same claimed 15 mm cut. At 10 W, the H2D's stated spot is the tighter one, which favours the H2D for fine engraving alongside its better printing. Because neither maker says whether its watts are optical output, '40 W vs 40 W' can't be taken as equal cutting power. It also corrects ChatGPT's table, which shows 'Snapmaker Artisan: 10W / 40W' as if both come in the box: the base Artisan ships 10 W, and 40 W is the Premium or an add-on.",
+ "candidates": [
+  "Bambu Lab H2D Laser Full Combo (10 W / 40 W)",
+  "Snapmaker Artisan (10 W)",
+  "Snapmaker Artisan Premium (40 W)",
+  "Bambu Lab H2S Laser Full Combo (10 W)",
+  "Bambu Lab H2C (10 W / 40 W option)",
+  "Snapmaker 2.0 A350T (1.6 W)"
+ ],
+ "findings": [
+  {
+   "product": "Snapmaker Artisan",
+   "label": "Laser spot size, 10 W and 40 W modules",
+   "value": "10 W: 0.05 × 0.2 mm; 40 W: 0.1 × 0.15 mm",
+   "source": "https://www.snapmaker.com/snapmaker-artisan/specs",
+   "source_title": "Snapmaker Artisan specs",
+   "read": "2026-11-10",
+   "note": "Spot areas: 10 W 0.05 × 0.2 = 0.010 mm²; 40 W 0.1 × 0.15 = 0.015 mm². Stated power per spot area: 10/0.010 = 1,000 W/mm²; 40/0.015 ≈ 2,667 W/mm². The power is listed as '10W/40W', with no word on whether it is optical output. Wavelength 450–460 nm."
+  },
+  {
+   "product": "Snapmaker Artisan",
+   "label": "Laser work area and cut claim",
+   "value": "400 × 400 mm laser area; one-pass cut 5 mm basswood plywood (10 W) / 15 mm basswood plywood (40 W)",
+   "source": "https://www.snapmaker.com/snapmaker-artisan",
+   "source_title": "Snapmaker Artisan 3-in-1 3D Printer",
+   "read": "2026-11-10",
+   "note": "The product page labels the row 'Max. Depth of One-pass Laser Cutting'. The specs page labels the same row 'Max. Cutting Depth (Paulownia)' but gives basswood plywood values, which is inconsistent. Snapmaker gives no test conditions (speed, air assist)."
+  },
+  {
+   "product": "Snapmaker Artisan",
+   "label": "Laser included in each model",
+   "value": "Artisan: 10 W (with Camera Capture); Artisan Premium: 40 W (with Air Assist)",
+   "source": "https://www.snapmaker.com/snapmaker-artisan",
+   "source_title": "Snapmaker Artisan 3-in-1 3D Printer",
+   "read": "2026-11-10",
+   "note": "From Snapmaker's comparison table. ChatGPT's table shows 'Snapmaker Artisan: 10W / 40W' without saying which model ships which."
+  },
+  {
+   "product": "Snapmaker Artisan",
+   "label": "Price, Snapmaker US store",
+   "value": "$1,799 (compare-at $5,046), in stock",
+   "source": "https://us.snapmaker.com/products/snapmaker-artisan-3-in-1-3d-printer",
+   "source_title": "Snapmaker Artisan 3-in-1 3D Printer",
+   "read": "2026-11-10",
+   "note": "From the storecheck.py search of us.snapmaker.com. A product-level variant check returned HTTP 429, so I could not see a Premium variant price."
+  },
+  {
+   "product": "Snapmaker 40W Laser Module with Air Assist",
+   "label": "Price and laser class, Snapmaker US store",
+   "value": "$429 (compare-at $999); Class 4 module",
+   "source": "https://us.snapmaker.com/products/snapmaker-20w-and-40w-laser-module-with-air-assist",
+   "source_title": "Snapmaker 40W Laser Module with Air Assist",
+   "read": "2026-11-10",
+   "note": "The listing calls the 20 W and 40 W modules Class 4 and recommends an enclosure or OD6+ goggles. It also says 'The Artisan Enclosure is not available for online purchase'. Compatible with Artisan and Snapmaker 2.0 A350T/A250T/F350/F250."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Laser spot size, 10 W and 40 W modules",
+   "value": "10 W: 0.14 × 0.03 mm; 40 W: 0.14 × 0.2 mm",
+   "source": "https://desktop3dprinters.us/lists/3d-printers-with-laser-engraver/",
+   "source_title": "3D printers with a laser engraver: every model compared | Desktop 3D Printers",
+   "read": "2026-11-10",
+   "note": "Bambu's own spec, wiki, store and PDF pages returned 403/402 to me, so this comes from a rival page that relays Bambu's spec. Spot areas: 10 W 0.0042 mm² (≈2,381 W/mm²); 40 W 0.028 mm² (≈1,429 W/mm²). That makes the H2D 10 W spot 2.4× denser than the Artisan 10 W, and the Artisan 40 W spot 1.87× denser than the H2D 40 W (2,667/1,429). A WebSearch summary also gave 40 W ± 2 W and 455 nm for Bambu's tech-specs page, but I could not open that page."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Laser work area and cut claim",
+   "value": "310 × 270 mm (10 W) / 310 × 250 mm (40 W); cut 5 mm (10 W) / 15 mm (40 W) basswood plywood",
+   "source": "https://engraverpicker.com/guides/bambu-lab-h2d-laser-review/",
+   "source_title": "Bambu Lab H2D Laser Review 2026: 10W vs 40W, Worth It?",
+   "read": "2026-11-10",
+   "note": "EngraverPicker says it took these from Bambu's product pages and did not test the machine. Areas: 40 W 310 × 250 = 77,500 mm² vs the Artisan's 400 × 400 = 160,000 mm², so the Artisan bed is 2.06× larger. A search-result summary gave 6 mm for the 10 W instead, which I could not check on a Bambu page. Max processing height: 280 mm (10 W) / 265 mm (40 W)."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Laser class",
+   "value": "Class 1 for the whole laser-edition machine; the module alone is Class 4",
+   "source": "https://engraverpicker.com/guides/bambu-lab-h2d-laser-review/",
+   "source_title": "Bambu Lab H2D Laser Review 2026: 10W vs 40W, Worth It?",
+   "read": "2026-11-10",
+   "note": "desktop3dprinters.us gives the same. The Artisan gets Class 1 only from its enclosure, which Snapmaker does not sell online."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Launch MSRP of the Laser Full Combos",
+   "value": "10 W Full Combo $2,799; 40 W Full Combo $3,499",
+   "source": "https://blog.bambulab.com/bambu-lab-launches-h2d-to-rethink-personal-manufacturing/",
+   "source_title": "Bambu Lab Launches H2D to Rethink Personal Manufacturing",
+   "read": "2026-11-10",
+   "note": "Launch MSRP from March 2025, not today's price. EngraverPicker saw 'from $1,949' on 2026-10-29. ChatGPT showed $1,949 at B&H, which I could not check because B&H returned 403."
+  },
+  {
+   "product": "general",
+   "label": "Is the laser rating optical output or input?",
+   "value": "Neither maker says: Snapmaker lists '10W/40W'; Bambu's launch post says '10W/40W laser module'",
+   "source": "https://www.snapmaker.com/snapmaker-artisan/specs",
+   "source_title": "Snapmaker Artisan specs",
+   "read": "2026-11-10",
+   "note": "I also checked the Snapmaker Artisan product page and Bambu's launch blog: neither says optical or electrical. I found no named reviewer who measured optical output with a power meter for either machine. Nobody has shown that 40 W on one equals 40 W on the other; only the spot size and cut claims can be compared."
+  }
+ ],
+ "unsourced": [
+  "Bambu's own laser specs (power tolerance, 455 nm wavelength, spot sizes, cut depths). I tried bambulab.com/en-us/h2d/specs, /en/h2d/tech-specs, /es/h2d/tech-specs, the wiki laser-module page, us.store.bambulab.com and the cdn1 H2D Laser Full Combo PDF. All returned 403, 402 or 404, and the reseller-hosted spec PDF would not extract.",
+  "Today's H2D Laser Full Combo price on Bambu's US store or B&H: the store returned 402/404 and B&H returned 403.",
+  "The Snapmaker Artisan Premium (40 W) price today: the variant check on us.snapmaker.com returned 429.",
+  "Measured optical laser output for the H2D or Artisan modules from any named reviewer with a power meter. The search found none, and the Tom's Hardware H2D review page returned only its title.",
+  "Whether the $1,799 base Artisan includes the enclosure that gives it Class 1: the product text was empty, and the module listing says the enclosure is not sold online."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.002145
+ }
+}

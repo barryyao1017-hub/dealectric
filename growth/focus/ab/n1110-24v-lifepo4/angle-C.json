@@ -1,0 +1,109 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the LiTime 24V 100Ah Smart ComFlex is natively compatible only with Victron today (LiTime lists SMA, Go Power and Growatt as a 'future remote adaptation' by OTA update). None states that its communicating bank tops out at 25.6V 1600Ah, which means up to 16 units in parallel and no 48V series stacking. LiTime's standard Bluetooth 24V 100Ah ($499.99) and Redodo 24V 100Ah ($469.99) are both rated for a maximum of 4P2S.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages and the top results. The cited solarpoweredproject.com comparison covers only 12V batteries and has no series/parallel limits or inverter communication at all. LiTime's cited Bluetooth product page gives 4P2S for that model but says nothing about ComFlex. The gesike.com US guide gives series/parallel limits only for GSIKE and has no ComFlex, Victron or Epoch content. LiTime's 'best Victron-compatible' blog (rank 4, not cited) gives '16P1S with communication; 4P4S standard' for the 12V 320Ah ComFlex only, not the 24V. It does not say that brands other than Victron are not yet supported. The gearranking.com and solarkithq.com pages did not load (SSL error and 404), so I could not check them.",
+ "decides": "This narrows ChatGPT's 'LiTime ComFlex – best for compatible smart solar and inverter systems' pick. It fits a 24V Victron GX system (Cerbo GX over the BMS-CAN/VE.Can port at 500 kbit/s, RJ45 cable included per LiTime's 12V guide) or LiTime's own 24V inverter-charger. It is not a closed-loop match today for SMA, Growatt or Go Power, and its stated communicating expansion is 24V-only. A shopper planning a 48V bank, or using a non-Victron inverter, should choose the standard LiTime Bluetooth 24V 100Ah or the Redodo 24V 100Ah (both max 4P2S) or the Epoch 24V 100Ah (max 2 in series, 4 in parallel). None of these three states any inverter communication link on its page.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth (low-temp cut-off)",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Redodo 24V 100Ah LiFePO4",
+  "Epoch 24V 100Ah Heated Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 24V 100Ah Smart ComFlex",
+   "label": "Inverter brands supported by communication",
+   "value": "Victron native via CAN; SMA, Go Power, Growatt listed only as 'future remote adaptation of protocols' via OTA",
+   "source": "https://www.litime.com/products/24v-100ah-smart-lifepo4-battery-victron-compatible",
+   "source_title": "LiTime 24V 100Ah Smart ComFlex Battery | Bluetooth & Victron Comms",
+   "read": "2026-11-10",
+   "note": "Product text read through the storecheck.py product JSON. Quote: 'Natively compatible with Victron… future remote adaptation of protocols for brands like SMA, Go Power, Growatt, and more.' It also says it 'works seamlessly with the LiTime 24V inverter-charger or RS485 display.'"
+  },
+  {
+   "product": "LiTime 24V 100Ah Smart ComFlex",
+   "label": "Maximum communicating bank",
+   "value": "25.6V 1600Ah (40.96 kWh); up to 16 units viewable in parallel comms mode",
+   "source": "https://www.litime.com/products/24v-100ah-smart-lifepo4-battery-victron-compatible",
+   "source_title": "LiTime 24V 100Ah Smart ComFlex Battery | Bluetooth & Victron Comms",
+   "read": "2026-11-10",
+   "note": "1600Ah ÷ 100Ah = 16 in parallel at 25.6V. The page gives no series configuration, so the stated expansion is 24V only. LiTime's 12V ComFlex blog gives '16P1S with battery communication; up to 4P4S in standard installations', but no series figure is published for the 24V ComFlex."
+  },
+  {
+   "product": "LiTime 24V 100Ah Smart ComFlex",
+   "label": "Price (US maker store)",
+   "value": "$503.99 (1 pack); $997.90 (2 pack); $1,975.64 (4 pack)",
+   "source": "https://www.litime.com/products/24v-100ah-smart-lifepo4-battery-victron-compatible",
+   "source_title": "LiTime 24V 100Ah Smart ComFlex Battery | Bluetooth & Victron Comms",
+   "read": "2026-11-10",
+   "note": "storecheck.py product variant prices"
+  },
+  {
+   "product": "general (LiTime ComFlex on Victron)",
+   "label": "Victron hookup per LiTime",
+   "value": "RJ45 cable (included) from the battery CAN port to the GX device's VE.Can/BMS-Can port; VE.Can profile set to 'CAN-bus BMS (500 kbit/s)'; up to 16 batteries in parallel",
+   "source": "https://www.litime.com/blogs/buying-guides/victron-bms-communication-guide",
+   "source_title": "LiTime Victron BMS communication guide (dated Aug 1, 2025)",
+   "read": "2026-11-10",
+   "note": "The guide is written for the 12V 100Ah ComFlex and does not mention the 24V. No Venus OS minimum version is given."
+  },
+  {
+   "product": "LiTime 24V 100Ah Bluetooth (low-temp cut-off)",
+   "label": "Series/parallel limit",
+   "value": "Max 4P2S (up to 20.48 kWh)",
+   "source": "https://www.litime.com/products/litime-24v-100ah-lifepo4-rv-marine-battery-with-bluetooth",
+   "source_title": "LiTime 24V 100Ah Bluetooth Lithium Battery with Low-Temp Cut-Off Protection",
+   "read": "2026-11-10",
+   "note": "Product text read through storecheck.py search. It also states that charging stops below 32°F (0°C). Monitoring is through the LiTime App over Bluetooth 5.0, and the page lists no inverter communication port."
+  },
+  {
+   "product": "LiTime 24V 100Ah Bluetooth (low-temp cut-off)",
+   "label": "Price (US maker store)",
+   "value": "$499.99",
+   "source": "https://www.litime.com/products/litime-24v-100ah-lifepo4-rv-marine-battery-with-bluetooth",
+   "source_title": "LiTime 24V 100Ah Bluetooth Lithium Battery with Low-Temp Cut-Off Protection",
+   "read": "2026-11-10",
+   "note": "storecheck.py search result price"
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "Series/parallel limit and charger",
+   "value": "Max 4P2S (up to 20.48 kWh); 29.2V 20A LiFePO4 charger (about 5 h full charge); 100A BMS; not suitable as a starter battery",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-10",
+   "note": "Product text read through storecheck.py search. The excerpt mentions no low-temperature cut-off and no Bluetooth; the Group 31 Bluetooth variant ($569.99) has both."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "Price (US maker store)",
+   "value": "$469.99",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "storecheck.py search result price"
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth",
+   "label": "Series/parallel limit and charge settings",
+   "value": "Max 2 in series, max 4 in parallel; max charge 29.2V; bulk/absorption 28.4–29.2V; float 26.8–27.6V; charge from -20°C (-4°F) with heating, 0°C without",
+   "source": "https://www.epochbatteries.com/products/recertified-24v-100ah-2-56kwh-lifepo4-lithium-battery-bluetooth-heating-waterproof",
+   "source_title": "Epoch (Recertified) 24V 100Ah 2.56kWh LiFePO4 Lithium Battery - Bluetooth, Heating, Waterproof",
+   "read": "2026-11-10",
+   "note": "This is Epoch's own page for the recertified unit ($399, shown against a $1,199 reference price). It mentions monitoring through the Epoch Li-Ion app only, and says nothing about Victron, CAN or RS485. In the search results, Epoch's Victron-comms 24V model is the 230Ah V2 Elite, not the 100Ah."
+  }
+ ],
+ "unsourced": [
+  "Epoch 24V 100Ah new-unit price and spec page on epochbatteries.com: storecheck search returned 404, a guessed product URL returned 404, and a site: search turned up only the recertified page. I did not open the manual PDF.",
+  "Whether the LiTime 24V ComFlex can be wired 2S for 48V, with or without communication: not on the product page, and I found no 24V ComFlex manual PDF.",
+  "The minimum Venus OS/GX firmware version for the LiTime ComFlex and whether Victron lists LiTime on its own battery-compatibility index: searched victronenergy.com/live and found no LiTime page.",
+  "Whether the standard (non-ComFlex) LiTime 24V Bluetooth battery can join a ComFlex communicating bank: not stated on either LiTime page.",
+  "gearranking.com 24V ranking (SSL certificate error) and solarkithq.com best-24V page (404): I could not check them for overlap."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0479270000000005
+ }
+}

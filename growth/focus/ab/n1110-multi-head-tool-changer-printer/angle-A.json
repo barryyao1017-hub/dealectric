@@ -1,0 +1,111 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the U1's 5-second swap and the INDX's 12-second swap are measured differently. Prusa's ~12 s runs from the last extrusion on one tool to the first extrusion on the next, while Snapmaker's 5 s is an undefined 'typical' lab result. A hands-on reviewer timed the U1 at 10–12 s per colour change, which is about the same as the INDX, not 2.4× faster.",
+ "standout": 2,
+ "standout_why": "3dprinteray.com (cited) lists U1 '5-second swaps' and INDX 'about 12 s'. It says the two are not comparable because no common test is described, but it doesn't resolve the difference or give a measured figure. 3dtoolchangers.com/printers (cited) has no swap time or waste figure at all. ChatGPT's own answer repeats 'approximately 5-second tool swaps' for the U1 and gives no INDX time. Tom's Hardware best-picks (cited) would not open, so I couldn't check it. None of these pages gives Prusa's definition of its timing, a measured U1 swap time, or waste per swap on a common basis.",
+ "decides": "It removes the U1's apparent speed edge over the INDX. Measured the same way, both swap in about 10–12 s, so the $749-vs-$1,999 choice comes down to enclosure and chamber heat (INDX up to 55 °C, U1 only an optional unheated Top Cover), waste per swap (INDX 0.013 g claimed with no prime tower, U1 about 0.049 g measured from its prime tower), and the INDX's smaller Y travel. Swap speed doesn't separate them. This confirms the U1 as the value pick but not as a faster one.",
+ "candidates": [
+  "Snapmaker U1",
+  "Prusa CORE One+ (Gen 2) INDX",
+  "Prusa XL+ 5-toolhead",
+  "Flashforge Creator 5 Pro",
+  "Bambu Lab H2C"
+ ],
+ "findings": [
+  {
+   "product": "Snapmaker U1",
+   "label": "Tool swap time, maker claim and its basis",
+   "value": "5 s",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "The page says it 'swaps one complete toolhead for another in just 5 seconds'. Footnote 1: 'This is a typical result from Snapmaker Lab tests and is for reference only.' It doesn't say where the timing starts or stops."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Colour change time, measured by a reviewer",
+   "value": "10–12 s per colour change",
+   "source": "https://stldenise3d.com/snapmaker-u1-review-an-affordable-tool-changer-for-multicolor-3d-printing/",
+   "source_title": "Snapmaker U1 Review: An Affordable Tool Changer for Multicolor 3D Printing ⋆ stlDenise3D",
+   "read": "2026-11-10",
+   "note": "Denise Bertacchi, hands-on review, page last updated 2025-10-29. The parked head keeps its heater on standby and needs 'a quick prime' after a swap. That is 2–2.4× Snapmaker's 5 s claim and in the same range as Prusa's ~12 s INDX figure."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Tool change time and how Prusa measures it",
+   "value": "~12 s per change (PLA)",
+   "source": "https://www.prusa3d.com/product/indx-conversion-kit/",
+   "source_title": "INDX 4-Tool Conversion Kit for CORE One+ (Gen2) | Original Prusa 3D printers",
+   "read": "2026-11-10",
+   "note": "Prusa measures 'from the last extrusion on one material to the first extrusion on the next', on the model itself. This is the full time the print is interrupted, which is a stricter basis than Snapmaker's undefined 5 s. The printer page https://www.prusa3d.com/p/bondtech-indx lists 'About 12 seconds, about 0.013 g of waste' (read 2026-11-10)."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Waste per tool change, maker claim",
+   "value": "0.013 g (13 mg) per change, no purge tower",
+   "source": "https://www.prusa3d.com/product/indx-conversion-kit/",
+   "source_title": "INDX 4-Tool Conversion Kit for CORE One+ (Gen2) | Original Prusa 3D printers",
+   "read": "2026-11-10",
+   "note": "Prusa claims this is '5× less than the most efficient systems and 30× less than standard filament rewinding systems' but gives no gram figure for those competitors. This is a maker claim, not an independent measurement."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Prime-tower waste per swap, measured",
+   "value": "4.4 g over 90 swaps ≈ 0.049 g per swap",
+   "source": "https://stldenise3d.com/snapmaker-u1-review-an-affordable-tool-changer-for-multicolor-3d-printing/",
+   "source_title": "Snapmaker U1 Review: An Affordable Tool Changer for Multicolor 3D Printing ⋆ stlDenise3D",
+   "read": "2026-11-10",
+   "note": "Three-colour print with 90 swaps; 4.4 ÷ 90 = 0.049 g. That is about 3.8× Prusa's claimed 0.013 g per INDX change. The U1 figure is a measured prime tower and the INDX figure is Prusa's claim with no tower. The U1 tower varies with model height and slicer settings."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Baseline behind the 'up to 85% less waste' claim",
+   "value": "up to 85% less filament than shared-nozzle filament-switching printers",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Footnote 4: 'Other' refers to a printer using shared-nozzle filament switching (an AMS-style setup). Footnote 5: total waste includes supports, the prime tower, pre-print nozzle clearing and flow calibration on the U1. So the U1 still prints a prime tower, while Prusa advertises 'No Purge-Tower' for the INDX."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Build volume with INDX vs without",
+   "value": "248 × 205 × 270 mm with INDX vs 250 × 220 × 270 mm without (−2 mm X, −15 mm Y)",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Both figures appear on the Prusa page; the subtraction is mine. The U1 page gives one figure, 270 × 270 × 270 mm, with no split for single tool vs all four tools."
+  },
+  {
+   "product": "Prusa CORE One+ (Gen 2) INDX",
+   "label": "Max nozzle temp / chamber / US price",
+   "value": "300 °C nozzle; chamber up to 55 °C; $1,999 (4-tool assembled), $2,249 (8-tool assembled), $1,699 / $1,949 kits",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "The tools are passive ('no motors, no heaters, no wires'). Heat comes from an induction coil on the moving head, so a 'tool' here is a nozzle and filament path. On the U1 and XL+ a tool is a complete toolhead."
+  },
+  {
+   "product": "Prusa XL+ 5-toolhead",
+   "label": "Swap time and waste, as Prusa states them",
+   "value": "no number: 'Tools are swapped in seconds'; 'virtually no purge waste'",
+   "source": "https://www.prusa3d.com/product/original-prusa-xl-2/?currency=usd",
+   "source_title": "Prusa XL+ Single-Tool | Original Prusa 3D printers",
+   "read": "2026-11-10",
+   "note": "The page also gives 290 °C max nozzle; 360 × 360 × 360 mm; chamber up to 50 °C with the optional enclosure, 60 °C with an external heater marked 'Coming soon'. Single-tool price is $2,128.70; the 2- and 5-head prices didn't load."
+  }
+ ],
+ "unsourced": [
+  "Flashforge Creator 5 Pro swap time, waste claim and its baseline, max nozzle temp and US price: the flashforge.com product pages returned HTTP 429 twice. I didn't find a manual or a named reviewer's figure within the budget.",
+  "Bambu Lab H2C hotend swap time, the baseline for its purge-reduction claim, and US price: bambulab.com/en-us/h2c and /en/h2c returned 403, and storecheck on us.store.bambulab.com returned 404. Search results gave only secondhand figures (about 8 s heat-up, a 58% reduction vs AMS) that I couldn't open on a primary page.",
+  "Independent measured swap time and waste for the INDX: the Tom's Hardware INDX review and the All3DP INDX review were blocked (truncated page or 403). Search results say All3DP measured 9–12 s and Tom's Hardware measured 18 g over 1,646 changes, but I couldn't open either page to confirm.",
+  "Snapmaker U1 current US price: storecheck on us.snapmaker.com returned HTTP 429, and the snapmaker.com U1 page shows no price.",
+  "Snapmaker U1 max nozzle temperature: not on Snapmaker's U1 page. 3dtoolchangers.com lists 300 °C, but I couldn't confirm it on a Snapmaker page or in the manual.",
+  "Prusa XL+ build volume with 5 tools vs 1 tool, and its measured swap time: Prusa's page gives one volume and no seconds figure. I didn't find a named reviewer's measurement."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9394724999999999
+ }
+}

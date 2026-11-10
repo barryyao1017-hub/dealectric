@@ -6,7 +6,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 import abpage as A
 import os
 DAY = os.environ.get("DAY", "2026-11-08")
-Q = [q["slug"] for q in json.loads((ROOT / f"growth/focus/ab-harvest-new-{DAY}.json").read_text())["questions"]]
+DAYS = DAY.split(",")   # several runs, one applier (two appliers would race on src/)
+Q = [q["slug"] for d in DAYS for q in json.loads((ROOT / f"growth/focus/ab-harvest-new-{d}.json").read_text())["questions"]]
 tried = {}
 while True:
     pending = 0
@@ -29,8 +30,8 @@ while True:
             continue
         tried[s] = (A.AB / s / "draft.json").stat().st_mtime
         print("APPLY " + json.dumps(r, ensure_ascii=False)[:600], flush=True)
-    feed = (ROOT / f"growth/focus/ab/feed-new-{DAY}{os.environ.get('FEEDSUF', '')}.log").read_text() if (ROOT / f"growth/focus/ab/feed-new-{DAY}{os.environ.get('FEEDSUF', '')}.log").exists() else ""
-    if pending == 0 and "FEED DONE" in feed:
+    logs = [ROOT / f"growth/focus/ab/feed-new-{d}{os.environ.get('FEEDSUF', '')}.log" for d in DAYS]
+    if pending == 0 and all(l.exists() and "FEED DONE" in l.read_text() for l in logs):
         break
     time.sleep(90)
 print("APPLY DONE", flush=True)

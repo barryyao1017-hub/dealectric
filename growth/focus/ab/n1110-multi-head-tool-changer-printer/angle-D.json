@@ -1,0 +1,101 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that full-toolhead changers still waste filament at every swap: the Snapmaker U1 keeps all four heads preheated and builds a prime/wiping tower at each colour change, and Prusa says the XL's parked heads must drop to an idle temperature or they ooze, then prime 15–35 mm³ into a wipe tower. Prusa's CORE One+ INDX tools have no heaters of their own, and Prusa says they need 'No waste/prime tower', using 13 mg per change.",
+ "standout": 2,
+ "standout_why": "Cited rivals: 3dtoolchangers.com/printers lists only tool count and change type. 3dprinteray.com/toolchanger-printers mentions the INDX induction coil, the 12 s swap and that the U1 keeps its heads preheated, but says nothing about ooze, idle temperature or a prime tower. Of the top uncited results, slice-lab.com claims 'Since each material keeps its own nozzle, waste is near zero' for full-head changers without mentioning a prime tower, and 3dtoolchangers' INDX-vs-U1 compare page says it can't report waste per change from spec sheets. None explains why parked full heads ooze and still need a tower while INDX tools don't.",
+ "decides": "If the shopper bought a tool changer to stop wasting filament, this favours the Prusa CORE One+ INDX ($1,999 for 4 tools, $2,249 for 8, assembled). Its parked tools are unheated and need no prime tower. The Snapmaker U1 and Prusa XL+ still print a wipe/prime tower and need idle-temperature settings. The U1 also holds at most four spools per job. Whole-head changers still make sense for a different reason: each head has its own extruder and hotend. A low waste figure is not the reason to pick them.",
+ "candidates": [
+  "Prusa CORE One+ INDX",
+  "Snapmaker U1",
+  "Prusa XL+ 5-toolhead",
+  "Flashforge Creator 5 Pro",
+  "Bambu Lab H2C"
+ ],
+ "findings": [
+  {
+   "product": "Prusa CORE One+ INDX",
+   "label": "Tool construction and heating",
+   "value": "Passive tools with 'no motors, no heaters, no wires'. An induction coil on the moving head heats the tool it picks up, and extrusion also stays on the main head.",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Prusa's own words: the head heats 'the passive nozzle in seconds the moment it's picked up'. That parked tools sit unheated follows from their having no heater. Prusa does not say this directly."
+  },
+  {
+   "product": "Prusa CORE One+ INDX",
+   "label": "Prime tower and waste per change",
+   "value": "No waste/prime tower; 13 mg of material to fully prime per change; about 12 s per change",
+   "source": "https://blog.prusa3d.com/prusa-core-one-gen-2-indx-shipping-has-started-complete-printers-open-for-orders_137623/",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX, Shipping Has Started, Complete Printers Open for Orders",
+   "read": "2026-11-10",
+   "note": "Quotes: 'No waste/prime tower as the tool is pre-primed fully' and 'Only 13 milligrams of material to fully prime.' Post dated 2026-08-20. The product page gives about 0.013 g per colour change and says 'you don't need to purge between colors'."
+  },
+  {
+   "product": "Prusa CORE One+ INDX",
+   "label": "US price, maker store",
+   "value": "$1,999 (assembled, 4 tools); $2,249 (assembled, 8 tools); $1,699 (kit, 4 tools); $1,949 (kit, 8 tools)",
+   "source": "https://www.prusa3d.com/p/bondtech-indx",
+   "source_title": "Prusa CORE One+ (Gen 2) INDX | Multi-Material Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Prices as shown on the product page. The page adds that tax and shipping are calculated at checkout. The 4-tool printer has docking slots for up to 8 tools."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Tool-change mechanism and prime tower",
+   "value": "Four preheated toolheads, about 5 s per swap. The U1 wipes the nozzle tip at each colour change by building a prime/wiping tower.",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "Snapmaker's footnote counts nozzle clearing, nozzle wiping and flow calibration as waste sources, separate from 'purging'. Its 'up to 85%' less filament than shared-nozzle printers comes from Snapmaker Lab tests and includes the prime tower."
+  },
+  {
+   "product": "Snapmaker U1",
+   "label": "Filaments per job",
+   "value": "Up to 4 spools loaded, one per toolhead. Backup Mode switches to a matching spool when one runs out.",
+   "source": "https://www.snapmaker.com/en-US/snapmaker-u1",
+   "source_title": "Snapmaker U1 Toolchanger 3D Printer",
+   "read": "2026-11-10",
+   "note": "'Each color or material stays loaded in its own dedicated toolhead.'"
+  },
+  {
+   "product": "Prusa XL+ 5-toolhead",
+   "label": "Parked-head ooze handling",
+   "value": "Ooze prevention must stay on. Without it 'all the extruders will stay at their print temperature during the whole print', which Prusa says causes significant oozing, melt-zone degradation and possible nozzle clogging.",
+   "source": "https://help.prusa3d.com/article/combining-materials-xl_498103?product=xl-plus",
+   "source_title": "Combining materials (XL) – Prusa Knowledge Base",
+   "read": "2026-11-10",
+   "note": "Each filament profile's idle temperature takes priority over the ooze-prevention temperature drop."
+  },
+  {
+   "product": "Prusa XL+ 5-toolhead",
+   "label": "Wipe-tower minimal purge per tool",
+   "value": "Default 15 mm³ (PLA) and 35 mm³ (other materials). Prusa recommends 35 mm³ per extruder when combining PLA with another material, and up to 70 mm³ for TPU stringing.",
+   "source": "https://help.prusa3d.com/article/combining-materials-xl_498103?product=xl-plus",
+   "source_title": "Combining materials (XL) – Prusa Knowledge Base",
+   "read": "2026-11-10",
+   "note": "'The minimal purge on wipe tower sets the minimum amount of material to prime into the prime tower.'"
+  },
+  {
+   "product": "Bambu Lab H2C",
+   "label": "Vortek purge-free condition",
+   "value": "Six interchangeable induction hotends, each with onboard memory of the filament it last ran, heating up in 8 s. Bambu says purge cleaning can be eliminated when a job uses fewer than seven filaments.",
+   "source": "https://blog.bambulab.com/bambu-lab-h2c-where-multi-material-vortek-system-meets-engineering-precision",
+   "source_title": "Bambu Lab H2C: where Multi-Material Vortek System meets engineering precision",
+   "read": "2026-11-10",
+   "note": "Bambu blog post dated 2025-11-14. It gives no percentage for purge reduction and doesn't say what happens with more filaments than hotends."
+  }
+ ],
+ "unsourced": [
+  "Bambu H2C: how many induction hotends ship with each combo, and whether the filament is cut and pulled back to the AMS at every hotend swap. bambulab.com/en/h2c/faq returned 403 and the wiki rack-workflow page returned 402. The H2C user manual PDF downloaded, but its text couldn't be extracted without a tool I didn't have permission to run.",
+  "Bambu H2C current US price: the US store (us.store.bambulab.com) returned 402, and storecheck.py returned HTTP 404.",
+  "Flashforge Creator 5 Pro idle-temperature and prime-tower behaviour, and its US price: not researched within the tool budget.",
+  "Snapmaker U1 USD price: the maker's en-US product page shows no price, only links to the store and Amazon. The store wasn't checked.",
+  "Prusa XL+ 5-toolhead current US price: product page not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.9798064000000002
+ }
+}

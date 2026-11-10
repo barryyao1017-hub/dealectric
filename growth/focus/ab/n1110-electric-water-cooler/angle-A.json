@@ -1,0 +1,119 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Avalon A4, ChatGPT's 'best value' pick, is missing from the current ENERGY STAR water-cooler list (Version 3.0, updated 2026-11-08), while Bob Vila calls it certified. They also don't state that the Brio 520 and Brio Moderna 720 share one ENERGY STAR test record: 0.76 kWh/day standby, 0.74 gal/h of cold water at 42°F and 46 six-ounce cups/h of hot water at 167°F. Avalon's own rating for the A4 is 2.5 L/h (0.66 gal/h) cold at ≤47°F and 4 L/h hot at ≥185°F, which is a different temperature basis.",
+ "standout": 2,
+ "standout_why": "I compared against Bob Vila's page, the only page ChatGPT cited in both chats, opened 2026-11-10. It lists 'Energy Star: certified' for the Avalon A4, the Brio 500 Series and the Moderna. It gives no kWh/day, no cold gal/h, no hot cups/h and no temperature basis. Its only numbers are Moderna's adjustable range (39°F to 194°F) and an A4 test result of 'tea temperature in about 5 minutes'. So the cited rival has none of the normalised figures, and the ENERGY STAR finding contradicts its A4 claim. I stayed within the tool budget, so I did not open shouldit, mybest, Popular Mechanics or the other uncited results. Some of them may list maker ratings, but probably not ENERGY STAR test values.",
+ "decides": "It confirms the Brio 520 ($329.99 on briowater.com today) as the pick whose numbers are verified. It also shows that the Moderna 720 ($449.99), which ChatGPT called 'best premium temperature control', tested the same as the 520. Both sit in one ENERGY STAR family with identical results, so the extra $120 buys the display, ozone cleaning and adjustable temperatures, not more cooling or heating. The Avalon A4 can stay the budget pick, but no one should call it ENERGY STAR certified. Its cold rating (0.66 gal/h at ≤47°F) is close to Brio's tested 0.74 gal/h at 42°F, but its standby kWh/day has no independent source. Primo's bottom-load family (601202 and others) shows exactly the same test values as the Brio 520 family: 0.76 kWh/day, 0.74 gal/h, 46 cups/h, 42°F and 167°F.",
+ "candidates": [
+  "Brio 520 Self-Cleaning Bottom Load (CLBL520SC)",
+  "Brio Moderna 720 (CLBL720SC)",
+  "Avalon A4 Bottom Loading (A4BLWTRCLR)",
+  "Primo Deluxe bottom-load (601202 family)",
+  "Brio 740 (CLBL740SC)"
+ ],
+ "findings": [
+  {
+   "product": "Brio 520 / Moderna 720 (ENERGY STAR family 2399537, lead model CLBL520SCBLK)",
+   "label": "Standby energy, ENERGY STAR on mode with no water draw",
+   "value": "0.76 kWh/day",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$where=brand_name%20in('Brio','Primo')&$select=pd_id,brand_name,model_name,model_number,additional_model_information,type,water_source,water_conditioning,product_capacity_class,daily_energy_use_on_mode,cold_water_dispenser_capacity,hot_water_dispenser_capacity,dispensed_water_temperature,dispensed_water_temperature_1,refrigerant_type&$limit=100",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k)",
+   "read": "2026-11-10",
+   "note": "Version 3.0 test. Type: Hot, Cook, and Cold; bottom-load bottle; High Capacity class. 0.76 × 365 = 277 kWh/yr with no water drawn. A separate query on additional_model_information LIKE '%CLBL720SC%' returned only pd_id 2399537 (Brio) and 2399677 (LAGO). That confirms the Moderna 720 is certified under this record."
+  },
+  {
+   "product": "Brio 520 / Moderna 720 (ENERGY STAR family 2399537)",
+   "label": "Cold-water capacity and the test temperature",
+   "value": "0.74 gal/h at 42°F",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$where=brand_name%20in('Brio','Primo')&$select=pd_id,brand_name,model_name,model_number,additional_model_information,type,water_source,water_conditioning,product_capacity_class,daily_energy_use_on_mode,cold_water_dispenser_capacity,hot_water_dispenser_capacity,dispensed_water_temperature,dispensed_water_temperature_1,refrigerant_type&$limit=100",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k)",
+   "read": "2026-11-10",
+   "note": "0.74 gal/h × 3.785 = 2.80 L/h. The dataset metadata (api/views/qsc8-7f7k.json) defines the field as gallons per hour of cold water delivered at the required temperature. 42°F is the cold temperature recorded during the test."
+  },
+  {
+   "product": "Brio 520 / Moderna 720 (ENERGY STAR family 2399537)",
+   "label": "Hot-water capacity and the test temperature",
+   "value": "46 six-ounce cups/h at 167°F",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$where=brand_name%20in('Brio','Primo')&$select=pd_id,brand_name,model_name,model_number,additional_model_information,type,water_source,water_conditioning,product_capacity_class,daily_energy_use_on_mode,cold_water_dispenser_capacity,hot_water_dispenser_capacity,dispensed_water_temperature,dispensed_water_temperature_1,refrigerant_type&$limit=100",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k)",
+   "read": "2026-11-10",
+   "note": "46 × 6 oz = 276 oz ≈ 2.16 gal ≈ 8.2 L/h. Measured at 167°F, well below the 'up to 194°F' Bob Vila quotes for the Moderna's adjustable setting. Brio's ratings and this test use different temperature bases."
+  },
+  {
+   "product": "Avalon A4 (A4BLWTRCLR)",
+   "label": "ENERGY STAR Version 3.0 listing",
+   "value": "No Avalon record among the certified water coolers (dataset updated 2026-11-08)",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$q=avalon&$limit=50",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k), full-text search 'avalon'",
+   "read": "2026-11-10",
+   "note": "The full-text search for 'avalon' returned []. A query for model_number or additional_model_information containing 'A4BL' also returned no Avalon record. The dataset description says listed models meet Version 3.0, effective 2022-03-23, and rowsUpdatedAt = 2026-11-08. Bob Vila, the source ChatGPT cited, lists the A4 as 'Energy Star: certified', and the Amazon listing title says 'UL/Energy Star Approved'. Neither matches the current EPA list."
+  },
+  {
+   "product": "Avalon A4 (A4BLWTRCLR)",
+   "label": "Maker-rated cold-water capacity",
+   "value": "2.5 L/h (≈0.66 gal/h) at ≤47°F",
+   "source": "https://www.manualslib.com/manual/3624046/Avalon-A4blwtrclr.html",
+   "source_title": "Avalon A4BLWTRCLR Manual, Tech Specs, p. 9 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "This is Avalon's own rating, not an ENERGY STAR test. 2.5 / 3.785 = 0.66 gal/h, against Brio's tested 0.74 gal/h at 42°F. Avalon's limit is 5°F warmer."
+  },
+  {
+   "product": "Avalon A4 (A4BLWTRCLR)",
+   "label": "Maker-rated hot-water capacity",
+   "value": "4 L/h at ≥185°F (≈22.5 six-ounce cups/h)",
+   "source": "https://www.manualslib.com/manual/3624046/Avalon-A4blwtrclr.html",
+   "source_title": "Avalon A4BLWTRCLR Manual, Tech Specs, p. 9 (ManualsLib)",
+   "read": "2026-11-10",
+   "note": "4 L = 135.3 US fl oz; 135.3 / 6 = 22.5 cups/h. It is rated at ≥185°F, while Brio's 46 cups/h was measured at 167°F, so the two figures are not directly comparable. The same page lists hot tank 1.16 L and cold tank 3.6 L."
+  },
+  {
+   "product": "Primo Deluxe bottom-load (ENERGY STAR 601202 family)",
+   "label": "ENERGY STAR test values",
+   "value": "0.76 kWh/day; 0.74 gal/h cold at 42°F; 46 cups/h hot at 167°F",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$where=brand_name%20in('Brio','Primo')&$select=pd_id,brand_name,model_name,model_number,additional_model_information,type,water_source,water_conditioning,product_capacity_class,daily_energy_use_on_mode,cold_water_dispenser_capacity,hot_water_dispenser_capacity,dispensed_water_temperature,dispensed_water_temperature_1,refrigerant_type&$limit=100",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k)",
+   "read": "2026-11-10",
+   "note": "Identical on all five values to Brio's CLBL520SCBLK family. That fits a shared platform, but nothing I read proves it. I did not confirm which Primo SKU Bob Vila tested."
+  },
+  {
+   "product": "Brio 740 (CLBL740SC)",
+   "label": "ENERGY STAR test values",
+   "value": "0.61 kWh/day; 0.08 gal/h cold at 47°F; 12 cups/h hot at 177°F; Low Capacity class",
+   "source": "https://data.energystar.gov/resource/qsc8-7f7k.json?$where=brand_name%20in('Brio','Primo')&$select=pd_id,brand_name,model_name,model_number,additional_model_information,type,water_source,water_conditioning,product_capacity_class,daily_energy_use_on_mode,cold_water_dispenser_capacity,hot_water_dispenser_capacity,dispensed_water_temperature,dispensed_water_temperature_1,refrigerant_type&$limit=100",
+   "source_title": "ENERGY STAR Certified Water Coolers (data.energystar.gov dataset qsc8-7f7k)",
+   "read": "2026-11-10",
+   "note": "Brio's most expensive plain cooler ($649.99 on briowater.com today) tested with about a ninth of the 520's cold output (0.08 vs 0.74 gal/h) and about a quarter of its hot output (12 vs 46 cups/h). Its lower standby figure comes from the Low Capacity class, not from greater efficiency."
+  },
+  {
+   "product": "Brio 520 (CLBL520SC)",
+   "label": "Price on the maker's US store",
+   "value": "$329.99 (compare-at $399.99)",
+   "source": "https://briowater.com/products/clbl520sc",
+   "source_title": "Stainless Steel Bottom Load Water Dispenser - Model 520 (briowater.com)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on briowater.com. The page cites Bob Vila's Best Overall award and claims '50 dB or less'."
+  },
+  {
+   "product": "Brio Moderna 720 (CLBL720SC)",
+   "label": "Price on the maker's US store",
+   "value": "$449.99 (compare-at $499.99)",
+   "source": "https://briowater.com/products/brio-moderna-tri-temp-bottom-load-water-cooler-stainless-steel",
+   "source_title": "Bottom Load Water Dispenser - 720 Moderna (briowater.com)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search. The page says each temperature has 3 adjustable levels and the unit uses ozone self-cleaning. The black stainless CLBL720SCBLK is also $449.99."
+  }
+ ],
+ "unsourced": [
+  "Avalon A4 price on avalonh2o.com: both storecheck.py and WebFetch returned HTTP 429, and avalonwatercoolers.com failed with an SSL error. I did not open ChatGPT's Target listing ($179.99).",
+  "Avalon A4 heating and cooling wattage (420 W and 100 W in search snippets): the ManualsLib excerpt I opened was cut off before the power rows, and Best Buy timed out.",
+  "Avalon A4 standby kWh/day: there is no ENERGY STAR record, and no reviewer measurement turned up within budget.",
+  "The ENERGY STAR Version 3.0 test-method temperature thresholds for hot and cold water: I did not open the spec PDF, so I give the recorded test temperatures and not the required ones.",
+  "Which Brio bottleless SKU Home Depot sells at $287.99, and so which ENERGY STAR point-of-use family it belongs to: the page was not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2153513999999999
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 'Victron-compatible' closed loop sold on the LiTime 24V Smart ComFlex needs a Victron GX device, or that LiTime is missing from Victron's own Battery Compatibility index. For CAN-bus batteries Victron says to check that index and 'If DVCC is not mentioned in notes relating to your battery, do not enable DVCC'. So the battery-controlled charge limits (CVL/CCL/DCL) rest on LiTime's word alone, and the heated Epoch has no CAN link at all.",
+ "standout": 2,
+ "standout_why": "I compared against the cited solarpoweredproject.com 100Ah comparison. It covers only 12V batteries, BMS continuous and peak amps, and low-temp cutoffs, and never mentions CAN, RS485, Victron, GX or DVCC. I compared against the uncited ryzzun.com LiTime 24V review. It says the ComFlex 'has Victron communication, aimed at builds centred on a Victron GX device', but it says nothing about Victron's compatibility list or DVCC rules. The cited LiTime product page returned HTTP 429 every time, so I could not check what it claims. I did not open gesike.com, gearranking.com (certificate error), the LiTime Victron blog listed in the results, or charge-test.com, so I can't rule out that one of them covers part of this.",
+ "decides": "This weakens ChatGPT's 'LiTime Smart ComFlex: best for Victron integration on a budget' pick. Closed-loop control needs a Cerbo GX or another GX device on top of the battery. Victron does not list LiTime as tested, and its guidance for unlisted CAN batteries is not to enable DVCC, which is what passes the battery's charge-voltage and current limits to the inverter-chargers and solar chargers. For a shopper who just needs a 24V battery with no inverter link, this confirms that the cheaper LiTime and Redodo Bluetooth models are enough. The Epoch premium pick offers only Bluetooth, so it cannot join a closed loop either. Battle Born is on Victron's list, but only as a drop-in with 'no integration or communication, such CANbus', so being listed is not the same as closed-loop support.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth (low-temp cutoff)",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+  "Redodo 24V 100Ah LiFePO4"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Brands on Victron's Battery Compatibility index",
+   "value": "29 brands listed (AXIstorage, BattleBorn, Bluenova, BMZ, BSLBATT, BYD B-Box, Cegasa eBick, Discover AES, Dyness, Exide, Freedom Won, Hubble Lithium, LBSA, Leoch, MeterBoost, MG Energy Systems, Pylontech, Pytes, Rolls LFP, SimpliPhi, SolarMD, Soluna, SSS StorageDOCK, Sunwoda, Tab, Victron, Voltsmile, WeCo, ZYC). LiTime, Epoch and Redodo are not among them.",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:start",
+   "source_title": "Victron Energy – Battery compatibility (index)",
+   "read": "2026-11-10",
+   "note": "Checked against both the tested-battery list and the DIY/self-build BMS list on the page. The page says communicating lithium batteries 'are mostly connected via \"BMS-Can\" (CANBus) on a GX device.'"
+  },
+  {
+   "product": "general",
+   "label": "Victron rule for enabling DVCC with a CAN-bus battery",
+   "value": "Check the battery's page in the Battery Compatibility manual. 'If DVCC is not mentioned in notes relating to your battery, do not enable DVCC.' DVCC needs GX firmware v2.12 or later and 'changes a GX device from a passive monitor into an active controller.'",
+   "source": "https://www.victronenergy.com/media/pg/CCGX/en/dvcc---distributed-voltage-and-current-control.html",
+   "source_title": "Victron GX manual, 11. DVCC – Distributed Voltage and Current Control",
+   "read": "2026-11-10",
+   "note": "Section 11.2 (requirements) and 11.1."
+  },
+  {
+   "product": "general",
+   "label": "What a CAN-bus BMS battery controls through DVCC",
+   "value": "CVL = 'the maximum charge voltage that the battery currently accepts'. CCL = 'the maximum charge current requested by the battery'. DCL = 'the maximum discharge current as requested by the battery'. The GX 'relays that to the connected inverter/chargers, solar chargers and Orion XS'.",
+   "source": "https://www.victronenergy.com/media/pg/CCGX/en/dvcc---distributed-voltage-and-current-control.html",
+   "source_title": "Victron GX manual, 11. DVCC – Distributed Voltage and Current Control",
+   "read": "2026-11-10",
+   "note": "Section 11.5. This is what 'closed-loop' means in practice. Without DVCC, the chargers run on their own configured profiles."
+  },
+  {
+   "product": "LiTime 24V 100Ah Smart ComFlex",
+   "label": "Hardware needed for Victron communication (per LiTime)",
+   "value": "Battery CAN port to the 'VE.Can/BMS-Can port on your Victron Cerbo GX or other GX device' with the 'included standard RJ45 cable'. On VE.Can, set the profile to 'CAN-bus BMS (500 kbit/s)'. 'You can connect up to 16 batteries in parallel.'",
+   "source": "https://www.litime.com/blogs/buying-guides/victron-bms-communication-guide",
+   "source_title": "LiTime – Victron BMS communication guide",
+   "read": "2026-11-10",
+   "note": "The guide is written for the 12V 100Ah ComFlex. It does not name the 24V model, give a DVCC setting, give a series limit or give a firmware version. Using it for the 24V model is an inference."
+  },
+  {
+   "product": "Battle Born (for contrast)",
+   "label": "Victron listing type",
+   "value": "'there is no integration or communication, such CANbus, between the BattleBorn battery and the Victron system'. Listed as a drop-in battery, provided the charge parameters are set to Battle Born's specs.",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:battleborn",
+   "source_title": "Victron Energy – Battery compatibility: BattleBorn",
+   "read": "2026-11-10",
+   "note": "Shows that a Victron listing can be drop-in only, not closed-loop. The page names no 24V model."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth",
+   "label": "Communication",
+   "value": "Bluetooth only (Epoch Li-Ion app). The product page mentions no CAN, RS485 or Victron communication.",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch – 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-10",
+   "note": "Maker's US product page."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth",
+   "label": "Heater power source",
+   "value": "Heater is 'powered by incoming charge current when charging in cold conditions'. It does not draw battery power while discharging. The spec table lists both '-20°C (-4°F) / 55°C' charge 'with heating' and '0°C to 55°C … after heating'.",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch – 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-10",
+   "note": "The heater runs only while a charger is supplying current. The page never says at what temperature the heater switches on."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth",
+   "label": "Current limits, series/parallel, warranty, price",
+   "value": "120 A continuous discharge. 200 A for 60 s peak. 150 A for 10 s maximum charge. Up to 2 in series (48 V) and 4 in parallel (400 Ah). 11-year limited warranty (free replacement years 1–3, 40% off MSRP years 4–11). $1,199, sold out.",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch – 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-10",
+   "note": "Price is from the maker's US store on the read date. ChatGPT's card showed the same $1,199 but did not say it was out of stock."
+  },
+  {
+   "product": "LiTime 24V 100Ah Bluetooth",
+   "label": "Communication and cold-charge behaviour (reviewer)",
+   "value": "Ryzzun: the Bluetooth version 'Stops charging below 32°F' and uses a Bluetooth 5.0 app. No CAN bus or closed-loop protocol is mentioned. Up to 4P2S (48 V, 400 Ah, 20.48 kWh).",
+   "source": "https://ryzzun.com/litime-24v-100ah-battery-review/",
+   "source_title": "Ryzzun – LiTime 24V 100Ah Battery Review: Specs and 24V Setup",
+   "read": "2026-11-10",
+   "note": "Named reviewer. I could not open the maker page to confirm (HTTP 429)."
+  }
+ ],
+ "unsourced": [
+  "LiTime US product pages for the 24V 100Ah Bluetooth and 24V Smart ComFlex (specs and today's prices): litime.com and litime.de returned HTTP 429 to both WebFetch and storecheck.py on every try.",
+  "Redodo 24V 100Ah maker page (redodopower.com) returned HTTP 429. Its Shopify datasheet PDF came back as unreadable binary, and pdftotext was not permitted, so I have no maker figures for Redodo's continuous/peak current, low-temp cutoff or communication.",
+  "Whether the 24V ComFlex uses the same CAN protocol, GX setup and 16-battery parallel limit as the 12V ComFlex covered by LiTime's guide: I found no LiTime or Victron document that names the 24V model.",
+  "A Victron statement on exactly what happens when an unlisted CAN battery runs on a GX without DVCC (for example, whether CCL is ignored): the DVCC page does not say.",
+  "Today's Amazon prices for the cards ChatGPT showed: not checked, because the maker pages were walled and my tool budget was spent on the mechanism sources."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9997873999999998
+ }
+}
