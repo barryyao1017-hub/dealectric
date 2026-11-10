@@ -42,7 +42,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 AB = ROOT / "growth/focus/ab"
 RUNS = ROOT / "growth/evals/runs"
 DEFAULT_RUNS = ["2026-11-07-liveplain", "2026-11-07-liveplain-rest"]
-MODELS = [("claude-fable-5-1", "high"), ("claude-opus-5-5", "high")]
+MODELS = [("claude-opus-5-5", "high")]   # Barry 11-10: research on Opus 5.5 only, no Fable fallback
 METHOD = "ab-2026-11"
 _fable_out = threading.Event()   # set once Fable reports a usage limit; every later call goes straight to Opus
 SLOTS = threading.Semaphore(6)   # claude -p processes at once, across pages
@@ -145,7 +145,7 @@ def harvest(slug: str, runs: list[str]) -> dict:
 # ---------------------------------------------------------------- claude -p
 
 def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
-    """One agent call. Fable at high effort first; on a usage-limit reply, Opus at high effort from then on."""
+    """One agent call on each model in MODELS in turn (Opus 5.5 high only since 11-10); a usage-limit reply moves to the next, if any."""
     import evallib as E
     t = str(ROOT / "tools")
     allowed = ["WebSearch", "WebFetch", f"Bash(python3.12 {t}/storecheck.py:*)", f"Bash(python3.12 {t}/amzcheck.py:*)"]

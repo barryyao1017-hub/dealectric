@@ -9,6 +9,8 @@ import os
 DAY = os.environ.get("DAY", "2026-11-08")
 Q = json.loads((ROOT / f"growth/focus/ab-harvest-new-{DAY}.json").read_text())["questions"]
 RUN = f"{DAY}-ab-harvest-new"
+SKIP = set((ROOT / "growth/focus/ab/skip.txt").read_text().split()) if (ROOT / "growth/focus/ab/skip.txt").exists() else set()
+Q = [q for q in Q if q["slug"] not in SKIP]
 started = set()
 ex = ThreadPoolExecutor(max_workers=2)
 futs = {}

@@ -5,7 +5,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 day = sys.argv[1]
 tag = "n" + day[5:7] + day[8:10]
-q = [x for x in json.loads((ROOT / "growth/gapmine/queue.json").read_text()) if x["status"] == "new"]
+q = [x for x in json.loads((ROOT / "growth/gapmine/queue.json").read_text())
+     if x["status"] == "new" and x.get("kind", "gap") != "brand" and x.get("queued") == day]   # only this day's gap clusters
 out = []
 for i, x in enumerate(q):
     key = re.sub(r"[^a-z0-9]+", "-", x["cluster"].lower()).strip("-")

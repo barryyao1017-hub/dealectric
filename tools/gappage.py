@@ -30,7 +30,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 QUEUE = ROOT / "growth/gapmine/queue.json"
 DRAFTS = ROOT / "growth/gapmine/drafts"
 POOL = ROOT / "growth/gapmine/runs/pool"
-MODEL = "claude-fable-5-1"
+MODEL = "claude-opus-5-5"   # Barry 11-10: research on Opus 5.5 (high effort), no Fable
 PAGES_PER_DAY = 10         # Barry 2026-11-06: "at least 10 pages per day" (was 3, plan-usage cap, daily-plan.md conflict 2)
 END_MARK = "# Brands whose own programs declined us"
 
@@ -93,7 +93,7 @@ def research(item: dict) -> dict:
     import evallib as E
     tools = str(ROOT / "tools")
     allowed = ["WebSearch", "WebFetch", f"Bash(python3.12 {tools}/storecheck.py:*)", f"Bash(python3.12 {tools}/amzcheck.py:*)"]
-    p = subprocess.run([E.claude_cli(), "-p", prompt_for(item), "--model", MODEL, "--output-format", "json",
+    p = subprocess.run([E.claude_cli(), "-p", prompt_for(item), "--model", MODEL, "--effort", "high", "--output-format", "json",
                         "--tools", "WebSearch,WebFetch,Bash", "--allowedTools", *allowed, *E.CLI_ISOLATION],
                        capture_output=True, text=True, timeout=3600, cwd=E.cli_cwd())
     try:
