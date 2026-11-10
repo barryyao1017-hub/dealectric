@@ -5374,6 +5374,22 @@ PRODUCTS = [
  "fit": 'Two Windows laptops that each draw 60 W or less, sharing two monitors, a keyboard, a mouse and Ethernet.',
  "caveats": ["On a MacBook the two screens mirror, because macOS doesn't support USB-C MST (AV Access)", "Each laptop's USB-C port must support DP Alt Mode and DP MST for two extended screens", 'A 5120×1440 super-ultrawide is limited to 3840×1080', 'Four of the USB-A ports are USB 2.0', '$259.99 is the dock alone; the $272.98 option is the kit with the EXB01 remote button']},
 
+{"slug": 'anker-solix-e10-2-power-module-4-battery-power-dock',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "category": 'power-station',
+ "name": 'Anker SOLIX E10 (2× Power Module + 4× B6000 Battery) + Power Dock, 24.6 kWh, 15.36 kW rated / 20 kW turbo, 120/240 V',
+ "model": 'Anker SOLIX E10 2× Power Module + 4× Battery + Power Dock',
+ "url": 'https://us.ankersolix.com/products/e10-2-power-module-4-battery-power-dock',
+ "price": 14098,
+ "verified": '2026-11-10',
+ "specs": [('Rated output', '7,680 W (32 A) per power module, 15,360 W for two; 120/240 VAC split phase'), ('Turbo output', '10,000 W per power module for 90 minutes (with 2+ batteries); 20 kW for this bundle'), ('Capacity', '4 × 6,144 Wh B6000 = 24.576 kWh; up to 5 batteries per power module, 90 kWh max with 3 modules on one Power Dock'), ('Switchover', 'Power Dock: 200 A max grid and subpanel connection, ≤20 ms switchover'), ('Cycle life', '80% capacity after 4,000 cycles'), ('Weight', 'Power module 60.6 lb; B6000 battery 130 lb')],
+ "warranty": '5 years (power module and battery module)',
+ "returns": '30-day money-back guarantee for any reason from Anker SOLIX US. The product must be undamaged and returned with all accessories and its original packaging. You pay return shipping unless the return is for a quality problem. Batteries must be below 30% charge when shipped back.',
+ "summary": 'A two-module Anker SOLIX E10 home battery with the Power Dock switch included. Adding six B6000 batteries takes it to 61.44 kWh at 15.36 kW rated output.',
+ "fit": 'Homes that want about 60 kWh of storage with automatic switchover in the box and more output than a single 12 kW inverter.',
+ "caveats": ['The 10 kW turbo per module lasts 90 minutes, and only with 2 or more batteries on that module', 'Three modules on one Power Dock top out at 22.8 kW rated, far from 60 kW', 'Installation is not included in the store price']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

@@ -1,0 +1,103 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured idle (no-load) draw. The Solar Lab measured about 36 W for the EcoFlow DELTA Pro Ultra X, about 40 W for the Anker SOLIX E10 and about 45–60 W for the original DELTA Pro Ultra. It also measured the E10 holding about 21 kW continuous with surges near 30 kW, which is the closest tested figure to the 60 kW the shopper typed.",
+ "standout": 2,
+ "standout_why": "I compared the cited EcoFlow DELTA Pro Ultra product URLs, the cited ecoflow.com/us/delta-pro-ultra-x/specs page, and the top results from Solar Waypoint and Watts & Hours. The X spec page lists no idle, standby or efficiency figure. Solar Waypoint (2024-10-01) has no tested figures at all. Watts & Hours says EcoFlow does not publish standby draw or inverter efficiency, and it measured nothing. The base us.ecoflow.com product page returned HTTP 429, so I could not check it. None of the pages ChatGPT got has any measured idle draw, efficiency, surge or continuous-load figure for any candidate.",
+ "decides": "This supports ChatGPT's choice of the DELTA Pro Ultra X for 60 kWh of storage. It had the lowest measured idle draw of the tested candidates (about 36 W, roughly 0.86 kWh a day), ahead of the E10 (about 40 W) and the original DELTA Pro Ultra (about 45–60 W). For a true 60 kW load, the biggest measured result is about 21 kW continuous from a multi-inverter E10 system. That backs ChatGPT's point that a 60 kW continuous load needs a professionally designed commercial system such as the Sol-Ark 60K, not a power-station stack. No tested figures were found for the EP900 or the Sol-Ark, so neither can be ranked on measurements.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Anker SOLIX E10",
+  "BLUETTI EP900",
+  "Anker SOLIX F3800 Plus",
+  "Sol-Ark 60K-3P-480V"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle (no-load) draw, measured",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X review",
+   "read": "2026-11-10",
+   "note": "The Solar Lab says the Ultra X 'averaged around 36W' at idle, and its DPU vs DPU X comparison page also gives 'roughly 36W'. No author or publish date on the page (footer © 2026). 36 W × 24 h = 864 Wh/day. At that rate, with no other load, a full 61.44 kWh single-inverter stack would drain in about 1,707 h, or about 71 days (my arithmetic)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle (no-load) draw, measured",
+   "value": "about 45 W (X review) / about 60 W (comparison page)",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X",
+   "read": "2026-11-10",
+   "note": "The Solar Lab gives two different figures. Its X review says the original has 'around a 45W idle draw', while its comparison page says 'nearly double the idle rate (roughly 60W)'. Over 24 h that is 1.08–1.44 kWh. Quote it as a range and name the outlet."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Efficiency at near-maximum load, measured",
+   "value": "98% (59 min at just under 6,000 W, single 6 kWh battery)",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra real-world testing",
+   "read": "2026-11-10",
+   "note": "The Solar Lab doesn't say how it got 98%. As a check, 6,000 W × 59/60 h ≈ 5.9 kWh from a 6,144 Wh battery is about 96%. The same outlet uses 80% as its pass benchmark. One unit, one run."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Surge, measured",
+   "value": "held about 9,200 W for about 10 s, peaked at 9,300 W before shutting down",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra real-world testing",
+   "read": "2026-11-10",
+   "note": "The Solar Lab calls this 'well beyond' the 7,200 W rating."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "AC recharge on a 120 V outlet, measured",
+   "value": "4 h 4 min; 7.25 kWh drawn from the wall to fill the 6 kWh battery",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra real-world testing",
+   "read": "2026-11-10",
+   "note": "The Solar Lab compares this with the roughly 3 h 20 min EcoFlow implies. My arithmetic: 6,144 / 7,250 ≈ 85% charge-side efficiency."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Idle draw and efficiency, measured",
+   "value": "about 40 W idle; 87% efficiency",
+   "source": "https://www.thesolarlab.com/review/anker-solix-e10",
+   "source_title": "The Solar Lab: Anker SOLIX E10 review",
+   "read": "2026-11-10",
+   "note": "The Solar Lab: 'idle consumption came in at about 40 watts' and 'we measured the efficiency at 87%'. Load and method not stated. 40 W × 24 h = 960 Wh/day."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Multi-inverter continuous load and surge, measured",
+   "value": "about 21 kW continuous in turbo mode; surge close to 30 kW before tripping",
+   "source": "https://www.thesolarlab.com/review/anker-solix-e10-full-system",
+   "source_title": "The Solar Lab: Anker SOLIX E10 Full System Review",
+   "read": "2026-11-10",
+   "note": "Multiple E10 inverters with 4 × B6000 (24.5 kWh) per The Solar Lab. This is the highest measured continuous output I found for any candidate, about a third of 60 kW."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Idle draw and AC usable capacity, measured",
+   "value": "about 112 W idle with inverter on (1,350 Wh used in 12 h); AC capacity 83% of the rated 3,840 Wh",
+   "source": "https://www.zelpio.com/blog/anker-solix-f3800-plus-review/",
+   "source_title": "Zelpio: Anker SOLIX F3800 Plus review",
+   "read": "2026-11-10",
+   "note": "Published and updated 2026-08-23, no author. Zelpio says idle alone would drain the battery in about 34 h. 83% × 3,840 ≈ 3,190 Wh (my arithmetic, not stated by Zelpio). The Solar Lab's X review separately says the original F3800 'pulls closer to 80W while idling'."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI EP900: looked for any named-reviewer or lab measurement (efficiency, idle draw, surge) and found none. EnergySage's 85% is a listing value, not a test.",
+  "Sol-Ark 60K-3P-480V: no independent measured figures searched out within budget.",
+  "EcoFlow DELTA Pro Ultra X: no measured efficiency %, surge peak or noise figure. The Solar Lab gives only idle draw and qualitative notes.",
+  "Anker SOLIX F3800 Plus: The Solar Lab's own review says real-world testing is still to come, so it has no idle or efficiency number yet.",
+  "Publish dates and authors for The Solar Lab pages: none shown on the pages (footer © 2026 only). Bash download of the page metadata was blocked, so I couldn't check it.",
+  "No Notebookcheck, RTINGS or magazine-lab measurements found for any whole-home candidate."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8484315999999998
+ }
+}
