@@ -702,7 +702,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         raise SystemExit(f"build failed: {r.stderr[-800:]}")
     log(r.stdout.strip().splitlines()[-1])
     map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
-    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
+    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
     index_urls = indexnow_urls(st)   # DLC-87: decided against HEAD, before this run's commit
     if not st.strip():
         log("nothing changed; no commit")
@@ -713,7 +713,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
     import docsguard   # DLC-149: never stage a missing, truncated or duplicated docs/
     docsguard.check(str(ROOT))
     # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
-    sh(["git", "add", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"])
+    sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
            + (f"; {summary['unanswered']} unanswered (429 or error, not rejections)" if summary.get("unanswered") else "")
@@ -746,7 +746,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         if r.returncode != 0:
             raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
         docsguard.check(str(ROOT))
-        sh(["git", "add", "src/coupons.json", "src/stock.json", "docs", "worker/src/links-map.json", "growth/codes"])
+        sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"])
         r = sh(["git", "commit", "-q", "-m", msg])
         if r.returncode != 0:
             raise SystemExit(f"commit on top of main failed: {r.stderr[-400:]}")
@@ -773,6 +773,27 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         time.sleep(90)   # let GitHub Pages publish before IndexNow fetches
         r = sh([sys.executable, "tools/indexnow.py", *urls[:200]])   # indexnow.py brings its own CA bundle (certifi or macOS's)
         log("indexnow: " + (r.stdout or r.stderr).strip()[-200:])
+
+
+def retest_kits() -> str:
+    """DLC-223: re-test every kit's cart (tools/kitcheck.py, no network click) so the kit price and 'tested <date>' on the
+    page stay current. A kit whose cart doesn't answer keeps its last passing result; never stops the sweep."""
+    try:
+        sys.path.insert(0, str(ROOT / "src"))
+        import kits as K
+        slugs = [k["slug"] for k in K.KITS]
+    except Exception as e:  # noqa: BLE001
+        return f"kits: not re-tested ({type(e).__name__}: {e})"
+    ok = []
+    for s in slugs:
+        try:
+            r = sh([sys.executable, "tools/kitcheck.py", s], timeout=1200)
+            ok.append(f"{s} {'pass' if r.returncode == 0 else 'FAIL'}")
+        except Exception as e:  # noqa: BLE001
+            ok.append(f"{s} error ({type(e).__name__})")
+        time.sleep(20)   # Shopify 429s bursts of cart calls (BLUETTI, 2026-11-10)
+    log("kits: " + "; ".join(ok))
+    return "kits: " + "; ".join(ok) if ok else ""
 
 
 def main() -> int:
@@ -805,6 +826,9 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         log(f"linkcheck hook: {type(e).__name__}: {e}; the sweep continues")
         links = "links: check failed (see the sweep log)"
+    kits = retest_kits()
+    if kits:
+        links = (links + "\n\n" if links else "") + kits
     stock = read_stock()
     if stock:
         links = (links + "\n\n" if links else "") + stock

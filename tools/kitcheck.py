@@ -177,7 +177,17 @@ def main() -> int:
     slug = sys.argv[1]
     k = B.KIT_BY_SLUG[slug]
     db = json.loads(OUT.read_text()) if OUT.exists() else {}
-    row = amazon_kit(k) if B.kit_is_amazon(k) else store_kit(k)
+    try:
+        row = amazon_kit(k) if B.kit_is_amazon(k) else store_kit(k)
+    except Exception as e:  # noqa: BLE001
+        row = {"pass": False, "error": f"{type(e).__name__}: {e}"[:300]}
+    prev = db.get(slug) or {}
+    if not row.get("pass") and "lines" not in row and not row.get("amazon") and prev:
+        # no cart answer (429, timeout, store down): keep the last result and its date; the page keeps saying when it passed
+        prev["last_error"] = {"date": date.today().isoformat(), "error": row.get("error")}
+        row = prev
+    elif not row.get("pass") and prev.get("variants"):
+        row.setdefault("variants", prev["variants"])   # an item out of stock: keep the link, drop the price
     db[slug] = row
     OUT.write_text(json.dumps(db, indent=1, ensure_ascii=False) + "\n")
     print(json.dumps({k2: v for k2, v in row.items() if k2 != "lines"}, ensure_ascii=False))

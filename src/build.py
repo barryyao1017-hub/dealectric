@@ -272,8 +272,8 @@ def links_map():
                         "tested": date or (latest_code_date(p["brand"]) if live_codes(p["brand"]) else brand_test_date(p["brand"])),
                         "note": agent_note(p)}
     for k in KITS:   # DLC-223: a store kit's /go/ link opens the store's checkout with every item in the cart
-        if kit_is_amazon(k) or not kit_test(k):
-            continue   # Amazon kits link amazon.com's Add-to-Cart form directly (kit_link); an untested kit has no link yet
+        if kit_is_amazon(k) or not all(kit_variant(k, i) for i in k["items"]):
+            continue   # Amazon kits link amazon.com's Add-to-Cart form directly (kit_link); a kit never cart-tested has no link yet
         p0, t = kit_products(k)[0][0], kit_test(k)
         url, _, _ = tracked_link({**p0, "slug": k["slug"]}, dest=kit_cart_url(k))
         m[k["slug"]] = {"network": p0["program"].split(":")[0], "url": url, "merchant_url": p0["url"], "brand": p0["brand"],
