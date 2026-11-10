@@ -18,6 +18,4 @@ the page states a kit price only from a passing test.
 """
 
 KITS = [
- # ---- kit-fridge-solar-backup ----
- {"slug": "kit-fridge-solar-backup", "name": "Fridge outage solar backup", "items": [{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "qty": 1, "role": "Battery and recharge: BLUETTI's own Elite 200 V2 + 2×200W bundle. 2,073.6 Wh gives about 23 h for a 630 kWh/yr fridge. Two panels in series reach 49.2 V, inside the 60 V input, and need 5.3 full-sun hours to cover a day. $1,499 vs $1,697 bought separately."}, {"slug": "bluetti-solar-charging-cable-mc4-xt60-20a", "qty": 1, "role": "Panel-to-station link: BLUETTI says the Elite 200 V2 ships without a solar cable and names a 20 A MC4-XT60 cable to buy separately."}], "page": "refrigerator-backup-power-supply-battery-and-solar"},
 ]

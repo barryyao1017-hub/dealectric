@@ -4872,23 +4872,6 @@ PRODUCTS = [
  "fit": 'Several gaming or editing PCs that share one 4K 120 to 144 Hz monitor.',
  "caveats": ["TESmart's product text mentions a LAN port for TCP/IP control, but its spec table lists only four switching methods for the 8-port model. Ask TESmart before you rely on network control.", 'You only get 144 Hz if the GPU, cables and monitor all support HDMI 2.1.']},
 
-{"slug": 'bluetti-solar-charging-cable-mc4-xt60-20a',
- "brand": 'BLUETTI',
- "program": 'awin:bluetti_us',
- "asin": None,
- "category": 'cable',
- "name": 'BLUETTI Solar Charging Cable, 20 A MC4 to XT60',
- "model": 'Solar Charging Cable (20A MC4 to XT60)',
- "url": 'https://www.bluettipower.com/products/apex300-solar-charging-cable',
- "price": 29.0,
- "verified": '2026-11-10',
- "specs": [('Connectors', 'MC4 (panel) to XT60 (station)'), ('Rated current', '20 A')],
- "warranty": None,
- "returns": None,
- "summary": "BLUETTI's 20 A cable from MC4 solar panel leads to a station's XT60 input.",
- "fit": "BLUETTI's Elite 200 V2 page says the station ships without a solar charging cable and tells buyers to purchase a 20 A MC4-XT60 cable separately.",
- "caveats": ["The US store listing has no text list of compatible models. The pairing with the Elite 200 V2 comes from BLUETTI's Australian Elite 200 V2 page."]},
-
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
