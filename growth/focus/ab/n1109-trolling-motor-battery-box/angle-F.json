@@ -1,5 +1,134 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "F",
+ "gap": "No result ChatGPT got states that Newport's own US store listing for the Smart Battery Box, ChatGPT's best-overall pick, says '*Not compatible with lithium batteries' for the whole box. It also misses that the lithium-rated alternative ChatGPT showed, the LiTime Group 24/27/31 box, now $84.99 at LiTime, has only a 16A breaker, so a 50–60A trolling-motor breaker must be added separately.",
+ "standout": 3,
+ "standout_why": "Compared against the cited Newport Smart Battery Box FAQs, Minn Kota's Battery Power Center page, and the top rivals paddleroundthepier.com and kayakguru.com. The Newport FAQ only says the LED battery meter 'is not compatible with Lithium batteries', and ChatGPT repeated it as 'battery-level indicator is not accurate for lithium'. Paddleroundthepier makes no lithium statement on the Newport and lists the LiTime breaker as not stated. Kayakguru names no lithium-compatible box and gives no breaker ratings. None of them has Newport's box-level 'not compatible with lithium' line or the LiTime's 16A-only breaker.",
+ "decides": "This splits the pick by battery type. For lead-acid or AGM, the Newport Smart Battery Box ($69.99, 60A motor breaker) stays the pick. For a lithium (LiFePO4) trolling battery, like the Redodo 12V 100Ah trolling battery that Dealectric lists, Newport's own listing rules its box out. The lithium choice becomes the LiTime box at $84.99: it is rated for lithium and its interior (14 × 8.11 × 8.66 in) fits a 13 × 6.77 × 8.43 in Group 31 LiFePO4 battery. The buyer must add a 50–60A breaker sized to the motor, because the LiTime's 16A breaker doesn't protect the motor circuit.",
+ "candidates": [
+  "Newport Smart Battery Box",
+  "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+  "SUNAPEX Smart Battery Box 12V/24V Power Center",
+  "NOCO BG31 Snap-Top Battery Box",
+  "Minn Kota Trolling Motor Power Center (1820175, discontinued)",
+  "ALL-TOP Smart Battery Box",
+  "OKLPF Smart Battery Box",
+  "Camco Large Battery Box",
+  "Attwood PowerGuard Battery Box",
+  "Redodo 12V 100Ah Lithium Trolling Motor Battery (Group 31)",
+  "Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth Battery"
+ ],
+ "findings": [
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Price, Newport US store",
+   "value": "$69.99, in stock",
+   "source": "https://newportvessels.com/products/smart-battery-box",
+   "source_title": "Smart Battery Box – Newport",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search on Newport's Shopify store. Same price as ChatGPT's card."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Lithium compatibility, maker's listing",
+   "value": "'*Not compatible with lithium batteries'",
+   "source": "https://newportvessels.com/products/smart-battery-box",
+   "source_title": "Smart Battery Box – Newport",
+   "read": "2026-11-10",
+   "note": "Exact text from the product description in Newport's store data, read through storecheck.py search. A direct product-page fetch then returned HTTP 429. This statement covers the whole box. The FAQ only says the meter doesn't work with lithium."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Breakers, interior, load",
+   "value": "60 A motor + 10 A accessory breakers; interior 13-3/8 × 7-3/8 × 10 in; holds up to 77 lb",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "The FAQ says the 60 A breaker covers its 62 lb motors. 86 lb motors need a separate breaker. The battery meter 'is not compatible with Lithium batteries'."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+   "label": "Price, LiTime US store",
+   "value": "$84.99 (compare-at $179.99), in stock",
+   "source": "https://www.litime.com/products/litime-portable-battery-box-for-marine-rv-use-built-in-voltmeter-fits-group-24-27-size-batteries",
+   "source_title": "LiTime Group 24/27/31 Marine Battery Box, Built-in Voltmeter",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search. ChatGPT's card showed $92.99, so it's $8 lower today."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+   "label": "Only breaker",
+   "value": "16 A ('16A circuit breaker can be cut off ... as the DC is over 16A')",
+   "source": "https://www.litime.com/products/litime-portable-battery-box-for-marine-rv-use-built-in-voltmeter-fits-group-24-27-size-batteries",
+   "source_title": "LiTime Group 24/27/31 Marine Battery Box, Built-in Voltmeter",
+   "read": "2026-11-10",
+   "note": "No motor-circuit breaker is listed. Minn Kota specifies 50 A for many 40–45 lb motors and 60 A for 50–55 lb motors (ChatGPT's citation), so a separate breaker is needed. Where it loses: it costs $15 more than Newport and lacks motor protection."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+   "label": "Interior dimensions and battery types",
+   "value": "L14 × W8.11 × H8.66 in; batteries up to 66 lb; 'suitable for Lithium, Gel, Sealed, and Flooded'",
+   "source": "https://www.litime.com/products/litime-portable-battery-box-for-marine-rv-use-built-in-voltmeter-fits-group-24-27-size-batteries",
+   "source_title": "LiTime Group 24/27/31 Marine Battery Box, Built-in Voltmeter",
+   "read": "2026-11-10",
+   "note": "Ports: 2 × 15 A 12 V sockets, QC 3.0, USB-C. Comes with 6 AWG cable and M8 ring terminals."
+  },
+  {
+   "product": "general",
+   "label": "Group 31 12V 100Ah LiFePO4 fit check",
+   "value": "LiTime 12V 100Ah Group 31 battery is L13 × W6.77 × H8.43 in → 1.0 / 1.34 / 0.23 in clearance in the LiTime box; 0.375 / 0.605 / 1.57 in in the Newport box",
+   "source": "https://www.litime.com/products/like-new-litime-12v-100ah-lifepo4-lithium-battery",
+   "source_title": "【Like New】LiTime 12V 100Ah LiFePO4 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "Clearance = box interior minus battery size. The battery physically fits in the Newport, but Newport's listing says the box isn't lithium compatible."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (Group 31)",
+   "label": "Price, Redodo US store",
+   "value": "$233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search. Rated for 30–70 lb motors, with a low-temperature charge cutoff below 32 °F. This is Dealectric's product redodo-12v-100ah-trolling-motor-low-temp, and as a lithium battery it's the case that rules out the Newport."
+  },
+  {
+   "product": "Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth Battery",
+   "label": "Price and box fit, Redodo US store",
+   "value": "$296.99; 'Fits group 24/27/31 battery boxes & trays'",
+   "source": "https://www.redodopower.com/products/redodo-12v-120ah-group-24-trolling-motor-bluetooth-lithium-battery-for-3-days-fishing",
+   "source_title": "Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-10",
+   "note": "Read through storecheck.py search. Max 120 A continuous."
+  },
+  {
+   "product": "Minn Kota Trolling Motor Power Center",
+   "label": "Status and spec",
+   "value": "No longer manufactured; 60 A motor + 10 A accessory breakers; fits Group 24 and 27; meter 'will always show fully charged' with lithium; outside size 7 × 13 × 12 in",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/5678471347863-Battery-Power-Center-No-Longer-Manufactured",
+   "source_title": "Battery Power Center (No Longer Manufactured) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Where it loses: it's discontinued, doesn't fit Group 31, and ChatGPT showed it at $99.98, about $30 more than the Newport with the same breakers."
+  },
+  {
+   "product": "SUNAPEX Smart Battery Box 12V/24V Power Center",
+   "label": "Amazon price (for comparison only, not for print)",
+   "value": "$69.99, 44 ratings, ASIN B0D7HBQKT5 'Trolling Motor Smart Battery Box 12V/24V Marine Power Center (STD)'",
+   "source": "https://www.amazon.com/dp/B0D7HBQKT5",
+   "source_title": "Amazon listing B0D7HBQKT5",
+   "read": "2026-11-10",
+   "note": "Read through amzcheck.py. Under Dealectric policy, Amazon prices are never printed. ChatGPT's card showed Walmart marketplace at $98.99, but Walmart returned a bot wall."
+  }
+ ],
+ "unsourced": [
+  "SUNAPEX Smart Battery Box interior size and breaker ratings: a search snippet credited the manuals.plus manual (B0D7HBQKT5) with 13.1 × 8.2 × 7.8 in inside and a 16 A overload switch. If true, a 7.8 in inside height rejects every 12V 100Ah lithium battery above, which are 8.27–8.43 in tall. But the PDF wouldn't extract to text, and the Walmart page was bot-walled, so I couldn't confirm it.",
+  "NOCO BG31 price and interior size: no.co/bg31 returned 403. ChatGPT showed $21.49 at AutoZone and $12.88 at Walmart, and I didn't open either.",
+  "Minn Kota Power Center current US retail price: Minn Kota no longer sells it, the fishusa.com page returned 404, and I couldn't open another retailer page within the call budget.",
+  "Redodo 12V 100Ah trolling battery dimensions: the product and comparison pages returned HTTP 429. A search snippet gave L13 × W6.77 × H8.43 in and 22.15 lb, but I didn't open it.",
+  "Prices for ALL-TOP, OKLPF, Camco and Attwood boxes: I found them only on paddleroundthepier.com and didn't open the makers' or retailers' pages."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9215457000000002
+ }
 }

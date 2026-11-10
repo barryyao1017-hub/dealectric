@@ -1,5 +1,86 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured figure from a named reviewer or lab for any of these boxes (breaker voltage drop, USB output under load, meter accuracy against a multimeter, or which real battery fits), and this research found none to add. Every number found is a maker's spec, and Newport's own FAQ, which ChatGPT cited, already holds the most useful ones.",
+ "standout": 0,
+ "standout_why": "I compared against the cited Newport Smart Battery Box FAQs, the cited Minn Kota Battery Power Center (No Longer Manufactured) and Amp Draw/Circuit Breaker pages, and the uncited roundups paddleroundthepier.com (Dave Samuel, updated 2025-09-18) and kayakguru.com (Mark Armstrong, updated 2025-12-29), plus trollingmotorking.com (Gary Mann, 2025-05-08). None of them, and nothing else I searched, reports a measured figure with a stated method. The roundups' dimensions and weights read as copied specs, and kayakguru lists the Newport at 17 x 10 x 12 in and 3 lb. The hard numbers that do exist (60 A and 10 A breakers, 5 V 0.5 A USB, 13-3/8 x 7-3/8 x 10 in interior, meter not lithium-compatible) are on Newport's FAQ, which ChatGPT already cited.",
+ "decides": "Nothing measured changes the pick. The figures that matter are maker specs ChatGPT could already see. Newport's USB port is rated only 5 V 0.5 A, so it trickle-charges a phone at best, and the battery meter on both the Newport and the Minn Kota is no use on lithium. A Dealectric page could only stand out on this angle by running its own bench test, for example voltage drop across the Newport's 60 A breaker at full motor draw, or USB output measured with a USB meter.",
+ "candidates": [
+  "Newport Smart Battery Box",
+  "NOCO BG31 Snap-Top Battery Box",
+  "Minn Kota Trolling Motor Power Center (Battery Power Center)",
+  "LiTime Group 24/27/31 Marine Battery Box with Voltmeter",
+  "SUNAPEX Smart Battery Box 12V/24V",
+  "Attwood PowerGuard battery box"
+ ],
+ "findings": [
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "USB charger output (maker rating, not measured)",
+   "value": "5 V, 0.5 A (2.5 W)",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "Maker's FAQ, dated 2023-03-06. 5 V x 0.5 A = 2.5 W. No reviewer has published a measured output. ChatGPT cited this page."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Interior dimensions (maker spec)",
+   "value": "13-3/8 in L x 7-3/8 in W x 10 in H; exterior 16-9/10 x 7-4/5 x 12-1/2 in; 77 lb weight limit",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "Maker spec. Built-in breakers are 60 A (motor) and 10 A (accessory). The battery meter is not compatible with lithium."
+  },
+  {
+   "product": "Minn Kota Trolling Motor Power Center (Battery Power Center)",
+   "label": "Breakers, fit and dimensions (maker spec)",
+   "value": "60 A motor breaker, 10 A accessory breaker; fits Group 24 and 27; 7 x 13 x 12 in",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/5678471347863-Battery-Power-Center-No-Longer-Manufactured",
+   "source_title": "Battery Power Center (No Longer Manufactured) – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Page updated 2026-10-19. Minn Kota says its 4-LED meter always shows full on a lithium battery. No longer manufactured."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota breaker ceiling for QUEST motors",
+   "value": "Designed not to pull more than 60 A on high; do not use a breaker larger than 60 A",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/24943541720471-Trolling-Motor-Amp-Draw-Circuit-Breakers-Fuses-and-Extending-the-Battery-Leads",
+   "source_title": "Trolling Motor Amp Draw, Circuit Breakers, Fuses, and Extending the Battery Leads – Minn Kota",
+   "read": "2026-11-10",
+   "note": "Maker guidance, not a measurement. Minn Kota says it cannot specify draw at speeds below maximum. ChatGPT cited this page."
+  },
+  {
+   "product": "Attwood PowerGuard battery box",
+   "label": "Cold drop test claimed by a named reviewer",
+   "value": "\"survived our extreme testing including drops at -20°F\" (no drop height or method given)",
+   "source": "https://www.paddleroundthepier.com/best-trolling-motor-battery-box/",
+   "source_title": "Best Trolling Motor Battery Box 2026: Reviews & Comparisons (Dave Samuel)",
+   "read": "2026-11-10",
+   "note": "The only test-like claim I found. No height, sample count or method is given, and it matches Attwood's -20°F to 120°F marketing, so it is weak evidence."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Meter behaviour reported by a named reviewer (qualitative, no figure)",
+   "value": "\"sometimes reads a bit optimistically when the battery is nearing depletion\"",
+   "source": "https://trollingmotorking.com/newport-trolling-motor-smart-battery-box-review/",
+   "source_title": "Newport Trolling Motor Smart Battery Box Review (Gary Mann, 2025-05-08)",
+   "read": "2026-11-10",
+   "note": "No multimeter comparison or voltage readings are given. The review's table (14.5 x 11.5 x 11.5 in, about 5.5 lb) does not match Newport's own exterior spec."
+  }
+ ],
+ "unsourced": [
+  "Voltage drop across any box's built-in 60 A breaker or external terminals at full motor draw: I searched for Newport, Minn Kota, LiTime and SUNAPEX tests by named reviewers, forums and video, and none exist.",
+  "Measured USB or 12 V socket output under load for the Newport, LiTime or SUNAPEX: I found only maker ratings. The LiTime and SUNAPEX USB ratings were not opened on maker pages.",
+  "Accuracy of the LiTime box's built-in voltmeter against a multimeter: there is no independent test. LiTime lists only a 4-30 V range, which I saw in a search snippet and did not open.",
+  "Accuracy of the Newport or Minn Kota LED meter against measured voltage: I found only Gary Mann's qualitative remark.",
+  "Parasitic drain of the Newport box's meter or USB circuit in mA: some owners say it runs the battery down, but no figure is published.",
+  "A named reviewer confirming which real Group 31 batteries fit the Newport (interior 13-3/8 x 7-3/8 x 10 in) or the NOCO BG31: sources conflict on Group 31 fit, and I did not open a BCI dimension source.",
+  "Today's Newport store price for the Smart Battery Box: storecheck.py and WebFetch both returned HTTP 429, so no price was verified."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.7769369
+ }
 }

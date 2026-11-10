@@ -1,5 +1,109 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "B",
+ "gap": "No result ChatGPT got states that the LiTime 'Group 24/27/31' box is too short for a standard Group 31 AGM: its interior is 8.66 in tall and an Optima D31M is 9.38 in, so the battery stands 0.72 in proud and the lid won't close. Newport's Smart Battery Box clears the same battery by 0.62 in, but its own store says it is not compatible with lithium batteries.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Minn Kota amp-draw and breaker article and the cited Newport Smart Battery Box FAQ. The Minn Kota article gives no box or battery dimensions, and its breaker table is an image I couldn't read. The Newport FAQ lists the interior size (13-3/8 × 7-3/8 × 10 in) but does no fit arithmetic against real batteries and doesn't compare boxes. ChatGPT's answer repeats LiTime's '24/27/31' claim without checking it. Because of rate limits I did not open the uncited roundups (kayakguru, paddleroundthepier, palmettokayakfishing, usangler), so I can't rule out one of them giving a height check. That is why I scored 2, not 3.",
+ "decides": "The best box depends on the battery's height. For a Group 31 lead-acid or AGM battery (about 9.4 in tall), the LiTime box is out (0.72 in short), and the Newport box (0.62 in of headroom) or the NOCO BG31 (about 0.32 in) are the ones that close. For a 12V 100Ah Group 31 lithium battery (8.43 in tall), the LiTime box fits with 0.23 in to spare. It takes lithium, which Newport's store says its box doesn't, but its only breaker is 16 A, so the motor lead still needs its own 50–60 A breaker. A 24V 100Ah 'Group 31' lithium battery (9.45 in) fits none of the boxes with confirmed dimensions except the Newport, which is a 12V box and lists lithium as not compatible. Overall: Newport is the pick for lead-acid and AGM, and LiTime is the pick for a 12V Group 24 or Group 31 lithium battery plus a separate breaker.",
+ "candidates": [
+  "Newport Smart Battery Box",
+  "LiTime Group 24/27/31 Marine Battery Box (built-in voltmeter)",
+  "NOCO BG31 Snap-Top Battery Box"
+ ],
+ "findings": [
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Interior dimensions (L × W × H)",
+   "value": "13.375 × 7.375 × 10 in",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "Stated as 13-3/8\" L × 7-3/8\" W × 10\" T. Load limit is 77 lb. The 60 A breaker covers Newport's 62 lb thrust motors; the FAQ says 86 lb motors need a separate breaker."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Price and lithium compatibility (Newport US store)",
+   "value": "$69.99, listed as not compatible with lithium batteries",
+   "source": "https://newportvessels.com/products/smart-battery-box",
+   "source_title": "Smart Battery Box – Newport",
+   "read": "2026-11-10",
+   "note": "Read from the store's product data with storecheck.py. The description says '*Not compatible with lithium batteries'; the FAQ applies that only to the LED charge meter. In stock."
+  },
+  {
+   "product": "Newport Smart Battery Box",
+   "label": "Headroom over a Group 31 AGM (Optima D31M)",
+   "value": "+0.62 in height, +0.57 in length, +0.82 in width",
+   "source": "https://newportvessels.com/blogs/faqs/smart-battery-box-faqs",
+   "source_title": "Smart Battery Box FAQs – Newport",
+   "read": "2026-11-10",
+   "note": "10 − 9.38 = 0.62 in; 13.375 − 12.81 = 0.565 in; 7.375 − 6.56 = 0.815 in. The D31M weighs 60 lb, under the 77 lb limit. Battery dimensions are from the Continental Battery listing below."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box (built-in voltmeter)",
+   "label": "Interior dimensions, load limit, breaker and price (LiTime US store)",
+   "value": "14 × 8.11 × 8.66 in interior; 66 lb limit; 16 A breaker; $84.99 (list $179.99)",
+   "source": "https://www.litime.com/products/litime-portable-battery-box-for-marine-rv-use-built-in-voltmeter-fits-group-24-27-size-batteries",
+   "source_title": "LiTime Group 24/27/31 Marine Battery Box, Built-in Voltmeter",
+   "read": "2026-11-10",
+   "note": "Store text: 'Internal Dimension: L14*W8.11*H8.66 inch', 'handling batteries up to 66 lbs', '16A circuit breaker can be cut off ... as the DC is over 16A'. The box weighs 3.04 lb and the store says it suits lithium. ChatGPT's card showed $92.99; the store price today is $84.99."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box (built-in voltmeter)",
+   "label": "Height clearance with a Group 31 AGM (Optima D31M)",
+   "value": "−0.72 in (battery taller than the interior)",
+   "source": "https://www.continentalbattery.com/optima-opt-d31m-bt-marine-battery-group-31-12v-battery",
+   "source_title": "Optima Group 31M Blue Top Battery – Continental Battery",
+   "read": "2026-11-10",
+   "note": "8.66 − 9.38 = −0.72 in. The D31M is 12.81 × 6.56 × 9.38 in, 60 lb, 75 Ah. Optima's own product page returned no content, so the dimensions come from this battery distributor."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box (built-in voltmeter)",
+   "label": "Height clearance with LiTime 12V 100Ah Group 31 LiFePO4",
+   "value": "+0.23 in",
+   "source": "https://www.litime.com/products/like-new-litime-12v-100ah-lifepo4-lithium-battery",
+   "source_title": "【Like New】LiTime 12V 100Ah LiFePO4 Lithium Battery",
+   "read": "2026-11-10",
+   "note": "The battery is 13 × 6.77 × 8.43 in. 8.66 − 8.43 = 0.23 in in height; 14 − 13 = 1.0 in in length; 8.11 − 6.77 = 1.34 in in width."
+  },
+  {
+   "product": "LiTime Group 24/27/31 Marine Battery Box (built-in voltmeter)",
+   "label": "Height clearance with a 24V 100Ah 'Group 31' lithium (LiTime / Redodo)",
+   "value": "−0.79 in (doesn't fit)",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-10",
+   "note": "Both batteries are 13.11 × 6.93 × 9.45 in. 8.66 − 9.45 = −0.79 in. Redodo's own text says 'fits Group 31 trays only; not compatible with standard Group 31 battery boxes', and the LiTime 24V listing says to verify enclosed-box clearance."
+  },
+  {
+   "product": "NOCO BG31 Snap-Top Battery Box",
+   "label": "Interior dimensions and price (Summit Racing)",
+   "value": "14.00 in long; 9.70 and 6.70 in for the other two sides; $13.99",
+   "source": "https://www.summitracing.com/parts/nbc-bg31",
+   "source_title": "NOCO BG31 – Summit Racing",
+   "read": "2026-11-10",
+   "note": "Summit labels 9.70 in as internal width and 6.70 in as internal height, but its external height is 10.60 in, so the interior is most likely 14 × 6.7 W × 9.7 H. On that reading a 9.38 in AGM clears by 9.7 − 9.38 = 0.32 in and a 6.56 in wide one by 0.14 in. A 6.77 in wide LiTime Group 31 lithium would be 0.07 in too wide, but the labelling is ambiguous, so treat this as unconfirmed. NOCO's own pages returned 403 and its data-sheet PDF had no readable text."
+  },
+  {
+   "product": "Redodo 12V 120Ah Group 24 trolling motor battery",
+   "label": "Maker's runtime claim for a 55 lb motor",
+   "value": "19.2 h per charge (about 6 h/day)",
+   "source": "https://www.redodopower.com/products/redodo-12v-120ah-group-24-trolling-motor-bluetooth-lithium-battery-for-3-days-fishing",
+   "source_title": "Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-10",
+   "note": "Maker's claim, not measured: 1536 Wh ÷ 19.2 h = 80 W average draw (about 6.25 A at 12.8 V). The store says it fits Group 24/27/31 boxes. Price $296.99."
+  }
+ ],
+ "unsourced": [
+  "NOCO BG31 interior dimensions from NOCO itself: no.co/bg31 and the Defender listing returned 403, and the data-sheet PDF had no text layer. Only Summit Racing's ambiguously labelled figures were readable.",
+  "Optima D31M dimensions from Optima's own product page: it returned no content, so a distributor listing (Continental Battery) was used.",
+  "Redodo 12V 100Ah trolling battery (Dealectric's listed Group 31 model) exact dimensions: its product page returned HTTP 429 repeatedly.",
+  "Minn Kota amp draw and breaker size by thrust: the cited help article shows that table only as an image, which I couldn't read.",
+  "SUNAPEX Smart Battery Box interior dimensions and motor breaker rating: not researched within the call budget.",
+  "The uncited roundup pages (kayakguru, paddleroundthepier, palmettokayakfishing, usangler): not opened because of rate limits, so I couldn't check them for a box-height fit check."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8987617
+ }
 }

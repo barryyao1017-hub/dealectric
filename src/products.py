@@ -66,6 +66,7 @@ CATEGORIES = {
     "build-plate": ('Build plates', 'Magnetic spring-steel print surfaces for FDM 3D printers.'),
     "tablets": ('Tablets', 'Android tablets, including ones sold with a keyboard cover.'),
     "phone-case": ('Phone cases', 'Phone cases and the straps and lanyards that clip to them.'),
+    "battery-box": ('Battery boxes', 'Battery boxes and smart battery boxes for 12V trolling-motor and marine batteries.'),
 }
 
 PRODUCTS = [
@@ -4683,6 +4684,23 @@ PRODUCTS = [
  "summary": "Apple's adjustable crossbody strap for select Apple iPhone cases, with a 100 cm adjustment range.",
  "fit": 'Owners of an Apple Silicone or TechWoven case (any listed model), or the redesigned iPhone 18 Pro Clear Case, who want a long, adjustable crossbody strap.',
  "caveats": ['Does not fit the iPhone 17 Pro / Pro Max Clear Case or cases without the two bottom-corner openings.', 'No wristlet in the box; Apple sells the Wrist Strap separately.', 'Contains magnets that Apple says may interfere with medical devices.']},
+
+{"slug": 'newport-smart-battery-box',
+ "brand": 'Newport',
+ "program": 'amazon:us',
+ "asin": 'B01AE2TG7G',
+ "category": 'battery-box',
+ "name": 'Newport Trolling Motor Smart Battery Box Power Center with USB and DC Ports',
+ "model": 'Smart Battery Box',
+ "url": 'https://www.amazon.com/dp/B01AE2TG7G',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Motor breaker', '60 A, built in'), ('Accessory breaker', '10 A'), ('USB output', '5 V, 0.5 A (2.5 W)'), ('Interior', '13-3/8 × 7-3/8 × 10 in'), ('Battery weight limit', '77 lb'), ('Lithium', 'Newport store listing: not compatible with lithium batteries')],
+ "warranty": '1-year limited, non-transferable, original owner only (Newport warranty policy, Newport Accessories)',
+ "returns": '30 days from delivery when bought from Newport; it must be clean, undamaged and complete, and the buyer pays return shipping (Newport return policy)',
+ "summary": 'A 12 V battery box with a 60 A motor breaker, a 10 A accessory breaker, external motor terminals, USB and a 12 V socket. Its 10 in interior height clears a tall Group 31 AGM.',
+ "fit": 'A single 12 V lead-acid or AGM battery powering a Newport 62 lb or Minn Kota 50–55 lb motor, which match the 60 A breaker. Smaller motors also need their own smaller breaker.',
+ "caveats": ["Newport's store listing says it is not compatible with lithium batteries. Its FAQ says the LED meter is the part that cannot read lithium.", "Newport specifies 40 A for its 36 lb motor and 50 A for its 40, 46, 55 and 86 lb motors, so those motors need their own breaker in addition to the box's 60 A one.", 'The USB port is rated 0.5 A at 5 V (2.5 W).']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
