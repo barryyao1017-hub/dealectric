@@ -1,0 +1,126 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Garmin's own Force Kraken installation manual requires a 24 or 36 Vdc battery bank \"capable of supplying 60 A continuously\". That rules out single 24 V and 36 V packs rated for 50 A continuous, such as the Ionic 24V 50Ah and 36V 50Ah, for that motor.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Ionic trolling-motor page (ionicbatteries.com), which lists 50 A continuous for its 24V 50Ah and 36V 50Ah. Its FAQ uses only a 112 lb, 36 V motor drawing 52 A as the example and says every listed battery can handle that. It never mentions Garmin's 60 A continuous requirement and doesn't reconcile 52 A with its own 50 A ratings. The cited Wired2Fish guide returned HTTP 403 and the Dakota catalog PDF URL returned 404, so I couldn't check them. The Dakota trolling-motor category page returned 429. ChatGPT's answers only say to 'confirm the BMS discharge rating supports your motor's maximum draw' and give no motor maker's figure.",
+ "decides": "For a Garmin Force or Force Kraken owner, a single 24 V or 36 V pack must be rated for at least 60 A continuous. Ionic's 36V 75Ah (table: 120 A for 3 s; FAQ: 80 A continuous) passes. The Ionic 24V 50Ah and 36V 50Ah (50 A) do not. Two or three 12 V 100Ah batteries in series pass when each one's BMS is rated for 60 A or more; Ionic's 12V 100Ah is rated 100 A. ChatGPT's 'LiTime 24V 100Ah' single-battery pick still needs its continuous rating checked on the maker's page, which I couldn't open. For Minn Kota, Ionic's own example of a 52 A draw at 112 lb, 36 V is also above its 50 A packs, so the 36V 75Ah or 3× 12V 100Ah is the safer 36 V choice.",
+ "candidates": [
+  "Ionic 12V 100Ah",
+  "Ionic 24V 50Ah",
+  "Ionic 36V 50Ah",
+  "Ionic 36V 75Ah",
+  "Redodo 12V 100Ah Lithium Trolling Motor Battery (low-temp)",
+  "Redodo 12V 50Ah Bluetooth",
+  "Redodo 24V 100Ah Group 31 Bluetooth",
+  "LiTime 24V 100Ah Group 31 Bluetooth",
+  "Dakota Lithium 12V 100Ah",
+  "Battle Born 12V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "Garmin Force Kraken (motor)",
+   "label": "Battery bank requirement",
+   "value": "Must connect to a 24 or 36 Vdc battery bank capable of supplying 60 A continuously, through a circuit breaker rated for 60 A continuous (not included)",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-09FCEEF1-A8CD-4B9C-8A62-161A75852017/EN-US/GUID-A177C04C-625B-42C3-84F3-F8617B3D1E76.html",
+   "source_title": "Force Kraken Installation Instructions – Connection Considerations (Garmin, v10 January 2026)",
+   "read": "2026-11-10",
+   "note": "Garmin's own installation manual, read from the maker's site."
+  },
+  {
+   "product": "Garmin Force Kraken (motor)",
+   "label": "Input specification",
+   "value": "20 to 45 Vdc input; 60 A continuous input current; 2,160 W at 36 Vdc and 60 A; breaker 42 VDC or greater, suitable for 60 A continuous, up to 90 A allowed at high temperatures or on a shared circuit",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-09FCEEF1-A8CD-4B9C-8A62-161A75852017/EN-US/GUID-72459CF0-A338-433B-B128-5359C52E18E1.html",
+   "source_title": "Force Kraken Installation Instructions – Specifications: Trolling Motor (Garmin)",
+   "read": "2026-11-10",
+   "note": "36 V × 60 A = 2,160 W, as stated on the page."
+  },
+  {
+   "product": "Ionic 24V 50Ah",
+   "label": "Continuous discharge vs Garmin Force requirement",
+   "value": "50 A continuous; $719.00 sale price (was $999.00)",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "50 A is 10 A short of Garmin's 60 A continuous requirement, so on paper it does not meet the Force Kraken spec. Page also gives charging at 25 A recommended, 50 A max."
+  },
+  {
+   "product": "Ionic 36V 50Ah",
+   "label": "Continuous discharge and wiring exclusion",
+   "value": "50 A continuous; parallel only, 'must never be wired or charged in series'; $799.00 sale price (was $1,099.00)",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "Below Garmin's 60 A continuous requirement. Also below the 52 A that Ionic's own FAQ gives for a 112 lb, 36 V motor at full throttle, although the same FAQ says every listed battery handles it."
+  },
+  {
+   "product": "Ionic 36V 75Ah",
+   "label": "Continuous discharge",
+   "value": "Table: 120 A (3 s); FAQ: 80 A continuous; $999.00 sale price (was $1,200.00); up to 4 in series",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "The page contradicts itself. Even the lower figure, 80 A continuous, is above Garmin's 60 A requirement."
+  },
+  {
+   "product": "Ionic 12V 100Ah",
+   "label": "Continuous discharge and series limit",
+   "value": "100 A continuous; up to 4 in series and 4 in parallel; $649.00 sale price (was $699.00); 11-year warranty",
+   "source": "https://ionicbatteries.com/lithium-deep-cycle-batteries/trolling-motor-batteries/",
+   "source_title": "Lithium Trolling Motor Batteries | Ionic Batteries",
+   "read": "2026-11-10",
+   "note": "Two or three in series give 24 V or 36 V at 100 A, which is above Garmin's 60 A. The page also says never to connect lithium and lead-acid batteries in series."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Bluetooth",
+   "label": "Battery-box fit exclusion and motor range",
+   "value": "Built for 24 V motors of 70–100 lb; 'fits Group 31 trays only; not compatible with standard Group 31 battery boxes'; 13.11 × 6.93 × 9.45 in; low-temperature charge cutoff, charging resumes at 41 °F / 5 °C; $569.99",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery | For 70-100 lb Thrust",
+   "read": "2026-11-10",
+   "note": "Text and price came from the maker's Shopify store through storecheck.py search. The continuous discharge rating was not in the returned text."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (low-temp)",
+   "label": "Motor range and BMS limits",
+   "value": "For 30–70 lb trolling motors; stops charging below 32 °F (0 °C) and resumes above 41 °F (5 °C); 300 A for 5 s, 500 A for 1 s; $233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-10",
+   "note": "From the maker's store through storecheck.py search. The product-detail call returned HTTP 429, so I have no continuous rating or series limit."
+  },
+  {
+   "product": "Redodo 12V 50Ah Bluetooth",
+   "label": "Motor range and expansion",
+   "value": "For motors up to 70 lb thrust; 60 A max continuous discharge; max 4P4S; stops charging below 0 °C; $179.99",
+   "source": "https://www.redodopower.com/products/12v-50ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 50Ah Bluetooth Battery for Trolling Motors (Up to 70lb Thrust)",
+   "read": "2026-11-10",
+   "note": "From the maker's store through storecheck.py search. Two in series give 24 V at 60 A, exactly Garmin's 60 A minimum with no margin. The listing words the 60 A rating as 'for enhanced performance over 30 minutes'."
+  },
+  {
+   "product": "Battle Born 12V 100Ah",
+   "label": "Series count and use exclusion",
+   "value": "24 V motor = 2 in series; 36 V motor = 3 in series; should not be used to crank the boat engine, and doing so could void the warranty",
+   "source": "https://battlebornbatteries.com/the-ultimate-faq-guide-to-lithium-batteries-for-bass-boats-trolling-motor-applications",
+   "source_title": "The Ultimate FAQ Guide to Lithium Batteries for Bass Boats & Trolling Motor Applications (Battle Born)",
+   "read": "2026-11-10",
+   "note": "The page states no maximum series count and no continuous rating."
+  }
+ ],
+ "unsourced": [
+  "LiTime 24V 100Ah Group 31 and LiTime 12V 100Ah TM continuous BMS rating and series limits: litime.com returned HTTP 429 to both WebFetch and storecheck. A search snippet gave 100 A for a related AU-store SKU; I didn't use it because I never opened the page.",
+  "LiTime 36V 45Ah continuous discharge rating: product page returned HTTP 429.",
+  "Battle Born 12V 100Ah continuous and surge amps, series limit and price: product page returned HTTP 429.",
+  "Dakota Lithium 36V 60Ah continuous discharge: datasheet PDF has no extractable text layer. Dakota 12V 100Ah series limit: catalog PDF URL returned 404.",
+  "Renogy 12V 100Ah trolling motor battery series/parallel limits and BMS rating: renogy.com returned HTTP 429.",
+  "Minn Kota maximum amp draw by thrust (55/80/112 lb) and which Precision on-board charger models have a LiFePO4 profile: I found no Minn Kota page to open; search results were retailers and spam pages.",
+  "Wired2Fish guide (cited by ChatGPT): HTTP 403, so I couldn't compare it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 37,
+  "cost_usd_list": 1.3521253999999996
+ }
+}
