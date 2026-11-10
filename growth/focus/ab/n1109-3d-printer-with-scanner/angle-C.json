@@ -1,5 +1,122 @@
 {
- "status": "error",
- "reason": "You've hit your weekly limit · resets Nov 11 at 4pm (America/Los_Angeles)",
- "model": "claude-opus-5-5"
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Creality's own scanner requirements page rates Google Pixel phones and Samsung Exynos phones 'not recommended' for phone scanning with the Otter and Ferret scanners. The same page asks for a Snapdragon 8 Gen 1+ or A15+ phone, says Intel Arc graphics cards are not supported, and lists Apple M2 or newer with macOS 14+ for Mac users. It also states that the Scan Bridge comes in separate Otter and Raptor/Sermoon versions.",
+ "standout": 2,
+ "standout_why": "I compared against both cited Creality pages (the scanner-combo collection and the K2 Plus combo) and the top uncited results (3dprintmates.com, plus the rottenwifi.com and sekin.in titles). Neither Creality page states any OS, phone, GPU or bridge compatibility, and the combo pages don't even list what's in the box. 3dprintmates only says 'Up to 110fps on USB 3.0 computer' for the Pika and mentions an NVIDIA GPU for the POP 4. None of them name which phones or computers a scanner needs, what is excluded, or which bridge fits which scanner.",
+ "decides": "This confirms the budget 'phone + Ferret SE + printer' route only for shoppers who have a Snapdragon 8 Gen 1+ Android phone or an A15+ iPhone (iPhone 13 or later). Pixel owners, Samsung Exynos owners, and PCs with Intel Arc graphics fall outside what Creality supports. That favors the Otter Lite, whose own page gives Windows/Mac requirements and puts its Lite Bridge in the box, over the standard Otter, which needs a $279 Scan Bridge (Otter version) for wireless scanning. Choosing between Creality's two printer-scanner bundles doesn't change, because neither combo page names the printer it includes.",
+ "candidates": [
+  "Creality Otter Lite + 3D Printer (All-In-One Combo)",
+  "Creality Otter Lite",
+  "Creality Otter Lite Basic (Wired)",
+  "Creality K2 Plus Combo + scanner (High-End Combo)",
+  "Creality CR-Scan Ferret SE + Bambu Lab A1 Combo",
+  "3DMakerpro Moose Lite + Bambu Lab A1 Combo",
+  "Revopoint MINI 2"
+ ],
+ "findings": [
+  {
+   "product": "Creality Ferret / Otter series",
+   "label": "Android phones excluded for phone scanning",
+   "value": "Google Pixel series and Samsung Exynos models 'not recommended'; minimum Snapdragon 8 Gen 1+",
+   "source": "https://store.creality.com/blogs/tutorial/creality-3d-scanner-compatibility-system-requirements",
+   "source_title": "Creality 3D Scanner Compatibility & System Requirements",
+   "read": "2026-11-10",
+   "note": "From the Phone Requirements table; page dated 2025-11-24. Minimum-supported examples given: Samsung S21/S22, Xiaomi 12, OPPO Find X5/X3, Vivo X90, Honor Magic 4/5. Raptor and Sermoon S1 need Snapdragon 8 Gen 3+."
+  },
+  {
+   "product": "Creality Ferret / Otter series",
+   "label": "iPhone minimum for phone scanning",
+   "value": "A15 chip or newer (Raptor/Pro/Sermoon: A16+)",
+   "source": "https://store.creality.com/blogs/tutorial/creality-3d-scanner-compatibility-system-requirements",
+   "source_title": "Creality 3D Scanner Compatibility & System Requirements",
+   "read": "2026-11-10",
+   "note": "The page contradicts itself: its 'minimum supported' example list includes iPhone 11 and 12, which have pre-A15 chips. The Otter Lite product page also says iPhone 13 (A15), iOS 15+, RAM ≥6 GB."
+  },
+  {
+   "product": "Creality scanners (all)",
+   "label": "GPU exclusion on Windows",
+   "value": "Intel Arc graphics cards 'not currently supported'",
+   "source": "https://store.creality.com/blogs/tutorial/creality-3d-scanner-compatibility-system-requirements",
+   "source_title": "Creality 3D Scanner Compatibility & System Requirements",
+   "read": "2026-11-10",
+   "note": "Lowest supported Windows PC for Ferret/Otter: i5 8th Gen, 8 GB RAM, Creality Scan ≥ V2.3.0. Recommended: i7 12th Gen+, RTX 3060+, 16 GB+, Windows 10/11 64-bit."
+  },
+  {
+   "product": "Creality Ferret / Otter series",
+   "label": "Mac requirement",
+   "value": "Apple M2/M3/M4, 16 GB+ RAM, macOS 14+; Intel Macs 'not recommended for high-end scanning'",
+   "source": "https://store.creality.com/blogs/tutorial/creality-3d-scanner-compatibility-system-requirements",
+   "source_title": "Creality 3D Scanner Compatibility & System Requirements",
+   "read": "2026-11-10",
+   "note": "Raptor and Raptor Pro need M3/M4 with 32 GB+. This conflicts with the Otter Lite product page, which gives a Mac minimum of Intel i5-Gen8 with 8 GB and a recommendation of M1/M2/M3 with 16 GB."
+  },
+  {
+   "product": "Creality Otter Lite",
+   "label": "Wireless accessory and connection",
+   "value": "Lite Bridge included (Wi-Fi 6, 5 GHz, built-in battery); wired via USB-C to USB-A USB 3.0 cable; output OBJ/STL/PLY",
+   "source": "https://www.creality.com/products/creality-cr-scan-otter-lite-3d-scanner",
+   "source_title": "Creality Otter Lite 3D Scanner",
+   "read": "2026-11-10",
+   "note": "The box list includes the Lite Bridge, a 2 m USB 3.0 data cable, a 1.5 m USB 2.0 power cable, a turntable and a magnetic phone holder. Power is USB 3.0 5V 3A, or 12V 2A in Wi-Fi mode. The page says the standard Otter's wireless scanning needs 'wireless scanning accessories'."
+  },
+  {
+   "product": "Creality Otter Lite",
+   "label": "Android phone requirement (product page)",
+   "value": "Snapdragon 888+, Android 10.0+, RAM ≥6 GB",
+   "source": "https://www.creality.com/products/creality-cr-scan-otter-lite-3d-scanner",
+   "source_title": "Creality Otter Lite 3D Scanner",
+   "read": "2026-11-10",
+   "note": "Stricter than the compatibility blog's Snapdragon 8 Gen 1+ floor in one respect: the Snapdragon 888 is one generation older, so this page is actually more lenient. The two Creality documents differ."
+  },
+  {
+   "product": "Creality Scan Bridge",
+   "label": "Model-specific versions and price",
+   "value": "Otter version $279.00; Sermoon S1 & Raptor version $299.00; 'pick your correct version (Otter or Raptor)'",
+   "source": "https://store.creality.com/products/creality-scan-bridge",
+   "source_title": "Creality Scan Bridge - Creality Store",
+   "read": "2026-11-10",
+   "note": "US store price today. The page lists no exclusions for the Otter Lite or Ferret. The compatibility blog says the Ferret's wireless bridge is sold separately and the Ferret Pro includes a wireless box."
+  },
+  {
+   "product": "Creality Otter Lite + 3D Printer (All-In-One Combo)",
+   "label": "Price",
+   "value": "$1,606.00 (was $2,208.00); ships Nov 10-12",
+   "source": "https://store.creality.com/products/otter-lite-3d-scanners-all-in-one-combo",
+   "source_title": "Otter Lite+3D Printer（All-In-One Combo）",
+   "read": "2026-11-10",
+   "note": "ChatGPT showed $1,598.00. The page does not name the included printer model or the scanner version."
+  },
+  {
+   "product": "Creality Otter Lite",
+   "label": "Price by variant",
+   "value": "Otter Lite $759.00; Otter Lite Basic (Wired) $459.00",
+   "source": "https://store.creality.com/products/otter-lite-3d-scanner",
+   "source_title": "(🔥 Hot Sale) Otter Lite/Basic 3D Scanner",
+   "read": "2026-11-10",
+   "note": "US store. The compatibility blog groups the Otter Lite Basic with the models that need a Scan Bridge for wireless scanning ('depending on model')."
+  },
+  {
+   "product": "Creality K2 Plus Combo 3D Printer with Scanner High-End Combo",
+   "label": "Price",
+   "value": "$1,799.00 on the selected option (Save $809.00); the collection page lists $2,699.00",
+   "source": "https://store.creality.com/products/k2-plus-combo-3d-printer-with-scanner-high-end-combo-2",
+   "source_title": "K2 Plus/Combo 3D Printer with Scanner High-End Combo",
+   "read": "2026-11-10",
+   "note": "The product page also shows an unlabeled $2,699.00, and it does not say which scanner is bundled. Image filenames suggest Raptor and Otter options, which I did not treat as a fact."
+  }
+ ],
+ "unsourced": [
+  "Ferret SE phone and PC requirements from its own page: creality.com/products/cr-scan-ferret-se has its spec table only as an image.",
+  "3DMakerpro Moose Lite, Seal and Mole system requirements (OS, Mac chip, phone): the 3dmakerpro.com product pages rendered empty and the manuals.plus JMStudio macOS manual returned 403.",
+  "Revopoint MINI 2 OS, phone and PC requirements: revopoint3d.com returned HTTP 429 twice.",
+  "Which printer model ships in the Creality 'Otter Lite + 3D Printer' combo, and which scanner ships in the K2 Plus scanner combo: neither product page lists contents.",
+  "Whether the Otter Lite's Lite Bridge works with the original Otter, or the Otter-version Scan Bridge works with the Otter Lite or Otter Lite Basic: neither the Scan Bridge store page nor the Creality wiki page (content didn't load) says.",
+  "Creality Scan download-page OS and version list: crealitycloud.com showed only 'Loading...'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.8846448000000002
+ }
 }
