@@ -1,0 +1,107 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a classic-Bluetooth headset with a mic, like all of these Shokz models, switches from A2DP stereo to the HFP hands-free profile as soon as an app opens its microphone, so everything you hear becomes mono at a lower sample rate. Shokz's own PC guide blames HFP for 'mono or low quality' audio. Microsoft says HFP audio is 'closer to an AM radio than it is to the CD quality' of A2DP, with an 8 kHz rate in its original form and double that for 'wideband'.",
+ "standout": 2,
+ "standout_why": "I compared against Openear Club's 'Best Bone Conduction Headphones With Mic' (opened): it covers the boom mic, wind ratings, multipoint and the UC dongle 'that skips the laptop's own Bluetooth', but says nothing about HFP/A2DP, mono call audio or mute sync. SoundGuys' OpenRun Pro 2 review (opened) gives Bluetooth 5.3, multipoint and mic clips, and also says nothing about profiles or mono. The cited RTINGS review, compare page and best-of list returned only page navigation when I opened them (3,612 characters for the OpenComm2 2025 review), so I could not check their text. RTINGS test pages don't usually explain profile switching, but I have not confirmed that. ChatGPT's own answer says the UC adapter gives 'more reliable PC and Mac meeting connectivity' and never mentions the mono drop.",
+ "decides": "For calls alone, nothing changes, because voice only needs the hands-free link. It does decide the plan of anyone who wants to hear music, game audio or a video in stereo while using the headset mic on a computer: with classic Bluetooth, no Shokz model here can do that, OpenComm2 or OpenRun Pro 2 alike. The fix is a separate mic, or an LE Audio headset on a Windows 11 PC with LE Audio support, and I found no bone conduction model with LE Audio. This supports ChatGPT's choice of the OpenComm2 UC for Zoom/Teams for a different reason: Shokz says its adapter supports synchronized mute with Zoom and Teams. It does not support the idea that the adapter gives better audio quality.",
+ "candidates": [
+  "Shokz OpenComm2 UC 2025 Upgrade",
+  "Shokz OpenComm2 2025 Upgrade",
+  "Shokz OpenRun Pro 2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What happens to playback when a Bluetooth headset's mic is in use (maker's words)",
+   "value": "Mono, low-quality audio when the computer routes sound through the 'hands-free phone' (HFP) profile instead of A2DP. Shokz says to 'switch your output to stereo mode unless you are using a microphone'",
+   "source": "https://ca.shokz.com/blogs/news/how-to-connect-bluetooth-headphones-to-pc",
+   "source_title": "How to Connect Bluetooth Headphones to Your PC: Quick Setup Guide (Shokz, 2025-12-01)",
+   "read": "2026-11-10",
+   "note": "Shokz Canada site. The same URL on shokz.com returned 404. This is FAQ 'Why is my audio in mono or low quality?'. Shokz offers no way to keep stereo while the mic is on."
+  },
+  {
+   "product": "general",
+   "label": "Classic Bluetooth A2DP vs HFP (OS maker's words)",
+   "value": "'A2DP provides high quality audio but doesn't allow the microphone to be used'. 'HFP allows the microphone to be used but plays back audio in mono with lower fidelity'. Original HFP 'only supported an 8kHz sample rate' and wideband doubles it (16 kHz by arithmetic). Even then the quality is 'closer to an AM radio than it is to the CD quality audio'",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/cutting-the-wire-without-cutting-the-audio-quality/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality, Windows OS Platform Blog (Microsoft, 2025-08-26)",
+   "read": "2026-11-10",
+   "note": "16 kHz is 8 kHz × 2, from the blog's 'double the sample rate'. The blog does not print 16 kHz."
+  },
+  {
+   "product": "general",
+   "label": "The only Windows route to mic plus better-than-HFP playback",
+   "value": "LE Audio gives 'super wideband' voice at a 32 kHz sample rate. It needs an LE Audio headset, a Windows 11 PC that supports LE Audio, Windows 11 24H2 with the latest updates, and an updated Bluetooth driver from the PC maker",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/cutting-the-wire-without-cutting-the-audio-quality/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality, Windows OS Platform Blog (Microsoft, 2025-08-26)",
+   "read": "2026-11-10",
+   "note": "I found no Shokz bone conduction model listed as supporting LE Audio. See unsourced."
+  },
+  {
+   "product": "Shokz OpenComm2 2025 Upgrade",
+   "label": "What the wireless adapter adds (maker FAQ)",
+   "value": "The adapter is 'designed to enhance the stability and smoothness of calling experiences' and works with 'meeting platforms like Zoom and Teams, supporting features such as synchronized mute'. The OpenComm2 2025 Upgrade 'requires manual pairing with the Loop120 adapter'",
+   "source": "https://shokz.com/pages/opencomm2-support",
+   "source_title": "OpenComm2 Support (Shokz)",
+   "read": "2026-11-10",
+   "note": "The FAQ names Loop120 for the 2025 Upgrade, but the US store listing for the OpenComm2 UC 2025 Upgrade says it ships with the Loop110. Shokz's own pages disagree on the adapter model."
+  },
+  {
+   "product": "Shokz OpenComm2 UC 2025 Upgrade",
+   "label": "Price, Shokz US store",
+   "value": "$199.95. Store text: 'with the Shokz Loop110 wireless adapter … whether you use a Mac or a PC'",
+   "source": "https://shokz.com/products/opencomm2uc-2025-upgrade",
+   "source_title": "OpenComm2 UC 2025 Upgrade (Shokz US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on shokz.com. The direct product call got HTTP 429. Refurbished is $149.95."
+  },
+  {
+   "product": "Shokz OpenComm2 2025 Upgrade",
+   "label": "Price, Shokz US store",
+   "value": "$159.95, no adapter",
+   "source": "https://shokz.com/products/opencomm2-2025-upgrade",
+   "source_title": "OpenComm2 2025 Upgrade (Shokz US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py search on shokz.com. Refurbished is $119.95."
+  },
+  {
+   "product": "Shokz OpenRun Pro 2",
+   "label": "Price, Shokz US store",
+   "value": "$179.95 (Black / Silver / Orange / Blue / Lunar White, Standard or Mini)",
+   "source": "https://shokz.com/products/openrunpro2",
+   "source_title": "OpenRun Pro 2 (Shokz US store)",
+   "read": "2026-11-10",
+   "note": "Read with storecheck.py product. Marathon co-branded editions are $199.95."
+  },
+  {
+   "product": "Shokz OpenRun Pro 2",
+   "label": "Bluetooth version and mic verdict (named reviewer)",
+   "value": "Bluetooth 5.3 with multipoint. Lil Katz (SoundGuys): the mic 'will suffice when speaking from quiet conditions' but falls 'flat when relaying my voice in a windy environment'",
+   "source": "https://www.soundguys.com/shokz-openrun-pro-2-review-127935/",
+   "source_title": "Shokz OpenRun Pro 2 review - SoundGuys (2024-11-13)",
+   "read": "2026-11-10",
+   "note": "The review does not mention codecs or LE Audio."
+  },
+  {
+   "product": "Shokz OpenRun Pro",
+   "label": "Teams desktop on Windows 11: no sound with the headset mic, fixed by switching to the laptop mic",
+   "value": "In a 2025 Microsoft Q&A thread, a Microsoft Q&A answerer put it down to 'how Windows 11 and Teams handle Bluetooth audio profiles (HFP vs A2DP)'. The workaround was to keep the Shokz as speaker and use the laptop mic, or to disable 'Handsfree Telephony', which 'disable[s] the microphone'. It was not fixed as of 2025-11-07",
+   "source": "https://learn.microsoft.com/en-us/answers/questions/5594733/shokz-open-run-pro-dosnt-work-with-ms-teams",
+   "source_title": "Shokz Open Run Pro dosn't work with MS Teams - Microsoft Q&A",
+   "read": "2026-11-10",
+   "note": "A single user's case on the first-generation OpenRun Pro, so it is anecdotal. It shows the same HFP/A2DP conflict in practice."
+  }
+ ],
+ "unsourced": [
+  "Whether the Loop110/Loop120 adapter keeps playback out of mono HFP while the mic is on, or only presents a USB audio device to the PC. Shokz's FAQ and blog only say 'stability', 'smoothness' and 'synchronized mute'. The user guide PDF (hellodirect.com, redirected to calloneinc.com) returned 404.",
+  "Bluetooth version, profiles and codecs (HFP wideband/mSBC) for the OpenComm2 2025 and OpenComm2 UC 2025. shokz.com product pages returned HTTP 429. The OpenComm Series brochure PDF downloaded but wasn't readable here, and pdftotext needed approval I didn't get.",
+  "Any bone conduction headset with Bluetooth LE Audio / LC3 support. A search found nothing for Shokz OpenComm or OpenMeet.",
+  "What the RTINGS OpenComm2 2025 review, the OpenComm2 vs OpenRun Pro 2 compare page and the best-of list say. All three returned only navigation text when opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1048723999999999
+ }
+}

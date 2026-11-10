@@ -5242,6 +5242,23 @@ PRODUCTS = [
  "fit": 'Cameras within reach of your 2.4 GHz router, such as a yard, a garden or a field edge near the house.',
  "caveats": ['No Live View over home Wi-Fi; live view works only with your phone at the camera.', 'Its 4K video comes from a 5 MP sensor (4K is 8.3 MP).', 'GardePro publishes no camera-to-router distance.']},
 
+{"slug": 'shokz-opencomm2-2025',
+ "brand": 'Shokz',
+ "program": 'amazon:us',
+ "asin": 'B0DFWM4TWW',
+ "category": 'headphones',
+ "name": 'Shokz OpenComm2 (2025 Upgrade) Open-Ear Bone Conduction Bluetooth Headset with Noise-Canceling Boom Mic',
+ "model": 'Shokz OpenComm2 (2025 Upgrade)',
+ "url": 'https://www.amazon.com/dp/B0DFWM4TWW',
+ "price": None,
+ "verified": '2026-11-10',
+ "specs": [('Microphone', 'Boom mic with DSP noise filtering and cVc; rotates away when not in use'), ('Talk time (Shokz)', 'Up to 16 h'), ('Music time (Shokz)', 'Up to 8 h, tested at 93% volume on an iPhone 12 Pro'), ('Quick charge (Shokz)', '5 min = 2 h talk; full charge about 60 min'), ('Weight (Shokz)', '35 g'), ('Charging', 'USB-C'), ('Computer link', 'Laptop Bluetooth, or an optional Shokz Loop120 USB adapter paired by hand')],
+ "warranty": '2 years (Shokz, as stated on its US store listing)',
+ "returns": "45-day money-back guarantee on orders from shokz.com, with a prepaid USPS return label from Shokz; first shipping charges aren't refunded. Shokz doesn't refund purchases from other retailers, so an Amazon order follows the retailer's own return policy (Shokz return policy, read 2026-11-10)",
+ "summary": 'Bone conduction headset with a boom mic. 79% of 1,080 SoundGuys listeners rated its mic recording Good or Perfect.',
+ "fit": 'People who take a lot of phone or laptop calls and want their ears open, for a full workday on one charge.',
+ "caveats": ['Shokz rates music time at 8 h, half the 16 h talk rating. The OpenRun Pro 2 is rated longer for music.', 'No USB adapter in the box. The Loop120 is sold separately and has to be paired by hand.', "Shokz's app features work only on Android. The headset itself pairs with iPhone.", "SoundGuys' mic poll was run on the original OpenComm2 UC. Shokz lists the 2025 changes as USB-C charging, the adapter and software controls."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
