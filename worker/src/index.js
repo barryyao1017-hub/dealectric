@@ -484,7 +484,7 @@ function clip(s, n) {
 }
 function looksLikeBot(ua) {
   return /bot|crawl|spider|slurp|fetch|python|curl|wget|http|headless|preview|scan|safety|google-|gpt|claude|perplexity|anthropic|dataprovider/i.test(ua)
-    // DLC-211 (2026-11-09): iOS 13.2.3 is the stock fake user agent of scraper kits (hundreds of untagged clicks from
+    // DLC-216 (2026-11-09): iOS 13.2.3 is the stock fake user agent of scraper kits (hundreds of untagged clicks from
     // cloud networks in 11 countries, none ever from ChatGPT), and a bare "Mozilla/5.0 (compatible)" is no browser.
     || /iPhone OS 13_2_3 /.test(ua) || /^Mozilla\/5\.0 \(compatible\)$/.test(ua.trim());
 }
@@ -495,7 +495,7 @@ function looksLikeBot(ua) {
 // second kind, the network can. Shoppers don't browse from these networks.
 const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
 
-// Cloud and hosting networks that sent only untagged, scripted clicks (DLC-211, 2026-11-09): Tencent Cloud, AWS, OVH,
+// Cloud and hosting networks that sent only untagged, scripted clicks (DLC-216, 2026-11-09): Tencent Cloud, AWS, OVH,
 // DigitalOcean, Hetzner, Akamai/Linode. A shopping agent's cloud browser may come from one of these too, so a click
 // carrying an agent tag (utm_source muse / chatgpt-agent / signed-agent, set on pages served to a verified agent) is
 // never flagged by network. Microsoft (8075) is left off on purpose: ChatGPT's own browsing runs on Azure.
@@ -506,7 +506,7 @@ function botLike(cf, ua, utm = "") {
   return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn) || (HOSTING_ASNS.has(cf.asn) && !AGENT_TAGS.has(utm));
 }
 
-// Burst rule (DLC-211): one browser opening 5+ different offers within 60 s is a link checker or scraper, not a
+// Burst rule (DLC-216): one browser opening 5+ different offers within 60 s is a link checker or scraper, not a
 // shopper (a buyer on 11-08 opened 3 in 3 minutes; a GB crawler on 11-09 opened 109 in 3 s with an ordinary Windows
 // Chrome agent). Checked after the click is stored, off the response path; when it trips, every unflagged click from
 // that browser (same user agent, country and network) in the window is set to bot_like=1, so the first few are caught too.

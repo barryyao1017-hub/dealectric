@@ -15,7 +15,7 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   generic clients keep the redirect. `bot_like` is 1 for a scanner-looking user agent and, since 2026-11-06, for any
   request from Google's networks (`SCANNER_ASNS`; `clicks.asn` and `landings.asn` store the network): a new YouTube
   video's links drew 12 hits in 2 s from Google's scanners, some posing as ordinary Windows Chrome.
-  Since 2026-11-09 (DLC-211) it is also 1 for cloud/hosting networks (`HOSTING_ASNS`, unless the click carries an
+  Since 2026-11-09 (DLC-216) it is also 1 for cloud/hosting networks (`HOSTING_ASNS`, unless the click carries an
   agent tag), for the iOS 13.2.3 and bare `Mozilla/5.0 (compatible)` scraper agents, and for bursts: a browser (same
   user agent, country, network) opening 5+ different offers within 60 s has all its clicks in that window flagged.
   Past rows were reflagged by the same rules on 2026-11-09 (unflagged clicks 1,671 -> 647; ChatGPT-tagged ones the
