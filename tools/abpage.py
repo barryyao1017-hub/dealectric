@@ -603,7 +603,7 @@ def apply(slug: str, local: bool) -> dict:
     draft["gate"] = {"date": today(), "pass": True, "g": gnum}
     jsave(d / "draft.json", draft)
     if local:
-        sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", str(d),
+        sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", str(d),
            f"growth/evals/runs/fastloop/ab-{slug}"[:200])
         what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"A/B group A rebuild /{slug}"
         msg = (f"{what}: angle {draft.get('angle')}, {draft.get('why_angle') or ''}"[:250] +

@@ -40,6 +40,7 @@ export default {
   // Cron trigger (wrangler.toml [triggers]): poll CJ for new commissions.
   async scheduled(event, env, ctx) {
     ctx.waitUntil(pollCj(env).catch((e) => console.error("cj poll failed", e)));
+    ctx.waitUntil(syncMeta(env).catch((e) => console.error("dashboard meta sync failed", e)));
   },
 };
 
@@ -57,6 +58,9 @@ async function passThrough(url, request, env, ctx) {
   const utm = url.searchParams.get("utm_source");
   const src = utm !== null ? utm : untaggedSource(request, res);
   if (src !== null) ctx.waitUntil(logLanding(url, request, res.status, src, env).catch((e) => console.error("landing insert failed", e)));
+  if (request.method === "GET" && res.status === 200 && /text\/html/.test(res.headers.get("content-type") || "")) {
+    ctx.waitUntil(logPageview(url, request, res.status, utm !== null ? utm : src, env).catch((e) => console.error("pageview insert failed", e)));
+  }
   const agent = agentBrowser(request, env);
   if (!agent) return res;
   // Pages and text files only: the browser's stylesheet, image and font requests add nothing.
@@ -170,6 +174,64 @@ async function logLanding(url, request, status, utm, env) {
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
     cf.asn || null,
   ).run();
+}
+
+// ---------------------------------------------------------------- page views (dashboard, 2026-11-11)
+// Every HTML page a browser opens, for the sales dashboard's traffic and conversion figures (`landings` only has the
+// tagged and AI-referred ones). Verified bots and AI fetchers are not stored at all; every other row carries bot_like:
+// 0 = a person's browser, 1 = bot (crawler user agent, scanner or hosting network, no browser engine, no navigation
+// headers, prefetch, or a burst of pages), 2 = our own browser (/self-exclude). The dashboard counts bot_like = 0 only.
+// platform names where the visit came from: the utm_source tag, an AI or search referrer, or "direct".
+const PLATFORM_HOSTS = [
+  [/(^|\.)chatgpt\.com$|(^|\.)openai\.com$/, "chatgpt"], [/(^|\.)perplexity\.ai$/, "perplexity"],
+  [/(^|\.)(gemini|bard)\.google\.com$/, "gemini"], [/(^|\.)claude\.ai$/, "claude"], [/(^|\.)copilot\.microsoft\.com$/, "copilot"],
+  [/(^|\.)meta\.ai$|(^|\.)muse\.ai$/, "meta"], [/(^|\.)grok\.com$/, "grok"], [/(^|\.)x\.com$|^t\.co$/, "x"],
+  [/(^|\.)google\.[a-z.]+$/, "google"], [/(^|\.)bing\.com$/, "bing"], [/(^|\.)duckduckgo\.com$/, "duckduckgo"],
+  [/(^|\.)youtube\.com$|^youtu\.be$/, "youtube"], [/(^|\.)reddit\.com$/, "reddit"], [/(^|\.)facebook\.com$|(^|\.)instagram\.com$/, "meta"],
+];
+function platformOf(tag, referrer) {
+  const t = (tag || "").toLowerCase().replace(/^ref:/, "");
+  if (t) {
+    if (t.startsWith("chatgpt")) return "chatgpt";
+    if (t === "muse" || t === "meta.ai" || t === "meta-app") return "meta";
+    return clip(t.replace(/[^a-z0-9.-].*$/, ""), 40) || "other";
+  }
+  let host = "";
+  try { host = new URL(referrer || "").hostname.toLowerCase(); } catch { /* no or bad referrer */ }
+  if (!host) return "direct";
+  if (host === "dealectric.com" || host.endsWith(".dealectric.com")) return "internal";
+  const hit = PLATFORM_HOSTS.find(([re]) => re.test(host));
+  return hit ? hit[1] : "other";
+}
+
+async function logPageview(url, request, status, tag, env) {
+  const cf = request.cf || {};
+  const ua = request.headers.get("user-agent") || "";
+  if (cf.verifiedBotCategory || AI_UA.test(ua)) return;
+  let path = url.pathname;
+  try { path = decodeURIComponent(path); } catch { /* malformed escape: keep it raw */ }
+  const page = path.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
+  const referrer = request.headers.get("referer") || "";
+  const navigation = request.headers.get("sec-fetch-dest") === "document";
+  const prefetch = !!(request.headers.get("sec-purpose") || request.headers.get("purpose"));
+  const bot = selfExcluded(request) ? 2
+    : botLike(cf, ua, tag || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
+      || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0;
+  await env.DB.prepare(
+    `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  ).bind(
+    new Date().toISOString(), clip(page, 200), status, platformOf(tag, referrer), clip(tag || "", 100), clip(referrer, 300),
+    clip(ua, 300), cf.country || "", cf.asn || null, bot,
+  ).run();
+  // Burst rule, as for clicks: one browser opening 8+ different pages within 60 s is a crawler, not a reader.
+  if (bot === 0) {
+    const since = new Date(Date.now() - 60_000).toISOString();
+    const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
+    const args = [clip(ua, 300), cf.country || "", cf.asn || 0, since];
+    const r = await env.DB.prepare(`SELECT COUNT(DISTINCT page) AS n FROM pageviews WHERE ${same}`).bind(...args).first();
+    if ((r?.n || 0) >= 8) await env.DB.prepare(`UPDATE pageviews SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
+  }
 }
 
 // ---------------------------------------------------------------- /go/<slug>
@@ -367,6 +429,41 @@ function usage() {
     response: "201 with {ok, ticket, kind}",
     privacy: `${SITE}/privacy`,
   };
+}
+
+// ---------------------------------------------------------------- dashboard metadata (2026-11-11)
+// The sales dashboard joins traffic and sales to each page's and brand's topic and the experiment it was built under.
+// build.py writes those records to worker/src/dash-meta.json (src/dashmeta.py) and every pipeline commits it; this cron
+// copies the file from GitHub into D1 when its ETag changes. One statement per table (json_each over the whole file)
+// keeps the run far inside the Free plan's per-invocation query limit.
+const META_URL = "https://raw.githubusercontent.com/barryyao1017-hub/dealectric/main/worker/src/dash-meta.json";
+
+async function syncMeta(env) {
+  const last = await env.DB.prepare("SELECT etag FROM meta_sync WHERE id = 1").first();
+  const res = await fetch(env.META_URL || META_URL, { headers: last?.etag ? { "if-none-match": last.etag } : {} });
+  if (res.status === 304) return;
+  if (!res.ok) throw new Error(`meta fetch ${res.status}`);
+  const text = await res.text();
+  const ins = (sql) => env.DB.prepare(sql).bind(text);
+  await env.DB.batch([
+    env.DB.prepare("DELETE FROM meta_pages"), env.DB.prepare("DELETE FROM meta_brands"),
+    env.DB.prepare("DELETE FROM meta_brand_alias"), env.DB.prepare("DELETE FROM meta_offers"),
+    ins(`INSERT OR REPLACE INTO meta_pages (page, kind, topic, experiment, hypothesis, batch, published, brand)
+         SELECT json_extract(value, '$.page'), json_extract(value, '$.kind'), json_extract(value, '$.topic'),
+                json_extract(value, '$.experiment'), json_extract(value, '$.hypothesis'), json_extract(value, '$.batch'),
+                json_extract(value, '$.published'), json_extract(value, '$.brand') FROM json_each(?1, '$.pages')`),
+    ins(`INSERT OR REPLACE INTO meta_brands (brand, network, rate, topic, experiment, hypothesis, added)
+         SELECT json_extract(value, '$.brand'), json_extract(value, '$.network'), json_extract(value, '$.rate'),
+                json_extract(value, '$.topic'), json_extract(value, '$.experiment'), json_extract(value, '$.hypothesis'),
+                json_extract(value, '$.added') FROM json_each(?1, '$.brands')`),
+    ins(`INSERT OR IGNORE INTO meta_brand_alias (alias, brand)
+         SELECT a.value, json_extract(b.value, '$.brand') FROM json_each(?1, '$.brands') b, json_each(b.value, '$.aliases') a`),
+    ins(`INSERT OR REPLACE INTO meta_offers (slug, brand, page, network)
+         SELECT json_extract(value, '$.slug'), json_extract(value, '$.brand'), json_extract(value, '$.page'),
+                json_extract(value, '$.network') FROM json_each(?1, '$.offers')`),
+    env.DB.prepare("INSERT OR REPLACE INTO meta_sync (id, etag, synced_at) VALUES (1, ?, ?)")
+      .bind(res.headers.get("etag") || "", new Date().toISOString()),
+  ]);
 }
 
 // ---------------------------------------------------------------- sale alerts

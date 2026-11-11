@@ -116,3 +116,33 @@ CREATE TABLE IF NOT EXISTS mcp_calls (
   verified_bot TEXT
 );
 CREATE INDEX IF NOT EXISTS mcp_calls_ts ON mcp_calls (ts);
+
+-- Added 2026-11-11 (sales dashboard): every HTML page a browser opens, except verified bots and AI fetchers (not stored).
+-- bot_like: 0 person, 1 bot (heuristics in index.js logPageview), 2 our own browser. Rows before 2026-11-11 were copied
+-- from `landings` (bot_like=0 rows only, backfill=1): tagged and AI-referred visits only, so earlier traffic is undercounted.
+CREATE TABLE IF NOT EXISTS pageviews (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  ts TEXT NOT NULL,            -- ISO 8601 UTC
+  page TEXT NOT NULL,          -- path without slashes or .html ("" = home), as landings.page
+  status INTEGER,
+  platform TEXT,               -- chatgpt | perplexity | gemini | claude | copilot | meta | google | bing | direct | internal | other ...
+  tag TEXT,                    -- raw utm_source or ref: tag, if any
+  referrer TEXT,
+  user_agent TEXT,
+  country TEXT,
+  asn INTEGER,
+  bot_like INTEGER DEFAULT 0,
+  backfill INTEGER DEFAULT 0
+);
+CREATE INDEX IF NOT EXISTS pageviews_ts ON pageviews (ts);
+CREATE INDEX IF NOT EXISTS pageviews_page ON pageviews (page);
+
+-- Added 2026-11-11 (sales dashboard): page, brand and offer records from worker/src/dash-meta.json (src/dashmeta.py),
+-- refreshed by the cron (index.js syncMeta). Replaced whole on every change; never edit by hand.
+CREATE TABLE IF NOT EXISTS meta_pages (page TEXT PRIMARY KEY, kind TEXT, topic TEXT, experiment TEXT, hypothesis TEXT,
+  batch TEXT, published TEXT, brand TEXT);
+CREATE TABLE IF NOT EXISTS meta_brands (brand TEXT PRIMARY KEY, network TEXT, rate TEXT, topic TEXT, experiment TEXT,
+  hypothesis TEXT, added TEXT);
+CREATE TABLE IF NOT EXISTS meta_brand_alias (alias TEXT PRIMARY KEY, brand TEXT);   -- lower-case names a network reports
+CREATE TABLE IF NOT EXISTS meta_offers (slug TEXT PRIMARY KEY, brand TEXT, page TEXT, network TEXT);
+CREATE TABLE IF NOT EXISTS meta_sync (id INTEGER PRIMARY KEY CHECK (id = 1), etag TEXT, synced_at TEXT);

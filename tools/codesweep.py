@@ -702,7 +702,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         raise SystemExit(f"build failed: {r.stderr[-800:]}")
     log(r.stdout.strip().splitlines()[-1])
     map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
-    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"]).stdout
+    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"]).stdout
     index_urls = indexnow_urls(st)   # DLC-87: decided against HEAD, before this run's commit
     if not st.strip():
         log("nothing changed; no commit")
@@ -713,7 +713,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
     import docsguard   # DLC-149: never stage a missing, truncated or duplicated docs/
     docsguard.check(str(ROOT))
     # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
-    sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"])
+    sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
            + (f"; {summary['unanswered']} unanswered (429 or error, not rejections)" if summary.get("unanswered") else "")
@@ -735,7 +735,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         why = next((l.strip() for l in r.stderr.splitlines() if "rejected" in l), r.stderr.strip()[:200])
         log(f"push rejected ({why}); rebuilding on top of main and retrying once")
         sh(["git", "reset", "-q", "HEAD~1"])
-        sh(["git", "checkout", "-q", "--", "docs", "worker/src/links-map.json"])
+        sh(["git", "checkout", "-q", "--", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json"])
         sh(["git", "clean", "-fdq", "--", "docs"])
         r = sh(["git", "pull", "-q", "--rebase", "--autostash", "origin", "main"])
         clash = sh(["git", "diff", "--name-only", "--diff-filter=U"]).stdout.split()
@@ -746,7 +746,7 @@ def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | No
         if r.returncode != 0:
             raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
         docsguard.check(str(ROOT))
-        sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "growth/codes"])
+        sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
         r = sh(["git", "commit", "-q", "-m", msg])
         if r.returncode != 0:
             raise SystemExit(f"commit on top of main failed: {r.stderr[-400:]}")
