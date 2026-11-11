@@ -5813,6 +5813,23 @@ PRODUCTS = [
  "fit": 'The 4 AA + 4 AAA TN480U combo, whose box lists no cable.',
  "caveats": ['At 3 ft, the charger has to sit near the outlet.']},
 
+{"slug": 'ugreen-nas-ups-us2000-72w',
+ "brand": 'UGREEN',
+ "program": 'cj:ugreen',
+ "asin": None,
+ "category": 'ups',
+ "name": 'UGREEN NAS UPS US2000, 72 W DC Battery Backup for NASync 2-Bay and DH Models',
+ "model": 'US2000',
+ "url": 'https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply',
+ "price": 69.99,
+ "verified": '2026-11-11',
+ "specs": [('Max output', '72 W DC'), ('Battery', '22.2 Wh, 6,000 mAh lithium-ion'), ('Listed compatible NAS', 'DH2300, DH4300 Plus, DXP2800, DXP2800 GT'), ('NAS shutdown signal', 'USB data link to the NAS; set up in UGOS')],
+ "warranty": '2 years (UGREEN NAS store)',
+ "returns": '30 days from receiving the product, refund or exchange (UGREEN NAS store policy)',
+ "summary": "UGREEN's smaller DC UPS for its 2-bay DXP models and DH-series NAS. It sits between the NAS's own power brick and the NAS, and signals UGOS over USB to shut down cleanly.",
+ "fit": 'A DXP2800 (34.7 W measured max, ocinside.de) or DH2300 (15–17 W max, ocinside.de), both well under the 72 W cap.',
+ "caveats": ['Not listed for the DXP4800 Plus. Its 64 W measured peak would leave only 8 W under the 72 W cap.', "UGREEN's compatibility page menu reads 'UPS2000: Only Support DH Series', but its UPS buying guide lists the DXP2800 and DXP2800 GT. Check the product page for your model before buying.", 'Powers the NAS only. It has no AC outlets, so your router and switch need their own backup.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
