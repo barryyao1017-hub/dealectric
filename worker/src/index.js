@@ -230,8 +230,8 @@ async function logPageview(url, request, status, tag, env) {
     const since = new Date(Date.now() - 60_000).toISOString();
     const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
     const args = [clip(ua, 300), cf.country || "", cf.asn || 0, since];
-    const r = await env.DB.prepare(`SELECT COUNT(DISTINCT page) AS n FROM pageviews WHERE ${same}`).bind(...args).first();
-    if ((r?.n || 0) >= 8) await env.DB.prepare(`UPDATE pageviews SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
+    const r = await env.DB.prepare(`SELECT COUNT(DISTINCT page) AS n FROM pageviews INDEXED BY pageviews_ts WHERE ${same}`).bind(...args).first();
+    if ((r?.n || 0) >= 8) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
   }
 }
 
@@ -628,6 +628,9 @@ function botLike(cf, ua, utm = "", referrer = "") {
     || FORGED_REFERRER.test(referrer);
 }
 
+// The burst checks name the ts index (INDEXED BY): left to itself SQLite answered COUNT(DISTINCT slug) by walking the
+// slug index, a full-table scan on every click, which used 3.2M of D1's 5M free daily row reads on 2026-11-11 and
+// took the dashboard down with error 7500. With the ts index each check reads only the last minute's rows.
 // Burst rule (DLC-216): one browser opening 5+ different offers within 60 s is a link checker or scraper, not a
 // shopper (a buyer on 11-08 opened 3 in 3 minutes; a GB crawler on 11-09 opened 109 in 3 s with an ordinary Windows
 // Chrome agent). Checked after the click is stored, off the response path; when it trips, every unflagged click from
@@ -640,10 +643,10 @@ async function flagBurst(env, ua, cf, utm) {
   const since = new Date(Date.now() - BURST_WINDOW_MS).toISOString();
   const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
   const args = [clip(ua, 500), cf.country || "", cf.asn || 0, since];
-  const r = await env.DB.prepare(`SELECT COUNT(DISTINCT slug) AS n FROM clicks WHERE ${same}`).bind(...args).first();
+  const r = await env.DB.prepare(`SELECT COUNT(DISTINCT slug) AS n FROM clicks INDEXED BY clicks_ts WHERE ${same}`).bind(...args).first();
   if ((r?.n || 0) < BURST_SLUGS) return;
   await env.DB.prepare(
-    `UPDATE clicks SET bot_like = 1 WHERE ${same} AND bot_like = 0 AND IFNULL(utm_source, '') NOT IN ('muse', 'chatgpt-agent', 'signed-agent')`,
+    `UPDATE clicks INDEXED BY clicks_ts SET bot_like = 1 WHERE ${same} AND bot_like = 0 AND IFNULL(utm_source, '') NOT IN ('muse', 'chatgpt-agent', 'signed-agent')`,
   ).bind(...args).run();
 }
 
