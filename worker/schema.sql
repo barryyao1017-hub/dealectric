@@ -146,3 +146,7 @@ CREATE TABLE IF NOT EXISTS meta_brands (brand TEXT PRIMARY KEY, network TEXT, ra
 CREATE TABLE IF NOT EXISTS meta_brand_alias (alias TEXT PRIMARY KEY, brand TEXT);   -- lower-case names a network reports
 CREATE TABLE IF NOT EXISTS meta_offers (slug TEXT PRIMARY KEY, brand TEXT, page TEXT, network TEXT);
 CREATE TABLE IF NOT EXISTS meta_sync (id INTEGER PRIMARY KEY CHECK (id = 1), etag TEXT, synced_at TEXT);
+
+-- Added 2026-11-11: the dashboard's queries read only human rows; these keep each load's D1 reads small.
+CREATE INDEX IF NOT EXISTS clicks_kind_bot ON clicks (kind, bot_like);
+CREATE INDEX IF NOT EXISTS pageviews_bot ON pageviews (bot_like);

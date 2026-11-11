@@ -13,10 +13,10 @@ burst AS (SELECT user_agent AS ua, IFNULL(country, '') AS country, date(datetime
 hc AS (
   SELECT c.*, date(datetime(c.ts, '-8 hours')) AS day,
     CASE
-      WHEN t.tag LIKE 'chatgpt%' THEN 'chatgpt'
-      WHEN t.tag IN ('muse', 'ref:muse', 'ref:meta.ai', 'ref:meta-app', 'meta.ai', 'meta-app') THEN 'meta'
-      WHEN t.tag LIKE 'ref:%' THEN substr(t.tag, 5)
-      WHEN t.tag <> '' THEN t.tag
+      WHEN c.tag LIKE 'chatgpt%' THEN 'chatgpt'
+      WHEN c.tag IN ('muse', 'ref:muse', 'ref:meta.ai', 'ref:meta-app', 'meta.ai', 'meta-app') THEN 'meta'
+      WHEN c.tag LIKE 'ref:%' THEN substr(c.tag, 5)
+      WHEN c.tag <> '' THEN c.tag
       WHEN c.referrer LIKE '%perplexity.ai%' THEN 'perplexity'
       WHEN c.referrer LIKE '%claude.ai%' THEN 'claude'
       WHEN c.referrer LIKE '%gemini.google%' THEN 'gemini'
@@ -32,12 +32,11 @@ hc AS (
                                  ELSE substr(c.referrer, 24) END, '/'), '.html', '')
          ELSE COALESCE(o.page, c.slug) END AS page,
     COALESCE(o.brand, '') AS brand
-  FROM clicks c
+  FROM (SELECT clicks.*, lower(CASE WHEN instr(x, '&') > 0 THEN substr(x, 1, instr(x, '&') - 1) ELSE x END) AS tag
+        FROM (SELECT clicks.*, COALESCE(NULLIF(utm_source, ''),
+                CASE WHEN referrer LIKE '%utm_source=%' THEN substr(referrer, instr(referrer, 'utm_source=') + 11) END, '') AS x
+              FROM clicks WHERE kind = 'redirect' AND bot_like = 0) clicks) c
   LEFT JOIN meta_offers o ON o.slug = c.slug
-  JOIN (SELECT id, lower(CASE WHEN instr(x, '&') > 0 THEN substr(x, 1, instr(x, '&') - 1) ELSE x END) AS tag
-        FROM (SELECT id, COALESCE(NULLIF(utm_source, ''),
-                       CASE WHEN referrer LIKE '%utm_source=%' THEN substr(referrer, instr(referrer, 'utm_source=') + 11) END, '') AS x
-              FROM clicks)) t ON t.id = c.id
   WHERE c.kind = 'redirect' AND c.bot_like = 0 AND IFNULL(c.verified_bot, '') = '' AND IFNULL(c.method, 'GET') = 'GET'
     AND length(IFNULL(c.user_agent, '')) >= 60 AND c.user_agent NOT LIKE '%HeadlessChrome%'
     AND c.user_agent NOT LIKE '%Nexus 5X%' AND c.user_agent NOT LIKE '%iPhone OS 13_2_3%'
@@ -45,7 +44,7 @@ hc AS (
     AND IFNULL(c.utm_source, '') NOT IN ('test-probe', 'claude-check')
     -- A person's click names where it came from: an assistant's tag, an outside referrer, or one of our pages that the
     -- same browser opened as a person that day. Untagged clicks with neither are crawlers following our links.
-    AND (t.tag <> '' OR (IFNULL(c.referrer, '') <> '' AND c.referrer NOT LIKE 'https://dealectric.com%')
+    AND (c.tag <> '' OR (IFNULL(c.referrer, '') <> '' AND c.referrer NOT LIKE 'https://dealectric.com%')
          OR (c.referrer LIKE 'https://dealectric.com%' AND EXISTS (SELECT 1 FROM seen WHERE seen.ua = substr(c.user_agent, 1, 300)
                AND seen.country = IFNULL(c.country, '') AND seen.day = date(datetime(c.ts, '-8 hours')))))
     -- One browser opening 5+ different offers in a day is a link checker, not a shopper.
