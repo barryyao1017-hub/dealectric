@@ -184,6 +184,35 @@
 </div>
 
 <script>
+  // D1 answers as {result: [{results: [...rows], success, meta}]} or a bare list; this finds the row list in either.
+  for (const id of ['summary', 'daily', 'weekly', 'pages', 'brands', 'platforms']) {
+    dash.loader(id, {
+      description: 'Takes the rows out of the D1 query result.',
+      fn: ({ answer }) => {
+        let a = answer;
+        if (typeof a === 'string') { try { a = JSON.parse(a); } catch (e) { throw new Error(a.slice(0, 300)); } }
+        const isRow = (r) => r && typeof r === 'object' && !Array.isArray(r) && !('results' in r) && !('success' in r);
+        const find = (x) => {
+          if (Array.isArray(x)) {
+            if (x.length === 0 || x.every(isRow)) return x;
+            for (const y of x) { const f = find(y); if (f) return f; }
+            return null;
+          }
+          if (x && typeof x === 'object') {
+            if (x.error) throw new Error(typeof x.error === 'string' ? x.error : (x.error.message || JSON.stringify(x.error)));
+            if (x.success === false && Array.isArray(x.errors)) throw new Error(x.errors.map((e) => e.message || String(e)).join('; '));
+            for (const k of ['results', 'result', 'data', 'rows']) if (k in x) { const f = find(x[k]); if (f) return f; }
+          }
+          return null;
+        };
+        const rows = find(a);
+        if (!rows) throw new Error('No rows found in the D1 answer');
+        return rows;
+      },
+    });
+  }
+</script>
+<script>
   const FMT = {
     usd: (v) => '$' + d3.format(',.2f')(v),
     int: (v) => d3.format(',')(v),
