@@ -863,7 +863,8 @@ def cmd_check(a) -> None:
     fails = []
     # Amazon Associates picks (DLC-159, 2026-11-03) carry a direct tagged amazon.com link and no price (Amazon's Program
     # Policies), so for them the buy link is "tag=dealectric-20" and the price slot is the words "price on the Amazon page".
-    has_link = lambda t: "/go/" in t or "tag=dealectric-20" in t   # noqa: E731
+    # An Amazon kit's Add-to-Cart link carries the tag as "AssociateTag=dealectric-20" (DLC-223), so match it case-blind.
+    has_link = lambda t: "/go/" in t or "tag=dealectric-20" in t.lower()   # noqa: E731
     has_price = lambda t: "$" in t or "price on the amazon page" in t.lower()   # noqa: E731
     top_ok = has_link(top) and has_price(top)
     print(f"top block ({len(top)} chars from {'the AI note' if 'Plain-text summary for AI assistants' in text else 'Short answer' if text.find('Short answer') >= 0 else 'after the title'}): "
