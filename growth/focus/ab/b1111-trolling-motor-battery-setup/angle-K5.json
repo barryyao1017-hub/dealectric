@@ -1,0 +1,144 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got says that the lithium trolling batteries in these sets stop taking a charge below 32°F and only start again above 41°F (Redodo's 12V, 24V and 36V trolling packs). That means a boat on an onboard charger in a cold garage or slip in November can sit plugged in all night and stay empty. The fix that decides the set is a self-heating pack (Redodo Apex Mini 24V 125Ah, which uses charger power to heat itself and charges down to -4°F) paired with a matched 29.2V charger, not a 12V multi-bank charger.",
+ "standout": 2,
+ "standout_why": "I compared against the Minn Kota pages ChatGPT cited or received. 'Lithium Battery Selection and Recommendations' (cited) covers the BMS limiting current, motor voltage limits and charge profile but says nothing about low temperature, and nothing about balancing or series wiring. 'Charging Lithium Batteries' (a result, not cited) says Minn Kota chargers are 'not compatible with single 24V and 36V Lithium Batteries' and gives the 14.5V maximum, but again says nothing about temperature. 'Battery Charger Selection Guide' (a result) says the chargers are 12V-only and that series-wired batteries can't be charged on one bank. So the warning that a single 24V/36V battery needs its own 29.2V/43.8V charger is already partly in the results, and I'm not using it as the new fact. The low-temperature charge cutoff, and the heated pack that gets around it, appear in none of them. ChatGPT's own answers show a 'LiTime 24V 100Ah ... Low-Temp Cut…' card but never explain what that does to overnight charging. They also pair 2× 12V batteries with a 'NOCO Genius 2-Bank 10-Amp (5-Amp Per Bank)' card, which is the slow 12V-bank route, and never match a charger to their recommended single 24V or 36V battery. I couldn't open the Dakota Lithium or West Marine results this session, so I can't rule out that one of them mentions cold charging. That's why I scored 2, not 3.",
+ "kit_items": [
+  "Battery (24V motor, cold-season or northern angler): Redodo Apex Mini 24V 125Ah LiFePO4. Redodo says it is self-heating, charges down to -4°F, has Bluetooth and is IP67. One battery means no series jumpers, and it doesn't stall on the low-temp cutoff like the other packs here.",
+  "Battery (24V motor, warm-climate alternative): Redodo 24V 100Ah Group 31 Bluetooth. It's cheaper but has the 32°F/41°F charge cutoff, and Redodo says it fits Group 31 trays but not standard Group 31 battery boxes.",
+  "Charger (24V): Redodo 29.2V 20A MINI LiFePO4 charger. It is the correct charge voltage for one 25.6V pack. A Minn Kota PCL or other 12V multi-bank charger can't charge a single 24V lithium battery (Minn Kota says so).",
+  "Battery + charger (36V motor, budget): Redodo 36V 50Ah + Redodo 43.8V 25A IP65 charger. The weak point is the 50A BMS (60A for 30 min, per Redodo), so check it against the motor's max amp draw before choosing it for a 36V motor at high thrust.",
+  "Battery + charger (12V kayak or jon boat): Redodo 12V 100Ah trolling battery with low-temp cutoff + Redodo 14.6V 20A charger.",
+  "Not in any of these carts: circuit breaker and marine wire. Redodo doesn't sell them in the store search I ran; size them from Minn Kota's chart for the specific motor."
+ ],
+ "carts": [
+  {
+   "store": "Redodo (awin:redodo) — 24V cold-weather kit",
+   "items": [
+    "Redodo Apex Mini 24V 125Ah LiFePO4 Trolling Motor Battery (IP67, Bluetooth, self-heating) | https://www.redodopower.com/products/redodo-24v-125ah-lifepo4-trolling-motor-battery | $609.99 | 2026-11-11",
+    "Redodo 29.2V 20A MINI LiFePO4 Battery Charger | https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size | $109.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none seen in the store search; total for the two items is $719.98"
+  },
+  {
+   "store": "Redodo (awin:redodo) — 24V standard kit",
+   "items": [
+    "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery | https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery | $569.99 | 2026-11-11",
+    "Redodo 29.2V 20A MINI LiFePO4 Battery Charger | https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size | $109.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none seen in the store search; total for the two items is $679.98"
+  },
+  {
+   "store": "Redodo (awin:redodo) — 36V budget kit",
+   "items": [
+    "Redodo 36V 50Ah Lithium Trolling Motor Battery (low-temp cutoff) | https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff | $359.99 | 2026-11-11",
+    "Redodo 43.8V 25A Lithium Battery Charger for 36V (38.4V) LiFePO4 | https://www.redodopower.com/products/redodo-43-8v-25a-lithium-battery-charger-for-36v38-4v-lifepo4-batteries | $149.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none seen in the store search; total for the two items is $509.98"
+  },
+  {
+   "store": "Redodo (awin:redodo) — 12V kit",
+   "items": [
+    "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection | https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries | $233.99 | 2026-11-11",
+    "Redodo 14.6V 20A LiFePO4 Battery Charger | https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger | $82.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none seen in the store search; total for the two items is $316.98"
+  }
+ ],
+ "findings": [
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (low temp)",
+   "label": "Low-temperature charge behavior",
+   "value": "Stops charging below 32°F (0°C) and starts again above 41°F (5°C)",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-11",
+   "note": "From the maker's product text, read through the storecheck search."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (low temp)",
+   "label": "Recommended motor and surge rating",
+   "value": "Trolling motors of 30–70 lb; 300 A for 5 s, 500 A for 1 s; $233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-11",
+   "note": "Maker store price today; the listing shows a $1,359.96 compare-at price."
+  },
+  {
+   "product": "Redodo 36V 50Ah Lithium Trolling Motor Battery",
+   "label": "BMS / discharge rating",
+   "value": "50 A BMS, 50 A steady, 60 A for up to 30 min, 250 A peak; 1,920 Wh; 32.8 lb; Group 31 size",
+   "source": "https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff",
+   "source_title": "Redodo 36V 50Ah Lithium Trolling Motor Battery for 36V Trolling Motors with 100-120 lbs",
+   "read": "2026-11-11",
+   "note": "Charging stops below 32°F and resumes above 41°F, and discharge stops below -4°F, per the same page. Rated for motors of 100–120 lb. $359.99 today."
+  },
+  {
+   "product": "Redodo Apex Mini 24V 125Ah",
+   "label": "Cold-weather charging",
+   "value": "Self-heating: heats from charger power below 41°F and starts charging at 50°F; an app pre-heat mode uses stored battery power; Redodo says it charges safely down to -4°F",
+   "source": "https://www.redodopower.com/products/redodo-24v-125ah-lifepo4-trolling-motor-battery",
+   "source_title": "Redodo Apex Mini 24V 125Ah LiFePO4 Trolling Motor Battery | IP67, Bluetooth & Self-Heating",
+   "read": "2026-11-11",
+   "note": "Same page: 3,200 Wh, 52.47 lb, IP67, Bluetooth 5.0, 'up to 18 hours at around a 7A draw' (maker claim, low-speed trolling). $609.99 today."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Bluetooth",
+   "label": "Fit and cold behavior",
+   "value": "13.11 × 6.93 × 9.45 in; 'fits Group 31 trays only; not compatible with standard Group 31 battery boxes'; low-temp charge cutoff, charging resumes at 41°F",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery | For 70-100 lb Thrust",
+   "read": "2026-11-11",
+   "note": "2,560 Wh, for 24V motors of 70–100 lb. $569.99 today."
+  },
+  {
+   "product": "Redodo 29.2V 20A MINI charger",
+   "label": "Charge time, 24V pack",
+   "value": "Charges a 24V 100Ah LiFePO4 fully in about 5 h (maker claim); about 6.3 h for the 125Ah Apex Mini by arithmetic",
+   "source": "https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size",
+   "source_title": "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger Ultra Fast AC-DC Charger",
+   "read": "2026-11-11",
+   "note": "125 Ah ÷ 20 A = 6.25 h of constant-current charging, plus the taper at the end. $109.99 today."
+  },
+  {
+   "product": "Redodo 43.8V 25A charger",
+   "label": "Spec and price",
+   "value": "43.8 V / 25 A for 36V (38.4V) LiFePO4, IP65, 100–240 VAC input; $149.99",
+   "source": "https://www.redodopower.com/products/redodo-43-8v-25a-lithium-battery-charger-for-36v38-4v-lifepo4-batteries",
+   "source_title": "Redodo 43.8V 25A Lithium Battery Charger for 36V(38.4V) LiFePO4 Batteries",
+   "read": "2026-11-11",
+   "note": "Maker store price today."
+  },
+  {
+   "product": "Minn Kota PCL chargers",
+   "label": "Single 24V/36V lithium compatibility",
+   "value": "'The Minn Kota Chargers are not compatible with single 24V and 36V Lithium Batteries'; maximum charge voltage 14.5V per bank",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-11",
+   "note": "This page was among ChatGPT's results but not cited. The article says nothing about low-temperature charging."
+  },
+  {
+   "product": "general",
+   "label": "What Minn Kota's lithium guidance leaves out",
+   "value": "The Lithium Battery Selection article covers BMS current limiting and motor voltage but nothing about low-temperature charging, balancing or series wiring",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-11",
+   "note": "ChatGPT cited this page. Its motor max-amp-draw chart is an image, so I couldn't read the numbers."
+  }
+ ],
+ "unsourced": [
+  "Max amp draw of Minn Kota Terrova/Ultrex QUEST at 36V, needed to judge whether the Redodo 36V 50Ah's 50 A BMS is enough. Minn Kota's help articles show it only as an image; the 2021 battery chart PDF and the Terrova QUEST install PDF came back as binary I couldn't read here; Defender and manuals.plus returned 403. Search snippets showed retailer figures, which I didn't use.",
+  "Continuous BMS rating of the Redodo 24V 100Ah Group 31 and the Apex Mini 24V 125Ah. The store text was cut off and the product pages returned HTTP 429.",
+  "Whether Redodo sells a battery + charger bundle SKU for any trolling kit. The store searches for 'trolling motor' and 'charger' showed none.",
+  "Today's prices for the LiTime 24V/36V batteries and the NOCO 2-bank charger that ChatGPT showed. LiTime isn't an approved program, and I didn't check Amazon in the tool-call budget.",
+  "Recommended circuit breaker and wire gauge per motor. Minn Kota's charts are images or unreadable PDFs here."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2334217
+ }
+}

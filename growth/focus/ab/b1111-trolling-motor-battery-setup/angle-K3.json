@@ -1,0 +1,153 @@
+{
+ "angle": "K3",
+ "gap": "No cited result and no ChatGPT answer states that Minn Kota's onboard chargers, the ones factory-wired into many bass boats, cannot charge a single 24V or 36V lithium battery. Swapping a 2×12V or 3×12V bank for one 24V or 36V pack therefore also means buying a single-output 29.2V or 43.8V lithium charger. One Minn Kota result does say this, but it was never cited: 'Charging Lithium Batteries', ranked 6th in one 'trolling motor battery and charger' chat and 4th in the other.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: Minn Kota's Wiring & Battery Guide, Wiring Diagrams, Deep Cycle Battery Selection, Troubleshooting Power Issues and Lithium Battery Selection. They give breaker and wire sizes, the 85% speed cap for brushed motors on lithium, and the rule that BMS continuous current must cover max draw. The Lithium Battery Selection page only says 'enough amps per bank' about chargers. None says Minn Kota chargers are 12V-only per bank and won't charge a single 24V or 36V lithium pack. All four ChatGPT answers recommended a single LiTime 24V or 36V battery. The first two said only 'compatible lithium charger'. The third pointed 24V and 36V owners to 2-bank and 3-bank chargers and showed a NOCO 2-bank card, without warning that a multi-bank charger can't charge a single 24V or 36V battery. This isn't a 3 because Minn Kota's 'Charging Lithium Batteries' page, which states the rule outright, was in two chats' results (uncited), and the fourth answer did say 'compatible 24V/36V lithium charger' for single packs.",
+ "kit_items": [
+  "Battery: Redodo 24V 100Ah LiFePO4. One pack replaces 2×12V in series. Its 100A BMS covers the 56 A max draw Minn Kota lists for an 80 lb 24V motor.",
+  "Charger: Redodo 29.2V 20A MINI LiFePO4 charger. It's needed because Minn Kota says its chargers are 12V-per-bank and 'not compatible with single 24V and 36V Lithium Batteries', so a boat's existing Minn Kota onboard charger can't charge this battery.",
+  "Circuit protection: 60 A breaker at 24 VDC, which is Minn Kota's figure for 80 lb motors (for example the Minn Kota MKR-27). It isn't sold by Redodo, so it falls outside this cart."
+ ],
+ "carts": [
+  {
+   "store": "Redodo (redodopower.com)",
+   "items": [
+    "Redodo 24V 100Ah LiFePO4 Lithium Battery | https://www.redodopower.com/products/24v-100ah-lifepo4-battery | $469.99 | 2026-11-11",
+    "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger | https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size | $109.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none (a store search for a 24V battery-plus-charger bundle found none on 2026-11-11). Separate items total $579.98."
+  }
+ ],
+ "findings": [
+  {
+   "product": "general (Minn Kota onboard / PCL chargers)",
+   "label": "Charger trap with single 24V/36V lithium packs",
+   "value": "\"The Minn Kota Chargers are not compatible with single 24V and 36V Lithium Batteries.\"",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Maker document. In two ChatGPT chats' results (rank 6 and rank 4) but cited in neither. Result: a shopper who swaps a 2×12V or 3×12V bank for one 24V/36V pack and keeps the boat's Minn Kota onboard charger can't charge the new battery."
+  },
+  {
+   "product": "general (Minn Kota chargers)",
+   "label": "Bank voltage limit",
+   "value": "\"Minn Kota chargers are designed for 12 Volt battery systems only\"; \"If you are connected in series, you cannot charge them with one bank.\"",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/29017048324119-Battery-Charger-Selection-Guide",
+   "source_title": "Battery Charger Selection Guide – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Maker document. Explains why: each bank puts out a 12V charge, so a 25.6V or 38.4V pack can't take it."
+  },
+  {
+   "product": "general (Minn Kota PCL chargers)",
+   "label": "PCL max charge voltage",
+   "value": "14.5 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Minn Kota: \"ensure our Max voltage of 14.5V meets the specifications of the Battery Manufacturer.\" Redodo sells 14.6V chargers for its 12V packs, so check before using a PCL on 3×12V Redodo."
+  },
+  {
+   "product": "general (Minn Kota brushed motors)",
+   "label": "Lithium speed cap",
+   "value": "85% / Speed 8.5 or lower",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-11",
+   "note": "\"Running the motor at maximum speed with lithium batteries can result in damage.\" A rival chat cited this page, so this one is not new."
+  },
+  {
+   "product": "general (Minn Kota 80 lb, 24V)",
+   "label": "Max amp draw / breaker",
+   "value": "56 A / 60 A @ 24 VDC; 8 AWG at 5 ft, 6 AWG at 10–15 ft",
+   "source": "https://minnkota.johnsonoutdoors.com/us/support/trolling-motor-installation-guides/trolling-motor-wiring-and-battery-guide",
+   "source_title": "Trolling Motor Wiring and Battery Guide - Minn Kota",
+   "read": "2026-11-11",
+   "note": "From the page's Conductor Gauge and Circuit Breaker Sizing Table. Cited by a rival."
+  },
+  {
+   "product": "general (Minn Kota 112 lb / 101 lb, 36V)",
+   "label": "Max amp draw / breaker",
+   "value": "112 lb: 52 A / 60 A @ 36 VDC; 101 lb: 46 A / 50 A @ 36 VDC",
+   "source": "https://minnkota.johnsonoutdoors.com/us/support/trolling-motor-installation-guides/trolling-motor-wiring-and-battery-guide",
+   "source_title": "Trolling Motor Wiring and Battery Guide - Minn Kota",
+   "read": "2026-11-11",
+   "note": "Same table. Used to check the Redodo 36V 50Ah below."
+  },
+  {
+   "product": "Redodo 36V 50Ah Lithium Trolling Motor Battery",
+   "label": "BMS continuous discharge vs a 112 lb motor",
+   "value": "50 A continuous, 60 A for up to 30 min, 250 A peak; $359.99",
+   "source": "https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff",
+   "source_title": "Redodo 36V 50Ah Lithium Trolling Motor Battery for 36V Trolling Motors with 100-120 lbs",
+   "read": "2026-11-11",
+   "note": "Read from store product data via storecheck search. Redodo markets this pack for 100–120 lb motors, but 50 A continuous is below the 52 A max draw Minn Kota lists for a 112 lb motor. Minn Kota says a BMS short on continuous amps 'will restrict power to the motor which may cause the motor to shut off'. It is fine for a 101 lb motor (46 A). Trap: don't pair this pack with a 112 lb motor run at full speed."
+  },
+  {
+   "product": "general (single 36V lithium + 112 lb Terrova)",
+   "label": "Forum report of BMS shutdown",
+   "value": "1 thread, 1 owner (EG4 36V pack, EG4 36V 10 A charger, Riptide Terrova 112 lb). Pack reads 'DEAD' at under 1 V.",
+   "source": "https://forum.eg4electronics.com/community/forum/eg4-wp-waterproof-lithium-battery-36v/",
+   "source_title": "EG4 | WP Waterproof Lithium Battery 36v – EG4 Community Forum",
+   "read": "2026-11-11",
+   "note": "Started by 95g-atl on 2025-01-02. Reply by jlankford on 2025-01-03: \"I would expect a 52amp load to almost immediately put the battery into BMS shutdown mode.\" One user's report plus one other member's view, not a measurement."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4 Lithium Battery",
+   "label": "BMS / charger / price",
+   "value": "100 A BMS; charge with a 20 A (29.2 V) LiFePO4 charger; $469.99",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-11",
+   "note": "Read from store product data via storecheck search. 100 A is more than the 56 A max draw of an 80 lb motor. The listing says 45.59 lb."
+  },
+  {
+   "product": "Redodo 29.2V 20A MINI LiFePO4 Charger",
+   "label": "Output / price",
+   "value": "29.2 V, 20 A, for 24V LiFePO4; $109.99",
+   "source": "https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size",
+   "source_title": "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger Ultra Fast AC-DC Charger",
+   "read": "2026-11-11",
+   "note": "Read from store product data via storecheck search. Redodo says it fully charges a 24V 100Ah pack in about 5 h and has a pre-charge mode that wakes a sleeping battery."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Battery",
+   "label": "Battery-box fit trap",
+   "value": "\"fits Group 31 trays only; not compatible with standard Group 31 battery boxes\"; 13.11 × 6.93 × 9.45 in; $569.99",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery | For 70-100 lb Thrust",
+   "read": "2026-11-11",
+   "note": "Read from store product data via storecheck search; the full page returned HTTP 429. A shopper with a Group 31 box (not a tray) can't use this pack."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (Low Temp)",
+   "label": "Cold-charge cutoff",
+   "value": "Stops charging below 32°F, resumes above 41°F; $233.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-11",
+   "note": "Read from store product data via storecheck search. An onboard charger plugged in overnight in a cold garage will add nothing until the pack warms to 41°F."
+  },
+  {
+   "product": "general (Minn Kota Raptor anchor)",
+   "label": "Shared-battery trap",
+   "value": "\"Avoid connecting the Raptor to the same batteries that a trolling motor or other accessories are connected to.\"",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Maker document, cited by a rival."
+  }
+ ],
+ "unsourced": [
+  "A forum thread with a date and a count of owners whose Minn Kota multi-bank onboard charger failed on a single 24V/36V lithium pack. bbcboards.net (showthread.php?p=14367411), westernbass.com post619458 and bassresource topic 218381 all returned HTTP 403, so I'm reporting no count.",
+  "The BMS continuous rating for the Redodo 24V 100Ah Group 31 Bluetooth pack: the product page returned HTTP 429 twice and the store search text didn't give it.",
+  "Any Redodo bundle of a 24V battery with the 29.2V charger: none came up in the store search.",
+  "A 60 A marine breaker sold by Redodo, so the kit can stay in one cart: not looked up because the tool-call budget ran out.",
+  "Amazon prices: not checked (amzcheck not run) because the kit uses the Redodo store."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2246529000000002
+ }
+}

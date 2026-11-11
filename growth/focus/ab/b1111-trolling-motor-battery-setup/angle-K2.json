@@ -1,0 +1,126 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that Minn Kota says its own onboard chargers 'are not compatible with single 24V and 36V Lithium Batteries', so the single 24V or 36V lithium battery ChatGPT preferred needs its own 29.2 V or 43.8 V LiFePO4 charger. None of them states either that a QUEST motor's 60 A breaker and draw are more than a 50 A-BMS 36V battery can supply.",
+ "standout": 3,
+ "standout_why": "I read the four pages ChatGPT cited. Minn Kota's Trolling Motor Wiring and Battery Guide covers lead-acid only and says nothing about lithium. Its Deep Cycle Battery Selection page says lithium 'can be used' and that 24/36V motors won't power on below 18 V. Its Lithium Battery Selection page gives the 14.5 V PCL limit, the 85% speed cap for brushed motors and a general warning to match continuous discharge to the motor, with no amp figures in its text. The fourth cited page, Troubleshooting Trolling Motor Power Issues, I did not reopen. None of these says Minn Kota chargers can't charge a single 24V or 36V lithium battery. That exclusion is on Minn Kota's 'Charging Lithium Batteries' page, which appeared as an uncited result in the two 'battery and charger' chats. ChatGPT's answers still paired single 24V/36V LiTime batteries with an unnamed 'lithium-compatible onboard charger', or with a NOCO 2-bank charger at 5 A per bank, and never pointed out the exclusion. None of the results ties the QUEST 60 A rating to a battery's BMS limit. This decides which charger goes in the cart and rules out a 50 A-BMS 36V battery for a 36V QUEST.",
+ "kit_items": [
+  "Battery: Redodo 24V 100Ah LiFePO4. It is one 25.6 V battery with a 100 A BMS, which covers the 60 A max draw and 60 A breaker in the QUEST 24V table. Redodo lists it for 70–100 lb trolling motors, so it suits a 24V motor or a 90/115 QUEST wired for 24 V (90 lb).",
+  "Charger: Redodo 29.2V 20A MINI LiFePO4 charger. A single 24V lithium battery can't go on a Minn Kota onboard charger, which Minn Kota rules out itself. Redodo's battery listing names a 20 A (29.2 V) charger for a 5-hour full charge.",
+  "Circuit breaker: 60 A, such as the Minn Kota MKR-27 named in the QUEST manual. It is not sold by Redodo, so it can't go in this cart and must be bought separately.",
+  "Excluded for a 36V QUEST at full throttle: Redodo 36V 50Ah. Its BMS is rated 50 A continuous, or 60 A for 30 minutes only, which is below the QUEST 36V 60 A rating. Redodo sells no 36V 100Ah to replace it."
+ ],
+ "carts": [
+  {
+   "store": "Redodo (redodopower.com)",
+   "items": [
+    "Redodo 24V 100Ah LiFePO4 Lithium Battery | https://www.redodopower.com/products/24v-100ah-lifepo4-battery | $469.99 | 2026-11-11",
+    "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger | https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size | $109.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "Minn Kota onboard chargers (Digital, PC, PCL)",
+   "label": "Excluded battery configuration",
+   "value": "Not compatible with single 24V and 36V lithium batteries; 12V LiFePO4 only, at a max charge of 14.5 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries",
+   "source_title": "Charging Lithium Batteries – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Quoted: 'The Minn Kota Chargers are not compatible with single 24V and 36V Lithium Batteries.' and '12V lithium-based (LiFePO4) batteries can be charged with Minn Kota Digital (Obsolete), PC (Obsolete) or PCL chargers.' Example given: the MK 330PCL charges at 10 A per bank."
+  },
+  {
+   "product": "Minn Kota QUEST 24V / 36V (Ulterra QUEST manual)",
+   "label": "Max amp draw and breaker",
+   "value": "60 A max draw; 60 A breaker; 6 AWG to 20 ft at 24 V (2 AWG at 25 ft), 6 AWG to 20 ft at 36 V (4 AWG at 25 ft)",
+   "source": "https://www.manualslib.com/manual/3231953/Minn-Kota-Ulterra-Quest.html?page=10",
+   "source_title": "MINN KOTA ULTERRA QUEST Installation Instructions Manual, page 10 (ManualsLib mirror)",
+   "read": "2026-11-11",
+   "note": "The page text came out scrambled. '60 Amp', '24 VDC', '36 VDC' and 'Max Amp Draw' were readable, and I matched them into the table myself. The next page of the same manual states plainly that the MKR-27 60 A breaker (1865115) is recommended."
+  },
+  {
+   "product": "Minn Kota QUEST series",
+   "label": "Battery chemistry and voltage",
+   "value": "Runs on 12, 24 or 36 V deep-cycle batteries and is 'optimized for use with LiFePO4 lithium-ion battery cells'",
+   "source": "https://www.manualslib.com/manual/3231953/Minn-Kota-Ulterra-Quest.html?page=11",
+   "source_title": "MINN KOTA ULTERRA QUEST Installation Instructions Manual, page 11",
+   "read": "2026-11-11",
+   "note": "The same page says 'Minn Kota recommends using Minn Kota brand chargers'. Minn Kota's charging page excludes single 24V/36V lithium batteries, so a single 24V or 36V lithium battery has to use another brand's charger."
+  },
+  {
+   "product": "Terrova QUEST / Riptide Terrova QUEST",
+   "label": "Thrust by voltage",
+   "value": "90/115 lb; runs on 24 V or 36 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/16950872604439-Terrova-QUEST-and-Riptide-Terrova-QUEST-with-Advanced-GPS-Navigation-Features-Specifications-and-Manuals-2023-present",
+   "source_title": "Terrova QUEST and Riptide Terrova QUEST with Advanced GPS Navigation Features, Specifications and Manuals (2023-present) – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Quoted: 'The 90/115 lbs thrust motor can run on either 24 volts or 36 volts.'"
+  },
+  {
+   "product": "Minn Kota 24/36V Terrova, Ulterra, Ultrex",
+   "label": "Minimum operating voltage",
+   "value": "Will not power on below 18 V",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6608432971415-Deep-Cycle-Battery-Selection-and-Recommendations",
+   "source_title": "Deep Cycle Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-11",
+   "note": "This is on a page ChatGPT cited, so it adds nothing new against the rivals."
+  },
+  {
+   "product": "Minn Kota brushed motors",
+   "label": "Speed limit on lithium",
+   "value": "85% (speed 8.5) or lower",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6470890831895-Trolling-Motor-Power-Considerations",
+   "source_title": "Trolling Motor Power Considerations – Minn Kota",
+   "read": "2026-11-11",
+   "note": "Allowed voltage drop under load is 5%: 1.2 V at 24 V, 1.8 V at 36 V. The amp-draw charts on this page are images, so I couldn't read them."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "BMS, rated use, charger",
+   "value": "100 A BMS; for 70–100 lb trolling motors; full charge in 5 h with a 20 A (29.2 V) LiFePO4 charger; 2,560 Wh; 45.59 lb; up to 4P2S",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-11",
+   "note": "Read from the store's own product feed with storecheck search; $469.99. A 100 A BMS is above the QUEST's 60 A rating."
+  },
+  {
+   "product": "Redodo 29.2V 20A MINI charger",
+   "label": "Output and target battery",
+   "value": "29.2 V, 20 A, for 24V LiFePO4; charges 24V 100Ah fully in 5 h",
+   "source": "https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size",
+   "source_title": "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger Ultra Fast AC-DC Charger",
+   "read": "2026-11-11",
+   "note": "Read from the store feed with storecheck search; $109.99, regular price $229.99."
+  },
+  {
+   "product": "Redodo 36V 50Ah Trolling Motor Battery",
+   "label": "BMS continuous current",
+   "value": "50 A continuous, 60 A for up to 30 min, 250 A peak; charging stops below 32°F and resumes above 41°F",
+   "source": "https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff",
+   "source_title": "Redodo 36V 50Ah Lithium Trolling Motor Battery for 36V Trolling Motors with 100-120 lbs",
+   "read": "2026-11-11",
+   "note": "$359.99. Redodo markets it for 100–120 lb motors, but 50 A continuous is below the QUEST 36V 60 A rating. Minn Kota says too little continuous current shows up as the motor shutting off or Spot-Lock problems."
+  },
+  {
+   "product": "Redodo 43.8V 25A charger",
+   "label": "Output",
+   "value": "43.8 V 25 A for 36V (38.4 V) LiFePO4, IP65",
+   "source": "https://www.redodopower.com/products/redodo-43-8v-25a-lithium-battery-charger-for-36v38-4v-lifepo4-batteries",
+   "source_title": "Redodo 43.8V 25A Lithium Battery Charger for 36V(38.4V) LiFePO4 Batteries",
+   "read": "2026-11-11",
+   "note": "$149.99. This is the charger for a single 36V battery if a 36V kit is built."
+  }
+ ],
+ "unsourced": [
+  "A QUEST max amp draw from Minn Kota's own site in readable text. The amp charts on the help-center pages are images. The 2021 Minn Kota Battery Charts PDF and the Terrova QUEST install PDF wouldn't extract, and running a PDF text tool needed approval I didn't have. Defender's Ultrex QUEST manual returned 403. The 60 A figure comes from a ManualsLib copy of the Ulterra QUEST manual with scrambled table text. Retailer listings (not used as sources) show 58–60 A.",
+  "The Redodo 24V 100Ah Group 31 Bluetooth version's BMS continuous rating and any Redodo statement about using Minn Kota or multi-bank chargers. Redodo's store returned HTTP 429 on the product page.",
+  "Redodo's own rules for charging 12V batteries wired in series (with one 29.2 V charger or a multi-bank charger), which would matter for a 2× or 3× 12V kit. I didn't reach this before running out of calls.",
+  "Amazon prices for the Minn Kota MKR-27 breaker and the MK-330PCL. I didn't check Amazon, and neither item can go in the Redodo cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.3178300000000003
+ }
+}
