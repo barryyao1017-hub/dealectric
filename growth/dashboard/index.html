@@ -128,7 +128,7 @@
         <tbody data-draw="days-rows"></tbody>
       </table>
     </div>
-    <p class="dl-note" id="days-caveat">Days in grey are before full page logging began on Nov 11: their shoppers, visits and page views count only visits that arrived on a link tagged by an AI assistant, so they read low. Buy-link clicks, orders and commission are complete for every day. Comparisons with yesterday start the day after full logging began.</p>
+    <p class="dl-note" id="days-caveat">Every day counts people only, with the same bot rules. Days in grey are before full page logging began on Nov 11: their shoppers, visits and page views count only people who arrived on a link tagged by an AI assistant or clicked a buy link, so they are lower bounds (≥). Visits from search and typed-in addresses on those days were never stored. On Nov 11 such visitors were about a quarter of all shoppers. Buy-link clicks, orders and commission are complete for every day. Comparisons with yesterday start the day after full logging began.</p>
   </section>
 
   <section class="dl-section" id="trends">
@@ -533,7 +533,9 @@
       if (+r.full_logging === 0) tr.classList.add('dl-partial');
       if (i === 0) tr.classList.add('dl-today');
       cell(tr, fmt('day', r.day) + (i === 0 ? ' (so far)' : ''));
-      numCell(tr, 'int', r.shoppers); numCell(tr, 'int', r.visits); numCell(tr, 'int', r.views);
+      // Before full logging only tagged visits were stored, so these three are lower bounds there.
+      const atLeast = (v) => { const td = cell(tr, (+r.full_logging === 0 && +v > 0 ? '≥ ' : '') + fmt('int', v), 'n'); if (!+v) td.classList.add('dl-zero'); };
+      atLeast(r.shoppers); atLeast(r.visits); atLeast(r.views);
       numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders); numCell(tr, 'usd', r.commission);
       return tr;
     }));
