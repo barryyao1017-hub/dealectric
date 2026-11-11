@@ -322,7 +322,10 @@ def apply(slug: str, local: bool) -> dict:
         gappage.insert({**draft, "status": "products_only"}, {})
         subprocess.run(["python3.12", "tools/images.py", *news], cwd=ROOT, capture_output=True, text=True)
     fails = []
-    for k in draft_kits(draft):
+    import time
+    for n, k in enumerate(draft_kits(draft)):
+        if n:
+            time.sleep(90)   # Shopify 429s back-to-back cart tests on one store (UGREEN, 11-11)
         write_kit({**draft, "kit": k})
         r = subprocess.run(["python3.12", "tools/kitcheck.py", k["slug"]], cwd=ROOT, capture_output=True, text=True)
         print(k["slug"], r.stdout[-1200:], r.stderr[-400:], flush=True)
