@@ -1070,16 +1070,21 @@ def vols() -> dict:
 
 
 def wm_fill(args) -> dict:
-    """Webmaster counts for cluster variants Ad Insight hasn't counted, at most WM_DAILY calls (fallback while Microsoft
-    Ads is blocked)."""
+    """Webmaster counts for cluster variants Ad Insight hasn't counted, at most WM_DAILY calls per calendar day across
+    every pass (fallback while Microsoft Ads is blocked). The day's calls are kept in volume.json "wm_calls" (11-11: the
+    cap used to reset with each `daily` run, so three passes made ~900 calls)."""
     out = load("volume.json", {"volumes": {}})
     out.setdefault("api_done", [])
+    calls = out.setdefault("wm_calls", {})
+    day = date.today().isoformat()
+    room = max(0, WM_DAILY - calls.get(day, 0))
     done, ms = set(out["api_done"]), out.get("ms", {})
     qs = [x["q"] for c in clusters() if c["queries"] and not c["covered_by"] for x in c["queries"][:6]]
-    qs = [q for q in dict.fromkeys(qs) if q not in ms and f"stats|{q}" not in done][:WM_DAILY]
+    qs = [q for q in dict.fromkeys(qs) if q not in ms and f"stats|{q}" not in done][:room]
     got = 0
     for q in qs:
         d = bwt("GetKeywordStats", q=q, country="us", language="en-US")
+        calls[day] = calls.get(day, 0) + 1   # a failed call still counts against the day
         if d is None:   # throttled or failed: stop for today, never retry in a loop
             break
         if d:
@@ -1088,7 +1093,7 @@ def wm_fill(args) -> dict:
             got += 1
         out["api_done"].append(f"stats|{q}")
     save("volume.json", out)
-    return {"asked": len(qs), "with_counts": got}
+    return {"asked": len(qs), "with_counts": got, "calls_today": calls.get(day, 0), "cap": WM_DAILY}
 
 
 def supply_daily(args) -> dict:
