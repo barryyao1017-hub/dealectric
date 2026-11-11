@@ -1,0 +1,136 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that the UGREEN NAS UPS US3000 (120 W DC, 12,000 mAh / 43.2 Wh) plugs into a NASync DXP2800 by USB and is detected by UGOS Pro. UGOS Pro then shuts the NAS down cleanly a few minutes into an outage, and the UPS powers it back on when mains power returns, so the NAS and UPS have to be bought as a matched pair from UGREEN's own line.",
+ "standout": 1,
+ "standout_why": "I compared against the pages in ChatGPT's results that I could open. terabytewise.com/best-nas-for-plex-transcoding (updated 2026-11-11) already lists UGREEN's US2000 ($69.99) and US3000 ($109.99), NAS+UPS bundles such as DXP2800 + US2000 at $460.22, and the US2000 line 'Only Compatible for UGREEN NAS DH2300, DH4300 Plus, DXP2800, DXP2800 GT'. It does not say how the UPS talks to the NAS (USB), that UGOS Pro detects it and shuts down cleanly, or what happens when power returns. qnap.com/en/solution/plex-best-nas does not mention a UPS, drive compatibility, a switch or backup. The Plex support pages cover only transcoding, CPUs and NAS limits. terabytewise already has part of the UPS story, so this scores 1, not 2.",
+ "kit_items": [
+  "NAS: UGREEN NASync DXP2800 (2-bay, Intel N100, 2.5GbE). It handles ChatGPT's 'budget 2-bay Plex' case, and actualidadgadget tested it with the US3000.",
+  "UPS: UGREEN NAS UPS US3000 (120 W DC, 43.2 Wh). It links to the NAS by USB so UGOS Pro can shut down cleanly, and it restarts the NAS when power returns. The cheaper US2000 (72 W) also fits the DXP2800 according to its own product title as quoted on terabytewise.",
+  "Drives: 2× NAS-rated 3.5-inch HDDs, mirrored (ChatGPT's own suggestion was 2 × 8 TB). The search of nas.ugreen.com returned no hard drives, so drives can't go in the same cart.",
+  "Step-up option: UGREEN NASync DXP4800 Plus (4-bay) + US3000. I could not open a UGREEN or manual page that confirms this pairing (see unsourced)."
+ ],
+ "carts": [
+  {
+   "store": "UGREEN NAS store (nas.ugreen.com). Note: the approved cj:ugreen program lists us.ugreen.com, and that store's search returned no NAS or NAS-UPS products. Check that the CJ link covers nas.ugreen.com before using this cart.",
+   "items": [
+    "UGREEN NASync DXP2800 | https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage | $389.99 (compare-at $564.98) | 2026-11-11",
+    "UGREEN NAS UPS US3000 120W DC Battery Backup and Surge Protector | https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah | $109.99 (compare-at $137.50) | 2026-11-11"
+   ],
+   "bundle_sku": "none found on nas.ugreen.com. The only bundle the store's search returned was 'NASync DXP4800 Pro 4-Bay NAS + Docking Station Bundle' at $754.99. terabytewise shows a DXP2800 & US2000 bundle at $460.22, but that is an Amazon snapshot I did not check."
+  },
+  {
+   "store": "UGREEN NAS store (nas.ugreen.com), lower-cost UPS",
+   "items": [
+    "UGREEN NASync DXP2800 | https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage | $389.99 | 2026-11-11",
+    "UGREEN NAS UPS US2000 72W DC Battery Backup and Surge Protector | https://nas.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply | $69.99 (compare-at $79.99) | 2026-11-11"
+   ],
+   "bundle_sku": "none"
+  },
+  {
+   "store": "UGREEN NAS store (nas.ugreen.com), 4-bay step-up",
+   "items": [
+    "UGREEN NASync DXP4800 Plus | https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage | $619.99 (compare-at $1,129.98) | 2026-11-11",
+    "UGREEN NAS UPS US3000 | https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah | $109.99 | 2026-11-11"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "price, maker's US NAS store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-11",
+   "note": "From storecheck.py's Shopify search on nas.ugreen.com. A direct page fetch returned HTTP 429. The same $389.99 appears on terabytewise."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "price, maker's US NAS store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-11",
+   "note": "storecheck.py search. Matches ChatGPT's card price of $619.99."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "price, maker's US NAS store",
+   "value": "$109.99 (compare-at $137.50), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS UPS US3000 120W DC Battery Backup and Surge Protector",
+   "read": "2026-11-11",
+   "note": "storecheck.py search. A direct page fetch returned HTTP 429 twice."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "price, maker's US NAS store",
+   "value": "$69.99 (compare-at $79.99), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply",
+   "source_title": "UGREEN NAS UPS US2000 72W DC Battery Backup and Surge Protector",
+   "read": "2026-11-11",
+   "note": "storecheck.py search."
+  },
+  {
+   "product": "UGREEN NASync DH2300 / DH4300 Plus / DXP4800 Pro",
+   "label": "other NASync prices, maker's US NAS store",
+   "value": "DH2300 $239.99; DH4300 Plus $373.99; DXP4800 Pro $679.99",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300",
+   "read": "2026-11-11",
+   "note": "storecheck.py search. The DH4300 Plus URL is https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage and the DXP4800 Pro URL is https://nas.ugreen.com/products/ugreen-nasync-dxp4800-pro-4-bay-nas."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000 with NASync DXP2800",
+   "label": "how it links to the NAS and what happens in an outage",
+   "value": "DC power plus a USB data cable. UGOS Pro detects the UPS 'immediately' over USB. In an outage the NAS enters safe mode and shuts down cleanly after a few minutes. When power returns, the UPS powers the NAS back on without anyone touching it.",
+   "source": "https://www.actualidadgadget.com/en/Analysis-of-the-Ugreen-Nasync-DXP2800-UPS-DC-120W%3A-The-ultimate-combo-against-data-loss/",
+   "source_title": "UGREEN NASync DXP2800 + UPS DC 120W Review: The Ultimate Combo Against Data Loss (Actualidad Gadget)",
+   "read": "2026-11-11",
+   "note": "A named reviewer's hands-on review of this exact pairing. The page did not say whether power goes in through a DC barrel plug."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "output and battery",
+   "value": "120 W max output; 12,000 mAh (43.2 Wh) battery",
+   "source": "https://www.actualidadgadget.com/en/Analysis-of-the-Ugreen-Nasync-DXP2800-UPS-DC-120W%3A-The-ultimate-combo-against-data-loss/",
+   "source_title": "UGREEN NASync DXP2800 + UPS DC 120W Review (Actualidad Gadget)",
+   "read": "2026-11-11",
+   "note": "From the reviewer. The maker's page could not be opened (HTTP 429). The reviewer gives 10–20 min of runtime on a DXP2800 but presents it as an estimate, not a measurement, so it is left out as a value."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "compatible NAS models (product title as listed)",
+   "value": "DH2300, DH4300 Plus, DXP2800, DXP2800 GT only",
+   "source": "https://terabytewise.com/best-nas-for-plex-transcoding",
+   "source_title": "Best NAS for Plex Hardware Transcoding (terabytewise)",
+   "read": "2026-11-11",
+   "note": "Rival page quoting the product listing: 'Only Compatible for UGREEN NAS DH2300, DH4300 Plus,DXP2800,DXP2800 GT'. This means the US2000 does not cover the 4-bay DXP4800 Plus that ChatGPT picked as best overall."
+  },
+  {
+   "product": "Synology DS225+ / DS425+ / DS925+ (2025 Plus series)",
+   "label": "third-party drives",
+   "value": "Third-party HDDs can be used for installation and storage pools once DSM 7.3 is installed. Before DSM 7.3, unlisted drives could not initialise DSM. Synology support may limit help for problems caused by drives not on its list.",
+   "source": "https://nascompares.com/news/synology-reverse-the-hard-drive-policy-in-dsm-7-3-we-win/amp/",
+   "source_title": "Synology (FINALLY) Gives In to 3rd Party HDD Support in 2025 PLUS Series NAS (NASCompares)",
+   "read": "2026-11-11",
+   "note": "NASCompares article updated 2025-07-10, written before release. Its M.2 SSD position is unclear and partly contradictory. No ChatGPT result mentions this, but it only matters for an Amazon Synology cart."
+  }
+ ],
+ "unsourced": [
+  "The US3000's full compatible and incompatible NAS list (I could not confirm that it covers the DXP4800 Plus and excludes the DXP6800/DXP8800). The maker's page nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah returned HTTP 429 twice, manuals.plus returned 403 and B&H returned 403. Only a search snippet said it covers the DXP4800 Plus.",
+  "Whether the NAS turns itself back on after an outage once it has shut down: an Unraid forum thread (forums.unraid.net/topic/192997) reportedly says the DXP4800 Plus + US3000 stays off unless the BIOS power-on-after-power-loss setting is on. The page returned HTTP 503, so I don't use it, and it conflicts with Actualidad Gadget's auto-restart claim.",
+  "A measured runtime for the US3000 with a DXP2800 or DXP4800 plus drives. Actualidad Gadget gives only an estimate. The techpowerup DXP4800 Plus power page returned 403.",
+  "Whether nas.ugreen.com sells hard drives or NAS+drive bundles: the store search for 'bundle hard drive' returned only NAS units and one docking-station bundle.",
+  "Amazon prices for Synology DS225+/DS425+, QNAP TS-464 and the UGREEN NAS + UPS bundles: amzcheck.py search returned nothing (blocked), so I skipped them.",
+  "Synology's own DSM 7.3 release notes on third-party drives: the synology.com release-notes page came back with navigation only. TechRadar and Android Central came back truncated to the headline.",
+  "Whether the US3000 includes the USB data cable in the box. Not on any page I could open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9463482
+ }
+}

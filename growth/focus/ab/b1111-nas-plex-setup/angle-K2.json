@@ -1,0 +1,132 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that UGREEN's NAS UPS has to match the NAS model: the 120 W US3000 fits the DXP4800 Plus, DXP2800, DH2300, DH4300 Plus and DXP480T Plus, but not the DXP6800 or DXP8800. The smaller US2000 is listed as working with the DH series only. The US3000 ships without a power adapter of its own: it sits between the NAS's own DC brick and the NAS, and it needs a USB data cable to a rear USB port on the NAS before UGOS can shut the NAS down. It may also arrive in Energy-Saving Mode, which has to be switched to Normal before you rely on it.",
+ "standout": 1,
+ "standout_why": "I checked the top results from the second 'nas for plex' chat. ChatGPT cited none of them. terabytewise.com/best-nas-for-plex-transcoding is the only page that mentions the US3000, and only in a product-listing title ('Compatible for DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus'). It also lists the US2000 '72W DC' but never says which UPS fits which NAS. It does not say the DXP6800/DXP8800 are excluded, that the UPS runs off the NAS's own adapter, that a USB data link is required, or anything about Energy-Saving Mode. The QNAP pages are about Plex transcoding, so I did not open them for UPS content. Both ChatGPT answers say 'RAID is not a backup' and recommend the DXP4800 Plus, but neither mentions power protection or the UPS pairing. Plex's NAS Compatibility List page returned HTTP 403, so I could not read it.",
+ "kit_items": [
+  "NAS: UGREEN NASync DXP4800 Plus. It is the 4-bay model ChatGPT recommended, and UGREEN's own US3000 setup guide lists it as compatible with that UPS.",
+  "UPS: UGREEN NAS UPS US3000 (120 W DC). It is the UGREEN UPS that covers the DXP4800 Plus. UGREEN's compatibility page lists the US2000 ('UPS2000') as 'Only Support DH Series', so it is the wrong one for this NAS. The US3000 also does not fit the DXP6800 or DXP8800.",
+  "Power: the DXP4800 Plus's own DC adapter. The US3000 includes none ('US3000 does not include a separate power adapter'). The adapter plugs into the UPS's DC IN, and the UPS's DC OUT goes to the NAS.",
+  "Data link: a USB-C cable from the UPS's USB data port to a rear USB port on the NAS. Without it, UGOS cannot see the outage or trigger the shutdown set under Control Panel → Hardware & Power → UPS.",
+  "Drives: NAS-rated CMR hard drives. UGREEN's compatibility page says it does not recommend SMR drives or mixing old and new drives in one RAID array. I could not source a specific drive model or a drive that us.ugreen.com sells (see unsourced).",
+  "Router/switch protection is not covered by this kit. UGREEN says the DC UPS 'protects the NAS power path' and has no AC outlets."
+ ],
+ "carts": [
+  {
+   "store": "UGREEN US (us.ugreen.com)",
+   "items": [
+    "UGREEN NASync DXP4800 Plus | https://us.ugreen.com/products/ugreen-10gbe-4-bay-nas-storage | price not read: storecheck got HTTP 429 three times | 2026-11-11",
+    "UGREEN NAS UPS US3000 120W | https://us.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah | price not read: storecheck got HTTP 429 three times | 2026-11-11"
+   ],
+   "bundle_sku": "none seen; the store returned HTTP 429 before I could check for a NAS + UPS bundle"
+  }
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Compatible NASync models",
+   "value": "DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "The fetch summarised this list rather than quoting it word for word. Florian Burnel's IT-Connect review lists DXP2800, DXP4800, DXP4800 Plus, DH2300 and DH4300."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Models it does not fit",
+   "value": "DXP6800 and DXP8800 series",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "Quote: 'US3000 is not compatible with the DXP6800 or DXP8800 series.' UGREEN's compatibility page menu also says 'UPS3000: Only Support 2-4Bay Series'."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Supported NAS line",
+   "value": "DH series only",
+   "source": "https://ai.ugreen.com/pages/compatibility",
+   "source_title": "UGREEN Product Compatibility",
+   "read": "2026-11-11",
+   "note": "Menu text: 'UPS2000: Only Support DH Series'. That excludes the DXP4800 Plus, so the kit needs the US3000."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Power adapter included",
+   "value": "none; it uses the NAS's own adapter (adapter → UPS DC IN, UPS DC OUT → NAS)",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "Quote: 'US3000 does not include a separate power adapter.'"
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "NAS shutdown signalling",
+   "value": "USB link from the UPS's USB data port to a rear NAS USB port; set it up in UGOS under Control Panel → Hardware & Power → UPS (Standby Mode or Auto Shutdown; trigger immediately, after a set wait, or below 15% battery)",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "NASCompares lists the data port as 'USB-C data interface (SMBus)'. IT-Connect says UGOS detects the UPS automatically, with no driver."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Ships in Energy-Saving Mode",
+   "value": "may arrive in Energy-Saving Mode; UGREEN says to switch it to Normal Mode before relying on it",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "Quote: 'The unit may arrive in Energy-Saving Mode.'"
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "DC output",
+   "value": "12 V ⎓ 10 A, 120 W max; battery 43.2 Wh",
+   "source": "https://nascompares.com/review/ugreen-us3000-nas-ups-review/amp/",
+   "source_title": "NASCompares: UGREEN US3000 NAS UPS review",
+   "read": "2026-11-11",
+   "note": "From the review's spec table. The review says it 'works only with UGREEN NAS models that use external DC input'. It gives about 28 cm for the fixed DC cable but does not name the connector type."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Rated backup time",
+   "value": "about 10 min at up to 120 W",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UGREEN: UPS for NAS buying & setup guide",
+   "read": "2026-11-11",
+   "note": "UGREEN's figure. It says real runtime depends on the NAS model, drives, workload, battery condition and UGOS settings."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Measured runtime (IT-Connect)",
+   "value": "79 min to the 15% shutdown trigger, on a DH4300 Plus with 4 HDDs",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "IT-Connect: Test UGREEN NAS UPS 120W (Florian Burnel, 2026-03-24)",
+   "read": "2026-11-11",
+   "note": "Measured on the ARM DH4300 Plus, not the DXP4800 Plus. UGOS first estimated 15 min. IT-Connect calls the DXP6800 Pro and DXP8800 incompatible because they draw more power."
+  },
+  {
+   "product": "general (UGREEN NASync)",
+   "label": "Drive guidance",
+   "value": "UGREEN does not recommend SMR drives or mixing old and new drives in the same RAID array; an unlisted part is not automatically incompatible but stability is not guaranteed",
+   "source": "https://ai.ugreen.com/pages/compatibility",
+   "source_title": "UGREEN Product Compatibility",
+   "read": "2026-11-11",
+   "note": "From the page FAQ. The per-model table loads dynamically and showed 'Loading', so I could not read model-specific entries."
+  }
+ ],
+ "unsourced": [
+  "US prices for the DXP4800 Plus and US3000 on us.ugreen.com: storecheck search returned nothing for 'DXP4800 Plus' and 'US3000', and both product URLs returned HTTP 429 three times on 2026-11-11. ai.ugreen.com and nas.ugreen.com also returned 429.",
+  "Amazon prices: amzcheck reported blocked for B0FPF5KVK3 (US3000), and the DXP4800 Plus search returned nothing.",
+  "The DXP4800 Plus's own DC adapter rating (voltage and watts), to check headroom under the US3000's 12 V / 120 W output. No UGREEN spec page opened. The US3000 input ratings 12V⎓10A / 19V⎓7.9A / 20V⎓7A appeared only in a search snippet, so I left them out.",
+  "Per-model HDD and RAM entries for the DXP4800 Plus on UGREEN's compatibility list: the table did not load (showed 'Loading').",
+  "Whether us.ugreen.com sells hard drives, so drives can go in the same cart: not checked because of the 429s.",
+  "A NAS + UPS bundle SKU on us.ugreen.com: not checked because of the 429s.",
+  "Whether Plex's NAS Compatibility List includes UGREEN/UGOS: support.plex.tv returned HTTP 403.",
+  "A measured US3000 runtime on a DXP4800 Plus specifically: the only measurement I found was on a DH4300 Plus."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0077835999999998
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "angle": "K4",
+ "gap": "No result ChatGPT got states that UGREEN's own NAS store sells the DXP4800 Plus and the US3000 120 W DC UPS as one bundle at $689.99 (and the DXP2800 + UPS at $449.99), or that the US3000 is not compatible with the DXP6800 and DXP8800 series, so it fits only the 2- and 4-bay NASync models.",
+ "standout": 1,
+ "standout_why": "ChatGPT's answers cited nothing. I compared against its top results. qnap.com/en/solution/plex-best-nas says nothing about a UPS, power outages or bundles. The support.plex.tv articles are about transcoding and CPUs. terabytewise.com/best-nas-for-plex-transcoding has part of it: its product listings show NAS + UPS bundles at retailer prices ('DXP4800 Plus & US3000 ... Bundle' $692.53, 'DXP2800 & US2000 ... Bundle' $460.22) and the US2000's list of compatible models. Its article text never discusses a UPS. It does not give UGREEN's own bundle prices, and it does not say the US3000 excludes the 6- and 8-bay models.",
+ "kit_items": [
+  "NAS: UGREEN NASync DXP4800 Plus (4 bays, Intel Pentium Gold 8505, 10GbE). It is ChatGPT's 'best overall' pick, it is already in the Dealectric catalog under cj:ugreen, and UGREEN sells it bundled with a UPS. The DXP2800 (2 bays, N100) is the budget alternative and has its own UPS bundle.",
+  "Battery backup: UGREEN NAS UPS US3000 (120 W DC, 12,000 mAh, switches to battery in 0 s, USB-C to the NAS for monitoring). It is made for NASync, but it is listed as not compatible with the DXP6800 and DXP8800, so the kit must use a 2- or 4-bay model.",
+  "Drives: NAS-rated CMR HDDs. No approved brand store sells them, so they only fit in an Amazon cart, and I could not price them on Amazon today (see unsourced)."
+ ],
+ "carts": [
+  {
+   "store": "UGREEN NAS store (ai.ugreen.com; nas.ugreen.com now 301-redirects here)",
+   "items": [
+    "UGREEN NAS UPS US3000 120W | https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah | $109.99 (regular $137.50) | 2026-11-11",
+    "UGREEN NASync DXP4800 Plus + UPS bundle (bundle SKU listed in the store's navigation) | https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah (bundle's own URL not opened) | $689.99 | 2026-11-11",
+    "UGREEN NASync DXP2800 + UPS bundle | listed on the same page | $449.99 | 2026-11-11"
+   ],
+   "bundle_sku": "Yes. UGREEN's NAS store lists NAS + UPS bundles: DXP2800 + UPS $449.99, DXP2800GT + UPS $434.99, DXP4800GT + UPS $614.99, DXP4800 Plus + UPS $689.99, DXP4800 Pro + UPS $714.99, DH2300 + UPS $247.98 and DH4300 Plus + UPS $402.69 (read 2026-11-11 from the US3000 page). Use the bundle SKU. I could not read the store's own standalone NAS prices because of HTTP 429, so whether it saves money is shown only against third-party standalone prices (see findings). No free gift is mentioned; the page offers free shipping and a 30-day trial."
+  },
+  {
+   "store": "UGREEN US store (us.ugreen.com, the approved cj:ugreen store)",
+   "items": [],
+   "bundle_sku": "none found. storecheck searches of us.ugreen.com for 'NAS' and 'NASync' returned only drive enclosures, SSD enclosures and power banks. No NASync NAS or US3000 came back, so the NAS + UPS cart seems to live only on the separate ai.ugreen.com store."
+  },
+  {
+   "store": "Amazon",
+   "items": [],
+   "bundle_sku": "Not checked. amzcheck search returned nothing (Amazon appears to be blocking it), so I skipped Amazon prices as the rules require."
+  }
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Price on UGREEN's NAS store",
+   "value": "$109.99 sale, $137.50 regular (20% off)",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply",
+   "read": "2026-11-11",
+   "note": "Read with WebFetch. storecheck got HTTP 429 from every UGREEN host today."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Incompatible NAS models",
+   "value": "Not compatible with the DXP6800 and DXP8800 series. Compatible: DXP4800 Plus, DXP2800, DH2300, DH4300 Plus, DXP480T Plus.",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply",
+   "read": "2026-11-11",
+   "note": "Page text: 'Note: This model is not compatible with the DXP6800 and DXP8800 series.'"
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Battery, output and switchover",
+   "value": "12,000 mAh, 120 W DC output, USB-C, 0 s switchover to battery",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply",
+   "read": "2026-11-11",
+   "note": "The page does not state a runtime in minutes."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus + UPS bundle",
+   "label": "Bundle price on UGREEN's NAS store",
+   "value": "$689.99",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply (site navigation, UPS bundles)",
+   "read": "2026-11-11",
+   "note": "Arithmetic against third-party prices: DXP4800 Plus $619.99 (diskless listing on terabytewise.com, read 2026-11-11) + US3000 $109.99 = $729.98, so the bundle is $39.99 less. I could not read UGREEN's own standalone price."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 + UPS bundle",
+   "label": "Bundle price on UGREEN's NAS store",
+   "value": "$449.99",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply (site navigation, UPS bundles)",
+   "read": "2026-11-11",
+   "note": "Arithmetic: DXP2800 $389.99 (terabytewise.com listing, read 2026-11-11) + US3000 $109.99 = $499.98, so the bundle is $49.99 less. The page does not say which UPS (US3000 or the 72 W US2000) is in this bundle."
+  },
+  {
+   "product": "general",
+   "label": "UGREEN NAS store location",
+   "value": "nas.ugreen.com returns 301 Moved Permanently to ai.ugreen.com",
+   "source": "https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS 120W DC Uninterruptible Power Supply (redirect)",
+   "read": "2026-11-11",
+   "note": "The approved cj:ugreen store is us.ugreen.com. Whether cj:ugreen tracks sales on ai.ugreen.com must be confirmed in CJ before the kit link is built."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Rival listing: smaller UPS and its compatibility",
+   "value": "72 W DC, $69.99, compatible with DH2300, DH4300 Plus, DXP2800, DXP2800 GT",
+   "source": "https://terabytewise.com/best-nas-for-plex-transcoding",
+   "source_title": "Best NAS for Plex Hardware Transcoding",
+   "read": "2026-11-11",
+   "note": "Comes from the rival page's product listings, not UGREEN, and shows what the rival already covers."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own standalone prices for the DXP4800 Plus and DXP2800 on ai.ugreen.com: storecheck and WebFetch both got HTTP 429 on the product pages and on /products, so the bundle savings above rely on terabytewise.com's listing prices.",
+  "Each NAS + UPS bundle's own product URL and which UPS (US2000 or US3000) is in the DXP2800 bundle: the bundle pages could not be opened because of HTTP 429.",
+  "The US3000's runtime in minutes with a 4-bay NAS: the UGREEN product page gives no figure, and I did not reach a reviewer page with a measurement.",
+  "Amazon prices for the NASync models, the US3000, and NAS HDDs (for example WD Red Plus or Seagate IronWolf): amzcheck search returned nothing, so Amazon looks blocked.",
+  "Whether us.ugreen.com sells any NASync model at all: storecheck search returned none, and the direct product-handle checks hit HTTP 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.901907
+ }
+}

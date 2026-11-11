@@ -1,0 +1,263 @@
+{
+ "status": "ok",
+ "angle": "K1",
+ "why_angle": "Neither ChatGPT answer nor the one rival page that names UGREEN's UPS (terabytewise) connects the UPS to the NAS. They give no NAS wattage, no Wh capacity, no headroom against the UPS's output cap and no runtime. This page matches each NAS to a UPS by its measured draw (DXP4800 Plus 64 W peak against the US3000's 120 W cap). It gives the runtime arithmetic for each kit and checks it against IT-Connect's measured 79 minutes.",
+ "slug": "home-nas-setup-with-ups-battery-backup",
+ "must": [
+  "pair the 4-bay UGREEN DXP4800 Plus with its 120 W US3000 UPS",
+  "the NAS peaks at 64 W, leaving 56 W of headroom"
+ ],
+ "kit": {
+  "slug": "kit-4-bay-plex-us3000",
+  "name": "4-bay Plex and growth",
+  "items": [
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "qty": 1,
+    "option": "diskless",
+    "role": "4-bay NAS, Intel Pentium Gold 8505, 10GbE: room to add drives as the library grows"
+   },
+   {
+    "slug": "ugreen-nas-ups-us3000-120w",
+    "qty": 1,
+    "option": "",
+    "role": "120 W DC battery backup, 43.2 Wh; tells UGOS over USB to shut the NAS down cleanly"
+   }
+  ]
+ },
+ "kits": [
+  {
+   "slug": "kit-4-bay-plex-us3000",
+   "name": "4-bay Plex and growth",
+   "items": [
+    {
+     "slug": "ugreen-nasync-dxp4800-plus",
+     "qty": 1,
+     "option": "diskless",
+     "role": "4-bay NAS, Intel Pentium Gold 8505, 10GbE: room to add drives as the library grows"
+    },
+    {
+     "slug": "ugreen-nas-ups-us3000-120w",
+     "qty": 1,
+     "option": "",
+     "role": "120 W DC battery backup, 43.2 Wh; the only UGREEN UPS listed for the DXP4800 Plus"
+    }
+   ]
+  },
+  {
+   "slug": "kit-2-bay-plex-us2000",
+   "name": "2-bay budget Plex",
+   "items": [
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "qty": 1,
+     "option": "diskless",
+     "role": "2-bay NAS, Intel N100, 2.5GbE: a mirrored pair for a smaller library"
+    },
+    {
+     "slug": "ugreen-nas-ups-us2000-72w",
+     "qty": 1,
+     "option": "",
+     "role": "72 W DC battery backup, 22.2 Wh; covers the DXP2800's 34.7 W measured max"
+    }
+   ]
+  },
+  {
+   "slug": "kit-4-bay-files-us3000",
+   "name": "4-bay family files",
+   "items": [
+    {
+     "slug": "ugreen-nasync-dh4300-plus",
+     "qty": 1,
+     "option": "diskless",
+     "role": "4-bay ARM NAS, 8 GB, 2.5GbE, for file and photo storage"
+    },
+    {
+     "slug": "ugreen-nas-ups-us3000-120w",
+     "qty": 1,
+     "option": "",
+     "role": "120 W DC battery backup, 43.2 Wh; IT-Connect measured 79 min on this NAS with 4 HDDs"
+    }
+   ]
+  },
+  {
+   "slug": "kit-2-bay-starter-us2000",
+   "name": "Cheapest photo backup",
+   "items": [
+    {
+     "slug": "ugreen-nasync-dh2300",
+     "qty": 1,
+     "option": "diskless",
+     "role": "2-bay ARM NAS, 4 GB, HDMI, for one or two people's files and photos"
+    },
+    {
+     "slug": "ugreen-nas-ups-us2000-72w",
+     "qty": 1,
+     "option": "",
+     "role": "72 W DC battery backup, 22.2 Wh; the DH2300 draws 15–17 W at most"
+    }
+   ]
+  }
+ ],
+ "products": [],
+ "page": {
+  "title": "Home NAS Setup: 4 NAS + Battery Backup Kits Sized by Power Draw",
+  "h1": "Home NAS setup: the NAS and battery backup kit that fits your home",
+  "desc": "Four home NAS setups, each paired with the UGREEN UPS that fits its measured power draw, with headroom and minutes of battery backup worked out for each kit.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> For most home NAS setups, pair the 4-bay UGREEN DXP4800 Plus with its 120 W US3000 UPS: the NAS peaks at 64 W, leaving 56 W of headroom and an estimated 45–69 minutes on battery before a clean shutdown. Two-bay setups fit the 72 W US2000.</p>",
+  "columns": [
+   [
+    "for",
+    "Who it's for"
+   ],
+   [
+    "nas",
+    "NAS"
+   ],
+   [
+    "draw",
+    "Measured NAS draw"
+   ],
+   [
+    "ups",
+    "UPS cap / battery"
+   ],
+   [
+    "headroom",
+    "UPS headroom"
+   ],
+   [
+    "runtime",
+    "Battery time to 15% shutdown"
+   ]
+  ],
+  "rows": [
+   {
+    "kit": "kit-4-bay-plex-us3000",
+    "model": "4-bay Plex and growth",
+    "cells": {
+     "for": "A Plex library that will outgrow two drives",
+     "nas": "DXP4800 Plus: 4 bays, Pentium Gold 8505, 10GbE",
+     "draw": "32–49 W in use, 64 W peak (Mighty Gadget)",
+     "ups": "US3000: 120 W, 43.2 Wh",
+     "headroom": "56 W (120 − 64)",
+     "runtime": "≈45–69 min, estimated at 32–49 W"
+    }
+   },
+   {
+    "kit": "kit-2-bay-plex-us2000",
+    "model": "2-bay budget Plex",
+    "cells": {
+     "for": "Plex for one household, two mirrored drives",
+     "nas": "DXP2800: 2 bays, Intel N100, 2.5GbE",
+     "draw": "7 W idle, 34.7 W max (ocinside.de)",
+     "ups": "US2000: 72 W, 22.2 Wh",
+     "headroom": "37.3 W (72 − 34.7)",
+     "runtime": "≈33 min, estimated at the 34.7 W max"
+    }
+   },
+   {
+    "kit": "kit-4-bay-files-us3000",
+    "model": "4-bay family files",
+    "cells": {
+     "for": "Family files and phone photos on four drives",
+     "nas": "DH4300 Plus: 4 bays, 8-core ARM, 8 GB, 2.5GbE",
+     "draw": "≈28 W average with 4 HDDs (IT-Connect run)",
+     "ups": "US3000: 120 W, 43.2 Wh",
+     "headroom": "≈92 W over that average (120 − 28)",
+     "runtime": "79 min measured, 4 HDDs (IT-Connect)"
+    }
+   },
+   {
+    "kit": "kit-2-bay-starter-us2000",
+    "model": "Cheapest photo backup",
+    "cells": {
+     "for": "One or two people backing up files and photos",
+     "nas": "DH2300: 2 bays, 8-core ARM, 4 GB, HDMI",
+     "draw": "9–11 W idle, 15–17 W max (ocinside.de)",
+     "ups": "US2000: 72 W, 22.2 Wh",
+     "headroom": "55 W (72 − 17)",
+     "runtime": "≈67–103 min, estimated at 11–17 W"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>Each kit's UPS shuts the NAS down when the battery reaches 15%, so 85% of its rated energy is available before shutdown. The runtimes below divide that energy by the NAS's measured draw. They ignore conversion losses, so real runtimes will be shorter. UGREEN's UPS guide lists about 10 minutes of runtime for the US3000 but doesn't say at what load.</p><ul><li>Usable battery: US3000 43.2 Wh × 0.85 = 36.7 Wh; US2000 22.2 Wh × 0.85 = 18.9 Wh.</li><li>DXP4800 Plus on the US3000: 36.7 Wh ÷ 49 W = 0.75 h ≈ 45 min; 36.7 Wh ÷ 32 W = 1.15 h ≈ 69 min. Headroom: 120 W − 64 W = 56 W. Mighty Gadget thinks the 64 W peak came while two M.2 drives switched to read/write SSD cache.</li><li>DXP2800 on the US2000: 18.9 Wh ÷ 34.7 W = 0.54 h ≈ 33 min at ocinside.de's stress-test maximum. Headroom: 72 W − 34.7 W = 37.3 W.</li><li>DH4300 Plus on the US3000: IT-Connect measured 79 min with 4 HDDs. That implies an average draw of 36.7 Wh ÷ 1.32 h ≈ 28 W.</li><li>DH2300 on the US2000: 18.9 Wh ÷ 17 W = 1.11 h ≈ 67 min; 18.9 Wh ÷ 11 W = 1.72 h ≈ 103 min. Headroom: 72 W − 17 W = 55 W.</li><li>Kit cost at UGREEN's NAS store on 2026-11-11: $619.99 + $109.99 = $729.98; $389.99 + $69.99 = $459.98; $373.99 + $109.99 = $483.98; $239.99 + $69.99 = $309.98. The same store also lists a DXP4800 Plus + UPS bundle at $689.99, so check for it at checkout.</li></ul><table><thead><tr><th>Your use</th><th>Kit</th></tr></thead><tbody><tr><td>Plex library that will grow past two drives</td><td>4-bay Plex and growth</td></tr><tr><td>Plex for one household on a budget</td><td>2-bay budget Plex</td></tr><tr><td>Family files and phone photos on four drives</td><td>4-bay family files</td></tr><tr><td>Cheapest backup box for one or two people</td><td>Cheapest photo backup</td></tr></tbody></table><p>{kit:kit-4-bay-plex-us3000} Most people should start here. Four bays let you begin with two mirrored drives and add two later. The Pentium Gold 8505 has the most processing headroom of these four NAS units, and the US3000 still has 56 W to spare at the NAS's measured peak.</p><p>{kit:kit-2-bay-plex-us2000} Pick this for a smaller library on two drives. Even at full load the DXP2800 draws less than half of the US2000's 72 W cap, so the cheaper UPS is enough.</p><p>{kit:kit-4-bay-files-us3000} Pick this if you mainly store files and photos and want four bays for less than the DXP4800 Plus. Of the four kits, this pairing has a measured runtime: 79 minutes.</p><p>{kit:kit-2-bay-starter-us2000} The lowest-cost kit. At 15–17 W maximum, the DH2300 gets the longest estimated runtime from the small US2000.</p><h2>Sizing the UPS to the NAS</h2><p>UGREEN's NAS UPS units are DC units that run off the NAS's own power brick; UGREEN says the US3000 doesn't include a power adapter of its own. The NAS's own power brick plugs into the UPS's DC IN, and the UPS's DC OUT feeds the NAS. A USB data cable from the UPS to a rear USB port on the NAS lets UGOS detect the outage. Without that cable the NAS runs on battery until the battery is empty and never gets a shutdown signal. In UGOS, go to Control Panel → Hardware &amp; Power → UPS and choose when to shut down: right away, after a set wait, or below 15% battery. IT-Connect found that UGOS detects the UPS on its own, with no driver to install. UGREEN warns that the unit may arrive in Energy-Saving Mode; switch it to Normal Mode before you rely on it.</p><p>Match the UPS to the NAS's measured draw, not to its power brick. The DXP4800 Plus ships with a 150 W brick, but Mighty Gadget measured 32–49 W in daily use and 64 W at peak, well under the US3000's 120 W cap. The 72 W US2000 would leave only 8 W above that peak, and UGREEN's guide doesn't list it for the DXP4800 Plus. The US2000 is listed for the DH2300, DH4300 Plus, DXP2800 and DXP2800 GT. UGREEN's compatibility page menu, however, says the US2000 supports only the DH series, so check the product page before buying it for a DXP2800.</p><p>Each UPS has one DC output, and it feeds the NAS only. Your router and switch go dark in an outage, so remote access drops even while the NAS keeps running. Buy hard drives separately, because UGREEN's NAS store doesn't sell them. UGREEN advises against SMR drives and against mixing old and new drives in one RAID array, so start with two matching NAS-rated CMR drives in a mirror.</p><h2>Not recommended</h2><p>Don't pair the US3000 with a DXP6800 Pro or DXP8800 Plus. UGREEN states that the US3000 is not compatible with the DXP6800 or DXP8800 series, and IT-Connect describes those models as more power-hungry. Also don't count on automatic shutdown if you replace UGOS with TrueNAS SCALE. In a TrueNAS Forums thread, users on TrueNAS 25.10.4 report that its bundled NUT 2.8.0 does not detect the US3000. The workaround they describe is running a newer NUT in a Docker container. Stay on UGOS if you want the clean shutdown to work out of the box.</p>",
+  "sources": [
+   [
+    "DXP4800 Plus measured draw: 32 W evening, 39–45 W transfers, up to 49 W playback, 64 W peak; 150 W HuntKey brick (Mighty Gadget, read 2026-11-11)",
+    "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review-2/"
+   ],
+   [
+    "DXP2800 measured power: about 7 W idle, 34.7 W max (ocinside.de, read 2026-11-11)",
+    "https://www.ocinside.de/review/ugreen_dxp2800/4/"
+   ],
+   [
+    "DH2300 measured power: 9–11 W idle, 12–13 W copying, 15–17 W max (ocinside.de, read 2026-11-11)",
+    "https://www.ocinside.de/review/ugreen_dh2300/5/"
+   ],
+   [
+    "US3000 43.2 Wh; 79 min measured to the 15% shutdown on a DH4300 Plus with 4 HDDs; UGOS detects it over USB; not compatible with DXP6800 Pro/DXP8800 (IT-Connect, Florian Burnel, read 2026-11-11)",
+    "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/"
+   ],
+   [
+    "US3000 and US2000 compatible models, 120 W and 72 W outputs, US2000 22.2 Wh, US3000 includes no separate adapter, USB data link, Energy-Saving Mode, US3000 runtime listed as about 10 min with load not stated (UGREEN UPS guide, read 2026-11-11)",
+    "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide"
+   ],
+   [
+    "Drive guidance: no SMR drives, don't mix old and new drives in one RAID; menu text 'UPS2000: Only Support DH Series' (UGREEN compatibility page, read 2026-11-11)",
+    "https://ai.ugreen.com/pages/compatibility"
+   ],
+   [
+    "One DC output for one NAS; not designed to power a router or switch (Need to Know IT, read 2026-11-11)",
+    "https://needtoknowit.com.au/blog/ugreen-nas-120w-ups-review/"
+   ],
+   [
+    "TrueNAS SCALE 25.10.4's NUT 2.8.0 does not detect the US3000; Docker workaround (TrueNAS Forums, read 2026-11-11)",
+    "https://forums.truenas.com/t/ugreen-us3000-ups-usb-vid-2b89-ffff-not-accessible-by-nut-on-truenas-scale-25-10/66980"
+   ],
+   [
+    "US3000 price $109.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"
+   ],
+   [
+    "DXP4800 Plus + UPS bundle listed at $689.99 (UGREEN NAS store, as recorded by research 2026-11-11)",
+    "https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"
+   ],
+   [
+    "US2000 price $69.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply"
+   ],
+   [
+    "DXP4800 Plus price $619.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"
+   ],
+   [
+    "DXP2800 price $389.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "DH4300 Plus price $373.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage"
+   ],
+   [
+    "DH2300 price $239.99 (UGREEN NAS store, read 2026-11-11)",
+    "https://ai.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"
+   ]
+  ]
+ },
+ "bundle_compare": true,
+ "new_page": true,
+ "searched_as": [
+  "Plex NAS hardware transcoding Intel Quick Sync Plex Pass official support"
+ ],
+ "query": "home nas setup",
+ "kit_page": true,
+ "kit_fix": {
+  "note": "warranty/returns from UGREEN NAS store policy as on the US3000, 2026-11-11"
+ },
+ "gate": {
+  "date": "2026-11-11",
+  "pass": true,
+  "g": 250
+ }
+}

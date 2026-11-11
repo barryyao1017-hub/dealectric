@@ -1,0 +1,100 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got says how long UGREEN's NAS UPS keeps a full 4-drive NAS running. The US3000 holds 43.2 Wh. IT-Connect measured 79 minutes on a 4-HDD UGREEN NAS before the 15% safe-shutdown point, and at the DXP4800 Plus's measured 39–49 W that works out to about 45–56 minutes. The NAS's measured 64 W peak fits under the US3000's 120 W output cap with 56 W to spare.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's four answers and terabytewise.com/best-nas-for-plex-transcoding, which I opened. ChatGPT only says 'RAID is not a backup' and recommends 2.5GbE. It never mentions a UPS, NAS power draw or runtime. Terabytewise lists the UGREEN US3000 only as '120W DC and 12000mAh Battery Backup' at $109.99 and the US2000 as 72 W with 6000 mAh. It gives no Wh figure, no NAS wattage and no runtime, so it never connects the UPS to the NAS. I did not open the Plex support pages or the QNAP pages, which ChatGPT got but did not cite. Their titles cover transcoding and compatibility, not power. This finding helps the shopper choose the UPS size, but it does not decide which NAS to buy, so it scores 2 rather than 3.",
+ "kit_items": [
+  "NAS: UGREEN NASync DXP4800 Plus. It has 4 bays and an Intel Pentium Gold 8505 with Quick Sync for Plex, and ChatGPT picked it as 'best overall'. It runs on an external 19 V / 7.9 A / 150.1 W HuntKey brick (Kitguru, TechPowerUp). Because the power is external DC, UGREEN's DC UPS can sit between the brick and the NAS.",
+  "UPS: UGREEN NAS UPS US3000, 43.2 Wh, 120 W max, 0 s transfer, USB-C (SMBus) link so UGOS can shut the NAS down cleanly. Mighty Gadget measured the DXP4800 Plus peaking at 64 W, which is under the 120 W cap. The 72 W US2000 would leave only 8 W of headroom on this NAS. The US3000 does not work with the DXP6800 or DXP8800 (IT-Connect).",
+  "Drives: 2 NAS-rated 3.5-inch HDDs in RAID 1 to start, leaving 2 bays free (ChatGPT also suggested 2 × 8 TB). I could not find a drive sold in UGREEN's own US store, so a single-store UGREEN cart would not include drives.",
+  "Cheaper alternative: DXP2800 (2-bay, Intel N100). Measured max is 34.7 W (ocinside.de), which fits even the 72 W US2000."
+ ],
+ "carts": [
+  {
+   "store": "UGREEN (ai.ugreen.com, the NASync store under cj:ugreen)",
+   "items": [
+    "UGREEN NASync DXP4800 Plus | https://ai.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage | price not read: the store returned HTTP 429 to WebFetch and storecheck.py on four tries | 2026-11-11",
+    "UGREEN NAS UPS US3000 120W | https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah | price not read: the store returned HTTP 429 on four tries | 2026-11-11"
+   ],
+   "bundle_sku": "Unverified. Terabytewise.com, read 2026-11-11, lists bundles pairing the US3000 or US2000 with the DXP2800, DXP4800 or DXP4800 Plus. I could not open the UGREEN store to confirm a bundle SKU or its price."
+  }
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Battery rated energy",
+   "value": "43.2 Wh (14.4 V, 3000 mAh; 4 × 3000 mAh cells, 12,000 mAh total)",
+   "source": "https://nascompares.com/review/ugreen-us3000-nas-ups-review/amp/",
+   "source_title": "Review of the UGREEN NAS UPS – Is the US3000 120W UPS Any Good? (NASCompares)",
+   "read": "2026-11-11",
+   "note": "IT-Connect's test (Florian Burnel) gives the same 43.2 Wh. The maker page at ai.ugreen.com returned HTTP 429."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Max output / transfer time",
+   "value": "12 V 10 A, 120 W max; 0 s transfer (DC pass-through)",
+   "source": "https://nascompares.com/review/ugreen-us3000-nas-ups-review/amp/",
+   "source_title": "Review of the UGREEN NAS UPS – Is the US3000 120W UPS Any Good? (NASCompares)",
+   "read": "2026-11-11",
+   "note": "Listed inputs are 12 V 10 A, 19 V 7.9 A and 20 V 7 A. The 19 V 7.9 A input matches the DXP4800 Plus brick. Status reaches the NAS over USB-C using SMBus 3.1. It powers one NAS only, not routers or switches."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Measured runtime, 4-HDD UGREEN NAS",
+   "value": "79 min to the 15% shutdown threshold (UGREEN DH4300 Plus with 4 mechanical HDDs)",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "Test UGREEN NAS UPS 120W : une protection idéale pour votre NAS ? (IT-Connect, Florian Burnel, 2026-03-24)",
+   "read": "2026-11-11",
+   "note": "UGOS estimated 15 min at the start of the test, which the author called inaccurate. Heavy copying had no notable effect on runtime. Implied average draw: 43.2 Wh × 0.85 usable ≈ 36.7 Wh, and 36.7 Wh ÷ (79/60 h) ≈ 27.9 W, ignoring conversion losses. NASCompares and UGREEN's manual say about 10 min 'depending on workload', which is far below this measurement."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Compatibility limit",
+   "value": "Works with DXP2800, DXP4800, DXP4800 Plus, DH2300, DH4300; not compatible with DXP6800 Pro or DXP8800",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "Test UGREEN NAS UPS 120W (IT-Connect)",
+   "read": "2026-11-11",
+   "note": "IT-Connect's spec list and promo text name slightly different models (the DH4300 Plus and DXP4800 Pro also appear). This UPS cannot go in a kit with Dealectric's DXP6800 Pro or DXP8800 Plus listings."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Measured wall draw",
+   "value": "32 W (evening), 39–45 W (photo transfer), up to 47–49 W (4K and Jellyfin playback), 64 W peak",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review-2/",
+   "source_title": "Ugreen NASync DXP4800 Plus Review (Mighty Gadget, James Smythe, 2025-11-14, updated 2026-04-01)",
+   "read": "2026-11-11",
+   "note": "Measured with a TP-Link Tapo P110M smart plug read through Home Assistant, using WD Red Plus drives (count not stated). The 64 W peak came while switching to read/write SSD cache with two M.2 drives. Estimated US3000 runtime: 36.7 Wh ÷ 49 W ≈ 45 min; ÷ 39 W ≈ 56 min; ÷ 32 W ≈ 69 min. This is my arithmetic, not a measurement. Headroom: 120 W cap − 64 W peak = 56 W. On the 72 W US2000 it would be 72 − 64 = 8 W."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Power adapter",
+   "value": "150 W external HuntKey brick",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review-2/",
+   "source_title": "Ugreen NASync DXP4800 Plus Review (Mighty Gadget)",
+   "read": "2026-11-11",
+   "note": "The 19 V / 7.9 A / 150.1 W rating (HuntKey HKA15019076-6C) comes from TechPowerUp and Kitguru search snippets only. TechPowerUp returned 403 and I did not open Kitguru. The adapter's 150 W rating is above the UPS's 120 W cap, but measured draw stays under it."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power",
+   "value": "about 7 W idle; 34.7 W max (CPU, RAM and disk stress test)",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de)",
+   "read": "2026-11-11",
+   "note": "Drive models not stated. Estimated US3000 runtime at the 34.7 W max: 36.7 Wh ÷ 34.7 W ≈ 63 min (arithmetic only). The 2-bay fits even the 72 W US2000 with 37 W to spare."
+  }
+ ],
+ "unsourced": [
+  "Today's prices for the DXP4800 Plus, DXP2800 and US3000/US2000 in UGREEN's store: ai.ugreen.com and us.ugreen.com returned HTTP 429 to both WebFetch and storecheck.py on four tries. us.ugreen.com search did not return NAS products. amzcheck.py search returned nothing, so Amazon looks walled.",
+  "The maker's own UGREEN spec page for the US3000 and the DXP4800 Plus (wattage, adapter rating): rate-limited (429). I also tried the manual on manuals.plus (403) and TechPowerUp's power page (403).",
+  "A measured US3000 runtime on a DXP4800 Plus itself: I only found the DH4300 Plus test (IT-Connect). Neowin's DXP2800 + UPS review returned 403.",
+  "A NAS-rated HDD sold in UGREEN's US store, to complete a single-store cart: I could not search the store because of the 429 errors.",
+  "UGREEN's own bundle SKU and price for NAS + US3000: only terabytewise's listing mentions bundles, and I could not confirm them in UGREEN's store."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.062783
+ }
+}

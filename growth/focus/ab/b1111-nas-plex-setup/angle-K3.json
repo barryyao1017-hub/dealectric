@@ -1,0 +1,81 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that UGREEN's own NAS UPS (US3000) works only with the 2- and 4-bay NASync models (not the DXP6800 or DXP8800) and only signals a clean shutdown under UGREEN's UGOS: TrueNAS SCALE 25.10.4, the DIY route ChatGPT suggested, ships NUT 2.8.0, which cannot detect the US3000, so the NAS keeps running until the battery dies and then cuts off without shutting down.",
+ "standout": 2,
+ "standout_why": "I compared against Plex's 'NAS Devices and Limitations' page (support.plex.tv), terabytewise.com's 'Best NAS for Plex Hardware Transcoding', and ChatGPT's two answers ('RAID is not a backup', Tailscale, Plex Pass, 2.5 GbE). Plex's page does not mention UPS, drives, switches or UGREEN. Terabytewise names no UPS trap in its own text. The only overlap is one product listing on its page that says 'Only Compatible for UGREEN NAS DH2300, DH4300 Plus, DXP2800, DXP2800 GT'. That covers part of the model-fit point, but it leaves out the DXP4800 Plus and says nothing about shutdown signalling. No rival mentions that the UPS goes undetected on TrueNAS or that it needs the USB signal cable. The finding becomes decisive (3) only if the page's kit pairs the US3000 with a third-party OS or with a 6- or 8-bay NASync. For a UGOS 2- or 4-bay kit it is a useful new warning.",
+ "kit_items": [
+  "NAS: UGREEN NASync DXP4800 Plus (4-bay). it-connect.fr's review (Florian Burnel, 2026-03-24) and needtoknowit.com.au both list it as compatible with UGREEN's US3000 UPS. Do not use the DXP6800 Pro or DXP8800 Plus, which both sources say are incompatible.",
+  "UPS: UGREEN NAS UPS US3000 (120 W DC, 12 V 10 A out). It powers the NAS directly over DC and needs the supplied USB cable connected so UGOS can detect it and shut the NAS down.",
+  "Drives: 2× NAS-rated CMR HDDs. I did not research a specific model for this angle."
+ ],
+ "carts": [],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Third-party OS trap: TrueNAS SCALE cannot detect the UPS",
+   "value": "TrueNAS-25.10.4 ships NUT 2.8.0. nut-scanner -U finds nothing and upsc returns 'Error: Driver not connected'. The UPS needs the Arduino HID subdriver, which arrived in newer NUT releases (2.8.3 or later per one poster; working reports on 2.8.4 and 2.8.5).",
+   "source": "https://forums.truenas.com/t/ugreen-us3000-ups-usb-vid-2b89-ffff-not-accessible-by-nut-on-truenas-scale-25-10/66980",
+   "source_title": "UGREEN US3000 UPS (USB VID 2b89:ffff) not accessible by NUT on TrueNAS SCALE 25.10 – TrueNAS Forums",
+   "read": "2026-11-11",
+   "note": "Thread opened 2026-07-18; last reply 2026-10-21. 9 posts from 4 people. 2 report the failure: andtn82 on TrueNAS-25.10.4, and Juno, whose attempt to upgrade NUT inside TrueNAS also failed. LarsR says TrueNAS 26 only moves to NUT 2.8.1, still too old. Workaround: run NUT 2.8.5 in a Docker container (driver usbhid-ups, vendorid 2b89, productid ffff, subdriver Arduino, pollonly). Juno says the TrueNAS UPS service then tested OK. Effect: with stock TrueNAS the NAS gets no low-battery shutdown."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Compatible NAS models (named reviewer)",
+   "value": "DXP2800, DXP4800, DXP4800 Plus, DH2300, DH4300. Not compatible: DXP6800 Pro, DXP8800.",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "Test UGREEN NAS UPS 120W : une protection idéale pour votre NAS ? – IT-Connect (Florian Burnel)",
+   "read": "2026-11-11",
+   "note": "Article dated 2026-03-24. Quote: 'il n'est pas compatible avec les modèles plus gourmands comme le DXP6800 Pro ou le DXP8800' (it is not compatible with more power-hungry models like the DXP6800 Pro or DXP8800)."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "How shutdown signalling works",
+   "value": "A supplied USB cable runs from the UPS's USB-C port to a USB port on the NAS. UGOS detects the UPS automatically, with no driver to install.",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "Test UGREEN NAS UPS 120W : une protection idéale pour votre NAS ? – IT-Connect (Florian Burnel)",
+   "read": "2026-11-11",
+   "note": "If only the DC power cable is connected, the NAS runs on battery but receives no shutdown signal."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000 + NASync DH4300 Plus",
+   "label": "Measured runtime to auto-shutdown",
+   "value": "79 min",
+   "source": "https://www.it-connect.fr/test-ugreen-nas-ups-120w-une-protection-ideale-pour-votre-nas/",
+   "source_title": "Test UGREEN NAS UPS 120W : une protection idéale pour votre NAS ? – IT-Connect (Florian Burnel)",
+   "read": "2026-11-11",
+   "note": "Florian Burnel measured this on a DH4300 Plus with 4 hard drives, running until the battery reached 15%, when shutdown triggered. He reports heavy file copying made no notable difference. Not measured on a DXP4800 Plus."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Output limits and single-load design",
+   "value": "12 V 10 A, 120 W max, one DC output for one compatible UGREEN NAS. Not designed to power a switch or router.",
+   "source": "https://needtoknowit.com.au/blog/ugreen-nas-120w-ups-review/",
+   "source_title": "UGREEN NAS 120W UPS review – Need to Know IT",
+   "read": "2026-11-11",
+   "note": "Page last updated 2026-10-30 by the 'Need to Know IT Team'. It also says the DXP6800 and DXP8800 series are 'explicitly incompatible' because 'The DC voltage and connector specifications differ'. Its spec section lists models inconsistently, so I used it only for output rating and scope. Effect: during an outage the router stays dark, so remote access (e.g. Tailscale) drops even though the NAS stays up."
+  },
+  {
+   "product": "UGREEN NASync (any)",
+   "label": "Warranty when installing TrueNAS or Unraid",
+   "value": "UGREEN's 2024-03-26 update, as reported by NAS Compares: the warranty policy 'will not change, which only covers the hardware'. UGREEN gives no support for a third-party OS.",
+   "source": "https://nascompares.com/2024/03/14/ugreen-brand-user-qa-questions-about-the-new-dxp-nasync-nas-storage-solution/",
+   "source_title": "Your Questions for UGREEN about their New NAS Solution – NAS Compares",
+   "read": "2026-11-11",
+   "note": "Taken from a search summary of the page; I did not open it myself. Re-open before publishing. A TrueNAS forum user says a warranty sticker covers the boot drive."
+  }
+ ],
+ "unsourced": [
+  "US3000 price and DXP4800 Plus price today: the UGREEN US store returned HTTP 429 to storecheck.py and WebFetch, and the guessed product URL returned 404. amzcheck.py was blocked by Amazon for ASINs B0FPD6NJXX and B0FPF5KVK3. B&H returned 403.",
+  "UGREEN's own US product page or manual for the US3000 compatibility list: ai.ugreen.com returned 429 and manuals.plus (DXP480T Plus manual) returned 403. Compatibility comes from two named reviewers only.",
+  "Whether the 120 W US3000 can carry a DXP4800 Plus with 4 HDDs spinning up: I could not open the DXP4800 Plus power-adapter rating on UGREEN's site.",
+  "How many Unraid users report the US3000 working with NUT: forums.unraid.net topic 192997 returned 503.",
+  "Store bundle of NASync + US3000: I could not check because the UGREEN store was rate-limiting."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0806349000000002
+ }
+}
