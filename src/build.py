@@ -1529,6 +1529,8 @@ def kit_line(k, label="Kit", short=False):
     n = len(k["items"])
     word = {2: "both", 3: "all three", 4: "all four", 5: "all five"}.get(n, f"all {n}")
     if kit_is_amazon(k):
+        if short:   # the pick line when the item list would push the link out of the first chunk
+            return f"{label}: {html.escape(k['name'])}: one Amazon link that puts {word} in your Amazon cart: {a}"
         return f"{label}: {html.escape(k['name'])} ({names}), one Amazon link that puts {word} in your Amazon cart: {a}"
     p0, t = kit_products(k)[0][0], kit_test(k)
     if not t:
