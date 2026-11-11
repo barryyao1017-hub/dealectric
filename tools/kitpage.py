@@ -102,7 +102,34 @@ fit, return status "skip" with the reason.
         '"products": [', '"kit": {"slug", "name", "items": [...]},\n "products": [')
 
 
-def research(slug: str, force: bool = False) -> dict:
+def compare_compose_prompt(slug: str, h: dict, query: str, angles: dict) -> str:
+    base = kit_compose_prompt(slug, h, query, angles)
+    i = base.index("## This page sells a KIT (DLC-223)")
+    j = base.index("## Today", i)
+    block = """## This page COMPARES BUNDLES (DLC-223, Barry 11-11)
+The shopper needs a set of products. Build 2-4 kits that each answer the need for a DIFFERENT shopper situation (budget
+vs capacity, portability vs runtime, older vs newer device, one user vs a family...), so the table shows a real
+tradeoff and the shopper can find their own row. Rules:
+- Every kit is ONE cart that pays Dealectric a commission: all items from one approved brand's own US store (same
+  program, list below), or all items on Amazon (program amazon:us, any brands). Never mix stores inside a kit. Kits may
+  come from different stores. Prefer brand stores over Amazon (higher commission, cart and code tested daily).
+- 2-5 items per kit, each there because the need requires it; no padding. If the store sells the exact combination as
+  one bundle SKU for less, use that SKU as one item and say so.
+- kits: [{"slug": "kit-<short words>", "name": "<who it is for, 2-5 words>", "items": [{"slug", "qty", "option", "role"}]}],
+  best overall first. Use products we list where they fit; add product records (in "products") for the others, each
+  from the maker's page with the store URL of the exact item.
+- page.rows: one row per kit, {"kit": "<kit slug>", "model": "<kit name>", "cells": {...}}, in the kits' order, then
+  optionally 1-3 rows for sets the shopper would otherwise assemble that we don't sell ({"brand", "model", "url",
+  "cells"} with cells.price dated). Columns carry the tradeoff: who each kit is for and the deciding figures.
+- answer: names the best kit for most people and the one figure that decides between the kits, in the question's words.
+- after: put {kit:<slug>} once for each kit where the page explains who should pick it.
+- "must": phrases from the answer carrying the best kit and the deciding figure.
+
+"""
+    return base[:i] + block + base[j:]
+
+
+def research(slug: str, force: bool = False, compare: bool = False) -> dict:
     d = A.pdir(slug)
     if not force and (d / "draft.json").exists():
         return {"slug": slug, "status": "drafted (cached)"}
@@ -119,7 +146,7 @@ def research(slug: str, force: bool = False) -> dict:
         return {"slug": slug, "status": "error", "reason": "fewer than 3 angle reports came back"}
     comp = A.jload(d / "compose.json")
     if force or not comp or comp.get("status") not in ("ok", "skip"):
-        comp = A.claude(kit_compose_prompt(slug, h, q, angles))
+        comp = A.claude((compare_compose_prompt if compare else kit_compose_prompt)(slug, h, q, angles))
         A.jsave(d / "compose.json", comp)
     if comp.get("status") != "ok":
         return {"slug": slug, "status": comp.get("status"), "reason": comp.get("reason")}
@@ -131,6 +158,9 @@ def research(slug: str, force: bool = False) -> dict:
         return {"slug": slug, "status": "error", "reason": "verifier returned no draft"}
     draft = ver["draft"]
     draft.setdefault("kit", comp.get("kit"))
+    if compare:
+        draft.setdefault("kits", comp.get("kits"))
+        draft["bundle_compare"] = True
     import products as P
     import gaps
     taken = {p["slug"] for p in P.PRODUCTS} | {g["slug"] for g in gaps.GAP_PAGES} | {p["slug"] for p in draft.get("products") or []}
@@ -143,9 +173,25 @@ def research(slug: str, force: bool = False) -> dict:
     return {"slug": slug, "status": "drafted", "page": s2, "kit": (draft.get("kit") or {}).get("name")}
 
 
+def draft_kits(draft: dict) -> list[dict]:
+    return draft.get("kits") or ([draft["kit"]] if draft.get("kit") else [])
+
+
 def kit_errors(draft: dict) -> list[str]:
+    if draft.get("bundle_compare"):
+        ks = draft.get("kits") or []
+        errs = [] if 2 <= len(ks) <= 4 else [f"a bundle comparison needs 2-4 kits, has {len(ks)}"]
+        rows = [r.get("kit") for r in (draft.get("page") or {}).get("rows") or [] if r.get("kit")]
+        if rows[:len(ks)] != [k.get("slug") for k in ks]:
+            errs.append("page.rows must start with one row per kit, in the kits' order")
+        for k in ks:
+            errs += [f"{k.get('slug')}: {e}" for e in one_kit_errors(draft, k)]
+        return errs
+    return one_kit_errors(draft, draft.get("kit") or {})
+
+
+def one_kit_errors(draft: dict, k: dict) -> list[str]:
     import products as P
-    k = draft.get("kit") or {}
     errs = []
     if not re.fullmatch(r"kit-[a-z0-9-]{4,60}", k.get("slug") or ""):
         errs.append(f"kit slug {k.get('slug')!r} must look like kit-<words>")
@@ -162,7 +208,7 @@ def kit_errors(draft: dict) -> list[str]:
     if not amazon and (len(progs) > 1 or len(hosts) > 1 or any(p.startswith("amazon:") for p in progs)):
         errs.append(f"kit items span more than one cart: programs {sorted(progs)}, stores {sorted(hosts)}")
     if "{kit:" + (k.get("slug") or "") + "}" not in (draft.get("page") or {}).get("after", ""):
-        errs.append("the after-section must carry {kit:<kit slug>} once")
+        errs.append("the after-section must carry {kit:" + str(k.get("slug")) + "} once")
     return errs
 
 
@@ -250,9 +296,9 @@ def apply(slug: str, local: bool) -> dict:
         return {"slug": slug, "status": "no draft"}
     errs = kit_errors(draft) + product_errors(draft)
     if errs and not draft.get("kit_fix"):
-        fx = A.claude(A.fix_prompt(draft, errs + ["(this page sells a kit: keep the 'kit' key, same shape)"]))
+        fx = A.claude(A.fix_prompt(draft, errs + ["(this page sells " + ("bundles: keep the 'kits' list and the kit rows, same shape" if draft.get("bundle_compare") else "a kit: keep the 'kit' key, same shape") + "; never drop a kit item to fix a field, source the field instead)"]))
         if fx.get("draft"):
-            keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug", "kit_page") if k in draft}
+            keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug", "kit_page", "bundle_compare") if k in draft}
             before = draft.get("products") or []
             draft = {**fx["draft"], **keep, "status": "ok", "kit_fix": {"errors": errs, "log": fx.get("log")}}
             draft["products"] = normalize_products(draft, before)
@@ -272,15 +318,19 @@ def apply(slug: str, local: bool) -> dict:
     if news:
         gappage.insert({**draft, "status": "products_only"}, {})
         subprocess.run(["python3.12", "tools/images.py", *news], cwd=ROOT, capture_output=True, text=True)
-    write_kit(draft)
-    r = subprocess.run(["python3.12", "tools/kitcheck.py", draft["kit"]["slug"]], cwd=ROOT, capture_output=True, text=True)
-    print(r.stdout[-1500:], r.stderr[-600:], flush=True)
-    if r.returncode:
+    fails = []
+    for k in draft_kits(draft):
+        write_kit({**draft, "kit": k})
+        r = subprocess.run(["python3.12", "tools/kitcheck.py", k["slug"]], cwd=ROOT, capture_output=True, text=True)
+        print(k["slug"], r.stdout[-1200:], r.stderr[-400:], flush=True)
+        if r.returncode:
+            fails.append(k["slug"] + ": " + (r.stdout or r.stderr)[-300:])
+    if fails:
         subprocess.run(["git", "checkout", "--", "src/products.py", "src/kits.py", "src/kits-tested.json"], cwd=ROOT)
         subprocess.run(["git", "clean", "-fdq", "src/img"], cwd=ROOT)
-        return {"slug": slug, "status": "failed", "errors": ["cart test: " + (r.stdout or r.stderr)[-400:]]}
+        return {"slug": slug, "status": "failed", "errors": ["cart test: " + f for f in fails]}
     subprocess.run(["git", "add", "src/products.py", "src/kits.py", "src/kits-tested.json", "src/img"], cwd=ROOT)
-    subprocess.run(["git", "commit", "-q", "-m", f"Kit {draft['kit']['slug']} for /{draft['slug']}: products and cart test (DLC-223)\n\n"
+    subprocess.run(["git", "commit", "-q", "-m", f"Kits {', '.join(k['slug'] for k in draft_kits(draft))} for /{draft['slug']}: products and cart test (DLC-223)\n\n"
                     "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"], cwd=ROOT)
     sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
     # 2. the page: abpage.apply with the record carrying "kit"; products are already in, so none are re-inserted
@@ -291,12 +341,15 @@ def apply(slug: str, local: bool) -> dict:
     draft = {**draft, "products": []}
     A.jsave(d / "draft.json", draft)
     orig_rt, orig_pc = A.record_text, A.pick_check
-    A.record_text = lambda dr, old, g: orig_rt(dr, old, g).replace('"method": ', f'"kit": {dr["kit"]["slug"]!r},\n "method": ', 1)
+    orig_val = A.validate
+    if not draft.get("bundle_compare"):
+        A.record_text = lambda dr, old, g: orig_rt(dr, old, g).replace('"method": ', f'"kit": {dr["kit"]["slug"]!r},\n "method": ', 1)
     A.pick_check = lambda dr: []   # the pick is the kit (kit_errors checked it); the row-1 product check doesn't apply
+    A.validate = lambda dr, new: [e for e in orig_val(dr, new) if not e.startswith("NO_LISTED_PRODUCT")]   # kit rows sell
     try:
         res = A.apply(slug, True)
     finally:
-        A.record_text, A.pick_check = orig_rt, orig_pc
+        A.record_text, A.pick_check, A.validate = orig_rt, orig_pc, orig_val
     if res.get("status") != "committed":
         subprocess.run(["git", "revert", "--no-edit", sha], cwd=ROOT, capture_output=True)
     return res
@@ -310,6 +363,7 @@ def main() -> int:
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--local", action="store_true")
+    ap.add_argument("--compare", action="store_true", help="research: a bundle-comparison page (2-4 kits)")
     a = ap.parse_args()
     if a.cmd == "harvest":
         for s in a.slugs:
@@ -317,7 +371,7 @@ def main() -> int:
             print(f"{s}: {len(h['chats'])} chats, tags {h['searched_as'][:3]}")
     elif a.cmd == "research":
         with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
-            for r in ex.map(lambda s: research(s, a.force), a.slugs):
+            for r in ex.map(lambda s: research(s, a.force, a.compare), a.slugs):
                 print(json.dumps(r, ensure_ascii=False), flush=True)
     else:
         for s in a.slugs:
