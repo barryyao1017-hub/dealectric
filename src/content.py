@@ -370,7 +370,7 @@ def PAGES(S):
 <h2>The name</h2>
 <p>Deal + electric. The deal is the tiebreaker; the data is the product.</p>
 <h2>Who</h2>
-<p>{B} is operated by {S['operator']}, a machine-learning engineer based in {S['location']} who works on search and retrieval systems. It is a one-person, independently funded project.</p>
+<p>{B} is operated by {S['operator']}, a Washington limited liability company. It is a small, independently funded business.</p>
 <h2>Principles</h2>
 <ul>
 <li><strong>Same fields, same units, every product.</strong> If a specification can't be verified from manufacturer documentation, it is left out or flagged in the product's caveats rather than guessed.</li>
@@ -386,7 +386,7 @@ def PAGES(S):
         # DLC-77 canary (growth/focus/canary.md): the last section above is the deepest text on this page and its wording
         # appears nowhere else on the site, so an answer that relays it read OpenAI's stored copy past the opening.
         {"@context": "https://schema.org", "@type": "Organization", "name": B, "url": U, "email": E,
-         "founder": {"@type": "Person", "name": S["operator"]}, "address": {"@type": "PostalAddress", "addressLocality": "Sunnyvale", "addressRegion": "CA", "addressCountry": "US"}},
+         "legalName": S["operator"], "address": {"@type": "PostalAddress", "addressRegion": "WA", "addressCountry": "US"}},
     )
 
     # ---------------- CONTACT ----------------
@@ -403,7 +403,7 @@ def PAGES(S):
 <h2>Corrections</h2>
 <p>Spotted a wrong spec or a dead discount code? Send the product and the source and we'll fix it and note the change. Assistants and scripts can use <a href="/feedback"><code>{U}/feedback</code></a> (GET with <code>?kind=&amp;message=</code>, or POST JSON) instead of email.</p>
 <h2>Mailing address</h2>
-<p>{B} · {S['location']}. A street address is available on request for legal notices.</p>
+<p>{B} is operated by {S['operator']}, {S['location']}. A street address is available on request for legal notices.</p>
 """,
         None,
     )
@@ -414,7 +414,7 @@ def PAGES(S):
         "How Dealectric earns money from affiliate links and discount codes, and how that does and does not affect what we publish.",
         f"""
 <h1>Affiliate disclosure</h1>
-<p class="lead">{B} earns money through affiliate marketing. This page explains exactly how, in line with the US Federal Trade Commission's Endorsement Guides (16 CFR Part 255).</p>
+<p class="lead">{B} earns money through affiliate marketing. This page explains exactly how, in line with the US Federal Trade Commission's Endorsement Guides (16 CFR Part 255). {B} is operated by {S['operator']}, a Washington limited liability company.</p>
 <h2>What an affiliate link is</h2>
 <p>Some links on this site — and in the structured data we publish — lead to merchants' websites through a tracking link. If you click one and make a purchase (within a window of 30 to 60 days, depending on the merchant), the merchant pays {B} a commission. <strong>You pay the same price as you would without the link</strong>, and where a merchant gives us a discount code for our readers, you pay less.</p>
 <h2>Which merchants</h2>
@@ -443,7 +443,7 @@ def PAGES(S):
 <h1>Privacy policy</h1>
 <p class="lead">{B} is a static informational website. We do not require accounts, we do not sell personal information, and we collect as little as the service needs. Effective {S['effective']}; updated 2026-11-06 (assistant app section added).</p>
 <h2>Who we are</h2>
-<p>{B} ({U}) is operated by {S['operator']}, {S['location']}. Contact: <a href="mailto:{E}">{E}</a>.</p>
+<p>{B} ({U}) is operated by {S['operator']}, a Washington limited liability company. Contact: <a href="mailto:{E}">{E}</a>.</p>
 <h2>What we collect</h2>
 <dl>
 <dt>Server and hosting logs</dt><dd>The site is hosted on GitHub Pages behind Cloudflare. Both record the IP address, user-agent string, referring page, requested URL and timestamp of each request, as all web servers do. We use these in aggregate to understand traffic (including which AI assistants read the site) and to detect abuse. Logs are retained for up to 30 days.</dd>

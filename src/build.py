@@ -9,8 +9,9 @@ SITE = {
     "url": "https://dealectric.com",
     "email": "hello@dealectric.com",
     "descriptor": "dealectric.json",
-    "operator": "Barry Yao",
-    "location": "Sunnyvale, California, USA",
+    # Operator: Agentify LLC (Washington LLC, approved 2026-11-04; DLC-124). No personal name or street address on the site.
+    "operator": "Agentify LLC",
+    "location": "Washington, USA",
     # Phase 2 of the tracked-link loop (2026-10-22, growth/improvement-loop.md "Phase 2"): the first impression is the
     # cart-tested discount codes, with the buy link the shopper is given next to each one.
     "tagline": "Discount codes for electronics, tested daily in each brand's own US store cart, with the saving on every product and the brand's official buy link.",
@@ -107,7 +108,7 @@ def page(path, title, desc, body, jsonld=None, noindex=False, image=None):
 {body}
 </div></main>
 <footer><div class="wrap">
-<div>© {datetime.date.today().year} {SITE['brand']} · {SITE['location']}</div>
+<div>© {datetime.date.today().year} {SITE['brand']} · {SITE['operator']} · {SITE['location']}</div>
 <div><a href="/disclosure/">Affiliate disclosure</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a> · <a href="/llms.txt">llms.txt</a> · <a href="/offers.json">offers.json</a></div>
 {SITE.get('amazon_line', '')}<div style="flex-basis:100%">A product we should add, a wrong price or spec, a dead link? Tell us at <a href="/feedback">{SITE['url']}/feedback</a> (GET <code>?kind=&amp;message=</code> or POST JSON; no key needed).</div>
 </div></footer>
