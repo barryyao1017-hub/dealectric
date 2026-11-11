@@ -1,0 +1,109 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that Tenergy's TN480U 8-bay kit needs a 5 V / 2 A (10 W) USB supply that is not in the box. It charges each AA at only 500 mA, so a 2,800 mAh Premium PRO cell needs at least 5.6 hours per charge (2,800 ÷ 500), and the cart needs a matching 5 V / 2 A wall charger with a micro-USB cable to work the day it arrives.",
+ "standout": 3,
+ "standout_why": "I compared against geekchamp (best-rechargeable-batteries-for-aa-and-aaa-devices-2026, cited), the IKEA STENKOL/LADDA page (cited), rottenwifi (the top result), and the cloudfront 'Best AA & AAA Battery Chargers' page (#1 in the second chat). geekchamp and rottenwifi list mAh, cycle and retention claims. They give no charger current, no USB input requirement and no charge-time arithmetic; their only charge times are Amazon Basics' '4 AA within 7 hours'. The IKEA page gives '4-8 hours' and no input spec. The cloudfront page comes closest: it says in general that 'with every slot full, each cell gets less current', and it notes that one other charger (the POWEROWL 8-bay) has 'no wall adapter in the box'. It reviews the Tenergy T9688, not the TN480U, and gives no 5 V / 2 A figure or mA-per-slot math. I could not read digitalcameraworld (the page came back truncated) or theconsumerlibrary (certificate error), so neither was checked. I scored 3 rather than 2 because the missing adapter adds a cart line, though cloudfront has a generic version of the same point for a different charger.",
+ "kit_items": [
+  "charger + cells: Tenergy combo TN480U 8-bay charger + 8× Premium PRO AA 2,800 mAh (P/N 90732). Eight independent bays at 500 mA per AA. Cells rated for 1,200 cycles and 85% retention after one year. The box includes one micro-USB cable but no wall adapter.",
+  "USB power supply: Tenergy 18W Adaptive Wall + Car Charger kit (P/N 59088). Its 5 V 2 A output exactly meets the TN480U's 'Input: DC 5V 2A'. It ships with two 6 ft USB-to-micro-USB cables, so it connects to the charger's micro-USB input without buying anything else. Tenergy's USB-C PD 20W (P/N 59149, 5 V 3 A, $15.99) also meets the power figure, but it comes with no cable, and the page doesn't say what plug is on the far end of the combo's micro-USB cable."
+ ],
+ "carts": [
+  {
+   "store": "Tenergy (power.tenergy.com, cj:tenergy)",
+   "items": [
+    "Tenergy Combo TN480U 8-Bay Charger + 8-Pack Premium PRO AA (P/N 90732) | https://power.tenergy.com/tenergy-combo-tn480u-8-bay-nimh-battery-lcd-display-fast-charger-8-pack-premium-pro-aa-rechargeable-batteries/ | $42.99 | 2026-11-11",
+    "Tenergy 18W Fast USB Charger Combo Kit, wall + car, 2× 6 ft micro-USB cables (P/N 59088) | https://power.tenergy.com/tenergy-18w-fast-usb-charger-combo-kit-dual-wall-car-fast-chargers-with-2x-6ft-micro-usb-charging-cables-qualcomm-qc-2-0/ | $19.99 | 2026-11-11"
+   ],
+   "bundle_sku": "Tenergy P/N 90732 (TN480U + 8 Premium PRO AA) at $42.99 is the store's own charger-plus-cells bundle. No Tenergy bundle includes the wall adapter. Cart total for the two items: $62.98."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Tenergy TN480U",
+   "label": "Charge current per slot",
+   "value": "500 mA per AA slot, 250 mA per AAA slot",
+   "source": "https://power.tenergy.com/tenergy-tn480u-8-bay-nimh-battery-lcd-display-fast-charger-micro-usb-type-c-input",
+   "source_title": "Tenergy TN480U 8-Bay NiMH Battery LCD Display Fast Charger, Micro USB/Type C Input",
+   "read": "2026-11-11",
+   "note": "Spec lines quoted: 'Charge Rate: AA: 500mA', 'Charging Output: 8x AA 500mA, 8x AAA 250mA'. The page does not say whether 500 mA holds when all 8 bays are loaded."
+  },
+  {
+   "product": "Tenergy TN480U",
+   "label": "Required input",
+   "value": "DC 5 V 2 A (10 W) via micro-USB or USB-C, adapter not included",
+   "source": "https://power.tenergy.com/tenergy-combo-tn480u-8-bay-nimh-battery-lcd-display-fast-charger-8-pack-premium-pro-aa-rechargeable-batteries/",
+   "source_title": "Tenergy Combo TN480U + 8-Pack Premium Pro AA (P/N 90732)",
+   "read": "2026-11-11",
+   "note": "Page says 'Input: DC 5V 2A' and 'Micro-USB to AC power adapter is NOT included'. Package: 8 AA, 1 TN480U, 1 micro-USB cable, 1 manual. 5 V × 2 A = 10 W, so a 5 V / 1 A (5 W) phone cube supplies half the rated input."
+  },
+  {
+   "product": "Tenergy Premium PRO AA + TN480U",
+   "label": "Minimum time to fill one AA",
+   "value": "5.6 h",
+   "source": "https://power.tenergy.com/tenergy-premium-pro-rechargeable-aa-batteries-high-capacity-low-self-discharge-2800mah-nimh-aa-battery-8-pack",
+   "source_title": "Tenergy Premium PRO Rechargeable AA, 2800mAh NiMH, 8 Pack",
+   "read": "2026-11-11",
+   "note": "2,800 mAh rated ÷ 500 mA per slot = 5.6 h at full current, before NiMH charge-efficiency overhead (not sourced). Tenergy publishes no charge time for this pair. For comparison, the IKEA STENKOL page states '4-8 hours' for 1,900 mAh LADDA."
+  },
+  {
+   "product": "Tenergy Premium PRO AA",
+   "label": "Capacity, retention, cycles",
+   "value": "2,800 mAh rated; 85% retained after 1 year in storage; up to 1,200 cycles; ships 80% pre-charged",
+   "source": "https://power.tenergy.com/tenergy-premium-pro-rechargeable-aa-batteries-high-capacity-low-self-discharge-2800mah-nimh-aa-battery-8-pack",
+   "source_title": "Tenergy Premium PRO Rechargeable AA, 2800mAh NiMH, 8 Pack",
+   "read": "2026-11-11",
+   "note": "Maker claim. 2,800 × 0.85 = 2,380 mAh after a year on the shelf. 8-pack (P/N 10443) costs $21.99 alone, so the combo's charger costs about $21 extra ($42.99 − $21.99)."
+  },
+  {
+   "product": "Tenergy 18W Adaptive Wall Charger kit (P/N 59088)",
+   "label": "5 V output and cables",
+   "value": "5 V 2 A / 9 V 2 A / 12 V 1.5 A (18 W max); 2× 6 ft USB-to-micro-USB cables included",
+   "source": "https://power.tenergy.com/tenergy-18w-fast-usb-charger-combo-kit-dual-wall-car-fast-chargers-with-2x-6ft-micro-usb-charging-cables-qualcomm-qc-2-0/",
+   "source_title": "Tenergy 18W Fast USB Charger Combo Kit - Dual Wall & Car Fast Chargers with 2x 6ft Micro USB Charging Cables",
+   "read": "2026-11-11",
+   "note": "The 5 V 2 A output equals the TN480U's rated input. $19.99, in stock."
+  },
+  {
+   "product": "Tenergy USB-C Charger PD 20W (P/N 59149)",
+   "label": "5 V output",
+   "value": "5 V 3 A / 9 V 2.22 A, USB-C port, cable not included",
+   "source": "https://power.tenergy.com/tenergy-usb-c-charger-with-pd-20w/",
+   "source_title": "Tenergy USB-C Charger with PD 20W",
+   "read": "2026-11-11",
+   "note": "Exceeds the 2 A requirement, but it needs a USB-C-to-USB-C cable that Tenergy's combo doesn't include. $15.99."
+  },
+  {
+   "product": "Tenergy TN480U (charger only)",
+   "label": "Price",
+   "value": "$23.99",
+   "source": "https://power.tenergy.com/tenergy-tn480u-8-bay-nimh-battery-lcd-display-fast-charger-micro-usb-type-c-input",
+   "source_title": "Tenergy TN480U 8-Bay NiMH Battery LCD Display Fast Charger",
+   "read": "2026-11-11",
+   "note": "Other combos on the same page: + 8× 2,500 mAh AA (P/N 90753) $34.99; + 8× 1,000 mAh AAA (P/N 91230) $28.99."
+  },
+  {
+   "product": "IKEA STENKOL / LADDA kit",
+   "label": "Rival budget kit sizing",
+   "value": "1,900 mAh cells; '4-8 hours' to full; $18.98; no input or current spec listed",
+   "source": "https://www.ikea.com/us/en/p/stenkol-ladda-battery-charger-and-4-batteries-s89419631/",
+   "source_title": "STENKOL / LADDA battery charger and 4 batteries - IKEA",
+   "read": "2026-11-11",
+   "note": "ChatGPT cited this page. IKEA says charge time depends on how many cells are loaded and their capacity, but gives no current figure."
+  }
+ ],
+ "unsourced": [
+  "TN480U charge time and per-slot current with all 8 bays loaded: the manual PDF (https://power.tenergy.com/content/manuals/01480_manual.pdf) has its text converted to outlines and can't be read as text, and the product page doesn't say.",
+  "How the TN480U behaves on a supply under 2 A (slower charge or fault): looked on the product page, the combo page and the manual, and found nothing.",
+  "Independent measured capacity of Tenergy Premium PRO AA 2800: searched lygte-info.dk (HKJ) and found no test. The only figure was a single buyer review, which doesn't count.",
+  "NiMH charge-efficiency factor to turn 5.6 h into a real-world time: not looked up on a maker page.",
+  "Which plug is on the far end of the combo's 'Micro USB cable' (USB-A or USB-C): the combo page doesn't say.",
+  "Premium PRO AAA capacity and AAA charge time: only seen in a search-result title, page not opened.",
+  "Amazon prices for the TN480U combo and Eneloop kits: not checked, since the Tenergy store cart was complete."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0365624
+ }
+}
