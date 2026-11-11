@@ -215,14 +215,14 @@ async function logPageview(url, request, status, tag, env) {
   const navigation = request.headers.get("sec-fetch-dest") === "document";
   const prefetch = !!(request.headers.get("sec-purpose") || request.headers.get("purpose"));
   const bot = selfExcluded(request) ? 2
-    : botLike(cf, ua, tag || "", referrer) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
+    : botLike(cf, ua, tag || "", referrer) || forgedChrome(request, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
       || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0;
   await env.DB.prepare(
-    `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like, ch_ua, ch_platform)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
     new Date().toISOString(), clip(page, 200), status, platformOf(tag, referrer), clip(tag || "", 100), clip(referrer, 300),
-    clip(ua, 300), cf.country || "", cf.asn || null, bot,
+    clip(ua, 300), cf.country || "", cf.asn || null, bot, hint(request, "sec-ch-ua", 200), hint(request, "sec-ch-ua-platform", 40),
   ).run();
   // Burst rule, as for clicks: one browser opening 8+ different pages within 60 s is a crawler, not a reader.
   if (bot === 0) {
@@ -279,15 +279,15 @@ async function handleGo(url, request, env, ctx) {
   // ChatGPT linking exactly the merchant URL this page used to print.
   const aiFetch = isAiFetcher(cf, ua);
   const row = env.DB.prepare(
-    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind, query, utm_source, asn)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO clicks (ts, slug, click_id, network, method, referrer, user_agent, country, verified_bot, bot_like, kind, query, utm_source, asn, ch_ua)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || forgedChrome(request, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
-    clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null,
+    clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null, hint(request, "sec-ch-ua", 200),
   );
   // Don't make the response wait on the write.
   ctx.waitUntil(row.run()
@@ -643,6 +643,23 @@ async function flagBurst(env, ua, cf, utm) {
 // path is linked from nowhere and noindex. /self-exclude?off clears it. Harmless to a stranger: they only hide
 // themselves from our counts. D1 has no IP, so this is the only way to tell Barry's clicks from a shopper's.
 const SELF_COOKIE = "dlx_self";
+
+// Client hints (2026-11-11, DLC-236): Chromium browsers send Sec-CH-UA and Sec-CH-UA-Platform on every https request;
+// a script that only copies a Chrome user agent usually doesn't. Stored as sent, NULL when absent.
+function hint(request, name, max) {
+  const v = request.headers.get(name);
+  return v === null ? null : clip(v, max);
+}
+
+// A user agent that claims Chromium 90+ but sent no Sec-CH-UA is a script wearing Chrome's name: every Chromium browser
+// (Chrome, Edge, Brave, Opera, Samsung Internet, Android Custom Tabs) sends it on https since Chrome 89. Exempt: Android
+// WebViews ("; wv)", in-app browsers) and Electron apps, which may not; iOS browsers never claim "Chrome/".
+// Seen 2026-11-11: a monitor with a fixed Mac Chrome 142 agent from ~20 rotating networks, six pages every 10-30 min.
+function forgedChrome(request, ua) {
+  const m = /(?:^|[\s)])Chrome\/(\d+)\./.exec(ua);
+  if (!m || +m[1] < 90 || /; wv\)|Electron\//.test(ua)) return false;
+  return request.headers.get("sec-ch-ua") === null;
+}
 
 function selfExcluded(request) {
   return new RegExp(`(?:^|;\\s*)${SELF_COOKIE}=1(?:;|$)`).test(request.headers.get("cookie") || "");

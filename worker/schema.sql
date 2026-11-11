@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS clicks (
   kind TEXT DEFAULT 'redirect', -- redirect (302 issued) | ai_fetch (AI assistant got the text page, no redirect)
   query TEXT,                  -- raw query string of the /go/ request, e.g. utm_source=chatgpt.com (ChatGPT sends no referrer)
   utm_source TEXT,             -- parsed utm_source, for grouping clicks by assistant
-  asn INTEGER                  -- client network (Cloudflare cf.asn); Google's networks count as bot_like
+  asn INTEGER,                 -- client network (Cloudflare cf.asn); Google's networks count as bot_like
+  ch_ua TEXT                   -- Sec-CH-UA header as sent, NULL when absent (since 2026-11-11, DLC-236)
 );
 -- Added 2026-10-18 for databases created before these columns existed (each fails harmlessly once applied):
 -- ALTER TABLE clicks ADD COLUMN kind TEXT DEFAULT 'redirect';
@@ -132,8 +133,13 @@ CREATE TABLE IF NOT EXISTS pageviews (
   country TEXT,
   asn INTEGER,
   bot_like INTEGER DEFAULT 0,
-  backfill INTEGER DEFAULT 0
+  backfill INTEGER DEFAULT 0,
+  ch_ua TEXT,                  -- Sec-CH-UA header as sent, NULL when absent (since 2026-11-11, DLC-236)
+  ch_platform TEXT             -- Sec-CH-UA-Platform header, NULL when absent
 );
+-- Added 2026-11-11 (DLC-236), applied to the remote database:
+-- ALTER TABLE pageviews ADD COLUMN ch_ua TEXT; ALTER TABLE pageviews ADD COLUMN ch_platform TEXT;
+-- ALTER TABLE clicks ADD COLUMN ch_ua TEXT;
 CREATE INDEX IF NOT EXISTS pageviews_ts ON pageviews (ts);
 CREATE INDEX IF NOT EXISTS pageviews_page ON pageviews (page);
 
