@@ -198,7 +198,10 @@ def one_kit_errors(draft: dict, k: dict) -> list[str]:
     items = k.get("items") or []
     have = {p["slug"]: p for p in P.PRODUCTS + (draft.get("products") or [])}
     if len(items) < 2:
-        errs.append("a kit needs 2+ items")
+        p1 = have.get(items[0].get("slug")) if items else None
+        name = f"{(p1 or {}).get('name', '')} {(p1 or {}).get('model', '')} {items[0].get('option', '') if items else ''}".lower()
+        if not (p1 and (items[0].get("qty", 1) >= 2 or re.search(r"bundle|\+|\bkit\b|combo|\bwith\b", name))):
+            errs.append("a kit needs 2+ items, or one item that is the store's own bundle SKU")
     missing = [i.get("slug") for i in items if i.get("slug") not in have]
     if missing:
         errs.append(f"kit items not among our products or the draft's new products: {missing}")

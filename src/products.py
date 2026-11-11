@@ -2496,7 +2496,7 @@ PRODUCTS = [
  "category": 'nas',
  "name": 'UGREEN NASync DH4300 Plus 4-Bay Home NAS, 8-core ARM, 8 GB, 2.5GbE, HDMI',
  "model": 'DH4300 Plus',
- "url": 'https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage',
+ "url": 'https://ai.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage',
  "official_page": 'https://ai.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage',
  "price": 373.99,
  "list_price": 439.99,

@@ -1462,6 +1462,14 @@ def kit_products(k):
     return [(BY_SLUG[i["slug"]], i.get("qty", 1)) for i in k["items"]]
 
 
+def kit_bundle_item(i, p):
+    """A single item that is itself a bundle (the store's bundle SKU, or a variant that adds the second part): allowed as
+    a one-item kit, since the brief says to use the store's own bundle when it costs less than its parts."""
+    import re as _re
+    text = f"{p['name']} {p.get('model', '')} {i.get('option', '')}".lower()
+    return i.get("qty", 1) >= 2 or bool(_re.search(r"bundle|\+|\bkit\b|combo|\bwith\b", text))
+
+
 def kit_is_amazon(k):
     return all(is_amazon(p) for p, _ in kit_products(k))
 
@@ -1469,8 +1477,8 @@ def kit_is_amazon(k):
 def kit_check(k):
     """A kit fills one cart: every item from the same brand store (with a Shopify variant), or every item on Amazon."""
     ps = kit_products(k)
-    if len(ps) < 2:
-        raise SystemExit(f"kit {k['slug']}: fewer than 2 items")
+    if len(ps) < 2 and not (ps and kit_bundle_item(k["items"][0], ps[0][0])):
+        raise SystemExit(f"kit {k['slug']}: fewer than 2 items, and the one item isn't the store's own bundle")
     if kit_is_amazon(k):
         return
     if any(is_amazon(p) for p, _ in ps) or len({store_host(p) for p, _ in ps}) > 1 or len({p["program"] for p, _ in ps}) > 1:
