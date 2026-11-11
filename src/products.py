@@ -78,6 +78,7 @@ CATEGORIES = {
     "sump-pump-accessory": ('Sump pump accessories', 'Check valves and fittings for sump pump discharge lines'),
     "usb-charger": ('USB wall chargers', 'USB-A and USB-C wall adapters that power chargers, lights and small devices.'),
     "ultrasonic-cutter": ('Ultrasonic cutters', 'Handheld ultrasonic knives for trimming 3D-print supports, plastic, foam and other hobby materials.'),
+    "gps-tracker": ('GPS trackers', 'Cellular GPS trackers for cars, work vehicles and equipment that show live location in a phone or web app.'),
 }
 
 PRODUCTS = [
@@ -6013,6 +6014,38 @@ PRODUCTS = [
  "summary": "Gamakay's lowest-priced 75% board with the Phoenix V3 silent switch option, plus a big knob and gasket mount.",
  "fit": 'Shoppers who want the lowest price for a silent magnetic board and like a volume knob.',
  "caveats": ["Pick the Phoenix V3 switch option; the White Jade option isn't sold as silent.", "Battery capacity isn't listed on the maker pages we read.", "Few independent reviews yet; one buyer comment on Gamakay's site reports wired mode not being recognized.", "Ships from Gamakay's US warehouse in about 10-15 days."]},
+
+{"slug": 'spytec-pulse-obd',
+ "brand": 'Spytec GPS',
+ "program": 'awin:spytec',
+ "category": 'gps-tracker',
+ "name": 'Spytec Pulse OBD Plug-In GPS Tracker (hardware free with plan)',
+ "model": 'Pulse OBD',
+ "url": 'https://shop.spytec.com/products/obd-vehicle-gps-tracker',
+ "price": 14.95,
+ "verified": '2026-11-11',
+ "specs": [('Plan', '$8.95/month on the annual plan ($107.40/year) or $14.95/month month to month'), ('Hardware', 'Free with either plan'), ('Updates', 'Every 2 seconds while moving, every 3 hours parked (default)'), ('Unplug alert', 'Instant alert if the device is unplugged'), ('Backup battery', 'Small Li-polymer backup battery'), ('Power', 'Plugs into the OBD-II port, 8-32 V DC'), ('Size and weight', '2 × 2 × 1 in, 1.92 oz'), ('Coverage', 'US, Canada, Mexico and worldwide (Super SIM)'), ('Fleet discounts', 'Automatic: 5% at 5-9 vehicles up to 25% at 100+')],
+ "warranty": 'Lifetime device warranty while the subscription is active (TrackerCare, per the store page).',
+ "returns": '30-day money-back guarantee with a prepaid return label. No termination fee, and you can cancel any month.',
+ "summary": 'A plug-in OBD-II tracker that comes free with a Spytec plan. It reports every 2 seconds while the vehicle moves and alerts you right away if it is unplugged.',
+ "fit": 'Small businesses tracking several vans or trucks, and anyone willing to pay a year at a time for the lowest Spytec rate.',
+ "caveats": ['A subscription is required. Month-to-month costs $14.95, against $8.95 on the annual plan.', 'Spytec does not advertise crash alerts or check-engine code reading.', 'It sits in the OBD port under the dash, so a driver can see it and unplug it.', 'Billing and cancellation are frequent themes in owner reviews. Get written confirmation when you cancel.']},
+
+{"slug": 'spytec-pulse-hardwired',
+ "brand": 'Spytec GPS',
+ "program": 'awin:spytec',
+ "category": 'gps-tracker',
+ "name": 'Spytec Pulse Hardwired Vehicle GPS Tracker (hardware free with plan)',
+ "model": 'Pulse Wired',
+ "url": 'https://shop.spytec.com/products/swift-wired',
+ "price": 14.95,
+ "verified": '2026-11-11',
+ "specs": [('Plan', '$12.95/month on the annual plan ($155.40/year) or $14.95/month month to month'), ('Hardware', 'Free with either plan'), ('Install', 'Wired to vehicle power and hidden out of sight'), ('Backup battery', '200 mAh'), ('Power', '8-32 V DC'), ('Water resistance', 'IP67'), ('Size and weight', '5.3 × 2.66 × 0.58 in, 4.59 oz'), ('Operating temperature', '-22 °F to 158 °F')],
+ "warranty": 'Lifetime device warranty while the subscription is active (per the store page).',
+ "returns": '30-day money-back guarantee with a prepaid return label. No termination fee.',
+ "summary": "A hidden, hardwired version of Spytec's vehicle tracker for anyone who doesn't want a device a driver or thief can see in the OBD port.",
+ "fit": 'Theft recovery, work trucks, and older vehicles or equipment with no OBD port.',
+ "caveats": ["It has to be wired into the vehicle's power, which is more work than plugging into the OBD port.", 'The annual plan costs more than the OBD version ($12.95 against $8.95 a month).', "The store page doesn't state an update interval."]},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
