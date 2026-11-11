@@ -79,6 +79,7 @@ CATEGORIES = {
     "usb-charger": ('USB wall chargers', 'USB-A and USB-C wall adapters that power chargers, lights and small devices.'),
     "ultrasonic-cutter": ('Ultrasonic cutters', 'Handheld ultrasonic knives for trimming 3D-print supports, plastic, foam and other hobby materials.'),
     "gps-tracker": ('GPS trackers', 'Cellular GPS trackers for cars, work vehicles and equipment that show live location in a phone or web app.'),
+    "binoculars": ('Binoculars & Monoculars', 'Binoculars, pocket binoculars and monoculars for birding, hiking, travel and hunting.'),
 }
 
 PRODUCTS = [
@@ -6046,6 +6047,40 @@ PRODUCTS = [
  "summary": "A hidden, hardwired version of Spytec's vehicle tracker for anyone who doesn't want a device a driver or thief can see in the OBD port.",
  "fit": 'Theft recovery, work trucks, and older vehicles or equipment with no OBD port.',
  "caveats": ["It has to be wired into the vehicle's power, which is more work than plugging into the OBD port.", 'The annual plan costs more than the OBD version ($12.95 against $8.95 a month).', "The store page doesn't state an update interval."]},
+
+{"slug": 'leica-monovid-8x25',
+ "brand": 'Leica',
+ "program": 'awin:leica',
+ "category": 'binoculars',
+ "name": 'Leica Monovid 8x25 Black, Leather',
+ "model": 'Monovid 8x25 (order no. 40 314)',
+ "url": 'https://leicacamerausa.com/leica-monovid-8x25-black-leather.html',
+ "official_page": 'https://leica-camera.com/en-US/product/leica-monovid-8x25-black',
+ "price": 699,
+ "verified": '2026-11-11',
+ "specs": [('Magnification', '8x, 25 mm objective'), ('Weight', '5.4 oz (152 g)'), ('Close focus', '6 ft; 9.8 to 11.8 in with the included close-up lens'), ('Field of view', '360 ft at 1,000 yd'), ('Light transmission', '90%'), ('Eye relief', '15 mm, works with glasses'), ('Exit pupil', '3.1 mm'), ('Waterproof', 'to 16.5 ft (5 m), nitrogen filled, AquaDura lens coating'), ('Size', '1.3 × 4.33 × 1.3 in'), ('In the box', 'close-focus lens, hand strap, eyepiece cover, leather pouch')],
+ "warranty": "30-year manufacturer's warranty on optical defects plus a free, transferable 10-year Passport Protection Plan for accidental damage when bought from an authorized North American dealer; non-optical accessories 2 years.",
+ "returns": 'Leica USA store: returns within 7 days of receipt with the sales receipt, new condition, original box, not registered; 15% restocking fee if those conditions are not met. Free UPS Ground shipping over $100.',
+ "summary": "Leica's 2026 pocket monocular: 8x25, 5.4 oz, 90% light transmission, focuses to 6 ft, and to about 10 inches with the close-up lens in the box.",
+ "fit": 'Birders who want the sharpest pocket view and close focus for feeder birds, warblers in brush, butterflies and dragonflies. It also works as a magnifier for flowers, insects and museum pieces.',
+ "caveats": ["On 2026-11-11 Leica's US store listed it as Notify Me (out of stock).", 'On BirdForum, owners of the Monovid 8x20 and 8x25 call the focus stiff, and four posters say the view shakes at 8x.', 'One BirdForum owner reports loose eyecup play and uneven leather seams on the 8x25.', 'There is no tripod mount.', 'One eye tires sooner than two on long birding sessions.']},
+
+{"slug": 'leica-noctivid-compact-8x25',
+ "brand": 'Leica',
+ "program": 'awin:leica',
+ "category": 'binoculars',
+ "name": 'Leica Noctivid Compact 8x25, Black',
+ "model": 'Noctivid Compact 8x25 (rubber armour)',
+ "url": 'https://leicacamerausa.com/leica-noctivid-compact-8x25-black.html',
+ "official_page": 'https://leica-camera.com/en-US/product/leica-noctivid-compact-8x25-black-rubber-armour/technical-specification',
+ "price": 999,
+ "verified": '2026-11-11',
+ "specs": [('Magnification', '8x, 25 mm objectives'), ('Weight', '13.2 oz (374 g); leather version 12.5 oz'), ('Close focus', '6.6 ft'), ('Field of view', '360 ft at 1,000 yd'), ('Eye relief', '15 mm'), ('Waterproof', 'to 16.5 ft (5 m)')],
+ "warranty": "30-year manufacturer's warranty plus a free, transferable 10-year Passport Protection Plan for accidental damage when bought from an authorized North American dealer.",
+ "returns": 'Leica USA store: returns within 7 days of receipt with the sales receipt, new condition, original box, not registered; 15% restocking fee if those conditions are not met.',
+ "summary": "Leica's 2026 pocket binocular. It has the same 8x25 view and 360 ft field as the Monovid, but uses both eyes, at 13.2 oz.",
+ "fit": 'Birders who go out for long sessions and want two-eye viewing in a jacket-pocket size.',
+ "caveats": ['It weighs about 2.5 times as much as the Monovid.', 'It is new in 2026, so long-term owner reports are few.', 'We did not compare it against other pocket binoculars on this page.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
