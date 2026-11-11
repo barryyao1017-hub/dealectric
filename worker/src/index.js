@@ -666,7 +666,7 @@ function hint(request, name, max) {
 // A user agent that claims Chromium 90+ but sent no Sec-CH-UA is a script wearing Chrome's name: every Chromium browser
 // (Chrome, Edge, Brave, Opera, Samsung Internet, Android Custom Tabs) sends it on https since Chrome 89. Exempt: Android
 // WebViews ("; wv)", in-app browsers) and Electron apps, which may not; iOS browsers never claim "Chrome/".
-// Seen 2026-11-11: a monitor with a fixed Mac Chrome 142 agent from ~20 rotating networks, six pages every 10-30 min.
+// The 2026-11-11 six-page monitor does send hints (real automated Chrome); HOSTING_ASNS / VPN_ASNS catch it instead.
 function forgedChrome(request, ua) {
   const m = /(?:^|[\s)])Chrome\/(\d+)\./.exec(ua);
   if (!m || +m[1] < 90 || /; wv\)|Electron\//.test(ua)) return false;
