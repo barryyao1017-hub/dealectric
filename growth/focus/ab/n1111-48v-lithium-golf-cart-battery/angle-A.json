@@ -1,0 +1,104 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the '4000+ cycles' claims have no end-of-life capacity behind them, and the warranties don't define one either: Allied's RS warranty excludes 'capacity loss, reduced runtime, voltage drop, or performance degradation over time', and LiTime's 5-year 48V warranty covers only units that 'fail to operate', so neither maker guarantees a capacity floor.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages, golfcartshowdown.com and golfcartbatterysource.com, and our own dealectric.com page. Golf Cart Showdown gives warranty years and full-replacement periods, and notes that Bolt's warranty ends at 3,000 cycles. It names no capacity threshold for any brand and never says Allied excludes capacity loss. Golf Cart Battery Source lists Allied as '8 years prorated (10 on a new RS if registered)'. It warns about '10,000 cycles' claims but gives no DoD or end-of-life basis for any pack. Our page already says LiTime's '4000+ cycles @100% DOD' has no end-of-life capacity and already converts surge to amp-seconds. It leaves LiTime's warranty out and doesn't mention the LiTime 150Ah. No page has LiTime's 150Ah 300 A / 1000 A for 5 s pack.",
+ "decides": "This confirms the cheaper picks, LiTime and Vatrer, over the $2,699.99 Allied RS on value. Allied's premium buys no promise against capacity fade: past year 3 its warranty is prorated, and it explicitly excludes degradation. The surge table changes the hill pick. LiTime's 48V 150Ah, at $1,549.99, is rated 300 A continuous and 1,000 A for 5 s. That is 5,000 A·s, against Eco Gen3's 3,000 A·s at $2,671 and LiTime 100Ah's 600 A·s. ChatGPT's 'high-current' advice should point there, not to the 100Ah kit, whose 1C rating means 100 A continuous.",
+ "candidates": [
+  "LiTime 48V 100Ah Conversion Kit",
+  "LiTime 48V 100Ah Bluetooth",
+  "LiTime 48V 100Ah 200A (2C @ 2 min)",
+  "LiTime 48V 150Ah Golf Cart & UTV",
+  "Vatrer 48V 105Ah conversion kit",
+  "Allied RS Commercial 48V 105Ah",
+  "Eco Battery 51V 105Ah Gen3",
+  "LiThink 48V 105Ah Pro"
+ ],
+ "findings": [
+  {
+   "product": "Allied RS Commercial 48V 105Ah",
+   "label": "Warranty: what counts as a failure",
+   "value": "10 years; repair or replace in years 1-3, prorated in years 4-10; capacity loss excluded",
+   "source": "https://alliedlithium.com/pages/allied-battery-warranty",
+   "source_title": "Allied Battery Warranty - Allied Lithium Golf Cart Batteries",
+   "read": "2026-11-11",
+   "note": "Excludes 'Capacity loss, reduced runtime, voltage drop, or performance degradation over time' with no numeric threshold. Also excludes end-of-life from 'high-frequency cycling'. Registration within 60 days is required, otherwise coverage is 1 year. Not transferable; continental US only. RS units sold before March 2026 carry 8 years, prorated monthly."
+  },
+  {
+   "product": "LiTime 48V series (100Ah kit, 100Ah Bluetooth, 150Ah)",
+   "label": "Warranty: length and capacity coverage",
+   "value": "5 years for new units (3 years for 'Like New'); covers units that 'fail to operate' from a defect; no capacity threshold stated",
+   "source": "https://litime.com/pages/warranty-policy",
+   "source_title": "LiTime Warranty Policy",
+   "read": "2026-11-11",
+   "note": "The table row reads '48V series: all capacity range'. The policy has no 70%/80% capacity floor and no cycle limit. The cell is not covered unless the owner fully charges it within 7 days of purchase and at least once every 3 months. Original purchaser only, not transferable."
+  },
+  {
+   "product": "LiTime 48V 100Ah Bluetooth",
+   "label": "Cycle life as stated",
+   "value": "4000+ cycles @100% DOD (no end-of-life capacity given)",
+   "source": "https://www.litime.com/products/48v-100ah-lithium-golf-cart-bluetooth-battery",
+   "source_title": "LiTime 48V 100Ah Bluetooth Lithium Battery | For Golf Carts and Lawn Mowers",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py. Neither the page nor the warranty says what capacity remains after 4,000 cycles. The warranty lasts 5 years, and 4,000 cycles is about 11 years at one cycle a day, so the claim reaches past the warranty."
+  },
+  {
+   "product": "LiTime 48V 100Ah Conversion Kit",
+   "label": "Continuous / surge, normalised",
+   "value": "100 A continuous (1C); 600 A for 1 s = 600 A·s; $1,154.66",
+   "source": "https://www.litime.com/products/48v-100ah-golf-cart-battery-kit",
+   "source_title": "LiTime 48V 100Ah Lithium Battery Conversion Kit for Golf Cart & Lawn Mower",
+   "read": "2026-11-11",
+   "note": "storecheck.py price $1,154.66 (compare-at $1,649.99), in stock. ChatGPT's card showed $1,281.66. Amp-seconds = peak A × rated seconds."
+  },
+  {
+   "product": "LiTime 48V 100Ah Bluetooth",
+   "label": "Golf-cart power cap",
+   "value": "Max 5,000 W for golf cart (≈98 A at 51.2 V); $899.99",
+   "source": "https://www.litime.com/products/48v-100ah-lithium-golf-cart-bluetooth-battery",
+   "source_title": "LiTime 48V 100Ah Bluetooth Lithium Battery | For Golf Carts and Lawn Mowers",
+   "read": "2026-11-11",
+   "note": "5,000 W ÷ 51.2 V = 97.7 A, which matches the 1C rating. storecheck price."
+  },
+  {
+   "product": "LiTime 48V 100Ah 200A model",
+   "label": "'200A continuous' is time-limited",
+   "value": "'2C discharge rate @ 2 minutes, delivering 200A continuous'; 200 A × 120 s = 24,000 A·s; $1,097.99",
+   "source": "https://www.litime.com/products/48v-100ah-bluetooth-golf-cart-lithium-battery",
+   "source_title": "LiTime 48V(51.2V) 100Ah Bluetooth Golf Cart & Lawn Mower Lithium Battery",
+   "read": "2026-11-11",
+   "note": "LiTime calls it 'continuous' but bounds it to 2 minutes. That can't be compared directly with Eco's or Vatrer's untimed continuous ratings."
+  },
+  {
+   "product": "LiTime 48V 150Ah Golf Cart & UTV",
+   "label": "Continuous / surge, normalised",
+   "value": "300 A continuous (2C); 1,000 A for 5 s = 5,000 A·s; 7.68 kWh; $1,549.99",
+   "source": "https://www.litime.com/products/48v-150ah-lithium-golf-cart-utv-battery",
+   "source_title": "LiTime 48V (51.2V) 150Ah Lithium Golf Cart and UTV Battery | 300A High Power",
+   "read": "2026-11-11",
+   "note": "storecheck price $1,549.99 (compare-at $2,929.97). Comparison: Eco Gen3 is 600 A × 5 s = 3,000 A·s and 250 A continuous at $2,671 (figures from our page, dated 2026-11-08). Battery only; no charger listed in the text I read."
+  },
+  {
+   "product": "Vatrer 48V 105Ah (EZGO / Yamaha / Heated / Mini)",
+   "label": "Continuous / surge, normalised",
+   "value": "200 A continuous; 600 A for 3 s = 1,800 A·s; $1,579.99",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-ez-go-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah EZGO Lithium Battery Conversion Kit",
+   "read": "2026-11-11",
+   "note": "From storecheck.py search text. The Yamaha, Heated and Mini pages say the same 600 A for 3 s. The generic kit page says '400A peak current and up to 600A surge' without giving a duration for the 400 A figure."
+  }
+ ],
+ "unsourced": [
+  "Vatrer 400 A peak duration: a search snippet said '400A 35S'. vatrerpower.com returned HTTP 403/429 to WebFetch and storecheck, and the manuals.plus manual returned 403, so I couldn't open a page that states it. If it is 35 s, that is 14,000 A·s, which would beat Eco.",
+  "Vatrer warranty capacity terms: vatrerpower.com/pages/warranty-policy returned 403.",
+  "Eco Battery warranty capacity terms: the 8/16/23 warranty PDF hosted by Buggies Unlimited would not decode, and I didn't open Eco's own warranty page.",
+  "LiThink 48V 105Ah Pro: two searches found no maker site or listing, so I have no source for its 400 A BMS / 600 A surge duration, price or warranty.",
+  "End-of-life capacity (70% vs 80%) behind any maker's cycle-life figure: not stated on the LiTime pages I opened; Allied and Eco publish no cycle figure that I found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2199875999999998
+ }
+}
