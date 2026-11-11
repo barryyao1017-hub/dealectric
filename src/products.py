@@ -5830,6 +5830,38 @@ PRODUCTS = [
  "fit": 'A DXP2800 (34.7 W measured max, ocinside.de) or DH2300 (15–17 W max, ocinside.de), both well under the 72 W cap.',
  "caveats": ['Not listed for the DXP4800 Plus. Its 64 W measured peak would leave only 8 W under the 72 W cap.', "UGREEN's compatibility page menu reads 'UPS2000: Only Support DH Series', but its UPS buying guide lists the DXP2800 and DXP2800 GT. Check the product page for your model before buying.", 'Powers the NAS only. It has no AC outlets, so your router and switch need their own backup.']},
 
+{"slug": 'vankyo-performance-h500r-roku-tv',
+ "brand": 'VANKYO',
+ "program": 'awin:vankyo',
+ "category": 'projector',
+ "name": 'VANKYO Performance H500R 1080P Roku TV Smart Projector',
+ "model": 'H500R',
+ "url": 'https://ivankyo.com/products/vankyo-performance-h500r-roku-tv-smart-projector',
+ "price": 199.99,
+ "verified": '2026-11-11',
+ "specs": [('Native resolution', '1920 × 1080 (single LCD)'), ('Rated brightness', '330 ANSI lumens (VANKYO rating)'), ('Streaming', 'Roku TV built in, no stick needed'), ('Setup', 'Auto focus and auto keystone'), ('Throw ratio', '1.23:1 (about 9 ft for a 100-inch picture)'), ('Speakers', '2 × 5 W'), ('Connections', 'HDMI, USB-A, 3.5 mm audio out, dual-band Wi-Fi, Bluetooth 5.2'), ('Size and weight', '7.0 × 7.4 × 7.8 in, about 4 lb'), ('Rated noise', '32 dB')],
+ "warranty": '1 year from the purchase date. Covers units bought from ivankyo.com or an authorized VANKYO retailer.',
+ "returns": '30 days from delivery. You pay return shipping unless the unit is defective. Free standard shipping to the contiguous US only (no Alaska, Hawaii or APO/FPO).',
+ "summary": 'A native 1080p projector with Roku TV built in, rated at 330 ANSI lumens. That is the most rated light of any Roku TV projector at this price.',
+ "fit": 'Movie and streaming nights in a dark living room or bedroom, for people who already use Roku and want one remote and no stick.',
+ "caveats": ['No independent lab has measured its brightness or input lag yet. The 330-lumen figure comes from VANKYO.', '330 ANSI lumens works in a dark room. With daylight or lamps on, the picture washes out.', 'Not for fast games: lon.tv measured about a quarter second of input lag on the Aurzen D1R Cube, which lists the same brightness, throw ratio and speakers.', "Some retailers sell it with a screen or bag. VANKYO's store listing names no screen."]},
+
+{"slug": 'vankyo-leisure-3r-air-roku-tv',
+ "brand": 'VANKYO',
+ "program": 'awin:vankyo',
+ "category": 'projector',
+ "name": 'VANKYO Leisure 3R Air Smart Projector with Built-in Roku TV',
+ "model": 'Leisure 3R Air',
+ "url": 'https://ivankyo.com/products/vankyo-leisure-3r-air-smart-projector-with-built-in-roku-tv',
+ "price": 119.99,
+ "verified": '2026-11-11',
+ "specs": [('Native resolution', '1280 × 720 (accepts 1080p)'), ('Rated brightness', '150 lumens'), ('Streaming', 'Roku TV built in'), ('Stand', '180° flip stand for wall or ceiling'), ('Setup', 'Auto vertical keystone'), ('Picture size', '38 to 200 in'), ('Wireless', '2.4/5 GHz Wi-Fi, Bluetooth 5.2'), ('Light source', 'LED, rated 30,000 hours')],
+ "warranty": '1 year from the purchase date. Covers units bought from ivankyo.com or an authorized VANKYO retailer.',
+ "returns": '30 days from delivery. You pay return shipping unless the unit is defective. Free standard shipping to the contiguous US only.',
+ "summary": 'The lowest-priced projector with Roku TV built in that we found from a US maker store. It is 720p and rated at 150 lumens.',
+ "fit": "A kid's room, dorm or bedroom ceiling, with a 60 to 80 inch picture and the lights off.",
+ "caveats": ['Rated at 150 lumens, about half the light of the 1080p Roku models. It needs a fully dark room.', 'Native 720p, so text and small details look softer than on the 1080p models.', 'No independent review of this model found.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
