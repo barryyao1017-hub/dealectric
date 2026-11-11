@@ -5626,23 +5626,6 @@ PRODUCTS = [
  "fit": "For bedrooms and kids' rooms when you want to schedule the ocean-and-stars effect or switch it on by voice, rather than use a remote.",
  "caveats": ['No power adapter in the box: you need a 5 V / 2 A (10 W) USB adapter.', "Over Matter (Apple Home) you get on/off, brightness and scenes. MacRumors found colour changes from the Home app did not work. Govee's Matter FAQ says a Matter hub is required.", 'The laser stars are fixed green (MacRumors); they can be switched off.', "MacRumors' Juli Clover wrote of the ripple: 'I didn't think it necessarily looked quite like I was underwater'."]},
 
-{"slug": 'ugreen-nas-ups-us2000-72w',
- "brand": 'UGREEN',
- "program": 'cj:ugreen',
- "asin": None,
- "category": 'ups',
- "name": 'UGREEN NAS UPS US2000, 72 W DC Battery Backup for NASync 2-Bay and DH Models',
- "model": 'US2000',
- "url": 'https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply',
- "price": 69.99,
- "verified": '2026-11-11',
- "specs": [('Max output', '72 W DC'), ('Battery', '22.2 Wh, 6,000 mAh lithium-ion'), ('Listed compatible NAS', 'DH2300, DH4300 Plus, DXP2800, DXP2800 GT'), ('NAS shutdown signal', 'USB data link to the NAS; set up in UGOS')],
- "warranty": "2 years against manufacturing defects (UGREEN NAS store's 2-Year Product Warranty); accidental damage not covered",
- "returns": '30 days from receipt, unused and in original packaging; you pay return shipping unless the unit is defective (then UGREEN covers up to $10)',
- "summary": "UGREEN's smaller DC UPS for its 2-bay DXP models and DH-series NAS. It sits between the NAS's own power brick and the NAS, and signals UGOS over USB to shut down cleanly.",
- "fit": 'A DXP2800 (34.7 W measured max, ocinside.de) or DH2300 (15–17 W max, ocinside.de), both well under the 72 W cap.',
- "caveats": ['Not listed for the DXP4800 Plus. Its 64 W measured peak would leave only 8 W under the 72 W cap.', "UGREEN's compatibility page menu reads 'UPS2000: Only Support DH Series', but its UPS buying guide lists the DXP2800 and DXP2800 GT. Check the product page for your model before buying.", 'Powers the NAS only. It has no AC outlets, so your router and switch need their own backup.']},
-
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
