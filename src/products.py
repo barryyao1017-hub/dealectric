@@ -5728,6 +5728,22 @@ PRODUCTS = [
  "fit": 'Travelers whose laptop charges above 100 W, or who want the most energy of these kits without needing airline approval.',
  "caveats": ['UGREEN sells the same bank with a 100W cable 2-pack at the same $84.99; those cables cap the 140 W port at 100 W.', 'The store listing names the cable only as a 240W USB-C cable.', 'Recharge input is 65 W, so a full refill takes at least 90 Wh ÷ 65 W = 1.4 h.']},
 
+{"slug": 'esr-cryoboost-3-in-1-omnilock-car-bundle',
+ "brand": 'ESR',
+ "program": 'awin:esr_us',
+ "category": 'wireless-charger',
+ "name": 'ESR 25W CryoBoost 3-in-1 Magnetic Charger (Qi2) and OmniLock Car Charger (Air Vent) Bundle, US Plug',
+ "model": 'CryoBoost 3-in-1 (Qi2.2, 25W) + OmniLock Magnetic Car Charger (25W, CryoBoost, Air Vent)',
+ "url": 'https://www.esrtech.com/products/25w-qi2-cryoboost-3-in-1-magnetic-charger-and-car-charger-air-vent-bundle',
+ "price": 149.13,
+ "verified": '2026-11-11',
+ "specs": [('Phone output, stand and car', 'Qi2 25 W (ESR)'), ('Apple Watch / AirPods output on the stand', '5 W / 5 W (Macworld)'), ("Stand's total output", '35 W (25 + 5 + 5)'), ('Wall charger with the stand', '50 W USB-C (Macworld review of the stand)'), ('Car input needed for Qi2.2 speed', '35 W minimum (9to5Mac)'), ('Car adapter with the OmniLock', '40 W USB-C + 18 W USB-A (9to5Mac)'), ('Vent fit', 'Blades 10–32 mm wide and 1–4 mm thick; not bladeless, irregular, round or hidden vents (ESR)'), ('Case', 'Magnetic cases 2 mm or thinner (ESR)'), ('Bought separately at ESR', '3-in-1 109.99 + OmniLock 62.99 = 172.98 (2026-11-11)')],
+ "warranty": '12 months from the purchase date, covering quality issues; 24 months if you register as an ESR Super User or scan the QR code on the Care+ card. Proof of purchase required; valid only in the country of purchase (ESR warranty policy, read 2026-11-11)',
+ "returns": "30 days from purchase for a full refund, for any reason, on undamaged items bought on ESR's website, in intact original packaging with everything that came in the box. Buyer pays return shipping (ESR return and refund policy, read 2026-11-11)",
+ "summary": "ESR's own bundle of its Qi2.2 25 W 3-in-1 stand and its OmniLock 25 W vent car charger. One cart covers the nightstand and the car.",
+ "fit": 'iPhone 12 or later with MagSafe, plus Apple Watch and AirPods at home; cars with bladed air vents.',
+ "caveats": ["Plug the car charger into the included adapter's 40 W USB-C port. The car's built-in USB ports are 'probably not going to provide enough power' for Qi2.2 speed (9to5Mac, Bradley Chambers), and the adapter's 18 W USB-A port is below the 35 W minimum.", 'Does not fit bladeless, round, irregular or hidden vents.', 'Full 25 W only on iPhone 17, 17 Pro, 17 Pro Max, 18 Pro, 18 Pro Max, 16 Plus and 16 Pro Max. iPhone 16 and 16 Pro peak at 22.5 W, iPhone Air at 20 W, iPhone 17e or iPhone 15 and older at 15 W, and iPhone 12 mini and 13 mini at 12 W (Apple).', "The adapter wattages come from reviews of the standalone stand (Macworld) and car charger (9to5Mac). Check the bundle's in-the-box list at checkout."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
