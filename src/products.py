@@ -5609,6 +5609,23 @@ PRODUCTS = [
  "fit": 'Drawing, handwritten notes, movies and keeping a tablet for many years.',
  "caveats": ["Shortest runtime of the four tested 11-inch models: 11.2 h in Notebookcheck's Wi-Fi test, against 17.7 h for the Lenovo Yoga Tab", 'The included S Pen has no Bluetooth, so no camera remote or Air Actions (Samsung support)', 'Throttles more under sustained load: 66.7% stability in 3DMark Wild Life Extreme (Notebookcheck)', 'Notebookcheck measured 480 Hz PWM flicker on the OLED panel', 'No charger in the box']},
 
+{"slug": 'govee-star-light-projector-ocean-wave-h6094',
+ "brand": 'Govee',
+ "program": 'amazon:us',
+ "asin": 'B0FL2431W5',
+ "category": 'projector',
+ "name": 'Govee Star Light Projector (Ocean Wave) H6094, water ripple + laser stars, Matter / Alexa / Google, 540 ft²',
+ "model": 'H6094',
+ "url": 'https://www.amazon.com/dp/B0FL2431W5',
+ "price": None,
+ "verified": '2026-11-11',
+ "specs": [('Light source', '4 RGBW lamp beads behind a dual-layer textured lens (water ripple) plus a green laser module (stars)'), ('Smart control', 'Govee Home app, Amazon Alexa, Google Assistant, Matter'), ('Radios', '2.4 GHz only (FCC ID 2A7VD-H6094: 2402–2480 MHz and 2412–2472 MHz)'), ('Coverage', '540 ft² (up to 50 m²)'), ('Scenes and sound', '40+ scene modes, 18 white-noise options, sleep mode and timer'), ('Noise (maker spec)', 'under 25 dB'), ('Power input', '5 V, 2 A, 10 W; USB power adapter not included')],
+ "warranty": "12 months from the date of purchase (Govee's term for standard smart-lighting products). Valid only in the country where you bought it. If you bought from an authorized retailer such as Amazon, the claim goes through that retailer.",
+ "returns": 'Govee US store: return for any reason within 30 days of purchase (orders placed Oct 1–Dec 31, 2026 can be returned until Jan 31, 2027). You pay return shipping. The unit must be undamaged and sent back with its original packaging and all accessories within 7 days of approval.',
+ "summary": 'A star & ocean projector with real smart control. LEDs behind a textured lens draw the water ripple, a green laser adds stars, and it runs from the Govee Home app, Alexa, Google Assistant or Matter.',
+ "fit": "For bedrooms and kids' rooms when you want to schedule the ocean-and-stars effect or switch it on by voice, rather than use a remote.",
+ "caveats": ['No power adapter in the box: you need a 5 V / 2 A (10 W) USB adapter.', "Over Matter (Apple Home) you get on/off, brightness and scenes. MacRumors found colour changes from the Home app did not work. Govee's Matter FAQ says a Matter hub is required.", 'The laser stars are fixed green (MacRumors); they can be switched off.', "MacRumors' Juli Clover wrote of the ripple: 'I didn't think it necessarily looked quite like I was underwater'."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
