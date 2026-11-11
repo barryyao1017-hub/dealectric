@@ -215,7 +215,8 @@ async function logPageview(url, request, status, tag, env) {
   const navigation = request.headers.get("sec-fetch-dest") === "document";
   const prefetch = !!(request.headers.get("sec-purpose") || request.headers.get("purpose"));
   const bot = selfExcluded(request) ? 2
-    : botLike(cf, ua, tag || "", referrer) || forgedChrome(request, ua) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
+    : botLike(cf, ua, tag || "", referrer) || forgedChrome(request, ua) || (VPN_ASNS.has(cf.asn) && !tag && !referrer)
+      || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
       || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0;
   await env.DB.prepare(
     `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like, ch_ua, ch_platform)
@@ -284,7 +285,7 @@ async function handleGo(url, request, env, ctx) {
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || forgedChrome(request, ua) ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || forgedChrome(request, ua) || SEARCH_REFERRER.test(request.headers.get("referer") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
     clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null, hint(request, "sec-ch-ua", 200),
@@ -602,7 +603,18 @@ const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
 // DigitalOcean, Hetzner, Akamai/Linode. A shopping agent's cloud browser may come from one of these too, so a click
 // carrying an agent tag (utm_source muse / chatgpt-agent / signed-agent, set on pages served to a verified agent) is
 // never flagged by network. Microsoft (8075) is left off on purpose: ChatGPT's own browsing runs on Azure.
-const HOSTING_ASNS = new Set([132203, 45090, 14618, 16509, 16276, 14061, 24940, 63949]);
+// Added 2026-11-11 (dashboard audit): Alibaba Cloud US (ChatGPT-tagged landings with years-old Mac and Firefox agents),
+// Oxylabs (a scraping-proxy seller), HostRoyale, Web2Objects, Ace Data Centers, Servers.com and Latitude.sh (the
+// six-page monitor's and a fake-Google-referrer clicker's networks).
+const HOSTING_ASNS = new Set([132203, 45090, 14618, 16509, 16276, 14061, 24940, 63949,
+  45102, 396319, 203020, 62874, 401152, 11798, 7979, 396356]);
+// VPN and transit networks where real people do browse (M247, Datacamp, GTT, Zenlayer, NET3): a page opened from one
+// with no tag and no referrer at all is the six-page monitor's pattern (2026-11-11); a visit from ChatGPT or a click
+// between our pages still counts.
+const VPN_ASNS = new Set([9009, 212238, 3257, 21859, 46635]);
+// A search engine shows the store page a /go/ link redirects to, never the /go/ URL, so a /go/ click "from" a search
+// results page is a forged referrer (2026-11-02..09: a Windows Chrome 131 agent from GB, ES, US and HostRoyale).
+const SEARCH_REFERRER = /^https?:\/\/([a-z0-9-]+\.)*(google|bing|duckduckgo|yahoo|yandex|baidu)\.[a-z.]+\/?$/i;
 const AGENT_TAGS = new Set(["muse", "chatgpt-agent", "signed-agent"]);
 
 // A browser's Referer always carries a path: an origin-only referrer is sent as "https://site/", with the slash. A bare
