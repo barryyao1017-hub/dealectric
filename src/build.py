@@ -2365,7 +2365,11 @@ def csv_exports(out):
                     "price_read_on", "source_url", "figures_read_on"])
         for c in COMPARISONS + GAP_PAGES:
             for r in c["rows"]:
-                if r.get("slug"):
+                if r.get("kit"):   # DLC-223 bundle row: the kit, its cart total from the last passing test, its one link
+                    k = KIT_BY_SLUG[r["kit"]]
+                    t = kit_test(k) or {}
+                    name, ours, price, read_on, src = (r.get("model") or k["name"], "yes", t.get("list", ""), t.get("date", ""), kit_link(k))
+                elif r.get("slug"):
                     pr = BY_SLUG[r["slug"]]
                     name, ours, price, read_on, src = (r.get("model") or short_name(pr), "yes", pr["price"], verified_on(pr),
                                                        f"{SITE['url']}/{pr['slug']}")
