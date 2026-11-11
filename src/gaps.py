@@ -14,7 +14,7 @@ GAP_PAGES = [
 # whose own result set held only FAA, IATA and airline rules pages); "best power bank for flying carry-on airline approved
 # 2026", "TSA power bank rules carry-on 100Wh limit airline power bank use ban 2026", "airlines banning power bank use in
 # flight 2026 rules", "best 20000mAh power bank airline-friendly 2026" (Claude). The page answers the rule and the pick.
-{"slug": "best-power-banks-for-flying", "question": "G01 (Q01, Q02)",
+{"slug": "best-power-banks-for-flying", "buy_compare": True, "question": "G01 (Q01, Q02)",
  "title": "Best power banks for flying (2026): airline rules and picks under 100 Wh",
  "h1": "Best power banks for flying (2026): the airline rules, and picks under 100 Wh",
  "desc": "Which power bank you can take on a plane in 2026 and which to buy: FAA and ICAO limits (100 Wh, two per person, no recharging on board), each airline's in-flight use rules, and eleven power banks under 100 Wh compared (Baseus, Anker, UGREEN, INIU, Nitecore, EcoFlow).",
@@ -183,7 +183,7 @@ Under $500, compared on its own page: <a href="/best-solar-generator-kit-under-5
 # ---------------- G03: Tesla Model Y back-seat screen ----------------
 # Agent query seen: "Tesla Model Y back seat projector screen headrest mount rear seat entertainment" (Claude). Live Bing
 # top 10 on 2026-10-25: seven store listings and two brand pages, no editorial page (runs/2026-10-25-agentq).
-{"slug": "tesla-model-y-back-seat-screen", "question": "G03",
+{"slug": "tesla-model-y-back-seat-screen", "buy_compare": True, "question": "G03",
  "title": "Tesla Model Y back-seat screen (2026): rear displays, roof projector screen and tablet mounts compared by model year",
  "h1": "Tesla Model Y back-seat screen: every option compared by model year (2026)",
  "desc": "Back-seat entertainment for the Tesla Model Y, by model year: add-on rear displays (Teslahubs, TESERY, Tlyard, Hansshow), Hansshow's 18.5-inch flip-down, Aurzen's clip-in roof projector screen, and seat-back tablet mounts, with what fits 2025–2026 (Juniper) cars.",
@@ -520,7 +520,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-08',
  "updated": '2026-11-08'},
 
-{"slug": "starlink-mini-usb-c-power-requirements", "question": "G09 (FC41 funnel: Starlink Mini all day)", "lead_first": True,
+{"slug": "starlink-mini-usb-c-power-requirements", "buy_compare": True, "question": "G09 (FC41 funnel: Starlink Mini all day)", "lead_first": True,
  "title": "Starlink Mini USB-C power requirements: 100W PD, power consumption in watts, and what runs it all day (2026)",
  "h1": "Starlink Mini USB-C power requirements (2026): 100W PD, watts, and running it all day",
  "desc": "Starlink Mini's official USB-C power requirement (100 W USB PD at 20 V / 5 A), its power consumption in watts, how many hours a power bank or power station runs it, and the 1 kWh power stations that run it all day, compared on watt-hours, USB-C output and price.",
@@ -5063,7 +5063,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": "2026-11-04", "updated": '2026-11-08',
  "checked": "2026-11-03"},
 
-{"slug": "small-power-station-under-10-lb-100w-usb-c-laptop", "question": "G104 (power funnel x17: small power station under 10 lb that charges a laptop at 100 W USB-C for a weekend)", "lead_first": True,
+{"slug": "small-power-station-under-10-lb-100w-usb-c-laptop", "buy_compare": True, "question": "G104 (power funnel x17: small power station under 10 lb that charges a laptop at 100 W USB-C for a weekend)", "lead_first": True,
  "title": "Which small power station under 10 lb charges a laptop at 100 W USB-C for a weekend (2026)? Laptop charges per unit, ports, weight",
  "h1": "Which small power station under 10 lb charges a laptop at 100 W over USB-C for a weekend away? (2026)",
  "desc": "Small power stations under 10 lb for laptop charging over USB-C at 100 W or more: BLUETTI Elite 30 V2 (9.5 lb, 140 W + 100 W), EcoFlow RIVER 3 (7.7 lb, one 100 W port), Jackery Explorer 240 v2 and 300 Plus, the DC-only Anker SOLIX C300 DC and Jackery 300D. How many MacBook Air, MacBook Pro 14 and 16 charges each gives, measured usable energy, and why the Tenergy T320's 45 W port is too slow.",
@@ -5112,7 +5112,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": "2026-11-04",
  "checked": "2026-11-03"},
 
-{"slug": "small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage", "question": "G105 (power funnel x17: small power station to keep a Wi-Fi router and modem running through a power outage)", "lead_first": True,
+{"slug": "small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage", "buy_compare": True, "question": "G105 (power funnel x17: small power station to keep a Wi-Fi router and modem running through a power outage)", "lead_first": True,
  "title": "Which small power station keeps a Wi-Fi router and modem running in a power outage, and for how long (2026)? Hours at 10–20 W, UPS switchover, 12 V tips",
  "h1": "Which small power station keeps a Wi-Fi router and modem running through a power outage, and for how long? (2026)",
  "desc": "Keeping a cable modem or fiber ONT and a Wi-Fi router online in an outage with a small power station: measured and rated draws (eero, Orbi, cable modems, ONTs), hours on the BLUETTI Elite 30 V2, EcoFlow RIVER 3, Jackery Explorer 240 v2 and Tenergy T320, why a 10 ms switchover matters, and running the router from 12 V or USB-C instead of the inverter.",
@@ -5536,7 +5536,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ======== x19 power-station batch, AI-note layout (begin) ========
 
 # ---------------- G114: power-station-to-run-a-heated-blanket-all-night (x19, 2026-11-04; layout: AI note, Barry's design: a note to the assistant first, the page for people below) ----------------
-{"slug": 'power-station-to-run-a-heated-blanket-all-night', "question": 'G114 (x19 power: heated blanket all night)', "lead_first": True,
+{"slug": 'power-station-to-run-a-heated-blanket-all-night', "buy_compare": True, "question": 'G114 (x19 power: heated blanket all night)', "lead_first": True,
  "title": 'Power station to run a heated blanket all night (2026): watts, watt-hours and which size',
  "h1": 'What power station runs an electric heated blanket all night?',
  "desc": "How much power a 12 V or 120 V heated blanket really draws, how many watt-hours a night takes once the inverter's own draw is added, and which power station covers one blanket or two, with stock and codes checked on the makers' US stores.",

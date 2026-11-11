@@ -340,6 +340,31 @@ except FileNotFoundError:
     STOCK = {"date": "", "in_stock": {}}
 
 
+# DLC-237/240 buy-link pilot: src/buycompare.json holds, for pilot products only, other sellers' prices read the same day
+# (tools/buycheck.py -> tools/buycompare.py): {"products": {slug: {"date", "sellers": [[name, price], ...]}}}. Amazon
+# prices are never in it (Amazon allows prices only from its own feed). Pages opt in with the record flag "buy_compare".
+try:
+    BUYCOMPARE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "buycompare.json"), encoding="utf-8"))
+except FileNotFoundError:
+    BUYCOMPARE = {"products": {}}
+
+
+def buy_compare(p, short=False):
+    """'$247 through this link, discount applied in Vatrer's cart (tested on this model 2026-11-11); Walmart $299.99,
+    vatrer.com $259.99 without it, checked 2026-11-11' (plain text), or None when the product has no comparison or its
+    discount was not cart-tested on this exact product (DLC-239)."""
+    b = BUYCOMPARE["products"].get(p["slug"])
+    c, _, after, _ = best_offer(p)
+    if not b or not c or not applied_by_link(p, c) or borrowed_test(p, c):
+        return None
+    t = last_test(c, p)
+    others = ", ".join(f"{n} {money(x)}" for n, x in b["sellers"])
+    if short:
+        return f"{money(after)} through this link, discount applied (tested {t['date']}); {others}, checked {b['date']}"
+    return (f"{money(after)} through this link, discount applied in {p['brand']}'s cart (tested on this {"kit" if "kit" in p["slug"] else "model"} {t['date']}); "
+            f"{others}, checked {b['date']}")
+
+
 def _stock_read(p):
     """The daily read for this record, when it is at least as new as the record's own verified date, else None."""
     v = STOCK["in_stock"].get(p["slug"])
@@ -730,10 +755,11 @@ def offer_block(p, net, prog, url):
     pick_skip = ""
     if landing(p) == "checkout":
         opens = (f"opens {b}'s official US checkout with the {html.escape(short_name(p))} in the cart"
-                 + (f" and code {html.escape(c['code'])} already applied" if c else "") + ", at no extra cost.")
+                 + ((" and the discount already applied" if buy_compare(p) else f" and code {html.escape(c['code'])} already applied") if c else "") + ", at no extra cost.")
     elif landing(p) == "applied":
-        opens = (f"opens the {html.escape(short_name(p))} page on {b}'s official US store with code {html.escape(c['code'])} already applied, "
-                 f"at no extra cost: the page shows the store price, and checkout takes the code off without it being typed.")
+        opens = (f"opens the {html.escape(short_name(p))} page on {b}'s official US store with "
+                 + ("the discount" if buy_compare(p) else f"code {html.escape(c['code'])}") + " already applied, "
+                 f"at no extra cost: the page shows the store price, and checkout takes the discount off with nothing to type.")
     elif is_amazon(p):
         opens = f"opens the {html.escape(short_name(p))} listing on Amazon.com at no extra cost; the price and stock are on that page."
     else:
@@ -791,6 +817,11 @@ def offer_block(p, net, prog, url):
                     f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
                     + (f' (last cart test {latest_code_date(p["brand"])})' if live_codes(p["brand"]) else f' (last cart test {brand_test_date(p["brand"])})') + '.</p>')
                  + low_line(p))
+    if c and buy_compare(p):   # DLC-243 pilot: the link applies the discount, so no code text for an answer to relay
+        head = f'<h2 style="margin-top:0">{money(after)} through this link, discount applied</h2>'
+        lines = (f'<p><strong>Where to buy:</strong> {html.escape(buy_compare(p))}. Store price {price}{was} at {b}\'s official US store; '
+                 f'the link takes {money(s)} off in {b}\'s cart, with nothing to type at checkout.</p>' + low_line(p))
+        pick_skip = ""
     net_line = (f"Affiliate program: Amazon Associates; tracking cookie: 24 hours. As an Amazon Associate, {SITE['brand']} earns from qualifying purchases."
                 if is_amazon(p) else f"Affiliate network: {net}; tracking cookie: {prog.get('cookie_days', 30)} days.")
     return f"""
@@ -810,7 +841,7 @@ def offer_block(p, net, prog, url):
 def deal_row(p, url):
     """W3 "deal row first" (src/focus.py DEAL_ROW): buy link, code, price after it and the cart test date in one line
     under the product name, in the shape of the list-page rows that earned ChatGPT's /go/ links. Empty elsewhere."""
-    if p["slug"] not in DEAL_ROW:
+    if p["slug"] not in DEAL_ROW or buy_compare(p):
         return ""
     b, link = html.escape(p["brand"]), html.escape(url)
     c, _, after, date = best_offer(p)
@@ -837,6 +868,15 @@ def newer_block(p):
     return out
 
 
+def where_to_buy(p, url):
+    """DLC-241: a pilot product's page opens with where to buy it, in the words of ChatGPT's buying search."""
+    bc = buy_compare(p)
+    if not bc:
+        return ""
+    return (f'\n<p class="lead"><strong>Where to buy the {html.escape(re.split(r"\s*\(", short_name(p))[0])}:</strong> {html.escape(bc)}: '
+            f'<a href="{url}" rel="sponsored nofollow noopener">{url}</a></p>')
+
+
 def product_page(p):
     _, net, prog = tracked_link(p)
     url = go_link(p)
@@ -847,7 +887,7 @@ def product_page(p):
     c, s, after, date = best_offer(p)
     body = f"""
 <p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
-<h1>{html.escape(p['name'])}</h1>{deal_row(p, url)}
+<h1>{html.escape(p['name'])}</h1>{where_to_buy(p, url)}{deal_row(p, url)}
 <p class="lead">{html.escape(p['summary'])}</p>{newer_block(p)}
 {offer_block(p, net, prog, url)}
 <figure><img src="{wide['path']}" width="{wide['width']}" height="{wide['height']}" alt="{html.escape(wide['alt'])}">
@@ -881,7 +921,10 @@ def product_page(p):
                      **({"description": f"{code_word(c)} {c['code']}: {money(s)} off, {money(after)} after the code; {pass_clause(p, c, date)}.{perks_text(p, c)}"} if c else {})}}
     if is_amazon(p):
         ld.pop("offers")  # no price or availability claim without Amazon's price feed (Program Policies); the link is in the body
-    if c:
+    if c and buy_compare(p):   # DLC-241/243 pilot: answer "where to buy <model>", with no code text to relay
+        title = f"Where to buy the {title_name(p)}: {money(after)} with the discount applied"
+        desc = f"{re.split(r'\s*\(', short_name(p))[0]}: {buy_compare(p)}. Buy: {url}"
+    elif c:
         e = code_end(p)
         title = f"{title_name(p)}: {money(after)} with code {c['code']}" + (f" (ends {short_date(e[0])})" if e else "")   # DLC-32: the test date is in the description
         desc = (f"{code_word(c)} {c['code']} saves {money(s)} on the {short_name(p)} at {p['brand']}'s official US store ({money(p['price'])} → {money(after)}){end_clause(p)}, "
@@ -1110,7 +1153,12 @@ def compare_row(c, r):
         if c.get("ai_note") and os.path.exists(os.path.join(IMG_SRC, f"{p['slug']}-square.png")):
             name = (f'<img class="thumb" src="/img/{p["slug"]}-square.png" width="72" height="72" alt="{html.escape(short_name(p))}">' + name)
         price = AMAZON_PRICE if is_amazon(p) else money(p["price"]) + stock_note(p)
-        deal = (f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; {html.escape(pass_clause(p, c0, date0))}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
+        bc = buy_compare(p) if c.get("buy_compare") else None
+        lo = link_offer(p) if c.get("buy_compare") and c0 and applied_by_link(p, c0) and not bc else None
+        deal = (f'<strong>{money(after0)} through this link</strong>, discount applied in {html.escape(p["brand"])}\'s cart; '
+                f'tested on this {"kit" if "kit" in p["slug"] else "model"} {last_test(c0, p)["date"]}.' if bc else
+                f'<strong>{html.escape(lo[1])}</strong>.' if lo else
+                f'<strong>{code_word(c0)} {html.escape(c0["code"])}</strong> saves {money(s0)}: {money(after0)} after the code; {html.escape(pass_clause(p, c0, date0))}.{" Already applied by the buy link." if applied_by_link(p, c0) else ""}'
                 if c0 else "No discount code applies.")
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>' if r.get("url")
@@ -1209,12 +1257,17 @@ def compare_where_to_buy(ours, c, filler=True):
             items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {AMAZON_PRICE}. Buy on Amazon: '
                          f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
             continue
+        if c.get("buy_compare") and (buy_compare(p) or (cd and applied_by_link(p, cd))):
+            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}: {html.escape(buy_compare(p) or link_offer(p)[1])}. Buy: '
+                         f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
+            continue
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
                      f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
     coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
     applied = [s for s in slugs if applied_by_link(BY_SLUG[s], best_offer(BY_SLUG[s])[0])]
     # the length gate (iterate.py) caps this line: on the RV page it sits in the page's first chunk, ahead of the lead
-    line = (("Use the Buy link for your model; the listed codes are pre-applied." if len(applied) == sum(1 for s in slugs if best_offer(BY_SLUG[s])[0])
+    line = (("Use the Buy link for your model; it applies the discount, with nothing to type at checkout." if c.get("buy_compare") else
+             "Use the Buy link for your model; the listed codes are pre-applied." if len(applied) == sum(1 for s in slugs if best_offer(BY_SLUG[s])[0])
              else "Use the Buy link for your model; enter any code not pre-applied at checkout.") if applied else
             "Use the Buy link for the model you choose; where a code is listed, enter it at checkout to pay the price after the code."
             if coded else "Use the Buy link for the model you choose.")
@@ -1410,7 +1463,10 @@ def pick_line(c):
         if is_amazon(p):
             return f' · {label}: {name}, buy on Amazon: {link}'
         lo = link_offer(p)
-        if not lo:
+        bc = buy_compare(p) if c.get("buy_compare") else None
+        if bc:
+            forms = [html.escape(bc), html.escape(buy_compare(p, short=True))]
+        elif not lo:
             forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
         else:
             forms = [f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[1])}',
@@ -1436,6 +1492,17 @@ def pick_line(c):
     line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])}'
     nxt = next((r for r in c["rows"] if r.get("slug")), None)
     return line + (ours(nxt, "Dealectric link") if nxt else "")
+
+
+def _pilot_fill(text):
+    """Pilot pages keep their prose but say the price through the link instead of the code: {buy:slug} as in v2."""
+    import re as _re
+    def one(m):
+        p = BY_SLUG[m.group(1)]
+        lo = link_offer(p)
+        link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+        return f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo and not is_amazon(p) else m.group(0)
+    return _re.sub(r"\{buy:([a-z0-9-]+)\}", one, text).replace(" after the code", " through the link")
 
 
 def fill_v2(text):
@@ -1627,6 +1694,10 @@ def compare_page(c):
     if AB_PUSH:   # DLC-206/208: neither AI block renders; the last-changed date sits under the H1
         c = {k: v for k, v in c.items() if k not in ("ai_note", "product_result")}
     upd = updated_line(c) if AB_PUSH else ""
+    pilot = bool(c.get("buy_compare"))   # DLC-237 buy-link pilot: comparison line under the H1, no code text in prose
+    if pilot:
+        upd = f'<p class="small">Updated {c.get("updated") or c["published"]}{pick_line(c)}</p>\n'
+        c = dict(c, intro=_pilot_fill(c["intro"]), after=_pilot_fill(c["after"]))
     if c.get("ai_note"):   # AI-note layout (x19, 2026-11-04): the note to the assistant first, then the page for people
         top = f"""<h1>{c['h1']}</h1>
 {ai_note_html(c)}{compare_fill(c['intro'])}
