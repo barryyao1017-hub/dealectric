@@ -341,6 +341,7 @@ def apply(slug: str, local: bool) -> dict:
     for m in ("products", "gaps"):
         if m in sys.modules:
             importlib.reload(sys.modules[m])
+    full = draft   # the draft with its new product records, written back if the page step fails
     draft = {**draft, "products": []}
     A.jsave(d / "draft.json", draft)
     orig_rt, orig_pc = A.record_text, A.pick_check
@@ -355,6 +356,8 @@ def apply(slug: str, local: bool) -> dict:
         A.record_text, A.pick_check, A.validate = orig_rt, orig_pc, orig_val
     if res.get("status") != "committed":
         subprocess.run(["git", "revert", "--no-edit", sha], cwd=ROOT, capture_output=True)
+        after = A.jload(d / "draft.json", {})   # keep abpage's gate notes, put the product records back
+        A.jsave(d / "draft.json", {**after, "products": full.get("products") or []})
     return res
 
 
