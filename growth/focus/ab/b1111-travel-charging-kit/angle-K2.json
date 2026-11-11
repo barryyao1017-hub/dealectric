@@ -1,0 +1,99 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that on the UGREEN Nexode 100W 4-port charger the USB-A port works only alongside C1 or C2 (not C3), that plugging in a third device cuts the laptop port from 65 W to 45 W, and that its PPS tops out at 25 W, so a Galaxy S24/S25 Ultra cannot get Samsung's 45 W Super Fast Charging 2.0 from it.",
+ "standout": 2,
+ "standout_why": "I opened publicasta.com (cited), itechguides.com 100W multiport (cited) and androidauthority.com best USB-C chargers (cited). Publicasta only says in general terms that a 100 W charger 'might give the laptop 65 W' and that you need 100 W/240 W e-marked cables. Itechguides lists power splits for other UGREEN SKUs (X757, 90928) and gives no split for the US 4-port, and it has no port exclusion. Android Authority ticks PPS boxes and gives Anker Prime 100W splits but nothing for the Nexode 100W 4-port's ports, and it never ties a charger's 25 W PPS cap to Samsung's 45 W mode. None says which port the laptop, phone, power bank and watch should each use. wired.com and travelandleisure.com (both cited) blocked fetching, so I could not check them. They are adapter round-ups, which makes charger port rules unlikely there. That is why this scores 2 and not 3. The finding sets the port plan for this kit but would not change which products go in it.",
+ "kit_items": [
+  "Wall charger: UGREEN Nexode 100W 4-Port (3× USB-C + USB-A). C1 or C2 gives up to 100 W at 20 V/5 A for a laptop. Input is 100–240 V, so overseas only a plug adapter is needed, not a voltage converter. Port plan: laptop on C1 (65 W with a second device), phone on C2 (30 W), earbuds or watch on C3. Never use C3 and USB-A as a pair.",
+  "Power bank: UGREEN Nexode 20,000 mAh 100W (72 Wh, below the 100 Wh airline line). Its USB-C input takes up to 20 V/3.25 A (65 W), which matches the charger's 65 W C1 slot when a phone sits on C2, so the bank recharges at full rate next to the phone. Only its C1 output reaches 20 V/5 A, so the laptop goes on C1 of the bank. C2 stops at 12 V/2.5 A (30 W).",
+  "Cables: two UGREEN 100 W USB-C to USB-C cables (included in the power bank bundle). A 20 V/5 A port needs a 5 A cable to give 100 W. A 5 A cable is also what Samsung asks for in its 45 W mode."
+ ],
+ "carts": [
+  {
+   "store": "UGREEN US (us.ugreen.com, cj:ugreen)",
+   "items": [
+    "UGREEN Nexode 100W 4-Port Charger | https://us.ugreen.com/products/100w-3c1a-gan-fast-charger | $54.99 | 2026-11-11",
+    "(Bundle) UGREEN 100W 20000mAh Power Bank + 3.3FT 100W USB-C Cable 2 Pack | https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank-bundle-copy | $60.22 (compare-at $91.43) | 2026-11-11"
+   ],
+   "bundle_sku": "No store bundle covers all three items. Two partial bundles exist: '(Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack', $59.99 (compare-at $71.98), https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1, and the power bank + 2-cable bundle at $60.22. The cart as listed (charger alone + power bank bundle) costs $115.21 and includes two 100 W cables."
+  }
+ ],
+ "findings": [
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "USB-A port pairing exclusion",
+   "value": "When USB-A is used, only C1 + A or C2 + A can be used together",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1",
+   "source_title": "(Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-11",
+   "note": "UGREEN's own product text, read through storecheck.py search of the US store: 'If you want to to use the USB A port, only C1 and A port or C2 and A port can be used simultaneously.' Mighty Gadget's two-port table also has no C3 + A row."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "Per-port maximum output",
+   "value": "C1/C2 100 W (20 V/5 A); C3 22.5 W; USB-A 22.5 W; PD 3.0, QC 4.0+, PPS 25 W",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1",
+   "source_title": "(Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-11",
+   "note": "Spec block on the UGREEN US bundle page. Size 2.72 × 2.72 × 1.3 in, 235 g."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "Power split, two devices",
+   "value": "C1 + C2 = 65 W + 30 W; C1 or C2 with C3 or A = 65 W + 22.5 W",
+   "source": "https://mightygadget.com/ugreen-nexode-100w-gan-wall-charger-review-4-ports-3xusb-c-1x-usb-a/",
+   "source_title": "Mighty Gadget – UGREEN Nexode 100W GaN wall charger review (James Smythe)",
+   "read": "2026-11-11",
+   "note": "Maker's port table as reprinted by James Smythe. Published 2024-08-05, updated 2026-03-21."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "Power split, three or four devices",
+   "value": "C1 + C2 + C3 (or A) = 45 W + 30 W + 22.5 W; C1 or C2 + C3 + A = 65 W + 10.5 W + 10.5 W; all four = 45 W + 30 W + 10.5 W shared",
+   "source": "https://mightygadget.com/ugreen-nexode-100w-gan-wall-charger-review-4-ports-3xusb-c-1x-usb-a/",
+   "source_title": "Mighty Gadget – UGREEN Nexode 100W GaN wall charger review (James Smythe)",
+   "read": "2026-11-11",
+   "note": "With a third device the laptop on C1 drops from 65 W to 45 W. With the laptop on C1 and the phone on C3, plugging a watch into A cuts the phone to 10.5 W."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "AC input range",
+   "value": "100–240 V~ 50/60 Hz, 2.3 A max",
+   "source": "https://mightygadget.com/ugreen-nexode-100w-gan-wall-charger-review-4-ports-3xusb-c-1x-usb-a/",
+   "source_title": "Mighty Gadget – UGREEN Nexode 100W GaN wall charger review (James Smythe)",
+   "read": "2026-11-11",
+   "note": "Maker's spec quoted by the reviewer. The UGREEN US product page could not be opened (HTTP 429), so the source is a named reviewer and not the maker."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger + Samsung Galaxy S24/S25 Ultra",
+   "label": "Samsung charging rate",
+   "value": "25 W (Super Fast Charging), not 45 W (Super Fast Charging 2.0)",
+   "source": "https://www.samsung.com/us/support/troubleshoot/TSG10013503/",
+   "source_title": "Samsung US – Galaxy device is not fast charging",
+   "read": "2026-11-11",
+   "note": "Samsung says 2.0 needs 'a 45W or 60W USB-C adapter and a 5A-rated USB-C cable'. Samsung's 45 W adapter page (https://www.samsung.com/ca/mobile-accessories/45w-power-adapter-black-ep-t4511xbegca/, read 2026-11-11) lists PPS 5.0–20.0 V and names S22+/Ultra through S25 Ultra as 2.0 models. UGREEN lists this charger's PPS as 25 W. The 25 W ceiling is my inference from these documents and has not been measured. James Smythe charged an S24 Ultra but gave no wattage."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20,000 mAh 100W",
+   "label": "Input / outputs / energy",
+   "value": "Input USB-C up to 20 V/3.25 A (65 W); C1 out up to 20 V/5 A (100 W, PPS); C2 out up to 12 V/2.5 A (30 W); USB-A out up to 22.5 W; 72 Wh",
+   "source": "https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank-bundle-copy",
+   "source_title": "(Bundle) 100W 20000mAh Power Bank + 3.3FT 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-11",
+   "note": "UGREEN spec block. 72 Wh is below the 100 Wh carry-on limit cited by publicasta. Only C1 reaches 20 V, so a laptop must use C1. A 65 W input means the charger's 65 W C1 slot (with a phone on C2) recharges it at full rate. The standalone bank page (https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank) is $79.99 and shows the same spec."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own US product page for the 100W 4-Port (100w-3c1a-gan-fast-charger): port-combination table and input rating. The page returned HTTP 429 on every try (storecheck and WebFetch, also eu.ugreen.com), so the table and the 100–240 V input come from Mighty Gadget instead.",
+  "The PPS voltage/current range of the 100W 4-Port. The US page says only 'PPS 25W'. A search snippet for UGREEN's EU page showed '3.3-21V/5A PPS 100W', but I could not open that page, so the conflict is unresolved.",
+  "A measured charging wattage for a Samsung Ultra or an iPhone 17 on this charger. No named reviewer published one.",
+  "Whether the power bank supports pass-through charging. Not stated in the store text I read.",
+  "WIRED and Travel + Leisure adapter pages (cited rivals): fetch was blocked, so I could not check whether they mention charger port rules."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2017429999999991
+ }
+}
