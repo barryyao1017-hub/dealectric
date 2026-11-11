@@ -5592,6 +5592,23 @@ PRODUCTS = [
  "fit": "Owners of a long-throw projector on a shelf or ceiling who watch with some room light on and can't drill.",
  "caveats": ['Not for UST projectors.', "Forum owners report hot spots on gray long-throw ALR surfaces when the projector's throw ratio is below about 1.5. Check your projector's throw ratio first.", 'The price shown is for the smallest size.']},
 
+{"slug": 'samsung-galaxy-tab-s11-128gb-wifi',
+ "brand": 'Samsung',
+ "program": 'amazon:us',
+ "asin": 'B0FGKTLFGD',
+ "category": 'tablets',
+ "name": 'Samsung Galaxy Tab S11 128GB Wi-Fi Android Tablet, 11-inch AMOLED, S Pen included, Silver',
+ "model": 'Galaxy Tab S11 (SM-X730), 128 GB Wi-Fi',
+ "url": 'https://www.amazon.com/dp/B0FGKTLFGD',
+ "price": None,
+ "verified": '2026-11-11',
+ "specs": [('Display', '11-inch Dynamic AMOLED 2X, up to 120 Hz'), ('Chip', 'MediaTek Dimensity 9400+'), ('Memory', '12 GB RAM, 128 GB storage'), ('Battery', '8,400 mAh, 45 W charging (charger not in the box)'), ('Pen', 'S Pen in the box; no Bluetooth, no Air Actions'), ('Expansion', 'microSD up to 2 TB'), ('Software support', 'Up to 7 Android OS upgrades and 7 years of security updates from global launch'), ('Battery runtime (Notebookcheck Wi-Fi, 150 cd/m²)', '11 h 14 min')],
+ "warranty": '12-month Samsung standard limited warranty (Samsung US)',
+ "returns": "If bought at Samsung.com: return within 15 days of delivery, with a 5% restocking fee on tablets and a free return label. If bought from another store, such as Amazon, that store's return policy applies.",
+ "summary": 'The 11-inch Android tablet with the best screen and the pen in the box. Notebookcheck measured 1,575 cd/m² peak brightness and 11.2 h of Wi-Fi browsing.',
+ "fit": 'Drawing, handwritten notes, movies and keeping a tablet for many years.',
+ "caveats": ["Shortest runtime of the four tested 11-inch models: 11.2 h in Notebookcheck's Wi-Fi test, against 17.7 h for the Lenovo Yoga Tab", 'The included S Pen has no Bluetooth, so no camera remote or Air Actions (Samsung support)', 'Throttles more under sustained load: 66.7% stability in 3DMark Wild Life Extreme (Notebookcheck)', 'Notebookcheck measured 480 Hz PWM flicker on the OLED panel', 'No charger in the box']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
