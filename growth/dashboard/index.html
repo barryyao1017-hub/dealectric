@@ -1,0 +1,393 @@
+<meta name="dash-one-writer">
+<style>
+  .dl { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .dl h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+  .dl h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+  .dl-sub, .dl-note { color: var(--color-fg-muted); font-size: var(--cds-font-size-body); margin: 0; max-width: 70ch; }
+  .dl-note { font-size: var(--cds-font-size-caption); }
+  .dl-take { font-size: var(--cds-font-size-body); margin: 0; max-width: 70ch; }
+  .dl-take b { font-variant-numeric: tabular-nums; }
+  .dl-section { display: flex; flex-direction: column; gap: var(--cds-gap-md); min-width: 0; }
+  .dl-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-sm); }
+  .dl-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--cds-gap-md); }
+  .dl-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius);
+    padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .dl-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .04em; }
+  .dl-kpi-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: 2.1rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .dl-kpi-meta { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); font-variant-numeric: tabular-nums; }
+  .dl-up { color: var(--color-ok); } .dl-down { color: var(--color-bad); } .dl-flat { color: var(--color-fg-muted); }
+  .dl-seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; }
+  .dl-seg button { font: inherit; font-size: var(--cds-font-size-caption); padding: 4px 12px; border: 0; background: transparent;
+    color: var(--color-fg-muted); cursor: pointer; }
+  .dl-seg button[aria-pressed="true"] { background: var(--color-panel); color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .dl-seg button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: -2px; }
+  .dl-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--cds-gap-md); }
+  .dl-chart-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius);
+    padding: var(--cds-pad-md); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+  .dl-chart-card h3 { margin: 0; font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); }
+  .dl-chart { position: relative; min-height: 190px; }
+  .dl-chart svg text { fill: var(--cds-text-secondary); font-size: var(--cds-font-size-caption); font-family: var(--font-anthropic-sans); }
+  .dl-legend { display: flex; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .dl-legend i { display: inline-block; width: 10px; height: 2px; vertical-align: middle; margin-right: 6px; }
+  .dl-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border);
+    box-shadow: var(--cds-shadow-popover); border-radius: var(--cds-radius); padding: 6px 8px; font-size: var(--cds-font-size-caption);
+    white-space: nowrap; font-variant-numeric: tabular-nums; z-index: 2; }
+  .dl-tip span { color: var(--cds-text-secondary); }
+  .dl-wrap { overflow-x: auto; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
+  .dl-table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); }
+  .dl-table th, .dl-table td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+  .dl-table th { font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); background: var(--color-panel); position: sticky; top: 0; white-space: nowrap; }
+  .dl-table td.n, .dl-table th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .dl-table td.wide { min-width: 220px; max-width: 360px; }
+  .dl-table td.hyp { min-width: 260px; max-width: 420px; color: var(--color-fg-muted); }
+  .dl-table td.page { white-space: nowrap; }
+  .dl-table td.page a { color: inherit; }
+  .dl-table tbody tr:last-child td { border-bottom: 0; }
+  .dl-pill { display: inline-block; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--color-border-line); white-space: nowrap; }
+  .dl-zero { color: var(--color-fg-muted); }
+  .dl details { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); max-width: 80ch; }
+  .dl details summary { cursor: pointer; color: var(--color-fg); font-size: var(--cds-font-size-body); }
+  .dl details li { margin-block: 4px; }
+  [data-dash-source-state=refreshing] { opacity: .5; }
+</style>
+
+<div class="dl" id="sales-dashboard">
+  <header class="dl-section" id="overview">
+    <h1>Dealectric sales</h1>
+    <p class="dl-sub">Commission, conversion and human traffic on dealectric.com. Bots, crawlers, AI fetchers and our own tests are left out. Days and weeks are Pacific time; weeks start Monday.</p>
+    <p class="dl-take" id="takeaway">This week so far: <b data-draw="fig" data-fmt="usd" data-source="summary" data-field="commission_week" data-row="0">—</b> commission from <b data-draw="fig" data-fmt="int" data-source="summary" data-field="orders_week" data-row="0">—</b> orders. At the same point last week: <b data-draw="fig" data-fmt="usd" data-source="summary" data-field="commission_last_week_to_date" data-row="0">—</b>. All time: <b data-draw="fig" data-fmt="usd" data-source="summary" data-field="commission_total" data-row="0">—</b> from <b data-draw="fig" data-fmt="int" data-source="summary" data-field="orders_total" data-row="0">—</b> orders.</p>
+  </header>
+
+  <section class="dl-kpis" id="headline" data-fetchpriority="high">
+    <div class="dl-kpi" id="kpi-commission-total">
+      <span class="dl-kpi-label">Total commission</span>
+      <span class="dl-kpi-value" data-draw="fig" data-fmt="usd" data-source="summary" data-field="commission_total" data-row="0">—</span>
+      <span class="dl-kpi-meta">All time · <span data-draw="fig" data-fmt="int" data-source="summary" data-field="orders_total" data-row="0">—</span> orders</span>
+    </div>
+    <div class="dl-kpi" id="kpi-commission-week">
+      <span class="dl-kpi-label">Commission this week</span>
+      <span class="dl-kpi-value" data-draw="fig" data-fmt="usd" data-source="summary" data-field="commission_week" data-row="0">—</span>
+      <span class="dl-kpi-meta" data-draw="delta" data-kind="usd" data-now="commission_week" data-then="commission_last_week_to_date" data-source="summary">—</span>
+    </div>
+    <div class="dl-kpi" id="kpi-conversion-total">
+      <span class="dl-kpi-label">Conversion, cumulative</span>
+      <span class="dl-kpi-value" data-draw="fig" data-fmt="pct" data-source="summary" data-field="conversion_total_pct" data-row="0">—</span>
+      <span class="dl-kpi-meta">Orders per visitor · <span data-draw="fig" data-fmt="int" data-source="summary" data-field="visitors_total" data-row="0">—</span> visitors</span>
+    </div>
+    <div class="dl-kpi" id="kpi-conversion-week">
+      <span class="dl-kpi-label">Conversion this week</span>
+      <span class="dl-kpi-value" data-draw="fig" data-fmt="pct" data-source="summary" data-field="conversion_week_pct" data-row="0">—</span>
+      <span class="dl-kpi-meta" data-draw="delta" data-kind="pct" data-now="conversion_week_pct" data-then="conversion_last_week_pct" data-source="summary">—</span>
+    </div>
+  </section>
+  <p class="dl-note" id="traffic-caveat">Visitors before full page logging started (<span data-draw="fig" data-fmt="date" data-source="summary" data-field="full_logging_since" data-row="0">—</span>) are only those who arrived on a link tagged by an AI assistant, mostly ChatGPT, so earlier conversion rates read high.</p>
+
+  <section class="dl-section" id="trends">
+    <div class="dl-head">
+      <h2>Week to week and day to day</h2>
+      <div class="dl-seg" role="group" aria-label="Period">
+        <button type="button" id="grain-week" data-grain="week" aria-pressed="true">Weekly</button>
+        <button type="button" id="grain-day" data-grain="day" aria-pressed="false">Daily</button>
+      </div>
+    </div>
+    <div class="dl-charts">
+      <div class="dl-chart-card" id="chart-commission-card">
+        <h3>Commission</h3>
+        <div class="dl-chart" id="chart-commission" data-draw="chart" data-metric="commission" data-source="weekly daily"></div>
+      </div>
+      <div class="dl-chart-card" id="chart-conversion-card">
+        <h3>Conversion rate</h3>
+        <div class="dl-chart" id="chart-conversion" data-draw="chart" data-metric="conversion_pct" data-source="weekly daily"></div>
+      </div>
+      <div class="dl-chart-card" id="chart-traffic-card">
+        <h3>Traffic</h3>
+        <div class="dl-legend"><span><i class="dl-sw0"></i>Visitors</span><span><i class="dl-sw1"></i>Clicks to a store</span></div>
+        <div class="dl-chart" id="chart-traffic" data-draw="chart" data-metric="traffic" data-source="weekly daily"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dl-section" id="pages">
+    <div class="dl-head">
+      <h2>Top 100 pages</h2>
+      <div class="dl-seg" role="group" aria-label="Sort pages by">
+        <button type="button" id="pages-by-commission" data-table="pages" data-sort="commission" aria-pressed="true">By commission</button>
+        <button type="button" id="pages-by-traffic" data-table="pages" data-sort="traffic" aria-pressed="false">By traffic</button>
+      </div>
+    </div>
+    <p class="dl-note">Ordered by commission, then views. A sale counts for the page the shopper clicked through from; a link an assistant handed over directly counts for the product's own page.</p>
+    <div class="dl-wrap">
+      <table class="dl-table" id="pages-table" data-source="pages" data-row-key="page" data-fetchpriority="low">
+        <thead><tr>
+          <th data-field="page">Page</th><th data-field="kind">Kind</th><th data-field="topic">Topic</th>
+          <th data-field="experiment">Experiment</th><th data-field="hypothesis">Hypothesis</th>
+          <th class="n" data-field="views">Views</th><th class="n" data-field="visitors">Visitors</th>
+          <th class="n" data-field="clicks">Store clicks</th><th class="n" data-field="orders">Orders</th>
+          <th class="n" data-field="commission">Commission</th><th class="n" data-field="conversion_pct">Conversion</th>
+        </tr></thead>
+        <tbody data-draw="pages-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dl-section" id="brands">
+    <div class="dl-head">
+      <h2>Top 100 brands</h2>
+      <div class="dl-seg" role="group" aria-label="Sort brands by">
+        <button type="button" id="brands-by-commission" data-table="brands" data-sort="commission" aria-pressed="true">By commission</button>
+        <button type="button" id="brands-by-traffic" data-table="brands" data-sort="traffic" aria-pressed="false">By traffic</button>
+      </div>
+    </div>
+    <p class="dl-note">Ordered by commission, then clicks to the brand's store. Conversion here is orders per store click; commission rate is commission over order value.</p>
+    <div class="dl-wrap">
+      <table class="dl-table" id="brands-table" data-source="brands" data-row-key="brand" data-fetchpriority="low">
+        <thead><tr>
+          <th data-field="brand">Brand</th><th data-field="network">Network</th><th data-field="topic">Topic</th>
+          <th data-field="experiment">Experiment</th><th data-field="hypothesis">Hypothesis</th><th data-field="added">Program note</th>
+          <th class="n" data-field="views">Page views</th><th class="n" data-field="clicks">Store clicks</th>
+          <th class="n" data-field="orders">Orders</th><th class="n" data-field="commission">Commission</th>
+          <th class="n" data-field="conversion_pct">Conversion</th><th class="n" data-field="commission_rate_pct">Commission rate</th>
+        </tr></thead>
+        <tbody data-draw="brands-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dl-section" id="platforms">
+    <h2>Platforms</h2>
+    <p class="dl-note">Where visitors came from, all time. "No click" holds sales made with a discount code but without our link: real commission that no page or platform can claim.</p>
+    <div class="dl-wrap">
+      <table class="dl-table" id="platforms-table" data-source="platforms" data-row-key="platform">
+        <thead><tr>
+          <th data-field="platform">Platform</th><th class="n" data-field="visitors">Visitors</th><th class="n" data-field="views">Views</th>
+          <th class="n" data-field="clicks">Store clicks</th><th class="n" data-field="orders">Orders</th>
+          <th class="n" data-field="commission">Commission</th><th class="n" data-field="commission_rate_pct">Avg commission rate</th>
+          <th class="n" data-field="conversion_pct">Conversion</th><th class="n" data-field="click_conversion_pct">Orders per click</th>
+        </tr></thead>
+        <tbody data-draw="platforms-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details id="definitions">
+    <summary>How these numbers are counted</summary>
+    <ul>
+      <li><b>Commission</b>: every sale CJ, Awin and Rakuten report, as recorded by the site's edge Worker (Awin within minutes, CJ every 30 minutes). Corrections are negative and included. Networks approve sales 30 to 50 days later, so some may still be reversed.</li>
+      <li><b>Orders</b>: sales with a positive commission.</li>
+      <li><b>Visitor</b>: one browser on one Pacific day that opened at least one page as a person.</li>
+      <li><b>Conversion</b>: orders divided by visitors, for the same period.</li>
+      <li><b>Store click</b>: a /go/ link opened by a person on the way to the store.</li>
+      <li><b>Left out as bots</b>: verified bots and AI fetchers; crawler user agents; Google scanner and cloud-hosting networks; pages opened without a browser's navigation headers; prefetches; one browser opening 8 or more pages within a minute or 5 or more offers in a day; untagged clicks that came from no page a person opened; our own browsers and checks.</li>
+      <li><b>Topic and hypothesis</b>: from the page and brand records in the site's source, refreshed every 30 minutes after a change.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+  const FMT = {
+    usd: (v) => '$' + d3.format(',.2f')(v),
+    int: (v) => d3.format(',')(v),
+    pct: (v) => d3.format('.2f')(v) + '%',
+    date: (v) => d3.utcFormat('%b %-d, %Y')(new Date(v)),
+  };
+  const fmt = (kind, v) => (v === null || v === undefined || v === '' ? '—' : FMT[kind](v));
+  const ok = (id) => dash.data(id).status === 'ok';
+  window.dlState = window.dlState || { grain: 'week', pages: 'commission', brands: 'commission' };
+
+  dash.draw('fig', (el) => {
+    const d = dash.data(el.dataset.source);
+    if (d.status === 'loading') { el.classList.add('dash-skeleton'); return; }
+    el.classList.remove('dash-skeleton');
+    const row = d.status === 'ok' ? d.data[0] : null;
+    el.textContent = row ? fmt(el.dataset.fmt, row[el.dataset.field]) : '—';
+  });
+
+  dash.draw('delta', (el) => {
+    const d = dash.data(el.dataset.source);
+    el.classList.remove('dl-up', 'dl-down', 'dl-flat');
+    const row = d.status === 'ok' ? d.data[0] : null;
+    if (!row) { el.textContent = '—'; return; }
+    const now = row[el.dataset.now], then = row[el.dataset.then];
+    const kind = el.dataset.kind;
+    if (then === null || then === undefined) { el.textContent = 'No comparison for last week'; el.classList.add('dl-flat'); return; }
+    const diff = (now ?? 0) - then;
+    const sign = diff > 0 ? '+' : diff < 0 ? '−' : '±';
+    const amount = kind === 'usd' ? '$' + d3.format(',.2f')(Math.abs(diff)) : d3.format('.2f')(Math.abs(diff)) + ' pts';
+    const base = kind === 'usd' ? `vs ${fmt('usd', then)} at this point last week` : `vs ${fmt('pct', then)} all last week`;
+    el.textContent = `${sign}${amount} ${base}`;
+    el.classList.add(diff > 0 ? 'dl-up' : diff < 0 ? 'dl-down' : 'dl-flat');
+  });
+
+  dash.draw('chart', {
+    mount(el) {
+      const tip = document.createElement('div');
+      tip.className = 'dl-tip'; tip.hidden = true;
+      el.append(tip);
+      return { tip, first: true };
+    },
+    update(el, made) {
+      const grain = window.dlState.grain;
+      const src = grain === 'week' ? 'weekly' : 'daily';
+      const d = dash.data(src);
+      el.querySelectorAll('svg, .dl-msg').forEach((n) => n.remove());
+      made.tip.hidden = true;
+      if (d.status !== 'ok') {
+        if (d.status === 'error') { const m = document.createElement('p'); m.className = 'dl-note dl-msg'; m.textContent = 'Failed to load'; el.append(m); }
+        return;
+      }
+      const key = grain === 'week' ? 'week' : 'day';
+      const parse = d3.utcParse('%Y-%m-%d');
+      const rows = d.data.map((r) => ({ ...r, t: parse(r[key]) }));
+      const metric = el.dataset.metric;
+      const series = metric === 'traffic'
+        ? [{ name: 'Visitors', f: 'visitors', color: dash.colors[0] }, { name: 'Store clicks', f: 'clicks', color: dash.colors[1] }]
+        : [{ name: metric === 'commission' ? 'Commission' : 'Conversion', f: metric, color: dash.colors[0] }];
+      const val = (r, f) => (r[f] === null || r[f] === undefined ? null : +r[f]);
+      const yfmt = metric === 'commission' ? (v) => '$' + d3.format(',.0f')(v) : metric === 'conversion_pct' ? (v) => d3.format('.0f')(v) + '%' : d3.format(',');
+      const tipfmt = metric === 'commission' ? (v) => fmt('usd', v) : metric === 'conversion_pct' ? (v) => fmt('pct', v) : (v) => fmt('int', v);
+
+      const W = Math.max(240, el.clientWidth), H = 180;
+      const ymax = d3.max(rows, (r) => d3.max(series, (s) => val(r, s.f) ?? 0)) || 1;
+      const y = d3.scaleLinear().domain([0, ymax]).nice(4).range([H - 22, 8]);
+      const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('role', 'img').attr('aria-label', `${el.closest('.dl-chart-card').querySelector('h3').textContent} by ${grain}`);
+      // Left margin from the widest tick label as drawn.
+      const probe = svg.append('g');
+      const ticks = y.ticks(4);
+      const widths = ticks.map((t) => { const n = probe.append('text').text(yfmt(t)); const w = n.node().getComputedTextLength(); return w; });
+      probe.remove();
+      const ml = Math.ceil(d3.max(widths) || 24) + 8, mr = 10;
+      const x = d3.scaleUtc().domain(d3.extent(rows, (r) => r.t)).range([ml, W - mr]);
+      svg.append('g').selectAll('line').data(ticks).join('line')
+        .attr('x1', ml).attr('x2', W - mr).attr('y1', (t) => y(t)).attr('y2', (t) => y(t))
+        .style('stroke', 'var(--cds-chart-grid)');
+      svg.append('g').selectAll('text').data(ticks).join('text')
+        .attr('x', ml - 6).attr('y', (t) => y(t)).attr('dy', '0.32em').attr('text-anchor', 'end').text(yfmt);
+      const nx = Math.max(2, Math.min(rows.length, Math.floor((W - ml) / 70)));
+      const xfmt = grain === 'week' ? d3.utcFormat('%b %-d') : d3.utcFormat('%b %-d');
+      svg.append('g').selectAll('text').data(x.ticks(nx).filter((t) => t >= rows[0].t)).join('text')
+        .attr('x', (t) => x(t)).attr('y', H - 4).attr('text-anchor', 'middle').text(xfmt);
+      for (const s of series) {
+        const pts = rows.filter((r) => val(r, s.f) !== null);
+        svg.append('path').datum(pts).attr('fill', 'none').style('stroke', s.color).attr('stroke-width', 2)
+          .attr('d', d3.line().x((r) => x(r.t)).y((r) => y(val(r, s.f))));
+        svg.append('g').selectAll('circle').data(pts.length < 40 ? pts : pts.slice(-1)).join('circle')
+          .attr('cx', (r) => x(r.t)).attr('cy', (r) => y(val(r, s.f))).attr('r', 2.5).style('fill', s.color);
+      }
+      const guide = svg.append('line').attr('y1', 8).attr('y2', H - 22).style('stroke', 'var(--cds-chart-reference)').style('display', 'none');
+      const label = grain === 'week' ? (t) => 'Week of ' + d3.utcFormat('%b %-d')(t) : d3.utcFormat('%a %b %-d');
+      const show = (event) => {
+        const [mx] = d3.pointer(event, svg.node());
+        const sx = mx * W / svg.node().getBoundingClientRect().width;
+        const t = x.invert(sx);
+        const i = d3.bisectCenter(rows.map((r) => r.t), t);
+        const r = rows[i]; if (!r) return;
+        guide.attr('x1', x(r.t)).attr('x2', x(r.t)).style('display', null);
+        made.tip.replaceChildren();
+        const head = document.createElement('div'); head.textContent = label(r.t); made.tip.append(head);
+        for (const s of series) { const line = document.createElement('div'); const k = document.createElement('span'); k.textContent = s.name + ' '; line.append(k, document.createTextNode(tipfmt(val(r, s.f)))); made.tip.append(line); }
+        if (metric === 'conversion_pct') { const line = document.createElement('div'); const k = document.createElement('span'); k.textContent = 'Orders / visitors '; line.append(k, document.createTextNode(`${r.orders} / ${r.visitors}`)); made.tip.append(line); }
+        made.tip.hidden = false;
+        const px = x(r.t) / W * el.clientWidth;
+        const left = Math.min(Math.max(0, px + 10), el.clientWidth - made.tip.offsetWidth);
+        made.tip.style.left = left + 'px'; made.tip.style.top = '4px';
+      };
+      svg.append('rect').attr('x', ml).attr('y', 0).attr('width', W - ml - mr).attr('height', H).style('fill', 'transparent')
+        .on('pointermove', show).on('pointerdown', show)
+        .on('pointerleave', () => { made.tip.hidden = true; guide.style('display', 'none'); });
+      made.first = false;
+    },
+  });
+
+  function rowsFor(table, id, trafficField) {
+    const d = dash.data(id);
+    if (d.status !== 'ok') return null;
+    const rows = d.data.slice();
+    if (window.dlState[table] === 'traffic') rows.sort((a, b) => (b[trafficField] - a[trafficField]) || (b.commission - a.commission));
+    return rows;
+  }
+  function cell(tr, text, cls) {
+    const td = document.createElement('td');
+    if (cls) td.className = cls;
+    td.textContent = text;
+    tr.append(td);
+    return td;
+  }
+  function numCell(tr, kind, v) {
+    const td = cell(tr, fmt(kind, v), 'n');
+    if (!v) td.classList.add('dl-zero');
+  }
+  function emptyRow(tbody, cols, d) {
+    const tr = document.createElement('tr');
+    const td = cell(tr, d.status === 'error' ? 'Failed to load' : d.status === 'loading' ? 'Loading…' : '—');
+    td.colSpan = cols;
+    tbody.replaceChildren(tr);
+  }
+
+  dash.draw('pages-rows', (tbody) => {
+    const rows = rowsFor('pages', 'pages', 'views');
+    if (!rows) return emptyRow(tbody, 11, dash.data('pages'));
+    tbody.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = r.page;
+      const td = cell(tr, '', 'page');
+      if (r.page.startsWith('/')) {
+        const a = document.createElement('a');
+        a.href = 'https://dealectric.com' + r.page; a.target = '_blank'; a.rel = 'noopener'; a.textContent = r.page;
+        td.append(a);
+      } else td.textContent = r.page;
+      const k = cell(tr, ''); const pill = document.createElement('span'); pill.className = 'dl-pill'; pill.textContent = r.kind; k.append(pill);
+      cell(tr, r.topic, 'wide');
+      cell(tr, r.experiment + (r.batch ? ` · ${r.batch}` : ''), 'wide');
+      cell(tr, r.hypothesis, 'hyp');
+      numCell(tr, 'int', r.views); numCell(tr, 'int', r.visitors); numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders);
+      numCell(tr, 'usd', r.commission); numCell(tr, 'pct', r.conversion_pct);
+      return tr;
+    }));
+  });
+
+  dash.draw('brands-rows', (tbody) => {
+    const rows = rowsFor('brands', 'brands', 'clicks');
+    if (!rows) return emptyRow(tbody, 12, dash.data('brands'));
+    tbody.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = r.brand;
+      cell(tr, r.brand);
+      cell(tr, r.network + (r.program_rate ? ` · ${r.program_rate}` : ''));
+      cell(tr, r.topic, 'wide');
+      cell(tr, r.experiment);
+      cell(tr, r.hypothesis, 'hyp');
+      cell(tr, r.added, 'hyp');
+      numCell(tr, 'int', r.views); numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders);
+      numCell(tr, 'usd', r.commission); numCell(tr, 'pct', r.conversion_pct); numCell(tr, 'pct', r.commission_rate_pct);
+      return tr;
+    }));
+  });
+
+  dash.draw('platforms-rows', (tbody) => {
+    const d = dash.data('platforms');
+    if (d.status !== 'ok') return emptyRow(tbody, 9, d);
+    tbody.replaceChildren(...d.data.map((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = r.platform;
+      cell(tr, r.platform);
+      numCell(tr, 'int', r.visitors); numCell(tr, 'int', r.views); numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders);
+      numCell(tr, 'usd', r.commission); numCell(tr, 'pct', r.commission_rate_pct); numCell(tr, 'pct', r.conversion_pct);
+      numCell(tr, 'pct', r.click_conversion_pct);
+      return tr;
+    }));
+  });
+
+  document.querySelectorAll('.dl-sw0').forEach((e) => { e.style.background = dash.colors[0]; });
+  document.querySelectorAll('.dl-sw1').forEach((e) => { e.style.background = dash.colors[1]; });
+  document.querySelectorAll('#trends [data-grain]').forEach((b) => b.addEventListener('click', () => {
+    window.dlState.grain = b.dataset.grain;
+    document.querySelectorAll('#trends [data-grain]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    dash.draw('chart');
+  }));
+  document.querySelectorAll('[data-table][data-sort]').forEach((b) => b.addEventListener('click', () => {
+    window.dlState[b.dataset.table] = b.dataset.sort;
+    document.querySelectorAll(`[data-table="${b.dataset.table}"]`).forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    dash.draw(b.dataset.table + '-rows');
+  }));
+</script>

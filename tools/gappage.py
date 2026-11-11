@@ -257,7 +257,7 @@ def free_pack(item: dict, slug: str) -> str:
 
 
 def restore(new_imgs: list[Path]) -> None:
-    sh("git", "checkout", "--", "src", "docs", "worker/src/links-map.json")
+    sh("git", "checkout", "--", "src", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json")
     for f in sorted(new_imgs, reverse=True):
         if f.is_file():
             f.unlink(missing_ok=True)
@@ -296,7 +296,7 @@ def gate(draft: dict, item: dict) -> tuple[list[str], list[Path], int | None]:
 
 def publish(draft: dict, item: dict, n: int, new_imgs: list[Path]) -> str:
     slug = draft["slug"]
-    sh("git", "add", "docs", "src/gaps.py", "src/products.py", "src/img", "worker/src/links-map.json",
+    sh("git", "add", "docs", "src/gaps.py", "src/products.py", "src/img", "worker/src/links-map.json", "worker/src/dash-meta.json",
        f"growth/evals/runs/fastloop/gmd-{slug}"[:200], str(DRAFTS / f"{slug}.json"), str(QUEUE))
     msg = (f"Gap page G{n} /{slug}: {item['cluster']} ({item['searches']} Bing searches, coverage {item['coverage']}), "
            f"daily gap mining (DLC-168)\n\nResearched and gated unattended by tools/gappage.py; draft in growth/gapmine/drafts/{slug}.json.\n")
@@ -315,7 +315,7 @@ def commit_local(draft: dict, item: dict, n, new_imgs: list[Path]) -> str:
     """Batch mode (11-06): commit the passing page locally so a later failure's restore can't undo it; push, Worker
     deploy and IndexNow happen once at the end of the batch."""
     key = draft.get("slug") or ("brand-" + re.sub(r"[^a-z0-9]+", "-", (item.get("brand") or "x").lower()))
-    sh("git", "add", "docs", "src/gaps.py", "src/products.py", "src/img", "worker/src/links-map.json", "src/links.json",
+    sh("git", "add", "docs", "src/gaps.py", "src/products.py", "src/img", "worker/src/links-map.json", "worker/src/dash-meta.json", "src/links.json",
        *( [f"growth/evals/runs/fastloop/gmd-{draft['slug']}"[:200]] if draft.get("slug") else []), str(DRAFTS / f"{key}.json"), str(QUEUE))
     what = (f"Gap page G{n} /{draft['slug']}" if n else f"Products for {item.get('brand')}") + \
            (f": {item.get('brand')} brand page ({item.get('lead')})" if item.get("kind") == "brand" else f": {item.get('cluster')} (Claude coverage {item.get('coverage')})")

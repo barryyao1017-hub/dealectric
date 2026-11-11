@@ -2250,7 +2250,12 @@ def main():
     repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     lm = os.path.join(repo, "worker", "src", "links-map.json")
     os.makedirs(os.path.dirname(lm), exist_ok=True)
-    open(lm, "w").write(json.dumps(links_map(), indent=1, ensure_ascii=False) + "\n")
+    lmap = links_map()
+    open(lm, "w").write(json.dumps(lmap, indent=1, ensure_ascii=False) + "\n")
+    # Sales dashboard: page, brand and offer records (topic, experiment, hypothesis), copied into D1 by the Worker cron.
+    import dashmeta
+    dashmeta.write(os.path.join(repo, "worker", "src", "dash-meta.json"), PRODUCTS, GAP_PAGES, COMPARISONS, KITS, LINKS,
+                   codes_path, urls, lmap)
     sync_tree(out, final)
     shutil.rmtree(out, ignore_errors=True)
     print(f"built {len(urls)} pages -> {final}; {len(PRODUCTS)} offers -> {os.path.relpath(lm, repo)}")
