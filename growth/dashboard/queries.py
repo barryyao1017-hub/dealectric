@@ -160,7 +160,72 @@ SELECT k.platform, IFNULL(v.visitors, 0) AS visitors, IFNULL(v.views, 0) AS view
 FROM k LEFT JOIN v USING (platform) LEFT JOIN c USING (platform) LEFT JOIN s USING (platform)
 ORDER BY commission DESC, visitors DESC, clicks DESC"""
 
-ALL = {"summary": SUMMARY, "daily": DAILY, "weekly": WEEKLY, "pages": PAGES, "brands": BRANDS, "platforms": PLATFORMS}
+# Shopper activity: every human page view and buy-link click, keyed to one browser on one Pacific day (the visitor key
+# of HV), with a new visit whenever the browser was idle 30+ minutes. A shopper who only clicks a buy link an assistant
+# handed over opens no page, so counting clicks too keeps them in "shoppers" (the summary's "visitors" are page views only).
+EV = """ev AS (
+  SELECT ts, day, visitor, 1 AS view, 0 AS click FROM hv
+  UNION ALL
+  SELECT ts, day, day || '|' || substr(IFNULL(user_agent, ''), 1, 300) || '|' || IFNULL(country, '') || '|' || IFNULL(asn, 0), 0, 1 FROM hc
+),
+sess AS (
+  SELECT ev.*, CASE WHEN prev IS NULL OR (julianday(ts) - julianday(prev)) * 1440 > 30 THEN 1 ELSE 0 END AS new_visit
+  FROM (SELECT ev.*, LAG(ts) OVER (PARTITION BY visitor ORDER BY ts) AS prev FROM ev) ev
+),
+fl AS (SELECT date(datetime(MIN(ts), '-8 hours')) AS full_day FROM pageviews WHERE backfill = 0)"""
+
+# Today so far, against yesterday up to the same time of day. Yesterday's shoppers, visits and views are left empty
+# when yesterday predates full page logging, since only tagged visits were recorded then.
+TODAY = f"""WITH {HC}, {HV}, {EV},
+d AS (SELECT date(datetime('now', '-8 hours')) AS today, date(datetime('now', '-8 hours'), '-1 day') AS yday,
+        strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-1 day') AS cut, strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-30 minutes') AS recent),
+t AS (SELECT COUNT(DISTINCT CASE WHEN day = d.today THEN visitor END) AS shoppers,
+        SUM(CASE WHEN day = d.today THEN new_visit END) AS visits,
+        SUM(CASE WHEN day = d.today THEN view END) AS views,
+        SUM(CASE WHEN day = d.today THEN click END) AS clicks,
+        COUNT(DISTINCT CASE WHEN ts >= d.recent THEN visitor END) AS active_30m,
+        COUNT(DISTINCT CASE WHEN day = d.yday AND ts <= d.cut THEN visitor END) AS y_shoppers,
+        SUM(CASE WHEN day = d.yday AND ts <= d.cut THEN new_visit END) AS y_visits,
+        SUM(CASE WHEN day = d.yday AND ts <= d.cut THEN view END) AS y_views,
+        SUM(CASE WHEN day = d.yday AND ts <= d.cut THEN click END) AS y_clicks,
+        MAX(ts) AS last_activity
+      FROM sess, d WHERE day >= d.yday)
+SELECT d.today, strftime('%Y-%m-%dT%H:%M:%SZ', 'now') AS checked_at, t.last_activity,
+  CAST(ROUND((julianday('now') - julianday(t.last_activity)) * 1440) AS INTEGER) AS minutes_since_activity,
+  (SELECT MAX(ts) FROM pageviews) AS last_logged,
+  IFNULL(t.shoppers, 0) AS shoppers_today, IFNULL(t.visits, 0) AS visits_today, IFNULL(t.views, 0) AS views_today,
+  IFNULL(t.clicks, 0) AS clicks_today, IFNULL(t.active_30m, 0) AS active_last_30_min,
+  CASE WHEN d.yday >= fl.full_day THEN IFNULL(t.y_shoppers, 0) END AS shoppers_yesterday_to_now,
+  CASE WHEN d.yday >= fl.full_day THEN IFNULL(t.y_visits, 0) END AS visits_yesterday_to_now,
+  CASE WHEN d.yday >= fl.full_day THEN IFNULL(t.y_views, 0) END AS views_yesterday_to_now,
+  IFNULL(t.y_clicks, 0) AS clicks_yesterday_to_now
+FROM d, t, fl"""
+
+# Today by Pacific hour, midnight to now.
+HOURLY = f"""WITH RECURSIVE {HC}, {HV}, {EV},
+d AS (SELECT date(datetime('now', '-8 hours')) AS today, CAST(strftime('%H', datetime('now', '-8 hours')) AS INTEGER) AS now_h),
+cal(h) AS (SELECT 0 UNION ALL SELECT h + 1 FROM cal, d WHERE h < d.now_h),
+x AS (SELECT CAST(strftime('%H', datetime(ts, '-8 hours')) AS INTEGER) AS h, COUNT(DISTINCT visitor) AS shoppers,
+        SUM(new_visit) AS visits, SUM(view) AS views, SUM(click) AS clicks
+      FROM sess, d WHERE day = d.today GROUP BY 1)
+SELECT printf('%02d:00', cal.h) AS hour, IFNULL(x.shoppers, 0) AS shoppers, IFNULL(x.visits, 0) AS visits,
+  IFNULL(x.views, 0) AS views, IFNULL(x.clicks, 0) AS clicks
+FROM cal LEFT JOIN x USING (h) ORDER BY cal.h"""
+
+# The last 14 Pacific days, newest first. full_logging = 0 marks days when only tagged visits were recorded.
+DAYS = f"""WITH RECURSIVE {HC}, {HV}, {EV}, {SA},
+cal(day) AS (SELECT date(datetime('now', '-8 hours')) UNION ALL SELECT date(day, '-1 day') FROM cal
+             WHERE day > date(datetime('now', '-8 hours'), '-13 days')),
+x AS (SELECT day, COUNT(DISTINCT visitor) AS shoppers, SUM(new_visit) AS visits, SUM(view) AS views, SUM(click) AS clicks
+      FROM sess GROUP BY day),
+s AS (SELECT day, SUM(orders) AS orders, SUM(commission) AS commission FROM sa GROUP BY day)
+SELECT cal.day, IFNULL(x.shoppers, 0) AS shoppers, IFNULL(x.visits, 0) AS visits, IFNULL(x.views, 0) AS views,
+  IFNULL(x.clicks, 0) AS clicks, IFNULL(s.orders, 0) AS orders, ROUND(IFNULL(s.commission, 0), 2) AS commission,
+  CASE WHEN cal.day >= fl.full_day THEN 1 ELSE 0 END AS full_logging
+FROM cal CROSS JOIN fl LEFT JOIN x USING (day) LEFT JOIN s USING (day) ORDER BY cal.day DESC"""
+
+ALL = {"summary": SUMMARY, "daily": DAILY, "weekly": WEEKLY, "pages": PAGES, "brands": BRANDS, "platforms": PLATFORMS,
+       "today": TODAY, "hourly": HOURLY, "days": DAYS}
 
 # One-time production backfill (needs Barry's OK): earlier human visits from `landings`, and the 10-29 CJ sale that
 # predates the sales table (CJ commission 3886659982, read from CJ's Commission Detail report on 2026-11-11).

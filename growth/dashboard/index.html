@@ -48,6 +48,12 @@
   .dl details { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); max-width: 80ch; }
   .dl details summary { cursor: pointer; color: var(--color-fg); font-size: var(--cds-font-size-body); }
   .dl details li { margin-block: 4px; }
+  .dl-live { display: inline-flex; align-items: center; gap: 6px; }
+  .dl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-fg-muted); flex: none; }
+  .dl-dot.dl-fresh { background: var(--color-ok); } .dl-dot.dl-stale { background: var(--color-warn); }
+  .dl-table tr.dl-partial td:not(.n) { color: var(--color-fg-muted); }
+  .dl-table tr.dl-partial td.dl-undercount { color: var(--color-fg-muted); }
+  .dl-table tr.dl-today td { font-weight: var(--cds-font-weight-medium); }
   [data-dash-source-state=refreshing] { opacity: .5; }
 </style>
 
@@ -81,6 +87,49 @@
     </div>
   </section>
   <p class="dl-note" id="traffic-caveat">Visitors before full page logging started (<span data-draw="fig" data-fmt="date" data-source="summary" data-field="full_logging_since" data-row="0">—</span>) are only those who arrived on a link tagged by an AI assistant, mostly ChatGPT, so earlier conversion rates read high.</p>
+
+  <section class="dl-section" id="today">
+    <div class="dl-head">
+      <h2>Today, <span data-draw="fig" data-fmt="day" data-source="today" data-field="today" data-row="0">—</span></h2>
+      <p class="dl-note dl-live" id="freshness"><i class="dl-dot" data-draw="fresh" data-source="today"></i><span>Last shopper activity <b data-draw="fig" data-fmt="int" data-source="today" data-field="minutes_since_activity" data-row="0">—</b> min ago, at <b data-draw="fig" data-fmt="time" data-source="today" data-field="last_activity" data-row="0">—</b> Pacific</span></p>
+    </div>
+    <div class="dl-kpis" id="today-kpis" data-fetchpriority="high">
+      <div class="dl-kpi" id="kpi-shoppers-today">
+        <span class="dl-kpi-label">Shoppers today</span>
+        <span class="dl-kpi-value" data-draw="fig" data-fmt="int" data-source="today" data-field="shoppers_today" data-row="0">—</span>
+        <span class="dl-kpi-meta" data-draw="delta" data-kind="int" data-now="shoppers_today" data-then="shoppers_yesterday_to_now" data-base="by this time yesterday" data-none="Comparison with yesterday starts tomorrow" data-source="today">—</span>
+        <span class="dl-kpi-meta"><span data-draw="fig" data-fmt="int" data-source="today" data-field="active_last_30_min" data-row="0">—</span> active in the last 30 minutes</span>
+      </div>
+      <div class="dl-kpi" id="kpi-visits-today">
+        <span class="dl-kpi-label">Visits today</span>
+        <span class="dl-kpi-value" data-draw="fig" data-fmt="int" data-source="today" data-field="visits_today" data-row="0">—</span>
+        <span class="dl-kpi-meta" data-draw="delta" data-kind="int" data-now="visits_today" data-then="visits_yesterday_to_now" data-base="by this time yesterday" data-none="Comparison with yesterday starts tomorrow" data-source="today">—</span>
+        <span class="dl-kpi-meta"><span data-draw="fig" data-fmt="int" data-source="today" data-field="views_today" data-row="0">—</span> page views</span>
+      </div>
+      <div class="dl-kpi" id="kpi-clicks-today">
+        <span class="dl-kpi-label">Buy-link clicks today</span>
+        <span class="dl-kpi-value" data-draw="fig" data-fmt="int" data-source="today" data-field="clicks_today" data-row="0">—</span>
+        <span class="dl-kpi-meta" data-draw="delta" data-kind="int" data-now="clicks_today" data-then="clicks_yesterday_to_now" data-base="by this time yesterday" data-source="today">—</span>
+      </div>
+    </div>
+    <div class="dl-chart-card" id="chart-hourly-card">
+      <h3>Today by hour, Pacific</h3>
+      <div class="dl-legend"><span><i class="dl-sw0"></i>Shoppers</span><span><i class="dl-sw1"></i>Buy-link clicks</span></div>
+      <div class="dl-chart" id="chart-hourly" data-draw="hourly" data-source="hourly"></div>
+    </div>
+    <h3 class="dl-take" id="days-heading">Last 14 days</h3>
+    <div class="dl-wrap">
+      <table class="dl-table" id="days-table" data-source="days" data-row-key="day">
+        <thead><tr>
+          <th data-field="day">Day</th><th class="n" data-field="shoppers">Shoppers</th><th class="n" data-field="visits">Visits</th>
+          <th class="n" data-field="views">Page views</th><th class="n" data-field="clicks">Buy-link clicks</th>
+          <th class="n" data-field="orders">Orders</th><th class="n" data-field="commission">Commission</th>
+        </tr></thead>
+        <tbody data-draw="days-rows"></tbody>
+      </table>
+    </div>
+    <p class="dl-note" id="days-caveat">Days in grey are before full page logging began on Nov 11: their shoppers, visits and page views count only visits that arrived on a link tagged by an AI assistant, so they read low. Buy-link clicks, orders and commission are complete for every day. Comparisons with yesterday start the day after full logging began.</p>
+  </section>
 
   <section class="dl-section" id="trends">
     <div class="dl-head">
@@ -176,8 +225,11 @@
       <li><b>Orders</b>: sales with a positive commission.</li>
       <li><b>Visitor</b>: one browser on one Pacific day that opened at least one page as a person.</li>
       <li><b>Conversion</b>: orders divided by visitors, for the same period.</li>
-      <li><b>Store click</b>: a /go/ link opened by a person on the way to the store.</li>
-      <li><b>Left out as bots</b>: verified bots and AI fetchers; crawler user agents; Google scanner and cloud-hosting networks; pages opened without a browser's navigation headers; prefetches; one browser opening 8 or more pages within a minute or 5 or more offers in a day; untagged clicks that came from no page a person opened; our own browsers and checks.</li>
+      <li><b>Store click / buy-link click</b>: a /go/ link opened by a person on the way to the store. Amazon links go straight to Amazon and are not counted.</li>
+      <li><b>Shopper</b>: one browser on one Pacific day that opened a page or a buy link as a person. Unlike a visitor, it includes people who clicked a buy link an assistant handed over without opening one of our pages.</li>
+      <li><b>Visit</b>: a shopper's run of page views and buy-link clicks with no gap of 30 minutes or more.</li>
+      <li><b>Last shopper activity</b>: the newest page view or buy-link click by a person. The site logs each one within a second; the dashboard keeps an answer for up to 5 minutes before asking again, and the refresh button in Sources asks at once.</li>
+      <li><b>Left out as bots</b>: verified bots and AI fetchers; crawler user agents; Google scanner and cloud-hosting networks; pages opened without a browser's navigation headers; prefetches; one browser opening 8 or more pages within a minute or 5 or more offers in a day; a referrer with no path, which no browser sends (a crawler on Nov 11); untagged clicks that came from no page a person opened; our own browsers and checks.</li>
       <li><b>Topic and hypothesis</b>: from the page and brand records in the site's source, refreshed every 30 minutes after a change.</li>
     </ul>
   </details>
@@ -185,7 +237,7 @@
 
 <script>
   // D1 answers as {result: [{results: [...rows], success, meta}]} or a bare list; this finds the row list in either.
-  for (const id of ['summary', 'daily', 'weekly', 'pages', 'brands', 'platforms']) {
+  for (const id of ['summary', 'daily', 'weekly', 'pages', 'brands', 'platforms', 'today', 'hourly', 'days']) {
     dash.loader(id, {
       description: 'Takes the rows out of the D1 query result.',
       fn: ({ answer }) => {
@@ -218,6 +270,9 @@
     int: (v) => d3.format(',')(v),
     pct: (v) => d3.format('.2f')(v) + '%',
     date: (v) => d3.utcFormat('%b %-d, %Y')(new Date(v)),
+    day: (v) => d3.utcFormat('%a %b %-d')(d3.utcParse('%Y-%m-%d')(v)),
+    // Pacific clock time of a UTC timestamp, at the same fixed UTC-8 the queries use.
+    time: (v) => d3.utcFormat('%-I:%M %p')(new Date(new Date(v).getTime() - 8 * 3600e3)),
   };
   const fmt = (kind, v) => (v === null || v === undefined || v === '' ? '—' : FMT[kind](v));
   const ok = (id) => dash.data(id).status === 'ok';
@@ -238,11 +293,12 @@
     if (!row) { el.textContent = '—'; return; }
     const now = row[el.dataset.now], then = row[el.dataset.then];
     const kind = el.dataset.kind;
-    if (then === null || then === undefined) { el.textContent = 'No comparison for last week'; el.classList.add('dl-flat'); return; }
+    if (then === null || then === undefined) { el.textContent = el.dataset.none || 'No comparison for last week'; el.classList.add('dl-flat'); return; }
     const diff = (now ?? 0) - then;
     const sign = diff > 0 ? '+' : diff < 0 ? '−' : '±';
-    const amount = kind === 'usd' ? '$' + d3.format(',.2f')(Math.abs(diff)) : d3.format('.2f')(Math.abs(diff)) + ' pts';
-    const base = kind === 'usd' ? `vs ${fmt('usd', then)} at this point last week` : `vs ${fmt('pct', then)} all last week`;
+    const amount = kind === 'usd' ? '$' + d3.format(',.2f')(Math.abs(diff)) : kind === 'int' ? d3.format(',')(Math.abs(diff)) : d3.format('.2f')(Math.abs(diff)) + ' pts';
+    const base = el.dataset.base ? `vs ${fmt(kind, then)} ${el.dataset.base}`
+      : kind === 'usd' ? `vs ${fmt('usd', then)} at this point last week` : `vs ${fmt('pct', then)} all last week`;
     el.textContent = `${sign}${amount} ${base}`;
     el.classList.add(diff > 0 ? 'dl-up' : diff < 0 ? 'dl-down' : 'dl-flat');
   });
@@ -389,6 +445,96 @@
       cell(tr, r.added, 'hyp');
       numCell(tr, 'int', r.views); numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders);
       numCell(tr, 'usd', r.commission); numCell(tr, 'pct', r.conversion_pct); numCell(tr, 'pct', r.commission_rate_pct);
+      return tr;
+    }));
+  });
+
+  // Green while a person was active in the last 30 minutes, amber after 3 hours without one.
+  dash.draw('fresh', (el) => {
+    const d = dash.data('today');
+    el.classList.remove('dl-fresh', 'dl-stale');
+    const row = d.status === 'ok' ? d.data[0] : null;
+    if (!row || row.minutes_since_activity === null) return;
+    if (row.minutes_since_activity <= 30) el.classList.add('dl-fresh');
+    else if (row.minutes_since_activity >= 180) el.classList.add('dl-stale');
+  });
+
+  dash.draw('hourly', {
+    mount(el) {
+      const tip = document.createElement('div');
+      tip.className = 'dl-tip'; tip.hidden = true;
+      el.append(tip);
+      return { tip };
+    },
+    update(el, made) {
+      const d = dash.data('hourly');
+      el.querySelectorAll('svg, .dl-msg').forEach((n) => n.remove());
+      made.tip.hidden = true;
+      if (d.status !== 'ok') {
+        if (d.status === 'error') { const m = document.createElement('p'); m.className = 'dl-note dl-msg'; m.textContent = 'Failed to load'; el.append(m); }
+        return;
+      }
+      const rows = d.data.map((r) => ({ ...r, shoppers: +r.shoppers, clicks: +r.clicks, visits: +r.visits, views: +r.views }));
+      const W = Math.max(240, el.clientWidth), H = 180;
+      const ymax = d3.max(rows, (r) => Math.max(r.shoppers, r.clicks)) || 1;
+      const y = d3.scaleLinear().domain([0, ymax]).nice(4).range([H - 22, 8]);
+      const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`)
+        .attr('role', 'img').attr('aria-label', 'Shoppers and buy-link clicks for each hour of today, Pacific time');
+      const ticks = y.ticks(4).filter((t) => Number.isInteger(t));
+      const probe = svg.append('g');
+      const widths = ticks.map((t) => probe.append('text').text(d3.format(',')(t)).node().getComputedTextLength());
+      probe.remove();
+      const ml = Math.ceil(d3.max(widths) || 12) + 8, mr = 10;
+      // A full day's 24 slots, so the bars keep their width as the day fills in.
+      const x = d3.scaleBand().domain(d3.range(24)).range([ml, W - mr]).padding(0.2);
+      svg.append('g').selectAll('line').data(ticks).join('line')
+        .attr('x1', ml).attr('x2', W - mr).attr('y1', (t) => y(t)).attr('y2', (t) => y(t)).style('stroke', 'var(--cds-chart-grid)');
+      svg.append('g').selectAll('text').data(ticks).join('text')
+        .attr('x', ml - 6).attr('y', (t) => y(t)).attr('dy', '0.32em').attr('text-anchor', 'end').text(d3.format(','));
+      const every = W < 420 ? 6 : 3;
+      const hlabel = (h) => (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? 'a' : 'p');
+      svg.append('g').selectAll('text').data(d3.range(0, 24, every)).join('text')
+        .attr('x', (h) => x(h) + x.bandwidth() / 2).attr('y', H - 4).attr('text-anchor', 'middle').text(hlabel);
+      const hourOf = (r) => +r.hour.slice(0, 2);
+      svg.append('g').selectAll('rect').data(rows).join('rect')
+        .attr('x', (r) => x(hourOf(r))).attr('width', x.bandwidth())
+        .attr('y', (r) => y(r.shoppers)).attr('height', (r) => y(0) - y(r.shoppers)).style('fill', dash.colors[0]);
+      svg.append('path').datum(rows).attr('fill', 'none').style('stroke', dash.colors[1]).attr('stroke-width', 2)
+        .attr('d', d3.line().x((r) => x(hourOf(r)) + x.bandwidth() / 2).y((r) => y(r.clicks)));
+      svg.append('g').selectAll('circle').data(rows).join('circle')
+        .attr('cx', (r) => x(hourOf(r)) + x.bandwidth() / 2).attr('cy', (r) => y(r.clicks)).attr('r', 2.5).style('fill', dash.colors[1]);
+      const show = (event) => {
+        const [mx] = d3.pointer(event, svg.node());
+        const sx = mx * W / svg.node().getBoundingClientRect().width;
+        const h = Math.floor((sx - ml) / x.step());
+        const r = rows.find((q) => hourOf(q) === h); if (!r) { made.tip.hidden = true; return; }
+        made.tip.replaceChildren();
+        const head = document.createElement('div'); head.textContent = `${hlabel(h)}m – ${hlabel((h + 1) % 24)}m`; made.tip.append(head);
+        for (const [k, v] of [['Shoppers', r.shoppers], ['Visits', r.visits], ['Page views', r.views], ['Buy-link clicks', r.clicks]]) {
+          const line = document.createElement('div'); const s = document.createElement('span'); s.textContent = k + ' ';
+          line.append(s, document.createTextNode(fmt('int', v))); made.tip.append(line);
+        }
+        made.tip.hidden = false;
+        const px = (x(h) + x.bandwidth()) / W * el.clientWidth;
+        made.tip.style.left = Math.min(Math.max(0, px + 6), el.clientWidth - made.tip.offsetWidth) + 'px';
+        made.tip.style.top = '4px';
+      };
+      svg.append('rect').attr('x', ml).attr('y', 0).attr('width', W - ml - mr).attr('height', H).style('fill', 'transparent')
+        .on('pointermove', show).on('pointerdown', show).on('pointerleave', () => { made.tip.hidden = true; });
+    },
+  });
+
+  dash.draw('days-rows', (tbody) => {
+    const d = dash.data('days');
+    if (d.status !== 'ok') return emptyRow(tbody, 7, d);
+    tbody.replaceChildren(...d.data.map((r, i) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = r.day;
+      if (+r.full_logging === 0) tr.classList.add('dl-partial');
+      if (i === 0) tr.classList.add('dl-today');
+      cell(tr, fmt('day', r.day) + (i === 0 ? ' (so far)' : ''));
+      numCell(tr, 'int', r.shoppers); numCell(tr, 'int', r.visits); numCell(tr, 'int', r.views);
+      numCell(tr, 'int', r.clicks); numCell(tr, 'int', r.orders); numCell(tr, 'usd', r.commission);
       return tr;
     }));
   });

@@ -169,7 +169,7 @@ async function logLanding(url, request, status, utm, env) {
     // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
     // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
     cf.country || "", cf.verifiedBotCategory || "",
-    selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
+    selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
     cf.asn || null,
@@ -215,7 +215,7 @@ async function logPageview(url, request, status, tag, env) {
   const navigation = request.headers.get("sec-fetch-dest") === "document";
   const prefetch = !!(request.headers.get("sec-purpose") || request.headers.get("purpose"));
   const bot = selfExcluded(request) ? 2
-    : botLike(cf, ua, tag || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
+    : botLike(cf, ua, tag || "", referrer) || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
       || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0;
   await env.DB.prepare(
     `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like)
@@ -284,7 +284,7 @@ async function handleGo(url, request, env, ctx) {
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
     clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null,
@@ -605,8 +605,15 @@ const SCANNER_ASNS = new Set([15169, 396982, 19527, 36040, 43515]);
 const HOSTING_ASNS = new Set([132203, 45090, 14618, 16509, 16276, 14061, 24940, 63949]);
 const AGENT_TAGS = new Set(["muse", "chatgpt-agent", "signed-agent"]);
 
-function botLike(cf, ua, utm = "") {
-  return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn) || (HOSTING_ASNS.has(cf.asn) && !AGENT_TAGS.has(utm));
+// A browser's Referer always carries a path: an origin-only referrer is sent as "https://site/", with the slash. A bare
+// "https://dealectric.com" is a header someone set by hand. On 2026-11-11 a crawler sent exactly that from 71 countries
+// and 188 networks (residential proxies, rotating Chrome versions): 325 page views of 324 different pages and 257
+// /go/ clicks in 8 hours, all of which passed every other rule. Every earlier path-less referrer was already a bot.
+const FORGED_REFERRER = /^https?:\/\/[^/?#]+$/i;
+
+function botLike(cf, ua, utm = "", referrer = "") {
+  return looksLikeBot(ua) || SCANNER_ASNS.has(cf.asn) || (HOSTING_ASNS.has(cf.asn) && !AGENT_TAGS.has(utm))
+    || FORGED_REFERRER.test(referrer);
 }
 
 // Burst rule (DLC-216): one browser opening 5+ different offers within 60 s is a link checker or scraper, not a
