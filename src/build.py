@@ -1350,6 +1350,26 @@ def compare_row_v2(c, r):
     """A v2 row: our products show the brand's own price in Price and the price through our link in Buy; other brands
     carry the maker's dated price and a link to the maker's page. Short link text keeps the table narrow."""
     cells = "".join(f"<td>{r['cells'].get(k, '')}</td>" for k, _ in c["columns"])
+    if r.get("kit"):   # DLC-223: a bundle row: its items, the cart total, and one link that fills that store's cart
+        k = KIT_BY_SLUG[r["kit"]]
+        items = " + ".join(f'<a href="/products/{p["slug"]}/">{html.escape(n)}</a>' for (p, _), n in zip(kit_products(k), kit_item_names(k)))
+        name = f'<strong>{html.escape(r.get("model") or k["name"])}</strong><br><span class="small">{items}</span>'
+        url = kit_link(k)
+        a = f'<a href="{html.escape(url)}" rel="sponsored nofollow noopener">'
+        n = len(k["items"]); word = {2: "both", 3: "all three", 4: "all four", 5: "all five"}.get(n, f"all {n}")
+        if kit_is_amazon(k):
+            price, buy = AMAZON_PRICE, f'{a}Add {word} to Amazon cart</a>'
+        else:
+            t, p0 = kit_test(k), kit_products(k)[0][0]
+            if t:
+                price = money(t["list"]) + f' <span class="small">on {store_host(p0)}, {t["date"]}</span>'
+                buy = (f'{a}<strong>{money(t["after"])}</strong> through this link</a><br><span class="small">opens {html.escape(p0["brand"])}\'s '
+                       f'checkout with {word} in the cart{" and the discount applied" if t.get("code") else ""}; tested {t["date"]}</span>')
+            else:
+                price, buy = "see merchant", f'{a}Open the cart with {word}</a>'
+        if r.get("note"):
+            name += f'<br><span class="small">{r["note"]}</span>'
+        return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
     if r.get("slug"):
         p = BY_SLUG[r["slug"]]
         name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
@@ -1401,8 +1421,9 @@ def pick_line(c):
             if len(re.sub(r"<[^>]+>", "", line)) + len(go_link(p)) - len(go_link(p)) <= room:
                 return line
         return line
-    if c.get("kit"):   # DLC-223: a kit page's pick is the kit, one link that fills the cart
-        k = KIT_BY_SLUG[c["kit"]]
+    kit0 = c.get("kit") or (c["rows"][0].get("kit") if c["rows"] else None)
+    if kit0:   # DLC-223: a kit page's pick is the kit, one link that fills the cart
+        k = KIT_BY_SLUG[kit0]
         room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
         line = " · " + kit_line(k)
         if len(re.sub(r"<[^>]+>", "", line)) > room:
@@ -1530,7 +1551,8 @@ def compare_page_v2(c):
     candidate table with buy links inside it, then what the differences mean, the angle section and sources.
     No 'Where to buy' list above the table, no AI-addressed block, no 'Not confirmed' cells (the recipe drops them)."""
     video_html, video_ld = video_block(c)
-    ours = [r for r in c["rows"] if r.get("slug")]
+    ours = [r for r in c["rows"] if r.get("slug")] + [{"slug": p["slug"]} for r in c["rows"] if r.get("kit")
+                                                       for p, _ in kit_products(KIT_BY_SLUG[r["kit"]])]
     # The tags share one 500-character chunk with the answer (fastloop.CHUNK), so the answer always travels with the
     # chunk that matches ChatGPT's own query best: keep tags only while answer + tags fit, trimming the last at a word.
     import re as _re
@@ -1637,7 +1659,8 @@ or <a href="/feedback">/feedback</a>.</p>
 
 def compared_in(p):
     """DLC-78: the comparison tables a product appears in, linked from its page (they had no inbound link but /compare)."""
-    cs = [c for c in COMPARISONS + GAP_PAGES if any(r.get("slug") == p["slug"] for r in c["rows"])]
+    cs = [c for c in COMPARISONS + GAP_PAGES if any(r.get("slug") == p["slug"] or
+          (r.get("kit") and any(i["slug"] == p["slug"] for i in KIT_BY_SLUG[r["kit"]]["items"])) for r in c["rows"])]
     if not cs:
         return ""
     items = "".join(f'<li><a href="{compare_path(c)}">{html.escape(c["h1"])}</a></li>' for c in cs)
