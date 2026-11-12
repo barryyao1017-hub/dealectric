@@ -39,15 +39,16 @@ td.n{text-align:right;white-space:nowrap}
 
   <section>
     <h2>1. Where our link is actually cheapest</h2>
-    <p>A new tool, <code>tools/buycheck.py</code>, reads Google Shopping in the Agent Chrome. It compares our price after the link's discount with the lowest trusted seller: the brand's store and major US retailers. Marketplaces and used listings don't count. Google showed a CAPTCHA after 37 of 101 products. The rest is re-running at a slower pace.</p>
+    <p>A new tool, <code>tools/buycheck.py</code>, reads Google Shopping in the Agent Chrome. It compares our price after the link's discount with the lowest trusted seller: the brand's store and major US retailers. Marketplaces and used listings don't count. All 105 coded products were checked on 11-11.</p>
     <div class="scroll"><table>
       <tr><th>Verdict</th><th class="n">Products</th><th>Which</th></tr>
-      <tr><td class="yes">Our link cheapest</td><td class="n">11</td><td>Baseus PicoGo AM52 and EnerFill FC41; ESR CryoBoost 3-in-1 stand and HaloLock car charger; BLUETTI Elite 30 V2; ALLPOWERS P1800, S2000 Pro, S2000 Pro kit, R2500 V2, R2500 V2 kit; Aurzen TravelPlay</td></tr>
-      <tr><td>Tie</td><td class="n">1</td><td>BLUETTI Elite 200 V2. BLUETTI's own store already shows the same 5% price, so the code adds nothing.</td></tr>
-      <tr><td class="no">Beaten</td><td class="n">8</td><td>Mostly Soundcore: its store and retailers sell below our price after the code</td></tr>
-      <tr><td>No exact match</td><td class="n">16</td><td>Google Shopping lists no card naming the model</td></tr>
+      <tr><td class="yes">Our link cheapest</td><td class="n">46</td><td>31 have a discount the link applies and are in the pilot (below). The rest need a typed code (AOHi, Sirui, Nitecore, EINSTAR, Gamakay, Revopoint), or the code adds nothing in the cart (Maono), or the cart couldn't be tested (Vatrer).</td></tr>
+      <tr><td>Tie</td><td class="n">2</td><td>BLUETTI Elite 200 V2 (BLUETTI's store already shows the same 5%); UGREEN Nexode Pro 160W (Best Buy matches)</td></tr>
+      <tr><td class="no">Beaten</td><td class="n">17</td><td>Mostly Soundcore, plus a few Aurzen, UGREEN and Birdfy items: the store or a retailer sells below our price after the code</td></tr>
+      <tr><td>No exact match</td><td class="n">40</td><td>Google Shopping lists no card naming the model</td></tr>
     </table></div>
-    <p class="muted">Amazon was dearer on every one of the 11 where it lists the same item. We read Amazon's prices to choose products only, never to publish them. All 11 were cart-tested on the exact item on 11-11. The old Mac's daily sweep hasn't recorded a test since 11-07 (DLC-251).</p>
+    <p class="muted">Amazon was dearer on every one of the first 11 where it lists the same item. We read Amazon's prices to choose products only, never to publish them. All 31 pilot products were cart-tested on the exact item on 11-11.</p>
+    <p class="muted"><strong>Two things the cart tests caught.</strong> UGREEN runs a store-wide cart offer ("Spend $79+, Save $8", "$199+, Save $20") that stacks with our code. On those 4 products the line shows what the cart charges on both sides, for example $81.99 through the link against $121.99 without it, not the $129.99 list price. Maono's store gives everyone an automatic 20% / 15% off, and our code adds nothing on top, so Maono became a no-saving control. The old Mac's daily sweep hasn't recorded a test since 11-07 (DLC-251).</p>
   </section>
 
   <section>
@@ -61,8 +62,8 @@ td.n{text-align:right;white-space:nowrap}
     <h2>3. Pilot arms and baselines</h2>
     <div class="scroll"><table>
       <tr><th>Arm</th><th>Pages</th><th>Baseline (11-11, gpt-6)</th></tr>
-      <tr><td>Retrofit</td><td>6 live pages that lead with a qualifying pick (flying power banks, Tesla back-seat screen, Starlink Mini, three small BLUETTI pages)</td><td>Our page in results 0 of 16 plain chats; controls 5 of 18; no handovers. Retrieval is the gate here.</td></tr>
-      <tr><td>Where to buy</td><td>11 product pages; "Where should I buy the &lt;model&gt;?"</td><td>Our page in 20 of 22 buying searches; buy link 3 times; our page linked in 10. No-saving controls: in 0 of 10.</td></tr>
+      <tr><td>Retrofit</td><td>6 live pages that lead with a qualifying pick (flying power banks, Tesla back-seat screen, Starlink Mini, three small BLUETTI pages). Later batches added 6 more: self-heating battery, 3D printer + scanner, BLUETTI brand page, Starlink + MacBook, Bambu UPS, triple-screen extender.</td><td>First 6: our page in results 0 of 16 plain chats; controls 5 of 18; no handovers. The later 6 show up in 0–1 recorded chats each, so they carry the line for shoppers rather than for measurement. Retrieval is the gate here.</td></tr>
+      <tr><td>Where to buy</td><td>31 product pages in 3 batches; "Where should I buy the &lt;model&gt;?", 2 chats each before the change</td><td>Batch 1 (11 products): our page in 20 of 22 buying searches, buy link 3, page linked 10.<br>Batch 2 (UGREEN ×7, 3DMakerpro ×2, Redodo, plus Vatrer, untested and untreated): in 20 of 22, buy link 6, linked 13.<br>Batch 3 (OSCAL ×2, Botslab ×2, Wuben ×2, MOVA, BLUETTI Elite 100 V2, FOPO ×2): in 15 of 20, buy link 0, linked 13.<br><strong>Pooled: buy link 9 in 55 chats with our page in the results (16%).</strong><br>No-saving controls: Soundcore/BLUETTI 0 of 10 retrieved; Maono 4 of 4 retrieved, buy link 2.</td></tr>
       <tr><td>New pages</td><td>5 research-method pages on Claude-gated queries (coverage 0.11–0.27)</td><td>Research picked honestly. Two lead with a qualifying product (Qi2.2 magnetic bank: PicoGo AM52; 3-in-1 MagSafe with cooling: ESR CryoBoost). The 2000 Wh, 1500 Wh and well-pump pages lead with other products.</td></tr>
       <tr><td>After 11-17</td><td>A/B pages ChatGPT already retrieves that lead with a qualifying pick (2000 Wh kit page; Steam Deck power bank page)</td><td>Held until the A/B test's reading 2 so that test stays clean</td></tr>
     </table></div>
@@ -72,7 +73,7 @@ td.n{text-align:right;white-space:nowrap}
   <section>
     <h2>4. How we'll call it</h2>
     <ul>
-      <li><strong>Where to buy:</strong> buy-link handover when our page is in the results, pilot products after re-fetch vs the 3 of 20 baseline, at 3 chats per product. A clear lift would be about 8 of 33 or more.</li>
+      <li><strong>Where to buy:</strong> buy-link handover when our page is in the results, on the 30 treated products after each page is re-fetched, at 2 chats per product, against the pooled 9 of 55 (16%). Batch 1 alone was 3 of 20. A clear lift would be about 30% or more over 55+ retrieved chats (roughly 2 standard errors). Vatrer, a saving with no comparison line, and Maono, neither, are the side checks.</li>
       <li><strong>Plain questions (North Star 3):</strong> handover on the 2 new pilot pages and, from 11-17, the A/B pages that qualify, against matched pages whose pick has no real saving.</li>
       <li><strong>What it can't separate yet:</strong> whether the saving or the comparison line does the work. Every pilot page has both. Only the A/B pages after 11-17 have enough retrieval to split them.</li>
     </ul>
