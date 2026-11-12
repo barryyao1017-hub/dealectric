@@ -1529,7 +1529,12 @@ def pick_line(c):
     if first.get("slug"):
         return ours(first, "Pick")
     # third A push (Barry 11-12): the pick is always a product we have a link for, unless the answer names a product
-    # only it fits and we have no link for it ("keep_pick": the RIVER 3 Plus is the one USB-shutdown model, no Amazon listing)
+    # only it fits and we have no link for it ("keep_pick": the RIVER 3 Plus is the one USB-shutdown model, no Amazon
+    # listing); that pick links the seller's own page
+    if c.get("keep_pick") and first.get("url"):   # accuracy first (Barry 11-12): the seller's own page
+        u = html.escape(first["url"])
+        return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
+                f'<a href="{u}" rel="nofollow noopener">{u}</a>')
     if c.get("all_links") and not c.get("keep_pick"):
         if first.get("asin"):
             link = amazon_row_link(first["asin"])
