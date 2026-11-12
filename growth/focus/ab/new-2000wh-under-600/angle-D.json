@@ -1,0 +1,116 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the FOSSiBOT F2400's 2,048 Wh is cell energy, not AC energy: FOSSiBOT's own FAQ sizes runtime at Watt-Hours × 0.85 (1,741 Wh), and techtest.org (Michael Barton) measured only 1,512 Wh (74%) from the AC outlet at a 100 W load.",
+ "standout": 2,
+ "standout_why": "Compared against cheapestwh.com (cited, read through the r.jina.ai proxy) and the Slickdeals ECO-WORTHY PS2400 thread (opened directly). cheapestwh has part of it: a generic rule that a 1,000 Wh station runs a 100 W fridge about 8.5 hours 'after inverter losses', and 'multiply by 1.3 for inverter losses and a reserve'. It ranks the F2400 on rated Wh ($0.292/Wh) and gives no maker formula and no measured figure for any model. The Slickdeals thread gives no usable-capacity, efficiency or idle figure. The three cited outletpicks.com URLs, powerstationgearlab.com and our own dealectric.com page could not be opened (certificate error, then a Cloudflare 403 through the proxy), so the score is judged against cheapestwh and Slickdeals only and could drop to 1 if outletpicks carries usable-Wh figures.",
+ "decides": "It confirms the F2400 as the under-$600 pick but changes what the shopper is buying. By FOSSiBOT's own formula they get about 1,741 Wh of AC energy, which is $0.344 per usable Wh at the $599 ChatGPT showed, or $0.384 at FOSSiBOT's own store price of $669 today (over the $600 budget). On the light loads a 2 kWh buyer typically runs (fridge, CPAP, router), techtest.org's 100 W AC result means about 15 hours, not the 17.4 hours the 85% rule gives. A shopper who needs a true 2,000 Wh at the outlet needs roughly 2,350 Wh rated (2,000 ÷ 0.85), which no listing in this price band offers. No equivalent light-load measurement was found for the DYNESS, Jackery 2000 v2, Anker F2000 or Growatt, so the finding does not rank them against each other.",
+ "candidates": [
+  "FOSSiBOT F2400",
+  "DYNESS 2048Wh 2400W",
+  "Jackery Explorer 2000 v2",
+  "Anker SOLIX F2000",
+  "ECO-WORTHY PS2400",
+  "Growatt INFINITY 2000 PRO",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Maker's runtime formula (usable AC energy factor)",
+   "value": "Working time = Watt-Hours × 0.85 ÷ device watts, so 1,741 Wh usable of 2,048 Wh",
+   "source": "https://fossibot.com/pages/faq",
+   "source_title": "FOSSiBOT FAQ",
+   "read": "2026-11-11",
+   "note": "Verbatim: \"Working time = F2400's Watt-Hours * 0.85 / operating power of your device.\" The FAQ adds \"The data is theretical lab data. Please note the actual power consumption varies based on many factors.\" Arithmetic: 2,048 × 0.85 = 1,740.8 Wh. The same sentence is on https://eu.fossibot.com/pages/general-questions-faq (read 2026-11-11)."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Measured usable capacity, 100 W load from the AC outlet",
+   "value": "1,512 Wh (74% of 2,048 Wh)",
+   "source": "https://techtest.org/fossibot-f2400-powerstation-test-leistung-kapazitaet-und-effizienz-im-ueberblick/",
+   "source_title": "FOSSiBOT F2400 Powerstation Test: Leistung, Kapazität und Effizienz im Überblick (techtest.org, Michael Barton, 2024-07-03)",
+   "read": "2026-11-11",
+   "note": "Lowest figure in the test: \"bei einer Last von lediglich 100W über die Steckdose gemessen\". German site, so the unit was probably the 230 V version; the article summary did not say. Arithmetic: 1,512 ÷ 100 W = 15.1 h, against 17.4 h from the maker's 0.85 formula. $599 ÷ 1,512 = $0.396 per delivered Wh at this load."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Measured usable capacity, 100 W load from USB-C",
+   "value": "1,807 Wh (88% of 2,048 Wh)",
+   "source": "https://techtest.org/fossibot-f2400-powerstation-test-leistung-kapazitaet-und-effizienz-im-ueberblick/",
+   "source_title": "FOSSiBOT F2400 Powerstation Test (techtest.org, Michael Barton)",
+   "read": "2026-11-11",
+   "note": "Best figure in the test: \"schwankte die nutzbare Kapazität der F2400 zwischen 1512 Wh und 1807 Wh\". Barton reports efficiency between 76% and 98% depending on load. Derived, not measured: the AC path lost 295 Wh more than USB-C at the same 100 W; over 15.1 h that is about 19.5 W of extra loss with the inverter running."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Measured AC recharge time against the maker's claim",
+   "value": "About 2 h 45 min at the 1,100 W setting and about 3 h 45 min at 700 W; the maker claims 0 to 100% in 2 hours",
+   "source": "https://techtest.org/fossibot-f2400-powerstation-test-leistung-kapazitaet-und-effizienz-im-ueberblick/",
+   "source_title": "FOSSiBOT F2400 Powerstation Test (techtest.org, Michael Barton)",
+   "read": "2026-11-11",
+   "note": "Barton also saw the charge rate dip after about 30 minutes at 1,100 W, possibly thermal, and not at 700 W. The 2-hour claim is from the store listing at https://www.fossibot.com/products/fossibot-f2400 (read 2026-11-11 through storecheck search). Arithmetic: 2,048 Wh ÷ 1,100 W = 1.86 h before losses and taper."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "AC charge-rate dial and solar input",
+   "value": "Front dial limits AC input from 300 W to 1,100 W in 200 W steps; solar input 500 W max, 11.5–50 V, 20 A; UPS switchover under 10 ms",
+   "source": "https://www.notebookcheck.com/Leistungsstarke-2-400-W-Powerstation-mit-unterbrechungsfreie-Stromversorgung-FossiBot-F2400-im-Test.1005249.0.html",
+   "source_title": "Leistungsstarke 2.400-W-Powerstation mit unterbrechungsfreier Stromversorgung: FossiBot F2400 im Test (Notebookcheck, Christian Hintze, 2025-05-27)",
+   "read": "2026-11-11",
+   "note": "These are rated values as reported by Notebookcheck; it measured no capacity. techtest.org lists the same five dial steps (300, 500, 700, 900, 1,100 W). The dial lets the unit recharge on a shared household circuit or a small generator."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Price at the maker's US store",
+   "value": "$669.00 (compare-at $1,899.00), in stock",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "From storecheck.py search on https://www.fossibot.com; the product call returned HTTP 429 twice. The listing also says \"2048Wh Capacity | 2400W AC Pure Sine Wave Inverter (4800W Surge)\", \"4,000+ Life Cycles to 80%\", \"10ms uninterruptible home backup UPS\" and \"5-Year full-device warranty\". ChatGPT's $599 is an Amazon-tracked price, which I did not check. Arithmetic: $669 ÷ 1,740.8 Wh = $0.384 per usable Wh; $599 ÷ 1,740.8 = $0.344."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival says about losses",
+   "value": "A 1,000 Wh station runs a 100 W fridge about 8.5 hours \"after inverter losses\"; sizing advice is \"multiply by 1.3 for inverter losses and a reserve\"",
+   "source": "https://cheapestwh.com/",
+   "source_title": "Cheapest Portable Power Station per Wh — November 2026 Amazon Price Comparison",
+   "read": "2026-11-11",
+   "note": "Read through https://r.jina.ai/https://cheapestwh.com/ because the direct fetch failed on a certificate error. The page ranks on rated Wh: F2400 $599.00 ($0.292/Wh), Growatt INFINITY 2000 Pro $648.00, BLUETTI Elite 200 V2 $898.99, Jackery Explorer 2000 v2 $999.00. Those are the rival's tracked Amazon prices, not checked by me. Its generic rule gives 17.4 h for 2,048 Wh at 100 W; techtest.org's measurement gives 15.1 h for the F2400."
+  },
+  {
+   "product": "ECO-WORTHY PS2400",
+   "label": "Deal thread content",
+   "value": "$516 with free shipping through AliExpress, after a $100 clip coupon plus code BYE100F; 2,048 Wh LiFePO4, 2,400 W rated, 4,800 W peak",
+   "source": "https://slickdeals.net/f/20289015-eco-worthy-ps2400-2400w-2048wh-lifepo4-portable-power-station-516-free-shipping",
+   "source_title": "ECO-WORTHY PS2400 2400W 2048Wh LiFePO4 Portable Power Station $516 + Free Shipping",
+   "read": "2026-11-11",
+   "note": "A coupon-stacked deal price, not the maker's store price. The thread gives no usable-capacity, efficiency or idle figure."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price at the maker's US store (solar bundle only)",
+   "value": "$1,199.00 for Elite 200 V2 + 200 W solar panel",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-11",
+   "note": "From storecheck.py search on https://www.bluettipower.com. The search returned bundles only, not the standalone station. The bundle is well over the $600 budget."
+  }
+ ],
+ "unsourced": [
+  "DYNESS 2048Wh 2400W: looked for a maker product page, manual or datasheet giving a runtime formula, AC charging watts and UPS behaviour; one search surfaced only a third-party roundup (powerbankzone.com), which I did not open.",
+  "FOSSiBOT F2400 official US manual (fcc.report PDF returned 403): looked for per-outlet amperage (15 A or 20 A receptacles), bypass limit and charge/discharge temperature range. The manuals.plus copy is a third-party summary and gives none of these.",
+  "FOSSiBOT F2400 no-load inverter draw in watts from a named reviewer: neither techtest.org nor Notebookcheck reports it. A 25.6 W figure appeared only in a search summary of an unnamed blog, which I did not open.",
+  "Maker runtime formulas or named light-load capacity measurements for the Jackery Explorer 2000 v2, Anker SOLIX F2000, Growatt INFINITY 2000 PRO and BLUETTI Elite 200 V2: not researched within the call budget. A techtest.org search for the Elite 200 V2 returned no article.",
+  "Rival pages not read: the three cited outletpicks.com URLs, powerstationgearlab.com and dealectric.com/best-2000wh-power-station (certificate error on direct fetch; Cloudflare 403 on outletpicks through the proxy).",
+  "Growatt INFINITY 2000 PRO price at the maker's US store: storecheck search on growatt.tech returned a non-JSON response.",
+  "BLUETTI Elite 200 V2 standalone price at bluettipower.com: the store search returned bundles only.",
+  "Amazon prices for the F2400 ($599) and DYNESS ($539.99) that ChatGPT showed: amzcheck was not run within the call budget.",
+  "Whether the unit techtest.org tested was the 230 V or the 120 V version: the article summary did not say."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.1293403
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the two $599 picks are rated on the same 80% basis but at different counts (FOSSiBOT F2400 4,000+ cycles vs Anker F2000 3,000 cycles), or that FOSSiBOT's own runtime formula derates the F2400's 2,048 Wh to about 1,741 Wh deliverable.",
+ "standout": 2,
+ "standout_why": "I could not open any rival page: cheapestwh.com, outletpicks.com, powerstationgearlab.com and our own dealectric.com page all failed in WebFetch with a TLS certificate error, and curl was blocked in this session. The score therefore rests only on the result titles (cheapestwh and outletpicks are titled as $/Wh price comparisons) and on ChatGPT's rendered answer, which carries capacity, watts, price, $/Wh and one warranty and no cycle-retention basis, surge figure or usable Wh. Treat the 2 as provisional until someone reads those pages.",
+ "decides": "It confirms FOSSiBOT F2400 over Anker F2000 at ChatGPT's equal $599: one third more rated cycles on the same 80% basis, and a 4,800 W surge. The catch is price: fossibot.com sells the F2400 at $669 today, so the under-$600 claim depends on the Amazon listing, which I did not verify. No maker store I checked sells a 2 kWh unit under $600 today; the closest is AFERIY P210 at $602.10, then ECO-WORTHY PS2400 at $759.99 and Jackery Explorer 2000 v2 at $999.",
+ "candidates": [
+  "FOSSiBOT F2400",
+  "DYNESS 2048Wh 2400W",
+  "Anker SOLIX F2000",
+  "Anker SOLIX C2000 Gen 2",
+  "Jackery Explorer 2000 v2",
+  "AFERIY Haven2400 P210",
+  "ECO-WORTHY PS2400"
+ ],
+ "findings": [
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Cycle life and its end-of-life basis (maker US store)",
+   "value": "4,000+ cycles to 80%",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "Product description text read through storecheck.py search on fossibot.com; the rendered page returned HTTP 429 to WebFetch. Wording: 'LiFePO4 Battery with 4,000+ Life Cycles to 80%'."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Continuous vs surge AC output",
+   "value": "2,400 W continuous, 4,800 W surge (2.0x)",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "Same description text: '2400W AC Pure Sine Wave Inverter (4800W Surge)'. It also states 10 ms UPS, 0-100% AC recharge in 2 hours and a 5-year full-device warranty. No surge duration is given."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Maker US store price today",
+   "value": "$669.00 (compare-at $1,899.00), in stock",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "storecheck.py search result. ChatGPT showed $599 from an Amazon price tracker; I did not verify that Amazon price. At $669 the maker-store price is over the $600 cap."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Deliverable energy by the maker's own runtime formula",
+   "value": "about 1,741 Wh of the 2,048 Wh nameplate (0.85 factor)",
+   "source": "https://www.fossibot.com/pages/faq",
+   "source_title": "FOSSiBOT FAQ",
+   "read": "2026-11-11",
+   "note": "FAQ formula: 'Working time = F2400's Watt-Hours * 0.85 / operating power', with the example 2048Wh*0.85/700w = roughly 2.49 hours; the FAQ calls it theoretical lab data. Arithmetic: 2,048 x 0.85 = 1,740.8 Wh. Per deliverable Wh that is $669 / 1,740.8 = $0.384 at the maker price, or $599 / 1,740.8 = $0.344 at ChatGPT's unverified price, against $0.292 per nameplate Wh in ChatGPT's table."
+  },
+  {
+   "product": "Anker SOLIX F2000",
+   "label": "Cycle life and its end-of-life basis (Anker's own comparison table)",
+   "value": "3,000 cycles to 80% capacity",
+   "source": "https://www.ankersolix.com/products/f2000",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page (the /products/f2000 URL returned C2000 Gen 2 content)",
+   "read": "2026-11-11",
+   "note": "Read through WebFetch's summary of the page. The comparison table lists F2000 at '3,000 Cycles to 80% Capacity', C2000 Gen 2 at '4,000 Cycles to 80% Capacity', and an unnamed other brand at '4,000 Cycles to 70% Capacity'. The page gives no test conditions for cycle life."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Continuous vs peak AC output, capacity, weight",
+   "value": "2,400 W continuous, 4,000 W peak (1.67x); 2,048 Wh; 41.7 lb (18.9 kg)",
+   "source": "https://www.ankersolix.com/products/f2000",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page",
+   "read": "2026-11-11",
+   "note": "This is the F2000's successor, not the unit ChatGPT listed. Its spec table says '4000 Cycles' without a percentage; the 80% basis appears only in the comparison table. The fetched content showed no price."
+  },
+  {
+   "product": "general",
+   "label": "Rated lifetime energy, F2400 vs F2000, same 80% basis",
+   "value": "about 7,373 kWh vs about 5,530 kWh (F2400 +33%)",
+   "source": "https://www.ankersolix.com/products/f2000",
+   "source_title": "Anker SOLIX comparison table (F2000 figure); F2400 figure from https://www.fossibot.com/products/fossibot-f2400",
+   "read": "2026-11-11",
+   "note": "My arithmetic, not a maker claim: nameplate Wh x rated cycles x 0.9 (average capacity if fade is linear from 100% to 80%). F2400: 2,048 x 4,000 x 0.9 = 7,372.8 kWh. F2000: 2,048 x 3,000 x 0.9 = 5,529.6 kWh. At ChatGPT's $599 for each (unverified) that is $0.081 vs $0.108 per rated kWh; at FOSSiBOT's $669 store price it is $0.091."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Continuous vs surge AC output, capacity, weight, UPS switchover",
+   "value": "2,200 W continuous, 4,400 W surge (2.0x); 2,042 Wh; about 39.5 lb (17.9 kg); under 20 ms",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-11",
+   "note": "Description text read through storecheck.py search on jackery.com; the rendered page returned HTTP 429. The same text states 0-100% AC recharge in about 1.7 hours. It is 200 W below the 2,400 W units on continuous output."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Maker US store price today",
+   "value": "$999.00 (compare-at $1,899.00), pre-order, ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-11",
+   "note": "storecheck.py search result. ChatGPT's $582.94 was from a third-party deal seller, which I did not open."
+  },
+  {
+   "product": "AFERIY Haven2400 P210",
+   "label": "Maker store price today, output and warranty",
+   "value": "$602.10 (compare-at $1,399.00), in stock; 2,048 Wh; 2,400 W continuous; 7-year warranty",
+   "source": "https://www.aferiy.com/products/aferiy-p210-portable-power-station-2400w-2048wh-silver",
+   "source_title": "AFERIY Haven2400 P210 Portable Power Station 2400W 2048Wh Silver",
+   "read": "2026-11-11",
+   "note": "storecheck.py search on aferiy.com; the black variant shows the same $602.10. It is $2.10 over the cap. The description text returned gives 'battery lifespan can reach up to 10 years' but no cycle count or retention percentage."
+  },
+  {
+   "product": "ECO-WORTHY PS2400",
+   "label": "Maker store price today, continuous vs peak output, weight",
+   "value": "$759.99 (compare-at $899.99), in stock; 2,048 Wh; 2,400 W continuous, 4,800 W peak (2.0x); 23.5 kg",
+   "source": "https://www.eco-worthy.com/products/eco-worthy-2400w-portable-power-station-with-2048wh-lithium-battery",
+   "source_title": "ECO-WORTHY 2400W Portable Power Station with 2048Wh Lithium Battery",
+   "read": "2026-11-11",
+   "note": "storecheck.py search on eco-worthy.com. The spec text on this listing reads 'AC Output*3: 230V, 50Hz', i.e. the EU electrical spec, and gives no cycle-life figure. The $516 Slickdeals and $557.18 Onelink prices in ChatGPT's results are third-party deals I did not open."
+  }
+ ],
+ "unsourced": [
+  "Text of the rival pages (cheapestwh.com, outletpicks.com 2000Wh pages, powerstationgearlab.com, prepperprices.com, dealectric.com/best-2000wh-power-station): WebFetch failed with 'self signed certificate in certificate chain' and curl was not permitted, so none were read.",
+  "DYNESS 2048Wh 2400W: maker US product page, cycle life with retention %, surge watts, warranty and price. One web search returned no DYNESS page, and the Amazon search returned ASINs with blank titles.",
+  "Jackery Explorer 2000 v2 cycle count and retention %: jackery.com returned HTTP 429 twice, and the store description text carries no cycle figure. Anker's table shows an unnamed brand at 4,000 cycles to 70%, which I did not attribute to Jackery.",
+  "AFERIY P210 cycle count with retention %, surge watts and UPS switchover: aferiy.com returned HTTP 429 twice. A search snippet for a Wellbots listing gave 4,000+ cycles to 85%, but I did not open it.",
+  "FOSSiBOT F2400 cycle figure on the EU store: a search snippet reported 3,500+ cycles on eu.fossibot.com against 4,000+ to 80% on the US store; I did not open the EU page or the manual PDF.",
+  "Anker SOLIX F2000 own product page: surge/peak watts, weight, warranty and current Anker store price. The /products/f2000 URL served C2000 Gen 2 content and the store search returned HTTP 404; the $599 coupon listing ChatGPT showed was not opened.",
+  "ECO-WORTHY PS2400 cycle life and its US 120 V spec sheet.",
+  "Amazon prices for FOSSiBOT F2400 ($599) and DYNESS ($539.99) as ChatGPT showed them: amzcheck was run only as a search, with no price returned. One hit, ASIN B0H4W51ZMH, is titled 'F2400 ... 8ms UPS' with no brand and was not confirmed as the FOSSiBOT unit.",
+  "Segway Cube 2000, Growatt INFINITY 2000 PRO, BLUETTI Elite 200 V2 and ALLPOWERS R2500 V2: prices and cycle bases were not checked within the call budget.",
+  "Surge duration in seconds for any unit, and any independently measured usable Wh from a named reviewer for these models."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.0183404999999999
+ }
+}

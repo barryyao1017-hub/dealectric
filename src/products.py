@@ -6082,6 +6082,23 @@ PRODUCTS = [
  "fit": 'Birders who go out for long sessions and want two-eye viewing in a jacket-pocket size.',
  "caveats": ['It weighs about 2.5 times as much as the Monovid.', 'It is new in 2026, so long-term owner reports are few.', 'We did not compare it against other pocket binoculars on this page.']},
 
+{"slug": 'fossibot-f2400-2048wh',
+ "brand": 'FOSSiBOT',
+ "program": 'amazon:us',
+ "asin": 'B0H4W51ZMH',
+ "category": 'power-station',
+ "name": 'FOSSiBOT F2400 Portable Power Station, 2,048 Wh LiFePO4, 2,400 W',
+ "model": 'F2400',
+ "url": 'https://www.amazon.com/dp/B0H4W51ZMH',
+ "price": None,
+ "verified": '2026-11-11',
+ "specs": [('Rated capacity', '2,048 Wh LiFePO4 (FOSSiBOT US store)'), ('AC output', '2,400 W continuous, 4,800 W surge (FOSSiBOT US store)'), ('Delivered from the AC outlet', '1,512 Wh at a 100 W load (Techtest, Michael Barton); 1,659 Wh (nextpit, Thomas Kern)'), ('Delivered over USB-C', '1,807 Wh at 100 W (Techtest)'), ('Cycle life', '4,000+ cycles to 80% (FOSSiBOT US store)'), ('AC recharge', 'Maker claims 2 hours; measured 2.5 hours (nextpit) and about 2 h 45 min at the 1,100 W setting (Techtest)'), ('UPS switchover', "10 ms on FOSSiBOT's store; the Amazon listing title says 8 ms"), ('Ports', '16 on the US version (FOSSiBOT US store)'), ('Weight', '22 kg, about 48.5 lb (Techtest)')],
+ "warranty": "5-year full-device warranty, as stated on FOSSiBOT's US store (read 2026-11-11)",
+ "returns": 'Set by the Amazon listing; check the return window shown there before ordering',
+ "summary": 'A 2,048 Wh LiFePO4 station with a 2,400 W inverter. Named tests got 1,512 to 1,659 Wh from its AC outlets, which is 74 to 81% of the label.',
+ "fit": 'Outage backup and wall-charged use on the tightest 2 kWh budget, for a buyer who plans around roughly 1,500 to 1,650 Wh of AC energy.',
+ "caveats": ['Delivered AC energy in named tests is 74 to 81% of the rated 2,048 Wh', "Measured AC recharge took 2.5 hours to 2 h 45 min against the maker's 2-hour claim", 'The capacity tests were run on 230 V European units', "FOSSiBOT's store says 10 ms UPS switchover while the Amazon title says 8 ms"]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

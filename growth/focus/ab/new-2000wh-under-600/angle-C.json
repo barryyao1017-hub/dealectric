@@ -1,0 +1,149 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the FOSSiBOT F2400's solar input stops at 500 W and 50 V (charging cuts off above 48 V, and over-voltage damage is outside warranty), so a second panel wired in series or a high-voltage 400 W panel will not charge it.",
+ "standout": 2,
+ "standout_why": "Compared against cheapestwh.com (cited, opened): it lists only capacity, AC output, chemistry, weight, warranty, price and $/Wh for 12 units of about 2 kWh, with no solar input voltage, wattage, connector, expansion or RV-port data. ChatGPT's own answer gives only capacity, output, chemistry, warranty and weight. The other two rival pages could not be compared: outletpicks.com (cited) and our own dealectric.com page both failed to load (TLS certificate error), so whether they carry solar-input limits is untested, which is why this is 2 and not 3.",
+ "decides": "It confirms the F2400 as the under-$600 pick for outage or wall-charged use (UPS bypass, car and MC4 cables in the box), but qualifies it for solar: 500 W and 50 V is the ceiling. A shopper who wants fast solar or expansion has no sourced option under $600; the Growatt INFINITY 2000 Pro (1,200 W solar, expandable to 6,144 Wh, TT-30) is $648 on Amazon per cheapestwh.com and $799 at Growatt's store. Price caveat: the F2400 is $669 at FOSSiBOT's own store today; the $599 is the Amazon price as listed by cheapestwh.com, which I did not check on Amazon.",
+ "candidates": [
+  "FOSSiBOT F2400",
+  "DYNESS 2048Wh 2400W",
+  "Anker SOLIX F2000",
+  "Jackery Explorer 2000 v2",
+  "Growatt INFINITY 2000 Pro"
+ ],
+ "findings": [
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Solar input ceiling",
+   "value": "500 W max, 50 V max",
+   "source": "https://manualslib.mx/manual/738728/Fossibot-F2400.html",
+   "source_title": "Fossibot F2400 user manual (ManualsLib copy)",
+   "read": "2026-11-11",
+   "note": "Manual text: \"The input of the solar panel can be up to 500W and the maximum voltage is 50V.\" The spec table gives the input as 11.5–50 V. Max input current is not stated in the manual. This is a third-party copy of the maker's manual and its spec tables were garbled in extraction; FOSSiBOT's own product page returned HTTP 429 on every attempt."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Solar working window and over-voltage behaviour",
+   "value": "Keep input at 12–48 V; above 48 V over-voltage protection stops charging",
+   "source": "https://manualslib.mx/manual/738728/Fossibot-F2400.html",
+   "source_title": "Fossibot F2400 user manual (ManualsLib copy)",
+   "read": "2026-11-11",
+   "note": "The manual says nothing about panel open-circuit voltage or series/parallel wiring, so the buyer has to check the panel's Voc against 48 V themselves. No panel Voc was sourced, so no specific panel pairing is claimed."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Warranty exclusion stated by maker",
+   "value": "Damage from exceeding the maximum input voltage is outside warranty",
+   "source": "https://manualslib.mx/manual/738728/Fossibot-F2400.html",
+   "source_title": "Fossibot F2400 user manual (ManualsLib copy)",
+   "read": "2026-11-11",
+   "note": "Manual text: \"If the equipment is damaged by exceeding the maximum voltage, it is outside the scope of warranty.\" The manual also says free after-sales service isn't guaranteed if the wrong solar panels are connected."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Cables in the box",
+   "value": "AC charging cable, car charging cable (to cigarette lighter), MC4 solar cable, user manual",
+   "source": "https://manualslib.mx/manual/738728/Fossibot-F2400.html",
+   "source_title": "Fossibot F2400 user manual (ManualsLib copy)",
+   "read": "2026-11-11",
+   "note": "The manual copy names the solar input and both cables as \"Anderson\" (Anderson-to-MC4, Anderson-to-cigarette-lighter). I could not confirm the connector name on FOSSiBOT's product page, so check it before printing a connector type. The XT60 port (12 V / 25 A) is an output, not a solar input."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Solar recharge time at the ceiling",
+   "value": "About 4 hours with 500 W of panels",
+   "source": "https://manualslib.mx/manual/738728/Fossibot-F2400.html",
+   "source_title": "Fossibot F2400 user manual (ManualsLib copy)",
+   "read": "2026-11-11",
+   "note": "Maker's claim in the manual, not a measurement. 2,048 Wh / 500 W = 4.1 h at full rated panel output."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "UPS switchover",
+   "value": "10 ms (store page); \"within about 8 milliseconds\" (manual)",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "Store text read through storecheck.py search: \"10ms uninterruptible home backup UPS\". The manual copy (manualslib.mx) gives about 8 ms and says UPS mode supports only loads under 2,400 W."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Port count by region",
+   "value": "16 ports on the US version, 13 on the EU version",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "Store text read through storecheck.py search. Matters for grey-import listings: an EU unit is the 220 V, 13-port version."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Price at maker's US store",
+   "value": "$669.00 (compare-at $1,899.00), in stock",
+   "source": "https://www.fossibot.com/products/fossibot-f2400",
+   "source_title": "FOSSiBOT F2400 Portable Power Station | 2,400W 2,048Wh",
+   "read": "2026-11-11",
+   "note": "storecheck.py search on fossibot.com. This is $69 over the $600 budget; the $599 ChatGPT showed is the Amazon price."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Amazon price as listed by a cited rival",
+   "value": "$599.00 ($0.292/Wh)",
+   "source": "https://cheapestwh.com/",
+   "source_title": "Cheapest Portable Power Station per Wh — November 2026 Amazon Price Comparison",
+   "read": "2026-11-11",
+   "note": "Read on the rival's page, not on Amazon; amzcheck.py was not run."
+  },
+  {
+   "product": "FOSSiBOT F2400",
+   "label": "Solar generator kit price at maker's US store",
+   "value": "$1,199.00",
+   "source": "https://www.fossibot.com/products/fossibot-f2400-solar-generator",
+   "source_title": "FOSSiBOT F2400 Solar Generator Kit",
+   "read": "2026-11-11",
+   "note": "storecheck.py search. The store notes panels and station ship separately. Which panels are in the kit was not read."
+  },
+  {
+   "product": "Growatt INFINITY 2000 Pro",
+   "label": "Solar input, expansion and RV outputs (maker claims)",
+   "value": "1,200 W solar charging; expandable to 6,144 Wh; TT-30 AC and 30 A Anderson outputs; <15 ms EPS",
+   "source": "https://growattportable.com/products/growatt-infinity-2000-pro-portable-power-station",
+   "source_title": "Growatt INFINITY 2000 PRO Portable Power Station",
+   "read": "2026-11-11",
+   "note": "Store description read through storecheck.py product. 1,200 W is 2.4 times the F2400's 500 W ceiling. The solar voltage window and the expansion battery's model name were not read (the full page returned HTTP 429). I did not verify that growattportable.com is Growatt's official US store."
+  },
+  {
+   "product": "Growatt INFINITY 2000 Pro",
+   "label": "Price at Growatt store",
+   "value": "$799.00 (station only), in stock",
+   "source": "https://growattportable.com/products/growatt-infinity-2000-pro-portable-power-station",
+   "source_title": "Growatt INFINITY 2000 PRO Portable Power Station",
+   "read": "2026-11-11",
+   "note": "storecheck.py product. Over the $600 budget. cheapestwh.com lists it at $648.00 on Amazon (read 2026-11-11, not checked on Amazon)."
+  },
+  {
+   "product": "general",
+   "label": "What the cited $/Wh rival covers",
+   "value": "12 stations of about 2 kWh with capacity, AC output, chemistry, weight, warranty, price and $/Wh; no solar input, connector, expansion or RV-port data",
+   "source": "https://cheapestwh.com/",
+   "source_title": "Cheapest Portable Power Station per Wh — November 2026 Amazon Price Comparison",
+   "read": "2026-11-11",
+   "note": "Only the F2400 ($599) is under $600 on that page. DYNESS, the Anker SOLIX F2000 and the $583 Jackery deal are not on it."
+  }
+ ],
+ "unsourced": [
+  "outletpicks.com 2,000–2,499Wh page (cited rival) and dealectric.com/best-2000wh-power-station (ours): both failed with a TLS certificate error in WebFetch and curl was blocked, so neither was read.",
+  "FOSSiBOT F2400 on FOSSiBOT's own product page: solar connector name, max input amps, and whether an expansion battery is supported. The page returned HTTP 429 on four attempts, and the manual copy does not mention expansion at all.",
+  "DYNESS 2048Wh 2400W: model name, maker page, manual and solar input limits. Two searches returned no DYNESS-branded page or manual, only same-spec units under other brands (not opened).",
+  "Jackery Explorer 2000 v2: solar input watts, voltage and connector, expandability, and maker price. jackery.com returned HTTP 429 on three attempts.",
+  "Anker SOLIX F2000: solar input window, compatible expansion battery and TT-30. ankersolix.com/products/f2000 serves the C2000 Gen 2 page instead, and the other URL tried returned 404.",
+  "Open-circuit voltage of any specific 200 W or 400 W panel, needed to say which panels fit under the F2400's 48 V cut-off. Not looked up within the call budget.",
+  "ECO-WORTHY PS2400, AFERIY P210 and Segway Cube 2000 (in the search results at $516–$600): not researched.",
+  "Amazon prices: amzcheck.py was not run, so every Amazon figure here is as listed by cheapestwh.com."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9299529999999998
+ }
+}
