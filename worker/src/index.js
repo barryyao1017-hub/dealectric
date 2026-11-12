@@ -169,7 +169,10 @@ async function logLanding(url, request, status, utm, env) {
     // as plain "Mozilla/5.0 (compatible)" (2026-10-28, inside W1 scan chats), so no engine token also counts as bot.
     // AppleWebKit/ covers in-app browsers (an iOS WKWebView sends no Safari/ token).
     cf.country || "", cf.verifiedBotCategory || "",
-    selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) ? 1 : 0,
+    selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua)
+      // our own probes (tools/landingcheck.py's dealectric-landingcheck agent landed tagged chatgpt.com, counted as a
+      // shopper until 2026-11-12)
+      || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0,
     // Browser prefetches and prerenders say so (Sec-Purpose / Purpose); they are not a person opening the page.
     clip(request.headers.get("sec-purpose") || request.headers.get("purpose") || "", 50),
     cf.asn || null,
@@ -179,8 +182,12 @@ async function logLanding(url, request, status, utm, env) {
 // ---------------------------------------------------------------- page views (dashboard, 2026-11-11)
 // Every HTML page a browser opens, for the sales dashboard's traffic and conversion figures (`landings` only has the
 // tagged and AI-referred ones). Verified bots and AI fetchers are not stored at all; every other row carries bot_like:
-// 0 = a person's browser, 1 = bot (crawler user agent, scanner or hosting network, no browser engine, no navigation
-// headers, prefetch, or a burst of pages), 2 = our own browser (/self-exclude). The dashboard counts bot_like = 0 only.
+// 0 = a shopper, 1 = bot (crawler user agent, scanner or hosting network, no browser engine, no navigation headers,
+// prefetch, a burst of pages, an outdated Chrome arriving untagged, or one agent arriving from 3+ networks at once),
+// 2 = our own browser (/self-exclude), 3 = a partner review (opened from an affiliate network's dashboard: a program
+// manager looking at us, 2026-11-12), 4 = no source (no tag and no referrer: a monitor or a link typed in; nothing ties
+// it to a shopper, 2026-11-12). A page opened from one of our own pages takes its visit's arrival code. The dashboard,
+// like every shopper count, counts bot_like = 0 only.
 // platform names where the visit came from: the utm_source tag, an AI or search referrer, or "direct".
 const PLATFORM_HOSTS = [
   [/(^|\.)chatgpt\.com$|(^|\.)openai\.com$/, "chatgpt"], [/(^|\.)perplexity\.ai$/, "perplexity"],
@@ -214,15 +221,19 @@ async function logPageview(url, request, status, tag, env) {
   const referrer = request.headers.get("referer") || "";
   const navigation = request.headers.get("sec-fetch-dest") === "document";
   const prefetch = !!(request.headers.get("sec-purpose") || request.headers.get("purpose"));
+  const platform = platformOf(tag, referrer);
+  const arrival = !tag && platform !== "internal";   // untagged, and not a click between our own pages
   const bot = selfExcluded(request) ? 2
     : botLike(cf, ua, tag || "", referrer) || forgedChrome(request, ua) || (VPN_ASNS.has(cf.asn) && !tag && !referrer)
       || !/(AppleWebKit|Gecko|Chrome|Safari|Firefox|Edg|OPR)\//.test(ua) || !navigation || prefetch
-      || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) ? 1 : 0;
+      || url.searchParams.has("dlc_check") || /dealectric-|HeadlessChrome/.test(ua) || (arrival && staleChrome(ua)) ? 1
+    : PARTNER_REFERRER.test(referrer) ? 3
+    : !tag && !referrer ? 4 : 0;
   await env.DB.prepare(
     `INSERT INTO pageviews (ts, page, status, platform, tag, referrer, user_agent, country, asn, bot_like, ch_ua, ch_platform)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(
-    new Date().toISOString(), clip(page, 200), status, platformOf(tag, referrer), clip(tag || "", 100), clip(referrer, 300),
+    new Date().toISOString(), clip(page, 200), status, platform, clip(tag || "", 100), clip(referrer, 300),
     clip(ua, 300), cf.country || "", cf.asn || null, bot, hint(request, "sec-ch-ua", 200), hint(request, "sec-ch-ua-platform", 40),
   ).run();
   // Burst rule, as for clicks: one browser opening 8+ different pages within 60 s is a crawler, not a reader.
@@ -243,6 +254,26 @@ async function logPageview(url, request, status, tag, env) {
     const args = [clip(page, 200), clip(ua, 300), day];
     const r = await env.DB.prepare(`SELECT COUNT(DISTINCT IFNULL(asn, 0)) AS n FROM pageviews INDEXED BY pageviews_page WHERE ${same}`).bind(...args).first();
     if ((r?.n || 0) >= 2) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_page SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
+  }
+  // Cross-network burst (2026-11-12): one user agent arriving untagged from 3+ networks within 2 minutes is a crawler on
+  // a proxy pool (a Linux Chrome 157 agent "from Google" opened /privacy, a solar kit and a guide through three US
+  // networks in 12 s, beside a Mac Chrome 142 one on four more). Every such row is flagged, the first ones too.
+  if ((bot === 0 || bot === 4) && arrival) {
+    const since = new Date(Date.now() - 120_000).toISOString();
+    const same = "user_agent = ? AND ts >= ? AND IFNULL(tag, '') = '' AND platform <> 'internal'";
+    const args = [clip(ua, 300), since];
+    const r = await env.DB.prepare(`SELECT COUNT(DISTINCT IFNULL(asn, 0)) AS n FROM pageviews INDEXED BY pageviews_ts WHERE ${same}`).bind(...args).first();
+    if ((r?.n || 0) >= 3) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = 1 WHERE ${same} AND bot_like IN (0, 4)`).bind(...args).run();
+  }
+  // A page opened from one of our own pages belongs to the visit that arrived: when this browser's latest arrival in the
+  // last 30 minutes was a partner review, a visit with no source or a bot, this view is counted the same way (a
+  // reviewer from Awin's dashboard went on to /products, /discount-codes and a brand's codes page, 2026-11-12).
+  if (bot === 0 && platform === "internal") {
+    const since = new Date(Date.now() - 1_800_000).toISOString();
+    const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
+    const args = [clip(ua, 300), cf.country || "", cf.asn || 0, since];
+    const a = await env.DB.prepare(`SELECT bot_like FROM pageviews INDEXED BY pageviews_ts WHERE ${same} AND platform <> 'internal' ORDER BY ts DESC LIMIT 1`).bind(...args).first();
+    if (a && a.bot_like !== 0) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = ? WHERE ${same} AND bot_like = 0 AND platform = 'internal'`).bind(a.bot_like, ...args).run();
   }
 }
 
@@ -296,7 +327,8 @@ async function handleGo(url, request, env, ctx) {
   ).bind(
     new Date().toISOString(), slug, clickId, entry.network, request.method,
     clip(request.headers.get("referer") || "", 500), clip(ua, 500), cf.country || "",
-    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || forgedChrome(request, ua) || SEARCH_REFERRER.test(request.headers.get("referer") || "") ? 1 : 0, aiFetch ? "ai_fetch" : "redirect",
+    cf.verifiedBotCategory || "", selfExcluded(request) ? 2 : botLike(cf, ua, url.searchParams.get("utm_source") || "", request.headers.get("referer") || "") || forgedChrome(request, ua) || SEARCH_REFERRER.test(request.headers.get("referer") || "") ? 1
+      : PARTNER_REFERRER.test(request.headers.get("referer") || "") ? 3 : 0, aiFetch ? "ai_fetch" : "redirect",
     // ChatGPT links carry rel="noreferrer" but append ?utm_source=chatgpt.com, so the query
     // string is the only trace of where a click came from. Stored raw (minus the "?") and parsed.
     clip(url.search.slice(1), 300), clip(url.searchParams.get("utm_source") || "", 100), cf.asn || null, hint(request, "sec-ch-ua", 200),
@@ -627,6 +659,21 @@ const VPN_ASNS = new Set([9009, 212238, 3257, 21859, 46635]);
 // results page is a forged referrer (2026-11-02..09: a Windows Chrome 131 agent from GB, ES, US and HostRoyale).
 const SEARCH_REFERRER = /^https?:\/\/([a-z0-9-]+\.)*(google|bing|duckduckgo|yahoo|yandex|baidu)\.[a-z.]+\/?$/i;
 const AGENT_TAGS = new Set(["muse", "chatgpt-agent", "signed-agent"]);
+// Affiliate-network and brand dashboards (2026-11-12): a page or /go/ link opened from one of them is a program manager
+// reviewing the site after our application (9 of 25 browser visits on 11-12 came from ui.awin.com, app.awin.com and
+// members.cj.com), not a shopper. Stored as bot_like = 3.
+const PARTNER_REFERRER = /^https?:\/\/([a-z0-9-]+\.)*(awin\.com|cj\.com|rakutenadvertising\.com|rakutenmarketing\.com|linksynergy\.com|impact\.com|shareasale\.com|partnerize\.com|flexoffers\.com|skimlinks\.com|affiliate-program\.amazon\.com)([/?#:]|$)/i;
+
+// Chrome updates itself every four weeks, so a person's Chrome is rarely more than two majors behind (ChatGPT-tagged
+// visits 11-04..11-12: 155-158). An untagged arrival claiming a Chrome 9+ majors old is a script with a frozen agent
+// string (11-12: 142, 124, 119 and 143 from rotating networks, no referrer). Tagged visits and Android WebViews /
+// Electron apps, which lag on purpose, are never judged by this. "Current" is 157 on 2026-11-12, plus one per 4 weeks.
+function staleChrome(ua) {
+  const m = /(?:^|[\s)])Chrome\/(\d+)\./.exec(ua);
+  if (!m || /; wv\)|Electron\//.test(ua)) return false;
+  const current = 157 + Math.floor((Date.now() - Date.UTC(2026, 10, 12)) / (28 * 86_400_000));
+  return +m[1] < current - 8;
+}
 
 // A browser's Referer always carries a path: an origin-only referrer is sent as "https://site/", with the slash. A bare
 // "https://dealectric.com" is a header someone set by hand. On 2026-11-11 a crawler sent exactly that from 71 countries

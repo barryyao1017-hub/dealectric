@@ -26,6 +26,12 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   once in each of Barry's browsers (Personal Chrome profiles, phone, Pane, Agent Chrome); `/self-exclude?off` clears
   it. Linked from nowhere, noindex. It is the only cookie the site ever sets, and it only ever marks our own browsers;
   D1 stores no IP, so nothing else can tell Barry's clicks from a shopper's after the fact.
+- Shopper codes (2026-11-12): beside 1 (bot) and 2 (ours), `bot_like = 3` is a partner review (a page or `/go/` link
+  opened from an affiliate network's dashboard: Awin, CJ, Rakuten, Impact, ...) and, in `pageviews` only, `4` is a
+  visit with no source (no tag, no referrer). An untagged arrival with a Chrome 9+ majors old, or one agent arriving
+  untagged from 3+ networks within 2 minutes, is 1; a page opened from our own pages takes its visit's arrival code.
+  So `bot_like = 0` is a shopper: a browser that came from an assistant, a search engine or another site. All rows
+  since 10-29 were re-judged by these rules on 2026-11-12 (the dashboard showed 29 shoppers by mid-morning that day; 8 by these rules).
 - `GET|POST /feedback` — accepts `message` (required), `kind`, `page`, `agent`, `contact` as query parameters
   or a JSON/form body; stores a row in D1 `feedback`; returns `{ok, ticket}`. A bare GET returns the usage doc.
   GET is allowed on purpose: most assistants only have a fetch-URL tool.

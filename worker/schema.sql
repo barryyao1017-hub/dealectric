@@ -119,7 +119,8 @@ CREATE TABLE IF NOT EXISTS mcp_calls (
 CREATE INDEX IF NOT EXISTS mcp_calls_ts ON mcp_calls (ts);
 
 -- Added 2026-11-11 (sales dashboard): every HTML page a browser opens, except verified bots and AI fetchers (not stored).
--- bot_like: 0 person, 1 bot (heuristics in index.js logPageview), 2 our own browser. Rows before 2026-11-11 were copied
+-- bot_like: 0 shopper, 1 bot (heuristics in index.js logPageview), 2 our own browser, 3 partner review (opened from an
+-- affiliate network's dashboard), 4 no source (no tag, no referrer); since 2026-11-12, rows from 10-29 re-judged that day. Rows before 2026-11-11 were copied
 -- from `landings` (bot_like=0 rows only, backfill=1): tagged and AI-referred visits only, so earlier traffic is undercounted.
 CREATE TABLE IF NOT EXISTS pageviews (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
