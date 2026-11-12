@@ -25,6 +25,16 @@ gonna automate this process to run every day and generate pages as well."
 | Serper | 2,500 queries on signup, no card | one-time | 100 until spent, stop at 2,400 | Google |
 | Jina s.jina.ai | 10M tokens per key, ≥10k tokens/search (~1,000) | one-time | 50 until spent | own |
 | Bing through the Agent Chrome | free, blocks after ~300 pages | — | 40, 6 s apart | Bing |
+| Exa (added 11-08) | $10 credit/month, no card; `lite` search $0.004 → 2,500 | monthly | 60, and 2,000 a month | own index |
+| Brave Search API (added 11-08) | $5 credit/month ≈ 1,000 at $5/1k; card required | monthly | 30, and 900 a month | own index |
+
+**Which sources gate (since 2026-11-08).** The reference is OpenAI's own index (the 142 stored OpenAI readings,
+`runs/pool/srccal_openai.json`), because ChatGPT answers from it. Every daily run hands each keyed source that doesn't gate
+yet whatever is left of its daily cap to read those 142 queries (`gapmine.py calfree`). With 100 paired readings it is
+judged once: Spearman ≥ 0.5 and a threshold whose "open" calls OpenAI agrees with at least 60% of the time → admitted at
+the best-F1 threshold; otherwise rejected. Decisions live in `growth/gapmine/gating.json`; `serpsources.gating()` is
+Claude (< 0.3) plus every admitted source, and `daily` spends coverage readings only on those. The check reproduces the
+11-06 Claude decision exactly (n 142, Spearman 0.644, < 0.3, precision 0.70, recall 0.80).
 
 Renewing total ≈ 60 + 30 + 8 + 40 ≈ 140 readings a day; one-time Serper/Jina clear the 213-cluster backlog.
 Every call is appended to `growth/gapmine/ledger.jsonl` (date, source, query, status, results); the daily log prints
@@ -100,14 +110,29 @@ Not verified from the work laptop (DLC-177 checks it on the first hooked run): `
 on the old Mac, and the `bing-webmaster-api-key` keychain item there (without it the Webmaster fallback logs a failure
 and volume is skipped). `dailyupdate.py` would add one line from `growth/gapmine/daily/<date>.md` (DLC-177).
 
+## Free ad-platform volume (2026-11-08)
+
+Search volume is the other half of the gate (≥ 500 searches). Free sources, all needing Barry's accounts:
+
+- **Microsoft Ads Ad Insight** (built, `msvolume`): suspended since 11-05 (DLC-178). Reinstating it restores real volumes
+  for 1,000 keywords per call.
+- **Google Ads Keyword Planner** (not built): free with a Google Ads account, no campaign needed. Since 2026-09 the API
+  needs a Google Cloud project at **Basic** access (Explorer access blocks the planning services); third-party guides,
+  not Google's docs, say volumes come as ranges unless the account has spend. Build the adapter once access is granted.
+- **Bing Webmaster keyword stats** (built, fallback): free with our key, but counted only 16 of 300 long-tail variants on
+  11-06.
+
 ## Barry's signup steps (never done by Claude; keys go in the keychain)
 
-Tavily (tavily.com → Sign up → dashboard → copy API key), SerpApi (serpapi.com → Register → verify email → Dashboard
+Exa (dashboard.exa.ai → sign up → API Keys; no card), Brave (api-dashboard.search.brave.com → Search plan; asks
+for a card, the $5 monthly credit covers the 900 cap), Tavily (tavily.com → Sign up → dashboard → copy API key), SerpApi (serpapi.com → Register → verify email → Dashboard
 → API key), Serper (serper.dev → Sign up → API key), Jina (jina.ai → API → "Get API key"). Then, per key:
 
     security add-generic-password -a dealectric -s tavily-api-key -w '<key>'
     security add-generic-password -a dealectric -s serpapi-api-key -w '<key>'
     security add-generic-password -a dealectric -s serper-api-key -w '<key>'
     security add-generic-password -a dealectric -s jina-api-key -w '<key>'
+    security add-generic-password -a dealectric -s exa-api-key -w '<key>'
+    security add-generic-password -a dealectric -s brave-api-key -w '<key>'
 
 (on the old Mac too, since the daily run lives there).

@@ -1,0 +1,149 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the OBD-II port's pin 16 stays live with the ignition off, so a plug-in tracker sleeps instead of switching off, and the Spytec Pulse OBD's default is a position every 2 seconds when moving but only every 3 hours when not moving.",
+ "standout": 2,
+ "standout_why": "Compared against five results I opened: rottenwifi.com (cited), vyncs.com/pricing.aspx (cited), vyncs.com/gps-tracking-device-comparision.aspx, allinsider.net and gpstrackerreviews.net. I also opened bouncie.com/pricing (cited), but it rendered no device price, monthly price or power details. rottenwifi only says Bouncie 'enters a low-power parked mode' and to 'monitor the battery on older vehicles'. allinsider says trackers 'often drop into a low-power mode' with no parked interval. gpstrackerreviews has no sleep or parked figures. Vyncs' comparison page does give its own parked figure ('once an hour engine off location reporting'), so part of the angle exists for one brand. None names pin 16 as the reason, and none gives a parked interval for Spytec or Bouncie. allinsider and gpstrackerreviews do not cover Spytec at all. I could not open winchinsider.com (certificate error), and did not open hotairtag, autoskyus, konnectgps, tagandtether, safewise or roadandtrack.",
+ "decides": "It confirms the Spytec Pulse OBD for a shopper who wants to watch a moving vehicle: its manual's 2-second moving default is faster than the 15 seconds allinsider lists for Bouncie and the 60-second sampling Vyncs lists. It also sets the limit: a parked car's map position can be up to 3 hours old on the Spytec default, against once an hour on Vyncs and 'every few hours' on Bouncie. The tracker depends on the port for power, so pulling it out ends tracking after one final 'Power Disconnected' alert; a shopper worried about theft or concealment should look at the Spytec Pulse Hardwired instead. Battery-electric cars are the compatibility risk, because CSS Electronics says EVs are not required to support OBD2, while Spytec's blog says they must have the port.",
+ "candidates": [
+  "Spytec Pulse OBD",
+  "Bouncie GPS Tracker",
+  "Vyncs Basic 4G+",
+  "Spytec Pulse Hardwired"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why an OBD tracker keeps working with the engine off",
+   "value": "\"Pin 16 supplies battery power (often while the ignition is off)\"",
+   "source": "https://www.csselectronics.com/pages/obd2-explained-simple-intro",
+   "source_title": "OBD2 Explained - A Simple Intro (CSS Electronics)",
+   "read": "2026-11-11",
+   "note": "CSS Electronics describing the OBD2 connector. This is a named explainer, not the SAE J1962 text itself, which I did not open."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "Default reporting interval, moving vs not moving",
+   "value": "\"update every 3 hours when not moving and every 2 seconds when moving\"",
+   "source": "https://help.gethapn.com/hc/en-us/articles/13952475945876",
+   "source_title": "User Manual - Pulse OBD Plug-In (Hapn Help Center)",
+   "read": "2026-11-11",
+   "note": "Hapn is the software platform Spytec trackers run on. The manual calls this 'default programming'. Spytec's blog separately says the tracker 'updates as often as every 2 seconds'."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "Behaviour with ignition off",
+   "value": "\"OBD trackers enter a \"sleep mode\" when the ignition is off to preserve your vehicle's battery\"; if the vehicle is towed while off, \"the motion sensor will wake the device and alert you\"",
+   "source": "https://spytec.com/blogs/news/obd-gps-tracker",
+   "source_title": "OBD GPS tracker (Spytec GPS blog, by Patrick Icasas, published 2026-02-04)",
+   "read": "2026-11-11",
+   "note": "Spytec's blog also says the tracker 'pulls power directly from the vehicle battery (eliminating the need for charging)'. It gives no current-draw figure."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "What happens when it is unplugged",
+   "value": "\"the internal backup battery allows the tracker to send one final \"Power Disconnected\" alert to your phone\"",
+   "source": "https://spytec.com/blogs/news/obd-gps-tracker",
+   "source_title": "OBD GPS tracker (Spytec GPS blog)",
+   "read": "2026-11-11",
+   "note": "The backup battery is 60 mAh Li-Polymer per the Spytec product page (read through storecheck, 2026-11-11). The Hapn manual lists 115 mAh Li-Ion, 3.7 V; the two sources disagree."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "Operating voltage",
+   "value": "8 V to 32 V DC (Spytec product page); \"10 V –30 V DC (with overvoltage protection)\" (Hapn manual)",
+   "source": "https://www.spytec.com/products/obd-vehicle-gps-tracker",
+   "source_title": "Spytec Pulse OBD Plug-In Tracker",
+   "read": "2026-11-11",
+   "note": "Product page read through storecheck.py search. Second figure is from https://help.gethapn.com/hc/en-us/articles/13952475945876. The two sources disagree; both ranges cover 12 V and 24 V vehicle systems."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "Price today",
+   "value": "$8.95 per vehicle per month on an annual plan, or $14.95 per vehicle per month billed month to month; hardware free with either plan",
+   "source": "https://www.spytec.com/products/obd-vehicle-gps-tracker",
+   "source_title": "Spytec Pulse OBD Plug-In Tracker",
+   "read": "2026-11-11",
+   "note": "From storecheck.py search on spytec.com (listed price 14.95, available: true). A later direct fetch of the product page returned HTTP 429, so I did not read the page's FAQ."
+  },
+  {
+   "product": "Spytec Pulse OBD",
+   "label": "Vehicle support caveat in the manual",
+   "value": "\"not every vehicle model is supported\"; some supported vehicles cannot read all available metrics",
+   "source": "https://help.gethapn.com/hc/en-us/articles/13952475945876",
+   "source_title": "User Manual - Pulse OBD Plug-In (Hapn Help Center)",
+   "read": "2026-11-11",
+   "note": "The first part is the manual's wording; the second part is a paraphrase from the read. The manual also says the OBD port 'also provides power'."
+  },
+  {
+   "product": "Bouncie GPS Tracker",
+   "label": "Behaviour when parked",
+   "value": "\"While parked, Bouncie checks in with our system every few hours\"; it \"enters into a low-power sleep mode where it monitors the vehicle's battery and periodically checks in with our system\"",
+   "source": "https://help.bouncie.com/en/articles/1018750-lost-connection",
+   "source_title": "Lost Connection (Bouncie Help Center, written by Anthony, dated 2024-05-13)",
+   "read": "2026-11-11",
+   "note": "Bouncie gives no exact number of hours."
+  },
+  {
+   "product": "Bouncie GPS Tracker",
+   "label": "Parked with no cell signal (for example a garage)",
+   "value": "\"Bouncie will make a few attempts to check in and then stop trying in order to protect the vehicle battery while parked\"",
+   "source": "https://help.bouncie.com/en/articles/1018750-lost-connection",
+   "source_title": "Lost Connection (Bouncie Help Center)",
+   "read": "2026-11-11",
+   "note": "So a car parked where signal is blocked may show no fresh position until it is next driven."
+  },
+  {
+   "product": "Vyncs Basic 4G+",
+   "label": "Reporting when the engine is off",
+   "value": "\"once an hour engine off location reporting\"",
+   "source": "https://vyncs.com/gps-tracking-device-comparision.aspx",
+   "source_title": "Vyncs GPS tracking device comparison",
+   "read": "2026-11-11",
+   "note": "Same page: 'Vyncs does not need a battery. It is safely powered by your car.' This page was result 4 in ChatGPT's list, not cited."
+  },
+  {
+   "product": "Vyncs Basic 4G+",
+   "label": "Reporting when driving",
+   "value": "\"GPS sample rate (60 seconds)\", with the footnote \"GPS points to user's account together every 3 minutes\"; $99.99 per year plus a $45.99 activation fee in the first year",
+   "source": "https://vyncs.com/pricing.aspx",
+   "source_title": "Vyncs pricing",
+   "read": "2026-11-11",
+   "note": "Basic, Premium and Fleet plans. The Pro plan samples every 20 seconds and sends every minute. The 20-second upgrade costs $30 per device per year."
+  },
+  {
+   "product": "general",
+   "label": "Battery-electric cars and OBD2",
+   "value": "\"electric vehicles are not required to support OBD2 in any shape or form\"; \"almost none of the modern EVs support any of the standard OBD2 requests\"",
+   "source": "https://www.csselectronics.com/pages/obd2-explained-simple-intro",
+   "source_title": "OBD2 Explained - A Simple Intro (CSS Electronics)",
+   "read": "2026-11-11",
+   "note": "This conflicts with Spytec's blog (https://spytec.com/blogs/news/obd-gps-tracker), which says 'All electric vehicles (EVs) sold in the US are still required to have an OBD-II port' and that EVs 'do not generate standard \"emissions-related\" trouble codes'. I did not open the federal or California regulation to settle it."
+  },
+  {
+   "product": "general",
+   "label": "Vehicles outside the OBD-II port rule",
+   "value": "\"for vehicles older than 1996, or for construction equipment, you will need a hardwired or battery-powered tracker\"; \"For heavy-duty semi-trucks (Class 8), different ports (J1939) are used\"",
+   "source": "https://spytec.com/blogs/news/obd-gps-tracker",
+   "source_title": "OBD GPS tracker (Spytec GPS blog)",
+   "read": "2026-11-11",
+   "note": "Spytec's own wording. CSS Electronics dates the US mandate for cars and light trucks to 1996."
+  }
+ ],
+ "unsourced": [
+  "Sleep-mode current draw in mA for the Spytec Pulse OBD, Bouncie and Vyncs: the Hapn manual, Spytec blog, Bouncie help article and Vyncs pages give no figure. The only numbers I saw were search snippets from a competitor (Logistimatics) and forums, which I did not use.",
+  "How many days or weeks a car can sit parked with each tracker plugged in before the 12 V battery is at risk: no maker page I opened states it.",
+  "The SAE J1962 standard's own wording on pin 16 (paywalled; I used CSS Electronics' description instead).",
+  "The federal (40 CFR 86.1806) or California rule text on whether battery-electric vehicles must have an OBD-II connector; I did not open either.",
+  "Bouncie's own statement of its driving update interval, EV and hybrid compatibility, and today's device and monthly price: bouncie.com/pricing rendered without amounts, bouncie.com/faqs returned 404, and the Bouncie blog page returned only its title. The 15-second figure comes from allinsider.net and gpstrackerreviews.net, not from Bouncie.",
+  "Vyncs' own FAQ on battery drain, unplug alerts and EV compatibility: vyncs.com/faq.aspx returned 404 and a search surfaced no Vyncs page.",
+  "The Spytec product page FAQ wording on parked power draw (a search snippet said 'less than the car's digital clock'): the page returned HTTP 429 on two direct reads, so I left it out.",
+  "Which cellular standard (LTE-M or LTE Cat 1) each tracker uses: the pages I opened say only '4G LTE'.",
+  "winchinsider.com's content: the fetch failed with a certificate error, so I could not compare against it."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9600734
+ }
+}

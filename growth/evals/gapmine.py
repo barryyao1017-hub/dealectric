@@ -1040,7 +1040,54 @@ GATE_BY_SOURCE = {"claude": 0.3}
 
 
 def gate_for(source: str) -> float:
-    return GATE_BY_SOURCE.get(source, GATE)
+    import serpsources as S
+    return S.gating().get(source, GATE_BY_SOURCE.get(source, GATE))
+
+
+CAL_MIN = 100          # paired readings before a free source is judged against OpenAI's index
+CAL_RHO = 0.5          # Spearman needed to gate (Claude: 0.64 on 142, DLC-190)
+CAL_PREC = 0.6         # share of the source's "open" calls that OpenAI also reads open (Claude: 0.70 at < 0.3)
+
+
+def calfree(args) -> dict:
+    """Calibrate every keyed free index that doesn't gate yet against the stored OpenAI readings (the 142-cluster
+    reference set, srccal_openai.json), using only what is left of its daily cap; a source with CAL_MIN paired readings
+    is admitted at the threshold with the best F1 vs OpenAI-open (< GATE) among those with precision >= CAL_PREC, or
+    rejected. Decisions go to growth/gapmine/gating.json, which serpsources.gating() reads. Barry 2026-11-08: discovery
+    should run on the free quota of the indexes, not on Claude alone."""
+    import serpsources as S
+    path = S.GATING_FILE
+    dec = json.loads(path.read_text()) if path.exists() else {}
+    osup, olab = load("srccal_openai.json", {}), load("srccal_openai_labels.json", {})
+    ref = [q for q in olab if olab[q] and sum(1 for r in osup.get(q, []) if r.get("rank")) >= MIN_RESULTS]
+    log = {}
+    for src in S.PRIORITY:
+        if src in S.gating() or src in dec or src == "bing" or S.key(src) is None or S.room(src) <= 0:
+            continue
+        ssup, slab = _src_readings(src, ref)
+        both = [q for q in ref if slab.get(q) and sum(1 for r in ssup.get(q, []) if r.get("rank")) >= MIN_RESULTS]
+        log[src] = f"{len(both)}/{len(ref)} paired"
+        if len(both) < min(CAL_MIN, len(ref)):
+            continue
+        o = [coverage(olab[q]) for q in both]; c = [coverage(slab[q]) for q in both]
+        rho = spearman(o, c)
+        best = None
+        for t in (0.2, 0.25, 0.3, 0.35, 0.4, 0.45):
+            tp = sum(1 for a, b in zip(o, c) if a < GATE and b < t); fp = sum(1 for a, b in zip(o, c) if a >= GATE and b < t)
+            fn = sum(1 for a, b in zip(o, c) if a < GATE and b >= t)
+            prec = tp / (tp + fp) if tp + fp else 0.0; rec = tp / (tp + fn) if tp + fn else 0.0
+            f1 = 2 * prec * rec / (prec + rec) if prec + rec else 0.0
+            if prec >= CAL_PREC and (best is None or f1 > best["f1"]):
+                best = {"threshold": t, "precision": round(prec, 3), "recall": round(rec, 3), "f1": round(f1, 3)}
+        d = {"date": date.today().isoformat(), "n": len(both), "spearman": round(rho, 3), "ref": "openai"}
+        if rho >= CAL_RHO and best:
+            d.update(decision="admit", **best)
+        else:
+            d.update(decision="reject", why=f"Spearman {rho:.2f} (needs {CAL_RHO})" if rho < CAL_RHO else f"no threshold reaches precision {CAL_PREC}")
+        dec[src] = d
+        path.write_text(json.dumps(dec, indent=1) + "\n")
+        log[src] = f"{d['decision']}: n={d['n']}, Spearman {d['spearman']}" + (f", gates at < {d['threshold']} (precision {d['precision']}, recall {d['recall']})" if d["decision"] == "admit" else f" ({d['why']})")
+    return log
 EXPAND_KEYS = None
 
 
@@ -1113,7 +1160,8 @@ def supply_daily(args) -> dict:
     rows.sort(reverse=True)
     read = {}
     for n, sq in rows:
-        srcs = [x for x in S.available() if x in args.sources.split(",")]
+        allowed = list(S.gating()) if args.sources == "auto" else args.sources.split(",")
+        srcs = [x for x in S.available() if x in allowed]
         if not srcs:
             break
         res = S.fetch(srcs[0], sq)
@@ -1130,7 +1178,7 @@ def queue_step(args) -> list[dict]:
     """Clusters that pass the gate (searches >= MIN_SEARCHES, coverage < GATE, no page of ours) join the page queue."""
     qpath = ROOT / "growth/gapmine/queue.json"
     queue = json.loads(qpath.read_text()) if qpath.exists() else []
-    have = {(x["seed"], x["cluster"]) for x in queue}
+    have = {(x.get("seed"), x.get("cluster")) for x in queue}   # brand-page items (11-06) carry no seed
     vol = vols()
     dep, sup, lab = load("depth.json", {}), load("supply.json", {}), load("supply_labels.json", {})
     src_of = load("supply_source.json", {})
@@ -1143,7 +1191,7 @@ def queue_step(args) -> list[dict]:
             continue
         n, cov = sum(vol.get(x["q"], 0) for x in c["queries"]), coverage(lab[sq])
         import serpsources as S
-        if n >= MIN_SEARCHES and cov < gate_for(src_of.get(sq, "bing")) and src_of.get(sq, "bing") in S.GATING:
+        if n >= MIN_SEARCHES and cov < gate_for(src_of.get(sq, "bing")) and src_of.get(sq, "bing") in S.gating():
             added.append({"seed": c["seed"], "cluster": c["cluster"], "lead": lead, "supply_query": sq, "searches": n,
                           "coverage": cov, "uncovered": round(n * (1 - cov)), "source": src_of.get(sq, "bing"),
                           "brands": c["brands"], "variants": [x["q"] for x in c["queries"][:10]],
@@ -1209,6 +1257,10 @@ def daily(args) -> None:
         log["msvolume"] += f"; Webmaster counted {log['webmaster']['with_counts']} of {log['webmaster']['asked']} new variants (x{WM_TO_MS:g} to Ad Insight scale)"
     prune_pool()
     log["supply"] = supply_daily(args)
+    try:
+        log["calfree"] = calfree(args)   # leftover free quota of indexes that don't gate yet goes to calibration
+    except Exception as e:  # noqa: BLE001
+        log["calfree"] = {"error": str(e)[:200]}
     log["queued"] = [f"{x['cluster']} ({x['uncovered']} uncovered, cov {x['coverage']}, {x['source']})" for x in queue_step(args)]
     log["sources"] = S.status()
     d = ROOT / "growth/gapmine/daily"
@@ -1217,7 +1269,8 @@ def daily(args) -> None:
           f"- Seeds: {len(log['seeds']['today'])} expanded today, {log['seeds']['pending']} pending: {', '.join(log['seeds']['today']) or '-'}",
           f"- Ad Insight volume: {log['msvolume']}",
           f"- Coverage: {log['supply']['unscored_over_min']} clusters >= {MIN_SEARCHES} searches unscored before today; read today: {log['supply']['read'] or 'none'}",
-          f"- Queued for pages (coverage < {GATE_BY_SOURCE.get('claude', GATE)} on Claude): {len(log['queued'])}", *[f"  - {x}" for x in log["queued"]], "",
+          f"- Free-index calibration vs OpenAI: {'; '.join(f'{k} {v}' for k, v in log['calfree'].items()) or 'no keyed source waiting'}",
+          f"- Queued for pages (coverage under each gating source's threshold): {len(log['queued'])}", *[f"  - {x}" for x in log["queued"]], "",
           "## Free sources, used / cap", "", "```", log["sources"], "```"]
     (d / f"{log['date']}.md").write_text("\n".join(md) + "\n")
     print("\n".join(md))
@@ -1226,7 +1279,7 @@ def daily(args) -> None:
 def main() -> None:
     global RUN
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead", "volume", "msvolume", "volcal", "srccal", "seeds", "daily", "queue"])
+    ap.add_argument("step", choices=["expand", "reddit", "news", "launches", "label", "depth", "supply", "report", "backfill", "backfillreport", "calibrate", "launchsupply", "backfillhead", "volume", "msvolume", "volcal", "srccal", "seeds", "daily", "queue", "calfree"])
     ap.add_argument("--run", default=date.today().isoformat())
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--pause", type=float, default=4.0)
@@ -1234,7 +1287,7 @@ def main() -> None:
     ap.add_argument("--calib", type=int, default=3000, help="msvolume: extra Webmaster-counted queries fetched for calibration")
     ap.add_argument("--show", type=int, default=60)
     ap.add_argument("--force", action="store_true", help="seeds: redo brands already widened")
-    ap.add_argument("--sources", default="claude", help="daily: coverage sources allowed, by priority (Claude only since 11-06, DLC-190)")
+    ap.add_argument("--sources", default="auto", help="daily: coverage sources allowed, by priority; auto = every gating source (serpsources.gating())")
     ap.add_argument("--source", default="claude", help="srccal/supply: free SERP source (growth/evals/serpsources.py)")
     ap.add_argument("--ref", default="bing", help="srccal: reference source (default: the Agent Chrome Bing readings)")
     ap.add_argument("--pool", default="bing", choices=["bing", "backlog", "both"], help="srccal: Bing-scored set, unscored backlog, or both")
@@ -1244,12 +1297,12 @@ def main() -> None:
     ap.add_argument("--min-demand", type=float, default=0.3, help="supply: skip clusters whose lead query scores below this")
     ap.add_argument("--min-surface", type=float, default=0.3, help="label: skip suggestions the engines barely push")
     args = ap.parse_args()
-    if args.step in ("daily", "queue"):
+    if args.step in ("daily", "queue", "calfree"):
         args.run = POOL
     RUN = ROOT / "growth/gapmine/runs" / args.run
     RUN.mkdir(parents=True, exist_ok=True)
     {"expand": expand, "reddit": reddit, "news": news, "launches": launches, "label": label, "depth": depth_step,
-     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head, "volume": volume, "msvolume": msvolume, "volcal": volcal, "srccal": srccal, "seeds": seeds_step, "daily": daily, "queue": queue_step}[args.step](args)
+     "supply": supply, "report": report, "backfill": backfill, "backfillreport": backfill_report, "calibrate": calibrate, "launchsupply": launch_supply, "backfillhead": backfill_head, "volume": volume, "msvolume": msvolume, "volcal": volcal, "srccal": srccal, "seeds": seeds_step, "daily": daily, "queue": queue_step, "calfree": lambda a: print(json.dumps(calfree(a), indent=1))}[args.step](args)
 
 
 if __name__ == "__main__":

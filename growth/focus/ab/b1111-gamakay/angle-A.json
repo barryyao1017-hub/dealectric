@@ -1,0 +1,142 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Gamakay Phoenix V3 silent switch's \"45 gf\" is its force at 2.0 mm (35 gf initial, 58 gf at the bottom, 3.5 mm travel), which puts it next to Wooting's L60 (40/60 gf, 4.0 mm) and not the L45, or that the \"0.125 ms\" and \"0.06 ms\" latency claims on these boards are the 8 kHz report interval or less, against 0.60 ms that HLPlanet measured on Gamakay's sibling TK75 TMR.",
+ "standout": 2,
+ "standout_why": "Compared against the pages I could read: the cited hlplanet.com guide, plus thegadgetverse.com and mechvibes.com from the result list. The HLPlanet guide names Phoenix V3 as essentially the only mainstream silent magnetic switch but gives no force, travel or dB for it and no rapid-trigger floor for a silent board. thegadgetverse lists Phoenix V3 force and travel as unpublished and says no lab has published a numeric noise score for a dedicated silent HE switch. Mechvibes has no dB figures and none of the three carded boards. None of them puts the makers' force labels, travel and latency claims on one basis. Two cited pages went unread: the RTINGS quiet-keyboards page served only navigation to my fetch, and the Reddit threads were blocked. So I could not rule out RTINGS holding a dBA figure for the NuPhy Air75 HE; that is why this is 2 and not 3.",
+ "decides": "It confirms ChatGPT's pick, the Gamakay TK75HE V2 with Phoenix V3 switches, and changes the reason. Nobody in the results publishes a dB figure, so silence has to be judged on switch construction, and Phoenix V3 is the only dedicated silent magnetic switch among the boards shown. The table adds two costs of that pick: 0.5 mm less travel than a Wooting Lekker (3.5 vs 4.0 mm) and a bottom-out as heavy as Wooting's L60. It also removes speed as a tiebreaker: the Epomaker HE68 Lite and Wooting 80HE both print 0.125 ms, which is just 1/8000 s, and Gamakay's 0.06 ms is under one 8 kHz interval. Fine-step claims (0.005 mm, 0.01 mm) are setting resolution; HLPlanet found release settings below about 0.3 mm misread on the sibling TK75 TMR. A shopper who already owns a Wooting 60HE can get the same silence for $13.99 in switches instead of a new board.",
+ "candidates": [
+  "Gamakay TK75HE V2",
+  "Gamakay TK75 TMR",
+  "Gamakay x NaughShark NS75",
+  "NuPhy Air75 HE",
+  "Epomaker HE68 Lite",
+  "Wooting 80HE"
+ ],
+ "findings": [
+  {
+   "product": "Gamakay Phoenix V3 silent magnetic switch",
+   "label": "Force and travel, as HLPlanet's spec table lists them",
+   "value": "35 gf minimum initial force, 45 ± 5 gf at 2.0 mm, 58 gf maximum end force, 3.50 ± 0.2 mm total travel",
+   "source": "https://www.hlplanet.com/review-gamakay-phoenix-v3-silent-magnetic-switch/",
+   "source_title": "Review: Gamakay Phoenix V3 Silent Magnetic Switch (HLPlanet, 2026-07-01)",
+   "read": "2026-11-11",
+   "note": "The headline \"45 gf\" is a mid-travel figure, not actuation or bottom-out. The same table lists initial flux 95 ± 15 Gs and bottom flux 580 ± 50 Gs. Mercury V3 (non-silent) is 30 gf initial, 55 gf end, same 3.50 mm travel."
+  },
+  {
+   "product": "Wooting 80HE",
+   "label": "Lekker switch force and travel, for comparison",
+   "value": "Lekker L60: 40 gf actuation, 60 gf bottom-out, 4.0 mm total travel; Lekker L45: 30 gf actuation, 45 gf bottom-out, 4.0 mm",
+   "source": "https://www.hlplanet.com/keyboards-hall-effect-switches/",
+   "source_title": "Best Keyboards w/ Hall Effect magnetic switches [2026 GUIDE] (HLPlanet)",
+   "read": "2026-11-11",
+   "note": "Wooting names its switches by bottom-out force; Gamakay quotes force at 2.0 mm. On a like-for-like basis Phoenix V3 (35 to 58 gf) sits beside the L60 (40 to 60 gf), and has 0.5 mm less travel (4.0 − 3.5). Wooting's own page says the 80HE ships with Lekker L60 V2; HLPlanet's table does not say V1 or V2."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Maker's US store price and headline claims",
+   "value": "$89.99 (list $119.99), in stock; \"Ultra-low latency (0.06ms) meets 8 KHz polling\"; title claims \"0.005mm RT Accuracy\"",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-11",
+   "note": "Read through the store's search listing with storecheck.py; the product page itself returned HTTP 429 on every attempt, so the per-switch variant price is not checked. Arithmetic: one 8 kHz report interval is 1/8000 s = 0.125 ms, so 0.06 ms is less than one interval and cannot be a key-press-to-PC figure."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Measured latency and usable rapid-trigger floor on the sibling board with the same Phoenix V3 switches",
+   "value": "HLPlanet measured 0.60 ms wired and 0.75 ms on 2.4 GHz with OSLTT; release settings below about 0.3 mm can misread from plate flex, about 0.4 mm suggested",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet, 2026-05-18)",
+   "read": "2026-11-11",
+   "note": "This is the TK75 TMR, not the TK75HE V2. The spec table there lists 8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth, \"0.01 mm precision\" rapid trigger, 0.01 to 3.0 mm actuation, 8,000 mAh, $119.99. The measured 0.60 ms is 10 times the 0.06 ms Gamakay prints for the TK75HE V2 (0.60 / 0.06). No measured latency for the TK75HE V2 itself was read."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Named judgement on how quiet Phoenix V3 is in a board",
+   "value": "HLPlanet: with Phoenix V3 Silent it is \"the kind of silent where background noise is louder than the keys\"; Mercury V3 is \"the louder of the two\"",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet, 2026-05-18)",
+   "read": "2026-11-11",
+   "note": "Qualitative only; the review gives no dB reading and no test method."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Maker's US store price",
+   "value": "$109.99 (list $159.99), in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75-tmr-magnetic-keyboard-8k-polling-rate",
+   "source_title": "GamaKay TK75 TMR 75% Mechanical Keyboard – 8K Polling Rate, Magnetic Switch",
+   "read": "2026-11-11",
+   "note": "From the store's search listing via storecheck.py. HLPlanet's May review quoted $119.99."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Maker's US store price and claims",
+   "value": "$79.99 (list $99.99), in stock; \"0.005mm actuation accuracy\", 8K polling (8000 Hz), 16K scan rate, wired / 2.4G / Bluetooth",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-11",
+   "note": "From the store's search listing via storecheck.py. HLPlanet's guide lists Phoenix V3 silent as a switch option on this board, $10 below the TK75HE V2. Arithmetic: a 16 kHz scan interval is 1/16000 s = 0.0625 ms."
+  },
+  {
+   "product": "Gamakay Phoenix V3 silent magnetic switch",
+   "label": "Price of the switches alone, and which boards they fit",
+   "value": "$13.99 a pack at Gamakay (list $19.99). HLPlanet tested them working in the Wooting 60HE, Womier SK75 TMR, Gamakay NS75 and Neo65 Sonic HE+; lists Corsair K70 Max and Keychron HE models (Q1 HE, K2 HE) as incompatible",
+   "source": "https://www.hlplanet.com/review-gamakay-phoenix-v3-silent-magnetic-switch/",
+   "source_title": "Review: Gamakay Phoenix V3 Silent Magnetic Switch (HLPlanet, 2026-07-01)",
+   "read": "2026-11-11",
+   "note": "The $13.99 / $19.99 price was also read today from Gamakay's store search listing for https://gamakay.com/products/gamakay-hall-effect-magnetic-switches. HLPlanet gives the $13.99 pack as 45 switches (about $0.31 each)."
+  },
+  {
+   "product": "Epomaker HE68 Lite",
+   "label": "Maker's US store price and claims",
+   "value": "$42.49 (list $49.99), in stock; 8,000 Hz polling, 128,000 Hz scan rate, \"0.125 millisecond\", \"0.01mm Adjustable Fast Trigger with 0 Dead Zone\"",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-11",
+   "note": "From the store's search listing via storecheck.py. ChatGPT's card showed $44.49. Arithmetic: 0.125 ms = 1/8000 s, the polling interval, not a measured latency. The text read names no silent switch."
+  },
+  {
+   "product": "Wooting 80HE",
+   "label": "Maker's stated actuation step, polling and latency claim",
+   "value": "Actuation 0.1 to 4.0 mm in 0.1 mm increments; \"True 8kHz polling\"; \"0.125ms input speed, on every key\"; ships with Lekker L60 V2",
+   "source": "https://wooting.io/wooting-80he",
+   "source_title": "Wooting 80HE product page",
+   "read": "2026-11-11",
+   "note": "Wooting states a 0.1 mm step where Gamakay and Epomaker state 0.005 mm and 0.01 mm. The 0.125 ms figure is again 1/8000 s. Noise claims are qualitative only: the silicone gasket gives \"less noise\" and the PC plate mutes higher frequencies. The page shows no USD price, only a configurator link."
+  },
+  {
+   "product": "general",
+   "label": "Whether any page in ChatGPT's results gives a noise figure for a silent Hall effect switch",
+   "value": "None of the three read does; thegadgetverse states that no lab had published a numeric noise score for a dedicated silent HE switch",
+   "source": "https://thegadgetverse.com/best-silent-hall-effect-switches/",
+   "source_title": "The 6 Best Silent Hall Effect Switches in 2026 (thegadgetverse, 2026-07-28)",
+   "read": "2026-11-11",
+   "note": "The same page lists Phoenix V3 force and travel as unpublished, and gives Outemu Silent Peach HE as 40 ± 5 gf, 50 ± 5 gf bottom-out, 3.5 ± 0.2 mm. The HLPlanet guide (https://www.hlplanet.com/keyboards-hall-effect-switches/) and the Mechvibes sound-test page (https://mechvibes.com/blog/most-listened-hall-effect-keyboards) were also read today and contain no dB figures."
+  },
+  {
+   "product": "general",
+   "label": "Wireless latency penalty, as the cited guide states it",
+   "value": "HLPlanet: \"A 2.4 GHz dongle typically adds 20–100% latency and Bluetooth adds far more\"",
+   "source": "https://www.hlplanet.com/keyboards-hall-effect-switches/",
+   "source_title": "Best Keyboards w/ Hall Effect magnetic switches [2026 GUIDE] (HLPlanet)",
+   "read": "2026-11-11",
+   "note": "Consistent with HLPlanet's own TK75 TMR measurement: 0.75 ms on 2.4 GHz against 0.60 ms wired is 25% more (0.15 / 0.60)."
+  }
+ ],
+ "unsourced": [
+  "Gamakay TK75HE V2 polling rate per connection mode, rapid-trigger minimum setting, actuation range, battery size and the price of the Phoenix V3 variant specifically: gamakay.com returned HTTP 429 on five attempts at the product page.",
+  "NuPhy Air75 HE price, switch force and travel, polling rate and connection modes: nuphy.com returned HTTP 429 on every attempt (storecheck search, storecheck product, two page fetches).",
+  "RTINGS typing-noise dBA for the NuPhy Air75 HE and the picks on its Best Quiet Keyboards page: both RTINGS pages served only navigation to my fetch, and a search summary reported the noise values as paywalled.",
+  "The two cited Reddit threads (r/keyboards on quieter Hall effect boards, r/WootingKB on quieter 60HE v2 switches): Reddit could not be fetched.",
+  "A measured dB figure for any board fitted with Phoenix V3 or another silent magnetic switch: looked in HLPlanet's Phoenix V3 and TK75 TMR reviews, thegadgetverse and Mechvibes; none publishes one.",
+  "A measured latency figure for the Gamakay TK75HE V2 itself; only the sibling TK75 TMR measurement was read.",
+  "Epomaker HE68 Lite \"five-layer sound dampening\" (ChatGPT's wording) and its switch name and force: the store listing text I read was truncated before any dampening or switch detail.",
+  "Wooting 80HE US price and Wooting's own force figures for the Lekker L60 V2: the product page shows neither.",
+  "Outemu Silent Peach HE specs from Outemu's own page; only thegadgetverse's figures were read."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0386357
+ }
+}

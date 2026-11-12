@@ -1,0 +1,128 @@
+<title>Impact Marketplace Reapplication</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column; the message itself sits in a bordered "outbox" panel with a copy button. */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --fg: #1b2230; --muted: #5a6475; --line: #dde1e8;
+  --accent: #1f6feb; --accent-soft: #e6effd; --warn: #9a5b00; --warn-soft: #fff4e0;
+  --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12161d; --surface: #1a1f28; --fg: #e5e9f0; --muted: #9aa4b5; --line: #2c3341;
+  --accent: #6aa5ff; --accent-soft: #1c2a40; --warn: #f0b45a; --warn-soft: #2d2414; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12161d; --surface: #1a1f28; --fg: #e5e9f0; --muted: #9aa4b5; --line: #2c3341;
+  --accent: #6aa5ff; --accent-soft: #1c2a40; --warn: #f0b45a; --warn-soft: #2d2414; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 28px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: 1.9rem; line-height: 1.2; }
+h2 { font-size: 1.15rem; }
+p, ul, ol { margin: 0; }
+section { display: flex; flex-direction: column; gap: 10px; }
+.eyebrow { font: 500 0.75rem var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: 1.05rem; }
+ul, ol { padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+a { color: var(--accent); }
+code { font: 0.88em var(--mono); }
+.note { background: var(--warn-soft); color: var(--fg); border-left: 3px solid var(--warn); padding: 12px 14px; border-radius: 4px; }
+.outbox { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.outbox-head { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--accent-soft); }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 0.88rem; min-width: 0; }
+.meta dt { color: var(--muted); font-family: var(--mono); font-size: 0.8rem; padding-top: 2px; }
+.meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+button { font: 500 0.88rem var(--body); background: var(--accent); color: var(--surface); border: 0; border-radius: 6px;
+  padding: 8px 14px; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.letter { padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.letter ul { gap: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+.tbl { overflow-x: auto; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 0.75rem var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+td:nth-child(2) { white-space: nowrap; }
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:8px">
+    <div class="eyebrow">Dealectric · DLC-154 · sent 2026-11-11 23:19 UTC as Impact ticket #921412</div>
+    <h1>Impact Marketplace Reapplication</h1>
+    <p class="lead">This is a draft of our request for a second review of the Marketplace application for Impact account 7945788. Impact declined us on 10-12 because the site had too little traffic and history. We now have a month of history to show, including network sales. Sent on your yes as support ticket #921412 (Marketplace Approval). Impact quotes 5–7 business days for a reply. The public profile was updated to match before sending.</p>
+  </header>
+
+  <section>
+    <h2>Before sending</h2>
+    <ol>
+      <li><strong>Confirm the 8 sales are outside shoppers.</strong> The figure is every transaction in our D1 <code>sales</code> table (CJ and Awin). I didn't check each order against the self-exclusion flag. If any were our own test purchases, cut the count before sending.</li>
+      <li><strong>Update the Impact profile to match.</strong> The compliance team compares the profile against the request. Set the property to dealectric.com (the verification tag is still live in every build), add Agentify LLC as the business, and set the promotional methods to content and comparison, with no paid search. I can do this in the Agent Chrome after you say yes.</li>
+      <li><strong>Channel.</strong> Impact has no reapply button. Their help page says to contact support or reapply once reach has grown. So the request goes in as a new support ticket from inside the signed-in Impact app, and it cites the old ticket #894351. The fallback is a reply to the 10-12 ticket email.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The message</h2>
+    <div class="outbox">
+      <div class="outbox-head">
+        <dl class="meta">
+          <dt>To</dt><dd>Impact compliance (support ticket, signed in as barrryyao@gmail.com)</dd>
+          <dt>Subject</dt><dd id="subj">Marketplace reapplication: Dealectric (dealectric.com), account 7945788, follow-up to ticket #894351</dd>
+        </dl>
+        <button id="copy" type="button">Copy message</button>
+      </div>
+      <div class="letter" id="letter">
+        <p>Hello impact.com compliance team,</p>
+        <p>I'm reapplying for Marketplace access for media partner account 7945788 (Barry Yao, dealectric.com). On October 12 (ticket #894351) you declined my appeal because the site's traffic and marketing presence were too new. You suggested I join campaigns directly and reapply once my reach had grown. The site was one week old then. Here is where it stands a month later:</p>
+        <ul>
+          <li><strong>Sales:</strong> 8 tracked sales since October 29 through CJ and Awin (ALLPOWERS and BLUETTI), with $5,857 in order value and $293 in commission.</li>
+          <li><strong>Brand programs:</strong> approved by more than 70 programs: 13 on CJ, 61 on Awin, Anker SOLIX on Rakuten Advertising, and Amazon Associates.</li>
+          <li><strong>Content:</strong> 746 published pages covering 372 products from 109 brands. These are product pages, side-by-side comparisons and buying guides for portable power stations, solar kits, chargers, power banks, NAS drives, headphones, speakers and projectors.</li>
+          <li><strong>Traffic:</strong> about 750 outbound clicks to brand stores in the last 30 days, with bots filtered out. 158 of those came from ChatGPT answers that cite our pages, and that AI-assistant share is our fastest-growing channel. Google and Bing both index the site.</li>
+          <li><strong>Business:</strong> Dealectric is operated by Agentify LLC, a Washington company, from the US.</li>
+        </ul>
+        <p>Promotion is the same as before, and it is compliant: editorial and comparison content only, with an FTC disclosure on every page (https://dealectric.com/disclosure) and sponsored-link markup. We do no paid search or trademark bidding, and we run no browser extension, cashback or incentivized clicks. When we list a promo code, it is one the brand or network issued, and we re-test it in the brand's checkout every day.</p>
+        <p>Several brands our readers ask for recruit only on impact.com, including Anker, Logitech, Sonos, Shure, Insta360 and Jackery US. AI shopping assistants that use our site have asked for Anker products several times through our feedback endpoint, and we can't link them today. I'd be glad to send CJ and Awin performance reports or Cloudflare traffic reports if they would help the review.</p>
+        <p>Thank you,<br>Barry Yao<br>Dealectric (Agentify LLC) · hello@dealectric.com</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What this won't fix</h2>
+    <p>Impact says Marketplace approval doesn't mean brands will approve us. Two brand-direct applications have already been declined: eufy US on 11-05 for "low reach", and Anker SOLIX on 11-10, with no reason given. The SOLIX decline came in after the 11-03 sweep notes were written. SOLIX still works through Rakuten. Approval would get us the brand directory and applications we can track. Each brand still decides for itself.</p>
+  </section>
+
+  <section>
+    <h2>Where the numbers come from</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Claim</th><th>Value</th><th>Source, read 11-11</th></tr></thead>
+      <tbody>
+        <tr><td>Tracked sales</td><td>8 · $5,856.73 · $292.83</td><td>D1 <code>sales</code>: 4 ALLPOWERS (CJ, 10-29 to 11-11), 4 BLUETTI (Awin, 11-07 to 11-08)</td></tr>
+        <tr><td>Approved programs</td><td>13 CJ · 61 Awin · 1 Rakuten · Amazon</td><td><code>src/links.json</code> entries</td></tr>
+        <tr><td>Pages / products / brands</td><td>746 · 372 · 109</td><td><code>docs/sitemap.xml</code>, <code>src/products.py</code></td></tr>
+        <tr><td>Outbound clicks, 30 days</td><td>749 (158 ChatGPT)</td><td>D1 <code>clicks</code>, kind redirect, <code>bot_like=0</code>, since 10-12. Counts before 11-11 are marked as lower bounds.</td></tr>
+        <tr><td>First decline and appeal</td><td>10-11 · 10-12</td><td>Gmail: "Application Update", ticket #894351 reply ("traffic … doesn't quite meet the minimum")</td></tr>
+        <tr><td>Brand declines</td><td>eufy 11-05 · SOLIX 11-10</td><td>Gmail: Impact notifications</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click', async () => {
+  const btn = document.getElementById('copy');
+  const text = 'Subject: ' + document.getElementById('subj').innerText + '\n\n' + document.getElementById('letter').innerText;
+  try { await navigator.clipboard.writeText(text); btn.textContent = 'Copied'; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById('letter'));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press Copy';
+  }
+  setTimeout(() => { btn.textContent = 'Copy message'; }, 2500);
+});
+</script>

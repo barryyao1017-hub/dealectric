@@ -36,6 +36,9 @@ SOURCES = {
     "tavily":     dict(daily=30, life=None, key="tavily-api-key", pause=1),    # 1,000 credits/month, basic = 1
     "serper":     dict(daily=100, life=2400, key="serper-api-key", pause=1),   # 2,500 one-time
     "jina":       dict(daily=50, life=900, key="jina-api-key", pause=2),       # 10M tokens one-time, >=10k/search
+    # 2026-11-08 (Barry: discovery runs on the free quota of ad platforms and indexes). Pages read that day:
+    "exa":        dict(daily=60, life=None, key="exa-api-key", pause=1, month=2000),   # $10 free/month, no card; lite $0.004 = 2,500
+    "brave":      dict(daily=30, life=None, key="brave-api-key", pause=1, month=900),  # $5 credit/month = ~1,000 at $5/1k; card on file
     "bing":       dict(daily=40, life=None, key=None, pause=6),          # Agent Chrome (CDP 9222); blocks after ~300
     # Paid or metered, explicit use only (not in PRIORITY, so the daily run never spends on them until calibrated):
     "dataforseo": dict(daily=150, life=None, key="dataforseo-api-password", pause=0),  # Bing SERP, Standard queue, $1/month cap
@@ -48,13 +51,26 @@ SOURCES = {
 # password = the API password from the dashboard's API Access page (keychain dataforseo-api-password).
 MONTH_USD = {"dataforseo": 1.00}
 DFS = "https://api.dataforseo.com/v3/serp/bing/organic/"
-PRIORITY = ["claude", "serpapi", "bing", "tavily", "serper", "jina"]   # Claude first since 11-06 (DLC-190)
+PRIORITY = ["claude", "serpapi", "bing", "tavily", "serper", "exa", "brave", "jina"]   # Claude first since 11-06 (DLC-190)
 STATUS_ORDER = PRIORITY + ["dataforseo", "openai", "google"]
 # Calibration vs Bing (gapmine.py srccal, 54 Bing-scored queries, 2026-11-05):
 #   claude  Spearman 0.29, gate (<0.4) agreement 27/54, open 37 vs Bing's 18 -> NOT used for gating (spam-heavy results)
 # 11-06 (DLC-190): against OpenAI's own index Bing is weak (Spearman 0.29) and Claude passes (0.64 on 142 clusters), so
 # Claude alone gates (at coverage < 0.3, gapmine.GATE_BY_SOURCE) until the paid OpenAI gate is adopted (DLC-191).
 GATING = {"claude"}
+# A free source joins the gate on its own once its readings track OpenAI's index (gapmine.py calfree, run inside daily):
+# growth/gapmine/gating.json holds each decision, threshold and calibration numbers.
+GATING_FILE = ROOT / "growth" / "gapmine" / "gating.json"
+
+
+def gating() -> dict:
+    """Sources whose coverage may queue a page -> their coverage threshold. Claude (0.3, DLC-190) plus admitted ones."""
+    out = {"claude": 0.3}
+    if GATING_FILE.exists():
+        for s, d in json.loads(GATING_FILE.read_text()).items():
+            if d.get("decision") == "admit":
+                out[s] = d["threshold"]
+    return out
 STOP_WORDS = re.compile(r"quota|exceed|limit|credit|billing|payment|insufficient|upgrade|plan", re.I)
 
 
@@ -103,6 +119,7 @@ def usage(source: str, rows: list[dict] | None = None) -> dict:
     calls = [r for r in mine if r["status"] in ("ok", "short", "empty", "error")]   # every request that reached the provider
     month = today()[:7]
     return {"today": sum(1 for r in calls if r["date"] == today()), "life": len(calls),
+            "month": sum(1 for r in calls if r["date"][:7] == month),
             "month_usd": round(sum(r.get("usd") or 0 for r in mine if r["date"][:7] == month), 4),
             "stopped": any(r["status"] == "stopped" and r["date"] == today() for r in mine),
             "exhausted": any(r["status"] == "exhausted" for r in mine)}
@@ -136,6 +153,8 @@ def room(source: str, rows: list[dict] | None = None) -> int:
     left = daily - u["today"]
     if cfg["life"] is not None:
         left = min(left, cfg["life"] - u["life"])
+    if cfg.get("month") is not None:
+        left = min(left, cfg["month"] - u["month"])
     return max(left, 0)
 
 
@@ -194,6 +213,22 @@ def _serper(q: str, k: str) -> tuple[int, str, list | None]:
     if code != 200:
         return code, body, None
     return code, body, _norm([(r.get("title"), r.get("link")) for r in json.loads(body).get("organic") or []])
+
+
+def _exa(q: str, k: str) -> tuple[int, str, list | None]:
+    code, body = _curl(["-X", "POST", "https://api.exa.ai/search", "-H", f"x-api-key: {k}", "-H", "Content-Type: application/json",
+                        "-d", json.dumps({"query": q, "type": "lite", "numResults": 10, "userLocation": "us"})])
+    if code != 200:
+        return code, body, None
+    return code, body, _norm([(r.get("title"), r.get("url")) for r in json.loads(body).get("results") or []])
+
+
+def _brave(q: str, k: str) -> tuple[int, str, list | None]:
+    u = "https://api.search.brave.com/res/v1/web/search?" + urllib.parse.urlencode({"q": q, "count": 10, "country": "us"})
+    code, body = _curl([u, "-H", "Accept: application/json", "-H", f"X-Subscription-Token: {k}"])
+    if code != 200:
+        return code, body, None
+    return code, body, _norm([(r.get("title"), r.get("url")) for r in (json.loads(body).get("web") or {}).get("results") or []])
 
 
 def _jina(q: str, k: str) -> tuple[int, str, list | None]:
@@ -371,7 +406,7 @@ def _google(q: str, k: str) -> tuple[int, str, list | None]:
     return 200, "", _norm([(r.get("title"), r.get("url")) for r in rows])
 
 
-FETCH = {"dataforseo": _dataforseo, "google": _google, "openai": _openai, "tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing}
+FETCH = {"dataforseo": _dataforseo, "google": _google, "openai": _openai, "tavily": _tavily, "serpapi": _serpapi, "serper": _serper, "jina": _jina, "claude": _claude, "bing": _bing, "exa": _exa, "brave": _brave}
 
 
 def fetch(source: str, query: str) -> list[dict] | None:
@@ -405,6 +440,8 @@ def status() -> str:
         state = ("no key (Barry adds it)" if k is None else "exhausted" if u["exhausted"] else
                  "stopped today" if u["stopped"] else "ok")
         life = f"{u['life']}/{c['life']}" if c["life"] else str(u["life"])
+        if s in gating():
+            state += f", gates at < {gating()[s]}"
         if s in MONTH_USD:
             state += f", ${u['month_usd']:.4f} of ${MONTH_USD[s]:.2f} this month"
         lines.append(f"{s:10} {u['today']:>4}/{c['daily']:<4} {life:>12}  {state}")
