@@ -1,0 +1,129 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that the two stations it recommended deliver very different measured energy: the EcoFlow DELTA Pro 3 gave 3,790 Wh of its 4,096 Wh (OutdoorGearLab), while the same-rated original Anker SOLIX F3800 gave 2,980 Wh (StorageReview) and 2,905 Wh (Notebookcheck) of its 3,840 Wh, a gap of 810 to 885 Wh against 256 Wh on paper.",
+ "standout": 2,
+ "standout_why": "Compared against willitrunpower.com, wellwaterauthority.com and homebatteryreport.com, all opened 2026-11-11. All three contain no measurements: willitrunpower says 'Paper estimate, not a bench test' and applies a flat 85% usable energy to both stations; homebatteryreport says 'We have not lab-tested these units'; wellwaterauthority uses maker specs only. The EcoFlow pages and manual copies are maker specs. offsprig.com and grid.ceo could not be opened (TLS certificate error in the fetcher, shell download not permitted), so the score assumes they are also spec-based; if either quotes OutdoorGearLab, StorageReview or Notebookcheck capacity tests, this drops to 1.",
+ "decides": "It does not change which unit can start the pump; that still rests on surge and locked-rotor headroom, where the rivals already show the F3800 ahead (37.5 A vs 33.3 A computed at 240 V). It changes the runtime ranking: on named measurements the DELTA Pro 3 holds about 30% more deliverable energy than the F3800 (3,790 vs 2,905 Wh), where the rivals model them as near-equal (5.0 vs 4.7 days). So it supports the DELTA Pro 3 for 1/2 to 3/4 HP pumps it can start, and the F3800 Plus only when the pump's starting current demands it. The F3800 figures are from the original model, not the Plus, and The Solar Lab's 84% at 5,100 W shows the F3800's shortfall is worst at the light loads a cycling pump produces.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX F3800",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured usable capacity (OutdoorGearLab)",
+   "value": "3,790 Wh of 4,096 Wh rated (93% per OutdoorGearLab)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow Delta Pro 3 Review, OutdoorGearLab (Kenji Mowrey, dated January 13, 2026)",
+   "read": "2026-11-11",
+   "note": "Quote: 'Our testers measured 3,790 Wh from its advertised 4,096 Wh rated battery capacity, resulting in an efficiency of over 93%.' My arithmetic: 3,790 / 4,096 = 92.5%. The discharge load is not stated on the page."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured charge time and rate (OutdoorGearLab)",
+   "value": "3.2 hr, 1,293 Wh/hr average; peaked at about 1,600 W, never the advertised 1,800 W",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow Delta Pro 3 Review, OutdoorGearLab (Kenji Mowrey, dated January 13, 2026)",
+   "read": "2026-11-11",
+   "note": "120 V wall charging. The same page lists a measured weight of 114.1 lb."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured discharge capacity and wall energy for a full charge (Digital Trends)",
+   "value": "3.7 kWh average out across multiple cycles; about 5 kWh from the wall for 0 to 100%",
+   "source": "https://www.digitaltrends.com/home/ecoflow-delta-pro-3-review/",
+   "source_title": "EcoFlow Delta Pro 3 review, Digital Trends (Simon Sage, June 25, 2024)",
+   "read": "2026-11-11",
+   "note": "Quote: 'averaged 3.7 kWh of discharge capacity across multiple cycles'. My arithmetic: 3.7 / 4.096 = 90% of rated; 3.7 / 5 = about 74% wall-to-outlet round trip. Tested in ambient heat 'routinely over 90 degrees Fahrenheit'."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Hands-on 240 V well pump start (Robb Sutton)",
+   "value": "1 HP 240 V submersible pump: passed with no soft start, 2,800 W logged as surge, about 3 to 4 hours runtime",
+   "source": "https://robbsutton.com/ecoflow-delta-pro-3-review/",
+   "source_title": "EcoFlow Delta Pro 3 Review: The First True Gas Generator Killer?, Robb Sutton (February 12, 2026)",
+   "read": "2026-11-11",
+   "note": "From a results table. The page does not say how the surge was measured or name the pump. 2,800 W is far below the roughly 10 to 11 kVA locked-rotor demand implied by Franklin's 41.8 to 48.7 A for 1 HP motors, so it reads as a display figure, not a clamp-meter inrush. Treat as one reviewer's pass/fail anecdote. The same table shows a 3,500 W central AC failing on overload."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured usable capacity and charge energy (StorageReview)",
+   "value": "2,980 Wh delivered before inverter cutoff; 4,930 Wh from the wall for 0 to 100%",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "Anker SOLIX F3800: Do We Really Need Gas Generators?, StorageReview (Kevin OBrien, June 21, 2024)",
+   "read": "2026-11-11",
+   "note": "Quote: 'it took 4,930Wh to charge from 0 to 100 percent and delivered 2,980Wh before cutting off the inverter.' My arithmetic: 2,980 / 3,840 = 77.6% of rated; 2,980 / 4,930 = 60.4% round trip. Discharge load not stated. Original F3800, not the Plus."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured usable capacity at light load (Notebookcheck)",
+   "value": "2,905 Wh at a constant draw of about 260 W (about 75% of 3,840 Wh); 4,669 Wh from the wall for 1 to 100%; about 62% round trip",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review, Notebookcheck (Marcus Schwarten, published 2024-08-27, page modified 2026-10-05)",
+   "read": "2026-11-11",
+   "note": "Run to shutdown at 1% residual. My arithmetic: 2,905 / 3,840 = 75.7%. The verdict text rounds this to 'a rather weak 3,000 Wh'. Original F3800, not the Plus. A light constant load is the closest published test to a pump that cycles briefly and idles between starts."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured noise under load (Notebookcheck)",
+   "value": "about 42 dB at 1 m with a sustained 3,000 W load",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review, Notebookcheck (Marcus Schwarten, published 2024-08-27, page modified 2026-10-05)",
+   "read": "2026-11-11",
+   "note": "Same review measured an AC charging peak of 2,966 W and a full charge in about 1 h 45 min, on a 230 V supply."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured overload hold time and high-load efficiency (The Solar Lab)",
+   "value": "Held 8,000 W for about 2 to 3 seconds and 7,200 W for roughly 10 seconds; ran 37 minutes at 5,100 W against an expected 44, which The Solar Lab puts at around 84%",
+   "source": "https://www.thesolarlab.com/review/testing-the-anker-f3800",
+   "source_title": "Putting the Anker F3800 Power Station to the Test: What Can It ACTUALLY Handle?, The Solar Lab (page shows no publish date or author)",
+   "read": "2026-11-11",
+   "note": "My arithmetic: 5,100 W x 37/60 h = about 3,145 Wh, or 82% of 3,840 Wh. 8,000 W at 240 V is 33.3 A; the page does not say whether the overload was drawn at 120 V or 240 V. It also ran a 3,000 W air compressor with the display flickering at startup. Original F3800, not the Plus."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured UPS transfer time (StorageReview)",
+   "value": "13 ms utility to battery, 14 ms battery to utility",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "Anker SOLIX F3800: Do We Really Need Gas Generators?, StorageReview (Kevin OBrien, June 21, 2024)",
+   "read": "2026-11-11",
+   "note": "Quote: 'On the initial transfer to the battery, we measured a delay of 13ms.'"
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured idle draw and efficiency (The Solar Lab)",
+   "value": "idle draw 'right around 20W'; efficiency 'right around 85%' across a variety of loads",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review, The Solar Lab (page shows no publish date or author)",
+   "read": "2026-11-11",
+   "note": "My arithmetic: 20 W x 24 h = 480 Wh a day with the inverter left on, 17% of the 2,764.8 Wh pack; The Solar Lab estimates about 6 days to empty from idle alone. Load wattages and Wh out are not given. willitrunpower.com assumes 15 W idle for its runtime table."
+  },
+  {
+   "product": "general",
+   "label": "Measured energy gap between the two stations ChatGPT showed (arithmetic on the figures above)",
+   "value": "810 to 885 Wh more from the DELTA Pro 3 than the original F3800 (3,790 vs 2,980 and 2,905 Wh); the rated gap is 256 Wh",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+   "source_title": "The Best Power Stations of 2026, OutdoorGearLab (updated July 23, 2026, RJ Spurrier)",
+   "read": "2026-11-11",
+   "note": "OutdoorGearLab's roundup repeats 3,790 Wh / 93% for the DELTA Pro 3 and lists the F3800 with claimed specs only, so the comparison crosses labs (OutdoorGearLab vs StorageReview and Notebookcheck) and methods differ. At willitrunpower.com's paper figure of 965 Wh/day for a 1 HP pump: 3,790 / 965 = 3.9 days and 2,905 / 965 = 3.0 days, against its modelled 3.6 and 3.4 days at a flat 85%."
+  }
+ ],
+ "unsourced": [
+  "offsprig.com/power-station-well-pump/ and grid.ceo/us/blog/split-phase-power-station-well-pump-dryer/: neither page could be opened (TLS certificate error in the fetcher; shell download was not permitted), so they are excluded from the rival comparison.",
+  "A clamp-meter or oscilloscope measurement of well pump inrush (amps, duration, voltage sag) on the DELTA Pro 3, F3800 / F3800 Plus or Apex 300 by a named reviewer; one extended search and six opened reviews had none.",
+  "A measured usable-capacity figure for the F3800 Plus specifically. All F3800 measurements here are on the original model; a BatterySkills depletion test on the Plus appeared in search results but was not opened.",
+  "A measured usable-capacity figure for the BLUETTI Apex 300. Notebookcheck's review (Christian Hintze, 2025-08-10) gives none; a Trusted Reviews figure appeared only second-hand in a search snippet and the review was not opened.",
+  "Measured idle or standby draw for the DELTA Pro 3 and the F3800 / F3800 Plus; none of the opened reviews report it.",
+  "Publish dates and author names for the two The Solar Lab pages; the pages show only a 2026 copyright footer.",
+  "Today's prices at the makers' US stores: not checked, as this angle covers measurements only; storecheck.py and amzcheck.py were not run."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9357215
+ }
+}

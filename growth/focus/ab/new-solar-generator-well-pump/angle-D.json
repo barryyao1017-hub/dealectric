@@ -1,0 +1,76 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got that I could open states that the Anker SOLIX S5000 publishes only an 8,000 W peak (33.3 A at 240 V by arithmetic) with no locked-rotor amp rating or peak duration; the core mechanism itself (pump locked-rotor amps against the inverter's current limit) is already on two of the results.",
+ "standout": 1,
+ "standout_why": "I opened willitrunpower.com (rank 10), wellwaterauthority.com (rank 13) and homebatteryreport.com (rank 15). willitrunpower already gives Franklin's 230 V locked-rotor amps for 2-wire and 3-wire motors, the 65% start-voltage rule, the 50%-larger rule for 2-wire motors, and surge amps for the DELTA Pro 3 (33.3 A) and F3800 (37.5 A). homebatteryreport already gives the Franklin 2-wire table, says an inverter trips on current rather than watts, and quotes Anker's guide that the F3800 Plus LRA is 80 A. wellwaterauthority has only a 2-3x running-watts rule. None of the three mentions the Anker SOLIX S5000, and willitrunpower and wellwaterauthority do not mention NEMA code letters. offsprig.com (rank 1) and grid.ceo (rank 14) failed with a certificate error, so I did not compare against them. ChatGPT cited only EcoFlow's pages, which returned no readable content to me.",
+ "decides": "It confirms rather than changes the pick, and it rests on rival-reported figures I could not verify in the primary documents. A conventional pressure-switch pump is gated by locked-rotor amps: by homebatteryreport's figures the F3800 Plus (80 A LRA) clears Franklin's 230 V 2-wire motors up to 1.5 HP (66.2 A), while 8,000 W-peak units such as the DELTA Pro 3 and the S5000 work out to 33.3 A, just above a 1/2 HP 2-wire (32.2 A) and below a 1 HP 2-wire (48.7 A). The one new point is that the S5000, despite a larger battery, has no published LRA and sits in the 8,000 W class on paper.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX S5000",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Maker-stated AC output, peak and 240 V port",
+   "value": "4,500 W continuous, 8,000 W peak, 120/240 V, L14-30R (also TT-30R and NEMA 5-20R); no LRA, peak duration, pump HP or price shown",
+   "source": "https://www.ankersolix.com/s5000",
+   "source_title": "Anker SOLIX S5000 (ankersolix.com product page)",
+   "read": "2026-11-11",
+   "note": "Read through a page-to-text fetch. My arithmetic: 8,000 W / 240 V = 33.3 A, assuming the peak is available across the 240 V port, which Anker does not state."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Locked-rotor amp rating, second-hand",
+   "value": "80 A LRA; soft starter advised for air conditioners needing more",
+   "source": "https://homebatteryreport.com/guides/well-pump-battery-backup",
+   "source_title": "Battery backup for a well pump: the 240V and start-current problem | The Home Battery Report",
+   "read": "2026-11-11",
+   "note": "The Home Battery Report quotes Anker's user guide: 'The LRA (Locked Rotor Amps) of Anker SOLIX F3800 Plus is 80A'. I could not open the guide itself: the signaturesolar.com PDF came back as unreadable binary, and device.report and santansolar.com returned 403. This is a rival-page fact, not new."
+  },
+  {
+   "product": "general",
+   "label": "Franklin Electric 230 V 2-wire submersible motor locked-rotor amps, second-hand",
+   "value": "1/2 HP 32.2 A, 3/4 HP 40.7 A, 1 HP 48.7 A, 1.5 HP 66.2 A; 115 V 1/2 HP 64.4 A",
+   "source": "https://homebatteryreport.com/guides/well-pump-battery-backup",
+   "source_title": "Battery backup for a well pump: the 240V and start-current problem | The Home Battery Report",
+   "read": "2026-11-11",
+   "note": "The Home Battery Report attributes these to the Franklin Electric AIM Manual (2023). I could not open any copy of the AIM manual, so this is a rival-page fact, not new."
+  },
+  {
+   "product": "general",
+   "label": "Franklin 3-wire locked-rotor amps and generator rules, second-hand",
+   "value": "230 V 3-wire: 1/2 HP 23.0 A, 3/4 HP 34.2 A, 1 HP 41.8 A; source must hold at least 65% of rated voltage during start; 2-wire motors need a generator 50% larger",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Willrun attributes these to Franklin and labels its station comparisons 'Paper estimate, not a bench test'. Primary document not opened by me. This is a rival-page fact, not new."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Surge expressed as amps at 240 V, second-hand",
+   "value": "8,000 W surge, about 33.3 A; 4,000 W continuous; 4,096 Wh",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Willrun's arithmetic (8,000 W / 240 V). EcoFlow's US product page and manuals.ecoflow.com returned no spec text to my fetch, so the maker figure is not verified by me."
+  }
+ ],
+ "unsourced": [
+  "Franklin Electric AIM manual primary text (single-phase motor table with LRA and kVA code letters, the engine-generator section, the 2-wire BIAC switch reset time): the 2026 PDF on dwee.nebraska.gov exceeded the fetch size limit, the rcworst.com 2023 copy returned 404, metatek.org returned 402, and a second Nebraska copy returned 404.",
+  "Anker SOLIX F3800 Plus user guide primary text for the 80 A LRA sentence and any overload thresholds: PDF unreadable or blocked at three hosts, and local PDF extraction was not permitted.",
+  "An LRA rating, peak duration or overload trip time for the Anker SOLIX S5000: not on the product page; a search turned up no S5000 manual.",
+  "EcoFlow DELTA Pro 3 surge duration, X-Boost exclusions for motor loads, any LRA rating and the '1 HP water pump' claim ChatGPT attributed to EcoFlow: the US product page and the online manual returned no readable content.",
+  "BLUETTI Apex 300 motor-start or LRA figure from its manual: not reached within the call budget.",
+  "NEMA locked-rotor code-letter kVA/HP ranges (to turn any pump nameplate into LRA): seen only in a search snippet, so left out.",
+  "Today's prices for the F3800 Plus, S5000 and DELTA Pro 3: storecheck returned HTTP 404 for ankersolix.com, the S5000 page showed no price to the fetch, and EcoFlow's page returned no content.",
+  "The offsprig.com and grid.ceo rival pages: certificate error on fetch and shell download was not permitted, so their content was not compared."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9971814
+ }
+}

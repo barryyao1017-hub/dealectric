@@ -1,0 +1,112 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got that I could read states that the Anker SOLIX F3800 Plus cannot output 240 V while it charges from 120 V AC, or that its product page rates the 240 V outlet at 25 A max with no surge figure, so its start capability cannot be compared with EcoFlow's 8,000 W surge from maker pages alone.",
+ "standout": 1,
+ "standout_why": "Compared against willitrunpower.com, homebatteryreport.com and grid.ceo, which I read through a page summariser. willitrunpower already divides surge watts by 240 V and checks them against Franklin locked-rotor amps for the DELTA Pro 3 and F3800. homebatteryreport already converts Franklin LRA to start kVA, reports Anker's 80 A LRA, says BLUETTI's 7,680 W is a 'lifting' rating rather than surge, and says makers mostly do not publish surge duration. So the core surge-versus-LRA normalisation is taken. The summaries did not surface the 120 V-charging lockout of the 240 V outlet, the 25 A product-page limit, or any 240 V Sun Gold Power inverter; I did not ask the summariser about the lockout specifically. offsprig.com (rank 1) and wellwaterauthority.com would not open (TLS certificate error), and the EcoFlow product page and manual returned no usable content, so those may already cover it.",
+ "decides": "It confirms the rivals' pick logic (a 3-wire 1/2 HP 230 V pump clears either station on paper; 3/4 HP and up is borderline or short on the DELTA Pro 3) and adds one condition to the Anker pick: the pump must be off whenever the F3800 Plus is topped up from a 120 V wall outlet or 120 V generator. For 1 HP and larger 2-wire pumps it points to a 48 V split-phase inverter build instead of a portable station: Sun Gold Power's SPH6548P publishes 13,000 VA peak, about 54 A at 240 V, against 48.7 A LRA for a 1 HP 2-wire Franklin motor.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "Sun Gold Power SPH6548P 6.5KW 48V Split Phase Solar Inverter",
+  "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger",
+  "Sun Gold Power 10KW 48V Split Phase Solar Inverter"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging from 120 V AC",
+   "value": "Not available: \"The 240V output cannot be used while the device is charging via 120V AC.\"",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page (Anker SOLIX US)",
+   "read": "2026-11-11",
+   "note": "Maker's own features text. A 240 V well pump therefore cannot run during a recharge from a 120 V wall outlet or 120 V generator. The page says nothing here about solar charging."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V outlet rating as the maker states it",
+   "value": "NEMA L14-30R: 120/240 V, 25 A max, 6,000 W max; each 120 V outlet 20 A max, 2,400 W max; no surge or peak watt figure on the page",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page (Anker SOLIX US)",
+   "read": "2026-11-11",
+   "note": "6,000 W / 240 V = 25 A. The page gives no LRA and no pump horsepower claim. Against the Franklin 230 V LRA figures quoted by willitrunpower, 25 A is above only the 1/2 HP 3-wire motor (23.0 A)."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Stock status on maker's US store",
+   "value": "Sold Out; price did not load",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page (Anker SOLIX US)",
+   "read": "2026-11-11",
+   "note": "ChatGPT's card showed $2,999.99; I could not confirm a price on the maker's page today."
+  },
+  {
+   "product": "Anker SOLIX F3800 / F3800 Plus",
+   "label": "Start capability, as two rival pages state it",
+   "value": "willitrunpower: 9,000 W surge = 37.5 A at 240 V (F3800); The Home Battery Report: 80 A LRA from the user guide, no surge watts published (F3800 Plus)",
+   "source": "https://homebatteryreport.com/guides/well-pump-battery-backup",
+   "source_title": "Battery backup for a well pump: the 240V and start-current problem | The Home Battery Report",
+   "read": "2026-11-11",
+   "note": "The willitrunpower figure is from https://willitrunpower.com/best-power-station-for/well-pump/ (read 2026-11-11). The two give opposite verdicts for a 1 HP 2-wire motor at 48.7 A LRA: 37.5 / 48.7 = 0.77x, 80 / 48.7 = 1.64x. They name different models (F3800 vs F3800 Plus). Anker's product page publishes neither figure."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Surge converted to amps at 240 V, as willitrunpower states it",
+   "value": "4,000 W continuous, 8,000 W surge = about 33.3 A at 240 V; no surge duration given",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Willrun's ratio of station amps to Franklin LRA: 1/2 HP 3-wire 1.45x, 1/2 HP 2-wire 1.04x, 3/4 HP 3-wire 0.97x, 1 HP 3-wire 0.80x, 1 HP 2-wire 0.68x. Willrun says the check ignores how long the inverter holds surge. I could not open EcoFlow's own page to confirm the 8,000 W figure."
+  },
+  {
+   "product": "general",
+   "label": "Franklin Electric 230 V 4-inch motor locked-rotor amps, as quoted by two rival pages",
+   "value": "1/2 HP: 23.0 A (3-wire), 32.2 A (2-wire); 3/4 HP: 34.2 A, 40.7 A; 1 HP: 41.8 A, 48.7 A; 1.5 HP: 51.4 A, 66.2 A",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Both Willrun and The Home Battery Report attribute these to Franklin's 2023 AIM manual, and their 2-wire figures match. I did not open the Franklin manual itself."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5KW 48V Split Phase Solar Inverter",
+   "label": "Rated and peak output, price",
+   "value": "6,500 W rated, 13,000 VA max peak, 120/240 V split phase, 2 MPPT inputs (550 VDC max open circuit); $1,035.00 (compare-at $4,526.00), in stock",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P (Sun Gold Power store listing, read via storecheck search)",
+   "read": "2026-11-11",
+   "note": "13,000 VA / 240 V = 54.2 A. Against the Franklin LRA above: 1 HP 2-wire 54.2 / 48.7 = 1.11x; 1.5 HP 3-wire 54.2 / 51.4 = 1.05x; 1.5 HP 2-wire 54.2 / 66.2 = 0.82x. The listing gives no peak duration. Inverter only; the listing says it supports 48 V batteries, which are bought separately."
+  },
+  {
+   "product": "Sun Gold Power 10KW 48V Split Phase Solar Inverter",
+   "label": "Rated and peak output, motor claim, price",
+   "value": "10,000 W rated, 20,000 W max peak, \"loaded motor capacity 6HP\", 120/240 V; $1,422.00 (compare-at $8,151.00), in stock",
+   "source": "https://sungoldpower.com/products/10kw-48v-split-phase-solar-inverter",
+   "source_title": "10KW 48V Split Phase Solar Inverter (Sun Gold Power store listing, read via storecheck search)",
+   "read": "2026-11-11",
+   "note": "20,000 W / 240 V = 83.3 A; 83.3 / 66.2 = 1.26x for a 1.5 HP 2-wire Franklin motor. No peak duration stated. Not in Dealectric's catalog."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Type, input requirement, price",
+   "value": "Low-frequency inverter, charger and auto-transfer switch; \"requires 240VAC input and can provide 120VAC or 240VAC output\"; UL1741; $1,220.00 (compare-at $4,713.00), in stock",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger (Sun Gold Power store listing, read via storecheck search)",
+   "read": "2026-11-11",
+   "note": "The URL handle reads \"6000w-peak-18000w\"; the listing text I read does not state the peak or its duration. If 18,000 W is the peak, that is 75 A at 240 V. The listing text mentions no solar charge controller."
+  }
+ ],
+ "unsourced": [
+  "offsprig.com/power-station-well-pump/ (rank 1) and wellwaterauthority.com/guides/well-pump-backup-power/: both failed with a TLS certificate error and curl was not permitted, so I could not check whether they already state the 120 V-charging lockout or surge durations.",
+  "EcoFlow DELTA Pro 3 maker figures (4,000 W / 8,000 W surge, the '1 HP water pump' claim and its footnote, surge duration, whether 240 V output works while charging from 120 V): ecoflow.com/us returned only navigation, us.ecoflow.com returned HTTP 429, manuals.ecoflow.com returned a blank shell, and the solacity, device.report and nfm.com manual copies failed (over size limit, 403, timeout).",
+  "EcoFlow DELTA Pro 3 price on EcoFlow's US store today (us.ecoflow.com returned HTTP 429). Willrun reports $2,799 checked 10–11 Nov 2026, which I did not verify.",
+  "Anker SOLIX F3800 Plus user-guide 80 A LRA figure: read only as reported by The Home Battery Report; I did not open the user guide.",
+  "Surge or overload hold time in seconds for the DELTA Pro 3, F3800 Plus and the Sun Gold Power inverters: none of the pages I could open states one. The Sun Gold Power 6000W product page returned HTTP 429 on both WebFetch and storecheck product.",
+  "Franklin Electric AIM manual LRA table from Franklin's own PDF: not opened; figures are taken from two rival pages that cite it.",
+  "Anker SOLIX S5000 (ankersolix.com/products/s5000 returned 404; store search returned 404), Nature's Generator L6000 (store search returned HTTP 0), BLUETTI Apex 300 (store search returned only Apex 200 bundles), OSCAL PowerMax 6000, Growatt HELIOS 3600 and the Sun Gold Power SGR-8K10E kit: no 240 V surge, LRA or charging-lockout figures sourced; the last three were not attempted within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9829764000000001
+ }
+}

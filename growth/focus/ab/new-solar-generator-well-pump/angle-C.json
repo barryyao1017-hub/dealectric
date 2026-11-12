@@ -1,0 +1,154 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got that I could open states the solar array window of the 240 V station it showed with a price: Anker's page gives the SOLIX F3800 Plus two solar ports at 11-165 V, 17 A, 1,600 W each (3,200 W total), puts its 240 V on the L14-30R only (25 A, 6,000 W; the NEMA 14-50 is listed only for the non-Plus F3800), and blocks 240 V while charging from 120 V AC.",
+ "standout": 1,
+ "standout_why": "Opened willitrunpower.com, wellwaterauthority.com and homebatteryreport.com. willitrunpower already quotes Anker's '240 V output is unavailable while the unit is charging from a 120 V AC source' and EcoFlow's 'either 120 V or 240 V, not both'; homebatteryreport already has the F3800 Plus 6,000 W only through the L14-30R and the 80 A LRA from Anker's user guide; wellwaterauthority already says the AC300 needs two units and a fusion box for 240 V. None of the three gives a solar input volt/amp window or connector for any station, and willitrunpower lists 'L14-30 and 14-50' for the F3800 without separating the Plus. Not compared: offsprig.com (rank 1) and grid.ceo failed with a certificate error, and the cited EcoFlow manual page rendered empty, so the cited manual may well state the DELTA Pro 3 solar window. That is why this is 1, not 2.",
+ "decides": "It confirms rather than changes the pick. A hardwired 240 V pump on the F3800 Plus goes through the L14-30R (25 A) to a transfer switch or inlet box, so a 50 A 14-50 inlet plan does not fit the Plus. The 120 V AC charging exclusion is Anker's; that panels are therefore the way to recharge while the pump stays live is my inference, not Anker's statement. BLUETTI's page claims the Apex 300 powers 120 V and 240 V devices 'simultaneously — even while charging', which would favour it for wall top-ups, but I could not source its 240 V receptacle or base solar window, so the page should not lean on that contrast yet.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Apex 300",
+  "Anker SOLIX S5000",
+  "Nature's Generator L6000",
+  "OSCAL PowerMax 6000",
+  "Growatt HELIOS 3600"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V receptacle and rating",
+   "value": "L14-30R, 120 V/240 V, 25 A max, 60 Hz, 6,000 W max",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "Maker's US page, read through a page summariser. One unit delivers 240 V; no second unit or hub is stated as required. 6,000 W / 240 V = 25 A."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Other AC outlets; no NEMA 14-50 on the Plus",
+   "value": "TT-30R 120 V 25 A (3,000 W max); NEMA 5-20R 120 V 20 A (2,400 W max); NEMA 14-50 listed only for the standard F3800",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "willitrunpower.com lists 'L14-30 and 14-50' for the F3800 and treats the Plus as the same unit."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Maker's exclusion on 240 V while charging",
+   "value": "\"The 240V output cannot be used while the device is charging via 120V AC.\" The L14-30R is listed as unusable when plugged into a 120 V wall outlet.",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "Already quoted by willitrunpower.com, so not new. The page states no such limit for solar charging; reading that as 'solar keeps 240 V live' is an inference."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input window",
+   "value": "2 solar ports, 11-165 V, 17 A max, 1,600 W max each; 3,200 W total",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "Two solar charging cables are in the box per the page. A panel string must stay under 165 V open-circuit and is limited to 17 A per port. No opened rival page states this."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Home connection and generator pairing",
+   "value": "Connects directly to a transfer switch or an inlet box; gas generator input needs the Anker SOLIX Generator Adapter and supports a single F3800 Plus only (3,300 W single unit, 6,000 W with 1 or more expansion batteries); Home Power Panel is required for Storm Guard",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "Page footnotes 1 and 2."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Availability at maker's US store",
+   "value": "Marked \"Sold Out\"; price field showed \"Price Loading\"",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-11",
+   "note": "ChatGPT's card showed $2,999.99 (Ankersolix US); I could not confirm it. storecheck.py returned HTTP 404 for ankersolix.com on both search and product."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Locked rotor amps, as reported by a rival",
+   "value": "80 A LRA; a load needing more to start needs a soft starter",
+   "source": "https://homebatteryreport.com/guides/well-pump-battery-backup",
+   "source_title": "Battery backup for a well pump: the 240V and start-current problem | The Home Battery Report",
+   "read": "2026-11-11",
+   "note": "The Home Battery Report quotes Anker's user guide. I did not open the guide; Anker's product page does not state an LRA."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V while charging (maker claim)",
+   "value": "\"Apex 300 lets you power both 120V and 240V devices simultaneously — even while charging.\" Output 3,840 W; 7,680 W listed as \"Lifting Power\"",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "BLUETTI Apex 300 + B300K product page",
+   "read": "2026-11-11",
+   "note": "Rear-panel image text lists 'AC output 30A/50A, and 50A in/out ports'; no NEMA types in the captured text and the Tech Specs section came back empty. Homebatteryreport notes BLUETTI does not say lifting power applies to motors."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar accessory requirement",
+   "value": "Up to 4,000 W solar input \"Requires a SolarX 4K\"; \"Hub D1 is required for DC power\"",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "BLUETTI Apex 300 + B300K product page",
+   "read": "2026-11-11",
+   "note": "The same page also says 'Capture up to 19.2kW with SolarX 4K' without explaining the difference."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Prices at BLUETTI US store",
+   "value": "Apex 300 + B300K $2,599 (compare-at $2,799); + B300K + SolarX 4K $3,099; + B300K + Home Backup Kit (single Apex 300) $3,199; Apex 300 Home Integration Kit alone $699 (compare-at $799, 'Compatible Models: Apex300'); base Apex 300 shown as $1,499, struck from $1,699",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "BLUETTI store search via storecheck.py, and the Apex 300 + B300K page",
+   "read": "2026-11-11",
+   "note": "Bundle and kit prices from storecheck.py search on bluettipower.com. The $1,499 base price was read on the bundle page, where the buy box showed a $0.00 placeholder; treat it as provisional. Black Friday Early Access runs Nov. 5-18."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Home-panel accessories and cables (maker store)",
+   "value": "Smart Home Panel 2: $1,499, unavailable, 12-circuit subpanel, 20 ms switchover, \"requires installation before use\"; Power Input/Output Cable: $129, up to 30 A, 7.1 ft, compatible with DELTA Pro 3 and DELTA Pro Ultra; Smart Inlet Box Connection Cable (5P8 to 5P8): $129, up to 50 A, compatible with DELTA Pro 3",
+   "source": "https://us.ecoflow.com/products/smart-home-panel-2",
+   "source_title": "EcoFlow US store listings via storecheck.py (Smart Home Panel 2, Power Input/Output Cable, Smart Inlet Box Connection Cable)",
+   "read": "2026-11-11",
+   "note": "Cable URLs: https://us.ecoflow.com/products/power-input-output-cable and https://us.ecoflow.com/products/smart-inlet-box-connection-cable-5p8-to-5p8."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "120 V / 240 V mode limit, as reported by a rival",
+   "value": "Outputs either 120 V or 240 V, not both; 240 V mode uses the L14-30 and 6-20 outlets; 4,000 W continuous, 8,000 W surge",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Willrun attributes this to EcoFlow's FAQ. I could not open an EcoFlow document to check it, so this is the rival's statement, not a maker-sourced cell."
+  },
+  {
+   "product": "general",
+   "label": "What the opened rival pages cover on compatibility",
+   "value": "willitrunpower: F3800 and DELTA Pro 3 240 V outlets and both maker exclusions; wellwaterauthority: DELTA Pro 3 and F3800 native 120/240 V, AC300 needs two units and a fusion box; homebatteryreport: F3800 Plus L14-30R and LRA, Smart Home Panel 2 supports DELTA Pro 3 or DELTA Pro Ultra but not both at once. None states a solar input window.",
+   "source": "https://wellwaterauthority.com/guides/well-pump-backup-power/",
+   "source_title": "Backup Power for a Well Pump: What Actually Runs It in an Outage (2026)",
+   "read": "2026-11-11",
+   "note": "Other two URLs: https://willitrunpower.com/best-power-station-for/well-pump/ and https://homebatteryreport.com/guides/well-pump-battery-backup. I matched summaries to pages by the order the fetches returned."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 outlet list, 120 V/240 V switch behaviour, high-PV and low-PV solar windows and any pump exclusion from EcoFlow's own manual: manuals.ecoflow.com rendered only a logo, the solacity and solarpowersupply PDFs exceeded the 10 MB fetch limit, the nfm.com PDF timed out, device.report returned 403",
+  "EcoFlow DELTA Pro 3 price today: us.ecoflow.com product page returned HTTP 429 to both storecheck.py and WebFetch; ecoflow.com/us page showed no price",
+  "EcoFlow's '1 HP water pump' claim and its footnote: the ecoflow.com/us page returned only navigation",
+  "Anker SOLIX F3800 Plus price today: maker page showed 'Price Loading' and Sold Out; storecheck.py got HTTP 404 on ankersolix.com",
+  "Anker SOLIX S5000 outlets, 240 V and solar window: https://www.ankersolix.com/products/s5000 returned 404",
+  "BLUETTI Apex 300 240 V receptacle type (NEMA designation), whether a hub or kit is needed to reach 240 V, and the built-in solar window without SolarX 4K: spec table was empty and https://www.bluettipower.com/products/apex-300 looped on redirects",
+  "Growatt HELIOS 3600: whether 240 V needs two units and which accessory (https://us.growatt.com/products/helios-3600 returned 404)",
+  "Nature's Generator L6000 receptacles and solar window (naturesgenerator.com failed with a certificate error)",
+  "OSCAL PowerMax 6000 receptacles and solar window (https://www.oscal.hk/products/powermax-6000 returned 404)",
+  "offsprig.com (rank 1) and grid.ceo rival pages: certificate errors, and curl was not permitted in this session, so neither was compared",
+  "Amazon prices: not attempted; I used about 30 tool calls against the 25 budget, mostly on failed fetches"
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 1.0567959
+ }
+}

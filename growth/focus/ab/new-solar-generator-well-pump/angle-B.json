@@ -1,0 +1,174 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got that I could open states the panel side of the question: at 10 gpm a 1 HP well pump uses about 2.0 Wh per gallon, so one 400 W panel replaces a 300-gallon day (965 Wh including idle) in about 2.4 hours of rated output, and a 4 kWh station holds roughly 1,600-1,700 gallons per charge.",
+ "standout": 2,
+ "standout_why": "Compared against willitrunpower.com, homebatteryreport.com, wellwaterauthority.com and the cited EcoFlow DELTA Pro 3 page. willitrunpower already has Franklin LRA-vs-surge ratios and days-per-charge (695 and 965 Wh/day), so the start-surge and runtime-days story is taken. None of the four gives Wh per gallon, gallons per charge, panel hours to replace a day's water, kit refill hours or $/Wh. homebatteryreport and wellwaterauthority have no runtime or solar arithmetic, and the EcoFlow page rendered no specs. Caveat: offsprig.com (rank 1, title ends '+ Solar') and grid.ceo could not be opened (certificate error, curl blocked), so offsprig may already hold the panel figure; if it does, this drops to 1. The panel figure is also one division away from willitrunpower's Wh/day.",
+ "decides": "It confirms rather than changes the pick: the solar side is easy, so the pick is decided by 240 V starting ability, not panel count. A single 400-500 W panel covers a household's daily well water on any candidate. Among Dealectric-listed units, the Anker SOLIX F3800 Plus (6,000 W on a 120/240 V L14-30R, 3,200 W solar input) remains the pump pick, but Anker's page shows it sold out today. The BLUETTI Apex 300 is the cheapest per Wh ($0.54), but BLUETTI publishes only 'Lifting Power', not a surge rating, and its 16 A continuous at 240 V is below the smallest Franklin 230 V locked-rotor figure (23.0 A), so it cannot be promised for a 240 V submersible from the spec sheet. The DELTA Pro 3 that ChatGPT carded could not be priced on EcoFlow's store today.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Apex 300",
+  "BLUETTI Apex 300 + B300K + 500W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Pump inputs used for every derivation (Franklin 4-inch 230 V motors, as tabulated by Willrun)",
+   "value": "1/2 HP: 670 W full load, 960 W max load, 23.0 A LRA (3-wire) / 32.2 A (2-wire); 1 HP: 1,210 W full load, 1,600 W max load, 41.8 A LRA (3-wire) / 48.7 A (2-wire)",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Willrun attributes these to Franklin Electric. homebatteryreport.com (read 2026-11-11) gives the same 2-wire LRA and max-load watts, citing the Franklin AIM Manual 2023. I could not open the Franklin manual itself."
+  },
+  {
+   "product": "general",
+   "label": "Daily energy for well water (Willrun's duty cycle)",
+   "value": "695 Wh/day (1/2 HP) and 965 Wh/day (1 HP) at 300 gal/day, 10 gpm, inverter on 24 h with 15 W idle",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "Rival's figure, restated as the input for the solar arithmetic. 300 gal ÷ 10 gpm = 0.5 h; 1,210 W × 0.5 h = 605 Wh + 15 W × 24 h = 360 Wh → 965 Wh. The 15 W idle and 10 gpm are Willrun's assumptions, not maker specs."
+  },
+  {
+   "product": "general",
+   "label": "Energy per gallon pumped (derived)",
+   "value": "about 2.0 Wh/gal for a 1 HP pump and 1.1 Wh/gal for a 1/2 HP pump at 10 gpm",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "1,210 W ÷ (10 gal/min × 60 min) = 2.02 Wh/gal; 670 W ÷ 600 gal/h = 1.12 Wh/gal. Full-load watts; start losses and idle excluded. Real flow depends on pump end and well depth."
+  },
+  {
+   "product": "general",
+   "label": "Panel hours to replace one day's well water (derived)",
+   "value": "1 HP: 2.4 h of rated output from one 400 W panel, or 1.9 h from one 500 W panel; 1/2 HP: 1.7 h (400 W) or 1.4 h (500 W)",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "965 Wh ÷ 400 W = 2.4 h; 965 ÷ 500 = 1.9 h; 695 ÷ 400 = 1.7 h; 695 ÷ 500 = 1.4 h. Hours at the panel's rated watts; real output is lower and I did not source a derate or local sun hours."
+  },
+  {
+   "product": "general",
+   "label": "Gallons pumped per panel-hour (derived)",
+   "value": "about 248 gal per hour of rated output from a 500 W panel with a 1 HP pump (198 gal from a 400 W panel)",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "500 Wh ÷ 2.02 Wh/gal = 248 gal; 400 ÷ 2.02 = 198 gal. Before charge and inverter losses."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Maker specs read today",
+   "value": "3,840 Wh; NEMA L14-30R 120/240 V, 25 A max, 6,000 W max; solar input 3,200 W total (2 × 1,600 W), 11-165 V; 136.7 lb net; page shows 'Sold Out' and 'Price Loading'",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-11",
+   "note": "No surge watts, LRA figure or pump HP on the page as fetched. No panel bundle with a price listed."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Gallons per charge, 1 HP pump (derived)",
+   "value": "about 1,620 gal (about 2,920 gal with a 1/2 HP pump)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-11",
+   "note": "3,840 Wh × 0.85 = 3,264 Wh ÷ 2.02 Wh/gal = 1,618 gal; ÷ 1.12 = 2,922 gal. The 0.85 usable factor is Willrun's assumption; inverter on only while pumping, idle excluded."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Refill time at its maximum solar input (derived)",
+   "value": "1.2 h at the full 3,200 W input; 9.6 h of rated output from a single 400 W panel",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-11",
+   "note": "3,840 Wh ÷ 3,200 W = 1.2 h (needs 8 × 400 W of panels); 3,840 ÷ 400 = 9.6 h. Rated watts, no losses."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Price and cost per Wh (price is second-hand)",
+   "value": "$2,999.99 → $0.78 per Wh",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "$2,999.99 ÷ 3,840 Wh = $0.78/Wh. Willrun lists $2,999.99 and sold out on 2026-11-11, matching ChatGPT's card. Anker's own page showed 'Price Loading' when I read it, so I did not see this price on the maker store."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Gallons per charge, 1 HP pump (derived from Willrun's specs)",
+   "value": "about 1,730 gal (about 3,120 gal with a 1/2 HP pump)",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "4,096 Wh × 0.85 = 3,482 Wh ÷ 2.02 Wh/gal = 1,726 gal; ÷ 1.12 = 3,118 gal. Capacity (4,096 Wh), 4,000 W continuous and 8,000 W surge are as stated by Willrun and homebatteryreport; EcoFlow's own page and manual page rendered no specs to me."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Price and cost per Wh (price is second-hand)",
+   "value": "$2,799 (compare-at $3,299) → $0.68 per Wh",
+   "source": "https://willitrunpower.com/best-power-station-for/well-pump/",
+   "source_title": "Best power station for a well pump: 240 V, starting amps and what actually works | Willrun",
+   "read": "2026-11-11",
+   "note": "$2,799 ÷ 4,096 Wh = $0.68/Wh. Willrun dates this 2026-11-10 and says the standalone unit was unavailable. My own check failed: us.ecoflow.com product endpoint returned HTTP 429, and two store searches returned no DELTA Pro 3 listing."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maker price and specs today",
+   "value": "$1,499.00 (was $1,699.00); 2,764.8 Wh; 3,840 W output; 7,680 W 'Lifting Power'; 'power both 120V and 240V devices simultaneously'; up to 4,000 W solar only with SolarX 4K",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-11",
+   "note": "The page does not use the word surge, gives no 240 V wattage and no pump or LRA statement. homebatteryreport.com (read 2026-11-11) also notes 7,680 W is 'lifting power', not a surge rating."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Continuous amps at 240 V vs smallest Franklin 230 V LRA (derived)",
+   "value": "16.0 A continuous vs 23.0 A LRA (1/2 HP 3-wire) = 0.70×",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-11",
+   "note": "3,840 W ÷ 240 V = 16.0 A; 16.0 ÷ 23.0 = 0.70. If the 7,680 W lifting figure behaved as surge it would be 32 A, but BLUETTI does not rate it that way. LRA from Willrun's Franklin table."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Cost per Wh and gallons per charge (derived)",
+   "value": "$0.54 per Wh; about 1,165 gal per charge with a 1 HP pump",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-11",
+   "note": "$1,499 ÷ 2,764.8 Wh = $0.54/Wh; 2,764.8 × 0.85 = 2,350 Wh ÷ 2.02 Wh/gal = 1,165 gal. Assumes the unit can start the pump, which the spec sheet does not establish."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + 500W",
+   "label": "Kit price, refill hours from its own panel, panel hours per water-day (derived)",
+   "value": "$3,598; 5,529.6 Wh; 11.1 h of rated output to fill from the included 500 W panel; 1.9 h covers a 1 HP 300-gallon day",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-500w",
+   "source_title": "Apex 300 + B300K + 500W",
+   "read": "2026-11-11",
+   "note": "Read via storecheck search on bluettipower.com (title, price $3,598, '3,840W | 5,529.6Wh | 500W Solar', in stock). 5,529.6 Wh ÷ 500 W = 11.1 h; 965 Wh ÷ 500 W = 1.9 h. Same search: Apex 300 + B300K without panel is $2,599 (was $2,799) → $2,599 ÷ 5,529.6 = $0.47/Wh, so the panel adds $999 in the bundle."
+  },
+  {
+   "product": "general",
+   "label": "Rival check: wellwaterauthority's only energy figure",
+   "value": "'A 1,000W pump running 15 minutes a day uses about 0.25 kWh'; no gallons-per-charge, solar refill or $/Wh figures",
+   "source": "https://wellwaterauthority.com/guides/well-pump-backup-power/",
+   "source_title": "Backup Power for a Well Pump: What Actually Runs It in an Outage (2026)",
+   "read": "2026-11-11",
+   "note": "Shows what the rival lacks; consistent with the Wh/day inputs above."
+  }
+ ],
+ "unsourced": [
+  "offsprig.com/power-station-well-pump/ and grid.ceo split-phase page: WebFetch failed with a certificate error and curl was blocked, so I could not check whether they already state panel hours or gallons per charge.",
+  "EcoFlow DELTA Pro 3 price, stock, solar input watts and weight from EcoFlow itself: ecoflow.com/us page and manuals.ecoflow.com rendered no specs, the store product endpoint returned HTTP 429, store search returned no DELTA Pro 3 listing, and the solacity manual PDF exceeded the fetch size limit. No DELTA Pro 3 refill-hours figure is given for that reason.",
+  "Anker SOLIX F3800 Plus price on Anker's own store (page showed 'Price Loading'), and its surge watts or LRA rating: neither appears on the product page as fetched. homebatteryreport cites 80 A LRA from the user guide and Willrun cites 9,000 W surge for the F3800; I did not open the user guide.",
+  "BLUETTI Apex 300 wattage on 240 V from a single unit, PV input without SolarX 4K, and weight: looked on the product page, not there.",
+  "Franklin Electric AIM manual tables (primary source for motor watts and LRA): the URL I tried returned only the Franklin Water resource-library landing page; figures are taken from Willrun and homebatteryreport, which both cite Franklin.",
+  "Idle draw per station (Willrun's 15 W is its own assumption), a panel derate and local peak sun hours: not sourced, so all solar figures are hours at rated panel output.",
+  "Nature's Generator L6000 (store search returned HTTP 0), OSCAL PowerMax 6000, Anker SOLIX S5000 and Growatt HELIOS 3600: ran out of call budget before sourcing 240 V surge, solar input and price, so they are not in the candidate figures."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0000301
+ }
+}
