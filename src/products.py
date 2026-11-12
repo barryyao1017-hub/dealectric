@@ -6099,6 +6099,23 @@ PRODUCTS = [
  "fit": 'Outage backup and wall-charged use on the tightest 2 kWh budget, for a buyer who plans around roughly 1,500 to 1,650 Wh of AC energy.',
  "caveats": ['Delivered AC energy in named tests is 74 to 81% of the rated 2,048 Wh', "Measured AC recharge took 2.5 hours to 2 h 45 min against the maker's 2-hour claim", 'The capacity tests were run on 230 V European units', "FOSSiBOT's store says 10 ms UPS switchover while the Amazon title says 8 ms"]},
 
+{"slug": 'dyness-1536wh-1800w-power-station',
+ "brand": 'DYNESS',
+ "program": 'amazon:us',
+ "asin": 'B0GYD6V3JW',
+ "category": 'power-station',
+ "name": 'DYNESS 1536Wh Portable Power Station, 1,536 Wh LiFePO4, 1,800 W',
+ "model": 'DYNESS 1536Wh (Amazon ASIN B0GYD6V3JW)',
+ "url": 'https://www.amazon.com/dp/B0GYD6V3JW',
+ "price": None,
+ "verified": '2026-11-11',
+ "specs": [('Rated capacity', '1,536 Wh (listing title)'), ('AC output', '1,800 W, 3,600 W surge (listing title)'), ('Battery', 'LiFePO4 (listing title)'), ('AC charging', '50 minutes to 80% (listing title)'), ('Amazon ratings', '22, all five-star, on 2026-11-11')],
+ "warranty": 'Read the warranty term on the Amazon listing before ordering.',
+ "returns": 'Read the return window shown on the Amazon listing before ordering.',
+ "summary": 'A 1,536 Wh LiFePO4 power station with 1,800 W AC output and a 3,600 W surge rating, sold on Amazon. It is a new listing with 22 ratings on 2026-11-11, and its capacity is a label figure.',
+ "fit": 'Shoppers who need 1,500 Wh-class rated capacity at the lowest outlay and accept a new listing with a short track record.',
+ "caveats": ['22 Amazon ratings on 2026-11-11, so the track record is short.', 'All figures come from the listing title; plan on about 1,260–1,370 Wh at the AC outlets if it performs like the BLUETTI AC180 did in four named tests (82–89% of label).', "The same-spec Dynesspower PPS1800 costs more at the maker's own store, so the Amazon listing is the one that fits a tight budget."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

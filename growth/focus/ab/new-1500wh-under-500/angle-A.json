@@ -1,0 +1,111 @@
+{
+ "angle": "A",
+ "gap": "No result I could open states that the DYNESS 1536Wh's maker listing gives no cycle count, retention threshold, surge figure or warranty term and prices it at $549.99, while the PECRON E1500LFP at $549 is rated 3,500+ cycles to 80%, 2,200 W continuous and 5 years if registered within 30 days.",
+ "standout": 2,
+ "standout_why": "Provisional: I could not open the cited pages (powerstationranking.com/best-under-500 and the three outletpicks.com URLs), nor runtimewise, outageoutfitter or wattstanding. The fetch tool failed on all of them with a TLS error and curl was not permitted. The only rival I read was willitrunpower.com/guides/best-power-station-under-500/, which already normalises cycle thresholds (Jackery to 70% vs others to 80%) and says boost modes are not surge. It covers nothing above 1,152 Wh and does not mention DYNESS or the PECRON E1500LFP. So the normalisation method is not new; applying it to the two 1,536 Wh units is. If OutletPicks' DYNESS entry already carries a cycle rating and warranty, this drops to 1.",
+ "decides": "It moves the pick from the DYNESS towards the PECRON E1500LFP, with a caveat on the budget. At the makers' own US stores today the two cost the same ($549.99 vs $549), so neither is under $500 there. The DYNESS only gets under $500 at the $449.99 Amazon price OutletPicks reported, which I could not verify. For the same money the PECRON states 400 W more continuous output, a cycle rating with a threshold, and a 5-year warranty. For a strict $500 cap at a maker store, the BLUETTI AC180 at $499 is the only one that qualifies, but it is 1,152 Wh (25% short of 1,536 Wh) and its 2,700 W figure is Power Lifting, not motor surge.",
+ "candidates": [
+  "DYNESS PPS1800 (1536Wh)",
+  "PECRON E1500LFP",
+  "BLUETTI AC180"
+ ],
+ "findings": [
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Price, maker's US store",
+   "value": "$549.00 (in stock)",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on pecron.com (Shopify search JSON: title, price, description text). The product page itself returned HTTP 429. $549 / 1,536 Wh = $0.357/Wh."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Cycle life and threshold",
+   "value": "3,500+ cycles to 80%",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker wording: 'liFePo4 Battery with 3,500+ Life Cycles to 80%'. Arithmetic: 3,500 × 1.536 kWh = 5,376 kWh nominal throughput before 80%, so $549 / 5,376 kWh = $0.102 per kWh cycled (nominal, ignores fade and inverter loss)."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "AC output, continuous vs surge",
+   "value": "2,200 W continuous, 4,400 W surge (2.0×)",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker wording: '2200W Bidirectional PSW Inverter(Surge 4400W)'. Also stated: UPS function, 1,400 W AC charging, 1.8 h, expandable to 9,216 Wh."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Warranty and its condition",
+   "value": "5 years only if registered within 30 days of purchase; 2 years otherwise",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker wording: 'warranty for the E1500LFP has been extended to 5 years… Please register your Pecron within 30 days of purchase to activate your extra 3-year warranty.' The 2-year base is my arithmetic (5 − 3), not a figure the page states."
+  },
+  {
+   "product": "DYNESS PPS1800 (1536Wh)",
+   "label": "Price, maker's US store",
+   "value": "$549.99 (compare-at $799.99, in stock)",
+   "source": "https://dynesspower.com/products/dynesspower-pps1800-portable-power-station-1536wh-lifepo4-battery-1800w-solar-generator-for-home-backup-camping-and-rv",
+   "source_title": "Dynesspower PPS1800 Portable Power Station 1536Wh LiFePO4 Battery 1800W Solar Generator for Home Backup Camping and RV",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on dynesspower.com. The product page returned HTTP 429 three times. $549.99 / 1,536 Wh = $0.358/Wh, against the $0.29/Wh ChatGPT quoted from the $449.99 OutletPicks price."
+  },
+  {
+   "product": "DYNESS PPS1800 (1536Wh)",
+   "label": "What the maker's listing text states",
+   "value": "1,536 Wh, 1,800 W output, LiFePO4; no cycle count, no retention threshold, no surge figure, no warranty term",
+   "source": "https://dynesspower.com/products/dynesspower-pps1800-portable-power-station-1536wh-lifepo4-battery-1800w-solar-generator-for-home-backup-camping-and-rv",
+   "source_title": "Dynesspower PPS1800 Portable Power Station 1536Wh LiFePO4 Battery 1800W Solar Generator for Home Backup Camping and RV",
+   "read": "2026-11-11",
+   "note": "This is the Shopify description text as the store search returned it ('durable LiFePO4 battery technology for longer lifespan' is the only longevity wording). Images or spec tables on the full page were not read, so the absence applies to the description text only."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, maker's US store",
+   "value": "$499.00 (in stock)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on bluettipower.com; the product page returned HTTP 429. $499 / 1,152 Wh = $0.433/Wh. 1,152 / 1,536 = 75% of the capacity asked for."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC output, continuous vs boost",
+   "value": "1,800 W continuous; 2,700 W is Power Lifting Mode",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "Maker wording: '1,800W AC Output / 2,700W Power Lifting Mode'. Willrun classes Power Lifting as resistive-only (next finding), so it is not comparable to PECRON's 4,400 W surge."
+  },
+  {
+   "product": "general",
+   "label": "What the one readable rival already normalises",
+   "value": "Willrun states Jackery rates cycles to 70% (4,000 on Explorer 1000 v2) against 80% for EcoFlow, Anker and BLUETTI, and that X-Boost and Power Lifting 'are for heaters and kettles, not compressors'; largest unit covered is 1,152 Wh",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-11",
+   "note": "Read as the fetch tool's extraction of the page, not raw HTML. It lists the BLUETTI AC180 at $499 with 3,500+ cycles to 80%, and does not mention DYNESS, PECRON E1500LFP, OUKITEL or VTOMAN. It was a search result, not one ChatGPT cited."
+  }
+ ],
+ "unsourced": [
+  "DYNESS cycle life and retention threshold: the dynesspower.com product page returned HTTP 429 three times, both Amazon listings (B0GYD6V3JW, B0GHRHPJNG) returned 503, and no manual or spec PDF turned up.",
+  "DYNESS 3,600 W surge: it appears only in an Amazon listing title seen in a search snippet, never on a page I opened.",
+  "DYNESS warranty length and seller: not in the maker's description text, and the Amazon pages were walled.",
+  "DYNESS $449.99 Amazon price that OutletPicks reported: amzcheck.py was not permitted to run and Amazon returned 503.",
+  "The cited rival pages (powerstationranking.com/best-under-500, outletpicks.com under-500 including ?show=73 and ?show=70) and runtimewise, outageoutfitter, wattstanding and powerstationranking's other two pages: all failed with a TLS error, so what they say about cycles, surge or warranty is unchecked.",
+  "BLUETTI AC180 cycle rating from BLUETTI's own page: the page returned 429; the 3,500+ to 80% figure is as relayed by Willrun.",
+  "Other 1,400–1,600 Wh candidates (Jackery Explorer 1500 Ultra, OUKITEL P1500 Plus, VTOMAN, ALLPOWERS S2000 Pro): jackery.com returned 429 and the allpowers.com store search errored, so no price or cycle threshold was read.",
+  "Usable AC watt-hours versus rated watt-hours for any of the three: no measured discharge test was opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 39,
+  "cost_usd_list": 1.0127462
+ }
+}

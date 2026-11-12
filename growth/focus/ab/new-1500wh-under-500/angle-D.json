@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got that I could open states that the 1,536 Wh on the label is pack energy rather than what the AC outlets deliver: about 1,306 Wh using the 0.85 factor willitrunpower.com itself prints, or about 1,382 Wh at the 90% The Solar Lab reports for the Pecron E1500LFP. The only station I could verify at 1,536 Wh near the budget is that Pecron, at $549, so a shopper who needs 1,500 Wh at the outlet cannot get it under $500.",
+ "standout": 1,
+ "standout_why": "I could only open one of the rival pages: willitrunpower.com/guides/best-power-station-under-500/ (in the results, not cited). It already prints the mechanism as a formula, 'Runtime = Wh × 0.85 ÷ (load + 15 W inverter draw)', but lists nothing above 1,152 Wh and never converts a 1,536 Wh label into delivered Wh. The three cited pages (powerstationranking.com/best-under-500/ and the two outletpicks.com under-500 URLs) and runtimewise.com failed to load with a certificate error on every attempt, so I cannot say whether they carry it. The score is 1 because a retrieved rival has the derating factor; the new part is only the arithmetic applied to the 1,536 Wh class and the named 90% figure for the E1500LFP.",
+ "decides": "It confirms the pick rather than changing it. The Pecron E1500LFP (1,536 Wh, $549 at pecron.com today) delivers roughly 1,306–1,382 Wh at the outlets, against about 979 Wh for the $499 BLUETTI AC180 at the same 0.85 factor, so the extra $50 buys about a third more delivered energy. BLUETTI's own page also shows the AC180 out of stock until late November. It also tells the shopper the plan fails if '1500Wh' means energy at the outlet: that needs about 1,765 Wh rated at 0.85 (about 1,667 Wh at 0.90), and the 1,536 Wh stations I could price today start at $549. I could not verify ChatGPT's $449.99 DYNESS 1536Wh at all.",
+ "candidates": [
+  "PECRON E1500LFP",
+  "BLUETTI AC180",
+  "Jackery Explorer 1500 v2",
+  "DYNESS 1536Wh (unverified)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Runtime formula a retrieved rival already publishes",
+   "value": "Runtime = Wh × 0.85 ÷ (load + 15 W inverter draw)",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-11",
+   "note": "The page does not say what the 0.85 represents and gives no measured capacity. Its largest listed station is the BLUETTI AC180 at 1,152 Wh; it has no 1,536 Wh model."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Price at maker's US store",
+   "value": "$549.00 (compare-at $4,297.00), in stock",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on pecron.com. The product page itself returned HTTP 429 on every direct attempt. $49 over the shopper's $500 cap."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Rated capacity and AC output, maker's wording",
+   "value": "1536Wh Large Capacity (Can Expandable up to 9216Wh); 2200W Bidirectional PSW Inverter (Surge 4400W); 1400W AC Charging; 3,500+ Life Cycles to 80%",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Product description text returned by the store's search endpoint via storecheck.py. The same text says the warranty extends to 5 years if registered within 30 days of purchase."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Efficiency reported by The Solar Lab",
+   "value": "90%",
+   "source": "https://www.thesolarlab.com/review/pecron-e1500-review",
+   "source_title": "Pecron E1500LFP portable power station review (The Solar Lab)",
+   "read": "2026-11-11",
+   "note": "Quote: 'In our testing, it achieved a 90% efficiency rating.' No test load, method, byline or review date is given, and no measured Wh is published. My arithmetic: 1,536 × 0.90 = 1,382 Wh."
+  },
+  {
+   "product": "general",
+   "label": "Delivered AC energy implied by the label (arithmetic)",
+   "value": "1,536 Wh × 0.85 = 1,306 Wh; 1,152 Wh × 0.85 = 979 Wh; 1,500 Wh at the outlet needs 1,765 Wh rated at 0.85 or 1,667 Wh at 0.90",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-11",
+   "note": "My arithmetic using the rival's own 0.85 factor and The Solar Lab's 90%; these are not measurements. The 15 W inverter draw in the same formula lowers small-load runtimes further."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock at maker's US store",
+   "value": "$499.00, 1,152 Wh, 1,800 W; page says out of stock, expected restock late November",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "The product page shows $499.00 and 'currently out of stock, expected restock: Late-November'. The store's search endpoint (storecheck.py) returned available: true at $499 the same day, so the stock signal conflicts. Capacity is 384 Wh short of the shopper's 1,500 Wh."
+  },
+  {
+   "product": "Jackery Explorer 1500 v2",
+   "label": "Price at maker's US store",
+   "value": "$849.00 (compare-at $1,439.00), 1,536 Wh, 2,000 W AC, 31.97 lb",
+   "source": "https://www.jackery.com/products/jackery-explorer-1500-v2-portable-power-station",
+   "source_title": "Jackery Explorer 1500 v2 Portable Power Station",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on jackery.com. The Explorer 1500 Ultra (1,536 Wh, 1,800 W, 3,600 W peak) is $1,079 at https://www.jackery.com/products/jackery-explorer-1500-ultra-portable-power-station. Both are well over $500."
+  },
+  {
+   "product": "PECRON EP3800-48V (expansion battery for E1500LFP)",
+   "label": "Expansion pack capacity and voltage",
+   "value": "3,840 Wh (51.2 V 75 Ah), $799.00",
+   "source": "https://www.pecron.com/products/pecron-ep3800-48v-expansion-battery-3840wh-for-e1500lfp-e3600lfp-e1000lfp-e2400lfp-f3000lfp",
+   "source_title": "PECRON EP3800-48V Expansion Battery 3840Wh for E1500LFP/ E3600LFP/ E1000LFP/ E2400LFP/ F3000LFP/ E3800LFP",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search. It shows Pecron states pack capacity as nominal volts × amp-hours (51.2 × 75 = 3,840), i.e. energy at the battery, before the inverter."
+  }
+ ],
+ "unsourced": [
+  "Pecron's own runtime formula for the E1500LFP (search snippets say 1536 Wh × 0.85 ÷ device watts, in the user manual and on the product page): pecron.com returned HTTP 429 on four attempts and manuals.online failed with a certificate error, so I never read it on a page.",
+  "BLUETTI's own runtime formula for the AC180 (search snippets say capacity × DoD 90% × η 85% ÷ (load + 15 W self-consumption)): the product page text I could read (12,721 characters) did not include the FAQ.",
+  "The DYNESS 1536Wh at $449.99 (model name, seller, 1,800 W / 3,600 W surge, warranty): a web search found no DYNESS listing, both outletpicks.com URLs failed with a certificate error, and the Amazon check tool was not permitted to run.",
+  "Whether the three cited pages (powerstationranking.com/best-under-500/, outletpicks.com under-500 and its ?show=73 / ?show=70 variants) or runtimewise.com state usable or AC-delivered capacity: all failed with 'self signed certificate in certificate chain', and curl was not permitted.",
+  "A measured AC-outlet Wh figure for the Pecron E1500LFP from a named reviewer: The Solar Lab gives only the 90% figure, and I did not open the BatterySkills, The Drive, Gadgeteer or TechRadar reviews.",
+  "The E1500LFP's internal pack voltage and amp-hours (looked for 51.2 V 30 Ah): only the EP3800-48V expansion pack's 51.2 V 75 Ah was on a page I read.",
+  "The Oukitel P1500 Plus (1,536 Wh, 1,800 W, 3,600 W surge per a search snippet) price at the maker's store: the storecheck search on oukitel.com returned nothing."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 35,
+  "cost_usd_list": 0.9920873000000001
+ }
+}

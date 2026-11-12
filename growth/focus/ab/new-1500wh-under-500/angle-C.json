@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got that I could open states that the PECRON E1500LFP takes Pecron's EP3800-48V expansion battery (maker lists it for the E1500LFP, up to 9,216 Wh total), while the maker text I could read for the DYNESS PPS1800 mentions only 'optional solar panels' and no expansion battery.",
+ "standout": 2,
+ "standout_why": "I could compare against only one rival page, willitrunpower.com/guides/best-power-station-under-500/. It has no 1,500 Wh-class model, gives solar limits in watts only (no voltage, current or connector), and covers expansion only for 1,000 Wh-class units (AC180 'Power Bank Mode charging only', AC70 + B80, C1000). The three cited pages (powerstationranking.com/best-under-500/ and the outletpicks.com under-500 pages) failed to open on every attempt with a certificate error, and curl was blocked, so this score is not checked against them. ChatGPT's own answer, built from those pages, gives only capacity, AC output and price for the DYNESS and the Pecron.",
+ "decides": "It confirms ChatGPT's 'stretch $49' option for anyone who may add capacity or solar later: the Pecron has a maker-documented expansion path and ships with an MC4-to-XT60 solar cable. It also undercuts the 'under $500' premise at maker stores: Dynesspower's own store has the PPS1800 at $549.99 and Pecron's has the E1500LFP at $549.00, so the $449.99 DYNESS price is a third-party retailer price I could not open. For a strict $500 cap with no expansion plans, the DYNESS pick stands only if that retailer price is verified.",
+ "candidates": [
+  "DYNESS (Dynesspower) PPS1800",
+  "PECRON E1500LFP",
+  "BLUETTI AC180"
+ ],
+ "findings": [
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Maker US store price",
+   "value": "$549.00, in stock (listing titled 'V3 Version')",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on pecron.com, which returns the store's own listing data. The product page itself returned HTTP 429 on three tries."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Maximum expanded capacity stated by maker",
+   "value": "9,216 Wh ('1536Wh Large Capacity (Can Expandable up to 9216Wh)')",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "My arithmetic: 1,536 + 2 × 3,840 = 9,216 Wh, which matches two EP3800-48V packs. The maker text I read gives the total, not the pack count."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Compatible expansion battery and its price",
+   "value": "EP3800-48V, 3,840 Wh (51.2 V 75 Ah), $799.00, in stock; maker lists it for E1500LFP / E3600LFP / E1000LFP / E2400LFP / F3000LFP / E3800LFP",
+   "source": "https://www.pecron.com/products/pecron-ep3800-48v-expansion-battery-3840wh-for-e1500lfp-e3600lfp-e1000lfp-e2400lfp-f3000lfp",
+   "source_title": "PECRON EP3800-48V Expansion Battery 3840Wh for E1500LFP/ E3600LFP/ E1000LFP/ E2400LFP/ F3000LFP/ E3800LFP",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on pecron.com. One pack costs more than the station itself; 1,536 + 3,840 = 5,376 Wh with one pack (my arithmetic)."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Solar charging limit and cable in the box",
+   "value": "1,000 W max solar charging; packing list includes 'MC4 Solar Charging Cable(XT60)' ×1 and an AC charging cable ×1; AC charging 1,400 W with no charging brick",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker listing text via storecheck.py search. The XT60 solar connector is inferred from the included cable's name. The voltage and current window is not in the text I could read."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Maker-stated accessory exclusion",
+   "value": "Pecron's 4-Pin (GX16-4) to MC4 Parallel Y Adapter ($36.99) 'Can't use to E2000LFP/EB3000/E3000/E600LFP/E1000PRO/E1500LFP'",
+   "source": "https://www.pecron.com/products/pecron-4-pin-to-mc4-parallel-y-adapter",
+   "source_title": "PECRON 4-Pin To MC4 Parallel Y Adapter for S1500",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on pecron.com. The adapter is rated 800 W (40 V at 20 A) and is for the S1500."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Maker accessories that list the E1500LFP",
+   "value": "MJ32 Cascade Port Output Cable, $69.00, 'can use to E3800LFP / E3600LFP / E2400LFP / E1500LFP / E1000LFP / EP3000-48V', up to 1,200 W per XT60 port; GX16-5 Female to XT60-F Cable, $23.99, for charging E1500LFP from a turbine or diesel generator through a 600 W / 300 W / 200 W adapter charger 'to avoid damage caused by unstable voltage'",
+   "source": "https://www.pecron.com/products/pecron-mj32-cascade-port-output-cable-output-max-1200w-per-xt60-port",
+   "source_title": "PECRON MJ32 Cascade Port Output Cable - Output Max 1200W per XT60 port",
+   "read": "2026-11-11",
+   "note": "Second item's page: https://www.pecron.com/products/pecron-gx16-5-mother-seat-to-xt60-cable. Both read through storecheck.py search on pecron.com."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Warranty condition stated by maker",
+   "value": "5 years only if registered on pecron.com within 30 days of purchase ('to activate your extra 3-year warranty'), E1500LFP only",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker listing text via storecheck.py search. Implies a 2-year base plus 3 extra on registration (my reading of 'extra 3-year')."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Version difference between the manual copy and the current listing",
+   "value": "A third-party copy of the E1500LFP manual gives 700 W max solar, EP3000-48V as the compatible pack and 7,680 Wh max; today's maker 'V3 Version' listing gives 1,000 W solar and 9,216 Wh",
+   "source": "https://manuals.plus/asin/B0CKWTHM8K",
+   "source_title": "Pecron E1500LFP manual (manuals.plus copy for Amazon ASIN B0CKWTHM8K)",
+   "read": "2026-11-11",
+   "note": "manuals.plus is a mirror, not the maker's PDF. My arithmetic: 1,536 + 2 × 3,072 = 7,680 Wh. A buyer of older stock (for example on Amazon) may get the 700 W version; check which version before buying panels."
+  },
+  {
+   "product": "DYNESS (Dynesspower) PPS1800",
+   "label": "Maker US store price",
+   "value": "$549.99 (compare-at $799.99), in stock",
+   "source": "https://dynesspower.com/products/dynesspower-pps1800-portable-power-station-1536wh-lifepo4-battery-1800w-solar-generator-for-home-backup-camping-and-rv",
+   "source_title": "Dynesspower PPS1800 Portable Power Station 1536Wh LiFePO4 Battery 1800W Solar Generator for Home Backup Camping and RV",
+   "read": "2026-11-11",
+   "note": "Read through storecheck.py search on dynesspower.com; the product page returned HTTP 429. This is $100 above the $449.99 ChatGPT showed from OutletPicks, and above the shopper's $500 cap."
+  },
+  {
+   "product": "DYNESS (Dynesspower) PPS1800",
+   "label": "What the maker listing says about pairing",
+   "value": "'can be paired with optional solar panels'; the listing text names no expansion battery, no solar voltage or connector, and no included solar cable",
+   "source": "https://dynesspower.com/products/dynesspower-pps1800-portable-power-station-1536wh-lifepo4-battery-1800w-solar-generator-for-home-backup-camping-and-rv",
+   "source_title": "Dynesspower PPS1800 Portable Power Station 1536Wh LiFePO4 Battery 1800W Solar Generator for Home Backup Camping and RV",
+   "read": "2026-11-11",
+   "note": "This is the listing description returned by the store search, not the full product page or manual. Absence in that text is not proof the unit cannot expand."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Expansion and price as stated by a rival page",
+   "value": "Willitrunpower lists the AC180 at 1,152 Wh, $499 (out of stock Nov 8), 500 W max solar, expansion 'No (Power Bank Mode charging only)'",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-11",
+   "note": "Rival page statement, not checked on bluettipower.com within the call budget. Included to show what the rival already covers."
+  }
+ ],
+ "unsourced": [
+  "What the cited rival pages state: powerstationranking.com/best-under-500/ and outletpicks.com/categories/power-stations/under-500 (plus ?show=73 and ?show=70) all failed with 'self signed certificate in certificate chain', and curl was not permitted. Also not opened: runtimewise.com, powerstationranking.com/best-under-1000/ and /best-lifepo4/, outageoutfitter.com, wattstanding.com.",
+  "DYNESS PPS1800 solar input voltage range, max current, max watts and connector type: dynesspower.com product page returned HTTP 429 three times; looked for a manual or spec PDF and found none. A search snippet mentioned '1200W Solar Input', which I did not open.",
+  "DYNESS PPS1800 expansion-battery support, included cables, app and warranty terms from the maker's page or manual.",
+  "The $449.99 DYNESS price at the retailer OutletPicks points to: search snippets showed Walmart and Amazon listings near that price, but I opened neither. amzcheck returned ASIN B0GYD6V3JW, a '1536Wh ... 1800W AC Output (3600W Surge)' listing with no brand or price in the output, so I could not tie it to DYNESS.",
+  "PECRON E1500LFP V3 solar input voltage window, max current, number of PV ports and car-charging input: product page returned HTTP 429. A search snippet gave 32–95 V / 15 A on a GX16 port plus 12–18 V / 100 W on a 5521 port for the earlier 700 W version; I did not open that page.",
+  "Maker statement of how many EP3800-48V or EP3000-48V packs the E1500LFP accepts, and which expansion cable is needed and whether it is included.",
+  "Whether the EP3000-48V (3,072 Wh) is still sold for the E1500LFP on pecron.com and at what price: the store search returned only the EP3800-48V.",
+  "ALLPOWERS S2000 Pro (1,451 Wh, a Dealectric listing near this capacity) current price and solar/expansion limits: storecheck search on allpowers.com returned a non-JSON response.",
+  "BLUETTI AC180 solar voltage window, connector and Power Bank Mode pairings from bluettipower.com: not opened within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9169953999999999
+ }
+}

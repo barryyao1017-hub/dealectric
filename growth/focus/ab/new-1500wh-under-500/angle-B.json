@@ -1,0 +1,139 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got that I could open states what the missing 384 Wh costs: going from the BLUETTI AC180 ($499, 1,152 Wh) to the PECRON E1500LFP ($549, 1,536 Wh) adds 384 Wh for $50, about $0.13 per added Wh, and the only big-brand 1,536 Wh unit I priced (Jackery Explorer 1500 v2, $849) costs $0.553/Wh against the DYNESS's $0.293/Wh.",
+ "standout": 1,
+ "standout_why": "I could not open the cited pages: powerstationranking.com and outletpicks.com (and runtimewise, outageoutfitter, wattstanding) all failed with a TLS certificate error, and curl was not permitted. The comparison is therefore against ChatGPT's own answer, which already shows $0.29/Wh for the DYNESS and credits OutletPicks, and against willitrunpower.com, which I did read. Willrun lists $/Wh, Wh/lb and cost per cycle for ~1 kWh units (AC180 at $0.43/Wh) but has no 1,500 Wh model. So rivals already have the headline $/Wh; the marginal cost of the last 384 Wh and cost per rated kWh for 1,536 Wh units were not in anything I could read, but I cannot rule out that the unopened cited pages have them.",
+ "decides": "Confirms ChatGPT's pick rather than changing it. The DYNESS is the only 1,536 Wh unit I found under $500 ($449.99 on Amazon today, $0.293/Wh), but it has only 22 Amazon ratings, and I could not source its weight, cycle rating or warranty, so no durability figure can be derived for it. If the cap can stretch $49, the Pecron is the better-documented buy: $0.357/Wh, about $0.10 per rated kWh over 3,500 cycles, and a 5-year warranty if registered within 30 days. The AC180 at the cap gives 25% less capacity at $0.433/Wh.",
+ "candidates": [
+  "DYNESS 1536Wh (Amazon B0GYD6V3JW)",
+  "PECRON E1500LFP",
+  "BLUETTI AC180",
+  "Jackery Explorer 1500 v2"
+ ],
+ "findings": [
+  {
+   "product": "DYNESS 1536Wh",
+   "label": "Price today and cost per Wh",
+   "value": "$449.99; $0.293/Wh",
+   "source": "https://www.amazon.com/dp/B0GYD6V3JW",
+   "source_title": "DYNESS 1536Wh Portable Power Station, 1800W AC Output (3600W Surge), 50 Min to 80% Fast Charging, Upgraded LiFePO4 Battery Backup",
+   "read": "2026-11-11",
+   "note": "Read with amzcheck.py asin B0GYD6V3JW (not blocked). 449.99 ÷ 1,536 Wh = $0.293/Wh. Capacity, 1,800 W and 3,600 W surge are from the listing title. Amazon price is for comparison only; Dealectric pages do not print Amazon prices."
+  },
+  {
+   "product": "DYNESS 1536Wh",
+   "label": "Track record on Amazon",
+   "value": "22 ratings, 100% five-star",
+   "source": "https://www.amazon.com/dp/B0GYD6V3JW",
+   "source_title": "DYNESS 1536Wh Portable Power Station (Amazon listing)",
+   "read": "2026-11-11",
+   "note": "From amzcheck.py output: ratings 22, five_star_pct 100. For scale, the BLUETTI Elite 100 V2 listing (B0F42CSQWG) returned 2,658 ratings in the same call."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Price today and cost per Wh",
+   "value": "$549.00; $0.357/Wh",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Read with storecheck.py search on pecron.com (in stock, compare-at $4,297). 549 ÷ 1,536 Wh = $0.357/Wh. It is $49 over the cap and $99.01 (22%) more than the DYNESS for the same 1,536 Wh, with 2,200 W AC against 1,800 W."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Cost per rated kWh over cycle life",
+   "value": "$0.102 per kWh",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker text: 'LiFePO4 Battery with 3,500+ Life Cycles to 80%'. 549 ÷ (1.536 kWh × 3,500 cycles) = $0.102/kWh. Nameplate capacity, ignoring fade and inverter loss."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Warranty condition",
+   "value": "5 years only if registered within 30 days of purchase (the extra 3 years needs registration)",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker text: 'warranty for the E1500LFP has been extended to 5 years... register your Pecron within 30 days of purchase to activate your extra 3-year warranty'."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "Wh per lb",
+   "value": "40.0 Wh/lb",
+   "source": "https://invertersrus.com/product/pecron-e1500lfp/",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version (Inverters R Us)",
+   "read": "2026-11-11",
+   "note": "Weight '38.4lbs(17.4Kg)' is from a reseller's spec table, because pecron.com's product page returned HTTP 429 twice. 1,536 ÷ 38.4 = 40.0 Wh/lb. Re-check on the maker page before publishing."
+  },
+  {
+   "product": "PECRON E1500LFP",
+   "label": "AC refill time",
+   "value": "1.8 h stated by maker; 1.1 h lossless arithmetic at 1,400 W",
+   "source": "https://www.pecron.com/products/pecron-e1500lfp-expandable-power-station-2200w-1536wh",
+   "source_title": "PECRON E1500LFP Expandable Portable Power Station 2200W 1536Wh V3 Version",
+   "read": "2026-11-11",
+   "note": "Maker text: '1400W AC Charging, 1.8 Hours Super Fast Charging'. 1,536 Wh ÷ 1,400 W = 1.10 h, so the stated time implies the charger tapers below 1,400 W. Solar input is 1,000 W max."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price today and cost per Wh",
+   "value": "$499.00; $0.433/Wh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "499 ÷ 1,152 Wh = $0.433/Wh. The product page says 'AC180 currently out of stock, expected restock: Late-November', while the store's search feed returned it as available the same day."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Capacity shortfall against 1,536 Wh, and what closing it costs",
+   "value": "384 Wh short (25%); $50 more for the Pecron = $0.13 per added Wh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "1,536 − 1,152 = 384 Wh; 384 ÷ 1,536 = 25%. (549 − 499) ÷ 384 Wh = $0.130 per added Wh, using Pecron's $549 from pecron.com the same day."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Wh per lb and cost per rated kWh",
+   "value": "32.6 Wh/lb; $0.124 per kWh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-11",
+   "note": "Maker spec table: '35.3 lbs', 'LiFePO4 3500+ Cycles' (no capacity threshold given), 1,440 W max AC input, 500 W max solar, 5-year warranty. 1,152 ÷ 35.3 = 32.6 Wh/lb. 499 ÷ (1.152 kWh × 3,500) = $0.124/kWh."
+  },
+  {
+   "product": "Jackery Explorer 1500 v2",
+   "label": "Price of a big-brand 1,536 Wh unit, with cost per Wh, Wh/lb and cost per rated kWh",
+   "value": "$849.00; $0.553/Wh; 48.0 Wh/lb; $0.092 per kWh",
+   "source": "https://www.jackery.com/products/jackery-explorer-1500-v2-portable-power-station",
+   "source_title": "Jackery Explorer 1500 v2 Portable Power Station",
+   "read": "2026-11-11",
+   "note": "Read with storecheck.py search on jackery.com (in stock, compare-at $1,439). Maker text: 1,536 Wh, 2,000 W, 31.97 lb, '6,000+ Life Cycles', 0–100% in 64 minutes. 849 ÷ 1,536 = $0.553/Wh; 1,536 ÷ 31.97 = 48.0 Wh/lb; 849 ÷ (1.536 × 6,000) = $0.092/kWh. It is $349 over the cap."
+  },
+  {
+   "product": "general",
+   "label": "What a rival page I could open already derives",
+   "value": "Willrun lists $/Wh, Wh/lb and cost per cycle for ~1 kWh units (AC180: $0.43/Wh, 32.7 Wh/lb, $0.14 per cycle) and no 1,500 Wh model",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-11",
+   "note": "Read through the fetch tool's page summary. The page does not mention DYNESS, Pecron E1500LFP, OUKITEL, VTOMAN or ALLPOWERS S2000 Pro."
+  }
+ ],
+ "unsourced": [
+  "Contents of the cited rival pages (powerstationranking.com best-under-500, best-lifepo4, best-under-1000; outletpicks.com under-500 and ?show=73 / ?show=70) and of runtimewise.com, outageoutfitter.com and wattstanding.com: every fetch failed with 'self signed certificate in certificate chain' and curl was not permitted, so the standout score is not checked against them.",
+  "DYNESS 1536Wh weight, rated cycle count, AC charging watts, solar input and warranty length: the Amazon product page returned HTTP 503 and I found no maker US product page, so Wh/lb, cost per rated kWh and refill hours are left out for the DYNESS.",
+  "DYNESS coupon price of $404.99 (10% coupon): seen only in a search snippet, not on an opened page.",
+  "DYNESS seller and ships-from details on Amazon: the page did not load.",
+  "PECRON E1500LFP weight from the maker's own page or manual: pecron.com returned HTTP 429 on both tries, so the 38.4 lb figure comes from a reseller.",
+  "ALLPOWERS S2000 Pro (1,451 Wh) price today: storecheck.py failed on www.allpowers.com (non-JSON response) and allpowers.com (404), so it is not in the comparison.",
+  "OUKITEL and VTOMAN ~1,500 Wh models that ChatGPT named: not researched; the tool budget (already exceeded, about 31 calls including failed ones) went on fetch failures.",
+  "Usable Wh and runtime hours at a stated load for each candidate: I found no measured efficiency figure from a maker or named reviewer for these units, so no runtime is derived."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 37,
+  "cost_usd_list": 1.0618023999999997
+ }
+}
