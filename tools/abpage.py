@@ -42,7 +42,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 AB = ROOT / "growth/focus/ab"
 RUNS = ROOT / "growth/evals/runs"
 DEFAULT_RUNS = ["2026-11-07-liveplain", "2026-11-07-liveplain-rest"]
-MODELS = [("claude-opus-5-5", "high")]   # Barry 11-10: research on Opus 5.5 only, no Fable fallback
+MODELS = [("claude-fable-5-2", "high"), ("claude-opus-5-5", "high")]   # Barry 11-11: Fable 5.2 high first, Opus 5.5 high once Fable is out of usage
 METHOD = "ab-2026-11"
 _fable_out = threading.Event()   # set once Fable reports a usage limit; every later call goes straight to Opus
 SLOTS = threading.Semaphore(6)   # claude -p processes at once, across pages
