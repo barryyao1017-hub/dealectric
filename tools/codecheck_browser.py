@@ -15,7 +15,7 @@ import json
 import sys
 import time
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "growth/evals"))
 import ui  # noqa: E402
@@ -23,7 +23,7 @@ import ui  # noqa: E402
 CONTROL = "ZZNOTACODE7Q"
 
 JS = r"""
-(async (handle, code) => {
+(async (handle, code, vid) => {
   const j = async (u, body) => {
     const r = await fetch(u, body === undefined ? {credentials: 'include', headers: {Accept: 'application/json'}}
       : {method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json', Accept: 'application/json'}, body: JSON.stringify(body)});
@@ -33,7 +33,7 @@ JS = r"""
   await j('/cart/clear.js', {});
   await j('/cart/update.js', {discount: ''});
   const prod = await j('/products/' + handle + '.js');
-  const v = prod.variants.find(x => x.available) || prod.variants[0];
+  const v = (vid && prod.variants.find(x => String(x.id) === vid)) || prod.variants.find(x => x.available) || prod.variants[0];
   await j('/cart/add.js', {items: [{id: v.id, quantity: 1}]});
   await j('/cart/update.js', {discount: code});
   const cart = await j('/cart.js');
@@ -42,24 +42,25 @@ JS = r"""
   const dc = (cart.discount_codes || []).find(d => d.code.toUpperCase() === code.toUpperCase());
   const apps = (cart.cart_level_discount_applications || []).map(a => ({title: a.title, amount: (a.total_allocated_amount || 0) / 100}))
     .concat(cart.items.flatMap(it => (it.line_level_discount_allocations || []).map(a => ({title: a.discount_application.title, amount: a.amount / 100, line: true}))));
-  return {code, product: prod.title, variant_available: v.available, applicable: !!(dc && dc.applicable),
+  return {code, product: prod.title, variant: v.title, variant_available: v.available, applicable: !!(dc && dc.applicable),
           subtotal: cart.original_total_price / 100, total: cart.total_price / 100, discount: cart.total_discount / 100,
           code_amount: Math.round(apps.filter(a => (a.title || '').toUpperCase() === code.toUpperCase()).reduce((s, a) => s + a.amount, 0) * 100) / 100,
           applications: apps};
-})(%s, %s)
+})(%s, %s, %s)
 """
 
 
 def check_many(product_url: str, codes: list[str], pause: float = 3.0) -> list[dict]:
     s = urlsplit(product_url)
     handle = s.path.rstrip("/").split("/products/")[1]
+    vid = (parse_qs(s.query).get("variant") or [""])[0]   # a ?variant= in the URL picks that variant (kits, 11-11)
     tab = ui.Tab(product_url)
     out = []
     try:
         time.sleep(8)
         for code in [CONTROL] + codes:
             try:
-                r = tab.eval(JS % (json.dumps(handle), json.dumps(code)))
+                r = tab.eval(JS % (json.dumps(handle), json.dumps(code), json.dumps(vid)))
                 r["store"] = s.netloc
             except Exception as e:  # noqa: BLE001
                 r = {"code": code, "store": s.netloc, "error": repr(e)[:200]}
