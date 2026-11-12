@@ -77,10 +77,19 @@ def seller_kind(merchant: str, brand: str) -> str:
     return "other"
 
 
-def check(p: dict, tab) -> dict:
+def loose_query(p: dict) -> str:
+    """Second pass for no-match products: brand + model words only; a kit adds its add-on wattage and "solar kit"
+    (a "+" in the query returned no cards at all on 11-11)."""
+    head = re.split(r"[(+,]", B.short_name(p))[0]
+    toks = [w for w in re.findall(r"[A-Za-z0-9]+", head) if w.lower() not in GENERIC and norm(w) != norm(p["brand"])][:3]
+    kit = "+" in B.short_name(p)
+    return " ".join([p["brand"]] + toks + ([f"{kit_tokens(p)[0][:-1]}W solar kit"] if kit and kit_tokens(p) else []))
+
+
+def check(p: dict, tab, loose: bool = False) -> dict:
     o = B.best_offer(p)
     after, list_price = (o[2], p.get("price")) if o and o[0] else (p.get("price"), p.get("price"))
-    q = re.split(r"[(]", B.short_name(p))[0].strip()
+    q = loose_query(p) if loose else re.split(r"[(]", B.short_name(p))[0].strip()
     tab.navigate("https://www.google.com/search?" + urllib.parse.urlencode({"q": q, "udm": "28", "gl": "us", "hl": "en"}))
     time.sleep(9)
     text = tab.eval("document.body.innerText") or ""
@@ -116,6 +125,7 @@ def main():
     ap.add_argument("slugs", nargs="*")
     ap.add_argument("--out", default=f"growth/buylink/{dt.date.today()}-cheapest.json")
     ap.add_argument("--pace", type=float, default=12)
+    ap.add_argument("--loose", action="store_true", help="brand + model query (second pass for no-match products)")
     a = ap.parse_args()
     ps = [B.BY_SLUG[s] for s in a.slugs] if a.slugs else [p for p in B.PRODUCTS if B.link_offer(p)]
     out = Path(ROOT / a.out); out.parent.mkdir(parents=True, exist_ok=True)
@@ -128,7 +138,7 @@ def main():
             if p["slug"] in done:
                 continue
             try:
-                r = check(p, tab)
+                r = check(p, tab, a.loose)
             except Exception as e:  # noqa: BLE001
                 r = {"slug": p["slug"], "error": repr(e)[:200]}
                 if "WebSocket" in repr(e):  # tab or Chrome restarted: open a fresh tab, keep going

@@ -116,7 +116,7 @@ COMPARISONS = [
 # Agent queries seen: "portable power station LiFePO4 NMC battery chemistry manufacturer comparison 2026", "LiFePO4 vs NMC
 # portable power station battery chemistry cycle life energy density safety comparison" (ChatGPT), "best LiFePO4 portable
 # power station 2026" (Claude). ChatGPT's result set for it was 13 small sites with the same title and no product table.
-{"slug": "lifepo4-vs-nmc-power-stations", "question": "Q17",
+{"slug": "lifepo4-vs-nmc-power-stations", "buy_compare": True, "question": "Q17",
  "title": "LiFePO4 vs NMC portable power stations: cycle life, energy density, safety and 25 current models compared (2026)",
  "h1": "LiFePO4 vs NMC power stations: which is better? Cycle life, energy density and 25 current models compared",
  "desc": "What LiFePO4 (LFP) and NMC battery chemistry change in a portable power station (cycle life, Wh per kg, heat tolerance, warranty), with a table of 25 models from BLUETTI, EcoFlow, Anker SOLIX, Jackery, ALLPOWERS, Goal Zero, DJI and Tenergy: chemistry, Wh, rated cycles, weight, Wh/kg and price on the maker's own store.",
@@ -216,7 +216,7 @@ COMPARISONS = [
 # ---------------- Q16: CPAP ----------------
 # Agent queries seen: "best portable power station for CPAP machine 2026 runtime humidifier pure sine wave" (ChatGPT),
 # "best portable power station for CPAP 2026" (Claude). ChatGPT's result set: 12 small sites, no runtime table.
-{"slug": "power-station-for-cpap", "question": "Q16",
+{"slug": "power-station-for-cpap", "buy_compare": True, "question": "Q16",
  "title": "Best portable power station for a CPAP machine (2026): nights per charge with and without the humidifier, 17 models compared",
  "h1": "Best portable power station for a CPAP machine: nights per charge, with and without the humidifier",
  "desc": "How many 8-hour nights 17 current power stations (BLUETTI, EcoFlow, Anker SOLIX, Jackery, Goal Zero, DJI, ALLPOWERS, Tenergy) run a ResMed or Philips CPAP, computed from ResMed's measured draw (7 W machine only, 22 W with humidifier, 34 W with heated tube) and the makers' 0.85 inverter rule; plus the 12 V port, UPS switchover, noise and price of each.",
@@ -300,7 +300,7 @@ COMPARISONS = [
 # Agent queries seen: "how many watts solar panel to recharge 1000Wh portable power station solar charging losses peak sun
 # hours" (ChatGPT), "best 200W 400W portable solar panel for power station 2026" (Claude). ChatGPT's result set: 12 small
 # sites and calculators.
-{"slug": "solar-watts-to-recharge-power-station", "question": "Q21",
+{"slug": "solar-watts-to-recharge-power-station", "buy_compare": True, "question": "Q21",
  "title": "How many watts of solar to recharge a 1,000 Wh power station? 15 portable panels and 10 stations' solar inputs compared (2026)",
  "h1": "How many watts of solar does it take to recharge a 1,000 Wh power station?",
  "desc": "Sizing a solar panel for a 1 kWh portable power station: hours of strong sun to refill 1,000 Wh with each of 15 current panels (ALLPOWERS, EcoFlow, Jackery, Anker SOLIX, BLUETTI, Goal Zero, Renogy, DJI) at 70% of rated output, the solar input limit and voltage range of 10 stations, and the makers' own recharge-time claims.",
@@ -388,7 +388,7 @@ COMPARISONS = [
 # 2 Pro power bank 10K Qi2 25W active cooling", "Belkin UltraCharge Pro Qi2.2 25W magnetic power bank 10K kickstand".
 # Phone figures are Apple's (support.apple.com, apple.com specs), Google's and Samsung's; standard figures the WPC's; charger
 # figures the makers' US pages and the WPC certified-product database, all read 2026-10-27.
-{"slug": "qi2-vs-qi2-2-vs-magsafe-chargers", "question": "Q12 (Q04, Q05, Q09)",
+{"slug": "qi2-vs-qi2-2-vs-magsafe-chargers", "buy_compare": True, "question": "Q12 (Q04, Q05, Q09)",
  "title": "Qi2 vs Qi2.2 vs MagSafe: which magnetic chargers and power banks charge an iPhone at 25 W, and which stay at 15 W (2026)",
  "h1": "Qi2 vs Qi2.2 vs MagSafe: which chargers and power banks charge an iPhone at 25 W, and which stay at 15 W",
  "desc": "What Qi2 (15 W), Qi2 25W or 'Qi2.2' and Apple's MagSafe each mean, the wireless watts every iPhone from the 12 to the 18 Pro accepts (Apple's figures, plus Pixel and Galaxy), and 18 magnetic pads, 3-in-1 stands, power banks, car mounts and desk hubs from Apple, Anker, Belkin, ESR, Baseus, UGREEN and Google: certification, watts to an iPhone, cooling, adapter and price.",
