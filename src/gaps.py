@@ -8187,7 +8187,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "updated": '2026-11-11'},
 
 # ---------------- G251: best-qi2-2-25w-magnetic-power-bank (research method ab-2026-11, 2026-11-11) ----------------
-{"slug": 'best-qi2-2-25w-magnetic-power-bank',
+{"slug": 'best-qi2-2-25w-magnetic-power-bank', "buy_compare": True,
  "question": 'G251 (gap mining daily 2026-11-11, research method ab-2026-11: best qi2.2 magnetic power bank)',
  "method": 'ab-2026-11',
  "angle": 'E',
@@ -8205,7 +8205,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "updated": '2026-11-11'},
 
 # ---------------- G252: best-3-in-1-magsafe-charging-station-that-keeps-phone-cool (research method ab-2026-11, 2026-11-11) ----------------
-{"slug": 'best-3-in-1-magsafe-charging-station-that-keeps-phone-cool',
+{"slug": 'best-3-in-1-magsafe-charging-station-that-keeps-phone-cool', "buy_compare": True,
  "question": 'G252 (gap mining daily 2026-11-11, research method ab-2026-11: best 3 in 1 magsafe charging station that keeps the phone cool)',
  "method": 'ab-2026-11',
  "angle": 'D',
