@@ -1,0 +1,80 @@
+<title>Buy-Link Pilot</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column, tables in their own scroll boxes, receipt-style price lines in mono */
+:root{
+  --bg:#f6f7f5; --fg:#1d2420; --muted:#5d6a63; --rule:#d7ddd8; --card:#ffffff; --accent:#1f7a55; --warn:#a2581b; --tint:#e7f2ec;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121715;--fg:#e4ebe7;--muted:#9aa8a0;--rule:#2b3531;--card:#19201d;--accent:#5cc79a;--warn:#e0a060;--tint:#1c2b24;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121715;--fg:#e4ebe7;--muted:#9aa8a0;--rule:#2b3531;--card:#19201d;--accent:#5cc79a;--warn:#e0a060;--tint:#1c2b24;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body)}
+main{max-width:760px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:30px} h2{font-size:20px}
+p{margin:0} .muted{color:var(--muted)} .eyebrow{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:12px}
+.lead{font-size:17px;background:var(--tint);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px}
+ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-weight:600;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;white-space:nowrap}
+.receipt{font:13px/1.55 var(--mono);background:var(--card);border:1px dashed var(--rule);padding:12px 14px;border-radius:6px;overflow-wrap:anywhere}
+.yes{color:var(--accent);font-weight:600} .no{color:var(--warn);font-weight:600}
+</style>
+<main>
+  <header style="display:flex;flex-direction:column;gap:8px">
+    <span class="eyebrow">Dealectric · DLC-250 · 2026-11-11</span>
+    <h1>Buy-link pilot: make our link the cheapest way to buy, and prove it on the page</h1>
+  </header>
+
+  <section>
+    <p class="lead"><strong>View.</strong> The seven to-dos describe one mechanism. ChatGPT treats buying as a separate step: it compares sellers and picks the lowest price from one it trusts. Our link wins only when it is the cheapest way to buy that exact item and the page proves that in its first 500 characters. DLC-237 is the gate. DLC-239, 240 and 243 supply the proof, DLC-241 gets us into the buying search, DLC-242 covers bundles, and DLC-238 adds products that qualify.</p>
+    <p>Most of our coded products do not qualify. Fixing page copy can't change that. More codes and kits can (DLC-238, 242).</p>
+  </section>
+
+  <section>
+    <h2>1. Where our link is actually cheapest</h2>
+    <p>A new tool, <code>tools/buycheck.py</code>, reads Google Shopping in the Agent Chrome. It compares our price after the link's discount with the lowest trusted seller: the brand's store and major US retailers. Marketplaces and used listings don't count. Google showed a CAPTCHA after 37 of 101 products. The rest is re-running at a slower pace.</p>
+    <div class="scroll"><table>
+      <tr><th>Verdict</th><th class="n">Products</th><th>Which</th></tr>
+      <tr><td class="yes">Our link cheapest</td><td class="n">11</td><td>Baseus PicoGo AM52 and EnerFill FC41; ESR CryoBoost 3-in-1 stand and HaloLock car charger; BLUETTI Elite 30 V2; ALLPOWERS P1800, S2000 Pro, S2000 Pro kit, R2500 V2, R2500 V2 kit; Aurzen TravelPlay</td></tr>
+      <tr><td>Tie</td><td class="n">1</td><td>BLUETTI Elite 200 V2. BLUETTI's own store already shows the same 5% price, so the code adds nothing.</td></tr>
+      <tr><td class="no">Beaten</td><td class="n">8</td><td>Mostly Soundcore: its store and retailers sell below our price after the code</td></tr>
+      <tr><td>No exact match</td><td class="n">16</td><td>Google Shopping lists no card naming the model</td></tr>
+    </table></div>
+    <p class="muted">Amazon was dearer on every one of the 11 where it lists the same item. We read Amazon's prices to choose products only, never to publish them. All 11 were cart-tested on the exact item on 11-11. The old Mac's daily sweep hasn't recorded a test since 11-07 (DLC-251).</p>
+  </section>
+
+  <section>
+    <h2>2. What the pilot pages say</h2>
+    <p>Pilot pages put a same-day comparison in the line under the H1. They carry no typed code for any product whose link applies its discount. The 11 product pages now open with where to buy them.</p>
+    <div class="receipt">Updated 2026-11-11 · Pick: PicoGo AM52: $50.99 through this link, discount applied in Baseus's cart (tested on this model 2026-11-11); Best Buy $69.99, Newegg $94.99, baseus.com without the link $59.99, checked 2026-11-11: dealectric.com/go/baseus-picogo-am52-…</div>
+    <div class="receipt">Where to buy the ALLPOWERS R2500 V2 + SP037 400 W Solar Generator Kit: $853.20 through this link, discount applied in ALLPOWERS's cart (tested on this kit 2026-11-11); iallpowers.com without the link $948, checked 2026-11-11</div>
+  </section>
+
+  <section>
+    <h2>3. Pilot arms and baselines</h2>
+    <div class="scroll"><table>
+      <tr><th>Arm</th><th>Pages</th><th>Baseline (11-11, gpt-6)</th></tr>
+      <tr><td>Retrofit</td><td>6 live pages that lead with a qualifying pick (flying power banks, Tesla back-seat screen, Starlink Mini, three small BLUETTI pages)</td><td>Our page in results 0 of 16 plain chats; controls 5 of 18; no handovers. Retrieval is the gate here.</td></tr>
+      <tr><td>Where to buy</td><td>11 product pages; "Where should I buy the &lt;model&gt;?"</td><td>Our page in 20 of 22 buying searches; buy link 3 times; our page linked in 10. No-saving controls: in 0 of 10.</td></tr>
+      <tr><td>New pages</td><td>5 research-method pages on Claude-gated queries (coverage 0.11–0.27)</td><td>Research picked honestly. Two lead with a qualifying product (Qi2.2 magnetic bank: PicoGo AM52; 3-in-1 MagSafe with cooling: ESR CryoBoost). The 2000 Wh, 1500 Wh and well-pump pages lead with other products.</td></tr>
+      <tr><td>After 11-17</td><td>A/B pages ChatGPT already retrieves that lead with a qualifying pick (2000 Wh kit page; Steam Deck power bank page)</td><td>Held until the A/B test's reading 2 so that test stays clean</td></tr>
+    </table></div>
+    <p>Everything is live since 11-11, with the Worker deployed and IndexNow submitted. Readings start once <code>storedcopy.py</code> shows OpenAI re-fetched each page.</p>
+  </section>
+
+  <section>
+    <h2>4. How we'll call it</h2>
+    <ul>
+      <li><strong>Where to buy:</strong> buy-link handover when our page is in the results, pilot products after re-fetch vs the 3 of 20 baseline, at 3 chats per product. A clear lift would be about 8 of 33 or more.</li>
+      <li><strong>Plain questions (North Star 3):</strong> handover on the 2 new pilot pages and, from 11-17, the A/B pages that qualify, against matched pages whose pick has no real saving.</li>
+      <li><strong>What it can't separate yet:</strong> whether the saving or the comparison line does the work. Every pilot page has both. Only the A/B pages after 11-17 have enough retrieval to split them.</li>
+    </ul>
+  </section>
+</main>
