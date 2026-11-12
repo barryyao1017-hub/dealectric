@@ -14,7 +14,7 @@ def load(run):
         pass
     return list(out.values())
 
-now = load('2026-11-09-ab-early') + load('2026-11-10-ab-reading1') + load('2026-11-10-ab-reading1b') + load('2026-11-11-ab-reading1c')
+now = load('2026-11-09-ab-early') + load('2026-11-10-ab-reading1') + load('2026-11-10-ab-reading1b') + load('2026-11-11-ab-reading1c') + load('2026-11-12-ab-reading1d')
 base = load('2026-11-08-ab-harvest-A') + load('2026-11-08-ab-baseline-B')
 cited = lambda r: (r.get('tier') or 0) >= 4
 
