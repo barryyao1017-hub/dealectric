@@ -131,6 +131,12 @@ def main():
                 r = check(p, tab)
             except Exception as e:  # noqa: BLE001
                 r = {"slug": p["slug"], "error": repr(e)[:200]}
+                if "WebSocket" in repr(e):  # tab or Chrome restarted: open a fresh tab, keep going
+                    try:
+                        tab.close()
+                    except Exception:  # noqa: BLE001
+                        pass
+                    tab = ui.Tab("about:blank")
             rows.append(r)
             out.write_text(json.dumps(rows, indent=1))
             b = r.get("best_trusted") or {}

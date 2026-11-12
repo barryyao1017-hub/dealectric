@@ -349,6 +349,12 @@ except FileNotFoundError:
     BUYCOMPARE = {"products": {}}
 
 
+def bc_after(p, after):
+    """Cart total through our link when the brand runs a store-wide cart offer that stacks with the code (buycompare.json
+    "cart"; UGREEN's "Spend $79+, Save $8", 2026-11-11), so both sides of the comparison are what the cart charges."""
+    return ((BUYCOMPARE["products"].get(p["slug"]) or {}).get("cart") or {}).get("ours", after)
+
+
 def buy_compare(p, short=False):
     """'$247 through this link, discount applied in Vatrer's cart (tested on this model 2026-11-11); Walmart $299.99,
     vatrer.com $259.99 without it, checked 2026-11-11' (plain text), or None when the product has no comparison or its
@@ -358,6 +364,7 @@ def buy_compare(p, short=False):
     if not b or not c or not applied_by_link(p, c) or borrowed_test(p, c):
         return None
     t = last_test(c, p)
+    after = bc_after(p, after)
     others = ", ".join(f"{n} {money(x)}" for n, x in b["sellers"])
     if short:
         return f"{money(after)} through this link, discount applied (tested {t['date']}); {others}, checked {b['date']}"
@@ -922,7 +929,7 @@ def product_page(p):
     if is_amazon(p):
         ld.pop("offers")  # no price or availability claim without Amazon's price feed (Program Policies); the link is in the body
     if c and buy_compare(p):   # DLC-241/243 pilot: answer "where to buy <model>", with no code text to relay
-        title = f"Where to buy the {title_name(p)}: {money(after)} with the discount applied"
+        title = f"Where to buy the {title_name(p)}: {money(bc_after(p, after))} with the discount applied"
         desc = f"{re.split(r'\s*\(', short_name(p))[0]}: {buy_compare(p)}. Buy: {url}"
     elif c:
         e = code_end(p)
