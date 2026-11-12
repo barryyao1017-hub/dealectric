@@ -10,7 +10,9 @@ result {date, pass, list, after, code, lines} is written for the build. --link t
 network deep link with the cart permalink as its destination, as the Worker redirects) and reports whether it reached
 the checkout with every item, the code and the network's click ID (Awin awc / CJ cjevent): one test click.
 
-Amazon kit: opens the amazon.com Add-to-Cart link and reports whether Amazon shows every ASIN on its confirmation page.
+Amazon kit: opens the amazon.com Add-to-Cart link under the test tracking ID dealectrictest-20 (links.json
+amazon.us.test_tag, created 2026-11-11), so test visits stay out of dealectric-20's clicks, and reports whether Amazon
+shows every ASIN on its confirmation page.
 """
 import json, sys, time
 from datetime import date
@@ -158,8 +160,15 @@ def link_check(k: dict) -> bool:
     return "/checkouts/" in href and code_ok and click
 
 
+def test_tagged(url: str) -> str:
+    """The Amazon link with our test tracking ID in place of the real one. Amazon's add-to-cart link does nothing
+    without an AssociateTag, and a test visit under the real tag would count as a click on dealectric-20."""
+    a = B.LINKS["amazon"]["us"]
+    return url.replace(f"AssociateTag={a['tag']}", f"AssociateTag={a['test_tag']}").replace(f"tag={a['tag']}", f"tag={a['test_tag']}")
+
+
 def amazon_kit(k: dict) -> dict:
-    url = B.kit_link(k)
+    url = test_tagged(B.kit_link(k))
     t = C.Tab(url)
     try:
         time.sleep(8)
