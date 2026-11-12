@@ -1,0 +1,25 @@
+#!/bin/sh
+# Refuse a commit that stages src/, docs/ or worker/src/ while another process is changing them (tools/repolock.py,
+# DLC-267). Enabled per clone with:  git config core.hooksPath tools/githooks
+# A tool that holds the lock commits freely (its git inherits DEALECTRIC_REPOLOCK). Anything missing: let the commit through.
+root=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+[ -f "$root/tools/repolock.py" ] || exit 0
+command -v python3.12 >/dev/null 2>&1 || exit 0
+git diff --cached --name-only | grep -qE '^(src|docs|worker/src)/' || exit 0
+# docs/ is built from src/: a commit that stages docs/ while src/ holds changes it leaves out would publish pages
+# whose source is not committed (2026-11-11, commit 50bdc580: another run's half-inserted records were in src/).
+if git diff --cached --name-only | grep -q '^docs/'; then
+  left=$(git diff --name-only -- src | tr '\n' ' ')
+  if [ -n "$left" ]; then
+    echo "Commit refused: docs/ is staged, but src/ has changes that are not in this commit: $left" >&2
+    echo "docs/ is built from src/, so they land together. Stage them if they are yours; if they are another" >&2
+    echo "session's, wait until they are committed, rebuild, then commit." >&2
+    exit 1
+  fi
+fi
+if ! python3.12 "$root/tools/repolock.py" check --wait "${DEALECTRIC_REPOLOCK_WAIT:-90}"; then
+  echo "Commit refused: another process is mid-build, so docs/ may hold its half-built pages." >&2
+  echo "Wait for it (python3.12 tools/repolock.py status), rebuild, then commit again." >&2
+  exit 1
+fi
+exit 0

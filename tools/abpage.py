@@ -39,6 +39,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "growth" / "evals"))
 sys.path.insert(0, str(ROOT / "tools"))
+import repolock  # noqa: E402  (one build at a time per working tree, DLC-267)
 AB = ROOT / "growth/focus/ab"
 RUNS = ROOT / "growth/evals/runs"
 DEFAULT_RUNS = ["2026-11-07-liveplain", "2026-11-07-liveplain-rest"]
@@ -565,53 +566,63 @@ def apply(slug: str, local: bool) -> dict:
         draft["gate"] = {"date": today(), "pass": False, "errors": errs}
         jsave(d / "draft.json", draft)
         return {"slug": draft["slug"], "status": "failed", "errors": errs}
-    before = set((ROOT / "src/img").glob("*.png")) | set((ROOT / "docs").rglob("*")) | set((ROOT / "src/dist").rglob("*"))
-    # products first (gappage.insert writes products and, for a page, a v1 record we don't want: insert products only)
-    gappage.insert({**draft, "status": "products_only"}, {})
-    old = _existing(slug) if not new_page else None
-    gnum = None if old else gappage.next_gnum()
-    text = record_text(draft, old, gnum)
-    if old:
-        replace_record(slug, text)
-    else:
-        gp = ROOT / "src/gaps.py"
-        g = gp.read_text()
-        j = g.rstrip().rfind("]")
-        gp.write_text(g[:j] + text + "\n" + g[j:])
-    if draft.get("products"):
-        sh("python3.12", "tools/images.py", *[p["slug"] for p in draft["products"]])
-    errs = []
-    r = sh("python3.12", "src/build.py")
-    if r.returncode:
-        errs.append("build: " + (r.stderr or r.stdout)[-400:])
-    r = sh("python3.12", "tools/docsguard.py")
-    if r.returncode:
-        errs.append("docsguard: " + r.stdout[-200:])
-    if not errs:
-        cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack_from_harvest(slug), "--ranks", "1,3,6", "--research"]
-        for m in draft["must"]:
-            cmd += ["--must", m]
-        r = sh(*cmd)
-        if "PASS" not in r.stdout:
-            errs.append("fastloop check: " + r.stdout[-500:])
-    new_files = sorted((set((ROOT / "src/img").glob("*.png")) | set((ROOT / "docs").rglob("*")) | set((ROOT / "src/dist").rglob("*"))) - before)
-    if errs:
-        gappage.restore(new_files)
-        draft["gate"] = {"date": today(), "pass": False, "errors": errs}
+    # From the first edit of src/ to the commit or the undo, nothing else may build or commit here (DLC-267).
+    with repolock.hold("abpage"):
+        dirty = [l for l in sh("git", "status", "--porcelain", "src", "docs").stdout.splitlines()
+                 if not l.endswith(("docs/offers.json", "docs/price-history.json"))]
+        if dirty:   # dirtied while this run checked the draft or waited for the lock
+            return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
+        before = set((ROOT / "src/img").glob("*.png")) | set((ROOT / "docs").rglob("*")) | set((ROOT / "src/dist").rglob("*"))
+        # products first (gappage.insert writes products and, for a page, a v1 record we don't want: insert products only)
+        gappage.insert({**draft, "status": "products_only"}, {})
+        old = _existing(slug) if not new_page else None
+        gnum = None if old else gappage.next_gnum()
+        text = record_text(draft, old, gnum)
+        if old:
+            replace_record(slug, text)
+        else:
+            gp = ROOT / "src/gaps.py"
+            g = gp.read_text()
+            j = g.rstrip().rfind("]")
+            gp.write_text(g[:j] + text + "\n" + g[j:])
+        gappage.end_edit()   # restore() puts back only what this run wrote (DLC-267)
+        if draft.get("products"):
+            sh("python3.12", "tools/images.py", *[p["slug"] for p in draft["products"]])
+        errs = []
+        r = sh("python3.12", "src/build.py")
+        if r.returncode:
+            errs.append("build: " + (r.stderr or r.stdout)[-400:])
+        r = sh("python3.12", "tools/docsguard.py")
+        if r.returncode:
+            errs.append("docsguard: " + r.stdout[-200:])
+        foreign = gappage.foreign_changes()
+        if foreign:
+            errs.append("src/ changed under this run (another session is editing this checkout): " + ", ".join(foreign))
+        if not errs:
+            cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack_from_harvest(slug), "--ranks", "1,3,6", "--research"]
+            for m in draft["must"]:
+                cmd += ["--must", m]
+            r = sh(*cmd)
+            if "PASS" not in r.stdout:
+                errs.append("fastloop check: " + r.stdout[-500:])
+        new_files = sorted((set((ROOT / "src/img").glob("*.png")) | set((ROOT / "docs").rglob("*")) | set((ROOT / "src/dist").rglob("*"))) - before)
+        if errs:
+            gappage.restore(new_files)
+            draft["gate"] = {"date": today(), "pass": False, "errors": errs}
+            jsave(d / "draft.json", draft)
+            return {"slug": draft["slug"], "status": "failed", "errors": errs}
+        draft["gate"] = {"date": today(), "pass": True, "g": gnum}
         jsave(d / "draft.json", draft)
-        return {"slug": draft["slug"], "status": "failed", "errors": errs}
-    draft["gate"] = {"date": today(), "pass": True, "g": gnum}
-    jsave(d / "draft.json", draft)
-    if local:
-        sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", str(d),
-           f"growth/evals/runs/fastloop/ab-{slug}"[:200])
-        what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"A/B group A rebuild /{slug}"
-        msg = (f"{what}: angle {draft.get('angle')}, {draft.get('why_angle') or ''}"[:250] +
-               f"\n\nResearched by tools/abpage.py (six angle agents, compose, verify; DLC-208). Research in growth/focus/ab/{slug}/.\n\n"
-               "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n")
-        r = sh("git", "commit", "-q", "-m", msg)
-        return {"slug": draft["slug"], "status": "committed" if r.returncode == 0 else "commit failed: " + (r.stderr or r.stdout)[-200:]}
-    return {"slug": draft["slug"], "status": "passed (not committed)"}
+        if local:
+            sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", str(d),
+               f"growth/evals/runs/fastloop/ab-{slug}"[:200])
+            what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"A/B group A rebuild /{slug}"
+            msg = (f"{what}: angle {draft.get('angle')}, {draft.get('why_angle') or ''}"[:250] +
+                   f"\n\nResearched by tools/abpage.py (six angle agents, compose, verify; DLC-208). Research in growth/focus/ab/{slug}/.\n\n"
+                   "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n")
+            r = sh("git", "commit", "-q", "-m", msg)
+            return {"slug": draft["slug"], "status": "committed" if r.returncode == 0 else "commit failed: " + (r.stderr or r.stdout)[-200:]}
+        return {"slug": draft["slug"], "status": "passed (not committed)"}
 
 
 def main() -> int:

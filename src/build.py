@@ -2,6 +2,23 @@
 """Static site generator for dealectric.com. Run: python3 build.py  -> writes ./dist"""
 import os, shutil, datetime, json, math
 
+if __name__ == "__main__":
+    # One build at a time per working tree, and none while a page tool is between its edit of src/ and its commit
+    # (tools/repolock.py, DLC-267). Taken here, before anything below reads the product data: a build that loaded
+    # src/ first and waited afterwards would still build another run's half-inserted records. The lock ends with
+    # this process; a tool that holds it runs this build as its child and passes straight through.
+    import sys as _sys
+    _sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tools"))
+    try:
+        import repolock as _repolock
+    except ImportError:
+        _repolock = None
+    if _repolock:
+        try:
+            _repolock.acquire("build.py")
+        except _repolock.Busy as _e:
+            _sys.exit(f"build not started: {_e}")
+
 SITE = {
     "brand": "Dealectric",
     "brand_html": "Deal<span>ectric</span>",

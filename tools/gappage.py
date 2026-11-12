@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "growth" / "evals"))
 sys.path.insert(0, str(ROOT / "tools"))
+import repolock  # noqa: E402  (one build at a time per working tree, DLC-267)
 QUEUE = ROOT / "growth/gapmine/queue.json"
 DRAFTS = ROOT / "growth/gapmine/drafts"
 POOL = ROOT / "growth/gapmine/runs/pool"
@@ -225,7 +226,43 @@ def next_gnum() -> int:
     return max(nums) + 1
 
 
+SRC_FILES = ("src/products.py", "src/gaps.py")
+_edit: dict[Path, list] = {}   # file -> [text before this run's edit, text right after it]; see restore()
+
+
+def begin_edit() -> None:
+    """Remember src/products.py and src/gaps.py as they are, before this run writes to them."""
+    _edit.clear()
+    for rel in SRC_FILES:
+        _edit[ROOT / rel] = [(ROOT / rel).read_text(), None]
+
+
+def end_edit() -> None:
+    """Call after the run's last write to those files (abpage.apply writes its page record after insert())."""
+    for p, st in _edit.items():
+        st[1] = p.read_text()
+
+
+def foreign_changes() -> list[str]:
+    """Files in src/ that changed during this run and that the run did not write: another session editing this
+    checkout. A build that includes them must not be committed under this run's name (DLC-267)."""
+    out = [p.relative_to(ROOT).as_posix() for p, (_, after) in _edit.items() if after is not None and p.read_text() != after]
+    for line in sh("git", "status", "--porcelain", "src").stdout.splitlines():
+        f = line[3:].strip()
+        if f not in SRC_FILES and not f.startswith("src/img/"):
+            out.append(f)
+    return sorted(set(out))
+
+
 def insert(draft: dict, item: dict) -> int:
+    begin_edit()
+    try:
+        return _insert(draft, item)
+    finally:
+        end_edit()
+
+
+def _insert(draft: dict, item: dict) -> int:
     pp = ROOT / "src/products.py"
     s = pp.read_text()
     for k, (label, desc) in (draft.get("new_categories") or {}).items():
@@ -257,11 +294,29 @@ def free_pack(item: dict, slug: str) -> str:
 
 
 def restore(new_imgs: list[Path]) -> None:
-    sh("git", "checkout", "--", "src", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json")
+    """Undo this run's own edit and nothing else. Until 2026-11-11 this was `git checkout -- src docs ...`, which
+    would also throw away another session's uncommitted work in the same checkout (DLC-267). Now each file goes back
+    to its text from before the run only if it still holds exactly what the run wrote; a file someone else has changed
+    since is left alone and named. docs/ and the Worker's link map are generated from src/, so checking them out and
+    rebuilding loses nothing: the rebuild writes them again from whatever src/ holds."""
+    kept = []
+    for p, (before, after) in list(_edit.items()):
+        now = p.read_text()
+        if now == before:
+            continue
+        if after is not None and now == after:
+            p.write_text(before)
+        else:
+            kept.append(p.relative_to(ROOT).as_posix())
+    _edit.clear()
+    # Generated files only: back to HEAD first, so the rebuild below finds nothing changed and keeps the sitemap's dates.
+    sh("git", "checkout", "--", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json")
     for f in sorted(new_imgs, reverse=True):
         if f.is_file():
             f.unlink(missing_ok=True)
-    sh("python3.12", "src/build.py")   # src/dist back in step with the restored src/
+    sh("python3.12", "src/build.py")   # docs/, src/dist and the link map back in step with src/
+    if kept:
+        print(f"restore: {', '.join(kept)} changed under this run, so its insert was left in place; remove it by hand", file=sys.stderr, flush=True)
 
 
 def gate(draft: dict, item: dict) -> tuple[list[str], list[Path], int | None]:
@@ -283,6 +338,9 @@ def gate(draft: dict, item: dict) -> tuple[list[str], list[Path], int | None]:
     r = sh("python3.12", "tools/docsguard.py")
     if r.returncode:
         errs.append("docsguard: " + r.stdout[-200:])
+    foreign = foreign_changes()
+    if foreign:
+        errs.append("src/ changed under this run (another session is editing this checkout): " + ", ".join(foreign))
     if not errs and draft.get("status") != "products_only":
         pack = free_pack(item, draft["slug"])
         cmd = ["python3.12", "growth/evals/fastloop.py", "check", f"docs/{draft['slug']}.html", "--packs", pack, "--ranks", "1,3,6"]
@@ -412,20 +470,25 @@ def run_one(item: dict, do_publish, draft: dict | None = None) -> dict:
     for r in pg.get("rows") or []:   # some drafts give cells as a list in column order (Zowietek, 11-06)
         if isinstance(r.get("cells"), list):
             r["cells"] = {k: v for k, v in zip(keys, r["cells"])}
-    errs, imgs, n = gate(draft, item)
-    if errs:
-        restore(imgs)
-        draft["gate"] = {"date": today(), "pass": False, "errors": errs}
-    else:
-        draft["gate"] = {"date": today(), "pass": True, "g": n}
-        if do_publish == "local":
-            (DRAFTS / f"{draft_key(draft, item)}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
-            draft["published"] = commit_local(draft, item, n, imgs)
-        elif do_publish:
-            (DRAFTS / f"{draft['slug']}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
-            draft["published"] = publish(draft, item, n, imgs)
-        else:
+    # From the first edit of src/ to the commit or the undo, nothing else may build or commit here (DLC-267).
+    with repolock.hold("gappage"):
+        if sh("git", "status", "--porcelain", "src", "docs").stdout.strip():   # dirtied while this run researched or waited
+            return {"status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
+        errs, imgs, n = gate(draft, item)
+        if errs:
             restore(imgs)
+            draft["gate"] = {"date": today(), "pass": False, "errors": errs}
+        else:
+            draft["gate"] = {"date": today(), "pass": True, "g": n}
+            if do_publish == "local":
+                (DRAFTS / f"{draft_key(draft, item)}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
+                draft["published"] = commit_local(draft, item, n, imgs)
+            elif do_publish:
+                (DRAFTS / f"{draft['slug']}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
+                draft["published"] = publish(draft, item, n, imgs)
+            else:
+                restore(imgs)
+        _edit.clear()
     (DRAFTS / f"{draft_key(draft, item)}.json").write_text(json.dumps({**draft, "item": item}, indent=1))
     return draft
 
@@ -465,7 +528,7 @@ def main() -> int:
     q = load_queue()
     if a.cmd == "status":
         for x in q:
-            print(f"{x['status']:10} {x['uncovered']:>6} cov {x['coverage']:<5} {x['cluster']}" + (f"  -> {x.get('slug')}" if x.get("slug") else ""))
+            print(f"{x['status']:10} {x['uncovered']:>6} cov {str(x.get('coverage')):<5} {x['cluster']}" + (f"  -> {x.get('slug')}" if x.get("slug") else ""))
         return 0
     if a.cmd == "apply":
         d = json.loads((DRAFTS / f"{a.slug}.json").read_text())

@@ -25,6 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "tools"), str(ROOT / "src"), str(ROOT / "growth/evals")]
 import abpage as A  # noqa: E402
+import repolock  # noqa: E402
 
 KIT_ANGLES = {
     "K1": ("Sizing", "The numbers that decide each item of the kit for this need: watt-hours against the actual load and "
@@ -311,57 +312,59 @@ def apply(slug: str, local: bool) -> dict:
         return {"slug": slug, "status": "failed", "errors": errs}
     if not local:
         return {"slug": slug, "status": "skipped", "reason": "kit pages apply with --local only (the kit and its products are committed first)"}
-    dirty = [l for l in subprocess.run(["git", "status", "--porcelain", "src", "docs"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
-             if not l.endswith(("docs/offers.json", "docs/price-history.json"))]
-    if dirty:
-        return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
-    # 1. products and the kit, cart-tested, committed first (abpage.apply refuses a dirty src/)
-    import gappage
-    news = [p["slug"] for p in draft.get("products") or []]
-    if news:
-        gappage.insert({**draft, "status": "products_only"}, {})
-        subprocess.run(["python3.12", "tools/images.py", *news], cwd=ROOT, capture_output=True, text=True)
-    fails = []
-    import time
-    for n, k in enumerate(draft_kits(draft)):
-        if n:
-            time.sleep(90)   # Shopify 429s back-to-back cart tests on one store (UGREEN, 11-11)
-        write_kit({**draft, "kit": k})
-        r = subprocess.run(["python3.12", "tools/kitcheck.py", k["slug"]], cwd=ROOT, capture_output=True, text=True)
-        print(k["slug"], r.stdout[-1200:], r.stderr[-400:], flush=True)
-        if r.returncode:
-            fails.append(k["slug"] + ": " + (r.stdout or r.stderr)[-300:])
-    if fails:
-        subprocess.run(["git", "checkout", "--", "src/products.py", "src/kits.py", "src/kits-tested.json"], cwd=ROOT)
-        subprocess.run(["git", "clean", "-fdq", "src/img"], cwd=ROOT)
-        return {"slug": slug, "status": "failed", "errors": ["cart test: " + f for f in fails]}
-    subprocess.run(["git", "add", "src/products.py", "src/kits.py", "src/kits-tested.json", "src/img"], cwd=ROOT)
-    subprocess.run(["git", "commit", "-q", "-m", f"Kits {', '.join(k['slug'] for k in draft_kits(draft))} for /{draft['slug']}: products and cart test (DLC-223)\n\n"
-                    "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"], cwd=ROOT)
-    sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
-    # 2. the page: abpage.apply with the record carrying "kit"; products are already in, so none are re-inserted
-    import importlib
-    for m in ("products", "gaps"):
-        if m in sys.modules:
-            importlib.reload(sys.modules[m])
-    full = draft   # the draft with its new product records, written back if the page step fails
-    draft = {**draft, "products": []}
-    A.jsave(d / "draft.json", draft)
-    orig_rt, orig_pc = A.record_text, A.pick_check
-    orig_val = A.validate
-    if not draft.get("bundle_compare"):
-        A.record_text = lambda dr, old, g: orig_rt(dr, old, g).replace('"method": ', f'"kit": {dr["kit"]["slug"]!r},\n "method": ', 1)
-    A.pick_check = lambda dr: []   # the pick is the kit (kit_errors checked it); the row-1 product check doesn't apply
-    A.validate = lambda dr, new: [e for e in orig_val(dr, new) if not e.startswith("NO_LISTED_PRODUCT")]   # kit rows sell
-    try:
-        res = A.apply(slug, True)
-    finally:
-        A.record_text, A.pick_check, A.validate = orig_rt, orig_pc, orig_val
-    if res.get("status") != "committed":
-        subprocess.run(["git", "revert", "--no-edit", sha], cwd=ROOT, capture_output=True)
-        after = A.jload(d / "draft.json", {})   # keep abpage's gate notes, put the product records back
-        A.jsave(d / "draft.json", {**after, "products": full.get("products") or []})
-    return res
+    # From the first edit of src/ through the kit commit and the page, one holder: nothing else builds or commits here (DLC-267).
+    with repolock.hold("kitpage"):
+        dirty = [l for l in subprocess.run(["git", "status", "--porcelain", "src", "docs"], cwd=ROOT, capture_output=True, text=True).stdout.splitlines()
+                 if not l.endswith(("docs/offers.json", "docs/price-history.json"))]
+        if dirty:
+            return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
+        # 1. products and the kit, cart-tested, committed first (abpage.apply refuses a dirty src/)
+        import gappage
+        news = [p["slug"] for p in draft.get("products") or []]
+        if news:
+            gappage.insert({**draft, "status": "products_only"}, {})
+            subprocess.run(["python3.12", "tools/images.py", *news], cwd=ROOT, capture_output=True, text=True)
+        fails = []
+        import time
+        for n, k in enumerate(draft_kits(draft)):
+            if n:
+                time.sleep(90)   # Shopify 429s back-to-back cart tests on one store (UGREEN, 11-11)
+            write_kit({**draft, "kit": k})
+            r = subprocess.run(["python3.12", "tools/kitcheck.py", k["slug"]], cwd=ROOT, capture_output=True, text=True)
+            print(k["slug"], r.stdout[-1200:], r.stderr[-400:], flush=True)
+            if r.returncode:
+                fails.append(k["slug"] + ": " + (r.stdout or r.stderr)[-300:])
+        if fails:
+            subprocess.run(["git", "checkout", "--", "src/products.py", "src/kits.py", "src/kits-tested.json"], cwd=ROOT)
+            subprocess.run(["git", "clean", "-fdq", "src/img"], cwd=ROOT)
+            return {"slug": slug, "status": "failed", "errors": ["cart test: " + f for f in fails]}
+        subprocess.run(["git", "add", "src/products.py", "src/kits.py", "src/kits-tested.json", "src/img"], cwd=ROOT)
+        subprocess.run(["git", "commit", "-q", "-m", f"Kits {', '.join(k['slug'] for k in draft_kits(draft))} for /{draft['slug']}: products and cart test (DLC-223)\n\n"
+                        "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"], cwd=ROOT)
+        sha = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        # 2. the page: abpage.apply with the record carrying "kit"; products are already in, so none are re-inserted
+        import importlib
+        for m in ("products", "gaps"):
+            if m in sys.modules:
+                importlib.reload(sys.modules[m])
+        full = draft   # the draft with its new product records, written back if the page step fails
+        draft = {**draft, "products": []}
+        A.jsave(d / "draft.json", draft)
+        orig_rt, orig_pc = A.record_text, A.pick_check
+        orig_val = A.validate
+        if not draft.get("bundle_compare"):
+            A.record_text = lambda dr, old, g: orig_rt(dr, old, g).replace('"method": ', f'"kit": {dr["kit"]["slug"]!r},\n "method": ', 1)
+        A.pick_check = lambda dr: []   # the pick is the kit (kit_errors checked it); the row-1 product check doesn't apply
+        A.validate = lambda dr, new: [e for e in orig_val(dr, new) if not e.startswith("NO_LISTED_PRODUCT")]   # kit rows sell
+        try:
+            res = A.apply(slug, True)
+        finally:
+            A.record_text, A.pick_check, A.validate = orig_rt, orig_pc, orig_val
+        if res.get("status") != "committed":
+            subprocess.run(["git", "revert", "--no-edit", sha], cwd=ROOT, capture_output=True)
+            after = A.jload(d / "draft.json", {})   # keep abpage's gate notes, put the product records back
+            A.jsave(d / "draft.json", {**after, "products": full.get("products") or []})
+        return res
 
 
 def main() -> int:

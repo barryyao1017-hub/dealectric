@@ -696,6 +696,21 @@ def indexnow_urls(status: str) -> list[str]:
 
 
 def publish(today: str, summary: dict, push: bool, deploy: bool, links: str | None = None) -> None:
+    """Build, commit and push under the repo lock (tools/repolock.py, DLC-267), so no other build or commit of
+    src/ and docs/ in this clone lands in the middle. A lock that cannot be imported never stops the sweep."""
+    try:
+        sys.path.insert(0, str(ROOT / "tools"))
+        import repolock
+        held = repolock.hold("codesweep")
+    except Exception as e:  # noqa: BLE001
+        log(f"repolock unavailable ({e!r}); publishing without it")
+        import contextlib
+        held = contextlib.nullcontext()
+    with held:
+        _publish(today, summary, push, deploy, links)
+
+
+def _publish(today: str, summary: dict, push: bool, deploy: bool, links: str | None = None) -> None:
     before = (ROOT / "worker" / "src" / "links-map.json").read_bytes()
     r = sh([sys.executable, "src/build.py"])
     if r.returncode != 0:

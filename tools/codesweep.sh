@@ -24,6 +24,8 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
     curl -s --max-time 5 http://localhost:9222/json/version >/dev/null || { echo "no agent Chrome on localhost:9222; skipping today's sweep"; end 2; }
   fi
   cd "$REPO" || end 1
+  # The commit guard (tools/githooks/pre-commit, DLC-267) is a per-clone git setting: keep it on in this clone.
+  git config core.hooksPath tools/githooks
   # Local edits to tracked files made --ff-only refuse (2026-10-31: a line appended to growth/evals/footprint.jsonl
   # skipped the day). --autostash sets them aside and puts them back, .gitattributes merges the append-only logs line
   # by line, and --rebase replays a sweep commit whose push failed on an earlier run.
@@ -48,8 +50,8 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   /usr/bin/caffeinate -i python3.12 "$REPO/tools/codesweep.py" "$@"
   rc=$?
   # Daily $0 gap mining and page drafts (DLC-168/175, Barry's yes 2026-11-05; growth/gapmine/daily-plan.md). Runs only
-  # after a clean sweep on a clean src/ and docs/: gappage.py restores those with git checkout, which would discard
-  # sweep work. Drafts only, unless growth/gapmine/AUTOPUBLISH exists (Barry turns that on). Its own exit codes are
+  # after a clean sweep on a clean src/ and docs/ (gappage.py refuses a dirty tree; since DLC-267 its undo reverts only
+  # its own insert). Drafts only, unless growth/gapmine/AUTOPUBLISH exists (Barry turns that on). Its own exit codes are
   # logged on the "gapmine" lines; the end line keeps the sweep's code for tools/dailyupdate.py.
   if [ "$rc" -eq 0 ] && [ -z "$(git status --porcelain -- src docs worker/src)" ]; then
     echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) gapmine start"
