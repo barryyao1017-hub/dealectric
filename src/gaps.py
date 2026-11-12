@@ -2979,7 +2979,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "updated": '2026-11-08'},
 
 # ---------------- power-station-for-starlink-mini-and-macbook-off-grid (research method ab-2026-11, 2026-11-08) ----------------
-{"slug": 'power-station-for-starlink-mini-and-macbook-off-grid',
+{"slug": 'power-station-for-starlink-mini-and-macbook-off-grid', "buy_compare": True,
  "question": 'G62 (power funnel: power station for Starlink Mini + MacBook remote work)',
  "method": 'ab-2026-11',
  "angle": 'B',
@@ -3572,7 +3572,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": "2026-11-03", "updated": '2026-11-08', "checked": "2026-11-03"},
 
 # ---------------- ups-for-a-bambu-lab-3d-printer-power-outage (research method ab-2026-11, 2026-11-08) ----------------
-{"slug": 'ups-for-a-bambu-lab-3d-printer-power-outage',
+{"slug": 'ups-for-a-bambu-lab-3d-printer-power-outage', "buy_compare": True,
  "question": 'G74 (power funnel: UPS for a Bambu P1S)',
  "method": 'ab-2026-11',
  "angle": 'A',
@@ -4330,7 +4330,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  'checked': '2026-11-03'},
 
 # ---------------- best-triple-screen-laptop-extender-16-inch-1920x1200 (research method ab-2026-11, 2026-11-08) ----------------
-{"slug": 'best-triple-screen-laptop-extender-16-inch-1920x1200',
+{"slug": 'best-triple-screen-laptop-extender-16-inch-1920x1200', "buy_compare": True,
  "question": 'G88 (Awin brands: triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels)',
  "method": 'ab-2026-11',
  "angle": 'D',
@@ -6824,7 +6824,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-07'},
 
 # ---------------- G175: best-bluetti-power-station (gap mining daily) ----------------
-{"slug": 'best-bluetti-power-station',
+{"slug": 'best-bluetti-power-station', "buy_compare": True,
  "question": 'G175 (gap mining daily: bluetti power station review: which BLUETTI to buy and what owners complain about (brand head query, demand audit 2026-11-07), 6080 Bing searches / 3 mo, coverage 0.5)',
  "lead_first": True,
  "title": 'Bluetti Power Station Review 2026: Which BLUETTI to Buy and What Owners Complain About',
