@@ -3172,7 +3172,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  ],
  "published": "2026-11-03", "updated": '2026-11-08', "checked": "2026-11-03"},
 
-{"slug": "power-station-for-a-cpap-week-of-camping", "question": "G65 (power funnel: power station for an AirSense 11 CPAP for a week)", "lead_first": True,
+{"slug": "power-station-for-a-cpap-week-of-camping", "buy_compare": True, "question": "G65 (power funnel: power station for an AirSense 11 CPAP for a week)", "lead_first": True,
  "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
                     "title": "BLUETTI AC180, a week of CPAP nights",
                     "description": "1,152 Wh LiFePO4 (about 1,000 measured), 12 V port, 500 W solar.",
@@ -3510,7 +3510,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  ],
  "published": "2026-11-03", "updated": '2026-11-08', "checked": "2026-11-03"},
 
-{"slug": "power-station-to-keep-insulin-cold-in-a-power-outage", "question": "G73 (power funnel: keeping insulin cold for two days)", "lead_first": True,
+{"slug": "power-station-to-keep-insulin-cold-in-a-power-outage", "buy_compare": True, "question": "G73 (power funnel: keeping insulin cold for two days)", "lead_first": True,
  "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
                     "title": "BLUETTI AC180, two days of fridge power",
                     "description": "1,152 Wh LiFePO4, 12 V/10 A port, 500 W solar.",
@@ -3855,7 +3855,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  ],
  "published": "2026-11-03", "updated": '2026-11-08', "checked": "2026-11-03"},
 
-{"slug": "power-station-for-a-farmers-market-booth", "question": "G82 (power funnel: power station for a farmers-market booth)", "lead_first": True,
+{"slug": "power-station-for-a-farmers-market-booth", "buy_compare": True, "question": "G82 (power funnel: power station for a farmers-market booth)", "lead_first": True,
  "product_result": {"slug": "bluetti-ac180", "item_id": "BLUETTI-AC180",
                     "title": "BLUETTI AC180, a market day of power",
                     "description": "1,152 Wh LiFePO4, 1,800 W, 0–80 % in 45 min on AC.",
@@ -4966,7 +4966,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": "2026-11-04", "updated": '2026-11-08',
  "checked": "2026-11-03"},
 
-{"slug": "can-a-1000wh-power-station-run-a-1500w-space-heater", "question": "G99 (power funnel x17: can a 1,000 Wh power station run a 1,500 W space heater, and how long)", "lead_first": True,
+{"slug": "can-a-1000wh-power-station-run-a-1500w-space-heater", "buy_compare": True, "question": "G99 (power funnel x17: can a 1,000 Wh power station run a 1,500 W space heater, and how long)", "lead_first": True,
  "title": "Can a 1,000 Wh power station run a 1,500 W space heater (2026)? About half an hour, and what keeps you warm longer",
  "h1": "Can a 1,000 Wh portable power station run a 1,500 W space heater, and for how long? (2026)",
  "desc": "A 1,500 W space heater on a 1,000 Wh power station runs about half an hour flat out, maybe 45 minutes with thermostat cycling; which 1 kWh units have the AC output for it (Anker SOLIX C1000 Gen 2, EcoFlow DELTA 3, BLUETTI AC180), the low setting, the measured runs on a 1.5 kWh unit, CPSC's plug-in rule, and the electric blanket that lasts a whole night.",
@@ -5230,7 +5230,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-08',
  "updated": '2026-11-08'},
 
-{"slug": "1kwh-power-station-with-1000w-solar-input-two-ports", "question": "G103 (power funnel x17: 1 kWh power station with 1,000 W of solar through two inputs)", "lead_first": True,
+{"slug": "1kwh-power-station-with-1000w-solar-input-two-ports", "buy_compare": True, "question": "G103 (power funnel x17: 1 kWh power station with 1,000 W of solar through two inputs)", "lead_first": True,
  "title": "Which 1 kWh power station takes 1,000 W of solar through two inputs (2026)? Panels that fit, refill time, the single-input alternatives",
  "h1": "Which 1 kWh power station takes 1,000 W of solar through two inputs so it refills in a couple of hours? (2026)",
  "desc": "1 kWh-class power stations by solar input: the EcoFlow DELTA 3 Plus is the one that takes 1,000 W through two XT60 inputs (500 W each, 11–60 V), the BLUETTI Elite 100 V2 1,000 W on one, Dabbsson and DJI 1,200 W with caveats. Which panels fit each port, why two 400 W panels give only 800 W, and how long a refill takes.",
@@ -5496,7 +5496,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": '2026-11-04', "checked": '2026-11-04'},
 
 # ---------------- G113: solar-generator-kit-vs-buying-separately (x18 solar kits, 2026-11-04; copy variant N: neutral) ----------------
-{"slug": 'solar-generator-kit-vs-buying-separately', "question": 'G113 (x18 solar kits: kit vs parts)', "lead_first": True, "copy_variant": 'N',
+{"slug": 'solar-generator-kit-vs-buying-separately', "buy_compare": True, "question": 'G113 (x18 solar kits: kit vs parts)', "lead_first": True, "copy_variant": 'N',
  "title": 'Solar generator kit vs buying the power station and panel separately (2026): which is cheaper',
  "h1": 'Is a solar generator kit cheaper than buying the parts separately? (2026)',
  "desc": "Kit price against the same power station and solar panel bought separately on the makers' US stores, brand by brand: BLUETTI, ALLPOWERS, Anker, DJI; plus when a third-party panel beats the kit.",
@@ -5655,7 +5655,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ======== x19 power-station batch, AI-note layout (end) ========
 # ======== x20 gap-mining batch (2026-11-05, DLC-168): clusters ranked by demand x uncovered share (growth/gapmine) ========
 # ---------------- G118: bluetti-apex-200-vs-apex-300 (launch lane) ----------------
-{"slug": 'bluetti-apex-200-vs-apex-300', "question": 'G118 (x20 gap mining, launch lane: Apex 200 vs Apex 300)', "lead_first": True,
+{"slug": 'bluetti-apex-200-vs-apex-300', "buy_compare": True, "question": 'G118 (x20 gap mining, launch lane: Apex 200 vs Apex 300)', "lead_first": True,
  "title": 'BLUETTI Apex 200 vs Apex 300 for home backup (2026): which one, by what you need to run',
  "h1": 'BLUETTI Apex 200 vs Apex 300 for home backup (2026)',
  "desc": "BLUETTI Apex 200 vs Apex 300 for home backup: 240 V output (only the Apex 300), capacity, inverter, weight, expansion and transfer-switch cost, with launch prices and the code that passed in BLUETTI's cart.",
@@ -5798,7 +5798,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": '2026-11-05', "checked": '2026-11-05'},
 
 # ---------------- G122: plug-in-solar-with-battery-for-apartments ----------------
-{"slug": 'plug-in-solar-with-battery-for-apartments', "question": 'G122 (x20 gap mining: plug-in solar with battery, CA SB 868)', "lead_first": True,
+{"slug": 'plug-in-solar-with-battery-for-apartments', "buy_compare": True, "question": 'G122 (x20 gap mining: plug-in solar with battery, CA SB 868)', "lead_first": True,
  "title": "Plug-in solar with a battery for an apartment (2026): where it's legal and what you can buy",
  "h1": 'Plug-in (balcony) solar with a battery for an apartment (2026)',
  "desc": "Plug-in balcony solar with a battery in the US: the 10 states where it's legal and when, the 1,200 W cap and UL 3700 certification, the certified kits on sale, the wall-plug battery sold only in Utah, and the power station plus panel that needs no permit anywhere.",
@@ -6809,7 +6809,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-06'},
 
 # ---------------- G174: best-home-battery-backup-system (gap mining daily) ----------------
-{"slug": 'best-home-battery-backup-system',
+{"slug": 'best-home-battery-backup-system', "buy_compare": True,
  "question": 'G174 (gap mining daily: home battery backup system (head query, demand audit 2026-11-07), 16397 Bing searches / 3 mo, coverage 0.5)',
  "lead_first": True,
  "title": 'Best Home Battery Backup System (2026): Whole-House Picks, With and Without Solar',
