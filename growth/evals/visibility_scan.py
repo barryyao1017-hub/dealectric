@@ -124,6 +124,9 @@ def score(rec: dict, q: dict) -> dict:
         + re.findall(r"https?://(?:www\.)?dealectric\.com\S*", text)
     ours = [E.strip_tracking(u) for u in urls if re.match(r"https?://(?:www\.)?dealectric\.com", u or "")]
     go = sorted({u for u in ours if "/go/" in u})
+    # North Star 3 (Barry 11-10): our tagged Amazon link counts as a buy link too (Amazon Associates rows, DLC-159/208)
+    go += sorted({u for u in urls + re.findall(r"https?://(?:www\.)?amazon\.com\S*", text)
+                  if re.search(r"(?:associate)?tag=dealectric-20", u or "", re.I)})
     pages = sorted({u for u in ours if "/go/" not in u})
     results = (rec.get("response") or {}).get("search_results") or []
     rank = next((i + 1 for i, r in enumerate(results) if "dealectric.com" in (r.get("url") or "")), None)

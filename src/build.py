@@ -1458,7 +1458,12 @@ def compare_row_v2(c, r):
             price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
             cd, sv, after, date = best_offer(p)
             lo = link_offer(p)
-            if lo:
+            bc = buy_compare(p) if c.get("buy_compare") and c.get("all_links") else None
+            if bc:   # DLC-208 third A push: other sellers' same-day prices beside ours, exact-item cart test named
+                head, rest = bc.split(" through this link, ", 1)
+                buy = (f'{a}<strong>{head}</strong> through this link</a><br>'
+                       f'<span class="small">{html.escape(rest)}</span>')
+            elif lo:
                 how = ("discount applied by the link" if applied_by_link(p, cd)
                        else f"code {html.escape(cd['code'])} at checkout")
                 buy = (f'{a}<strong>{money(after)}</strong> through this link</a><br>'
@@ -1469,9 +1474,19 @@ def compare_row_v2(c, r):
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>'
                 if r.get("url") else html.escape(r["brand"] + " " + r["model"]))
         price, buy = r["cells"].get("price") or "", ""
+        if r.get("asin"):   # DLC-208 third A push (Barry 11-12): Amazon Associates is the fallback link for a brand we have no program with
+            buy = f'<a href="{amazon_row_link(r["asin"])}" rel="sponsored nofollow noopener">Buy on Amazon</a>'
+            price = price or AMAZON_PRICE
+        elif r.get("url") and c.get("all_links"):   # no program and no Amazon listing: the maker's own page, no commission
+            buy = f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"])}\'s page</a>'
     if r.get("note"):
         name += f'<br><span class="small">{r["note"]}</span>'
     return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
+
+
+def amazon_row_link(asin):
+    """Tagged Amazon link for a table row that has no product record (third A push): direct, never through /go/."""
+    return f"https://www.amazon.com/dp/{asin}?tag={LINKS['amazon']['us']['tag']}"
 
 
 def pick_line(c):
@@ -1513,6 +1528,20 @@ def pick_line(c):
     first = c["rows"][0]
     if first.get("slug"):
         return ours(first, "Pick")
+    # third A push (Barry 11-12): the pick is always a product we have a link for, unless the answer names a product
+    # only it fits and we have no link for it ("keep_pick": the RIVER 3 Plus is the one USB-shutdown model, no Amazon listing)
+    if c.get("all_links") and not c.get("keep_pick"):
+        if first.get("asin"):
+            link = amazon_row_link(first["asin"])
+            return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, buy on Amazon: '
+                    f'<a href="{link}" rel="sponsored nofollow noopener">{link}</a>')
+        nxt = next((r for r in c["rows"] if r.get("slug") or r.get("asin")), None)
+        if nxt and nxt.get("slug"):
+            return ours(nxt, "Pick")
+        if nxt:
+            link = amazon_row_link(nxt["asin"])
+            return (f' · Pick: {html.escape(nxt["brand"] + " " + nxt["model"])}, buy on Amazon: '
+                    f'<a href="{link}" rel="sponsored nofollow noopener">{link}</a>')
     line = f' · Pick: {html.escape(first["brand"] + " " + first["model"])}'
     nxt = next((r for r in c["rows"] if r.get("slug")), None)
     return line + (ours(nxt, "Dealectric link") if nxt else "")
