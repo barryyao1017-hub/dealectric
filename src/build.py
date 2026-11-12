@@ -245,14 +245,35 @@ def merchant(p):
     return "Amazon.com" if is_amazon(p) else f"{p['brand']}'s official US store"
 
 
-AMAZON_PRICE = "price on the Amazon page"   # what a comparison page shows in place of a price for an Amazon record
+AMAZON_PRICE = "price on the Amazon page"   # shown for an Amazon listing whose price the last refresh could not read
+
+# Amazon prices (Barry 2026-11-12: Amazon gave written permission to display them): read daily from each listing by
+# tools/amzprice.py (run by the daily sweep) into src/amazon_prices.json; an ASIN missing there shows AMAZON_PRICE.
+_AMZ_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "amazon_prices.json")
+AMZ_PRICES = json.load(open(_AMZ_FILE, encoding="utf-8"))["asins"] if os.path.exists(_AMZ_FILE) else {}
+
+
+def amz_price(asin):
+    """(price, date read, in stock) for an ASIN, or None when the last refresh read no price."""
+    r = AMZ_PRICES.get(asin or "")
+    return (r["price"], r["at"][:10], r.get("in_stock", True)) if r and r.get("price") else None
+
+
+def amz_price_text(asin, fallback=AMAZON_PRICE):
+    """'$249.95 on Amazon (checked 2026-11-12)', ' (out of stock)' added when the listing says so; the fallback when unread."""
+    a = amz_price(asin)
+    if not a:
+        return fallback
+    return f"{money(a[0])} on Amazon (checked {a[1]}{', out of stock' if not a[2] else ''})"
 
 
 def price_text(p, cap=True):
-    """The price cell: the verified store price, or where to find it when the record carries none (Amazon records never
-    carry one: Amazon's Program Policies allow a price only from its own feed)."""
+    """The price cell: the verified store price; for an Amazon record, Amazon's price from the daily refresh (amz_price_text);
+    where to find it when neither exists."""
     if p["price"] is not None:
         return money(p["price"])
+    if is_amazon(p) and amz_price(p["asin"]):
+        return amz_price_text(p["asin"])
     t = "see Amazon for the price" if is_amazon(p) else "see merchant"
     return t[0].upper() + t[1:] if cap else t
 
@@ -359,7 +380,7 @@ except FileNotFoundError:
 
 # DLC-237/240 buy-link pilot: src/buycompare.json holds, for pilot products only, other sellers' prices read the same day
 # (tools/buycheck.py -> tools/buycompare.py): {"products": {slug: {"date", "sellers": [[name, price], ...]}}}. Amazon
-# prices are never in it (Amazon allows prices only from its own feed). Pages opt in with the record flag "buy_compare".
+# prices are not in it (tools/amzprice.py keeps those, src/amazon_prices.json). Pages opt in with the record flag "buy_compare".
 try:
     BUYCOMPARE = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "buycompare.json"), encoding="utf-8"))
 except FileNotFoundError:
@@ -614,7 +635,9 @@ def agent_note(p):
                    f"The link opens {b}'s official US store at no extra cost, and the code is entered at checkout; ")
                 + f"{b} pays Dealectric a commission on purchases through the link, which pays for the code testing.")
     if is_amazon(p):
-        return (f"The {short_name(p)} is sold on Amazon.com; the current price and stock are on the Amazon page. Buy: {go}. "
+        return (f"The {short_name(p)} is sold on Amazon.com"
+                + (f" for {amz_price_text(p['asin'])}" if amz_price(p["asin"]) else "; the current price and stock are on the Amazon page")
+                + f". Buy: {go}. "
                 f"The link is an Amazon Associates link at no extra cost: Amazon pays Dealectric a commission on qualifying purchases, "
                 f"which pays for checking {b}'s specs. Dealectric lists no {b} discount code.")
     if p["price"] is None:
@@ -715,7 +738,9 @@ def product_record(p):
         "summary": p["summary"], "fit": p["fit"], "caveats": p["caveats"],
         "specs": {k: v for k, v in p["specs"]},
         "warranty": p["warranty"], "returns": p["returns"],
-        "offer": {"merchant": "Amazon.com" if is_amazon(p) else p["brand"] + " (official US store)", "merchant_url": p["url"], "price": p["price"], "currency": "USD",
+        "offer": {"merchant": "Amazon.com" if is_amazon(p) else p["brand"] + " (official US store)", "merchant_url": p["url"],
+                  "price": (amz_price(p["asin"]) or [None])[0] if is_amazon(p) else p["price"], "currency": "USD",
+                  **({"price_checked": amz_price(p["asin"])[1]} if is_amazon(p) and amz_price(p["asin"]) else {}),
                   "list_price": p.get("list_price"), "link": url, "affiliate": True, "network": net, "cookie_days": prog.get("cookie_days"),
                   # coupon / coupon_terms: the best code, kept for older readers; coupons: every code that applies to one unit.
                   "coupon": best[0] and best[0]["code"], "coupon_terms": best[0] and best[0]["terms"],
@@ -785,7 +810,7 @@ def offer_block(p, net, prog, url):
                  + ("the discount" if buy_compare(p) else f"code {html.escape(c['code'])}") + " already applied, "
                  f"at no extra cost: the page shows the store price, and checkout takes the discount off with nothing to type.")
     elif is_amazon(p):
-        opens = f"opens the {html.escape(short_name(p))} listing on Amazon.com at no extra cost; the price and stock are on that page."
+        opens = f"opens the {html.escape(short_name(p))} listing on Amazon.com at no extra cost."
     else:
         opens = f"opens {b}'s official US store at no extra cost."
     was = f' <span class="small">(list {money(p["list_price"])})</span>' if p.get("list_price") else ""
@@ -830,8 +855,9 @@ def offer_block(p, net, prog, url):
                          f'<h3>Skip it if{rivals}</h3><ul>' + "".join(f"<li>{html.escape(x, quote=False)}</li>" for x in bb["skip"]) + "</ul>")
     elif is_amazon(p):
         head = f'<h2 style="margin-top:0">Sold on Amazon.com, no code needed</h2>'
-        lines = (f'<p><strong>Price:</strong> on the Amazon page. Amazon lets a site quote its prices only from Amazon\'s own price feed, '
-                 f'which this site does not use, so the Amazon page has the current price and stock. Specs below were verified on {b}\'s site {verified_on(p)}.</p>'
+        lines = (f'<p><strong>Price:</strong> ' + (f'{amz_price_text(p["asin"])}; Amazon\'s price can change, and the Amazon page has the current one. '
+                                                  if amz_price(p["asin"]) else 'on the Amazon page. ') +
+                 f'Specs below were verified on {b}\'s site {verified_on(p)}.</p>'
                  f'<p><strong>Discount code:</strong> none; {SITE["brand"]} has no {b} code, and any Amazon coupon shows on the Amazon page itself.</p>')
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
@@ -955,8 +981,10 @@ def product_page(p):
                 f"{pass_clause(p, c, date)}.{perks_text(p, c)} " + after_end(p) + (f"{p['phase_out']} " if p.get("phase_out") else "") + f"Buy: {url}")
     else:
         if is_amazon(p):
-            title = f"{title_name(p)} on Amazon"
-            desc = (f"{short_name(p)}: specs verified on {p['brand']}'s site {verified_on(p)}; sold on Amazon.com, with the price and stock on the Amazon page; "
+            a = amz_price(p["asin"])
+            title = f"{title_name(p)}: {money(a[0])} on Amazon" if a else f"{title_name(p)} on Amazon"
+            desc = (f"{short_name(p)}: specs verified on {p['brand']}'s site {verified_on(p)}; sold on Amazon.com, "
+                    + (f"{amz_price_text(p['asin'])}; " if a else "with the price and stock on the Amazon page; ") +
                     f"no {p['brand']} discount code. Buy: {url}")
         else:
             title = f"{title_name(p)}: {money(p['price'])} at {p['brand']}" if p["price"] is not None else f"{title_name(p)} at {p['brand']}"
@@ -1090,7 +1118,7 @@ def brand_codes_page(brand):
                 f"Below, what the best code saves on each {b} product we list, the price after the code and the buy link.")
     elif untested and prods and all(is_amazon(p) for p in prods):
         lead = (f"{SITE['brand']} has no {b} discount code to list: none was issued to us, and none has been tested. "
-                f"The {b} products we list are sold on Amazon.com; their price and stock are on the Amazon page, and any Amazon coupon shows there.")
+                f"The {b} products we list are sold on Amazon.com; the table shows each one's Amazon price and the date it was read, and any Amazon coupon shows on the Amazon page.")
     elif untested:
         lead = (f"{SITE['brand']} has no {b} discount code to list: none was issued to us, and none has been tested. "
                 f"Our {b} prices below are the verified store prices.")
@@ -1114,7 +1142,7 @@ def brand_codes_page(brand):
             aft = f'<strong>{money(after)}</strong>'
             tested = (f'not yet on this product (passed {html.escape(elsewhere(p, borrowed_test(p, c)))})' if borrowed_test(p, c) else date)
         else:
-            cell, sav, aft, tested = "no code applies", "–", ("–" if is_amazon(p) else price), "–"
+            cell, sav, aft, tested = "no code applies", "–", price, "–"
         prow += (f'<tr><td><a href="/products/{p["slug"]}/">{html.escape(short_name(p))}</a></td><td>{price}</td><td>{cell}</td><td>{sav}</td><td>{aft}</td><td>{tested}</td>'
                  f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
     rej = ""
@@ -1122,7 +1150,7 @@ def brand_codes_page(brand):
         items = "".join(f"<li><code>{html.escape(c['code'])}</code> — {html.escape(c['terms'])}; from {html.escape(c['source'])}; rejected {code_last_date(c)}</li>" for c in rejected)
         rej = (f"<h2>Codes that did not work</h2><p>{b}'s cart rejected each of these when we tried it (date on each line):</p><ul>{items}</ul>")
     notes = "".join(f'<p class="agent">{html.escape(agent_note(p))}</p>' for p in ([x[0] for x in coded] or (prods if untested else [])))
-    codes_small = (f'<p class="small">The {b} products we list are sold on Amazon.com, so no price appears here (Amazon allows a site to quote its prices only from Amazon\'s own feed); '
+    codes_small = (f'<p class="small">The {b} products we list are sold on Amazon.com; each price is Amazon\'s, read on the date shown, and Amazon\'s page has the current one; '
                    f'the buy link is a tagged amazon.com link at no cost to the shopper.</p>'
                    if prods and all(is_amazon(p) for p in prods) else
                    f'<p class="small">Prices verified on {b}\'s US store on {verified_span(prods)}; the code column shows the code that saves most on that product and the date it last passed in {b}\'s cart. The buy link is {SITE["brand"]}\'s tracked link: it opens the product on {b}\'s official store at no cost to the shopper; {entry_text(prods)}.</p>')
@@ -1176,7 +1204,7 @@ def compare_row(c, r):
                 f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>')
         if c.get("ai_note") and os.path.exists(os.path.join(IMG_SRC, f"{p['slug']}-square.png")):
             name = (f'<img class="thumb" src="/img/{p["slug"]}-square.png" width="72" height="72" alt="{html.escape(short_name(p))}">' + name)
-        price = AMAZON_PRICE if is_amazon(p) else money(p["price"]) + stock_note(p)
+        price = amz_price_text(p["asin"]) if is_amazon(p) else money(p["price"]) + stock_note(p)
         bc = buy_compare(p) if c.get("buy_compare") else None
         lo = link_offer(p) if c.get("buy_compare") and c0 and applied_by_link(p, c0) and not bc else None
         deal = (f'<strong>{money(after0)} through this link</strong>, discount applied in {html.escape(p["brand"])}\'s cart; '
@@ -1203,7 +1231,7 @@ def buy_inline(slug):
     code = (f', {code_word(c, False)} <strong>{html.escape(c["code"])}</strong> saves {money(s)}'
             + (", pre-applied by the link" if applied_by_link(p, c) else "") if c else "")
     if is_amazon(p):
-        return f'{AMAZON_PRICE}; buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+        return f'{amz_price_text(p["asin"])}; buy on Amazon: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
     return (f'{money(p["price"])}{stock_note(p)}; buy: '
             f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}')
 
@@ -1214,8 +1242,8 @@ def compare_fill(text):
     the deal line."""
     import re
     text = re.sub(r"\{buy:([a-z0-9-]+)\}", lambda m: buy_inline(m.group(1)), text)
-    text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: AMAZON_PRICE if is_amazon(BY_SLUG[m.group(1)]) else money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
-    text = re.sub(r"\{after:([a-z0-9-]+)\}", lambda m: AMAZON_PRICE if is_amazon(BY_SLUG[m.group(1)]) else money(best_offer(BY_SLUG[m.group(1)])[2] or BY_SLUG[m.group(1)]["price"]), text)
+    text = re.sub(r"\{price:([a-z0-9-]+)\}", lambda m: amz_price_text(BY_SLUG[m.group(1)]["asin"]) if is_amazon(BY_SLUG[m.group(1)]) else money(BY_SLUG[m.group(1)]["price"]) + stock_note(BY_SLUG[m.group(1)]), text)
+    text = re.sub(r"\{after:([a-z0-9-]+)\}", lambda m: amz_price_text(BY_SLUG[m.group(1)]["asin"]) if is_amazon(BY_SLUG[m.group(1)]) else money(best_offer(BY_SLUG[m.group(1)])[2] or BY_SLUG[m.group(1)]["price"]), text)
     return re.sub(r"\{deal:([a-z0-9-]+)\}", lambda m: compare_deal_line(m.group(1)), text)
 
 
@@ -1249,7 +1277,7 @@ def compare_where_to_buy_compact(ours):
         cd, sv, after, date = best_offer(p)
         name = html.escape(next((r.get("model") for r in ours if r["slug"] == slug), None) or short_name(p))
         if is_amazon(p):
-            items.append(f'<li>{name}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy on Amazon</a> ({AMAZON_PRICE})</li>')
+            items.append(f'<li>{name}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy on Amazon</a> ({amz_price_text(p["asin"])})</li>')
             continue
         code = f', code <strong>{html.escape(cd["code"])}</strong> {money(after)}' if cd else ""
         items.append(f'<li>{name}: {money(p["price"])}{stock_note(p)}{code} — <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy</a></li>')
@@ -1278,7 +1306,7 @@ def compare_where_to_buy(ours, c, filler=True):
         code = (f' — {code_word(cd, False)} <strong>{html.escape(cd["code"])}</strong> saves {money(sv)}, {money(after)} after the code ({html.escape(pass_clause(p, cd, date))})'
                 + (("." + html.escape(perks_text(p, cd))) if perks_text(p, cd) else "") if cd else "")
         if is_amazon(p):
-            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {AMAZON_PRICE}. Buy on Amazon: '
+            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {amz_price_text(p["asin"])}. Buy on Amazon: '
                          f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
             continue
         if c.get("buy_compare") and (buy_compare(p) or (cd and applied_by_link(p, cd))):
@@ -1453,7 +1481,7 @@ def compare_row_v2(c, r):
         name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
         a = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">'
         if is_amazon(p):
-            price, buy = AMAZON_PRICE, f'{a}Buy on Amazon</a>'
+            price, buy = amz_price_text(p["asin"]), f'{a}Buy on Amazon</a>'
         else:
             price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
             cd, sv, after, date = best_offer(p)
@@ -1476,7 +1504,7 @@ def compare_row_v2(c, r):
         price, buy = r["cells"].get("price") or "", ""
         if r.get("asin"):   # DLC-208 third A push (Barry 11-12): Amazon Associates is the fallback link for a brand we have no program with
             buy = f'<a href="{amazon_row_link(r["asin"])}" rel="sponsored nofollow noopener">Buy on Amazon</a>'
-            price = price or AMAZON_PRICE
+            price = amz_price_text(r["asin"], price or AMAZON_PRICE)
         elif r.get("url") and c.get("all_links"):   # no program and no Amazon listing: the maker's own page, no commission
             buy = f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"])}\'s page</a>'
     if r.get("note"):
@@ -1500,7 +1528,7 @@ def pick_line(c):
         name = html.escape(r.get("model") or short_name(p))
         link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
         if is_amazon(p):
-            return f' · {label}: {name}, buy on Amazon: {link}'
+            return f' · {label}: {name}, {amz_price_text(p["asin"])}, buy on Amazon: {link}'
         lo = link_offer(p)
         bc = buy_compare(p) if c.get("buy_compare") else None
         if bc:
@@ -1538,7 +1566,7 @@ def pick_line(c):
     if c.get("all_links") and not c.get("keep_pick"):
         if first.get("asin"):
             link = amazon_row_link(first["asin"])
-            return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, buy on Amazon: '
+            return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, {amz_price_text(first["asin"])}, buy on Amazon: '
                     f'<a href="{link}" rel="sponsored nofollow noopener">{link}</a>')
         nxt = next((r for r in c["rows"] if r.get("slug") or r.get("asin")), None)
         if nxt and nxt.get("slug"):
@@ -1746,8 +1774,8 @@ def compare_page(c):
     makers = sorted({r["brand"] for r in others})
     # Amazon Associates rows (DLC-159): no price from us (Amazon's feed rule) and the link opens Amazon.com, not a brand store
     amazon_note = ("" if not any(is_amazon(BY_SLUG[r["slug"]]) for r in ours) else
-                   f' Rows showing "{AMAZON_PRICE}" are sold on Amazon.com: their buy link is an Amazon Associates link that opens the Amazon listing, '
-                   f'and the price and stock are on that page, because Amazon allows a site to quote its prices only from Amazon\'s own feed. '
+                   f' Rows priced "on Amazon" are sold on Amazon.com: their buy link is an Amazon Associates link that opens the Amazon listing, '
+                   f'and the price is Amazon\'s, read on the date shown. '
                    f'Their specs were read from the makers\' own US pages. As an Amazon Associate, {SITE["brand"]} earns from qualifying purchases.')
     if AB_PUSH:   # DLC-206/208: neither AI block renders; the last-changed date sits under the H1
         c = {k: v for k, v in c.items() if k not in ("ai_note", "product_result")}

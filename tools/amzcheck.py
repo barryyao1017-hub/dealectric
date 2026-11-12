@@ -2,8 +2,8 @@
 """Read Amazon US listings with curl: exact title, current price and rating by ASIN, or the ASINs a search returns.
 
 Used by the gap-page pipeline (growth/gapmine/daily-plan.md) to confirm an ASIN is the product the page names and to
-compare Amazon's price with the maker's store before choosing the link. The price is for that comparison only: our
-pages never print an Amazon price (Program Policies, DLC-159).
+compare Amazon's price with the maker's store before choosing the link. The prices the pages show come from
+tools/amzprice.py (daily, src/amazon_prices.json), not from this script.
 
     python3.12 tools/amzcheck.py asin B0DKXDKBG5 [B0... ...]     # JSON lines: asin, title, price, rating, ratings
     python3.12 tools/amzcheck.py search "fiio dm13"               # JSON lines: asin, title

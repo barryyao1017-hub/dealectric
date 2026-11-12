@@ -861,8 +861,9 @@ def cmd_check(a) -> None:
         start = text.find("\n", text.find(title[:40]) + 1) if title[:40] in text else 0
     top = text[max(start, 0): max(start, 0) + 600]
     fails = []
-    # Amazon Associates picks (DLC-159, 2026-11-03) carry a direct tagged amazon.com link and no price (Amazon's Program
-    # Policies), so for them the buy link is "tag=dealectric-20" and the price slot is the words "price on the Amazon page".
+    # Amazon Associates picks (DLC-159, 2026-11-03) carry a direct tagged amazon.com link, so for them the buy link is
+    # "tag=dealectric-20"; the price is Amazon's ("$X on Amazon (checked <date>)", since 11-12) or, when the daily read
+    # found none, the words "price on the Amazon page".
     # An Amazon kit's Add-to-Cart link carries the tag as "AssociateTag=dealectric-20" (DLC-223), so match it case-blind.
     has_link = lambda t: "/go/" in t or "tag=dealectric-20" in t.lower()   # noqa: E731
     has_price = lambda t: "$" in t or "price on the amazon page" in t.lower()   # noqa: E731

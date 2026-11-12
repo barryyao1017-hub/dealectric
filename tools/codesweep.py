@@ -9,7 +9,8 @@ accepted with the amount it took off or rejected, is appended to growth/codes/<d
 tools/codecheck.py writes, then folded into src/coupons.json (tools/codes_merge.py). Then tools/linkcheck.py checks that
 every product URL still lands on its product and that /go/<slug> still redirects to the link map's deep link (DLC-35; its
 own process, see check_links(): a failure there is logged and never stops the sweep). The site is rebuilt, and the
-result is committed, pushed and, when the Worker's link map changed, deployed.
+result is committed, pushed and, when the Worker's link map changed, deployed. Before the rebuild, tools/amzprice.py
+re-reads the Amazon prices the pages show (src/amazon_prices.json).
 
 Rules: a made-up control code must be rejected by each store or that store's checks are discarded; a code that fails
 on every product in one sweep keeps its last passing date and gets a strike; two strikes in a row retire it
@@ -717,7 +718,7 @@ def _publish(today: str, summary: dict, push: bool, deploy: bool, links: str | N
         raise SystemExit(f"build failed: {r.stderr[-800:]}")
     log(r.stdout.strip().splitlines()[-1])
     map_changed = (ROOT / "worker" / "src" / "links-map.json").read_bytes() != before
-    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"]).stdout
+    st = sh(["git", "status", "--porcelain", "--", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "src/amazon_prices.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"]).stdout
     index_urls = indexnow_urls(st)   # DLC-87: decided against HEAD, before this run's commit
     if not st.strip():
         log("nothing changed; no commit")
@@ -728,7 +729,7 @@ def _publish(today: str, summary: dict, push: bool, deploy: bool, links: str | N
     import docsguard   # DLC-149: never stage a missing, truncated or duplicated docs/
     docsguard.check(str(ROOT))
     # growth/codes holds <today>-checks.jsonl and linkcheck's <today>-links.json (check_links)
-    sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
+    sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "src/amazon_prices.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
     msg = (f"codes: daily cart check {today}\n\n{summary['accepted']} checks accepted, {summary['rejected']} rejected"
            + (f"; held on a first strike: {', '.join(c for _, c in summary['held'])}" if summary["held"] else "")
            + (f"; {summary['unanswered']} unanswered (429 or error, not rejections)" if summary.get("unanswered") else "")
@@ -761,7 +762,7 @@ def _publish(today: str, summary: dict, push: bool, deploy: bool, links: str | N
         if r.returncode != 0:
             raise SystemExit(f"rebuild on top of main failed: {r.stderr[-800:]}")
         docsguard.check(str(ROOT))
-        sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
+        sh(["git", "add", "src/coupons.json", "src/stock.json", "src/kits-tested.json", "src/amazon_prices.json", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", "growth/codes"])
         r = sh(["git", "commit", "-q", "-m", msg])
         if r.returncode != 0:
             raise SystemExit(f"commit on top of main failed: {r.stderr[-400:]}")
@@ -811,6 +812,15 @@ def retest_kits() -> str:
     return "kits: " + "; ".join(ok) if ok else ""
 
 
+def refresh_amazon_prices() -> str:
+    """Re-read every Amazon price the site shows (tools/amzprice.py -> src/amazon_prices.json; Barry 11-12: keep them
+    current). Never raises: a failure leaves yesterday's file, logged in the report."""
+    r = sh([sys.executable, "tools/amzprice.py"], timeout=5400)
+    last = (r.stdout.strip().splitlines() or [""])[-1]
+    log(f"amazon prices: rc {r.returncode}: {last}")
+    return f"amazon prices: {last}" if r.returncode == 0 else f"amazon prices: refresh failed (rc {r.returncode}): {r.stderr[-300:]}"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
@@ -844,6 +854,10 @@ def main() -> int:
     kits = retest_kits()
     if kits:
         links = (links + "\n\n" if links else "") + kits
+    try:
+        links = (links + "\n\n" if links else "") + refresh_amazon_prices()
+    except Exception as e:  # noqa: BLE001
+        log(f"amzprice hook: {type(e).__name__}: {e}; the sweep continues")
     stock = read_stock()
     if stock:
         links = (links + "\n\n" if links else "") + stock

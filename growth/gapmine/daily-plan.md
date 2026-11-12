@@ -51,7 +51,7 @@ not used for gating.
    limit holds.
 3. **Unattended pages need the checks I did by hand today**, as code: maker-store price and spec re-read (Shopify
    `.js` / search endpoints), Amazon title check by ASIN, Amazon-vs-maker price comparison (link the cheaper honest
-   route), no prices next to Amazon links, no duplicate price tokens. 11-05's research had three such errors.
+   route), no hand-typed prices next to Amazon links (build.py prints Amazon's from src/amazon_prices.json), no duplicate price tokens. 11-05's research had three such errors.
 4. **Auto-publish before evidence.** Volume-picked pages (x20, x21) are 0–1 days old; DLC-171/172 read them 11-15/16.
    Recommendation: run discovery daily now, queue pages as drafts, switch auto-publish on after the 11-16 reading.
 5. **Schedule.** The charter says no new scheduled tasks. Proposal: no new job; `tools/codesweep.sh` on the old Mac

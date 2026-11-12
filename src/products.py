@@ -6262,7 +6262,7 @@ PRODUCTS = [
  "caveats": ["Mulches only; it won't pick up leaves.", 'Its path is a little less straight than RTK mowers on narrow strips, and in one UK test it touched a ball.', 'Owner reviews are still few; one Trustpilot owner returned a unit after mapping and docking errors.', 'Short runtime (about 40 minutes), so it recharges often.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
-# the page (never through /go/), no price or stock on our pages (Amazon allows prices only from its own feed), and the
+# the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
 # store when read); `official_page` is the brand's US product page the specs were read from.
 {"slug": "ecoflow-river-3-245wh", "brand": "EcoFlow", "program": "amazon:us", "asin": "B0DB1S36YP", "category": "power-station",

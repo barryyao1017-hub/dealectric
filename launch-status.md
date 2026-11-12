@@ -21,7 +21,7 @@ This is durable reference, not a status snapshot. Current status lives in the "D
 ## Affiliate programs
 - Approved programs with links in use: `src/links.json`. Pending applications and new approvals: the CJ, Awin and Rakuten dashboards and the inbox (DLC-14 daily check; DLC-16 counts the pending set).
 - Declined, 2026-10-12..16 (for DLC-18, reapply once traffic shows): CJ — EcoFlow, Harman, OtterBox, Scosche, Sony, X-Sense (silent); Awin — UGREEN Global ("unable to verify traffic"; UGREEN was later approved on CJ, 2026-11-03); Impact Marketplace appeal denied 2026-10-12. Anker (Impact) invitation unanswered (DLC-17).
-- Amazon Associates (since 2026-11-03): store/tracking ID `dealectric-20`, site dealectric.com, payee Jiayi Yao; provisional until 3 qualifying sales in 180 days. Records carry `program: "amazon:us"`, a direct tagged link and no price (Amazon allows prices only from its own feed); the Associates statement is in every footer.
+- Amazon Associates (since 2026-11-03): store/tracking ID `dealectric-20`, site dealectric.com, payee Jiayi Yao; provisional until 3 qualifying sales in 180 days. Records carry `program: "amazon:us"`, a direct tagged link and, since 2026-11-12, Amazon's price with its read date (written permission from Amazon per Barry; refreshed daily by tools/amzprice.py); the Associates statement is in every footer.
 - Skimlinks (sub-network, 25% cut, ~90-day payout): application for dealectric.com submitted 2026-11-03, pending (DLC-158). Rakuten Advertising (since 2026-11-06): Anker SOLIX approved; site ID 613226, publisher id `5ip7Zy3Dkto`.
 - Geo: US-only until North Star 1 is met or non-US real-browser landings pass ~20% (DLC-155).
 
