@@ -233,6 +233,17 @@ async function logPageview(url, request, status, tag, env) {
     const r = await env.DB.prepare(`SELECT COUNT(DISTINCT page) AS n FROM pageviews INDEXED BY pageviews_ts WHERE ${same}`).bind(...args).first();
     if ((r?.n || 0) >= 8) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
   }
+  // Rotating-network rule (2026-11-11): the same page opened by the same user agent, with no tag and no referrer, from
+  // a different network within a day is a monitor on a proxy pool (the six-page monitor reached us through 20+
+  // networks, one through Verizon). Every such row of that page and agent in the day is flagged, the first one too.
+  // Read through the page index, so it touches only that page's rows.
+  if (bot === 0 && !tag && !referrer) {
+    const day = new Date(Date.now() - 86_400_000).toISOString();
+    const same = "page = ? AND user_agent = ? AND ts >= ? AND IFNULL(tag, '') = '' AND IFNULL(referrer, '') = ''";
+    const args = [clip(page, 200), clip(ua, 300), day];
+    const r = await env.DB.prepare(`SELECT COUNT(DISTINCT IFNULL(asn, 0)) AS n FROM pageviews INDEXED BY pageviews_page WHERE ${same}`).bind(...args).first();
+    if ((r?.n || 0) >= 2) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_page SET bot_like = 1 WHERE ${same} AND bot_like = 0`).bind(...args).run();
+  }
 }
 
 // ---------------------------------------------------------------- /go/<slug>

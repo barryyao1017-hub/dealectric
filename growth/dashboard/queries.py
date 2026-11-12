@@ -9,7 +9,7 @@ HC = """seen AS (SELECT user_agent AS ua, IFNULL(country, '') AS country, date(d
             COALESCE(MAX(CASE WHEN platform NOT IN ('internal', 'direct') THEN platform END), 'direct') AS platform
           FROM pageviews WHERE bot_like = 0 GROUP BY 1, 2, 3),
 burst AS (SELECT user_agent AS ua, IFNULL(country, '') AS country, date(datetime(ts, '-8 hours')) AS day FROM clicks
-          WHERE kind = 'redirect' GROUP BY 1, 2, 3 HAVING COUNT(DISTINCT slug) >= 5),
+          WHERE kind = 'redirect' AND bot_like = 0 GROUP BY 1, 2, 3 HAVING COUNT(DISTINCT slug) >= 5),
 hc AS (
   SELECT c.*, date(datetime(c.ts, '-8 hours')) AS day,
     CASE
