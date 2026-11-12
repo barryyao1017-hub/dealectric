@@ -6357,7 +6357,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-06'},
 
 # ---------------- G145: best-self-heating-lithium-battery (gap mining daily) ----------------
-{"slug": 'best-self-heating-lithium-battery',
+{"slug": 'best-self-heating-lithium-battery', "buy_compare": True,
  "question": 'G145 (brand page for Redodo: best self heating lithium battery)',
  "lead_first": True,
  "title": 'Best Self-Heating Lithium Battery (2026): Redodo 12V 100Ah vs Vatrer, LiTime',
@@ -7340,7 +7340,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "updated": '2026-11-10'},
 
 # ---------------- G204: 3d-printer-with-scanner-combo-vs-separate (research method ab-2026-11, 2026-11-10) ----------------
-{"slug": '3d-printer-with-scanner-combo-vs-separate',
+{"slug": '3d-printer-with-scanner-combo-vs-separate', "buy_compare": True,
  "question": 'G204 (gap mining daily 2026-11-10, research method ab-2026-11: 3d printer with scanner)',
  "method": 'ab-2026-11',
  "angle": 'B',
