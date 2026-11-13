@@ -1,0 +1,105 @@
+<title>Dealectric Product Mix</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a split bar per metric shows solar vs everything else, then tables. */
+:root {
+  --bg: #f6f7f5; --fg: #1b1f1c; --muted: #5d665f; --line: #d9ddd8; --card: #ffffff;
+  --solar: #d9822b; --rest: #3f7d6b; --track: #e7eae5;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141714; --fg: #e8ebe7; --muted: #9aa49c; --line: #2c322d; --card: #1b1f1c;
+  --solar: #f0a050; --rest: #6fb8a2; --track: #262b27; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141714; --fg: #e8ebe7; --muted: #9aa49c; --line: #2c322d; --card: #1b1f1c;
+  --solar: #f0a050; --rest: #6fb8a2; --track: #262b27; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+main { max-width: 760px; margin: 0 auto; padding-block: 32px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px; }
+h1 { font-size: 1.6rem; font-weight: 600; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.05rem; font-weight: 600; margin: 0 0 10px; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.sub { color: var(--muted); font-size: .9rem; }
+.lead { font-size: 1.05rem; }
+.legend { display: flex; gap: 18px; font-size: .85rem; color: var(--muted); flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.bars { display: grid; gap: 12px; }
+.bar { display: grid; grid-template-columns: 170px 1fr; gap: 12px; align-items: center; }
+.bar .lbl { font-size: .9rem; }
+.track { display: flex; height: 26px; border-radius: 4px; overflow: hidden; background: var(--track);
+  font-family: var(--mono); font-size: .78rem; font-variant-numeric: tabular-nums; }
+.track span { display: flex; align-items: center; padding: 0 8px; white-space: nowrap; color: #fff; min-width: 0; }
+.s { background: var(--solar); } .r { background: var(--rest); }
+@media (max-width: 520px) { .bar { grid-template-columns: 1fr; gap: 4px; } }
+.tw { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { text-align: left; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 500; color: var(--muted); font-size: .8rem; letter-spacing: .03em; text-transform: uppercase; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; padding-right: 0; padding-left: 10px; white-space: nowrap; }
+th.n { text-align: right; padding-right: 0; }
+.callout { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; display: grid; gap: 8px; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+code { font-family: var(--mono); font-size: .85em; }
+</style>
+<main>
+  <header style="display:grid;gap:6px">
+    <h1>Dealectric Product Mix</h1>
+    <p class="sub">Solar generators vs everything else · Oct 29 – Nov 13, 2026 (Pacific) · shopper-only counts after the Nov 13 crawler fix</p>
+  </header>
+
+  <p class="lead">Everything else is 88% of the catalog and draws nearly half the page visitors, but it earns 6% of buy-link clicks and none of the sales. All 10 sales ($425.06) are ALLPOWERS or BLUETTI solar generators.</p>
+
+  <section>
+    <h2>Share of each measure</h2>
+    <div class="legend"><span><i class="s"></i>Solar generators (power stations, solar kits, panels)</span><span><i class="r"></i>Everything else</span></div>
+    <div class="bars" style="margin-top:12px">
+      <div class="bar"><div class="lbl">Products in catalog</div><div class="track"><span class="s" style="width:12%">49</span><span class="r" style="width:88%">348</span></div></div>
+      <div class="bar"><div class="lbl">Page visitors</div><div class="track"><span class="s" style="width:53%">80</span><span class="r" style="width:47%">71</span></div></div>
+      <div class="bar"><div class="lbl">Page visitors, last 7 days</div><div class="track"><span class="s" style="width:43%">41</span><span class="r" style="width:57%">55</span></div></div>
+      <div class="bar"><div class="lbl">Buy-link clicks</div><div class="track"><span class="s" style="width:94%">223</span><span class="r" style="width:6%">14</span></div></div>
+      <div class="bar"><div class="lbl">Sales</div><div class="track"><span class="s" style="width:100%">10 · $425.06</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where the traffic comes from</h2>
+    <div class="tw"><table>
+      <tr><th></th><th class="n">ChatGPT</th><th class="n">Google</th><th class="n">Other</th><th class="n">Clicks per visitor</th></tr>
+      <tr><td>Solar generator page views</td><td class="n">101</td><td class="n">2</td><td class="n">7</td><td class="n">2.8</td></tr>
+      <tr><td>Everything-else page views</td><td class="n">72</td><td class="n">13</td><td class="n">4</td><td class="n">0.2</td></tr>
+    </table></div>
+    <p class="sub" style="margin-top:10px">ChatGPT sends both kinds of shopper. On solar, it usually writes our buy link straight into the answer, so most of the 223 clicks never touch a page. On everything else, it cites the page, and the shopper reads it and leaves.</p>
+  </section>
+
+  <section>
+    <h2>Busiest pages outside solar</h2>
+    <div class="tw"><table>
+      <tr><th>Page</th><th>Category</th><th class="n">Visitors</th><th class="n">Clicks</th><th>Source</th></tr>
+      <tr><td>Tesla Model Y back-seat screen</td><td>projector</td><td class="n">6</td><td class="n">0</td><td>ChatGPT</td></tr>
+      <tr><td>Soundcore discount codes</td><td>audio</td><td class="n">4</td><td class="n">0</td><td>ChatGPT</td></tr>
+      <tr><td>Best portable monitor above laptop screen</td><td>portable monitor</td><td class="n">4</td><td class="n">2</td><td>ChatGPT</td></tr>
+      <tr><td>Best standalone HDMI recorder</td><td>video recorder</td><td class="n">3</td><td class="n">0</td><td>ChatGPT</td></tr>
+      <tr><td>Best electric screwdriver for electronics</td><td>screwdriver</td><td class="n">3</td><td class="n">0</td><td>ChatGPT</td></tr>
+      <tr><td>Thunderbolt 5 SSD enclosure for MacBook Pro M4</td><td>SSD enclosure</td><td class="n">3</td><td class="n">0</td><td>Google 2, ChatGPT 1</td></tr>
+      <tr><td>Rechargeable lithium AA batteries, measured</td><td>batteries (Amazon)</td><td class="n">3</td><td class="n">–</td><td>ChatGPT</td></tr>
+      <tr><td>Alternative to Synology 4-bay NAS</td><td>NAS</td><td class="n">3</td><td class="n">0</td><td>Google</td></tr>
+      <tr><td>Soundcore Space One</td><td>headphones</td><td class="n">1</td><td class="n">3</td><td>ChatGPT</td></tr>
+      <tr><td>Arenti GO3G 4G LTE camera</td><td>security camera</td><td class="n">1</td><td class="n">2</td><td>ChatGPT</td></tr>
+    </table></div>
+    <p class="sub" style="margin-top:10px">By category over the period: projectors 11 visitors, NAS 9, portable monitors 6, power banks 6, headphones 5, security cameras 5; no other category above 4. Spread across about 40 pages, with no page above 6 visitors.</p>
+  </section>
+
+  <section class="callout">
+    <h2 style="margin:0">Reading it</h2>
+    <ul>
+      <li><strong>The money is in solar.</strong> Orders run $478–$1,791 and both brands give us a cart-tested code to carry. That is where ChatGPT hands over our link and shoppers buy.</li>
+      <li><strong>Everything else is reach without revenue.</strong> It's cited and visited, mostly via ChatGPT, but shoppers rarely click through and nobody has bought. My guess, not tested: at these lower prices, ChatGPT's own product cards with store links win, and many of these products carry no code.</li>
+      <li><strong>Blind spot:</strong> 74 of these products link straight to Amazon, so their clicks never reach our log. Amazon reports 0 orders since the account went live Nov 3.</li>
+    </ul>
+  </section>
+
+  <p class="sub">Counts: <code>pageviews</code> with <code>bot_like = 0</code> (visitor = agent + country + network per day) and the dashboard's human-click filter, from D1 on Nov 13 at about 11:00 PT. Category comes from the product record, or for a guide page from the products it links. Sales from D1 <code>sales</code>; 5 sales came with no click ID and are counted by brand.</p>
+</main>

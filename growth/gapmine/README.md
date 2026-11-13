@@ -75,6 +75,19 @@ steps: DLC-168 in the to-do list; `runs/2026-11-05/report.md`. The three-model g
 clusters open. It passes nearly everything (12 of 13 on 11-04), so demand and coverage do the selecting now and the
 vote is only a last check against saturated results.
 
+## Which pages to build first: value, not volume (2026-11-13, Barry)
+
+From 10-29 to 11-13 the non-solar catalog (348 of 397 products) drew 71 of 151 page visitors but 14 of 237 buy-link
+clicks and 0 of 10 sales; every sale was a $478-$1,791 ALLPOWERS or BLUETTI order carrying a cart-tested code
+(`growth/reports/2026-11-13-product-mix.html`). Barry: steer new page building toward high-ticket, code-carrying
+categories. `growth/evals/brandvalue.py` scores a cluster as uncovered searches x brand ticket (median store price in
+`docs/offers.json`, clipped $20-$2,000) x 1.5 with a published code x 0.5 when the brand is Amazon-only, best brand
+of the cluster. `gapmine.py daily` expands high-value brands' seeds first and queues clusters by value; a cluster
+whose best brand's median price is under $150 is queued as `parked`, not built. `gappage.py next/research` build
+`new` items in value order. Hand-picked clusters (abpage new-cluster harvests, brand onboarding) follow the same
+rule: check `python3.12 growth/evals/brandvalue.py` before picking. The ticket is the brand's, not the cluster's
+product, so a high-ticket brand's cheap accessory cluster still ranks high: skip those by hand.
+
 ## Running it
 
     python3.12 growth/evals/gapmine.py expand  --run <date>

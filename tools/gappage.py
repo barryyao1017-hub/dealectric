@@ -541,8 +541,10 @@ def main() -> int:
         print(json.dumps(d.get("gate"), indent=1), d.get("published", ""))
         return 0
     kind_ok = lambda x: a.kind == "all" or (x.get("kind") == "brand") == (a.kind == "brand")
+    import brandvalue   # Barry 11-13: build the high-ticket, code-carrying items first
+    by_value = lambda xs: sorted(xs, key=lambda x: -(x.get("value") if x.get("value") is not None else brandvalue.score(x)["value"]))
     if a.cmd == "research":
-        items = [x for x in q if x["status"] == "new" and kind_ok(x)][: a.max]
+        items = by_value([x for x in q if x["status"] == "new" and kind_ok(x)])[: a.max]
         research_many(items, a.workers)
         return 0
     if a.cmd == "applyall":
@@ -562,7 +564,7 @@ def main() -> int:
             print(f"{x.get('brand') or x['cluster']}: {x['status']} {x.get('slug') or ''} {str(x['result'])[:300]}", flush=True)
         return 0
     done = 0
-    for item in [x for x in q if x["status"] == "new"]:
+    for item in by_value([x for x in q if x["status"] == "new"]):
         if done >= min(a.max, PAGES_PER_DAY):
             break
         d = run_one(item, a.publish)

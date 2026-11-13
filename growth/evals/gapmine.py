@@ -1175,7 +1175,9 @@ def supply_daily(args) -> dict:
 
 
 def queue_step(args) -> list[dict]:
-    """Clusters that pass the gate (searches >= MIN_SEARCHES, coverage < GATE, no page of ours) join the page queue."""
+    """Clusters that pass the gate (searches >= MIN_SEARCHES, coverage < GATE, no page of ours) join the page queue,
+    ranked by value (uncovered searches x brand ticket x code, growth/evals/brandvalue.py); a cluster whose brands sell
+    under $150 is kept as 'parked' instead (Barry 2026-11-13)."""
     qpath = ROOT / "growth/gapmine/queue.json"
     queue = json.loads(qpath.read_text()) if qpath.exists() else []
     have = {(x.get("seed"), x.get("cluster")) for x in queue}   # brand-page items (11-06) carry no seed
@@ -1196,7 +1198,13 @@ def queue_step(args) -> list[dict]:
                           "coverage": cov, "uncovered": round(n * (1 - cov)), "source": src_of.get(sq, "bing"),
                           "brands": c["brands"], "variants": [x["q"] for x in c["queries"][:10]],
                           "queued": date.today().isoformat(), "status": "new"})
-    queue += sorted(added, key=lambda x: -x["uncovered"])
+    import brandvalue   # Barry 11-13: high-ticket, code-carrying brands first; low-ticket clusters parked, not built
+    for x in added:
+        v = brandvalue.score(x)
+        x.update(value=v["value"], ticket=v["ticket"], code=v["code"])
+        if v["park"]:
+            x.update(status="parked", result=brandvalue.PARK_REASON)
+    queue += sorted(added, key=lambda x: -x["value"])
     qpath.write_text(json.dumps(queue, indent=1) + "\n")
     return added
 
@@ -1228,7 +1236,8 @@ def daily(args) -> None:
     seeds_step(args)
     BRANDS = json.loads((ROOT / "growth/gapmine/brands.json").read_text())["brands"]
     done = set(load("suggest.json", {"done": []})["done"])
-    pending = [s for v in BRANDS.values() for s in v["seeds"] if not _seed_done(s, done)]
+    import brandvalue   # Barry 11-13: expand the seeds of high-ticket, code-carrying brands first
+    pending = list(dict.fromkeys(s for s in brandvalue.seed_order(BRANDS) if not _seed_done(s, done)))
     args.only_seeds = set(pending[:SEEDS_PER_DAY])
     log["seeds"] = {"pending": len(pending), "today": sorted(args.only_seeds)}
     if args.only_seeds:
