@@ -40,6 +40,7 @@ export default {
   // Cron trigger (wrangler.toml [triggers]): poll CJ for new commissions.
   async scheduled(event, env, ctx) {
     ctx.waitUntil(pollCj(env).catch((e) => console.error("cj poll failed", e)));
+    ctx.waitUntil(pollRakuten(env).catch((e) => console.error("rakuten poll failed", e)));
     ctx.waitUntil(syncMeta(env).catch((e) => console.error("dashboard meta sync failed", e)));
   },
 };
@@ -577,6 +578,58 @@ async function pollCj(env) {
       voucher: clip(r.coupon || "", 60),
     });
   }
+}
+
+// Rakuten Advertising (2026-11-13): no publisher postback, so the cron reads the Events API over the last 3 days of
+// process dates. Auth: POST /token with "Bearer <token key>" (base64 of the Developer Portal app's client_id:secret,
+// Worker secret RAKUTEN_TOKEN_KEY, keychain rakuten-token-key) and scope=<SID> (RAKUTEN_SID var) returns a 1-hour
+// access token. Each record is one order line; a later refund or adjustment comes as its own record with its own
+// process_date, so the stored txn_id joins etransaction_id, SKU and process date. u1 is our <slug>.<clickid>.
+async function pollRakuten(env) {
+  if (!env.RAKUTEN_TOKEN_KEY || !env.RAKUTEN_SID) return;
+  const tr = await fetch("https://api.linksynergy.com/token", {
+    method: "POST", body: `scope=${encodeURIComponent(env.RAKUTEN_SID)}`,
+    headers: { authorization: `Bearer ${env.RAKUTEN_TOKEN_KEY}`, "content-type": "application/x-www-form-urlencoded" },
+  });
+  if (!tr.ok) throw new Error(`rakuten token ${tr.status}`);
+  const token = (await tr.json()).access_token;
+  const fmt = (d) => d.toISOString().slice(0, 19).replace("T", " ");
+  const now = new Date();
+  const brands = rakutenBrands();
+  for (let page = 1; page <= 10; page++) {
+    const q = new URLSearchParams({ process_date_start: fmt(new Date(now - 3 * 864e5)), process_date_end: fmt(now),
+      limit: "1000", page: String(page) });
+    const r = await fetch(`https://api.linksynergy.com/events/1.0/transactions?${q}`, {
+      headers: { authorization: `Bearer ${token}`, accept: "application/json" },
+    });
+    if (!r.ok) throw new Error(`rakuten events ${r.status}: ${(await r.text()).slice(0, 200)}`);
+    const rows = await r.json();
+    if (!Array.isArray(rows)) throw new Error("rakuten events: not a list");
+    for (const e of rows) {
+      const slug = String(e.u1 || "").split(".")[0];
+      const when = Date.parse(e.transaction_date || "");
+      await recordSale(env, {
+        network: "rakuten",
+        txn_id: clip(`${e.etransaction_id}:${e.sku_number || ""}:${e.process_date || ""}`, 200),
+        advertiser: LINKS[slug]?.brand || brands[String(e.advertiser_id)] || `Rakuten ${e.advertiser_id}`,
+        commission: num(e.commissions), sale: num(e.sale_amount), currency: e.currency || "USD",
+        sub_id: clip(e.u1 || "", 200), event_date: Number.isNaN(when) ? String(e.transaction_date || "") : new Date(when).toISOString(),
+        voucher: "",
+      });
+    }
+    if (rows.length < 1000) break;
+  }
+}
+
+// Advertiser id (Rakuten "mid") -> brand, from the Rakuten links in the generated link map.
+function rakutenBrands() {
+  const out = {};
+  for (const v of Object.values(LINKS)) {
+    if (v.network !== "rakuten") continue;
+    const m = /[?&]mid=(\d+)/.exec(v.url || "");
+    if (m && v.brand) out[m[1]] = v.brand;
+  }
+  return out;
 }
 
 async function recordSale(env, s) {

@@ -74,6 +74,12 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
     over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret
     `CJ_TOKEN`, keychain `cj-api-token`; developers.cj.com → Personal Access Tokens).
   - CJ's `coupon` field goes into `sales.voucher` too.
+  - Rakuten (since 2026-11-13): no publisher postback either, so the same cron reads the Events API
+    (`api.linksynergy.com/events/1.0/transactions`, last 3 days of process dates, 1,000 a page). It signs in with
+    `POST /token`, `Authorization: Bearer <token key>` and `scope=<SID>` (var `RAKUTEN_SID` = 4771345); the token key
+    is base64 of the Developer Portal app "dealectric-sales-sync"'s `client_id:client_secret` (Worker secret
+    `RAKUTEN_TOKEN_KEY`; keychain `rakuten-token-key`, plus `rakuten-client-id` / `rakuten-client-secret`). Rows land in
+    `sales` with network `rakuten`, txn_id `<etransaction_id>:<sku>:<process_date>` and sub_id = the click's `u1`.
   - Amazon Associates has no alert or API for this; check its dashboard.
   - `tools/dailyupdate.py` reads the CJ API itself (same token, from the keychain) and the Awin rows from D1 `sales`,
     so the daily update's North Star count covers both networks (since 2026-11-08).
