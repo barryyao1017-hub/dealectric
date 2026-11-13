@@ -147,7 +147,7 @@ def decompose(sse: list[dict]) -> dict:
             if ref in code and p["url"]:
                 out["links"].append({"kind": "card", "url": p["url"], "merchant": p["merchant"]})
         for c in md.get("genui_components") or []:
-            if c.get("type") == "cite":
+            if isinstance(c, dict) and c.get("type") == "cite":   # 11-13: a component can arrive as a bare string
                 for s in c.get("safe_urls") or []:
                     u = s.get("url") if isinstance(s, dict) else s
                     if u and "images.openai.com" not in u:
