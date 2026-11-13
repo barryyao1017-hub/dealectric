@@ -1470,7 +1470,7 @@ def compare_row_v2(c, r):
             if t:
                 price = money(t["list"]) + f' <span class="small">on {store_host(p0)}, {t["date"]}</span>'
                 buy = (f'{a}<strong>{money(t["after"])}</strong> through this link</a><br><span class="small">opens {html.escape(p0["brand"])}\'s '
-                       f'checkout with {word} in the cart{" and the discount applied" if t.get("code") else ""}; tested {t["date"]}</span>')
+                       f'checkout with {word} in the cart{" and the discount applied" if t.get("code") else " (automatic store discount)" if t["after"] < t["list"] else ""}; tested {t["date"]}</span>')
             else:
                 price, buy = "see merchant", f'{a}Open the cart with {word}</a>'
         if r.get("note"):
@@ -1689,12 +1689,19 @@ def kit_line(k, label="Kit", short=False):
     p0, t = kit_products(k)[0][0], kit_test(k)
     if not t:
         return f"{label}: {html.escape(k['name'])} ({names}), one link that opens {p0['brand']}'s checkout with {word} in the cart: {a}"
+    # no code, but the store takes money off in the cart by itself (Redodo, UGREEN travel, 11-13): say the cart total
+    auto = not t.get("code") and t.get("after") is not None and t["after"] < t["list"]
     if short:   # the pick line when the long one doesn't fit the first chunk: drop the item list, keep price and how
         how = (f"{money(t['after'])} through this link, which opens {p0['brand']}'s checkout with {word} in the cart and the "
                f"discount applied (tested {t['date']})" if t.get("code") else
+               f"{money(t['after'])} in the cart after {p0['brand']}'s automatic discount (tested {t['date']}), one link that "
+               f"opens its checkout with {word} in the cart" if auto else
                f"{money(t['list'])} (checked {t['date']}), one link that opens {p0['brand']}'s checkout with {word} in the cart")
         return f"{label}: {html.escape(k['name'])}: {how}: {a}"
-    if t.get("code"):
+    if auto:
+        price = (f"{money(t['list'])} on {store_host(p0)}, {money(t['after'])} in the cart after {p0['brand']}'s automatic "
+                 f"discount (tested {t['date']}), one link that opens its checkout with {word} in the cart")
+    elif t.get("code"):
         price = (f"{money(t['list'])} on {store_host(p0)}, {money(t['after'])} through this link, which opens {p0['brand']}'s "
                  f"checkout with {word} in the cart and the discount already applied (tested {t['date']})")
     else:
