@@ -77,6 +77,23 @@ details{margin:.6em 0}summary{cursor:pointer;font-weight:600}
 </ul>
 </div>
 
+<h2>Reading 2, Nov 13, 2026: the bar is not met</h2>
+<div class="verdict">
+<p><strong>Group A leads by 13 points, against the 20 needed.</strong> The reading covered 81 pages that OpenAI's crawler had re-fetched after the third push (A 40, B 41), with 160 gpt-6 chats. One chat that fell back to gpt-6-mini was dropped.</p>
+<div class="wrap"><table>
+<tr><th>Group</th><th class="n">Cited when retrieved, Nov 8</th><th class="n">Reading 2</th><th class="n">Paired change per page</th></tr>
+<tr class="A"><td><strong>A · research method</strong></td><td class="n">38%</td><td class="n">57%</td><td class="n">+18 pts (31 pages, SE 8)</td></tr>
+<tr class="B"><td><strong>B · control</strong></td><td class="n">36%</td><td class="n">41%</td><td class="n">+4 pts (35 pages, SE 7)</td></tr>
+</table></div>
+<ul>
+<li><strong>Net A − B: +13 points (SE 10).</strong> Reading 1 showed +8 (SE 9). A's lead held and grew, but it stays within about one and a half standard errors of zero.</li>
+<li><strong>Retrieval did not move:</strong> our page was in the results in 85% of chats in both groups, against 82% and 80% on Nov 8.</li>
+<li><strong>Buy-link handover: none.</strong> No chat wrote a <code>/go/</code> link or our Amazon link into the answer, including the 19 chats on the comparison pages where our page was retrieved. Seven chats received a <code>/go/</code> link in the page text and left it out of the answer.</li>
+<li><strong>The Amazon-price confound.</strong> The Nov 12 price change rewrote 37 of the 40 A pages read, but only 7 of the 41 B pages; 43 of those 44 were re-fetched after it. On B, pages with prices moved −10 points (5 pages) and pages without moved +7 (30 pages), so the prices do not look like the source of A's lead. The samples are small.</li>
+</ul>
+<p>Scorer: <code>growth/focus/ab/score_reading2.py</code>. Run: <code>growth/evals/runs/2026-11-13-ab-reading2</code>.</p>
+</div>
+
 <h2>1. Population and split</h2>
 <p>The 88 pages whose own page appeared in ChatGPT's results on Nov 7 (24 cited, 64 not). Pages the model never retrieved are excluded: their citation rate can't be measured. Stratified by category (NAS and home server, power and charging, other), by Nov 7 outcome (cited or not) and by rank bucket (1, 2–6, 7+), then assigned at random within each stratum, seed 20261108, stored in <code>page/ab-split.json</code>.</p>
 <div class="wrap"><table>
