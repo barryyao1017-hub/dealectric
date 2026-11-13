@@ -32,6 +32,9 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   untagged from 3+ networks within 2 minutes, is 1; a page opened from our own pages takes its visit's arrival code.
   So `bot_like = 0` is a shopper: a browser that came from an assistant, a search engine or another site. All rows
   since 10-29 were re-judged by these rules on 2026-11-12 (the dashboard showed 29 shoppers by mid-morning that day; 8 by these rules).
+  Since 2026-11-13 a page view from one of our own pages with no arrival from the same browser (agent, country, network)
+  in the last 30 minutes is a crawler hop (1): a fleet on ~90 networks opened pages and `/go/` links with dealectric.com
+  referrers at 05:18Z that day, which put the dashboard at 113 shoppers for 11-12. Stored rows were re-judged the same day.
 - `GET|POST /feedback` — accepts `message` (required), `kind`, `page`, `agent`, `contact` as query parameters
   or a JSON/form body; stores a row in D1 `feedback`; returns `{ok, ticket}`. A bare GET returns the usage doc.
   GET is allowed on purpose: most assistants only have a fetch-URL tool.

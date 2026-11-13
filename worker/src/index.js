@@ -268,12 +268,16 @@ async function logPageview(url, request, status, tag, env) {
   // A page opened from one of our own pages belongs to the visit that arrived: when this browser's latest arrival in the
   // last 30 minutes was a partner review, a visit with no source or a bot, this view is counted the same way (a
   // reviewer from Awin's dashboard went on to /products, /discount-codes and a brand's codes page, 2026-11-12).
+  // With no arrival at all it is a crawler hop (2026-11-13): a fleet on ~90 networks in 30 countries opened our pages
+  // and /go/ links with dealectric.com referrers inside two minutes (05:18Z), each hop from a new address, so no
+  // browser of it ever arrived. A person's first view is always logged as an arrival from the same browser.
   if (bot === 0 && platform === "internal") {
     const since = new Date(Date.now() - 1_800_000).toISOString();
     const same = "user_agent = ? AND country = ? AND IFNULL(asn, 0) = ? AND ts >= ?";
     const args = [clip(ua, 300), cf.country || "", cf.asn || 0, since];
     const a = await env.DB.prepare(`SELECT bot_like FROM pageviews INDEXED BY pageviews_ts WHERE ${same} AND platform <> 'internal' ORDER BY ts DESC LIMIT 1`).bind(...args).first();
-    if (a && a.bot_like !== 0) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = ? WHERE ${same} AND bot_like = 0 AND platform = 'internal'`).bind(a.bot_like, ...args).run();
+    const code = a ? a.bot_like : 1;
+    if (code !== 0) await env.DB.prepare(`UPDATE pageviews INDEXED BY pageviews_ts SET bot_like = ? WHERE ${same} AND bot_like = 0 AND platform = 'internal'`).bind(code, ...args).run();
   }
 }
 
