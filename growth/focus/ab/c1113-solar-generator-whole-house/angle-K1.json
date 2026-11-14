@@ -1,0 +1,119 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that BLUETTI's Apex 300 solar ports top out at 2 × 1,200 W (12–60 V, 20 A each, from the manual). Even with both ports filled, at full rated output it takes 29,564 Wh ÷ 2,400 W = 12.3 sun-hours to replace one day of the average US home's use. The 1,000 W of panels in the store bundle would need 29.6 sun-hours. The unit's own ~20 W idle draw also costs about 480 Wh a day.",
+ "standout": 2,
+ "standout_why": "I compared against watthourlab.com/home-backup/transfer-switch-basics (cited). It lists solar-input totals (F3800 Plus 3,200 W, DELTA Pro 3 2,600 W) and 240 V outlet amps. It has no runtime or recharge arithmetic, no idle-draw figure, no per-port voltage or current limits, and no BLUETTI Apex 300. ChatGPT's own answer gives a battery runtime calculator (20 kWh against 30 kWh a day) and says only that 'solar panels must generate enough energy to replenish' it, with no numbers. I could not open popularmechanics.com, the other cited page, because the fetch was blocked. So I can't rule out that it has some of this, which is why the score is 2 and not 3. The finding is new and practical, but it doesn't rule out the kit. It sets expectations: this kit can back up chosen circuits but cannot run a whole average house on solar alone.",
+ "kit_items": [
+  "Power station + expansion batteries: BLUETTI Apex 300 + 2× B300K (8,294.4 Wh, 3,840 W, 120/240 V). The store's own bundle with 2× 500 W panels keeps it to one cart. 8,294.4 Wh ÷ 1,232 W (average US home draw) = 6.7 h of whole-house use, so it suits chosen essential circuits, not the whole house.",
+  "Solar: 2× BLUETTI 500 W panels (SORA 500) included in that bundle, one per XT60 DC port. 1,000 W fits under the 2 × 1,200 W port limit. 8,294.4 Wh ÷ 1,000 W = 8.3 h of full-rated sun to refill from empty.",
+  "Home connection: BLUETTI Apex 300 Home Integration Kit (single Apex 300 version) feeds selected home circuits during an outage. It needs an electrician to install.",
+  "Optional upgrade for faster solar refill: BLUETTI SolarX 4K, which BLUETTI requires for its '4,000 W solar input' claim."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2×B300K + 2×500W | https://www.bluettipower.com/products/apex-300-2-b300k-2-500w | $5,499.00 | 2026-11-13",
+    "BLUETTI Apex 300 Home Integration Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-home-integration-kit | $699.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + 2*B300K + 2*500W, $5,499.00 (the store's own bundle of the station, batteries and panels; the Home Integration Kit is added separately). A smaller store bundle with no panels: Apex 300 + B300K + Home Backup Kit (Single Apex 300), $3,199.00 (list $3,399), https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "DC/solar input limit",
+   "value": "2 × XT60 ports, 1,200 W max per port, 12–60 V, 20 A max",
+   "source": "https://www.manualslib.com/manual/4118440/Bluetti-Apex-300.html",
+   "source_title": "BLUETTI Apex 300 User Manual V3.0 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "60 V × 20 A = 1,200 W per port; × 2 ports = 2,400 W of solar without the SolarX 4K. The manual also says 'Do not use solar panels with open circuit voltage higher than 60V'."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Self-consumption (idle)",
+   "value": "about 20 W",
+   "source": "https://www.manualslib.com/manual/4118440/Bluetti-Apex-300.html",
+   "source_title": "BLUETTI Apex 300 User Manual V3.0 (German appendix)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's product page also says 'idle loss to just 20W'. 20 W × 24 h = 480 Wh/day, which is 5.8% of the kit's 8,294.4 Wh per day before any load runs."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Rated AC output / lifting power",
+   "value": "3,840 W rated; 7,680 W lifting (resistive loads only)",
+   "source": "https://www.manualslib.com/manual/4118440/Bluetti-Apex-300.html",
+   "source_title": "BLUETTI Apex 300 User Manual V3.0",
+   "read": "2026-11-13",
+   "note": "3,840 W ÷ 240 V = 16 A; 3,840 W ÷ 120 V = 32 A. The 7,680 W 'Power Lifting' figure applies only to resistive loads, not motors."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC + DC charging max",
+   "value": "3,840 W (Apex 300 alone); 6,240 W (Apex 300 + 1–6 B300K)",
+   "source": "https://www.manualslib.com/manual/4118440/Bluetti-Apex-300.html",
+   "source_title": "BLUETTI Apex 300 User Manual V3.0",
+   "read": "2026-11-13",
+   "note": "Upper limit for combined generator/grid and solar charging."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Capacity per unit / solar claim",
+   "value": "2,764.8 Wh; 'up to 4,000W solar input' (footnote: 'Requires a SolarX 4K'); 'Fully charges in just 1.9 hours with 4 kW solar' (Apex 300 + B300K)",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Home Battery Backup",
+   "read": "2026-11-13",
+   "note": "Apex 300 + 2× B300K = 3 × 2,764.8 = 8,294.4 Wh, which matches the bundle listing. Base unit listed at $1,499.00 (was $1,699)."
+  },
+  {
+   "product": "general",
+   "label": "Average US household electricity use",
+   "value": "10,791 kWh/year (2022), about 899 kWh/month",
+   "source": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+   "source_title": "EIA FAQ: How much electricity does an American home use?",
+   "read": "2026-11-13",
+   "note": "10,791 ÷ 365 = 29.56 kWh/day = 1,232 W average. Kit runtime: 8,294.4 Wh ÷ 1,232 W = 6.7 h before inverter losses. Replacing one day on the built-in ports: 29,564 Wh ÷ 2,400 W = 12.3 h of full-rated sun; with the bundled 1,000 W: 29.6 h."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2×B300K + 2×500W",
+   "label": "Bundle price and contents",
+   "value": "$5,499.00; 3,840 W, 8,294.4 Wh, 1,000 W solar",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k-2-500w",
+   "source_title": "Apex 300 + 2*B300K + 2*500W",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py; available. Refill from empty at rated panel output: 8,294.4 ÷ 1,000 = 8.3 h of full sun."
+  },
+  {
+   "product": "BLUETTI Apex 300 Home Integration Kit",
+   "label": "Price",
+   "value": "$699.00 (Single Apex 300); $799.00 (Parallel)",
+   "source": "https://www.bluettipower.com/products/apex-300-home-integration-kit",
+   "source_title": "Apex 300 Home Integration Kit",
+   "read": "2026-11-13",
+   "note": "Store text: 'Used to integrate the power station to home circuit to keep vital home loads powered when the grid goes down.' Read with storecheck.py; available."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input / 240 V outlet (rival-cart comparison)",
+   "value": "3,200 W (2 × 1,600 W, 11–165 V, 17 A each); L14-30R 120/240 V 25 A, 6,000 W",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch",
+   "read": "2026-11-13",
+   "note": "The page marked the 'Home Backup Kit' option Sold Out and showed no price, and storecheck.py got HTTP 404 on the Anker store. So I did not build an Anker cart. Its higher PV voltage (165 V) allows panels in series, which the Apex 300's 60 V limit does not."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI SORA 500 open-circuit voltage. Search results showed 49.1 V (Vmp 40.92 V, Imp 12.22 A, Isc 13.31 A) from EU retailer listings, but the US product page's spec table was empty, the bluettipower.eu page wouldn't load (too many redirects), and I didn't open the panel manual. So I couldn't confirm from a source I opened that one panel per Apex 300 port stays under 60 V in cold weather, or that two in series would go over it.",
+  "Amp rating, number of circuits and 240 V support of the Apex 300 Home Integration Kit / AT1 panel: not stated on the store pages I opened.",
+  "Whether one Apex 300 alone puts out 240 V split-phase on a specific outlet (NEMA type and amps): the product page says '120V and 240V devices simultaneously', but the manual excerpt I could read had no outlet-by-outlet table.",
+  "Peak sun hours by US region (NREL), which would turn 'sun-hours' into days. I didn't fetch it within the call budget, so recharge figures are given as hours at full rated panel output.",
+  "Popular Mechanics' whole-home power station page (cited by ChatGPT): the fetch was blocked, so I couldn't check what sizing figures it has.",
+  "Prices for the Anker F3800 Plus + transfer switch kit: the ankersolix.com page showed no price and storecheck.py returned HTTP 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0896283000000002
+ }
+}

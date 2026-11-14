@@ -1,0 +1,114 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's own solar inputs take only 12–60 V while its SolarX 4K add-on needs a string of 150–500 V Voc. That leaves no usable range between 60 and 150 V. Two 37.5 V-Voc rooftop panels in series (75 V) are too high for the Apex and too low for the SolarX 4K, so a whole-home array needs at least 4 such panels in series. It also needs a 600 V / 20 A PV disconnect, which is not in the box.",
+ "standout": 3,
+ "standout_why": "Compared against watthourlab.com/home-backup/transfer-switch-basics (cited, opened 2026-11-13). It covers transfer devices, back-feeding, permits, 120/240 V and L14-30 amps, but it does not cover solar panel voltage limits, neutral bonding, GFCI or warranty. ChatGPT's own answer says only that solar must make enough energy and gives no voltage or string rule. I also opened ankersolix.com/products/f3800-plus-home-backup-kit (ranked, not cited). It warns that going over 165 V can damage the F3800 Plus solar ports, but it says nothing about BLUETTI or a minimum string voltage. Popular Mechanics (cited) blocked WebFetch and my curl needed approval, so I could not check it. The score of 3 assumes Popular Mechanics, a roundup of whole-home power stations, does not state the BLUETTI 60 V / 150 V voltage gap; I have not verified that. The finding decides the set: which charge controller to buy, how many panels in series, and the extra PV disconnect.",
+ "kit_items": [
+  "Power station: BLUETTI Apex 300 (2,764.8 Wh, 3,840 W, 120/240 V). It is on the approved awin:bluetti_us program, and BLUETTI sells it with batteries and the SolarX 4K controller as one cart item.",
+  "Expansion batteries: 2× BLUETTI B300K. Per BLUETTI's US store listing, this brings the bundle to 8,294.4 Wh, a whole-home-scale capacity.",
+  "Solar charge controller: BLUETTI SolarX 4K. Rooftop strings above 60 V can't go into the Apex 300's own 12–60 V XT60 inputs, so the SolarX takes 150–500 V Voc and steps it down to 35–58 V, up to 4,000 W.",
+  "Rooftop panels: enough residential panels in series to reach at least 150 V Voc (for example, 4× 37.5 V-Voc panels, as Notebookcheck tested) and stay under 500 V. Two in series fit neither the Apex nor the SolarX.",
+  "PV disconnect: 600 V / 20 A DC switch or fuse box. Notebookcheck says the SolarX 4K needs one and it is not included.",
+  "Home connection: a transfer switch or inlet installed by a licensed electrician. Watt Hour Lab cites OSHA against back-feeding without a transfer switch."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2*B300K + SolarX 4K | https://www.bluettipower.com/products/apex-300-2-b300k-solarx-4k | $4,498.00 | 2026-11-13",
+    "BLUETTI Apex 300 + B300K + SolarX 4K (smaller alternative) | https://www.bluettipower.com/products/apex-300-b300k-solarx-4k | $3,099.00 (compare-at $3,299) | 2026-11-13",
+    "BLUETTI SolarX 4K & Locking Terminal to P090D Adapter Cable (for Single Use), if bought separately | https://www.bluettipower.com/products/solarx-4k-solar-charge-controller | $699.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + 2*B300K + SolarX 4K, $4,498.00 (store's own bundle; 3,840 W | 8,294.4 Wh | 500V VOC | 4,000W Solar), read 2026-11-13. Panels and PV disconnect not included."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in solar input",
+   "value": "2× XT60, 12–60 V, max 20 A; up to 2,400 W total",
+   "source": "https://www.notebookcheck.net/Bluetti-APEX-300-battery-storage-system-review-More-than-just-a-balcony-power-station.1083982.0.html",
+   "source_title": "Bluetti APEX 300 battery storage system review (Notebookcheck, Christian Hintze, 2025-08-10, updated 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "Hintze quotes the spec label '2x XT60 (12 - 60 V, max. 20 A)'. The article says the Apex alone takes up to 2,400 W of solar, or up to 4,000 W with the SolarX 4K."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Minimum PV string voltage",
+   "value": "150 V Voc minimum (Voc range 150–500 V); MPPT 120–450 V; max 20 A from panels; output 35–58 V; max 4,000 W out",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Solar charge controller for rooftop systems with storage: first look at the Bluetti SolarX 4K (Notebookcheck, Christian Hintze, 2025-10-06)",
+   "read": "2026-11-13",
+   "note": "Hintze: 'The panels themselves should have an open-circuit voltage between 150 and 500 V and deliver no more than 20 A.' His test ran at about 150 V from several 37.5 V-Voc panels in series, which he calls the minimum. BLUETTI's US store page says 'Supports solar panels from 150 V to 500 V' (read 2026-11-13)."
+  },
+  {
+   "product": "BLUETTI Apex 300 + SolarX 4K",
+   "label": "Voltage range that works with neither input",
+   "value": "Strings from just over 60 V to just under 150 V Voc can't charge the Apex 300 directly or through the SolarX 4K",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Notebookcheck SolarX 4K first look + Notebookcheck APEX 300 review",
+   "read": "2026-11-13",
+   "note": "My arithmetic from the two Notebookcheck specs. With 37.5 V-Voc panels: 1 in series (37.5 V) fits the Apex XT60 input; 2 (75 V) or 3 (112.5 V) fit neither; 4 (150 V) to 13 (487.5 V) fit the SolarX. Voc rises in cold weather and I found no source for a margin figure, so the 13-panel top end is nominal only."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Parts the shopper must buy separately",
+   "value": "PV disconnect switch rated 600 V / 20 A (not included); a battery-side DC output cable (P090A for Apex 300/B300K) that the reviewer says Bluetti doesn't include, €40 to over €100",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Notebookcheck SolarX 4K first look",
+   "read": "2026-11-13",
+   "note": "Named reviewer: Christian Hintze. BLUETTI's US store now lists the SolarX with the adapter cable in two versions: 'Locking Terminal to P090D Adapter Cable (for Single Use)' and 'to XT60 Adapter Cable (for Parallel Use)', both $699. So the cable question now comes down to choosing the right version."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Mounting / grid limits",
+   "value": "Wall-mounted vertically indoors (not weatherproof); off-grid only, does not connect to the grid",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Notebookcheck SolarX 4K first look",
+   "read": "2026-11-13",
+   "note": "As stated by Christian Hintze."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging on 120 V AC",
+   "value": "Not available: 'The 240V output cannot be used while the device is charging via 120V AC.'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Maker's note. So if you recharge it from a 120 V gas generator during a long outage, 240 V loads such as a well pump or central AC lose power. The Home Backup Kit option showed 'Sold Out' and the page showed no price."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input limit",
+   "value": "2 inputs, 11–165 V, 17 A max, 1,600 W max each (3,200 W total); 'exceeding 165V may cause damage to the solar input ports'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Maker's spec and warning. With 37.5 V-Voc panels, 4 in series is 150 V; 5 (187.5 V) would go over the limit."
+  },
+  {
+   "product": "general",
+   "label": "Home connection rule",
+   "value": "A generator must never be attached directly to a building's wiring unless a qualified electrician has installed a transfer switch; do not back-feed through an outlet",
+   "source": "https://watthourlab.com/home-backup/transfer-switch-basics/",
+   "source_title": "Home Backup Batteries and Transfer Switch Basics (Watt Hour Lab)",
+   "read": "2026-11-13",
+   "note": "The rival page cites OSHA. It also gives L14-30R limits: EcoFlow DELTA Pro 3 16.7 A, Anker F3800 Plus 25 A."
+  }
+ ],
+ "unsourced": [
+  "Popular Mechanics' whole-home power station roundup (cited by ChatGPT): WebFetch was blocked and a curl download needed approval, so I couldn't check whether it mentions the BLUETTI 60 V / 150 V voltage gap.",
+  "A forum thread with a date and a count of people stuck in the 60–150 V range: the BLUETTI community threads ('Low Power Production with SolarX 4K', 'Can't get the Solar 4K to power up') now redirect to forum.bluettipower.com and I couldn't open them; the search snippets point to a Turbo-mode setting and a polarity question, not this voltage range.",
+  "SolarX 4K start-up voltage from a BLUETTI manual: the BLUETTI-hosted PDF (s4.bluettipower.com) was over the 10 MB fetch limit, and BLUETTI's EU store page returned HTTP 429.",
+  "Whether the F3800 Plus or the S5000 has a bonded or floating neutral (the classic GFCI trip with a 2-pole transfer switch): Anker's F3800 Plus technical brief PDFs (thdstatic and the salesforce S3 copy) wouldn't parse, and running pdftotext needed approval.",
+  "Anker SOLIX store prices: storecheck returned HTTP 404 for ankersolix.com, and the kit page showed 'Sold Out' with no price.",
+  "A residential panel model with a stated Voc, and a 600 V / 20 A PV disconnect, sold at BLUETTI US or another approved store: I didn't look these up within the tool budget. The BLUETTI SORA 500 Voc was not checked.",
+  "The transfer switch or inlet BLUETTI specifies for the Apex 300 home connection, with its price: not opened. The Apex 300 product page fetch got cut off before the spec table."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0762803
+ }
+}
