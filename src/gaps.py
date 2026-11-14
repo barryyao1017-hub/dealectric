@@ -8535,6 +8535,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G270: home-backup-power-supply-idle-draw-multi-day-outage (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'home-backup-power-supply-idle-draw-multi-day-outage',
  "question": 'G270 (gap mining daily 2026-11-13, research method ab-2026-11: home backup power supply)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'E',
@@ -9606,6 +9607,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G322: how-much-backup-power-do-i-need (research method ab-2026-11, 2026-11-14) ----------------
 {"slug": 'how-much-backup-power-do-i-need',
  "question": 'G322 (gap mining daily 2026-11-14, research method ab-2026-11: best how much backup power do i need)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
