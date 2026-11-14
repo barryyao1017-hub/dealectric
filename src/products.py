@@ -6465,6 +6465,23 @@ PRODUCTS = [
  "fit": 'For running a refrigerator, Wi-Fi and lights through a multi-day outage at the lowest cost per kWh.',
  "caveats": ["20 W idle uses 1.44 kWh over 72 hours, twice the Anker SOLIX S5000's loss.", "3,840 W output is lower than the S5000's 4,500 W and the Jackery 5000 Plus's 7,200 W.", 'The Solar Lab says a single Apex 300 switches between 120 V and 240 V output with a front-panel switch, and that running 240 V reduces the inverter output available.']},
 
+{"slug": 'bluetti-solar-extension-cable-mc4',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'cable',
+ "name": 'BLUETTI Solar Extension Cable, MC4, 5 m or 10 m',
+ "model": 'Solar Extension Cable (5M MC4 / 10M MC4)',
+ "url": 'https://www.bluettipower.com/products/bluetti-solar-extension-cable',
+ "price": 59.0,
+ "verified": '2026-11-13',
+ "specs": [('Lengths', '5 m ($59) or 10 m ($79)'), ('Connectors', 'MC4 male + female'), ('Max current', '30 A'), ('Compatibility (maker)', 'All BLUETTI solar panels'), ('Sets needed (maker)', '1 set for a single panel; 1 set per panel in parallel')],
+ "warranty": '5 years (proof of purchase from an official store)',
+ "returns": '30-day money-back for unused items in the original package; buyer pays return shipping',
+ "summary": 'MC4 extension lead from BLUETTI, rated 30 A. It lets the panels hang outside on a balcony railing while the power station stays indoors.',
+ "fit": 'Any BLUETTI panel with MC4 leads, such as the SP200L. A two-panel series string needs one set.',
+ "caveats": ["It extends the panel's MC4 leads only. You still need the station's own solar charging cable at the station end.", 'For parallel wiring BLUETTI says to use one set per panel.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
