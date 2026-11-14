@@ -1,0 +1,109 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Battle Born's BB10012 manual requires a CSL500 current surge limiter with each inverter/charger larger than 4,000 W. Several large RVs ship with inverter/chargers that size. None of those results gives the series/parallel ceiling (4P4S) or the charger-activation requirement for ChatGPT's top pick, the LiTime 12V 230Ah Bluetooth, either.",
+ "standout": 2,
+ "standout_why": "I compared against the three cited rivals. batterytrail.com's spec database lists Battle Born as 'Up to 48V in series' with 14.2–14.6 V charging, gives LiTime's series/parallel limit only as 'See manual', and never covers inverter/charger add-ons. boondockmaps.com has no series/parallel, converter or inverter limits at all. vanpowercalc.com suggests a Victron Lynx busbar and Class T fuses for parallel Battle Born banks and says PD9200 converters may need replacing, but it gives no per-model expansion limits and doesn't mention the CSL500. None of the three covers the LiTime 230Ah's 4P4S limit, its need for a charger to activate the battery and Bluetooth, or its mounting-orientation limit.",
+ "decides": "This confirms the LiTime 230Ah Bluetooth as the value pick for a 12 V house bank: it allows up to 4P4S, LiTime lists alternator charging among its four charging methods, and it's $530.99 at litime.com today, down from the $589.99 ChatGPT showed. The caveat is that it has no heater and stops charging below 32 °F. It also makes Battle Born's premium pick conditional: an RV with an inverter/charger over 4,000 W needs a CSL500 for each one, at extra cost, so the gap with the cheaper picks grows. For coaches with 3,000 W-class inverters the Battle Born pick stands as is.",
+ "candidates": [
+  "LiTime 12V 230Ah Bluetooth Lithium Battery for RV and Truck",
+  "LiTime 12V 200Ah Plus Self-Heating LiFePO4 Battery",
+  "Battle Born BB10012 100Ah 12V LiFePO4",
+  "Renogy 12V 200Ah Pro Smart LiFePO4 w/ Bluetooth & Self-Heating"
+ ],
+ "findings": [
+  {
+   "product": "Battle Born BB10012 100Ah 12V",
+   "label": "Inverter/charger size that needs an add-on",
+   "value": "CSL500 current surge limiter required with each inverter/charger greater than 4,000 W",
+   "source": "https://knowledge.tiffinmotorhomes.com/Technical_Support/Resource_Library/All_Component_Manuals/Electrical/Battle_Born_Batteries/Battle_Born_Batteries%3A_Manual_and_Installation_Guide",
+   "source_title": "Battle Born Batteries: Manual and Installation Guide (Tiffin Motorhomes resource library)",
+   "read": "2026-11-13",
+   "note": "Battle Born's manual text as Tiffin hosts it: 'Battle Born Batteries requires a current surge limiter (CSL500) ... to be installed with each inverter/charger greater than 4000 Watts.' battlebornbatteries.com returned HTTP 429, so I couldn't check this against Battle Born's own site."
+  },
+  {
+   "product": "Battle Born BB10012 100Ah 12V",
+   "label": "Series/parallel limits",
+   "value": "Up to 4 in series (48 V system); no stated parallel maximum, current limits add (2 in parallel = 200 A continuous, 400 A for 30 s)",
+   "source": "https://knowledge.tiffinmotorhomes.com/Technical_Support/Resource_Library/All_Component_Manuals/Electrical/Battle_Born_Batteries/Battle_Born_Batteries%3A_Manual_and_Installation_Guide",
+   "source_title": "Battle Born Batteries: Manual and Installation Guide (Tiffin Motorhomes resource library)",
+   "read": "2026-11-13",
+   "note": "Quoted: 'Up to four BB10012 batteries may be connected in series to increase the voltage of the system up to a 48V system.' Batteries going in series should be at the same state of charge before connecting."
+  },
+  {
+   "product": "Battle Born BB10012 100Ah 12V",
+   "label": "Charger settings required",
+   "value": "Bulk/absorption 14.2–14.6 V (at least 20 min per battery in parallel banks); float 13.4–13.8 V optional on shore power; equalization not recommended, or set below 14.6 V if it can't be turned off; 24 V bank 28.8 V / 27.2 V float; 48 V bank 57.6 V / below 54.4 V float",
+   "source": "https://knowledge.tiffinmotorhomes.com/Technical_Support/Resource_Library/All_Component_Manuals/Electrical/Battle_Born_Batteries/Battle_Born_Batteries%3A_Manual_and_Installation_Guide",
+   "source_title": "Battle Born Batteries: Manual and Installation Guide (Tiffin Motorhomes resource library)",
+   "read": "2026-11-13",
+   "note": "This tells you whether an existing RV converter or inverter/charger can stay: it must be programmable to these voltages, and equalize must be off or capped."
+  },
+  {
+   "product": "Battle Born BB10012 100Ah 12V",
+   "label": "Low-temperature charge block",
+   "value": "BMS blocks charging below 25 °F",
+   "source": "https://knowledge.tiffinmotorhomes.com/Technical_Support/Resource_Library/All_Component_Manuals/Electrical/Battle_Born_Batteries/Battle_Born_Batteries%3A_Manual_and_Installation_Guide",
+   "source_title": "Battle Born Batteries: Manual and Installation Guide (Tiffin Motorhomes resource library)",
+   "read": "2026-11-13",
+   "note": "Quoted: 'Low temperature: < 25F ... The BMS will not allow a charging current.' The same page notes IEC 62133 charging certification covers 37–113 °F."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth Lithium Battery for RV and Truck",
+   "label": "Series/parallel limit",
+   "value": "Max 4P4S (16 batteries, 51.2 V 920Ah, 47.10 kWh)",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "Read from LiTime's own US store data with storecheck.py search. WebFetch of the page returned HTTP 429."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth Lithium Battery for RV and Truck",
+   "label": "Activation / charger pairing",
+   "value": "LiTime recommends its 14.6 V 60 A charger or its 60 A MPPT 'for battery and Bluetooth activation'; charging methods listed: LiFePO4 charger, solar, generator, alternator",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "Listing text, read through storecheck.py."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth Lithium Battery for RV and Truck",
+   "label": "Temperature and installation exclusions",
+   "value": "Charging stops at 32 °F and resumes at 41 °F; discharging stops at -4 °F; no heater. Not for use as a starter battery. Must not be mounted top-down or front-side-down (other orientations allowed). 200 A max continuous charge/discharge. Size 19.02 × 6.69 × 9.45 in",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "Listing text, read through storecheck.py."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth Lithium Battery for RV and Truck",
+   "label": "Price, LiTime US store",
+   "value": "$530.99 (in stock)",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of litime.com. ChatGPT's card showed $589.99."
+  },
+  {
+   "product": "Renogy 12V 200Ah Pro Smart LiFePO4 w/ Bluetooth & Self-Heating",
+   "label": "Price, Renogy US store",
+   "value": "$939.99 (listed as available)",
+   "source": "https://www.renogy.com/products/12v-200ah-pro-smart-lithium-iron-phosphate-battery-w-bluetooth-self-heating-function",
+   "source_title": "12V 200Ah Smart LiFePO4 Battery w/ Bluetooth & Self-Heating | Pro Series",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of renogy.com. ChatGPT's card for what looks like this product showed '$1,164.99, Pre-order'."
+  }
+ ],
+ "unsourced": [
+  "Renogy 12V 200Ah Pro: the parallel-only limit (search results say up to 8 in parallel, no series) and the self-heating rule (search results say it needs a steady charge current above 6 A per battery in a parallel bank). renogy.com product pages, the za.renogy.com page and storecheck product lookups all returned HTTP 429, and I couldn't open the manual.",
+  "LiTime 12V 200Ah Plus Self-Heating: series/parallel limit, heater activation conditions, and whether it's still listed at $519.99. The product URLs I tried returned HTTP 429, and storecheck searches of litime.com didn't return this model.",
+  "The CSL500 threshold on Battle Born's own product page. A search result says 3,500 W, but battlebornbatteries.com returned HTTP 429 on both CSL500 URLs. The 4,000 W figure above comes from the manual text Tiffin hosts.",
+  "Battle Born BB10012 price on battlebornbatteries.com today (HTTP 429). ChatGPT showed $799.00.",
+  "Victron GX / CAN closed-loop communication for these four models. None of the maker pages I could open lists a CAN or Victron port for them. LiTime's own blog gives that for the 12V 320Ah ComFlex, a different model."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.3045819999999997
+ }
+}

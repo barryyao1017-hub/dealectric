@@ -1,0 +1,84 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states any independently measured figure. Panbo's Ben Stein measured 202.4 Ah from a LiTime 12V 200Ah at a 10 A discharge and just under 110 Ah from an Epoch 12V 100Ah at a 5 A (20-hour) discharge. He also found that the basic LiTime 200Ah kept charging when its temperature probe was cooled well below 0°F.",
+ "standout": 2,
+ "standout_why": "I opened the three pages ChatGPT cited. BatteryTrail's spec database says 'We did not test batteries ourselves for this page' and 'Every figure is a published manufacturer claim.' BoondockMaps says 'We have not lab-tested these units.' VanPowerCalc uses only maker datasheet figures plus general claims with no tester named. I also opened wildjoule.com (result 7), which says 'there is no test bay behind this site' and 'Specifications are manufacturer-stated.' None of these pages gives a measured capacity, a BMS thermal result or a cold-charge result from a named tester.",
+ "decides": "This mostly confirms the pick rather than changing it. A named tester got at least the rated capacity from both brands: 202.4 Ah from a LiTime rated 200 Ah, and about 110 Ah from an Epoch rated 100 Ah. The cold-charge result is the useful part. Panbo found the basic LiTime 200Ah does not stop charging in sub-freezing cold. ChatGPT's advice to buy a model with low-temperature charge cutoff or self-heating is right, so RV owners who camp in winter should take the LiTime 230Ah with low-temp protection or the 200Ah Plus Self-Heating, not the basic 200Ah. Epoch's 120 A continuous BMS sustained about 160 A in Panbo's test without shutting down, which supports Epoch for owners running a large inverter. Two limits: the units Panbo tested are earlier versions (2023), not the exact models ChatGPT showed as cards, and I could not source a measurement of Battle Born.",
+ "candidates": [
+  "LiTime 12V 230Ah Bluetooth (low-temp protection)",
+  "LiTime 12V 200Ah Plus Self-Heating",
+  "Battle Born BB10012 12V 100Ah",
+  "Epoch 12V 100Ah / 200Ah Heated Bluetooth",
+  "SOK SK12V100H / 206Ah"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 12V 200Ah (100A BMS, no heater)",
+   "label": "Measured capacity",
+   "value": "202.4 Ah (rated 200 Ah)",
+   "source": "https://panbo.com/li-time-lifepo4-no-frills-value/",
+   "source_title": "Li Time LiFePO4, no frills, serious value (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Ben Stein's rundown at 10 A lasted just over 20 hours. The article was published March 10, 2023. Stein says capacity was the same after his heavy-discharge abuse testing. The article does not give the charger or the cutoff voltage. Pack is 8 × 100 Ah cells in a 4S2P layout. Article price was $629.00."
+  },
+  {
+   "product": "LiTime 12V 200Ah (100A BMS, no heater)",
+   "label": "Low-temperature charge cutoff test",
+   "value": "Did not stop charging with the probe cooled well below 0°F",
+   "source": "https://panbo.com/li-time-lifepo4-no-frills-value/",
+   "source_title": "Li Time LiFePO4, no frills, serious value (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Stein chilled the temperature probe while the battery was charging, and the BMS never disconnected. He notes LiTime makes no low-temperature shutdown claim for this model. High-temperature cutoff worked: the BMS disconnected at about 250°F at the sensor and reconnected below 200°F."
+  },
+  {
+   "product": "LiTime 12V 200Ah (100A BMS, no heater)",
+   "label": "BMS heat under load",
+   "value": "FETs held at 155–156°F at 95 A. At 175 A the BMS shut off after about 3 minutes",
+   "source": "https://panbo.com/li-time-lifepo4-no-frills-value/",
+   "source_title": "Li Time LiFePO4, no frills, serious value (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Shop was at about 75°F. At 75 A the hottest FET reached 132°F. With the case top off, the battery sustained 150 A. Rating is 100 A continuous and 200 A for 5 seconds."
+  },
+  {
+   "product": "Epoch 12V 100Ah heated (spec column B1200B)",
+   "label": "Measured capacity",
+   "value": "Just under 110 Ah new and 108 Ah after testing (rated 100 Ah, built from four 105 Ah cells)",
+   "source": "https://panbo.com/epoch-batteries-elegant-drop-in-lifepo4/",
+   "source_title": "Epoch Batteries, elegant drop-in LiFePO4 (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Both figures are 20-hour rundowns at 5 A. Published Feb 27, 2023, updated Feb 9, 2024. The largest cell voltage spread Stein saw was 0.015 V. The article does not measure heater power, heater run time or low-temperature charge cutoff."
+  },
+  {
+   "product": "Epoch 12V 100Ah heated (spec column B1200B)",
+   "label": "High-current discharge",
+   "value": "About 160 A continuous with no BMS shutdown. A load above 150 A emptied the battery in under 40 minutes",
+   "source": "https://panbo.com/epoch-batteries-elegant-drop-in-lifepo4/",
+   "source_title": "Epoch Batteries, elegant drop-in LiFePO4 (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Load was a 2,000 VA inverter plus a heat gun. Terminal voltage was 12.5 V under the 150+ A load. Rating is 120 A continuous and 200 A for 30 seconds. In a reader reply, Stein says the BMS stopped charging above 100 A of charge current."
+  },
+  {
+   "product": "general (WattCycle 12V 100Ah Mini, not a candidate)",
+   "label": "Measured capacity fade under cycling",
+   "value": "104.69 Ah at cycle 1, 94.87 Ah at cycle 600 (5.13% below rated)",
+   "source": "https://panbo.com/testing-lifepo4-cycle-ratings-are-they-accurate/",
+   "source_title": "Testing LiFePO4 cycle ratings, are they accurate? (Panbo, Ben Stein)",
+   "read": "2026-11-13",
+   "note": "Cycles were 90% depth of discharge, charged and discharged at 0.5C, charged to 14.2 V. Capacity was checked every 100 cycles with a 5 A (20-hour) discharge to 10.5 V. Stein's projection to 80% end of life was 2,343 cycles at cycle 600. Published Nov 13, 2025, updated Dec 2, 2025. This is useful context for the 4,000+ cycle claims that every rival repeats."
+  }
+ ],
+ "unsourced": [
+  "Measured capacity for the exact LiTime 12V 230Ah Bluetooth model ChatGPT showed: I looked for Panbo, Will Prowse, Notebookcheck and Hobotech tests. The litime.com 200Ah 'review' page I opened is unsigned LiTime content with nominal figures only.",
+  "Heater warm-up time or power for the LiTime 12V 200Ah Plus Self-Heating, or for any Epoch heated model: Panbo's Epoch review does not measure the heater, and I found no named cold-soak test.",
+  "Will Prowse's Battle Born BB10012 load-test figures, reportedly a 99 A load cutting out after 4–55 Ah: diysolarforum.com returned 403 to WebFetch, and fetching it from the shell needed approval. The IRV2 page I opened (thread started Dec 21, 2025) has only other members describing his tests. Thread titles show Battle Born is suing Prowse, so any figure needs his primary post or video.",
+  "Any independent measured capacity for SOK SK12V100H or the SOK 206Ah: no Panbo test found.",
+  "Which product ChatGPT's $1,164.99 'Pre-order 12V 200Ah Smart LiFePO4 Battery w/ Bluetooth & Self-heating' card is, and any measurement of it: I did not identify it.",
+  "Notebookcheck's review of the LiTime 12.8V 320Ah Smart Mini (Stephen Pereyra, published 2025-10-18): it reports no measured capacity, only run times with an appliance, so I left it out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1277302999999996
+ }
+}

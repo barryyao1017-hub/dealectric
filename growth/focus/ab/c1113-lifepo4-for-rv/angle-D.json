@@ -1,0 +1,131 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that LiTime's self-heating pads turn on only while a LiFePO4 charger is connected, supplying 14.2–14.6 V and more than 20 A for a 200Ah battery (more than 15 A for a 100Ah). LiTime also says the battery does not charge while it is heating. So a parked RV with no charger, or a small solar controller, never warms the battery and never charges it below 41°F.",
+ "standout": 2,
+ "standout_why": "I compared three pages. BatteryTrail's spec database (cited) lists only 'Self-heating: Yes/No' and the cutoff temperatures. It says nothing about what powers the heater or what turns it on. BoondockMaps (cited) says Epoch 'warms the cells so charging continues down to -4F' but gives no trigger condition. VanPowerCalc (cited) says the heater 'draws 25-75Wh from the pack', which is the opposite of LiTime's plug-in rule. None of the three gives a minimum charger current or voltage for heating. None separates the old charger-only heaters from LiTime's newer LiHeat 'Dual-Mode' line, which can preheat on battery power.",
+ "decides": "This changes ChatGPT's 'best for cold weather on a budget' pick, the LiTime 12V 200Ah Plus Self-Heating. That battery heats only from a charger that pushes more than 20 A at 14.2–14.6 V. A 10–15 A converter or a small solar MPPT will not trigger it, and an RV in storage gets no heat at all. For winter boondocking, a LiTime LiHeat Dual-Mode model ('preheat with battery power before charging') fits better. If your charging source can't reach 20 A, buy a cutoff-only battery and keep it warm yourself, for example the LiTime 230Ah (32°F charge off, 41°F resume). Battle Born's heated BB10012H also heats only with a charge source present, but it powers the roughly 28 W heater from its own cells. So it needs a charger present but not a 20 A one.",
+ "candidates": [
+  "LiTime 12V 200Ah Plus Self-Heating",
+  "LiTime LiHeat 12V 165Ah Dual-Mode Self Heating",
+  "LiTime 12V 230Ah Bluetooth",
+  "LiTime 12V 230Ah Plus",
+  "Battle Born BB10012H 100Ah Heated",
+  "Battle Born BB10012 100Ah",
+  "Redodo 12V 100Ah Self-Heating",
+  "Epoch 12V Essentials Heated"
+ ],
+ "findings": [
+  {
+   "product": "LiTime self-heating series (12V 100Ah / 200Ah)",
+   "label": "Charger needed to start heating",
+   "value": "DC charger at 14.2–14.6 V and more than 15 A (100Ah) or more than 20 A (200Ah)",
+   "source": "https://litime.com/blogs/blogs/litime-self-heating-vs-low-temperature-protection-series",
+   "source_title": "LiTime Self-Heating vs Low Temperature Protection Series",
+   "read": "2026-11-13",
+   "note": "This is Step 1 of LiTime's heating procedure. Heating is described only as happening during charging, and the page describes no heating without a charger."
+  },
+  {
+   "product": "LiTime self-heating series (12V 100Ah / 200Ah)",
+   "label": "Heating window and behaviour",
+   "value": "Heats when the battery is between -4°F and 41°F (-20°C and 5°C) and stops at 50°F (10°C). The battery does not charge during heating. Warm-up takes about 90 min from 14°F and about 150 min from -4°F.",
+   "source": "https://litime.com/blogs/blogs/litime-self-heating-vs-low-temperature-protection-series",
+   "source_title": "LiTime Self-Heating vs Low Temperature Protection Series",
+   "read": "2026-11-13",
+   "note": "The same page also gives a shorter range in Step 3: 30–60 min from 14°F and 70–100 min from -4°F. The cutoff-only series stops charging below 32°F (0°C) and resumes at 41°F (5°C) after the user warms the battery."
+  },
+  {
+   "product": "LiTime LiHeat 12V 165Ah Dual-Mode Self Heating",
+   "label": "Heating modes",
+   "value": "'Automatically warm the battery while plugged in, or preheat with battery power before charging'",
+   "source": "https://www.litime.com/products/12v-165ah-smart-self-heating-lithium-battery",
+   "source_title": "LiTime LiHeat 12V 165Ah Dual-Mode Self Heating Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read from the store's product data with storecheck.py. The same Dual-Mode wording appears on the LiHeat 100Ah Group 24 ($368.99), 320Ah Mini ($773.99) and 460Ah Mini ($1,034.99). The page did not say how battery-powered preheat is started (app or automatic)."
+  },
+  {
+   "product": "LiTime LiHeat 12V 165Ah Dual-Mode Self Heating",
+   "label": "Price (LiTime US store)",
+   "value": "$479.99",
+   "source": "https://www.litime.com/products/12v-165ah-smart-self-heating-lithium-battery",
+   "source_title": "LiTime LiHeat 12V 165Ah Dual-Mode Self Heating Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. The page lists a 165A BMS continuous and 2,112 Wh."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth",
+   "label": "Low-temp protection",
+   "value": "Charging off at 32°F, discharging off at -4°F, charging resumes at 41°F. No heater.",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. Rated 200A max continuous charge and discharge, 1000A surge for 1 s."
+  },
+  {
+   "product": "LiTime 12V 230Ah Bluetooth",
+   "label": "Price (LiTime US store)",
+   "value": "$530.99",
+   "source": "https://www.litime.com/products/12v-230ah-bluetooth-lithium-rv-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Bluetooth Lithium Battery for RV and Truck",
+   "read": "2026-11-13",
+   "note": "ChatGPT's card showed $589.99 for this model."
+  },
+  {
+   "product": "LiTime 12V 230Ah Plus",
+   "label": "Price (LiTime US store)",
+   "value": "$484.49",
+   "source": "https://www.litime.com/products/12v-230ah-plus-lifepo4-battery",
+   "source_title": "LiTime 12V 230Ah 2944Wh Plus Deep Cycle LiFePO4 Battery for RV, off-grid",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. Same low-temp cutoff (32°F off, 41°F resume). 200A BMS."
+  },
+  {
+   "product": "Battle Born heated batteries",
+   "label": "Heater power source and trigger",
+   "value": "The heater runs from the battery's own energy at about 28 W. It starts when the internal temperature drops to about 35°F, but only while a charge source is present.",
+   "source": "https://battlebornbatteries.com/blogs/academy/how-battle-born-heated-batteries-work-the-battle-born-educational-series",
+   "source_title": "How Battle Born Heated Batteries Work | The Battle Born Educational Series",
+   "read": "2026-11-13",
+   "note": "Battle Born's wording: 'The heater draws power from the battery itself, not from an external source.' The page gives no numeric charge cutoff or stop temperature."
+  },
+  {
+   "product": "Battle Born BB10012H 100Ah Heated",
+   "label": "Price (Battle Born US store)",
+   "value": "$999.00",
+   "source": "https://battlebornbatteries.com/products/100ah-12v-lifepo4-heated-battery-kit",
+   "source_title": "100Ah 12V Heated LiFePO4 Deep Cycle Battery Kit",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The smart heated BB10012iH is $1,049. The unheated BB10012 is $799, matching ChatGPT's 'premium support' card. 10-year warranty, assembled in USA."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating",
+   "label": "Heating trigger and cutoff",
+   "value": "100 W dual pads. Heating starts below 32°F (0°C) and stops at 41°F (5°C), then charging resumes. Discharge stops below -4°F. 100A BMS.",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The product text does not say whether a charger must be connected. Dealectric lists this model (awin:redodo)."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating",
+   "label": "Price (Redodo US store)",
+   "value": "$251.99",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search."
+  }
+ ],
+ "unsourced": [
+  "LiTime 12V 200Ah Plus Self-Heating (ChatGPT's $519.99 card): the product page, its price today and any 'Required Minimum Charge Current for Heating' figure. litime.com and ca.litime.com returned HTTP 429 on every attempt, and the model did not appear in the store's search results.",
+  "Epoch heated 12V: what powers the heater and the minimum charger current. The Epoch 12300A-H manual on defender.com returned 403, and an epochbatteries.com store search returned 404.",
+  "Redodo self-heating: whether heating needs a charger connected and at what current. The product page returned 429, and Redodo's self-heating blog page did not cover it.",
+  "Battle Born BBHeat instruction guide PDF (heat-enable wire, on/off temperatures). It downloaded, but text extraction was not permitted in this session.",
+  "LiTime LiHeat Dual-Mode: how battery-powered preheat is started (app or automatic) and how much energy it uses. The product page returned 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.138979
+ }
+}
