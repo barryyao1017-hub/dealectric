@@ -1,0 +1,137 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how loud each amp's moving-coil phono input can play a low-output cartridge. With a 0.25 mV MC cartridge at full volume, the Marantz MODEL 30 reaches its full 100 W, the Luxman L-505Z about 69 W and the Musical Fidelity A1 only about 7.7 W. The Rega Elex Mk4 has no MC input at all.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Luxman L-505Z page (luxman.com) and the cited What Hi-Fi best-buys page. The Luxman page gives raw input sensitivities (MM 2.5 mV, MC 0.3 mV) but never turns them into gain or watts for a given cartridge. The What Hi-Fi page returned only its headline when fetched, so I could not check its text. The cited Rhythm Audio/Darko and Stereophile Recommended Components pages were not opened within the tool budget. ChatGPT's answer lists all five amps as plain 'MM/MC' or 'MM' with no gain figures. Because the Luxman page already has the raw inputs, this is a new derivation rather than a new fact, so it scores 2 and not 3.",
+ "decides": "This supports ChatGPT's 'best for moving-coil' label for the Marantz MODEL 30: it has the most MC gain of the sourced amps (≈101 dB to the speaker terminals), three MC load settings (33/100/390 Ω) and about 30 dB of overload headroom on both MM and MC. It also shows that the Musical Fidelity A1's 'MM/MC' label is misleading for low-output MC owners. A 0.25 mV cartridge gets only about 7.7 W from it at full volume, so those owners should buy the Marantz or the Luxman, or add a step-up transformer or external phono stage. The Rega Elex Mk4 needs an external stage for any MC cartridge.",
+ "candidates": [
+  "Luxman L-505Z",
+  "Rega Elex Mk4",
+  "Marantz MODEL 30",
+  "Yamaha A-S1200",
+  "Musical Fidelity A1"
+ ],
+ "findings": [
+  {
+   "product": "Luxman L-505Z",
+   "label": "Phono MC sensitivity / rated output (maker spec)",
+   "value": "MC 0.3 mV/100 Ω; MM 2.5 mV/47 kΩ; 100 W/ch into 8 Ω, 150 W/ch into 4 Ω; S/N MM 87 dB, MC 70 dB (IHF-A)",
+   "source": "https://www.luxman.com/product/detail.php?id=49",
+   "source_title": "L-505Z | INTEGRATED AMPLIFIERS | PRODUCTS | LUXMAN",
+   "read": "2026-11-14",
+   "note": "Maker spec page. It lists no phono overload figure and no price."
+  },
+  {
+   "product": "Luxman L-505Z",
+   "label": "Phono gain to speaker terminals at full volume (derived)",
+   "value": "MC ≈ 99.5 dB; MM ≈ 81.1 dB",
+   "source": "https://www.luxman.com/product/detail.php?id=49",
+   "source_title": "L-505Z | INTEGRATED AMPLIFIERS | PRODUCTS | LUXMAN",
+   "read": "2026-11-14",
+   "note": "Rated output voltage = √(100 W × 8 Ω) = 28.28 V. MC: 20·log10(28.28 / 0.0003) = 99.5 dB. MM: 20·log10(28.28 / 0.0025) = 81.1 dB."
+  },
+  {
+   "product": "Luxman L-505Z",
+   "label": "Power at full volume from a 0.25 mV MC cartridge (derived)",
+   "value": "≈ 69 W/ch into 8 Ω",
+   "source": "https://www.luxman.com/product/detail.php?id=49",
+   "source_title": "L-505Z | INTEGRATED AMPLIFIERS | PRODUCTS | LUXMAN",
+   "read": "2026-11-14",
+   "note": "100 W × (0.25 mV / 0.30 mV)² = 69.4 W. Sensitivity is the input that drives rated output; 0.25 mV is an assumed low-output MC level, chosen to equal the Marantz MC sensitivity."
+  },
+  {
+   "product": "Marantz MODEL 30",
+   "label": "Phono sensitivity, MC loading, overload, rated output (maker manual)",
+   "value": "MC 250 µV at 33/100/390 Ω selectable; MM 2.3 mV/39 kΩ; max phono input at 1 kHz: MC 8 mV, MM 80 mV; S/N MC 75 dB (0.5 mV in), MM 88 dB (5 mV in); 100 W/ch into 8 Ω, 200 W/ch into 4 Ω",
+   "source": "https://manuals.marantz.com/model30/EU/EN/DNTXSYnslltjoe.php",
+   "source_title": "Specifications MODEL 30 (Marantz owner's manual)",
+   "read": "2026-11-14",
+   "note": "Maker's online manual (EU edition). The US product page gives the same MM 2.3 mV/39 kΩ, the same S/N figures and the same 100 W/200 W rating."
+  },
+  {
+   "product": "Marantz MODEL 30",
+   "label": "Phono gain to speaker terminals at full volume (derived)",
+   "value": "MC ≈ 101.1 dB; MM ≈ 81.8 dB",
+   "source": "https://manuals.marantz.com/model30/EU/EN/DNTXSYnslltjoe.php",
+   "source_title": "Specifications MODEL 30 (Marantz owner's manual)",
+   "read": "2026-11-14",
+   "note": "√(100 × 8) = 28.28 V. MC: 20·log10(28.28 / 0.00025) = 101.1 dB. MM: 20·log10(28.28 / 0.0023) = 81.8 dB."
+  },
+  {
+   "product": "Marantz MODEL 30",
+   "label": "Phono overload headroom over rated sensitivity (derived)",
+   "value": "MM ≈ 30.8 dB; MC ≈ 30.1 dB",
+   "source": "https://manuals.marantz.com/model30/EU/EN/DNTXSYnslltjoe.php",
+   "source_title": "Specifications MODEL 30 (Marantz owner's manual)",
+   "read": "2026-11-14",
+   "note": "MM: 20·log10(80 mV / 2.3 mV) = 30.8 dB. MC: 20·log10(8 mV / 0.25 mV) = 30.1 dB."
+  },
+  {
+   "product": "Marantz MODEL 30",
+   "label": "Power at full volume from a 0.25 mV MC cartridge (derived)",
+   "value": "100 W/ch into 8 Ω (full rated output)",
+   "source": "https://manuals.marantz.com/model30/EU/EN/DNTXSYnslltjoe.php",
+   "source_title": "Specifications MODEL 30 (Marantz owner's manual)",
+   "read": "2026-11-14",
+   "note": "100 W × (0.25 / 0.25)² = 100 W."
+  },
+  {
+   "product": "Marantz MODEL 30",
+   "label": "US price, maker store",
+   "value": "$3,500",
+   "source": "https://www.marantz.com/en-us/product/amplifiers/model-30/300003.html",
+   "source_title": "MODEL 30 - Premium Integrated Stereo Amplifier with 100W and Custom HDAM",
+   "read": "2026-11-14",
+   "note": "marantz.com en-us product page. Same page lists net weight as 14.8 kg."
+  },
+  {
+   "product": "Musical Fidelity A1",
+   "label": "Phono sensitivity / gain / rated output (maker spec)",
+   "value": "MC 450 µV, 1 kΩ, 60 dB gain; MM 5 mV, 50 kΩ/100 pF, 40 dB gain; S/N MM 75 dB, MC 70 dB; 25 W/ch into 8 Ω; max consumption 130 W",
+   "source": "https://www.musicalfidelity.com/products/a1/a1-2",
+   "source_title": "Musical Fidelity A1",
+   "read": "2026-11-14",
+   "note": "Maker product page. It lists no overload figure, no 4 Ω rating and no price."
+  },
+  {
+   "product": "Musical Fidelity A1",
+   "label": "Phono gain to speaker terminals at full volume (derived)",
+   "value": "MC ≈ 89.9 dB; MM ≈ 69.0 dB",
+   "source": "https://www.musicalfidelity.com/products/a1/a1-2",
+   "source_title": "Musical Fidelity A1",
+   "read": "2026-11-14",
+   "note": "√(25 × 8) = 14.14 V. MC: 20·log10(14.14 / 0.00045) = 89.9 dB. MM: 20·log10(14.14 / 0.005) = 69.0 dB."
+  },
+  {
+   "product": "Musical Fidelity A1",
+   "label": "Power at full volume from a 0.25 mV MC cartridge (derived)",
+   "value": "≈ 7.7 W/ch into 8 Ω",
+   "source": "https://www.musicalfidelity.com/products/a1/a1-2",
+   "source_title": "Musical Fidelity A1",
+   "read": "2026-11-14",
+   "note": "25 W × (0.25 mV / 0.45 mV)² = 7.7 W. That is about 11 dB below the Marantz MODEL 30's MC gain (101.1 − 89.9)."
+  },
+  {
+   "product": "Rega Elex Mk4",
+   "label": "Phono input type / rated output (maker spec)",
+   "value": "MM only (no MC input); 72 W/ch into 8 Ω, 90 W/ch into 6 Ω; 250 W consumption; 11 kg",
+   "source": "https://www.rega.co.uk/products/elex-mk4",
+   "source_title": "Rega Elex Mk4",
+   "read": "2026-11-14",
+   "note": "The maker page lists no phono sensitivity, overload or S/N. Those are in the linked manual PDF, which I could not decode. MM-only is confirmed by Dennis Burger, SoundStage! Access, who also states the price as $1,875 (https://soundstageaccess.com/index.php/equipment-reviews/1258-rega-research-elex-mk4-integrated-amplifier-dac, read 2026-11-14)."
+  }
+ ],
+ "unsourced": [
+  "Yamaha A-S1200 phono sensitivity, maximum input and US price: usa.yamaha.com and its specs page returned 403 to every fetch, and the shop.usa.yamaha.com URL redirected there. Retailer snippets (MC 150 µV, MC max 2 mV, MM 3.5 mV/50 mV max) were never opened, so I left them out.",
+  "Rega Elex Mk4 phono MM sensitivity, maximum input and S/N: the maker page has none, and the maker manual PDF (rega.co.uk/pdf/Rega-ELEX-Mk4-(1).pdf) came back as undecodable binary. The manualshive mirror failed with a certificate error, and the SoundStage! Access review gives no phono figures.",
+  "Luxman L-505Z phono overload (maximum input) and US price: luxman.com lists neither. The luxmanamerica.com spec PDF returned 401, and I found no maker US store page.",
+  "Musical Fidelity A1 US price and phono overload: the maker page lists neither, and I found no US maker store. ChatGPT's $1,999 is unverified.",
+  "Stereophile's measured phono gain and overload for the Marantz MODEL 30: stereophile.com returned 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9144536999999999
+ }
+}
