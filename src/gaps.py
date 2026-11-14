@@ -8808,6 +8808,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G284: lifepo4-battery-with-bms-amp-rating (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'lifepo4-battery-with-bms-amp-rating',
  "question": 'G284 (gap mining daily 2026-11-13, research method ab-2026-11: lifepo4 battery with bms)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
@@ -8827,6 +8828,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G285: portable-power-station-or-generator (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-power-station-or-generator',
  "question": 'G285 (gap mining daily 2026-11-13, research method ab-2026-11: portable power station or generator)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'A',
@@ -8884,6 +8886,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G288: portable-power-station-or-inverter (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-power-station-or-inverter',
  "question": 'G288 (gap mining daily 2026-11-13, research method ab-2026-11: portable power station or inverter)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'D',
