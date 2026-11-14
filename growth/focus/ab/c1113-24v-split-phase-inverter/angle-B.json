@@ -1,0 +1,122 @@
+{
+ "angle": "B",
+ "gap": "None of the results ChatGPT got works out, for each 24 V split-phase candidate, how much battery the inverter uses just sitting idle each day or its price per continuous watt. Two examples: Sigineer's 6,000 W APC6024D uses 1,920 Wh a day idling with power saver off and 360 Wh with it on, and it costs $0.158 per continuous watt, against $0.203 for the SunGold 6000W 24V that ChatGPT called 'best overall value'.",
+ "standout": 2,
+ "standout_why": "I compared against ecosolarkits.com's split-phase guide (2026-11-11), Dealectric's own best-split-phase-inverter page, and the cited Sigineer 6000W page. The ecosolarkits guide says its 24 V models are sold out. Its only 24 V remark is that 'at 12V or 24V the battery current gets very high above about 3,000 W'. Its battery-current table and price-per-kW figures cover 48 V only. Our page covers only 48 V units and gives price per kW of battery output, not idle loss. The Sigineer page lists idle watts but never multiplies them out to Wh per day. It also never gives the DC amps at full load. ChatGPT's answer has one generic '~280A at 90%' figure, and none of its result pages state it per model.",
+ "decides": "This backs Sigineer's 6,000 W APC6024D ($949) as the value pick: it is the cheapest per continuous watt of the candidates I could price ($0.158/W, against $0.203/W for the SunGold 6000W 24V at $1,220). The page should say to keep power-saver mode on. Without it, the inverter uses 1,920 Wh a day doing nothing; with it, 360 Wh. The 10 kW Sigineer is a poor 24 V pick: it costs $0.330/W, idles at 3,600 Wh a day with power saver off, and would pull about 473 A at rated load. At 24 V, the 3–4 kW class is where battery current stays reasonable (about 142–189 A).",
+ "candidates": [
+  "Sigineer APC6024D 6000W 24V split phase",
+  "Sigineer APC3024D 3000W 24V split phase",
+  "Sigineer HP10024D 10000W 24V split phase",
+  "SunGold Power 6000W 24V split phase LF inverter charger",
+  "SunGold Power 4000W 24V split phase LF inverter charger",
+  "AIMS Power 4000W 24V 120/240V split phase inverter charger",
+  "AIMS Power PICOGLF60W24V240VS 6000W 24V split phase"
+ ],
+ "findings": [
+  {
+   "product": "Sigineer APC6024D 6000W 24V",
+   "label": "Price (maker US store)",
+   "value": "$949.00 (was $1,199.00)",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Sale price as shown on the product page."
+  },
+  {
+   "product": "Sigineer APC6024D 6000W 24V",
+   "label": "Cost per continuous watt",
+   "value": "$0.158/W",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "$949 / 6,000 W = $0.158/W"
+  },
+  {
+   "product": "Sigineer APC6024D 6000W 24V",
+   "label": "Idle energy per day",
+   "value": "1,920 Wh/day (power saver off); 360 Wh/day (power saver on)",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Spec lists 80 W idle and 15 W power-saver idle. 80 W × 24 h = 1,920 Wh; 15 W × 24 h = 360 Wh"
+  },
+  {
+   "product": "Sigineer APC6024D 6000W 24V",
+   "label": "DC battery current at rated output",
+   "value": "≈284 A",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "6,000 W / (24 V × 0.88 listed efficiency) = 284 A. Assumes nominal 24 V; current is higher as the battery sags."
+  },
+  {
+   "product": "Sigineer APC6024D 6000W 24V",
+   "label": "Max output per 120 V leg",
+   "value": "3,000 W",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Page: 'a max of 3000 watts between each 120Vac hot line and neutral'. Surge 18,000 W for 20 s; charger 85 A; unit weight 70.4 lb."
+  },
+  {
+   "product": "Sigineer APC3024D 3000W 24V",
+   "label": "Price / cost per watt / idle per day / DC current",
+   "value": "$799.00; $0.266/W; 888 Wh/day (saver off), 312 Wh/day (saver on); ≈142 A",
+   "source": "https://sigineer.com/product/3000-watt-24-volt-to-120-240vac-split-phase-pure-sine-inverter-charger/",
+   "source_title": "3000 Watt 24 Volt to 120 / 240Vac Split Phase Pure Sine Inverter Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "$799/3,000 W = $0.266/W. 37 W × 24 h = 888 Wh; 13 W × 24 h = 312 Wh. 3,000/(24×0.88) = 142 A. The page also contradicts itself (an '11 watt idle' bullet; a 30 A vs 50 A charger)."
+  },
+  {
+   "product": "Sigineer HP10024D 10000W 24V",
+   "label": "Price / cost per watt / idle per day / DC current",
+   "value": "$3,299.00; $0.330/W; 3,600 Wh/day (saver off), 840 Wh/day (saver on); ≈473 A",
+   "source": "https://sigineer.com/product/10000-watt-inverter-charger-24v-dc-to-ac-120v-240v-pure-sine-wave-power-150a-battery-charger/",
+   "source_title": "10000 Watt Inverter Charger 24V Dc to Ac 120V 240V Pure Sine Wave Power 150A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "$3,299/10,000 W = $0.330/W. 150 W × 24 = 3,600 Wh; 35 W × 24 = 840 Wh. 10,000/(24×0.88) = 473 A. Unit weight 160 lb."
+  },
+  {
+   "product": "SunGold Power 6000W 24V split phase",
+   "label": "Price (maker US store) / cost per watt",
+   "value": "$1,220.00; $0.203/W",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Store product JSON via storecheck search, marked available. $1,220/6,000 W = $0.203/W. ChatGPT showed the same $1,220 (Off Grid Selection)."
+  },
+  {
+   "product": "SunGold Power 4000W 24V split phase",
+   "label": "Price (maker US store) / cost per watt",
+   "value": "$936.00; $0.234/W",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 24V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Store product JSON via storecheck search, marked available. $936/4,000 W = $0.234/W."
+  },
+  {
+   "product": "AIMS Power 4000W 24V 120/240V split phase",
+   "label": "Idle energy per day / DC current",
+   "value": "1,260 Wh/day (saver off); under 600 Wh/day (saver on); ≈189 A",
+   "source": "https://canada.powerinverters.com/product/aims-4000-watt-pure-sine-inverter-charger-24v-120-240v-split-phase",
+   "source_title": "4000 Watt Pure Sine Inverter Charger 24Vdc to 120/240Vac Split Phase - AIMS Power",
+   "read": "2026-11-13",
+   "note": "52.5 W × 24 h = 1,260 Wh; power saver under 25 W × 24 = under 600 Wh. 4,000/(24×0.88) = 189 A. Listed to UL 458/1741/1012 and CSA 107.1. Price there is CAD $3,199.99 and needs a custom quote, so no US price."
+  }
+ ],
+ "unsourced": [
+  "AIMS PICOGLF60W24V240VS (6000W 24V) US price, idle draw and efficiency: the aimscorp.net product page showed no price or specs, Home Depot returned 403, and only a search snippet gave $2,240, which I did not use.",
+  "AIMS fuse/cable guide rows for the 24 V split-phase models: the PDF downloaded, but I could not extract text from it without an extra approval.",
+  "SunGold 6000W and 4000W 24V idle draw, efficiency and per-leg limit: sungoldpower.com product pages returned HTTP 429 on every retry, so I have only the price from the store JSON.",
+  "Redodo 24V 100Ah BMS current and Wh from the maker page (to work out how many batteries each inverter needs, and what share of one battery the idle loss uses per day): redodopower.com returned HTTP 429.",
+  "WZRELB 4000W 24V split phase: I did not open the Walmart listing because I ran out of tool calls, so I have no price, idle draw or efficiency.",
+  "Measured idle draw or efficiency from a named reviewer for any 24 V split-phase unit: I did not search for it after the maker pages, because the tool-call limit was reached."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8864462
+ }
+}

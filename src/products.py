@@ -6532,6 +6532,22 @@ PRODUCTS = [
  "fit": '48V home, cabin or off-grid solar where the battery sits in a garage, shed or cabin that drops below freezing.',
  "caveats": ['The listing names UL 1973 only. The unheated SG48100P also lists UL9540A.', 'Up to 32 in parallel, against 63 for the SG48100P.', 'Costs $54 more than the unheated SG48100P.', 'The cycle rating gives no depth of discharge.']},
 
+{"slug": 'sungoldpower-6000w-24v-split-phase-inverter-charger',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "category": 'inverter',
+ "name": 'Sun Gold Power 6000W 24V Split Phase Pure Sine Wave Inverter With Charger (LFP6K24V240VSP)',
+ "model": 'LFP6K24V240VSP',
+ "url": 'https://sungoldpower.com/products/6000w-peak-18000w-dc-24v-split-pure-sine-wave-inverter-with-charger',
+ "price": 1220.0,
+ "verified": '2026-11-13',
+ "specs": [('Continuous / surge', '6,000 W / 18,000 W for 20 s'), ('Battery', '24 V DC'), ('Output', '120/240 V split phase, 50 or 60 Hz set by SW4'), ('Idle draw', '77 W; 29 W in power-saver mode (Solaris spec table)'), ('Charger', '90 ± 5 A, adjustable 0–100%'), ('AC input', '240 V required; 140–270 V or 184–253 V window set by SW2'), ('Generator', 'Auto generator start on low battery voltage'), ('Unit weight', '76.7 lb')],
+ "warranty": 'Sun Gold Power states 12 or 36 months depending on product; its dealers list 2 years for this inverter',
+ "returns": '30 days, unused and in original packaging; buyer pays return shipping unless the unit is defective or wrong',
+ "summary": 'Low-frequency 24 V inverter-charger with 6,000 W continuous, 18,000 W for 20 s surge, and a 90 A charger.',
+ "fit": "24 V banks of three or more 100 Ah batteries that charge from a 240 V generator whose voltage sags. Its 140 V lower input limit is wider than Sigineer's 160 V.",
+ "caveats": ["Charging and pass-through need 240 V input. A 120 V-only generator won't charge it.", "The power-saver draw is 29 W (0.70 kWh a day), almost twice the Sigineer APC6024D's 15 W.", 'Idling with power saver off draws 77 W, which is 1.85 kWh a day, or 72% of one 24 V 100 Ah battery.', "Sun Gold's store text marks the 48 V version as UL1741. The 24 V listing makes no such claim.", 'The spec table gives no per-leg 120 V wattage.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

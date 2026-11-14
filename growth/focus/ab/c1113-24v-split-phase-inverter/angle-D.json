@@ -1,0 +1,101 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a 120 V-only generator or shore feed can't charge any of the low-frequency 24 V split-phase units it named. Sun Gold says its 4000 W and 6000 W 24 V units 'require 240VAC input', and Sigineer and AIMS chargers take only 240 V across L1–L2. Sigineer gives a 160–264 Vac input window, so a 120 V source is below the 160 V minimum.",
+ "standout": 1,
+ "standout_why": "I compared against the cited Sigineer 6000 W page, the Sigineer 3000 W page, the ecosolarkits split-phase guide, liveoffthegrid.com/specs/inverters and our own dealectric.com/best-split-phase-inverter. The cited Sigineer page has the raw spec ('accepts 240 volts AC… 160-264Vac', 'only L1, L2, and ground are required'), but it doesn't say what that means for a 120 V generator. Ecosolarkits says 'needs a 240V AC input (not 120V)' only about a 48 V Sungold 15 kW unit, and it says its 24 V models are sold out. Liveoffthegrid marks 'Gen in' as yes or no with no voltage and lists no 24 V units. Our page covers only 48 V hybrids and doesn't mention AC input. ChatGPT's answer leaves the input requirement out completely, even though three of its four cards (Sun Gold 6000 W, Sun Gold 4000 W, AIMS 6000 W) are 240 V-input units.",
+ "decides": "This works as a gate before any pick. If the shopper's backup or charging source is a 120 V-only generator or a 120 V shore or RV plug, the Sun Gold, AIMS and Sigineer 24 V split-phase units won't charge from it or pass it through. The shopper then needs a generator with a 240 V outlet, or a step-up autotransformer. If the shopper already has 240 V from a generator or the grid, any of them works. Choose by per-leg limit next: Sigineer 6000 W allows 3,000 W per 120 V leg and 100% imbalance. After that, choose by listing: AIMS 4000 W cites UL 458/1741/1012, while the Sigineer pages list no certification.",
+ "candidates": [
+  "Sun Gold Power 6000W 24V Split Phase Inverter Charger",
+  "Sun Gold Power 4000W 24V Split Phase Inverter Charger",
+  "AIMS Power 6000W 24V 120/240V Split Phase Inverter Charger (PICOGLF60W24V240VS)",
+  "AIMS Power 4000W 24V 120/240V Split Phase Inverter Charger",
+  "Sigineer 6000W 24V 120/240V Split Phase Inverter Charger",
+  "Sigineer 3000W 24V 120/240V Split Phase Inverter Charger"
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power 6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "AC input requirement",
+   "value": "240 VAC input required (120 V or 240 V output); low frequency; auto generator start",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Maker's text, read from the store's product JSON through storecheck search: 'The split-phase inverter requires 240VAC input and can provide 120VAC or 240VAC output power'. Direct page fetches returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power 6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price (maker US store)",
+   "value": "$1,220.00 (compare-at $4,713), in stock",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "storecheck search of sungoldpower.com; this matches the $1,220 card ChatGPT showed."
+  },
+  {
+   "product": "Sun Gold Power 4000W DC 24V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "AC input requirement and price",
+   "value": "240 VAC input required; $936.00, in stock",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 24V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Maker's text: 'The split-phase 4000-watt power inverter requires 240VAC input'. Read through storecheck search."
+  },
+  {
+   "product": "Sigineer 6000W 24V 120/240V Split Phase Inverter Charger",
+   "label": "AC input window and wiring",
+   "value": "Nominal 240 Vac; bypass/charge input range 160–264 Vac; charger input 164–243 Vac ±4%; input neutral not required, only L1, L2 and ground",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "A 120 V source sits below the 160 V lower limit, so the unit won't bypass or charge from it. This is my inference from the maker's stated range: 120 < 160."
+  },
+  {
+   "product": "Sigineer 6000W 24V 120/240V Split Phase Inverter Charger",
+   "label": "Per-leg output limit",
+   "value": "3,000 W max per 120 V leg (6,000 W total at 240 V); 100% imbalance allowed; 18,000 W surge for 20 s; 85 A charger",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Quotes: 'a max of 3000 watts between each 120Vac hot line and neutral', 'allows a 100% imbalance'. The page lists the price as $949.00 (was $1,199.00) and names no UL/ETL listing."
+  },
+  {
+   "product": "Sigineer 3000W 24V 120/240V Split Phase Inverter Charger",
+   "label": "AC input window",
+   "value": "Nominal 240 Vac charger input (164–243 Vac ±4%); input range 160–264 Vac; $799.00",
+   "source": "https://sigineer.com/product/3000-watt-24-volt-to-120-240vac-split-phase-pure-sine-inverter-charger/",
+   "source_title": "3000 Watt 24 Volt to 120 / 240Vac Split Phase Pure Sine Inverter Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "The page contradicts itself on charger current: 'Charger Rate: 50Amp' in the spec list, 'A 30 amp multi stage battery charger' in the description."
+  },
+  {
+   "product": "AIMS Power 4000W 24V 120/240V Split Phase Inverter Charger",
+   "label": "AC input requirement and certification",
+   "value": "Charges from 'any source of 240V AC power… including a gas or diesel generator or shore power'; 55 A charger; 12,000 W surge for 20 s; listed to UL 458, 1741, 1012 and CSA 22.2 No. 107.1/107.2",
+   "source": "https://canada.powerinverters.com/product/aims-4000-watt-pure-sine-inverter-charger-24v-120-240v-split-phase",
+   "source_title": "4000 Watt Pure Sine Inverter Charger 24Vdc to 120/240Vac Split Phase - AIMS Power",
+   "read": "2026-11-13",
+   "note": "This is AIMS's own site (Canada storefront). It shows $3,199.99 but also says 'requires a custom quote', so I'm not using that as a US price. The page doesn't mention 120 V input."
+  },
+  {
+   "product": "general",
+   "label": "Who carries 24 V split-phase among the rival pages",
+   "value": "liveoffthegrid.com lists only 48 V split-phase units; ecosolarkits says its 24 V split-phase models are sold out and recommends 48 V for 240 V loads",
+   "source": "https://ecosolarkits.com/blogs/guides/split-phase-inverter-explained",
+   "source_title": "Split-Phase Inverters Explained: 120/240V Guide (2026) | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "I also read https://liveoffthegrid.com/specs/inverters on 2026-11-13. Its 'Gen in' column is yes/no only and gives no input voltage."
+  }
+ ],
+ "unsourced": [
+  "AIMS 6000 W 24 V split-phase (PICOGLF60W24V240VS) on AIMS's own US site: my guessed aimscorp.net URL returned 404 and search turned up only resellers and manuals.plus mirrors. Its '240Vac Input' wording and the $1,418 price ChatGPT showed are therefore unverified from the maker.",
+  "Sun Gold 24 V 6000 W per-leg (L–N) limit, charger amps and UL status: sungoldpower.com returned HTTP 429 to both storecheck product and WebFetch. The search text I got shows UL1741 only on the 48 V version.",
+  "Sigineer 1.5–6 kW manual text on what happens with a 120 V input: the PDF downloaded but its text streams were unreadable through WebFetch, and local pdftotext wasn't approved.",
+  "A maker-sourced 24 V split-phase option that charges from a 120 V-only generator (e.g. a paired MPP Solar LV2424): I found only third-party PDF mirrors with no AC input range, so I left it out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9875303000000001
+ }
+}

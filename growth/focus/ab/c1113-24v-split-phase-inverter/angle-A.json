@@ -1,0 +1,139 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got turns idle draw into daily energy. The 24 V 6,000 W low-frequency split-phase units it recommended draw 77–80 W at idle with no load, which is 1.85–1.92 kWh a day, or about 72–75% of a 24 V 100 Ah (2.56 kWh) battery. That is before any appliance runs.",
+ "standout": 2,
+ "standout_why": "I compared against these pages. The cited Sigineer APC6024D page lists 80 W idle and 3,000 W per 120 V leg, but it never turns idle draw into kWh per day or a share of the battery bank. ChatGPT's answer says a 6,000 W unit 'does not necessarily supply all 6,000W on one 120V leg' but gives no per-leg number and says nothing about idle draw. liveoffthegrid.com/specs/inverters lists idle watts only for 48 V units, has no 24 V split-phase model, gives no surge duration and no per-leg figure. ecosolarkits.com's guide says its 24 V split-phase models are sold out and gives no per-leg rating for any unit. Dealectric's own page covers only 48 V hybrids. The per-leg part of the finding is partly on the cited Sigineer page. Idle draw as daily energy, set side by side across the 24 V candidates, is on none of these pages.",
+ "decides": "This changes the pick for a 24 V bank, which is usually small. On idle draw alone, a 6,000 W low-frequency unit drains most of a 2.56 kWh battery in a day. For a typical 24 V system the stronger picks are the smaller units: Sigineer APC3024D (37 W idle) or AIMS 4,000 W (52.5 W idle). A 6,000 W unit makes sense only if the buyer needs 240 V motor surge (18,000 W for 20 s) and will run it in power-saver mode (15 W Sigineer, 29 W Sun Gold). The per-leg figure confirms the same choice. Sigineer states its 6,000 W unit gives at most 3,000 W between each 120 V hot line and neutral. So a 120 V-only load list does not benefit from 6,000 W. It needs a unit whose 120 V leg covers its largest 120 V load.",
+ "candidates": [
+  "Sigineer APC6024D 6000W 24V split phase",
+  "Sigineer APC3024D 3000W 24V split phase",
+  "Sigineer HP10024D 10000W 24V split phase",
+  "Sun Gold Power LFP6K24V240VSP 6000W 24V split phase",
+  "Sun Gold Power 4000W 24V split phase",
+  "AIMS Power 4000W 24V split phase",
+  "AIMS Power PICOGLF60W24V240VS 6000W 24V split phase"
+ ],
+ "findings": [
+  {
+   "product": "Sigineer APC6024D",
+   "label": "Per-leg 120 V continuous output",
+   "value": "3,000 W per 120 V hot line to neutral (6,000 W only at 240 V)",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Page text: 'a max of 3000 watts between each 120Vac hot line and neutral'. The same page says it 'allows a 100% imbalance', meaning one leg can be fully loaded while the other is empty, but still only up to 3,000 W per leg."
+  },
+  {
+   "product": "Sigineer APC6024D",
+   "label": "Surge (normalised)",
+   "value": "18,000 W for 20 s total (300%)",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Maker states the duration. For comparison, EG4 6000XP is rated 12,000 W for 3.5 s (per Dealectric's page and the ecosolarkits guide), so the low-frequency unit holds surge about 5.7 times longer."
+  },
+  {
+   "product": "Sigineer APC6024D",
+   "label": "Idle draw as daily energy",
+   "value": "80 W idle = 1.92 kWh/day; power saver 15 W = 0.36 kWh/day",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "80 W × 24 h = 1,920 Wh, which is 75% of a 25.6 V × 100 Ah = 2,560 Wh battery. At 24 V nominal, 80 W ≈ 3.3 A continuous."
+  },
+  {
+   "product": "Sigineer APC6024D",
+   "label": "Price (maker store)",
+   "value": "$949.00 (marked down from $1,199.00)",
+   "source": "https://sigineer.com/product/6000-watt-24-volt-to-120240-vac-split-phase-inverter-charger-pure-sine-wave/",
+   "source_title": "6000 Watt Inverter 24Vdc to 120V 240Vac Split Phase Pure Sine Wave – With 85A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "Listed as in stock in the USA and Canada. Other page figures: 85 A charger, 88% peak efficiency, unit weight 70.4 lb."
+  },
+  {
+   "product": "Sigineer APC3024D",
+   "label": "Idle draw as daily energy",
+   "value": "37 W idle = 0.89 kWh/day; power saver 13 W = 0.31 kWh/day",
+   "source": "https://sigineer.com/product/3000-watt-24-volt-to-120-240vac-split-phase-pure-sine-inverter-charger/",
+   "source_title": "3000 Watt 24 Volt to 120 / 240Vac Split Phase Pure Sine Inverter Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "37 × 24 = 888 Wh, about 35% of a 2.56 kWh bank. The page's features list says 11 W standby, which conflicts with the 13 W power-saver figure in its spec table. I used the spec table."
+  },
+  {
+   "product": "Sigineer APC3024D",
+   "label": "Surge / charger / price",
+   "value": "9,000 W for 20 s; 50 A charger; $799.00",
+   "source": "https://sigineer.com/product/3000-watt-24-volt-to-120-240vac-split-phase-pure-sine-inverter-charger/",
+   "source_title": "3000 Watt 24 Volt to 120 / 240Vac Split Phase Pure Sine Inverter Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "The description mentions a 30 A charger, but the spec table says 50 A. I used the spec table."
+  },
+  {
+   "product": "Sigineer HP10024D",
+   "label": "Idle draw as daily energy",
+   "value": "150 W idle = 3.6 kWh/day; power saver 35 W = 0.84 kWh/day",
+   "source": "https://sigineer.com/product/10000-watt-inverter-charger-24v-dc-to-ac-120v-240v-pure-sine-wave-power-150a-battery-charger/",
+   "source_title": "10000 Watt Inverter Charger 24V Dc to Ac 120V 240V Pure Sine Wave Power 150A Battery Charger – Sigineer Power",
+   "read": "2026-11-13",
+   "note": "150 × 24 = 3,600 Wh, more than a whole 24 V 100 Ah battery per day. The features list says 25 W saver, which conflicts with the 35 W in the spec table. Other figures: 30,000 W for 20 s surge, 150 A charger, $3,299.00."
+  },
+  {
+   "product": "Sun Gold Power LFP6K24V240VSP",
+   "label": "Idle draw as daily energy",
+   "value": "77 W idle = 1.85 kWh/day; power saver 29 W = 0.70 kWh/day",
+   "source": "https://www.solaris-shop.com/inverter/sungoldpower-lfp6k24v240vsp-6000w-dc-24v-split-phase-pure-sine-wave-inverter-with-charger",
+   "source_title": "Sungoldpower LFP6K24V240VSP 6000W DC 24V Split Phase Pure Sine Wave Inverter with Charger (Solaris)",
+   "read": "2026-11-13",
+   "note": "Sun Gold's own page returned HTTP 429 on every attempt, so these figures come from a retailer's spec table. 77 × 24 = 1,848 Wh, about 72% of 2.56 kWh. The same table gives 18,000 W for 20 s surge and a 90 ± 5 A charger. Solaris price: $1,371.40."
+  },
+  {
+   "product": "Sun Gold Power LFP6K24V240VSP",
+   "label": "Price (maker store)",
+   "value": "$1,220.00, available",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search on the Sun Gold Shopify store (compare-at price $4,713). Matches the price ChatGPT showed."
+  },
+  {
+   "product": "Sun Gold Power 4000W 24V split phase",
+   "label": "Price (maker store)",
+   "value": "$936.00, available",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-24v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 24V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search (compare-at price $2,829). The product page's spec table returned HTTP 429, so I could not read its idle or surge figures."
+  },
+  {
+   "product": "AIMS Power 4000W 24V split phase",
+   "label": "Idle / surge / charger / listings",
+   "value": "52.5 W idle (= 1.26 kWh/day), under 25 W power saver; 12,000 W for 20 s; 55 A charger; UL 458, UL 1741, UL 1012, CSA 22.2 No. 107.1 & 107.2",
+   "source": "https://canada.powerinverters.com/product/aims-4000-watt-pure-sine-inverter-charger-24v-120-240v-split-phase",
+   "source_title": "4000 Watt Pure Sine Inverter Charger 24Vdc to 120/240Vac Split Phase - AIMS Power",
+   "read": "2026-11-13",
+   "note": "52.5 × 24 = 1,260 Wh, about 49% of 2.56 kWh. Of the 24 V candidates I opened, this is the only page that lists UL standards. The $3,199.99 price there is on a Canadian page and marked 'custom quote', so I did not use it."
+  },
+  {
+   "product": "AIMS Power PICOGLF60W24V240VS",
+   "label": "Surge",
+   "value": "300% surge (6,000 W rated, so 18,000 W)",
+   "source": "https://www.aimscorp.net/product/6000-watt-pure-sine-inverter-charger-24vdc-240vac-input-120240vac-split-phase-output/",
+   "source_title": "6000 Watt Pure Sine Inverter Charger 24Vdc / 240Vac Input & 120/240Vac Split Phase Output – AIMS Power",
+   "read": "2026-11-13",
+   "note": "The maker page gives only the title specs: no spec-table values, no surge duration, no price. The related UL/ETL 24 V 6,000 W page says only 'ETL listed'."
+  }
+ ],
+ "unsourced": [
+  "Sun Gold LFP6K24V240VSP per-leg 120 V limit: a search snippet said 3,000 W per leg, but sungoldpower.com and outboundpower.com both returned HTTP 429 and the solartown.com spec PDF returned 403. Solaris's page says only '2 legs of 110V' with no wattage.",
+  "AIMS PICOGLF60W24V240VS idle draw, charger amps, per-leg limit and US price: aimscorp.net shows no spec values. I downloaded the AIMS manual PDF (CETL 4-6K) but could not extract its text in this session.",
+  "Sigineer APC3024D and HP10024D per-leg 120 V limits: neither maker page states one, and I did not assume half the rating.",
+  "Sun Gold 4000W 24V idle draw and surge duration: the maker page returned HTTP 429.",
+  "WZRELB 4000W 24V (Walmart listing that ChatGPT showed): no maker US page found within the tool budget. Amazon prices skipped."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1285594
+ }
+}
