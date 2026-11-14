@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a typical submersible well pump runs on 230 V single-phase. Such a pump can only be powered by a source with a 120/240 V outlet, such as the L14-30R on a mid-size gas generator or the L14-30 on Anker's F3800 Plus. A plain 120 V power station does not have one, and even a 1/2 hp pump needs a source rated about 2 kW, because pump makers size generators to hold the voltage dip at startup to 35% or less.",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no searches and got no results, so there were no rival pages to read. I compared against its answer instead. That answer says generators suit 'heavy appliances' and power stations suit 'electronics, short outages', but it never mentions output voltage (120 V vs 120/240 V), the L14-30 outlet, or the startup sizing that well pumps require. Those are the electrical facts that decide whether a home-backup plan works at all.",
+ "decides": "For home backup with a 230 V well pump or other 240 V loads, the plan only works with a source that has a 120/240 V L14-30 outlet. That can be a gas or dual-fuel generator (Champion 201077: 6,500 W running, 8,125 W starting, L14-30R) or a 240 V-capable power station (Anker SOLIX F3800 Plus: 120V/240V on NEMA L14-30R, up to 6,000 W), not a compact 1 kWh, 1,800 W 120 V unit. For 120 V-only loads (router, fridge, laptops) the choice stays open, and a power station works if its continuous and surge ratings exceed the load's.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "Champion 201077 6500W Dual Fuel Generator",
+  "BLUETTI Elite 100 V2",
+  "Jackery Explorer 2000 v2",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Typical residential submersible well pump supply voltage",
+   "value": "230 VAC single-phase, 3-wire, ±10% tolerance, 6 A (1/2 hp model 5FR05P4-3W230)",
+   "source": "https://www.franklinwater.com/products/submersible-well-pumps/residential-duty-submersible-well-pumps/3200-series-4-inch-submersible-well-pumps/fps-3200-series-submersible-well-pump/fps-3200-3-wire-thermoplastic-sku-collection/96210535/",
+   "source_title": "Franklin Electric 96210535 – 5FR05P4-3W230",
+   "read": "2026-11-13",
+   "note": "Maker's product page. Franklin also sells 115 V versions (e.g. 96210530, 5FR05P4-3W115) in the same collection. Those appeared only in search results and I did not open them, so whether a given home's pump is 230 V must be checked on the pump label. The page lists no locked-rotor or starting amps."
+  },
+  {
+   "product": "general",
+   "label": "Minimum generator size to start a submersible pump motor",
+   "value": "1/2 hp: 2.0 kW externally regulated / 1.5 kW internally regulated; 3/4 hp: 3.0 / 2.0 kW; 1 hp: 4.0 / 2.5 kW; 1.5 hp: 5.0 / 3.0 kW",
+   "source": "https://www.manualslib.com/manual/1717853/Grundfos-Sp.html?page=33",
+   "source_title": "Grundfos SP Installation and Operating Instructions, 10.2 Guide for engine-driven generators in submersible pump applications (p. 33)",
+   "read": "2026-11-13",
+   "note": "Grundfos's own words: 'The table is based on typical +176 °F (+80 °C) rise continuous duty generators with 35 % maximum voltage dip during startup'. For kVA ratings, multiply by 1.25. I read this through a ManualsLib copy, and the values came from a flattened table, so check them against the printed page. The table is for engine-driven generators. I found no pump-maker figure for battery inverters."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC output voltage and 240 V outlet",
+   "value": "120V/240V dual-voltage; NEMA L14-30R 120V/240V~ 25 A max, 6,000 W max; 120V~ 20 A outlets 2,400 W max; 1x NEMA TT-30 3,000 W 120 V",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-13",
+   "note": "The page also says 'Add Plus, then directly connect to your Transfer Switch'. It gives no surge rating and never uses the phrase 'split phase'. It showed 'Sold Out' and 'Price Loading', so I have no price."
+  },
+  {
+   "product": "Champion 201077 6500W Dual Fuel Generator",
+   "label": "Output and 240 V outlet",
+   "value": "Gasoline 8,125 W starting / 6,500 W running; propane 7,325 W starting / 5,850 W running; 120/240V 30A locking outlet (L14-30R) plus 2x 120V 20A 5-20R duplex",
+   "source": "https://www.championpowerequipment.com/product/201077-6500w-dual-fuel-generator/",
+   "source_title": "Champion 201077 6500W Dual Fuel Generator",
+   "read": "2026-11-13",
+   "note": "Maker's page. It shows no price, only 'Find Local'."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Output, UPS switchover, price",
+   "value": "1,800 W output (2,700 W 'Lifting Power'), 1,024 Wh LiFePO4, 10 ms UPS switchover; $499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "Price read with storecheck.py from BLUETTI's US Shopify store. The product text gives no AC voltage and no motor-surge figure."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Output, switchover, price",
+   "value": "2,200 W continuous, 4,400 W surge, 2,042 Wh LiFePO4, switchover under 20 ms; $999.00 (compare-at $1,899)",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py from Jackery's US store. The listing says 'Sold out due to high demand. Pre-order now, ships Nov 16.' The text gives no AC voltage."
+  }
+ ],
+ "unsourced": [
+  "Maker spec pages for EcoFlow DELTA 3 Plus and Jackery Explorer 1000 v2 giving AC output voltage (120 V only) and surge watts. Both sites returned HTTP 429 on every attempt.",
+  "BLUETTI Apex 300 maker page (120/240 V wording, price). The direct URL hit a redirect loop, and a storecheck search for 'Apex 300' returned only Apex 200 listings.",
+  "Franklin Electric AIM manual engine-driven generator table and locked-rotor amps for 1/2 hp and 1 hp 230 V 3-wire motors. The 2026 PDF was over the 10 MB fetch limit, the other copies returned 404 or 402, and downloading it locally needed shell approval that was not granted.",
+  "A pump or inverter maker's statement on whether a battery inverter's surge rating can stand in for the generator kW table when starting a well pump.",
+  "Current USD prices for Anker SOLIX F3800 Plus (sold out, price not shown) and Champion 201077 (maker page shows no price)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9734075000000002
+ }
+}
