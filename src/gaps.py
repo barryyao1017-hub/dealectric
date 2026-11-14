@@ -2484,105 +2484,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "published": '2026-11-03',
  "checked": '2026-11-14',
  "updated": '2026-11-14'},
-{'slug': 'best-65w-gan-universal-travel-adapter-under-50',
- 'question': 'G85 (Awin brands: 65W GaN universal travel adapter with 3 USB-C under $50)',
- 'lead_first': True,
- 'product_result': {'slug': 'tessan-gan-65w-universal-travel-adapter-wta07',
-                    'item_id': 'TESSAN-WTA07',
-                    'title': 'TESSAN GaN 65W travel adapter WTA07',
-                    'description': '65 W USB-C, 3 USB-C + 2 USB-A, universal outlet, double 10 A fuse, 6 oz. $42.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0747/5439/2376/files/2TS-WTA07-BK.png'},
- 'title': 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
- 'h1': 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
- 'desc': "Which universal travel adapter can charge a laptop at 65 W for under $50: TESSAN's GaN 65W WTA07 ($42.99, 3 USB-C + 2 USB-A, double 10 A fuse, 6 oz) "
-         "against TESSAN's WTA09, Epicka's TA-105C and TA-105 Max, Zendure's Passport III and Anker's 65 W adapter, with the single-port catch, the "
-         'voltage-converter myth and the prices seen on 2026-11-03.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>TESSAN GaN 65W WTA07</strong> ({buy:tessan-gan-65w-universal-travel-adapter-wta07}), '
-          'the best universal travel adapter that charges a laptop at 65W for under $50: $42.99 on 2026-11-03 (list $49.99) for one 65 W USB-C port, two more '
-          "USB-C and two USB-A at 15 W, a 2,500 W universal outlet, double 10 A fuses and 6.04 oz. If three USB-C ports matter more than 65 W, Epicka's "
-          'TA-105C was $24.99 at Best Buy the same day.</p>\n'
-          '<p>What to know: 65 W is from one port at a time (USB-C 3), enough for a MacBook Air, a 14-inch MacBook Pro at reduced speed or any USB-C laptop '
-          "under 65 W, while the other four ports share 15 W each; a 16-inch MacBook Pro needs TESSAN's 205 W Voyager ($119). The adapter covers Type A, C, G "
-          "and I plugs for 150+ countries but not India or South Africa, and it is not a voltage converter: it passes the wall's 100–250 V through, so hair "
-          "dryers and straighteners must be dual-voltage. TESSAN's WTA09 ($48.99) adds a second AC outlet for the same 65 W; Zendure's Passport III (65 W, "
-          "four USB-C) launched at $65–69 and Epicka's 75 W TA-105 Max is $59.99, both over the cap. TESSAN's return window is 7 days, with a 12–24-month "
-          'warranty.</p>\n',
- 'columns': [('max', 'Max USB-C'), ('ports', 'Ports'), ('outlet', 'AC outlet'), ('safety', 'Fuse / weight')],
- 'rows': [{'slug': 'tessan-gan-65w-universal-travel-adapter-wta07',
-           'model': 'TESSAN GaN 65W WTA07',
-           'cells': {'max': '65 W on USB-C 3',
-                     'ports': '3 USB-C + 2 USB-A (15 W each on the other four)',
-                     'outlet': '1 universal, 2,500 W, 100–250 V',
-                     'safety': 'Double 10 A fuse; 6.04 oz'}},
-          {'brand': 'TESSAN',
-           'model': '65W GaN WTA09',
-           'url': 'https://tessan.com/products/65w-gan-universal-travel-adapter-wta09',
-           'cells': {'max': '65 W on USB-C 3',
-                     'ports': '3 USB-C + 2 USB-A',
-                     'outlet': '2 AC outlets (front universal + side 2-prong)',
-                     'safety': 'fuse not read; weight not read',
-                     'price': '$48.99 (list $49.99) on 2026-11-03'}},
-          {'brand': 'Epicka',
-           'model': 'TA-105C',
-           'url': 'https://bestbuy.com/site/epicka-universal-travel-adapter-with-3-usb-c-and-2-usb-a-ports-charger-for-usa-eu-uk-aus-ta-105c-black/6610133.p',
-           'cells': {'max': 'not confirmed (lower than 65 W)',
-                     'ports': '3 USB-C + 2 USB-A',
-                     'outlet': '1 universal',
-                     'safety': 'not read',
-                     'price': '$24.99 at Best Buy, 2026-11-03'}},
-          {'brand': 'Epicka',
-           'model': 'TA-105 Max 75W',
-           'url': 'https://www.t3.com/us/features/best-travel-adapter',
-           'cells': {'max': '75 W',
-                     'ports': 'not read',
-                     'outlet': '1 universal',
-                     'safety': 'not read',
-                     'price': '$59.99, search result 2026-11-03: over the cap'}},
-          {'brand': 'Zendure',
-           'model': 'Passport III 65W',
-           'url': 'https://appleinsider.com/articles/22/03/05/zendure-passport-iii-review-usb-c-rich-global-travel-charger',
-           'cells': {'max': '65 W',
-                     'ports': '4 USB-C + 1 USB-A',
-                     'outlet': '1 universal, no ground',
-                     'safety': 'about 173 g',
-                     'price': '$65–69 at launch (2022); current price not read'}},
-          {'brand': 'Anker',
-           'model': '65W travel adapter (A9213)',
-           'url': 'https://anker.com.sg/zh/collections/travel-essentials/products/anker-powerextend-travel-adapter-65w-with-usb-c-charger-a9213',
-           'cells': {'max': '65 W on one USB-C',
-                     'ports': '1 AC + 3 USB (count of USB-C not confirmed)',
-                     'outlet': '1',
-                     'safety': 'not read',
-                     'price': 'no US price read (S$79.90 in Singapore)'}}],
- 'after': '\n'
-          '<h2>What 65 W buys you</h2>\n'
-          '<p>A USB-C laptop that ships with a 30–67 W charger (MacBook Air, most 13–14-inch Windows ultrabooks, iPad Pro) charges at full speed from the '
-          "WTA07's USB-C 3 port. A 14-inch MacBook Pro charges, more slowly than its 70–96 W brick; a 16-inch MacBook Pro (140 W) or a gaming laptop will "
-          "trickle or not charge under load. TESSAN's figure for a phone is 0–80% in 40 minutes on that port alone.</p>\n"
-          '<h2>The port split</h2>\n'
-          '<p>Only USB-C 3 is 65 W. USB-C 1, 2 and the two USB-A ports are 15 W each, so the adapter charges six devices at once but only one of them fast. '
-          "Epicka's $24.99 TA-105C also has three USB-C ports; Best Buy's listing does not state its wattage, and no result we read put it at 65 W.</p>\n"
-          '<h2>Not a converter</h2>\n'
-          '<p>Every adapter on this list passes the local voltage straight through. Phone, laptop and camera chargers are 100–240 V and need nothing more; a '
-          "single-voltage hair dryer or straightener needs a dual-voltage replacement, not an adapter, and TESSAN's own 250 W converter cannot run one "
-          'either.</p>\n'
-          '<h2>Fuses, certification and returns</h2>\n'
-          '<p>TESSAN lists double 10 A fuses on the WTA07; it does not list a UL or ETL mark on this product page, and we could not confirm one for any rival '
-          "either. TESSAN's FAQ gives 7 days from delivery for returns, unused and in the original packaging, with a 12–24-month warranty depending on the "
-          'product.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>Wirecutter's current travel-adapter pick (its 2020 guide chose Epicka; one aggregator says Anker's Nano is pending), Epicka's TA-105C wattage, "
-          'current US prices for the Zendure and Anker adapters, and any Reddit thread on these models.</p>\n',
- 'sources': [('TESSAN GaN 65W WTA07', 'https://tessan.com/products/gan-65w-universal-travel-adapter-wta07'),
-             ('TESSAN 65W GaN WTA09', 'https://tessan.com/products/65w-gan-universal-travel-adapter-wta09'),
-             ('TESSAN warranty info', 'https://tessan.com/pages/warranty-info'),
-             ('TESSAN FAQ (returns)', 'https://tessan.com/pages/faq'),
-             ('Epicka TA-105C at Best Buy',
-              'https://bestbuy.com/site/epicka-universal-travel-adapter-with-3-usb-c-and-2-usb-a-ports-charger-for-usa-eu-uk-aus-ta-105c-black/6610133.p'),
-             ("Wirecutter's travel adapter guide, as published by Engadget (2020)", 'https://www.engadget.com/2020/01/11/the-best-travel-plug-adapter/')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- best-65w-gan-universal-travel-adapter-under-50 (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": 'best-65w-gan-universal-travel-adapter-under-50',
+ "question": 'G85 (Awin brands: 65W GaN universal travel adapter with 3 USB-C under $50)',
+ "method": 'ab-2026-11',
+ "angle": 'D',
+ "searched_as": ['best 65W universal travel adapter USB C PD under $50 2026 price', 'best universal travel adapter 65W USB C laptop 2026 under $50 price', 'best 65W USB C universal travel adapter under $50 price 2026 EPICKA TESSAN', 'best universal travel adapter 65W USB C PD laptop 2026 price EPICKA TESSAN', 'best 65W universal travel adapter USB C PD 2026 under $50 EPICKA TESSAN'],
+ "title": 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
+ "h1": 'Best universal travel adapter that charges a laptop at 65W for under $50 (2026)',
+ "desc": "TESSAN's WTA09 gives a laptop 65W over USB-C PD for $27.99 at TESSAN. A plain 3A cable holds any 65W or 70W travel adapter to 60W, so this page also covers which cable gets you the full 65W.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best universal travel adapter that charges a laptop at 65W for under $50 is the TESSAN WTA09: 65W USB-C PD from one port, price $27.99. Pair it with a 5A e-marked USB-C cable: a plain 3A cable caps any 65W or 70W adapter, TESSAN or EPICKA, at 60W (20V × 3A).</p>',
+ "columns": [('laptop_port', 'Laptop USB-C port (maker)'), ('amps', 'Current that wattage needs at 20 V'), ('plain_cable', 'Through a plain 3 A cable'), ('ports', 'Ports and outlets (maker)')],
+ "rows": [{'slug': 'tessan-65w-gan-universal-travel-adapter-wta09', 'model': 'TESSAN WTA09 65W GaN', 'cells': {'laptop_port': '65 W max on USB-C3 (single-port use)', 'amps': '3.25 A (65 ÷ 20)', 'plain_cable': '60 W (5 W short)', 'ports': '3 USB-C + 2 USB-A (15 W max each, apart from C3); 2 AC outlets', 'price': '$27.99 (maker, 2026-11-13)'}}, {'slug': 'tessan-gan-65w-universal-travel-adapter-wta07', 'model': 'TESSAN WTA07 GaN 65W', 'cells': {'laptop_port': '65 W max on USB-C3 (single-port use)', 'amps': '3.25 A (65 ÷ 20)', 'plain_cable': '60 W (5 W short)', 'ports': '3 USB-C + 2 USB-A (15 W max each, apart from C3); 1 AC outlet, 2,500 W max', 'price': '$42.99 (maker, 2026-11-13)'}}, {'brand': 'EPICKA', 'model': 'Pulse Duo 65W', 'url': 'https://www.epickatech.com/products/pulse-65w-duo', 'cells': {'laptop_port': 'PD3.0 up to 65 W', 'amps': '3.25 A (65 ÷ 20)', 'plain_cable': '60 W (5 W short)', 'ports': '2 USB-C + 2 USB-A; AC outlet takes 13 of 15 plug types', 'price': '$49.99 (maker, 2026-11-13)'}}, {'brand': 'Ceptics', 'model': 'UP-70WC-WH 70W with retractable cable', 'url': 'https://www.ceptics.com/products/70w-universal-travel-adapter-2-usb-c-1-gan-3-0-retractable-cable-usb-c-1-usb-c-up-70wc-wh', 'cells': {'laptop_port': '70 W PD on one USB-C port', 'amps': '3.5 A (70 ÷ 20)', 'plain_cable': '60 W (10 W short)', 'ports': '1 USB-C + retractable USB-C cable + 2 USB-A (one QC 3.0, one 1 A); universal outlet', 'price': '$39.99 (maker, 2026-11-13)'}}, {'brand': 'EPICKA', 'model': 'TA-105 Pro 70W', 'url': 'https://www.epickatech.com/products/ta-105-pro-gan-70w-fast-charging', 'cells': {'laptop_port': 'Up to 70 W on one of 3 USB-C ports', 'amps': '3.5 A (70 ÷ 20)', 'plain_cable': '60 W (10 W short)', 'ports': '3 USB-C + 2 USB-A; AC outlet takes 10 plug types', 'price': '$49.99 (maker, 2026-11-13)'}}],
+ "after": '\n<h2>What the differences mean</h2><ul><li><strong>WTA09 against WTA07:</strong> the WTA09 costs $15.00 less ($42.99 − $27.99), has a second AC outlet and the same 65 W USB-C3 port. In exchange it weighs 1.14 oz more (7.18 − 6.04 oz).</li><li><strong>Cost per laptop watt:</strong> WTA09 $0.43/W ($27.99 ÷ 65), Ceptics $0.57/W ($39.99 ÷ 70), WTA07 $0.66/W ($42.99 ÷ 65), TA-105 Pro $0.71/W ($49.99 ÷ 70), Pulse Duo $0.77/W ($49.99 ÷ 65).</li><li><strong>The 70 W headroom:</strong> 70 − 65 = 5 W more, and only through a 5 A cable. Through a 3 A cable the 65 W and 70 W adapters all stop at 20 V × 3 A = 60 W.</li><li><strong>What a plain cable costs you:</strong> on a 65 W port, 5 W of 65 (7.7%). On a 70 W port, 10 W of 70 (14%). If your laptop\'s own charger is rated 60 W or less, a 3 A cable costs you nothing.</li><li><strong>EPICKA Air 65W:</strong> TrekSavvy, quoting EPICKA\'s manual, says the 65 W port drops to 40 W plus 15 W once a second USB port is in use. That leaves the laptop 40 ÷ 65 = 62% of its headline power. Laurence Norah of Finding the Universe weighed it at 149 g, lighter than either TESSAN (the WTA07\'s 6.04 oz is 171 g).</li></ul><table><thead><tr><th>Your trip</th><th>Fits best</th></tr></thead><tbody><tr><td>Laptop plus a hair tool or a second plug-in device</td><td>TESSAN WTA09 (2 AC outlets)</td></tr><tr><td>One outlet is enough and every ounce counts</td><td>TESSAN WTA07 (6.04 oz)</td></tr><tr><td>Smallest bag, and the laptop charges alone</td><td>EPICKA Air 65W (149 g weighed, 40 W once a phone shares)</td></tr><tr><td>You don\'t want to pack a separate cable</td><td>Ceptics UP-70WC-WH (built-in retractable USB-C cable)</td></tr></tbody></table><h2>Why the cable decides whether you actually get 65W</h2><p>A USB-C laptop charges at 20 V, and watts are volts times amps. 65 W at 20 V needs 3.25 A, and 70 W needs 3.5 A. A USB-C cable without an e-marker chip is limited to 3 A. Anker\'s support page says it directly: "To achieve output over 60W, an E-Marker cable must be used; without it, only 3A current is supported." Satechi says the same from the cable side: once a charger puts out more than 3 A, "a 5A wire with an E-Mark chip will be required." So every adapter in the table stops at 60 W on an ordinary 3 A cable, however it is labelled.</p><p>The fix costs less than a meal. Pack a cable rated 100 W or more: 100 W at 20 V is 5 A. Baseus\'s 100 W USB-C cable is listed at $9.99 on Baseus\'s store (2026-11-13) {buy:baseus-usb-c-cable-100w}. Baseus\'s 240 W cable ($12.99, same store and date) says on its listing that it has an E-marker chip. If the cable you already own is printed 60 W or 3 A, that is where your laptop will stop.</p><p>Port choice matters as much as the cable. On both TESSANs, only USB-C3 reaches 65 W. TESSAN rates the other four ports at 15 W max each, and it states the 65 W for single-port use.</p><h2>Not recommended</h2><p><strong>Paying extra for the EPICKA TA-105 Pro\'s 70 W.</strong> At $49.99 it costs $22.00 more than the WTA09 ($49.99 − $27.99) for 5 W more. Those 5 W need a 5 A cable, which you also need to get the WTA09\'s full 65 W. On a 3 A cable both deliver 60 W. EPICKA\'s listing doesn\'t say how much the 70 W port keeps when the other ports are busy.</p>\n',
+ "sources": [('TESSAN WTA09: $27.99 (compare-at $49.99), USB-C3 65 W max single-port, A1/A2/C1/C2 15 W max each, 2 AC outlets, 7.18 oz (read 2026-11-13)', 'https://tessan.com/products/65w-gan-universal-travel-adapter-wta09'), ('TESSAN WTA07: $42.99, USB-C3 65 W max single-port, 15 W on other ports, 1 outlet 2,500 W max, 6.04 oz (read 2026-11-13)', 'https://tessan.com/products/gan-65w-universal-travel-adapter-wta07'), ('EPICKA Pulse Duo 65W: $49.99, PD3.0 up to 65 W, 2 USB-C + 2 USB-A, AC outlet takes 13 of 15 plug types (read 2026-11-13)', 'https://www.epickatech.com/products/pulse-65w-duo'), ('EPICKA TA-105 Pro: $49.99, one USB-C port up to 70 W, 3 USB-C + 2 USB-A, AC outlet takes 10 plug types (read 2026-11-13)', 'https://www.epickatech.com/products/ta-105-pro-gan-70w-fast-charging'), ('Ceptics UP-70WC-WH: $39.99, 70 W PD USB-C, retractable USB-C cable, 2 USB-A (read 2026-11-13)', 'https://www.ceptics.com/products/70w-universal-travel-adapter-2-usb-c-1-gan-3-0-retractable-cable-usb-c-1-usb-c-up-70wc-wh'), ('Anker: output over 60 W needs an E-Marker cable; without one only 3 A is supported (read 2026-11-14)', 'https://service.anker.com/article-description/Why-is-the-Output-Power-of-My-Device-Lower-than-60W'), ('Satechi: above 3 A, a 5 A cable with an E-Mark chip is required (article 2024-07-12, read 2026-11-14)', 'https://satechi.com/blogs/news/identifying-usb-c-e-mark-cables'), ("EPICKA Air 65W: 40 W + 15 W with a second USB port, per EPICKA's manual; 5.26 oz / 149 g listed (TrekSavvy, read 2026-11-14)", 'https://treksavvy.co/reviews/best-universal-travel-adapters-laptop-charging-2026'), ('EPICKA Air 65W weighed at 149 g by Laurence Norah (Finding the Universe, read 2026-11-14)', 'https://www.findingtheuniverse.com/best-travel-adapter/'), ('EPICKA Air Series: USB-C up to 65 W PD, keeps 20 W PD during multi-port charging, Type A/C/G/I, not Type D or M (read 2026-11-13)', 'https://www.epickatech.com/products/air-series-universal-travel-adapter'), ('Baseus USB-C to USB-C 100 W cable: $9.99 (read 2026-11-13)', 'https://www.baseus.com/products/usb-c-to-usb-c-cable-100w'), ('Baseus 240 W USB-C cable: $12.99, 48 V/5 A, E-marker chip (read 2026-11-13)', 'https://www.baseus.com/products/usb-c-fast-charging-cable-240w')],
+ "published": '2026-11-03',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 
 {'slug': 'cheapest-10-inch-double-din-android-head-unit-wireless-carplay',
  'question': 'G86 (Awin brands: cheapest 10-inch double-DIN Android head unit with wireless CarPlay)',
