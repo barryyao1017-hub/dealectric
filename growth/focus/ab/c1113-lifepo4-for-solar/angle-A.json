@@ -1,0 +1,123 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got turns a '100A BMS' into watts: ECO-WORTHY's Cubix100 48V 100Ah is rated 100 A continuous and 120 A for under 2 seconds, so at 51.2 V it can hold about 5.1 kW and briefly reach about 6.1 kW, which means one pack cannot run a 6 kW-plus 48 V inverter at full load and the 'peak' adds only 20% for 2 seconds.",
+ "standout": 2,
+ "standout_why": "I read BLUETTI's cited guide on 2026-11-13. It gives cycle life as '3,000 to 6,000 full cycles at 80% depth of discharge' to 80% capacity. It gives no BMS continuous or peak current and no numeric cold-charge cutoff; its only watt figures are for its own Apex 300 AC output. ChatGPT's answer just says 'check ... BMS current limits' and puts a $799.99 WEIZE and an $889.99 Cubix100 side by side as '5.12 kWh' with no current or power ceiling. I could not read SAVYEN, the other cited page (SSL certificate error), so it may cover BMS current in general terms.",
+ "decides": "For 'home solar' at 5–10 kWh the pick has to be sized on continuous kW as well as kWh. One 51.2 V 100 Ah server-rack pack with a 100 A BMS covers an inverter of up to about 5 kW. A larger inverter needs two packs in parallel even if one pack holds enough energy. The cycle numbers cannot be ranked as printed: Sun Gold says '≥7000 cycles' and Redodo says '4000-15000 cycles' on their store pages with no depth of discharge, while Cubix100's 6,000 is at 80%. Those numbers should not decide the pick. Cold charging does separate the options: the base 48 V rack battery stops charging at 0 °C, the Cubix 100 Pro V2 ($1,099.99) charges to −4 °F, and Vatrer's heated 12 V costs $40 more than the unheated one and charges once it has warmed past 41 °F.",
+ "candidates": [
+  "WEIZE 12V 100Ah Group 31 Bluetooth",
+  "WEIZE 48V 100Ah Server Rack",
+  "ECO-WORTHY Cubix100 48V 100Ah",
+  "ECO-WORTHY Cubix 100 Pro V2 48V 100Ah",
+  "Sun Gold Power SG48100P 48V 100Ah",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+  "Vatrer 12V 100Ah Group 24 Heated"
+ ],
+ "findings": [
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "Price, maker US store",
+   "value": "$889.99",
+   "source": "https://www.eco-worthy.com/products/eco-worthy-51-2v-100ah-lifepo4-lithium-battery-5-12kwh-capacity-server-rack-battery",
+   "source_title": "ECO-WORTHY Cubix100 48V 100Ah Server Rack Battery | Bluetooth & WiFi | 10 Years Warranty | UL9540 | UL1973 | UL9540A | CEC Listed",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search of the maker's Shopify store. Same price as ChatGPT's card. The store copy says '100A smart BMS' and '10-year warranty'."
+  },
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "BMS current: recommended / max continuous / peak",
+   "value": "50 A / 100 A / 120 A for <2 s",
+   "source": "https://www.currentconnected.com/product/ew-bat48100/",
+   "source_title": "ECO-WORTHY CUBIX-100 48V 100Ah LiFePO4 Server Rack Battery, UL 1973 and UL 9540A (Current Connected)",
+   "read": "2026-11-13",
+   "note": "Taken from a retailer's spec table, because the maker's store page returned HTTP 429. Normalised to power at the 51.2 V nominal voltage: 50 A × 51.2 V = 2.56 kW recommended, 100 A × 51.2 V = 5.12 kW continuous, 120 A × 51.2 V = 6.14 kW for under 2 s. So the 'peak' adds 20% for 2 seconds; it is not surge headroom for a bigger inverter."
+  },
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "Cycle life as stated",
+   "value": "6,000 cycles at 80% DOD (end-of-life capacity not stated)",
+   "source": "https://www.currentconnected.com/product/ew-bat48100/",
+   "source_title": "ECO-WORTHY CUBIX-100 48V 100Ah LiFePO4 Server Rack Battery (Current Connected)",
+   "read": "2026-11-13",
+   "note": "The retailer page states the depth of discharge but not the remaining-capacity threshold (70% or 80%)."
+  },
+  {
+   "product": "ECO-WORTHY 48V 100Ah server rack battery (as sold in maker bundles)",
+   "label": "Charge temperature range",
+   "value": "0–55 °C charge; −20–55 °C discharge; max charge/discharge 100 A",
+   "source": "https://www.eco-worthy.com/products/eco-worthy-5-12kwh-home-backup-power-with-48v-100ah-lifepo4-and-3500w-48v-off-grid-inverter",
+   "source_title": "ECO-WORTHY 5.12KWh Home Backup Power With 48V 100Ah LiFePO4 And 3500W 48V Off-Grid Inverter",
+   "read": "2026-11-13",
+   "note": "From the maker's store spec block for the '51.2V 100AH SERVE RACK LITHIUM BATTERY' in the bundle (UL1973 | UL9540A). It is not labelled Cubix100 by name. It means the battery will not charge below freezing."
+  },
+  {
+   "product": "ECO-WORTHY Cubix 100 Pro V2 48V 100Ah",
+   "label": "Price and low-temp charging",
+   "value": "$1,099.99; 'low-temperature charging down to -4℉'; 'over 6,000 long-life cycles'",
+   "source": "https://www.eco-worthy.com/products/eco-worthy-cubix-100-pro-48v-100ah-server-rack-battery-bluetooth-wifi-low-temp-ready",
+   "source_title": "ECO-WORTHY Cubix 100 Pro V2 | 48V 100AH Server Rack Battery | Active Balancing | Low-Temp Charge | 10 Years Warranty",
+   "read": "2026-11-13",
+   "note": "Maker store. That is $210 more than the Cubix100 for charging down to −20 °C instead of 0 °C. The cycle claim gives no depth of discharge."
+  },
+  {
+   "product": "Sun Gold Power SG48100P 48V 100Ah",
+   "label": "Price and cycle claim, maker US store",
+   "value": "$981.00; '≥ 7000 cycles deep cycle & 10 years warranty, designed for up to 15-year life'",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The store copy gives no depth of discharge, so this cannot be compared directly with Cubix100's 6,000 at 80% DOD. Also UL1973 / UL9540A, CAN/RS485/RS232, up to 63 units in parallel."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "Price and cycle claim, maker US store",
+   "value": "$259.99; '4000-15000 cycles, 10 years life'; recommended charge 20 A (0.2C); 5-year warranty",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery | Real-Time Battery Monitoring | For RV, Marine, Solar",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The quoted range carries no depth of discharge on this page, so the 15,000 figure is a shallow-discharge best case, not a number to compare. The page also says it is 'NOT suitable ... for high-power applications such as water pumps' and has a low-temperature charge cut-off."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+   "label": "Price, BMS, cold-charge cutoff",
+   "value": "$259.99; 150 A BMS; 'The BMS stops charging below 32°F'; UL 1973",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery for RVs and Trolling Motors with Bluetooth and 150A BMS",
+   "read": "2026-11-13",
+   "note": "Maker store, read with storecheck.py search. Same price as Redodo's Group 24 with a 150 A BMS: 150 A × 12.8 V = 1.92 kW continuous."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Heated",
+   "label": "Price and heating behaviour",
+   "value": "$299.99 (pre-order); heats from the charger at 32°F and starts charging above 41°F",
+   "source": "https://www.vatrerpower.com/products/12v-100ah-self-heating-lithium-battery",
+   "source_title": "【Pre-order】 Vatrer 12V 100Ah Group 24 Heated Lithium Battery for Cold-Weather RV and Off-Grid Power",
+   "read": "2026-11-13",
+   "note": "Maker store. The heater runs on incoming charge power, so on solar the first morning energy goes to heating, not charging. It costs $40 more than the unheated version."
+  },
+  {
+   "product": "general",
+   "label": "Cited rival's cycle-life basis",
+   "value": "3,000–6,000 cycles at 80% DOD, to 80% capacity; no BMS current figures; no numeric charge cutoff",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/lifepo4-batteries-for-solar-energy-storage",
+   "source_title": "LiFePO₄ Solar Battery Guide: Sizing, Safety, and System Options - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "This is the baseline the finding has to beat."
+  }
+ ],
+ "unsourced": [
+  "WEIZE 12V 100Ah Group 31 and WEIZE 48V 100Ah server rack: searched for a WEIZE US maker store or spec sheet and found none; weizestore.com returned HTTP 0 and search gave only other brands. No cycle life, BMS peak or charge-temperature figures.",
+  "Sun Gold SG48100P cycle-life depth of discharge, test conditions and peak current: the maker's datasheet PDF (cdn.shopify.com, issuer SunGoldPower, Nov 2024) opened but had no extractable text layer. The maker's product page, the solartown spec sheet and the outboundpower spec table all returned 429 or 403. Search snippets said '≥7000 @80% DOD, 25 °C, 0.5C', but I did not use them.",
+  "Redodo 12V 100Ah per-DOD cycle ladder (4,000 @100% / 6,000 @80% / 15,000 @60%): this appears only in search snippets; the redodopower.com and ca.redodopower.com pages returned HTTP 429.",
+  "End-of-life capacity threshold (70% or 80% remaining) behind any candidate's cycle rating: I found no maker document stating it for Cubix100, SG48100P, Redodo or Vatrer.",
+  "ECO-WORTHY Cubix100 maker manual or spec sheet confirming the 120 A <2 s peak: the maker page returned 429, and the Amazon-hosted PDF had no readable text. The figure comes from the Current Connected retailer page.",
+  "SAVYEN's cited compatibility guide: WebFetch failed with a self-signed certificate error, so I could not check whether it gives BMS current figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1352452
+ }
+}

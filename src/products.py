@@ -6515,6 +6515,23 @@ PRODUCTS = [
  "fit": "Best for a home that wants an inverter, battery and solar input from one maker at a posted price, without signing an installer's solar contract. An electrician still installs the inlet box or Power Dock.",
  "caveats": ['Not a single enclosure: one power module plus separate battery modules', 'Rated continuous output is 7.68 kW; the 10 kW figure holds for 90 minutes', '5-year warranty, against 10 years for Tesla Powerwall 3 and EG4', 'Connects through a Smart Inlet Box or Power Dock, which Anker says a licensed electrician must install', 'On 2026-11-13, ankersolix.com showed this bundle at $5,999 (struck through from $6,299), while the us.ankersolix.com store listed $6,299']},
 
+{"slug": 'sungoldpower-sgh48100t-48v-100ah-self-heating',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "asin": None,
+ "category": 'lithium-battery',
+ "name": 'Sun Gold Power SGH48100T 48V (51.2V) 100Ah Self-Heating Server Rack LiFePO4 Battery, UL 1973',
+ "model": 'SGH48100T',
+ "url": 'https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating',
+ "price": 1035.0,
+ "verified": '2026-11-13',
+ "specs": [('Energy', '5.12 kWh (51.2 V × 100 Ah)'), ('Self-heating', 'Starts below 41°F (5°C), stops at 53.6°F (12°C)'), ('Cold protection', 'BMS low-temperature charging protection'), ('Communication', 'RS485 and CAN Bus (with the matching cables)'), ('Inverters the maker names', 'Growatt, Deye, Sol-Ark, SunGoldPower, Luxpower, EG4, Victron Energy, Schneider, SMA, Solis'), ('Parallel', 'Up to 32 units (163.84 kWh)'), ('Cycle life (maker)', 'Over 7,000 deep cycles, designed for up to 15 years'), ('Certification', 'UL 1973')],
+ "warranty": '10 years (maker)',
+ "returns": '30 days from delivery, in original packaging with all accessories. The buyer pays return shipping unless the item arrived damaged, is defective or is the wrong item (Sun Gold Power policy).',
+ "summary": 'A 5.12 kWh 48V server-rack LiFePO4 battery that warms itself below 41°F and talks CAN/RS485 to ten inverter brands named by the maker.',
+ "fit": '48V home, cabin or off-grid solar where the battery sits in a garage, shed or cabin that drops below freezing.',
+ "caveats": ['The listing names UL 1973 only. The unheated SG48100P also lists UL9540A.', 'Up to 32 in parallel, against 63 for the SG48100P.', 'Costs $54 more than the unheated SG48100P.', 'The cycle rating gives no depth of discharge.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

@@ -1,0 +1,77 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab kept the ECO-WORTHY Cubix100 in a deep freezer for 24 hours, until its surface was about −25 °C, and the battery then refused both charge and discharge as its BMS should, while the older ECO-WORTHY 48V 100Ah server-rack battery still put out 52 V at −20 °C (−4 °F) when its BMS should have blocked discharge.",
+ "standout": 2,
+ "standout_why": "I compared against the cited BLUETTI guide (bluettipower.com, read 2026-11-13). It has no measurement by a named reviewer or lab. Its only named source is BloombergNEF, for pack prices, and it covers only BLUETTI's own Apex 300 and B300K/B500K specs. The cited SAVYEN compatibility guide would not open (SSL certificate error), so I could not check it. Of the uncited top results, cpv24.pl's winter guide repeats Victron manual specs (80 Ah at 0 °C, 50 Ah at −20 °C) and names no tested battery. The search snippets for ampbird, ecoflow, aovolt and acebattery are generic buying guides with no test of a named product. None of these pages tests whether a specific battery's low-temperature cutoff actually works, although ChatGPT's answer tells the shopper to check 'cold-weather charging protection'.",
+ "decides": "This supports the ECO-WORTHY Cubix100 that ChatGPT showed for off-grid 48V storage: a named lab confirmed its low-temperature protection works, and it held its rated 100 A continuous discharge and 100 A charge. It also warns shoppers off older or used pre-Cubix ECO-WORTHY 48V server-rack units, whose cold cutoff failed the same lab's freezer test. I found no comparable named test for the WEIZE 48V or the Sun Gold Power SG48100P, so the page can't rank those against the Cubix100 on this point. For 12V, the only named bench capacity figure is techtest.org's Redodo 12V 100Ah at about 107.7 Ah, roughly 8% over its rating.",
+ "candidates": [
+  "WEIZE 12V 100Ah Group 31 Bluetooth LiFePO4",
+  "WEIZE 48V 100Ah Smart LiFePO4 Server Rack Battery",
+  "ECO-WORTHY Cubix100 48V 100Ah Server Rack Battery",
+  "Sun Gold Power SG48100P 51.2V 100Ah",
+  "Redodo 12V 100Ah LiFePO4 (standard / self-heating / Group 24 Bluetooth)",
+  "Vatrer 12V 100Ah Group 24 Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "Low-temperature cutoff, freezer test",
+   "value": "Surface about −25 °C (−13 °F) after 24 h in a deep freezer; the battery would not accept a charge or discharge any power",
+   "source": "https://www.thesolarlab.com/review/eco-worthy-cubix100",
+   "source_title": "Eco-Worthy Cubix100 48V 100Ah Review: A Cheap Server Rack Battery That Performs? | The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Measured by The Solar Lab. The page names no individual reviewer and gives no publish date; the site's sitemap.xml shows lastmod 2026-09-17. The review itself contrasts this result with the earlier Eco-Worthy unit, which kept running below its threshold."
+  },
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "Continuous discharge and charge at rated current",
+   "value": "100 A continuous discharge for more than 15 min with no issues; accepted the full 100 A charge rate",
+   "source": "https://www.thesolarlab.com/review/eco-worthy-cubix100",
+   "source_title": "Eco-Worthy Cubix100 48V 100Ah Review | The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab's in-house test. No measured Wh or Ah delivered and no cutoff voltage are reported. The review's 'about one hour to full at 100 A' is arithmetic (5.12 kWh / (51.2 V × 100 A)), not a timed result."
+  },
+  {
+   "product": "ECO-WORTHY Cubix100 48V 100Ah",
+   "label": "Surge handling",
+   "value": "Repeated surges of about 130 A; brief peak of 152 A without shutdown",
+   "source": "https://www.thesolarlab.com/review/eco-worthy-cubix100",
+   "source_title": "Eco-Worthy Cubix100 48V 100Ah Review | The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab surge test. 130 A is 30 A above the rated 100 A continuous."
+  },
+  {
+   "product": "ECO-WORTHY 48V (51.2V) 100Ah server rack (earlier, pre-Cubix model)",
+   "label": "Low-temperature cutoff, freezer test",
+   "value": "Failed: still output 52 V at −20 °C (−4 °F) after an overnight freeze, when the BMS should have blocked discharge",
+   "source": "https://www.thesolarlab.com/review/ecoworthy-48v-server-rack-battery",
+   "source_title": "EcoWorthy 48V Server Rack Battery Review: Budget-Friendly Power or Should You Spend More? | The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Measured by The Solar Lab; no reviewer name or publish date on the page, sitemap lastmod 2026-11-02. The page also says BMS monitoring works only with the main breaker on. Weight 95 lb on The Solar Lab's page."
+  },
+  {
+   "product": "Redodo 12V 100Ah LiFePO4 (standard BMS, no Bluetooth, ASIN B0B6F32H7S)",
+   "label": "Measured capacity",
+   "value": "1,379 Wh / 107.7 Ah at 5 A; 1,377 Wh / 107.6 Ah at 10 A; 1,378 Wh / 107.7 Ah at 15 A",
+   "source": "https://techtest.org/?p=67612",
+   "source_title": "Test: Redodo 12 V 100 Ah LiFePO4, wirklich 100Ah Kapazität? (ja) | techtest.org",
+   "read": "2026-11-13",
+   "note": "Michael Barton, techtest.org, published 2022-08-16. Charged on a 14.6 V charger and discharged to below 11 V. This is the basic model, not the self-heating or Group 24 Bluetooth versions Dealectric lists. 107.7 Ah / 100 Ah = 7.7% over rating. One reader comment reports 76.2 Ah on a Victron charger in Li-ion mode; that is unverified."
+  }
+ ],
+ "unsourced": [
+  "WEIZE 12V 100Ah and WEIZE 48V 100Ah server rack: looked for capacity, freezer or teardown tests by Will Prowse, Panbo, The Solar Lab and techtest.org; found none, only maker and retailer listings and an unattributed aggregator site.",
+  "Sun Gold Power SG48100P: looked for an independent capacity or cold test; found only spec sheets and retailer pages.",
+  "Vatrer 12V 100Ah Group 24 Bluetooth: looked for a bench capacity test; Wired2Fish's review appeared in search as a usage review with no capacity figure (not opened), and I found no lab measurement.",
+  "Redodo 12V 100Ah self-heating: looked for a measured heating time or cold-chamber test; found only Redodo's own claims (100 W pads, 'faster heating'). CleanTechnica's Group 24 review (Danielle Garland, 2024-02-20, sponsored) reports no measured figures.",
+  "ECO-WORTHY Cubix100 maker spec and price: eco-worthy.com returned HTTP 429, so the charge temperature range (0 to 55 °C on The Solar Lab's page) and the current price are not confirmed from the maker.",
+  "The Solar Lab review dates and reviewer names: neither review page shows them; only sitemap lastmod dates were available.",
+  "SAVYEN cited rival page: would not open (SSL certificate error), so I could not check whether it contains any measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9713412999999997
+ }
+}

@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the exact charge cutoff that decides winter solar charging: Redodo's BMS stops charging below 32°F (0°C) and does not start again until the cells are back above 41°F (5°C). Its self-heating model uses 100 W pads to warm the pack to 41°F before charging resumes, and Sun Gold Power's SGH48100T rack battery starts heating below 41°F and stops at 53.6°F.",
+ "standout": 1,
+ "standout_why": "I read the cited BLUETTI guide (bluettipower.com, 2026-09-30). It says LFP 'should not be charged below freezing unless the product manual specifically confirms' a cutoff, that some BMSs 'cut off charging entirely', and that self-heating is 'product-specific'. So the mechanism is partly covered already. It gives no cutoff or restart temperatures, says nothing about heater thresholds, and names no product that has or lacks the protection. I could not open the other cited page, SAVYEN (self-signed certificate error, and a raw fetch was not approved), so I can't rule out that it covers this. I also did not open the uncited cpv24.pl 'LiFePO4 in winter' result, which may cover frost charging in general terms.",
+ "decides": "If the battery sits somewhere unheated (shed, cabin, RV), the BMS blocks all solar charging below 32°F and keeps blocking it until the cells are back above 41°F, so a cold battery can miss a whole day of sun. That points cold-climate buyers to a self-heating model (Redodo 12V 100Ah Self-Heating at $251.99, or Sun Gold SGH48100T at $1,035 against $981 for the plain SG48100P), not just a 'low-temp protection' model like the WEIZE ChatGPT showed. For a battery kept indoors, the plain low-temp-cutoff models are enough.",
+ "candidates": [
+  "Redodo 12V 100Ah Self-Heating LiFePO4",
+  "Redodo 12V 100Ah Group 24 Bluetooth (low-temp cutoff)",
+  "Sun Gold Power SG48100P 51.2V 100Ah",
+  "Sun Gold Power SGH48100T 51.2V 100Ah Self-Heating",
+  "WEIZE 12V 100Ah Group 31 Bluetooth",
+  "ECO-WORTHY Cubix100 48V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Heater on/off temperatures and charge interlock",
+   "value": "Heating starts below 32°F (0°C) and stops at 41°F (5°C). Charging 'halts until the heating pads raise the battery's temperature above 41°F'. Pads: 100 W dual.",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery | For RV, Boats, and Solar Home Systems",
+   "read": "2026-11-13",
+   "note": "Text is from the maker's store product data, read with storecheck.py search. Later attempts to open the full page and spec block returned HTTP 429."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Discharge low-temperature cutoff",
+   "value": "Discharging stops below -4°F (-20°C)",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery | For RV, Boats, and Solar Home Systems",
+   "read": "2026-11-13",
+   "note": "Maker's product text, read with storecheck.py search."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Price, Redodo US store",
+   "value": "$251.99 (in stock)",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The listed 'compare at' price of $1,839.99 is not a real reference price."
+  },
+  {
+   "product": "Redodo 12V 100Ah Ultra-Mini Bluetooth (Group 22NF)",
+   "label": "Low-temp charge cutoff and restart point (no heater)",
+   "value": "Charging pauses below 32°F (0°C) and resumes above 41°F (5°C). Discharging stops below -4°F (-20°C).",
+   "source": "https://www.redodopower.com/products/redodo-ultra-mini-12v-100ah-bluetooth-small-lithium-battery-group-22nf-size",
+   "source_title": "Redodo 12V 100Ah Ultra-Mini Lithium LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "The Redodo 12V 100Ah trolling-motor battery page gives the same 32°F cut and 41°F resume. Without a heater, nothing warms the cells, so solar charging stays blocked until the surroundings bring them above 41°F."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth (low-temp cutoff)",
+   "label": "Price and series/parallel limit",
+   "value": "$259.99, max 4P4S (20.48 kWh)",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The product text says only 'added low-temperature cut-off protection' and gives no thresholds."
+  },
+  {
+   "product": "Sun Gold Power SGH48100T 51.2V 100Ah Self-Heating",
+   "label": "Heater thresholds",
+   "value": "Heating starts below 41°F (5°C) and stops at 53.6°F (12°C). Also has low-temperature charging protection. Price $1,035. Max 32 in parallel. RS485 and CAN.",
+   "source": "https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating",
+   "source_title": "SGH48100T Server Rack 48V 100AH Lithium Battery Self-Heating",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on sungoldpower.com. This heater turns on above freezing, so it keeps the pack above the charge cutoff instead of recovering from it."
+  },
+  {
+   "product": "Sun Gold Power SG48100P 51.2V 100Ah",
+   "label": "Price, communications, parallel limit",
+   "value": "$981. CAN/RS485/RS232. Max 63 in parallel (322.56 kWh). Store lists Growatt, Deye, SunGoldPower, Luxpower, Victron, Schneider, Phocos, SMK as compatible inverters.",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. Unlike the SGH48100T text, this product text lists no low-temperature charging protection or heater, only overcharge, deep discharge, overload, overheating and short circuit."
+  }
+ ],
+ "unsourced": [
+  "Redodo self-heating 'Required Minimum Charge Current for Heating Function ≥10A' and 'activated when connected to a charger': these appeared only in a search snippet. The Redodo product page (both URLs), redodopower.de and storecheck product all returned HTTP 429, so I could not confirm whether a small solar controller can power the heater.",
+  "SG48100P charge temperature range and the BMS low-temp charge threshold from the manual: solartown.com and manuals.plus copies returned 403. The Sun Gold CDN PDF downloaded, but its text could not be extracted (pdftotext was not approved).",
+  "Whether the SG48100P relies on the inverter, over CAN/RS485 closed loop, to stop charging in the cold: this would need the manual's protection and communications sections, which I could not read.",
+  "WEIZE 12V 100Ah Group 31 and ECO-WORTHY Cubix100 low-temp cutoff and heater details: not researched within the call budget.",
+  "SAVYEN compatibility guide contents (rival page): the fetch failed on a self-signed certificate, so I could not compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0550821
+ }
+}
