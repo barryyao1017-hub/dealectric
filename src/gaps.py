@@ -8632,6 +8632,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G275: portable-solar-panel-with-charge-controller (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-solar-panel-with-charge-controller',
  "question": 'G275 (gap mining daily 2026-11-13, research method ab-2026-11: portable solar panel with charge controller)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'A',
@@ -8670,6 +8671,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G277: best-lifepo4-battery-for-rv (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'best-lifepo4-battery-for-rv',
  "question": 'G277 (gap mining daily 2026-11-13, research method ab-2026-11: best lifepo4 battery for rv)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'D',
@@ -8727,6 +8729,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G280: lifepo4-battery-for-solar-inverter-compatibility (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'lifepo4-battery-for-solar-inverter-compatibility',
  "question": 'G280 (gap mining daily 2026-11-13, research method ab-2026-11: lifepo4 battery for solar)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'C',
@@ -8746,6 +8749,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G281: portable-power-station-with-ac-outlet-measured-output (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-power-station-with-ac-outlet-measured-output',
  "question": 'G281 (gap mining daily 2026-11-13, research method ab-2026-11: portable power station with ac outlet)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'E',
@@ -8784,6 +8788,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G283: portable-power-station-for-tv-measured-runtime (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-power-station-for-tv-measured-runtime',
  "question": 'G283 (gap mining daily 2026-11-13, research method ab-2026-11: portable power station for tv)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
