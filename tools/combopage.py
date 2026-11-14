@@ -151,7 +151,10 @@ def amazon_find(brand: str, model: str, tab) -> dict | None:
             /Sponsored/.test((e.querySelector('[data-cy="title-recipe"]') || e).innerText.slice(0, 40))])""") or []
         if len(rows) >= 4:
             break
-    words = [_norm(w) for w in re.findall(r"[A-Za-z0-9+.-]+", model) if len(_norm(w)) >= 2]
+    base = re.sub(r"\(.*?\)", " ", model)
+    words = [_norm(w) for w in re.findall(r"[A-Za-z0-9+.-]+", base) if len(_norm(w)) >= 2]
+    coded = [w for w in words if re.search(r"\d", w)]
+    words = coded or words   # a model code ("EZ1-LV", "HMS-420-1WM-LV") identifies the listing; descriptive words need not match
     hits = [(asin, title) for asin, title, sponsored in rows
             if asin and _norm(brand) in _norm(title) and all(w in _norm(title) for w in words) and not USED.search(title) and not BUNDLE.search(title)]
     if not hits:
