@@ -624,8 +624,9 @@ def apply(slug: str, local: bool) -> dict:
         draft["gate"] = {"date": today(), "pass": True, "g": gnum}
         jsave(d / "draft.json", draft)
         if local:
+            runs = f"growth/evals/runs/fastloop/ab-{slug}"[:200]   # a missing path fails the whole `git add` (11-14)
             sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", str(d),
-               f"growth/evals/runs/fastloop/ab-{slug}"[:200])
+               *([runs] if (ROOT / runs).exists() else []))
             what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"A/B group A rebuild /{slug}"
             msg = (f"{what}: angle {draft.get('angle')}, {draft.get('why_angle') or ''}"[:250] +
                    f"\n\nResearched by tools/abpage.py (six angle agents, compose, verify; DLC-208). Research in growth/focus/ab/{slug}/.\n\n"
