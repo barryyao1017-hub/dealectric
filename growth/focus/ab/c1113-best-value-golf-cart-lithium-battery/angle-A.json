@@ -1,0 +1,128 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got works out that, in continuous amps, Redodo's $836.99 battery (5,000 W max on its own store page, about 98 A at 51.2 V) and LiTime's $899.99 battery (1C = 100 A continuous, 600 A for 1 s) both fall below the 200 A continuous that ChatGPT itself set as the minimum, while its budget answer called the Redodo a '200A BMS'. LiTime's '200A' pack at $1,097.99 holds that current for only 2 minutes ('2C discharge rate @ 2 minutes').",
+ "standout": 2,
+ "standout_why": "I compared golfcartgearlab.com/best/best-lithium-golf-cart-battery (Vatrer, Weize, Interstate, Trojan, Dakota) and golfcartshowdown.com (Bolt, Eco, Dakota, Allied). Neither covers LiTime, Redodo or NewtiPower, and neither puts peak duration or cycle end-of-life on a common basis. The cited LiTime page states 1C and 600 A (1 s) but never converts that into amps or compares it with other brands. gearranking.com would not load (certificate error). Our own dealectric page already lists LiTime at 600 A × 1 s, the LiTime 200 A model as '2C @ 2 minutes' and Redodo at about 98 A from 5,000 W. So the new part is putting these next to ChatGPT's own 200 A rule and its three budget picks, plus NewtiPower's kit and price split.",
+ "decides": "This partly changes the pick. On amps their makers state, none of ChatGPT's three budget picks can be confirmed to meet its own '200A continuous' rule. Redodo's own page gives 5,000 W, which is about 98 A, not 200 A. LiTime's is 100 A. NewtiPower's 200 A appears only in Amazon listing titles, with no peak duration given. For a stock cart, the Redodo at $836.99 and the LiTime at $899.99 are the same class (about 100 A, 5.12 kWh). For lifted carts or carts with upgraded controllers, the cheapest pack whose maker states 200 A is the LiTime at $1,097.99, and LiTime states that as a 2-minute rating. A 200 A continuous rating that holds without a time limit (Vatrer, already on our page) costs about $1,580. NewtiPower's $789.99 listing is not the kit with a charger. The kits with a charger are $779.99 (plastic case) and $829.99 (steel case).",
+ "candidates": [
+  "NewtiPower 48V 100Ah",
+  "Redodo 48V 100Ah Bluetooth Golf Cart Battery",
+  "LiTime 48V 100Ah Bluetooth",
+  "LiTime 48V 100Ah 200A (2C) Bluetooth",
+  "Vatrer 48V 105Ah"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 48V 100Ah Bluetooth",
+   "label": "Price (battery only)",
+   "value": "$899.99 (compare-at $1,799.99)",
+   "source": "https://www.litime.com/products/48v-100ah-lithium-golf-cart-bluetooth-battery",
+   "source_title": "LiTime 48V 100Ah Bluetooth Lithium Battery | For Golf Carts and Lawn Mowers",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search on litime.com (Shopify product data)."
+  },
+  {
+   "product": "LiTime 48V 100Ah Bluetooth",
+   "label": "Continuous / peak discharge",
+   "value": "1C continuous (100 A); 600 A for 1 s; 5,000 W max in a golf cart",
+   "source": "https://www.litime.com/products/48v-100ah-lithium-golf-cart-bluetooth-battery",
+   "source_title": "LiTime 48V 100Ah Bluetooth Lithium Battery | For Golf Carts and Lawn Mowers",
+   "read": "2026-11-13",
+   "note": "Page text: '1C continuous charging/discharging current and 600A(1S) peak discharging current' and 'Max 5000W for golf cart'. 1C × 100 Ah = 100 A. Burst = 600 A × 1 s = 600 A·s. 5,000 W / 51.2 V = 97.7 A."
+  },
+  {
+   "product": "LiTime 48V 100Ah Bluetooth",
+   "label": "Cycle life as stated",
+   "value": "4,000+ cycles at 100% DoD; no end-of-life capacity % given",
+   "source": "https://www.litime.com/products/48v-100ah-lithium-golf-cart-bluetooth-battery",
+   "source_title": "LiTime 48V 100Ah Bluetooth Lithium Battery | For Golf Carts and Lawn Mowers",
+   "read": "2026-11-13",
+   "note": "Page text: 'support 4000+ cycles @100%DOD'. The page does not say whether the end point is 80% or 70% of capacity."
+  },
+  {
+   "product": "LiTime 48V 100Ah 200A (2C) Bluetooth",
+   "label": "Price and what '200A' means",
+   "value": "$1,097.99; 200 A stated as '2C discharge rate @ 2 minutes'",
+   "source": "https://www.litime.com/products/48v-100ah-bluetooth-golf-cart-lithium-battery",
+   "source_title": "LiTime 48V(51.2V) 100Ah Bluetooth Golf Cart & Lawn Mower Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Page text: '2C discharge rate @ 2 minutes, delivering 200A continuous discharge current'. The same store's 36V 100Ah page uses the same 2C/2-minute wording but calls it a '2C burst for up to 2 minutes' next to '100A continuous output', so LiTime's '200A continuous' is a 2-minute rating. Read through storecheck.py search."
+  },
+  {
+   "product": "Redodo 48V 100Ah Bluetooth Golf Cart Battery",
+   "label": "Price (battery only)",
+   "value": "$836.99 (compare-at $6,799.96)",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-golf-cart-bluetooth-lithium-battery",
+   "source_title": "Redodo 48V(51.2V) 100Ah Lithium Golf Cart Bluetooth Battery | Replaces 6x 8V(or 8x 6V) lead-acid batteries",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search on redodopower.com. Same price as ChatGPT's card."
+  },
+  {
+   "product": "Redodo 48V 100Ah Bluetooth Golf Cart Battery",
+   "label": "Maker-stated output, converted to amps",
+   "value": "5,000 W max ≈ 98 A at 51.2 V; 5,120 Wh",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-golf-cart-bluetooth-lithium-battery",
+   "source_title": "Redodo 48V(51.2V) 100Ah Lithium Golf Cart Bluetooth Battery",
+   "read": "2026-11-13",
+   "note": "Page text: '5000W High Output' and '5120Wh capacity'. 5,000 / 51.2 = 97.7 A. This contradicts ChatGPT's '200A BMS' label. The full spec table (stated continuous and surge amps with duration) would not load: HTTP 429 on four tries."
+  },
+  {
+   "product": "Redodo 48V 100Ah Golf Cart Conversion Kit",
+   "label": "Kit price (battery + 58.4 V 18 A charger + 500 A shunt monitor)",
+   "value": "$1,149.99",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search. The battery alone costs $836.99, so a charger is a $313 step up if bought as the kit."
+  },
+  {
+   "product": "NewtiPower 48V 100Ah",
+   "label": "Amazon price, battery-only listing",
+   "value": "$789.99",
+   "source": "https://www.amazon.com/dp/B0CPSRQCGW",
+   "source_title": "48V 100Ah Golf Cart LiFePO4 Lithium Battery 200A BMS,NewtiPower 10000+ Deep Cycle Lithium Iron Phosphate Battery...",
+   "read": "2026-11-13",
+   "note": "Read through amzcheck.py asin. The title mentions no charger, monitor or app. ChatGPT presented $789.99 as a 'complete kit'."
+  },
+  {
+   "product": "NewtiPower 48V 100Ah",
+   "label": "Amazon price, kits with charger and monitor",
+   "value": "$779.99 (plastic case set); $829.99 (steel case set)",
+   "source": "https://www.amazon.com/dp/B0C7MQVVC6",
+   "source_title": "48V 100Ah Lithium LiFePO4 Golf Cart Battery with APP&Monitor&Charger, 200A BMS ... (48V 100Ah Plastic Shell Set)",
+   "read": "2026-11-13",
+   "note": "Read through amzcheck.py asin. The steel case set is ASIN B0GX1MG5BM (https://www.amazon.com/dp/B0GX1MG5BM). These titles don't name the brand, but they share the 759-rating count with the NewtiPower listing B0CPSRQCGW, so they appear to be variants of the same parent listing."
+  },
+  {
+   "product": "NewtiPower 48V 100Ah",
+   "label": "Cycle and current claim as stated",
+   "value": "'200A BMS', '10000+ Cycles'; no peak current duration and no DoD or end-of-life % in the listing title",
+   "source": "https://www.amazon.com/dp/B0CPSRQCGW",
+   "source_title": "48V 100Ah Golf Cart LiFePO4 Lithium Battery 200A BMS,NewtiPower 10000+ Deep Cycle...",
+   "read": "2026-11-13",
+   "note": "Taken from the listing title only. The Amazon detail page returned HTTP 503, so I could not read the bullet points."
+  },
+  {
+   "product": "general",
+   "label": "Rival pages' handling of peak duration and cycle end-of-life",
+   "value": "golfcartgearlab: peak windows run from 0.3 s to 35 s and are not compared; no cycle figure gives an end-of-life %. golfcartshowdown: 5 s to 30 s, not compared; no end-of-life %. Neither covers LiTime, Redodo or NewtiPower.",
+   "source": "https://golfcartgearlab.com/best/best-lithium-golf-cart-battery/",
+   "source_title": "Best Lithium Golf Cart Battery 2026: 5 48V LiFePO4 Packs Compared on Price, Cold Charging and Warranty",
+   "read": "2026-11-13",
+   "note": "Also read https://golfcartshowdown.com/golf-cart-school/best-golf-cart-lithium-batteries on 2026-11-13."
+  }
+ ],
+ "unsourced": [
+  "Redodo 48V 100Ah golf cart battery: the stated continuous and surge amps and surge duration. A search snippet claims 100 A continuous and 600 A surge, but redodopower.com returned HTTP 429 every time and the Shopify CDN '48V_100Ah_Spec_Sheet.pdf' is image-only with no brand name.",
+  "NewtiPower 48V 100Ah: a maker page (newtipower.com did not respond), its peak current and duration, DoD and end-of-life % for '10000+ cycles', and stated Wh. A desertcart reseller says 3,840 Wh and batteryskills.com says 250 A continuous and 500 A peak, but neither is a maker source. The Amazon detail page returned 503.",
+  "End-of-life capacity (80% or 70%) behind the '4000+ cycles @100% DoD' figures from LiTime and Redodo: neither store page states one, and I found no manual that does.",
+  "gearranking.com 48V roundup and model pages: could not be read (self-signed certificate error).",
+  "CHINS and ECO-WORTHY 48V 100Ah current and cycle specs: not researched, because I ran out of my tool-call budget after the rate limits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0479674
+ }
+}

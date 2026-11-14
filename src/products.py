@@ -6685,6 +6685,23 @@ PRODUCTS = [
  "fit": 'Apex 300 buyers who want selected house circuits on backup instead of extension cords.',
  "caveats": ['The kit page connects it to the home main panel; plan on an electrician for that connection']},
 
+{"slug": 'redodo-48v-100ah-golf-cart-bluetooth-battery',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "asin": None,
+ "category": 'lithium-battery',
+ "name": 'Redodo 48V (51.2V) 100Ah Lithium Golf Cart Bluetooth Battery (battery only)',
+ "model": 'Redodo 48V 100Ah Golf Cart Bluetooth Battery',
+ "url": 'https://www.redodopower.com/products/redodo-48v-100ah-golf-cart-bluetooth-lithium-battery',
+ "price": 836.99,
+ "verified": '2026-11-13',
+ "specs": [('Voltage / capacity', '51.2 V, 100 Ah, 5,120 Wh'), ('Rated output', '5,000 W (about 98 A at 51.2 V)'), ('Weight', '82 lb (Redodo: vs 383 lb of lead-acid)'), ('Charging', '5.6 h with a 58.4 V 18 A LiFePO4 charger, sold separately'), ('Monitoring', 'Bluetooth app (SOC, voltage, current)'), ('Named carts', 'Club Car, EZGO, ICON, Yamaha; replaces 6× 8 V or 8× 6 V lead-acid')],
+ "warranty": '5 years',
+ "returns": "30-day return window under Redodo's refund policy; return shipping is deducted from the refund unless the order was defective, delayed or damaged",
+ "summary": "Redodo's battery-only 48V 100Ah golf cart pack. It is the lowest-priced maker-store 48V pack here, and it is rated for 5,000 W, about 98 A continuous.",
+ "fit": "Carts whose controller draws no more than about 100 A continuous, for owners who already have a 58.4 V lithium charger or will buy Redodo's for $149.99.",
+ "caveats": ['Rated output is 5,000 W, about 98 A at 51.2 V. That is half the continuous current of the 200 A packs.', "The charger is not included. Redodo's 58.4 V 18 A charger costs $149.99, for $986.98 in total.", 'The store listing gives output in watts only. It states no surge current or surge duration.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

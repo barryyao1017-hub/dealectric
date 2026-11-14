@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Club Car Precedent (2004 to present) has an On-Board Computer that runs lead-acid charging, which ROYPOW says 'is incompatible with lithium chemistry' and must be bypassed with a harness, a step its guide calls 'mandatory on most 48V Club Car models'.",
+ "standout": 2,
+ "standout_why": "I fully read two of the ten result pages: Golf Cart Gear Lab's 2026-11-11 roundup and our own dealectric.com page. Golf Cart Gear Lab gives BMS amps for each pack and a general line that a flooded lead-acid charger 'will not charge LiFePO4 correctly'. It says nothing about the Club Car OBC, regen braking or precharge. Our page covers BMS burst windows, controller draw and regen in the cold, but it also never mentions the OBC. The two LiTime pages ChatGPT cited returned HTTP 429, and the Gearranking hub failed with an SSL error, so I could not read them. I did not open Cartvolts or Golf Cart Showdown. 'None of the rivals has it' is confirmed for 2 of the 10 pages, not all of them.",
+ "decides": "This confirms the shortlist and adds a condition to it rather than changing the order. Club Car is the first cart ChatGPT named. On a Precedent, a battery-only budget pick (LiTime 48V 100Ah at about $900, or Redodo, where ChatGPT says to 'check whether a compatible charger is included') still needs a lithium charger plus an OBC bypass before it will charge properly. Its sticker price is therefore not the real conversion cost. A Club Car-specific kit with a dedicated charger, such as Vatrer's at $1,579.99, avoids buying a charger separately, but I could not confirm that any kit includes the bypass harness. The current mechanism ChatGPT raised (BMS continuous amps against controller draw) stays an open check. LiTime's 100 A continuous rating is already noted by ChatGPT and our page, and I could not source stock controller ratings from Curtis or Club Car.",
+ "candidates": [
+  "NewtiPower 48V 100Ah Golf Cart Battery",
+  "Redodo 48V 100Ah Bluetooth Golf Cart Conversion Kit",
+  "LiTime 48V 100Ah Bluetooth Lithium Battery",
+  "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Club Car models with an On-Board Computer (OBC)",
+   "value": "Club Car Precedent, 2004 to present: 'The Precedent also features an On-Board Computer (OBC) that manages lead-acid charging.'",
+   "source": "https://www.roypow.com/blog/club-car-lithium-conversion-guide/",
+   "source_title": "Club Car Lithium Conversion Guide: Everything You Need Before You Buy (ROYPOW blog, 24 Jun 2026)",
+   "read": "2026-11-13",
+   "note": "ROYPOW makes lithium golf cart batteries, so this is a maker's guide, not Club Car's own documentation. Its checklist also mentions 'later DS models', but its DS section never mentions an OBC."
+  },
+  {
+   "product": "general",
+   "label": "Why the OBC has to be bypassed for lithium",
+   "value": "The OBC's charging profile 'is incompatible with lithium chemistry'. A bypass harness hands charge management to the battery's own BMS, and the guide calls the bypass 'mandatory on most 48V Club Car models'.",
+   "source": "https://www.roypow.com/blog/club-car-lithium-conversion-guide/",
+   "source_title": "Club Car Lithium Conversion Guide: Everything You Need Before You Buy (ROYPOW blog, 24 Jun 2026)",
+   "read": "2026-11-13",
+   "note": "The page does not say what fails if the bypass is skipped (charger lockout, pack drain or a no-run cart). It does warn that lead-acid chargers 'can overcharge lithium cells and trigger BMS lockout or permanent cell damage'."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit",
+   "label": "Price and what the Club Car kit includes",
+   "value": "$1,579.99 (compare-at $2,399.99), in stock. The kit includes a 'dedicated charger, LCD monitor, mounting bracket, and installation accessories' and is listed for 48V Club Car DS, Precedent, Tempo and Onward.",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries",
+   "source_title": "【UL 2271】Vatrer 48V 105Ah Club Car Lithium Battery for DS Precedent Tempo and Onward",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on vatrerpower.com. The returned description text was cut off. The part I saw does not mention an OBC bypass harness, and a full product fetch returned HTTP 429, so whether the harness is included is unconfirmed."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit",
+   "label": "BMS current",
+   "value": "200 A BMS, 400 A peak, 'up to 600A surge', 10.24 kW",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery",
+   "source_title": "【UL 2271】 Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit with Up to 50 Miles of Range",
+   "read": "2026-11-13",
+   "note": "Store listing read with storecheck.py search. The same store lists the EZGO and Yamaha 48V kits at 200 A and 600 A for 3 s. Price $1,579.99."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of the OBC (Golf Cart Gear Lab)",
+   "value": "Gives BMS current ratings for 4 of its 5 packs (none for Trojan). Says a flooded lead-acid charger 'will not charge LiFePO4 correctly'. Has no statement on the Club Car OBC, regen braking or precharge.",
+   "source": "https://golfcartgearlab.com/best/best-lithium-golf-cart-battery/",
+   "source_title": "Best Lithium Golf Cart Battery 2026: 5 48V LiFePO4 Packs Compared on Price, Cold Charging and Warranty",
+   "read": "2026-11-13",
+   "note": "Rival page at result 7 of ChatGPT's results. I checked it for coverage of the mechanism."
+  }
+ ],
+ "unsourced": [
+  "Stock controller current ratings for the Club Car Precedent and EZGO TXT/RXV, from Curtis or the cart makers. The Curtis 1266 datasheet PDF (Iowa State archive) was compressed and I could not extract its text (my local pdftotext run was not approved). The only 1510A-5251 page I opened was a reseller listing (liftpartswarehouse.com) titled '48V 250A', with no 2-minute rating and no fitment.",
+  "The LiTime 48V 100Ah Bluetooth product page (continuous and peak current, controller guidance). litime.com returned HTTP 429 to both WebFetch and storecheck, and the manuals.plus PDF of the manual had no readable text.",
+  "NewtiPower's own product page or manual for BMS peak current, peak duration and charger. I found only desertcart and batteryskills listings, which I did not use.",
+  "Vatrer's Club Car OBC bypass guide (charging-side versus control-side bypass, yellow wire to B-). vatrerpower.com returned HTTP 403 on the US, en-ca and en-de URLs.",
+  "Whether the Vatrer, Redodo or NewtiPower Club Car kits include an OBC bypass harness.",
+  "Allied Battery's install guide, which may say no bypass is needed on 2014-and-later Club Cars with Allied's charger. The PDF text was compressed and unreadable.",
+  "Gearranking's 48V hub (SSL certificate error). Cartvolts and Golf Cart Showdown were not checked within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1009578
+ }
+}
