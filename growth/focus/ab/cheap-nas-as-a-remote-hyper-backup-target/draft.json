@@ -46,7 +46,7 @@
     ]
    ],
    "warranty": "2 years, extendable to 4 with Extended Warranty Plus (Synology)",
-   "returns": null,
+   "returns": "Bought from Synology's US store: return within 30 days of purchase in its original packaging, and you pay the return shipping. Bought from another seller: Synology refers refunds to that seller's return policy (Synology).",
    "summary": "One-bay Synology that runs Hyper Backup Vault, so the main Synology can send it folder, package and entire-system backups.",
    "fit": "The cheapest new offsite Hyper Backup target for a relative's house when one drive is enough.",
    "caveats": [
@@ -85,7 +85,7 @@
     ]
    ],
    "warranty": "2 years, extendable to 4 with Extended Warranty Plus (Synology)",
-   "returns": null,
+   "returns": "Bought from Synology's US store: return within 30 days of purchase in its original packaging, and you pay the return shipping. Bought from another seller: Synology refers refunds to that seller's return policy (Synology).",
    "summary": "Two-bay version of the same Realtek platform as the DS124. It can mirror two drives at the remote end.",
    "fit": "An offsite Hyper Backup target where you want two mirrored drives at the relative's house.",
    "caveats": [
@@ -122,8 +122,8 @@
      "rsync server (TOS rsync Server)"
     ]
    ],
-   "warranty": null,
-   "returns": null,
+   "warranty": "2 years from the retail purchase date; you need proof of purchase from an authorized TerraMaster reseller (TerraMaster)",
+   "returns": "TerraMaster's own pages give no refund window. Within 30 days of purchase, TerraMaster will replace a faulty unit, or one that doesn't suit you, with the right model and add 6 months to the warranty. For a refund, the seller's return policy applies (TerraMaster).",
    "summary": "Budget two-bay NAS that Hyper Backup can use as an rsync server for folder and package backups.",
    "fit": "Two bays on a budget when you don't need entire-system backup.",
    "caveats": [
@@ -229,6 +229,14 @@
     "https://www.synology.com/en-us/products/DS223j#specs"
    ],
    [
+    "Synology Store Terms and Conditions (Canada & U.S.A., updated November 2024): returns within 30 calendar days of purchase, original packaging and accessories, buyer pays return shipping (read 2026-11-14)",
+    "https://www.synology.com/en-us/company/legal/Synology_Store_Sales_Policy"
+   ],
+   [
+    "Synology Limited Product Warranty: refunds go through the reseller where the product was bought (read 2026-11-14)",
+    "https://www.synology.com/en-us/company/legal/warranty"
+   ],
+   [
     "DS124 newest DSM: 7.4 (Synology Download Center data, read 2026-11-13)",
     "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS124&major=7"
    ],
@@ -239,6 +247,18 @@
    [
     "Hyper Backup destinations: entire-system only to a remote Synology NAS or C2; rsync servers and S3-compatible for folder and package; 65,535 versions; AES-256; 8 GB free minimum (read 2026-11-13)",
     "https://www.synology.com/en-us/dsm/7.4/software_spec/hyper_backup"
+   ],
+   [
+    "TerraMaster F2-212 page (US store): 2-year warranty (read 2026-11-14)",
+    "https://www.terra-master.com/blogs/page/f2-212"
+   ],
+   [
+    "TerraMaster US warranty and returns: 24 months from the retail purchase date, proof of purchase from an authorized reseller required, buyer pays shipping to TerraMaster (read 2026-11-14)",
+    "https://www.terra-master.com/us/warranty-returns/"
+   ],
+   [
+    "TerraMaster Brand Promise: within 30 days of purchase, replacement for a quality failure or a product that doesn't meet the buyer's needs, plus 6 months of extra warranty (read 2026-11-14)",
+    "https://www.terra-master.com/blogs/news/brand-promise"
    ],
    [
     "TerraMaster F2-212 measured 3.9 W asleep, 14.7 W idle, 21.0 W load, 0.1 W off with 2× IronWolf Pro ST4000NE001 (PC-WELT, 2024-07-09; read 2026-11-13)",
@@ -285,5 +305,26 @@
  ],
  "query": "cheapest nas to use as a remote hyper backup target for a synology at a relatives house",
  "verified_changes": 3,
- "verified_removed": 3
+ "verified_removed": 3,
+ "fix_pass": {
+  "errors": [
+   "synology-ds124: missing returns",
+   "synology-ds223j: missing returns",
+   "terramaster-f2-212: missing warranty",
+   "terramaster-f2-212: missing returns"
+  ],
+  "log": [
+   "synology-ds124 returns: set to a 30-day return window from Synology's US store (original packaging, buyer pays return shipping), from the Synology Store Terms and Conditions (Canada & U.S.A., updated Nov 2024), https://www.synology.com/en-us/company/legal/Synology_Store_Sales_Policy, read 2026-11-14. Also noted that for other sellers Synology's Limited Product Warranty says refunds go through the reseller, https://www.synology.com/en-us/company/legal/warranty, read 2026-11-14. Added both pages to sources.",
+   "synology-ds223j returns: same Synology US store policy and warranty-page reseller clause as the DS124, same sources, read 2026-11-14.",
+   "terramaster-f2-212 warranty: set to 2 years from the retail purchase date with proof of purchase from an authorized reseller. TerraMaster's F2-212 page in the US store region says '2-year warranty' (https://www.terra-master.com/blogs/page/f2-212), and TerraMaster's US warranty-returns page says '24-month from the retail purchase date' (https://www.terra-master.com/us/warranty-returns/), both read 2026-11-14 and added to sources. TerraMaster's region-less /policies/refund-policy page says '12-month (24-month EU)'. I didn't use it because the US page and the F2-212 page both say 2 years. The product page /products/f2-212 returned HTTP 429.",
+   "terramaster-f2-212 returns: TerraMaster pages give no refund window, so I wrote down the 30-day replacement promise from TerraMaster's Brand Promise (replacement for a fault or a product that doesn't meet the buyer's needs, plus 6 months of warranty), https://www.terra-master.com/blogs/news/brand-promise, read 2026-11-14 and added to sources. Refunds are left to the seller. The page doesn't say whether the promise covers units bought from Amazon.",
+   "Tool note: the storecheck.py search of terra-master.com was denied, so I didn't use it. TerraMaster pages were read with WebFetch instead.",
+   "Nothing else in the draft was changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }
