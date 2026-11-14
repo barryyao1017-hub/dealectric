@@ -42,6 +42,7 @@ Three browsers, one name each. Use these names in chat, notes and briefs; never 
 - **When ChatGPT shows signed out** (session `/api/auth/session` returns `{}`): open `https://chatgpt.com/auth/login`, Continue with Google, choose barrryyao@gmail.com, then confirm the session shows that email.
 
 ## Conventions
+- **Link every page you name** (Barry, 2026-11-14): whenever a dealectric.com page comes up in chat, a report or an artifact, write it as a clickable link to the live page, `[<title or slug>](https://dealectric.com/<slug>)` (extensionless), not a bare slug or title.
 - Legal name on official forms: Jiayi Yao; public name: Barry / Dealectric. The business entity is Agentify LLC (Washington, filed 2026-11-01, approval pending).
 - Affiliate links carry `rel="sponsored nofollow"`; disclosure page is required on every build; the Amazon Associates line appears wherever Amazon links do.
 - Codes: publish only network-issued or brand-approved codes (a code the brand prints on its own site counts). The copy says a code is "tested daily in <brand>'s cart, last passed <date>", never "guaranteed"; a brand with no published code (Tenergy) does not claim daily testing.
