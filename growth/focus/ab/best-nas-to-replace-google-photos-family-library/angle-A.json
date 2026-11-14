@@ -1,0 +1,149 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got works out what each NAS's recognition features can actually do with the RAM it ships with. The Synology DS225+ and DS425+ come with 2 GB. That is half of the 4 GB Synology needs for object recognition, and Immich needs 6 GB to run face recognition and smart search at all. The only fix is adding one 4 GB module, which brings the box to 6 GB: Immich's minimum, not its 8 GB recommendation. Synology says non-Synology memory voids full warranty and technical support coverage.",
+ "standout": 2,
+ "standout_why": "I compared this against the pages ChatGPT cited and the top results. The Synology compare page (cited) has the footnote 'Object recognition requires an upgrade of memory capacity to a minimum of 4 GB' for DS225+/DS425+, but nothing about Immich. esp32.co.uk (cited) gives Immich's '6 GB minimum, 8 GB recommended' but no model's shipped RAM; it only says 'Check exact Synology model'. homelabcompass.com (cited) gives no RAM figures, only that Immich ML 'wants some headroom'. The Synology Photos tech spec (cited) has no RAM figure. needtoknowit.com.au (not in ChatGPT's results) covers the Synology 4 GB rule, but nothing about Immich's needs. None of these pages puts each box's shipped RAM next to both apps' thresholds. None says that Immich with only 4 GB means machine learning is turned off, so there is no face recognition or smart search. None mentions the warranty condition on non-Synology RAM.",
+ "decides": "This confirms Synology DS225+/DS425+ for families who stay on Synology Photos and add Synology's 4 GB module. It rules them out for the 'NAS + Immich' route ChatGPT offers as the closer Google Photos copy: even fully upgraded they reach only 6 GB, Immich's floor. For Immich, pick a box that ships with 8 GB or more, such as the UGREEN DH4300 Plus (8 GB fixed) or QNAP TS-264-8G (8 GB), or upgrade a DS925+, which ships with 4 GB and takes up to 32 GB. The DH2300's 4 GB can run Immich only with machine learning disabled.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DH4300 Plus",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich RAM requirement (with machine learning: face recognition, smart search)",
+   "value": "Minimum 6 GB, recommended 8 GB; with 4 GB, Immich can run only with machine learning features disabled",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'Minimum 6GB, recommended 8GB.' and 'For systems with only 4GB of RAM, Immich can be run with machine learning features disabled.' CPU: minimum 2 cores, recommended 4. Runs on amd64 and arm64."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Installed / maximum RAM, slots",
+   "value": "2 GB DDR4 non-ECC installed; maximum 6 GB (2 GB + 4 GB); 1 slot",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology Inc. – product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "The DS225+ product page (https://www.synology.com/en-us/products/DS225+) gives the same figures. The compare page lists no pre-installed module, so the 2 GB is on board and the one slot is free for the +4 GB."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Installed / maximum RAM, slots",
+   "value": "2 GB DDR4 non-ECC installed; maximum 6 GB (2 GB + 4 GB); 1 slot",
+   "source": "https://www.synology.com/en-us/products/DS425+",
+   "source_title": "DiskStation DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Matches the compare page."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Object recognition RAM condition (Synology footnote)",
+   "value": "Object recognition requires at least 4 GB of memory; the units ship with 2 GB",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology Inc. – product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "Verbatim footnote, on DS225+ and DS425+ only: 'Object recognition requires an upgrade of memory capacity to a minimum of 4 GB.' No such footnote on DS725+/DS925+."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Warranty condition on RAM upgrades",
+   "value": "3-year hardware warranty (extendable to 5 years); non-Synology memory voids full warranty and technical support coverage",
+   "source": "https://www.synology.com/en-us/products/DS225+",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The page says to 'select Synology memory modules for optimum compatibility and reliability' and that non-Synology memory voids full product warranty and tech support coverage. So the 4 GB upgrade that object recognition needs has to be a Synology module to keep full coverage."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Normalised: recognition features at the shipped RAM vs fully upgraded",
+   "value": "As shipped (2 GB): Synology Photos object recognition not available; Immich face recognition and smart search not available (below the 4 GB needed even to run Immich with machine learning off). Fully upgraded (6 GB): Synology object recognition available; Immich machine learning at its 6 GB minimum, 2 GB under the 8 GB recommendation",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 2 GB < 4 GB (Synology object recognition); 2 GB < 4 GB (Immich with machine learning off) < 6 GB (Immich minimum with machine learning). 2 + 4 = 6 GB maximum, which meets Immich's minimum but not its 8 GB recommendation. Synology figures come from the compare page above. I did not check whether Synology face recognition, as distinct from object recognition, works at 2 GB: Synology's model-list KB article did not render."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Installed / maximum RAM; object recognition",
+   "value": "4 GB DDR4 ECC installed (1×4 GB), 2 slots, maximum 32 GB; no object-recognition RAM footnote; below Immich's 6 GB minimum until upgraded",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology Inc. – product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "As shipped, 4 GB < 6 GB, so Immich must run with machine learning off until one more module is added. Warranty: 3 years, extendable to 5."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "RAM",
+   "value": "8 GB, fixed, shared by UGOS, indexing and Docker containers",
+   "source": "https://ai.ugreen.com/blogs/knowledge/ugreen-nas-photos",
+   "source_title": "UGREEN NAS Photos (UGREEN knowledge blog)",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'Its fixed 8GB memory is shared by UGOS, indexing, and Docker containers.' Meets Immich's 8 GB recommendation, but that memory is shared with UGOS and its own indexing, and it cannot be expanded."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "RAM",
+   "value": "4 GB LPDDR4X",
+   "source": "https://ai.ugreen.com/blogs/knowledge/ugreen-nas-photos",
+   "source_title": "UGREEN NAS Photos (UGREEN knowledge blog)",
+   "read": "2026-11-13",
+   "note": "From the product card on UGREEN's own blog. 4 GB is Immich's 'machine learning disabled' tier, so no Immich face recognition or smart search even if a container could run."
+  },
+  {
+   "product": "general (UGREEN Photos)",
+   "label": "AI features need models downloaded",
+   "value": "Face grouping, cat/dog recognition, OCR text search and semantic phrase search are listed; 'The corresponding AI models must be downloaded and enabled'",
+   "source": "https://ai.ugreen.com/blogs/knowledge/ugreen-nas-photos",
+   "source_title": "UGREEN NAS Photos (UGREEN knowledge blog)",
+   "read": "2026-11-13",
+   "note": "The blog does not say which features run on which models (DXP x86 vs DH ARM). Blog dated 11/12/2024 (day-first, so probably 11 Dec 2024)."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "QuMagie AI requirement vs installed RAM",
+   "value": "QNAP recommends 4 GB RAM models for full QNAP AI Core image recognition; needs QTS 4.4.1+ on x86/64-bit ARM; 32-bit ARM not supported. TS-264 ships with 8 GB",
+   "source": "https://www.qnap.com/en/software/qumagie",
+   "source_title": "QuMagie | QNAP",
+   "read": "2026-11-13",
+   "note": "Verbatim note: 'To enjoy full QNAP AI Core AI image recognition function, 4GB RAM models are recommended.' The 8 GB figure for the TS-264 comes from needtoknowit.com.au (https://needtoknowit.com.au/blog/ai-photo-search-on-nas-synology-qnap-and-ugreen-compared/, read 2026-11-13). The same page says QNAP phrase search needs x86 with 8 GB; QNAP's own page does not mention phrase search. 8 GB also meets Immich's recommendation."
+  },
+  {
+   "product": "general (Synology vs Immich RAM rules, reviewer)",
+   "label": "needtoknowit.com.au on Synology defaults",
+   "value": "'the DS225+ and DS425+ require a memory upgrade to at least 4GB before object recognition and subject search are available'; DS925+ 'includes 4GB RAM, so object recognition is available in its default configuration'",
+   "source": "https://needtoknowit.com.au/blog/ai-photo-search-on-nas-synology-qnap-and-ugreen-compared/",
+   "source_title": "AI Photo Search on NAS - Synology, QNAP and UGREEN Compared (needtoknowit.com.au)",
+   "read": "2026-11-13",
+   "note": "Named reviewer; agrees with Synology's footnote. It does not cover Immich's RAM needs. Not among ChatGPT's results."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "storecheck.py search on nas.ugreen.com. Matches ChatGPT's $389.99 card."
+  }
+ ],
+ "unsourced": [
+  "UGREEN DXP2800 installed/maximum RAM and AI feature list: nas.ugreen.com returned HTTP 429 to WebFetch and storecheck, and the store text that did come back held no specs (only CSS); no spec PDF or named reviewer opened.",
+  "Which UGREEN AI photo features (face, pet, OCR, semantic, custom classification) run on ARM DH models vs x86 DXP models: UGREEN's DH2300 page was rate-limited, and UGREEN's photos blog does not map features to models.",
+  "Synology's official list of models that support face recognition (KB article 'Which Synology NAS models support the face and object recognition feature'): the body did not render in two locales, so face recognition at 2 GB on the DS225+/DS425+ is not confirmed from Synology.",
+  "Synology Photos release-note line on object recognition with 2 GB RAM on x86/RTD1619B (seen only in a search snippet): the release-notes page body did not render.",
+  "Price of Synology's 4 GB memory module and US prices for DS225+/DS425+/DS925+/TS-264: Synology has no US store, and amzcheck.py search returned nothing (Amazon likely walled).",
+  "Whether the DH2300 supports Docker: seen only in search snippets, page not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1686072
+ }
+}

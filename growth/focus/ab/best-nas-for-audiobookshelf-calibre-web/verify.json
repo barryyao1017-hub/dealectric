@@ -1,0 +1,234 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "E",
+  "why_angle": "The cited rivals give specs only. The Racks & Watts homelab guide, UGREEN's buying guides, Synology's data sheets and the Audiobookshelf and Calibre-Web docs list no watts or dB(A) measured with drives fitted, even though the box runs 24/7 in a family home. This page adds ComputerBase's same-lab measurements of the DXP2800 with two HDDs and Synology's J4125 two-bay DS224+ (18.6 W idle each; 30.0 vs 33.0 dB(A)) and works out the yearly electricity cost.",
+  "slug": "best-nas-for-audiobookshelf-calibre-web",
+  "must": [
+   "the UGREEN DXP2800",
+   "30.0 vs 33.0 dB(A)"
+  ],
+  "notes": "Catalog fix: UGREEN's compatibility page (https://ai.ugreen.com/pages/compatibility, read 2026-11-13) lists the US2000 as 'Only Support DH Series'. The catalog name of ugreen-nas-ups-us2000-72w says 'for NASync 2-Bay and DH Models' and should be corrected. The US3000 is the one listed for the DXP2800.",
+  "products": [],
+  "page": {
+   "title": "Best NAS for self-hosting Audiobookshelf and Calibre-Web for a family (2026): picks, phone apps, remote access",
+   "h1": "Best NAS for self-hosting Audiobookshelf and Calibre-Web for a family (2026)",
+   "desc": "Which NAS to run Audiobookshelf and Calibre-Web in Docker for a family: lab-measured idle watts and noise with two hard drives, M.2 slots for app data, RAM, yearly running cost and the UPS that fits.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for self-hosting Audiobookshelf and Calibre-Web for a family is the UGREEN DXP2800: Intel N100, 8 GB RAM, two M.2 slots for Docker app data. With two HDDs, ComputerBase measured 18.6 W idle, level with Synology's DS224+, and quieter: 30.0 vs 33.0 dB(A).</p>",
+   "columns": [
+    [
+     "cpu_ram",
+     "CPU, RAM installed (max)"
+    ],
+    [
+     "bays",
+     "Bays"
+    ],
+    [
+     "app_ssd",
+     "M.2 for app data"
+    ],
+    [
+     "idle_w",
+     "Power, drives spinning"
+    ],
+    [
+     "asleep_w",
+     "Power, drives asleep"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "cpu_ram": "Intel N100, 8 GB DDR5 (16 GB)",
+      "bays": "2",
+      "app_ssd": "2× NVMe, as cache or a separate SSD pool (Starry Hope)",
+      "idle_w": "18.6 W idle (ComputerBase, 2 HDDs)",
+      "asleep_w": "7.3 W (ComputerBase)"
+     }
+    },
+    {
+     "slug": "synology-ds225-plus",
+     "model": "Synology DS225+",
+     "cells": {
+      "cpu_ram": "Celeron J4125, 2 GB DDR4 (6 GB)",
+      "bays": "2",
+      "app_ssd": "No M.2 slot (Synology)",
+      "idle_w": "16.98 W access (Synology rating); ≈11.5 W 24-hour average (Dong Knows, 2 HDDs)",
+      "asleep_w": "6.08 W (Synology rating)"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp4800-plus",
+     "model": "UGREEN NASync DXP4800 Plus",
+     "cells": {
+      "cpu_ram": "Pentium Gold 8505, 8 GB DDR5 (64 GB)",
+      "bays": "4",
+      "app_ssd": "2× NVMe (Racks & Watts)",
+      "idle_w": "51.6 W idle (ComputerBase, 4-bay setup)",
+      "asleep_w": "26.8 W (ComputerBase)"
+     }
+    },
+    {
+     "slug": "synology-ds425-plus",
+     "model": "Synology DS425+",
+     "cells": {
+      "cpu_ram": "Celeron J4125, 2 GB DDR4 (6 GB)",
+      "bays": "4",
+      "app_ssd": "2× NVMe; storage pools need Synology-verified SSDs (Synology)",
+      "idle_w": "28.25 W access (Synology rating)",
+      "asleep_w": "6.10 W (Synology rating)"
+     }
+    },
+    {
+     "slug": "qnap-ts-264-8g",
+     "model": "QNAP TS-264-8G",
+     "cells": {
+      "cpu_ram": "Celeron N5095, 8 GB DDR4 (16 GB)",
+      "bays": "2",
+      "app_ssd": "2× M.2 2280 PCIe Gen3 x1 (QNAP)",
+      "idle_w": "29.086 W typical operating (QNAP rating, drives fitted)",
+      "asleep_w": "18.288 W disk standby (QNAP rating)"
+     }
+    },
+    {
+     "slug": "asustor-as5402t",
+     "model": "Asustor Nimbustor 2 Gen2 AS5402T",
+     "cells": {
+      "cpu_ram": "Celeron N5105, 4 GB DDR4 (16 GB)",
+      "bays": "2",
+      "app_ssd": "4× NVMe (LinuxLinks)",
+      "idle_w": "29.2 W disks idle (LinuxLinks, 7200 rpm HDDs + 2 NVMe)",
+      "asleep_w": "15.4 W (LinuxLinks)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Idle power is a tie between the two 2-bay picks.</strong> ComputerBase measured 18.6 W for both the DXP2800 and Synology's DS224+, the J4125 predecessor of the DS225+, with the hard drives spinning (two in the DXP2800; ComputerBase doesn't list the DS224+'s drives). That works out to 18.6 W × 8,760 h = 163 kWh a year, or about $29.59 at the August 2026 US average of 18.16¢/kWh (EIA).</li><li><strong>Synology wins on deep sleep.</strong> With the drives asleep, the DXP2800 measured 7.3 W and the DS224+ 3.5 W. (7.3 − 3.5) W × 8,760 h = 33 kWh, which is about $6 a year in Synology's favour, and only for the hours the drives actually sleep.</li><li><strong>The DXP2800 is quieter at idle.</strong> 33.0 − 30.0 = 3.0 dB(A) quieter in ComputerBase's room, which is half the sound energy. During drive access the gap shrinks to 34.6 − 34.2 = 0.4 dB(A), because the hard drives set the level.</li><li><strong>RAM.</strong> The DXP2800 ships with 8 GB. The DS225+ ships with 2 GB and tops out at 6 GB. At UGREEN's price today, $389.99 / 8 GB = $48.75 per installed GB.</li><li><strong>Four bays cost watts.</strong> In the same chart the DXP4800 Plus idles 51.6 − 18.6 = 33.0 W higher. That is 289 kWh, or about $52 a year, and it costs $619.99 − $389.99 = $230 more at UGREEN. ComputerBase doesn't give that row's drive count, and the article suggests the 4-bay units ran four drives.</li></ul><table><thead><tr><th>Your family's plan</th><th>Fits</th></tr></thead><tbody><tr><td>Audiobooks and ebooks only, two mirrored drives, NAS in a living space</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>You want Synology DSM and its backup apps, and the drives sleep most of the day</td><td>Synology DS225+ (budget for Synology's 4 GB module)</td></tr><tr><td>Books plus family photos and Jellyfin, growing past two drives</td><td>UGREEN DXP4800 Plus</td></tr><tr><td>Four bays on Synology</td><td>Synology DS425+ (M.2 pools only with Synology-verified SSDs)</td></tr></tbody></table><h2>Measured watts and noise with drives fitted</h2><p>Audiobookshelf and Calibre-Web hardly load the CPU. The NAS is on 24/7, though, so what the family lives with is idle power and idle noise. The makers' own numbers aren't measured the same way. Synology rates the DS225+ at 19.6 dB(A) at 1 m with Synology HDDs fitted, but rates the DS425+ at 21.6 dB(A) with SSDs fitted. QNAP gives 18.288 W 'disk standby' for the TS-264-8G 'tested with drives fully populated', without naming the drives. One lab's chart avoids that mismatch:</p><table><thead><tr><th>Model (ComputerBase)</th><th>Drives asleep</th><th>Idle</th><th>Writing</th><th>Noise idle / access</th></tr></thead><tbody><tr><td>UGREEN DXP2800</td><td>7.3 W</td><td>18.6 W</td><td>27.7 W</td><td>30.0 / 34.2 dB(A)</td></tr><tr><td>Synology DS224+</td><td>3.5 W (7.0 W without extended standby)</td><td>18.6 W</td><td>25.3 W</td><td>33.0 / 34.6 dB(A)</td></tr><tr><td>UGREEN DXP4800 Plus</td><td>26.8 W</td><td>51.6 W</td><td>72.3 W</td><td>30.0 / 36.7 dB(A)</td></tr></tbody></table><p>ComputerBase marks 30.0 dB(A) as below its meter's range, so the DXP2800's idle noise may be lower still. Other reviewers: Dong Knows logged about 275 Wh per 24 hours for the DS225+ with two drives, an average of 275 / 24 = 11.5 W. LinuxLinks measured the AS5402T at 29.2 W with disks idle and 15.4 W hibernating, but its setup used 7200 rpm drives and two NVMe SSDs, which pushes the figure up.</p><p>Where the databases live matters too. Audiobookshelf's docs say its /config database must sit on the same machine as the server, because on a network share 'you will eventually encounter database corruption'. On the DXP2800 the M.2 slots can form a separate SSD pool for /config and Calibre-Web's databases. The DS225+ has no M.2 slot, so its databases stay on the hard drives. To protect those databases from a power cut, UGREEN's compatibility page lists the NAS UPS US3000 ($109.99) for its '2-4Bay Series', which includes the DXP2800 {buy:ugreen-nas-ups-us3000-120w}. The cheaper US2000 is 'Only Support DH Series'.</p><h2>Not recommended</h2><p><strong>UGREEN NASync DH2300.</strong> At $239.99 it is UGREEN's cheapest NAS today, but UGREEN states 'The DH2300 does not support Docker or virtual machines', so it can't run the Audiobookshelf or Calibre-Web containers. If you want an ARM box for less, the DH4300 Plus ($373.99) does support Docker, though LinuxServer's Calibre ebook-conversion mod runs on x86-64 only.</p>",
+   "sources": [
+    [
+     "DXP2800, DS224+ and DXP4800 Plus power (asleep, idle, writing) and noise; DXP2800 with two 20 TB IronWolf Pro drives, drives of the DS224+ and DXP4800 Plus not listed (ComputerBase, Frank Hüber, 2024-07-01; read 2026-11-13)",
+     "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3"
+    ],
+    [
+     "DXP2800 $389.99, DXP4800 Plus $619.99, DH4300 Plus $373.99, DH2300 $239.99 at UGREEN US store (read 2026-11-13)",
+     "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+    ],
+    [
+     "DXP2800 N100, 8 GB DDR5 (16 GB max), M.2 as cache or separate SSD pool (Starry Hope, 2026-09-28; read 2026-11-13)",
+     "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/"
+    ],
+    [
+     "DS225+ J4125, 2 GB (6 GB max), no M.2, 16.98 W / 6.08 W, 19.6 dB(A) with HDDs, 3-year warranty (Synology; read 2026-11-13)",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "DS425+ J4125, 2 GB (6 GB max), M.2 pools need Synology-verified SSDs, 28.25 W / 6.10 W, 21.6 dB(A) with SSDs (Synology; read 2026-11-13)",
+     "https://www.synology.com/en-us/products/DS425+#specs"
+    ],
+    [
+     "DS225+ ≈275 Wh per 24 hours with two hard drives (Dong Knows Tech, Dong Ngo, 2025-08-04; read 2026-11-13)",
+     "https://dongknows.com/synology-ds225-plus-review"
+    ],
+    [
+     "TS-264-8G N5095, 8 GB (16 GB max), 2× M.2 Gen3 x1, 29.086 W typical / 18.288 W disk standby (QNAP; read 2026-11-13)",
+     "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+    ],
+    [
+     "AS5402T 29.2 W disks idle, 15.4 W hibernating, 36.8 W copying, 2× 7200 rpm HDD + 2× NVMe (LinuxLinks, Steve Emms, 2024-03-18; read 2026-11-13)",
+     "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/4/"
+    ],
+    [
+     "AS5402T Celeron N5105, 4 GB (16 GB max), 4× NVMe M.2 (LinuxLinks; read 2026-11-13)",
+     "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/2/"
+    ],
+    [
+     "DXP4800 Plus Pentium Gold 8505, 8 GB (64 GB max), 2 NVMe; DSM 7.3 third-party HDDs in new pools on 2025 Plus models (Racks & Watts; read 2026-11-13)",
+     "https://racksandwatts.com/guides/best-nas-for-a-homelab-2026/"
+    ],
+    [
+     "US3000 'Only Support 2-4Bay Series' incl. DXP2800, $109.99; US2000 'Only Support DH Series' (UGREEN; read 2026-11-13)",
+     "https://ai.ugreen.com/pages/compatibility"
+    ],
+    [
+     "Audiobookshelf /config must be on the same machine; network shares lead to database corruption (read 2026-11-13)",
+     "https://audiobookshelf.org/docs/documentation/install/docker/"
+    ],
+    [
+     "US residential electricity 18.16¢/kWh, August 2026 (EIA Electric Power Monthly Table 5.6.A; read 2026-11-13)",
+     "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a"
+    ],
+    [
+     "DH2300 does not support Docker; DH4300 Plus supports Docker (UGREEN, 2026-09-29; read 2026-11-13)",
+     "https://ai-uk.ugreen.com/blogs/buying-guide/ugreen-nas-for-beginners"
+    ],
+    [
+     "Calibre-Web DOCKER_MODS calibre ebook-conversion mod: 'x86-64 only' (LinuxServer.io docker-calibre-web README; read 2026-11-13)",
+     "https://github.com/linuxserver/docker-calibre-web"
+    ]
+   ]
+  }
+ },
+ "checked": 72,
+ "changed": [
+  {
+   "where": "why_angle",
+   "was": "ComputerBase's same-lab measurements of the DXP2800 and Synology's J4125 two-bay with two HDDs",
+   "now": "ComputerBase's same-lab measurements of the DXP2800 with two HDDs and Synology's J4125 two-bay DS224+",
+   "why": "ComputerBase (seite-3, read 2026-11-13) says the DXP2800 ran two 20 TB HDDs. It gives no drive count or model for the DS224+ row. The '2x 20 TB IronWolf' chart labels belong to other Synology entries."
+  },
+  {
+   "where": "after, first bullet",
+   "was": "with two hard drives spinning.",
+   "now": "with the hard drives spinning (two in the DXP2800; ComputerBase doesn't list the DS224+'s drives).",
+   "why": "Same reason: ComputerBase states the drive count only for the DXP2800."
+  },
+  {
+   "where": "rows[asustor-as5402t].app_ssd",
+   "was": "4× NVMe, as cache or storage (LinuxLinks)",
+   "now": "4× NVMe (LinuxLinks)",
+   "why": "LinuxLinks page 2 confirms 4× NVMe M.2 but doesn't say whether the slots work as cache or storage. Asustor's own AS5402T page (asustor.com/en/product?p_id=81, read 2026-11-13) only says they 'accelerate volumes'. No source supports 'as cache or storage'."
+  },
+  {
+   "where": "after, databases paragraph",
+   "was": "can form a separate SSD pool for /config and Calibre-Web's databases, with any NVMe drive.",
+   "now": "can form a separate SSD pool for /config and Calibre-Web's databases.",
+   "why": "Starry Hope (the cited source) supports the separate SSD pool but says nothing about which SSD brands work. 'With any NVMe drive' has no source."
+  },
+  {
+   "where": "after, UPS sentence",
+   "was": "lists the NAS UPS US3000 ($109.99) for the 2–4-bay DXP series, which includes the DXP2800",
+   "now": "lists the NAS UPS US3000 ($109.99) for its '2-4Bay Series', which includes the DXP2800",
+   "why": "The compatibility page's wording is 'Only Support 2-4Bay Series'. It doesn't say 'DXP series'. The $109.99 price was re-read in the UGREEN US store today."
+  },
+  {
+   "where": "sources[0] label (ComputerBase)",
+   "was": "two 20 TB IronWolf drives",
+   "now": "DXP2800 with two 20 TB IronWolf Pro drives, drives of the DS224+ and DXP4800 Plus not listed",
+   "why": "ComputerBase names IronWolf Pro 20 TB for the DXP2800 only."
+  },
+  {
+   "where": "sources (added)",
+   "was": "no source for 'LinuxServer's Calibre ebook-conversion mod runs on x86-64 only'",
+   "now": "https://github.com/linuxserver/docker-calibre-web README, read 2026-11-13",
+   "why": "The claim is in the page but had no source. The README's parameter table says '#optional & x86-64 only Adds the ability to perform ebook conversion'."
+  }
+ ],
+ "removed": [
+  {
+   "where": "log: not re-read",
+   "why": "The DXP2800 entry for the US3000 on UGREEN's compatibility page was not re-read: the compatibility table loads dynamically, so the fetched text held only 'UPS3000 … Only Support 2-4Bay Series' and 'UPS2000 … Only Support DH Series' without per-model lists. The US3000 product page (ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah) returned HTTP 429 through both WebFetch and storecheck. Nothing I could read contradicts it, so 'which includes the DXP2800' stays as the research agents recorded it."
+  },
+  {
+   "where": "log: checked and unchanged",
+   "why": "All of these match what I read today. UGREEN US store (storecheck): DXP2800 $389.99, DXP4800 Plus $619.99, DH4300 Plus $373.99, DH2300 $239.99, US3000 $109.99, US2000 $69.99. ComputerBase: all 15 values in the measured table, the 'below meter range' note, and 'zwei statt mindestens vier Laufwerke', which supports the 4-bay remark. Synology DS225+ and DS425+ specs, power and dB(A) with test conditions. QNAP TS-264 specs and 'Tested with drives fully populated'. Dong Knows ≈275 Wh/24 h with two drives. LinuxLinks 29.2 W and 15.4 W with its setup, plus N5105, 4 GB and 16 GB. Racks & Watts DXP4800 Plus specs. Audiobookshelf docs quote. EIA August 2026 at 18.16¢/kWh. UGREEN UK blog DH2300 and DH4300 Plus Docker statements. All arithmetic also checks out: 162.9 kWh → $29.59; 33.3 kWh → $6.05; 289.1 kWh → $52.50; $48.75 per GB; $230; 11.46 W."
+  }
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.6371833
+ }
+}

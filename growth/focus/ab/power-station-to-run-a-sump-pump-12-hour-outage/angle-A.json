@@ -1,0 +1,82 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 300's 4,800 W 'lifting' figure covers resistive loads only, so a sump-pump start has to fit under its 2,400 W rating, or that StorageReview drew only 2.67 kWh from its 3,014 Wh pack (88.6%), which puts a 1/3 HP pump at about 13 hours at 25% duty, not the 'about 12 hours' ChatGPT showed.",
+ "standout": 2,
+ "standout_why": "RunTimeFit (cited, ChatGPT's PECRON pick) gives no surge figure for any station; it shows an unexplained 'starting headroom' against an assumed 1,300 W start and does not state usable capacity. Tested Watts (cited) lists maker peak watts from official specs, says 'surge ratings are brief', gives no duration and does not mention lifting or X-Boost. OutageReadyHQ (cited) lists peak watts with no duration and no resistive-only caveat, and lists no surge at all for the F3800 Plus. None of the three gives a measured usable-Wh figure; all three admit they did not test with a pump. The ~12 h for the Elite 300 that ChatGPT showed comes from our own page. The page just needs to add the measured 88.6%.",
+ "decides": "This confirms rather than overturns. Sized against the real 2,400 W limit, the Elite 300 still clears the 1,300 W start figure RunTimeFit uses for a 1/3 HP pump, and on StorageReview's measured 2.67 kWh it covers 12 hours at 25% duty with margin (about 13.4 h at 800 W, about 16.4 h at 650 W). The page's table should normalise every row to two things: a surge that applies to motors (not a lifting or boost mode), and delivered Wh rather than nameplate Wh. On that basis, stations that list only a 'Max' or lifting figure, such as the F3800 Plus and Elite 300, are judged on their continuous rating.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "Anker SOLIX F3800 Plus",
+  "PECRON F3000LFP",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "What the 4,800 W 'lifting' figure covers",
+   "value": "Resistive loads only (2,400–4,800 W heaters, kettles, dryers). Actual output stays at 2,400 W. Not a start allowance for motors or compressors",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3,014Wh, 2,400W, and an 8ms UPS Switchover in a 58-Pound Box (StorageReview, Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "StorageReview quotes: 'BLUETTI's manual explicitly states that the actual output power remains at 2,400W when the mode is engaged' and 'It is also not a startup allowance for motors or compressors... anything with a motor... should be sized against the normal 2,400W limit.' Some retail listings call the 4,800 W figure 'surge'."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "How the maker states output",
+   "value": "2,400 W output (4,800 W lifting); no surge figure; no footnote on load type",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "The US product page says '2,400 W output (4,800 W lifting) for heavy loads like microwaves and heaters'. It does not say lifting is resistive-only. Store price was $1,199 on 2026-11-13 (storecheck)."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured delivered energy vs nameplate",
+   "value": "2.67 kWh delivered from a 3,014.4 Wh rated pack (88.6%)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "Kill-A-Watt full cycle: 'a total draw of 2.67 kWh before the battery was fully depleted'. 2,670 / 3,014.4 = 0.886. 1/3 HP pump at 25% duty: 800 W × 0.25 = 200 Wh/h, so 2,670 / 200 = 13.4 h. At 650 W: 162.5 Wh/h, so 16.4 h. This replaces the 85% assumption ChatGPT and the rivals used."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS switchover, measured",
+   "value": "8 ms line to battery; 8.25 ms battery to line (spec ≤10 ms)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "Quarch capture."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "How the maker states output",
+   "value": "6,000 W Max total (NEMA L14-30R 120/240 V, 25 A); 2,400 W Max per 120 V 20 A outlet; no surge figure",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (Anker SOLIX US)",
+   "read": "2026-11-13",
+   "note": "The tech specs list only 'Max' ratings, with no continuous/surge split. A 120 V pump on one outlet is limited to 2,400 W including its start. UPS switchover is 20 ms on the NEMA 5-20R ports (1,440 W bypass limit). Cycle life is '3,000+' with no retention %. The page showed 'Sold Out', no price, on 2026-11-13."
+  },
+  {
+   "product": "ALLPOWERS R4000",
+   "label": "How the maker states output",
+   "value": "3,600 W / 4,000 W AC (6,000 W surge), no surge duration; 3,500+ cycles to 80%",
+   "source": "https://iallpowers.com/products/allpowers-r4000-solar-generator-4000w-3600wh-portable-power-station-with-sf200-200w-flexible-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 3600W (R4000 + SF200 200W Flexible Solar Panel)",
+   "read": "2026-11-13",
+   "note": "Store search (storecheck) on 2026-11-13. The standalone R4000 listing (https://iallpowers.com/products/allpowers-r4000-power-station) is titled '4000W 3456Wh', says '4000W (6000W surge)' and '3500+ Life Cycles', and was $1,499 (compare-at $3,299), available: false. The kit listing states the cycle count to 80%; BLUETTI states '6000+' with no %. Our page's 3,600 W continuous matches the kit's 3,600 W / 4,000 W split."
+  }
+ ],
+ "unsourced": [
+  "PECRON F3000LFP surge: search snippets gave '4,500 W (5 s)' from PECRON Thailand and a US retailer, and '7,200 W' from a Philippine retailer. pecron.com, th.pecron.com and outboundpower.com all returned HTTP 429, and the manuals.plus manual returned 403, so I left the figure out.",
+  "EcoFlow DELTA Pro 3 surge W and duration, and X-Boost load type: us.ecoflow.com returned 429, the ecoflow.com/us page and manuals.ecoflow.com rendered no specs, and the manual PDFs (BLUETTI and webstaurantstore EcoFlow) were over the fetch size limit.",
+  "Surge duration (ms or s) for the BLUETTI Elite 300, Anker F3800 Plus and ALLPOWERS R4000: none of the maker pages I opened states one, and the Elite 300 manual PDF could not be parsed.",
+  "Literal 13 hp electrical draw and whether any listed station (e.g. Anker SOLIX E10) could carry it for 12 h: not researched for this angle, and I opened no source for it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9615442999999998
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a USB-C port only gives 100 W (20 V × 5 A) through a cable rated for more than 3 A, which must carry an e-marker chip. An ordinary 3 A cable is labelled 60 W and holds the laptop to 20 V × 3 A = 60 W. The stations differ on whether a cable that fast comes in the box: Gadgeteer found a 140 W USB-C cable with the Anker C300 DC, but Jackery's 300D box list has only a manual and an AC cable.",
+ "standout": 2,
+ "standout_why": "I opened the two pages ChatGPT cited. The Gadgeteer C300 DC review mentions that a 140 W USB-C cable comes in the box. It never says a 5 A e-marked cable is needed for anything above 60 W, and it measured only about 88 W combined across two chargers. The cited manuals.plus C300 DC user guide PDF came back as compressed binary, and the only text I could read was its table of contents, which has no cable section. ChatGPT's answer treats '100W USB-C' as a property of the station alone. I did not open the uncited top results (gearranking, solargenadvisor, amphourly).",
+ "decides": "This settles whether the plan works with any of the stations, but it does not change which one to pick. Every candidate has a 100 W or 140 W PD port, and each delivers 100 W only through a 5 A e-marked cable. It does break ties: the Anker C300 DC comes with a 140 W cable, while a Jackery 300D buyer has to bring a 5 A cable. The page should tell readers to carry a cable labelled 100 W or 240 W.",
+ "candidates": [
+  "Anker SOLIX C300 DC",
+  "Jackery Explorer 300D",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "Jackery Explorer 240 v2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Cables rated above 3 A must be electronically marked",
+   "value": "e-marker required for USB-C cables rated over 3 A (5 A cables)",
+   "source": "https://ti.com/document-viewer/lit/html/SSZTBJ8/GUID-61351F5F-3B46-4F6A-A613-320B3A36C17A",
+   "source_title": "TI technical article SSZTBJ8 (Brian Gosselin and Nate Enos, May 2016)",
+   "read": "2026-11-14",
+   "note": "Quote: 'cables are required to be electronically marked if they are either full-featured and/or rated at more than 3A current.' Its cable list, citing the USB Type-C Cable and Connector Specification, says: 'required if cable supports >3A'."
+  },
+  {
+   "product": "general",
+   "label": "USB-IF power labels for USB-C to USB-C cables",
+   "value": "every certified cable is labelled 60 W or 240 W; a 20 V / 3 A cable carries the 60 W logo",
+   "source": "https://usb.org/node/596",
+   "source_title": "usb.org: USB-C cable logo / compliance requirements",
+   "read": "2026-11-14",
+   "note": "Quotes: USB-C to USB-C cables 'must be labelled with either a power capability of 60W or 240W'; a cable that 'supports 20V at 3A must be marked with the Combined Performance and Power 20Gbps/60W logo.' Arithmetic: a 100 W PD contract is 20 V × 5 A, so a 60 W (3 A) cable caps the laptop at 60 W."
+  },
+  {
+   "product": "general",
+   "label": "Two current ratings for C-to-C cables, e-marker on all but basic 3 A USB 2.0",
+   "value": "3 A max or 5 A max; cable types 2–6 (including the 5 A ones) must have an e-marker",
+   "source": "https://people.kernel.org/bleung/how-many-kinds-of-usb-c-to-usb-c-cables-are-there",
+   "source_title": "Benson Leung, 'How many kinds of USB-C to USB-C cables are there?' (2019-06-14)",
+   "read": "2026-11-14",
+   "note": "Quote: 'Cables 2-6 are required by the USB specification to include an electronic marker chip'. Cable 1 (USB 2.0, 3 A) is the only type exempt."
+  },
+  {
+   "product": "Jackery Explorer 300D",
+   "label": "USB-C output profiles",
+   "value": "Type-C1/C2 140 W max: 5/9/12/15 V 3 A, 20 V 5 A, 28 V 5 A; Type-C3 65 W max (20 V 3.25 A)",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303653927835-Explorer-300D-Basic-Information",
+   "source_title": "Jackery FAQ: Explorer 300D Basic Information",
+   "read": "2026-11-14",
+   "note": "C1 and C2 reach 100 W only at 20 V 5 A, which needs a 5 A e-marked cable. C3 cannot reach 100 W with any cable."
+  },
+  {
+   "product": "Jackery Explorer 300D",
+   "label": "Box contents",
+   "value": "1 user manual, 1 AC charging cable (doubles as carry handle); no USB-C cable listed",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303653927835-Explorer-300D-Basic-Information",
+   "source_title": "Jackery FAQ: Explorer 300D Basic Information",
+   "read": "2026-11-14",
+   "note": "The same page gives the weight as 'Around 2.5kg' (about 5.5 lb) and the battery as 288 Wh LiFePO4."
+  },
+  {
+   "product": "Anker SOLIX C300 DC",
+   "label": "Box contents and port profile",
+   "value": "140 W USB-C cable included; USB-C2/C3 140 W (28 V 5 A), USB-C1 100 W, 300 W total; 6.17 lb, 288 Wh",
+   "source": "https://the-gadgeteer.com/2024/11/26/anker-solix-c300-dc-portable-power-station-review/",
+   "source_title": "The Gadgeteer: Anker SOLIX C300 DC Portable Power Station review (2024-11-26)",
+   "read": "2026-11-14",
+   "note": "The Gadgeteer reports the 140 W cable in the box and gives the port table and the 2.8 kg (6.17 lb) weight. Anker's product page (ankersolix.com A1726/A1722) confirms 2× 140 W PD 3.1, 1× 100 W and 1× 15 W USB-C, but lists neither box contents nor weight."
+  },
+  {
+   "product": "Anker SOLIX C300 DC",
+   "label": "Measured charging draw",
+   "value": "88 W combined for an M1 MacBook Pro charger (~60 W) plus a second charger (~30 W)",
+   "source": "https://the-gadgeteer.com/2024/11/26/anker-solix-c300-dc-portable-power-station-review/",
+   "source_title": "The Gadgeteer: Anker SOLIX C300 DC Portable Power Station review (2024-11-26)",
+   "read": "2026-11-14",
+   "note": "Read from the Anker app. The Gadgeteer did not test a single laptop drawing 100 W."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price and maker's standby claim",
+   "value": "$289.99; '140W PD Fast Charging'; 'only 4.5W standby'",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (bluettipower.com)",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py (Shopify product JSON). The page does not say whether 4.5 W is whole-unit or AC-inverter idle draw. If it is whole-unit and the unit stays on, 4.5 W × 48 h = 216 Wh, so the page should not use it in weekend arithmetic until that is clarified."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 3 USB-C voltage/current profile and box contents: us.ecoflow.com and storecheck.py returned HTTP 429 three times, ecoflow.com/us returned 404, manuals.plus returned 403, and the mirrored EcoFlow manual PDF could not be read as text.",
+  "Jackery Explorer 240 v2 USB-C profile and box contents: jackery.com returned HTTP 429 to both WebFetch and storecheck.py.",
+  "Anker SOLIX C300 DC per-port voltage/current from Anker's own manual: support.ankersolix.com loads only a JavaScript error page, and the manuals.plus copies were unreadable PDF or 403.",
+  "The 'shall be electronically marked' sentence in the USB Type-C Cable and Connector Specification on usb.org itself: I used TI's citation of the spec and the usb.org logo page instead.",
+  "BLUETTI Elite 30 V2 per-port USB-C profile, box contents and what the 4.5 W standby figure covers: the store data has only the marketing bullets.",
+  "Jackery 300D Energy Saving Mode: the FAQ says only that it can be turned off, not what it shuts off, after how long, or at what wattage. That matters if a fully charged laptop draws so little that the port could time out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.033198
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a screen's brightness is the projector's lumens × screen gain ÷ screen area (SMPTE's dark-room target is 16 ft-L, with 12–22 ft-L allowed), or that battery projectors get their advertised runtime in a dimmed Eco mode. ProjectorCentral measured the XGIMI MoGo 4 at 151–154 ISO lumens in ECO, the mode behind its '2.5 hours'. On a 100-inch screen that is about 5 ft-L, a third of the target. A 120-inch, 1.1-gain screen needs about 622 lumens to reach 16 ft-L.",
+ "standout": 3,
+ "standout_why": "I compared against RTINGS best portable (1st or 2nd in four chats, cited once), TechRadar, What Hi-Fi (cited), and our own dealectric page (cited once). Costco's JMGO PicoPlay+ bundle (cited) returned HTTP 429, and Travel + Leisure (cited) could not be fetched, so I can't say what those two pages hold. The RTINGS hub page has no brightness figures, screen-size math or battery-mode brightness. The TechRadar and What Hi-Fi fetches came back as titles only, so I could not check their text. Our own page says only that 100 ANSI lm 'cannot fill a 100-inch screen'. It gives no formula, never uses ft-L, and does not explain gain or battery dimming. ChatGPT's answers give a rule of thumb of '300–500 ANSI/ISO lumens', which does not change with screen size, and it pushed the MoGo 4 and Yaber T2 Plus for '2.5 hours' without saying that figure is for Eco mode.",
+ "decides": "It decides which projector to pair with which screen size. To get 16 ft-L on the 120-inch, 1.1-gain Aurzen screen (sold separately on Aurzen's store), the projector needs about 622 lumens. The EAZZE D1 MAX ('True 1000 ANSI', $349.99) gets there at about 25.7 ft-L. The EAZZE D1, at the 200 ANSI lm our page lists, gives only about 5.2 ft-L, so it should not be the lead pick for a 120-inch screen. Pair it with a smaller screen or demote it. Battery-only buyers should pick screens of 80 inches or less, or plan to plug in. The MoGo 4 in ECO on an 80-inch screen at gain 1.0 gives about 8 ft-L. In Standard mode, about 258 lm, it gives 13.6 ft-L, but XGIMI warns runtime drops.",
+ "candidates": [
+  "Aurzen EAZZE D1 MAX",
+  "Aurzen EAZZE D1",
+  "XGIMI MoGo 4",
+  "JMGO PicoPlay+",
+  "Yaber T2 Plus GTV"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Formula for image brightness from projector lumens",
+   "value": "Luminance (ft-L) = (lumens ÷ screen area in sq ft) × screen gain",
+   "source": "https://acousticfrontiers.com/blogs/articles/image-brightness-targets-and-calculating-foot-lamberts-from-projector-lumens",
+   "source_title": "Image brightness targets and calculating foot lamberts from projector lumens (Nyal Mellor, Acoustic Frontiers, 2013-03-25)",
+   "read": "2026-11-14",
+   "note": "Same relationship rearranged by ProjectorCentral: 'Lumens = ft-L X SquareFeet / Gain'. Mellor quotes SMPTE 196M as 16 ft-L with no film in the projector, typically 14 ft-L with film."
+  },
+  {
+   "product": "general",
+   "label": "Dark-room target brightness (SMPTE)",
+   "value": "16 ft-L target, 12–22 ft-L allowed; about 50 ft-L suggested for a family room with lights",
+   "source": "https://www.projectorcentral.com/simple-guide-to-calculating-projector-lumens.htm",
+   "source_title": "Simple Guide to Calculating Projector Lumens (M. David Stone, ProjectorCentral, 2019-10-11)",
+   "read": "2026-11-14",
+   "note": "Quoted: SMPTE 'defines a target of 16 ft-L but actually allows a range of 12 ft-L to 22 ft-L'."
+  },
+  {
+   "product": "general",
+   "label": "16:9 screen area by diagonal",
+   "value": "80 in = 18.99 sq ft; 100 in = 29.67 sq ft; 120 in = 42.73 sq ft",
+   "source": "https://www.projectorcentral.com/simple-guide-to-calculating-projector-lumens.htm",
+   "source_title": "Simple Guide to Calculating Projector Lumens (ProjectorCentral)",
+   "read": "2026-11-14",
+   "note": "My own geometry, not a figure from the source: area = d² × 144/337 sq in ÷ 144 = 0.0029674 × d² sq ft. Lumens needed for 16 ft-L: 120-in at gain 1.1 = 16 × 42.73 ÷ 1.1 ≈ 622 lm; 100-in at gain 1.0 ≈ 475 lm; 12 ft-L floor on 100-in ≈ 356 lm."
+  },
+  {
+   "product": "Aurzen 120-inch Portable Projector Screen",
+   "label": "Screen gain, size and price",
+   "value": "1.1 gain, 16:9, 120 in; $24.99 (compare-at $39.99) on aurzen.com",
+   "source": "https://aurzen.com/products/120-foldable-projector-screen",
+   "source_title": "Aurzen 120\" Portable Projector Screen",
+   "read": "2026-11-14",
+   "note": "Read with the storecheck.py Shopify search: 'Cinema-Grade 1.1 Gain, 16:9 Ratio'."
+  },
+  {
+   "product": "Aurzen EAZZE D1 MAX",
+   "label": "Rated brightness, price and result on the 120-in Aurzen screen",
+   "value": "'True 1000 ANSI Brightness'; $349.99 (compare-at $499.99); ≈25.7 ft-L on the 120-in 1.1-gain screen",
+   "source": "https://aurzen.com/products/eazze-d1-max-google-tv-projector",
+   "source_title": "Aurzen EAZZE D1 MAX Gemini AI Google TV Projector",
+   "read": "2026-11-14",
+   "note": "1000 × 1.1 ÷ 42.73 = 25.7 ft-L, using the maker's rating, not a measurement. That is above the SMPTE 12–22 range, so it leaves headroom for some ambient light or a bigger screen. Store note: no 1/4-inch tripod thread; ceiling mount needs 4× M5."
+  },
+  {
+   "product": "XGIMI MoGo 4",
+   "label": "Battery runtime condition (maker)",
+   "value": "'Up to 2.5 Hours Video Playtime (Eco Mode)'; footnote: 'For a brighter display, you can exit this mode, but playtime will be reduced.' Rated 450 ISO lm in Performance/High Power mode",
+   "source": "https://us.xgimi.com/pages/mogo-4",
+   "source_title": "XGIMI MoGo 4 (us.xgimi.com)",
+   "read": "2026-11-14",
+   "note": "Footnote 2 says the 450 ISO lm figure is measured in Performance or High Power Mode, where 'the highest brightness is achieved'."
+  },
+  {
+   "product": "XGIMI MoGo 4",
+   "label": "Measured ISO 21118 brightness by power mode",
+   "value": "Performance 400–404 lm; Standard 258–270 lm; ECO 151–154 lm",
+   "source": "https://www.projectorcentral.com/xgimi-mogo-4-1080p-smart-portable-projector-review.htm",
+   "source_title": "XGIMI MoGo 4 1080P DLP Projector review (Nikki Kahl, ProjectorCentral, 2025-08-25)",
+   "read": "2026-11-14",
+   "note": "Nikki Kahl measured these and found ECO lasted about 2.5 h. On a 100-in gain-1.0 screen: ECO 151 lm → 5.1 ft-L; Standard 258 lm → 8.7 ft-L; Performance 404 lm → 13.6 ft-L. On the 120-in 1.1-gain screen, ECO gives 3.9 ft-L. Battery-vs-AC lumens were not reported."
+  },
+  {
+   "product": "XGIMI MoGo 4",
+   "label": "Measured battery runtime in Standard mode",
+   "value": "1 h 52 min streaming movies",
+   "source": "https://www.expertreviews.co.uk/technology/tvs-home-cinema/xgimi-mogo-4-review",
+   "source_title": "XGIMI MoGo 4 review (Stuart Andrews, Expert Reviews, 2025-06-30)",
+   "read": "2026-11-14",
+   "note": "Stuart Andrews: the battery 'is only going to get you through a long movie if you keep the projector in its Eco mode', which 'results in a noticeable dip in brightness'."
+  },
+  {
+   "product": "JMGO PicoPlay+",
+   "label": "Rated brightness and power",
+   "value": "450 ISO lm (ISO 21118); 65 W; 3 h battery via detachable battery base; charges from USB-C PD power banks",
+   "source": "https://www.projectorcentral.com/jmgo-picoplay+.htm",
+   "source_title": "JMGO PicoPlay+ Projector (ProjectorCentral spec page)",
+   "read": "2026-11-14",
+   "note": "The page gives no brightness for battery or Eco mode. At the rated 450 lm on a 100-in gain-1.0 screen: 450 ÷ 29.67 = 15.2 ft-L, which assumes full brightness on battery and is not verified."
+  }
+ ],
+ "unsourced": [
+  "Aurzen EAZZE D1 ANSI lumen rating: aurzen.com/products/eazze-d1-projector returned HTTP 429 to both storecheck.py and WebFetch, so I could not reconfirm today the 200 ANSI lm our page lists. The ≈5.2 ft-L figure for D1 on the 120-in screen depends on that number.",
+  "JMGO PicoPlay+ brightness on battery tripod or in Eco mode: global.jmgo.com returned HTTP 429, and the ProjectorCentral spec page has no figure.",
+  "Yaber T2 Plus brightness on battery: yaber.com returned HTTP 429. Search found no maker or reviewer figure (one snippet said 450 ANSI, which conflicts with our page's 350 ISO).",
+  "Gain of the 100-inch screens in Costco's JMGO and Hisense bundles: the Costco page returned HTTP 429.",
+  "Full text of TechRadar, What Hi-Fi and Travel + Leisure: the fetches returned only titles or were blocked, so I could not confirm those pages leave out the ft-L math."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0440852999999999
+ }
+}

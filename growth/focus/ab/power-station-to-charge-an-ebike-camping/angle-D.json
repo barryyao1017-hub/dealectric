@@ -1,0 +1,111 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a power station's inverter uses power just by being on. Measured idle draw with AC on is about 27 W on the EcoFlow DELTA 3 Max, 9.5 W on the BLUETTI Elite 200 V2 and 6 W on the Anker SOLIX S2000. If the AC is left on for a 48-hour weekend, the DELTA 3 Max burns about 1.3 kWh of its 2,048 Wh with nothing plugged in. That is the difference between two 700 Wh e-bike charges and one.",
+ "standout": 2,
+ "standout_why": "I compared against the cited dealectric.com/power-station-to-charge-an-ebike-camping page and powerstationgearlab.com/best/best-power-station-for-e-bike/. PowerStationGearLab covers loss percentages (Jackery 0.85, EcoFlow 0.80–0.90, Anker 10–15%), pure sine wave, DC vs AC, charger wattages and Bosch's 32–104°F charging range. It says nothing about idle draw, eco mode or auto-off, and it recommends the DELTA 3 Max for two 720 Wh charges. Dealectric gives inverter efficiency of 82–92% and mentions BLUETTI's ECO auto-off, but no standby wattage. Both ChatGPT answers offered the DELTA 3 Max ($879) as a two-charge option. Neither mentioned idle draw or switching the inverter off between charges.",
+ "decides": "It confirms the BLUETTI Elite 200 V2 as the pick and makes the DELTA 3 Max a weaker two-charge choice. Two Bosch 4A charges take about 11 hours of inverter time (700 Wh ÷ 0.88 ÷ 144 W ≈ 5.5 h each). At 27 W idle, the DELTA 3 Max loses about 300 Wh just to inverter overhead in that time. Its 79% measured efficiency already puts it at about 1,618 Wh at the outlet, against the roughly 1,590 Wh two charges need, so it has almost no margin. The Elite 200 V2 delivered 1,910 Wh in StorageReview's test and idles at 9.5 W (about 105 Wh over the same 11 hours). That leaves room for both charges. The page should tell shoppers to switch AC off between charges or turn on ECO / AC timeout. It should also list idle draw as a column, with the Anker SOLIX S2000 at 6 W as the low-overhead option (its 1,500 W AC is plenty for any e-bike charger).",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX S2000",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 300"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Idle consumption, AC inverter on, no load",
+   "value": "about 27 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-max",
+   "source_title": "EcoFlow DELTA 3 Max Review: A Step Forward or a Step Sideways? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'After a few tests, we calculated the idle consumption at about 27 watts.' The page has no byline or test setup. Arithmetic: 27 W × 48 h = 1,296 Wh, or 63% of the 2,048 Wh rating, if AC stays on all weekend."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Measured efficiency",
+   "value": "79%",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-max",
+   "source_title": "EcoFlow DELTA 3 Max Review: A Step Forward or a Step Sideways? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'The efficiency came in at 79%.' The load is not stated. Arithmetic: 2,048 × 0.79 ≈ 1,618 Wh at the outlet. Two 700 Wh charges through an 88% charger need 2 × 795 ≈ 1,591 Wh, leaving about 27 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle power draw",
+   "value": "9.5 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review",
+   "source_title": "Bluetti Elite 200 V2 Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'the idle power draw was impressive, coming in at just 9.5W per hour'. The page doesn't say whether the inverter was on. The same page gives 94% efficiency with the load unstated. Arithmetic: 9.5 W × 48 h ≈ 456 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle consumption, AC and DC left on",
+   "value": "about 10 W",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 portable power station review (The Gadgeteer)",
+   "read": "2026-11-13",
+   "note": "Greg Cleveland, 2025-01-06: 'Low idle consumption, 10w/h with AC and DC left on' (his unit typo, meaning about 10 W). This supports The Solar Lab's 9.5 W."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge",
+   "value": "1.91 kWh of 2,073.6 Wh rated; 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview, 2025-04-25. The load and whether it was AC or DC are not stated. Arithmetic: 1,910 × 0.88 charger ≈ 1,681 Wh to the bike, or 2 × 700 Wh with about 280 Wh spare before idle loss. StorageReview: 'The ECO mode can be toggled on either AC or DC outputs to reduce idle power usage.'"
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Active idle power / system standby power (maker spec)",
+   "value": "6 W / 2 W",
+   "source": "https://ankersolix.com/s2000",
+   "source_title": "Anker SOLIX S2000 (ankersolix.com)",
+   "read": "2026-11-13",
+   "note": "Maker's spec table: Active Idle Power 6W, System Standby Power 2W, 2010Wh, AC Output Power 1500W, 35.7 lb. Footnote: the 'Industry's Lowest' 6W claim is 'based on Anker internal testing' against selected 2 kWh stations as of May 19, 2026. No price shown on the page."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Measured idle draw, inverter on / off",
+   "value": "about 6 W on / 2 W off; 91% efficiency",
+   "source": "https://www.thesolarlab.com/review/anker-solix-s2000",
+   "source_title": "Anker SOLIX S2000 Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'consumed only about 6 watts'. 'If you turn the inverter off, that idle draw drops down to just 2 watts.' Efficiency 91% with the load unstated."
+  },
+  {
+   "product": "general",
+   "label": "Typical idle draw of 2 kWh power stations, per Anker",
+   "value": "15–20 W",
+   "source": "https://www.digitaltrends.com/cool-tech/anker-just-exposed-a-big-problem-with-portable-power-stations/",
+   "source_title": "Anker just exposed a big problem with portable power stations (Digital Trends)",
+   "read": "2026-11-13",
+   "note": "Shimul Sood, 2026-08-07: the S2000 'consumes about 6W while idle, compared with the 15W to 20W Anker says is typical for other 2 kWh power stations.' This is Anker's claim, not an independent measurement."
+  },
+  {
+   "product": "general",
+   "label": "Inverter hours to charge a 700 Wh e-bike twice",
+   "value": "about 11 h (Bosch 4A charger at 144 W)",
+   "source": "https://powerstationgearlab.com/best/best-power-station-for-e-bike/",
+   "source_title": "Best Power Station for E-Bike Charging (2026): 5 Picks and the Charges-per-Battery Math (PowerStationGearLab)",
+   "read": "2026-11-13",
+   "note": "The 144 W Bosch 4A charger figure is from this page. Arithmetic: 700 ÷ 0.88 ÷ 144 ≈ 5.5 h per charge, ≈ 11 h for two. Overhead at the idle figures above: DELTA 3 Max ≈ 297 Wh, Elite 200 V2 ≈ 105 Wh, S2000 ≈ 66 Wh. This assumes the no-load draw adds on top of the charger load, which is an approximation."
+  }
+ ],
+ "unsourced": [
+  "ECO-mode low-load threshold and timeout for the BLUETTI Elite 200 V2 and AC200L. The maker manual PDFs (s4.bluettipower.com Elite 200 V2 manual; cca63f10 AC200L manual) came back as compressed binary and couldn't be read, and the manuals.plus copies returned 403.",
+  "DELTA 3 Max default AC timeout. The DELTA 3 Max manual PDF (cdn.solarpowersupply.eu) couldn't be read as text. EcoFlow's US product page wasn't checked for an idle or timeout figure.",
+  "Maker-published idle or self-consumption figure for the Elite 200 V2. The bluettipower.com US product page states none, and the BLUETTI launch release on Yahoo Finance returned 404.",
+  "Bosch's own charge time for a PowerTube 750 on the 4A charger. The bosch-ebike.com page returned 404, the REI page 403, a dealer page 404 and Contender Bicycles 429, so I used arithmetic instead.",
+  "Idle draw for the BLUETTI AC200L, BLUETTI Elite 300 and Jackery Explorer 2000 v2 (not searched within the tool budget).",
+  "Measured inverter efficiency at a 100–200 W e-bike-charger-sized load for any candidate. The Solar Lab and StorageReview don't state the load they tested at."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2483102000000004
+ }
+}

@@ -1,0 +1,160 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Frigate 0.17 requires a CPU with AVX, or that Intel's spec pages list SSE4.2 as the only extension for the Celeron N5095 (QNAP TS-464, which ChatGPT recommended in 4 of its 6 answers), the N5105 (Asustor AS5402T) and the J4125 (Synology DS225+/DS425+), while the N100, N150 and Pentium Gold 8505 list AVX2.",
+ "standout": 3,
+ "standout_why": "I compared against these pages. docs.frigate.video/frigate/hardware says 'Intel CPU (with AVX + AVX2)', but it names no NAS and gives no timings for the J4125, N5095 or Pentium 8505. docs.frigate.video/frigate/installation covers QNAP's shm and GHCR limits and Synology's high-privilege setting, but says nothing about AVX. GitHub discussion #24381 has only an inkeep bot saying 'Celeron and Pentium models before Tiger Lake typically lack AVX', and it names no chip. localsmarthomeguide mentions Synology and QNAP only as targets for archived clips. ChatGPT gave a general AVX caveat in one answer (pl-096), yet recommended the N5095-based TS-464 in that same answer and in three others. No rival connects the AVX requirement to specific NAS models.",
+ "decides": "This drops the QNAP TS-464, the QNAP TS-264-8G (both N5095), the Asustor AS5402T (N5105) and the Synology DS225+/DS425+ (J4125) as hosts for Frigate 0.17. They can still store recordings over a network share. Our page's rows for the TS-464, AS5402T and DS225+ that say 'OpenVINO; Coral USB' need correcting. The pick stays with the AVX2 chips: UGREEN DXP4800 Plus (Pentium Gold 8505), DXP2800 (N100) and TerraMaster F4-425 Plus (N150). Our page should also say that the DS225+/DS425+ M.2 slots need SSDs from Synology's compatibility list for storage pools.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-425 Plus",
+  "QNAP TS-464",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Frigate 0.17 CPU requirement",
+   "value": "\"Frigate 0.17 requires a modern CPU with AVX (Advanced Vector Extensions) instructions.\" CPUs without AVX can crash at startup with an 'illegal instruction' error.",
+   "source": "https://github.com/blakeblackshear/frigate/discussions/21275",
+   "source_title": "Frigate 0.17 FAQ #21275 · blakeblackshear/frigate",
+   "read": "2026-11-13",
+   "note": "Posted by Frigate collaborator hawkeye217 on 2025-12-14, updated 2026-03-05. The FAQ says AVX and does not mention AVX2. It links the illegal-instruction error to CPUs without AVX and to VMs that hide AVX (fix: set CPU type to 'host')."
+  },
+  {
+   "product": "general",
+   "label": "Frigate hardware page CPU line",
+   "value": "\"Anything with an Intel CPU (with AVX + AVX2 instructions) and capable of running Debian should work fine.\"",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "This is the page ChatGPT cited. It names no NAS model."
+  },
+  {
+   "product": "general",
+   "label": "Coral M.2/PCIe host-driver requirement",
+   "value": "\"The PCIe and M.2 versions require installation of a driver on the host\" (gasket-builder). The USB Coral needs no host driver. Coral is \"no longer recommended for new Frigate installations\".",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "On a NAS whose locked OS does not allow host kernel drivers, the USB Coral or OpenVINO on the iGPU are the only detector routes that need no driver. Applying this to individual NAS operating systems is my inference: no NAS maker document was read."
+  },
+  {
+   "product": "general",
+   "label": "Hailo host driver",
+   "value": "On Debian Bookworm, \"the kernel includes an older version of the Hailo driver that is incompatible with Frigate\". The installation steps say to build the driver from Hailo's repository on the host.",
+   "source": "https://docs.frigate.video/frigate/installation/",
+   "source_title": "Installation | Frigate",
+   "read": "2026-11-13",
+   "note": "The page has no UGREEN, TerraMaster or TrueNAS section."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Container Station limits",
+   "value": "Container Station \"does not incorporate GitHub Container Registry (ghcr)\" and \"uses default 64 Mb shared memory size (shm-size), and does not have a mechanism to adjust it\", so \"the installation has to be done from command line\"",
+   "source": "https://docs.frigate.video/frigate/installation/",
+   "source_title": "Installation | Frigate",
+   "read": "2026-11-13",
+   "note": "The same page says Frigate needs about 210 MB of shm for 2 cameras detecting at 720p."
+  },
+  {
+   "product": "Synology DS925+ / DS225+ / DS425+",
+   "label": "Synology Docker setting (Frigate docs)",
+   "value": "\"Execute container using high privilege\" must be enabled; the settings were tested on DSM 7.1.1-42962 Update 4",
+   "source": "https://docs.frigate.video/frigate/installation/",
+   "source_title": "Installation | Frigate",
+   "read": "2026-11-13",
+   "note": "Frigate's docs have not been tested on DSM 7.2 or 7.3."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU, instruction sets",
+   "value": "Intel Celeron N5095 (Jasper Lake): Instruction Set Extensions = Intel SSE4.2 only, so no AVX and no AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5095 specifications",
+   "read": "2026-11-13",
+   "note": "CPU confirmed as N5095 on QNAP's TS-464 hardware specs page (https://www.qnap.com/en-us/product/ts-464/specs/hardware, read 2026-11-13). Fails Frigate 0.17's stated AVX requirement. The QNAP TS-264-8G is also listed with an N5095 in our catalog."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Expansion: M.2 and PCIe slots",
+   "value": "2× M.2 2280 PCIe Gen3 x1; 1× PCIe Gen3 x2 slot (card max 190 × 68.9 × 18.76 mm); RAM 8 GB, max 16 GB (2× 8 GB), QNAP modules only",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP",
+   "read": "2026-11-13",
+   "note": "The page does not state the M.2 key type or list Coral/Hailo cards as compatible."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "CPU, instruction sets",
+   "value": "Intel Celeron N5105 (Jasper Lake): Instruction Set Extensions = Intel SSE4.2 only, so no AVX and no AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 specifications",
+   "read": "2026-11-13",
+   "note": "CPU confirmed on Asustor's product page (https://www.asustor.com/en/product?p_id=81, read 2026-11-13): 'Quad-Core 10 nm Intel Celeron N5105', 4 GB DDR4-2933 expandable to 16 GB, four M.2 NVMe slots, 3-year warranty."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "CPU, instruction sets",
+   "value": "Intel Celeron J4125 (Gemini Lake Refresh, UHD Graphics 600): Instruction Set Extensions = Intel SSE4.2 only, so no AVX and no AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 specifications",
+   "read": "2026-11-13",
+   "note": "DS425+ CPU confirmed as J4125 on Synology's page. Intel's page contradicts a Frigate GitHub bot answer (discussion #22771, 2026-04-05) that said the J4125 'only supports AVX'; Intel lists SSE4.2 only."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Memory and M.2 limits",
+   "value": "2 GB DDR4 non-ECC, max 6 GB (2 GB + 4 GB); 2× M.2 2280 NVMe for cache, and for storage pools only with Synology-verified SSDs",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology",
+   "read": "2026-11-13",
+   "note": "Out of the box, 2 GB is below the 4 GB floor our current page cites for Frigate. Synology 'only guarantees full functionality, reliability, and performance for compatible drives.'"
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "CPU, instruction sets",
+   "value": "Intel Pentium Gold 8505 (Alder Lake): SSE4.1, SSE4.2, AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Pentium Gold Processor 8505 specifications",
+   "read": "2026-11-13",
+   "note": "Meets Frigate's AVX and AVX2 line. The 8505 model was taken from our listing and ChatGPT's cards; I did not re-open UGREEN's page (HTTP 429)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "CPU, instruction sets",
+   "value": "Intel Processor N100 (Alder Lake-N): SSE4.1, SSE4.2, AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 specifications",
+   "read": "2026-11-13",
+   "note": "Frigate's hardware page says the N100 runs MobileNetV2 in about 15 ms and 'can only run one detector instance'."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "CPU, instruction sets",
+   "value": "Intel Processor N150 (Twin Lake): SSE4.1, SSE4.2, AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel Processor N150 specifications",
+   "read": "2026-11-13",
+   "note": "Frigate's hardware page lists the N150 at about 15 ms for MobileNetV2 and 16 ms for YOLOv9 t-320."
+  }
+ ],
+ "unsourced": [
+  "AMD Ryzen V1500B (Synology DS925+) AVX/AVX2 support: AMD's V1000 and V1500B pages timed out twice, so the DS925+ row has no maker-sourced instruction-set value.",
+  "Exact CPU of the UGREEN DXP4800 (non-Plus, shown by ChatGPT at $499.99 as 'N100-class'): UGREEN's product page returned HTTP 429.",
+  "A Frigate maintainer statement on whether 0.17 needs AVX2 as well as AVX. The 0.17 FAQ says AVX only; the AVX + AVX2 wording comes from the hardware docs and an inkeep bot reply.",
+  "M.2 key type (M-key versus A+E) on the TS-464 and DXP4800 Plus slots, which decides whether an M.2 Coral or Hailo fits. QNAP's spec page does not state it, and I did not read UGREEN's spec page.",
+  "A UGREEN UGOS or TerraMaster TOS maker document on passing /dev/dri or loading kernel drivers (gasket/Hailo) in Docker. None was read within the tool budget.",
+  "Synology's own DSM 7.3 release note on third-party HDDs for 2025 Plus models. Only search snippets from news sites were seen, so the claim is not reported here."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0363497000000002
+ }
+}

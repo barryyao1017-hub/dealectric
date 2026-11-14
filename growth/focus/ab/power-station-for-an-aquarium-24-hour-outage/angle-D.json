@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 300 ships with AC-ECO turned on, that it shuts off its AC outlets after a period of low or no load, or that BLUETTI tells owners to disable it for critical appliances. The setting only becomes active once wall power is lost, so a station tested on the wall looks fine and can then cut the filter and air pump a few hours into the outage.",
+ "standout": 2,
+ "standout_why": "I compared reefs.com (Elite 100 V2 test, cited), planetfish.org, ouraquariumlife.com and our own dealectric.com page. Reefs.com says only that it used 'Standard UPS mode' and never mentions ECO or auto-off. Planetfish covers idle drain (AC180, 20 W, 480 Wh/day) and 10–20 ms switchover but not ECO. Ouraquariumlife covers only battery air pumps. Petco returned 403. Our page tells readers to turn ECO off but doesn't quote BLUETTI's manual. It doesn't say ECO is on by default, doesn't say it only becomes active once the grid drops, and doesn't give the AC180's adjustable 10–30 W, 1–4 h threshold. ChatGPT's own budget (23 W filter + 4 W air pump = 27 W) falls inside that range.",
+ "decides": "This confirms the Elite 300 pick but adds a condition: the plan fails unless ECO is turned off before the outage. Once the heater's thermostat stops calling for heat, the station's load is only the filter and air pump, about 27 W. That is a 'low load' under BLUETTI's own wording, and the AC180's adjustable AC threshold of 10–30 W covers it. The same applies to the filter-and-air-pump-only setup the page suggests for the AC180 and Elite 200 V2. The page should tell readers to switch it off with the AC button or in the app, as BLUETTI's manual says to for critical appliances. It's a setting, not a hardware limit, so the ranking doesn't change.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "EcoFlow DELTA 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "ECO mode default state and behaviour",
+   "value": "\"AC-ECO and DC-ECO modes are enabled by default.\" \"The Elite 300 shuts off the AC or DC output after a period of low or no load.\"",
+   "source": "https://www.manualslib.de/manual/1620676/Bluetti-Elite-300.html?page=16",
+   "source_title": "Bluetti Elite 300 User Manual V1.1, section 5.4 ECO Mode (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "This is a mirror of BLUETTI's bilingual EN/DE manual V1.1. The German text on p. 41 says the same thing. BLUETTI's own PDF (s4.bluettipower.com, Elite 300 User Manual US EN-FR) is over 10 MB and the fetch tool couldn't open it. This section gives no wattage threshold or time limit."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Maker's instruction for critical loads",
+   "value": "\"Disable the ECO mode when connecting small devices or critical appliances such as lights and refrigerators.\" \"Press the AC power button to turn on/off AC-ECO and DC-ECO modes together.\" Use the BLUETTI app to set them separately.",
+   "source": "https://www.manualslib.de/manual/1620676/Bluetti-Elite-300.html?page=16",
+   "source_title": "Bluetti Elite 300 User Manual V1.1, section 5.4 ECO Mode (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "An aquarium filter and air pump are critical, low-draw loads of the kind this instruction describes."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "When ECO becomes active",
+   "value": "\"AC-ECO mode is not available when charging with AC power.\"",
+   "source": "https://www.manualslib.de/manual/1620676/Bluetti-Elite-300.html?page=16",
+   "source_title": "Bluetti Elite 300 User Manual V1.1, section 5.4 ECO Mode (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "My reading of the manual: on wall power in UPS mode, ECO can't trip. When the grid fails, the station runs on battery and ECO becomes active. A trial run with the station plugged in won't show the cut-off."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS behaviour in the manual",
+   "value": "\"It swiftly switches to battery power during an outage.\" UPS mode (\"Standard\") is set in the app. The manual gives no switchover time in ms.",
+   "source": "https://www.manualslib.de/manual/1620676/Bluetti-Elite-300.html?page=17",
+   "source_title": "Bluetti Elite 300 User Manual V1.1, section 7 UPS Feature (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "p. 20 of the same manual: \"If the battery depletes, the unit will shut down but retain the AC output status as ON.\""
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO threshold settings",
+   "value": "AC output threshold adjustable 10–30 W, DC 5–10 W, for 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.de/manual/1012764/Bluetti-Ac180.html?page=17",
+   "source_title": "Bluetti AC180 User Manual, 5. Appendix FAQ Q4 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Exact wording: \"You can set the power threshold of AC output and DC output to 10-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.\" A 23 W filter plus a 4 W air pump is 27 W, which is inside that range, so with the heater idle or unplugged, ECO would shut the AC outlets after 1–4 h. This page doesn't give the factory-default threshold."
+  }
+ ],
+ "unsourced": [
+  "The Elite 300's factory-default ECO threshold (W) and delay (h). Its manual section says only 'a period of low or no load', and BLUETTI's US PDF was too large to fetch.",
+  "The Elite 200 V2's ECO wording and threshold. BLUETTI-hosted manual PDFs (s4.bluettipower.com 2025/05 V2.0 and app manual) downloaded as compressed binary that couldn't be read, manuals.plus returned 403, and running pdftotext on the saved file wasn't approved.",
+  "The EcoFlow DELTA 2 Max's AC auto-off default and no-load threshold. The EcoFlow manual PDF and the webstaurantstore spec PDF were both over 10 MB and couldn't be fetched.",
+  "A BLUETTI forum report that an Elite 100 V2 cut a 15 W load after 4 h on ECO. The community.bluettipower.com thread 40466 redirects to forum.bluettipower.com, which showed 'Network unavailable'.",
+  "The ALLPOWERS R4000's AC auto-off or eco behaviour at low load. I didn't search for it within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1114205
+ }
+}

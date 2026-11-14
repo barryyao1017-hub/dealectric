@@ -1,0 +1,149 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2 only reaches its advertised 600 W solar input above 29 V. Between 11 and 28 V it is capped at 8.2 A, so one typical 200 W folding panel (Vmp 20.52 V) gives at most about 168 W, and a 12 V car socket gives roughly 100–118 W. The BLUETTI Elite 200 V2 accepts 20 A across its whole 12–60 V window, so the same panel runs at its full 200 W.",
+ "standout": 2,
+ "standout_why": "I compared three cited rivals. powersized.com/best/rv/ gives no solar voltage range for most picks and says Anker's 800 W alternator figure names no system voltage. It never mentions current caps that change with voltage. On cycle life it says only that none of its ratings give a capacity endpoint, and it gives none itself. ecosolarkits.com/blogs/guides/best-rv-solar-kits normalises car input (BLUETTI 96 W from a 12 V socket, EcoFlow 12 V × 8 A). It warns that Anker's 120 W car-outlet rating is not a charging speed, and it lists the Elite 200 V2 window as 12–60 V/20 A. It has no Anker input bands and no cycle-life figures. solargenadvisor.com failed to load (TLS certificate error) twice, so I could not check it. ChatGPT's own answer lists the C1000 Gen 2 with '600W maximum solar input' and no voltage condition.",
+ "decides": "This confirms the BLUETTI Elite 200 V2 + 200 W kit (in stock today, $1,199 at BLUETTI US) over an Anker C1000 Gen 2 built around a single 200 W panel or car-socket charging. BLUETTI's 20 A limit at any voltage from 12 to 60 V keeps all 200 W from one panel. Anker's 8.2 A limit below 28 V cuts about 16% of that panel's rated power. Two 200 W panels in series (41 V) avoid the cap on the Anker, so the cap matters only for one-panel or 12 V setups, which is the usual van-life kit. On cycle life, both makers rate to the same endpoint (80% capacity): 6,000 cycles for the Elite 200 V2 against 4,000 for the C1000 Gen 2. That adds to BLUETTI's lead rather than changing the pick. The output figures are not like-for-like: BLUETTI's '3,900W Power Lifting' runs resistive loads only, while Anker's '3,000W peak' is a surge rating. Neither belongs in a surge column.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 200 W",
+  "BLUETTI AC180 + 200 W",
+  "ALLPOWERS P1800 + SF200",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 30 V2 + 100 W"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar/XT60 input, by voltage band",
+   "value": "11–28 V at 8.2 A max; 29–60 V at 14.5 A max; 600 W max total",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Maker's US store page (footer reads United States / English). It quotes the MPPT lines as '11-28v⎓8.2A' and '29V-60V⎓14.5A (600W Max)'. The 600 W figure applies only in the upper band: 8.2 A × 28 V = 229.6 W is the most the lower band can deliver."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Most one 200 W folding panel can deliver (normalised)",
+   "value": "About 168 W (vs 200 W panel rating)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "My arithmetic. BLUETTI SP200L Vmp 20.52 V (see the SP200L row) falls in Anker's 11–28 V band, so current is capped at 8.2 A: 20.52 V × 8.2 A = 168.3 W, against 20.52 × 9.75 = 200.1 W at the panel's Imp, about 16% lost. This is a ceiling at STC; real output is lower. Two SP200L panels in series give Vmp 41.04 V and Voc 49.24 V, inside the 29–60 V band at 14.5 A, so there is no cap there."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "12 V car-socket charging ceiling (normalised)",
+   "value": "About 98–118 W (8.2 A at 12–14.4 V)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Anker publishes no car-input wattage; the page labels only an 'XT60i Input Port'. This range is my inference: car input goes through the same XT60 input, so the 11–28 V band limit of 8.2 A applies, and 8.2 × 12 = 98.4 W, 8.2 × 14.4 = 118 W with the engine running. Do not confuse this with the '12V⎓10A, 120W' car output on the same page."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle life (to stated endpoint)",
+   "value": "4,000 cycles to at least 80% capacity",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Quote: 'After 4,000 cycles, the battery still has at least 80% capacity.'"
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC output: rated vs peak",
+   "value": "2,000 W rated; 3,000 W peak",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "The peak is a surge figure, so it is not comparable to BLUETTI's resistive-only 'Power Lifting' number. The page showed no base price, and the + 400 W Solar Panel bundle 'begins shipping in early December'."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input window",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-14",
+   "note": "From the page FAQ: '12V-60V/20A, 1,000W max'. A single current limit covers the whole window, so one SP200L (9.75 A Imp) runs at its full 200 W, and two in parallel (19.5 A) also fit."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC output: continuous vs Power Lifting",
+   "value": "2,600 W continuous; 3,900 W Power Lifting (pure resistive loads only)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-14",
+   "note": "Quote: 'kick into 3900W Power Lifting mode for pure resistive loads'. This is not a surge rating. The page states no motor surge figure."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cycle life (to stated endpoint)",
+   "value": "Over 6,000 cycles to 80% capacity",
+   "source": "https://bluettipower.com/blogs/news/bluetti-elite-200-v2-portable-power-station-compact-power-for-rvs-camping-and-road-trips",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station: Compact Power for RVs, Camping, and Road Trips",
+   "read": "2026-11-14",
+   "note": "BLUETTI US blog, bylined 2026-10-15: 'With over 6000 charge cycles (to 80% capacity)'. The product page does not state cycle life. This uses the same 80% endpoint as Anker's 4,000, so the two numbers compare directly."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200 W",
+   "label": "Price and stock, BLUETTI US",
+   "value": "$1,199.00, available",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+200W Solar",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search of the Shopify store. On the same read: Elite 200 V2 alone $899.00, + 2×200 W $1,499.00, + Charger 1 $1,099.00, + Charger 2 $1,299.00, all available."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, BLUETTI US",
+   "value": "$499.00 (compare-at $1,232.00), available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search. This contradicts our page's 'AC180 back late Nov (2026-11-04)', so the stock cell needs refreshing. The listing text reads '1,800W AC Output / 2,700W Power Lifting Mode'. AC180 + BLUETTI Charger 1 is $748.00 and available."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Output wording and cycle life",
+   "value": "1,800 W output (2,700 W Lifting Power); over 4,000 cycles (no endpoint stated)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-350w-solar",
+   "source_title": "Elite 100 V2+350W Solar",
+   "read": "2026-11-14",
+   "note": "Listing text from storecheck.py. No capacity endpoint is given for the cycle count, so it cannot be compared with the 80%-endpoint figures above. Kit price $1,099.00, available."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100 W",
+   "label": "Price, stock, cycle life",
+   "value": "$489.99, available; over 3,000 cycles (no endpoint stated); 600 W rated, 1,500 W Lifting",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar",
+   "read": "2026-11-14",
+   "note": "Listing text from storecheck.py."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Electrical specs (STC)",
+   "value": "Vmp 20.52 V, Imp 9.75 A, Voc 24.62 V, Isc 10.24 A",
+   "source": "https://manualsfile.com/product/k20efhkhkk1.html",
+   "source_title": "BLUETTI SP200L Solar Panel | 200W (user guide, Technical details)",
+   "read": "2026-11-14",
+   "note": "Reproduces BLUETTI's own user-guide table. The maker's US panel page returned HTTP 429. This is the panel BLUETTI bundles as '+200W Solar'. Price at BLUETTI US: $399.00, available (storecheck)."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus solar input bands, car input, cycle life and price: us.ecoflow.com returned HTTP 429. I did not take figures from search snippets.",
+  "ALLPOWERS P1800 US specs, including solar voltage window, car-input current and cycle-life endpoint: the allpowers.com store search returned non-JSON. The only spec source found was the EU store, seen in a search snippet and not opened. It gave 3,500+ and 4,000 cycles in conflict, with no endpoint.",
+  "BLUETTI AC180 solar window, car input and cycle-life endpoint: the product page returned HTTP 429. I have only the storecheck listing text (output, Power Lifting, price).",
+  "Anker SOLIX C1000 Gen 2 US price: the ankersolix.com US page showed only volume-discount text, not a base price.",
+  "Anker 400 W panel Vmp, to check that the C1000 Gen 2 + 400 W bundle sits in the 29–60 V band: not opened.",
+  "BLUETTI Elite 200 V2 car-socket input watts: not on the US product page. The 96 W figure on our page and on ecosolarkits comes from the manual, which I did not reopen.",
+  "solargenadvisor.com (a cited rival): WebFetch failed with a self-signed certificate error twice, so I could not compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1328542999999998
+ }
+}

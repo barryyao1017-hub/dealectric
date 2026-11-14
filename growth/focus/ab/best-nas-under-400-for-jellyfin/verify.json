@@ -1,0 +1,185 @@
+{
+ "draft": {
+  "status": "ok",
+  "reason": "",
+  "angle": "D",
+  "why_angle": "The cited Jellyfin Intel doc says Jasper Lake can only encode in Low-Power mode with HuC firmware, but it never names a NAS. Starry Hope, ubnas and ComputingForGeeks never say that the stock Linux i915 driver switches HuC off on pre-Gen12 chips like the N5095 (enable_guc=0) and on for 12th-gen-or-newer N-series chips like the N100, or that the fix is a NAS-side kernel option a Jellyfin container cannot set. This page connects that to the N5095 TerraMasters ChatGPT kept offering as the budget alternative.",
+  "slug": "best-nas-under-400-for-jellyfin",
+  "must": [
+   "the UGREEN DXP2800 at $389.99",
+   "stock Linux leaves HuC off (enable_guc=0)"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS under $400 for a Jellyfin server with hardware transcoding (2026)",
+   "h1": "Best NAS under $400 for Jellyfin with hardware transcoding (2026)",
+   "desc": "Under $400, the UGREEN DXP2800 ($389.99) is the NAS whose Intel N100 runs Jellyfin hardware transcoding with no setup on the NAS itself. The N5095 in budget TerraMasters starts with HuC firmware off.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS under $400 for a Jellyfin server with hardware transcoding is the UGREEN DXP2800 at $389.99. Linux turns on its Intel N100's HuC firmware by default, so Quick Sync needs no host setup. On the N5095 in budget TerraMasters, stock Linux leaves HuC off (enable_guc=0).</p>",
+   "columns": [
+    [
+     "cpu",
+     "CPU (Intel code name)"
+    ],
+    [
+     "encode",
+     "Jellyfin hardware encode mode"
+    ],
+    [
+     "host",
+     "Setup on the NAS itself before Jellyfin can encode"
+    ],
+    [
+     "ram",
+     "RAM shipped (max)"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "cpu": "Intel N100, Alder Lake-N (Intel ARK)",
+      "encode": "Both encode modes on by default (Jellyfin docs: Gen 12 ADL+)",
+      "host": "None: Linux i915 loads HuC by default on Alder Lake-N; UGREEN documents Quick Sync on /dev/dri/renderD128",
+      "ram": "8 GB DDR5 (16 GB max, Starry Hope)"
+     }
+    },
+    {
+     "brand": "TerraMaster",
+     "model": "F2-424",
+     "url": "https://www.terra-master.com/products/f2-424",
+     "cells": {
+      "cpu": "Intel N95, Alder Lake-N (Intel ARK)",
+      "encode": "Both encode modes on by default (Jellyfin docs: Gen 12 ADL+)",
+      "host": "None on a stock kernel: Linux i915 loads HuC by default on Alder Lake-N",
+      "ram": "8 GB DDR5 (32 GB max, TerraMaster)",
+      "price": "$379.99 (maker, 2026-11-13), sold out"
+     }
+    },
+    {
+     "brand": "TerraMaster",
+     "model": "F2-425",
+     "url": "https://www.terra-master.com/products/f2-425",
+     "cells": {
+      "cpu": "Celeron N5095, Jasper Lake (Intel ARK; CPU per ComputingForGeeks)",
+      "encode": "Low-Power mode only (Jellyfin docs: Gen 11 JSL)",
+      "host": "HuC off by default (Linux i915 sets enable_guc=0 before Gen12); Jellyfin's fix is a kernel option on the NAS itself, not in the container",
+      "ram": "4 GB (TerraMaster)",
+      "price": "$269.99 (maker, 2026-11-13)"
+     }
+    },
+    {
+     "slug": "synology-ds225-plus",
+     "model": "Synology DS225+",
+     "cells": {
+      "cpu": "Intel Celeron J4125, 2019 (Starry Hope)",
+      "encode": "None on stock DSM (Starry Hope)",
+      "host": "Only with a community script (Starry Hope)",
+      "ram": "2 GB DDR4 (6 GB max, Starry Hope)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>DXP2800 budget headroom:</strong> $400 − $389.99 = $10.01 left at UGREEN's store.</li><li><strong>F2-425 saving:</strong> $389.99 − $269.99 = $120.00 cheaper, but 4 GB ÷ 8 GB = half the RAM Jellyfin's hardware guide recommends for an average server.</li><li><strong>F2-424:</strong> $400 − $379.99 = $20.01 under budget, but TerraMaster's store showed it sold out on 2026-11-13.</li><li><strong>F2-425 Plus:</strong> $469.99 − $400 = $69.99 over budget at TerraMaster's store today. Starry Hope lists it with an Intel N150.</li></ul><table><thead><tr><th>Your use</th><th>Fits</th></tr></thead><tbody><tr><td>Jellyfin in Docker with Quick Sync, 2 bays, buy today under $400</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>You want a TerraMaster with a 12th-gen-or-newer N-series chip</td><td>F2-424 (N95) when it is back in stock</td></tr><tr><td>Mostly direct play, lowest price</td><td>F2-425, accepting Low-Power-only encoding and 4 GB</td></tr><tr><td>AV1 files in the library</td><td>N100 or N95: Jellyfin lists AV1 decode from Gen 12 Tiger Lake on, and Jasper Lake has none</td></tr></tbody></table><h2>Why the N100 encodes out of the box and the N5095 may not</h2><p>Jellyfin's Intel guide says Gen 11 Jasper Lake graphics (the Celeron N5095) &quot;only support LP encoding mode.&quot; It says Low-Power encoding relies on the HuC firmware, and that the HuC setup &quot;is not necessary unless you are using an Intel Jasper Lake or Elkhart Lake processor.&quot; The same guide says &quot;Linux supports two modes only on Gen 12 ADL+ by default.&quot; The N100 and N95 are Alder Lake-N, per Intel.</p><p>The Linux i915 graphics driver explains the difference. In its default-options code, the comment &quot;Don't enable GuC/HuC on pre-Gen12&quot; is followed by <code>enable_guc = 0</code>. Gen12 parts other than Tiger Lake, Rocket Lake and Alder Lake-S get the default &quot;enable HuC authentication and GuC submission.&quot; Jellyfin's fix for Jasper Lake is an <code>i915 enable_guc=2</code> kernel option followed by a reboot. That change is made on the NAS operating system itself, not in the Jellyfin container. On the DXP2800 there is nothing to change: UGREEN's Jellyfin guide maps <code>/dev/dri/renderD128</code> and selects Intel QuickSync (QSV) on its Intel DXP models. To confirm it works, check that the FFmpeg log shows <code>qsv</code>.</p><p>There are two cautions. First, TerraMaster rates the N5095 for 4K60 H.264 and H.265 transcoding, as ComputingForGeeks reports. Notebookcheck's Enrico Frahn found that the N5095 in a TerraMaster F4-423 &quot;did not have any issues with the hardware transcoding&quot; in Plex. That was Plex, not Jellyfin, so an N5095 box you already own is worth testing before you replace it. Second, Jellyfin warns that Jasper Lake and older chips &quot;are losing support for QSV on Linux&quot; and will need VA-API. Its hardware guide also advises avoiding Intel J/M/N/Y series low-power CPUs up to 11th gen in a Jellyfin server.</p><h2>Not recommended</h2><p><strong>UGREEN DXP2800 GT.</strong> It shares the name but uses an AMD Ryzen Embedded R2514 (Starry Hope). UGREEN's Jellyfin guide says the GT models &quot;have no Intel Quick Sync path&quot; and need VA-API instead, so Quick Sync setup steps won't apply. <strong>Synology DS225+.</strong> Starry Hope reports that hardware transcoding does not work on stock DSM, and its J4125 is in the low-power class Jellyfin advises against. <strong>UGREEN DH2300.</strong> UGREEN says it &quot;cannot host Jellyfin because it lacks Docker support.&quot;</p>",
+   "sources": [
+    [
+     "UGREEN DXP2800 price $389.99, in stock (read 2026-11-13)",
+     "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+    ],
+    [
+     "TerraMaster F2-425 price $269.99, 4 GB RAM, maker's Jellyfin claim (read 2026-11-13)",
+     "https://www.terra-master.com/products/f2-425"
+    ],
+    [
+     "TerraMaster F2-424: Intel N95, 8 GB DDR5 up to 32 GB, $379.99, sold out (read 2026-11-13)",
+     "https://www.terra-master.com/products/f2-424"
+    ],
+    [
+     "TerraMaster F2-425 Plus price $469.99 (read 2026-11-13)",
+     "https://www.terra-master.com/products/f2-425-plus"
+    ],
+    [
+     "Linux i915 defaults: enable_guc=0 before Gen12; HuC plus GuC submission on by default for other Gen12 parts (read 2026-11-13)",
+     "https://raw.githubusercontent.com/torvalds/linux/v6.1/drivers/gpu/drm/i915/gt/uc/intel_uc.c"
+    ],
+    [
+     "Jellyfin Intel guide: Jasper Lake encodes in Low-Power mode only and needs HuC; both modes on Gen 12 ADL+ by default; QSV on Jasper Lake being phased out; AV1 decode from Tiger Lake (read 2026-11-13)",
+     "https://raw.githubusercontent.com/jellyfin/jellyfin.org/master/docs/general/post-install/transcoding/hardware-acceleration/intel.md"
+    ],
+    [
+     "Jellyfin hardware guide: recommends the N100, advises avoiding J/M/N/Y series up to 11th gen, recommends 8 GB RAM (read 2026-11-13)",
+     "https://jellyfin.org/docs/general/administration/hardware-selection/"
+    ],
+    [
+     "Intel Celeron N5095: Jasper Lake, graphics device 0x4E55 (read 2026-11-13)",
+     "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html"
+    ],
+    [
+     "Intel N95: Alder Lake-N, graphics device 0x46D2 (read 2026-11-13)",
+     "https://www.intel.com/content/www/us/en/products/sku/231800/intel-processor-n95-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "Intel N100: Alder Lake-N, graphics device 0x46D1 (angle research, read 2026-11-13)",
+     "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "UGREEN Jellyfin guide: QSV on Intel DXP models via /dev/dri/renderD128; DXP2800 GT has no Quick Sync path; DH2300 cannot host Jellyfin (read 2026-11-13)",
+     "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step"
+    ],
+    [
+     "Starry Hope: DXP2800 8 GB (16 GB max); F2-425 Plus N150; DXP2800 GT Ryzen R2514; DS225+ J4125, 2 GB, no hardware transcoding on stock DSM (read 2026-11-13)",
+     "https://www.starryhope.com/nas/best-2-bay-nas/"
+    ],
+    [
+     "ComputingForGeeks: F2-425 uses the Celeron N5095 (Jasper Lake), rated by TerraMaster for 4K60 transcoding (read 2026-11-13)",
+     "https://computingforgeeks.com/best-2-bay-nas/"
+    ],
+    [
+     "Notebookcheck (Enrico Frahn): Plex hardware transcoding on a TerraMaster F4-423 with N5095 (read 2026-11-13)",
+     "https://www.notebookcheck.net/TerraMaster-F4-423-hands-on-Quick-4-bay-NAS-with-an-attractive-price-performance-ratio.633892.0.html"
+    ]
+   ]
+  }
+ },
+ "checked": 46,
+ "changed": [
+  {
+   "where": "rows[UGREEN NASync DXP2800].cells.host",
+   "was": "None: Linux i915 loads HuC by default on Gen12; UGREEN documents Quick Sync on /dev/dri/renderD128",
+   "now": "None: Linux i915 loads HuC by default on Alder Lake-N; UGREEN documents Quick Sync on /dev/dri/renderD128",
+   "why": "In i915 v6.1 uc_expand_default_options, the Gen12 chips Tiger Lake and Rocket Lake also get enable_guc = 0, so 'on Gen12' is too broad. Alder Lake-N falls through to the default, which turns on HuC authentication and GuC submission (read 2026-11-13)."
+  },
+  {
+   "where": "rows[TerraMaster F2-424].cells.host",
+   "was": "None on a stock kernel: Linux i915 loads HuC by default on Gen12",
+   "now": "None on a stock kernel: Linux i915 loads HuC by default on Alder Lake-N",
+   "why": "Same as above: the i915 source turns HuC off by default on Gen12 Tiger Lake and Rocket Lake."
+  },
+  {
+   "where": "after, cautions paragraph",
+   "was": "the N5095 in a TerraMaster F4-423 under TOS 5.0 &quot;did not have any issues with the hardware transcoding&quot;",
+   "now": "the N5095 in a TerraMaster F4-423 &quot;did not have any issues with the hardware transcoding&quot;",
+   "why": "The Notebookcheck article says the unit first ran TOS 4.2 and was later updated to TOS 5.0. It does not say which version the Plex transcoding test ran on, and it says Plex refused to install after the OS update (read 2026-11-13)."
+  },
+  {
+   "where": "sources[Notebookcheck] label",
+   "was": "Notebookcheck (Enrico Frahn): Plex hardware transcoding on a TerraMaster F4-423 with N5095 under TOS 5.0 (read 2026-11-13)",
+   "now": "Notebookcheck (Enrico Frahn): Plex hardware transcoding on a TerraMaster F4-423 with N5095 (read 2026-11-13)",
+   "why": "The page does not support 'under TOS 5.0', so the label now matches the corrected text."
+  }
+ ],
+ "removed": [],
+ "log": [
+  "not re-read: UGREEN DXP2800 $389.99 and in stock, from nas.ugreen.com. storecheck and WebFetch on the product page and its .json both returned HTTP 429 three times. The price was kept as the research agents recorded it today. Starry Hope (read 2026-11-13) also lists it at $389.99. Dealectric's own records set the price for this slug row.",
+  "not re-read: TerraMaster F2-425 $269.99, 4 GB RAM and the maker's Jellyfin claim, from terra-master.com. storecheck, WebFetch and .json returned HTTP 429, and web.archive.org can't be fetched. All were kept. ComputingForGeeks (read 2026-11-13) separately supports 4 GB RAM (16 GB max) and the Celeron N5095.",
+  "not re-read: TerraMaster F2-424 $379.99, sold out, 8 GB DDR5 up to 32 GB, from terra-master.com. HTTP 429, and the archive can't be fetched. Kept as recorded. Intel N95 is Alder Lake-N, confirmed on Intel ARK.",
+  "not re-read: TerraMaster F2-425 Plus $469.99, from terra-master.com. HTTP 429. Kept as recorded. Starry Hope (read 2026-11-13) gives $499.99 on TerraMaster's US store and $399.99 at launch, but that is a reviewer's figure and the rules give the maker's store priority. Editors should re-check this price before publishing because the two sources disagree.",
+  "note: ComputingForGeeks says the F2-425 product page title says N95 while its spec table says N5095. The draft follows the spec table (N5095). Because the maker page returned 429, I could not see which one TerraMaster shows today.",
+  "Confirmed against pages read 2026-11-13: i915 v6.1 default options (pre-Gen12 enable_guc = 0, TGL/RKL off, ADL-S HuC only, default HuC plus GuC submission). Jellyfin Intel guide: JSL LP-only, HuC for LP, two modes on Gen 12 ADL+, setup not needed except JSL/EHL, enable_guc=2 on the host then reboot, ICL/JSL/EHL and older losing QSV and needing VA-API, AV1 decode from Gen 12 Tiger Lake, JSL has no AV1. Jellyfin hardware guide: N100 recommended, avoid J/M/N/Y up to 11th gen, 8 GB for the average deployment. Intel ARK: N5095 Jasper Lake 0x4E55, N95 ADL-N 0x46D2, N100 ADL-N 0x46D1. UGREEN guide: QSV with /dev/dri/renderD128, FFmpeg log shows qsv, GT models 'have no Intel Quick Sync path' (AMD VA-API), DH2300 quote. Starry Hope: DXP2800 8 GB DDR5 with 16 GB max, GT R2514, F2-425 Plus N150, DS225+ J4125 'from 2019', 2 GB to 6 GB, no hardware transcoding on stock DSM, community script. ComputingForGeeks: TerraMaster rates N5095 for 4K60 H.264/H.265. Notebookcheck: Enrico Frahn, N5095, Plex. Arithmetic checked: 10.01, 120.00, 20.01, 69.99."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.566132
+ }
+}

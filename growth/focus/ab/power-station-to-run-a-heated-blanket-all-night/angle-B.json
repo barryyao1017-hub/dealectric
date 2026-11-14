@@ -1,0 +1,155 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out, for a single blanket at the US DOE's typical 60 W, the hours each 1 kWh station runs once its own AC draw is included, or the cost per usable Wh: the BLUETTI AC180 gives 13.1 h at $0.51 per usable Wh and the BLUETTI Elite 100 V2 gives 12.4 h at $0.57 per usable Wh, both at $499.",
+ "standout": 1,
+ "standout_why": "I compared runtimemath.com, blackoutwise.com, wattfort.com, testedwatts.com and our own page. runtimemath adds the station's own draw only for BLUETTI models, and only at 100 W and 200 W. Blackoutwise uses 75 W with no own-draw term. WattFort recommends no stations and has no prices. TestedWatts adds a flat 10 W and gives no prices. None gives cost per usable Wh or runtimes at the 60 W single-blanket figure with each station's own draw included. Part of this (own draw added to the load) is already on runtimemath, so 1, not 2.",
+ "decides": "This confirms the AC180 over the Elite 100 V2. They cost the same $499 on bluettipower.com today, and the AC180 runs about 0.7 h longer on a 60 W blanket with a lower cost per usable Wh. Both cover a 10 h night at 60 W, but neither covers 10 h at 100 W (8.5 h and 7.9 h). The Elite 30 V2 runs only about 3.5 h on a 60 W 120 V blanket, so it belongs only with low-draw 12 V blankets. The AC180 is now listed as available, which corrects our page's 'back late Nov' stock note.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 30 V2",
+  "Jackery Explorer 1000 v2",
+  "Anker SOLIX C1000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Typical blanket draw (single / double)",
+   "value": "60 W single, 100 W double",
+   "source": "https://testedwatts.com/2026/09/24/power-station-electric-blanket/",
+   "source_title": "Can a Power Station Run an Electric Blanket? - Tested Watts",
+   "read": "2026-11-14",
+   "note": "TestedWatts attributes these to the U.S. DOE. They are rated (label) figures, so a blanket cycling on its thermostat uses less."
+  },
+  {
+   "product": "general",
+   "label": "Metered 120 V blanket draw (Cockeyed database, via WattFort)",
+   "value": "about 115 W low, 135 W medium, 170 W high",
+   "source": "https://wattfort.com/guides/power-station-electric-blanket/",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? | WattFort",
+   "read": "2026-11-14",
+   "note": "WattFort does not give the blanket's size or model. These are worst-case inputs for an older mains blanket."
+  },
+  {
+   "product": "general",
+   "label": "Planning factor for usable AC energy",
+   "value": "0.85 × rated Wh",
+   "source": "https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? 18 Models",
+   "read": "2026-11-14",
+   "note": "runtimemath, WattFort, TestedWatts and BlackoutWise all use the same 0.85 factor. I use it here so my figures can be checked against theirs."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, maker US store",
+   "value": "$499.00, available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py. The list price shown is $1,232. 1,152 Wh, 1,800 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Own draw with AC on",
+   "value": "15 W",
+   "source": "https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? 18 Models",
+   "read": "2026-11-14",
+   "note": "runtimemath gives this as BLUETTI's listed figure. BLUETTI's own page returned HTTP 429, so I could not read it there."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Hours on a 60 W single blanket, own draw included",
+   "value": "13.1 h",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "1,152 × 0.85 = 979 Wh; 979 ÷ (60 + 15) = 13.1 h. At 100 W: 979 ÷ 115 = 8.5 h, so it does not cover 10 h."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Cost per usable Wh",
+   "value": "$0.51",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "$499 ÷ 979 usable Wh = $0.51/Wh"
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, stock and weight, maker US store",
+   "value": "$499.00, available, 25 lb, 1,024 Wh",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py. The product text says 'Only 25lbs'."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Own draw with AC on",
+   "value": "10 W",
+   "source": "https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? 18 Models",
+   "read": "2026-11-14",
+   "note": "runtimemath gives this as BLUETTI's listed figure."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Hours on a 60 W single blanket, own draw included",
+   "value": "12.4 h",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-14",
+   "note": "1,024 × 0.85 = 870 Wh; 870 ÷ (60 + 10) = 12.4 h. At 100 W: 870 ÷ 110 = 7.9 h."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Cost per usable Wh and Wh per lb",
+   "value": "$0.57 per usable Wh; 41 Wh/lb",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-14",
+   "note": "$499 ÷ 870 = $0.57; 1,024 ÷ 25 = 41 Wh/lb"
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, capacity, standby draw, weight",
+   "value": "$289.99; 288 Wh; 4.5 W standby; 4.3 kg (9.5 lb)",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-14",
+   "note": "The page says the Deep Gray unit 'ships from early December'. It gives 4.5 W as standby, not as the draw with AC on."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Hours on a 60 W 120 V blanket, own draw included",
+   "value": "3.5 h",
+   "source": "https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? 18 Models",
+   "read": "2026-11-14",
+   "note": "288 × 0.85 = 245 Wh; 245 ÷ (60 + 9 W AC-on draw that runtimemath attributes to BLUETTI) = 3.5 h. Cost per usable Wh: $289.99 ÷ 245 = $1.18."
+  },
+  {
+   "product": "general",
+   "label": "Anker's lower idle-draw figure (C2000 Gen 2, for comparison)",
+   "value": "9 W idle",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "This figure is for the C2000 Gen 2, not the C1000 Gen 2, and the page gives no test conditions for it."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2: no maker or named-reviewer figure for its own draw with AC on. Searched reviews (TheSolarLab, OutdoorGearLab, TechRadar) and none gave one; jackery.com returned HTTP 429, so I also have no price or weight from it today.",
+  "Anker SOLIX C1000 Gen 2: no figure for its own idle draw. Anker's C2000 Gen 2 page gives 9 W, but that is a different model. us.ankersolix.com returned HTTP 429 for price.",
+  "BLUETTI AC180 weight and the self-consumption formula on BLUETTI's own page: bluettipower.com/products/ac180 returned HTTP 429 three times. The 15 W own-draw figure comes from runtimemath's citation of BLUETTI.",
+  "The metered figures for a 120 V blanket on low (15–20 W per controller, Reduction Revolution) could not be checked: the page returned HTTP 429. I found no metered overnight Wh total for any US 120 V blanket, so no sourced average draw at the thermostat's real on/off ratio.",
+  "EcoFlow DELTA 3 Plus: did not look up its own idle draw, price or weight within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2240439000000003
+ }
+}

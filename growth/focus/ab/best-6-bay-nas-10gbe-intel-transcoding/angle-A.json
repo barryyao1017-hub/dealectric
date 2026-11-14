@@ -1,0 +1,103 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the QNAP TVS-h674's 'faster' desktop CPU (i5-12400 / i3-12100) has a 24-EU UHD 730 iGPU, against 80 EU on the i5-1235U (UGREEN DXP6800 Pro, TerraMaster F6-424 Max), 64 EU on the i3-1315U (TerraMaster F6-425 Pro) and 80 EU on the Core 5 120U (DXP6800 Ultra). The footnote: Intel's 'Iris Xe' name for the 80-EU part applies only with dual-channel memory, and Notebookcheck found the DXP6800 Pro ships with a single 8 GB module.",
+ "standout": 2,
+ "standout_why": "Compared against Starry Hope's 'Best NAS for Plex in 2026 With Quick Sync' (cited in one chat): it names no iGPU, gives no EU counts and says nothing about memory channels. It only calls each Intel box 'Quick Sync' and 'Yes, with HDR tone mapping'. Notebookcheck's DXP6800 Pro review (cited twice) says the unit ships with 'an 8 GB DDR5 module' but never names the iGPU or the channel mode, and runs no transcode test. QNAP's TVS-h674 hardware-spec page (cited in every chat) says 'Intel UHD Graphics 730' but gives no EU count. ChatGPT's own answers rate the QNAP 'Excellent' for Plex, and one says its faster desktop CPU 'does not automatically make it a better Plex transcoder', without the reason. Our current page gives '80 EU' only for the Ultra. Raidsize, B&H compare pages, the Asustor datasheet and the Plex support article were not opened: B&H and Plex returned 403, and I ran out of budget for the others.",
+ "decides": "It supports the existing pick, DXP6800 Pro (or F6-424 Max) over the TVS-h674 for a Plex-first buyer. The $2,139–2,349 QNAP pairs its stronger CPU with the smallest iGPU in the group (24 EU vs 80), and it still needs a 10GbE card. Inference with no named source: EU count matters most for GPU-shader work such as HDR tone mapping, while basic decode/encode runs on the fixed-function Quick Sync media engine. The single-module footnote gives a cheap tweak, not a pick change: fill the second SO-DIMM slot so the i5-1235U runs dual-channel (Intel's Iris Xe condition). I found no named measurement of what single-channel memory costs Plex on these units.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP6800 Ultra",
+  "TerraMaster F6-424 Max",
+  "TerraMaster F6-425 Pro",
+  "QNAP TVS-h674",
+  "QNAP TS-664"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP6800 Pro / TerraMaster F6-424 Max (Intel Core i5-1235U)",
+   "label": "iGPU execution units",
+   "value": "80 EU, 'Intel Iris Xe Graphics eligible', up to 1.20 GHz; Quick Sync: Yes; 2 memory channels",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226261/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Core i5-1235U Processor specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "Maker spec page. The CPU in both NAS models is taken from our page and the ChatGPT chats. I could not reopen the UGREEN or TerraMaster pages today (HTTP 429)."
+  },
+  {
+   "product": "general (Intel Iris Xe naming)",
+   "label": "Iris Xe naming condition",
+   "value": "'to use the Intel Iris Xe brand, the system must be populated with 128-bit (dual channel) memory. Otherwise, use the Intel UHD brand.'",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226261/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Core i5-1235U Processor specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "The same footnote appears on the i3-1315U and Core 5 120U ARK pages. This is a naming rule: Intel does not say the EU count changes."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Memory as shipped",
+   "value": "one 8 GB DDR5-4800 module (single-channel as shipped)",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet - Ugreen NASync DXP6800 Pro review - Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Notebookcheck's text says 'an 8 GB DDR5 module (4,800 MHz)'. Its spec table says '8 GB Samsung LPDDR5', which conflicts. Single-channel is my inference from one module in a 2-channel CPU. Notebookcheck does not state the channel mode."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Measured power and network (context)",
+   "value": "idle 36.59–41.93 W with 4× 4 TB IronWolf (22.40 W with no drives); iPerf3 9.5 Gbit/s each way on 10GbE",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet - Ugreen NASync DXP6800 Pro review - Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Notebookcheck measured these and calls the drive-populated idle 'very high'. UGREEN's own estimate is 24.91 W idle and 43.07 W during drive access. This is the stated-vs-measured gap."
+  },
+  {
+   "product": "QNAP TVS-h674 (i5-12400 / i3-12100)",
+   "label": "iGPU execution units",
+   "value": "Intel UHD Graphics 730, 24 EU, up to 1.45 GHz; Quick Sync: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/134586/intel-core-i512400-processor-18m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Core i5-12400 Processor specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "24 vs 80 EU means the QNAP has 30% of the DXP6800 Pro's GPU execution units. The i3-12100 variant uses the same UHD 730 according to QNAP's spec page. I did not open the i3-12100 ARK page for its EU count."
+  },
+  {
+   "product": "QNAP TVS-h674",
+   "label": "Graphics, LAN and expansion as QNAP states them",
+   "value": "Intel UHD Graphics 730 on both i5-32G and i3-16G; 2× 2.5GbE, 10GbE 'Optional via PCIe expansion card'; PCIe Gen4 x16 + Gen4 x4; 2× M.2 2280 Gen4 x4; 2 SO-DIMM DDR4, max 64 GB",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674/specs/hardware",
+   "source_title": "TVS-h674 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP names the iGPU but gives no EU count. The EU count comes from Intel ARK."
+  },
+  {
+   "product": "TerraMaster F6-425 Pro (Intel Core i3-1315U)",
+   "label": "iGPU execution units",
+   "value": "Intel UHD Graphics for 13th Gen, 64 EU, up to 1.25 GHz; Quick Sync: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/233459/intel-core-i31315u-processor-10m-cache-up-to-4-50-ghz-with-ipu/specifications.html",
+   "source_title": "Intel Core i3-1315U Processor specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "The F6-425 Pro's CPU comes from ChatGPT's TerraMaster citation. I could not reopen terra-master.com today (HTTP 429)."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Ultra (Intel Core 5 120U)",
+   "label": "iGPU execution units",
+   "value": "'Intel Graphics', 80 EU, up to 1.3 GHz; Quick Sync: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/236796/intel-core-5-processor-120u-12m-cache-up-to-5-00-ghz/specifications.html",
+   "source_title": "Intel Core 5 processor 120U specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "Same 80 EU as the i5-1235U, which supports ChatGPT's 'not a dramatic Plex upgrade'. Intel calls the GPU 'Intel Graphics', not Iris Xe."
+  }
+ ],
+ "unsourced": [
+  "Measured Plex or Jellyfin transcode counts or tone-mapping fps for the DXP6800 Pro, F6-424 Max, F6-425 Pro or TVS-h674. Notebookcheck ran no transcode test, Starry Hope cites only a Lon.TV N100 test, and the Plex hardware-acceleration article returned 403.",
+  "Any measurement of how single- vs dual-channel memory affects Quick Sync transcoding or HDR tone mapping on these NAS units. I searched and found only general desktop RAM articles.",
+  "Memory module count as shipped for the TerraMaster F6-424 Max and F6-425 Pro and for the QNAP TVS-h674-i3-16G. terra-master.com returned 429, B&H returned 403, and QNAP's spec page lists capacity, not module count.",
+  "Intel ARK EU count for the i3-12100 and the Celeron N5095 (QNAP TS-664). Not opened because of the call budget.",
+  "Today's maker-store prices for the DXP6800 Pro, F6-424 Max and F6-425 Pro. storecheck.py and WebFetch both returned HTTP 429 from ai.ugreen.com and terra-master.com. UGREEN's compare page showed '$1449,99' for the DXP6800 Ultra, but I don't trust that as a dated product-page price.",
+  "DXP6800 Pro manual memory-slot guidance. The m.media-amazon.com manual PDF was compressed and couldn't be read through WebFetch, and running local pdftotext needed approval."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2258412
+ }
+}

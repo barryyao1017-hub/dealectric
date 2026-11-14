@@ -1,0 +1,156 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many hours of sun a day the kit's own 200 W panel has to supply for an AirSense 11 to run humidified for all 7 nights. By this arithmetic that is about 2.5–3.5 h a day for the BLUETTI AC180 kit and about 1.4–2.3 h a day for the BLUETTI Elite 200 V2 kit.",
+ "standout": 3,
+ "standout_why": "I compared five pages. willitrunpower.com (cited) gives nights per charge with the humidifier on and off, plus Wh/lb and $/Wh, but says solar refill hours are 'not derivable' because it lists no solar input. amphourly.com gives one-panel empty-to-full refill hours, but not for the AC180 or the Elite 200 V2, and never sets a week of humidified nights against a panel. juicebench.com has no solar figures and no 7-night sizing. Our current page gives 100 W and 200 W panel yields per day but no daily sun hours for each kit. ChatGPT's own answer said 'a single AC180 will not last the week' with heated humidity and left solar unquantified. No rival measures each kit's 7-night shortfall in sun hours a day.",
+ "decides": "This only matters for shoppers who keep the humidifier on, which is the question ChatGPT ended its answer with. For them it reverses ChatGPT's 'AC180 won't last' verdict. The AC180 + 200 W kit gets through a humidified week if the site gets about 3 hours of strong sun a day, and offgridvolt saw a 200 W panel add 51% of the AC180 in one camping day, which is about 588 Wh against a need of 420–571 Wh. In short November days or shade, the Elite 200 V2 + 200 W kit ($1,199) needs only about 1.4–2.3 sun-hours a day and starts with 4.3 humidified nights stored, so it is the safer pick there. With the humidifier off, nothing changes: the AC180 on the ResMed DC converter is still enough, as rivals already say.",
+ "candidates": [
+  "BLUETTI AC180 (+200 W solar kit)",
+  "BLUETTI Elite 200 V2 (+200 W solar kit)",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS S2000 Pro",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "AirSense 11 typical power consumption (65 W PSU)",
+   "value": "56.1 W typical (111.5 VA), 73.2 W peak; PSU output 24 V 2.71 A",
+   "source": "https://manualslib.mx/manual/808713/Resmed-Airsense11.html?page=31",
+   "source_title": "ResMed AirSense 11 user guide, technical specifications (manualslib copy)",
+   "read": "2026-11-13",
+   "note": "ResMed's own PDFs (document.resmed.com, media.resmed.com) returned 403 or unreadable binary, so this is a copy of the maker's guide. The page states no test conditions. I treat 56.1 W as a humidified night: 56.1 W × 8 h = 449 Wh at the outlet."
+  },
+  {
+   "product": "general",
+   "label": "Humidified week, energy at the CPAP",
+   "value": "3,142 Wh",
+   "source": "https://manualslib.mx/manual/808713/Resmed-Airsense11.html?page=31",
+   "source_title": "ResMed AirSense 11 user guide, technical specifications (manualslib copy)",
+   "read": "2026-11-13",
+   "note": "7 nights × 56.1 W × 8 h = 3,142 Wh. Conservative version with the AC180's measured 15 W inverter idle added: 7 × (56.1 + 15) W × 8 h = 3,982 Wh."
+  },
+  {
+   "product": "general",
+   "label": "ResMed Air11 DC/DC converter (39231) spec and humidifier support",
+   "value": "Input 12 V/24 V at 10 A/5 A; output 24 V 3.75 A (≈90 W); 'can be used to power an AirSense 11 device equipped with a HumidAir humidifier and ClimateLineAir heated tube'",
+   "source": "https://shop.resmed.com/GB/en/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "ResMed shop (GB): AirSense 11 DC/DC converter 39231",
+   "read": "2026-11-13",
+   "note": "24 V × 3.75 A = 90 W. Humidified nights can run on DC from a station's 12 V 10 A port without the inverter idle. willitrunpower calls humidifier-off 'the safe DC setting', and the converter's 10 A input sits at the 10 A / 120 W 12 V port limit on BLUETTI/ALLPOWERS units."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable AC energy",
+   "value": "985 Wh at 500 W; 1,005 Wh at 200 W (of 1,152 Wh rated)",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "OffGridVolt: BLUETTI AC180 review (2026)",
+   "read": "2026-11-13",
+   "note": "OffGridVolt constant AC load discharge. 985 ÷ 1,152 = 0.855 battery-to-outlet ratio, used below."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured inverter idle draw",
+   "value": "15 W (inverter on, no load)",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "OffGridVolt: BLUETTI AC180 review (2026)",
+   "read": "2026-11-13",
+   "note": "OffGridVolt measurement. 15 W × 8 h = 120 Wh a night if the CPAP runs on AC."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured 200 W panel output and one-day refill",
+   "value": "165–180 W from a BLUETTI PV200 (June, Arizona, 75°F); 23% → 74% in one camping day",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "OffGridVolt: BLUETTI AC180 review (2026)",
+   "read": "2026-11-13",
+   "note": "(74 − 23)% × 1,152 Wh = 588 Wh added in one day from one 200 W panel."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Humidified nights per charge (AC)",
+   "value": "2.2 nights (1.7 with inverter idle)",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "OffGridVolt: BLUETTI AC180 review (2026)",
+   "read": "2026-11-13",
+   "note": "985 Wh ÷ 449 Wh = 2.2; 985 ÷ ((56.1 + 15) × 8 = 569 Wh) = 1.7."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Sun hours a day from one 200 W kit panel to run a humidified week",
+   "value": "2.5 h/day (3.5 h/day with inverter idle)",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "OffGridVolt: BLUETTI AC180 review (2026)",
+   "read": "2026-11-13",
+   "note": "Assumes the station starts full and gets 6 days of sun. (3,142 − 985) Wh ÷ 6 days ÷ 0.855 ÷ 165 W = 2.5 h; with idle, (3,982 − 985) ÷ 6 ÷ 0.855 ÷ 165 = 3.5 h. 56.1 W comes from the ResMed guide (manualslib copy); 165 W is OffGridVolt's low measured panel output."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable energy",
+   "value": "1,910 Wh discharged (of 2,073.6 Wh rated); 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: BLUETTI Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "StorageReview did not state the load. 1,910 ÷ 2,073.6 = 0.921 ratio, used below."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, solar input and kit price (BLUETTI US)",
+   "value": "$899.00 station; $1,199.00 with 200 W panel; $1,499.00 with 2× 200 W; solar 1,000 W max, 12–60 V 20 A",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI US: Elite 200 V2 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Listed as 'Special Sale'. The page shows no list price or weight."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Humidified nights per charge (AC)",
+   "value": "4.3 nights",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: BLUETTI Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "1,910 Wh ÷ 449 Wh = 4.3."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Sun hours a day from the 200 W kit panel to run a humidified week",
+   "value": "1.4 h/day (2.3 h/day if idle matches the AC180's 15 W)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: BLUETTI Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "(3,142 − 1,910) ÷ 6 days ÷ 0.921 ÷ 165 W = 1.4 h; (3,982 − 1,910) ÷ 6 ÷ 0.921 ÷ 165 = 2.3 h. 165 W is OffGridVolt's measured output from a 200 W BLUETTI panel, applied to this kit's panel."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cost per usable Wh",
+   "value": "$0.47/usable Wh station; $0.63/usable Wh with 200 W panel kit",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI US: Elite 200 V2 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "$899 ÷ 1,910 Wh = $0.47; $1,199 ÷ 1,910 Wh = $0.63 (usable Wh from StorageReview)."
+  },
+  {
+   "product": "general",
+   "label": "Rival claim: ResMed measured AirSense 11 draw by setting",
+   "value": "7 W humidifier off, 19 W humidifier on, 55 W humidifier + ClimateLineAir (as reported by willitrunpower)",
+   "source": "https://willitrunpower.com/best-power-station-for/cpap/",
+   "source_title": "Willrun: Best power station for a CPAP",
+   "read": "2026-11-13",
+   "note": "willitrunpower credits ResMed's therapy-device power table (resmed-healthcare.de PDF), which returned 403 for me. The 55 W heated-tube figure is close to the 56.1 W typical used above, so the humidified-week sun-hour figures hold under either source."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 price, weight, solar input and the AC180 + 200 W kit price today: bluettipower.com/products/ac180 returned HTTP 429 on three tries, and the storecheck.py tool was not approved to run. Without the kit price I could not compute cost per usable Wh for the AC180 kit.",
+  "ResMed's therapy-device power table (resmed-healthcare.de PDF) and ResMed's own AirSense 11 user-guide PDFs: 403 or unreadable binary. I used the manualslib copy of the guide for 56.1 W and could not confirm what conditions the 'typical' figure was measured under.",
+  "ALLPOWERS S2000 Pro and P1800 kit prices, solar inputs and measured usable Wh: allpowers.com showed no specs and iallpowers.com returned HTTP 429, so I derived no sun hours a day for the ALLPOWERS kits.",
+  "BLUETTI Elite 200 V2 inverter idle draw and measured solar input: StorageReview reports neither, so the 2.3 h figure borrows the AC180's 15 W idle and the 165 W panel output measured on the AC180.",
+  "AirSense 11 humidified draw through the ResMed DC converter (converter efficiency): not on ResMed's shop page, so I give no DC-route humidified sun-hour figure.",
+  "Elite 30 V2 + 100 W kit: not derived because a 449 Wh humidified night is more than its measured 231–244 Wh, so it cannot run a humidified week without charging during the night."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0696437999999997
+ }
+}

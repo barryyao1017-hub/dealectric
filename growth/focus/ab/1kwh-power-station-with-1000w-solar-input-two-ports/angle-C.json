@@ -1,0 +1,109 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the DELTA 3 Plus's car-charging cable plugs into one of the same two XT60i solar ports, so while it is charging from a car only one 500 W solar input is left. None of them says that each port stops at 15 A either, which means an array needs at least about 33.3 V working voltage, with open-circuit voltage at or under 60 V, to fill a port.",
+ "standout": 2,
+ "standout_why": "I compared against Volt & Valley (cited in both chats), StormWatts, StorageReview, EcoFlow's DELTA 3 series page (cited) and BLUETTI's Elite 100 V2 page (cited). Volt & Valley says per-input voltage and current limits are 'not published' and names no connector or port-sharing rule. EcoFlow's series page lists only '500W MPPT × 2', shows car charging as 'Coming Soon' and gives no current limit. StorageReview gives 11–60 V and 500 W per port but no current limit and nothing on port sharing. None of these pages says the car input takes one of the two solar ports or that solar is used first when AC is also plugged in. Our own page already has 11–60 V and 15 A, but it does not have the shared car port or the solar-first rule.",
+ "decides": "It confirms the DELTA 3 Plus as the pick and adds the conditions. Its two ports reach 1,000 W together only if each array works at 33.3 V or more and stays at or under 60 V open-circuit. Using one port for car charging takes away half the solar input. The single-input BLUETTI Elite 100 V2 (12–60 V, 20 A, 1,000 W) only reaches 1,000 W from an array working at 50 V or more with open-circuit voltage at or under 60 V. That is a narrow range for real panels, so two inputs are the easier way to get 1,000 W of solar.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input rating per port and total",
+   "value": "11–60 V, 15 A; 500 W max per port, 1,000 W total; XT60-type ports",
+   "source": "https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html",
+   "source_title": "EcoFlow DELTA 3 Plus Manual (ManualsLib copy of manuals.ecoflow.com/eu/product/delta-3-plus)",
+   "read": "2026-11-14",
+   "note": "From the Technical Specifications on manual p.49: 'Solar Input: 11-60V⎓15A, DC Input 500W Max per port, total Port (XT60) 1000W'. The ManualsLib copy was captured 11/13/24 and says its examples are based on the US version. EcoFlow's own manual site and US store would not load (empty page and HTTP 429)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Car charging shares the solar ports",
+   "value": "The XT60i input port(s) take both solar and car charging; car input 12 V, 8 A",
+   "source": "https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html",
+   "source_title": "EcoFlow DELTA 3 Plus Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Manual p.26: 'The XT60i input port(s) of the power station supports both solar charging and car charging.' p.49: 'Car Input: 12V⎓8A'. My inference: with the car cable in one port, at most 500 W of solar can come through the other. 12 V × 8 A = 96 W from the car."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Minimum array working voltage to fill one port (arithmetic)",
+   "value": "about 33.3 V working voltage per port (500 W ÷ 15 A), with open-circuit voltage at or under 60 V",
+   "source": "https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html",
+   "source_title": "EcoFlow DELTA 3 Plus Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Arithmetic from the 500 W and 15 A per-port limits. Manual p.27 also says to keep total short-circuit current 'within 15A to avoid product damage'. An array working below 33.3 V is capped at 15 A × its working voltage."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "AC plus solar behaviour",
+   "value": "Solar charging is used first by default when both AC and solar are connected; AC input up to 1,500 W",
+   "source": "https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html",
+   "source_title": "EcoFlow DELTA 3 Plus Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Manual p.27: 'Solar charging will be prioritized by default when both AC and solar inputs are connected.' p.26: AC input 'maximum charging power of 1500W', adjustable in the EcoFlow app. p.25 says several input sources can be connected at once."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Accessories the maker lists as compatible",
+   "value": "DELTA 3 Smart Extra Battery (EF-DL-E10-4), DELTA Pro 3 Smart Extra Battery, 800W Alternator Charger (EF-FC-301-1), Smart Generator Dual Fuel (EFG200), Smart Generator 4000 (EF-SG-H01-1), PowerStream microinverter, WAVE 2",
+   "source": "https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html",
+   "source_title": "EcoFlow DELTA 3 Plus Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Manual pp.19–20; the list was cut off in the copy I read, so it may be longer. p.24: charging can reach about 2,000 W when a compatible extra battery is connected."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Extra battery limit",
+   "value": "Only one Smart Extra Battery can connect directly to the unit",
+   "source": "https://www.ecoflow.com/ca/blog/ecoflow-delta-3-plus-faq",
+   "source_title": "EcoFlow DELTA 3 Plus FAQ: Everything You Need to Know (EcoFlow CA)",
+   "read": "2026-11-14",
+   "note": "The FAQ is dated 2025/6/7 and says 'two PV ports, each supporting 500W (11V-60V) Max'."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Extra battery families the maker names for the DELTA 3 series",
+   "value": "Extra Battery of DELTA 3, DELTA Pro 3, DELTA 2 Max, DELTA 2",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "The same page says 'DELTA 3 Plus with 500W MPPT × 2 charges fully in 70 minutes' and shows car charging as 'Coming Soon'. It gives no current limit and no combined AC + solar figure."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input and dual charging",
+   "value": "1,000 W max, 12–60 V, 20 A max; AC + DC dual charging 1,200 W max; US$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "From the Compare Models table. The page does not give the port type or the number of solar inputs. Arithmetic: 1,000 W ÷ 20 A = 50 V minimum working voltage, so one array must work at 50 V or more and stay at or under 60 V open-circuit to reach 1,000 W."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Reviewer spec listing",
+   "value": "Two solar ports, 11–60 V, 500 W max each; AC + solar multi-charging",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review (StorageReview, Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-14",
+   "note": "StorageReview did not test solar input or both ports at once. It lists car charging as '800W, in 1.3 Hours', which matches the 800 W Alternator Charger accessory, not the 12 V / 8 A car-socket input."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus price today: us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck.py on 2026-11-14. I did not try Amazon.",
+  "The DELTA 3 Plus manual from EcoFlow's own site: manuals.ecoflow.com/us/product/delta-3-plus loaded with no text, the manuals.plus copy returned 403 and the BigCommerce PDF would not convert to text. The manual figures above come from ManualsLib's copy of manuals.ecoflow.com/eu/product/delta-3-plus.",
+  "The DELTA 3 Plus manual's exact open-circuit voltage wording and its series/parallel guidance: the ManualsLib page only showed fragments, and those say to see the panel's manual.",
+  "BLUETTI Elite 100 V2 solar port type, number of inputs and whether car charging shares the port: the product page does not say, and I could not get readable text from the manual PDF (s4.bluettipower.com) because it is compressed.",
+  "Jackery Explorer 1000 v2: two DC8020 inputs in parallel, 400 W total. I only saw this in a search summary and did not open Jackery's page, so it is left out of the findings."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1120232
+ }
+}

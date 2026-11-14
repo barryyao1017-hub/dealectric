@@ -1,0 +1,139 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much faster the Thunderbolt link is than the NAS's own 10GbE port: on the same box, Thunderbolt reads were 1.39× faster on the DXP480T Plus, 2.13× on the TBS-h574TX and 1.70× on the TS-h966TX. UGREEN's own HDD figure (4-drive RAID 5 at 600–700 MB/s) is below the 1.09 GB/s Liliputing measured over 10GbE, so on hard drives the Thunderbolt cable mainly saves you a switch or a Mac 10GbE adapter and should not add speed.",
+ "standout": 2,
+ "standout_why": "I compared against the cited QNAP US pages for the TVS-h674T and TVS-h874T, which give only the 20 Gbps 'maximum bandwidth' and no Thunderbolt MB/s (the h874T page gives only 590/591 MB/s over 2× 2.5GbE). I also checked QNAP's Thunderbolt 4 store page, which lists prices only, and UGREEN's 'How to Connect UGREEN NAS via Thunderbolt 4' blog, which gives HDD and SSD ranges but no Thunderbolt-vs-10GbE comparison. Both UGREEN Knowledge Center articles (607, 609) render empty when fetched. None of them puts Thunderbolt and 10GbE throughput side by side for one box, and none gives a per-bay price. QNAP's TS-h966TX page does have both numbers, but it was not among ChatGPT's results; ChatGPT only showed that model as a product card.",
+ "decides": "It splits the pick by storage type. With all-flash storage, Thunderbolt is worth paying for: 1.4–2.1× the box's own 10GbE port. The TS-h966TX ($1,299, 9 bays, 2,004 MB/s read to an M4 Pro Mac in QNAP Labs) and the DXP480T Plus ($849.99, 1.51 GB/s in a copy test) give the most measured Thunderbolt speed per dollar. With hard drives, the DXP6800 Pro ($183/bay) and DXP8800 Plus ($171/bay) already have 2× 10GbE, so Thunderbolt there only saves cabling. The QNAP TVS-h674T ($417/bay) and TVS-h874T ($386/bay) are the exception: their built-in LAN is only 2× 2.5GbE (590 MB/s measured), so Thunderbolt is their only fast link without buying a card. That weakens ChatGPT's repeated 'safest pick' call for the TVS-h674T on value.",
+ "candidates": [
+  "QNAP TVS-h674T",
+  "QNAP TVS-h874T",
+  "QNAP TS-h966TX",
+  "QNAP TBS-h574TX",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Thunderbolt vs own 10GbE, same 100 GB copy (Liliputing)",
+   "value": "1.39× faster reading from the NAS (1.51 vs 1.09 GB/s); 1.23× writing (1.42 vs 1.15 GB/s); 100 GB in 66 s vs 92 s",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review: A speedy NAS with 10 GbE networking and four M.2 SSD slots - Liliputing",
+   "read": "2026-11-13",
+   "note": "Client was a NUC 13 Extreme (Windows), not a Mac. 1.51/1.09=1.39; 1.42/1.15=1.23; 100/1.51=66 s, 100/1.09=92 s. The same review measured 2,136–2,464 MB/s sequential reads over Thunderbolt SMB in CrystalDiskMark."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt (Mac) vs own 10GbE (StorageReview)",
+   "value": "1.84× faster writing (1,929 vs 1,050 MB/s); 2.13× faster reading (1,850 vs 868 MB/s); 100 GB read in 54 s vs 115 s",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review - StorageReview (Vince Carnevale, 2024-04-02)",
+   "read": "2026-11-13",
+   "note": "Thunderbolt was measured with ATTO on an M1 Max MacBook Pro, 10GbE with Blackmagic Disk Speed Test, so the tools differ. Volume: 5× 3.84 TB SK hynix PE8110 E1.S in RAID 5. 1929/1050=1.84; 1850/868=2.13; 100,000/1,850=54 s; 100,000/868=115 s. Windows 11 over Thunderbolt managed only 1,182 write / 1,015 read MB/s."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Thunderbolt (Mac) vs own 10GbE (QNAP Labs)",
+   "value": "1.91× faster writing (2,252 vs 1,182 MB/s); 1.70× faster reading (2,004 vs 1,181 MB/s); Thunderbolt write = 90% of the 20 Gbps (2,500 MB/s) link",
+   "source": "https://www.qnap.com/en-us/product/ts-h966tx",
+   "source_title": "TS-h966TX | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP's own test: TS-h966TX-16G, 4× Samsung PM9A3 1.96 TB U.2 in RAID 5, MacBook Pro M4 Pro on macOS 26.0. Thunderbolt was measured with AJA (5K RED, 16 GB); 10GbE with SMB 1M sequential. 2252/1182=1.91; 2004/1181=1.70; 2252/2500=0.90. The flash speed applies to the 4 U.2 slots; the other 5 bays are 3.5-inch SATA."
+  },
+  {
+   "product": "general (HDD arrays)",
+   "label": "4-HDD RAID 5 throughput as a share of what 10GbE already carries",
+   "value": "600–700 MB/s per UGREEN, at most 0.64× the 1.09 GB/s Liliputing measured over 10GbE",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "How to Connect UGREEN NAS via Thunderbolt 4 - UGREEN",
+   "read": "2026-11-13",
+   "note": "UGREEN gives practical reference ranges, not guarantees: single NAS HDD about 200–260 MB/s, four-drive HDD RAID 5 about 600–700 MB/s. 700/1,090=0.64, so an HDD pool does not fill 10GbE, and Thunderbolt adds no speed over the DXP6800 Pro's or DXP8800 Plus's built-in 10GbE. UGREEN lists DXP480T Plus, DXP6800 Pro and DXP8800 Plus as Thunderbolt-direct models, on UGOS 1.2.0.2121 or later."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Built-in network ceiling without a card",
+   "value": "590 MB/s write / 591 MB/s read over 2× 2.5GbE; the 20 Gbps Thunderbolt link (2,500 MB/s raw) is 4.2× that",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t",
+   "source_title": "TVS-h874T | Thunderbolt 4 NAS | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP test: 8× Samsung 860 EVO in RAID 5, IOmeter SMB 1M, Windows Server client. 2,500/590=4.2. This is a rated cap against a measured figure, not a measured-vs-measured comparison. QNAP gives no measured Thunderbolt MB/s for the h674T or h874T. The h674T page also lists 2× 2.5GbE built in and 10/25GbE by PCIe card."
+  },
+  {
+   "product": "QNAP TVS-h674T",
+   "label": "Diskless price per bay",
+   "value": "$416.50 per bay ($2,499.00 ÷ 6)",
+   "source": "https://store.qnap.com/nas/smb-desktop/thunderbolt-4.html",
+   "source_title": "Thunderbolt 4 - SMB (Desktop) - NAS | QNAP Store",
+   "read": "2026-11-13",
+   "note": "TVS-h674T-i5-32G-US, in stock. The 2 M.2 slots are not counted as bays."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Diskless price per bay",
+   "value": "$386.13 per bay ($3,089.00 ÷ 8)",
+   "source": "https://store.qnap.com/nas/smb-desktop/thunderbolt-4.html",
+   "source_title": "Thunderbolt 4 - SMB (Desktop) - NAS | QNAP Store",
+   "read": "2026-11-13",
+   "note": "TVS-h874T-i7-32G-US, in stock. The i9-64G is $4,499.00 and out of stock."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Diskless price per bay; price per MB/s of measured Thunderbolt read",
+   "value": "$144.33 per bay ($1,299.00 ÷ 9); $0.65 per MB/s ($1,299 ÷ 2,004)",
+   "source": "https://store.qnap.com/nas/smb-desktop/thunderbolt-4.html",
+   "source_title": "Thunderbolt 4 - SMB (Desktop) - NAS | QNAP Store",
+   "read": "2026-11-13",
+   "note": "TS-h966TX-8G-US, in stock. QNAP's 2,004 MB/s was measured on the 16G model with U.2 SSDs."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Diskless price per bay; price per MB/s of measured Thunderbolt read",
+   "value": "$359.80 per bay ($1,799.00 ÷ 5, out of stock); $0.97 per MB/s ($1,799 ÷ 1,850)",
+   "source": "https://store.qnap.com/nas/smb-desktop/thunderbolt-4.html",
+   "source_title": "Thunderbolt 4 - SMB (Desktop) - NAS | QNAP Store",
+   "read": "2026-11-13",
+   "note": "TBS-h574TX-i5U-16G-US is out of stock. The in-stock TBS-h574TX-i5UC-05S01-US with 5× 1.92 TB E1.S included is $5,999.00."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Diskless price per bay; price per MB/s of measured Thunderbolt read",
+   "value": "$212.50 per M.2 slot ($849.99 ÷ 4); $0.56 per MB/s ($849.99 ÷ 1,510)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP480T Plus - UGREEN US store",
+   "read": "2026-11-13",
+   "note": "Store price $849.99, compare-at $1,124.98, available. 1,510 MB/s is Liliputing's 100 GB copy from the NAS over Thunderbolt."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Diskless price per bay",
+   "value": "$183.33 per bay ($1,099.99 ÷ 6)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage",
+   "source_title": "UGREEN NASync DXP6800 Pro - UGREEN US store",
+   "read": "2026-11-13",
+   "note": "Store price $1,099.99, compare-at $1,209.99, available. The 2 M.2 slots are not counted. Notebookcheck measured 9.5 Gbit/s over 10GbE in iPerf3 but did not test Thunderbolt."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "Diskless price per bay",
+   "value": "$171.25 per bay ($1,369.99 ÷ 8)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP8800 Plus - UGREEN US store",
+   "read": "2026-11-13",
+   "note": "Store price $1,369.99, compare-at $1,509.99, available. The 2 M.2 slots are not counted."
+  }
+ ],
+ "unsourced": [
+  "Measured Thunderbolt MB/s for the QNAP TVS-h674T and TVS-h874T: QNAP's product pages give only the 20 Gbps cap, and the ITdaily TVS-h874T review gives no transfer figures.",
+  "Measured Thunderbolt MB/s for the UGREEN DXP6800 Pro and DXP8800 Plus: Notebookcheck's DXP6800 Pro review tested only 10GbE, and I found no other reviewer number.",
+  "A like-for-like Mac test of the DXP480T Plus: Liliputing's client was a Windows/Ubuntu NUC. The owner's figure of about 2 GB/s on a Mac (note.com) was not re-opened this session.",
+  "Current maker price of a Mac Thunderbolt-to-10GbE adapter (e.g. Sonnet Solo10G), to put a dollar figure on what the direct cable saves: the Sonnet product URL returned 404, and I only saw search-snippet prices, which I did not use.",
+  "Whether the UGREEN DXP6800 Ultra ($1,449.99) and DXP8800 Ultra ($1,779.99) have Thunderbolt ports: their US store pages returned no spec text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.2636103
+ }
+}

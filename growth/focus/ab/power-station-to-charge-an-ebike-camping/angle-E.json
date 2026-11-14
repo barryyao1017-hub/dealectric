@@ -1,0 +1,103 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured figure for any candidate. Lab and reviewer discharge tests put the 2 kWh class at 1,800–1,910 Wh delivered through AC: StorageReview measured 1,910 Wh from the BLUETTI Elite 200 V2 and 1,800 Wh from the DELTA 2 Max at 350 W, Notebookcheck about 1,900 Wh from the Anker SOLIX S2000 at 250 W, and The Technology Man 1,898 Wh from the DELTA 3 Max Plus. At an e-bike-charger-sized load of about 200 W, Notebookcheck got only about 2,650 Wh (just under 88%) from the 3,014 Wh Elite 300. The Technology Man measured 19–26 W of AC inverter idle draw, so leaving the inverter on for a 48-hour weekend would burn roughly 0.9–1.25 kWh, more than one 700 Wh charge.",
+ "standout": 3,
+ "standout_why": "PowerStationGearLab (the cited rival) says 'We haven't run these units ourselves'. Every number on it is a maker spec or its own 70% planning factor, it has no idle-draw figure, and it has no 700 Wh example. PowerBencher (rank 2) says 'We did not test this unit' for every product and uses an assumed 15% loss. Neither rival gives a single measured Wh delivered or a measured idle draw. ChatGPT's own tables used assumed 15–20% losses. Our current page already carries StorageReview's 1,910 Wh for the Elite 200 V2 but nothing on the other candidates and nothing on idle draw.",
+ "decides": "This confirms that a 2 kWh station can just manage two 700 Wh charges, but only with a rule attached. Measured AC output for the 2 kWh units is 1,800–1,910 Wh. Two charges need 1,400 Wh into the bike battery, plus whatever the e-bike charger loses (I found no named measurement of that loss). That leaves only about 100–250 Wh to spare, and 12 hours of inverter idle at 19–26 W (about 230–310 Wh) would use it up. So the Elite 200 V2 (StorageReview: 1.91 kWh delivered) and the DELTA 3 Max (by proxy, 1,898 Wh measured on the Max Plus) only work if the AC output is switched off between the two charges. The Elite 300 (Notebookcheck: about 2,650 Wh at about 200 W) is the measured pick for two charges with real margin. ChatGPT's 'lightweight' top pick, the Anker S2000, measured about 1,900 Wh, the same class as the others, and its inverter is rated at 1,500 W continuous (Notebookcheck).",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI Elite 300",
+  "Anker SOLIX S2000",
+  "EcoFlow DELTA 2 Max",
+  "BLUETTI AC200L"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC energy discharged, full battery (StorageReview)",
+   "value": "1.91 kWh of 2,073.6 Wh rated (about 92%)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview, Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-13",
+   "note": "The review does not state the test load. Refilling took 2.44 kWh from the wall, so 1.91 / 2.44 is about 78% round trip (my arithmetic). US 120 V unit. Two 700 Wh charges need 1,400 Wh into the battery before charger losses, which leaves about 510 Wh to cover the e-bike charger's losses and any idle draw."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Self-drain with AC on and nothing plugged in (CleanTechnica)",
+   "value": "about 6 percentage points over 12 hours (about 124 Wh, about 10 W average)",
+   "source": "https://cleantechnica.com/2025/07/07/bluetti-elite-200-v2-test-review/",
+   "source_title": "Bluetti Elite 200 V2 Test & Review (CleanTechnica, 2025-07-07)",
+   "read": "2026-11-13",
+   "note": "The unit was left on for 12 hours after the loads came off and dropped to 34%. The 40% starting level is implied by the previous test step. The watts figure is my derivation: 6% × 2,073.6 Wh / 12 h. CleanTechnica also measured a full AC charge from 0 to 100% at about 1 h 52 min."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "AC energy delivered at about 200 W constant load (Notebookcheck)",
+   "value": "about 2,650 Wh of 3,014.4 Wh (just under 88%); just over 92% at 1,800 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review (Notebookcheck, Marcus Schwarten, 2026-03-09, updated 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "Tested on the EU 230 V version. A 200 W load is in the range a typical e-bike charger draws, and at that low load efficiency is about 4 points worse than at high load. A standard 1,200 W AC charge drew 3,450 Wh from the wall (about 87% reached the battery). 2,650 Wh is enough for two 700 Wh charges plus about 1,250 Wh before charger losses."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "AC energy delivered at 1 kW, and AC inverter idle draw (The Technology Man)",
+   "value": "2,819 Wh in 2 h 46 min (about 93.5%); idle draw about 19 W with AC on, no load and Eco mode off",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 Review – 3kWh Capacity – But There Are Compromises (The Technology Man, Gidon, 2026-03-25)",
+   "read": "2026-11-13",
+   "note": "Constant 1 kW resistive heater measured with an energy-monitoring plug, on a UK unit. Idle test: 100% to 90% in 16 hours (10% × 3,014 / 16 ≈ 19 W). DC idle was under 4 W. At 19 W, 48 hours of idle is about 900 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus (proxy for DELTA 3 Max)",
+   "label": "AC energy delivered at 2 kW, and AC inverter idle draw (The Technology Man)",
+   "value": "1,898 Wh of 2,048 Wh (about 93%) in just over 57 min; idle about 22 W with AC on, no load and timeouts disabled",
+   "source": "https://thetechnologyman.com/ecoflow-delta-3-max-plus-a-clear-no-nonsense-review/",
+   "source_title": "EcoFlow Delta 3 Max Plus – A Clear, No-Nonsense Review (The Technology Man, Gidon, 2026-01-28)",
+   "read": "2026-11-13",
+   "note": "This is the Max Plus. The reviewer says the base DELTA 3 Max is the same 2,048 Wh capacity but has a smaller inverter. Idle test: 100% to 87% over 12 hours ≈ 22 W. In the same article he reports measuring about 26 W idle for the DELTA 2 Max. The test was at a high 2 kW load; low-load results tend to be lower (compare Notebookcheck's Elite 300 figures)."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "AC energy delivered at about 250 W constant load (Notebookcheck)",
+   "value": "just over 1,900 Wh of about 2,000 Wh rated (95%)",
+   "source": "https://www.notebookcheck.net/2-kilowatt-hours-have-never-been-this-light-Anker-Solix-S2000-power-station-review.1418245.0.html",
+   "source_title": "2 kilowatt hours have never been this light: Anker Solix S2000 power station review (Notebookcheck, Marcus Schwarten, 2026-10-07)",
+   "read": "2026-11-13",
+   "note": "Tested on the EU 230 V version (the US listing says 2,010 Wh). Charging put just over 2,400 Wh through the meter, about 78% round trip. With AC on, the unit lost just over 10% of its battery per 24 hours (about 8 W, my derivation). Its continuous AC output is 1,500 W."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "AC energy discharged at 350 W load (StorageReview lab)",
+   "value": "1,800 Wh of 2,048 Wh (about 88%)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-2-max-portable-power-station-review",
+   "source_title": "EcoFlow DELTA 2 Max Portable Power Station Review (StorageReview, Kevin OBrien, 2023-07-09)",
+   "read": "2026-11-13",
+   "note": "Refilling at the fastest charge rate took 2,370 Wh, so about 76% round trip (my arithmetic). This is the lowest measured output among the 2 kWh candidates, leaving about 400 Wh above 1,400 Wh before charger losses."
+  },
+  {
+   "product": "general",
+   "label": "What rival pages use instead of measurements",
+   "value": "PowerStationGearLab: 70% planning factor, 'We haven't run these units ourselves'; PowerBencher: about 15% assumed loss, 'We did not test this unit'",
+   "source": "https://powerstationgearlab.com/best/best-power-station-for-e-bike/",
+   "source_title": "Best Power Station for E-Bike Charging (2026): 5 Picks and the Charges-per-Battery Math (PowerStationGearLab, 2026-11-05)",
+   "read": "2026-11-13",
+   "note": "PowerBencher, read the same day: https://powerbencher.com/stories/devices/best-portable-power-stations-e-bike-scooter/. Neither page reports a measured Wh delivered, an efficiency or an idle draw."
+  }
+ ],
+ "unsourced": [
+  "A measured AC discharge for the base (non-Plus) EcoFlow DELTA 3 Max. The root-nation.com review returned HTTP 403, and Backup Power Hub and The Solar Lab showed no test of their own.",
+  "A measured AC discharge for the BLUETTI AC200L. Search snippets attribute 1.9 kWh at 1,050 W and 1.76 kWh at 200 W to TrustedReviews, but the page returned HTTP 530, and nextpit's review now redirects to inside-digital.de.",
+  "The load StorageReview used for its 1.91 kWh Elite 200 V2 discharge. The review does not state it.",
+  "A low-load (about 200 W) discharge for the Elite 200 V2. The Backup Power Hub page credited with 2,065 Wh at 200 W says its runtimes are estimates (capacity × 0.85), not a test, so I left it out.",
+  "A named lab measurement of e-bike charger efficiency (wall Wh in versus Wh into the battery). BIKE magazin's charger test (2021) gives no figures on its free page; the data is in a paid EMTB 4/2021 PDF. The other results were retailer blogs and forums.",
+  "Anker's claim of 96.8% usable capacity for the S2000, credited to 'Johnny's Weekends'. It only appears on Anker's own page, so I didn't use it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0224956000000003
+ }
+}

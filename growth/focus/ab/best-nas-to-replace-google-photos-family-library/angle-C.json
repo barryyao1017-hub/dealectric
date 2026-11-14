@@ -1,0 +1,121 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Synology DS225+ and DS425+ ship with 2 GB of RAM and can only reach 6 GB (2 GB + one Synology D4NS01-4G module). That 6 GB is exactly Immich's stated minimum and never its recommended 8 GB, so running Immich on either Synology means buying a RAM module first and still falling short of the recommended amount.",
+ "standout": 2,
+ "standout_why": "I compared against homelabcompass.com (cited twice), esp32.co.uk (cited once), itechguides.com and the Synology Photos spec page (cited in every chat). esp32.co.uk gives Immich's '6 GB minimum, 8 GB recommended' but does not give the RAM of any NAS it names, and it gives no upgrade path. homelabcompass.com already covers the DSM 7.3 third-party drive reversal and the rule that M.2 pools need drives from Synology's list, but it gives no RAM figures and names only the DS923+ and DS1522+. itechguides.com covers neither topic. The Synology spec page gives no memory threshold. ChatGPT's answers offered 'Synology DS225+/DS425+' and 'NAS + Immich' as interchangeable routes and never said that the stock 2 GB Synology is below what Immich requires.",
+ "decides": "For a family that wants Synology Photos, the DS225+ is still the pick. For a family that wants Immich (the route ChatGPT called 'closest to Google Photos'), the DS225+ and DS425+ need the D4NS01-4G module and still top out at Immich's minimum. Better Immich hosts are the QNAP TS-264-8G (8 GB stock, 16 GB max) or the Synology DS925+ (4 GB ECC, 32 GB max). The Asustor AS5402T ships with 4 GB, below Immich's minimum, so it needs a module too. The UGREEN DH2300 has no Docker, so it cannot run Immich at all; this is already on our page. On drives, third-party SATA HDDs now work on the 2025 Plus models, but an M.2 cache or M.2 pool on the DS425+ still needs Synology SNV drives.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general (Immich)",
+   "label": "Immich server RAM requirement",
+   "value": "Minimum 6 GB, recommended 8 GB; minimum 2 CPU cores, recommended 4",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Verbatim from the Hardware section: 'Minimum 6GB, recommended 8GB.' / 'Minimum 2 cores, recommended 4 cores.'"
+  },
+  {
+   "product": "general (Immich)",
+   "label": "Immich machine-learning CPU requirement (amd64)",
+   "value": "x86-64-v2 or newer, from Immich v3 onward",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'Since v3, the machine learning container on amd64 requires the >= x86-64-v2 microarchitecture level.' The same page says the database should be on local storage, 'never a network share of any kind.' All the x86 candidates here (J4125, N5095, N5105, N100, Ryzen V1500B) are 2019 or later; Immich says most CPUs from about 2012 on meet v2. I did not find a maker page stating each chip's v2 support."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM installed / maximum / compatible module",
+   "value": "2 GB DDR4 non-ECC installed; 6 GB maximum (2 GB + 4 GB); one slot; module D4NS01-4G",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology says it does not give full warranty or technical support if a non-Synology memory module is used. 6 GB maximum = Immich's minimum, 2 GB below its recommended 8 GB."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "RAM installed / maximum / compatible module",
+   "value": "2 GB DDR4 non-ECC installed; 6 GB maximum (2 GB + 4 GB); one slot; module D4NS01-4G",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DiskStation DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Same Intel Celeron J4125 CPU and same 6 GB limit as the DS225+."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "M.2 slots: allowed SSDs",
+   "value": "2× M.2 2280 NVMe for SSD cache or an SSD storage pool; a pool requires Synology-verified SSDs (SNV3410-400G, SNV5420-400G/800G/1600G); not hot-swappable",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DiskStation DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "This is the maker's own compatibility list."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "RAM installed / maximum / compatible modules",
+   "value": "4 GB DDR4 ECC installed; 32 GB maximum (2 × 16 GB); 2 slots; D4ES04-4G, D4ES03-8G, D4ES03-16G",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology says that with two modules, both must be identical and share the same model number. This is the only Synology here that can reach Immich's recommended 8 GB."
+  },
+  {
+   "product": "general (Synology 2025 Plus models)",
+   "label": "Third-party drive support",
+   "value": "2025 model-year DiskStation Plus, Value and J Series on DSM 7.3 support installing third-party drives and building storage pools on them; M.2 storage pools and cache still require drives on Synology's compatibility list",
+   "source": "https://www.synology.com/en-global/company/news/article/dsm73/compatibility",
+   "source_title": "Synology Releases DiskStation Manager 7.3, Bringing Efficient Data Tiering, Enhanced Security, AI-Powered Collaboration, and Expanded Storage Flexibility",
+   "read": "2026-11-13",
+   "note": "Press release dated 2025-10-08, updated 2025-10-13. Footnote: 'Creation of M.2 based storage pool and cache still requires drives on the HCL.' homelabcompass.com (cited) already covers this."
+  },
+  {
+   "product": "general (Synology Photos)",
+   "label": "Mobile app OS requirement",
+   "value": "Synology Photos mobile app: iOS 16.0 or later, Android 11 or later (TV app: iOS 14.0+, Android 8.0+)",
+   "source": "https://www.synology.com/en-us/dsm/7.2/software_spec/synology_photos",
+   "source_title": "Synology Photos Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The same page lists HEIF/HEIC/HIF and 'MOV (HEVC) including Live Photos' as formats that need Synology Image Assistant to make previews. It also says HEIC files sent through Photo Request links are converted to JPEG, and the TV app shows Live Photos as stills. This page is cited by ChatGPT."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "RAM installed / maximum",
+   "value": "8 GB DDR4 SODIMM installed; 16 GB maximum (2 × 8 GB); 2 slots; Intel Celeron N5095",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP",
+   "read": "2026-11-13",
+   "note": "Meets Immich's recommended 8 GB as shipped."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "RAM installed / maximum",
+   "value": "4 GB (1 × 4 GB) installed; 16 GB maximum (2 × 8 GB); 2 slots; Intel Celeron N5105",
+   "source": "https://www.asustor.com/en/product/spec?p_id=81",
+   "source_title": "AS5402T Specifications | ASUSTOR",
+   "read": "2026-11-13",
+   "note": "Ships 2 GB below Immich's 6 GB minimum; reaching it needs a second module."
+  }
+ ],
+ "unsourced": [
+  "UGREEN NASync DXP2800 RAM (installed/maximum), Docker support and price from UGREEN's own store: nas.ugreen.com and ugreen.com returned HTTP 429 on WebFetch and on storecheck.py, so the 8 GB / 16 GB figures on our page are not re-verified today.",
+  "UGREEN NASync DH2300 RAM and Docker status from UGREEN's store page: HTTP 429.",
+  "Synology's list of which models support face and object recognition in Synology Photos, and any RAM threshold (e.g. 4 GB for object recognition): kb.synology.com loads its article text with JavaScript, and the en-us, en-nz, en-global and index.php versions all came back with no article text.",
+  "Synology's DSM 7.3 drive-policy FAQ table for unlisted drives on Plus models (kb.synology.com/en-nz/DSM/tutorial/Drive_compatibility_policies): same JavaScript problem, so which features (e.g. deduplication, firmware updates) are still blocked for unlisted SATA drives is not sourced.",
+  "Today's prices for the candidates: not collected, since this angle covers compatibility; UGREEN's store was rate-limited."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0296149
+ }
+}

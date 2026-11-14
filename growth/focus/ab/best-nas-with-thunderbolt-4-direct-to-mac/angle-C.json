@@ -1,0 +1,105 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that QNAP's TS-h966TX page limits its direct-connect validation to 'Intel® and AMD®-powered USB4 / Thunderbolt™ 4 systems' without naming Apple silicon. On the same page, QNAP's own benchmark client was a MacBook Pro M4 Pro on macOS 26.0. The TVS-h674T and TBS-h574TX pages, by contrast, name M1/M2 Macs and set a macOS 13.5 minimum.",
+ "standout": 2,
+ "standout_why": "I compared against the cited QNAP US TVS-h674T and TVS-h874T pages (macOS 13.5+, 'Apple Silicon (such as M1 and M2 chips) and Intel', 20 Gbps). I also checked the UGREEN how-to blog cited in chat 3 (UGOS 1.2.0.2121+, Thunderbolt 3+ host, certified cable). The UGREEN KB 607/609 pages and the store.qnap.com Thunderbolt 4 category were also cited, but neither KB page rendered when fetched (WebFetch got only the page title), so I could not compare against them. None of the 39 results is the TS-h966TX product page, and none mentions TerraMaster. ChatGPT showed the TS-h966TX as a card ('$1,299 listed by QNAP') with no Mac caveat. In another chat it showed the TerraMaster F6-425 Pro with 'verify direct Mac Thunderbolt networking support', but it had no maker document for it.",
+ "decides": "This keeps the TVS-h674T/h874T and TBS-h574TX as the QNAPs whose maker pages explicitly support Apple silicon Macs with a stated macOS minimum. The cheapest QNAP, the $1,299 TS-h966TX, gets a caveat: its formal validation names only Intel/AMD hosts, even though QNAP lab-tested it with an M4 Pro Mac (2,252 MB/s write, 2,004 MB/s read). For UGREEN, the firmware requirement (UGOS 1.2.0.2121+) is already in rival pages, so it is not new. TerraMaster has a maker how-to for Thunderbolt direct connect, but I could not open the F6-425 Pro's own spec page, so it stays an unconfirmed option.",
+ "candidates": [
+  "QNAP TVS-h674T",
+  "QNAP TVS-h874T",
+  "QNAP TBS-h574TX",
+  "QNAP TS-h966TX",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus",
+  "TerraMaster F6-425 Pro"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Hosts validated for direct connect",
+   "value": "\"Direct-connect features are fully validated for Intel® and AMD®-powered USB4 / Thunderbolt™ 4 systems. Additional platform compatibility is continuously being expanded.\" Apple silicon is not named.",
+   "source": "https://www.qnap.com/en-us/product/ts-h966tx",
+   "source_title": "TS-h966TX | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "This is the only footnote on the page tied to direct connection. The page body also says 'Connect directly to Mac® or Thunderbolt™ 4 Windows® PC workstations'."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "QNAP lab test client and result over Thunderbolt 4",
+   "value": "MacBook Pro M4 Pro, macOS 26.0: 2,252 MB/s write, 2,004 MB/s read (AJA, 1 direct-connected client)",
+   "source": "https://www.qnap.com/en-us/product/ts-h966tx",
+   "source_title": "TS-h966TX | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP Labs figures: TS-h966TX-16G, QuTS hero h5.2.8, 4× Samsung PM9A3 1.96 TB U.2 in RAID 5, AJA 5K RED 16-bit RGBA, 16 GB test size. This shows an Apple silicon Mac working in QNAP's lab even though the validation statement names only Intel/AMD."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Thunderbolt throughput as stated by maker",
+   "value": "20 Gbps (2× Thunderbolt 4)",
+   "source": "https://www.qnap.com/en-us/product/ts-h966tx",
+   "source_title": "TS-h966TX | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "'Dual Thunderbolt™ 4 ports connect directly to Mac or PC workstations, delivering 20Gbps throughput'"
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Price, QNAP US store",
+   "value": "$1,299.00 (TS-h966TX-8G-US, 3-year warranty; 5-year extension $199)",
+   "source": "https://store.qnap.com/ts-h966tx-8g-us.html",
+   "source_title": "TS-h966TX-8G-US | QNAP Store",
+   "read": "2026-11-13",
+   "note": "The page shows 'In stock' but also 'Pre-order / Long lead time, estimated 2 to 4 week'."
+  },
+  {
+   "product": "QNAP TVS-h674T",
+   "label": "Mac compatibility as stated by maker",
+   "value": "macOS 13.5 or later; works with Apple Silicon (M1, M2) and Intel Macs, and Windows PCs; Thunderbolt Networking up to 20 Gbps",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674t",
+   "source_title": "TVS-h674T | Thunderbolt™ 4 NAS. Designed for creators and small studios | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Already on the rival page ChatGPT cited, so not new. The page states no Thunderbolt 3 host, cable or host-count limits."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Mac compatibility, cables and hosts as stated by maker",
+   "value": "macOS 13.5 or later; Mac (incl. M1/M2) or Windows; Thunderbolt 4 or Thunderbolt 3 cables; two workstations can connect directly, one per Thunderbolt 4 port; up to 20 Gbps",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "TBS-h574TX | Thunderbolt™ 4 All-Flash NASbook | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP's 1,393 MB/s write and 1,410 MB/s read figure (the ~1,400 MB/s ChatGPT quoted) was measured with a Windows Server 2019 client (i9-12900E), not a Mac. Setup: QuTS hero h5.2.3.2970, 5× 3.84 TB E1.S in RAID 5."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus / DXP6800 Pro / DXP8800 Plus",
+   "label": "Direct-connect requirements as stated by maker",
+   "value": "UGOS 1.2.0.2121 or later; computer with a Thunderbolt 3, 4 or 5 port (a USB-C connector alone does not qualify); certified Thunderbolt 3/4/5 cable, not a USB-C charging cable; one computer per NAS port; the two ports are not combined into a faster SMB link; no daisy-chaining; UGREEN models without Thunderbolt ports are not supported",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "How to Connect UGREEN NAS via Thunderbolt 4",
+   "read": "2026-11-13",
+   "note": "Article dated 2025-10-01. It names no minimum macOS version and does not distinguish Intel from Apple silicon. ChatGPT cited this page in one chat, so it is not new."
+  },
+  {
+   "product": "TerraMaster (TNAS with TB4/USB4)",
+   "label": "Direct-connect requirements as stated by maker",
+   "value": "Computer needs a Thunderbolt 3/4/5 port or a full-featured USB4 port; Thunderbolt 3/4/5 certified cable; set an IP on the NAS 'TBLAN' interface; macOS recommended; Windows may need drivers; the Thunderbolt interface IP 'may change' after a NAS or computer restart",
+   "source": "https://help.terra-master.com/faq/TNAS/network-servies/thunderbolt_direct_connect",
+   "source_title": "Thunderbolt direct connect | TerraMaster Help Center",
+   "read": "2026-11-13",
+   "note": "The page is undated and does not list the TNAS models it applies to, so it does not by itself confirm the F6-425 Pro."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster F6-425 Pro port type (maker spec reportedly 'USB4.0 Host Port Type C ×2' while retailers sell it as 'TB4') and its 'Thunderbolt 4 Bridge' claim. terra-master.com/products/f6-425-pro returned HTTP 429 on every try, and download2.terra-master.com/TerraMaster_F6-425_Pro.pdf returned 403, so the maker page and spec PDF are both unopened.",
+  "TerraMaster F6-425 Pro price. TerraMaster store returned 429, and Newegg and B&H returned 403.",
+  "TerraMaster forum notice on F6-425 Pro port silk-screen labeling, and the TB4/USB4 direct-connection user guide (forum.terra-master.com p=58978, p=59270). Both returned 403.",
+  "UGREEN KB articles 609/607 (support.ugnas.com). They are JS-rendered and returned only the page title, so I could not read their model list or firmware text first-hand.",
+  "UGREEN iDX6011 / iDX6011 Pro Thunderbolt direct-connect support. I found no UGREEN document that lists it; one search snippet says the Pro has front USB-C rather than Thunderbolt 4.",
+  "A minimum macOS version for the QNAP TS-h966TX. Its US product page and US store page state none."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2599691
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that, as of November 2026, Synology's Container Manager still runs Docker Engine 24.0.2, which tops out at Docker API 1.43. That is below the v1.44 that Nextcloud AIO's own code calls by default, so on the DS925+ or DS225+ AIO only runs if you override the API version, a setup AIO's maintainers say they don't support. The UGREEN DXP models (29.6.2), Asustor (29.6.2), TerraMaster (27.2.1) and QNAP (27.1.2) all ship engines at or above 1.44.",
+ "standout": 2,
+ "standout_why": "The page ChatGPT cited most (the nextcloud/all-in-one readme) only says that on Synology DSM you 'likely need to adjust the internally used api version'. It gives no engine version, no API number and nothing on other brands. One chat got GitHub issue #7365 as an uncited result: it reports Container Manager 24.0.2-1606 as API 1.43 against AIO's v1.44, but it dates from January 2026, covers only Synology, and its reporter's suggested workaround (turning off the Docker Socket Proxy that AppAPI needs) was never confirmed. racksandwatts.com (cited) already covers the separate DS925+ limit that M.2 pools need SSDs on Synology's compatibility list, so that point is taken. Neither esp32.co.uk nor racksandwatts gives a Docker engine version for any brand. None of the results says that Synology's August 2026 Container Manager update (24.0.2-1706) stayed on the 24.0.2 engine, gives the per-brand engine versions, or says the UGREEN DH2300 has no official Docker at all. Our own page's Synology row says only 'AIO in Container Manager', with no API caveat.",
+ "decides": "This backs ChatGPT's choice of the UGREEN DXP4800 Plus or DXP2800 over the DS925+ for Nextcloud AIO. UGOS Pro's Docker 29.6.2 meets AIO's default API with nothing to configure. On the DS925+ (and DS225+) the shopper has to run AIO with DOCKER_API_VERSION overridden on an engine that went end-of-life in 2024, and also mount Synology's own socket path. Container Manager's GUI can't manage AIO, so it's run over SSH or a scheduled task, and AppAPI/External Apps errors have been reported. The DS925+ can still put its database on NVMe, but only with Synology-verified SSDs for an M.2 pool. QNAP, TerraMaster and Asustor all clear the API bar. In UGREEN's cheaper home line, the DS2300 should read DH2300: it has no official Docker, so it drops out for AIO, while the DH4300 Plus does officially support Docker.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "TerraMaster F4-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Docker API version Nextcloud AIO calls by default",
+   "value": "v1.44 (code constant API_VERSION = 'v1.44'; the DOCKER_API_VERSION env var overrides it)",
+   "source": "https://raw.githubusercontent.com/nextcloud/all-in-one/main/php/src/Docker/DockerActionManager.php",
+   "source_title": "nextcloud/all-in-one php/src/Docker/DockerActionManager.php (main)",
+   "read": "2026-11-13",
+   "note": "Read straight from AIO's source on the main branch. If DOCKER_API_VERSION is unset, every Docker call goes to /v1.44/."
+  },
+  {
+   "product": "general",
+   "label": "AIO support policy for API override and the Synology steps",
+   "value": "\"only the default api version (unset this variable) is supported and tested by the maintainers of Nextcloud AIO\"; on Synology DSM you 'likely need to adjust the internally used api version' and mount /volume1/docker/docker.sock, and 'the Synology Docker GUI will not work with that'",
+   "source": "https://github.com/nextcloud/all-in-one/blob/main/readme.md",
+   "source_title": "all-in-one/readme.md at main · nextcloud/all-in-one",
+   "read": "2026-11-13",
+   "note": "This is Nextcloud's own document, and ChatGPT cited it, but it gives no engine version for any NAS brand."
+  },
+  {
+   "product": "general",
+   "label": "Highest API each Docker Engine version supports",
+   "value": "24.0 → 1.43; 25.0 → 1.44; 27.0/27.1 → 1.46; 27.2–27.5 → 1.47; 29.6–29.8 → 1.55",
+   "source": "https://docs.docker.com/reference/api/engine/",
+   "source_title": "Docker Engine API version matrix (Docker Docs)",
+   "read": "2026-11-13",
+   "note": "Used to turn each NAS's engine version into an API version and compare it with AIO's v1.44."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Docker Engine in Container Manager (current package)",
+   "value": "Docker Engine 24.0.2 (Container Manager 24.0.2-1706, released 2026-08-26, needs DSM 7.4+) = max API 1.43, below AIO's default 1.44",
+   "source": "https://mariushosting.com/synology-new-docker-version-24-0-2-1706/",
+   "source_title": "Synology: New Docker Version 24.0.2-1706 (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "Marius Hosting reports the update moved 24.0.2-1606 to 24.0.2-1706 with two bug fixes, kept engine 24.0.2, and says that engine went end-of-life on 2024-06-08. The API figure comes from the Docker docs matrix (24.0 → 1.43). The same Container Manager package covers the DS225+."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Field report of AIO AppAPI failing on Container Manager 24.0.2",
+   "value": "AIO log: 'only v1.44 is officially supported'; error 'AppAPI default deploy daemon docker_aio is not accessible'; reporter (on a DS224+) saw 300+ errors per minute. The maintainer redirected the report to nextcloud/app_api and closed it 2026-01-05 with no fix",
+   "source": "https://github.com/nextcloud/all-in-one/issues/7365",
+   "source_title": "AppAPI connection failure on Synology DSM (Docker API 1.43 vs 1.44 requirement) · Issue #7365",
+   "read": "2026-11-13",
+   "note": "One user's report on Container Manager 24.0.2-1606. The suggested workaround, unchecking the Docker Socket Proxy, comes from the reporter and was not confirmed. The readme says the Socket Proxy is needed for App API."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Docker Engine in UGOS Pro",
+   "value": "Docker Engine 29.6.2 (UGOS Pro 1.19.1.0126, rolled out about 2026-08-31; up from 29.4.3) = max API 1.55, at or above AIO's 1.44",
+   "source": "https://mariushosting.com/ugreen-nas-new-docker-engine-29-6-2/",
+   "source_title": "UGREEN NAS: New Docker Engine 29.6.2 (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "The post says 'UGREEN NAS' generally and doesn't list models. UGOS Pro is the OS for the x86 DXP line, so this also covers the DXP2800. API figure from the Docker docs matrix."
+  },
+  {
+   "product": "general",
+   "label": "Docker Engine by NAS brand (Marius Hosting comparison)",
+   "value": "Synology 24.0.2; TerraMaster 27.2.1; UGREEN 29.6.2; ASUSTOR 29.6.2; QNAP 27.1.2",
+   "source": "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/",
+   "source_title": "Docker Engine: Synology, TerraMaster, UGREEN, ASUSTOR, QNAP (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "Page says it was updated 2026-10-12. By the Docker docs matrix: QNAP 27.1.2 → API 1.46, TerraMaster 27.2.1 → 1.47, Asustor and UGREEN 29.6.2 → 1.55, so all clear AIO's v1.44. Synology 24.0.2 → 1.43 is the only one below it."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "M.2 NVMe storage pool requirement",
+   "value": "\"Creating M.2 storage pools requires the use of Synology-verified SSDs\"; 2 × M.2 2280 NVMe; SSD cache only with select compatible SSDs",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-13",
+   "note": "This limits the 'Nextcloud database on NVMe' setup ChatGPT recommended to Synology-verified SSDs. racksandwatts (cited) already makes this point."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "RAM expansion support",
+   "value": "4 GB DDR4 ECC pre-installed, 32 GB max (16 GB × 2). With third-party RAM, Synology won't provide full product warranty or technical support",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-13",
+   "note": "Bears on ChatGPT's advice to upgrade the DS925+ to 8–16 GB for Nextcloud: to keep full support, the extra RAM has to be a Synology module."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Docker support",
+   "value": "\"The DH2300 does not officially support Docker\". The DH4300 Plus and current DXP models do. Only DXP models support Virtual Machine Manager",
+   "source": "https://ai.ugreen.com/pages/solution-software",
+   "source_title": "UGREEN NAS Software and UGOS Pro FAQs",
+   "read": "2026-11-13",
+   "note": "Maker FAQ. With no official Docker, the DH2300 can't run Nextcloud AIO, which only ships as a Docker install. The DH4300 Plus can, but it can't run a VM. UGREEN adds that it doesn't guarantee third-party containers."
+  }
+ ],
+ "unsourced": [
+  "Synology's own Container Manager release-notes text for 24.0.2-1706: synology.com/en-us/releaseNote/ContainerManager loads by script and came back empty, and fetching its JSON with curl was blocked by a permission prompt.",
+  "UGREEN's official changelog naming Docker Engine 29.6.2 in UGOS Pro 1.19.1.0126, and the engine version in the current UGOS Pro 1.21.x: no ugreen.com or ugnas.com release note turned up.",
+  "QNAP's official Container Station release notes with a Docker Engine version: qnap.com/en-us/app_releasenotes/list.php?app_choose=container-station loads by script. The 27.1.2 figure is from Marius Hosting only.",
+  "Docker Engine version on the UGREEN DH4300 Plus (ARM, runs UGOS rather than UGOS Pro).",
+  "Which optional AIO containers, if any, are unavailable on arm64: the readme's visible text lists arm64 as supported but names no exclusions.",
+  "Whether third-party RAM restrictions or drive compatibility-list rules apply to the DS225+ in the same wording as the DS925+: I didn't open its spec page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.3063027
+ }
+}

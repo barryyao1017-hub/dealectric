@@ -1,0 +1,104 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 30 V2's '4.5 W standby' is the idle draw with only the AC output on, or that it doubles to 9 W when the DC outputs are also on. The 12 V tip (DC for the router, AC for the modem) therefore makes this unit's overhead worse: for a 20 W router and modem, estimated runtime falls from about 11.8 h to about 9.9 h.",
+ "standout": 2,
+ "standout_why": "I compared homepowerfacts.com (cited), outagemath.com (cited), backupcalc.com (cited) and runtimewise.com (rank 5). Homepowerfacts gives idle draw only for 1 kWh-plus units and none for anything under 300 Wh. Outagemath says makers don't publish idle draw. Backupcalc says idle is 'often 10–30 W' and says to use 12 V DC to avoid it. Runtimewise covers no idle draw or switchover at all. None of the four gives a switchover time for any model. None says that turning on DC as well as AC adds overhead on some units. All four use a flat 85% efficiency factor.",
+ "decides": "It keeps the Elite 30 V2 as the pick: it has the only small-unit idle figure split by output, and its ≤10 ms UPS claim is unambiguous. The EcoFlow RIVER 3's own figures conflict (StorageReview's spec table says <20 ms, its text says 10 ms), and Jackery's 240 v2 is 20 ms. It also changes the advice for the Elite 30 V2: put the router and modem on the same output type, so only one bank is on. Splitting them between AC and DC turns on both banks and costs about 2 hours at 20 W. One caveat: if ECO mode is on, it may cut AC at low load. I couldn't confirm that from the manual.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "Jackery Explorer 240 v2",
+  "Tenergy T320",
+  "ALLPOWERS R600",
+  "Anker SOLIX C300"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "No-load draw, AC output only",
+   "value": "4.5 W",
+   "source": "https://computingforgeeks.com/power-station-vs-ups-homelab/",
+   "source_title": "Power Station vs UPS for a Homelab: Switchover Time and NUT Support (ComputingForGeeks, Valentine Cheronoh, updated 2026-10-19)",
+   "read": "2026-11-14",
+   "note": "ComputingForGeeks reports that BLUETTI lists 4.5 W with only AC on. This matches the 'only 4.5W standby' line on BLUETTI's US store page, but that page doesn't say which outputs it covers."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "No-load draw, AC and DC outputs both on",
+   "value": "9 W",
+   "source": "https://computingforgeeks.com/power-station-vs-ups-homelab/",
+   "source_title": "Power Station vs UPS for a Homelab: Switchover Time and NUT Support (ComputingForGeeks, Valentine Cheronoh, updated 2026-10-19)",
+   "read": "2026-11-14",
+   "note": "ComputingForGeeks attributes the figure to BLUETTI. Estimated runtime = 288 Wh ÷ (load + idle draw). 20 W all on AC: 288 ÷ 24.5 = 11.8 h. 20 W split between AC and DC: 288 ÷ 29 = 9.9 h. Both figures leave out conversion losses that rise with load, so treat them as upper bounds."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover (maker)",
+   "value": "≤10 ms, 980 W bypass",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US store)",
+   "read": "2026-11-14",
+   "note": "Read from the store's product data with storecheck.py. ComputingForGeeks says it found no independent measurement."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Cycle life (maker)",
+   "value": "over 3,000 cycles, 10-year lifespan",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US store)",
+   "read": "2026-11-14",
+   "note": "BLUETTI doesn't state the end-of-life capacity (70% or 80%), so this can't be compared directly with makers who quote cycles to 80%."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$289.99",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US store)",
+   "read": "2026-11-14",
+   "note": "Unit only, in stock, not on sale (compare_at price is also $289.99). The bundles with a 60 W or 100 W solar panel are $399.99 and $489.99."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "UPS switchover, as stated by a named reviewer",
+   "value": "<20 ms in the spec table; the article text says 10 ms",
+   "source": "https://storagereview.com/review/ecoflow-river-3-review",
+   "source_title": "EcoFlow RIVER 3 Review (StorageReview, Corinne OBrien, 2024-10-07)",
+   "read": "2026-11-14",
+   "note": "The review contradicts itself and doesn't say which variant it tested. The 9 ms StorageReview measurement that ComputingForGeeks quotes is for the RIVER 3 Plus, not the RIVER 3."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "Measured usable energy",
+   "value": "210 Wh of 245 Wh rated (86%)",
+   "source": "https://storagereview.com/review/ecoflow-river-3-review",
+   "source_title": "EcoFlow RIVER 3 Review (StorageReview, Corinne OBrien, 2024-10-07)",
+   "read": "2026-11-14",
+   "note": "Measured with a 300 W fan load. At 20 W the inverter's idle share is larger, so usable energy at router loads will likely be lower than 86%."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages assume about idle draw",
+   "value": "outagemath: makers don't publish it; backupcalc: 'often 10–30 W'; homepowerfacts: figures only for 1 kWh-plus units",
+   "source": "https://www.outagemath.com/appliances/wifi-router/",
+   "source_title": "How Long Will a Power Station Run a Wi-Fi Router? (OutageMath)",
+   "read": "2026-11-14",
+   "note": "Also read on 2026-11-14: https://backupcalc.com/guides/how-long-will-a-power-station-run-a-wifi-router/ and https://homepowerfacts.com/can-it-run/wifi-router-modem/. BLUETTI's 4.5 W is well below backupcalc's 10–30 W range."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 30 V2 ECO-mode auto-off threshold, timer and default setting: BLUETTI's own manual PDF and the manuals.plus copy wouldn't render or returned 403, and the BLUETTI forum was down.",
+  "Confirmation of BLUETTI's 4.5 W / 9 W split on a BLUETTI-hosted page or manual: the store data says only '4.5W standby'.",
+  "EcoFlow RIVER 3 switchover per variant (standard vs '10 ms UPS' version) and its AC no-load draw: us.ecoflow.com returned HTTP 429, and the English manual PDF wouldn't parse.",
+  "Jackery Explorer 240 v2 no-load draw, auto-off defaults and today's price: jackery.com returned HTTP 429 twice.",
+  "Anker SOLIX C300 no-load draw and auto-off timers: the support.ankersolix.com user guide page didn't render.",
+  "Tenergy T320 switchover, no-load draw and price: the product page I tried returned 404.",
+  "ALLPOWERS R600 no-load draw and ECO behaviour: I ran out of tool budget before checking."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.2019790000000001
+ }
+}

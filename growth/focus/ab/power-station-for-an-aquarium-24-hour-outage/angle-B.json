@@ -1,0 +1,200 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got turns the 75-gallon tank's own heat loss into a heater load. AquariumToolbox's cooling times for a 75-gallon tank at 77 °F in a 59 °F room work out to about 52 W wrapped in a blanket (17% duty on a 300 W heater), 184 W with only a glass lid (61%) and 323 W open (more than a 300 W heater can supply). That makes a wrapped tank about a 2 kWh day: the Elite 300 lasts about 31 h, the Elite 200 V2 about 24 h and the DELTA 2 Max about 22 h. With only a lid, no candidate passes about 12 h.",
+ "standout": 3,
+ "standout_why": "I compared five pages. The Dealectric page ChatGPT cited and both ChatGPT answers pick a heater duty cycle (15–30% or 25%) with no physical basis. The Reefs.com Elite 100 V2 test used no heater. Planetfish gives a 75-gallon planted tank at 95 W but no heat loss. Colovma and ouraquariumlife only say to wrap the tank, with no numbers. The AquariumToolbox outage calculator gives the 75-gallon cooling times and a 323 W loss for an open tank, but never converts the lidded or wrapped cases into steady watts, 24-hour Wh or runtime on any power station.",
+ "decides": "The heater's duty cycle comes from how well the tank is insulated, not from the shopper's guess, so insulation decides the pick before capacity does. In a 59 °F room, a blanket-wrapped tank (≈69.5 W of equipment plus the station's own draw) is covered for 24 h by the BLUETTI Elite 300, with about 7 h to spare. The Elite 200 V2 ($899) just reaches 24 h, and the DELTA 2 Max falls short at about 22 h. A tank with only a lid needs about 5.2 kWh, which no single candidate holds; the Elite 300 lasts about 12 h. An open tank loses more heat than a 300 W heater can replace, so no battery holds temperature. In a 68 °F room with only a lid, the Elite 300 lasts about 21 h. This supports the Elite 300 pick, with the condition that the tank is wrapped. It also makes the Elite 200 V2 the cheaper pick when wrapped, at $0.47 per measured usable Wh against $0.45 for the Elite 300.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 2 Max",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Heat stored in 75 gal of water for a 9 °F drop (77→68 °F)",
+   "value": "1,645 Wh",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "The page uses 283 L of water and 4,186 J per litre per °C. 283 × 4,186 × 5 °C ÷ 3,600 = 1,645 Wh."
+  },
+  {
+   "product": "general",
+   "label": "Heat loss of a 75-gal tank, open top, 77 °F water in a 59 °F room",
+   "value": "323 W (stated); about 7.75 kWh per 24 h",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "323 W is the page's own figure. 323 × 24 = 7,752 Wh. That is more than a 300 W heater's full output, so no heater holds temperature. Cross-check from the 6.8 h cooling time: 1,645 ÷ 6.8 × 1.386 = 335 W, within 4% of the stated figure."
+  },
+  {
+   "product": "general",
+   "label": "Steady heater load, 75-gal tank with glass lid, 59 °F room",
+   "value": "≈184 W (61% duty on a 300 W heater); ≈4.4 kWh per 24 h",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "The page gives 12.4 h to cool from 77 to 68 °F with a glass lid. 1,645 Wh ÷ 12.4 h × 1.386 = 184 W. The 1.386 factor (18 × ln2 ÷ 9) converts the average loss during cooling into the loss at the full 18 °F gap, assuming Newtonian cooling."
+  },
+  {
+   "product": "general",
+   "label": "Steady heater load, 75-gal tank wrapped in a blanket, 59 °F room",
+   "value": "≈52 W (17% duty on a 300 W heater); ≈1.25 kWh per 24 h",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "The page gives 44 h to cool from 77 to 68 °F when wrapped. 1,645 ÷ 44 × 1.386 = 52 W. In a 68 °F room the gap halves to about 26 W (linear scaling, my estimate). Lidded in a 68 °F room scales to about 92 W."
+  },
+  {
+   "product": "general",
+   "label": "Non-heater load: canister filter plus air pump",
+   "value": "17.5 W (15 W + 2.5 W); 420 Wh per 24 h",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "Device wattages are AquariumToolbox's 75-gallon examples. 17.5 × 24 = 420 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy",
+   "value": "≈2,650 Wh of 3,014.4 Wh at ~200 W (just under 88%)",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review — Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Measured by Notebookcheck (Marcus Schwarten, 2026-03-09). Notebookcheck lists the weight as 26.3 kg."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw",
+   "value": "≈15 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review — The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Measured by The Solar Lab, which does not say whether the AC inverter was on. Solar Lab lists the weight as 58 lb and efficiency as about 86%."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours on battery: wrapped tank, 59 °F room",
+   "value": "≈31.4 h",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "Notebookcheck Elite 300 review + AquariumToolbox heat loss",
+   "read": "2026-11-13",
+   "note": "2,650 ÷ (52 + 17.5 + 15 idle) = 31.4 h. Conservative, because the measured 2,650 Wh already includes some loss."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours on battery: lid only, 59 °F room / lid only, 68 °F room / open, 59 °F room",
+   "value": "≈12.2 h / ≈21.3 h / ≈7.5 h",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "Notebookcheck Elite 300 review + AquariumToolbox heat loss",
+   "read": "2026-11-13",
+   "note": "2,650 ÷ (184 + 17.5 + 15) = 12.2 h. 2,650 ÷ (92 + 17.5 + 15) = 21.3 h. 2,650 ÷ (323 + 17.5 + 15) = 7.5 h. The open case also cannot hold temperature, since 323 W is more than a 300 W heater delivers."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price and cost per measured usable Wh",
+   "value": "$1,199; $0.45 per Wh",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh — BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Price from the BLUETTI US store (storecheck). 1,199 ÷ 2,650 = $0.452 per Wh. Measured Wh per lb: 2,650 ÷ 58 = 45.7."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable AC energy",
+   "value": "≈1,910 Wh of 2,073.6 Wh",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable power meets lab-grade reliability: BLUETTI Elite 200 V2 review — StorageReview",
+   "read": "2026-11-13",
+   "note": "Measured by StorageReview (2025-04-25); the test load is not stated. A full recharge took 2.44 kWh. Weight 53.4 lb."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw, AC and DC on",
+   "value": "≈10 W",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 review — The Gadgeteer",
+   "read": "2026-11-13",
+   "note": "The Gadgeteer lists this as a feature ('10w/h with AC and DC left on') without describing a test."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Hours on battery: wrapped tank, 59 °F / lid only, 59 °F / lid only, 68 °F",
+   "value": "≈24.0 h / ≈9.0 h / ≈16.0 h",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview Elite 200 V2 + AquariumToolbox heat loss",
+   "read": "2026-11-13",
+   "note": "1,910 ÷ (52 + 17.5 + 10) = 24.0 h. 1,910 ÷ (184 + 17.5 + 10) = 9.0 h. 1,910 ÷ (92 + 17.5 + 10) = 16.0 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price and cost per measured usable Wh",
+   "value": "$899; $0.47 per Wh",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh — BLUETTI US",
+   "read": "2026-11-13",
+   "note": "899 ÷ 1,910 = $0.471 per Wh. Measured Wh per lb: 1,910 ÷ 53.4 = 35.8. The page shows both 2,080 Wh and 2,073.6 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Measured usable AC energy",
+   "value": "1,800 Wh of 2,048 Wh at 350 W",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-2-max-portable-power-station-review",
+   "source_title": "EcoFlow DELTA 2 Max portable power station review — StorageReview",
+   "read": "2026-11-13",
+   "note": "Measured by StorageReview (Kevin OBrien, 2023-07-09). A full recharge took 2,370 Wh. Net weight 23 kg."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Idle draw, AC inverter on, no load",
+   "value": "≈13.6 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-2-max-review",
+   "source_title": "EcoFlow DELTA 2 Max Review — The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Measured by The Solar Lab, which also measured 86% inverter efficiency. Weight about 50 lb."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Hours on battery: wrapped tank, 59 °F / lid only, 59 °F / lid only, 68 °F",
+   "value": "≈21.7 h / ≈8.4 h / ≈14.6 h",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-2-max-portable-power-station-review",
+   "source_title": "StorageReview DELTA 2 Max + Solar Lab idle + AquariumToolbox heat loss",
+   "read": "2026-11-13",
+   "note": "1,800 ÷ (52 + 17.5 + 13.6) = 21.7 h. 1,800 ÷ (184 + 17.5 + 13.6) = 8.4 h. 1,800 ÷ (92 + 17.5 + 13.6) = 14.6 h."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Price and cost per measured usable Wh",
+   "value": "$1,029; $0.57 per Wh",
+   "source": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "source_title": "EcoFlow DELTA 2 Max Portable Power Station — EcoFlow US",
+   "read": "2026-11-13",
+   "note": "Price from the EcoFlow US store (storecheck). 1,029 ÷ 1,800 = $0.572 per Wh. Measured Wh per lb: 1,800 ÷ 50 = 36."
+  },
+  {
+   "product": "general",
+   "label": "24-h energy needed for a lidded tank in a 59 °F room",
+   "value": "≈5.2 kWh",
+   "source": "https://aquariumtoolbox.com/calculators/power-outage",
+   "source_title": "Aquarium Power Outage Calculator — AquariumToolbox",
+   "read": "2026-11-13",
+   "note": "(184 + 17.5 + 15) × 24 = 5,196 Wh. That is about double the Elite 300's measured 2,650 Wh, so a lid alone is not enough insulation for any single candidate."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS R4000 US price: storecheck failed on allpowers.com, the allpowers.com page I opened carried no specs, and search returned only UK/EU store prices and a Walmart listing ($1,998) whose product I could not confirm, so I report no R4000 runtime or cost per Wh.",
+  "ALLPOWERS R4000 measured usable Wh and idle draw: no reviewer page opened.",
+  "Elite 300 idle draw specifically with the AC inverter on: The Solar Lab's 15 W does not state the mode, and Notebookcheck does not report idle.",
+  "Elite 200 V2 measured idle draw and its StorageReview discharge test load: neither is stated in the pages opened.",
+  "Steady heat loss at room temperatures other than 59 °F, taken from the calculator itself rather than scaled linearly: the calculator is interactive and its page text gives only the 59 °F example plus cooling times at 64 °F and 50 °F.",
+  "Anker SOLIX C2000X Gen 2 and EcoFlow DELTA 3 Max measured usable Wh: not researched within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.1637725999999997
+ }
+}

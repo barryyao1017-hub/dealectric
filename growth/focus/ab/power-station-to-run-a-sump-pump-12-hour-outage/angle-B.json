@@ -1,0 +1,159 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that a common 1/3 hp pump, the Zoeller M53 (9.7 A × 115 V = 1,116 W running, about 2,979 W to start), draws about 72% more than the 650 W that RunTimeFit assumed. At RunTimeFit's own 25% duty, the pick it and ChatGPT gave (PECRON F3000LFP) runs about 9 hours, not 16. Of the stations here, only the DELTA Pro 3 at about 11.8–12 h comes within reach of 12 hours at that duty.",
+ "standout": 3,
+ "standout_why": "I compared against runtimefit.com (cited: 650 W pump, 25% duty, PECRON 16 h), testedwatts.com (cited: has the M53 at 1,116 W but only works out runtime for 1 kWh and 2 kWh stations at 2, 5 and 10 min/hr) and outagereadyhq.com (cited: 800 W pump at 5 and 20 min/hr, cost per rated Wh). None of them applies a real pump's nameplate draw to the 3–4 kWh stations they recommend. None gives the highest duty cycle each station can sustain for 12 hours. None uses a measured usable-Wh figure in place of an assumed 85%. None puts a number on a literal 13 hp load.",
+ "decides": "This changes the pick. With an M53-class pump at 25% duty, the 3 kWh stations (PECRON F3000LFP and BLUETTI Elite 300) last about 9 hours, and the most duty they can hold for 12 hours is about 19%. The Anker SOLIX F3800 Plus reaches about 11.3 h. The EcoFlow DELTA Pro 3 is the only one near 12 h (about 11.8–12 h), but it is currently unavailable. The page should lead with the highest duty each station can carry for 12 h (about 19% for 3 kWh, about 24% for 4 kWh) and tell readers to read their pump's amps off the label. Read literally, 13 hp is about 9.7 kW of shaft power, which is more than any listed portable station's continuous output (the highest here is 6,000 W). So the 13 hp answer is 'no portable station'.",
+ "candidates": [
+  "PECRON F3000LFP",
+  "BLUETTI Elite 300",
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "ALLPOWERS R4000",
+  "Growatt HELIOS 3600"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Zoeller M53 (1/3 hp) running and starting draw",
+   "value": "1,116 W running (9.7 A at 115 V); about 2,979 W starting (25.9 A at 115 V)",
+   "source": "https://testedwatts.com/2026/09/24/power-station-sump-pump/",
+   "source_title": "Can a Portable Power Station Run a Sump Pump? - Tested Watts",
+   "read": "2026-11-13",
+   "note": "9.7 × 115 = 1,116 W; 25.9 × 115 = 2,979 W. Tested Watts takes the 25.9 A start figure from a retailer spec table. Retailer listings found by search also give 9.7 A at 115 V for the M53."
+  },
+  {
+   "product": "general",
+   "label": "Average draw of an M53 at 25% duty (15 min/hr) and at 10 min/hr",
+   "value": "289 W at 25%; 196 W at 10 min/hr",
+   "source": "https://testedwatts.com/2026/09/24/power-station-sump-pump/",
+   "source_title": "Can a Portable Power Station Run a Sump Pump? - Tested Watts",
+   "read": "2026-11-13",
+   "note": "Tested Watts' formula with 10 W inverter overhead: 1,116 × 0.25 + 10 = 289 W; 1,116 × 10/60 + 10 = 196 W."
+  },
+  {
+   "product": "general",
+   "label": "Usable energy needed for 12 h at 25% duty with an M53",
+   "value": "3,468 Wh usable, about 4,080 Wh rated at 85%",
+   "source": "https://testedwatts.com/2026/09/24/power-station-sump-pump/",
+   "source_title": "Can a Portable Power Station Run a Sump Pump? - Tested Watts",
+   "read": "2026-11-13",
+   "note": "12 h × 289 W = 3,468 Wh; 3,468 / 0.85 = 4,080 Wh rated."
+  },
+  {
+   "product": "general",
+   "label": "Pump assumption behind the rival pick (RunTimeFit)",
+   "value": "650 W running, about 1,300 W starting, 25% duty; PECRON F3000LFP 3,072 Wh, 16 h, $899 (checked by RunTimeFit Oct 17, 2026)",
+   "source": "https://runtimefit.com/scenarios/sump-pump-storm-12-hours",
+   "source_title": "What size power station runs a sump pump through a 12-hour storm · RunTimeFit",
+   "read": "2026-11-13",
+   "note": "The M53 at 1,116 W is 1,116 / 650 = 1.72×, about 72% above RunTimeFit's assumed draw."
+  },
+  {
+   "product": "PECRON F3000LFP",
+   "label": "Hours at 25% duty with an M53 / highest duty sustainable for 12 h",
+   "value": "9.0 h / 18.6% (about 11 min/hr)",
+   "source": "https://runtimefit.com/scenarios/sump-pump-storm-12-hours",
+   "source_title": "What size power station runs a sump pump through a 12-hour storm · RunTimeFit",
+   "read": "2026-11-13",
+   "note": "3,072 Wh (RunTimeFit) × 0.85 = 2,611 Wh; 2,611 / 289 = 9.0 h; (2,611/12 − 10) / 1,116 = 18.6%. At 10 min/hr: 2,611 / 196 = 13.3 h. I could not open the maker's page for this one."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy",
+   "value": "2,670 Wh (89% of 3,014.4 Wh rated)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3,014Wh, 2,400W and an 8ms UPS Switchover in a 58-Pound Box (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview measured 2.67 kWh with a Kill-A-Watt from full to empty (load not stated); 2,670 / 3,014.4 = 89%."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours at 25% duty with an M53 / highest duty sustainable for 12 h",
+   "value": "9.2 h / 19.0% (about 11 min/hr)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "2,670 / 289 = 9.2 h; (2,670/12 − 10) / 1,116 = 19.0%. At 10 min/hr: 2,670 / 196 = 13.6 h. Our current page lists 11.9 h at 25%, which only holds for a pump of about 850 W or less."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Start headroom against the M53",
+   "value": "2,400 W continuous, below the 2,979 W start; 4,800 W surge/lifting listed, but StorageReview says lifting applies to resistive loads only",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview did not run a motor start test. It quotes BLUETTI's FAQ that motor loads draw 2–4× their rating at start and should be sized against 2,400 W."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "US price and cost per measured usable Wh",
+   "value": "$1,199 (in stock); $0.45 per usable Wh",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "storecheck read the variant at $1,199, available. $1,199 / 2,670 Wh = $0.449."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Hours at 25% duty with an M53 / highest duty sustainable for 12 h",
+   "value": "11.3 h / 23.5% (about 14 min/hr)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-13",
+   "note": "3,840 Wh × 0.85 = 3,264 Wh; 3,264 / 289 = 11.3 h; (3,264/12 − 10) / 1,116 = 23.5%. At 10 min/hr: 3,264 / 196 = 16.7 h. Page shows 6,000 W total, 2,400 W per 120 V outlet, no surge figure, 3,200 W solar input, 136.7 lb, 5-year warranty. Listed as sold out with no price shown."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar hours to replace one 12 h storm at 25% M53 duty",
+   "value": "about 1.1 h at the full 3,200 W input",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-13",
+   "note": "12 h × 289 W = 3,468 Wh at the outlet; 3,468 / 3,200 W = 1.08 h, before charge losses and assuming the array delivers its full rating. No panel bundle is listed on the page."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Hours at 25% duty with an M53 / highest duty sustainable for 12 h",
+   "value": "about 11.8 h / about 24.5% (about 15 min/hr)",
+   "source": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "source_title": "Powerful Yet Simple: DELTA Pro 3 | EcoFlow",
+   "read": "2026-11-13",
+   "note": "Store text gives 4 kWh base (expandable 4–48 kWh), 4,000 W continuous, X-Boost to 6,000 W. 4,000 × 0.85 = 3,400 Wh; 3,400 / 289 = 11.8 h; (3,400/12 − 10) / 1,116 = 24.5%. If the base is the commonly cited 4,096 Wh: 3,482 / 289 = 12.0 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "US price, stock and cost per usable Wh",
+   "value": "$2,799 (compare-at $3,299), currently unavailable; about $0.82 per usable Wh",
+   "source": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "source_title": "Powerful Yet Simple: DELTA Pro 3 | EcoFlow",
+   "read": "2026-11-13",
+   "note": "storecheck shows every variant unavailable, and the page says 'Currently unavailable. Future availability is yet to be determined'. $2,799 / 3,400 Wh = $0.82."
+  },
+  {
+   "product": "general",
+   "label": "A literal 13 hp pump against portable stations",
+   "value": "about 9,698 W shaft output, more than the highest continuous output here (6,000 W, Anker F3800 Plus)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-13",
+   "note": "13 × 746 W/hp = 9,698 W of mechanical output, before motor losses. That alone is above 6,000 W, so no portable station on this list can run a 13 hp motor."
+  }
+ ],
+ "unsourced": [
+  "Zoeller's own M53 page and spec sheet: zoellerpumps.com returned 404, and the cooneybrothers.com catalog PDF would not extract. The 9.7 A and 25.9 A figures come from Tested Watts.",
+  "ALLPOWERS R4000 current US price and specs: iallpowers.com returned HTTP 429 twice, and allpowers.com had no specs. Search snippets put it at $1,699, but I did not open the page.",
+  "Growatt HELIOS 3600 price and 4,500 W surge: growattportable.com returned HTTP 429. I only saw the price in search snippets.",
+  "Anker SOLIX F3800 Plus price and surge rating: the maker page shows it sold out, with 'Price Loading' and no surge figure.",
+  "Anker SOLIX S5000 maker page: ankersolix.com/products/s5000 returned 404.",
+  "PECRON F3000LFP maker page and today's price: not opened. Capacity and the $899 price come from RunTimeFit's Oct 17, 2026 check.",
+  "A measured usable-Wh test for the F3800 Plus, DELTA Pro 3 and PECRON: I did not find one, so I used an assumed 85%.",
+  "A motor start test with a sump pump on any of these stations: none of the pages I opened ran one."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1442905
+ }
+}

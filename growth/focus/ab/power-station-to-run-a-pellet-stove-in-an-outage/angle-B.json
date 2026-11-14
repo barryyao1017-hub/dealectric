@@ -1,0 +1,173 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states a station's measured AC-on idle draw (19 W on the BLUETTI Elite 300, 19.5 W on the Apex 300) or works the 12-hour runtime from measured delivered Wh plus that idle draw. Done that way, the Apex 300 drops from Home Battery Report's 12.8 h to about 9.7 h on a Quadra-Fire Classic Bay 1200 (216 VA), and the Elite 300 lands at about 12.0 h with no margin.",
+ "standout": 3,
+ "standout_why": "Pages compared: Home Battery Report (rated Wh ÷ stove VA; it says it ignores inverter losses and standby draw and calls its figures ceilings), Power Fallback (flat 0.85 efficiency, no idle draw), BuyerSheet (105 W PelPro PP60 at 85%, no capacities or idle draw), our current page (\"+ idle\" appears but no idle wattage is given) and ChatGPT's two answers (flat 85%). WattMatrix returned 404, Enough Watts failed with a TLS certificate error and the Harman PDF came back as unreadable binary. No page I could open names a per-station idle draw or uses a measured delivered-Wh figure in its runtime math.",
+ "decides": "This confirms the BLUETTI Elite 300 as the pick for stoves running at or below about 150–200 W. At 150 W with 3 ignitions it gives about 15.5 h, a 3.5 h margin. At a Classic Bay 1200's 216 VA it gives exactly 12.0 h, so a shopper with a 200 W+ stove needs about 2,900+ delivered Wh and should step up a size. The idle and capacity measurements also knock the BLUETTI Apex 300 out of the 12-hour slot for 216 VA stoves (9.7 h), although rated-Wh math gives it 12.8 h. The Elite 200 V2 ($899) covers 12 h only on a low-draw stove like the Quadra-Fire Santa Fe (127 VA).",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Apex 300",
+  "BLUETTI Elite 200 V2",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "AC energy delivered, full discharge",
+   "value": "2,819 Wh of 3,014 Wh rated (about 94%)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man – BLUETTI Elite 300 review: 3kWh capacity but there are compromises",
+   "read": "2026-11-13",
+   "note": "The Technology Man ran a constant 1 kW resistive heater for 2 h 46 min. 2,819 ÷ 3,014 = 0.935."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw with AC inverter on, no load, Eco mode off",
+   "value": "about 19 W (DC only: under 4 W)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man – BLUETTI Elite 300 review: 3kWh capacity but there are compromises",
+   "read": "2026-11-13",
+   "note": "Battery fell from 100% to 90% over 16 h with AC on: 301 Wh ÷ 16 h ≈ 19 W. The Solar Lab separately measured about 15 W idle without saying which outputs were on."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours on Quadra-Fire Classic Bay 1200 (1.88 A run ≈ 216 VA)",
+   "value": "about 12.0 h",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "The Home Battery Report – Battery backup for a pellet stove",
+   "read": "2026-11-13",
+   "note": "2,819 Wh ÷ (216 + 19 W) = 12.0 h. The stove load comes from this page (published amps × 115 V). Delivered Wh and idle draw are from The Technology Man. VA ≥ W, and the idle draw is partly counted already in the 1 kW test, so this figure is conservative."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours at 150 W with 3 relights",
+   "value": "about 15.5 h",
+   "source": "https://powerfallback.com/use-cases/ups-for-pellet-stove/",
+   "source_title": "Power Fallback – Pellet Stove on a UPS: Shutdown Minutes or Hours of Heat?",
+   "read": "2026-11-13",
+   "note": "(2,819 − 3 × 69 Wh) ÷ (150 + 19 W) = 15.5 h. The 58–69 Wh per ignition is Power Fallback's figure for the US Stove 5660 igniter (346 W for 10–12 min). Without relights: 2,819 ÷ 169 = 16.7 h."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours on Quadra-Fire Santa Fe (1.1 A ≈ 127 VA)",
+   "value": "about 19.3 h",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "The Home Battery Report – Battery backup for a pellet stove",
+   "read": "2026-11-13",
+   "note": "2,819 ÷ (127 + 19) = 19.3 h"
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "US price today",
+   "value": "$1,199 (in stock)",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "Shopify storecheck on bluettipower.com; compare-at price is also $1,199"
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Cost per delivered AC Wh",
+   "value": "$0.43/Wh",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "$1,199 ÷ 2,819 Wh (The Technology Man) = $0.425/Wh"
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Delivered Wh per lb",
+   "value": "about 48.6 Wh/lb",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "The Solar Lab – Bluetti Elite 300 portable power station review",
+   "read": "2026-11-13",
+   "note": "2,819 Wh ÷ 58 lb = 48.6. Weight is The Solar Lab's 58 lb, which matches The Technology Man's 26.3 kg."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC energy delivered, high-draw test",
+   "value": "2,290 Wh of 2,765 Wh claimed (83%)",
+   "source": "https://outdoorlife.com/gear/bluetti-apex-300-the-latest-entry-in-the-stackable-power-station-wars",
+   "source_title": "Outdoor Life – Bluetti Apex 300: The Latest Entry in the Stackable Power Station Wars",
+   "read": "2026-11-13",
+   "note": "Outdoor Life ran a dehumidifier load metered with a Kill-A-Watt; load wattage not stated. Published 2025-05-20."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw with inverters on",
+   "value": "about 19.5 W",
+   "source": "https://www.ess-news.com/?p=6613",
+   "source_title": "ESS News – Hands-on with the Bluetti Apex 300 portable power station",
+   "read": "2026-11-13",
+   "note": "ESS News watched an idle unit and says the manual gives about 20 W. Published 2025-09-17."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Hours on Quadra-Fire Classic Bay 1200 (216 VA)",
+   "value": "about 9.7 h (Home Battery Report's rated-Wh ceiling: 12.8 h)",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "The Home Battery Report – Battery backup for a pellet stove",
+   "read": "2026-11-13",
+   "note": "2,290 ÷ (216 + 19.5) = 9.7 h. Harman XXV (322 VA): 2,290 ÷ 341.5 = 6.7 h vs Home Battery Report's 8.6. Santa Fe (127 VA): 2,290 ÷ 146.5 = 15.6 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw with AC and DC on",
+   "value": "about 10 W (written as \"10w/h\")",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer – BLUETTI Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "The Gadgeteer also reports delivering about 2,000 Wh (>93% of 2,073.6 Wh), test load not stated."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Hours: Santa Fe 127 VA / 150 W / Classic Bay 1200 216 VA",
+   "value": "about 14.6 h / 12.5 h / 8.8 h",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer – BLUETTI Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "2,000 ÷ (127 + 10) = 14.6; 2,000 ÷ 160 = 12.5 with no relight margin; 2,000 ÷ 226 = 8.8. Stove VA from Home Battery Report."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "US price today",
+   "value": "$899 (in stock)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Shopify storecheck; $899 ÷ 2,000 Wh = $0.45 per delivered Wh"
+  },
+  {
+   "product": "general",
+   "label": "Share of a 12-hour budget lost to inverter idle draw",
+   "value": "about 11% at a 150 W stove, 8% at 216 VA",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man – BLUETTI Elite 300 review: 3kWh capacity but there are compromises",
+   "read": "2026-11-13",
+   "note": "19 ÷ (150 + 19) = 0.11; 19 ÷ (216 + 19) = 0.08; 19 W × 12 h = 228 Wh per night"
+  },
+  {
+   "product": "general",
+   "label": "Delivered Wh needed for 12 h on a 216 VA stove with 3 relights",
+   "value": "about 3,030 Wh",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "The Home Battery Report – Battery backup for a pellet stove",
+   "read": "2026-11-13",
+   "note": "12 × (216 + 19) + 3 × 69 = 3,027 Wh. Ignition energy is from Power Fallback. This is more than the Elite 300's measured 2,819 Wh."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS R4000 measured delivered Wh and AC idle draw: the only test found (exspenditure.com) claims about 3,650 Wh from a 3,456 Wh-rated unit, which can't be right, and I found no idle measurement, so I gave no R4000 runtime",
+  "BLUETTI Apex 300 standalone US price: storecheck search on bluettipower.com returned only Apex 200 listings, and /products/apex-300 returned 404",
+  "Harman stove wattages from the HAR-0040U battery backup PDF: WebFetch returned raw binary and running pdftotext was not approved",
+  "WattMatrix F3800 pellet-stove page (HTTP 404) and Enough Watts pellet-stove page (TLS certificate error): could not read either to compare",
+  "Anker SOLIX F3800 Plus, BLUETTI AC200L and EcoFlow DELTA 2 Max AC-on idle draw: not searched within the tool budget",
+  "Load wattage for Outdoor Life's Apex 300 test and for The Gadgeteer's Elite 200 V2 capacity figure: neither page states it"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9492198999999999
+ }
+}

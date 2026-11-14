@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a classic-Bluetooth headset can only use its mic through the Hands-Free Profile, which plays audio in mono at lower fidelity than A2DP. Microsoft says only LE Audio headsets, on Windows 11 24H2 with an updated Bluetooth driver, keep stereo playback while the mic is in use. That makes the PC connection (LE Audio, a mic over USB-C, or a USB dongle) the thing that decides how laptop meetings sound.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited rivals. On the SoundGuys work page (2026-10-22), Bluetooth connection details reach only codecs (AAC/SBC on AirPods Max 2), USB dongles (Jabra Evolve3 85, Alienware) and USB-C listening. It says 'No USB listening' for the Sony WH-1000XM6 and that the Bose QuietComfort Headphones (2nd Gen) let you 'listen and use the mic for calls over a single cable'. It never names HFP, mono call audio or LE Audio, and never explains why a dongle or USB matters. The RTINGS phone-calls page, as fetched, held no text on HFP, LE Audio, LC3, USB dongles or USB audio. So SoundGuys has part of the remedy (USB, dongle), but no rival states the cause or the LE Audio fix with its Windows requirements. It matters to this shopper because ChatGPT's own answer is about Zoom/Teams use.",
+ "decides": "For phone calls the ranking stays as it is. For laptop Zoom/Teams use it changes the order. The Jabra Evolve2 85 (supplied Bluetooth USB adapter) and the Sony WH-1000XM6 (LC3 and LE connections, per SoundGuys) have a route around the Bluetooth hands-free mode. The Sony route only works on a Windows 11 24H2 PC with LE Audio hardware and an updated driver. The soundcore Space 2 Pro lists only AAC, SBC and LDAC, so on a PC it falls back to HFP mono whenever the mic is on. Bose's page says USB-C carries playback but does not say the mic works over USB, so the Bose falls back to HFP on Bluetooth calls unless its USB mic is confirmed. The page should add a 'calls on a PC' column (LE Audio / USB mic / dongle / none), not just mic counts.",
+ "candidates": [
+  "Sony WH-1000XM6",
+  "Bose QuietComfort Ultra Headphones (2nd Gen)",
+  "Jabra Evolve2 85",
+  "soundcore Space 2 Pro",
+  "soundcore Space One Pro",
+  "soundcore Space One"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Classic Bluetooth: using the mic forces HFP mono playback",
+   "value": "\"A2DP provides high quality audio but doesn't allow the microphone to be used.\" \"HFP allows the microphone to be used but plays back audio in mono with lower fidelity than A2DP.\"",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/-/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality (Microsoft Windows OS Platform Blog, Aug 26, 2025)",
+   "read": "2026-11-14",
+   "note": "Microsoft's own explanation of Bluetooth Classic profiles. It also says the original HFP codec 'only supported an 8kHz sample rate'. That figure is for the original codec, not every HFP link."
+  },
+  {
+   "product": "general",
+   "label": "Windows 11 fix: LE Audio super wideband stereo while the mic is in use",
+   "value": "Lets \"Bluetooth Low Energy (LE) Audio devices to play in high quality stereo while using the microphone\". Needs an LE Audio headset, Windows 11 version 24H2 with the latest updates, and an updated Bluetooth audio driver from the PC maker.",
+   "source": "https://techcommunity.microsoft.com/blog/windowsosplatform/-/4447942",
+   "source_title": "Cutting the wire without cutting the audio quality (Microsoft Windows OS Platform Blog, Aug 26, 2025)",
+   "read": "2026-11-14",
+   "note": "Same post: 'Until now, LE Audio on Windows 11 was limited to playing super wideband audio in mono while using voice.' The PC's Bluetooth hardware must support LE Audio, not just Bluetooth LE."
+  },
+  {
+   "product": "Sony WH-1000XM6",
+   "label": "LE Audio / LC3 present; no USB-C audio",
+   "value": "Connects \"over its Bluetooth 5.3 radio via LDAC, AAC, SBC, and LC3\"; \"LC3 and LE connections are present\"; \"wired USB-C audio is conspicuously absent\"",
+   "source": "https://www.soundguys.com/sony-wh-1000xm6-review-137397/",
+   "source_title": "Sony WH-1000XM6 review: It (mostly) delivers - SoundGuys (updated Dec 11, 2025)",
+   "read": "2026-11-14",
+   "note": "SoundGuys also says LE audio features are unavailable with iOS devices. So the LE Audio route around HFP applies on an LE Audio-capable Windows 11 24H2 PC or Android, not iPhone, and there is no USB route."
+  },
+  {
+   "product": "Sony WH-1000XM6",
+   "label": "USB listening (cited rival)",
+   "value": "Cons list: \"No USB listening\"",
+   "source": "https://www.soundguys.com/best-noise-cancelling-headphones-for-work-76177/",
+   "source_title": "The best noise canceling headphones for work 2026: Tested and compared - SoundGuys",
+   "read": "2026-11-14",
+   "note": "Shows the cited rival covers the USB side but not the HFP/LE Audio mechanism."
+  },
+  {
+   "product": "Bose QuietComfort Ultra Headphones (2nd Gen)",
+   "label": "USB-C audio",
+   "value": "\"USB audio allows you to listen to your audio source through a USB-C wired connection.\" \"Wired USB-C audio will allow for Lossless audio.\" Bluetooth 5.4. Mic over USB not stated.",
+   "source": "https://www.bose.com/p/headphones/bose-quietcomfort-ultra-headphones-2nd-gen/QCUH2-HEADPHONEARN.html",
+   "source_title": "Bose QuietComfort Ultra Headphones (2nd Gen) - Bose",
+   "read": "2026-11-14",
+   "note": "The page names only the aptX Adaptive codec. LC3/LE Audio is not mentioned. Page showed $449.00."
+  },
+  {
+   "product": "Jabra Evolve2 85",
+   "label": "PC connection path",
+   "value": "Connects to a computer \"with the supplied Jabra Link 380 Bluetooth adapter\"; Bluetooth 5.0; USB cable described for recharging",
+   "source": "https://www.jabra.com/business/office-headsets/jabra-evolve/jabra-evolve2-85",
+   "source_title": "Jabra Evolve2 85 - Jabra",
+   "read": "2026-11-14",
+   "note": "The box-contents list on the same page says 'Jabra Link 390 BT adapter', so the page contradicts itself on the model. LE Audio not mentioned. Jabra gives no audio-quality reason for the adapter."
+  },
+  {
+   "product": "soundcore Space 2 Pro",
+   "label": "Codecs (no LC3)",
+   "value": "Bluetooth 6.1; codecs AAC, SBC, LDAC; 30 h ANC on, 60 h ANC off, 20 h call",
+   "source": "https://service.soundcore.com/product-description/a08e200000c9AbpAAE",
+   "source_title": "Anker soundcore Space 2 Pro (D1406) - soundcore Service",
+   "read": "2026-11-14",
+   "note": "LC3 and LE Audio are not listed, so PC calls over Bluetooth go through HFP. USB-C audio is not mentioned."
+  }
+ ],
+ "unsourced": [
+  "Sony WH-1000XM6 profile list (TMAP etc.) from Sony's own page: electronics.sony.com refused the fetch and sony.ca/.co.uk/.com.au returned 403. The help-guide PDF downloaded, but my request to convert it to text was not approved. LE support is sourced to SoundGuys instead.",
+  "Whether the Bose QuietComfort Ultra Headphones (2nd Gen) mic works over USB-C for calls: not on Bose's product page, and no Bose support article came up in search.",
+  "An official soundcore statement that the Space 2 Pro lacks LE Audio, beyond its codec list. USB-C audio support for the Space 2 Pro, Space One Pro and Space One was not checked.",
+  "Jabra's stated reason (wideband, stability) for the Link 380/390 adapter over a PC's built-in Bluetooth: the Evolve2 85 page gives none. I did not open the adapter's own page.",
+  "RTINGS' Sony WH-1000XM6 review text (LE Audio beta status, firmware): the fetch returned only navigation."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0618183
+ }
+}

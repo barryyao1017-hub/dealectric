@@ -1,0 +1,119 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much of the battery each station's inverter uses per day when it is left on to feed the RV through the TT-30 or an adapter: about 288 Wh/day (14.1%) for the BLUETTI AC200L at BLUETTI's 12 W, 240 Wh/day (11.6%) for the Elite 200 V2 at The Gadgeteer's 10 W, and 216 Wh/day (10.5%) for the Anker SOLIX C2000 Gen 2 at Anker's 9 W.",
+ "standout": 2,
+ "standout_why": "Compared against dealectric.com/best-2kwh-power-station-for-rv (ours, cited), outagereadyhq.com/best/best-portable-power-station-under-1000 (cited) and runtimemath.com/compare (cited). All three already publish Wh/lb, $/Wh and solar refill hours (runtimemath uses 75% of max solar, outagereadyhq uses Wh ÷ max solar), so those derivations add nothing new. None of the three gives an idle or no-load draw for any model, and none subtracts it from runtime. ChatGPT's answers only describe the Anker as having 'low idle/standby consumption' and give no number. Its runtime tables use a flat 1,700–1,800 Wh for every model, with no idle term.",
+ "decides": "It confirms the main finding of this check: the AC200L is not buyable. BLUETTI's US page marks every AC200L variant 'Discontinued', and the store data shows it unavailable at $899, so it can't stay the pick. Among the stations that have a TT-30, the Anker C2000 Gen 2 has the lowest sourced idle draw. Over a day of always-on shore-feed use it keeps 72 Wh (3.5% of 2,048 Wh) more than the AC200L. That backs the Anker as the RV-hookup pick if its price is confirmed under $900. The Elite 200 V2 ($899 on BLUETTI's US store today, 240 Wh/day idle) is the in-stock pick with a confirmed price, but it needs a 5-20P to TT-30R adapter.",
+ "candidates": [
+  "BLUETTI AC200L",
+  "Anker SOLIX C2000 Gen 2",
+  "BLUETTI Elite 200 V2",
+  "Renogy PowerStation 2000",
+  "Jackery Explorer 2000 v2",
+  "EcoFlow DELTA 3 Max"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC200L",
+   "label": "US store price and availability",
+   "value": "$899, marked Discontinued, not available",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W, 2,048Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck.py returned variant 46352232349915 at price 899.0, available:false. The page labels the base unit and every bundle 'Discontinued'."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Self-consumption (maker figure, quoted by reviewer)",
+   "value": "12 W, with DoD 95% and efficiency 93%",
+   "source": "https://www.notebookcheck.net/Bluetti-AC200L-hands-on-review-Fast-charging-power-station-delivers-convincing-results.869738.0.html",
+   "source_title": "Bluetti AC200L hands-on review: Fast-charging power station delivers convincing results (Notebookcheck)",
+   "read": "2026-11-13",
+   "note": "Notebookcheck quotes BLUETTI's runtime formula: 'The DoD, η and self-consumption are said to be 95%, 93% and 12W'. Notebookcheck did not measure it. BLUETTI's US page says only 'Unmatched low self-consumption'."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Inverter idle energy per day (derived)",
+   "value": "288 Wh/day = 14.1% of battery",
+   "source": "https://www.notebookcheck.net/Bluetti-AC200L-hands-on-review-Fast-charging-power-station-delivers-convincing-results.869738.0.html",
+   "source_title": "Bluetti AC200L hands-on review (Notebookcheck)",
+   "read": "2026-11-13",
+   "note": "12 W × 24 h = 288 Wh; 288 ÷ 2,048 Wh = 14.1%."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Usable AC energy and 60 W fridge runtime (derived from BLUETTI's formula)",
+   "value": "1,809 Wh usable; 25.1 h at 60 W",
+   "source": "https://www.notebookcheck.net/Bluetti-AC200L-hands-on-review-Fast-charging-power-station-delivers-convincing-results.869738.0.html",
+   "source_title": "Bluetti AC200L hands-on review (Notebookcheck)",
+   "read": "2026-11-13",
+   "note": "2,048 × 0.95 × 0.93 = 1,809 Wh; 1,809 ÷ (60 W load + 12 W self-consumption) = 25.1 h."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Idle power consumption (maker claim)",
+   "value": "9 W",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "US page says '9W of idle power consumption' and gives no test conditions. The same page lists 2,048 Wh, 800 W solar (11–60 V, 17 A), 41.7 lb, and 'Available — ships as soon as possible' for orders after Nov 2 (except the 400 W panel bundle)."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Inverter idle energy per day (derived)",
+   "value": "216 Wh/day = 10.5% of battery",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "9 W × 24 h = 216 Wh; 216 ÷ 2,048 Wh = 10.5%. That is 72 Wh/day (3.5 points) less than the AC200L's 288 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "US store price (base unit)",
+   "value": "$899",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck.py search returned price 899.0, compare_at 899.0, available:true. The page lists 1,000 W max PV (12–60 V, 20 A). Its capacity reads 2,080 Wh in the specs and 2,073.6 Wh in the title."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw, AC and DC on (reviewer)",
+   "value": "10 W",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 portable power station review (The Gadgeteer)",
+   "read": "2026-11-13",
+   "note": "The Gadgeteer lists it under features: 'Low idle consumption, 10w/h with AC and DC left on'. The review does not say this was measured. Derived: 10 W × 24 h = 240 Wh/day; 240 ÷ 2,073.6 Wh = 11.6%."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Delivered capacity (reviewer test)",
+   "value": "~2,000 Wh (>93% of rated)",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 portable power station review (The Gadgeteer)",
+   "read": "2026-11-13",
+   "note": "The Gadgeteer's own test, quoted as 'within ~2000Wh of capacity (>93%)'. Derived 60 W fridge runtime: 2,000 ÷ (60 + 10) = 28.6 h."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of derived metrics",
+   "value": "Wh/lb, $/Wh and solar refill hours already published; idle draw absent",
+   "source": "https://runtimemath.com/compare",
+   "source_title": "Compare 18 Portable Power Stations: Specs, Surge, Solar, $ per Wh (RuntimeMath)",
+   "read": "2026-11-13",
+   "note": "RuntimeMath shows a solar refill column at 75% of max PV and lists the AC200L as sold out. outagereadyhq.com/best/best-portable-power-station-under-1000 (read 2026-11-13) gives Wh/lb, $/Wh and Wh ÷ max solar. Neither gives idle draw."
+  }
+ ],
+ "unsourced": [
+  "Renogy PowerStation 2000 idle/no-load draw and current price: renogy.com returned HTTP 429 to both storecheck and WebFetch, and search found no published idle figure or reviewer measurement.",
+  "Jackery Explorer 2000 v2 and EcoFlow DELTA 3 Max current maker-store prices: storecheck got HTTP 429 from both stores. I did not look for their idle draw within the call budget.",
+  "Anker SOLIX C2000 Gen 2 current US price: storecheck returned HTTP 404 for ankersolix.com/products/c2000-gen2, and the fetched page showed no price.",
+  "An independent wall-meter measurement of idle draw for any candidate: every figure above is the maker's claim or a reviewer restating it. The BLUETTI forum thread said to give 18 W AC no-load for the AC200L now redirects to forum.bluettipower.com and could not be opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0089332999999998
+ }
+}

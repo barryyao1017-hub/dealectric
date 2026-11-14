@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Plex's own support article (last modified 2026-10-27) says hardware-accelerated streaming 'is not currently possible inside of virtual machines', and that Plex lists only Intel VAAPI, NVIDIA NVENC and software x264 as its Linux encoders. The supported layout is Plex in Docker or LXC on the host with /dev/dri bind-mounted, on an Intel Quick Sync chip with Plex Pass. That rules out the 'pass the iGPU to a Docker VM' layout ChatGPT gave in four of its seven answers, and it leaves the AMD Aoostar WTR Pro with no Plex hardware encoder on Linux.",
+ "standout": 2,
+ "standout_why": "I read these rivals on 2026-11-13. littlecompute.com/best-mini-pc-for-plex says nothing on Plex Pass, VMs or AMD support by OS, and says 'AMD Radeon 780M (VCN) also handles hardware transcodes'. bitdoze.com/best-mini-pc-proxmox makes no iGPU-passthrough claim, says AMD VAAPI 'can work and it is a different afternoon', and never mentions the MS-01 SE. homelabcompass.com mentions neither the SE nor passthrough. homelabpicks.com/mini-pc/best-mini-pc-plex (cited) already says Plex's Linux transcoding covers Intel and NVIDIA but not AMD iGPUs, and gives the Docker /dev/dri mapping. So the AMD half is partly covered, but none of them states Plex's VM exclusion. ChatGPT's own answers (pl-082, the abB-01 plain chat of Nov 8, 12:52, the abB-01 early chat, and the second r1x0---r2 chat) tell the shopper to pass the Intel iGPU to a Docker or Debian VM, which is the opposite of what Plex documents.",
+ "decides": "It confirms an Intel Quick Sync box over the AMD Aoostar WTR Pro or Synology DS925+ for Plex. It also sets the layout: run Plex in Docker or LXC on the host, not in a VM, and keep VMs for the other workloads. On the UGREEN DXP4800 Plus that means Plex in UGOS Docker, which our page's 'no iGPU passthrough' VM note already implies. For the MS-01 SE, which ChatGPT kept recommending, Minisforum's own listing says DDR4 (up to 64 GB), not the MS-01's DDR5, and NASCompares confirms there is no SFP+. So the SE is the cheaper compute pick (barebone $375 but out of stock in the US; $775 with 32 GB and 1 TB, in stock), and the shopper should budget DDR4 SO-DIMMs, not DDR5.",
+ "candidates": [
+  "Minisforum MS-01 SE (i5-12600H)",
+  "Minisforum MS-01 (i5-12600H)",
+  "Minisforum NAB6 Lite (i5-12600H)",
+  "UGREEN NASync DXP4800 Plus",
+  "Aoostar WTR Pro (Ryzen 7 5825U)",
+  "TerraMaster F4-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding inside a virtual machine",
+   "value": "Not supported: 'Hardware-Acceleration Streaming is not currently possible inside of virtual machines, as virtual machine hosts do not expose low-level video hardware to the guest operating system.'",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Quoted from the FAQ 'Can I use Hardware-Accelerated Streaming inside of a virtual machine?'. Page last modified 2026-10-27. Plex's reason is about virtual GPUs. The article does not discuss full PCIe/VFIO iGPU passthrough either way, so Plex's only documented setup is Docker or bare metal."
+  },
+  {
+   "product": "general",
+   "label": "Plex in Docker: hardware-transcoding condition",
+   "value": "Allowed 'If your Docker host has access to a supported CPU with the Intel Quick Sync feature set'; bind-mount the kernel device into the container; 'an advanced feature and requires extra configuration'",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Quoted from the FAQ 'Can I use Hardware-Accelerated Streaming inside of Docker?'."
+  },
+  {
+   "product": "general",
+   "label": "Plex Linux encoder engines (tech specs table)",
+   "value": "Intel VAAPI, NVIDIA NVENC, software x264 (no AMD entry); decoders are Intel VAAPI, NVIDIA NVDEC, software",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "The Linux list has no AMD entry. On Windows, Plex says AMD GPU support is 'as is' and 'your mileage may vary'. Linux support is for 64-bit Ubuntu 16.04+ or Fedora 26+; other distributions are 'not officially supported'."
+  },
+  {
+   "product": "Aoostar WTR Pro (Ryzen 7 5825U)",
+   "label": "Plex hardware encode under Linux/Docker (Unraid, TrueNAS, Proxmox)",
+   "value": "No Plex-listed encoder for its AMD Radeon iGPU; Plex would transcode in software",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Applies Plex's Linux encoder list (Intel VAAPI, NVENC, x264) to the WTR Pro's AMD iGPU. It does not cover Jellyfin, which homelabpicks says supports AMD VA-API."
+  },
+  {
+   "product": "general",
+   "label": "Plex Pass requirement and CPU floor",
+   "value": "Requires an active Plex Pass. Quick Sync needs a 2nd-gen Core or newer (5th-gen recommended). HEVC encoding needs a 7th-gen Core and Plex Media Server 1.41.3+. 'NAS users will require JasperLake or better CPU to reliably transcode to HEVC output'",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Plex documents exceptions where acceleration is on without Plex Pass (NVIDIA SHIELD, WD PR2100/PR4100)."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "Memory type and maximum",
+   "value": "DDR4, 2× SO-DIMM, up to 64 GB (DDR4-3200 per NASCompares); MS-01 is DDR5-5200 up to 96 GB",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-se-workstation",
+   "source_title": "MINISFORUM MS-01 SE Workstation (Minisforum store)",
+   "read": "2026-11-13",
+   "note": "Minisforum store listing text, read with storecheck.py: 'up to 64GB DDR4'. The DDR4-3200 speed and the MS-01's DDR5-5200 are from NASCompares (Rob Andrews, 2026-09-09). DDR5 SO-DIMMs bought for an MS-01 build do not fit the SE's DDR4 slots."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "US price, Minisforum store",
+   "value": "$375 barebone (list $469), out of stock; $775 with 32 GB RAM and 1 TB SSD (list $969), in stock",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-se-workstation",
+   "source_title": "MINISFORUM MS-01 SE Workstation (Minisforum store)",
+   "read": "2026-11-13",
+   "note": "storecheck.py product: the US barebone variant shows available=false and the US 32GB+1TB variant shows available=true."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "M.2 lanes, U.2, PCIe slot, networking vs MS-01",
+   "value": "M.2: slot 1 PCIe 4.0 x4, slot 2 PCIe 3.0 x4, slot 3 PCIe 3.0 x2 (12 TB total); U.2 listed 'Yes'; x16 slot wired PCIe 4.0 x4 (MS-01: up to x8); 2× 2.5GbE only, both 10GbE SFP+ removed",
+   "source": "https://nascompares.com/2026/09/09/afforable-minisforum-ms-01-se-revealed/",
+   "source_title": "Minisforum MS-01 SE Launched at IFA 2026 (NASCompares, Rob Andrews)",
+   "read": "2026-11-13",
+   "note": "Named reviewer. Notebookcheck (Abid Ahsan Shanto, 2026-09-24, notebookcheck.net/1407305.html) independently states 64 GB DDR4, no DDR5 support, and the x16 slot limited to PCIe 4.0 x4."
+  },
+  {
+   "product": "Minisforum MS-01 (i5-12600H)",
+   "label": "Starting US price, Minisforum store",
+   "value": "$469 (lowest variant in store search)",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-workstation",
+   "source_title": "MINISFORUM MS-01 Workstation (Minisforum store)",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search results, which show the lowest variant price. The product call returned HTTP 429, so which variant is $469 (i5 barebone?) is unconfirmed. Notebookcheck on 2026-09-24 said the non-SE 'starts at $439'."
+  }
+ ],
+ "unsourced": [
+  "MS-01 and MS-01 SE spec tables on minisforum.com (both returned HTTP 429), and the U.2 slot assignment on the MS-01. Also tried NASCompares, Notebookcheck and the store JSON; curl to the store JSON was not approved.",
+  "UGREEN DXP4800 Plus maximum RAM (8 GB installed, to 64 GB) and M.2 slot lanes from nas.ugreen.com: the page and storecheck both returned HTTP 429; only search snippets were seen.",
+  "A UGREEN-published statement on whether installing a third-party OS (Proxmox, Unraid, TrueNAS) on a NASync voids the warranty. Searched; found only NASCompares and forum reports, no maker document.",
+  "Aoostar WTR Pro maker page (memory maximum, supported OS, warranty, barebone price): aoostar.com returned HTTP 429.",
+  "Minisforum NAB6 Lite memory type and maximum from the maker page: not reached within the tool budget.",
+  "Amazon prices: not attempted."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1641758000000004
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the cheapest new Synology target, the DS124 at $159.99 on Amazon today, costs less than every non-Synology NAS on the shortlist (UGREEN DH2300 $239.99, TerraMaster F2-425 $269.99, UGREEN DXP2800 $389.99), even though Synology's spec says those rsync-type targets can't take Hyper Backup's entire-system backups. It also doesn't state that the DS124 costs the same as about 23 TB-months of Backblaze B2 at $6.95 per TB a month.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited: Synology's Hyper Backup tech spec (www.synology.com/en-ro/dsm/7.4/software_spec/hyper_backup), which lists destinations by backup type but no models or prices, and the KB 'Destination' help page, which only showed navigation when I opened it. The uncited B&H compare, Newegg and Adorama pages blocked my fetch (HTTP 403). ChatGPT's answer prices only the DS124 ($159.99, B&H) and DS223j ($214.99, Adorama). It never prices a non-Synology NAS against them, and it never compares a box against a per-TB cloud price. Its 'used DS118/DS120j $50–100' and 'Pi $50–100' figures are, in its own words, 'target ranges, not verified live listings'.",
+ "decides": "This confirms the DS124 as the cheapest new pick and removes the reason to send buyers to a third-party NAS. Each non-Synology box listed here costs more today, and Synology's spec limits rsync servers to folder and package backup. Our own UGREEN DH2300 and DXP2800 rows should be framed as 'only if you also want a general home NAS', not as cheaper backup targets. For a small data set (about 1–2 TB), B2 at $6.95/TB/month undercuts the DS124 box for roughly 1–2 years before you even buy a drive.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "Synology DS223",
+  "Synology BeeStation (BST150-4T)",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-212",
+  "TerraMaster F2-425",
+  "Backblaze B2",
+  "Synology C2 Storage",
+  "used Synology DS118 / DS120j",
+  "Raspberry Pi 4 + USB HDD"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS124",
+   "label": "Price, diskless, Amazon US",
+   "value": "$159.99",
+   "source": "https://www.amazon.com/dp/B0BYJ165RS",
+   "source_title": "Synology DS124 Personal Backup & File Hub (1-Bay Diskless NAS)",
+   "read": "2026-11-13",
+   "note": "Read with amzcheck.py asin. Same figure as ChatGPT's B&H card. Cheapest new unit in this set."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Hardware and warranty",
+   "value": "Realtek RTD1619B 4-core 1.7 GHz, 1 GB DDR4, 1× 1GbE, 2-year warranty (Extended Warranty Plus to 4 years in North America)",
+   "source": "https://www.synology.com/en-us/products/DS124",
+   "source_title": "DS124 | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Maker's US page. No price listed there."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Price, diskless, Amazon US",
+   "value": "$209.99",
+   "source": "https://www.amazon.com/dp/B0C8814GKB",
+   "source_title": "Synology 2-Bay DiskStation DS223j (Diskless)",
+   "read": "2026-11-13",
+   "note": "$5 below the Adorama $214.99 that ChatGPT showed. Loses to the DS124 on price ($50 more) unless you want a second bay for a mirror."
+  },
+  {
+   "product": "Synology DS223",
+   "label": "Price, diskless, Amazon US",
+   "value": "$285.99",
+   "source": "https://www.amazon.com/dp/B0BRNBVTJK",
+   "source_title": "Synology DS223 Home & Office Backup Hub (2-Bay Diskless NAS)",
+   "read": "2026-11-13",
+   "note": "Loses on price: $126 more than the DS124 for a backup-only target."
+  },
+  {
+   "product": "Synology BeeStation (BST150-4T)",
+   "label": "Price, 4 TB drive built in, Amazon US",
+   "value": "$364.99",
+   "source": "https://www.amazon.com/dp/B0CSSR38F1",
+   "source_title": "Synology BeeStation 4TB Personal Cloud Storage Device (BST150-4T)",
+   "read": "2026-11-13",
+   "note": "Price includes the drive, so it isn't directly comparable to diskless units. Our page's Vault/rsync limits for it come from blackvoid.club, which I did not re-open this pass."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, diskless, Amazon US",
+   "value": "$239.99",
+   "source": "https://www.amazon.com/dp/B0FNWHSPXF",
+   "source_title": "UGREEN NAS DH2300 2-Bay for Beginners & Personal Users, Phone Backup",
+   "read": "2026-11-13",
+   "note": "$80 more than the DS124 (239.99 − 159.99). As a non-Synology box it can only be an rsync-type destination, and Synology's spec limits rsync servers to folder and package backup (see the 'general' finding)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, diskless, Amazon US",
+   "value": "$389.99",
+   "source": "https://www.amazon.com/dp/B0D22HBFK1",
+   "source_title": "UGREEN NAS DXP2800 2-Bay for Advanced Home Users, Remote Workers & Creators",
+   "read": "2026-11-13",
+   "note": "$230 more than the DS124. Same rsync-only limit as the DH2300 for Hyper Backup."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price, maker's US store",
+   "value": "$269.99 (compare-at $299.99)",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster store",
+   "read": "2026-11-13",
+   "note": "storecheck.py search on terra-master.com. Intel x86 quad-core, 4 GB, 2.5GbE per the listing. $110 more than the DS124, and rsync-type destination only."
+  },
+  {
+   "product": "Backblaze B2",
+   "label": "Pay-as-you-go storage price",
+   "value": "$6.95 per TB a month; free egress up to 3× stored, then $0.01/GB; first 10 GB free; no minimum",
+   "source": "https://www.backblaze.com/cloud-storage/pricing",
+   "source_title": "Cloud Storage Pricing | Backblaze",
+   "read": "2026-11-13",
+   "note": "Break-even against the DS124 box alone: 159.99 / 6.95 ≈ 23 TB-months. That is about 23 months for 1 TB, 11.5 months for 2 TB, 5.8 months for 4 TB. Drive cost excluded, so the real break-even is later."
+  },
+  {
+   "product": "general",
+   "label": "Hyper Backup destinations by backup type",
+   "value": "Entire system: remote Synology NAS and Synology C2 only. Folder/package: adds rsync servers, S3-compatible and others. Up to 65,535 versions. AES-256 client-side encryption. Destination needs at least 8 GB free.",
+   "source": "https://www.synology.com/en-ro/dsm/7.4/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Page ChatGPT cited. It is why every non-Synology NAS above loses the entire-system mode even before price."
+  }
+ ],
+ "unsourced": [
+  "Hyper Backup Vault support for the DS124 and DS223j specifically. The Package Center page (synology.com/en-us/dsm/packages/HyperBackupVault?os_ver=7.2) loads its 'Applied Models' list by script and showed it empty to my fetch. The spec-filter page doesn't mention Vault. A search snippet claimed both are listed, but I couldn't open a page confirming it.",
+  "B&H, Adorama and Newegg prices for the DS124 and DS223j: those pages return HTTP 403 to my fetch.",
+  "UGREEN US store prices for the DH2300 and DXP2800: ugreen.com returned HTTP 429 three times. storecheck search returned a placeholder $1,301 for every NAS, which I discarded. Amazon prices are used instead.",
+  "TerraMaster F2-212 current price: terra-master.com product page returned HTTP 429.",
+  "Synology C2 Storage price: I did not open a Synology C2 pricing page this pass.",
+  "Used DS118/DS120j and Raspberry Pi + USB HDD prices: no maker or retailer page opened. ChatGPT's own figures were unverified ranges.",
+  "A 4 TB NAS hard-drive price to complete a full-setup cost and a true break-even against B2: not looked up within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 0.8673510000000001
+ }
+}

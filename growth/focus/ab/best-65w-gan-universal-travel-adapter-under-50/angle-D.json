@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a USB-C port can only go above 60 W when the cable is a 5 A e-marked one. With an ordinary 3 A USB-C cable, every '65 W' and '70 W' adapter here stops at 20 V × 3 A = 60 W (65 W needs 20 V × 3.25 A).",
+ "standout": 2,
+ "standout_why": "I compared Kit Authority (cited), TrekSavvy and MobilePlusTech. None mentions 3 A, 5 A or e-marked cables, or what a 65 W port gives through a 3 A cable. Kit Authority even prints the TA-105 Max's '20 V at 3.35 A' without noting that this needs a 5 A cable. TrekSavvy's only cable remark is 'with a compatible 5A cable' for the 140 W Pulse Duo, which is over the price cap; it says nothing about the 65 W picks. WIRED (cited) blocked my fetch, so I could not check it. ChatGPT's answers warn about multi-port sharing but never about the cable.",
+ "decides": "It doesn't change which adapter wins (TESSAN WTA09 or Epicka Air 65W), but it decides whether the shopper actually gets 65 W. The page should tell them to bring a 5 A / 100 W e-marked USB-C cable, or they'll get 60 W. It also undercuts ChatGPT's 'pick the 70 W Epicka for headroom' line: 70 W at 20 V is 3.5 A, so it needs the same 5 A cable, and with a 3 A cable the 65 W and 70 W adapters both stop at 60 W.",
+ "candidates": [
+  "TESSAN 65W GaN WTA09",
+  "TESSAN GaN 65W WTA07",
+  "Epicka Air Series 65W",
+  "Epicka Pulse Duo 65W",
+  "Epicka TA-105 Pro 70W",
+  "Epicka TA-105 Max 75W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Cable needed for more than 60 W",
+   "value": "an e-marked cable; without one, 3 A maximum (60 W at 20 V)",
+   "source": "https://service.anker.com/article-description/Why-is-the-Output-Power-of-My-Device-Lower-than-60W",
+   "source_title": "Why is the Output Power of My Device Lower than 60W? (Anker support)",
+   "read": "2026-11-13",
+   "note": "Anker's words: 'To achieve output over 60W, an E-Marker cable must be used; without it, only 3A current is supported.' 3 A × 20 V = 60 W."
+  },
+  {
+   "product": "general",
+   "label": "Cable needed when a charger outputs more than 3 A",
+   "value": "5 A cable with an E-Mark chip; with a 3 A e-marked cable the charger gives at most 20 V / 3 A",
+   "source": "https://satechi.com/blogs/news/identifying-usb-c-e-mark-cables",
+   "source_title": "Identifying USB-C E-Mark Cables (Satechi, 2024-07-12)",
+   "read": "2026-11-13",
+   "note": "Satechi's words: 'if the power adapter's electric current output is greater than 3A, a 5A wire with an E-Mark chip will be required.' Arithmetic: 65 W / 20 V = 3.25 A and 70 W / 20 V = 3.5 A, both above 3 A."
+  },
+  {
+   "product": "Epicka TA-105 Max 75W",
+   "label": "Top single-port USB-C output (as reported by Kit Authority)",
+   "value": "20 V at 3.35 A (about 67 W)",
+   "source": "https://kitauthority.com/travel/best-travel-adapters",
+   "source_title": "Best universal travel adapters: 4 picks by charging wattage | Kit Authority",
+   "read": "2026-11-13",
+   "note": "3.35 A is above the 3 A limit of a non-e-marked cable, so full output needs a 5 A e-marked cable. Kit Authority does not say this."
+  },
+  {
+   "product": "Epicka Air Series 65W",
+   "label": "USB-C output and price on the maker's US store",
+   "value": "up to 65 W PD on USB-C, 'keeps 20W PD even during multi-port charging'; $16.00 (compare-at $39.99)",
+   "source": "https://www.epickatech.com/products/air-series-universal-travel-adapter",
+   "source_title": "Epicka Air Series Travel Adapter (GaN, 5-Ports)",
+   "read": "2026-11-13",
+   "note": "Read from Epicka's Shopify store data with storecheck.py search. The store data does not show which wattage variant (20/40/65 W) the $16.00 applies to, so check the 65 W variant price before publishing."
+  },
+  {
+   "product": "Epicka Air Series 65W",
+   "label": "Split when the 65 W port shares with another USB port (as reported by TrekSavvy)",
+   "value": "40 W + 15 W",
+   "source": "https://treksavvy.co/reviews/best-universal-travel-adapters-laptop-charging-2026",
+   "source_title": "Best Universal Travel Adapters for Laptop Charging in 2026 | TrekSavvy",
+   "read": "2026-11-13",
+   "note": "TrekSavvy's words: 'using the 65W port with another USB port changes the split to 40W plus 15W.' This is a rival page and already states it."
+  },
+  {
+   "product": "Epicka Pulse Duo 65W",
+   "label": "USB-C output and price on the maker's US store",
+   "value": "PD3.0 up to 65 W; $49.99",
+   "source": "https://www.epickatech.com/products/pulse-65w-duo",
+   "source_title": "Epicka Pulse Duo 65W Fast Charging Universal Travel Adapter (GaN 65W, 6-Ports)",
+   "read": "2026-11-13",
+   "note": "Read from Epicka's Shopify store data with storecheck.py search; $49.99 is just under the $50 cap."
+  },
+  {
+   "product": "Epicka TA-105 Max 75W",
+   "label": "Price on the maker's US store",
+   "value": "$59.99",
+   "source": "https://www.epickatech.com/products/ta-105-max-75w-fast-charging",
+   "source_title": "Epicka TA-105 Max Fast Charging Universal Travel Adapter (GaN 75W, 6-Ports)",
+   "read": "2026-11-13",
+   "note": "Over the $50 cap. The store text says 'Buy with a fast-charging cable' but does not name a 5 A rating."
+  }
+ ],
+ "unsourced": [
+  "The USB-C voltage/current steps (whether 20 V / 3.25 A is listed) and the box contents (is a USB-C cable included, and is it 5 A) for TESSAN WTA09 and Epicka Air 65W. Both maker product pages kept returning HTTP 429 to WebFetch and storecheck.py product, and the manuals.plus copy of the TS-WTA09 manual returned 403.",
+  "The USB-IF Type-C Cable and Connector Specification's own wording on the 3 A default and on 5 A cables needing an e-marker. I could not open the spec text, so the mechanism above is sourced to Anker's and Satechi's own pages.",
+  "The Epicka TA-105 Pro 70W maker page: its 20 V current step, multi-port split and today's price. It did not come up in the store search and the product pages were rate-limited.",
+  "WIRED's travel-adapter guide (cited by ChatGPT) refused my fetch, so I could not check whether it mentions cable ratings.",
+  "A named reviewer measuring a 65 W travel adapter at about 60 W through a 3 A cable. I did not find one within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1012414000000001
+ }
+}

@@ -1,0 +1,108 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Reolink's 4K PoE cameras such as the RLC-810A send video only as H.265 and ship with their RTSP/ONVIF ports turned off, so the NAS recorder has to accept H.265 over ONVIF/RTSP. Synology says its software does, and Frigate does when recordings are played back in Chrome 108+, Edge or Safari. UGREEN does not say whether its Surveillance Center accepts H.265.",
+ "standout": 2,
+ "standout_why": "I compared against these pages: Reolink's 'How to Add Reolink Cameras to Synology Surveillance Station' (cited in every chat), Synology's Surveillance Station spec page (cited), Reolink's 'What is Continuous Recording' (cited), and Reolink's own 2026 Synology buying guide (top result). Synology's spec page already says it supports ONVIF Profile S with H.265, so that half is covered. The Reolink pages only say to 'open the relevant ports' or 'enable the required ports'. None says the ports are off by default, none says Reolink's 4K PoE cameras are H.265-only, and none mentions Frigate's Reolink stream rules or which browsers can play back H.265 recordings. No ChatGPT answer raised the codec at all, even though two of them recommended UGREEN with its Surveillance Center or Frigate.",
+ "decides": "Confirms Synology DS225+/DS425+ as the safe NAS pick for 4K Reolink cameras, because Synology states H.265 support over ONVIF Profile S. The 4K live-view limits Synology lists (Chrome, a Core i5 client) apply to the viewing computer, not the NAS. Weakens UGREEN DXP2800's built-in Surveillance Center as a recommendation, since UGREEN publishes no codec support and its camera-protocol support only arrived in 2026. UGREEN plus Frigate still works, but the page must tell the shopper to: turn on the camera's RTSP/HTTP ports; use RTSP for older 6 MP+ models (RLC-8xx); play recordings in Chrome 108+, Edge or Safari, or use the apple_compatibility option on Apple devices; and buy an 802.3af PoE switch, because none of these NAS units power the cameras. Reolink's RLN8-410 NVR avoids all of this.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Reolink RLN8-410"
+ ],
+ "findings": [
+  {
+   "product": "Reolink RLC-810A",
+   "label": "Video codec",
+   "value": "H.265 only (no H.264 listed); main stream 3840x2160, default 25 fps, default 6144 kbps (range 4096–8192 kbps)",
+   "source": "https://reolink.com/us/product/rlc-810a/",
+   "source_title": "Reolink RLC-810A product page (US)",
+   "read": "2026-11-13",
+   "note": "Spec section 'Video Format' lists H.265 only. The RLC-810A stands in for Reolink's 4K RLC-8xx PoE line; check the shopper's exact models."
+  },
+  {
+   "product": "Reolink RLC-810A",
+   "label": "PoE standard and power draw",
+   "value": "IEEE 802.3af, 48 V active; under 12 W",
+   "source": "https://reolink.com/us/product/rlc-810a/",
+   "source_title": "Reolink RLC-810A product page (US)",
+   "read": "2026-11-13",
+   "note": "Four cameras × 12 W max = 48 W of PoE budget. A NAS has no PoE ports, so a NAS build needs an 802.3af switch with at least 4 ports and about 48 W of budget. The RLN8-410 has 8 PoE ports built in."
+  },
+  {
+   "product": "general",
+   "label": "Reolink third-party ports default state",
+   "value": "\"For some of the models, the RTMP, HTTP, RTSP, and ONVIF ports are disabled by default.\" Enable at Network > Advanced > Server Settings",
+   "source": "https://support.reolink.com/hc/en-us/articles/900000621783-Introduction-to-RTSP-and-ONVIF/",
+   "source_title": "Reolink Support: Introduction to RTSP and ONVIF",
+   "read": "2026-11-13",
+   "note": "Reolink's VLC/RTSP article (https://support.reolink.com/articles/360007010473-How-to-Live-View-Reolink-Cameras-via-VLC-Media-Player/, read 2026-11-13) makes 'Enable the RTSP and Onvif ports on the camera' its first step and gives the main stream as rtsp://admin:password@ip_address/Preview_01_main."
+  },
+  {
+   "product": "general",
+   "label": "Reolink RTSP/ONVIF availability by camera type",
+   "value": "PoE and plug-in Wi-Fi cameras (RLC, Duo, Doorbell PoE) support RTSP/ONVIF on their own. Battery cameras need a Home Hub or NVR. 4G LTE cameras do not support it.",
+   "source": "https://support.reolink.com/articles/900000617826-Which-Reolink-Products-Support-CGI-RTSP-ONVIF/",
+   "source_title": "Reolink Support: Which Reolink Products Support CGI/RTSP/ONVIF",
+   "read": "2026-11-13",
+   "note": "Confirms the shopper's PoE cameras can connect to a NAS directly."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Surveillance Station codec and ONVIF support",
+   "value": "\"Supported video formats: MJPEG, H.264, H.264+, H.265, H.265+, MPEG4, and MxPEG\"; \"supports ONVIF Profile S, with additional H.265 video compression\"",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/surveillance_station",
+   "source_title": "Surveillance Station Technical Specifications | Synology Inc. (DSM 7.4)",
+   "read": "2026-11-13",
+   "note": "The same page lists H.265 live-view requirements for the viewing computer: Google Chrome browser, or Surveillance Station Client on Windows 10 / macOS 11+, and a 'Core i5 or above' CPU. It also says each system includes 'two or more default device licenses, depending on the model datasheet.'"
+  },
+  {
+   "product": "general",
+   "label": "Synology licences for Reolink TrackMix",
+   "value": "Two of Reolink's three TrackMix setup methods \"consume two licenses\"; Duo (dual-lens) must be added twice through the Reolink protocol to get both channels",
+   "source": "https://support.reolink.com/articles/360004124293-How-to-Add-Reolink-Cameras-to-Synology-Surveillance-Station/",
+   "source_title": "Reolink Support: How to Add Reolink Cameras to Synology Surveillance Station",
+   "read": "2026-11-13",
+   "note": "The page also says AI events, PTZ and doorbell alerts in Surveillance Station need the Reolink protocol, not plain ONVIF/RTSP."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DXP4800 Plus (Frigate in Docker)",
+   "label": "Frigate stream method for Reolink cameras",
+   "value": "5 MP or lower: http-flv (H.264). 6 MP or higher, newer models (Duo 3, CX-8##): http-flv with ffmpeg 8.0 (H.265), or RTSP. 6 MP or higher, older models (RLC-8##): RTSP. HTTP must be enabled in the camera's advanced network settings.",
+   "source": "https://docs.frigate.video/configuration/camera_specific/",
+   "source_title": "Frigate docs (v0.18): Camera-specific configuration, Reolink",
+   "read": "2026-11-13",
+   "note": "The docs also recommend setting the camera to 'On, fluency first' (constant bit rate) with 'Interframe Space 1x'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DXP4800 Plus (Frigate in Docker)",
+   "label": "Frigate H.265 recordings",
+   "value": "Recordings are \"written directly from your camera stream without re-encoding\"; \"H265 recordings can be viewed in Chrome 108+, Edge and Safari only\"; Safari on Apple devices \"may fail to playback h.265 recordings\" unless the apple_compatibility option is set",
+   "source": "https://docs.frigate.video/configuration/record/",
+   "source_title": "Frigate docs: Recording",
+   "read": "2026-11-13",
+   "note": "Continuous (24/7) recording is off by default and turned on with the continuous retention days setting."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Frigate object detection on Intel N100 (OpenVINO)",
+   "value": "MobileNetV2 about 15 ms; YOLOv9 s-320 30 ms; YOLO-NAS 320 about 25 ms; \"Can only run one detector instance\"",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Frigate docs: Recommended hardware",
+   "read": "2026-11-13",
+   "note": "Inference time per frame for one detector. The docs give no camera count for the N100; for an N100 mini PC they say 'several 1080p cameras with low-medium activity'."
+  }
+ ],
+ "unsourced": [
+  "Whether UGREEN UGOS Pro Surveillance Center accepts H.265 streams. support.ugnas.com release notes for June 2026 (article 917) only load with scripts, so I could not read them, and the search snippet I could not open only said ONVIF/RTSP camera connections were added and do not apply to DX4600/DX4700/DH2600. I found no UGREEN codec spec and no named hands-on test with Reolink 4K cameras.",
+  "A Reolink page documenting an H.265 RTSP path (h265Preview_01_main) or a way to switch RLC-8xx 4K main streams to H.264. Only community posts mention it, so I left it out.",
+  "Whether 4K Reolink streams over plain ONVIF are on Synology's official camera compatibility list by model. I did not open https://www.synology.com/en-us/compatibility/camera?query=reolink within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.2009973
+ }
+}

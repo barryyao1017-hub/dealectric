@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Philips EverFlo's own EMC table only covers a total power dropout of 0.5 cycle (about 8.3 ms at 60 Hz). Every UPS switchover in those results is 10–20 ms, which is longer. The manual's own advice for anyone who needs the unit to keep running through mains interruptions is to power it from 'an uninterruptible power supply or a battery'.",
+ "standout": 3,
+ "standout_why": "I compared willitrunpower.com (cited), blackoutwise.com/home-oxygen-concentrator-5l (cited) and our own dealectric page. Willitrunpower and our page list switchover times (10–20 ms), and willitrunpower says a concentrator 'keeps going only if the switch is short enough'. It also says it found no test of a concentrator through a switchover. Blackoutwise lists 10 ms and 20 ms switchovers and says nothing about whether a concentrator tolerates them. None of the pages gives the concentrator side of the comparison: the dip length the EverFlo is documented to ride through (0.5 cycle) or the maker's own UPS-or-battery advice. None names a station with a 0 ms path or the conditions it needs.",
+ "decides": "Batteries are compared on Wh, but the deciding question is whether the concentrator stays on when the grid drops. Every station on our page publishes a 10–20 ms switchover, which is 0.6–1.2 cycles at 60 Hz. That is longer than the 0.5-cycle dropout the EverFlo manual documents, so in UPS mode the shopper should expect the concentrator to stop and sound its power-failure alarm (the alarm is per our page's citation of the EverFlo manual), not run through. Two ways around it: (a) put the concentrator on the left two AC outlets of a BLUETTI Apex 300, set to 240 V mode and fed from the grid through the 15 A AC input, which BLUETTI rates at 0 ms; or (b) plan for a restart plus backup tanks. The page should make the Apex 300 (0 ms outlets, 2,764.8 Wh, about 6.7 h at 350 W) the pick for anyone who needs no interruption. It should present the 10–20 ms stations as runtime-only choices.",
+ "candidates": [
+  "BLUETTI Apex 300",
+  "BLUETTI Elite 300",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Philips Respironics EverFlo",
+   "label": "Mains dropout covered by the EMC immunity table (IEC 61000-4-11)",
+   "value": "<5% UT (>95% dip) for 0.5 cycle; 40% UT for 5 cycles; 70% UT for 25 cycles; <5% UT for 5 s",
+   "source": "https://manualslib.mx/manual/235971/Philips-Respironics-Everflo-Serie.html?page=14",
+   "source_title": "Appendix A: EMC Information - Philips Respironics EverFlo Serie (EverFlo / EverFlo Q User Manual), page 14",
+   "read": "2026-11-14",
+   "note": "This is a ManualsLib copy of the Philips manual; the page footer reads 'EverFlo / EverFlo Q User Manual'. I could not open the Philips-hosted English PDFs (403 errors, or image-only PDFs). At 60 Hz one cycle is 16.67 ms, so 0.5 cycle = 8.3 ms. That is the longest total dropout in the table short of the 5 s interruption test. The table lists test levels and does not say the unit keeps producing oxygen at any of them."
+  },
+  {
+   "product": "Philips Respironics EverFlo",
+   "label": "Maker's guidance for continued operation through outages",
+   "value": "'If the user of the device required continued operation during power mains interruptions, it is recommended that the device be powered from an uninterruptible power supply or a battery.'",
+   "source": "https://manualslib.mx/manual/235971/Philips-Respironics-Everflo-Serie.html?page=14",
+   "source_title": "Appendix A: EMC Information - Philips Respironics EverFlo Serie (EverFlo / EverFlo Q User Manual), page 14",
+   "read": "2026-11-14",
+   "note": "Quoted from the EMC appendix. The page notes the text is garbled from PDF extraction."
+  },
+  {
+   "product": "general",
+   "label": "Published switchovers compared with EverFlo's 0.5-cycle dip",
+   "value": "10 ms = 0.6 cycle; 15 ms = 0.9 cycle; 20 ms = 1.2 cycles (60 Hz)",
+   "source": "https://manualslib.mx/manual/235971/Philips-Respironics-Everflo-Serie.html?page=14",
+   "source_title": "Appendix A: EMC Information - Philips Respironics EverFlo Serie",
+   "read": "2026-11-14",
+   "note": "My arithmetic: switchover ms ÷ 16.67 ms per cycle. Switchover times are from our current page: Elite 300 and DELTA 3 at 10 ms, Elite 200 V2 at ≤15 ms, AC200L at 20 ms, C1000 Gen 2 under 10 ms, Explorer 1000 v2 under 20 ms. All except possibly the C1000 Gen 2 ('under 10 ms', not stated as ≤8.3 ms) are longer than the documented 0.5-cycle dip."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "0 ms switchover and its conditions (maker)",
+   "value": "0 ms on the two left-side AC outlets with voltage set to 240 V and the grid connected via the 15 A AC input; 20 ms on all other AC ports",
+   "source": "https://bluettipower.com/blogs/knowledge/ups-and-generator-power-solution",
+   "source_title": "How a UPS System Works with a Backup Generator (BLUETTI blog, 2026-05-13)",
+   "read": "2026-11-14",
+   "note": "Quotes: 'switches over in 0ms (set the voltage to 240V and connect to the grid via the 15A AC input)'; 'the switchover occurs within a swift 20ms'. I could not open the US user manual's UPS section (the PDF is over the fetch size limit)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured transfer time, 120 V mode",
+   "value": "16 ms utility-to-battery at 100 W and at ~700 W",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review (Kevin OBrien, 2026-11-09)",
+   "read": "2026-11-14",
+   "note": "Kevin OBrien measured this on a Quarch power analyzer with a Dell workstation load. He writes that the 0 ms figure 'applies to two front outlets in 240V mode on a 120V input, which we did not capture'. 16 ms ≈ 0.96 cycle, still nearly twice EverFlo's 0.5-cycle documented dip."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Price, capacity, output (BLUETTI US store)",
+   "value": "US$1,499.00 (struck-through $1,699.00); 2,764.8 Wh; 3,840 W",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Home Battery Backup",
+   "read": "2026-11-14",
+   "note": "The product page also says 'Fast 0ms or 20ms switching keeps sensitive devices like CPAP machines running smoothly' and has no medical-use disclaimer. Runtime at 350 W (EverFlo average): 2,764.8 × 0.85 ÷ 350 ≈ 6.7 h, using the same 85% method as our page."
+  }
+ ],
+ "unsourced": [
+  "EverFlo warm-up time to rated oxygen purity after a restart: the Philips-hosted English manual PDFs were blocked or image-only. The only figure I found (10–20 min) is from a third-party manuals.plus guide, so I left it out.",
+  "Whether the EverFlo restarts by itself when power returns after a dropout: not stated in any maker document I could open.",
+  "Inogen At Home and DeVilbiss 525 EMC dip tables (IEC 61000-4-11 levels): not researched within the call budget.",
+  "An independent measurement of the Apex 300's 0 ms outlets (StorageReview did not capture it) and any real-world test of a home concentrator riding through a 10–20 ms switchover: none found.",
+  "The Anker SOLIX C1000 Gen 2's exact switchover beyond 'under 10 ms' (needed to know whether it is under 8.3 ms): not found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.2953714
+ }
+}

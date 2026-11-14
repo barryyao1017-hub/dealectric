@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a sump pump draws 0 W between float cycles. A station's ECO or no-load AC shut-off can therefore kill the outlet before the pit refills. BLUETTI's AC300 manual says ECO turns AC off below 30 W over 4 h, and The Technology Man reports the Elite 300's Eco mode turns AC off with no load. If ECO is switched off to prevent that, the inverter's own idle draw (about 19 W, measured on an Elite 300) uses about 226 Wh over 12 hours, and no runtime table counts it.",
+ "standout": 2,
+ "standout_why": "I compared four pages. RunTimeFit (cited, the source of ChatGPT's PECRON pick) says 'Most makers don't publish inverter idle draw, so the hours leave it out' and never mentions ECO or no-load auto-off. Tested Watts (cited) gives the Zoeller M53's 25.9 A start and 10–20 ms UPS switchover, but says nothing about auto-off or idle draw. OutageReadyHQ (cited) gives running and starting watts by HP only. The Home Battery Report (cited) covers LRA (F3800 Plus 80 A), surge duration (DELTA Pro Ultra 10.8 kW for 10 s) and 240 V. None of them says the AC outlet can switch itself off while the pump is idle, or counts 12 hours of inverter idle draw. Our current page also lacks both.",
+ "decides": "This doesn't change which station is biggest, but it adds a condition the plan depends on: ECO or AC auto-off must be disabled, or the pump has no power when the float closes. Once ECO is off, idle draw comes out of the budget. For the Elite 300 our 25 %-duty row drops from 11.9 h to about 10.9 h (2,380 Wh usable ÷ (200 W average pump + 19 W idle), using our page's own 800 W × 25 % basis). That pushes it under 12 h, so the 12-hour pick should be the 3.4 kWh-plus ALLPOWERS R4000 or larger (F3800 Plus, S5000). The page needs a 'turn off ECO / set AC timeout to Never' step.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Apex 300",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Eco mode turns AC off when nothing is drawing power",
+   "value": "AC subsystem turns off with no load in Eco mode; with Eco off, it stayed on for 16 h with no load",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 Review – 3kWh Capacity – But There Are Compromises (The Technology Man, Gidon, 2026-03-25)",
+   "read": "2026-11-13",
+   "note": "Quote: 'In Eco mode, the AC subsystem will turn off if there's no load attached, but with Eco mode turned off I left the unit overnight for 16 hours with no load connected.' The review doesn't give the Elite 300's ECO threshold or factory default."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "AC idle (self) draw with no load, measured",
+   "value": "about 19 W (100 % to 90 % over 16 h, AC on, no load)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 Review – 3kWh Capacity – But There Are Compromises (The Technology Man, Gidon, 2026-03-25)",
+   "read": "2026-11-13",
+   "note": "Reviewer: 'just having AC turned on uses around 19 W per hour'. Check: 10 % × 3,014.4 Wh = 301 Wh ÷ 16 h = 18.8 W. Over a 12 h outage that is about 226 Wh, or 7.5 % of capacity. The reviewer's '20 A = 4,600 W' implies a 230 V unit, so the US 120 V idle draw may differ."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Motor start test (inrush), measured",
+   "value": "started a load pulling over 20 A (over 4,600 W) at startup; a load pulling over 26 A (over 6,000 W) at startup was too much",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 Review – 3kWh Capacity – But There Are Compromises (The Technology Man, Gidon, 2026-03-25)",
+   "read": "2026-11-13",
+   "note": "Clamp-meter readings by the reviewer, apparently at 230 V (the review's own watt figures imply it). Tested Watts gives the Zoeller M53 1/3-class pump about 3,000 W at start, which is under the load that started."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Power Lifting is not a motor start allowance",
+   "value": "4,800 W Power Lifting: disabled by default, pure resistive loads only, real output stays 2,400 W",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review",
+   "source_title": "Bluetti Elite 300 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "Quotes: 'The mode is disabled by default and is intended only for pure resistive loads'; 'It is also not a startup allowance for motors or compressors.' StorageReview measured an 8 ms switchover to battery."
+  },
+  {
+   "product": "general (BLUETTI ECO behaviour, AC300 manual)",
+   "label": "ECO AC auto-off rule in BLUETTI's own manual",
+   "value": "AC output off if AC load is under 30 W over 4 hours",
+   "source": "https://www.manualslib.de/manual/856216/Bluetti-Ac300.html?page=17",
+   "source_title": "Bluetti AC300 manual, page 17 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Quote: 'ECO: The power saving mode of the unit to turn off the AC output to conserve energy if the AC load is less than 30W over 4 hours.' This is the AC300, not the Elite 300. A sump pump sitting idle between cycles in a slow-filling pit draws 0 W, so this rule would cut its power."
+  },
+  {
+   "product": "general (rival gap)",
+   "label": "Runtime tables omit inverter idle draw",
+   "value": "RunTimeFit hours exclude inverter idle draw",
+   "source": "https://runtimefit.com/scenarios/sump-pump-storm-12-hours",
+   "source_title": "What size power station runs a sump pump through a 12-hour storm · RunTimeFit",
+   "read": "2026-11-13",
+   "note": "The page says most makers don't publish inverter idle draw, so its hours leave it out. Its PECRON F3000LFP '~16 h' is ChatGPT's pick, and it also assumes 650 W running and 1,300 W starting."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 AC no-load timeout default: the manual PDFs (webstaurantstore, solacity) were over WebFetch's 10 MB limit, the skanbatt copy returned 404, and manuals.ecoflow.com rendered empty. A search snippet of the original DELTA Pro manual says AC shuts off after 12 h with no load, but I couldn't open it (manuals.plus 403, manualslib.tech certificate error).",
+  "BLUETTI Elite 300 ECO threshold (W), delay (h) and factory default: the official US manual PDF on s4.bluettipower.com was over WebFetch's size limit, and the support PDF came back as unreadable compressed streams.",
+  "Anker SOLIX F3800 Plus / S5000 / C1000 Gen 2 power-saving or AC auto-off behaviour: the Home Depot user-guide PDF came back as unreadable binary, and searches turned up only product pages.",
+  "ALLPOWERS R4000 ECO / AC auto-off setting and idle draw: not looked up (ran out of tool-call budget).",
+  "How long each candidate holds its surge rating (DELTA Pro 3 8,000 W, R4000 6,000 W): no maker page I opened states it.",
+  "Literal 13 HP reading: a source that a 13 hp motor isn't a standard single-phase 120/240 V size (NEC Table 430.248, NEMA MG-1 standard ratings) wasn't opened. No portable station I looked at lists three-phase output, but I didn't source that claim."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0891486999999997
+ }
+}

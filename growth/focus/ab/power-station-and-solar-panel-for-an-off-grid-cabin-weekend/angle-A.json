@@ -1,0 +1,103 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says how much power the stations use just by keeping the AC inverter on all weekend for the fridge. Normalised to a 44-hour Friday-evening-to-Sunday-afternoon weekend, the drain is about 420 Wh on the BLUETTI Elite 200 V2 (9.5 W, The Solar Lab) and about 600 Wh on the EcoFlow DELTA 2 Max (13.6 W, The Solar Lab). On the Anker SOLIX F3800 Plus it is about 4.9 kWh (112 W, Zelpio), which is more than its 3,840 Wh battery, so the inverter alone empties it in about 34 hours.",
+ "standout": 3,
+ "standout_why": "I opened the three cited rival pages. ankersolix.com 'Off-Grid Cabin Solar Setup Guide 2026' covers DOD (0.8), 0.9 system efficiency and a 0.85 PV derate, and has no idle or self-consumption figure. ankersolix.com 'Off Grid Solar Cabin Essentials' only says to check surge and continuous watts. solutionenergy.com 'Off-Grid Cabin Power Systems' covers 80% LiFePO4 usable capacity and a 0.92 loss factor, with no inverter idle draw. All three size the battery from appliance loads only. None counts the fixed hourly cost of leaving the inverter on for a fridge, and none compares that cost across models. ChatGPT's plain-search answer suggested the F3800 Plus for a 3.54 kWh weekend, and the idle draw Zelpio measured on it is larger than that whole budget.",
+ "decides": "This confirms the BLUETTI Elite 200 V2 as the pick at about 2 kWh. Its idle draw is the lowest sourced here (9.5 W, about 420 Wh over the weekend). APH Networks also measured 2,028 Wh usable from it at a 987 W load, 97.8% of rated. The DELTA 2 Max has the same nominal capacity but loses about 180 Wh more to idle over the weekend. It also rules out ChatGPT's F3800 Plus suggestion for a fridge weekend. Zelpio measured 112 W with the inverter on and nothing plugged in. Anker's own firmware post claims only a 50% cut, which would still be about 56 W and about 2.5 kWh over 44 hours. The page should put idle watts × 44 h in the table as a line in the energy budget, with a footnote naming who measured each figure and the firmware caveat.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 2 Max",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI AC180",
+  "ALLPOWERS P1800",
+  "ALLPOWERS S2000 Pro"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw",
+   "value": "9.5 W (about 418 Wh over a 44 h weekend, about 20% of 2,073.6 Wh)",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review",
+   "source_title": "The Solar Lab: Bluetti Elite 200 V2 review",
+   "read": "2026-11-13",
+   "note": "The Solar Lab gives it as 'just 9.5W per hour' and doesn't say whether AC was on or how it was measured. Arithmetic: 9.5 W × 44 h = 418 Wh. The same review says solar input topped out at 800 W of the rated 1,000 W 'due to voltage constraints' with their panels."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable AC capacity",
+   "value": "2,028 Wh (97.8% of 2,073.6 Wh rated)",
+   "source": "https://aphnetworks.com/reviews/bluetti-elite-200-v2/4",
+   "source_title": "APH Networks: BLUETTI Elite 200 V2 Review (Page 4 of 5)",
+   "read": "2026-11-13",
+   "note": "Constant 987 W electric heater, ran 2 h 1 min. At high load the inverter's fixed idle draw is a small share, so a light fridge load over a weekend will deliver less than this."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Idle draw, AC inverter on, no load",
+   "value": "13.6 W (about 598 Wh over 44 h, about 29% of 2,048 Wh)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-2-max-review",
+   "source_title": "The Solar Lab: EcoFlow DELTA 2 Max Review",
+   "read": "2026-11-13",
+   "note": "Fully charged, AC inverter on, nothing plugged in; The Solar Lab 'calculated the idle draw sat around 13.6W'. Duration and % drop not stated. Arithmetic: 13.6 × 44 = 598 Wh."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Idle draw, inverter on, no load",
+   "value": "112 W (1,350 Wh in 12 h; about 4,930 Wh over 44 h, more than the 3,840 Wh battery)",
+   "source": "https://www.zelpio.com/blog/anker-solix-f3800-plus-review/",
+   "source_title": "Zelpio: Anker SOLIX F3800 Plus review",
+   "read": "2026-11-13",
+   "note": "Zelpio (published 2026-08-23): 'With the inverter left on and nothing plugged in, the unit draws about 112W'; inverter left on with no load drains the full battery in about 34 hours; the idle draw pulled their AC capacity test down to 83% of rated. Firmware version not stated."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Maker's claim for the firmware update",
+   "value": "Idle consumption cut by 50% (no watt figure given)",
+   "source": "https://us.ankersolix.com/blogs/home-power-backup/increase-f3800-plus-standby-time-to-the-max-with-the-latest-firmware-update",
+   "source_title": "Anker SOLIX: Increase F3800 Plus Standby Time to the Max with the Latest Firmware Update",
+   "read": "2026-11-13",
+   "note": "Posted 2025-06-27. No before/after watts, no firmware version, no test conditions. Even if the 50% applies to Zelpio's 112 W, that leaves about 56 W, or about 2,460 Wh over 44 h (64% of 3,840 Wh). The update is installed through the Anker app; the unit doesn't display its own consumption."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input (for normalising against panel watts)",
+   "value": "3,200 W total; each port 11–165 V, 17 A max, 1,600 W max",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "AC output 6,000 W max (L14-30R), 2,400 W from the standard 120 V outlets; no surge figure stated. The page showed 'Sold Out' and 'Price Loading', so no price was recorded."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Motor/compressor start vs rated output; ECO mode thresholds",
+   "value": "1,800 W rated; maker warns compressors may start at 2–4× rated power; ECO thresholds settable 10–30 W (AC) / 5–10 W (DC), 1–4 h",
+   "source": "https://www.manualslib.de/manual/1012764/Bluetti-Ac180.html?page=17",
+   "source_title": "Bluetti AC180 manual, appendix (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Solar: third-party panels need 12–60 V open-circuit voltage, MC4. If ECO mode is on with a high threshold and a long fridge off-cycle, it can turn the AC off. No self-consumption figure on this page."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals say about losses",
+   "value": "Anker guide: DOD 0.8, system efficiency 0.9, PV derate 0.85; SolutionEnergy: 80% usable, ÷0.92 losses; Anker essentials: 'Check both continuous wattage and surge wattage'",
+   "source": "https://www.ankersolix.com/blogs/solar/complete-off-grid-cabin-solar-setup-guide",
+   "source_title": "Off-Grid Cabin Solar Setup Guide 2026 - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Also read https://solutionenergy.com/off-grid/cabins/ and https://www.ankersolix.com/blogs/portable-power-station/off-grid-solar-cabin-essentials on 2026-11-13. None of the three gives a per-model inverter idle or self-consumption figure."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 self-consumption: search snippets cite a manual figure of about 15 W, but the BLUETTI community thread redirected to the forum home page, the manualslib appendix page I opened doesn't have it, and I didn't open the full manual, so it's left out.",
+  "EcoFlow DELTA Pro 3 idle draw: the opened The Solar Lab DELTA Pro 3 review has none; snippets only imply it is below the DELTA 3 Ultra Plus's 24 W.",
+  "ALLPOWERS P1800 and S2000 Pro idle/no-load draw: not researched within the tool budget; no maker or reviewer figure opened.",
+  "BLUETTI Elite 200 V2 manual no-load figure: the BLUETTI-hosted PDF came back as unreadable compressed streams and local text extraction wasn't permitted; manuals.plus returned 403.",
+  "F3800 Plus firmware version behind Zelpio's 112 W: Zelpio doesn't say. The How-To Geek review and update articles (via Yahoo) returned 403, so their 50–70 W figure isn't used.",
+  "Prices: not re-checked today; the one maker page opened (F3800 Plus) showed Sold Out with no price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0635013999999998
+ }
+}

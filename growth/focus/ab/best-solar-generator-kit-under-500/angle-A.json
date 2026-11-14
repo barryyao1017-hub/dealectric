@@ -1,0 +1,149 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Elite 30 V2's '1500W Lifting Power' is, in BLUETTI's own words, a momentary figure for 'pure resistive devices' only, or that Jackery's 4,000-cycle rating on the Explorer 300 runs to 70% capacity while BLUETTI and Anker give 3,000 cycles with no capacity endpoint on their own US pages.",
+ "standout": 2,
+ "standout_why": "I read three pages. PowerSized (powersized.com/solar-generator-kits, cited) has one 'Output (W)' column that doesn't say whether the number is rated or surge. It doesn't mention cycle life or Power Lifting. It does already make the panel-versus-input point ('Panel watts above the station's limit do not charge it any faster'), so that point isn't new. OffGridEmpire (cited) lists inverter watts without saying rated or surge, and only says 'LiFePO4 cycles 3,000+ times' with no endpoint. BLUETTI's EB3A page (cited) sells one product only. I couldn't open SolarGenAdvisor's under-$500 page (cited in the pin chat) because its TLS certificate failed, so I don't know what it says. ChatGPT's own answers repeat '600W AC' for the BLUETTI and 'LiFePO4' as a lifespan proxy. None of them separates rated, surge and Power Lifting, or gives cycle endpoints.",
+ "decides": "This supports the BLUETTI Elite 30 V2 + 100 W as the pick, with a correction to how we state its output. Its real advantage is 600 W continuous against 300 W continuous on the Jackery Explorer 300 / 300 v2 and the Anker C300. The 1,500 W number is not surge headroom for motors or compressors, so our table cell '600 W (1,500 W Power Lifting)' needs a footnote saying it's resistive loads only and momentary. BLUETTI's pages publish no surge figure for the Elite 30 V2, while Jackery and Anker both publish 600 W surge. Jackery's '4,000+ cycles' looks better than 3,000, but it's measured to a looser 70% endpoint and can't be compared one-to-one. It shouldn't count as a durability win for the Jackery kit. Two other things change how the kits compare. Jackery says its SolarSaga 100 Air is 'not compatible with Explorer 300 v2, Explorer 300', so that kit can't be upgraded with Jackery's current 100 W panel. And on its own store the ALLPOWERS P1800 + 200 W kit costs $531 before any code, which is over $500.",
+ "candidates": [
+  "BLUETTI Elite 30 V2 + 100W",
+  "Jackery Solar Generator 300 (Explorer 300 + SolarSaga 40W)",
+  "Jackery Explorer 300 v2 + SolarSaga 40 Air",
+  "Anker SOLIX C300X DC + 60W",
+  "Anker SOLIX C300 + 60W",
+  "ALLPOWERS P1800 + 200W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2 + 100W",
+   "label": "Kit price, BLUETTI US store",
+   "value": "$489.99 (compare-at $489.99), available",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py product (Shopify JSON). This is the price before any code. I didn't test the DEALECTRIC code. Colour variants (Blush Pink, Glacier Blue, Twilight Glow Purple +100W) are also $489.99."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Rated output vs 'Lifting Power'",
+   "value": "600 W rated (continuous); 1,500 W 'Lifting Power' only momentarily, only for pure resistive devices",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Quote from the page: 'When it comes to pure resistive devices, it can momentarily reach up to 1,500W.' The store blurb says '600W Rated Power, 1500W Lifting Power: ... handles essential appliances and power surges with ease', which blurs Lifting Power with surge. No separate surge (peak) figure appears on BLUETTI's US pages."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Cycle life as BLUETTI states it",
+   "value": "'Over 3,000 cycles and a 10-year lifespan', no capacity endpoint given",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The same wording appears on the station-only page. The Tech Specs table was empty when I fetched it."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Max solar input vs included panel",
+   "value": "200 W max solar ('Solar Panels: 200W Max., 2.2H'); the kit ships a 100 W panel",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "BLUETTI gives a charge time only at 200 W. It publishes no charge time with the bundled 100 W panel. The 100 W panel uses half the station's input limit."
+  },
+  {
+   "product": "Jackery Solar Generator 300 (Explorer 300 + panel)",
+   "label": "Cycle life endpoint",
+   "value": "4,000+ cycles to 70% capacity",
+   "source": "https://www.jackery.com/products/jackery-explorer-300-solarsaga-100w-solar-generator",
+   "source_title": "Jackery Solar Generator 300 – Jackery US",
+   "read": "2026-11-13",
+   "note": "Quote: 'Delivers 4,000+ charge cycles to 70% capacity.' The Explorer 300 station page says the same ('4,000+ charge cycles to 70% capacity'). The Explorer 300D page also says '4,000+ cycles with 70% capacity retention'. Read with storecheck.py search; the product page itself returned HTTP 429."
+  },
+  {
+   "product": "Jackery Solar Generator 300 (Explorer 300 + panel)",
+   "label": "Solar refill time, stated by Jackery",
+   "value": "About 7.5 h to 80% with a 40 W panel; about 2.8 h to 80% with a 'compatible' 100 W panel; 300 W rated output",
+   "source": "https://www.jackery.com/products/jackery-explorer-300-solarsaga-100w-solar-generator",
+   "source_title": "Jackery Solar Generator 300 – Jackery US",
+   "read": "2026-11-13",
+   "note": "Both times are to 80%, not 100%. The search listing shows $289, which equals the price of the Explorer 300 alone on the same store. I couldn't open the variant list (HTTP 429), so I can't confirm which bundle that price is for."
+  },
+  {
+   "product": "Jackery Solar Generator 300 / Explorer 300 v2",
+   "label": "Panel compatibility",
+   "value": "SolarSaga 100 Air 'Not compatible with Explorer 300 v2, Explorer 300, 300D, or 240D for recharging'",
+   "source": "https://www.jackery.com/products/jackery-solarsaga-100-air",
+   "source_title": "Jackery SolarSaga 100 Air – Jackery US",
+   "read": "2026-11-13",
+   "note": "Jackery's current 100 W panel ($299) won't charge the 300-class stations, so you can't upgrade the 40 W kit with it."
+  },
+  {
+   "product": "Jackery Explorer 300 v2",
+   "label": "Rated vs surge, cycle wording, stock",
+   "value": "300 W rated (600 W surge); '4000+ life cycles' with no endpoint on this page; sold out",
+   "source": "https://www.jackery.com/products/jackery-explorer-300-v2-portable-power-station",
+   "source_title": "Jackery Portable Power Station Explorer 300 v2 – Jackery US",
+   "read": "2026-11-13",
+   "note": "Quote: 'We're sold out of Explorer 300 v2. Check out Explore 300'. Store price shown is $299, compare-at $419. The Solar Generator 300 v2 listing shows the same sold-out text."
+  },
+  {
+   "product": "Anker SOLIX C300X DC + 60W",
+   "label": "Kit price, outputs, cycle wording",
+   "value": "$349.99; 300 W total output (DC/USB, no AC outlet); 'LFP batteries rated for 3,000 cycles' with no endpoint",
+   "source": "https://us.ankersolix.com/products/c300x-dc-portable-power-station-us",
+   "source_title": "Anker SOLIX C300X DC Portable Power Station with 60W Solar Panel – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. Anker's EU page for the same model (https://www.ankersolix.com/eu/products/a1728311, read 2026-11-13) also says '3,000-cycle LFP batteries' with no endpoint, and 'up to 100W solar recharging'."
+  },
+  {
+   "product": "Anker SOLIX C300",
+   "label": "Rated vs surge; station-only price",
+   "value": "300 W (600 W surge); $429.99 for the station alone on Anker US",
+   "source": "https://us.ankersolix.com/products/c300",
+   "source_title": "Anker SOLIX C300 Portable Power Station - 288Wh | 300W – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker says the C300 is 'not compatible with Anker SOLIX PS30 (or other 5V~3A USB-C panels), PS200, PS400'. I didn't open the $399.99 Best Buy kit price ChatGPT showed."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 200W",
+   "label": "Kit price on maker store; station rated vs peak; solar input",
+   "value": "$531 kit (compare-at $1,059.98), listed available; station 1,800 W rated, 3,600 W peak, up to 650 W solar input, 'over 3,000 charge cycles' with no endpoint",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-200w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 200W Solar Panel – ALLPOWERS",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. Rated, peak, solar input and cycles come from the station listing https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w ($399). $531 is over $500 before any code. I didn't test ChatGPT's $477.90 with ALLPOWERS26. The search listing doesn't say whether it's a pre-order."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: PowerSized kit guide",
+   "value": "One 'Output (W)' figure per kit, not labelled rated or surge; no cycle life; says panel watts above the station limit don't charge faster",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide – PowerSized",
+   "read": "2026-11-13",
+   "note": "Cited rival. Lists the Jackery Explorer 300 v2 + SolarSaga 40 Air at $419 with a 9.5 h solar benchmark."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: OffGridEmpire under-$500",
+   "value": "Inverter watts not labelled rated or surge; 'LiFePO4 ... cycles 3,000+ times' with no endpoint; no solar input limits",
+   "source": "https://offgridempire.com/best-solar-generator-under-500/",
+   "source_title": "Best Solar Generator Under $500: Real Build Cost Ranked – OffGridEmpire",
+   "read": "2026-11-13",
+   "note": "Cited rival. Lists the BLUETTI EB3A as '1,200W inv', which is likely its surge or lifting figure presented as the inverter rating."
+  }
+ ],
+ "unsourced": [
+  "Capacity endpoint for BLUETTI's '3,000+ cycles' on the Elite 30 V2. I checked BLUETTI's US station and kit pages (both give no endpoint) and the manual on manuals.plus (HTTP 403). Retailer listings (Outbound Power, PB Tech) say '3,000+ cycles to 80%', but those aren't maker, manual or named-reviewer sources.",
+  "Capacity endpoint for Anker's 3,000 cycles on the C300X DC / C300. Anker's US and EU pages give no endpoint, and I couldn't extract text from the Anker C300X pitch-deck PDF (compressed, extraction tool not approved). The '80%' figure appears only on retailer listings.",
+  "A true surge (peak) watt figure for the BLUETTI Elite 30 V2, separate from Power Lifting. It's not on BLUETTI's US pages.",
+  "BLUETTI's solar charge time with the bundled 100 W panel. Only '200W Max., 2.2H' is published.",
+  "Which bundle the $289 Jackery Solar Generator 300 listing is priced for, and whether the 40 W kit is in stock. The product page and variant JSON returned HTTP 429.",
+  "SolarGenAdvisor's 'Best Solar Generators Under $500' (cited in the pin chat). WebFetch failed with a self-signed certificate error, so I couldn't check its content.",
+  "Anker SOLIX 536 + 100 W ($449.98 at Sam's Club in ChatGPT's answers). I didn't open it within the tool budget, so I have no rated, surge, cycle or solar-input figures for it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.3143307
+ }
+}

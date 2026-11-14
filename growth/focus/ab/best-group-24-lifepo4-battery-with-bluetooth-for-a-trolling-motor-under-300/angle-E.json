@@ -1,0 +1,116 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got gives a measured figure for any candidate. Techtest.org measured the LiTime 12V 100Ah Group24 Bluetooth at 102.46 Ah on average (100.92 Ah at 40 A) and the Power Queen 12V 100Ah Group 24 Smart at 104.26 Ah. Panbo found that the WattCycle 100Ah Bluetooth Group 24, whose BMS is rated 120 A, did not shut off until almost 200 A.",
+ "standout": 2,
+ "standout_why": "I opened Nautworthy's LiTime Group 24 page (result 12 in the 2026-11-13 chat). It says Nautworthy has not tested the battery and gives only LiTime specs and its own sums. Solargenadvisor's trolling-motor page (in four chats) would not load because of a certificate error, so I could not check it. None of the six ChatGPT answers gives a measured capacity, cutoff voltage or trip current, and all of them rank on rated BMS amps. Our current page has only spec cells. I did not reopen the cited maker pages (Vatrer, Redodo, Power Queen, WattCycle). They are maker listings, so they cannot hold independent measurements.",
+ "decides": "ChatGPT's main reason for picking Vatrer is that its 150 A BMS gives more headroom than everything else. No named reviewer has published a measurement for the Vatrer Group 24 150A, so that reason rests only on Vatrer's own claim. Panbo measured the WattCycle (rated 120 A) carrying almost 200 A before it shut off, so its real headroom is at least as big. Techtest measured more than 100 Ah from the LiTime and the Power Queen Group 24 at trolling-motor currents of 30 to 40 A. The page can say the headroom claim is unmeasured for Vatrer and measured for WattCycle. It can also say LiTime and Power Queen have verified capacity. Any of these covers a 55 lb motor drawing about 50 A. One practical catch comes from Panbo: the WattCycle stopped accepting charge at 14.2 V when charged at 25 A or more, so a 14.6 V LiFePO4 charger may cut out early.",
+ "candidates": [
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS",
+  "WattCycle 12V 100Ah TM Bluetooth (Group 24)",
+  "Power Queen 12V 100Ah Group 24 Smart",
+  "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Renogy Core 12V 100Ah Trolling Motor Bluetooth",
+  "WEIZE 12V 100Ah Bluetooth Group 24",
+  "LiThink 12V 100Ah Group 24"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Measured capacity, Techtest.org (Michael Barton)",
+   "value": "103.33 / 102.96 / 102.62 Ah at 30 A (1319 / 1314 / 1309 Wh); 100.92 Ah / 1279 Wh at 40 A",
+   "source": "https://techtest.org/litime-12v-100ah-group24-im-test-der-kompakte-bluetooth-akku-fuer-den-camper/",
+   "source_title": "LiTime 12V 100Ah Group24 im Test – der kompakte Bluetooth-Akku für den Camper",
+   "read": "2026-11-14",
+   "note": "Published 2026-07-08. Measured with an Atorch DL24MP electronic load and cross-checked with a DL24EW. German review, so probably an EU-market unit. 30 A and 40 A are typical trolling-motor draws."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Undervoltage cutoff measured by Techtest.org",
+   "value": "about 10.3 to 10.4 V",
+   "source": "https://techtest.org/litime-12v-100ah-group24-im-test-der-kompakte-bluetooth-akku-fuer-den-camper/",
+   "source_title": "LiTime 12V 100Ah Group24 im Test – der kompakte Bluetooth-Akku für den Camper",
+   "read": "2026-11-14",
+   "note": "Voltage at which the BMS cut off at the end of the discharge runs. Techtest did not test the overcurrent trip."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Average measured capacity, Techtest.org comparison of 22 batteries",
+   "value": "102.46 Ah (102.46 % of rated)",
+   "source": "https://techtest.org/lifepo4-akku-vergleich-2026-welcher-hersteller-ist-wirklich-der-beste/",
+   "source_title": "LiFePO4-Akku Vergleich 2026: Welcher Hersteller ist wirklich der Beste?",
+   "read": "2026-11-14",
+   "note": "Published 2026-10-19 by Michael Barton. Averages are taken from each battery's own test."
+  },
+  {
+   "product": "Power Queen 12V 100Ah Group 24 Smart",
+   "label": "Measured capacity, Techtest.org (Michael Barton)",
+   "value": "103.1 to 105.1 Ah, about 1330 Wh",
+   "source": "https://techtest.org/gruppe-24-lifepo4-akku-mit-bluetooth-von-power-queen-im-test/",
+   "source_title": "Gruppe 24 LiFePO4 Akku mit Bluetooth von Power Queen im Test",
+   "read": "2026-11-14",
+   "note": "Published 2024-11-04. Atorch DL24MP / DL24EW loads; the article does not state the discharge current. EU unit priced at 300 €. Techtest's 2026 comparison gives an average of 104.26 Ah (104.26 %)."
+  },
+  {
+   "product": "Power Queen 12V 100Ah Group 24 Smart",
+   "label": "Undervoltage cutoff measured by Techtest.org",
+   "value": "about 10.6 V",
+   "source": "https://techtest.org/gruppe-24-lifepo4-akku-mit-bluetooth-von-power-queen-im-test/",
+   "source_title": "Gruppe 24 LiFePO4 Akku mit Bluetooth von Power Queen im Test",
+   "read": "2026-11-14",
+   "note": "Quote: 'Dieser Schutz griff bei mir bei ca. 10,6 V.' Barton also reports the Bluetooth BMS 'funktionierte bei mir absolut tadellos' (worked flawlessly for him)."
+  },
+  {
+   "product": "WattCycle 12V 100Ah TM Bluetooth (Group 24)",
+   "label": "Measured capacity, Panbo (Ben Stein)",
+   "value": "about 101.75 Ah",
+   "source": "https://panbo.com/?p=106332",
+   "source_title": "WattCycle LiFePO4, value battery with a punch (Panbo)",
+   "read": "2026-11-14",
+   "note": "Published 2024-12-11, updated 2025-01-12. The unit is a 12V 100Ah Bluetooth battery with low-temp cutoff that roughly fits Group 24, listed at $219. The article does not call it the 'TM' model, but its product link goes to the trolling-motor version. Discharge rate not stated. Stein says this is slightly below the 2 to 3 % excess he usually sees."
+  },
+  {
+   "product": "WattCycle 12V 100Ah TM Bluetooth (Group 24)",
+   "label": "Discharge current at which the BMS shut off, Panbo high-current test",
+   "value": "almost 200 A (rated 120 A)",
+   "source": "https://panbo.com/?p=106332",
+   "source_title": "WattCycle LiFePO4, value battery with a punch (Panbo)",
+   "read": "2026-11-14",
+   "note": "Stein reports surge protection levels of 220 A for up to 6 s and 400 A for 0.3 s, and says 220 A 'might be a little too high' for a 100 Ah battery. At about 200 A the battery would be empty in roughly 30 minutes."
+  },
+  {
+   "product": "WattCycle 12V 100Ah TM Bluetooth (Group 24)",
+   "label": "Charge disconnect observed by Panbo",
+   "value": "charge MOSFETs opened at 14.2 V when charging at 25 A or more",
+   "source": "https://panbo.com/?p=106332",
+   "source_title": "WattCycle LiFePO4, value battery with a punch (Panbo)",
+   "read": "2026-11-14",
+   "note": "Stein avoided the unwanted disconnects by setting absorption to 13.9 to 14.0 V. This matters to shoppers using a fixed 14.6 V LiFePO4 charger."
+  },
+  {
+   "product": "general",
+   "label": "Battery Techtest.org reviewed as 'LiThink 12V 100Ah TM' is not a Group 24 case",
+   "value": "339 × 185 × 215 mm; 104.45 Ah average (103.9 to 104.9 Ah at 20 to 40 A)",
+   "source": "https://techtest.org/lithink-12v-100ah-tm-im-test-120-a-bms-bluetooth-selbstheizung-fuer-trolling-motoren/",
+   "source_title": "LiThink 12V 100Ah TM im Test: 120 A BMS, Bluetooth & Selbstheizung für Trolling Motoren",
+   "read": "2026-11-14",
+   "note": "Published 2026-08-07. At 339 mm long this is a different, larger model from the 'LiThink 12V 100Ah Group 24' ChatGPT recommended, so its figures should not be credited to the Group 24 battery. BMS cut off at about 11.08 V after 5 h 12 min at 20 A."
+  }
+ ],
+ "unsourced": [
+  "Vatrer 12V 100Ah Group 24 150A: no named capacity or trip-current test found. Techtest's 104.20 % result is for a different Vatrer (self-heating, app, reviewed March 2024). The Wired2Fish review of the Group 24 Bluetooth model (wired2fish.com/tackle-reviews/vatrer-12v-100ah-group-24-bluetooth-lithium-battery-review) returned HTTP 403. Search snippets describe it as a three-week kayak impressions piece listing rated specs.",
+  "Redodo 12V 100Ah Group 24 Bluetooth: no named measurement found. CleanTechnica's review (Danielle Garland, 2024-02-20, sponsored) of the Redodo Group 24 reports no measured figures and does not mention Bluetooth. Techtest has tested Redodo 165 Ah and 200 Ah batteries, but not the Group 24.",
+  "Renogy Core 12V 100Ah trolling-motor battery: searched for named capacity or BMS tests and found none for this model.",
+  "WattCycle TM: the Love Your RV teardown (2025-02-24) says its video covers charge, discharge and low-temp tests, but the page text has no numbers. Its listed cons include 'Poor BMS Tuning'.",
+  "Will Prowse: a LiTime Group 24 review video exists with surge, continuous-discharge and low-temp test sections, but I found no written figures. willapproved.com's budget and UL pages list no 12V 100Ah Group 24 models.",
+  "WEIZE and ECO-WORTHY Group 24 Bluetooth models: no named measurement found in this budget.",
+  "solargenadvisor.com trolling-motor page: could not be opened (self-signed certificate error), so I could not check whether it quotes any measurements.",
+  "Prices were not re-checked for this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2961824000000002
+ }
+}

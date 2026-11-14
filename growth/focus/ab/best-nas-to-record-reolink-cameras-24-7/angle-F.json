@@ -1,0 +1,136 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got sets out, in one place, what it costs in software and licences to record four cameras on each option: Synology needs two paid perpetual licences on top of its two free ones. QNAP's QVR Surveillance covers four cameras for free only once you claim 6 'launch campaign' bonus channels through a QNAP ID, and QNAP doesn't say whether they are permanent; QVR Elite gives 2 free. UGREEN publishes no fee, and Reolink's RLN8-410 needs no licence but has 10/100 PoE ports and takes drives of up to 8 TB each.",
+ "standout": 1,
+ "standout_why": "Compared against the cited QNAP FAQ (qnap.com …what-is-the-difference-between-qvr-proelite-and-qvr-surveillance), the Synology Device License Pack pages, the Surveillance Station spec pages, the Reolink RLN8-410 product page and Reolink's Synology guide. Each cited page holds one piece. The QNAP FAQ says '8 free channels' but doesn't say 6 of them are a campaign bonus; that is in the QNAP tutorial, which ChatGPT got at rank 35 but did not cite. The RLN8-410 page states the 8 TB-per-drive limit, but ChatGPT's answers still advised 12–16 TB on that NVR. No page sets the four platforms' licence terms for exactly four cameras side by side. I could not source the dollar total for each option, which would have made the comparison new.",
+ "decides": "This mostly confirms the picks ChatGPT and our page already give: RLN8-410 for recording only, UGREEN DXP2800 as the NAS with no published camera fee, and Synology for the most mature software, with two paid licences. It corrects our current page: the QNAP TS-264 row says 'QVR Elite: 2 free channels, then subscription only', which is out of date. QNAP's newer QVR Surveillance includes 8 free channels (2 standard + 6 bonus), so the TS-264 can record four cameras with no fee. The catch is that the 6 bonus channels are a launch-campaign claim with no announced end date and no stated permanence, so present the TS-264 as 'free for four if you claim the bonus now'. For the RLN8-410, the 8 TB-per-drive limit means one internal drive holds about 31 days for four cameras at 6 Mbps each (ChatGPT's own 7.8 TB figure). Longer retention needs a second drive on eSATA, up to 16 TB in total.",
+ "candidates": [
+  "Reolink RLN8-410",
+  "Synology DS225+",
+  "Synology DS224+",
+  "Synology DS423",
+  "Synology DS423+",
+  "Synology DS425+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "TerraMaster F2-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, maker's US store (diskless)",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-13",
+   "note": "From the Shopify product JSON via storecheck.py. ChatGPT's card showed $296.99 at Walmart, so UGREEN's own store is $93 higher today."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Price, maker's US store (diskless)",
+   "value": "$429.99 (compare-at $634.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-gt-2-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 GT",
+   "read": "2026-11-13",
+   "note": "storecheck.py search result"
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, maker's US store (diskless)",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search result. It loses to the DXP2800 on price for a four-camera job, and to the DXP4800 GT at $559.99 for a cheaper four-bay unit."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Price, maker's US store (diskless)",
+   "value": "$373.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search result. This is a four-bay ARM unit that costs less than the two-bay DXP2800 today. I did not check whether it supports Surveillance Center."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "PoE ports",
+   "value": "8 × RJ-45 10/100 Mbps PoE, 25 W max per port (802.3af/at), plus one 10/100 LAN/WAN port",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "Spec section of the maker's US page"
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Storage limit",
+   "value": "8 TB per HDD; 16 TB total (8 TB internal SATA + 8 TB eSATA); ships with 2 TB",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "Four cameras at 6 Mbps = 2.59 TB/day decimal (4×6e6/8×86,400), so one 8 TB internal drive holds about 31 days. This is where it loses to a NAS for longer retention without an eSATA drive."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Channels and warranty",
+   "value": "12 channels, up to 8 wired IP cameras; dual-lens cameras use 2 channels; records up to 16 MP; 2-year limited warranty",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "This fills the 'not read' warranty cell on our page: 2 years"
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Free camera channels, QVR Surveillance vs Elite vs Pro",
+   "value": "QVR Surveillance: 8 free (2 standard + 6 bonus), up to 1,024 channels, lifetime or subscription licences; QVR Pro: 8 built-in, perpetual; QVR Elite: 2 free, subscription-focused",
+   "source": "https://www.qnap.com/en/how-to/faq/article/what-is-the-difference-between-qvr-proelite-and-qvr-surveillance",
+   "source_title": "What is the difference between QVR Pro/Elite and QVR Surveillance? | QNAP",
+   "read": "2026-11-13",
+   "note": "This makes our page's TS-264 row ('QVR Elite… subscription only') out of date"
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "How the 6 bonus channels are claimed",
+   "value": "Sign in with a QNAP ID (myQNAPcloud), then QVR Surveillance > Help > Feature Tour > 'Claim now'. Called a 'launch campaign'; 'QNAP has not announced an end date'",
+   "source": "https://www.qnap.com/en/how-to/tutorial/article/how-to-claim-6-additional-free-channels-in-qvr-surveillance",
+   "source_title": "How to Claim 6 Additional Free Channels in QVR Surveillance? | QNAP",
+   "read": "2026-11-13",
+   "note": "The article does not say whether claimed channels are permanent or list eligible models. Without the claim you get 2 free channels, which is short of four cameras. That is where it can lose."
+  },
+  {
+   "product": "QNAP TS-264",
+   "label": "Warranty",
+   "value": "3 years, extendable to 5",
+   "source": "https://www.qnap.com/en-us/product/ts-264",
+   "source_title": "TS-264 | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The maker page shows no US price ('Choose specification', no buy link)"
+  },
+  {
+   "product": "Synology DS225+ / DS224+ / DS423 / DS423+ / DS425+",
+   "label": "Extra camera licences",
+   "value": "Sold in 1-, 4- or 8-licence packs through authorised resellers only; perpetual ('valid for good once activated'); one key per Synology unit at a time; lost keys are not replaced",
+   "source": "https://www.synology.com/en-us/store/DEVICE%20LICENSE%20%28X%201%29",
+   "source_title": "DEVICE LICENSE (X 1) | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Two included licences plus two bought licences cover four cameras. Synology's page lists no USD price. Every Synology option loses on this extra purchase."
+  }
+ ],
+ "unsourced": [
+  "Reolink RLN8-410 price today: the US product page (base and ?attribute_pa_version=rln8-410) and the store.reolink.com/us NVR listing show no price, only a 'Save up to $600' Black Friday banner. Amazon was walled; I did not try Walmart.",
+  "Synology DS225+, DS423, DS423+ and DS425+ prices: Synology lists none. Newegg US, B&H and CDW returned 403, Best Buy timed out and Amazon was walled. Search snippets showed $360.49 at Best Buy and $364.99 at Newegg, but I could not open those pages, so those figures are left out.",
+  "Synology CLP1 single-licence USD price: CDW (403) and ACE Peripherals (429) blocked me. Snippets of about $66 at CDW are not used.",
+  "QNAP TS-264 price: the QNAP US product page shows no figure, the shop.qnap.com Shopify search returned nothing and Amazon was walled.",
+  "Asustor AS5402T and TerraMaster F2-425 Plus prices today: I ran out of the tool budget before opening their maker or retailer pages.",
+  "QVR Surveillance system requirements and whether the TS-264 is eligible for the 6 bonus channels: qnap.com/en-us/software/qvr-surveillance returned 404, and neither QNAP page I read lists eligible models.",
+  "All-in dollar total for four cameras on each platform: I could not build it because the Synology, Reolink and QNAP prices above are unsourced."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1918352
+ }
+}

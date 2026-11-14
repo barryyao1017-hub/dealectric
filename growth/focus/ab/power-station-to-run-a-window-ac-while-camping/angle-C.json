@@ -1,0 +1,87 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that GE's 5,000 BTU window AC manual forbids extension cords, surge protectors, multi-outlet adaptors and adapter plugs and wants the AC on its own outlet. Read literally, the AC has to plug straight into one of the station's 120 V household outlets with its own factory cord. That rules out an extension lead to a station sitting outside the camper, and it rules out a TT-30 dogbone adapter. In BLUETTI's US lineup, only the AC200L is named as B300K-compatible, so it is the only BLUETTI on our page that can grow past about 4.2 kWh rated, and it is sold out.",
+ "standout": 2,
+ "standout_why": "I compared against homepowerfacts.com/can-it-run/window-ac/ (cited), lightsonlab.com/blog/can-a-power-station-run-a-window-air-conditioner/ (cited, twice), the two GE and Danby pages from the second chat, and both ChatGPT answers. Home Power Facts covers wattage, surge and runtimes for 34 stations, but on expansion it only says 'add an expansion battery' and names none. It says nothing about extension cords, TT-30 or rules for specific AC models. Lights On Lab mentions a '6,000 Wh (expanded)' setup without naming a battery or pairing, and on compatibility it only says to check that a soft-start kit fits your AC model. It gives no cord or outlet rules and no TT-30. Neither ChatGPT answer mentions the AC maker's cord, adapter or own-outlet rules, or any named expansion pairing.",
+ "decides": "This confirms the page's main pick (Elite 300 or R4000 with an inverter AC) and adds a setup rule. The station has to sit inside the camper, within the AC's own cord length of the window, with the AC alone on one outlet. The Elite 300 and R4000 TT-30 outlets are not a sanctioned way to feed a GE window unit. For a conventional 450 W AC running flat out, which ChatGPT says needs about 4.2–4.7 kWh, the only maker-documented BLUETTI path is the AC200L plus a B300K. That is 2,048 + 2,764.8 = 4,812.8 Wh, about 4,090 Wh usable at 85 %, so about 9.1 h at 450 W. But the AC200L is sold out at BLUETTI US today, and the R4000 is sold out at ALLPOWERS US. That leaves the Elite 300 as the only in-stock 3 kWh pick from these two makers, and it does not cover a conventional AC running flat out all night.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "BLUETTI AC200L",
+  "BLUETTI B300K",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 2 Max",
+  "GE AEM05 / AHNE05BC 5,000 BTU window AC"
+ ],
+ "findings": [
+  {
+   "product": "GE AEM05 series 5,000 BTU window AC (manual also covers AEM06 and AEM08)",
+   "label": "Cord and outlet exclusions in the maker's manual",
+   "value": "'DO NOT use an extension cord with this Window Air Conditioner'; 'DO NOT use surge protectors or multi-outlet adaptors'; 'DO NOT use an adapter plug with this appliance'; 'should always be plugged into its own individual electrical outlet' whose voltage matches the rating plate; the power cord has a current interrupter with test and reset buttons on the plug",
+   "source": "https://www.manualslib.com/manual/1121324/Ge-Aem05.html?page=3",
+   "source_title": "GE AEM05 Owner's Manual, page 3 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Page 3 of GE's owner's manual, as hosted on ManualsLib. Read literally for a power station: the AC's factory plug goes straight into one of the station's 120 V outlets, with nothing else on that outlet, and no TT-30-to-household adapter. The manual gives no amps or watts on this page. GE's own AHNE05BC owner's manual PDF downloaded but could not be read as text."
+  },
+  {
+   "product": "BLUETTI B300K",
+   "label": "Maker-listed compatible power stations",
+   "value": "BLUETTI AC200L, AC200MAX, AC300 and AC500; 2,764.8 Wh LiFePO4; $1,099 (compare-at $1,699), in stock",
+   "source": "https://www.bluettipower.com/products/bluetti-b300k-expansion-battery",
+   "source_title": "BLUETTI B300K Expansion Battery | 2,764.8Wh",
+   "read": "2026-11-13",
+   "note": "Read from the store listing with storecheck.py. The listing says it 'effortlessly integrates with BLUETTI AC200L, AC200MAX, AC300, and AC500'. Elite 300 and Elite 200 V2 are not listed. A separate store item, 'B300K for AC200L/AC300', is also $1,099 (https://www.bluettipower.com/products/b300k), and '2*B300K for AC200L/AC300' is $2,398. Arithmetic: AC200L 2,048 + 2,764.8 = 4,812.8 Wh; × 0.85 = about 4,091 Wh; ÷ 450 W = about 9.1 h, or ÷ 240 W average = about 17 h."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "US store price and stock",
+   "value": "$899, listed as unavailable (sold out)",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W,2,048Wh",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. The 'AC200L+2*200W Solar' kit ($1,598) and 'AC200L + Charger 2' ($1,149) are also unavailable."
+  },
+  {
+   "product": "BLUETTI D40 DC-DC Battery Charger",
+   "label": "Maker-listed compatible models",
+   "value": "BLUETTI AC200L only; 12 V / 30 A, 400 W max DC output; $199",
+   "source": "https://www.bluettipower.com/products/bluetti-d40-dc-dc-battery-charger",
+   "source_title": "BLUETTI D40 DC-DC Battery Charger",
+   "read": "2026-11-13",
+   "note": "Read from the store listing text with storecheck.py: 'Compatible Models: BLUETTI AC200L'. It charges an RV house battery from the AC200L."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Expansion, RV outlet and output from the maker's page",
+   "value": "No expansion battery named; TT-30 outlet ('Charge your RV directly with the TT-30 port'); 12 V/30 A DC port; 2,400 W continuous, 4,800 W lifting; $1,199, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "WebFetch of the product page plus a storecheck.py price check. The page's recommended-accessories section is empty and names no expansion battery. BLUETTI also sells an 'Elite 300 - 12V RV CABLE' for $39 (Applicable Models: Elite 300), https://www.bluettipower.com/products/elite-300-12v-rv-cable."
+  },
+  {
+   "product": "ALLPOWERS R4000",
+   "label": "US store price, stock, surge and expansion claim",
+   "value": "$1,499 (compare-at $3,299), listed as unavailable; 4,000 W AC (6,000 W surge); kit listings say 'Expand the capacity from 3600Wh to 21600Wh with 5pcs R4000'",
+   "source": "https://iallpowers.com/products/allpowers-r4000-power-station",
+   "source_title": "ALLPOWERS R4000 Portable Power Station | 4000W 3456Wh",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. The expansion wording comes from the R4000 + SF200 kit listing (https://iallpowers.com/products/allpowers-r4000-solar-generator-4000w-3600wh-portable-power-station-with-sf200-200w-flexible-solar-panel, also unavailable). It means linking more R4000 units, not adding a battery pack. On the US store, the B3000 expansion battery is advertised with the R3500 ($1,199, in stock, 'Expandable up to 101kWh with B3000'), not in the R4000 listings."
+  }
+ ],
+ "unsourced": [
+  "The AHNE05BC's own owner's manual wording. GE's PDF (https://images.salsify.com/image/upload/s--Y8eJn2g7--/xmxbwo6zyygoh2afarub.pdf) downloaded but could not be read as text, so the cord rules above come from the AEM05/06/08 manual.",
+  "How many B300K units the AC200L takes and which cable it needs. BLUETTI's support-centre AC200L FAQ lists the questions with no answers, and I did not open the AC200L manual.",
+  "Whether the Elite 200 V2 or AC180 accept any expansion battery. I did not open their pages within the tool budget.",
+  "Whether the R4000 works with the B3000 on a US maker page. Only UK and EU ALLPOWERS listings in search results claim it, and I did not open them.",
+  "Which EcoFlow power stations can power a WAVE 3, and with which cable. us.ecoflow.com returned HTTP 429, and only reseller snippets were available.",
+  "Whether a ZERO BREEZE Mark 3 can run from a third-party power station's DC or AC output. zerobreeze.net did not resolve.",
+  "Starting surge of a named 5,000 BTU AC from a maker document. None opened within the budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2314778999999998
+ }
+}

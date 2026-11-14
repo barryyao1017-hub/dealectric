@@ -1,0 +1,96 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states how TerraMaster's Thunderbolt/USB4 NAS ports connect to a computer. TerraMaster's own help page says you use a separate IP link: in TOS you assign an IP address to an interface named 'TBLAN', the computer needs a Thunderbolt 3/4/5 or full-featured USB4 port and a certified Thunderbolt cable, and the Thunderbolt IP 'may change' after either device restarts.",
+ "standout": 2,
+ "standout_why": "I compared against the cited QNAP TVS-h674T US page, which gives a 20 Gbps 'Thunderbolt Networking' maximum and macOS 13.5 or later but no setup mechanism. I also checked QNAP's Thunderbolt solution page, which says 20Gb/s, assign an IP with Qfinder Pro, and nothing more. UGREEN's cited blog (ai.ugreen.com) already covers the IP/SMB path, the 169.254.x.x address, one computer per port, no port bonding and no disk-mode access, so none of that is new. The two support.ugnas.com guides would not render for me. No ChatGPT result included a TerraMaster page. In one chat ChatGPT recommended the $799.99 TerraMaster F6-425 Pro and told the shopper to 'verify direct Mac Thunderbolt networking support before buying', and none of its results answers that. The TerraMaster help page shows TOS has the IP-over-Thunderbolt mechanism and recommends macOS. Our current page doesn't list TerraMaster at all.",
+ "decides": "Every NAS here works the same way: the Mac and NAS are both hosts, so the Mac gets an SMB share over a private IP link on the Thunderbolt cable and never sees a disk. A NAS qualifies only if its OS creates that network interface. QNAP (20 Gbps cap), UGREEN (DXP480T Plus, DXP6800 Pro and DXP8800 Plus on UGOS 1.2.0.2121 or later) and, per its help page, TerraMaster's TOS all do. Asustor's USB4 does not (our page's existing KB citation). So TerraMaster moves from 'unverified' to 'the maker says yes, but no review has measured it'. NASCompares' 16 Jul 2026 F6-425 Pro article lists the USB4 behaviour as still needing proper review testing. The pick stays: QNAP or UGREEN are the proven options, and the F6-425 Pro can only appear as a cheaper, maker-documented but unmeasured option.",
+ "candidates": [
+  "QNAP TVS-h674T",
+  "QNAP TVS-h874T",
+  "QNAP TBS-h574TX",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus",
+  "TerraMaster F6-425 Pro"
+ ],
+ "findings": [
+  {
+   "product": "general (TerraMaster TOS NAS with USB4/TB4)",
+   "label": "How the direct link works",
+   "value": "IP network over the cable: in TOS go to Control Panel > Network > Interface, 'locate the network interface starting with TBLAN, and set an IP address for it'. Put the computer's Thunderbolt network on the same subnet.",
+   "source": "https://help.terra-master.com/faq/TNAS/network-servies/thunderbolt_direct_connect",
+   "source_title": "TerraMaster Help: Thunderbolt direct connect",
+   "read": "2026-11-13",
+   "note": "The page says 'The USB4 / TB4 interface on TerraMaster NAS is compatible with Thunderbolt devices' but names no specific model."
+  },
+  {
+   "product": "general (TerraMaster TOS NAS with USB4/TB4)",
+   "label": "Host and cable requirement",
+   "value": "The computer needs a Thunderbolt 3/4/5 or full-featured USB4 port. Standard USB-C ports don't support direct connection, and the cable must be Thunderbolt 3/4/5 certified.",
+   "source": "https://help.terra-master.com/faq/TNAS/network-servies/thunderbolt_direct_connect",
+   "source_title": "TerraMaster Help: Thunderbolt direct connect",
+   "read": "2026-11-13",
+   "note": "The page also says 'macOS is recommended for better transfer efficiency' and that Windows may need drivers."
+  },
+  {
+   "product": "general (TerraMaster TOS NAS with USB4/TB4)",
+   "label": "Known caveat",
+   "value": "After either device restarts, the Thunderbolt interface's IP address may change and may need to be reconfigured.",
+   "source": "https://help.terra-master.com/faq/TNAS/network-servies/thunderbolt_direct_connect",
+   "source_title": "TerraMaster Help: Thunderbolt direct connect",
+   "read": "2026-11-13",
+   "note": "This is TerraMaster's own limitation note. Stability and performance depend on hardware, driver version and system environment."
+  },
+  {
+   "product": "TerraMaster F6-425 Pro",
+   "label": "Reviewer status of the USB4 link",
+   "value": "Not yet measured. NASCompares lists 'Dual USB4 listed by TerraMaster' and says 'USB4 behaviour' is among items that 'all need proper review testing'.",
+   "source": "https://nascompares.com/news/terramaster-f6-425-pro-nas-review-10gbe-usb4/",
+   "source_title": "TerraMaster F6-425 Pro NAS – The Perfect Six-Bay Middle Ground for 10GbE and USB4? (NASCompares, 16 Jul 2026)",
+   "read": "2026-11-13",
+   "note": "A reader comment (25 Jul 2026, @studog858585) claims direct USB4 connection 'literally does not work'. It is unverified, so it is not used as a finding."
+  },
+  {
+   "product": "QNAP TVS-h674T",
+   "label": "Thunderbolt networking ceiling and Mac requirement",
+   "value": "Maximum bandwidth of 20 Gbps via Thunderbolt Networking. Works with Apple Silicon and Intel Macs. System requirement: macOS 13.5 or later.",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674t",
+   "source_title": "TVS-h674T | Thunderbolt 4 NAS | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "This was already cited by ChatGPT. The page doesn't name the Thunderbolt controller or say how many hosts can connect."
+  },
+  {
+   "product": "general (QNAP Thunderbolt NAS)",
+   "label": "Addressing",
+   "value": "Direct Mac connection needs IP configuration, and Qfinder Pro can assign the IP. Networking maximum 20Gb/s. The number of simultaneous users 'varies by model and the total number of ports'.",
+   "source": "https://www.qnap.com/en-us/solution/thunderbolt-total-solution",
+   "source_title": "Complete Thunderbolt solution | QNAP",
+   "read": "2026-11-13",
+   "note": "This page was in ChatGPT's results but not cited."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus / DXP6800 Pro / DXP8800 Plus",
+   "label": "How the direct link works",
+   "value": "SMB over a dedicated Thunderbolt IP (169.254.x.x). One computer per port, and the two ports are not combined into a faster link. UGREEN: 'It does not give the computer direct control of the installed drives.' Plugging in the cable does not move an existing Ethernet-mapped share to Thunderbolt, so you must mount the Thunderbolt IP. Requires UGOS 1.2.0.2121 or later.",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "How to Connect UGREEN NAS via Thunderbolt 4",
+   "read": "2026-11-13",
+   "note": "This was already cited by ChatGPT in one chat, so it is not new. Also says to keep the default MTU on both sides, and that sleep can drop the link."
+  }
+ ],
+ "unsourced": [
+  "The F6-425 Pro's own US product page (terra-master.com/products/f6-425-pro), which a search summary says claims a 'Thunderbolt 4 Bridge' at about 10–20 Gbps. It returned HTTP 429 three times, so neither the claim nor the price is used.",
+  "The TerraMaster F6-425 Pro datasheet PDF (download2.terra-master.com) and forum posts p=58978 ('Notice of Interface Silk-Screen Labeling on the F6-425 Pro'), p=58977 ('Spent $1000 For USB4 Direct Connection') and p=59270 (TB4/USB4 direct-connect user guide) all returned HTTP 403. I could not confirm whether the ports are labelled USB4 or Thunderbolt 4, or whether TerraMaster acknowledges a Mac bridging problem.",
+  "B&H listing for the F6-425 Pro (port wording and price) returned HTTP 403.",
+  "Intel's Thunderbolt 4 minimum spec for 'Thunderbolt networking' bandwidth. The Intel messaging-guide PDF (2023-09) came back as binary and I could not extract its text. Intel's overview page has no networking row.",
+  "Why QNAP caps Thunderbolt networking at 20 Gbps when the port is 40 Gbps. No QNAP page I opened explains it.",
+  "UGREEN iDXP6011 (shown by ChatGPT at Micro Center): I found no UGREEN page saying whether it supports a Thunderbolt IP link to a Mac.",
+  "support.ugnas.com articles 607 and 609 rendered only a 'Knowledge Center' heading (JavaScript page), so I could not read them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2481745
+ }
+}

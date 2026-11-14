@@ -1,0 +1,127 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the wind input on Nature's Generator units is a 'shared port' with solar. On the L6000 the solar side is two inputs of 12–60 Vdc / 1,200 W each, so the '2,400 W solar + 150 W wind' that ChatGPT added up is probably not available at the same time; connecting the turbine likely leaves one 1,200 W solar input. That 150 W is also only reached at a 27 mph wind.",
+ "standout": 2,
+ "standout_why": "I compared against our own dealectric.com page, which ChatGPT cited at rank 1, and ChatGPT's answer built on the cited Nature's Generator pages. Our page lists '150 W port' / '350 W port' as if wind adds to the solar figure and gives one output figure per unit, with no surge and no cycle life. ChatGPT's answer repeats '2,400 W solar input and 150 W wind input' as if both run together. Our page already has the 27 mph / cube-law point, so that part is not new. I could not open the cited US product pages (naturesgenerator.com gave HTTP 429 or a certificate error), so I can't rule out that they also say 'shared port' somewhere. The maker's help-center spec sheets do say it. The DOE Small Wind Guidebook PDF was not opened.",
+ "decides": "It confirms the L3600 stays the pick among power stations with a wind port. It is the only model the maker lists as compatible with the 150 W turbine, and the turbine help page does not list the L6000. But it changes the table. Wind does not add to solar on these units: the port is shared. So the 'Max solar input' and 'Wind input' columns should not be read as additive. The footnote should say wind replaces solar on a shared port. For the L6000, the inference is that it then has about 1,200 W of solar plus up to 150 W of wind, and only at 27 mph. For a shopper whose site has good sun, adding a turbine costs solar capacity. That supports the 'solar-only unless you have strong steady wind' advice. A second normalisation for the table: the L6000's 4,000 cycles are rated to 70% capacity, while the L3600 and MyGrid publish only a cycle count with no end point.",
+ "candidates": [
+  "Nature's Generator L3600",
+  "Nature's Generator L6000",
+  "Nature's Generator MyGrid 10K",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Wind input",
+   "value": "150 W, shared port",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-3600",
+   "source_title": "Help Center and Product Support – Lithium 3600 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Spec line reads 'Wind Charger: 150W (shared port)'. The charging FAQ says 'wind charging (via shared port)'. This is the maker's help center on its Canadian domain; the US domain refused the fetch (429 / certificate error)."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Solar input",
+   "value": "2,400 W",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-3600",
+   "source_title": "Help Center and Product Support – Lithium 3600 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "The page gives no solar input voltage and no port count, so how much solar is lost when wind takes the shared port can't be worked out for the L3600."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "AC output, continuous vs peak",
+   "value": "3,600 W continuous / 7,200 W peak, 120 V single phase",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-3600",
+   "source_title": "Help Center and Product Support – Lithium 3600 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Our page's '3,600 W' is the continuous rating."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Cycle life",
+   "value": "more than 3,000 cycles (no end-of-life capacity stated)",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-3600",
+   "source_title": "Help Center and Product Support – Lithium 3600 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Spec line reads 'Life Cycles: > 3000 cycles' with no % retained, so it can't be compared directly with an 'X cycles to 80%' rating."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Wind input",
+   "value": "12 Vdc, 150 W, shared port",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-6000",
+   "source_title": "Help Center and Product Support – Lithium 6000 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Spec line reads 'Wind Charger: 12Vdc 150W (shared port)'."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Solar input",
+   "value": "2 × 1,200 W at 12–60 Vdc, 25 A",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-6000",
+   "source_title": "Help Center and Product Support – Lithium 6000 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Spec line reads 'Solar Charger: 12 - 60Vdc 25A 1200W x2'. 2 × 1,200 W = the 2,400 W headline. The page does not say which input the wind port shares. My inference: with the turbine connected, one 1,200 W solar input remains. Confirm in the manual before publishing the 1,200 W figure."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "AC output, continuous vs peak",
+   "value": "6,000 W continuous / 12,000 W peak, 120/240 V",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-6000",
+   "source_title": "Help Center and Product Support – Lithium 6000 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Our page's '6,000 W' is the continuous rating."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Cycle life",
+   "value": "4,000 cycles to 70%+ capacity",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/lithium-6000",
+   "source_title": "Help Center and Product Support – Lithium 6000 | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "This uses a 70% end point. Many power-station makers rate to 80%, so 4,000 cycles here is not equal to 4,000 cycles to 80%. The same spec table says '12 Months' warranty, while the site badge says 'Up to 5-year warranty'."
+  },
+  {
+   "product": "Nature's Generator 150 W wind turbine",
+   "label": "Rated output and compatibility",
+   "value": "150 W at 27 mph; maker lists Standard 1800, Lithium 1800, Elite and Lithium 3600 as compatible",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/natures-generator-150-w-wind-turbine",
+   "source_title": "Help Center and Product Support – Nature's Generator 150 W Wind Turbine",
+   "read": "2026-11-14",
+   "note": "FAQ: 'The turbines begin producing rated output around 27 mph and can operate up to 110 mph maximum wind speed.' No cut-in speed is published. The L6000 is not in this compatibility list, even though the L6000 spec gives a 12 Vdc 150 W wind charger."
+  },
+  {
+   "product": "Nature's Generator 350 W wind turbine",
+   "label": "Rated output and compatibility",
+   "value": "350 W at 27 mph; maker lists Lithium 6000, Powerhouse and MyGrid as compatible",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/natures-generator-350-w-wind-turbine",
+   "source_title": "Help Center and Product Support – Nature's Generator 350 W Wind Turbine",
+   "read": "2026-11-14",
+   "note": "This conflicts with the L6000 spec sheet's '12Vdc 150W' wind charger. Which turbine the L6000 takes, and at what wattage, needs the manual or maker support to settle before the table states it."
+  },
+  {
+   "product": "Nature's Generator MyGrid 10K",
+   "label": "Wind input, output, cycle life",
+   "value": "350 W wind on 1 dedicated wind input port; 10,000 W continuous / 20,000 W peak; solar 12,000 W, 120–550 Vdc on 2 ports; more than 6,000 cycles (no % stated)",
+   "source": "https://ca.naturesgenerator.com/pages/help-center/mygrid-10k-solar-power-generator",
+   "source_title": "Help Center and Product Support – MyGrid 10K Solar Power Generator | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Lists '1x Wind Input Port' separately from '2x Solar Input Ports' and does not mark it as shared. So the MyGrid is the one unit where wind appears to add to solar rather than replace it. The page prints the voltage as '550DVdc' (typo)."
+  }
+ ],
+ "unsourced": [
+  "Today's US prices for the L3600, L6000, MyGrid 10K and 150 W turbine: naturesgenerator.com returned HTTP 429 or a certificate error to both storecheck.py and WebFetch, so I left the prices out.",
+  "BLUETTI Elite 200 V2 cycle life with its capacity end point ('6,000+ cycles to 80%') and its surge rating: bluettipower.com US pages hit a redirect loop or 404, and I only saw these figures in search snippets.",
+  "Which solar input the L3600/L6000 wind port shares, and whether solar and wind can charge at the same time: neither the help-center spec sheets nor the FAQs say; the User Guide PDF was not reachable.",
+  "Cut-in (start-up) wind speed and output at 10 mph for the 150 W and 350 W turbines: the maker's pages give only the 27 mph rated point and the 110 mph maximum.",
+  "Whether the cited US product pages (lithium-3600-solar-and-wind-generator, lithium-6000-solar-and-wind-generator) mention the shared port: I could not open them (429 / certificate error)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9896156
+ }
+}

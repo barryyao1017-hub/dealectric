@@ -1,0 +1,99 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Synology DS1825+'s only PCIe slot (Gen3 x8, x4 link) is listed for network cards only, so no card can give it hardware transcoding. The same results don't say that the QNAP TS-873A gets Plex hardware transcoding only from an entry-level NVIDIA card that needs no power cable, fitted in one of its two PCIe Gen3 x4 slots of a 250 W box, or that a wider card uses up the second slot. They also don't say that the UGREEN DXP8800 Plus's Quick Sync reaches Plex only when you bind-mount the GPU device (/dev/dri) into the Docker container and the server has a Plex Pass.",
+ "standout": 2,
+ "standout_why": "I compared against ComputingForGeeks (best-8-bay-nas, cited), WunderTech (best-8-bay-nas-device-to-buy, cited), Starry Hope (best-nas-for-plex, cited), our current page, and the cited QNAP TS-873A hardware spec page. The QNAP spec page says only 'Hardware-accelerated transcoding: Optional via a PCIe adapter', and one ChatGPT answer turned that into 'Add-on GPU required'. WunderTech and ComputingForGeeks say the DS1825+ has no iGPU, but neither says its PCIe slot is listed for network cards only. None of them names the card type QNAP supports (no power cable, GTX 1650 named), the 250 W supply, or QNAP's own note that a wider card takes the next slot. Starry Hope mentions giving the container access to the graphics device, but only for the DXP4800 Plus. Our page doesn't mention it. None of these pages mentions that remote playback of personal media needs a Plex Pass or a Remote Watch Pass.",
+ "decides": "This confirms the UGREEN DXP8800 Plus as the pick for running Plex or Jellyfin on the NAS. It is the only one of the three that transcodes in hardware with nothing added, and it keeps its 2× 10GbE and PCIe slot free. The DS1825+ has no hardware-transcoding path at all: its slot is listed for 10/25GbE cards only. That makes it a storage-only pick for players that direct-play. The TS-873A can transcode, but only after buying a passively powered NVIDIA card that QNAP supports. That card uses a PCIe slot, and a wider card also blocks the second slot, which is where a 10GbE card would go. The setup also needs a Plex Pass, so the 'optional GPU' route costs more and takes networking headroom away. On every box, Plex hardware transcoding and remote viewing of your own library are paid features, while Jellyfin's are free.",
+ "candidates": [
+  "UGREEN NASync DXP8800 Plus",
+  "Synology DS1825+",
+  "QNAP TS-873A"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding requires Plex Pass",
+   "value": "\"Hardware-accelerated streaming is a premium feature and requires an active Plex Pass subscription.\"",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "This applies to all three NAS. The same page says that in Docker 'you can bind mount the relevant kernel device to the container' and calls it 'an advanced feature and requires extra configuration of the container.'"
+  },
+  {
+   "product": "general",
+   "label": "Intel Quick Sync stream limit (Plex)",
+   "value": "Intel encoding on Windows and Linux does \"not have any artificial limit to the number of simultaneous videos\"",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "The same page says NVIDIA GeForce cards 'can have a limit on the number of concurrent hardware-accelerated encoding streams' because of a driver limit. That applies to a GeForce card fitted in the TS-873A."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "GPU device mapping for Plex in Docker on a UGREEN NAS",
+   "value": "devices: /dev/dri/renderD128:/dev/dri/renderD128 and /dev/dri/card0:/dev/dri/card0; \"A Plex Pass is mandatory for running Hardware Transcoding.\"",
+   "source": "https://mariushosting.com/how-to-install-plex-with-hardware-transcoding-on-your-ugreen-nas/",
+   "source_title": "How to Install Plex With Hardware Transcoding on Your UGREEN NAS (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "Marius Hosting installs Plex as a Docker container through Portainer on a UGREEN NAS, with no specific model named. The page's dates conflict (12 Nov 2026 vs 17 Jan 2026)."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Graphics and transcoding",
+   "value": "Graphic processors: \"Optional via a PCIe adapter\"; hardware-accelerated transcoding: \"Optional via a PCIe adapter\"; no iGPU (AMD Ryzen Embedded V1500B)",
+   "source": "https://www.qnap.com/en-us/product/ts-873a/specs/hardware",
+   "source_title": "TS-873A | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The same page lists PCIe Slot 1 and Slot 2 as Gen 3 x4, says 'Wider cards can be installed if the next PCIe slot will not be used,' and lists a 250 W power supply."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Supported GPU type",
+   "value": "\"Supports entry-level NVIDIA® graphics cards for video processing\"; names the GeForce GTX1650; slots take \"high-profile graphics cards that do not need power cables\"",
+   "source": "https://www.qnap.com/en-us/product/ts-873a",
+   "source_title": "TS-873A | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The page cites '4K UHD transcoding' as a use case. It also says 'When Virtualization Station uses graphics cards, the NAS will temporarily stop hardware transcoding acceleration for QTS.'"
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "QNAP's Plex hardware-transcoding requirement",
+   "value": "\"A compatible NVIDIA graphics card must be installed in your NAS to enable hardware transcoding.\" \"A Plex pass is also required.\"",
+   "source": "https://www.qnap.com/en-us/how-to/faq/article/how-do-i-use-plex-hardware-transcoding-on-my-nas",
+   "source_title": "How do I use Plex hardware transcoding on my NAS? | QNAP",
+   "read": "2026-11-13",
+   "note": "QNAP: 'If your NAS does not list GPGPU under Category then it does not support graphics cards.' I did not open the TS-873A's GPGPU compatibility list itself."
+  },
+  {
+   "product": "Synology DS1825+",
+   "label": "PCIe slot and the only cards listed for it",
+   "value": "1 × Gen3 x8 slot (x4 link); compatible cards listed: E25G30-F2 (25GbE), E10G30-F2, E10G30-T2, E10G30-T1 (10GbE); no GPU listed",
+   "source": "https://www.synology.com/en-us/products/DS1825+#specs",
+   "source_title": "DiskStation DS1825+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "CPU is the AMD Ryzen V1500B, 4C/8T, 2.2 GHz. Power supply 250 W. The page also says 'Creating M.2 storage pools requires the use of Synology-verified SSDs.'"
+  },
+  {
+   "product": "general",
+   "label": "Remote playback of personal media on Plex",
+   "value": "Needs one of: server admin has an active Plex Pass, your account has an active Plex Pass, or your account has an active Remote Watch Pass. Remote Watch Pass is $2.99/month or $29.99/year (the $1.99 and $19.99 prices applied to billing cycles before 2026-06-01).",
+   "source": "https://www.plex.tv/plans/",
+   "source_title": "Plex Plans | Plex",
+   "read": "2026-11-13",
+   "note": "The page lists 'Hardware Transcoding' as a Plex Pass feature ('Convert and stream HD or 4K video more smoothly, to more devices at once'). The Plex Pass monthly, yearly and lifetime prices did not load ('Could not load pricing')."
+  }
+ ],
+ "unsourced": [
+  "MSI GeForce GTX 1650 4GT LP OC slot width and power connector, to confirm whether QNAP's named card blocks the TS-873A's second PCIe slot. MSI's spec page returned 403 and the datasheet PDF had no readable text. A search snippet gave 168 × 69 × 37 mm, but I didn't use it because I never opened that page.",
+  "Plex Pass monthly, yearly and lifetime prices. plex.tv/plans showed 'Could not load pricing'.",
+  "Plex's own HDR-to-SDR tone-mapping requirements on Linux/Intel (support.plex.tv/articles/hdr-to-sdr-tone-mapping returned 403), and Plex's remote-playback requirements article (403). The plans page FAQ was used for the remote-playback rule instead.",
+  "An official UGREEN page saying whether UGOS Pro offers Plex as an App Center package or only through Docker, and whether the GPU is mapped automatically. UGREEN's UK buying guide doesn't cover it, and the UGNAS knowledge page returned no content.",
+  "QNAP's TS-873A GPGPU compatibility list (exact cards and firmware) and a US price for a supported NVIDIA card, to cost out the TS-873A + GPU route against the $1,500 limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.3212338000000003
+ }
+}

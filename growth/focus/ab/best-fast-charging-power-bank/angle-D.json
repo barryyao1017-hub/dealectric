@@ -1,0 +1,110 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 140 W these banks advertise only arrives as 28 V × 5 A over USB PD 3.1 EPR, which needs an EPR (240 W) cable and a laptop that accepts EPR on that port. A 3 A cable stops at 60 W and a 100 W (20 V/5 A) cable stops at 100 W. Apple says a 16-inch MacBook Pro fast-charges from a USB-C source only through a USB-C-to-MagSafe 3 cable, or, on the Nov 2023 or later models, through its 240 W USB-C cable.",
+ "standout": 2,
+ "standout_why": "I opened Popular Science (cited), Expert Reviews (cited), Wirecutter via the proxy (cited) and Android Central (cited). Wired's page would not fetch. Popular Science says only that a 100 W cable is needed for laptops and does not mention EPR, 28 V or a 240 W cable. Expert Reviews says PD 3.1 banks 'don't go over 28V at 5A for a maximum of 140W' and work 'with compatible devices and cables' but never names the cable or the laptop requirement. Wirecutter gives the rating of each included cable: Anker Prime 240 W, UGREEN 145W 140 W. It does not say that other cables, or MacBook Pro 16 USB-C ports, cap the output. Android Central's page came back truncated with no relevant text. None of them has Apple's MagSafe 3 / Nov 2023 240 W cable rule or the 60 W / 100 W cable caps. Wirecutter's cable ratings cover only part of the finding, so this is 2, not 3.",
+ "decides": "This confirms the 140 W tier (Anker Prime 26K, UGREEN 145W/200W, AOHi Starship 240W) only for a shopper with a 16-inch MacBook Pro or another EPR laptop who also uses an EPR cable. For a 16-inch MacBook Pro, the page should say to charge it through Apple's USB-C-to-MagSafe 3 cable or, on Nov 2023 or later models, through a 240 W USB-C cable. ChargerLab measured 133.47 W from the AOHi into an M4 Pro MacBook Pro over MagSafe 3. On any other cable, or on a 13–14-inch laptop or a MacBook Air, the bank tops out at 100 W or less. That makes the cheaper 100 W class (for example the UGREEN 130W at $67.99) the right pick for those buyers. One trap to flag: UGREEN sells its 145W bank in a bundle with 100 W cables, and those cables cannot carry 140 W.",
+ "candidates": [
+  "Anker Prime Power Bank (26K, 300W) A110A",
+  "UGREEN 145W 25000mAh 3-Port Power Bank",
+  "UGREEN Nexode Power Bank 25000mAh 200W",
+  "UGREEN Nexode Power Bank 25000mAh 165W with Built-in Cables",
+  "AOHi The Future Starship 240W 27,600mAh",
+  "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Cable and mode needed for each USB PD power level",
+   "value": "3 A profiles (5–20 V) cover 15–60 W. 20 V/5 A (>60–100 W) 'Requires 5A cable'. 28/36/48 V at 5 A (>100–240 W) 'Requires entry into EPR mode' and 'Requires EPR cable'.",
+   "source": "https://www.ti.com/document-viewer/lit/html/SSZTD49A/GUID-C6698731-EB4D-4238-8FE2-647CF1D2B970",
+   "source_title": "SSZTD49 Technical article | TI.com (Table 1, SPR and EPR fixed voltage ranges)",
+   "read": "2026-11-14",
+   "note": "Texas Instruments' summary of the USB PD 3.1 table. The 140 W banks reach 140 W only at the 28 V × 5 A EPR level, so a 100 W (20 V/5 A) cable caps them at 100 W and a 3 A cable at 60 W. I did not open the USB-IF spec itself."
+  },
+  {
+   "product": "general",
+   "label": "Apple's rule for fast-charging a 16-inch MacBook Pro",
+   "value": "140W USB-C Power Adapter with a USB-C to MagSafe 3 cable, or the 140W adapter with the 240W USB-C Charge Cable, which applies only to the MacBook Pro (16-inch, Nov 2023) or later. Fast charge is about 50% in about 30 minutes.",
+   "source": "https://support.apple.com/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro – Apple Support",
+   "read": "2026-11-14",
+   "note": "Apple's listing for 14-inch MacBook Pros and MacBook Airs accepts 96 W or 70 W adapters with either cable, so those laptops gain nothing from a 140 W port. A power bank can stand in for the 140 W adapter only if it offers 28 V EPR."
+  },
+  {
+   "product": "general",
+   "label": "Why the 2021 16-inch MacBook Pro's USB-C ports did not take 140 W",
+   "value": "Full 140 W needed 'Apple's proprietary USB-C to MagSafe 3 cable' because 'there are no USB-C to USB-C cables currently available that support 240 W EPR'. The article says that without EPR, USB-C allows only up to 100 W.",
+   "source": "https://www.notebookcheck.net/Apple-16-inch-MacBook-Pro-becomes-the-first-device-to-support-USB-C-Extended-Power-Range-but-140-W-fast-charging-is-limited-to-MagSafe-3-for-now.573806.0.html",
+   "source_title": "Apple 16-inch MacBook Pro becomes the first device to support USB-C Extended Power Range but 140 W fast charging is limited to MagSafe 3 for now – Notebookcheck (Vaidyanathan Subramaniam, 2021-10-20)",
+   "read": "2026-11-14",
+   "note": "This agrees with Apple's current page, where the 240 W USB-C cable route applies only to Nov 2023 or later models."
+  },
+  {
+   "product": "Anker Prime Power Bank (26K, 300W) A110A",
+   "label": "Anker's cable condition and price",
+   "value": "'Achieve 140W input with a compatible 140W charger and a 5A cable'; 'For 250W max input, use both USB-C ports with 5A cables and 140W chargers'. 26,250 mAh (99.75 Wh). $229.99.",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) – anker.com",
+   "read": "2026-11-14",
+   "note": "Anker's footnotes cover input (recharging the bank) only. The page does not list box contents. Wirecutter (proxy URL in the rival list, read 2026-11-14) says the included cable is 'capable of passing up to 240 W'."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Port voltage profiles (maker spec)",
+   "value": "USB-C1: 5V-3A, 9V-3A, 12V-3A, 15V-3A, 20V-5A, 28V-5A, 140 W max. USB-C2: up to 20V-3.25A, 65 W max. 90 Wh.",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py search. Only USB-C1 offers 28 V, so only USB-C1 can deliver 140 W. This bundle ($84.99) pairs the bank with 100 W cables. By TI's table those cables stop at 20 V, so a laptop gets 100 W at most. My inference from the spec and TI's table, not tested."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "US store prices today",
+   "value": "$99.99 bank alone. $84.99 bundled with a 240W USB-C cable (https://us.ugreen.com/products/145w-power-bank-240w-cable-bundle). $84.99 bundled with two 100W cables.",
+   "source": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+   "source_title": "UGREEN 145W 25000mAh 3-Port Power Bank – UGREEN US",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py search. The 240W-cable bundle is the one that reaches 140 W, and it costs $15 less than the bank alone."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 25000mAh 200W",
+   "label": "US store price today",
+   "value": "$129.99",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-25000mah-200w-with-smart-digital-display",
+   "source_title": "UGREEN Nexode Power Bank 25000mAh 200W with Smart Digital Display – UGREEN US",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py search. The store text says '140W Charge'."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable",
+   "label": "US store price today and single-port ceiling",
+   "value": "$67.99 (was $79.99), '100W Charge'",
+   "source": "https://us.ugreen.com/products/ugreen-130w-power-bank-20000mah",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable – UGREEN US",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py search. At 100 W it stays within the 20 V/5 A limit, so it charges anything that is not an EPR laptop as fast as the 140 W banks do."
+  },
+  {
+   "product": "AOHi The Future Starship 240W 27,600mAh",
+   "label": "ChargerLab measured 140 W-class output into a MacBook Pro",
+   "value": "27.77 V × 4.81 A = 133.47 W into a MacBook Pro M4 Pro through USB-C1 with Apple's MagSafe 3 cable. Both ports together: 118.68 W + 94.17 W. In a sustained 28 V/5 A discharge, temperature protection stopped the test after 10 minutes, with about 24.06 Wh delivered.",
+   "source": "https://chargerlab.com/review-of-aohi-starship-240w-pd3-1-27600mah-power-bank-aoc-p011",
+   "source_title": "Review of AOHi Starship 240W PD3.1 27600mAh Power Bank (AOC-P011) – ChargerLab (2025-04-28)",
+   "read": "2026-11-14",
+   "note": "ChargerLab got the 28 V level through MagSafe 3, which is Apple's supported route. ChargerLab lists the 28V5A profile as 'USB-C1 Output … 28V5A 140W Max' and also reports AVS at 15–28 V. The included cable is engraved '140W'."
+  }
+ ],
+ "unsourced": [
+  "UGREEN maker pages for the 145W bank's box contents and the 165W built-in-cables model's per-cable wattage and voltage: us.ugreen.com returned HTTP 429 to both storecheck product and WebFetch. Wirecutter says the 145W's included cable 'supports up to 140 W'.",
+  "AOHi maker page (iaohi.com) for box contents and price: HTTP 429. I used ChargerLab's teardown/review instead.",
+  "The USB-IF USB PD 3.1 / Type-C spec text for EPR cable marking (50 V / 5 A e-marker): I did not open the spec and relied on TI's article.",
+  "Wired's guide (cited by ChatGPT): WebFetch could not reach wired.com, so I could not check whether it covers EPR cables or the MacBook Pro 16 rule."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0643941000000001
+ }
+}

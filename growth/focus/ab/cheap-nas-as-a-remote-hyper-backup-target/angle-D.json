@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Hyper Backup on DSM 7 has a multi-version rsync task, separate from 'rsync copy (single-version)'. That task writes the same versioned, client-side-encryptable .hbk backup to any rsync/SSH server that a Synology running Hyper Backup Vault would hold, and the .hbk can be restored without any Synology using Hyper Backup Explorer or the open-source hbkit.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's two cited pages, the Synology Hyper Backup tech spec (DSM 7.4) and the KB 'Destination' page, plus the top KB tutorial result. The spec page only lists 'rsync servers' as a folder/package destination and says multi-version tasks use .hbk. It never says that an rsync target gets multi-version .hbk backups. The KB pages render no body text without JavaScript. ChatGPT's answer suggested that a non-Synology target is a lesser setup and that Vault gives 'better integration'. Our own current page goes further and wrongly says the UGREEN rows get a 'single-version copy: no .hbk, no version history'. None of these pages says a non-Synology rsync box holds the same versioned .hbk. I scored it 2, not 3, because the rsync multi-version wording comes from forum posts and the TrueNAS how-to, not from a Synology page I could read.",
+ "decides": "If it holds, the cheapest box with a working rsync/SSH server gives the same versions, Smart Recycle and AES-256 client-side encryption as a DS124 or DS223j running Vault. That makes non-Synology targets real contenders on price, including the UGREEN DH2300, a cheap TerraMaster or a Pi with a USB disk. The current page's 'single-version, no .hbk' cells for the UGREEN rows should change to 'multi-version .hbk via rsync (SSH)'. A Synology target is still required in two cases: entire-system backup (Synology lists only a remote Synology NAS or C2), and Vault's view of the vaults a NAS hosts plus its concurrent-task limit.",
+ "candidates": [
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "Synology DS124",
+  "Synology DS223j",
+  "TerraMaster F2-212"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Hyper Backup multi-version storage format and who can read it",
+   "value": "\"Multi-version backup tasks are stored in the Synology .hbk backup format\"; \"Multiple-version backup files can be read only with Hyper Backup, Hyper Backup Explorer, and Hyper Backup Vault\"",
+   "source": "https://www.synology.com/en-us/dsm/7.0/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications (DSM 7.0) | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Maker's spec page. The same page lists 'rsync servers' as a destination for folder and package backups."
+  },
+  {
+   "product": "general",
+   "label": "Destinations allowed for entire-system backup",
+   "value": "Remote Synology NAS or Synology C2 Storage only; rsync servers are listed only for folder and package backups",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications (DSM 7.4) | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Same page: up to 65,535 versions, client-side and transfer encryption with AES-256 and ECC Curve25519, file-level dedup for folder/package backups, at least 8 GB free required on the destination."
+  },
+  {
+   "product": "general",
+   "label": "Remote NAS (Vault) vs 'rsync – multi version': difference in the stored backup",
+   "value": "fredbert: the 'remote NAS' option targets a Synology running Hyper Backup Vault, while rsync targets a server running an rsync service; \"the only difference is the network service you used to create and maintain it\". Vault adds a list of the vaults it holds and a concurrent-task limit.",
+   "source": "https://www.synoforum.com/threads/hyper-backup-remote-nas-device-vs-rsync-multi-version.12267/",
+   "source_title": "Hyper Backup - Remote NAS device vs rsync multi-version? | SynoForum",
+   "read": "2026-11-13",
+   "note": "Forum answer by fredbert, 3 Dec 2023. It doesn't explicitly test a non-Synology server."
+  },
+  {
+   "product": "general",
+   "label": "Non-Synology rsync target, working setup",
+   "value": "In Hyper Backup, pick the rsync destination (not single-version), server type 'rsync-compatible server', port 22, transfer encryption on, Backup module = full path of the target dataset. On the target: SSH enabled plus a bash-shell user who owns the dataset. No rsync daemon needed.",
+   "source": "https://www.truenas.com/community/threads/how-to-use-truenas-as-rsync-backup-destination-for-synology-hyper-backup.111684/",
+   "source_title": "How To - Use TrueNAS as rsync Backup Destination for Synology Hyper Backup | TrueNAS Community",
+   "read": "2026-11-13",
+   "note": "Guide by EpicLPer, 4 Aug 2023. Replies report a 'No response from the destination server' error until the block module was set by hand and the user's group was allowed in SSH."
+  },
+  {
+   "product": "general",
+   "label": "SSH (transfer-encryption) mode against a generic Linux rsync server",
+   "value": "Worked without Transfer Encryption via rsyncd. With it on, Hyper Backup used SSH and threw generic errors. Fixes: put an rsyncd.conf in the SSH user's home directory, or enter the absolute path (e.g. /mnt/bighdd/backups) in the Module field and use a dedicated service account that owns it.",
+   "source": "https://warmestrobot.com/blog/2021/10/29/synology-hyper-backup-to-rsync-compatible-server/",
+   "source_title": "Synology Hyper Backup to rsync-compatible Server | warmestrobot",
+   "read": "2026-11-13",
+   "note": "Post dated 2021-10-29. It doesn't say which task type (single- or multi-version) was used."
+  },
+  {
+   "product": "general",
+   "label": "Restoring a .hbk without any Synology",
+   "value": "hbkit reads Hyper Backup archives on Mac or Linux without a NAS, read-only, and checks chunks against stored checksums. It handles DSM 7 Hyper Backup (seen working with 4.1.2 and 4.2.2), lets you pick versions by number or date, and decrypts client-side encryption with the password. Not supported: older RSA-encrypted archives, the exported key file, and whole-file dedup. Restoring a real NAS backup on Windows is untested.",
+   "source": "https://hbkit.dev/",
+   "source_title": "hbkit: open Synology Hyper Backup (.hbk) files without a NAS",
+   "read": "2026-11-13",
+   "note": "Independent MIT-licensed project, not affiliated with Synology. Matters if the source Synology dies and the relative's box isn't a Synology."
+  },
+  {
+   "product": "general",
+   "label": "Third-party rsync host's documented Hyper Backup task type",
+   "value": "rsync.net documents 'File Server > rsync copy (single-version)', server type 'rsync-compatible server', port 22, transfer encryption on, and an rsyncd.conf in the account's home directory to populate the backup module list",
+   "source": "https://www.rsync.net/resources/howto/synology.html",
+   "source_title": "Synology Integration at rsync.net",
+   "read": "2026-11-13",
+   "note": "Undated page. It shows the single-version option is a separate menu entry from the multi-version rsync task, and that some generic rsync hosts expect an rsyncd.conf."
+  }
+ ],
+ "unsourced": [
+  "Synology's own wording that rsync-compatible servers get multi-version .hbk tasks: the KB 'Destination | Hyper Backup' page (kb.synology.com, versions 6 and 7, en-global/en-ca/sv-se) and the remote-NAS/file-server tutorial return only the title and footer to a non-JavaScript fetch, and running curl from the shell needed approval.",
+  "UGREEN's own documentation of the UGOS rsync server (menu path, SSH user shell, module settings) and any test of Hyper Backup multi-version against a DH2300 or DXP2800: neither the UGREEN site nor search results had an official article.",
+  "Whether Hyper Backup Vault is offered in Package Center for the DS223j and DS124 on DSM 7.2+: not checked against a Synology model or package page.",
+  "MorhafSH's encrypted multi-version Hyper Backup to Ubuntu guide (morhafsh.com) and the TianAo mirror of Synology's tutorial (taserver.com.cn): both failed with TLS certificate errors."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0730561
+ }
+}

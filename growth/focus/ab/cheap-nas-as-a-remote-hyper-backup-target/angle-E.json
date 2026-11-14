@@ -1,0 +1,101 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured power draw for any candidate. PC-WELT measured the Synology DS223j at 16.4 W idle, 3.1 W with the drives asleep and 22.3 W under load. NASCompares measured the UGREEN DH2300 at 9.5 W idle with two 4 TB IronWolf drives. That matters for a box left running all year at a relative's house.",
+ "standout": 2,
+ "standout_why": "I opened the cited Synology Hyper Backup spec page (synology.com/en-ro/dsm/7.4/software_spec/hyper_backup). It gives capacity limits, version limits and destination types, but no power, noise or throughput figures. The other cited page, the Hyper Backup Destination KB article, is setup documentation. I did not open the uncited B&H compare page or the DS223j press release. They may repeat Synology's own 16.31 W access / 4 W hibernation figures, but that is the maker's number, not a named measurement, and neither page compares the DS223j with a non-Synology target such as the UGREEN DH2300. ChatGPT's answer says 'low power consumption' with no number.",
+ "decides": "The finding confirms that a Synology J or value model with drive hibernation suits an always-on remote target, and it adds a running cost no rival gives. PC-WELT's 3.1 W sleep figure for the DS223j is about a third of the DH2300's 9.5 W idle (NASCompares). If the DS223j's drives sleep about 23 hours a day between nightly runs, it uses roughly 34 kWh a year, against about 83 kWh for a DH2300 that never spins down. The DH2300's lower idle draw (9.5 W vs 16.4 W) only wins if the Synology's drives never sleep. It does not change the case for the DS223j or DS124 as the Hyper Backup Vault pick, which rests on features, not power.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-212"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS223j",
+   "label": "Measured power draw: idle / sleep / load / off",
+   "value": "16.4 W / 3.1 W / 22.3 W / 0.1 W",
+   "source": "https://www.pcwelt.de/?p=2389650",
+   "source_title": "PC-WELT test: Synology DiskStation DS223j (Ines Walke-Chomjakov, 2024-08-03)",
+   "read": "2026-11-13",
+   "note": "Measured by PC-WELT, drive models not named. Arithmetic: 16.4 W × 8,760 h = 143.7 kWh/yr if the drives never sleep. 3.1 W × 23 h + 22.3 W × 1 h = 93.6 Wh/day, or 34.2 kWh/yr, if the drives sleep outside a one-hour nightly backup. That schedule is my assumption, not PC-WELT's."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Measured throughput over the network",
+   "value": "118.18 MB/s write / 115.19 MB/s read (NAS Performance Tester, 8,000 MB); 35.87 MB/s 'backup write'",
+   "source": "https://www.pcwelt.de/?p=2389650",
+   "source_title": "PC-WELT test: Synology DiskStation DS223j (2024-08-03)",
+   "read": "2026-11-13",
+   "note": "Sequential transfers saturate gigabit Ethernet. PC-WELT does not describe how it ran the backup-write test, so it is not a Hyper Backup Vault figure."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Maker-stated power and noise (not a review measurement)",
+   "value": "16.31 W access / 4 W HDD hibernation; 18.2 dB(A)",
+   "source": "https://www.synology.com/en-us/products/compare/DS124/DS223j",
+   "source_title": "Synology comparison results: DS124 vs DS223j",
+   "read": "2026-11-13",
+   "note": "Synology internal testing. Noise measured with Seagate 2TB ST2000VN000 drives idle, microphones 1 m away front and rear. Included to show PC-WELT's numbers sit close to the spec."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Maker-stated power and noise (not a review measurement)",
+   "value": "10.69 W access / 3.44 W HDD hibernation; 19.0 dB(A)",
+   "source": "https://www.synology.com/en-us/products/compare/DS124/DS223j",
+   "source_title": "Synology comparison results: DS124 vs DS223j",
+   "read": "2026-11-13",
+   "note": "Synology internal testing. I found no independent measurement of the DS124 (see unsourced)."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured power draw and noise",
+   "value": "9.5 W idle; 12 W file activity; 13 W sustained read/write; 31–32 dBA idle with the fan on Low; 38–41 dBA under heavy read/write",
+   "source": "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/",
+   "source_title": "NASCompares: UGREEN DH2300 NAS Review – Cloud Subscription Killer (2025-10-15)",
+   "read": "2026-11-13",
+   "note": "Two 4 TB Seagate IronWolf drives, CPU under 5% at idle. No hibernation figure given. 9.5 W × 8,760 h = 83.2 kWh/yr. The review mentions rsync but never tests the box as a Hyper Backup target."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured power draw and network throughput",
+   "value": "9–11 W idle; 12–13 W copying over the network; 15–17 W under stress; about 1 W off; iperf3 about 112 MB/s (944 Mbit/s)",
+   "source": "https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "source_title": "OC Inside: Ugreen DH2300 NAS Review (page 5)",
+   "read": "2026-11-13",
+   "note": "Measured with a Shelly Plug S, which OC Inside calls 'not super accurate'. Two drives in RAID-1, models not named. OC Inside estimates about 110 kWh a year. The review page shows no publication date."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power draw",
+   "value": "about 7 W idle; 34.7 W peak under a CPU, RAM and disk stress test",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "OC Inside: Ugreen DXP2800 NAS Review (page 4)",
+   "read": "2026-11-13",
+   "note": "RAID 1, but drive models and the meter are not named, and hibernation was not measured. This is the original N100 DXP2800, not the DXP2800 GT."
+  },
+  {
+   "product": "TerraMaster F2-212",
+   "label": "Measured network transfer",
+   "value": "up to 75 MB/s file transfer over LAN",
+   "source": "https://mightygadget.com/terramaster-f2-212-nas-review/",
+   "source_title": "Mighty Gadget: TerraMaster F2-212 NAS Review (James Smythe, 2024-07-17, updated 2026-03-21)",
+   "read": "2026-11-13",
+   "note": "Measured with a WD drive, model not named. The review's 10.4 W idle / 21.1 W access figures match the spec table, so I do not treat them as the reviewer's own measurement."
+  }
+ ],
+ "unsourced": [
+  "Independent wall-meter measurement of the Synology DS124. Synology's comparison pages give only the maker's figures. Stiftung Warentest 08/2024 lists a standby value but it is behind a paywall. A testberichte.de snippet quoting 3.5 W with an SSD came up in search but I did not open it.",
+  "Independent power measurement of the TerraMaster F2-212. HotHardware's review returned 403, and Mighty Gadget repeats the spec figures.",
+  "Measured Hyper Backup or Hyper Backup Vault throughput to a DS124 or DS223j as a remote target. Searched; I found only large rack and enterprise models on blackvoid.club.",
+  "Measured draw for the UGREEN DH2300 with its drives spun down. Neither NASCompares nor OC Inside measured it.",
+  "Measurements of the Synology BeeStation. I did not research it within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 19,
+  "cost_usd_list": 0.8269820000000001
+ }
+}

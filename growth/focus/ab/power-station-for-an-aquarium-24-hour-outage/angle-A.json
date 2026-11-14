@@ -1,0 +1,109 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got gives the Elite 300's measured AC-on idle draw (19 W, which is 456 Wh a day) or points out that its 94% efficiency was measured at a 1 kW load. A 75-gallon tank's 27 W filter and air pump load at night is a very different case, so the real 24-hour budget at 20% heater duty is about 2,544 Wh against the 2,819 Wh it measurably delivers.",
+ "standout": 2,
+ "standout_why": "Compared against reefs.com (cited), which says the inverter 'draws power continuously, which is significant at low loads' but declines to give any idle or efficiency figure and does not test a heater. planetfish.org (top result) gives one idle figure (AC180, '20W idle drain'), nothing for the Elite 300 or Elite 200 V2, and no ECO or low-load caveat. The cited Petco page returned HTTP 403, so I could not compare against it. Our own current page, which ChatGPT quoted, assumes 15 W of inverter overhead, which is below the 19 W measured for the Elite 300. So the cited rivals have the general idea that idle draw matters, but none puts a number on it for the candidate products.",
+ "decides": "It confirms the BLUETTI Elite 300 as the pick and leaves less room to spare. With 19 W measured idle instead of the 15 W assumed, the 20% heater-duty budget rises from 2,448 Wh to 2,544 Wh. That is about 90% of the 2,819 Wh The Technology Man measured it delivering. At 30% duty (3,264 Wh) it falls short. The Elite 200 V2's idle draw is lower (10 W per The Gadgeteer, or 240 Wh a day), but that does not make up its 940 Wh capacity deficit. The page should fold the measured idle draw into the duty-cycle table instead of a flat 15 W.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "EcoFlow DELTA 2 Max",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw with the AC inverter on and no load",
+   "value": "about 19 W (456 Wh per 24 h)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man: Bluetti Elite 300 review, 3kWh capacity but there are compromises (2026-03-25)",
+   "read": "2026-11-13",
+   "note": "The Technology Man left the AC on for 16 h with no load and saw the battery go from 100% to 90%. 10% × 3,014.4 Wh = 301 Wh, and 301 Wh / 16 h = 18.8 W, which matches the reviewer's 'around 19 W'. Over 24 h, 19 W × 24 = 456 Wh. That is 96 Wh more than the 15 W (360 Wh) overhead in our current page and in ChatGPT's table."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Delivered AC energy at a high load (the condition behind its efficiency figure)",
+   "value": "2,819 Wh at a constant 1 kW resistive load (94%)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man: Bluetti Elite 300 review (2026-03-25)",
+   "read": "2026-11-13",
+   "note": "The run lasted 2 h 46 min on an electric heater. The 94% is a 1 kW figure. An aquarium averages about 87 W with the heater at 20% duty, or 27 W with filter and air pump only, so the 19 W idle draw is about 18–41% of the battery-side draw."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Delivered AC energy, second measurement",
+   "value": "2.67 kWh full to empty (load not stated)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "StorageReview: Bluetti Elite 300 review, 3014Wh, 2400W and an 8ms UPS switchover in a 58-pound box",
+   "read": "2026-11-13",
+   "note": "Measured with a Kill-A-Watt; the test load is not stated. The two reviewers' delivered figures are 2,670–2,819 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "24 h aquarium budget using the measured idle draw",
+   "value": "2,544 Wh at 20% heater duty; 3,264 Wh at 30% duty",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "The Technology Man: Bluetti Elite 300 review (2026-03-25)",
+   "read": "2026-11-13",
+   "note": "This is arithmetic, not a measurement. It uses the same loads as ChatGPT's table: a 300 W heater at 20% = 1,440 Wh, a 23 W filter = 552 Wh, a 4 W air pump = 96 Wh, plus 19 W idle × 24 h = 456 Wh, for 2,544 Wh in total. At 30% duty the heater adds 2,160 Wh, for 3,264 Wh. The first total fits within 2,670–2,819 Wh delivered; the second does not."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS switchover, rated vs measured",
+   "value": "≤10 ms rated; 8 ms measured (StorageReview), 8.9 ms measured (The Technology Man)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "StorageReview: Bluetti Elite 300 review",
+   "read": "2026-11-13",
+   "note": "StorageReview captured 8 ms from grid to battery and 8.25 ms back with a Quarch analyser. The Technology Man measured 8.9 ms with an oscilloscope."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Cycle life (and the capacity it is counted to)",
+   "value": "6,000+ cycles to 80% capacity",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "StorageReview: Bluetti Elite 300 review",
+   "read": "2026-11-13",
+   "note": "From the spec table in the review."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199 (compare-at $1,199, in stock)",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py against the Shopify store. Rated 3,014.4 Wh, so $0.40 per rated Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw with AC and DC on",
+   "value": "about 10 W (240 Wh per 24 h)",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer: BLUETTI Elite 200 V2 review (Greg Cleveland, 2025-01-06, updated 2026-11-02)",
+   "read": "2026-11-13",
+   "note": "The review says 'Low idle consumption, 10w/h with AC and DC left on' and describes no measurement method. I read 'w/h' as watts. 10 W × 24 h = 240 Wh, about half the Elite 300's idle cost, but the Elite 200 V2's rated capacity is 940 Wh lower (2,073.6 vs 3,014.4 Wh)."
+  },
+  {
+   "product": "general",
+   "label": "Measured low-load penalty on a 1 kWh station (cited rival)",
+   "value": "36 h 13 min at an 11–13 W load from 1,024 Wh nominal; about 471 Wh estimated delivered to the load",
+   "source": "https://reefs.com/can-a-1-kwh-power-station-keep-a-reef-tank-alive-during-a-blackout-we-tested-the-bluetti-elite-100-v2/",
+   "source_title": "Reefs.com: Can a 1 kWh Power Station Keep a Reef Tank Alive During a Blackout? We Tested the Bluetti Elite 100 V2",
+   "read": "2026-11-13",
+   "note": "Reefs.com tested the Elite 100 V2 in Standard UPS mode. Less than half the nominal Wh reached a 12 W pump. My inference, not the article's: about 14 W of the battery-side draw was overhead. The article itself gives no idle or efficiency figure."
+  }
+ ],
+ "unsourced": [
+  "AC-ECO auto-off for the Elite 300 and Elite 200 V2: whether it is on by default, the threshold (search snippets said 10–40 W, default off on the Elite 300 and on by default on the Elite 200 V2, with advice to disable it for loads under 60 W) and the time delay. I tried the BLUETTI Elite 300 manual (s4.bluettipower.com, too large to fetch), the Elite 200 V2 manual PDF (fetched but no readable text) and the manuals.plus and device.report copies (HTTP 403). This could decide the pick, because a 27 W filter and air pump load sits under a 30–60 W ECO threshold, but it is snippet-only and needs a readable manual before it can go on the page.",
+  "EcoFlow DELTA 2 Max AC-on idle draw in watts: I looked in the DELTA 2 Max reviews listed by search and found only a percentage-drain test with AC and DC not separated and a buyer's DC-only anecdote.",
+  "ALLPOWERS R4000 and BLUETTI AC180 idle draw from a named reviewer. For the AC180, planetfish.org's '20W idle drain' was the only figure, with no method; I did not search further for the R4000.",
+  "Petco's cited outage page returned HTTP 403, so I could not check it for a power-station figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0517406
+ }
+}

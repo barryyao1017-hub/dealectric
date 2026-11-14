@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that on UGREEN's Nexode 20,000 mAh 100W and 130W banks only the USB-C1 port offers the 15V profile. ChargerLAB measured the Steam Deck triggering that 15V PD profile. USB-C2 on these banks stops at 12V⎓2.5A (30W), so the Deck has to go into C1.",
+ "standout": 2,
+ "standout_why": "I compared against itechguides (cited in the 11-13 chat) and gamingonbatteries.com/best-power-bank-steam-deck (cited 11-10). itechguides only tells readers to 'check the output rating of the specific port' and lists no voltage profiles. gamingonbatteries says the Deck charges at '5V, 9V, 15V, or 20V depending on load' but never says which port to use on a multi-port bank. Neither gives a per-port 15V table for any pick. Neither says the second USB-C on UGREEN's 100W/130W 20K banks lacks 15V. I did not open vgkami.com, which was cited on 11-13.",
+ "decides": "This confirms the UGREEN Nexode 20,000 mAh 100W, ChatGPT's top pick in both 11-13 chats, but only if the Deck goes into USB-C1. The same rule applies to our listed Nexode 20,000 mAh 130W, whose USB-C2 is 30W max. It also favors the Anker Laptop Power Bank 25K (A1695) for sharing: every USB-C port and built-in cable on it lists 15V⎓3A, so the Deck isn't tied to one port. The Anker 737 (A1289) has 15V⎓3A on both USB-C ports, but Anker's US store shows it sold out, so it should not be a lead pick there.",
+ "candidates": [
+  "UGREEN Nexode Power Bank 20000mAh 100W",
+  "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display",
+  "Anker Laptop Power Bank 25K 165W (A1695)",
+  "Anker 737 Power Bank 24K 140W (A1289)",
+  "INIU Cougar 20000mAh 65W (P62-E1)",
+  "Baseus Blade H1 20000mAh 100W",
+  "UGREEN Nexode Power Bank 25000mAh 165W with Built-in Cables"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PD voltage the Steam Deck negotiates and its measured input",
+   "value": "Triggers the 15V PDO; about 39W input from Valve's own 45W adapter",
+   "source": "https://chargerlab.com/exploring-the-charging-detail-of-your-steam-deck-chargerlab-compatibility-100",
+   "source_title": "Exploring the Charging Detail of Your Steam Deck - ChargerLAB Compatibility 100",
+   "read": "2026-11-13",
+   "note": "ChargerLAB measured this with a POWER-Z KM002C (article dated 2023-07-18; Deck model not stated). Of the power banks ChargerLAB tested, about half delivered around 35W and the rest 15–25W. None of 80 chargers matched the stock adapter's 39W."
+  },
+  {
+   "product": "general",
+   "label": "Valve's charging spec (LCD)",
+   "value": "PD3.0 Type C power supply, 45W; 40Whr battery",
+   "source": "https://www.steamdeck.com/en/tech/deck",
+   "source_title": "Steam Deck :: Tech Specs",
+   "read": "2026-11-13",
+   "note": "Valve's page gives the wattage and PD version but no voltage/current profile."
+  },
+  {
+   "product": "general",
+   "label": "Valve's charging spec (OLED)",
+   "value": "45W power supply (2.5 m cable); 50Whr battery; 20% to 80% in as little as 45 min",
+   "source": "https://www.steamdeck.com/en/oled",
+   "source_title": "Introducing Steam Deck OLED",
+   "read": "2026-11-13",
+   "note": "Charging time is Valve's claim using its own adapter."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 100W",
+   "label": "Which USB-C port has the 15V profile",
+   "value": "USB-C1: 5V⎓3A/9V⎓3A/12V⎓3A/15V⎓3A/20V⎓5A (PD3.0, PPS). USB-C2: 5V⎓3A/9V⎓3A/12V⎓2.5A only (no 15V). Price $79.99 at UGREEN US",
+   "source": "https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 100W",
+   "read": "2026-11-13",
+   "note": "Taken from the spec table on UGREEN's US store page, read through the Shopify store tool. USB-C2 max = 12V × 2.5A = 30W. The 'Total Output' row lists 15V⎓3A, a single 45W 15V budget."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display",
+   "label": "Which USB-C port has the 15V profile",
+   "value": "USB-C1: 5V/3A 9V/3A 12V/3A 15V/3A 20V/5A, 100W max. USB-C2: 10V/2.25A 5V/3A 9V/3A 12V/2.5A, 30W max (no 15V). Price $89.99 at UGREEN US",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display",
+   "read": "2026-11-13",
+   "note": "Taken from the spec table on UGREEN's US store page. This is the model on our current page."
+  },
+  {
+   "product": "Anker Laptop Power Bank 25K 165W (A1695)",
+   "label": "USB-C cable/port profiles, sharing, pass-through, Deck listing",
+   "value": "Each USB-C cable/port: 3-11V⎓3A/5V⎓3A/9V⎓3A/10V⎓2.25A/12V⎓3A/15V⎓3A/20V⎓5A (100W max). USB-A 33W max. 165W total with two devices, 130W total with three or four. Pass-through needs a charger of 20W or more. Steam Deck listed under compatibility. $119.99, in stock",
+   "source": "https://www.anker.com/products/a1695-anker-power-bank-25000mah-165w",
+   "source_title": "Anker Laptop Power Bank (25K, 165W, Built-In and Retractable Cables)",
+   "read": "2026-11-13",
+   "note": "Anker gives one spec line for the built-in cables and the USB-C port together, not a separate line for each cable."
+  },
+  {
+   "product": "Anker 737 Power Bank 24K 140W (A1289)",
+   "label": "USB-C profiles and US availability",
+   "value": "USB-C1 and USB-C2: 5V⎓3A/9V⎓3A/15V⎓3A/20V⎓5A/28V⎓5A; 140W total. Sold out on Anker US",
+   "source": "https://www.anker.com/products/a1289",
+   "source_title": "Anker 737 Power Bank (PowerCore 24K)",
+   "read": "2026-11-13",
+   "note": "The page has 'Two-Port/Three-Port Charging' headings but no sharing figures. It does not mention the Steam Deck or pass-through."
+  },
+  {
+   "product": "INIU Cougar 20000mAh 65W (P62-E1)",
+   "label": "Maker's Steam Deck compatibility claim and price",
+   "value": "Says it charges 'MacBook Air, Windows laptops, Steam Deck'; $46.99 (compare-at $50.99) at INIU's store",
+   "source": "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w",
+   "source_title": "INIU Cougar Smallest Power Bank 20000mAh 65W",
+   "read": "2026-11-13",
+   "note": "Read through the store tool's search result. The product page itself returned HTTP 429, so I could not read the per-port voltage profiles."
+  },
+  {
+   "product": "Baseus Blade Laptop Power Bank 100W 20000mAh (original Blade, not H1)",
+   "label": "Maker's stated Steam Deck wattage",
+   "value": "Baseus says the 'USB-C port provides 30W for Steam Deck'. Listed sold out, $69.99",
+   "source": "https://www.baseus.com/products/blade-laptop-power-bank-100w-20000mah",
+   "source_title": "Baseus Blade Laptop Power Bank 100W 20000mAh",
+   "read": "2026-11-13",
+   "note": "This is Baseus's own text on its US store, read through the store tool's search result. It covers the earlier Blade 100W, not the Blade H1 that ChatGPT recommends. It shows that '100W' on the box does not mean 45W to a Deck."
+  }
+ ],
+ "unsourced": [
+  "Per-port USB-C voltage profiles for the INIU Cougar P62-E1: iniushop.com returned HTTP 429 on both the store tool and WebFetch.",
+  "Per-port output profiles for the Baseus Blade H1 20000mAh 100W: baseus.com returned HTTP 429. Retailer listings found in search mix up input and output specs, so I did not use them.",
+  "Per-port and per-cable output for the UGREEN Nexode 25000mAh 165W with Built-in Cables and the 20000mAh 165W Retractable: the UGREEN product pages returned HTTP 429, and the store tool's search text had no spec table for them.",
+  "A Valve document giving the exact voltage/current profile (such as 15V⎓3A) of the 45W adapter or the Deck's input. Valve's tech pages say only '45W PD3.0'.",
+  "Whether the Deck still charges at 12V when a port has no 15V profile, and at what wattage: ChargerLAB does not break this down by port."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2739966999999996
+ }
+}

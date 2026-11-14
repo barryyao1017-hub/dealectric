@@ -1,0 +1,113 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which Synology model generations can still run Hyper Backup Vault as a target: Vault 4.2.x (current 4.2.2-4262, 2026-07-07) needs DSM 7.3 or later. The DS223j, DS118 and DS120j reach DSM 7.4, but a used DS216j stops at DSM 7.1, so it can't run Vault 4.2.x.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited and the top results. Synology's Hyper Backup spec (synology.com/en-ro/dsm/7.4/software_spec/hyper_backup) lists 'Remote Synology NAS' and 'rsync servers' as destinations. It says Vault 'turns a Synology NAS into a backup destination', but gives no Vault DSM minimum and no model list. The cited KB destination page renders no text without JavaScript. ChatGPT's answer suggests a 'Used Synology DS118 / DS120j' at $50–100 but doesn't say which used generations stop short of the DSM needed for Vault 4.2.x. QNAP's own Synology-to-QNAP rsync FAQ (not in ChatGPT's results) documents only the 'rsync copy (single-version)' mode.",
+ "decides": "This confirms ChatGPT's 'used Synology' route but adds a cut-off. A used DS118 or DS120j (maximum DSM 7.4) can run the current Vault 4.2.2. Avoid used models capped at DSM 7.1 (for example the DS216j), which can't run Vault 4.2.x because it needs DSM 7.3. The new DS223j also reaches DSM 7.4, so it qualifies. For non-Synology targets (UGREEN DH2300 / DXP2800, QNAP): Synology's spec lists rsync servers for folder and package backup but not for entire-system backup. Hetzner's rsync guide recommends client-side encryption and offers a retention setting. Both of those exist only in multi-version tasks, which suggests multi-version .hbk to an rsync target works. QNAP's own documentation shows only single-version. Our page's statement that a UGREEN target is single-version only with no .hbk is therefore weakly sourced and should be softened to 'single-version is the documented path; multi-version .hbk over rsync is not documented by the NAS maker'.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "Synology DS120j (used)",
+  "Synology DS118 (used)",
+  "Synology DS216j (used)",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Hyper Backup Vault current version and DSM requirement",
+   "value": "4.2.2-4262 (2026-07-07); 'Hyper Backup Vault 4.2.2 requires DSM 7.3 and above' (4.2.0 and 4.2.1 state the same)",
+   "source": "https://www.synology.com/api/releaseNote/findChangeLog?identify=HyperBackupVault&lang=en-us",
+   "source_title": "Synology Release Notes for Hyper Backup Vault (JSON feed behind synology.com/releaseNote/HyperBackupVault)",
+   "read": "2026-11-13",
+   "note": "The HTML release-note page renders no text without JavaScript, so I read the JSON feed behind it. No model or architecture exclusions are listed for 4.2.x."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Maximum DSM major/minor for the model",
+   "value": "DSM 7.4 (productVer '7.4'); newest build 7.4.1-90080",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS223j&major=7",
+   "source_title": "Synology Download Center data for DS223j",
+   "read": "2026-11-13",
+   "note": "Because 7.4 ≥ 7.3, the DS223j can run the current Vault 4.2.x. The package list in this feed is generic across models; only the productVer field is model-specific."
+  },
+  {
+   "product": "Synology DS118 (used)",
+   "label": "Maximum DSM for the model",
+   "value": "DSM 7.4 (productVer '7.4')",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS118&major=7",
+   "source_title": "Synology Download Center data for DS118",
+   "read": "2026-11-13",
+   "note": "This used model ChatGPT suggested can run Vault 4.2.x (needs DSM 7.3+)."
+  },
+  {
+   "product": "Synology DS120j (used)",
+   "label": "Maximum DSM for the model",
+   "value": "DSM 7.4 (productVer '7.4')",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS120j&major=7",
+   "source_title": "Synology Download Center data for DS120j",
+   "read": "2026-11-13",
+   "note": "This used model ChatGPT suggested can run Vault 4.2.x (needs DSM 7.3+)."
+  },
+  {
+   "product": "Synology DS216j (used)",
+   "label": "Maximum DSM for the model",
+   "value": "DSM 7.1 (productVer '7.1')",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS216j&major=7&minor=1",
+   "source_title": "Synology Download Center data for DS216j",
+   "read": "2026-11-13",
+   "note": "7.1 < 7.3, so this used model can't install Vault 4.2.x. Example of a used generation to avoid as a Vault target."
+  },
+  {
+   "product": "general",
+   "label": "Hyper Backup destinations by mode",
+   "value": "Entire system: Remote Synology NAS, Synology C2 Storage only. Folder and package: includes Remote Synology NAS and rsync servers. Multi-version tasks are stored as .hbk, readable only by Hyper Backup, Hyper Backup Explorer and Hyper Backup Vault. Destination needs at least 8 GB free.",
+   "source": "https://www.synology.com/en-ro/dsm/7.4/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "This is a page ChatGPT cited. It doesn't list Vault model or DSM requirements."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Maker-documented Synology Hyper Backup → QNAP pairing",
+   "value": "Hyper Backup 'rsync copy (single-version)' to a 'rsync-compatible server'. On the QNAP: HBS 3 > Services > Rsync Server, port 873, 'Local NAS accounts' on, SSH enabled for an administrator account. Transfer encryption 'On' (required).",
+   "source": "https://www.qnap.com/en/how-to/faq/article/how-can-i-back-up-data-from-a-synology-nas-to-a-qnap-nas-via-rysnc",
+   "source_title": "QNAP FAQ: How can I back up data from a Synology NAS to a QNAP NAS via rsync?",
+   "read": "2026-11-13",
+   "note": "Page last modified 2025-07-14. Only the single-version mode is documented; there is no multi-version option on this page."
+  },
+  {
+   "product": "general",
+   "label": "Multi-version-only options used against a non-Synology rsync server",
+   "value": "Hetzner Storage Box as 'a rsync-compatible server' on port 23, with transfer encryption required. The guide says client-side encryption is 'recommended to be activated' and offers an optional custom retention setting.",
+   "source": "https://community.hetzner.com/tutorials/synology-hyperbackup-to-storagebox",
+   "source_title": "Synology HyperBackup to Storage Box (Hetzner Community, Stefan Weiberg, 2023-05-23)",
+   "read": "2026-11-13",
+   "note": "I'm inferring that this is multi-version (.hbk), because client-side encryption and retention are multi-version features. The guide doesn't state the mode explicitly."
+  },
+  {
+   "product": "general",
+   "label": "Hyper Backup to Raspberry Pi rsync with client-side encryption",
+   "value": "Wundertech (Frank Joseph) selected 'Rsync' as the destination over SSH, using an rsyncd.conf module with read only = no. Client-side encryption was enabled on the author's production offsite task.",
+   "source": "https://www.wundertech.net/backup-your-synology-nas-using-hyper-backup-to-a-raspberry-pi-on-site-or-off-site/",
+   "source_title": "Backup a Synology NAS to a Raspberry Pi using Hyper Backup (WunderTech)",
+   "read": "2026-11-13",
+   "note": "Published 2020-06-27, modified 2025-05-05. The backup mode is not stated."
+  }
+ ],
+ "unsourced": [
+  "Synology KB 'Destination | Hyper Backup' and the remote-NAS tutorial text stating that an rsync-compatible server can hold multiple-version (.hbk) backups with encryption and compression. I only saw this in a search snippet; the KB pages render no text through WebFetch, and curl was not permitted.",
+  "UGREEN's own document for UGOS Pro's rsync server as a Synology Hyper Backup target (menu path, port, multi-version support). I searched support.ugreen.com and knowledge.ugnas.com and found no maker page.",
+  "DS124 maximum DSM (productVer). I didn't check it within the tool budget; only the generic package list was read for DS124.",
+  "Hyper Backup Vault applied-models list. synology.com/en-us/dsm/packages/HyperBackupVault renders an empty 'Applied Models' section.",
+  "Whether a BeeStation can install Hyper Backup Vault, from a Synology document."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.2268807000000002
+ }
+}

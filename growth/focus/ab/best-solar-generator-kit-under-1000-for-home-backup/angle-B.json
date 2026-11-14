@@ -1,0 +1,169 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many watts each kit's own panel can supply around the clock in November sun. With the US November average of 3.53 sun-hours and a 75% panel derate, that is about 22 W for every 200 W-panel kit, 44 W for the ALLPOWERS P1800 + 400 W, and 66 W for the ALLPOWERS P1800 + 600 W kit ($798 on ALLPOWERS' US store today). The 600 W kit's panel refills the 1,024 Wh battery in about 0.64 of a November day, against roughly 2 days for the 200 W kits.",
+ "standout": 3,
+ "standout_why": "I compared against StormWatts' same-panel-watts article (updated 2026-11-12), Lights On Labs (2026-10-27), PowerSized's kit price guide (checked through 2026-11-14) and Prepared States (2026-11-06/07). All four already publish cost per Wh and refill hours. Those refill hours are either 'full sun' (Wh ÷ panel W) or a generic derate (StormWatts uses ×0.85 at 4.5 sun-hours, PowerSized ×0.75). None turns the panel into watts it can sustain around the clock in an actual outage month. None lists the ALLPOWERS P1800 + 600 W kit. Prepared States shows only the P1800 + 200 W kit, at $538.99.",
+ "decides": "For a multi-day outage, the useful limit is the panel's daily harvest, not the battery. Every 200 W kit (BLUETTI AC180, Elite 100 V2, Jackery 1000 v2, ALLPOWERS P1800 + 200 W) refills about 22 W around the clock in November, roughly one Wi-Fi router plus a few LED bulbs. That makes battery size (AC180 1,152 Wh vs 1,024 Wh) a minor difference. The ALLPOWERS P1800 + 600 W kit at $798 sustains about 3× that (66 W) for $12 per sustained watt, against about $35 for the AC180 kit. It should be the solar-backup pick under $1,000, as long as its panel layout and ship date check out. The P1800 + 400 W at $698 is the cheaper step-down (44 W). The DELTA 3 Classic kit at $669 is a short-outage, wall-recharge pick, because if its panel is 160 W (as PowerSized lists) it refills only about 18 W.",
+ "candidates": [
+  "ALLPOWERS P1800 + 600 W",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "ALLPOWERS P1800 + 200 W",
+  "BLUETTI AC180 + 200 W",
+  "BLUETTI Elite 100 V2 + 200 W",
+  "EcoFlow DELTA 3 Classic Solar Generator (160 W)",
+  "Jackery Solar Generator 1000 v2 (200 W)",
+  "Anker SOLIX C1000 Gen 2 + 100 W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "US average November solar resource (peak sun-hours)",
+   "value": "3.53 kWh/m²/day (= 3.53 peak sun-hours); December 2.87",
+   "source": "https://shrinkthatfootprint.com/?p=4385",
+   "source_title": "Average Solar Energy Per Year, Month and Day (Shrink That Footprint, Anne Lauer)",
+   "read": "2026-11-14",
+   "note": "The author averaged NREL PVWatts output for the largest city in each of the 50 states. I could not reach NREL directly (DNS failure)."
+  },
+  {
+   "product": "general",
+   "label": "Planning derate for portable panels (rated W to delivered W)",
+   "value": "75%",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide (PowerSized)",
+   "read": "2026-11-14",
+   "note": "The page's own planning figure. November harvest per rated panel watt = 3.53 h × 0.75 = 2.65 Wh per W per day."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W",
+   "label": "Kit price, ALLPOWERS US store",
+   "value": "$798 (compare-at $1,059.98), listed available",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 600W Solar Panel",
+   "read": "2026-11-14",
+   "note": "Read from the store's Shopify search JSON. The product page itself returned HTTP 429, so the panel model, panel count and ship date were not read."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W",
+   "label": "November sustained solar watts (kit's own panel)",
+   "value": "≈66 W around the clock (≈1,589 Wh/day)",
+   "source": "https://shrinkthatfootprint.com/?p=4385",
+   "source_title": "Average Solar Energy Per Year, Month and Day",
+   "read": "2026-11-14",
+   "note": "600 W × 3.53 h × 0.75 = 1,588.5 Wh/day ÷ 24 = 66.2 W. 600 W is under the P1800's 650 W solar cap, so no clipping."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W",
+   "label": "November days to refill the battery from its own panel",
+   "value": "≈0.64 day",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 1,588.5 Wh/day = 0.64. Battery 1,024 Wh and 'Up to 650W solar input via XT60' are from the store listing."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W",
+   "label": "Price per sustained November watt",
+   "value": "≈$12.1 per W",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 600W Solar Panel",
+   "read": "2026-11-14",
+   "note": "$798 ÷ 66.2 W = $12.05/W"
+  },
+  {
+   "product": "ALLPOWERS P1800 + SP037 400 W",
+   "label": "Kit price, ALLPOWERS US store",
+   "value": "$698 (compare-at $1,059.98)",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 400W Solar Panel",
+   "read": "2026-11-14",
+   "note": "Read from the store's Shopify search JSON, which showed it as available. The product page returned 429, so the Dec 7 pre-order date on our page was not re-checked."
+  },
+  {
+   "product": "ALLPOWERS P1800 + SP037 400 W",
+   "label": "November sustained solar watts / days to refill / $ per sustained W",
+   "value": "≈44 W / ≈0.97 day / ≈$15.8 per W",
+   "source": "https://shrinkthatfootprint.com/?p=4385",
+   "source_title": "Average Solar Energy Per Year, Month and Day",
+   "read": "2026-11-14",
+   "note": "400 × 3.53 × 0.75 = 1,059 Wh/day ÷ 24 = 44.1 W; 1,024 ÷ 1,059 = 0.97 day; $698 ÷ 44.1 = $15.8"
+  },
+  {
+   "product": "ALLPOWERS P1800 + 200 W",
+   "label": "Kit price and November figures",
+   "value": "$531; ≈22 W sustained; ≈1.93 days to refill; ≈$24 per W",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-200w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 200W Solar Panel",
+   "read": "2026-11-14",
+   "note": "200 × 3.53 × 0.75 = 529.5 Wh/day ÷ 24 = 22.1 W; 1,024 ÷ 529.5 = 1.93; $531 ÷ 22.1 = $24.0. Price from the store's search JSON."
+  },
+  {
+   "product": "BLUETTI AC180 + 200 W",
+   "label": "November sustained solar watts / days to refill / $ per sustained W",
+   "value": "≈22 W / ≈2.18 days / ≈$34.8 per W",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide (PowerSized)",
+   "read": "2026-11-14",
+   "note": "529.5 Wh/day ÷ 24 = 22.1 W; 1,152 ÷ 529.5 = 2.18; $769 ÷ 22.1 = $34.8. The $769 price is PowerSized's (checked Nov 13). BLUETTI's store search returned only the bare AC180 at $499 (https://www.bluettipower.com/products/ac180)."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2 + 200 W",
+   "label": "November sustained solar watts / days to refill / $ per sustained W",
+   "value": "≈22 W / ≈1.93 days / ≈$33 per W",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide (PowerSized)",
+   "read": "2026-11-14",
+   "note": "1,024 ÷ 529.5 = 1.93; $729 (PowerSized, pre-order, checked Nov 13) ÷ 22.1 = $33.0. The station's 1,000 W solar input means it can take more panels later; BLUETTI store listing text read 2026-11-14."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic Solar Generator (160 W)",
+   "label": "Kit price, EcoFlow US store",
+   "value": "$669",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-14",
+   "note": "Read from the store's Shopify search JSON, listed available. The snippet does not state panel watts. PowerSized lists the $669 kit as DELTA 3 Classic + 160W (checked Nov 14)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic Solar Generator (160 W)",
+   "label": "November sustained solar watts / days to refill / $ per sustained W",
+   "value": "≈18 W / ≈2.42 days / ≈$37.9 per W",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide (PowerSized)",
+   "read": "2026-11-14",
+   "note": "160 × 3.53 × 0.75 = 423.6 Wh/day ÷ 24 = 17.7 W; 1,024 ÷ 423.6 = 2.42; $669 ÷ 17.7 = $37.9"
+  },
+  {
+   "product": "Jackery Solar Generator 1000 v2 (200 W)",
+   "label": "November sustained solar watts / days to refill",
+   "value": "≈22 W / ≈2.02 days",
+   "source": "https://www.preparedstates.com/kit/solar-generators",
+   "source_title": "Best Solar Generators for Home Backup (2026): Power Station + Panel Kits (Prepared States)",
+   "read": "2026-11-14",
+   "note": "1,070 Wh ÷ 529.5 Wh/day = 2.02. Prepared States shows the kit at $879, out of stock. I have no Jackery-store price."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2 + 100 W",
+   "label": "November sustained solar watts / days to refill / $ per sustained W",
+   "value": "≈11 W / ≈3.87 days / ≈$64 per W",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide (PowerSized)",
+   "read": "2026-11-14",
+   "note": "100 × 3.53 × 0.75 = 264.75 Wh/day ÷ 24 = 11.0 W; 1,024 ÷ 264.75 = 3.87; $709.99 (with coupon, backorder, checked Nov 13) ÷ 11.0 = $64.5"
+  }
+ ],
+ "unsourced": [
+  "A sourced average watts or kWh/year figure for a household refrigerator to set against the 22/44/66 W figures. energy.gov's appliance-estimating page returned 404, and ENERGY STAR's refrigerators page gives only dollars and relative figures. ChatGPT's '60 W average' is its own assumption.",
+  "NREL PVWatts monthly output by city: developer.nrel.gov and rredc.nrel.gov did not resolve, so I used the 50-city PVWatts average from Shrink That Footprint instead.",
+  "ALLPOWERS 600 W kit panel model, panel count, Voc vs the P1800's 11–60 V input window, and ship date: the product pages returned HTTP 429 on every try.",
+  "Pre-order status of the P1800 + 400 W kit (ships Dec 7, per our page): not re-read today because of the 429s.",
+  "BLUETTI AC180 + 200 W and Elite 100 V2 + 200 W kit prices on bluettipower.com today: the store search returned the bare AC180 ($499) and Elite 100 V2 + 100 W ($679) but not the 200 W kits.",
+  "Jackery Solar Generator 1000 v2 and Anker SOLIX C1000 Gen 2 kit prices on the makers' own stores: not read within the tool budget.",
+  "Anker SOLIX S2000 + 200 W at $899.99 (Costco), ChatGPT's top pick in two chats: not verified, so it is left out of the calculations."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.3444168999999997
+ }
+}

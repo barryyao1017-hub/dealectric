@@ -1,0 +1,113 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states the Docker Engine version each NAS OS ships, or how that compares with the Docker API v1.44 that Nextcloud AIO uses by default. UGREEN UGOS Pro (29.6.2, API ≤1.55), ASUSTOR (29.6.2), QNAP Container Station (27.1.2, API 1.46) and TerraMaster TOS (27.2.1, API 1.47) all meet it. Synology DSM Container Manager (24.0.2, API 1.43), on the DS925+ and DS225+, is the only one below it. AIO's Docker socket proxy and AppAPI fail there unless you override the API version, which the AIO maintainers say they don't support or test.",
+ "standout": 2,
+ "standout_why": "I checked the rival pages ChatGPT got. racksandwatts.com (cited), esp32.co.uk best-4-bay (cited) and nasdrives.ca best-for-nextcloud name only the container app ('UGOS Pro Docker', 'Container Manager', 'Runs well in Docker'). None gives an engine or API version or mentions any AIO incompatibility. The cited AIO readme says Synology users 'likely need to adjust the internally used api version', but it gives no numbers and doesn't compare brands. Issue #7365 (a result, not cited) has DSM's API 1.43 against the 1.44 AIO needs, but only for Synology. No page puts all the brands in one comparable column, and our current page doesn't either.",
+ "decides": "This backs the UGREEN DXP4800 Plus or DXP2800 as the pick for running Nextcloud AIO as shipped, and it weakens the DS925+, which ChatGPT called the 'best software experience' or 'best overall'. On DSM, AIO needs the DOCKER_API_VERSION override that the maintainers don't support, or the Docker Socket Proxy (needed by AppAPI/ExApps) turned off. Synology has kept Container Manager on Docker 24.0.2, which reached end of life in June 2024, through its August 2026 package update. QNAP and TerraMaster meet 1.44 but run older engines than UGREEN and ASUSTOR. Footnote for the table: the 'Docker support' tick every rival shows is not equal across brands.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "TerraMaster F4-425 Plus",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Nextcloud AIO default Docker API version",
+   "value": "v1.44",
+   "source": "https://raw.githubusercontent.com/nextcloud/all-in-one/main/php/src/Docker/DockerActionManager.php",
+   "source_title": "nextcloud/all-in-one DockerActionManager.php (main)",
+   "read": "2026-11-13",
+   "note": "The code has `private const string API_VERSION = 'v1.44';` and uses it when DOCKER_API_VERSION is unset or empty."
+  },
+  {
+   "product": "general",
+   "label": "AIO support policy for overriding the API version",
+   "value": "Only the default API version is supported and tested by the maintainers; for Synology DSM you 'likely need to adjust the internally used api version'",
+   "source": "https://github.com/nextcloud/all-in-one/blob/main/readme.md",
+   "source_title": "all-in-one/readme.md at main · nextcloud/all-in-one",
+   "read": "2026-11-13",
+   "note": "From the sections 'How to adjust the internally used docker api version?' (example --env DOCKER_API_VERSION=1.44) and 'How to run AIO on Synology DSM'."
+  },
+  {
+   "product": "general",
+   "label": "Docker Engine → maximum API version",
+   "value": "24.0 → 1.43; 25.0 → 1.44; 27.0–27.1 → 1.46; 27.2–27.5 → 1.47; 29.6–29.8 → 1.55",
+   "source": "https://docs.docker.com/reference/api/engine/",
+   "source_title": "Docker Engine API version matrix (Docker Docs)",
+   "read": "2026-11-13",
+   "note": "I used this to turn each vendor's engine version into an API level."
+  },
+  {
+   "product": "Synology DS925+ / DS225+",
+   "label": "Docker Engine in DSM Container Manager",
+   "value": "24.0.2 (API 1.43), Container Manager 24.0.2-1706 released 2026-08-26 for DSM 7.4+, same engine",
+   "source": "https://mariushosting.com/synology-new-docker-version-24-0-2-1706/",
+   "source_title": "Synology: New Docker Version 24.0.2-1706 (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "Marius Hosting says Docker Engine 24.0.2 reached end of life on 2024-06-08. API 1.43 comes from the Docker matrix. It applies to every DSM Plus model, including the DS925+ and DS225+."
+  },
+  {
+   "product": "Synology DS925+ / DS225+",
+   "label": "Effect on Nextcloud AIO",
+   "value": "DOCKER_API_VERSION found as 1.43; AIO v12.3.0 Docker Socket Proxy / AppAPI crash; workaround is to uncheck Docker Socket Proxy",
+   "source": "https://github.com/nextcloud/all-in-one/issues/7365",
+   "source_title": "AppAPI connection failure on Synology DSM (Docker API 1.43 vs 1.44 requirement) · Issue #7365",
+   "read": "2026-11-13",
+   "note": "The reporter ran DSM 7.2 with Container Manager v24.0.2-1606. A maintainer sent it to the nextcloud/app_api repo, and the issue was closed on 2026-01-05. No fix on the DSM side was reported."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus / DXP2800",
+   "label": "Docker Engine in UGOS Pro",
+   "value": "29.6.2 (API 1.55), from UGOS Pro 1.19.1.0126 (previously 29.4.3)",
+   "source": "https://mariushosting.com/ugreen-nas-new-docker-engine-29-6-2/",
+   "source_title": "UGREEN NAS: New Docker Engine 29.6.2 (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "The article was updated on 2026-09-27. API 1.55 comes from the Docker matrix (29.6–29.8)."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Docker Engine (ADM)",
+   "value": "29.6.2",
+   "source": "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/",
+   "source_title": "Docker Engine: Synology, TerraMaster, UGREEN, ASUSTOR, QNAP (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "This is Marius Hosting's cross-brand table, updated 2026-10-12. The table gives no ADM package version."
+  },
+  {
+   "product": "QNAP TS-464 / TS-264",
+   "label": "Docker Engine in Container Station",
+   "value": "27.1.2 (API 1.46)",
+   "source": "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/",
+   "source_title": "Docker Engine: Synology, TerraMaster, UGREEN, ASUSTOR, QNAP (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "This is above AIO's 1.44 default. QNAP's own release-notes page wouldn't load (it's rendered by JavaScript), so I used Marius Hosting's figure."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus / F4-425 Plus",
+   "label": "Docker Engine in TOS",
+   "value": "27.2.1 (API 1.47)",
+   "source": "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/",
+   "source_title": "Docker Engine: Synology, TerraMaster, UGREEN, ASUSTOR, QNAP (Marius Hosting)",
+   "read": "2026-11-13",
+   "note": "This is above AIO's 1.44 default. TerraMaster forum threads (search results only, not opened) say a newer engine needs TOS 7."
+  }
+ ],
+ "unsourced": [
+  "QNAP Container Station release notes from QNAP itself (qnap.com/en-us/release-notes/container-station and app_releasenotes/list.php): neither page loaded its content, so the 27.1.2 figure rests on Marius Hosting only.",
+  "Synology's own Container Manager release notes (synology.com/en-us/releaseNote/ContainerManager): no content loaded, so the engine version rests on Marius Hosting.",
+  "UGREEN's own UGOS Pro release notes for 1.20.x / 1.21.x naming the Docker Engine version: not found, so I used Marius Hosting's figure for 1.19.1.0126.",
+  "Docker Engine version in TerraMaster TOS 7: no TerraMaster page found that names it.",
+  "Whether AIO now falls back to API 1.43 on DSM in a release after v12.3.0: no changelog entry found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.0148215999999999
+ }
+}

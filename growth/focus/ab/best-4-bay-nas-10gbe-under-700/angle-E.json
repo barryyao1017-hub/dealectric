@@ -1,0 +1,112 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a named, measured 10GbE file-copy speed for a 4-HDD RAID 5 array in these boxes: PCWorld measured the DXP4800 GT at 430 MB/s read and 340 MB/s write, and about 780 MB/s with two clients copying at once. NASCompares measured the DXP4800 Pro at 450–500 MB/s read and 300–350 MB/s write. Both are well under the 9.4 Gbit/s (about 1,175 MB/s) the link carried in PCWorld's iperf3 test, and above what one 2.5GbE port can carry.",
+ "standout": 2,
+ "standout_why": "Pages compared: starryhope.com/nas/best-4-bay-nas, computingforgeeks.com/best-4-bay-nas, choosecompute.com best-4-bay-nas-2026, itechguides.com Plus-vs-F4-424, dongknows.com UNAS Pro 4 review, and ChatGPT's own answers. Starry Hope and ComputingForGeeks already carry the idle power figures: KitGuru's 24 W for the Plus and, on Starry Hope, PCWorld's 25 W and 40–42 W for the GT. Starry Hope's '~1,100 MB/s' copy figure names no tester, and ChooseCompute's 'over 1,000 MB/s' has no source. iTechGuides says outright that it has no matched benchmark. Dong Knows gives only rated specs for the UNAS Pro 4. ChatGPT's '400–700 MB/s for four HDDs in RAID 5' caveat cites nobody. No page puts named HDD RAID 5 copy speeds over 10GbE for these candidates side by side, and none mentions the two-client aggregate figure.",
+ "decides": "This confirms the DXP4800 Plus as the pick for one desktop copying to HDDs. With four hard drives, a single client gets roughly 300–500 MB/s on either UGREEN box, so the GT's second 10GbE port adds nothing for one user. The GT's extra money pays off with two or more clients at once (PCWorld measured about 780 MB/s combined) or with NVMe/SSD cache: Club386 hit 1.11 GB/s on the GT, but only with a 2× Samsung 990 Pro cache and RAID 10. It also backs the page's claim that built-in 10GbE beats 2.5GbE even with HDDs: 430 MB/s measured, against roughly 295 MB/s as 2.5GbE's ceiling. On noise and power, Club386 measured the TS-432X at just under 40 dBA and 62 W with four disks spinning. Its GT test read 33 dBA idle, 38 dBA under load, 27 W idle and 65 W peak. That is a point against the QNAP for a desk or living room.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP4800 Pro",
+  "QNAP TS-432X-4G",
+  "Ubiquiti UniFi UNAS Pro 4",
+  "TerraMaster F4-424 Max"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Large video file copy over 10GbE, 4× HDD RAID 5",
+   "value": "430 MB/s read, 340 MB/s write",
+   "source": "https://www.pcworld.com/article/3223782/ugreen-dxp4800-gt-review.html",
+   "source_title": "Ugreen DXP4800 GT review: This Ryzen NAS makes 10GbE affordable (PCWorld, Christoph Hoffmann & Michael Rupp, 2026-09-22)",
+   "read": "2026-11-13",
+   "note": "Windows PC with a 10GbE card, connected through a switch with Cat 7 cable. Four WD Red Plus 2 TB drives in RAID 5. Average rates when copying large video files."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Two clients copying at once over 10GbE, RAID 5",
+   "value": "about 780 MB/s combined",
+   "source": "https://www.pcworld.com/article/3223782/ugreen-dxp4800-gt-review.html",
+   "source_title": "Ugreen DXP4800 GT review (PCWorld, 2026-09-22)",
+   "read": "2026-11-13",
+   "note": "Same four WD Red Plus 2 TB drives in RAID 5. The same review measured 9.4 Gbit/s link throughput in iperf3, which is network only, and 65 MB/s for a copy of 20,000 small files."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Power at the wall and noise",
+   "value": "25 W idle (drives asleep), 40–42 W normal use, 60 W full load; 38 dB(A) in operation",
+   "source": "https://www.pcworld.com/article/3223782/ugreen-dxp4800-gt-review.html",
+   "source_title": "Ugreen DXP4800 GT review (PCWorld, 2026-09-22)",
+   "read": "2026-11-13",
+   "note": "Power meter readings. The review does not describe the full-load workload."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Explorer copy over 10GbE with SSD cache; power, noise and temperatures",
+   "value": "1.11 GB/s up and down (50 GB file); 27 W idle, 65 W peak; 33 dBA idle, 38 dBA load, 52 dBA Full Speed fan mode; CPU 77 °C during transfers",
+   "source": "https://www.club386.com/?p=147640",
+   "source_title": "Ugreen NASync DXP4800 GT review: a stylish quad-bay NAS (Club386, Samuel Willetts, 2026-06-18)",
+   "read": "2026-11-13",
+   "note": "Four 2 TB 5,400 rpm HDDs in RAID 10 with a 500 GB cache on 2× Samsung 990 Pro, so the 1.11 GB/s reflects the cache. AJA 16 GB test: 654 MB/s read, 614 MB/s write. Noise measured about 10 cm from the unit at 26 °C ambient."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Pro",
+   "label": "Copy over 10GbE, 4× HDD RAID 5 and NVMe pool",
+   "value": "HDD RAID 5: 450–500 MB/s read, 300–350 MB/s write; NVMe pool: about 660–680 MB/s sustained",
+   "source": "https://nascompares.com/2026/02/02/ugreen-dxp4800-pro-nas-review/amp/",
+   "source_title": "UGREEN DXP4800 Pro NAS review (NASCompares, Rob Andrews, 2026-02-02)",
+   "read": "2026-11-13",
+   "note": "Ranges as the reviewer reported them, for real-world large media file copies. CPU is the Core i3-1315U."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Pro",
+   "label": "Power at the wall",
+   "value": "about 28 W idle, 58–59 W moderate load, low-to-mid 80 W peak",
+   "source": "https://nascompares.com/2026/02/02/ugreen-dxp4800-pro-nas-review/amp/",
+   "source_title": "UGREEN DXP4800 Pro NAS review (NASCompares, 2026-02-02)",
+   "read": "2026-11-13",
+   "note": "Idle measured with four HDDs and both network ports connected. The review gives no dB figure."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Power at the wall, 2.5GbE vs 10GbE",
+   "value": "24.25 W idle on 2.5GbE, 30.45 W idle on 10GbE; peak reads 52.07 / 58.17 W; peak writes 61.35 / 67.02 W",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "Ugreen NASync DXP4800Plus 4-bay NAS Review, power page (KitGuru, Simon Crisp, 2024-05-28)",
+   "read": "2026-11-13",
+   "note": "Four WD Red WD60EFRX 6 TB drives. Peak figures taken during CrystalDiskMark 8.0.4 runs. The 10GbE link adds about 6 W at idle (30.45 − 24.25), which the rivals quoting 24 W leave out."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "File copies over 10GbE by RAID level",
+   "value": "best write 606 MB/s (5 GB photo, RAID 0); 543 MB/s write (RAID 6, 1.5 GB folder); folder reads 865–900 MB/s (RAID 0–RAID 10); 5 GB photo read over 1 GB/s on RAID 0, 5 and 10",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/13",
+   "source_title": "Ugreen NASync DXP4800Plus 4-bay NAS Review, file transfer page (KitGuru, 2024-05-28)",
+   "read": "2026-11-13",
+   "note": "Four WD Red 6 TB drives. Reads above 1 GB/s on a 5 GB file are likely helped by the 8 GB of RAM cache. That is my inference; KitGuru does not say so."
+  },
+  {
+   "product": "QNAP TS-432X-4G",
+   "label": "CrystalDiskMark sequential over 10GbE SFP+; power; noise",
+   "value": "829 MB/s read, 444 MB/s write; 62 W with four disks spinning; just under 40 dBA",
+   "source": "https://www.club386.com/?p=105906",
+   "source_title": "QNAP TS-432X review: NASter of Puppets pulling 10GbE strings (Club386, Damien Mason, 2025-05-30)",
+   "read": "2026-11-13",
+   "note": "Four 8 TB Seagate IronWolf drives in RAID 10 over SFP+ to a QNAP QSW-1208-8C switch and a Ryzen 9 7950X3D PC. Copying 3× 5 GB files took about 30 s, about 500 MB/s by my arithmetic (15 GB / 30 s). Club386 does not state the workload for the power figure. QNAP's own lab figure is 1,181 MB/s read and 887 MB/s write with 4× Samsung 860 Pro SSDs in RAID 5, so it is not comparable."
+  }
+ ],
+ "unsourced": [
+  "UniFi UNAS Pro 4: no measured 10G throughput or power in Dong Knows' review (rated 150 W max only). I did not open NASCompares' full UNAS Pro 4 review (nascompares.com/?p=87310).",
+  "TerraMaster F4-424 Max: I did not open the Android Central review (2025-01-28) for figures. It is over budget at $899.99 in any case.",
+  "IT Pro (Simon Handby, 2026-02-16) DXP4800 Plus copy speeds (58/76 MB/s via a 5GbE client): WebFetch returned only a truncated page, so these figures exist only in a search summary and are not used.",
+  "TweakTown DXP4800 GT throughput: the page returned 403. Notebookcheck's GT review (Abhinav Fating) publishes no figures.",
+  "TS-432X idle power draw and an HDD RAID 5 copy speed from a named reviewer: not found. Club386 tested RAID 10 only.",
+  "No single reviewer has tested the DXP4800 Plus, GT and TS-432X with the same drives and method. The figures here come from different drives, RAID levels and clients, so they are not like-for-like."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1198894000000001
+ }
+}

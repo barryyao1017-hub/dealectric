@@ -1,0 +1,174 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how many days of 24/7 footage each box can hold for four Reolink cameras at Reolink's own default bitrate (6,144 kbps on the RLC-810A, so 265 GB a day). The Reolink RLN8-410 maxes out at about 22.6–30.1 days on its internal drive, because Reolink's two pages give different drive limits (6 TB or 8 TB). The Synology DS225+ holds about 75 days with two mirrored 20 TB drives.",
+ "standout": 2,
+ "standout_why": "I compared the pages ChatGPT cited and that I opened: Reolink's RLN8-410 product page and NVR store page, Synology's Device License Pack page and QNAP's QVR FAQ. ChatGPT's retention tables use a guessed 6 Mbps. None of them works from a Reolink camera's own default bitrate, and none caps retention at each box's largest supported drive. Reolink's product page says 'Up to 16TB (max. 8TB capacity for each HDD)', but its own RLN8-410 FAQ says 'Max. 12TB in total: Max. 6TB via SATA, Max. 6TB via eSATA', and no rival points out the conflict. One ChatGPT answer only hedges with 'subject to your hardware version's drive limits'. I did not open the reolink.com Synology buying guide (the top result).",
+ "decides": "This confirms the split on the page. If the shopper wants a month or more of 24/7 footage from four 4K cameras without plugging in an external eSATA drive, the RLN8-410 falls short on some hardware versions (22.6 days on a 6 TB drive) and only just reaches it on others (30.1 days on 8 TB). A two-bay NAS with mirrored drives clears it easily (about 75 days on 2×20 TB). The NVR is still the simple pick for about 3 weeks of footage. For a month or more, the NAS wins. On licences for four cameras: Synology needs 2 paid licences, QNAP's QVR Surveillance needs 0 (8 free channels), the RLN8-410 needs 0, and UGREEN publishes no camera fee.",
+ "candidates": [
+  "Reolink RLN8-410",
+  "Synology DS225+",
+  "UGREEN NASync DXP2800",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Reolink 4K PoE camera default main-stream bitrate",
+   "value": "6,144 kbps (range 4,096–8,192 kbps), H.265, 25 fps default",
+   "source": "https://reolink.com/us/product/rlc-810a/",
+   "source_title": "Reolink RLC-810A product page",
+   "read": "2026-11-13",
+   "note": "Quoted text: 'Mainstream: 4096Kbps - 8192Kbps (default: 6144Kbps)'. This is the input for every retention figure below."
+  },
+  {
+   "product": "general",
+   "label": "Storage used per day, four cameras recording 24/7",
+   "value": "265.4 GB/day (66.4 GB per camera)",
+   "source": "https://reolink.com/us/product/rlc-810a/",
+   "source_title": "Reolink RLC-810A product page",
+   "read": "2026-11-13",
+   "note": "6.144 Mb/s × 86,400 s ÷ 8 = 66,355 MB per camera per day; × 4 cameras = 265.4 GB/day (decimal units, no filesystem overhead)."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Storage limit as stated on the product page",
+   "value": "Up to 16 TB (max 8 TB per HDD; 8 TB SATA + 8 TB eSATA); ships with a 2 TB drive",
+   "source": "https://reolink.com/product/rln8-410/?attribute_pa_version=rln8-410",
+   "source_title": "Reolink RLN8-410 | Reolink NVR for 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "The US page https://reolink.com/us/product/rln8-410/ says the same: 'Up to 16TB (max. 8TB capacity for each HDD)'."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Storage limit as stated in Reolink's FAQ (conflicts with the product page)",
+   "value": "Max 12 TB total: 6 TB via SATA + 6 TB via eSATA; max 8 camera channels, and a dual-lens camera uses 2",
+   "source": "https://support.reolink.com/articles/10354119558937-FAQs-RLN8-410/",
+   "source_title": "FAQs - RLN8-410",
+   "read": "2026-11-13",
+   "note": "This is Reolink's own support article. Probably a difference between hardware versions; the page does not say which."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Retention with the included 2 TB drive, 4 cameras",
+   "value": "7.5 days",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "2,000 GB ÷ 265.4 GB/day = 7.5 days"
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Longest retention on the internal drive only, 4 cameras",
+   "value": "22.6 days (6 TB limit in the FAQ) to 30.1 days (8 TB limit on the product page)",
+   "source": "https://support.reolink.com/articles/10354119558937-FAQs-RLN8-410/",
+   "source_title": "FAQs - RLN8-410",
+   "read": "2026-11-13",
+   "note": "6,000 ÷ 265.4 = 22.6 days; 8,000 ÷ 265.4 = 30.1 days. Adding an eSATA drive raises the total to 45.2 days (12,000 ÷ 265.4) or 60.3 days (16,000 ÷ 265.4). No redundancy either way."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Power consumption",
+   "value": "<10 W without HDD and PoE",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "This excludes the drive and the camera PoE load, so a yearly kWh figure would not compare fairly with the Synology access-mode number. I did not calculate one."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Warranty",
+   "value": "2-year limited warranty",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "This fills the 'not read' warranty cell on our current page."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maximum raw capacity",
+   "value": "40 TB raw (2 bays)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": "Quoted: 'Up to 40 TB of raw storage'"
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Longest retention, 4 cameras",
+   "value": "75.4 days mirrored (RAID 1, 20 TB usable); 150.7 days without redundancy (40 TB)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": "20,000 ÷ 265.4 = 75.4 days; 40,000 ÷ 265.4 = 150.7 days"
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Share of Surveillance Station capacity used by four 4K cameras",
+   "value": "4 of 20 channels and 100 of 200 fps (50%) at 4K H.265",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": "Spec: 4K H.265 '20 channels, 200 FPS'. 4 cameras × 25 fps (Reolink default) = 100 fps, which is 100 ÷ 200 = 50%. Under H.264 the limit is 170 fps, so 100 ÷ 170 = 59%."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Camera licences to buy for 4 cameras",
+   "value": "2 (2 included; 4 − 2 = 2)",
+   "source": "https://www.synology.com/en-us/products/Device_License_Pack",
+   "source_title": "Surveillance Device License Pack | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology: 2 default licences on a NAS, 'default free licenses will never expire'; packs of 1, 4 or 8, 'valid for good once activated'. The page lists no price."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Yearly energy at 24/7 access load",
+   "value": "148.7 kWh/year",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": "16.98 W (Access) × 8,760 h ÷ 1,000 = 148.7 kWh. 24/7 recording keeps the drives spinning, so the 6.08 W hibernation figure does not apply."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Warranty",
+   "value": "3 years, extendable to 5 with Extended Warranty Plus",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": ""
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Free camera channels in QVR Surveillance (replaces QVR Elite)",
+   "value": "8 free channels (2 standard + 6 bonus, activated with a QNAP ID); paid extra channels come as lifetime or subscription licences",
+   "source": "https://www.qnap.com/en/how-to/faq/article/what-is-the-difference-between-qvr-proelite-and-qvr-surveillance",
+   "source_title": "What is the difference between QVR Pro/Elite and QVR Surveillance? | QNAP",
+   "read": "2026-11-13",
+   "note": "Four cameras need 8 − 4 = 0 paid channels. Our current page's QNAP row ('QVR Elite: 2 free channels, then subscription only') is out of date and should be corrected. ChatGPT already cited this FAQ, so it is not a gap."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 (UGREEN NAS store, read via storecheck.py)",
+   "read": "2026-11-13",
+   "note": "ChatGPT showed $296.99 at Walmart, which I did not check. Camera licences needed for 4 cameras: 0 (UGREEN publishes no fee; see our existing row)."
+  }
+ ],
+ "unsourced": [
+  "Synology licence price in USD: Synology's licence page and store page list no price, CDW and CDWG product pages returned 403, and amzcheck.py search returned nothing. So the cost of the 2 licences (and the DS225+ 4-camera total) is left out.",
+  "RLN8-410 price today: reolink.com product and store pages show only a 'Save up to $600' banner (prices load by script), and storecheck.py failed because it is not a Shopify store.",
+  "DS225+ price today: amzcheck.py search returned no output (likely blocked by Amazon). I did not check Synology's or Newegg's store.",
+  "DXP2800 power draw and maximum capacity per bay: the UGREEN product pages on nas.ugreen.com and ugreen.com returned 429 twice, so no retention ceiling or yearly kWh for UGREEN.",
+  "QNAP QVR Surveillance lifetime price per channel and confirmation that the TS-264 supports it: QNAP's FAQ lists no prices or supported models, and the search found only QVR Pro pricing.",
+  "RLN8-410 spec PDF (home-cdn.reolink.us): WebFetch could not decode it and running curl through Bash was not approved, so I could not use it to settle the 6 TB vs 8 TB per-drive limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0671161999999998
+ }
+}

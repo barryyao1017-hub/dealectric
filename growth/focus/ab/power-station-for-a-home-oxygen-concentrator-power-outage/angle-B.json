@@ -1,0 +1,161 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got gives a live price for each hour of runtime on a 350 W EverFlo-class concentrator, or names the cheapest maker-store setup that covers a full 8-hour night (3,294 Wh needed at 0.85). On 2026-11-14 that was the EcoFlow DELTA Pro at $1,799 for about 8.7 h. The BLUETTI Elite 300 at $1,199 is the cheapest per hour (about $164/h) but runs out about 40 minutes short of 8 hours, and the BLUETTI Apex 200 + B300K at $2,199 gives about 12.9 h at about $170/h.",
+ "standout": 2,
+ "standout_why": "I compared against blackoutwise.com/will-it-run/home-oxygen-concentrator-5l (cited), willitrunpower.com/best-power-station-for/oxygen-concentrator (cited) and the answer ChatGPT gave. Both pages list hours per station at 350 W and how many Wh 8 hours needs, so the runtime half of this is already covered. BlackoutWise gives only price ranges checked by hand on 2026-10-09 and says they are 'not live prices'. WillRun gives no prices, only 'Check price on Amazon' links. Neither page works out dollars per runtime hour, and neither names the cheapest in-stock maker-store setup that gets past 8 hours. ChatGPT's top pick, the Elite 300, is shown at 7.3 h with no note that it falls short of a full night.",
+ "decides": "The finding splits the pick by need. For an evening outage up to about 7 hours, the BLUETTI Elite 300 ($1,199, about 7.3 h) is the best value at about $164 per runtime hour. For a full 8-hour night on a 350 W unit, the Elite 300 is not enough. The cheapest single box that covers it is the EcoFlow DELTA Pro ($1,799 at us.ecoflow.com, about 8.7 h). The BLUETTI Apex 200 + B300K bundle ($2,199, about 12.9 h) costs $400 more but gives about 4 more hours and a lower cost per hour ($170 vs $206). The BLUETTI AC200L, our current expandable row, was sold out at BLUETTI US on 2026-11-14, and so was the Anker F3800 Plus at ankersolix.com. A backup oxygen tank from the supplier comes first, whatever station the shopper picks.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Apex 200",
+  "BLUETTI Apex 200 + B300K",
+  "BLUETTI Apex 300 + B300K",
+  "EcoFlow DELTA Pro",
+  "EcoFlow DELTA 3",
+  "BLUETTI AC200L",
+  "Anker SOLIX F3800 Plus",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Philips EverFlo (5 L home concentrator) power draw",
+   "value": "350 W at 120 VAC ±10%, 0.5–5 L/min",
+   "source": "https://www.philips.ca/healthcare/product/HC0044000/everflo-home-oxygen-system",
+   "source_title": "EverFlo home oxygen system | Philips Healthcare (Canada)",
+   "read": "2026-11-14",
+   "note": "Maker spec page. This is the load used in every runtime line below."
+  },
+  {
+   "product": "general",
+   "label": "Energy needed for an 8-hour night at 350 W",
+   "value": "3,294 Wh of rated capacity",
+   "source": "https://www.blackoutwise.com/will-it-run/home-oxygen-concentrator-5l",
+   "source_title": "Can a Power Station Run a Home Oxygen Concentrator? Briefly | BlackoutWise",
+   "read": "2026-11-14",
+   "note": "8 h × 350 W ÷ 0.85 = 3,294 Wh. The 0.85 inverter factor is the assumption BlackoutWise and WillRun both state, and ChatGPT used it too. WillRun also adds 15 W of inverter draw, which gives 3,435 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py and on the product page. The page states 3,014 Wh (3014.4 Wh), 2,400 W output, 4,800 W lifting and a 10 ms switchover."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Hours at 350 W and cost per runtime hour",
+   "value": "7.3 h; $164 per hour",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-14",
+   "note": "3,014 × 0.85 ÷ 350 = 7.32 h, which is 0.68 h (about 41 min) short of 8 h. $1,199 ÷ 7.32 = $164/h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price; hours at 350 W; cost per runtime hour",
+   "value": "$899.00; 5.0 h; $178 per hour",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-14",
+   "note": "Price from storecheck.py search. 2,073.6 × 0.85 ÷ 350 = 5.04 h (2,073.6 Wh is our page's figure; the store title says 2,080 Wh). $899 ÷ 5.04 = $178/h."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Price, capacity, expansion, switchover",
+   "value": "$1,099.00 (list $1,399); 2,560 Wh; 3,200 W; takes B300K/B500K; ≤15 ms UPS",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "Apex 200 Versatile Power Station | BLUETTI",
+   "read": "2026-11-14",
+   "note": "On its own: 2,560 × 0.85 ÷ 350 = 6.22 h; $1,099 ÷ 6.22 = $177/h. The page says transfer 'may not meet every device's requirements'."
+  },
+  {
+   "product": "BLUETTI Apex 200 + B300K",
+   "label": "Bundle price; hours at 350 W; cost per runtime hour",
+   "value": "$2,199.00 (compare-at $2,599); 12.9 h; $170 per hour",
+   "source": "https://www.bluettipower.com/products/apex-200-b300k",
+   "source_title": "Apex 200 + B300K | BLUETTI",
+   "read": "2026-11-14",
+   "note": "B300K is 2,764.8 Wh per the BLUETTI store listing. (2,560 + 2,764.8) × 0.85 ÷ 350 = 12.93 h. $2,199 ÷ 12.93 = $170/h. Covers an 8-hour night with about 4.9 h to spare."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K",
+   "label": "Bundle price; hours at 350 W; cost per runtime hour",
+   "value": "$2,599.00 (compare-at $2,799); 13.4 h; $194 per hour",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "Apex 300 + B300K | BLUETTI",
+   "read": "2026-11-14",
+   "note": "The listing states 5,529.6 Wh and 3,840 W. 5,529.6 × 0.85 ÷ 350 = 13.43 h. $2,599 ÷ 13.43 = $194/h."
+  },
+  {
+   "product": "BLUETTI B300K",
+   "label": "Expansion battery price and capacity",
+   "value": "$1,099.00; 2,764.8 Wh; fits AC200L, AC200MAX, AC300, AC500",
+   "source": "https://www.bluettipower.com/products/b300k",
+   "source_title": "B300K for AC200L/AC300 | BLUETTI",
+   "read": "2026-11-14",
+   "note": "Each B300K adds 2,764.8 × 0.85 ÷ 350 = 6.7 h at 350 W, which works out to $164 per added hour."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Stock status, BLUETTI US store",
+   "value": "Sold out at $899.00 (2,048 Wh)",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W,2,048Wh",
+   "read": "2026-11-14",
+   "note": "storecheck.py returned available:false. The AC200L + 2×200 W and AC200L + Charger 2 bundles were also unavailable."
+  },
+  {
+   "product": "EcoFlow DELTA Pro",
+   "label": "Price; hours at 350 W; cost per runtime hour",
+   "value": "$1,799.00 (compare-at $4,998); 8.7 h; $206 per hour",
+   "source": "https://us.ecoflow.com/products/delta-pro-portable-power-station",
+   "source_title": "EcoFlow DELTA Pro Portable Power Station",
+   "read": "2026-11-14",
+   "note": "Listing states 3.6 kWh (expandable to 25 kWh) and 3,600 W AC. 3,600 × 0.85 ÷ 350 = 8.74 h, the cheapest single unit found that clears 8 h. $1,799 ÷ 8.74 = $206/h."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Price; hours at 350 W; cost per runtime hour",
+   "value": "$579.00; 2.5 h; $233 per hour",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "1,024 × 0.85 ÷ 350 = 2.49 h. $579 ÷ 2.49 = $233/h. The listing says it expands to 5 kWh with extra batteries and gives 1,800 W AC."
+  },
+  {
+   "product": "ALLPOWERS R4000",
+   "label": "Stock status, ALLPOWERS store",
+   "value": "Sold out at $1,499.00 (3,456 Wh)",
+   "source": "https://www.iallpowers.com/products/allpowers-r4000-power-station",
+   "source_title": "ALLPOWERS R4000 Portable Power Station | 4000W 3456Wh",
+   "read": "2026-11-14",
+   "note": "If it comes back in stock: 3,456 × 0.85 ÷ 350 = 8.39 h; $1,499 ÷ 8.39 = $179/h. storecheck.py returned available:false today."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Capacity, weight, stock status",
+   "value": "3,840 Wh; 136.7 lb; sold out with no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-14",
+   "note": "3,840 × 0.85 ÷ 350 = 9.33 h. No cost per hour because the page showed 'Price Loading' and 'Sold Out'."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX F3800 Plus price: ankersolix.com showed no price ('Sold Out') and storecheck.py search returned HTTP 404.",
+  "OSCAL PowerMax 3600 SE and Nature's Generator L6000 prices: storecheck.py on oscal.hk returned 404 and on naturesgenerator.com returned HTTP 0. I did not find their US store URLs within the tool budget.",
+  "Growatt HELIOS 3600 price: I did not reach Growatt's US store within the tool budget.",
+  "Standalone BLUETTI Apex 300 price: the store search returned only bundles.",
+  "Hours to refill a 350 W night from a kit's own solar panel: no maker states a daily solar harvest for the Elite 300 + 2×200 W or Elite 200 V2 + 2×200 W kits, so I left it out.",
+  "Measured concentrator draw on battery (as opposed to the 350 W spec) and each station's AC idle draw: only WillRun's 15 W assumption and its 40 W Anker F3800 idle figure turned up, and I did not open Anker's source for that."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.153449
+ }
+}

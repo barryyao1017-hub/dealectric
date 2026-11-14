@@ -1,0 +1,101 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the US Anker SOLIX C1000 Gen 2 is rated for at most 12 A at 120 V. That is 1,440 W, less than the 1,600 W UltraFast input Anker advertises. On the same 120 V basis the DJI Power 1000 V2 is rated for 13 A (1,560 W) and the EcoFlow DELTA 3 for 15 A (1,800 W). So the model with the highest advertised input has the lowest rated current from a US outlet.",
+ "standout": 2,
+ "standout_why": "I read our current page, Tested Watts' charge-time guide and OutdoorGearLab's DJI Power 1000 V2 review with its comparison table, and checked the summaries of the other cited pages in the saved chats. thisWATT would not load (certificate error). Tested Watts gives 1,600 W UltraFast and 1,200 W standard with no input current, and its only circuit note is about 2–3 kWh units. Our page works out about 13 A at 120 V from the 1,600 W figure and says no source measured wall watts on a US 120 V outlet. It never checks the input current the makers rate their units for. OutdoorGearLab gives measured Wh/hr but no input current. CleanTechnica's spec sheet does print '120V~ 12A Max', but it was not among ChatGPT's results and it does not point out the conflict with 1,600 W.",
+ "decides": "It confirms the Anker as the pick and changes how the page should explain it. The 49-minute claim needs only about 1,254 W on average into a 1,024 Wh battery, which is under the 1,440 W nameplate limit. The Solar Lab timed 47 minutes in Ultra-Fast mode (outlet voltage not stated). So the time is believable, but the '1,600 W' headline is not what Anker's US nameplate allows at 120 V. Our '≈13 A at 120 V' circuit warning should be rewritten around the 12 A rating. The EcoFlow is the only one of the three makers I checked whose 120 V rating (15 A) is above its charge wattage (1,500 W). It also had the highest measured charging speed in OutdoorGearLab's test, which favours it as the runner-up.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "DJI Power 1000 V2",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC input rating, US model (nameplate)",
+   "value": "120 V~ 12 A max, 60 Hz (1,440 W at 120 V)",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "120 V × 12 A = 1,440 W. On the same page Anker lists 'AC Power (UltraFast Charging) 1,600W', 'AC Power (Charging) 1,200W Max' and 'AC (Bypass) 1,800W Max'. Drawing 1,600 W at 120 V would take 13.3 A, above the 12 A rating. The page gives no test conditions for the 49-minute claim."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Maker's claim and what it needs",
+   "value": "0–100 % in 49 min; '1,600W max AC input'; 'UltraFast Recharging must be activated via the Anker app'",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Average charge rate the claim implies: 1,024 Wh ÷ (49/60 h) = 1,254 W, which fits under the 1,440 W nameplate limit. Cycle life on the same page: over 80 % capacity after 4,000 cycles."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured full charge, Ultra-Fast mode",
+   "value": "0–100 % in about 47 min",
+   "source": "https://www.thesolarlab.com/review/anker-solix-c1000-gen-2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Review: Which Version to Buy? (The Solar Lab)",
+   "read": "2026-11-14",
+   "note": "The Solar Lab turned on Ultra-Fast in the app. No outlet voltage, wall watts or temperature are given. That works out to 1,024 Wh ÷ (47/60 h) = 1,307 W on average into the battery. This is a second 47-minute result alongside the UK Technology Man test our page already cites."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Same 12 A rating in a US review",
+   "value": "Spec sheet reads 'AC Voltage: 120V~ 12A Max, 60Hz' next to a 0–100 % in 49 min claim",
+   "source": "https://cleantechnica.com/2025/09/24/the-anker-solix-c1000-gen-2-portable-power-station-cleantechnica-tested/",
+   "source_title": "The Anker SOLIX C1000 Gen 2 Portable Power Station (CleanTechnica Tested)",
+   "read": "2026-11-14",
+   "note": "CleanTechnica says normal mode draws 'just over 1,200 watts' from the wall. It reports no timed UltraFast test and no measured UltraFast wattage."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "AC input rating, 100–120 V model DYM1000V2L",
+   "value": "AC 100–120 V, 50/60 Hz, max current 13 A (1,560 W at 120 V); 13 A in bypass",
+   "source": "https://www.dji.com/uk/power-1000-v2/specs?set_region=GB",
+   "source_title": "DJI Power 1000 V2 - Specs",
+   "read": "2026-11-14",
+   "note": "120 V × 13 A = 1,560 W. The 220–240 V model (DYM1000V2H) is rated 6.5 A, or 10 A in bypass. The specs page lists no charge wattage or charge time. Its one test-condition footnote covers cycle life (25 °C lab, recharged in Standard Mode), not AC input."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Measured charge (OutdoorGearLab, US)",
+   "value": "Text says 'just 59 minutes to reach a full charge'; table gives a measured charging speed of 1,041 Wh/hr",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/dji-power-1000-v2",
+   "source_title": "DJI Power 1000 V2 Review | OutdoorGearLab",
+   "read": "2026-11-14",
+   "note": "The review does not name the mode or wall watts. 59 minutes is above DJI's 56-minute claim and above The Technology Man's 'under 53 min' UK result on our page."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "AC input rating, US/CA/JP model",
+   "value": "100–120 V~ 15 A, 50/60 Hz (1,800 W at 120 V); 'Supports up to 1,500W AC input'",
+   "source": "https://www.bestbuy.com/site/questions/ecoflow-delta-3-1024-wh-capacity-silver/12206257",
+   "source_title": "Questions & Answers: EcoFlow DELTA 3 (1024 Wh) - Best Buy",
+   "read": "2026-11-14",
+   "note": "Both answers are signed 'Ecoflow Team' and dated only relatively ('1 year ago' and '1 week ago'). This page is for the DELTA 3. Our page says the DELTA 3 Plus uses the same charger, but I did not read a 15 A rating for the Plus itself. The 1,500 W charge input leaves room under the 15 A rating, the only one of the three makers I checked with that margin. Product text: 'Ultra-fast charging 0-100% in 56 minutes'."
+  },
+  {
+   "product": "general",
+   "label": "OutdoorGearLab measured charging speed, ~1 kWh units",
+   "value": "EcoFlow Delta 3: 1,229 Wh/hr; Anker Solix C1000 Gen 2: 1,097 Wh/hr; DJI Power 1000 V2: 1,041 Wh/hr; Jackery Explorer 1000 v2: 563 Wh/hr",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/dji-power-1000-v2",
+   "source_title": "DJI Power 1000 V2 Review | OutdoorGearLab",
+   "read": "2026-11-14",
+   "note": "These come from the 'Measured Charging Speed' column of the comparison table. The same table's 'Time to Charge' column (Anker 0.8 h, DJI 0.9 h, EcoFlow Delta 3 0.9 h, Jackery 1.58 h) gives no source or mode, so it may be a maker figure. The table lists the Anker at 1,056 Wh claimed capacity, which is the original C1000's figure (the Gen 2 is 1,024 Wh), so OutdoorGearLab may have mixed up the two. The Jackery's 563 Wh/hr suggests standard mode, not Emergency mode. By this measure the EcoFlow, not the Anker, charged fastest at OutdoorGearLab."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 AC input current at 120 V and its Emergency-mode wattage: jackery.com returned HTTP 429 three times through WebFetch and storecheck. A search snippet said '100-120V~ 60Hz, 15A Max' but I could not open the page, so I left it out.",
+  "EcoFlow DELTA 3 Plus US page (AC input current, test footnotes, price): us.ecoflow.com returned HTTP 429 to storecheck and WebFetch, and ecoflow.com/us returned 404. The 15 A rating above is from EcoFlow's Best Buy answer for the DELTA 3, not the Plus.",
+  "The Anker C1000 Gen 2's measured wall draw in UltraFast on a US 120 V outlet: none of the reviews I opened (The Solar Lab, CleanTechnica, Techaeris) reported one. Notebookcheck's reported 1,110 Wh from the wall reached me only through a third-party summary, and I did not open Notebookcheck.",
+  "Anker's test conditions for the 49-minute claim (voltage, temperature): the US page has no footnote.",
+  "US prices from the makers' stores today: the Anker page shows no price, and the EcoFlow and Jackery stores rate-limited me. I did not try Amazon."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2116829
+ }
+}

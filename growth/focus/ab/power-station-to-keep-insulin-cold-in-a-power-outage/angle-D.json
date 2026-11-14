@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got gives the AC180 maker's actual auto-off rule. In ECO mode the AC180 switches off its DC outputs, the 12 V car port included, after 1–4 hours below 5–10 W. A 12 V compressor cooler like the Dometic CFX3 25 averages about 11 W, with long stretches near zero between compressor runs. That puts it right at the cut-off, and once the port turns off the cooler gets no power and warms up.",
+ "standout": 1,
+ "standout_why": "I read three cited pages. Willrun (willitrunpower.com/best-power-station-for/insulin-fridge) has only a general warning: 'some stations switch off idle ports after a timeout. Check that your station's car outlet stays on with a small load.' It names no model, gives no 5–10 W / 1–4 h numbers and doesn't say how to turn the feature off. It does use a 15 W inverter draw, but only on its AC path. GOES (goes.health) covers insulin storage only, with no power stations, ECO or auto-off. Our own page (dealectric.com/power-station-to-keep-insulin-cold-in-a-power-outage) says to leave the inverter off but gives no idle figure and never mentions ECO or auto-off. Neither ChatGPT chat brought it up: the BLUETTI chat said to plug into the AC180's 12 V port and 'test for 48 hours' without warning about ECO. Since Willrun has the general idea but not the maker's numbers or the AC180 setting, this rates a 1.",
+ "decides": "The AC180 + 12 V compressor cooler pick holds only with two conditions. (1) ECO mode is off, or set to its lowest 5 W threshold and longest 4 h duration and then tested: the cooler's ~11 W average is barely above the 10 W top setting, and the manual doesn't say whether ECO judges the average or a continuous low-load stretch. (2) The AC inverter stays off. BLUETTI's runtime formula adds 'about 15W' of self-consumption. If that 15 W applied while running on 12 V, it would add 360 Wh a day: 1,152 × 0.9 × 0.85 = 881 Wh ÷ (265 + 360) Wh/day ≈ 1.4 days, short of the two-day goal. With the inverter off, the page's 3.7-day figure is the right one. The page should tell readers to check that the ECO icon is off and the AC output is off before the outage. It should also have them run the 48-hour test with the cooler on the car port, so any auto-off would show up during the test.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Dometic CFX3 25",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow RIVER 2 Pro",
+  "BougeRV 23 qt compressor fridge"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off on AC and DC outputs",
+   "value": "DC output turns off below a 5–10 W threshold held for 1, 2, 3 or 4 hours (AC: 15–30 W, same durations)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 Portable Power Station Manual (ManualsLib copy of BLUETTI's user manual)",
+   "read": "2026-11-13",
+   "note": "Manual wording: 'the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' FAQ Q4: 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' The DC outputs include the 12 V car port. The ECO setting is in Setting mode: with AC output off, hold AC + DC for about 2 s, or use the app. The ManualsLib.de copy of the same manual gives the AC range as 10–30 W. The manual doesn't say whether ECO is on by default."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker-stated self-consumption and runtime formula",
+   "value": "about 15 W; runtime = Wh × 90 % DoD × 85 % ÷ (load W + 15 W); maker example: 40 W fridge ≈ 17 h",
+   "source": "https://www.manualslib.com/guide/3270655/bluetti-ac180-portable-power-station-manual.html",
+   "source_title": "BLUETTI AC180 Portable Power Station Manual – Estimated Operation Time (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Maker's sum: 1,152 × 0.9 × 0.85 ÷ (40 + 15) ≈ 17.8 h. The manual doesn't say whether the 15 W applies with only DC outputs on. If it did, a 265 Wh/day cooler would last 881 ÷ (265 + 360) ≈ 1.4 days instead of 3.3–3.7. The same runtime is why the fridge belongs on the 12 V port with the inverter off."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car port rating",
+   "value": "12 VDC / 10 A",
+   "source": "https://www.manualslib.com/guide/3270655/bluetti-ac180-portable-power-station-manual.html",
+   "source_title": "BLUETTI AC180 Portable Power Station Manual – Specifications (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Cigarette Lighter Port row in the spec table. A 6.5 A-rated Dometic CFX3 25 (Willrun's figure) fits within it."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured idle draw (reviewer)",
+   "value": "15 W with the inverter on and nothing plugged in; DC and USB ports described as 'negligible' with no number given",
+   "source": "https://offgridvolt.com/bluetti-ac180-review-2026/",
+   "source_title": "BLUETTI AC180 Review (2026): The Value Champion Tested – OffGridVolt (Jonas Walker)",
+   "read": "2026-11-13",
+   "note": "OffGridVolt measured 15 W idle with the inverter on. Its DC-only idle claim has no number, so it only suggests that turning the inverter off removes most of the 15 W. Its other fridge runtime ranges look estimated, not measured, so I left them out."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Average draw compared with the AC180 DC ECO threshold (rival figure, context only)",
+   "value": "0.92 Ah/h at 12 V in a 90 °F room ≈ 11 W average",
+   "source": "https://willitrunpower.com/best-power-station-for/insulin-fridge/",
+   "source_title": "Power station for an insulin fridge: days of runtime | Willrun",
+   "read": "2026-11-13",
+   "note": "0.92 Ah × 12 V ≈ 11 W, about 265 Wh/day. That's just over the AC180's highest DC ECO threshold of 10 W. Between compressor runs, and in a cooler room, draw drops well below 5 W, so ECO can treat the cooler as a low load. This figure is on a cited rival page; the new part is the comparison with BLUETTI's threshold."
+  }
+ ],
+ "unsourced": [
+  "AC180 ECO factory default (on or off). The ManualsLib copies don't say. The only claims of 'on by default' were BLUETTI community forum posts seen in search snippets, and those threads redirect (301) to forum.bluettipower.com, so I couldn't open them.",
+  "Official BLUETTI-hosted AC180 manual text. I fetched the PDFs at s4.bluettipower.com (fce7ee36…), cdn.shopify.com/…/AC180_User_Manual.pdf and pdf.lowes.com, but their text streams were compressed and unreadable through the fetch tool, and running local PDF extraction needed permission. The ECO and self-consumption wording therefore comes from ManualsLib's copy of the maker's manual.",
+  "A measured AC180 idle draw with only DC outputs on (inverter off). No reviewer I opened gives a number.",
+  "Whether AC180 ECO judges an average over the window or needs continuously low load (which decides whether a cycling cooler is actually cut off). The manual says only 'low or no load for a while'.",
+  "EcoFlow RIVER 2 Pro auto-off/timeout rules for its car port. The EcoFlow manual PDF that ChatGPT cited was unreadable through the fetch tool.",
+  "ECO/auto-off rules for the BLUETTI Elite 30 V2, Elite 200 V2 and ALLPOWERS P1800/R600 car ports. Not checked within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.134867
+ }
+}

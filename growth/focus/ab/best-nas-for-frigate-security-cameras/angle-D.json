@@ -1,0 +1,149 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Intel Celeron N5095 (QNAP TS-464), N5105 (Asustor AS6704T v2 / AS5402T) and J4125 (Synology DS225+ / DS425+) list only SSE4.2 on Intel's spec pages, with no AVX, so the official Frigate 0.17 image crashes on them with an 'illegal instruction' error, because Frigate's FAQ says 0.17 needs a CPU with AVX.",
+ "standout": 3,
+ "standout_why": "I compared this against docs.frigate.video/frigate/hardware (cited in every chat), the GitHub dev copy of hardware.md, and docs.frigate.video/frigate/installation (cited). They state the rule, 'Anything with an Intel CPU (with AVX + AVX2 instructions)', but name no NAS CPU. The installation page covers only QNAP's Container Station limits (no GHCR, 64 MB shm) and Synology's 'high privilege' switch, not the CPU. ChatGPT repeated the AVX caveat in chat 1 and still recommended the QNAP TS-464 there and in four other chats. It also recommended the Asustor AS6704T v2. None of the results maps a recommended NAS's CPU to the AVX rule.",
+ "decides": "This takes the QNAP TS-464, Asustor AS6704T v2 and AS5402T, and Synology DS225+ / DS425+ out of the running for official Frigate 0.17 and later. The only route left on them is an unofficial community 'oldcpu' image. The Alder Lake picks have AVX2 according to Intel: the UGREEN DXP4800 Plus (Pentium Gold 8505) and the N100 boxes (UGREEN DXP2800 and DXP4800, Beelink EQ13). That makes the DXP4800 Plus the top pick and the DXP2800 the budget pick. Our current page has to drop or flag its TS-464, DS225+ and AS5402T rows, which wrongly show 'OpenVINO; Coral USB' as working.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "QNAP TS-464",
+  "Synology DS225+",
+  "Synology DS425+",
+  "Asustor Lockerstor 4 Gen2+ AS6704T v2",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "Synology DS925+",
+  "Beelink EQ13"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Frigate 0.17 CPU requirement (developer FAQ)",
+   "value": "\"Frigate 0.17 requires a modern CPU with AVX (Advanced Vector Extensions) instructions.\" The FAQ lists the cause of an 'illegal instruction' crash as \"Your CPU lacks AVX instructions required by TensorFlow\"",
+   "source": "https://github.com/blakeblackshear/frigate/discussions/21275",
+   "source_title": "Frigate 0.17 FAQ #21275 · blakeblackshear/frigate",
+   "read": "2026-11-13",
+   "note": "Started by hawkeye217 and described as 'maintained by the Frigate developers'. Posted 2025-12-14, updated 2026-03-05. Listed under 'Upgrade issues', item 3."
+  },
+  {
+   "product": "general",
+   "label": "Frigate hardware doc CPU rule",
+   "value": "\"Anything with an Intel CPU (with AVX + AVX2 instructions) and capable of running Debian should work fine.\"",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "This page is cited by ChatGPT. It names no NAS or Celeron model. Same sentence in the GitHub dev copy of hardware.md."
+  },
+  {
+   "product": "general",
+   "label": "Face recognition CPU requirement",
+   "value": "\"A CPU with AVX + AVX2 instructions is required to run Face Recognition.\"",
+   "source": "https://docs.frigate.video/configuration/face_recognition/",
+   "source_title": "Face Recognition | Frigate",
+   "read": "2026-11-13",
+   "note": "This adds AVX2 on top of the base AVX need."
+  },
+  {
+   "product": "general",
+   "label": "What happens without AVX, and the only workaround",
+   "value": "\"If you try to run the official Frigate docker image on a CPU that doesn't support AVX instructions, it will crash.\" A community-maintained custom image exists. The same author warns that \"CPUs this old are unlikely to handle object detection for more than one or two cameras.\"",
+   "source": "https://000yesnt.github.io/posts/frigate-oldcpu",
+   "source_title": "frigate oldcpu (000yesnt)",
+   "read": "2026-11-13",
+   "note": "Post dated 2025-04-26. The image is unofficial, not a Frigate project build."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU",
+   "value": "Intel Celeron N5095, 4 cores / 4 threads, burst up to 2.9 GHz, Intel UHD Graphics",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The QNAP page lists AES-NI as its only instruction-set item."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "N5095 instruction set extensions (Intel)",
+   "value": "Intel SSE4.2 only (no AVX, no AVX2). Jasper Lake, launched Q1'21",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5095 Specifications",
+   "read": "2026-11-13",
+   "note": "Taken with the 0.17 FAQ, the official image will not run. This also applies to the QNAP TS-264-8G, which uses the same N5095."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "CPU",
+   "value": "Quad-Core 10 nm Intel Celeron N5105, 4 GB DDR4-2933 (up to 16 GB)",
+   "source": "https://www.asustor.com/en/product?p_id=81",
+   "source_title": "AS5402T | ASUSTOR NAS",
+   "read": "2026-11-13",
+   "note": ""
+  },
+  {
+   "product": "Asustor Lockerstor 4 Gen2+ AS6704T v2",
+   "label": "CPU",
+   "value": "Intel Celeron N5105 quad-core, 4 GB DDR4",
+   "source": "https://the-gadgeteer.com/2026/09/12/lockerstor-4-gen2-as6704t-v2-review/",
+   "source_title": "Lockerstor 4 Gen2+ AS6704T v2 review – The Gadgeteer (Rei Padla)",
+   "read": "2026-11-13",
+   "note": "Named reviewer. I did not open Asustor's own AS6704T v2 page."
+  },
+  {
+   "product": "Asustor AS5402T / AS6704T v2",
+   "label": "N5105 instruction set extensions (Intel)",
+   "value": "Intel SSE4.2 only (no AVX). Jasper Lake, launched Q1'21",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 Specifications",
+   "read": "2026-11-13",
+   "note": ""
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "CPU and memory",
+   "value": "Intel Celeron J4125. 2 GB DDR4 non-ECC, max 6 GB (2 GB + 4 GB)",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The DS225+ page (https://www.synology.com/en-us/products/DS225+#specs, read the same day) also lists the Intel Celeron J4125 with 2 GB, max 6 GB."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "J4125 instruction set extensions (Intel)",
+   "value": "Intel SSE4.2 only (no AVX). Gemini Lake Refresh, UHD Graphics 600, launched Q4'19",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 Specifications",
+   "read": "2026-11-13",
+   "note": "Frigate's GitHub discussion #22771 has an inkeep AI bot answer that says the J4125 'only supports AVX'. Intel's spec page contradicts it."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Pentium Gold 8505 instruction set extensions (Intel)",
+   "value": "Intel SSE4.1, SSE4.2, AVX2. Alder Lake, UHD Graphics for 12th Gen",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Pentium Gold Processor 8505 Specifications",
+   "read": "2026-11-13",
+   "note": "This meets Frigate's AVX + AVX2 rule. The CPU model comes from our existing row. I did not reopen UGREEN's page this session."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / Beelink EQ13",
+   "label": "N100 instruction set extensions (Intel)",
+   "value": "Intel SSE4.1, SSE4.2, AVX2. Alder Lake-N, Intel UHD Graphics",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 Specifications",
+   "read": "2026-11-13",
+   "note": "This meets the AVX + AVX2 rule. Frigate's hardware page says the N100 'Can only run one detector instance' under OpenVINO."
+  }
+ ],
+ "unsourced": [
+  "AVX2 support for the AMD Ryzen V1500B (Synology DS925+): AMD's Ryzen V1000 page timed out, and I did not open the Synology DS925+ spec page this session.",
+  "The CPU of the TerraMaster F4-425, F4-425 Plus and F4-425 Pro: terra-master.com returned HTTP 429, so I could not confirm whether these are N95, N150 or N355 parts or check their AVX2 lines on Intel's spec pages.",
+  "A Frigate docs line that names Celeron/Pentium chips older than Tiger Lake as lacking AVX: I saw it only in a search snippet of a git.laurivan.com mirror commit, which returned HTTP 522, and the live hardware and face-recognition docs do not contain it.",
+  "A first-hand Frigate GitHub issue showing the illegal-instruction crash on a TS-464, DS225+/DS425+ or AS6704T specifically: none turned up. The conclusion rests on Intel's instruction-set lists plus Frigate's FAQ."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1071436
+ }
+}

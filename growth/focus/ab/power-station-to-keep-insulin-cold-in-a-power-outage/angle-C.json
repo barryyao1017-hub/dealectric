@@ -1,0 +1,110 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180 user manual has an ECO mode that switches off the DC outputs, including the 12 V car port, when the load stays under a set threshold of 5–10 W for 1–4 hours, while Dometic rates the CFX3 25 at only about 11 W average at 90 °F, so ECO has to be switched off for this pairing.",
+ "standout": 2,
+ "standout_why": "Compared against dealectric.com (rank 1, cited), willitrunpower.com (rank 2, cited), goes.health and schsa.org (cited), plus the EcoFlow RIVER 2 Pro pages ChatGPT cited in the second chat. Dealectric lists 12 V/10 A ports and says a 6.5 A cooler fits a 10 A port, but says nothing about ECO or auto-off. Willrun gives only a general warning ('some stations switch off idle ports after a timeout') and names no station, threshold or setting. Neither says that the AC180's DC ECO threshold of 5–10 W sits right at the CFX3 25's published average draw.",
+ "decides": "The AC180 + CFX3 25 pick still stands, but only if DC ECO is off. The manual sets the DC ECO threshold at 5–10 W. Dometic's 0.92 Ah/h at 12 V works out to about 11 W at 90 °F, and the average is lower in a cooler house. Between cycles the compressor draws almost nothing, so with ECO on the 12 V port could shut off in the middle of the outage and nothing would restart it. The page should tell buyers to turn ECO off in Setting mode and run a 48-hour test with ECO off. The 6.5 A rated DC input of the CFX3 25 fits the AC180's 12 V/10 A car port. Dometic includes both a 12/24 V cable and a 120 V cable, so no extra cable is needed.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Dometic CFX3 25",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow RIVER 2 Pro"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode turns DC output off at low load",
+   "value": "With ECO on, AC/DC output turns off automatically under low or no load. The DC threshold can be set to 5–10 W and the delay to 1, 2, 3 or 4 hours (AC: 15–30 W).",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of BLUETTI user manual), §5.1.2 Settings and FAQ Q4",
+   "read": "2026-11-13",
+   "note": "Manual quote: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' FAQ: 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively.' You turn it on or off with the DC power button in Setting mode. This copy of the manual does not give the factory default. Copy hosted by ManualsLib, because the BLUETTI and Lowe's PDF copies could not be text-extracted."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car outlet rating",
+   "value": "12 VDC / 10 A cigarette lighter port",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual, Specifications and §5.4.2",
+   "read": "2026-11-13",
+   "note": "The manual also warns: 'Cigarette lighter must be completely plugged in, otherwise it may cause safety risks.'"
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "DC and AC rated input current",
+   "value": "6.5 A at 12 V DC (3.2 A at 24 V); 0.69 A at 120 V AC",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "6.5 A is below the AC180's 10 A car-port limit. On AC through the inverter, 0.69 A × 120 V ≈ 83 W rated, and the inverter's own idle draw is added on top."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Published energy consumption vs ECO threshold",
+   "value": "0.92 Ah/h at 12 V DC (ambient 90 °F, internal 39 °F), about 11 W average",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "Calculation: 0.92 Ah/h × 12 V = 11.04 W, or about 265 Wh per 24 h. This is the hot-room figure; a cooler room gives a lower average and longer compressor-off periods, which puts it at or under the AC180's 5–10 W DC ECO band."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Cables in the box (US)",
+   "value": "1 connection cable for 12/24 V, 1 connection cable for 120 V",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "The US SKU's spec table lists 120 V AC input. Its FAQ also says '12-24VDC, or 100-240V AC @ 50/60Hz'."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Low-voltage cut-off",
+   "value": "3-stage battery protection; turns the cooler off when it senses low inbound DC voltage",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "Dometic support says the cooler checks voltage while the compressor runs and calculates it as the voltage at the DC plug (https://support.dometic.com/en/cfx3-coolers/What-is-the-battery-protection-system-3270, read 2026-11-13). A thin or long extension lead can trip the cut-off early."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Maker's minimum battery for solar/battery use",
+   "value": "Minimum 40 Ah battery (Dometic PLB40 or PLB15 named)",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "40 Ah × 12.8 V ≈ 512 Wh is Dometic's own floor. Every sub-300 Wh station on our page (Elite 30 V2, R600, T320) falls below it."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Price and warranty (Dometic US store)",
+   "value": "$699.99; 3-year warranty",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 (US, 9600028370)",
+   "read": "2026-11-13",
+   "note": "Price as listed on the maker's US product page on the read date."
+  },
+  {
+   "product": "general",
+   "label": "Successor generation exists",
+   "value": "Dometic has a CFX5 line including a CFX5 25 (short operating manual created 2025-12-12)",
+   "source": "https://media.dometic.com/externalassets/07-0703-070328-070328007_97000050758_151673.pdf",
+   "source_title": "Dometic CFX5 - Short Operating Manual AMER3",
+   "read": "2026-11-13",
+   "note": "Only the PDF metadata could be read (model list CFX5 25/35/45/55IM/75DZ/95DZ, creation date). No CFX5 25 consumption or current figures were extracted, so the CFX3 25 numbers must not be carried over to the CFX5."
+  }
+ ],
+ "unsourced": [
+  "AC180 factory default for ECO (on or off) and whether the DC low-load test uses an average or instantaneous draw: looked in the ManualsLib copy of the BLUETTI manual; the Lowe's-hosted and Amazon-hosted manual PDFs could not be text-extracted; bluettipower.com/products/ac180 returned HTTP 429 twice.",
+  "AC180 price today on the BLUETTI US store: product page returned HTTP 429; storecheck.py could not be run in this session (shell commands needed approval).",
+  "CFX3 25 battery-protection switch-off and restart voltages by level: the ManualsLib CFX3 page shows the values 10.1/11.2/11.4/12.2/11.8/12.6 V but not which value belongs to which level; Dometic's support page gives no numbers.",
+  "EcoFlow RIVER 2 Pro car-port rating and any DC timeout setting: the EcoFlow manual PDF could not be text-extracted and the us.ecoflow.com product page returned HTTP 429.",
+  "Elite 200 V2 and Elite 30 V2 ECO/DC auto-off behaviour: not reached within the tool budget.",
+  "Whether the CFX3 25 restarts on its own with its last settings after the 12 V supply drops and comes back: not stated on the Dometic US page; the full CFX3 operating manual could not be extracted."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9936796
+ }
+}

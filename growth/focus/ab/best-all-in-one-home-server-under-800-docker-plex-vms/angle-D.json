@@ -1,0 +1,100 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Plex's own support article says 'Hardware-Accelerated Streaming is not currently possible inside of virtual machines', while Plex does support bind-mounting the Intel GPU device into a Docker container. That means Quick Sync transcoding belongs in a container on the host (Docker or a Proxmox LXC with /dev/dri), not in the 'Docker VM with iGPU passthrough' layout that ChatGPT told shoppers to build in at least three of the chats.",
+ "standout": 2,
+ "standout_why": "I opened the cited rivals homelabpicks.com/mini-pc/best-mini-pc-plex, idlewatt.com, homelabcompass.com, minilabpc.com, minipc-db-seven.vercel.app and littlecompute.com/best-mini-pc-for-plex, and the bitdoze.com Proxmox page that ChatGPT also cited. None of them quotes Plex's statement on VMs. None separates transcoding in a VM from transcoding in an LXC or container, and none mentions GVT-g or SR-IOV on 12th-gen Intel. HomeLabPicks has the `--device /dev/dri` Docker line and says Plex hardware transcoding does not support AMD integrated graphics, so the AMD point is already covered by a cited rival. bitdoze only says 'VAAPI can work and it is a different afternoon' about AMD. Our own page has the UGOS-specific part ('UGOS's VMs have no iGPU passthrough, so Plex transcodes in Docker on the host') but does not quote Plex's general rule and says nothing about Proxmox or 12th-gen Intel. ChatGPT's own answers on 11-07, 11-08 and 11-13 told the shopper to pass the iGPU to a Linux VM and run Plex there.",
+ "decides": "This confirms the picks more than it changes them. On any Intel box, run Plex in Docker or an LXC on the host and keep the 'couple of VMs' free of GPU work. That way the UGREEN DXP4800 Plus not passing its iGPU to VMs in UGOS stops counting against it, because Plex's supported setup never uses a VM anyway. On the i5-12600H mini PCs (MS-01, MS-01 SE, NAB6 Lite), the iGPU cannot be split between VMs the old way: Intel's GVT-g guide covers only 5th–8th gen, and Proxmox says a device passed to a VM can no longer be used on the host. The page should tell shoppers to put Plex in an LXC using Proxmox's dev[n] device option and not to pass the iGPU to a VM. For the AMD option (Aoostar WTR Pro), Plex's own article lists no AMD hardware transcoding support on Linux, which supports keeping it as the 'bays, not Plex transcoding' pick.",
+ "candidates": [
+  "Minisforum MS-01 (i5-12600H)",
+  "Minisforum MS-01 SE (i5-12600H)",
+  "Minisforum NAB6 Lite (i5-12600H)",
+  "UGREEN NASync DXP4800 Plus",
+  "Aoostar WTR Pro (Ryzen 7 5825U)",
+  "Beelink EQ14 (N150)",
+  "TerraMaster F4-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding inside a VM",
+   "value": "Plex says: \"Hardware-Accelerated Streaming is not currently possible inside of virtual machines.\"",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Plex's official support page, last modified 2026-10-27. This is Plex's supported stance. Some users run full iGPU passthrough anyway, but Plex does not support it."
+  },
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding in Docker",
+   "value": "With a supported Intel Quick Sync CPU and an active Plex Pass, \"you can bind mount the relevant kernel device to the container\"",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "The same page says: \"Hardware-accelerated streaming is a premium feature and requires an active Plex Pass subscription.\""
+  },
+  {
+   "product": "general",
+   "label": "Official Plex Docker image, Quick Sync flag",
+   "value": "--device=/dev/dri:/dev/dri \"to pass through the kernel device\"; \"Hardware transcoding is a Plex Pass feature\"",
+   "source": "https://github.com/plexinc/pms-docker",
+   "source_title": "plexinc/pms-docker README (GitHub)",
+   "read": "2026-11-13",
+   "note": "This is Plex's own container project. The Quick Sync section does not mention VMs or AMD."
+  },
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding with AMD graphics on Linux",
+   "value": "Plex's article lists no AMD support on Linux; its only AMD mention is in the Windows section, where support is provided \"'as is' and your mileage may vary\"",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "This affects the Aoostar WTR Pro with Ryzen 7 5825U running Linux, Unraid, TrueNAS or Proxmox. HomeLabPicks, a cited rival, already says Plex hardware transcoding does not support AMD integrated graphics."
+  },
+  {
+   "product": "general",
+   "label": "What a VM-passed device does to the host (Proxmox)",
+   "value": "\"if you pass through a device to a virtual machine, you cannot use that device anymore on the host\"",
+   "source": "https://pve.proxmox.com/wiki/PCI(e)_Passthrough",
+   "source_title": "PCI(e) Passthrough - Proxmox VE wiki",
+   "read": "2026-11-13",
+   "note": "Page last edited 2026-05-21. If the iGPU is passed whole to one VM, the host and any LXC lose it. The wiki's SR-IOV section covers NICs only."
+  },
+  {
+   "product": "general",
+   "label": "Intel GVT-g (shared iGPU for VMs), supported generations",
+   "value": "Client: 5th, 6th, 7th, 8th Gen Intel Core Processor Graphics; server: Xeon E3 v4/v5/v6",
+   "source": "https://github.com/intel/gvt-linux/wiki/GVTg_Setup_Guide",
+   "source_title": "GVTg_Setup_Guide · intel/gvt-linux wiki (GitHub)",
+   "read": "2026-11-13",
+   "note": "Intel's own setup guide; the repo was archived on 2024-10-03. The 12th-gen i5-12600H in the MS-01, MS-01 SE and NAB6 Lite and the N150 in the EQ14 are not on the list, so these chips cannot use GVT-g to split the iGPU across VMs."
+  },
+  {
+   "product": "general",
+   "label": "Upstream SR-IOV for Intel iGPUs (the GVT-g successor)",
+   "value": "\"Starting with Tiger Lake, support for GVT-g was discontinued in favor of SR-IOV\"; \"Currently, the upstream Xe drivers only support SR-IOV on Panther Lake.\"",
+   "source": "https://lkml.indiana.edu/hypermail/linux/kernel/2506.3/09825.html",
+   "source_title": "Intel Xe SR-IOV support status, Marcello Sylvester Bauer, Linux kernel mailing list, 2025-06-30",
+   "read": "2026-11-13",
+   "note": "This is a named poster's status question on the kernel list, not Intel documentation. His table marks ADL/RPL (12th/13th gen) as unsupported in drm-xe-next. I could not open the freedesktop reply thread (HTTP 403)."
+  },
+  {
+   "product": "general",
+   "label": "Proxmox container device passthrough option",
+   "value": "--dev[n] [[path=]<Path>] [,deny-write=<1|0>] [,gid=<integer>] [,mode=<Octal access mode>] [,uid=<integer>]: \"Device to pass through to the container\"",
+   "source": "https://pve.proxmox.com/pve-docs/pct.1.html",
+   "source_title": "pct(1) manual, Proxmox VE 9.2.13",
+   "read": "2026-11-13",
+   "note": "This is the documented way to give a Plex LXC /dev/dri while the host keeps the iGPU and the VMs run without it."
+  }
+ ],
+ "unsourced": [
+  "Intel's own documentation on whether 12th-gen Alder Lake-H iGPUs (i5-12600H) support SR-IOV with the in-kernel i915 or xe driver. I searched for an Intel graphics virtualization support matrix and found none; the freedesktop intel-xe reply (lists.freedesktop.org/archives/intel-xe/2025-July/087328.html) returned HTTP 403.",
+  "Whether Minisforum or Aoostar document iGPU passthrough or SR-IOV for the MS-01, NAB6 Lite or WTR Pro. I did not open their product pages because of the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.8805158999999998
+ }
+}

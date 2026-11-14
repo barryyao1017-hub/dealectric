@@ -1,0 +1,120 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the L3600 has a single shared Solar/Wind input, so plugging in the turbine (through an adapter cable) cuts off solar charging on the base unit, or that the only other wind-capable input in the L3600 system is on the L3600 Power Pod (up to 1,000 W solar or up to 150 W wind, L3600 only, up to 5 pods).",
+ "standout": 2,
+ "standout_why": "Compared against the cited Nature's Generator L3600 and L6000 product pages, the DOE Small Wind Guidebook and our current page. The cited pages read like solar and wind add together: the L3600 page says 'up to 2400W of solar, 150W of wind' and the L6000 page says 'Supports up to 2,400W solar, 150W wind'. ChatGPT repeated this as 'Supports up to 2,400 W solar and a 150 W wind input.' The cited L3600 page does say 'not designed to charge simultaneously', but only in a customer Q&A reply past character 100,000 of the page, and neither ChatGPT nor our page used it. None of the cited pages explains the single-port layout from the manual or the Power Pod's separate port. None notes that Nature's Generator's own help center pairs the L6000 with the 350 W turbine while the L6000 product page and manual list 150 W at 12 Vdc. Our page also says the MyGrid is 'the only unit that takes the 350 W turbine', which the maker's help center contradicts.",
+ "decides": "This changes the top pick from 'L3600 with solar plus wind' to a caution. A bare L3600 charges from panels or the turbine, not both. That is a poor fit for a shopper who wants wind charging overnight and solar by day without swapping cables. A dual-source setup needs a second Solar/Wind port: either the L3600 Power Pod (1,000 W / 150 W port, +$1,299.99 per the bundle page) or the L6000 (solar listed as 12–60 Vdc 25 A 1,200 W ×2). Whether either system charges from solar and wind at the same time on separate ports is not stated in any maker document I opened. Our page should say the wind port is shared and should not show solar and wind as adding together. It should drop the claim that only MyGrid takes the 350 W turbine, or flag the maker's conflicting documents.",
+ "candidates": [
+  "Nature's Generator L3600",
+  "Nature's Generator L6000",
+  "Nature's Generator MyGrid 10K Gen 2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Solar and wind inputs",
+   "value": "One shared Solar/Wind port: 'Connects up to 2400W solar panels or up to 150W wind turbine'; spec 'Wind Charger: 150W (shared port)'; MPPT",
+   "source": "https://www.naturesgenerator.com/pages/manuals/natures-generator-lithium-3600",
+   "source_title": "Nature's Generator Lithium 3600 Power Station User Guide (manual page)",
+   "read": "2026-11-14",
+   "note": "Read through the r.jina.ai text reader because the maker's site returned 429 and certificate errors to direct fetches. The manual lists one Solar/Wind port on the front panel."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Charge from solar and wind at the same time",
+   "value": "No: 'The Nature's Generator Lithium 3600 is not designed to charge simultaneously with solar panels and wind turbine.'",
+   "source": "https://www.naturesgenerator.com/products/lithium-3600-solar-and-wind-generator",
+   "source_title": "Lithium 3600 Solar and Wind Power Generator | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Nature's Generator's own reply in the product-page Q&A (question by 'Dave', about 8 months old). Same reply: 'you will need the wind turbine cable adapter so you can plug it into the solar input of the generator.'"
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Wind turbine adapter and cables",
+   "value": "The turbine plugs into the solar input through a Wind Turbine Cable Adapter. The manual says the adapter is 'sold separately'; Nature's Generator says the solar-and-wind bundle includes a 50 ft solar cable, a 100 ft turbine cable and the adapter",
+   "source": "https://www.naturesgenerator.com/products/lithium-3600-solar-and-wind-generator",
+   "source_title": "Lithium 3600 Solar and Wind Power Generator | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "Bundle contents from the maker's Q&A reply to 'John' (about 5 months old). 'Sold separately' is from the L3600 manual page, which matters when the power station and turbine are bought separately."
+  },
+  {
+   "product": "Nature's Generator L3600 Power Pod",
+   "label": "Second Solar/Wind port and fit",
+   "value": "Pod has its own 'Solar/Wind Port: Connects up to 1000W solar panels or up to 150W wind turbine'; 'maximum 5 ... Power Pods to one ... Lithium 3600'",
+   "source": "https://www.naturesgenerator.com/pages/manuals/natures-generator-lithium-3600-power-pod",
+   "source_title": "Nature's Generator Lithium 3600 Power Pod User Guide (manual page)",
+   "read": "2026-11-14",
+   "note": "The manual names only the Lithium 3600 as a base unit. The L3600 product page lists the L3600 Power Pod (3,072 Wh) at $1,299.99. The manual does not say whether solar on the base and wind on the pod can charge at the same time."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Solar and wind inputs",
+   "value": "'Solar Charger: 12 - 60Vdc 25A 1200W x2'; 'Wind Charger: 12Vdc 150W (shared port)'; 'Connects up to 1200W ×2 solar panels or up to 150W wind turbine'",
+   "source": "https://cdn.shopify.com/s/files/1/2637/1868/files/Natures_Generator_Lithium_6000_User_Guide_08262025.pdf?v=1756266047",
+   "source_title": "Nature's Generator Lithium 6000 User Guide (08/26/2025)",
+   "read": "2026-11-14",
+   "note": "PDF read through the r.jina.ai text reader. The product page spec table matches ('12Vdc 150W (shared port)') and calls the panel port '2 Solar & Wind Input Port'. Wind also goes through a Wind Turbine Cable Adapter (sold separately). The guide does not say whether solar and wind can charge at the same time."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Which turbine: maker documents conflict",
+   "value": "The help center says 'the 350W wind turbine is compatible with the Lithium 6000, Powerhouse, and MyGrid systems'. The L6000 product page and manual list a 150 W, 12 Vdc wind input, and the bundle ships '1* 150W Wind Turbine'",
+   "source": "https://www.naturesgenerator.com/pages/help-center/natures-generator-350-w-wind-turbine",
+   "source_title": "Help Center and Product Support: Nature's Generator 350 W Wind Turbine",
+   "read": "2026-11-14",
+   "note": "The 150 W help-center page lists the 150 W turbine for 'Standard 1800, Lithium 1800, Elite and, Lithium 3600'. The L6000 product page (https://www.naturesgenerator.com/products/lithium-6000-solar-and-wind-generator, read 2026-11-14) lists 150 W and links a turbine manual whose filename is '300w_wind_turbine_user_manual_20250410.pdf'. Treat 150 W as the rated L6000 wind input until the maker resolves this."
+  },
+  {
+   "product": "Nature's Generator 150 W / 350 W Wind Turbine",
+   "label": "Connectors and mounting",
+   "value": "Turbine cable: weatherproof M19 3P connectors, 12 AWG copper. Wind input end: Anderson connectors. Yaw 'fits 1.5 Inch schedule 40 pipes or towers' (OD about 1.875–1.900 in). Tower must take 160 lb horizontal load; no plastic pipe. Rated 150 W / 350 W at 27 mph",
+   "source": "https://www.naturesgenerator.com/pages/help-center/natures-generator-150-w-wind-turbine",
+   "source_title": "Help Center and Product Support: Nature's Generator 150 W Wind Turbine",
+   "read": "2026-11-14",
+   "note": "The 350 W help page gives the same connector, pole and load figures."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Third-party turbine/panel terms",
+   "value": "'If you are not using Nature's Generator Wind Turbine, make sure the other wind turbine has similar specifications.' Same wording for third-party solar panels",
+   "source": "https://www.naturesgenerator.com/pages/manuals/natures-generator-lithium-3600",
+   "source_title": "Nature's Generator Lithium 3600 Power Station User Guide (manual page)",
+   "read": "2026-11-14",
+   "note": "The L6000 guide uses the same wording and adds a warranty exclusion: 'Damage to any covered components caused by use of an after-manufacture incompatible part' is not covered."
+  },
+  {
+   "product": "Nature's Generator L3600 / L6000",
+   "label": "Turbine availability",
+   "value": "'The wind turbine will ship separately in early December 2026 due to high demand.' All solar-and-wind bundle variants showed 'sold out or unavailable'",
+   "source": "https://www.naturesgenerator.com/products/lithium-3600-solar-and-wind-generator",
+   "source_title": "Lithium 3600 Solar and Wind Power Generator | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "The same shipping notice and sold-out status appear on https://www.naturesgenerator.com/products/lithium-6000-solar-and-wind-generator (read 2026-11-14). L3600 bundle prices shown: $2,339.99, $2,849.99 and $5,149.99 (with pod). L6000 bundle prices: $3,749.99 and $6,199.99."
+  },
+  {
+   "product": "Nature's Generator L3600 / L6000",
+   "label": "Max Power Pods",
+   "value": "L3600: 5 pods, 18,432 Wh total. L6000: 5 pods, 23,040 Wh total",
+   "source": "https://www.naturesgenerator.com/products/lithium-6000-solar-and-wind-generator",
+   "source_title": "Lithium 6000 with Solar Panels and Wind Turbine | Nature's Generator",
+   "read": "2026-11-14",
+   "note": "L6000 total from its spec table ('23,040Wh(w/ 5x Power Pod)'). L3600 total from its product-page spec table ('18,432Wh(w/ 5x Power Pod)') and the manual caption 'Maximum 5 Power Pods'."
+  }
+ ],
+ "unsourced": [
+  "Whether the L6000 can charge from solar on one input and wind on the other at the same time. Its guide says '1200W x2' and 'shared port' but does not say; the product-page Q&A was not checked for an L6000 answer.",
+  "Whether solar on an L3600 base and wind on an L3600 Power Pod can charge at the same time. The pod manual does not say.",
+  "L3600 wind input voltage and solar input voltage range. The L3600 manual page gives watts only; the 150 W turbine user-guide PDF (cdn.shopify.com .../HKNGWT-Users-Manual.pdf) downloaded but had no extractable text.",
+  "MyGrid 10K Gen 2 wind port rating and connector. I did not open its product page or manual within the tool budget.",
+  "Maker statements on wind charging for BLUETTI Elite 200 V2 and Apex 300 (I relied on our page's existing BLUETTI forum citation and did not re-open it).",
+  "Current prices from storecheck.py. The tool returned 'HTTP 0' for naturesgenerator.com, so bundle prices above come from the product pages read through the text reader."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 1.2018612999999996
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a lab measurement for any candidate. GearLab measured the BougeRV 23 Quart compressor cooler at 8.3 W steady state with 50 Wh used in the first 6 hours, which works out to about 400 Wh for 48 hours. GearLab also measured 950 Wh usable from the BLUETTI AC180 and 600–620 Wh from the EcoFlow RIVER 2 Pro. Set to 35°F, the BougeRV's inside actually measured 32°F on GearLab's iButton loggers, which is freezing for insulin.",
+ "standout": 2,
+ "standout_why": "I compared against Willrun (cited), GOES (cited) and our own Dealectric page. Willrun's runtimes all come from its own formula (Wh × 0.85 ÷ 11.04 W) and from Dometic's spec, and it says 'We did not test these stations with a cooler'. GOES names no product and gives no measurements. Our page divides rated Wh by an assumed 85% usable and uses Dometic's 265 Wh/day spec, also with no measurements. Neither ChatGPT answer cites a measured usable capacity, a measured fridge draw or a measured display error. Its '85% usable' guess is higher than the measured figures: 950/1,152 = 82% for the AC180 and 600/768 = 78% for the RIVER 2 Pro.",
+ "decides": "This confirms that a station of about 1 kWh plus a compressor fridge (the AC180 or similar) covers 48 hours with real margin. On measured figures the AC180 gives about 114 hours with the BougeRV in a 75°F room, and the RIVER 2 Pro about 72 hours. Using Dometic's 90°F spec (about 11 W, or about 530 Wh in 48 h), the RIVER 2 Pro's margin gets thin. The measurements rule out the ~300 Wh stations: Elite 30 V2, R600, T320, Yeti 300 and C300 DC. Even at full rated capacity, 288–300 Wh gives about 35 hours with the BougeRV. They also rule out thermoelectric coolers: GearLab measured the Wagan 24 L at 48.0 W, about 2,300 Wh over 48 hours, more than double the AC180's measured 950 Wh. The 32°F reading at a 35°F setting means the page should tell readers to set 39–41°F and use their own thermometer.",
+ "candidates": [
+  "BLUETTI AC180",
+  "EcoFlow RIVER 2 Pro",
+  "BougeRV 23 Quart",
+  "Dometic CFX3 25",
+  "ICECO GO20",
+  "BLUETTI Elite 30 V2",
+  "Wagan 12V 24L (thermoelectric, for contrast)"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable energy output",
+   "value": "950 Wh (82% efficiency; 18% under the rated 1,152 Wh)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180",
+   "source_title": "BLUETTI AC180 Review | GearLab (Kenji Mowrey, Jan 13, 2026)",
+   "read": "2026-11-13",
+   "note": "GearLab ran it on its light-bar test jig at 80% load until fully drained. This is an AC test; GearLab ran no 12 V port test."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable capacity",
+   "value": "1,030 Wh at a 350 W load; 1,360 Wh drawn from the wall for a 0–100% charge (about 80% charging efficiency)",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review | StorageReview (Kevin OBrien, May 26, 2023)",
+   "read": "2026-11-13",
+   "note": "An AC load, much heavier than a fridge's 8–11 W average. Low loads usually do worse because of the station's own draw."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured full-discharge output",
+   "value": "976 Wh",
+   "source": "https://www.digitaltrends.com/outdoors/bluetti-ac180-review/",
+   "source_title": "Bluetti AC180 review | Digital Trends (Simon Sage, Aug 3, 2023)",
+   "read": "2026-11-13",
+   "note": "Measured with an Emporia smart plug from 100% down. The review doesn't say which load or port. Across the three reviewers the range is 950–1,030 Wh."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Pro",
+   "label": "Measured usable energy output",
+   "value": "600 Wh in the text, 620 Wh in the spec table (78–81% of the rated 768 Wh)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-river-2-pro",
+   "source_title": "EcoFlow River 2 Pro Review | GearLab (Kenji Mowrey, Jan 13, 2026)",
+   "read": "2026-11-13",
+   "note": "The page conflicts with itself: 600 Wh in the text, 620 Wh in the table. It doesn't describe the test method, and there's no 12 V test. The ChatGPT plain chat assumed 85% usable (653 Wh), which is above both measured figures."
+  },
+  {
+   "product": "BougeRV 23 Quart",
+   "label": "Measured steady-state DC draw and energy used in first 6 h",
+   "value": "8.3 W average; 50 Wh in the first 6 h; 48.9 W while pulling down to 35°F",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/powered-cooler/bougerv-23-quart",
+   "source_title": "BougeRV 23 Quart Review | GearLab (Sam Schild, Jul 28, 2025)",
+   "read": "2026-11-13",
+   "note": "DC energy meter on a battery, in a room held at 75°F, cooler half full of room-temperature cans. My arithmetic for 48 h: 50 + 8.3 × 42 ≈ 400 Wh. With the AC180's 950 Wh: (950 − 50) / 8.3 + 6 ≈ 114 h. With the RIVER 2 Pro's 600 Wh: (600 − 50) / 8.3 + 6 ≈ 72 h. With a 288 Wh station even at full rating: (288 − 50) / 8.3 + 6 ≈ 35 h. A hot room would raise the draw."
+  },
+  {
+   "product": "BougeRV 23 Quart",
+   "label": "Measured display vs actual temperature",
+   "value": "3.0°F average display error; set to 35°F, the inside measured 32°F",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/powered-cooler/bougerv-23-quart",
+   "source_title": "BougeRV 23 Quart Review | GearLab (Sam Schild, Jul 28, 2025)",
+   "read": "2026-11-13",
+   "note": "Measured with iButton data loggers. For insulin, which must stay at 36–46°F and never freeze, set to 39–41°F and check with your own thermometer."
+  },
+  {
+   "product": "general (powered-cooler roundup)",
+   "label": "Measured DC draw, compressor vs thermoelectric",
+   "value": "Compressor coolers measured 5.8–10.8 W steady state (Anker EverFrost 40: 5.8 W; BougeRV 23 qt: 8.3 W). Thermoelectric: Wagan 12V 24L 48.0 W (288 Wh in 6 h); Cooluli 4L 45.7 W (274 Wh in 6 h)",
+   "source": "https://outdoorgearlab.com/topics/camping-and-hiking/best-powered-cooler",
+   "source_title": "Best Powered Coolers | GearLab (Genaveve Bradshaw et al., updated Jul 28, 2025)",
+   "read": "2026-11-13",
+   "note": "Energy meters on identical batteries, Wh logged after 6 h, room at 75°F. My arithmetic: the Wagan at 48 W uses about 2,300 Wh in 48 h, more than double the AC180's measured 950 Wh (about 20 h). The thermoelectric figures don't account for whether the cooler can hold a fridge temperature at all."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Maker-rated 12 V consumption (not a reviewer measurement)",
+   "value": "0.92 Ah/h at 12 V DC, 90°F ambient, 39°F inside; 6.5 A rated input at 12 V; listed at $699.99",
+   "source": "https://www.dometic.com/en-us/product/dometic-cfx3-25-9600028370",
+   "source_title": "Dometic CFX3 25 | Dometic US",
+   "read": "2026-11-13",
+   "note": "My arithmetic: 0.92 × 12 ≈ 11 W, about 265 Wh/day and 530 Wh in 48 h. Included as the hot-room reference point because no named reviewer measured the CFX3 25."
+  },
+  {
+   "product": "general (Dometic CFX3 larger models)",
+   "label": "Measured 48 h consumption, larger CFX3 units",
+   "value": "CFX3 55IM: 45.6 Ah in 48 h (0.95 Ah/h); CFX3 75DZ: 56.8 Ah in 48 h (1.18 Ah/h)",
+   "source": "https://trail4runner.com/2021/12/02/trail-tested-cfx3-power-consumption/",
+   "source_title": "Trail Tested: Dometic CFX3 Power Consumption Test | Trail4Runner (Max Sheehan, Dec 2, 2021, updated Dec 24, 2025)",
+   "read": "2026-11-13",
+   "note": "Measured with Victron SmartShunts, set to 34°F, lids kept shut. The article doesn't give the room temperature. Larger than the 25 L unit; shows the lid-shut draw falls slightly from day 1 to day 2."
+  }
+ ],
+ "unsourced": [
+  "A named measurement of the Dometic CFX3 25's 12 V draw. I found only Dometic's 0.92 Ah/h spec, a Camping Nerd table that reuses Dometic's own figures, and owner anecdotes. The Expedition Portal 12 V fridge test page returned 403.",
+  "A named measurement of the ICECO GO20's draw or runtime. I found only maker and retailer figures (45 W max; 'about 8.5 h on a 250 Wh pack at 75°F') and calculated estimates.",
+  "A measurement of the AC180's 12 V car-port output or its idle draw with only DC on. GearLab, StorageReview and Digital Trends tested AC output or didn't say. BLUETTI's 15 W self-consumption figure is for the AC inverter. Power Off Grid's reported 904 Wh (78%) DC test couldn't be opened (certificate error), so I left it out.",
+  "Named usable-capacity measurements for the BLUETTI Elite 30 V2, ALLPOWERS R600/P1800, Tenergy T320, Goal Zero Yeti 300 and Anker SOLIX C300 DC. I didn't search for these within the call budget; their rated 288–300 Wh already rules them out for 48 h by the arithmetic above.",
+  "Any reviewer measurement of a fridge's draw in a hot room (90°F or above) for the under-30 L models."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0672062
+ }
+}

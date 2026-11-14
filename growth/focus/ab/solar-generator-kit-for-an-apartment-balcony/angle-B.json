@@ -1,0 +1,158 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many hours of full sun each kit's own panel needs to refill its battery, or what each kit costs per Wh. Worked out from maker specs and today's maker-store prices: Elite 30 V2 + 100 W takes 2.9 h at $1.70/Wh, DELTA 3 Classic + 220 W takes 4.7 h at $0.65/Wh, AC180 + 200 W takes 5.8 h at $0.67/Wh, and AC180 + 100 W takes 11.5 h (about 3 days at 4 peak-sun hours) at $0.59/Wh.",
+ "standout": 2,
+ "standout_why": "Compared against three pages. powerstationgearlab.com (cited) names no panel wattage and gives only wall-charge times. flowersofvice.com (cited) has one figure close to this: Jackery's own 7.5 h estimate for the 1000 v2 with one 200 W panel. It also has a general 800 Wh/day example for a 200 W panel, but no per-kit refill hours and no cost per Wh. wattfolk.com reviews panels only, with no batteries, and works out yearly kWh and payback, not refill time. urbangridbackup.com (cited) would not open (TLS certificate error), so I can't rule out that it has this. ChatGPT's own answer gives a daily kWh per panel size but never relates it to any kit's battery.",
+ "decides": "It supports the DELTA 3 Classic + 220 W as the pick: it is the cheapest of the kits that refill in under 5 rated-sun hours, at $0.65/Wh and $669 on EcoFlow's US store today, which is less than the $729 Best Buy card ChatGPT showed. It also shows that the AC180 + 100 W kit on our current page needs about 3 sunny balcony days to refill. So we should list AC180 + 200 W ($769, 5.8 h) instead. The Elite 30 V2 + 100 W refills fastest (2.9 h) but costs about 2.6× more per Wh, so it is the small-battery pick for daily top-ups, not for outage backup.",
+ "candidates": [
+  "EcoFlow DELTA 3 Classic + 220W",
+  "Jackery Solar Generator 1000 v2 (200W)",
+  "BLUETTI AC180 + 200W",
+  "BLUETTI AC180 + SP100L 100W",
+  "BLUETTI Elite 30 V2 + 100W",
+  "BLUETTI Elite 30 V2 + 60W",
+  "Anker SOLIX C300 + 60W"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W",
+   "label": "Kit price, EcoFlow US store",
+   "value": "$669.00, in stock",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-14",
+   "note": "Read through the store's Shopify search JSON. The kit text describes a bifacial panel with a 30–60° bracket, which matches EcoFlow's 'NextGen 220W Bifacial Portable Solar Panel' listing ($449, out of stock alone). The product page itself returned HTTP 429, so I could not confirm the panel wattage on the kit page."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W",
+   "label": "Battery capacity",
+   "value": "1,024 Wh",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-14",
+   "note": "From the product title in EcoFlow's store JSON. The standalone unit is $459."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W",
+   "label": "Rated-sun hours to refill from kit panel",
+   "value": "4.7 h",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 220 W = 4.65 h. This is a floor at the panel's full rated output, before losses."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W",
+   "label": "Cost per Wh",
+   "value": "$0.65/Wh",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-14",
+   "note": "$669 ÷ 1,024 Wh = $0.653/Wh"
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W",
+   "label": "Share of battery refilled in one balcony day",
+   "value": "86%",
+   "source": "https://flowersofvice.com/best-balcony-solar-kits-for-apartments/",
+   "source_title": "Best Balcony Solar Kits for Apartments in 2026: 3 U.S.-Available Options – Flowers of Vice",
+   "read": "2026-11-14",
+   "note": "Uses Flowers of Vice's assumption of 4 effective peak-sun hours: 220 W × 4 h = 880 Wh; 880 ÷ 1,024 = 0.86, before losses."
+  },
+  {
+   "product": "BLUETTI AC180 + 200W",
+   "label": "Kit price, BLUETTI US store",
+   "value": "$769.00 (compare-at $899), in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Variant 'AC180+200W Solar'. The AC180 alone is $499."
+  },
+  {
+   "product": "BLUETTI AC180 + 200W",
+   "label": "Rated-sun hours to refill / cost per Wh",
+   "value": "5.8 h / $0.67 per Wh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "1,152 Wh ÷ 200 W = 5.76 h; $769 ÷ 1,152 Wh = $0.668/Wh"
+  },
+  {
+   "product": "BLUETTI AC180 + SP100L 100W",
+   "label": "Kit price, BLUETTI US store",
+   "value": "$679.00, in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Variant 'AC180+SP100L | 1800W,1152Wh,100W Solar Kit'. Our current page says $649, which is now out of date."
+  },
+  {
+   "product": "BLUETTI AC180 + SP100L 100W",
+   "label": "Rated-sun hours to refill / balcony days / cost per Wh",
+   "value": "11.5 h / about 2.9 days / $0.59 per Wh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "1,152 ÷ 100 = 11.52 h; 11.52 ÷ 4 peak-sun h (Flowers of Vice assumption) = 2.88 days; $679 ÷ 1,152 = $0.589/Wh"
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100W",
+   "label": "Kit price, capacity, solar cap, weight",
+   "value": "$489.99; 288 Wh; 200 W max solar input; 4.3 kg (9.5 lb)",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar",
+   "read": "2026-11-14",
+   "note": "Page text: 'Solar Panels: 200W Max., 2.2H'. That 2.2 h figure is for a 200 W input, not for the 100 W panel in this kit."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100W",
+   "label": "Rated-sun hours to refill / cost per Wh / Wh per lb",
+   "value": "2.9 h / $1.70 per Wh / 30 Wh per lb",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar",
+   "read": "2026-11-14",
+   "note": "288 ÷ 100 = 2.88 h; $489.99 ÷ 288 = $1.70/Wh; 288 Wh ÷ 9.48 lb = 30.4 Wh/lb (power station only)"
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 60W",
+   "label": "Kit price / rated-sun hours to refill / cost per Wh",
+   "value": "$399.99 / 4.8 h / $1.39 per Wh",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-60w-solar",
+   "source_title": "Elite 30 V2+60W Solar",
+   "read": "2026-11-14",
+   "note": "Price from BLUETTI store JSON. 288 ÷ 60 = 4.8 h; $399.99 ÷ 288 = $1.389/Wh"
+  },
+  {
+   "product": "Jackery Solar Generator 1000 v2 (200W)",
+   "label": "Jackery's own full-charge estimate with one 200 W panel",
+   "value": "about 7.5 h",
+   "source": "https://flowersofvice.com/best-balcony-solar-kits-for-apartments/",
+   "source_title": "Best Balcony Solar Kits for Apartments in 2026: 3 U.S.-Available Options – Flowers of Vice",
+   "read": "2026-11-14",
+   "note": "Flowers of Vice: 'Jackery estimates roughly 7.5 hours for a full charge with one 200W panel under favorable conditions.' Jackery.com returned HTTP 429, so I could not open the maker page. A cited rival already has this figure."
+  },
+  {
+   "product": "Anker SOLIX C300",
+   "label": "Price, capacity, recommended panel, Anker US store",
+   "value": "$429.99 (power station only); 288 Wh; Anker recommends a 100 W or 60 W panel",
+   "source": "https://us.ankersolix.com/products/c300",
+   "source_title": "Anker SOLIX C300 Portable Power Station - 288Wh | 300W",
+   "read": "2026-11-14",
+   "note": "From Anker's store search JSON. Anker's US store search showed no C300 + 60 W bundle. With a 60 W panel: 288 ÷ 60 = 4.8 rated-sun h."
+  }
+ ],
+ "unsourced": [
+  "Jackery Solar Generator 1000 v2 (200W) price and specs (1,070 Wh, max solar input, weight): jackery.com returned HTTP 429 on every try, and the AU manual PDF had no text WebFetch could read. Without these I can't compute its cost per Wh.",
+  "Anker SOLIX C300 + 60W bundle at $399.99 (ChatGPT card): Anker's US store search had no such bundle, and the retailer page wasn't opened.",
+  "Max solar input and weight for the EcoFlow DELTA 3 Classic and BLUETTI AC180: maker product pages returned HTTP 429. That stopped me computing Wh per lb for those two; the input caps don't limit the 100–220 W panels in these kits.",
+  "Whether EcoFlow's $669 kit page states the 220 W panel wattage itself: only the store JSON text could be read, and the page returned HTTP 429.",
+  "urbangridbackup.com (the top cited result): WebFetch hit a TLS certificate error and the curl fallback was not approved, so I don't know whether it already gives refill hours or cost per Wh.",
+  "A named, measured figure for how much a railing-mounted (vertical) balcony panel loses versus rated output: not searched within the call budget. The refill hours above are therefore floors at rated output."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0110848
+ }
+}

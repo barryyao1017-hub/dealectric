@@ -1,0 +1,121 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab measured a 37 W inverter-on idle draw and 83% efficiency on ChatGPT's own pick, the PECRON F3000LFP. With those figures the PECRON's 3,072 Wh lasts about 11.4 h, short of 12 h, under ChatGPT's own assumption of an 800 W pump at 25% duty. RunTimeFit's '~16 hours' left idle draw out. Notebookcheck measured the BLUETTI Elite 300 at 2,650 Wh delivered at about 200 W, and named-tester figures put the EcoFlow DELTA Pro 3 at about 17 h and the Anker SOLIX F3800 Plus at about 15 h on the same assumption.",
+ "standout": 3,
+ "standout_why": "Compared against the cited pages runtimefit.com (says outright that its runtimes come from maker specs and leave idle draw out), outagereadyhq.com ('We have not run these units with a sump pump ourselves'; assumes 85% usable) and homebatteryreport.com ('We have not lab-tested these units'), plus amphourly.com from the top results (assumes 85% usable, no idle draw). testedwatts.com (cited) would not load because of a certificate error, so it is unchecked. solarpowerauditor.com was a result but was not cited. It has Scott Caine's measured idle and usable Wh for the DELTA Pro 3 and F3800 Plus only. It has nothing for the PECRON or the Elite 300, and it never works out the 12-hour sump case. None of these pages has a measured idle draw or measured usable energy for the PECRON F3000LFP, which is the product ChatGPT recommended.",
+ "decides": "This changes the pick. The PECRON F3000LFP that ChatGPT recommended loses about 333 Wh to its 37 W idle draw over the 9 hours the pump is off, so it falls short of 12 h at 25% duty with an 800 W pump (about 11.4 h). Even with RunTimeFit's own 650 W pump it reaches only about 13.7 h, not 16 h. On named-tester measurements the EcoFlow DELTA Pro 3 is the safe 12-hour choice: Scott Caine measured 3,772 Wh usable and 34 W idle (about 16.9 h), and The Solar Lab ran it at 5,100 W surge for nearly a minute. The Anker SOLIX F3800 Plus is next (3,448 Wh, 38 W idle, about 15.3 h). The Elite 300 gets past 12 h on energy, but its 4,800 W lifting rating applies to resistive loads only. Nobody measured a motor start on any candidate, so pump starting stays a spec-sheet question. None of this changes the literal 13 HP reading, which no portable station covers.",
+ "candidates": [
+  "PECRON F3000LFP",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "Jackery Explorer 5000 Plus"
+ ],
+ "findings": [
+  {
+   "product": "PECRON F3000LFP",
+   "label": "Idle draw, inverter on, no load (The Solar Lab)",
+   "value": "37 W",
+   "source": "https://www.thesolarlab.com/review/pecron-f3000lfp-review",
+   "source_title": "Pecron F3000LFP portable power station review · The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Measured with only the inverter on, after charging to 100% and draining. The page shows no review date or author. Over the 9 h an 800 W pump is off at 25% duty: 9 × 37 = 333 Wh."
+  },
+  {
+   "product": "PECRON F3000LFP",
+   "label": "AC discharge efficiency (The Solar Lab)",
+   "value": "83% at a sustained 3,600 W, full to empty",
+   "source": "https://www.thesolarlab.com/review/pecron-f3000lfp-review",
+   "source_title": "Pecron F3000LFP portable power station review · The Solar Lab",
+   "read": "2026-11-13",
+   "note": "3,072 Wh × 0.83 ≈ 2,550 Wh delivered. Our arithmetic, 800 W pump at 25% duty: per hour 0.25 × 800 / 0.83 + 0.75 × 37 = 241 + 27.75 = 268.7 Wh, so 3,072 / 268.7 ≈ 11.4 h. With RunTimeFit's 650 W: 195.8 + 27.75 = 223.5 Wh per hour, about 13.7 h (RunTimeFit says about 16 h). The efficiency was measured at full load, and low-load efficiency may differ."
+  },
+  {
+   "product": "PECRON F3000LFP",
+   "label": "Surge hold (The Solar Lab)",
+   "value": "4,500 W for about 10 s, then tripped and needed a restart",
+   "source": "https://www.thesolarlab.com/review/pecron-f3000lfp-review",
+   "source_title": "Pecron F3000LFP portable power station review · The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The test appliance is not named. This was not a motor-start test."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Usable AC energy and idle draw (Scott Caine, Solar Power Auditor)",
+   "value": "3,772 Wh (92.1% of 4,096 Wh) at a constant 300 W; 34 W idle with the inverter on",
+   "source": "https://solarpowerauditor.com/home-backup/ecoflow-delta-pro-3-vs-anker-solix-f3800/",
+   "source_title": "EcoFlow Delta Pro 3 vs Anker SOLIX F3800 Plus, Tested · Solar Power Auditor",
+   "read": "2026-11-13",
+   "note": "Page dated 2026-10-06; the author says these are his own measurements. Our arithmetic, 800 W at 25% duty: 0.25 × 800 / 0.921 + 0.75 × 34 = 217.2 + 25.5 = 242.7 Wh per hour, so 4,096 / 242.7 ≈ 16.9 h. Measured overload trip point: 5,900 W."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured energy output (OutdoorGearLab, Kenji Mowrey)",
+   "value": "3,790 Wh of 4,096 Wh rated",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 Review · OutdoorGearLab",
+   "read": "2026-11-13",
+   "note": "Review dated 2026-01-13. The test load is not stated. Idle draw is not reported."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Surge and efficiency (The Solar Lab)",
+   "value": "5,100 W for nearly a minute before shutdown; 89% efficiency at a sustained 3,650 W for 60 min",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-3-review",
+   "source_title": "EcoFlow DELTA Pro 3 review · The Solar Lab",
+   "read": "2026-11-13",
+   "note": "No date or author on the page. The appliance is not named, and this was not a motor-start test."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Usable AC energy and idle draw (Scott Caine, Solar Power Auditor)",
+   "value": "3,448 Wh (89.8% of 3,840 Wh) at a constant 300 W; 38 W idle with the inverter on",
+   "source": "https://solarpowerauditor.com/home-backup/ecoflow-delta-pro-3-vs-anker-solix-f3800/",
+   "source_title": "EcoFlow Delta Pro 3 vs Anker SOLIX F3800 Plus, Tested · Solar Power Auditor",
+   "read": "2026-11-13",
+   "note": "Page dated 2026-10-06. Our arithmetic, 800 W at 25% duty: 0.25 × 800 / 0.898 + 0.75 × 38 = 222.7 + 28.5 = 251.2 Wh per hour, so 3,840 / 251.2 ≈ 15.3 h. Measured overload trip point: 8,800 W."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Usable AC energy and efficiency (Notebookcheck, Marcus Schwarten)",
+   "value": "About 2,650 Wh at a steady load just over 200 W (just under 88%); just over 92% at 1,800 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review · Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Published 2026-03-09, updated 2026-10-05. Notebookcheck tested the EU version and says it 'differs slightly from the US version'. A steady 200 W is the same average as an 800 W pump at 25% duty, which gives 2,650 / 200 ≈ 13.2 h."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "About 15 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review · The Solar Lab",
+   "read": "2026-11-13",
+   "note": "No date or author on the page. The page also gives about 86% efficiency and 'surge performance up to 3,900W', with no appliance named. Idle draw is less than half the PECRON's 37 W."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Output energy and UPS switchover (StorageReview, Dylan Bryan)",
+   "value": "2.67 kWh delivered, 0 to depleted (Kill-A-Watt); 8 ms line-to-battery switchover, 8.25 ms battery-to-line (Quarch analyzer)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3014Wh, 2400W and an 8ms UPS Switchover in a 58-Pound Box · StorageReview",
+   "read": "2026-11-13",
+   "note": "Dated 2026-08-27; the US unit. StorageReview notes that the 4,800 W Power Lifting rating applies to resistive loads only. No motor-start test."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS R4000: measured usable Wh, idle draw or surge by a named reviewer. The search found only spec sheets and promotional reviews with no bench numbers.",
+  "Jackery Explorer 5000 Plus: measured usable Wh or idle draw. Not searched within the tool budget.",
+  "A measured sump-pump or other motor start (inrush watts or amps) on any candidate. No named reviewer reported one, and every surge figure found came from an unnamed load.",
+  "PCMag's original Anker SOLIX F3800 Plus review. Only a syndicated copy on now.solar was reachable (30–40 W background draw; 4,248 Wh with an expansion battery attached), so it is not used.",
+  "testedwatts.com (cited by ChatGPT) could not be read because of a certificate error. Whether it gives measured idle draw is unchecked.",
+  "Idle draw for the DELTA Pro 3 from The Solar Lab or OutdoorGearLab: neither reports it. Only Solar Power Auditor gives a figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9815294999999999
+ }
+}

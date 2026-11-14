@@ -1,0 +1,86 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a 65 W USB-C charge at 20 V needs 3.25 A, and that USB-C requires any cable carrying more than 3 A to be electronically marked. So with an ordinary unmarked 3 A cable, a 65 W travel charger can deliver at most 60 W (20 V × 3 A) to the laptop.",
+ "standout": 2,
+ "standout_why": "I opened smartgadgetkit's UGREEN Nexode 65W travel review (cited) and best-batteries' Nexode 65W review (cited). They cover the 100–240 V input, the 45 + 20 W and 45 + 8.5 + 8.5 W splits, how the plug heads click in and release, the micro-cutouts with three devices, and 91.6 % efficiency. Neither says anything about cable current rating, e-markers or the 60 W ceiling of a 3 A cable. ChatGPT's own answers repeat the input range and the power split but never mention the cable. I scored it 2, not 3: I could not open a UGREEN page to confirm that the 90409 offers a 20 V 3.25 A step or that its box has no cable.",
+ "decides": "It does not change the UGREEN Nexode 65W travel pick. It adds a condition to it: to get the full 65 W into a laptop, pair it with a 5 A (e-marked) USB-C cable. Otherwise the most the laptop can get is 60 W. It would favour a kit that ships with a 5 A cable, but I could not open any candidate page that rates its included cable.",
+ "candidates": [
+  "UGREEN Nexode 65W 3-Port Travel Charger (90409)",
+  "j5create JUP3565 65W GaN 3-Port Traveler Charger",
+  "Native Union Fast GaN Charger PD 67W (international)",
+  "KUXIU 65W UltraSlim GaN with EU/UK adapters",
+  "Verbatim 65W 3-Port GaN Wall Charger (32201)",
+  "D-Link DCP-651 65W GaN",
+  "Xtorm 65W Fast Travel Charger kit"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "USB-C cables rated above 3 A must carry an electronic marker",
+   "value": "Cables are required to be electronically marked if full-featured and/or rated above 3 A",
+   "source": "https://ti.com/document-viewer/lit/html/SSZTBJ8/GUID-61351F5F-3B46-4F6A-A613-320B3A36C17A",
+   "source_title": "SSZTBJ8 Technical article | TI.com (Brian Gosselin, Nate Enos)",
+   "read": "2026-11-13",
+   "note": "TI's wording: 'cables are required to be electronically marked if they are either full-featured and/or rated at more than 3A current.' On USB 2.0 Type-C cables: 'May be electronically marked (required if cable supports >3A)'."
+  },
+  {
+   "product": "general",
+   "label": "How the charger learns what the cable can carry",
+   "value": "An e-marked cable reports its characteristics to the charger over USB PD",
+   "source": "https://ti.com/document-viewer/lit/html/SSZTBJ8/GUID-61351F5F-3B46-4F6A-A613-320B3A36C17A",
+   "source_title": "SSZTBJ8 Technical article | TI.com (Brian Gosselin, Nate Enos)",
+   "read": "2026-11-13",
+   "note": "TI's wording: 'Electronically marked cables use USB PD to provide the cable's characteristics.' Arithmetic: 65 W ÷ 20 V = 3.25 A, which is more than 3 A, so the full 65 W at 20 V needs an e-marked 5 A cable. On a 3 A cable the limit is 20 V × 3 A = 60 W."
+  },
+  {
+   "product": "UGREEN Nexode 65W travel (90409)",
+   "label": "Input range",
+   "value": "100–240 V, 50–60 Hz",
+   "source": "https://smartgadgetkit.com/ugreen-nexode-65w-travel-charger-review/",
+   "source_title": "UGREEN Nexode 65W travel charger review: 3-Plug USB-C | Smart Gadget Kit",
+   "read": "2026-11-13",
+   "note": "The spec table credits UGREEN. A rival page already states this, so it is not new."
+  },
+  {
+   "product": "UGREEN Nexode 65W travel (90409)",
+   "label": "Power split",
+   "value": "45 W + 20 W on two USB-C; 45 + 8.5 + 8.5 W with all three ports",
+   "source": "https://smartgadgetkit.com/ugreen-nexode-65w-travel-charger-review/",
+   "source_title": "UGREEN Nexode 65W travel charger review: 3-Plug USB-C | Smart Gadget Kit",
+   "read": "2026-11-13",
+   "note": "The page credits these figures to iMore. A rival page already has them."
+  },
+  {
+   "product": "UGREEN Nexode 65W travel (90409)",
+   "label": "Plug head mechanism",
+   "value": "US (foldable), UK and EU heads that click on and release with a button",
+   "source": "https://smartgadgetkit.com/ugreen-nexode-65w-travel-charger-review/",
+   "source_title": "UGREEN Nexode 65W travel charger review: 3-Plug USB-C | Smart Gadget Kit",
+   "read": "2026-11-13",
+   "note": "Spec table: 'interchangeable with button release'. A rival page already has this."
+  },
+  {
+   "product": "UGREEN Nexode 65W (travel-plug version)",
+   "label": "Charging stability with three devices",
+   "value": "Best Batteries reports 'brief but real charging micro-cutouts' that recur when three devices are connected; it also gives 91.6 % conversion efficiency and about 62 W reaching a laptop on a single port",
+   "source": "https://en.best-batteries.com/reviews/ugreen-nexode-65w-charger/",
+   "source_title": "Ugreen Nexode 65W: review and price - Best Batteries",
+   "read": "2026-11-13",
+   "note": "This rival page was cited in a ChatGPT answer, so it is not new. The review does not name the cable it used."
+  }
+ ],
+ "unsourced": [
+  "UGREEN 90409 per-port output steps, i.e. whether USB-C1 offers 20 V⎓3.25 A and what its PPS range is. UGREEN's US, UK, EU and CA product pages and the storecheck tool all returned HTTP 429. The manuals.plus copy of the manual returned 403. The Hornbach datasheet PDF is image-only. The homescreen.pl and scom.hu retailer pages returned no specs or a 404.",
+  "Whether the UGREEN 90409 box includes a USB-C cable, and its rating. The same UGREEN pages were blocked (HTTP 429).",
+  "The USB Type-C specification's own wording. The usb.org R2.0 PDF is larger than the 10 MB fetch limit, so I used TI's technical article instead.",
+  "Current rating of the cable included with the Xtorm 65W kit and the j5create JUP3565. The Xtorm page returned 429, and I did not reach a j5create page within budget.",
+  "Native Union 67W, KUXIU 65W UltraSlim, Verbatim 32201 and D-Link DCP-651 output steps and cable ratings. Not reached within the tool-call budget.",
+  "Prices for every candidate today. UGREEN, Xtorm and Staples.ca all returned HTTP 429, so I recorded no price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2231571999999997
+ }
+}

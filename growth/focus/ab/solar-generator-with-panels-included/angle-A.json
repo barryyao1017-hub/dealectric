@@ -1,0 +1,113 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the second, bigger AC number on these kits is a different thing at each maker: Jackery and EcoFlow give a surge figure and Anker a peak figure, while EcoFlow's X-Boost (2,600 W on the DELTA 3 Classic) and BLUETTI's 2,700 W Power Lifting are separate modes, and BLUETTI's page gives the AC180 no surge figure at all. None notes that EcoFlow rates the DELTA 3 Max at 2,400 W continuous, not the 3,000 W ChatGPT printed (3,000 W is the DELTA 3 Max Plus).",
+ "standout": 2,
+ "standout_why": "Lights On Labs (cited) gives one 'Output' number per kit and doesn't say whether it is continuous or surge, and it gives no cycle life. StormWatts (cited) covers solar voltage limits and series or parallel wiring, so that angle is already taken, but it gives no AC continuous or surge figures and no cycle life. PowerSized (cited) gives no continuous/surge split, no Power Lifting and no cycle life. SolutionEnergy (cited) already has part of the cycle-life story: it says Jackery rates the 1000 v2 'for 4,000 cycles to 70%, not 80%' while the others use 80%. It gives rated and surge figures but never mentions X-Boost or Power Lifting. So the cycle-endpoint point is only partly new (a 1). The AC-number normalisation and the DELTA 3 Max correction appear on none of the pages I opened.",
+ "decides": "It confirms rather than changes the picks for 1 kWh kits. The DELTA 3 Classic and AC180 both say 1,800 W, but the higher number behind that 1,800 W is surge (3,600 W) or the X-Boost mode (2,600 W) on the EcoFlow and Power Lifting mode (2,700 W) on the BLUETTI. Jackery (3,000 W on the 1000 v2, per SolutionEnergy) and Anker (3,000 W peak on the C1000 Gen 2) also give surge or peak figures. Because the BLUETTI page gives no surge figure at all, the EcoFlow and Anker kits are the ones whose motor-start headroom is actually stated. The finding corrects ChatGPT's 'best overall' DELTA 3 Max card: it's a 2,400 W continuous / 4,800 W surge station, which drops it below the Jackery HomePower 3000's 3,600 W continuous rating. On cycle life, Jackery's store copy now says '6,000+ cycles' without saying to what capacity, while Anker and EcoFlow state 80%. A shopper can't rank Jackery on longevity from those numbers.",
+ "candidates": [
+  "Jackery Solar Generator HomePower 3000 (2 × SolarSaga 200 W)",
+  "Jackery Solar Generator 2000 v2 (2 × SolarSaga 200 W)",
+  "Jackery Solar Generator HomePower 2000 Plus v2",
+  "EcoFlow DELTA 3 Classic Solar Generator (220 W)",
+  "EcoFlow DELTA 3 Max Solar Generator",
+  "Anker SOLIX C1000 Gen 2 + 200 W panel",
+  "BLUETTI AC180 + 200 W"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Max Solar Generator",
+   "label": "AC continuous / surge / X-Boost",
+   "value": "2,400 W continuous, 4,800 W surge, X-Boost up to 3,400 W; $1,329 (compare-at $1,998)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Max Solar Generator",
+   "read": "2026-11-13",
+   "note": "Read through the store's search API. The text says 'DELTA 3 Max (2048Wh) 1. 2400W Powerful Output: 4800W surge output. With X-Boost mode, it supports heavy-duty appliances up to 3400W'. The DELTA 3 Max Plus listing at https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-solar-generator says 'DELTA 3 Max Plus: 3000W AC output (6000W surge)… DELTA 3 Max: 2400W AC output (4800W surge)'. Two ChatGPT chats showed the DELTA 3 Max at '3,000W output'."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic Solar Generator",
+   "label": "AC continuous / surge / X-Boost; price; warranty",
+   "value": "1,800 W continuous, 3,600 W surge, X-Boost up to 2,600 W; $669; 3-year standard warranty + 2-year extension with app registration",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-13",
+   "note": "Read through the store's search API. The text says '1800W AC output (3600W surge) with X-Boost tech powers devices up to 2600W'. Price $669 with no compare-at. Our current page shows $729 at a different URL, and ChatGPT's cards showed $699–$729."
+  },
+  {
+   "product": "EcoFlow DELTA 3 / DELTA 3 Plus (Solar Generator PV110W)",
+   "label": "Cycle-life endpoint; station vs panel warranty",
+   "value": "3,000+ cycles to 80% of original capacity; station 5-year warranty, 110 W panel 12 months",
+   "source": "https://us.ecoflow.com/products/delta-3-series-solar-generator-pv110w",
+   "source_title": "EcoFlow DELTA 3 Series Solar Generator (PV110W)",
+   "read": "2026-11-13",
+   "note": "Store text: '10 years of daily use until hitting 80% of its original capacity… 3000+ cycles'. Also: 'DELTA 3 Plus/DELTA 3 includes a 5-year warranty and 12 months for the 110W Portable Solar Panel'. A kit's headline warranty covers the station, not the panel. $799."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle-life endpoint; AC continuous / peak; solar input",
+   "value": "4,000 cycles to at least 80%; 2,000 W continuous, 3,000 W peak; solar 600 W max, 11–28 V at 8.2 A or 29–60 V at 14.5 A",
+   "source": "https://www.ankersolix.com/products/c1000-gen2?variant=61869573308746",
+   "source_title": "Anker SOLIX C1000 Gen 2",
+   "read": "2026-11-13",
+   "note": "Quotes: 'After 4,000 cycles, the battery still has at least 80% capacity' and '3,000W Peak Output'. The page names no boost mode and no warranty length (only 'Hassle-Free Warranty'). No price was rendered for the station or the 200 W panel option."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC continuous / second figure; cycles; price",
+   "value": "1,800 W AC; 2,700 W 'Power Lifting Mode' (no surge figure on the page); '3500+ Cycles' with no % stated; AC180+200W Solar $769, station $499",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Store search text: '1,800W AC Output / 2,700W Power Lifting Mode'. The rendered page showed 'out of stock, restock late November', but the store API reported available=true. Check before publishing. Station warranty is 5 years. The page states no panel warranty."
+  },
+  {
+   "product": "Jackery Solar Generator 2000 v2",
+   "label": "AC continuous / surge; price",
+   "value": "2,200 W continuous, 4,400 W surge; $1,239 (compare-at $1,899), pre-order, ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2",
+   "read": "2026-11-13",
+   "note": "Read through the store's search API because the page itself returned HTTP 429. Text: '2200W continuous output (4400W surge)'."
+  },
+  {
+   "product": "Jackery Solar Generator HomePower 3000",
+   "label": "AC continuous / surge; price",
+   "value": "3,600 W continuous, up to 7,200 W surge; $1,499 (compare-at $2,329), ships from Nov 28; 5-year warranty",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-homepower-3000",
+   "source_title": "Jackery Solar Generator HomePower 3000",
+   "read": "2026-11-13",
+   "note": "Store search API text: 'Delivers 3600W continouous output (up to 7200W surge)', 'Estimated to ship starting Nov. 28', 'a 5-year warranty'. ChatGPT showed $1,799–$1,899, and Lights On Labs showed $1,799."
+  },
+  {
+   "product": "Jackery Solar Generator HomePower 2000 Plus v2",
+   "label": "Cycle claim without endpoint; price",
+   "value": "'6000+ LFP battery cycles' with no capacity % given; $1,299 (compare-at $3,529), pre-order, ships Nov 30",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-homepower-2000-plus-v2",
+   "source_title": "Jackery Solar Generator HomePower 2000 Plus v2",
+   "read": "2026-11-13",
+   "note": "Store search API text. Jackery's HomePower 1000 v2 and Explorer 1500 v2 listings also say '6,000+ cycles' with no endpoint. Anker and EcoFlow state 80% (see above). SolutionEnergy says Jackery's own 1000 v2 rating is 4,000 cycles to 70%, so Jackery's cycle counts can't be compared with the others."
+  },
+  {
+   "product": "Jackery Solar Generator 1000 v2",
+   "label": "Cycle-life endpoint (rival page, already cited by ChatGPT)",
+   "value": "4,000 cycles to 70%; 1,500 W (3,000 W surge)",
+   "source": "https://solutionenergy.com/portable-power/solar-generators/",
+   "source_title": "Best Solar Generators 2026: 6 Kits - SolutionEnergy",
+   "read": "2026-11-13",
+   "note": "This is a cited rival, not a maker page. Quote: 'rates its battery for 4,000 cycles to 70%, not 80%'. It's recorded here because it lowers the standout score for the cycle-life part of this angle. Searching the Jackery store on 2026-11-13 no longer returned a 'Solar Generator 1000 v2' listing, only HomePower 1000 v2 / 1000 Plus v2 kits."
+  }
+ ],
+ "unsourced": [
+  "The capacity % behind the Jackery Explorer 2000 v2 and HomePower 3000 cycle ratings. Search snippets say '4000 cycles to 70%+ capacity', but jackery.com returned HTTP 429 on every page fetch, the store API text doesn't include the spec table, and the T3 and Outbound Power pages didn't load.",
+  "The capacity % behind BLUETTI's '3500+ cycles' for the AC180. The AC180 manual PDFs (Shopify CDN and Lowe's) came back as unreadable compressed binary, and the bluettipower.com page showed no %.",
+  "What BLUETTI Power Lifting and EcoFlow X-Boost actually do (which loads, and whether output voltage is reduced). The makers' manuals didn't load as text, so the table can only state that these are named modes and not surge figures.",
+  "Warranty length for the SolarSaga 200 W, BLUETTI 200 W and Anker 200 W panels sold in the kits. Only EcoFlow's 12-month figure (for the 110 W panel) was on an opened page.",
+  "Prices for the Anker C1000 Gen 2 and the 200 W panel bundle on ankersolix.com. The page didn't render prices.",
+  "EcoFlow DELTA 3 Classic and DELTA 3 Max cycle-life endpoints. us.ecoflow.com product pages returned HTTP 429, and the store API text for those two listings has no cycle figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.4298476999999998
+ }
+}

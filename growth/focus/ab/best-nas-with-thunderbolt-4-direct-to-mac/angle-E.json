@@ -1,0 +1,121 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a reviewer-measured Thunderbolt transfer speed for any QNAP model. StorageReview measured the TBS-h574TX at 1,929 MB/s write and about 1,850 MB/s read from an M1 Max MacBook Pro, and said that saturated the 20 Gbps link. Club386 measured the TVS-h874T at 1.3 GB/s copying a 20 GB file from a PC. Set next to MacSources' 396/369 MB/s for an HDD-filled DXP6800 Pro on an M4 MacBook Pro, these numbers show the 20 Gbps Thunderbolt link only pays off with flash storage.",
+ "standout": 2,
+ "standout_why": "Rival pages compared: the cited QNAP US product pages for the TVS-h674T and TVS-h874T, which give only 'maximum bandwidth of 20 Gbps' with no test conditions, and UGREEN's cited blog at ai.ugreen.com, which gives the 40 Gbps interface rate plus generic per-drive ranges (HDD 200–260 MB/s, 4-drive RAID 5 600–700 MB/s) and says it has no measured Mac results. UGREEN's Knowledge Center articles 607 and 609 load their text by script and returned nothing I could read. One chat quoted QNAP's own figure of about 1,400 MB/s for the TBS-h574TX, which is a vendor number. The ITdaily TVS-h874T review that ChatGPT got has no measured figures, and the Notebookcheck DXP6800 Pro review it got didn't test Thunderbolt. Neither StorageReview's TBS-h574TX Mac measurement nor Club386's TVS-h874T measurement appears in any of the results. Two weaker points: MacSources (DXP6800 Pro over Thunderbolt to a Mac) and Liliputing (DXP480T Plus) were both in ChatGPT's results without being cited, so those two figures are new to the answers but not to the results.",
+ "decides": "This confirms the TBS-h574TX as the pick for someone who wants the direct Thunderbolt link to be fast. It is the only candidate with a named reviewer's measurement on a Mac that reaches the 20 Gbps (about 2.5 GB/s raw) ceiling: 1,929 MB/s. The all-flash DXP480T Plus came close at 1.42–1.51 GB/s (Liliputing, measured on a PC). The HDD-bay DXP6800 Pro, which ChatGPT kept recommending for capacity, measured only 396 MB/s write and 369 MB/s read on an M4 MacBook Pro with four HDDs in RAID 10 (MacSources). That is slower than its own 10GbE port, which Notebookcheck measured at 9.5 Gbit/s, about 1.19 GB/s. So for HDD arrays, Thunderbolt is a no-switch convenience, not a speed upgrade. Plain 10GbE does as well unless the pool is NVMe.",
+ "candidates": [
+  "QNAP TBS-h574TX",
+  "QNAP TVS-h674T",
+  "QNAP TVS-h874T",
+  "QNAP TS-h966TX",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt 4 throughput to a Mac (StorageReview)",
+   "value": "1,929 MB/s write (max), about 1,850 MB/s read",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review – StorageReview (Vince Carnevale, 2024-04-02)",
+   "read": "2026-11-13",
+   "note": "M1 Max MacBook Pro, ATTO Disk Benchmark (queue depth 8, 4 threads), SMB over Thunderbolt. Pool was 5× SK hynix PE8110 3.84 TB E1.S in RAID 5 with compression, dedupe and QSAL off. Core i5 / 16 GB unit. StorageReview says this saturated the 20 Gbps Thunderbolt connection."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Thunderbolt 4 throughput to a Windows 11 PC (StorageReview)",
+   "value": "1,182 MB/s write, 1,015 MB/s read",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review – StorageReview (2024-04-02)",
+   "read": "2026-11-13",
+   "note": "Blackmagic Disk Speed Test, which StorageReview notes is single-threaded. Same 5× E1.S RAID 5 pool. The Mac result above is higher."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Power and noise (ServeTheHome)",
+   "value": "34–39 W base with drives; 50–70 W under load; 50–75 W with an M1 MacBook Pro drawing power over Thunderbolt; 38–40 dBA idle, 43–45 dBA when fans ramp",
+   "source": "https://www.servethehome.com/qnap-tbs-h574tx-review-e1-s-and-m-2-thunderbolt-10gbe-nas-sabrent-intel-kioxia/4",
+   "source_title": "QNAP TBS-h574TX Review E1.S and M.2 Thunderbolt 10GbE NAS – Power Consumption and Noise, ServeTheHome (Eric Smith, 2024-03-04)",
+   "read": "2026-11-13",
+   "note": "Studio noise floor was 34.5 dBA. Base power varies with the SSDs installed. ServeTheHome published no Thunderbolt throughput figures."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt file copy from a PC (Club386)",
+   "value": "1.3 GB/s for a 20 GB file, PC to NAS",
+   "source": "https://www.club386.com/qnap-tvs-h874t-thunderbolt-4-nas-review-empowering-creators/",
+   "source_title": "QNAP TVS-h874T Thunderbolt 4 NAS review: empowering creators – Club386 (Parm Mann, 2024-02-12)",
+   "read": "2026-11-13",
+   "note": "Core i7-12700E unit. Client was a PC (model not named); tool not named. Test drives were a 500 GB WD Red SN700 and 6× 8 TB Seagate IronWolf, but the review doesn't say which pool or RAID level was used for this copy. The review's ~1.7 GB/s figure for SSD RAID is an expectation, not a measurement, and is not used here. Not a Mac measurement."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Thunderbolt 4 file copy and benchmark (Liliputing)",
+   "value": "100 GB copy: 1.51 GB/s average from the NAS, 1.42 GB/s average to the NAS; CrystalDiskMark sequential read 2,136 MB/s (NUC 13 Extreme), best mini PC 2,464 MB/s read / 1,282 MB/s write",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review: A speedy NAS with 10 GbE networking and four M.2 SSD slots – Liliputing (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-13",
+   "note": "Windows/Intel clients, not a Mac. SMB share over Thunderbolt. The review doesn't say which SSD volume was used for the Thunderbolt tests. This Liliputing page was in ChatGPT's results but not cited."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Power draw (Liliputing)",
+   "value": "about 18 W idle; about 42 W reading and about 55 W writing during a 100 GB copy; 1.4 W off",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review – Liliputing (2024-09-10)",
+   "read": "2026-11-13",
+   "note": "Idle measured in UGOS Pro with Ethernet connected. CPU stress test peaked at 82 W and averaged about 61 W."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Thunderbolt Bridge throughput to a Mac (MacSources)",
+   "value": "396 MB/s write, 369 MB/s read",
+   "source": "https://macsources.com/ugreen-nasync-dxp6800-pro-review-reliable-speed-and-flexibility-for-creators/",
+   "source_title": "UGREEN NASync DXP6800 Pro REVIEW Reliable Speed And Flexibility For Creators – MacSources (Nicholas Calderone, 2025-10-17)",
+   "read": "2026-11-13",
+   "note": "2024 14-inch MacBook Pro (M4), AJA System Test Lite, 16 GB file, ProRes HQ 4096×3112. Storage was 4× 4 TB WD HDDs in RAID 10 (Btrfs) with 2× 1 TB NVMe cache; that setup comes from the review's system profile, not the Thunderbolt section. The result is limited by the hard drives, not the link. This MacSources page was in ChatGPT's results but not cited."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "10GbE throughput, power and noise (Notebookcheck)",
+   "value": "9.5 Gbit/s iPerf3 send and receive; idle 22.40 W with no drives, 36.59–41.93 W with 4 HDDs; 0.05 W off; 34.61 dB(A) idle with HDDs, up to 43 dB(A) under heavier load",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet - Ugreen NASync DXP6800 Pro review – Notebookcheck (Daniel Schmidt, 2026-07-01, updated 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "Drives were 4× Seagate IronWolf 4 TB. Notebookcheck did not test Thunderbolt. 9.5 Gbit/s ÷ 8 ≈ 1.19 GB/s, about 3× the Thunderbolt result MacSources got with an HDD pool."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "10GbE/CIFS throughput (StorageReview)",
+   "value": "2.26 GB/s read, 1.4 GB/s write, 128K sequential",
+   "source": "https://www.storagereview.com/review/ugreen-dxp6800-pro-nas-review",
+   "source_title": "UGREEN DXP6800 Pro NAS Review – StorageReview (Lyle Smith, 2024-04-19)",
+   "read": "2026-11-13",
+   "note": "6× 4 TB WD Red Plus in RAID 6 over CIFS. StorageReview did not test Thunderbolt and does not name the client. 2.26 GB/s is above what one 10GbE port can carry, so the test probably used both 10GbE ports; the review doesn't say."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Thunderbolt 4 throughput to a Mac (QNAP's own lab, no independent test)",
+   "value": "2,252 MB/s write, 2,004 MB/s read",
+   "source": "https://www.qnap.com/en/product/ts-h966tx",
+   "source_title": "TS-h966TX – QNAP",
+   "read": "2026-11-13",
+   "note": "Vendor figure as reported by the search tool and our existing page: MacBook Pro M4 Pro, 4× Samsung PM9A3 U.2 in RAID 5, AJA. I did not open the QNAP page myself, so the page should confirm it before publishing. Not a named reviewer's measurement."
+  }
+ ],
+ "unsourced": [
+  "A measured Thunderbolt speed for the TVS-h674T. A search snippet credits a Czech review on Letem světem Applem with AJA results of about 1,760 MB/s write and 1,740 MB/s read, but the page (letemsvetemapplem.eu/?p=711866) returned HTTP 403, so the figure is left out. TechRadar's TVS-h674T review (Ryan Quinn, 2024-01-04) and its inkl syndication were also unreadable or had no numbers.",
+  "A TVS-h874T Thunderbolt measurement on a Mac. ITdaily (2025-11-28) has no measured figures. ITPro (Dave Mitchell, 2024-02-02) cut off before its benchmarks. In the NASCompares review (2023-12-08), Thunderbolt figures are QNAP's own, and the only measured number is from a reader comment.",
+  "A Thunderbolt measurement of any kind for the UGREEN NASync DXP8800 Plus. The search found only 10GbE results.",
+  "An independent review of the QNAP TS-h966TX. The coverage I found (StorageReview news, Back2Gaming, Mobilissimo) only repeats QNAP's lab numbers.",
+  "UGREEN Knowledge Center articles 607 and 609 (cited by ChatGPT): the page text is loaded by script and came back empty, so I couldn't check them for speed figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2003758999999998
+ }
+}

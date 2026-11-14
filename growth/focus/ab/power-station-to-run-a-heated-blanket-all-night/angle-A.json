@@ -1,0 +1,83 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that the BLUETTI AC180 has an ECO mode that switches the AC (or DC) output off when the load stays low for a set time. BLUETTI's manual puts the AC threshold anywhere from 15 to 30 W and the DC threshold from 5 to 10 W, with a delay of 1, 2, 3 or 4 hours. So a blanket on a low setting, or a 12 V blanket, can lose power partway through the night unless ECO is turned off.",
+ "standout": 2,
+ "standout_why": "I read the three cited pages: dealectric.com (our current page), blackoutwise.com (Jackery 1000 v2 + blanket) and wattfort.com, plus runtimemath.com, which ranked #2. All four only change Wh into hours, each using a 0.85 factor. Runtimemath also subtracts the station's own draw (AC180 15 W). Wattfort covers the blanket's auto-off timer and Sunbeam's ban on inverters. None of them says that the station's own low-load auto-off can end the night early, and none gives a threshold for any station. WattFort says outright that it gives no AC auto-off or eco-mode behaviour for any station, and BlackoutWise and RuntimeMath say nothing about it either.",
+ "decides": "The AC180 stays the pick: it is $499 and in stock at BLUETTI today, has 1,152 Wh, and the blanket counts as the resistive load its manual describes. The finding adds a condition to that pick: turn ECO off, or set it to its lowest threshold, before using the AC180 overnight. Thermostat-controlled blankets on low and 12 V blankets on the car port are the loads most likely to sit under 15–30 W (AC) or 5–10 W (DC) for an hour or more. Because the hour figures are rated-capacity arithmetic, a station that shuts off at hour 3 never reaches them. The same check should go in the table for every candidate. I could not source the default thresholds for the AC180, or the energy-saving thresholds for the Jackery 1000 v2, so the page should show that column as manual-stated ranges, not defaults.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "Jackery Explorer 1000 v2",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 100 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode (auto-off on low load)",
+   "value": "AC and DC output turn off when load stays low; AC threshold 15–30 W, DC threshold 5–10 W, delay 1, 2, 3 or 4 h",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=14",
+   "source_title": "Bluetti AC180 User Manual, p.14 (ManualsLib copy)",
+   "read": "2026-11-14",
+   "note": "Manual text: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' The table on the page lists Power '15W-30W' and '5W-10W' and Duration '1, 2, 3, 4 hours'. Its column headers are missing on the mirror. Reading the first column as AC and the second as DC matches a BLUETTI manual summary found in search, but I did not open that summary page myself. ECO is toggled with the DC power button in Setting mode. The page does not say whether ECO is on by default."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Continuous vs resistive-load (Power Lifting) output",
+   "value": "1,800 W rated; up to 2,700 W for pure resistive loads in Power Lifting mode, which is off by default and not available while charging from AC",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=13",
+   "source_title": "Bluetti AC180 User Manual, p.13 (ManualsLib copy)",
+   "read": "2026-11-14",
+   "note": "A heated blanket is a pure resistive load, the kind the manual's footnote describes (heating elements). Any blanket is far below 1,800 W, so this figure does not limit the pick. I include it to put BLUETTI's surge figure on the same basis as the others."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Car outlet rating",
+   "value": "12 VDC / 10 A (120 W)",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=12",
+   "source_title": "Bluetti AC180 User Manual, p.12 (ManualsLib copy)",
+   "read": "2026-11-14",
+   "note": "'12VDC/10A' appears in the spec table, but the layout on the mirror is scrambled, so it is only probably the car-outlet row. 120 W is my arithmetic (12 V × 10 A). That covers the 50 W / 4.2 A KickAss 12 V blanket WattFort cites."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$499.00, available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Read from the Shopify product JSON with storecheck.py; this is the price of the 'AC180 | 1800W, 1152Wh' variant, compare-at also $499.00. Our page says stock is 'Back late Nov'. That is out of date: the variant shows as available today."
+  },
+  {
+   "product": "general",
+   "label": "Usable-capacity factor the rival pages use",
+   "value": "0.85 × rated Wh on all three (BlackoutWise: Jackery 1000 v2 1,070 Wh → 'about 910 Wh usable'; RuntimeMath also subtracts the station's own draw, e.g. AC180 15 W)",
+   "source": "https://www.blackoutwise.com/power-stations/jackery-explorer-1000-v2/electric-blanket",
+   "source_title": "Jackery 1000 v2 + Electric Blanket: About 1 Night per Charge",
+   "read": "2026-11-14",
+   "note": "WattFort (https://wattfort.com/guides/power-station-electric-blanket/) and RuntimeMath (https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket) also use 0.85; both read 2026-11-14. BlackoutWise says it does not test units and that its 12 h is 'an estimate, not a measured result'. None of these pages accounts for a station switching itself off."
+  },
+  {
+   "product": "Jackery Explorer 1000 (manual mirror, model not confirmed as v2)",
+   "label": "Energy Saving Mode shutdown",
+   "value": "Whole unit shuts down after 12 h with no charging input or discharging output; toggle by long-pressing the AC and main power buttons",
+   "source": "https://www.manualslib.mx/manual/929121/Jackery-Explorer-1000.html?page=6",
+   "source_title": "Jackery Explorer 1000 manual, p.6 (ManualsLib MX)",
+   "read": "2026-11-14",
+   "note": "The mirror does not say whether this is the v2, and it gives no low-load wattage threshold. Use it only as a pointer, not as a v2 spec."
+  }
+ ],
+ "unsourced": [
+  "AC180 ECO default: whether it ships on, and at what threshold and delay. Only forum posts and a third-party blog say it is on, and the blog page would not load (certificate error). The official BLUETTI PDFs (s4.bluettipower.com, cdn.shopify.com) would not extract text, and the US PDF was not readable.",
+  "Jackery Explorer 1000 v2 energy-saving low-load threshold: a search snippet said ≤25 W for 12 h, but Jackery's US product page returned HTTP 429, and the v2 manual PDFs (mrsolar.com, hampshiregenerators.co.uk) would not extract text.",
+  "Jackery Explorer 1000 v2 US price today: both storecheck.py and WebFetch got HTTP 429 from jackery.com.",
+  "Auto-off thresholds for the Anker SOLIX C1000 Gen 2, the BLUETTI Elite 30 V2 and the Elite 100 V2: not researched within the tool budget.",
+  "Measured self-consumption of the AC180 from a named reviewer: not found within the budget. BLUETTI's 15 W figure is cited only through RuntimeMath and our own page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9501146
+ }
+}

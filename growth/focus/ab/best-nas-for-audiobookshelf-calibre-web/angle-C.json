@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which UGREEN NAS UPS goes with the DXP2800 it picks. UGREEN's compatibility page lists the US3000 as 'Only Support 2-4Bay Series' and the US2000 as 'Only Support DH Series'. A family that wants a UPS to protect Audiobookshelf's SQLite database, which the Audiobookshelf docs warn can corrupt, should therefore buy the US3000 for a DXP2800, not the US2000.",
+ "standout": 2,
+ "standout_why": "Pages compared: audiobookshelf.org Docker docs (cited), calibre-web.com (cited), hub.docker.com advplyr/audiobookshelf (cited), racksandwatts best-NAS-for-homelab-2026 (cited), mariushosting ABS-on-UGREEN (cited), Synology DS425+/DS225+ data sheets and HIG (cited) and our own page. None of them pairs a UPS with any candidate. Racksandwatts already covers the Synology storage rules: DSM 7.3 allows third-party SATA HDDs and SSDs on 2025 Plus models, but M.2 pools must use drives on Synology's list (it says this for the DS925+), and the DS225+ maxes out at 6 GB of RAM. Synology's data sheets and HIG that ChatGPT cited probably carry the DS425+ M.2 and RAM part numbers. So the Synology findings below would barely stand out. The UPS pairing is new, but it doesn't change which NAS wins.",
+ "decides": "It supports the DXP2800 pick and its add-on. Pair the DXP2800 with the US3000, and correct Dealectric's catalog line for ugreen-nas-ups-us2000-72w, which says 'for NASync 2-Bay and DH Models', against UGREEN's 'Only Support DH Series'. The findings also count against the DS425+ as an 'SSD for app data' build. Synology's spec page allows an M.2 storage pool only on Synology SNV3410/SNV5420 SSDs, at 400 GB or more. On both the DS225+ and DS425+ the only memory upgrade Synology lists is the D4NS01-4G, for a 6 GB total, and Synology withholds complete warranty and support if you fit other RAM. The DXP2800 ships with 8 GB.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DH2300",
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Supported NAS models",
+   "value": "'Only Support 2-4Bay Series' (covers the 2-bay DXP2800)",
+   "source": "https://ai.ugreen.com/pages/compatibility",
+   "source_title": "UGREEN NAS Product Compatibility",
+   "read": "2026-11-13",
+   "note": "The page text gives the series rule only, and its per-model table did not load. I'm counting the DXP2800 as part of the '2-4Bay Series' because it is a 2-bay NASync model; the page does not name it."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Supported NAS models",
+   "value": "'Only Support DH Series' (DH2300, DH4300 Plus), so not the DXP2800",
+   "source": "https://ai.ugreen.com/pages/compatibility",
+   "source_title": "UGREEN NAS Product Compatibility",
+   "read": "2026-11-13",
+   "note": "This contradicts Dealectric's catalog name for ugreen-nas-ups-us2000-72w ('for NASync 2-Bay and DH Models'). Check the product page before linking it from a DXP2800 pick."
+  },
+  {
+   "product": "general",
+   "label": "Audiobookshelf database location",
+   "value": "/config (SQLite) 'must be accessible directly on the same machine running the Audiobookshelf server' and not over the network; network access leads to 'database corruption'",
+   "source": "https://audiobookshelf.org/docs/documentation/install/docker/",
+   "source_title": "Docker | Audiobookshelf",
+   "read": "2026-11-13",
+   "note": "ChatGPT already cited this page. The docs set no location rule for /metadata beyond keeping it out of other mount points. The docs don't mention power loss; I'm citing them only as the reason a UPS is worth adding."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "M.2 slots: storage-pool SSDs allowed",
+   "value": "2× M.2 2280 NVMe for cache or storage pool; pools require Synology-verified SNV3410-400G, SNV5420-400G, SNV5420-800G or SNV5420-1600G; M.2 not hot-swappable",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology Inc. (Specs)",
+   "read": "2026-11-13",
+   "note": "Maker spec page. So putting ABS/Calibre-Web app data on NVMe means buying a 400 GB+ Synology enterprise SSD."
+  },
+  {
+   "product": "Synology SNV3410-400G",
+   "label": "Capacity / endurance / warranty",
+   "value": "400 GB M.2 2280, 491 TBW, 5-year warranty",
+   "source": "https://www.synology.com/en-us/products/SNV3410-400G",
+   "source_title": "Synology Enterprise Series M.2 NVMe SSD",
+   "read": "2026-11-13",
+   "note": "The page shows no price."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "RAM upgrade",
+   "value": "2 GB DDR4 non-ECC onboard, 1 slot, max 6 GB (2 GB + 4 GB) with D4NS01-4G; non-Synology memory means Synology 'will not provide complete product warranty or technical support'",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology Inc. (Specs)",
+   "read": "2026-11-13",
+   "note": "Maker spec page, optional accessories and footnote."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM upgrade",
+   "value": "2 GB DDR4 non-ECC onboard, 1 slot, max 6 GB (2 GB + 4 GB) with D4NS01-4G; same non-Synology memory warranty/support caveat",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (Specs)",
+   "read": "2026-11-13",
+   "note": "The spec page lists no M.2 slots for the DS225+."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Drives Synology lists as compatible",
+   "value": "3.5\" HDD: HAT3300/HAT3310/HAT3320, HAT5300/HAT5310/HAT5320; 2.5\" SSD: SAT5221/SAT5210; 'Synology only guarantees full functionality, reliability, and performance for compatible drives'",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (Specs)",
+   "read": "2026-11-13",
+   "note": "The maker page lists only Synology drives. Racksandwatts says DSM 7.3 still allows third-party SATA HDDs and SSDs in new pools on 2025 Plus models (see next finding)."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Third-party drives under DSM 7.3",
+   "value": "Third-party HDDs and 2.5-inch SATA SSDs allowed in new pools on 2025 Plus models; new M.2 pools and SSD cache need drives on Synology's list",
+   "source": "https://racksandwatts.com/guides/best-nas-for-a-homelab-2026/",
+   "source_title": "Best NAS for a homelab (2026) | Racks and Watts",
+   "read": "2026-11-13",
+   "note": "This is a rival page that ChatGPT cited, specs checked 2026-10-25. I couldn't load Synology's own KB article, which rendered without its body."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM slot",
+   "value": "One DDR5 SO-DIMM slot, shipped with 8 GB DDR5-4800, reached after removing two screws; 2 M.2 slots beside the drive bays; OS on soldered eMMC",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/3/",
+   "source_title": "UGREEN NASync DXP2800 NAS im Test (Igor's Lab, Tim Kutzner)",
+   "read": "2026-11-13",
+   "note": "Named reviewer, published 2024-05-08 and updated 2025-05-31. The review doesn't give a maximum RAM figure or the M.2 PCIe lanes."
+  },
+  {
+   "product": "general",
+   "label": "Calibre-Web Automated on network shares",
+   "value": "Supported with NETWORK_SHARE_MODE=true (off by default), which disables SQLite WAL on metadata.db and app.db and switches to polling; README says shares are 'still slower than local disks'",
+   "source": "https://github.com/crocodilestick/Calibre-Web-Automated",
+   "source_title": "crocodilestick/Calibre-Web-Automated (GitHub README)",
+   "read": "2026-11-13",
+   "note": "Only matters if the library sits on another box. On a NAS running the container locally, keep the default."
+  }
+ ],
+ "unsourced": [
+  "DXP2800 maximum RAM, M.2 PCIe generation and lanes, and whether M.2 can hold a storage pool, from UGREEN's own spec page: ai.ugreen.com, nas.ugreen.com, nas-eu.ugreen.com and ugreen.com all returned HTTP 429 to both WebFetch and storecheck.py. Search snippets say 16 GB max and that M.2 can be a pool, but I didn't open a maker page for either.",
+  "US3000 and US2000 US prices and the US3000's exact model list on its product page (UGREEN store returned 429).",
+  "Prices for Synology D4NS01-4G and SNV3410-400G: Synology's pages show no price, and amzcheck.py was blocked by Amazon.",
+  "Synology Container Manager's applied-models list: the package page rendered with an empty 'Applied Models' section.",
+  "Synology's official DSM 7.3 drive-policy KB article: the page body didn't render, so that policy comes only from racksandwatts.",
+  "Calibre-Web Automated supported CPU architectures (amd64/arm64): the README doesn't state them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1839608999999998
+ }
+}

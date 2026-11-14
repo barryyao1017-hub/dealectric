@@ -1,0 +1,111 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states, in a form the shopper can compare, that a non-Synology box used as an rsync destination still gets Hyper Backup's multi-version .hbk backups. Storage Alchemist lists 'another Synology NAS or server via rsync' among multiple-version destinations. Switching from a Synology running Vault to a cheaper non-Synology target loses entire-system and LUN backup (Synology's spec), not version history.",
+ "standout": 1,
+ "standout_why": "Compared against Synology's Hyper Backup spec page (cited) and the Hyper Backup Destination page (cited). The spec page lists rsync servers only under folder and package backup and limits entire-system backup to remote Synology NAS and C2. It does not say which destinations get multi-version, and its encryption line is not tied to any destination. ChatGPT's answer repeats only the entire-system point. The Destination help page does not render through a fetch: it loads as an empty shell. Search snippets say it covers the multiple-version and single-version choice for rsync, so a cited rival probably has part of this finding. None of the rival pages I opened give power figures for the candidate boxes.",
+ "decides": "This settles what the cheaper box gives up. A UGREEN DH2300 or TerraMaster on rsync keeps versioned .hbk backups that Hyper Backup Explorer can restore. A DS124 or DS223j running Vault is needed only if the shopper wants entire-system or LUN backup, or Vault's task monitoring. Our current page says the UGREEN row is a 'single-version copy: no .hbk, no version history'. On this evidence that is wrong and should be corrected, or at least sourced. On power, Synology's official 'Access' figures and NASCompares' measured idle cannot be compared directly. Both Synology boxes publish hibernation figures (DS124 3.44 W, DS223j 4 W) that matter for a backup target that sits idle most of the day, and no source I opened measured DH2300 hibernation.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-212"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Destinations by Hyper Backup type",
+   "value": "Entire-system backup: remote Synology NAS or C2 only. Folder and package backup: also rsync servers. LUN backup: remote Synology NAS, local shared folder or USB (ext4)",
+   "source": "https://www.synology.com/en-ro/dsm/7.4/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Rival page (cited). It does not say whether rsync destinations get multi-version or encryption."
+  },
+  {
+   "product": "general",
+   "label": "Version cap and encryption (Hyper Backup, any multi-version task)",
+   "value": "Up to 65,535 versions; client-side and transfer encryption use AES-256 and ECC Curve25519; multi-version .hbk files readable only with Hyper Backup, Hyper Backup Explorer and Hyper Backup Vault",
+   "source": "https://www.synology.com/en-ro/dsm/7.4/software_spec/hyper_backup",
+   "source_title": "Hyper Backup Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The page does not tie these features to individual destinations."
+  },
+  {
+   "product": "general",
+   "label": "rsync server as a multi-version destination",
+   "value": "Multiple-version destinations include 'another Synology NAS or server via rsync'; single-version destinations include 'another server or Synology NAS via rsync'",
+   "source": "https://www.storagealchemist.com/restoring-hyper-backup/",
+   "source_title": "Restoring Hyper Backup - Storage Alchemist (Paul Steunebrink)",
+   "read": "2026-11-13",
+   "note": "Named reviewer. The page also says single-version backups open in any file browser and multi-version backups restore through Hyper Backup Explorer on Windows, Mac or Ubuntu/Fedora. Date not shown on the page."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Power, Synology's stated figures",
+   "value": "10.69 W (Access); 3.44 W (HDD Hibernation)",
+   "source": "https://www.synology.com/en-us/products/DS124#specs",
+   "source_title": "DS124 | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "The spec page does not say which drives or how many were used for the power test; it links to a separate methodology article that I did not open. Arithmetic: 3.44 W × 8,760 h = 30.1 kWh a year if hibernating all the time; 10.69 W × 8,760 h = 93.6 kWh a year if always accessing."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Hardware and warranty",
+   "value": "Realtek RTD1619B 4-core 1.7 GHz, 1 GB DDR4; 2-year warranty, extendable to 4 years",
+   "source": "https://www.synology.com/en-us/products/DS124#specs",
+   "source_title": "DS124 | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "No MSRP on the page."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Power, Synology's stated figures",
+   "value": "16.31 W (Access); 4 W (HDD Hibernation)",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DS223j | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "Power test conditions are not stated on the page. The noise test was 'fully loaded with Seagate 2TB ST2000VN000', so the power figure is presumably 2 drives, but the page does not say so. Same CPU and RAM as the DS124. Arithmetic: 4 W × 8,760 h = 35.0 kWh a year if hibernating."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Power, reviewer-measured",
+   "value": "About 9.5 W idle (CPU <5%); 12–13 W during transfers or 50% CPU",
+   "source": "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/",
+   "source_title": "UGREEN DH2300 NAS Review – Cloud Subscription Killer (NASCompares, Rob Andrews, 2025-10-15)",
+   "read": "2026-11-13",
+   "note": "Measured with two 4 TB Seagate IronWolf drives; meter not named. No hibernation figure, so it cannot be set beside Synology's hibernation numbers. Arithmetic: 9.5 W × 8,760 h = 83.2 kWh a year at idle."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "rsync and Docker",
+   "value": "Rsync listed among supported protocols (SMB, AFP, NFS, Rsync)",
+   "source": "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/",
+   "source_title": "UGREEN DH2300 NAS Review – Cloud Subscription Killer (NASCompares)",
+   "read": "2026-11-13",
+   "note": "The review text says App Center includes Docker. A reader-comment reply dated 2025-10-22 says UGREEN told them Docker is disabled on the DH2300. That reply is not part of the review, so Docker or Tailscale on this box is unresolved."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, UGREEN US store",
+   "value": "$239.99 (compare-at $394.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300 (nas.ugreen.com)",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of the Shopify store. A follow-up product read returned HTTP 429, so I could not confirm whether $239.99 is the diskless variant or a bundle."
+  }
+ ],
+ "unsourced": [
+  "Whether client-side encryption is offered for multi-version tasks to a non-Synology rsync server. Synology's spec page lists encryption without tying it to destinations. The KB Destination help page (kb.synology.com, en-global/en-us/en-af, version=7) loads as an empty shell through a fetch.",
+  "A forum report (community.synology.com post 189476) says multi-version rsync builds the .hbk repository locally before syncing it. The page would not render, so I could not verify this.",
+  "MorhafSH walkthrough of Hyper Backup multi-version to an Ubuntu rsync target: fetch failed on a self-signed certificate.",
+  "DH2300 power from UGREEN's own spec page (HTTP 429). Neowin's measured standby, access and hibernation figures (HTTP 403).",
+  "TerraMaster F2-212 and UGREEN DXP2800 power figures: not reached within the call budget.",
+  "Current US prices for DS124 and DS223j at B&H or Adorama: not read within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0326976000000003
+ }
+}

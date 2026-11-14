@@ -1,0 +1,66 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that BLUETTI stations ship with ECO mode turned on, and that ECO cuts the AC outlets after a stretch of low or no load. The BLUETTI manual itself says to turn ECO off for refrigerators. A fridge that cycles off can drop below the threshold and lose power overnight, and that can happen on an otherwise correctly sized weekend setup.",
+ "standout": 2,
+ "standout_why": "I checked the three cited rival pages and our own page. Anker SOLIX's 'Complete Off-Grid Cabin Solar Setup Guide' and 'Off Grid Solar Cabin Essentials Checklist' mention fridge loads and general startup surge, but say nothing about ECO or auto-off, standby draw or charging temperature. SolutionEnergy's 'Off-Grid Cabin Power Systems' says a fridge 'cycles on and off' and that unheated cabins freeze ('Follow the maker's temperature limits'), but it has no auto-off mechanism and no number. Our current Dealectric page covers inverter idle draw (10–20 W) but not ECO auto-off or the 32°F charging limit. None of these pages links the fridge's on/off cycling to the station's default low-load shutoff.",
+ "decides": "It does not change the size. 2 kWh with 350–400 W of panels, or 3 kWh, still fits the load. It does decide whether the fridge stays powered through the weekend. On the Elite 200 V2 and AC180, which are both on our page, ECO must be turned off before leaving the fridge plugged in. This is a setup step the answer should state. For a November trip there is a second check: the Elite 200 V2 manual lists charging at 0–40°C (32–104°F). If the station is below freezing, solar can't refill it, so the battery has to cover the whole weekend on its own. That points to the larger-battery option (3 kWh or more), or to keeping the station inside the heated part of the cabin.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "ALLPOWERS P1800",
+  "ALLPOWERS S2000 Pro",
+  "EcoFlow DELTA 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "ECO mode default and BLUETTI's own advice for fridges",
+   "value": "\"AC-ECO and DC-ECO modes are enabled by default.\" \"The Elite 200 V2 shuts off the AC or DC output after a period of low or no load.\" \"Disable the ECO mode when connecting small devices under 60W or critical appliances such as lights and refrigerators.\"",
+   "source": "https://www.manualslib.com/manual/3601395/Bluetti-Elite-200-V2.html?page=16",
+   "source_title": "BLUETTI Elite 200 V2 User Manual (V1.2), section 5.4 ECO Mode, ManualsLib",
+   "read": "2026-11-13",
+   "note": "This is a ManualsLib copy of the maker's V1.2 manual. BLUETTI's own PDFs (s4.bluettipower.com US EN V2.0 and V1.2) were over 10 MB or would not extract as text, and bluettipower.com/products redirect-looped. The manual also says pressing the AC power button turns AC-ECO and DC-ECO on or off together, and the app controls them separately. A small fridge averages roughly 25–50 W, and its compressor-off periods draw close to 0 W, so a long off-cycle in a cool cabin can trip the low-load timer. That last point is my reasoning from BLUETTI's 60 W advice, not a figure BLUETTI gives."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC-ECO while charging from AC",
+   "value": "\"AC-ECO mode is not available when charging with AC power.\"",
+   "source": "https://www.manualslib.com/manual/3601395/Bluetti-Elite-200-V2.html?page=16",
+   "source_title": "BLUETTI Elite 200 V2 User Manual (V1.2), section 5.4 ECO Mode, ManualsLib",
+   "read": "2026-11-13",
+   "note": "Off-grid, there is no AC charging, so the shutoff can happen. Solar charging is not mentioned as an exception."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Charging and discharging temperature",
+   "value": "Charging 0°C to 40°C (32°F to 104°F); discharging −20°C to 40°C (−4°F to 104°F)",
+   "source": "https://www.manualslib.com/manual/3601395/Bluetti-Elite-200-V2.html",
+   "source_title": "BLUETTI Elite 200 V2 User Manual (V1.2), specifications (printed p. 22), ManualsLib",
+   "read": "2026-11-13",
+   "note": "The station can power the fridge down to −4°F but can't accept solar below 32°F. In a cabin left unheated in November, the panel can't refill the battery until the station warms up. The manual has no self-heating text, only a 'Low Temperature' LCD icon."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode trigger thresholds",
+   "value": "AC output turns off below a set 10–30 W, and DC output below a set 5–10 W, after 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.de/manual/1012764/Bluetti-Ac180.html?page=17",
+   "source_title": "Bluetti AC180 manual, section 5.1 FAQs (printed p. 16), ManualsLib.de",
+   "read": "2026-11-13",
+   "note": "Quote: \"the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while\"; \"set the power threshold of AC output and DC output to 10-30W /5-10W, respectively\" \"for 1, 2, 3, or 4 hours.\" The FAQ is in English on a German-language mirror. This page does not state whether ECO is on by default."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 AC-ECO wattage threshold and timer values: BLUETTI's Elite 200 V2 app manual PDF (s4.bluettipower.com .../996c1d0c-...pdf) and the US EN user-manual PDFs would not extract as text or were over 10 MB, and the manuals.plus copies returned 403",
+  "Whether the AC outlets come back on by themselves when the load returns after an ECO shutoff (the Elite 200 V2 manual page doesn't say)",
+  "Whether ECO is on by default on the AC180 (the AC180 FAQ page doesn't say; the manuals.online copy returned 403)",
+  "Elite 200 V2 spec table on BLUETTI's US product page (bluettipower.com redirect-looped; storecheck returned HTTP 404)",
+  "Low-load auto-off behavior and charging-temperature limits for ALLPOWERS P1800, ALLPOWERS S2000 Pro and EcoFlow DELTA 2 Max (not checked within the tool budget)",
+  "A maker or standards figure for how long a small compressor fridge's off-cycle lasts at cool cabin temperatures"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1620538
+ }
+}

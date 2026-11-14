@@ -1,0 +1,84 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180's ECO mode can switch off the 12 V DC output when the load stays below a 5–10 W threshold for 1–4 hours. A compressor cooler holding a few insulin pens in a cool room averages about 9–11 W and sits near zero between compressor cycles, so the published runtime holds only if DC ECO is turned off.",
+ "standout": 2,
+ "standout_why": "I compared willitrunpower.com (cited), our own dealectric.com page (cited) and the first results of the live search. Willrun only says 'some stations switch off idle ports after a timeout', with no threshold, duration or model. Our page doesn't mention ECO or DC auto-off at all. GOES and SCHSA are general health advice with no station specs. Willrun already has the 15 W AC self-consumption and Dometic's 0.92 Ah/h and 6.5 A figures, so those aren't new. The ECO thresholds are new, and so is the gap between Dometic's annual rating and its hot-room rating.",
+ "decides": "It keeps the AC180 plus a 12 V compressor cooler as the pick, but it attaches a setup step the pick depends on. Turn off DC ECO (Setting mode: hold AC+DC for about 2 s with the AC output off), or the 2-day runtime math doesn't apply. It also supports the DC-only setup with a number: the manual's roughly 15 W self-consumption over 48 h is about 720 Wh, which is most of the AC180's roughly 980 Wh usable. A mini-fridge on the AC outlet won't last two days on this unit.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Dometic CFX3 25",
+  "BougeRV 23 Quart (CR22)",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow RIVER 2 Pro"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off thresholds (AC and DC set separately)",
+   "value": "DC: 5–10 W threshold; AC: 15–30 W threshold; off after 1, 2, 3 or 4 h below threshold",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Manual text: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' Enter Setting mode by holding AC+DC for about 2 s with the screen on and AC off. Setting mode exits after 1 min without saving. The manual doesn't say whether ECO is on at the factory. The 9–11 W cooler average uses Dometic's 0.92 Ah/h × 12 V = 11 W hot-room figure, quoted by Willrun; a cooler room lowers it."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Self-consumption (inverter on)",
+   "value": "about 15 W, which is about 720 Wh over 48 h",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Manual: 'The self-consumption of AC180 is about 15W.' 15 W × 48 h = 720 Wh, against about 980 Wh usable (1,152 Wh × 0.85). This is why the cooler has to run from the 12 V port."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car outlet rating",
+   "value": "12 V DC / 10 A",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Covers the CFX3 25's 6.5 A rated current with headroom."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Discharge temperature range",
+   "value": "-20 to 40 °C (-4 to 104 °F); output limited to 1,500 W between 30 and 40 °C",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Relevant to a summer outage with no air conditioning."
+  },
+  {
+   "product": "Dometic CFX3 25",
+   "label": "Rated current vs annual energy rating (two bases in one manual)",
+   "value": "12 V rated current 6.5 A (about 78 W while the compressor runs); annual energy 78 kWh/yr, about 214 Wh/day",
+   "source": "https://www.manualslib.com/manual/2633631/Dometic-Cfx3.html?page=39",
+   "source_title": "Dometic CFX3 operating manual, technical data, p. 39 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "78 kWh ÷ 365 = 214 Wh/day, about 8.9 W average. The manual gives no test conditions for the annual figure. Willrun and our page use Dometic's hot-room 0.92 Ah/h (90 °F ambient, 39 °F inside), which is 265 Wh/day. Rated current is the running peak, not the average; using 78 W would overstate daily use about 7×."
+  },
+  {
+   "product": "BougeRV 23 Quart",
+   "label": "Maker's stated draw (ECO mode)",
+   "value": "under 36 W with energy-saving mode on; $169.99 (black, 'for travel' listing) / $144.99 (another 23 qt listing)",
+   "source": "https://www.bougerv.com/products/12v-purple-mini-fridge",
+   "source_title": "BougeRV 12V 23 Quart Colorful Purple Portable Fridge (BougeRV store search via storecheck)",
+   "read": "2026-11-13",
+   "note": "The maker gives a running-draw ceiling, not a daily average, so it can't be compared directly with Dometic's Ah/h or kWh/yr. Prices are from the storecheck search of bougerv.com on 2026-11-13: https://www.bougerv.com/products/12v-23-quart-portable-fridge-black-for-travel at $169.99 and https://www.bougerv.com/products/12v-23-quart-portable-refrigerator-for-travel at $144.99."
+  }
+ ],
+ "unsourced": [
+  "AC180 factory default for ECO mode (on or off). Not stated in the ManualsLib copy of the manual. The bluettipower.com Shopify PDF downloaded but couldn't be text-extracted. The manuals.plus and manuals.online copies returned 403. The only claim of 'on by default' is an anonymous BLUETTI community post, not used.",
+  "Whether the AC180 ECO threshold is measured as an average over the window or as continuous time below threshold, which decides whether a cycling cooler trips it. The manual doesn't say.",
+  "Dometic CFX3 25 Ah/h at 32 °C ambient / 4 °C inside on Dometic's own page. The dometic.com product and support URLs returned 404 or showed no figure, and epi.dometic.com didn't resolve. The 0.92 Ah/h figure is only from Willrun's page.",
+  "BougeRV 23 qt annual kWh (118 kWh/yr) and its test ambient on bougerv.com. The product pages returned HTTP 429 twice, and the 118 figure appears only on third-party desertcart listings, not used.",
+  "AC180 current price on the BLUETTI US store. Not checked within the tool budget.",
+  "Elite 200 V2 and EcoFlow RIVER 2 Pro DC auto-off thresholds. Not reached within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0737618000000004
+ }
+}

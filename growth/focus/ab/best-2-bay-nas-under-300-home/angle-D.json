@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Synology's own download center for the DS223j and DS223 on DSM 7.3 lists Container Manager (Synology's Docker package) as an armv8 build, so 'DS223j: Docker No' in every ChatGPT table and on our current page is wrong. The real limit is the DS223j's 1 GB of RAM, not missing Docker.",
+ "standout": 2,
+ "standout_why": "Compared against ComputingForGeeks (cited, 2026-10-24), Starry Hope (cited), Terabytewise and nas.kuibu.net (cited). None of them say whether Container Manager or Docker runs on the DS223j or DS223. ComputingForGeeks names 'no Docker' only for the UGREEN DH2300. Starry Hope covers Docker only on the UGREEN models and the DS225+. Terabytewise and kuibu don't mention containers for these models at all. ChatGPT made up the 'Docker: No' cell for the DS223j in at least four answers, and our current page says 'no Docker' (DS223j) and 'Docker unclear' (DS223). Partial overlap: ComputingForGeeks already says that since DSM 7.2.2 Synology hands HEVC, AVC and VC-1 decoding to the playing device, so the codec finding below is not new.",
+ "decides": "It fixes a column that ChatGPT used to separate the picks. The $209.99 DS223j and $285.99 DS223 can run light containers through Synology's official package, so a buyer who wants Synology software plus one or two small containers (for example a backup or DNS container) doesn't have to go to x86. The pick doesn't change for heavier self-hosting or Plex transcoding: the TerraMaster F2-425 and UGREEN DXP2800 stay ahead because of x86 and Intel Quick Sync, which Starry Hope and ComputingForGeeks both name as the transcoding path Plex and Jellyfin use. The page should change the DS223j cell from 'no Docker' to 'Container Manager available (armv8), 1 GB RAM limits it'.",
+ "candidates": [
+  "Synology DS223j",
+  "Synology DS223",
+  "TerraMaster F2-425",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "TerraMaster F2-423",
+  "QNAP TS-233"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS223j",
+   "label": "Container Manager (Docker) offered in Synology's download center for this model",
+   "value": "Container Manager 24.0.2-1606, armv8 build, DSM 7.3.2 build 86009",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS223j&major=7&minor=3",
+   "source_title": "Synology Download Center data for DS223j (DSM 7.3)",
+   "read": "2026-11-13",
+   "note": "This is the JSON behind Synology's DS223j download-center page. The package list has dname 'Container Manager', described as 'a lightweight virtualization application', with a download link to ContainerManager-armv8-24.0.2-1606.spk?model=DS223j&bays=2&dsm_version=7.3.2."
+  },
+  {
+   "product": "Synology DS223",
+   "label": "Container Manager (Docker) offered in Synology's download center for this model",
+   "value": "Container Manager 24.0.2-1606, armv8 build, DSM 7.3.2 build 86009",
+   "source": "https://www.synology.com/api/support/findDownloadInfo?lang=en-us&product=DS223&major=7&minor=3",
+   "source_title": "Synology Download Center data for DS223 (DSM 7.3)",
+   "read": "2026-11-13",
+   "note": "Download link: ContainerManager-armv8-24.0.2-1606.spk?model=DS223&bays=2&dsm_version=7.3.2. Settles our page's 'Docker unclear on this model'."
+  },
+  {
+   "product": "general",
+   "label": "Latest Container Manager builds in Synology's package archive",
+   "value": "24.0.2-1707: one armv8 .spk and one x86_64 .spk, both dated 2026-10-28",
+   "source": "https://archive.synology.com/download/Package/ContainerManager/24.0.2-1707",
+   "source_title": "Synology Archive: Package/ContainerManager/24.0.2-1707",
+   "read": "2026-11-13",
+   "note": "Synology still builds the ARM version, which is what the DS223j and DS223 use, as of two weeks ago. The download center offered 24.0.2-1606 for DS223j and DS223 when I read it."
+  },
+  {
+   "product": "general",
+   "label": "Synology Photos: HEIC and HEVC previews need an add-on",
+   "value": "'You will need to install Synology Image Assistant to generate additional previews' for HEIF/HEIC/HIF images and HEVC-encoded MOV/MP4 video",
+   "source": "https://www.synology.com/dsm/7.3/software_spec/synology_photos",
+   "source_title": "Synology Photos software specifications, DSM 7.3",
+   "read": "2026-11-13",
+   "note": "This is limitation 6 on the spec page. The mobile app 'supports the Image Assistant feature to generate previews for HEIC photos and HEVC videos'. It affects iPhone photo backup on any Synology picked here (DS223j, DS223). It ties to Synology's DSM 7.2.2 codec discontinuation, which ComputingForGeeks already mentions, so it's only partly new."
+  },
+  {
+   "product": "general",
+   "label": "Synology Photos face and object recognition are limited by model",
+   "value": "'To ensure system performance, face and object recognition is only supported on certain models.'",
+   "source": "https://www.synology.com/dsm/7.3/software_spec/synology_photos",
+   "source_title": "Synology Photos software specifications, DSM 7.3",
+   "read": "2026-11-13",
+   "note": "The page links to a Synology Knowledge Center article with the model list. That article loads by script and showed no model table when I opened it, so the DS223j entry is listed under unsourced."
+  }
+ ],
+ "unsourced": [
+  "DS223j's place in Synology's face and object recognition list: a search snippet says 'Facial recognition only | 23 series | DS423, DS223, DS223j', but kb.synology.com showed no table when opened through WebFetch, and Bash (curl) was not approved.",
+  "Whether Synology's download center limits Container Manager by model or only by CPU type: it also lists Container Manager 24.0.2-1543 for the older DS220j on DSM 7.2. I couldn't open the package's own applied-models list (synology.com/dsm/packages/ContainerManager loads by script and showed no models), so I can't quote Synology confirming that containers are officially supported on the DS223j.",
+  "A reviewer measuring how many containers fit in the DS223j's 1 GB of RAM: not searched within the tool budget.",
+  "Plex's own statement that hardware transcoding needs an Intel CPU with Quick Sync and a Plex Pass, and doesn't work on ARM NAS units: not opened within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.1321797999999998
+ }
+}

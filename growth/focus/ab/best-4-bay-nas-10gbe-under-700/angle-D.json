@@ -1,0 +1,90 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states a measured figure for a four-HDD RAID 5 pool on a NAS in this price class: PCWorld measured 430 MB/s read and 340 MB/s write over the DXP4800 GT's 10GbE port with four WD Red Plus drives. One 2.5GbE port carries about 295 MB/s (half of QNAP's lab figure for two ports), so 10GbE only pays off with an SSD or NVMe pool behind it. The UGREEN boxes have M.2 slots for that pool; the QNAP TS-432X has none and needs a QM2 card in its only PCIe slot.",
+ "standout": 2,
+ "standout_why": "I compared against our own page, which gives an unsourced estimate of 'roughly 400–600 MB/s' for HDD RAID 5 and no measurement. ChooseCompute's 4-bay guide only says 'over 1,000 MB/s' for the Plus and never covers HDDs against 10GbE. QNAP's TS-432X page, cited by ChatGPT, gives 1,181 MB/s, but only with four SATA SSDs. Every ChatGPT answer says 'four HDDs in RAID 5 often won't saturate 10GbE' or gives an unsourced '400–700 MB/s'. None names a measurement, says that HDD writes (340 MB/s) are only about 15% faster than one 2.5GbE port, or ties the fix to the M.2 lanes. ChatGPT does show 'NVMe slots 0' for the TS-432X but doesn't explain what that means for 10GbE. I did not open itechguides, starryhope, kuibu or computingforgeeks, which were not cited.",
+ "decides": "This supports the UGREEN DXP4800 Plus and DXP4800 GT over the QNAP TS-432X for this shopper. With hard drives only, any of the three runs at roughly 340–430 MB/s, so the 10GbE port barely matters. To use the port fully you need an SSD or NVMe pool. The UGREENs have two M.2 slots built in: on the GT they run at PCIe 3.0 x2, and NAS Compares got 1.45 GB/s read in RAID 0, which is more than 10GbE carries. The TS-432X needs SATA SSDs in its drive bays (QNAP's own 1,181 MB/s test) or a QM2 card in its single PCIe Gen3 x4 slot. Both cost extra and the bay route gives up HDD capacity. The finding doesn't separate the Plus from the GT: both get about 9.4 Gbit/s on the wire.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP4800 Pro",
+  "QNAP TS-432X-4G"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Measured RAID 5 HDD throughput over 10GbE (large video files)",
+   "value": "430 MB/s read, 340 MB/s write",
+   "source": "https://www.pcworld.com/article/3223782/ugreen-dxp4800-gt-review.html",
+   "source_title": "Ugreen DXP4800 GT review: This Ryzen NAS makes 10GbE affordable (PCWorld, Christoph Hoffmann and Michael Rupp, 2026-09-22)",
+   "read": "2026-11-13",
+   "note": "Four 2 TB WD Red Plus drives in RAID 5. The client was a Windows PC with a 10GbE card, connected through a switch with Cat 7 cable. The same review measured 65 MB/s with 20,000 small files and about 780 MB/s combined with two clients."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "iperf3 network-only throughput and 10GbE controller",
+   "value": "9.4 Gbit/s; Aquantia AQC113 controller on the two 10GbE ports",
+   "source": "https://www.pcworld.com/article/3223782/ugreen-dxp4800-gt-review.html",
+   "source_title": "Ugreen DXP4800 GT review (PCWorld, 2026-09-22)",
+   "read": "2026-11-13",
+   "note": "9.4 Gbit/s is about 1,175 MB/s. Against that link, the 430 MB/s HDD read above uses about 37% of it."
+  },
+  {
+   "product": "QNAP TS-432X-4G",
+   "label": "Maker's lab SMB sequential throughput, 1× 10GbE and 2× 2.5GbE",
+   "value": "10GbE: 1,181 MB/s read, 887 MB/s write. 2× 2.5GbE: 590 MB/s read, 590 MB/s write",
+   "source": "https://www.qnap.com/en-us/product/ts-432x",
+   "source_title": "TS-432X | Cost-effective 4-bay 10GbE NAS | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP's test conditions: '4 x Samsung 860 PRO 512GB, RAID 5, thick volume', QTS 5.1.7.2743, IOmeter 16MB sequential. These are SSDs, not HDDs. 590 / 2 ports ≈ 295 MB/s for one 2.5GbE port, which I used as the 2.5GbE ceiling. 340 MB/s HDD write ÷ 295 ≈ 1.15×."
+  },
+  {
+   "product": "QNAP TS-432X-4G",
+   "label": "NVMe path",
+   "value": "No M.2 slots; one PCIe Gen 3 x4 slot",
+   "source": "https://www.qnap.com/en-us/product/ts-432x/specs/hardware",
+   "source_title": "TS-432X | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The hardware spec lists 'Slot 1: PCIe Gen 3 x4' and no M.2. The product page (https://www.qnap.com/en-us/product/ts-432x) says the QM2-2P-344A card can 'Add two M.2 SSDs to create a storage pool or enable SSD caching' (host interface PCIe Gen3x4). That uses the only slot."
+  },
+  {
+   "product": "QNAP TS-432X-4G",
+   "label": "10GbE port type",
+   "value": "1× 10GbE SFP+ (plus 2× 2.5GbE RJ45)",
+   "source": "https://www.qnap.com/en-us/product/ts-432x/specs/hardware",
+   "source_title": "TS-432X | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The spec page does not list which transceivers or DACs are supported. The product page lists the TRX-10GITSFPP-SR (850 nm SR optical) as an optional accessory."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "M.2 lane width and measured NVMe pool speed",
+   "value": "PCIe Gen 3 x2 per M.2 slot; 2× NVMe RAID 0 just above 1.45 GB/s read, about 1.1 GB/s write",
+   "source": "https://nascompares.com/2026/06/08/ugreen-dxp4800gt-nas-review/",
+   "source_title": "UGREEN DXP4800GT NAS Review (NAS Compares, Rob Andrews, 2026-06-08)",
+   "read": "2026-11-13",
+   "note": "Rob Andrews calls these 'storage testing' and does not say they were measured over the network. Four SATA SSDs gave about 1.3 GB/s read and 600–700 MB/s write. He did not test U.2."
+  },
+  {
+   "product": "general",
+   "label": "UGREEN's own statement on HDD RAID 5 vs 10GbE",
+   "value": "Four NAS HDDs in RAID 5 'generally deliver around 600 to 700 MB/s under favorable sequential conditions'; 10GbE 'theoretical ceiling of 1.25 GB/s'",
+   "source": "https://ai.ugreen.com/blogs/buying-guide/ugreen-4-bay-nas-comparison",
+   "source_title": "Best UGREEN 4-Bay NAS: Compare Current Models (UGREEN)",
+   "read": "2026-11-13",
+   "note": "This is the maker's claim and is higher than PCWorld's measured 430/340 MB/s. The same page says of the GT: 'Two 10GbE ports do not turn one ordinary file transfer into a 20Gbps connection... A single TCP session remains limited by one link.'"
+  }
+ ],
+ "unsourced": [
+  "M.2 PCIe generation and lane width on the DXP4800 Plus and DXP4800 Pro. ai.ugreen.com returned HTTP 429 to both WebFetch and storecheck.py. UGREEN's 4-bay comparison blog doesn't give lanes, and the only 'PCIe 4.0 x4' claim I saw was on a third-party reseller listing.",
+  "10GbE controller chip and how it connects over PCIe on the DXP4800 Plus. The maker page was blocked (HTTP 429), and the search results I found did not name it.",
+  "A measured HDD RAID 5 file-copy figure over 10GbE for the DXP4800 Plus itself. KitGuru's pages 7–8 give only ATTO and CrystalDiskMark text (RAID 5 4K QD32: 450 MB/s read, 278 MB/s write), and the file-copy charts are images.",
+  "Whether the TS-432X's SFP+ cage supports a 10GBASE-T copper SFP+ module, and QNAP's US price for one. QNAP's TS-432X spec page lists no transceiver compatibility. A store.qnap.com search for TRX-10GSFP returned only the optical TRX-10GSFPP-LR ($75) and TRX-10GITSFPP-SR, and I didn't reach QNAP's compatibility list."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.3084689999999999
+ }
+}

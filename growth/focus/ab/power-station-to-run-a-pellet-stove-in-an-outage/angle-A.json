@@ -1,0 +1,140 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how many watt-hours these stations actually deliver at a pellet-stove-sized load. Tested at about 200 W, the BLUETTI Elite 300 gave 2,650–2,670 Wh of its 3,014 Wh (about 88 %). The 3,840 Wh Anker SOLIX F3800 gave only 2,980 Wh (78 %). The 4,096 Wh EcoFlow DELTA Pro 3 gave 3,790 Wh (93 %). So the 826 Wh gap in rated capacity between the Anker and the BLUETTI is only about 330 Wh of real output, and on measured energy the Elite 300 runs a 200 W stove for about 13.3 h, not 'about 12'.",
+ "standout": 2,
+ "standout_why": "I compared against homebatteryreport.com, enoughwatts.com, powerfallback.com, ankersolix.com and the HARMAN PDF. homebatteryreport.com divides rated Wh by running VA and calls the results 'ceilings'. It already lists maker UPS times (Apex 300 0/20 ms, DELTA Pro 3 10 ms, Jackery 5000 Plus 0 ms) but gives no measured output and no idle draw. powerfallback.com uses 'about 4 hours per 1,000 Wh at 200 W' and names no power stations. The Anker blog gives no numbers for switchover or idle draw. ChatGPT's own answers assumed a flat 85 % for every brand. The cited wattmatrix F3800 page now returns 404, and its '20.5h' headline only works from rated capacity. enoughwatts.com failed with a TLS error. The HARMAN PDF wouldn't extract to text, so I couldn't check it. None of these pages has a measured delivered-Wh figure, a measured switchover time, or a measured idle draw.",
+ "decides": "This backs the Elite 300 ($1,199) as the pick for a stove that runs at about 200 W or less. At that load it delivered about 2,650 Wh, which is 13.2–13.3 h at 200 W. Our page's 'about 12, no margin' at 215 W becomes about 12.3 h on measured energy. It also weakens the F3800 as the 'bigger margin' alternative: measured, it gives about 14.9 h at 200 W, not the 19–20 h its rating implies. The DELTA Pro 3 is the only one of the three with real headroom (about 19 h at 200 W). None of the three base units clears 12 h for a stove like the Harman XXV (2.8 A run, about 322 VA): Elite 300 about 8.2 h, F3800 about 9.3 h, DELTA Pro 3 about 11.8 h. Those numbers treat VA as W, so they are the most each unit could manage. That kind of stove needs an expansion battery.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 / F3800 Plus",
+  "ALLPOWERS R4000",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Delivered AC energy at about 200 W",
+   "value": "about 2,650 Wh of 3,014.4 Wh rated (about 88 %); just over 92 % at 1,800 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "Notebookcheck (Marcus Schwarten): 3 kWh in a compact package, Powerstation Bluetti Elite 300 review (pub. 2026-03-09, upd. 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "Measured by Notebookcheck at a constant load of just over 200 W. 2,650 / 200 W = 13.25 h. 2,650 / 322 VA (Harman XXV run figure from homebatteryreport, VA treated as W) = about 8.2 h. Efficiency at lighter loads (150 W) was not tested."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Delivered AC energy, full discharge (second lab)",
+   "value": "2.67 kWh delivered; 3.49 kWh drawn from the wall to charge 0–100 %",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review",
+   "source_title": "StorageReview (Dylan Bryan): BLUETTI Elite 300 review, 2026-08-27",
+   "read": "2026-11-13",
+   "note": "Kill-A-Watt measurement. The load is not stated. 2,670 / 3,014.4 = 88.6 %, which agrees with Notebookcheck."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS switchover, stated vs measured",
+   "value": "≤10 ms stated; 8 ms measured grid→battery, 8.25 ms battery→grid",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review",
+   "source_title": "StorageReview (Dylan Bryan): BLUETTI Elite 300 review, 2026-08-27",
+   "read": "2026-11-13",
+   "note": "Measured with a Quarch power analyzer on the AC waveform. The BLUETTI US page says 'switches in just 10 ms'. The StorageReview spec table lists discharge at -20 °C to 40 °C (-4 °F to 104 °F); the BLUETTI page gives no temperature range."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw",
+   "value": "about 15 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "The Solar Lab: Bluetti Elite 300 portable power station review",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'We measured the idle rate around 15W', about double other recent Bluetti units. Test conditions are not stated. The page also reports about 86 % efficiency. Over 12 h, 15 W is 180 Wh, which is already included in a constant-load delivered-Wh test."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "US price",
+   "value": "$1,199.00",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh (BLUETTI US store)",
+   "read": "2026-11-13",
+   "note": "Price from the Shopify store check, compare_at $1,199, in stock. The page also shows a Black Friday Early Access event (Nov 5–18) with spend-based savings and no lower base price. The page lists '6000+' cycles without saying to what % capacity."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Delivered AC energy vs rating",
+   "value": "2.98 kWh measured of 3,840 Wh rated (about 78 %)",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "StorageReview (Kevin OBrien): Anker SOLIX F3800 review, 2024-06-21",
+   "read": "2026-11-13",
+   "note": "Measured from 100 % down to inverter cutoff; the load is not stated. 2,980 / 200 W = 14.9 h, compared with 19.2 h from the rated Wh. 2,980 / 322 VA = about 9.3 h. This is the original F3800; I found no measurement for the F3800 Plus."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "UPS switchover, stated vs measured",
+   "value": "20 ms stated; 13 ms measured grid→battery, 14 ms battery→grid",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "StorageReview (Kevin OBrien): Anker SOLIX F3800 review, 2024-06-21",
+   "read": "2026-11-13",
+   "note": "StorageReview quotes Anker's spec sheet for the 20 ms figure and measured 13/14 ms itself."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw",
+   "value": "about 10 W (about 240 Wh per day)",
+   "source": "https://www.thesolarlab.com/review/can-you-survive-a-24-hour-outage-with-a-power-station",
+   "source_title": "The Solar Lab: Can You Survive a 24-Hour Outage with a Power Station? (Anker F3800)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'With nothing plugged in… the main unit consumed around 10 watts'. It doesn't say whether the AC output was on."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Idle draw depends on firmware",
+   "value": "Anker claims a firmware update cuts idle consumption by 50 % ('doubling your standby time')",
+   "source": "https://us.ankersolix.com/blogs/home-power-backup/increase-f3800-plus-standby-time-to-the-max-with-the-latest-firmware-update",
+   "source_title": "Anker SOLIX US blog: Increase Anker SOLIX F3800 Plus Standby Time to the Max with the Latest Firmware Update (2025-06-27)",
+   "read": "2026-11-13",
+   "note": "This is a maker claim with no absolute W figure and no firmware version, and it applies to the F3800 Plus only. A unit on older firmware idles at about twice the updated rate."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Delivered AC energy vs rating",
+   "value": "3,790 Wh measured of 4,096 Wh rated (over 93 %)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "OutdoorGearLab (Kenji Mowrey): EcoFlow DELTA Pro 3 review, 2026-01-13",
+   "read": "2026-11-13",
+   "note": "Measured on a test jig; the load is not stated. 3,790 / 200 W = about 19 h. 3,790 / 322 VA = about 11.8 h. The 10 ms UPS figure is EcoFlow's claim ('EcoFlow also claims a 10ms uninterrupted power supply'); OutdoorGearLab did not measure it."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Efficiency at near-maximum load",
+   "value": "about 89 % at a sustained 3,650 W for 60 min",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-3-review",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro 3 review",
+   "read": "2026-11-13",
+   "note": "High-load figure only. The Solar Lab gives no idle or UPS figure for this model."
+  },
+  {
+   "product": "general",
+   "label": "Pellet stove running and ignition draw from maker manuals (as quoted by a rival)",
+   "value": "Harman P43/P61A/P68: 200 W standard, 460 W max. Harman XXV: 180 W standard, 440 W max. US Stove 5660: 180 W operating, 346 W igniter for 10–12 min",
+   "source": "https://powerfallback.com/use-cases/ups-for-pellet-stove/",
+   "source_title": "Power Fallback: Pellet Stove on a UPS: Shutdown Minutes or Hours of Heat?",
+   "read": "2026-11-13",
+   "note": "Quoted from the stove manuals on a rival page (I didn't open the manuals). Note the conflict: homebatteryreport gives the Harman XXV at 2.8 A run (about 322 VA), while powerfallback gives 180 W standard. VA versus W, with no power factor published, is why I give the 322 VA runtimes only as upper bounds."
+  }
+ ],
+ "unsourced": [
+  "Measured delivered Wh for the Anker SOLIX F3800 Plus. Only original-F3800 tests turned up; a PCMag ME figure of 4,248 Wh and The Solar Lab's '84 %' showed only in search snippets, and I didn't open them.",
+  "Delivered Wh at a 150 W load for any unit. All the measurements I found were at about 200 W or an unstated load.",
+  "Measured idle draw and measured UPS switchover for the EcoFlow DELTA Pro 3.",
+  "DELTA Pro 3 price on the EcoFlow US store. The store search didn't return the product page.",
+  "ALLPOWERS R4000 measured output, UPS spec and price. The storecheck search of allpowers.com failed with a JSON decode error.",
+  "Text of the HARMAN HAR-0040U battery backup PDF. WebFetch returned a binary I couldn't extract, so I couldn't check whether Harman states a transfer-time or waveform requirement.",
+  "A transfer time that pellet stove controllers tolerate. None of the pages I opened states one.",
+  "The enoughwatts.com rival page, which failed with a self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1095038
+ }
+}

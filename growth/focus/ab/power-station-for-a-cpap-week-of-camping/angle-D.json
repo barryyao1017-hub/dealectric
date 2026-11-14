@@ -1,0 +1,73 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180's ECO auto-off can't be set below 15 W on AC or 5 W on DC. ResMed's table, as Willrun reports it, puts a humidifier-off AirSense 11 at about 7 W, so with ECO on, the AC outlet will cut the CPAP within 1–4 hours, and the 12 V port will too if its threshold is set to 10 W.",
+ "standout": 1,
+ "standout_why": "Pages compared: willitrunpower.com (cited), preparedstates.com (cited), our own dealectric.com page, and ChatGPT's answer. ChatGPT's answer already says to turn off auto power-saving shutdown. Willrun gives Jackery's Energy Saving rule (12 h below 25 W) and EcoFlow's AC timeout, but nothing about the AC180's ECO. Prepared States doesn't mention auto-off at all. Our current page says to turn ECO off and gives 'roughly 10–50 W on other models', with no AC180 figure and nothing on whether the 12 V port is affected. None of them sets the AC180's actual threshold ranges (AC 15–30 W, DC 5–10 W, 1–4 h) against the CPAP's 7 W draw. That comparison shows the AC route fails on every ECO setting, and the DC route survives only at the 5 W setting. The advice to turn auto-off off is already in the rival answers; the exact numbers are new.",
+ "decides": "The AC180 pick still holds, but this changes how the page should tell people to set it up. A humidifier-off AirSense 11 (about 7 W) on the AC180's AC outlet is under the lowest AC ECO threshold (15 W), so with ECO on, the outlet will switch off within the 1–4 hour window every night. Even with the humidifier on (about 19 W), it stays under the 30 W setting. On the 12 V car port through ResMed's Air11 DC/DC converter, 7 W only stays above the cutoff if the DC threshold is set to 5 W, not 10 W. The page should say to turn ECO off completely (hold AC and DC together to enter settings). If ECO stays on, use the 12 V port with the DC threshold at 5 W. This also backs up the DC route, since it's the only one that can stay on with ECO enabled.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "ALLPOWERS S2000 Pro",
+  "ALLPOWERS P1800",
+  "BLUETTI Elite 30 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off thresholds",
+   "value": "AC output 15–30 W, DC output 5–10 W, for 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of BLUETTI user manual)",
+   "read": "2026-11-13",
+   "note": "The manual's FAQ Q4 says: 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' It also says the outputs 'automatically turn off if the AC180 is bearing low or no load for a while.' This is a copy on a manual-hosting site. BLUETTI's own PDF (cdn.shopify.com/.../AC180_User_Manual.pdf) downloaded, but its text couldn't be extracted. The manual doesn't say whether ECO is on by default."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car outlet rating",
+   "value": "12 V DC / 10 A",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual",
+   "read": "2026-11-13",
+   "note": "Spec table: 'Cigarette Lighter Port: 12VDC/10A'. That's enough for the Air11 DC/DC converter's 12 V/10 A input rating."
+  },
+  {
+   "product": "general",
+   "label": "ResMed AirSense 11 AutoSet average draw by setting (ResMed power table, as reported by Willrun)",
+   "value": "7 W with no humidifier; 19 W with HumidAir 11; 55 W with humidifier and ClimateLineAir 11 heated tube",
+   "source": "https://willitrunpower.com/best-power-station-for/cpap/",
+   "source_title": "Best power station for a CPAP: picks by humidifier, DC vs AC | Willrun",
+   "read": "2026-11-13",
+   "note": "Willrun cites ResMed's device power table (resmed-healthcare.de/.../1018528r11_Uebers_Stromverbrauch-Geraete_RDE_PDF-1.pdf). That PDF returned 403 when I tried it, so I'm relying on Willrun's figures. Comparison with the AC180 ECO thresholds: 7 W is below the 15 W AC minimum, so the AC outlet shuts off within 1–4 h with ECO on. 19 W is below the 30 W AC setting. 7 W is above the 5 W DC setting but below the 10 W DC setting. These are averages, so short dips below 5 W are possible."
+  },
+  {
+   "product": "general",
+   "label": "ResMed AirSense 11 65 W power supply consumption (user guide)",
+   "value": "Typical 56.1 W (111.5 VA), peak 73.2 W (137.6 VA); DC output 24 V ±1 V, 2.71 A",
+   "source": "https://www.manualslib.com/manual/2213107/Resmed-Airsense-11.html?page=41",
+   "source_title": "ResMed AirSense 11 Manual, page 41 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The guide doesn't state the measurement conditions. The 56.1 W figure is the supply's rated typical draw, not a humidifier-off draw, so it overstates the dry-night draw."
+  },
+  {
+   "product": "general",
+   "label": "ResMed AirSense 11 DC/DC Converter (part 39231) specs and behaviour",
+   "value": "Input 12 V/24 V at 10 A/5 A; output 24 V, 3.75 A; works with the HumidAir humidifier and ClimateLineAir heated tube; light turns amber on low battery, and converter and light turn off when the supply is too low",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense 11 DC/DC Converter | ResMed shop (UK)",
+   "read": "2026-11-13",
+   "note": "UK store, £70 plus VAT. No US price on this page."
+  }
+ ],
+ "unsourced": [
+  "Whether the BLUETTI AC180's ECO mode is on by default: checked the AC180 manual copy on ManualsLib; BLUETTI's own PDF downloaded, but its text couldn't be extracted.",
+  "ECO or auto-off thresholds for the BLUETTI Elite 200 V2, Elite 30 V2, ALLPOWERS S2000 Pro, P1800, R600 and Tenergy T320: not researched, because I ran out of tool calls.",
+  "ResMed's own AirSense 11 power table: the resmed-healthcare.de PDF and ResMed's US user guide PDF both returned 403, so the 7/19/55 W figures come from Willrun's citation.",
+  "Measured AirSense 11 draw on an Anker SOLIX C300 from the cited Reddit post: Reddit blocked the fetch."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1051263000000002
+ }
+}

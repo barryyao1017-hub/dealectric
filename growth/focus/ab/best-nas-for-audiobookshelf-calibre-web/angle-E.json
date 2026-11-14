@@ -1,0 +1,111 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that, with two spinning HDDs, ComputerBase measured the UGREEN DXP2800 drawing the same idle power as Synology's J4125 two-bay DS224+ (18.6 W each). The DXP2800 was quieter at idle (30.0 vs 33.0 dB(A)) but drew more with its drives asleep (7.3 vs 3.5 W).",
+ "standout": 2,
+ "standout_why": "I opened the Racks & Watts homelab guide (2026-10-25) and the Racks & Watts DXP2800 vs DS225+ comparison. Both list only maker specs and calculated RAID capacities. Neither has a power, noise or throughput figure. ChatGPT's other results (Audiobookshelf docs, Docker Hub, calibre-web.com, Synology datasheets and HIG, UGREEN buying guides, Marius Hosting install guide) are spec or setup pages. I did not open the Android Central DXP2800 review because the fetch returned only its title, so I can't rule it out. None of the cited pages gives a named reviewer's measured watts or dB(A) for any candidate.",
+ "decides": "This backs the DXP2800 as the pick for an always-on family book server. In ComputerBase's test the N100 box cost no more power at idle than Synology's J4125 two-bay, and it measured quieter at idle. That matters for a NAS that sits in a living space. Synology only wins on deep drive sleep (3.5 vs 7.3 W), and Audiobookshelf's scheduled scans and family listening during the day will often keep drives awake. The 4-bay DXP4800 Plus measured 51.6 W idle in the same chart, likely with four drives. Lighter use like this doesn't justify that. The Asustor AS5402T measured 29.2 W with disks idle in Linuxlinks' test. Its 7200 rpm drives and NVMe SSDs make that number not directly comparable.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Idle power, HDDs spinning (ComputerBase)",
+   "value": "18.6 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: SSD-Cache, Lautstärke, Leistungsaufnahme und Fazit (ComputerBase, Frank Hüber, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "'Leerlauf' means drives spinning with no access. The text says two drives were fitted, and the charts name 2× Seagate IronWolf 20 TB. Running 24/7, that is 18.6 W × 8,760 h ≈ 163 kWh a year."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power with HDDs asleep (ComputerBase)",
+   "value": "7.3 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: SSD-Cache, Lautstärke, Leistungsaufnahme und Fazit (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "'HDDs im Ruhezustand' means drives in standby. Same two-drive setup. 7.3 W × 8,760 h ≈ 64 kWh a year."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power while writing (ComputerBase)",
+   "value": "27.7 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "Same chart. ComputerBase's text: 'Im Leerlauf und unter Last liegt das Ugreen DXP2800 NAS dann in etwa gleichauf mit der Synology DS224+.'"
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Noise idle / during drive access (ComputerBase)",
+   "value": "30.0 dB(A) idle (below the meter's range) / 34.2 dB(A) during drive access",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "ComputerBase does not state the distance or meter. It marks readings under about 30 dB(A) as 'unter Messbereich'. The article says HDDs set most of the noise."
+  },
+  {
+   "product": "Synology DS224+ (direct predecessor of the DS225+)",
+   "label": "Power: HDDs asleep / idle / writing (ComputerBase, same chart)",
+   "value": "3.5 W asleep (7.0 W without extended standby) / 18.6 W idle / 25.3 W writing",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "Comparison device in the same chart and lab as the DXP2800. ComputerBase has not tested the DS225+ itself, so treat this as the closest same-method figure for Synology's J4125 two-bay. Other two-drive Synology rows in the chart are labelled '2x 20 TB IronWolf'."
+  },
+  {
+   "product": "Synology DS224+ (direct predecessor of the DS225+)",
+   "label": "Noise idle / during drive access (ComputerBase)",
+   "value": "33.0 dB(A) / 34.6 dB(A)",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "Same method as the DXP2800 rows: 3.0 dB(A) louder at idle, 0.4 dB(A) louder during drive access."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Energy use per 24 hours (Dong Knows Tech)",
+   "value": "≈275 Wh per 24 h (≈11.5 W average)",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review (Dong Ngo, Dong Knows Tech, updated 2025-08-04)",
+   "read": "2026-11-13",
+   "note": "'Tested with two hard drives' (Synology HAT4400 4 TB). The average is 275 / 24 = 11.46 W. Dong gives no dB figure, only 'a subtle hum, audible only in a quiet room'. The workload over the 24 hours is not stated."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Power: HDDs asleep / idle / writing; noise idle / access (ComputerBase)",
+   "value": "26.8 W / 51.6 W / 72.3 W; 30.0 dB(A) / 36.7 dB(A)",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test (ComputerBase, 2024-07-01)",
+   "read": "2026-11-13",
+   "note": "Comparison row in the DXP2800 article. The chart doesn't give its drive count. The text says the DXP2800 ran 'zwei anstelle von vier Laufwerken', which implies four drives in the 4-bay units, so this is not like-for-like with the 2-bay figures."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Power: disks idle / disks hibernating / HDD-to-HDD copy (Linuxlinks)",
+   "value": "29.2 W / 15.4 W / 36.8 W",
+   "source": "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/4/",
+   "source_title": "ASUSTOR AS5402T review, page 4: Power Consumption (Steve Emms, Linuxlinks, 2024-03-18)",
+   "read": "2026-11-13",
+   "note": "Fitted with 2× 6 TB 7200 rpm HDDs plus 2× NVMe SSDs. No meter named. Faster drives and the extra SSDs inflate this compared with ComputerBase's IronWolf setup, so it isn't directly comparable. S3 sleep measured 0.6 W."
+  }
+ ],
+ "unsourced": [
+  "A same-method lab measurement of the Synology DS225+ itself. NAS Compares (2025-08-04) and Blackvoid (2025-09-08) both state 16.98 W access / 6.08 W hibernation / 19.6 dB(A). Those are Synology's spec-sheet numbers with no test method, so I left them out as measurements.",
+  "A named-reviewer measurement of the Synology DS425+ (power or noise). I searched and found none. I didn't open ComputerBase's DS925+ test (only its gallery came up).",
+  "A measured QNAP TS-264-8G idle power. A Toshiba HDD lab report PDF (2× N300 8 TB) reportedly lists about 27 W idle, but the PDF fetched as compressed binary and I couldn't extract it, so it's unverified. I found no dB(A) measurement for the TS-264.",
+  "A base DXP2800 (N100) measurement from Notebookcheck. Notebookcheck's 14.84–20.14 W idle and 29.11 dB(A) figures are for the different Ryzen-based DXP2800 GT, and I only saw them in snippets. Igor'sLab's DXP2800 noise page returned 403.",
+  "A measured idle figure for the TerraMaster F2-425 Plus and Raspberry Pi 5 + SSD setups. I didn't search these within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1573024
+ }
+}

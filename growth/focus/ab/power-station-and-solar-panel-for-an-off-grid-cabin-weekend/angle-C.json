@@ -1,0 +1,93 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's 350 W panel has a 33 V open-circuit voltage. Two in series reach 66 V, over the Elite 200 V2's 12–60 V solar input, and two in parallel are held to the station's 20 A limit, which caps them below 660 W (20 A × 33 V). So the $2,148 Elite 200 V2 + 2×350 W bundle cannot put 700 W into the station. Two SP200L 200 W panels (24.6 V Voc each, 49.2 V in series) do fit under the 60 V limit.",
+ "standout": 2,
+ "standout_why": "I compared four pages. The Anker SOLIX cabin setup guide (cited) gives no Voc, current, connector or series/parallel limits and tells readers to 'confirm panel voltage, current, and connector compatibility' themselves. Its only input figure is the F3800's 2,400 W maximum. SolutionEnergy's cabin page (cited) has no voltage, current or wiring figures at all. The live search top results are Anker and BLUETTI blogs with sizing rules of thumb only. ChatGPT's own answer says only 'make sure the solar panels' voltage, current, and wiring configuration match.' None of these pages pairs a specific panel with a specific station input window.",
+ "decides": "This confirms the Elite 200 V2 + 2×200 W SP200L kit ($1,499 on 2026-11-13) as the 400 W pick, wired in series: 49.2 V Voc is under the 60 V ceiling. In parallel the two panels' 21.6 A short-circuit current is over the 20 A input limit. It argues against stepping up to the 2×350 W bundle ($2,148). Series wiring is ruled out by the 60 V limit, and in parallel the 20 A limit keeps the input under 660 W. So the extra $649 buys less than its 700 W nameplate. Separately, the single 350 W kit price on BLUETTI's store is now $1,449, not the $1,249 on our page.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2× SP200L 200 W",
+  "BLUETTI Elite 200 V2 + 350 W",
+  "BLUETTI Elite 200 V2 + 2× 350 W",
+  "BLUETTI AC180 + 200 W / 2× 200 W",
+  "ALLPOWERS P1800 + SP037 400 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input window",
+   "value": "12 V–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Quoted from the page FAQ comparison: 'Elite 200 V2: 12V-60V/20A, 1,000W max'. The Tech Specs table did not render."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "Open-circuit voltage, connector, listed compatibility",
+   "value": "Voc 33 V; MC4 with a 20 A MC4-to-XT60 cable, 1.5 m, included; Elite 200 V2 and AC180 are on its compatible list; $649",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-13",
+   "note": "The page does not list Isc, Vmp or Imp. Its IP rating conflicts: IP67 in the features section, IP65 in the FAQ."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 350 W",
+   "label": "Series/parallel limit (derived)",
+   "value": "Series: 2 × 33 V = 66 V Voc, over the 60 V input maximum. Parallel: capped at 20 A, so under 20 A × 33 V = 660 W, short of the 700 W nameplate",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-13",
+   "note": "Arithmetic from the 33 V Voc (panel page) and the 12–60 V/20 A input (Elite 200 V2 page). 660 W is a ceiling: real Vmp is below Voc, so actual input is lower. BLUETTI does not publish this pairing limit. Bundle price $2,148 from storecheck: https://www.bluettipower.com/products/elite-200-v2-2-pv350d"
+  },
+  {
+   "product": "BLUETTI SP200L 200 W",
+   "label": "Electrical specs and compatibility",
+   "value": "Voc 24.6 V, Isc 10.8 A, MC4; Elite 200 V2 and AC180 on its compatible list; $399 single",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "BLUETTI says mixing different panel types 'is not encouraged'. The page has no series/parallel instructions."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× SP200L",
+   "label": "Correct wiring for the 2×200 W kit (derived)",
+   "value": "Series: 49.2 V Voc, inside 12–60 V, at 10.8 A. Parallel: 21.6 A Isc, over the 20 A input limit",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "2 × 24.6 V = 49.2 V; 2 × 10.8 A = 21.6 A. Checked against the 12–60 V/20 A input on the Elite 200 V2 page. The station should cap current rather than be damaged, but series wiring stays inside both limits."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 kits",
+   "label": "US store prices today",
+   "value": "+200 W $1,199; +2×200 W $1,499; +350 W $1,449; +2×350 W $2,148; station alone $899",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py from bluettipower.com Shopify data; all listed as available. The +350 W kit is $1,449 (https://www.bluettipower.com/products/elite-200-v2-pv350), up from the $1,249 on our 2026-11-03 page."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input and stock",
+   "value": "500 W max solar input; $499 station; out of stock, restock late November, ships from 12/14; 350 W panel out of stock until late December",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "The page's visible content did not show the voltage range or current limit."
+  }
+ ],
+ "unsourced": [
+  "AC180 solar voltage range and max current. The bluettipower.com AC180 page was truncated before the spec table. Without them I can't check its 2×200 W series/parallel limits.",
+  "Elite 30 V2 solar voltage window. Our page says 12–28 V; its product page showed only '200W Max.' Its official manual was not readable as text. This would rule out the 33 V 350 W panel and two 100 W panels in series.",
+  "Elite 200 V2 official manual spec table (Voc warning, AC+solar combined input, expansion batteries B230/B300). BLUETTI's EU manual PDFs came back as compressed binary and local text extraction was not approved.",
+  "BLUETTI 350 W panel Isc/Vmp/Imp. Not on its product page, so the real parallel-input figure for 2×350 W can only be bounded (under 660 W), not stated.",
+  "ALLPOWERS SP037 Voc/Isc and P1800/S2000 Pro input limits on an ALLPOWERS page. allpowers.com returned a generic page without specs. The two-SP037-in-series exclusion (2 × 45.3 V = 90.6 V against a 60 V limit) needs that source before publishing.",
+  "Cold-weather Voc rise margin for series strings near the 60 V limit. I found no maker document for these panels that gives a temperature coefficient."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1160978000000001
+ }
+}

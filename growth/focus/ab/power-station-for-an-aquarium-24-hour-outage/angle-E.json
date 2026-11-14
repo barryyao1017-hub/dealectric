@@ -1,0 +1,140 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much energy named testers actually got out of these stations or how much power the AC inverter uses with nothing plugged in. StorageReview got 2.67 kWh from the BLUETTI Elite 300 and The Technology Man got 2,819 Wh. Notebookcheck got only about 1,600 Wh out of the 2,048 Wh Anker SOLIX C2000 Gen 2 at 200 W. With the inverter on and no load, The Solar Lab measured 13.6 W (EcoFlow DELTA 2 Max), about 18 W (Anker C2000 Gen 2) and about 27 W (EcoFlow DELTA 3 Max), and The Technology Man measured about 19 W (Elite 300). That is 330–650 Wh a day spent just keeping the inverter on.",
+ "standout": 2,
+ "standout_why": "I compared reefs.com (cited), planetfish.org, ouraquariumlife.com and our own Dealectric page. I could not open the cited Petco page (HTTP 403), but ChatGPT used it only for care tips. Reefs.com measured run times on a 1,024 Wh Elite 100 V2 (36 h 13 min on an 11–13 W return pump, 8 h 21 min at about 140–150 W). It says it did not separately measure what the inverter and internal electronics use, and it gives no usable Wh. Planetfish lists run times from its own team but names no meter or method, and it repeats maker idle and switchover numbers. Ouraquariumlife covers only battery air pumps and reports no measurements. ChatGPT's three answers all assumed 85% usable energy and a 15 W inverter overhead without measuring anything. Our own page shows '1,910 measured', '8–9 measured' ms and a '~19 W' idle figure but credits no one. These findings put a named source on each of those numbers.",
+ "decides": "The measurements back the Elite 300 pick and count against the 2 kWh stations ChatGPT suggested. ChatGPT's 20%-duty budget is 2,448 Wh with 15 W of overhead. Using the measured 19 W overhead instead makes it about 2,544 Wh (+4 W × 24 h = 96 Wh). The Elite 300's measured output of 2.67–2.82 kWh covers that, with only 130–275 Wh to spare. The 2 kWh stations measured 1.6–1.91 kWh, which falls short of even ChatGPT's own 15%-duty budget (about 2.1 kWh). Notebookcheck's 1,600 Wh from the C2000 Gen 2 allows only about 67 W average over 24 h, below the 72 W ChatGPT said a 2,048 Wh station could carry. Idle draw also decides between same-size stations: 27 W (DELTA 3 Max) against 13.6 W (DELTA 2 Max) is about 325 Wh a day of difference, roughly 3 h of a 100 W aquarium load.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "ALLPOWERS R4000",
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX C2000 Gen 2",
+  "BLUETTI Elite 100 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured AC output, full discharge",
+   "value": "2.67 kWh",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3014Wh, 2400W and an 8ms UPS Switchover in a 58-Pound Box (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview (Dylan Bryan, August 27, 2026) measured total output on a Kill-A-Watt until the battery was empty. It does not state the load. That is 89% of the rated 3,014.4 Wh. The same review measured 3.49 kWh of AC input for a 0–100% charge."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured UPS switchover (line to battery / battery to line)",
+   "value": "8 ms / 8.25 ms",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3014Wh, 2400W and an 8ms UPS Switchover in a 58-Pound Box (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview timed the AC waveform cutover on a Quarch power analyzer after pulling line power, then again on restore. BLUETTI rates it at 10 ms or less."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured AC usable energy at 1 kW",
+   "value": "2,819 Wh (about 94%) in 2 h 46 min",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "BLUETTI Elite 300 Review: 3kWh Capacity, But There Are Compromises (The Technology Man)",
+   "read": "2026-11-13",
+   "note": "The Technology Man (Gidon, March 25, 2026) ran a constant 1 kW resistive heater load. The site appears to be UK-based, so the unit was probably a 230 V model (my inference). The same review measured 2,866.2 Wh over DC (XT90 port, 20 A load)."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured idle draw, AC on, no load",
+   "value": "about 19 W (about 450 Wh/day)",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "BLUETTI Elite 300 Review: 3kWh Capacity, But There Are Compromises (The Technology Man)",
+   "read": "2026-11-13",
+   "note": "The Technology Man left it 16 h with Eco mode off and nothing plugged in. Charge fell from 100% to 90%: 10% × 3,014 Wh ≈ 301 Wh ÷ 16 h ≈ 18.8 W. Over 24 h that is about 450 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured UPS switchover (second tester)",
+   "value": "8.9 ms",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "BLUETTI Elite 300 Review: 3kWh Capacity, But There Are Compromises (The Technology Man)",
+   "read": "2026-11-13",
+   "note": "Measured on an oscilloscope by The Technology Man (March 25, 2026). BLUETTI claims under 10 ms."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge energy",
+   "value": "1.91 kWh (2.44 kWh to recharge)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview (Dylan Dougherty, April 25, 2025) does not state the discharge load. That is 92% of the rated 2,073.6 Wh, and it is the source for the '1,910 measured' figure on our page. StorageReview did not measure switchover and quotes BLUETTI's 15 ms claim."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable AC energy at 350 W",
+   "value": "1,030 Wh",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview (Kevin OBrien, May 26, 2023) measured this with inverter losses included. That is 89% of the rated 1,152 Wh. The review also gives a 20 ms transfer speed but does not say it measured it."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Measured idle draw, AC inverter on, no load",
+   "value": "about 13.6 W (about 326 Wh/day); inverter efficiency 86%",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-2-max-review",
+   "source_title": "EcoFlow DELTA 2 Max Review: Is It Still Worth Buying Years Later? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab charged it fully and left the AC inverter on with nothing plugged in. The page gives no author or review date (only 'Copyright © 2026') and does not state the load for the 86% efficiency test."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Measured idle draw, AC inverter on, no load",
+   "value": "about 27 W (about 650 Wh/day); inverter efficiency 79%",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-max",
+   "source_title": "EcoFlow DELTA 3 Max Review: A Step Forward or a Step Sideways? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab says it calculated this 'after a few tests' with the AC inverter on and no load. It names no author, date or test load for the efficiency figure. 27 W × 24 h = 648 Wh, about a third of the rated 2,048 Wh."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Measured usable energy at about 200 W",
+   "value": "about 1,600 Wh of 2,048 Wh (just under 79%)",
+   "source": "https://www.notebookcheck.net/11-6-kg-lighter-than-its-predecessor-Powerstation-Anker-Solix-C2000-Gen-2-review.1233558.0.html",
+   "source_title": "11.6 kg lighter than its predecessor: Powerstation Anker Solix C2000 Gen 2 review (Notebookcheck)",
+   "read": "2026-11-13",
+   "note": "Notebookcheck (Marcus Schwarten, February 24, 2026) drained it at a continuous load of 'a good 200 W'. It tested the European version, which it says differs slightly from the US model. 1,600 Wh ÷ 24 h ≈ 67 W, the most this unit could average across a 24 h outage."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Measured idle draw, AC outlets on standby",
+   "value": "about 18 W (Anker rates 9 W, with only the screen and USB active)",
+   "source": "https://www.thesolarlab.com/review/anker-solix-c2000-gen-2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Review: One of the Best Anker Power Stations? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab wrote '18W per hour', which means a draw of about 18 W. It names no author or date and also reports about 89% efficiency. 18 W × 24 h ≈ 430 Wh a day."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Measured aquarium run time (reef tank, 230 V unit, UPS mode)",
+   "value": "36 h 13 min on an 11–13 W return pump; 8 h 21 min at about 140–150 W peak",
+   "source": "https://reefs.com/can-a-1-kwh-power-station-keep-a-reef-tank-alive-during-a-blackout-we-tested-the-bluetti-elite-100-v2/",
+   "source_title": "Can a 1 kWh Power Station Keep a Reef Tank Alive During a Blackout? We Tested the Bluetti Elite 100 V2 (Reefs.com)",
+   "read": "2026-11-13",
+   "note": "Tested by Danilo Ronchi (DaniReef) for Reefs.com, October 6, 2026. The tank is about 200 L, and the heater and chiller were left out. Its own estimate for the first test is about 471 Wh delivered, and it did not measure what the inverter used. ChatGPT already cited this page, so it is not new."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS R4000: I looked for a named reviewer's measured usable Wh, idle draw or switchover and found none. The only hands-on number (Exspenditure, about 3,650 Wh usable) is more than the 3,456 Wh battery can hold, so I left it out. The 15 ms switchover appears only on retailer and maker listings.",
+  "BLUETTI Elite 200 V2: I looked for a measured AC idle draw. The Gadgeteer's '10w/h with AC and DC left on' is in a feature list, not a test. StorageReview reports no idle figure.",
+  "BLUETTI AC180: I looked for an independently measured idle draw. The 15 W figure traces back to BLUETTI.",
+  "EcoFlow DELTA 2 Max and DELTA 3 Max: I looked for a named reviewer's measured usable Wh and found none for these exact models. The Technology Man's 1,898 Wh figure is for the DELTA 3 Max Plus.",
+  "Measured switchover time for the BLUETTI Elite 200 V2, EcoFlow DELTA 2 Max and Anker C2000 Gen 2: The Solar Lab and StorageReview describe clean transfers but give no measured times."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.986799
+ }
+}

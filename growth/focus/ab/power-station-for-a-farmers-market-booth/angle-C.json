@@ -1,0 +1,99 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's own AC180 page and manual cap AC output at 1,500 W when the air is 30–40 °C (86–104 °F). On a summer market afternoon, that cap is the whole rating of a 1,500 W blender, so the blender and the running fridge can't share the AC180.",
+ "standout": 3,
+ "standout_why": "I compared against these pages. portableenergylab.com, the cited rival, names no products and gives no model-specific compatibility or temperature limits. Our own Dealectric page, also cited, lists the AC180 as '1,800 W: yes' for a 1,500 W blender with no heat condition. voltandvalley.com covers the Elite 200 V2 expansion-pack exclusions and says its 3,900 W power lifting is for resistive loads only, but it doesn't list the AC180 or any heat derating. briconline.org gives no operating temperatures or derating; its only heat note is about one unit's runtime on a 95 °F day. bluettipower.com's AC70 page (ChatGPT's plain chat) wasn't about this. ChatGPT said only 'choose the Elite 200 V2 if temperatures are high' and gave no number.",
+ "decides": "This changes the pick for warm-season markets. Above 86 °F the AC180's AC limit drops from 1,800 W to 1,500 W, so a 1,500 W blender alone uses the whole limit, and the fridge (plus anything else on AC) pushes it over. That leaves no headroom; it's not a thin margin. In summer the AC180 is only safe with a blender rated well under 1,500 W (about 1,300 W or less, leaving room for the fridge), or with the fridge unplugged while blending. Otherwise the Elite 200 V2 (2,600 W) is the pick, though I couldn't find its own heat limit. The AC180's battery can be extended with a B230/B300 through a P090D-to-DC7909 cable ($89). That adds stored energy for the day but adds no inverter power, so it doesn't fix the blender problem.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3",
+  "ALLPOWERS S2000 Pro"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC output cap at 30–40 °C ambient",
+   "value": "1,500 W max at 30–40 °C (86–104 °F); operating range 0–40 °C",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station | 1800W 1152Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Spec line reads 'Operating Temperature: 0°C–40°C (30°C–40°C: @1500W Max.)'. The page text came through with garbled degree symbols. The manualslib copy of the AC180 manual (manualslib.com/manual/3073286, p.12) gives the same thing in °F: 'Discharging: -4°F~104°F (86°F~104°F: @1500W Max.)'. Arithmetic: a 1,500 W blender alone hits the cap, so with the fridge also running, the combined load goes over 1,500 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Charging temperature limit",
+   "value": "-20–40 °C; 1,500 W max at 30–40 °C",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib copy), p.12",
+   "read": "2026-11-13",
+   "note": "Quoted as 'Charging: -20°C～40°C (30°C～40°C: @1500W Max.)'. BLUETTI's own PDF downloads wouldn't convert to text, so this comes from the ManualsLib copy."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Rated AC output, surge, outlets, power lifting",
+   "value": "1,800 W continuous across 4 × 120 V/15 A outlets; 2,700 W power lifting (the page names resistive heaters: hair dryers, kettles, heaters)",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station | 1800W 1152Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Power lifting doesn't apply to a blender motor, so the motor-load ceiling is 1,800 W, or 1,500 W above 30 °C."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Expansion battery route",
+   "value": "B80 (806 Wh), B230 (2,048 Wh) or B300 (3,072 Wh), up to 4,224 Wh total; B230/B300 connect with the P090D-to-DC7909 External Battery Connection Cable, $89",
+   "source": "https://www.bluettipower.com/products/external-battery-connection-cable",
+   "source_title": "External Battery Connection Cable - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The cable listing says 'P090D To DC7909 Applicable Models: EB150/EB240/AC180, Length: 59in/150cm'. The 4,224 Wh figure (1,152 + 3,072) is from bluettipower.com/pages/ac180. The AC180's DC input limit is 500 W (manual p.11: 'up to 1440W AC input and 500W DC input'; product page: 'Solar Input: 500W Max., VOC 12-60VDC, 10A'). So an attached pack is limited to the DC input rate (500 W at most) and adds no inverter power. The price came from the store's JSON."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover and car input",
+   "value": "20 ms UPS switchover; car input 12/24 V from a cigarette-lighter port",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station | 1800W 1152Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The product page also says silent charging (45 dB) must be turned on in the BLUETTI app. ManualsLib p.16 says 'Turbo and silent modes can be enabled in BLUETTI app.'"
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499 (2026-11-13); AC180 + 200 W solar $769; AC180 + 2 × 200 W solar $1,232",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Read with the storecheck.py product tool. This is $50 above the $449 our page and ChatGPT quoted from 2026-11-03."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, power lifting, solar input",
+   "value": "$899 (2026-11-13); 2,600 W continuous; 3,900 W power lifting for 'pure resistive loads' only; PV 12–60 V/20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Price from the storecheck.py search. The rest is quoted from the product page. The page's FAQ asks whether B80/B300/B230 work but shows no answer."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Expansion pack compatibility (named reviewer)",
+   "value": "Volt & Valley: works with the B500K bundle; BLUETTI's FAQ says B80, B230 and B300 are not supported",
+   "source": "https://voltandvalley.com/tailgate-travel/best-power-station-for-a-food-truck",
+   "source_title": "Best Power Station for a Food Truck or Market Stall (2026) | Volt & Valley",
+   "read": "2026-11-13",
+   "note": "This is the reviewer's summary of BLUETTI's FAQ. I couldn't see the FAQ answer on BLUETTI's page myself. Volt & Valley was in ChatGPT's results but not cited."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 heat derating: its product page has no operating or discharging temperature line, and I didn't open its manual. I can't say whether it also drops output above 30 °C.",
+  "EcoFlow DELTA 3 and ALLPOWERS S2000 Pro operating-temperature derating: I didn't open their spec pages or manuals within the tool budget.",
+  "Whether a B230/B300 on the P090D-to-DC7909 cable charges only the AC180, and not the reverse: only third-party retailer listings say so; BLUETTI's cable page doesn't.",
+  "Confirmation from BLUETTI's own PDF that the 1,500 W cap applies to AC output: the PDFs (cdn.shopify.com AC180_User_Manual.pdf and the s4.bluettipower.com support PDF) wouldn't convert to text, so I relied on the product page plus the ManualsLib copy."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0808015999999998
+ }
+}

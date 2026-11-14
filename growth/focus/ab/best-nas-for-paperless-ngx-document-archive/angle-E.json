@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much power any candidate NAS draws at the wall. Named reviewers measured the DXP2800 at 5.6 W in standby (igor'sLAB), the DS225+ at about 275 Wh per 24 h with two HDDs (Dong Knows Tech), the DXP4800 Plus at 24.25 W idle (KitGuru) and the AS5402T at 29.2 W with its disks idle (LinuxLinks).",
+ "standout": 2,
+ "standout_why": "The cited rival pages are docs.paperless-ngx.com Setup and FAQ, which I read through their GitHub dev sources at raw.githubusercontent.com because docs.paperless-ngx.com returned 403. Neither gives any measured figure: no watts, no RAM use, no seconds per page. Their only hardware advice is that OCR is 'very slow' on a Raspberry Pi 3 B, plus a list of low-power settings. Neither names a NAS. None of ChatGPT's answers cites a measurement either. Its picks rest on spec sheets and phrases like 'excellent for Paperless-ngx'. I did not open the uncited results (appsgit, andreaswaelchli, peira.dev, rackdiff, racksandwatts, esp32.co.uk), so a power figure could still appear on one of them.",
+ "decides": "A Paperless archive sits idle almost all day and runs OCR in short bursts, so idle draw is the running cost that adds up. The measurements support the N100 DXP2800 as the value pick: 5.6 W for the box alone with one NVMe, which is about 49 kWh a year. They also count against the 4-bay DXP4800 Plus and the AS5402T for an archive that does nothing else, since both measured above 24 W idle with drives fitted. The DS225+ averaged about 11.5 W with two HDDs. These tests differ in drives and conditions, so the page should show the drive setup next to each number and not rank them strictly. No named lab measured Paperless OCR speed on any of these NAS CPUs, so OCR speed cannot decide the pick.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS225+",
+  "Synology DS725+",
+  "Synology DS925+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "TerraMaster F2-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Wall power, standby / data transfer / off with WoL",
+   "value": "5.6 W standby; 14.5 W data transfer; 0.6 W off with WoL",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "UGREEN NASync DXP2800 NAS im Test (igor'sLAB, Tim Kutzner, published 2024-05-08, modified 2025-05-31)",
+   "read": "2026-11-13",
+   "note": "Measured at the wall socket with one NVMe SSD installed. The reviewer removed the other drives so the figures show the NAS alone, so add HDD draw on top. 5.6 W × 8,760 h ≈ 49 kWh/yr."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Wall power, idle / peak stress",
+   "value": "about 7 W idle; 34.7 W maximum",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de)",
+   "read": "2026-11-13",
+   "note": "The maximum is under a combined CPU, RAM and disk stress test. The page does not state the drive count, the meter, the author or the date. Use it only to corroborate igor'sLAB."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Wall power, idle / peak",
+   "value": "24.25 W idle (2.5GbE), 30.45 W idle (10GbE); peak 61.35 W write on 2.5GbE, 67.02 W on 10GbE",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "Ugreen NASync DXP4800Plus 4-bay NAS Review (KitGuru, Simon Crisp, 2024-05-28)",
+   "read": "2026-11-13",
+   "note": "Tested with WD Red WD60EFRX drives. The page does not state how many. Peaks were taken during CrystalDiskMark 8.0.4. 24.25 W × 8,760 h ≈ 212 kWh/yr."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Measured energy per 24 h",
+   "value": "about 275 Wh per 24 h (average ≈ 11.5 W)",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review (Dong Knows Tech, Dong Ngo, full review 2025-08-04)",
+   "read": "2026-11-13",
+   "note": "Tested with two hard drives (Synology 4 TB HDDs). 275 Wh ÷ 24 h = 11.46 W average, ≈ 100 kWh/yr. The review gives no separate idle or load watts."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Wall power by state",
+   "value": "29.2 W disks idle; 15.4 W disks hibernated; 22.4 W 100% CPU with disks hibernated; 36.8 W HDD-to-HDD copy; 0.6 W S3 sleep",
+   "source": "https://www.linuxlinks.com/asustor-nimbustor-2-gen2-as5402t-review/4/",
+   "source_title": "ASUSTOR AS5402T review, page 4 (LinuxLinks, Steve Emms, 2024-03-18)",
+   "read": "2026-11-13",
+   "note": "Unit held 2 × 6 TB 7,200 rpm HDDs and 2 × NVMe SSDs, with EuP mode off and WOL/WOW on. Faster 7,200 rpm drives push these figures up compared with 5,400 rpm NAS drives. 29.2 W × 8,760 h ≈ 256 kWh/yr."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT (Ryzen R2514 variant, not the N100 DXP2800)",
+   "label": "Wall power, idle / full CPU load",
+   "value": "14.84–20.14 W idle with drives spinning; 31.12 W all four cores loaded; 35.9 W CPU plus drives at full load",
+   "source": "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html",
+   "source_title": "Small, fast and surprisingly quiet: Ugreen NASync DXP2800 GT review (Notebookcheck, Daniel Schmidt, 2026-10-13)",
+   "read": "2026-11-13",
+   "note": "Tested with two WD Red HDDs. Included so the page does not mix up the GT and the N100 DXP2800 when quoting figures. Notebookcheck called the idle draw relatively high for a 2-bay unit."
+  },
+  {
+   "product": "general (Intel N100)",
+   "label": "Paperless-ngx OCR time per page",
+   "value": "about 8–12 s per page",
+   "source": "https://techfuelhq.com/tutorials/paperless-ngx-docker-setup-2026/",
+   "source_title": "Paperless-ngx Docker setup 2026 (techfuelhq, LK Wood IV, updated 2026-11-05)",
+   "read": "2026-11-13",
+   "note": "The tutorial gives no test document, no method and no RAM figure for the N100 host. Treat it as one writer's figure, not a lab measurement. The same page lists about 500 MB total idle RAM for the stack (paperless 180 MB, Postgres 50, Redis 10, Tika 200, Gotenberg 60), also with no stated method."
+  },
+  {
+   "product": "general",
+   "label": "Official Paperless-ngx docs: hardware figures",
+   "value": "no measured figures; only says OCR runs 'very slow' on a Raspberry Pi 3 B",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/faq.md",
+   "source_title": "paperless-ngx docs/faq.md (dev branch)",
+   "read": "2026-11-13",
+   "note": "setup.md (same repo, read the same day) lists low-power settings: SQLite, 1 webserver worker, OCR clean none, OCR first page only. It gives no watts, RAM or seconds per page, and names no NAS. This is the baseline the cited rivals offer."
+  }
+ ],
+ "unsourced": [
+  "QNAP TS-264 measured idle and active power: search results quote a Toshiba HDD Innovation Lab report (TSH209) at 27.0 W idle and 33.0 W active with 2 × N300 8 TB. I opened the PDF but could not extract its text, and the Toshiba HTML landing page does not print the numbers. Left out until someone reads the PDF table.",
+  "Synology DS725+ and DS925+ wall-meter idle and load figures from a named reviewer: I found only Synology's spec-sheet access and hibernation figures and NASCompares tables that repeat them.",
+  "TerraMaster F2-425 Plus measured power from any named reviewer: not searched for lack of budget.",
+  "Side-by-side CPU benchmarks (Cinebench R23 multi) for N100, J4125, N5095, N5105, Pentium Gold 8505 and Ryzen R1600: Notebookcheck comparison pages and TechPowerUp's DXP4800 Plus review returned 403, so no figure is reported.",
+  "A measured Paperless-ngx or OCRmyPDF time per page on any candidate NAS CPU from a named lab or reviewer with a stated method: none found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.2447434999999998
+ }
+}

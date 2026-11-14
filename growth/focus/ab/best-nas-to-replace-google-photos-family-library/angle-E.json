@@ -1,0 +1,112 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a timed face-recognition run on candidate hardware. Mighty Gadget (James Smythe) timed a 220,000-photo library at about 12 hours on the Intel UGREEN DXP4800 Plus and about 36 hours on the ARM DH4300 Plus.",
+ "standout": 2,
+ "standout_why": "I opened the two cited rival comparison pages, homelabcompass.com/compare/immich-vs-synology-photos and esp32.co.uk/synology-photos-vs-immich-vs-photoprism. Neither has any measured figure. HomeLabCompass only says Immich 'moves much faster' and Synology is 'steady'. Esp32 says it is 'a documentation-based comparison, not a claim that we benchmarked'. Its 25 W number is an 'example assumption'. The Synology KB and spec pages ChatGPT cited list features and RAM rules, not timings or watts. I did not open itechguides, androidcentral, supinfo or whoismcafee, which ranked but were not cited. Our current page has no measured figures at all.",
+ "decides": "This confirms that x86 boxes are worth it over UGREEN's cheaper ARM DH models for a family library: Mighty Gadget's face-recognition pass took 3× as long on the DH4300 Plus. It also backs pairing Immich with the 8 GB DXP2800 rather than a stock 2 GB Synology DS225+/DS425+. ComputingForGeeks measured Immich using about 2.4–2.6 GiB of RAM, which is more than those Synologys ship with, so a RAM upgrade comes first there. The power figures don't change the pick, but they let the page state running cost per box with a name attached.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH4300 Plus",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Face-recognition processing time, 220,000-photo library (UGOS Photos)",
+   "value": "about 12 hours",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review/",
+   "source_title": "Ugreen NASync DXP4800 Plus Review - A Powerful 10GbE NAS That Challenges the Market Leaders (Mighty Gadget, James Smythe)",
+   "read": "2026-11-13",
+   "note": "Quote: 'On the DXP4800 Plus, similar processing completed in roughly 12 hours.' Published 2025-11-14, updated 2026-04-01. My arithmetic: about 18,300 photos/hour. If that rate holds, a 50,000-photo family library takes about 2.7 h. That is a linear extrapolation, not a measurement."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Face-recognition processing time, 220,000-photo library (UGOS Photos)",
+   "value": "about 36 hours",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review/",
+   "source_title": "Ugreen NASync DXP4800 Plus Review (Mighty Gadget, James Smythe)",
+   "read": "2026-11-13",
+   "note": "Quote: 'Processing 220,000 photos for face recognition took about 36 hours on the DH4300 Plus.' Same reviewer and same library as the DXP4800 Plus figure. That is 3× longer, about 6,100 photos/hour. The DH2300 uses the same Rockchip ARM platform, but it was not tested."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Measured power draw",
+   "value": "39–45 W during photo transfers; 64 W peak; 32 W in the evening",
+   "source": "https://mightygadget.com/ugreen-nasync-dxp4800-plus-review/",
+   "source_title": "Ugreen NASync DXP4800 Plus Review (Mighty Gadget, James Smythe)",
+   "read": "2026-11-13",
+   "note": "The drive population isn't stated. The same reviewer measured the DH4300 Plus at about 21–22 W for similar workloads."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power draw at the wall",
+   "value": "0.6 W off with WoL; 5.6 W standby; 14.5 W during data transfer",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test – Kann die kleine Variante überzeugen? (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-13",
+   "note": "Measured with only one NVMe SSD installed and the HDDs removed, so two spinning drives would add to this. Published 2024-05-08, modified 2025-05-31."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured noise",
+   "value": "33.2 dB(A) idle; 35.6 dB(A) load",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "Ugreen NASync DXP2800 NAS im Test (igor'sLAB, Tim Kutzner)",
+   "read": "2026-11-13",
+   "note": "Voltcraft SL-200 meter at 40 cm, 125 ms, Lo mode. The room baseline was listed as 33.2 dB(A), so the idle reading is at room level."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Measured energy use per day",
+   "value": "≈275 Wh (tested with two hard drives)",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review (Dong Knows Tech, Dong Ngo)",
+   "read": "2026-11-13",
+   "note": "From the review's spec table, dated 2025-08-04. Dong Ngo's tables report this per 24 hours. My arithmetic: 275/24 ≈ 11.5 W average. The drive models are not stated."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Power under sustained load and noise (NASCompares)",
+   "value": "rarely exceeded 44 W at high CPU with 4× 4 TB HDDs; 36–38 dB(A) idle; 53 dB(A) at full fan with heavy drive activity",
+   "source": "https://nascompares.com/2025/08/25/synology-ds425-nas-review/",
+   "source_title": "Synology DS425+ Review – Should You Buy This NAS? (NAS Compares, Rob Andrews)",
+   "read": "2026-11-13",
+   "note": "Posted 2025-08-25. The same page also gives 28.25 W access and 6.10 W hibernation, but those match Synology's rated spec, so treat them as the maker's figures rather than measurements. Distance and method for the dB readings are not stated."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Noise (NASCompares)",
+   "value": "19.6 dB(A) idle",
+   "source": "https://nascompares.com/2025/08/04/synology-ds225-nas-review/",
+   "source_title": "Synology DS225+ NAS Review – Should You Buy? (NAS Compares, Rob Andrews)",
+   "read": "2026-11-13",
+   "note": "Posted 2025-08-04. Distance and method are not stated, so it can't be compared with igor'sLAB's 40 cm readings. The page's 16.98 W / 6.08 W power figures match Synology's spec and are not independent measurements."
+  },
+  {
+   "product": "general",
+   "label": "Immich RAM footprint and ML throughput (lab-timed, CPU-only)",
+   "value": "2,430 MiB idle with photos loaded; 2,620 MiB peak during face detection; face detection 3.95 photos/s, CLIP smart search 12.7 photos/s, OCR 3.1 photos/s",
+   "source": "https://computingforgeeks.com/best-nas-for-immich-photos/",
+   "source_title": "Best NAS for Immich and Photo Backup (2026) (ComputingForGeeks, Eugene Otieno)",
+   "read": "2026-11-13",
+   "note": "Immich v3.3.3 on a 4-vCPU Core i7-6700 Proxmox VM with 8 GB RAM. 497 NASA photos. Tested 2026-10-20. Not run on any candidate NAS. The ~2.4–2.6 GiB footprint is more than the stock 2 GB in the DS225+ and DS425+, and fits within the DXP2800's 8 GB. Raising face-detection concurrency to 4 made it 9% slower."
+  }
+ ],
+ "unsourced": [
+  "A timed Synology Photos face or object recognition run on a J4125 box (DS225+, DS425+, DS224+). I searched reviewer and forum results and found only untimed forum reports and a blog estimate with no method.",
+  "Timed UGOS Photos or Immich indexing on the base DXP2800 (N100) or the DH2300. MiniPCReviewer and CameraJabber give no timings, and Le Verger only says 'a day or two'.",
+  "QNAP TS-264 measured power with drives. A Toshiba lab-report PDF (toshiba-storage.com TSH209) turned up in search but couldn't be read in this session, so its figures aren't included.",
+  "Neowin's DXP2800 review returned HTTP 403, so its power figures couldn't be read.",
+  "A Dong Knows or other named-reviewer wall-power measurement for the DS425+ (not found in search).",
+  "Measured power for the DXP2800 with two spinning HDDs from a named reviewer. Notebookcheck's 14.84–20.14 W idle figure is for the DXP2800 GT, a different model, so it isn't included."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2147500000000002
+ }
+}

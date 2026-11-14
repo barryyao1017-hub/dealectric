@@ -1,0 +1,123 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much energy the candidate stations actually delivered at concentrator-like loads, as measured by a reviewer. Notebookcheck measured 2,905 Wh from the Anker SOLIX F3800 at a constant 260 W load, which is 75% of its 3,840 Wh rating. At 350 W that works out to about 8.3 hours, not the 9.3 hours ChatGPT gave. Notebookcheck also measured about 2,650 Wh from the BLUETTI Elite 300 at about 200 W, or about 7.6 hours at 350 W.",
+ "standout": 2,
+ "standout_why": "I compared against the cited BlackoutWise home-concentrator page, Willrun's 'real runtimes' page and our own Dealectric page. All three say they ran no tests: BlackoutWise says 'We do not test units ourselves,' Willrun says 'we did not test these stations with a concentrator,' and Dealectric says all its runtimes are calculated. All three apply a flat 85% (Wh × 0.85) assumption, and the switchover times they list are makers' figures. None gives a measured usable-Wh figure, a measured switchover time or a measured idle draw for any candidate. ChatGPT's answers make the same 85% assumption.",
+ "decides": "Measured output keeps the same order but narrows the gap at the top, and it settles the 8-hour question for a 350 W EverFlo. The F3800 delivered only 75% of its rating, so measured, it clears an 8-hour night only just (about 8.3 h). The Elite 300 falls short whether you use measured energy (about 7.6 h from 2,650–2,670 Wh) or rated energy (about 7.3 h). The DELTA Pro 3 measured 3,790 Wh, about 10.8 h, which is the only comfortable overnight margin. At 280 W, both the Elite 300 (about 9.5 h) and the F3800 (about 10.4 h) clear 8 hours. The 1 kWh class measured 850–910 Wh, about 2.4–2.6 h at 350 W, which confirms they cover only a short outage. Two independent labs measured the Elite 300's switchover at 8 ms and 8.9 ms, under BLUETTI's 10 ms claim. That supports, but does not prove, that a concentrator would ride through the switch.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "Anker SOLIX F3800",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "EcoFlow DELTA 3",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured usable AC energy at a concentrator-like load (Notebookcheck, Marcus Schwarten)",
+   "value": "2,905 Wh at a constant ~260 W, about 11 h runtime (75% of 3,840 Wh)",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review: The monster power station can even charge electric cars via solar power",
+   "read": "2026-11-14",
+   "note": "Published 2024-08-27, updated 2026-10-05. Ran until shutoff at 1%. The article lists 230 V sockets, so the unit tested was probably not the US 120 V version. The verdict says 'a rather weak 3,000 Wh,' which conflicts with the 2,905 Wh in the body. 2,905/350 = 8.3 h; 2,905/280 = 10.4 h. ChatGPT gave 9.3 h at 350 W. Notebookcheck also measured 4,669 Wh to recharge, a 62% round trip."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy at low load (Notebookcheck, Marcus Schwarten)",
+   "value": "about 2,650 Wh at a steady load just over 200 W (just under 88% of 3,014.4 Wh); just over 92% at 1,800 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review",
+   "read": "2026-11-14",
+   "note": "Published 2026-03-09, updated 2026-10-05. Tested the EU version, which the article says differs slightly from the US version. 2,650/350 = 7.6 h; 2,650/280 = 9.5 h. Fan noise was over 50 dB at 1 m under load, which matters in a bedroom."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable energy and UPS transfer time (StorageReview, Dylan Bryan)",
+   "value": "2.67 kWh out; UPS switchover 8 ms line-to-battery, 8.25 ms back to line",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "Bluetti Elite 300 Review: 3014Wh, 2400W and an 8ms UPS Switchover in a 58-Pound Box",
+   "read": "2026-11-14",
+   "note": "Published 2026-08-27. Transfer time captured with a Quarch power analyzer while running a workstation. Discharge load not stated. Recharge measured at 3.49 kWh with a Kill-A-Watt. 2,670/350 = 7.6 h."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable energy, AC idle draw and UPS (The Technology Man, Gidon)",
+   "value": "2,819 Wh at a constant 1 kW resistive load (94%); about 19 W idle with AC on and Eco mode off; UPS 8.9 ms by oscilloscope",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 Review – 3kWh Capacity – But There Are Compromises",
+   "read": "2026-11-14",
+   "note": "Published 2026-03-25. The 1 kW load is much heavier than a concentrator's, so it is less representative than Notebookcheck's ~200 W run. Idle draw derived from 100%→90% over 16 h with no load."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured usable energy (OutdoorGearLab, Kenji Mowrey)",
+   "value": "3,790 Wh of 4,096 Wh (review says 'over 93%'; arithmetic gives 92.5%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 Review | GearLab",
+   "read": "2026-11-14",
+   "note": "Dated 2026-01-13. Load not stated ('our test jig'). 3,790/350 = 10.8 h; 3,790/280 = 13.5 h. Switchover is EcoFlow's 10 ms claim; GearLab did not measure it."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable energy and recharge energy (StorageReview, Dylan Dougherty)",
+   "value": "1.91 kWh out of 2,073.6 Wh (about 92%); 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-14",
+   "note": "Published 2025-04-25. Discharge load not stated. The 986 W–1.1 kW figure belongs to the separate UPS test. Switchover was not timed; the article repeats BLUETTI's 15 ms claim and reports no reboots in repeated unplug tests. 1,910/350 = 5.5 h; 1,910/280 = 6.8 h."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured usable AC energy at a concentrator-like load (Notebookcheck, Marcus Schwarten)",
+   "value": "850 Wh at a continuous ~250 W, 230 V (83% of 1,024 Wh)",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster, but… Anker Solix C1000 Gen 2 power station review",
+   "read": "2026-11-14",
+   "note": "Published 2025-12-21, updated 2026-10-05. EU version. Ran until shutdown at 1%. Fluctuating loads gave less. 850/350 = 2.4 h; 850/280 = 3.0 h. About 45 dB at 1 m at higher output."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured usable energy (OutdoorGearLab, Kenji Mowrey)",
+   "value": "890 Wh of 1,024 Wh (87%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/anker-solix-c1000-gen-2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Review | GearLab",
+   "read": "2026-11-14",
+   "note": "Dated 2026-07-23. Measured on a light-bar load bank of unstated wattage. 890/350 = 2.5 h."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Measured usable energy (OutdoorGearLab, Kenji Mowrey)",
+   "value": "870 Wh of 1,024 Wh (85%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-3",
+   "source_title": "EcoFlow DELTA 3 Review | GearLab",
+   "read": "2026-11-14",
+   "note": "Dated 2026-07-23. Load not stated. 870/350 = 2.5 h; 870/280 = 3.1 h."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured usable energy (OutdoorGearLab, Kenji Mowrey)",
+   "value": "910 Wh of 1,070 Wh (85%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2",
+   "source_title": "Jackery Explorer 1000 v2 Review | GearLab",
+   "read": "2026-11-14",
+   "note": "Dated 2026-07-23. Load not stated. 910/350 = 2.6 h; 910/280 = 3.3 h."
+  }
+ ],
+ "unsourced": [
+  "Measured runtime of any home oxygen concentrator on any of these stations: I searched for reviewer and lab tests and found only calculated estimates.",
+  "Measured wall draw of a Philips EverFlo, Inogen At Home or DeVilbiss 525 by a named reviewer (for example with a Kill-A-Watt): the search found nothing, so concentrator watts remain the makers' ratings.",
+  "Measured usable energy for the BLUETTI AC200L: Notebookcheck's hands-on gives only BLUETTI's formula with its 93% efficiency and 12 W self-consumption figures; the nextpit review URL redirected to inside-digital.de and was not opened; TrustedReviews returned HTTP 530.",
+  "Measured UPS switchover times for the F3800, DELTA Pro 3, DELTA 3, Elite 200 V2, AC200L, C1000 Gen 2 and Jackery 1000 v2: the reviews I opened repeat the makers' claims or report pass/fail only.",
+  "Measured AC idle draw for every candidate except the Elite 300 (The Technology Man, about 19 W).",
+  "US 120 V versions of the Notebookcheck measurements: the C1000 Gen 2, Elite 300 and probably F3800 tests were run at 230 V."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.2069568
+ }
+}

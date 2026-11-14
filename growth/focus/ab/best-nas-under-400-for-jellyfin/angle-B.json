@@ -1,0 +1,127 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states a yearly electricity cost for a specific model. We worked out about $11.14 a year for the UGREEN DXP2800 (ocinside measured about 7 W at idle) and about $17.50 a year for the TerraMaster F2-424 (TerraMaster's 11.0 W figure with drives hibernating), both at EIA's US average residential rate for August 2026 of 18.16¢/kWh.",
+ "standout": 1,
+ "standout_why": "Starry Hope's 'Best 2-Bay NAS' page has only a general rule of about 88 kWh, or about $16, per year for every 10 W at about 18¢/kWh. Its one measured idle figure is Notebookcheck's for the DXP2800 GT, a $459.99 model that is over budget. It gives no yearly cost for the DXP2800, F2-424 or F2-425 Plus. ComputingForGeeks' QuickSync picks page says it is 'a spec and capability guide, not a bench test' and has no wattage or stream counts. Jellyfin's Hardware Selection page has no power or stream figures. So the rivals have the method but not the numbers for each model.",
+ "decides": "This confirms the DXP2800 pick rather than changing it. At idle the cheapest and dearest candidates differ by only about $6 a year, and even the DXP2800 running flat out all year (34.7 W) would cost about $55. Running cost should not swing the choice. The pick rests on the N100's Quick Sync, which Jellyfin's docs recommend by name, and on the purchase price.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-424",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "US average residential electricity price",
+   "value": "18.16¢/kWh (August 2026, preliminary)",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly, Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "U.S. Total, residential sector. August 2025 was 17.57¢. All cost figures below use 18.16¢."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Idle power, measured",
+   "value": "about 7 W",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "ocinside.de, Ugreen DXP2800 NAS Review (page 4)",
+   "read": "2026-11-13",
+   "note": "ocinside measured it. The review does not say which drives were installed for the power test."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maximum power, measured",
+   "value": "34.7 W",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "ocinside.de, Ugreen DXP2800 NAS Review (page 4)",
+   "read": "2026-11-13",
+   "note": "ocinside ran a combined CPU, RAM and hard-disk stress test."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Yearly electricity cost at idle (derived)",
+   "value": "$11.14 per year",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "ocinside.de, Ugreen DXP2800 NAS Review + EIA Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "7 W × 8,760 h = 61.32 kWh × $0.1816 = $11.14 a year"
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Yearly electricity cost at full load all year (derived, worst case)",
+   "value": "$55.20 per year",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "ocinside.de, Ugreen DXP2800 NAS Review + EIA Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "34.7 W × 8,760 h = 303.97 kWh × $0.1816 = $55.20 a year"
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Power draw, maker spec",
+   "value": "11.0 W with drives hibernating; 22.0 W reading and writing",
+   "source": "https://www.terra-master.com/pages/f2-424-specification",
+   "source_title": "F2-424 Specification – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "Bays filled with Seagate 4TB ST4000VN008 drives. The power adapter is 40 W."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Yearly electricity cost, drives hibernating (derived)",
+   "value": "$17.50 per year",
+   "source": "https://www.terra-master.com/pages/f2-424-specification",
+   "source_title": "F2-424 Specification – TerraMaster Official Store + EIA Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "11.0 W × 8,760 h = 96.36 kWh × $0.1816 = $17.50 a year. This is not like-for-like with the DXP2800's 7 W idle figure, because ocinside did not state its drive setup."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Yearly electricity cost, reading and writing all year (derived)",
+   "value": "$35.00 per year",
+   "source": "https://www.terra-master.com/pages/f2-424-specification",
+   "source_title": "F2-424 Specification – TerraMaster Official Store + EIA Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "22.0 W × 8,760 h = 192.72 kWh × $0.1816 = $35.00 a year"
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Main specs",
+   "value": "Intel N95; 8 GB DDR5 in one slot (32 GB max); 2× M.2 2280 NVMe at PCIe 3.0 x1; 2× 2.5GbE; 2-year limited warranty",
+   "source": "https://www.terra-master.com/pages/f2-424-specification",
+   "source_title": "F2-424 Specification – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "The F2-424 is the N95 model. Several ChatGPT answers showed an N95 card under the F2-425 Plus name, but ITPro's review gives the F2-425 Plus as an N150."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "CPU",
+   "value": "Intel N150 (Twin Lake), 4 cores, up to 3.6 GHz",
+   "source": "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price",
+   "source_title": "ITPro, TerraMaster F2-425 Plus review",
+   "read": "2026-11-13",
+   "note": "This contradicts the ChatGPT cards that list the F2-425 Plus as 'Intel N95'."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Jellyfin's guidance on its CPU class",
+   "value": "J4125 is on Jellyfin's list of hardware to avoid",
+   "source": "https://jellyfin.org/docs/general/administration/hardware-selection/",
+   "source_title": "Hardware Selection | Jellyfin",
+   "read": "2026-11-13",
+   "note": "Quote: Intel J/M/N/Y series up to 11th gen 'leading to subpar performance… It is advised to avoid using these parts in a Jellyfin Server.' The same page names the Intel N100 as a recommended integrated-GPU CPU, with 8 GB of RAM."
+  }
+ ],
+ "unsourced": [
+  "Today's maker-store prices for every candidate. storecheck.py and WebFetch both got HTTP 429 from ai.ugreen.com and terra-master.com, and B&H returned 403. Starry Hope lists the DXP2800 at $389.99 and the F2-425 Plus at $499.99, but that is not the maker's store or the retailer ChatGPT showed. That ruled out any cost-per-stream or 3-year total-cost figure.",
+  "Power draw for the TerraMaster F2-425 Plus and F2-425. The terra-master.com spec pages returned 404 or 429, and the nashq.com PDFs are image-only, so no text could be pulled from them. HWBusters' and Starry Hope's model pages showed up only as search snippets, which were not opened.",
+  "A measured Jellyfin 4K HDR tone-mapping stream count for the N100, N95, N150 or N5095 on any of these NAS units. Searches turned up only forum threads and a stream count for a different Intel chip, which can't stand in for these. Without it there is no stream count per dollar.",
+  "An idle power figure for the DXP2800 with the drive setup stated, so it can be compared like-for-like with TerraMaster's hibernation spec."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0512047999999998
+ }
+}

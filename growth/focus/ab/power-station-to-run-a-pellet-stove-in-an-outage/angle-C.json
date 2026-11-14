@@ -1,0 +1,102 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Harman's P-Series owner's manual tells owners to 'Use only Harman approved battery back-up devices' because 'Other products may not operate properly, can create unsafe conditions or damage your appliance', or that the backup devices it names are all Tripp Lite units, so none of the candidate power stations is Harman-approved.",
+ "standout": 1,
+ "standout_why": "I compared against homebatteryreport.com (rank 12 in ChatGPT's results). From Harman's XXV manual it already says 'Harman does not list portable power stations as approved', names the APC BE750G and Tripp Lite INTERNET750U, and gives the 'Other brands or models may not be compatible' line. It does not carry the P-Series wording 'Use only Harman approved' or the warning that other products 'can create unsafe conditions or damage your appliance'. The Harman HAR-0040U PDF that ChatGPT cited is the Tripp Lite list itself, but ChatGPT's answer only passed on the advice to configure backup properly and keep it away from heat. wattmatrix.app returned 404. enoughwatts.com failed with a certificate error, so I could not compare against it. The ankersolix.com blog names no stove models and claims no maker approval.",
+ "decides": "The pick stays the same, with a caveat attached. No stove maker document I opened approves any portable power station by name. For a Harman owner, the BLUETTI Elite 300, ALLPOWERS R4000, AC200L, EcoFlow and Anker units are all outside Harman's approved list, so the page should tell Harman owners to check with their dealer first. The page still recommends the Elite 300 on runtime. StorageReview measured 2.67 kWh at the AC outlets and an 8 ms switchover. That works out to about 12.4 h at 215 W before idle draw, and about 17.8 h at 150 W. Quadra-Fire owners carry less risk, because homebatteryreport quotes those manuals as saying the stove restarts by itself after a power interruption. I could not confirm from BLUETTI whether the Elite 300 takes expansion batteries. For a stove drawing 215 W or more, the expandable AC200L (B300K packs) and the larger stations remain the units with headroom you can add later.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI AC200L",
+  "ALLPOWERS R4000",
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Harman P-Series: approved backup devices only",
+   "value": "'Use only Harman approved battery back-up devices.' 'Other products may not operate properly, can create unsafe conditions or damage your appliance.'",
+   "source": "https://www.manualslib.com/manual/2735351/Harman-P43.html?page=24",
+   "source_title": "Harman P43 / P-Series Owner's Manual, B. Loss of Power (3-90-436168c, rev 02/19), ManualsLib",
+   "read": "2026-11-13",
+   "note": "This is the maker's manual, read on a ManualsLib mirror. The page footer reads 'P-Series Owner's Manual_R23 • 2014 - ___ • 02/19'."
+  },
+  {
+   "product": "general",
+   "label": "Harman P-Series: approved UPS and what it is for",
+   "value": "Tripp Lite INTERNET750U is 'tested and approved'. 'The UPS provides safe shut-down only. It is not intended for continued operation.'",
+   "source": "https://www.manualslib.com/manual/2735351/Harman-P43.html?page=24",
+   "source_title": "Harman P43 / P-Series Owner's Manual, B. Loss of Power, ManualsLib",
+   "read": "2026-11-13",
+   "note": "The manual separately describes an inverter/charger on a 12 V deep-cycle battery that runs the appliance 'for up to eight (8) hours'. It refers readers to harmanstoves.com for the approved inverter/chargers and does not mention generators or power stations."
+  },
+  {
+   "product": "general",
+   "label": "Harman-approved Tripp Lite inverter/chargers: dealer settings change",
+   "value": "Tripp Lite APS700HF (700 W) and APS750 (750 W) need a 12 V deep-cycle battery and setting changes made by a Harman dealer; up to 8 h runtime",
+   "source": "https://forgenflame.com/blogs/winter-storm-outage-no-problem",
+   "source_title": "How to Use a Pellet Stove During a Power Outage, Forge & Flame",
+   "read": "2026-11-13",
+   "note": "This is a retailer blog with no author or date, not Harman's own document. The Harman HAR-0040U PDF it draws on would not extract as text here."
+  },
+  {
+   "product": "general",
+   "label": "Harman XXV, Quadra-Fire Classic Bay 1200 and Santa Fe ratings (rival page)",
+   "value": "XXV: start 4.2 A, run 2.8 A. Classic Bay 1200: start 3.75 A, run 1.88 A (about 216 VA). Santa Fe: start 4.1 A, run 1.1 A. Both Quadra-Fire manuals say the stove restarts by itself after an electrical disruption.",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "Battery backup for a pellet stove, The Home Battery Report",
+   "read": "2026-11-13",
+   "note": "This is a rival page in ChatGPT's results. The amp figures are its reading of Hearth & Home manuals on 2026-08-19. I include it so the page does not claim these figures as new."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured UPS switchover",
+   "value": "8 ms (line to battery); 8.25 ms (back to line)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review: 3014Wh, 2400W and an 8ms UPS switchover in a 58-pound box, StorageReview (Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "Dylan Bryan of StorageReview measured AC waveforms with a Quarch power analyzer, with a workstation as the load. The maker's figure is 10 ms."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Maker's UPS exclusion (per manual, as quoted by reviewer)",
+   "value": "The UPS feature 'is not intended for data servers or workstations that require a high-performance UPS'",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review, StorageReview",
+   "read": "2026-11-13",
+   "note": "StorageReview quotes this from BLUETTI's manual. I could not open the manual itself. The exclusion does not name stoves or motor loads."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy",
+   "value": "2.67 kWh delivered from full to empty; 3.49 kWh drawn from the wall to recharge 0–100 %",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review, StorageReview",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 2,670 Wh / 215 W = 12.4 h, and 2,670 / 150 = 17.8 h, both before inverter idle draw and ignition cycles. 2,670 / 3,014.4 = 89 % of rated capacity, above the page's 85 % assumption."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price and maker UPS claim",
+   "value": "US$1,199.00; '10 ms UPS'",
+   "source": "https://bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station, BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Bundles run from US$1,399 (with Charger 1) to US$2,048 (with a 500 W panel). The page does not say whether the unit is expandable, and its FAQ expansion answers are blank."
+  }
+ ],
+ "unsourced": [
+  "Whether the BLUETTI Elite 300 takes expansion batteries (B80, B230, B300K, B500K). BLUETTI's US and NZ product pages are silent, the Decathlon UK and IE FAQ pages returned 403 and 404, the CyberShack review returned 404, and the CGMagazine and ADBMAG reviews do not mention it.",
+  "The text of Harman's HAR-0040U 'Battery Backup Options' PDF (its current Tripp Lite list, and whether the APS1012SW needs a settings change). The PDF downloaded from both hosts as compressed streams that would not extract, and local PDF tools needed approval I did not have.",
+  "Englander, PelPro, Breckwell and ComfortBilt owner's-manual wording on running from inverters or generators (pure sine wave, minimum watts). I found only forum posts and a ComfortBilt blog post, not the manuals.",
+  "Any pellet stove maker document that approves a portable power station by name.",
+  "BLUETTI Elite 300 discharge temperature range and warranty years. The US and NZ product pages show only 'Global Warranty' with no term and an empty specs section.",
+  "WattMatrix's Anker SOLIX F3800 pellet-stove page (404) and Enough Watts' pellet-stove page (certificate error), so I could not compare those rival pages."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1487744
+ }
+}

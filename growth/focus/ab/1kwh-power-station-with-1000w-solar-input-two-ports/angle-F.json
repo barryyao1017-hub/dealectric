@@ -1,0 +1,85 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 100 V2, a 1,024 Wh station that takes 1,000 W of solar, sells for $499 on BLUETTI US today (2026-11-14), the same price as BLUETTI's 500 W AC180. Volt & Valley shows the two-input EcoFlow DELTA 3 Plus at $949, so the second input costs about $450 more, unless the shopper can wire their panels into one 12–60 V string.",
+ "standout": 2,
+ "standout_why": "I compared this against Volt & Valley's 'Best Power Station and Solar Panel Combo' (cited in both chats) and 'Best 1000W Portable Power Stations' (result #2 in the plain chat). They list the DELTA 3 Plus ($949, list $1,189, 'price as of November 13, 2026'), the Jackery Explorer 1000 v2 ($559), the Anker C1000 Gen 2 ($529.99) and the AC180 ($499), but they leave out the Elite 100 V2, the only other 1 kWh station with 1,000 W of solar. The cited BLUETTI result is the Elite 100 V2's own page, and ChatGPT showed it as a card with no price and didn't compare it on price. Our current page has the Elite 100 V2 at $499 'ships Nov 12'. Today's check shows it in stock at $499 with no markdown (compare-at price is also $499).",
+ "decides": "This confirms the DELTA 3 Plus for the question as asked. EcoFlow's DELTA 3 series page lists 'two 500W MPPT inputs' for 1,000 W in total, and no other 1 kWh model I checked publishes two inputs that add up to 1,000 W. It also gives the page its price line: the shopper pays about $450 more (EcoFlow's own price wasn't readable today) for two independent inputs instead of the Elite 100 V2's 1,000 W for $499. That's worth it only if the panels can't go into one string, such as two arrays facing different ways or panels whose combined voltage would go over 60 V.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "ALLPOWERS P1800",
+  "Dabbsson DBS1000 Pro",
+  "DJI Power 1000 V2",
+  "OUPES Mega 1",
+  "OSCAL PowerMax 1800 SE"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (compare-at $499.00, so no discount; in stock)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "Read from the Shopify product JSON with storecheck.py. One variant, 'Elite 100 V2', available: true."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input",
+   "value": "1,000 W, 'Full charge in 70 mins with built-in MPPT'",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "BLUETTI's claim from the product description. This page text doesn't give the number of solar ports. ChatGPT's answer and our current page both say one input. Where it loses: 1,000 W comes in through one MPPT, so two arrays have to be combined into one string within the input's limits."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input layout",
+   "value": "1,000 W total through two 500 W MPPT inputs; EcoFlow claims a full charge in 70 min",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "Maker page. It gives no prices, and no per-port voltage or current. Arithmetic: 1,024 Wh ÷ 1,000 W ≈ 1.0 h before charging losses."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Solar input",
+   "value": "500 W MPPT, 'recharges in 2 hours'",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "Where it loses: half the solar input of the Plus, so it doesn't meet the 1,000 W requirement."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (compare-at $499.00; in stock). The AC180 + 2× 200 W solar kit is $1,232.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py. Where it loses: the same $499 as the Elite 100 V2, but the store text I opened lists no solar wattage. Volt & Valley and our current page give it as 500 W, half of what the question asks for."
+  }
+ ],
+ "unsourced": [
+  "Price of the EcoFlow DELTA 3 Plus and DELTA 3 on us.ecoflow.com: storecheck.py and WebFetch both got HTTP 429 three times. The only figure I have is Volt & Valley's $949 (list $1,189, as of 2026-11-13), which is a rival page, not the maker or ChatGPT's retailer.",
+  "Per-port voltage and current for the DELTA 3 Plus: the EcoFlow series page doesn't list them, and the store product page returned 429.",
+  "Number of solar ports and the voltage/current limits on the BLUETTI Elite 100 V2: the product page text doesn't state them, and the user-manual PDF on s4.bluettipower.com had no extractable text.",
+  "Price of the Jackery Explorer 1000 v2 on jackery.com: HTTP 429 from both storecheck.py and WebFetch.",
+  "Price of the Anker SOLIX C1000 Gen 2 on anker.com: both product URLs I tried returned 404, and the store search returned 404.",
+  "Price of the ALLPOWERS P1800 on allpowers.com: storecheck search returned non-JSON.",
+  "Price of the Dabbsson DBS1000 Pro on dabbsson.com: HTTP 429.",
+  "Price of the OUPES Mega 1 on oupes.com: HTTP 429.",
+  "Price and stock of the DJI Power 1000 V2 on store.dji.com: it redirected to an account login page.",
+  "Price and solar input of the OSCAL PowerMax 1800 SE on oscal.hk: store search returned 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.7142613999999999
+ }
+}

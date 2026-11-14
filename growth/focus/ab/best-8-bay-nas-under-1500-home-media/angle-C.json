@@ -1,0 +1,119 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states what QNAP's 'optional GPU' Plex route on the TS-873A actually requires: QNAP's product page says the PCIe Gen3 x4 slots take only entry-level NVIDIA cards that need no power cables (it names the GeForce GTX 1650), a card in use by Virtualization Station stops hardware transcoding in QTS, and Plex's own document says the card must be set to QTS mode, needs Plex Media Server v1.15.1.791 or newer, and only the first card is used.",
+ "standout": 2,
+ "standout_why": "I compared against the cited WunderTech (2026-09-28), ComputingForGeeks (2026-10-21) and Starry Hope (2026-11-02) pages and the cited QNAP hardware-spec page. WunderTech and ComputingForGeeks already give Synology's drive policy (unlisted HDDs accepted for new pools on DSM 7.3, M.2 still limited to listed SSDs), the DX525 limit of 18 bays and the 25GbE NIC ceiling, so those findings would not stand out. WunderTech says nothing about QNAP GPUs. ComputingForGeeks describes the TS-873A slots only as '10GbE card and a second card'. Starry Hope doesn't mention QNAP. QNAP's spec page lists only 'optional via a PCIe adapter' and a 250 W PSU, and names no card. ChatGPT's answers repeated 'Optional GPU / add-on GPU required' with no card, power limit, QTS-mode requirement or reliability caveat. TechRadar's page loaded only as a headline, so I could not check it.",
+ "decides": "This confirms the UGREEN DXP8800 Plus as the Plex pick. On the QNAP TS-873A, Plex hardware transcoding means buying a separate entry-level NVIDIA card with no power connector, running it in QTS mode (not shared with VMs), and depending on QNAP's NVIDIA driver packages. One Plex forum user reported GTX 1650 transcoding on a TS-873A failing after a QTS 5.2.3 update with no fix posted. The DXP8800 Plus has Quick Sync on the CPU, so it needs no card. For a media library with transcoding, the TS-873A only makes sense if the buyer accepts the card cost and driver risk. Otherwise it is a direct-play or storage box, like the DS1825+, which has no GPU path at all: its slot list names only 10GbE and 25GbE NICs.",
+ "candidates": [
+  "UGREEN NASync DXP8800 Plus",
+  "Synology DS1825+",
+  "QNAP TS-873A",
+  "Asustor Lockerstor 8 AS6508T",
+  "QNAP TS-832PX",
+  "Ubiquiti UniFi UNAS Pro 8"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-873A",
+   "label": "Graphics card support (maker)",
+   "value": "Two PCIe Gen3 x4 slots take 'high-profile graphics cards that do not need power cables'. QNAP says it 'supports entry-level NVIDIA graphics cards for video processing or GPU-passthrough to VMs' and names the GeForce GTX1650 for 4K UHD transcoding.",
+   "source": "https://www.qnap.com/en-us/product/ts-873a",
+   "source_title": "TS-873A | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Taken from the product overview text. The page refers buyers to the Compatibility List for the supported cards."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "GPU shared with VMs (maker exclusion)",
+   "value": "When Virtualization Station uses the graphics card, 'the NAS will temporarily stop hardware transcoding acceleration for QTS (and vice versa)'",
+   "source": "https://www.qnap.com/en-us/product/ts-873a",
+   "source_title": "TS-873A | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP's own footnote on the product page."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Card size, slot and PSU limits",
+   "value": "2× PCIe Gen3 x4. Card size 200 × 131.15 × 18.76 mm in each slot. 'Wider cards can be installed if the next PCIe slot will not be used.' 250 W PSU. Graphics, hardware transcoding and HDMI out are all 'optional via a PCIe adapter'.",
+   "source": "https://www.qnap.com/en-us/product/ts-873a/specs/hardware",
+   "source_title": "TS-873A | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "This is the spec page ChatGPT cited. It names no specific GPU."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Plex requirements for an NVIDIA card on QNAP",
+   "value": "Plex Pass required. 'Using an NVIDIA graphics card with QNAP requires Plex Media Server v1.15.1.791 or newer.' The card must be set to 'QTS mode'. If several cards are installed, only the first available one is used.",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Plex article last modified 2026-10-27. Plex also says AMD GPU support is provided 'as is' and recommends Intel Quick Sync or NVIDIA instead."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Reported breakage of GTX 1650 transcoding after a firmware update",
+   "value": "Plex forum user 'thelimey' reported GTX 1650 hardware transcoding on a TS-873A stopped after updating to QTS 5.2.3.3006 (log: 'Cannot load libcuda.so.1'). Downgrading to QTS 5.1.9 restored it only inconsistently. The last post is dated 2025-03-14 and no fix was posted.",
+   "source": "https://forums.plex.tv/t/qnap-873a-gtx-1650-no-hw-transcoding-since-x-update/908718",
+   "source_title": "QNAP 873a GTX 1650 - No HW transcoding - since X (update)? | Plex Forum",
+   "read": "2026-11-13",
+   "note": "This is one owner's report from 2025-03-12/14, not a measured review. Plex forum moderator ChuckPa replied that the NVIDIA driver package must match the kernel and advised contacting QNAP."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "Memory compatibility (maker)",
+   "value": "Up to 64 GB (2× 32 GB DDR4 SODIMM). ECC is supported, but 'Using ECC memory requires the removal of pre-installed memory', so ECC and non-ECC modules cannot be mixed. QNAP says to use only QNAP modules. QuTS hero needs at least 8 GB. Inline deduplication needs at least 16 GB.",
+   "source": "https://www.qnap.com/en-us/product/ts-873a",
+   "source_title": "TS-873A | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Combined from the product page footnotes and the hardware-spec page."
+  },
+  {
+   "product": "QNAP TS-873A",
+   "label": "10GbE upgrade cards named by maker",
+   "value": "QXG-10G1T (1× 10GBASE-T, Gen3 x4), QXG-10G2T (2× 10GBASE-T, Gen3 x4), QXG-10G2SF-NXE (2× SFP+, Gen3 x8), QM2-2P10G1TB (2× M.2 + 1× 10GbE, Gen3 x8)",
+   "source": "https://www.qnap.com/en-us/product/ts-873a",
+   "source_title": "TS-873A | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Built-in LAN is 2× 2.5GbE. 10GbE needs one of these cards, which takes the slot a GPU would otherwise use (the unit has two slots)."
+  },
+  {
+   "product": "Synology DS1825+",
+   "label": "PCIe cards listed (maker)",
+   "value": "Only NICs: E25G30-F2 (25GbE), E10G30-T2, E10G30-T1, E10G30-F2 (10GbE). No graphics card is listed.",
+   "source": "https://www.synology.com/en-us/products/DS1825+#specs",
+   "source_title": "DS1825+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "One PCIe Gen3 x8 slot (x4 link). The footnote points to the compatibility list for the latest NICs."
+  },
+  {
+   "product": "Synology DS1825+",
+   "label": "M.2 and drive restrictions (maker)",
+   "value": "'Creating M.2 storage pools requires the use of Synology-verified SSDs'. 'SSD cache can be enabled with select compatible SSD'. Listed M.2 SSDs: SNV3410, SNV5420. The product page still says 'Synology only guarantees full functionality, reliability, and performance for compatible drives.'",
+   "source": "https://www.synology.com/en-us/products/DS1825+#specs",
+   "source_title": "DS1825+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "WunderTech and ComputingForGeeks already cover this (unlisted HDDs accepted for new pools on DSM 7.3, unlisted M.2 SSDs still limited)."
+  },
+  {
+   "product": "Synology DS1825+",
+   "label": "Memory and expansion limits (maker)",
+   "value": "8 GB DDR4 ECC pre-installed, 32 GB max (2× 16 GB). Optional modules: D4ES03-8G, D4ES03-16G. Multi-module setups must be identical. 'Volumes over 108 TB require 32 GB of memory or more.' Up to 18 drives with two DX525 units.",
+   "source": "https://www.synology.com/en-us/products/DS1825+#specs",
+   "source_title": "DS1825+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The 108 TB volume limit is relevant to the media-library page: 8× 20 TB in RAID 6 gives about 120 TB usable, which is over 108 TB and so needs 32 GB of RAM (Synology's footnote). That RAM requirement is new against the rival pages; the DX525 limit is not."
+  }
+ ],
+ "unsourced": [
+  "UGREEN DXP8800 Plus PCIe slot generation/lanes, supported card types (GPU/NIC/HBA), memory module compatibility and third-party drive statement from UGREEN's US product page: nas.ugreen.com, ai.ugreen.com and nas-eu.ugreen.com all returned HTTP 429 to WebFetch, and storecheck.py returned HTTP 403. I found no UGREEN compatibility document for the PCIe slot.",
+  "QNAP's live Compatibility List of graphics cards for the TS-873A (https://www.qnap.com/en-us/compatibility/?model=522&category=25): the page renders client-side and WebFetch got no table. A NASCompares article from 2021 lists only the ASUS PH-GTX1050TI-4G with 'Hardware Transcoding' for the TS-673A/TS-873A, but that is a third party and too old to use.",
+  "Whether QNAP's GPU 'QTS mode' transcoding also works under QuTS hero on the TS-873A: I found no QNAP or Plex document that states it.",
+  "Current prices were not checked: this angle covers compatibility, and the UGREEN store blocked the tool."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.2109646999999997
+ }
+}

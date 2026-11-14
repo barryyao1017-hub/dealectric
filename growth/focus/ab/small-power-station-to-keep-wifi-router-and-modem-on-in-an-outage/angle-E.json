@@ -1,0 +1,110 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a named tester ran the BLUETTI Elite 30 V2 at a router-sized 13 W load and got 11 h 23 min (Reefs.com, May 2026, with AC-ECO turned off), or that named reviewers measured 11–19 W of inverter overhead on this unit and on its rivals. That makes the 12–14.5 h AC figures shown at 12–20 W too optimistic.",
+ "standout": 3,
+ "standout_why": "I compared four pages. The cited homepowerfacts.com page lists 'independently measured' usable capacity but names no tester (it gives 203 Wh for the RIVER 3), and its idle-draw figures cover only stations of 1 kWh and up. outagemath.com and backupcalc.com are pure arithmetic (Wh × 85% ÷ 15–20 W). backupcalc gives an unsourced 10–30 W for inverter idle, and outagemath uses a made-up 10 W. solarwaypoint.com has no measured figures. ChatGPT's two answers, and our own page, give 10–16 h at 15–25 W with 85% efficiency and no overhead. Our Elite 30 V2 row says 'about 14.5 h at 12 W' and 'about 12 h at 20 W'. Two named tests contradict those numbers: Reefs.com got 11.4 h at 13 W, and Zelpio and The Technology Man measured 11–19 W of overhead on AC. No rival page names a tester for any small-station measurement.",
+ "decides": "This changes both the hours and the advice. On AC, the inverter's own 11–13 W of overhead roughly doubles the draw of a 12–20 W router and modem. The Elite 30 V2 gave 11.4 h at 13 W measured, so at 20 W expect about 8–9 h, not 12. Its AC-ECO mode must also be turned off, because the unit does not reliably detect loads under about 15 W and ECO can shut them off. Measured DC capacity is much higher: R600 271 Wh on 12 V/3 A (techtest), Elite 30 V2 244–274 Wh on DC (The Technology Man and Zelpio), RIVER 3 211 Wh at 15 W on USB-C (ComputerBase). So the pick should go to a station that can run the router from 12 V DC barrel ports. The ALLPOWERS R600 (271 Wh measured on 12 V, about 13.5 h at 20 W) and the Elite 30 V2 on its DC5521 ports (about 12 h at 20 W from 244 Wh) lead. The headline hours should come from these measured figures, not from rated Wh × 85%. On AC, the Anker C300 (12.6 W with sockets on) and the Elite 30 V2 have similar overhead.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "Tenergy T320",
+  "ALLPOWERS R600",
+  "Jackery Explorer 240 v2",
+  "Anker SOLIX C300"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Runtime on a router-sized constant load (Reefs.com test)",
+   "value": "11 h 23 min at 13 W",
+   "source": "https://reefs.com/bluetti-elite-30-v2-as-a-reef-aquarium-backup-real-world-runtime-test/",
+   "source_title": "Bluetti Elite 30 V2 as a reef aquarium backup: real-world runtime test (Reefs.com)",
+   "read": "2026-11-14",
+   "note": "Danilo Ronchi ('DaniReef'), published 2026-05-12. The load was an Octo VarioS 2 pump set to 13 W, run in Standard UPS mode with AC-ECO disabled. The article does not say whether AC or DC was used, but the AC-ECO setting points to AC. Arithmetic: 288 Wh ÷ 11.38 h = 25.3 W average total draw, so about 12 W of overhead on a 13 W load. Our page shows 'about 14.5 h at 12 W' from BLUETTI's claim."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Runtime at 32 W measured load (Reefs.com test)",
+   "value": "6 h 39 min at about 32 W (unit display showed about 55 W)",
+   "source": "https://reefs.com/bluetti-elite-30-v2-as-a-reef-aquarium-backup-real-world-runtime-test/",
+   "source_title": "Bluetti Elite 30 V2 as a reef aquarium backup: real-world runtime test (Reefs.com)",
+   "read": "2026-11-14",
+   "note": "Same tester and date. The load was a pump, wavemaker and skimmer. Arithmetic: 288 Wh ÷ 6.65 h = 43 W total, so about 11 W of overhead. The tester also says the unit 'does not reliably detect very low instantaneous loads, roughly below 15 watts': it showed 0 W at 13 W, and AC-ECO had to be off so it would not shut down."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Idle draw with AC inverter on, Eco mode off (The Technology Man)",
+   "value": "about 19 W (100% to 19% in 12 h)",
+   "source": "https://thetechnologyman.com/this-189-bluetti-elite-30-v2-power-station-is-better-than-i-expected/",
+   "source_title": "This $189 BLUETTI Elite 30 V2 power station is better than I expected (The Technology Man)",
+   "read": "2026-11-14",
+   "note": "Gidon, published 2025-12-23. Arithmetic: 81% × 288 Wh = 233 Wh over 12 h = 19.4 W. He measured DC-on idle at about 11 W (down to 24% in 20 h). Usable capacity was 231 Wh on an AC load (about 80%) and 244 Wh on DC (about 85%); the load wattage is not stated. He confirmed UPS switchover under 10 ms with an oscilloscope."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Idle draw and usable capacity (Zelpio test)",
+   "value": "about 11 W idle with AC on, about 7 W with DC on; 260 Wh usable on AC, 274 Wh on DC",
+   "source": "https://www.zelpio.com/de/blog/bluetti-elite-30-v2-review/",
+   "source_title": "Bluetti Elite 30 V2 Test (Zelpio, German)",
+   "read": "2026-11-14",
+   "note": "Published 2026-08-23; no author is named. Idle figures come from 136 Wh (AC) and 87 Wh (DC) used over 12 h. Zelpio puts these about 40% above BLUETTI's spec. The load used for the capacity tests is not stated."
+  },
+  {
+   "product": "Anker SOLIX C300",
+   "label": "Idle and UPS-mode overhead (techtest.org)",
+   "value": "12.6 W with sockets on; about 2.3 W with all outputs off; UPS mode draws about 12–13 W more than the connected load",
+   "source": "https://techtest.org/anker-solix-c300-test-kleine-powerstation-mit-grosser-leistung-und-140w-usb-c-ports/",
+   "source_title": "Anker SOLIX C300 Test: Kleine Powerstation mit großer Leistung und 140W USB C Ports (techtest.org)",
+   "read": "2026-11-14",
+   "note": "Michael Barton, published 2024-11-26. He tested the AC model. Usable capacity was 214 Wh at its worst (low load on AC sockets), 271.7 Wh at best, and 253.8 Wh on average (88% of 288 Wh). He gives no measured switchover time, only that it is 'very fast'."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "Usable energy at low load (ComputerBase)",
+   "value": "211 Wh at 15 W on USB-C; 211 Wh at 60 W on AC; 210 Wh at 260 W on AC (86.1% / 86.1% / 85.7% of 245 Wh)",
+   "source": "https://www.computerbase.de/artikel/smart-home/ecoflow-river-3-powerstation-test.90102/",
+   "source_title": "EcoFlow River 3 im Test: Leise, leichte und kompakte Powerstation für unterwegs (ComputerBase)",
+   "read": "2026-11-14",
+   "note": "Frank Hüber, published 2024-11-14. AC was not measured at 15 W. A full charge took 264 Wh from the wall. In a simulated outage, a NAS and an idle PC saw no noticeable switchover; EcoFlow specifies 20 ms. Arithmetic: 211 Wh ÷ 15 W = 14 h on USB-C, but only if the router can run from USB-C PD."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "Usable capacity at high load (StorageReview)",
+   "value": "210 Wh with a 300 W fan load",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-review",
+   "source_title": "EcoFlow RIVER 3 Review (StorageReview)",
+   "read": "2026-11-14",
+   "note": "Corinne OBrien, published 2024-10-07. Recharge took 270 Wh from the wall. No idle-draw figure."
+  },
+  {
+   "product": "ALLPOWERS R600",
+   "label": "Usable capacity by output (techtest.org)",
+   "value": "12 V/3 A: 271.32 Wh (91%); 12 V/8 A: 258.23 Wh (86%); AC at 50 W: 225 Wh (75%); AC at 200 W: 263 Wh (88%); USB-C at 60 W: 293.69 Wh (98%)",
+   "source": "https://techtest.org/allpowers-r600-im-test-tolle-powerstation-mit-fantastischer-io/",
+   "source_title": "ALLPOWERS R600 im Test: tolle Powerstation mit fantastischer I/O (techtest.org)",
+   "read": "2026-11-14",
+   "note": "Michael Barton, published 2024-01-31. UPS-mode efficiency was 70% at 25 W, 84% at 50 W and 91% at 100 W; 70% at 25 W means about 10.7 W lost. Arithmetic: 271 Wh ÷ 20 W = about 13.5 h for a router on 12 V DC, against 225 Wh ÷ (20 W ÷ 0.70) = about 7.9 h on AC at low load. He measured no switchover time; 15 ms is the maker's figure."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Usable capacity and AC idle drain (The Technology Man)",
+   "value": "193 Wh on AC (100 W bulb, about 75%); 219 Wh on DC (about 92 W, about 86%); about 4% of capacity per hour with the AC inverter idle",
+   "source": "https://thetechnologyman.com/power-all-your-tech-anywhere-jackery-explorer-240-v2-full-review",
+   "source_title": "Power all your tech anywhere: Jackery Explorer 240 v2 full review (The Technology Man)",
+   "read": "2026-11-14",
+   "note": "Gidon, published 2024-11-14. Arithmetic: 4% × 256 Wh = about 10 W of AC idle draw. He says UPS switches in under 20 ms but gives no oscilloscope trace."
+  }
+ ],
+ "unsourced": [
+  "Tenergy T320: I looked for a named reviewer's usable capacity, idle draw or low-load runtime (searched 'Tenergy T320 review tested capacity Wh'). Only BatterySkills runtime anecdotes and Tenergy's own '320 Wh actual' claim came up. There is no measured figure.",
+  "EcoFlow RIVER 3 idle draw with the AC inverter on: StorageReview, ComputerBase, The Solar Lab and a German search turned up no wattage measurement.",
+  "A measured UPS switchover time (oscilloscope) for the RIVER 3, Anker C300, R600 and Jackery 240 v2: the reviewers repeat the maker's figure or say 'very fast'. Only The Technology Man measured one, for the Elite 30 V2 (under 10 ms).",
+  "A named lab (RTINGS, Notebookcheck, CNET) measuring any of these small stations powering an actual router and modem: none found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1424148000000003
+ }
+}

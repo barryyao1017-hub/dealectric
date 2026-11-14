@@ -1,0 +1,148 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what each candidate NAS costs to run around the clock. From the makers' own wattage figures at the August 2026 US average of 18.16¢/kWh, that is $26/yr for the UGREEN DXP2800, $27 for the Synology DS225+, $32 for the DS725+, $36 for the Asustor AS5402T, $46 for the QNAP TS-264, $60 for the DS925+ and $67 for the UGREEN DXP4800 Plus with drives active, and $8 to $29/yr with drives spun down.",
+ "standout": 2,
+ "standout_why": "I compared against rackdiff.com 'Paperless-ngx Hosting: NAS vs VPS Comparison 2026'. It tells readers to 'work out your device's consumption with your electricity rate' and leaves the power line of its 3-year cost table empty. It gives no wattage for any model. peira.dev's Paperless NAS playbook names no NAS model and gives no power figure. The cited docs.paperless-ngx.com setup page returned 403 to me. ChatGPT read it as saying a Raspberry Pi is enough, and none of ChatGPT's four answers mentions power draw or running cost. No rival result gives a yearly running cost for any model.",
+ "decides": "This confirms the 2-bay picks for a mostly idle document archive. The DXP2800 ($389.99 at UGREEN today) is the cheapest to buy among the UGREEN picks and the cheapest to run of all the candidates: $26.06/yr against $46.27 for the TS-264. That gap is about $101 over 5 years. It also weakens the 4-bay 'headroom' picks ChatGPT pushed. By each maker's figure with drives active, the DXP4800 Plus ($67.39/yr) and DS925+ ($60.31/yr) cost roughly 2.3 to 2.6 times as much to run as the DXP2800, and Paperless alone does not need them. Warning: the makers test differently (UGREEN uses one 2 TB drive, QNAP fills every bay, Asustor doesn't say). So the cross-brand gaps are rough, but each model's own figure holds.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS225+",
+  "Synology DS725+",
+  "Synology DS925+",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "US average residential electricity price, August 2026",
+   "value": "18.16 ¢/kWh",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly, Table 5.6.A",
+   "read": "2026-11-13",
+   "note": "Preliminary 2026 value (August 2025 was 17.57 ¢). Every yearly figure below uses W × 8.76 kWh/W-yr × $0.1816."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Maker power figures (drive access / drive hibernation)",
+   "value": "16.38 W / 5.24 W",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "UGREEN: How Much Power Does a NAS Use? (2025-07-01)",
+   "read": "2026-11-13",
+   "note": "UGREEN lab test with one Seagate 2 TB drive. UGREEN says a NAS with more drives can draw more."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Yearly electricity cost, running 24/7",
+   "value": "$26.06/yr with drives active; $8.34/yr with drives hibernating",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "UGREEN: How Much Power Does a NAS Use?",
+   "read": "2026-11-13",
+   "note": "16.38 W × 8.76 = 143.5 kWh × $0.1816 = $26.06; 5.24 W × 8.76 = 45.9 kWh × $0.1816 = $8.34"
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (list price shown $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 (nas.ugreen.com)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. 5-year cost = 389.99 + 5 × 26.06 = $520.29 (drives-active figure)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured idle and maximum draw (OCinside)",
+   "value": "about 7 W idle; 34.7 W maximum",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "OCinside: Ugreen DXP2800 NAS Review, p.4",
+   "read": "2026-11-13",
+   "note": "Maximum is from a CPU + RAM + disk stress test. The review doesn't say which drives were installed for the idle reading. 7 W × 8.76 × 0.1816 = $11.14/yr."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Maker power figures (drive access / lower-power state)",
+   "value": "42.36 W / 18.12 W",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "UGREEN: How Much Power Does a NAS Use?",
+   "read": "2026-11-13",
+   "note": "Same UGREEN lab method (one Seagate 2 TB drive). Yearly cost: 42.36 × 8.76 = 371.1 kWh × 0.1816 = $67.39; 18.12 × 8.76 = 158.7 kWh × 0.1816 = $28.83."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Measured idle at the wall (KitGuru, Simon Crisp)",
+   "value": "24.25 W idle on 2.5GbE; 30.45 W on 10GbE",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "KitGuru: UGREEN NASync DXP4800 Plus 4-bay NAS review, p.14 (2024-05-28)",
+   "read": "2026-11-13",
+   "note": "WD Red WD60EFRX drives; the review doesn't give the drive count. 24.25 × 8.76 = 212.4 kWh × 0.1816 = $38.58/yr."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$619.99 (list price shown $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus (nas.ugreen.com)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. 5-year cost = 619.99 + 5 × 67.39 = $956.94 (maker drives-active figure)."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maker power figures (Access / HDD Hibernation) and yearly cost",
+   "value": "16.98 W / 6.08 W → $27.01/yr / $9.67/yr",
+   "source": "https://www.synology.com/en-us/products/DS225+?tab=specs",
+   "source_title": "Synology DS225+ specifications",
+   "read": "2026-11-13",
+   "note": "16.98 × 8.76 = 148.7 kWh × 0.1816 = $27.01; 6.08 × 8.76 = 53.3 kWh × 0.1816 = $9.67. Spec page: Celeron J4125, 2 GB (max 6 GB), 3-year warranty."
+  },
+  {
+   "product": "Synology DS725+",
+   "label": "Maker power figures (Access / HDD Hibernation) and yearly cost",
+   "value": "20.41 W / 7.87 W → $32.47/yr / $12.52/yr",
+   "source": "https://www.synology.com/en-us/products/DS725+?tab=specs",
+   "source_title": "Synology DS725+ specifications",
+   "read": "2026-11-13",
+   "note": "20.41 × 8.76 = 178.8 kWh × 0.1816 = $32.47; 7.87 × 8.76 = 68.9 kWh × 0.1816 = $12.52. Spec page: Ryzen R1600 2C/4T, 4 GB ECC (max 32 GB), 3-year warranty."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Maker power figures (Access / HDD Hibernation) and yearly cost",
+   "value": "37.91 W / 12.33 W → $60.31/yr / $19.62/yr",
+   "source": "https://www.synology.com/en-us/products/DS925+?tab=specs",
+   "source_title": "Synology DS925+ specifications",
+   "read": "2026-11-13",
+   "note": "37.91 × 8.76 = 332.1 kWh × 0.1816 = $60.31; 12.33 × 8.76 = 108.0 kWh × 0.1816 = $19.62. Spec page: Ryzen V1500B 4C/8T, 4 GB ECC (max 32 GB)."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Maker power figures (operating typical / disk standby) and yearly cost",
+   "value": "29.086 W / 18.288 W → $46.27/yr / $29.09/yr",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "QNAP TS-264 Hardware Specs (US)",
+   "read": "2026-11-13",
+   "note": "QNAP tests 'with drives fully populated' (both bays), so this is a harder test than UGREEN's one-drive figure. 29.086 × 8.76 = 254.8 kWh × 0.1816 = $46.27; 18.288 × 8.76 = 160.2 kWh × 0.1816 = $29.09. Spec page: 3-year warranty."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "Maker power figures (operation / disk hibernation / sleep) and yearly cost",
+   "value": "22.9 W / 12.7 W / 0.71 W → $36.43/yr / $20.20/yr",
+   "source": "https://www.asustor.com/en/product/spec?p_id=81",
+   "source_title": "ASUSTOR AS5402T specifications",
+   "read": "2026-11-13",
+   "note": "Test conditions not stated. 22.9 × 8.76 = 200.6 kWh × 0.1816 = $36.43; 12.7 × 8.76 = 111.3 kWh × 0.1816 = $20.20. Spec page: 3-year warranty, 4 GB (max 16 GB)."
+  }
+ ],
+ "unsourced": [
+  "Today's prices for Synology DS225+/DS725+/DS925+, QNAP TS-264-8G and Asustor AS5402T: Synology has no US maker store, and the amzcheck.py Amazon lookup was blocked by a permission prompt. B&H, Micro Center and Zoro were not opened, so I computed 5-year cost (price + power) only for the two UGREEN models.",
+  "Synology's power-measurement method (the spec page links an article I did not open), so I can't say how many drives were in its Access figures.",
+  "A named reviewer's idle reading for the base DXP2800 with two HDDs spinning. OCinside's 7 W doesn't state the drives, and Notebookcheck's 14.84–20.14 W is for the DXP2800 GT, a different model.",
+  "TechPowerUp's measured DXP4800 Plus idle figure (page returned 403).",
+  "docs.paperless-ngx.com/setup/ returned 403, so I could not read Paperless's own hardware guidance first-hand. That rules out deriving documents OCR'd per hour per CPU from a sourced throughput figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0739809
+ }
+}

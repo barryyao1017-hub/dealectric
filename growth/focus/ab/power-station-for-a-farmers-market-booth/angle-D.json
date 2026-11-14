@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states, in BLUETTI's own words, that the AC180 (the pick ChatGPT showed) can be 'easily overloaded' by a compressor that starts at 2–4× its rated power, or that the AC180's 2,700 W Power Lifting mode covers 'pure resistive loads' (heating elements) only and so cannot carry a fridge compressor that kicks on while a 1,500 W blender is running.",
+ "standout": 1,
+ "standout_why": "I checked the cited pages (dealectric.com/power-station-for-a-farmers-market-booth and portableenergylab.com) and the uncited top results (ecoflow.com outdoor-market blog, voltandvalley.com food-truck page). Our own page treats the blender only as 'a surge problem' on its own. It adds up the fridge and blender as energy totals and never checks their combined peak. portableenergylab.com gives only general surge advice with no numbers and only a vague 'auto-sleep' mention. The EcoFlow blog gives a small cooler 700–1,000 W at start-up but never checks it against a running blender. Volt & Valley does make the mechanism point: a stall cut out when 'the cooler compressor started while the blender was running', and Power Lifting is resistive-only on the Elite 200 V2. So part of this is already out there. What none of them has is the maker's own warning for the AC180, the product ChatGPT recommended, or the AC180's ECO auto-off thresholds.",
+ "decides": "This keeps the AC180 as the pick, with a condition. A 1,500 W blender plus a compressor restart (BLUETTI says 2–4× rated, EcoFlow says 700–1,000 W for a small cooler) goes past the AC180's 1,800 W rated output, and Power Lifting does not help with motor loads. The plan only works if the vendor never blends while the fridge compressor is starting, for example by unplugging the fridge for the 30–60 s blend. Otherwise the pick should move to a unit whose continuous rating covers blender plus compressor start, such as the BLUETTI Elite 200 V2 (2,600 W continuous, the figure on our page). The page should also tell AC180 owners to leave ECO mode off. With ECO on, AC output shuts off after 1–4 h below a 15–30 W threshold, and a quiet stretch with only the card reader drawing power and the fridge compressor idle could fall below it.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3",
+  "ALLPOWERS S2000 Pro"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker's warning on motor/compressor start-up",
+   "value": "Compressor or motor devices may start at 2–4× rated power and 'can easily overload the AC180'",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "FAQ Q1, quoted: 'Some devices with built-in motor/compressor may start at 2-4 times the rated power, which can easily overload the AC180.' Troubleshooting code E001 is 'Inverter overload'. Example: blender 1,500 W (our page's Vitamix E310 figure) plus a ~100 W mini fridge starting at 4× = 1,500 + 400 = 1,900 W, above the 1,800 W rated output. A small cooler at the 700 W start figure from EcoFlow's blog gives 2,200 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Power Lifting mode scope",
+   "value": "Up to 2,700 W for pure resistive loads only (heating elements); rated output stays 1,800 W; off by default; not available while AC-charging",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Quoted: 'In this mode, the AC180 can run high drain pure resistive loads* (≤2700W) while its rated output power remains 1800W.' Footnote: 'Include heaters, irons or any other devices consisting of heating elements only.' A blender motor and a fridge compressor are not resistive loads."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC rated output and surge",
+   "value": "1,800 W total; 'can handle a surge of 2700W'",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Discharging > AC Output, page 17. The manual does not say how long the 2,700 W surge can be held or whether it covers inductive loads, and its own FAQ warns that compressor starts can overload the unit."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode auto-off",
+   "value": "AC output turns off when the AC load stays under 15–30 W (user-set) for 1, 2, 3 or 4 h; DC threshold 5–10 W",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Quoted: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.' FAQ Q4: 'You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' The manual text I read did not say whether ECO is on by default. If it is on and the fridge is idle with only a card reader drawing power, AC could shut off and the fridge would not restart."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "X-Boost mechanism",
+   "value": "X-Boost 'marginally reduces voltage' so higher-rated appliances can run; EcoFlow's examples are heaters, kettles, coffee makers, air fryers and similar; on by default; not available while charging",
+   "source": "https://www.ecoflow.com/us/x-boost",
+   "source_title": "X-Boost | EcoFlow US",
+   "read": "2026-11-13",
+   "note": "The page does not mention motors or compressors. So the figure above 1,800 W that EcoFlow advertises is not a rating for starting a compressor either. The 3,600 W surge on our page could not be re-verified today because the product page returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "Small cooler start-up draw (maker blog)",
+   "value": "100–200 W running, 700–1,000 W 'when it first kicks on'",
+   "source": "https://www.ecoflow.com/us/blog/outdoor-market-portable-power-solutions",
+   "source_title": "Best Portable Power Station for Farmers Markets | EcoFlow US blog",
+   "read": "2026-11-13",
+   "note": "Quoted: 'A small cooler typically uses 100-200 watts while it runs. But it needs 700-1000 watts when it first kicks on.' Arithmetic: 1,500 W blender + 700 W = 2,200 W, more than the 1,800 W rated output of the AC180, DELTA 3 and ALLPOWERS P1800."
+  },
+  {
+   "product": "general",
+   "label": "Rival already stating the simultaneous-start failure",
+   "value": "Stall fails when 'the cooler compressor started while the blender was running'; Elite 200 V2's 3,900 W is Power Lifting, resistive only, so use 2,600 W as the ceiling for motors",
+   "source": "https://voltandvalley.com/tailgate-travel/best-power-station-for-a-food-truck",
+   "source_title": "Best Power Station for a Food Truck or Market Stall (2026) | Volt & Valley",
+   "read": "2026-11-13",
+   "note": "This was in ChatGPT's results but not cited. It is the reason standout is 1, not 2."
+  }
+ ],
+ "unsourced": [
+  "AC180 and DELTA 3 surge and X-Boost figures from the makers' US product pages (bluettipower.com/products/ac180 and us.ecoflow.com/products/delta-3-portable-power-station both returned HTTP 429; bluetti.com/products/ac180 returned 404). The AC180 figures come from the manual on ManualsLib instead.",
+  "BLUETTI's own AC180 manual PDF (cdn.shopify.com AC180_User_Manual.pdf) came back as unreadable binary, so I used the ManualsLib copies.",
+  "Running watts and start-up current for a named compact fridge (Danby DAR016A1BDB / DCR016A3BDB): danby.com's product page lists no electrical specs, and its spec PDF was unreadable.",
+  "Any bench measurement of the AC180 or DELTA 3 starting a fridge compressor while another large load runs: the BLUETTI community thread now redirects to the forum home page, and no named reviewer with a number turned up.",
+  "Whether the AC180 ships with ECO mode on or off: the manual text I read does not say."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0683529
+ }
+}

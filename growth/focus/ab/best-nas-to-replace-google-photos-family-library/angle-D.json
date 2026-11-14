@@ -1,0 +1,122 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Immich needs at least 6 GB of RAM to run its machine-learning features such as face recognition and smart search (it can run on 4 GB only with machine learning turned off), while the Synology DS225+ and DS425+ it recommended ship with 2 GB and reach only 6 GB with Synology's one 4 GB add-on module.",
+ "standout": 2,
+ "standout_why": "I checked against the cited and top rival pages. homelabcompass.com (Immich vs Synology Photos) says only that 'Performance depends on the NAS CPU and RAM, since the machine learning features want some headroom.' esp32.co.uk covers iOS background limits and says Immich ML acceleration is 'experimental' but gives no RAM floor. itechguides.com says only 'Docker-based deployment requires a supported server environment.' The immich.app/features, partner-sharing, GitHub README and mobile-backup pages ChatGPT cited are feature lists. Synology's own pages give RAM only for Synology Photos object recognition, which ChatGPT already quoted. None gives Immich's 6 GB minimum or compares it with the RAM each recommended NAS ships with. Our current page also lists 'Immich in Container Manager' for the 4 GB DS925+ without this caveat.",
+ "decides": "It doesn't change the Synology Photos pick, but it does decide the hardware for the Immich route. As shipped, the DS225+ and DS425+ (2 GB), DS925+ (4 GB), Asustor AS5402T (4 GB) and UGREEN DH2300 (4 GB, no Docker) are all below Immich's 6 GB minimum for face and smart search. The DS225+ and DS425+ reach exactly 6 GB only by adding Synology's D4NS01-4G module; Synology says non-Synology RAM limits warranty and support. The QNAP TS-264-8G (8 GB) meets Immich's recommended 8 GB out of the box, and so does the UGREEN DXP2800 if its 8 GB is confirmed. That supports ChatGPT's 'UGREEN for Immich' split and gives the reason ChatGPT never stated. Our page should drop or qualify 'Immich in Container Manager' on the DS925+ and add the RAM floor as a column or note.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DH2300",
+  "QNAP TS-264-8G",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich RAM requirement",
+   "value": "Minimum 6 GB, recommended 8 GB; 4 GB works only with machine learning disabled",
+   "source": "https://docs.immich.app/install/requirements",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Immich's official install requirements. Same page: minimum 2 CPU cores, recommended 4."
+  },
+  {
+   "product": "general",
+   "label": "Immich CPU architecture requirement",
+   "value": "Runs on amd64 or arm64; the ML container on amd64 needs x86-64-v2 or newer; v2.7.5 was the last x86-64-v1 release and is no longer supported",
+   "source": "https://docs.immich.app/install/requirements",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Every x86 NAS here (J4125, N5095, N5105, N100, V1500B) is a 2019-or-later Intel/AMD chip with SSE4.2, which x86-64-v2 needs. That is my inference: no source on this page lists each chip."
+  },
+  {
+   "product": "general",
+   "label": "Immich database storage requirement",
+   "value": "Database 'should ideally use local SSD storage, and never a network share of any kind'; Postgres needs at least 2 GB RAM under Docker limits; thumbnails and transcodes add 10-20% to library size",
+   "source": "https://docs.immich.app/install/requirements",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Sizing note: thumbnails and transcodes add 10-20%, so a 2 TB library needs roughly 2.2-2.4 TB."
+  },
+  {
+   "product": "general",
+   "label": "Immich ML hardware acceleration backends",
+   "value": "ARM NN (Mali GPUs only), CUDA, ROCm, OpenVINO (Intel GPUs 'such as Iris Xe and Arc'), RKNN (Rockchip RK3566/RK3568/RK3576/RK3588 only, host needs RKNPU driver v0.9.8+); Linux or WSL2 only",
+   "source": "https://docs.immich.app/features/ml-hardware-acceleration",
+   "source_title": "Hardware-Accelerated Machine Learning | Immich",
+   "read": "2026-11-13",
+   "note": "The page also says 'Integrated GPUs are more likely to experience issues than discrete GPUs', especially older processors and low-RAM servers, and OpenVINO uses more RAM than CPU processing."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM installed / maximum",
+   "value": "2 GB DDR4 non-ECC installed; max 6 GB (2 GB + 4 GB), 1 slot; Intel Celeron J4125",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology lists the D4NS01-4G expansion module and says it won't provide full warranty or tech support if non-Synology modules are used. 2 GB is below Immich's 4 GB no-ML floor. Maxed at 6 GB it just meets Immich's ML minimum."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "RAM installed / maximum",
+   "value": "2 GB DDR4 non-ECC installed; max 6 GB (2 GB + 4 GB), 1 slot; Intel Celeron J4125",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DiskStation DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Same memory limits and the same D4NS01-4G module as the DS225+."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "RAM installed / maximum",
+   "value": "4 GB DDR4 ECC SODIMM installed; max 32 GB (16 GB x 2), 2 slots; AMD Ryzen V1500B",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "As shipped, below Immich's 6 GB ML minimum. Needs a RAM upgrade before Immich face or smart search is supported."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "RAM installed / maximum",
+   "value": "8 GB SODIMM DDR4 installed (since 2024/01); max 16 GB (2 x 8 GB); Intel Celeron N5095",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specifications | QNAP",
+   "read": "2026-11-13",
+   "note": "Meets Immich's recommended 8 GB out of the box."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "RAM installed / maximum",
+   "value": "4 GB (1 x 4 GB) installed; max 16 GB (2 x 8 GB); Intel Celeron N5105",
+   "source": "https://www.asustor.com/en/product/spec?p_id=81",
+   "source_title": "AS5402T Specifications | ASUSTOR",
+   "read": "2026-11-13",
+   "note": "As shipped, runs Immich only with ML disabled. Needs a RAM upgrade for Immich face and smart search."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN NAS store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-13",
+   "note": "Read through the storecheck.py Shopify search. Matches the $389.99 ChatGPT showed (Newegg/Adorama)."
+  }
+ ],
+ "unsourced": [
+  "UGREEN DXP2800 installed RAM (8 GB DDR5) and maximum: the UGREEN store pages returned HTTP 429, and the storecheck product text was only CSS. Next try: the DXP2800 spec PDF or a named review.",
+  "UGREEN DH4300 Plus SoC and whether Immich's RKNN backend can use its NPU under UGOS Docker: search results describe an RK3588-class chip with a 6 TOPS NPU, but I didn't open a maker page (UGREEN store gave 429). No source shows UGOS exposing the RKNPU driver that Immich needs.",
+  "UGREEN DH2300 RAM (4 GB) and no Docker on the maker's page: not reopened this session because the UGREEN store gave 429.",
+  "Synology Knowledge Center face/object-recognition model list and its 4 GB object-recognition note for the DS225+/DS425+: kb.synology.com renders client-side and WebFetch got only the title (en-us and en-nz). ChatGPT already quoted this, so it isn't the gap.",
+  "Price of Synology D4NS01-4G RAM module: amzcheck search returned nothing (Amazon appears walled). Synology's US site doesn't show a price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0277354
+ }
+}

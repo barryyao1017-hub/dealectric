@@ -1,0 +1,77 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Anker's own US spec caps the SOLIX C1000 Gen 2's wall input at '120V~ 12A Max' (1,440 W at 120 V), which is below its advertised 1,600 W UltraFast rate and equals the electrical code's 12 A limit for a single plug-in device on a standard 15 A circuit (NEC 210.23(A)(1)); a US outlet therefore cannot supply the full 1,600 W behind the 49-minute claim.",
+ "standout": 2,
+ "standout_why": "Compared against our current page and the rival pages ChatGPT got or cited. Our page says UltraFast draws 'around 13 A at 120 V' and that 1,500–1,600 W is 'close to the 1,800 W a 15 A, 120 V circuit carries'. It does not mention the 12 A / 80 % plug-in limit or Anker's own '12A Max' input rating. offgridfieldguide.com lists charge times only (56 min, 45 min to 80 %, 1.58 h) and says wall-charge speed 'rarely decides this class'. amphourly.com lists maker times only and has nothing on amps, circuits or breakers. The ChatGPT answers say only to avoid sharing the circuit. thiswatt.com, testedwatts.com and unpluggedwatts.com refused the connection (certificate error), so I couldn't check them. None of the pages I could read gives the 12 A cap or the 1,440 W ceiling it sets on a 120 V outlet.",
+ "decides": "The finding keeps the Anker SOLIX C1000 Gen 2 as the pick but changes how its claim should be read on a US outlet. Its 12 A input label and the code limit both point to about 1,440 W at 120 V, not 1,600 W. Holding that draw flat would stretch the 49-minute claim to about 54 minutes, which is still under an hour but closer to the EcoFlow DELTA 3 Plus's 55–56 minutes. The 47-minute measured time was taken on UK mains and doesn't carry over to 120 V. The EcoFlow DELTA 3 Plus's 1,500 W is about 12.5 A at 120 V, also over the 12 A limit; StorageReview says that rate suits a 20 A circuit and that the app's charge-speed limit is for 15 A plugs. The energy arithmetic sets the floor: StorageReview measured 1,180 Wh from the wall to fill the 1,024 Wh DELTA 3 Plus. A full charge inside 60 minutes therefore needs an average draw of at least about 1,180 W across the whole charge, including the slow final stretch. Modes capped at 1,200 W, such as Anker's normal mode, ALLPOWERS P1800 fast mode and BLUETTI Elite 100 V2 Turbo, have almost no margin. That fits the reviews where those modes take about an hour or longer.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "DJI Power 1000 V2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC input rating (maker's US spec)",
+   "value": "120V~ 12A Max, 60Hz; AC charging 1,200 W max; UltraFast 1,600 W; '0 - 100% in Just 49 Min'",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "My arithmetic: 12 A × 120 V = 1,440 W, which is 160 W short of the 1,600 W UltraFast figure. The page says 'UltraFast Recharging must be activated via the Anker app' and doesn't state the voltage the 49-minute time was measured at. Estimate at 120 V: 49 min × 1,600 / 1,440 ≈ 54 min, assuming the draw stays flat at the cap."
+  },
+  {
+   "product": "general",
+   "label": "Limit for a single plug-in device on a branch circuit",
+   "value": "no more than 80 % of the branch-circuit rating (NEC 210.23(A)(1)), which is 12 A, or 1,440 W at 120 V, on a 15 A circuit",
+   "source": "https://www.ecmweb.com/national-electrical-code/qa/article/20896734/code-qa-cord-and-plug-connected-equipment",
+   "source_title": "Code Q&A: Cord- and Plug-Connected Equipment (EC&M)",
+   "read": "2026-11-14",
+   "note": "Quoted: 'must not have an ampere rating more than 80% of the branch circuit rating' (NEC 210.23(A)(1)). The 12 A and 1,440 W figures are my arithmetic: 15 A × 0.8 × 120 V."
+  },
+  {
+   "product": "general",
+   "label": "Maximum plug-in load on a 15 A receptacle (Cal/OSHA version of the NEC table)",
+   "value": "12 A on a 15 or 20 A circuit",
+   "source": "https://dir.ca.gov/title8/2360_4.html",
+   "source_title": "California Code of Regulations, Title 8, §2360.4",
+   "read": "2026-11-14",
+   "note": "Quoted: 'a receptacle may not supply a total cord- and plug-connected load in excess of the maximum specified in Table 2360.4(b)(2)'. In the table, a 15 A receptacle on a 15 or 20 A circuit has a 12 A maximum."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Wall energy for a full recharge and circuit guidance (StorageReview)",
+   "value": "1,180 Wh from the wall for a full recharge (86.8 % efficiency); app showed 1.45 kW charging; 1,500 W suits a 20 A circuit; app speed limit is for '15A 120V plugs'",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "StorageReview measured the 1,180 Wh; it did not measure a full charge time. My arithmetic: 1,500 W ÷ 120 V = 12.5 A, which is over the 12 A limit on a 15 A circuit. To finish within 60 minutes, the station must average at least about 1,180 W over the whole charge."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Maker's charge time as rival pages quote it",
+   "value": "1,500 W input, full in 56 min",
+   "source": "https://amphourly.com/learn/best-mid-size-power-station/",
+   "source_title": "Best Mid-Size Power Stations (500–1500Wh) | Amphourly",
+   "read": "2026-11-14",
+   "note": "I opened this rival page to check for gaps. It quotes 'Full AC recharge in 56 minutes at 1500W input' and doesn't mention amps, circuits or breakers."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus and DELTA 3 rated AC input current (amps). The us.ecoflow.com product page and storecheck both returned HTTP 429, manuals.plus returned 403, the Home Depot PDF was the DELTA 3 Max Plus manual, and B&H returned 403.",
+  "DJI Power 1000 V2 US AC input voltage and current. dji.com/power-1000-v2/specs redirected to a 404, store.dji.com redirected to a login page, and the manuals.plus spec sheet returned 403.",
+  "Jackery Explorer 1000 v2 rated AC input current. jackery.com returned HTTP 429.",
+  "The line voltage behind Anker's 49-minute claim. The Anker US page doesn't state the test voltage.",
+  "The NEC 210.23(A)(1) text from NFPA itself. I used EC&M's quote and California's reproduction of the code instead."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1367557000000004
+ }
+}

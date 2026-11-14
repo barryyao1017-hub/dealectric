@@ -1,0 +1,58 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the BLUETTI AC180, ChatGPT's 'best overall' pick, has an ECO mode that switches the AC outlet off after the load stays at or below a 15–30 W threshold for 1, 2, 3 or 4 hours. A blanket on low, or one whose thermostat has cycled off, can lose power partway through the night unless ECO is turned off.",
+ "standout": 2,
+ "standout_why": "I opened four rival pages. WattFort (cited) covers Sunbeam's 'do not use with generators, power converters or inverters' and KickAss's 45/90/120-minute 12 V timers, but says nothing about a power station's own low-load auto-off. BlackoutWise (cited) has no compatibility statements: no ECO or auto-off, no car-port limit and no waveform. RuntimeMath only notes Pure Enrichment's 10-hour blanket auto-off. Tested Watts only gives a car-outlet limit of about 120–126 W. None of them mentions ECO mode, energy-saving mode or a low-load AC cut-off on any station, so this setting is the new fact.",
+ "decides": "It does not change the pick. The AC180 still fits a 120 V blanket overnight. It adds a required setup step: turn ECO off, or set it to the lowest threshold and longest duration, before a night on low. Otherwise a low-draw blanket can lose power within 1–4 hours. Jackery and Anker have similar energy-saving features, but I could not read their thresholds from the makers' documents, so the page should not claim this is AC180-only or say the other stations are exempt.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "Jackery Explorer 1000 v2",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 3"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode low-load AC auto-off",
+   "value": "AC output turns off when load is at or below a user-set 15–30 W (DC: 5–10 W) for 1, 2, 3 or 4 h; ECO can be switched on or off on the screen",
+   "source": "https://www.manualslib.de/manual/988223/Bluetti-Ac180.html?page=18",
+   "source_title": "BLUETTI AC180 user manual, 5. Appendix, 5.1 FAQs Q4 (ManualsLib copy, English section, p. 18)",
+   "read": "2026-11-14",
+   "note": "Manual text: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while. You can set the power threshold of AC output and DC output to 15-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' This is a third-party copy of BLUETTI's manual. BLUETTI's own US page and PDF could not be read from here. The manual does not give the default ECO state, and it does not say whether a blanket whose thermostat cycles above and below the threshold resets the timer."
+  },
+  {
+   "product": "general",
+   "label": "Blanket-side auto-off cap (Pure Enrichment)",
+   "value": "Pure Enrichment heated blankets switch off after 10 h",
+   "source": "https://runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? 18 Models (RuntimeMath)",
+   "read": "2026-11-14",
+   "note": "RuntimeMath cites Pure Enrichment for the PureRelief Deluxe Heated Blanket. I did not open Pure Enrichment's own manual. This is the blanket's own timer, separate from the power station's ECO cut-off: a full 10 h night uses that timer up."
+  },
+  {
+   "product": "general",
+   "label": "Blanket maker that bans inverter use (already on a cited rival)",
+   "value": "Sunbeam heated bedding manual: do not use 'with generators, power converters or inverters'; use only on a 110–120 V, 60 Hz AC circuit; no extension cord",
+   "source": "https://wattfort.com/guides/power-station-electric-blanket/",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? | WattFort",
+   "read": "2026-11-14",
+   "note": "WattFort, cited by ChatGPT, already states this, so it is not new for our page. I did not open the Sunbeam manual myself; the wording above is as WattFort reports it. WattFort also reports that Sunbeam's auto-off timer resets after a power cut, so the blanket stays off until someone presses its power button, which matters if the station's ECO cuts power."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 30 V2: ECO mode AC/DC thresholds, durations and default state, and the car-outlet amp rating. BLUETTI's support PDF (s4.bluettipower.com) came back as unreadable compressed data, and bluettipower.com/products/elite-30-v2 hit a redirect loop. The only figures found were community-forum posts (under 10 W for 1 h; 17 W), which are not maker documents.",
+  "BLUETTI AC180: the default ECO state out of the box. The manual copy I read does not say.",
+  "Jackery Explorer 1000 v2: Energy Saving Mode AC threshold and timeout (search snippets mention about 25 W and 12 h). jackery.com returned HTTP 429 twice, the Jackery FAQ article returned 404, and the v2 manual PDFs (mrsolar.com, hampshiregenerators.co.uk) were unreadable.",
+  "Anker SOLIX C1000 Gen 2: whether the AC outlet shuts off at low load, and at what threshold and time. The US user guide PDF on Anker's CDN was over 10 MB and could not be fetched. The only related text found (15-minute no-plug shutdown) is for the C1000X Gen 2.",
+  "EcoFlow RIVER 3: AC timeout default and car-port rating. Not researched because I ran out of tool-call budget.",
+  "Inverter-use rules from blanket makers other than Sunbeam (Biddeford, Beautyrest, Serta, Pure Enrichment). A targeted search turned up only Sunbeam manuals."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0772614
+ }
+}

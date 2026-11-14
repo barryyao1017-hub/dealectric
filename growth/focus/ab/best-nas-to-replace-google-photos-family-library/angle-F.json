@@ -1,0 +1,162 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that Immich's own minimum is 6 GB of RAM (8 GB recommended), while the Synology DS225+ and DS425+ that ChatGPT picked ship with 2 GB and take at most 6 GB, so those two can never reach Immich's recommended memory, even though ChatGPT sold them next to an 'Immich' option.",
+ "standout": 2,
+ "standout_why": "I compared against the cited rival pages homelabcompass.com (Immich vs Synology Photos) and esp32.co.uk (Synology Photos vs Immich vs PhotoPrism), plus Synology's cited compare and Photos spec pages. Homelabcompass gives no RAM figure at all ('Performance depends on the NAS CPU and RAM') and no prices. It names only the DS923+ and DS1522+. Esp32 quotes Immich's '6 GB minimum, 8 GB recommended' but names no NAS it applies to and gives no prices. Synology's compare page lists 2 GB installed and 6 GB max but says nothing about Immich. Synology's Photos spec page says recognition is 'only supported on certain models' but gives no RAM figure. None of these pages puts Immich's RAM floor next to each box's installed and maximum RAM, and none prices the field from the makers' stores.",
+ "decides": "This supports keeping two separate picks. Synology DS225+ or DS425+ is the Synology Photos pick. An x86 box with at least 8 GB is the Immich pick: UGREEN DXP2800 at $389.99 or TerraMaster F2-425 Plus at $469.99 on the makers' stores. The DS225+ can run Immich at its 6 GB minimum only after a RAM upgrade, and never at the 8 GB Immich recommends. The DS925+ ships with 4 GB but takes 32 GB, so it can run Immich comfortably after an upgrade. Our page also needs price fixes: the TerraMaster prices are now $469.99 / $539.99, not $599.99 / $779.99, and the DH4300 Plus is $373.99, not $399.99.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP2800 GT",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DH4300 Plus",
+  "QNAP TS-264-8G",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F4-425 Plus",
+  "Asustor Nimbustor 2 Gen2 AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich RAM and CPU requirement",
+   "value": "RAM: minimum 6 GB, recommended 8 GB. CPU: minimum 2 cores, recommended 4. With only 4 GB, Immich runs only with machine learning (faces, smart search) turned off",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-13",
+   "note": "Quoted from Immich's own requirements page. It supports amd64 and arm64. Since v3 the ML container on amd64 needs x86-64-v2."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Memory installed / maximum",
+   "value": "2 GB DDR4 non-ECC / 6 GB max; Intel Celeron J4125, 4 cores; 2 bays; 3-year warranty",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "As shipped, 2 GB is below Immich's 6 GB minimum. The 6 GB maximum equals that minimum and is 2 GB short of the 8 GB Immich recommends."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Memory installed / maximum",
+   "value": "2 GB DDR4 non-ECC / 6 GB max; Intel Celeron J4125; 4 bays + 2× M.2 NVMe; 3-year warranty",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "Same memory ceiling as the DS225+, so the same Immich limit applies."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Memory installed / maximum",
+   "value": "4 GB DDR4 ECC (1× 4 GB) / 32 GB max; AMD Ryzen V1500B, 4 cores / 8 threads; 4 bays + 2× M.2; 3-year warranty",
+   "source": "https://www.synology.com/en-us/products/compare/DS225%2B/DS425%2B/DS725%2B/DS925%2B",
+   "source_title": "Synology product compare DS225+/DS425+/DS725+/DS925+",
+   "read": "2026-11-13",
+   "note": "This is the only Synology in the set that can reach Immich's 8 GB recommendation, and it needs a RAM upgrade to get there."
+  },
+  {
+   "product": "general",
+   "label": "Synology Photos face/object recognition model limit",
+   "value": "'To ensure system performance, face and object recognition is only supported on certain models.'",
+   "source": "https://www.synology.com/en-us/dsm/7.2/software_spec/synology_photos",
+   "source_title": "Synology Photos Technical Specifications | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Limitation 2 on the page. The page gives no RAM figure. It points to a KB article that would not render when I opened it."
+  },
+  {
+   "product": "general",
+   "label": "Synology third-party drive policy",
+   "value": "2025 Plus-series models refused to build storage pools on drives outside Synology's list. DSM 7.3 (October 2025) reversed this for SATA drives. M.2 NVMe pools and cache still need drives from Synology's list.",
+   "source": "https://homelabcompass.com/compare/immich-vs-synology-photos",
+   "source_title": "Immich vs Synology Photos (2026): Which Photo App? · HomelabCompass",
+   "read": "2026-11-13",
+   "note": "A cited rival already states this, so it is not our gap."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN NAS store",
+   "value": "$389.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on nas.ugreen.com. Matches the $389.99 ChatGPT showed at Newegg and Adorama. It is $25.00 more than the $364.99 DS225+ card ChatGPT showed."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Price, UGREEN NAS store",
+   "value": "$429.99 (compare-at $634.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-gt-2-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 GT",
+   "read": "2026-11-13",
+   "note": "storecheck.py search."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN NAS store",
+   "value": "$619.99 (compare-at $1,129.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Matches ChatGPT's $619.99 B&H card. It is $150.00 less than the $769.99 DS425+ card ChatGPT showed (Micro Center)."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, UGREEN NAS store",
+   "value": "$239.99 (compare-at $394.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Where it loses: 4 GB of RAM and no Docker, per our current page row, so Immich is not an option."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Price, UGREEN NAS store",
+   "value": "$373.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Our page shows $399.99 (2026-11-03), which needs updating."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Price and RAM, TerraMaster store",
+   "value": "$469.99 (compare-at $499.99); listing says 'Quad-core 8GB RAM 5Gbps x 2 RJ45'",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Our page lists $599.99, which is stale. 8 GB meets Immich's recommendation, but it costs $80.00 more than the DXP2800."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Price, TerraMaster store",
+   "value": "$539.99 (compare-at $649.99); listing says '4-bay x86 ... Quad-core 8GB RAM 5Gbps x 2 RJ45'",
+   "source": "https://www.terra-master.com/products/f4-425-plus",
+   "source_title": "F4-425 Plus",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Our page lists $779.99, which is stale. It is $80.00 less than the DXP4800 Plus ($619.99)."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Price and RAM, TerraMaster store",
+   "value": "$269.99 (compare-at $299.99); 4 GB RAM",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425",
+   "read": "2026-11-13",
+   "note": "Where it loses: 4 GB is below Immich's 6 GB minimum."
+  }
+ ],
+ "unsourced": [
+  "Synology DS225+, DS425+ and DS925+ prices today: Synology's compare page shows no prices, the Amazon checker was blocked for every ASIN, and Newegg, B&H, Micro Center and Adorama search pages returned HTTP 403. ChatGPT's cards showed DS225+ $364.99 (Newegg) and DS425+ $579.99, $599.99 and $769.99, but I could not open those pages.",
+  "Price of a Synology 4 GB RAM module to bring the DS225+ or DS425+ to 6 GB: I found no reachable retailer page.",
+  "Synology KB list of models with face/object recognition and the 4 GB RAM rule for object recognition: the KB article (en-us, en-nz and index.php/en-global) rendered only the title in WebFetch, and a curl attempt was not approved.",
+  "UGREEN DXP2800 installed RAM (8 GB) from the maker's product page: storecheck product returned HTTP 429. The 8 GB figure appears only in ChatGPT's card and our current page.",
+  "QNAP TS-264-8G and Asustor AS5402T prices today: Amazon was blocked and shop.qnap.com is not a Shopify store (storecheck JSON error). I didn't reach Asustor's store within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0492557
+ }
+}

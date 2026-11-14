@@ -1,0 +1,157 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the Synology DS1825neo+ ($1,189.99 on Amazon on 2026-11-13) is the DS1825+ with 4 GB of non-ECC RAM in place of 8 GB of ECC RAM. It has the same Ryzen V1500B with no integrated graphics, the same 2× 2.5GbE and the same PCIe slot, so it is $279.31 cheaper than the DS1825+ ($1,469.30) but no better for Plex. The QNAP TS-873A ($1,419.99) now costs $50 more than the UGREEN DXP8800 Plus ($1,369.99), and the TS-873A has no 10GbE built in.",
+ "standout": 2,
+ "standout_why": "I compared against computingforgeeks.com/best-8-bay-nas (cited), wundertech.net/best-8-bay-nas-device-to-buy (cited), starryhope.com/nas/best-nas-for-plex (cited) and terabytewise.com/best-8-bay-nas. ComputingForGeeks names the DS1825neo+ only as a cheaper variant with no specs given. Terabytewise lists its $1,189.99 Amazon price but no specs. WunderTech and StarryHope don't mention it. One ChatGPT chat showed the neo+ at $1,189.99 and told the shopper to 'verify the exact neo+ model's features'. Nobody says it is the same box with 4 GB non-ECC RAM. ComputingForGeeks already gives price ranges, power draw and drive-inclusive totals, so the price spread itself is only partly new. Some ChatGPT chats put the TS-873A at $1,259–$1,288 and below the DXP8800 Plus; ComputingForGeeks' $1,400–$1,450 range already contradicts that.",
+ "decides": "It confirms the DXP8800 Plus. At $1,369.99 it is the only model under $1,500 in ChatGPT's set (and in the rival lists) with Intel Quick Sync and built-in 10GbE. Each cheaper 8-bay loses for running Plex on the NAS: the neo+ and DS1825+ have no iGPU, the TS-832PX and UNAS Pro 8 are ARM, and the AS6508T is an older Atom. The TS-873A now costs more than the DXP8800 Plus and still needs a 10GbE card. For a shopper whose Plex server is a separate PC, the neo+ is the cheapest way into Synology DSM at 8 bays. It gives up ECC RAM and starts with half the memory.",
+ "candidates": [
+  "UGREEN NASync DXP8800 Plus",
+  "UGREEN NASync DXP8800 Ultra",
+  "Synology DS1825+",
+  "Synology DS1825neo+",
+  "Synology DS1823xs+",
+  "QNAP TS-873A-8G",
+  "QNAP TS-832PX-4G",
+  "QNAP TS-855X-8G",
+  "QNAP TS-864eU-8G",
+  "Asustor Lockerstor 8 AS6508T",
+  "Asustor Lockerstor 8 Gen3 AS6808T",
+  "Ubiquiti UniFi UNAS Pro 8",
+  "TerraMaster U8-423"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "Price, diskless",
+   "value": "$1,369.99",
+   "source": "https://www.amazon.com/dp/B0D22HGH4N",
+   "source_title": "UGREEN NAS DXP8800 Plus 8-Bay for Business, IT Teams & Large Studios (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Read with amzcheck.py asin. Seller not shown. The UGREEN store page returned HTTP 429 on three tries, so ChatGPT's $1,275.63 UGREEN-store figure is unverified. Wins: only sub-$1,500 8-bay here with Quick Sync. StarryHope cites a Marius Hosting test that confirmed Plex hardware transcoding on it."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "Plex hardware transcoding (named test)",
+   "value": "Confirmed in a Marius Hosting test, per StarryHope; Intel Core i5-1235U with HDR tone mapping",
+   "source": "https://www.starryhope.com/nas/best-nas-for-plex/",
+   "source_title": "Best NAS for Plex in 2026 With Quick Sync | Starry Hope",
+   "read": "2026-11-13",
+   "note": "StarryHope lists it at $1,369.99. UGOS Pro has no native Plex package, so Plex runs in Docker with the GPU passed through."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Ultra",
+   "label": "Price, diskless",
+   "value": "$1,779.99",
+   "source": "https://www.amazon.com/dp/B0G1M855BK",
+   "source_title": "UGREEN NAS DXP8800 Ultra 8-Bay for Businesses, IT Teams & Large Studios (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Loses: $279.99 over the $1,500 line ($1,779.99 − $1,500) and $410 more than the Plus ($1,779.99 − $1,369.99), which matches TechRadar's headline 'for $410 less'."
+  },
+  {
+   "product": "Synology DS1825+",
+   "label": "Price, diskless",
+   "value": "$1,469.30",
+   "source": "https://www.amazon.com/dp/B0C8SBXSTJ",
+   "source_title": "Synology DS1825+ ... (8-Bay Diskless NAS) (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Seller not shown. $30.70 under the $1,500 line. Micro Center ($1,279.99 in ChatGPT) returned HTTP 403, so I couldn't check it. Loses: WunderTech says the Ryzen V1500B 'has no integrated graphics', so it's not for Plex/Jellyfin transcoding."
+  },
+  {
+   "product": "Synology DS1825neo+",
+   "label": "Price, diskless",
+   "value": "$1,189.99",
+   "source": "https://www.amazon.com/dp/B0HF32RG7K",
+   "source_title": "Synology 8-Bay DiskStation DS1825neo+ Expandable NAS Storage (Diskless) (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Costs $279.31 less than the DS1825+ on Amazon ($1,469.30 − $1,189.99)."
+  },
+  {
+   "product": "Synology DS1825neo+",
+   "label": "Difference from DS1825+",
+   "value": "4 GB DDR4 non-ECC pre-installed (DS1825+: 8 GB DDR4 ECC). Same AMD Ryzen V1500B 4C/8T 2.2 GHz, 2× 2.5GbE, 2× M.2 NVMe, 1× PCIe Gen3 x8 (x4 link), 32 GB max RAM, expandable to 18 bays with two DX525, and 3-year warranty",
+   "source": "https://www.synology.com/en-us/products/DS1825neo+",
+   "source_title": "DS1825neo+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology's spec page compares both models. No iGPU or transcoding row for either. Loses for a Plex-on-NAS buyer for the same reason as the DS1825+. Also gives up ECC."
+  },
+  {
+   "product": "Synology DS1823xs+",
+   "label": "Price, diskless",
+   "value": "$2,049.99",
+   "source": "https://www.amazon.com/dp/B0BSTNV5TG",
+   "source_title": "Synology 8-Bay DiskStation DS1823xs+ (Diskless) (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Loses: $549.99 over the $1,500 line."
+  },
+  {
+   "product": "QNAP TS-873A-8G",
+   "label": "Price, diskless",
+   "value": "$1,419.99",
+   "source": "https://www.amazon.com/dp/B0GN4WFV67",
+   "source_title": "QNAP TS-873A-8G 8 Bay NAS (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "$50 more than the DXP8800 Plus on Amazon ($1,419.99 − $1,369.99). Loses: ComputingForGeeks lists the Ryzen V1500B with transcoding 'not claimed' and 10GbE only by an extra PCIe card. Our page's $1,149 (undated) is stale."
+  },
+  {
+   "product": "QNAP TS-832PX-4G",
+   "label": "Price, diskless",
+   "value": "$1,109.57",
+   "source": "https://www.amazon.com/dp/B0GN5MSRRT",
+   "source_title": "QNAP TS-832PX-4G 8 Bay NAS (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Loses: ComputingForGeeks says the 4-core ARM Alpine AL324 does no transcoding ('file serving only'), with 4 GB non-ECC RAM and a 2-year warranty."
+  },
+  {
+   "product": "QNAP TS-855X-8G",
+   "label": "Price, diskless",
+   "value": "$1,549.00",
+   "source": "https://www.amazon.com/dp/B0GV4RMS6M",
+   "source_title": "QNAP TS-855X-8G-US 8 Bay NAS (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Loses: $49 over the line. ComputingForGeeks also notes it has six 3.5-inch and two 2.5-inch bays, not eight 3.5-inch bays."
+  },
+  {
+   "product": "Asustor Lockerstor 8 AS6508T",
+   "label": "Price, diskless",
+   "value": "$1,069.99",
+   "source": "https://www.amazon.com/dp/B07Y2BJZKC",
+   "source_title": "Asustor Lockerstor 8 AS6508T 8 Bay NAS ... Quad Core 2.1GHz CPU, 8GB RAM DDR4 (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "Same $1,069.99 that ChatGPT showed at Best Buy. Loss reason (Atom C3538, no Quick Sync) is ChatGPT's claim. I didn't open Asustor's page, so see unsourced."
+  },
+  {
+   "product": "Asustor Lockerstor 8 Gen3 AS6808T",
+   "label": "Price, diskless",
+   "value": "$2,016.57–$2,023.99 (two listings)",
+   "source": "https://www.amazon.com/dp/B0DBYVPCZX",
+   "source_title": "Asustor Lockerstor 8 Gen3 AS6808T 8 Bay NAS for Enthusiasts (Diskless) (Amazon.com)",
+   "read": "2026-11-13",
+   "note": "$2,023.99 on B0DBYVPCZX and $2,016.57 on B0GGTNHL5L. Loses: more than $500 over the line. WunderTech also says it's 'not for Plex/Jellyfin, since it's AMD'."
+  },
+  {
+   "product": "Ubiquiti UniFi UNAS Pro 8",
+   "label": "Price",
+   "value": "$799.00 (page also shows '$880.00 Surcharge incl.')",
+   "source": "https://store.ui.com/us/en/products/unas-pro-8",
+   "source_title": "UNAS Pro 8 - Ubiquiti Store",
+   "read": "2026-11-13",
+   "note": "Add to Cart is active. A redundant 550W power module costs $159 extra, and UI Care (5-year) costs $199. Loses: WunderTech says it has no apps, Docker or VMs, so Plex can't run on it. 2U rackmount."
+  }
+ ],
+ "unsourced": [
+  "UGREEN store price for the DXP8800 Plus (ChatGPT's $1,275.63): ai.ugreen.com returned HTTP 429 three times, nas.ugreen.com returned 429, and storecheck.py returned 403.",
+  "Micro Center prices for the DXP8800 Plus ($1,282.99) and DS1825+ ($1,279.99): both product pages returned HTTP 403.",
+  "Newegg 8-bay prices: the listing page returned HTTP 403.",
+  "TerraMaster U8-423 current US price and Quick Sync confirmation: terra-master.com returned 403 to storecheck. Only a search snippet gave a $1,099.99 launch price (cdrinfo), and I didn't open that page.",
+  "QNAP TS-864eU-8G price: only seen as $1,369.00 on the rival terabytewise page. I didn't open an Amazon or QNAP page for it.",
+  "Asustor AS6508T CPU and Quick Sync status from the Asustor product page: not opened within the call budget.",
+  "UNAS Pro 8 standard base warranty: not stated on store.ui.com.",
+  "Amazon seller identity (first-party or marketplace) for each price: amzcheck.py does not return the seller."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1739631999999998
+ }
+}

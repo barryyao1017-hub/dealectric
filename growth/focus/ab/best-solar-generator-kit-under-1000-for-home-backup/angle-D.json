@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says how quickly each kit's station switches to battery when the grid drops. Jackery says in its own words that the Explorer 1000 v2 switches in 20 ms and is 'not a 0 ms (no interruption) switching UPS', and that it should not run data servers or workstations. EcoFlow rates the DELTA 3 Classic at under 10 ms.",
+ "standout": 2,
+ "standout_why": "I opened four rival pages: Dealectric's current page, Lights On Labs, PowerSized's kit price guide and StormWatts' same-panel-watts comparison. None of them mentions UPS or EPS mode, switchover time or pass-through. PowerSized and StormWatts cover solar input voltage and current, panel Voc and cold-morning Voc in detail, so that mechanism is already taken. Switchover time is not. I did not open EnergySage, Prepared States or SolarGenAdvisor.",
+ "decides": "This confirms the pick rather than changing it. A fridge, router, lights or CPAP will run through a 10–20 ms gap on any of these kits, so the largest-battery logic still stands. It does split the kits for one common home-backup use: keeping a desktop PC, NAS or home office running unattended through an outage. There, EcoFlow's under-10 ms DELTA 3 Classic is the safer kit, and Jackery's own FAQ rules the Explorer 1000 v2 out for workstations. The page should say that for those loads the shopper should pick by switchover time, not by battery size. There is also a second fact from Jackery's own FAQ: the Explorer 1000 v2 charges only from 0 to 45 °C, so it will not take solar charge below freezing during a winter outage.",
+ "candidates": [
+  "EcoFlow DELTA 3 Classic + 220 W",
+  "BLUETTI AC180 + 200 W",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "Jackery Solar Generator 1000 v2 (Explorer 1000 v2 + 200 W)",
+  "Anker SOLIX C1000 Gen 2 + 200 W"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "UPS switchover time and maker's caveat",
+   "value": "20 ms",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-14",
+   "note": "Jackery's wording: 'automatically switches to battery power within 20 ms (0.02 seconds)'. 'This function is not a 0 ms (no interruption) switching UPS.' It also warns against connecting 'devices that require a true uninterruptible power supply, such as data servers or workstations.'"
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Charging temperature range",
+   "value": "0–45 °C (32–113 °F)",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-14",
+   "note": "Below 0 °C the station will not take a charge, from solar or anything else. That matters for a winter outage if the station sits in a garage or outdoors."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Solar input per port",
+   "value": "16–60 V; one port: 10.5 A, 200 W max; both ports: 21 A, 400 W max",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303615153051-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery",
+   "read": "2026-11-14",
+   "note": "The kit's single 200 W panel on one port already uses that port's full 200 W limit. Reaching the 400 W ceiling takes a second panel on the second port. Our page currently lists '400 W' with no voltage figure."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "UPS switchover time",
+   "value": "under 10 ms",
+   "source": "https://www.ecoflow.com/us/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "EcoFlow's wording: '<10ms switchover—fastest-in-class UPS.' The 'fastest-in-class' part is EcoFlow's own claim. The page gives no caveat about which devices suit it."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Max solar input",
+   "value": "500 W",
+   "source": "https://www.ecoflow.com/us/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "From the comparison table row 'Maximum PV Input Power(W)'. This fills our page's empty 'Max solar input' cell for this row. The page does not give a voltage or current range."
+  },
+  {
+   "product": "BLUETTI AC180 + 200 W",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$769 (was $899), listed as available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh – BLUETTI US",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py from the Shopify product JSON, variant 'AC180+200W Solar' (id 45427542491355): price 769.0, compare_at 899.0, available true. Our page says 'AC180 back late Nov', so the store now shows it as purchasable. Other variants: bare AC180 $499, AC180 + SP100L $679, AC180 + 2× 200 W $1,232."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 UPS switchover time. Search results said 20 ms, but bluettipower.com/products/ac180 returned HTTP 429 to WebFetch, bluetti.com/ac180-spec returned 404, and the BLUETTI community thread redirected to the forum home page. Storecheck's product text has no UPS spec.",
+  "ALLPOWERS P1800 UPS switchover time. A search summary said '10 ms or less', but iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w returned 429 and storecheck search on allpowers.com failed with no JSON.",
+  "Anker SOLIX C1000 Gen 2 UPS switchover time. The anker.com A1763 product URL I tried returned 404.",
+  "ATX power-supply hold-up time, the reason a 20 ms gap can reboot a desktop PC while under 10 ms usually won't. Search results cite 17 ms output hold-up and 16 ms PWR_OK in Intel's ATX12V design guides, but the Intel guide PDF I tried failed with a TLS certificate error, so I could not open it.",
+  "EcoFlow DELTA 3 Classic solar voltage and current range, and its charging temperature range. EcoFlow's US page states neither.",
+  "DJI Power 1000 switchover time and solar input. I did not reach these within the tool budget.",
+  "Lowe's-hosted manual PDF (pdf.lowes.com …63957094.pdf). It downloaded, but I could not extract its text because the pdftotext call was not approved, so I could not confirm which product it covers."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1249066
+ }
+}

@@ -1,0 +1,187 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the QNAP TS-464 (Celeron N5095), the Asustor Nimbustor 2 Gen2 AS5402T (Celeron N5105) and the Synology DS225+/DS425+ (Celeron J4125) have CPUs that Intel lists with SSE4.2 only and no AVX or AVX2, which puts them outside the hardware Frigate's docs say should work ('an Intel CPU (with AVX + AVX2 instructions)'). The UGREEN DXP4800 Plus at $619.99 and the TerraMaster F4-425 Pro (N350) at $699.99 on their makers' stores do sit on that list, because they use Gracemont/Alder Lake chips with AVX2.",
+ "standout": 3,
+ "standout_why": "I compared this against docs.frigate.video/frigate/hardware/ (cited in all 7 chats), which gives the AVX + AVX2 rule but names no NAS, and against docs.frigate.video/frigate/installation/, which covers QNAP's 64 MB shm limit and its command-line install but says nothing about the CPU instruction set. ChatGPT turned the rule into a vague hedge in one chat ('Some older NAS processors may not meet these requirements') and still recommended the N5095 TS-464 in 4 of 7 chats. It also showed an Asustor AS6704T card. Our own current page lists the TS-464, AS5402T and DS225+ as OpenVINO-capable, which is the same mistake. None of these pages matches each candidate's CPU to Intel's instruction-set listing.",
+ "decides": "This rules out the QNAP TS-464, the Asustor AS5402T and the Synology DS225+/DS425+ as 'run Frigate on the NAS' picks under Frigate's own stated hardware rule, even though they have Quick Sync iGPUs. The Synology DS925+ meets the rule (Ryzen V1500B with AVX2) but has no iGPU, so it falls back to the CPU detector or a Coral USB. That leaves the AVX2 Intel boxes. On today's maker-store prices that means the UGREEN DXP2800 (N100, $389.99) for 2 bays, the UGREEN DXP4800 Plus (Pentium Gold 8505, $619.99) as the 4-bay pick, and the DXP4800 Pro ($679.99) or TerraMaster F4-425 Pro (N350 8-core, 16 GB, $699.99) for more headroom. The F4-425 Pro costs $70–140 more on TerraMaster's own store today than the $629.99 and $559.99 ChatGPT showed for it. The page should present the rule as Frigate's documented requirement, not as a measured failure, because I did not find a named report of Frigate crashing on an N5095 or J4125.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 Pro",
+  "UGREEN NASync DXP4800",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-425",
+  "TerraMaster F4-425 Plus",
+  "TerraMaster F4-425 Pro",
+  "TerraMaster F4-424 Pro",
+  "TerraMaster F4-424",
+  "QNAP TS-464",
+  "Asustor Lockerstor 4 Gen2 AS6704T",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "Synology DS925+",
+  "Synology DS425+",
+  "Synology DS225+",
+  "Beelink EQ13"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Frigate CPU requirement",
+   "value": "\"Anything with an Intel CPU (with AVX + AVX2 instructions) and capable of running Debian should work fine\"",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "The same page says the Coral is no longer recommended for new installs, names the Beelink EQ13 (N100), and lists N100 at ~15 ms MobileNetV2 with only one detector instance and N150 at ~15 ms. It names no NAS models."
+  },
+  {
+   "product": "general",
+   "label": "QNAP and Synology install caveats",
+   "value": "QNAP Container Station has a fixed 64 MB shm and no GHCR support, so Frigate must be installed from the command line. Synology DSM 7 needs 'Execute container using high privilege'. Frigate needs about 210 MB shm for 2 cameras at 720p.",
+   "source": "https://docs.frigate.video/frigate/installation/",
+   "source_title": "Installation | Frigate",
+   "read": "2026-11-13",
+   "note": "The page says nothing about UGREEN UGOS or TerraMaster TOS."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU instruction set",
+   "value": "Celeron N5095: Intel SSE4.2 only (no AVX/AVX2). UHD Graphics 16 EU with Quick Sync.",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5095 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "Why it loses: it falls outside Frigate's AVX+AVX2 rule, and its Container Station install is command-line only."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU / RAM / warranty",
+   "value": "Intel Celeron N5095, 8 GB DDR4 (max 16 GB), 3-year warranty",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 hardware specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "This is the TS-464-8G."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "CPU instruction set",
+   "value": "Celeron N5105: Intel SSE4.2 only (no AVX/AVX2)",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "The AS5402T's N5105 comes from Dealectric's catalog listing. I did not reopen Asustor's page this session. Why it loses: it falls outside Frigate's AVX+AVX2 rule."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "CPU instruction set",
+   "value": "Celeron J4125: Intel SSE4.2 only (no AVX/AVX2). GPU is UHD Graphics 600.",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "The J4125 in the DS225+/DS425+ comes from Dealectric's catalog. Why it loses: it falls outside Frigate's AVX+AVX2 rule, and the DS225+ ships with 2 GB."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "CPU instruction set (N100)",
+   "value": "Intel SSE4.1, SSE4.2, AVX2",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "ARK lists AVX2 and does not list plain AVX separately. The N100 meets Frigate's AVX2 rule."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price (maker US store)",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "This matches the $619.99 ChatGPT showed from B&H and Newegg. A refurbished unit lists at $449.99 but is sold out."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Pro",
+   "label": "Price (maker US store)",
+   "value": "$679.99 (compare-at $1,199.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-pro-4-bay-nas",
+   "source_title": "UGREEN NASync DXP4800 Pro – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "ChatGPT showed it at $799.99 (B&H) in one chat and $679.99 in another. The bundle with the docking station is $754.99."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Price (maker US store)",
+   "value": "$559.99 (compare-at $854.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-gt-4-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 GT – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "The CPU was not on the listing I read. See unsourced."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price (maker US store)",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "Where it loses: it has only 2 bays, and Frigate's table gives the N100 a single detector instance."
+  },
+  {
+   "product": "TerraMaster F4-425 Pro",
+   "label": "Price and spec (maker US store)",
+   "value": "$699.99 (compare-at $799.99): Intel N350 8-core, 16 GB DDR5, dual 5GbE",
+   "source": "https://www.terra-master.com/products/f4-425-pro",
+   "source_title": "F4-425 Pro – TerraMaster",
+   "read": "2026-11-13",
+   "note": "ChatGPT showed this model at $629.99 (N350, 16 GB) and $559.99 (titled N305, 8 GB). The maker's price today is $70–140 higher than those cards."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Price (maker US store)",
+   "value": "$539.99 (compare-at $649.99), listed as quad-core, 8 GB RAM, 2× 5GbE",
+   "source": "https://www.terra-master.com/products/f4-425-plus",
+   "source_title": "F4-425 Plus – TerraMaster",
+   "read": "2026-11-13",
+   "note": "The store listing text says 8 GB. Our current page says 16 GB, so that needs re-checking."
+  },
+  {
+   "product": "TerraMaster F4-425",
+   "label": "Price (maker US store)",
+   "value": "$429.99, in stock",
+   "source": "https://www.terra-master.com/products/f4-425",
+   "source_title": "F4-425 – TerraMaster",
+   "read": "2026-11-13",
+   "note": "ChatGPT showed $386.99 from another retailer. The CPU is in unsourced."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "Price and spec (maker US store)",
+   "value": "$759.99 (compare-at $859.99): Intel Core i3 8-core/8-thread, UHD iGPU, 32 GB DDR5, dual 2.5GbE, 2× M.2, 2-year warranty",
+   "source": "https://www.terra-master.com/products/f4-424-pro",
+   "source_title": "F4-424 Pro – TerraMaster",
+   "read": "2026-11-13",
+   "note": "This matches ChatGPT's $759.99 card. Where it loses: it costs $60 more than the F4-425 Pro and has slower 2.5GbE ports."
+  },
+  {
+   "product": "TerraMaster F4-424",
+   "label": "Price and availability (maker US store)",
+   "value": "$499.99, out of stock: Intel N95, 8 GB DDR5 (max 32 GB)",
+   "source": "https://www.terra-master.com/products/f4-424-nas",
+   "source_title": "F4-424 – TerraMaster",
+   "read": "2026-11-13",
+   "note": "Where it loses: it is unavailable from the maker today."
+  }
+ ],
+ "unsourced": [
+  "QNAP TS-464 price today: B&H and Newegg returned 403, and amzcheck search returned nothing (Amazon walled). ChatGPT's $639.00 from B&H is unverified.",
+  "Asustor AS6704T (Lockerstor 4 Gen2 / Gen2+ v2) CPU and price: Asustor's p_id=86 page turned out to be the AS6804T, the datasheet PDF text was unreadable, and Newegg returned 403. Retailer search results say N5105 for the Gen2, but I did not open a maker page to confirm.",
+  "Synology DS925+, DS425+ and DS225+ prices today: not checked within the tool budget.",
+  "Beelink EQ13 price: bee-link.com returned 429 and storecheck search came back empty.",
+  "TerraMaster F4-425 CPU: the product page returned 429.",
+  "UGREEN DXP4800 (base) price: not found in the UGREEN US NAS store search. ChatGPT's $499.99 is unverified. DXP4800 GT CPU: not on the store listing.",
+  "A named report of Frigate actually failing or crashing on an N5095, N5105 or J4125: not searched within budget. The finding rests on Frigate's documented requirement plus Intel ARK."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0946248000000003
+ }
+}

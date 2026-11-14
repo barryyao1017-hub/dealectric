@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Goal Zero's own page for the current (\"New\") Sherpa 100AC lists its USB-C Power Delivery ports at \"60 Watts each\" next to an \"Integrated 100W AC\" outlet. ChatGPT's answers and our current table both say the Sherpa 100AC has \"100W USB-C\". For a laptop that needs more than 60 W, that changes whether the shopper should use the USB-C port or the AC outlet on this bank.",
+ "standout": 2,
+ "standout_why": "I compared against our page (dealectric.com, cited) and geekchamp.com (cited). Our page gives 100 W USB-C and calls the Sherpa's inverter modified sine. ChatGPT repeated the '100W USB-C' figure from our page. Geekchamp says only that pure sine matters for CPAP and similar loads; it states no waveform for the Sherpa and says the Sherpa's continuous AC wattage is not given. Neither page has Goal Zero's 60 W-per-port wording for the new model. I couldn't open gearlark.com (TLS certificate error). I didn't read Engadget, Macworld, Wired or the other results because of the call budget, so I can't say whether one of them has the 60 W figure. That uncertainty is why the score is 2 and not 3.",
+ "decides": "This doesn't change the Sherpa 100AC as the flight-legal pick (95 Wh, 2-year warranty, $249.95 at Goal Zero today). It does change the advice and the table. We should stop printing '100 W USB-C' for the new Sherpa 100AC unless Goal Zero's full spec table says otherwise. For laptops that draw 60 W or less, use USB-C and skip the inverter; our page already cites a test where only about 70% of a battery reached the laptop over AC. Bigger laptops would have to use the 100 W AC outlet with that loss, or go to a station. The waveform claim (modified sine) needs a source before it goes back on the page, because Goal Zero's store labels its Yeti inverters 'pure sine wave' but the Sherpa text I could read gives no waveform.",
+ "candidates": [
+  "Goal Zero Sherpa 100AC (New, wireless)",
+  "Omnicharge Omni 20+",
+  "mophie Powerstation Pro AC",
+  "BLUETTI Elite 30 V2",
+  "Tenergy T320"
+ ],
+ "findings": [
+  {
+   "product": "Goal Zero Sherpa 100AC (New)",
+   "label": "USB-C PD output per port (maker wording)",
+   "value": "60 W each, two ports",
+   "source": "https://goalzero.com/products/new-sherpa-100ac-wireless-power-bank",
+   "source_title": "New Sherpa 100AC · Goal Zero",
+   "read": "2026-11-14",
+   "note": "Read from Goal Zero's Shopify product data with storecheck.py search. Exact text: 'Two High-Speed Power Delivery Ports At 60 Watts each, these USB-C Power Delivery ports provide rapid power for laptops'. The tool output was cut off before the tech table, so I couldn't check whether one port has a higher combined or max rating. The product page itself returned HTTP 429 to direct fetches."
+  },
+  {
+   "product": "Goal Zero Sherpa 100AC (New)",
+   "label": "AC outlet rating (maker wording)",
+   "value": "100 W",
+   "source": "https://goalzero.com/products/new-sherpa-100ac-wireless-power-bank",
+   "source_title": "New Sherpa 100AC · Goal Zero",
+   "read": "2026-11-14",
+   "note": "'Integrated 100W AC Take the outlet with you, on the plane or in the wild'. The readable text gives no waveform or surge figure."
+  },
+  {
+   "product": "Goal Zero Sherpa 100AC (New)",
+   "label": "Battery, warranty, price",
+   "value": "95 Wh; 2-year warranty; $249.95 (compare-at $274.85)",
+   "source": "https://goalzero.com/products/new-sherpa-100ac-wireless-power-bank",
+   "source_title": "New Sherpa 100AC · Goal Zero",
+   "read": "2026-11-14",
+   "note": "Price and availability from the store JSON via storecheck.py, shown as in stock. The marketing text says '95 watt-hours' and 'airline-approved'."
+  },
+  {
+   "product": "Goal Zero Sherpa 100PD (sibling, for contrast)",
+   "label": "USB-C PD output (maker spec table)",
+   "value": "100 W max (5-20 V up to 5 A)",
+   "source": "https://goalzero.com/products/new-sherpa-100pd-wireless-power-bank",
+   "source_title": "New Sherpa 100PD · Goal Zero",
+   "read": "2026-11-14",
+   "note": "The 100PD's table lists 'USB-C PD port (output): 5V, 9V, 12V, 15V, 20V up to 5A (100W max)' and 'Pack Capacity: 94.7Wh'. The '100 W USB-C / 94.7 Wh' figures on our page and in ChatGPT's answers match the 100PD's table, not the 100AC's '60 Watts each' wording."
+  },
+  {
+   "product": "general (Goal Zero labelling)",
+   "label": "How Goal Zero states inverter waveform where it is pure sine",
+   "value": "Yeti 500: 'AC (Inverter)(pure sine wave): 500 W Continuous, 1000 W Surge'; Yeti 700: '600 W Continuous, 1000 W Surge'",
+   "source": "https://goalzero.com/products/yeti-500-nomad-50-plus-solar-generator",
+   "source_title": "Yeti 500 & Nomad 50+ Solar Generator · Goal Zero",
+   "read": "2026-11-14",
+   "note": "Goal Zero writes '(pure sine wave)' explicitly on its Yeti spec lines. The Sherpa 100AC text I could read has no such label. That is not proof the Sherpa is modified sine, so the waveform stays unsourced (see below)."
+  },
+  {
+   "product": "Omnicharge Omni 20+",
+   "label": "Price at maker store",
+   "value": "$249.00",
+   "source": "https://www.omnicharge.co/products/omni-20",
+   "source_title": "Omni 20+ · Omnicharge",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search of omnicharge.co (SKU OP2HA004), shown as in stock. The product page returned 429, so I read no inverter specs."
+  }
+ ],
+ "unsourced": [
+  "Sherpa 100AC inverter waveform. A search snippet says Goal Zero's page and user guide give 'modified sine wave' (110 V, 0.9 A, 100 W max, 60 Hz). I couldn't open the page: goalzero.com returned 429. The user-guide PDFs on cdn.shopify.com and goalzero.co.za came back as compressed binary, and the PDF text tools needed approval I didn't have. The manualmachine and manuals.online mirrors returned 403, and so did REI.",
+  "Sherpa 100AC AC surge rating and continuous rating. Tried Goal Zero's page and user guide; both blocked as above.",
+  "Sherpa 100AC full USB-C table (whether one port reaches 100 W, combined limit). The storecheck text was cut off before the tech section, and storecheck product returned 429.",
+  "Omni 20+ AC waveform, surge, and any low-load auto-off. omnicharge.co returned 429 to WebFetch; storecheck gave only price and SKU.",
+  "mophie Powerstation Pro AC waveform. No mophie spec page found; a search found no maker statement, and B&H returned 403.",
+  "Whether a 100 W inverter shuts off when a 96 W or 140 W laptop brick is plugged in (overload behavior). Found no maker manual text I could open; the geekchamp and Daran listing wording is generic."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2092751000000002
+ }
+}

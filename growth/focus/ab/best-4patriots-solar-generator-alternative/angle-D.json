@@ -1,0 +1,119 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Patriot Power Generator 2200X takes up to 1,200 W of solar (600 W on each of two Anderson-compatible inputs, 12–59 VDC). So the 12–14 hour solar recharge comes from the single 200 W panel in the bundle, not from a limit in the generator.",
+ "standout": 2,
+ "standout_why": "I checked the rival pages ChatGPT got. powerstationgearlab.com says 4Patriots 'doesn't publish a maximum solar input on its spec table'. solar-home.space says 'the spec sections we checked on 4Patriots' pages do not list a maximum solar input, so ask before buying extra panels'. powerstations.reviews lists the 2200X's solar input as 'Not published'. 4patriots.com's 2200X product page lists no solar input either. Our own current page says 'max solar input not published'. Two ChatGPT answers counted 'solar charging transparency' or 'limited published specifications' as a 4Patriots drawback. None of these pages gives the 600 W × 2 / 12–59 VDC / Anderson figures from 4Patriots' own manual. I couldn't open solargenadvisor.com (TLS certificate error), so I haven't checked it.",
+ "decides": "The pick stays the same: BLUETTI Elite 200 V2 (or Growatt/ALLPOWERS) on price and warranty, since the 2200X is $2,999–3,199 with a 1-year warranty against $899 with 5 years. What changes is the reasoning. 'Solar input unknown' is no longer an argument against 4Patriots. On paper the 2200X accepts more solar (1,200 W over two inputs) than the Elite 200 V2 (1,000 W, 12–60 V/20 A). A 4Patriots buyer who wants a faster solar refill needs more panels, not a different generator. Each input's panel string must stay under 59 V or, in the manual's words, 'the unit could be damaged'. The bundled 200 W panel is what makes the refill take a day or more. Whichever station you buy, the panel watts you own set solar recharge time, so compare kits by panel watts against battery Wh.",
+ "candidates": [
+  "4Patriots Patriot Power Generator 2200X",
+  "BLUETTI Elite 200 V2",
+  "Growatt INFINITY 2000 PRO",
+  "ALLPOWERS R2500 V2"
+ ],
+ "findings": [
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Solar input (maker's manual spec table)",
+   "value": "600 W × 2 (1,200 W total), Anderson-compatible solar/DC input",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html?page=27",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1), p. 27 Technical Specifications",
+   "read": "2026-11-14",
+   "note": "This is the same PPG-2200X-MANUAL-V1.1.pdf that the 4patriots.com 2200X product page links to (cdn.shopify.com). I couldn't extract the CDN PDF text, so I read the ManualsLib copy. The extracted table text is scrambled. The pairing of 'Solar Input' with '600W x 2' and of 'Solar/DC Input Port' with 'Anderson Compatible' follows the order of the rows, and the p. 26–27 summary on ManualsLib quotes 'Solar Input 600W x 2' directly."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Acceptable DC/solar charging voltage",
+   "value": "12–59 VDC",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html?page=15",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1), p. 15 charging",
+   "read": "2026-11-14",
+   "note": "Verbatim: 'The acceptable DC charging voltage range is 12-59 VDC. If any other VDC is used, the unit could be damaged.' The manual gives no per-input current limit and no series/parallel guidance."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Solar charge time with one 100 W panel (manual spec table)",
+   "value": "28–30 hours",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html?page=27",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1), p. 27",
+   "read": "2026-11-14",
+   "note": "On the same page, 'DC Charge Time' reads '2 Hours'. That fits a full 1,200 W input (2,240 Wh ÷ 1,200 W ≈ 1.9 h). The pairing is inferred from the scrambled extraction."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Solar recharge time with the bundled 200 W panel (per reviewer quoting 4Patriots)",
+   "value": "12–14 hours",
+   "source": "https://powerstationgearlab.com/reviews/patriot-solar-generator-review/",
+   "source_title": "Patriot Solar Generator Review (2026): Is 4Patriots Worth 3x the Price?",
+   "read": "2026-11-14",
+   "note": "PowerStationGearLab: '4Patriots quotes 12-14 hours to recharge the 2200X from one 200W panel.' Arithmetic: 2,240 Wh ÷ 200 W = 11.2 h at full rated panel output, so the panel is the bottleneck, using about 1/6 of the 1,200 W input."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Pass-through / blackout behaviour",
+   "value": "Pass-through: yes; no switchover time published",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html?page=17",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1), p. 17",
+   "read": "2026-11-14",
+   "note": "Verbatim: 'If power from the grid fails or the circuit breaker is tripped, the generator will automatically begin powering your appliance until grid power is restored.' The manual gives no switchover time in ms."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Operating and charging temperature",
+   "value": "32–104 °F (0–40 °C)",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html?page=27",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1), p. 27",
+   "read": "2026-11-14",
+   "note": "The spec table label reads 'Operating & Charging Temperature'. It won't charge below freezing, so in a winter outage keep the unit indoors and run the panel outside on the 25 ft extension cable the manual mentions."
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "AC charge rate and warranty (manual)",
+   "value": "12.5 A (1,500 W max) AC; 1-year manufacturer warranty",
+   "source": "https://www.manualslib.com/manual/4382662/4patriots-Patriot-Power-Generator-2200x.html",
+   "source_title": "4Patriots Patriot Power Generator 2200X User Manual (V1.1)",
+   "read": "2026-11-14",
+   "note": "p. 27 'AC Charge Rate 12.5A (1500W MAX)'; p. 28 'backed by our 4Patriots 1-year manufacturer warranty.'"
+  },
+  {
+   "product": "4Patriots Patriot Power Generator 2200X",
+   "label": "Price, generator + 200 W panel (maker's store)",
+   "value": "$3,199 (shown against $3,499)",
+   "source": "https://4patriots.com/products/patriot-power-solar-generator-2200x-solar-panel",
+   "source_title": "Patriot Power Solar Generator 2200X & Panel – 4Patriots",
+   "read": "2026-11-14",
+   "note": "The 'Generator Only' price isn't shown on the page. The product page lists no solar input spec; it links the manual PDF."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input (maker's US page)",
+   "value": "12–60 V / 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "From the page FAQ comparing it with the AC200L. The page doesn't state a UPS switchover time or charging temperature."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price (station only) and warranty, maker's US store",
+   "value": "$899.00; 5-year warranty",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "$899 ÷ 2,073.6 Wh = $0.43/Wh, against the 2200X at $2,999 ÷ 2,240 Wh = $1.34/Wh (generator-only list price as reported by rival pages; I didn't see it on the 4Patriots page)."
+  }
+ ],
+ "unsourced": [
+  "Growatt INFINITY 2000 PRO solar input voltage window and max watts (search snippets show 12–60 V, 1,200 W), UPS switchover time and price: growattportable.com returned HTTP 429 twice, so I couldn't open it",
+  "ALLPOWERS R2500 V2 solar input (snippets show 12–150 V, 1,000 W, ≤15 ms UPS) and price: iallpowers.com returned HTTP 429 twice",
+  "2200X per-input solar current limit and series/parallel guidance: not in the manual pages I read (pp. 15–17, 26–27)",
+  "Open-circuit voltage and connector of 4Patriots' bundled 200 W panel: the 4Patriots expansion/panel pages returned HTTP 429",
+  "BLUETTI Elite 200 V2 UPS switchover time and charging temperature from its manual: not on the US product page, and I didn't open the manual PDF within the call budget",
+  "solargenadvisor.com 4Patriots review: couldn't load (self-signed certificate error), so I couldn't check whether it states the 2200X solar input"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2242716999999996
+ }
+}

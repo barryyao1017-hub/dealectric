@@ -1,0 +1,96 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that ComputerBase measured the UGREEN DXP2800 at 18.6 W at the wall while idle with two Seagate IronWolf Pro 20 TB drives spinning, and 27.7 W while writing. In the same test it measured Synology's DS224+, which uses the same J4125 chip as the DS225+, at 18.6 W and 25.3 W. Drives never sleep during 24/7 recording, so 18.6 W is the lowest steady draw for either box, about 163 kWh a year, and the two NAS options come out even on running cost.",
+ "standout": 2,
+ "standout_why": "The cited rival pages are maker pages: Reolink's guide to adding cameras to Synology Surveillance Station, Synology's Surveillance Station spec page and License Pack page, Reolink's RLN8-410 product and NVR store pages, Reolink's continuous-recording support article, and QNAP's QVR FAQ. They cover licences, setup and channel counts. None gives a reviewer's or lab's measured power draw. I also opened the top-ranked uncited result, Reolink's 'Synology Surveillance Station Cameras 2026 Buying Guide' (2026-08-25). It has no measured figures at all, only licence rules. None of ChatGPT's answers mentions power use or running cost, and our current page has no measured figures either.",
+ "decides": "It confirms the pick rather than changing it. ComputerBase measured the DXP2800 and the DS224+ at the same idle draw with HDDs spinning (18.6 W each), with only 2.4 W between them while writing. So running cost doesn't separate UGREEN from Synology, and the choice still comes down to Synology's two paid extra licences against UGREEN's newer Surveillance Center software. I found no reviewer measurement of the Reolink RLN8-410's own wall draw, so I can't make a running-cost case for or against it.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Reolink RLN8-410",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "TerraMaster F2-425 Plus"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power at the wall, idle with HDDs spinning (ComputerBase)",
+   "value": "18.6 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test: Auch ein kleines NAS kann schnelle Hardware haben (page 3, Lautstärke und Leistungsaufnahme), ComputerBase, Frank Hüber, 2024-07-01",
+   "read": "2026-11-13",
+   "note": "Measured with two Seagate IronWolf Pro 20 TB HDDs. The article doesn't say whether the M.2 SSDs were installed during the power test. Drives spin all the time during 24/7 recording, so this is the steady-state floor. My arithmetic: 18.6 W × 8,760 h ≈ 163 kWh a year."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power while writing (ComputerBase)",
+   "value": "27.7 W",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test, ComputerBase, Frank Hüber, 2024-07-01",
+   "read": "2026-11-13",
+   "note": "Labelled 'Schreiben' (writing). Same two 20 TB IronWolf Pro drives. ComputerBase also measured 7.3 W with the HDDs in standby, but standby won't happen while it records around the clock."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Noise (ComputerBase)",
+   "value": "30.0 dB(A) idle (below the meter's range); 34.2 dB(A) during HDD access",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test, ComputerBase, Frank Hüber, 2024-07-01",
+   "read": "2026-11-13",
+   "note": "ComputerBase says the noise depends mainly on the drives chosen. With 20 TB HDDs, drive access is audible."
+  },
+  {
+   "product": "Synology DS224+ (as a stand-in for the DS225+)",
+   "label": "Power idle with HDDs spinning / writing (ComputerBase, same comparison table)",
+   "value": "18.6 W idle; 25.3 W writing; 3.5 W HDD standby (7.0 W without extended standby)",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test, ComputerBase, Frank Hüber, 2024-07-01",
+   "read": "2026-11-13",
+   "note": "This is the DS224+, not the DS225+. Both use the Intel Celeron J4125; the DS225+ mainly adds 2.5GbE. ComputerBase calls the DXP2800 'roughly level' with the DS224+ at idle and under load. Noise in the same table: 33.0 dB(A) idle, 34.6 dB(A) on HDD access."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Energy use per 24 hours (Dong Knows Tech)",
+   "value": "≈275 Wh per day",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review, Dong Knows Tech, Dong Ngo, 2025-08-04",
+   "read": "2026-11-13",
+   "note": "Tested with two hard drives; the review used Synology HAT4400 4 TB drives. The review doesn't say whether the drives hibernated during the 24 hours. My arithmetic: 275 Wh ÷ 24 h ≈ 11.5 W average, ≈ 100 kWh a year. For 24/7 recording, where drives never sleep, the ComputerBase spinning-idle figure is the better guide."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Power idle with HDDs spinning / writing / HDD standby (ComputerBase)",
+   "value": "51.6 W idle; 72.3 W writing; 26.8 W HDD standby",
+   "source": "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3",
+   "source_title": "Ugreen DXP2800 im Test, ComputerBase comparison table, 2024-07-01",
+   "read": "2026-11-13",
+   "note": "This is ComputerBase's comparison row. The drive count for this row isn't stated on the page I read; its 4-bay peers in the table were tested with 4× 20 TB. The 26.8 W with drives in standby shows a much higher base draw than the DXP2800's 7.3 W. My arithmetic: 51.6 W × 8,760 h ≈ 452 kWh a year."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power with no HDDs, one NVMe SSD only (Igor's Lab)",
+   "value": "5.6 W standby; 14.5 W during data transfer; 0.6 W off with WoL",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "UGREEN NASync DXP2800 NAS im Test (page 8), Igor's Lab, Tim Kutzner, 2024-05-08 (modified 2025-05-31)",
+   "read": "2026-11-13",
+   "note": "Measured at the socket with only one NVMe SSD installed and all other drives removed. This shows the base box's draw. Add the HDDs' own draw for a recording setup. Noise was 35.6 dB(A) under load at 40 cm (Voltcraft SL-200)."
+  }
+ ],
+ "unsourced": [
+  "Reolink RLN8-410 power draw at the wall measured by a named reviewer. MBReviews' RLN8-410 v2 review (Mark B) gives no power, temperature or noise figures; it only says the NVR is fanless and silent. The TechHive review returned HTTP 410. Reolink's own spec PDF wasn't opened.",
+  "Toshiba HDD Innovation Lab report TSH209 (QNAP TS-233 vs TS-264 with 2× N300 8 TB): the PDF wouldn't render to text and the HTML intro pages carry no figures. The TS-264 idle/active wattage therefore stays out.",
+  "QNAP TS-264 wall power from a named reviewer: ComputerBase lists it only in the price comparison, not the power table.",
+  "Synology DS225+ itself in a lab with the same method as the DXP2800. ComputerBase tested the DS224+. The Trusted Reviews figure (13 W peak, May 2026) came only through aggregators; the article wasn't opened.",
+  "CPU load or dropped frames while recording 4 cameras in UGREEN Surveillance Center or Synology Surveillance Station, measured by a named reviewer. Only anonymous affiliate 'best NAS for cameras' pages turned up, and I didn't use them.",
+  "Asustor AS5402T and TerraMaster F2-425 Plus measured power or noise from a named reviewer: not searched, as I ran out of budget.",
+  "Notebookcheck's figures (14.84–20.14 W idle with two WD Red drives) are for the DXP2800 GT (AMD), not the N100 DXP2800 on our page. The page wasn't opened, so the figures stay out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2734396
+ }
+}

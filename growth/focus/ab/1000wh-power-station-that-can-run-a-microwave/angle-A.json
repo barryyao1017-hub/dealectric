@@ -1,0 +1,83 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that BLUETTI's 2,700 W 'Power Lifting' figure, on both the AC180 and the Elite 100 V2, is the maker's limit for pure resistive loads only ('devices consisting of heating elements only'), while the rated output 'remains 1800W'. A microwave is not a heating-element load, so the only number that counts for one is the continuous rating: 2,000 W on the Anker SOLIX C1000 Gen 2, 1,800 W on the BLUETTI and EcoFlow units, 1,500 W on the Jackery.",
+ "standout": 2,
+ "standout_why": "Compared against keeplights.com/guides/can-a-power-station-run-a-microwave (cited), powerstationtips.com/articles/how-long-power-station-run-microwave (cited), outletpowered.com/best/1000wh-power-station (cited) and our dealectric.com page. KeepLights leaves EcoFlow's X-Boost out of its maths without saying why, and doesn't mention Power Lifting or SurgePad. PowerStationTips gives one AC number per model, with no surge and no boost modes. Outlet Powered labels the Elite 100 V2's 3,600 W 'HyperVolt' figure as marketing but lists 2,700 W as the AC180's surge, and has no microwave section. Our own page puts 2,700 W in the surge column for the Elite 100 V2, but BLUETTI's store calls that number 'Lifting Power', and I found no BLUETTI source for an Elite 100 V2 surge rating. None of these pages quotes a maker limiting the bigger number to heating-element loads.",
+ "decides": "It confirms the Anker SOLIX C1000 Gen 2 pick rather than changing it. Once boost modes are set aside, the C1000 Gen 2's 2,000 W is the highest continuous rating among the four mainstream picks (BLUETTI Elite 100 V2, AC180, EcoFlow DELTA 3, Jackery 1000 v2). The only higher ones are the DJI Power 1000 V2 at 2,600 W and the ALLPOWERS S2000 Pro at 2,400 W. BLUETTI's 2,700 W is a resistive-only mode, so it gives no headroom for a 1,580 W over-the-range microwave. Our Elite 100 V2 row needs one fix: change '1,800 W / 2,700 W' to '1,800 W (2,700 W Power Lifting, heating loads only)' and add a footnote.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Power Lifting mode: limit and allowed loads",
+   "value": "≤2,700 W, pure resistive loads only; rated output stays 1,800 W",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=13",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib), printed page 12",
+   "read": "2026-11-14",
+   "note": "Quoted from the manual: 'AC180 can run high drain pure resistive loads* (≤2700W) while its rated output power remains 1800W. * Include heaters, irons or any other devices consisting of heating elements only.' The manual also says Power Lifting is off by default and is not available while the unit is charging from AC. A microwave runs a magnetron through a transformer, so it is not a heating-element-only load. The usable ceiling for a microwave is therefore 1,800 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Rated AC output, surge, inverter efficiency",
+   "value": "1,800 W total AC; 2,700 W surge; inverter efficiency above 85%",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "The manual gives 'a total of up to 1800W AC power' and says it 'can handle a surge of 2700W'. So 2,700 W appears twice in the manual, as the surge rating and as the Power Lifting limit, which explains why sites mix the two up. Inverter efficiency is stated as 'larger than 85%'."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker headline and price",
+   "value": "'1,800W AC Output / 2,700W Power Lifting Mode'; $499.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Read through the store's Shopify product data (storecheck). Base variant is $499.00, compare-at price $499.00, in stock."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Maker output claim and price",
+   "value": "'1,800W output (2,700W Lifting Power)'; $499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-14",
+   "note": "BLUETTI's store calls 2,700 W 'Lifting Power', not surge. Going by the AC180 manual's definition, that is the resistive-only Power Lifting mode, which a microwave can't use. Our page's '1,800 W / 2,700 W' surge cell for this model isn't backed by this source. In stock, $499.00."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC output and peak",
+   "value": "2,000 W max continuous AC (120 V, 16.66 A); 3,000 W peak; no boost mode listed",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "The spec line reads '120V~ 16.66A, 60Hz, 2,000W Max' and the comparison table says '2,000W (3,000W Peak Output)'. 120 V × 16.66 A ≈ 2,000 W, so 2,000 W is the plain continuous inverter rating, not a resistive-only mode. The page shows no SurgePad or other boost mode and no derating by charge level. Discharge range is −4 °F to 104 °F. Capacity is 1,024 Wh. No price was visible on the page."
+  },
+  {
+   "product": "general",
+   "label": "Which number to read for a microwave",
+   "value": "Continuous (rated) watts only. Boost or lifting watts don't count, and surge only covers the first instant.",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html?page=13",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib), printed page 12",
+   "read": "2026-11-14",
+   "note": "Table footnote for the page: makers' second number means different things. Anker's is a 3,000 W peak, BLUETTI's 2,700 W is a heating-element-only mode, and EcoFlow's is X-Boost. Compare the microwave's nameplate input against the continuous figure: Anker C1000 Gen 2 2,000 W; AC180, Elite 100 V2 and DELTA 3 1,800 W; Jackery 1000 v2 1,500 W (Jackery figure from our current page; I couldn't reload jackery.com today)."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 (1,024 Wh) X-Boost wattage and EcoFlow's own wording on which loads X-Boost suits. us.ecoflow.com returned HTTP 429 (both WebFetch and storecheck), ecoflow.com/us/delta-3-portable-power-station returned 404, and manuals.ecoflow.com showed no content. Retailer listings give 2,200 W, 2,400 W or 2,600 W, so I left the figure out. Search snippets point to EcoFlow's DELTA 2 Max and Power Hub manuals saying X-Boost suits heating devices, but I didn't open them.",
+  "Jackery Explorer 1000 v2 continuous/surge rating, any boost mode, and US price. jackery.com returned HTTP 429 to both WebFetch and storecheck.",
+  "BLUETTI Elite 100 V2 true surge rating, separate from the 2,700 W Lifting Power. I didn't find it on BLUETTI's store page and didn't open a manual.",
+  "Any maker statement that names microwaves as supported or unsupported in X-Boost or Power Lifting. BLUETTI's manual only defines allowed loads as heating-element-only, and I found no official line that names microwaves.",
+  "Anker SOLIX C1000 Gen 2 US store price. No price appeared in the fetched page content."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2133829
+ }
+}

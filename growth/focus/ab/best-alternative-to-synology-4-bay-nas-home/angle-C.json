@@ -1,0 +1,121 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Synology's own DS925+ page withholds 'complete product warranty or technical support' if non-Synology memory is installed and requires identical modules, or that QNAP's TS-464 spec page caps RAM at 16 GB (2 × 8 GB, QNAP modules with identical specs) and runs both M.2 slots at PCIe Gen 3 x1 and the expansion slot at Gen 3 x2.",
+ "standout": 2,
+ "standout_why": "I compared against Starry Hope's Synology Alternatives and Best 4-Bay NAS pages (both cited), nasdrives.ca (cited) and our own current page. Starry Hope gives the DS925+ 32 GB maximum, says the DS925+ M.2 slots accept only Synology-listed NVMe drives, gives the DXP4800 Plus 64 GB and 2× PCIe 4.0 M.2, and says the TS-464 has a 'PCIe slot that takes a 10GbE or faster network card'. None of these pages state Synology's warranty and support clause for third-party RAM, the TS-464's 16 GB ceiling and QNAP module advice, or the TS-464's Gen 3 x1 M.2 and Gen 3 x2 slot widths. None of them, ours included, mentions UPS pairing at all. I could not read thisping.com because of a certificate error.",
+ "decides": "It supports the UGREEN DXP4800 Plus as the pick for a home user who will add RAM or NVMe. Synology ties a DS925+ RAM upgrade to Synology modules if the owner wants full warranty and support, and still restricts M.2 pools to Synology-verified SSDs. QNAP's TS-464, the 'mature alternative', stops at 16 GB and its M.2 slots get one Gen 3 lane each. It does not make the TS-464 a worse pick for someone who wants to add a 10GbE card later, because the Gen 3 x2 slot is enough for that.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-464-8G",
+  "Synology DS925+",
+  "TerraMaster F4-425 Plus",
+  "Asustor Lockerstor 4 Gen2+ (AS6704T v2)",
+  "UGREEN NAS UPS US3000"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS925+",
+   "label": "Memory rule and third-party RAM warranty",
+   "value": "4 GB DDR4 ECC SODIMM installed, 32 GB maximum (16 GB × 2), 2 slots; 'all modules must be identical and share the same model number'; Synology will not provide 'complete product warranty or technical support if non-Synology memory modules are used'",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (US product page, specs)",
+   "read": "2026-11-13",
+   "note": "Maker's US product page, specs footnotes."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "M.2 NVMe pools",
+   "value": "2 × M.2 2280 NVMe for cache or storage pools; 'Creating M.2 storage pools requires the use of Synology-verified SSDs'; SSD cache needs select compatible SSDs; M.2 not hot-swappable",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (US product page, specs)",
+   "read": "2026-11-13",
+   "note": "Starry Hope already states this, so it is not new. Included to fill the table cell."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Variant: DS925neo+",
+   "value": "The same spec page lists a DS925neo+ with 4 GB non-ECC SODIMM where the DS925+ has ECC; both have a 32 GB maximum",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (US product page, specs)",
+   "read": "2026-11-13",
+   "note": "No rival page or ChatGPT answer mentions the neo+ variant. I did not check its price or US availability."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Expansion port and warranty",
+   "value": "2 × USB 3.2 Gen 1 plus 1 USB Type-C expansion port; 3-year warranty, extendable to 5 years with Extended Warranty Plus (Europe and North America only)",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (US product page, specs)",
+   "read": "2026-11-13",
+   "note": "The page did not name the expansion unit model on this read."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Memory limit and module rule",
+   "value": "8 GB DDR4 SODIMM installed, 16 GB maximum (2 × 8 GB), 2 slots; for dual-DIMM setups use 'QNAP modules with identical specifications'",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Maker's US hardware spec page. The legacy TS-464-4G ships with 4 GB."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "M.2 and PCIe slot bandwidth",
+   "value": "2 × M.2 2280 at PCIe Gen 3 x1 (not hot-swappable; heatsink under 68 × 20 × 10 mm); 1 × PCIe Gen 3 x2 slot, card up to 190 × 68.9 × 18.76 mm; 5GbE/10GbE only through an optional PCIe card",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Gen 3 is about 1 GB/s per lane, so each M.2 slot tops out near 1 GB/s and the x2 slot near 2 GB/s, which is enough for one 10GbE port (about 1.25 GB/s). The page lists QM2/QXG/QXP cards as optional but the per-model compatibility list did not load."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Warranty split",
+   "value": "3-year standard warranty; bundled accessories such as expansion cards and the power adapter carry 1 year",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Maker's US hardware spec page."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Model exclusions and output",
+   "value": "120 W maximum output, 43.2 Wh battery, USB data link to the NAS; Notebookcheck says it works 'only with some of the company's NAS models' and does not support the DXP6800 and DXP8800 series; about $100 at launch",
+   "source": "https://www.notebookcheck.net/Compact-UPS-protects-data-integrity-and-ensures-round-the-clock-availability-of-NAS.1132409.0.html",
+   "source_title": "Notebookcheck: Compact UPS protects data integrity and ensures round-the-clock availability of NAS (2025-10-06)",
+   "read": "2026-11-13",
+   "note": "Named reviewer as a fallback because UGREEN's product page returned HTTP 429 on 4 tries. Notebookcheck does not list the DXP4800 Plus by name, so the positive pairing is still unsourced. The price is a 2025 launch figure, not today's."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "US3000 UPS signalling under a third-party OS",
+   "value": "A NASCompares reader running TrueNAS on a DXP4800 Plus reported upsc 'Error: Driver not connected' although lsusb showed the US3000; NASCompares' guide adds a manual NUT/udev setup (vendor 2b89, product ffff, usbhid-ups) to make the US3000 work on a TerraMaster F4-424 Pro",
+   "source": "https://nascompares.com/answer/how-to-make-the-ugreen-us3000-nas-ups-work-on-a-terramaster-f4-424-pro",
+   "source_title": "NASCompares: How to Make the UGREEN US3000 NAS UPS Work on a TerraMaster F4-424 Pro (2025-09-29; reader comment 2026-01-12)",
+   "read": "2026-11-13",
+   "note": "Single reader comment, so anecdotal; label it that way if used. The workaround is NASCompares' own and not supported by UGREEN."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "RAM ceiling and NVMe policy (named reviewer)",
+   "value": "8 GB DDR5, up to 64 GB over two slots; 'no drive compatibility list: any SATA drive or NVMe SSD works'; 2 × PCIe 4.0 M.2",
+   "source": "https://www.starryhope.com/nas/best-4-bay-nas/",
+   "source_title": "Starry Hope: Best 4-Bay NAS in 2026 for Home and Office",
+   "read": "2026-11-13",
+   "note": "This is a rival's statement, used as the comparison column. UGREEN's own pages returned 429, so the maker figure is unconfirmed."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own US3000 compatible-model list (whether it names the DXP4800 Plus, DXP4800 and DH4300 Plus) and today's US price: nas.ugreen.com, ai.ugreen.com and nas-uk.ugreen.com all returned HTTP 429, B&H returned 403 and manuals.plus returned 403.",
+  "Lane width of each DXP4800 Plus M.2 slot (x4 or x1) and UGREEN's RAM module rules or warranty position on third-party DDR5: UGREEN spec pages were rate-limited and search found no maker statement.",
+  "Synology's DS925+ RAM compatibility list (module part numbers): the compatibility page did not render the list.",
+  "QNAP's per-model list of compatible PCIe NICs and QM2 cards for the TS-464: linked from the spec page but not loaded.",
+  "Maker compatibility documents for the TerraMaster F4-425 Plus/Pro and Asustor AS6704T v2: not reached within the call budget.",
+  "An official UGREEN, QNAP or Asustor tool or document for migrating from Synology DSM: only forum answers (NASCompares Q&A) saying you cannot move Synology drives across and have to copy over the network, which is not usable under the sourcing rules."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1984564999999998
+ }
+}

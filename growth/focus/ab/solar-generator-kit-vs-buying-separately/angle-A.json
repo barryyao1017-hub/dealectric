@@ -1,0 +1,76 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2's '600W' solar input is really two current-limited bands. It allows 8.2 A between 11 and 28 V and 14.5 A between 29 and 60 V. So a cheap 12V-class 200 W panel bought separately (Vmp around 20 V) can deliver only about 164 W, while a panel or series string above 29 V can deliver its full rating.",
+ "standout": 2,
+ "standout_why": "I compared this against the three cited or top rival pages. StormWatts (cited) only says its bundles stay under each station's watt cap and tells readers to 'check open-circuit voltage (Voc), amps, and connectors'. It gives no amp or voltage limits and no panel Voc or Imp. GetWattLogic (cited) gives no input limits, only a panel-watts-to-battery-Wh rule and charge times. Trek4Tech lists max solar input in watts (C1000 600 W, for example) and a generic '11–60V', but no current limits. Our own current Dealectric page also gives no V, A, Voc or Imp figures and only says to 'check the panel's open-circuit voltage'. None of them turns a watt rating into the watts a particular panel actually delivers at a given voltage.",
+ "decides": "This changes the advice that buying separately with a third-party panel is better value, at least for the Anker C1000 Gen 2. That advice comes from ChatGPT's answers and from our page's $210–280 third-party 200 W panel suggestion. If the panel's Vmp is under 28 V, Anker's 8.2 A cap applies. At about 20 V that cuts delivered solar power to roughly 164 W, about 18% below the panel's 200 W rating. The cheaper parts then buy less charging speed, unless the shopper picks a panel with Vmp of 29 V or more or wires two low-voltage panels in series (still under 60 V Voc). For the BLUETTI AC180, the manual's 12–60 V window and 'Voc no higher than 60V' warning mean at most two 12V-class panels in series. Three in series would go over 60 V. Footnote for the table: a station's 'max solar input W' is reachable only at the voltage and current the panel actually supplies.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS P1800",
+  "DJI Power 1000"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar (MPPT) input limits",
+   "value": "11–28 V at 8.2 A; 29–60 V at 14.5 A; 600 W max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-14",
+   "note": "Quoted from the page: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'; also listed as '600W, 60V Max'. The page does not say how many solar ports there are."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Most a low-voltage panel can deliver (derived)",
+   "value": "about 164 W at 20 V Vmp; 230 W ceiling at 28 V",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-14",
+   "note": "Arithmetic from Anker's 8.2 A limit in the 11–28 V band: 20 V × 8.2 A = 164 W, and 28 V × 8.2 A = 229.6 W. A 200 W panel with Vmp around 20 V (typical 12V-class folding panel) is therefore capped about 18% below its rating. At 29–60 V the cap is 14.5 A, which is enough for a 200 W panel at any voltage in that band (29 V × 14.5 A = 420 W)."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Cycle life",
+   "value": "4,000 cycles to at least 80% capacity",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-14",
+   "note": "Quoted: 'After 4,000 cycles, the battery still has at least 80% capacity.' For comparison, Trek4Tech quotes Jackery at '4000 cycles to at least 70% capacity', so the two endpoints differ."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input voltage window and power",
+   "value": "DC 12–60 V; 500 W DC input; panel Voc must not exceed 60 V",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Page 3: 'Solar input voltage range for the unit is DC 12V~60V' and 'Do not use solar panels with open circuit voltage higher than 60V.' Page 11: '500W DC input.' Page 8: solar input should be more than 100 W. With 12V-class panels (Voc around 22–25 V), at most two can go in series; three would be about 66–75 V, over the 60 V limit."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Bundled panel in BLUETTI's AC180 + 200 W kit range",
+   "value": "BLUETTI 200W Portable Solar Panel (SP200L), $399 alone; $798 for 2×",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (BLUETTI US store, via Shopify product data)",
+   "read": "2026-11-14",
+   "note": "storecheck.py product output. The variant list shows the 200W panel at $399, 2×200W at $798 and 3×200W at $1,197. The listing text says MC4 connectors and a 12-month warranty but gives no electrical specs."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 maximum solar input current. I wanted the 10 A figure: search snippets say '500W/10A max', but bluettipower.com/products/ac180 returned HTTP 429 three times, WebFetch couldn't read the US manual PDF's text, and the ManualsLib spec table on page 12 was cut off.",
+  "BLUETTI SP200L Voc, Vmp, Isc and Imp. Snippets say 24.62 V, 20.52 V, 10.24 A and 9.75 A, but the BLUETTI US and AU store pages returned HTTP 429 and the US Shopify product data has no electrical specs.",
+  "Anker SOLIX PS200 (the 200 W panel in the C1000 Gen 2 kit) Vmp and Imp. A snippet gives 48 V and 4.17 A from us.anker.com/products/a24321a1, but that page returned HTTP 429 and ankersolix.com/products/ps200 returned 404. Without them I can't confirm that Anker's own kit panel avoids the 8.2 A band.",
+  "ALLPOWERS P1800 solar input voltage, current and watts, and SP037 400 W panel Voc and Vmp. The ALLPOWERS product URL I opened lists no specs, and I ran out of budget before trying the Download Center.",
+  "BLUETTI Elite 200 V2 and Elite 30 V2 solar input voltage and current limits. Not reached within the tool budget.",
+  "DJI Power 1000 solar input limits. Not reached within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0580836
+ }
+}

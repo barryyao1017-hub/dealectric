@@ -1,0 +1,66 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2 limits solar input to 8.2 A at 11–28 V and allows 14.5 A only at 29–60 V. Its bundled PS200 bifacial panel is a 48 V, 4.16 A panel, so it sits in the full-current band. A typical 18–20 V 200 W panel would land in the 8.2 A band and be cut to roughly 150–165 W. Two PS200s can't be wired in series (96 V is over the 60 V input limit), so more panels have to go in parallel.",
+ "standout": 2,
+ "standout_why": "I checked the rival pages ChatGPT cited. Lights On Labs gives only wattage caps and says to 'keep a string inside the range the manual gives', with no volt or amp figures. StormWatts lists the C1000 Gen 2 as '600 W, 60 V max' and covers parallel-current problems for the EcoFlow DELTA 3 Max/Ultra and the BLUETTI Elite 200 V2, but not Anker's split by voltage. SolutionEnergy says 'up to 600 W at 29–60 V' but leaves out the 8.2 A cap below 29 V. PowerSized covers charging temperature (AC180 '32°F to 104°F', 'should not charge below freezing') and the AC180's 12–60 V / 10 A input, but not Anker's bands. None of them gives the 8.2 A / 14.5 A split, and none says the PS200 is a 48 V panel. This is new, but it backs up the Anker kit rather than changing the pick.",
+ "decides": "This supports ChatGPT's repeated 'best value / compact' pick, the Anker C1000 Gen 2 + 200 W kit (ChatGPT showed $799.99–$859.99). The panel Anker bundles (48 V, 4.16 A) uses the station's 14.5 A band, so the full 200 W rating reaches the station. The same station sold alone and paired with a cheap 12 V-class panel would lose about 20–25% to the 8.2 A cap. So buy the Anker bundle, not the station plus an outside panel. To grow it, add up to three PS200s in parallel (3 × 4.16 A = 12.5 A ≈ 600 W); never wire them in series. A side note for winter home backup: the C1000 Gen 2 will not charge below 32°F and has no self-heating. PowerSized already covers the same limit for the AC180, so this is not new.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2 + PS200 200W bifacial",
+  "Jackery Solar Generator 1000 v2 (Explorer 1000 v2 + SolarSaga 200W)",
+  "EcoFlow DELTA 3 Classic + 220W",
+  "BLUETTI AC180 + 200W",
+  "Jackery Explorer 2000 v2 + 2 × SolarSaga 200W",
+  "EcoFlow DELTA 3 Max + 220W"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input (MPPT) bands",
+   "value": "11–28 V at 8.2 A; 29–60 V at 14.5 A; 600 W max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2?variant=61869573308746",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Maker's spec text: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'. Most power the low band can take: 28 V × 8.2 A = 229.6 W. At an 18–20 V panel operating voltage: 8.2 A × 18–20 V = 148–164 W. My arithmetic, not Anker's."
+  },
+  {
+   "product": "Anker SOLIX PS200 Bifacial Portable Solar Panel",
+   "label": "PV output (operating voltage / current)",
+   "value": "48 V, 4.16 A (200 W)",
+   "source": "https://www.ankersolix.com/products/ps200-bifacial-portable-solar-panel",
+   "source_title": "Anker SOLIX PS200 Bifacial Portable Solar Panel - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Spec text: 'PV Output 48V=4.16A'. 48 V is in the C1000 Gen 2's 29–60 V / 14.5 A band, so 48 × 4.16 = 199.7 W passes without the 8.2 A cap. Two in series = 96 V, which is over the station's 60 V maximum, so extra panels must go in parallel. Three in parallel = 12.48 A × 48 V ≈ 599 W, the 600 W cap."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Charging temperature",
+   "value": "32°F to 104°F; charging below 68°F is 'significantly' slower; UltraFast only above 68°F battery temperature",
+   "source": "https://www.ankersolix.com/products/c1000-gen2?variant=61869573308746",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Page FAQ: 'Charging at 0–20 °C (32-68 °F) will significantly reduce charging speed'. The page lists no self-heating. Discharge range is -4°F to 104°F."
+  },
+  {
+   "product": "BLUETTI AC180 + 200W",
+   "label": "Kit price and solar input cap",
+   "value": "$769.00; 500 W max solar input",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Listed as 'AC180+200W Solar' $769.00. The visible page gave no solar voltage or current figures."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 per-port solar current (a search summary said 12–16 V at 8 A and 16–60 V at 10.5 A per port, 400 W combined). jackery.com returned HTTP 429 on every attempt. The mrsolar.com PDF is the original Explorer 1000 manual, not the v2, and its text was compressed and unreadable.",
+  "Jackery SolarSaga 200W Vmp/Imp/Isc. A search summary said Jackery's page lists 18 V / 11.5 A / Isc 12.5 A, which would be above a 10.5 A per-port limit, but jackery.com returned 429 and Jackery's Shopify-hosted manual PDF wasn't readable.",
+  "EcoFlow DELTA 3 Classic solar input amps and charging temperature: the us.ecoflow.com kit page returned HTTP 429.",
+  "Anker PS200 bifacial Voc/Isc: the US product page doesn't list them. The Anker datasheet PDF on kluxen.de returned 401, and service.ankersolix.com returned 404.",
+  "Price of the Anker C1000 Gen 2 + 200W bundle on ankersolix.com: the page showed no dollar price, and storecheck.py returned HTTP 404 for the Anker store."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2902506000000002
+ }
+}

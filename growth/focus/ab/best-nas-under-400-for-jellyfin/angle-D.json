@@ -1,0 +1,108 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the stock Linux i915 driver leaves HuC firmware switched off on Gen11 Jasper Lake chips (the Celeron N5095/N5105/N4505 in the TerraMaster F2-425/F4-425/F2-423/F4-423 and QNAP TS-262/TS-264). The driver code sets `enable_guc = 0` for anything before Gen12. Jasper Lake can only encode in Low-Power mode, and that mode needs HuC, so it gets no hardware encoder unless someone sets a kernel parameter on the NAS operating system itself. A Docker container cannot do that. The N100's Alder Lake-N GPU (device 0x46D1) falls through to the driver's default, which turns on HuC loading and GuC submission with no setup.",
+ "standout": 2,
+ "standout_why": "I compared against the Jellyfin Hardware Acceleration page and its Intel doc (both cited), Jellyfin Hardware Selection (cited), starryhope.com best-2-bay-nas (cited), ubnas.com (cited) and computingforgeeks.com best-nas-for-jellyfin (in results, not cited). The Jellyfin Intel doc says Jasper Lake 'only support[s] LP encoding mode' and gives the `enable_guc=2` setup, but it never ties this to NAS operating systems. ComputingForGeeks says Jasper Lake 'needs the i915 GuC setting for low-power encoding, so it works but carries more setup.' It does not say that setting belongs to the NAS host kernel, which a container cannot change, or that the kernel's default is off for Gen11 and on for Alder Lake-N. Starry Hope and ubnas cover only the Synology DS225+ driver removal. None of them mention the N150's GPU device ID (0x46D4), which is missing from mainline Linux 6.1 and from stock 6.1.120.",
+ "decides": "This confirms the UGREEN DXP2800 (N100) as the pick. Its GPU is in the kernel's Alder Lake-N ID table and loads HuC and GuC by default, so passing /dev/dri into Jellyfin is the only step needed. The N5095 TerraMasters (F2-425, F4-425, F2-423, F4-423) drop from 'cheaper alternative' to 'hardware encoding only works if TerraMaster's kernel already sets enable_guc=2 or the owner can change boot parameters on TOS'. On top of that, Jellyfin says QSV support for Jasper Lake on Linux is going away. The TerraMaster F2-425 Plus (N150, device 0x46D4) needs a kernel newer than stock 6.1 or one TerraMaster has patched. I could not confirm which kernel TOS ships, so the page should tell N150 buyers to check that /dev/dri/renderD128 exists before relying on it.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "TerraMaster F4-425",
+  "TerraMaster F2-423",
+  "TerraMaster F4-423",
+  "QNAP TS-262",
+  "QNAP TS-264-8G",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Linux i915 default enable_guc for Gen11 (Jasper Lake/Elkhart Lake)",
+   "value": "0 (GuC and HuC off)",
+   "source": "https://raw.githubusercontent.com/torvalds/linux/v6.1/drivers/gpu/drm/i915/gt/uc/intel_uc.c",
+   "source_title": "linux v6.1 drivers/gpu/drm/i915/gt/uc/intel_uc.c",
+   "read": "2026-11-13",
+   "note": "This is `uc_expand_default_options()`. The comment reads '/* Don't enable GuC/HuC on pre-Gen12 */' and the next line is `if (GRAPHICS_VER(i915) < 12) { i915->params.enable_guc = 0; return; }`. It only applies when enable_guc is left at -1, which is the stock setting."
+  },
+  {
+   "product": "general",
+   "label": "Linux i915 default enable_guc for Gen12 parts other than Tiger Lake, Rocket Lake and Alder Lake-S",
+   "value": "ENABLE_GUC_LOAD_HUC | ENABLE_GUC_SUBMISSION (HuC loaded by default)",
+   "source": "https://raw.githubusercontent.com/torvalds/linux/v6.1/drivers/gpu/drm/i915/gt/uc/intel_uc.c",
+   "source_title": "linux v6.1 drivers/gpu/drm/i915/gt/uc/intel_uc.c",
+   "read": "2026-11-13",
+   "note": "The comment reads '/* Default: enable HuC authentication and GuC submission */'. Alder Lake-N is Gen12 and is not in the TGL/RKL/ADL-S exceptions, so it takes this default. I did not open i915_drv.h, so the platform mapping is my inference from the code. The Jellyfin Intel doc backs it up: 'Linux supports two modes only on Gen 12 ADL+ by default.'"
+  },
+  {
+   "product": "general",
+   "label": "Jellyfin: encoding mode on Jasper Lake",
+   "value": "'Gen 11 JSL/EHL graphics - Only support LP encoding mode'; LP encoding uses the HuC firmware; on Linux the fix is the host kernel parameter `options i915 enable_guc=2`, followed by an initramfs/GRUB update and a reboot",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/",
+   "source_title": "Intel GPU | Jellyfin (Hardware Acceleration)",
+   "read": "2026-11-13",
+   "note": "The doc says the setup 'is not necessary unless you are using an Intel Jasper Lake or Elkhart Lake processor' or want faster OpenCL tone-mapping. The step changes /etc/modprobe.d and the bootloader on the host, so it cannot be done from inside a Jellyfin container. I cross-checked the steps against raw.githubusercontent.com/jellyfin/jellyfin.org/master/docs/general/post-install/transcoding/hardware-acceleration/intel.md."
+  },
+  {
+   "product": "general",
+   "label": "Jellyfin: future of QSV on Jasper Lake",
+   "value": "'ICL (Ice Lake) / JSL (Jasper Lake) / EHL (Elkhart Lake) and older generations are losing support for QSV on Linux' because Intel deprecated the MediaSDK runtime; users will need to switch to VA-API",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/",
+   "source_title": "Intel GPU | Jellyfin (Hardware Acceleration)",
+   "read": "2026-11-13",
+   "note": "The page recommends newer hardware for new purchases. ComputingForGeeks (in results) repeats this point."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Intel N100 iGPU device ID and codename",
+   "value": "0x46D1, Alder Lake-N, Intel UHD Graphics, 24 EU, 750 MHz",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 Specifications",
+   "read": "2026-11-13",
+   "note": "0x46D1 is listed in INTEL_ADLN_IDS in mainline Linux v6.1 (include/drm/i915_pciids.h). That means any 6.1-or-newer NAS kernel binds i915 to it with no patches."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Intel N150 iGPU device ID and codename",
+   "value": "0x46D4, Twin Lake, Intel Graphics, 24 EU, 1 GHz, launched Q1 2025",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel Processor N150 Specifications",
+   "read": "2026-11-13",
+   "note": "ITPro (Dave Mitchell, 2026-02-23) names the F2-425 Plus CPU as the 'Twin Lake' Processor N150."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "N150 GPU ID (0x46D4) in Linux 6.1 i915 tables",
+   "value": "Missing from mainline v6.1 and stable v6.1.120 (ADL-N list is 0x46D0, 0x46D1, 0x46D2 only); present in current mainline (0x46D0 to 0x46D4)",
+   "source": "https://raw.githubusercontent.com/gregkh/linux/v6.1.120/include/drm/i915_pciids.h",
+   "source_title": "linux stable v6.1.120 include/drm/i915_pciids.h",
+   "read": "2026-11-13",
+   "note": "I compared https://raw.githubusercontent.com/torvalds/linux/v6.1/include/drm/i915_pciids.h with https://raw.githubusercontent.com/torvalds/linux/master/include/drm/intel/pciids.h. A stock 6.1 kernel would not bind i915 to an N150 without a vendor patch or force_probe. Whether TerraMaster patched TOS is unsourced."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "UGREEN's documented Jellyfin hardware-acceleration path on Intel DXP models",
+   "value": "Mount '/dev/dri:/dev/dri # Integrated graphics' in Docker and choose 'Intel QuickSync (QSV)' with /dev/dri/renderD128; the App Center package lets 'UGREEN configure[s] its application paths, port, and hardware access'",
+   "source": "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step",
+   "source_title": "How to Install Jellyfin on UGREEN NAS: App Center or Docker",
+   "read": "2026-11-13",
+   "note": "The page is dated 2025-12-11. It covers Intel DXP models in general and does not name the DXP2800 or mention low-power encoding. The same page says the DXP2800 GT and DXP4800 GT (AMD) 'have no Intel Quick Sync path' and that the DH2300 'cannot host Jellyfin because it lacks Docker support.'"
+  }
+ ],
+ "unsourced": [
+  "TOS 6 kernel version. A search snippet said TOS 6.0.650 moved the kernel from 6.1.58 to 6.1.120, but forum.terra-master.com returned 403 and support.terra-master.com/posts/TOS6_Release_Notes returned 500, so I could not open it.",
+  "Whether TerraMaster's TOS kernel sets i915 enable_guc=2 and ships the Jasper Lake HuC firmware, or backports N150 device ID 0x46D4. No maker page I could open covers either; terra-master.com returned 429 to both WebFetch and storecheck.",
+  "Whether QNAP QTS sets enable_guc=2 or ships HuC firmware for the N4505/N5095 (TS-262/TS-264). I ran out of tool budget before checking.",
+  "UGOS Pro kernel version on the DXP2800. UGREEN's Jellyfin guide does not state it.",
+  "A named reviewer measuring Jellyfin hardware transcodes on the F2-425 or F2-425 Plus under TOS 6. ITPro's F2-425 Plus review (2026-02-23) does not test transcoding. The TerraMaster forum threads on TOS 6 hardware decoding (p=39229, p=35375) returned 403.",
+  "Intel ARK codename and device ID for the Celeron N5095. The ARK URL redirected to the N5105 page and I did not follow it.",
+  "Synology's own statement on DS225+ hardware transcoding or the missing graphics driver. Rivals cite a Plex engineer and forum reports; I did not search for a Synology source.",
+  "Today's prices. Price checking is outside angle D, and the TerraMaster store returned 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.3911799999999999
+ }
+}

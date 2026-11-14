@@ -1,0 +1,103 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states Clubic's measurements of the TerraMaster F6-424 Max over 10GbE in RAID 5 (about 1,150 MB/s sequential read, 797 MB/s write, at most 36.8 dB, over 60 W with six drives), so ChatGPT's repeated 'similar to the DXP6800 Pro' claim for this model rested on spec sheets alone.",
+ "standout": 2,
+ "standout_why": "StarryHope (cited, 2026-11-02) quotes only Notebookcheck's DXP6800 Pro idle draw of 37–42 W with four drives. It covers no TerraMaster or QNAP model and has no transcode, throughput or noise figure for any 6-bay unit. Notebookcheck's DXP6800 Pro review (cited) measured iPerf3 at 9.5 Gbit/s, noise at 34.6–43 dB(A) and power at 22.4 W without drives and 36.6–41.9 W with four. That covers only the UGREEN, and our current page already carries all of it. The NASCompares F6-424 Max review is not in the result sets, and it only lists '35W idle / 70W load' in a spec table with no stated method or drive count. QNAP's pages carry only QNAP's own power figures. None of the result pages has any reviewer measurement of the F6-424 Max, F6-425 Pro, DXP6800 Ultra or TVS-h674, and none has a measured Plex stream count for any candidate.",
+ "decides": "It confirms rather than changes the pick. A named lab measured the F6-424 Max, the main i5-1235U/dual-10GbE rival to the DXP6800 Pro, at roughly 1.15 GB/s read and 0.8–0.9 GB/s write over 10GbE. That backs the 'same class' claim with data. It does not separate the two boxes: neither has a measured Plex transcode count, so the choice still comes down to price, the PCIe slot and Thunderbolt 4. The DXP6800 Pro stays the pick and the F6-424 Max the value alternative when it sells under $1,000.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP6800 Ultra",
+  "TerraMaster F6-424 Max",
+  "TerraMaster F6-425 Pro",
+  "QNAP TVS-h674",
+  "QNAP TS-664"
+ ],
+ "findings": [
+  {
+   "product": "TerraMaster F6-424 Max",
+   "label": "Sequential read over 10GbE, RAID 5 (CrystalDiskMark, 1 GB file)",
+   "value": "about 1,150 MB/s",
+   "source": "https://www.clubic.com/test-produit-577653-test-terramaster-f6-424-max-un-nas-six-baies-performant-et-multigigabit-presque-abordable.html",
+   "source_title": "Test TerraMaster F6-424 Max : un NAS six baies performant et multigigabit presque abordable (Clubic)",
+   "read": "2026-11-13",
+   "note": "Measured by Nerces for Clubic and published 2025-09-12. The text says 'près de 1 150 Mo/s'. The reviewer says SMB copies from Windows 11 came close to the CrystalDiskMark results but gives no copy figures."
+  },
+  {
+   "product": "TerraMaster F6-424 Max",
+   "label": "Sequential write over 10GbE, RAID 5 (CrystalDiskMark)",
+   "value": "797 MB/s (1 GB file); a little over 900 MB/s (64 GB file)",
+   "source": "https://www.clubic.com/test-produit-577653-test-terramaster-f6-424-max-un-nas-six-baies-performant-et-multigigabit-presque-abordable.html",
+   "source_title": "Test TerraMaster F6-424 Max (Clubic)",
+   "read": "2026-11-13",
+   "note": "Nerces, Clubic, 2025-09-12. Random I/O measured about 20–26 MB/s. TerraMaster's own '2,090 MB/s' claim relies on SMB Multichannel across both ports, which this single-link test did not use."
+  },
+  {
+   "product": "TerraMaster F6-424 Max",
+   "label": "Noise under load",
+   "value": "36.8 dB maximum",
+   "source": "https://www.clubic.com/test-produit-577653-test-terramaster-f6-424-max-un-nas-six-baies-performant-et-multigigabit-presque-abordable.html",
+   "source_title": "Test TerraMaster F6-424 Max (Clubic)",
+   "read": "2026-11-13",
+   "note": "Nerces, Clubic, 2025-09-12. The article writes 'dB', not dB(A), and gives no distance, so it is not directly comparable with Notebookcheck's 43 dB(A) for the DXP6800 Pro. TerraMaster's spec sheet says 22 dB."
+  },
+  {
+   "product": "TerraMaster F6-424 Max",
+   "label": "Power draw with six drives",
+   "value": "over 60 W",
+   "source": "https://www.clubic.com/test-produit-577653-test-terramaster-f6-424-max-un-nas-six-baies-performant-et-multigigabit-presque-abordable.html",
+   "source_title": "Test TerraMaster F6-424 Max (Clubic)",
+   "read": "2026-11-13",
+   "note": "Nerces, Clubic, 2025-09-12. The text says 'la consommation dépasse les 60 watts' with six drives and does not say idle or load. No separate idle figure was measured. The spec sheet says 56 W."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "10GbE iPerf3 throughput",
+   "value": "9.5 Gbit/s, sending and receiving",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet - Ugreen NASync DXP6800 Pro review - Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Daniel Schmidt, Notebookcheck. Published 2026-07-01, updated 2026-10-05. This is a network-only test, so it is not comparable with Clubic's disk-over-network MB/s. ChatGPT already cited this review."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Idle power draw",
+   "value": "22.40 W with no drives; 36.59–41.93 W with four Seagate IronWolf 4 TB drives; 2.39 W off with Wake-on-LAN; 0.05 W off",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Ugreen NASync DXP6800 Pro review - Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Daniel Schmidt, Notebookcheck, 2026-07-01. UGREEN's own figures (24.91 W drives idle, 43.07 W access) are spec figures, not measurements."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Noise",
+   "value": "34.61 dB(A) idle with SATA HDDs; up to 43 dB(A) under heavier load",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Ugreen NASync DXP6800 Pro review - Notebookcheck",
+   "read": "2026-11-13",
+   "note": "Daniel Schmidt, Notebookcheck, 2026-07-01. The review ran no Plex or Jellyfin transcode test."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Energy use per 24 hours",
+   "value": "about 785 Wh (about 33 W average)",
+   "source": "https://dongknows.com/ugreen-nasync-dxp6800-pro-nas-server-review",
+   "source_title": "UGREEN NASync DXP6800 Pro NAS server review - Dong Knows Tech",
+   "read": "2026-11-13",
+   "note": "Dong Ngo, published 2024-11-18. Labelled 'real-world measured' in the spec table, with no drive count stated. 785 Wh / 24 h = 32.7 W average. Plex was not tested; it was not in the app list at review time."
+  }
+ ],
+ "unsourced": [
+  "A measured count of simultaneous Plex 4K or 4K HDR tone-mapped transcodes for any candidate (DXP6800 Pro, DXP6800 Ultra, F6-424 Max, F6-425 Pro, TVS-h674). I checked Notebookcheck, Dong Knows Tech, Clubic, NASCompares, Profesional Review and searches for DXP8800 Plus/i5-1235U tests. None reports a stream count with a stated method. A UK repair-shop blog claims '3 simultaneous 4K transcodes' on the DXP6800 Pro with no method; I did not open it and left it out.",
+  "Reviewer-measured power, throughput or noise for the QNAP TVS-h674. Profesional Review (José Antonio Castillo, 2023-01-30, i3-12100 unit) gives no measurements. The only power figures I found are QNAP's own (39.911 W disk standby, 79.363 W typical, full of WD10EFRX drives). No StorageReview, TechRadar or ServeTheHome test of the non-T TVS-h674 turned up.",
+  "Measurements for the TerraMaster F6-425 Pro. NASCompares' piece is a hands-on that says noise, thermals and sustained performance were still to be tested.",
+  "Measurements for the UGREEN DXP6800 Ultra. Search found only UGREEN's ratings (about 43 W active, 25 W hibernation) and a How-To Geek score quoted second-hand. I did not open the How-To Geek review.",
+  "A separate idle-power figure for the F6-424 Max. NASCompares' '35W idle / 70W load' sits in a spec table with no method or drive count.",
+  "Neowin's and igor'sLAB's DXP6800 Pro reviews and Neowin's F4-424 Max review returned HTTP 403 and could not be read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.3400957
+ }
+}

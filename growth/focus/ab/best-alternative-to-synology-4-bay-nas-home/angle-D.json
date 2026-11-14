@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the QNAP TS-464 (Celeron N5095) and the Asustor Lockerstor 4 Gen2 (Celeron N5105) use Jasper Lake chips. Jellyfin's docs say those chips have no AV1 hardware decoding and are 'losing support for QSV on Linux'. The UGREEN DXP4800 Plus's Pentium Gold 8505 is Alder Lake (12th-gen UHD), which falls in Jellyfin's 'Tiger Lake and newer' group for AV1 decoding.",
+ "standout": 2,
+ "standout_why": "I compared against StarryHope 'Synology Alternatives' (cited), StarryHope 'Best 4-Bay NAS' (cited) and our current Dealectric page. All three cover the same point: the DS925+ has no iGPU and Intel boxes have Quick Sync. StarryHope Alternatives says only that the TS-464 is 'a 2021 chip … a generation behind'. None of the three names AV1. None says Jasper Lake (N5095/N5105) can't hardware-decode AV1, and none mentions Jasper Lake QSV support being phased out on Linux. Our page lists the TS-464 and Nimbustor N5105 with just 'UHD'. I couldn't load thisping.com, which ChatGPT cited, because of a TLS certificate error, so I don't know what it says.",
+ "decides": "For a home user who plans to run Plex or Jellyfin, this backs the DXP4800 Plus (Alder Lake) over ChatGPT's #2 pick, the QNAP TS-464, and its #4 pick, the Asustor Lockerstor 4 Gen2/Gen2+. Both of those use Jasper Lake: they can't hardware-decode AV1 files, and Jellyfin says Jasper Lake QSV 'may stop working in a few years'. This applies to Plex/Jellyfin use only. It does not change the pick for a buyer who only stores files and photos. One side note on 'stay with Synology for photos': in Synology's own words, DSM 7.2.2 'offload[s] media processing to clients and mobile devices'.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-464",
+  "Asustor Lockerstor 4 Gen2 (AS6704T)",
+  "Asustor Lockerstor 4 Gen2+ (AS6704T v2)",
+  "TerraMaster F4-425 Plus",
+  "Synology DS925+"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Intel AV1 hardware decode, by generation (Jellyfin docs)",
+   "value": "'Decoding AV1 8/10-bit - Gen 12 Tiger Lake (11th Gen Core) and newer'",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel",
+   "source_title": "Jellyfin docs: Intel GPU hardware acceleration",
+   "read": "2026-11-13",
+   "note": "This is the project's own documentation."
+  },
+  {
+   "product": "general",
+   "label": "Jasper Lake: no AV1 and QSV being phased out (Jellyfin docs)",
+   "value": "'Jasper Lake and Elkhart Lake processors are 10th Gen Pentium/Celeron/Atom, which don't have AV1 acceleration'. Also: 'JSL (Jasper Lake) / EHL (Elkhart Lake) and older generations are losing support for QSV on Linux' and 'may stop working in a few years, by which point you will have to switch to VA-API'. And: 'Gen 11 JSL/EHL graphics - Only support LP encoding mode.'",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel",
+   "source_title": "Jellyfin docs: Intel GPU hardware acceleration",
+   "read": "2026-11-13",
+   "note": "QTS, ADM and UGOS are all Linux-based, so the Linux note applies to these NAS boxes."
+  },
+  {
+   "product": "general",
+   "label": "Intel media-driver platform grouping",
+   "value": "Intel's media-driver README lists AV1 decode/encode rows for newer platforms through TGLx and up, and has a separate EHL/JSL column. It defines TGLx as 'TGL: Tiger Lake, RKL: Rocket Lake, ADL-S/P/N: Alder Lake, RPL-S/P: Raptor Lake'.",
+   "source": "https://github.com/intel/media-driver",
+   "source_title": "intel/media-driver README (GitHub)",
+   "read": "2026-11-13",
+   "note": "The fetched markdown table lost its cell alignment, so I couldn't map each AV1 cell to a column with confidence. I'm using this only for the grouping that puts Alder Lake in the Tiger Lake class. The AV1 claim rests on Jellyfin's wording above."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU",
+   "value": "Intel Celeron N5095 4-core/4-thread, burst up to 2.9 GHz; Intel UHD Graphics; 8 GB DDR4 (16 GB max); 3-year warranty",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "N5095 is a Jasper Lake part (see unsourced: I couldn't open Intel's ARK page for the N5095 itself)."
+  },
+  {
+   "product": "Asustor Lockerstor 4 Gen2 (AS6704T)",
+   "label": "CPU",
+   "value": "Intel Celeron N5105, 2.0 GHz, burst 2.9 GHz; 4 GB DDR4 (16 GB max); 2× 2.5GbE; 4× M.2 PCIe 3.0 x1; 3-year warranty",
+   "source": "https://www.asustor.com/en/product/spec?p_id=77",
+   "source_title": "Hardware & Packaging | ASUSTOR NAS (LOCKERSTOR 4 Gen2)",
+   "read": "2026-11-13",
+   "note": "This is the Gen2 page. ChatGPT's card is the Gen2+ (AS6704T v2); see unsourced."
+  },
+  {
+   "product": "Intel Celeron N5105",
+   "label": "Code name / launch",
+   "value": "'Products formerly Jasper Lake', launched Q1'21, Intel UHD Graphics, Quick Sync: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "I reached this page by a redirect from Intel's SKU 212328 URL."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "CPU generation (Pentium Gold 8505)",
+   "value": "'Products formerly Alder Lake', launched Q1'22, 'Intel UHD Graphics for 12th Gen Intel Processors', Quick Sync: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Pentium Gold Processor 8505 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "Alder Lake is newer than Tiger Lake, so it falls in Jellyfin's AV1-decode group. That the DXP4800 Plus uses the 8505 comes from our catalog and ChatGPT's cards; UGREEN's page returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "Plex NAS requirement for HEVC output",
+   "value": "'NAS users will require JasperLake or better CPU to reliably transcode to HEVC output'. The article does not mention AV1.",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support (last modified October 27, 2026)",
+   "read": "2026-11-13",
+   "note": "Jasper Lake meets Plex's minimum for HEVC output. The AV1 limit comes from Jellyfin's documentation, not Plex's."
+  },
+  {
+   "product": "Synology DS925+ / DS425+",
+   "label": "DSM 7.2.2 media processing moved off the NAS",
+   "value": "'DSM 7.2.2 introduces a strategic shift in offloading media processing to clients and mobile devices'",
+   "source": "https://www.synology.com/en-us/company/news/article/DSM722",
+   "source_title": "Synology releases DSM 7.2.2 (press release, August 28, 2024)",
+   "read": "2026-11-13",
+   "note": "The press release names no codecs. The Synology Photos release-notes page with the HEIC/HEVC wording didn't render for me (see unsourced)."
+  }
+ ],
+ "unsourced": [
+  "AS6704T v2 (Lockerstor 4 Gen2+) CPU on Asustor's own spec page: I didn't find its p_id. Retailer search results say N5105, but I didn't open a page that confirms it.",
+  "Intel ARK page for the Celeron N5095 (to confirm the Jasper Lake code name): the SKU URL I tried redirected to the N5105.",
+  "UGREEN DXP4800 Plus product page (CPU, price, any AV1/HEVC wording): nas.ugreen.com returned HTTP 429.",
+  "TerraMaster F4-425 Plus product page (N150 CPU and generation): terra-master.com returned HTTP 429. N150 AV1 support is therefore not sourced to the maker or Intel.",
+  "Synology Photos release notes with the exact HEIC/HEVC offload wording and the Synology Image Assistant requirement: the page loaded only navigation and footer text.",
+  "Per-cell AV1 row of Intel's media-driver feature table: the fetched markdown lost its column alignment.",
+  "thisping.com DXP4800 Plus vs TS-464 comparison (a cited rival): fetching it failed with a TLS self-signed-certificate error, so I couldn't check whether it covers AV1."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0294572000000002
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that EcoFlow sells two 1,024 Wh DELTA 3 models. Only the DELTA 3 ($579) can take extra batteries, up to 5 kWh; EcoFlow's own comparison table lists the cheaper DELTA 3 Classic ($459) as not expandable. Separately, BLUETTI's US store lists the AC200L (a card ChatGPT showed, and a model on our page) as Discontinued.",
+ "standout": 2,
+ "standout_why": "I compared against dealectric.com (ours, cited), blackoutwise.com/will-it-run/home-oxygen-concentrator-5l (cited), willitrunpower.com (cited) and the Anker SOLIX medical-devices blog (cited in one chat). Our page says the DELTA 3 grows to 5 kWh, but it cites the DELTA 3 Plus page and never mentions the non-expandable Classic. It also says the AC200L works with the B300K only and calls it in stock, with a price from 2026-11-03. BlackoutWise covers expansion only for the F3800 Plus and DELTA Pro 3. Willrun says nothing about expansion batteries; it does cover Jackery's and EcoFlow's medical disclaimers, the Invacare extension-cord warning and switchover times, so those are not new. Anker's blog recommends only the S2000 and says nothing about expansion. None of these pages names the Classic/DELTA 3 split, the B500K's fit with the AC200L, or that the AC200L is discontinued at BLUETTI.",
+ "decides": "For a 1 kWh budget pick that can grow to overnight runtime, the buyer has to get the DELTA 3, not the Classic. The Classic stays at about 2.5 h at 350 W. The DELTA 3 reaches about 12 h at 350 W with extra batteries (5,120 Wh × 0.85 / 350). The AC200L should come off the list of buy-new picks, or be marked as an existing-owner path, because BLUETTI's US store shows it as Discontinued. The page should send expandable 2 kWh buyers to an in-stock model instead.",
+ "candidates": [
+  "EcoFlow DELTA 3",
+  "EcoFlow DELTA 3 Classic",
+  "BLUETTI AC200L",
+  "BLUETTI B300K",
+  "BLUETTI B500K",
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Expandable battery",
+   "value": "No (EcoFlow's comparison table lists 'Expandable Battery: NO'; DELTA 3 and DELTA 3 Plus are listed as expandable to 1-5 kWh)",
+   "source": "https://www.ecoflow.com/us/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "Same page lists 1,024 Wh, 1,800 W AC (3,600 W surge), <10 ms switchover and 12.1±0.3 kg. Runtime is fixed at about 2.5 h at 350 W (1,024 × 0.85 / 350)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price, EcoFlow US store",
+   "value": "$459 (compare-at $1,299), in stock",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search on us.ecoflow.com."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Compatible extra batteries",
+   "value": "1-5 kWh expandable with DELTA 3 Extra Battery, DELTA Pro 3 Extra Battery, DELTA 2 Extra Battery or DELTA 2 Max Extra Battery",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "Read from the store's product text with storecheck.py search; the product page itself returned HTTP 429 on a direct fetch. Same text lists 1,800 W AC, 2,200 W with X-Boost, 3,600 W surge. At the 5 kWh ceiling (taken as 5,120 Wh), runtime is about 12.4 h at 350 W (5,120 × 0.85 / 350)."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Price, EcoFlow US store",
+   "value": "$579 (compare-at $1,349), in stock",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "storecheck.py search; it is $120 more than the non-expandable Classic at the same 1,024 Wh."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Availability at maker's US store",
+   "value": "Discontinued (listed at $899; bundles also Discontinued)",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W, 2,048Wh",
+   "read": "2026-11-14",
+   "note": "The page shows 'Discontinued' and storecheck.py product returned available: false. Our page's price for it is from 2026-11-03."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Maximum expansion",
+   "value": "7,577.6 Wh ('2kWh to 7.6kWh')",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W, 2,048Wh",
+   "read": "2026-11-14",
+   "note": "7,577.6 Wh = 2,048 + 2 × 2,764.8 (two B300K), about 18.4 h at 350 W (× 0.85 / 350). The page says a cable is required to connect a B210. The FAQ answer on how many batteries can connect is blank."
+  },
+  {
+   "product": "BLUETTI B300K",
+   "label": "Compatible power stations",
+   "value": "AC200L, AC200MAX, AC300, AC500; 2,764.8 Wh; $1,099, in stock",
+   "source": "https://www.bluettipower.com/products/bluetti-b300k-expansion-battery",
+   "source_title": "BLUETTI B300K Expansion Battery | 2,764.8Wh",
+   "read": "2026-11-14",
+   "note": "storecheck.py search on bluettipower.com."
+  },
+  {
+   "product": "BLUETTI B500K",
+   "label": "Compatible power stations",
+   "value": "Apex 300, AC300, AC500, AC200L, AC200MAX; 5,120 Wh; $1,799, in stock; ships with one CA90 expansion cable",
+   "source": "https://www.bluettipower.com/products/b500k-for-ac300-ac200l",
+   "source_title": "B500K for AC300/AC200L",
+   "read": "2026-11-14",
+   "note": "This contradicts our page's 'B300K only' for the AC200L. AC200L + one B500K = 7,168 Wh, under the AC200L page's stated 7,577.6 Wh ceiling: about 17.4 h at 350 W."
+  },
+  {
+   "product": "general",
+   "label": "Anker's stated limit for medical use",
+   "value": "'Never rely on a portable power station as the sole backup for life-sustaining equipment'; do not assume a consumer UPS function equals a medical-grade backup; use one only if the concentrator maker permits that backup source",
+   "source": "https://www.ankersolix.com/blogs/portable-power-station/portable-power-station-for-medical-devices",
+   "source_title": "Portable Power Station for Medical Devices Guide - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Article dated 2026-09-18. It recommends only the SOLIX S2000 and says that is 'not presented as a medical-certified device or a guarantee of compatibility'. ChatGPT already cited this page in one chat, so it is not new."
+  }
+ ],
+ "unsourced": [
+  "Philips EverFlo manual's exact text on extension cords and adapters, its 120 VAC electrical spec, and whether it restarts by itself when power returns. The Air Liquide and RespShop PDFs came back as compressed streams I could not read, local PDF extraction was not approved, and the manualslib and manualshive copies failed on TLS errors.",
+  "How many extra batteries the EcoFlow DELTA 3 takes at once, and which combination reaches 5 kWh. The us.ecoflow.com product page returned HTTP 429, and our page's '1,024 Wh each' arithmetic is unchecked.",
+  "Whether Dealectric's Amazon listing ecoflow-delta-3-1024wh is the expandable DELTA 3 or the Classic (I did not run amzcheck).",
+  "A medical or life-support exclusion in the BLUETTI AC200L, Elite 300 or Elite 200 V2 user manuals and in the Anker SOLIX C1000 Gen 2 manual. I found BLUETTI's manual PDFs but did not open them within the budget.",
+  "The AC200L's UPS switchover time on BLUETTI's page (the page gives none; our page says 20 ms)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.3207207000000003
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how long the 150 W wind port takes to refill these batteries at the wind speeds most sites actually get: 150 W × (9/27)³ = 5.6 W, or about 133 Wh a day, which refills an L3600 (3,072 Wh) in about 23 days and an L6000 (3,840 Wh) in about 29 days at DOE's 9 mph minimum for off-grid hybrid sites. Wind at full rating refills them in 20.5 h and 25.6 h, and the 2,400 W solar port refills an L3600 in 1.3 h.",
+ "standout": 2,
+ "standout_why": "I compared against: our cited Dealectric page (rank 1, opened 2026-11-14). It lists the 150 W port and says a 10 mph site gets 'a few watts', but gives no refill time or Wh per day. ChatGPT's answer says output is 'dramatically less at 10 mph' and gives no number. The DOE Small Wind Guidebook gives the V³ relationship and the 9/10 mph minimum site speeds but no figure for any product. I could not open the cited Nature's Generator L3600 and L6000 kit pages: their Shopify store returned HTTP 429 or a certificate error on every try. So I can't confirm they leave this out. As maker pages that sell the turbine, they are unlikely to give low-wind refill times.",
+ "decides": "It confirms the L3600 as the pick among units with a wind port, but on solar, not wind. The L3600, L6000 and its kit all have the same 150 W port, so wind doesn't separate them. At realistic site speeds wind adds only about 3.5–4.5% of the battery per day. The 2,400 W solar port is 16× larger (2,400/150). So the page should tell shoppers to buy for the solar input and treat the turbine as a night and cloudy-day trickle. If a shopper's site doesn't average well above 10 mph, a solar-only unit such as the BLUETTI Elite 200 V2 loses almost nothing.",
+ "candidates": [
+  "Nature's Generator L3600",
+  "Nature's Generator L6000",
+  "Nature's Generator MyGrid 10K Gen 2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Small-wind output scales with the cube of wind speed (DOE AEO formula)",
+   "value": "AEO = 0.01328 D² V³ (kWh/yr; D rotor diameter in ft, V annual average wind in mph)",
+   "source": "https://www.energy.gov/node/4852462",
+   "source_title": "Small Wind Guidebook | Department of Energy",
+   "read": "2026-11-14",
+   "note": "The page says: 'Notice that the wind speed (V) has an exponent of 3 applied to it.' The cited windexchange.energy.gov PDF URL now 301-redirects; this is the live copy."
+  },
+  {
+   "product": "general",
+   "label": "DOE minimum average wind speed for an off-grid hybrid system",
+   "value": "9 mph (4 m/s); 10 mph (4.5 m/s) for grid-connected",
+   "source": "https://www.energy.gov/node/4852462",
+   "source_title": "Small Wind Guidebook | Department of Energy",
+   "read": "2026-11-14",
+   "note": "Quoted: 'an average annual wind speed of at least 9 mph (4 m/s)' for off-grid hybrid."
+  },
+  {
+   "product": "Nature's Generator 150 W wind turbine",
+   "label": "Rated electrical output and the wind speed it is rated at",
+   "value": "150 W at 27 mph (12 m/s); survives winds up to 110 mph",
+   "source": "https://legacy.prepsos.com/?p=143163",
+   "source_title": "Nature's Generator Wind Turbine Kit 150W – PrepSOS",
+   "read": "2026-11-14",
+   "note": "This is a retailer page. The maker's US page wasn't reachable (HTTP 429). Our page and ChatGPT's answer give the same 150 W at 27 mph. The retailer lists it at $797.99, out of stock; our page lists $549.99 at the maker, sold out."
+  },
+  {
+   "product": "Nature's Generator 150 W wind turbine",
+   "label": "Estimated output at steady 9 / 10 / 12 mph (cube law from the rated point)",
+   "value": "5.6 W / 7.6 W / 13.2 W (133 / 183 / 316 Wh per day)",
+   "source": "https://legacy.prepsos.com/?p=143163",
+   "source_title": "Nature's Generator Wind Turbine Kit 150W – PrepSOS",
+   "read": "2026-11-14",
+   "note": "150×(9/27)³=5.6 W ×24=133 Wh/d; 150×(10/27)³=7.6 W ×24=183 Wh/d; 150×(12/27)³=13.2 W ×24=316 Wh/d. Assumes steady wind and the V³ law from energy.gov/node/4852462. Gusty real wind with the same average gives somewhat more. Losses are ignored."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Hours to refill 3,072 Wh from the 150 W wind port at rated 27 mph",
+   "value": "20.5 h",
+   "source": "https://dealectric.com/best-solar-and-wind-generator",
+   "source_title": "Best Solar and Wind Generator (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "3,072 Wh ÷ 150 W = 20.5 h. Battery size and port rating come from our own page, because the maker page returned 429. Re-verify on the maker page before publishing."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Days to refill from the 150 W turbine at DOE's 9 mph off-grid minimum",
+   "value": "≈23 days (553 h); about 4.3% of the battery per day",
+   "source": "https://www.energy.gov/node/4852462",
+   "source_title": "Small Wind Guidebook | Department of Energy",
+   "read": "2026-11-14",
+   "note": "3,072 Wh ÷ 5.56 W = 553 h ≈ 23 d; 133 Wh/d ÷ 3,072 Wh = 4.3%/d. Inputs: 150 W at 27 mph (prepsos.com) and 3,072 Wh (dealectric.com page)."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Days to refill from the 150 W turbine at a steady 10 mph",
+   "value": "≈16.8 days (403 h)",
+   "source": "https://www.energy.gov/node/4852462",
+   "source_title": "Small Wind Guidebook | Department of Energy",
+   "read": "2026-11-14",
+   "note": "3,072 Wh ÷ 7.62 W = 403 h ≈ 16.8 d."
+  },
+  {
+   "product": "Nature's Generator L3600",
+   "label": "Hours to refill from the 2,400 W solar port at full rated input",
+   "value": "1.3 h; the solar port is 16× the wind port",
+   "source": "https://dealectric.com/best-solar-and-wind-generator",
+   "source_title": "Best Solar and Wind Generator (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "3,072 Wh ÷ 2,400 W = 1.28 h; 2,400 ÷ 150 = 16. Assumes full rated array output and ignores losses."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Refill from the 150 W wind port at 27 mph / 10 mph / 9 mph",
+   "value": "25.6 h / ≈21 days / ≈29 days (about 3.5% of the battery per day at 9 mph)",
+   "source": "https://dealectric.com/best-solar-and-wind-generator",
+   "source_title": "Best Solar and Wind Generator (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "3,840÷150=25.6 h; 3,840÷7.62=504 h≈21 d; 3,840÷5.56=691 h≈28.8 d; 133÷3,840=3.5%/d. Wind and output figures as above."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Hours to refill from the 2,400 W solar port at full rated input",
+   "value": "1.6 h",
+   "source": "https://dealectric.com/best-solar-and-wind-generator",
+   "source_title": "Best Solar and Wind Generator (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "3,840 Wh ÷ 2,400 W = 1.6 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Hours to refill from the solar port at full rated input (no wind port)",
+   "value": "2.1 h",
+   "source": "https://dealectric.com/best-solar-and-wind-generator",
+   "source_title": "Best Solar and Wind Generator (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "2,073.6 Wh ÷ 1,000 W = 2.07 h. Battery and solar figures are from our page; the BLUETTI maker page wasn't re-opened."
+  }
+ ],
+ "unsourced": [
+  "Rotor diameter of the Nature's Generator 150 W turbine. Without it the DOE AEO formula can't be applied, so I used the cube law from the rated point instead. The maker page and help-center page returned HTTP 429 or a certificate error. FactoryPure lists a 51-inch rotor (search result only, page returned 429). Home Depot and Lowe's returned 403.",
+  "Start-up (cut-in) wind speed of the 150 W turbine: not on the PrepSOS page, and I couldn't reach the maker page or manual.",
+  "Rated wind speed of the MyGrid 10K Gen 2's 350 W turbine, so I couldn't derive refill days for the MyGrid: the maker store was rate-limited.",
+  "Prices for any candidate today (2026-11-14) to compute cost per usable Wh. storecheck.py returned 'HTTP 0' for naturesgenerator.com, and WebFetch got 429. The prices on our page are from 2026-11-06 and were not re-read today.",
+  "Specs for the RevoPower Trailblazer II wind and solar generator (result 10): the page failed with a self-signed certificate error.",
+  "Whether the L3600 and L6000 can take wind and solar input at the same time: the maker pages couldn't be reached."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9461497000000001
+ }
+}

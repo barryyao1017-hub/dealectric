@@ -1,0 +1,114 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states what fridge sits behind the makers' fridge-hour claims. Anker's footnote is a 700 L fridge in a 77°F room. Worked backwards, that fridge averages no more than about 51–55 W (about 1.2–1.3 kWh/day). Put the 2 kWh picks on the median ENERGY STAR full-size fridge instead (585 kWh/yr, about 67 W) and they land at about 23–25 h, right on the 24-hour line, not Anker's 32 h.",
+ "standout": 2,
+ "standout_why": "I compared against homepowerfacts.com, theoutagebrief.com (2026-10-22) and wattpowerstation.com, which were cited, and dealectric.com, our own page. tech.yahoo.com/CNET returned 403. Homepowerfacts runs one formula of 67 W against estimated usable Wh. It gets C2000 Gen 2 = 24 h and Elite 200 V2 = 28.2 h, but leaves out idle draw and never touches maker claims. The Outage Brief assumes 150 W at 35% duty and a flat 85% efficiency, with no idle draw and no maker claims. Wattpowerstation repeats CNET's measured hours and self-use shares (C2000 Gen 2 about 12 W), but gives no maker claim and no common-fridge rescale. None of them decodes Anker's '32 hours' or '35 hours' into the fridge it implies. None notes that BLUETTI's own calculator implies only about 1,640 Wh delivered from the Elite 200 V2.",
+ "decides": "This confirms 'about 2 kWh' only as a borderline answer for a typical full-size fridge. It moves the safe pick for a guaranteed 24 h to the 3 kWh class (Jackery HomePower 3000 or BLUETTI Elite 300). The 2 kWh units, C2000 Gen 2 and Elite 200 V2, clear 24 h only with an efficient fridge that averages 60 W or less. The footnote is the finding: maker fridge-hours are not comparable with each other or with the shopper's fridge.",
+ "candidates": [
+  "Anker SOLIX C2000 Gen 2",
+  "BLUETTI Elite 200 V2",
+  "Jackery HomePower 3000",
+  "BLUETTI Elite 300",
+  "Anker SOLIX S2000",
+  "Jackery Explorer 2000 v2",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Test conditions behind the maker's fridge-runtime claim",
+   "value": "Up to 35 h; 700 L (24.7 cu ft) fridge, 77°F room, fridge at 37°F, freezer at 0°F; 2,010 Wh; 6 W active idle, 2 W system standby",
+   "source": "https://www.ankersolix.com/s2000",
+   "source_title": "Anker SOLIX S2000 (US product page)",
+   "read": "2026-11-13",
+   "note": "Footnote 2 says 'Anker internal testing'. Implied average fridge draw is at most 2,010 Wh ÷ 35 h − 6 W idle = 51.4 W, or about 1.23 kWh/day. That is an upper bound: it assumes 100% of nameplate is delivered, and any loss makes the implied fridge smaller still."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Same fridge test, other markets (named secondary)",
+   "value": "Anker's EU page gives 24 h for the same 700 L / 25°C test. Techwalla says Anker ties the 35 h to a TÜV SÜD 'A+ Runtime' rating, reports an independent YouTube run of 20 h, and gives Anker's own modelling as 6–14 h for 150–300 W fridges.",
+   "source": "https://www.techwalla.com/13779674/anker-solix-s2000-fridge-runtime-explained-6-20-or-35-hours",
+   "source_title": "Anker Solix S2000 Fridge Runtime Explained: 6, 20, or 35 Hours? (Techwalla Staff, 2026-06-02)",
+   "read": "2026-11-13",
+   "note": "The EU 24 h figure comes from a search summary of ankersolix.com/eu/products/s2000-portable-power-station. I did not open that page, so treat it as a lead, not a value."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Maker fridge claim, idle draw and cycle rating",
+   "value": "'dual-door fridge for up to 32 hours'; 9 W idle; 2,048 Wh; 2,400 W AC; 4,000 W peak; 4,000 cycles to 80%",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 (US product page)",
+   "read": "2026-11-13",
+   "note": "No fridge size, temperature or load is footnoted. The only footnote is 'Data based on Anker internal testing'. Implied average fridge draw is at most 2,048 ÷ 32 − 9 = 55 W, or 1.32 kWh/day. Using CNET's measured 1,818 Wh usable (as reported by wattpowerstation.com): 1,818 ÷ 32 − 9 = 47.8 W, or 1.15 kWh/day."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Normalised runtime on a median ENERGY STAR full-size fridge",
+   "value": "About 24.0 h (with the 9 W maker idle) or about 23.1 h (with the about 12 W CNET self-use), against Anker's 32 h",
+   "source": "https://homepowerfacts.com/can-it-run/refrigerator/",
+   "source_title": "Can a portable power station run a refrigerator? Runtime by model (Home Power Facts)",
+   "read": "2026-11-13",
+   "note": "The fridge load is Home Power Facts' median of 585 kWh/yr across 668 ENERGY STAR full-size models, which is 66.7 W average. Arithmetic: 1,818 Wh ÷ (66.7 + 9) = 24.0 h, and 1,818 ÷ (66.7 + 12) = 23.1 h. The 1,818 Wh usable and the 12 W self-use are CNET figures I read on wattpowerstation.com, because Yahoo/CNET returned 403."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Measured fridge runtime and self-use (CNET, via rival page)",
+   "value": "27.40 h on a Whirlpool fridge (118 V, 7.2 A rated); 1,818 Wh usable; 18.21% of the battery (about 12 W) used on itself. Across 7 units, fridge average was 54–60 W.",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times (Watt Power Station, 2026-10-27)",
+   "read": "2026-11-13",
+   "note": "This is a secondary report of CNET's lab test. The CNET fridge averaged about 54–60 W, close to Anker's implied lab fridge. That explains why both figures sit well above 24 h when a median full-size fridge does not."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Usable energy implied by BLUETTI's own runtime calculator",
+   "value": "200 W → 8.2 h, which means about 1,640 Wh delivered (79% of 2,073.6 Wh)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "The calculator's footnote says only 'Actual runtime may vary…'. The page states no idle or standby wattage, only a 'Super Low Power Wasted' heading, and no cycle count. Capacity is given as 2,080 Wh in the copy and 2,073.6 Wh in the title. On the 66.7 W median fridge: 1,640 ÷ 66.7 = 24.6 h before any idle draw. It drops below 24 h once idle passes about 1.6 W. CNET measured 26.32 h on its 54–60 W fridge, per wattpowerstation.com."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, maker US store",
+   "value": "$899.00 (Black Friday Early Access, Nov. 5–18); in stock",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "storecheck.py product: variant price $899.00, compare_at $899.00, available=true."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Price and maker claim",
+   "value": "$1,499 (compare-at $2,329); 'keeps essentials running for 1–2 days'; 3,072 Wh; 3,600 W continuous / 7,200 W surge; estimated to ship from Nov. 28",
+   "source": "https://www.jackery.com/products/jackery-homepower-3000",
+   "source_title": "Jackery HomePower 3000",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on jackery.com. The '1–2 days' covers fridge, Wi-Fi, fans and lights with no load stated. On the 66.7 W median fridge at an assumed 80% delivered: 2,458 ÷ 66.7 = 36.9 h, which is Home Power Facts' estimate. CNET measured 32.05 h (per wattpowerstation.com)."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Price and maker claim",
+   "value": "$999 (compare-at $1,899); 'keeps … your fridge … powered through a full-day outage'; 2,042 Wh; 2,200 W / 4,400 W surge; sold out, pre-order ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. 'Full-day' has no fridge load or idle figure behind it."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3's runtime claim ('27.3 h at 120 W', as quoted by ChatGPT), no-load AC draw and cycles-to-%: ecoflow.com/us returned only navigation, us.ecoflow.com returned HTTP 429, and the manual PDF on s1.solacity.com was over 10 MB.",
+  "Jackery Explorer 3000 v2 fridge-runtime claim and idle draw: jackery.com/products/explorer-3000-v2 returned HTTP 429, and storecheck search did not return that product.",
+  "Anker SOLIX F3000 'nearly two days for its reference refrigerator' footnote: us.ankersolix.com/products/f3000 returned HTTP 429.",
+  "BLUETTI Elite 200 V2 AC idle/standby watts and cycle life: the product page gives neither, and I did not reach a manual.",
+  "Test conditions behind Anker C2000 Gen 2's 32 h dual-door claim: the US page has no fridge-size or temperature footnote, unlike the S2000.",
+  "CNET's original fridge-test article: the Yahoo syndication returned 403, and searches did not surface the cnet.com URL, so the CNET figures here come via wattpowerstation.com.",
+  "Anker C2000 Gen 2 price on ankersolix.com: the page fetched showed only bulk-discount text, no price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0416932
+ }
+}

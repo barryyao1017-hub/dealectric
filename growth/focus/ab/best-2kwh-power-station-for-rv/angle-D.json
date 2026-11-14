@@ -1,0 +1,57 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 2kWh stations with a TT-30 outlet use a floating neutral, so an RV with a Progressive-type EMS or surge protector reads them as an 'open ground' and won't pass power until the shopper adds a neutral-ground bonding plug.",
+ "standout": 2,
+ "standout_why": "I compared our own page (dealectric.com/best-2kwh-power-station-for-rv, read 2026-11-13) and outagereadyhq.com's under-$1,000 page, which ChatGPT cited on 11-13. Both name no wiring mechanism except the RV converter draw: ours has '~800 W, switch the converter off' and outagereadyhq has nothing on RV wiring. None of the eight ChatGPT answers mentions neutral-ground bonding, floating neutral, open ground or an EMS. They only repeat the converter-draw caveat and the 2,400 W ≈ 20 A limit, and our page already has both. I did not open OutdoorGearLab or Popular Mechanics. Nothing in the snippets or answers that drew on them points to grounding.",
+ "decides": "It doesn't change the pick. Both TT-30 picks, BLUETTI AC200L and Anker SOLIX C2000 Gen 2, have the same issue. Anker says so in its manual, and Mike Sokol says it about BLUETTI as a brand. It adds a needed condition to the 'plug your RV's 30A cord in' plan. Many RVs have an EMS or surge protector that cuts power on an open ground. Those owners need a neutral-ground bonding plug in a spare outlet on the station, or plugged into a splitter alongside the RV cord, or the RV gets no power at all. The fix is the same for every candidate, so it doesn't favour the Elite 200 V2 or Jackery either.",
+ "candidates": [
+  "BLUETTI AC200L",
+  "Anker SOLIX C2000 Gen 2",
+  "Renogy PowerStation 2000",
+  "BLUETTI Elite 200 V2",
+  "Jackery Explorer 2000 v2",
+  "EcoFlow DELTA 3 Max"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Neutral-ground design (maker's manual, FAQ #8)",
+   "value": "Floating ground: 'The power station uses a floating ground design, so you'll need to purchase a ground neutral plug.' 'Some devices require a neutral-ground bond to function properly.' 'Simply plug the ground neutral plug into one of the AC outlets on the power station'",
+   "source": "https://www.manualslib.com/guide/4237082/anker-solix-c2000-gen-2-portable-power-station-user-manual.html",
+   "source_title": "Anker SOLIX C2000 Gen 2 portable power station User Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "This is Anker's own user manual, mirrored on ManualsLib. Anker's support page (support.ankersolix.com, article A1783) only showed a CSS error and never loaded. The manual does not say whether the TT-30 outlet itself is bonded."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "TT-30 outlet rating (maker's manual specs)",
+   "value": "120 V, 20 A, 60 Hz, 2,400 W max; inverter AC output listed as 'L+N+PE'",
+   "source": "https://www.manualslib.com/guide/4237082/anker-solix-c2000-gen-2-portable-power-station-user-manual.html",
+   "source_title": "Anker SOLIX C2000 Gen 2 portable power station User Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Spec line: 'AC Output Port (TT-30) 120V~20A, 60Hz, 2,400W Max'. This matches the 20 A our current page already shows. 2,400 W / 120 V = 20 A, against the 30 A that a shore pedestal gives."
+  },
+  {
+   "product": "general",
+   "label": "Why a power station trips an RV EMS (named expert)",
+   "value": "Mike Sokol (RVelectricity) says the 'solar generators' from Jackery, Southwire and Bluetti 'don't have any ground contacts in their outlets', so a Progressive EMS 'won't run because of an \"open ground\" error'. His fix is a 3-way adapter: an N-G bonding plug goes in one socket and the RV cord in another, which bonds the inverter output.",
+   "source": "https://rvelectricity.substack.com/p/solar-generator-n-g-bonding",
+   "source_title": "Solar Generator N-G Bonding? — RVelectricity (Mike Sokol)",
+   "read": "2026-11-13",
+   "note": "Published 2023-01-20, answering a reader who had a Progressive EMS on a Leisure Travel Van. Sokol bench-tested a Jackery Explorer. He talks about each brand as a whole, not specific 2026 models. He says the bonding plug alone did not fix it for the reader. It also needed the 3-way adapter."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC200L neutral-ground design in BLUETTI's own words. The AC200L manual on s4.bluettipower.com is over the 10 MB fetch limit and wouldn't load. The BLUETTI community thread 'AC200L 30A outlet and progressive ems' (/t/29396) redirects to forum.bluettipower.com, which showed 'Network unavailable'. The claim that the AC200L has a floating neutral comes only from forum snippets I could not open.",
+  "Progressive Industries' own definition of EMS code E2 (open ground) and whether the unit withholds power on it. I fetched the EMS-PT30X manual PDFs from manuals.plus and camperid, but the text didn't extract, and converting them locally with pdftotext wasn't permitted. The manualmachine and manuals.plus HTML pages returned 403.",
+  "Renogy PowerStation 2000 manual on neutral-ground bonding and whether the TT-30 outlet is floating. No product manual turned up in the search. The only Renogy hit was the Single Phase Parallel Kit manual, and I did not open it.",
+  "Neutral-ground design of the BLUETTI Elite 200 V2, Jackery Explorer 2000 v2 and EcoFlow DELTA 3 Max from their makers' pages or manuals. Ran out of tool budget before searching.",
+  "Whether gas furnace or absorption-fridge controls in RVs refuse to run on a floating neutral. Mike Sokol's rvtravel.com article on generator grounding returned 403, so I left out the furnace claim from the search snippet."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.1527979000000002
+ }
+}

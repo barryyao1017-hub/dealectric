@@ -1,0 +1,128 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that on the Anker SOLIX F3800 Plus only the three leftmost NEMA 5-20R outlets give UPS backup. Anker's page marks the TT-30R 'No UPS', caps bypass at 1,440 W while the unit is charging from a 120 V wall outlet, and lists those same three UPS outlets as unusable when a generator feeds the unit. A sump pump left on standby therefore has to go in one of those three outlets, and you have to move it to the TT-30R or L14-30R when a generator is running the station.",
+ "standout": 2,
+ "standout_why": "I checked RunTimeFit (cited), Tested Watts (cited) and OutageReadyHQ (cited). RunTimeFit says nothing about UPS, outlets or expansion batteries. Tested Watts says UPS stations 'switch in 10–20 ms' but names no outlet or bypass limits. OutageReadyHQ lists the F3800 Plus without a switchover time and says it expands, but not with which battery. No rival gives the outlet-by-outlet UPS map, the bypass wattage limits (F3800 Plus 1,440 W, Elite 300 1,800 W), or the fact that the Elite 300's 4,800 W 'lifting' figure covers only pure resistive loads.",
+ "decides": "This confirms the setup more than it changes the pick. A 1/3 HP pump (about 800 W running in ChatGPT's own tables) fits under both bypass limits, so the F3800 Plus and Elite 300 can each keep it on UPS standby, but only through the right outlet. The resistive-only limit on the Elite 300's 4,800 W figure means its motor-start headroom should be judged against 2,400 W, not 4,800 W. That favours the F3800 Plus (6,000 W, expandable with BP3800 batteries) for wet basements where the pump cycles often. A literal 13 hp pump falls outside every candidate here.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Outlets that give UPS backup",
+   "value": "Only the 3 leftmost NEMA 5-20R (120 V, 20 A) outlets",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "From the page's Q5 port-availability table: 'NEMA 5-20R (3 Leftmost Ports, UPS)'. The pump has to go in one of these three to switch over automatically."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "UPS switching time and bypass limit when charging from a 120 V wall outlet",
+   "value": "20 ms; 1,440 W bypass on the UPS outlets; TT-30R marked 'No UPS'",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Condition 4 (no generator, plugged into 120 V wall): 'NEMA 5-20R (3 Leftmost Ports, UPS): Output available with bypass limit of up to 1,440W'; 'TT-30R ... No UPS. Bypass limit of up to 1,440W'; 'Switching Time: 20 ms'. The tech specs also list 'AC Input Power (Bypass Mode): 1440W Max'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "UPS outlets when a generator is connected",
+   "value": "Unusable (the 3 leftmost NEMA 5-20R give no output)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Conditions 2, 3, 5 and 6 (120 V or 240 V generator) mark 'NEMA 5-20R (3 Leftmost Ports, UPS)' Non-Usable. With a 120 V generator, TT-30R output works only on the L1 phase (3,000 W bypass). With a 240 V generator, L14-30R gives up to 6,000 W bypass. Generator switching: 30 ms station to generator, 50 ms generator to station."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output limit",
+   "value": "No 240 V output while charging from 120 V AC",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Page text: 'The 240V output cannot be used while the device is charging via 120V AC.' This only matters for 240 V pumps."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Compatible expansion battery",
+   "value": "BP3800 (3,840 Wh, 72.8 lb), up to 6 per unit",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Page text: 'Up to 6 × Expansion Batteries (3.84kWh each)'. Base 3,840 Wh + 6 × 3,840 Wh = 26,880 Wh per unit. The page's 53.8 kWh headline appears to assume two linked units; the page doesn't explain it. No other battery model is named, and no exclusion is stated."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input with and without expansion battery",
+   "value": "3,300 W single unit; 6,000 W with 1 or more expansion batteries",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Page footnote: '3,300W for single unit, 6,000W when working with 1 or more expansion batteries'."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "storecheck.py product: one variant, price 1199.0, compare_at 1199.0, available true."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS switchover",
+   "value": "≤10 ms rated (BLUETTI); 8 ms measured line to battery, 8.25 ms back (StorageReview)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review: 3014Wh, 2400W and an 8ms UPS switchover in a 58-pound box (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's product page also says 'Elite 300 switches in just 10 ms'."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Bypass output limit in UPS mode",
+   "value": "1,800 W max (120 V, 50/60 Hz)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "From StorageReview's spec table. BLUETTI's product page doesn't state a bypass limit. StorageReview paraphrases the manual: UPS is 'not intended for data servers or workstations that require a high-performance UPS'."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Loads the 4,800 W 'Power Lifting' figure covers",
+   "value": "Pure resistive loads only; actual output stays at 2,400 W",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "StorageReview: Power Lifting 'is intended only for pure resistive loads rated between 2,400W and 4,800W' and 'the actual output power remains at 2,400W when the mode is engaged'. A sump pump motor isn't resistive, so the 4,800 W figure doesn't apply to it."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "AC outlets",
+   "value": "4 × NEMA 5-20R + 1 × NEMA TT-30",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review (StorageReview, 2026-08-27)",
+   "read": "2026-11-13",
+   "note": "From the spec table. A standard 15 A pump plug fits the 5-20R outlets."
+  }
+ ],
+ "unsourced": [
+  "Whether the BLUETTI Elite 300 takes expansion batteries: BLUETTI's US product page and AU support page name none. Only a Decathlon UK retailer listing says it isn't expandable (B80 only as a power bank; B230/B300/B300K/B500K only through Charger 2). I couldn't read the official Elite 300 manual PDF: WebFetch hit its size limit and the download wasn't approved.",
+  "EcoFlow DELTA Pro 3 UPS outlets, bypass limit and compatible Extra Battery models: ecoflow.com/us and manuals.ecoflow.com returned empty pages, the manual PDF mirrors exceeded the fetch size limit, and us.ecoflow.com returned HTTP 429.",
+  "ALLPOWERS R4000 + B3000 compatibility in the US: the R4000 product URLs on allpowers.com returned 404, iallpowers.com returned 429, the manual PDF exceeded the fetch size limit and manuals.plus returned 403. The EU page's 'Only Works with R3500 + B3000' conflicts with the B3000 manual listing the R4000, and I didn't resolve this.",
+  "Anker SOLIX F3800 Plus current US price: the ankersolix.com page showed 'Price Loading' and 'Sold Out', and storecheck returned HTTP 404.",
+  "Any maker statement on whether a motor's start current can pass through UPS bypass above the stated bypass limit (F3800 Plus 1,440 W, Elite 300 1,800 W): neither page says what happens.",
+  "Any portable power station rated for a literal 13 hp motor: I opened no maker source that covers this, so the claim is left out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1174488999999999
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a folding panel's cells are wired in series behind usually three bypass diodes, so a railing bar or baluster that shades one cell switches off about a third of the panel, or that one reviewer measured a nearly 70% drop with one of four sections of a 200 W kit panel shaded.",
+ "standout": 2,
+ "standout_why": "I compared against PowerStationGearLab (cited), Flowers of Vice (cited) and our own Dealectric page (cited). PowerStationGearLab only says in general terms that 'Railings, neighboring buildings, clouds, heat, and imperfect panel angle all reduce output' and says nothing about bypass diodes or by how much. Flowers of Vice doesn't mention bypass diodes or voltage limits, and covers shading only loosely. Our page covers plug-in solar law (Utah HB 340) but has nothing on shading. I couldn't read UrbanGridBackup, the first cited result, because WebFetch hit a self-signed certificate error, so I can't rule out that it covers this.",
+ "decides": "It doesn't change which product ranks first, because every kit ChatGPT showed uses a standard series-wired folding panel. It does decide whether the plan works on a given balcony. A panel hung behind or along a railing, where one cell is shaded, loses roughly a third or more of its output, not a small fraction. That makes a 200–220 W panel on a shaded balcony perform more like a 100–140 W panel. So the page should say: put the panel where no bar shadow crosses it, or look for a half-cut-cell panel, where a shaded cell costs only a sixth of the panel. For a shaded balcony this argues for the bigger panel (DELTA 3 Classic + 220 W or Jackery 1000 v2 + 200 W) over a 60–100 W kit, because the bigger panel still has usable watts left after the loss.",
+ "candidates": [
+  "EcoFlow DELTA 3 Classic + 220 W panel",
+  "Jackery Solar Generator 1000 v2 (Explorer 1000 v2 + SolarSaga 200 W)",
+  "BLUETTI Elite 30 V2 + 100 W",
+  "BLUETTI AC180 + 100 W",
+  "Anker SOLIX C300 / C300X DC + 60 W",
+  "EcoFlow RIVER 3 Plus + 110 W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Series wiring means the most-shaded cell sets the module current",
+   "value": "\"due to series connection, the total current of the module will be dictated by the weakest cell (shaded)\"",
+   "source": "https://courses.ems.psu.edu/ae868/book/export/html/875",
+   "source_title": "Wiring within a PV Module and the Shading Effect (Penn State AE 868 course text)",
+   "read": "2026-11-14",
+   "note": "This is the course's own statement of how it works."
+  },
+  {
+   "product": "general",
+   "label": "Cells per bypass diode in a typical module, and the loss from one shaded cell",
+   "value": "one bypass diode per 20-cell group (3 per 60-cell module); a single shaded cell can cost about 30% of voltage and power",
+   "source": "https://courses.ems.psu.edu/ae868/book/export/html/875",
+   "source_title": "Wiring within a PV Module and the Shading Effect (Penn State AE 868 course text)",
+   "read": "2026-11-14",
+   "note": "The quote is \"we can estimate that the module might lose 30% of its voltage and power\". The course uses a 60-cell rooftop module. Portable folding panels have fewer cells, and I couldn't open a maker document giving their diode count."
+  },
+  {
+   "product": "general",
+   "label": "Three bypass diodes vs half-cut-cell modules",
+   "value": "three diodes: one shaded cell takes out a third of the panel; half-cut cell: it takes out a sixth",
+   "source": "https://windandsun.co.uk/blogs/articles/dont-put-solar-in-the-shade",
+   "source_title": "Don't put solar in the shade! (Wind & Sun Ltd, 11 Jun 2024)",
+   "read": "2026-11-14",
+   "note": "Quotes: \"The cells in PV modules are usually combined with three bypass diodes.\" \"This knocks out a third of the panel.\" On half-cut modules, \"only one-sixth of the panel has stopped producing power, instead of one-third.\" Wind & Sun is a UK solar supplier."
+  },
+  {
+   "product": "Jackery SolarSaga 200W (panel in the Jackery Solar Generator 1000 v2 kit)",
+   "label": "Measured output loss with one panel section shaded",
+   "value": "nearly 70% drop with one of four cell sections fully shaded; 180–195 W sustained in full sun, 218 W peak",
+   "source": "https://batteryskills.com/jackery-solarsaga-200w-ip68-solar-panel-review/",
+   "source_title": "Jackery SolarSaga 200W IP68 Solar Panel Review - Battery Skills (Bernard Ryan)",
+   "read": "2026-11-14",
+   "note": "Bernard Ryan measured it into a Jackery Explorer 1000 between 10 AM and 2 PM over a 14-day test. The article is internally inconsistent: elsewhere it says \"a shadow covering just one of the twenty cells caused a 70% power loss\" and it doesn't say how many bypass diodes the panel has. The page shows two dates (June 12, 2026 and October 1, 2025). Cite the four-section figure only, with his name on it."
+  },
+  {
+   "product": "general",
+   "label": "Rival baseline (what the cited rival already says)",
+   "value": "\"Railings, neighboring buildings, clouds, heat, and imperfect panel angle all reduce output\"; \"Glass also cuts performance, so a panel placed safely outdoors usually beats one behind a window.\"",
+   "source": "https://powerstationgearlab.com/best/best-solar-generator-for-apartment/",
+   "source_title": "Best Solar Generator for Apartment Living 2026: Quiet, Indoor-Safe Picks (PowerStationGearLab)",
+   "read": "2026-11-14",
+   "note": "Used for comparison only. The rival says shading reduces output but gives no mechanism and no figure, so the advice to place the panel behind glass outdoors is already covered and shouldn't be our new fact."
+  }
+ ],
+ "unsourced": [
+  "Bypass-diode count and whether the cells are half-cut for the EcoFlow 220W Bifacial, Jackery SolarSaga 200W, BLUETTI 100 W and Anker 60 W panels. I tried the maker manuals: the EcoFlow 220W bifacial and 160W PDFs wouldn't extract and the 220W manual on BigCommerce was over the size limit. The us.ecoflow.com panel page returned HTTP 429.",
+  "Solar input voltage windows from the makers' own pages for the DELTA 3 Classic, Explorer 1000 v2, AC180 and Elite 30 V2. us.ecoflow.com, jackery.com and bluettipower.com/products/ac180 returned HTTP 429, and bluettipower.com/products/elite-30-v2 hit a redirect loop. The DELTA 3 Classic's 11–60 V appeared only in search snippets and I didn't verify it.",
+  "A shade test of the EcoFlow 220W bifacial panel. OutdoorGearLab's review (Sam Schild, 2026-07-13) gives only 193 W over one hour in sun and doesn't quantify shade or the rear-side gain.",
+  "UrbanGridBackup's buyer's guide (cited rank 1): WebFetch hit a self-signed certificate error, so I couldn't check whether it already covers shading or bypass diodes."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0209153000000002
+ }
+}

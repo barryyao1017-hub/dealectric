@@ -1,0 +1,184 @@
+{
+ "status": "ok",
+ "angle": "D",
+ "why_angle": "Frigate's hardware page states an AVX + AVX2 rule but names no NAS. The 0.17 FAQ links 'illegal instruction' crashes to missing AVX. No cited page checks the CPUs in the QNAP TS-464, Synology DS225+ and Asustor AS5402T against Intel's instruction-set listings, and Intel lists all three as SSE4.2 only. The pages still recommended the TS-464 as a Frigate box. This page checks each candidate's CPU on Intel's spec page and pairs it with a measured OpenVINO time for the pick's own CPU. Angle D has the fullest sourcing for this: the 0.17 FAQ, Intel spec pages, and maker CPU pages for QNAP, Synology and Asustor.",
+ "slug": "best-nas-for-frigate-security-cameras",
+ "must": [
+  "is the UGREEN DXP4800 Plus",
+  "list SSE4.2 only, so the official Frigate Docker image crashes"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best NAS for running Frigate to record security cameras (2026): detectors, drives and the Docker setup",
+  "h1": "Best NAS for running Frigate to record security cameras (2026)",
+  "desc": "Which NAS can run Frigate 0.17 in Docker: each CPU's AVX/AVX2 support checked against Intel for UGREEN, TerraMaster, QNAP, Synology and Asustor, with OpenVINO detection times.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for running Frigate to record security cameras is the UGREEN DXP4800 Plus: its Intel Pentium Gold 8505 has the AVX2 Frigate requires and ran OpenVINO detection in 11–12 ms. Celeron NAS units (N5095, J4125) list SSE4.2 only, so the official Frigate Docker image crashes.</p>",
+  "columns": [
+   [
+    "cpu",
+    "CPU"
+   ],
+   [
+    "isa",
+    "Instruction sets (Intel spec page)"
+   ],
+   [
+    "frigate",
+    "Official Frigate 0.17 Docker image"
+   ],
+   [
+    "detect",
+    "OpenVINO detection note"
+   ],
+   [
+    "ram",
+    "RAM shipped (max)"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "model": "UGREEN NASync DXP4800 Plus (4-bay)",
+    "cells": {
+     "cpu": "Intel Pentium Gold 8505 (1 performance + 4 efficiency cores), UHD Graphics, 48 EU",
+     "isa": "SSE4.1, SSE4.2, AVX2",
+     "frigate": "Meets Frigate's AVX + AVX2 line",
+     "detect": "11–12 ms per detection, five 1080p cameras at about 50% CPU (Frigate user on the same 8505, discussion #11960)",
+     "ram": "8 GB DDR5 (64 GB per Intel)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800 (2-bay)",
+    "cells": {
+     "cpu": "Intel N100, UHD Graphics",
+     "isa": "SSE4.1, SSE4.2, AVX2",
+     "frigate": "Meets Frigate's AVX + AVX2 line",
+     "detect": "About 15 ms MobileNetV2; runs only one detector instance (Frigate hardware table)",
+     "ram": "8 GB DDR5 (16 GB)"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F4-425 Pro (4-bay)",
+    "url": "https://www.terra-master.com/products/f4-425-pro",
+    "cells": {
+     "cpu": "Intel Core 3 N350, 8 cores (TerraMaster)",
+     "isa": "SSE4.1, SSE4.2, AVX2",
+     "frigate": "Meets Frigate's AVX + AVX2 line",
+     "detect": "Intel Graphics with 32 EU for OpenVINO (Intel spec page)",
+     "ram": "16 GB DDR5 (TerraMaster)",
+     "price": "$699.99 (maker, 2026-11-13)"
+    }
+   },
+   {
+    "slug": "qnap-ts-464-8g",
+    "model": "QNAP TS-464-8G (4-bay)",
+    "cells": {
+     "cpu": "Intel Celeron N5095, 4 cores, UHD Graphics (QNAP)",
+     "isa": "SSE4.2 only",
+     "frigate": "Below the AVX line: 'illegal instruction' crash (Frigate 0.17 FAQ)",
+     "detect": "Celeron 'not officially supported for openvino' (Frigate maintainer, discussion #13388)",
+     "ram": "8 GB DDR4 (16 GB, QNAP)"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+ (2-bay)",
+    "cells": {
+     "cpu": "Intel Celeron J4125, UHD Graphics 600 (Synology, Intel)",
+     "isa": "SSE4.2 only",
+     "frigate": "Below the AVX line: 'illegal instruction' crash (Frigate 0.17 FAQ)",
+     "detect": "Celeron 'not officially supported for openvino' (Frigate maintainer, discussion #13388)",
+     "ram": "2 GB DDR4 (6 GB, Synology)"
+    }
+   },
+   {
+    "slug": "asustor-as5402t",
+    "model": "Asustor Nimbustor 2 Gen2 AS5402T (2-bay)",
+    "cells": {
+     "cpu": "Intel Celeron N5105, 4 cores (Asustor)",
+     "isa": "SSE4.2 only",
+     "frigate": "Below the AVX line: 'illegal instruction' crash (Frigate 0.17 FAQ)",
+     "detect": "Celeron 'not officially supported for openvino' (Frigate maintainer, discussion #13388)",
+     "ram": "4 GB DDR4 (16 GB, Asustor)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>Detector headroom on the pick's CPU:</strong> at 12 ms per detection, one OpenVINO detector can run about 83 inferences a second (1000 ÷ 12). That is the Pentium Gold 8505 figure from discussion #11960.</li><li><strong>The same report's load:</strong> five 1080p cameras detecting at 5 fps each is 25 frames a second (5 × 5), and the CPU sat at about 50%. With detection switched off, the user saw 5–10%.</li><li><strong>N100 in the 2-bay box:</strong> about 15 ms per detection works out to about 67 inferences a second (1000 ÷ 15). Frigate's table also says the N100 runs only one detector instance, so all cameras share that one detector.</li><li><strong>Cores for other containers:</strong> the F4-425 Pro's N350 has 8 cores, against the 8505's 5 (1 performance + 4 efficiency). That is 3 more cores (8 − 5) for Home Assistant or other Docker services next to Frigate.</li><li><strong>Memory ceiling:</strong> the DS225+ ships with 2 GB and tops out at 6 GB (2 + 4). The DXP4800 Plus ships with 8 GB, and Intel lists a 64 GB maximum for its CPU, eight times the shipped amount (64 ÷ 8).</li></ul><table><thead><tr><th>Use</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Frigate and 24/7 recording on one 4-bay box</td><td>UGREEN DXP4800 Plus {buy:ugreen-nasync-dxp4800-plus}</td><td>AVX2 CPU, 11–12 ms OpenVINO measured on the same chip</td></tr><tr><td>Smaller setup, two drives mirrored</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td><td>AVX2 N100, about 15 ms, one detector instance</td></tr><tr><td>Frigate plus several other containers</td><td>TerraMaster F4-425 Pro</td><td>8-core AVX2 N350, 16 GB shipped</td></tr><tr><td>You already own a TS-464, DS225+ or AS5402T</td><td>Keep it for storage only and run Frigate on an AVX2 machine</td><td>Intel lists their Celerons with SSE4.2 only</td></tr></tbody></table><h2>The AVX check: which NAS CPUs can run Frigate 0.17</h2><p>Frigate's developer FAQ for 0.17 says: \"Frigate 0.17 requires a modern CPU with AVX (Advanced Vector Extensions) instructions.\" A startup crash with an <code>illegal instruction</code> error has the listed cause \"Your CPU lacks AVX instructions required by TensorFlow\". Frigate's hardware page sets the bar higher: \"Anything with an Intel CPU (with AVX + AVX2 instructions) and capable of running Debian should work fine.\"</p><p>The specs printed on a NAS box don't answer this. The QNAP TS-464 has a Celeron N5095 with Intel UHD Graphics and Quick Sync, yet Intel's spec page lists its only instruction-set extension as SSE4.2. The Celeron N5105 in the Asustor AS5402T and the Celeron J4125 in the Synology DS225+ and DS425+ have the same SSE4.2-only listing. The Pentium Gold 8505 (DXP4800 Plus), N100 (DXP2800) and Core 3 N350 (F4-425 Pro) all list AVX2.</p><p>To check any NAS yourself, open Intel's spec page for its CPU and read the \"Instruction Set Extensions\" line. On a box you already have shell access to, run <code>grep -o -w avx2 /proc/cpuinfo | head -1</code>. If it prints nothing, the CPU has no AVX2. If you run Frigate inside a Proxmox VM on a CPU that does have AVX, the FAQ's fix for the crash is to set the VM's CPU type to \"host\" so the instructions pass through.</p><p>Detection on Celerons has a second problem. A Frigate maintainer wrote in discussion #13388 that \"Celeron is not officially supported for openvino\". That thread covers OpenVINO GPU-detector failures on J4125 and J5005 systems.</p><h2>Not recommended</h2><p><strong>QNAP TS-464 for running Frigate.</strong> It looks like a good fit: Intel x86, UHD graphics, 4 bays, 8 GB. But Intel lists its N5095 with SSE4.2 only, which is below the AVX line in Frigate's 0.17 FAQ, and a Frigate maintainer says OpenVINO isn't officially supported on Celeron. The Synology DS225+ and Asustor AS5402T have the same problem. The DS225+ also ships with only 2 GB of RAM. These units can still hold recordings as storage, but the official Frigate image should run on an AVX2 machine.</p>",
+  "sources": [
+   [
+    "Frigate 0.17 requires a CPU with AVX; 'illegal instruction' crash cause; Proxmox 'host' CPU type fix (FAQ by hawkeye217, updated 2026-03-05; read 2026-11-13)",
+    "https://github.com/blakeblackshear/frigate/discussions/21275"
+   ],
+   [
+    "Frigate CPU rule 'Intel CPU (with AVX + AVX2 instructions)'; N100 ~15 ms MobileNetV2 with one detector instance (read 2026-11-13)",
+    "https://docs.frigate.video/frigate/hardware/"
+   ],
+   [
+    "Pentium Gold 8505 running Frigate OpenVINO: 11–12 ms, five 1080p streams at 5 fps, about 50% CPU (user bobloadmire, 2024-06-14; read 2026-11-13)",
+    "https://github.com/blakeblackshear/frigate/discussions/11960"
+   ],
+   [
+    "Frigate maintainer NickM-27: 'Celeron is not officially supported for openvino' (2024-11-21; read 2026-11-13)",
+    "https://github.com/blakeblackshear/frigate/discussions/13388"
+   ],
+   [
+    "Intel Pentium Gold 8505: SSE4.1, SSE4.2, AVX2; UHD Graphics 48 EU; 64 GB max memory (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html"
+   ],
+   [
+    "Intel N100: SSE4.1, SSE4.2, AVX2 (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+   ],
+   [
+    "Intel Core 3 N350: SSE4.1, SSE4.2, AVX2; 8 cores; Intel Graphics 32 EU (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/241638/intel-core-3-processor-n350-6m-cache-up-to-3-90-ghz/specifications.html"
+   ],
+   [
+    "Intel Celeron N5095: SSE4.2 only (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html"
+   ],
+   [
+    "Intel Celeron J4125: SSE4.2 only; UHD Graphics 600 (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html"
+   ],
+   [
+    "Intel Celeron N5105: SSE4.2 only (read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html"
+   ],
+   [
+    "QNAP TS-464: Celeron N5095, 4C/4T, UHD Graphics; 8 GB, max 16 GB (read 2026-11-13)",
+    "https://www.qnap.com/en-us/product/ts-464/specs/hardware"
+   ],
+   [
+    "Synology DS225+: Celeron J4125; 2 GB DDR4, max 6 GB (read 2026-11-13)",
+    "https://www.synology.com/en-us/products/DS225+#specs"
+   ],
+   [
+    "Synology DS425+: Celeron J4125 (read 2026-11-13)",
+    "https://www.synology.com/en-us/products/DS425+#specs"
+   ],
+   [
+    "Asustor AS5402T: quad-core Celeron N5105; 4 GB DDR4, up to 16 GB (read 2026-11-13)",
+    "https://www.asustor.com/en/product?p_id=81"
+   ],
+   [
+    "TerraMaster F4-425 Pro: Intel N350 8-core, 16 GB DDR5, dual 5GbE; $699.99 on TerraMaster's US store (read 2026-11-13)",
+    "https://www.terra-master.com/products/f4-425-pro"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Frigate NVR documentation recommended hardware Intel OpenVINO hardware acceleration recording NAS Docker 2026",
+  "Frigate docs recommended hardware Intel OpenVINO Quick Sync recording storage Docker NAS 2026",
+  "Frigate NVR recommended hardware Intel Quick Sync OpenVINO Hailo Coral NAS Docker documentation 2026",
+  "Frigate NVR recommended hardware Intel Quick Sync OpenVINO Coral NAS Docker storage 2026",
+  "Frigate NVR recommended hardware Intel Quick Sync OpenVINO Coral storage recordings NAS 2026",
+  "UGREEN DXP4800 Plus processor DXP4800 specs QNAP TS-464 TerraMaster F4-424 Pro specs"
+ ],
+ "query": "best nas for running frigate to record security cameras",
+ "verified_changes": 3,
+ "verified_removed": 0
+}

@@ -1,0 +1,121 @@
+{
+ "angle": "A",
+ "gap": "None of the results ChatGPT got says that Plex's own hardware-transcoding page (last modified 2026-10-27) lists only Intel (Quick Sync/VAAPI) and NVIDIA engines on Linux and mentions only Intel Quick Sync for Docker; AMD appears only in the Windows notes, supported 'as is' and not fully tested. On the stated record, the AMD all-in-ones ChatGPT offered, such as the Aoostar WTR Pro 5825U as 'best for internal HDD storage', have no documented Plex hardware transcoding under Proxmox, Unraid or TrueNAS.",
+ "standout": 3,
+ "standout_why": "Rival pages compared: littlecompute.com/best-mini-pc-for-plex says AMD's 780M 'handles Plex fine' and 'works too'. bitdoze.com/best-mini-pc-proxmox says AMD VAAPI 'can work' but reports no Plex result. homelabcompass.com (cited) recommends Quick Sync but never says whether AMD works. Our own page only says 'AMD graphics, no Quick Sync', and its table also lacks a common configured-price column. ChatGPT's answers say only that AMD is 'less straightforward'. None of these cites Plex's own Linux and Docker engine list. None puts barebone and configured prices on one basis either: ChatGPT showed the MS-01 SE at '$369 barebone' and budgeted '$100 for 32GB DDR5'. Against that, Minisforum's own store has the SE barebone at $375, and StarryHope lists $775 for 32GB/1TB, so RAM plus SSD adds $400.",
+ "decides": "Two corrections decide the pick. (1) Plex transcoding: for the branch where media drives go inside the box, the AMD boxes fall out (WTR Pro 5825U, WTR Max 8845HS, GMKtec K8 Plus) because Plex documents no hardware transcoding for them on Linux. That leaves Intel bay boxes: the UGREEN DXP4800 Plus at $619.99 with 8 GB included, or the Aoostar WTR Max Intel i5-1235U at $529 barebone with 6 HDD bays, 2× 10GbE and DDR5 up to 96 GB, before RAM. (2) Price on one basis: price every option as configured with 32 GB RAM and 1 TB NVMe, no hard drives. On that basis the 'cheap' $375 MS-01 SE barebone becomes $775 and the MS-01's DDR5 is costlier still: bitdoze priced a 32 GB DDR5 kit at $569.98. So a mini PC with RAM included, or a NAS that ships with RAM, beats a barebone plus retail DDR5 under $800. The table footnote should be: 'Plex HW transcode on Linux/Docker = Intel or NVIDIA only (Plex support, 2026-10-27); barebone prices shown as configured at 32 GB / 1 TB.'",
+ "candidates": [
+  "Minisforum MS-01 SE (i5-12600H)",
+  "Minisforum MS-01 (i5-12600H)",
+  "UGREEN NASync DXP4800 Plus",
+  "Aoostar WTR Max Intel i5-1235U",
+  "Aoostar WTR Pro (Ryzen 7 5825U)",
+  "Aoostar WTR Max (Ryzen 7 PRO 8845HS)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plex hardware transcoding engines on Linux and in Docker",
+   "value": "Linux: Intel VAAPI and NVIDIA (NVDEC/NVENC) only. Docker: only Intel Quick Sync is mentioned, and it needs Plex Pass. AMD appears only in the Windows notes, as 'as is' with no full testing.",
+   "source": "https://support.plex.tv/articles/115002178853-using-hardware-accelerated-streaming/",
+   "source_title": "Using Hardware-Accelerated Streaming | Plex Support",
+   "read": "2026-11-13",
+   "note": "Page says 'Last modified on: October 27, 2026'. VAAPI is listed only as an Intel engine, and the page says nothing about AMD on Linux. It recommends 'Intel Quick Sync Video or a dedicated NVIDIA GPU'."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "Barebone price, maker US store",
+   "value": "$375.00 (compare-at $969)",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-se-workstation",
+   "source_title": "MINISFORUM MS-01 SE Workstation – Minisforum store",
+   "read": "2026-11-13",
+   "note": "Read from the store's product JSON with storecheck search, which gives the lowest variant price. The store's own description says 'dual 2.5GbE RJ45 LAN, and up to 64GB DDR4'. Variant-level prices could not be read because the store returned HTTP 429."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "32GB/1TB configured list price",
+   "value": "$775.00",
+   "source": "https://www.starryhope.com/minipcs/models/minisforum-ms-01-se/",
+   "source_title": "MINISFORUM MS-01 SE | Starry Hope",
+   "read": "2026-11-13",
+   "note": "Page published 2026-10-26; the price is a list price with no 'as of' date. $775 − $375 barebone = $400 for 32 GB DDR4 plus 1 TB SSD as Minisforum prices them. ChatGPT budgeted about $180 for the same parts ($100 RAM, $80 SSD)."
+  },
+  {
+   "product": "Minisforum MS-01 SE (i5-12600H)",
+   "label": "Memory and expansion, compared with the MS-01",
+   "value": "2× DDR4-3200 SO-DIMM, 64 GB max; 2× 2.5GbE (I226-LM + I226-V), no SFP+; PCIe x16 slot wired 4.0 x4; 3× M.2 (4.0 x4, 3.0 x4, 3.0 x2)",
+   "source": "https://www.starryhope.com/minipcs/models/minisforum-ms-01-se/",
+   "source_title": "MINISFORUM MS-01 SE | Starry Hope",
+   "read": "2026-11-13",
+   "note": "The MS-01 takes DDR5 up to 96 GB and has 2× 10GbE SFP+ (bitdoze). So a 'MS-01' card without 'SE' is not the same machine. The RAM types also differ, so RAM add-on costs differ."
+  },
+  {
+   "product": "Minisforum MS-01 (i5-12600H)",
+   "label": "Lowest price on maker US store today",
+   "value": "$469.00 (compare-at $1,619)",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-workstation",
+   "source_title": "MINISFORUM MS-01 Workstation – Minisforum store",
+   "read": "2026-11-13",
+   "note": "storecheck search gives the lowest variant price. The variant is presumably the i5 barebone but could not be confirmed (HTTP 429)."
+  },
+  {
+   "product": "Minisforum MS-01 (i5-12600H)",
+   "label": "Barebone vs configured, and DDR5 kit cost",
+   "value": "i5 barebone $439; i9 32GB/1TB $1,179; Crucial 32 GB DDR5 kit $569.98; up to 96 GB DDR5",
+   "source": "https://www.bitdoze.com/best-mini-pc-proxmox/",
+   "source_title": "Best Mini PC for Proxmox 2026: MS-01, MS-A2, EQ14 | Bitdoze",
+   "read": "2026-11-13",
+   "note": "Prices as of the article date, 2026-09-21. At that RAM price, i5 barebone $439 + $569.98 RAM = $1,008.98 before any SSD, already over $800."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, maker US store (8 GB RAM included, diskless)",
+   "value": "$619.99 (compare-at $1,129.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus – UGREEN NAS store",
+   "read": "2026-11-13",
+   "note": "Same store lists the newer DXP4800 GT at $559.99 and DXP4800 Pro at $679.99. Neither is on our page yet."
+  },
+  {
+   "product": "Aoostar WTR Max Intel i5-1235U",
+   "label": "Price and spec, maker store",
+   "value": "$529.00 barebone (compare-at $699); i5-1235U (Intel iGPU); 2× DDR5-4800 SO-DIMM up to 96 GB; 5× M.2 (PCIe 3.0); 6× 3.5\" SATA; 2× 10GbE (Intel 82599) + 2× 2.5GbE (I226-V); 280 W PSU",
+   "source": "https://aoostar.com/products/aoostar-wtr-max-intel-1235u",
+   "source_title": "AOOSTAR WTR MAX INTEL 1235U 11 Bay NAS",
+   "read": "2026-11-13",
+   "note": "Store text says 'Barebone are in stock at US warehouse'. This is the Intel version of the WTR Max, so Plex's documented Linux engine applies. RAM and SSD cost extra."
+  },
+  {
+   "product": "Aoostar WTR Pro (Ryzen 7 5825U)",
+   "label": "Price and memory, maker store",
+   "value": "$379.00 barebone (compare-at $399.95); 2× DDR4-3200 SO-DIMM up to 64 GB; 2× M.2 PCIe 3.0; 4× 2.5/3.5\" SATA",
+   "source": "https://aoostar.com/products/aoostar-wtr-pro-4-bay-90t-storage-amd-ryzen-7-5825u-nas-mini-pc-support-2-5-3-5-hdd-%E5%A4%8D%E5%88%B6",
+   "source_title": "AOOSTAR WTR PRO 5825U 4 Bay NAS Mini PC",
+   "read": "2026-11-13",
+   "note": "AMD Radeon iGPU. Under the bring-your-own Linux OS this box is sold for, Plex documents no AMD hardware transcoding (see the Plex finding)."
+  },
+  {
+   "product": "Aoostar WTR Max (Ryzen 7 PRO 8845HS)",
+   "label": "Network ports, maker store (resolves our 'listings conflict' cell)",
+   "value": "2× 10Gb LAN (Intel 82599) + 2× 2.5Gb LAN (Intel I226-V); 2× DDR5-5600 SO-DIMM up to 128 GB, ECC supported; $659.00 barebone",
+   "source": "https://aoostar.com/products/aoostar-wtr-max-amd-r7-pro-8845hs-11-bays-mini-pc",
+   "source_title": "AOOSTAR WTR MAX 8845 11 Bay NAS",
+   "read": "2026-11-13",
+   "note": "The maker lists both port pairs, so our 'Listings conflict' cell should read 2× 10G + 2× 2.5G."
+  }
+ ],
+ "unsourced": [
+  "MS-01 SE 32GB/1TB price on Minisforum's own store page: the store returned HTTP 429 on four tries, so the $775 comes from StarryHope's list price.",
+  "MS-01 i5 configured (32GB/1TB) price on the maker store, and which variant the $469 minimum is: same HTTP 429.",
+  "Retail price today for 32 GB DDR4-3200 and DDR5 SO-DIMM kits: the Crucial store rejected the request and Amazon blocked amzcheck. The only DDR5 figure is bitdoze's $569.98 from 2026-09-21.",
+  "A named reviewer's test of Plex hardware transcoding on AMD (5825U or 780M) under Linux or Docker, to set against Plex's documentation: not searched within the budget.",
+  "Minisforum's own wording for the MS-01's maximum RAM (96 GB comes only from bitdoze and littlecompute).",
+  "Measured idle power for any candidate: none of the pages read gives a figure (littlecompute marks it TBC)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2081173000000003
+ }
+}

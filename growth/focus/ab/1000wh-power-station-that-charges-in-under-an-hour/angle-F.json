@@ -1,0 +1,129 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got lists the Jackery HomePower 1000 v2 (1,024 Wh). Jackery's own US store sells it for $549 today and says it is 'Fully Charged in Just 50 Minutes'. That beats the 56-minute EcoFlow and DJI claims and comes close to the Anker C1000 Gen 2's 49 minutes, which costs $799 at Anker's own US store.",
+ "standout": 2,
+ "standout_why": "I opened amphourly.com/learn/best-mid-size-power-station (cited), offgridfieldguide.com/compare/1000wh-power-stations (cited) and testedwatts.com/2026/09/24/how-long-to-charge-power-station (cited). I tried thiswatt.com, also cited, but it failed with a certificate error. None of the three I read gives a current price with a retailer and date. Amphourly gives only $799 launch MSRPs for the Anker and the Jackery 1000 v2. Off Grid Field Guide and Tested Watts give no prices at all. None of them mentions the Jackery HomePower 1000 v2. Amphourly adds the OUPES Mega 1 (58 min, 1,400 W), which ChatGPT never showed. Amphourly's 70-minute 'full charge' for the BLUETTI Elite 100 V2 is the solar figure: BLUETTI's own page claims only 80 % in 45 minutes on AC. On price, the pick ChatGPT showed for $549.99 at B&H costs $799 at Anker's own US store today.",
+ "decides": "It confirms the Anker SOLIX C1000 Gen 2 as the fastest maker-claimed full wall charge (49 min, UltraFast enabled in the app). It also makes the price trade-off visible. At maker-store prices the Anker costs $799. The DELTA 3 costs $579 for a 56-minute claim. The Jackery HomePower 1000 v2 costs $549 for a 50-minute claim, but its black version is sold out. The BLUETTI AC180 and Elite 100 V2 cost $499 but are only claimed to reach 80 % in 45 minutes, so they don't meet the 'fully in under an hour' test. The page should add the HomePower 1000 v2 as the value alternative and state its charge conditions once they are sourced.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "EcoFlow DELTA 3 Classic",
+  "DJI Power 1000 V2",
+  "Jackery Explorer 1000 v2",
+  "Jackery HomePower 1000 v2",
+  "Anker SOLIX C1000",
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "ALLPOWERS P1800",
+  "OUPES Mega 1"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Price at Anker's own US store, no solar panel",
+   "value": "$799.00, in stock",
+   "source": "https://us.soundcore.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W",
+   "read": "2026-11-14",
+   "note": "Read through storecheck.py (Shopify product JSON). Variant 'Go Without Solar' is $799.00 with no compare-at price. The bundle with a 200 W panel is $1,598. ChatGPT showed $549.99 at B&H, but I could not open a B&H page to check it."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Maker's 0–100 % AC claim and conditions",
+   "value": "49 min at 1,600 W UltraFast; 1,200 W standard AC",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "The page says 'UltraFast Recharging must be activated via the Anker app' and the stock AC cable must be used. The US store listing repeats '49 Min UltraFast Recharging… Enable it in the Anker app'. It loses on price: $220 more than the DELTA 3 and $250 more than the HomePower 1000 v2 at their makers' stores."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "Price and full-charge claim at Jackery's US store",
+   "value": "$549.00 (compare-at $1,049); 'Fully Charged in Just 50 Minutes'; 1,024 Wh, 1,500 W",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-14",
+   "note": "Read from the Jackery store search JSON (storecheck.py search). The listing says 'Black: Sold out due to high demand. In stock now: HomePower 1000 Plus v2, ships immediately.' A direct product fetch returned HTTP 429, so I could not read the required charge mode or the variant availability. Where it loses: the black version is sold out, and Jackery's listing doesn't say what mode the 50-minute charge needs."
+  },
+  {
+   "product": "Jackery HomePower 1000 Plus v2",
+   "label": "Price at Jackery's US store",
+   "value": "$669.00 (compare-at $2,139)",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-plus-v2",
+   "source_title": "Jackery HomePower 1000 Plus v2",
+   "read": "2026-11-14",
+   "note": "From the store search JSON. The listing text gives no full-charge time, so it can't be counted as under an hour."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Price at EcoFlow's US store",
+   "value": "$579.00 (compare-at $1,349), available",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "From the store search JSON. Where it loses to the Anker: its maker claim is 56 minutes against 49 (our current page; the store listing text gives no AC time). Off Grid Field Guide states 56 min full at 1,500 W."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price and AC charge claim at EcoFlow's US store",
+   "value": "$459.00 (compare-at $1,299); 0–80 % in 45 min on AC",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-14",
+   "note": "Where it loses: EcoFlow claims only 80 % in 45 minutes, not a full charge in under an hour."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price and AC charge claim at BLUETTI's US store",
+   "value": "$499.00, available; 80 % in 45 min with 1,200 W TurboBoost",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-14",
+   "note": "The 'Full charge in 70 mins' line on the page is for 1,000 W solar input, not AC. Amphourly lists it as a 70-minute full charge. Where it loses: there is no maker claim of a full AC charge in under an hour."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and AC charge claim at BLUETTI's US store",
+   "value": "$499.00, available; 0–80 % in 45 min with 1,440 W AC input; 1,152 Wh",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Where it loses: only an 80 % claim. Off Grid Field Guide gives 'full in 1.3 to 1.8 hr' and calls it the heaviest of its group at 35.3 lb."
+  },
+  {
+   "product": "OUPES Mega 1",
+   "label": "Full AC charge time and input as listed by a rival",
+   "value": "58 min; 1,400 W",
+   "source": "https://amphourly.com/learn/best-mid-size-power-station/",
+   "source_title": "Best Mid-Size Power Stations (500–1500Wh) | Amphourly",
+   "read": "2026-11-14",
+   "note": "This is Amphourly's figure, not one from the maker. Amphourly says it loses on slow car charging (about 12.8 h) and weighs 27.8 lb. I did not price it."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Full AC charge time in Emergency mode, as listed by rivals",
+   "value": "about 60 min in Emergency mode; about 1.6 h in standard mode",
+   "source": "https://testedwatts.com/2026/09/24/how-long-to-charge-power-station/",
+   "source_title": "How Long Does It Take to Charge a Power Station? - Tested Watts",
+   "read": "2026-11-14",
+   "note": "Where it loses: about an hour at best, so it's borderline rather than under. Tested Watts also notes the 400 W solar cap. I could not price it (HTTP 429 from Jackery's store)."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 price at jackery.com: the product page returned HTTP 429 twice.",
+  "EcoFlow DELTA 3 Plus price at us.ecoflow.com: the product page returned HTTP 429 twice, store search didn't return it, and the Renewable Outdoors page ($719 in ChatGPT's answer) returned HTTP 429.",
+  "DJI Power 1000 V2 US price: store.dji.com redirected to a login page, us.store.dji.com returned 404, and the dji.com specs page redirected. Our page's $699 (out of stock on 2026-11-03) is still unconfirmed.",
+  "Anker SOLIX C1000 Gen 2 at B&H ($549.99 in ChatGPT's answer): no B&H page found, and the Amazon tool's search returned nothing.",
+  "The charge mode Jackery requires for the HomePower 1000 v2's 50-minute full charge: the product page was rate-limited.",
+  "ALLPOWERS P1800 price: the allpowers.com store search returned a non-JSON response.",
+  "Prices for the Anker SOLIX C1000 (original) and the OUPES Mega 1: not looked up within the tool budget.",
+  "thiswatt.com comparison (a cited rival): fetch failed with a self-signed certificate error, so I couldn't compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.0793475
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Nextcloud All-in-One calls the Docker Engine API at a pinned v1.44 by default, while Synology's Container Manager is still built on Docker Engine 24.0.2 (newest build 24.0.2-1707, 2026-11-05), whose highest API is 1.43. On the DS925+ and DS225+, AIO therefore needs an SSH install with a DOCKER_API_VERSION override that Nextcloud says it does not support. UGREEN's UGOS Pro ships Engine 29.6.2, which needs no override.",
+ "standout": 2,
+ "standout_why": "Pages compared: racksandwatts.com best-nas-for-a-homelab-2026 (cited) and nasdrives.ca best-nas-for-nextcloud-canada. Neither mentions Docker Engine or API versions, DOCKER_API_VERSION or Nextcloud AIO. Racksandwatts only says 'DSM Container Manager' and 'UGOS Pro Docker'. The cited nextcloud/all-in-one readme has part of it: its Synology section says 'you likely need to adjust the internally used api version' and that the Synology Docker GUI won't work for this. It gives no version numbers, and nothing in it ties the problem to Synology's frozen 24.0.2 engine or shows that UGREEN and QNAP aren't affected. In the 2026-11-08 chat ChatGPT reduced this to 'requires some manual configuration'. Our current page says 'AIO in Container Manager' for Synology, which suggests the GUI route works.",
+ "decides": "It confirms UGREEN (DXP2800 / DXP4800 Plus) as the pick for Nextcloud AIO and pushes the Synology DS925+ down. DS925+ owners can't use AIO's default, supported setup from the Container Manager GUI. They need SSH or Task Scheduler as root, a custom socket path and DOCKER_API_VERSION=1.43, which the AIO readme says is not supported or tested by the maintainers. One DSM owner on Container Manager 24.0.2 reported the AIO mastercontainer warning that 'only v1.44 is officially supported' and AppAPI failing in a loop. QNAP (Engine 27.1.2) and TerraMaster (27.2.1) are above API 1.44, so the default works there. Shoppers who stay on Synology should be told to plan for the override, or to use the community nextcloud/docker image with Compose, which doesn't drive the Docker API.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-464",
+  "QNAP TS-264",
+  "TerraMaster F4-425 Plus",
+  "Asustor AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Docker Engine API version pinned by the Nextcloud AIO mastercontainer",
+   "value": "v1.44 (default when DOCKER_API_VERSION is unset)",
+   "source": "https://raw.githubusercontent.com/nextcloud/all-in-one/main/php/src/Docker/DockerActionManager.php",
+   "source_title": "nextcloud/all-in-one php/src/Docker/DockerActionManager.php (main)",
+   "read": "2026-11-13",
+   "note": "Source line: `private const string API_VERSION = 'v1.44';`. Requests go to http://127.0.0.1/<apiVersion>/<url>, so the version is fixed in the path and not negotiated. An env var DOCKER_API_VERSION overrides it."
+  },
+  {
+   "product": "general",
+   "label": "AIO's own position on overriding the API version",
+   "value": "Override with --env DOCKER_API_VERSION=…; 'only the default api version (unset this variable) is supported'",
+   "source": "https://github.com/nextcloud/all-in-one/blob/main/readme.md",
+   "source_title": "all-in-one/readme.md at main · nextcloud/all-in-one",
+   "read": "2026-11-13",
+   "note": "FAQ section 'How to adjust the internally used docker api version?'. It also says: 'If you run an outdated or too new docker version, you might run into problems'."
+  },
+  {
+   "product": "Synology DS925+ / DS225+",
+   "label": "AIO's Synology DSM instructions",
+   "value": "Socket at /volume1/docker/docker.sock plus WATCHTOWER_DOCKER_SOCKET_PATH; 'you likely need to adjust the internally used api version'; Synology Docker GUI 'will not work', so run via SSH or a root Task Scheduler script",
+   "source": "https://github.com/nextcloud/all-in-one/blob/main/readme.md",
+   "source_title": "all-in-one/readme.md at main · nextcloud/all-in-one (section 'How to run AIO on Synology DSM')",
+   "read": "2026-11-13",
+   "note": "Read through the raw readme. This is the part the cited readme already gives a reader. The engine numbers below are what it leaves out."
+  },
+  {
+   "product": "Synology DS925+ / DS225+",
+   "label": "Container Manager versions (engine version is the package-name prefix)",
+   "value": "24.0.2-1707 (2026-11-05), 24.0.2-1706 (2026-08-04, requires DSM 7.4+), 24.0.2-1630 (2026-05-06), 24.0.2-1606 (2025-10-08, requires DSM 7.3+)",
+   "source": "https://www.synology.com/api/releaseNote/findChangeLog?identify=ContainerManager&lang=en-us",
+   "source_title": "Synology Release Notes for Container Manager (DSM 7 series)",
+   "read": "2026-11-13",
+   "note": "Synology's own release-notes feed. The release notes don't name the engine version in their text. Every build carries the 24.0.2 prefix, and Marius Hosting states 'Docker Engine version: 24.0.2' for Synology (next finding)."
+  },
+  {
+   "product": "general",
+   "label": "Highest Docker Engine API version by engine release",
+   "value": "Engine 24.0: max API 1.43; Engine 25.0: max 1.44; Engine 29.3–29.8: max 1.54–1.55, min 1.40",
+   "source": "https://docs.docker.com/reference/api/engine/",
+   "source_title": "Docker Docs: Engine API version matrix",
+   "read": "2026-11-13",
+   "note": "So Synology's Engine 24.0.2 can't serve the v1.44 requests AIO sends by default. Every engine from 25.0 up can."
+  },
+  {
+   "product": "Synology DS224+ (DSM 7.2, Container Manager 24.0.2-1606)",
+   "label": "Owner-reported AIO failure on DSM",
+   "value": "Mastercontainer: 'DOCKER_API_VERSION was found to be set to 1.43 … only v1.44 is officially supported'; AppAPI daemon 'docker_aio' not accessible, 300+ errors per minute",
+   "source": "https://github.com/nextcloud/all-in-one/issues/7365",
+   "source_title": "AppAPI connection failure on Synology DSM (Docker API 1.43 vs 1.44 requirement) · Issue #7365 · nextcloud/all-in-one",
+   "read": "2026-11-13",
+   "note": "Opened 2026-01-01, closed by maintainer szaimen 2026-01-05 with a pointer to the nextcloud/app_api repo, locked 2026-01-20. The reporter worked around it by unchecking 'Docker Socket Proxy' in AIO; that isn't an official fix. The DS224+ is a different model running the same Container Manager package as the DS925+ and DS225+."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DXP4800 Plus",
+   "label": "Docker Engine version in UGOS Pro",
+   "value": "29.6.2 (UGOS Pro 1.19.1.0126, up from 29.4.3)",
+   "source": "https://mariushosting.com/ugreen-nas-new-docker-engine-29-6-2/",
+   "source_title": "Marius Hosting: UGREEN NAS: New Docker Engine 29.6.2",
+   "read": "2026-11-13",
+   "note": "Named reviewer Marius Bogdan Lixandru; post updated 2026-09-27. Engine 29.6 supports API 1.40–1.55, so AIO's default v1.44 works with no override."
+  },
+  {
+   "product": "general (Synology, TerraMaster, UGREEN, Asustor, QNAP)",
+   "label": "Docker Engine shipped by each NAS maker",
+   "value": "Synology 24.0.2; TerraMaster 27.2.1; UGREEN 29.6.2; Asustor 29.6.2; QNAP 27.1.2",
+   "source": "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/",
+   "source_title": "Marius Hosting: Docker Engine: Synology, TerraMaster, UGREEN, ASUSTOR, QNAP",
+   "read": "2026-11-13",
+   "note": "Page updated 2026-10-12. Marius Hosting writes: 'Some Docker containers will simply not work with an outdated Docker Engine.' Docker's matrix puts Engine 27.x above API 1.44, so QNAP (TS-464 / TS-264) and TerraMaster run AIO's default too. That last point is my arithmetic from the matrix; Marius Hosting doesn't test AIO."
+  }
+ ],
+ "unsourced": [
+  "QNAP Container Station's bundled Docker Engine version from QNAP's own release notes. Search returned only tutorials and forum threads, so the 27.1.2 figure rests on Marius Hosting.",
+  "UGREEN's own changelog naming the Docker Engine version in UGOS Pro 1.20.0.0142 (Docker app 1.20.0.0074). Only Marius Hosting's posts name 29.4.3 and 29.6.2.",
+  "A statement from Synology or Nextcloud that DOCKER_API_VERSION=1.43 fully works on DSM. The AIO readme calls overrides unsupported, and Issue #7365 shows AppAPI still failing at 1.43.",
+  "A Synology-published statement of the Docker Engine version inside Container Manager. The release notes give only the 24.0.2-xxxx package names."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.9742067000000001
+ }
+}

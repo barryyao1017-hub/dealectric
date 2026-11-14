@@ -1,0 +1,96 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2's solar input takes only 8.2 A at 11–28 V but 14.5 A at 29–60 V. Anker's own 200 W panel in the kit outputs 48 V ⎓ 4.16 A, so it sits in the high-current band, while any panel whose operating voltage is 28 V or less is held to 8.2 A × Vmp. On this model, that limit can cancel out the cheaper-third-party-panel route.",
+ "standout": 2,
+ "standout_why": "I read the cited rivals and our own page. stormwatts.com (bundle math) gives only wattage caps (AC180 500 W, Explorer 1000 v2 400 W): no voltage bands, current limits or connectors. getwattlogic.com says inputs are 'MC4 or XT60' without saying which station uses which, and gives no voltage, current or watt limits. trek4tech.com (top uncited result) gives the C1000 Gen 2 '600W' and a general '11–60V' window but not the current split by voltage. Dealectric's current page pairs the AC180 with a $210 third-party 200 W panel without checking it against the AC180's 10 A cap. None of the pages gives a per-model current limit. I rate it 2 rather than 3 because I couldn't open a specific third-party panel's Vmp/Imp to put a sourced number on the loss.",
+ "decides": "For the Anker C1000 Gen 2, the kit already saves nothing ($1,199.99 vs $1,199.98 on our page), and buying separately with a low-voltage 200 W folding panel adds a power penalty. For example, a panel with Vmp 20 V is capped at 8.2 A × 20 V = 164 W on this station. Anker's 48 V PS200 avoids the cap. So for this model, buy Anker's matched panel (as a kit or separately) or a high-voltage third-party panel, not a cheap low-voltage one. For the AC180, the 10 A / 12–60 V Voc limits mean a third-party panel needs Imp of 10 A or less to deliver its full rating. Our page's $659 AC180 + third-party-panel pairing should be checked against that before we recommend it. A related price fix for angle A: BLUETTI's AC180 + 200W Solar variant was $769 today, not $729, and the AC180 showed as in stock.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 30 V2",
+  "ALLPOWERS P1800",
+  "Anker SOLIX C1000 Gen 2",
+  "DJI Power 1000"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar (MPPT) input window and current limit by voltage band",
+   "value": "11–28 V ⎓ 8.2 A; 29–60 V ⎓ 14.5 A; 600 W max, 60 V max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "Quoted from the spec text: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)' and '600W, 60V Max'. The power ceiling below 29 V is 8.2 A × Vmp: at most 8.2 × 28 = 229.6 W at the top of the band, and 164 W for a panel with Vmp 20 V (an example only, not a specific product)."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Non-AC input port named on maker page",
+   "value": "XT60i input port",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "The port diagram lists an 'XT60i Input Port'. The page doesn't explicitly call it the solar input. The 200 W kit lists a '200W Bifacial Solar Panel' x1. Listed box contents for the station: AC charging cable and the safety/warranty card. No price was shown on the page today."
+  },
+  {
+   "product": "Anker SOLIX PS200 Bifacial (kit panel)",
+   "label": "Panel output and included cables",
+   "value": "200 W; PV output 48 V ⎓ 4.16 A; ships with 2× 2.5 m solar charging cables + 1× 0.5 m XT-60i solar charging cable",
+   "source": "https://www.ankersolix.com/products/ps200-bifacial-portable-solar-panel",
+   "source_title": "Anker SOLIX PS200 Bifacial Portable Solar Panel",
+   "read": "2026-11-14",
+   "note": "At 48 V the panel sits in the C1000 Gen 2's 29–60 V band, where the cap is 14.5 A, so its 4.16 A isn't limited. 48 × 4.16 = 199.7 W. The page doesn't say whether 48 V/4.16 A is Vmp/Imp."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits",
+   "value": "500 W max; Voc 12–60 V DC; 10 A max; AC (1,440 W) + solar charging at the same time",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-14",
+   "note": "The page also gives a 2.8–3.3 h full solar charge. It doesn't name the solar connector, only a 'Solar Charging Cable' accessory. Any panel with Imp above 10 A is clipped to 10 A × Vmp."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W (panel in the Elite 200 V2 + 200W kit)",
+   "label": "Connector and maker compatibility statement",
+   "value": "MC4 connectors; 'Compatible With Most Solar Generators with MC4 Connectors'; $399 (2× $798)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-14",
+   "note": "Read from BLUETTI's US Shopify store with storecheck.py. The Elite 200 V2 + 200W kit URL is /products/elite-200-v2-sp200l at $1,199, which names SP200L as that kit's panel. The AC180 + 200W variant doesn't name its panel."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Today's US store prices (affects angle A row)",
+   "value": "AC180 $499; AC180 + 200W Solar $769 (compare-at $899); SP200L 200 W $399; AC180 + 2×200W $1,232; AC180 in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Read from Shopify variant data with storecheck.py. $499 + $399 = $898 for the parts, so the kit saves $129 (14%), not $169 at $729 as our page says. The station showed available: true, which contradicts our 'AC180 back late Nov'. The AC180 + 2×200W variant ($1,232) costs more than the parts ($499 + $798 = $1,297 → saves $65)."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "DC input ports DJI lists",
+   "value": "SDC and SDC Lite, 32–58.4 V DC; 60 A (SDC) / 8 A (SDC Lite); no solar-specific input or MPPT listed",
+   "source": "https://www.dji.com/power-1000/specs",
+   "source_title": "DJI Power 1000 Specs",
+   "read": "2026-11-14",
+   "note": "The spec page doesn't mention solar or panel compatibility. The only DC inputs it lists start at 32 V, so a panel can't be assumed to plug in directly. Combined with the kit panel not being sold alone, a separately bought third-party panel isn't a documented option for this model."
+  }
+ ],
+ "unsourced": [
+  "BougeRV 200 W portable panel (the ~$210 panel behind our $659 AC180 pairing) Vmp/Imp/Voc and price: bougerv.com and ca.bougerv.com returned HTTP 429 on four tries (WebFetch and storecheck); I only had a search snippet, so I didn't use it to put a number on the 10 A clipping on the AC180",
+  "BLUETTI SP200L Voc/Isc/Vmp/Imp, needed to confirm the SP200L fits under the AC180's 10 A and whether 2× in series stays under 60 V: the product page returned 429, and the store data has only the MC4/compatibility line",
+  "AC180 solar input connector type (DC7909 vs XT60): the AC180 page names only a 'Solar Charging Cable'; storecheck results mention DC7909 only for battery-expansion cables, not solar",
+  "Anker PS200 Voc, needed to state the maker's series exclusion for two panels on a 60 V input: Anker's US page gives only 48 V ⎓ 4.16 A; Voc appeared only in third-party datasheet snippets",
+  "BLUETTI Elite 30 V2 and Elite 200 V2 solar input windows: bluettipower.com/pages/elite-30-v2 returned 404, and I ran out of budget before finding the right spec page or the manual",
+  "ALLPOWERS P1800 solar input window and SP037 400 W panel Voc/Imp: not reached within the ~25-call budget",
+  "Whether DJI Power 1000 needs a separate solar adapter/MPPT accessory: store.dji.com redirected to a login page, and the specs page lists no solar input",
+  "Anker C1000 Gen 2 station and kit prices today: the page showed 'no prices' and storecheck returned 404 for the URL"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9615511
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that the BLUETTI AC180's ECO mode can switch off its 12 V car port when the load stays at 5–10 W for 1–4 hours, and switch off its AC outlets at 15–30 W. Those ranges cover an AirSense 11 with the humidifier off, which is the setup ChatGPT and our page both use for the 7–9 night estimate.",
+ "standout": 2,
+ "standout_why": "I compared against willitrunpower.com/best-power-station-for/cpap (cited), amphourly.com (rank 4) and juicebench.com (rank 8). I could not load our own dealectric page here, so I did not check its body text. The cited Reddit thread and preparedstates.com were also not read. Willitrunpower covers part of it: it gives Jackery 1000 v2's Energy Saving Mode (on by default, outputs off after 12 h at 25 W AC or less), EcoFlow's 'set AC timeout to never', 7 W for the CPAP with the humidifier off, and 15 W of AC180 inverter draw. It gives no ECO thresholds for the AC180, which is ChatGPT's pick, and nothing about a DC-side cutoff. Amphourly and juicebench both say they have no idle draw, eco mode or auto-off figures. None of the three puts the low-load cutoff next to the CPAP's humidifier-off draw.",
+ "decides": "This keeps the AC180 as the pick, but adds a condition. ChatGPT's 7–9 nights assume the AC180 runs the CPAP all night through the 12 V port with the humidifier off. Willitrunpower puts that draw at about 7 W, inside the AC180's DC ECO range of 5–10 W. If ECO is on with a 10 W threshold, the port can switch off 1–4 hours into the night. Using AC instead doesn't avoid this, because the AC ECO range is 15–30 W. So the page should tell AC180 buyers to turn ECO off in Setting mode, or set it to 5 W, and test a full night at home. The table footnote should list each station's low-load cutoff next to its capacity. Also, the ResMed converter draws up to 10 A at 12 V, which is exactly the AC180's 12 V/10 A port rating. That leaves no headroom if the humidifier and heated tube run on DC.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 100 V2",
+  "Jackery Explorer 1000 v2",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode low-load auto-off range, DC output",
+   "value": "5 W to 10 W threshold, after 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of BLUETTI user manual)",
+   "read": "2026-11-13",
+   "note": "This is ManualsLib's copy of the BLUETTI manual (Settings table and FAQ Q4). BLUETTI's own PDF at cdn.shopify.com/.../AC180_User_Manual.pdf downloaded, but I couldn't extract its text here. Manual wording: 'the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while.'"
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode low-load auto-off range, AC output",
+   "value": "15 W to 30 W threshold, after 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of BLUETTI user manual)",
+   "read": "2026-11-13",
+   "note": "This manual version reads 15–30 W. A search summary of another AC180 manual version (Lowe's/device.report copies) said 10–30 W, but I could not open those. The manual says Power Lifting and Grid Enhancement default to off. It gives no default for ECO."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car outlet rating and capacity",
+   "value": "12 V DC / 10 A; 1,152 Wh LiFePO4",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib copy of BLUETTI user manual)",
+   "read": "2026-11-13",
+   "note": "Spec table, DC Output, Cigarette Lighter Port. The manual does not say whether the port is regulated. Willitrunpower's table calls it 'regulated', which the maker's text does not back up."
+  },
+  {
+   "product": "ResMed Air11 DC/DC Converter (39231)",
+   "label": "Input draw and output",
+   "value": "Input 12 V at 10 A or 24 V at 5 A; output 24 V at 3.75 A (90 W)",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense 11 DC/DC Converter | ResMed shop",
+   "read": "2026-11-13",
+   "note": "ResMed says it 'can be used to power an AirSense 11 device equipped with a HumidAir humidifier and ClimateLineAir heated tube.' Arithmetic: 12 V × 10 A = 120 W in, for 90 W out, so it is at least 75% efficient at full load. A full 10 A draw equals the AC180's 12 V/10 A port rating exactly. This listing gives a 12-month warranty and a 3 m cable. The page did not show its country; it may be ResMed's UK shop."
+  },
+  {
+   "product": "general",
+   "label": "AirSense 11 typical and peak draw (maker figure, whole system)",
+   "value": "56.1 W typical, 73.2 W peak; 24 V power supply",
+   "source": "https://amphourly.com/learn/how-long-will-a-power-station-run-a-cpap/",
+   "source_title": "How Long Will a Power Station Run a CPAP? | Amphourly",
+   "read": "2026-11-13",
+   "note": "Amphourly quotes these from the ResMed user guide and says ResMed publishes no humidifier-off figure. This is the full system with heating on. Rival pages that divide capacity by 56.1 W assume heating is on every night."
+  },
+  {
+   "product": "general",
+   "label": "AirSense 11 draw by setting (rival's figures)",
+   "value": "Willitrunpower: 7 W average humidifier off (56 Wh per 8-h night); 19 W with HumidAir; 55 W with HumidAir plus ClimateLineAir",
+   "source": "https://willitrunpower.com/best-power-station-for/cpap/",
+   "source_title": "Best power station for a CPAP: picks by humidifier, DC vs AC | Willrun",
+   "read": "2026-11-13",
+   "note": "These are Willitrunpower's numbers, not ResMed's. I could not find a ResMed source for 7 W. Comparison: 7 W falls inside the AC180's DC ECO range of 5–10 W. Through AC, the CPAP load plus its power-brick losses is below the AC ECO range of 15–30 W unless the humidifier is on."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Default low-load auto-off (rival-reported)",
+   "value": "Energy Saving Mode on by default; all outputs off after 12 h when AC load is 25 W or less",
+   "source": "https://willitrunpower.com/best-power-station-for/cpap/",
+   "source_title": "Best power station for a CPAP: picks by humidifier, DC vs AC | Willrun",
+   "read": "2026-11-13",
+   "note": "This is how Willitrunpower reports Jackery's setting. I did not open Jackery's own page. It is the only low-load cutoff any rival page gives."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC inverter self-consumption (rival-reported)",
+   "value": "about 15 W, per BLUETTI's runtime formula as quoted by Willitrunpower",
+   "source": "https://willitrunpower.com/best-power-station-for/cpap/",
+   "source_title": "Best power station for a CPAP: picks by humidifier, DC vs AC | Willrun",
+   "read": "2026-11-13",
+   "note": "Willitrunpower's AC humidifier-off nights use the formula Wh × 0.85 ÷ ((CPAP W + 15) × 8). For a 1,024 Wh station that is 4.9 nights on AC against 15.5 on DC. So the DC route, which the AC180's DC ECO can cut, is where most of the runtime comes from."
+  }
+ ],
+ "unsourced": [
+  "Whether the AC180 ships with ECO on, and its default threshold and time. The ManualsLib copy of the manual gives defaults for Power Lifting and Grid Enhancement but not for ECO. Search summaries pointed to BLUETTI community posts saying ECO is on by default, but the forum would not load (community.bluettipower.com redirects to forum.bluettipower.com, which showed a network error), so I have not verified this.",
+  "Elite 200 V2 ECO and sleep-mode thresholds and defaults. BLUETTI's own manual PDF on s4.bluettipower.com downloaded, but I couldn't extract its text here. Copies on manuals.plus and device.report returned 403. A search summary pointed to a review saying ECO is on by default, without a timeout, and a community thread about a one-minute no-output auto-off that later firmware changed. I could not open either.",
+  "Elite 100 V2, Anker SOLIX C1000 Gen 2, EcoFlow DELTA 3 Plus and ALLPOWERS P1800/S2000 Pro low-load auto-off thresholds. Not researched within the tool budget.",
+  "A ResMed-published AirSense 11 draw with the humidifier off. The cpap.com battery guide (David Repasky, updated 2025-03-21) gives none. ResMed's AP knowledge-base page on turning humidification off was found by search but not opened.",
+  "The nikktech AC180 review for ECO default and measured idle draw returned 403. The Reddit Anker C300 AirSense 11 thread, which ChatGPT cited, could not be fetched.",
+  "Prices. I did not check any today, because this angle covers specs."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0798416
+ }
+}

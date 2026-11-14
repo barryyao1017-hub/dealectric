@@ -1,0 +1,150 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that UGREEN's own store sells two models under the DXP2800 name: the Intel N100 DXP2800 at $389.99 and the AMD Ryzen Embedded R2514 DXP2800 GT at $429.99. UGREEN's Jellyfin guide says the GT models 'use AMD processors and therefore have no Intel Quick Sync path' and need VA-API, so the 'select Intel QSV' setup ChatGPT gave does not work on the GT.",
+ "standout": 2,
+ "standout_why": "Pages compared: Starry Hope best-2-bay (cited in two chats), ComputingForGeeks QuickSync picks, Jellyfin's Intel hardware-acceleration doc and its GitHub copy (cited), and UGREEN's own Jellyfin install blog (in results but not cited). Starry Hope lists the DXP2800 GT with 'Yes, H.264 and H.265' transcoding but never says it has no Quick Sync or needs VA-API. ComputingForGeeks does not mention the GT at all. Every ChatGPT answer tells the shopper to pick Intel QSV and never warns about the GT. Starry Hope already states the DH2300 has no official Docker support and that DS225+ hardware transcoding fails on stock DSM, so those findings are not new.",
+ "decides": "It confirms the DXP2800 pick and tightens it. Buy the plain N100 DXP2800 ($389.99 at UGREEN on 2026-11-13), not the GT. The GT is over the $400 budget and needs VA-API, not QSV. Separately, our page's DH2300 row ('Manual Docker only; direct play') contradicts UGREEN, which says the DH2300 'cannot host Jellyfin because it lacks Docker support'; that row should say it cannot run Jellyfin. The F2-425 Plus is $469.99 at TerraMaster's store today, so it falls outside this question's budget unless a retailer has it lower.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP2800 GT",
+  "TerraMaster F2-425",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-424",
+  "Synology DS225+",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Jellyfin acceleration path",
+   "value": "No Intel Quick Sync. Use VA-API with /dev/dri/renderD128 (Playback > Transcoding > Video Acceleration API)",
+   "source": "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step",
+   "source_title": "How to Install Jellyfin on UGREEN NAS: App Center or Docker",
+   "read": "2026-11-13",
+   "note": "UGREEN blog dated 2025-12-11, quoted: DXP2800 GT and DXP4800 GT 'use AMD processors and therefore have no Intel Quick Sync path'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "UGREEN US store price",
+   "value": "$429.99 (compare-at $634.98), in stock",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-gt-2-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 GT",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of ai.ugreen.com for 'DXP2800'. Over the $400 budget."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "UGREEN US store price",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search on the same day. The same search returned the DXP2800 + Docking Station bundle at $424.99 and the refurbished DXP2800 at $269.99, which is unavailable."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Jellyfin on Intel DXP models",
+   "value": "App Center package or Docker. Hardware Acceleration set to Intel QuickSync (QSV), device /dev/dri/renderD128. Docker also needs group_add with the NAS's render/video group IDs",
+   "source": "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step",
+   "source_title": "How to Install Jellyfin on UGREEN NAS: App Center or Docker",
+   "read": "2026-11-13",
+   "note": "UGREEN's support table covers 'Intel DXP models' but does not name each model. The page's own Compose example maps /dev/dri:/dev/dri, while its Intel section maps /dev/dri/renderD128. To check it works, the FFmpeg log should show 'qsv'."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Jellyfin support (maker-stated exclusion)",
+   "value": "Cannot host Jellyfin; no Docker support",
+   "source": "https://ai.ugreen.com/blogs/how-to/install-jellyfin-setup-step-by-step",
+   "source_title": "How to Install Jellyfin on UGREEN NAS: App Center or Docker",
+   "read": "2026-11-13",
+   "note": "UGREEN quote: the DH2300 'cannot host Jellyfin because it lacks Docker support'. This contradicts our current row ('Manual Docker only; direct play'). The DH4300 Plus (also ARM) is supported through the App Center with Rockchip MPP (RKMPP)."
+  },
+  {
+   "product": "general (Intel Jasper Lake: Celeron N5095/N4505)",
+   "label": "Jellyfin Intel encoder limits",
+   "value": "Gen 11 JSL/EHL graphics only support LP (low-power) encoding mode. ICL/JSL/EHL and older are 'losing support for QSV on Linux'. No AV1 decode on Jasper Lake; AV1 decode needs Gen 12 (Tiger Lake) or newer",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel",
+   "source_title": "Intel GPU | Jellyfin",
+   "read": "2026-11-13",
+   "note": "Applies to N5095 models such as the TerraMaster F2-425/F2-423/F4-423 and the N4505 QNAP TS-262. LP encoding relies on HuC firmware on the host. The doc also says the official Docker image ships the Intel media drivers and OpenCL runtime."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "Maker spec",
+   "value": "Intel N95. 8 GB DDR5 non-ECC SO-DIMM in 1 slot, max 32 GB. 2× M.2 2280 NVMe (PCIe 3.0 x1). 2× 2.5GbE. Hardware transcoding H.264, H.265, MPEG-4, VC-1 up to 4K (4096×2160) at 60 fps. 2-year warranty",
+   "source": "https://www.terra-master.com/pages/f2-424-specification",
+   "source_title": "F2-424 Specification – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "TerraMaster's transcoding list does not name AV1. Memory note: 'TerraMaster reserves the right to replace memory modules with the same or higher frequency'."
+  },
+  {
+   "product": "TerraMaster F2-424",
+   "label": "TerraMaster store price",
+   "value": "$379.99, unavailable (sold out)",
+   "source": "https://www.terra-master.com/products/f2-424",
+   "source_title": "F2-424 – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search. The listing text says 'Intel N95 quad-core ... 8GB DDR5 memory (upgradable to 32GB), dual 2.5GbE ports, and dual M.2 NVMe slots'."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "TerraMaster store price",
+   "value": "$469.99 (compare-at $499.99), in stock",
+   "source": "https://www.terra-master.com/products/f2-425-plus",
+   "source_title": "F2-425 Plus – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search. Above the $400 budget at the maker store; ChatGPT's $375.99 Newegg and $399.49 figures were not checked."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "TerraMaster store price and media claim",
+   "value": "$269.99 (compare-at $299.99). Maker says 'hardware-level 4K H.265 decoding, compatible with Plex, Emby, and Jellyfin'",
+   "source": "https://www.terra-master.com/products/f2-425",
+   "source_title": "F2-425 – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search. The listing text names only an 'Intel x86 quad-core processor and 4GB RAM'."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "Maker RAM module compatibility",
+   "value": "TerraMaster's 32 GB DDR5-4800 stick (A-SRAMD5-32G) lists the F2-425 Plus and F2-424 as compatible, at $699.99, out of stock. The 16 GB stick (A-SRAMD5-16G, $469.99) lists the F2-424 but not the F2-425 Plus",
+   "source": "https://www.terra-master.com/products/a-sramd5-32g",
+   "source_title": "A-SRAMD5-32G – TerraMaster Official Store",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search; 16 GB stick URL is https://www.terra-master.com/products/a-sramd5-16g."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Hardware transcoding on stock DSM",
+   "value": "Starry Hope: 'hardware transcoding does not work on stock DSM'; works only with a community script. It quotes a Plex engineer who 'removed all X25+ products from Hardware Transcoding Support'. Third-party SATA drives allowed from DSM 7.3",
+   "source": "https://www.starryhope.com/nas/best-2-bay-nas/",
+   "source_title": "Best 2-Bay NAS for Home Use in 2026 | Starry Hope",
+   "read": "2026-11-13",
+   "note": "This comes from a reviewer page, not Synology. The rival page already has it, so it is not a gap."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM limit",
+   "value": "8 GB DDR5 in a single SO-DIMM slot, max 16 GB (Starry Hope). ComputingForGeeks also says '8GB of DDR5 (expandable to 16GB)'",
+   "source": "https://www.starryhope.com/nas/best-2-bay-nas/",
+   "source_title": "Best 2-Bay NAS for Home Use in 2026 | Starry Hope",
+   "read": "2026-11-13",
+   "note": "UGREEN's product page returned HTTP 429, so this comes from reviewers."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own maximum RAM figure for the DXP2800: the ai.ugreen.com product page returned HTTP 429 twice. The user manual PDF in the results was not opened.",
+  "The CPU of the TerraMaster F2-425 (N5095) from a page I opened: terra-master.com/pages/f2-425-specification returned 404 and the product listing says only 'Intel x86 quad-core'.",
+  "The CPU of the F2-425 Plus (N150 vs the N95 shown on Newegg): the TerraMaster spec page returned 404, the product page returned 429, and the nashq.com PDF is image-only.",
+  "Whether TerraMaster TOS 6 exposes /dev/dri and loads HuC firmware, which the N5095's LP encoding needs: I found no TerraMaster help doc. The TerraMaster forum thread on TOS 6 Jellyfin decoding returned 403.",
+  "The F2-425 Pro variant (CPU, price, Jellyfin behavior): the Neowin review returned 403 on both the normal and AMP URLs.",
+  "Which UGREEN NAS UPS (US2000 or US3000) is compatible with the DXP2800 according to UGREEN: not checked within the tool budget.",
+  "Synology's own statement on DS225+ graphics driver and transcoding support: no Synology document was opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.3086290999999999
+ }
+}

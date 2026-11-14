@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the torque that device makers specify for their own screws. Apple's iPhone repair tools are fixed drivers from 0.35 to 0.85 kgf·cm (0.034–0.083 N·m), so every listed driver's 0.05 N·m floor is about 46% over Apple's lightest screw spec. Lenovo's ThinkPad service manuals torque M2 screws to 0.181 N·m and M2.5 screws to 0.392 N·m. The second value is roughly twice the E1 Max's 0.2 N·m powered cap, but the E2 Ultra's 0.4 N·m step reaches it.",
+ "standout": 3,
+ "standout_why": "I compared five pages. Fanttik's 'HOTO vs Fanttik' guide (cited every time) and toolengineers.com (ranked #1, uncited) both list driver torque steps with no device-side spec. toolengineers says outright to treat numbered modes as relative. Fanttik's E1 vs E2 guide gives only per-model labels ('Camera / watch' and 'PC / laptop'). Fanttik's E1 MAX troubleshooting guide says the 0.05 N·m setting is 'intentionally undersized' but never quotes a screw spec. Our own current page has 'M.2 standoffs about 0.35 N·m' and 'plastic chassis up to 0.6 N·m' without a source and without Apple's or Lenovo's numbers. None of these pages pairs a maker's published screw torque with a driver's powered limit.",
+ "decides": "For phones, no driver's lowest powered setting goes below Apple's 0.35 and 0.45 kgf·cm screw specs, so 'lowest torque' doesn't rank these drivers. The advice should be to run the screw down on low power and seat it by hand, which Fanttik's own guide also says. For laptops, the E1 Max's 0.2 N·m cap covers Lenovo's 0.181 N·m M2 spec but can't seat 0.392 N·m M2.5 screws without switching to manual mode. The E2 Ultra (and E2 MAX) have a 0.4 N·m step that matches that spec. The iFixit driver's 0.15 N·m falls short even of the M2 spec. So the pick is the E1 Max for phones, watches and cameras, and the E2 Ultra for anyone who also works on laptops or PCs.",
+ "candidates": [
+  "Fanttik E1 Max",
+  "Fanttik E2 Ultra",
+  "Fanttik E2 Max",
+  "HOTO Electric Precision Screwdriver ADV",
+  "iFixit Precision Electric Screwdriver"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Apple iPhone screw torque drivers (fixed)",
+   "value": "0.35 / 0.45 / 0.55 / 0.65 / 0.75 / 0.85 kgf·cm (= 0.034 / 0.044 / 0.054 / 0.064 / 0.074 / 0.083 N·m)",
+   "source": "https://support.apple.com/en-gb/127678",
+   "source_title": "iPhone Duo Screws – Apple Support (UK)",
+   "read": "2026-11-14",
+   "note": "Each screw outline colour maps to one driver: black 0.35 through orange 0.85 kgf·cm. Converted at 1 kgf·cm = 0.0980665 N·m. Apple: 'Use only the torque driver indicated to install new screws during reassembly' and 'Both overtightened screws and loose screws can damage parts.' 'You can use any torque driver to remove screws.' The page also lists an 'Adjustable 10–34 Ncm' driver for black or green screws. 10 Ncm is about 3× the 0.35 kgf·cm black spec, so that line contradicts the fixed-driver values and I left it out."
+  },
+  {
+   "product": "general",
+   "label": "Apple iPhone Air torque driver list",
+   "value": "Black 0.35, green 0.45, gray 0.55, blue 0.65, teal 0.75, orange 0.85 kgf·cm",
+   "source": "https://support.apple.com/en-ca/123056",
+   "source_title": "iPhone Air Tools - Apple Support (CA)",
+   "read": "2026-11-14",
+   "note": "This confirms the same driver set on a current production model (page dated 2026-07-06), with part numbers such as 923-0248 for the black 0.35 kgf·cm driver."
+  },
+  {
+   "product": "general",
+   "label": "Driver floor vs Apple's lightest screw spec",
+   "value": "0.05 N·m = 0.51 kgf·cm, about 1.46× Apple's 0.35 kgf·cm (0.0343 N·m) black spec",
+   "source": "https://support.apple.com/en-gb/127678",
+   "source_title": "iPhone Duo Screws – Apple Support (UK)",
+   "read": "2026-11-14",
+   "note": "My arithmetic: 0.05 / 0.0343 = 1.46. 0.05 N·m is the lowest powered step on the E1 Max, E2 Max, E2 Ultra and HOTO ADV (as given on our current page). It sits just under Apple's gray 0.55 kgf·cm spec."
+  },
+  {
+   "product": "general",
+   "label": "ThinkPad M2 screw torque (Lenovo HMM)",
+   "value": "0.181 N·m (1.85 kgf-cm), M2 × 3 mm wafer-head nylon-coated",
+   "source": "https://www.manualslib.com/manual/1242489/Thinkpad-T420.html?page=96",
+   "source_title": "ThinkPad T420 and T420i Hardware Maintenance Manual, p. 96 (ManualsLib mirror)",
+   "read": "2026-11-14",
+   "note": "From Lenovo's 'Color Torque' table, read on a third-party mirror because the official Lenovo PDF was over the 10 MB fetch limit. The search also turned up the same 0.181 N·m for M2 screws in the L430, T430s, X220i and T410 HMMs, but I opened only the T420 page. This model is from about 2011."
+  },
+  {
+   "product": "general",
+   "label": "ThinkPad M2.5 / M2 screw torque (Lenovo/IBM HMM)",
+   "value": "M2.5: 0.392 N·m (4 kgfcm). M2 × 16 mm: 0.245 N·m (2.5 kgfcm)",
+   "source": "https://www.manualslib.com/manual/743202/Ibm-Mt-2366.html?page=93",
+   "source_title": "IBM MT 2366 Hardware Maintenance Manual (ThinkPad T30), p. 93 (ManualsLib mirror)",
+   "read": "2026-11-14",
+   "note": "This is an old model (T30, about 2002). The search also listed 0.392 N·m for M2.5 screws in the X121e, W541 and Edge 14/15 HMMs, but I did not open those pages. 0.392 N·m is 1.96× the E1 Max's 0.2 N·m powered cap and 0.98× the E2 Ultra's 0.4 N·m step."
+  },
+  {
+   "product": "Fanttik E1 Max",
+   "label": "How the powered torque limit works, and the maker's advice",
+   "value": "Auto mode cuts torque at the set resistance. Low 0.05 N·m, high 0.2 N·m, manual up to 3 N·m",
+   "source": "https://fanttik.com/blogs/support/fanttik-e1-max-troubleshooting-guide",
+   "source_title": "Fanttik E1 MAX Troubleshooting Guide",
+   "read": "2026-11-14",
+   "note": "Fanttik's words: 'Auto mode cuts torque when it senses resistance equal to its setting.' 'The 0.05 N·m low setting is intentionally undersized so it will not strip a fragile screw on the first try.' For iPhone P2 pentalobe: 'Use the low torque setting and finish the last quarter-turn by hand.' For tight screws: 'switch to manual mode (up to 3 N·m) and finish by feel.' Page dated 2026-05-16."
+  },
+  {
+   "product": "Fanttik E2 Ultra",
+   "label": "Powered torque steps",
+   "value": "0.05 / 0.1 / 0.2 / 0.4 / 0.6 N·m, 270 RPM (E2 MAX: 0.05 / 0.2 / 0.4 N·m, 220 RPM; E1 MAX: 0.05 / 0.2 N·m, 200 RPM)",
+   "source": "https://fanttik.com/blogs/products-guides/fanttik-e1-vs-e2-precision-screwdriver",
+   "source_title": "Fanttik E1 vs E2: Which Precision Screwdriver to Buy",
+   "read": "2026-11-14",
+   "note": "Fanttik labels the E1 MAX 'Camera / watch / precision repair' and the E2 MAX 'PC / laptop / precision repair'. Page dated 2026-08-15."
+  },
+  {
+   "product": "iFixit Precision Electric Screwdriver",
+   "label": "Torque and maker advice",
+   "value": "0.15 N·m electric, 1.0 N·m manual, 4 mm bits, 2× AAA, $22.95",
+   "source": "https://www.ifixit.com/products/precision-electric-screwdriver",
+   "source_title": "Precision Electric Screwdriver – iFixit",
+   "read": "2026-11-14",
+   "note": "0.15 N·m is below Lenovo's 0.181 N·m M2 spec. iFixit: 'For extra tight screws, start unscrewing manually before activating the power.' The page doesn't say how the torque limit works."
+  }
+ ],
+ "unsourced": [
+  "Today's Fanttik US store prices and spec pages for the E1 Max and E2 Ultra. fanttik.com product pages and storecheck.py both returned HTTP 429, so I could not re-check $59.97 and $79.99.",
+  "HOTO Electric Precision Screwdriver ADV torque and price on hototools.com (HTTP 429).",
+  "A current (2020 or later) official Lenovo HMM torque table. download.lenovo.com PDFs were over 10 MB for WebFetch, and downloading them needed approval. The 0.181 and 0.392 N·m values come from ManualsLib mirrors of older manuals (T420, T30).",
+  "Measured torque accuracy of any of these drivers (how close real stall torque is to the nominal 0.05 N·m). I found no maker tolerance and no named reviewer measurement.",
+  "How the HOTO, E2 Ultra and iFixit drivers limit torque (current sensing vs clutch). Only Fanttik's E1 MAX guide describes it, and only as 'cuts torque when it senses resistance'.",
+  "The meaning of Apple's 'Adjustable 10–34 Ncm' driver line, which conflicts with the 0.35 kgf·cm black spec on the same page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1749931000000002
+ }
+}

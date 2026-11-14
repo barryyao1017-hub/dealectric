@@ -1,0 +1,150 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the '130W' on the UGREEN Nexode 20,000 mAh 130W, ChatGPT's 'pick for most people', is 100 W from USB-C1 plus at most 30 W from USB-C2. The Anker Prime 26K's '300W' is 140 W from each USB-C port. So the UGREEN cannot charge a laptop and a 45 W phone at full speed together. UGREEN also rates a 20,000 mAh sister model at only 11,300 mAh at 5 V, and Anker says the 26,250 mAh Prime delivers about 15,200 mAh.",
+ "standout": 2,
+ "standout_why": "I compared against three cited pages. Popular Science (cited in 6 of 7 chats, updated 2026-10-26) gives the UGREEN Nexode 20K only as '130W total output, per UGREEN' and says 'No per-port breakdown is listed'. It explains mAh vs Wh in general but gives no usable or rated capacity for any pick. Wirecutter (via the proxy URL, cited) gives the Prime as '140 W apiece' and '300 W total' but has no usable-capacity figure and does not cover the UGREEN 130W. Expert Reviews (cited, updated 2026-11-11) confirms the Prime's two USB-C ports give 140 W at once. Its only 20K UGREEN is the PB771, which has a 45 W second port and is not the 130W model. None of them gives the 100 W + 30 W split of the 130W model or any maker's rated capacity at 5 V. I could not open TechRadar, Wired, Android Central (truncated) or thisUSB (certificate error), so I could not compare against those pages.",
+ "decides": "This confirms the Anker Prime 26K as the only candidate that really charges two laptops, since its 300 W is 140 W + 140 W. It weakens ChatGPT's 'best value' pick for anyone charging a laptop plus a fast phone or tablet. The UGREEN 130W's second USB-C stops at 30 W, so the '130W' only adds up with a 100 W laptop on C1 and a phone that is happy at 30 W on C2. For a laptop plus a 45 W Galaxy, the UGREEN 145W 25K fits better: its second USB-C gives 65 W and its first gives 140 W. The page's footnote should say that the wattage in the name is a sum of port limits, not a speed, and that usable output is about 58–78% of the mAh on the box, by the makers' own figures.",
+ "candidates": [
+  "Anker Prime Power Bank 26K 300W (A110A)",
+  "UGREEN Nexode Power Bank 20000mAh 130W (Smart Digital Display)",
+  "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable",
+  "UGREEN 145W 25000mAh 3-Port Power Bank",
+  "UGREEN Nexode Power Bank 25000mAh 200W",
+  "Anker 737 Power Bank (PowerCore 24K)",
+  "INIU Cougar 20000mAh 65W"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W (Smart Digital Display)",
+   "label": "Per-port output limits behind the '130W' total",
+   "value": "USB-C1 100 W max; USB-C2 30 W max (5V/3A, 9V/3A, 12V/2.5A, 10V/2.25A); USB-A 22.5 W",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "Taken from the Technical Specifications block on the maker's US store page, read with storecheck.py. 100 + 30 = 130 W. The 22.5 W USB-A port shares the total. The highest USB-C2 profile is 12 V/2.5 A = 30 W, so the second port has no 15 V or 20 V profile for a laptop."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W (Smart Digital Display)",
+   "label": "Battery capacity and recharge input",
+   "value": "20,000 mAh / 72 Wh (14.4 V × 5,000 mAh); USB-C1 input 65 W max",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "Maker's spec block. UGREEN gives the Wh at the 14.4 V pack voltage, which works out to the same 72 Wh as 20,000 mAh × 3.6 V."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W (Smart Digital Display)",
+   "label": "Price, UGREEN US store",
+   "value": "$89.99",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "storecheck.py search; compare_at also $89.99; in stock."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable",
+   "label": "Price and recharge claim (a different product under the same '130W' name)",
+   "value": "$67.99 (compare-at $79.99); store lists '100W Charge', '80W Recharge'",
+   "source": "https://us.ugreen.com/products/ugreen-130w-power-bank-20000mah",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Built-in USB-C Cable (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "storecheck.py search; page text gives the feature headings '100W Charge 80W Recharge'. ChatGPT showed both 130W versions as if they were one product. This version is listed at 80 W recharge, against 65 W for the display version. I could not get its full port table because UGREEN returned HTTP 429."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 100W",
+   "label": "Maker-stated rated capacity at 5 V (how UGREEN normalises mAh)",
+   "value": "20,000 mAh 3.6 V (72 Wh); rated capacity 11,300 mAh (TYP 5V 6A)",
+   "source": "https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 100W (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "This is a sister model, not one of ChatGPT's picks. I include it because it is the only UGREEN listing I could read that gives a rated capacity. 11,300 mAh × 5 V = 56.5 Wh, which is 78% of 72 Wh. In mAh terms the box number shrinks to 56.5% (11,300 / 20,000). $79.99 on the store."
+  },
+  {
+   "product": "Anker Prime Power Bank 26K 300W (A110A)",
+   "label": "Maker-stated energy delivered to devices",
+   "value": "about 15,200 mAh delivered from 26,250 mAh (99.75 Wh); Anker states 30–45% conversion loss is typical",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) – anker.com",
+   "read": "2026-11-14",
+   "note": "From the FAQ answer to 'Why does the power bank charge fewer times than expected?': 'After conversion, a fully charged 26,250 mAh power bank provides about 15,200 mAh to your devices.' Anker gives no voltage for the 15,200 figure. 15,200 / 26,250 = 58%. If it is at 5 V, that is 76 Wh, or 76% of 99.75 Wh."
+  },
+  {
+   "product": "Anker Prime Power Bank 26K 300W (A110A)",
+   "label": "Per-port vs total output, and recharge conditions",
+   "value": "140 W max from each USB-C (5–28 V, 5 A); USB-A 22.5 W; 300 W total. Recharge: 140 W from one port, 250 W with both USB-C ports, 150 W on the Prime Charging Base. Claims 50% in 13 min and 80% in 40 min",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) – anker.com",
+   "read": "2026-11-14",
+   "note": "Footnote: 'For 250W max input, use both USB-C ports with 5A cables and 140W chargers.' The recharge-time claims are footnoted 'Data based on internal lab tests', so the 13-minute figure assumes two 140 W chargers and two 5 A cables. The product page gives no two-port output split. Expert Reviews says both USB-C ports can give 140 W at the same time."
+  },
+  {
+   "product": "Anker Prime Power Bank 26K 300W (A110A)",
+   "label": "Price, anker.com",
+   "value": "$229.99 (page shows save $30.00)",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) – anker.com",
+   "read": "2026-11-14",
+   "note": "Read from the maker's product page with WebFetch. The storecheck.py search on anker.com returned HTTP 404."
+  },
+  {
+   "product": "Anker Prime Power Bank 26K 300W (A110A)",
+   "label": "Two USB-C outputs at once (named reviewer)",
+   "value": "140 W + 140 W at the same time",
+   "source": "https://www.expertreviews.co.uk/technology/batteries-charging/best-power-bank-uk-portable-charger",
+   "source_title": "The best power banks in 2026, as tested by our experts – Expert Reviews",
+   "read": "2026-11-14",
+   "note": "Expert Reviews: 'Its two USB-C ports can both output a maximum of 140W at the same time.' Page updated 11 November 2026. This is a cited rival, so the Prime split is already public. The new part is the contrast with UGREEN's 100 W + 30 W."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Per-port output limits behind the '145W' total",
+   "value": "USB-C1 140 W max (up to 28V/5A); USB-C2 65 W max (20V/3.25A); USB-A 22.5 W; USB-C1 input 65 W max; 25,000 mAh / 3.6 V / 90 Wh (TYP)",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "Spec block from the bundle listing of the same 145W bank, read with storecheck.py search. The standalone page (https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop) returned HTTP 429. The bundle costs $84.99. Its URL slug says '100w', but the spec block on the page says PD 3.1 140 W."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Price, UGREEN US store",
+   "value": "$99.99 standalone",
+   "source": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+   "source_title": "UGREEN 145W 25000mAh 3-Port Power Bank (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "storecheck.py search result (price field). ChatGPT showed $79.99 for this bank in one chat. UGREEN's store lists $99.99 today, and the bundle with two cables is $84.99."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 25000mAh 200W",
+   "label": "Price and headline claims",
+   "value": "$129.99; '140W Charge', '65W Recharge'",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-25000mah-200w-with-smart-digital-display",
+   "source_title": "UGREEN Nexode Power Bank 25000mAh 200W with Smart Digital Display (UGREEN US store)",
+   "read": "2026-11-14",
+   "note": "storecheck.py search. On this model the 200 W is again a total, not a single-port figure: the single-port maximum is 140 W, the same as the 145W model. ChatGPT showed $89.99 at Best Buy."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival says about mAh vs usable output",
+   "value": "Popular Science explains mAh is measured at cell voltage and conversion loses energy, citing Macworld: 10,000 mAh banks averaged '174 percent of a phone battery, not 200 percent'. It gives no per-product rated or usable capacity, and lists the UGREEN 20K 130W only as '130W total output'",
+   "source": "https://www.popsci.com/reviews/best-portable-chargers/",
+   "source_title": "The best portable chargers | Popular Science",
+   "read": "2026-11-14",
+   "note": "Page header says updated Oct 26, 2026. This is the baseline the gap is measured against."
+  }
+ ],
+ "unsourced": [
+  "UGREEN 145W 25K two-port split (C1+C2 watts when both are in use): standalone page and storecheck product returned HTTP 429; thisUSB comparison page failed with a certificate error.",
+  "UGREEN 130W 20K (both versions) and 145W 25K rated capacity at 5 V: not in the spec text I could retrieve, and the product pages were rate-limited (HTTP 429).",
+  "UGREEN Nexode 130W built-in-cable version full port table (second-port limit): page rate-limited.",
+  "Voltage behind Anker's '15,200 mAh delivered' figure for the Prime 26K: the anker.com FAQ does not state it.",
+  "Anker 737 (A1289) rated capacity at 5 V, US price and per-port split: anker.com/products/a1289-737-power-bank-powercore-24k returned 404, and search only turned up service and retailer pages, which I did not open.",
+  "INIU Cougar 20000mAh 65W specs and price: not reached within the tool budget.",
+  "Independent measured usable Wh for any candidate: Wirecutter (proxy) and Expert Reviews give none, and Wired and nytimes.com could not be fetched."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1244242000000004
+ }
+}

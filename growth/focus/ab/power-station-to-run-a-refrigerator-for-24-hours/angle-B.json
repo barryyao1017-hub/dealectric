@@ -1,0 +1,191 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that, once CNET's measured fridge runtimes are rescaled from its efficient 54–60 W Whirlpool to a 585–679 kWh/yr full-size fridge, both 2 kWh picks (Anker SOLIX C2000 Gen 2 and BLUETTI Elite 200 V2) fall to 21–24 h. Of the units with today's maker prices, the cheapest that still clears 24 h is the 3 kWh Jackery HomePower 3000 at 26.4–29.1 h for $1,499.",
+ "standout": 3,
+ "standout_why": "I compared four rival pages. wattpowerstation.com (cited) relays CNET's runtimes, battery Wh used per fridge hour and fridge hours per $100. It gives CNET's fridge draw as 54–60 W but never rescales the runtimes to a bigger or older fridge. theoutagebrief.com (cited) only estimates runtimes, at a 1,260 Wh/day duty cycle with 85% efficiency, and says they are 'not measured results'. homepowerfacts.com (cited) applies a flat 80% (or its tested usable-Wh figure) to a 67 W fridge but does not use CNET's whole-run measurements. ChatGPT's answer quotes CNET's raw hours (27.40 / 26.32) as if they hold for any full-size fridge. No page points out that CNET's fridge (about 1.3–1.44 kWh/day) is smaller than a typical ENERGY STAR side-by-side (550 kWh/yr) or an older one (679 kWh/yr). None shows that the 2 kWh picks lose their 24 h margin on those fridges.",
+ "decides": "It changes the pick. Under the optimistic fixed-overhead model, the C2000 Gen 2 and Elite 200 V2 clear 24 h only on an ENERGY STAR-level fridge (25.4 / 24.5 h at 550 kWh/yr). At 585 kWh/yr the Elite 200 V2 falls short (23.4 h) and the C2000 Gen 2 just reaches 24.2 h. On a least-efficient side-by-side (679 kWh/yr) both drop to about 21 h. For a guaranteed 24 h on an unknown full-size fridge, pick the Jackery HomePower 3000 ($1,499 on jackery.com today, 26.4 h even at 679 kWh/yr). The Anker SOLIX F3000 ($1,899.99, 24.3 h) clears the line only just. Keep the 2 kWh units for a shopper whose EnergyGuide label says about 550 kWh/yr or less.",
+ "candidates": [
+  "Jackery HomePower 3000",
+  "Anker SOLIX C2000 Gen 2",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX F3000",
+  "Pecron E3600LFP",
+  "Jackery HomePower 3600 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "CNET test fridge average draw",
+   "value": "54–60 W (about 1.30–1.44 kWh/day; about 473–526 kWh/yr)",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "Relays CNET's July 2026 lab test of a full-size Whirlpool (118 V, rated 7.2 A). Conversion: 54 W × 24 h = 1.30 kWh/day and 60 W × 24 h = 1.44 kWh/day. The rescaling below uses the 57 W midpoint. I couldn't open CNET or the Yahoo syndication directly (blocked or 403)."
+  },
+  {
+   "product": "general",
+   "label": "Typical full-size fridge energy use by type (EnergyGuide basis)",
+   "value": "ENERGY STAR side-by-side 550 kWh/yr (62.8 W avg); least-efficient side-by-side 679 kWh/yr (77.5 W avg); ENERGY STAR bottom-freezer 465 kWh/yr (53.1 W)",
+   "source": "https://smarterhouse.org/node/142",
+   "source_title": "Buying Tips | Smarter House (ACEEE)",
+   "read": "2026-11-13",
+   "note": "550,000 Wh ÷ 8,760 h = 62.8 W; 679,000 ÷ 8,760 = 77.5 W. The page gives no data year (© 2015–). All the models it compares have icemakers."
+  },
+  {
+   "product": "general",
+   "label": "Average fridge figure used by a rival",
+   "value": "585 kWh/yr = 1.6 kWh/day = 66.8 W",
+   "source": "https://homepowerfacts.com/can-it-run/refrigerator/",
+   "source_title": "Can a portable power station run a refrigerator? Runtime by model",
+   "read": "2026-11-13",
+   "note": "Used here as the middle target: 585,000 ÷ 8,760 = 66.8 W."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "CNET measured fridge runtime → battery Wh per fridge hour",
+   "value": "27.40 h → 74.7 Wh/h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "2,048 Wh ÷ 27.40 h = 74.7 Wh per fridge hour"
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Rescaled runtime on 550 / 585 / 679 kWh/yr fridge",
+   "value": "25.4 h / 24.2 h / 21.5 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "Fixed-overhead model: hours = Wh ÷ (Wh/h measured + (target W − 57 W)). 2,048 ÷ (74.7 + 5.8) = 25.4; 2,048 ÷ (74.7 + 9.8) = 24.2; 2,048 ÷ (74.7 + 20.5) = 21.5. This is optimistic because inverter loss also grows with load. Scaling the whole runtime by fridge watts instead (27.40 × 57/66.8) gives 23.4 h."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Price on maker US store",
+   "value": "$1,199.99",
+   "source": "https://us.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station - 2,048Wh | 2,400W",
+   "read": "2026-11-13",
+   "note": "In stock. Page lists 2,048 Wh, 41.7 lb, 9 W idle. Anker claims 'a dual-door fridge for up to 32 hours'. The $1,199.99 at 24.2 h works out to $49.6 per fridge hour at 585 kWh/yr."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "CNET measured runtime → Wh per fridge hour",
+   "value": "26.32 h → 78.8 Wh/h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "2,074 Wh ÷ 26.32 h = 78.8 Wh/h"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Rescaled runtime on 550 / 585 / 679 kWh/yr fridge",
+   "value": "24.5 h / 23.4 h / 20.9 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "2,074 ÷ (78.8 + 5.8) = 24.5; 2,074 ÷ (78.8 + 9.8) = 23.4; 2,074 ÷ (78.8 + 20.5) = 20.9. Same optimistic fixed-overhead model. Under the 585 and 679 kWh/yr assumptions it falls below 24 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price on maker US store",
+   "value": "$899",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Available. The store title says 2,080Wh; CNET's figure (via wattpowerstation) is 2,074 Wh."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "CNET measured runtime → Wh per fridge hour",
+   "value": "32.05 h → 95.9 Wh/h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "3,072 Wh ÷ 32.05 h = 95.9 Wh/h. This unit uses more battery per hour on itself (CNET self-use 36.4%) than the C2000 Gen 2, but its capacity more than makes up for it."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Rescaled runtime on 550 / 585 / 679 kWh/yr fridge",
+   "value": "30.2 h / 29.1 h / 26.4 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "3,072 ÷ (95.9 + 5.8) = 30.2; 3,072 ÷ (95.9 + 9.8) = 29.1; 3,072 ÷ (95.9 + 20.5) = 26.4. Scaling the whole runtime by fridge watts gives 27.3 h at 585 kWh/yr, still above 24 h."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Price on maker US store",
+   "value": "$1,499 (was $2,329)",
+   "source": "https://www.jackery.com/products/jackery-homepower-3000",
+   "source_title": "Jackery HomePower 3000",
+   "read": "2026-11-13",
+   "note": "Page says 'Estimated to ship starting Nov. 28', with 3,072 Wh, 3,600 W (7,200 W surge) and a 5-year warranty. At 585 kWh/yr: $1,499 ÷ 29.1 h = $51.5 per fridge hour, close to the C2000 Gen 2's $49.6. It is the cheapest unit with a maker price today that clears 24 h at 679 kWh/yr. A follow-up product-page read returned HTTP 429."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "CNET runtime → rescaled 585 / 679 kWh/yr",
+   "value": "28.97 h measured → 26.5 h / 24.3 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "3,072 ÷ 28.97 = 106.0 Wh/h; 3,072 ÷ (106.0 + 9.8) = 26.5; 3,072 ÷ (106.0 + 20.5) = 24.3"
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Price on maker US store",
+   "value": "$1,899.99",
+   "source": "https://us.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 Portable Power Station (UL9540 Certificated)",
+   "read": "2026-11-13",
+   "note": "Available. The same store also lists an F3000 + 120V Generator Input Adaptor + EV Charger Adapter bundle at $1,597.00 (https://us.ankersolix.com/products/f3000-120v-generator-input-adaptor-ev-charger-adapter)."
+  },
+  {
+   "product": "Pecron E3600LFP",
+   "label": "CNET runtime → rescaled 585 / 679 kWh/yr",
+   "value": "28.15 h measured → 25.8 h / 23.7 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "3,072 ÷ 28.15 = 109.1 Wh/h; 3,072 ÷ (109.1 + 9.8) = 25.8; 3,072 ÷ (109.1 + 20.5) = 23.7"
+  },
+  {
+   "product": "Pecron E3600LFP",
+   "label": "Price on maker US store",
+   "value": "$999, sold out",
+   "source": "https://www.pecron.com/products/pecron-e3600lfp-portable-power-station-3600w-3072wh",
+   "source_title": "PECRON E3600LFP Portable Power Station 3600W 3072Wh",
+   "read": "2026-11-13",
+   "note": "Store shows available: false. The page lists a 2+3-year warranty and 3,600 W (7,000 W surge)."
+  },
+  {
+   "product": "Jackery HomePower 3600 Plus",
+   "label": "CNET runtime → rescaled 585 / 679 kWh/yr",
+   "value": "38.58 h measured → 34.9 h / 31.6 h",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "3,584 ÷ 38.58 = 92.9 Wh/h; 3,584 ÷ (92.9 + 9.8) = 34.9; 3,584 ÷ (92.9 + 20.5) = 31.6"
+  },
+  {
+   "product": "Jackery HomePower 3600 Plus",
+   "label": "Price on maker US store",
+   "value": "$1,899 (was $4,139)",
+   "source": "https://www.jackery.com/products/jackery-homepower-3600-plus",
+   "source_title": "Jackery HomePower 3600 Plus",
+   "read": "2026-11-13",
+   "note": "Black is a pre-order shipping by Nov 22. The Red Cross Edition is $1,999 and in stock (https://www.jackery.com/products/jackery-homepower-3600-plus-red-cross-edition). At 585 kWh/yr: $1,899 ÷ 34.9 h = $54.4 per fridge hour."
+  }
+ ],
+ "unsourced": [
+  "CNET's original article and its Yahoo Tech syndication (blocked or HTTP 403), so I couldn't confirm the per-unit fridge average watts. The rescaling uses the 54–60 W range as relayed by wattpowerstation.com.",
+  "Jackery HomePower 3000 weight and solar input from jackery.com (the product read returned HTTP 429), so I couldn't compute fridge hours per lb or solar refill hours for it.",
+  "Today's maker prices for BLUETTI FridgePower and Dabbsson 2000L. I didn't check them because their CNET runtimes (23.43 h and 21.00 h) are already under 24 h on CNET's own efficient fridge.",
+  "A current (dated) ENERGY STAR or DOE average kWh/yr for full-size fridges. The ACEEE Smarter House table carries no data year."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 1.1671299
+ }
+}

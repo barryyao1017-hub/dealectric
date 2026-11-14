@@ -1,0 +1,75 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's own AC180 page pairs the 1,152 Wh AC180 with its B80 (806 Wh), B230 (2,048 Wh) or B300 (3,072 Wh) battery packs, 'for a total of up to 4,224Wh', and says the AC180's 2,700 W Power Lifting Mode is meant for resistive heaters.",
+ "standout": 2,
+ "standout_why": "I opened three of the cited rival pages on 2026-11-14. Volt & Valley lists the AC180 at 1,800 W and about 39 min but says nothing about expansion batteries or Power Lifting. It covers expansion only for the EcoFlow DELTA 2 Max and Anker SOLIX F3800, and it names SurgePad and X-Boost without explaining either. UTrendCo lists the AC180 at about 39 min and says nothing about expansion or boost modes. Lights On Lab gives 1.3 h on low for the AC180 and also says nothing about expansion or modes. I could not read the cited Tested Watts page: WebFetch failed on a certificate error, and my curl fallback needed an approval it didn't get. So I can't rule out that Tested Watts covers this. Our own current page doesn't have it either.",
+ "decides": "It strengthens the case for the BLUETTI AC180 (which Dealectric lists under awin:bluetti_us) as the roughly 1 kWh pick for someone who wants to run a heater. It is the only one of our listed roughly 1 kWh units with a maker-sourced add-on battery path. That path takes it from about 39 min to about 2.4 h of runtime by the arithmetic with a B300 (4,224 Wh × 0.85 ÷ 1,500 W = 2.39 h), with a caveat on how the packs feed power, explained in the notes. Power Lifting itself doesn't change the answer for a 1,500 W heater, because the AC180's 1,800 W rated output already covers it. I could not source expansion support for the Jackery Explorer 1000 v2, the Anker SOLIX C1000 Gen 2 or the EcoFlow DELTA 3 / 3 Plus from maker pages, so the page must not claim they can't expand.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Capacity",
+   "value": "1,152 Wh (36 Ah)",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180",
+   "read": "2026-11-14",
+   "note": "Maker's US product page."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC rated output",
+   "value": "1,800 W total from 120 V / 15 A outlets; 2,700 W surge",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180",
+   "read": "2026-11-14",
+   "note": "1,800 W rated is 300 W above a 1,500 W heater's draw."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Power Lifting Mode",
+   "value": "boosts output to 2,700 W; maker says it is 'ideal for pure-resistive heating devices like hair dryers, electric kettles, and heaters'",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180",
+   "read": "2026-11-14",
+   "note": "The footnote doesn't say whether output voltage is lowered in this mode. A 1,500 W heater fits inside the normal 1,800 W rating, so the mode isn't needed for this question. It would only matter for a heater rated above 1,800 W."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker-stated battery pairings",
+   "value": "B80 (806 Wh), B230 (2,048 Wh) or B300 (3,072 Wh); 'for a total of up to 4,224Wh'",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180",
+   "read": "2026-11-14",
+   "note": "Arithmetic: 1,152 + 3,072 = 4,224 Wh, matching the maker's total. Heater on high: 4,224 × 0.85 ÷ 1,500 = 2.39 h (about 2 h 24 min). With B230: 3,200 × 0.85 ÷ 1,500 = 1.81 h. With B80: 1,958 × 0.85 ÷ 1,500 = 1.11 h. Caveat: the page says how much capacity these packs add but not how they connect or at what rate they feed the AC180. If they feed through a charging input slower than 1,500 W, a heater on high would drain the AC180's internal battery first, and the full combined runtime might not be reachable at 1,500 W. Confirm in the AC180 manual before printing these runtimes."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of expansion and boost modes",
+   "value": "Volt & Valley mentions expansion only for the DELTA 2 Max (2 to 6 kWh) and F3800 (to 53.8 kWh), and X-Boost only as '3,400W available' for the DELTA 2 Max; UTrendCo and Lights On Lab mention neither",
+   "source": "https://voltandvalley.com/guides/what-size-power-station-to-run-a-space-heater",
+   "source_title": "What Size Power Station to Run a Space Heater? The Real Math | Volt & Valley",
+   "read": "2026-11-14",
+   "note": "Also checked https://utrendco.com/blog/can-portable-power-station-run-space-heater and https://www.lightsonlab.com/blog/can-a-power-station-run-a-space-heater/ on 2026-11-14. Neither covers expansion batteries, X-Boost, Power Lifting or SurgePad."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C1000 Gen 2 expansion battery compatibility and SurgePad rating: ankersolix.com/products/c1000-gen-2 and the service.ankersolix.com spec article both returned 404, and the storecheck search also returned 404. Search results only show that the BP1000 is listed for the original C1000 / C1000X. No maker page opened says whether the Gen 2 can or can't expand.",
+  "EcoFlow DELTA 3 vs DELTA 3 Plus compatibility with the DELTA 3 Series Smart Extra Battery, and X-Boost wattage and voltage behaviour: us.ecoflow.com returned 429 (to both WebFetch and storecheck), and ecoflow.com/us returned 404. Retailer snippets disagree on whether the DELTA 3 1500 is supported. A Lowe's-hosted PDF downloaded as image-only, and Bash text extraction wasn't approved.",
+  "Jackery Explorer 1000 v2 expansion support and any boost mode: jackery.com returned 429 twice.",
+  "Exact Power Lifting manual wording for the AC180 (a Lowe's-hosted manual snippet says the mode is 'constant power mode', output 'may be lower than 2700W', and it is automatically disabled while charging from AC power): the official PDF at s4.bluettipower.com came back as binary only, and I wasn't allowed to run pdftotext on it, so this is unverified.",
+  "Prices for the AC180 and the B80 / B230 / B300 packs: the AC180 page showed no price, and I ran out of tool calls for storecheck on bluettipower.com.",
+  "Cited rival Tested Watts (testedwatts.com/2026/09/23/power-station-space-heater/): WebFetch failed with a self-signed certificate error, and the curl fallback wasn't approved, so I couldn't check its expansion or boost-mode coverage."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9402697000000001
+ }
+}

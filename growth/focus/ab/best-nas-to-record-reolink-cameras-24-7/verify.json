@@ -1,0 +1,185 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "B",
+  "why_angle": "The cited rival pages list licence counts, and the retention tables shown use a guessed 6 Mbps. None works out days of 24/7 footage from a Reolink camera's own default bitrate (6,144 kbps, so 265 GB a day for four) capped at each box's drive limit. None flags that Reolink's RLN8-410 product page (8 TB per drive) and its own FAQ (6 TB) disagree, which puts the NVR's internal-drive ceiling at 22.6–30.1 days, against about 75 days on a two-bay NAS with mirrored 20 TB drives.",
+  "slug": "best-nas-to-record-reolink-cameras-24-7",
+  "must": [
+   "is the Synology DS225+",
+   "75 days on two mirrored 20 TB drives"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS to record four Reolink PoE cameras 24/7 with no subscription (2026): UGREEN, Synology, or Reolink's own NVR",
+   "h1": "Best NAS to record four Reolink PoE cameras 24/7 with no subscription (2026)",
+   "desc": "Four Reolink 4K PoE cameras write 265 GB a day at their default bitrate. This page shows how many days of 24/7 footage the Synology DS225+, DS425+, UGREEN DXP2800, QNAP TS-264 and Reolink's RLN8-410 NVR each hold, which camera licences you buy, and what each draws.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS to record four Reolink PoE cameras 24/7 with no subscription is the Synology DS225+: 2 camera licenses included, 2 more bought once. At Reolink's default 6,144 kbps four cameras write 265 GB a day: 75 days on two mirrored 20 TB drives vs 22.6–30.1 on the RLN8-410 NVR.</p>",
+   "columns": [
+    [
+     "recorder",
+     "Recorder and licences for 4 cameras"
+    ],
+    [
+     "days",
+     "Days of 24/7 footage, 4 cameras at 6,144 kbps"
+    ],
+    [
+     "hw",
+     "Bays, CPU, camera headroom"
+    ],
+    [
+     "power",
+     "Power with drives running"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "synology-ds225-plus",
+     "model": "Synology DiskStation DS225+",
+     "cells": {
+      "recorder": "Surveillance Station: 2 licences included, buy 2 perpetual (packs of 1, 4 or 8). Reolink's own protocol carries AI events and PTZ",
+      "days": "75.4 days on 2 × 20 TB mirrored (Synology: up to 40 TB raw)",
+      "hw": "2 bays, Celeron J4125; 20 channels / 200 FPS at 4K H.265",
+      "power": "16.98 W in access (Synology), 148.7 kWh a year"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "recorder": "Frigate in Docker: no licence; writes the camera stream to disk without re-encoding (Frigate docs)",
+      "days": "75.4 days on 2 × 20 TB mirrored (ComputerBase ran it with 2 × 20 TB IronWolf Pro)",
+      "hw": "2 bays, Intel N100; Frigate lists about 15 ms per frame for N100 detection (MobileNetV2)",
+      "power": "18.6 W idle with drives spinning, 27.7 W writing (ComputerBase)"
+     }
+    },
+    {
+     "slug": "synology-ds425-plus",
+     "model": "Synology DiskStation DS425+",
+     "cells": {
+      "recorder": "Surveillance Station: 2 licences included, buy 2 perpetual",
+      "days": "271 days on 4 × 24 TB in RAID 5 (Synology: up to 96 TB raw)",
+      "hw": "4 bays + 2 M.2, Celeron J4125; 20 channels / 200 FPS at 4K H.265",
+      "power": "28.25 W in access (Synology), 247.5 kWh a year"
+     }
+    },
+    {
+     "slug": "qnap-ts-264-8g",
+     "model": "QNAP TS-264-8G",
+     "cells": {
+      "recorder": "QVR Surveillance: 2 built-in + 6 bonus channels after a one-time QNAP ID claim = 8 free",
+      "days": "3.77 days per usable TB; 2 × 3.5-inch bays, drive sizes per QNAP's compatibility list",
+      "hw": "2 bays + 2 M.2, Celeron N5095, 8 GB, 2 × 2.5GbE",
+      "power": "29.1 W typical with bays full (QNAP)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Daily storage:</strong> Reolink's 4K RLC-810A defaults to 6,144 kbps H.265. 6.144 Mb/s × 86,400 s ÷ 8 = 66.4 GB per camera per day, × 4 = 265.4 GB a day. That is 3.77 days per usable TB.</li><li><strong>RLN8-410 as shipped:</strong> 2,000 GB ÷ 265.4 = 7.5 days on the included 2 TB drive.</li><li><strong>RLN8-410 at its ceiling:</strong> its product page says 8 TB per drive (8,000 ÷ 265.4 = 30.1 days), and Reolink's RLN8-410 FAQ says 6 TB via SATA (6,000 ÷ 265.4 = 22.6 days). An eSATA drive raises this to 45.2 days (12 TB) or 60.3 days (16 TB), with no redundancy.</li><li><strong>DS225+ or DXP2800 with 2 × 20 TB mirrored:</strong> 20,000 ÷ 265.4 = 75.4 days, and one drive can fail without losing footage.</li><li><strong>DS425+ with 4 × 24 TB in RAID 5:</strong> 3 × 24 = 72 TB usable; 72,000 ÷ 265.4 = 271 days.</li><li><strong>Synology licences:</strong> 4 cameras − 2 included = 2 to buy, once. A TrackMix recorded on both lenses uses 2 licences (Reolink), so four of them need 8 − 2 = 6.</li><li><strong>Synology headroom:</strong> 4 cameras × 25 fps = 100 of the 200 FPS the DS225+ is rated for at 4K H.265, which is 50%.</li><li><strong>Running all year:</strong> DS225+ 16.98 W × 8,760 h = 148.7 kWh. DXP2800 18.6 W × 8,760 h = 162.9 kWh (ComputerBase). DS425+ 28.25 W → 247.5 kWh. TS-264 29.1 W → 254.8 kWh. Drives never sleep during 24/7 recording, so these spinning-drive figures apply, not the hibernation ones.</li></ul><table><thead><tr><th>Your use</th><th>Fits</th></tr></thead><tbody><tr><td>Recording only, about 3 weeks of footage, no PC setup</td><td>Reolink RLN8-410 NVR (8 PoE ports built in)</td></tr><tr><td>One to two months of footage, Reolink AI events in the recorder, the most documented NAS route</td><td>Synology DS225+ {buy:synology-ds225-plus}</td></tr><tr><td>Several months, or room for more cameras and files</td><td>Synology DS425+</td></tr><tr><td>No licence spend and comfortable with Docker</td><td>UGREEN DXP2800 running Frigate {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>Free channels from the NAS maker's own app</td><td>QNAP TS-264-8G, after claiming QVR Surveillance's 6 bonus channels</td></tr></tbody></table><h2>How many days of 24/7 footage each box holds, and why the NVR runs out first</h2><p>Retention is set by two numbers: the cameras' bitrate and the usable disk space. Reolink's 4K PoE cameras such as the RLC-810A record H.265 at 6,144 kbps by default (adjustable from 4,096 to 8,192 kbps). Four of them fill 265 GB a day. Change the bitrate and the days scale with it: at 8,192 kbps, 20 TB lasts 56.5 days.</p><p>The Reolink RLN8-410 is limited by drive size, not by camera count. Its US product page lists up to 16 TB, at most 8 TB per drive (one internal SATA plus one eSATA). Reolink's own FAQ for the same model says the version currently on sale takes at most 6 TB via SATA and 6 TB via eSATA. Check the hardware version on the unit's label before you buy an 8 TB drive. On the internal drive alone, that is 22.6 to 30.1 days, and the NVR has no mirroring. The RLN8-410 is sold as 12 channels, but it takes at most 8 cameras, and a dual-lens camera uses 2 of them.</p><p>A two-bay NAS takes larger drives and mirrors them. Synology rates the DS225+ for up to 40 TB raw, and ComputerBase ran the DXP2800 with two 20 TB IronWolf Pro drives. On the 2025 Synology Plus models, building a storage pool from non-Synology drives (WD Purple, Seagate SkyHawk) needs DSM 7.3 or later, so update DSM before you set up the pool. M.2 pools and cache still need drives from Synology's compatibility list.</p><p>Three setup points apply to every NAS route. A NAS has no PoE ports, so add an 802.3af switch: each RLC-810A draws under 12 W, so four need about 48 W of PoE budget. Reolink turns off the RTSP and ONVIF ports by default on some models; switch them on under Network > Advanced > Server Settings. Synology's Surveillance Station accepts H.265 over ONVIF Profile S. Frigate plays back H.265 recordings in Chrome 108+, Edge and Safari. UGREEN publishes no codec list for its own Surveillance Center app, so Frigate is the route documented here. QNAP lists no eligible models for QVR Surveillance's 6 bonus channels, so check that the TS-264 offers QVR Surveillance before you count on 8 free channels.</p><h2>Not recommended</h2><p>Avoid running four 4K cameras 24/7 on the RLN8-410's included 2 TB drive. 2,000 GB ÷ 265.4 GB = 7.5 days, so a break-in found after a week away will already be overwritten. If you buy the NVR, budget for the largest drive your hardware version accepts.</p>",
+   "sources": [
+    [
+     "Reolink RLC-810A: H.265, default 6,144 kbps main stream (4,096–8,192), 25 fps, IEEE 802.3af, under 12 W",
+     "https://reolink.com/us/product/rlc-810a/"
+    ],
+    [
+     "RLN8-410: up to 16 TB, max 8 TB per HDD, 8 PoE ports at 25 W max per port, 2-year limited warranty",
+     "https://reolink.com/us/product/rln8-410/"
+    ],
+    [
+     "RLN8-410 FAQ: max 12 TB total (6 TB SATA + 6 TB eSATA), max 8 cameras, dual-lens uses two",
+     "https://support.reolink.com/articles/10354119558937-FAQs-RLN8-410/"
+    ],
+    [
+     "Synology DS225+: up to 40 TB raw, 2 free licences, 4K H.265 20 channels / 200 FPS, 16.98 W access, 3-year warranty",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "Synology DS425+: up to 96 TB raw with 24 TB drives, 2 free licences, 4K H.265 20 channels / 200 FPS, 28.25 W access",
+     "https://www.synology.com/en-us/products/DS425+#specs"
+    ],
+    [
+     "Synology licence rules: 2 default licences, perpetual packs of 1, 4 or 8, one licence per channel for independent-lens cameras",
+     "https://www.synology.com/en-us/products/Device_License_Pack"
+    ],
+    [
+     "Reolink on Synology: TrackMix with both lenses uses two licences; Duo added twice; AI events and PTZ need the Reolink protocol",
+     "https://support.reolink.com/articles/360004124293-How-to-Add-Reolink-Cameras-to-Synology-Surveillance-Station/"
+    ],
+    [
+     "Surveillance Station supports H.265 and ONVIF Profile S with H.265",
+     "https://www.synology.com/en-us/dsm/7.4/software_spec/surveillance_station"
+    ],
+    [
+     "DSM 7.3: third-party drives allowed for storage pools on 2025 Plus models; M.2 pools and cache still need listed drives",
+     "https://www.synology.com/en-in/company/news/article/dsm73"
+    ],
+    [
+     "UGREEN DXP2800 and Synology DS224+ measured power with 2 × 20 TB IronWolf Pro: 18.6 W idle, 27.7 W / 25.3 W writing",
+     "https://www.computerbase.de/artikel/storage/ugreen-dxp2800-nas-test.88683/seite-3"
+    ],
+    [
+     "Frigate writes recordings without re-encoding; H.265 playback in Chrome 108+, Edge and Safari",
+     "https://docs.frigate.video/configuration/record/"
+    ],
+    [
+     "Frigate hardware guide: Intel N100 about 15 ms MobileNetV2 inference time",
+     "https://docs.frigate.video/frigate/hardware/"
+    ],
+    [
+     "QNAP QVR Surveillance: 8 free channels (2 standard + 6 bonus); QVR Elite 2 free",
+     "https://www.qnap.com/en/how-to/faq/article/what-is-the-difference-between-qvr-proelite-and-qvr-surveillance"
+    ],
+    [
+     "QNAP TS-264: Celeron N5095, 8 GB, 2 × 3.5-inch bays, 2 × M.2, 2 × 2.5GbE, 29.086 W typical with bays full, 3-year warranty",
+     "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+    ],
+    [
+     "Reolink: RTSP and ONVIF ports disabled by default on some models; enable under Network > Advanced > Server Settings",
+     "https://support.reolink.com/hc/en-us/articles/900000621783-Introduction-to-RTSP-and-ONVIF/"
+    ]
+   ]
+  },
+  "unsourced": [
+   "Reolink RLN8-410 price today. reolink.com/us product page and store.reolink.com/us NVR page (both opened 2026-11-13) show only a site-wide 'Save up to $600!' banner; Walmart returned a bot check; Amazon search via amzcheck returned nothing. The NVR is therefore discussed in the text, not given a priced row.",
+   "Synology Surveillance Device License USD price: Synology's licence pages list none; retailer pages were blocked for the angle agents.",
+   "UGREEN DXP2800 maximum drive size: nas.ugreen.com returned HTTP 429, and retailer figures conflict (48, 64, 76, 80 TB). The 2 × 20 TB figure used is the drive set ComputerBase tested in it.",
+   "QNAP TS-264 maximum raw capacity (its spec page refers to the compatibility list) and whether it is eligible for QVR Surveillance's 6 bonus channels.",
+   "Asustor AS5402T row (4 free Surveillance Center licences per asustor.com): dropped because I did not open a maker spec page for its bays, CPU or power.",
+   "UGREEN Surveillance Center H.265 support and camera cap: UGREEN publishes neither in any page the agents could open."
+  ]
+ },
+ "checked": 58,
+ "changed": [
+  {
+   "where": "after, RLN8-410 paragraph",
+   "was": "it takes at most 8 wired cameras",
+   "now": "it takes at most 8 cameras",
+   "why": "Reolink's RLN8-410 FAQ (support.reolink.com/articles/10354119558937, read 2026-11-13) says 'Max. 8 cameras (no matter WiFi or PoE)'. The limit is not specific to wired cameras."
+  },
+  {
+   "where": "after, setup paragraph (QNAP sentence)",
+   "was": "QNAP's bonus channels are a launch campaign with no announced end date, and QNAP lists no eligible models, so check that the TS-264 offers QVR Surveillance before you count on 8 free channels.",
+   "now": "QNAP lists no eligible models for QVR Surveillance's 6 bonus channels, so check that the TS-264 offers QVR Surveillance before you count on 8 free channels.",
+   "why": "The QNAP FAQ (read 2026-11-13) lists '8 channels (2 Standard + 6 Bonus)' as part of the free tier. It never calls the channels a launch campaign, promotion or limited-time offer. The only 'launch' on the page is about myQNAPcloud Surveillance. The claim that it lists no eligible models is supported."
+  },
+  {
+   "where": "sources",
+   "was": "(no source for the N100 ~15 ms MobileNetV2 figure in the DXP2800 hw cell)",
+   "now": "added ['Frigate hardware guide: Intel N100 about 15 ms MobileNetV2 inference time', 'https://docs.frigate.video/frigate/hardware/']",
+   "why": "I opened docs.frigate.video/frigate/hardware/ on 2026-11-13. Its Intel N100 row lists '~ 15 ms' under MobileNetV2 Inference Time, which supports the cell. Before this change the figure had no source in the list."
+  }
+ ],
+ "removed": [],
+ "log": [
+  "All 14 draft sources and the added Frigate hardware page were opened on 2026-11-13. All of them loaded.",
+  "Checked and confirmed: RLC-810A specs (H.265, default 6,144 kbps in a 4,096–8,192 range, 25 fps, 802.3af, under 12 W); RLN8-410 page (up to 16 TB, 8 TB per HDD, 12-channel, 8 PoE ports at 25 W, eSATA, 2-year warranty); RLN8-410 FAQ (6 TB SATA + 6 TB eSATA, max 8 cameras, dual-lens uses two channels); DS225+ (J4125, 2 bays, 40 TB, 2 free licences, 4K 20 ch / 200 FPS, 16.98 W access, 3-year warranty); DS425+ (J4125, 4 bays + 2 M.2, 96 TB with 24 TB drives, 2 licences, 20 ch / 200 FPS, 28.25 W); licence packs of 1, 4 or 8, perpetual, one per channel for independent-lens cameras; TrackMix uses two licences, Duo is added twice, AI events and PTZ need the Reolink protocol; Surveillance Station ONVIF Profile S with H.265; DSM 7.3 third-party drives for pools on 2025 models, M.2 pools and cache need HCL drives; ComputerBase DXP2800 at 18.6 W idle and 27.7 W writing (DS224+ 25.3 W) with 20 TB IronWolf Pro drives; Frigate records without re-encoding and plays H.265 in Chrome 108+, Edge and Safari; QVR Surveillance 2 + 6 = 8 channels activated through a QID, QVR Elite 2; TS-264 N5095, 8 GB, 2 × 3.5-inch bays, 2 × M.2, 2 × 2.5GbE, 29.086 W typical, 3-year warranty, no max raw capacity listed; Reolink RTSP and ONVIF disabled by default on some models, enabled under Network > Advanced > Server Settings.",
+  "Arithmetic re-checked: 66.4 GB per camera per day, 265.4 GB a day, 3.77 days per TB, 7.5 / 22.6 / 30.1 / 45.2 / 60.3 / 75.4 / 271 days, 56.5 days at 8,192 kbps, 148.7 / 162.9 / 247.5 / 254.8 kWh a year, 100 of 200 FPS = 50%. All correct.",
+  "Prices: there are no price cells in the draft. Slug rows take their prices from Dealectric's records. Both Reolink pages opened today show no RLN8-410 or RLC-810A price, only the 'Save up to $600!' banner, so the unsourced entry stands.",
+  "Side note, no change made: Synology's DSM 7.3 release covers the 2025 Value and J Series as well as Plus. The draft's 'Plus models' wording is still accurate for the DS225+ and DS425+."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.4250182
+ }
+}

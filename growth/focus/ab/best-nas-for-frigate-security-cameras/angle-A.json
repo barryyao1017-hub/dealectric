@@ -1,0 +1,151 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the QNAP TS-464 (Celeron N5095), Synology DS225+/DS425+ (Celeron J4125) and Asustor AS5402T (Celeron N5105) list only SSE4.2 on Intel's spec pages, with no AVX or AVX2. Frigate's hardware page names AVX + AVX2 as its CPU requirement, and the N100, N150 and Pentium Gold 8505 inside the UGREEN and TerraMaster picks all list AVX2.",
+ "standout": 3,
+ "standout_why": "I read the docs.frigate.video hardware page (cited in all six chats), the Frigate installation page, the GitHub dev hardware.md and our own current page. The Frigate pages give the general rule ('Anything with an Intel CPU (with AVX + AVX2 instructions)') but name no NAS and no Celeron. ChatGPT's first chat only said 'some older NAS processors may not meet these requirements', yet still showed the TS-464 at $639 as a pick. The TS-464 appears in 4 of the 6 chats. Our own page states the AVX rule and says pre-Tiger Lake Celerons 'typically lack' it, but it never applies the rule to the N5095 or N5105. Its table even lists 'OpenVINO' as a detector option for the TS-464 and AS5402T. None of these pages links each NAS's CPU to the maker's instruction-set spec.",
+ "decides": "The finding takes the QNAP TS-464, both Synology J4125 models and the Asustor AS5402T off any 'run Frigate on the NAS' shortlist. All of them say 'Intel x86 with UHD graphics' on the box, but none meets Frigate's stated CPU floor. A Frigate maintainer has also said Celeron is not officially supported for OpenVINO. That leaves the Intel AVX2 choices: UGREEN DXP4800 Plus (Pentium Gold 8505), N100 boxes such as the UGREEN DXP2800, and N150 boxes such as the TerraMaster F4-425 Plus. It supports keeping the DXP4800 Plus as the top pick. Our page's table needs fixing, because the TS-464 and AS5402T rows currently say 'OpenVINO'.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-425 Plus",
+  "QNAP TS-464",
+  "Synology DS225+",
+  "Synology DS425+",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)",
+  "Synology DS925+",
+  "Beelink EQ13"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Frigate's stated CPU requirement",
+   "value": "'Anything with an Intel CPU (with AVX + AVX2 instructions) and capable of running Debian should work fine.'",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "The same line appears in the GitHub dev docs (github.com/blakeblackshear/frigate/blob/dev/docs/docs/frigate/hardware.md). The page names no NAS models and no Celeron parts."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "CPU (maker spec)",
+   "value": "Intel Celeron N5095, 4C/4T, up to 2.9 GHz; Intel UHD Graphics; 8 GB DDR4, 16 GB max (2 × 8 GB)",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP",
+   "read": "2026-11-13",
+   "note": "This is the TS-464-8G. The legacy TS-464-4G has the same CPU."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Instruction set of its CPU (Celeron N5095)",
+   "value": "SSE4.2 only (no AVX, no AVX2); Jasper Lake",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5095 (4M Cache, up to 2.90 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "Intel's 'Instruction Set Extensions' field reads 'Intel® SSE4.2'. Against Frigate's AVX + AVX2 line, the CPU fails the stated floor."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "CPU and memory (maker spec)",
+   "value": "Intel Celeron J4125; 2 GB DDR4 non-ECC; 6 GB max (2 GB + 4 GB)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": ""
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "CPU and memory (maker spec)",
+   "value": "Intel Celeron J4125; 2 GB DDR4 non-ECC; 6 GB max (2 GB + 4 GB)",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "This model is in the Dealectric catalog (synology-ds425-plus) but is not on the current Frigate page."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Instruction set of their CPU (Celeron J4125)",
+   "value": "SSE4.2 only (no AVX, no AVX2); Gemini Lake Refresh; UHD Graphics 600",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 (4M Cache, up to 2.70 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "Our page says 'OpenVINO on the iGPU in principle'. The CPU fails Frigate's stated AVX floor."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 (AS5402T)",
+   "label": "Instruction set of its CPU (Celeron N5105)",
+   "value": "SSE4.2 only (no AVX, no AVX2); Jasper Lake; Intel UHD Graphics",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 (4M Cache, up to 2.90 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "The AS5402T's N5105 CPU comes from our catalog and current page. I did not open Asustor's page this session."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Instruction set of its CPU (Pentium Gold 8505)",
+   "value": "SSE4.1, SSE4.2, AVX2; Alder Lake; UHD Graphics for 12th Gen, 48 EU; 64 GB max memory",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226262/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Pentium Gold Processor 8505 (8M Cache, up to 4.40 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "This model meets Frigate's AVX + AVX2 floor. The 48-EU iGPU is the largest among the candidates. Frigate's OpenVINO table has no row for this iGPU."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Instruction set of its CPU (Intel N100)",
+   "value": "SSE4.1, SSE4.2, AVX2; Alder Lake-N; Intel UHD Graphics",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 (6M Cache, up to 3.40 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "The N100 also powers the Beelink EQ13, which Frigate's docs name as the author's favourite. The DXP2800's N100 comes from our catalog; I did not open UGREEN's page this session."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Instruction set of its CPU (Intel N150)",
+   "value": "SSE4.1, SSE4.2, AVX2; Twin Lake; 16 GB max memory per Intel",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/241636/intel-processor-n150-6m-cache-up-to-3-60-ghz/specifications.html",
+   "source_title": "Intel Processor N150 (6M Cache, up to 3.60 GHz) - Product Specifications",
+   "read": "2026-11-13",
+   "note": "Intel lists 16 GB max memory, but our page lists the F4-425 Plus with '16 GB DDR5 (32 GB)'. The maker's 32 GB figure is above Intel's validated maximum and needs a footnote. The N150 CPU comes from our catalog; terra-master.com returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "OpenVINO detection time, N100 vs N150 (Frigate table)",
+   "value": "N100 ~15 ms MobileNetV2 (one detector instance only); N150 ~15 ms MobileNetV2, YOLOv9 t-320 16 ms; no rows for J4125, N5095, N5105 or Pentium 8505",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "Frigate's table leaves out the Celerons, so the docs give no OpenVINO time for the CPUs in the QNAP, Synology and Asustor units."
+  },
+  {
+   "product": "general",
+   "label": "Frigate maintainer on Celeron + OpenVINO",
+   "value": "'To be clear Celeron is not officially supported for openvino' (NickM-27, collaborator, 21 Nov 2024)",
+   "source": "https://github.com/blakeblackshear/frigate/discussions/13388",
+   "source_title": "[Detector Support]: OpenVino crash when using GPU · Discussion #13388",
+   "read": "2026-11-13",
+   "note": "This thread is about a J4125 running Frigate 0.15-beta2 and a J5005 running 0.14.1, where the OpenVINO GPU detector crashed the container. One user (Jonoox, 12 Sep 2024) reported the CPU-detector fallback on the J5005 'going to over 300ms' with two cameras, against ~15 ms for an N100 in Frigate's table. He reported that 'everything works' after moving to an N100. These are user reports, not lab measurements."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Install route (stock firmware vs command line)",
+   "value": "'Container Station uses default 64 Mb shared memory size (shm-size), and does not have a mechanism to adjust it', so install from the command line; Frigate needs about 210 MB of shm for 2 cameras at 720p",
+   "source": "https://docs.frigate.video/frigate/installation/",
+   "source_title": "Installation | Frigate",
+   "read": "2026-11-13",
+   "note": "The same page says Synology DSM 7 needs 'Execute container using high privilege' and bridge network mode. UGREEN and TerraMaster are not mentioned."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster F4-425 Pro CPU: ChatGPT's cards say N350 in one chat and N305 in two. terra-master.com returned HTTP 429 twice, and the storecheck tool needed approval I didn't have, so I couldn't settle the CPU or price.",
+  "AMD Ryzen Embedded V1500B (Synology DS925+) instruction set: amd.com timed out twice, so AVX2 support is not sourced from AMD this session.",
+  "A Frigate 0.16/0.17 issue showing an AVX 'illegal instruction' crash on a Jasper Lake N5095/N5105 or a J4125: my search found none. The finding rests on Frigate's stated requirement plus Intel's spec pages, not on an observed crash.",
+  "UGREEN maker pages confirming the DXP4800 Plus and DXP2800 CPUs, and Asustor's page for the AS5402T: not opened this session. The CPUs come from our catalog and current page.",
+  "Instruction set for the Core i3-1315U in the UGREEN DXP4800 Pro, and the i3-N305 in the TerraMaster F4-424 Pro: Intel spec pages not opened (call budget).",
+  "Current US prices for any candidate: not checked this session."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0809035999999999
+ }
+}

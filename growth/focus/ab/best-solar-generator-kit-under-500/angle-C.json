@@ -1,0 +1,95 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 30 V2's solar input only accepts 12–28 V at up to 10 A and 200 W through an XT60 port, which rules out wiring panels in series. It also doesn't say that the station sold alone ships without a solar cable; BLUETTI's 10A MC4-to-XT60 cable for it costs $39.",
+ "standout": 2,
+ "standout_why": "Compared against powersized.com/solar-generator-kits (read 2026-11-13). It has a station-by-station compatibility table, but the Elite 30 V2 isn't in it, and for the Jackery Explorer 300 v2 it says solar voltage and plug are 'Not listed'. Its general rule assumes 12–60 V stations. Also compared against offgridempire.com/best-solar-generator-under-500, which has no connector, voltage or cable data and only an 'Avoid If: 12V rigs' column. I couldn't open solargenadvisor.com/best-solar-generators-under-500 (SSL certificate error), so it isn't compared. Our own current row has 'BLUETTI: 2.2 h at its 200 W max' but no voltage ceiling and no cable note.",
+ "decides": "This confirms the Elite 30 V2 + 100 W kit as the pick rather than changing it. The bundled 100 W panel works as shipped, and BLUETTI's US kit page shows 'free charging cable' in the 100 W bundle's image text. The finding adds two warnings. First, a shopper who later wants the full 200 W input can't put two 100 W panels in series, because about 2 × 22–25 V Voc is over 28 V. They need two panels in parallel or one 12 V-class 200 W panel with Voc of 28 V or less, and BLUETTI's 350 W and 500 W panels can't be used at all. Second, anyone who buys the $289.99 station alone and adds a separate panel has to add the $39 MC4-to-XT60 cable. That moves the parts-separately total on our page from $538.99 to $577.99, which widens the kit's advantage.",
+ "candidates": [
+  "BLUETTI Elite 30 V2 + 100W",
+  "ALLPOWERS P1800 + SF200 200W",
+  "Jackery Explorer 300 v2 + SolarSaga 40 Air",
+  "Anker SOLIX C300X DC + 60W",
+  "Anker SOLIX 536 + 100W",
+  "EcoFlow RIVER 2 Pro + 2x45W",
+  "BLUETTI EB3A + SP100L 100W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Solar input window",
+   "value": "12–28 V, 10 A max, 200 W max",
+   "source": "https://www.firstquadcopter.com/reviews/bluetti-elite-30-v2-review-compact-yet-versatile-power-station/?amp=1",
+   "source_title": "BLUETTI Elite 30 V2 review: compact yet versatile power station (Gyuri Flo, FirstQuadcopter, 2025-11-20)",
+   "read": "2026-11-13",
+   "note": "From the review's technical-parameters table: 'Solar: 12V-28V, 10A Max. 200W'. BLUETTI's US product page states only 'Solar Panels: 200W Max., 2.2H', because its Tech Specs table loads with JavaScript and came back empty when fetched."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Solar input connector",
+   "value": "XT60 (front panel, left side)",
+   "source": "https://www.firstquadcopter.com/reviews/bluetti-elite-30-v2-review-compact-yet-versatile-power-station/?amp=1",
+   "source_title": "BLUETTI Elite 30 V2 review (Gyuri Flo, FirstQuadcopter)",
+   "read": "2026-11-13",
+   "note": "The reviewer describes 'the XT60 PV (solar) input'. BLUETTI's US cable listing below also assigns the Elite 30 V2 to an MC4-to-XT60 cable."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Solar cable needed for third-party or separately bought panels",
+   "value": "BLUETTI Solar Charging Cable, 10A MC4 to XT60, 1,800 mm, $39.00",
+   "source": "https://www.bluettipower.com/products/solar-charging-cable-mc4-xt60",
+   "source_title": "MC4 to XT60 Solar Charging Cable · BLUETTI US",
+   "read": "2026-11-13",
+   "note": "BLUETTI's application-model list: 'EB55 / AC50B / HF1 / HF2 / AC70 / AC2A / AC180T / Elite 30 V2/Elite 10 / AC60P'. It is the only variant listed (10 A), and its rating matches the station's 10 A input limit."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Station-only box contents (no solar cable)",
+   "value": "Elite 30 V2, AC charging cable, car charging cable, grounding screw, user manual",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh · BLUETTI US",
+   "read": "2026-11-13",
+   "note": "There's no MC4 or XT60 solar cable in the list. FirstQuadcopter (Gyuri Flo) also says 'there's no solar panel cable included'. On the same page, the image alt text for the 100 W bundle says '100W solar panel and free charging cable', so the kit appears to include one."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100W",
+   "label": "Kit and station prices, BLUETTI US store",
+   "value": "$489.99 for Elite 30 V2 + 100W Solar (available); $399.99 for + 60W Solar; $289.99 for the station alone",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar · BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search/product. The 100 W kit variant 47282470027483 shows price $489.99, compare-at $489.99, available: true. Separate-parts arithmetic: $289.99 + $249 panel (our existing figure) + $39 cable = $577.99, against $489.99 for the kit."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Series wiring limit (derived)",
+   "value": "Maximum one 12 V-class panel string; two panels at about 22–25 V Voc each in series give about 44–50 V, over the 28 V ceiling",
+   "source": "https://www.firstquadcopter.com/reviews/bluetti-elite-30-v2-review-compact-yet-versatile-power-station/?amp=1",
+   "source_title": "BLUETTI Elite 30 V2 review (Gyuri Flo, FirstQuadcopter)",
+   "read": "2026-11-13",
+   "note": "This is our arithmetic, not a maker statement. Series Voc adds. The 28 V upper limit comes from the reviewer's spec table. PowerSized (powersized.com/solar-generator-kits, read 2026-11-13) lists Voc of 46.5 V for BLUETTI's 350 W panel and 49.1 V for the SORA 500, so both are above 28 V for this station."
+  },
+  {
+   "product": "Jackery Explorer 300 v2",
+   "label": "Max solar input (rival-stated)",
+   "value": "100 W; voltage and plug not listed",
+   "source": "https://powersized.com/solar-generator-kits/",
+   "source_title": "Portable Power Station With Solar Panel Kits: Price Guide · PowerSized",
+   "read": "2026-11-13",
+   "note": "This is the rival's own figure and is recorded only for the comparison. I didn't check it against Jackery."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's own manual wording 'Do not use solar panels with open circuit voltage higher than 28V' and the row 'DC Input 200W Max., 12V-28V, 10A Max.': the V1.0, V3.0 and V4.0 Elite 30 V2 manual PDFs on s4.bluettipower.com either came back as unreadable compressed bytes or were over the 10 MB fetch limit, and local PDF parsing was blocked. I saw those figures only in search snippets, so the voltage window above is sourced to the named reviewer.",
+  "Model and Voc of the 100 W panel in BLUETTI's US Elite 30 V2 kit: the kit page doesn't name it. A third-party catalogue URL suggests SP100L, but the SP100L page on bluettipower.com failed with a redirect loop.",
+  "Whether the 100 W kit's 'free charging cable' is MC4-to-XT60: the only evidence is the image alt text on BLUETTI's US page.",
+  "Solar input voltage window and connector for the ALLPOWERS P1800, Jackery Explorer 300 v2 (and whether the SolarSaga 40 Air plugs in directly), Anker SOLIX C300X DC, Anker SOLIX 536, EcoFlow RIVER 2 Pro and BLUETTI EB3A: not researched because the tool budget ran out.",
+  "T3's Elite 30 V2 review: the page came back truncated, so I couldn't read its spec or connector text.",
+  "SolarGenAdvisor's 'Best Solar Generators Under $500' (cited by ChatGPT): couldn't open it (SSL certificate error), so I couldn't check whether it states the 28 V limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.4206073000000001
+ }
+}

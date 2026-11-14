@@ -1,0 +1,118 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that EcoFlow caps each DELTA 3 Plus input at 15 A, so each input reaches 500 W only from a panel string working at 33.3 V or more and staying under 60 V open-circuit. By the same arithmetic, the BLUETTI Elite 100 V2's single 20 A input needs at least 50 V of working voltage under a 60 V ceiling to reach 1,000 W, which Notebookcheck says is difficult in practice.",
+ "standout": 3,
+ "standout_why": "I compared four pages. Volt & Valley (the cited rival) gives '1,000W ... two separate 500W MPPT inputs' but no voltage window and no amps. It also pairs the station with 440 W of panels. Our current Dealectric page gives '11–60 V, 15 A' and a Voc warning, but it never turns 15 A into a minimum panel voltage, and it calls the Elite's 20 A single input fine for 'two panels in parallel' without checking that against the 60 V cap. EcoFlow's DELTA 3 series page says only '500W MPPT × 2'. ChatGPT's own answer offered the Elite 100 V2 as a full 1,000 W alternative, with no hint that one 12–60 V / 20 A input makes 1,000 W hard to reach. None of these pages states EcoFlow's rule that a panel over any one limit 'cannot be used', the 33.3 V-per-input minimum, or the 50 V minimum for the Elite.",
+ "decides": "This confirms the EcoFlow DELTA 3 Plus as the pick and sets what panels the plan needs. To get 1,000 W the shopper needs two separate strings of about 500 W, one per input. Each string must work at 33.3 V or more (500 W ÷ 15 A), have a cold-weather Voc of 60 V or less, and stay at 15 A or less. That rules out paralleling two 20 V-class panels into one input, since EcoFlow's own example (12.9 A × 2 = 25.8 A) is refused, and it rules out putting two 40 V-class panels in series. It also removes the BLUETTI Elite 100 V2 as an equal alternative. Its one input needs at least 50 V at 20 A while staying under 60 V Voc, and Notebookcheck works out that two BLUETTI PV350s can't go in series (2 × 46.5 V = 93 V), leaving about 700 W.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input limits per input, and EcoFlow's rule for when a panel can be used",
+   "value": "11–60 V, 15 A max, 500 W max per input. Panel Voc must be inside the voltage range, panel current must not exceed 15 A, and panel power must not exceed 500 W. EcoFlow: 'All three conditions must be met; exceeding any one of them means the solar panels cannot be used.'",
+   "source": "https://www.ecoflow.com/ph/support/faq?page=29",
+   "source_title": "Welcome to EcoFlow Support (FAQ: number of solar panels and charging power, DELTA 3 / DELTA 3 Plus)",
+   "read": "2026-11-14",
+   "note": "This is EcoFlow's own support FAQ, on the Philippines site. EcoFlow's US store page returned HTTP 429 every time I tried, so I couldn't check the same figures on the US page."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Number of PV inputs",
+   "value": "2 inputs (DELTA 3 has 1)",
+   "source": "https://www.ecoflow.com/ph/support/faq?page=29",
+   "source_title": "Welcome to EcoFlow Support (FAQ: differences from the previous generation)",
+   "read": "2026-11-14",
+   "note": "EcoFlow quote: 'The PV input has been upgraded from 1 input to 2 inputs (EcoFlow DELTA 3 Plus has 2 inputs, and DELTA 3 still has 1 input).'"
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "EcoFlow's worked examples of what one input refuses",
+   "value": "Two panels in series: 74.2 V × 12.9 A = 957.18 W, over the 500 W limit. Two panels in parallel: 12.9 A × 2 = 25.8 A, over the 15 A limit.",
+   "source": "https://www.ecoflow.com/ph/support/faq?page=29",
+   "source_title": "Welcome to EcoFlow Support (FAQ: number of solar panels and charging power)",
+   "read": "2026-11-14",
+   "note": "By EcoFlow's own examples, two 20 V-class or 37 V-class panels can't share one input. In practice each input takes one roughly 500 W string."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Minimum string working voltage to reach 500 W on one input (arithmetic)",
+   "value": "33.3 V (500 W ÷ 15 A), with Voc at 60 V or less",
+   "source": "https://www.ecoflow.com/ph/support/faq?page=29",
+   "source_title": "Welcome to EcoFlow Support (FAQ: number of solar panels and charging power)",
+   "read": "2026-11-14",
+   "note": "My arithmetic from EcoFlow's 15 A and 500 W limits. For 1,000 W total, each of the two inputs needs its own ≥500 W string inside a 33.3 V working-voltage to 60 V Voc window."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Total solar input as EcoFlow markets it",
+   "value": "1,000 W ('500W MPPT × 2'), full charge in 70 minutes",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-14",
+   "note": "The page gives no voltage or current figures. Its footnote says test results are 'subject to different conditions'."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Reviewer result with both inputs in use",
+   "value": "'really close to that 1,000W combined input' (no exact figure given)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus review, The Solar Lab",
+   "read": "2026-11-14",
+   "note": "The Solar Lab used Serious 415W Bifacial panels, one on each 500 W input. It doesn't publish the measured watts or the panel voltages."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input spec",
+   "value": "1,000 W max, 12–60 V, 20 A max, one input",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "The numbers come from the compare table on BLUETTI's US page. The page also lists 'Dual Charging – AC + DC, 1,200W Max.'"
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Minimum string working voltage to reach 1,000 W on its one input (arithmetic)",
+   "value": "50 V (1,000 W ÷ 20 A), with Voc at 60 V or less",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "My arithmetic from BLUETTI's 20 A and 60 V limits. That leaves only a 10 V window between the working voltage the string needs and its open-circuit ceiling."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Notebookcheck on reaching 1,000 W through one input",
+   "value": "'there is only a single solar input, which makes reaching the advertised 1,000 W input difficult in practice'. By Notebookcheck's figures, two BLUETTI PV350s (46.5 V Voc each) can't be wired in series under the 60 V cap, and the setups it worked through deliver about 700 W.",
+   "source": "https://www.notebookcheck.net/Good-power-station-or-just-green-marketing-Bio-based-Bluetti-Elite-100-V2-with-1-kWh-reviewed.1198030.0.html",
+   "source_title": "Good power station or just green marketing? Bio-based Bluetti Elite 100 V2 with 1 kWh reviewed - Notebookcheck",
+   "read": "2026-11-14",
+   "note": "These are Notebookcheck's own calculations, not a measured solar test. It also worked through five BLUETTI 200 W panels (22.9 V, 10.31 A) and found they fall short of 1,000 W. It says a second XT input would have made sense. Published 2026-01-06, updated 2026-10-05."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$499 (in stock)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh - BLUETTI US",
+   "read": "2026-11-14",
+   "note": "From storecheck.py product; compare-at price also $499."
+  }
+ ],
+ "unsourced": [
+  "The DELTA 3 Plus 15 A per-input figure on EcoFlow's US product or spec page, and today's US price: us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck.py. The 15 A comes from EcoFlow's PH support FAQ instead.",
+  "A DELTA 3 Plus manual specifications table: manuals.plus returned 403, and I found no readable ecoflow.com manual PDF.",
+  "The exact Voc/Isc printed in the BLUETTI Elite 100 V2 user manual: the PDF opened but has no text layer, and extracting text needed approval I didn't have.",
+  "Vmp/Voc/Isc for a real 500 W panel that fills one DELTA 3 Plus input (the Pecron PV500 is a candidate): pecron.com and the outboundpower.com listing both returned HTTP 429. pecron.com's search shows the PV500 at $539, out of stock, with no specs. A search snippet said Vmp 42.5 V, Imp 11.8 A, Voc 49.3 V, Isc 12.5 A, but I couldn't open a page to confirm, so I left those numbers out.",
+  "Voc/Isc of EcoFlow's 400 W lightweight panel, to show whether it can fill one input: the manual PDF on cdn.solarpowersupply.eu has no readable text, so I couldn't check the 39.3 V / 12.2 A in a search snippet.",
+  "Any reviewer's measured per-input watts on the DELTA 3 Plus with named panel voltages: The Solar Lab gives only 'really close to 1,000W'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1885528
+ }
+}

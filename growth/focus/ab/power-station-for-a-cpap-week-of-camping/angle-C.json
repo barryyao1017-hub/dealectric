@@ -1,0 +1,81 @@
+{
+ "angle": "C",
+ "gap": "None of ChatGPT's results say that ResMed's own AirSense 11 DC/DC converter (ref 39231) switches itself off when its supply is too low to run the machine (its light turns amber first), or that ResMed recommends a deep-cycle battery as the source. Nor do they say the converter sells in the US for $95 with no prescription.",
+ "standout": 1,
+ "standout_why": "Compared against willitrunpower.com/best-power-station-for/cpap (cited) and preparedstates.com/guides/power-station-for-cpap (cited); amphourly, juicebench and the Reddit thread were not opened. willitrunpower already has the converter's 12 V/24 V, 10 A/5 A input and 24 V, 3.75 A output, notes that a 10 A car port matches, and says ResMed's converter runs the HumidAir humidifier and ClimateLineAir heated tube. preparedstates gives no converter specs. Neither page has the converter's low-battery shutoff, ResMed's deep-cycle battery recommendation, the US price, or the no-prescription status. So only part of my finding is new, and it doesn't change the pick on its own.",
+ "decides": "It supports the BLUETTI AC180 pick and doesn't change it. BLUETTI's AC180 page lists a regulated 12V/10A car outlet, which matches the 10 A at 12 V input on ResMed's converter page. The converter switches off when its supply runs too low, so you should test a full night at home before the trip. The page should list the converter (ResMed ref 39231, $95, no prescription per cpapsupplies.com) as a required add-on to the AC180, about $594 in total at today's $499 BLUETTI price.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2",
+  "ResMed AirSense 11 DC/DC Converter (39231)"
+ ],
+ "findings": [
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (39231)",
+   "label": "Input and output rating",
+   "value": "Input 12 V / 24 V at 10 A / 5 A; output 24 V at 3.75 A; 3 m lead; 12-month warranty; 5-year design life",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense™ 11 DC/DC Converter | ResMed shop (UK)",
+   "read": "2026-11-13",
+   "note": "This is ResMed's own store page, for UK sale only. I couldn't open a ResMed US page for this part. The output works out to 24 × 3.75 = 90 W."
+  },
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (39231)",
+   "label": "Humidifier and heated tube on DC",
+   "value": "ResMed's page says it powers an AirSense 11 with the HumidAir humidifier and ClimateLineAir heated tube",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense™ 11 DC/DC Converter | ResMed shop (UK)",
+   "read": "2026-11-13",
+   "note": "This is a maker statement. willitrunpower already reports it."
+  },
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (39231)",
+   "label": "Low-battery behaviour and recommended source",
+   "value": "Indicator is green when on and amber when the vehicle battery is low. When the battery is too low to run the device, the converter and its light turn off. ResMed recommends a deep-cycle battery and says to unplug the converter when not in use.",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense™ 11 DC/DC Converter | ResMed shop (UK)",
+   "read": "2026-11-13",
+   "note": "Paraphrased from the maker page, which gives no cutoff voltage. The included user guide isn't linked in a form I could open."
+  },
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (39231)",
+   "label": "US price, prescription status",
+   "value": "$95.00, in stock, no prescription required, FSA/HSA eligible",
+   "source": "https://cpapsupplies.com/resmed-airsense-11-dc-power-converter",
+   "source_title": "Resmed AirSense 11 AutoSet Auto-CPAP Machine DC-DC Power Converter | CPAPsupplies.com",
+   "read": "2026-11-13",
+   "note": "US retailer page listing model 39231 and UPC 619498392315. It says the converter powers 'both the AirSense 11 Auto-CPAP Machine and the Humidifier'."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "12 V car outlet",
+   "value": "1 × 12 V / 10 A car outlet, regulated",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 product page",
+   "read": "2026-11-13",
+   "note": "The rating equals the converter's 10 A input at 12 V. The page mentions an ECO mode that turns outputs on and off automatically, but gives no thresholds and doesn't say whether it covers the DC outlet."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "US price today",
+   "value": "$499.00 (AC180 alone); $769.00 with a 200 W panel (compare-at $899)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Read from the store's Shopify product data with storecheck.py; both variants listed as available. With the $95 converter the AC180 setup comes to $594."
+  }
+ ],
+ "unsourced": [
+  "ResMed US (resmed.com/en-us) page or US price for the Air11 DC/DC converter: support.resmed.com returned 403, and 1800cpap, thecpapshop, respshop, directhomemedical and easybreathe returned 429 or 403.",
+  "Official Air11 DC/DC converter user guide (low-voltage cutoff in volts, aircraft exclusion, model 390002): only an unofficial manualslib.tech copy turned up, and it failed with a certificate error.",
+  "DC and battery section of the US AirSense 11 user guide (398101): the PDF downloaded, but I couldn't extract its text because PDF tools need Bash approval.",
+  "12 V car-port amps and DC ECO auto-off thresholds for BLUETTI Elite 200 V2, Elite 30 V2, ALLPOWERS S2000 Pro/P1800/R600 and Tenergy T320: not opened within the call budget.",
+  "Which AirSense 11 DC cable Medistrom sells for the Pilot-24 Lite (part number): not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1047791999999999
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that BLUETTI's Elite 200 V2, which our page and ChatGPT both recommend, may ship with AC-ECO mode turned on, a setting that cuts AC output after a stretch of low or no load, so the fridge could lose power during a compressor off-cycle unless the shopper turns AC-ECO off (wording seen only in search snippets; the manual text is not yet read).",
+ "standout": 2,
+ "standout_why": "I read the four rival pages ChatGPT cited that would load. theoutagebrief.com/2026/10/22 only estimates runtimes at 85% inverter efficiency and gives an estimated compressor surge of 750–1,200 W. homepowerfacts.com/can-it-run/refrigerator gives a 1,000 W startup figure from Champion and a 67 W average draw. wattpowerstation.com/guides/portable-power-station-for-refrigerator gives CNET's 12.58–38.58 h fridge runtimes and the station's own draw (12–74 W), and covers only UPS pass-through. None of them mention ECO, auto-off, AC timeout or any low-load shutoff. The Yahoo/CNET lab page returned 403, so I could not check it. They do cover the other mechanisms (surge and inverter overhead), so the auto-off point is the only new mechanism. It is a setup step, not a reason to pick a different unit, so it scores 2 rather than 3.",
+ "decides": "This confirms the BLUETTI Elite 200 V2 pick on one condition. The 24-hour plan only works with AC-ECO turned off, and auto-off settings on the other candidates (Anker's outlet timeout, EcoFlow's AC timeout) should be set to never. The page should carry this as a required setup step next to each pick. It cannot go on the page until the Elite 200 V2 manual text is read and quoted.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 300",
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 2000 v2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Rival coverage of station self-draw during a fridge test (context, not our finding)",
+   "value": "12 W (Anker SOLIX C2000 Gen 2) to 74 W (Oscal PowerMax 2400)",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-for-refrigerator/",
+   "source_title": "Portable Power Station for a Refrigerator: Tested Run Times",
+   "read": "2026-11-13",
+   "note": "The rival credits these figures to CNET's test on a 118 V, 7.2 A Whirlpool fridge. It says nothing about ECO or auto-off. Recorded to show what rivals already cover."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of compressor surge (context, not our finding)",
+   "value": "about 750–1,200 W for a fraction of a second (the page labels this an estimate)",
+   "source": "https://theoutagebrief.com/2026/10/22/best-power-station-refrigerator/",
+   "source_title": "Best power station for a refrigerator – The Outage Brief",
+   "read": "2026-11-13",
+   "note": "No ECO, auto-off or no-load figure on the page. All runtimes are calculated at 85% inverter efficiency."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 200 V2 AC-ECO default state, power threshold (W), hold time (hours) and the manual's advice to disable ECO for refrigerators. Search snippets say AC-ECO and DC-ECO are 'enabled by default', that one press of the AC button toggles both, and that the manual advises disabling ECO 'when connecting small devices below 60W or critical appliances like lights and refrigerators'. I could not read this in a source. The BLUETTI manual PDFs I opened are image-only or compressed: US V1.2 at https://s4.bluettipower.com/bluetti/purchasePageBiz/2024/11/Elite%C2%A0200%C2%A0V2%C2%A0User%20Manual%20US%20EN-1731395730059-2589.pdf (over 10 MB, would not load), V2.0 at https://s4.bluettipower.com/bluetti_lgf/support/2025/05/2e595f43-44bf-471a-8eff-da42abfbbcca.pdf and https://s4.bluettipower.com/bluetti_lgf/support/2025/05/1b1eb0a5-001a-4610-9c1b-14a3974b70e8.pdf, and V4.0 at https://media.adeo.com/mkp/60b199d46c88c062f2bebe4ea5380e4c/media.pdf. The manuals.plus HTML copies returned 403, and community.bluettipower.com threads redirect to the forum home page. Next step: run pdftotext on the PDF copies WebFetch saved under /Users/j0y0825/.claude/projects/-private-var-folders-cq-6y9tvk8j6fq4v0b71hs4pg3h0000gp-T-dealectric-eval-cli/7ddec0c5-eae9-4575-b946-f9f602ced1ca/tool-results/ (Bash calls were not approved this session).",
+  "Same ECO default and fridge warning for the BLUETTI Elite 100 V2 and AC180 (snippets: AC180 thresholds of 15–30 W AC and 5–10 W DC for 1–4 h; Elite 100 V2 default-on with the same fridge warning). Both PDFs were unreadable through WebFetch.",
+  "Anker SOLIX C2000 Gen 2 outlet auto-off timeout (duration, whether it can be disabled). The manual PDF at https://cdn.shopify.com/s/files/1/0643/9128/2937/files/Anker_SOLIX_C2000_Gen_2_Manual.pdf is over 10 MB, device.report returned 403, and the LANOC review returned 429.",
+  "EcoFlow DELTA 2 Max / DELTA Pro 3 default AC timeout and the 'Never' option. The DELTA 2 Max manual PDF is encrypted, and snippets give 12 h for the original DELTA, which is a different model.",
+  "Jackery Explorer 2000 v2 AC auto-off behaviour. Not searched because I ran out of tool-call budget.",
+  "Rated no-load (inverter idle) draw in W from any maker's spec page for the candidates. Not found in the pages I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0129755000000003
+ }
+}

@@ -1,0 +1,121 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured usable AC output for any candidate station. The closest named test to a pellet-stove load is Notebookcheck's: the BLUETTI Elite 300 gave about 2,650 Wh at a constant load of about 200 W, which is about 12.3 h at 215 W and about 17.7 h at 150 W. StorageReview measured 1,800 Wh from the EcoFlow DELTA 2 Max at 350 W and 1.91 kWh from the BLUETTI Elite 200 V2, so at 150 W those two only just reach 12 h.",
+ "standout": 2,
+ "standout_why": "I compared against homebatteryreport.com (it says 'We have not lab-tested these units' and works runtimes from rated Wh divided by stove VA, ignoring losses and standby draw), buyersheet.com (runtimes assume 85 % efficiency, with no measured capacity or idle draw), and ChatGPT's own answers (85 % assumptions, with the Elite 300 at ~13 h described as 'a calculated runtime, not a verified 12-hour field test'). I could not open wattmatrix.app (404 on 2026-11-13) or enoughwatts.com (certificate error). The HARMAN PDF is about battery-backup setup. No rival gives a reviewer-measured usable Wh, an idle draw or a measured UPS switchover for any candidate.",
+ "decides": "It confirms the Elite 300 for stoves that average up to about 200 W. Notebookcheck measured 2,650 Wh at about 200 W, which is about 13 h at 200 W. At 215 W it lasts about 12.3 h, so there's no margin. For the 216 VA Quadra-Fire Classic Bay 1200 class or higher, a measured larger unit is the safer pick: Anker SOLIX F3800 (StorageReview 2,980 Wh, about 13.9 h at 215 W) or EcoFlow DELTA Pro 3 (OutdoorGearLab 3,790 Wh, about 17.6 h at 215 W). It also removes the 2 kWh tier as a 12-hour answer at 150 W with margin: DELTA 2 Max measured 1,800 Wh (12.0 h), and Elite 200 V2 measured 1.91 kWh (12.7 h, before the roughly 10 W idle draw the Gadgeteer reported). Two corrections for our page: the Elite 300 '150 W' cell (about 13.5 h) is conservative next to the measured figure, and the Elite 200 V2 cell (about 9 h at 150 W) is lower than what StorageReview's 1.91 kWh supports.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Usable AC energy, Notebookcheck (Marcus Schwarten)",
+   "value": "about 2,650 Wh of 3,014.4 Wh rated, at a constant load of just over 200 W; AC efficiency just under 88 % (just over 92 % at 1,800 W)",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review (Notebookcheck)",
+   "read": "2026-11-13",
+   "note": "Published 2026-03-09, updated 2026-10-05. EU 230 V test unit; Notebookcheck says it 'differs slightly' from the US model. Runtime arithmetic: 2,650 / 215 W = 12.3 h; 2,650 / 200 W = 13.3 h; 2,650 / 150 W = 17.7 h (efficiency is a little lower at 150 W than at 200 W, so treat 17.7 h as an upper bound)."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Usable AC energy and UPS switchover, StorageReview (Dylan Bryan)",
+   "value": "2,670 Wh on the output side, measured with a Kill-A-Watt; switchover measured at 8 ms line-to-battery and 8.25 ms battery-to-line",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review: 3,014Wh, 2,400W and an 8ms UPS switchover in a 58-pound box (StorageReview)",
+   "read": "2026-11-13",
+   "note": "Dated 2026-08-27. US unit. The discharge load isn't stated. Switchover was captured on a Quarch power analyzer with a workstation as the load; the spec is ≤10 ms."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Usable AC energy, AC-on idle draw and UPS switchover, The Technology Man (Gidon)",
+   "value": "2,819 Wh at a constant 1 kW heater load (2 h 46 min); idle with the AC inverter on and Eco off was 100 % to 90 % in 16 h, about 19 W; switchover 8.9 ms on an oscilloscope",
+   "source": "https://thetechnologyman.com/bluetti-elite-300-review-3kwh-capacity-but-there-are-compromises/",
+   "source_title": "Bluetti Elite 300 review: 3kWh capacity but there are compromises (The Technology Man)",
+   "read": "2026-11-13",
+   "note": "Dated 2026-03-25. Likely a 230 V unit (the region isn't stated on the page). The 1 kW figure overstates what you'd get at a pellet-stove load because efficiency is higher there; prefer Notebookcheck's ~200 W result. Idle arithmetic: 10 % of 3,014 Wh = 301 Wh over 16 h, about 19 W."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw, The Solar Lab",
+   "value": "about 15 W with nothing plugged in; overall efficiency about 86 %",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page names no author and gives no date, and it doesn't say whether the AC output was on. Over 12 h, 15–19 W of idle draw is 180–230 Wh, about 7–9 % of the measured capacity."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge energy, StorageReview (Dylan Dougherty)",
+   "value": "1.91 kWh discharged (2.44 kWh drawn from the wall to recharge)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable power meets lab-grade reliability: BLUETTI Elite 200 V2 review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "Dated 2025-04-25. The load isn't stated. Arithmetic: 1,910 / 150 W = 12.7 h; 1,910 / 215 W = 8.9 h. A 150 W stove only just makes 12 h, with no ignition reserve."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw, The Gadgeteer (Greg Cleveland)",
+   "value": "about 10 W with AC and DC left on (written as '10w/h')",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "BLUETTI Elite 200 V2 portable power station review (The Gadgeteer)",
+   "read": "2026-11-13",
+   "note": "Published 2025-01-06, updated 2026-11-02. The method isn't stated. The UPS switchover wasn't measured; it's quoted as BLUETTI's 15 ms claim."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Usable AC energy, StorageReview (Kevin OBrien)",
+   "value": "1,800 Wh through the AC inverter at a 350 W load (2,048 Wh rated)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-2-max-portable-power-station-review",
+   "source_title": "EcoFlow DELTA 2 Max portable power station review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "Dated 2023-07-09. Arithmetic: 1,800 / 150 W = 12.0 h; 1,800 / 215 W = 8.4 h. The UPS switchover wasn't measured; the article cites EcoFlow's 30 ms."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "AC-on idle draw and inverter efficiency, The Solar Lab",
+   "value": "13.6 W with only the AC inverter on and nothing plugged in; 86 % inverter efficiency",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-2-max-review",
+   "source_title": "EcoFlow DELTA 2 Max Review: Is It Still Worth Buying Years Later? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page names no author and gives no date. 13.6 W over 12 h is 163 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Usable energy, OutdoorGearLab (Kenji Mowrey)",
+   "value": "3,790 Wh of 4,096 Wh rated (over 93 %)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 review (OutdoorGearLab)",
+   "read": "2026-11-13",
+   "note": "Dated 2026-01-13. The test load isn't specified, and neither idle draw nor UPS switchover was measured. Arithmetic: 3,790 / 215 W = 17.6 h; 3,790 / 150 W = 25.3 h."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Usable energy and UPS switchover, StorageReview (Kevin OBrien)",
+   "value": "2,980 Wh delivered before the inverter cut off (4,930 Wh to charge from 0 to 100 %); switchover measured at 13 ms to battery and 14 ms back to utility",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "Anker SOLIX F3800: Do we really need gas generators? (StorageReview)",
+   "read": "2026-11-13",
+   "note": "Dated 2024-06-21. The load isn't stated. 2,980 Wh is about 78 % of the 3,840 Wh rating, well below the 85–93 % that ChatGPT and WattMatrix assume. Arithmetic: 2,980 / 215 W = 13.9 h; 2,980 / 150 W = 19.9 h. The switchover was measured with a Quarch Mains Power Analysis module."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC200L measured usable AC energy: Notebookcheck's hands-on review (Polly Allcock, 2024-08-05) gives no measured figure, only BLUETTI's quoted 12 W self-consumption, 93 % efficiency and 95 % DoD. A Nextpit figure of about 1.68 kWh appeared only in a search summary; I did not open it, and the summary says the review was done in collaboration with BLUETTI.",
+  "ALLPOWERS R4000 measured usable energy and idle draw: the only test I found (exspenditure.com, in a search result I did not open) quoted 3,650 Wh against a '4,000 Wh advertised' rating. That is more than the real 3,456 Wh rating, so I didn't use it. I found no named lab measurement.",
+  "Measured AC idle draw for the EcoFlow DELTA Pro 3, Anker SOLIX F3800 and ALLPOWERS R4000: OutdoorGearLab and StorageReview don't report it.",
+  "Jackery HomePower 3600 Plus and HomePower 2000 Plus v2 measured usable energy: I didn't search for these within the budget.",
+  "A named, model-specific measurement of a pellet stove's average draw over 12–24 h: I only found hearth.com forum posts from anonymous owners (search results I did not open), so I left this out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0198406
+ }
+}

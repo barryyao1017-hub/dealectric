@@ -1,0 +1,73 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the BLUETTI Elite 300's advertised '4,800 W' is Power Lifting, which BLUETTI's manual limits to resistive loads and does not count as a start allowance for compressors. A fixed-speed 5,000 BTU AC therefore has to start within the 2,400 W continuous rating, and a starting draw of 2 to 3 times about 450 W fits inside that.",
+ "standout": 2,
+ "standout_why": "I compared homepowerfacts.com (cited), lightsonlab.com (cited), our own page and the other top results. homepowerfacts gives a 1,050 W starting figure from Champion. lightsonlab gives 1,000–1,500 W starting watts for 5,000 BTU, says inverter units have 'almost no startup surge' and mentions soft-start kits. Our page says every station 'handles (1,800 W continuous and 2,700 W surge at minimum)' and lists the Elite 300 as '3,014.4 Wh / 2,400 W'. None of them says that a maker's headline surge or 'lifting' number may be a voltage-reduction mode for heaters rather than compressor-start headroom. None gives locked-rotor amps or says how long a station can hold a surge.",
+ "decides": "This confirms the pick and does not change it. The Elite 300 can start a conventional 5,000 BTU unit because its 2,400 W continuous rating is about 1.8 times the top of lightsonlab's 1,000–1,500 W starting range. The page should not cite '4,800 W' as compressor headroom, and Power Lifting should stay off for an AC load. LG's own description of its inverter compressor supports the page's 'only with an inverter AC' framing for the overnight energy math. An inverter AC changes runtime, not whether the compressor can start.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "LG LW6023IVSM (6,000 BTU inverter window AC)"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "What the '4,800 W' figure is",
+   "value": "Power Lifting: for 'pure resistive loads rated between 2,400W and 4,800W'; 'actual output power remains at 2,400W'; 'not a startup allowance for motors or compressors'",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3,014Wh, 2,400W and an 8ms UPS switchover in a 58-pound box (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview attributes this to BLUETTI's manual. It also quotes BLUETTI's FAQ: motor and compressor devices 'can draw two to four times their rated power at startup and could overload the unit.' I could not open BLUETTI's manual PDF: it exceeded the fetch size limit."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Maker's own wording of the output rating",
+   "value": "'2,400 W output (4,800 W lifting) for heavy loads like microwaves and heaters'",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "The maker gives the 4,800 W figure as 'lifting' for resistive loads (microwaves, heaters). The page shows no surge or overload-duration spec, and its Tech Specs section was empty when I read it."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-13",
+   "note": "From the storecheck.py product lookup of the Shopify variant 'Elite 300'. compare_at is also $1,199, so there is no sale."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy",
+   "value": "2.67 kWh delivered from full to empty; 3.49 kWh to charge from 0 to 100 %",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "StorageReview measured both with a Kill-A-Watt. 2.67 kWh is 89 % of the rated 3,014 Wh. That beats the page's 'about 2.56 kWh' (85 %) estimate. At a 450 W flat-out draw it gives about 5.9 h, and at a 240 W average about 11.1 h (my arithmetic)."
+  },
+  {
+   "product": "LG LW6023IVSM",
+   "label": "Inverter vs fixed-speed mechanism (maker's words)",
+   "value": "The inverter 'adjusts the compressor motor speed to regulate temperature'; a non-inverter unit 'turns the compressor either on or off'",
+   "source": "https://www.lg.com/us/air-conditioners/lg-lw6023ivsm-window-air-conditioner",
+   "source_title": "LG 6,000 BTU DUAL Inverter Smart Window Air Conditioner LW6023IVSM",
+   "read": "2026-11-13",
+   "note": "6,000 BTU, 'Cools Up To 250 sq. ft.' LG claims 'up to a 40%' CEER advantage over the DOE minimum of 11 CEER. The page shows no minimum-speed wattage."
+  }
+ ],
+ "unsourced": [
+  "Locked-rotor amps (LRA) for any 5,000 BTU window AC. Frigidaire FFRA051WAE and LG LW6023IVSM spec-sheet PDFs (pcrichard.com) were image-only or compressed, the retail pages list only running amps, and I could not run local PDF text extraction.",
+  "How long the BLUETTI Elite 300 and ALLPOWERS R4000 can hold an overload (W for how many ms or s). The BLUETTI manual PDF was too large to fetch and the product page shows no spec table.",
+  "Minimum steady-state wattage of the LG LW6023IVSM once it reaches the setpoint. The RTINGS review is paywalled and LG's page has no figure.",
+  "Default AC-ECO auto-off threshold and timer on the Elite 300 or AC200L. Search snippets mention 4 h below 15–50 W on other BLUETTI models, but I did not open a manual page that confirms it for these models."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0526936999999998
+ }
+}

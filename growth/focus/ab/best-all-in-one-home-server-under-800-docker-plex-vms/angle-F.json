@@ -1,0 +1,198 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that, at November 2026 memory prices, a barebones Intel mini PC plus 32 GB of DDR5 costs more than $800 before any SSD (MS-01 $469 + $569.98 kit = $1,038.98), so the only way to get 32 GB under $800 is a box sold with the RAM fitted. For example, TerraMaster's F4-424 Pro costs $759.99 with 32 GB DDR5 included, while TerraMaster sells a single 32 GB stick alone for $699.99.",
+ "standout": 2,
+ "standout_why": "Rival pages checked: bitdoze.com/best-mini-pc-proxmox (cited) lists a Crucial 32 GB DDR5 kit at $569.98 and works out 'barebone + 32GB about $1,239' only for the i9 MS-01. It never connects that to an under-$800 i5 build or to RAM-included boxes. littlecompute.com/best-mini-pc-for-plex (cited) gives no RAM prices and no configured totals. homelabcompass.com (cited) prices the MS-01 at 'about $600 barebones and up' and gives no configured total or 2026 RAM cost. ChatGPT's own answer budgeted '$100 for 32GB DDR5' and '$120–$180 for 32–64GB', which today's prices contradict by about 5x.",
+ "decides": "Drop the pick ChatGPT kept repeating, a barebones MS-01 or MS-01 SE with RAM added, from 'under $800'. RAM-included units should lead. On the NAS side that is the TerraMaster F4-424 Pro ($759.99, 32 GB, i3-N305 Quick Sync) or the UGREEN DXP4800 Plus ($619.99, 8 GB, which is enough for Docker and Plex but tight for two VMs). On the mini-PC side, only a model sold with RAM at checkout fits. The page should say plainly: price the RAM before you buy a barebones unit.",
+ "candidates": [
+  "Minisforum MS-01",
+  "Minisforum MS-01 SE",
+  "Minisforum NAB6 Lite",
+  "Minisforum M1-Plus",
+  "Minisforum MS-A2",
+  "Beelink EQ14 (N150)",
+  "AOOSTAR WTR Pro (Ryzen 7 5825U)",
+  "AOOSTAR WTR Max (Intel i5-1235U)",
+  "AOOSTAR WTR Max (Ryzen 7 PRO 8845HS)",
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP4800 Pro",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-424 Pro",
+  "TerraMaster F4-425 Pro",
+  "TerraMaster F4-425 Plus",
+  "Asustor AS5404T",
+  "Dell OptiPlex 7010 SFF (refurb)",
+  "HP EliteDesk 800 G6 SFF (refurb)",
+  "GMKtec K8 Plus",
+  "Synology DS925+",
+  "QNAP TS-464-8G"
+ ],
+ "findings": [
+  {
+   "product": "Minisforum MS-01",
+   "label": "Lowest listed price, US store",
+   "value": "$469.00 (compare-at $1,619)",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-workstation",
+   "source_title": "MINISFORUM MS-01 Workstation",
+   "read": "2026-11-13",
+   "note": "Lowest variant price from the store's own search endpoint. The product-variant endpoint returned HTTP 429, so the variant behind $469 was not shown. bitdoze lists the i5 barebone at $439 (Sept 2026), which fits $469 being the barebone."
+  },
+  {
+   "product": "Minisforum MS-01 SE",
+   "label": "Lowest listed price, US store",
+   "value": "$375.00 (compare-at $969); i5-12600H, dual 2.5GbE, up to 64 GB DDR4",
+   "source": "https://store.minisforum.com/products/minisforum-ms-01-se-workstation",
+   "source_title": "MINISFORUM MS-01 SE Workstation",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. The store text says DDR4, not DDR5, so the DDR5 kit price below does not apply to this model. Variant list was blocked by HTTP 429."
+  },
+  {
+   "product": "Minisforum NAB6 Lite",
+   "label": "Lowest listed price, US store",
+   "value": "$319.00 (compare-at $849)",
+   "source": "https://store.minisforum.com/products/minisforum-nab6lite-mini-pc",
+   "source_title": "MINISFORUM NAB6 Lite",
+   "read": "2026-11-13",
+   "note": "Lowest variant only. ChatGPT's card showed $575 for 16 GB / 1 TB. I could not read which configuration $319 buys (HTTP 429)."
+  },
+  {
+   "product": "Minisforum M1-Plus",
+   "label": "Lowest listed price, US store",
+   "value": "$591.00 (compare-at $899)",
+   "source": "https://store.minisforum.com/products/minisforum-m1-plus-mini-pc",
+   "source_title": "MINISFORUM M1-Plus",
+   "read": "2026-11-13",
+   "note": "Matches the $591 ChatGPT showed for 16 GB / 512 GB at Best Buy. I could not confirm the variant on the Minisforum store (HTTP 429)."
+  },
+  {
+   "product": "Minisforum MS-A2",
+   "label": "Lowest listed price, US store",
+   "value": "$447.00 (compare-at $2,699); AMD Ryzen, DDR5 to 96 GB, 2× SFP+ 10G + 2× 2.5GbE",
+   "source": "https://store.minisforum.com/products/minisforum-ms-a2-workstation",
+   "source_title": "MINISFORUM MS-A2",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. Where it loses: it is an AMD part, so it has no Intel Quick Sync for Plex, and it is barebones, so it carries the same DDR5 cost problem."
+  },
+  {
+   "product": "general",
+   "label": "32 GB DDR5 SO-DIMM kit price (Crucial 2×16 GB)",
+   "value": "$569.98",
+   "source": "https://www.bitdoze.com/best-mini-pc-proxmox/",
+   "source_title": "Best Mini PC for Proxmox 2026: MS-01, MS-A2, EQ14 (Bitdoze)",
+   "read": "2026-11-13",
+   "note": "Bitdoze's listed price, page dated 2026-09-21. It also lists a G.SKILL 64 GB DDR5-5600 kit at $1,199.99. Arithmetic: MS-01 $469 + $569.98 = $1,038.98 before any SSD, which is $238.98 over the $800 budget. Amazon could not be checked (amzcheck returned nothing)."
+  },
+  {
+   "product": "general",
+   "label": "Maker's own DDR5 SO-DIMM prices (TerraMaster)",
+   "value": "32 GB A-SRAMD5-32G $699.99 (out of stock); 16 GB A-SRAMD5-16G $469.99 (in stock)",
+   "source": "https://www.terra-master.com/products/a-sramd5-32g",
+   "source_title": "A-SRAMD5-32G (TerraMaster US store)",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. The 16 GB stick is at https://www.terra-master.com/products/a-sramd5-16g. This confirms Bitdoze's kit price from a second, maker-store source."
+  },
+  {
+   "product": "TerraMaster F4-424 Pro",
+   "label": "US store price",
+   "value": "$759.99 (compare-at $859.99); Intel Core i3 8-core/8-thread, 32 GB DDR5 included",
+   "source": "https://www.terra-master.com/products/f4-424-pro",
+   "source_title": "F4-424 Pro (TerraMaster US store)",
+   "read": "2026-11-13",
+   "note": "The 32 GB comes from the store blurb plus our page's spec row (i3-N305, 32 GB DDR5). This is the only 4-bay Intel box in the set with 32 GB fitted under $800, and its RAM alone would cost $699.99 from TerraMaster. Our page currently says 'about $699 (reviews, via search)'; replace that with $759.99."
+  },
+  {
+   "product": "TerraMaster F4-425 Pro",
+   "label": "US store price",
+   "value": "$699.99 (compare-at $799.99); Intel N350 8-core, 16 GB DDR5, dual 5GbE",
+   "source": "https://www.terra-master.com/products/f4-425-pro",
+   "source_title": "F4-425 Pro (TerraMaster US store)",
+   "read": "2026-11-13",
+   "note": "ChatGPT's card said i3-N305, 8 GB, $559.99. TerraMaster's store says N350, 16 GB, $699.99."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "US store price",
+   "value": "$539.99 (compare-at $649.99); quad-core, 8 GB RAM, 2× 5GbE",
+   "source": "https://www.terra-master.com/products/f4-425-plus",
+   "source_title": "F4-425 Plus (TerraMaster US store)",
+   "read": "2026-11-13",
+   "note": "Our page lists 16 GB and '$569.99 list', but the store blurb says 8 GB and $539.99. Where it loses: it has 4 cores and 8 GB, and adding TerraMaster's 16 GB stick ($469.99) brings it to $1,009.98."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "US store price",
+   "value": "$619.99 (compare-at $1,129.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. Matches the 'about $620' ChatGPT showed. Ships with 8 GB per our page, and UGREEN's store has no RAM upgrade priced."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Pro",
+   "label": "US store price",
+   "value": "$679.99 (compare-at $1,199.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-pro-4-bay-nas",
+   "source_title": "UGREEN NASync DXP4800 Pro",
+   "read": "2026-11-13",
+   "note": "A newer model that no rival page or ChatGPT answer mentions. I did not read its CPU or RAM (HTTP 429)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "US store price",
+   "value": "$389.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-13",
+   "note": "Where it loses: 2 bays and an N100 with a 16 GB ceiling (per our page), which is light for two VMs."
+  },
+  {
+   "product": "AOOSTAR WTR Pro (Ryzen 7 5825U)",
+   "label": "US store price",
+   "value": "$379.00 (compare-at $399.95); barebones in US warehouse; 2× DDR4-3200 SO-DIMM to 64 GB",
+   "source": "https://aoostar.com/products/aoostar-wtr-pro-4-bay-90t-storage-amd-ryzen-7-5825u-nas-mini-pc-support-2-5-3-5-hdd-%E5%A4%8D%E5%88%B6",
+   "source_title": "AOOSTAR WTR PRO 5825U 4 Bay NAS Mini PC",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. Where it loses: it is barebones, so the RAM is extra, and it has AMD graphics instead of Quick Sync."
+  },
+  {
+   "product": "AOOSTAR WTR Max (Intel i5-1235U)",
+   "label": "US store price",
+   "value": "$529.00 (compare-at $699); barebones; 2× DDR5-4800 to 96 GB; 5× M.2",
+   "source": "https://aoostar.com/products/aoostar-wtr-max-intel-1235u",
+   "source_title": "AOOSTAR WTR MAX INTEL 1235U 11 Bay NAS",
+   "read": "2026-11-13",
+   "note": "An Intel Quick Sync 11-bay box that no ChatGPT result mentions. Where it loses: barebones DDR5, so $529 + $569.98 = $1,098.98 before any SSD."
+  },
+  {
+   "product": "AOOSTAR WTR Max (Ryzen 7 PRO 8845HS)",
+   "label": "US store price",
+   "value": "$659.00 (compare-at $699); barebones/64+0 in US warehouse; DDR5 to 128 GB",
+   "source": "https://aoostar.com/products/aoostar-wtr-max-amd-r7-pro-8845hs-11-bays-mini-pc",
+   "source_title": "AOOSTAR WTR MAX 8845 11 Bay NAS",
+   "read": "2026-11-13",
+   "note": "Where it loses: barebones DDR5 pushes it over $800, and it has no Quick Sync."
+  },
+  {
+   "product": "Beelink EQ14 (N150)",
+   "label": "US store price",
+   "value": "$389.00 (compare-at $479)",
+   "source": "https://www.bee-link.com/products/beelink-eq14-n150",
+   "source_title": "Beelink EQ14 Intel Twin Lake N150",
+   "read": "2026-11-13",
+   "note": "Store search endpoint. littlecompute.com lists $385 with 16 GB DDR4 / 500 GB (checked 10 Oct 2026). Where it loses: 4-core N150; Bitdoze and ChatGPT both describe it as having less headroom for VMs."
+  }
+ ],
+ "unsourced": [
+  "Minisforum variant-level prices (barebones vs 32 GB/1 TB) for MS-01, MS-01 SE, NAB6 Lite and M1-Plus: the store's product endpoint and page returned HTTP 429 on every try, so only the lowest variant price from the store search is reported.",
+  "Price of a 32 GB DDR4-3200 SO-DIMM kit (needed for MS-01 SE and AOOSTAR WTR Pro totals): Amazon via amzcheck returned nothing, and Newegg returned 403.",
+  "Today's prices for Asustor AS5404T (B&H), GMKtec K8 Plus, Synology DS925+, QNAP TS-464-8G, and refurbished Dell OptiPlex 7010 SFF / HP EliteDesk 800 G6: not opened within the tool budget.",
+  "CPU and RAM specs of the UGREEN DXP4800 Pro, and whether UGREEN sells a RAM upgrade for the DXP4800 Plus.",
+  "Beelink EQ14 configuration behind the $389 store price (the store search text did not state RAM or SSD)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1652569000000002
+ }
+}

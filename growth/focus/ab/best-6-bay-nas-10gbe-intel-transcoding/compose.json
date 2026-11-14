@@ -1,0 +1,156 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "The QNAP spec page, Starry Hope and Notebookcheck all call each Intel box 'Quick Sync' and leave it there. None of them gives the iGPU size behind it. Intel ARK lists 80 execution units on the DXP6800 Pro's i5-1235U, 24 on both TVS-h674 CPUs and 16 on the TS-664's N5095. Intel's footnote adds that the 80-EU part is branded Iris Xe only with dual-channel memory, and the Pro ships with one stick. This page states all of that, along with QNAP's own prices for the 10GbE card each QNAP needs.",
+ "slug": "best-6-bay-nas-10gbe-intel-transcoding",
+ "must": [
+  "is the UGREEN DXP6800 Pro",
+  "80 execution units against 24"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best 6-bay NAS with 10GbE and Intel transcoding for Plex (2026): the DXP6800 Pro against TerraMaster, QNAP, Asustor and Synology",
+  "h1": "Best 6-bay NAS with 10GbE and Intel transcoding (2026)",
+  "desc": "Intel's own specs show how big the Quick Sync GPU is in each 6-bay NAS for Plex. The UGREEN DXP6800 Pro's i5-1235U has 80 execution units, the QNAP TVS-h674 has 24 and the TS-664 has 16. QNAP's store prices show what adding 10GbE costs on each QNAP.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best 6-bay NAS with 10GbE and Intel transcoding for Plex is the UGREEN DXP6800 Pro. Its i5-1235U Quick Sync iGPU has 80 execution units against 24 on the QNAP TVS-h674, and both of its 10GbE ports are built in.</p>",
+  "columns": [
+   [
+    "cpu",
+    "Intel CPU"
+   ],
+   [
+    "igpu",
+    "iGPU (Intel ARK)"
+   ],
+   [
+    "eu",
+    "GPU execution units"
+   ],
+   [
+    "ten",
+    "10GbE"
+   ],
+   [
+    "ram",
+    "Memory as shipped"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp6800-pro",
+    "model": "UGREEN NASync DXP6800 Pro",
+    "cells": {
+     "cpu": "Core i5-1235U",
+     "igpu": "Iris Xe with dual-channel memory, otherwise UHD (Intel ARK); Quick Sync: yes",
+     "eu": "80, up to 1.20 GHz",
+     "ten": "Built in; Notebookcheck measured 9.5 Gbit/s each way (iPerf3)",
+     "ram": "One 8 GB DDR5-4800 stick (IT Pro)"
+    }
+   },
+   {
+    "brand": "QNAP",
+    "model": "TVS-h674-i5-32G",
+    "url": "https://www.qnap.com/en-us/product/tvs-h674",
+    "cells": {
+     "cpu": "Core i5-12400 (6 cores, 12 threads)",
+     "igpu": "UHD Graphics 730; Quick Sync: yes",
+     "eu": "24, up to 1.45 GHz",
+     "ten": "2× 2.5GbE built in; 10GbE only with a PCIe card (QNAP)",
+     "ram": "32 GB DDR4, max 64 GB (QNAP)",
+     "price": "$2,349.00 (QNAP, 2026-11-13)"
+    }
+   },
+   {
+    "brand": "QNAP",
+    "model": "TVS-h674-i3-16G",
+    "url": "https://www.qnap.com/en-us/product/tvs-h674",
+    "cells": {
+     "cpu": "Core i3-12100 (4 cores, 8 threads)",
+     "igpu": "UHD Graphics 730; Quick Sync: yes",
+     "eu": "24, up to 1.40 GHz",
+     "ten": "2× 2.5GbE built in; 10GbE only with a PCIe card (QNAP)",
+     "ram": "16 GB DDR4, max 64 GB (QNAP)",
+     "price": "$1,899.00 (QNAP, 2026-11-13; out of stock, 2–4 week pre-order)"
+    }
+   },
+   {
+    "brand": "QNAP",
+    "model": "TS-664-8G",
+    "url": "https://www.qnap.com/en-us/product/ts-664",
+    "cells": {
+     "cpu": "Celeron N5095",
+     "igpu": "UHD Graphics; Quick Sync: yes",
+     "eu": "16, up to 750 MHz",
+     "ten": "Only with a card in its one PCIe Gen 3 x2 slot (QNAP)",
+     "ram": "8 GB DDR4, max 16 GB (QNAP)",
+     "price": "$799.00 (QNAP, 2026-11-13)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>GPU size:</strong> 24 EU ÷ 80 EU = 0.30. The TVS-h674's UHD 730 has 30% of the execution units in the DXP6800 Pro's i5-1235U. The TS-664's N5095 has 16 ÷ 80 = 20%.</li><li><strong>Cost to reach 10GbE on QNAP:</strong> $2,349.00 + $99.00 for QNAP's QXG-10G1TD card = $2,448.00 for the TVS-h674-i5-32G with one 10GbE port. That is about 2.2× the DXP6800 Pro's list price of about $1,100 (Notebookcheck), which already has two 10GbE ports. For the i3-16G the sum is $1,899.00 + $99.00 = $1,998.00, and for the TS-664-8G it is $799.00 + $99.00 = $898.00.</li><li><strong>TS-664 slot:</strong> PCIe 3.0 carries about 7.9 Gb/s per lane, and 2 lanes × 7.9 ≈ 15.8 Gb/s. That is under the 20 Gb/s two 10GbE ports need, so on this box only a single-port card runs at full rate.</li></ul><table><thead><tr><th>Your use</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Plex first, 4K HDR sources, fast copies over 10GbE</td><td>{buy:ugreen-nasync-dxp6800-pro}</td><td>Largest iGPU here (80 EU), dual 10GbE without a card</td></tr><tr><td>Same silicon, TerraMaster's OS</td><td>TerraMaster F6-424 Max</td><td>Also i5-1235U with dual 10GbE. Clubic measured about 1,150 MB/s read and 797 MB/s write over 10GbE in RAID 5</td></tr><tr><td>ZFS, virtual machines, QNAP apps; Plex second</td><td>QNAP TVS-h674-i5-32G plus a 10GbE card</td><td>More desktop CPU and two PCIe Gen 4 slots, but only a 24-EU GPU</td></tr><tr><td>Lower budget, mostly 1080p Plex, one fast link</td><td>QNAP TS-664-8G plus a single-port card</td><td>Has Quick Sync, but only a 16-EU GPU and a 16 GB memory ceiling</td></tr></tbody></table><h2>Why execution units decide Intel transcoding for Plex</h2><p>Every CPU in this group lists Intel Quick Sync Video as supported, so every one can hardware-decode and encode for Plex. Plex Pass is required for this on any of them, as QNAP's Plex page states. The boxes differ in the GPU wrapped around the media engine. Intel ARK lists 80 execution units on the i5-1235U and 24 on both TVS-h674 chips, the i5-12400 and i3-12100. The QNAP's desktop CPU is faster at general computing but carries the smaller graphics block.</p><p>The size of that block matters most for HDR tone mapping, which converts a 4K HDR file for an SDR screen. Jellyfin's Intel hardware-acceleration guide describes two ways to do it. One is QSV VPP, which runs on 'Intel fixed-function LUT hardware' and works only on some GPU models. The other is OpenCL, which runs as GPU compute work. The guide notes that low-power encoding 'can offload the GPU usage' and so helps 'speeding up the OpenCL based HDR/DV tone-mapping'. In other words, tone mapping shares the GPU with everything else the GPU is doing. Execution units are that GPU's compute array, so more of them leave more room for that shared work. No named reviewer has published a measured count of simultaneous Plex 4K streams for any of these boxes. Read the 80-vs-24 gap as headroom, not as a stream count.</p><p><strong>One fix for the DXP6800 Pro's memory.</strong> Intel's footnote for the i5-1235U says the Iris Xe brand applies only when 'the system must be populated with 128-bit (dual channel) memory. Otherwise, use the Intel UHD brand.' IT Pro reports that the DXP6800 Pro 'comes with one 8GB stick'. Quick Sync works as shipped. To get the dual-channel configuration Intel rates as Iris Xe, add a matching DDR5 SO-DIMM. We found no named measurement of how much single-channel memory slows Plex on this unit.</p><h2>Not recommended</h2><p><strong>QNAP TS-664 with a dual-port 10GbE card.</strong> QNAP lists the dual-port QXG-10G2T as an option for the TS-664. However, the box's only slot is PCIe Gen 3 x2, about 15.8 Gb/s, which is less than two 10GbE links need. Its N5095 also has the smallest GPU in this group at 16 EU. If you want 10GbE and 4K Plex on a budget, the DXP6800 Pro gives both ports and five times the execution units.</p>",
+  "sources": [
+   [
+    "Core i5-1235U: 80 EU, up to 1.20 GHz, Quick Sync yes, 2 memory channels, Iris Xe only with dual-channel memory (Intel ARK, read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/226261/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz/specifications.html"
+   ],
+   [
+    "Core i5-12400: UHD Graphics 730, 24 EU, up to 1.45 GHz (Intel ARK, read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/134586/intel-core-i512400-processor-18m-cache-up-to-4-40-ghz/specifications.html"
+   ],
+   [
+    "Core i3-12100: UHD Graphics 730, 24 EU, up to 1.40 GHz, Quick Sync supported (Intel ARK, read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/134584/intel-core-i312100-processor-12m-cache-up-to-4-30-ghz/specifications.html"
+   ],
+   [
+    "Celeron N5095: UHD Graphics, 16 EU, up to 750 MHz, Quick Sync supported (Intel ARK, read 2026-11-13)",
+    "https://www.intel.com/content/www/us/en/products/sku/212322/intel-celeron-processor-n5095-4m-cache-up-to-2-90-ghz/specifications.html"
+   ],
+   [
+    "TVS-h674: UHD 730 on i5 and i3, 2× 2.5GbE, 10GbE optional via PCIe card, PCIe Gen 4 x16 + x4, memory 32/16 GB, max 64 GB (QNAP, read 2026-11-13)",
+    "https://www.qnap.com/en-us/product/tvs-h674/specs/hardware"
+   ],
+   [
+    "TS-664: one PCIe Gen 3 x2 slot, 10GbE optional via card, QXG-10G1T/QXG-10G2T listed, memory max 16 GB (QNAP, read 2026-11-13)",
+    "https://www.qnap.com/en-us/product/ts-664/specs/hardware"
+   ],
+   [
+    "TVS-h674-i5-32G: $2,349.00 at QNAP store (read 2026-11-13)",
+    "https://store.qnap.com/tvs-h674-i5-32g-us.html"
+   ],
+   [
+    "TVS-h674-i3-16G: $1,899.00 at QNAP store, out of stock, 2–4 week pre-order (read 2026-11-13)",
+    "https://store.qnap.com/tvs-h674-i3-16g-us.html"
+   ],
+   [
+    "TS-664-8G: $799.00 at QNAP store (read 2026-11-13)",
+    "https://store.qnap.com/ts-664-8g-us.html"
+   ],
+   [
+    "QXG-10G1TD 10GBASE-T card: $99.00 at QNAP store (read 2026-11-13)",
+    "https://store.qnap.com/catalogsearch/result/?q=QXG-10G1T"
+   ],
+   [
+    "DXP6800 Pro: iPerf3 9.5 Gbit/s each way over 10GbE, one 8 GB DDR5 module, MSRP about $1,100 (Notebookcheck, read 2026-11-13)",
+    "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html"
+   ],
+   [
+    "DXP6800 Pro 'comes with one 8GB stick' of DDR5-4800 (IT Pro, read 2026-11-13)",
+    "https://www.itpro.com/infrastructure/servers-and-storage/ugreen-nasync-dxp6800-pro-review-an-affordable-nas-alternative-to-qnap-and-synology"
+   ],
+   [
+    "Intel tone mapping: OpenCL vs QSV VPP on fixed-function LUT hardware; low-power encoding offloads GPU use for OpenCL tone mapping (Jellyfin docs, read 2026-11-13)",
+    "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/"
+   ],
+   [
+    "TerraMaster F6-424 Max: about 1,150 MB/s read, 797 MB/s write over 10GbE in RAID 5 (Clubic, read 2026-11-13)",
+    "https://www.clubic.com/test-produit-577653-test-terramaster-f6-424-max-un-nas-six-baies-performant-et-multigigabit-presque-abordable.html"
+   ]
+  ]
+ },
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.5285052000000003
+ }
+}

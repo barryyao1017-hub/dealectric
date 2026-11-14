@@ -1,0 +1,130 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much wall energy a full charge takes or what that does to the fastest possible time. StorageReview measured 1,180 Wh from the wall to fill the 1,024 Wh EcoFlow DELTA 3 Plus, about 87 % efficient. Because charging stops at 100 % but the losses still come out of the wall, the fastest possible full charge, with no slow-down near full, is 1,180 Wh ÷ max AC input. That works out to about 44 min for the Anker SOLIX C1000 Gen 2 at 1,600 W and 47 min for the DELTA 3 Plus at 1,500 W. It would be about 59 min for a 1,024 Wh unit capped at 1,200 W, such as the BLUETTI Elite 100 V2, which leaves no room to finish in under an hour.",
+ "standout": 2,
+ "standout_why": "Compared against Dealectric's own page, testedwatts.com/how-long-to-charge, amphourly.com/best-mid-size-power-station and outdoorgearlab.com/best-power-station; thiswatt.com and unpluggedwatts.com failed to load (certificate error). TestedWatts gives maker times and input watts only, with no amps, efficiency or circuit maths beyond 15 A × 120 V ≈ 1,800 W. Amphourly gives maker times and weights; the fetch tool's summary also showed Wh ÷ minutes and amps at 120 V, but I couldn't tell whether those figures came from the page or from the summarizer. OutdoorGearLab gives measured Wh/hr and usable Wh but no wall-energy or loss figure. Dealectric's page already has about 13 A at 120 V and the 1,800 W circuit note, but no wall Wh per charge and no fastest-possible time for each model's input cap. None of these pages works out the best-case time from wall energy and the input cap, which is what tells you whether a unit can finish in under an hour at all.",
+ "decides": "It backs the Anker SOLIX C1000 Gen 2 as the pick. It has the most headroom: about 44 min is its fastest possible time, against a 49 min claim and a 60 min target, so about 11 min of its claimed charge goes to slowing near full. The DELTA 3 Plus can't beat about 47 min and claims 56. A 1,024 Wh unit capped at 1,200 W (BLUETTI Elite 100 V2 TurboBoost) can't beat about 59 min even if it never slowed near full. That rules it out as an under-an-hour answer and explains why BLUETTI only claims 80 % in 45 min. The same check should be run on the Jackery Explorer 1000 v2 (1,070 Wh), whose input cap I couldn't source: unless its charger is better than 89 % efficient, 1,200 W could not fill it in under an hour.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "DJI Power 1000 V2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Wall energy for one full recharge (measured)",
+   "value": "1,180 Wh",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "StorageReview: 'The unit required 1.18kWh (1,180Wh) to recharge fully'; the app showed it charging at its rated 1,500 W, displayed as 1.45 kW."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Charging efficiency, wall to battery (derived)",
+   "value": "about 87 %",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 1,180 Wh = 0.868; about 156 Wh, roughly 13 %, is lost as heat."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Fastest possible full charge at max input (derived)",
+   "value": "about 47 min (maker claims 56 min)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "1,180 Wh ÷ 1,500 W × 60 = 47.2 min. The review lists AC input as '1500W max, full charge in 56 minutes'; the remaining 9 min goes to slowing near full."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Circuit note (named reviewer)",
+   "value": "1,500 W is 'ideal when using a 20A receptacle and circuit'",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "The review says the app's charge-speed limit helps with '15A 120V plugs' and 'overloaded circuits'. 1,500 W ÷ 120 V = 12.5 A."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Fastest possible full charge at UltraFast input (derived)",
+   "value": "about 44 min (maker claims 49 min)",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "Anker lists 1,024 Wh, 'AC Power (UltraFast Charging)' 1,600 W, '0 - 100% in Just 49 Min', UltraFast activated in the app. 1,180 Wh (DELTA 3 Plus wall energy, used as a stand-in for the same 1,024 Wh LFP capacity) ÷ 1,600 W × 60 = 44.3 min. Even with zero losses: 1,024 ÷ 1,600 × 60 = 38.4 min."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Current at 120 V in UltraFast (derived)",
+   "value": "13.3 A (10 A at the standard 1,200 W)",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "1,600 W ÷ 120 V = 13.3 A; 1,200 W ÷ 120 V = 10 A. Within a 15 A outlet, but leaves about 1.7 A for anything else on the circuit."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Wh per lb (derived)",
+   "value": "41.1 Wh/lb",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 24.9 lb net weight = 41.1."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Wh per lb (derived)",
+   "value": "37.1 Wh/lb",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 27.6 lb net weight = 37.1."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Fastest possible full charge at TurboBoost input (derived)",
+   "value": "about 59 min with losses; 51 min with zero losses",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "BLUETTI lists 1,024 Wh, '1,200W AC TurboBoost', and 'Reaches 80% in 45 mins'; it gives no 0–100 % AC time. 1,180 Wh ÷ 1,200 W × 60 = 59.0 min; 1,024 ÷ 1,200 × 60 = 51.2 min. Any slowing near full pushes it past 60 min."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price and cost per Wh",
+   "value": "$499; $0.49/Wh (out of stock in the compare table)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "$499 ÷ 1,024 Wh = $0.487/Wh. Weight 11.5 kg (25 lb): 1,024 ÷ 25 = 41.0 Wh/lb."
+  },
+  {
+   "product": "general",
+   "label": "Average charge rate needed for a 60-minute full charge, as a share of the input cap (derived)",
+   "value": "Anker 64 %, DELTA 3 Plus 68 %, Elite 100 V2 85 %",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US (plus the StorageReview and BLUETTI pages above)",
+   "read": "2026-11-14",
+   "note": "1,024 Wh ÷ 1 h ÷ max input: 1,024/1,600 = 0.64; 1,024/1,500 = 0.68; 1,024/1,200 = 0.85. Before conversion losses. The lower the share, the more room the unit has to slow near full and still finish within the hour."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 AC input in Emergency mode (1,200 W on our page) and capacity: jackery.com returned HTTP 429 three times and storecheck also got HTTP 429. Both manual PDFs (mrsolar.com, hampshiregenerators.co.uk) came back as unreadable compressed binary, and I wasn't allowed to run a local PDF-to-text tool. If 1,200 W is confirmed: 1,070 Wh ÷ 1,200 W × 60 = 53.5 min with zero losses, and the charger would need to be better than 89 % efficient (1,070 ÷ 1,200) to finish within 60 min.",
+  "DJI Power 1000 V2 US input watts and time: store.dji.com redirected to an account login, and dji.com/power-1000-v2/specs redirected to a 404.",
+  "EcoFlow DELTA 3 (non-Plus) and BLUETTI AC180 maker pages: us.ecoflow.com and bluettipower.com/products/ac180 returned HTTP 429.",
+  "Current US prices for the Anker C1000 Gen 2, DELTA 3 Plus, DELTA 3 and Jackery 1000 v2: the Anker page showed no price, and the EcoFlow and Jackery Shopify stores returned HTTP 429 (storecheck and WebFetch). StorageReview's $649 for the DELTA 3 Plus dates from its review, not today, so I didn't use it for cost per Wh.",
+  "Wall-energy (efficiency) measurements for the Anker, DJI, BLUETTI and Jackery units: the only measured wall-Wh figure I found is StorageReview's for the DELTA 3 Plus, so the other fastest-possible times reuse its 1,180 Wh as a stand-in for 1,024 Wh LFP units. The zero-loss times are given alongside as a hard lower bound."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0793888
+ }
+}

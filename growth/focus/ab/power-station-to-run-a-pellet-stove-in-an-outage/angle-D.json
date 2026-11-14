@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the UPS Harman lab-tested for its pellet stoves, the APC BE750G, switches to battery in 6 ms typical and 10 ms maximum. That is the only stove-validated transfer time we have. A power station that switches in ≤10 ms is inside it, and the 15–20 ms units are outside anything Harman tested.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: our own current page, the Harman HAR-0040U PDF (cited; its contents as quoted by Power Fallback) and WattMatrix (cited, but it now returns 404). I also compared against the top uncited pages, powerfallback.com and homebatteryreport.com. The Harman PDF and Power Fallback already cover the decisive mechanism: Harman controls are 'pre-set for quick shutdown', a UPS gives 'safe shut-down only', and a dealer must set Continue Operation (dip switch #4 on knob boards). They also cover pure sine wave. None of them gives a transfer-time number that a stove has been shown to tolerate. Power Fallback 'gives no specific transfer-time threshold'. Home Battery Report lists the power stations' ms figures and names the approved APC BE750G and Tripp Lite INTERNET750U, but never states those UPSs' own transfer times. ChatGPT only said to 'check whether its controls tolerate the transfer time'.",
+ "decides": "This supports the BLUETTI Elite 300, which BLUETTI rates at ≤10 ms, and the EcoFlow DELTA Pro 3 at 10 ms. Both switch over no slower than the 10 ms maximum of the UPS Harman approved. It is a reason to rank the Elite 200 V2 (15 ms), AC200L (20 ms), AC180 (20 ms) and ALLPOWERS P1800 (20 ms) lower as pass-through units, because 15–20 ms is slower than anything Harman tested. Our current page already lists those switchover times. There is a condition: transfer time only matters if the stove's own control is set to Continue Operation. With Harman's factory quick-shutdown setting, any power station just powers a shutdown. So the page should say: check the stove's power-failure setting first, then pick a unit that switches in ≤10 ms. This is our comparison; Harman publishes no ms limit.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "APC Back-UPS BE750G transfer time (UPS approved for Harman pellet stoves)",
+   "value": "6 ms typical, 10 ms maximum; step-approximated sine wave on battery",
+   "source": "https://powertool.manualsonline.com/manuals/mfg/apc/be750g_3.html?p=1",
+   "source_title": "APC BE750G Manual – Back-UPS BE750G Series Installation Guide (ManualsOnline copy)",
+   "read": "2026-11-13",
+   "note": "APC's own installation guide, as reproduced on ManualsOnline. I could not reach APC's product page on se.com: it redirected to an overview page with no specs."
+  },
+  {
+   "product": "general",
+   "label": "Harman's approved UPS list for pellet stoves",
+   "value": "APC BE750G and Tripp Lite INTERNET750U; Harman warns other models 'may not be compatible'; the UPS gives 'safe shut-down only'",
+   "source": "https://homebatteryreport.com/guides/pellet-stove-battery-backup",
+   "source_title": "Battery backup for a pellet stove | The Home Battery Report",
+   "read": "2026-11-13",
+   "note": "The Home Battery Report is quoting the Harman manual. I tried to open the Harman PDFs directly (HAR-0040U on hearthnhome.com and the hearth.com copy), but they came back as unreadable compressed binary."
+  },
+  {
+   "product": "general",
+   "label": "Harman default power-failure behaviour",
+   "value": "Controls 'pre-set for quick shutdown'; to keep heating, a dealer sets Continue Operation (dip switch #4 on knob-control boards); Rev E+ software (Nov 2010) pulses the blower on UPS power 'until the fire is out'",
+   "source": "https://powerfallback.com/use-cases/ups-for-pellet-stove/",
+   "source_title": "Pellet Stove on a UPS: Shutdown Minutes or Hours of Heat? | Power Fallback",
+   "read": "2026-11-13",
+   "note": "This is in the cited Harman PDF, which Power Fallback quotes (HAR-0040U-0718), so a cited rival already has it. It sets the condition under which transfer time matters at all."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS response time (maker)",
+   "value": "≤10 ms",
+   "source": "https://www.bluettipower.com/blogs/power-solution/battery-backup-for-pellet-stove",
+   "source_title": "Battery backup for pellet stove – BLUETTI (Bluetti Team, 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's own pellet-stove article. In it, BLUETTI also writes: 'Pure sine wave is the safest default ... but the stove manual remains decisive'. It also says: 'Do not defeat the grounding pin or connect an external neutral-ground bond unless the manuals require it.'"
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "UPS response time (maker)",
+   "value": "15 ms",
+   "source": "https://www.bluettipower.com/blogs/power-solution/battery-backup-for-pellet-stove",
+   "source_title": "Battery backup for pellet stove – BLUETTI (Bluetti Team, 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "15 ms is 5 ms slower than the BE750G's 10 ms maximum."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "UPS response time (maker)",
+   "value": "10 ms",
+   "source": "https://www.bluettipower.com/blogs/power-solution/battery-backup-for-pellet-stove",
+   "source_title": "Battery backup for pellet stove – BLUETTI (Bluetti Team, 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "At 1,024 Wh it is too small for 12 hours at 150 W. I list it only as a switchover comparison point."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Price and stock on BLUETTI US store",
+   "value": "$899, shown as unavailable (out of stock)",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W, 2,048Wh",
+   "read": "2026-11-13",
+   "note": "From the storecheck.py search of bluettipower.com, which reported available=false."
+  }
+ ],
+ "unsourced": [
+  "Tripp Lite INTERNET750U transfer time: I only saw 2–4 ms in search snippets of Tripp Lite datasheets, and 6 ms typical / 10 ms max attributed to Eaton's page. The Eaton product page timed out and the Webstaurant spec PDF was unreadable binary, so I left it out.",
+  "Harman's own wording on approved UPS models and Continue Operation, read directly: both Harman PDFs (hearthnhome HAR-0040U, hearth.com attachment) were unreadable compressed binary, and the local PDF tools needed approval I didn't have.",
+  "A stove maker's stated maximum tolerable transfer time in ms for any pellet stove control board: none of the manuals or vendor pages I opened gives one.",
+  "Any pellet stove manual requiring a bonded neutral-ground: I found only forum anecdotes, about furnaces rather than pellet stoves.",
+  "BLUETTI AC200L UPS switchover from the maker's product page: the page hit a redirect loop. The 20 ms figure comes from our existing page.",
+  "WattMatrix F3800 pellet-stove page (cited by ChatGPT): it returns 404, so I could not compare against its contents."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0784621
+ }
+}

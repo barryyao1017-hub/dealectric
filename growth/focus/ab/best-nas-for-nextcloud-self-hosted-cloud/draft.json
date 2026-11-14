@@ -1,0 +1,190 @@
+{
+ "status": "ok",
+ "angle": "E",
+ "why_angle": "The rival pages that were cited (racksandwatts, esp32, the AIO readme) give only CPU names and RAM. None has a benchmark, so nothing shows that the DS925+'s 'AMD Ryzen', presented as the premium choice, is the slowest per core on the shortlist. This page adds PassMark single-thread and CPU Mark scores for all six candidates, plus a Docker Engine/API column that turns 'Docker support' into a comparable figure.",
+ "slug": "best-nas-for-nextcloud-self-hosted-cloud",
+ "must": [
+  "the UGREEN DXP4800 Plus",
+  "3,197 PassMark single-thread"
+ ],
+ "products": [],
+ "page": {
+  "title": "Which NAS is best for running Nextcloud as my own cloud (2026)? Requirements, the Docker route on each NAS, and remote access",
+  "h1": "Which NAS is best for running Nextcloud as your own cloud? (2026)",
+  "desc": "The best NAS for running Nextcloud as your own cloud in 2026, compared on PassMark per-core CPU speed, RAM and whether each NAS's Docker runs Nextcloud AIO as shipped: UGREEN DXP4800 Plus, DXP2800, TerraMaster F4-424 Pro, QNAP TS-464, Synology DS925+ and DS225+.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for running Nextcloud as your own cloud in 2026 is the UGREEN DXP4800 Plus. Its Pentium Gold 8505 CPU scores 3,197 PassMark single-thread, 2.8× the Synology DS925+'s Ryzen and ahead of the QNAP TS-464, and its Docker runs Nextcloud AIO with no override.</p>",
+  "columns": [
+   [
+    "cpu",
+    "CPU"
+   ],
+   [
+    "st",
+    "PassMark single-thread"
+   ],
+   [
+    "mt",
+    "PassMark CPU Mark (all cores)"
+   ],
+   [
+    "ram",
+    "RAM shipped / max"
+   ],
+   [
+    "docker",
+    "Docker Engine (max API) vs AIO's v1.44"
+   ],
+   [
+    "io",
+    "Bays · M.2 · network"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "model": "UGREEN NASync DXP4800 Plus",
+    "cells": {
+     "cpu": "Intel Pentium Gold 8505",
+     "st": "3,197",
+     "mt": "8,997",
+     "ram": "8 GB DDR5 / 64 GB",
+     "docker": "29.6.2 (1.55): AIO runs as shipped",
+     "io": "4 + 2 M.2 · 10GbE + 2.5GbE"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "cpu": "Intel N100",
+     "st": "1,879",
+     "mt": "5,305",
+     "ram": "8 GB DDR5 / 16 GB",
+     "docker": "29.6.2 (1.55): AIO runs as shipped",
+     "io": "2 + 2 M.2 · 2.5GbE"
+    }
+   },
+   {
+    "brand": "TerraMaster",
+    "model": "F4-424 Pro",
+    "url": "https://www.terra-master.com/products/f4-424-pro",
+    "cells": {
+     "cpu": "Intel Core i3-N300, 8 cores (Notebookcheck)",
+     "st": "1,914",
+     "mt": "7,979",
+     "ram": "32 GB DDR5 in one slot (Notebookcheck)",
+     "docker": "27.2.1 (1.47): AIO runs as shipped",
+     "io": "4 + 2 M.2 · 2× 2.5GbE",
+     "price": "$759.99 (maker, 2026-11-13)"
+    }
+   },
+   {
+    "slug": "qnap-ts-464-8g",
+    "model": "QNAP TS-464-8G",
+    "cells": {
+     "cpu": "Intel Celeron N5095",
+     "st": "1,492",
+     "mt": "4,003",
+     "ram": "8 GB DDR4 / 16 GB",
+     "docker": "27.1.2 (1.46): AIO runs as shipped",
+     "io": "4 + 2 M.2 · 2× 2.5GbE"
+    }
+   },
+   {
+    "slug": "synology-ds925-plus",
+    "model": "Synology DS925+",
+    "cells": {
+     "cpu": "AMD Ryzen Embedded V1500B",
+     "st": "1,136 (14 samples)",
+     "mt": "4,513",
+     "ram": "4 GB DDR4 ECC / 32 GB",
+     "docker": "24.0.2 (1.43): needs an API override",
+     "io": "4 + 2 M.2 · 2× 2.5GbE"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "cpu": "Intel Celeron J4125",
+     "st": "1,151",
+     "mt": "2,927",
+     "ram": "2 GB DDR4 / 6 GB",
+     "docker": "24.0.2 (1.43): needs an API override",
+     "io": "2, no M.2 · 2.5GbE + 1GbE"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>Per-core speed:</strong> the DXP4800 Plus's Pentium Gold 8505 scores 3,197 PassMark single-thread and the DS925+'s Ryzen V1500B scores 1,136: 3,197 ÷ 1,136 = 2.8×. Against the same DS925+ score, the DXP2800's N100 is 1,879 ÷ 1,136 = 1.65×, the F4-424 Pro's i3-N300 is 1,914 ÷ 1,136 = 1.7× and the TS-464's N5095 is 1,492 ÷ 1,136 = 1.3×.</li><li><strong>All cores together:</strong> 8,997 ÷ 4,513 = 2.0× for the DXP4800 Plus over the DS925+. The F4-424 Pro has eight cores, but it reaches 7,979 ÷ 8,997 = 0.89 of the 8505's score.</li><li><strong>Memory:</strong> Nextcloud asks for at least 4 GB of RAM and two cores for All-in-One. The DS225+ tops out at 6 GB, so 6 − 4 = 2 GB is left for DSM and any other container. The F4-424 Pro ships with 32 GB, which is 32 ÷ 8 = 4× the DXP4800 Plus's 8 GB.</li><li><strong>Running cost:</strong> KitGuru measured the DXP4800 Plus at 24.25 W idle. 24.25 W × 8,760 h = 212 kWh a year, and at 18.16¢/kWh (<a href='https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a'>EIA</a> US residential average, August 2026) that comes to $38.58 a year.</li></ul><table><thead><tr><th>Your Nextcloud</th><th>Fits best</th><th>Why</th></tr></thead><tbody><tr><td>Just you or a few people: files, photos, phone backup</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td><td>N100 at 1,879 single-thread, 8 GB and two M.2 slots for the database</td></tr><tr><td>Family or small team, Nextcloud Office, other Docker apps</td><td>UGREEN DXP4800 Plus</td><td>Fastest per core (3,197) and across all cores (8,997), RAM up to 64 GB, 10GbE</td></tr><tr><td>Many containers, and 16 GB+ from day one without buying RAM</td><td>TerraMaster F4-424 Pro</td><td>32 GB shipped and eight cores (7,979)</td></tr><tr><td>You want DSM's tools and accept a manual AIO setup</td><td>Synology DS925+</td><td>ECC RAM, but the slowest core here (1,136) and Docker API 1.43</td></tr><tr><td>You already run QNAP or want Container Station</td><td>QNAP TS-464</td><td>1,492 single-thread, AIO's API met, but 16 GB is its ceiling</td></tr></tbody></table><h2>Why per-core speed and the Docker version decide a Nextcloud NAS</h2><p>Nextcloud is a PHP web app. Every page you open, every photo preview and every file the sync client checks is a separate request, and one PHP process works through each request on one core. A faster core therefore answers sooner, and more cores let more requests run at the same time. PassMark's single-thread rating measures that one-core speed. The scores are PassMark's averages of user-submitted runs on each chip, not runs on the NAS itself, and the V1500B average rests on only 14 samples, against 4,173 for the N100.</p><p>The second gate is Docker. Nextcloud All-in-One (AIO), which Nextcloud calls its official install method, sends every Docker request at API v1.44 unless you override it, and its readme says only the default API version is supported and tested. Docker's own version table gives Engine 24.0 a maximum API of 1.43 and Engine 25.0 a maximum of 1.44. Marius Hosting's October 2026 cross-brand table lists Synology at Engine 24.0.2, QNAP at 27.1.2, TerraMaster at 27.2.1 and UGREEN at 29.6.2. That makes Synology's Container Manager the only one below AIO's default. On the DS925+ and DS225+, the readme's DSM steps have you run AIO over SSH or a root scheduled task, mount Synology's own socket path and adjust the API version. One DSM owner reported AppAPI failing in a loop at 1.43 (<a href='https://github.com/nextcloud/all-in-one/issues/7365'>AIO issue #7365</a>). It can be done, but not in a setup the AIO maintainers test.</p><p>Synology also restricts upgrades. Its DS925+ spec page says M.2 storage pools need Synology-verified SSDs and that Synology won't give full warranty or support if you add non-Synology memory. Its own 16 GB module (D4ES03-16G) is listed at $1,184.99 as a special order at <a href='https://www.centralcomputer.com/catalogsearch/result/?q=D4ES03'>Central Computer</a>.</p><p>Power measured at the wall (each reviewer used different drives, so compare loosely): KitGuru, DXP4800 Plus, 24.25 W idle on 2.5GbE with WD Red drives. <a href='https://nascompares.com/review/synology-ds925-nas-review/amp/'>NAS Compares</a>, DS925+, about 28 W idle. Notebookcheck, F4-424 Pro, 23.8 W idle with two hard drives and one SSD. <a href='https://www.club386.com/qnap-ts-464-nas-review-four-bay-muscle'>Club386</a>, TS-464, 19 W with drives spun down. <a href='https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/'>igor'sLAB</a>, DXP2800, 14.5 W during transfers with one NVMe SSD and no hard drives.</p><h2>Not recommended</h2><p><strong>Synology DS225+:</strong> it has the lowest CPU Mark here (2,927), ships with 2 GB and tops out at 6 GB, has no M.2 slots for the database (Racks &amp; Watts), and runs the same Docker Engine 24.0.2 as the DS925+. <strong>UGREEN NASync DH2300:</strong> <a href='https://ai.ugreen.com/pages/solution-software'>UGREEN's FAQ</a> says it “does not officially support Docker”. AIO installs only through Docker, so the DH2300 can't run it. The 2-bay UGREEN to buy for Nextcloud is the DXP2800.</p>",
+  "sources": [
+   [
+    "PassMark single-thread and CPU Mark: Pentium Gold 8505, N100, N5095, Ryzen V1500B, J4125",
+    "https://www.cpubenchmark.net/compare/5157vs4775vs4472vs4304vs3667/Intel-N100-vs-Intel-Pentium-Gold-8505-vs-Intel-Celeron-N5095-vs-AMD-Ryzen-Embedded-V1500B-vs-Intel-Celeron-J4125"
+   ],
+   [
+    "PassMark single-thread and CPU Mark: Intel Core i3-N300",
+    "https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i3-N300"
+   ],
+   [
+    "F4-424 Pro CPU (i3-N300), 32 GB in one slot, 23.8 W idle",
+    "https://www.notebookcheck.net/TerraMaster-F4-424-Pro-review-Alder-Lake-N-i3-N300-32-GB-RAM-4-HDDs-and-2-SSDs-in-the-NAS.812032.0.html"
+   ],
+   [
+    "F4-424 Pro price, 32 GB DDR5, dual 2.5GbE, 2× M.2",
+    "https://www.terra-master.com/products/f4-424-pro"
+   ],
+   [
+    "RAM shipped and maximum, bays, M.2 and ports: DXP4800 Plus, DXP2800, DS925+, DS225+",
+    "https://racksandwatts.com/guides/best-nas-for-a-homelab-2026/"
+   ],
+   [
+    "TS-464 CPU, 8 GB / 16 GB RAM, 4 bays, 2× M.2, 2× 2.5GbE",
+    "https://www.qnap.com/en-us/product/ts-464/specs/hardware"
+   ],
+   [
+    "DS925+ memory warranty rule and Synology-verified SSDs for M.2 pools",
+    "https://www.synology.com/en-us/products/DS925+#specs"
+   ],
+   [
+    "DXP4800 Plus and DXP2800 prices on UGREEN's US store",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage"
+   ],
+   [
+    "Nextcloud AIO calls Docker API v1.44 by default",
+    "https://raw.githubusercontent.com/nextcloud/all-in-one/main/php/src/Docker/DockerActionManager.php"
+   ],
+   [
+    "AIO supports only the default API version; Synology DSM install steps",
+    "https://github.com/nextcloud/all-in-one/blob/main/readme.md"
+   ],
+   [
+    "Maximum API version for each Docker Engine release",
+    "https://docs.docker.com/reference/api/engine/"
+   ],
+   [
+    "Docker Engine shipped by Synology, QNAP, TerraMaster and UGREEN",
+    "https://mariushosting.com/docker-engine-synology-terramaster-ugreen-asustor-qnap/"
+   ],
+   [
+    "Nextcloud AIO minimum: 4 GB RAM and two cores, SSD recommended",
+    "https://nextcloud.com/blog/how-to-install-the-nextcloud-all-in-one-on-linux/"
+   ],
+   [
+    "DXP4800 Plus measured power at the wall",
+    "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Nextcloud docker NAS recommendations Synology DS925+ UGREEN DXP4800 Plus QNAP TS-464 2026 hardware RAM docker",
+  "Nextcloud all in one docker requirements RAM database SSD NAS 2026",
+  "Nextcloud official Docker AIO requirements NAS x86 Redis database recommended 2026",
+  "UGREEN DXP4800 Plus QNAP TS-464 Synology DS925+ specifications RAM docker CPU",
+  "Nextcloud official docker compose deployment requirements redis database NAS 2026",
+  "UGREEN DXP4800 Plus Synology DS925+ QNAP TS-464 docker specifications RAM CPU"
+ ],
+ "query": "which nas is best for running nextcloud as my own cloud",
+ "verified_changes": 3,
+ "verified_removed": 0
+}

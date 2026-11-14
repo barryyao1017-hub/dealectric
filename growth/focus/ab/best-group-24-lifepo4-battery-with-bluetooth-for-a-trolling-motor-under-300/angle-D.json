@@ -1,0 +1,77 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Minn Kota tells owners of its brushed trolling motors (the common 12V Endura-type motors) running on lithium to \"limit the motor speed to 85%, or Speed 8.5 or lower\", because LiFePO4 holds a higher voltage for longer and running at max speed \"can result in damage\". Its QUEST series is the exception, described as optimized for LiFePO4.",
+ "standout": 2,
+ "standout_why": "I compared against our own page (dealectric.com best-group-24 page, cited in 3 of 7 chats) and LiTime's 'best battery for Minn Kota trolling motor' guide, and I read all seven ChatGPT answers in full. None mentions the 85% / Speed 8.5 brushed-motor limit, or any voltage risk to the motor. Our page only says '40–60 A' draw and gives no BMS-vs-motor arithmetic. LiTime only says the BMS should support the motor's maximum continuous current. ChatGPT's answers already say in part that a 100 A BMS covers a 55 lb motor drawing about 50 A, so the current-headroom half is not new. I could not open the cited maker pages (Vatrer 403; Redodo, WattCycle, Renogy, LiThink and WEIZE 429; Power Queen and solargenadvisor certificate errors), so I can't rule out that one of them states the 85% rule. In my experience a seller page is unlikely to print a motor maker's speed limit.",
+ "decides": "This is a Minn Kota rule, so it applies equally to every 12.8 V LiFePO4 battery in the list. It doesn't swap one battery for another, but it decides whether the plan works as the shopper imagines. On a brushed Minn Kota motor the battery should not be run at full throttle, which caps top speed and protects the motor. It also undercuts ChatGPT's main reason for ranking Vatrer first, the 150 A BMS: Minn Kota's own test is continuous discharge versus the motor's max amp draw. A 12V 55 lb Endura-class motor is listed at 50 A max (Overton's), so a 100 A BMS already has 2× headroom (100 / 50), and at the recommended ≤85% speed the draw is below that peak. So the pick should rest on price, warranty for trolling use, IP rating and fit, not on 150 A vs 100 A. One more check before buying: Minn Kota's own PCL chargers top out at 14.5 V, so the shopper should match that against the battery maker's charge spec.",
+ "candidates": [
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+  "WattCycle 12V 100Ah TM Bluetooth (Group 24)",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Power Queen 12V 100Ah Group 24 Smart",
+  "Renogy Core 12V 100Ah Trolling Motor Bluetooth",
+  "LiThink 12V 100Ah Group 24",
+  "WEIZE 12V 100Ah Bluetooth Group 24",
+  "LiTime 12V 100Ah Group 24 Smart Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minn Kota speed limit for brushed motors on lithium",
+   "value": "limit motor speed to 85% (Speed 8.5) or lower; running at max speed with lithium 'can result in damage'",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota Help Center",
+   "read": "2026-11-14",
+   "note": "Section 'Using Lithium Batteries with Brushed Motors'. Minn Kota's reason: lithium holds higher voltage longer, which can damage motors built for flooded lead-acid. Article updated_at 2026-11-11 (read via the Zendesk API JSON of the same article)."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota exception: QUEST series",
+   "value": "QUEST motors described as optimized for LiFePO4; 85% limit not applied to them",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6470890831895-Trolling-Motor-Power-Considerations",
+   "source_title": "Trolling Motor Power Considerations – Minn Kota Help Center",
+   "read": "2026-11-14",
+   "note": "Same page repeats 'Speed 8.5 or lower' for brushed motors. Article updated_at 2026-11-11."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota BMS sizing rule",
+   "value": "battery continuous discharge amperage must cover the motor's max amp draw, or the battery management system restricts power and the motor may shut off or perform erratically",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota Help Center",
+   "read": "2026-11-14",
+   "note": "The Power Considerations article adds that too little amperage can stop the prop turning and disrupt i-Pilot and Spot-Lock. Minn Kota's max-amp-draw-by-thrust chart is only an image, which I could not read."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota PCL charger max voltage",
+   "value": "14.5 V max; check it against the battery maker's charge profile (e.g. MK 330PCL = 10 A per bank)",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota Help Center",
+   "read": "2026-11-14",
+   "note": "Matters if the shopper plans to keep using an onboard Minn Kota charger with the new LiFePO4 battery."
+  },
+  {
+   "product": "Minn Kota Endura Max 55 (12V, 36 in)",
+   "label": "Max amp draw",
+   "value": "50 A",
+   "source": "https://www.overtons.com/minn-kota-endura-max-55-trolling-motor---transom-mount---12v---55lb---36-365928.html",
+   "source_title": "Minn Kota Endura Max 55 Trolling Motor - Transom Mount - 12V - 55lb - 36\" | Overton's",
+   "read": "2026-11-14",
+   "note": "Feature list says 'Max Amp Draw: 50', 12 V, 55 lb, Digital Maximizer: Yes, $334.99. The page's spec table conflicts with this (shows 24/36V bow mount), so it is retailer data. Arithmetic: a 100 A BMS gives 100/50 = 2.0× headroom and a 150 A BMS gives 3.0×."
+  }
+ ],
+ "unsourced": [
+  "Minn Kota max amp draw by thrust: the help-center chart (article_attachments/21298499477399) is a PNG I could not read, and the official Endura C2 page returned empty. The 50 A figure comes only from Overton's.",
+  "Continuous and peak BMS ratings, and any trolling-motor or brushed-motor warning, on the Vatrer, Redodo, WattCycle, Power Queen, Renogy, LiThink and WEIZE product pages: the fetches returned 403, 429 or certificate errors on 2026-11-14.",
+  "Whether solargenadvisor.com's lithium trolling motor page mentions the 85% limit (certificate error).",
+  "A numeric voltage threshold from Minn Kota for brushed-motor damage (the article gives the reason but no volts).",
+  "Whether MotorGuide or Newport publish a similar speed limit for lithium."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1143956000000002
+ }
+}

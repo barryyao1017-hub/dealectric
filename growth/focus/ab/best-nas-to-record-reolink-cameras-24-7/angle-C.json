@@ -1,0 +1,129 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Synology's 2025 Plus models (the DS225+ and DS425+ it recommends, paired with 'surveillance-rated HDDs') can only build a storage pool from non-Synology drives such as WD Purple or Seagate SkyHawk when running DSM 7.3 or later, released 8 October 2025, and that M.2 pools and cache still need drives from Synology's compatibility list.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: the Reolink 'How to Add Reolink Cameras to Synology' guide, Synology's Device License Pack page, the Surveillance Station spec page, the Reolink RLN8-410 US product page, store.reolink.com/us/network-video-recorder, the QNAP QVR FAQ, and the Synology camera support list. I also read the top uncited results: Reolink's Synology Surveillance Station buying guide (2026-08-25), the RLN8-410 FAQ and the Reolink RTSP/ONVIF support table. Several Synology product pages also came up. ChatGPT's 13 Nov search included 'third party drive restrictions', but none of the pages it got covers the drive policy. They cover licences (2 free, packs of 1, 4 or 8) and how to connect cameras. The DS225+ page only says 'Synology only guarantees full functionality... for compatible drives.' Our current page doesn't mention the drive policy either. The other compatibility limits I found are already on result pages, some of them cited: TrackMix 'will consume two licenses', the RLN8-410's 8 TB-per-drive cap, battery cameras not supported.",
+ "decides": "It confirms the Synology option rather than overturning it. A DS225+ or DS425+ with surveillance hard drives works only on DSM 7.3 or later, so the shopper should update DSM before building the pool. Any M.2 cache needs drives from Synology's list. It also adds a fair comparison point. The RLN8-410 takes at most 8 TB per drive on its product page, and its own FAQ says 6 TB SATA plus 6 TB eSATA. At 4 cameras × 6 Mbps (259.2 GB a day), 6 TB holds about 23 days and 8 TB about 31 days. A 2-bay NAS can take larger drives. Reolink's documents count dual-lens cameras (Duo, TrackMix) as two channels, so they use two Synology licences and two of the RLN8-410's eight camera slots. Reolink battery, E1-series, NVR-kit and 4G cameras can't record straight to any NAS.",
+ "candidates": [
+  "Reolink RLN8-410",
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Third-party drives on 2025 model-year DiskStation Plus",
+   "value": "From DSM 7.3: 'installation and storage pool creation with third-party drives' supported; 'Creation of M.2 based storage pool and cache still requires drives on the HCL'",
+   "source": "https://www.synology.com/en-in/company/news/article/dsm73",
+   "source_title": "Synology Releases DiskStation Manager 7.3 ... Expanded Storage Flexibility",
+   "read": "2026-11-13",
+   "note": "Press release dated 2025-10-08, updated 2025-10-13. Its scope is '2025 model-year DiskStation Plus, Value, and J Series'. I placed the DS425+ in the 2025 model year from the folder in its spec-PDF URL ('/25-year/DS425+/'). The DS225+ is inferred from its '25' name, and its product page does not state a model year."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Drive guarantee wording",
+   "value": "'Synology only guarantees full functionality, reliability, and performance for compatible drives'; 'consult our compatibility list before purchasing hard drives'",
+   "source": "https://www.synology.com/en-us/products/DS225+",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The product page does not mention DSM 7.3."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Camera capacity, licences, warranty",
+   "value": "20 channels at 4K H.265 (17 at H.264), 25 at 1080p; 2 free licences; 3-year warranty, extendable to 5 years (Extended Warranty Plus, Europe and North America only)",
+   "source": "https://www.synology.com/en-us/products/DS225+",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Spec tab."
+  },
+  {
+   "product": "general (Synology Surveillance Station)",
+   "label": "Licence counting rules",
+   "value": "NAS: 2 default licences, never expire, not migratable. Packs of 1, 4 or 8, perpetual, migratable. One licence per regular or panoramic camera. One licence per channel for fixed-lens cameras with independent IPs or removable-lens cameras. Virtual DSM has no default licence",
+   "source": "https://www.synology.com/en-us/products/Device_License_Pack",
+   "source_title": "Surveillance Device License Pack | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "No prices on the page."
+  },
+  {
+   "product": "general (Reolink dual-lens on Synology)",
+   "label": "Licences and channels for Duo / TrackMix",
+   "value": "TrackMix with both lenses added: 'Using this approach will consume two licenses'. Duo WiFi/PoE is added twice (left and right channels) with the Reolink protocol, and ONVIF 'does not support adding the second channel'. TrackMix Method 3 needs DSM 7.1.1-42962 Update 5 or later. AI events, PTZ and doorbell alerts need the Reolink protocol rather than ONVIF",
+   "source": "https://support.reolink.com/articles/360004124293-How-to-Add-Reolink-Cameras-to-Synology-Surveillance-Station/",
+   "source_title": "How to Add Reolink Cameras to Synology Surveillance Station",
+   "read": "2026-11-13",
+   "note": "Example: four TrackMix cameras with both lenses = 8 licences, so 6 more beyond the 2 free. That is my arithmetic from Reolink's two-licence statement. ChatGPT cited this page."
+  },
+  {
+   "product": "general (Reolink cameras to any NAS)",
+   "label": "Reolink models with no standalone RTSP/ONVIF",
+   "value": "Battery WiFi cameras (Argus, Altas, Doorbell Battery D340B), E1 Series and E320/E321, and NVR-kit cameras (D500, B800, B500W, V800W) must connect through a Reolink Home Hub or NVR. 4G LTE cameras (Go Series, TrackMix LTE, Duo 2 LTE) are not supported for CGI, RTSP or ONVIF. A 4K camera behind NVR hardware H3MB16, H3MB02 or H3MB17 gives only the 'fluent' RTSP stream",
+   "source": "https://support.reolink.com/articles/900000617826-Which-Reolink-Products-Support-CGI-RTSP-ONVIF/",
+   "source_title": "Which Reolink Products Support CGI/RTSP/ONVIF",
+   "read": "2026-11-13",
+   "note": "PoE cameras, the shopper's case, are standalone-capable. This page was an uncited result in one of ChatGPT's chats."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Storage limit (product page)",
+   "value": "Up to 16 TB (max 8 TB per HDD): 1 internal SATA + 1 eSATA",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "At 4 cameras × 6 Mbps = 259.2 GB/day, one 8 TB internal drive holds about 31 days; 16 TB holds about 62 days. No price was shown on 2026-11-13 (Black Friday banner only)."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Storage limit (FAQ, conflicts with product page)",
+   "value": "'currently on-sale RLN8-410 supports Max. 12TB in total: Max. 6TB via SATA, Max. 6TB via eSATA'",
+   "source": "https://support.reolink.com/articles/10354119558937-FAQs-RLN8-410/",
+   "source_title": "FAQs - RLN8-410",
+   "read": "2026-11-13",
+   "note": "6 TB internal is about 23 days at 259.2 GB/day. Reolink's two documents disagree, so the page should give both and advise checking the hardware version."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "Camera limits and compatibility",
+   "value": "Max 8 cameras ('no matter WiFi or PoE'), and a dual-lens camera uses two of them. Third-party cameras: 'It's not suggested to do so.' Person/vehicle detection only on hardware H3MB18, N2MB02 or N3MB01. Battery WiFi cameras only on hardware N7MB01",
+   "source": "https://support.reolink.com/articles/10354119558937-FAQs-RLN8-410/",
+   "source_title": "FAQs - RLN8-410",
+   "read": "2026-11-13",
+   "note": "The product page headline says '12-Channel' but its FAQ says up to 8 wired IP cameras. Battery-camera limit is from the product page FAQ."
+  },
+  {
+   "product": "Reolink RLN8-410",
+   "label": "PoE ports, recording resolution, warranty",
+   "value": "8 × 10/100 Mbps PoE ports, IEEE 802.3af/at, max 25 W per port; records up to 16MP; 2-year limited warranty",
+   "source": "https://reolink.com/us/product/rln8-410/",
+   "source_title": "Reolink RLN8-410 | NVR for Up to 12 Cameras & 24/7 Recording",
+   "read": "2026-11-13",
+   "note": "No total PoE budget published. This fills the 'not read' warranty cell on our page."
+  },
+  {
+   "product": "general (Reolink on Synology)",
+   "label": "Reolink's own statement on battery cameras and multi-lens licences",
+   "value": "'battery-powered Reolink cameras are not supported'; multi-lens cameras with separate IPs or independent streams 'require 1 license per active video stream'",
+   "source": "https://reolink.com/blog/synology-surveillance-station-cameras/",
+   "source_title": "Synology Surveillance Station Cameras 2026 Buying Guide",
+   "read": "2026-11-13",
+   "note": "The blog describes the Duo 3 PoE as one stitched view, which suggests one licence, but it does not say so explicitly."
+  }
+ ],
+ "unsourced": [
+  "Which Reolink models appear on Synology's IP camera support list: synology.com/en-us/compatibility/camera?query=reolink showed 'No matched results' to the fetcher (the list loads in the browser), and I could not reach its API from the shell.",
+  "The body of Synology's KB 'Drive compatibility policies FAQs for Synology storage systems starting from 2025 (DSM 7.3 and above)': only its title loaded, so I have no per-model table naming the DS225+ or DS425+.",
+  "A UGREEN document on Surveillance Center camera compatibility, a Reolink entry, or a channel cap: no UGREEN help-centre page or spec turned up, only third-party sites.",
+  "The RLN8-410 spec PDF (home-cdn.reolink.us): it came back as unreadable compressed binary, so I could not settle the 6 TB vs 8 TB conflict from the spec sheet or by hardware version.",
+  "How many Synology licences a Reolink Duo 3 PoE (single stitched stream) uses: no Synology or Reolink document states it outright."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 1.1468231
+ }
+}

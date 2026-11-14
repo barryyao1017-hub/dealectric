@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the plan works without extra setup only if Paperless-ngx runs on the NAS itself. On the NAS, the scanner pushes over SMB to a folder the NAS stores locally, so Linux inotify sees each new file. Put Paperless on a Pi or mini PC with its consume folder on an NFS or SMB share from the NAS, and the project says new files are not picked up under the default settings and the container's chown can fail with 'Operation not permitted'.",
+ "standout": 2,
+ "standout_why": "The cited docs.paperless-ngx.com Setup page (and the GitHub setup.md copy) does say in general terms that NFS shares 'don't support file system notifications with inotify'. None of the five ChatGPT answers turns that into advice on hardware: two answers list a separate mini PC or Raspberry Pi as an option without the caveat, and every answer draws 'scan to SMB → NAS' without saying why the NAS has to host the container. I opened three other result pages and none mentions inotify, polling or network-share consume folders. peira.dev 'Deploy Paperless-ngx on a NAS' gives only './consume/'. rackdiff 'NAS vs VPS' has nothing on it. andreaswaelchli.com (Synology) sets PAPERLESS_CONSUMER_POLLING_INTERVAL: 10 in its compose file without explaining it. The NFS chown failure appears only on the Troubleshooting page, and none of ChatGPT's results is that page.",
+ "decides": "The finding supports putting Paperless on an x86 NAS that runs the container next to the disks: UGREEN DXP2800, Synology DS225+, Asustor AS5402T and QNAP TS-264. It weakens the 'Pi 5 + USB SSD' and 'N100 mini PC' rows when the shopper wants those machines to use the NAS for storage. In that case they must set PAPERLESS_CONSUMER_POLLING_INTERVAL (renamed from CONSUMER_POLLING in v3) and make sure chown works on the share, or keep everything on the small machine's own disk and lose RAID. It also clears a v3 risk: v3's NumPy needs x86-64-v2 (SSE4.2) or the classifier crashes with SIGILL, and Intel lists SSE4.2 for both the J4125 (DS225+, DS224+) and the N5105 (AS5402T), so those budget Celerons are safe.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS225+",
+  "Synology DS224+",
+  "QNAP TS-264",
+  "TerraMaster F2-425 Plus",
+  "Asustor AS5402T",
+  "Raspberry Pi 5 8 GB",
+  "N100 mini PC"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Consume folder on a network filesystem: inotify does not fire",
+   "value": "\"Some file systems, such as NFS network shares, don't support file system notifications with `inotify`. When the consumption directory is on such a file system, Paperless-ngx will not pick up new files with the default configuration.\"",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/setup.md",
+   "source_title": "paperless-ngx docs/setup.md (dev)",
+   "read": "2026-11-13",
+   "note": "Docker Compose advanced configuration section. The fix is to set the polling interval to a positive number, which 'disable[s] native filesystem notifications'."
+  },
+  {
+   "product": "general",
+   "label": "Polling setting is meant for NFS and SMB/CIFS",
+   "value": "\"Use polling for network filesystems (NFS, SMB/CIFS) where native notifications may not work reliably.\" Default 0 = native notifications",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/configuration.md",
+   "source_title": "paperless-ngx docs/configuration.md (dev)",
+   "read": "2026-11-13",
+   "note": "This is PAPERLESS_CONSUMER_POLLING_INTERVAL. The v3 migration table renames CONSUMER_POLLING to CONSUMER_POLLING_INTERVAL and CONSUMER_INOTIFY_DELAY to CONSUMER_STABILITY_DELAY."
+  },
+  {
+   "product": "general",
+   "label": "Why it only affects network mounts (the kernel's rule)",
+   "value": "\"Inotify reports only events that a user-space program triggers through the filesystem API. As a result, it does not catch remote events that occur on network filesystems. (Applications must fall back to polling the filesystem to catch such events.)\"",
+   "source": "https://man7.org/linux/man-pages/man7/inotify.7.html",
+   "source_title": "inotify(7) - Linux manual page",
+   "read": "2026-11-13",
+   "note": "This is our inference from the man page. When Paperless runs on the NAS, the NAS's own Samba server writes the scanner's file to local disk through the filesystem API, so a bind-mounted consume folder gets inotify events. A Pi or mini PC mounting that folder over NFS or SMB does not."
+  },
+  {
+   "product": "general",
+   "label": "NFS-backed data folders can fail at container start",
+   "value": "\"chown: changing ownership of '../export': Operation not permitted\" … \"This happens when pointing these directories to NFS shares, for example. Ensure that `chown` is possible on these directories.\"",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/troubleshooting.md",
+   "source_title": "paperless-ngx docs/troubleshooting.md (dev)",
+   "read": "2026-11-13",
+   "note": "The container sets ownership on its folders so the in-container user can write. This mostly affects off-NAS setups (Pi or mini PC with storage on the NAS)."
+  },
+  {
+   "product": "general",
+   "label": "Same symptom described in Troubleshooting",
+   "value": "Consumer \"will only pickup files in the consumption directory at startup, but won't find any other files added later\" → enable PAPERLESS_CONSUMER_POLLING_INTERVAL",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/troubleshooting.md",
+   "source_title": "paperless-ngx docs/troubleshooting.md (dev)",
+   "read": "2026-11-13",
+   "note": "Section 'Consumer fails to pickup any new files'. The same page warns of unique-constraint database warnings 'during heavy consumption when using polling'."
+  },
+  {
+   "product": "general",
+   "label": "v3 CPU baseline",
+   "value": "NumPy ≥2.4.0 x86_64 wheels need x86-64-v2 (SSE3, SSSE3, SSE4.1, SSE4.2, POPCNT…). On older CPUs the classifier crashes with SIGILL \"regardless of whether AI features are enabled\"",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/migration-v3.md",
+   "source_title": "paperless-ngx docs/migration-v3.md (dev)",
+   "read": "2026-11-13",
+   "note": "The docs give a check command, grep -o -m1 sse4_2 /proc/cpuinfo, and a workaround, PAPERLESS_TRAIN_TASK_CRON=disable. They say it affects CPUs older than about 2008 (Intel) or 2011 (AMD)."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "J4125 instruction set extensions",
+   "value": "Intel SSE4.2 (passes the v3 x86-64-v2 check)",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "The DS224+ and DS425+ use the same CPU."
+  },
+  {
+   "product": "Asustor AS5402T",
+   "label": "N5105 instruction set extensions",
+   "value": "Intel SSE4.2 (passes the v3 x86-64-v2 check)",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 (4M Cache, up to 2.90 GHz) specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "Intel's N5095 URL redirected to this N5105 SKU page, so I have not confirmed the N5095 (QNAP TS-264) directly."
+  },
+  {
+   "product": "general",
+   "label": "Architecture support",
+   "value": "\"Docker images are available for arm64 hardware\"; ARMv7 (32-bit) \"could require modifications to the Dockerfile … It is suggested to upgrade to arm64 instead.\"",
+   "source": "https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/dev/docs/faq.md",
+   "source_title": "paperless-ngx docs/faq.md (dev)",
+   "read": "2026-11-13",
+   "note": "Covers the Pi 5 and arm64 NAS like the UGREEN DH2300/DH4300 Plus. It rules out 32-bit ARM NAS."
+  }
+ ],
+ "unsourced": [
+  "Intel ARK instruction-set entry for the Celeron N5095 (QNAP TS-264): the SKU URL I tried redirected to the N5105 page, and I did not find the N5095's own page.",
+  "Hardware, RAM or CPU needs for the Paperless-ngx AI/LLM features (local models via Ollama): usage.md and configuration.md mention a 'choosing AI models' guide but give no figures, and I could not find the guide in the docs folder.",
+  "A maker or project statement that Synology Container Manager, UGOS Pro Docker, QNAP Container Station or Asustor ADM bind mounts deliver inotify events into containers: none of the makers' docs checked. The on-NAS claim rests on the inotify(7) rule plus the project docs.",
+  "A paperless-ngx doc statement on keeping the PostgreSQL data directory off network storage: setup, configuration, FAQ and troubleshooting don't cover it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.9325117
+ }
+}

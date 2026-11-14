@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Intel only counts the i5-1235U's 80-EU iGPU as Iris Xe when the box has dual-channel (128-bit) memory, \"Otherwise, use the Intel UHD brand\". The DXP6800 Pro ships with one 8 GB DDR5 stick in one of two SO-DIMM slots, so the Iris Xe that every answer credits it with is only there after the buyer adds a second module.",
+ "standout": 2,
+ "standout_why": "I compared Starry Hope (cited 2026-11-11 and dated 2026-11-02), Notebookcheck's DXP6800 Pro review (cited) and QNAP's TVS-h674 hardware specs (cited), plus two uncited results: nasdrives.ca and IT Pro. Starry Hope already covers the software side: Plex Pass is needed, the container must be given the graphics device, \"UGOS Pro has no native Plex package\", and Plex lists TerraMaster packages only for TOS 4–6. So a software finding would add nothing. Notebookcheck says nothing about RAM channels or transcoding. IT Pro says the unit \"comes with one 8GB stick\", and nasdrives.ca says \"one memory channel is populated as shipped\". Neither connects that to Intel's rule that the GPU is branded Iris Xe only with dual-channel memory. Every ChatGPT answer lists 'i5-1235U / Iris Xe / Excellent' with no memory caveat.",
+ "decides": "This supports the DXP6800 Pro (and the F6-424 Max, which has the same CPU) as the pick, with one condition. To get the Iris Xe graphics that Intel specifies, the shopper has to fill the second SO-DIMM slot with a matching DDR5 module. Quick Sync itself is listed as 'Yes' either way, so hardware transcoding works out of the box. Plex's own requirements did not change the pick: Plex publishes no UGOS build, so Plex on UGREEN runs in Docker with /dev/dri passed through. QNAP's TVS-h674 has a native QTS package, but its 10GbE is 'Optional via PCIe expansion card'.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP6800 Ultra",
+  "TerraMaster F6-424 Max",
+  "TerraMaster F6-425 Pro",
+  "QNAP TVS-h674",
+  "QNAP TS-664"
+ ],
+ "findings": [
+  {
+   "product": "general (Intel Core i5-1235U, used in UGREEN DXP6800 Pro and TerraMaster F6-424 Max)",
+   "label": "Iris Xe graphics needs dual-channel memory",
+   "value": "\"to use the Intel® Iris® Xe brand, the system must be populated with 128-bit (dual channel) memory. Otherwise, use the Intel® UHD brand.\" GPU is listed as \"Intel® Iris® Xe Graphics eligible\", 80 EUs, Quick Sync Video: Yes, 2 memory channels max, 20 PCIe lanes (CPU Gen 4, PCH Gen 3)",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226261/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz/specifications.html",
+   "source_title": "Intel Core i5-1235U Processor specifications (Intel ARK)",
+   "read": "2026-11-13",
+   "note": "This is Intel's own footnote. Intel ties only the graphics name to dual-channel memory. I found no source that measures how much a single channel slows Plex Quick Sync or tone mapping."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Memory as shipped",
+   "value": "one 8 GB DDR5-4800 stick",
+   "source": "https://www.itpro.com/infrastructure/servers-and-storage/ugreen-nasync-dxp6800-pro-review-an-affordable-nas-alternative-to-qnap-and-synology",
+   "source_title": "Ugreen NASync DXP6800 Pro review | IT Pro (Dave Mitchell, 2024-04-29)",
+   "read": "2026-11-13",
+   "note": "Quote: \"The appliance comes with one 8GB stick of fast 4,800MT/s\"."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Memory slots and channel population",
+   "value": "8 GB DDR5 SO-DIMM 4800, 2 slots, up to 64 GB; one memory channel populated as shipped",
+   "source": "https://nasdrives.ca/what-can-the-ugreen-nasync-dxp6800-pro-run/",
+   "source_title": "What Can the DXP6800 Pro Run? Plex, Docker & Local AI (nasdrives.ca, Devin Chua)",
+   "read": "2026-11-13",
+   "note": "Quotes: \"8 GB DDR5 SO-DIMM 4800 (2 slots), up to 64 GB\" and \"with one memory channel is populated as shipped\". This page also says \"Plex installs straight from UGOS\", which contradicts Starry Hope's \"UGOS Pro has no native Plex package\". I did not settle which is right."
+  },
+  {
+   "product": "general (Plex Media Server NAS builds)",
+   "label": "NAS operating systems Plex publishes builds for",
+   "value": "QNAP: \"Intel/AMD 64-bit (QTS-4.3 and newer)\". TerraMaster: TOS 4 and \"TOS 5 & 6\" only. No UGREEN/UGOS entry. Current version 1.43.5.11079, released about 2026-10-22.",
+   "source": "https://plex.tv/api/downloads/5.json",
+   "source_title": "Plex downloads API (plex.tv)",
+   "read": "2026-11-13",
+   "note": "This is Plex's own download manifest. With no UGOS build, Plex on the DXP6800 Pro/Ultra goes through Docker with /dev/dri mapped. Starry Hope already says the same thing."
+  },
+  {
+   "product": "QNAP TVS-h674",
+   "label": "iGPU, 10GbE and PCIe",
+   "value": "Intel UHD Graphics 730 (i5-12400 or i3-12100). 10GbE is \"Optional via PCIe expansion card\". Slot 1 PCIe Gen 4 x16, Slot 2 PCIe Gen 4 x4. 2× M.2 2280 Gen 4 x4. Memory: i5 has 32 GB, i3 has 16 GB, max 64 GB (2 × 32 GB). OS: QTS 6.1.0 / QuTS hero h6.1.0.",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674/specs/hardware",
+   "source_title": "TVS-h674 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The 'Hardware-accelerated Transcoding' row shows no value in the page text, probably a checkmark icon that the page text didn't capture."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "10GbE measured throughput",
+   "value": "9.5 Gbit/s send and receive (iPerf3)",
+   "source": "https://www.notebookcheck.net/Great-hardware-not-quite-there-yet-Ugreen-NASync-DXP6800-Pro-review.1332573.0.html",
+   "source_title": "Great hardware, not quite there yet - Ugreen NASync DXP6800 Pro review - Notebookcheck (Daniel Schmidt)",
+   "read": "2026-11-13",
+   "note": "Notebookcheck also measured 36.59–41.93 W at idle, which it calls \"very high\". It says \"some features can only be implemented via Docker\"."
+  }
+ ],
+ "unsourced": [
+  "Plex's own requirements for hardware HDR tone mapping on Linux/Docker/NAS (support.plex.tv articles 115002178853 and hdr-to-sdr-tone-mapping): both returned HTTP 403, so the Kaby Lake+ / PMS 1.29.2 requirement could only be seen in search snippets and is left out.",
+  "UGREEN's own DXP6800 Pro page (ai.ugreen.com, ai-ca.ugreen.com) and storecheck.py: HTTP 429, so I could not get the memory module count in UGREEN's words or today's price.",
+  "TerraMaster F6-425 Pro page (terra-master.com, storecheck.py): HTTP 429, so I could not get which TOS version it ships with or whether TerraMaster states Plex hardware transcoding on TOS 7.",
+  "B&H and Newegg spec pages for the DXP6800 Pro memory configuration: HTTP 403.",
+  "Any measured comparison of Plex Quick Sync or tone-mapping throughput with single- versus dual-channel memory on the i5-1235U, from Intel, Plex or a named reviewer: none found.",
+  "Whether UGOS Pro's App Center offers a Plex app: nasdrives.ca says yes, Starry Hope says no, and I found no UGREEN source to settle it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.5408434999999998
+ }
+}

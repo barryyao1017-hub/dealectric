@@ -1,0 +1,82 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Jackery Explorer 1000 v2 (JE-1000D) ships with Energy Saving Mode on, which turns off all outputs after 12 hours when nothing is plugged in or the load is at or below a set value. Jackery says the mode can be switched off but the AC/DC output time cannot be set in the app.",
+ "standout": 2,
+ "standout_why": "I checked the two rival pages ChatGPT cited and the two other top results. The cited ones are wattfort.com/guides/power-station-electric-blanket and blackoutwise.com/power-stations/jackery-explorer-1000-v2/electric-blanket. The other two are runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket and testedwatts.com/2026/09/24/power-station-electric-blanket. None of them mentions a power station turning off its own outputs when the load is low. WattFort covers only the blanket side: Sunbeam's auto-off timer and Sunbeam's warning against inverters. BlackoutWise assumes a 50% duty cycle and a 0.85 loss factor, with no shutdown behaviour. RuntimeMath and TestedWatts mention only blanket auto-off. Our current Dealectric page already says in general terms that some stations switch AC off at low load and names BLUETTI's ECO mode. So the general idea is not new to our page. What is new is the Jackery 1000 v2's default and its 12-hour timer, and Jackery's 18 W standby figure.",
+ "decides": "This confirms ChatGPT's #2 pick, the Jackery Explorer 1000 v2, rather than ruling it out. Energy Saving Mode is on out of the box, but the 12-hour timer is longer than an 8–10 h night, and the mode can be turned off. The blanket's low draw while its thermostat is off should not cut power in the middle of a normal night. The bigger runtime hit is the 18 W standby Jackery lists. Over 10 h that is 180 Wh, about 17% of the 1,070 Wh battery. ChatGPT's '≈12 h at 75 W' leaves it out (arithmetic: 1,070 × 0.85 ≈ 910 Wh; 910 / (75 + 18) ≈ 9.8 h, not 12 h). For the BLUETTI AC180 (ChatGPT's #1), the deciding question is ECO mode: whether its delay can be as short as 1–4 h and its threshold above a blanket's thermostat-off draw. I could not open a readable official source for that (see unsourced), so the page should tell AC180 owners to turn AC ECO off for overnight blanket use rather than quote numbers.",
+ "candidates": [
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 30 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 3"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Energy Saving Mode default",
+   "value": "On by default",
+   "source": "https://www.teklib.com/library/jackery-explorer1000v2-power-station-manual/",
+   "source_title": "Jackery EXPLORER 1000 V2 power station User Manual (teklib, model JE-1000D)",
+   "read": "2026-11-14",
+   "note": "Manual text: 'the product turns the Energy Saving Mode on by default.' Hosted by a third party. The official Shopify PDF (cdn.shopify.com/s/files/1/0790/9773/files/Jackery_Explorer_1000_v2_User_Manual-new.pdf) downloaded only as compressed streams I could not read."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Auto-off timer under Energy Saving Mode",
+   "value": "12 h, then all outputs turn off",
+   "source": "https://www.teklib.com/library/jackery-explorer1000v2-power-station-manual/",
+   "source_title": "Jackery EXPLORER 1000 V2 power station User Manual (teklib, model JE-1000D)",
+   "read": "2026-11-14",
+   "note": "Manual text: 'when no device is connected or the connected device is less than or equal to a certain value, the device will automatically turn off all outputs after 12 hours.' The readable copy does not give the wattage threshold."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Energy Saving Mode can be turned off / AC-DC output time settable in app",
+   "value": "Can be turned off: Yes; output time settable in app: No",
+   "source": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683026571291-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery Help Center (EU)",
+   "read": "2026-11-14",
+   "note": "Q&A table on Jackery's own help centre. It also answers 'Is it possible to set automatic shutdown in the app: Yes'. This is the EU help centre; I did not find a US equivalent."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Standby power consumption",
+   "value": "18 W",
+   "source": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683026571291-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery Help Center (EU)",
+   "read": "2026-11-14",
+   "note": "Listed as 'Standby Power Consumption: 18W'. Arithmetic: 18 W × 10 h = 180 Wh, about 17% of 1,070 Wh. At a 75 W blanket average: 1,070 × 0.85 / 93 W ≈ 9.8 h."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "AC waveform",
+   "value": "Pure sine wave",
+   "source": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683026571291-Explorer-1000-V2-Basic-Information",
+   "source_title": "Explorer 1000 V2 Basic Information – Jackery Help Center (EU)",
+   "read": "2026-11-14",
+   "note": "'Type of Product Output Current: Pure sine wave.' Relevant to WattFort's point that Sunbeam's manual warns against inverters: the waveform is clean, but Sunbeam's warning is about inverters of any kind."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of station-side auto-off",
+   "value": "None of the 4 rival pages mention it",
+   "source": "https://wattfort.com/guides/power-station-electric-blanket/",
+   "source_title": "How Long Will a Power Station Run an Electric Blanket? | WattFort",
+   "read": "2026-11-14",
+   "note": "I also read blackoutwise.com/power-stations/jackery-explorer-1000-v2/electric-blanket, runtimemath.com/how-long-will-a-power-station-run-an-electric-blanket and testedwatts.com/2026/09/24/power-station-electric-blanket on 2026-11-14. All cover blanket auto-off or losses only. Our own dealectric.com page already mentions BLUETTI ECO mode in general terms."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC180 ECO-mode AC threshold (W) and delay options (h). I looked in the official manual PDF at s4.bluettipower.com/bluetti_lgf/support/2025/08/18511b5c-56c0-496e-98a8-6b779dd06344.pdf, but it came back as compressed streams I could not read. I also tried the invertersrus.com copy (same problem), manuals.plus (403) and device.report (403), and the BLUETTI community thread, which now redirects to forum.bluettipower.com. A search summary said '15–30 W AC, 1–4 h', but I could not open a page that shows it.",
+  "Jackery Explorer 1000 v2 AC threshold for Energy Saving Mode (a search summary said ≤25 W). The official US manual PDF could not be read; manua.ls failed with a certificate error and notice-facile returned 403.",
+  "Button combination to turn off Energy Saving Mode on the Explorer 1000 v2. The teklib page lists the heading but no steps.",
+  "Low-load auto-off behaviour and defaults for the BLUETTI Elite 30 V2, Anker SOLIX C1000 Gen 2, EcoFlow RIVER 3 and Tenergy T320. I ran out of my tool budget before opening their manuals."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9593213999999999
+ }
+}

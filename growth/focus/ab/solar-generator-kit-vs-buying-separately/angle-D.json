@@ -1,0 +1,101 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the AC180's solar input is capped at 10 A (500 W, 12–60 V, DC7909 port). Because watts = volts × amps, the panel string has to run near 50 V to reach the full 500 W, and its open-circuit voltage still has to stay under the 60 V limit. Adding a second panel in parallel, the way Trek4Tech suggests, raises the current but not the voltage, so it hits the 10 A cap.",
+ "standout": 2,
+ "standout_why": "I read the three rival pages ChatGPT cited or ranked: StormWatts (bundle-vs-separate price math), GetWattLogic (cited) and Trek4Tech, plus our own page. StormWatts gives only wattage caps ('500 W' on the AC180) and says to 'check Voc, amps, and connectors'. It gives no current limit and says nothing about series or parallel wiring. GetWattLogic names MC4/XT60 and MPPT but gives no voltage or amp figures. Trek4Tech gives an '11–60V' window and wattage caps, but says a second panel should be 'wired in parallel' and never mentions an amp ceiling. Our page says only 'check the panel's open-circuit voltage against the station's input window and the connector'. None of them gives a current cap in amps, explains the volts × amps limit, or names the AC180's DC7909 input.",
+ "decides": "Buying separately to save money on the AC180 only works if the shopper also plans the wiring. With a 10 A ceiling, a single 200 W panel is fine. Two panels in parallel are still held to 10 A, so the second panel adds little. To get toward the 500 W input, the panels have to go in series, at about 50 V with an open-circuit voltage under 60 V. BLUETTI's 2×200 W kit is $65 cheaper than the same parts bought separately ($1,232 vs $499 + 2 × $399 = $1,297, read today). A third-party panel also needs an MC4-to-DC7909 cable. This supports our page's verdict: the kit is the safe default, and a third-party panel saves money only for a buyer who checks the 10 A and 60 V limits. Note: today's AC180+200W kit price is $769 (compare-at $899), not the $729 on our current page.",
+ "candidates": [
+  "BLUETTI AC180 + 200 W",
+  "BLUETTI AC180 + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 200 W",
+  "BLUETTI Elite 30 V2 + 100 W",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "Anker SOLIX C1000 Gen 2 + 200 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits (spec table)",
+   "value": "DC7909 interface; 500 W / 10 A max; 12–60 V DC",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Copied from the Specifications section of BLUETTI's manual as hosted on ManualsLib. BLUETTI's own store and its CDN PDF returned HTTP 429 or a PDF I couldn't extract."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Panel requirements and wiring (Solar Charging section)",
+   "value": "Voc 12–60 V, input current 10 A max, input power 500 W max; 'Connect the solar panels (in series or parallel) to AC180 via the solar charging cable'; 'Do not use solar panels with open circuit voltage higher than 60V'; 'Please do NOT mix different types of solar panels'",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "The manual says going over 60 V Voc damages the unit and is not covered by the warranty. FAQ Q2 says third-party panels should have MC4 connectors."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Minimum voltage for full 500 W solar input (arithmetic)",
+   "value": "≈50 V at the 10 A cap; Voc must stay ≤60 V",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "500 W ÷ 10 A = 50 V. A string with a 20 V operating point delivers at most 20 V × 10 A = 200 W, however many panels are wired in parallel. Only a series string near 50 V can reach 500 W, and its cold-weather Voc must stay under 60 V."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Minimum solar to charge (Charging notes)",
+   "value": "more than 100 W",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "Page 8 says: 'If charging via solar energy, ensure that your solar system provides an output of more than 100W.'"
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Station price (BLUETTI US store)",
+   "value": "$499",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "From storecheck.py product (Shopify JSON). In stock."
+  },
+  {
+   "product": "BLUETTI AC180 + 200 W",
+   "label": "Kit price (BLUETTI US store)",
+   "value": "$769 (compare-at $899)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Variant 'AC180+200W Solar'. Our page currently shows $729 (Nov 4)."
+  },
+  {
+   "product": "BLUETTI AC180 + 2× 200 W",
+   "label": "Kit price vs same parts separately (BLUETTI US store)",
+   "value": "$1,232 kit vs $1,297 separately (saves $65, 5.0%)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-14",
+   "note": "Variant 'AC180+2*200W Solar | 400W Solar Kit'. Separate price = $499 station + 2 × $399 BLUETTI 200W Portable Solar Panel (bluettipower.com/products/bluetti-sp200l-solar-panel-200w, read via storecheck.py search the same day)."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "Standalone price (BLUETTI US store)",
+   "value": "$399 (compare-at $1,197)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search of the BLUETTI US store. The listing text says 'Compatible With Most Solar Generators with MC4 Connectors'."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI SP200L Voc/Isc/Vmp/Imp. Search snippets give 24.62 V / 10.24 A / 20.52 V / 9.75 A, but every page I tried returned 429 or 403 (the BLUETTI US product page, the BLUETTI AU listing, Wellbots, US Solar Supplier, and manuals.plus), so I left these figures out. This leaves unconfirmed whether two SP200L in series (≈49 V Voc) clear the AC180's 60 V limit in cold weather.",
+  "Solar input current caps (A) for the Elite 200 V2, Elite 30 V2, ALLPOWERS P1800 and Anker SOLIX C1000 Gen 2. I ran out of the tool-call budget after BLUETTI's store rate-limited me.",
+  "Whether the AC180 kit's 200 W panel is the SP200L or the PV200D. The store variant is labelled only 'AC180+200W Solar'.",
+  "BLUETTI's own AC180 manual PDF (cdn.shopify.com/.../AC180_User_Manual.pdf). It downloaded, but I couldn't extract the text (the extraction commands weren't approved), so I used the ManualsLib copy of the manual instead."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.0344113
+ }
+}

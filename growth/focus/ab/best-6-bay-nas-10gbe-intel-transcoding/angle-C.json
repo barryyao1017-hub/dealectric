@@ -1,0 +1,102 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that QNAP's route to 10GbE on its Intel 6-bays has a slot limit: the TS-664's only expansion slot is PCIe Gen 3 x2, which carries about 15.8 Gb/s, so one of the dual-port 10GbE cards QNAP lists for it (QXG-10G2T) cannot run both ports at full speed. QNAP also says to fit only QNAP memory, up to 16 GB. The TVS-h674 has Gen 4 x16 and Gen 4 x4 slots that take a card up to 185 × 111 mm.",
+ "standout": 1,
+ "standout_why": "I compared against these pages. ChatGPT cited the QNAP TVS-h674 hardware spec page, which gives the TVS-h674's slots but says nothing about the TS-664. Starry Hope (cited in one chat) covers UGREEN Plex running in Docker and the TerraMaster TOS 7 package gap, but it has no QNAP models and nothing about 10GbE cards. Our current page names the QXG-10G1T and the TS-664's Gen3 x2 slot but not the bandwidth limit or the 16 GB memory ceiling. One QNAP compare page that included the TS-664 was in ChatGPT's results but not cited, and it probably lists the slot. Every ChatGPT answer says only '10GbE requires an additional card' for QNAP. The TS-664 slot limit is new but small, so 1.",
+ "decides": "It supports the existing pick. The DXP6800 Pro and the TerraMaster F6-424 Max and F6-425 Pro have two 10GbE ports built in. QNAP's Intel 6-bays need a QXG card on top of the box price. On the TS-664, a dual-port card shares a Gen3 x2 slot that is slower than two 10GbE links. The TVS-h674 takes the card without a bandwidth limit, but it costs about twice as much. The finding argues against recommending 'TS-664 + 10GbE card' as a budget route to dual 10GbE. A single-port QXG-10G1T fits within the slot.",
+ "candidates": [
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP6800 Ultra",
+  "TerraMaster F6-424 Max",
+  "TerraMaster F6-425 Pro",
+  "QNAP TVS-h674",
+  "QNAP TS-664"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-664",
+   "label": "PCIe expansion slot",
+   "value": "1 slot, PCIe Gen 3 x2; card up to 190 × 68.9 × 18.76 mm",
+   "source": "https://www.qnap.com/en-us/product/ts-664/specs/hardware",
+   "source_title": "TS-664 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP lists 5GbE and 10GbE as 'Optional via PCIe expansion card'. The bandwidth figure is my arithmetic: PCIe 3.0 is about 0.985 GB/s per lane, × 2 lanes ≈ 1.97 GB/s ≈ 15.8 Gb/s. That is below the 20 Gb/s of two 10GbE ports, so a dual-port card cannot run both ports at line rate here. A single-port card (10 Gb/s) fits."
+  },
+  {
+   "product": "QNAP TS-664",
+   "label": "10GbE cards QNAP lists as optional accessories",
+   "value": "QXG-10G1T, QXG-10G2T, QXG-10G2SF-NXE, QM2-2P10G1TB (QXG-10G2TB marked EOL)",
+   "source": "https://www.qnap.com/en-us/product/ts-664/specs/hardware",
+   "source_title": "TS-664 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "These come from the 'optional accessories' list on QNAP's spec page. QNAP does not state per-card bandwidth limits there."
+  },
+  {
+   "product": "QNAP TS-664",
+   "label": "Memory",
+   "value": "2 × SODIMM DDR4, max 16 GB (2 × 8 GB); 8 GB installed on TS-664-8G",
+   "source": "https://www.qnap.com/en-us/product/ts-664/specs/hardware",
+   "source_title": "TS-664 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP: 'Use only QNAP memory modules to maintain system performance and stability.' The 4G model needs 'a pair of identical DDR4 modules'."
+  },
+  {
+   "product": "QNAP TVS-h674",
+   "label": "PCIe expansion slots",
+   "value": "Slot 1: PCIe Gen 4 x16; Slot 2: PCIe Gen 4 x4; card up to 185 × 111.15 × 18.76 mm",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674/specs/hardware",
+   "source_title": "TVS-h674 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Built-in networking is 2× 2.5GbE. 5GbE and 10GbE are 'Optional via PCIe expansion card'. QNAP: 'Wider cards can be installed if the next PCIe slot will not be used.' The accessory list includes QXG 10GbE and 25GbE cards and QM2-2P10G1TB, some marked EOL."
+  },
+  {
+   "product": "QNAP TVS-h674",
+   "label": "CPU / iGPU and memory by variant",
+   "value": "i5-12400 6C/12T (32 GB) or i3-12100 4C/8T (16 GB); Intel UHD Graphics 730; 2 × SODIMM DDR4, max 64 GB",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674/specs/hardware",
+   "source_title": "TVS-h674 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP says to use only QNAP memory modules. The M.2 slots are 2 × 2280 PCIe Gen 4 x4, 'Compatible with NVMe SSD PCIe Gen 3 and above', and M.2 SSDs are not hot-swappable."
+  },
+  {
+   "product": "QNAP TS-664",
+   "label": "Plex hardware transcoding (QNAP's own list)",
+   "value": "Listed as supporting hardware transcoding at 720p, 1080p and 4K; Plex Pass required",
+   "source": "https://www.qnap.com/en-us/solution/plex-best-nas",
+   "source_title": "Plex Media Server | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP's recommended-NAS table names the TS-453E, TS-664 and TVS-h874T. It does not name the TVS-h674. QNAP: 'A Plex Pass account is required for hardware-accelerated streaming.' The page gives no QTS or QuTS hero version requirement."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "Plex install path on UGOS Pro",
+   "value": "No native Plex package; runs as a Docker container that must be given access to the graphics device for Quick Sync",
+   "source": "https://www.starryhope.com/nas/best-nas-for-plex/",
+   "source_title": "Best NAS for Plex in 2026 With Quick Sync | Starry Hope",
+   "read": "2026-11-13",
+   "note": "Starry Hope: 'UGOS Pro has no native Plex package, so Plex runs as a Docker container.' This is a cited rival page, so it is not new."
+  },
+  {
+   "product": "TerraMaster F6-424 Max",
+   "label": "Native Plex package vs shipping OS",
+   "value": "Plex's download page lists TerraMaster packages for TOS 4 through TOS 6; new units ship with TOS 7",
+   "source": "https://www.starryhope.com/nas/best-nas-for-plex/",
+   "source_title": "Best NAS for Plex in 2026 With Quick Sync | Starry Hope",
+   "read": "2026-11-13",
+   "note": "This is Starry Hope's reading of Plex's download page. I could not open Plex's page (HTTP 403) to confirm it myself. It applies to TerraMaster's current TOS 7 units in general. Starry Hope did not name the F6-424 Max."
+  }
+ ],
+ "unsourced": [
+  "Plex's own NAS Compatibility List, Using Hardware-Accelerated Streaming and HDR tone-mapping articles (support.plex.tv). All returned HTTP 403, so I have nothing from Plex on which NAS brands, OS versions or Intel generations get hardware transcoding and hardware tone mapping.",
+  "UGREEN's tested RAM modules and PCIe cards for the DXP6800 Pro's x4 slot. The compatibility page (ai-uk.ugreen.com/pages/compatibility) loaded but its tables did not render, ai.ugreen.com returned HTTP 429, and the DXP6800 Pro manual PDF (m.media-amazon.com/images/I/B18Aa0qLqAL.pdf) gave no readable text.",
+  "Whether UGREEN's US3000 DC UPS supports the DXP6800 Pro. Our catalog entry says it is for 2- and 4-bay NASync models only, but UGREEN's product page returned HTTP 429.",
+  "TerraMaster F6-424 Max and F6-425 Pro maker pages (maximum RAM, any expansion slot, TOS version, Plex statements). terra-master.com returned HTTP 429 on the US and UK pages.",
+  "A QNAP compatibility-list entry that names a specific 10GbE NIC for the TVS-h674, and the US price of the QXG-10G1T. store.qnap.com/qxg-10g1t.html returned 404, and the QXG-10G2T-X710 product page lists neither compatible models nor a price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.5022774999999995
+ }
+}

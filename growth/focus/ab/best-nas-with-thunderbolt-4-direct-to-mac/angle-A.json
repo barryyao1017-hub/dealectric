@@ -1,0 +1,140 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the two makers' Thunderbolt numbers on one scale. UGREEN advertises a '40Gbps link' and QNAP prints '20 Gbps Thunderbolt networking', but Liliputing found Windows reporting the UGREEN DXP480T Plus Thunderbolt network link at 20/20 Gbps, the same ceiling QNAP states. Measured on a Mac, every published figure is for a QNAP: 2,252 MB/s on the TS-h966TX (QNAP's lab) and 1,929 MB/s on the TBS-h574TX (StorageReview). No named reviewer has published a Mac-over-Thunderbolt number for any UGREEN.",
+ "standout": 2,
+ "standout_why": "Compared against the cited QNAP US pages for the TVS-h674T, TVS-h874T and TBS-h574TX, UGREEN's Thunderbolt how-to blog, and ChatGPT's answers. QNAP's pages give only QNAP's 20 Gbps cap. UGREEN's blog gives only 'Thunderbolt 4 provides a 40Gbps link' plus rough per-drive MB/s ranges it says are not UGREEN results. ChatGPT repeated QNAP's 20 Gbps and implied UGREEN is a cheaper equal, without saying the UGREEN link also runs at 20 Gbps. Liliputing appeared once, uncited, at rank 30 in one chat, so the 20/20 Gbps reading was in a result but no page set it beside QNAP's figure. The TBS-h574TX product page also does not say that its own 1,393/1,410 MB/s figure came from a Windows Server 2019 PC, not a Mac. It shows the client only in the test notes.",
+ "decides": "It removes '40 Gbps' as a reason to pick UGREEN: both brands deliver one 20 Gbps-class IP link per cable, so the real difference is price and storage, not link speed. For a shopper who needs Mac numbers they can check, QNAP is the only brand with published Mac-over-Thunderbolt figures: TS-h966TX 2,252 MB/s write (QNAP's lab, MacBook Pro M4 Pro) and TBS-h574TX 1,929 MB/s write (StorageReview, M1 Max). The UGREEN DXP480T Plus at $849.99 is still the value pick. Its only published Thunderbolt figure is 1.51 GB/s from an Intel NUC, so on a Mac it should be described as unmeasured.",
+ "candidates": [
+  "QNAP TVS-h674T",
+  "QNAP TVS-h874T",
+  "QNAP TBS-h574TX",
+  "QNAP TS-h966TX",
+  "UGREEN NASync DXP480T Plus",
+  "UGREEN NASync DXP6800 Pro",
+  "UGREEN NASync DXP8800 Plus",
+  "TerraMaster F6-425 Pro"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TVS-h674T",
+   "label": "Maker's Thunderbolt figure (networking cap, not port rate)",
+   "value": "20 Gbps maximum Thunderbolt networking bandwidth; 2× Thunderbolt 4; requires macOS 13.5 or later",
+   "source": "https://www.qnap.com/en-us/product/tvs-h674t",
+   "source_title": "TVS-h674T | Thunderbolt 4 NAS. Designed for creators and small studios | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Quote: 'adopts Thunderbolt Networking technology and provides maximum bandwidth of 20 Gbps.' The page gives no MB/s transfer figure for Thunderbolt."
+  },
+  {
+   "product": "QNAP TVS-h874T",
+   "label": "Thunderbolt ports and host limits (hardware spec)",
+   "value": "2 Thunderbolt 4 ports, delivered by a Thunderbolt 4 card preinstalled in PCIe slot 2 (Gen 4 x4); limited to Windows/Mac hosts and USB storage; third-party Thunderbolt external storage not supported",
+   "source": "https://www.qnap.com/en-us/product/tvs-h874t/specs/hardware",
+   "source_title": "TVS-h874T | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The spec page gives no Gbps rate for the ports. The Thunderbolt card takes one of the two PCIe slots, leaving the x16 slot for a 10GbE card."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Maker's own Thunderbolt throughput, and the test client behind it",
+   "value": "1,393 MB/s write, 1,410 MB/s read, 1 direct-connected client, measured on a Windows Server 2019 PC (i9-12900E), not a Mac; 5× 3.84 TB E1.S RAID 5, QuTS hero h5.2.3",
+   "source": "https://www.qnap.com/en-us/product/tbs-h574tx",
+   "source_title": "TBS-h574TX | Thunderbolt 4 All-Flash NASbook | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "The same page states 'Thunderbolt Networking for peer-to-peer connection, up to 20Gbps' and 'macOS 13.5 (or later)'. StorageReview (2024) quoted QNAP's launch figure as 1,637 MB/s write and 1,736 MB/s read, so the maker's own number has dropped since launch."
+  },
+  {
+   "product": "QNAP TBS-h574TX",
+   "label": "Measured over Thunderbolt from a Mac (named reviewer)",
+   "value": "1,929 MB/s write, about 1,850 MB/s read (ATTO, QD8, 4 threads, M1 Max MacBook Pro)",
+   "source": "https://www.storagereview.com/review/qnap-tbs-h574tx-thunderbolt-4-nas-review",
+   "source_title": "QNAP TBS-h574TX Thunderbolt 4 NAS Review, StorageReview (Vince Carnevale, 2024-04-02)",
+   "read": "2026-11-13",
+   "note": "1,929 MB/s × 8 = 15.4 Gbps. The reviewer says it 'fully saturated the 20Gbps connection the Thunderbolt network offers.' A Windows 10 PC with a Thunderbolt 3 add-in card managed 1,650 MB/s write but only 70 MB/s read."
+  },
+  {
+   "product": "QNAP TS-h966TX",
+   "label": "Maker-measured Thunderbolt throughput on a Mac",
+   "value": "2,252 MB/s write, 2,004 MB/s read (AJA, 16 GB 5K RED pattern, MacBook Pro M4 Pro, macOS 26.0, 4× PM9A3 U.2 RAID 5)",
+   "source": "https://www.qnap.com/en-us/product/ts-h966tx",
+   "source_title": "TS-h966TX | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "2,252 × 8 = 18.0 Gbps, about 90% of the page's stated '20Gbps throughput'. QNAP's own lab test, not an independent review. The page also says 'Direct-connect features are fully validated for Intel and AMD-powered USB4 / Thunderbolt 4 systems.' Core i3 6-core, 5× 3.5-inch SATA + 4× U.2."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Maker's Thunderbolt figure (port rate, not networking cap)",
+   "value": "'Thunderbolt 4 provides a 40Gbps link'; needs UGOS 1.2.0.2121 or later; one computer per port; the two ports are not bonded; SMB over a dedicated Thunderbolt IP address",
+   "source": "https://ai.ugreen.com/blogs/how-to/optimize-thunderbolt-4-nas-issues",
+   "source_title": "How to Connect UGREEN NAS via Thunderbolt 4 (UGREEN)",
+   "read": "2026-11-13",
+   "note": "Lists the DXP480T Plus, DXP6800 Pro and DXP8800 Plus as supported. Its MB/s figures (HDD 200–260, SATA SSD 500–550, NVMe over 1 GB/s) are, in its words, 'practical reference ranges', not UGREEN test results. Unlike QNAP, it names no minimum macOS version. The page date prints as 10/01/2025, ambiguous between January and October."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Negotiated Thunderbolt network link and measured copy (named reviewer, PC client)",
+   "value": "Windows reported the link as 20/20 Gbps (other PCs ranged from 10/10 to 20/20). 100 GB copy: 1.51 GB/s (12.08 Gbps) receiving, 1.42 GB/s (11.36 Gbps) sending, Intel NUC 13 Extreme",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review, Liliputing (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-13",
+   "note": "This is the key finding: UGREEN's '40Gbps' becomes a 20 Gbps IP link in practice, the same class as QNAP's stated cap. The best unnamed PC reached 2,464 MB/s sequential read in CrystalDiskMark. No Mac was tested."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "US price, UGREEN store",
+   "value": "$849.99 (list $1,124.98)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp480t-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP480T Plus (UGREEN US store)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py (Shopify product data). ChatGPT's card showed $899.99."
+  },
+  {
+   "product": "UGREEN NASync DXP6800 Pro",
+   "label": "US price, UGREEN store",
+   "value": "$1,099.99 (list $1,209.99)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp6800-pro-nas-storage",
+   "source_title": "UGREEN NASync DXP6800 Pro (UGREEN US store)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. Notebookcheck's review (Daniel Schmidt, 2026-07-01) lists '2 x Thunderbolt 4' on the front but did not test a direct Thunderbolt connection."
+  },
+  {
+   "product": "UGREEN NASync DXP8800 Plus",
+   "label": "US price, UGREEN store",
+   "value": "$1,369.99 (list $1,509.99)",
+   "source": "https://ai.ugreen.com/products/ugreen-nasync-dxp8800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP8800 Plus (UGREEN US store)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py."
+  },
+  {
+   "product": "general",
+   "label": "Thunderbolt link on a Mac is a network share, not a disk",
+   "value": "Even over the Thunderbolt cable the TVS-h874T is reached 'as a network drive' at a Thunderbolt IP address",
+   "source": "https://itdaily.com/reviews/workplace/qnap-tvs-h874t-review/",
+   "source_title": "Qnap TVS-h874T review: NAS & DAS all in one, ITdaily (Michaël Aussems, 2025-11-28)",
+   "read": "2026-11-13",
+   "note": "ITdaily published no Thunderbolt MB/s figure for the h674T/h874T."
+  },
+  {
+   "product": "TerraMaster F6-425 Pro",
+   "label": "Thunderbolt direct-connect requirements (maker FAQ)",
+   "value": "Works only from a Thunderbolt 3/4/5 or full-featured USB4 host port with a certified cable; macOS 'recommended for better transfer efficiency'; the Thunderbolt IP may change after a restart",
+   "source": "https://help.terra-master.com/faq/TNAS/network-servies/thunderbolt_direct_connect",
+   "source_title": "Thunderbolt direct connect, TerraMaster Help Center",
+   "read": "2026-11-13",
+   "note": "The FAQ names no models and gives no speed figure."
+  }
+ ],
+ "unsourced": [
+  "A Mac-client Thunderbolt throughput figure from a named reviewer for any UGREEN model (DXP480T Plus, DXP6800 Pro, DXP8800 Plus). StorageReview tested only over SMB/CIFS, Notebookcheck did not test Thunderbolt, and the only Mac number I found was a Reddit owner's post, which does not meet the sourcing rule.",
+  "Any measured Thunderbolt MB/s for the QNAP TVS-h674T or TVS-h874T. The QNAP product and spec pages and ITdaily's review give none.",
+  "The TerraMaster F6-425 Pro product page and datasheet, where search snippets show a 40 Gbps port claim and '10-20 Gbps' bridge throughput. terra-master.com returned 429, the datasheet PDF and forum labeling notice returned 403, so this is not verified.",
+  "Wording on the UGREEN DXP480T Plus product page (port rate, footnotes). WebFetch returned 429 twice.",
+  "Whether the new UGREEN DXP6800 Ultra ($1,449.99 on the US store) has Thunderbolt and is supported for direct connection. Its page returned 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.4398224999999998
+ }
+}

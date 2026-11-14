@@ -1,0 +1,85 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the BLUETTI Elite 30 V2's solar input accepts only 12–28 V, and that its manual warns against any panel whose open-circuit voltage is above 28 V. Two of BLUETTI's own 100 W panels wired in series reach 2 × 24.62 V = 49.24 V, so they are ruled out. A single 200 W BLUETTI panel (24.6 V open-circuit) is the one-panel way to reach the station's 200 W solar maximum.",
+ "standout": 2,
+ "standout_why": "I read the cited rivals solar-home.space, campequipmentplus.com and solutionenergy.com, plus our own current page. solar-home.space gives only maximum watts (Explorer 300 v2 '100 W', RIVER 3 Plus 220 W) and lists the Anker C300X DC kits by name and price only. campequipmentplus.com says it gives no voltage range or connector for any product and says only 'voltage and current limits matter'. solutionenergy.com gives a voltage range only for the Anker C1000 Gen 2 (29–60 V) and a connector only for Jackery (DC8020), and none for the small 300 Wh kits. None of them covers the Elite 30 V2's voltage limit, which panels fit under it, or the rule against wiring two panels in series. Our current page says nothing about any of this either.",
+ "decides": "It confirms the Elite 30 V2 + 100 W kit as the pick and adds a limit to its upgrade path. A shopper can go up to the 200 W solar maximum in two ways: one BLUETTI 200 W panel (24.6 V open-circuit), or 100 W panels wired in parallel. Two 100 W panels wired in series exceed the 28 V limit. BLUETTI also says the station does not support an expansion battery. So for longer trips the upgrade is the AC180, not more storage for the Elite 30 V2.",
+ "candidates": [
+  "BLUETTI Elite 30 V2 + 100 W Solar",
+  "BLUETTI AC180 + 100 W",
+  "Anker SOLIX C300X DC + 60 W",
+  "Jackery Solar Generator 300 (Explorer 300 + 40 W)",
+  "Jackery Solar Generator 1000 v2 (Explorer 1000 v2 + SolarSaga 200 W)",
+  "ALLPOWERS VOLIX P300 + 100 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Solar input voltage range and open-circuit voltage ceiling",
+   "value": "12–28 V; do not use panels with an open-circuit voltage above 28 V",
+   "source": "https://manualsfile.com/product/k54v014kcdp.html",
+   "source_title": "BLUETTI ELITE 30 V2 Portable Power Station 600W – User Manual V3.0 (manualsfile mirror)",
+   "read": "2026-11-14",
+   "note": "Quotes from the manual: 'Solar input voltage range for the unit is 12V-28V.' and 'Do not use solar panels with open circuit voltage higher than 28V.' This is a mirror of BLUETTI's manual. BLUETTI's own copy (V1.0, https://s4.bluettipower.com/bluetti_lgf/support/2025/08/3310400e-57e7-4b62-b1fc-030bd780a06e.pdf, linked from support.bluettipower.com) downloaded, but I couldn't extract its text to check it."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maximum solar input and car charging port",
+   "value": "Solar 200 W max; cigarette lighter port 24 V",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-14",
+   "note": "From the charging graphic on the page: 'Solar Panels: 200W Max., 2.2H' and 'Cigarette Lighter Port: 24V, 2.2H'. The Tech Specs tab on the page is empty."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Battery expansion",
+   "value": "Not supported; can be charged from a B80 in Power Bank Mode (sold separately)",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-14",
+   "note": "FAQ Q1 answer on the maker's US page."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100 W Solar",
+   "label": "Kit price and stock at BLUETTI US",
+   "value": "$489.99, in stock",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar",
+   "read": "2026-11-14",
+   "note": "Checked with storecheck.py (Shopify product JSON). The 60 W kit is $399.99 and the station alone is $289.99, both from the same store search. The in-the-box list on the product page doesn't name the panel model or the solar cable."
+  },
+  {
+   "product": "BLUETTI SP100L 100 W panel",
+   "label": "Open-circuit voltage, Isc, connector, series/parallel rule",
+   "value": "Voc 24.62 V; Isc 5.13 A; MC4; can be wired in series or parallel only with PV100L/PV100D; BLUETTI advises against mixing other brands or panel types",
+   "source": "https://www.bluettipower.com/products/foldable-solar-panel-sp100l",
+   "source_title": "BLUETTI SP100L Solar Panel | 100W",
+   "read": "2026-11-14",
+   "note": "Arithmetic: two SP100L in series = 2 × 24.62 V = 49.24 V, which is above the Elite 30 V2's 28 V ceiling. In parallel the voltage stays at 24.62 V and Isc adds to 10.26 A. The SP100L page doesn't name the Elite 30 V2. It says the panel is 'compatible with all BLUETTI portable power stations'. Store price is $249."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage, Isc, connector, mixing rule",
+   "value": "Voc 24.6 V; Isc 10.8 A; MC4; BLUETTI does not encourage mixing panel models (for example PV200 with SP200L)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-14",
+   "note": "24.6 V is below the Elite 30 V2's 28 V limit, so one SP200L fits the voltage window and matches the 200 W maximum. The page also gives conflicting ship dates ('late July' and 'from November 18th'). Store price is $399."
+  }
+ ],
+ "unsourced": [
+  "The connector type of the Elite 30 V2's solar/DC input (XT60 or DC7909) and whether the 100 W kit includes the MC4 adapter cable. The maker's product page lists neither. Only a third-party manual summary said a solar charging cable is 'sold separately', and I didn't open it.",
+  "The model of the 100 W panel in BLUETTI's Elite 30 V2 + 100 W kit. The kit page doesn't name it, so I couldn't confirm that SP100L's 24.62 V figure applies to the kit's panel.",
+  "The Elite 30 V2's maximum solar input current in amps. Only a retailer search snippet (outboundpower.com) gave '10A Max', and I didn't open that page.",
+  "Anker SOLIX C300X DC solar input voltage, connector and panel compatibility. us.ankersolix.com returned HTTP 429 to both WebFetch and storecheck.",
+  "Jackery Explorer 300 and Explorer 1000 v2 solar input voltage ranges from Jackery's pages or manuals. I ran out of tool-call budget. The only connector figure (DC8020) comes from the solutionenergy.com rival page, not from Jackery.",
+  "The Elite 30 V2's charging temperature range, and whether its manual lists specific compatible BLUETTI panels. I couldn't extract text from BLUETTI's manual PDF."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0991627
+ }
+}

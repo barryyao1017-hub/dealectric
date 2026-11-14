@@ -1,0 +1,70 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the battery makers' cycle-life claims on one depth-of-discharge basis. The only ladder I could open is LiTime's, relayed by Nautworthy: 4,000 cycles at 100% DoD, 6,000 at 80% and 15,000 at 60%. If WattCycle's '15000+ Deep Cycles' title uses a basis like LiTime's 60% figure, it is not a bigger number than Redodo's '4000+ Cycles'. I could not open WattCycle's page to confirm its basis.",
+ "standout": 1,
+ "standout_why": "I compared against Nautworthy's LiTime page (r2 result 12, not cited), our own Dealectric page, and the result titles ChatGPT got. Nautworthy already prints LiTime's three-step ladder, so the pages ChatGPT got hold part of the finding. What none of them does is set it beside the WattCycle '15000+' and Redodo '4000+' title claims. I wanted two more normalisations: WattCycle '120A BMS' against a possible 100 A continuous rating, and Vatrer's 150 A as continuous or peak. I couldn't open a maker page for either, so neither is sourced. ChatGPT already noticed the WattCycle 120A/100A conflict in one chat (r1x1).",
+ "decides": "On its own this doesn't change the pick. It only removes '15000+ cycles' as a reason to prefer WattCycle, and only once WattCycle's basis is confirmed. A finding that could decide the pick is still unsourced: whether WattCycle's 120 A and Vatrer's 150 A are continuous ratings, and whether each surge figure comes with a duration. Two things would do it: WattCycle continuous turning out to be 100 A, or Vatrer's 150 A turning out to be a peak. Either would collapse the 'more headroom' argument behind ChatGPT's Vatrer and WattCycle picks.",
+ "candidates": [
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+  "WattCycle 12V 100Ah TM Bluetooth",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Power Queen 12V 100Ah Group 24 Smart",
+  "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+  "Renogy Core 12V 100Ah Trolling Bluetooth",
+  "LiThink 12V 100Ah Group 24",
+  "WEIZE 12V 100Ah Group 24 Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Cycle life by depth of discharge (maker figures, relayed)",
+   "value": "4,000 cycles at 100% DoD; 6,000 at 80% DoD; 15,000 at 60% DoD",
+   "source": "https://nautworthy.com/electrical/litime-12v-100ah-group-24-bluetooth-lithium-deep-cycle-battery/",
+   "source_title": "LiTime 12V 100Ah Group 24 Bluetooth Lithium Deep Cycle Battery: Specs, Real-World Figures & Fit | Nautworthy",
+   "read": "2026-11-14",
+   "note": "Nautworthy credits these figures to LiTime's product page and says it did not test the battery. No end-of-life capacity threshold (such as 80% or 70% retained) is given. The 15,000 figure is 3.75× the 100% DoD figure only because it is counted at a shallower discharge, so it is not a longer life at full use."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Continuous discharge / BMS",
+   "value": "100 A continuous; no peak or surge figure stated",
+   "source": "https://nautworthy.com/electrical/litime-12v-100ah-group-24-bluetooth-lithium-deep-cycle-battery/",
+   "source_title": "LiTime 12V 100Ah Group 24 Bluetooth Lithium Deep Cycle Battery: Specs, Real-World Figures & Fit | Nautworthy",
+   "read": "2026-11-14",
+   "note": "Maker figure relayed by Nautworthy. Its spec table lists only 'BMS 100A'."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Smart Bluetooth",
+   "label": "Dimensions and weight",
+   "value": "10.24 × 6.61 × 8.27 in; 21.87 lb",
+   "source": "https://nautworthy.com/electrical/litime-12v-100ah-group-24-bluetooth-lithium-deep-cycle-battery/",
+   "source_title": "LiTime 12V 100Ah Group 24 Bluetooth Lithium Deep Cycle Battery: Specs, Real-World Figures & Fit | Nautworthy",
+   "read": "2026-11-14",
+   "note": "Maker figures relayed by Nautworthy. The page doesn't say whether the height includes terminals."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+   "label": "Warranty basis (our existing page)",
+   "value": "5 years after registration and activation for 12 V 100–600 Ah batteries; Vatrer's Japanese page gives powered equipment such as trolling motors 1 year (US terms not confirmed)",
+   "source": "https://dealectric.com/best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300",
+   "source_title": "Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026) · Dealectric",
+   "read": "2026-11-14",
+   "note": "This is our own page, already cited by ChatGPT, so it is not a new finding. I wanted to check it against vatrerpower.com, but the site returned HTTP 403 to WebFetch and HTTP 429 to storecheck.py."
+  }
+ ],
+ "unsourced": [
+  "WattCycle 12V 100Ah TM Bluetooth: whether 120 A is the BMS or the continuous rating, the surge current and how long it lasts, and the depth of discharge behind '15000+ Deep Cycles'. wattcycle.com and ca.wattcycle.com returned HTTP 429 to WebFetch and storecheck.py. The business.walmart.com listing showed a bot-check page. The reach.dog mirror returned HTTP 410.",
+  "Vatrer 12V 100Ah Group 24: whether 150 A is continuous, plus the peak current and its duration, cycle life and its depth of discharge, and dimensions including terminals. vatrerpower.com returned 403 to WebFetch and 429 to storecheck.py (tried twice). A search found no manual for this model.",
+  "Redodo 12V 100Ah Group 24 Bluetooth: the depth of discharge and end-of-life capacity behind '4000+ Cycles', the peak current and its duration, and today's price. redodopower.com returned 429. The manuals.plus copies (B0FN7HHC6S, B0FN7NKF21) returned 403.",
+  "Power Queen 12V 100Ah Group 24 Smart: continuous and peak current, cycle-life basis, and today's price. ipowerqueen.com failed with a TLS certificate error. The manuals.plus copy (B0DKSC84CF) returned 403.",
+  "Renogy Core 12V 100Ah Trolling and LiThink 12V 100Ah Group 24: continuous and peak current (LiThink's '550A surge' has no stated duration) and cycle-life basis. Both sites returned 429.",
+  "A spec sheet PDF (cdn.shopify.com/.../12V_100Ah_Group_24_SHBT_Spec_Sheet.pdf, publisher unidentified) and a 'Trolling-Motor-Guide-for-Motorguide.pdf' downloaded only as compressed binary. My attempts to extract the text locally needed shell approval I didn't have.",
+  "Today's maker-store prices for every candidate: I could not get any Shopify store to answer from this session. Amazon was not tried."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1400890000000004
+ }
+}

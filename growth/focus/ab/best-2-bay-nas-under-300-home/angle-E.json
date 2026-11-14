@@ -1,0 +1,94 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured figure for the TerraMaster F2-425: Hardware Busters measured about 270 MB/s reading from it and about 250 MB/s writing to it over its 2.5GbE port, against StorageReview's 115 MB/s each way on the Synology DS223j, with the F2-425 idling at about 11–12 W and measuring 13.7 to 33.6 dBA at 1 m.",
+ "standout": 2,
+ "standout_why": "I compared five rival pages. ComputingForGeeks (cited) gives the F2-425 only TerraMaster's rated power (22 W working, 11 W hibernation) and its claimed transcoding, while it does carry measurements for the DXP2800 (ocinside), the DS223j (StorageReview) and the DH2300 (PCMag). Starry Hope (cited) has one measurement, Notebookcheck's for the DXP2800 GT, and none for the F2-425 or F2-423. nas.kuibu.net (cited) has no measured power, noise or speed at all. Terabytewise and speedtesthq have none either; speedtesthq gives only an unattributed estimate of about 280 MB/s for 2.5GbE. ChatGPT named the F2-425 its best overall value in three of the seven chats, and no rival page gives a single measured number for it. Our own page has 'Not found' in that cell.",
+ "decides": "This backs ChatGPT's most frequent final choice, the F2-425 over the DS223j, with measurements instead of port specs. Hardware Busters' 270 MB/s read is about 2.3 times StorageReview's 115 MB/s on the DS223j, so for large photo or video libraries the F2-425 copies more than twice as fast for about $45 more. The noise figures (13.7 dBA on the low fan setting at 1 m) also answer the shopper's 'quiet operation' concern. It confirms the pick rather than changing it. Hardware Busters measured idle power with two SSDs, so it cannot be compared directly with the DH2300's 9.5 W on hard drives.",
+ "candidates": [
+  "TerraMaster F2-425",
+  "Synology DS223j",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-423",
+  "UGREEN NASync DH2300",
+  "Synology DS223",
+  "QNAP TS-233"
+ ],
+ "findings": [
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Single large-file transfer over 2.5GbE (Hardware Busters)",
+   "value": "about 270 MB/s from the NAS to the PC; about 250 MB/s average from the PC to the NAS",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review - Page 6 of 7 - Hardware Busters",
+   "read": "2026-11-13",
+   "note": "Test: a 24.78 GB 4K movie file copied in Windows, two ADATA SU800 240 GB SSDs in RAID 1, firmware TOS 6.0.783 (method on page 5). Review by tstamadianos, published 2025-10-09, price at review $249.99. 270 ÷ 115 (StorageReview's DS223j figure) ≈ 2.3×."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Measured power (Hardware Busters)",
+   "value": "about 11–12 W idle with both bays filled; about 1.1 W standby; about 20 W brief spike at startup",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review - Page 6 of 7 - Hardware Busters",
+   "read": "2026-11-13",
+   "note": "The bays held two SATA SSDs, not hard drives, so idle draw with two spinning hard drives would likely be higher. No load figure was given. TerraMaster's own rating, quoted in the same review: 22 W read/write and 11 W hibernation with two Seagate ST4000VN008 drives. At 11.5 W around the clock: 11.5 × 8,760 h ≈ 101 kWh a year."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Measured noise (Hardware Busters)",
+   "value": "13.7 dBA on low fan, 26.8 dBA on medium, 33.6 dBA on full, at 1 m",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review - Page 6 of 7 - Hardware Busters",
+   "read": "2026-11-13",
+   "note": "Hemi-anechoic chamber, background about 6 dBA, ambient 28 °C, SSDs installed, so there was no hard-drive noise. Also measured: SSDs at 38–39 °C and CPU at about 33 °C after an hour idle (27 °C room); boot 57 s."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "128K sequential SMB throughput (StorageReview)",
+   "value": "115 MB/s read, 115 MB/s write",
+   "source": "https://www.storagereview.com/review/synology-ds223j-review",
+   "source_title": "Synology DS223j Review - StorageReview",
+   "read": "2026-11-13",
+   "note": "Two 22 TB WD Red Pro drives in RAID 1 on the built-in 1GbE port; this fills the gigabit link. Author Ethan Beeler, published 2023-07-06. iSCSI was also 115/115 MB/s. ComputingForGeeks already cites this figure."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured power and noise (NASCompares)",
+   "value": "9.5 W idle; 12–13 W during transfers or at load; 31–32 dBA idle on low fan; 44–45 dBA at max fan",
+   "source": "https://nascompares.com/review/ugreen-dh2300-nas-review/",
+   "source_title": "UGREEN DH2300 NAS Review – Cloud Subscription Killer - NAS Compares",
+   "read": "2026-11-13",
+   "note": "Two 4 TB Seagate IronWolf hard drives, idle below 5% CPU. Microphone distance not stated. Posted 2025-10-12, updated 2025-10-16. Our page already carries this figure."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power and disk throughput (OCinside)",
+   "value": "about 7 W idle; 34.7 W peak; about 181 MB/s writing a 50 GB file to RAID 1",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review - ocinside.de",
+   "read": "2026-11-13",
+   "note": "Peak taken during a combined CPU, RAM and disk stress test. Drive count for the idle figure not stated. The 50 GB write took 290 s (50,000 MB ÷ 290 s ≈ 172 MB/s decimal; the review states about 181 MB/s). Network test was capped by a 1 Gbit iperf3 setup (950 Mbit/s). ComputingForGeeks already cites these numbers."
+  },
+  {
+   "product": "TerraMaster F2-423",
+   "label": "Measured power at the wall (Mighty Gadget)",
+   "value": "under 24 W at idle or light load (2–20% CPU); never above 31 W while writing to disk or during Plex playback at 90%+ CPU",
+   "source": "https://mightygadget.com/terramaster-f2-423-nas-review/",
+   "source_title": "TerraMaster F2-423 NAS Review – With Intel Celeron N5105, 2.5 GbE, DDR4, & 2x M.2 NVMe - Mighty Gadget",
+   "read": "2026-11-13",
+   "note": "Measured with a TP-Link Tapo P110 plug. Hard drive count and models not stated; two NVMe drives used in some tests. By James Smythe, first published 2022-11-05, updated March 2026. Read speed from a single NVMe drive was 100–150 MB/s; writes reached the full 2.5GbE rate but no MB/s number was given. Hardware transcoding handled everything up to 1080p."
+  }
+ ],
+ "unsourced": [
+  "A load-power figure for the F2-425 measured with hard drives (Hardware Busters tested SSDs only). TechRadar's F2-425 review came back truncated, and Neowin's F2-425 review returned 403.",
+  "Measured power or noise for the Synology DS223j: I found only Synology's own figures (16.31 W access, 4 W hibernation, 18.2 dB(A)), which NASCompares repeats. Neither is an independent measurement.",
+  "Measured noise for the non-GT UGREEN DXP2800, and idle power with two hard drives installed. Notebookcheck's 29.11 dB(A) and 14.84–20.14 W are for the DXP2800 GT, a different model. igorslab's DXP2800 test and Neowin's DXP2800 + UPS review both returned 403.",
+  "Measured MB/s for the TerraMaster F2-423 over 2.5GbE: NASCompares' 250–279 MB/s per port has no stated test method, and Mighty Gadget gives no write MB/s figure.",
+  "Named-lab measurements for the QNAP TS-233 and Synology DS223: not searched within the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1713683
+ }
+}

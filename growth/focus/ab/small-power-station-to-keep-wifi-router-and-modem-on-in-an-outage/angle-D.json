@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Jackery Explorer 240 v2 ships with Energy Saving Mode turned on, and that this mode switches off every output after 12 hours whenever the connected load is at or below a set threshold. A router and modem can therefore lose power partway through a long outage unless the owner turns the mode off with the button combination or in the app.",
+ "standout": 2,
+ "standout_why": "I read the three cited rival pages on 2026-11-14. homepowerfacts.com/can-it-run/wifi-router-modem has idle-draw figures but nothing on auto-off. outagemath.com/appliances/wifi-router has DC adapter voltages and ISP backup but nothing on auto-off. backupcalc.com/guides/how-long-will-a-power-station-run-a-wifi-router gives inverter idle draw as 10–30 W but nothing on auto-off. None of them mentions any low-load auto-off timer. Our own current page warns only that the EcoFlow RIVER 3 turns idle outputs off. Its Jackery Explorer 240 v2 row lists 'about 18' hours at 12 W, which the default 12-hour shutoff would cut short.",
+ "decides": "It doesn't change the top pick (BLUETTI Elite 30 V2). It does mean the Jackery Explorer 240 v2 row can't promise more than 12 hours on default settings. At 20 W the battery runs out in about 11 hours, so the timer barely matters. At 12 W our page claims about 18 hours, but with the default setting every output goes off at about 12 hours. The page should tell Jackery buyers to turn Energy Saving Mode off before relying on the unit for router backup. It should also add a general rule: check every candidate's low-load auto-off default (Jackery Energy Saving Mode, EcoFlow AC timeout, BLUETTI ECO), because a 10–20 W router load is exactly the kind of small load these timers are built to switch off.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "Tenergy T320",
+  "ALLPOWERS R600",
+  "Jackery Explorer 240 v2"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Energy Saving Mode default and behavior",
+   "value": "On by default; all outputs turn off after 12 hours when no device is connected or the connected load is at or below a set value",
+   "source": "https://www.teklib.com/library/jackery-explorer240v2-power-station-manual/",
+   "source_title": "Jackery EXPLORER 240 V2 power station User Manual (teklib copy, model JE-240A)",
+   "read": "2026-11-14",
+   "note": "This is a third-party copy of the JE-240A manual. The manual says: 'the product turns the Energy Saving Mode on by default ... when no device is connected or the connected device is less than or equal to a certain value, the device will automatically turn off all outputs after 12 hours.' This copy doesn't give the wattage. Jackery's official PDF (r.jackery.net) opened, but its text was compressed and I couldn't read it."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Energy Saving Mode can be disabled",
+   "value": "Yes; Battery Saving Mode can also be set in the app",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303619145883-Explorer-240-V2-Basic-Information",
+   "source_title": "Explorer 240 V2 Basic Information (Jackery Help Center, US)",
+   "read": "2026-11-14",
+   "note": "Maker FAQ: 'Can the Energy Saving Mode be turned off' answered 'Supported'. The EU help-center version of the same article says 'Yes'."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Effect of default timer on runtime",
+   "value": "Capped at about 12 h on default settings, against about 18 h at 12 W with the timer off",
+   "source": "https://www.teklib.com/library/jackery-explorer240v2-power-station-manual/",
+   "source_title": "Jackery EXPLORER 240 V2 power station User Manual (teklib copy, model JE-240A)",
+   "read": "2026-11-14",
+   "note": "Arithmetic against our page's own figures: 256 Wh at 12 W gives about 18 h, but the default 12-hour auto-off ends it first. At 20 W the battery lasts about 11 h, so the timer barely matters there. This assumes a 12 W load counts as 'at or below the set value'. The table copy I couldn't open puts that value at 25 W; see unsourced."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "UPS switchover",
+   "value": "Switches to battery within 20 ms; Jackery says it is not a 0 ms UPS",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303619145883-Explorer-240-V2-Basic-Information",
+   "source_title": "Explorer 240 V2 Basic Information (Jackery Help Center, US)",
+   "read": "2026-11-14",
+   "note": "Maker text: 'automatically switches to battery power within 20 ms (0.02 seconds)' and 'This function is not a 0 ms (no interruption) switching UPS.' Our page already has this."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Car port output during pass-through",
+   "value": "12 V, 10 A, 120 W max; AC 300 W",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303619145883-Explorer-240-V2-Basic-Information",
+   "source_title": "Explorer 240 V2 Basic Information (Jackery Help Center, US)",
+   "read": "2026-11-14",
+   "note": "These are the maker's limits while the unit charges and discharges at the same time. The 12 V car port can feed a 12 V router through a barrel adapter, which avoids the inverter."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 240 v2 Energy Saving Mode wattage threshold. Search snippets of the manual table said 'AC Output ≤25W, all outputs turned off automatically after 12 hours', but I couldn't open a page that shows it. Jackery's official PDF text was compressed and unreadable, notice-facile.com returned 403, the otto.de PDF was over the size limit, the Amazon-hosted EU-UK PDF came back truncated, and jackery.com returned 429 twice.",
+  "Whether the Jackery 12-hour Energy Saving Mode timer keeps running while the unit is on grid power in UPS mode, which would mean it could shut off before the outage even starts. Neither the maker FAQ nor the manual copy addresses this.",
+  "BLUETTI Elite 30 V2 ECO-mode default state and wattage threshold. The V3.0 manual's ECO Mode section wasn't readable in any result I opened, and the BLUETTI community thread redirected to the forum home page.",
+  "EcoFlow RIVER 3 default AC timeout value. The search snippets only quote 'set AC timeout to never' and give no default. I didn't open the manual because our page already covers this risk.",
+  "Low-load auto-off behavior for the Tenergy T320 and ALLPOWERS R600. I didn't research these within the tool budget.",
+  "Jackery Explorer 240 v2 price on jackery.com today. The page returned HTTP 429 twice."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0278248
+ }
+}

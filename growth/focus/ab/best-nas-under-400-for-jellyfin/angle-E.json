@@ -1,0 +1,113 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured simultaneous-stream count for any candidate. Lon.TV ran SpaceInvaderOne's transcoding benchmark on the Beelink ME mini (Intel N150). It held 1 stream for 4K HDR10 tone-mapped to SDR H.265 and 2 streams for 4K to 1080p H.264. A second N150 box with faster RAM held 3 streams on the same H.264 test.",
+ "standout": 2,
+ "standout_why": "I opened three rival pages. Starry Hope's best-2-bay page (dated 2026-10-31, cited) has only Notebookcheck's idle power for the DXP2800 GT and describes transcoding as yes or no. ComputingForGeeks' best-nas-for-home-selfhosting-plex page says itself that it is 'a spec and capability guide, not a bench test' and gives no stream count. ubnas puts '3 or more 4K streams' on unnamed 'independent reviewers', with no measurement. ChatGPT's own answers present their stream counts as 'planning estimates, not guaranteed benchmarks'. None of the pages I read gives a stream count measured by a named reviewer, and none says that memory configuration changes the result. I did not open the Jellyfin docs, itechguides, computingforgeeks best-2-bay or bitdoze. By search summary only, bitdoze's figures are estimates it extrapolated, not measurements.",
+ "decides": "It backs the N100/N150 class as the right buy under $400, but it caps expectations. Measured 4K HDR tone-mapping capacity for this class is about 1 to 2 streams: Lon.TV got 1 on the N150, and SpaceInvaderOne's leaderboard median for N100-class chips is 2 HDR streams. ChatGPT's 'Good' for 4K HDR overstates that. A shopper who needs 3 or more simultaneous 4K HDR transcodes should hear that nothing in this group is measured doing it. The Lon.TV result also weakens the case for the cheapest N150 option, the Beelink ME mini at $209 barebone. It was the box that managed only 1 tone-mapped stream, and Lon.TV puts that down to its lack of fast memory. RAM speed and channel count therefore belong in the table next to CPU name.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus",
+  "TerraMaster F2-425",
+  "TerraMaster F4-425",
+  "TerraMaster F2-423",
+  "TerraMaster F4-423",
+  "Beelink ME mini",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "Beelink ME mini",
+   "label": "Simultaneous 4K HDR10 → H.265 SDR (tone-mapped) transcodes, SpaceInvaderOne benchmark",
+   "value": "1 stream",
+   "source": "https://blog.lon.tv/2026/08/04/stress-test-your-media-server-spaceinvaderones-transcoding-benchmark/",
+   "source_title": "Stress Test Your Media Server! SpaceInvaderOne's Transcoding Benchmark (Lon.TV)",
+   "read": "2026-11-13",
+   "note": "Lon.TV, posted 2026-08-04. Intel N150. Only the Beelink ran the tone-mapping test. Lon.TV puts the lower result down to the Beelink's 'lack of fast memory'. The post names neither Plex nor Jellyfin as the server; the benchmark is a Docker stress test."
+  },
+  {
+   "product": "Beelink ME mini",
+   "label": "Simultaneous 4K → 1080p H.264 transcodes, SpaceInvaderOne benchmark",
+   "value": "2 streams",
+   "source": "https://blog.lon.tv/2026/08/04/stress-test-your-media-server-spaceinvaderones-transcoding-benchmark/",
+   "source_title": "Stress Test Your Media Server! SpaceInvaderOne's Transcoding Benchmark (Lon.TV)",
+   "read": "2026-11-13",
+   "note": "Lon.TV, 2026-08-04. Same N150 unit as above. On the same H.264 test, the GMKtec G3 Plus (N150, faster RAM, not a candidate) reached 3 streams. That is the memory effect: same CPU, one more stream."
+  },
+  {
+   "product": "general (Intel N100-class iGPU)",
+   "label": "SpaceInvaderOne leaderboard median, 4K HDR tone-mapping test",
+   "value": "2 HDR streams (median)",
+   "source": "https://computingforgeeks.com/best-gpu-jellyfin-plex-transcoding/",
+   "source_title": "Best GPU for Jellyfin and Plex: Quick Sync vs Arc vs NVENC (ComputingForGeeks, Valentine Cheronoh)",
+   "read": "2026-11-13",
+   "note": "Page updated 2026-11-02. This is a community leaderboard median reported by ComputingForGeeks, not the author's own test. Leaderboard clips run at 24 fps, and the test tone-maps the full 4K frame before scaling. Jellyfin scales first, so the leaderboard figure is probably on the conservative side for Jellyfin. ComputingForGeeks also says the N100 family can't decode AV1, which contradicts Intel and the other rivals, so don't reuse that line."
+  },
+  {
+   "product": "general (Intel N100)",
+   "label": "Jellyfin transcode speed, 67.4 Mbps 4K HDR10 remux → 1080p with subtitle burn-in, Linux",
+   "value": "82 fps",
+   "source": "https://randomnamer.github.io/StaticBlog/en/2024/03/25/jellyfinTranscodeBench/",
+   "source_title": "Jellyfin Transcode Benchmarks - RandomNamer's Blog",
+   "read": "2026-11-13",
+   "note": "Posted 2024-03-25. The author signs only as 'RandomNamer'. N100 (24 EU), 8 GB DDR4. 82 fps / 24 fps ≈ 3.4× real time, so roughly 3 concurrent streams in theory. Same clip, 4K→4K with VPP tone mapping and no subs: ~50 fps (≈2×). With VPP tone mapping plus burn-in: 27 fps (≈1.1×). On Windows 11, 4K→1080p with burn-in fell to ~40 fps. Older post, pseudonymous author: use only as supporting evidence."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power draw, idle and peak",
+   "value": "about 7 W idle; 34.7 W maximum",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de), page 4",
+   "read": "2026-11-13",
+   "note": "OCinside measured both figures. Peak came from a combined CPU, RAM and disk stress test, not a transcode. Drives were HDDs in RAID 1, models not stated. The page shows no review date. Starry Hope's DXP2800 model page repeats these numbers, but none of ChatGPT's results contains them."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Large-file write to RAID 1",
+   "value": "about 181 MB/s (50 GB in 290 s)",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de), page 4",
+   "read": "2026-11-13",
+   "note": "OCinside measured it. 50,000 MB / 290 s ≈ 172 MB/s in decimal units; OCinside states ~181 MB/s, likely binary GB. iperf3 averaged ~950 Mbit/s on OCinside's 1 GbE test network, so the 2.5GbE port was not tested."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Power draw, idle and standby",
+   "value": "11–12 W idle (bays populated); 1.1 W standby; ~20 W boot spike",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review (Hardware Busters), page 6",
+   "read": "2026-11-13",
+   "note": "Hardware Busters (author tstamadianos), published 2025-10-09. The test drives were two SSDs in RAID 1, so HDD idle will be higher. No load or transcode wattage reported."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Fan noise at 1 m, hemi-anechoic chamber",
+   "value": "33.6 dBA full fan; 26.8 dBA medium; 13.7 dBA low",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review (Hardware Busters), page 6",
+   "read": "2026-11-13",
+   "note": "Hardware Busters, 2025-10-09. Noise floor ~6 dBA, ambient 28 °C. Fan only, measured with SSDs, so no HDD seek noise."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Single large file over 2.5GbE",
+   "value": "about 270 MB/s NAS→PC; about 250 MB/s PC→NAS",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review (Hardware Busters), page 6",
+   "read": "2026-11-13",
+   "note": "Hardware Busters, 2025-10-09. Speeds as Windows reported them, two SSDs in RAID 1; both directions effectively saturate 2.5GbE. CPU temperature at idle ~33 °C after one hour (ambient 27 °C)."
+  }
+ ],
+ "unsourced": [
+  "A Jellyfin or Plex simultaneous-stream count measured on the DXP2800 itself. Searched for NASCompares, Neowin and igorslab DXP2800 reviews: igorslab and Neowin returned 403 and no NASCompares DXP2800 test turned up; OCinside has no transcode test.",
+  "Any measured transcode or stream count for the N5095 (TerraMaster F2-425 / F4-425 / F2-423 / F4-423). The Jellyfin GitHub discussion #163 mention was qualitative and seen only in a search summary, and no N5095 leaderboard row turned up.",
+  "Measured power, noise or transcode figures for the TerraMaster F2-425 Plus (N150). The ITPro review by Dave Mitchell (2026-02-23) excerpt had no numbers. Neowin's F2-425 Plus and F4-425 Plus reviews returned 403. NASCompares' '~20 W idle' and F4-425 Plus figures appeared only in search snippets.",
+  "ComputerBase's 34.2 dB DXP2800 noise figure. It appears only on Starry Hope's model page, and I did not open the ComputerBase original.",
+  "Synology DS225+ measured software-transcode CPU load. Not researched for lack of tool calls; the current page's '80–100% CPU' line needs a named source."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2460148999999998
+ }
+}

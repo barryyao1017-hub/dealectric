@@ -1,0 +1,129 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Synology rates the DS425+ for at most 10 SMB connections (FSCT-based), exactly a 10-person office with no headroom. The DS925+, DS925neo+ and DS1525+ are each rated for 40, and the DS425+ also has no expansion-unit port, while the DS925+ takes one DX525 for 9 bays.",
+ "standout": 3,
+ "standout_why": "I read our page, computingforgeeks.com/best-nas-for-small-business (cited), starryhope.com/nas/best-4-bay-nas (top result), synology.com/en-us/products/DS925+ (cited) and qnap.com TS-464 hardware specs (cited). Computingforgeeks and Starry Hope already cover the DSM 7.3 third-party-drive reversal and the rule that M.2 pools need Synology-listed SSDs, so the drive policy would not stand out. Starry Hope names the DS425+ only for its 2019 J4125 CPU and 2 GB RAM. Its SMB connection limit, DX525 expansion support and memory ceiling were stated on none of these pages. The cited DS925+ product page does list its own figure of 40, but nothing in ChatGPT's results gives the DS425+ figure or puts the two side by side. That matters because ChatGPT's latest run (2026-11-13 19:58) suggested the DS425+ as a lower-cost Synology for this 10-person office. Our own page lists the DS425+ and gives no connection limit. No page names TS-464 10GbE card models or the DS925neo+ rule against mixing ECC and non-ECC memory.",
+ "decides": "This rules the DS425+ out as the office pick. Its maker rating is 10 SMB connections, the whole headcount with no growth room. It also stops at 6 GB RAM and takes no expansion unit. That confirms the DS925+ as the Synology pick, rated for 40 connections, with 32 GB RAM and +5 bays via the DX525. The DS925neo+, launched in the US on 2026-10-21, is the cheaper way to keep that rating, but it ships with non-ECC memory and Synology does not support mixing it with ECC modules. If the office later needs 10GbE, the TS-464 takes QNAP-listed cards such as the QXG-10G1T in its PCIe Gen3 x2 slot. The DS925+ and DS925neo+ have no slot at all.",
+ "candidates": [
+  "Synology DS925+",
+  "Synology DS425+",
+  "Synology DS925neo+",
+  "Synology DS1525+",
+  "QNAP TS-464",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS425+",
+   "label": "Maximum SMB connections (FSCT-based)",
+   "value": "10",
+   "source": "https://www.synology.com/en-us/products/compare/DS425%2B/DS925%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology footnote: tested fully populated with Synology SATA HDDs and all onboard ports, Microsoft FSCT 1.3, HomeFolder workload, 600 s, Windows Server 2022 domain controller, 8 Windows 10 clients, directory leasing enabled. Also on the DS425+ product spec page (https://www.synology.com/en-us/products/DS425+#specs, read 2026-11-13)."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Maximum SMB connections (FSCT-based)",
+   "value": "40",
+   "source": "https://www.synology.com/en-us/products/compare/DS425%2B/DS925%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Same FSCT test as the DS425+. That is 4× the DS425+ rating and 4× a 10-person office."
+  },
+  {
+   "product": "Synology DS925neo+",
+   "label": "Maximum SMB connections (FSCT-based)",
+   "value": "40",
+   "source": "https://www.synology.com/en-us/products/compare/DS1525%2B/DS925neo%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The DS1525+ is also rated 40 on the same page."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Expansion unit and memory ceiling",
+   "value": "No expansion port or expansion unit listed; 2 GB non-ECC + one D4NS01-4G = 6 GB maximum",
+   "source": "https://www.synology.com/en-us/products/compare/DS425%2B/DS925%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The page also notes that the 1GbE port's MTU is limited to 1500 (no jumbo frames on that port). The DS425+ has 1× 1GbE + 1× 2.5GbE."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Expansion unit pairing",
+   "value": "1× DX525 over the USB Type-C expansion port; 9 drive bays maximum",
+   "source": "https://www.synology.com/en-us/products/compare/DS425%2B/DS925%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "The DS925neo+ also takes 1× DX525 (9 bays). The DS1525+ takes up to 2× DX525 (15 bays), per https://www.synology.com/en-us/products/compare/DS1525%2B/DS925neo%2B."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Compatible memory modules",
+   "value": "D4ES04-4G, D4ES03-8G, D4ES03-16G; 32 GB maximum (16 GB × 2); modules must be identical, same model number",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "Synology states that with non-Synology memory it will not provide full product warranty or technical support. Ships with 4 GB DDR4 ECC."
+  },
+  {
+   "product": "Synology DS925neo+",
+   "label": "Memory pairing exclusion",
+   "value": "Ships with 4 GB non-ECC DDR4; supports Synology ECC upgrades to 32 GB, but mixing non-ECC and ECC modules is not officially supported",
+   "source": "https://www.synology.com/en-us/company/news/article/dsneoplus",
+   "source_title": "Press Releases | Synology Inc. (DiskStation neo+ Series)",
+   "read": "2026-11-13",
+   "note": "US press release dated 2026-10-21, availability at Amazon, B&H and Canada Computers. Per this release, the PCIe 3.0 slot for 10/25GbE is only on the DS1525neo+ and DS1825neo+, not the DS925neo+."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Third-party drive pairing (DSM 7.3)",
+   "value": "25-model-year Plus/Value/J units on DSM 7.3 can install and build storage pools on non-validated third-party drives; M.2 storage pools and M.2 cache still require drives on Synology's HCL",
+   "source": "https://www.synology.com/en-us/company/news/article/dsm73/",
+   "source_title": "Press Releases | Synology Inc. (DSM 7.3)",
+   "read": "2026-11-13",
+   "note": "Release dated 2025-10-08. Applies to the DS925+, DS425+ and DS1525+. The product page still says Synology 'only guarantees full functionality, reliability, and performance for compatible drives'. Computingforgeeks and Starry Hope already carry this."
+  },
+  {
+   "product": "Synology DS1525+",
+   "label": "10GbE upgrade pairing",
+   "value": "E10G22-T1-Mini in 1× PCIe Gen3 x2 network upgrade slot",
+   "source": "https://www.synology.com/en-us/products/compare/DS1525%2B/DS925neo%2B",
+   "source_title": "Comparison results | Synology Inc.",
+   "read": "2026-11-13",
+   "note": "No PCIe slot or 10GbE card is listed for the DS925+ (product page) or the DS925neo+ (same compare page)."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "10GbE / network card pairing",
+   "value": "1× PCIe Gen3 x2 slot (max card 190 × 68.9 × 18.76 mm); listed cards: QXG-10G1T, QXG-10G2SF-NXE, QXG-10G2T, QXG-10G2TB (EOL), QXG-25G2SF-CX6, QXG-2G1T-I225, QXG-2G2T-I225, QXG-2G4T-I225, QXG-5G1T-111C, QXG-5G2T-111C (EOL)",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "Per the same page, bundled accessories such as expansion cards and the power adapter carry a 1-year warranty versus 3 years for the unit."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Memory and M.2 limits",
+   "value": "8 GB installed, 16 GB maximum (2 × 8 GB); 2× M.2 2280 at PCIe Gen3 x1, not hot-swappable",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "QNAP: 'Use only QNAP memory modules to maintain system performance and stability'. It warns that unsupported modules can stop the OS from booting."
+  }
+ ],
+ "unsourced": [
+  "The NAS models UGREEN lists as compatible with the NAS UPS US3000 (120 W DC), which Dealectric carries, paired with the DXP4800 Plus. nas.ugreen.com returned HTTP 429 three times (WebFetch and storecheck). storecheck search did confirm the listing 'UGREEN NAS UPS US3000 120W DC Battery Backup and Surge Protector' at $109.99 (compare-at $137.50) on 2026-11-13, but I could not read its compatibility list.",
+  "UGREEN DXP4800 Plus maker spec page for memory modules, M.2 lane and use rules, and expansion/UPS support. nas.ugreen.com/pages/dxp4800-plus-specs redirects to ai.ugreen.com/pages/dxp4800-plus-specs, which returned 404.",
+  "US price for the Synology DS925neo+. Synology's US press release gives none, and a search found only Australian (AUD 983) and Indian prices.",
+  "Whether the cited DS925+ datasheet PDF prints the FSCT figure. WebFetch could not decode the PDF, and local text extraction was not permitted.",
+  "WorkCocoon's small-business NAS guide (a result ChatGPT got) returned 404, so I could not check it for connection limits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.3548308000000007
+ }
+}

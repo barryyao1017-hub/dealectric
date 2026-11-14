@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Synology's own spec sheets rate the DS225+ and DS423 at 5 SMB connections and the DS425+ at 10. ChatGPT offered those models as the cheaper route when the $1,000 has to cover drives. The DS425+'s 10 was measured with the maximum 6 GB of RAM installed, while the unit ships with 2 GB. The DS925+ and DS1525+ are rated at 40.",
+ "standout": 2,
+ "standout_why": "computingforgeeks.com/best-nas-for-small-business (cited in the 2026-11-07 chat) gives the DS925+ rating of 40 concurrent SMB connections and nothing for the cheaper Synology models. It also covers the DSM 7.3 change that lets the 2025 DiskStation Plus models use third-party drives again, so that point is already taken. nas.kuibu.net/best/4-bay, starryhope.com/nas/best-4-bay-nas and choosecompute.com/nas/guides/best-4-bay-nas-2026 have no connection or user-count figures. Our own dealectric page has no connection limits either. workcocoon.com returned 404 and valydex.com would not load (certificate error), so neither could be checked. The new part is the DS225+, DS423 and DS425+ ratings, the stock-RAM caveat, and what the FSCT number actually measures.",
+ "decides": "For about 10 people, the DS925+ (40) or DS1525+ (40) is the only Synology choice rated well above head-count. When the budget includes drives, ChatGPT pointed to a DS423 (chat abB-06 of 2026-11-08), a 'less expensive two-bay Synology' (several chats) or a DS425+ (2026-11-13 19:58). Synology rates the first two at 5, half the office. The DS425+ reaches exactly 10 only with 6 GB of RAM, not the 2 GB it ships with. So the cheaper path should be a DS925+ with fewer drives to start, not a lower Synology model. QNAP rates the TS-464 by a different measure (1,500 maximum CIFS connections), so the two numbers can't be compared directly.",
+ "candidates": [
+  "Synology DS925+",
+  "Synology DS1525+",
+  "Synology DS425+",
+  "Synology DS225+",
+  "Synology DS423",
+  "QNAP TS-464",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS925+",
+   "label": "Maximum Number of SMB Connections (FSCT-Based)",
+   "value": "40",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DiskStation DS925+ | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "Footnotes: 'Connection value of this model is tested with Synology SATA HDD fully populated and all onboard network ports'; 'Models with expandable memory are tested with the maximum supported quantity installed' (32 GB maximum, 4 GB ECC stock). FSCT 1.3, HomeFolder workload, 600 s, Windows Server 2022 domain controller, 8 Windows 10 clients, directory leasing on. Maximum local user accounts: 512."
+  },
+  {
+   "product": "Synology DS1525+",
+   "label": "Maximum Number of SMB Connections (FSCT-Based)",
+   "value": "40",
+   "source": "https://www.synology.com/en-us/products/DS1525+#specs",
+   "source_title": "DiskStation DS1525+ | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "Same FSCT 1.3 HomeFolder setup as above. Maximum local user accounts: 1,024."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Maximum Number of SMB Connections (FSCT-Based)",
+   "value": "10",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DiskStation DS425+ | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "Tested 'with the maximum supported quantity [of memory] installed': maximum is '6 GB (2 GB + 4 GB)', stock is '2 GB DDR4 non-ECC'. A stock unit was not the configuration rated at 10. Maximum local user accounts: 512."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Maximum Number of SMB Connections (FSCT-Based)",
+   "value": "5",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "FSCT 1.3 footnote, same as the other models. This is the two-bay Synology the 'budget includes drives' answers point toward."
+  },
+  {
+   "product": "Synology DS423",
+   "label": "Maximum Number of SMB Connections (FSCT-Based)",
+   "value": "5",
+   "source": "https://www.synology.com/en-us/products/DS423#specs",
+   "source_title": "DiskStation DS423 | Synology Inc. (specs)",
+   "read": "2026-11-13",
+   "note": "Footnote: tested with Synology SATA HDDs fully populated and all onboard network ports. Maximum local user accounts: 256. ChatGPT named this model in the 2026-11-08 chat for 'strict $1,000 including drives'."
+  },
+  {
+   "product": "general",
+   "label": "What an FSCT rating measures",
+   "value": "Maximum number of simulated home-folder users a file server handles before it is overloaded",
+   "source": "https://learn.microsoft.com/en-us/archive/blogs/josebda/fsct-a-cifssmbsmb2-file-server-tool-for-capacity-planning-and-performance-troubleshooting",
+   "source_title": "\"FSCT\" - A CIFS/SMB/SMB2 File Server Tool for Capacity Planning and Performance Troubleshooting | Microsoft Learn",
+   "read": "2026-11-13",
+   "note": "Microsoft: FSCT is 'focused on capacity planning'; 'Results provided by the tool include the maximum number of users for a server configuration, throughput ... (measured in scenarios per second)'. The HomeFolders workload was 'created by capturing data from real, heavily accessed file servers'. So Synology's number is a load-tested user capacity, not a hard lockout. Read it as head-count at office-style load."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "Max. Number of Concurrent Connections (CIFS) - with Max. Memory",
+   "value": "1,500 (TS-464-8G and TS-464-4G); FTP 1,024; domain user/group accounts 200,000",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/software/1000",
+   "source_title": "TS-464 | Software Specs | QNAP (US)",
+   "read": "2026-11-13",
+   "note": "This is a connection ceiling, not an FSCT user-capacity test, so it can't be set against Synology's 5/10/40. QNAP publishes no FSCT-style figure."
+  }
+ ],
+ "unsourced": [
+  "A UGREEN figure for the DXP4800 Plus (maximum concurrent SMB connections or users): the ai.ugreen.com product page returned HTTP 429, and I did not check a manual or spec PDF.",
+  "A definition of 'connection' or the pass threshold in Synology's own words: the spec pages give the FSCT setup but not the overload criterion, and the search turned up no Synology Knowledge Center article on it.",
+  "A DS425+ FSCT figure at the stock 2 GB: Synology publishes only the maximum-memory result."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.9182711
+ }
+}

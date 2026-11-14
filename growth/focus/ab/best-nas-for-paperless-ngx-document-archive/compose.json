@@ -1,0 +1,173 @@
+{
+ "status": "ok",
+ "reason": "",
+ "angle": "B",
+ "why_angle": "The Paperless-ngx docs, setup guides and NAS roundups the shopper sees give no wattage or running cost for any NAS. rackdiff.com even leaves the power line of its cost table blank. This page turns each maker's own power figure into kWh and dollars a year at the EIA August 2026 US rate (18.16¢/kWh). It covers every candidate, and the result is about $26 a year for the DXP2800 against $46 to $67 for the TS-264, DS925+ and DXP4800 Plus.",
+ "slug": "best-nas-for-paperless-ngx-document-archive",
+ "must": [
+  "UGREEN NASync DXP2800",
+  "16.38 W with drives active, about $26 a year"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best NAS for running Paperless-ngx as a scanned document archive (2026): picks, what it needs, scanners that feed it",
+  "h1": "Best NAS for running Paperless-ngx as a scanned document archive (2026)",
+  "desc": "Which NAS runs Paperless-ngx in Docker with PostgreSQL on an SSD and OCR, and what each one costs to keep running 24/7. Each maker's wattage is turned into kWh and dollars a year, with Synology's M.2 SSD rule.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for running Paperless-ngx as a scanned document archive is the UGREEN NASync DXP2800: Intel N100 and 8 GB RAM for Docker and OCR, two NVMe slots for Postgres storage, and 16.38 W with drives active, about $26 a year of power around the clock.</p>",
+  "columns": [
+   [
+    "chip",
+    "CPU · RAM shipped (max)"
+   ],
+   [
+    "db_ssd",
+    "Where the PostgreSQL SSD goes"
+   ],
+   [
+    "watts",
+    "Maker power: drives active / asleep"
+   ],
+   [
+    "kwh",
+    "Energy a year, 24/7: active / asleep"
+   ],
+   [
+    "test",
+    "Maker's test setup"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "chip": "Intel N100 4C/4T · 8 GB DDR5 (max 16 GB), The Gadgeteer",
+     "db_ssd": "2 × M.2 NVMe for cache or extra storage (The Gadgeteer)",
+     "watts": "16.38 W / 5.24 W",
+     "kwh": "143.5 kWh / 45.9 kWh",
+     "test": "UGREEN lab, Seagate 2 TB drives"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "chip": "Intel Celeron J4125 4C/4T · 2 GB DDR4 (max 6 GB)",
+     "db_ssd": "No M.2 slot; an SSD takes one of the 2 bays",
+     "watts": "16.98 W / 6.08 W",
+     "kwh": "148.7 kWh / 53.3 kWh",
+     "test": "Synology spec sheet (Access / HDD Hibernation)"
+    }
+   },
+   {
+    "slug": "asustor-as5402t",
+    "model": "Asustor Nimbustor 2 Gen2 AS5402T",
+    "cells": {
+     "chip": "Intel Celeron N5105 · 4 GB DDR4 (max 16 GB)",
+     "db_ssd": "4 × M.2 2280 NVMe, PCIe 3.0 x1",
+     "watts": "22.9 W / 12.7 W",
+     "kwh": "200.6 kWh / 111.3 kWh",
+     "test": "Asustor spec sheet (Operation / Disk hibernation)"
+    }
+   },
+   {
+    "slug": "qnap-ts-264-8g",
+    "model": "QNAP TS-264-8G",
+    "cells": {
+     "chip": "Intel Celeron N5095 4C/4T · 8 GB DDR4 (max 16 GB)",
+     "db_ssd": "2 × M.2 2280 PCIe Gen 3 x1",
+     "watts": "29.086 W / 18.288 W",
+     "kwh": "254.8 kWh / 160.2 kWh",
+     "test": "QNAP, both bays filled"
+    }
+   },
+   {
+    "slug": "synology-ds925-plus",
+    "model": "Synology DS925+",
+    "cells": {
+     "chip": "AMD Ryzen V1500B 4C/8T · 4 GB DDR4 ECC (max 32 GB)",
+     "db_ssd": "2 × M.2 NVMe; storage pool needs Synology-verified SSDs",
+     "watts": "37.91 W / 12.33 W",
+     "kwh": "332.1 kWh / 108.0 kWh",
+     "test": "Synology spec sheet (Access / HDD Hibernation)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp4800-plus",
+    "model": "UGREEN NASync DXP4800 Plus",
+    "cells": {
+     "chip": "Intel Pentium Gold 8505 · 8 GB DDR5 (max 64 GB), KitGuru",
+     "db_ssd": "2 × M.2 2280 PCIe 4.0 (KitGuru)",
+     "watts": "42.36 W / 18.12 W",
+     "kwh": "371.1 kWh / 158.7 kWh",
+     "test": "UGREEN lab, Seagate 2 TB drives"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>Each yearly figure is the maker's own wattage × 8,760 hours × 18.16¢/kWh. That is the US average residential electricity price for August 2026 (EIA).</p><ul><li>UGREEN DXP2800: 16.38 W × 8.76 = 143.5 kWh × $0.1816 = <strong>$26.06 a year</strong> with drives active; 5.24 W with drives asleep = $8.34.</li><li>Synology DS225+: 16.98 W → 148.7 kWh → $27.01; asleep 6.08 W → $9.67.</li><li>Synology DS725+ (not in the table): 20.41 W → 178.8 kWh → $32.47; asleep 7.87 W → $12.52.</li><li>Asustor AS5402T: 22.9 W → 200.6 kWh → $36.43; asleep 12.7 W → $20.20.</li><li>QNAP TS-264-8G: 29.086 W → 254.8 kWh → $46.27; asleep 18.288 W → $29.09.</li><li>Synology DS925+: 37.91 W → 332.1 kWh → $60.31; asleep 12.33 W → $19.62.</li><li>UGREEN DXP4800 Plus: 42.36 W → 371.1 kWh → $67.39; asleep 18.12 W → $28.83.</li><li>Five years, DXP2800 against TS-264: (46.27 − 26.06) × 5 = $101.05 saved.</li><li>Five-year cost to own at UGREEN's store price plus drives-active power: DXP2800 389.99 + 5 × 26.06 = $520.29; DXP4800 Plus 619.99 + 5 × 67.39 = $956.94.</li></ul><table><thead><tr><th>Your archive</th><th>Fits</th></tr></thead><tbody><tr><td>Paperless-ngx only, a few dozen scans a week, Postgres on NVMe, two mirrored HDDs</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}. Its warranty is 2 years (The Gadgeteer), against 3 years for the Synology, QNAP and Asustor units.</td></tr><tr><td>You want Synology DSM and a small archive, with Postgres on the HDD mirror</td><td>Synology DS225+, or the DS725+ if you will buy a Synology-verified M.2 SSD</td></tr><tr><td>Many SSDs and a ready-made Paperless-ngx package</td><td>Asustor AS5402T (4 M.2 slots)</td></tr><tr><td>Paperless-ngx plus many other Docker apps, four bays</td><td>UGREEN DXP4800 Plus {buy:ugreen-nasync-dxp4800-plus} (RAM up to 64 GB, KitGuru), or the TerraMaster F4-424 Pro, which ships with 32 GB DDR5 and an 8-core Intel Core i3 for $759.99 (TerraMaster, 2026-11-13)</td></tr></tbody></table><h2>What a Paperless-ngx NAS costs to run, year after year</h2><p>A document archive sits idle almost all day. Paperless-ngx runs OCR only when a scan lands in the consume folder, so the box's resting draw sets the electricity bill, not its peak. Over a 5 to 10 year archive, that resting draw can add up to a sizeable share of what you paid for the NAS.</p><p><strong>The makers test differently, so treat cross-brand gaps as rough.</strong> UGREEN's lab used Seagate 2 TB drives. QNAP tests with every bay filled, which is the harder test. Synology and Asustor publish an access figure and a hibernation figure from their spec sheets. Each model's own figure is solid; the gaps between brands are approximate.</p><p><strong>Measured at the wall by named reviewers:</strong></p><ul><li>igor'sLAB: DXP2800 at 5.6 W in standby and 14.5 W during data transfer, with one NVMe SSD and no hard drives fitted (5.6 W × 8.76 ≈ 49 kWh a year before HDDs).</li><li>Dong Knows Tech: DS225+ at about 275 Wh per 24 hours with two Synology 4 TB HDDs (275 ÷ 24 ≈ 11.5 W average, ≈ 100 kWh a year).</li><li>KitGuru: DXP4800 Plus at 24.25 W idle on 2.5GbE and 30.45 W on 10GbE, with WD Red 6 TB drives (24.25 × 8.76 ≈ 212 kWh a year).</li></ul><p><strong>Letting the drives sleep is where the savings are.</strong> The asleep figures above are a third to a half of the active ones. Hard drives can only spin down when nothing writes to them. Putting PostgreSQL and the app data on an SSD leaves the HDD mirror holding just the originals and archived PDFs, which is the layout Paperless setups usually use. On the DXP2800 the two M.2 slots take NVMe for cache or extra storage (The Gadgeteer). On the Synology DS725+ and DS925+, Synology's spec pages say creating an M.2 storage pool requires Synology-verified SSDs, so budget for one.</p><h2>Not recommended</h2><p><strong>Synology DS225+ for the SSD-plus-mirror layout.</strong> Synology's spec page lists 2 GB of RAM installed, a 6 GB maximum, and no M.2 slot. An SSD for the database would take one of its two bays, which leaves your scanned originals with no RAID 1 mirror. It is cheap to run, at $27.01 a year with drives active. It works if you keep Postgres on the mirrored HDDs, but for the layout above, the DXP2800 does the job and draws less power with drives active.</p>",
+  "sources": [
+   [
+    "DXP2800 16.38 W / 5.24 W and DXP4800 Plus 42.36 W / 18.12 W, UGREEN lab with Seagate 2 TB drives (read 2026-11-13)",
+    "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume"
+   ],
+   [
+    "DXP2800 $389.99 at UGREEN's US store, in stock (read 2026-11-13)",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "DXP2800: Intel N100, 8 GB DDR5 (up to 16 GB), 2 M.2 NVMe slots for cache or storage, 2-year warranty, The Gadgeteer (read 2026-11-13)",
+    "https://the-gadgeteer.com/2025/10/07/ugreen-nasync-dxp2800-review-another-great-nas/"
+   ],
+   [
+    "DXP4800 Plus: Pentium Gold 8505, 8 GB DDR5 (up to 64 GB), 2 × M.2 2280 PCIe 4.0, KitGuru (read 2026-11-13)",
+    "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/"
+   ],
+   [
+    "DXP4800 Plus measured 24.25 W idle (2.5GbE), 30.45 W (10GbE), KitGuru (read 2026-11-13)",
+    "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/"
+   ],
+   [
+    "Synology DS225+: J4125, 2 GB (max 6 GB), no M.2, 16.98 W / 6.08 W, 3-year warranty (read 2026-11-13)",
+    "https://www.synology.com/en-us/products/DS225+?tab=specs"
+   ],
+   [
+    "Synology DS725+: Ryzen R1600, 4 GB ECC (max 32 GB), M.2 pools need Synology-verified SSDs, 20.41 W / 7.87 W (read 2026-11-13)",
+    "https://www.synology.com/en-us/products/DS725+?tab=specs"
+   ],
+   [
+    "Synology DS925+: Ryzen V1500B, 4 GB ECC (max 32 GB), M.2 pools need Synology-verified SSDs, 37.91 W / 12.33 W (read 2026-11-13)",
+    "https://www.synology.com/en-us/products/DS925+?tab=specs"
+   ],
+   [
+    "QNAP TS-264-8G: N5095, 8 GB (max 16 GB), 2 × M.2 Gen 3 x1, 29.086 W / 18.288 W with drives fully populated (read 2026-11-13)",
+    "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+   ],
+   [
+    "Asustor AS5402T: N5105, 4 GB (max 16 GB), 4 × M.2 NVMe, 22.9 W / 12.7 W, 3-year warranty (read 2026-11-13)",
+    "https://www.asustor.com/en/product/spec?p_id=81"
+   ],
+   [
+    "US average residential electricity 18.16¢/kWh, August 2026, EIA Table 5.6.A (read 2026-11-13)",
+    "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a"
+   ],
+   [
+    "DXP2800 measured 5.6 W standby, 14.5 W transfer with one NVMe SSD, igor'sLAB (read 2026-11-13)",
+    "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/"
+   ],
+   [
+    "DS225+ measured about 275 Wh per 24 h with two HDDs, Dong Knows Tech (read 2026-11-13)",
+    "https://dongknows.com/synology-ds225-plus-review"
+   ],
+   [
+    "TerraMaster F4-424 Pro $759.99 at TerraMaster, 32 GB DDR5, Core i3 8-core (read 2026-11-13)",
+    "https://www.terra-master.com/products/f4-424-pro"
+   ]
+  ]
+ },
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.5049980999999997
+ }
+}

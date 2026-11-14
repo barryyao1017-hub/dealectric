@@ -1,0 +1,94 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got gives a measured Frigate figure for the Pentium Gold 8505 inside its top pick, the UGREEN DXP4800 Plus: a Frigate user measured 11–12 ms OpenVINO inference while running five 1080p streams at 5 fps detect, at about 50% CPU. None of those results gives measured wall power for any candidate either (KitGuru measured the DXP4800 Plus at 24.25 W idle).",
+ "standout": 2,
+ "standout_why": "I compared against docs.frigate.video/frigate/hardware/ (cited in every chat), localsmarthomeguide.com's Frigate build article and GitHub discussion #24381 (both top results), and our own 2026-11-03 page. Frigate's table only covers the iGPU families (N100, N150, UHD 730/770, Iris Xe, Arc and others). It has no Pentium Gold 8505, N305/N350, N5095 or J4125 row, and the page gives no wattage. Localsmarthomeguide only repeats Frigate's table and says outright that it has no wattage. #24381 gives CPU percentages for a Xeon and an i3-1220P but names no NAS except a TerraMaster D4-320 used as storage. Our page has no power, temperature or noise figures and says no review has checked Frigate on the UGREEN. None of these pages has a measurement taken on a candidate's CPU or a candidate's power draw, so this is new. It doesn't settle the pick alone: the 8505 figure is one user's report, and the power tests were run under different conditions.",
+ "decides": "It backs the DXP4800 Plus as the all-in-one pick. Its exact CPU has a measured Frigate result (11–12 ms with OpenVINO set to AUTO, five 1080p cameras, about 50% CPU), and that matches the ~10–15 ms Frigate lists for N100/N150/UHD 730. The TerraMaster F4-425 Pro's CPU has no Frigate measurement at all. Power matters because an NVR runs 24/7: the DXP4800 Plus (KitGuru, 24.25 W idle on 2.5GbE with HDDs) sits close to the DS925+ (NASCompares, about 28 W idle) and the TS-464 (NASCompares, about 25 W average over a 24-hour idle period). The two-bay DXP2800 is far lower (OCinside, about 7 W idle). The F4-425 Pro's 15 W idle (Hardware Busters) was measured with SSDs, so it would rise with surveillance HDDs. These numbers support a footnote on running cost but should not reorder the pick by watts.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "TerraMaster F4-425 Pro",
+  "Synology DS925+",
+  "QNAP TS-464",
+  "Beelink EQ13 (N100) mini PC"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Frigate OpenVINO inference on the same CPU (Intel Pentium Gold 8505)",
+   "value": "11–12 ms per detection; about 50% CPU with five 1080p streams",
+   "source": "https://github.com/blakeblackshear/frigate/discussions/11960",
+   "source_title": "What is reasonable CPU usage for detection with OpenVINO and VAAPI? · blakeblackshear/frigate Discussion #11960",
+   "read": "2026-11-13",
+   "note": "Measured by Frigate user bobloadmire on 2024-06-14 on an 'Intel 8505 (1 performance core, 4 efficiency cores)' in a Proxmox LXC, not on a DXP4800 Plus. Setup: five 1080p streams, detect at 1920x1080 and 5 fps, OpenVINO device AUTO, SSDlite MobileNet v2 300x300, preset-vaapi decode. Turning detect off dropped CPU to 5–10%. Frigate collaborator NickM-27 replied that OpenVINO's optimisations apply to both CPU and GPU, 'though GPU will be faster'."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Wall power, idle and load",
+   "value": "24.25 W idle (2.5GbE), 30.45 W idle (10GbE); 52.07 W peak reads and 61.35 W peak writes on 2.5GbE (58.17 W and 67.02 W on 10GbE)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "KitGuru: UGREEN NASync DXP4800 Plus 4-bay NAS review (page 14)",
+   "read": "2026-11-13",
+   "note": "Measured by Simon Crisp at KitGuru, 2024-05-28, at the wall during a CrystalDiskMark 8.0.4 run with WD Red WD60EFRX drives (drive count not stated on the page)."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Wall power, idle and peak",
+   "value": "about 7 W idle; 34.7 W maximum",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "OCinside: Ugreen DXP2800 NAS Review (page 4)",
+   "read": "2026-11-13",
+   "note": "OCinside test (reviewer and date not shown on the page I read). RAID 1 on Btrfs; the maximum came from a combined CPU, RAM and disk stress test. The page doesn't name the meter."
+  },
+  {
+   "product": "TerraMaster F4-425 Pro",
+   "label": "Wall power and temperatures",
+   "value": "about 15 W idle; 1.7 W standby; 42 W peak; CPU 40–45 °C idle, 80 °C max",
+   "source": "https://hwbusters.com/networking/terramaster-f4-425-pro-nas-review/6",
+   "source_title": "Hardware Busters: TerraMaster F4-425 Pro NAS Review (page 6)",
+   "read": "2026-11-13",
+   "note": "Measured by Robotronic at Hardware Busters, 2026-06-29, on the Intel Core 3 N350 version. Idle was taken with the bays fully populated with SATA SSDs. The peak came from simultaneous file transfers, TeraSync and OpenClaw. The reviewer warns HDDs will raise these numbers. ChatGPT's card listed an N305 version, which this test does not cover."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Wall power and noise",
+   "value": "about 28 W idle; 62–64 W under load; 36–37 dB(A) idle; 48–50 dB(A) under load",
+   "source": "https://nascompares.com/review/synology-ds925-nas-review/amp/",
+   "source_title": "NASCompares: Synology DS925+ NAS Review",
+   "read": "2026-11-13",
+   "note": "Measured by Rob Andrews at NASCompares; page metadata dates it 2025-05-02. Idle means base apps installed and no access. Load means all four bays filled (SSDs included), CPU under strain and both 2.5GbE links active."
+  },
+  {
+   "product": "QNAP TS-464",
+   "label": "24-hour energy with 4× 22 TB WD Red Pro in RAID 5",
+   "value": "0.59 kWh over 24 h idle (about 25 W average); 1.28 kWh over 24 h high use (about 53 W average)",
+   "source": "https://nascompares.com/guide/qnap-ts-464-and-22tb-wd-red-pro-power-consumption-and-price-testing/",
+   "source_title": "NASCompares: How Much Does it Cost to Run a NAS 24x7? QNAP & WD",
+   "read": "2026-11-13",
+   "note": "Measured by Rob Andrews at NASCompares, 2022-10-01, with a Gosund smart plug energy monitor. The article labels the totals 'kW', but they are 24-hour kWh totals. Averages are my arithmetic: 0.59/24 = 0.0246 kW and 1.28/24 = 0.0533 kW. During the idle test the VM, surveillance software and SMART tests were off and the network cable was unplugged."
+  },
+  {
+   "product": "general",
+   "label": "Frigate's own OpenVINO table for N100/N150-class iGPUs (already on the cited page)",
+   "value": "N100 ~15 ms MobileNetV2 ('can only run one detector instance'); N150 ~15 ms MobileNetV2, YOLOv9 t-320 16 ms; UHD 730 ~10 ms",
+   "source": "https://docs.frigate.video/frigate/hardware/",
+   "source_title": "Recommended hardware | Frigate",
+   "read": "2026-11-13",
+   "note": "Measured by the Frigate project. ChatGPT cited this page, so these figures alone don't stand out; I include them as the baseline for the 8505 report."
+  }
+ ],
+ "unsourced": [
+  "Frigate inference times on the Intel N305/N350 (TerraMaster F4-425 Pro, F4-424 Pro), Celeron N5095 (QNAP TS-464) and Celeron J4125 (Synology DS225+/DS425+). I checked Frigate's hardware table and searched GitHub discussions; I found no measured figure.",
+  "Any test of Frigate running on an actual NAS (DXP4800 Plus, F4-425 Pro, TS-464) by a named reviewer or lab. Searched; none found.",
+  "TechPowerUp's DXP4800 Plus power page (techpowerup.com/review/ugreen-nasync-dxp4800-plus/13.html) returned HTTP 403, so I could not use its idle and peak figures.",
+  "QNAP TS-464 instantaneous idle watts with four spinning HDDs. Only the NASCompares 24-hour energy totals were sourced; Club386's ~19 W figure was a search snippet I did not open.",
+  "Measured wall power for the Beelink EQ13 N100 variant. The reviews I found (number13.de, AndroidPCTV) tested the N200 variant, and the Notebookcheck results were news posts without figures.",
+  "Measured power or noise for the TerraMaster F4-425 Plus, F4-424 Pro, Asustor AS5402T, Synology DS225+ and UGREEN DXP4800 Pro. Not searched because I was near the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 1.0537063000000002
+ }
+}

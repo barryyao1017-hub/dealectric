@@ -1,0 +1,111 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which small stations take a router's 12 V barrel plug directly. Tenergy's own spec page lists two 12 V 8 A DC sockets of size 5521 (5.5×2.1 mm) on the T320, but says nothing about a UPS or pass-through function. BLUETTI's US page gives the Elite 30 V2 a ≤10 ms UPS with 980 W bypass but does not list its barrel-port rating.",
+ "standout": 2,
+ "standout_why": "I compared against the four cited pages: homepowerfacts.com, outagemath.com, backupcalc.com and our own Dealectric page. I also checked the top results of today's run of the same query, which are mostly Anker SOLIX and other maker blogs. homepowerfacts marks every station 'Yes' and says to use a DC output 'where your device allows it' without naming any model that has one. backupcalc says to use 'a barrel-plug adapter from the car socket' and gives no plug size or model. outagemath lists router adapter voltages (eero 5 V, Nest Wifi Pro 10 V, Archer AX21 12 V 1.5 A, R7000 12 V 3.5 A) but no station ports, barrel sizes or switchover times. None of them pairs a specific station's 5.5×2.1 mm 12 V socket with a router, and none notes that Tenergy publishes no UPS for the T320.",
+ "decides": "This confirms the BLUETTI Elite 30 V2 as the pick for a router that must not drop during an outage. BLUETTI states a ≤10 ms switchover and 980 W bypass, and the price is $289.99. The Tenergy T320 ($225.99) is the cheaper way to run a 12 V router or modem without the inverter, through a plain 5.5×2.1 mm cable from its 12 V 8 A sockets. But Tenergy's page states no UPS or pass-through function, so you would plug the router in when the power fails. RIVER 3 and Explorer 240 v2 need a car-socket-to-barrel adapter, per our current page. Routers that take 5 V USB-C or 10 V (eero, Nest Wifi Pro, per outagemath's adapter list) can't use any of these 12 V barrel sockets directly.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "Tenergy T320",
+  "EcoFlow RIVER 3",
+  "Jackery Explorer 240 v2",
+  "ALLPOWERS R600"
+ ],
+ "findings": [
+  {
+   "product": "Tenergy T320",
+   "label": "12 V barrel (DC5521) outputs",
+   "value": "2 sockets, 12 V 8 A each, socket size 5521 (5.5×2.1 mm)",
+   "source": "https://power.tenergy.com/tenergy-t320-portable-power-station-300wh-backup-lithium-battery",
+   "source_title": "Tenergy T320 Portable Power Station 300Wh Backup Lithium Battery (Tenergy Power store)",
+   "read": "2026-11-14",
+   "note": "Quoted from the Technical Specifications: 'DC socket 1: 12V, 8A (socket size: 5521)' and 'DC socket 2: 12V, 8A (socket size: 5521)'. A router or modem with a 12 V 5.5×2.1 mm input, such as the 12 V 1.5 A Archer AX21 and 12 V 3.5 A R7000 adapters outagemath lists, falls within the rating, but check the plug size on your own adapter."
+  },
+  {
+   "product": "Tenergy T320",
+   "label": "DC and USB output limits, car port",
+   "value": "120 W max continuous DC; car port 12 V 10 A; USB-C PD 45 W (5/9/12/15 V 3 A, 20 V 2.25 A); 69 W max continuous USB",
+   "source": "https://power.tenergy.com/tenergy-t320-portable-power-station-300wh-backup-lithium-battery",
+   "source_title": "Tenergy T320 Portable Power Station 300Wh Backup Lithium Battery (Tenergy Power store)",
+   "read": "2026-11-14",
+   "note": "Taken from the maker's spec table. A 10–20 W router plus modem is far below the 120 W DC limit."
+  },
+  {
+   "product": "Tenergy T320",
+   "label": "UPS / pass-through function",
+   "value": "Tenergy's product page states none; it calls the unit 'backup emergency power' and does not mention UPS, pass-through charging, or use while charging",
+   "source": "https://power.tenergy.com/tenergy-t320-portable-power-station-300wh-backup-lithium-battery",
+   "source_title": "Tenergy T320 Portable Power Station 300Wh Backup Lithium Battery (Tenergy Power store)",
+   "read": "2026-11-14",
+   "note": "I read the whole product page for a UPS, switchover or pass-through statement and found none. Treat the T320 as a station you connect by hand after the power fails, not a seamless UPS."
+  },
+  {
+   "product": "Tenergy T320",
+   "label": "Price (maker store)",
+   "value": "$225.99",
+   "source": "https://power.tenergy.com/tenergy-t320-portable-power-station-300wh-backup-lithium-battery",
+   "source_title": "Tenergy T320 Portable Power Station 300Wh Backup Lithium Battery (Tenergy Power store)",
+   "read": "2026-11-14",
+   "note": "The page showed 'you pay: $225.99', instant savings $0.00."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover and bypass",
+   "value": "≤10 ms switchover; 980 W bypass power",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US)",
+   "read": "2026-11-14",
+   "note": "Maker's claim: 'With a lightning-fast 10ms response, the UPS kicks in…' and 'supports up to 980W of bypass power.' The page does not say which outputs the UPS covers, and the answer to its UPS FAQ (Q2) is blank."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Standby consumption",
+   "value": "4.5 W",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US)",
+   "read": "2026-11-14",
+   "note": "Maker's claim: 'only 4.5W standby.' No test conditions are given."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price (maker store)",
+   "value": "$289.99 (station alone); $399.99 with 60 W panel; $489.99 with 100 W panel",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US)",
+   "read": "2026-11-14",
+   "note": "Read through the store's Shopify product data (storecheck) and on the page itself. All variants were shown as available."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "12 V barrel outputs (reviewer)",
+   "value": "2 barrel ports, 12 V 8 A (per MacRumors)",
+   "source": "https://www.macrumors.com/review/bluetti-elite-30-v2-power-station/",
+   "source_title": "Bluetti Elite 30 V2 Review: A Lightweight Portable Power Station for Camping and Backup Power (MacRumors, Juli Clover, 2025-12-04)",
+   "read": "2026-11-14",
+   "note": "Juli Clover writes 'a pair of 12V/8A barrel ports'. This conflicts with our current page's '2× DC5521 12 V 5 A'. BLUETTI's US product page doesn't list the rating, so check the official manual before publishing either number."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Reviewer-observed drain and port switching",
+   "value": "Battery fell about 10% over 4 h 'with DC power on'; ports must be switched on before they deliver power",
+   "source": "https://www.macrumors.com/review/bluetti-elite-30-v2-power-station/",
+   "source_title": "Bluetti Elite 30 V2 Review (MacRumors, Juli Clover, 2025-12-04)",
+   "read": "2026-11-14",
+   "note": "10% of 288 Wh ≈ 28.8 Wh over 4 h, about 7 W. The review doesn't say whether anything was plugged in, so don't use this as an idle-draw figure. Clover also says she did not test the 10 ms switchover herself."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 3: I could not open a maker page or manual for the per-variant switchover (20 ms EPS on standard/230 vs 10 ms on the 'RIVER 3 (10 ms UPS)' version) or for car-port output. us.ecoflow.com returned HTTP 429, the REI-hosted manual returned 403, and the airsoftpro.sk manual PDF wasn't readable as text. The variant split is in manuals.plus copies I saw only as search snippets.",
+  "Jackery Explorer 240 v2: I could not re-check the UPS switchover and car-port rating on jackery.com because the page and Shopify data returned HTTP 429.",
+  "ALLPOWERS R600: I did not reach its maker page for switchover and DC outputs within the tool budget.",
+  "BLUETTI Elite 30 V2: I did not find a BLUETTI statement on which outputs (AC only, or also DC/USB) the UPS covers, or the maker's DC5521 amp rating. BLUETTI's US manual PDF (s4.bluettipower.com) didn't extract as text, the manuals.plus copies returned 403, and the product page's UPS FAQ answer is blank.",
+  "Router and modem makers' own documents giving plug size (5.5×2.1 vs 5.5×2.5 mm) and input voltage for common ISP modems were not opened.",
+  "Tenergy T320 transfer/switchover behaviour when mains returns or fails: Tenergy publishes nothing."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2024925
+ }
+}

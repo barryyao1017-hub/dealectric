@@ -1,0 +1,79 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Jackery Explorer 1000 v2, the one 1,000 Wh-class candidate rated at exactly 1,500 W, carried a heater-sized 1,479 W load for 37.5 minutes and 1,560 W for 10 minutes in The Solar Lab's bench test, and shut off only on a 2,200 W surge after a couple of seconds.",
+ "standout": 2,
+ "standout_why": "I compared four pages: voltandvalley.com, utrendco.com and lightsonlab.com (cited), plus wattfort.com (rank 3). Every runtime on them is calculated (capacity × 0.85 ÷ watts). Wattfort, UTrendCo and Lights On Lab say outright that they did no testing. Voltandvalley only implies it with '~36 minutes' for the Jackery 1000 v2 at 1,500 W. No page gives a measured runtime at a heater-sized load or says how a station rated exactly 1,500 W behaves at or just above that load. Lights On Lab covers part of the mechanism: it says some stations lower the voltage so resistive loads can exceed the rating, and the heater then gives less heat. That part is not new. I could not read testedwatts.com (cited, rank 1) because of an SSL certificate error, so it is not part of this comparison.",
+ "decides": "This settles ChatGPT's rule that the station needs 'at least 1,500 W continuous', which leaves the Jackery 1000 v2 in an unclear spot. Measured, it holds a 1,479 W load for 37.5 minutes, so it can run a heater that draws at or slightly under its label. That matches the roughly 35-minute figure on our page and the rivals' pages, now backed by a measurement. Above 1,500 W it has little margin: The Solar Lab ran 1,560 W for 10 minutes and stopped the test, so a longer run was not shown, and 2,200 W tripped it within seconds. The pick stays the same. Recommend a station with 1,800 W or more continuous (EcoFlow DELTA 3, BLUETTI AC180, Anker SOLIX C1000 Gen 2). Change the Jackery's 'not recommended' to 'works on a heater drawing 1,500 W or less, about 37 minutes measured, no headroom'. For the 1,800 W stations, EcoFlow's manual says its voltage-lowering X-Boost mode is 'more suitable for heating devices'. A heater over the rating there runs at lower heat instead of shutting off.",
+ "candidates": [
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3 (1,024 Wh)",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "ALLPOWERS P1800",
+  "OSCAL PowerMax 1800 SE"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured runtime at a heater-sized load",
+   "value": "37.5 min at 1,479 W (87.5% of the 43 min expected from rated capacity)",
+   "source": "https://www.thesolarlab.com/review/jackery-1000-v2-review",
+   "source_title": "Jackery 1000 v2 Review: Faster, But Worth $799? (The Solar Lab)",
+   "read": "2026-11-14",
+   "note": "The Solar Lab ran a constant 1,479 W load. That is a test load, not a space heater. 1,479 W × 37.5/60 h = about 924 Wh delivered. The page shows no author or publication date."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured behaviour above its 1,500 W rating",
+   "value": "Ran 1,560 W for 10 min; a 2,200 W surge held for a couple of seconds, then the unit shut off",
+   "source": "https://www.thesolarlab.com/review/jackery-1000-v2-review",
+   "source_title": "Jackery 1000 v2 Review: Faster, But Worth $799? (The Solar Lab)",
+   "read": "2026-11-14",
+   "note": "The review quotes it 'handled loads of just over 1,500 watts—peaking at 1,560 watts—for an impressive 10 minutes'. It does not say the unit would have kept going past 10 minutes. The review mentions no power-lifting or voltage-lowering mode for this model."
+  },
+  {
+   "product": "general",
+   "label": "What an overload does to a heater on an under-rated station (CleanTechnica test, original Explorer 1000, rated 1,000 W)",
+   "value": "A heater with about 1,400 W on its label climbed from 600 W to over 1,000 W in 10–15 s and peaked at 1,250–1,260 W. The station shut the output off after about 30 s, the same way on every try.",
+   "source": "https://cleantechnica.com/2021/02/09/testing-the-jackery-powerstation-1000-to-the-limits-beyond/",
+   "source_title": "Testing The Jackery Explorer 1000 Solar Power Station To The Limits, & Beyond! (CleanTechnica, Jennifer Sensiba)",
+   "read": "2026-11-14",
+   "note": "This is the older v1 model, rated 1,000 W continuous and 2,000 W surge. It shows how the plan fails: the station does not refuse the load at once. It shuts down within about half a minute once the heater draws past the continuous rating. The author quotes the manual: it 'can exceed 1000 for a few seconds at a time, but will shut down to avoid damaging itself.'"
+  },
+  {
+   "product": "general (EcoFlow X-Boost, DELTA mini manual)",
+   "label": "Maker's own words on its voltage-lowering mode with heaters",
+   "value": "'the product can power a 2200W Max device while the rated output power remains 1400W'; 'X-Boost mode is more suitable for heating devices'; turns on automatically when total output exceeds 1,400 W",
+   "source": "https://www.manualslib.mx/manual/702140/Ecoflow-Delta-Mini.html?page=12",
+   "source_title": "EcoFlow DELTA mini User Manual, section 3.8 X-Boost (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "This is the DELTA mini manual, not the DELTA 3 manual. It shows EcoFlow's own description of X-Boost and that it suits heaters. Because a heater's output falls with the voltage it gets, a heater above the rating runs cooler instead of tripping the station."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC output rating per manual",
+   "value": "1,800 W total AC, 2,700 W surge",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib)",
+   "read": "2026-11-14",
+   "note": "The ManualsLib page names 'Power Lifting mode' only on the LCD diagram. It gives no wattage or voltage for the mode. I could not read the US-model AC output values in the spec table."
+  }
+ ],
+ "unsourced": [
+  "The Jackery Explorer 1000 v2 US product page (jackery.com) returned HTTP 429 twice. I could not confirm the 1,500 W rated / 3,000 W surge figures, whether it has a voltage-lowering mode, or today's price from the maker.",
+  "The Jackery Explorer 1000 v2 manual PDF (hampshiregenerators.co.uk copy) downloaded, but WebFetch could not read its compressed text, so I have no overload trip threshold or duration from the manual.",
+  "UL 1278 limit on how far a heater may draw above its label (reported as 105% of the marked rating, which would allow 1,575 W from a '1,500 W' heater): I looked at three UL 1278 test-report PDFs and the Mike Holt forum. The PDFs were unreadable and the forum returned 403. I have no primary source for the limit or a measured draw.",
+  "BLUETTI AC180 Power Lifting wattage and how it works, from the maker's US page: bluettipower.com hit a redirect loop, and the ManualsLib page names the mode without details.",
+  "The X-Boost wattage on the US EcoFlow DELTA 3 (1,024 Wh) manual or product page: not opened.",
+  "Startup (inrush) current of PTC ceramic heaters from a heater maker or a test lab: not found.",
+  "Tested Watts (the rank-1 cited rival) could not be read because of an SSL certificate error. It is left out of the standout comparison.",
+  "Prices: not checked. They are outside angle D."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1382562
+ }
+}

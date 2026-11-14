@@ -1,0 +1,105 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that the TerraMaster N5095 boxes it recommended (F2-425, F4-425, F2-423, F4-423) are Jasper Lake chips. Jellyfin's own hardware guide tells buyers to avoid that class of chip ('Intel J/M/N/Y series low power CPUs up to 11th gen'). Jellyfin's Intel guide also says Jasper Lake can only encode in Low-Power mode, which needs HuC firmware and a manual setup step. Alder Lake-N chips (12th-gen N series, such as the N100 in the DXP2800) support both encoding modes on Linux by default. So TerraMaster's '4K H.264/H.265 transcoding' claim for the N5095 and UGREEN's Quick Sync claim for the N100 do not mean the same thing.",
+ "standout": 1,
+ "standout_why": "Both Jellyfin docs were in ChatGPT's results and some chats cited them: the hardware-selection page was cited in five chats and the GitHub intel.md in one. Those pages contain the general rules ('avoid J/M/N/Y up to 11th gen'; 'Gen 11 JSL/EHL graphics - Only support LP encoding mode'; HuC setup needed for Jasper Lake). But they name no NAS. Of the review pages, itechguides and computingforgeeks/best-2-bay identify the F2-425 and F4-425 as N5095, but neither applies the avoid rule or mentions LP-only or HuC encoding. Computingforgeeks even repeats TerraMaster's 4K60 H.264/H.265 rating as a positive. Starry Hope's best-2-bay and ubnas don't mention the N5095 or the LP mode at all. ChatGPT cited the Jellyfin page in every chat and still recommended N5095 TerraMasters as the 'budget' or '4-bay' pick. That makes the gap a mapping (this chip is on Jellyfin's avoid list, here is why) rather than a fact nobody has published. A second, smaller finding is new to ChatGPT's result set. The 'F2-425 Plus' is sold in two CPU versions: N150 at $499.99 list and N95 at $399.49 list, both per Starry Hope's model page, which gives no price date. Starry Hope's best-2-bay page, which ChatGPT got, describes only the N150. ChatGPT's cards showed both chips under the same name at $375.99 and $399.49 and said 'verify the CPU revision'.",
+ "decides": "This confirms the DXP2800 (N100) as the pick and removes the whole N5095 tier (F2-425, F4-425, F2-423, F4-423) from 'budget alternative' slots for Jellyfin transcoding. Jellyfin's guide says to avoid that chip class, and its encoder depends on a firmware setup step that has to be done by hand on Jasper Lake. Whether TerraMaster's TOS already does that step is unverified. Under $400, the only TerraMaster that stays a Jellyfin alternative is the F2-425 Plus N95 version, a 2023 N-series chip in the same family as the N100. The page should name that variant explicitly, because the N150 version lists at $499.99 per Starry Hope.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "TerraMaster F2-425 Plus (N95 version)",
+  "TerraMaster F2-425 Plus (N150 version)",
+  "TerraMaster F2-425",
+  "TerraMaster F4-425",
+  "TerraMaster F2-423",
+  "TerraMaster F4-423",
+  "Synology DS225+"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Jellyfin's hardware guidance on low-power Intel chips",
+   "value": "Recommends 'Intel N100' and 'Intel 12th gen or above N series platforms'. Says 'Intel J/M/N/Y series low power CPUs up to 11th gen use a different architecture … It is advised to avoid using these parts in a Jellyfin Server.'",
+   "source": "https://jellyfin.org/docs/general/administration/hardware-selection/",
+   "source_title": "Hardware Selection | Jellyfin",
+   "read": "2026-11-13",
+   "note": "The page doesn't name the N5095, J4125 or N4505. They fall under 'N/J series up to 11th gen' because they are 10th-gen-class Jasper Lake or Gemini Lake parts, and Jellyfin's Intel guide calls Jasper Lake '10th Gen Pentium/Celeron/Atom'. That covers the TerraMaster F2-425, F4-425, F2-423 and F4-423 (N5095), the Synology DS225+ (J4125) and the QNAP TS-262 (N4505). The same page also recommends 8 GB RAM for an integrated-graphics server; the N5095 TerraMasters ship with 4 GB."
+  },
+  {
+   "product": "general",
+   "label": "Encoder mode: Jasper Lake vs Alder Lake-N",
+   "value": "'Gen 11 JSL/EHL graphics - Only support LP encoding mode.' 'Low-Power encoding can offload the GPU usage with the help of the HuC firmware.' 'The setup is not necessary unless you are using an Intel Jasper Lake or Elkhart Lake processor.' 'Linux supports two modes only on Gen 12 ADL+ by default.' 'GuC & HuC firmware can be missing on older distros.'",
+   "source": "https://raw.githubusercontent.com/jellyfin/jellyfin.org/master/docs/general/post-install/transcoding/hardware-acceleration/intel.md",
+   "source_title": "Jellyfin docs: Intel hardware acceleration (intel.md, master)",
+   "read": "2026-11-13",
+   "note": "This is the source behind the table footnote. On N5095 (Jasper Lake), hardware H.264/HEVC encoding works only in Low-Power mode, which depends on a manual setup step on Jasper Lake. On Alder Lake-N (N100, N95; the N150 is Twin Lake per ITPro), Linux supports both modes by default. This is the same file as the github.com/jellyfin/jellyfin.org/blob/... page ChatGPT cited in one chat."
+  },
+  {
+   "product": "general",
+   "label": "AV1 decode by generation",
+   "value": "'Decoding AV1 8/10-bit - Gen 12 Tiger Lake (11th Gen Core) and newer'. 'Jasper Lake and Elkhart Lake processors are 10th Gen Pentium/Celeron/Atom, which don't have AV1 acceleration.'",
+   "source": "https://raw.githubusercontent.com/jellyfin/jellyfin.org/master/docs/general/post-install/transcoding/hardware-acceleration/intel.md",
+   "source_title": "Jellyfin docs: Intel hardware acceleration (intel.md, master)",
+   "read": "2026-11-13",
+   "note": "ChatGPT's tables already said 'AV1 decode: N100 yes / N5095 no', so this isn't new. It's included for completeness of the normalised table."
+  },
+  {
+   "product": "general",
+   "label": "HDR tone-mapping support by generation",
+   "value": "'Hardware accelerated HDR/DV to SDR tone-mapping is supported on all Intel GPUs that have HEVC 10-bit decoding' (Gemini Lake and newer).",
+   "source": "https://raw.githubusercontent.com/jellyfin/jellyfin.org/master/docs/general/post-install/transcoding/hardware-acceleration/intel.md",
+   "source_title": "Jellyfin docs: Intel hardware acceleration (intel.md, master)",
+   "read": "2026-11-13",
+   "note": "This normalises ChatGPT's 'HDR tone mapping: Yes vs setup-dependent' column. Both chip families support it, so the real difference is the encoder mode in the finding above. The same doc says LP encoding 'can be useful for speeding up the OpenCL based HDR/DV tone-mapping'."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "One model name, two CPUs",
+   "value": "N150 version: quad-core 3.60 GHz (Intel SKU 241636), max 32 GB in one slot, list price $499.99 at the TerraMaster store. N95 version: quad-core 3.40 GHz (Intel SKU 231800), list price $399.49 at the TerraMaster store, 'Max 16 GB, 1 slot' in the spec table, but the text says TerraMaster publishes no memory limit for the N95.",
+   "source": "https://www.starryhope.com/nas/models/terramaster-f2-425-plus/",
+   "source_title": "TerraMaster F2-425 Plus | Starry Hope",
+   "read": "2026-11-13",
+   "note": "Tell them apart by listing title: 'Intel N150, 8GB DDR5' vs 'Intel N95, 8GB'. Starry Hope gives an October 2025 launch price of $399.99 for both, which conflicts with its own list prices. The page has no price date, and I couldn't open TerraMaster's store today, so these are not maker-verified prices for 2026-11-13. Starry Hope also notes the N95 memory type is disputed: TerraMaster says DDR5, Geizhals sellers say DDR4."
+  },
+  {
+   "product": "TerraMaster F2-425 Plus",
+   "label": "CPU in the reviewed unit and RAM ceiling",
+   "value": "Intel 'Twin Lake' N150; 'upgradeable to a very usable 32GB'",
+   "source": "https://www.itpro.com/infrastructure/servers-and-storage/terramaster-f2-425-plus-review-a-versatile-desktop-nas-at-a-great-price",
+   "source_title": "TerraMaster F2-425 Plus review: A versatile desktop NAS at a great price (ITPro, Dave Mitchell, 2026-02-23)",
+   "read": "2026-11-13",
+   "note": "Dave Mitchell reviewed the N150 version, not the N95. The part of the review I could read had no transcoding test."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Maker's transcoding claim as relayed by a rival",
+   "value": "'TerraMaster rates its Celeron N5095 for H.264 and H.265 transcoding at 4K60'; the page also calls the N5095 'a 2021 Jasper Lake part'",
+   "source": "https://computingforgeeks.com/best-2-bay-nas/",
+   "source_title": "Best 2-Bay NAS (2026): Backups, Plex, Beginners | ComputingForGeeks",
+   "read": "2026-11-13",
+   "note": "This is the un-normalised claim the table footnote corrects. TerraMaster's own spec URLs returned 404 or 429, so the claim is sourced only to this rival page. The page gives the F2-425 at about $255 (as of 2026-10-24) and says the DS225+ 'ships without the i915 modules'. The DS225+ point is already in rival pages."
+  },
+  {
+   "product": "TerraMaster F4-423",
+   "label": "Field report: N5095 Jellyfin hardware transcoding",
+   "value": "The poster wrote 'I have tried 8 different ways to get hardware transcoding to work on my setup' (2023-07-25, Unraid 6.12.1, N5095). Moderator TheDreadPirate said 'Jasper Lake does not support AV1 decoding'. The thread shows no confirmed fix.",
+   "source": "https://forum.jellyfin.org/t-hardware-accell-issues-on-terramaster-f4-423",
+   "source_title": "hardware accell issues on terramaster f4 423 | Jellyfin Forum",
+   "read": "2026-11-13",
+   "note": "This is anecdotal and on Unraid, not TOS, so it's context only, not a figure for the table. Some failures were XVID files and subtitles."
+  }
+ ],
+ "unsourced": [
+  "TerraMaster's own F2-425 / F2-425 Plus spec and store pages: terra-master.com/products/f2-425 and /f2-425-plus returned HTTP 429 to both WebFetch and storecheck.py; /pages/f2-425-specification and /pages/f2-425-plus returned 404. I couldn't confirm the maker's exact '4K60 transcoding' wording or today's (2026-11-13) store prices.",
+  "UGREEN DXP2800 maker page (ai.ugreen.com) returned HTTP 429 twice. The DXP2800 manual PDF (media.dustin.eu) was binary-only through WebFetch, and text extraction needed an approval I didn't have. So the DXP2800 RAM maximum, transcoding claim, warranty and today's maker price are unsourced from the maker.",
+  "Whether TerraMaster TOS 6/7 loads the i915 GuC/HuC firmware by default on N5095 models, so that Low-Power encoding works without a kernel parameter: the TerraMaster forum thread (forum.terra-master.com viewtopic p=25899) returned 403, and I found no TerraMaster statement.",
+  "Named-reviewer Jellyfin stream counts for the N5095 vs the N100 on these NAS units: the Neowin F2-425 review returned 403, and the ITPro F2-425 Plus text I could read had no transcoding test.",
+  "TerraMaster warranty length for the F2-425 and F2-425 Plus: Starry Hope gives no terms and the maker pages were unreachable.",
+  "Amazon prices were not attempted, because the ~25-call budget went to the maker pages, which were rate-limited."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1361942999999999
+ }
+}
