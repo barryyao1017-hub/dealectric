@@ -45,9 +45,17 @@ def search(q: str, n: int = 8) -> list[dict]:
     for m in re.finditer(r'data-asin="(B0[A-Z0-9]{8})"', s):
         a = m.group(1)
         if a not in [x["asin"] for x in out]:
-            seg = s[m.end(): m.end() + 6000]
-            t = re.search(r'<h2[^>]*aria-label="([^"]+)"', seg) or re.search(r"<h2[^>]*>.*?<span[^>]*>(.*?)</span>", seg, re.S)
-            out.append({"asin": a, "title": html.unescape(re.sub("<[^>]+>", "", t.group(1)))[:160] if t else ""})
+            seg = s[m.end(): m.end() + 20000]   # 11-14: the title sits ~8k characters into the card now
+            nxt = re.search(r'data-asin="(?!' + a + r')B0[A-Z0-9]{8}"', seg)
+            seg = seg[: nxt.start()] if nxt else seg   # never read the next card's title
+            t = re.search(r'<h2[^>]*aria-label="([^"]+)"', seg)
+            if not t:   # cards whose first h2 is the brand line only: take the longest h2 text
+                hs = [re.sub("<[^>]+>", "", h) for h in re.findall(r"<h2[^>]*>(.*?)</h2>", seg, re.S)]
+                t = max(hs, key=len) if hs else None
+            else:
+                t = t.group(1)
+            t = re.sub(r"^Sponsored Ad - ", "", html.unescape(t).strip()) if t else ""
+            out.append({"asin": a, "title": t[:160]})
         if len(out) >= n:
             break
     return out

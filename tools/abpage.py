@@ -627,7 +627,7 @@ def apply(slug: str, local: bool) -> dict:
         draft["gate"] = {"date": today(), "pass": True, "g": gnum}
         jsave(d / "draft.json", draft)
         if local:
-            runs = f"growth/evals/runs/fastloop/ab-{slug}"[:200]   # a missing path fails the whole `git add` (11-14)
+            runs = "growth/evals/runs/fastloop/" + f"ab-{slug}"[:60]   # the pack name is cut at 60; a missing path fails the whole `git add` (11-14)
             sh("git", "add", "src/gaps.py", "src/products.py", "src/img", "docs", "worker/src/links-map.json", "worker/src/dash-meta.json", str(d),
                *([runs] if (ROOT / runs).exists() else []))
             what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"A/B group A rebuild /{slug}"
