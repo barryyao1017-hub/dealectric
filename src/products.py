@@ -92,6 +92,7 @@ CATEGORIES = {
     "ultrasonic-cleaner": ('Ultrasonic cleaners', 'Heated tanks that use 40 kHz cavitation to strip varnish and grime from carburetors, tools and small parts.'),
     "ev-charger": ('EV chargers', 'Portable and wall-mounted Level 1 and Level 2 chargers for electric cars.'),
     "filament": ('3D printer filaments', 'Spools of plastic filament for FDM 3D printers, from everyday PLA to foaming and flexible grades.'),
+    "welder": ('Welders', 'TIG, MIG and stick welding machines for home shops, farms and job sites.'),
 }
 
 PRODUCTS = [
@@ -7095,6 +7096,38 @@ PRODUCTS = [
  "summary": 'A three-camera dash cam with a 4K STARVIS 2 front camera, an infrared cabin camera and a 2.5K waterproof rear camera.',
  "fit": 'Drivers who care more about reading plates ahead than about a second cabin camera, such as solo rideshare drivers with riders mostly in the back seat in view of one cabin lens.',
  "caveats": ['Only one cabin camera, and reviewers call its field of view narrow.', 'Rear night video runs dark (DashCamTalk).', 'Parking mode needs a hardwire kit, sold separately.', 'Large unit (about 4.8 × 2.3 × 1.7 in).']},
+
+{"slug": 'arccaptain-tig200-dc-hf-tig-welder',
+ "brand": 'ARCCAPTAIN',
+ "program": 'awin:arccaptain',
+ "category": 'welder',
+ "name": 'ARCCAPTAIN TIG200 DC TIG Welder, HF Start, 200 A, 120/220 V',
+ "model": 'TIG200',
+ "url": 'https://www.arccaptain.com/products/200-amps-tig-welder-high-frequency-dual-voltage-tig-welder-lightweight',
+ "price": 199.99,
+ "verified": '2026-11-14',
+ "specs": [('Processes', 'HF-start DC TIG and stick (MMA)'), ('Output', 'Up to 200 A'), ('Input', '120 V / 220 V dual voltage'), ('Weight', '12 lb'), ('Foot pedal', 'Not included; ARCCAPTAIN 5-pin pedal sold separately ($79.99 on 2026-11-14)')],
+ "warranty": "The product page did not show a warranty term on 2026-11-14. ARCCAPTAIN's warranty policy sets the term by model, so confirm it before you buy.",
+ "returns": "Ask ARCCAPTAIN support for a return before you ship anything back. The store's refund policy has the conditions.",
+ "summary": 'The cheapest new high-frequency-start TIG welder on the maker stores we checked. It has 200 A output, runs on 120 or 220 V and weighs 12 lb, which suits steel and stainless work in a home garage.',
+ "fit": 'For hobbyists learning TIG on mild steel and stainless who want HF start (no scratching the tungsten) at the lowest price.',
+ "caveats": ['DC only: it cannot TIG weld aluminum.', 'No pulse mode.', "No foot pedal in the base box; budget $79.99 for ARCCAPTAIN's pedal.", 'The product page did not show a warranty term on 2026-11-14.']},
+
+{"slug": 'arccaptain-tig205p-pro-dc-pulse-tig-welder',
+ "brand": 'ARCCAPTAIN',
+ "program": 'awin:arccaptain',
+ "category": 'welder',
+ "name": 'ARCCAPTAIN TIG205P Pro DC Pulse TIG Welder, 120/240 V, App Control',
+ "model": 'TIG205P Pro',
+ "url": 'https://www.arccaptain.com/products/tig-205p-pro-dc-pulse-tig-welder',
+ "price": 279.99,
+ "verified": '2026-11-14',
+ "specs": [('Processes', 'HF DC TIG, pulse TIG, lift TIG, spot TIG, stick (MMA)'), ('Input', '120 V / 240 V dual voltage'), ('Pulse settings', 'Pulse frequency, pulse duty, peak and base current'), ('Control', 'Front panel plus phone app, saved settings'), ('Warranty', '3 years')],
+ "warranty": '3 years, plus lifetime technical support (product page, 2026-11-14).',
+ "returns": "Ask ARCCAPTAIN support for a return before you ship anything back. The store's refund policy has the conditions.",
+ "summary": 'A DC pulse TIG with HF start, spot TIG, stick and app control. Its 3-year warranty is the longest on a pulse TIG under $300 that we checked.',
+ "fit": 'For steel and stainless welders who want pulse for thin sheet and a longer warranty than the cheapest pulse machine.',
+ "caveats": ['DC only: it cannot TIG weld aluminum.', "It costs $30.99 more than YesWelder's TIG-205P PRO ($249 on 2026-11-14), which also has HF start and pulse.", "ARCCAPTAIN's $79.99 pedal page lists the TIG200, TIG200P AC/DC and TIG205 Pro, not the 205P Pro. Ask support about pedal fit.", 'Output range and weight were not checked.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
