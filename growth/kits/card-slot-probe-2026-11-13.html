@@ -80,6 +80,31 @@ blockquote { margin: 0; padding: 10px 14px; border-left: 3px solid var(--accent)
   </section>
 
   <section>
+    <h2>Same probe on the 11 kit pilot questions</h2>
+    <p>22 chats, 2 per pilot question, on 11-13. Most of our picks have no catalog card, so the slot is open. But the model fills an open slot only for a product its answer already recommends, and on 8 of the 11 questions our page wasn't in the results at all.</p>
+    <div class="scroll"><table>
+      <tr><th>Pilot question</th><th>Our page in results</th><th>Our pick carded?</th><th>What filled the answer</th></tr>
+      <tr class="hit"><td>best rechargeable battery kit</td><td class="n">2/2</td><td>no (Tenergy)</td><td>Eneloop, Energizer, Panasonic cards; our page shown only as an article card, no link written</td></tr>
+      <tr class="hit"><td>best travel charging kit</td><td class="n">2/2</td><td>partly: the UGREEN 65 W travel charger has its own card</td><td>Anker, STATIK, UGREEN cards; our article linked once</td></tr>
+      <tr class="hit"><td>tiny home solar power kit</td><td class="n">1/2</td><td>no</td><td>Renogy and ECO-WORTHY whole-system kits; model-written links to Renogy and Sun Gold</td></tr>
+      <tr><td>refrigerator backup power supply</td><td class="n">0/2</td><td>the Elite 200 V2 station alone has a card; the kit doesn't</td><td>BLUETTI and Jackery station cards</td></tr>
+      <tr><td>emergency battery pack for home</td><td class="n">0/2</td><td>no</td><td>EcoFlow, Anker, Jackery 2 kWh stations</td></tr>
+      <tr><td>shed solar power kit</td><td class="n">0/2</td><td>no</td><td>12 V panel + battery kits (Renogy, ECO-WORTHY, WEIZE), not power stations</td></tr>
+      <tr><td>projector for church service</td><td class="n">0/2</td><td>no</td><td>Epson, BenQ, ViewSonic laser projectors</td></tr>
+      <tr><td>sump pump backup system</td><td class="n">0/2</td><td>no (a different Wayne SKU has a card)</td><td>Basement Watchdog, Zoeller, Wayne combo</td></tr>
+      <tr><td>best trolling motor battery setup</td><td class="n">0/2</td><td>no (Redodo)</td><td>LiTime, WattCycle, WEIZE batteries</td></tr>
+      <tr><td>apple magsafe charger setup</td><td class="n">0/2</td><td>no cards at all</td><td>answered as a how-to; links to Apple support</td></tr>
+      <tr><td>home nas setup</td><td class="n">0/2</td><td>no cards at all</td><td>answered as a how-to; links to Synology's knowledge base</td></tr>
+    </table></div>
+    <ul>
+      <li><b>The rule needs three things at once:</b> our page is in the results, the answer recommends our pick, and that pick has no card. The solar-kit questions met all three because our page was the leading source for the BLUETTI and ALLPOWERS combos. On the battery question, our page was retrieved, but the answer was built from carded products (Eneloop, Energizer), so our uncarded Tenergy kit never became a row.</li>
+      <li><b>Two pilot questions are the wrong target.</b> "apple magsafe charger setup" and "home nas setup" read as how-to questions: no shopping cards, just links to support pages. Shopping wording ("best magsafe charging station", "best nas for home") would test the pages fairly.</li>
+      <li><b>Two pages miss the frame ChatGPT uses.</b> For "shed solar power kit" and "tiny home solar power kit" it answers with 12 V and 48 V panel-and-battery systems (Renogy, ECO-WORTHY), not power stations, so a BLUETTI station pick sits outside the set it compares.</li>
+      <li><b>Retrieval is still the first gate.</b> The pages are 2–3 days old and have been crawled once. Reading 2 on 11-18 will show whether retrieval improves before hand-over can be judged.</li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Where things are</h2>
     <ul>
       <li>Questions: <code>growth/focus/cardprobe-kit-questions.json</code>. Chats with raw streams: <code>growth/evals/runs/2026-11-13-cardprobe-kits/app/</code>.</li>
