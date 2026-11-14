@@ -6499,6 +6499,22 @@ PRODUCTS = [
  "fit": "Two in parallel on a 36 V motor (101–112 lb or 36 V QUEST): each pack then carries about 30 A at the motor's maximum draw.",
  "caveats": ['A single pack is rated 60 A for only 30 minutes, against the 60 A a 36 V QUEST motor can draw on high speed.', "Won't charge below 32°F.", 'Needs a 43.8 V LiFePO4 charger. A Minn Kota onboard bank tops out at 14.5 V.']},
 
+{"slug": 'anker-solix-e10-power-module-2-battery',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "category": 'power-station',
+ "name": 'Anker SOLIX E10 (1× Power Module + 2× B6000 Battery), 12.288 kWh, 7.68 kW rated / 10 kW turbo, 9 kW solar input, 120/240 V',
+ "model": 'Anker SOLIX E10 + 2 batteries',
+ "url": 'https://us.ankersolix.com/products/e10-battery-2',
+ "price": 6299,
+ "verified": '2026-11-13',
+ "specs": [('Battery', '12.288 kWh (2 × 6.144 kWh B6000), expandable to 5 batteries per power module'), ('Rated output', '7,680 W (32 A) continuous'), ('Turbo output', '10,000 W for 90 minutes with two batteries'), ('Solar input', '2 × 4,500 W PV inputs, 30–450 V DC (9 kW)'), ('AC output', '120/240 V split phase, 60 Hz'), ('Weight', 'Power module 60.6 lb; each B6000 battery 130 lb'), ('Certification', 'UL 9540 and UL 9540A (store listing title)')],
+ "warranty": '5 years on the power module and battery modules (ankersolix.com)',
+ "returns": '30-day money-back guarantee (ankersolix.com)',
+ "summary": "Anker's stackable home system. The inverter and two 4.5 kW solar inputs (9 kW total) sit in one power module, with battery modules stacked beneath it. At its posted price it costs $513 per stored kWh.",
+ "fit": "Best for a home that wants an inverter, battery and solar input from one maker at a posted price, without signing an installer's solar contract. An electrician still installs the inlet box or Power Dock.",
+ "caveats": ['Not a single enclosure: one power module plus separate battery modules', 'Rated continuous output is 7.68 kW; the 10 kW figure holds for 90 minutes', '5-year warranty, against 10 years for Tesla Powerwall 3 and EG4', 'Connects through a Smart Inlet Box or Power Dock, which Anker says a licensed electrician must install', 'On 2026-11-13, ankersolix.com showed this bundle at $5,999 (struck through from $6,299), while the us.ankersolix.com store listed $6,299']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

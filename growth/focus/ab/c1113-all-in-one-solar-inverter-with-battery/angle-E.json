@@ -1,0 +1,81 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much power each 'all-in-one' system uses just by being switched on. The Solar Lab measured about 65 W idle for the EG4 FlexBOSS21 and reported about 45 W for the EcoFlow DELTA Pro Ultra (its comparison article says roughly 60 W). A Tesla Motors Club owner logged an average standby drain of 72–110 W on a Powerwall 3. That is about 1.1 to 2.6 kWh a day lost before any household load runs.",
+ "standout": 2,
+ "standout_why": "I read the three cited pages. EnergySage (best-batteries-for-whole-home-backup, updated 2026-05-11) gives only quoted specs and scores and no measurements. iTechGuides (Powerwall alternatives, 2026-10-25) gives only spec and Amazon-listing figures and says its efficiency numbers are 'not a uniform laboratory test'. SolutionEnergy /batteries/ says 'we didn't test them'. None of them gives idle or self-consumption draw for any candidate, measured or rated. EnergySage and iTechGuides also list the Powerwall 3 at 97.5% 'roundtrip', but Tesla's own spec page gives 89% for the solar-to-battery-to-home round trip and 97.5% for solar-to-home only. None of the rivals has a measured figure from a named lab.",
+ "decides": "The finding confirms the ranking but does not overturn it. For a grid-tied home, idle draw of 45–110 W costs about 0.4–1 MWh a year and barely matters. For the off-grid or long-outage buyer that ChatGPT's follow-up question points to, it does matter. By The Solar Lab's numbers, the EG4 FlexBOSS21 (65 W) and the DELTA Pro Ultra (45–60 W) idle lower than the 72–110 W one Powerwall 3 owner logged. The Tesla 89% versus 97.5% correction also narrows the efficiency lead that EnergySage and iTechGuides give the Powerwall 3 over FranklinWH (rated 90% per EnergySage).",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "EG4 FlexBOSS21 with PowerPro battery",
+  "EcoFlow DELTA Pro Ultra",
+  "FranklinWH aPower 2"
+ ],
+ "findings": [
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle consumption, measured",
+   "value": "about 65 W (Sol-Ark 18K: about 108 W in the same test)",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS21: Which Hybrid Solar Inverter is Best for Your Home? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'The EG4 FlexBOSS 21 consumed about 65 watts during our idle consumption tests.' No setup or duration is described, and the page has no byline or date. 65 W × 24 h = 1.56 kWh/day. This matches EG4's rated idle of <65 W."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw, reported by tester",
+   "value": "about 45 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab says 'the original EcoFlow DELTA Pro Ultra has around a 45W idle draw' and links to its own testing article. The same site's comparison page says 'roughly 60W', so the range is 45–60 W, or 1.08–1.44 kWh/day. The DELTA Pro Ultra X measured about 36 W idle. No byline or date on the page."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw, second figure from the same tester",
+   "value": "roughly 60 W",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X: Which Power Station is Better? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "'Nearly double the idle rate (roughly 60W)' compared with the Ultra X's 36 W. The method is not described. This conflicts with the 45 W on the site's own Ultra X review."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "AC energy drawn to fill one battery, measured",
+   "value": "7.25 kWh from the wall to fill a 6 kWh battery in 4 h 4 min on 120 V",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "6.0 / 7.25 ≈ 83% charge-side efficiency (my arithmetic). The same test ran a load of 'just under 6,000 W' for 59 minutes and called it '98% efficiency'. The exact load is not given, so that figure can't be checked. It held a 9,200 W surge for about 10 s. No byline or date."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Standby drain, owner-measured",
+   "value": "72 W average (6% SoC in 12 h) to 110 W average (10% SoC in 13 h)",
+   "source": "https://teslamotorsclub.com/tmc/threads/pw3-discharges-10-overnight-when-in-standby.343698/",
+   "source_title": "PW3 discharges 10% overnight when in standby (Tesla Motors Club)",
+   "read": "2026-11-13",
+   "note": "Posted by Tesla Motors Club user apacheguy on 2025-04-26 and 2025-05-03, derived from SoC drop against 14.4 kWh nominal. In the same thread on 2025-04-18, user toononame reported 1.5–2 kWh/day (about 65–80 W). These are owner logs, not a lab test. 72–110 W = 1.7–2.6 kWh/day."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Round-trip efficiency, maker spec (corrects rivals' 97.5%)",
+   "value": "89% solar → battery → home/grid; 97.5% solar → home/grid (CEC weighted)",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications (Tesla Energy Library)",
+   "read": "2026-11-13",
+   "note": "The 89% applies at 25 °C, beginning of life, 3.3 kW charge/discharge, in a typical solar-shifting use case. EnergySage and iTechGuides list 97.5% as 'roundtrip', but per Tesla that figure is solar-to-home only. SolarQuotes (Finn Peacock) also gives 89%."
+  }
+ ],
+ "unsourced": [
+  "A measured idle or standby draw for the FranklinWH aPower 2 / aGate. I searched reviewers, EnergySage and owner reports and found none. The FranklinWH datasheet PDF (franklinwh.com/document/apower-2-datasheet and the RES Supply copy) would not render as text, so I could not confirm its rated round-trip efficiency or standby figure from the maker.",
+  "A lab-measured usable capacity (Wh delivered from full) for the DELTA Pro Ultra, Powerwall 3, EG4 PowerPro or aPower 2. I checked The Solar Lab, The Gadgeteer (Julian Perry, 2024-06-09, measured nothing) and searched for CNET, Wired and Tom's Guide. None reports one.",
+  "A Powerwall 3 standby figure from a named reviewer or lab rather than forum owners. SolarQuotes' Powerwall 3 review gives specs only, and the TechRadar test page did not load.",
+  "Publication dates and author names for The Solar Lab pages. None of the pages shows a byline or date, only 'Copyright © 2026'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0840164000000003
+ }
+}

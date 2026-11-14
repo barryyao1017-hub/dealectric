@@ -1,0 +1,132 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that EcoFlow's US store lists the original DELTA Pro Ultra (ChatGPT's 'from $5,143' pick) as unavailable, while its in-stock successor, the DELTA Pro Ultra X, costs $7,899 for 12 kW and 12 kWh. Over the same 12–14 kWh range, the EG4 FlexBOSS21 plus a 14.3 kWh PowerPro costs $6,724.98 in hardware at Signature Solar (about $470/kWh), and Sun Gold Power's SPH6548P plus 10.24 kWh costs $2,988 (about $292/kWh).",
+ "standout": 2,
+ "standout_why": "I compared three cited pages. EnergySage (dated 2026-05-11) gives only installed price per kWh, from quotes collected October 2025 to March 2026: Powerwall 3 $998/kWh, aPower 2 $1,177/kWh, EG4 WallMount $1,163/kWh. It has no hardware prices and no EcoFlow DELTA Pro Ultra. iTechGuides (2026-10-25) prices only EcoFlow, using Amazon listings ($4,199 for the DELTA Pro Ultra, $6,199 for a 12 kWh bundle). It does not price the EG4 setup or the DELTA Pro Ultra X. SolutionEnergy (2026-10-03) lists the DELTA Pro Ultra at $4,199, the Anker E10 at $3,999 and the Apex 300 at $1,499 as of October 2026. None of the three says the original DELTA Pro Ultra is unavailable from EcoFlow, or prices the X successor, the EG4 inverter-plus-battery pair, or a 48 V DIY kit. The Anker E10 starter kit has also gone from $3,999 to $4,299. The rivals do have Powerwall and FranklinWH per-kWh installed costs, so that part is not new.",
+ "decides": "It changes ChatGPT's #3 pick. The DELTA Pro Ultra at 'from $5,143' is listed as unavailable on EcoFlow's US store; the buyable replacement costs $7,899. At that price it costs more than ChatGPT's 'best value' EG4 pair ($6,724.98 for 12 kW on battery and 14.3 kWh) while giving less storage. That confirms EG4 as the DIY value pick. For a buyer who wants a plug-in, no-electrician setup, the Anker SOLIX E10 with 2 batteries ($5,999 for 12.288 kWh, about $488/kWh) now undercuts EcoFlow. Tesla Powerwall 3 stays the only single-box integrated pick, but at about $998/kWh installed (EnergySage) it costs roughly twice as much per kWh as the DIY hardware.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "EG4 FlexBOSS21 + EG4 PowerPro WallMount 14.3 kWh",
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow DELTA Pro Ultra X",
+  "FranklinWH aPower 2",
+  "Anker SOLIX E10",
+  "BLUETTI Apex 300",
+  "Sun Gold Power SGR-8K10E",
+  "Sun Gold Power SPH6548P + 2x SG48100P",
+  "Enphase IQ Battery 10C",
+  "EcoFlow Ocean Pro",
+  "Renon Power Xtreme LV",
+  "Jackery HomePower 3000",
+  "Sigenergy SigenStor",
+  "Anker SOLIX F3800 Plus",
+  "Nature's Generator L6000",
+  "OSCAL PowerMax 6000"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Maker US store price and stock",
+   "value": "$3,799 (compare-at $7,599), marked unavailable; the 1 inverter + 2 battery bundle is $5,999, also unavailable",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py from the Shopify product data, which returned available=false. Opening the page directly returned HTTP 429. Where it loses: the maker does not have it to sell, and ChatGPT's $5,143 and iTechGuides' $4,199 do not match the maker's store today. Specs on the store: 7.2 kW per inverter, 6.144 kWh per battery."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Maker US store price, standard bundle",
+   "value": "$7,899 (compare-at $11,149) for 1 inverter + 2 Smart Extra Batteries, 12 kW and 12 kWh; Smart Control Kit $10,899; inverter alone $3,799; extra 6,144 Wh battery $2,349",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Whole-Home Backup Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py from Shopify data, available=true. $7,899 / 12.288 kWh ≈ $643/kWh. Where it loses: it costs about $1,174 more than the EG4 pair for 2 kWh less storage."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Signature Solar price",
+   "value": "$3,599.99 (was $4,199.00); 12 kW continuous AC from battery, 16 kW rated, 21 kW PV input, 10-year warranty",
+   "source": "https://signaturesolar.com/eg4-flexboss21-v1-1-hybrid-inverter-48v-split-phase-21kw-pv-input/",
+   "source_title": "EG4 FlexBOSS21 16kW AC Hybrid Inverter",
+   "read": "2026-11-13",
+   "note": "The page did not show a stock quantity."
+  },
+  {
+   "product": "EG4 PowerPro WallMount All-Weather 14.3 kWh",
+   "label": "Signature Solar price",
+   "value": "$3,124.99 (was $3,499.00); 14.3 kWh, 48 V 280 Ah, 10-year warranty",
+   "source": "https://signaturesolar.com/eg4-wallmount-all-weather-lithium-battery-48v-280ah-14-3kwh-lifepo4-all-weather-energy-storage-ul1973-ul9540a-10-year-warranty/",
+   "source_title": "EG4 | WallMount All Weather Lithium Battery | 48V 280Ah | 14.3kWh",
+   "read": "2026-11-13",
+   "note": "Pair price: $3,599.99 + $3,124.99 = $6,724.98, or $470/kWh before wiring, gateway and install. Where it loses: it is two enclosures and needs an electrician; iTechGuides puts the usable capacity at 11.44 kWh."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Installed cost per kWh (EnergySage quote data)",
+   "value": "$998/kWh; 13.5 kWh, 11.5 kW continuous, 10 years at 70%; $40,419 for 3 units (40.5 kWh)",
+   "source": "https://www.energysage.com/energy-storage/best-batteries-for-whole-home-backup/",
+   "source_title": "What are the best batteries for whole-home backup in 2026? | EnergySage",
+   "read": "2026-11-13",
+   "note": "Taken from a cited rival page (quotes from October 2025 to March 2026), so it is not new. 13.5 × $998 ≈ $13,473 per unit installed. Where it loses: installer-only, with no public price, and about twice the per-kWh cost of the DIY hardware. tesla.com returned 403."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Installed cost per kWh (EnergySage)",
+   "value": "$1,177/kWh; 15 kWh, 10 kW, 15 years at 70%; $35,310 for 2 units",
+   "source": "https://www.energysage.com/energy-storage/best-batteries-for-whole-home-backup/",
+   "source_title": "What are the best batteries for whole-home backup in 2026? | EnergySage",
+   "read": "2026-11-13",
+   "note": "Where it loses: it is AC-coupled (iTechGuides), not a solar inverter-and-battery in one box, and it has the highest per-kWh cost among the picks."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Maker US store bundle prices",
+   "value": "Starter (Power Module + 1 battery) $4,299; Power Module + 2 batteries $5,999; 2 batteries + Power Dock $7,799; 6.144 kWh per battery; 7.68 kW max continuous with 1 battery, up to 10 kW with 2 or more (for 90 minutes); 9 kW PV; 5-year warranty on module and battery",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10",
+   "read": "2026-11-13",
+   "note": "$5,999 / 12.288 kWh ≈ $488/kWh. SolutionEnergy's $3,999 from October 2026 is now $4,299. Where it loses: 5-year warranty compared with 10 years for EG4 and Tesla, and its sustained 10 kW is limited to 90 minutes."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maker US store price",
+   "value": "$1,499 alone (2,764.8 Wh, 3,840 W); $2,599 with B300K (5,529.6 Wh); $4,399 with B500K + 500 W solar (7,884.8 Wh, 120/240 V)",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. $2,599 / 5.53 kWh ≈ $470/kWh. Where it loses: 3.84 kW per unit is a third of the Powerwall 3 or EG4, so it is a partial-home backup."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Maker US store price, complete kit",
+   "value": "$4,949 (compare-at $9,183) for an 8,000 W 48 V 120/240 V off-grid inverter, 2 × 5.12 kWh SG48100P (10.24 kWh) and 8 × 450 W panels",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py, available=true. This is our product. It is the lowest-priced complete kit found and includes 3.6 kW of panels. Where it loses: the maker describes the inverter as off-grid, so it is not a grid-tied whole-home system with the permitting path of Powerwall or EG4."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P + 2x SG48100P",
+   "label": "Maker US store prices",
+   "value": "SPH6548P 6.5 kW split-phase inverter $1,035; 2 × SG48100P (10.24 kWh, UL1973/UL9540A) $1,953; total $2,988",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Battery pair price from https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p, read 2026-11-13. $2,988 / 10.24 kWh ≈ $292/kWh. The listing says 'UL 1741 by ETL for Off Grid Solar System'. Where it loses: off-grid listing and the lowest output (6.5 kW) among the 120/240 V options."
+  }
+ ],
+ "unsourced": [
+  "Tesla Powerwall 3 price from the maker: tesla.com/powerwall and the Powerwall 3 spec support page both returned 403, and Tesla does not publish a hardware price.",
+  "FranklinWH aPower 2 price or spec page from the maker: franklinwh.com/products/apower2 returned 404, and it is sold only through installers.",
+  "A direct page read confirming the DELTA Pro Ultra's sold-out status: us.ecoflow.com returned HTTP 429 to WebFetch and to the storecheck product calls, so stock comes only from the storecheck search output (Shopify available=false).",
+  "Stock status for the two Signature Solar EG4 pages: both show a 'Current Stock:' label with no value.",
+  "Current maker-store prices for the Anker SOLIX F3800 Plus, Nature's Generator L6000 and OSCAL PowerMax 6000: storecheck returned 404 or an error for those stores, and I did not fetch the pages within the tool budget.",
+  "Usable kWh and continuous discharge for the EG4 PowerPro from the maker's page: neither is stated on the Signature Solar page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0019507
+ }
+}

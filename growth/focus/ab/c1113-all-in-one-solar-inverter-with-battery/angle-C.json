@@ -1,0 +1,99 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Powerwall 3 can be added to an existing Powerwall 2 home only as one Powerwall 3 plus up to three Expansion units. Tesla's rules for that pairing are: no more than four Powerwall 2 units, a Backup Gateway 2, Backup Switch or Gateway 3 (Gateway 1, Neurio meters and Powerwall+ are excluded), and Powerwall 3 software 26.26 or later.",
+ "standout": 2,
+ "standout_why": "I compared against EnergySage (cited), itechguides (cited), SolutionEnergy /batteries (cited) and homebatteryreport's DELTA Pro Ultra vs Powerwall 3 page (top result, not cited). On mixing generations, EnergySage, itechguides and SolutionEnergy say nothing about Powerwall 2 and Powerwall 3, or aPower and aPower 2. Homebatteryreport says nothing about Powerwall 2 compatibility, gateways, firmware, or the rule that Expansion units only work on the Leader unit. Homebatteryreport does state the 7-unit maximum (4 Powerwall 3 + 3 Expansion), and EnergySage's 94.5 kWh 'max capacity per inverter' equals 7 × 13.5 kWh. So the system-size cap is partly known, but the rules for adding to Powerwall 2 and the excluded equipment are new.",
+ "decides": "This confirms Powerwall 3 as 'best overall' for a new install and sharpens the pick for a common shopper: someone who already owns Powerwall 2. Tesla documents adding one Powerwall 3 with up to 3 Expansion units (up to 4 × 13.5 = 54 kWh more) as long as the site has 4 or fewer Powerwall 2 units and an approved gateway. A Powerwall+ or Gateway 1 site has to replace that hardware first, which changes the cost. A FranklinWH aPower 2 buyer should know it scales to 15 units per aGate. I could not read the maker's matrix for mixing it with older aPower units, so I make no claim on that.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "EG4 FlexBOSS21 + PowerPro WallMount",
+  "EcoFlow DELTA Pro Ultra",
+  "FranklinWH aPower 2"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Maximum system size",
+   "value": "7 units: up to 4 Powerwall 3 + up to 3 Expansion units",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/SystemDesign/en-us/GUID-2F106183-5E3F-4B53-B407-F0BA7DD06211.html",
+   "source_title": "Powerwall 3 Expansion Units (Tesla System Design, en-us)",
+   "read": "2026-11-13",
+   "note": "Exact quote: 'The total maximum system size is (7) units - up to (4) Powerwall 3 units with up to (3) Expansion units.' Arithmetic: 7 × 13.5 kWh = 94.5 kWh, which matches EnergySage's figure."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Expansion units attach to the Leader only",
+   "value": "Up to 3 Expansion units on the single Leader Powerwall 3; Expansion units on Follower units 'will not function'",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/SystemDesign/en-us/GUID-2F106183-5E3F-4B53-B407-F0BA7DD06211.html",
+   "source_title": "Powerwall 3 Expansion Units (Tesla System Design, en-us)",
+   "read": "2026-11-13",
+   "note": "The page also says a system can have only 1 Leader, the Expansion Harness is the only approved connection (max combined harness length 4 m / 13 ft when Expansion units connect on one side only), and Expansion units have no inverter."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Hardware revision needed for Expansion units",
+   "value": "Powerwall 3 Tesla P/N 1707000-xx-J or later",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/SystemDesign/en-us/GUID-2F106183-5E3F-4B53-B407-F0BA7DD06211.html",
+   "source_title": "Powerwall 3 Expansion Units (Tesla System Design, en-us)",
+   "read": "2026-11-13",
+   "note": "Earlier Powerwall 3 part revisions are not listed as compatible with Expansion units."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Adding Powerwall 3 to an existing Powerwall 2 site",
+   "value": "1 Powerwall 3 + up to 3 Expansion units, added to a site with up to 4 Powerwall 2 units; the Powerwall 3 connects to the last Powerwall 2 in the chain and becomes Site Controller",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Powerwall 3 Service Manual (en-us): adding Powerwall 3 to a Powerwall 2 system",
+   "read": "2026-11-13",
+   "note": "Tesla's own procedure. Sites with more than 4 Powerwall 2 units must replace the extra units with a Powerwall 3 plus Expansion units, or move to a full Powerwall 3 system. Islanding and site metering stay with the existing Backup Gateway 2, Backup Switch or Gateway 3."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Exclusions when mixing with Powerwall 2",
+   "value": "Not supported: Backup Gateway 1 (must be replaced), Neurio meter (replace with Tesla Remote Meter), Powerwall+ (not covered; all Powerwall+ units must be replaced through the Legacy-to-Powerwall 3 upgrade)",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Powerwall 3 Service Manual (en-us): adding Powerwall 3 to a Powerwall 2 system",
+   "read": "2026-11-13",
+   "note": "Backup Switch is allowed only where the local AHJ permits it. Communication cable limit for the whole chain: 150 ft (45 m) at 16 AWG or 82 ft (25 m) at 18 AWG."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Firmware needed to commission with Powerwall 2",
+   "value": "Powerwall 3 software version 26.26 or later",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Powerwall 3 Service Manual (en-us): adding Powerwall 3 to a Powerwall 2 system",
+   "read": "2026-11-13",
+   "note": "Taken from the en-us service manual. Tesla's US and Canada support pages for this returned HTTP 403, so I could not check the consumer-facing wording."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Units per aGate",
+   "value": "Up to 15 aPower 2 per aGate (225 kWh)",
+   "source": "https://www.franklinwh.com/products/apower2-home-battery-backup/",
+   "source_title": "FranklinWH aPower 2 Home Battery Backup (US product page)",
+   "read": "2026-11-13",
+   "note": "Same page: 15 kWh, 10 kW continuous, 15-year / 60 MWh warranty, and a footnote that a region-specific version is 'available exclusively in the US & Canada'. Arithmetic: 15 × 15 kWh = 225 kWh."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Solar inverter compatibility (maker claim)",
+   "value": "'built to be compatible with all solar inverter brands'",
+   "source": "https://www.franklinwh.com/blog/franklinwh-apower-2-the-new-standard-for-home-energy-storage",
+   "source_title": "FranklinWH aPower 2: The New Standard for Home Energy Management & Storage (FranklinWH blog, 2025-02-05)",
+   "read": "2026-11-13",
+   "note": "This is the maker's own marketing claim, not a tested list. The same post said backward compatibility with earlier aPower was 'anticipated' in 1H2025, so on mixing generations it is out of date."
+  }
+ ],
+ "unsourced": [
+  "FranklinWH aGate/aPower mixing matrix (which aGate versions take aPower 2 alongside aPower, aPower X or aPower S, and the unit caps): the maker's 'Backwards Compatibility Statement V1.1' PDF and the aPower 2 datasheet PDF downloaded, but WebFetch could not read their compressed text and local PDF extraction needed approval I didn't get. Search snippets suggest an 8-unit cap on aGate 1.0/1.1 and up to 8 aPower S in a mixed system; I did not open a readable maker page for either, so I left them out.",
+  "EG4 FlexBOSS21 battery compatibility list and UL 9540 pairing for the 14.3 kWh PowerPro WallMount: the FlexBOSS21 manual and the PowerPro manual PDFs on eg4electronics.com could not be read by WebFetch, and the FlexBOSS21 and PowerPro product page URLs I tried returned 404.",
+  "EcoFlow DELTA Pro Ultra and Smart Home Panel 2 limits (3 inverters, 15 batteries, US-only panel): only seen in search snippets and in itechguides, which already states 15 batteries and 21.6 kW with 3 inverters. I did not open the maker's US page, so I left this out.",
+  "Tesla US and Canada consumer support page for Powerwall 3 backward compatibility: HTTP 403 on both tesla.com URLs."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1198365000000001
+ }
+}

@@ -1,0 +1,176 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out the full inverter-plus-battery hardware cost per kWh together with solar refill hours from each unit's own PV input. At today's maker-store prices the EG4 FlexBOSS21 + PowerPro is $470 per nominal kWh but $588 per usable kWh at EG4's 80% DoD, against $525/kWh for the Anker SOLIX E10 with two batteries and $643/kWh for the EcoFlow DELTA Pro Ultra X bundle. The best case for a full refill on the unit's own solar input is 0.54 h for EG4, 0.68 h for Powerwall 3, 1.23 h for DPU X and 1.37 h for E10.",
+ "standout": 2,
+ "standout_why": "I read energysage.com/best-batteries-for-whole-home-backup (cited), itechguides Powerwall alternatives (cited) and solutionenergy.com/batteries (cited). EnergySage gives installed $/kWh for Powerwall 3 ($998), aPower 2 ($1,177) and EG4 WallMount ($1,163), and no solar input figures. itechguides gives specs plus DPU prices but no $/kWh and no refill hours. SolutionEnergy gives $/kWh for plug-in kits only, assuming 85% is usable (DPU about $683, Anker about $651, using older prices), and backup hours at stated loads. It does not price the EG4 inverter and battery as one system and does not compute solar refill time. None of the three pages computes Wh per lb or solar kW per stored kWh.",
+ "decides": "Among products with a public price, the EG4 FlexBOSS21 + PowerPro is cheapest per nameplate kWh and has the most solar input per kWh (21 kW PV for 14.3 kWh), which supports ChatGPT's 'best value' label. Counted per usable kWh at EG4's own 80% DoD, though, it is $588/kWh and loses to the Anker SOLIX E10 + 2 batteries at $525/kWh, a product Dealectric already sells through rakuten:ankersolix and ChatGPT never showed. ChatGPT's card for the EcoFlow DELTA Pro Ultra is out of date: the original is listed out of stock on us.ecoflow.com at $3,799, and the bundle on sale now is the DELTA Pro Ultra X at $7,899. Powerwall 3 is the only true single enclosure here, and it is 46.4 Wh per lb including its inverter, but it has no public price to compare.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "EG4 FlexBOSS21 + EG4 PowerPro WallMount All-Weather 14.3 kWh",
+  "EcoFlow DELTA Pro Ultra X (1 inverter + 2 batteries)",
+  "Anker SOLIX E10 + 2 batteries",
+  "FranklinWH aPower 2"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Maximum solar STC input",
+   "value": "20 kW (6 MPPTs)",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications (Tesla Energy Library)",
+   "read": "2026-11-13",
+   "note": "Same page lists Nominal Battery Energy 13.5 kWh and nominal AC output of 5.8–11.5 kW depending on configuration."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Best-case solar refill time on its own PV input",
+   "value": "0.68 h",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications (Tesla Energy Library)",
+   "read": "2026-11-13",
+   "note": "13.5 kWh ÷ 20 kW = 0.68 h. Limited by PV only; the battery charge-power limit is not applied."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Energy per pound, inverter included",
+   "value": "46.4 Wh/lb",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications (Tesla Energy Library)",
+   "read": "2026-11-13",
+   "note": "13,500 Wh ÷ 291.2 lb (installed unit with cover and bracket) = 46.4 Wh/lb. Unit alone is 272.5 lb, which gives 49.5 Wh/lb."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Price, max PV input, battery-only output",
+   "value": "$3,599.99; 21 kW PV; 12 kW continuous from battery (16 kW total)",
+   "source": "https://signaturesolar.com/eg4-flexboss21-hybrid-inverter-48v-split-phase-21kw-pv-input",
+   "source_title": "EG4 FlexBOSS21 Hybrid Inverter | 48V Split Phase | 21kW PV Input (Signature Solar)",
+   "read": "2026-11-13",
+   "note": "Signature Solar is EG4's own US distributor. Price marked down from $4,199.00. 10-year warranty."
+  },
+  {
+   "product": "EG4 PowerPro WallMount All-Weather 14.3 kWh",
+   "label": "Price and nominal energy",
+   "value": "$3,124.99; 14.3 kWh (48 V 280 Ah)",
+   "source": "https://signaturesolar.com/eg4-powerpro-14kwh-all-weather-lithium-solar-battery-wallmount/",
+   "source_title": "EG4 WallMount All Weather Lithium Battery 48V 280Ah 14.3kWh (Signature Solar)",
+   "read": "2026-11-13",
+   "note": "Marked down from $3,499.00. 10-year warranty. The page does not state usable energy."
+  },
+  {
+   "product": "EG4 FlexBOSS21 + EG4 PowerPro WallMount All-Weather 14.3 kWh",
+   "label": "Hardware cost per kWh (inverter + one battery)",
+   "value": "$470/kWh nominal; $588/kWh usable at 80% DoD",
+   "source": "https://signaturesolar.com/eg4-powerpro-14kwh-all-weather-lithium-solar-battery-wallmount/",
+   "source_title": "EG4 WallMount All Weather Lithium Battery (Signature Solar) + FlexBOSS21 page",
+   "read": "2026-11-13",
+   "note": "$3,599.99 + $3,124.99 = $6,724.98. ÷ 14.3 kWh = $470. ÷ (14.3 × 0.8 = 11.44 kWh) = $588. The 80% DoD comes from EG4's recommendation as quoted by itechguides (11.44 kWh usable), a cited rival. EG4's own spec PDF would not open as text. Installation not included."
+  },
+  {
+   "product": "EG4 FlexBOSS21 + EG4 PowerPro WallMount All-Weather 14.3 kWh",
+   "label": "Best-case solar refill time on the inverter's PV input",
+   "value": "0.54 h (usable) / 0.68 h (nominal)",
+   "source": "https://signaturesolar.com/eg4-flexboss21-hybrid-inverter-48v-split-phase-21kw-pv-input",
+   "source_title": "EG4 FlexBOSS21 Hybrid Inverter (Signature Solar)",
+   "read": "2026-11-13",
+   "note": "11.44 kWh ÷ 21 kW = 0.54 h; 14.3 ÷ 21 = 0.68 h. Limited by PV only; the battery charge-current limit is not applied."
+  },
+  {
+   "product": "Anker SOLIX E10 + 2 batteries",
+   "label": "Price, capacity, solar input",
+   "value": "$6,299; 12 kWh; 9 kW solar input; 10 kW turbo output",
+   "source": "https://us.ankersolix.com/products/e10-battery-2",
+   "source_title": "Anker SOLIX E10 + Battery (1× Power Module + 2× Battery)",
+   "read": "2026-11-13",
+   "note": "Read from Anker's Shopify store with storecheck. In stock."
+  },
+  {
+   "product": "Anker SOLIX E10 + 2 batteries",
+   "label": "Hardware cost per kWh (inverter + batteries)",
+   "value": "$525/kWh",
+   "source": "https://us.ankersolix.com/products/e10-battery-2",
+   "source_title": "Anker SOLIX E10 + Battery (1× Power Module + 2× Battery)",
+   "read": "2026-11-13",
+   "note": "$6,299 ÷ 12 kWh = $525/kWh at stated capacity. Anker does not state a usable fraction."
+  },
+  {
+   "product": "Anker SOLIX E10 + 2 batteries",
+   "label": "Best-case solar refill time on its own PV input",
+   "value": "1.33 h",
+   "source": "https://us.ankersolix.com/products/e10-battery-2",
+   "source_title": "Anker SOLIX E10 + Battery (1× Power Module + 2× Battery)",
+   "read": "2026-11-13",
+   "note": "12 kWh ÷ 9 kW = 1.33 h; with 2 × 6,144 Wh = 12.288 kWh it is 1.37 h. Limited by PV only."
+  },
+  {
+   "product": "Anker SOLIX E10 (1 power module + 1 battery)",
+   "label": "Entry hardware cost per kWh",
+   "value": "$716/kWh",
+   "source": "https://us.ankersolix.com/products/e10-battery-1-trolley-120v-240v-power-strip",
+   "source_title": "E10 (Power Module + Battery) + Trolley + 120V/240V Power Strip",
+   "read": "2026-11-13",
+   "note": "$4,299 ÷ 6 kWh = $716/kWh. Store text: 7.6 kW rated, 6 kWh, 9 kW solar input. Trolley and power strip included."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X (1 inverter + 2 batteries)",
+   "label": "Price and standard bundle",
+   "value": "$7,899 (12 kW / 12 kWh)",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Whole-Home Backup Power",
+   "read": "2026-11-13",
+   "note": "Read from EcoFlow's Shopify store with storecheck. Compare-at price $11,149. Store text: '12kW/12kWh based on standard bundle (1 × Inverter + 2 × Smart Extra Batteries)'. In stock."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X (1 inverter + 2 batteries)",
+   "label": "Hardware cost per kWh",
+   "value": "$643/kWh",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x-smart-extra-battery",
+   "source_title": "EcoFlow DELTA Pro Ultra Series Smart Extra Battery",
+   "read": "2026-11-13",
+   "note": "$7,899 ÷ (2 × 6,144 Wh = 12.288 kWh) = $643/kWh. 6,144 Wh per battery is stated on the battery listing ($2,349 each, 5-year warranty)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X (1 inverter + 2 batteries)",
+   "label": "Best-case solar refill time on its own PV input",
+   "value": "1.23 h",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x-inverter",
+   "source_title": "EcoFlow DELTA Pro Ultra X Inverter",
+   "read": "2026-11-13",
+   "note": "Store text reads '10kW-30W solar input with up to 3 inverters', taken as 10 kW per inverter (the '30W' appears to be a typo for 30 kW). 12.288 kWh ÷ 10 kW = 1.23 h. Inverter alone $3,799."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra (original)",
+   "label": "Store status and price",
+   "value": "$3,799, listed out of stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-13",
+   "note": "storecheck reports available: false, compare-at $7,599. The 1-inverter + 2-battery bundle ($5,999) is also listed out of stock. Starter-kit text gives 5.6 kW solar input per inverter. ChatGPT's 'from $5,143' card does not match the current listing."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Capacity, output, warranty",
+   "value": "15 kWh; 10 kW continuous; 15 years or 60 MWh throughput",
+   "source": "https://www.franklinwh.com/blog/franklinwh-apower-2-the-new-standard-for-home-energy-storage",
+   "source_title": "FranklinWH aPower 2: The New Standard for Home Energy Management & Storage",
+   "read": "2026-11-13",
+   "note": "The page says it 'works with all PV inverter brands' and lists no solar input of its own, so a refill-time figure cannot be computed from its own PV input. Warranty-energy cost: 60,000 kWh ÷ 15 kWh = 4,000 full-cycle equivalents. No public price, so no $/kWh."
+  }
+ ],
+ "unsourced": [
+  "Tesla Powerwall 3 hardware price: tesla.com/powerwall returned 403 and Tesla sells it installed only, so it has no $/kWh beyond EnergySage's installed $998/kWh",
+  "FranklinWH aPower 2 weight and price: the maker datasheet PDF did not open as text, and the 357 lb figure appeared only in a third-party search snippet",
+  "Whether FranklinWH aPower 2 has a DC PV input: the maker blog only says it works with any PV inverter, and 'AC-coupled' appears only on reseller titles",
+  "EG4 PowerPro weight and usable kWh on a page I could open: EG4's spec sheet PDFs (2023 v1.0.3 404, 2025 version and sunwatts copy) would not open as text, and 308.6 lb appeared only in search snippets",
+  "Battery charge-power limits for Powerwall 3, EG4 PowerPro, E10 and DPU X, so refill hours are PV-limited best cases only",
+  "Usable fraction of the Anker E10 and EcoFlow DPU X batteries as stated by the maker",
+  "Anker B6000 battery (130 lb) and E10 power module (60.6 lb) weights: seen only in a search snippet; ankersolix product pages not opened for weight",
+  "DPU X inverter and battery weights: ecoflow.com/us/delta-pro-ultra-x did not list them and the us.ecoflow.com spec page returned 429"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.2204686
+ }
+}
