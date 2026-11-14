@@ -1,0 +1,138 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that a single BLUETTI Apex 300 can put out 240 V only through its NEMA 14-50R and shares one 3,840 W budget across that socket and all of its 120 V outlets, or that with the standard cord it passes only 1,800 W from the grid (3,840 W needs the optional 50 A cord), so a 240 V well pump or dryer plus the fridge must fit inside 3,840 W together and the cord has to be added to the cart.",
+ "standout": 2,
+ "standout_why": "I compared against ecoflow.com/us/delta-pro-ultra, which I opened. It gives 7.2 kW per unit, 6 kWh expandable to 90 kWh, Smart Home Panel 2 with 12 circuits, and a soft-starter note for air conditioners, but shows no price and says nothing about the per-socket power budget or grid pass-through limits. tesla.com/powerwall returned 403. The Powerwall 3 datasheet PDF loaded but its text could not be read. ChatGPT's own answer says only that 'inverter power rating determines which appliances can operate simultaneously' and that 'transfer equipment, permits, and a qualified installer' are needed. None of these pages covers a shared 120/240 V budget, a pass-through limit that depends on the cord, or a measured transfer time. The finding is useful but does not decide the set: it applies to the BLUETTI kit, and the same check (240 V output budget and grid pass-through rating) also applies to the EcoFlow and Sun Gold Power sets.",
+ "kit_items": [
+  "Inverter + battery head unit: BLUETTI Apex 300 (3,840 W continuous, 2,764.8 Wh, 120/240 V from one unit via NEMA 14-50R per StorageReview). It is the only approved-store unit I found that gives 240 V from one box at under $4k as a bundle.",
+  "Expansion batteries: 2 × BLUETTI B300K (each 2,764.8 Wh) for 8,294.4 Wh total. This is near the low end of the 10–15 kWh 'essential circuits' tier in ChatGPT's own table. StorageReview measured 7.38 kWh delivered from this setup (89%).",
+  "Grid/house connection: BLUETTI 50 A charging/bypass cord. StorageReview says the standard cord allows 1,800 W of pass-through and the optional 50 A cord allows 3,840 W. I did not look up this cord's store listing or price.",
+  "Home integration: a BLUETTI AT1 Smart Distribution Panel, or an electrician-installed transfer switch or interlock fed from the 14-50R. I could not price the AT1 from BLUETTI's store.",
+  "Alternative component set (separate battery + hybrid inverter, the '48 V / 51.2 V' route ChatGPT described): the Sun Gold Power SGH-11N2E-s kit, which is an 11.4 kW 48 V split-phase hybrid inverter plus 4 × 51.2 V 100 Ah LiFePO4, enclosed cabinet, 2/0 AWG cables and a 300 A DC breaker in one cart. It needs a licensed install. The batteries are listed as CAN/RS485/RS232 compatible."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2×B300K | https://www.bluettipower.com/products/apex-300-2-b300k | $3,689.00 (compare-at $4,099.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300+2*B300K, $3,689.00 (store bundle, 3,840 W | 8,294.4 Wh). Smaller: Apex 300 + B300K $2,599.00 (https://www.bluettipower.com/products/apex-300-b300k). Solar-ready: Apex 300 + 2*B300K + SolarX 4K $4,498.00 (https://www.bluettipower.com/products/apex-300-2-b300k-solarx-4k). 240 V at double the power: 2*Apex 300+2*B500K+Hub A1 $7,199.00 (https://www.bluettipower.com/products/b500k2-2-apex-300-2-hub-a1). All read 2026-11-13."
+  },
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power Hybrid Solar Kit 11.4KW 48V Split Phase, SGH-11N2E / SGH-11N2E-s (no-panel variant: inverter + 4×100Ah 51.2V + cabinet + cables + 300A breaker) | https://sungoldpower.com/products/hybrid-solar-kit-11-4kw-48v-split-phase-20-48kwh-lithium-battery-16-x-440-watt-solar-panel-sgh-11n2e | from $7,498.00 (lowest variant price on listing; variant breakdown not retrieved, store rate-limited) | 2026-11-13",
+    "Sun Gold Power 4 × SG48100P 48V 100Ah server rack battery | https://sungoldpower.com/products/4-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $3,888.00 | 2026-11-13",
+    "Sun Gold Power 11.4KW 48V Split Phase Hybrid Inverter SGN-11K15PRO | https://sungoldpower.com/products/11-4kw-48v-split-phase-hybrid-solar-inverter-whole-home-backup-200a-sgn-11k15pro | $2,790.00 | 2026-11-13",
+    "Sun Gold Power Enclosed Battery Cabinet 6 Slot with Bus Bar | https://sungoldpower.com/products/enclosed-battery-cabinet-6-slot-with-bus-bar | $735.00 | 2026-11-13"
+   ],
+   "bundle_sku": "SGH-11N2E-s (no panels), listing shows from $7,498.00 on 2026-11-13. Bought separately, the inverter, 4 batteries and cabinet come to $7,413.00 ($2,790 + $3,888 + $735) before cables and the breaker."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V output from a single unit and shared AC budget",
+   "value": "240 V only on the NEMA 14-50R (120/240 V, 50 A); 3,840 W continuous shared across all outlets; the four NEMA 5-20R are two 1,920 W pairs",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review: 3,840W, 240V, Grid Input Limit, UPS (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "Front-panel 120V/240V selector; the four front outlets stay at 120 V in 240 V mode."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Grid pass-through by cord",
+   "value": "1,800 W with the standard cord; 3,840 W with the optional 50 A cord",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "StorageReview: grid draw can be capped from 1 A to 50 A in 1 A steps; the battery supplies the rest. In 120 V mode on a 240 V supply the limit applies to one line. BLUETTI quotes up to 12 kW bypass via the P050A port, which StorageReview did not test."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured utility-to-battery transfer time",
+   "value": "16 ms (120 V, 20 ms mode, at ~100 W and ~700 W)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's 0 ms mode applies to two front outlets in 240 V mode on 120 V input, which StorageReview did not capture."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2×B300K",
+   "label": "Measured delivered energy",
+   "value": "7.38 kWh delivered of 8,294.4 Wh rated (89%); recharge drew 10.01 kWh",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "Single unit alone: 2.39 kWh delivered of 2,764.8 Wh (86%)."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2×B300K",
+   "label": "Price, maker store",
+   "value": "$3,689.00 (compare-at $4,099.00)",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k",
+   "source_title": "Apex 300+2*B300K – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Read via Shopify product JSON (storecheck). Listing text: 3,840W | 8,294.4Wh | LiFePO4."
+  },
+  {
+   "product": "BLUETTI 2×Apex 300 + 2×B500K + Hub A1",
+   "label": "Price, maker store",
+   "value": "$7,199.00 (compare-at $7,499.00)",
+   "source": "https://www.bluettipower.com/products/b500k2-2-apex-300-2-hub-a1",
+   "source_title": "2*Apex 300+2*B500K+Hub A1 – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Store search result via storecheck."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Home integration and output (rival page)",
+   "value": "7.2 kW per unit (21.6 kW with 3); 6 kWh to 90 kWh; Smart Home Panel 2 with 12 circuits; AC Generator Charging Adapter required for generator charging",
+   "source": "https://www.ecoflow.com/us/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra | EcoFlow US",
+   "read": "2026-11-13",
+   "note": "The page showed no price. ChatGPT's $6,098 and $7,899 card prices could not be checked here. EcoFlow is not an approved program, and Amazon search returned nothing."
+  },
+  {
+   "product": "Sun Gold Power SGH-11N2E / SGH-11N2E-s",
+   "label": "Kit contents and price",
+   "value": "11.4 kW 48 V split-phase hybrid inverter + 4 × 100 Ah 51.2 V LiFePO4 + enclosed cabinet + 2 sets 2/0 AWG cables + 300 A DC breaker (+16 × 450 W panels and PV breakers on non-'s' variant); from $7,498.00",
+   "source": "https://sungoldpower.com/products/hybrid-solar-kit-11-4kw-48v-split-phase-20-48kwh-lithium-battery-16-x-440-watt-solar-panel-sgh-11n2e",
+   "source_title": "Hybrid Solar Kit 11.4KW 48V Split Phase 20.48KWH/51.2KWH Lithium Battery – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "The price is the listing's lowest variant from the store search. The product JSON returned HTTP 429, so I could not tie the $7,498 to a specific variant. 4 × 5.12 kWh = 20.48 kWh."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Inverter compatibility and price",
+   "value": "CAN/RS485/RS232; listed as compatible with Growatt, Deye, SunGoldPower, Luxpower, Victron, Schneider, Phocos, SMK; $981.00 single, $3,888.00 4-pack",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "Read from the store's search JSON (storecheck). The product page itself returned 429."
+  },
+  {
+   "product": "Sun Gold Power SGN-11K15PRO",
+   "label": "Price, maker store",
+   "value": "$2,790.00 (compare-at $3,986.00)",
+   "source": "https://sungoldpower.com/products/11-4kw-48v-split-phase-hybrid-solar-inverter-whole-home-backup-200a-sgn-11k15pro",
+   "source_title": "11.4KW 48V Split Phase Hybrid Solar Inverter | Whole Home Backup (200A) | SGN-11K15PRO",
+   "read": "2026-11-13",
+   "note": "Listing note: touchscreen and non-touchscreen models cannot be paralleled. The '200A' in the title was not explained in what I could read."
+  }
+ ],
+ "unsourced": [
+  "SG48100P maximum continuous discharge current. Search snippets say 100 A (50 A standard), but the maker page returned 429 and the spec PDFs (solartown, cdn.shopify) returned 403 or unreadable text. This figure would decide how many batteries an 11.4 kW inverter needs (11.4 kW ÷ 51.2 V ≈ 223 A, so at least 3 packs if 100 A each), so it stays out until the spec sheet is opened.",
+  "What the '200A Whole Home Backup' rating on SGN-11K15PRO means (AC pass-through current), its UPS transfer time and UL 1741 SB status. The product page returned 429.",
+  "BLUETTI AT1 Smart Distribution Panel and the 50 A Apex 300 cord: store price and circuit count. I did not find either in BLUETTI store search. A retailer figure of $1,440 for an AT1 package came from a search snippet only.",
+  "Anker SOLIX F3800 Plus Smart Home Power Kit / Home Power Panel price. The ankersolix.com product URL returned 404 on both storecheck and WebFetch.",
+  "Tesla Powerwall 3 specs and installed price. tesla.com/powerwall returned 403, and the datasheet PDF text could not be extracted.",
+  "Current Amazon prices for EcoFlow DELTA Pro Ultra. amzcheck search returned no results (Amazon wall)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.3016045
+ }
+}

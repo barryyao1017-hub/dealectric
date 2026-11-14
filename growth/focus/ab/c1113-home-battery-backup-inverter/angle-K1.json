@@ -1,0 +1,109 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a 48 V home inverter pulls its rated watts from the battery bank as DC current: 6,500 W ÷ 51.2 V ≈ 127 A, and 8,000 W ÷ 51.2 V ≈ 156 A. That amp figure, not the kWh, sets how many rack batteries share the load and what size DC breaker and bus bar the set needs. It is also why Sun Gold Power's own 8 kW kit comes with two SG48100P batteries rather than one.",
+ "standout": 2,
+ "standout_why": "I compared against three rival sources. Tesla's Powerwall 3 spec page (energylibrary.tesla.com, GUID-EC527BC7) gives only AC-side figures: 48 A continuous and a 60 A breaker at 11.5 kW, because its battery is built in and has no DC link for the buyer to size. The EcoFlow DELTA Pro Ultra page gives 6 kWh per battery and 7.2 kW per inverter but says nothing about current limits, how many batteries full output needs, breakers or recharge time. ChatGPT's answer only says the inverter rating decides which appliances can run together. None of them works out the battery-side amps for a separate battery-plus-inverter set, which is exactly where ChatGPT's own 'option 2' leaves the shopper. I scored 2 rather than 3 because I could not open the maker's per-battery BMS discharge limit. That limit would turn 'two batteries' from the maker's kit choice into an electrical requirement.",
+ "kit_items": [
+  "Inverter: Sun Gold Power SPH6548P 6.5 kW 48 V split-phase hybrid inverter. It gives 120/240 V output, is UL 1741 listed, charges the battery at up to 140 A and has 2 MPPT solar inputs. At 6.5 kW it draws about 127 A DC (6,500 ÷ 51.2).",
+  "Battery: 2 × Sun Gold Power SG48100P 51.2 V 100 Ah server-rack LiFePO4 (sold as a 2-unit variant). That is 2 × 5.12 kWh = 10.24 kWh, so the ~127 A DC load is shared across two packs (≈64 A each). It also lands at the low end of ChatGPT's 10–15 kWh 'essential circuits' range.",
+  "DC protection: Sun Gold Power 160 A DC breaker and 250 A 48 VDC bus bar (both already in Dealectric's catalog). The 160 A breaker sits above the inverter's ~127 A full-load draw (~156 A if the shopper steps up to the 8 kW inverter), and the bus bar ties the two batteries together. I did not get today's price for either.",
+  "Alternative as a single SKU: Sun Gold Power SGR-8K10E complete kit (8 kW inverter + 2 × SG48100P + 8 × 450 W panels) for shoppers who also want solar."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com, awin:sungoldpower)",
+   "items": [
+    "Sun Gold Power 6.5KW 48V Split Phase Solar Inverter SPH6548P | https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor | $1,035.00 | 2026-11-13",
+    "Sun Gold Power SG48100P 48V (51.2V) 100Ah server rack LiFePO4, '2 units' variant | https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 (1 unit $981.00; 4 units $3,888.00) | 2026-11-13"
+   ],
+   "bundle_sku": "SGR-8K10E Off-Grid Solar Kit (8,000 W 120/240 V inverter, 2 × SG48100P = 10.24 kWh, 8 × 450 W panels), $4,949.00 on 2026-11-13, https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e. The inverter + 2-battery cart above comes to $2,988.00 before the breaker and bus bar."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Nominal voltage / capacity / energy per battery",
+   "value": "51.2 V, 100 Ah, 5.12 kWh",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Store text says '51.2V 100Ah LFP Battery'; 51.2 V × 100 Ah = 5,120 Wh. Same page: max 63 units in parallel = 322.56 kWh, ≥7,000 cycles, 10-year warranty, UL1973 / UL9540A, CAN/RS485/RS232."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Price today by variant",
+   "value": "1 unit $981.00; 2 units $1,953.00; 4 units $3,888.00",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Read from the Shopify variant data with storecheck.py. The 2-unit variant works out to $190.72 per kWh ($1,953 ÷ 10.24 kWh)."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Rated output / peak / max battery charge current",
+   "value": "6,500 W rated; 13,000 VA peak; 140 A max battery charging; split phase 120/240 V; UL 1741",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Price $1,035.00 today. DC draw at rated output = 6,500 W ÷ 51.2 V ≈ 127 A before inverter losses, so the real draw is higher; I could not source the efficiency figure. Split across 2 batteries ≈ 64 A each. A 140 A charge into a single 5.12 kWh pack would be ≈7.2 kW (≈1.4C), so with one battery the charge-current setting should be turned down."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E kit",
+   "label": "What the maker pairs with its 8 kW inverter",
+   "value": "2 × SG48100P (10.24 kWh) with an 8,000 W 120/240 V inverter; up to 180 A combined solar + AC charging; up to 11,000 W PV input; 8 × 450 W panels",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "$4,949.00 today. 8,000 W ÷ 51.2 V ≈ 156 A DC at full output, ≈78 A per battery with two."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E kit",
+   "label": "Panel watts against refill",
+   "value": "14.4 kWh/day (maker's figure, 4 h full sun)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "8 × 450 W = 3,600 W × 4 h = 14.4 kWh, which is more than the 10.24 kWh bank. By the maker's own figure, one sunny day refills the bank from empty (10.24 ÷ 3.6 ≈ 2.8 full-sun hours, ignoring charge losses). The URL slug says 415 W but the page text says 450 W; I used the text."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V LFP split-phase inverter",
+   "label": "Lower-cost backup-only inverter option",
+   "value": "6,000 W; needs 240 VAC input; AC priority by default; auto generator start; UL1741; $1,220.00",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "No MPPT, so no solar input. It costs $185 more than the SPH6548P while giving 500 W less output, which is why the kit uses the SPH6548P. 6,000 ÷ 51.2 ≈ 117 A DC at rated output."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Rival baseline: energy, power, AC current, breaker",
+   "value": "13.5 kWh nominal; 11.5 kW max on-grid; 48 A max continuous; 60 A overcurrent device; 20 kW max solar input; up to 3 expansion units",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications",
+   "read": "2026-11-13",
+   "note": "AC-side figures only, since the battery is built in. Charging is 5 kW alone and 8 kW with expansion units."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Rival baseline: per-unit energy and power",
+   "value": "6 kWh per battery; 7.2 kW per inverter; 21.6 kW max with three; up to 90 kWh with 15 batteries; 16.8 kW solar input across 3 inverters",
+   "source": "https://www.ecoflow.com/us/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra | EcoFlow US",
+   "read": "2026-11-13",
+   "note": "The page has no battery current limits, no breaker sizing, no runtime arithmetic and no recharge time. ChatGPT showed it at $6,098 for 6.1 kWh and 7.2 kW, about $1,000 per kWh, against $190.72 per kWh for the SG48100P 2-pack."
+  }
+ ],
+ "unsourced": [
+  "SG48100P BMS max continuous discharge and charge current. A search snippet pointed to 100 A discharge / 50 A standard charge in the maker's manual, but the store page text omits it. The maker's spec PDF (cdn.shopify.com …/SunGold_Power_LifePo4_5.12KWH_LithiumBattery.pdf) downloaded as binary I could not read, and the manuals.plus, device.report and solartown.com copies returned 403. So I could not confirm that one battery cannot feed a 6.5 kW inverter at full load.",
+  "Efficiency and no-load (idle) draw for the SPH6548P and the 6000W LFP inverter. I needed these to turn 10.24 kWh into hours of runtime; the maker's manuals (LFP_Manual_sungoldpower-2022.pdf, SPH user manual) came back as unreadable binary or 403. A retailer snippet said >88% for the LFP 6000W, but I did not open it, so I left it out.",
+  "Today's prices for the Sun Gold Power 160 A DC breaker and 250 A bus bar. sungoldpower.com returned HTTP 429 on repeated product requests.",
+  "SG48100P storage and self-discharge guidance (state of charge to store at, recharge interval). This was not on the store page, and the manual copies were blocked.",
+  "Amazon prices. I did not check them; the kit is a single-store Sun Gold Power cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1395427
+ }
+}

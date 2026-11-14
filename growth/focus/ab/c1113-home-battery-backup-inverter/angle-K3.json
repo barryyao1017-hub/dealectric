@@ -1,0 +1,104 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that one Sun Gold Power SG48100P 51.2 V 100 Ah server-rack battery is rated for only 100 A continuous discharge and 100 A continuous charge. A 6.5 kW 48 V split-phase inverter (SPH6548P) draws about 127 A at full output and can charge at up to 140 A, so with a single battery the battery's protection cuts in under heavy load or fast charging. The set needs two batteries in parallel, plus a bus bar and a DC breaker.",
+ "standout": 3,
+ "standout_why": "I compared against ChatGPT's own answer, which says only that separate battery and inverter systems 'require careful electrical design and compatible equipment' and gives no current figures. I also opened the EcoFlow DELTA Pro Ultra US page (result 16), which covers 7.2 kW per unit, Smart Home Panel 2 and installer commissioning but nothing about battery-to-inverter current limits. The Tesla Powerwall pages and datasheets (results 1–15 and 17) cover one unit with the inverter built in, so this mismatch can't happen there. I didn't open those pages one by one; I judged from their titles and the products they describe. None of the results says how many 48 V batteries an inverter of a given size needs. The finding decides the set: the cart needs the SG48100P 2-pack, not one battery. Sun Gold Power's own entry kit (SGM-655M) ships the 6,500 W inverter with only one 100 Ah battery and a 160 A breaker, which makes the trap easy to fall into.",
+ "kit_items": [
+  "Inverter: Sun Gold Power SPH6548P 6.5 kW 48 V split-phase (120/240 V) inverter. Up to 140 A battery charging, UL 1741 by ETL, sold in an approved store (awin:sungoldpower).",
+  "Battery: Sun Gold Power SG48100P 2-pack, 2 × 51.2 V 100 Ah (10.24 kWh). Two in parallel allow 200 A continuous discharge and charge, which covers the inverter's ~127 A full-load draw and its 140 A maximum charge. One battery (100 A) does not.",
+  "Bus bar: Sun Gold Power 250 A Bus Bar with Cover, 48 VDC (1 pair). Joins the two batteries before the inverter. Sun Gold's own two-battery 6.5 kW kit (SGM-6510M) includes a 250 A bus bar.",
+  "DC breaker: Sun Gold Power 160 A DC Breaker between the bus bar and the inverter. This is the size Sun Gold puts in its own 6.5 kW kits.",
+  "Not in the cart: a transfer switch or interlock, battery-to-bus-bar cables (Sun Gold's two-battery kit uses 1/0 AWG), and a licensed electrician for the connection to the home panel."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com, awin:sungoldpower)",
+   "items": [
+    "Sun Gold Power 6.5KW 48V Split Phase Solar Inverter SPH6548P | https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor | $1,035.00 | 2026-11-13",
+    "Sun Gold Power 2 X 48V 100AH Server Rack LiFePO4 Battery SG48100P | https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 | 2026-11-13",
+    "Sun Gold Power 250A Bus Bar with Cover 48VDC (1 pair) | https://sungoldpower.com/products/250-amperes-dc-bus-bar | $89.00 | 2026-11-13",
+    "Sun Gold Power 160 Amp DC Breaker | https://sungoldpower.com/products/160-amp-dc-breaker | $89.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Off-Grid Solar Kit 6500W SGM-655M / SGM-6510M (https://sungoldpower.com/products/off-grid-solar-kit-6500w-48vdc-120-240vac-5-12kwh-powerwall-lithium-battery-4-x-370-watts-solar-panels-sgm-655m). The listing shows $3,580.00 on 2026-11-13. That is probably the one-battery SGM-655M price; I didn't read the price of the two-battery SGM-6510M variant. Both variants add 6 × 370 W panels. The four separate items above total $3,166.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Maximum continuous discharge current",
+   "value": "100 A",
+   "source": "https://www.manualslib.com/manual/3025553/Sun-Gold-Power-Sg48100p.html",
+   "source_title": "SUN GOLD POWER SG48100P USER MANUAL (ManualsLib copy of the maker's manual)",
+   "read": "2026-11-13",
+   "note": "Spec table line: 'Maximum continuous discharge current 100A'. The maker's PDF on Shopify (cdn.shopify.com/.../SG48100P_48V100Ah_Lithium_Battery_User_Manual.pdf, last modified 2026-06-02 per its metadata) downloaded, but its text could not be extracted."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Maximum continuous charge current",
+   "value": "100 A (standard charge example 0.2C = 20 A)",
+   "source": "https://www.manualslib.com/manual/3025553/Sun-Gold-Power-Sg48100p.html",
+   "source_title": "SUN GOLD POWER SG48100P USER MANUAL (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Spec table: 'Maximum continuous charge current 100A'; 'Standard charging current (25℃): example: 0.2C (20A)'."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Short-circuit protection",
+   "value": "≥350 A, cut-off within ≤300 µs",
+   "source": "https://www.manualslib.com/manual/3025553/Sun-Gold-Power-Sg48100p.html",
+   "source_title": "SUN GOLD POWER SG48100P USER MANUAL (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The discharge-overcurrent stage-1 and stage-2 thresholds on that page were garbled, so I left them out."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Rated output / max battery charging current",
+   "value": "6,500 W rated, 13,000 VA peak, max 140 A battery charging, 120/240 V split phase",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read from the store's product data with storecheck.py; the page itself returned HTTP 429 to WebFetch."
+  },
+  {
+   "product": "general",
+   "label": "Battery current at full inverter output vs one SG48100P",
+   "value": "≈127 A needed vs 100 A rated for one battery; 200 A for two in parallel",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 6,500 W ÷ 51.2 V nominal = 127 A before conversion losses, and higher as the battery voltage falls. The 140 A maximum charge also exceeds one battery's 100 A continuous charge rating. Battery figures are from the ManualsLib manual above. Unless the inverter's charge limit is turned down, one battery is pushed past its rating in both directions."
+  },
+  {
+   "product": "Sun Gold Power SGM-655M / SGM-6510M kit",
+   "label": "Maker's own 6.5 kW kit pairs the inverter with ONE battery",
+   "value": "SGM-655M: 1 × 6,500 W inverter + 1 × 100 Ah 51.2 V battery + 160 A DC breaker + 4 AWG cable. SGM-6510M: 2 batteries + 2 × 1/0 AWG battery cables + 250 A bus bar",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-6500w-48vdc-120-240vac-5-12kwh-powerwall-lithium-battery-4-x-370-watts-solar-panels-sgm-655m",
+   "source_title": "Off-Grid Solar Kit 6500W 48VDC 120/240VAC 5.12KWH/10.24KWH ... SGM-655M/SGM-6510M – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "The one-battery variant's 160 A breaker is above that battery's 100 A continuous rating, so the battery's own protection, not the breaker, is what cuts out under heavy load. The listing price is $3,580; I didn't read the two-battery variant's price."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Inverter communication",
+   "value": "CAN / RS485 / RS232; listed as compatible with SunGoldPower, Growatt, Deye, Luxpower, Victron, Schneider and others; up to 63 in parallel",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Store product data read with storecheck.py; price $981 for one battery, $1,953 for the 2-pack. The ManualsLib manual says parallel packs are addressed with DIP switches on the board."
+  }
+ ],
+ "unsourced": [
+  "SG48100P discharge-overcurrent stage-1/stage-2 thresholds and delays, and whether the BMS resets itself or needs a manual restart: the maker PDF wouldn't extract and the ManualsLib text was garbled; the manuals.plus and solartown.com mirrors returned 403.",
+  "SPH6548P maximum battery discharge current, low-battery cut-off voltage and efficiency (to replace my 6,500 W ÷ 51.2 V estimate): the maker manual PDFs on Shopify wouldn't extract, device.report returned 403, and sungoldpower.com returned 429.",
+  "The SPH6548P setting that caps charge current to 100 A or less, and the program number for SG48100P RS485/CAN BMS communication: inverter manual unreadable, as above.",
+  "SPH6548P neutral-ground bonding behavior when wired through a transfer switch: manual unreadable.",
+  "A dated forum thread or named reviewer reporting a single SG48100P tripping on a 6.5 kW inverter: the diysolarforum results I found were about shutting the battery down, not overcurrent trips.",
+  "Price of the two-battery SGM-6510M kit variant, and whether the SG48100P comes with 1/0 AWG cables: only the listing's $3,580 headline price and 'cable/accessories ready' wording were visible."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.2239468999999998
+ }
+}

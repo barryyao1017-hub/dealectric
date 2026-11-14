@@ -1,0 +1,147 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the Sun Gold Power SPH6548P inverter ships with BMS communication off (item 32 defaults to Disable), or that it only reads the SG48100P battery bank after item 32 is set to 485 or CAN and item 33 to the SGP protocol code.",
+ "standout": 2,
+ "standout_why": "ChatGPT's answer says only that separate battery and inverter systems 'require careful electrical design and compatible equipment'. Its 17 results are Tesla Powerwall 3 pages and datasheets plus one EcoFlow DELTA Pro Ultra page. Those are all-in-one systems, so they never deal with pairing a separate inverter and battery, choosing a protocol, or sizing the DC breaker. None of the 17 were marked cited. I ran out of my tool-call budget before opening the Tesla and EcoFlow pages themselves, so I judged them from their titles and what each product is. I scored this 2, not 3: the settings are new and needed for battery-managed charging, but the inverter can still run the battery without the link using voltage limits the user sets in USER mode, so the protocol alone does not decide whether the set works.",
+ "kit_items": [
+  "inverter: Sun Gold Power SPH6548P 6.5 kW 48 V split-phase (120/240 V) inverter-charger. Its item 33 list includes SGP = SUNGOLDPOWER, so it talks to Sun Gold's own batteries over RS485 or CAN without a third-party protocol.",
+  "battery: 2 × Sun Gold Power SG48100P 51.2 V 100 Ah server-rack LiFePO4 (10.24 kWh). The store says it has CAN/RS485/RS232 and lists SunGoldPower among the compatible inverters. The 48 V nominal class matches the SPH6548P's 48 V input.",
+  "DC breaker: Sun Gold Power 160 Amp DC Breaker. This matches the 2P-160A breaker that the SPH6548P manual's cable table lists for the battery side (150 A max current, 35 mm² / 2 AWG cable). Rough check: 6,500 W ÷ 48 V ≈ 135 A.",
+  "bus bar: Sun Gold Power 250A Bus Bar with Cover, 48 VDC (1 pair), to join the two SG48100P packs before the single 160 A breaker. 250 A is more than the 150 A inverter battery current."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com, awin:sungoldpower)",
+   "items": [
+    "Sun Gold Power 6.5KW 48V Split Phase Solar Inverter SPH6548P | https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor | $1,035.00 | 2026-11-13",
+    "Sun Gold Power 2 X 48V 100AH Server Rack LiFePO4 Battery SG48100P | https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 | 2026-11-13",
+    "Sun Gold Power 160 Amp DC Breaker | https://sungoldpower.com/products/160-amp-dc-breaker | $89.00 | 2026-11-13",
+    "Sun Gold Power 250A Bus Bar with Cover 48VDC (1 pair) | https://sungoldpower.com/products/250-amperes-dc-bus-bar | $89.00 | 2026-11-13"
+   ],
+   "bundle_sku": "none for exactly this set. Total of the four lines: $1,035 + $1,953 + $89 + $89 = $3,166. The closest store bundle is the SGR-8K10E off-grid kit (8 kW inverter, 2 × SG48100P, 8 × 450 W panels) at $4,949.00 (https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e), but it includes panels."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Item 32 BMS communication: options and default",
+   "value": "Options: enable BMS communication over RS485, enable it over CAN, or Disable (the default). The manual says: 'Select the corresponding communication protocol in item 33 when you set it to 485 or CAN in item 32'",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html?page=43#manual",
+   "source_title": "Sun Gold Power SPH6548P User Manual, page 43 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "ManualsLib's text extraction scrambles the table layout, so the 485 and CAN labels were not clearly matched to their lines. The 'Disable' default and the item 32 → item 33 instruction are clear. The maker's own copy is https://cdn.shopify.com/s/files/1/0323/4090/2025/files/6.5KW_48V_Split_Phase_Solar_Inverter_SPH6548P-20260511.pdf (dated 2026-05-11). I downloaded it but could not extract its text here."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Item 33 BMS protocol codes",
+   "value": "SGP = SUNGOLDPOWER, PAC = PACE, RDA = Ruida, AOG = Aoguan, OLT = Oliter, HWD = Sunwoda, DAQ = Daqin, WOW = SNPOWER, PYL = Pylontech, UOL = Vilion",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html?page=43#manual",
+   "source_title": "Sun Gold Power SPH6548P User Manual, page 43 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "For a Sun Gold SG48100P bank, set item 32 = 485 or CAN and item 33 = SGP. Brands not on this list need open-loop USER battery settings instead."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Item 30 RS485 communication address",
+   "value": "Range 1–254, default ID 1",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html?page=43#manual",
+   "source_title": "Sun Gold Power SPH6548P User Manual, page 43 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Taken from the scrambled text extraction, as above."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Item 39 charge-current limit while BMS is linked",
+   "value": "LCBMS (default): charge current is capped at the BMS maximum. LCSET: capped at item 07. LCINV: capped by the inverter's own logic",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html?page=44#manual",
+   "source_title": "Sun Gold Power SPH6548P User Manual, page 44 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "This only applies once item 32 enables BMS communication. The extraction tool said the item-to-name mapping for items 38 and 39 was inferred from context."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery charge current setting range",
+   "value": "0–140 A",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html",
+   "source_title": "Sun Gold Power SPH6548P User Manual (ManualsLib), p. 41",
+   "read": "2026-11-13",
+   "note": "Matches the store page's 'Max 140A battery charging'."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery-side cable and breaker",
+   "value": "35 mm² / 2 AWG cable, 150 A max current, 2P-160A circuit breaker",
+   "source": "https://www.manualslib.com/manual/3551057/Sun-Gold-Power-Sph6548p.html?page=13#manual",
+   "source_title": "Sun Gold Power SPH6548P User Manual, page 13 'Cable And Circuit Breaker Model' (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The table text was scrambled. The extraction tool marked 2 AWG / 150 A / 2P-160A as the most likely battery row, so check it against the PDF before publishing. Other rows from p. 13–14: grid input 12 AWG with 2P-25A breaker; split-phase AC output 8 AWG with 3P-40A breaker."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Supported battery types and output",
+   "value": "48 V AGM/Sealed, Gel, Flooded, Lithium, plus a User mode; battery-free operation supported; 6,500 W rated, 13,000 VA peak; 120/240 V split phase or 120 V; up to 6 units in parallel",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py from the maker's Shopify store. Price $1,035.00, in stock."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Battery communication and compatibility",
+   "value": "51.2 V 100 Ah LFP; CAN/RS485/RS232; listed as compatible with Growatt, Deye, SunGoldPower, Luxpower, Victron, Schneider, Phocos, SMK; up to 63 units in parallel (322.56 kWh); UL1973, UL9540A",
+   "source": "https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "2 X 48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search from the maker's store. 2-pack $1,953.00 (single unit $981.00), in stock. 2 × 5.12 kWh = 10.24 kWh."
+  },
+  {
+   "product": "Sun Gold Power RS232 Cable for Battery",
+   "label": "Purpose (exclusion)",
+   "value": "'RS232 Communication Cable for PC Monitoring of SG48100P/SG48100M Battery', $35",
+   "source": "https://sungoldpower.com/products/rs232-cable-for-battery",
+   "source_title": "RS232 Cable for Battery – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "This cable is for PC monitoring, not the inverter link. The inverter link uses RS485 or CAN (item 32), so do not add it as the inverter cable."
+  },
+  {
+   "product": "Sun Gold Power 160 Amp DC Breaker",
+   "label": "Price",
+   "value": "$89.00",
+   "source": "https://sungoldpower.com/products/160-amp-dc-breaker",
+   "source_title": "160 Amp DC Breaker – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "storecheck.py; available."
+  },
+  {
+   "product": "Sun Gold Power 250A Bus Bar",
+   "label": "Price",
+   "value": "$89.00 (1 pair, with cover, 48 VDC)",
+   "source": "https://sungoldpower.com/products/250-amperes-dc-bus-bar",
+   "source_title": "250A Bus Bar with Cover 48VDC | 1 Pair – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "storecheck.py; available."
+  },
+  {
+   "product": "Sun Gold Power SPH5048P / SPH6548P / SPH8048P / SPH10048P",
+   "label": "Monitoring platform",
+   "value": "SolarAssistant connects to this family as 'srne'",
+   "source": "https://solar-assistant.io/help/inverters/sungoldpower/SPH8048P/settings",
+   "source_title": "SolarAssistant – SunGoldPower 6.5-10KW 48V Split-Phase settings",
+   "read": "2026-11-13",
+   "note": "Supports reading the menu as SRNE-style settings."
+  }
+ ],
+ "unsourced": [
+  "The SPH6548P's battery-type item number and its lithium option code. Pages 40–41 on ManualsLib were not opened; p. 41 only showed 'USER'.",
+  "The RJ45 pinout of the SPH6548P RS485/CAN port (manual p. 51) and of the SG48100P comm port, and whether the inverter-to-battery comm cable comes with either product. The maker's product pages returned HTTP 429, and the SG48100P manual PDFs (solartown.com, device.report, manuals.online) returned 403 or unreadable binary.",
+  "The SG48100P DIP-switch address the master battery needs when linked to an inverter, and its max continuous charge and discharge current. Those manual pages were blocked or unreadable.",
+  "Text from the maker's own SPH6548P manual PDF (cdn.shopify.com, 2026-05-11). It downloaded, but local PDF-to-text extraction needed approval, so every manual figure above comes from the ManualsLib copy.",
+  "The rival pages (tesla.com/powerwall, the Powerwall 3 datasheet, ecoflow.com/us/delta-pro-ultra). I did not open them within the tool budget, so the standout score relies on their titles and on what each product is (all-in-one systems)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1786345
+ }
+}
