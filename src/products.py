@@ -7396,6 +7396,23 @@ PRODUCTS = [
  "fit": 'Insulated ceilings and spotlighting art, where 40° of adjustment is enough.',
  "caveats": ["40° of adjustment, not 90°. On very steep ceilings it can't point straight down.", 'The store page does not state whether it works with wall dimmers. Plan on app or voice dimming.', '2.4 GHz Wi-Fi only.']},
 
+{"slug": 'bluetti-elite-30-v2-60w-solar-kit',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'BLUETTI Elite 30 V2 + 60 W Solar Panel Kit (288 Wh, 600 W)',
+ "model": 'Elite 30 V2 + 60W Solar',
+ "url": 'https://www.bluettipower.com/products/elite-30-v2-60w-solar',
+ "price": 399.99,
+ "verified": '2026-11-13',
+ "specs": [('Battery', '288 Wh LiFePO4, over 3,000 cycles (BLUETTI)'), ('AC output', '600 W rated; 1,500 W Power Lifting for resistive loads only'), ('Solar panel', '60 W, included'), ('Solar input', '12–28 V, 10 A, 200 W max, XT60 (The Technology Man)'), ('UPS', '≤10 ms switchover, 980 W bypass (BLUETTI)')],
+ "warranty": '5 years on the Elite 30 V2 station (BLUETTI kit page); 12 months on solar panels and accessories (BLUETTI warranty policy)',
+ "returns": '30 days from purchase if the kit is complete, unused and in its original packaging; you pay shipping both ways, and BLUETTI deducts return shipping from the refund if you use its RMA label (BLUETTI US refund policy)',
+ "summary": "The same Elite 30 V2 station as the 100 W kit, with a 60 W panel, for $90 less on BLUETTI's US store.",
+ "fit": 'Buyers who want the 600 W station and mostly charge from the wall or car, using solar as a top-up.',
+ "caveats": ['The 60 W panel needs about 6.4 full-sun hours to refill 288 Wh (288 ÷ (60 × 0.75)).', 'The 1,500 W Power Lifting mode runs resistive loads at reduced voltage. It does not cover motor startup surges.', 'Solar input tops out at 28 V, so a second panel has to be wired in parallel, not in series.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
