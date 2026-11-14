@@ -1,0 +1,81 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Schumacher's plug-in engine-start mode is current-limited: the SC1281 manual says that if cranking draws more than the Engine Start Rate (100 A on the SC1281), crank time 'may be less than 3 seconds' instead of the usual 7. On a hard-cranking engine, the model's amp rating decides whether the assist works at all.",
+ "standout": 2,
+ "standout_why": "Pages compared: the two cited ones and three of the top results. The cited Advance Auto SC1309 page was down for maintenance and had no specs or mechanism text. The cited Schumacher category page returned HTTP 429 and could not be read. plainprepper.com (rank 10, not cited) already has the SC1281 duty cycle (7 s crank, 3 min cool-down), the 2-minute charge before the charger is ready to crank, the 5 minutes of charging before cranking when the battery reads under 2 V, and the warning against using engine start with no battery installed. That page has nothing on draw above the rating cutting the crank to under 3 s, and nothing on 100 A being too little for big engines. clampandcrank.com has the GB40 24 Wh figure (a portable pack can't charge a battery) and calls engine start 'Assist mode, plugged in'. It does not cover the current-limit cutoff, and it says the 100 A start 'covers the case where the battery is too far gone', which the manual's 2 V / 5-minute rule contradicts. batterytrail.com gives only 'crank no more than 3 to 5 seconds' (Battery Tender) and no current-limit behavior.",
+ "decides": "The plug-in combo is a timed, current-limited assist that cranks through the car's own battery. It is not a stand-alone booster. If the engine draws more than the unit's engine-start rating, the crank window shrinks below 3 s. So for an SUV, truck or V8, the 200 A SC1309 is the safer pick over the $79 100 A SC1281 that ChatGPT led with, and the 50 A unit only suits small engines. Whatever the model, a battery under 2 V needs 5 minutes of charging before cranking, so it won't be a quick fix. Any of them also needs a grounded 120 V outlet, and the manual does not recommend extension cords.",
+ "candidates": [
+  "Schumacher SC1281L (6A charge / 30A boost / 100A engine start)",
+  "Schumacher SC1309 (6/2A charge / 40A boost / 200A engine start, wheeled)",
+  "Schumacher SC1280 (50A engine start)",
+  "NOCO Boost Plus GB40 (portable lithium alternative)"
+ ],
+ "findings": [
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine-start behaviour when cranking draw exceeds the rating",
+   "value": "Problem: 'Short or no start cycle when cranking engine.' Cause: 'Drawing more than the Engine Start Rate.' Solution: 'Crank time varies with the amount of current drawn'; above the rate, crank time may be less than 3 seconds",
+   "source": "https://manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=12",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 12 (Troubleshooting) | ManualsLib",
+   "read": "2026-11-13",
+   "note": "Manual troubleshooting table. The Engine Start Rate for the SC1281 is 100 A according to Schumacher's own listing title. The extracted table text was out of order, so I matched columns by position."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine-start duty cycle and pre-charge",
+   "value": "Crank until the engine starts or 7 s pass; after repeated cranking, a mandatory 3 min (180 s) cool-down; the charger charges for 2 min before it is ready; if the battery is under 2 V, charge 5 min before cranking",
+   "source": "https://manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 | ManualsLib",
+   "read": "2026-11-13",
+   "note": "plainprepper.com already states these points. Included as context, not as the gap."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Engine start without a battery",
+   "value": "'Using the Engine Start feature WITHOUT a battery installed in the vehicle could cause damage' to the vehicle's electrical system",
+   "source": "https://manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=9",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 9 | ManualsLib",
+   "read": "2026-11-13",
+   "note": "Shows the 100 A is an assist through the vehicle battery, not a battery replacement."
+  },
+  {
+   "product": "Schumacher SC1281",
+   "label": "Power source requirement",
+   "value": "Nominal 120 V circuit, must be grounded, 'Do not use with an ungrounded system'; 'The use of an extension cord is not recommended'",
+   "source": "https://manualslib.com/manual/2094420/Schumacher-Electric-Sc1281.html?page=6",
+   "source_title": "Schumacher Electric SC1281 Owner's Manual, page 6 (Grounding and AC power cord connections) | ManualsLib",
+   "read": "2026-11-13",
+   "note": "The AWG table values and the AC ampere rating did not come through in the extracted page text."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Engine-start duty cycle and pre-charge",
+   "value": "Crank until the engine starts or 7 s pass; mandatory 3 min (180 s) cool-down; charges 2 min before Wait for Cranking; under 2 V, charge 5 min before cranking; 'For severely discharged batteries, it is not recommended to crank during this time'",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=10",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual (Page 10 of 30) | ManualsLib",
+   "read": "2026-11-13",
+   "note": "Same control logic as the SC1281. Engine-start mode is described as 'Always use in combination with a battery' (page 8 of the same manual)."
+  },
+  {
+   "product": "Schumacher SC1281L",
+   "label": "Battery chemistries supported",
+   "value": "6 V and 12 V standard, AGM, deep-cycle and 12 V lithium (LiFePO4)",
+   "source": "https://www.schumacherelectric.com/products/6-2-30-100a-6v-12v-charger-engine-starter",
+   "source_title": "Schumacher Electric 6A Car Battery Charger and 100A Engine Starter ... SC1281L",
+   "read": "2026-11-13",
+   "note": "Taken from the product description that storecheck.py search returned from Schumacher's own store. The full product page returned HTTP 429, and the price field came back as 0.0, so no price is reported."
+  }
+ ],
+ "unsourced": [
+  "SC1281 / SC1309 AC input current in engine-start mode (amps at 120 V), and the extension-cord AWG table values: manual page 6 and page 12 extracts on ManualsLib had no figures, the Schumacher product pages returned HTTP 429, and the Schumacher CDN manual PDF (0099001912-R1) returned 404.",
+  "A minimum battery voltage below which the SC1281/SC1309 will not detect a battery: the manual pages I read give only the 2 V pre-charge rule and the F01 code (under 10 V after 2 h). No detection floor is stated.",
+  "NOCO GB40 2 V detection limit and Manual Override wording: only third-party snippets seen. The NOCO user-guide PDF I downloaded was compressed and could not be read here, so it is left out of findings.",
+  "Current Schumacher-store prices for SC1281L / SC1309: the store returned HTTP 429 on both storecheck and WebFetch, and the Advance Auto page was offline."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9574851999999999
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much current a car's starter actually draws: TechGearLab measured a 2010 Ford Explorer's 4.0 L V6 starter pulling 301 A on a jump start, which is 3× the 100 A engine-start rating and 1.5× the 200 A rating of the plug-in Schumacher combos ChatGPT recommended.",
+ "standout": 2,
+ "standout_why": "I checked the two pages ChatGPT cited, schumacherelectric.com/products/categories/battery-chargers/ and the Advance Auto SC1309 listing, only through ChatGPT's own answer: when I tried, Schumacher's archive returned HTTP 429, and I didn't open the Advance Auto page. Both are listing pages that state maker ratings. Of the uncited results, these have no measured figures at all: clampandcrank.com (it says its picks rest on 'manufacturer specifications', not hands-on testing), batterytrail.com (ratings only, nothing on starter draw) and plainprepper.com (it has the SC1281 pre-charge times from the manual but no starter draw). Car and Driver's test of five chargers (Katherine Keeler, updated 2026-08-10) says it did not measure charge times. Reviewed.com relies on specs and user reviews. Road & Track's tested page refused my fetch, so I couldn't check it. None of these pages puts a measured cranking current next to a charger's engine-start rating.",
+ "decides": "The finding backs ChatGPT's own question, outlet charger or cordless pack, and makes the plug-in pick clear. A 100 A engine-start charger such as the $79 Schumacher can supply only about a third of the measured 301 A, so the battery has to supply the rest. That is why the SC1309 manual makes you pre-charge for 2 to 5 minutes, limits cranking to 7 seconds and needs a 120 V outlet. For a garage with a weak but not dead battery, the plug-in combo is the right buy, and the 200 A unit leaves more headroom than the 100 A or 50 A ones. For a car stuck away from an outlet, only a lithium pack works. In TechGearLab's test the NOCO GB40 did three starts in a row at 33 °F, but its measured capacity was 15.57 Wh, not the 24 Wh claimed.",
+ "candidates": [
+  "Schumacher SC1309 (6A/40A boost/200A engine start)",
+  "Schumacher 6A/30A boost/100A engine-start charger as shown by ChatGPT ($79 Walmart)",
+  "Schumacher 6A/50A engine-start charger as shown by ChatGPT ($80.48)",
+  "Schumacher SC1281",
+  "NOCO Boost Plus GB40",
+  "DEWALT DXAEJ14",
+  "NOCO GENIUS5"
+ ],
+ "findings": [
+  {
+   "product": "general (2010 Ford Explorer, 4.0 L V6)",
+   "label": "Starter current drawn during a jump start, measured by TechGearLab",
+   "value": "301 A",
+   "source": "https://www.techgearlab.com/topics/tools/best-jump-starter",
+   "source_title": "TechGearLab, Best Jump Starter (Chris Maxcer, updated 2026-04-29)",
+   "read": "2026-11-13",
+   "note": "Page quote: 'a 2010 Ford Explorer's starter only needed 301 amps from the NOCO Boost Plus GB40'. The page doesn't describe how the current was measured. It is one vehicle. Arithmetic against maker ratings: 100 A engine start = 33% of 301 A, 50 A = 17%, 200 A (SC1309) = 66%."
+  },
+  {
+   "product": "NOCO Boost Plus GB40",
+   "label": "Usable battery capacity, measured by TechGearLab",
+   "value": "15.57 Wh (claimed 24 Wh)",
+   "source": "https://www.techgearlab.com/topics/tools/best-jump-starter",
+   "source_title": "TechGearLab, Best Jump Starter (Chris Maxcer, updated 2026-04-29)",
+   "read": "2026-11-13",
+   "note": "TechGearLab says it fully drains each pack to measure usable Wh. The figure is in the spec table's 'Measured Battery Capacity' row. 15.57 / 24 = 65% of the claim. The table's capacity row looked misaligned for some other products, but the 15.57 Wh value is the one given in the GB40's product section."
+  },
+  {
+   "product": "NOCO Boost Plus GB40",
+   "label": "Rapid repeat starts in the cold, TechGearLab test",
+   "value": "3 starts in rapid succession, 4.0 L V6, 33 °F",
+   "source": "https://www.techgearlab.com/topics/tools/best-jump-starter",
+   "source_title": "TechGearLab, Best Jump Starter (Chris Maxcer, updated 2026-04-29)",
+   "read": "2026-11-13",
+   "note": "Quote: '...three times in rapid succession in chilly 33° weather.' TechGearLab lists recharge time as 3 h."
+  },
+  {
+   "product": "DEWALT DXAEJ14",
+   "label": "Recharge time listed by TechGearLab",
+   "value": "6 h",
+   "source": "https://www.techgearlab.com/topics/tools/best-jump-starter",
+   "source_title": "TechGearLab, Best Jump Starter (Chris Maxcer, updated 2026-04-29)",
+   "read": "2026-11-13",
+   "note": "TechGearLab tested this unit but gives no measured Wh (table says N/A; claimed 21 Wh). It says the unit is 'not meant for repeated consecutive boosts' and needs recharging after each use. The page doesn't say whether the 6 h figure was measured or listed."
+  },
+  {
+   "product": "Schumacher SC1309",
+   "label": "Engine-start operating limits (maker manual, not a measurement)",
+   "value": "2 min automatic pre-charge (5 min if very cold or battery under 2 V); crank 7 s max; 5 min recharge before retrying; 180 s mandatory cool-down; needs a 120 V AC outlet",
+   "source": "https://www.manualslib.com/manual/2409936/Schumacher-Electric-Sc1309.html?page=10",
+   "source_title": "Schumacher Electric SC1309 Owner's Manual, page 10 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The manual also warns against using Engine Start without a battery in the vehicle. This explains the 301 A finding: the charger only tops up the battery, which still supplies most of the cranking current."
+  }
+ ],
+ "unsourced": [
+  "Measured engine-start output (amps under load) of any Schumacher plug-in charger/engine starter (SC1309, SC1281, or the 100 A and 50 A units ChatGPT showed). Checked: Car and Driver's charger test (republished on AOL), which says it measured no charge times; Reviewed.com, which uses specs and user reviews only; SlashGear, which says it did no firsthand testing; TechGearLab, which doesn't cover Schumacher; a Project Farm roundup (Roadkill Customs, 2022), whose results are only a chart image and give no Schumacher models or figures as text.",
+  "Road & Track's 'Best Car Battery Chargers and Maintainers of 2026, Tested' (one of ChatGPT's results): WebFetch was blocked and curl needed approval, so I couldn't read any measured figures from it.",
+  "A Wirecutter jump-starter test of the GB40 at 0 V: I found only a secondhand claim and no Wirecutter page.",
+  "MotoIQ's GB40 test (motoiq.com) returned 403, so I couldn't read its measurements.",
+  "Project Farm bench figure '1,044 A at 10.36 V' for a NOCO jump starter: it appeared only in a search-result summary (recapio.com), and that page failed with a certificate error, so I couldn't confirm the model or the figure.",
+  "Measured usable Wh for the DEWALT DXAEJ14 and Stanley units (TechGearLab lists N/A)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9873892000000002
+ }
+}
