@@ -10,7 +10,7 @@
  "unsourced": [
   "UGREEN's own US price and spec page for the DXP8800 Plus: nas.ugreen.com redirects to ai.ugreen.com, which returned HTTP 429 to WebFetch and storecheck.py on 2026-11-13. The listing's existing price record was not re-checked today. Amazon showed the DXP8800 Plus (B0D22HGH4N) in stock at $1,369.99 on 2026-11-13.",
   "A US price for a QNAP-supported NVIDIA card and QNAP's live GPGPU compatibility list for the TS-873A: the list renders client-side and returned no table.",
-  "Returns policy for the four new Amazon records: not opened, so left null.",
+  "Amazon's own return-policy help pages (nodeId GKM69DUUYKQWKWX7 and GNUT4TS3J7VZGPTQ) and the return and seller text on the four Amazon listings: amazon.com returned HTTP 503 to WebFetch on 2026-11-14, and a direct curl was not permitted. The returns terms in the four Amazon records come from PPC Land's report of Amazon's Seller News post dated 2026-10-16.",
   "Whether QNAP's QTS-mode GPU transcoding also works under QuTS hero: no QNAP or Plex document found that says so."
  ],
  "products": [
@@ -60,7 +60,7 @@
     ]
    ],
    "warranty": "3 years; 5 years with Extended Warranty Plus (North America and Europe)",
-   "returns": null,
+   "returns": "30 days from delivery on Amazon; orders placed Nov 1–Dec 31, 2026 can be returned until Jan 31, 2027",
    "summary": "Eight-bay DSM box with ECC memory and 2× 2.5GbE. Synology lists only 10GbE and 25GbE network cards for its single PCIe slot, so it has no hardware-transcoding path.",
    "fit": "Storage and backup for a media library whose players direct-play, or whose Plex server runs on another machine",
    "caveats": [
@@ -107,7 +107,7 @@
     ]
    ],
    "warranty": "3 years",
-   "returns": null,
+   "returns": "30 days from delivery on Amazon; orders placed Nov 1–Dec 31, 2026 can be returned until Jan 31, 2027",
    "summary": "The DS1825+ with 4 GB of non-ECC memory in place of 8 GB ECC. It has the same CPU, ports and PCIe slot, and Synology lists no graphics for it either.",
    "fit": "The lowest-cost way into Synology DSM at eight bays when Plex runs elsewhere or every player direct-plays",
    "caveats": [
@@ -157,7 +157,7 @@
     ]
    ],
    "warranty": "3 years",
-   "returns": null,
+   "returns": "30 days from delivery on Amazon; orders placed Nov 1–Dec 31, 2026 can be returned until Jan 31, 2027",
    "summary": "Eight bays, QTS or ZFS-based QuTS hero, and two PCIe Gen3 x4 slots. It transcodes in hardware only with an entry-level NVIDIA card that needs no power cable, such as the GTX 1650.",
    "fit": "Buyers who want ZFS and already own a QNAP-supported NVIDIA card, or who direct-play",
    "caveats": [
@@ -204,7 +204,7 @@
     ]
    ],
    "warranty": "3 years",
-   "returns": null,
+   "returns": "30 days from delivery on Amazon; orders placed Nov 1–Dec 31, 2026 can be returned until Jan 31, 2027",
    "summary": "The lowest-cost eight-bay box here with 10GbE built in. Its server Atom has no graphics, so it is a direct-play and file-serving box.",
    "fit": "Bulk media storage over 10GbE with Plex on another machine",
    "caveats": [
@@ -364,5 +364,25 @@
  ],
  "query": "best 8-bay nas under $1500 for a home media library",
  "verified_changes": 7,
- "verified_removed": 0
+ "verified_removed": 0,
+ "fix_pass": {
+  "errors": [
+   "synology-ds1825-plus: missing returns",
+   "synology-ds1825neo-plus: missing returns",
+   "qnap-ts-873a-8g: missing returns",
+   "asustor-as6508t: missing returns"
+  ],
+  "log": [
+   "synology-ds1825-plus, synology-ds1825neo-plus, qnap-ts-873a-8g, asustor-as6508t: returns was null. Set to '30 days from delivery on Amazon; orders placed Nov 1–Dec 31, 2026 can be returned until Jan 31, 2027'. All four records are amazon:us, so Amazon's return policy is the one that applies. Source: PPC Land, https://ppc.land/amazon-makes-its-january-31-holiday-return-deadline-an-annual-rule/, read 2026-11-14. It quotes Amazon's Seller News post of 2026-10-16: 'Most items can be returned for a refund or replacement/exchange within 30 days of delivery', and items bought Nov 1–Dec 31, 2026 'can be returned until January 31, 2027' (the Apple-only exception does not apply here). The extension 'automatically applies to all items that you sell on Amazon.com', including FBA and seller-shipped orders.",
+   "This returns source is a named reporter, not Amazon's own page. Amazon's help pages (nodeId GKM69DUUYKQWKWX7 and GNUT4TS3J7VZGPTQ) and the B0C8SBXSTJ listing returned HTTP 503 to WebFetch on 2026-11-14, and a direct curl to Amazon was not permitted. So the listing-level return text and seller were not read.",
+   "amzcheck.py on 2026-11-14 found all four ASINs live with matching titles. Prices were not written into the records because that was outside the listed errors and page prices come from amzprice.py.",
+   "Replaced the stale unsourced line 'Returns policy for the four new Amazon records: not opened, so left null.' with a note on what could not be opened on Amazon today and where the returns terms came from. The page's sources were not changed because returns is a product-record field, not a page figure.",
+   "No other fields were changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }
