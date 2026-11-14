@@ -6293,6 +6293,23 @@ PRODUCTS = [
  "fit": 'Budget two-PC, two-DP-monitor desks where windows rearranging after a switch is acceptable.',
  "caveats": ["No EDID emulation: AV Access says it 'does not support EDID emulation at present'.", 'AV Access says DP 2.0-certified cables may be needed to stop flicker at 4K 144/165 Hz.', "The page doesn't say whether both 4K monitors can run 144/165 Hz at the same time."]},
 
+{"slug": 'sungoldpower-sgm-5k5e-off-grid-solar-kit',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'Sun Gold Power SGM-5K5E Off-Grid Solar Kit, 5,000 W 48 V 120 V inverter, 5.12 kWh LiFePO4, 6 × 200 W panels',
+ "model": 'SGM-5K5E',
+ "url": 'https://sungoldpower.com/products/off-grid-solar-kit-5000w-48vdc-120v-5-12kwh-powerwall-battery-6-x-200-watts-solar-panels-sgm-5k5e',
+ "price": 2831,
+ "verified": '2026-11-13',
+ "specs": [('Inverter', '1 × 5,000 W 48 V DC, 120 V output, Wi-Fi model'), ('Battery', '1 × 51.2 V 100 Ah LiFePO4 (5.12 kWh)'), ('Solar panels', '6 × 200 W monocrystalline (1,200 W)'), ('Protection and wiring included', '160 A DC breaker, 25 A PV breaker, 4 AWG breaker-to-inverter cable, 50 ft PV extension set, 6 sets of Z-brackets'), ('PV input (Sun Gold Power 5000W 48V inverter listing)', 'Max 5,500 W, 500 V PV array; 100 A or 80 A MPPT; RS485 BMS port')],
+ "warranty": "12 or 36 months from the purchase date, depending on the product, with a receipt or other proof of purchase (Sun Gold Power warranty page). The kit listing doesn't say which parts get 36 months.",
+ "returns": '30 days from delivery, undamaged, in the original packaging with all accessories. You pay return shipping unless the item arrived damaged by the carrier, defective, wrong or extra (Sun Gold Power return policy).',
+ "summary": "Sun Gold Power's one-SKU 48 V cabin kit. A 5,000 W 120 V inverter-charger, one 5.12 kWh LiFePO4 battery and 1,200 W of panels, with breakers, cable and brackets in the same box.",
+ "fit": 'A cabin used on weekends and holidays that needs about 2–3 kWh a day of 120 V power and has a fixed roof or ground mount for the panels.',
+ "caveats": ["120 V output only. Sun Gold Power's 5000W 48V inverter gives 120/240 V split phase only with more than 2 units in parallel, so this kit won't run a 240 V well pump.", "The listing names a standard 100 Ah 51.2 V LiFePO4 battery. Sun Gold Power's self-heating SGH48100T (heats below 41 °F / 5 °C) costs $1,035 against $981 for the SG48100P.", 'The box has no AC disconnect, grounding kit or combiner. Plan for those and for an installer.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
