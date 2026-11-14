@@ -1,0 +1,136 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got pairs Minn Kota's statement that QUEST motors pull up to 60 A on high speed with the fact that lithium packs sold for big motors, such as Redodo's 36V 50Ah 'for 100-120 lb' (50 A BMS, 60 A for only 30 minutes), sit below that ceiling, so the BMS can cut power at full throttle or during Spot-Lock in wind.",
+ "standout": 2,
+ "standout_why": "I read the cited Minn Kota pages: Power Considerations (#4), Deep Cycle Battery Selection (#5) and Amp Draw/Circuit Breakers, plus the uncited Lithium Selection page (#6). They give the general rule that the battery's continuous discharge must cover the motor's max amp draw, and ChatGPT's answer repeats it ('confirm that the BMS supports the motor's maximum current draw'). None of those pages lists a number in text, because the amp-draw and breaker charts are images. None names a battery that fails the rule. ChatGPT's own chart suggests '24V 50-100Ah' for 55-70 lb motors and '36V 100Ah' for 80-112 lb, with no current spec, so a shopper could buy a 50Ah-class pack that the BMS limits. I could not open the QUEST manuals in the results (#7 and #8 were over 10 MB, #16 returned 403), so I can't rule out that they print the 60 A figure. That is why this scores 2 and not 3.",
+ "kit_items": [
+  "battery: Redodo 24V 100Ah LiFePO4 (100 A BMS, 2,560 Wh, Redodo rates it for 70-100 lb trolling motors). One pack replaces two 12V batteries in series, and its 100 A BMS is well above the 60 A Minn Kota says a QUEST motor pulls on high. The 24V 50Ah is rated 60 A for only 30 minutes, which is a marginal match.",
+  "charger: Redodo 29.2V 20A MINI LiFePO4 charger. Redodo's own product page says the 24V 100Ah 'fully recharges in just 5 hours with a 20A (29.2V) LiFePO4 charger'. Minn Kota PCL onboard chargers top out at 14.5 V per bank and the battery maker has to confirm compatibility, so a separate lithium charger avoids that question.",
+  "breaker: 60 A maximum for a QUEST install (Minn Kota: do not use breakers over 60 A on QUEST). Redodo does not sell one, so the shopper has to buy it separately."
+ ],
+ "carts": [
+  {
+   "store": "Redodo (redodopower.com)",
+   "items": [
+    "Redodo 24V 100Ah LiFePO4 Lithium Battery | https://www.redodopower.com/products/24v-100ah-lifepo4-battery | $469.99 | 2026-11-13",
+    "Redodo 29.2V 20A MINI LiFePO4 Battery Charger | https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size | $109.99 | 2026-11-13"
+   ],
+   "bundle_sku": "none"
+  }
+ ],
+ "findings": [
+  {
+   "product": "Minn Kota QUEST motors (Ultrex/Terrova/Riptide Instinct QUEST)",
+   "label": "Current draw on high speed",
+   "value": "up to 60 A",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/24943541720471-Trolling-Motor-Amp-Draw-Circuit-Breakers-Fuses-and-Extending-the-Battery-Leads",
+   "source_title": "Trolling Motor Amp Draw, Circuit Breakers, Fuses, and Extending the Battery Leads – Minn Kota",
+   "read": "2026-11-13",
+   "note": "Text: QUEST motors are 'designed to not pull more than 60 amps on high speed'. The same article says breakers over 60 A should not be used on QUEST installs. This article was not in ChatGPT's results."
+  },
+  {
+   "product": "general (Minn Kota + lithium)",
+   "label": "What happens when the battery's continuous rating is below the motor's max draw",
+   "value": "BMS restricts power; the motor may shut off, turn on without spinning the prop, or have steering, i-Pilot and Spot-Lock problems",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-13",
+   "note": "Rival result #6 (uncited) and cited #4 and #5 give the rule but no number in text, because the charts are images."
+  },
+  {
+   "product": "general (brushed Minn Kota motors on lithium)",
+   "label": "Speed limit on lithium",
+   "value": "85% (Speed 8.5) or lower",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-13",
+   "note": "'Running the motor at maximum speed with lithium batteries can result in damage.' Rivals already state this, so it does not count as a gap."
+  },
+  {
+   "product": "Minn Kota PCL onboard chargers",
+   "label": "Max charge voltage",
+   "value": "14.5 V per bank",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations – Minn Kota",
+   "read": "2026-11-13",
+   "note": "Minn Kota tells owners to confirm that 14.5 V meets the battery maker's spec. Redodo's 12V chargers output 14.6 V, so an existing Minn Kota onboard charger may not fully charge a Redodo LiFePO4 without the battery maker's OK. Rival #6 has this."
+  },
+  {
+   "product": "Redodo 36V 50Ah Lithium Trolling Motor Battery",
+   "label": "BMS / continuous discharge vs marketed thrust",
+   "value": "50 A BMS, steady 50 A; 60 A for up to 30 min; 250 A peak; sold 'for trolling motors with 100-120 lbs of thrust'",
+   "source": "https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff",
+   "source_title": "Redodo 36V 50Ah Lithium Trolling Motor Battery for 36V Trolling Motors with 100-120 lbs",
+   "read": "2026-11-13",
+   "note": "Read from the store's product data via storecheck (later product fetches returned HTTP 429). Price $359.99. 50 A continuous < 60 A QUEST high-speed draw, so this is the trap combination."
+  },
+  {
+   "product": "Redodo 24V 50Ah Bluetooth Trolling Motor Battery",
+   "label": "Continuous discharge vs marketed thrust",
+   "value": "60 A continuous for 30 minutes; 'for 24V trolling motors with up to 100 lbs'",
+   "source": "https://www.redodopower.com/products/redodo-24v-50ah-trolling-motor-battery-with-bluetooth",
+   "source_title": "Redodo 24V 50Ah Bluetooth Lithium Trolling Motor Battery",
+   "read": "2026-11-13",
+   "note": "Store data via storecheck. Price $254.99. It just meets the 60 A ceiling, but only for 30 minutes."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4 Lithium Battery",
+   "label": "BMS / expansion / charger",
+   "value": "100 A BMS; 2,560 Wh; max 4P2S; recharges in 5 h with a 20 A (29.2 V) LiFePO4 charger; 45.59 lb; rated for 70-100 lb trolling motors",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-13",
+   "note": "Store data via storecheck. Price $469.99. 100 A ≥ 60 A QUEST draw, so it clears the BMS trap."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery",
+   "label": "Battery-box fit",
+   "value": "13.11 × 6.93 × 9.45 in; 'fits Group 31 trays only; not compatible with standard Group 31 battery boxes'",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery | For 70-100 lb Thrust",
+   "read": "2026-11-13",
+   "note": "Store data via storecheck. Price $569.99. A second trap: the 'Group 31' label does not mean it fits a Group 31 box. ChatGPT's group-size chart implies size alone decides fit."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery (low-temp)",
+   "label": "Low-temperature charge cutoff",
+   "value": "stops charging below 32°F (0°C), resumes above 41°F (5°C)",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-13",
+   "note": "Store data via storecheck. Price $233.99. A 'won't charge' trap for cold-season or garage charging. It is the same 0°C/5°C behavior on Redodo's 24V Group 31 and 36V packs."
+  },
+  {
+   "product": "Redodo 29.2V 20A MINI LiFePO4 Charger",
+   "label": "Output / use",
+   "value": "29.2 V, 20 A, for 24V LiFePO4; full charge of 24V 100Ah in about 5 h",
+   "source": "https://www.redodopower.com/products/new-redodo-29-2v-20a-lifepo4-battery-charger-mini-size",
+   "source_title": "Redodo 29.2V 20A MINI Size LiFePO4 Battery Charger Ultra Fast AC-DC Charger",
+   "read": "2026-11-13",
+   "note": "Store data via storecheck. Price $109.99."
+  },
+  {
+   "product": "general",
+   "label": "Battery count by thrust (Minn Kota)",
+   "value": "≤55 lb: 1×12V; >55-80 lb: 2×12V (24V); >80 lb: 3×12V (36V); 110 Ah per battery recommended for 6-8 h",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6470890831895-Trolling-Motor-Power-Considerations",
+   "source_title": "Trolling Motor Power Considerations – Minn Kota",
+   "read": "2026-11-13",
+   "note": "Cited rival #4. Shown for context only; the rival already has it."
+  }
+ ],
+ "unsourced": [
+  "Minn Kota max amp draw for specific non-QUEST motors (e.g. 55 lb 12V, 80 lb 24V, 112 lb 36V Terrova). The charts on the Minn Kota help pages are images. The 2021 Battery Charts PDF downloaded, but text extraction was not permitted here. The Riptide Terrova 2024 manual PDF was over 10 MB and would not load. A search summary said 52 A / 60 A breaker for the Terrova 112, but I did not open a source showing it, so I left it out.",
+  "Whether the Ultrex QUEST owner's and install manuals in ChatGPT's results (#7, #8, #16) print the 60 A figure. #7 and #8 were too large to fetch and #16 returned HTTP 403.",
+  "Continuous BMS rating and max series count for the Redodo 12V 100Ah low-temp trolling battery. The product page and storecheck product lookup returned HTTP 429, and the search text gives only 300 A/5 s and 500 A/1 s peaks.",
+  "Low-temperature charge cutoff on the Redodo 24V 100Ah (generic) battery. The store text I read does not state it.",
+  "Forum threads with dates and report counts of lithium BMS cut-outs on QUEST motors. One search returned only e-bike threads, and I stopped there to stay within the tool-call budget.",
+  "A Redodo bundle SKU of the 24V 100Ah plus the 29.2V charger. None appeared in store search."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.1850216999999998
+ }
+}
