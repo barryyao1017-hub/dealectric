@@ -1,0 +1,110 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got says how many days each candidate can run a 12 V camping fridge. Using Bodega's measured 170 Wh/day (37 °F, 70 °F ambient, empty), the RIVER 3 Plus that ChatGPT showed for 'short weekend trips' holds 286 Wh, about 1.7 days, so it cannot keep a fridge going for two days (that takes 340 Wh). The 1 kWh-class units last about 5.1 to 5.4 days.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited. OutdoorGearLab gives measured usable Wh (C1000 Gen 2 890, Explorer 1000 v2 910, Elite 100 V2 890, DELTA 3 870), but its only fridge runtime is for a 600 W home refrigerator, about 4.5 hr. It has no 12 V camp-fridge days and does not test the RIVER 3 Plus. GearJunkie has one measured fridge figure (Anker SOLIX S2000, 34 hours) and a rule of thumb to take 25% off capacity. It gives no 12 V fridge days for the C1000 Gen 2, the Explorer 1000 v2 or the RIVER 3 Plus. Neither page turns a camp fridge's measured daily Wh into days per charge.",
+ "decides": "This confirms 1 kWh LiFePO4 as the pick for anyone bringing a 12 V fridge: about 5 days at 37 °F, or about 2.5 days at 0 °F, with no solar. It rules out ChatGPT's RIVER 3 Plus for fridge campers, because it runs out after about 1.7 days at fridge settings and about 0.8 days at freezer settings. The 1 kWh candidates are within about 0.2 days of each other, so price breaks the tie. The BLUETTI Elite 100 V2 is $499 at BLUETTI's US store today, about $95 per day of fridge capacity.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "12 V compressor fridge daily energy (Bodega BD60, empty)",
+   "value": "170 Wh per 24 h at 37 °F setpoint; 356 Wh per 24 h at 0 °F; ambient 70 °F; peak draw 53.5 W",
+   "source": "https://bodegacooler.com/blogs/blog/bodega-bd60-portable-fridge-review-energy-usage-testing",
+   "source_title": "Bodega BD60 Portable Fridge Review & Energy Usage Testing",
+   "read": "2026-11-14",
+   "note": "Bodega's own test of its own fridge on 12 V DC, published 2024-11-22. The fridge was empty, and Bodega says a filled fridge uses less. This is the fridge load used in every runtime below."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Days of 12 V fridge per charge",
+   "value": "1.7 days at 37 °F; 0.8 days at 0 °F",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Compact Power Station with 600W Output, UPS Support (StorageReview)",
+   "read": "2026-11-14",
+   "note": "286 Wh rated ÷ 170 Wh/day = 1.68 days; 286 ÷ 356 = 0.80 days. Rated capacity, so this is a ceiling. Two days needs 2 × 170 = 340 Wh, more than 286. StorageReview's spec table lists 286 Wh and a car output of 12.6 V 10 A, 126 W max, which covers the fridge's 53.5 W peak. The EcoFlow US page returned HTTP 429."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Rated Wh per lb",
+   "value": "27.5 Wh/lb",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Compact Power Station with 600W Output, UPS Support (StorageReview)",
+   "read": "2026-11-14",
+   "note": "286 Wh ÷ 10.4 lb net weight (StorageReview spec table) = 27.5"
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Days of 12 V fridge per charge",
+   "value": "5.2 days at 37 °F; 2.5 days at 0 °F",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station?sort_field=1&specs=n",
+   "source_title": "The Best Power Stations of 2026 | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-14",
+   "note": "OutdoorGearLab measured 890 Wh usable. 890 ÷ 170 = 5.24 days; 890 ÷ 356 = 2.50 days."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Maker specs used: capacity, weight, 12 V car output",
+   "value": "1,024 Wh; 24.9 lb; car output 12 V 10 A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (Anker SOLIX US)",
+   "read": "2026-11-14",
+   "note": "Rated Wh/lb = 1,024 ÷ 24.9 = 41.1. Rated fridge days = 1,024 ÷ 170 = 6.0, a ceiling. The 120 W car port covers the fridge's 53.5 W peak. The page showed no dollar price."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Days of 12 V fridge per charge",
+   "value": "5.4 days at 37 °F; 2.6 days at 0 °F",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station?sort_field=1&specs=n",
+   "source_title": "The Best Power Stations of 2026 | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-14",
+   "note": "OutdoorGearLab measured 910 Wh usable from 1,070 Wh claimed. 910 ÷ 170 = 5.35 days; 910 ÷ 356 = 2.56 days. OutdoorGearLab measured the weight at 24.4 lb, so usable Wh/lb = 37.3."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Days of 12 V fridge per charge",
+   "value": "5.2 days at 37 °F; 2.5 days at 0 °F",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station?sort_field=1&specs=n",
+   "source_title": "The Best Power Stations of 2026 | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-14",
+   "note": "OutdoorGearLab measured 890 Wh usable from 1,024 Wh. 890 ÷ 170 = 5.24 days; 890 ÷ 356 = 2.50 days."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price today and cost per fridge-day / per usable Wh",
+   "value": "$499; $95 per fridge-day of capacity; $0.56 per usable Wh",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh (BLUETTI US store)",
+   "read": "2026-11-14",
+   "note": "Store price $499, read with storecheck. $499 ÷ 5.24 days = $95.2; $499 ÷ 890 Wh (OutdoorGearLab usable) = $0.56/Wh. The store lists the weight as 25 lb and also sells a kit with a 200 W panel for $729."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Days of 12 V fridge per charge",
+   "value": "5.1 days at 37 °F; 2.4 days at 0 °F",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station?sort_field=1&specs=n",
+   "source_title": "The Best Power Stations of 2026 | Lab Tested & Ranked (OutdoorGearLab)",
+   "read": "2026-11-14",
+   "note": "OutdoorGearLab measured 870 Wh usable. 870 ÷ 170 = 5.12 days; 870 ÷ 356 = 2.44 days."
+  }
+ ],
+ "unsourced": [
+  "Today's EcoFlow US store price for the RIVER 3 Plus: us.ecoflow.com product page and storecheck both returned HTTP 429, so cost per fridge-day was not computed.",
+  "Today's Jackery US store price and maker spec page for the Explorer 1000 v2: jackery.com product pages and storecheck returned HTTP 429.",
+  "Today's Anker US price for the SOLIX C1000 Gen 2: the ankersolix.com US page showed no dollar price and storecheck returned 404. Amazon was not tried because the call budget ran out.",
+  "Measured usable Wh for the RIVER 3 Plus: OutdoorGearLab does not test it. StorageReview reports 0.43 kWh discharged, about 150% of the 286 Wh rating, which does not fit the rating (possibly with an extra battery attached), so it was not used.",
+  "Measured 12 V DC-port efficiency for any candidate: the OutdoorGearLab usable-Wh figures are a single test figure per unit, and DC-port usable Wh was not found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0562562
+ }
+}

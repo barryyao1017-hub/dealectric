@@ -1,0 +1,100 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much energy each wheeled cooler uses per day, or how many hours a single battery runs it. On the same 288 Wh battery the compressor Anker SOLIX EverFrost 2 ran for 51 hours in a reviewer's test (288 Wh ÷ 51 h = 5.6 W, about 136 Wh a day). Koolatron's own thermoelectric figure of 54 W with no thermostat works out to about 5.3 hours (288 Wh ÷ 54 W) and 1,296 Wh a day, roughly 9.5 times as much energy per day.",
+ "standout": 3,
+ "standout_why": "I compared GearJunkie (rank 1), giftsitter (rank 2) and lovethe88 wheels (rank 5). Car and Driver (rank 8) blocked fetching, so I couldn't check it. GearJunkie gives only Anker's own claim ('299 Wh', 'up to 36 hours at 39 degrees') and a generic '40 to 70 W' range for 12V coolers that isn't tied to any model. It doesn't compare thermoelectric and compressor energy use per day. Giftsitter lists a 45/60 W rating for one BougeRV and no battery or runtime figures. Lovethe88 has no power, Wh or runtime figure for any model. None of them works out Wh per day or hours per battery for the Koolatron, VEVOR or Anker.",
+ "decides": "This rules out the Koolatron 33 qt, which ChatGPT showed as a card at $226.79, for anyone running a cooler off a battery or power station rather than a running engine. It has no thermostat and draws about 54 W all the time, so a 288 Wh pack lasts about 5 hours, against about 51 hours for the compressor EverFrost 2 on the same pack. That supports a compressor model. Among the wheeled compressor models, the EverFrost 2 is the only one with a built-in battery whose runtime an independent reviewer measured. VEVOR's 0.2 kWh/24h claim is the maker's own and gives no test conditions.",
+ "candidates": [
+  "Anker SOLIX EverFrost 2 40L",
+  "Koolatron Kargo Wheeler W65 31L",
+  "VEVOR T60 63 qt dual-zone",
+  "BODEGACOOLER 40 qt dual-compartment with wheels"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX EverFrost 2 40L",
+   "label": "Included battery and maker runtime claim",
+   "value": "288 Wh LFP; 52 h on 1 battery",
+   "source": "https://www.ankersolix.com/products/everfrost-2-40l-electric-cooler",
+   "source_title": "Anker SOLIX EverFrost 2 40L Electric Cooler",
+   "read": "2026-11-14",
+   "note": "Footnote conditions: 39°F inside, empty, Eco mode, 77°F ambient. Implied average is 288 Wh ÷ 52 h = 5.5 W. Page also lists 6-inch wheels with a retractable handle and 100 W solar input."
+  },
+  {
+   "product": "Anker SOLIX EverFrost 2 40L",
+   "label": "Measured Eco-mode runtime on one battery (Greg Cleveland, The Gadgeteer)",
+   "value": "just under 51 h",
+   "source": "https://the-gadgeteer.com/2025/03/03/anker-solix-everfrost-2-electric-cooler-review-cooler-than-cool-on-the-go/",
+   "source_title": "Anker SOLIX EverFrost 2 Electric Cooler review – The Gadgeteer",
+   "read": "2026-11-14",
+   "note": "Eco mode, 39°F setpoint, about 74°F ambient, empty, lid closed. Derived: 288 Wh ÷ 51 h = 5.6 W average; 5.6 W × 24 h ≈ 136 Wh/day."
+  },
+  {
+   "product": "Anker SOLIX EverFrost 2 40L",
+   "label": "Measured Max-mode drain near 0°F (Greg Cleveland, The Gadgeteer)",
+   "value": "battery fell to 17% after 12 h in Max mode; coldest reading -4.9°F",
+   "source": "https://the-gadgeteer.com/2025/03/03/anker-solix-everfrost-2-electric-cooler-review-cooler-than-cool-on-the-go/",
+   "source_title": "Anker SOLIX EverFrost 2 Electric Cooler review – The Gadgeteer",
+   "read": "2026-11-14",
+   "note": "Upper bound assuming a 100% start: (0.83 × 288 Wh) ÷ 12 h ≈ 20 W, about 478 Wh/day at freezer temperatures. The starting charge isn't stated explicitly; the previous test ran from 98% to 84%."
+  },
+  {
+   "product": "Anker SOLIX EverFrost 2 40L",
+   "label": "Weight per quart",
+   "value": "1.31 lb/qt",
+   "source": "https://the-gadgeteer.com/2025/03/03/anker-solix-everfrost-2-electric-cooler-review-cooler-than-cool-on-the-go/",
+   "source_title": "Anker SOLIX EverFrost 2 Electric Cooler review – The Gadgeteer",
+   "read": "2026-11-14",
+   "note": "55 lb net (spec sheet quoted by the reviewer) ÷ 42 qt = 1.31 lb/qt, battery included."
+  },
+  {
+   "product": "Koolatron Kargo Wheeler W65 31L",
+   "label": "Draw and duty cycle (maker FAQ)",
+   "value": "54 W at 12 V, runs continuously (no thermostat)",
+   "source": "https://www.koolatron.com/pages/12v-cooler-frequently-asked-questions",
+   "source_title": "Koolatron 12V Cooler FAQs and Troubleshooting Guide",
+   "read": "2026-11-14",
+   "note": "FAQ: 'Most Koolatron thermoelectric coolers consume 4.5 amps or 54 watts'; they 'do not have an adjustable thermostat and run at maximum cold'; they cool to about 40°F below ambient. Derived: 54 W × 24 h = 1,296 Wh/day; hours on a 288 Wh pack = 288 ÷ 54 = 5.3 h; 1,296 ÷ 136 = 9.5 times the EverFrost 2's Eco-mode daily energy. This is the FAQ's general figure; I couldn't open the W65 page (HTTP 429)."
+  },
+  {
+   "product": "VEVOR T60 63 qt dual-zone",
+   "label": "Maker-stated rated power and daily consumption",
+   "value": "80 W rated; 0.2 kWh/24h",
+   "source": "https://www.vevor.com/car-refrigerator-c_10723/product-p_010696724137",
+   "source_title": "VEVOR 12 Volt Refrigerator, 63 Qt Dual Zone Car Fridge Freezer (Model T60)",
+   "read": "2026-11-14",
+   "note": "No test conditions given. Derived: 288 Wh ÷ (200 Wh ÷ 24 h = 8.3 W) ≈ 35 h on a 288 Wh pack. No battery included. $343.99 on vevor.com. This may not be the same unit as the 63.4 qt VEVOR ChatGPT showed at Best Buy for $279.90."
+  },
+  {
+   "product": "VEVOR T60 63 qt dual-zone",
+   "label": "Weight per quart",
+   "value": "0.60 lb/qt",
+   "source": "https://www.vevor.com/car-refrigerator-c_10723/product-p_010696724137",
+   "source_title": "VEVOR 12 Volt Refrigerator, 63 Qt Dual Zone Car Fridge Freezer (Model T60)",
+   "read": "2026-11-14",
+   "note": "38.1 lb ÷ 63 qt = 0.60 lb/qt. The page doesn't say whether the weight is net or gross."
+  },
+  {
+   "product": "BODEGACOOLER 40 qt dual-compartment with wheels",
+   "label": "Price on maker's US store",
+   "value": "$269.99 (compare-at $699.99)",
+   "source": "https://www.bodegacooler.com/products/12-volt-car-refrigerator-dual-zone-with-wheels",
+   "source_title": "BODEGACOOLER Portable Car Fridge | Dual-Compartment Freezer for RV & Camping",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search on the BODEGACOOLER store; it matches ChatGPT's card price. The second zone isn't controlled on its own; its temperature is 'influenced by the primary zone'. Heavy-duty off-road wheels. No battery."
+  }
+ ],
+ "unsourced": [
+  "BODEGACOOLER 40 qt (12-volt-car-refrigerator-dual-zone-with-wheels): rated W, kWh/24h and weight. The product page returned HTTP 429 three times and the store search text was cut off before the specs.",
+  "Koolatron W65: model-specific draw, weight and US price from koolatron.com/products/w65-cooler-warmer-31l, which returned HTTP 429 twice. Walmart showed a bot wall. A search snippet gave 5 A / 60 W and $230.99, but I didn't open the page, so neither is used.",
+  "Anker SOLIX EverFrost 2 40L: today's US price. storecheck.py and anker.com returned 404, and ankersolix.com showed no price.",
+  "The '42Qt Car Freezer with APP Control' Wayfair card ($319.99): I couldn't identify the brand or model, so I have no draw, weight or price.",
+  "An independent measured draw for any wheeled compressor model other than the EverFrost 2. Pro Tool Reviews returned 403 and Car and Driver blocked fetching."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.042819
+ }
+}

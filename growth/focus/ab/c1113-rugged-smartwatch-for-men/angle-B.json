@@ -1,0 +1,141 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how many days each rugged watch lasts on a trip with 6 hours of full-accuracy GPS a day and smartwatch use the rest of the day. On Garmin's, Amazfit's and Apple's own ratings that comes to about 7.1 days for the fēnix 8 Pro 51 mm, 5.9 for the Amazfit T-Rex 3, 5.3 for the T-Rex 3 Pro, 5.1 for the Instinct 3 Solar 50 mm, 3.6 for the Instinct 3 Solar 45 mm (6.7 with sun) and 1.4 for the Apple Watch Ultra 4.",
+ "standout": 2,
+ "standout_why": "I compared against mobileplustech.com, the cited guide. It gives no battery numbers at all and computes nothing; it says Garmin solar models 'state the longest battery estimates' and Apple is 'rated for days rather than weeks'. The cited TechRadar T-Rex 3 Pro review cut off after its headline when I fetched it, so it may state the 25-day or 38-hour rating, but I could not check whether it does any trip arithmetic. Neither page puts the watches on one per-trip scale, and neither shows that the $279.99 T-Rex 3 outlasts the Instinct 3 Solar 45 mm when there's no sun.",
+ "decides": "It confirms that Apple should not be the pick for a multi-day outdoor trip: at 6 hours of GPS a day the Ultra 4 needs a charge every 1.4 days, while every Garmin and Amazfit candidate goes 3.6 to 7.1 days. It also changes the value pick. ChatGPT made the Instinct 3 Solar its overall pick but showed the 45 mm price. That size only beats the $279.99 T-Rex 3 (6.7 days vs 5.9) if Garmin's 50,000-lux solar assumption holds. In normal sun-poor conditions the T-Rex 3 lasts longer (5.9 vs 3.6 days), so the Instinct only clearly wins in its 50 mm size or for people who spend all day in strong sun.",
+ "candidates": [
+  "Garmin Instinct 3 Solar 45mm",
+  "Garmin Instinct 3 Solar 50mm",
+  "Amazfit T-Rex 3",
+  "Amazfit T-Rex 3 Pro 48mm",
+  "Garmin fenix 8 Pro 47mm AMOLED",
+  "Garmin fenix 8 Pro 51mm AMOLED",
+  "Apple Watch Ultra 4"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Duty cycle and formula used for every figure",
+   "value": "6 h GPS + 18 h smartwatch per day",
+   "source": "https://www8.garmin.com/manuals-apac/webhelp/instinct3solarseries/EN-SG/GUID-49EC7FB4-0D93-4E6B-8F64-3A8392AFC757-4973.html",
+   "source_title": "Instinct 3 Solar Series Owner's Manual – Battery Life Information",
+   "read": "2026-11-14",
+   "note": "Days per charge = 1 / (6/GPS_h + 18/(smartwatch_days×24)). GPS mode used: Garmin 'All satellite systems plus multi-band', Amazfit 'Accurate GPS', Apple outdoor workout. These are each maker's highest-accuracy mode, so they are roughly comparable. All inputs are maker ratings, not lab measurements."
+  },
+  {
+   "product": "Garmin Instinct 3 Solar 45mm",
+   "label": "Days per charge, 6 h multi-band GPS/day, no solar",
+   "value": "3.6 days",
+   "source": "https://www8.garmin.com/manuals-apac/webhelp/instinct3solarseries/EN-SG/GUID-49EC7FB4-0D93-4E6B-8F64-3A8392AFC757-4973.html",
+   "source_title": "Instinct 3 Solar Series Owner's Manual – Battery Life Information",
+   "read": "2026-11-14",
+   "note": "Inputs: smartwatch 28 days, all-systems + multi-band 24 h. Math: 1/(6/24 + 18/672) = 1/(0.250+0.027) = 3.6 days. In all-systems mode without multi-band (28 h) it is 1/(0.214+0.027) = 4.1 days."
+  },
+  {
+   "product": "Garmin Instinct 3 Solar 45mm",
+   "label": "Days per charge, 6 h multi-band GPS/day, with Garmin's solar assumption",
+   "value": "6.7 days",
+   "source": "https://www8.garmin.com/manuals-apac/webhelp/instinct3solarseries/EN-SG/GUID-49EC7FB4-0D93-4E6B-8F64-3A8392AFC757-4973.html",
+   "source_title": "Instinct 3 Solar Series Owner's Manual – Battery Life Information",
+   "read": "2026-11-14",
+   "note": "Inputs: multi-band 40 h with solar, smartwatch 'unlimited with solar' (Garmin assumes 3 h/day outdoors at 50,000 lux; the GPS figure assumes outdoor use at 50,000 lux). Math: 1/(6/40 + 0) = 6.7 days. This only holds in bright sun."
+  },
+  {
+   "product": "Garmin Instinct 3 Solar 50mm",
+   "label": "Days per charge, 6 h multi-band GPS/day, no solar",
+   "value": "5.1 days",
+   "source": "https://www8.garmin.com/manuals-apac/webhelp/instinct3solarseries/EN-SG/GUID-49EC7FB4-0D93-4E6B-8F64-3A8392AFC757-4973.html",
+   "source_title": "Instinct 3 Solar Series Owner's Manual – Battery Life Information",
+   "read": "2026-11-14",
+   "note": "Inputs: smartwatch 40 days, multi-band 34 h. Math: 1/(6/34 + 18/960) = 1/(0.176+0.019) = 5.1 days. With solar (60 h, unlimited smartwatch): 1/(6/60) = 10 days."
+  },
+  {
+   "product": "Garmin fenix 8 Pro 51mm AMOLED",
+   "label": "Days per charge, 6 h multi-band GPS/day (gesture display)",
+   "value": "7.1 days",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-EECCAC99-90D6-4AB1-9A3A-EC433D3365E2/EN-US/GUID-40B16F18-75A1-4B3E-8F1A-AB4919BC9E51.html",
+   "source_title": "fēnix 8 Series Owner's Manual – Battery Information",
+   "read": "2026-11-14",
+   "note": "Inputs: smartwatch 27 days (gesture), all-systems + multi-band (SatIQ) 53 h. Math: 1/(6/53 + 18/648) = 1/(0.113+0.028) = 7.1 days. With the always-on display (15 days, 41 h): 1/(0.146+0.050) = 5.1 days."
+  },
+  {
+   "product": "Garmin fenix 8 Pro 47mm AMOLED",
+   "label": "Days per charge, 6 h multi-band GPS/day (gesture display)",
+   "value": "4.0 days",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-EECCAC99-90D6-4AB1-9A3A-EC433D3365E2/EN-US/GUID-40B16F18-75A1-4B3E-8F1A-AB4919BC9E51.html",
+   "source_title": "fēnix 8 Series Owner's Manual – Battery Information",
+   "read": "2026-11-14",
+   "note": "Inputs: smartwatch 15 days, multi-band 30 h. Math: 1/(6/30 + 18/360) = 1/(0.200+0.050) = 4.0 days."
+  },
+  {
+   "product": "Amazfit T-Rex 3",
+   "label": "Days per charge, 6 h Accurate GPS/day",
+   "value": "5.9 days",
+   "source": "https://the5krunner.com/specs/amazfit/t-rex-3/",
+   "source_title": "the5krunner – Amazfit T-Rex 3 specs",
+   "read": "2026-11-14",
+   "note": "Inputs: typical use 27 days, Accurate GNSS 42 h (700 mAh, 68.3 g without strap). Math: 1/(6/42 + 18/648) = 1/(0.143+0.028) = 5.9 days. Amazfit's own US and UK pages returned HTTP 429 every time, so these maker ratings come from a named spec reviewer."
+  },
+  {
+   "product": "Amazfit T-Rex 3",
+   "label": "Price, Amazfit US store",
+   "value": "$279.99",
+   "source": "https://us.amazfit.com/products/amazfit-t-rex-3",
+   "source_title": "Amazfit US – T-Rex 3",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search of us.amazfit.com; no compare-at price, in stock. The listing says 'Over 3 weeks of battery life during typical use'."
+  },
+  {
+   "product": "Amazfit T-Rex 3 Pro 48mm",
+   "label": "Days per charge, 6 h Accurate GPS/day",
+   "value": "5.3 days",
+   "source": "https://the5krunner.com/specs/amazfit/t-rex-3-pro/",
+   "source_title": "the5krunner – Amazfit T-Rex 3 Pro specs",
+   "read": "2026-11-14",
+   "note": "Inputs: typical use 25 days, Accurate GPS 38 h (700 mAh, 52 g without strap). Math: 1/(6/38 + 18/600) = 1/(0.158+0.030) = 5.3 days. The US store listing confirms 'Up to 25 days battery life (48mm)'."
+  },
+  {
+   "product": "Amazfit T-Rex 3 Pro 48mm",
+   "label": "Price, Amazfit US store",
+   "value": "$399.99",
+   "source": "https://us.amazfit.com/products/t-rex-3-pro",
+   "source_title": "Amazfit US – T-Rex 3 Pro",
+   "read": "2026-11-14",
+   "note": "From storecheck.py search of us.amazfit.com; no compare-at price, in stock."
+  },
+  {
+   "product": "Apple Watch Ultra 4",
+   "label": "Days per charge, 6 h outdoor workout/day",
+   "value": "1.4 days",
+   "source": "https://www.apple.com/apple-watch-ultra-4/specs/",
+   "source_title": "Apple Watch Ultra 4 – Technical Specifications",
+   "read": "2026-11-14",
+   "note": "Inputs: up to 50 h normal use, up to 18 h workout tracking (outdoor run, heart rate on, no iPhone). Math: 1/(6/18 + 18/50) = 1/(0.333+0.360) = 1.4 days. Apple's 50 h test already includes two 60-min workouts, so this slightly double-counts. With Max Extended Workout (45 h, Low Power Mode, alerts off): 1/(6/45 + 18/50) = 2.0 days."
+  },
+  {
+   "product": "Apple Watch Ultra 3",
+   "label": "Normal-use battery rating (the model ChatGPT showed)",
+   "value": "42 h (72 h Low Power Mode)",
+   "source": "https://www.apple.com/watch/compare/",
+   "source_title": "Apple Watch – Compare Models",
+   "read": "2026-11-14",
+   "note": "Apple's compare page now lists the Ultra 4 (50 h) above the Ultra 3 (42 h). The Ultra 3 specs page no longer has battery or price details."
+  }
+ ],
+ "unsourced": [
+  "Garmin Instinct 3 Solar current US price: garmin.com product pages (p/1315317, p/1705221) render prices with JavaScript and WebFetch got no price, so ChatGPT's $249.99 is unverified. I didn't try a named retailer.",
+  "Garmin fēnix 8 Pro current US price: the p/1701921 page showed no price. Garmin's Sept 2025 launch press release ($1,199.99 for AMOLED) appeared only as a search snippet and I did not open it.",
+  "Apple Watch Ultra 4 US price: apple.com/shop/buy-watch/apple-watch-ultra-4 returned 404 and the specs page lists no price.",
+  "Apple Watch Ultra 3 workout/GPS hours, needed to work out its trip days: its specs page no longer shows battery data and the compare page did not label workout hours by model.",
+  "Amazfit's own spec tables for T-Rex 3 and T-Rex 3 Pro (Accurate GPS hours): us, uk and in.amazfit.com all returned HTTP 429, so I used the5krunner's spec pages instead.",
+  "Any independent measured battery test to check the maker ratings used here: I didn't find one I could open within the budget.",
+  "Price per trip-day (e.g. dollars per day of battery on the 6 h/day duty cycle): Garmin and Apple prices are unsourced, so I didn't compute it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 34,
+  "cost_usd_list": 1.0889667
+ }
+}
