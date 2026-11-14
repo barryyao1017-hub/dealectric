@@ -354,13 +354,41 @@ def price(folders: list[str], pace: float) -> dict:
     return {"flagged": kept, "stopped": stopped}
 
 
+def amazon_prices() -> dict:
+    """Read Amazon's price for every ASIN on this run's pages that has none yet (tools/amzprice.py), rebuild, commit."""
+    import gaps
+    have = json.loads((ROOT / "src/amazon_prices.json").read_text())["asins"] if (ROOT / "src/amazon_prices.json").exists() else {}
+    import products as P
+    asins = {r["asin"] for g in gaps.GAP_PAGES if g.get("run") == RUN for r in g["rows"] if r.get("asin")}
+    asins |= {P_["asin"] for g in gaps.GAP_PAGES if g.get("run") == RUN for r in g["rows"] if r.get("slug")
+              for P_ in [next((x for x in P.PRODUCTS if x["slug"] == r["slug"]), {})] if P_.get("asin")}
+    todo = sorted(a for a in asins if a not in have)
+    if not todo:
+        return {"read": 0}
+    with repolock.hold("combopage-amazon"):
+        if subprocess.run(["git", "status", "--porcelain", "src", "docs"], cwd=ROOT, capture_output=True, text=True).stdout.strip():
+            return {"read": 0, "skipped": "src/ or docs/ has uncommitted changes"}
+        r = subprocess.run(["python3.12", "tools/amzprice.py", *todo], cwd=ROOT, capture_output=True, text=True)
+        subprocess.run(["python3.12", "src/build.py"], cwd=ROOT, capture_output=True, text=True)
+        if subprocess.run(["python3.12", "tools/docsguard.py"], cwd=ROOT, capture_output=True, text=True).returncode:
+            subprocess.run(["git", "checkout", "--", "src", "docs"], cwd=ROOT)
+            return {"read": 0, "error": "docsguard failed; reverted"}
+        subprocess.run(["git", "add", "src/amazon_prices.json", "docs", "worker/src"], cwd=ROOT)
+        subprocess.run(["git", "commit", "-q", "-m", f"Combo run: Amazon prices read for {len(todo)} listings on the new pages\n\n"
+                        "Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>\n"], cwd=ROOT)
+    return {"read": len(todo), "tail": r.stdout[-300:]}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("cmd", choices=["shape", "research", "apply", "price"])
-    ap.add_argument("slugs", nargs="+")
+    ap.add_argument("cmd", choices=["shape", "research", "apply", "price", "amazon"])
+    ap.add_argument("slugs", nargs="*")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--pace", type=float, default=45)
     a = ap.parse_args()
+    if a.cmd == "amazon":
+        print(json.dumps(amazon_prices()))
+        return 0
     if a.cmd == "price":
         print(json.dumps(price(a.slugs, a.pace)))
         return 0

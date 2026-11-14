@@ -20,8 +20,9 @@ while True:
             pending += 1
             continue
         g = d.get("gate") or {}
-        if g.get("pass") or g.get("skipped"):
-            continue
+        rescued = "amazon_rescue" in d or d.get("kit_page") or d.get("bundle_compare")
+        if g.get("pass") or (g.get("skipped") and rescued):
+            continue   # a skipped single page with no Amazon rescue yet gets one try through combopage.apply
         if tried.get(s) == p.stat().st_mtime:
             continue
         try:
