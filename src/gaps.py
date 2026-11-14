@@ -8944,6 +8944,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G291: lifepo4-battery-with-heater-12v-100ah (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'lifepo4-battery-with-heater-12v-100ah',
  "question": 'G291 (gap mining daily 2026-11-13, research method ab-2026-11: lifepo4 battery with heater)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'A',
@@ -8963,6 +8964,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G292: power-station-for-outdoor-camping (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'power-station-for-outdoor-camping',
  "question": 'G292 (gap mining daily 2026-11-13, research method ab-2026-11: power station for outdoor camping)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
@@ -9039,6 +9041,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G296: power-station-for-outdoor-lights (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'power-station-for-outdoor-lights',
  "question": 'G296 (gap mining daily 2026-11-13, research method ab-2026-11: power station for outdoor lights)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'A',
