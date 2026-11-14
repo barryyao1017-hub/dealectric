@@ -93,6 +93,7 @@ CATEGORIES = {
     "ev-charger": ('EV chargers', 'Portable and wall-mounted Level 1 and Level 2 chargers for electric cars.'),
     "filament": ('3D printer filaments', 'Spools of plastic filament for FDM 3D printers, from everyday PLA to foaming and flexible grades.'),
     "welder": ('Welders', 'TIG, MIG and stick welding machines for home shops, farms and job sites.'),
+    "smart-sprinkler": ('Smart sprinklers', 'App-controlled sprinklers and hose timers that water a lawn or garden on a weather-aware schedule.'),
 }
 
 PRODUCTS = [
@@ -7128,6 +7129,24 @@ PRODUCTS = [
  "summary": 'A DC pulse TIG with HF start, spot TIG, stick and app control. Its 3-year warranty is the longest on a pulse TIG under $300 that we checked.',
  "fit": 'For steel and stainless welders who want pulse for thin sheet and a longer warranty than the cheapest pulse machine.',
  "caveats": ['DC only: it cannot TIG weld aluminum.', "It costs $30.99 more than YesWelder's TIG-205P PRO ($249 on 2026-11-14), which also has HF start and pulse.", "ARCCAPTAIN's $79.99 pedal page lists the TIG200, TIG200P AC/DC and TIG205 Pro, not the 205P Pro. Ask support about pedal fit.", 'Output range and weight were not checked.']},
+
+{"slug": 'aiper-irrisense-2',
+ "brand": 'Aiper',
+ "program": 'cj:aiper',
+ "category": 'smart-sprinkler',
+ "name": 'Aiper IrriSense 2 Smart Irrigation System, 4-in-1 Above-Ground Sprinkler, up to 4,800 sq ft, 10 zones',
+ "model": 'IrriSense 2',
+ "url": 'https://aiper.store/us/products/aiper-irrisense-2',
+ "official_page": 'https://aiper.com/us/aiper-irrisense2',
+ "price": 399.99,
+ "list_price": 499.99,
+ "verified": '2026-11-14',
+ "specs": [('Coverage', 'Up to 4,800 sq ft (445 m²) per unit'), ('Spray reach', 'Up to 39 ft (12 m), measured by Aiper in a wind-free lab'), ('Zones', 'Up to 10, mapped as area, line or point in the Aiper app'), ('Built in', 'Irrigation controller, rotor sprinkler, electric valve and nutrient feeder'), ('Hose', '5/8 in or 3/4 in garden hose'), ('Power', 'Plug-in AC; no battery or solar'), ('Connectivity', '2.4 GHz Wi-Fi, Bluetooth for setup'), ('Weather', 'Forecast-based skips and on-unit rain sensing'), ('Size', 'About 2 ft tall, just over 11 lb')],
+ "warranty": "2 years per Digital Trends and Reviewed; Aiper's US store advertises up to 3 years site-wide",
+ "returns": '30-day free returns on the Aiper US store; free delivery over $79',
+ "summary": "A hose-fed sprinkler on a stake that maps your lawn in an app and waters up to 10 zones over as much as 4,800 sq ft. In The Smart Home Hookup's three catch-cup tests it averaged 76% distribution uniformity, against 47% for the solar OtO.",
+ "fit": "Lawns and gardens up to about 4,800 sq ft with a hose bib and an outdoor outlet near the edge of the yard, for owners who don't want to dig for an in-ground system.",
+ "caveats": ['It needs an outdoor power outlet. There is no battery or solar option.', 'Reach depends on water pressure and the hose. Aiper says a reach under 26 ft usually means the supply is restricted, and suggests keeping the hose under 50 ft and not using an expandable hose.', "In The Smart Home Hookup's test it put down less than half the depth set in the app, so check with catch cups and raise the setting.", "WIRED saw wet and dry stripes, with edges getting more water than the center. The tester's gusty wind also tripped the rain sensor and stopped runs.", 'It only saves one map, and the app has no Alexa, Google Home, HomeKit or SmartThings support.', "The 40% water saving is Aiper's own claim, and reviewers did not measure it."]},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
