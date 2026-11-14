@@ -1,0 +1,136 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Epoch's 24V 100Ah (B24100A-C) is rated 120 A continuous with a 200 A surge that lasts 60 seconds, not a one-second pulse. At 25.6 V with an assumed 90% inverter efficiency, that is about 2,765 W AC sustained and about 4,600 W for a full minute, compared with about 2,300 W AC from the 100 A BMS on the LiTime and Redodo cards. No result says either that Epoch's '11-year warranty' means free replacement only in years 1–3 and 40% off MSRP in years 4–11.",
+ "standout": 2,
+ "standout_why": "I compared against the cited solarpoweredproject.com page, the GSIKE US 24V page (result #1 in both chats) and ryzzun.com's LiTime 24V review. Solar Powered Project covers only 12V batteries, does not normalise end-of-life thresholds and only remarks that 1 s and 5 s surges differ. The GSIKE page gives a peak rating only for its own pack (400 A for 1 s), leaves Epoch out, and lists no surge figure for LiTime, Redodo, Renogy, Power Queen or Battle Born. Ryzzun lists no surge figure and no end-of-life capacity for the LiTime 24V. None of the three gives Epoch's 60-second surge or how its warranty is structured. The LiTime product page was also cited but returned HTTP 429 on every try, so I could not check it.",
+ "decides": "ChatGPT itself warned that a 100 A BMS gives about 2,560 W of DC, which falls short for a 3,000 W inverter. Measured that way, the 24V cards it showed differ in sustained power. LiTime and Redodo are 100 A. Epoch is 120 A continuous, which covers AC loads of roughly 2,300 to 2,765 W that would trip a 100 A BMS, and its 200 A surge lasts 60 s for motor or compressor starts. That supports Epoch as the pick for inverter-heavy or marine use. It does not support using Epoch with a fully loaded 3,000 W inverter: about 3,333 W of DC at 25.6 V is roughly 130 A, which is above 120 A. The case for paying $1,199 is also weaker than the headline suggests. The '11-year warranty' gives free replacement for only 3 years, against Redodo at $469.99. Epoch's own store also showed the battery as out of stock today.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth (low-temp cut-off)",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+  "Redodo 24V 100Ah LiFePO4",
+  "Redodo 24V 100Ah Group 31 Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Continuous discharge",
+   "value": "120 A",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "120 A × 25.6 V nominal = 3,072 W DC. With an assumed 90% inverter efficiency, that is about 2,765 W AC sustained. A 100 A BMS gives 2,560 W DC, or about 2,304 W AC, on the same basis."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Peak/surge discharge",
+   "value": "200 A for 60 s",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "Page wording: '200A (60 Seconds)'. 200 A × 25.6 V = 5,120 W DC, or about 4,600 W AC at an assumed 90%, for a full minute. Other surge ratings on the pages I read are 1–5 s pulses: GSIKE 400 A/1 s, and 12V LiTime 400 A/1 s and Redodo 300 A/5 s per solarpoweredproject.com."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Cycle life",
+   "value": "3,500+ cycles",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "The page says the rating applies 'at the depth of discharge, charge rate and temperature stated on the datasheet, to its end-of-life capacity', but publishes neither the DoD nor the end-of-life percentage. Epoch's resources page lists no datasheet for this model. It also says 'Over 9 years at one full cycle a day.'"
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Warranty structure",
+   "value": "11-year limited warranty: free replacement in years 1–3, then 40% off MSRP on a replacement in years 4–11",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "Counted as free replacement, the term is 3 years, shorter than the '5+ years preferred' bar in ChatGPT's own table."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Price and stock (Epoch US store)",
+   "value": "$1,199, Out of Stock",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "The page also shows 'Sold out. Get an email when it's back in stock.' The collection page https://www.epochbatteries.com/collections/lithium-marine-batteries also lists it as out of stock."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Charge temperature range",
+   "value": "-20 °C (-4 °F) to 55 °C (131 °F) with heating; the Recommended Charging Settings section on the same page gives 0 °C to 55 °C",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "The page contradicts itself. The heater's activation temperature is not stated."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated Bluetooth (B24100A-C)",
+   "label": "Max charge current / IP rating / weight",
+   "value": "150 A (10 s) / IP67 / 48.5 lb",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "As quoted on the page. Epoch gives the charge figure as a 10-second rating, not a continuous one."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "Price (Redodo US store)",
+   "value": "$469.99 (strike-through $2,639.99, '24H Only' banner)",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search of redodopower.com. A direct product fetch returned HTTP 429."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "BMS / expansion / weight",
+   "value": "100 A BMS; up to 4P2S (20.48 kWh); 45.59 lb; full recharge in 5 h with a 20 A (29.2 V) charger",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-13",
+   "note": "100 A × 25.6 V = 2,560 W DC, or about 2,304 W AC at an assumed 90%. The text storecheck returned (cut off) lists no low-temperature charge cut-off for this base model."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Bluetooth",
+   "label": "Price and low-temp recovery",
+   "value": "$569.99; low-temperature cut-off, charging resumes at 41 °F / 5 °C",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search. The page says it fits Group 31 trays only and does not fit standard Group 31 battery boxes."
+  },
+  {
+   "product": "LiTime 24V 100Ah Bluetooth",
+   "label": "Cycle life and price (named reviewer)",
+   "value": "4,000+ cycles at 100% DoD; $539.99 (October 2026)",
+   "source": "https://ryzzun.com/litime-24v-100ah-battery-review/",
+   "source_title": "LiTime 24V 100Ah Battery Review: Specs and 24V Setup",
+   "read": "2026-11-13",
+   "note": "Ryzzun gives no end-of-life capacity percentage and no surge figure. That is the reviewer's number, not one I read on the maker's page, which returned 429."
+  },
+  {
+   "product": "general",
+   "label": "How rivals handle cycle and surge definitions",
+   "value": "Among the brands on solarpoweredproject.com (12V only), only Renogy states an 80% end-of-life. On the GSIKE US 24V page, the only peak rating is GSIKE's own 400 A for 1 s.",
+   "source": "https://gesike.com/blogs/news/best-24v-100ah-lifepo4-battery-in-the-us-2026-gsike-vs-battle-born-litime-renogy-redodo-power-queen",
+   "source_title": "Best 24V 100Ah LiFePO4 Battery US 2026: GSIKE vs Battle Born, LiTime – Gsike",
+   "read": "2026-11-13",
+   "note": "The Solar Powered Project page (https://solarpoweredproject.com/pages/lifepo4-100ah-brand-comparison.html, read 2026-11-13) says 'Claims at different DODs aren't comparable' but has no 24V models. The GSIKE page is published by GSIKE, a vendor."
+  }
+ ],
+ "unsourced": [
+  "LiTime 24V 100Ah Bluetooth and Smart ComFlex: maker-page figures for peak current and its duration, cycle life with end-of-life percentage, low-temperature recovery temperature, warranty term and today's price. litime.com returned HTTP 429 on 4 tries (WebFetch and storecheck), and the manual mirror on manuals.plus returned 403.",
+  "Redodo 24V 100Ah: peak current and its duration, plus cycle-life DoD, C-rate and end-of-life conditions. The full product page returned HTTP 429 on 3 tries, and the search excerpt was cut off before the spec table.",
+  "Epoch B24100A-C: the DoD and end-of-life capacity behind its 3,500-cycle figure. The product page refers to a datasheet that the Epoch resources page does not list. The user manual PDF (EB_ProductMaunal_221130.pdf) is image-based, and I could not extract its text here. A retailer snippet claiming '3,500 cycles (70% DOD)' was seen only in a search result and was not opened, so I did not use it.",
+  "A 24V cycle-life rating normalised to the same end-of-life threshold (70% vs 80%) across LiTime, Redodo and Epoch. None of the pages I could open publishes the end-of-life percentage for a 24V model."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0837316
+ }
+}

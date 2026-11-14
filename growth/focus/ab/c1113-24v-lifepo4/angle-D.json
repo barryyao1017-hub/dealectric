@@ -1,0 +1,99 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a 24V inverter's DC capacitors can draw a spike at hook-up that the battery's BMS reads as a short circuit, so the battery shuts off before the inverter ever starts. Epoch's own guide gives the spike for a Victron MultiPlus-II 24/3000 as 'several hundred to over 1,000 A' and the fix as a 47 Ω pre-charge resistor (50 W minimum, 100 W recommended) held for 5 to 10 seconds.",
+ "standout": 2,
+ "standout_why": "Pages checked: the one cited rival (solarpoweredproject.com) plus four other result pages (gesike.com US 24V, ryzzun.com LiTime 24V review, charge-test.com, batterytrail.com). None mentions capacitor inrush, pre-charge, or a BMS tripping when an inverter is connected. gesike only says the 400 A one-second pulse 'covers startup inrush' from motors and compressors. solarpoweredproject says peak current covers 'inverter start'. ryzzun and gesike already cover the other inverter mechanism, the 100 A BMS × 25.6 V ≈ 2,560 W continuous cap: ryzzun works out about 93 A for a 2,000 W inverter at 24 V. ChatGPT's second answer also covers it. So that point is not new, but the hook-up spike is.",
+ "decides": "This doesn't change which battery to buy. It decides whether a 24V battery plus a 3,000 W-class inverter powers on at all, so any 24V pick paired with a big inverter needs a pre-charge step. It also supports Epoch's specs on paper: 120 A continuous and 200 A for 60 s against 100 A on the Redodo. But Epoch's 24V 100Ah is out of stock at $1,199, so it can't be the premium pick today, and its page lists Bluetooth only, with no CAN/Victron communication. I couldn't confirm a built-in pre-charge on the LiTime or Redodo 24V 100Ah, so a pick card shouldn't claim those batteries avoid the trip.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth LiFePO4",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+  "Redodo 24V 100Ah LiFePO4"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why the battery shuts off when an inverter is connected",
+   "value": "Inverter DC-bus capacitor inrush. In Epoch's words: 'Large inverter DC bus capacitors can look like a short circuit at the exact moment of connection'; 'The BMS cannot always distinguish between a real short circuit and a capacitor charging event.'",
+   "source": "https://www.epochbatteries.com/pages/why-your-lithium-battery-shuts-down-when-connected-to-an-inverter",
+   "source_title": "Why Your Lithium Battery May Shut Down With Certain Inverters, And How To Fix It (Epoch Batteries, published Jun 22, 2026)",
+   "read": "2026-11-13",
+   "note": "Battery maker's own technical guide. The fix it gives is a momentary (not latching) pre-charge button and resistor across the main positive disconnect: hold the button, close the main disconnect, then release."
+  },
+  {
+   "product": "general",
+   "label": "Inrush and pre-charge spec for a 24V battery on a Victron MultiPlus-II 24/3000",
+   "value": "Spike of 'several hundred to over 1,000 A'. Pre-charge: 47 Ω resistor, 50 W minimum, 100 W recommended, 5 to 10 s hold.",
+   "source": "https://www.epochbatteries.com/pages/why-your-lithium-battery-shuts-down-when-connected-to-an-inverter",
+   "source_title": "Why Your Lithium Battery May Shut Down With Certain Inverters, And How To Fix It (Epoch Batteries)",
+   "read": "2026-11-13",
+   "note": "Epoch's example uses its 24V 230Ah (C24230A) battery and calls the values 'application-specific examples, not universal prescriptions'. My arithmetic: 25.6 V ÷ 47 Ω ≈ 0.54 A through the resistor at the start, against 100 to 120 A continuous BMS limits on the candidates."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Price and stock",
+   "value": "$1,199, sold out",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "Maker's US store, which reads 'Sold out. Get an email when it's back in stock.' The Epoch marine collection page also lists it as Out of Stock at $1,199."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "BMS discharge current",
+   "value": "120 A continuous; 200 A peak for 60 s",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "Maker's spec: 'Max Continuous Discharge Amps: 120A'. 120 A × 25.6 V ≈ 3,072 W nominal, against 2,560 W for a 100 A BMS."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Cold charging, expansion, communication, warranty",
+   "value": "Self-heating, charge range -20 °C (-4 °F) to 55 °C with heating (cells charge 0 to 55 °C after warming); up to 2 in series / 4 in parallel; Bluetooth app only, no CAN or Victron on the page; IP67; 11-year limited warranty (years 1–3 replacement, years 4–11 40% off MSRP)",
+   "source": "https://www.epochbatteries.com/products/24v-100ah-marine-lithium-battery",
+   "source_title": "Epoch 24V 100Ah LiFePO4 Battery (2.56kWh)",
+   "read": "2026-11-13",
+   "note": "Maker's product page."
+  },
+  {
+   "product": "Redodo 24V 100Ah LiFePO4",
+   "label": "Price, BMS, expansion, charge",
+   "value": "$469.99; 100 A BMS; up to 4P2S (20.48 kWh); 29.2 V 20 A charger for a 5 h charge",
+   "source": "https://www.redodopower.com/products/24v-100ah-lifepo4-battery",
+   "source_title": "Redodo 24V 100Ah LiFePO4 Lithium Battery | Marine, RV, Solar Home, Home Backup",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on the Redodo Shopify store. The listing is tagged '24H Only', so the price may be a one-day deal. The product page itself returned HTTP 429 on a direct fetch."
+  },
+  {
+   "product": "general",
+   "label": "What Victron integration needs",
+   "value": "Victron says lithium batteries need communication 'between the power electronics and the battery management hardware', and 'These are mostly connected via “BMS-Can” (CANBus) on a GX device.' LiTime, Epoch and Redodo are not on Victron's battery compatibility list.",
+   "source": "https://www.victronenergy.com/live/battery_compatibility:start",
+   "source_title": "Victron Energy – Battery compatibility",
+   "read": "2026-11-13",
+   "note": "This affects ChatGPT's 'Victron-compatible' LiTime ComFlex card: closed-loop control needs a Victron GX device, and Victron itself doesn't list the brand."
+  },
+  {
+   "product": "LiTime 24V 100Ah Bluetooth LiFePO4",
+   "label": "Continuous output limit and inverter headroom (reviewer)",
+   "value": "Ryzzun: 100 A BMS caps output at about 2,560 W; 'A 24V inverter of up to about 2,000W continuous leaves some headroom'; a 2,000 W inverter pulls about 93 A (2,000 ÷ 24 ÷ 0.9); allows 4P2S",
+   "source": "https://ryzzun.com/litime-24v-100ah-battery-review/",
+   "source_title": "LiTime 24V 100Ah Battery Review: Specs and 24V Setup (Ryzzun)",
+   "read": "2026-11-13",
+   "note": "Named reviewer. This page is one of ChatGPT's results, so this point is already covered there. Included only as context."
+  }
+ ],
+ "unsourced": [
+  "LiTime 24V 100Ah Bluetooth price, peak current and low-temperature cutoff/recovery temperatures: litime.com returned HTTP 429 on the www and bare-domain product pages and through storecheck.py, and amzcheck.py search returned nothing (Amazon walled it).",
+  "Whether the LiTime or Redodo 24V 100Ah BMS has a built-in pre-charge or inrush-tolerant short-circuit delay: maker pages were rate-limited and no manual text turned up. Redodo claims pre-charge only on its 12V trolling battery.",
+  "Redodo 24V 100Ah peak current and whether the base model has a low-temperature charge cutoff: the storecheck summary mentions neither, and the product page returned HTTP 429.",
+  "What LiTime 24V 100Ah Smart ComFlex needs to talk to Victron (GX device, CAN profile): litime.com was rate-limited, and Victron's compatibility list has no LiTime entry."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0218967
+ }
+}

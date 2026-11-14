@@ -1,0 +1,98 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Epoch 24V 100Ah (B24100A-C, $1,199, listed out of stock on Epoch's US page) talks only to Epoch's Bluetooth app and has no Victron/CAN/RS485 link, with a limit of 2 in series or 4 in parallel, and that Victron's own battery compatibility list names BattleBorn but not LiTime, Epoch or Redodo, so LiTime ComFlex's 'Victron compatible' claim comes from LiTime, not Victron.",
+ "standout": 2,
+ "standout_why": "I compared against the cited solarpoweredproject.com 100Ah brand comparison (12V models only; its checklist mentions series/parallel limits but gives no numbers and says nothing about Victron or inverter communication) and LiTime's 'Best Victron-Compatible LiFePO4 Battery' guide, which was in ChatGPT's results (it covers 12V models only and has only a general line that 'absence from a published compatibility list does not prove that a battery cannot work electrically'). The cited LiTime 24V Bluetooth product page returned HTTP 429 on every try, so I couldn't check it. None of the pages I opened say that Epoch's 24V 100Ah has no inverter communication, give its 2S/4P limit, or say which brands Victron's own list names.",
+ "decides": "This changes the 'premium' pick. ChatGPT's $1,199 Epoch 24V 100Ah is out of stock on Epoch's US store and can't feed state of charge or charge limits to a Victron GX. It's a marine/trolling battery with heating and IP67, not a pick for a networked solar or inverter system. For a Victron bank, the only 24V 100Ah with closed-loop communication in ChatGPT's answer is LiTime's ComFlex. LiTime says GX-managed banks go up to 16 in parallel on the BMS-Can port, but Victron has not listed or tested it, so the page should say support comes from LiTime. Redodo's and LiTime's standard Bluetooth 24V models are open-loop: the charger and inverter must be programmed by hand.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth (low-temp cutoff)",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+  "Redodo 24V 100Ah LiFePO4"
+ ],
+ "findings": [
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Series/parallel limit",
+   "value": "Up to 2 in series (48 V) or up to 4 in parallel (400 Ah at 24 V); mixed series-parallel not addressed",
+   "source": "https://epochbatteries.com/products/24v-100ah-heated-bluetooth-lifepo4-battery",
+   "source_title": "24V 100Ah Marine Lithium Battery – Epoch",
+   "read": "2026-11-13",
+   "note": "From Epoch's US product page."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Communication",
+   "value": "Bluetooth to the Epoch Li-Ion app (iOS/Android) only; the page lists no Victron, CAN or RS485 communication",
+   "source": "https://epochbatteries.com/products/24v-100ah-heated-bluetooth-lifepo4-battery",
+   "source_title": "24V 100Ah Marine Lithium Battery – Epoch",
+   "read": "2026-11-13",
+   "note": "Epoch's Victron-comms 24V model is the 24V 230Ah V2 Elite (seen in search listings, not opened)."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Price and stock",
+   "value": "$1,199, out of stock ('Notify me')",
+   "source": "https://epochbatteries.com/products/24v-100ah-heated-bluetooth-lifepo4-battery",
+   "source_title": "24V 100Ah Marine Lithium Battery – Epoch",
+   "read": "2026-11-13",
+   "note": "Epoch's US store. A recertified unit with a 2-year warranty is sold separately."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Charger requirement",
+   "value": "Max charge 29.2 V; bulk/absorption 28.4–29.2 V; equalization and temperature compensation disabled; recommended charge 50 A; 'Avoid 12V chargers and non-programmable lead-acid chargers'; heating runs on incoming charge current",
+   "source": "https://epochbatteries.com/products/24v-100ah-heated-bluetooth-lifepo4-battery",
+   "source_title": "24V 100Ah Marine Lithium Battery – Epoch",
+   "read": "2026-11-13",
+   "note": "The page gives float as 26.8–27.6 V in the specs but 'lithium-compatible float or disabled' elsewhere."
+  },
+  {
+   "product": "Epoch 24V 100Ah Heated LiFePO4 (B24100A-C)",
+   "label": "Stated exclusion",
+   "value": "Deep-cycle battery; for engine starting or alternator-direct charging, 'confirm compatibility directly with Epoch and the equipment manufacturer before installation'",
+   "source": "https://epochbatteries.com/products/24v-100ah-heated-bluetooth-lifepo4-battery",
+   "source_title": "24V 100Ah Marine Lithium Battery – Epoch",
+   "read": "2026-11-13",
+   "note": "BMS: 120 A continuous, 200 A for 60 s."
+  },
+  {
+   "product": "general",
+   "label": "Victron battery compatibility list",
+   "value": "Lists BattleBorn as tested; LiTime, Epoch, Redodo and SOK are not named. Unlisted third-party batteries 'will require additional information and support from a local supplier'",
+   "source": "https://www.victronenergy.com/live/_export/raw/battery_compatibility:start",
+   "source_title": "Victron Energy – Battery compatibility (start)",
+   "read": "2026-11-13",
+   "note": "Text search of the raw export for LiTime, Li Time, Epoch, Redodo, Battle and SOK. Only 'BattleBorn' matched. The page says most managed batteries connect via BMS-Can on a GX device."
+  },
+  {
+   "product": "LiTime Smart ComFlex (Victron comms)",
+   "label": "Victron hookup and parallel limit with communication",
+   "value": "RJ45 cable from the battery's CAN port to the GX BMS-Can port; on the VE.Can port set the profile to 'CAN-bus BMS (500 kbit/s)'; up to 16 batteries in parallel managed by the GX as one bank",
+   "source": "https://www.litime.com/blogs/buying-guides/victron-bms-communication-guide",
+   "source_title": "LiTime – Victron BMS communication guide",
+   "read": "2026-11-13",
+   "note": "The guide is written around the 12V 100Ah ComFlex, and its 16-battery example works out to 20,480 Wh. It doesn't say whether the 24V ComFlex follows the same limit or whether communication works with batteries in series. I couldn't open the 24V ComFlex product page (HTTP 429)."
+  },
+  {
+   "product": "LiTime Smart ComFlex (Victron comms)",
+   "label": "LiTime's own caveat on Victron listing",
+   "value": "'absence from a published compatibility list does not prove that a battery cannot work electrically'; parallel limit stated as 16P1S with communication, 4P4S in standard installs (12V 320Ah model)",
+   "source": "https://www.litime.com/blogs/buying-guides/best-victron-compatible-lifepo4-battery",
+   "source_title": "Best Victron-Compatible LiFePO4 Battery: 4 Brands Compared – LiTime",
+   "read": "2026-11-13",
+   "note": "The page is dated Nov 12, 2026 and covers 12V models only."
+  }
+ ],
+ "unsourced": [
+  "LiTime 24V 100Ah Bluetooth and 24V Smart ComFlex product pages (series/parallel limits, compatible Victron devices, GX/Venus OS firmware, price): every request to litime.com product pages and storecheck.py returned HTTP 429, and litime.de did too. Search snippets of a manuals.plus copy of the manual show 4P2S, but I couldn't open it (HTTP 403).",
+  "Redodo 24V 100Ah series/parallel limit, communication and price: redodo.com failed with a certificate error and redodopower.com returned HTTP 429. Search snippets say 4P2S, but I didn't open the page.",
+  "Whether the 24V ComFlex keeps CAN communication with batteries in series (2S for 48 V), and the minimum Venus OS version: neither LiTime blog page states either."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0795130000000006
+ }
+}

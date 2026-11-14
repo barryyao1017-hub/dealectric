@@ -1,0 +1,94 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states what a 24V 100Ah LiFePO4 pack actually delivered in watt-hours: techtest.org (Michael Barton, 2026-10-11) measured the Dynesspower 24V 100Ah at an average of 2,700.56 Wh / 105.57 Ah over three 20 A runs. None of the results gives a measured figure from a named tester for ChatGPT's Epoch or Redodo 24V picks.",
+ "standout": 1,
+ "standout_why": "The only page ChatGPT cited for a rival (solarpoweredproject.com) says it does not test batteries and covers only 12V 100Ah models. Of the uncited results, gesike.com's head-to-head and walkingsolar.com's 'Tested' page give specs only. ryzzun.com and firstquadcopter.com give spec repeats or estimates. But stuffvsthings.com (rank 12 in chat 2) already quotes The Solar Pit's 104.05 Ah for the LiTime 24V 100Ah. charge-test.com (rank 9) already lists Dynesspower's 105.57 Ah and Geleipu's 103.75 Ah, though without measured Wh, discharge current or voltage profile. So rivals have part of this. What none of them has is these figures side by side with tester, current and date, plus the fact that no named measurement exists for the Epoch or Redodo 24V.",
+ "decides": "It supports LiTime as the value pick, but only weakly: its one capacity measurement comes from an affiliate-linked YouTube channel and the method isn't stated. It does not support Redodo, the 24V that Dealectric lists (redodo-24v-100ah-lifepo4-battery): no named measurement exists, so the page can only cite Redodo's own 2,560 Wh rating. Epoch's premium is supported only by Panbo's test of a 12V sibling. A 24V 100Ah pack that a named lab measured above its rating over three runs exists (Dynesspower, about €300 at Amazon EU in the review), but I did not check whether it is sold in the US.",
+ "candidates": [
+  "LiTime 24V 100Ah Bluetooth (low-temp cutoff)",
+  "LiTime 24V 100Ah Smart ComFlex",
+  "Epoch 24V 100Ah Heated (B24100A-C / B24100B)",
+  "Redodo 24V 100Ah LiFePO4 (100A BMS)",
+  "Dynesspower 24V 100Ah",
+  "Geleipu 25.6V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "LiTime 24V 100Ah LiFePO4",
+   "label": "Measured capacity (The Solar Pit, YouTube)",
+   "value": "104.05 Ah from a 100 Ah rating",
+   "source": "https://stuffvsthings.com/p/litime-24v-100ah-lifepo4-battery/",
+   "source_title": "LiTime 24V 100Ah LiFePO4 Battery Review | Stuff VS Things",
+   "read": "2026-11-13",
+   "note": "Stuff VS Things credits this to The Solar Pit (YouTube, September 2023). YouTube oEmbed for https://www.youtube.com/watch?v=3rVQQvVdfD8 confirms the video 'LiTime 24v 100Ah LiFePO4 Battery Review' is by The Solar Pit, but I could not open its description or transcript, so the figure comes from Stuff VS Things' report. Discharge rate, cutoff and temperature are not stated. The page says the channel is linked through a LiTime affiliate link. 104.05 Ah × 25.6 V nominal ≈ 2,664 Wh (my arithmetic, not measured)."
+  },
+  {
+   "product": "LiTime 24V 100Ah LiFePO4",
+   "label": "Measured weight (The Solar Pit)",
+   "value": "44.4 lb (spec 45.59 lb)",
+   "source": "https://stuffvsthings.com/p/litime-24v-100ah-lifepo4-battery/",
+   "source_title": "LiTime 24V 100Ah LiFePO4 Battery Review | Stuff VS Things",
+   "read": "2026-11-13",
+   "note": "Stuff VS Things reports that The Solar Pit weighed the unit. The scale is not stated. The same page says BMS overload protection 'cut out as designed' in the test, with no current given."
+  },
+  {
+   "product": "Dynesspower 24V 100Ah",
+   "label": "Measured capacity and energy (techtest.org, Michael Barton)",
+   "value": "Average 105.57 Ah / 2,700.56 Wh (runs: 105.52 Ah / 2,699.44 Wh; 105.60 Ah / 2,697.08 Wh; 105.60 Ah / 2,705.15 Wh)",
+   "source": "https://techtest.org/dynesspower-24v-100ah-lifepo4-akku-im-test-1056-kapazitaet-und-27-kwh-fuer-rund-300-e/",
+   "source_title": "Dynesspower 24V 100Ah LiFePO4 Akku im Test: 105,6 % Kapazität und 2,7 kWh für rund 300 €",
+   "read": "2026-11-13",
+   "note": "Published 2026-10-11. Constant 20 A from an electronic load (about 0.2C, roughly 512 W), about 5 h 17 min per run. Results are 5.6% above the 100 Ah rating and 5.5% above the 2,560 Wh rating. Spread across the three runs is 0.083 Ah and 8.07 Wh. Price was about €300 at Amazon at the time of testing."
+  },
+  {
+   "product": "Dynesspower 24V 100Ah",
+   "label": "Voltage curve under 20 A load (techtest.org)",
+   "value": "Just under 28 V at start, about 26.2 V plateau; below 25 V after 4 h 48 min, below 24 V after 5 h 5 min; about 20.8 V just before BMS cutoff",
+   "source": "https://techtest.org/dynesspower-24v-100ah-lifepo4-akku-im-test-1056-kapazitaet-und-27-kwh-fuer-rund-300-e/",
+   "source_title": "Dynesspower 24V 100Ah LiFePO4 Akku im Test: 105,6 % Kapazität und 2,7 kWh für rund 300 €",
+   "read": "2026-11-13",
+   "note": "This matters when setting an inverter's low-voltage cutoff. The manual gives low-temperature charge protection (stops at 0 °C, resumes at 5 °C), but the reviewer says he could not verify it."
+  },
+  {
+   "product": "Geleipu 25.6V 100Ah",
+   "label": "Measured capacity and energy (techtest.org, Michael Barton)",
+   "value": "103.85 Ah / 2,696 Wh at 5 A; 103.64 Ah / 2,683 Wh at 10 A",
+   "source": "https://techtest.org/?p=125789",
+   "source_title": "Geleipu 25,6V 100Ah LiFePO4 Batterie im Test",
+   "read": "2026-11-13",
+   "note": "Published 2024-05-09. BMS undervoltage disconnect at about 20.8 V. The reviewer found no low-temperature charge cutoff. Measured weight 21.5 kg. A 15 A run was done but no figure was published."
+  },
+  {
+   "product": "Epoch 12V 100Ah B1200B (12V sibling of the Epoch 24V pick)",
+   "label": "Measured capacity and load (Panbo, Ben Stein)",
+   "value": "Just under 110 Ah on a 20-hour 5 A rundown; 108 Ah on a repeat after high-load tests; held about 160 A continuous without shutdown (rated 120 A)",
+   "source": "https://panbo.com/epoch-batteries-elegant-drop-in-lifepo4/",
+   "source_title": "Epoch Batteries, elegant drop-in LiFePO4 - Panbo",
+   "read": "2026-11-13",
+   "note": "Published 2023-02-27, updated 2024-02-09. This is the 12V model, not the 24V 100Ah heated unit ChatGPT recommended, so it says something about Epoch's build but is not a 24V figure. No heater measurements are reported."
+  },
+  {
+   "product": "general",
+   "label": "Testing status of the rival page ChatGPT cited",
+   "value": "Explicitly no testing; 12V 100Ah models only",
+   "source": "https://solarpoweredproject.com/pages/lifepo4-100ah-brand-comparison.html",
+   "source_title": "LiFePO4 100Ah Battery Brands: A Spec-Math Comparison (No Testing Claims) | Solar Powered Project",
+   "read": "2026-11-13",
+   "note": "The page says 'we do not test batteries and make no testing claims'. It covers Renogy, LiTime, Redodo, ECO-WORTHY and ExpertPower 12V models only. There are no 24V figures and no mention of Epoch."
+  }
+ ],
+ "unsourced": [
+  "Epoch 24V 100Ah heated (B24100A-C / B24100B): measured capacity, heater power or warm-up time from a named reviewer or lab. Searched Panbo, Will Prowse, Off-Grid Garage and general reviews and found only retailer listings and Panbo's 12V test.",
+  "Redodo 24V 100Ah: measured capacity from a named reviewer. The FirstQuadcopter review (Gyuri Flo) only repeats Redodo's specs, and techtest.org, charge-test.com and Panbo have no 24V Redodo test.",
+  "LiTime 24V 100Ah Smart ComFlex: no named measurements found.",
+  "The Solar Pit video's own description or transcript, to confirm 104.05 Ah and the discharge method first-hand. YouTube metadata beyond the channel name could not be opened.",
+  "A Will Prowse, Off-Grid Garage or Hobotech capacity test of any 24V 100Ah pack from LiTime, Redodo or Epoch: searched and none surfaced.",
+  "Whether Dynesspower 24V 100Ah is sold in the US, and its US price: not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0698166
+ }
+}
