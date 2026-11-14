@@ -186,6 +186,57 @@ def amazon_rescue(draft: dict, d: Path) -> list[dict]:
     return found
 
 
+def sanitize(draft: dict) -> list[str]:
+    """Mechanical repairs for what the one fix pass keeps leaving behind: a product record under a program we don't have
+    (set to the brand's approved program when there is one, else demoted to a plain row linking the maker's page), buy
+    tokens that name no product, and the banned word in a rival's return-policy note."""
+    import gappage
+    import products as P
+    notes = []
+    progs = gappage.programs()
+    known = {p["slug"] for p in P.PRODUCTS}
+    pg = draft.get("page") or {}
+    for p in list(draft.get("products") or []):
+        if p.get("program") in progs:
+            continue
+        fit = next((k for k, v in progs.items() if not k.startswith("amazon") and v.lower().startswith(str(p.get("brand", "")).lower() + " ")), None)
+        if fit and p.get("price") and p.get("url"):
+            notes.append(f"{p['slug']}: program {p.get('program')!r} -> {fit}")
+            p["program"] = fit
+            p.setdefault("verified", A.today())
+            continue
+        draft["products"].remove(p)
+        notes.append(f"{p['slug']}: no approved program, demoted to a plain row")
+        for r in pg.get("rows") or []:
+            if r.get("slug") == p["slug"]:
+                r.pop("slug")
+                r.update({"brand": p["brand"], "model": r.get("model") or p.get("model") or p["name"], "url": p.get("url")})
+    live = known | {p["slug"] for p in draft.get("products") or []}
+    names = {r.get("slug"): r.get("model") for r in pg.get("rows") or []}
+    for k in ("answer", "after", "intro"):
+        t = pg.get(k)
+        if not t:
+            continue
+        for tok in set(re.findall(r"\{buy:([a-z0-9-]+)\}", t)):
+            if tok not in live:
+                nm = names.get(tok) or tok.replace("-", " ")
+                t = re.sub(r"\s*\(\{buy:%s\}\)" % re.escape(tok), "", t).replace("{buy:%s}" % tok, nm)
+                notes.append(f"token {tok} replaced with text")
+        pg[k] = t
+    raw = json.dumps(pg, ensure_ascii=False)
+    fixed = re.sub(r"(\d+)[- ][Dd]ay [Mm]oney[- ][Bb]ack [Gg]uarantee", r"\1-day returns", raw)
+    fixed = re.sub(r"[Mm]oney[- ][Bb]ack [Gg]uarantee", "refund policy", fixed)
+    fixed = re.sub(r"[Ss]atisfaction [Gg]uarantee", "satisfaction policy", fixed)
+    if fixed != raw:
+        draft["page"] = json.loads(fixed)
+        notes.append("return-policy wording")
+    if notes:
+        draft.setdefault("sanitized", []).extend(notes)
+        if not (draft.get("gate") or {}).get("pass"):
+            draft.pop("gate", None)
+    return notes
+
+
 def fill_policy(draft: dict) -> int:
     """New product records that lack warranty or return terms take them from a product of the same brand we already
     list (the terms are the store's, read and verified when that product was added). Kit fix passes often drop them."""
@@ -207,7 +258,7 @@ def apply(slug: str) -> dict:
     if not draft:
         return {"slug": slug, "status": "no draft"}
     kit = bool(draft.get("kit_page") or draft.get("bundle_compare"))
-    if fill_policy(draft):
+    if sanitize(draft) + [1] * fill_policy(draft):
         A.jsave(d / "draft.json", draft)
     rows = (draft.get("page") or {}).get("rows") or []
     amazon_pick = False
