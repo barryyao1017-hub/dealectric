@@ -177,7 +177,7 @@ def amazon_verify(pairs: list[dict]) -> dict:
     """One model call over [{i, brand, model, title}]: is each Amazon listing exactly that product, alone? {i: bool}."""
     if not pairs:
         return {}
-    prompt = ("Each item below pairs a product (brand, model) with the title of an Amazon listing. For each item decide whether the "
+    prompt = ("Each item below pairs a product (brand, model) with the title of a seller's listing (Amazon or another store). For each item decide whether the "
               "listing sells exactly that product, new and alone. Answer false when the listing is an accessory or part for it, a "
               "different model, generation, size or capacity (a '+' or 'Pro' or 'v2' difference counts), a different product type "
               "from the same maker, a bundle with other products, or an import / foreign-market version. A colour or finish variant "
@@ -397,11 +397,15 @@ def price_one(p: dict, tab, B, BC) -> dict | None:
             return {"error": r2["error"]}
         r = dict(r2, cards=(r.get("cards") or []) + (r2.get("cards") or []))
     sellers: dict[str, float] = {}
-    for c in r.get("cards") or []:
+    cards = [c for c in r.get("cards") or [] if c.get("kind") in ("retailer", "brand")]
+    # 11-14: buycheck's word match let through 2x packs, bundles and sibling models (T-Rex 3 Pro for the T-Rex 3); each card's
+    # title is now confirmed as the same item, alone, before its price counts
+    ok = amazon_verify([{"i": i, "brand": p["brand"], "model": B.short_name(p), "title": c["title"]} for i, c in enumerate(cards)])
+    for c in [c for i, c in enumerate(cards) if ok.get(i, (False, ""))[0]]:
         if c.get("kind") == "retailer":
             name = _retailer(c["merchant"])
         elif c.get("kind") == "brand":
-            name = B.store_host(p) if amazon else None    # the brand store is "ours" for a linked product; for an Amazon pick it competes
+            name = c["merchant"] if amazon else None    # the brand store is "ours" for a linked product; for an Amazon pick it competes
         else:
             name = None
         if name and (name not in sellers or c["price"] < sellers[name]):
