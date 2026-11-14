@@ -320,23 +320,45 @@ def apply(slug: str, local: bool) -> dict:
             return {"slug": slug, "status": "skipped", "reason": "src/ or docs/ has uncommitted changes"}
         # 1. products and the kit, cart-tested, committed first (abpage.apply refuses a dirty src/)
         import gappage
+        # Undo only this run's own edits on a failed cart test (DLC-268): each file goes back to its text from before
+        # the run unless someone else changed it between this run's steps; new images go, other untracked ones stay.
+        kit_files = [ROOT / f for f in ("src/products.py", "src/kits.py", "src/kits-tested.json")]
+        text = lambda f: f.read_text() if f.exists() else None   # noqa: E731
+        imgs = lambda: set(subprocess.run(["git", "ls-files", "--others", "--exclude-standard", "src/img"], cwd=ROOT, capture_output=True, text=True).stdout.split())   # noqa: E731
+        before, imgs_before, foreign = {f: text(f) for f in kit_files}, imgs(), set()
+        mine = dict(before)
+        def step_start():
+            foreign.update(f for f in kit_files if text(f) != mine[f])
+        def step_end():
+            mine.update({f: text(f) for f in kit_files})
         news = [p["slug"] for p in draft.get("products") or []]
         if news:
             gappage.insert({**draft, "status": "products_only"}, {})
             subprocess.run(["python3.12", "tools/images.py", *news], cwd=ROOT, capture_output=True, text=True)
+        step_end()
         fails = []
         import time
         for n, k in enumerate(draft_kits(draft)):
             if n:
                 time.sleep(90)   # Shopify 429s back-to-back cart tests on one store (UGREEN, 11-11)
+            step_start()
             write_kit({**draft, "kit": k})
             r = subprocess.run(["python3.12", "tools/kitcheck.py", k["slug"]], cwd=ROOT, capture_output=True, text=True)
+            step_end()
             print(k["slug"], r.stdout[-1200:], r.stderr[-400:], flush=True)
             if r.returncode:
                 fails.append(k["slug"] + ": " + (r.stdout or r.stderr)[-300:])
         if fails:
-            subprocess.run(["git", "checkout", "--", "src/products.py", "src/kits.py", "src/kits-tested.json"], cwd=ROOT)
-            subprocess.run(["git", "clean", "-fdq", "src/img"], cwd=ROOT)
+            step_start()
+            for f in kit_files:
+                if f in foreign:
+                    print(f"kitpage: {f.relative_to(ROOT)} changed under this run, so its edit was left in place; remove it by hand", file=sys.stderr, flush=True)
+                elif before[f] is None:
+                    f.unlink(missing_ok=True)
+                else:
+                    f.write_text(before[f])
+            for i in imgs() - imgs_before:
+                (ROOT / i).unlink(missing_ok=True)
             return {"slug": slug, "status": "failed", "errors": ["cart test: " + f for f in fails]}
         subprocess.run(["git", "add", "src/products.py", "src/kits.py", "src/kits-tested.json", "src/img"], cwd=ROOT)
         subprocess.run(["git", "commit", "-q", "-m", f"Kits {', '.join(k['slug'] for k in draft_kits(draft))} for /{draft['slug']}: products and cart test (DLC-223)\n\n"
