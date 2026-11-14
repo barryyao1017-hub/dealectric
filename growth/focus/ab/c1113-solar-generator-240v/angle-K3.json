@@ -1,0 +1,110 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300 takes solar through only two XT60 ports rated 12–60 V and 20 A each. The 500 W panels in BLUETTI's own $3,299 Apex 300 + 2 × 500W bundle are each 49.1 V Voc, so they have to go one per port and cannot be wired in series (2 × 49.1 = 98.2 V). The $699 SolarX 4K that raises solar input to about 4 kW accepts only 150–500 V strings.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's results: the ankersolix.com F3800 / F3800 Plus pages (results 1–3), the Jackery 5000 Plus manual and product pages (4, 5, 7, 8, 11–17), and the Anker F3800 Plus Technical Brief (6, 9, 10; the PDF would not render as text for me). None of them covers BLUETTI or the Apex 300, so none gives its 12–60 V XT60 solar limit, the one-panel-per-port rule for 49.1 V panels, or the 150–500 V floor on the SolarX 4K. The main Anker trap is already on rival result 1: ankersolix.com/products/f3800?skimoffer=3789496 now serves the F3800 Plus page, which says '(Note: The 240V output cannot be used while the device is charging via 120V AC.)' That would only score 1 for Anker. This finding is new and useful but describes how to wire the kit rather than which kit to buy, so 2 and not 3.",
+ "kit_items": [
+  "Power station with 240 V from one unit: BLUETTI Apex 300 (2,764.8 Wh, 3,840 W, NEMA 14-50R at 120/240 V, switched by a voltage selector per StorageReview). It is already listed (bluetti-apex-300), it is on an approved store (awin:bluetti_us), and BLUETTI's page says it runs 120 V and 240 V loads 'even while charging'. Anker's page says the F3800 Plus cannot use its 240 V output while charging on 120 V AC.",
+  "Solar panels: 2 × BLUETTI SORA 500 (49.1 V Voc, 13.31 A Isc per Impulse Gamer). Put one panel in each of the Apex 300's two XT60 inputs (12–60 V, max 20 A). Never wire the two in series into one port: 98.2 V is over the 60 V limit. 13.31 A Isc is under the 20 A port limit.",
+  "Panel-to-station cable: MC4 to XT60 rated 20 A (BLUETTI 'Solar Charging Cable (20A MC4 to XT60)', $29). The Apex 300 box has no solar cable. BLUETTI also sells a 10 A MC4-to-XT60 cable, which is below the SORA 500's 13.31 A Isc, so the 20 A one is the right buy if the panel box lacks a cable.",
+  "Do not add: SolarX 4K ($699). It accepts only 150–500 V panel strings, which means at least four SORA 500s in series (3 × 49.1 = 147.3 V is still under 150 V), so it does nothing for a two-panel portable kit."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2 × 500W | https://www.bluettipower.com/products/apex-300-2-500w | $3,299.00 | 2026-11-13",
+    "BLUETTI Solar Charging Cable (20A MC4 to XT60), add 1 per panel only if the panel box lacks a cable | https://www.bluettipower.com/products/apex300-solar-charging-cable | $29.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + 2 × 500W, $3,299.00 (compare-at $3,299.00), in stock 2026-11-13; listing text '3,840W | 2,764.8Wh | 1,000W Solar'. Single panel sold alone at $849.00; Apex 300 + 500W at $2,499.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar inputs (built in)",
+   "value": "2 × XT60, 12–60 V, max 20 A each; up to 2,400 W solar on the unit alone",
+   "source": "https://www.notebookcheck.net/Bluetti-APEX-300-power-storage-system-review-More-than-just-a-balcony-power-station.1083982.0.html",
+   "source_title": "Bluetti APEX 300 power storage system review (Notebookcheck, Christian Hintze, 2025-08-10, updated 2026-10-05)",
+   "read": "2026-11-13",
+   "note": "Christian Hintze lists 'Right: 2x XT60 (12 - 60 V, max. 20 A), P090D-DC (connection SolarX 4K or battery packs)'. The tested unit looks EU-spec (230 V). StorageReview's US review gives the same '2x 1,200W, 12 to 60VDC, 2x 20A'."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input spec, US review",
+   "value": "2 × 1,200 W, 12–60 VDC, 2 × 20 A; 240 V on 1 × NEMA 14-50R (120/240 V, 50 A) via the front voltage selector; front four 20 A outlets stay at 120 V in 240 V mode",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien, Nov 9, 2026)",
+   "read": "2026-11-13",
+   "note": "OBrien also found that on a 240 V grid supply with output in 120 V mode, the unit 'will not pull from both legs until the output is switched to 240V mode'. He measured a 16 ms transfer to battery. Every DC output, including USB-C, needs the $299 Hub D1."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V while charging",
+   "value": "Runs 120 V and 240 V loads at the same time while charging (maker claim)",
+   "source": "https://www.bluettipower.com/products/apex-300-2-500w",
+   "source_title": "Apex 300 + 2 × 500W – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Page text: 'Apex 300 lets you power both 120V and 240V devices simultaneously — even while charging.' Box list: Apex 300, AC charging cable 5.91 ft, car charging cable 2.41 ft, M5×10 grounding screw, manual and warranty card. No solar cable is listed."
+  },
+  {
+   "product": "BLUETTI SORA 500",
+   "label": "Electrical specs and box contents",
+   "value": "Voc 49.1 V, Vmp 40.92 V, Isc 13.31 A, Imp 12.22 A; box holds panel, MC4-to-XT60/DC adapter cable, manual, warranty card",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review (Impulse Gamer, Andrew Paul, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 2 in series = 98.2 V, over the Apex 300's 60 V port limit, so one panel per port. 13.31 A Isc < 20 A port limit. Andrew Paul measured nearer 400 W than 500 W in Australian winter. His unit is likely an AU unit; the amp rating of the in-box cable is not given. The US maker page (bluettipower.com/products/500w-portable-solar-panel) showed an empty Tech Specs section and MC4 connectors, at $849.00 single or $1,698.00 for two."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Solar voltage window and price",
+   "value": "Accepts panels from 150 V to 500 V; $699.00",
+   "source": "https://www.bluettipower.com/products/solarx-4k-solar-charge-controller",
+   "source_title": "SolarX 4K & Locking Terminal to P090D Adapter Cable (for Single Use) – BLUETTI US (store listing via storecheck)",
+   "read": "2026-11-13",
+   "note": "Listing text: 'Supports solar panels from 150 V to 500 V, safely stepping down to below 60 V'. Lists Apex 300 as compatible. With 49.1 V Voc panels, 150 V needs at least 4 in series (3 × 49.1 = 147.3 V)."
+  },
+  {
+   "product": "BLUETTI MC4-to-XT60 cables",
+   "label": "Cable rating and price",
+   "value": "20 A MC4-to-XT60 $29.00, in stock; 10 A MC4-to-XT60 $39.00, sold out",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable (20A MC4 to XT60) – BLUETTI US (store listing via storecheck)",
+   "read": "2026-11-13",
+   "note": "The 20 A cable's URL slug is 'apex300-solar-charging-cable'. The 10 A version is at https://www.bluettipower.com/products/solar-charging-cable-mc4-xt60. A 10 A rating is below the SORA 500's 13.31 A Isc."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging on 120 V AC",
+   "value": "Not available",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Verbatim: '(Note: The 240V output cannot be used while the device is charging via 120V AC.)' AC input is '120V~ 15A Max (< 3hrs) / 12A Max (continuous)', 1,800 W max. This is also on rival result 1, so it is not new."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Generator charging and solar input",
+   "value": "Generator Adapter required and works with a single F3800 Plus only; solar 2 × 11–165 V, 17 A, 1,600 W each (3,200 W total); L14-30R 120/240 V 25 A, 6,000 W",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Verbatim: '*Anker SOLIX Generator Adapter required and only support single F3800 Plus unit.' The adapter is not in the box. The page showed 'Sold Out' and 'Price Loading' on 2026-11-13, so I have no price for it today."
+  }
+ ],
+ "unsourced": [
+  "Amp rating of the MC4-to-XT60 cable in the US SORA 500 box. Impulse Gamer lists the cable but no rating, and BLUETTI's US page has no In the Box or Tech Specs text. The EU page (bluettipower.eu) failed with a redirect loop.",
+  "BLUETTI's own Apex 300 manual or spec PDF for the 12–60 V figure. The support PDF (s4.bluettipower.com/.../fc5bde77...pdf) was over 10 MB, so the figure rests on two named reviewers (Notebookcheck, StorageReview).",
+  "Anker F3800 Plus price on 2026-11-13: the US page showed 'Sold Out' and 'Price Loading'.",
+  "Anker F3800 Plus neutral-to-ground bonding (bonded or floating) for transfer-switch and GFCI tripping. The Technical Brief PDF would not render as text and search turned up no Anker statement.",
+  "Growatt HELIOS 3600 needing two units plus a $139 Double Voltage Power Hub for 240 V, with AC charging off while linked. Seen only in search snippets of manuals.plus mirrors and growattportable.com, not opened. If it holds, Dealectric's '240 V capable' label for growatt-helios-3600 is misleading.",
+  "A forum thread with a date and a count of people reporting any of these traps. Searches returned only generic GFCI and transfer-switch threads, none about these models."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.3350057000000002
+ }
+}

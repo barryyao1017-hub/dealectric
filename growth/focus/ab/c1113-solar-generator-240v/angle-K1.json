@@ -1,0 +1,127 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's 120/240 V NEMA 14-50R outlet is rated 50 A but the unit's total AC output of 3,840 W allows only 16 A at 240 V (3,840 ÷ 240). None states either that each of its two solar inputs takes at most 60 V, so a BLUETTI 500 W panel (Voc 49.1 V) has to go on its own input. That makes 2 × 500 W = 1,000 W the most of those panels the unit can use, and two such panels refill the 2.39 kWh StorageReview measured in about 3 hours of full sun.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's answer and the pages it got: the Anker SOLIX F3800 / F3800 Plus product pages, the F3800 Plus Technical Brief (Salesforce and THD copies), the Jackery Explorer 5000 Plus manual and the jackery.com Solar Generator 5000 Plus pages. They all cover Anker or Jackery hardware. None covers the BLUETTI Apex 300, the only 240 V unit whose kit with panels I could verify as in stock in an approved store today (Anker's F3800 Plus page shows Sold Out with no price). ChatGPT's answer does say that 'a 240V outlet's rated amperage does not guarantee the generator can deliver that full power', so the general warning is already there and only the numbers are new (3,840 W = 16 A at 240 V on a 50 A outlet). The solar-input voltage limit and the one-panel-per-input wiring rule are new. They decide how many panels go in the kit and how long a refill takes.",
+ "kit_items": [
+  "Power station: BLUETTI Apex 300 (2,764.8 Wh LFP, 3,840 W, one 120/240 V NEMA 14-50R outlet). A single unit gives 240 V. The 240 V load must stay at or below 16 A (3,840 W ÷ 240 V).",
+  "Solar panels: 2 × BLUETTI 500 W (SORA 500). The Voc of 49.1 V is under the Apex 300's 60 V input limit, so each panel goes on its own input. Two panels in series (98.2 V) exceed the limit, and two in parallel (Isc 2 × 13.31 = 26.6 A) exceed the 20 A per-input limit, so two panels is the most this unit can use.",
+  "Optional capacity: BLUETTI B300K expansion battery (2,764.8 Wh). The bundle with two 500 W panels doubles the energy on the same 1,000 W of solar, so a full refill takes twice as long (5,529.6 Wh ÷ 800 W ≈ 6.9 h of full sun).",
+  "Optional: BLUETTI Solar Extension Cable (MC4, 30 A, 5 m / 10 m) to place the panels farther from the unit. The listing says to use one cable set per panel."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2 × 500W | https://www.bluettipower.com/products/apex-300-2-500w | $3,299.00 | 2026-11-13",
+    "BLUETTI Solar Extension Cable (optional) | https://www.bluettipower.com/products/bluetti-solar-extension-cable | $59.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + 2 × 500W, $3,299.00 (2,764.8 Wh, 1,000 W solar). Larger option: Apex 300 + 2*B300K + 2*500W, $5,499.00 (https://www.bluettipower.com/products/apex-300-2-b300k-2-500w). Single 500 W panel $849.00; 2-pack $1,698.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC output, rated (all outlets, 120/240 V)",
+   "value": "3,840 W",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's figure as printed in StorageReview's spec table. I could not open the maker page (redirect loop) or the US manual (PDF over the fetch size limit). At 240 V: 3,840 W ÷ 240 V = 16 A available."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V outlet",
+   "value": "1 × NEMA 14-50R, 120/240 V, 50 A",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "The outlet is rated 50 A, but the unit supplies 16 A at 240 V (3,840 ÷ 240), which is 32% of the outlet rating. A 240 V load drawing more than 16 A running will not run from it."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input",
+   "value": "2 inputs, each 12–60 V DC, 20 A, 1,200 W (2,400 W total)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's figures from the reviewer's spec table. The manual's line 'do not use solar panels with open circuit voltage higher than 60V' appeared only in a search snippet, because the manual PDF could not be opened."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured usable energy (single unit, full discharge)",
+   "value": "2.39 kWh delivered of 2,764.8 Wh rated (86%)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "Measured by StorageReview. Runtime at the full 3,840 W: 2,390 ÷ 3,840 = 0.62 h, about 37 min. At 1,500 W: 2,390 ÷ 1,500 = 1.6 h. With two B300K packs StorageReview measured 7.38 kWh (89%)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured recharge energy (AC) and round trip",
+   "value": "3.30 kWh in to refill; about 72% round trip",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-13",
+   "note": "Measured on AC charging, so it does not carry over directly to solar (DC) charging. It still shows that refilling takes more energy than the rated capacity."
+  },
+  {
+   "product": "BLUETTI 500W Solar Panel (SORA 500)",
+   "label": "Electrical specs",
+   "value": "Voc 49.1 V, Vmp 40.92 V, Isc 13.31 A, Imp 12.22 A, 12.9 kg",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review (Impulse Gamer, Andrew Paul, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Spec table quoted by the reviewer. The BLUETTI US product page's Tech Specs section was empty. Arithmetic against the Apex 300 input limits: 2 in series = 98.2 V Voc > 60 V (not allowed); 2 in parallel = 26.6 A Isc > 20 A (over the limit); so one panel per input and two panels per Apex 300."
+  },
+  {
+   "product": "BLUETTI 500W Solar Panel (SORA 500)",
+   "label": "Measured output",
+   "value": "about 400 W average per panel (Australian winter)",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review (Impulse Gamer, Andrew Paul, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Andrew Paul's measurement. Refill estimate: 2 × 400 W = 800 W, and 2,390 Wh ÷ 800 W ≈ 3.0 h of full sun to replace the measured usable energy (2,764.8 ÷ 800 ≈ 3.5 h for rated capacity), before charge losses."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2 × 500W",
+   "label": "Bundle price",
+   "value": "$3,299.00",
+   "source": "https://www.bluettipower.com/products/apex-300-2-500w",
+   "source_title": "Apex 300 + 2 × 500W – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck.py search on bluettipower.com, available=true. Listing text: '3,840W | 2,764.8Wh | 1,000W Solar'."
+  },
+  {
+   "product": "BLUETTI 500W Solar Panel",
+   "label": "Price",
+   "value": "$849.00 single; $1,698.00 two-pack",
+   "source": "https://www.bluettipower.com/products/500w-portable-solar-panel",
+   "source_title": "BLUETTI 500W Solar Panel – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck.py search plus WebFetch of the product page. In the bundle, the two panels cost $3,299 minus the Apex 300's standalone price, which I did not check."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Stock and price at maker store",
+   "value": "Sold Out; no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "ChatGPT's top pick ($2,999.99) cannot go in an Anker-store cart today. Its page lists 2 solar inputs of 11–165 V and 17 A (1,600 W each) and a 6,000 W L14-30R outlet."
+  }
+ ],
+ "unsourced": [
+  "The Apex 300's solar input limits (12–60 V, 20 A, 1,200 W ×2) from BLUETTI's own US product page or manual: the bluettipower.com Apex 300 page went into a redirect loop, the US/AU manual PDFs on s4.bluettipower.com were over the fetch size limit, the PDF download was not approved, and manuals.plus returned 403. The figures come from StorageReview's spec table and a search snippet of the manual.",
+  "Voc/Isc of the BLUETTI 500 W panel on a BLUETTI page: the US Tech Specs section is empty, the EU and UK pages went into redirect loops, and the AU page returned 429. The figures come from Andrew Paul's Impulse Gamer review.",
+  "Whether the Apex 300 allows two panels in parallel on one input (to use 350 W or 200 W panels), and how BLUETTI's 2 × 350 W and 2 × 200 W bundles are wired.",
+  "How much current the Apex 300 supplies per leg at 240 V, and its surge rating: StorageReview's table gives only 'Lifting Power 7,680 W', and I found no maker figure.",
+  "The Apex 300's standalone price today and the Anker SOLIX F3800 Plus price, since the Anker store shows Sold Out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1735726999999998
+ }
+}
