@@ -3145,58 +3145,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-08',
  "updated": '2026-11-12'},
 
-{"slug": "1kwh-power-station-with-1000w-solar-input-two-ports", "buy_compare": True, "question": "G103 (power funnel x17: 1 kWh power station with 1,000 W of solar through two inputs)", "lead_first": True,
- "title": "Which 1 kWh power station takes 1,000 W of solar through two inputs (2026)? Panels that fit, refill time, the single-input alternatives",
- "h1": "Which 1 kWh power station takes 1,000 W of solar through two inputs so it refills in a couple of hours? (2026)",
- "desc": "1 kWh-class power stations by solar input: the EcoFlow DELTA 3 Plus is the one that takes 1,000 W through two XT60 inputs (500 W each, 11–60 V), the BLUETTI Elite 100 V2 1,000 W on one, Dabbsson and DJI 1,200 W with caveats. Which panels fit each port, why two 400 W panels give only 800 W, and how long a refill takes.",
- "intro": """
-<p class="lead"><strong>Short answer.</strong> The 1 kWh power station that takes 1,000 W of solar through two inputs is the <strong>EcoFlow DELTA 3 Plus</strong> ({buy:ecoflow-delta-3-plus-1024wh}): two XT60 ports at 500 W each (11–60 V), so one portable panel per port, and about 1.3–1.5 hours from empty in full sun (our arithmetic; EcoFlow claims 70 minutes). The Solar Lab ran two 415 W panels and got "really close to" 1,000 W combined.</p>
-<p>What to know: each of the two solar input ports caps at 500 W, so two 400 W panels give 800 W of solar input, not 1,000 W; reaching 1,000 W takes about 500 W of panel per port. One 400 W panel (about 48 V open-circuit) fits a port; two in series exceed its 60 V. With one solar port, the BLUETTI Elite 100 V2 also takes 1,000 W.</p>
-""",
- "columns": [("solar", "Max solar input"), ("ports", "Inputs and voltage"), ("refill", "Refill at full input (arithmetic)"), ("ac", "AC output"), ("weight", "Weight")],
- "rows": [
-  {"slug": "ecoflow-delta-3-plus-1024wh", "model": "EcoFlow DELTA 3 Plus (1,024 Wh)",
-   "cells": {"solar": "1,000 W", "ports": "2× XT60, 500 W each, 11–60 V, 15 A", "refill": "about 1.3–1.5 h (EcoFlow claims 70 min)", "ac": "1,800 W", "weight": "27.6 lb"}},
-  {"slug": "ecoflow-delta-3-1024wh", "model": "EcoFlow DELTA 3 (1,024 Wh)",
-   "cells": {"solar": "500 W", "ports": "1× XT60, 11–60 V", "refill": "just under 3.5 h with one 400 W panel (one owner's test)", "ac": "1,800 W", "weight": "27.6 lb"}},
-  {"slug": "allpowers-p1800-1024wh", "model": "ALLPOWERS P1800 (1,024 Wh)",
-   "cells": {"solar": "650 W", "ports": "1× XT60, 11–60 V, 13 A", "refill": "about 2 h", "ac": "1,800 W", "weight": "28.7 lb"}},
-  {"slug": "anker-solix-c1000-gen-2", "model": "Anker SOLIX C1000 Gen 2 (1,024 Wh)",
-   "cells": {"solar": "600 W", "ports": "1× XT60i, 11–60 V", "refill": "about 1.8 h (Anker)", "ac": "2,000 W", "weight": "24.9 lb"}},
-  {"slug": "bluetti-ac180", "model": "BLUETTI AC180 (1,152 Wh)",
-   "cells": {"solar": "500 W", "ports": "1 input, 12–60 V, 10 A", "refill": "about 2.5–3 h", "ac": "1,800 W", "weight": "35.3 lb"}},
-  {"slug": "jackery-explorer-1000-v2", "model": "Jackery Explorer 1000 v2 (1,070 Wh)",
-   "cells": {"solar": "400 W", "ports": "2× DC 8 mm, 16–60 V", "refill": "3–4 h (OutdoorGearLab estimate)", "ac": "1,500 W", "weight": "23.8 lb"}},
-  {"brand": "BLUETTI", "model": "Elite 100 V2 (1,024 Wh)", "url": "https://www.bluettipower.com/products/elite-100-v2",
-   "cells": {"solar": "1,000 W", "ports": "1 input, 12–60 V, 20 A", "refill": "70 min (BLUETTI claim)", "ac": "1,800 W", "weight": "25 lb", "price": "$499 (ships Nov 12)"}},
-  {"brand": "Dabbsson", "model": "DBS1000 Pro (1,024 Wh)", "url": "https://www.dabbsson.com/products/dbs1000pro-portable-power-station",
-   "cells": {"solar": "1,200 W (a bullet on the same page says 600 W)", "ports": "1 input, 12–60 V, 25 A", "refill": "1.2 h (Dabbsson claim)", "ac": "2,000 W", "weight": "34.39 lb", "price": "$619 (list $899)"}},
-  {"brand": "DJI", "model": "Power 1000 V2 (1,024 Wh)", "url": "https://store.dji.com/product/dji-power-1000-v2-power-station",
-   "cells": {"solar": "1,200 W only through DJI's $325 1.8 kW charger", "ports": "MC4 via the charger, 60 V max", "refill": "about 1 h", "ac": "2,600 W max", "weight": "31.3 lb", "price": "$699 (out of stock on 2026-11-03)"}},
-  {"brand": "OUPES", "model": "Mega 1 (1,024 Wh)", "url": "https://oupes.com/Mega1-tundratactical",
-   "cells": {"solar": "800 W", "ports": "12–78 V", "refill": "about 1.5 h", "ac": "2,000 W", "weight": "27.8 lb", "price": "$509 with the store's code"}},
- ],
- "after": """
-<h2>Two inputs, and why it matters</h2>
-<p>Portable 400–500 W panels run at 40–50 V open-circuit, which is near the 60 V ceiling of these XT60 inputs, so two panels can't go in series into one port. A unit with one input tops out at what a single panel gives (400–500 W) unless you wire two in parallel with a Y-branch and stay inside the port's current limit; the DELTA 3 Plus avoids that by taking each panel on its own MPPT input. The Elite 100 V2 and Dabbsson take 1,000 W or more on one port because they accept 20–25 A, so two panels in parallel work there.</p>
-<h2>What 1,000 W of panels really gives</h2>
-<p>Panels rarely deliver their rating: one owner measured 380–395 W at noon from a 400 W panel on a DELTA 3, 250–320 W under light tree cover, and just under 3.5 hours to fill from zero. The Solar Lab's two 415 W bifacial panels came close to 1,000 W combined on a DELTA 3 Plus without a logged refill time. Plan on 70–85 % of panel rating in good sun and much less in winter or cloud, so 1,024 Wh takes roughly 1.3–1.5 hours on a perfect day and most of a day otherwise.</p>
-<h2>Panel sizing per port</h2>
-<p>Each DELTA 3 Plus port takes up to 500 W and 15 A at 11–60 V: EcoFlow's own 400 W portable panel (about 48 V open-circuit) fits one per port, and a 500 W panel or two smaller panels in parallel reach the cap. Check a panel's open-circuit voltage on a cold morning, which rises above its label, against the 60 V limit before buying.</p>
-""",
- "sources": [
-  ("EcoFlow DELTA 3 Plus (two XT60 inputs, 1,000 W)", "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"),
-  ("EcoFlow DELTA 3 Plus user manual (input ratings)", "https://www.rei.com/media/8f4778a4-a38d-4349-a975-84df009a5988"),
-  ("The Solar Lab: EcoFlow DELTA 3 Plus review (two 415 W panels)", "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review"),
-  ("batteryskills: EcoFlow DELTA 3 with a 400 W panel (measured input)", "https://batteryskills.com/ef-ecoflow-delta-3-400w-solar-panel-review/"),
-  ("OutdoorGearLab: Jackery Explorer 1000 v2 review (solar estimate)", "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2"),
-  ("BLUETTI Elite 100 V2", "https://www.bluettipower.com/products/elite-100-v2"),
-  ("Dabbsson DBS1000 Pro", "https://www.dabbsson.com/products/dbs1000pro-portable-power-station"),
-  ("DJI store: Power 1000 V2", "https://store.dji.com/product/dji-power-1000-v2-power-station"),
-  ("OUPES Mega 1", "https://oupes.com/Mega1-tundratactical"),
- ],
- "published": "2026-11-04",
- "checked": "2026-11-03"},
+# ---------------- 1kwh-power-station-with-1000w-solar-input-two-ports (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": '1kwh-power-station-with-1000w-solar-input-two-ports',
+ "question": 'G103 (power funnel x17: 1 kWh power station with 1,000 W of solar through two inputs)',
+ "method": 'ab-2026-11',
+ "angle": 'D',
+ "searched_as": ['1000Wh power station dual solar inputs 1000W solar input 500W each', 'which 1 kwh power station takes 1000 w of solar through two inputs'],
+ "title": 'Which 1 kWh power station takes 1,000 W of solar through two inputs (2026)? Panels that fit, refill time, the single-input alternatives',
+ "h1": 'Which 1 kWh power station takes 1,000 W of solar through two inputs so it refills in a couple of hours? (2026)',
+ "desc": 'The EcoFlow DELTA 3 Plus takes 1,000 W of solar through two 500 W inputs. Each input needs a panel string working at 33.3 V or more and under 60 V open-circuit. The single-input BLUETTI Elite 100 V2 needs 50 V for its 1,000 W.',
+ "answer": '<p class="lead"><strong>Short answer.</strong> The 1 kWh power station that takes 1000 W of solar through two inputs is the EcoFlow DELTA 3 Plus: two 500 W inputs, each filled by a panel string working at 33.3 V or more (500 W ÷ 15 A) under 60 V open-circuit. The single-input BLUETTI Elite 100 V2 needs 50 V for its 1,000 W.</p>',
+ "columns": [('inputs', 'Solar inputs'), ('limit', 'Limit per input'), ('total', 'Solar total'), ('needs', 'What 1,000 W of solar takes')],
+ "rows": [{'slug': 'ecoflow-delta-3-plus-1024wh', 'model': 'EcoFlow DELTA 3 Plus (1,024 Wh)', 'cells': {'inputs': '2 × XT60i (EcoFlow manual, FAQ)', 'limit': '11–60 V, 15 A, 500 W', 'total': "1,000 W ('500W MPPT × 2', EcoFlow)", 'needs': 'Two strings, each working at 33.3 V or more, open-circuit 60 V or less, short-circuit 15 A or less'}}, {'slug': 'bluetti-elite-100-v2', 'model': 'BLUETTI Elite 100 V2 (1,024 Wh)', 'cells': {'inputs': '1 × XT (Notebookcheck)', 'limit': '12–60 V, 20 A, 1,000 W (BLUETTI)', 'total': '1,000 W', 'needs': 'One string working at 50 V or more with open-circuit 60 V or less: a 10 V window'}}, {'slug': 'allpowers-p1800-1024wh', 'model': 'ALLPOWERS P1800 (1,024 Wh)', 'cells': {'inputs': '1 × XT60 (ALLPOWERS)', 'limit': '650 W (ALLPOWERS)', 'total': '650 W', 'needs': 'Not reachable: the input tops out at 650 W'}}, {'slug': 'ecoflow-delta-3-1024wh', 'model': 'EcoFlow DELTA 3', 'cells': {'inputs': '1 (EcoFlow FAQ)', 'limit': '11–60 V, 15 A, 500 W (EcoFlow FAQ)', 'total': "500 W ('500W MPPT', EcoFlow)", 'needs': 'Not reachable: one input capped at 500 W'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Refill time in full sun.</strong> At 1,000 W of solar: 1,024 Wh ÷ 1,000 W = 1.02 h before losses. StorageReview measured 1,180 Wh going in for a 0–100% charge of the DELTA 3 Plus: 1,180 Wh ÷ 1,000 W ≈ 71 min, in line with EcoFlow's 70-minute solar claim. BLUETTI also claims 70 minutes for the Elite 100 V2 at 1,000 W.</li><li><strong>650 W input.</strong> ALLPOWERS P1800: 1,024 Wh ÷ 650 W = 1.58 h before losses.</li><li><strong>500 W input.</strong> EcoFlow DELTA 3: one 500 W input, which EcoFlow says 'recharges in 2 hours'.</li><li><strong>Voltage floor.</strong> DELTA 3 Plus, per input: 500 W ÷ 15 A = 33.3 V, which is 56% of the 60 V ceiling. Elite 100 V2: 1,000 W ÷ 20 A = 50 V, which is 83% of 60 V and leaves a 10 V window.</li><li><strong>Below the floor.</strong> Take a string working at 40 V. On the Elite 100 V2 it delivers at most 20 A × 40 V = 800 W. Each DELTA 3 Plus input could take 15 A × 40 V = 600 W, so it still reaches its 500 W cap.</li></ul><table><thead><tr><th>Your panels</th><th>Fits</th></tr></thead><tbody><tr><td>Two panels or two panel groups of about 500 W each, wired separately</td><td>EcoFlow DELTA 3 Plus</td></tr><tr><td>One series string that works at 50 V or more and stays at or under 60 V open-circuit</td><td>BLUETTI Elite 100 V2, $499 at BLUETTI on 2026-11-14 {buy:bluetti-elite-100-v2}</td></tr><tr><td>Up to 650 W of panels on one plug</td><td>ALLPOWERS P1800, $399 at ALLPOWERS on 2026-11-14 {buy:allpowers-p1800-1024wh}</td></tr><tr><td>500 W of panels or less</td><td>EcoFlow DELTA 3</td></tr></tbody></table><h2>Which panels fill each input: the 33.3 V and 50 V floors</h2><p>The DELTA 3 Plus manual rates each solar input at 11–60 V, 15 A and 500 W, with 1,000 W across both ports. It also says to keep total short-circuit current within 15 A. EcoFlow's support FAQ sets the rule for using a panel: 'All three conditions must be met; exceeding any one of them means the solar panels cannot be used.'</p><p>EcoFlow's FAQ works through two 400 W panels rated 37.1 V open-circuit and 12.9 A. Wired in series they reach 74.2 V, past the 60 V ceiling. Wired in parallel they reach 25.8 A, past 15 A. So each input takes one panel of that class, and 1,000 W in total needs a roughly 500 W panel or string on each input, working at 33.3 V or more.</p><p>The Solar Lab tested the DELTA 3 Plus with Serious 415 W bifacial panels on both 500 W solar plugs and reports 'really close to' 1,000 W combined. {buy:ecoflow-delta-3-plus-1024wh}</p><p>The XT60i ports also take car charging (12 V, 8 A: 12 × 8 = 96 W, per the manual). With a car cable plugged in, only one 500 W solar input is free. When AC and solar are connected together, the station uses solar first by default.</p><p>The Elite 100 V2 has one XT input rated 12–60 V and 20 A (BLUETTI, Notebookcheck). Notebookcheck writes that the single input 'makes reaching the advertised 1,000 W input difficult in practice'. Notebookcheck notes that a BLUETTI PV350 panel's 46.5 V open-circuit voltage makes series wiring impractical under the 60 V limit (two in series: 93 V). It puts a two-panel setup at around 700 W and finds that five 200 W panels don't reach 1,000 W either. BLUETTI caps AC and DC charging together at 1,200 W.</p><h2>Not recommended</h2><p><strong>EcoFlow DELTA 3, if you want 1,000 W of solar.</strong> It shares the DELTA 3 Plus's name but has one input of 11–60 V, 15 A and 500 W (EcoFlow FAQ). That is half the Plus's solar input, and EcoFlow's own refill claim is 2 hours instead of 70 minutes.</p>\n",
+ "sources": [("DELTA 3 Plus 1,024 Wh, '500W MPPT × 2', full charge in 70 min; DELTA 3 one 500 W MPPT, 'recharges in 2 hours'", 'https://www.ecoflow.com/us/delta-3-series-portable-power-station'), ('DELTA 3 Plus per-port 11–60 V, 15 A, 500 W (1,000 W total), total Isc within 15 A, XT60i ports shared with car input 12 V 8 A, solar first when AC is also connected', 'https://www.manualslib.com/manual/4022106/Ecoflow-Delta-3-Plus.html'), ('EcoFlow three-condition rule, DELTA 3 input 11–60 V 15 A 500 W, DELTA 3 Plus 2 inputs vs DELTA 3 1 input, 74.2 V series and 25.8 A parallel examples', 'https://www.ecoflow.com/ph/support/faq?page=29'), ('Elite 100 V2 1,000 W max, 12–60 V, 20 A max, 70-min solar claim, AC + DC 1,200 W max, $499 on 2026-11-14', 'https://www.bluettipower.com/products/elite-100-v2-portable-power-station'), ("Elite 100 V2 single XT solar input, 1,000 W 'difficult in practice', PV350 46.5 V open-circuit makes series impractical, two panels about 700 W, five 200 W panels short of 1,000 W", 'https://www.notebookcheck.net/Good-power-station-or-just-green-marketing-Bio-based-Bluetti-Elite-100-V2-with-1-kWh-reviewed.1198030.0.html'), ('DELTA 3 Plus measured 1,180 Wh in for 0–100% (86.8%) and 910 Wh out', 'https://www.storagereview.com/review/ecoflow-delta-3-plus-review'), ("DELTA 3 Plus 'really close to' 1,000 W combined using both 500 W solar plugs with Serious 415 W bifacial panels", 'https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review'), ('ALLPOWERS P1800 1,024 Wh, up to 650 W solar via XT60, $399 on 2026-11-14', 'https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w')],
+ "published": '2026-11-04',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 
 # ======== x18 solar-kit batch (begin) ========
 
