@@ -1,0 +1,118 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the QIDI Box multi-color unit ($228 on QIDI's US store) is set up for one QIDI model: moving it to a different QIDI printer, such as from a Plus4 to a Q2, needs QIDI's separate BOX Upgrade Accessory Kit ($40.99). Nor does any result state that Prusa supports the MMU3 on the CORE One L only as a community add-on (no official kit), names INDX as the go-to multi-material option, and requires the Advanced Filtration add-on before the L+ is listed for ABS, ASA, HIPS or PA.",
+ "standout": 2,
+ "standout_why": "I opened both cited desktop3dprinters.us pages ('Large enclosed 3D printers: 300 mm beds and up' and 'Chamber temperature specs of popular 3D printers compared'). Their 13- and 37-printer tables cover only build volume, chamber type and temperature, and launch price. Neither mentions QIDI Box, AMS, MMU or any accessory pairing. The only accessory text is in their source lists: 'supports CFS and CFS nano' for the Ender-3 V3 Mega, 'H2D Pro $3,799 including AMS 2 Pro and AMS HT', and 'K2 Plus $1,499 with CFS, $1,299 on its own'. The chamber page names a 'CORE One L+ INDX' but never says what INDX is or what it fits. The cited Creative Bloq page came back truncated, so I could not check it. ChatGPT's answer names 'optional multicolor printing' only for the K2 Plus and gives no pairing rules or exclusions for any printer.",
+ "decides": "This confirms the QIDI picks rather than changing them. The Max4 ($1,049) and Plus5 ($699) are cheaper on QIDI's US store today than the $1,099 and $749 Best Buy prices ChatGPT showed. A Max4 plus a QIDI Box comes to $1,277 for multi-color, still about the price of a K2 Plus Combo, but the Box is configured per model. For the Prusa CORE One L+, the finding counts against it for ChatGPT's 'engineering materials' shoppers: ABS, ASA and PA are listed only with the Advanced Filtration add-on, and multi-material means waiting for the INDX upgrade or building the community MMU3 setup.",
+ "candidates": [
+  "QIDI Max4",
+  "QIDI Plus5",
+  "Bambu Lab H2S",
+  "Creality K2 Plus",
+  "Prusa CORE One L+"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Max4",
+   "label": "US price, maker store, and QIDI Box support",
+   "value": "$1,049 (compare-at $1,299); listing says 'Compatible with QIDI Box (Multi-color)'",
+   "source": "https://us.qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI US store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search on us.qidi3d.com. ChatGPT showed $1,099 at Best Buy."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "US price, maker store, and QIDI Box support",
+   "value": "$699 (compare-at $1,098); listing says 'Optional Polar Cooler & QIDI BOX'",
+   "source": "https://us.qidi3d.com/products/plus5",
+   "source_title": "QIDI Plus5 3D Printer – QIDI US store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search; opening the full product page returned HTTP 429. ChatGPT showed $749 at Best Buy."
+  },
+  {
+   "product": "QIDI Box",
+   "label": "US price, maker store",
+   "value": "$228",
+   "source": "https://us.qidi3d.com/products/qidi-box",
+   "source_title": "QIDI Box – QIDI US store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search; the page body came back as CSS only, and later WebFetch attempts returned HTTP 429. Max4 + Box = $1,049 + $228 = $1,277."
+  },
+  {
+   "product": "QIDI Box",
+   "label": "Moving a Box to a different QIDI model",
+   "value": "Needs the QIDI BOX Upgrade Accessory Kit, $40.99 (compare-at $64.99). A Box bought on its own already includes the kit for its original model.",
+   "source": "https://us.qidi3d.com/products/upgrade-accessory-kit-for-qidi-box",
+   "source_title": "QIDI BOX Upgrade Accessory Kit – QIDI US store",
+   "read": "2026-11-14",
+   "note": "QIDI's wording: 'if you are currently using a PLUS4 QIDI Box and later purchase a Q2 machine separately, and you want to adapt your original box to the Q2 machine, you can purchase this Q2 QIDI BOX upgrade kit'."
+  },
+  {
+   "product": "QIDI Box",
+   "label": "Hub and signal cable (part that joins several Boxes to the printer)",
+   "value": "$35.99",
+   "source": "https://us.qidi3d.com/products/qidi-box-hub-and-signal-cable",
+   "source_title": "QIDI BOX Hub and Signal Cable – QIDI US store",
+   "read": "2026-11-14",
+   "note": "QIDI's description: the hub 'integrates tubes from multiple QIDI BOX units into a single output' and the signal line 'connects the printer and the QIDI BOX Hub'."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Multi-color support per the maker's FAQ",
+   "value": "'When paired with the QIDI Box multi-color unit, the Max4 supports multi-material and multi-color printing'",
+   "source": "https://eu.qidi3d.com/pages/qidi-max4-faq",
+   "source_title": "QIDI Max4 FAQ",
+   "read": "2026-11-14",
+   "note": "The FAQ also says the Max4 runs Klipper firmware and works with third-party slicers."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "MMU3 support status",
+   "value": "Community-supported, not official. Prusa says to use the MMU3 Lite kit for the CORE One+ plus CORE L-specific printed parts; 'INDX is the go-to multi-material option for most CORE One L users'.",
+   "source": "https://help.prusa3d.com/article/mmu3-for-core-one-l_1041535",
+   "source_title": "MMU3 for CORE One L – Prusa Knowledge Base",
+   "read": "2026-11-14",
+   "note": "Also needs a buffer plate cut from 1 mm PETG, ABS or HIPS sheet (or a ready-made one). Prusa says 'the lack of an official kit means the Enclosed setup is strictly for experienced makers'."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "Firmware required for MMU3",
+   "value": "Printer firmware 6.5.3 or newer and MMU firmware 3.0.4 or newer",
+   "source": "https://help.prusa3d.com/article/mmu3-for-core-one-l_1041535",
+   "source_title": "MMU3 for CORE One L – Prusa Knowledge Base",
+   "read": "2026-11-14",
+   "note": "Quoted from the article: 'Required Firmware combination is the printer FW 6.5.3 or newer and the MMU FW 3.0.4 or newer'."
+  },
+  {
+   "product": "Prusa CORE One L+",
+   "label": "US price and INDX upgrade path",
+   "value": "$1,850.93, in stock. Page says 'GET CORE ONE L+ NOW, UPGRADE TO INDX LATER' and offers a $50 INDX-upgrade voucher in its Black Friday deal.",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l-2/",
+   "source_title": "Prusa CORE One L+ – Prusa Research",
+   "read": "2026-11-14",
+   "note": "No price for the L+ INDX bundle on this page. ChatGPT showed no price for this printer."
+  },
+  {
+   "product": "Prusa CORE One L+",
+   "label": "Materials listed only with the Advanced Filtration add-on",
+   "value": "ABS, ASA, HIPS, PA. Listed without it: PLA, PETG, Flex, PVA, PC, PP, CPE, PVB.",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l-2/",
+   "source_title": "Prusa CORE One L+ – Prusa Research",
+   "read": "2026-11-14",
+   "note": "Same page lists max chamber temperature as 60 °C / 140 °F with 'active convection'. The rival chamber page calls it 'Passive'."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2S: which AMS units it takes (AMS, AMS lite, AMS 2 Pro, AMS HT), how many, and laser/cutter support. wiki.bambulab.com (multi-model AMS compatibility guide, H2S FAQ, in English and Chinese) and us.store.bambulab.com/products/h2s all returned HTTP 402. Only third-party pages (3dmag.com, printago.io) were reachable, and their unit counts disagree.",
+  "Creality K2 Plus: how many CFS units it takes, which filaments the CFS refuses, and its US price. The creality.com combo page came back truncated, the wiki.creality.com CFS 2 filament page returned only its title, and storecheck on store.creality.com returned HTTP 404.",
+  "QIDI Plus5: whether it needs a Plus5-specific QIDI Box version or hub. Its full product page and the QIDI Box page (US, global, CA and UK stores) returned HTTP 429. Only the store search text was readable ('Optional Polar Cooler & QIDI BOX').",
+  "QIDI Box: maximum Boxes per printer. Only the menu text on the EU Max4 FAQ page ('Supports 16-color multi-material printing') was readable, which is not a full statement of the limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 0.9701627999999998
+ }
+}

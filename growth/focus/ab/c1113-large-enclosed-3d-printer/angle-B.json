@@ -1,0 +1,109 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states the price per liter of build volume at today's maker-store prices. On that measure the QIDI Max4 is the cheapest of ChatGPT's five picks at $20.29/L, the Prusa CORE One L+ costs about three times as much at $62.32/L, and the Anycubic Kobra S1 Max, which ChatGPT left out, comes in lower than all of them at $16.30/L.",
+ "standout": 2,
+ "standout_why": "I opened desktop3dprinters.us 'Large enclosed 3D printers' (cited), desktop3dprinters.us 'Chamber temperature specs' (cited), firstlayerlab.com 'Large 3D Printers', findmy3dprinter.com 'Large Format' and scrc.us.com 'Build volume from 30 L + enclosed'. The large-enclosed list and firstlayerlab print liters and prices side by side, but neither divides one by the other. When asked to quote only page text, the chamber-specs page showed launch prices and mm volumes with no liters and no $/L. findmy3dprinter and scrc show no prices at all. Every page that has prices uses launch or October prices: $1,149 for the Max4, $1,299 or $1,199 for the K2 Plus and $749 for the Plus5. Today the maker stores charge less: $1,049, $899 and $699.",
+ "decides": "This backs ChatGPT's 'best for maximum size' pick. Among its five, the QIDI Max4 is both the largest (51.7 L) and the cheapest per liter ($20.29). Against the K2 Plus, it gives 8.84 L more for $150 more, about $17 per extra liter. It also shows the Prusa CORE One L+ costs about three times as much per liter, so it only makes sense for serviceability. And it brings in the Anycubic Kobra S1 Max, which ChatGPT left out: it has the same 42.9 L as the K2 Plus for $200 less. The H2S could not be ranked because its US store price page would not open.",
+ "candidates": [
+  "QIDI Max4",
+  "Creality K2 Plus",
+  "Anycubic Kobra S1 Max",
+  "QIDI Plus5",
+  "Prusa CORE One L+",
+  "Bambu Lab H2S"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Max4",
+   "label": "Price today, QIDI US store",
+   "value": "$1,049 (compare-at $1,299)",
+   "source": "https://qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Read from the Shopify product JSON with storecheck.py. The store text gives 'Build volume 390x390x340 mm'. ChatGPT's card showed $1,099 at Best Buy."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Price per liter of build volume",
+   "value": "$20.29/L",
+   "source": "https://qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "39.0 × 39.0 × 34.0 cm = 51.71 L; $1,049 ÷ 51.71 L = $20.29/L"
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Price per liter of build volume",
+   "value": "$22.75/L",
+   "source": "https://qidi3d.com/products/plus5",
+   "source_title": "QIDI Plus5 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Price today is $699 (compare-at $899). Store text gives 320×320×300 mm. 32 × 32 × 30 cm = 30.72 L; $699 ÷ 30.72 = $22.75/L"
+  },
+  {
+   "product": "Creality K2 Plus",
+   "label": "Price today, Creality store (without CFS)",
+   "value": "$899 (struck $1,299)",
+   "source": "https://store.creality.com/products/creality-k2-plus-3d-printer",
+   "source_title": "K2 Plus – Creality Store",
+   "read": "2026-11-14",
+   "note": "Option label is 'K2 Plus（Without CFS）'. The K2 Plus Combo is $1,099 (compare-at $1,499) on https://store.creality.com/collections/k2-series. ChatGPT's card showed $999."
+  },
+  {
+   "product": "Creality K2 Plus",
+   "label": "Price per liter of build volume",
+   "value": "$20.97/L (Combo: $25.63/L)",
+   "source": "https://desktop3dprinters.us/lists/large-enclosed-3d-printers/",
+   "source_title": "Large enclosed 3D printers: 300 mm beds and up | Desktop 3D Printers",
+   "read": "2026-11-14",
+   "note": "The Creality store page gives no build volume, so the 350×350×350 mm comes from the Desktop 3D Printers list. 35³ cm = 42.88 L; $899 ÷ 42.88 = $20.97/L; Combo $1,099 ÷ 42.88 = $25.63/L"
+  },
+  {
+   "product": "Anycubic Kobra S1 Max",
+   "label": "Price today, Anycubic US store",
+   "value": "$699 (Combo $899)",
+   "source": "https://store.anycubic.com/products/kobra-s1-max",
+   "source_title": "Anycubic Kobra S1 Max – Anycubic Store",
+   "read": "2026-11-14",
+   "note": "Read from the Shopify JSON with storecheck.py search. The Combo is at https://store.anycubic.com/products/kobra-s1-max-combo. The product page itself returned HTTP 429 when I tried to open it for specs."
+  },
+  {
+   "product": "Anycubic Kobra S1 Max",
+   "label": "Price per liter of build volume",
+   "value": "$16.30/L (Combo: $20.97/L)",
+   "source": "https://desktop3dprinters.us/lists/chamber-temperature-specs/",
+   "source_title": "Chamber temperature specs of popular 3D printers compared | Desktop 3D Printers",
+   "read": "2026-11-14",
+   "note": "Build volume 350×350×350 mm and a 65 °C active chamber come from this page. 42.88 L; $699 ÷ 42.88 = $16.30/L; Combo $899 ÷ 42.88 = $20.97/L"
+  },
+  {
+   "product": "Prusa CORE One L+",
+   "label": "Price per liter of build volume",
+   "value": "$62.32/L",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l-2/",
+   "source_title": "Prusa CORE One L+ – Prusa Research",
+   "read": "2026-11-14",
+   "note": "Price shown is $1,850.93 with 'Ship to United States·USD'. Prusa's marketing pages say 'from $1,999', which works out to $67.31/L. Spec on page: '300 × 300 × 330 mm (29.7 Liters)', 'Active Convection (up to 60°C)'. $1,850.93 ÷ 29.7 L = $62.32/L"
+  },
+  {
+   "product": "general",
+   "label": "Marginal cost of the Max4's extra volume over the K2 Plus",
+   "value": "$16.97 per extra liter",
+   "source": "https://qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "($1,049 − $899) ÷ (51.71 − 42.88 L) = $150 ÷ 8.84 L = $16.97/L. K2 Plus price from https://store.creality.com/products/creality-k2-plus-3d-printer"
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2S US price today: us.store.bambulab.com/products/h2s and the h2-series collection returned HTTP 402, bambulab.com/en-us returned 403, and storecheck returned 404. I looked for a priced H2S page I could open and found none, so there is no $/L for the H2S.",
+  "Creality K2 Plus and Anycubic Kobra S1 Max build volume and chamber temperature on the makers' own pages: the Creality store page has no specs, creality.com product URLs returned 404, and the Anycubic product page returned 429. The volumes used come from desktop3dprinters.us.",
+  "Chamber heater wattage for each candidate, which I wanted for a W-per-liter heating figure: none of the maker pages I opened state it. Prusa gives only whole-printer 'Preheating: ~630W'. findmy3dprinter says the K2 Plus has 'an 800W heated chamber', but I could not confirm that on a Creality page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 35,
+  "cost_usd_list": 0.9828779999999999
+ }
+}

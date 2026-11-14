@@ -1,0 +1,119 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the QIDI Max4 heats its 390 × 390 × 340 mm chamber with its own 500 W PTC heater, rated separately from its 700 W bed (150 W + 500 W + 700 W = 1,350 W total, with a 110 V model), while the Prusa CORE One L reaches its 60 °C chamber with no separate heater, only two fans under the heatbed pushing bed heat around the chamber.",
+ "standout": 1,
+ "standout_why": "I compared against desktop3dprinters.us 'Large enclosed 3D printers' (cited, updated 2026-10-30) and 'Chamber temperature specs' (cited). Both already sort printers into active and passive chambers, give the 65 °C and 60 °C maximums, and say the CORE One L+ gets its heat from fans pushing air across the heated bed. The specs page also names a 'PTC chamber heater' for the QIDI Max4 and Plus5 in its source list. Neither page gives heater wattage, total rated power or voltage for any printer, and neither says how many watts of heater the largest chamber gets. The new part is the heater wattage. The active-versus-passive point itself is already covered.",
+ "decides": "This supports ChatGPT's 'best for maximum size' pick of the QIDI Max4 for ABS, ASA and nylon. It has the largest chamber in the list (about 51.7 L) and QIDI's spec sheet gives it a dedicated 500 W chamber heater on top of the bed. The Prusa CORE One L/L+ heats its chamber only from the bed, so it is the weakest of the five for large engineering-material parts. Its own spec table lists ABS and ASA only 'with Advanced Filtration'. For the Bambu H2S and Creality K2 Plus I could not open a maker page that gives chamber heater wattage, so I can't rank all five by heater power.",
+ "candidates": [
+  "QIDI Max4",
+  "Bambu Lab H2S",
+  "Creality K2 Plus",
+  "QIDI Plus5",
+  "Prusa CORE One L+"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Max4",
+   "label": "Rated power split",
+   "value": "150 W + 500 W (chamber heating) + 700 W (heating bed)",
+   "source": "https://qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-14",
+   "note": "Quoted from the maker's spec sheet. The three parts add up to 1,350 W. QIDI does not label the 150 W part; it is presumably the rest of the machine."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Chamber heater type and maximum temperature",
+   "value": "PTC heater, '3rd Gen Up to 65° C Independent Chamber Heating'",
+   "source": "https://qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-14",
+   "note": "Maker's own wording."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Input voltage",
+   "value": "110 V / 220–240 V AC, 50/60 Hz (region-specific models)",
+   "source": "https://qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-14",
+   "note": "QIDI sells a separate 110 V model for the US and gives one wattage for both voltages."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Build volume and heated bed maximum",
+   "value": "390 × 390 × 340 mm; bed ≤ 120 °C",
+   "source": "https://qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-14",
+   "note": "Maker's spec sheet."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Price, QIDI US store",
+   "value": "$1,049.00 (compare-at $1,299.00), in stock",
+   "source": "https://qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer",
+   "read": "2026-11-14",
+   "note": "From the storecheck.py search of qidi3d.com, which reads the product listing. A follow-up product call and a WebFetch of the page both returned HTTP 429."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "How the chamber is heated",
+   "value": "No dedicated heater named; 'Two fans on the underside of the heatbed create a convection effect'; maximum '60 °C / 140 °F (Active Convection Chamber)'",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l/",
+   "source_title": "Prusa CORE One L | Prusa Research",
+   "read": "2026-11-14",
+   "note": "This is the maker's CORE One L page. ChatGPT's card was for the L+, which the cited rival lists with the same 60 °C rating."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "Power draw",
+   "value": "Standby 16 W; preheating ~630 W; average PLA printing ~90 W; ASA ~215 W",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l/",
+   "source_title": "Prusa CORE One L | Prusa Research",
+   "read": "2026-11-14",
+   "note": "Maker's figures. Prusa's whole preheat figure (~630 W) is less than QIDI's rating for the Max4 bed alone (700 W)."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "ABS/ASA support in spec table",
+   "value": "PC listed as supported; ABS and ASA listed only 'with Advanced Filtration'",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l/",
+   "source_title": "Prusa CORE One L | Prusa Research",
+   "read": "2026-11-14",
+   "note": "The spec table is stricter than the marketing copy on the same page."
+  },
+  {
+   "product": "Prusa CORE One L",
+   "label": "Price shown for US shipping",
+   "value": "$1,850.93",
+   "source": "https://www.prusa3d.com/product/prusa-core-one-l/",
+   "source_title": "Prusa CORE One L | Prusa Research",
+   "read": "2026-11-14",
+   "note": "Shown in USD with United States shipping selected. This is the CORE One L page, not the L+."
+  },
+  {
+   "product": "Bambu Lab H2S",
+   "label": "Chamber and build volume, maker launch post",
+   "value": "'65°C actively heated chamber'; 340 × 320 × 340 mm",
+   "source": "https://blog.bambulab.com/h2s-the-ultimate-single-nozzle-3d-printer-now-bigger-than-ever",
+   "source_title": "H2S the Ultimate Single-Nozzle 3D Printer Now Bigger Than Ever",
+   "read": "2026-11-14",
+   "note": "Post dated Aug 26, 2025. It gives a launch price of 'Starting at $1,249' with no region, so this is not today's store price. It says nothing about how the chamber is heated or how much power the heater uses."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2S chamber heater wattage and 110 V maximum power. bambulab.com/en-us/h2s and /h2s/specs returned HTTP 403, wiki.bambulab.com/en/h2/manual/h2s-faq returned 402, and the Bambu US store returned 402/404 to WebFetch and storecheck. A search snippet gave '110V Maximum Power: 1250 W' from the FAQ, but I could not open the page, so I left it out.",
+  "Bambu Lab H2S current US store price. The store was blocked, and the only figure I could open is the 2025 launch price.",
+  "Creality K2 Plus chamber heater wattage and rated power. creality.com/products/creality-k2-plus-cfs-combo loaded only navigation, store.creality.com returned 404 to storecheck, and the 1200 W total appeared only in retailer search snippets that I did not open.",
+  "Time for any of the five printers to heat the chamber to 65 °C or 60 °C. No maker page or named reviewer I could open gives a measured figure. One bambuhub.net figure (~25 min for the H2S) appeared only in a search snippet with no method.",
+  "QIDI Plus5 chamber heater wattage. The tool budget ran out before I could open its TechSpecs page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9915431999999997
+ }
+}
