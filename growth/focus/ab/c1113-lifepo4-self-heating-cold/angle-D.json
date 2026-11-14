@@ -1,0 +1,68 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the heater in these batteries runs on charger current only, so a battery with no charger connected cannot warm itself and stays charge-locked below freezing until a source supplying enough amps is attached; LiTime is the one maker I opened that describes a second mode that uses the battery's own stored energy to preheat while disconnected.",
+ "standout": 1,
+ "standout_why": "I compared against ChatGPT's answer, its cited Power Queen page and our own Redodo page. ChatGPT's answer says that 'some' heaters use charger power and cites Power Queen's 10 A minimum charge current. Our Redodo page already says the heater starts only 'with a charger connected' and needs about 10 A. So rivals already have the charger-current requirement. Nothing ChatGPT had says which batteries can preheat from their own capacity with no charger attached. Nor does it say that the cells are still only lightly chargeable after the heater shuts off at 41-50°F: the cell datasheet that frater secessus quotes limits charging to 0.1C up to 80% SOC between 0 and 10°C. I could not open the maker pages for Power Queen, SOK, Battle Born, Renogy DuoHeat, Vatrer, Rich Solar or Temgo (HTTP 429, 403, 404 or certificate errors), so I could not check whether those pages state the mechanism.",
+ "decides": "This confirms the pick rather than changing it. A charger-powered heater (Redodo, and the Power Queen as ChatGPT relayed it) only helps a shopper whose charging source can reliably supply about 10 A or more in the cold, such as shore power, a DC-DC charger or a well-sized solar array. A shopper who stores the battery unplugged, or has only a small winter solar panel, needs a design that preheats from its own capacity (LiTime describes one) or a heated enclosure. Either way, the charge rate between 32°F and 50°F should stay low.",
+ "candidates": [
+  "Redodo 12V 100Ah Self-Heating LiFePO4",
+  "Power Queen 12V 100Ah Self-Heating LiFePO4",
+  "SOK SK12V100H",
+  "Renogy Core Mini 12V 100Ah DuoHeat",
+  "LiTime 12V 100Ah Self-Heating LiFePO4",
+  "Battle Born 100Ah 12V Heated LiFePO4"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why a cold LiFePO4 charger shows 0 A",
+   "value": "The BMS blocks charge current below freezing to prevent lithium plating ('That \"0A\" reading is often the BMS actively refusing the charge')",
+   "source": "https://www.litime.com/blogs/news/battery-dies-in-cold-weather",
+   "source_title": "Why You See \"0A\" When You Plug In: The Cold-Weather No-Charge Zone + A Self-Heating Fix (LiTime, Mike Smith, Feb 14, 2026)",
+   "read": "2026-11-13",
+   "note": "This is the maker's own explanation of the low-temperature charge cutoff the heater exists to get around."
+  },
+  {
+   "product": "LiTime 12V 100Ah Self-Heating LiFePO4",
+   "label": "Heater power sources",
+   "value": "Two modes: one powered by an external charger that starts when you plug in, and one that 'uses the battery's own energy to preheat' when disconnected; charging starts once cells reach a charge-safe threshold, e.g. 10°C / 50°F",
+   "source": "https://www.litime.com/blogs/news/battery-dies-in-cold-weather",
+   "source_title": "Why You See \"0A\" When You Plug In (LiTime blog, Feb 14, 2026)",
+   "read": "2026-11-13",
+   "note": "This is LiTime's blog, not its product page or manual. The blog does not say which LiTime model has the self-powered mode, the minimum SOC for it, or a minimum charge current. The LiTime product page returned HTTP 429."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Heater trigger and power source",
+   "value": "Heats only with a charger connected; starts below 32°F (0°C), stops at 41°F (5°C), then charging resumes; two pads, 100 W total; minimum charge current about 10 A to start the heater; charging blocked below 32°F; discharge stops below -4°F",
+   "source": "https://dealectric.com/redodo-12v-100ah-self-heating-lifepo4",
+   "source_title": "Redodo 12V 100Ah Self-Heating LiFePO4 Battery: $251.99 at Redodo · Dealectric",
+   "read": "2026-11-13",
+   "note": "This is our own page, which attributes these figures to Redodo's product page. I could not re-open Redodo's US or CA pages to re-check them (HTTP 429). Arithmetic: 100 W ÷ about 13 V ≈ 7.7 A drawn by the pads, which fits a roughly 10 A minimum supply."
+  },
+  {
+   "product": "general",
+   "label": "Charge limit for LFP cells between 0 and 10°C (REPT 280 Ah cell datasheet)",
+   "value": "0.1C charge, to 80% SOC at most, between 0°C and 10°C; no charging below 0°C",
+   "source": "https://mouse.mousetrap.net/blog/2024-11-23-backchannel--charging-rates-and-self-heating-batteries-.html",
+   "source_title": "backchannel: charging rates and self heating batteries (frater secessus, the mousepad, Nov 23, 2024)",
+   "read": "2026-11-13",
+   "note": "frater secessus quotes the REPT 280 cell datasheet and the Renogy self-heating manual: the heater turns on below 41°F (5°C) and off above 50°F (10°C). Their conclusion is that a heater stopping at 5-10°C leaves cells in the 0.1C band, so 'Colder temps might warrant gentler charging, even with self-heating batteries.' These are REPT cells; I did not check which cells Redodo, Power Queen or SOK use."
+  }
+ ],
+ "unsourced": [
+  "Power Queen 12V 100Ah Self-Heating: heater power source, start/stop temperatures and the 10 A minimum, from its own page. ipowerqueen.com failed with a certificate error in WebFetch and the store-check tool returned HTTP 0. The 10 A figure appears only as ChatGPT relayed it.",
+  "Renogy Core Mini DuoHeat: whether 'DuoHeat' means it can heat from its own stored energy as well as from the charger, and under what SOC and temperature conditions. renogy.com, uk.renogy.com and reservepowerco.com all returned HTTP 429. The Renogy FAQ page loaded without its body text.",
+  "SOK SK12V100H: heater power source and minimum charge current. The US URL redirects to sokbattery.com, which returned 404.",
+  "Battle Born heated kits: heater turn-on temperature and power source, from the product page and manual. The product page returned HTTP 429 three times.",
+  "Vatrer 12V 100Ah Self-Heating (HTTP 403), Rich Solar on offgridstores.com (HTTP 429), Temgo (HTTP 429) and the ELB datasheet (certificate error): heater power source and thresholds.",
+  "Redodo's own US product page and manual, to re-check the 10 A minimum and the heating time from -4°F. Every redodopower.com fetch returned HTTP 429.",
+  "Prices. I could not open any maker store page today because of the rate limits, so I give no prices."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.8704400000000001
+ }
+}
