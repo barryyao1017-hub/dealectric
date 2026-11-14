@@ -1,0 +1,99 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that Custom PC Review (Sam Chen, 2017) put the CP1500PFCLCD on an oscilloscope and measured its switch to battery at about 8–11 ms against CyberPower's 4 ms rating, while the APC Smart-UPS 1500 measured 0.8–9.4 ms, so the best-overall and premium picks switch over in about the same time in practice.",
+ "standout": 2,
+ "standout_why": "ChatGPT's cited and top results are all maker or retailer spec sources: the CyberPower product and series pages, the APC SMT1500C datasheet PDFs, the Tripp Lite SMART1500LCDT datasheet, the Eaton SKU page, and the Dell, Micro Center, Newegg and B&H listings. Pages like these carry rated transfer times (CyberPower 4 ms; APC 6 ms typical / 10 ms max, per search listings I did not open) and rated runtimes, not third-party measurements. I tried to open the CyberPower page (HTTP 405), the B&H compare page (403), the Tripp Lite datasheet (403) and the Eaton page (timed out), and the APC and CyberPower PDFs came back as unreadable binary. So I could not confirm line by line that none of them has a measured figure. None is a review, and none would carry an oscilloscope transfer-time measurement or ENERGY STAR's per-load efficiency and no-load draw.",
+ "decides": "This confirms the pick rather than changing it. The CP1500PFCLCD's measured transfer time (8–11 ms) is close to the APC Smart-UPS 1500's measured range (0.8–9.4 ms), and Custom PC Review saw both put out a sine wave on battery that looked the same as utility power. So the $748.99 'premium' APC buys no measured advantage in switchover or waveform over the $239.95 CyberPower for a PC or audio load. ENERGY STAR data adds that all three units draw under 4 W at no load and are 97.8–99.5% efficient in normal mode. The conditioning layer costs almost nothing to run, and efficiency doesn't separate them. Tripp Lite has no named measurement, and ChatGPT's own card says it puts out a simulated sine wave on battery, which keeps it third.",
+ "candidates": [
+  "CyberPower CP1500PFCLCD",
+  "APC Smart-UPS SMT1500C",
+  "Tripp Lite SMART1500LCDT"
+ ],
+ "findings": [
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Measured transfer time to battery (Custom PC Review, Sam Chen)",
+   "value": "about 8–11 ms (rated 4 ms)",
+   "source": "https://www.custompcreview.com/?p=41209",
+   "source_title": "CyberPower CP1500AVRLCD, CP1500PFCLCD Review – Custom PC Review",
+   "read": "2026-11-14",
+   "note": "Review dated 2017-04-30. Measured with an oscilloscope. The reviewer says both CyberPower units came in 'closer to around 8-11ms' against CyberPower's 4 ms rating."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Measured runtime at 200 W (Custom PC Review)",
+   "value": "24 minutes at 200 W",
+   "source": "https://www.custompcreview.com/?p=41209",
+   "source_title": "CyberPower CP1500AVRLCD, CP1500PFCLCD Review – Custom PC Review",
+   "read": "2026-11-14",
+   "note": "Load was a chain of 50 W fluorescent bulbs. The sibling CP1500AVRLCD ran 25 min at the same load. Other load points are only in a chart image. The battery was new in 2017."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Battery output waveform on oscilloscope (Custom PC Review)",
+   "value": "Sine wave on battery that looked the same as utility power; the AVR sibling showed a stepped wave",
+   "source": "https://www.custompcreview.com/?p=41209",
+   "source_title": "CyberPower CP1500AVRLCD, CP1500PFCLCD Review – Custom PC Review",
+   "read": "2026-11-14",
+   "note": "Qualitative scope comparison. The reviewer says the PFC unit's output was 'cleaner and at a more proper voltage' than mains, which they say typically sits around 110–115 V."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "Measured transfer time to battery (Custom PC Review, Sam Chen)",
+   "value": "0.8–9.4 ms (rated then '4ms Typical, 8ms Maximum')",
+   "source": "https://www.custompcreview.com/?p=41373",
+   "source_title": "APC Smart-UPS 1500VA (SMT1500) Review – Custom PC Review",
+   "read": "2026-11-14",
+   "note": "Review dated 2017-06-25. The unit tested was the SMT1500, the earlier version of the same Smart-UPS 1500 line-interactive tower, not the SmartConnect SMT1500C. The 9.4 ms maximum exceeded APC's 8 ms rating at the time."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "Measured runtime (Custom PC Review)",
+   "value": "about 10 minutes at 800 W; 1–2 hours at 100–200 W",
+   "source": "https://www.custompcreview.com/?p=41373",
+   "source_title": "APC Smart-UPS 1500VA (SMT1500) Review – Custom PC Review",
+   "read": "2026-11-14",
+   "note": "Load was a chain of 50 W fluorescent bulbs. SMT1500 predecessor model with a new battery in 2017. The reviewer saw no waveform difference between battery and utility power on the oscilloscope."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "ENERGY STAR certified efficiency and no-load draw (normal mode, 120 V/60 Hz)",
+   "value": "4 W at 0% load; 97.8% / 98.6% / 98.8% / 98.8% efficient at 25/50/75/100% load; 98.7% weighted",
+   "source": "https://data.energystar.gov/resource/ifxy-2uty.json?$q=CP1500PFCLCD",
+   "source_title": "ENERGY STAR Certified Uninterruptible Power Supplies dataset, record pd_id 2331672",
+   "read": "2026-11-14",
+   "note": "Line-interactive, voltage-independent default mode, rated 900 W / 1500 VA in the record. Qualified 2018-12-19. Certified runtime 2 min at 100% load and 11 min at 50%. The record does not name the test lab."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "ENERGY STAR certified efficiency and no-load draw (normal mode, 120 V/60 Hz)",
+   "value": "3.56 W at 0% load; 98.4% / 99% / 99% / 98.9% efficient at 25/50/75/100% load; 99% weighted",
+   "source": "https://data.energystar.gov/resource/ifxy-2uty.json?$select=pd_id,model_number,total_input_power_in_w_at_0_load_min_config_lowest_dependency_ac,efficiency_at_25_load_min_config_lowest_dependency_ac,efficiency_at_50_load_min_config_lowest_dependency_ac,efficiency_at_75_load_min_config_lowest_dependency_ac,efficiency_at_100_load_min_config_lowest_dependency_ac,efficiency,date_qualified,default_normal_mode_ac&$where=model_number='SMT1500C'",
+   "source_title": "ENERGY STAR Certified Uninterruptible Power Supplies dataset, records pd_id 2336583 / 2377793",
+   "read": "2026-11-14",
+   "note": "Qualified 2019-04-10, 1000 W active rating. Certified runtime 6 min at 100% load and 23 min at 50% (from the $q=SMT1500C query, read the same day). The record does not name the test lab."
+  },
+  {
+   "product": "Tripp Lite SMART1500LCDT",
+   "label": "ENERGY STAR certified efficiency and no-load draw (normal mode, 120 V/60 Hz)",
+   "value": "3.87 W at 0% load; 99.5% / 99.2% / 99.5% / 99.5% efficient at 25/50/75/100% load; 99.4% weighted",
+   "source": "https://data.energystar.gov/resource/ifxy-2uty.json?$q=SMART1500LCDT",
+   "source_title": "ENERGY STAR Certified Uninterruptible Power Supplies dataset, SMART1500LCDT record",
+   "read": "2026-11-14",
+   "note": "Eaton partner record, model AG-066C, 900 W / 1500 VA, qualified 2022-01-24. Certified runtime 3 min at 100% load and 10 min at 50%. The record lists input voltage as '396-120', apparently a data-entry error. The record does not name the test lab."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's or lab's measured transfer time, runtime or battery waveform for the Tripp Lite SMART1500LCDT. Searches turned up only Tripp Lite/Eaton datasheets and retailer listings, and the Eaton SKU page timed out.",
+  "Measured EMI/RFI noise attenuation (the actual 'power conditioning') for any of the three, from any named lab or reviewer. I found none.",
+  "Wirecutter's UPS guide measurements. nytimes.com and web.archive.org both blocked fetching, so I used nothing from it.",
+  "A measured figure for the current SmartConnect SMT1500C itself. The only named measurement found is Custom PC Review's 2017 test of the SMT1500 predecessor.",
+  "A line-by-line check that ChatGPT's cited rival pages lack these figures. The CyberPower product page (405), B&H compare (403) and Tripp Lite datasheet (403) refused the fetch, the Eaton page timed out, and the APC and CyberPower datasheet PDFs came back as unreadable binary."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9824050000000002
+ }
+}

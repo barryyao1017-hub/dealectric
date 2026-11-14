@@ -1,0 +1,80 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got puts the candidates side by side at the same load: at 500 W the APC SMT1500C runs about 23.1 min against 10 min for the CyberPower CP1500PFCLCD (2.3×), and at 1000 W it runs 6.5 min against 2.5 min (2.6×).",
+ "standout": 1,
+ "standout_why": "I couldn't read most of the rival pages. The SMT1500C datasheets (surveillance-video.com, squarespace, se.com download) and the CyberPower and Tripp Lite datasheet PDFs came back as compressed streams that WebFetch could not decode, and Bash text extraction needed approval I didn't have. cyberpowersystems.com returned 405, B&H and Micro Center returned 403, and eaton.com timed out three times. Each maker datasheet probably gives its own half-load runtime, so the inputs are likely already in the rivals. What none of them can give is the comparison at equal load: each maker rates half load at a different wattage (CyberPower and APC at 500 W, Tripp Lite at 450 W according to search results). ChatGPT's answer doesn't mention runtime at all.",
+ "decides": "This supports ChatGPT's split between Best overall and Premium and gives the reason for it. The CyberPower gives 10 min at 500 W for $239.99 (Dell), which is enough for a desktop PC to shut down cleanly. The APC's extra cost buys 2.3× the runtime at the same load, which only matters if the shopper needs to ride out outages longer than about 10 minutes. The Tripp Lite can't be placed on the same scale because I couldn't open a page with its runtime figures.",
+ "candidates": [
+  "CyberPower CP1500PFCLCD",
+  "APC Smart-UPS SMT1500C",
+  "Tripp Lite SMART1500LCDT"
+ ],
+ "findings": [
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Runtime at half load (500 W) / full load (1000 W)",
+   "value": "10 min / 2.5 min",
+   "source": "https://www.dell.com/en-us/shop/client-power/apd/cyberpower-cp1500pfclcd-pfc-sinewave-ups-systems/8mhpdx/cp1500pfclcd",
+   "source_title": "CyberPower CP1500PFCLCD PFC Sinewave UPS Systems | Dell USA",
+   "read": "2026-11-14",
+   "note": "Dell spec table: 'Backup/Run Time (Half Load): 10 Minute', 'Full Load: 2.50 Minute'. CyberPower's global page for the CP1500PFCLCDa variant gives the same 10 / 2.5 min (cyberpower.com, read 2026-11-13). The US maker page returned 405."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "Runtime at 500 W / 1000 W",
+   "value": "23.1 min / 6.5 min",
+   "source": "https://smarthomecompared.com/ups/apc-smart-ups-smt1500c",
+   "source_title": "APC Smart-UPS SMT1500C | smarthomecompared.com",
+   "read": "2026-11-14",
+   "note": "SmartHomeCompared quotes APC's runtime calculator: '23 min 4 s at 500 W', '6 min 30 s at 1000 W'. The se.com product page I opened did not list runtime."
+  },
+  {
+   "product": "general",
+   "label": "Runtime ratio at the same 500 W load, APC SMT1500C vs CyberPower CP1500PFCLCD",
+   "value": "2.3×",
+   "source": "https://smarthomecompared.com/ups/apc-smart-ups-smt1500c",
+   "source_title": "APC Smart-UPS SMT1500C | smarthomecompared.com (with Dell CP1500PFCLCD page)",
+   "read": "2026-11-14",
+   "note": "23.07 min ÷ 10 min = 2.31×. At 1000 W: 6.5 ÷ 2.5 = 2.6×. Both are rated 1000 W, so 500 W is half load for each."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Price per minute of runtime at 500 W",
+   "value": "$24.00 per minute",
+   "source": "https://www.dell.com/en-us/shop/client-power/apd/cyberpower-cp1500pfclcd-pfc-sinewave-ups-systems/8mhpdx/cp1500pfclcd",
+   "source_title": "CyberPower CP1500PFCLCD PFC Sinewave UPS Systems | Dell USA",
+   "read": "2026-11-14",
+   "note": "$239.99 (Dell price) ÷ 10 min = $24.00/min. Dell is neither the maker's store nor the retailer ChatGPT showed (Newegg, $239.95), so check this price before publishing."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Input voltage range before switching to battery",
+   "value": "88–144 V AC",
+   "source": "https://www.dell.com/en-us/shop/client-power/apd/cyberpower-cp1500pfclcd-pfc-sinewave-ups-systems/8mhpdx/cp1500pfclcd",
+   "source_title": "CyberPower CP1500PFCLCD PFC Sinewave UPS Systems | Dell USA",
+   "read": "2026-11-14",
+   "note": "'Input Voltage Range: 88 V AC - 144 V AC'. The page also lists 24.90 lb and a 3-year limited warranty."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "Input voltage range before switching to battery",
+   "value": "82–144 V (adjustable 75–154 V)",
+   "source": "https://smarthomecompared.com/ups/apc-smart-ups-smt1500c",
+   "source_title": "APC Smart-UPS SMT1500C | smarthomecompared.com",
+   "read": "2026-11-14",
+   "note": "From the page's AVR spec line. At the adjustable limit, the window is 79 V wide against CyberPower's 56 V (154−75 vs 144−88)."
+  }
+ ],
+ "unsourced": [
+  "Tripp Lite SMART1500LCDT runtime at half load and full load: eaton.com timed out three times and the Mouser datasheet PDF timed out. A search snippet said 10 min at 450 W, which I didn't use because I never opened the page.",
+  "APC SMT1500C price today: se.com shows no price ('Non-Stock'), and I didn't open Newegg ($748.99 in ChatGPT's answer). SmartHomeCompared shows $700 on Amazon, but that is neither the maker's store nor ChatGPT's retailer, so I didn't compute APC's price per minute of runtime.",
+  "Battery Wh for each unit (for Wh per lb and cost per Wh): APC's RBC7 is 24 V 17 Ah according to the URL text inside the APC PDF, and Dell lists the CyberPower battery as 12 V / 9 Ah without the number of batteries. I couldn't open a readable spec page for either, so I left out Wh-based figures.",
+  "Tripp Lite SMART1500LCDT price: I didn't open the Micro Center page ($279.99 in ChatGPT's answer). A different Micro Center page, for the CyberPower, returned 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8793711
+ }
+}

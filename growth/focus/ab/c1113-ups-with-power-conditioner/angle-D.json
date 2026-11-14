@@ -1,0 +1,81 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says what CyberPower's 'Single Boost' AVR means for the CP1500PFCLCD: the unit can raise low line voltage but cannot trim high voltage. CyberPower's own manual says it switches to battery once input exceeds 140 V. APC's support FAQ says that boost-only Smart-UPS units go to battery on high voltage and that loads needing both boost and trim belong on an SMT or SMX. APC's double-conversion SRT1500XLA delivers power with zero transfer time.",
+ "standout": 1,
+ "standout_why": "I compared against these rival pages: CyberPower's global CP1500PFCLCDA page (rival #5), which only lists 'AVR: Single Boost' in its spec table and never says what happens on high voltage; APC's se.com SMT1500C page, which only says AVR 'helps correct utility voltage' with no boost or trim detail; and ChatGPT's answer, which says AVR 'corrects voltage fluctuations without using the battery'. That claim is wrong for overvoltage on its 'Best overall' pick. Rival #5 has the raw spec, but no rival page explains the consequence. I could not open the cyberpowersystems.com page (HTTP 405), the Tripp Lite datasheet (HTTP 403), the B&H compare page (HTTP 403) or the Eaton SKU page (timed out twice), so I could not check those for the same point.",
+ "decides": "A shopper who wants a 'power conditioner' expects both high and low voltage to be corrected while the battery stays out of use. The CP1500PFCLCD only boosts, so if the line runs above 140 V it falls back to battery (4 ms typical transfer) and wears the battery. It is still the value pick for brownout-prone homes, but not for homes where high voltage is the problem. On APC's own wording, the SMT1500C line is the boost-and-trim choice among line-interactive units. Only a double-conversion online unit such as the APC SRT1500XLA (zero transfer time) actually conditions the power all the time.",
+ "candidates": [
+  "CyberPower CP1500PFCLCD",
+  "APC Smart-UPS SMT1500C",
+  "Tripp Lite SMART1500LCDT",
+  "APC Smart-UPS On-Line SRT1500XLA"
+ ],
+ "findings": [
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "AVR type",
+   "value": "Single Boost (line-interactive)",
+   "source": "https://www.cyberpower.com/global/en/product/sku/cp1500pfclcda",
+   "source_title": "CP1500PFCLCDa | CyberPower",
+   "read": "2026-11-14",
+   "note": "Spec table rows: 'AVR: Single Boost' and 'Line-interactive'. This is the global page for the CP1500PFCLCDA variant. The US cyberpowersystems.com page returned HTTP 405."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Line-voltage window before switching to battery",
+   "value": "below 90 V or above 140 V",
+   "source": "https://www.manualsdir.com/manuals/64688/cyberpower-systems-cp1500pfclcd-cp1350pfclcd.html",
+   "source_title": "CyberPower Systems CP1500PFCLCD / CP1350PFCLCD User Manual (manualsdir mirror)",
+   "read": "2026-11-14",
+   "note": "The manual says the battery takes over when 'incoming utility voltage drops below 90 volts, or exceeds 140 volts'. Page 2 of the same manual describes AVR as 'automatically correcting low AC line voltage without using battery power'. Page 1 also claims AVR 'decreases high utility power', which conflicts with the 'Single Boost' spec, so the maker's current spec row is the one I relied on. The manual is a third-party mirror and has no revision shown."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Transfer time / battery output",
+   "value": "4 ms typical; 120 V ±5 %, pure sine wave on battery; Active PFC compatible; EMI/RFI filtration yes",
+   "source": "https://www.cyberpower.com/global/en/product/sku/cp1500pfclcda",
+   "source_title": "CP1500PFCLCDa | CyberPower",
+   "read": "2026-11-14",
+   "note": "Spec table: 'Typical Transfer Time (ms): 4', 'On Battery Voltage(s): 120 ± 5 %', 'On Battery Waveform: Pure Sine Wave'. The table gives no line-mode regulation figure."
+  },
+  {
+   "product": "general (APC Smart-UPS)",
+   "label": "Boost-only regulation goes to battery on high voltage; SMT/SMX recommended for boost + trim",
+   "value": "SMC = boost-only; SMT or SMX suggested 'if your application requires both boost and trim voltage regulation'",
+   "source": "https://www.se.com/us/en/faqs/FA164358/",
+   "source_title": "Why does my SMC Series Smart-UPS switch to battery when it encounters high voltage? (APC/Schneider FAQ FA164358)",
+   "read": "2026-11-14",
+   "note": "APC states the SMC series 'feature boost-only voltage regulation' and will 'switch to on-battery operation' above the high transfer point, and calls this normal. The FAQ implies, but does not say outright, that SMT (including the SMT1500C) has both boost and trim."
+  },
+  {
+   "product": "APC Smart-UPS SMT1500C",
+   "label": "Topology / waveform",
+   "value": "1440 VA / 1000 W line-interactive, pure sine wave; 'Automatic Voltage Regulation helps correct utility voltage'",
+   "source": "https://www.se.com/us/en/product/SMT1500C/apc-smartups-line-interactive-1500va-tower-120v-8x-nema-515r-outlets-smartconnect-port+smartslot-avr-lcd/",
+   "source_title": "APC Smart-UPS SMT1500C product page (se.com)",
+   "read": "2026-11-14",
+   "note": "The page does not give boost/trim percentages, the input voltage window or the transfer time."
+  },
+  {
+   "product": "APC Smart-UPS On-Line SRT1500XLA",
+   "label": "Topology / transfer time",
+   "value": "1500 VA / 1350 W double-conversion on-line, pure sine wave, zero transfer time",
+   "source": "https://www.se.com/us/en/product/SRT1500XLA/apc-smartups-on-line-1500va-1500w-tower-120v-6x-nema-515r-outlets-smartslot-extended-runtime-w-rail-kit/",
+   "source_title": "APC Smart-UPS On-Line SRT1500XLA product page (se.com)",
+   "read": "2026-11-14",
+   "note": "Quote: 'Delivers clean power with zero transfer time for critical or sensitive devices'. The page states no output voltage tolerance."
+  }
+ ],
+ "unsourced": [
+  "Tripp Lite SMART1500LCDT AVR boost/trim range and battery waveform from Eaton: the Eaton SKU page timed out twice and the S3 datasheet returned HTTP 403.",
+  "APC SMT1500C boost/trim percentages, input voltage window and transfer time: the se.com product page lacks them, and the se.com download PDF and the SKU PDFs ChatGPT got are compressed and could not be read. Only a parts reseller listing gave '+30 % boost / −12 % trim', and I did not use it.",
+  "CP1500PFCLCD high-voltage transfer point on CyberPower's own US product page, which returned HTTP 405. The 140 V figure comes from the manual mirror instead.",
+  "APC SRT1500XLA output voltage tolerance (not on the se.com page) and current prices for all candidates. I did not check prices because the tool budget went to the mechanism and Bash (storecheck/amzcheck) was not approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0253649000000002
+ }
+}
