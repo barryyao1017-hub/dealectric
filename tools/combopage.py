@@ -183,12 +183,29 @@ def amazon_rescue(draft: dict, d: Path) -> list[dict]:
     return found
 
 
+def fill_policy(draft: dict) -> int:
+    """New product records that lack warranty or return terms take them from a product of the same brand we already
+    list (the terms are the store's, read and verified when that product was added). Kit fix passes often drop them."""
+    import products as P
+    n = 0
+    for p in draft.get("products") or []:
+        for k in ("warranty", "returns"):
+            if not str(p.get(k) or "").strip():
+                src = next((x for x in P.PRODUCTS if x["brand"].lower() == str(p.get("brand", "")).lower() and x.get("program") == p.get("program") and x.get(k)), None)
+                if src:
+                    p[k] = src[k]
+                    n += 1
+    return n
+
+
 def apply(slug: str) -> dict:
     d = A.pdir(slug)
     draft = A.jload(d / "draft.json")
     if not draft:
         return {"slug": slug, "status": "no draft"}
     kit = bool(draft.get("kit_page") or draft.get("bundle_compare"))
+    if fill_policy(draft):
+        A.jsave(d / "draft.json", draft)
     rows = (draft.get("page") or {}).get("rows") or []
     amazon_pick = False
     if not kit and rows and not any(r.get("slug") for r in rows):
@@ -237,11 +254,12 @@ def price_one(p: dict, tab, B, BC) -> dict | None:
     r = BC.check(q, tab)
     if r.get("error"):
         return {"error": r["error"]}
-    if r.get("verdict") == "no-match":
+    if not any(c.get("kind") == "retailer" for c in r.get("cards") or []):   # the full name often shows the brand's own cards only
+        time.sleep(15)
         r2 = BC.check(q, tab, loose=True)
         if r2.get("error"):
             return {"error": r2["error"]}
-        r = r2
+        r = dict(r2, cards=(r.get("cards") or []) + (r2.get("cards") or []))
     sellers: dict[str, float] = {}
     for c in r.get("cards") or []:
         if c.get("kind") == "retailer":
