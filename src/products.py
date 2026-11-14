@@ -6614,6 +6614,23 @@ PRODUCTS = [
  "fit": 'Cabins, shops and home backup on a 12V battery bank, where the charging source is a 240V generator or the grid and some loads need 240 V.',
  "caveats": ['Needs 240 VAC input to charge and pass power through. A 120 V-only source (30 A RV shore power, a 120 V generator) is below its 140 VAC minimum.', 'At 4,000 W it pulls about 379 A from a 12 V bank (4,000 ÷ (0.88 × 12)), so it needs heavy cables and a fuse rated for that current.', 'Idle draw of 45 W is about 84 Ah a day from a 12.8 V LiFePO4 bank unless power-saver mode is used.']},
 
+{"slug": 'anker-solix-s2000',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "asin": None,
+ "category": 'power-station',
+ "name": 'Anker SOLIX S2000 Portable Power Station, 2,010 Wh LFP, 1,500 W',
+ "model": 'SOLIX S2000',
+ "url": 'https://www.ankersolix.com/products/s2000-portable-power-station',
+ "price": 699.99,
+ "verified": '2026-11-13',
+ "specs": [('Capacity', '2,010 Wh'), ('Weight', '35.7 lb'), ('AC output', '1,500 W rated / 3,000 W peak'), ('AC input', 'Up to 1,600 W with UltraFast Mode; default cap 1,150 W (full in 2.3 h)'), ('Cycle life', '6,000 cycles to 80% capacity; 10,000 cycles to 60%'), ('12 V DC port', 'No (Anker comparison table)'), ('Expandable battery', 'No'), ('Dimensions', '8.2 × 11.1 × 12.7 in')],
+ "warranty": '5-year warranty (Anker)',
+ "returns": '30-day money-back guarantee (Anker)',
+ "summary": "Anker's store sells 2,010 Wh for $699.99, which is $0.35 per Wh and about half the per-Wh cost of a 1 kWh station.",
+ "fit": 'Car camping where the station rides in the vehicle and has to run a fridge, lights and laptops for several days.',
+ "caveats": ['No 12 V car socket, so a 12 V compressor fridge needs its own AC adapter to run from it', "Notebookcheck's datasheet (EU 230 V unit) lists 400 W solar input, which means at least 5 h of full sun to refill", '35.7 lb, 10.8 lb heavier than the 1,024 Wh C1000 Gen 2', 'Not expandable', '$699.99 is a sale price; Anker lists $999.99 as the original price']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
