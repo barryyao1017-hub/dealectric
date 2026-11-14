@@ -8496,7 +8496,6 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G268: best-travel-tripod-for-camera (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'best-travel-tripod-for-camera',
  "question": 'G268 (gap mining daily 2026-11-13, research method ab-2026-11: travel tripod for camera)',
- "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'C',
@@ -8789,7 +8788,6 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G283: portable-power-station-for-tv-measured-runtime (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'portable-power-station-for-tv-measured-runtime',
  "question": 'G283 (gap mining daily 2026-11-13, research method ab-2026-11: portable power station for tv)',
- "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
@@ -9332,7 +9330,6 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G313: rugged-smartwatch-for-men-days-per-charge-gps-trip (research method ab-2026-11, 2026-11-14) ----------------
 {"slug": 'rugged-smartwatch-for-men-days-per-charge-gps-trip',
  "question": 'G313 (gap mining daily 2026-11-14, research method ab-2026-11: rugged smartwatch for men)',
- "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'B',
