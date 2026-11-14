@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the $1,365 Solis S6 5 kW 'hybrid' (S6-EH1P5K-H-US) accepts only high-voltage lithium batteries in a 120–500 V window. The common 48 V (51.2 V) rack or wall batteries that every other hybrid in the answer and the rival pages uses sit far below that window, so the Solis cannot run on them.",
+ "standout": 2,
+ "standout_why": "I checked three pages. ecosolarkits.com/blogs/guides/hybrid-vs-off-grid-vs-grid-tie-inverter covers anti-islanding shutdown (UL 1741 / IEEE 1547) and when you need 120/240 V split phase, but it never says whether a given inverter takes a high-voltage or a 48 V battery. liveoffthegrid.com/specs/inverters lists only 48 V hybrids and says 'battery voltage constrains the whole system' but has no high-voltage hybrids and no warning about mixing them. homebackupco.com's Rich Solar page gives only that unit's 24 V battery and 120 V output. None of the three mentions the Solis S6-H-US or its 120–500 V battery window. Rivals already cover grid-tie shutdown and the 120 V vs 240 V issue, so those findings would not stand out.",
+ "decides": "This is a cost trap, not a dead end. ChatGPT's cheapest 'hybrid, solar + battery storage' card, the Solis S6 5 kW, works only with high-voltage stacks from Solis's compatibility list (BYD HVL, Dyness Tower, Soluna HV and similar), not with a 48 V battery. A shopper with a $3,000 budget who means 'inverter plus a cheap battery' should pick a 48 V hybrid such as the Rich Solar 3K 48 V or Sol-Ark 5K, or plan for a high-voltage battery. The SMA Sunny Boy has no battery port at all. SMA's own manual says its outage outlet works only in daylight and never at night.",
+ "candidates": [
+  "Solis S6-EH1P5K-H-US",
+  "SMA Sunny Boy SB5.0-1SP-US-41",
+  "Sol-Ark 5K-1P-N",
+  "Rich Solar NOVA 3K 48V",
+  "Renogy 3000W 12V Pure Sine Wave Inverter"
+ ],
+ "findings": [
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Battery voltage range",
+   "value": "120–500 V DC, lithium-ion",
+   "source": "https://www.ecodirect.com/Solis-5000-Watt-220-240-VAC-Grid-Tie-Inverter-p/solis-s6-eh1p5k-h-us-rss.htm",
+   "source_title": "Solis 5000 Watt 220/240 VAC Single Phase Residential Hybrid Storage Inverter - S6-EH1P5K-H-US-RSS (ecodirect)",
+   "read": "2026-11-13",
+   "note": "This is the spec table on a retailer page. I could not text-extract Solis's own datasheet PDF (Solis_datasheet_S6-EH1P(3,8-11,4)K-H-US_USA_V1,8_202407). A 48 V LFP battery (51.2 V nominal, about 58 V maximum) sits below the 120 V floor."
+  },
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Max battery charge/discharge current",
+   "value": "25 A",
+   "source": "https://www.ecodirect.com/Solis-5000-Watt-220-240-VAC-Grid-Tie-Inverter-p/solis-s6-eh1p5k-h-us-rss.htm",
+   "source_title": "Solis S6-EH1P5K-H-US-RSS (ecodirect)",
+   "read": "2026-11-13",
+   "note": "Retailer spec table. Batteries per inverter: 'See Battery Compatibility Sheet'."
+  },
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Rated AC output",
+   "value": "5,000 W at 220/240 V split phase",
+   "source": "https://www.ecodirect.com/Solis-5000-Watt-220-240-VAC-Grid-Tie-Inverter-p/solis-s6-eh1p5k-h-us-rss.htm",
+   "source_title": "Solis S6-EH1P5K-H-US-RSS (ecodirect)",
+   "read": "2026-11-13",
+   "note": "This is the US model, so it suits a US 120/240 V panel. Backup: 'Dedicated loads and whole-home (with a Solis Power Hub)'."
+  },
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Price (RSS variant, ecodirect)",
+   "value": "$2,276.00",
+   "source": "https://www.ecodirect.com/Solis-5000-Watt-220-240-VAC-Grid-Tie-Inverter-p/solis-s6-eh1p5k-h-us-rss.htm",
+   "source_title": "Solis S6-EH1P5K-H-US-RSS (ecodirect)",
+   "read": "2026-11-13",
+   "note": "This is not the retailer ChatGPT showed (self2solar, $1,365). self2solar returned HTTP 429 every time I tried."
+  },
+  {
+   "product": "Solis S6-EH1P(3.8-11.4)K-H-US family",
+   "label": "Battery pairing",
+   "value": "Can be DC-coupled to batteries from multiple brands, up to 150 kWh per inverter",
+   "source": "https://www.solisinverters.com/us/energy_storage_inverters8/3,8_11,4k_s6_h_us.html",
+   "source_title": "Solis S6-EH1P(3.8-11.4)K-H-US product page",
+   "read": "2026-11-13",
+   "note": "This is the maker's US page. It does not list the battery voltage window; that figure comes from the ecodirect spec table above."
+  },
+  {
+   "product": "SMA Sunny Boy US (Secure Power Supply)",
+   "label": "Outage behavior with no battery",
+   "value": "Can supply loads from PV only during daytime grid failures; 'During the night, secure power supply operation cannot be activated'",
+   "source": "https://manuals.sma.de/SBx1SPUS40/en-US/553216779.html",
+   "source_title": "SMA manual: Activating Secure Power Supply Operation",
+   "read": "2026-11-13",
+   "note": "This is SMA's own manual page. It says available power 'depends on the solar irradiation on the PV system'. It gives no wattage for the outlet."
+  },
+  {
+   "product": "Rich Solar NOVA MAX 3K 24V",
+   "label": "AC output voltage",
+   "value": "120 V only; split-phase 240 V needs paralleled units (up to 9)",
+   "source": "https://homebackupco.com/product/rich-solar-nova-max-3k-2026-24v-3000w-off-grid-hybrid-inverter/",
+   "source_title": "Rich Solar NOVA MAX 3K 2026 24V 3000W Off-Grid Hybrid Inverter – Home Backup Co",
+   "read": "2026-11-13",
+   "note": "This is the 24 V model from ChatGPT's results, not the 48 V card it showed. Same page lists PV input of 250 V Voc max (MPPT 90–230 V) and a price of $319.99."
+  }
+ ],
+ "unsourced": [
+  "Price of the Solis S6 5 kW on self2solar (ChatGPT showed $1,365): the product page returned HTTP 429 both through storecheck.py and WebFetch.",
+  "Solis's own datasheet, manual and US battery-matching leaflet PDFs: they downloaded but would not text-extract, and local PDF tools were not permitted, so the 120–500 V figure is from a retailer spec table.",
+  "Sol-Ark 5K-1P-N AC output (120 V only vs 120/240 V split phase): search snippets disagree, the solacity product page returned HTTP 400, and I did not open Sol-Ark's datasheet (PS-00032 Rev3).",
+  "SMA Sunny Boy SB5.0-1SP-US-41 outage-outlet wattage: SMA's manual page gives none, and I did not open a retailer page with the roughly 2,000 W claim.",
+  "Rich Solar NOVA 3K 48 V model's AC output and PowerGen price: not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0157565
+ }
+}

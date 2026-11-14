@@ -1,0 +1,75 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the Solis S6 hybrid it showed at $1,365 (S6-EH1P5K-H-US) is a high-voltage-battery hybrid, or that Solis says its high-voltage hybrids do not support open-loop batteries and that an unverified battery voids the inverter warranty. That means the 48V rack batteries a shopper would pair with the Sol-Ark 5K or the Rich Solar 48V unit on the same card list are not a drop-in match.",
+ "standout": 2,
+ "standout_why": "I read liveoffthegrid.com/specs/inverters (rank 1), ecosolarkits.com hybrid-vs-off-grid-vs-grid-tie (rank 3) and offgridbenchmark.com best off-grid (rank 7). None of them mentions the Solis S6, the Sol-Ark 5K or the SMA Sunny Boy. Liveoffthegrid gives only a battery voltage per model and says it has no battery-compatibility or grid-export data. Ecosolarkits names battery pairings only for Sungold, EG4 and BigBattery with large 48V hybrids. Offgridbenchmark leaves battery voltage as '—' and never mentions approved batteries, closed-loop communication or grid export. I did not open ranks 2, 4–6 and 8–14. Rate limits and the call budget ran out.",
+ "decides": "This splits ChatGPT's five cards into battery families the shopper can't mix. The Solis S6 needs a high-voltage, closed-loop battery from the Solis matched list, and an unlisted battery puts the warranty at risk. The Sol-Ark 5K and Rich Solar run on 48V. The Renogy 3000W runs on 12V and is an inverter only. If the shopper already owns or plans 48V LiFePO4, the Solis is not the cheap pick it looks like at $1,365. If they want grid export plus native 120/240V backup and will buy a matched HV battery, the Solis is still a candidate, and Solis lists UL 1741 SA/SB and UL 9540 certificates for it.",
+ "candidates": [
+  "Solis S6-EH1P5K-H-US",
+  "SMA Sunny Boy 5.0-US",
+  "Sol-Ark 5K-1P-N",
+  "Rich Solar NOVA 3K (RS-H3048)",
+  "Renogy 3000W 12V Pure Sine Wave Inverter (RNG-INVT-3000-12V-P2)"
+ ],
+ "findings": [
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Backup output voltage",
+   "value": "Native 120/240 V backup, no external autotransformer",
+   "source": "https://www.solisinverters.com/us/energy_storage_inverters8/3,8_11,4k_s6_h_us.html",
+   "source_title": "Solis US – S6-EH1P(3.8-11.4)K-H-US",
+   "read": "2026-11-13",
+   "note": "Maker's US page quote: 'Generates native 120/240V back-up power without an external autotransformer.' The page covers the 3.8–11.4K family under one ordering code. The 5K is in that range."
+  },
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Battery capacity limit per inverter",
+   "value": "Up to 150 kWh, multiple battery brands per Solis matching pamphlet",
+   "source": "https://www.solisinverters.com/us/energy_storage_inverters8/3,8_11,4k_s6_h_us.html",
+   "source_title": "Solis US – S6-EH1P(3.8-11.4)K-H-US",
+   "read": "2026-11-13",
+   "note": "Quote: 'Compatible with multiple battery brands, providing up to 150 kWh of storage capacity per inverter.' The page links a battery-matching pamphlet and a UL 9540 battery/RSD list but does not name the batteries in its HTML."
+  },
+  {
+   "product": "Solis S6-EH1P5K-H-US",
+   "label": "Certifications listed by maker",
+   "value": "UL 1741 SA/SB, UL 1699B, IEEE 1547-2018, IEEE 2030.5, CSA C22.2, UL 9540; export power control via optional meter",
+   "source": "https://www.solisinverters.com/us/energy_storage_inverters8/3,8_11,4k_s6_h_us.html",
+   "source_title": "Solis US – S6-EH1P(3.8-11.4)K-H-US",
+   "read": "2026-11-13",
+   "note": "Taken from the certificate file names linked on the maker's page."
+  },
+  {
+   "product": "Solis high-voltage hybrids (general)",
+   "label": "Battery communication rule and warranty exclusion",
+   "value": "Open-loop batteries not supported. Unverified CAN battery voids the inverter warranty. An unlisted battery keeps the warranty only after Solis approves a test report.",
+   "source": "https://usservice.solisinverters.com/support/solutions/articles/73000669633-compatible-batteries-other-batteries-high-voltage-hybrid",
+   "source_title": "Solis US Service – Compatible Batteries & Other Batteries (High Voltage Hybrid)",
+   "read": "2026-11-13",
+   "note": "Quote: 'Solis high voltage hybrids do not support open-loop batteries.' The article's worked example is the three-phase S6-EH3P(30-60)K-NV-YD-H-US, which is CAN-only with no RS485 closed loop. The open-loop rule is stated for all Solis HV hybrids, but the warranty options are written for that series. The page shows no year."
+  },
+  {
+   "product": "Renogy 3000W 12V Pure Sine Wave Inverter (RNG-INVT-3000-12V-P2)",
+   "label": "System fit",
+   "value": "12 V battery input, 120 V output, inverter only (no charger), UL 1741 not listed, $415 on the page",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-13",
+   "note": "This comes from a rival page (rank 1), not the maker. It is included to show that this card can't share a battery bank with the 48V or high-voltage cards."
+  }
+ ],
+ "unsourced": [
+  "Solis S6-EH1P5K-H-US battery voltage window and charge/discharge current: the maker datasheet (Solis_datasheet_S6-EH1P(3,8-11,4)K-H-US_USA_V1,8_202407.pdf) and the manual opened as compressed binary or went over the size limit, and running local PDF text extraction needed approval.",
+  "Solis approved battery list for the S6-EH1P…K-H-US: the maker leaflet (Battery_matching V1,4 2024-04) and the solar-electric.com copy of the pamphlet opened as unreadable binary. Search snippets named BYD HVL, Dyness Tower and Soluna, but I am not using snippets.",
+  "Sol-Ark 5K-1P-N output voltage (120 V only or 120/240 V), grid-sell and approved batteries: the sol-ark.com manual and datasheet URLs returned 404, sol-ark.com/battery-partners/ returned 404, and the RESsupply, Solacity and Shopify PDF copies were unreadable. Snippets conflict on 120 V vs 120/240 V.",
+  "Rich Solar NOVA 3K (RS-H3048) output voltage, grid export, BMS communication and today's price: richsolar.com returned HTTP 429 to both storecheck and WebFetch.",
+  "Solis S6 price on self2solar.com: both storecheck and WebFetch returned HTTP 429.",
+  "SMA Sunny Boy 5.0-US battery pairing and exclusions: not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.1426943999999997
+ }
+}

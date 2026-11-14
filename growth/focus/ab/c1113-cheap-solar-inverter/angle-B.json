@@ -1,0 +1,145 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states cost per watt of solar (PV) input: liveoffthegrid's $/W column puts the Renogy 3000W first at $0.14/W even though it has no solar input. On cost per PV watt, the Sun Gold Power SPH5048P is about $0.10 per PV watt ($530 / 5,500 W), compared with $0.27 for the Rich Solar NOVA MAX 3K at its maker's price and $0.25 for the NOVA 12K.",
+ "standout": 2,
+ "standout_why": "I compared against liveoffthegrid.com/specs/inverters and offgridbenchmark.com/inverters/best/off-grid/. Liveoffthegrid has a $/W column, but it is price divided by continuous AC watts only (Renogy 3000W $0.14, EG4 3000EHV-48 $0.23, MPP LV6548 $0.17). It lists PV input in a separate column without dividing price by it, and leaves PV blank for pure inverters without saying they can't take solar. Offgridbenchmark shows a dash for solar input on all five models and computes no $/W. ChatGPT's own answer gives prices only. gearranking.com would not load (certificate error), so I could not compare against it.",
+ "decides": "It changes the pick. For a 'solar' inverter under $3,000, the cheapest $/W unit by AC output (the Renogy 3000W 12V, $0.14/W at liveoffthegrid) cannot take any solar, so you'd still have to buy a charge controller. Among models with built-in MPPT that I priced at the maker's store today, the Sun Gold Power SPH5048P costs about a third as much per solar watt as the Rich Solar NOVA MAX 3K. Its AC output is 110 V only, so the split-phase SPH6548P ($1,035, $0.16 per AC watt) is the pick for a 120/240 V home. The PV-watt ceiling I'd need to compute the SPH6548P's $/PV W could not be sourced.",
+ "candidates": [
+  "Sun Gold Power SPH5048P 5000W 48V",
+  "Sun Gold Power SPH6548P 6.5kW 48V",
+  "Sun Gold Power 6000W 48V Split Phase Inverter Charger",
+  "Sun Gold Power 8KW 48V Split Phase",
+  "Sun Gold Power 10KW 48V Split Phase",
+  "Rich Solar NOVA MAX 3K 2026 24V",
+  "Rich Solar NOVA 6K 48V",
+  "Rich Solar NOVA 12K 48V",
+  "Renogy 3000W 12V Pure Sine Wave Inverter",
+  "Sol-Ark 5K",
+  "Solis S6 5kW Hybrid",
+  "SMA Sunny Boy 5.0"
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SPH5048P 5000W 48V",
+   "label": "Price, maker US store",
+   "value": "$530.00",
+   "source": "https://sungoldpower.com/products/5000w-48v-solar-charger-inverter",
+   "source_title": "5000W 48V Solar Charger Inverter – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search of the Shopify store. Listed compare-at price is $2,275."
+  },
+  {
+   "product": "Sun Gold Power SPH5048P 5000W 48V",
+   "label": "Cost per watt of PV input",
+   "value": "$0.096 per PV W",
+   "source": "https://sungoldpower.com/products/5000w-48v-solar-charger-inverter",
+   "source_title": "5000W 48V Solar Charger Inverter – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "The page states 'Max 5500W 500V PV Array'. $530 / 5,500 W = $0.096/W. Per AC watt: $530 / 5,000 W = $0.106/W. Output is '110V AC'; split phase needs 2+ units in parallel."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5kW 48V",
+   "label": "Price and cost per continuous AC watt",
+   "value": "$1,035.00; $0.159 per AC W",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "$1,035 / 6,500 W rated output = $0.159/W. The page lists 2 MPPTs, 550 VDC max Voc, 140 A max charge, split-phase 120/240 V output and UL 1741 (ETL)."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Inverter Charger",
+   "label": "Price, cost per AC watt, solar input",
+   "value": "$1,220.00; $0.203 per AC W; no built-in MPPT",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "$1,220 / 6,000 W = $0.203/W. The page describes it as 'a combination of an inverter, battery charger and AC auto-transfer switch' and names no solar controller, so solar needs a separate charge controller. UL1741."
+  },
+  {
+   "product": "Sun Gold Power 8KW 48V Split Phase",
+   "label": "Price and cost per AC watt",
+   "value": "$1,305.00; $0.163 per AC W",
+   "source": "https://sungoldpower.com/products/8kw-off-grid-solar-inverter-ul1741",
+   "source_title": "8KW 48V Split Phase Solar Inverter – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "$1,305 / 8,000 W = $0.163/W. 2 MPPTs, 500 VDC Voc, UL 1741 (ETL)."
+  },
+  {
+   "product": "Sun Gold Power 10KW 48V Split Phase",
+   "label": "Price and cost per AC watt",
+   "value": "$1,422.00; $0.142 per AC W",
+   "source": "https://sungoldpower.com/products/10kw-48v-split-phase-solar-inverter",
+   "source_title": "10KW 48V Split Phase Solar Inverter – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "$1,422 / 10,000 W rated output = $0.142/W. 2 MPPTs at 500 VDC each, UL 1741 (ETL)."
+  },
+  {
+   "product": "Rich Solar NOVA MAX 3K 2026 24V",
+   "label": "Cost per watt of PV input, maker price",
+   "value": "$0.267 per PV W",
+   "source": "https://richsolar.com/products/nova-max-3k-24v-3000w-off-grid-hybrid-inverter",
+   "source_title": "NOVA MAX 3K 2026 | 24V 3000W Off-Grid Hybrid Inverter – Rich Solar",
+   "read": "2026-11-13",
+   "note": "Maker price $799.99; spec text 'Rated PV Power: 3000W', built-in 80 A MPPT. $799.99 / 3,000 W = $0.267/W (same per AC watt). homebackupco.com lists it at $319.99 (= $0.107/W). That retailer page also carried an embedded instruction block, which I ignored."
+  },
+  {
+   "product": "Rich Solar NOVA MAX 3K 2026 24V",
+   "label": "Retailer price (result #5 ChatGPT got)",
+   "value": "$319.99",
+   "source": "https://homebackupco.com/product/rich-solar-nova-max-3k-2026-24v-3000w-off-grid-hybrid-inverter/",
+   "source_title": "Rich Solar NOVA MAX 3K 2026 24V 3000W Off-Grid Hybrid Inverter – Home Backup Co",
+   "read": "2026-11-13",
+   "note": "This is 60% below the maker's $799.99. PV max is '80A MPPT, up to 3,000W', with 250 V DC max open circuit."
+  },
+  {
+   "product": "Rich Solar NOVA 6K 48V",
+   "label": "Price and cost per AC watt",
+   "value": "$1,299.99; $0.200 per AC W",
+   "source": "https://richsolar.com/products/nova-6k-6500-watt-48-volt-off-grid-hybrid-inverter",
+   "source_title": "NOVA 6K | 6500 Watt 48 Volt Off-Grid Hybrid Solar Inverter – Rich Solar",
+   "read": "2026-11-13",
+   "note": "$1,299.99 / 6,500 W = $0.200/W. 120 A MPPT, up to 550 V PV, UL 1741."
+  },
+  {
+   "product": "Rich Solar NOVA 12K 48V",
+   "label": "Cost per PV watt and per AC watt",
+   "value": "$0.250 per PV W; $0.300 per AC W",
+   "source": "https://richsolar.com/products/nova-12k-12000-watt-48-volt-split-phase-hybrid-inverter",
+   "source_title": "NOVA 12K | 12000 Watt 48V Split Phase Hybrid Inverter – Rich Solar",
+   "read": "2026-11-13",
+   "note": "Price $2,999.99 (compare-at $3,999.99), just under the $3,000 cap. 'Maximum DC Power: 12,000W', '10,000W continuous'. $2,999.99 / 12,000 = $0.250; $2,999.99 / 10,000 = $0.300. UL 1741SA/SB, IEEE 1547 (grid-tie capable)."
+  },
+  {
+   "product": "Renogy 3000W 12V Pure Sine Wave Inverter",
+   "label": "Rival's $/W and solar input",
+   "value": "$415, $0.14 per AC W; PV input not listed",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-13",
+   "note": "It is the lowest $/W in the rival table, but it is an inverter only. The maker's page lists only the inverter, with charge controllers sold separately ('Seamless integration of Renogy solar panels, charge controllers, and batteries'), so its cost per PV watt is undefined without an add-on controller."
+  },
+  {
+   "product": "general",
+   "label": "Rival median $/W",
+   "value": "about $0.38 per continuous AC W (median of 20 units)",
+   "source": "https://liveoffthegrid.com/specs/inverters",
+   "source_title": "Inverters and hybrids compared: specs, limits, and price",
+   "read": "2026-11-13",
+   "note": "The rival's $/W is price divided by continuous watts. It computes no $ per PV watt for any unit."
+  }
+ ],
+ "unsourced": [
+  "SPH6548P maximum PV array watts: the store returned HTTP 429 on product.json and on WebFetch, and the search text gives only 2 MPPT and 550 VDC Voc, so I couldn't compute $/PV W.",
+  "Renogy 3000W 12V variant price at renogy.com: the store search returned the $149.99 lowest variant price, and the product page returned HTTP 429.",
+  "Sol-Ark 5K maximum PV watts and RENVU's $2,998 price: the sol-ark.com page and the June 2025 datasheet PDF returned 404, the Shopify-hosted spec PDF would not extract, and 10,400 W appears only in a search summary, which I did not use.",
+  "Solis S6 5kW hybrid and SMA Sunny Boy 5.0: I did not open the maker spec sheets or the self2solar / SAW Technologies listings because of the call budget.",
+  "Rich Solar 3000W 48V at $719.99 (PowerGen Store, as ChatGPT showed): the maker store lists only the NOVA MAX 3K 2026 as 24V, and I did not open the PowerGen listing.",
+  "gearranking.com hybrid-inverter page: WebFetch failed with a self-signed certificate error, so I couldn't compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9291416000000001
+ }
+}
