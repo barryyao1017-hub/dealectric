@@ -1,0 +1,121 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that BLUETTI's SolarX 4K only accepts 150–500 V. With a BLUETTI SORA 500 panel at 49.1 V Voc, three panels in series give 147.3 V and fall short, so a single Apex 300 system needs at least four in series (196.4 V). BLUETTI's own 'Apex 300 + 2 × 500W' bundles cannot feed the SolarX 4K, and the SolarX comes as two $699 versions with different cables: P090D for one Apex 300, XT60 for parallel units.",
+ "standout": 3,
+ "standout_why": "I compared against watthourlab.com/home-backup/transfer-switch-basics, a cited page I opened. It gives only wattage totals: 'Solar: 2600 W total' for the DELTA Pro 3 and '3,200 W (2 × 1600 W)' for the F3800 Plus. It gives no input voltage window, no panel models, no series count and no exclusions. Popular Mechanics, the other cited page, blocked fetching, so I could not check it, and that leaves some risk in this score. ChatGPT's own answer says nothing about voltage windows or cable versions. The finding decides the set: how many panels to buy, and which SolarX version.",
+ "kit_items": [
+  "Battery/inverter: BLUETTI Apex 300 (2,764.8 Wh, 3,840 W, 120/240 V). It is on BLUETTI's US store, an approved program, and Dealectric already lists it. Anker's store returned HTTP 404 and the F3800 Plus kit page showed 'Sold Out', so Anker is out.",
+  "Expansion battery: BLUETTI B300K (adds 2,764.8 Wh for 5,529.6 Wh total). The SolarX 4K's compatibility list names it.",
+  "Home connection: BLUETTI Home Integration Kit, Single Apex 300 version. It contains a Reliance sub panel with a 50 A SS2-50 inlet box, a 50 A outlet box, a NEMA 14-50 to SS2-50R cable and a 50 A fast-charging cable 'for Apex 300 (Single Unit Use)'. The Parallel version costs $100 more and swaps in a parallel charging cable. Buy the version that matches how many Apex 300 units you have.",
+  "Solar controller: BLUETTI SolarX 4K with the Locking Terminal to P090D cable (for Single Use). Accepts 150–500 V and up to 4 kW. The XT60 version at the same price is for parallel Apex 300s.",
+  "Panels: 4 × BLUETTI SORA 500 (MC4) wired in series. Voc is 4 × 49.1 = 196.4 V, which clears the 150 V minimum, and Vmp is 4 × 40.92 = 163.7 V, inside Notebookcheck's listed 120–450 V MPPT range. That is 2,000 W of panels. Three panels give 147.3 V, below the minimum."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300 | $3,199.00 (list $3,399) | 2026-11-13",
+    "BLUETTI SolarX 4K & Locking Terminal to P090D Adapter Cable (for Single Use) | https://www.bluettipower.com/products/solarx-4k-solar-charge-controller | $699.00 | 2026-11-13",
+    "BLUETTI 500W x 2 Solar Panel (SORA 500), quantity 2 = 4 panels | https://www.bluettipower.com/products/bluetti-500w-solar-panel-500w-x-2 | $1,698.00 each, $3,396.00 for 2 | 2026-11-13"
+   ],
+   "bundle_sku": "No single BLUETTI bundle covers the whole set. Closest: 'Apex 300 + B300K + SolarX 4K' at $3,099.00 (list $3,299) https://www.bluettipower.com/products/apex-300-b300k-solarx-4k, plus the Apex 300 Home Integration Kit (Single) at $699.00 https://www.bluettipower.com/products/apex-300-home-integration-kit. With 4 panels that comes to $7,194, against $7,294 for the cart above. The bundle page does not say which SolarX cable is included, so the cart above names the P090D version explicitly."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "PV input window and compatible models",
+   "value": "150 V to 500 V input, up to 4 kW, steps down to below 60 V. Compatible: Apex 300, Apex 200, B300, B300K, B300S, AC300, AC500",
+   "source": "https://www.bluettipower.com/products/solarx-4k-solar-charge-controller",
+   "source_title": "SolarX 4K & Locking Terminal to P090D Adapter Cable(for Single Use) – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Text from BLUETTI's US store listing (storecheck product output). The page's Tech Specs table is empty."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Two versions, different output cables",
+   "value": "'Locking Terminal to P090D Adapter Cable (for Single Use)' $699.00 and 'Locking Terminal to XT60 Adapter Cable (for Parallel Use)' $699.00",
+   "source": "https://www.bluettipower.com/products/bluetti-solarx-4k-solar-charge-controller",
+   "source_title": "SolarX 4K & Locking Terminal to XT60 Adapter Cable(for Parallel Use) – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The P090D listing's in-box list includes the 'Locking Terminal to P090D Adapter Cable x1'. Notebookcheck says the parallel cable splits 'into up to three XT60-F connectors'."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Measured solar charging and the Apex 300's ceiling without it",
+   "value": "Up to 4,000 W with the SolarX 4K; 'the Apex 300 tops out at 2,400 W' without it. Spec table: VOC 120–500 V, MPPT 120–450 V, output 35–58 V",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Notebookcheck – first look at the Bluetti SolarX 4K (Christian Hintze, 2025-10-06, updated 2026-11-01)",
+   "read": "2026-11-13",
+   "note": "Notebookcheck used 37.5 V panels in series to reach about 150 V. Their spec table gives a 120 V VOC floor, but the text and BLUETTI's US store both say 150 V, so the plan uses 150 V."
+  },
+  {
+   "product": "BLUETTI SORA 500",
+   "label": "Open-circuit voltage / Vmp / Isc",
+   "value": "Voc 49.1 V, Vmp 40.92 V, Isc 13.31 A",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review – Impulse Gamer (Andrew Paul, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Named reviewer. BLUETTI's US page has an empty Tech Specs section, and the EU page failed with a redirect loop. Arithmetic: 3S = 147.3 V Voc, below 150 V. 4S = 196.4 V Voc and 163.7 V Vmp, which fits. 10S = 491 V at STC, but cold weather raises Voc, so I would keep to about 9S. That margin is my own inference, not a BLUETTI figure."
+  },
+  {
+   "product": "BLUETTI SORA 500",
+   "label": "Connector",
+   "value": "MC4 ('With a universal MC4 connector, SORA 500 works with almost any power station')",
+   "source": "https://www.bluettipower.com/products/500w-portable-solar-panel",
+   "source_title": "BLUETTI 500W Solar Panel – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "US single-panel price $849.00. The 2-pack listing is $1,698.00 (storecheck)."
+  },
+  {
+   "product": "BLUETTI Apex 300 Home Integration Kit",
+   "label": "Contents and single/parallel variants",
+   "value": "Reliance sub panel with 50 A SS2-50 inlet box, 50 A outlet box, NEMA 14-50 to SS2-50R cable, 50 A fast-charging cable. Single Apex 300 version $699.00, Parallel version $799.00",
+   "source": "https://www.bluettipower.com/products/apex-300-home-integration-kit",
+   "source_title": "Apex 300 Home Integration Kit – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "'Compatible Models: Apex300'. The two variants differ only in the charging cable ('Single Unit Use' vs 'Parallel Setup')."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Expansion limit",
+   "value": "'Connect 2–3 units and up to 18 batteries for up to 11.52kW output and 58kWh capacity'; B300K 5,529.6 Wh and B500K 5,120 Wh combos",
+   "source": "https://www.bluettipower.com/products/apex-300-2-500w",
+   "source_title": "Apex 300 + 2 × 500W – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The same page says the 4,000 W solar figure 'Requires a SolarX 4K'. The bundle price is $3,299.00, but its 2 panels (98.2 V Voc in series) are below the SolarX 4K's 150 V minimum."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input window and exclusions (comparison point)",
+   "value": "2 solar ports, each 11–165 V, 17 A, 1,600 W. 'exceeding 165V may cause damage to the solar input ports'. 'The 240V output cannot be used while the device is charging via 120V AC'. Generator adapter 'only support single F3800 Plus unit'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "This page was rank 15 in ChatGPT's results and was not cited. Most configurations showed 'Sold Out' with no price, and storecheck returned HTTP 404, so Anker cannot be the cart."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "label": "Price",
+   "value": "$3,199.00 (compare-at $3,399.00), in stock",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit（Single Apex 300） – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck search result. I did not open this bundle's own contents list. I am assuming it holds the Single Home Integration Kit described above, based on the name."
+  }
+ ],
+ "unsourced": [
+  "The Apex 300's own built-in PV input voltage window and connector. BLUETTI's US manual PDF was over 10 MB and would not open, and the apex-300 product page looped on redirects. Search snippets conflicted: one manual quote said 'no higher than 60V Voc', and a blog said 12–150 V.",
+  "Which SolarX cable version ships inside the 'Apex 300 + B300K + SolarX 4K' bundle. Not stated on the store listing.",
+  "SORA 500 electrical specs from BLUETTI itself. The US Tech Specs section is empty and the EU page failed to load, so Voc comes from Impulse Gamer.",
+  "Whether a single Apex 300 gives 240 V on its own or needs a second unit or Hub. The bundle page says 120V/240V, but I could not open a port spec naming L14-30R or 14-50R.",
+  "Number of circuits in the Reliance sub panel, and whether BLUETTI requires a licensed electrician for the Home Integration Kit. Neither is stated on the kit page.",
+  "Popular Mechanics' cited page, which blocked fetching, so I could not check whether it already gives voltage windows."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.1412239999999998
+ }
+}

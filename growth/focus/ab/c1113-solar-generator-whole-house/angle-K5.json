@@ -1,0 +1,176 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's built-in solar inputs take only 12–60 V DC (2 × 1,200 W, 20 A), while its SolarX 4K add-on controller needs a 150–500 V panel string. A string between 60 V and 150 V fits neither, so the panel wiring decides whether the $699 SolarX 4K has to be in the cart.",
+ "standout": 3,
+ "standout_why": "I compared this against watthourlab.com/home-backup/transfer-switch-basics (cited) and outagereadyhq.com/best/best-whole-home-battery-backup (rank 1). Watthourlab gives only total solar watts (DELTA Pro 3 at 2,600 W, F3800 Plus at 3,200 W) and nothing on voltage windows. OutageReadyHQ says outright that it gives 'no series wiring or Voc guidance' and does not cover 240 V output while charging. I could not open the Popular Mechanics page (cited; the fetch was blocked), solargenreview.com (HTTP 429) or energysavvyhomes.com (certificate error), so I can't rule out that one of them has it. Both pages I read list the Apex 300 Home Backup Kit ($3,399 regular, per OutageReadyHQ) and the F3800 Plus transfer-switch bundles. Neither says which solar hardware a home-scale panel string needs, and that is the part that changes what goes in the cart.",
+ "kit_items": [
+  "Battery/inverter: BLUETTI Apex 300 (2,764.8 Wh, 3,840 W). StorageReview found that one unit makes 240 V by itself: it has two inverters, one per line, and the NEMA 14-50R gives 120/240 V in 240 V mode. That means a second unit is not needed just to run 240 V loads.",
+  "Expansion battery: BLUETTI B300K. Apex 300 + B300K comes to 5,529.6 Wh. StorageReview measured 7.38 kWh delivered from the stack with two B300K.",
+  "Home connection: BLUETTI Apex 300 Home Integration Kit (Single Apex 300). It is the maker's own panel or switch for feeding home circuits. The listing does not state its circuit count or amp rating.",
+  "Solar charge controller: BLUETTI SolarX 4K. It takes a 150–500 V string, steps it down below 60 V, and adds up to 4 kW. A roof-style series string goes over the Apex 300's own 60 V input limit, so you need this controller for one.",
+  "Panels: BLUETTI SORA 500 (500 W, MC4) or 200 W foldables. On the built-in input they must be wired so each input stays at or below 60 V Voc, which in practice means single or parallel panels. To use the SolarX 4K, they must be wired in series to reach 150 V or more.",
+  "Installation: a licensed electrician. Watthourlab and OutageReadyHQ both say this, and OutageReadyHQ lists installation as 'Not included' for the BLUETTI kit."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + SolarX 4K | https://www.bluettipower.com/products/apex-300-b300k-solarx-4k | $3,099.00 (compare at $3,299.00) | 2026-11-13",
+    "BLUETTI Apex 300 Home Integration Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-home-integration-kit | $699.00 | 2026-11-13",
+    "BLUETTI 500W Solar Panel (SORA 500) | https://www.bluettipower.com/products/500w-portable-solar-panel | $849.00 each | 2026-11-13",
+    "BLUETTI SolarX 4K & Locking Terminal to P090D Adapter Cable (Single Use), if bought separately | https://www.bluettipower.com/products/solarx-4k-solar-charge-controller | $699.00 | 2026-11-13",
+    "BLUETTI Apex 300 alone | https://www.bluettipower.com/products/apex-300-home-battery-backup | $1,499.00 (compare at $1,699.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + B300K + Home Backup Kit (Single Apex 300), $3,199.00 (compare at $3,399.00), https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300. It has no panels and no SolarX 4K. Also: Apex 300 + 2×B300K + SolarX 4K at $4,498.00 (8,294.4 Wh, '500V VOC | 4,000W Solar'), Apex 300 + B300K + 500W at $3,598.00, and Apex 300 + 2×B300K + 2×500W at $5,499.00. All were available on 2026-11-13."
+  },
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX F3800 Plus + Smart Home Power Kit | https://www.ankersolix.com/products/f3800-plus | no price shown ('Price Loading'), page says Sold Out | 2026-11-13",
+    "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch | https://www.ankersolix.com/products/f3800-plus-home-backup-kit | no price shown, options read Sold Out | 2026-11-13"
+   ],
+   "bundle_sku": "Anker sells the F3800 Plus + 10-Circuit Manual Transfer Switch and the F3800 Plus + Smart Home Power Kit as bundles, but neither showed a price today and both read Sold Out. OutageReadyHQ, a rival page, reported $3,859.99 and $4,799.99 (the latter as of 2026-11-10). Those are not maker prices from today."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in solar input",
+   "value": "2 × 1,200 W, 12–60 V DC, 2 × 20 A",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review (Kevin OBrien, 2026-11-09)",
+   "read": "2026-11-13",
+   "note": "From StorageReview's spec table. A series string above 60 V can't go on the built-in inputs."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Solar string voltage window and output",
+   "value": "150–500 V panels in, stepped down below 60 V, up to 4 kW",
+   "source": "https://www.bluettipower.com/products/solarx-4k-solar-charge-controller",
+   "source_title": "SolarX 4K & Locking Terminal to P090D Adapter Cable (for Single Use), BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Store listing text read with storecheck. Listed compatibility: Apex 300, Apex 200, B300, B300K, B300S, AC300, AC500. Combined with the 60 V built-in limit, a string between 60 V and 150 V fits neither input."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V from a single unit",
+   "value": "Yes: two inverters, one per line. In 240 V mode the NEMA 14-50R carries both lines, and the four front 20 A outlets stay at 120 V.",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "Rated 3,840 W total."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Grid input limit on a 240 V supply in 120 V mode",
+   "value": "The limit applies to one leg only. The unit draws from one line until the output is switched to 240 V mode.",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "The limit can be set from 1 to 50 A in 1 A steps in the app."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Transfer time, utility to battery",
+   "value": "16 ms (120 V mode, at about 100 W and about 700 W)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "StorageReview did not capture BLUETTI's 0 ms claim for the left front outlets in 240 V mode."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Usable energy and round trip",
+   "value": "2.39 kWh delivered (86% of 2,764.8 Wh); 3.30 kWh to recharge, about 72% round trip",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "StorageReview measurement."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2× B300K",
+   "label": "Usable energy and round trip",
+   "value": "7.38 kWh delivered (89%); 10.01 kWh to recharge, about 74% round trip",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "StorageReview measurement. That is about a quarter of the 30 kWh/day example in ChatGPT's answer."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + SolarX 4K",
+   "label": "Price",
+   "value": "$3,099.00 (compare at $3,299.00)",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-solarx-4k",
+   "source_title": "Apex 300 + B300K + SolarX 4K, BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck search; in stock."
+  },
+  {
+   "product": "BLUETTI Apex 300 Home Integration Kit",
+   "label": "Price",
+   "value": "$699.00 (Single Apex 300); $799.00 (Parallel)",
+   "source": "https://www.bluettipower.com/products/apex-300-home-integration-kit",
+   "source_title": "Apex 300 Home Integration Kit, BLUETTI US",
+   "read": "2026-11-13",
+   "note": "storecheck product. The listing says it is 'Used to integrate the power station to home circuit to keep vital home loads powered'."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "label": "Price",
+   "value": "$3,199.00 (compare at $3,399.00)",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit (Single Apex 300), BLUETTI US",
+   "read": "2026-11-13",
+   "note": "5,529.6 Wh, 3,840 W. The page does not list the kit's contents."
+  },
+  {
+   "product": "BLUETTI 500W Solar Panel (SORA 500)",
+   "label": "Price",
+   "value": "$849.00 each; 2-pack $1,698.00",
+   "source": "https://www.bluettipower.com/products/500w-portable-solar-panel",
+   "source_title": "BLUETTI 500W Solar Panel, BLUETTI US",
+   "read": "2026-11-13",
+   "note": "MC4 connector per the page. The US page shows no electrical specs."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging from 120 V AC",
+   "value": "Not available: 'The 240V output cannot be used while the device is charging via 120V AC.'",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus, Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The rival pages I read don't state this either."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input per port",
+   "value": "11–165 V DC, 17 A max, 1,600 W max each, 2 ports (3,200 W total)",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch, Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker warns that going over 165 V may damage the input. This is a wider window than the Apex 300's built-in 60 V, so modest series strings work without an add-on."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "L14-30R rating and expansion",
+   "value": "120/240 V, 25 A max, 6,000 W max; up to 6 × 3.84 kWh expansion batteries; dual system 12 kW, up to 53.8 kWh",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus + 10-Circuit Manual Transfer Switch, Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The F3800 Plus page shows the bundles as Sold Out with no price."
+  }
+ ],
+ "unsourced": [
+  "SORA 500 open-circuit voltage (Voc), needed to say how many panels in series reach SolarX 4K's 150 V minimum or stay under the Apex 300's 60 V limit. The US product page lists no electrical specs. Search snippets gave 49.1 V Voc, 40.92 V Vmp and 13.31 A Isc, but I could not open the BLUETTI EU page (redirect loop) or the AU page (HTTP 429), so I left these numbers out.",
+  "BLUETTI's own Apex 300 US manual wording for the 12–60 V solar input. The official PDF on s4.bluettipower.com was over 10 MB and would not load, and the manuals.plus mirror returned 403. The figure here comes from StorageReview's spec table.",
+  "What the Apex 300 Home Integration Kit and Home Backup Kit contain (switch or panel model, circuit count, amp rating). The BLUETTI product page did not list them and returned HTTP 429 on retry.",
+  "Today's maker price for the Anker F3800 Plus bundles. The Anker pages showed 'Price Loading' or Sold Out, and storecheck returned HTTP 404 for ankersolix.com.",
+  "The Popular Mechanics list (cited by ChatGPT). The fetch was blocked, so I could not check whether it covers the solar voltage window."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1197451
+ }
+}

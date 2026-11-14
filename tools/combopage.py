@@ -135,12 +135,62 @@ def _norm(x: str) -> str:
     return re.sub(r"[^a-z0-9]", "", x.lower())
 
 
-BUNDLE = re.compile(r"bundle|kit with|\bwith .{0,70}(speakers?|stand|case|cables?|cleaning|mat|headphones|records?)\b|\+|2[- ]pack|pack of", re.I)
+BUNDLE = re.compile(r"bundle|kit with|\bwith .{0,70}(speakers?|stand|case|cables?|cleaning|mat|headphones|records?)\b|\s\+\s|&\s*\d|\band\b.{0,60}\b(speakers?|panels?|subwoofer|headphones)\b|2[- ]pack|pack of", re.I)
+ACCESSORY = re.compile(r"\b(cord|cable|keyboard|replacement|adapter|adaptor|screen protector|carrying case|remote control|(case|cover|mount|charger|battery|monitor|stand|dock|bag) for)\b", re.I)
+IMPORT = re.compile(r"\[[^\]]*version\]|international version|\bimport(ed)?\b", re.I)
+CUT = re.compile(r"\b(for|compatible|pairs? with|fits|works with)\b", re.I)
+
+
+def _tok(x: str) -> str:
+    return re.sub(r"[^a-z0-9+]", "", x.lower())
+
+
+def title_match(brand: str, model: str, title: str) -> bool:
+    """11-14: the first matcher compared squeezed strings, so 'Explorer 500' matched an Explorer 1500 and 'WiiM Amp Pro'
+    matched a power cord 'for WiiM Amp Pro'. Now: the brand opens the title, every model word is a whole word of the
+    title before any 'for / compatible with', and the title is not a used, bundled, imported or accessory listing."""
+    if USED.search(title) or BUNDLE.search(title) or IMPORT.search(title):
+        return False
+    base = re.sub(r"\(.*?\)", " ", model)
+    words = [w for w in (_tok(x) for x in re.findall(r"[A-Za-z0-9+.-]+", base)) if re.search(r"[a-z0-9]", w)]
+    acc = ACCESSORY.search(title)
+    if acc and _tok(acc.group(1).split()[0]) not in words:
+        return False
+    head = title[:CUT.search(title).start()] if CUT.search(title) else title
+    raw = re.findall(r"[A-Za-z0-9+]+(?:[-./][A-Za-z0-9+]+)*", head)
+    full = [_tok(x) for x in raw]
+    parts = [_tok(y) for x in raw for y in re.split(r"[-./]", x)]
+    cands = set(full) | set(parts) | {a + b for a, b in zip(parts, parts[1:])} | {a + b for a, b in zip(full, full[1:])}
+    if _tok(brand) not in "".join(full[:4]):
+        return False
+
+    def has(w):
+        if w in cands:
+            return True
+        if len(w) >= 5 and re.search(r"\d", w) and re.search(r"[a-z]", w):   # a model code with a colour / region suffix: A-S301BL
+            return any(c.startswith(w) and re.fullmatch(r"[a-z]{1,3}", c[len(w):]) for c in cands)
+        return False
+    return bool(words) and all(has(w) for w in words if w != _tok(brand) and not re.fullmatch(r"[a-z]", w))
+
+
+def amazon_verify(pairs: list[dict]) -> dict:
+    """One model call over [{i, brand, model, title}]: is each Amazon listing exactly that product, alone? {i: bool}."""
+    if not pairs:
+        return {}
+    prompt = ("Each item below pairs a product (brand, model) with the title of a seller's listing (Amazon or another store). For each item decide whether the "
+              "listing sells exactly that product, new and alone. Answer false when the listing is an accessory or part for it, a "
+              "different model, generation, size or capacity (a '+' or 'Pro' or 'v2' difference counts), a different product type "
+              "from the same maker, a bundle with other products, or an import / foreign-market version. A colour or finish variant "
+              "of the same model is true. When the title leaves it unclear, answer false.\n\n"
+              + json.dumps(pairs, ensure_ascii=False, indent=1)
+              + '\n\nReply with only this JSON object: {"verdicts": [{"i": <i>, "same": true|false, "why": "<under 15 words>"}]}')
+    out = A.claude(prompt, tools=False, timeout=900)
+    return {int(v["i"]): (bool(v.get("same")), str(v.get("why", ""))[:120]) for v in out.get("verdicts") or []}
 
 
 def amazon_find(brand: str, model: str, tab) -> dict | None:
     """The Amazon listing for a table row with no product record: an organic search result, read in the Agent Chrome,
-    whose title names the brand and every word of the model, new condition, not a seller's bundle; shortest title wins."""
+    that passes title_match; shortest title wins. amazon_rescue then has every hit confirmed by amazon_verify."""
     import urllib.parse
     tab.navigate("https://www.amazon.com/s?" + urllib.parse.urlencode({"k": f"{brand} {model}"}))
     rows = []
@@ -151,16 +201,12 @@ def amazon_find(brand: str, model: str, tab) -> dict | None:
             /Sponsored/.test((e.querySelector('[data-cy="title-recipe"]') || e).innerText.slice(0, 40))])""") or []
         if len(rows) >= 4:
             break
-    base = re.sub(r"\(.*?\)", " ", model)
-    words = [_norm(w) for w in re.findall(r"[A-Za-z0-9+.-]+", base) if len(_norm(w)) >= 2]
-    coded = [w for w in words if re.search(r"\d", w)]
-    words = coded or words   # a model code ("EZ1-LV", "HMS-420-1WM-LV") identifies the listing; descriptive words need not match
-    hits = [(asin, title) for asin, title, sponsored in rows
-            if asin and _norm(brand) in _norm(title) and all(w in _norm(title) for w in words) and not USED.search(title) and not BUNDLE.search(title)]
+    hits = [(asin, re.sub(r"^Sponsored\s*", "", title)) for asin, title, sponsored in rows if asin and title_match(brand, model, re.sub(r"^Sponsored\s*", "", title))]
     if not hits:
+        amazon_find.last_seen = [re.sub(r"^Sponsored\s*", "", t)[:140] for a, t, s in rows if a and _tok(brand) in _tok(t)][:6]
         return None
     asin, title = min(hits, key=lambda h: len(h[1]))
-    return {"asin": asin, "title": title[:160]}
+    return {"asin": asin, "title": title[:200]}
 
 
 def amazon_rescue(draft: dict, d: Path) -> list[dict]:
@@ -181,6 +227,17 @@ def amazon_rescue(draft: dict, d: Path) -> list[dict]:
             time.sleep(4)
     finally:
         tab.close()
+    hits = [f for f in found if f.get("asin")]
+    ok = amazon_verify([{"i": i, "brand": f["row"].split(" ")[0], "model": f["row"], "title": f["title"]} for i, f in enumerate(hits)])
+    for i, f in enumerate(hits):   # a listing the check does not confirm is dropped: the row links the maker's page instead
+        same, why = ok.get(i, (False, "no verdict"))
+        f["verified"] = same
+        if not same:
+            f["rejected"] = {"asin": f["asin"], "why": why}
+            for r in draft["page"]["rows"]:
+                if r.get("asin") == f["asin"]:
+                    r.pop("asin")
+            f["asin"] = None
     draft["amazon_rescue"] = found
     A.jsave(d / "draft.json", draft)
     return found
@@ -340,11 +397,15 @@ def price_one(p: dict, tab, B, BC) -> dict | None:
             return {"error": r2["error"]}
         r = dict(r2, cards=(r.get("cards") or []) + (r2.get("cards") or []))
     sellers: dict[str, float] = {}
-    for c in r.get("cards") or []:
+    cards = [c for c in r.get("cards") or [] if c.get("kind") in ("retailer", "brand")]
+    # 11-14: buycheck's word match let through 2x packs, bundles and sibling models (T-Rex 3 Pro for the T-Rex 3); each card's
+    # title is now confirmed as the same item, alone, before its price counts
+    ok = amazon_verify([{"i": i, "brand": p["brand"], "model": B.short_name(p), "title": c["title"]} for i, c in enumerate(cards)])
+    for c in [c for i, c in enumerate(cards) if ok.get(i, (False, ""))[0]]:
         if c.get("kind") == "retailer":
             name = _retailer(c["merchant"])
         elif c.get("kind") == "brand":
-            name = B.store_host(p) if amazon else None    # the brand store is "ours" for a linked product; for an Amazon pick it competes
+            name = c["merchant"] if amazon else None    # the brand store is "ours" for a linked product; for an Amazon pick it competes
         else:
             name = None
         if name and (name not in sellers or c["price"] < sellers[name]):
