@@ -1,0 +1,153 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many watt-hours a power station actually delivers through its AC outlets at a TV-sized load. At a 50 W AC load, Techtest.org measured 366 Wh from the EcoFlow RIVER 2 Max (71.5% of 512 Wh) and 623 Wh from the BLUETTI AC70 (81% of 768 Wh). That works out to 7.3 h vs 12.5 h of a 50 W TV, or $0.84 vs $0.58 per usable Wh.",
+ "standout": 3,
+ "standout_why": "I compared against the cited bluettipower.com/products/ac70 page (both cited URLs are the same page). It gives only a maker claim of 8.2 h for a 65 W TV, with no measured usable capacity, efficiency or idle draw. ChatGPT's answer and calculator assume a flat 85% usable for every unit and give 8–14 h for a 500 Wh unit on a 30–50 W TV. The EcoFlow FAQ, the EcoFlow manuals, the brochure and the powerstationsize.com results ChatGPT got list rated capacity only. None of them gives a measured low-load AC figure or an inverter idle draw.",
+ "decides": "The measurement favours the BLUETTI AC70 over the EcoFlow RIVER 2 Max for TV watching. For $50 more ($359 vs $309) it runs a 50 W TV about 1.7× as long (12.5 h vs 7.3 h). The RIVER 2 Max falls below ChatGPT's 8-hour minimum for a 500 Wh unit on a 32-inch TV, because its measured 71.5% AC efficiency at low load is well under the assumed 85%. Caveat: the AC70 shows as out of stock on BLUETTI's US store today. For the Anker SOLIX C1000 Gen 2, the measured 13.8 W idle draw means about 22% of the energy goes to inverter overhead with a 50 W TV, vs about 14% for the AC70. Its flat-85% runtime in ChatGPT's calculator is therefore optimistic for small TVs.",
+ "candidates": [
+  "EcoFlow RIVER 2 Max",
+  "BLUETTI AC70",
+  "Anker SOLIX C1000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Measured usable energy via AC at 50 W load",
+   "value": "366 Wh (71.5% of 512 Wh)",
+   "source": "https://techtest.org/test-ecoflow-river-2-max-fast-perfekte-powerstation-mit-lifepo4-akku-und-100w-usb-c/",
+   "source_title": "Test: ECOFLOW RIVER 2 MAX, fast perfekte Powerstation mit LiFePO4 Akku und 100W USB C (Techtest.org)",
+   "read": "2026-11-13",
+   "note": "Techtest.org also measured 373 Wh at AC 150 W and 377 Wh at AC 500 W. German test, likely the 230 V EU unit."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Hours of a 50 W TV (derived)",
+   "value": "7.3 h",
+   "source": "https://techtest.org/test-ecoflow-river-2-max-fast-perfekte-powerstation-mit-lifepo4-akku-und-100w-usb-c/",
+   "source_title": "Test: ECOFLOW RIVER 2 MAX (Techtest.org)",
+   "read": "2026-11-13",
+   "note": "366 Wh ÷ 50 W = 7.3 h. ChatGPT's 85% assumption gives 499 × 0.85 ÷ 50 = 8.5 h."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Hours of a 100 W TV (derived)",
+   "value": "3.7 h",
+   "source": "https://techtest.org/test-ecoflow-river-2-max-fast-perfekte-powerstation-mit-lifepo4-akku-und-100w-usb-c/",
+   "source_title": "Test: ECOFLOW RIVER 2 MAX (Techtest.org)",
+   "read": "2026-11-13",
+   "note": "373 Wh (measured at 150 W, the nearest load tested) ÷ 100 W = 3.7 h. ChatGPT's calculator showed about 4.25 h for 500 Wh at 100 W."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Price, EcoFlow US store",
+   "value": "$309.00, in stock",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on us.ecoflow.com. The store lists 499 Wh. Compare-at price: none."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Cost per usable AC Wh at TV load (derived)",
+   "value": "$0.84/Wh",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "$309 ÷ 366 Wh (Techtest.org, 50 W AC) = $0.84/Wh."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Measured usable energy via AC at 50 W load",
+   "value": "623 Wh (81% of 768 Wh)",
+   "source": "https://techtest.org/bluetti-ac70-768-wh-powerstation-mit-usb-c-solar-ladeoption-und-lifepo4-akkus-im-test/",
+   "source_title": "BLUETTI AC70: 768 Wh Powerstation mit USB-C, Solar-Ladeoption und LiFePO4-Akkus im Test (Techtest.org, 2024-12-29)",
+   "read": "2026-11-13",
+   "note": "Techtest.org also measured 698 Wh at AC 250 W and 707 Wh at AC 500 W. German test, likely the 230 V EU unit."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Inverter idle draw with an AC outlet on",
+   "value": "about 8 W",
+   "source": "https://techtest.org/bluetti-ac70-768-wh-powerstation-mit-usb-c-solar-ladeoption-und-lifepo4-akkus-im-test/",
+   "source_title": "BLUETTI AC70 ... im Test (Techtest.org)",
+   "read": "2026-11-13",
+   "note": "Techtest.org: the station needs about 8 W on top of the connected device. Overhead share at a 50 W TV: 8 ÷ 58 = 14%."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Hours of a 50 W TV (derived)",
+   "value": "12.5 h",
+   "source": "https://techtest.org/bluetti-ac70-768-wh-powerstation-mit-usb-c-solar-ladeoption-und-lifepo4-akkus-im-test/",
+   "source_title": "BLUETTI AC70 ... im Test (Techtest.org)",
+   "read": "2026-11-13",
+   "note": "623 Wh ÷ 50 W = 12.5 h."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Hours of a 65 W TV: measured-derived vs maker claim",
+   "value": "9.6 h derived vs 8.2 h claimed",
+   "source": "https://www.bluettipower.com/products/ac70",
+   "source_title": "BLUETTI AC70 Portable Power Station | 1,000W 768Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "623 Wh ÷ 65 W = 9.6 h. The 8.2 h figure comes from BLUETTI's comparison table on this page, so the maker claim is conservative."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Price, BLUETTI US store",
+   "value": "$359.00, out of stock",
+   "source": "https://www.bluettipower.com/products/ac70",
+   "source_title": "BLUETTI AC70 Portable Power Station | 1,000W 768Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py: available=false on every variant. The page says restock is expected in early September."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Cost per usable AC Wh at TV load (derived)",
+   "value": "$0.58/Wh",
+   "source": "https://www.bluettipower.com/products/ac70",
+   "source_title": "BLUETTI AC70 Portable Power Station | 1,000W 768Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "$359 ÷ 623 Wh (Techtest.org, 50 W AC) = $0.58/Wh."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Inverter idle draw, no load",
+   "value": "about 13.8 W",
+   "source": "https://www.thesolarlab.com/review/anker-solix-c1000-gen-2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Review: Which Anker C1000 Version Should You Buy? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab measured this with the inverter on and no output load. Overhead share at a 50 W TV: 13.8 ÷ 63.8 = 22%. The Solar Lab separately measured about 86% efficiency without stating the load."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured usable energy via AC at 250 W load",
+   "value": "about 850 Wh (83% of 1,024 Wh)",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster, but ... Anker Solix C1000 Gen 2 power station review (Notebookcheck, Marcus Schwarten)",
+   "read": "2026-11-13",
+   "note": "EU 230 V unit, constant ~250 W AC load down to 1%. Notebookcheck says a fluctuating load gave less, without a figure. Hours of a 250 W load: 850 ÷ 250 = 3.4 h. Not a TV-sized load."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Weight",
+   "value": "24.9 lb",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (ankersolix.com)",
+   "read": "2026-11-13",
+   "note": "Net weight per the maker page. Rated 1,024 Wh, 2,000 W continuous."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C1000 Gen 2 US price today: storecheck returned HTTP 404 on ankersolix.com and anker.com, the product page showed no price, and amzcheck returned no Amazon results. ChatGPT's $549.99 card and The Solar Lab's ~$449 could not be confirmed on a store page today.",
+  "Anker SOLIX C1000 Gen 2 measured usable AC Wh at a 50–100 W load: Notebookcheck tested only at ~250 W (EU unit), and CleanTechnica, The Solar Lab and The Technology Man (1 kW heater) gave no low-load figure. TV hours for the C1000 Gen 2 are therefore not derived.",
+  "EcoFlow RIVER 2 Max inverter idle draw with AC on: Techtest.org gives only 3–6 W standby with Wi-Fi and display on, not an AC-on no-load figure.",
+  "US 120 V measurements for the RIVER 2 Max and AC70 at TV loads: both Techtest.org tests appear to use EU 230 V units, and I found no US reviewer measuring at 50 W.",
+  "EcoFlow 'RIVER 2 Max Lite 499Wh' from ChatGPT's card: EcoFlow's US store lists the RIVER 2 Max 500 at 499 Wh for $309. I found no separate 'Lite' product on the store."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9955577
+ }
+}

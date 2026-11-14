@@ -1,0 +1,140 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that ChatGPT's 'middle option', the BLUETTI AC70 at $359, is out of stock at BLUETTI US. Its own page still says to expect a restock in 'Early September', and today is November 13. The same results also don't show that 1,024–1,152 Wh stations cost $459–$499 at the makers' own stores today (EcoFlow DELTA 3 Classic $459, BLUETTI Elite 100 V2 $499, BLUETTI AC180 $499), which is less than ChatGPT's $549.99 card for the Anker SOLIX C1000 Gen 2. Anker's own store sells that model for $699.99.",
+ "standout": 3,
+ "standout_why": "The only pages ChatGPT cited are the BLUETTI AC70 product pages (bluettipower.com/products/ac70 and its ?variant URL). They show $359, but the stock line was invisible in ChatGPT's answer, and they say nothing about the other brands. The other results are EcoFlow RIVER 2 Max manuals, an FAQ, a 2023 catalog and a spec PDF. None of them gives a price for a 1 kWh station or says which picks you can actually buy now.",
+ "decides": "This changes the pick. The 768 Wh 'middle' card can't be bought from BLUETTI today. The in-stock 768 Wh choice is the EcoFlow RIVER 2 Pro at $369, available now. In the 1 kWh class, the BLUETTI Elite 100 V2 ($499, 1,024 Wh, 1,800 W, 10 ms UPS, both figures from BLUETTI's listing) and the EcoFlow DELTA 3 Classic ($459, 1,024 Wh, 1,800 W) cost $50–90 less than ChatGPT's C1000 Gen 2 card and $200–240 less than Anker's own price. Any TV runs fine on 1,800 W. For a small TV, the RIVER 2 Max at $309 (499 Wh) is still correct and in stock.",
+ "candidates": [
+  "EcoFlow RIVER 2 Max (500)",
+  "BLUETTI AC70",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 2 Pro",
+  "EcoFlow DELTA 3 Classic",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 2 (240)",
+  "Jackery HomePower 1000 v2",
+  "Jackery Explorer 1000 Plus",
+  "Tenergy T320",
+  "ALLPOWERS R600",
+  "EcoFlow RIVER 3",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC70",
+   "label": "US price and stock",
+   "value": "$359.00, out of stock (Notify Me; page says 'expected restock: Early September')",
+   "source": "https://www.bluettipower.com/products/ac70",
+   "source_title": "BLUETTI AC70 Portable Power Station | 1,000W 768Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Shopify product JSON via storecheck.py shows every variant available:false, including the AC70 alone at $359, AC70+SP100L at $549 and AC70+200W at $619. WebFetch of the page shows the restock text. Specs from the same page: 768 Wh, 1,000 W rated, 2,000 W 'Lifting Power', 20 ms UPS, 22.5 lb. Loses because it can't be bought from the maker today."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max (500)",
+   "label": "US price and stock",
+   "value": "$309.00, in stock; 499 Wh, 500 W (X-Boost 1,000 W), 6.1 kg",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON from us.ecoflow.com via storecheck.py, available:true. Matches ChatGPT's $309 card. Loses only on capacity: at a 100 W TV it gives about 4.2 h, using ChatGPT's own 85% figure (499 × 0.85 / 100)."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Pro",
+   "label": "US price and stock",
+   "value": "$369.00 (compare-at $579), in stock; 768 Wh, 800 W (X-Boost 1,600 W), 18.2 lb, <30 ms EPS",
+   "source": "https://us.ecoflow.com/products/river-2-pro-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Pro Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON, available:true. Same 768 Wh as the out-of-stock AC70 for $10 more, and you can buy it now. Its 800 W rating is lower than the AC70's 1,000 W, but that doesn't matter for a TV."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "US price and stock",
+   "value": "$459.00 (compare-at $1,299), in stock; 1,024 Wh, 1,800 W (3,600 W surge), 10 ms auto-switch, ≤30 dB at 600 W",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-13",
+   "note": "Read from us.ecoflow.com's Shopify search JSON via storecheck.py, available:true. A direct product fetch returned HTTP 429. This is the lowest maker price for a 1 kWh station that I found."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "US price and stock",
+   "value": "$499.00, in stock; 1,024 Wh LiFePO4, 1,800 W (2,700 W lifting), 11 ports, 10 ms UPS, 30 dB light load, 25 lb",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON, available:true. Dealectric lists this one (awin:bluetti_us). Same 1,024 Wh as the Anker C1000 Gen 2 for $50.99 less than ChatGPT's card and $200.99 less than anker.com."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "US price and stock",
+   "value": "$499.00 (compare-at $1,232), in stock; 1,152 Wh, 1,800 W (2,700 W lifting), 9 ports",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON, available:true. Dealectric lists it. It has the most Wh per dollar among the in-stock picks (about $0.43/Wh), giving about 9.8 h at 100 W using ChatGPT's 85% figure."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Price on Anker US store",
+   "value": "$699.99, in stock (3–7 business days); 1,024 Wh, 2,000 W, 10 ms UPS, 10 ports",
+   "source": "https://www.anker.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W",
+   "read": "2026-11-13",
+   "note": "WebFetch of the standalone ('Go Without Solar') option. ChatGPT's card showed $549.99 without naming the retailer. Both prices cost more than the $459 to $499 1 kWh options above, and the 2,000 W output doesn't help with a TV."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "US price and stock",
+   "value": "$289.99, in stock; 288 Wh, 600 W, ≤10 ms UPS, 4.5 W standby per BLUETTI",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON, available:true. Loses to the RIVER 2 Max: it costs $19 less but has 211 Wh less capacity."
+  },
+  {
+   "product": "EcoFlow RIVER 2 (240)",
+   "label": "US price and stock",
+   "value": "$199.00, in stock; 240 Wh, 300 W",
+   "source": "https://us.ecoflow.com/products/river-2-240-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 (240) Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON. Below ChatGPT's own 500 Wh minimum: about 2 h at 100 W using the 85% figure."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "US price and stock",
+   "value": "$549.00 (compare-at $1,049); black is sold out; 1,024 Wh, 1,500 W, <10 ms switchover",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON. Its own text says 'Black: Sold out due to high demand'. Costs $50–90 more than the Elite 100 V2 or DELTA 3 Classic for the same 1,024 Wh."
+  },
+  {
+   "product": "Jackery Explorer 1000 Plus",
+   "label": "US price and stock",
+   "value": "$619.00 (compare-at $949), in stock; 1,264 Wh, 2,000 W",
+   "source": "https://www.jackery.com/products/jackery-explorer-1000-plus-portable-power-station",
+   "source_title": "Jackery Portable Power Station Explorer 1000 Plus",
+   "read": "2026-11-13",
+   "note": "Shopify search JSON. About $0.49/Wh against the AC180's $0.43/Wh, so it loses on price per Wh."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C1000 Gen 2 on Amazon: amzcheck.py search returned nothing (walled), so I couldn't confirm ChatGPT's $549.99 or name the retailer.",
+  "Jackery Explorer 1000 v2 (which Dealectric lists): jackery.com store search didn't return the standalone listing; only the Explorer 1000 Plus and HomePower 1000 v2 came up.",
+  "Tenergy T320 maker price: storecheck search on power.tenergy.com returned HTTP 404.",
+  "ALLPOWERS R600 maker price: storecheck search on allpowers.com returned a non-JSON response.",
+  "EcoFlow RIVER 3 (245 Wh) standalone price: the us.ecoflow.com 'river 3' search returned only RIVER 3 accessories, and a later product fetch hit HTTP 429.",
+  "EcoFlow DELTA 3 Classic direct product page: HTTP 429 twice. The price and stock come from the same store's search JSON, read the same day.",
+  "AC idle draw for each model, which would replace ChatGPT's flat 85% assumption: only BLUETTI's own 4.5 W standby figure for the Elite 30 V2 turned up. I found no reviewer measurements within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9119418999999999
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that BLUETTI's AC70 manual adds a fixed ~15 W inverter self-consumption to every small load (runtime = 768 Wh × 90% DoD × 85% ÷ (TV W + 15 W)), or that the AC70's ECO Mode, on by default, turns the AC outlet off when the load stays under 40 W, a range that includes many 32-inch TVs.",
+ "standout": 2,
+ "standout_why": "I compared against the cited BLUETTI AC70 product page (bluettipower.com/products/ac70 and its ?variant= copy), the EcoFlow RIVER 2 Max FAQ (result 1) and powerstationsize.com/stations (result 6). The AC70 page gives only an end figure ('TV (65W): 8.2 hours') and nothing on self-consumption or ECO auto-off. The EcoFlow FAQ has nothing on AC timeout or idle draw. Powerstationsize has no idle draw, ECO mode or runtime formula. ChatGPT's own runtime calculator uses a flat '85% usable energy' with no fixed inverter overhead, so it overstates small-TV runtime by about 45% (50 W TV on the AC70: 13.1 h by its method vs 9.0 h by BLUETTI's formula).",
+ "decides": "This confirms the picks and corrects the sizing. On a small TV (30–50 W), the fixed 15–17 W inverter draw costs a quarter to a third of the runtime, so ChatGPT's '500Wh = 8–14 hours for a 32-inch' is too high. More importantly, the plan can fail at the default settings: AC70 ECO Mode is on out of the box and cuts AC below 40 W, and the Anker C1000 Gen 2's Smart AC Output shuts the inverter off after 15 minutes below 20 W (per Gidon, The Technology Man). The shopper must switch these modes off for a small or dimmed TV. A large TV (65 W and up) is not affected by the cut-off and feels the overhead less.",
+ "candidates": [
+  "BLUETTI AC70",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC70",
+   "label": "Inverter self-consumption used in maker's runtime formula",
+   "value": "approximately 15 W",
+   "source": "https://www.manualslib.com/manual/3256594/Bluetti-Ac70.html?page=21",
+   "source_title": "Bluetti AC70 User Manual, p. 21 (ManualsLib copy of BLUETTI's manual)",
+   "read": "2026-11-13",
+   "note": "Manual: 'Operation time = Battery Capacity (Wh) x DoD x η ÷ (Load Power + Self-consumption of AC70)' for loads below 300 W. 'The self-consumption of AC70 is approximately 15W.' The official BLUETTI Shopify PDF would not extract, so this is read from the ManualsLib mirror of the same manual."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Depth of discharge and inverter efficiency in maker's formula",
+   "value": "90% DoD; inverter efficiency 'typically over 85%'",
+   "source": "https://www.manualslib.com/manual/3256594/Bluetti-Ac70.html?page=21",
+   "source_title": "Bluetti AC70 User Manual, p. 21 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The maker's worked example is a 40 W fridge: 768 Wh × 90% × 85% ÷ (40 W + 15 W) ≈ 10.7 h. Applied to a 50 W 32-inch TV: 587.5 Wh ÷ 65 W ≈ 9.0 h. ChatGPT's method (768 × 0.85 ÷ 50) gives 13.1 h. For a 30 W TV: 587.5 ÷ 45 ≈ 13.1 h vs 21.8 h."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "ECO Mode default and AC auto-off trigger",
+   "value": "Enabled by default; AC/DC output turns off when the load is low (less than 40 W or the set power) or there is no load 'for a while'",
+   "source": "https://www.manualslib.com/manual/3256594/Bluetti-Ac70.html?page=17",
+   "source_title": "Bluetti AC70 User Manual, sect. 8.2 ECO Mode, p. 17 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Manual: 'When connecting a small power device, disable the ECO Mode for a successful and uninterrupted charge experience.' To toggle it, enter Setting Mode and press the DC power button."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "ECO Mode adjustable threshold and timer",
+   "value": "AC threshold 10–30 W; timer 1, 2, 3 or 4 hours",
+   "source": "https://www.manualslib.com/manual/3256594/Bluetti-Ac70.html",
+   "source_title": "Bluetti AC70 User Manual, p. 22 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "'You can set the power threshold of AC output and DC output to 10W-30W / 5W-10W, respectively, for 1, 2, 3, or 4 hours.'"
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "AC switching time (grid to battery)",
+   "value": "≤20 ms",
+   "source": "https://www.manualslib.com/manual/3256594/Bluetti-Ac70.html",
+   "source_title": "Bluetti AC70 User Manual, p. 19 specs (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The product page also says 'Seamless UPS in 20ms'."
+  },
+  {
+   "product": "BLUETTI AC70",
+   "label": "Maker's TV runtime claim and price",
+   "value": "TV (65 W): 8.2 hours; US$359.00",
+   "source": "https://www.bluettipower.com/products/ac70",
+   "source_title": "BLUETTI AC70 Portable Power Station | 1,000W 768Wh - BLUETTI US",
+   "read": "2026-11-13",
+   "note": "768 Wh, 1,000 W rated / 2,000 W lifting, LiFePO4. The page also showed 'AC70 currently out of stock, expected restock: Early September'. 8.2 h × 65 W = 533 Wh delivered, about 69% of nameplate, below ChatGPT's 85% assumption."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Default low-load inverter shut-off (Smart AC Output Mode)",
+   "value": "Inverter off after 15 minutes when unused or under 20 W",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record breaking charge speed: Anker SOLIX C1000 Gen 2 power station review (Gidon, The Technology Man, 2025-11-04)",
+   "read": "2026-11-13",
+   "note": "Gidon: 'By default the Anker turns off its inverter after 15 minutes when it's not in use or using below 20W.' He turned off Smart AC Output Mode in the app to defeat it."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured inverter no-load draw",
+   "value": "around 17 W",
+   "source": "https://thetechnologyman.com/record-breaking-charge-speed-anker-solix-c1000-gen-2-power-station-review",
+   "source_title": "Record breaking charge speed: Anker SOLIX C1000 Gen 2 power station review (Gidon, The Technology Man, 2025-11-04)",
+   "read": "2026-11-13",
+   "note": "Gidon measured 'around 17W even without a load' with Smart AC Output Mode off. In the same review he measured 907 Wh used at a 1 kW resistive load (89% efficiency) and a UPS transfer time under 10 ms on an oscilloscope."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 2 Max AC no-load self-consumption and default AC-timeout/low-load auto-off: the EcoFlow US FAQ page has neither, and the EcoFlow-hosted EU manual PDF and the HSN-hosted US manual PDF would not extract to text.",
+  "Anker SOLIX C1000 Gen 2 Smart AC Output threshold in Anker's own words: the official A1763 US user guide PDF (cloudfront) was over the 10 MB fetch limit, device.report returned 403, and Anker's 15 W/15 min smart-socket FAQ text covers the original C1000, not the Gen 2.",
+  "BLUETTI AC70 ECO text from BLUETTI's own Shopify-hosted manual PDF: it downloaded but the text would not extract, so the ManualsLib mirror of the same manual is cited instead.",
+  "EcoFlow 'RIVER 2 Max Lite 499Wh' that ChatGPT carded at $309: no maker US page found for that name, so I did not research it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.8768807999999999
+ }
+}
