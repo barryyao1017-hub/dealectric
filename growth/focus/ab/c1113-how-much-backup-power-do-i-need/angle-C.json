@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that a station's kW limit can depend on how much battery you add: Anker's F3800 Plus page footnotes its 6,000 W output as '3,300W for single unit, 6,000W when working with 1 or more expansion batteries', and the extra batteries only fit certain models (for example, EcoFlow's 2,048 Wh DELTA 3 Max Plus Smart Extra Battery fits only the DELTA 3 Max Plus, DELTA 3 Ultra Plus and DELTA Gen4 3800).",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat lists no search query and no results, so it cited no rival pages. Its answer gives generic sizing bands (1–40+ kWh) and says 'A battery must be sized for both' kW and kWh. It names no product, no expansion-battery pairing, no limit on how far a station can grow, and does not say that adding batteries can raise output.",
+ "decides": "If you start small and plan to add batteries later, the base unit has to be one the maker lists as expandable with a named battery. For anyone who needs about 6 kW of output, the Anker F3800 Plus only reaches 6,000 W with at least one BP3800 (3,840 Wh) added, not on its own. The BLUETTI Apex 300 (2,764.8 Wh, 3,840 W, 120/240 V) adds B300K batteries for 5,529.6 Wh at US$2,599. EcoFlow extra batteries are model-locked, so check the base model's name exactly.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI Apex 300",
+  "BLUETTI Apex 200",
+  "EcoFlow DELTA 3 Max Plus",
+  "EcoFlow DELTA 3 Ultra Plus",
+  "EcoFlow DELTA 3 (1-5 kWh expandable listing)"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC output limit tied to expansion battery",
+   "value": "3,300 W for a single unit; 6,000 W with 1 or more expansion batteries",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-14",
+   "note": "Footnote on the product page. The headline spec says 'AC Output Power (Total): 6000W Max'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Compatible expansion battery and count",
+   "value": "BP3800, up to 6 per unit, 3,840 Wh each; system 'expandable to 53.8kWh (12kW)'",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-14",
+   "note": "My arithmetic: one unit plus 6 BP3800 = 7 × 3.84 = 26.9 kWh. 53.8 kWh = 14 × 3.84 kWh, which fits two units each with 6 batteries. The page does not say this outright. The 12 kW figure matches the two-unit bundle (12,000 W | 7,680 Wh)."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V and generator limits",
+   "value": "240 V output (NEMA L14-30R, 6,000 W max) cannot be used while charging via 120 V AC; Generator Adapter required and only supports a single F3800 Plus unit",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-14",
+   "note": "Exclusions quoted from the page. Switchover times listed: 20 ms on a 120 V wall outlet; 30 ms from F3800 Plus to generator, 50 ms from generator to F3800 Plus."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Home Power Panel / Double Power Hub mixing",
+   "value": "F3800 and F3800 Plus can be used with Double Power Hub and with Home Power Panel at the same time (FAQ: 'Yes'); Storm Guard and Local Energy Saver need a Home Power Panel",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page FAQ",
+   "read": "2026-11-14",
+   "note": "The FAQ also says solar panels can't recharge the unit through the Home Power Panel during an outage; connect panels directly to the unit."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Base capacity, expansion and system maximum",
+   "value": "2,764.8 Wh, 3,840 W; with one B300K, 5,529.6 Wh; '2–3 units and up to 18 batteries for up to 11.52kW output and 58kWh capacity'",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "BLUETTI Apex 300 + B300K product page",
+   "read": "2026-11-14",
+   "note": "The page says solar input up to 4,000 W 'Requires a SolarX 4K', DC power needs Hub D1, and the AT1 panel powers essential circuits. Switchover is listed as '0ms' and elsewhere as '0ms or 20ms'. Expected to ship in late January."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Price (BLUETTI US store)",
+   "value": "US$1,499 alone (was US$1,699); US$2,599 with B300K (was US$2,799); US$3,689 with 2× B300K (8,294.4 Wh)",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "BLUETTI Apex 300 + B300K product page",
+   "read": "2026-11-14",
+   "note": "The US$1,499 and US$2,599 prices are from the product page. The 2× B300K price is from the Shopify store search via storecheck.py (https://www.bluettipower.com/products/apex-300-2-b300k)."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Compatible expansion batteries and limit",
+   "value": "B300K or B500K, up to 6 per unit; 2,560 Wh, 3,200 W standalone (3,600 W only with a compatible expansion battery or supported input); max 99.84 kWh with 3 units + 18 B500K + Hub A1",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "BLUETTI Apex 200 Versatile Power Station",
+   "read": "2026-11-14",
+   "note": "The page says 'Standalone continuous AC output is 3,200W.' UPS is ≤15 ms and must be enabled in the app. Price US$1,099 (was US$1,399) from storecheck.py on the same date."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus Smart Extra Battery",
+   "label": "Which stations it fits",
+   "value": "Adds 2,048 Wh to DELTA 3 Max Plus, DELTA 3 Ultra Plus and DELTA Gen4 3800 only (models listed); US$859",
+   "source": "https://us.ecoflow.com/products/delta-3-max-plus-smart-extra-battery",
+   "source_title": "EcoFlow DELTA 3 Max Plus (2048Wh) Smart Extra Battery",
+   "read": "2026-11-14",
+   "note": "Text and price come from EcoFlow US Shopify store data via storecheck.py. The plain DELTA 3 Max and DELTA 3 Ultra are not on its list. The DELTA 3 Ultra series listing gives '3-11kWh Expandable Capacity' only for the Ultra Plus."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Expandable range and price",
+   "value": "2,048 Wh, 3,000 W, '2-10kWh Expandable Capacity', 10 ms auto-switch; US$1,149",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Plus Portable Power Station (2048Wh)",
+   "read": "2026-11-14",
+   "note": "From EcoFlow US Shopify store data via storecheck.py."
+  },
+  {
+   "product": "EcoFlow DELTA 3 (US store listing)",
+   "label": "Compatible extra batteries",
+   "value": "'1-5kWh expandable with DELTA 3 Extra Battery, DELTA Pro 3 Extra Battery, DELTA 2 Extra Battery or DELTA 2 Max Extra Battery'; 1,800 W AC; US$579",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "From EcoFlow US Shopify store data via storecheck.py. The product page itself returned HTTP 429, so I could not check whether this listing is the DELTA 3 Plus variant. Do not apply this to the separate DELTA 3 Classic listing (US$459), whose text says nothing about expansion."
+  },
+  {
+   "product": "EcoFlow Smart Generator 3000 (Dual Fuel)",
+   "label": "Auto start-stop compatibility",
+   "value": "Automatic start-stop works only with DELTA 3, DELTA 3 Plus and DELTA 3 Ultra Plus; not sold in California (CARB); US$689",
+   "source": "https://us.ecoflow.com/products/smart-generator-3000-dual-fuel",
+   "source_title": "EcoFlow Smart Generator 3000 (Dual Fuel)",
+   "read": "2026-11-14",
+   "note": "From EcoFlow US Shopify store data via storecheck.py."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX F3800 Plus price: the ankersolix.com page showed 'Price Loading' and 'Sold Out', and storecheck.py returned HTTP 404 on the Anker store.",
+  "Whether the original Anker SOLIX F3800 (non-Plus) accepts the BP3800: the F3800 Plus page doesn't say. I did not reach the manual.",
+  "Anker SOLIX C1000 Gen 2 expansion battery model and max capacity: the anker.com product URL and the store search both returned HTTP 404.",
+  "Jackery Explorer 1000 v2 expandability and UPS time: jackery.com returned HTTP 429 twice.",
+  "EcoFlow DELTA 3 Plus product page (to confirm which listing the '1-5kWh expandable' text belongs to): HTTP 429 twice.",
+  "Whether a single BLUETTI Apex 300 gives 240 V or needs Hub A1 or a second unit: the page says it powers 120 V and 240 V devices but gives no requirement. I did not open a manual."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8903597999999999
+ }
+}
