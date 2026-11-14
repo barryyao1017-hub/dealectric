@@ -6,7 +6,9 @@ sys.path.insert(0, str(ROOT / "tools"))
 import abpage as A
 import combopage as C
 BATCHES = os.environ["BATCH"].split(",")
-Q = [q["slug"] for b in BATCHES for q in json.loads((ROOT / f"growth/combo/batch-{b}.json").read_text())["questions"]]
+QS = [(b, q) for b in BATCHES for q in json.loads((ROOT / f"growth/combo/batch-{b}.json").read_text())["questions"]]
+Q = [q["slug"] for _, q in QS]
+RUN_OF = {q["slug"]: f"2026-11-13-combo-{b}" for b, q in QS if not q.get("reused_harvest")}
 tried = {}
 while True:
     pending = 0
@@ -26,6 +28,8 @@ while True:
         if tried.get(s) == p.stat().st_mtime:
             continue
         try:
+            if s in RUN_OF:   # research may have started on the first chat: the page's tags come from every chat harvested since
+                A.harvest(s, [RUN_OF[s]])
             r = C.apply(s)
         except Exception as e:  # noqa: BLE001
             r = {"slug": s, "status": "error", "reason": repr(e)[:300]}

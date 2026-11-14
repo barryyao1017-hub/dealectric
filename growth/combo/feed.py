@@ -31,7 +31,7 @@ while True:
             futs[s] = ex.submit(run, s)
             continue
         n = len(list((ROOT / "growth/evals/runs" / RUN / "chatgpt").glob(f"{q['qid']}-*.json")))
-        if n >= 2 or (n >= 1 and (ROOT / f"growth/combo/harvest-{BATCH}.done").exists()):
+        if n >= int(os.environ.get("MINCHATS", "2")) or (n >= 1 and (ROOT / f"growth/combo/harvest-{BATCH}.done").exists()):
             A.harvest(s, [RUN])
             started.add(s)
             futs[s] = ex.submit(run, s)
