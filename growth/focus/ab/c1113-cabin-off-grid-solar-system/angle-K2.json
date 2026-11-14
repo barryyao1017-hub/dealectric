@@ -1,0 +1,89 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 200 V2 accepts only 12–60 V of solar input, so two of BLUETTI's 350 W panels (33 V Voc each, 66 V in series) can't be wired in series. Two SP200L 200 W panels (24.6 V Voc each, 49.2 V in series) fit that window.",
+ "standout": 3,
+ "standout_why": "Neither saved chat listed any search results, so there was no rival page to compare against. That leaves ChatGPT's own answer. It recommends '4 × 500W panels' with a 'compatible MPPT charge controller' but never gives a controller's input voltage window or how many panels can go in series. The 60 V ceiling decides which BLUETTI bundle to buy and how to wire it: the $1,499 2×200 W bundle wires in series, while the $2,148 2×350 W bundle has to be wired in parallel. This set covers ChatGPT's 'small weekend cabin' size from its first chat (400–800 W of panels, 2–5 kWh, 1–2 kW inverter), not its 48 V 3 kW example.",
+ "kit_items": [
+  "Power station (battery + inverter + MPPT): BLUETTI Elite 200 V2. 2,073.6 Wh, 2,600 W AC, solar input of 12–60 V / 20 A / 1,000 W max. It fits a weekend cabin.",
+  "Solar panels: 2× BLUETTI SP200L 200 W wired in series. 2 × 24.6 V Voc = 49.2 V, which is under the 60 V input ceiling with 10.8 V of headroom. Wired in parallel they would reach 2 × 10.8 A = 21.6 A Isc, over the 20 A input limit, so series is the wiring that stays inside both limits.",
+  "Avoid for series wiring: BLUETTI 350W Solar Panel ×2 (the Elite 200 V2 + 2×350W bundle). 2 × 33 V Voc = 66 V, which exceeds the 60 V ceiling, so these must be wired in parallel."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-13"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, the store's own bundle, $1,499.00 on 2026-11-13. For comparison: Elite 200 V2 alone is $899.00, SP200L alone is $399.00, and the Elite 200 V2+2*350W Solar bundle is $2,148.00, all read the same day."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input window",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "From the page FAQ: 'PV input 12V-60V/20A, 1,000W max'. The page does not say how many solar ports there are or what connector they use."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Capacity / AC output",
+   "value": "2,073.6 Wh (page title; the body copy says 2,080 Wh) / 2,600 W continuous",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "The page gives both capacity figures. Power Lifting mode runs resistive loads up to 3,900 W."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "Open-circuit voltage / short-circuit current",
+   "value": "24.6 V Voc / 10.8 A Isc, MC4",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Two in series: 2 × 24.6 = 49.2 V Voc, under 60 V. Two in parallel: 2 × 10.8 = 21.6 A Isc, over 20 A. The FAQ says 'Mixing different solar panels is not encouraged in general.'"
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "Open-circuit voltage",
+   "value": "33 V Voc, MC4",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-13",
+   "note": "Two in series: 2 × 33 = 66 V Voc, 6 V over the Elite 200 V2's 60 V maximum. This is the panel in BLUETTI's own Elite 200 V2+2*350W bundle. The page lists no Vmp, Isc or Imp, so the parallel-wired output can't be computed."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×200W Solar",
+   "label": "Price",
+   "value": "$1,499.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-13",
+   "note": "storecheck.py product, Default Title variant, available. compare_at is also $1,499.00."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2×350W Solar",
+   "label": "Price",
+   "value": "$2,148.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar",
+   "read": "2026-11-13",
+   "note": "storecheck.py product, available. The product description is empty and doesn't say how the panels should be wired."
+  }
+ ],
+ "unsourced": [
+  "Sun Gold Power SGM-5K5E kit (48 V 5,000 W inverter, 51.2 V 100 Ah battery, 6 × 200 W panels, $2,831 in the storecheck search on 2026-11-13). I wanted the inverter's PV Voc limit, MPPT range and string wiring, but sungoldpower.com returned HTTP 429 on every product-page fetch. The maker's SPH504880A manual PDF on Shopify's CDN came back as compressed binary that couldn't be read. Third-party copies of the SPH5048P manual (solartown.com, device.report, manuals.plus) returned 403. Retailer snippets of '500 V Voc / 120–450 V MPPT' were not opened, so that figure is not used.",
+  "Voc temperature coefficient for the SP200L and the 350 W panel. Neither BLUETTI page lists one, so I can't compute the cold-morning Voc margin for the 49.2 V series string at a winter cabin.",
+  "Elite 200 V2 solar connector type (e.g. XT60 or DC7909), and whether the 2×200W bundle ships with an MC4 adapter or series cable. The product and bundle pages don't say.",
+  "Elite 200 V2 charging temperature range and whether it can pause charging below freezing. The product page doesn't state either.",
+  "BLUETTI 350W panel Vmp/Isc/Imp. They aren't on its product page, so I can't work out how much of the 700 W comes through when the pair is wired in parallel at the 20 A input limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0786983
+ }
+}

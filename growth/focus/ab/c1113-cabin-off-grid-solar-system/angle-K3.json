@@ -1,0 +1,92 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that Sun Gold Power's SGR-8K10E cabin kit ships with two SG48100P batteries that have no self-heating, while the self-heating SGH48100T sells in the same store for $1,035 against $981 (+$54 per battery, +$108 for the kit's two). In an unheated winter cabin the battery choice inside the kit decides whether the system keeps charging, and the default is not the cold-weather battery.",
+ "standout": 2,
+ "standout_why": "ChatGPT got no search results and cited no pages in either chat, so the only rival is ChatGPT's own answer text. Both answers leave the battery generic ('48V-class 100Ah LiFePO4', 'LiFePO4 batteries'). The second answer mentions 'battery temperature protection' once, in a closing question about location. Neither answer names the heated and unheated versions of the same battery, the 5 °C on / 12 °C off heater thresholds, or the price gap. That gives a partial overlap on the general idea and new information on the model, thresholds and price. The finding changes which battery goes in the cart, but I could not open a page showing the unheated battery's low-temperature charge limit, so I scored it 2, not 3.",
+ "kit_items": [
+  "Inverter + panels + battery kit: Sun Gold Power SGR-8K10E (8,000 W 48 V 120/240 V off-grid inverter, 8 × 450 W N-type panels, 2 × SG48100P 51.2 V 100 Ah LiFePO4, 10.24 kWh). Dealectric already lists it, and one store cart holds the whole set.",
+  "Battery for an unheated winter cabin: Sun Gold Power SGH48100T (51.2 V 100 Ah, self-heating). The maker says it starts heating below 41 °F (5 °C) and stops at 53.6 °F (12 °C). It costs +$54 per battery over the SG48100P that comes in the kit, and it advertises RS485/CAN for SunGoldPower inverters. Sun Gold Power's T-suffix kits (for example SGR-10K25T) already include it.",
+  "Battery for a cabin that stays heated, or one used only in summer: the kit's SG48100P is enough, and its listing names no heating feature."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power SGR-8K10E Off-Grid Solar Kit (8,000 W, 10.24 kWh, 8 × 450 W) | https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e | $4,949 (compare-at $9,183) | 2026-11-13",
+    "Sun Gold Power SGH48100T 48V 100AH Self-Heating Battery (cold-cabin swap, single) | https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating | $1,035 | 2026-11-13",
+    "Sun Gold Power 2X SGH48100T Self-Heating Battery pack | https://sungoldpower.com/products/2x-sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating | $2,061 | 2026-11-13"
+   ],
+   "bundle_sku": "SGR-8K10E kit, $4,949 on 2026-11-13. It ships with SG48100P (unheated) batteries. For a self-heating 48 V kit, the store's text names the SGR-10K25T, SGR-20K30T and similar T variants, but I could not open those pages to read their prices."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Kit contents and battery",
+   "value": "8 × 450 W N-type panels, 8,000 W 48 V 120/240 V inverter, 2 × SG48100P 51.2 V 100 Ah LiFePO4 (10.24 kWh)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Read through the store's Shopify product search (storecheck.py). The full product page returned HTTP 429 to WebFetch."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Price",
+   "value": "$4,949 (compare-at $9,183), in stock",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Sun Gold Power store (Shopify search JSON)",
+   "read": "2026-11-13",
+   "note": "storecheck.py search"
+  },
+  {
+   "product": "Sun Gold Power SGH48100T",
+   "label": "Self-heating thresholds",
+   "value": "Heater turns on below 41 °F (5 °C) and off at 53.6 °F (12 °C)",
+   "source": "https://sungoldpower.com/products/sgh48100t-sever-rack-48v-100ah-lithium-battery-self-heating",
+   "source_title": "SGH48100T Server Rack 48V 100AH Lithium Battery Self-Heating",
+   "read": "2026-11-13",
+   "note": "Maker text: 'This functionality ensures that your battery remains charged during cold winter conditions'. It also lists 'low temperature charging protection' and RS485/CAN compatibility with SunGoldPower inverters."
+  },
+  {
+   "product": "Sun Gold Power SGH48100T vs SG48100P",
+   "label": "Price gap for the cold-weather battery",
+   "value": "$1,035 vs $981 = +$54 per battery; 2-packs $2,061 vs $1,953 = +$108",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Both prices come from the same store search on the same day. The SG48100P listing names overcharge, discharge, overheating and short-circuit protection, and no heating feature."
+  },
+  {
+   "product": "Sun Gold Power SGR-10K25T",
+   "label": "Maker's self-heating kit variant",
+   "value": "SGR-10K25T includes 5 × SGH48100T self-heating batteries (SGR-10K25S uses SG48100P)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-12-x-550-watts-solar-panels-25-6kwh-lithium-battery-10kw-solar-inverter-48vdc-120v-240v-sgr-10k25s",
+   "source_title": "OFF GRID SOLAR KIT 12 X 550 WATTS ... SGR-10K25S",
+   "read": "2026-11-13",
+   "note": "Store text: 'The SGH48100T batteries included with the SGR-10K25T solar kit are equipped with a self-heating function.' Shown price $8,958 is for the listing's default variant; I could not read the T variant's price."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Max PV open-circuit voltage",
+   "value": "550 VDC",
+   "source": "unsourced — search snippet only",
+   "source_title": "n/a",
+   "read": "2026-11-13",
+   "note": "Not used. manuals.plus and device.report returned 403, so this figure is not verified and appears here only so the next agent does not repeat the search."
+  }
+ ],
+ "unsourced": [
+  "SG48100P charging temperature range and what its BMS does below freezing (blocks charging or not): a search snippet suggested 0–45 (units missing). The SolarTown spec sheet and the manuals.plus/device.report manuals returned 403, the Shopify-CDN manual PDF (219551-48100P.pdf) came back as compressed bytes I could not extract, and the store copy gives no range.",
+  "SGH48100T charge temperature range and what powers the heater (charge current, e.g. 'I≥0.08C', or the battery itself): search snippets only. The maker page and the retailer pages (solartown 403; offgridstores, renewableoutdoors 429) could not be opened.",
+  "Whether an SGR-8K10T (self-heating) variant of the 8 kW kit exists and its price: the kit page returned HTTP 429 every time.",
+  "SGR-8K10E panel Voc, temperature coefficient and inverter max PV Voc (to check whether a series string goes over the inverter limit in cold weather): kit page and inverter manuals blocked (429/403).",
+  "Forum threads with dates and report counts of unheated cabin LiFePO4 banks refusing to charge: not searched, out of tool budget.",
+  "Amazon prices: not checked; the cart is Sun Gold Power only."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1392206
+ }
+}
