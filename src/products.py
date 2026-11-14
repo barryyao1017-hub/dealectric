@@ -7517,6 +7517,23 @@ PRODUCTS = [
  "fit": 'Backyard movies after full dark, plugged in, on screens of 120 to 165 inches.',
  "caveats": ['No built-in battery.', 'Only Conference mode reached the 1,800-lumen rating; Movie mode measured 72% of it.', 'Amazon also lists a Renewed unit; check that the listing says new.']},
 
+{"slug": 'sirui-traveler-7c-carbon-travel-tripod',
+ "brand": 'SIRUI',
+ "program": 'awin:sirui',
+ "asin": None,
+ "category": 'camera-accessory',
+ "name": 'SIRUI Traveler 7C Carbon Fiber Travel Tripod with E-10 Ball Head',
+ "model": 'Traveler 7C',
+ "url": 'https://store.sirui.com/products/sirui-traveler-7a-7c-1',
+ "price": 149.9,
+ "verified": '2026-11-14',
+ "specs": [('Max load', '8 kg / 17.6 lb (SIRUI max load)'), ('Weight', '1.57 kg / 3.46 lb'), ('Max height', '1,665 mm / 65.55 in'), ('Folded length', '480 mm / 18.9 in'), ('Leg sections', '4, carbon fiber, 15–25.8 mm tubes'), ('Head', 'E-10 aluminum ball head, 360° panning base'), ('Extras', 'Detachable leg converts to a monopod, reversible centre column, stainless spikes, 1/4-20 accessory port')],
+ "warranty": "SIRUI limited warranty (SIRUI's warranty page lists 18 months for lenses)",
+ "returns": '30 days from receipt (SIRUI store refund policy)',
+ "summary": 'Carbon travel tripod rated for 17.6 lb that reaches 65.55 in, at 3.46 lb.',
+ "fit": 'A DSLR with a mid-weight zoom: under the 2× load rule it takes kits up to 8.8 lb, the most per dollar among the carbon travel tripods compared here (149.90 ÷ 17.6 = 8.52 per lb of rated load).',
+ "caveats": ['Folds to 18.9 in, longer than the Manfrotto Befree Advanced AS (16.14 in) or the Peak Design Travel Tripod (15.5 in).', 'SIRUI names no test method for its 8 kg load figure.', 'At 3.46 lb it weighs 0.66 lb more than the Befree Advanced AS Carbon.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
