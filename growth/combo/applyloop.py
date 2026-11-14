@@ -28,6 +28,8 @@ while True:
         if tried.get(s) == p.stat().st_mtime:
             continue
         try:
+            if d.get("kit_page") or d.get("bundle_compare") or d.get("kit"):   # stores throttle cart tests run back to back (HTTP 429, 11-14)
+                time.sleep(int(os.environ.get("KITPAUSE", "240")))
             if s in RUN_OF:   # research may have started on the first chat: the page's tags come from every chat harvested since
                 A.harvest(s, [RUN_OF[s]])
             r = C.apply(s)

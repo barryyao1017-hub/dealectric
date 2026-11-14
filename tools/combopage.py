@@ -211,6 +211,17 @@ def sanitize(draft: dict) -> list[str]:
             if r.get("slug") == p["slug"]:
                 r.pop("slug")
                 r.update({"brand": p["brand"], "model": r.get("model") or p.get("model") or p["name"], "url": p.get("url")})
+    for k in list(draft.get("new_categories") or {}):   # the category key is capped at 20 characters
+        if len(k) > 20:
+            parts = k.split("-")
+            while len("-".join(parts)) > 20 and len(parts) > 1:
+                parts = parts[1:]
+            nk = "-".join(parts)[:20]
+            draft["new_categories"][nk] = draft["new_categories"].pop(k)
+            for p in draft.get("products") or []:
+                if p.get("category") == k:
+                    p["category"] = nk
+            notes.append(f"category {k} -> {nk}")
     live = known | {p["slug"] for p in draft.get("products") or []}
     names = {r.get("slug"): r.get("model") for r in pg.get("rows") or []}
     for k in ("answer", "after", "intro"):
