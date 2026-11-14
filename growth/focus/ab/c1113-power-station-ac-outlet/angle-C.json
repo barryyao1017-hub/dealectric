@@ -1,0 +1,83 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Jackery's own store lists its SolarSaga 100 Air panel as 'Not compatible with Explorer 300 v2, Explorer 300, 300D, or 240D for recharging', or that Anker's DC-suffixed C300 has no AC outlet at all, so a shopper who wants an AC outlet can buy the wrong one.",
+ "standout": 2,
+ "standout_why": "I read agentretrievalindex.com (compact-class comparison), testedwatts.com (camping 2026) and dailycarrylab.com (travel 2026). They give AC outlet counts, surge, UPS and the RIVER 3 Plus + EB600 = 858 Wh pairing. dailycarrylab also covers the X-Boost exclusions. None of them names a solar panel that cannot charge the Explorer 300 v2, notes that Jackery's US store has the Explorer 300 v2 sold out, or warns that the Anker C300 DC has no AC outlet. Testedwatts covers only the C300X, and agentretrievalindex covers only the C300. I could not open wired.com or popularmechanics.com, so I have not checked those two.",
+ "decides": "This weakens the case for ChatGPT's third card, the Jackery Explorer 300 v2. Jackery's US store has it sold out and points buyers to the Explorer 300 instead. Jackery also excludes the 300 v2 and the Explorer 300 from charging with its SolarSaga 100 Air panel, so a camper who plans to use solar has to check the panel pairing. The EcoFlow RIVER 3 Plus keeps the stronger compatibility story: EcoFlow sells EB300 (286 Wh) and EB600 (572 Wh) add-on batteries that connect by pogo pins and take it to 858 Wh. For Anker, the page should tell the shopper to buy the C300 or C300X, not the C300 DC, because Anker's own spec table lists no AC output for the DC model.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C300X",
+  "Jackery Explorer 300 v2",
+  "Jackery Explorer 300",
+  "EcoFlow RIVER 3",
+  "BLUETTI Elite 30 V2"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 300 v2",
+   "label": "Maker-stated solar panel exclusion",
+   "value": "SolarSaga 100 Air is 'Not compatible with Explorer 300 v2, Explorer 300, 300D, or 240D for recharging'",
+   "source": "https://www.jackery.com/products/jackery-solarsaga-100-air",
+   "source_title": "Jackery SolarSaga 100 Air (Jackery US store)",
+   "read": "2026-11-13",
+   "note": "Read from the product description in Jackery's US Shopify store using storecheck.py search. The same sentence appears on the [Add-on] SolarSaga 100 Air listing. The panel costs $299. Jackery does not give a reason in that text. A follow-up product fetch was rate-limited (HTTP 429)."
+  },
+  {
+   "product": "Jackery Explorer 300 v2",
+   "label": "US maker-store availability and price",
+   "value": "Listed at $299 (compare-at $419); the page says 'We're sold out of Explorer 300 v2. Check out Explore 300 – a better alternative'",
+   "source": "https://www.jackery.com/products/jackery-explorer-300-v2-portable-power-station",
+   "source_title": "Jackery Portable Power Station Explorer 300 v2 (Jackery US store)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on jackery.com. ChatGPT's card showed $249.99 at Micro Center, which I did not check."
+  },
+  {
+   "product": "Jackery Explorer 300 v2",
+   "label": "AC outlets / output",
+   "value": "2 AC outlets ('Dual 300W AC outputs'), 300 W rated, 600 W surge; UPS ≤0.01 s",
+   "source": "https://www.jackery.com/products/jackery-explorer-300-v2-portable-power-station",
+   "source_title": "Jackery Portable Power Station Explorer 300 v2 (Jackery US store)",
+   "read": "2026-11-13",
+   "note": "Quoted from the maker's store description."
+  },
+  {
+   "product": "Jackery Explorer 300",
+   "label": "AC outlets and the replacement Jackery recommends",
+   "value": "2 AC outlets, 300 W rated, 292 Wh, $289; 'Fast Solar Charging... with a compatible 100W solar panel'",
+   "source": "https://www.jackery.com/products/explorer-300-portable-power-station",
+   "source_title": "Jackery Explorer 300 Portable Power Station (Jackery US store)",
+   "read": "2026-11-13",
+   "note": "This is the model the sold-out 300 v2 page redirects buyers to. The SolarSaga 100 Air exclusion above also covers it."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Extra battery pairing",
+   "value": "EB300 (286 Wh) or EB600 (572 Wh) Smart Extra Battery; 'Expand the capacity of the RIVER 3 Plus to up to 858Wh'; wireless pogo-pin connection; adds 140 W USB-C input/output",
+   "source": "https://us.ecoflow.com/products/ecoflow-river-3-plus-smart-extra-battery-recommended-accessory-copy",
+   "source_title": "EcoFlow RIVER 3 Plus Smart Extra Battery-300 (EcoFlow US store)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on us.ecoflow.com. The EB300 listing is $149 (compare-at $159). Arithmetic: 286 Wh + 572 Wh = 858 Wh. The listing names only the RIVER 3 Plus as the host. I could not open EcoFlow's pages to confirm exclusions for the RIVER 3 because the store returned HTTP 429."
+  },
+  {
+   "product": "Anker SOLIX C300 DC",
+   "label": "AC output",
+   "value": "None: the AC Output, AC output Surge and AC port amount rows all show '/' for the C300 DC, while the C300 shows 300 W (600 W SurgePad) and '3*110V' outlets",
+   "source": "https://www.anker-in.com/posts/anker-solix-unveils-new-lineup-of-compact-and-mighty-portable-power-stations",
+   "source_title": "Anker SOLIX Unveils New Lineup of Compact and Mighty Portable Power Stations (Anker Innovations, Aug 14, 2024)",
+   "read": "2026-11-13",
+   "note": "This is Anker's own launch release. Launch prices were C300 DC $199.99 and C300 $249.99. These are 2024 list prices, not today's."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C300X specs, price and DC-variant exclusions on Anker's US pages: ankersolix.com/products/a1723111, b1723111 and a1728011 all returned HTTP 404, the storecheck search on ankersolix.com and anker.com returned 404, and the Solartown-hosted Anker datasheet PDF returned 403.",
+  "EcoFlow RIVER 3 Plus product page (price, X-Boost limits, AC plug type, and whether the extra battery fits the RIVER 3): us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck.",
+  "Jackery's reason the SolarSaga 100 Air cannot charge the Explorer 300 v2, and the 300 v2's solar input voltage range: the product fetches returned HTTP 429.",
+  "Whether the AC outlets on the RIVER 3 Plus, C300X and Explorer 300 v2 are 2-prong or grounded 3-prong: I found no maker document I could open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9300077
+ }
+}

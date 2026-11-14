@@ -1,0 +1,84 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that EcoFlow's own US RIVER 3 Plus page gives battery life as time to 80% ('over 10 years before dropping to 80% capacity') with no cycle count, or that StorageReview measured its UPS switchover at 9 ms against EcoFlow's '<10 ms' rating.",
+ "standout": 1,
+ "standout_why": "I compared against agentretrievalindex.com (compact-class table), testedwatts.com and dailycarrylab.com. agentretrievalindex already does most of this angle's normalising in footnotes. It flags that Power Lifting and X-Boost figures are not surge ratings and that the Explorer 300 Plus has conflicting cycle figures (3,000 to 80% vs 4,000 to about 70%). It also flags that BLUETTI publishes no cycle threshold for the Elite 30 V2 and that the RIVER 3 'UPS' is EPS. dailycarrylab already quotes the EcoFlow manual: X-Boost is for heating and motor-driven loads and is unavailable in bypass. testedwatts already lists 3,000 cycles to 80% for the RIVER 3 Plus, C300X and 300 Plus. None of them says the maker's own RIVER 3 Plus page states life in years rather than cycles, and none has a measured switchover time. Those two points are new but narrow. I could not open the Jackery or Anker maker pages, which is where a cycle-basis mismatch would most likely be.",
+ "decides": "This confirms the RIVER 3 Plus pick rather than changing it. The maker states 600 W rated output shared across three AC outlets, all UPS-protected. That is twice the 300 W of the C300X and Explorer 300 v2 on ChatGPT's cards, and the switchover was measured at 9 ms. The 1,200 W X-Boost figure should not be compared with 600 W surge ratings. I could not normalise cycle life across the three because I could not source the Jackery and Anker ratings.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C300X",
+  "Jackery Explorer 300 v2",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Battery capacity",
+   "value": "286 Wh (expandable to 858 Wh with Extra Battery)",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station (EcoFlow US)",
+   "read": "2026-11-13",
+   "note": "Maker's US product page."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "AC output and outlets",
+   "value": "600 W output across 3 AC outlets, all three UPS-protected",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station (EcoFlow US)",
+   "read": "2026-11-13",
+   "note": "The page says '600W output power' and 'All three AC outlets have UPS protection'. It does not name a surge or X-Boost figure, and it does not give the outlet plug type."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Battery-life rating basis",
+   "value": "over 10 years to 80% capacity (no cycle count on this page)",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station (EcoFlow US)",
+   "read": "2026-11-13",
+   "note": "Exact wording: 'performs for over 10 years before dropping to 80% capacity'. Rival pages state '3,000 cycles to 80%', but that figure does not appear on this maker page. Because this is a time basis rather than a cycle basis, it cannot be compared directly with cycle-count ratings."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "UPS switchover, rated",
+   "value": "<10 ms",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station (EcoFlow US)",
+   "read": "2026-11-13",
+   "note": "Maker claim."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "UPS transfer time, measured",
+   "value": "9 ms",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Compact Power Station with 600W Output, UPS Support (StorageReview, Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-13",
+   "note": "StorageReview's Dylan Dougherty measured this with a Quarch Mains Power Analysis Module. The same review's spec table lists 3 AC outlets totalling 600 W, one on the front and two on the rear."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Weight",
+   "value": "10.4 lb",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus Portable Power Station (EcoFlow US)",
+   "read": "2026-11-13",
+   "note": "Maker's figure."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 300 v2: AC outlet count and plug type, rated and surge watts, cycle life and its % basis (70% or 80%), switchover time, price. jackery.com and ca.jackery.com returned HTTP 429 three times through WebFetch and storecheck. The figures I saw came only from search snippets and retailers, so I left them out.",
+  "Anker SOLIX C300X: AC outlet count, rated and surge (SurgePad) watts, cycle life basis, price. The anker.com URL returned 404, us.ankersolix.com returned 429 through WebFetch and storecheck, and the Solartown datasheet PDF and the Adorama page returned 403. A search snippet mentioned a 360 W maximum output and 3,000+ cycles to 80%, but I could not open the page to check it.",
+  "BLUETTI Elite 30 V2: AC output, Power Lifting watts, cycle threshold. bluettipower.com/products/elite-30-v2 hit a redirect loop.",
+  "EcoFlow RIVER 3 Plus: X-Boost wattage and the loads it covers on a maker page. The US page I opened does not mention X-Boost, and I did not reach the EcoFlow manual PDF directly. The cycle count (3,000 to 80%) is not on the maker page I opened.",
+  "Today's prices for all candidates. The storecheck tool returned 429 for us.ecoflow.com, jackery.com and us.ankersolix.com. I did not try Amazon because I had run out of budget.",
+  "Measured usable AC Wh for the RIVER 3 Plus. StorageReview reports a 0.43 kWh discharge with no test conditions, which is about 50% above the 286 Wh rating, so I did not use it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.8703797000000002
+ }
+}

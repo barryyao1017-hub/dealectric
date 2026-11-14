@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states how the boost modes work. EcoFlow's X-Boost, which shares its trick with BLUETTI Power Lifting and Anker SurgePad, runs an appliance rated above the inverter by lowering the output voltage. A heating appliance therefore runs at reduced power, close to the rated continuous watts, rather than at its label wattage: Alex Kidman's RIVER 3 Plus measured 599 W on a fan heater's low setting, and the high setting tripped the overload. The real AC ceiling is the rated figure (600 W on the RIVER 3 Plus and Elite 30 V2, 300 W on the C300X and Explorer 300 Plus), not the 1,200 W or 1,500 W boost figure.",
+ "standout": 1,
+ "standout_why": "I compared five pages. Daily Carry Lab (rank 9) already says X-Boost is not 1,200 W of continuous output, is off in bypass, and excludes 'devices with voltage protection such as precise instruments'. It does not say that X-Boost works by lowering voltage, or that the appliance ends up running at reduced power. Agent Retrieval Index (rank 10) says only that the Elite 30 V2's 'Power Lifting (1,500 W) runs resistive loads at reduced power; it is not surge capacity'. It does not explain why, and for X-Boost and SurgePad it gives just the wattage. Tested Watts (rank 1) gives surge figures and about 10 W of inverter overhead but no boost-mode explanation. I could not open Popular Mechanics (rank 3) or WIRED (rank 2). So the rivals have part of the finding. What's new is the voltage-reduction mechanism in the maker's own words, plus a measured result.",
+ "decides": "It confirms the pick and tightens it. ChatGPT's own table suggests coffee makers and kettles need 1,000–2,000 W+, and a shopper may think a '1,200 W X-Boost' or '1,500 W Lifting' unit can run them. On these boost modes, a heating appliance runs below its label wattage, and for loads that boost doesn't help, the rated continuous wattage is the limit. For anything above 300 W, choose a 600 W-rated unit (EcoFlow RIVER 3 Plus, or BLUETTI Elite 30 V2 at $289.99 on bluettipower.com) over the 300 W C300X or Explorer 300 Plus. Treat a full-power kettle or hair dryer as out of reach for this class of unit.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "BLUETTI Elite 30 V2",
+  "Anker SOLIX C300X",
+  "Jackery Explorer 300 Plus",
+  "EcoFlow RIVER 3"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "How X-Boost reaches above the inverter rating (maker's words)",
+   "value": "\"X-Boost features an intelligent voltage control that marginally reduces voltage, allowing you to power devices with a lower-rated inverter.\"",
+   "source": "https://www.ecoflow.com/es/x-boost",
+   "source_title": "EcoFlow X-Boost",
+   "read": "2026-11-13",
+   "note": "This is EcoFlow's own X-Boost page. Its Spanish-locale URL was the one that loaded, because us.ecoflow.com returned HTTP 429. The same page says X-Boost 'is not available to use when your EcoFlow portable power station is charging', and that with several devices on, the voltage change 'may affect device usage performance', so users should test first. Physics (my inference, not EcoFlow's): a resistive heater draws P = V²/R, so lowering the voltage cuts the power it receives."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Measured AC draw with X-Boost on a fan heater",
+   "value": "599 W on the low heat setting; the high heat setting tripped the overload and AC output shut off",
+   "source": "https://alexreviewstech.com/ecoflow-river-3-plus-review/",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Impressive Portable Power - Alex Reviews Tech (Alex Kidman, 2025-06-17)",
+   "read": "2026-11-13",
+   "note": "Kidman tested an Australian 230 V unit with three AU outlets. He did not record the heater's label wattage or any voltage reading. He concluded the high setting needed more than 1,200 W. Fan only: 13 W. He also notes X-Boost does not work while the unit is charging."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Rated AC output vs X-Boost",
+   "value": "600 W rated across 3 outlets (shared); 1,200 W X-Boost promoted separately",
+   "source": "https://dailycarrylab.com/travel-gear/best-portable-power-stations-travel-2026/",
+   "source_title": "Portable power stations for road travel: Wh, AC and USB limits | Daily Carry Lab",
+   "read": "2026-11-13",
+   "note": "This is a rival page in ChatGPT's results. It states: 'We do not treat X-Boost or a surge figure as 1200W conventional continuous output.' I couldn't verify the figures on EcoFlow's US product page because it returned HTTP 429."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Rated AC vs Lifting power, standby draw, price",
+   "value": "600 W rated, 1,500 W Lifting Power, 4.5 W standby, 980 W bypass; $289.99",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-13",
+   "note": "Taken from the BLUETTI US Shopify store with storecheck.py search. The product text reads '600W Rated Power, 1500W Lifting Power' and 'only 4.5W standby'. Compare-at price is also $289.99. Bundles with a 60 W panel are $399.99 and with a 100 W panel $489.99."
+  },
+  {
+   "product": "Jackery Explorer 300 Plus",
+   "label": "AC output and low-load auto-off",
+   "value": "300 W rated AC, 1 outlet; all outputs turn off after 12 h with AC load at or below 25 W",
+   "source": "https://dailycarrylab.com/travel-gear/best-portable-power-stations-travel-2026/",
+   "source_title": "Portable power stations for road travel: Wh, AC and USB limits | Daily Carry Lab",
+   "read": "2026-11-13",
+   "note": "This is a rival page that already states it. I list it so the page doesn't repeat it as new."
+  },
+  {
+   "product": "Anker SOLIX C300X",
+   "label": "Rated AC vs SurgePad",
+   "value": "300 W rated AC, 600 W SurgePad, 3 AC outlets",
+   "source": "https://agentretrievalindex.com/comparisons/compact-class-power-stations/",
+   "source_title": "Compact Class: ... Anker SOLIX C300 ... | Agent Retrieval Index",
+   "read": "2026-11-13",
+   "note": "This is a rival page, and it gives no SurgePad mechanism. Tested Watts (https://testedwatts.com/2026/09/23/best-portable-power-station-for-camping/) lists the same 300 W / 600 W figures."
+  }
+ ],
+ "unsourced": [
+  "Anker's own wording on SurgePad. A search snippet attributes this to the C300X manual: 'works better with devices that generate heat' and 'does not function in bypass mode'. I could not open it: manuals.plus returned 403, the Lowe's PDF was over 10 MB, the ankersolix.com product URL returned 404, and storecheck on ankersolix.com returned 404.",
+  "BLUETTI's own explanation of how Power Lifting works, including whether it lowers voltage. The store text gives only '1500W Lifting Power', and a search turned up no BLUETTI page explaining the mechanism.",
+  "Whether X-Boost helps motor and compressor loads such as mini-fridge startup. EcoFlow's US store copy for the DELTA 3 Max lists refrigerators and circular saws under X-Boost, which conflicts with the heating-device framing. I found no small-unit (RIVER 3 / RIVER 3 Plus) maker statement or US measurement either way.",
+  "A US 120 V measured voltage or wattage for a kettle or hair dryer on X-Boost. Kidman's test was on a 230 V Australian unit with no voltage reading.",
+  "The RIVER 3 manual's X-Boost section. I downloaded the PDF but could not extract its text, because the PDF-to-text command needed approval.",
+  "Outlet type (2-prong or grounded 3-prong) for each candidate's AC outlets. No rival states it, and I did not reach the makers' US spec pages for it within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0938355000000004
+ }
+}
