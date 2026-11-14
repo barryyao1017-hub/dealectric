@@ -45,8 +45,8 @@
      "B3000 expansion battery"
     ]
    ],
-   "warranty": null,
-   "returns": null,
+   "warranty": "5-year limited warranty on the R3500 station and 2 years on the 400 W panel (ALLPOWERS's warranty page lists it as \"S037\"), for the original buyer only.",
+   "returns": "ALLPOWERS's refund policy gives 30 days after delivery to request a return of an unused item in its original packaging, but it excludes sale items, which may include this discounted kit. Its warranty page also says it doesn't take returns for customer convenience. A defective unit is exchanged if you report it within 30 days of delivery.",
    "summary": "A 3,168 Wh LiFePO4 station sold with one 400 W foldable panel. Its battery alone covers a two-day cabin weekend of lights, phones, a small fridge and a fan.",
    "fit": "Weekend cabins with a fridge where the trip shouldn't depend on the weather, including late-autumn and winter weekends with short days.",
    "caveats": [
@@ -189,6 +189,14 @@
     "https://iallpowers.com/products/allpowers-400w-portable-solar-panel"
    ],
    [
+    "ALLPOWERS warranty policy: R3500 5-year limited warranty; S037 panel 2-year limited warranty; original purchaser only; no returns or exchanges for customer convenience; defects exchanged if reported within 30 days of receipt (read 2026-11-14)",
+    "https://iallpowers.com/pages/warranty-policy"
+   ],
+   [
+    "ALLPOWERS refund policy: 30 days after receiving an item to request a return; unused, original packaging; sale items and gift cards not returnable (read 2026-11-14)",
+    "https://iallpowers.com/policies/refund-policy"
+   ],
+   [
     "R2500 V2 + SP037 400 W kit: $948, 1,920 Wh LiFePO4, 2,500 W, 1,000 W max solar input, 5-year warranty (read 2026-11-13)",
     "https://iallpowers.com/products/allpowers-r2500-v2-sp037-400w-solar-panel-2500w-solar-generator-kit"
    ],
@@ -256,7 +264,8 @@
  },
  "unsourced": [
   "ALLPOWERS R3500 weight: listings disagree (about 93 lb, 81.4 lb, 65.7 lb); the US product page returned HTTP 429 three times and the manuals.plus manual returned 403, so weight is left out.",
-  "ALLPOWERS R3500 warranty, ship date and charging-temperature range: the US product page was rate-limited (HTTP 429); only the store search data (price, available flag, spec text) was read.",
+  "ALLPOWERS R3500 ship date and charging-temperature range: the US product page was rate-limited (HTTP 429) again on 2026-11-14; only the store search data (price, available flag, spec text) was read. Warranty is now taken from ALLPOWERS's warranty-policy page instead.",
+  "ALLPOWERS warranty start date: the US warranty-policy page says the period runs from arrival in one section and gives 24 months from purchase in another, so no start date is stated on the page.",
   "ALLPOWERS R3500 inverter idle draw: Battery Skills reports none; no other reviewer measurement opened.",
   "A measured December yield per kW for a specific US location: SolutionEnergy's 2 kWh per kW is a worked example, so it is labelled as an example rate on the page."
  ],
@@ -267,5 +276,23 @@
  ],
  "query": "Run one web search with exactly this query: \"what size power station and solar panel run an off-grid cabin for a weekend\". Then answer my question the way you normally would, from what you found: What size power station and solar panel run an off-grid cabin for a weekend?",
  "verified_changes": 4,
- "verified_removed": 0
+ "verified_removed": 0,
+ "fix_pass": {
+  "errors": [
+   "allpowers-r3500-sp037-solar-kit: missing warranty",
+   "allpowers-r3500-sp037-solar-kit: missing returns"
+  ],
+  "log": [
+   "allpowers-r3500-sp037-solar-kit warranty: set to 5 years on the R3500 station and 2 years on the 400 W panel, original buyer only. Source: https://iallpowers.com/pages/warranty-policy, read 2026-11-14. The R3500 is listed under '5-Years Limited Warranty' and 'S037' under '2-Years Limited Warranty'. The page writes S037, not SP037, so the warranty field quotes that spelling.",
+   "allpowers-r3500-sp037-solar-kit returns: set from https://iallpowers.com/policies/refund-policy, read 2026-11-14. It gives 30 days after receipt to request a return of an unused item in its original packaging, and sale items are not returnable. The warranty-policy page, also read 2026-11-14, says ALLPOWERS doesn't accept returns or exchanges for customer convenience and exchanges defects reported within 30 days. The two pages conflict, so the returns field states both and doesn't promise a 30-day return.",
+   "Added two sources for the warranty and refund-policy pages, both read 2026-11-14.",
+   "Removed warranty from the 'unsourced' R3500 note, since it is now sourced. Added an 'unsourced' note that the warranty start date is stated two different ways on the page. On 2026-11-14 storecheck search showed the kit still at $1,498 and available. The kit product page still returned HTTP 429, through both storecheck and WebFetch.",
+   "Nothing else in the draft was changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }

@@ -7599,6 +7599,23 @@ PRODUCTS = [
  "fit": "Two bays on a budget when you don't need entire-system backup.",
  "caveats": ["Hyper Backup's entire-system mode accepts only a remote Synology NAS or Synology C2, so it can't target this box", 'Its 14.7 W idle draw is close to four times its 3.9 W sleep draw (PC-WELT), so make sure drive sleep is on']},
 
+{"slug": 'allpowers-r3500-sp037-solar-kit',
+ "brand": 'ALLPOWERS',
+ "program": 'cj:allpowers',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'ALLPOWERS R3500 + SP037 400 W Solar Generator Kit (3,168 Wh, 3,200 W)',
+ "model": 'R3500 + SP037 400 W',
+ "url": 'https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp037-400w-solar-panel',
+ "price": 1498.0,
+ "verified": '2026-11-13',
+ "specs": [('Battery', '3,168 Wh LiFePO4, over 3,500 cycles'), ('AC output', '3,200 W pure sine wave (7,000 W peak)'), ('Solar input', 'Up to 2,000 W'), ('AC + solar input', 'Up to 4,000 W combined'), ('Panel', 'SP037 400 W foldable, MC4, 37.4 V'), ('Expansion', 'B3000 expansion battery')],
+ "warranty": '5-year limited warranty on the R3500 station and 2 years on the 400 W panel (ALLPOWERS\'s warranty page lists it as "S037"), for the original buyer only.',
+ "returns": "ALLPOWERS's refund policy gives 30 days after delivery to request a return of an unused item in its original packaging, but it excludes sale items, which may include this discounted kit. Its warranty page also says it doesn't take returns for customer convenience. A defective unit is exchanged if you report it within 30 days of delivery.",
+ "summary": 'A 3,168 Wh LiFePO4 station sold with one 400 W foldable panel. Its battery alone covers a two-day cabin weekend of lights, phones, a small fridge and a fan.',
+ "fit": "Weekend cabins with a fridge where the trip shouldn't depend on the weather, including late-autumn and winter weekends with short days.",
+ "caveats": ["On a poor-sun day one 400 W panel adds about 800 Wh (0.4 kW × 2 kWh per kW, SolutionEnergy's December example rate), so the battery carries most of a cloudy weekend.", 'The 400 W panel uses only part of the 2,000 W solar input. Battery Skills (Bernard Ryan) saw a 780 W peak from two 400 W panels in series, so a second panel is the upgrade path.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
