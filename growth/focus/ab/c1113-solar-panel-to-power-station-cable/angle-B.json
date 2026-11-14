@@ -1,0 +1,137 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many watts its top long-run pick loses at a big station's full solar-port current. The VEVOR 30 ft 10 AWG pair is a 60 ft round trip. That works out to about 0.060 Ω, so it loses about 6 W at 10 A, 24 W at 20 A, and 37.5 W at the 25 A that BLUETTI says the Elite 200 V2 accepts. No result gives cost per foot of run either: about $1.46/ft for VEVOR against $3.05/ft for EcoFlow's 2.5 m XT60i cable.",
+ "standout": 1,
+ "standout_why": "I compared against the two pages ChatGPT cited (yourpowersetup.com and stormwatts.com/solar-panel-compatibility) and two uncited top results (ridgewatt.com/learn/solar-cables, powerstationtips.com/mc4-to-xt60-adapter-guide). The two cited pages give no gauge, loss or length figures at all. Ridgewatt already has a percent-loss table for 25 ft and 50 ft at 10, 12 and 14 AWG, but only for one 200 W panel at 9.9 A. Powerstationtips gives drop percentages at 6 A and 16–17 A. No page works out the loss for the specific cables ChatGPT showed, the loss at a 20–25 A port maximum, or price per foot of run. The loss method itself is not new, which is why this scores 1.",
+ "decides": "It confirms 10 AWG for long runs only when the current is high. At the 10 A a single 200 W panel delivers, the 30 ft VEVOR pair loses about 6 W, roughly 3%. At 20–25 A into an Elite 200 V2 class station it loses 24–37.5 W. The same run in 12 AWG would lose about 38 W at 20 A. For short leads, gauge barely matters and the connector decides the pick. EcoFlow's US store sells the XT60i version at 2.5 m, not the 3.5 m ChatGPT showed. The 3.5 m length is the older XT60 version. EcoFlow also lists a separate XT60i-to-LP60 cable for the DELTA Gen4 solar input, so the cable ChatGPT showed is not a direct fit for that newest line.",
+ "candidates": [
+  "VEVOR 30FT 10AWG Solar Panel Extension Cable (pair)",
+  "EcoFlow Solar to XT60/XT60i Charging Cable",
+  "BLUETTI Solar Charging Cable (20A MC4 to XT60)",
+  "Stäubli MC4 10AWG 2kV PV Extension Cable (The Solar Store)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Copper resistance, 10 / 12 / 14 AWG",
+   "value": "0.9989 / 1.588 / 2.525 Ω per 1000 ft",
+   "source": "https://en.wikipedia.org/wiki/American_wire_gauge",
+   "source_title": "American wire gauge – Wikipedia",
+   "read": "2026-11-13",
+   "note": "Solid copper at 20 °C. Stranded, tinned wire running hot in the sun will measure somewhat higher, so the losses below are minimums."
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Spec and US price",
+   "value": "2 × 30 ft (one red, one black), 10 AWG (6 mm²) tinned copper, 30 A, DC 1500 V, MC4 male/female, $43.90 set of 2",
+   "source": "https://www.vevor.com/category-c_10000/30ft-solar-panel-extension-wire-with-female-male-connectors-10awg-1-pair-p_010438829710",
+   "source_title": "VEVOR 30FT Solar Panel Extension Cable, 10AWG",
+   "read": "2026-11-13",
+   "note": "This is VEVOR's own store price. ChatGPT showed $49.90 from a retailer it did not name, and I did not verify that price."
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Loop resistance",
+   "value": "0.060 Ω",
+   "source": "https://en.wikipedia.org/wiki/American_wire_gauge",
+   "source_title": "American wire gauge – Wikipedia",
+   "read": "2026-11-13",
+   "note": "60 ft round trip × 0.9989 Ω/1000 ft = 0.0599 Ω"
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Watts lost at 10 A (one ~200 W panel)",
+   "value": "6.0 W",
+   "source": "https://www.vevor.com/category-c_10000/30ft-solar-panel-extension-wire-with-female-male-connectors-10awg-1-pair-p_010438829710",
+   "source_title": "VEVOR 30FT Solar Panel Extension Cable, 10AWG",
+   "read": "2026-11-13",
+   "note": "10² × 0.0599 Ω = 5.99 W. The 10 A is an assumed operating current for illustration."
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Watts lost at 20 A (BLUETTI 20A cable rating)",
+   "value": "24.0 W",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable ( 20A MC4 to XT60 ) – BLUETTI",
+   "read": "2026-11-13",
+   "note": "20² × 0.0599 Ω = 23.96 W"
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Watts lost at 25 A (BLUETTI Elite 200 V2 class solar input)",
+   "value": "37.5 W",
+   "source": "https://www.bluettipower.com/products/bluetti-xt60-to-mc4-solar-parallel-cable",
+   "source_title": "BLUETTI XT60 to MC4 Solar Parallel Cable",
+   "read": "2026-11-13",
+   "note": "BLUETTI's page lists the Elite 200 V2 among stations with 'up to 25 A solar input current'. 25² × 0.0599 Ω = 37.4 W"
+  },
+  {
+   "product": "general",
+   "label": "Same 30 ft pair in 12 AWG at 20 A, for comparison",
+   "value": "38.1 W",
+   "source": "https://en.wikipedia.org/wiki/American_wire_gauge",
+   "source_title": "American wire gauge – Wikipedia",
+   "read": "2026-11-13",
+   "note": "60 ft × 1.588 Ω/1000 ft = 0.0953 Ω. 20² × 0.0953 = 38.1 W, about 14 W more than 10 AWG."
+  },
+  {
+   "product": "VEVOR 30FT 10AWG Solar Panel Extension Cable",
+   "label": "Cost per foot of run",
+   "value": "$1.46/ft",
+   "source": "https://www.vevor.com/category-c_10000/30ft-solar-panel-extension-wire-with-female-male-connectors-10awg-1-pair-p_010438829710",
+   "source_title": "VEVOR 30FT Solar Panel Extension Cable, 10AWG",
+   "read": "2026-11-13",
+   "note": "$43.90 / 30 ft = $1.463 per foot of panel-to-station distance (pair included)"
+  },
+  {
+   "product": "EcoFlow Solar to XT60/XT60i Charging Cable",
+   "label": "US price and length by version",
+   "value": "$24.99. XT60i version is 2.5 m (8.2 ft); XT60 version is 3.5 m (11.48 ft)",
+   "source": "https://us.ecoflow.com/products/solar-charging-cable",
+   "source_title": "EcoFlow Solar to XT60/XT60i Charging Cable",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search on us.ecoflow.com. ChatGPT's card said 'MC4 to XT60i | 3.5m', but EcoFlow US lists XT60i at 2.5 m. No wire gauge is published."
+  },
+  {
+   "product": "EcoFlow Solar to XT60/XT60i Charging Cable",
+   "label": "Cost per foot of run (XT60i version)",
+   "value": "$3.05/ft",
+   "source": "https://us.ecoflow.com/products/solar-charging-cable",
+   "source_title": "EcoFlow Solar to XT60/XT60i Charging Cable",
+   "read": "2026-11-13",
+   "note": "$24.99 / 8.2 ft = $3.05 per foot"
+  },
+  {
+   "product": "EcoFlow Solar Charging Cable (XT60i to LP60)",
+   "label": "DELTA Gen4 solar input needs a different cable",
+   "value": "$39.00, listed as 'Coming Soon' (not available)",
+   "source": "https://us.ecoflow.com/products/ecoflow-solar-charging-cable-xt60i-to-lp60",
+   "source_title": "EcoFlow Solar Charging Cable (XT60i to LP60)",
+   "read": "2026-11-13",
+   "note": "EcoFlow says this cable connects panels with XT60 leads to 'the LP60 solar input on DELTA Gen4'. Read through storecheck.py search."
+  },
+  {
+   "product": "BLUETTI Solar Charging Cable (20A MC4 to XT60)",
+   "label": "US price and rating",
+   "value": "$29.00, 20 A, MC4 to XT60, for Apex 300 / Elite 100 V2 / Elite 200 V2 / Elite 300 / Elite 400",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable ( 20A MC4 to XT60 ) – BLUETTI",
+   "read": "2026-11-13",
+   "note": "The page gives no length or gauge, so I could not work out cost per foot or watts lost. BLUETTI's 1.2 m parallel cable is listed at 12 AWG, 25 A."
+  }
+ ],
+ "unsourced": [
+  "Stäubli MC4 10AWG 2kV extension at The Solar Store ($14.20 on ChatGPT's card). The product page and storecheck both returned HTTP 429 three times. A search snippet suggests $14.20 buys one 1 ft single conductor, which would mean about $28/ft of run, but I could not open the page to confirm it.",
+  "Wire gauge of the EcoFlow MC4-to-XT60/XT60i cable. Neither the EcoFlow US store text nor retailer listings state it, so I could not calculate its watts lost.",
+  "Length and gauge of the BLUETTI 20A MC4-to-XT60 cable. Not stated on bluettipower.com.",
+  "Gauge, rated current and US price of the Jackery DC Extension Cable 5 m and 10 m (DC8020). Jackery's FAQ pages give only length, weight and compatible models.",
+  "EcoFlow DELTA 3 Plus per-port solar current from the maker page. us.ecoflow.com returned HTTP 429.",
+  "The $49.90 VEVOR price ChatGPT showed. The retailer was not named and I did not open Best Buy."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.8737756999999999
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a measured lab study (Bern University of Applied Sciences, with Stäubli as partner, 2021–2023) found MC4 contact resistance above the 5 mΩ limit for new connectors only where plugs from different makers were mated together, with one cross-mated pair above 45 mΩ, while same-brand MC4 pairs read low.",
+ "standout": 2,
+ "standout_why": "I read the cited yourpowersetup.com guide ('Not a hands-on review', no measurements), the cited stormwatts.com compatibility article (no cable or connector measurements), stormwatts brand-vs-third-party ('We have not tested any of these panels, cables, or stations'), powerstationtips.com MC4-to-XT60 guide (only calculated drop, e.g. 1.1 V on 50 ft of 14 AWG, and no mention of mixing MC4 brands) and ridgewatt.com (a calculated loss table, e.g. 4.9% for 50 ft of 10 AWG vs 7.8% for 12 AWG at 20.2 V). None of them reports a measured figure, and none mentions that mating MC4 plugs from different makers raises contact resistance. Every rival treats 'MC4' as one interchangeable standard.",
+ "decides": "This supports ChatGPT's top pick, the 10 AWG extension with genuine Stäubli MC4 plugs, but adds a condition no rival states: it only helps if the panel's own lead also has genuine Stäubli MC4 plugs. If the panel has generic 'MC4-compatible' plugs, the lower-risk choice is an extension or MC4-to-XT60(i) cable whose plugs come from the same maker as the panel's, often the station maker's own cable (EcoFlow MC4 to XT60i, BLUETTI MC4 to XT60). The arithmetic: 10 A through a 45 mΩ mated pair turns about 4.5 W into heat at that one joint, versus 0.5 W or less at the 5 mΩ limit. For gauge, no named reviewer has measured 10 AWG against 12 AWG, so that choice still rests on calculations.",
+ "candidates": [
+  "Stäubli MC4 10 AWG PV extension cable (seller not named in ChatGPT's card, $14.20)",
+  "EcoFlow MC4 to XT60i Solar Cable 3.5 m",
+  "VEVOR 30 ft 10 AWG solar extension cable",
+  "BLUETTI Solar Charging Cable 20 A MC4 to XT60",
+  "Renogy 20 ft 10 AWG solar extension cable"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Contact resistance, cross-mated vs same-system PV connectors (Bern University of Applied Sciences study)",
+   "value": "Readings above 5 mΩ, the IEC 62852 limit for new connectors, occurred only in cross-connections. One cross-connection measured above 45 mΩ and was too deformed to separate. MC4 pairs showed low values with few outliers.",
+   "source": "https://www.bfh.ch/ahb/en/research/reference-projects/pv-connectors/",
+   "source_title": "Long-term behaviour of PV connectors – BFH",
+   "read": "2026-11-13",
+   "note": "Project 'Long-term behaviour of PV connectors', planned 2021-07-01 to 2023-06-30, led by Matthias Burri with Luciano Borgna, partner Stäubli Electrical Connectors AG. The page mentions installed plants (one near a sewage treatment works, where high values were linked to heating under load), so this looks like a field study. The page gives no mΩ figure for typical same-brand pairs and no connector count. Arithmetic: P = I²R, so at 10 A 45 mΩ gives 4.5 W and 5 mΩ gives 0.5 W per mated pair. The funding partner makes the original MC4, so the source is not independent of Stäubli."
+  },
+  {
+   "product": "general",
+   "label": "Measured end-to-end loss of a solar extension cable on a power station",
+   "value": "No rival page contains one. powerstationtips.com gives a calculated 1.1 V loss on 50 ft of 14 AWG (about 6% at 18 V), and ridgewatt.com gives calculated losses of 4.9% for 50 ft of 10 AWG and 7.8% for 50 ft of 12 AWG at 9.9 A / 20.2 V.",
+   "source": "https://ridgewatt.com/learn/solar-cables/",
+   "source_title": "Solar cables: which one connects your panel to your station",
+   "read": "2026-11-13",
+   "note": "These are calculations from copper resistance at 20 °C (0.9989 Ω/1000 ft for 10 AWG, 1.588 for 12 AWG), not measurements. They show the comparison baseline the measured finding has to beat."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer or lab measuring voltage drop or watts lost on any specific MC4 extension or MC4-to-XT60/XT60i/DC8020 cable (EcoFlow, BLUETTI, VEVOR, Renogy, Stäubli-equipped). I searched RTINGS-style labs, Will Prowse, Hobotech, Project Farm and review sites, and found only calculators and vendor copy.",
+  "Measured comparison of 10 AWG vs 12 AWG solar extensions on a power station. The Bluetti community forum thread with a user's 12 AWG test now redirects to forum.bluettipower.com, and diysolarforum.com returned 403. Threads on irv2.com, fiberglassrv.com and forestriverforums.com contain only calculations or readings without cable length or a baseline.",
+  "Measured conductor size or copper-clad-aluminum teardown of VEVOR or other budget '10 AWG' extensions. I found only buyer-review anecdotes, no named tester.",
+  "DEKRA cross-mating report with MC4 contact-resistance values (hollandsolar.nl PDF). It is encrypted and text extraction was not approved in this session, so I have no figures from it.",
+  "Stäubli's cross-connection page and the Solar Builder cross-mating article both returned 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0196758000000001
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that MC4 is a Stäubli connector family whose maker says Original MC4 and MC4-EVO 2 must never be mated with other makers' 'MC4-compatible' connectors. Mismatched pairs can 'cause cracks, leakage, and increased contact resistance … at worst … a fire'. The 2020 NEC 690.33(C) allows non-identical connectors only if they are 'listed and identified for intermatability'. So a premium genuine-Stäubli extension does not guarantee an approved connection on a portable panel whose maker names no MC4 brand.",
+ "standout": 2,
+ "standout_why": "I compared against both cited pages (yourpowersetup.com, stormwatts.com compatibility) and the top uncited ones (ridgewatt.com, powerstationtips.com, stormwatts brand-vs-third-party, backup-power.org). They cover connector-to-port matching, XT60 vs XT60i, polarity, voltage drop by wire gauge, and cold-weather Voc. I checked each fetched page for cross-mating, Stäubli, UL 6703 and NEC 690.33, and none mentions any of them. ChatGPT's #1 pick was described as 'Genuine Stäubli MC4 connectors' and presented as the quality choice, with no warning about mating it with a panel's own connectors.",
+ "decides": "This changes the pick. For the run from a portable panel to the station, the cable to buy is the panel or station maker's own extension and adapter, because those are sold as matched to that maker's panels. For BLUETTI SORA panels that is the BLUETTI Solar Extension Cable (30 A, MC4 male + female, $59) plus the BLUETTI 20 A MC4-to-XT60 cable ($29). A genuine-Stäubli 10 AWG extension is the right pick only when the panel's own leads are genuine Stäubli MC4. Otherwise Stäubli's own instructions rule out that mating, so the higher price buys no certainty at the panel joint.",
+ "candidates": [
+  "BLUETTI Solar Extension Cable (MC4, 5 m / 10 m)",
+  "BLUETTI Solar Charging Cable 20A MC4 to XT60",
+  "Stäubli MC4 10AWG 2kV PV extension cable (ChatGPT pick)",
+  "EcoFlow MC4 to XT60i Solar Cable 3.5m",
+  "VEVOR 30ft 10 AWG Solar Extension Cable"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Connector maker's position on cross-mating MC4 with other makers' connectors",
+   "value": "\"Cross-mating of connectors can cause cracks, leakage, and increased contact resistance of the connection system… often results in connector failures, power loss, and safety hazards. At worst, this damage may even lead to a fire.\"",
+   "source": "https://altenergymag.com/article/2022/04/avoid-cross-mating-of-pv-connectors/37093",
+   "source_title": "Avoid Cross-mating of PV Connectors (Stäubli Electrical Connectors, Inc., AltEnergyMag, 2022-04-21)",
+   "read": "2026-11-13",
+   "note": "Stäubli, the company that makes MC4, wrote this article. It cites IEC 60364-7-712:2017: 'male and female connectors […] shall be of the same type from the same manufacturer'. It also cites IEC 62852 and UL 6703. It gives no contact-resistance or temperature figures."
+  },
+  {
+   "product": "general",
+   "label": "US code rule for mating PV connectors of different brands",
+   "value": "2020 NEC 690.33(C): \"Where mating connectors are not of the identical type and brand, they shall be listed and identified for intermatability\", used \"as described in the manufacturer's instructions\"",
+   "source": "https://www.advancedenergy.org/news/mismatched-connectors-are-a-common-cause-of-safety-and-reliability-issues-in-solar-installations",
+   "source_title": "Mismatched Connectors Are a Common Cause of Safety and Reliability Issues in Solar Installations (Advanced Energy, Colin Thompson, 2023-11-01)",
+   "read": "2026-11-13",
+   "note": "This is a secondary quote of the NEC text, because the NFPA text sits behind a login. Advanced Energy names the mechanism: 'slight differences in dimensions and materials can cause resistance, leading to heat buildup and eventual failed connections', and mismatched pairs 'may work at first'. NEC rules apply to installations. A portable panel on the ground is a use case that rule does not clearly reach, so present this as a safety rule, not a legal requirement for campers."
+  },
+  {
+   "product": "BLUETTI Solar Extension Cable",
+   "label": "Connectors, current rating, lengths, price, panel compatibility",
+   "value": "MC4 (male + female), max current 30 A, 5 m / 10 m, $59.00 (compare-at $79.00), in stock; 'Compatible with all BLUETTI solar panels, including the SORA 130, SORA 220, and SORA 500'",
+   "source": "https://www.bluettipower.com/products/bluetti-solar-extension-cable",
+   "source_title": "BLUETTI Solar Extension Cable – BLUETTI US store",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on bluettipower.com, which returns the Shopify product JSON and description. The listing gives one price for both lengths."
+  },
+  {
+   "product": "BLUETTI Solar Charging Cable 20A MC4 to XT60",
+   "label": "Price and availability",
+   "value": "$29.00, in stock, rated 20 A (in the product title)",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable (20A MC4 to XT60) – BLUETTI US store",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py product. The product JSON has no description text, so the compatible station list could not be read (WebFetch returned HTTP 429)."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "Panel connector as the maker describes it",
+   "value": "\"Compatible With Most Solar Generators with MC4 Connectors\" (no MC4 maker named); $399.00",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel – BLUETTI US store",
+   "read": "2026-11-13",
+   "note": "Shows that a portable-panel maker describes its plugs only as 'MC4', not as Stäubli Original MC4. So a buyer cannot assume that a genuine-Stäubli extension is a same-maker match for these leads."
+  }
+ ],
+ "unsourced": [
+  "Price and specs of ChatGPT's '10AWG 2kV PV Extension Cable With Stäubli MC4' at thesolarstore.com: the store returned HTTP 429 to both storecheck and WebFetch, solartown.com returned 403, and I did not use the $14.20 from a search snippet.",
+  "Stäubli's own wording ('NEVER connect Stäubli connectors with connectors from other manufacturers') from its MC4 assembly instructions and its PV connector product-liability statement: the staubli.com pages returned 403, and the PDFs were encrypted or compressed so WebFetch could not read them. Running pdftotext locally needed approval I didn't have.",
+  "Which MC4 maker supplies the leads on BLUETTI SORA, EcoFlow, ALLPOWERS SP037 or Growatt 200 W panels: no maker product page I opened names one.",
+  "The official 2020/2023/2026 NEC 690.33(C) wording, which is on NFPA's login-only site. I used Advanced Energy's quote of it.",
+  "The EcoFlow RIVER manual's solar-input section: the PDF did not convert to text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1688435000000004
+ }
+}
