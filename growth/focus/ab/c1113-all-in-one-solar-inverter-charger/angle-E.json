@@ -1,0 +1,109 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured idle draw or surge result for any candidate. The Solar Lab measured the EG4 12000XP idling at 107 W (2.1 A from the battery), compared with the 70 W on EG4's datasheet. It measured the Sol-Ark 15K at 97 W in standby and the EG4 FlexBOSS21 at about 65 W. It also got only 7.3–7.5 kW of surge for 3–5 s from the EG4 6000XP, which is rated for 12 kW.",
+ "standout": 2,
+ "standout_why": "I read the four cited pages. EG4's 12000XP product page has no idle, efficiency or test figures. Current Connected's EG4 page gives none, only an unattributed noise claim for the FlexBOSS18 ('Under 50 dB on the wall'). Eco Solar Kits' EG4 vs Sol-Ark page (updated 2026-10-24) has no idle or noise figures, and its only efficiency number is a 0.95 assumption used in a calculation. The cited manual is a PDF I could not read here. I also read two uncited top results. Signature Solar Solutions' EG4 comparison lists datasheet idle values (6000XP 50 W, 12000XP 70 W, FlexBOSS21 65 W) and says 'Every cell is a datasheet value.' WildJoule says it 'has not installed or tested these inverters.' None of these pages has a measurement from a named tester.",
+ "decides": "These measurements leave the hybrid pick (FlexBOSS21) in place: The Solar Lab's ~65 W reading matches its datasheet. For off-grid buyers they work against the 12000XP. Its measured 107 W idle works out to about 2.57 kWh a day from the battery. That is about 0.9 kWh more than the 70 W datasheet figure ChatGPT's sources imply, and about 1 kWh a day more than the FlexBOSS21. They also cast doubt on choosing the 6000XP for large motor loads, because its measured surge was far below the 12 kW rating. The Sol-Ark 15K's 97 W standby draw counts against it for battery-only use but matters little on the grid.",
+ "candidates": [
+  "EG4 6000XP",
+  "EG4 12000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P"
+ ],
+ "findings": [
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle draw, measured by The Solar Lab",
+   "value": "107 W (2.1 A from battery)",
+   "source": "https://www.thesolarlab.com/review/eg4-12-000xp-inverter-review",
+   "source_title": "EG4 12000XP Inverter Review: The Ultimate Off-Grid Power Solution? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page says 'We measured it at 107W (2.1A from battery)' and that idle 'usually' sat around that level. It gives no battery voltage, operating mode or PV status, and names no author or publish date (footer © 2026). 107 W × 24 h = 2.57 kWh/day."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Overload plus surge, measured by The Solar Lab",
+   "value": "Shut down after about 30 s while running a 10,800 W load and starting a compressor that surges at about 10,000 W; ran a balanced 12,000 W load 'all day long'",
+   "source": "https://www.thesolarlab.com/review/eg4-12-000xp-inverter-review",
+   "source_title": "EG4 12000XP Inverter Review: The Ultimate Off-Grid Power Solution? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Reported by the reviewers with no test equipment stated. They described noise only as 'fairly loud' under heavy load and gave no dB figure."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle draw, datasheet (for comparison)",
+   "value": "70 W",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw (Signature Solar Solutions)",
+   "read": "2026-11-13",
+   "note": "The page says every cell is a datasheet value and that it uses the highest idle value where a datasheet lists several. Page updated 2026-09-13. The Solar Lab's 107 W reading is 37 W (53%) above this."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle draw, measured by The Solar Lab",
+   "value": "about 65 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS 21: Which Hybrid Solar Inverter is Best? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page says the FlexBOSS 21 'consumed about 65 watts during our idle consumption tests' and gives no test conditions. This matches the 65 W datasheet value on Signature Solar Solutions' comparison. 65 W × 24 h = 1.56 kWh/day."
+  },
+  {
+   "product": "Sol-Ark 18K (reference, not a ChatGPT candidate)",
+   "label": "Idle draw, measured by The Solar Lab",
+   "value": "roughly 108 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS 21: Which Hybrid Solar Inverter is Best? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Measured in the same test as the FlexBOSS21 figure. The page also puts 108 W in its spec table, so it is unclear whether 108 W is a measurement or the rated figure."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle draw in standby, measured by The Solar Lab",
+   "value": "97 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K hybrid inverter review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page says the unit 'seemed to have an idle draw of 97W when it was in standby' and gives no meter or method. The reviewers also started a compressor with a 10,000 W surge twice while the inverter was at maximum rated load, and noted a 'noticeable high-frequency inverter whine'. 97 W × 24 h = 2.33 kWh/day."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle current, measured by The Solar Lab",
+   "value": "0.9–1.2 A",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review: Is it the Ultimate All-in-One Solar Power Solution? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page says idle 'floated between 0.9 to 1.2 amps' and that this matches the 50 W spec. It gives no voltage. At a 51.2 V nominal LiFePO4 bank this would be about 46–61 W, but that is my estimate, not their figure."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge, measured by The Solar Lab",
+   "value": "7.3–7.5 kW for 3–5 s (rated 12,000 W for about 3.5 s); held 6.25 kW before tripping",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review: Is it the Ultimate All-in-One Solar Power Solution? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The page gives no trip time and no load or equipment details. It also reports passing through about 2,000 W each from solar and AC inputs."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw, datasheet (for comparison)",
+   "value": "50 W",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw (Signature Solar Solutions)",
+   "read": "2026-11-13",
+   "note": "Datasheet value as reproduced by Signature Solar Solutions (highest listed idle value)."
+  }
+ ],
+ "unsourced": [
+  "A measured idle or efficiency figure for any candidate from Will Prowse, Off-Grid Garage or a magazine lab: searches for Prowse's 6000XP and 12000XP measurements found no written figure.",
+  "Measured noise in dB for any candidate: the EG4 forum thread on noise (opened) has no dB readings, and The Solar Lab describes noise only in words.",
+  "Measured conversion or MPPT efficiency for any candidate: none of The Solar Lab pages report it.",
+  "Sol-Ark's own rated idle draw for the 15K-2P, and EG4's own idle footnotes for the 12000XP, 6000XP and FlexBOSS21: the datasheet PDFs (Sol-Ark 15K-2P datasheet; EG4 spec sheets on eg4electronics.com and signaturesolar.com) downloaded but came back as unreadable compressed text, and local PDF extraction was not permitted.",
+  "Test dates and author names for The Solar Lab reviews: the pages show only '© 2026 The Solar Lab'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8692538
+ }
+}

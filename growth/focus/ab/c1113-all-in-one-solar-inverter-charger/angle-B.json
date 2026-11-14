@@ -1,0 +1,136 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states the daily idle energy of the Sol-Ark 15K-2P next to the EG4 units: 90 W × 24 h = 2.16 kWh/day, against 1.56 kWh/day for the EG4 FlexBOSS21 at the same 12 kW battery-only rating. That is 0.6 kWh/day more, or 219 kWh/year, for a unit that costs about $2,050 more.",
+ "standout": 2,
+ "standout_why": "I compared against ecosolarkits.com/blogs/guides/eg4-vs-sol-ark (cited), currentconnected.com/eg4-inverters (cited), the EG4 12000XP product page (cited), signaturesolarsolutions.com/eg4-inverters-compared (uncited) and wildjoule.com/best-hybrid-inverter (uncited). The two cited comparison pages give no idle or no-load figure for any model. Ecosolarkits already has price per battery-only kW ('about $470-$480 per kW' for the Sol-Ark 12K/15K), so cost per kW is not new. Signaturesolarsolutions lists EG4 idle watts only, tells the reader to 'multiply by 24 hours' and never does it, and has no Sol-Ark. Wildjoule converts idle to kWh/day only for the EG4 18kPV (not a candidate here) and says 'Not stated' for Sol-Ark 15K idle. No page puts Sol-Ark and EG4 standing losses side by side in kWh/day.",
+ "decides": "This backs ChatGPT's 'Best hybrid value' FlexBOSS21 over the 'premium' Sol-Ark 15K. Both deliver 12 kW on battery alone, but the Sol-Ark costs about $2,050 more ($5,650 vs $3,599.99 at Eco Solar Kits, 2026-10-24) and uses 0.6 kWh/day more just sitting on. For off-grid buyers the 6000XP has the lowest standing loss (1.20 kWh/day). Dealectric's own Sun Gold Power SPH6548P is the cheapest per kW at $159 per kW of rated output, but I could not source its idle draw, so the page cannot rank it on standing loss.",
+ "candidates": [
+  "EG4 6000XP",
+  "EG4 12000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P-N",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "Sol-Ark 15K-2P-N",
+   "label": "Idle energy per day",
+   "value": "2.16 kWh/day (788 kWh/yr)",
+   "source": "https://www.energysage.com/equipment/solar-inverters/sol-ark-llc/15k-2p-n-c18d38ab/",
+   "source_title": "\"Sol-Ark, LLC\" Sol Ark 15K 2P-N | EnergySage",
+   "read": "2026-11-13",
+   "note": "EnergySage lists 'Night Tare Loss 90W'. 90 W × 24 h = 2,160 Wh/day; × 365 = 788 kWh/yr. I could not decode the Sol-Ark datasheet PDF (SK150-0001 Rev5), so this comes from EnergySage's equipment database, not the maker page."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle energy per day",
+   "value": "1.56 kWh/day (569 kWh/yr)",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw",
+   "read": "2026-11-13",
+   "note": "The page lists 65 W as the worst-case idle draw from its datasheet table. 65 W × 24 h = 1,560 Wh/day; × 365 = 569 kWh/yr. EG4's own spec-sheet PDF would not decode, so this comes from the third-party page."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle energy per day",
+   "value": "1.68 kWh/day (613 kWh/yr)",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw",
+   "read": "2026-11-13",
+   "note": "70 W (worst listed) × 24 h = 1,680 Wh/day; × 365 = 613 kWh/yr. EG4's product page (read 2026-11-13) gives no idle figure."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle energy per day",
+   "value": "1.20 kWh/day (438 kWh/yr)",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw",
+   "read": "2026-11-13",
+   "note": "50 W (worst listed) × 24 h = 1,200 Wh/day; × 365 = 438 kWh/yr. The lowest standing loss of the candidates."
+  },
+  {
+   "product": "Sol-Ark 15K-2P-N",
+   "label": "Idle draw per kW of battery-only output",
+   "value": "7.5 W per kW",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "90 W (EnergySage) ÷ 12 kW battery-only (Eco Solar Kits) = 7.5 W/kW. FlexBOSS21: 65 W ÷ 12 kW = 5.4 W/kW. 12000XP: 70 W ÷ 12 kW = 5.8 W/kW. 6000XP: 50 W ÷ 6 kW = 8.3 W/kW."
+  },
+  {
+   "product": "Sol-Ark 15K-2P-N",
+   "label": "Extra idle energy vs FlexBOSS21",
+   "value": "0.60 kWh/day (219 kWh/yr)",
+   "source": "https://www.energysage.com/equipment/solar-inverters/sol-ark-llc/15k-2p-n-c18d38ab/",
+   "source_title": "\"Sol-Ark, LLC\" Sol Ark 15K 2P-N | EnergySage",
+   "read": "2026-11-13",
+   "note": "(90 W − 65 W) × 24 h = 600 Wh/day; × 365 = 219 kWh/yr. The 65 W FlexBOSS21 figure is from signaturesolarsolutions.com."
+  },
+  {
+   "product": "Sol-Ark 15K-2P-N",
+   "label": "Price per kW of battery-only output",
+   "value": "$471/kW",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "The page's price as of 2026-10-24 is $5,650. $5,650 ÷ 12 kW = $471/kW. The cited rival already shows this; ChatGPT's card showed $5,750 (retailer not named)."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Price per kW of battery-only output",
+   "value": "$300/kW",
+   "source": "https://www.currentconnected.com/eg4-inverters",
+   "source_title": "EG4 Inverters: Hybrid & Off-Grid | Current Connected",
+   "read": "2026-11-13",
+   "note": "$3,599.99 ÷ 12 kW (battery alone, as Current Connected lists it) = $300/kW. Eco Solar Kits shows the same price."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Price per kW of rated output",
+   "value": "$250/kW",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "$1,499 (as of 2026-10-24) ÷ 6 kW = $250/kW. Current Connected lists it at $1,449.99 but out of stock."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Price per kW of rated output",
+   "value": "$175/kW",
+   "source": "https://www.currentconnected.com/eg4-inverters",
+   "source_title": "EG4 Inverters: Hybrid & Off-Grid | Current Connected",
+   "read": "2026-11-13",
+   "note": "$2,099.99 ÷ 12 kW = $175/kW. Current Connected marks it out of stock, so this price may not be available to buy."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Price per kW of rated output",
+   "value": "$159/kW",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P | Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Maker store price today is $1,035.00 (compare-at $4,526), in stock. Rated output 6,500 W. $1,035 ÷ 6.5 kW = $159/kW. The maker page also states a 2-MPPT built-in solar controller, 550 VDC Voc and 'UL 1741 by ETL for Off Grid'."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Weight",
+   "value": "104.7 lb",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-12000xp/",
+   "source_title": "EG4® 12000XP - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "As stated on the maker product page. The 12 kW model gives 12 kW ÷ 104.7 lb = 0.115 kW/lb."
+  }
+ ],
+ "unsourced": [
+  "Idle and no-load draw for the EG4 6000XP, 12000XP and FlexBOSS21 from EG4's own documents: the spec-sheet PDFs on eg4electronics.com would not decode (PDF text extraction needed approval), and the 6000XP and FlexBOSS21 product pages returned 404. I used signaturesolarsolutions.com's 'worst listed' figures instead. A search snippet suggested an older FlexBOSS21 manual gave <80 W normal / <60 W standby, but I did not open it.",
+  "Sol-Ark 15K-2P idle draw from Sol-Ark's own datasheet: the SK150-0001 Rev5 PDF would not decode. Retailer pages (offgridsource, kratopower, shopsolarkits) returned HTTP 429. I used EnergySage's 'Night Tare Loss 90W' instead.",
+  "Sun Gold Power SPH6548P no-load consumption: the maker product text returned by storecheck has no idle, tare, consumption or efficiency line.",
+  "Today's maker-store prices for the EG4 units and the Sol-Ark 15K: signaturesolar.com storecheck search returned 404, eg4electronics.com shows no price, and shopsolarkits.com returned 429. The prices used are retailer prices read 2026-11-13 (Eco Solar Kits dated 2026-10-24, Current Connected undated)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8609461000000003
+ }
+}

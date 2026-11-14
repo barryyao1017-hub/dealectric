@@ -1,0 +1,191 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Sol-Ark 15K, EG4 FlexBOSS21 and EG4 12000XP are all 12 kW inverters when running on battery alone. On that common basis the Sol-Ark costs about $479 per battery-only kW, against about $300 for the FlexBOSS21 and $175 for the 12000XP. The Sol-Ark is also the only one of the three with a published surge length that holds 2× its battery-only rating for 10 s; the 6000XP's 2× surge lasts about 3.5 s.",
+ "standout": 1,
+ "standout_why": "ecosolarkits.com/blogs/guides/eg4-vs-sol-ark (cited) already gives battery-only output for both hybrids (FlexBOSS21 12 kW, Sol-Ark 15K 12 kW). It also has a footnote saying surge durations differ by brand (0.5 s, 10 s, 10 min), but it shows the FlexBOSS21 surge only as 'see spec sheet' and has no prices or idle draw. currentconnected.com/eg4-inverters (cited) has EG4 prices and the FlexBOSS21's 12 kW battery-only figure, but nothing for Sol-Ark, no surge and no idle draw. liveoffthegrid.com/specs/inverters (rank 1, not cited) has idle watts (Sol-Ark 15K 90 W, 6000XP 50 W), but it lists the Sol-Ark at its 15,000 W with-solar figure as if it were continuous, with no battery-only split. signaturesolarsolutions.com (rank 8) has worst-case idle watts for the EG4 models only. None of them puts price and idle draw on a battery-only, per-day basis, or gives surge as a multiple of output with its duration. The pieces are spread across rival pages, so the finding is mostly arithmetic on figures they already publish.",
+ "decides": "This confirms the cheaper picks and weakens the case for the Sol-Ark. ChatGPT's cards frame the Sol-Ark 15K as '15 kW' and the FlexBOSS21 as '16 kW', but both figures need solar running. On battery at night, all three larger units deliver 12 kW. The Sol-Ark's $2,150 premium over the FlexBOSS21 buys a documented 10 s surge (24 kVA), 200 A pass-through and 275 A battery current. It also brings the highest published idle draw: 90 W, about 2.2 kWh/day. For an off-grid buyer, the 12000XP gives the same 12 kW on battery for $175/kW, with no export. Its surge is unpublished, so a motor-start claim cannot be compared.",
+ "candidates": [
+  "EG4 6000XP",
+  "EG4 12000XP",
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P"
+ ],
+ "findings": [
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Continuous AC output, with solar vs battery only",
+   "value": "15 kW with solar; 12 kW from batteries alone",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N (Limitless 15K-LV) | Current Connected",
+   "read": "2026-11-13",
+   "note": "Page text: '15kW continuous with solar and 12kW from batteries alone'. Sol-Ark's own product URL returned 404. Retailer listing, not the maker."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Off-grid surge and duration",
+   "value": "24,000 VA for 10 s; 30,000 VA for 100 ms",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N (Limitless 15K-LV) | Current Connected",
+   "read": "2026-11-13",
+   "note": "24 kVA / 12 kW battery-only = 2.0× for 10 s, or 1.6× the 15 kW with-solar figure."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle draw (energized, not inverting or charging)",
+   "value": "90 W (about 2.2 kWh/day)",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N (Limitless 15K-LV) | Current Connected",
+   "read": "2026-11-13",
+   "note": "90 W × 24 h = 2.16 kWh/day. The page's FAQ gives about 2.2 kWh/day."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "PV and battery current",
+   "value": "19.5 kW usable PV, 3 MPPTs at 26 A operating each; 275 A battery charge/discharge",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N (Limitless 15K-LV) | Current Connected",
+   "read": "2026-11-13",
+   "note": "The page says 19.5 kW of solar can carry 15 kW of loads and put about 4.5 kW into the batteries. 275 A × 48 V = 13.2 kW, which covers the 12 kW battery-only rating."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Price",
+   "value": "$5,750.00",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N (Limitless 15K-LV) | Current Connected",
+   "read": "2026-11-13",
+   "note": "Matches ChatGPT's card price. $5,750 / 12 kW battery-only = $479 per kW."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Continuous AC output, with solar vs battery only",
+   "value": "16 kW with solar; 12 kW on battery alone",
+   "source": "https://signaturesolar.com/eg4-flexboss21-v1-1-hybrid-inverter-48v-split-phase-21kw-pv-input/",
+   "source_title": "EG4 FlexBOSS21 V1.1 Hybrid Inverter 48V Split Phase 21kW PV Input | Signature Solar",
+   "read": "2026-11-13",
+   "note": "Page text: '16kW of continuous output power/12kW continuous output by using battery alone'. Signature Solar is EG4's US seller. EG4's own FlexBOSS21 URL returned 404."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Price",
+   "value": "$3,599.99 (sale; list $4,199.00)",
+   "source": "https://signaturesolar.com/eg4-flexboss21-v1-1-hybrid-inverter-48v-split-phase-21kw-pv-input/",
+   "source_title": "EG4 FlexBOSS21 V1.1 Hybrid Inverter 48V Split Phase 21kW PV Input | Signature Solar",
+   "read": "2026-11-13",
+   "note": "Same price on currentconnected.com/eg4-inverters. $3,599.99 / 12 kW battery-only = $300 per kW."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "PV input, usable vs max, and per-MPPT current",
+   "value": "21 kW usable / 24 kW max input; 3 MPPTs rated 26 A / 26 A / 15 A",
+   "source": "https://muhammed.portlandiaelectric.supply/pages/specs-flexboss21",
+   "source_title": "EG4 Electronics FlexBOSS21: Specs & Datasheet | Portlandia Electric Supply",
+   "read": "2026-11-13",
+   "note": "The third MPPT takes 15 A, so it is the small string. The page says its figures come from supplier listing data."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle draw, worst listed",
+   "value": "65 W (about 1.56 kWh/day)",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw",
+   "read": "2026-11-13",
+   "note": "The page shows the highest figure where a sheet lists several. 65 W × 24 h = 1.56 kWh/day."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Rated AC output and the PV-assisted variant",
+   "value": "12 kW at 120/240 VAC (IV-12000-XP-IN-1); 15 kW only 'with solar and battery present' (IV-15000-XP-IN-1)",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-12000xp/",
+   "source_title": "EG4® 12000XP - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "Maker page. signaturesolarsolutions.com puts the 12 kW model at 12,000 W without solar, so 12 kW is its battery-only figure. The 15 kW variant uses the same PV-assisted rating method as the FlexBOSS21 and Sol-Ark."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "PV input, per-MPPT current, bypass, warranty",
+   "value": "24 kW PV; 2 MPPTs at 35 A / 35 A; 100 A grid pass-through; 5-year warranty",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-12000xp/",
+   "source_title": "EG4® 12000XP - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "The page gives no surge figure, only that it 'Can start a 5-ton AC without a soft start'. Generator input is shown as 63 A in the spec list and 90 A in the body text, so the page contradicts itself."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Price",
+   "value": "$2,099.99 (out of stock)",
+   "source": "https://www.currentconnected.com/eg4-inverters",
+   "source_title": "EG4 Inverters: Hybrid & Off-Grid | Current Connected",
+   "read": "2026-11-13",
+   "note": "Cited by ChatGPT. $2,099.99 / 12 kW = $175 per kW."
+  },
+  {
+   "product": "EG4 12000XP",
+   "label": "Idle draw, worst listed",
+   "value": "70 W (about 1.68 kWh/day)",
+   "source": "https://signaturesolarsolutions.com/eg4-inverters-compared/",
+   "source_title": "EG4 Inverters Compared: Output, Solar Input, Idle Draw",
+   "read": "2026-11-13",
+   "note": "Highest listed figure. 70 W × 24 h = 1.68 kWh/day."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge and duration",
+   "value": "12,000 W for about 3.5 s",
+   "source": "https://www.currentconnected.com/product/eg4-6000xp-inverter/",
+   "source_title": "EG4 6000XP Inverter | Current Connected",
+   "read": "2026-11-13",
+   "note": "2.0× its 6 kW rating, but for 3.5 s against the Sol-Ark's 10 s. EG4's own 6000XP URL returned 404. Retailer listing."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw by source",
+   "value": "under 30 W on solar; about 50 W on battery (about 1.2 kWh/day on battery)",
+   "source": "https://www.currentconnected.com/product/eg4-6000xp-inverter/",
+   "source_title": "EG4 6000XP Inverter | Current Connected",
+   "read": "2026-11-13",
+   "note": "Idle draw depends on the power source, which single-number tables hide. 50 W × 24 h = 1.2 kWh/day."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "PV and battery limits",
+   "value": "8,000 W usable PV (4,000 W per input), arrays to 10,000 W; 17 A usable per MPPT, 120–385 V tracking, 480 V max; 140 A discharge, up to 125 A charge; 50 A pass-through",
+   "source": "https://www.currentconnected.com/product/eg4-6000xp-inverter/",
+   "source_title": "EG4 6000XP Inverter | Current Connected",
+   "read": "2026-11-13",
+   "note": "The '8 kW' (ChatGPT) and '10 kW' (signaturesolarsolutions) PV figures are usable power vs largest supported array, not a conflict. 140 A × 48 V = 6.72 kW, which covers the 6 kW rating."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Price",
+   "value": "$1,449.99 (temporarily out of stock)",
+   "source": "https://www.currentconnected.com/product/eg4-6000xp-inverter/",
+   "source_title": "EG4 6000XP Inverter | Current Connected",
+   "read": "2026-11-13",
+   "note": "ChatGPT's card showed $1,556.00 from an unnamed retailer. $1,449.99 / 6 kW = $242 per kW."
+  },
+  {
+   "product": "general",
+   "label": "Normalised table footnote",
+   "value": "Battery-only continuous: Sol-Ark 15K 12 kW, FlexBOSS21 12 kW, 12000XP 12 kW, 6000XP 6 kW. Price per battery-only kW: $479 / $300 / $175 / $242. Published surge: Sol-Ark 2.0× for 10 s, 6000XP 2.0× for 3.5 s, 12000XP and FlexBOSS21 none. Idle draw: 2.16 / 1.56 / 1.68 / 1.2 kWh per day",
+   "source": "https://www.currentconnected.com/product/sa-15k",
+   "source_title": "Sol-Ark 15K-2P-N | Current Connected (plus pages above)",
+   "read": "2026-11-13",
+   "note": "Arithmetic on the findings above. The 15 kW and 16 kW headline figures need PV; on battery alone the three large units are the same size."
+  }
+ ],
+ "unsourced": [
+  "EG4 12000XP surge power and duration: the maker page gives only the '5-ton AC without soft start' claim. EG4's spec sheet PDF downloaded, but its text could not be extracted (compressed streams), and a local PDF-to-text step was not approved.",
+  "EG4 FlexBOSS21 surge power and duration, MPPT voltage range and maximum battery discharge current: EG4's product URL returned 404, the Signature Solar page and Portlandia spec page don't list them, and the ressupply.com and EG4 spec sheet PDFs could not be read.",
+  "EG4 12000XP maximum battery charge/discharge current and MPPT voltage range: not on the maker page, and the spec sheet and manual PDFs could not be read.",
+  "Conversion efficiency (peak, CEC or battery-to-AC) for all four units: not on any HTML page I opened. The Sol-Ark SK150-0001 Rev5 datasheet PDF could not be read.",
+  "Maker-hosted product pages for the Sol-Ark 15K-2P (sol-ark.com) and EG4 6000XP/FlexBOSS21 (eg4electronics.com): these URLs returned 404, so I used retailer listings (Current Connected, Signature Solar, Portlandia).",
+  "Amazon prices: not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1707547000000003
+ }
+}
