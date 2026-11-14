@@ -1,0 +1,62 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Jackery Explorer 600 Plus it recommended ships with Energy Saving Mode on by default, which shuts off all outputs after 12 hours of light load (the manual's table lists ≤25 W and ≤2 W thresholds). The 10–30 W LED strings in ChatGPT's own sizing table fall in that range. The same goes for lights on a dusk timer that draw almost nothing all day.",
+ "standout": 2,
+ "standout_why": "I compared against the 17 results ChatGPT got. Nine are copies of the EcoFlow RIVER 3 Plus manual (items 1–9; none were cited). The manuals.plus copy I read, a mirror of item 8, says the AC port 'will automatically turn off if the port is idle for a certain period' and tells users to set AC timeout to 'never' in the EcoFlow app. So the general idea is already in those uncited results, but they give no default time and no watt threshold. None of the results covers Jackery or the Delta 3 Classic, or gives a watt and hour rule. The us.ecoflow.com, Bluetti AC70 and gearranking pages are spec and review pages. Its answer and footnote cover capacity and waterproofing, not auto-off.",
+ "decides": "The finding doesn't change which model to buy. It decides whether the plan works out of the box. A 600 Plus running LED strings or timer-switched lights will cut power partway through the night unless the owner turns Energy Saving Mode off (long-press AC + Main Power) and then switches the unit off by hand afterwards. On the RIVER 3 Plus the owner has to set AC timeout to 'never' in the app. A unit with no app or button override for its low-load shutoff is a poor pick for small lighting loads.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Jackery Explorer 600 Plus",
+  "EcoFlow DELTA 3 Classic"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 600 Plus",
+   "label": "Energy Saving Mode default state",
+   "value": "On by default (manual: \"the product turns the Energy Saving Mode on by default\")",
+   "source": "https://manualslib.mx/manual/912994/Jackery-Explorer-600-Plus.html?page=5",
+   "source_title": "Jackery Explorer 600 Plus (JE-600C) user manual, page 5 (ManualsLib mirror, English text)",
+   "read": "2026-11-13",
+   "note": "This is a mirror of Jackery's own manual. Jackery's PDF (Canadian Tire copy) downloaded but would not decode as text."
+  },
+  {
+   "product": "Jackery Explorer 600 Plus",
+   "label": "Low-load auto-off rule",
+   "value": "All outputs turn off after 12 h when the connected load is at or below the threshold; the threshold table lists ≤25 W and ≤2 W",
+   "source": "https://manualslib.mx/manual/912994/Jackery-Explorer-600-Plus.html?page=5",
+   "source_title": "Jackery Explorer 600 Plus (JE-600C) user manual, page 5 (ManualsLib mirror)",
+   "read": "2026-11-13",
+   "note": "The manual says the mode applies when 'the connected device is less than or equal to a certain value' and refers to a table. The mirrored layout doesn't show which threshold goes with AC and which with USB/car, so don't state '≤25 W on AC' as certain without checking the original PDF. My own reading, not the manual's: lights on a photocell or timer draw almost nothing in daytime, so the 12 h countdown can run out before dusk."
+  },
+  {
+   "product": "Jackery Explorer 600 Plus",
+   "label": "Auto shut-down wording",
+   "value": "\"In Energy Saving mode, turn on DC output or AC output, or it will automatically shut down after 12 hours\"",
+   "source": "https://manualslib.mx/manual/912994/Jackery-Explorer-600-Plus.html?page=6",
+   "source_title": "Jackery Explorer 600 Plus (JE-600C) user manual, page 6 (ManualsLib mirror)",
+   "read": "2026-11-13",
+   "note": "This backs up the 12-hour figure from page 5."
+  },
+  {
+   "product": "Jackery Explorer 600 Plus",
+   "label": "How to disable Energy Saving Mode",
+   "value": "Long-press the AC button and the Main Power button until the icon disappears; the unit must then be turned off by hand to avoid draining the battery",
+   "source": "https://manualslib.mx/manual/912994/Jackery-Explorer-600-Plus.html?page=5",
+   "source_title": "Jackery Explorer 600 Plus (JE-600C) user manual, page 5 (ManualsLib mirror)",
+   "read": "2026-11-13",
+   "note": "Paraphrase of the manual's instruction."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 3 Plus AC idle timeout: default length and the watt level the unit treats as 'idle'. I tried the EcoFlow S3 manual PDF (binary, unreadable), manuals.ecoflow.com (JS shell, no text) and device.report, manuals.plus and REI copies (403). The manuals.plus copy that ChatGPT's results mirror was read for the comparison above but was not opened in this pass. A '12 hours' default appeared only in search snippets for other EcoFlow models, so I left it out.",
+  "EcoFlow DELTA 3 Classic AC timeout default and low-load threshold. There were no tool calls left to open its manual.",
+  "AC inverter no-load self-consumption (W) for the RIVER 3 Plus, Explorer 600 Plus and DELTA 3 Classic. This decides whether a 10–20 W light load wastes a large share of the battery on AC; I didn't find a maker figure.",
+  "Current maker-store prices for the candidates. The jackery.com product page returned HTTP 429, and I didn't check prices otherwise because they're outside this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8968938
+ }
+}

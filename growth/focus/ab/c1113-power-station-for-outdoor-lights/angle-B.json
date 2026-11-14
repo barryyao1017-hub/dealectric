@@ -1,0 +1,117 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how long each recommended unit runs a lighting load: at ChatGPT's own 50 W × 6 h example, the River 3 Plus delivers about 249 Wh (286 Wh × 87% measured), which is about 5.0 h or 0.83 of a night, so it fails the example. The DELTA 3 Classic's measured 17 W inverter idle draw means a 20 W LED string runs about 28 h on it, not the 42 h that capacity × efficiency would suggest.",
+ "standout": 2,
+ "standout_why": "Of the pages ChatGPT got, I checked only the EcoFlow RIVER 3 Plus manual (manuals.ecoflow.com, which came back with no spec text) and ChatGPT's own answer. The answer gives a generic sizing rule (50 W × 6 h = 300 Wh, so pick at least 400 Wh) but no runtime for any named product and no inverter idle draw, and it then recommends the 286 Wh River 3 Plus for patio lights, which goes against its own rule. I could not open gearranking.com (SSL error), the BLUETTI AC70 page, the EcoFlow store pages (HTTP 429) or Lowe's (HTTP 403). Gearranking advertises 'Tested Capacity' for the River 3 Plus and may already have a measured usable-Wh figure, so I scored 2, not 3.",
+ "decides": "This changes the pick. On ChatGPT's own example load (50 W for 6 h), the River 3 Plus is not enough for one night, while the DELTA 3 Classic ($459 at EcoFlow US today) covers about 2.5 to 2.8 nights at about $0.54 per usable Wh. For small LED strings, the 17 W idle draw is the biggest loss, so the page should tell shoppers to add the idle draw to the light wattage before dividing.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "EcoFlow DELTA 3 Classic",
+  "Jackery Explorer 600 Plus"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Measured inverter efficiency",
+   "value": "87%",
+   "source": "https://www.thesolarlab.com/quiz-results/ecoflow-river-3-plus-power-station",
+   "source_title": "EcoFlow River 3 Plus power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab (Cody & Robbie): 'Pushing the 600W inverter, we were able to measure an 87% efficiency rating.' This was measured near full load, so efficiency at a 50 W light load is probably lower."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Rated capacity and weight",
+   "value": "286 Wh; 10.4 lb",
+   "source": "https://www.thesolarlab.com/review/ecoflow-river-3-plus-review",
+   "source_title": "EcoFlow River 3 Plus Review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Specs as listed by The Solar Lab ('Battery Capacity: 286Wh (expandable up to 858Wh…)', 'Weight: 10.4 lbs'). 286 Wh / 10.4 lb = 27.5 Wh/lb."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Usable AC energy (derived)",
+   "value": "≈249 Wh",
+   "source": "https://www.thesolarlab.com/quiz-results/ecoflow-river-3-plus-power-station",
+   "source_title": "EcoFlow River 3 Plus power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "286 Wh × 0.87 = 249 Wh. Upper bound, because efficiency was measured at high load."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Runtime at ChatGPT's 50 W × 6 h lighting example (derived)",
+   "value": "≈5.0 h = 0.83 night",
+   "source": "https://www.thesolarlab.com/quiz-results/ecoflow-river-3-plus-power-station",
+   "source_title": "EcoFlow River 3 Plus power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "249 Wh / 50 W = 5.0 h; 249 / 300 Wh per night = 0.83. Upper bound, because idle draw is not counted."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Measured inverter efficiency",
+   "value": "≈83%",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'We measured this unit to have right around an 83% inverter efficiency.' The test load is not stated."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Measured idle draw, inverter on",
+   "value": "≈17 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'We measured the idle draw to be roughly 17W per hour' (they mean 17 W). The same page lists the weight as 27 lb, so 1,024 Wh / 27 lb = 37.9 Wh/lb."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price, EcoFlow US store",
+   "value": "$459 (compare-at $1,299)",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-13",
+   "note": "From storecheck.py on the Shopify store, in stock. ChatGPT showed $479 at Best Buy."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Nights at 50 W × 6 h (derived)",
+   "value": "≈2.5–2.8 nights",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "Efficiency method: 1,024 × 0.83 = 850 Wh / 300 = 2.8 nights. Idle method: 1,024 / (50 + 17 W) = 15.3 h / 6 = 2.5 nights."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Runtime for a 20 W LED string (derived)",
+   "value": "≈28 h (not ≈42 h)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "1,024 Wh / (20 + 17 W) = 27.7 h. Capacity × efficiency alone would give 1,024 × 0.83 / 20 = 42.5 h, so idle draw costs about 35% of runtime at this load."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Cost per usable Wh (derived)",
+   "value": "≈$0.54/Wh",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-13",
+   "note": "$459 / (1,024 × 0.83 = 850 Wh) = $0.54/Wh."
+  }
+ ],
+ "unsourced": [
+  "RIVER 3 Plus price today: the EcoFlow US product pages returned HTTP 429 through both WebFetch and storecheck.py, and I did not open ChatGPT's Sunrun Shop listing ($269), so I have no cost per usable Wh for it.",
+  "RIVER 3 Plus idle draw: The Solar Lab says it measured idle draw but the review page gives no number, and StorageReview and The Gadgeteer don't report one.",
+  "Jackery Explorer 600 Plus: no figures sourced. jackery.com returned HTTP 429, Lowe's returned HTTP 403, and searches found no named reviewer who measured usable Wh, efficiency or idle draw (only off-grid-benchmark.pages.dev and retailer Q&A).",
+  "StorageReview's RIVER 3 Plus discharge figure of 0.43 kWh is higher than the 286 Wh rating (the test probably included the extra battery), so I left it out.",
+  "Rival pages gearranking.com (SSL error) and checkout.bluettipower.com/products/ac70 (not opened) were not checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1035411999999998
+ }
+}

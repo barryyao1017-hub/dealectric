@@ -1,0 +1,63 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab measured the EcoFlow DELTA 3 Classic, one of ChatGPT's three picks, drawing about 17 W with its inverter on and nothing plugged in. For a 30–60 W string of patio lights, that is a large share of the energy used.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT got. These were the EcoFlow RIVER 3 Plus user manuals (manuals.ecoflow.com, the aliyuncs PDF, the REI, Best Buy, Adeo and device.report copies), the EcoFlow US RIVER Plus and RIVER 3 Plus product pages, and the BLUETTI AC70 store page. All of them give rated specs only: 286 Wh, 600 W and so on. None gives a measured figure from a named tester, and none gives AC idle draw or efficiency at a light load. The one review-type result, gearranking.com ('Tested Capacity'), would not open for me: WebFetch hit a self-signed certificate error and the curl fallback was not approved. So I can't rule out that it has a tested-capacity number for the RIVER 3 Plus. It covers only that one model, though, not the DELTA 3 Classic or the Jackery 600 Plus.",
+ "decides": "This changes how the unit should be sized rather than which unit to pick. ChatGPT's rule (50 W × 6 h = 300 Wh, so buy 400 Wh or more) leaves out inverter idle overhead. That overhead matters most at the small loads outdoor lights draw. With The Solar Lab's 17 W figure, the DELTA 3 Classic pulls about 67 W from the battery to run 50 W of lights. Using mybest's measured 950 Wh, that is roughly 14 hours, not the 19 hours a naive 950 ÷ 50 suggests. This is an estimate: the 17 W idle figure is added to the load directly. I found no measured idle draw for the RIVER 3 Plus or the Jackery 600 Plus, so I can't rank all three on it. The finding still says to size for idle loss, or to run DC/12 V lights where possible, rather than to pick a different unit.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Jackery Explorer 600 Plus",
+  "EcoFlow DELTA 3 Classic",
+  "BLUETTI AC70"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "AC idle draw, inverter on with no load (The Solar Lab)",
+   "value": "about 17 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The page says 'the idle draw to be roughly 17W per hour'. That wording is wrong: W is already a rate, so it means about 17 W, or 17 Wh each hour. The page names no author, no test date and no test method; the footer reads © 2026. Arithmetic: 50 W of lights + 17 W overhead ≈ 67 W total, so 950 Wh ÷ 67 W ≈ 14.2 h. Treating idle overhead as simply added to the load is an approximation."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Inverter efficiency (The Solar Lab)",
+   "value": "about 83%",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-classic",
+   "source_title": "EcoFlow Delta 3 Classic portable power station – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The page says 'right around an 83% inverter efficiency'. It doesn't say what load was used. 1,024 Wh × 0.83 ≈ 850 Wh of AC output."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Measured usable capacity and conversion efficiency (mybest, Japan)",
+   "value": "950 Wh delivered of 1,024 Wh rated; 92.77% conversion efficiency",
+   "source": "https://my-best.com/products/17811800",
+   "source_title": "mybest – EcoFlow DELTA 3 Classic",
+   "read": "2026-11-13",
+   "note": "Discharged from full to 0% into a halogen heater, so a high load; the heater's wattage isn't given. This was likely the Japanese 100 V model, not the US 120 V unit. Page updated 2026-07-06; no test date given. The efficiency is far above The Solar Lab's 83%, so the two methods probably differ and shouldn't be compared directly."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "UPS transfer time measured (StorageReview)",
+   "value": "9 ms",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Compact Power Station With 600W Output, UPS Support – StorageReview",
+   "read": "2026-11-13",
+   "note": "By Dylan Dougherty, 2025-02-12. EcoFlow's spec is under 10 ms. The same review also reports 'discharged 0.43kWh' and 'recharging required 0.56kWh'. 430 Wh is more than the 286 Wh rating, so the discharge figure looks wrong, or it may include an extra battery. I left it out as a capacity value."
+  }
+ ],
+ "unsourced": [
+  "Measured AC idle draw for the EcoFlow RIVER 3 Plus. I checked The Solar Lab's RIVER 3 Plus review (no figure), StorageReview (not reported), Australian Photography (Mike O'Connor, 2025-05-14: not reported), Bob Vila (Mark Wolfe, 2025-03-24: not reported) and searches. BatterySkills gives an unattributed 'around 22 watts', with no test behind it.",
+  "Measured usable AC capacity for the RIVER 3 Plus. A search summary credits CyberShack with about 228 Wh at a 108 W load (240 V AU unit), but the CyberShack URL returned 404, so I couldn't open it. gearranking.com's 'Tested Capacity' page failed on SSL. The StorageReview figure is internally inconsistent.",
+  "Measured capacity, inverter efficiency or idle draw for the Jackery Explorer 600 Plus. Searches found only rated 632 Wh and estimates assuming 85% efficiency (Off Grid Benchmark, Portable Power Pick). I found no named lab measurement and no The Solar Lab review of this model.",
+  "Measured figures for the BLUETTI AC70. I didn't get to it within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8593295
+ }
+}

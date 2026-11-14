@@ -1,0 +1,76 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that a power station's low-load auto-off can switch off its AC outlets under small LED light loads: BLUETTI's AC180 manual says ECO mode turns AC output off when the load stays below a threshold the user can set from 10 to 30 W for 1, 2, 3 or 4 hours. ChatGPT's own table puts 10–30 W string lights inside that range.",
+ "standout": 2,
+ "standout_why": "I tried to open the results ChatGPT got: the EcoFlow RIVER 3 Plus manual (the aliyuncs PDF came back as image-only text, manuals.ecoflow.com showed only a logo, and the REI and device.report copies returned 403), gearranking.com's RIVER 3 Plus review (TLS certificate error) and BLUETTI's AC70 page (HTTP 429). None was readable, so I could not check line by line whether one mentions low-load auto-off. ChatGPT's answer itself sizes batteries for 10–30 W string lights and talks only about Wh and inverter losses. It says nothing about an outlet that turns itself off under a light load, which is why this is scored 2 and not 3.",
+ "decides": "For outdoor lights, low-load auto-off matters more than Wh. A unit whose AC turns off below 10–30 W after 1–4 hours will leave a 10–30 W string dark partway through the night unless ECO mode is turned off. The page should tell buyers to check for (and disable) ECO or energy-saving auto-off, or to run low-voltage LED strings from the 12 V DC port. It should also rank models by whether their low-load cutoff can be turned off. That auto-off rule is sourced here for the AC180 only. For the RIVER 3 Plus, Explorer 600 Plus and DELTA 3 Classic it is still unsourced and must be checked in each manual before the pick is made.",
+ "candidates": [
+  "EcoFlow RIVER 3 Plus",
+  "Jackery Explorer 600 Plus",
+  "EcoFlow DELTA 3 Classic",
+  "BLUETTI AC180",
+  "BLUETTI AC70"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "ECO mode low-load AC auto-off",
+   "value": "AC output turns off when the load stays below a user-set 10–30 W for 1, 2, 3 or 4 h (DC: 5–10 W); can be turned on or off on the screen",
+   "source": "https://www.manualslib.de/manual/1012764/Bluetti-Ac180.html?page=17",
+   "source_title": "Bluetti AC180 user manual, 5.1 FAQs Q4 (ManualsLib, printed p.16, English)",
+   "read": "2026-11-13",
+   "note": "Manual wording: 'When operating on ECO mode, the AC/DC output will automatically turn off if the AC180 is bearing low or no load for a while. You can set the power threshold of AC output and DC output to 10-30W /5-10W, respectively, for 1, 2, 3, or 4 hours.' This page does not give the default threshold or say whether ECO is on out of the box. ChatGPT's table row 'LED string lights, 10–30W' falls entirely inside the AC cutoff range."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Capacity / AC output",
+   "value": "1,152 Wh; 1,800 W continuous AC across 4 outlets; 2,700 W surge",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib), pp.12 and 17",
+   "read": "2026-11-13",
+   "note": "Manual p.17: 'providing a total of up to 1800W AC power' and 'can handle a surge of 2700W'. The store listing calls 2,700 W 'Power Lifting Mode'. That mode is for resistive loads and is not the same thing as surge, so the two figures should not be compared directly."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Discharge temperature range",
+   "value": "-4°F to 104°F; maximum 1,500 W between 86°F and 104°F",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib), spec table p.12",
+   "read": "2026-11-13",
+   "note": "Text as read: 'Discharging Temperature -4°F~104°F (86°F~104°F: @1500W Max.)'. Relevant for holiday lights running outdoors in winter. The Celsius column was garbled in the extracted text, so only °F is quoted."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, maker US store",
+   "value": "$499.00 (compare-at $1,232.00), in stock",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "From the storecheck.py search of the bluettipower.com Shopify catalog on 2026-11-13."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Cycle life (stated basis)",
+   "value": "3,000 cycles to 80% capacity, LiFePO4",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review: Compact Power Station with 600W Output, UPS Support (StorageReview, Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-13",
+   "note": "This is the spec table as printed in Dylan Dougherty's StorageReview review, not EcoFlow's own page: the EcoFlow US store returned 429 and the manual PDF had no readable text. His review also gives a 0.43 kWh discharge, which is more than the rated 286 Wh and comes with no stated load, so I left it out as unreliable."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow RIVER 3 Plus AC timeout or low-load auto-off default and threshold: the manual PDF on aliyuncs extracted as image-only, manuals.ecoflow.com showed only a logo, REI and device.report copies returned 403, us.ecoflow.com and storecheck returned 429.",
+  "EcoFlow RIVER 3 Plus AC idle (no-load) draw: no maker figure found. Only an anonymous buyer comment (about 9 W) and an unattributed retailer quote turned up in search snippets, and I did not use them. Its US price was also not read, because of the 429 errors.",
+  "Jackery Explorer 600 Plus energy-saving or auto-shutdown threshold, timer and default state: the Jackery CDN manual PDF was over 10 MB, the Canadian Tire PDF had no extractable text, notice-facile returned 403, and Jackery's blog 'How to Disable Jackery Auto Shut Down' had no body text.",
+  "BLUETTI AC180 ECO mode factory default (on or off, and the default W and hours): not on the manual FAQ or LCD pages I opened. The only claim I saw was a forum snippet saying it is on by default, which I did not open.",
+  "EcoFlow DELTA 3 Classic low-load auto-off and idle draw: not researched within the 25-call budget.",
+  "BLUETTI AC70 specs and ECO behaviour: checkout.bluettipower.com/products/ac70 returned 429.",
+  "gearranking.com RIVER 3 Plus tested capacity: the fetch failed with a self-signed certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9033235
+ }
+}
