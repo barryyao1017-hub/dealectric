@@ -366,7 +366,7 @@ def price(folders: list[str], pace: float) -> dict:
         for f, g in pages.items():
             slugs = [r["slug"] for r in g["rows"] if r.get("slug")][:2]   # the pick and the runner-up we sell
             for s in slugs:
-                if (log.get(s) or {}).get("date") == today:
+                if s in log:   # checked once in this run; a re-check is a deliberate re-run with the log entry removed
                     if log[s].get("result") == "lowest":
                         pc["products"][s] = log[s]["entry"]
                     continue
