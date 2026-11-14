@@ -17,8 +17,12 @@ Per page, everything lives under growth/focus/ab/<slug>/:
     compose.json   the agent that reads the six and the competitor pages, picks the angle and writes the page
     verify.json    a second agent that opens every source and drops what it can't confirm
     draft.json     the page and any new product records, ready for `apply`
+    history/<time>/ earlier reports kept when a page is re-researched with --force
 
-Research runs in `claude -p` (plan usage): Fable 5.1 at high effort, and Opus 5.5 at high effort once Fable is out of
+All six angle reports are kept, not only the one the page uses: tools/research_library.py indexes them by page
+(growth/focus/ab/library.json, LIBRARY.md) and searches their findings, so unused research can be reused later.
+
+Research runs in `claude -p` (plan usage): Opus 5.5 at high effort (Barry 11-13; Fable first until then).
 usage (Barry 11-08). The agents never edit files; this script writes src/ only in `apply`.
 """
 from __future__ import annotations
@@ -43,7 +47,7 @@ import repolock  # noqa: E402  (one build at a time per working tree, DLC-267)
 AB = ROOT / "growth/focus/ab"
 RUNS = ROOT / "growth/evals/runs"
 DEFAULT_RUNS = ["2026-11-07-liveplain", "2026-11-07-liveplain-rest"]
-MODELS = [("claude-fable-5-2", "high"), ("claude-opus-5-5", "high")]   # Barry 11-11: Fable 5.2 high first, Opus 5.5 high once Fable is out of usage
+MODELS = [("claude-opus-5-5", "high")]   # Barry 11-13: Opus 5.5 at high effort for all research (was Fable 5.2 first, 11-11)
 METHOD = "ab-2026-11"
 _fable_out = threading.Event()   # set once Fable reports a usage limit; every later call goes straight to Opus
 SLOTS = threading.Semaphore(6)   # claude -p processes at once, across pages
@@ -389,6 +393,12 @@ def _research(slug: str, new_page: bool, force: bool, d: Path) -> dict:
         return {"slug": slug, "status": "no harvest"}
     q = query_for(slug, h)
     todo = [x for x in ANGLES if force or not (d / f"angle-{x}.json").exists() or jload(d / f"angle-{x}.json", {}).get("status") == "error"]
+    if force:   # Barry 11-13: research is paid for, so a re-run keeps the old reports (research library, tools/research_library.py)
+        keep = d / "history" / _dt.datetime.now().strftime("%Y-%m-%dT%H%M")
+        for f in [d / f"angle-{x}.json" for x in todo] + [d / n for n in ("compose.json", "verify.json", "draft.json")]:
+            if f.exists() and jload(f, {}).get("status") != "error":
+                keep.mkdir(parents=True, exist_ok=True)
+                (keep / f.name).write_text(f.read_text())
     with cf.ThreadPoolExecutor(max_workers=len(ANGLES)) as ex:
         for x, out in zip(todo, ex.map(lambda x: claude(angle_prompt(slug, x, h, q)), todo)):
             jsave(d / f"angle-{x}.json", out)
@@ -651,6 +661,8 @@ def main() -> int:
         with cf.ThreadPoolExecutor(max_workers=a.workers) as ex:
             for r in ex.map(lambda s: research(s, a.new, a.force), a.slugs):
                 print(json.dumps(r, ensure_ascii=False), flush=True)
+        import research_library   # index every angle report by its page, used or not (Barry 11-13)
+        research_library.build()
         return 0
     if a.cmd == "apply":
         for s in a.slugs:
