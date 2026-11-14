@@ -53,14 +53,14 @@
      "1.6 in D × 9.9 in W × 5.76 in H"
     ]
    ],
-   "warranty": null,
-   "returns": null,
+   "warranty": "Haudio's return and refund policy page advertises a '2-year Free Warranty', but its repair terms give one year of repair for damage the user didn't cause. The buyer pays for replacement parts and for shipping to the service center, and Haudio pays to ship the unit back. That repair service covers units bought from haudiocarstereo.com. If you bought elsewhere, such as on Amazon, Haudio tells you to contact that seller.",
+   "returns": "From Haudio's own store: new, unused units within 90 days of delivery. You must tell Haudio within 14 days of receiving the unit, and you pay return shipping. Report a faulty unit within 30 days for a replacement or refund. Amazon orders fall under the Amazon seller's return terms.",
    "summary": "The lowest-priced 10-inch double-DIN unit we could price on 2026-11-14 that runs Android (13) and lists both wired and wireless CarPlay and Android Auto. It has a 1280×720 screen, 64 GB of storage and a backup camera in the box.",
    "fit": "Shoppers who want a real Android head unit with wireless phone projection for the least money, including Samsung Galaxy owners, since the listing prints no phone-brand limit.",
    "caveats": [
     "The listing does not say which Wi-Fi band the unit uses. Google requires 5 GHz Wi-Fi support for wireless Android Auto.",
     "The listing says some vehicles need an extra double-DIN dash kit, a vehicle-specific wiring harness and an antenna adapter.",
-    "The listing gives no warranty length."
+    "Haudio's repair service covers units bought from haudiocarstereo.com. For an Amazon order, Haudio tells you to contact the seller."
    ]
   }
  ],
@@ -154,6 +154,10 @@
     "https://pricehistory.app/p/haudio-10-1-inch-double-din-android-arDKvtQ2"
    ],
    [
+    "Haudio return and refund policy: 90-day return window for new, unused units (tell Haudio within 14 days, buyer pays return shipping), faulty units reported within 30 days, '2-year Free Warranty' banner with a one-year repair service for units bought from haudiocarstereo.com, other sellers' buyers sent to that seller (read 2026-11-14)",
+    "https://haudiocarstereo.com/pages/return-refund-policy"
+   ],
+   [
     "Binize 10 Inch Double Din: $129.99, Android, quad-core A7, 2 GB / 32 GB, 'Mirrorlink Yes', harness requires manual soldering (read 2026-11-14)",
     "https://www.binize.com/products/double-din-car-stereo"
    ],
@@ -196,5 +200,25 @@
  ],
  "query": "cheapest 10-inch double-din android head unit with wireless carplay and android auto",
  "verified_changes": 1,
- "verified_removed": 0
+ "verified_removed": 0,
+ "fix_pass": {
+  "errors": [
+   "haudio-10-inch-android-13-double-din-wireless-carplay: missing warranty",
+   "haudio-10-inch-android-13-double-din-wireless-carplay: missing returns"
+  ],
+  "log": [
+   "Found Haudio's own site, haudiocarstereo.com, and opened its return and refund policy page on 2026-11-14 (https://haudiocarstereo.com/pages/return-refund-policy). The home page shows '90D Return & Exchange; 2Y Warranty', and its 'Returns & warranty' link goes to that policy page. Haudio has no separate warranty page.",
+   "Filled haudio warranty from that page. It advertises a '2-year Free Warranty', but the detailed terms give a 'One-Year Repair Promise' for damage the user didn't cause. The buyer pays for parts and for shipping to the service center. The repair service covers units bought from haudiocarstereo.com, and Haudio tells buyers from other sellers to contact that seller. I quoted both figures and the scope instead of choosing one, because the page contradicts itself and our buy link is Amazon.",
+   "Filled haudio returns from the same page: new, unused units within 90 days of delivery, notice to Haudio within 14 days of receipt, buyer pays return shipping, faulty units reported within 30 days for a replacement or refund. I limited this to Haudio's own store. The page also has a 14-day money-back clause and mentions a 30-day storefront window, and it says nothing about Amazon orders.",
+   "Rewrote the Haudio caveat 'The listing gives no warranty length.' so it matches the new warranty field: Haudio's repair service covers units bought from haudiocarstereo.com, and Amazon buyers are sent to the seller.",
+   "Added the Haudio return and refund policy page to page.sources.",
+   "Not changed: Amazon's own return terms for B0F62PJJJ4. The Amazon page returned HTTP 503 to WebFetch, and amzcheck.py gives only title and price, so the Amazon seller's return window is not on the page.",
+   "Not changed: Haudio's store sells a 'C10E 10.1\" Double Din Car Stereo (CVD1661-AJ)', 2 GB/64 GB, quad-core, 720p AHD camera, $88.99 (storecheck search, 2026-11-14), which looks like the Amazon unit. Its product page returned HTTP 429 twice, so I could not confirm it is the same unit and did not add it. I only used the brand-wide policy page."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }

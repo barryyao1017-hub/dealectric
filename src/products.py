@@ -7616,6 +7616,23 @@ PRODUCTS = [
  "fit": "Weekend cabins with a fridge where the trip shouldn't depend on the weather, including late-autumn and winter weekends with short days.",
  "caveats": ["On a poor-sun day one 400 W panel adds about 800 Wh (0.4 kW × 2 kWh per kW, SolutionEnergy's December example rate), so the battery carries most of a cloudy weekend.", 'The 400 W panel uses only part of the 2,000 W solar input. Battery Skills (Bernard Ryan) saw a 780 W peak from two 400 W panels in series, so a second panel is the upgrade path.']},
 
+{"slug": 'haudio-10-inch-android-13-double-din-wireless-carplay',
+ "brand": 'Haudio',
+ "program": 'amazon:us',
+ "asin": 'B0F62PJJJ4',
+ "category": 'car-stereo',
+ "name": 'Haudio 10.1-Inch Double DIN Android 13 Car Stereo, 2 GB / 64 GB, Wired & Wireless CarPlay and Android Auto, 720p AHD Backup Camera',
+ "model": 'Haudio 10.1-inch Android 13 Double DIN (2 GB / 64 GB)',
+ "url": 'https://www.amazon.com/dp/B0F62PJJJ4',
+ "price": None,
+ "verified": '2026-11-14',
+ "specs": [('System', 'Android 13'), ('Processor', 'MT8163 Cortex-A53 quad-core'), ('Memory', '2 GB RAM / 64 GB storage'), ('Screen', '10.1-inch IPS touchscreen, 1280×720'), ('Phone projection', 'Wired and wireless Apple CarPlay and Android Auto'), ('Bluetooth', '4.1'), ('In the box', '720p AHD backup camera'), ('Listed size', '1.6 in D × 9.9 in W × 5.76 in H')],
+ "warranty": "Haudio's return and refund policy page advertises a '2-year Free Warranty', but its repair terms give one year of repair for damage the user didn't cause. The buyer pays for replacement parts and for shipping to the service center, and Haudio pays to ship the unit back. That repair service covers units bought from haudiocarstereo.com. If you bought elsewhere, such as on Amazon, Haudio tells you to contact that seller.",
+ "returns": "From Haudio's own store: new, unused units within 90 days of delivery. You must tell Haudio within 14 days of receiving the unit, and you pay return shipping. Report a faulty unit within 30 days for a replacement or refund. Amazon orders fall under the Amazon seller's return terms.",
+ "summary": 'The lowest-priced 10-inch double-DIN unit we could price on 2026-11-14 that runs Android (13) and lists both wired and wireless CarPlay and Android Auto. It has a 1280×720 screen, 64 GB of storage and a backup camera in the box.',
+ "fit": 'Shoppers who want a real Android head unit with wireless phone projection for the least money, including Samsung Galaxy owners, since the listing prints no phone-brand limit.',
+ "caveats": ['The listing does not say which Wi-Fi band the unit uses. Google requires 5 GHz Wi-Fi support for wireless Android Auto.', 'The listing says some vehicles need an extra double-DIN dash kit, a vehicle-specific wiring harness and an antenna adapter.', "Haudio's repair service covers units bought from haudiocarstereo.com. For an Amazon order, Haudio tells you to contact the seller."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

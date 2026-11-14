@@ -2502,112 +2502,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-14',
  "updated": '2026-11-14'},
 
-{'slug': 'cheapest-10-inch-double-din-android-head-unit-wireless-carplay',
- 'question': 'G86 (Awin brands: cheapest 10-inch double-DIN Android head unit with wireless CarPlay)',
- 'lead_first': True,
- 'product_result': {'slug': 'eonon-ua13-plus-10-inch-android-13-wireless-carplay',
-                    'item_id': 'EONON-UA13-PLUS',
-                    'title': 'Eonon UA13 Plus, 10.1-inch wireless CarPlay',
-                    'description': 'Android 13, RK3562, 2 GB/32 GB, wireless CarPlay and Android Auto, 2-year warranty. $229.99.',
-                    'image_url': 'https://www.eonon.com//upload/product/Gallery/UA13Plus/UA13Plus-01.jpg'},
- 'title': 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
- 'h1': 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
- 'desc': "The cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto from a brand's own store in 2026: Eonon's UA13 Plus "
-         "($229.99, Android 13, 2 GB/32 GB, 2-year warranty) against Eonon's UA12S Plus-6G, ATOTO's S8 Ultra Plus and A6 PF, Joying's 10.1-inch units, "
-         "Pioneer's DMH-WT3800NEX and Kenwood's DMX1037S, with the reliability record, coupon pricing and the return terms.",
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> The <strong>Eonon UA13 Plus</strong> ({buy:eonon-ua13-plus-10-inch-android-13-wireless-carplay}) is '
-          "the cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto sold by a brand's own store: $229.99 on 2026-11-03 (the "
-          "page showed coupon prices down to $209.99) for a 10.1-inch 1280 × 720 screen, Android 13, 2 GB/32 GB and a 2-year warranty. ATOTO's 10-inch units "
-          'start about $370; its $211 A6 PF is a 7-inch screen.</p>\n'
-          '<p>What to know: the price buys a quad-core Rockchip RK3562 with 2 GB of RAM, fine for CarPlay, Android Auto and maps, slow for heavy Android apps; '
-          "Eonon's own UA12S Plus-6G ($319.99, Qualcomm 8-core, 6 GB/64 GB) is the unit to buy if you will run apps on the head unit itself. Both are "
-          "universal double-DIN units, so the vehicle harness, dash kit and any CAN-bus adapter are extra, and Eonon's page prices with on-page coupons rather "
-          "than codes, so the number changes by the day. Eonon's owner reviews split between free replacements and units that froze or failed within the first "
-          'year; Pioneer, Sony and Kenwood cost two to five times more and are the safe answer for anyone who cannot live with that. Returns: full refund '
-          'within 3 months for a product issue; change-of-mind returns within 3 months at your shipping cost, plus 20% if opened.</p>\n',
- 'columns': [('screen', 'Screen'), ('hw', 'Chip / RAM / storage'), ('phone', 'Wireless CarPlay / Android Auto'), ('warranty', 'Warranty')],
- 'rows': [{'slug': 'eonon-ua13-plus-10-inch-android-13-wireless-carplay',
-           'model': 'Eonon UA13 Plus',
-           'cells': {'screen': '10.1-inch, 1280 × 720',
-                     'hw': 'RK3562 quad-core, Android 13, 2 GB / 32 GB',
-                     'phone': 'Yes, both (wired too)',
-                     'warranty': '2 years (eonon.com purchases)'}},
-          {'slug': 'eonon-ua12s-plus-6g-10-inch-android-13-car-stereo',
-           'model': 'Eonon UA12S Plus-6G',
-           'cells': {'screen': '10.1-inch QLED', 'hw': 'Qualcomm QCM6125 8-core, Android 13, 6 GB / 64 GB', 'phone': 'Yes, both', 'warranty': '2 years'}},
-          {'brand': 'ATOTO',
-           'model': 'S8 Ultra Plus 10.1-inch',
-           'url': 'https://www.atotodirect.com/products/s8g2109up-n-10-1-ultra-plus-car-stereo',
-           'cells': {'screen': '10.1-inch',
-                     'hw': '6 GB / 128 GB',
-                     'phone': 'Yes, both',
-                     'warranty': 'not read',
-                     'price': '$413–478, search result 2026-11-03'}},
-          {'brand': 'ATOTO',
-           'model': 'A6 PF 7-inch',
-           'url': 'https://www.atotodirect.com/products/atoto-a6g2a7pf-7-inch-double-din-car-stereo-with-backup-cam',
-           'cells': {'screen': '7-inch (a 9-inch variant exists)',
-                     'hw': '2 GB / 32 GB',
-                     'phone': 'Yes, both',
-                     'warranty': 'not read',
-                     'price': '$210.90 (list $252.90), 2026-11-03'}},
-          {'brand': 'Joying',
-           'model': '10.1-inch 6 GB / 128 GB',
-           'url': 'https://www.joyingauto.com/',
-           'cells': {'screen': '10.1-inch',
-                     'hw': '6 GB / 128 GB; 8 GB on some',
-                     'phone': 'Mixed reports (one buyer: wired CarPlay only)',
-                     'warranty': 'not read',
-                     'price': '$415–465 for its other 10.1-inch units; this one not priced'}},
-          {'brand': 'Pioneer',
-           'model': 'DMH-WT3800NEX',
-           'url': 'https://www.walmart.com/ip/188118011',
-           'cells': {'screen': '9-inch floating',
-                     'hw': 'not Android',
-                     'phone': 'Yes, both',
-                     'warranty': 'not read',
-                     'price': '$549.99 at Walmart, 2026-11-03'}},
-          {'brand': 'Kenwood',
-           'model': 'DMX1037S',
-           'url': 'https://www.kenwood.com/usa/car/',
-           'cells': {'screen': '10.1-inch',
-                     'hw': 'not Android',
-                     'phone': 'CarPlay and Android Auto; wireless not confirmed',
-                     'warranty': 'not read',
-                     'price': '$1,199 at Walmart, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>What $230 gives up</h2>\n'
-          '<p>Two things. The hardware: 2 GB of RAM and a quad-core chip run CarPlay and Android Auto, which do the work on your phone, but Android apps '
-          "installed on the unit itself will stutter, and the 1280 × 720 panel is sharp enough at arm's length and no more. And the track record: Trustpilot "
-          'and ResellerRatings reviews of Eonon include early failures, freezes and slow support next to owners who got free mainboard repairs and quick '
-          'replacements. A July 2025 r/CarAV thread warns against generic Chinese head units as a class; ATOTO gets the most consistent praise of the budget '
-          'Android brands, and its 10-inch units cost $180 or more above the UA13 Plus.</p>\n'
-          '<h2>Fit, wiring and CAN bus</h2>\n'
-          '<p>Both Eonon units are universal double-DIN chassis. Budget for the vehicle-specific harness, a dash kit and, on cars with steering-wheel controls '
-          'or a factory amplifier, a CAN-bus adapter; Eonon sells wiring options on the product page and vehicle-specific units for BMW, Mazda, Volkswagen and '
-          'GM models at higher prices.</p>\n'
-          '<h2>Coupon pricing</h2>\n'
-          "<p>Eonon's product pages show a base price and one or more coupon prices that change with its sales calendar (on 2026-11-03 the UA13 Plus page read "
-          '$229.99 with a $209.99 coupon price and the UA12S Plus-6G $319.99 with $289.99). The price you pay is the one the page offers that day, not a code '
-          'you type.</p>\n'
-          '<h2>Returns and warranty</h2>\n'
-          '<p>Eonon gives Android car stereos bought on eonon.com a 2-year warranty: full refund or exchange within 3 months for a product issue, exchange '
-          'within 6 months, replacement accessories or a discounted new unit within 2 years. Returns for any other reason are accepted within 3 months at your '
-          'return-shipping cost, plus 20% depreciation if the unit was opened or installed.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          '<p>Whether the UA12S Plus-6G ships with 4G LTE and the DSP amplifier its marketing mentions (the spec text we read lists neither), the warranty '
-          'terms of the ATOTO, Joying, Pioneer and Kenwood units, and any Crutchfield coverage of Eonon.</p>\n',
- 'sources': [('Eonon UA13 Plus',
-              'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/Eonon-10-Inch-Android-13-Double-Din-Wireless-CarPlay--Android-Auto-Car-Radio.html'),
-             ('Eonon UA12S Plus-6G', 'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/UA12S%20Plus-6G.html'),
-             ('Eonon returns and warranty policy', 'https://www.eonon.com/support/returns.aspx'),
-             ('ATOTO S8 Ultra Plus', 'https://www.atotodirect.com/products/s8g2109up-n-10-1-ultra-plus-car-stereo'),
-             ('ATOTO A6 PF', 'https://www.atotodirect.com/products/atoto-a6g2a7pf-7-inch-double-din-car-stereo-with-backup-cam'),
-             ('r/CarAV: please avoid generic Chinese head units (July 2025)',
-              'https://www.reddit.com/r/CarAV/comments/1lu72cf/please_avoid_generic_chinese_head_units/')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- cheapest-10-inch-double-din-android-head-unit-wireless-carplay (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": 'cheapest-10-inch-double-din-android-head-unit-wireless-carplay',
+ "question": 'G86 (Awin brands: cheapest 10-inch double-DIN Android head unit with wireless CarPlay)',
+ "method": 'ab-2026-11',
+ "angle": 'C',
+ "searched_as": ['2026 cheapest 10.1 inch double din android head unit wireless carplay android auto price', '2026 cheapest 10.1 inch double din Android head unit wireless CarPlay Android Auto price Walmart eBay', '2026 cheapest 10.1 inch double din Android head unit wireless CarPlay Android Auto price Walmart eBay AliExpress', '2026 cheapest 10.1 inch double din android head unit wireless Apple CarPlay Android Auto price'],
+ "title": 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
+ "h1": 'Cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto (2026)',
+ "desc": "The cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto, priced 2026-11-14, plus the Binize 'not for Samsung' line Galaxy owners need to see before buying.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The cheapest 10-inch double-DIN Android head unit with wireless CarPlay and Android Auto we could price today is the Haudio 10.1 inch (Android 13, 2 GB/64 GB, 1280×720). Samsung owners should skip Binize: Binize says about 85% of Samsung phones may not be compatible.</p>',
+ "columns": [('system', 'Android, memory, screen'), ('wireless', "Wireless CarPlay / Android Auto (maker's wording)"), ('samsung', "Samsung phones (maker's listing)"), ('wiring', 'Wiring and fit')],
+ "rows": [{'slug': 'haudio-10-inch-android-13-double-din-wireless-carplay', 'model': 'Haudio 10.1-inch Android 13 Double DIN (2 GB / 64 GB)', 'cells': {'system': 'Android 13 · 2 GB / 64 GB · 1280×720 IPS', 'wireless': "'Wired and Wireless Apple CarPlay & Android Auto'", 'samsung': 'No phone-brand limit printed on the listing', 'wiring': 'Some cars need a dash kit and vehicle harness (listing); backup camera included'}}, {'brand': 'Binize', 'model': '10 Inch Double Din Car Stereo with Wireless CarPlay Android Auto', 'url': 'https://www.binize.com/products/double-din-car-stereo', 'cells': {'system': 'Android · 2 GB / 32 GB · quad-core A7', 'wireless': "Wireless CarPlay & Android Auto in the title; spec table lists 'Mirrorlink Yes'", 'samsung': 'No note on this listing; Binize FAQ: about 85% of Samsung phones may not be compatible', 'wiring': "Standard harness 'require[s] manual soldering'", 'price': '$129.99 (maker, 2026-11-14)'}}, {'brand': 'Binize', 'model': '10 Inch Double Din Android 12 Car Radio', 'url': 'https://www.binize.com/products/android-12-car-radio', 'cells': {'system': 'Android 12 · 2 GB / 32 GB · 1024×600', 'wireless': 'Wireless CarPlay through the ZLink app', 'samsung': "'Not for Samsung' on Autoplay and Mirrorlink", 'wiring': 'Standard harness; other harnesses only on request before purchase', 'price': '$209.99 (maker, 2026-11-14)'}}, {'slug': 'eonon-ua13-plus-10-inch-android-13-wireless-carplay', 'model': 'Eonon UA13 Plus', 'cells': {'system': 'Android 13 · 2 GB / 32 GB · 1280×720 · RK3562 4-core', 'wireless': "'Wireless CarPlay and wireless Android Auto'", 'samsung': 'No phone-brand limit printed on the maker page', 'wiring': 'Needs an ISO power connector, otherwise a separate harness; sold out, pre-order'}}, {'slug': 'eonon-ua12s-plus-6g-10-inch-android-13-car-stereo', 'model': 'Eonon UA12S Plus-6G', 'cells': {'system': 'Android 13 · 6 GB / 64 GB · 1280×720 QLED · Qualcomm 8-core', 'wireless': "'Wireless CarPlay and Android Auto via Bluetooth'", 'samsung': 'No phone-brand limit printed on the maker page', 'wiring': 'Needs an ISO power connector, otherwise a separate harness; sold out, pre-order'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Screen sharpness:</strong> the Haudio and both Eonons use 1280×720 on 10.1 inches, which works out to 145.4 ppi (√(1280²+720²) = 1,468.6 px ÷ 10.1). The Binize Android 12 uses 1024×600 on 10 inches, which is 118.7 ppi (1,186.8 px ÷ 10). That gives the 720p panels 22% more pixels per inch (145.4 ÷ 118.7 = 1.22).</li><li><strong>Storage:</strong> the Haudio has 64 GB and both Binize units have 32 GB, so the Haudio has twice the room for offline maps and apps (64 ÷ 32 = 2).</li><li><strong>Binize's two 10-inch units:</strong> the Android 12 Car Radio costs $80 more than Binize's own double-DIN unit at Binize's store ($209.99 − $129.99) and lists a 1024×600 screen.</li><li><strong>Eonon step-up:</strong> the UA12S Plus-6G lists at $90 more than the UA13 Plus ($319.99 − $229.99). For that you get 3× the RAM (6 GB ÷ 2 GB), eight cores instead of four, and twice the storage (64 GB ÷ 32 GB).</li></ul><table><thead><tr><th>If you…</th><th>Pick</th></tr></thead><tbody><tr><td>want the lowest price on a real Android unit with wireless CarPlay and Android Auto, on any phone brand</td><td>Haudio 10.1-inch Android 13 {buy:haudio-10-inch-android-13-double-din-wireless-carplay}</td></tr><tr><td>own an iPhone and don't mind soldering a harness</td><td>Binize 10 Inch Double Din ($129.99 at Binize)</td></tr><tr><td>want a plug-in ISO power connector and a 2-year maker warranty</td><td>Eonon UA13 Plus {buy:eonon-ua13-plus-10-inch-android-13-wireless-carplay} (pre-order)</td></tr><tr><td>run many apps at once and want 6 GB of RAM</td><td>Eonon UA12S Plus-6G {buy:eonon-ua12s-plus-6g-10-inch-android-13-car-stereo} (pre-order)</td></tr></tbody></table><h2>Samsung phones and wireless projection on cheap Android head units</h2><p>On a budget Android head unit, wireless CarPlay and Android Auto usually come from an app on the unit, not from the screen itself. Binize's 10-inch Android 12 listings say so directly: 'The zlink app is designed for wireless apple CarPlay.' The same spec tables read 'Autoplay Yes, Both for iPhone and Android (not for Samsung)', and the Mirrorlink line carries the same exclusion. In a customer answer on its Honda Civic unit, Binize writes that 'approximately 85% of Samsung mobile phones may not be compatible' and says it updated its listings because of that.</p><p>Binize's cheapest 10-inch double-DIN listing doesn't print the Samsung line, but it is the same brand. Its spec table also mentions only Mirrorlink, not a wireless CarPlay or Android Auto row. The Haudio listing and Eonon's UA13 Plus and UA12S Plus-6G pages print no phone-brand limit.</p><p>Google's requirement for wireless Android Auto applies to every unit here. You need an Android phone running Android 11 or later, with 5 GHz Wi-Fi and an active data plan, plus a compatible stereo. The head unit has to talk 5 GHz too. Binize states '2.4G+5G dual-band WiFi' only on its Corolla-specific Android 13 unit. Its universal 10-inch listings just say 'Built-In WIFI Receiver Yes', and the Haudio listing says only 'Wi-Fi connectivity'.</p><h2>Not recommended</h2><p><strong>Binize 10 Inch Double Din Android 12 Car Radio.</strong> At $209.99 on Binize's store, it costs $80 more than Binize's own double-DIN unit. It has the lowest-resolution screen here (1024×600, 118.7 ppi). Binize also marks its CarPlay/Android Auto and Mirrorlink 'not for Samsung', which rules it out for the largest group of Android phone owners.</p>\n",
+ "sources": [('Haudio 10.1-inch Android 13 Amazon title: 2 GB / 64 GB, wired and wireless CarPlay and Android Auto, 720p AHD backup camera (read 2026-11-14)', 'https://www.amazon.com/dp/B0F62PJJJ4'), ('Haudio chip (MT8163 quad-core), 1280×720 screen, listed dimensions, dash-kit and harness fit notice, no Wi-Fi band stated (read 2026-11-14)', 'https://pricehistory.app/p/haudio-10-1-inch-double-din-android-arDKvtQ2'), ("Haudio return and refund policy: 90-day return window for new, unused units (tell Haudio within 14 days, buyer pays return shipping), faulty units reported within 30 days, '2-year Free Warranty' banner with a one-year repair service for units bought from haudiocarstereo.com, other sellers' buyers sent to that seller (read 2026-11-14)", 'https://haudiocarstereo.com/pages/return-refund-policy'), ("Binize 10 Inch Double Din: $129.99, Android, quad-core A7, 2 GB / 32 GB, 'Mirrorlink Yes', harness requires manual soldering (read 2026-11-14)", 'https://www.binize.com/products/double-din-car-stereo'), ("Binize 10 Inch Android 12 Car Radio: $209.99, 1024×600, 'not for Samsung' on Autoplay and Mirrorlink, ZLink app for wireless CarPlay (read 2026-11-14)", 'https://www.binize.com/products/android-12-car-radio'), ("Same 'not for Samsung' and ZLink wording on Binize's $239.99 10-inch Android 12 Car Stereo (read 2026-11-14)", 'https://www.binize.com/products/android-12-car-stereo'), ("Binize FAQ: 'approximately 85% of Samsung mobile phones may not be compatible' (read 2026-11-14)", 'https://www.binize.com/products/carplay-radio-for-civic-2006-2007-2008-2009-2010-2011-stereo'), ("Binize Corolla Android 13 unit states '2.4G+5G dual-band WiFi' (read 2026-11-14)", 'https://www.binize.com/products/android-13-car-stereo-for-toyota-corolla-2014-2016'), ('Eonon UA13 Plus: $229.99 list, sold out / pre-order, RK3562 4-core, 2 GB / 32 GB, 1280×720, wireless CarPlay and Android Auto, ISO connector, 2-year warranty (read 2026-11-14)', 'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/UA13%20Plus.html'), ('Eonon UA12S Plus-6G: $319.99 list, sold out / pre-order, Kryo 260 8-core, 6 GB / 64 GB, 1280×720 QLED, ISO connector, 2-year warranty (read 2026-11-14)', 'https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/UA12S%20Plus-6G.html'), ('Google: wireless Android Auto needs Android 11, 5 GHz Wi-Fi support, an active data plan and a compatible stereo (read 2026-11-14)', 'https://support.google.com/androidauto/answer/6348019?hl=en')],
+ "published": '2026-11-03',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 
 {'slug': 'best-pet-camera-with-treat-dispenser-under-100',
  'question': 'G87 (Awin brands: pet camera with a treat dispenser under $100)',
