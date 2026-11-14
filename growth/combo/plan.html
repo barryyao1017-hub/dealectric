@@ -1,0 +1,126 @@
+<title>Combined Page Method</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, a decision flow drawn as a stepped ledger, tables for rules and budgets. */
+:root {
+  --bg: #f7f8f5; --surface: #ffffff; --fg: #1c2420; --muted: #5b6660; --line: #d5dad3;
+  --accent: #0f6b4f; --accent-soft: #e2f1ea; --warn: #9a5b00; --warn-soft: #fbf0db;
+  --text: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --surface: #1a201d; --fg: #e6ebe7; --muted: #9aa69f; --line: #2e3833;
+  --accent: #5fd0a6; --accent-soft: #163428; --warn: #f0b95a; --warn-soft: #3a2c10; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --surface: #1a201d; --fg: #e6ebe7; --muted: #9aa69f; --line: #2e3833;
+  --accent: #5fd0a6; --accent-soft: #163428; --warn: #f0b95a; --warn-soft: #3a2c10; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--text); }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 6px; font-weight: 600; text-wrap: balance; }
+h2 { font-size: 1.2rem; margin: 40px 0 10px; font-weight: 600; text-wrap: balance; }
+h3 { font-size: 1rem; margin: 22px 0 6px; font-weight: 600; }
+p { margin: 0 0 12px; } ul, ol { margin: 0 0 12px; padding-left: 22px; } li { margin-bottom: 6px; }
+.sub { color: var(--muted); margin-bottom: 22px; }
+.lead { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 14px 16px; border-radius: 4px; }
+.warn { background: var(--warn-soft); border-left: 4px solid var(--warn); padding: 12px 16px; border-radius: 4px; }
+code { font: 0.86em var(--mono); background: var(--surface); border: 1px solid var(--line); padding: 1px 5px; border-radius: 3px; }
+.scroll { overflow-x: auto; margin: 0 0 14px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; background: var(--surface); }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border: 1px solid var(--line); }
+th { font-weight: 600; background: var(--accent-soft); }
+td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.flow { list-style: none; padding: 0; margin: 0 0 14px; display: grid; gap: 8px; counter-reset: s; }
+.flow li { counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px 10px 46px; position: relative; margin: 0; }
+.flow li::before { content: counter(s); position: absolute; left: 12px; top: 10px; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); color: var(--bg); font: 500 0.8rem/22px var(--mono); text-align: center; }
+.flow .new { border-color: var(--accent); }
+.tag { font: 500 0.72rem var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
+.ex { font: 0.9rem/1.5 var(--mono); background: var(--surface); border: 1px dashed var(--line); padding: 10px 12px; border-radius: 4px; margin: 0 0 12px; overflow-wrap: anywhere; }
+</style>
+<div class="wrap">
+<h1>Combined page method: gap page + bundle + price check</h1>
+<p class="sub">Proposal, 2026-11-13. An ad hoc run of at least 50 new pages, built apart from the daily flow.</p>
+
+<p class="lead"><strong>The flow you saw stays as it is. Two steps are added for this run only: after the ChatGPT harvest a page is routed to a single-product page or a bundle page, and after research every pick gets a same-day price check against the major sellers.</strong> Work happens in a separate checkout (<code>~/code/dealectric-combo</code>, branch <code>combo-1113</code>) with new files only, so the daily tools and their defaults do not change.</p>
+
+<h2>The combined flow</h2>
+<ol class="flow">
+  <li><strong>Discover</strong> candidate questions (broadened, see below), ordered by brand value, solar first.</li>
+  <li><strong>Harvest</strong>: 2 plain ChatGPT chats per question. Kept: its search words, the pages it cited, the products it showed cards for.</li>
+  <li class="new"><span class="tag">new</span><strong>Shape decision</strong>: one agent reads the harvest and our catalog and picks <em>single</em>, <em>kit</em> (one bundle) or <em>bundle comparison</em> (2–4 kits). Rules in the next section.</li>
+  <li><strong>Research</strong> on Fable 5.2 (Opus 5.5 fallback): the six gap-page angles for a single page, the five kit angles (sizing, compatibility, traps, carts, alternatives) for a bundle. Compose, verify every source, one fix pass, pick check.</li>
+  <li class="new"><span class="tag">new</span><strong>Price check</strong> on each product or kit the page sells: our price through the link against the brand store and the major US sellers, same day.</li>
+  <li><strong>Carts and codes</strong>: codes cart-tested on the exact product; kits filled in a real cart with every published code tried.</li>
+  <li><strong>Build and gate</strong>: build under the repo lock, <code>docsguard</code>, the ChatGPT readability check at ranks 1, 3 and 6. Commit per page.</li>
+  <li><strong>Publish</strong> in batches: push, Worker deploy, IndexNow, Pages deploy confirmed, each page read live.</li>
+</ol>
+
+<h2>When a page becomes a bundle</h2>
+<p>Most pages stay single-product pages. A page becomes a bundle only when all four hold:</p>
+<div class="scroll"><table>
+<tr><th>Test</th><th>Evidence used</th></tr>
+<tr><td>The shopper's problem needs more than one item</td><td>ChatGPT's own answer in the harvest names accessories or a second product, or the question is a setup or situation ("for a sump pump in an outage", "what do I need for…")</td></tr>
+<tr><td>Putting the set together takes knowledge</td><td>A sizing, connector or compatibility fact decides whether the set works (panel voltage vs. input limit, charger vs. battery chemistry)</td></tr>
+<tr><td>One cart can hold it</td><td>At least two items from one Shopify store we link, or one Amazon cart. Never two stores behind one link</td></tr>
+<tr><td>ChatGPT has no product card for the set</td><td>The 11-13 card probe: ChatGPT writes its own link almost only for products without a catalog card (1 in 106 carded rows, 6 in 10 uncarded kit rows). Checked from the cards in the harvest chats</td></tr>
+</table></div>
+<p>If the set fails any test, the page is a normal single-product gap page. A store's own bundle SKU (power station plus panel sold as one item) counts as a kit when it has no card.</p>
+
+<h2>The price check</h2>
+<p>For each pick, read the same model's price the same day from: the brand's official store without our link, Amazon (its product page), and Google Shopping's listings from the major US retailers (Walmart, Best Buy, Newegg, Home Depot, Lowe's, Target, B&amp;H, Costco, Micro Center, Adorama). Where ChatGPT's harvest chats showed a card for the product, its seller and price are added. Resellers, used and open-box listings are not counted.</p>
+<p>The section appears <strong>only when the price through our link is strictly the lowest</strong> of the sellers checked. It goes in the line under the title, where ChatGPT reads first, and again as a small table:</p>
+<p class="ex">Lowest of 5 sellers checked 2026-11-13: $359.10 through this link (discount applied in ALLPOWERS's cart, tested 2026-11-13). Amazon $399, Walmart $389.99, Best Buy $399.99, iallpowers.com $399 without the link.</p>
+<ul>
+  <li>Tie or higher: no section and no "lowest" wording. The page keeps its normal price line.</li>
+  <li>The claim needs a cart test on that exact product, with the discount applied by the link.</li>
+  <li>Kits compare the cart total through our link with the same cart in the store without it.</li>
+  <li>An Amazon-linked pick gets the section when Amazon is the lowest seller checked (Amazon's written permission, 11-12).</li>
+  <li>Every price carries its date. The line is hidden once the check is 10 days old, until it is re-run.</li>
+</ul>
+
+<h2>Broadening discovery to 50+ pages</h2>
+<p>The daily discovery now yields about 4 clusters a day. The 500-search floor mostly tests whether Bing Webmaster has a count at all (it counted 30 of 900 queries on 11-11, and Ad Insight is still blocked), so it cannot feed 50 pages. For this run candidates come from five sources, all real shopper wording, none invented:</p>
+<div class="scroll"><table>
+<tr><th>Source</th><th>What it adds</th><th class="n">Target</th></tr>
+<tr><td>Solar and power situations</td><td>Autocomplete for situation and setup stems over every solar and power brand we link (ALLPOWERS, BLUETTI, Anker SOLIX, Nature's Generator, Growatt, Sun Gold Power, Vatrer, Redodo, plus EcoFlow, Jackery and Goal Zero on Amazon)</td><td class="n">25–30</td></tr>
+<tr><td>Kit-shaped questions</td><td><code>kitmine.py</code>: "what do I need for X", "X setup", "X essentials" over our categories</td><td class="n">10–15</td></tr>
+<tr><td>The unscored pool</td><td>~20,000 labelled autocomplete queries with no Webmaster count. Ranked by suggestion depth and brand value in place of a count</td><td class="n">15–20</td></tr>
+<tr><td>Skipped backlog</td><td>33 clusters skipped for "no product we list". Re-checked now that a one-cart Amazon bundle or a new brand can fill them</td><td class="n">5–10</td></tr>
+<tr><td>ChatGPT follow-up questions</td><td>The 11-10 follow-up run: the second question shoppers ask after an answer, often an accessory or fit question</td><td class="n">5</td></tr>
+</table></div>
+<p>Every candidate, whatever its source, must pass the same gates before research:</p>
+<ul>
+  <li>a general question, with no brand or model name;</li>
+  <li>Claude coverage under 0.3;</li>
+  <li>ChatGPT searches the web for it in both harvest chats, and does not already retrieve one of our pages for it;</li>
+  <li>a product or one-cart kit we link honestly wins it, from a brand selling at $150 or more (value order, as set today);</li>
+  <li>no existing page answers the same ChatGPT search words. We already have 73 solar and power pages, so this check matters most there.</li>
+</ul>
+<p class="warn"><strong>One rule relaxed for this run only.</strong> Where Webmaster has a count, the 500 floor stays. Where it has none, demand is judged by how early autocomplete suggests the query and by ChatGPT searching for it. The daily flow keeps the 500 floor as you decided on 11-11.</p>
+
+<h2>Budgets and pace</h2>
+<div class="scroll"><table>
+<tr><th>Resource</th><th>Now</th><th>This run needs</th></tr>
+<tr><td>Claude plan (weekly, all models)</td><td class="n">24% used, resets 11-18</td><td>About 11 agent calls per page, so roughly 600 calls for 55 pages. Another session is re-researching 66 existing pages on the same plan. If the limit is hit, research falls back to Opus, then waits</td></tr>
+<tr><td>Claude coverage readings</td><td class="n">0 of 60 today</td><td>About 150. Raised for this run with the one-off override; the daily cap is untouched</td></tr>
+<tr><td>ChatGPT chats</td><td class="n">shared Agent Chrome</td><td>About 140 harvest chats, one at a time, never while another session is chatting</td></tr>
+<tr><td>Google Shopping reads</td><td class="n">CAPTCHA after ~40</td><td>About 100, paced over several sittings. A CAPTCHA stops the sitting; it is never solved</td></tr>
+<tr><td>Bing Webmaster lookups</td><td class="n">300 a day</td><td>Used fully; not a limit for this run</td></tr>
+</table></div>
+<p>Pages publish in batches as they pass, through tonight and tomorrow. Nothing publishes before tooling and discovery are done, which is a few hours away.</p>
+
+<h2>How the run stays separate, and how it will be read</h2>
+<ul>
+  <li>New files only: <code>tools/combopage.py</code> (router, price check, apply) and <code>growth/combo/</code>. It calls the existing research and kit tools without editing them. The one renderer addition in <code>build.py</code> is behind a new record flag, and I will confirm every existing page builds byte-for-byte the same.</li>
+  <li>Every page record carries <code>"run": "combo-1113"</code> and its shape and price flags, so the batch can be read apart or rolled back.</li>
+  <li>Reading: two plain ChatGPT chats per page once OpenAI's crawler has fetched it, scored on North Star 3 (buy link written when our page is in the results). Groups: bundle vs. single, price section vs. none, against the 11-10 and 11-11 research-method pages.</li>
+</ul>
+
+<h2>Two cautions</h2>
+<ul>
+  <li><strong>Sample size.</strong> Fifty pages split by shape and price section gives cells of 10 to 20 pages. That can show a large move in handover, not a small one. The readings so far say retrieval is the gate (kit pages were retrieved in 1 of 16 chats), so I will favour questions where ChatGPT's results are weak.</li>
+  <li><strong>Price claims age.</strong> Walmart and Best Buy prices move daily and nothing refreshes them unattended yet. The 10-day expiry keeps a stale "lowest" off the site; keeping the lines alive past that needs a re-check before each reading.</li>
+</ul>
+</div>

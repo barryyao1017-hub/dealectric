@@ -1517,6 +1517,78 @@ def amazon_row_link(asin):
     return f"https://www.amazon.com/dp/{asin}?tag={LINKS['amazon']['us']['tag']}"
 
 
+# Combo run 2026-11-13 (Barry): src/pricecheck.json holds, for products on pages flagged "price_check", the same-day prices
+# of the sellers checked (tools/combopage.py price): {"products": {slug: {"date", "how", "sellers": [[name, price], ...]}}}.
+# "how" says what our link's price is: "link" (discount applied by the link, cart-tested on this product), "store" (the
+# brand store's own price, which the link opens) or "amazon" (Amazon's price, read by tools/amzprice.py). The line shows
+# only while our link's price is strictly the lowest and the check is at most PRICECHECK_DAYS old.
+try:
+    PRICECHECK = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pricecheck.json"), encoding="utf-8"))
+except FileNotFoundError:
+    PRICECHECK = {"products": {}}
+PRICECHECK_DAYS = 10
+
+
+def price_check_data(p):
+    """(our price, how, entry) when the product's price check is fresh and our link's price is strictly the lowest."""
+    b = PRICECHECK["products"].get(p["slug"])
+    if not b or not b.get("sellers") or (datetime.date.today() - datetime.date.fromisoformat(b["date"])).days > PRICECHECK_DAYS:
+        return None
+    how = b.get("how")
+    if how == "amazon":
+        a = amz_price(p["asin"]) if is_amazon(p) else None
+        ours = a[0] if a and a[2] else None
+    elif how == "link":
+        c, _, after, _ = best_offer(p)
+        ours = bc_after(p, after) if c and applied_by_link(p, c) and not borrowed_test(p, c) else None
+    else:
+        ours = p.get("price")
+    if ours is None or min(x for _, x in b["sellers"]) - ours < max(1.0, 0.01 * ours):
+        return None
+    return ours, how, b
+
+
+def price_check(p, short=False):
+    """'Lowest of 5 sellers checked 2026-11-13: $359.10 through this link (discount applied in ALLPOWERS's cart, tested
+    2026-11-13); Amazon $399, Walmart $389.99, Best Buy $399.99, iallpowers.com $399 without the link' (plain text)."""
+    d = price_check_data(p)
+    if not d:
+        return None
+    ours, how, b = d
+    others = ", ".join(f"{n} {money(x)}" for n, x in b["sellers"])
+    if how == "amazon":
+        mine = f"Amazon {money(ours)} through this link"
+    elif how == "link":
+        c = best_offer(p)[0]
+        mine = f"{money(ours)} through this link" + ("" if short else f" (discount applied in {p['brand']}'s cart, tested {last_test(c, p)['date']})")
+    else:
+        mine = f"{money(ours)} at {store_host(p)} through this link"
+    return f"Lowest of {len(b['sellers']) + 1} sellers checked {b['date']}: {mine}; {others}"
+
+
+def price_check_section(c):
+    """The price-check block under a research-method page's table: one small table per product whose check holds."""
+    if not c.get("price_check"):
+        return ""
+    out = []
+    for r in c["rows"]:
+        p = BY_SLUG.get(r.get("slug") or "")
+        d = price_check_data(p) if p else None
+        if not d:
+            continue
+        ours, how, b = d
+        mine = "Amazon, through this link" if how == "amazon" else f"{store_host(p)}, through this link" + (" (discount applied)" if how == "link" else "")
+        rows = f'<tr><td><strong>{html.escape(mine)}</strong></td><td><strong>{money(ours)}</strong></td></tr>' + "".join(
+            f"<tr><td>{html.escape(n)}</td><td>{money(x)}</td></tr>" for n, x in sorted(b["sellers"], key=lambda s: s[1]))
+        out.append(f'<h3>{html.escape(r.get("model") or short_name(p))}</h3>\n<p>{html.escape(price_check(p))}. '
+                   f'Buy: <a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></p>\n'
+                   f'<div class="scroll"><table><tr><th>Seller</th><th>Price, {b["date"]}</th></tr>{rows}</table></div>')
+    if not out:
+        return ""
+    return ("<h2>Price check</h2>\n" + "\n".join(out) + '\n<p class="small">Same model, new condition, each price read from the seller\'s own '
+            "listing on the date shown. Marketplace resellers, used and open-box listings are not counted. Prices move; the date is when they were read.</p>\n")
+
+
 def pick_line(c):
     """' · Pick: <model>: $list on <store>, $after through this link, ... (tested <date>): <link>' for the first row when
     it is a product we list. One line in the page's first 500-character chunk, which the length model always keeps
@@ -1527,11 +1599,16 @@ def pick_line(c):
         p = BY_SLUG[r["slug"]]
         name = html.escape(r.get("model") or short_name(p))
         link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
+        pc = price_check(p) if c.get("price_check") else None   # combo run 11-13: lowest of the sellers checked
         if is_amazon(p):
+            if pc:
+                return f' · {label}: {name}: {html.escape(pc)}: {link}'
             return f' · {label}: {name}, {amz_price_text(p["asin"])}, buy on Amazon: {link}'
         lo = link_offer(p)
         bc = buy_compare(p) if c.get("buy_compare") else None
-        if bc:
+        if pc:
+            forms = [html.escape(pc), html.escape(price_check(p, short=True)), html.escape(price_check(p, short=True).split(";")[0])]
+        elif bc:
             forms = [html.escape(bc), html.escape(buy_compare(p, short=True))]
         elif not lo:
             forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
@@ -1752,7 +1829,7 @@ def compare_page_v2(c):
 <tr><th>Model</th>{heads}<th>Price</th><th>Buy</th></tr>
 {rows}
 </table></div>
-{video_html}{fill_v2(c['after'])}
+{price_check_section(c)}{video_html}{fill_v2(c['after'])}
 <h2>Sources</h2>
 <ul>
 {"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}
