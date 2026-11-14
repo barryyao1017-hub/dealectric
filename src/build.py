@@ -387,6 +387,14 @@ except FileNotFoundError:
     BUYCOMPARE = {"products": {}}
 
 
+# Barry 11-13: the A/B-treated gap pages ("all_links") read their own seller prices, refreshed on their own schedule, so
+# the DLC-250 pilot's src/buycompare.json stays as its reading needs it. Written by tools/buycompare.py --file.
+try:
+    BUYCOMPARE_AB = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "buycompare_ab.json"), encoding="utf-8"))
+except FileNotFoundError:
+    BUYCOMPARE_AB = {"products": {}}
+
+
 def bc_after(p, after):
     """Cart total through our link when the brand runs a store-wide cart offer that stacks with the code (buycompare.json
     "cart"; UGREEN's "Spend $79+, Save $8", 2026-11-11), so both sides of the comparison are what the cart charges."""
@@ -408,6 +416,47 @@ def buy_compare(p, short=False):
         return f"{money(after)} through this link, discount applied (tested {t['date']}); {others}, checked {b['date']}"
     return (f"{money(after)} through this link, discount applied in {p['brand']}'s cart (tested on this {"kit" if "kit" in p["slug"] else "model"} {t['date']}); "
             f"{others}, checked {b['date']}")
+
+
+def lowest_parts(p):
+    """(price through our link, store, cart-test date, 'Lowest of N sellers checked <date>', [(seller, price), ...]) when
+    our link is the lowest of the sellers checked (src/buycompare.json) and its discount was cart-tested on this exact
+    product (DLC-239), else None."""
+    b = BUYCOMPARE_AB["products"].get(p["slug"])
+    c, _, after, _ = best_offer(p)
+    if not b or not c or not applied_by_link(p, c) or borrowed_test(p, c):
+        return None
+    after = bc_after(p, after)
+    if any(x <= after for _, x in b["sellers"]):
+        return None
+    store = store_host(p)
+    n = len({nm.replace(" without the link", "") for nm, _ in b["sellers"]} | {store})
+    head = f"Lowest of {n} sellers checked {b['date']}" if n > 1 else f"Lowest price checked {b['date']}"
+    return after, store, last_test(c, p)["date"], head, b["sellers"]
+
+
+def lowest_compare(p, short=False):
+    """Gap pages (Barry 11-13; product pages keep buy_compare() until the DLC-250 reading): one stated lowest price, then
+    the sellers it beat: 'Lowest of 4 sellers checked 2026-11-14: $1,170.40 at bluettipower.com through this link,
+    discount applied in the cart (tested on this kit 2026-11-11); Amazon $1,199, Walmart $1,249, bluettipower.com
+    without the link $1,232' (plain text). In reading 2 (DLC-208) ChatGPT quoted the store price from the older
+    "$X through this link; store $Y" line, so our price now leads as the lowest."""
+    x = lowest_parts(p)
+    if not x:
+        return None
+    after, store, tdate, head, sellers = x
+    if short:
+        others = ", ".join(f"{nm.replace(' without the link', '')} {money(v)}" for nm, v in sellers)
+        return f"{head}: {money(after)} through this link (discount applied); {others}"
+    others = ", ".join(f"{nm} {money(v)}" for nm, v in sellers)
+    return (f"{head}: {money(after)} at {store} through this link, discount applied in the cart "
+            f"(tested on this {'kit' if 'kit' in p['slug'] else 'model'} {tdate}); {others}")
+
+
+def gap_compare(c, p, short=False):
+    """The comparison a gap page shows: Barry's 11-13 lowest-of-sellers form on the A/B-treated pages ("all_links"),
+    the older line on the DLC-250 pilot's own lead pages until that reading is in."""
+    return lowest_compare(p, short) if c.get("all_links") else buy_compare(p, short)
 
 
 def _stock_read(p):
@@ -1205,7 +1254,7 @@ def compare_row(c, r):
         if c.get("ai_note") and os.path.exists(os.path.join(IMG_SRC, f"{p['slug']}-square.png")):
             name = (f'<img class="thumb" src="/img/{p["slug"]}-square.png" width="72" height="72" alt="{html.escape(short_name(p))}">' + name)
         price = amz_price_text(p["asin"]) if is_amazon(p) else money(p["price"]) + stock_note(p)
-        bc = buy_compare(p) if c.get("buy_compare") else None
+        bc = gap_compare(c, p) if c.get("buy_compare") else None
         lo = link_offer(p) if c.get("buy_compare") and c0 and applied_by_link(p, c0) and not bc else None
         deal = (f'<strong>{money(after0)} through this link</strong>, discount applied in {html.escape(p["brand"])}\'s cart; '
                 f'tested on this {"kit" if "kit" in p["slug"] else "model"} {last_test(c0, p)["date"]}.' if bc else
@@ -1309,8 +1358,8 @@ def compare_where_to_buy(ours, c, filler=True):
             items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {amz_price_text(p["asin"])}. Buy on Amazon: '
                          f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
             continue
-        if c.get("buy_compare") and (buy_compare(p) or (cd and applied_by_link(p, cd))):
-            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}: {html.escape(buy_compare(p) or link_offer(p)[1])}. Buy: '
+        if c.get("buy_compare") and (gap_compare(c, p) or (cd and applied_by_link(p, cd))):
+            items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}: {html.escape(gap_compare(c, p) or link_offer(p)[1])}. Buy: '
                          f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
             continue
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
@@ -1486,11 +1535,12 @@ def compare_row_v2(c, r):
             price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
             cd, sv, after, date = best_offer(p)
             lo = link_offer(p)
-            bc = buy_compare(p) if c.get("buy_compare") and c.get("all_links") else None
-            if bc:   # DLC-208 third A push: other sellers' same-day prices beside ours, exact-item cart test named
-                head, rest = bc.split(" through this link, ", 1)
-                buy = (f'{a}<strong>{head}</strong> through this link</a><br>'
-                       f'<span class="small">{html.escape(rest)}</span>')
+            bc = gap_compare(c, p) if c.get("buy_compare") and c.get("all_links") else None
+            if bc:   # DLC-208 third A push, Barry 11-13 form: our price as the lowest of the sellers checked that day
+                lp, _, tdate, head, sellers = lowest_parts(p)
+                buy = (f'{a}<strong>{money(lp)}</strong> through this link</a><br>'
+                       f'<span class="small">{head}; discount applied in the cart (tested {tdate}); '
+                       f'{html.escape(", ".join(f"{nm} {money(v)}" for nm, v in sellers))}</span>')
             elif lo:
                 how = ("discount applied by the link" if applied_by_link(p, cd)
                        else f"code {html.escape(cd['code'])} at checkout")
@@ -1530,9 +1580,9 @@ def pick_line(c):
         if is_amazon(p):
             return f' · {label}: {name}, {amz_price_text(p["asin"])}, buy on Amazon: {link}'
         lo = link_offer(p)
-        bc = buy_compare(p) if c.get("buy_compare") else None
+        bc = gap_compare(c, p) if c.get("buy_compare") else None
         if bc:
-            forms = [html.escape(bc), html.escape(buy_compare(p, short=True))]
+            forms = [html.escape(bc), html.escape(gap_compare(c, p, short=True))]
         elif not lo:
             forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
         else:
