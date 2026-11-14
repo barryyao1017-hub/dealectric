@@ -1,0 +1,130 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the headline watts on each side are not the same thing: one 12V 100Ah LiFePO4 battery behind an inverter is capped at 1,280 W by the battery itself (Redodo: '1280W Large Output Power … under 1C discharging'), whatever the inverter's label says; BLUETTI's '2,700W Lifting Power' and EcoFlow's '2,600W X-Boost' are separate figures from surge (EcoFlow lists 3,600 W surge apart from X-Boost, and BLUETTI gives no surge figure at all); and the cycle counts (4,000+, 6,000+, '4000+ at 100% DOD') use different end points, with only BLUETTI stating one (80%).",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no search and got no results, so there were no rival pages to read. Its answer is a generic feature table (built-in battery yes/no, cost higher/lower) with no wattage, capacity, cycle-life or price figures. Any normalised spec is new against that answer, but no single finding decides the pick by itself, so 2 rather than 3.",
+ "decides": "It confirms a split instead of reversing it. On price per stored Wh, the inverter route wins: the Redodo 12V 100Ah is $242.99 for 1,280 Wh (about $0.19/Wh, inverter, cables and charger extra), while the DELTA 3 Classic is $479 for 1,024 Wh (about $0.47/Wh) and the BLUETTI Elite 100 V2 is $499 for 1,024 Wh (about $0.49/Wh). But on one 12V 100Ah battery, buying an inverter bigger than about 1,280 W gets you nothing; you need more batteries in parallel. A power station's AC rating is a figure the maker states for the whole unit (1,800 W continuous on both 1 kWh stations; EcoFlow adds 3,600 W surge). Compare a power station's surge figure, not its X-Boost or Lifting figure, with the battery-plus-inverter limit. Shoppers who need more than about 1.2 kW from a single box without wiring should pick the power station. Shoppers who already own a 12V LiFePO4 battery and run loads under about 1.2 kW should pick the inverter.",
+ "candidates": [
+  "EcoFlow DELTA 3 Classic",
+  "BLUETTI Elite 100 V2",
+  "Jackery HomePower 1000 v2",
+  "Jackery Explorer 1500 v2",
+  "Redodo 12V 100Ah LiFePO4 (with a separate inverter)",
+  "Redodo 12V 100Ah Group 31 Bluetooth (with a separate inverter)"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Capacity / cycle life with end point",
+   "value": "1,024 Wh LiFePO4; 4,000+ cycles to 80% of original capacity",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "Spec text on the page reads '4,000+ Cycles to 80% Original Capacity'. It is the only candidate whose maker states the end-of-life point."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "AC output: rated vs 'Lifting Power'",
+   "value": "1,800 W rated (120 V, 15 A); 2,700 W 'Lifting Power'; no surge figure on the page",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "The page does not explain 'Lifting Power' in a footnote and gives no surge or peak watts. The 2,700 W must not be compared with other makers' surge figures."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "storecheck.py and the page both show $499. $499 / 1,024 Wh is about $0.49 per Wh."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "AC output: rated vs surge vs X-Boost",
+   "value": "1,800 W rated; 3,600 W surge; X-Boost 'up to 2600W'",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-13",
+   "note": "Read from the store product text through storecheck.py. EcoFlow lists surge and X-Boost as separate figures, so X-Boost is not a surge rating. The product copy lists 'refrigerators' and 'air conditioner' among X-Boost devices."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price, EcoFlow US store",
+   "value": "$479.00 standalone (1,024 Wh); $459.00 with bag",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-13",
+   "note": "Variant prices from storecheck.py product. The 'DELTA 3 Classic (1024Wh)' variant is $479 (compare-at $599). $479 / 1,024 Wh is about $0.47 per Wh."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "Capacity / output / cycle life as stated",
+   "value": "1,024 Wh; 1,500 W output; '6,000+ cycles' (no end-of-life % in the store text)",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-13",
+   "note": "Read from the store product text through storecheck.py search. WebFetch of the page's spec table returned HTTP 429 three times, so I could not read the cycle end point."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "Price, Jackery US store",
+   "value": "$549.00",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-13",
+   "note": "storecheck.py shows $549 (compare-at $1,049). The page notes the black version is sold out. $549 / 1,024 Wh is about $0.54 per Wh."
+  },
+  {
+   "product": "Jackery Explorer 1500 v2",
+   "label": "AC rated vs surge / cycle life as stated",
+   "value": "1,536 Wh; 2,000 W rated, 4,000 W surge; '6,000+ Life Cycles'; $849.00",
+   "source": "https://www.jackery.com/products/jackery-explorer-1500-v2-portable-power-station",
+   "source_title": "Jackery Explorer 1500 v2 Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Store product text through storecheck.py. No end-of-life % is stated in that text."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 31 Bluetooth",
+   "label": "Maximum continuous output of the battery (caps any inverter on it)",
+   "value": "1,280 W at 1C; 1,280 Wh",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Group 31 Bluetooth Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Store text: '1280W Large Output Power & 1280Wh High Energy … (Under 1C discharging)'. 12.8 V × 100 A = 1,280 W, so a single battery cannot feed an inverter rated above about 1,280 W continuous. Price is $259.99."
+  },
+  {
+   "product": "Redodo 12V 100Ah LiFePO4 (Best Budget)",
+   "label": "Cycle life as stated / price",
+   "value": "'4000+ cycles at 100% DOD', no end-of-life % stated; $242.99 for 1,280 Wh",
+   "source": "https://www.redodopower.com/products/12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah LiFePO4 Lithium Battery | Best Budget",
+   "read": "2026-11-13",
+   "note": "Read from storecheck.py search text. $242.99 / 1,280 Wh is about $0.19 per Wh, before buying an inverter, charger, fuse and cables. The cycle count is to an unstated end point, so it cannot be compared directly with BLUETTI's 'to 80%'."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24",
+   "label": "Maker's own limit on high-power loads",
+   "value": "'NOT suitable for … high-power applications such as water pumps, electric jacks, elevator lifts, pool vacuums, or mowers'",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-group-24-deep-cycle-battery",
+   "source_title": "Redodo 12V 100Ah Group 24 Deep Cycle LiFePO4 Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Store text through storecheck.py. Price is $249.99. Pump and motor loads are what a large inverter would be bought for, and the maker excludes them."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Classic cycle life and its end-of-life %: the store text says only '10 years', and the maker's spec table returned HTTP 429. Search snippets said '4,000 cycles to 80%', but I did not use them because I could not open the page.",
+  "How X-Boost and BLUETTI Lifting Power work (that they lower output voltage for resistive loads): I found this only in third-party explainers and forum posts. The maker manuals I tried returned 403 on manuals.plus, and the BLUETTI PDF on s4.bluettipower.com was the Handsfree 2 manual and could not be read.",
+  "Jackery HomePower 1000 v2 and Explorer 1500 v2 cycle end-of-life % (Jackery often states 70%): the product page spec table returned HTTP 429 three times.",
+  "Redodo continuous BMS current and inverter-sizing note from the spec table: the page and storecheck product both returned HTTP 429. Only the 1C / 1,280 W store text was read.",
+  "A named reviewer's measured usable AC Wh (inverter losses) for any 1 kWh candidate, and a 12V inverter's measured efficiency or no-load draw: not searched, because the tool budget was used up on rate-limited maker pages.",
+  "Amazon prices for EcoFlow DELTA 3 Plus, Anker SOLIX C1000 Gen 2 and Jackery Explorer 1000 v2: amzcheck.py was not run."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1940503999999998
+ }
+}

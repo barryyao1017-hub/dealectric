@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a car's 12 V accessory socket can only supply about 100–150 W. That limit applies both to a plug-in inverter and to a power station charging from the car. To get more AC power from the car, an inverter has to be wired straight to the battery with a 150–250 A fuse.",
+ "standout": 3,
+ "standout_why": "ChatGPT's search returned no results and it cited no pages, so the only thing to compare against is its own answer. That answer recommends an inverter 'to convert vehicle battery power into household AC electricity' and says nothing about the 100–150 W socket limit, the need to wire larger inverters to the battery, or the slow car charging of power stations.",
+ "decides": "Up to about 150 W from a car (phones, laptops, a CPAP), a cheap plug-in inverter is the right buy. Above that, an inverter only works if it is wired to the battery with a 150–250 A fuse (Xantrex PROwatt SW), and it then runs off the car's own battery. A power station such as the BLUETTI Elite 100 V2 delivers 1,800 W from its own battery with no wiring. Recharging it through the car socket is limited to about 100 W, though, unless you add a battery-wired charger like the 560 W BLUETTI Charger 1. So the pick comes down to the wattage the shopper needs and whether they will wire anything to the car battery.",
+ "candidates": [
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Charger 1",
+  "Xantrex PROwatt SW 1000",
+  "Cobra CPI 400"
+ ],
+ "findings": [
+  {
+   "product": "Cobra CPI 400",
+   "label": "Limit when plugged into the cigarette-lighter socket",
+   "value": "150 W; above that, connect directly to the battery",
+   "source": "https://www.manualslib.com/manual/29206/Cobra-Cpi-400.html?page=7",
+   "source_title": "Cobra CPI 400 owner's manual, Connecting Cables (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Exact wording: 'Do not use the cigarette cord for loads higher than 150 watts.' and 'If the inverter is to be used at levels above 150 watts for extended periods of time, a direct connection to the battery is recommended.' This is from a 400 W inverter, so the plug lets it use less than half of its rating."
+  },
+  {
+   "product": "general",
+   "label": "Typical fuse on a car's lighter socket and the usable inverter power",
+   "value": "10–15 A fuse; about 100 W of inverter output through the plug",
+   "source": "https://caraudio.manualsonline.com/manuals/mfg/directed_video/vdc301.html?p=14",
+   "source_title": "Directed Video VDC301 150 W inverter manual, p.14 (ManualsOnline)",
+   "read": "2026-11-13",
+   "note": "Exact wording: 'Most cigarette lighter currents are fused between 10-15 amps.' and 'CONNECT DIRECTLY TO POWER SOURCE WHEN OPERATING ABOVE 100 WATTS.' Our arithmetic: 10–15 A × 12 V = 120–180 W before inverter losses."
+  },
+  {
+   "product": "BLUETTI Charger 1",
+   "label": "Lighter-socket charging power for a power station, and the battery-wired alternative",
+   "value": "Lighter socket: about 100 W (12 V vehicle) or about 200 W (24 V vehicle). Charger 1: up to 560 W while the engine runs. Price $219 (was $249).",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-1",
+   "source_title": "BLUETTI Charger 1 (BLUETTI US store)",
+   "read": "2026-11-13",
+   "note": "FAQ wording: 'A standard cigarette lighter port in a 12V vehicle outputs around 100W, while a 24V vehicle outputs about 200W.' The page also says the charger 'delivers up to 560W of power while your vehicle is running'. Its install steps include 'Connect to Car battery'. Price is from the store listing today. BLUETTI says Charger 1 charges a 1 kWh power station in about 2.5 h. Our arithmetic: at about 100 W through the lighter socket, the same 1,024 Wh would take about 10 h."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Capacity, AC output, switchover time and price",
+   "value": "1,024 Wh; 1,800 W AC rated (2,700 W lifting); switchover ≤10 ms; $499",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-13",
+   "note": "Page wording: '1,800W In Total, 120V, 15A' and '1,800W output (2,700W Lifting Power)'. The page lists UPS switching time as '≤10 ms'. The $499 standalone price is from the store listing and the page today, which also shows a Black Friday Early Access promotion (Nov 5–18). Because it runs on its own battery, the 1,800 W is not limited by the car socket. The page gives no car-input voltage or amp figure."
+  },
+  {
+   "product": "Xantrex PROwatt SW 1000",
+   "label": "How a 1,000 W-class inverter connects to the battery and the fuse it needs",
+   "value": "Hardwire only; 900 W continuous / 2,000 W surge; 12 V nominal (10.5–15.5 V range); 150 A DC fuse recommended (2000 model: 1,800 W continuous, 250 A fuse); no-load draw under 0.6 A",
+   "source": "https://xantrex.com/products/inverters/prowattsw/",
+   "source_title": "Xantrex PROwatt SW Inverter (xantrex.com)",
+   "read": "2026-11-13",
+   "note": "The spec table lists only a hardwired DC connection, with no plug option. Our arithmetic: 900 W ÷ 12 V ≈ 75 A before conversion losses, which is why it needs a 150 A fuse and cannot run from a 10–15 A lighter socket."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 / DELTA 3 Plus and Jackery Explorer 1000 v2 car-input specs (V, A, W): their US store pages and storecheck returned HTTP 429",
+  "Anker SOLIX C1000 Gen 2 car-input spec: the URL I guessed for the product page returned 404",
+  "Tripp Lite / Eaton PowerVerter manual wording on the lighter-plug limit: the owner's manual URL redirected to an Eaton acquisition page, the eaton.com SKU page timed out, and the PV400USB PDF text was compressed so it could not be read",
+  "BESTEK 300 W inverter manual (150 W lighter limit, 150–300 W needs battery cable): the manuals.plus page returned 403 and the PDF text was unreadable, so I only saw this in a search snippet and did not use it",
+  "BLUETTI Elite 100 V2 car-charging input in volts, amps or watts: the product page gives only '6× faster' and 'Full in 1.8 Hours' (likely with Charger 1) and no electrical figure",
+  "Any inverter maker's wording on how long you can run an inverter from a starter battery with the engine off before the car won't start: not found on the pages I opened"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9345623000000001
+ }
+}

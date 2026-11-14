@@ -1,0 +1,94 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states the limit that decides each setup: an inverter is capped by the 12 V battery's BMS (Redodo 12V 100Ah: 100 A BMS, 1,280 W; Vatrer 12V 100Ah Group 24: 150 A BMS, about 1,920 W), and a power station like the Anker SOLIX C1000 Gen 2 recharges from a 12 V car socket only through its 11–28 V, 8.2 A input (about 100 W, so 10+ hours for its 1,024 Wh).",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no search and got no result pages, so no rival page states any pairing limit. Its answer only says an inverter is 'best for cars, RVs, solar and battery systems' and needs an 'external battery'. It never says that the battery's BMS current caps the inverter size, that a car socket caps how fast a power station recharges, or that the C1000 Gen 2 cannot take an extra battery. All three come from the makers' own US pages.",
+ "decides": "This turns the answer into a sizing rule. Buy an inverter only if your 12 V battery's BMS can supply its full draw: a 1,000 W inverter fits a 100 A or 150 A 100 Ah battery, but a 2,000 W inverter needs more than either can give. Buy a power station if you want to plug in and go, knowing that a car socket refills about 1 kWh overnight, not during a short drive, and that some models (C1000 Gen 2) cannot grow their capacity. For a battery you already own, the inverter is the pick: a Vatrer 1000 W pure sine inverter is $129.99 against $259.99 for the battery.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "Vatrer 12V 100Ah Group 24 (150A BMS)",
+  "Vatrer 1000W Pure Sine Wave Inverter 12V",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Redodo 12V 100Ah Group 31 Bluetooth",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar / car-charging DC input",
+   "value": "11–28 V ⎓ 8.2 A; 29–60 V ⎓ 14.5 A (600 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The spec table lists no separate car-charging input. A 12 V car socket falls in the 11–28 V band, so input stops at 8.2 A. My arithmetic: 12.0–14.4 V × 8.2 A ≈ 98–118 W, so the 1,024 Wh battery takes 10 hours or more from a car (before losses)."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Expandable capacity",
+   "value": "No (the FAQ says the unit 'does not include an expansion feature')",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Spec table: 'Expandable Capacity: No'. This is the maker's own exclusion: no add-on battery fits this model."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC output / AC charging / car outlet",
+   "value": "2,000 W rated, 3,000 W peak, 120 V 60 Hz; AC charging 1,200 W max (1,600 W UltraFast); car outlet 12 V ⎓ 10 A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The 3,000 W peak comes from the page's comparison table. The US price did not show in the fetched page."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 (UL 1973)",
+   "label": "BMS current and price",
+   "value": "150 A smart BMS; $259.99 (compare-at $359.99)",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery for RVs and Trolling Motors with Bluetooth and 150A BMS",
+   "read": "2026-11-13",
+   "note": "Read from Vatrer's Shopify store with storecheck.py search; the product-page fetch returned HTTP 429. My arithmetic: 150 A × 12.8 V nominal ≈ 1,920 W of continuous inverter input, before inverter loss. The page says the BMS stops charging below 32°F."
+  },
+  {
+   "product": "Vatrer 1000W Pure Sine Wave Inverter 12V",
+   "label": "Price (pairs with the 12 V battery above)",
+   "value": "$129.99",
+   "source": "https://www.vatrerpower.com/products/vatrer-1000-watt-pure-sine-wave-inverter-12v-dc-to-110v-120v-ac-power-inverter",
+   "source_title": "Vatrer 1000 Watt Pure Sine Wave Inverter 12V DC to 110V/120V AC Power Inverter",
+   "read": "2026-11-13",
+   "note": "Store listing via storecheck.py. It lists undervoltage, overvoltage, overload, short-circuit, overheat and reverse-polarity protection. 1,000 W at roughly 90% efficiency draws about 87 A at 12.8 V (my arithmetic), which is inside the 150 A BMS above."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 31 Bluetooth",
+   "label": "Max output power and price",
+   "value": "1,280 W output; $259.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Group 31 Bluetooth Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Store listing via storecheck.py search: '1280W Large Output Power & 1280Wh High Energy'. Redodo's 12V 100Ah series page says every model has an 'Advanced 100A BMS' (100 A × 12.8 V = 1,280 W), so an inverter on this battery should stay under about 1,280 W of input."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "Maker's stated exclusions and price",
+   "value": "'NOT suitable for use as a starter battery, golf cart battery, or for high-power applications such as water pumps…'; $259.99",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "Store listing via storecheck.py search; the product-page fetch returned HTTP 429. It also says the battery expands to 4P4S (20.48 kWh) and that the recommended charge current is 20 A (0.2C)."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 car-charging input (said to be 12–16 V ⎓ 8 A): jackery.com returned HTTP 429 three times. The only page that opened was a retailer (mrsolar.com), which also lists 230 V output, wrong for the US unit, so I did not use it. The same goes for its note that the unit is 'not compatible with Explorer 1000 Plus Battery Pack'.",
+  "EcoFlow DELTA 3 Plus car-charging input and compatible extra batteries: us.ecoflow.com returned 429/404, and no official DELTA 3 Plus manual PDF turned up in search.",
+  "A maker's figure for the most a car lighter-socket inverter can draw (Eaton/Tripp Lite PV150: 150 W, 14 A at 12 VDC): eaton.com and the Mouser datasheet PDF both timed out.",
+  "Vatrer 1000 W inverter continuous/surge spec, input current and recommended fuse/cable size, and the Vatrer battery's peak current: product pages returned HTTP 403/429.",
+  "Redodo Group 24 Bluetooth BMS rating from its own product page (only the series-wide '100A BMS' line was readable)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9978388999999996
+ }
+}
