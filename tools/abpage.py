@@ -504,6 +504,9 @@ def record_text(draft: dict, old: dict | None, gnum: int | None) -> str:
     for k in ("video",):
         if old and k in old:
             rec[k] = old[k]
+    for k in ("all_links", "buy_compare", "keep_pick"):   # group A's buy-link treatment, when the draft carries it (11-14)
+        if draft.get(k):
+            rec[k] = True
     body = ",\n ".join(f'"{k}": {v!r}' for k, v in rec.items())
     tag = f"G{gnum}: " if gnum else ""
     return f"# ---------------- {tag}{draft['slug']} (research method {METHOD}, {today()}) ----------------\n{{{body}}},\n"
