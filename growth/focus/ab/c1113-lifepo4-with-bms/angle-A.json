@@ -1,0 +1,141 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the cycle counts printed on LiFePO4-with-BMS listings can't be compared as published: Redodo gives \"4000-15000 cycles\" and attaches a depth of discharge (100% DoD) only on its Group 27 page, while Vatrer (5,000+) and Sun Gold Power (≥7,000) give no depth of discharge or end-of-life capacity at all, so the one spec that does compare at the same $259.99 price is BMS current (Vatrer Group 24 150 A ≈ 1,920 W against Redodo Group 24 100 A = 1,280 W).",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat ran no search queries and got no results, so there were no cited rival pages to read or compare against. Its own answer lists generic BMS functions, says temperature protection works \"depending on the BMS\" and names no product, cycle condition or current rating. Against that, a normalised table of cycle-count conditions, BMS amps and low-temperature cutoff for named batteries is entirely new. It gets a 2 rather than a 3 because the main normalisation (depth of discharge and end-of-life capacity behind each cycle claim) is a finding of absence. The makers don't publish the conditions, so the table can show the claims aren't comparable but can't rank them on cycle life.",
+ "decides": "The page should tell shoppers to ignore the headline cycle numbers (4,000-15,000, 5,000+, ≥7,000) because none of the 12V or 48V listings I read say what depth of discharge or end capacity they were measured to. Choose on what can be compared. For a 12V 100Ah Group 24 at $259.99, the Vatrer has a 150 A BMS (about 1,920 W at 12.8 V) and the Redodo Bluetooth has 100 A (1,280 W), so a shopper running an inverter above roughly 1,200 W should pick the Vatrer. A shopper charging in freezing weather should not save $10 on the Redodo Group 24 Deep Cycle ($249.99). Its protection list has no low-temperature charge cutoff, while the $259.99 Bluetooth version adds one. Redodo also tells shoppers on the Group 24 Bluetooth page not to use it for high-power loads.",
+ "candidates": [
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A (UL 1973)",
+  "Redodo 12V 100Ah Group 24 Bluetooth (low-temp cutoff)",
+  "Redodo 12V 100Ah Group 24 Deep Cycle (no Bluetooth)",
+  "Redodo 12V 120Ah Group 24 Bluetooth",
+  "Redodo 24V 100Ah Group 31 Bluetooth",
+  "Sun Gold Power SG48100P 51.2V 100Ah",
+  "Vatrer 48V 100Ah Server Rack Bluetooth"
+ ],
+ "findings": [
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "Cycle life as stated",
+   "value": "4000-15000 cycles, 10 years life (no DoD, end-of-life capacity, temperature or C-rate given)",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery | Real-Time Battery Monitoring | For RV, Marine, Solar",
+   "read": "2026-11-13",
+   "note": "Text read through the store's Shopify search API with storecheck.py. The full page returned HTTP 429, so I couldn't check whether a spec table further down attaches a condition. The same 4000-15000 wording appears on the Redodo Group 24 Deep Cycle, Group 31 165Ah and 12V 100Ah series pages."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 27 Dual Purpose",
+   "label": "Only Redodo listing in the store search that attaches a DoD to cycle life",
+   "value": "4,000+ cycles at 100% DOD",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-group-27-bluetooth-900-cca-1kwh-dual-purpose-marine-battery",
+   "source_title": "Redodo 12V 100Ah 900 CCA Group 27 Dual Purpose Marine Battery with OTA Bluetooth Auto-Heating",
+   "read": "2026-11-13",
+   "note": "Store search API text. Gives no end-of-life capacity (70% or 80%). This suggests the low end of Redodo's '4000-15000' range is the 100% DoD figure and the 15000 is a shallower-cycling figure, but no Redodo page I opened states the condition for the 15000."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "Price (Redodo US store)",
+   "value": "$259.99 (compare-at $479.98)",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "Shopify search API price field."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "BMS / power and cold-charge protection",
+   "value": "1,280 W output (100 A × 12.8 V); low-temperature charge cutoff; recommended charge 20 A (0.2C); 21.8 lb; maker says NOT suitable for starter, golf cart or high-power uses such as water pumps or electric jacks",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "Redodo's compare page also lists this model at 1280Wh / 1280W (https://www.redodopower.com/pages/compare/12v-100ah-batteries, read 2026-11-13). Arithmetic: 1,280 W ÷ 12.8 V = 100 A."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Deep Cycle (no Bluetooth)",
+   "label": "Price and BMS protection list",
+   "value": "$249.99. Protections listed: overcharge, over-discharge, over-current, short circuit, high temperature (no low-temperature charge cutoff listed)",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-group24-lifepo4-battery-perfect-group-24-size-born-for-all-american-rv-models",
+   "source_title": "Redodo 12V 100Ah Group 24 Deep Cycle LiFePO4 Lithium Battery | For Home, RV, Marine",
+   "read": "2026-11-13",
+   "note": "Store search API returned the URL /products/redodo-12v-100ah-group-24-deep-cycle-battery for this item. Compared with the Bluetooth Group 24 above, the $10 difference buys Bluetooth and a low-temperature charge cutoff."
+  },
+  {
+   "product": "Redodo 12V 100Ah Ultra-Mini (Group 22NF)",
+   "label": "Low-temperature thresholds as stated",
+   "value": "Charging pauses below 32°F (0°C) and resumes above 41°F (5°C); discharge stops below -4°F (-20°C); 100A BMS; $269.99",
+   "source": "https://www.redodopower.com/products/redodo-ultra-mini-12v-100ah-bluetooth-small-lithium-battery-group-22nf-size",
+   "source_title": "Redodo 12V 100Ah Ultra-Mini Lithium LiFePO4 Battery | Smallest Bluetooth Battery",
+   "read": "2026-11-13",
+   "note": "Store search API. The 120Ah Group 24 page states the same 32°F cutoff and 41°F resume."
+  },
+  {
+   "product": "Redodo 12V 120Ah Group 24 Bluetooth",
+   "label": "BMS current",
+   "value": "120A BMS, max 120A continuous; auto-recovery 30 s after overload protection; $296.99",
+   "source": "https://www.redodopower.com/products/redodo-12v-120ah-group-24-trolling-motor-bluetooth-lithium-battery-for-3-days-fishing",
+   "source_title": "Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Store search API. The text cuts off at 'and a massive …', so the peak figure was not captured."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth 150A",
+   "label": "BMS current, certification, cold-charge, price",
+   "value": "150A Smart BMS; UL 1973 (per title); stops charging below 32°F; $259.99 (compare-at $359.99)",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery for RVs and Trolling Motors with Bluetooth and 150A BMS",
+   "read": "2026-11-13",
+   "note": "Text read through the store's Shopify search API. The product page returned 403 and 429, so the spec table and cycle count weren't read. Arithmetic: 150 A × 12.8 V = 1,920 W, which is 640 W (50%) above Redodo's 1,280 W at the same price. The 150 A isn't labelled continuous or peak in the text I captured."
+  },
+  {
+   "product": "Vatrer 48V 100Ah Server Rack Bluetooth",
+   "label": "Cycle life as stated",
+   "value": "5,000+ cycles (no DoD or end-of-life capacity given); 100A BMS; 5.12 kWh; $929.99",
+   "source": "https://www.vatrerpower.com/products/vatrer-51-2v-100ah-lifepo4-lithium-solar-battery-built-in-100a-bms-max-5120w-load-power",
+   "source_title": "Vatrer 48V 100Ah Server Rack Bluetooth Lithium Battery for Off-Grid and Home Solar",
+   "read": "2026-11-13",
+   "note": "Store search API."
+  },
+  {
+   "product": "Sun Gold Power SG48100P 51.2V 100Ah",
+   "label": "Cycle life, certifications, price",
+   "value": "≥7000 cycles (no DoD or end-of-life capacity given); 10-year warranty, designed for up to 15-year life; UL1973 and UL9540A; $981.00",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Store search API. The product page returned 429, so I couldn't read the spec table's cycle condition. The 48V tier makes the same mistake as the 12V tier: Vatrer's 5,000+ and Sun Gold's ≥7,000 are bare numbers with no conditions."
+  },
+  {
+   "product": "Redodo 24V 100Ah Group 31 Bluetooth",
+   "label": "Cold-charge behaviour and price",
+   "value": "Low-temperature charge cutoff with auto recovery at 41°F (5°C); 2,560 Wh; $569.99",
+   "source": "https://www.redodopower.com/products/redodo-24v-100ah-group-31-bluetooth-lithium-battery",
+   "source_title": "Redodo 24V 100Ah Group 31 Trolling Motor Bluetooth Lithium Battery",
+   "read": "2026-11-13",
+   "note": "Store search API."
+  },
+  {
+   "product": "Redodo 12V 100Ah (model generation of 2022)",
+   "label": "Measured capacity (Michael Barton, techtest.org, 16 Aug 2022)",
+   "value": "107.7 Ah / 1,379 Wh at 5 A; 107.6 Ah / 1,377 Wh at 10 A; 107.7 Ah / 1,378 Wh at 15 A",
+   "source": "https://techtest.org/?p=67612",
+   "source_title": "Test: Redodo 12 V 100 Ah LiFePO4, wirklich 100Ah Kapazität? (ja)",
+   "read": "2026-11-13",
+   "note": "Charged with a 14.6 V charger and discharged to below 11 V. The group size of the tested unit isn't stated, and the reviewer notes that unit had no low-temperature cutoff. It's an older unit than the current Group 24 Bluetooth, and no BMS trip point was tested."
+  }
+ ],
+ "unsourced": [
+  "The depth of discharge and end-of-life capacity (70% or 80%) behind Redodo's '4000-15000 cycles'. I looked on the Redodo product pages, which returned HTTP 429 repeatedly, and in the Redodo manual mirror on manuals.plus (403). A search snippet attributes '15,000 cycles at 60% DOD' to Redodo, but I couldn't open the page.",
+  "Vatrer 12V 100Ah Group 24 150A cycle life and its test condition. The product page and collection page returned 403 and 429, and no spec PDF turned up.",
+  "Condition behind Sun Gold Power SG48100P '≥7000 cycles'. The product page returned 429.",
+  "Peak/surge current and its duration for the Redodo Group 24 Bluetooth, Vatrer Group 24 150A and SG48100P. Search snippets mention 280 A for 5 s on a Redodo Canada page and 300 A peak on a Vatrer Canada 100A SKU, but I didn't open either, and both are different SKUs.",
+  "Whether Vatrer's 150 A rating is continuous or peak. The page text I captured doesn't label it.",
+  "Vatrer UL 1973 certificate or file number. I didn't find one on the pages I could open.",
+  "Amazon prices. I skipped them and used the maker stores only."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1794743
+ }
+}

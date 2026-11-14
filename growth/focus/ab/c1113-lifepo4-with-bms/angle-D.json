@@ -1,0 +1,100 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that charging LiFePO4 cells in the cold permanently damages them (Victron says below 5 °C), that the BMS is what stops that charge (on Redodo and Vatrer 12 V packs it stops charging below 32 °F / 0 °C and starts again above 41 °F / 5 °C), or that a self-heating pack sends the charger's power to heaters first so it can charge below freezing.",
+ "standout": 2,
+ "standout_why": "ChatGPT searched nothing and had no results or cited pages, so the only thing to compare against is its own answer. That answer only says the BMS 'can prevent charging or discharging outside safe temperature ranges, depending on the BMS'. It gives no temperatures and no source. It does not say that cold charging permanently damages the cells. It does not say which batteries have the cutoff or a heater, and it does not tie the BMS current rating to how many watts the battery can deliver.",
+ "decides": "For anyone who charges below freezing (RV, solar or a boat in winter), pick a battery with a BMS low-temperature charge cutoff (Redodo Group 24 Bluetooth, Redodo trolling-motor low-temp, Vatrer Group 24 150A). If it must charge while cold, pick a self-heating model (Redodo 12V 100Ah Self-Heating, Vatrer Group 24 Heated). Avoid a pack whose listed BMS protections leave out low temperature, such as the Redodo Group 24 Deep Cycle. A second check: the BMS continuous current caps power at about 12.8 V × the current rating, so a 100 A BMS gives about 1,280 W and the Vatrer 150 A BMS gives about 1,920 W. Size the inverter to that.",
+ "candidates": [
+  "Redodo 12V 100Ah Self-Heating LiFePO4",
+  "Redodo 12V 100Ah Group 24 Bluetooth (low-temp cutoff)",
+  "Redodo 12V 100Ah Lithium Trolling Motor Battery with Low-Temp Cutoff",
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS (UL 1973)",
+  "Vatrer 12V 100Ah Group 24 Heated"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Battery maker's statement on charging lithium cells in the cold",
+   "value": "\"A lithium battery cell will sustain permanent damage when charged at temperatures below 5°C.\" The BMS 'Allowed-To-Charge minimum temperature' defaults to 5 °C and can be set from -20 °C to +20 °C.",
+   "source": "https://www.victronenergy.com/media/pg/Lithium_Battery_Smart/en/installation.html",
+   "source_title": "Victron Energy Lithium Battery Smart manual, Installation, 4.7.3 Allowed-To-Charge minimum temperature",
+   "read": "2026-11-13",
+   "note": "Victron's own 12.8 V LiFePO4 manual. The page names no physical mechanism, so lithium plating is not cited."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "Low-temperature charge cutoff and heater",
+   "value": "Charging stops below 32 °F (0 °C) until the 100 W heating pads warm the battery above 41 °F (5 °C). Discharging stops below -4 °F (-20 °C). 100 A BMS. $251.99.",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery | For RV, Boats, and Solar Home Systems",
+   "read": "2026-11-13",
+   "note": "Text and price come from Redodo's own Shopify product data (read with storecheck search). The HTML page returned HTTP 429."
+  },
+  {
+   "product": "Redodo 12V 100Ah Lithium Trolling Motor Battery with Low-Temp Cutoff",
+   "label": "Low-temperature charge cutoff and burst current",
+   "value": "The BMS cuts charging below 32 °F (0 °C) and resumes above 41 °F (5 °C). It allows 300 A for 5 s and 500 A for 1 s. $233.99.",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-lithium-marine-batteries",
+   "source_title": "Redodo 12V 100Ah Lithium Trolling Motor Battery With Low Temp Protection",
+   "read": "2026-11-13",
+   "note": "Redodo store product data via storecheck. The HTML page returned HTTP 429."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Bluetooth",
+   "label": "Low-temperature charge cutoff",
+   "value": "'20+ BMS Protection & Low-temp … added low-temperature cut-off protection'. 21.8 lb. $259.99.",
+   "source": "https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth",
+   "source_title": "Redodo 12V 100Ah Group 24 Bluetooth LiFePO4 Battery | Real-Time Battery Monitoring",
+   "read": "2026-11-13",
+   "note": "This listing does not state the cutoff temperature. Redodo store product data via storecheck."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Deep Cycle (non-Bluetooth)",
+   "label": "BMS protections listed",
+   "value": "'overcharge, over-discharge, over-current, short circuit, and high temperature'. Low-temperature charge protection is not in the list. $249.99.",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-group-24-deep-cycle-battery",
+   "source_title": "Redodo 12V 100Ah Group 24 Deep Cycle LiFePO4 Lithium Battery | For Home, RV, Marine",
+   "read": "2026-11-13",
+   "note": "This is only what the product description lists. The spec table could not be opened (HTTP 429). The sibling Bluetooth model, $10 more, does list a low-temp cutoff."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 31 Bluetooth",
+   "label": "Cutoff and output power set by the BMS",
+   "value": "Stops charging below 0 °C. '1280W Large Output Power'. $259.99.",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Group 31 Bluetooth Lithium Battery | Real-Time Battery Monitoring",
+   "read": "2026-11-13",
+   "note": "1,280 W = 12.8 V × 100 A. This shows the BMS current rating limits the size of inverter the battery can run."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS (UL 1973)",
+   "label": "Low-temperature charge cutoff and BMS current",
+   "value": "'The BMS stops charging below 32°F'. 150 A Smart BMS. $259.99 (list price $359.99).",
+   "source": "https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery",
+   "source_title": "【UL 1973】 Vatrer 12V 100Ah Group 24 Lithium Battery for RVs and Trolling Motors with Bluetooth and 150A BMS",
+   "read": "2026-11-13",
+   "note": "Vatrer store product data via storecheck search. The HTML page returned 403. 150 A × 12.8 V ≈ 1,920 W continuous (my arithmetic, not stated by Vatrer)."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 Heated",
+   "label": "How the self-heating charge works",
+   "value": "When a charger is connected at 32 °F, its power goes to heating instead of charging. Above 41 °F, heating stops and charging starts. $299.99, pre-order.",
+   "source": "https://www.vatrerpower.com/products/12v-100ah-self-heating-lithium-battery",
+   "source_title": "【Pre-order】 Vatrer 12V 100Ah Group 24 Heated Lithium Battery for Cold-Weather RV and Off-Grid Power",
+   "read": "2026-11-13",
+   "note": "Vatrer store product data via storecheck. The heater runs on charger input, so it needs a charging source connected."
+  }
+ ],
+ "unsourced": [
+  "Spec-table charge and discharge temperature ranges on the Redodo product pages: the HTML pages returned HTTP 429 three times, and storecheck product calls returned 429 too.",
+  "Vatrer Group 24 150A spec table (discharge cutoff temperature, surge current): WebFetch got 403 and storecheck product got 429.",
+  "A maker's statement naming the cell mechanism (lithium plating) for cold-charge damage: Vatrer's 'Why is there a low temp cut-off' blog returned 403 on both the US and en-de versions, and the Victron manual says 'permanent damage' without naming the mechanism.",
+  "A UL or IEC standard clause that requires a low-temperature charge cutoff in LiFePO4 BMSs: no such clause found in a source I could open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.8802353000000002
+ }
+}

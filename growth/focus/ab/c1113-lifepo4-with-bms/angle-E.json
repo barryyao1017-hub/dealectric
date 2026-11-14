@@ -1,0 +1,73 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that two 12 V 100 Ah LiFePO4 batteries with a built-in BMS delivered more than their rating on a reviewer's bench. Michael Barton measured 1,378 Wh (107.7 Ah) from a Redodo 12V 100Ah at 5, 10 and 15 A. He measured an average of 1,350 Wh (104.2 Ah) from a Vatrer 12V 100Ah self-heating Bluetooth model over four runs at 10 and 20 A, with the BMS cutting off at about 9.6 V.",
+ "standout": 2,
+ "standout_why": "The saved chat lists no searches and no results, so there was no rival page to read or compare against. ChatGPT's answer only explains in general terms what a BMS does and lists 4S/8S/16S nominal voltages. It names no product and gives no measured capacity, BMS cutoff voltage or cold-charge behaviour. Any named bench figure is therefore new. It is not a 3 because neither tested unit is exactly a SKU Dealectric lists.",
+ "decides": "Measured capacity is above 100 Ah for both brands, so capacity does not separate Redodo from Vatrer. The useful measurements are elsewhere. On the Vatrer self-heating unit, Barton found the BMS cuts off at about 9.6 V, blocks charging below 0 °C (heat goes to the pad), resumes charging at about 4 °C, and the heater can draw 10–20 A, which is hard to supply from solar alone. He also found the official Vatrer app failed to connect. For a 48 V rack battery, no reviewer measured the Sun Gold SG48100P. The only named 48 V rack test I found, The Solar Lab's test of a Vatrer server-rack battery, measured a roughly 2-hour BMS reset after a 6,000 W surge trip. That is a reason to want a measured surge-recovery figure before picking a rack battery, not a verdict on the SG48100P.",
+ "candidates": [
+  "Redodo 12V 100Ah (standard / self-heating, Group 31 size)",
+  "Redodo 12V 100Ah Group 24 Bluetooth Low-Temp",
+  "Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS",
+  "Sun Gold Power SG48100P 51.2V 100Ah",
+  "Redodo 24V 100Ah"
+ ],
+ "findings": [
+  {
+   "product": "Redodo 12V 100Ah LiFePO4 (standard, 329×172×214 mm case)",
+   "label": "Measured capacity, Techtest.org (Michael Barton)",
+   "value": "1,379 Wh / 107.7 Ah at 5 A; 1,377 Wh / 107.6 Ah at 10 A; 1,378 Wh / 107.7 Ah at 15 A",
+   "source": "https://techtest.org/?p=67612",
+   "source_title": "Test: Redodo 12 V 100 Ah LiFePO4, wirklich 100Ah Kapazität? (ja)",
+   "read": "2026-11-13",
+   "note": "Published 2022-08-16. Charged to 14.6 V before each run, then discharged until the voltage fell below 11 V. Barton says over 90% of the capacity falls between about 13.3 V and 12.5 V. The article reports no weight, self-consumption, internal resistance or BMS trip current. This is the basic model with no low-temperature cutoff, not the Group 24 Bluetooth or self-heating SKUs Dealectric lists."
+  },
+  {
+   "product": "Vatrer 12V 100Ah self-heating Bluetooth LiFePO4",
+   "label": "Measured capacity, charge-test.com (Michael Barton)",
+   "value": "103.64 Ah / 1,350.2 Wh at 10 A; 105.19 Ah / 1,363.2 Wh, 104.06 Ah / 1,345.1 Wh and 103.94 Ah / 1,342.7 Wh at 20 A; average 104.2 Ah / 1,350.3 Wh",
+   "source": "https://charge-test.com/vatrer-power-12v-100ah-lifepo4-battery-review-bluetooth-app-self-heating-at-a-budget-price/",
+   "source_title": "VATRER POWER 12V 100Ah LiFePO4 Battery Review: Bluetooth, App, Self-Heating at a Budget Price",
+   "read": "2026-11-13",
+   "note": "Published 2026-02-02. Measured with a DLB-600W electronic load down to 10.8 V. The tested unit uses the 329×172×214 mm 'automotive' case, which is not the Group 24 SKU Dealectric lists, so treat it as a brand-level data point."
+  },
+  {
+   "product": "Vatrer 12V 100Ah self-heating Bluetooth LiFePO4",
+   "label": "BMS low-voltage cutoff and cold-charge behaviour, charge-test.com (Michael Barton)",
+   "value": "Low-voltage protection trips at about 9.6 V and stays off until recharged. Charging is blocked below 0 °C (incoming energy goes to the heater) and resumes at about 4 °C. The heater can draw 10–20 A.",
+   "source": "https://charge-test.com/vatrer-power-12v-100ah-lifepo4-battery-review-bluetooth-app-self-heating-at-a-budget-price/",
+   "source_title": "VATRER POWER 12V 100Ah LiFePO4 Battery Review: Bluetooth, App, Self-Heating at a Budget Price",
+   "read": "2026-11-13",
+   "note": "Published 2026-02-02. The Xiaoxiang BMS app connected; the official Vatrer app did not work in Barton's test. He measured a voltage curve with about 90% of capacity between 13.1 V and 12.6 V and suggests stopping at about 12.5 V for longevity."
+  },
+  {
+   "product": "Vatrer 51.2V 100Ah server-rack battery (V-Bat)",
+   "label": "Load and surge test, The Solar Lab",
+   "value": "Ran a 97 A load for just over an hour. Shut off under a 6,000 W surge and took nearly 2 hours to reset. Refused to charge or discharge after 24 h at −25 °C.",
+   "source": "https://www.thesolarlab.com/review/vatrer-server-rack-battery-review",
+   "source_title": "Vatrer server rack battery review",
+   "read": "2026-11-13",
+   "note": "The page names no author and gives no publish date (footer: © 2026). Dealectric does not list this battery. It is the only named 48 V rack test I found, included as a comparison point for the SG48100P."
+  },
+  {
+   "product": "general (WattCycle 12V 100Ah Mini, cycle-life test)",
+   "label": "Measured capacity fade versus a 5,000-cycle claim, Panbo (Ben Stein)",
+   "value": "104.69 Ah at cycle 1, 100.37 Ah at 100, 97.93 Ah at 300, 94.87 Ah at 600; predicted about 2,343 cycles to 80% at cycle 600",
+   "source": "https://panbo.com/testing-lifepo4-cycle-ratings-are-they-accurate/",
+   "source_title": "Testing LiFePO4 cycle ratings, are they accurate?",
+   "read": "2026-11-13",
+   "note": "Published 2025-11-13, updated 2025-12-02. Cycled at 90% depth of discharge and 0.5C (50 A), charged to 14.2 V, with a capacity check every 100 cycles at 5 A to 10.5 V in a shop kept below 84 °F. This is a different brand, so it only shows that '5,000 cycles' on a spec sheet has not held up in a named long-run test."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's measured capacity, BMS trip current or cold-cutoff test for the exact Vatrer 12V 100Ah Group 24 Bluetooth 150A BMS SKU. The Wired2Fish field review returned HTTP 403 and its search snippet shows no figures; the Vatrer US product page and storecheck both returned HTTP 429.",
+  "A named bench measurement for the Redodo 12V 100Ah Group 24 Bluetooth Low-Temp, the Redodo self-heating model and the Redodo 24V 100Ah. CleanTechnica's two Redodo reviews (2023-11-15 and 2024-02-20) and First Quadcopter's 24V review report no measured figures. The Redodo store returned HTTP 429.",
+  "Any reviewer or lab measurement for the Sun Gold Power SG48100P. Searches turned up only spec sheets and retailer listings.",
+  "Prices: skipped because the Redodo and Vatrer stores returned HTTP 429 to WebFetch and storecheck on 2026-11-13."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0094355000000002
+ }
+}
