@@ -1,0 +1,100 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got says that BLUETTI's own RV5 page tells RVs with 12V auto-leveling systems that draw more than 100 A at startup to add a separate 12V battery (BLUETTI B1210 at $299, or keep the existing 12V lead-acid battery). The $4,299 5kWh RV Kit + 4 × 100W does not include that battery.",
+ "standout": 3,
+ "standout_why": "Victron's sizing article (cited) covers partial shading, cable size, combined Voc, fuses, the PV isolator and Victron controller details. It never mentions leveling jacks or slide-outs, a separate 12V battery next to a higher-voltage system, or the open-ground/floating-neutral problem. smartrvhub (top result) covers 12V vs 24V and DC-DC alternator charging. It never mentions 48V systems feeding 12V loads, leveling jacks, floating neutral or lithium cold charging. I couldn't compare Renogy's guide (cited) properly: WebFetch got only 6,868 characters of navigation and no article text, and my curl fallback was not approved. The finding decides the set because it adds a line item (the B1210) to the cart, and none of the pages I could read mention it.",
+ "kit_items": [
+  "Power hub + 48V battery + panels: BLUETTI 5kWh RV Kit + 4 × 100W (RV5 hub, B4810 51.2 V 100 Ah, Epanel, Epad, 4 × 100 W). It is BLUETTI's own one-SKU RV solar kit, and the store page lists battery, alternator-charger and distribution-panel wiring packs in the box.",
+  "12V buffer battery: BLUETTI B1210 12.8 V 100 Ah LiFePO4. BLUETTI's RV5 page names it for 12V auto-leveling systems with startup currents over 100 A. The store page says it has self-heating below 0 °C (32 °F).",
+  "Panel wiring: parallel, not series. Backup Power Hub lists the RV5 PV1 input at 50 V max and says panels must be wired in parallel."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com, awin:bluetti_us)",
+   "items": [
+    "BLUETTI 5kWh RV Kit + 4 × 100W (RV5+B4810+Epanel+Epad+4 × 100W) | https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w | $4,299.00 (compare-at $4,699.00) | 2026-11-13",
+    "BLUETTI B1210 LiFePO4 Battery 12.8 V 100 Ah | https://www.bluettipower.com/products/lifepo4-lithium-batteries | $299.00 | 2026-11-13"
+   ],
+   "bundle_sku": "BLUETTI's own bundle '5kWh RV Kit + 4 × 100W', variant id 47637303886043, $4,299.00 on 2026-11-13. It does not include the B1210, which is a separate $299 line."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI RV5 Power Hub",
+   "label": "Maker's instruction for 12V auto-leveling loads",
+   "value": "For 12V auto-leveling systems with startup currents over 100 A, pair with a dedicated B1210 battery or the vehicle's existing 12V lead-acid battery",
+   "source": "https://www.bluettipower.com/products/rvsolar-rv-solar-system",
+   "source_title": "BLUETTI RV5 (bluettipower.com)",
+   "read": "2026-11-13",
+   "note": "Quoted from the maker's US product page. The same sentence is on the 5kWh RV Kit + 4 × 100W page (https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w). Neither page's box list includes a 12V battery."
+  },
+  {
+   "product": "BLUETTI RV5 Power Hub",
+   "label": "DC output",
+   "value": "1,620 W DC output, rated 12 V/24 V",
+   "source": "https://www.bluettipower.com/products/rvsolar-rv-solar-system",
+   "source_title": "BLUETTI RV5 (bluettipower.com)",
+   "read": "2026-11-13",
+   "note": "The maker gives DC output in watts only, not amps."
+  },
+  {
+   "product": "BLUETTI RV5 Power Hub",
+   "label": "12V DC converter output current",
+   "value": "100 A (12 V regulated)",
+   "source": "https://backuppowerhub.com/bluetti-rv5-review/",
+   "source_title": "Bluetti RV5 Review: 5,000W RV Solar System (2026), Andrew Harrington, Backup Power Hub",
+   "read": "2026-11-13",
+   "note": "From Andrew Harrington's spec table. The article was first published 2026-04-07 and updated 2026-09-27. The 100 A figure matches BLUETTI's own 100 A startup threshold for leveling systems."
+  },
+  {
+   "product": "BLUETTI RV5 Power Hub",
+   "label": "Solar input limit (PV1)",
+   "value": "1,800 W max, 50 V max. Panels must be wired in parallel, not in series",
+   "source": "https://backuppowerhub.com/bluetti-rv5-review/",
+   "source_title": "Bluetti RV5 Review: 5,000W RV Solar System (2026), Andrew Harrington, Backup Power Hub",
+   "read": "2026-11-13",
+   "note": "This is the reviewer's figure. BLUETTI's own RV5 page does not state a PV voltage limit. The same review says PV2 also serves as the alternator input (1,200 W at 24 V, 600 W at 12 V), so it can't take a second solar array, and that output derates above 6,561 ft (2,000 m)."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit + 4 × 100W",
+   "label": "Price today",
+   "value": "$4,299.00 (compare-at $4,699.00)",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w",
+   "source_title": "5kWh RV Kit + 4 × 100W (bluettipower.com)",
+   "read": "2026-11-13",
+   "note": "Read from the store's Shopify product data with storecheck.py. One variant, RV5+B4810+Epanel+Epad+4 × 100W, shown as available."
+  },
+  {
+   "product": "BLUETTI B1210",
+   "label": "Price and cold-weather charging",
+   "value": "$299.00. 12.8 V 100 Ah. Self-heating film turns on below 0 °C (32 °F) and keeps the cells around 25 °C (77 °F)",
+   "source": "https://www.bluettipower.com/products/lifepo4-lithium-batteries",
+   "source_title": "BLUETTI B1210 LiFePO4 Battery | 12.8 V, 100 Ah (bluettipower.com)",
+   "read": "2026-11-13",
+   "note": "The page also shows a Black Friday Early Access offer (Nov 5–18), so prices may change. It does not state max continuous or surge discharge current. The same page lists the B4810 at $1,699."
+  },
+  {
+   "product": "general (portable power station feeding an RV shore inlet)",
+   "label": "Floating neutral trips the RV's surge protector/EMS",
+   "value": "Power stations have no ground bond, so a Progressive EMS reads 'open ground' and won't pass power to the RV. Fix: a neutral-ground bonding plug in a 3-way adapter on the power station",
+   "source": "https://rvelectricity.substack.com/p/solar-generator-n-g-bonding",
+   "source_title": "Solar Generator N-G Bonding?, Mike Sokol, RVelectricity, 2023-01-20",
+   "read": "2026-11-13",
+   "note": "One reader report: the reader's ALLPOWERS unit was flagged by their Progressive device. Sokol names Jackery, Bluetti, Goal Zero and ALLPOWERS as makers of these 'solar generators'. This applies to the power-station route (e.g. the BLUETTI Elite 200 V2 or ALLPOWERS kits Dealectric lists), not to the hard-wired RV5."
+  }
+ ],
+ "unsourced": [
+  "Renogy 'Solar Camping Systems USA' guide (cited rival): WebFetch returned only navigation text, the .json endpoint returned 404, and my curl fallback was not approved. I could not confirm whether it mentions leveling jacks, a 12V buffer battery or floating neutral.",
+  "Typical startup current of RV 12V auto-leveling jacks (e.g. Lippert maker spec) to show how many RVs go over BLUETTI's 100 A threshold: I did not open a maker document.",
+  "BLUETTI's own RV5 PV input voltage/Voc limit and the Voc of the kit's 100 W panels: not on the maker's RV5 page. The 50 V figure comes from the Backup Power Hub review only.",
+  "B1210 max continuous and surge discharge current: not stated on BLUETTI's product page.",
+  "BLUETTI forum thread on Hughes Watchdog E7 with AC200MAX: the URL redirected to forum.bluettipower.com and I didn't open the thread, so I have no reporter count.",
+  "Progressive Industries EMS-PT30X manual text on error E2 (open ground): the PDF came back as binary and the text extraction step was not approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0079881
+ }
+}

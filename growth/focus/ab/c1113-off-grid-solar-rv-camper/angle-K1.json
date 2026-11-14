@@ -1,0 +1,99 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 200 V2's solar input (12–60 V, 20 A max) only accepts the two 200 W panels of its 400 W kit wired in series. In series the panels give 2 × 24.6 V = 49.2 V open-circuit. In parallel they would push 2 × 10.8 A = 21.6 A into a 20 A input. A third panel cannot be added either way: three in series give 73.8 V, which is over 60 V. The 2 × 350 W kit cannot run in series at all, because 2 × 33 V = 66 V is over 60 V.",
+ "standout": 2,
+ "standout_why": "Victron's cited guide explains Voc in general and that a controller's first number is its maximum PV voltage (the 100/30 example). It never checks a panel string against a power station's input, never mentions an input-current cap that clips parallel panels, and never mentions power stations at all. The Renogy page ChatGPT cited returned only navigation to WebFetch (6,865 characters, no article body), so I could not compare it. smartrvhub.com, the #4 result dated 2026-11-11, has no Voc or input-limit discussion and no power stations. powerinverters.com's kit guide has no Voc, current-cap or series/parallel guidance. I could not open tucsonrvsolar.com because of a certificate error. This finding settles how the kit is wired and which BLUETTI bundle to pick (2 × 200 W rather than 2 × 350 W). It also rules out ChatGPT's '600 W' suggestion on this station with these panels. I scored it 2 rather than 3 because Victron already covers the general idea of a maximum PV voltage.",
+ "kit_items": [
+  "Power station (battery + MPPT + inverter): BLUETTI Elite 200 V2. StorageReview measured 1.91 kWh delivered. Against Victron's 720 Wh/day RV example that is about 2.6 days with no sun. Its rated 2,600 W AC output and 12 V/10 A car outlet cover a 12 V compressor fridge, which smartrvhub lists at 40–80 W.",
+  "Solar: 2 × BLUETTI SP200L 200 W, wired in series. That gives 49.2 V Voc, under the 60 V limit, and 10.8 A Isc, under the 20 A limit. 400 W of panels is just under Victron's recommended 450–500 W for 720 Wh/day.",
+  "Cable: BLUETTI 20 A MC4 to XT60 solar charging cable, if the bundle doesn't include one. Its 20 A rating matches the Elite 200 V2's 20 A input."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2×200W Solar (Elite 200 V2 + 2 × SP200L) | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-13",
+    "BLUETTI Solar Charging Cable (20A MC4 to XT60), add only if the bundle lacks one | https://www.bluettipower.com/products/apex300-solar-charging-cable | $29.00 | 2026-11-13"
+   ],
+   "bundle_sku": "BLUETTI Elite 200 V2+2*200W Solar, $1,499.00 (2026-11-13). Bought separately: Elite 200 V2 $899.00 + 2 × SP200L at $399.00 = $1,697.00, so the bundle saves $198."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input window",
+   "value": "12–60 V, 20 A max, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Maker's US page. StorageReview repeats the same figures: '12V to 60V, 20A max', up to 1,000 W."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage / short-circuit current",
+   "value": "24.6 V Voc; 10.8 A Isc",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Two in series: 2 × 24.6 = 49.2 V, under 60 V, with 10.8 V of headroom; current stays at 10.8 A, under 20 A. Two in parallel: 2 × 10.8 = 21.6 A, over the 20 A input. Three in series: 3 × 24.6 = 73.8 V, over 60 V. So the kit works only as 2S, and a third panel won't fit."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel",
+   "label": "Open-circuit voltage",
+   "value": "33 V Voc",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-13",
+   "note": "Two in series: 2 × 33 = 66 V, over the Elite 200 V2's 60 V. So the Elite 200 V2 + 2 × 350 W bundle ($2,148.00) has to be wired in parallel, and the 20 A input cap then limits what it can deliver."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable energy",
+   "value": "1.91 kWh delivered (about 92% of 2,073.6 Wh rated); 2.44 kWh drawn to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable power meets lab-grade reliability: BLUETTI Elite 200 V2 review (StorageReview, Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-13",
+   "note": "The test load isn't stated. 1,910 Wh ÷ 720 Wh/day (Victron's example) = 2.65 days with no solar."
+  },
+  {
+   "product": "general",
+   "label": "Example RV daily load and solar sizing",
+   "value": "720 Wh/day; 144 W minimum array at 5 peak sun hours; 450–500 W recommended",
+   "source": "https://www.victronenergy.com/knowledge-articles/2026/5/4/how-to-size-rv-solar-system",
+   "source_title": "How to Size a Solar System for Your RV | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Load: laptop 60 W × 3 h = 180 Wh, 12 V 70 L fridge 500 Wh, lights 10 W × 4 h = 40 Wh. Minimum array: 720 ÷ 5 PSH = 144 W. Victron suggests roughly tripling that to refill in 4–5 PSH. This kit at nameplate: 400 W × 5 PSH = 2,000 Wh/day before losses. Empty to full: 2,073.6 Wh ÷ 400 W ≈ 5.2 h of full nameplate sun."
+  },
+  {
+   "product": "general",
+   "label": "12 V compressor fridge load",
+   "value": "40–80 W cycling; 300–600 Wh/day",
+   "source": "https://smartrvhub.com/guides/rv-solar-system-sizing-guide",
+   "source_title": "RV Solar System Sizing: Get Your Exact Wattage in 4 Steps",
+   "read": "2026-11-13",
+   "note": "80 W peak is under the Elite 200 V2's 12 V/10 A car outlet (12 × 10 = 120 W), so the fridge can run on DC without inverter losses."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC and DC outlets",
+   "value": "4 × NEMA 5-20, 2,600 W combined (120 V/21.6 A); 12 V/10 A car outlet; no dedicated RV/TT-30 outlet listed; 53.4 lb",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable power meets lab-grade reliability: BLUETTI Elite 200 V2 review (StorageReview)",
+   "read": "2026-11-13",
+   "note": "2,600 W ÷ 120 V = 21.7 A, a 20 A-class circuit, below a 30 A RV service (120 × 30 = 3,600 W)."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 solar input connector type (XT60 or other) and whether the 2 × 200 W bundle includes an MC4 cable. The bundle page lists only the AC cable, documentation, the unit and a grounding screw, and the US spec page redirect-looped.",
+  "SP200L and 350 W panel Vmp/Imp and Voc temperature coefficient. Neither maker page lists them, so I could not calculate cold-weather Voc headroom or the actual watts the 2 × 350 W parallel set delivers through the 20 A cap.",
+  "A named real-world measurement of SP200L output, for derating 400 W × peak sun hours. Victron gives no loss factor.",
+  "Elite 200 V2 AC idle draw and charging temperature range. StorageReview didn't report them, and I could not extract text from the BLUETTI manual PDF in this environment.",
+  "The Renogy guide ChatGPT cited: WebFetch returned only site navigation, and a direct download needed approval."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0721724999999998
+ }
+}

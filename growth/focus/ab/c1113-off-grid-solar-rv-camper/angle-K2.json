@@ -1,0 +1,138 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that the two panels in BLUETTI's Elite 200 V2 + 2×200 W kit fit the station's single 12–60 V / 20 A, 1,000 W solar input only when wired in series. Each SP200L is rated 24.6 V Voc and 10.8 A Isc, so two in series give 49.2 V at 10.8 A (fits). Two in parallel give 21.6 A, which exceeds the 20 A input. Three in series give 73.8 V, which exceeds 60 V. No result states either that RV alternator charging alongside those panels needs BLUETTI Charger 2, which BLUETTI says takes 'car or solar panels, or both at once' and caps solar at 600 W.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited. Victron's 'How to Size a Solar System for Your RV' (opened 2026-11-13) explains Voc and Isc in general terms for its SmartSolar MPPT 100/30. It gives no pairing for any panel model with any power station input, and it only links out on alternator/DC-DC charging and shore power. Renogy's 'Solar Camping Systems USA' page (opened 2026-11-13) returned 6,868 characters of site navigation and no article body, so I could not check it beyond its menu. ChatGPT's own answer shows the WEIZE and HQST kits with no wiring, input-window or alternator-charging facts. I did not open the 13 uncited results, which caps this at 2, not 3. Part of the alternator-charging point is inference: the Charger 1 box lists an 'MC4 Output Cable', but I could not confirm from a maker document that Charger 1 and the panels must share the Elite 200 V2's one solar input.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 200 V2 (2,073.6 Wh LiFePO4, 2,600 W). Its solar input is 12–60 V / 20 A, 1,000 W max, which takes the two SP200L panels in series (49.2 V Voc, 10.8 A Isc) with room to spare.",
+  "Solar panels: 2× BLUETTI SP200L 200 W (MC4, Voc 24.6 V, Isc 10.8 A each), wired in series, never in parallel: in parallel the 21.6 A Isc exceeds the Elite's 20 A input rating. Bought as BLUETTI's own Elite 200 V2 + 2×200W bundle.",
+  "Alternator + solar charger: BLUETTI Charger 2. BLUETTI says it charges 'from your car or solar panels, or both at once', up to 800 W from the alternator and 600 W from solar, 1,200 W combined. The 400 W series string is under its 600 W solar cap. Its box includes a 75 A fuse, car battery cables, and MC4 input/output and MC4-to-XT60 cables. BLUETTI lists the Elite 200 V2 + Charger 2 bundle as 'Charge 2kWh in 2.4 hrs (alternator + solar combined)'.",
+  "Avoid for this set: BLUETTI Charger 1 (560 W, alternator only, ships with an 'MC4 Output Cable'). BLUETTI states no solar pass-through for it, so it does not cover driving and solar at the same time the way Charger 2 does."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com, awin:bluetti_us)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2*200W Solar (2× SP200L) | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-13",
+    "BLUETTI Charger 2 1,200 W Alternator & Solar Dual DC Charger | https://www.bluettipower.com/products/bluetti-charger-2-alternator-solar-charger | $429.00 (shown reduced from $449.00) | 2026-11-13"
+   ],
+   "bundle_sku": "No single SKU has all three items. 'BLUETTI Elite 200 V2+2*200W Solar' is $1,499.00 (https://www.bluettipower.com/products/elite-200-v2-2-sp200l). 'Elite 200 V2 + Charger 2' is $1,299.00 with no panels (https://www.bluettipower.com/products/charger-2-elite-200-v2); adding 2× SP200L at $798.00 brings that route to $2,097.00. The cart above totals $1,928.00. Both prices read 2026-11-13, during BLUETTI's 'Black Friday Early Access' (Nov 5–18)."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input window",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "From the product page FAQ: '12V-60V/20A, 1,000W max'. The Tech Specs block on the page was empty."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "AC input",
+   "value": "1,800 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-13",
+   "note": "Product page charging section and FAQ."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage / short-circuit current / connector",
+   "value": "24.6 V Voc, 10.8 A Isc, MC4",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Spec text: 'Open Circuit Voltage (OCV): 24.6V', 'Short Circuit Current (Isc): 10.8A', 'Standard MC4 Connector'. Weight 17.15 lb; folded 23 × 23.9 × 1.7 in."
+  },
+  {
+   "product": "Elite 200 V2 + 2× SP200L",
+   "label": "Wiring that fits the input window",
+   "value": "2 in series: 49.2 V Voc, 10.8 A (fits). 2 in parallel: 24.6 V, 21.6 A (over 20 A). 3 in series: 73.8 V (over 60 V)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 2 × 24.6 V = 49.2 V; 2 × 10.8 A = 21.6 A; 3 × 24.6 V = 73.8 V. Compared against the Elite 200 V2 limits of 12–60 V / 20 A from its product page, read the same day. The bundle page gives no wiring instructions."
+  },
+  {
+   "product": "BLUETTI Charger 2",
+   "label": "Simultaneous alternator + solar; input caps",
+   "value": "Both at once; up to 800 W alternator, 600 W solar, 1,200 W combined",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-2-alternator-solar-charger",
+   "source_title": "BLUETTI Charger 2 | 1200W Alternator & Solar Dual DC Charger",
+   "read": "2026-11-13",
+   "note": "Page text: 'Charge from your car or solar panels, or both at once'; FAQ 'up to 800 W from the alternator', 'up to 600 W from solar'. The 400 W series string is below the 600 W solar cap. The Tech Specs block on the page was empty."
+  },
+  {
+   "product": "BLUETTI Charger 2",
+   "label": "In the box",
+   "value": "Charger 2, 6 self-tapping screws, car battery cables, 75 A fuse, MC4-to-XT60 cable, MC4 input cable, MC4 output cable, bidirectional power cable, manual",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-2-alternator-solar-charger",
+   "source_title": "BLUETTI Charger 2 | 1200W Alternator & Solar Dual DC Charger",
+   "read": "2026-11-13",
+   "note": "From the page's in-the-box list."
+  },
+  {
+   "product": "BLUETTI Charger 2",
+   "label": "Price",
+   "value": "$429.00 (shown reduced from $449.00)",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-2-alternator-solar-charger",
+   "source_title": "BLUETTI Charger 2 | 1200W Alternator & Solar Dual DC Charger",
+   "read": "2026-11-13",
+   "note": "BLUETTI US store, during the Black Friday Early Access promotion (Nov 5–18)."
+  },
+  {
+   "product": "BLUETTI Charger 1",
+   "label": "Output, connector, price",
+   "value": "560 W max; ships with an 'MC4 Output Cable' and a 'DC Input Cable'; $219.00 (shown reduced from $249.00)",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-1",
+   "source_title": "BLUETTI Charger 1",
+   "read": "2026-11-13",
+   "note": "The page lists no solar input and no exclusions, and says it 'Works with all BLUETTI power stations and most brands on the market'."
+  },
+  {
+   "product": "Elite 200 V2 + Charger 1 / + Charger 2 bundles",
+   "label": "BLUETTI's stated full-charge times",
+   "value": "Charger 1 bundle: '2kWh ready in 4.2 hrs'; Charger 2 bundle: 'Charge 2kWh in 2.4 hrs (alternator + solar combined)'",
+   "source": "https://www.bluettipower.com/pages/road-and-trip",
+   "source_title": "Why Road Trips So Often End in Power Anxiety (BLUETTI)",
+   "read": "2026-11-13",
+   "note": "The same page gives Charger 1 an app-set voltage of 15–56 V and Charger 2 an app-set voltage of 12–56 V. For comparison, 2,073.6 Wh ÷ 1,000 W (the Elite's PV input cap) is about 2.1 h before taper."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2*200W Solar",
+   "label": "Bundle price",
+   "value": "$1,499.00 (Elite 200 V2 alone $899.00; + Charger 2 bundle $1,299.00)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-13",
+   "note": "Store search and the bundle page agree. The page says the '200W Solar Panel ships from 11.18'. Its in-the-box list shows only the base unit's items (AC cable, documentation, unit, grounding screw)."
+  },
+  {
+   "product": "general",
+   "label": "Victron guidance on choosing a controller",
+   "value": "Controller choice depends on combined Voc (series), combined Isc (parallel) and battery voltage; example SmartSolar MPPT 100/30 = 100 V PV max, 30 A charge",
+   "source": "https://www.victronenergy.com/knowledge-articles/2026/5/4/how-to-size-rv-solar-system",
+   "source_title": "How to Size a Solar System for Your RV | Victron Energy",
+   "read": "2026-11-13",
+   "note": "This is the cited rival's general rule. It does not apply it to any portable power station or panel model, and covers alternator charging only as a link."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 solar-input connector type and whether it has a second DC input. The US product page's Tech Specs block was empty, the US manual PDF came back as unreadable compressed streams, the EU manual PDF was over the fetch size limit, and manuals.plus returned 403.",
+  "Whether BLUETTI Charger 1 must plug into the Elite 200 V2's solar input, which would stop panels from charging while it runs. Neither the Charger 1 page nor BLUETTI's road-trip page says, and I could not read the Elite manual.",
+  "Charger 2 PV input voltage window from a BLUETTI document. Search snippets show retailers listing 13–50 V / 20 A, which would leave the 49.2 V series string only 0.8 V of margin. The US Tech Specs block was empty, and the EU pages hit a redirect loop and HTTP 429.",
+  "SP200L Voc temperature coefficient, needed to check the 49.2 V series string at low temperature. The product page lists only Voc and Isc, not Vmp, Imp or temperature coefficient.",
+  "Whether the Elite 200 V2 + 2*200W bundle includes a series connector or a panel-to-station solar cable. The bundle page's in-the-box list covers only the base unit.",
+  "Any TT-30 / RV 30 A outlet on the Elite 200 V2. The product page does not list its AC outlet types.",
+  "The Renogy cited page's body text, which did not render (navigation only), and the 13 uncited results, which I did not open within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1148482
+ }
+}

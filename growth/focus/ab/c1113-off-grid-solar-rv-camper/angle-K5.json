@@ -1,0 +1,191 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that BLUETTI's own RV kit (RV5 hub + B4810) has a strict 50 V open-circuit limit on its PV input while BLUETTI's 100 W PV100 FX panel is 41.4 V Voc, so every roof panel must be wired in parallel through Y-branch connectors that the kit does not include and that BLUETTI's store lists as out of stock, and the PV2 input doubles as the alternator charger.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Victron sizing article (victronenergy.com, 2026-05-04). It explains series versus parallel wiring and sizing a controller from the array's combined Voc, using the SmartSolar 100/30 (100 V) as its example, so the general idea is already covered. It does not name any kit, any 50 V-limit hub, a panel Voc, or connectors missing from a box. The cited Renogy guide would not render past its site menu (the fetch got 6,868 characters of navigation, and a curl was refused), so I could not check its body. ChatGPT's own answer lists the WEIZE and HQST 12 V kits and generic sizing, and says nothing about wiring limits or connectors needed for the cart. The finding is specific to the brand kit an approved store sells, and it changes what has to go in the cart. It scores 2 rather than 3 because Victron already covers the general Voc rule.",
+ "kit_items": [
+  "Battery + inverter hub: BLUETTI RV5 + B4810 (5 kWh RV Kit). It is the only approved-store bundle built for RVs. It has 5,000 W continuous AC, a regulated 12 V/100 A DC output for the coach's 12 V side, and a B4810 with self-heating that charges down to -4 °F.",
+  "Roof solar: 100 W panels from the kit's +2/+4/+6 × 100 W variants. The PV100 FX is 41.4 V Voc and 3.05 A Isc, so with the RV5's 50 V Voc limit they can only go in parallel.",
+  "Parallel connectors: MC4 Y-branch pairs (1 to 2). They are not listed in the kit box. BLUETTI's $39 Y-branch is out of stock, so they would come from Amazon or another seller, which breaks the one-store cart.",
+  "12 V starting battery for leveling jacks: BLUETTI says auto-leveling systems drawing over 100 A at startup need a dedicated B1210 or the vehicle's existing 12 V lead-acid battery. A Redodo 12 V LiFePO4 is the approved-store fallback if the coach has no house battery left.",
+  "Alternator charging: the Alternator Charger Wiring Pack is included free. It uses PV2, so while it is wired, solar is limited to PV1.",
+  "Cheaper 12 V path (not an approved store): the HQST 400 W 12 V RV kit shown in ChatGPT's answer ($884.99, 2 × 100 Ah, 2,000 W inverter, 60 A MPPT), or the Sun Gold Power SGK-PRO3 (approved store: 6 × 100 W, 3,000 W 12 V inverter, 2 × 100 Ah, 60 A MPPT)."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI 5kWh RV Kit + 4 × 100W (RV5 + B4810 + Epanel + Epad + 4 × 100 W) | https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w | $4,299.00 (compare-at $4,699) | 2026-11-13",
+    "BLUETTI 5kWh RV Kit + 2 × 100W | https://www.bluettipower.com/products/rv5-b4810-epanel-epad-200w | $3,999.00 (compare-at $4,399) | 2026-11-13",
+    "BLUETTI 5kWh RV Kit + 6 × 100W | https://www.bluettipower.com/products/rv5-b4810-epanel-epad-3-200w | $4,599.00 (compare-at $4,999) | 2026-11-13",
+    "BLUETTI 5kWh RV Kit (no panels) | https://www.bluettipower.com/products/rv5-b4810-epanel-epad | $3,699.00 | 2026-11-13",
+    "BLUETTI MC4 Solar Connectors Y Branch Parallel Adapter Cable | https://www.bluettipower.com/products/mc4-solar-y-branch-parallel-cable | $39.00, OUT OF STOCK | 2026-11-13"
+   ],
+   "bundle_sku": "BLUETTI '5kWh RV Kit + 4 × 100W' $4,299 (also +2 × 100 W $3,999, +6 × 100 W $4,599). The Y-branch is not in any of them and is out of stock on its own."
+  },
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 200 V2 + 2 × 200W Solar (portable power station, not hard-wired) | https://www.bluettipower.com/products/elite-200-v2-2-sp200l | $1,499.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Elite 200 V2 + 2*200W Solar, $1,499. Falls short for an RV: the product page lists no TT-30 RV outlet and does not connect to the coach's 12 V system. Solar is 12-60 V / 20 A / 1,000 W max."
+  },
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power SGK-PRO3 Off-Grid Kit, 3,000 W 12 V inverter, 6 × 100 W panels, 2 × 100 Ah (or 2 × 200 Ah) LiFePO4, 60 A MPPT, 300 A DC breaker | https://sungoldpower.com/products/off-grid-solar-kit-3000w-inverter-12vdc-120v-output-lifepo4-battery-600-watt-solar-back-up-sgk-pro3 | $2,111.00 (compare-at $4,063; lowest variant in the store search feed) | 2026-11-13"
+   ],
+   "bundle_sku": "SGK-PRO3, $2,111. It is the approved-store kit closest to ChatGPT's suggested '600 W + 200-300 Ah + 2,000 W'. I could not read the MPPT's PV voltage limit or per-variant prices because the store returned HTTP 429."
+  },
+  {
+   "store": "HQST (hqsolarpower.com), not an approved program, shown for reference because ChatGPT showed it",
+   "items": [
+    "HQST 400W 12V RV Solar Kit with 200Ah LiFePO4 Battery (2 × 100 Ah, 2,000 W inverter, 60 A Bluetooth MPPT) | https://www.hqsolarpower.com/products/400w-12v-rv-solar-kit-with-200ah-lifepo4-battery | $884.99 | 2026-11-13",
+    "HQST 800W 12V RV Solar Kit, 330 Ah, 2,000 W inverter, 100 A MPPT | https://www.hqsolarpower.com/products/800w-12v-rv-solar-kit-with-330ah-lifepo4-battery | $1,249.99 | 2026-11-13"
+   ],
+   "bundle_sku": "HQST 400W 12V RV Solar Kit, $884.99. This matches ChatGPT's card price. ChatGPT's '200Ah' is two 100 Ah batteries."
+  },
+  {
+   "store": "Redodo (redodopower.com)",
+   "items": [
+    "Redodo 12V 200Ah Plus LiFePO4 (200 A BMS, 2,560 W) | https://www.redodopower.com/products/12v-200ah-plus-deep-cycle-lithium-battery | $449.99 | 2026-11-13",
+    "Redodo 12V 100Ah Self-Heating LiFePO4 | https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery | $251.99 | 2026-11-13"
+   ],
+   "bundle_sku": "none. Redodo sells batteries only, with no panels, inverter or MPPT, so it cannot fill a whole-kit cart."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI RV5",
+   "label": "PV input open-circuit voltage limit",
+   "value": "50 V Voc (strict)",
+   "source": "https://bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit (BLUETTI, 2026-02-20)",
+   "read": "2026-11-13",
+   "note": "Maker's blog: panels 'MUST be wired in PARALLEL, never in series'. It advises Y-branch adapters and 6 AWG cable and warns that residential panels at 60-80 V Voc can damage the controller. The US product page's Tech Specs section is empty."
+  },
+  {
+   "product": "BLUETTI RV5",
+   "label": "PV2 input shared with alternator charging",
+   "value": "PV2 doubles as the alternator charger, up to 1,200 W while driving",
+   "source": "https://bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit",
+   "read": "2026-11-13",
+   "note": "So with the free Alternator Charger Wiring Pack fitted, only PV1 is left for roof solar."
+  },
+  {
+   "product": "BLUETTI RV5",
+   "label": "Regulated 12 V DC output",
+   "value": "100 A at 12 V",
+   "source": "https://bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit",
+   "read": "2026-11-13",
+   "note": "The product page lists 1,620 W of DC output, and 12 V × 100 A = 1,200 W at nominal 12 V."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit",
+   "label": "AC output",
+   "value": "5,000 W continuous, 10,000 W surge",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w",
+   "source_title": "5kWh RV Kit + 4 × 100W | BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Product page text. Shore charging is quoted as '80% in 50 Minutes'."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit",
+   "label": "Leveling-jack caveat",
+   "value": "12 V auto-leveling systems with startup current over 100 A need a dedicated B1210 or the vehicle's existing 12 V lead-acid battery",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-2-200w",
+   "source_title": "5kWh RV Kit + 4 × 100W | BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Quoted from the product page. This follows from the 100 A cap on the 12 V output."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit + 2 × 100W",
+   "label": "Box contents (no parallel connectors listed)",
+   "value": "RV5 hub, B4810, Epanel, Epad, screws/anchors/template, manual, plus free Battery Connection ($99), Alternator Charger ($179) and Distribution Panel ($149) wiring packs",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-200w",
+   "source_title": "5kWh RV Kit + 2 × 100W | BLUETTI US",
+   "read": "2026-11-13",
+   "note": "The page does not list any Y-branch or MC4 cable and does not name the 100 W panel model."
+  },
+  {
+   "product": "BLUETTI B4810",
+   "label": "Battery capacity and cold charging",
+   "value": "51.2 V 100 Ah = 5,120 Wh; self-heating, charges down to -4 °F (-20 °C)",
+   "source": "https://bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit",
+   "read": "2026-11-13",
+   "note": "The kit page's image alt text also says '51.2V 100Ah LiFePO4 battery'."
+  },
+  {
+   "product": "BLUETTI PV100 FX",
+   "label": "Panel Voc / Isc",
+   "value": "41.4 V Voc, 3.05 A Isc, 100 W, 4.85 lb, MC4",
+   "source": "https://www.bluettipower.com/products/pv100fx-flexible-solar-panel",
+   "source_title": "BLUETTI PV100 FX Flexible Solar Panel | 100W",
+   "read": "2026-11-13",
+   "note": "Two in series = 82.8 V, more than the RV5's 50 V limit, so a single panel per string is the only option. The page says the RV system supports up to 16 PV100 FX (1,600 W), which is 16 × 3.05 A = 48.8 A Isc in parallel. Price $329.00 for 100 W, and the selector also shows $329 for '200W (Set of 2)'."
+  },
+  {
+   "product": "BLUETTI MC4 Y Branch Parallel Adapter Cable",
+   "label": "Price / stock",
+   "value": "$39.00, unavailable (out of stock)",
+   "source": "https://www.bluettipower.com/products/mc4-solar-y-branch-parallel-cable",
+   "source_title": "MC4 Solar Connectors Y Branch Parallel Adapter Cable | BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Read through the storecheck.py search feed (available: false). Each pair joins 2 panels and is rated 30 A / 1,000 V DC, so a 4-panel kit needs Y-branches to merge 4 leads."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input",
+   "value": "1,000 W max, 12-60 V, 20 A",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2 + 2*200W Solar | BLUETTI US",
+   "read": "2026-11-13",
+   "note": "From FAQ Q1. 2,600 W continuous AC. The page lists no TT-30 RV outlet. Bundle price $1,499 from the store feed, base unit $899."
+  },
+  {
+   "product": "HQST 400W 12V RV Solar Kit (200Ah)",
+   "label": "Price and contents",
+   "value": "$884.99; 400 W N-type panels, 2 × 100 Ah LiFePO4 (2,560 Wh), 2,000 W pure sine inverter, 60 A Bluetooth MPPT",
+   "source": "https://www.hqsolarpower.com/products/400w-12v-rv-solar-kit-with-200ah-lifepo4-battery",
+   "source_title": "HQST 400W 12V RV Solar Kit with 200Ah LiFePO4 Battery",
+   "read": "2026-11-13",
+   "note": "Read through the storecheck.py search feed. Matches the $884.99 on ChatGPT's card. HQST is not an approved program."
+  },
+  {
+   "product": "Sun Gold Power SGK-PRO3",
+   "label": "Price and contents",
+   "value": "$2,111.00 (compare-at $4,063); 3,000 W 12 V pure sine inverter, 6 × 100 W panels, 2 × 100 Ah or 2 × 200 Ah LiFePO4 with Bluetooth, 60 A MPPT, 2/0 AWG cable, 300 A DC breaker, Z-brackets, 50 ft PV extension",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-3000w-inverter-12vdc-120v-output-lifepo4-battery-600-watt-solar-back-up-sgk-pro3",
+   "source_title": "Off Grid Solar Kit 3000W Inverter 12VDC 120V Output LifePO4 Battery 600 watt Solar Back Up SGK-PRO3",
+   "read": "2026-11-13",
+   "note": "Store search feed, with the price shown as the listing's lead price. The product page itself returned HTTP 429, so I could not read the per-variant prices."
+  },
+  {
+   "product": "Victron (cited rival)",
+   "label": "What the rival already covers",
+   "value": "Series vs parallel wiring; size the MPPT from combined Voc/Isc; SmartSolar MPPT 100/30 = 100 V PV / 30 A; about 200 Ah lithium and 450-500 W for a 720 Wh/day example",
+   "source": "https://www.victronenergy.com/knowledge-articles/2026/5/4/how-to-size-rv-solar-system",
+   "source_title": "How to Size a Solar System for Your RV | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Names no kits and gives no prices. Does not cover cold charging, shore-power or converter interaction, power stations or leveling jacks."
+  }
+ ],
+ "unsourced": [
+  "Official BLUETTI US spec sheet or manual for RV5 solar input (max W per PV input, current limit). The US product page's Tech Specs section is empty, and only non-US retailers (actiontech.co.nz) list 1,800 W / 12-50 V / 50 A, which I did not open.",
+  "The model of the 100 W panel in BLUETTI's RV kit variants. The kit page does not name it, so tying the PV100 FX's 41.4 V Voc to the kit is an inference from it being BLUETTI's RV panel.",
+  "WEIZE 400W 12V Complete Off-Grid Starter Kit ($999.99 on ChatGPT's card) at today's price. The WEIZE store returned HTTP 0 and Amazon search returned nothing (walled).",
+  "Amazon prices for the HQST and WEIZE kits and for third-party MC4 Y-branch connectors. amzcheck.py returned no results.",
+  "Sun Gold Power SGK-PRO3 MPPT model, its max PV voltage, the 100 W panel's Voc, and per-variant prices. The store returned HTTP 429.",
+  "Body text of the cited Renogy guide (the page rendered only navigation), so I could not check it for wiring or kit facts.",
+  "SP200L panel Voc and Isc, and whether the Elite 200 V2 bundle includes a parallel cable. Not stated on the bundle page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1948556
+ }
+}
