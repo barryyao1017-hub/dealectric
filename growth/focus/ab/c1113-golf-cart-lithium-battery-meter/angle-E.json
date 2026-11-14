@@ -1,0 +1,76 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a named tester measured a Victron SmartShunt 500A against a Fluke and a bench meter: it read 2–5% low at 1–10 A and drew about 4 mA on standby, against the less than 1 mA in Victron's datasheet that cartvoltage quotes.",
+ "standout": 2,
+ "standout_why": "I compared against cartvoltage.com/best-lithium-battery-meter-golf-cart (cited, 2026-10-29) and cartvoltage.com/golf-cart-battery-meter-wrong-lithium (2026-10-12/29). The first gives only maker figures: Renogy ±1% from its product page, Victron standby under 1 mA from its datasheet, and Junctek 0.4 W module and 0.5 W display from its manual. It says no independent tester or lab measured anything. The second gives a resting-voltage SOC table with no named source and no accuracy figure for any meter. The other results are maker and retailer battery pages, with no measurement of any meter. So nothing ChatGPT got contains a named measurement. The best one I found comes from a single unit tested by one forum user, which is why this is a 2 and not a 3.",
+ "decides": "This supports the Victron SmartShunt as the app pick, but with two caveats a golf cart owner needs. First, its standby draw measured about 4 mA, roughly four times the datasheet figure. Over a 90-day winter layup that is about 8.6 Ah, or about 8% of a 105 Ah pack, so a cart left in storage should be switched off or disconnected. Second, Footprint Hero measured its Bluetooth range dropping from 90–100 ft in the open to 30 ft inside an enclosed battery compartment. A shunt under a cart seat is reliable for reading from the driver's seat, not from the house. No named tester has measured the Renogy 500A or the Junctek KG140F, so this does not overturn the Renogy pick for a dash screen. It only means the Renogy's ±1% is unverified, while the Victron at least has a named bench check.",
+ "candidates": [
+  "Renogy 500A Battery Monitor with Shunt (RBM500)",
+  "Victron SmartShunt 500A/50mV",
+  "Junctek KG140F",
+  "LiTime RS485 Golf Cart Battery Monitoring Display",
+  "Redodo 48V 100Ah Golf Cart Kit 500A shunt monitor"
+ ],
+ "findings": [
+  {
+   "product": "Victron SmartShunt 500A/50mV",
+   "label": "Low-current reading error vs reference meters",
+   "value": "0.95 A at 1.0001 A (−5.0%); 4.89 A at 5.002 A (−2.2%); 9.80 A at 10.002 A (−2.0%)",
+   "source": "https://community.victronenergy.com/t/mismatch-smartshunt-500a-and-specifications/50145",
+   "source_title": "Mismatch Smartshunt 500A and specifications – Victron Community",
+   "read": "2026-11-14",
+   "note": "Measured by user 'mystudio', posted 2025-12-12. The reference was a Fluke plus a bench DMM, which agreed with each other, on a known current source. My arithmetic: (4.89−5.002)/5.002 = −2.2%, (9.80−10.002)/10.002 = −2.0%. One unit only. User Ulfilas (2025-12-15) replied that Victron's ±0.4% is full scale, about ±2 A on a 500 A shunt."
+  },
+  {
+   "product": "Victron SmartShunt 500A/50mV",
+   "label": "Standby (self-consumption) current, measured",
+   "value": "about 4 mA",
+   "source": "https://community.victronenergy.com/t/mismatch-smartshunt-500a-and-specifications/50145?page=2",
+   "source_title": "Mismatch Smartshunt 500A and specifications (page 2) – Victron Community",
+   "read": "2026-11-14",
+   "note": "Measured by 'mystudio' with a desktop DMM, posted 2025-12-19. The first post (2025-12-12) said 'above 3 mA'. cartvoltage quotes the datasheet as under 1 mA. My arithmetic: 4 mA × 24 h × 90 days = 8.64 Ah, about 8% of a 105 Ah 48 V pack over a 90-day layup. The thread does not give the bank voltage."
+  },
+  {
+   "product": "Victron SmartShunt 500A/50mV",
+   "label": "Amp-hour count on a full capacity test, before and after user shunt trim",
+   "value": "324–325 Ah read vs 330 Ah expected (about 1.5–1.8% low); shunt resistance about 2.4% low; within spec to about 150 A after trimming",
+   "source": "https://community.victronenergy.com/t/mismatch-smartshunt-500a-and-specifications/50145?page=2",
+   "source_title": "Mismatch Smartshunt 500A and specifications (page 2) – Victron Community",
+   "read": "2026-11-14",
+   "note": "Posted by 'mystudio' 2025-12-22 (capacity test) and 2026-01-18 (after trimming the shunt to 0.1 mΩ; the user notes this likely voids the warranty). Victron staff member Thiemo van Engelen only asked for the serial number (HQ2308VJVQA). This is one unit and not a lab result."
+  },
+  {
+   "product": "Victron SmartShunt 500A/50mV",
+   "label": "Bluetooth range, measured",
+   "value": "90–100 ft open backyard; 30 ft inside an enclosed battery compartment",
+   "source": "https://footprinthero.com/best-battery-monitors",
+   "source_title": "Best Battery Monitors – Footprint Hero",
+   "read": "2026-11-14",
+   "note": "Alex Beale, Footprint Hero, page updated 2025-07-18. The obstructed test was inside a fifth wheel's battery compartment surrounded by walls and equipment. The same range figures appear in the Footprint Hero SmartShunt review (updated 2024-02-04): https://footprinthero.com/victron-smartshunt-review"
+  },
+  {
+   "product": "Victron BMV-712 Smart 500A",
+   "label": "Bluetooth range, measured (comparison)",
+   "value": "at least 150 ft open; 100 ft inside the same enclosed battery compartment",
+   "source": "https://footprinthero.com/best-battery-monitors",
+   "source_title": "Best Battery Monitors – Footprint Hero",
+   "read": "2026-11-14",
+   "note": "Alex Beale, updated 2025-07-18. He ran out of room at 150 ft. Obstructed, the BMV-712 reached about 70 ft further than the SmartShunt."
+  }
+ ],
+ "unsourced": [
+  "Independent measured accuracy or self-consumption for the Renogy 500A Battery Monitor (RBM500): Footprint Hero's review (Alex Beale, updated 2024-02-04) ran it alongside three other monitors for about 2 months but reports only Renogy's claimed ±1%. The Renogy RBM500 support/download page loaded without its spec table. The Good Sam 'Renogy battery monitor vs Trimetric camping test' thread loaded empty on both pages.",
+  "Any measurement of the Junctek KG140F: searches found only the Junctek manual and retailer spec tables (±5% current accuracy claimed, about 0.4 W module draw). The DIY Solar Forum 'JuncTek Battery Monitor vs Victron SmartShunt' thread returned HTTP 403.",
+  "Any review or measurement of the LiTime RS485 golf cart monitoring display: none found.",
+  "Off-Grid Garage (Andy) shunt comparison: no web page with the results turned up.",
+  "Victron SmartShunt datasheet figures read directly: the PDF at victronenergy.com would not extract, so the under 1 mA and ±0.4% figures come only as quoted by cartvoltage and the forum thread.",
+  "Vatrer blog 'How accurate is a golf cart battery level': HTTP 403.",
+  "Practical Sailor's battery monitor tests (Darrell Nicholson, 2016/2017) measured Balmar SmartGauge SOC within 5% but tested no candidate here, so I left them out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0505297999999998
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the exact rule a shunt monitor uses to reset itself to 100%. In Victron's own words, sync needs pack voltage at or above the 'charged voltage' (55.6 V recommended for 48 V lithium) and charge current below the 'tail current' (default 4% of capacity) for the 'charged detection time' (default 3 minutes). The tail current 'must be set higher than the current at which the charger stops or reduces charging'. The defaults out of the box are lead-acid values: 200 Ah, Peukert 1.25, 50% discharge floor. Lithium should use Peukert 1.01. Without sync, 'the state of charge value will start to drift over time'.",
+ "standout": 1,
+ "standout_why": "I compared against the cited cartvoltage.com/best-lithium-battery-meter-golf-cart (2026-10-29) and the uncited cartvoltage.com/golf-cart-battery-meter-wrong-lithium (2026-10-12). Between them they already cover the flat LiFePO4 voltage curve, shunt placement in the main negative ('every amp must pass through the shunt'), the Victron 70 V limit, and the advice to fully charge once or now and then so the count resets. Neither gives the actual sync conditions (charged voltage plus tail current plus detection time). Neither says the tail current has to sit above the point where the cart charger stops. Neither says the monitor ships with lead-acid defaults (Peukert 1.25, 200 Ah, 56.0 V charged voltage, 50% floor) that must be changed for lithium. So rivals have the idea of a full-charge reset but not the settings that make it happen.",
+ "decides": "This confirms rather than changes the pick. A shunt monitor (Victron SmartShunt on 36/48 V, or a 10 to 120 V monitor on 72 V) only stays accurate if it can tell when the pack is full. On a 48 V LiFePO4 cart that means setting charged voltage to about 55.6 V, which is below the 58.4 V the charger ends at. It also means setting tail current above the current at which the cart's charger shuts off, and changing Peukert from 1.25 to 1.01. If the monitor is left on lead-acid defaults, or the charger stops before current drops under 4% of capacity (4 A on a 100 Ah pack), the percentage drifts. That is the same failure the shopper is trying to escape. A battery whose own BMS reports state of charge (LiTime RS485 display, Redodo or Vatrer kit apps) needs no extra shunt calibration. That supports ChatGPT's advice to check for a maker BMS display first.",
+ "candidates": [
+  "Victron SmartShunt 500A/50mV",
+  "Renogy 500A Battery Monitor with Shunt (RBM500)",
+  "LiTime RS485 Battery Monitoring Display",
+  "Junctek KG140F",
+  "Redodo 48V 100Ah Bluetooth Golf Cart Conversion Kit (with 500A shunt monitor)",
+  "Vatrer 48V 105Ah Club Car Kit (LCD)"
+ ],
+ "findings": [
+  {
+   "product": "Victron SmartShunt",
+   "label": "Automatic sync-to-100% condition",
+   "value": "Voltage ≥ charged-voltage setting AND current < tail-current setting for the charged detection time (default 3 min) → SOC set to 100%",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/all-features-and-settings.html",
+   "source_title": "SmartShunt manual – All features and settings (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "From the Charged voltage, Tail current and Charged detection time entries. Detection time can be set from 0 to 100 min."
+  },
+  {
+   "product": "Victron SmartShunt",
+   "label": "Recommended charged voltage, 48 V nominal",
+   "value": "55.6 V lithium, 56.0 V lead-acid (factory default 56.0 V). 36 V nominal: 41.7 V lithium, 42.0 V lead-acid",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/all-features-and-settings.html",
+   "source_title": "SmartShunt manual – All features and settings (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "Taken from Victron's recommended-settings table. The adjustable range is 0 to 95 V in 0.1 V steps."
+  },
+  {
+   "product": "Victron SmartShunt",
+   "label": "Tail current default",
+   "value": "4.00% of battery capacity (range 0.50 to 10.00%)",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/all-features-and-settings.html",
+   "source_title": "SmartShunt manual – All features and settings (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "Arithmetic: on a 100 Ah 48 V golf-cart pack, 4% = 4 A. Charge current has to fall below 4 A for 3 min before sync happens."
+  },
+  {
+   "product": "Victron SmartShunt",
+   "label": "Tail current vs charger cut-off",
+   "value": "Tail current 'must be set higher than the current at which the charger stops or reduces charging'",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/operation.html",
+   "source_title": "SmartShunt manual – Operation (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "The same page warns that if charged voltage is set too low, 'the battery voltage can exceed it while the battery is not fully charged', which gives a false 100%."
+  },
+  {
+   "product": "Victron SmartShunt",
+   "label": "Drift without sync",
+   "value": "'the state of charge value will start to drift over time' unless the battery is regularly fully charged",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/operation.html",
+   "source_title": "SmartShunt manual – Operation (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "Victron puts the drift down to small measurement inaccuracies and the Peukert estimate. Manual sync is offered for first install or after the monitor loses power."
+  },
+  {
+   "product": "Victron SmartShunt",
+   "label": "Factory defaults (lead-acid oriented)",
+   "value": "Battery capacity 200 Ah. Peukert exponent 1.25 (Victron: use 1.01 for lithium). Charge efficiency factor 95%. Discharge floor 50% ('for lithium set it lower')",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/all-features-and-settings.html",
+   "source_title": "SmartShunt manual – All features and settings (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "The manual gives no lithium value for charge efficiency. It lists the LFP temperature coefficient as 0.5 %cap/°C."
+  },
+  {
+   "product": "Redodo 48V 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "label": "Price and included metering",
+   "value": "$1,149.99 (compare-at $1,999.99). Includes a 58.4 V 18 A charger, a 'Redodo 500A Battery Monitor with Shunt' and Bluetooth BMS monitoring (SOC, capacity, voltage, current)",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-14",
+   "note": "Price and text read from the Shopify product JSON via storecheck.py search on redodopower.com. Available: true."
+  }
+ ],
+ "unsourced": [
+  "Renogy RBM500 (ChatGPT's #1 card): whether it re-syncs to 100% automatically when it reaches a set full voltage, or only by a manual key hold. The G3 manual PDF (renogy.com and the Shopify CDN) did not extract as text, PDF tools needed approval, and renogy.com returned HTTP 429. A search snippet citing a reviewer said there is no auto-recalibration. I did not open that page, so I'm leaving it out.",
+  "Renogy RBM500 US price today (renogy.com returned HTTP 429 to both WebFetch and storecheck).",
+  "LiTime RS485 Battery Monitoring Display: the maker's own compatibility wording (LiTime RS485 batteries only) and its US price. litime.com returned HTTP 429 to both WebFetch and storecheck.",
+  "Victron SmartShunt supply-voltage range from Victron's own technical data. Only the rival cartvoltage page (6.5 to 70 V) was read.",
+  "The current at which Redodo's or Vatrer's 58.4 V golf-cart charger stops charging, which is needed to set the shunt's tail current. The charger pages were not reachable (HTTP 429) and the kit page text does not state it.",
+  "How the Vatrer kit's LCD gets its SOC (BMS link or voltage estimate). I could not open the Vatrer page within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0412283999999998
+ }
+}

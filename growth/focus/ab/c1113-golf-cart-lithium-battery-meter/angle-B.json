@@ -1,0 +1,121 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how much of the pack each meter drains per month while the cart is stored. Counted against a Vatrer 48V 105Ah pack (5,376 Wh), the Victron SmartShunt and the Renogy 500A monitor (1 mA standby) each use about 0.7% a month. The Junctek KG140F, at its 0.9 W module-plus-display rating, would use about 12% a month. The LiTime RS485 display can switch the whole battery system off, so it adds nothing.",
+ "standout": 1,
+ "standout_why": "The cited cartvoltage.com/best-lithium-battery-meter-golf-cart/ page already gives the inputs: Victron SmartShunt under 1 mA, and 0.4 W plus 0.5 W for the Junctek KG-F modules. It never turns them into Ah or % of a pack per month or per winter. It also gives no standby figure for the Renogy and does not mention the LiTime display's system shutdown. cartvoltage.com/golf-cart-battery-meter-wrong-lithium/ (in the results, not cited) gives a voltage-to-SOC table but no meter draw at all. The other results are battery pages and spec PDFs that give no meter standby figures.",
+ "decides": "This mostly confirms ChatGPT's picks. The Renogy 500A ($87.99 at renogy.com) and the Victron SmartShunt draw the same 1 mA, so storage drain does not separate them. On a 105 Ah pack each loses under 0.72 Ah a month, about 3.4% over a 5-month winter. It does count against the cartvoltage 'best overall' Junctek KG140F if its display stays powered: about 12% of a 5.4 kWh pack a month, or about 60% over a 5-month winter, on the rival's own numbers. For LiTime GC Comm owners, the $56.99 RS485 display is the storage-safe choice because it can turn the pack off.",
+ "candidates": [
+  "Renogy 500A Battery Monitor with Shunt",
+  "Victron SmartShunt 500A",
+  "Junctek KG140F",
+  "LiTime Lithium Golf Cart Battery RS485 Monitoring Display",
+  "Redodo 48V 100Ah Golf Cart Conversion Kit (500A shunt monitor)",
+  "Vatrer 48V 105Ah Club Car Golf Cart Battery Kit (LCD monitor)"
+ ],
+ "findings": [
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Current draw (maker spec)",
+   "value": "< 1 mA; supply range 6.5–70 VDC; resolution ±0.01 A / ±0.01 V",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "SmartShunt manual – 11. Technical data (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "Maker's technical data table."
+  },
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Storage drain on a Vatrer 48V 105Ah pack",
+   "value": "< 0.69% of capacity per month (< 3.4% over 5 months)",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "SmartShunt manual – 11. Technical data (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "0.001 A × 720 h = 0.72 Ah/month; 0.72 / 105 Ah = 0.69%; × 5 months = 3.4%. Pack capacity from the Vatrer store listing."
+  },
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Voltage headroom on a 48V LiFePO4 cart",
+   "value": "11.6 V above a 58.4 V charger's output; a 72 V pack (81.6 V full) is 11.6 V over the 70 V limit",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "SmartShunt manual – 11. Technical data (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "70 − 58.4 = 11.6 V (58.4 V charger in the Vatrer, Redodo and LiTime kits); 81.6 − 70 = 11.6 V over, using the 72 V 100% figure from cartvoltage.com/golf-cart-battery-meter-wrong-lithium/."
+  },
+  {
+   "product": "Renogy 500A Battery Monitor with Shunt",
+   "label": "Price today, maker US store",
+   "value": "$87.99",
+   "source": "https://www.renogy.com/products/500a-battery-monitor-with-shunt",
+   "source_title": "500A Battery Monitor With Shunt – Renogy",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py (Shopify); in stock. Same as the price ChatGPT showed."
+  },
+  {
+   "product": "Renogy 500A Battery Monitor with Shunt",
+   "label": "Standby draw and storage drain on a 105 Ah pack",
+   "value": "1 mA standby → 0.69% of capacity per month",
+   "source": "https://www.renogy.com/products/500a-battery-monitor-with-shunt",
+   "source_title": "500A Battery Monitor With Shunt – Renogy",
+   "read": "2026-11-14",
+   "note": "Maker: 'only 1 mA Standby Dissipation', and the backlight turns off when charging current is under 100 mA. 0.001 A × 720 h = 0.72 Ah; 0.72 / 105 = 0.69%. Range 10–120 V, 500 A, 1% accuracy."
+  },
+  {
+   "product": "Junctek KG140F",
+   "label": "Storage drain with the display powered (5,376 Wh pack)",
+   "value": "≈ 648 Wh/month ≈ 12.1% of the pack per month",
+   "source": "https://cartvoltage.com/best-lithium-battery-meter-golf-cart/",
+   "source_title": "Best Lithium Battery Meter for Golf Carts (Shunt Monitors Compared) – CartVoltage",
+   "read": "2026-11-14",
+   "note": "cartvoltage's FAQ gives about 0.4 W (measuring module) + 0.5 W (display) for the KG-F series. (0.4 + 0.5) W × 720 h = 648 Wh; 648 / 5,376 = 12.1%. Junctek's own manual could not be opened, so this rests on the rival page's inputs and assumes no display sleep."
+  },
+  {
+   "product": "LiTime Lithium Golf Cart Battery RS485 Monitoring Display",
+   "label": "Price today and storage behaviour",
+   "value": "$56.99 (list $109.99); can shut down the entire battery system; fits LiTime 51.2V 30Ah GC2 Comm / 60Ah GC Comm / 100Ah GC Comm only",
+   "source": "https://www.litime.com/products/rs485-battery-monitoring-display",
+   "source_title": "LiTime Lithium Golf Cart Battery RS485 Monitoring Display",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py. $3 below the $59.99 ChatGPT showed. Maker says 'The display can shut down the entire battery system', so the display adds no drain while the pack is off. Not compatible with other brands' batteries."
+  },
+  {
+   "product": "Vatrer 48V 105Ah Club Car Golf Cart Battery Kit",
+   "label": "Pack energy and peak current against a 500 A shunt",
+   "value": "5.376 kWh; 200 A BMS, 400 A peak, up to 600 A surge → peak is 1.2× a 500 A shunt's rating",
+   "source": "https://www.vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery",
+   "source_title": "Vatrer 48V 105Ah Lithium Golf Cart Battery Conversion Kit",
+   "read": "2026-11-14",
+   "note": "600 / 500 = 1.2. A 400 A shunt (Junctek KG140F, per cartvoltage) would be 600 / 400 = 1.5×. Kit $1,579.99 including LCD monitor and charger."
+  },
+  {
+   "product": "Redodo 48V 100Ah Golf Cart Conversion Kit",
+   "label": "Kit price with 500 A shunt monitor vs battery alone",
+   "value": "$1,149.99 kit vs $836.99 battery = $313 for charger + 500 A shunt monitor",
+   "source": "https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit",
+   "source_title": "Redodo 48V(51.2V) 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit",
+   "read": "2026-11-14",
+   "note": "1,149.99 − 836.99 = 313.00. The meter's own share cannot be separated. 5,120 Wh pack."
+  },
+  {
+   "product": "general",
+   "label": "Voltage change per 10% SOC in the middle of a 48V LiFePO4 curve",
+   "value": "≈ 0.33 V per 10% SOC (70% → 30%)",
+   "source": "https://cartvoltage.com/golf-cart-battery-meter-wrong-lithium/",
+   "source_title": "Golf Cart Battery Meter Wrong After Lithium? Here Is Why – CartVoltage",
+   "read": "2026-11-14",
+   "note": "(52.8 − 51.5) V / 4 = 0.325 V per 10%, from that page's resting-voltage table. This is why a voltage-only meter struggles; the inputs are on a ChatGPT result."
+  }
+ ],
+ "unsourced": [
+  "Junctek KG140F standby/sleep current from Junctek's own manual: manuals.plus returned 403, and the probots.co.in PDF text could not be extracted",
+  "Victron SmartShunt 500A US price today: Victron sells no direct US store, and amzcheck.py returned nothing",
+  "Standby draw of the LiTime RS485 display itself: the full product page returned HTTP 429",
+  "Standby draw of the Redodo kit's 500 A shunt monitor and the Vatrer kit's LCD monitor: neither store listing states it",
+  "Standby draw of the golf-energy.com manual's LCD SOC display: the PDF fetch failed on a TLS certificate error",
+  "Whether the Victron or Renogy 500 A shunts are rated for short surges above 500 A, such as Vatrer's 600 A for 3 s: neither maker page states it"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0832072
+ }
+}

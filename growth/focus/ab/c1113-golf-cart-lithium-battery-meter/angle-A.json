@@ -1,0 +1,94 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the meters' standby draw in the same units and turns it into charge lost while the cart is parked. Junctek's KG-F is rated in watts (0.4 W measuring module + 0.5 W display, which is about 17.6 mA at 51.2 V) and Victron's SmartShunt in milliamps (<1 mA). Over a 30-day layup that is about 12.7 Ah, or about 12% of a 105 Ah 48 V pack, against less than 0.72 Ah (under 0.7%).",
+ "standout": 1,
+ "standout_why": "I compared against cartvoltage.com/best-lithium-battery-meter-golf-cart (cited) and cartvoltage.com/golf-cart-battery-meter-wrong-lithium (rank 2). The cited page already gives both raw figures, but in different units: Victron 'under 1mA' and Junctek 'about 0.4W' plus '0.5W'. It never converts them, never compares them and never turns them into pack drain. It also gives no standby figure for the Renogy 500A and no continuous or peak shunt rating for any meter. The cited page already covers Victron's 6.5 to 70 V limit and why that rules it out for 72 V carts. The rank-2 page gives no standby, shunt or accuracy figure for any meter. I could not open the other top results (Prosport, LiTime) because they returned HTTP 429 or DNS errors.",
+ "decides": "This backs up ChatGPT's Victron SmartShunt pick for 36 V and 48 V carts that sit unused for weeks, because it loses under 1% of a 105 Ah pack a month. A Junctek KG-F with its display powered would lose about 12% a month. A cart stored over winter with a Junctek connected needs a disconnect or a screenless unit. For 72 V carts the Victron is out: its supply range tops out at 70 V and a 72 V LiFePO4 pack sits at 81.6 V when full. A 10 to 120 V monitor (Junctek or Renogy) is needed there, so the standby draw becomes the cost of choosing one.",
+ "candidates": [
+  "Victron SmartShunt 500A",
+  "Renogy 500A Battery Monitor (RBM500)",
+  "Junctek KG140F",
+  "LiTime RS485 Battery Monitoring Display",
+  "Redodo 500A Battery Monitor with Shunt"
+ ],
+ "findings": [
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Current consumption",
+   "value": "< 1 mA",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "11. Technical data – Manual – SmartShunt (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "One figure, not split by mode. Normalised: 1 mA × 720 h (30 days) = 0.72 Ah/month, under 0.7% of a 105 Ah pack."
+  },
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Supply voltage range",
+   "value": "6.5–70 VDC",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "11. Technical data – Manual – SmartShunt (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "Below the 81.6 V full-charge resting voltage of a 24-cell 72 V LiFePO4 pack (figure from cartvoltage.com/golf-cart-battery-meter-wrong-lithium), so not usable on 72 V carts. The 48 V full figure of 54.4 V is within range."
+  },
+  {
+   "product": "Victron SmartShunt 500A",
+   "label": "Resolution",
+   "value": "±0.01 A current, ±0.01 V voltage, ±0.1 Ah, ±0.1% SOC",
+   "source": "https://www.victronenergy.com/media/pg/SmartShunt/en/technical-data.html",
+   "source_title": "11. Technical data – Manual – SmartShunt (Victron Energy)",
+   "read": "2026-11-14",
+   "note": "This is display resolution, not accuracy. Do not compare it with Renogy's ±1% accuracy as if they measured the same thing."
+  },
+  {
+   "product": "Junctek KG140F",
+   "label": "Standby power (measuring module + display)",
+   "value": "0.4 W + 0.5 W = 0.9 W",
+   "source": "https://cartvoltage.com/best-lithium-battery-meter-golf-cart/",
+   "source_title": "Best Lithium Battery Meter for Golf Carts (Shunt Monitors Compared)",
+   "read": "2026-11-14",
+   "note": "cartvoltage presents these as Junctek's own KG-F series figures, not specifically the KG140F's. Normalised at 51.2 V nominal: 0.9 W ÷ 51.2 V = 17.6 mA. × 720 h = 12.7 Ah/month, about 12% of a 105 Ah pack. Measuring module alone: 0.4 W ÷ 51.2 V = 7.8 mA, or 5.6 Ah/month (about 5.4%). About 17.6 times Victron's upper bound."
+  },
+  {
+   "product": "Junctek KG140F",
+   "label": "Voltage range / shunt",
+   "value": "10–120 V, 400 A shunt",
+   "source": "https://cartvoltage.com/best-lithium-battery-meter-golf-cart/",
+   "source_title": "Best Lithium Battery Meter for Golf Carts (Shunt Monitors Compared)",
+   "read": "2026-11-14",
+   "note": "cartvoltage table. Junctek's KG160F with a 600 A shunt is suggested for high-current controllers. No continuous or peak split is given."
+  },
+  {
+   "product": "Renogy 500A Battery Monitor (RBM500)",
+   "label": "Voltage range / accuracy",
+   "value": "10–120 V, ±1% voltage, current and capacity",
+   "source": "https://cartvoltage.com/best-lithium-battery-meter-golf-cart/",
+   "source_title": "Best Lithium Battery Meter for Golf Carts (Shunt Monitors Compared)",
+   "read": "2026-11-14",
+   "note": "cartvoltage cites Renogy's product page for these figures. I could not open Renogy's own page (HTTP 429)."
+  },
+  {
+   "product": "general",
+   "label": "Resting voltage, full charge, by pack",
+   "value": "48 V (16S) 54.4 V; 36 V (12S) 40.8 V; 72 V (24S) 81.6 V",
+   "source": "https://cartvoltage.com/golf-cart-battery-meter-wrong-lithium/",
+   "source_title": "Golf Cart Battery Meter Wrong After Lithium? Here Is Why",
+   "read": "2026-11-14",
+   "note": "Typical values. The page says individual packs vary by a few tenths of a volt per cell. I used these to check each meter's supply range against each pack voltage."
+  }
+ ],
+ "unsourced": [
+  "Renogy RBM500 standby/working current (a search snippet gave 1–2 mA standby and 10–15 mA working). renogy.com and uk.renogy.com returned HTTP 429, solartown returned 403, and I could not parse the Renogy G3 manual PDF.",
+  "Continuous vs peak/short-term current rating for the Victron 500A, Renogy 500A and Junctek 400A shunts. None is stated on the Victron technical-data page or the cartvoltage pages, and I could not read the datasheet PDFs.",
+  "LiTime RS485 Battery Monitoring Display: standby draw, supply voltage and price. litimeonline.shop failed DNS, and litime.com plus storecheck returned HTTP 429.",
+  "Redodo 500A Battery Monitor self-consumption. I found no figure in the search results, and the manual PDF was not fetched.",
+  "Prosport 48 V lithium SOC voltage meter: method and draw. The page returned HTTP 429.",
+  "Junctek KG-F manual figures read first-hand. Both PDF copies (probots.co.in, manuals.plus) were unreadable or returned 403, so the 0.4 W / 0.5 W figures come from cartvoltage's citation of the manual.",
+  "Prices today for Renogy 500A ($87.99 per ChatGPT), Victron SmartShunt 500A IP65 ($110.50 per ChatGPT) and LiTime RS485 display ($59.99 per ChatGPT). The store pages returned 429, so I verified none of them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 0.9247835999999999
+ }
+}
