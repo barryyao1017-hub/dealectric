@@ -1,0 +1,126 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the EG4 6000XP's 6,000 W is split into two 120 V legs of 3,000 W each, with no balancing between them. One 120 V leg overloads at just over 3,000 W even when the total load is well under 6,000 W. ChatGPT's $750 Growatt SPF 5000US card is a 240 V-only unit that needs a separate transformer before it can feed ordinary 120 V outlets.",
+ "standout": 3,
+ "standout_why": "I opened five pages. The cited EG4 6000XP product page says only 'Don't compromise on surge capacity and line imbalance capability', with no number. liveoffthegrid.com/specs, solarspecdb.com and signaturesolarsolutions.com list only '6,000 W continuous, 120/240 V split phase'. wildjoule.com/best-off-grid-inverter covers surge, idle draw and LF vs HF but gives only total split-phase ratings and never mentions per-leg limits or neutral-ground bonding. None of these says the Growatt card is 240 V-only. I did not open storyofsolar.com, the off-the-grid-solar.com collection or device.report (403).",
+ "decides": "A typical US off-grid home runs mostly 120 V loads: fridge, microwave, space heater, 120 V well pump. On the 6000XP these must be split across L1 and L2 so neither leg goes over 3,000 W. For example, an 1,800 W microwave plus a 1,500 W heater on the same leg is 3,300 W. That overloads the leg even though it is only 55% of the 6,000 W rating. A buyer with heavy 120 V loads should balance the circuits, add a second unit, or pick a unit that can carry more on one leg. ChatGPT's Growatt SPF 5000US card ($750) puts out 230/240 V only, so one unit cannot power a US 120 V panel without the Growatt ATS 5000T-ES transformer. That rules it out as a drop-in answer for a US cabin or home. The 6000XP stays the simplest single-box split-phase pick, but only when it is sized by leg, not by total watts.",
+ "candidates": [
+  "EG4 6000XP",
+  "Growatt SPF 5000US (SPF 5000 ES)",
+  "Sun Gold Power SPH6548P 6.5KW 48V",
+  "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Max continuous line (per-leg) wattage",
+   "value": "3,000 W per 120 V line (6,000 W nominal total)",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 (Technical Specifications), ManualsLib",
+   "read": "2026-11-13",
+   "note": "The page's text extraction separates labels from values. The label order is 'OUTPUT VOLTAGE, OUTPUT FREQUENCY, MAX. CONTINUOUS OUTPUT CURRENT @ 240V, MAX CONT. LINE WATTAGE, NOMINAL POWER OUTPUT'. The output values follow in matching order: '120/240VAC 50/60Hz ... 3000W 6000W'. So 3000W maps to MAX CONT. LINE WATTAGE and 6000W to NOMINAL POWER OUTPUT. The EG4 spec-sheet PDF would not parse to text, so I used the manual."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge capacity",
+   "value": "12,000 W for ≈3.5 s; 11,000 W for ≈5 s",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 (Technical Specifications), ManualsLib",
+   "read": "2026-11-13",
+   "note": "Same spec table. The total surge applies across both legs."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Inverter topology",
+   "value": "Transformerless, high-frequency",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter",
+   "source_title": "EG4 6000XP All-In-One Off-Grid Inverter - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "Maker's wording: 'This transformerless, high-frequency inverter'. Without an output transformer there is nothing to shift power between legs, which is consistent with the fixed 3,000 W per-line rating. The page names 'line imbalance capability' but gives no number."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Neutral-ground bond",
+   "value": "Internal bond is off by default and can be switched on with setting 26 when there is no bond elsewhere in the system",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html",
+   "source_title": "EG4 6000XP User Manual, ManualsLib (page 20)",
+   "read": "2026-11-13",
+   "note": "Manual wording: 'the 6000XP can be configured to create the bond internally (see setting 26).' An off-grid system with no utility service has no other bond, so the installer must either turn on setting 26 or bond at the panel. Doing both creates a second bond."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "PV input voltage",
+   "value": "100–480 V DC input range; 120–385 V MPP operating range; 8,000 W usable (4,000 W per MPPT)",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 (Technical Specifications), ManualsLib",
+   "read": "2026-11-13",
+   "note": "Cold-weather Voc must stay under 480 V (manual page 16: 'does not exceed the inverter's maximum input voltage of 480VDC')."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle consumption",
+   "value": "<30 W with PV; ≈50 W on battery; <50 W with AC",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 (Technical Specifications), ManualsLib",
+   "read": "2026-11-13",
+   "note": "Footnote on page 6: '*Idle consumption value tested with constant 300VDC PV source'. 50 W × 24 h = 1.2 kWh/day on battery."
+  },
+  {
+   "product": "Growatt SPF 5000US (SPF 5000 ES)",
+   "label": "AC output voltage",
+   "value": "240 V output only; 120 V loads need the separate Growatt ATS 5000T-ES split-phase transformer",
+   "source": "https://signaturesolar.com/growatt-5kw-stackable-off-grid-inverter-spf-5000us-ul-1741/",
+   "source_title": "Growatt 5kW Stackable Off-Grid Inverter | SPF 5000US | UL 1741 - Signature Solar",
+   "read": "2026-11-13",
+   "note": "Retailer wording: 'This Unit is 240V output only.' This is the same product name and $750 price as ChatGPT's card (ChatGPT showed seller Urban Supply). Up to 6 units in parallel, only with a battery connected. MPPT range 120–430 V, max MPPT operating voltage 450 V DC."
+  },
+  {
+   "product": "Growatt SPF 5000US (SPF 5000 ES)",
+   "label": "Price",
+   "value": "$750.00 (shown crossed out from $899.00)",
+   "source": "https://signaturesolar.com/growatt-5kw-stackable-off-grid-inverter-spf-5000us-ul-1741/",
+   "source_title": "Growatt 5kW Stackable Off-Grid Inverter | SPF 5000US | UL 1741 - Signature Solar",
+   "read": "2026-11-13",
+   "note": "Price as shown on the page today. This is not the Urban Supply listing ChatGPT showed."
+  },
+  {
+   "product": "Growatt SPF 5000US (SPF 5000 ES)",
+   "label": "Maker's output class tag",
+   "value": "230 Vac, transformerless, 450 Vdc PV",
+   "source": "https://us.growatt.com/products/spf-3500-5000-us",
+   "source_title": "SPF 3500-5000 US - Growatt US",
+   "read": "2026-11-13",
+   "note": "The maker's US page shows '230Vac' as a filter tag next to 'Transformerless' and '450Vdc PV'. The page text gives no 120 V output and no split-phase output. It also says '2 times peak power ability' and 'Up to 6 units in parallel'."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5KW 48V",
+   "label": "Price (store base price)",
+   "value": "$1,035.00 (variants up to $3,168.00)",
+   "source": "https://sungoldpower.com/search/suggest.json?q=6000W%2048V%20split%20phase%20inverter&resources[type]=product",
+   "source_title": "Sun Gold Power store product search (Shopify suggest endpoint)",
+   "read": "2026-11-13",
+   "note": "This is the lowest variant price the store search returned. I could not open the product page (HTTP 429), so I could not check which variant is the bare inverter."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price (store base price)",
+   "value": "$1,220.00 (variants up to $3,299.00)",
+   "source": "https://sungoldpower.com/search/suggest.json?q=6000W%2048V%20split%20phase%20inverter&resources[type]=product",
+   "source_title": "Sun Gold Power store product search (Shopify suggest endpoint)",
+   "read": "2026-11-13",
+   "note": "Listing title '6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger'. The base price may be the 24 V or 48 V variant; the product page returned HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "Sun Gold Power SPH6548P and Sun Gold Power 6000W LF split-phase: per-line (L1/L2) rating and unbalanced-load capability. sungoldpower.com product pages and .json returned HTTP 429 three times; reseller search results gave only the 6,500 W total and 13,000 VA peak.",
+  "EG4 6000XP max continuous output current per line at 240 V. The EG4 spec-sheet PDF (eg4electronics.com and irp.cdn-website.com copies) would not parse to text, and in the manual's page-5 extraction the current value is not in a clear position.",
+  "EG4 6000XP price at EG4's own store. The maker's product page lists no price, so ChatGPT's $1,556 card price is not checked here.",
+  "Growatt SPF 5000US surge in watts with duration, and its no-load draw. Not on the Signature Solar page or the Growatt US product page, and the Growatt datasheet PDF was not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1945929000000004
+ }
+}

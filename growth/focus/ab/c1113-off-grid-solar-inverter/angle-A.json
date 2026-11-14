@@ -1,0 +1,102 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the EG4 6000XP's 6,000 W is split across two 120 V legs with at most 3,000 W continuous on either one, and the unit does not balance load between legs. So on 120 V loads alone it is effectively a 3 kW inverter, not the 6 kW shown in ChatGPT's 'Small off-grid home 3–5 kW / Medium 5–8 kW' table.",
+ "standout": 2,
+ "standout_why": "I compared against the cited EG4 product page, which says only 'split-phase 120/240V output'. I also checked wildjoule.com/best-off-grid-inverter (2026-10-17), which says outright that it does not give per-leg limits, plus storyofsolar.com's 2026 ranking, solarspecdb.com/inverters/eg4-6000xp (2026-09-02), liveoffthegrid.com/specs/inverters/eg4-6000xp and Signature Solar's 6000XP page. They state 6,000 W, a 12,000 W surge (wildjoule, storyofsolar and liveoffthegrid add about 3.5 s) and, on some pages, about 50 W idle. None of them gives the 3,000 W per-line cap. The surge duration is already on rival pages, so it does not count as new.",
+ "decides": "This confirms the 6000XP for homes with a real 240 V load such as a well pump or minisplit, where both legs share the work. It weakens the pick for a 120 V-only cabin or RV, where everything sits on the two 120 V legs and any single leg tops out at 3,000 W. That puts the 6000XP in ChatGPT's own '3–5 kW' bracket for those buyers, so the page should tell them to plan wiring by leg, not by the 6 kW total. I could not open per-leg ratings for the Growatt SPE 6000 or the Sun Gold Power units, so I can't yet say whether a rival does better on one leg.",
+ "candidates": [
+  "EG4 6000XP",
+  "Growatt SPE 6000 US",
+  "Growatt SPF 5000 US",
+  "Sun Gold Power SPH6548P 6.5KW 48V Split Phase",
+  "Sun Gold Power 6000W 48V Split Phase LF Inverter Charger"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Maximum continuous wattage per 120 V line vs nominal output",
+   "value": "3,000 W per line; 6,000 W nominal total",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 specification table (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The page's text layer lists the labels 'MAX. CONTINUOUS OUTPUT CURRENT @ 240V / MAX CONT. LINE WATTAGE / NOMINAL POWER OUTPUT / SURGE CAPACITY' and, in the same order, the values '3000W / 6000W'. I paired them by that order because the table text is flattened. Jonathan Richter (SolarTech Online, below) gives the same 3,000 W per leg."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Per-leg limit and no load balancing (named reviewer)",
+   "value": "3,000 W max per 120 V leg; 4,000 W on one leg overloads the unit even though the total is under 6,000 W",
+   "source": "https://solartechonline.com/blog/eg4-6000xp-complete-guide/",
+   "source_title": "EG4 6000XP Complete Guide: Specs, Installation, and Real-World Performance (2025), Jonathan Richter, 2025-08-11",
+   "read": "2026-11-13",
+   "note": "Quotes: 'Per-leg limitation: 3000W maximum per 120V leg'; 'the 6000XP cannot automatically balance loads between legs'; 'If you have 4000W of appliances on one 120V leg, the inverter will overload.'"
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge, normalised to watts and seconds",
+   "value": "12,000 W for about 3.5 s, or 11,000 W for about 5 s",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, page 5 specification table (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The manual's text reads '12,000W for ≈3.5 seconds | 11,000W for ≈5 seconds'. Rivals (wildjoule, storyofsolar, liveoffthegrid) already give 12 kW / 3.5 s."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle consumption by source (the condition behind the headline figure)",
+   "value": "<30 W with PV; ≈50 W on battery; <50 W with AC",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5",
+   "source_title": "EG4 6000XP User Manual, pages 5–6 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "A page-6 footnote says: '*Idle consumption value tested with constant 300VDC PV source.' EG4's product page headlines 'as low as 30W (with PV)'. At night on battery the manual figure is ≈50 W, about 1.2 kWh a day (50 W × 24 h). Wildjoule and liveoffthegrid already give about 50 W on battery."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Rated output and PV input (EG4 product page)",
+   "value": "6 kW output; 8 kW PV input over 2 MPPTs; DC input range 100–480 VDC; idle 'as low as 30W (with PV)'",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-6000xp-all-in-one-off-grid-inverter",
+   "source_title": "EG4® 6000XP All-In-One Off-Grid Inverter - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "The page has no per-leg figure, no surge figure and no price."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Price",
+   "value": "$1,499.99 (shown next to $1,629.99)",
+   "source": "https://signaturesolar.com/eg4-6000xp-off-grid-inverter-split-phase/",
+   "source_title": "EG4 6000XP Off-Grid Inverter Split Phase - Signature Solar",
+   "read": "2026-11-13",
+   "note": "Signature Solar sells EG4 in the US. ChatGPT's card showed $1,556 at 'US Solar Supplier'; I did not open that listing. Signature Solar's page states 'Max PV Input Voltage: 480VDC' and gives no per-leg figure."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5KW 48V Split Phase",
+   "label": "Peak rating unit and price",
+   "value": "Rated output 6,500 W; peak given as 13,000 VA (not W, no duration); max Voc 550 VDC; $1,035.00 (compare-at $4,526.00)",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P - Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From the store's own product data via storecheck.py search. The peak is in VA with no duration, so it can't be compared directly with EG4's 12,000 W / 3.5 s. A direct page fetch returned HTTP 429, so I could not read the per-leg rating."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase LF Inverter Charger",
+   "label": "Per-leg statement, solar controller, price",
+   "value": "'capable of producing 2 legs of 110V' with no watts per leg; no MPPT, needs an external solar charge controller; $1,220.00 (shown with $1,743.00)",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger - Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "The rendered page marks all four variants sold out, but storecheck's product data said available=true, so the two disagree. The only 18,000 W peak figure is in the URL slug, with no duration in the page text, so I left it out as a value. FAQ: 'you need have an external solar controller if you want it work with solar panels.' This changes the price comparison against all-in-ones that include MPPT."
+  }
+ ],
+ "unsourced": [
+  "Growatt SPE 6000 US per-line (L-N) output watts and surge duration: growattportable.com and self2solar.com returned HTTP 429. The SPE_6000-12000_US datasheet (202410) was named in search results but not opened.",
+  "Growatt SPF 5000 US output configuration (120 V only or split-phase), surge and idle: not reached within the call budget.",
+  "Sun Gold Power SPH6548P per-leg output and peak duration: the product page returned HTTP 429 twice. I looked for the spec-table L1-N / L2-N rows.",
+  "Sun Gold Power 6000W LF inverter surge in watts with duration, and idle draw: the page says only 'low Idle Current' and has no surge figure in its text.",
+  "EG4 6000XP 'continuous output current @ 240V' amp value: EG4's spec-sheet PDF came back as compressed binary and local PDF extraction was not permitted. The ManualsLib text did not show the amp value next to the label.",
+  "Victron MultiPlus-II 48/5000 120 V continuous output from Victron's own page: I only saw it on the rival page (wildjoule, 4,000 W), so I left it out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9901106999999999
+ }
+}
