@@ -6397,6 +6397,23 @@ PRODUCTS = [
  "fit": "Banks of two or more SG48100P modules feeding one 6.5 kW inverter, as in Sun Gold Power's own SGM-6510M kit.",
  "caveats": ["Battery-to-busbar cables are bought separately. The maker's kit uses 1/0 AWG."]},
 
+{"slug": 'sirui-traveler-5c-carbon-travel-tripod',
+ "brand": 'SIRUI',
+ "program": 'awin:sirui',
+ "asin": None,
+ "category": 'camera-accessory',
+ "name": 'SIRUI Traveler 5C Carbon Fiber Travel Tripod with Ball Head',
+ "model": 'Traveler 5C',
+ "url": 'https://store.sirui.com/products/sirui-traveler-5a-5c',
+ "price": 109.9,
+ "verified": '2026-11-13',
+ "specs": [('Max height', '138 cm (54.3 in)'), ('Min height', '16 cm (6.3 in)'), ('Folded length', '33 cm (13 in)'), ('Weight', '0.85 kg (1.87 lb)'), ('Max load', '4 kg (8.8 lb)'), ('Leg sections', '5, carbon fiber'), ('Tube diameter', '10–22 mm')],
+ "warranty": "SIRUI limited warranty (SIRUI's warranty page lists 18 months for lenses)",
+ "returns": "30-day return policy on SIRUI's US store",
+ "summary": 'Carbon fiber travel tripod with a panning ball head that folds to 33 cm and weighs 0.85 kg (Sirui).',
+ "fit": 'Small mirrorless kits where weight, carry-on space and budget matter most.',
+ "caveats": ["Rated for 4 kg (8.8 lb), less than half the Peak Design Travel Tripod's 9.1 kg.", 'TechGearLab scored its stability 5.0 out of 10; a TechGearLab tester wrote that its center column "leaves something to be desired when fully extended".']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
