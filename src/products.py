@@ -89,6 +89,7 @@ CATEGORIES = {
     "transfer-panel": ('Transfer panels', 'Sub panels and inlets that connect a backup battery to selected house circuits.'),
     "power-hub": ('Power station hubs', 'Hubs that link two portable power stations for 120/240 V split-phase output.'),
     "diesel-heater": ('Diesel heaters', 'Portable all-in-one and installed diesel air heaters for tents, vans, RVs and garages.'),
+    "ultrasonic-cleaner": ('Ultrasonic cleaners', 'Heated tanks that use 40 kHz cavitation to strip varnish and grime from carburetors, tools and small parts.'),
 }
 
 PRODUCTS = [
@@ -6870,6 +6871,38 @@ PRODUCTS = [
  "summary": "Hcalory's lower-priced handheld all-in-one, with the same automatic altitude adjustment up to 18,000 ft and an AC adapter in the box, but without the TB2S+'s thermostat remote.",
  "fit": "Tent campers who run the heater on a fixed low setting and control it from a phone, and who don't need the temperature read inside the tent.",
  "caveats": ["The page conflicts on the remote. The package list includes one, but the FAQ says it is sold separately. Hcalory's separate thermostat remote with CO alarm was out of stock on 2026-11-14.", 'The description mentions a $129.99 black version, but on 2026-11-14 the store charged $149.99 for both US colors.', 'No water-resistance rating is listed.']},
+
+{"slug": 'vevor-15l-ultrasonic-cleaner-600w-heater',
+ "brand": 'VEVOR',
+ "program": 'awin:vevor',
+ "category": 'ultrasonic-cleaner',
+ "name": 'VEVOR 15L Upgraded Ultrasonic Cleaner, 600 W heater, 360 W ultrasonic, drain valve',
+ "model": '15L Upgraded (600W Heater, 360W Ultrasonic)',
+ "url": 'https://www.vevor.com/ultrasonic-cleaner-c_11064/15l-ultrasonic-cleaner-heater-timer-600w-40khz-jewelry-cleaning-machine-p_010923845384',
+ "price": 135.9,
+ "verified": '2026-11-14',
+ "specs": [('Tank (listed)', '13 × 11.8 × 5.9 in (33 × 30 × 15 cm), 15 L'), ('Basket', '12.2 × 11 × 3.9 in'), ('Ultrasonic', "360 W at 40 kHz per the title and VEVOR's Q&A (spec table says 300 W)"), ('Heater', '600 W, adjustable to 176 °F'), ('Timer', '0-30 minutes'), ('Drain', 'Outlet valve with 3.3 ft hose'), ('Power', '110 V, 60 Hz'), ('Weight', '20 lb'), ('Owner rating', '4.5 of 5 from 517 reviews (pooled with the 3 L and 6 L versions)')],
+ "warranty": "1 year (VEVOR's answer on the product page); optional paid 1-, 2- or 3-year plans",
+ "returns": '30-day returns advertised; third-party guides say free return shipping covers only damaged, defective or wrong items',
+ "summary": "A 15-liter heated tank with room for small-engine and motorcycle carburetors, a 600 W heater that owners say warms it far faster than the 100-300 W heaters on cheaper units, and a drain valve so you don't have to tip out dirty solution.",
+ "fit": 'Home mechanics cleaning small-engine, motorcycle or single-barrel car carbs a few times a year.',
+ "caveats": ["The listing gives both 360 W and 300 W of ultrasonic power. VEVOR's Q&A answer says 360 W.", 'One owner reports that the timer stops the ultrasonics but not the heater, so switch the heater off yourself.', 'Owners call it loud. One owner quieted it by adding weatherstripping to the lid.', 'Cleaning cycles run 30 minutes at most, so a dirty carb takes several cycles.']},
+
+{"slug": 'vevor-22l-ultrasonic-cleaner-480w',
+ "brand": 'VEVOR',
+ "program": 'awin:vevor',
+ "category": 'ultrasonic-cleaner',
+ "name": 'VEVOR 22L Ultrasonic Cleaner with Heater, Timer and Basket, 480 W',
+ "model": '22L, 480W',
+ "url": 'https://www.vevor.com/ultrasonic-cleaner-c_11064/vevor-22l-ultrasonic-cleaner-with-heater-timer-basket-digital-sonic-machine-p_010272940811',
+ "price": 174.9,
+ "verified": '2026-11-14',
+ "specs": [('Tank (inside)', '19.7 × 11.8 × 5.9 in (500 × 300 × 150 mm), 22 L'), ('Ultrasonic', '480 W at 40 kHz, 8 transducers'), ('Heater', '600 W'), ('Timer', '0-30 minutes'), ('Drain', 'Built-in drain outlet'), ('Owner rating', '4.6 of 5 from 1,104 reviews (pooled with other sizes)')],
+ "warranty": 'No length given on the product page; optional paid 1-, 2- or 3-year plans',
+ "returns": '30-day returns advertised; third-party guides say free return shipping covers only damaged, defective or wrong items',
+ "summary": 'The same 5.9 in depth as the 15L, but 19.7 in long with 480 W across eight transducers. It has room for a rack of motorcycle carbs or the parts of a four-barrel.',
+ "fit": 'Restorers who clean a bank of four motorcycle carbs, a disassembled four-barrel, or several carbs at once.',
+ "caveats": ["It is no deeper than the 15L (5.9 in), so a tall assembled four-barrel still won't sit under the fluid.", 'The product page lists no warranty length.', 'It holds 22 liters, so plan on several gallons of mixed cleaning solution for each fill.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
