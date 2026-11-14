@@ -1,0 +1,127 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a south-facing panel hung vertically on a balcony railing makes the least power in June and the most in December. NREL's PVWatts model gives a 200 W railing panel about 0.24 kWh/day in Los Angeles in June. That is less than the 384 Wh/day a BLUETTI Elite 100 V2 uses idling with its AC inverter on (The Solar Lab: about 16 W × 24 h). So in summer one railing panel can't even cover the station's own idle draw, and the useful setup is two panels wired in series, the most this station's 60 V solar input allows.",
+ "standout": 3,
+ "standout_why": "I checked the two cited pages and one uncited result. solar.com (cited) gives only yearly railing and tilted figures, for example 400 W in LA at about 400 kWh/yr on a railing. It has no monthly split, no battery idle draw, no refill time and no voltage limit for wiring panels in series. pluginsolartracker.com (cited) gives only the 1,200 W per-home cap in California. solutionenergy.com (uncited) says 'winter output is lower everywhere', which is wrong for a vertical south-facing panel. Its only refill figure is 7.5 h in full sun for a Jackery. None of these links the panel's daily yield to the battery's idle draw, and none gives the cap on series wiring. Both facts decide how many panels to buy and how to run the station.",
+ "kit_items": [
+  "Power station: BLUETTI Elite 100 V2. It stores 1,024 Wh, and OutdoorGearLab measured 890 Wh usable from the AC outlets. Its solar input takes 12–60 V at up to 20 A, so two 200 W panels can feed it.",
+  "Solar panels: two BLUETTI 200 W panels (SP200L), one from the kit and one bought separately. Open-circuit voltage is 24.6 V per panel, so two in series make 49.2 V, under the 60 V limit; three would be 73.8 V, over it. Two in parallel would be 21.6 A of short-circuit current against a 20 A limit. Two in series (400 W) is therefore the cap. Unfolded, each panel is 2,105 × 608 mm, so mounting both lengthwise needs about 4.2 m (13.8 ft) of railing.",
+  "Cable: BLUETTI Solar Extension Cable, 10 m, MC4, rated 30 A. It runs from the railing indoors to the station. It is MC4 at both ends, so it sits between the panels and the station's own solar charging cable."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Elite 100 V2 + 200W solar kit | https://www.bluettipower.com/products/elite-100-v2-200w-solar | $729.00 | 2026-11-13",
+    "BLUETTI 200W Portable Solar Panel (SP200L), single | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $399.00 | 2026-11-13",
+    "BLUETTI Solar Extension Cable, 10M MC4 | https://www.bluettipower.com/products/bluetti-solar-extension-cable | $79.00 (5 m is $59.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Elite 100 V2 + 200W, $729.00 (the base of this cart). BLUETTI also sells Elite 100 V2 + 350W Solar for $1,099.00, but I did not read the 350 W panel's specs. This cart totals $1,207.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "200 W panel hung vertically on a south-facing railing, Los Angeles, by month",
+   "value": "June 7.32 kWh (0.24 kWh/day); December 22.75 kWh (0.73 kWh/day); year 202.2 kWh (0.55 kWh/day)",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=0.2&module_type=0&losses=14&array_type=0&tilt=90&azimuth=180&lat=34.05&lon=-118.24",
+   "source_title": "PVWatts v8 API (NLR, formerly NREL)",
+   "read": "2026-11-13",
+   "note": "This is a model, not a measurement: typical weather year, tilt 90°, facing 180° (south), 14% system losses, open rack, 96% inverter efficiency (AC output). No shading from the balcony above is included. 7.32/30 = 0.244; 22.75/31 = 0.734. The yearly 202 kWh matches solar.com's figure of about 400 kWh for 400 W."
+  },
+  {
+   "product": "general",
+   "label": "Same railing panel, New York City, by month",
+   "value": "June 8.82 kWh (0.29 kWh/day); January 19.00 kWh (0.61 kWh/day); year 169.1 kWh",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=0.2&module_type=0&losses=14&array_type=0&tilt=90&azimuth=180&lat=40.71&lon=-74.01",
+   "source_title": "PVWatts v8 API (NLR, formerly NREL)",
+   "read": "2026-11-13",
+   "note": "Same inputs as the LA run. 8.82/30 = 0.294; 19.00/31 = 0.613. June output is less than half of January's."
+  },
+  {
+   "product": "general",
+   "label": "Same 200 W panel tilted 30°, NYC (for comparison)",
+   "value": "June 26.32 kWh (0.88 kWh/day); December 14.30 kWh (0.46 kWh/day); year 263.7 kWh",
+   "source": "https://developer.nlr.gov/api/pvwatts/v8.json?api_key=DEMO_KEY&system_capacity=0.2&module_type=0&losses=14&array_type=0&tilt=30&azimuth=180&lat=40.71&lon=-74.01",
+   "source_title": "PVWatts v8 API (NLR, formerly NREL)",
+   "read": "2026-11-13",
+   "note": "Tilting the panel triples June output compared with hanging it vertically (26.32 vs 8.82 kWh) but gives less in December (14.30 vs 15.19 kWh). A railing panel is a winter panel."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Idle draw, AC inverter on, nothing plugged in",
+   "value": "about 16 W (384 Wh/day)",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-100-v2",
+   "source_title": "Bluetti Elite 100 V2 Review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab 'calculated' about 16 W and doesn't describe its method. 16 W × 24 h = 384 Wh/day. That is more than one railing panel's June yield in LA (244 Wh/day) or NYC (294 Wh/day), so the battery runs down on a sunny day unless AC is switched off. Two panels in series give 488 Wh/day (LA, June)."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Inverter efficiency",
+   "value": "about 80%",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-100-v2",
+   "source_title": "Bluetti Elite 100 V2 Review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab doesn't describe its test method."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Usable AC capacity, measured",
+   "value": "890 Wh (87% of the rated 1,024 Wh)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-elite-100-v2",
+   "source_title": "Bluetti Elite 100 V2 Review – OutdoorGearLab (Kenji Mowrey, 2026-07-23)",
+   "read": "2026-11-13",
+   "note": "Example load: solar.com puts an ENERGY STAR fridge at about 460 kWh/yr, or 1.26 kWh/day. 890/1,260 = 0.71 day, about 17 h per full charge."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input limits",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-200w-solar",
+   "source_title": "Elite 100 V2 + 200W – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "60 V × 20 A = 1,200 W, so the full 1,000 W only arrives at about 50 V or higher. The '70 min' full solar charge in BLUETTI's listing needs that full 1,000 W. A 200 W railing panel in June would take 1,024/244 = 4.2 days (LA) or 1,024/294 = 3.5 days (NYC) to fill an empty battery."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L)",
+   "label": "Open-circuit voltage / short-circuit current / size / weight",
+   "value": "Voc 24.6 V; Isc 10.8 A; unfolded 2,105 × 608 mm (82.8 × 23.9 in); 8.14 kg (17.15 lb); MC4; IP67",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Series: 2 × 24.6 = 49.2 V (fits under 60 V); 3 × 24.6 = 73.8 V (over the limit). Parallel: 2 × 10.8 = 21.6 A (over the 20 A limit). The page lists Elite 100 V2 among compatible stations."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "AC (wall) charging power",
+   "value": "1,200 W",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-200w-solar",
+   "source_title": "Elite 100 V2 + 200W – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Fits a standard 15 A, 120 V outlet: 15 × 120 = 1,800 W, and 80% of that for continuous load is 1,440 W, above 1,200 W. OutdoorGearLab measured a 512 Wh/h charging rate and about 2 h from 0%."
+  },
+  {
+   "product": "BLUETTI Solar Extension Cable",
+   "label": "Length / connectors / current rating",
+   "value": "5 m or 10 m; MC4 male + female; 30 A max",
+   "source": "https://www.bluettipower.com/products/bluetti-solar-extension-cable",
+   "source_title": "BLUETTI Solar Extension Cable – BLUETTI US",
+   "read": "2026-11-13",
+   "note": "Two panels in series need one cable set. Series current stays at the single-panel Isc of 10.8 A, well under 30 A."
+  }
+ ],
+ "unsourced": [
+  "The model of the 200 W panel in the Elite 100 V2 + 200W kit: the kit page and its in-the-box list don't name it. SP200L is the only 200 W panel BLUETTI's store returned.",
+  "A measured Elite 100 V2 standby draw with the AC inverter off or DC only. I found only a BLUETTI forum user's unmeasured figure (about 10 W), not a named measurement.",
+  "A measured solar charging rate for the Elite 100 V2 from a named reviewer. OutdoorGearLab, Notebookcheck and The Solar Lab give only the 1,000 W spec, or 'about an hour' with no panels named.",
+  "The SP200L's maximum-power voltage and current and its cable length are not on the maker's page.",
+  "The 350 W panel's open-circuit voltage and size, for comparing the $1,099 Elite 100 V2 + 350W bundle; I didn't open that page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.0273069999999997
+ }
+}

@@ -1,0 +1,171 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that a balcony solar generator built on the BLUETTI AC180 has to have its two 200 W panels wired in series, because the AC180 accepts at most 10 A and at most 60 V open-circuit and the SP200L is rated 24.6 V Voc and 10.8 A Isc, and that it needs an MC4 extension cable so the battery can stay indoors, since it charges only between 0 and 40 °C.",
+ "standout": 3,
+ "standout_why": "I read the two pages ChatGPT cited (solar.com's 2026 balcony solar guide and pluginsolartracker.com's California page) and UL's UL 3700 announcement. None of them names a product or gives a panel voltage or current limit, a wiring rule, a temperature limit or a cable length. solar.com gives only price ranges by size and names microinverter makers (Hoymiles, APsystems, Mango Power). The tracker gives only SB 868 rules (1,200 W per dwelling, through a receptacle). UL gives no specs. ChatGPT's own answer showed two kits, the EcoFlow DELTA 3 Classic with a 160 W panel ($669) and the Anker C300 with a 60 W panel ($399.99), and said nothing about how to connect them. This finding decides which bundle to buy, how to wire it, and the extra cable that goes in the cart.",
+ "kit_items": [
+  "Battery and inverter: BLUETTI AC180 (1,152 Wh LiFePO4, 1,800 W AC, 500 W solar input). It sits indoors and runs appliances from its own outlets, so it never sends power to the home's wiring. That keeps it outside the plug-in rules in SB 868 and UL 3700.",
+  "Panel: BLUETTI 200 W foldable (SP200L, 24.6 V Voc, 10.8 A Isc, IP67, MC4, 23.9 × 82.8 in unfolded). Two of them in series give 49.2 V, under the AC180's 60 V limit, and stay within its 10 A input. Wired in parallel they would put up to 21.6 A short-circuit current against that 10 A cap.",
+  "Cable: BLUETTI Solar Extension Cable, 5 m MC4 (30 A). It runs from the railing through the door to the indoor station, which charges only between 0 and 40 °C (32 to 104 °F).",
+  "Optional instead: BLUETTI 'AC180 + 2×200W Solar' bundle ($1,232), wired in series only. Never put a third 200 W panel in series: that is 73.8 V, which the manual says damages the unit and is not covered by warranty."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI AC180 + 200W Solar (bundle variant) | https://www.bluettipower.com/products/ac180 | $769.00 (compare-at $899) | 2026-11-13",
+    "BLUETTI Solar Extension Cable, 5M MC4 | https://www.bluettipower.com/products/bluetti-solar-extension-cable | $59.00 | 2026-11-13"
+   ],
+   "bundle_sku": "AC180+200W Solar, $769.00 (variant 45427542491355). Bought separately, the AC180 ($499) and the 200 W panel ($399) cost $898. The page says the 200 W panel ships from Nov 18. Cart total with the 5 m cable: $828.00."
+  },
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI AC180 + 2×200W Solar | https://www.bluettipower.com/products/ac180 | $1,232.00 | 2026-11-13",
+    "BLUETTI Solar Extension Cable, 5M MC4 | https://www.bluettipower.com/products/bluetti-solar-extension-cable | $59.00 | 2026-11-13"
+   ],
+   "bundle_sku": "AC180+2*200W Solar, $1,232.00 (variant 45791800885467). Bought separately, the AC180 ($499) and the 2× 200 W panel pack ($798) cost $1,297. Cart total with the cable: $1,291.00."
+  },
+  {
+   "store": "Amazon (comparison: the kit ChatGPT showed)",
+   "items": [
+    "EcoFlow DELTA 3 Classic + 160W Solar Panel, 1,024 Wh | https://www.amazon.com/dp/B0G3NNJHFY | $1,019.00 | 2026-11-13",
+    "EcoFlow DELTA 3 Classic + 220W Solar Panel, 1,024 Wh | https://www.amazon.com/dp/B0FRMQPZF6 | $849.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Amazon sells both as single listings. Today the 160 W kit ChatGPT showed at $669 costs $1,019, which is $170 more than the 220 W kit."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar/DC input limits",
+   "value": "12–60 V DC, 10 A max, 500 W max, DC7909 input",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Quoted from the manual's specifications: 'Power 500W/10A Max', 'Input Current: 10A Max'. The input is the same for every bundle on the page. I could not read BLUETTI's own PDF (cdn.shopify AC180_User_Manual.pdf); its text layer is compressed."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Open-circuit voltage limit",
+   "value": "Panel Voc must not exceed 60 V; damage from exceeding it is not covered by warranty",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Manual: 'The open circuit voltage of solar panels cannot exceed 60V, otherwise it will damage the device.' It also says not to mix different panel types."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Charging temperature range",
+   "value": "0–40 °C (32–104 °F)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The specifications row lost its separator in the web text. Error code E086 confirms the range as 0 °C to 40 °C. This is why the station stays indoors and the panel cable has to be extended."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover time",
+   "value": "≤20 ms",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "The manual says to test the function before relying on it."
+  },
+  {
+   "product": "BLUETTI SP200L 200W Portable Solar Panel",
+   "label": "Open-circuit voltage / short-circuit current",
+   "value": "24.6 V Voc, 10.8 A Isc",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 2 in series = 49.2 V Voc (under 60 V), with current unchanged at 10.8 A Isc, so the AC180's 10 A limit trims it only slightly. 2 in parallel = 21.6 A Isc against the 10 A cap. 3 in series = 73.8 V, over the 60 V limit."
+  },
+  {
+   "product": "BLUETTI SP200L 200W Portable Solar Panel",
+   "label": "Size and weight",
+   "value": "23.9 × 82.8 in unfolded (608 × 2,105 mm); 17.15 lb (8.14 kg); IP67; MC4",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Unfolded, it is about 6.9 ft long, which matters for railing width."
+  },
+  {
+   "product": "BLUETTI AC180 + 200W Solar",
+   "label": "Bundle price today",
+   "value": "$769.00 (compare-at $899); AC180 alone $499; 200 W panel alone $399",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py. The bundle saves $129 against buying the two separately. The page says the 200 W panel ships from Nov 18. Other variants: AC180+SP100L $679, AC180+350W $1,088, AC180+2×200W $1,232."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Capacity / output / weight",
+   "value": "1,152 Wh LiFePO4, 1,800 W AC (2,700 W Power Lifting), 4 × 120 V outlets, 1,440 W AC input, 3,500+ cycles, 35.3 lb",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-13",
+   "note": "Maker's US product page."
+  },
+  {
+   "product": "BLUETTI Solar Extension Cable",
+   "label": "Lengths, rating, price",
+   "value": "5 m $59.00 / 10 m $79.00; MC4 male + female; 30 A max",
+   "source": "https://www.bluettipower.com/products/bluetti-solar-extension-cable",
+   "source_title": "BLUETTI Solar Extension Cable",
+   "read": "2026-11-13",
+   "note": "The page says one cable set per panel for parallel setups. A series string needs only one set, which is another reason to wire in series."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 160W Solar Panel",
+   "label": "Amazon price today",
+   "value": "$1,019.00",
+   "source": "https://www.amazon.com/dp/B0G3NNJHFY",
+   "source_title": "EF ECOFLOW Solar Generator Delta 3 Classic with 160W Solar Panel, 1024Wh",
+   "read": "2026-11-13",
+   "note": "ChatGPT showed this kit at $669 and did not name the retailer. Read with amzcheck.py."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic + 220W Solar Panel",
+   "label": "Amazon price today",
+   "value": "$849.00",
+   "source": "https://www.amazon.com/dp/B0FRMQPZF6",
+   "source_title": "EF ECOFLOW Solar Generator Delta 3 Classic with 220W Solar Panel, 1024Wh",
+   "read": "2026-11-13",
+   "note": "Read with amzcheck.py. It is $170 cheaper than the 160 W kit ChatGPT showed."
+  },
+  {
+   "product": "general",
+   "label": "California plug-in limit",
+   "value": "1,200 W max AC output per dwelling through a receptacle; effective 2027-01-01; certified whole-system protection against feeding the grid in an outage required",
+   "source": "https://pluginsolartracker.com/plug-in-solar-laws-by-state/california/",
+   "source_title": "Is balcony solar legal in California? Starts Jan 1, 2027",
+   "read": "2026-11-13",
+   "note": "Applies to grid-tied plug-in kits. A battery station that only runs appliances from its own outlets does not plug into the home's wiring."
+  },
+  {
+   "product": "general",
+   "label": "Whole-system UL 3700 kits on the US market",
+   "value": "None as of late August 2026, per solar.com; the first UL 3700 certifications covered microinverters only (Hoymiles, APsystems, Mango Power)",
+   "source": "https://www.solar.com/learn/guide-to-balcony-plug-in-solar/",
+   "source_title": "Plug-In Solar Panels: 2026 Balcony Solar Guide | Solar.com",
+   "read": "2026-11-13",
+   "note": "This is why the recommended kit is a battery-based solar generator: no approved store sells a certified grid-tied balcony kit. BLUETTI's US store returned no balcony or grid-tie products for 'balcony'."
+  }
+ ],
+ "unsourced": [
+  "Today's price for the Anker SOLIX C300 + 60W bundle ChatGPT showed: us.ankersolix.com returned HTTP 429 to storecheck, and ankersolix.com search returned 404. The search snippet's $279.99 'sold out' is not used.",
+  "EcoFlow DELTA 3 Classic solar input voltage and current: us.ecoflow.com returned 429 on the product page and 404 on the specs URL I tried.",
+  "SP200L Vmp, Imp and cable length: not on BLUETTI's product page. Because of this I give no watt figure for parallel clipping, only the Isc and the 10 A cap.",
+  "Confirmation that the 200 W panel in the 'AC180+200W Solar' bundle is the SP200L: the page text doesn't name the panel; only an image filename says SP200L.",
+  "Length and gauge of the solar charging cable included with the AC180: ManualsLib's 'What's In The Box' list was empty, and BLUETTI's PDF was unreadable.",
+  "A grid-tied balcony (plug-in) bundle sold by any approved store: none found at BLUETTI US. I could not check Anker SOLIX because the store blocked my requests."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1001722
+ }
+}

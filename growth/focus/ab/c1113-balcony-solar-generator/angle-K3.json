@@ -1,0 +1,126 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got says that a battery-type balcony kit such as the BLUETTI AC180 with two 200 W panels gets only about half its rated solar power if the panels are wired in parallel. The AC180 caps solar input at 10 A, and two SP200L panels in parallel deliver 21.6 A, so the ceiling is 24.6 V × 10 A = 246 W. Wired in series the pair reaches 49.2 V, under the 60 V limit, and can deliver the full 400 W. Adding the third panel from BLUETTI's 3-pack in series gives 73.8 V, which the AC180 manual forbids (error E033).",
+ "standout": 3,
+ "standout_why": "I compared against the three pages ChatGPT cited. solar.com's balcony guide (updated 2026-10-19) never mentions portable power stations, solar input voltage, connectors or panel wiring. Its traps are about grid-tie kits: backfeed, shade, wind, renter and HOA rules, and no export credit. pluginsolartracker.com's California page (2026-10-08) covers only certification, the 1,200 W limit, utility registration and the 2027–2030 dates, and does not mention power stations. UL's UL 3700 news release (2026-01-08) covers overload, backfeed and accidental contact, but not power stations, input voltage or adapters. Yet ChatGPT's own answer suggested battery 'solar generator kits' for renters. None of these pages says how to wire the panels or how many to buy, and that choice decides which bundle to buy and whether you reach 400 W or about 200 W.",
+ "kit_items": [
+  "Power station: BLUETTI AC180 (1,152 Wh, 1,800 W). Its solar input is 12–60 V Voc, 10 A, 500 W max, and the manual lists a solar charging cable in the box, so a 2-panel series string needs no extra adapter",
+  "Panels: 2× BLUETTI SP200L 200 W (Voc 24.6 V, Isc 10.8 A, MC4). Two in series reach 49.2 V Voc, under the 60 V cap. Do not buy the 3× 200 W pack for this unit: three in series reach 73.8 V. Do not wire in parallel either: 21.6 A against a 10 A cap limits you to about 246 W at most",
+  "Wiring: plug panel 1's MC4 + into panel 2's MC4 − (a series string), then run the in-box solar charging cable to the AC180. No MC4 Y-branch is needed, and buying one is exactly the parallel trap"
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI AC180 + 2×200W Solar kit (variant 45791800885467) | https://www.bluettipower.com/products/ac180 | $1,232.00 | 2026-11-13",
+    "Separately for comparison: BLUETTI AC180 | https://www.bluettipower.com/products/ac180 | $499.00 | 2026-11-13",
+    "Separately for comparison: BLUETTI 200W Portable Solar Panel (SP200L), 2× variant | https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w | $798.00 | 2026-11-13"
+   ],
+   "bundle_sku": "AC180+2*200W Solar | 1800W,1152Wh,400W Solar Kit, $1,232.00 on 2026-11-13. Bought separately the parts cost $499 + $798 = $1,297, so the bundle saves $65."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits",
+   "value": "Voc 12–60 V DC, 10 A max, 500 W max",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 (maker spec page)",
+   "read": "2026-11-13",
+   "note": "Spec page lists 'VOC 12-60VDC', '10A', '500W Max.'"
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Over-voltage rule and error code",
+   "value": "Panels must not exceed 60 V open-circuit; over-voltage shows error E033",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib copy of maker manual)",
+   "read": "2026-11-13",
+   "note": "p.3: 'Do not use solar panels with open circuit voltage higher than 60V.' p.20: 'PV Input overvoltage E033 … Ensure the PV input voltage is in the range of 12V~60VDC.' The maker's PDF (cdn.shopify.com/s/files/1/0536/3390/8911/files/AC180_User_Manual.pdf) has no text layer I could extract, so these quotes come from the ManualsLib copy."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar cable in box",
+   "value": "Solar Charging Cable, 16 AWG, 1,500 mm, included",
+   "source": "https://www.manualslib.com/manual/3073286/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 User Manual (ManualsLib copy of maker manual)",
+   "read": "2026-11-13",
+   "note": "p.9 packing list. The maker's spec page also lists a solar charging cable among the accessories."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Electrical specs",
+   "value": "Voc 24.6 V, Isc 10.8 A, standard MC4 connector, 12-month warranty",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-13",
+   "note": "Vmp, Imp and temperature coefficient are not listed."
+  },
+  {
+   "product": "AC180 + 2× SP200L",
+   "label": "Series string voltage",
+   "value": "49.2 V Voc (10.8 V, or 18%, under the 60 V cap)",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel + AC180 spec page",
+   "read": "2026-11-13",
+   "note": "2 × 24.6 V = 49.2 V at standard test conditions. Series current stays at the single-panel Isc of 10.8 A, so the 10 A cap trims at most about 0.8 A near short circuit."
+  },
+  {
+   "product": "AC180 + 2× SP200L",
+   "label": "Parallel wiring power ceiling",
+   "value": "246 W maximum (vs 400 W of panels)",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 spec page + SP200L page",
+   "read": "2026-11-13",
+   "note": "Parallel: Isc 2 × 10.8 = 21.6 A against the AC180's 10 A cap, at Voc 24.6 V. Upper bound 24.6 V × 10 A = 246 W. Real output is lower because Vmp < Voc. My arithmetic, not a measured figure."
+  },
+  {
+   "product": "AC180 + 3× SP200L",
+   "label": "3-panel series string",
+   "value": "73.8 V Voc, which exceeds the AC180's 60 V limit",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (sells 3×200W variant at $1,197)",
+   "read": "2026-11-13",
+   "note": "3 × 24.6 V = 73.8 V. The manual says not to use panels above 60 V Voc (E033). Three panels in parallel would be capped at 10 A, the same trap as above."
+  },
+  {
+   "product": "BLUETTI SP200L",
+   "label": "Mixing panel models",
+   "value": "Maker FAQ says mixing panel types is 'not encouraged'; one PV200 + one SP200L is 'not suggested'",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel (FAQ)",
+   "read": "2026-11-13",
+   "note": "Applies if a shopper adds a different panel later to reach the 500 W input."
+  },
+  {
+   "product": "BLUETTI AC180 + 2×200W Solar kit",
+   "label": "Price",
+   "value": "$1,232.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Shopify variant 45791800885467, in stock. The AC180 + 1×200W variant is $769.00, with $899 shown as the compare-at price."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS switchover",
+   "value": "20 ms",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 (maker spec page)",
+   "read": "2026-11-13",
+   "note": "Maker claim, not measured."
+  }
+ ],
+ "unsourced": [
+  "SP200L Vmp, Imp and Voc temperature coefficient. I looked on the maker product page and found none listed, so I could not compute cold-morning Voc for the 2-series string or an exact parallel-mode wattage.",
+  "A forum count of owners reporting the parallel 10 A clipping on the AC180. The BLUETTI community thread 'AC180 Maximum Solar Panel Input' (community.bluettipower.com/t/33212) now redirects to the forum home page, and I did not find another dated thread with a report count within budget.",
+  "Confirmation that the AC180 + 2×200W bundle ships the SP200L rather than another 200 W model. The AC180 product page names the panel only in image filenames ('SP200L').",
+  "A maker or reviewer statement that a power station's AC output must never be fed into a wall outlet with a male-to-male cord. My search returned only gas-generator backfeed warnings from utilities (Alabama Power, PVREA), so I left this out as a finding."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9823845
+ }
+}
