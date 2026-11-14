@@ -1,0 +1,118 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that CKL's own store says the $149.99 CKL 622DP-4, ChatGPT's budget pick in both chats, 'does not support EDID emulation so the desktop locations may change upon switching and boot-up'. It also says CKL's dual-monitor model that does have EDID emulation (622DP-5) costs $379 and has HDMI outputs, not DisplayPort.",
+ "standout": 3,
+ "standout_why": "I read the cited TESmart page's ranking (the TESmart page itself returned HTTP 429), tradingdeskgear.com, gearexplained.com/guides/dual-monitor-kvm-switch, dockgearhq.com and streamingjet.com. None of them mentions the CKL 622DP-4 or CKL's EDID limit. tradingdeskgear already says the Level1Techs switch doesn't emulate monitors. gearexplained already says AV Access's 8KSW21DP-DM has no EDID emulation. dockgearhq covers the StarTech P2DD46A2 (DP 1.2), not the P2CDD143 that ChatGPT showed. No rival names the CKL 622DP-5 or the 622DP-MST, which runs both screens at 4K60 together.",
+ "decides": "ChatGPT told shoppers to prioritize EDID emulation, then picked the CKL 622DP-4 as its budget pick. CKL's own page says that switch has no EDID emulation. The other DP-to-DP switches under $200 that I priced don't have it either: AV Access 8KSW21DP-DM ($159.99, 'does not support EDID emulation at present') and CKL 622DP-MST ($169). CKL's EDID model costs $379 and drives the monitors over HDMI. So the budget tier only works if the shopper accepts windows rearranging. Our AV Access KD-E10 ($169.99) has EDID emulation but outputs HDMI 2.0b and tops out at dual 4K60. A shopper who needs EDID emulation on DisplayPort monitors is in the TESmart DKS202-M24 price range (tradingdeskgear lists $329.90) or higher.",
+ "candidates": [
+  "CKL 622DP-4",
+  "CKL 622DP-5",
+  "CKL 622DP-MST",
+  "TESmart DKS202-M24",
+  "TESmart DKS202-MC24",
+  "StarTech P2CDD143-KVM-SWITCH",
+  "ATEN CS1942DPA",
+  "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer",
+  "AV Access 8KSW21DP-DM",
+  "AV Access KD-E10",
+  "AV Access iDock C20",
+  "TESmart HKS202-M24",
+  "IOGEAR GCS1942"
+ ],
+ "findings": [
+  {
+   "product": "CKL 622DP-4",
+   "label": "Price, maker's US store",
+   "value": "$149.99, in stock",
+   "source": "https://cklkvm.com/products/ckl-2-port-usb-3-0-kvm-switch-dual-monitor-displayport-1-4-8k-30hz-622dp-4",
+   "source_title": "CKL 2-Port KVM Switch 2 Monitors DisplayPort 1.4 8K@30Hz 4K@144Hz | 622DP-4",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py (Shopify product JSON). Same price as ChatGPT's card. CKL also sells a refurbished unit for $118.30."
+  },
+  {
+   "product": "CKL 622DP-4",
+   "label": "EDID emulation",
+   "value": "None. CKL: 'This DisplayPort KVM switch does not support EDID emulation so the desktop locations may change upon switching and boot-up.'",
+   "source": "https://cklkvm.com/products/ckl-2-port-usb-3-0-kvm-switch-dual-monitor-displayport-1-4-8k-30hz-622dp-4",
+   "source_title": "CKL 2-Port KVM Switch 2 Monitors DisplayPort 1.4 8K@30Hz 4K@144Hz | 622DP-4",
+   "read": "2026-11-13",
+   "note": "Why it loses: it fails the EDID criterion ChatGPT itself listed. CKL also says adapters are needed if a PC lacks two DP outputs."
+  },
+  {
+   "product": "CKL 622DP-5",
+   "label": "Price and outputs",
+   "value": "$379.00. Has EDID emulation, but takes DisplayPort in and sends HDMI out.",
+   "source": "https://cklkvm.com/products/displayport-dual-monitor-kvm-switch-with-edid-ckl-622dp-5",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 1.4 8K@60Hz with Emulated EDID 622DP-5",
+   "read": "2026-11-13",
+   "note": "CKL: 'DisplayPort inputs, HDMI outputs design'. Claims 3840×2160@144Hz. Why it loses: DP-only monitors can't connect without converters, and it costs $229.01 more than the 622DP-4 ($379.00 − $149.99)."
+  },
+  {
+   "product": "CKL 622DP-MST",
+   "label": "Price and dual-screen ceiling",
+   "value": "$169.00. Both monitors at 4K@60Hz at the same time; 4K@144Hz on a single monitor only.",
+   "source": "https://cklkvm.com/products/ckl-displayport-1-4-mst-kvm-switch-dual-monitor-4k-60hz-2-port-2-computers",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 4K 60Hz ... (622DP-MST)",
+   "read": "2026-11-13",
+   "note": "Needs only one DP cable per PC (MST). Why it loses: capped at 60 Hz with two 4K screens."
+  },
+  {
+   "product": "AV Access 8KSW21DP-DM",
+   "label": "Price and EDID",
+   "value": "$159.99; AV Access: 'The product does not support EDID emulation at present.'",
+   "source": "https://avaccess.com/products/8ksw21dp-dm-displayport-kvm-switch",
+   "source_title": "Best 8K Dual Monitor DisplayPort KVM Switch for Gaming - AV Access",
+   "read": "2026-11-13",
+   "note": "Claims up to 8K@60Hz and 4K@165/144Hz, with 6 DP 1.4a cables included. The page doesn't say whether both 4K monitors can run 144/165 Hz at once. USB is 5 Gbps."
+  },
+  {
+   "product": "AV Access KD-E10",
+   "label": "Price, outputs, EDID",
+   "value": "$169.99; 2× HDMI 2.0b outputs; dual 4K@60Hz 4:4:4; EDID emulation yes",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "AV Access KD-E10",
+   "read": "2026-11-13",
+   "note": "Our product. The desktop connects with 1 DP + 1 HDMI + USB-B; a laptop connects with USB-C (100 W). On macOS, USB-C MST mirrors the two monitors. Why it loses here: the monitors connect over HDMI, not DisplayPort, and dual-screen output stops at 4K60."
+  },
+  {
+   "product": "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer",
+   "label": "Price, stock, emulation",
+   "value": "From $520.00; shows an 'email when in stock' notice; 'does not support monitor emulation'",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj",
+   "source_title": "1.4 Display Port KVM Switch - Dual Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-13",
+   "note": "Up to 4K/120 Hz or 8K/30 Hz per DP 1.4 link. No cables included. DP cables must be 4 m or shorter. Non-US orders are suspended. Why it loses: price, apparently out of stock, and no emulation."
+  },
+  {
+   "product": "ATEN CS1942DPA",
+   "label": "Maker price and specs",
+   "value": "MSRP 'Quote Upon Request'; DP 1.4; up to 7680×4320@60Hz and 4096×2160@240Hz; all DP/USB cables included",
+   "source": "https://www.aten.com/global/en/products/kvm/desktop-kvm-switches/cs1942dpa/",
+   "source_title": "CS1942DPA - ATEN",
+   "read": "2026-11-13",
+   "note": "The page does not mention EDID emulation (Video DynaSync) and gives no limit for two displays at once. USB is 2× 5 Gbps."
+  },
+  {
+   "product": "TESmart DKS202-M24",
+   "label": "Price and 4K144 method (rival-reported)",
+   "value": "$329.90 at TESmart; 4K@144Hz uses DSC",
+   "source": "https://tradingdeskgear.com/best-kvm-switch-for-two-computers/",
+   "source_title": "Best KVM Switch for Two Computers (2026): Dual Monitors",
+   "read": "2026-11-13",
+   "note": "This is tradingdeskgear's figure (checked early November 2026). TESmart's own page returned HTTP 429 three times today, so I did not confirm it on TESmart's store. It matches ChatGPT's card."
+  }
+ ],
+ "unsourced": [
+  "TESmart DKS202-M24 and DKS202-MC24 price and EDID wording from tesmart.com: the store returned HTTP 429 to both storecheck.py and WebFetch, and the curl attempt was not approved.",
+  "StarTech P2CDD143-KVM-SWITCH US price: the startech.com en-us page returned no price or specs, cdw.com returned HTTP 403, and the Newegg ($531.98) and CDW ($506.99–$540.16) prices came only from search snippets, so I left them out. ChatGPT's $555.26 card retailer is unknown.",
+  "ATEN CS1942DPA US price: ATEN lists 'Quote Upon Request'; the CDW $316.99/$399.00 figures were snippet-only.",
+  "Whether the ATEN CS1942DPA and StarTech P2CDD143 have display EDID emulation: neither page I could open says.",
+  "AV Access iDock C20 price and outputs: not opened (call budget)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1027306
+ }
+}

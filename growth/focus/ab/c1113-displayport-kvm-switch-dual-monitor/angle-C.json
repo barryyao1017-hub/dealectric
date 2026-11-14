@@ -1,0 +1,121 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which Apple-silicon Macs can feed both inputs of a dual-monitor DisplayPort KVM. Apple's documents show that an M2 MacBook Air drives only one external display. An M3 MacBook Air or MacBook Pro drives two only with the lid closed, and the second display tops out at 4K 100 Hz. An M4 or M5 MacBook Air drives two at up to 4K 144 Hz each. The M3 limit means a dual-4K-144 Hz KVM such as the TESmart DKS202-M24 cannot run both screens at 144 Hz from an M3 Mac.",
+ "standout": 2,
+ "standout_why": "I could not open the cited TESmart DKS202-M24 page (tesmart.com returned HTTP 429 four times), so I can't say what it states. Compared against the other top results: dockgearhq.com (2026-09-12) says only that 'Original M1 MacBook Air machines natively drive one external display' and that M4 MacBook Pro configurations can drive two. It says nothing on M2, nothing on the M3 lid-closed rule, and nothing on the M3 second display's 4K 100 Hz limit. gearexplained.com/guides/dual-monitor-kvm-switch does not mention Apple silicon at all. TESmart's own Common Questions article covers only M1 ('limited to a single monitor'). Separately, ChatGPT told shoppers to prioritize EDID emulation and then made the CKL 622DP-4 its budget pick, but CKL's own listing says that model 'does not support EDID emulation'. Level1Techs' page says the same of its switch ('does not support monitor emulation'). None of the rival pages I read flags either point.",
+ "decides": "For a MacBook user this decides which switch to buy. With an M1 or M2 MacBook Air, no dual-input switch will work: only one of the two inputs gets a signal, so a DisplayLink-type dock is the route. TESmart's FAQ says this for M1, and Apple's spec page confirms the one-display limit for the M2 Air. With an M3 MacBook Air or MacBook Pro, the switch works only with the lid closed, an external keyboard and mouse, and macOS 14.3 or later (14.6 on the Pro). The second screen is capped at 4K 100 Hz, so a dual 4K 144 Hz switch like the DKS202-M24 or StarTech gives no gain on screen 2. With an M4 or M5 MacBook Air, both screens can run at 4K 144 Hz, which suits the DKS202-M24. For anyone who weighs EDID, as ChatGPT told them to, the $149.99 CKL 622DP-4 drops out: its maker says it has no EDID emulation, and CKL's EDID version, the 622DP-5, is $379. The Level1Techs switch has no EDID emulation either.",
+ "candidates": [
+  "TESmart DKS202-M24",
+  "CKL 622DP-4",
+  "CKL 622DP-5",
+  "CKL 622DP-MST",
+  "ATEN CS1942DPA",
+  "StarTech P2CDD143-KVM-SWITCH",
+  "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer"
+ ],
+ "findings": [
+  {
+   "product": "general (Apple MacBook Air M2)",
+   "label": "External displays supported",
+   "value": "One external display, up to 6K at 60 Hz",
+   "source": "https://support.apple.com/en-us/111867",
+   "source_title": "MacBook Air (M2, 2022) - Tech Specs",
+   "read": "2026-11-13",
+   "note": "Apple's Display Support section. One external display means only one of the KVM's two video inputs per computer can be used."
+  },
+  {
+   "product": "general (Apple MacBook Air / MacBook Pro M3)",
+   "label": "Conditions for two external displays",
+   "value": "Lid must be closed. Needs an external keyboard and mouse or trackpad, power, and macOS Sonoma 14.3 or later (Air) or 14.6 or later (Pro). Primary display up to 6K 60 Hz or 4K 144 Hz; secondary up to 5K 60 Hz or 4K 100 Hz.",
+   "source": "https://support.apple.com/en-us/117373",
+   "source_title": "Use dual monitors with your MacBook Air and MacBook Pro with M3 chip - Apple Support",
+   "read": "2026-11-13",
+   "note": "Apple: if you open the lid with both displays connected, 'the secondary external display will go dark or disconnect.' So on an M3 the second screen of a dual 4K 144 Hz KVM is capped at 4K 100 Hz."
+  },
+  {
+   "product": "general (Apple MacBook Air M4 / M5)",
+   "label": "External displays supported",
+   "value": "Two external displays plus the built-in screen. With two connected, each runs up to 6K 60 Hz or 4K 144 Hz. With one connected, up to 8K 60 Hz, 5K 120 Hz or 4K 240 Hz.",
+   "source": "https://support.apple.com/en-us/122212",
+   "source_title": "How many displays can be connected to MacBook Air - Apple Support",
+   "read": "2026-11-13",
+   "note": "Apple says to connect displays to the Thunderbolt 4 ports and that closing the lid does not add displays. Each Thunderbolt port needs its own USB-C-to-DP cable into a separate KVM input."
+  },
+  {
+   "product": "general (TESmart KVMs)",
+   "label": "Video connections required per computer; Mac limits",
+   "value": "2 video connections per computer for dual monitors. M1 Macs are limited to one monitor and need a DisplayLink dock for two. TESmart's DKS201/DKS401 models do not support MST.",
+   "source": "https://support.tesmart.com/hc/en-us/articles/6892738013721-4-Common-Questions-for-KVM",
+   "source_title": "4. Common Questions for KVM – TESmart",
+   "read": "2026-11-13",
+   "note": "Part I Q8: 'Each computer needs 2 video connections for the dual monitors to work.' Same FAQ: 'Keyboard software such as Logitech Options, DAS Q, Corsair iCUE, etc. conflicts with the emulation'; the workaround is the USB 2.0/3.0 port, where hotkeys don't work."
+  },
+  {
+   "product": "CKL 622DP-4",
+   "label": "EDID emulation; price; adapter note",
+   "value": "No EDID emulation. $149.99 on CKL's store, in stock.",
+   "source": "https://cklkvm.com/products/ckl-2-port-usb-3-0-kvm-switch-dual-monitor-displayport-1-4-8k-30hz-622dp-4",
+   "source_title": "CKL 2-Port KVM Switch 2 Monitors DisplayPort 1.4 8K@30Hz 4K@144Hz | 622DP-4",
+   "read": "2026-11-13",
+   "note": "Read via storecheck.py search of cklkvm.com. Listing: 'This DisplayPort KVM switch does not support EDID emulation so the desktop locations may change upon switching and boot-up.' Also: 'Adapters will be needed if your computer does not have dual DP outputs, powered HDMI to DP or USB C to DP adapters are preferred.' This is the same $149.99 budget card ChatGPT showed."
+  },
+  {
+   "product": "CKL 622DP-5",
+   "label": "EDID emulation; ports; price",
+   "value": "Has EDID emulation. DisplayPort inputs and HDMI outputs. Up to 7680×4320 at 60 Hz and 3840×2160 at 144 Hz. $379.",
+   "source": "https://cklkvm.com/products/displayport-dual-monitor-kvm-switch-with-edid-ckl-622dp-5",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 1.4 8K@60Hz with Emulated EDID 622DP-5",
+   "read": "2026-11-13",
+   "note": "Read via storecheck.py search of cklkvm.com. Listing: 'DisplayPort inputs, HDMI outputs design', so the monitors need HDMI inputs. Hotkeys can be turned off for gaming keyboards."
+  },
+  {
+   "product": "CKL 622DP-MST",
+   "label": "Single-cable-per-PC pairing",
+   "value": "One DP 1.4 input per computer feeds 2 DP outputs through MST. Both monitors up to 4K 60 Hz at once; one monitor up to 4K 144 Hz. $169.",
+   "source": "https://cklkvm.com/products/ckl-displayport-1-4-mst-kvm-switch-dual-monitor-4k-60hz-2-port-2-computers",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 4K 60Hz ... via DP 1.4 MST (622DP-MST)",
+   "read": "2026-11-13",
+   "note": "Read via storecheck.py. Listing: 'Works for Laptop with USB Type C video port using USB C to DisplayPort adapter.' The listing doesn't mention macOS. Dockgearhq says macOS does not build two independent extended desktops over MST; I did not find that in a CKL document."
+  },
+  {
+   "product": "ATEN CS1942DPA",
+   "label": "Cables, MST, adapters, Mac keyboards, firmware",
+   "value": "4 DP cables (1.5 m) plus USB cables and power adapter in the box. MST needs DP 1.4 daisy-chain monitors or a powered MST hub. DP++ needs a powered DP++ adapter. Real Mac keyboards only work with Mac computers. Firmware v1.0.062 released 2026-01-06.",
+   "source": "https://www.aten.com/us/en/products/kvm/desktop-kvm-switches/cs1942dpa/",
+   "source_title": "CS1942DPA 2-Port USB 3.0 8K DisplayPort Dual-Display KVMP Switch (Cables included) – TAA | ATEN",
+   "read": "2026-11-13",
+   "note": "ATEN claims up to 7680×4320 at 60 Hz and 4096×2160 at 240 Hz, with HDR10+. Mouse-port switching works only with a 3-button USB wheel mouse in emulation mode (footnote 4)."
+  },
+  {
+   "product": "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer",
+   "label": "EDID, cables, compatibility exclusions",
+   "value": "No monitor emulation. No cables included. DP cables must be 19-pin (ground but no DP_PWR) and no longer than 4 m. Price from $520.00.",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj",
+   "source_title": "1.4 Display Port KVM Switch - Dual Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-13",
+   "note": "Level1Techs lists these exclusions: 'Corsair keyboards are currently unable to use KVM or KM hotkeys when plugged into HID ports'; 'known issue with 2013 Mac Pros'; only the Club3D DP 1.4 to 3× DP 1.2 MST hub is supported on the console output, and 'Other MST hubs are not recommended.' Video up to 4K 120 Hz or 8K 30 Hz, with DSC supported."
+  },
+  {
+   "product": "TESmart DKS202-M24",
+   "label": "User report: USB hub depth with Apple silicon plus a dock",
+   "value": "'USB Hub depth exceeded', with no peripherals working, when the DKS202-M24 was chained with a hub and an Anker 777 dock on a MacBook Pro M1 Max",
+   "source": "https://community.tesmart.com/hc/de/community/posts/56343965683737-DKS202-M24-unstable-EDID-emulator-on-Windows",
+   "source_title": "DKS202-M24 unstable EDID emulator on Windows – TESmart Community",
+   "read": "2026-11-13",
+   "note": "One user report, not a maker statement. Posted 2026-03-25 by Alexander Bareyko. TESmart had not replied (0 comments). The same post reports windows moving between screens after a Windows lock/unlock despite EDID emulation."
+  }
+ ],
+ "unsourced": [
+  "TESmart DKS202-M24 price, box contents, and maker-stated Mac/MST/adapter exclusions: tesmart.com returned HTTP 429 to WebFetch and storecheck.py four times. The DKS202-M24 manual PDFs on support.tesmart.com came back as compressed binary that couldn't be read, and pdftotext needed approval I didn't have.",
+  "StarTech P2CDD143-KVM-SWITCH requirements (host must support DP 1.4 and DSC for 4K 144 Hz, two DP outputs per PC, EDID): StarTech's US product page loaded with no specs. These points appeared only in search snippets, which I did not use. I also did not confirm that ChatGPT's 'StarTech Dual-Monitor DP 1.4 KVM' at $555.26 is the P2CDD143.",
+  "ATEN CS1942DPA EDID emulation: ATEN's US product page does not mention it.",
+  "A maker document stating that macOS cannot extend two desktops over MST: the claim appears on dockgearhq.com and in TESmart FAQ pages for other models (HDC202-P23) that I did not open.",
+  "MacBook Air M1 display count from Apple's own spec page: I used TESmart's FAQ (M1 limited to one monitor) and did not open Apple's M1 spec page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2046690000000002
+ }
+}

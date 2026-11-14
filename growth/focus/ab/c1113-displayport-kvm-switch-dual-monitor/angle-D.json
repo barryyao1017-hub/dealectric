@@ -1,0 +1,110 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that DisplayPort 1.4 carries only 25.92 Gbps of video payload while 3840×2160 at 144 Hz in 8-bit RGB needs 28.67 Gbps for the visible pixels alone, so a '4K 144 Hz' DP 1.4 KVM reaches that rate only if the graphics card and monitor both use Display Stream Compression (DSC) through the switch; without DSC each screen drops to about 4K 120 Hz or lower.",
+ "standout": 2,
+ "standout_why": "I compared against gearexplained.com/guides/dual-monitor-kvm-switch (ChatGPT result 3). It covers two video outputs per PC, MST for one-cable Windows laptops, and macOS not supporting MST, but says nothing about DSC. TESmart's '4. Common Questions for KVM' (result 10) covers MST, the 30 Hz limit on macOS and the M1 single-monitor limit, with no DSC or DP 1.4 bandwidth figures. ChatGPT's own answer only hedges that a KVM 'may not support 4K 144Hz on both monitors'. It never says why, or that the PC and monitor have to support DSC. Level1Techs only says 'DisplayStream Compression Supported'. I couldn't open the cited TESmart DKS202-M24 page (HTTP 429, three tries), so it might mention DSC. That is why this scores 2, not 3.",
+ "decides": "For dual 4K 144 Hz, the shopper's graphics card and monitors must support DSC, and the switch must pass DSC through. Otherwise a '4K144' DP 1.4 KVM such as the CKL 622DP-4 ($149.99) or TESmart DKS202-M24 runs each screen at about 4K 120 Hz or less. Level1Techs' own rating, 'up to 4k/120hz', matches that ceiling. Shoppers at 4K 60 Hz or 1440p 144 Hz are well inside 25.92 Gbps, and the budget CKL 622DP-4 is enough. A related point decides whether the plan works at all: a laptop with one video output can only use a two-cable dual-monitor KVM through an MST model such as the CKL 622DP-MST ($169). That model is capped at dual 4K 60 Hz, and macOS does not support MST.",
+ "candidates": [
+  "CKL 622DP-4",
+  "CKL 622DP-MST",
+  "CKL 622DP-5",
+  "TESmart DKS202-M24",
+  "StarTech P2CDD143-KVM-SWITCH",
+  "ATEN CS1942DPA",
+  "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "DisplayPort 1.4 (HBR3) usable audio/video payload",
+   "value": "25.92 Gbps (32.4 Gbps total across 4 lanes at 8.1 Gbps per lane)",
+   "source": "https://vesa.org/featured-articles/vesa-rolls-out-early-certification-program-for-video-source-and-display-products-using-hbr3-high-bandwidth-link-rate/",
+   "source_title": "VESA Rolls Out Early Certification Program for Video Source and Display Products Using HBR3 High-Bandwidth Link Rate",
+   "read": "2026-11-13",
+   "note": "VESA: 'supports a total bandwidth of 32.4 Gbps when using all four lanes … at 8.1 Gbps per lane. This provides a combined audio/video payload data rate of 25.92 Gbps'. The gap from 32.4 is 8b/10b coding overhead (32.4 × 0.8)."
+  },
+  {
+   "product": "general",
+   "label": "Bandwidth needed for 3840×2160 at 144 Hz before blanking",
+   "value": "28.67 Gbps at 8-bit RGB; 35.83 Gbps at 10-bit",
+   "source": "https://vesa.org/featured-articles/vesa-rolls-out-early-certification-program-for-video-source-and-display-products-using-hbr3-high-bandwidth-link-rate/",
+   "source_title": "VESA HBR3 certification release (payload figure used for comparison)",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 3840 × 2160 = 8,294,400 px × 144 Hz = 1.194 Gpx/s × 24 bit = 28.67 Gbps, or × 30 bit = 35.83 Gbps. Both exceed the 25.92 Gbps payload before blanking is even added. 4K at 120 Hz 8-bit needs 23.89 Gbps active, which is below the limit. So 4K 144 Hz over DP 1.4 needs compression or chroma subsampling."
+  },
+  {
+   "product": "general",
+   "label": "DSC in DP 1.4",
+   "value": "up to 3:1 compression, 'visually lossless'; DP 1.4 is the first DP version to use it",
+   "source": "https://vesa.org/featured-articles/vesa-publishes-displayport-standard-version-1-4/",
+   "source_title": "VESA Publishes DisplayPort Standard Version 1.4",
+   "read": "2026-11-13",
+   "note": "VESA: 'DP 1.4 is also the first DP standard to take advantage of VESA's Display Stream Compression (DSC) technology … DSC version 1.2 transport enables up to 3:1 compression ratio'."
+  },
+  {
+   "product": "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer",
+   "label": "Rated resolution per input and DSC",
+   "value": "One DP 1.4 connection from each computer per monitor, 'up to 4k/120hz or 8k/30hz'; 1440p at 144 Hz; 'DisplayStream Compression Supported'; no monitor (EDID) emulation; from $520.00",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj",
+   "source_title": "1.4 Display Port KVM Switch - Dual Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-13",
+   "note": "Level1Techs also says: 'This KVM does not support monitor emulation'. Its rated 4K ceiling is 120 Hz, matching the uncompressed DP 1.4 limit worked out above."
+  },
+  {
+   "product": "Level1Techs 1.4 DisplayPort KVM Dual Monitor Two Computer",
+   "label": "Cable requirement",
+   "value": "DP cables that carry ground but not voltage (19-pin), no longer than 4 m",
+   "source": "https://www.store.level1techs.com/products/p/14-kvm-switch-dual-monitor-2computer-z5erd-n6mbj",
+   "source_title": "1.4 Display Port KVM Switch - Dual Monitor - Two Computer — Level1Techs Store",
+   "read": "2026-11-13",
+   "note": "Quote: 'Please only use DP cables that carry the ground but not voltage (19 pin) & are no longer than four (4) meters.' No cables are included."
+  },
+  {
+   "product": "CKL 622DP-4",
+   "label": "Price, rating, host requirement, EDID",
+   "value": "$149.99; 4K@144Hz / 8K@30Hz; needs dual DP outputs per PC (adapters otherwise); no EDID emulation",
+   "source": "https://cklkvm.com/products/ckl-2-port-usb-3-0-kvm-switch-dual-monitor-displayport-1-4-8k-30hz-622dp-4",
+   "source_title": "CKL 2-Port KVM Switch 2 Monitors DisplayPort 1.4 8K@30Hz 4K@144Hz | 622DP-4",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search on cklkvm.com; in stock. CKL: 'Final resolution is also subject to graphic cards, monitors, cables and adapters'; 'does not support EDID emulation so the desktop locations may change upon switching'."
+  },
+  {
+   "product": "CKL 622DP-MST",
+   "label": "Single-output laptop path via MST, and its ceiling",
+   "value": "$169.00; 1 DP 1.4 input split to 2 DP outputs per computer by MST; dual monitors up to 4K@60Hz at the same time, single monitor up to 4K@144Hz",
+   "source": "https://cklkvm.com/products/ckl-displayport-1-4-mst-kvm-switch-dual-monitor-4k-60hz-2-port-2-computers",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 4K 60Hz … via DP 1.4 MST (622DP-MST)",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py; in stock. 'Works for Laptop with USB Type C video port using USB C to DisplayPort adapter.' Two 4K 60 Hz streams share one DP 1.4 link. That fits, because 2 × 4K 60 Hz 8-bit = 23.9 Gbps active, under 25.92."
+  },
+  {
+   "product": "CKL 622DP-5",
+   "label": "Price and EDID",
+   "value": "$379.00; 3840×2160@144Hz / 7680×4320@60Hz; built-in emulated EDID; DisplayPort inputs, HDMI outputs",
+   "source": "https://cklkvm.com/products/displayport-dual-monitor-kvm-switch-with-edid-ckl-622dp-5",
+   "source_title": "CKL 2 Port KVM Switch Dual Monitor DisplayPort 1.4 8K@60Hz with Emulated EDID 622DP-5",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py; in stock. Its outputs are HDMI, not DP."
+  },
+  {
+   "product": "ATEN CS1942DPA",
+   "label": "Video rating and source requirement",
+   "value": "Up to 7680×4320@60Hz, 5120×2880@60Hz, 4096×2160@240Hz; 'The PC source must be DisplayPort 1.4 compliant'; MST needs DP 1.4 daisy-chain monitors or a powered MST hub; MSRP 'Quote Upon Request'",
+   "source": "https://www.aten.com/global/en/products/kvm/desktop-kvm-switches/cs1942dpa/",
+   "source_title": "CS1942DPA – ATEN",
+   "read": "2026-11-13",
+   "note": "The page does not mention DSC. By the arithmetic above, 4096×2160 at 240 Hz (about 50.9 Gbps active at 8-bit) cannot fit in 25.92 Gbps without DSC."
+  }
+ ],
+ "unsourced": [
+  "TESmart DKS202-M24 US price, DSC statement and per-PC cable count: tesmart.com returned HTTP 429 on three WebFetch tries and on storecheck.py. I could not extract the TESmart 2x2 DP manual PDF (support.tesmart.com attachment 44995611680025) because local PDF-to-text tools weren't permitted.",
+  "StarTech P2CDD143-KVM-SWITCH DSC requirement ('DSC required for maximum video performance') and price: StarTech's US product page renders without specs, the datasheet PDF was unreadable as compressed streams, and the CDW and Connection retailer pages returned 403. The DSC wording appeared only in a search snippet, which I did not use.",
+  "Apple's own statement of which base-chip MacBooks drive only one external display: support.apple.com/en-us/101571 covers MacBook Pro only, with no per-chip list."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0621476
+ }
+}

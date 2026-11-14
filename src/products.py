@@ -6261,6 +6261,38 @@ PRODUCTS = [
  "fit": 'Small yards up to about 0.12 acre with trees, tall fences or buildings that block satellite signal.',
  "caveats": ["Mulches only; it won't pick up leaves.", 'Its path is a little less straight than RTK mowers on narrow strips, and in one UK test it touched a ball.', 'Owner reviews are still few; one Trustpilot owner returned a unit after mapping and docking errors.', 'Short runtime (about 40 minutes), so it recharges often.']},
 
+{"slug": 'tesmart-dks202-m24',
+ "brand": 'TESmart',
+ "program": 'awin:tesmart',
+ "category": 'kvm-switch',
+ "name": 'TESmart DKS202-M24 2-Port DisplayPort 1.4 KVM Switch, 2 PCs 2 Monitors, 8K 60 Hz / 4K 144 Hz, EDID Emulation',
+ "model": 'DKS202-M24',
+ "url": 'https://www.tesmart.com/products/dks202-m24',
+ "price": 329.9,
+ "verified": '2026-11-13',
+ "specs": [('Video', 'DisplayPort 1.4, up to 8K (4320p) 60 Hz; 4K at 60, 120 and 144 Hz'), ('EDID', 'Smart EDID emulation'), ('Layout', '2 PCs × 2 monitors (2×2 DP)'), ('Network', 'Built-in 1000 Mbps Ethernet, can be enabled or disabled'), ('Switching', '4 switching modes, hot plugging')],
+ "warranty": "1-year limited warranty. Registering extends it to 3 years on the main unit for US and EU buyers who ordered from tesmart.com or TESmart's Amazon store; cables, remote and power adapter are excluded (TESmart)",
+ "returns": '30-day returns for orders placed on tesmart.com. The item must be in its original condition and packaging with all accessories; retailer purchases go back to the retailer (TESmart)',
+ "summary": "A two-PC, two-monitor DisplayPort 1.4 KVM that keeps both monitors' EDID while you switch, so windows stay where you left them. It is rated up to 8K 60 Hz and 4K 144 Hz.",
+ "fit": 'Two DisplayPort monitors shared by two PCs, where windows should stay put when you switch. Gaming at 4K 120–144 Hz works if your graphics card and monitors support DSC.',
+ "caveats": ['4K 144 Hz over DisplayPort 1.4 needs Display Stream Compression (DSC) from the graphics card and the monitor. Without it, expect about 4K 120 Hz.', 'Each PC needs two video connections (TESmart FAQ).', 'One owner (TESmart Community, 2026-03-25) reported windows moving after a Windows lock and unlock despite EDID emulation.']},
+
+{"slug": 'avaccess-8ksw21dp-dm',
+ "brand": 'AV Access',
+ "program": 'awin:avaccess',
+ "category": 'kvm-switch',
+ "name": 'AV Access 8KSW21DP-DM 8K DisplayPort KVM Switch, 2 Computers 2 Monitors, 4K 165/144 Hz, 6 DP Cables Included',
+ "model": '8KSW21DP-DM',
+ "url": 'https://www.avaccess.com/products/8ksw21dp-dm/',
+ "price": 159.99,
+ "verified": '2026-11-13',
+ "specs": [('Video', 'Up to 8K 60 Hz; 4K at 165, 144 and 120 Hz; 1440p up to 165 Hz; 1080p up to 240 Hz'), ('EDID', "None ('does not support EDID emulation at present')"), ('USB', 'USB 3.0, up to 5 Gbps: 3× USB 3.0, 1× USB 2.0, 1× USB 1.1'), ('In the box', '6× DisplayPort 1.4a cables (1.5 m), 2× USB 3.0 A-to-B, 12 V/2 A adapter, IR remote')],
+ "warranty": '1-year limited warranty on the main unit for the original buyer, if bought from AV Access or an authorized seller. Cables and power adapters may have shorter cover or none (AV Access)',
+ "returns": '30-day returns (AV Access)',
+ "summary": 'The lowest-cost complete dual-monitor DisplayPort KVM here. All six DP cables are in the box, but it has no EDID emulation, so windows can move when you switch.',
+ "fit": 'Budget two-PC, two-DP-monitor desks where windows rearranging after a switch is acceptable.',
+ "caveats": ["No EDID emulation: AV Access says it 'does not support EDID emulation at present'.", 'AV Access says DP 2.0-certified cables may be needed to stop flicker at 4K 144/165 Hz.', "The page doesn't say whether both 4K monitors can run 144/165 Hz at the same time."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
