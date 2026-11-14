@@ -1,0 +1,131 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's own solar inputs accept only 12–60 V, so each input takes one 46.5 V Voc 350 W panel (or several in parallel) and can't take panels in series. To get past that you need BLUETTI's $699 SolarX 4K controller, which won't start below a 150 V string, meaning at least 4 of those panels in series, carries at most 13 A (one string of those panels), and also needs a 600 V/20 A PV disconnect and a ground cable that aren't in the box.",
+ "standout": 3,
+ "standout_why": "Compared against the three cited pages. EnergySage lists the Apex 300 with two 200 W panels at $2,099 and only says to stay 'within the unit's voltage and wattage limits', with no voltage numbers and no mention of SolarX. Solar Waypoint (F3800 Plus vs DELTA Pro Ultra) gives input voltage windows for those two units only and says nothing on wiring, the Apex 300 or SolarX. thisWATT would not load (SSL certificate error), so I couldn't compare against it. None of these pages says how many panels to put in series, the 150 V start-up minimum, the 13 A single-string limit, or the missing disconnect and ground. Those facts decide which BLUETTI bundle and how many panels work.",
+ "kit_items": [
+  "Power station: BLUETTI Apex 300 (2,764.8 Wh LFP, 3,840 W, 120/240 V from one unit through a NEMA 14-50R per StorageReview). ChatGPT showed it as a catalog card, it is on an approved program (awin:bluetti_us) and it is already listed on Dealectric.",
+  "Expansion battery: BLUETTI B300K, bundled to reach 5,529.6 Wh. That is a small-cabin size by ChatGPT's own sizing table.",
+  "High-voltage solar controller: BLUETTI SolarX 4K (150–500 V in, up to 4,000 W). Without it the Apex 300 is limited to its 12–60 V inputs, so panels can't go in series.",
+  "Panels: at least 4 BLUETTI 350 W panels in series (4 × 46.5 V = 186 V Voc, 4 × 37.5 V = 150 V Vmp, inside SolarX's 120–450 V MPPT range). Only one string, because two strings would draw 18.4 A against the 13 A limit.",
+  "Not in any bundle, buy separately: a 600 V/20 A PV disconnect, a grounding cable, and a covered wall to mount SolarX vertically, because it isn't weatherproof (Notebookcheck).",
+  "Optional: BLUETTI Hub D1, because the Apex 300 has no USB or 12 V ports on its own (StorageReview: $299)."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + SolarX 4K | https://www.bluettipower.com/products/apex-300-b300k-solarx-4k | $3,099.00 (compare-at $3,299) | 2026-11-13",
+    "BLUETTI 350W Solar Panel × 3 | https://www.bluettipower.com/products/bluetti-350w-solar-panel-3 | $1,947.00 | 2026-11-13",
+    "BLUETTI 350W Solar Panel (4th panel for the 150 V minimum string) | https://www.bluettipower.com/products/350w-solar-panel | $649.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + B300K + SolarX 4K, $3,099.00 (includes no panels). Cart total with 4 panels is $5,695.00 for 1,400 W of panels."
+  },
+  {
+   "store": "BLUETTI US (bluettipower.com), alternatives that fall short",
+   "items": [
+    "Apex 300+B300K+2*350W | https://www.bluettipower.com/products/apex-300-b300k-2-200w | $3,998.00 | 2026-11-13",
+    "Apex 300+SolarX 4K | https://www.bluettipower.com/products/apex-300-solarx-4k | $2,199.00 (compare-at $2,348) | 2026-11-13",
+    "Apex 300 + 2*B300K + SolarX 4K | https://www.bluettipower.com/products/apex-300-2-b300k-solarx-4k | $4,498.00 | 2026-11-13",
+    "Apex 300 + 2*B300K + 2*500W | https://www.bluettipower.com/products/apex-300-2-b300k-2-500w | $5,499.00 | 2026-11-13",
+    "Apex 300+B300K+2*200W | https://www.bluettipower.com/products/apex-300-b300k-2-200w-1 | $3,499.00 | 2026-11-13"
+   ],
+   "bundle_sku": "The 2×350W bundle ($3,998) has no SolarX. Both panels are each below 60 V, so they must run one per built-in input, giving at most 700 W of panels. The SolarX bundles have no panels at all."
+  },
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX F3800 Plus | https://www.ankersolix.com/products/f3800-plus | sold out, no price shown | 2026-11-13"
+   ],
+   "bundle_sku": "F3800 Plus + Smart Home Power Kit is listed with no price, and the unit is sold out. Anker's page says 400 W panel orders placed on or after Oct 30 ship in early December."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in solar input",
+   "value": "2 × 1,200 W, 12–60 VDC, 20 A each",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, BLUETTI Apex 300 review (Kevin OBrien, 2026-11-09)",
+   "read": "2026-11-13",
+   "note": "From StorageReview's spec table. Because 1,200 W ÷ 20 A = 60 V, the full 1,200 W per input needs the operating voltage at the 60 V ceiling. Real panels run below their Voc, so in practice each input lands below 1,200 W."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "120/240 V from a single unit; USB/12 V ports",
+   "value": "NEMA 14-50R at 120/240 V on one unit; USB and 12 V only through the optional Hub D1 ($299); list price $1,499",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, BLUETTI Apex 300 review",
+   "read": "2026-11-13",
+   "note": "Dual-inverter design, per StorageReview."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "PV input window",
+   "value": "Start-up 150 V, Voc max 500 V, MPPT 120–450 VDC, max input 13 A, short-circuit 17 A, 4,200 W in / 4,000 W out, output 35–58 V",
+   "source": "https://checkout.bluettipower.com.au/blogs/buying-guide/what-is-bluetti-solarx-4k",
+   "source_title": "BLUETTI (AU) buying guide: What is SolarX 4K?",
+   "read": "2026-11-13",
+   "note": "Maker's page. The US product page confirms 150–500 V and 4 kW. Notebookcheck lists 16 A instead of 13 A, so I sized strings on the lower figure, 13 A."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Parts needed but not included",
+   "value": "Grounding cable and a PV disconnect (600 V / 20 A fuse box); must be mounted vertically on a dry wall; not weatherproof",
+   "source": "https://www.notebookcheck.net/Solar-charge-controller-for-rooftop-systems-with-storage-first-look-at-the-Bluetti-SolarX-4K.1132794.0.html",
+   "source_title": "Notebookcheck, first look at the Bluetti SolarX 4K (Christian Hintze)",
+   "read": "2026-11-13",
+   "note": "Notebookcheck needed panels with 37.5 V Voc in series to reach about 150 V, which it calls 'the minimum required'."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "Standalone price",
+   "value": "$699.00",
+   "source": "https://www.bluettipower.com/products/solarx-4k-solar-charge-controller",
+   "source_title": "BLUETTI US, SolarX 4K & Locking Terminal to P090D Adapter Cable",
+   "read": "2026-11-13",
+   "note": "The in-box list on the product page has no panels."
+  },
+  {
+   "product": "BLUETTI PV350",
+   "label": "Panel electricals",
+   "value": "Voc 46.5 V, Vmp 37.5 V, Isc 10.8 A, Imp 9.2 A, MC4",
+   "source": "https://www.storagereview.com/review/bluetti-pv350-solar-panel-review",
+   "source_title": "StorageReview, BLUETTI PV350 solar panel review (Kevin OBrien, 2023-09-22)",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 1 panel is 46.5 V, under the Apex's 60 V limit, but 2 in series is 93 V, over it, so on the built-in inputs panels can only be paralleled. Into SolarX, 4 in series gives 186 V Voc and 150 V Vmp, which is the minimum. Two parallel strings give Imp 18.4 A, over the 13 A limit, so only one string. 10 in series is 465 V Voc at standard test conditions, close to the 500 V limit before any cold-weather rise."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of Apex 300 kits",
+   "value": "EnergySage lists the Apex 300 with two 200 W panels at $2,099 and says it is AC-only without an add-on hub",
+   "source": "https://www.energysage.com/energy-storage/solar-generators-overview/",
+   "source_title": "EnergySage, Best Solar Generators In 2026",
+   "read": "2026-11-13",
+   "note": "Its panel guidance is limited to 'stay within the unit's voltage and wattage limits'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input and availability",
+   "value": "2 inputs, 11–165 V, 17 A, 1,600 W each (3,200 W total); sold out, no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-13",
+   "note": "Up to 6 BP3800 expansion batteries. No panel bundle price is shown."
+  }
+ ],
+ "unsourced": [
+  "Whether the 'BLUETTI 350W Solar Panel' sold today at bluettipower.com/products/350w-solar-panel is the same PV350 that StorageReview measured. Resellers list Voc figures of 44 V and 46.5 V. I could not open BLUETTI's PV350 spec PDF because its text is compressed.",
+  "The PV350's Voc temperature coefficient, needed to set the maximum series count for cold mornings under SolarX's 500 V limit. Neither StorageReview nor the PDF I could reach states it.",
+  "The SolarX 4K manual's spec table from BLUETTI's own US PDF. The download was blocked and the PDF was over the fetch size limit, so I used BLUETTI's AU guide plus Notebookcheck instead.",
+  "Today's price for the EcoFlow DELTA Pro Ultra. ChatGPT showed $4,199, but I didn't open EcoFlow's store, and EcoFlow is not an approved program.",
+  "The F3800 Plus price today. Anker's own store shows it sold out with no price, and I did not check Amazon.",
+  "The thisWATT guide (cited by ChatGPT) failed to load with an SSL certificate error, so I could not compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0075975999999998
+ }
+}

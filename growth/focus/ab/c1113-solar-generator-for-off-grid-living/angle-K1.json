@@ -1,0 +1,120 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's built-in solar ports are capped at 12–60 V and 20 A each, so BLUETTI's own 500 W panel (49.1 V Voc, 12.22 A Imp) fits only one per port: that is 1,000 W of panel, not the 2,400 W headline, unless you add a SolarX 4K. They also don't state that the unit's measured 19.5 W inverter idle draw uses about 468 Wh a day before any load runs.",
+ "standout": 3,
+ "standout_why": "EnergySage (cited) lists the Apex 300 at '2,400 W (more with SolarX 4K)' max solar input. It gives no voltage or current limit per port, says only that panels must stay 'within the unit's voltage and wattage limits', and does not mention idle draw. Solar Waypoint (cited) gives per-port voltage windows only for the F3800 Plus (11–165 V, 17 A) and the DELTA Pro Ultra, and says nothing about idle or self-consumption for either. thisWATT (cited) would not load (TLS certificate error), so I could not check it. ChatGPT's own answer showed 'Apex 300 … 2,400 W solar input' and a sizing table with no inverter overhead. No rival page I read turns the port limit into a panel count, or the idle draw into a daily energy cost. Both decide how many panels go in the cart and whether the SolarX 4K is needed.",
+ "kit_items": [
+  "Power station: BLUETTI Apex 300 (2,764.8 Wh LFP, 3,840 W, 120/240 V). It is already in the Dealectric catalog. ESS News measured its idle draw with the inverters on at 19.5 W, about half of what owners report for the F3800 Plus (unsourced, see below), and that matters when the unit runs 24/7 off grid.",
+  "Expansion batteries: 2× BLUETTI B300K (2,764.8 Wh each), for 8,294.4 Wh total. The idle draw uses 468 Wh a day (19.5 W × 24 h), about 5.6% of 8,294.4 Wh, compared with 16.9% of a lone Apex 300.",
+  "Solar panels: 2× BLUETTI SORA 500 (500 W), one per built-in port. Two panels in series would reach 98.2 V Voc, above the 60 V limit. Two in parallel would draw 24.44 A at max power, above the 20 A limit, so a third or fourth panel adds nothing without a SolarX 4K.",
+  "Optional, for more than about 1 kW of panels: BLUETTI SolarX 4K (500 V Voc, 4,000 W according to BLUETTI's bundle listing). It takes high-voltage series strings, which the 60 V built-in ports cannot.",
+  "Optional: BLUETTI Solar Extension Cable (MC4, 30 A, 5 m or 10 m), so the panels can sit in full sun away from the unit."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + 2*B300K + 2*500W | https://www.bluettipower.com/products/apex-300-2-b300k-2-500w | $5,499.00 (compare-at $5,499.00, in stock) | 2026-11-13",
+    "BLUETTI Solar Extension Cable (MC4, 30 A) | https://www.bluettipower.com/products/bluetti-solar-extension-cable | $59.00 (compare-at $79.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + 2*B300K + 2*500W, $5,499.00, 8,294.4 Wh and 1,000 W of solar. Smaller option: Apex 300 + 2 × 500W at $3,299.00 (https://www.bluettipower.com/products/apex-300-2-500w). Higher-solar option without panels: Apex 300 + 2*B300K + SolarX 4K at $4,498.00 (https://www.bluettipower.com/products/apex-300-2-b300k-solarx-4k)."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured idle self-consumption, inverters on",
+   "value": "19.5 W",
+   "source": "https://www.ess-news.com/?p=6613",
+   "source_title": "Hands-on with the Bluetti Apex 300 portable power station (Tristan Rayner, ESS News, 2025-09-17)",
+   "read": "2026-11-13",
+   "note": "Unit idle with the inverters on, 'around 19.5 W per hour while we watched'. The article does not say whether it was in 120 V or 240 V mode. Arithmetic: 19.5 W × 24 h = 468 Wh/day. 468 / 2,764.8 Wh = 16.9% of a lone Apex 300 each day. 468 / 8,294.4 Wh = 5.6% with 2× B300K."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured idle draw (second source) and AC efficiency",
+   "value": "about 20 W idle; about 85% efficiency",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review (The Solar Lab, no author or date shown)",
+   "read": "2026-11-13",
+   "note": "A single unit in standby. The Solar Lab says a full unit would drain in about 6 days; check: 2,764.8 Wh / (20 W × 24 h) = 5.8 days. At 85%, 2,764.8 Wh gives about 2,350 Wh delivered."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maker's stated idle loss",
+   "value": "20 W",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k-2-500w",
+   "source_title": "BLUETTI US – Apex 300 + 2*B300K + 2*500W",
+   "read": "2026-11-13",
+   "note": "The product page says the unit 'cut idle loss to just 20W'. This matches the ESS News measurement."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in solar input limits",
+   "value": "2 ports × 1,200 W, 12–60 VDC, 20 A each",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "Bluetti Apex 300 review (Kevin OBrien, StorageReview, 2026-11-09)",
+   "read": "2026-11-13",
+   "note": "From the spec table. 60 V × 20 A = 1,200 W, so a port reaches its rating only with a string near 60 V at 20 A. BLUETTI's US page had an empty Tech Specs section."
+  },
+  {
+   "product": "BLUETTI SORA 500",
+   "label": "Panel electrical specs",
+   "value": "Voc 49.1 V, Vmp 40.92 V, Imp 12.22 A, Isc 13.31 A",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review (Andrew Paul, Impulse Gamer, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Spec table from the review; BLUETTI's US page lists no Voc/Imp. Port fit: 2 in series = 98.2 V Voc, above the 60 V limit, so not allowed. 2 in parallel = 24.44 A Imp, above the 20 A limit, so output is clipped to about 20 A × 40.92 V = 818 W. That means one panel per port, 2 × 500 W = 1,000 W on the built-in ports. Even the parallel case tops out at about 1,637 W across both ports, never 2,400 W."
+  },
+  {
+   "product": "BLUETTI SORA 500",
+   "label": "Measured real-world output",
+   "value": "about 400 W average",
+   "source": "https://www.impulsegamer.com/?p=274334",
+   "source_title": "The Bluetti Sora 500 Solar Panel Review (Andrew Paul, Impulse Gamer, 2026-08-02)",
+   "read": "2026-11-13",
+   "note": "Measured in Australian winter, connected to a Bluetti Elite 300. Arithmetic: 2 panels × 400 W = 800 W. Covering the 468 Wh/day idle takes about 0.6 h of that output (468 / 800). Refilling one 2,764.8 Wh pack takes about 3.5 h of that output (2,764.8 / 800), before charge losses."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2*B300K + 2*500W",
+   "label": "Bundle price and contents",
+   "value": "$5,499.00; 8,294.4 Wh, 3,840 W, 1,000 W solar",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k-2-500w",
+   "source_title": "BLUETTI US – Apex 300 + 2*B300K + 2*500W",
+   "read": "2026-11-13",
+   "note": "Price from the store's product data; listed as available. The same page shows the Apex 300 alone at $1,499.00 (was $1,699.00) and says it is 'expected to ship in late January'. Capacity check: 3 × 2,764.8 Wh = 8,294.4 Wh."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "High-voltage solar add-on",
+   "value": "500 V Voc, 4,000 W",
+   "source": "https://www.bluettipower.com/products/apex-300-2-b300k-solarx-4k",
+   "source_title": "BLUETTI US – Apex 300 + 2*B300K + SolarX 4K ($4,498.00)",
+   "read": "2026-11-13",
+   "note": "From the store listing summary ('3,840W | 8,294.4Wh | 500V VOC | 4,000W Solar'). This is the way to go past about 1 kW of panels, using series strings the 60 V built-in ports can't take."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input per port (for comparison)",
+   "value": "11–165 VDC, 17 A, 1,600 W max each, 2 ports",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The 165 V window takes 3 SORA-class panels in series (3 × 49.1 = 147.3 V Voc), which the Apex 300's built-in 60 V ports cannot. The page showed 'Sold Out' and no price."
+  }
+ ],
+ "unsourced": [
+  "F3800 Plus idle draw: Anker's US product page states no idle or standby figure. The figures I found (owner reports of 50–70 W, an Anker claim of about 40 W after a firmware update) came only from search snippets, so I left them out.",
+  "A separate maximum-Voc rating for the Apex 300's built-in solar ports: BLUETTI's US Apex 300 page would not load (redirect loop), the bundle page's Tech Specs section was empty, and the manual on manuals.plus returned 403. StorageReview gives only the 12–60 VDC range.",
+  "SORA 500 electrical specs on a BLUETTI page: the US product page has an empty Tech Specs section, the EU page had a redirect loop, and the AU page returned 429. I used Impulse Gamer's spec table instead.",
+  "Apex 300 idle draw in 240 V split-phase mode: I found only an unanswered owner question on BLUETTI's forum, no measurement.",
+  "Peak sun hours by location, which off-grid daily solar sizing needs: not researched within the tool budget.",
+  "Amazon prices: not checked. The kit is a single BLUETTI-store cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1244555999999999
+ }
+}
