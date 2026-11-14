@@ -2467,126 +2467,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-14',
  "updated": '2026-11-14'},
 
-{'slug': 'best-48v-lithium-golf-cart-battery-kit-with-charger-club-car',
- 'question': 'G84 (Awin brands: 48V lithium golf cart battery kit with charger for a Club Car under $1,700)',
- 'lead_first': True,
- 'product_result': {'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit',
-                    'item_id': 'VATRER-48V-105AH-CLUBCAR',
-                    'title': 'Vatrer 48V 105Ah Club Car kit, charger included',
-                    'description': '5.4 kWh LiFePO4, 200 A BMS, UL 2271, 58.4 V charger, LCD and bracket in the box.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0591/7523/9838/files/48V_105Ah_5af1f962-e435-4539-8465-cdf96bb9083b.webp'},
- 'title': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
- 'h1': 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
- 'desc': "Which 48V lithium golf cart battery kit with the charger included fits a Club Car DS, Precedent, Tempo or Onward for under $1,700: Vatrer's 48V "
-         "105Ah UL 2271 kit ($1,579.99 with a 58.4 V charger, LCD and bracket, 10-year warranty on registration) against DC House's $879.99 48V 100Ah kit, LiTime's 48V 100Ah kit, Allied, "
-         'Epoch, RoyPow, Dakota Lithium and Eco Battery, with the on-board-computer bypass older Club Cars need, the warranty fine print and the prices seen '
-         'on 2026-11-03.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Vatrer 48V 105Ah Club Car kit</strong> '
-          '({buy:vatrer-48v-105ah-club-car-golf-cart-battery-kit}), the best 48V lithium golf cart battery kit with charger for a Club Car under $1,700: '
-          '$1,579.99 on 2026-11-03 for a 105 Ah (5.4 kWh) UL 2271 LiFePO4 pack with a 200 A BMS, a 58.4 V 18 A charger, an LCD monitor and the bracket, and a '
-          "10-year warranty once registered. If price matters more than the warranty, DC House's 48V 100Ah kit with an 18 A charger was $879.99 on its own "
-          'store the same day, $700 less, with a 5-year warranty and no UL listing named on its page.</p>\n'
-          "<p>What to know: the Vatrer sits between the budget kits and the premium ones. Under it on 2026-11-03: DC House's 48V 100Ah kit with charger "
-          "$879.99 (regular $1,149.99; 200 A BMS, LCD and Bluetooth), DC House's Sentry G100 with charger $1,199.99 (the same size with a UL 2580 listing) "
-          "and LiTime's 48V 100Ah kit $1,281.66 on sale. Over it: Allied 48V 105Ah sets $2,045–2,395, Epoch 48V 105Ah $2,299, Dakota Lithium 48V 96Ah about "
-          "$2,699 and RoyPow 48V 105Ah $2,999.99 (sold out). What the Vatrer's extra $300–700 over the budget kits buys is the longest warranty of any "
-          "kit under $2,000 (10 years, against DC House's 5 plus a 2-year extension its store advertises), a UL 2271 listing, a Club Car bracket in the box and 5 more "
-          "Ah. Vatrer's pack "
-          'fits a 19.69 × 12.52 × 9.6-inch tray, is rated for 4,000+ cycles and stops charging below freezing; the cart showed an automatic $78.99 '
-          '"Limited-Time Discount" on top of the page price, and Vatrer\'s banner code VIPD2026 does not apply to this kit. A Club Car from roughly 1995–2014 '
-          "(Lester's bypass-kit range; dealers say 1993–2013) may need its on-board computer bypassed for a lithium conversion, and Vatrer's 10-year term only "
-          'starts once you register and activate the warranty before the first charge. Returns are 7 days.</p>\n',
- 'columns': [('cap', 'Capacity'), ('charger', 'Charger included'), ('bms', 'BMS / listing'), ('warranty', 'Warranty')],
- 'rows': [{'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit',
-           'model': 'Vatrer 48V 105Ah Club Car kit',
-           'cells': {'cap': '105 Ah, about 5.4 kWh',
-                     'charger': 'Yes: 58.4 V 18 A, plus LCD monitor and bracket',
-                     'bms': '200 A; UL 2271 (Vatrer)',
-                     'warranty': '10 years after registration and activation'}},
-          {'brand': 'LiTime',
-           'model': '48V 100Ah golf cart kit',
-           'url': 'https://litime.com/products/48v-100ah-golf-cart-battery-kit',
-           'cells': {'cap': '100 Ah, about 5.1 kWh',
-                     'charger': 'Yes: 58.4 V 18 A',
-                     'bms': 'not read; UL 2271 not confirmed',
-                     'warranty': "5 years (LiTime's Canadian site); 3 years on a third-party listing",
-                     'price': '$1,281.66 (list $1,649.99) on litime.com, 2026-11-03'}},
-          {'brand': 'DC House',
-           'model': '48V 100Ah metal-case battery with charger',
-           'url': 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger',
-           'cells': {'cap': '100 Ah, about 5.1 kWh',
-                     'charger': 'Yes: 18 A, plus LCD monitor, Bluetooth and a 5 m cable (charger ships in a separate box)',
-                     'bms': '200 A; no UL listing named on the page',
-                     'warranty': '5 years; the store banner adds a 2-year extension for orders on dchousepower.com',
-                     'price': '$879.99 (regular $1,149.99) on dchousepower.com, 2026-11-03'}},
-          {'brand': 'DC House',
-           'model': 'Sentry G100 48V 100Ah with charger',
-           'url': 'https://www.dchousepower.com/products/dc-house-sentry-g100-48v-100ah-ul2580-lifepo4-metal-case-battery-with-charger-ideal-for-golf-carts',
-           'cells': {'cap': '100 Ah, 5,120 Wh',
-                     'charger': 'Yes',
-                     'bms': '200 A (2C) discharge; UL 2580 (DC House)',
-                     'warranty': 'not read',
-                     'price': '$1,199.99 (regular $1,499.99) on dchousepower.com, 2026-11-03'}},
-          {'brand': 'Allied',
-           'model': '48V 105Ah Club Car set',
-           'url': 'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent',
-           'cells': {'cap': '105 Ah',
-                     'charger': 'Yes on the Reach.dog set; optional elsewhere',
-                     'bms': 'not read',
-                     'warranty': 'not read',
-                     'price': '$2,045 (Reach.dog) to $2,395, search result 2026-11-03'}},
-          {'brand': 'Epoch',
-           'model': '48V 105Ah Precedent kit',
-           'url': 'https://www.epochbatteries.com/',
-           'cells': {'cap': '105 Ah', 'charger': 'Yes', 'bms': 'not read', 'warranty': 'not read', 'price': '$2,299, search result 2026-11-03'}},
-          {'brand': 'Dakota Lithium',
-           'model': '48V 96Ah',
-           'url': 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery',
-           'cells': {'cap': '96 Ah, about 4.6 kWh',
-                     'charger': 'not stated',
-                     'bms': 'not read',
-                     'warranty': "11 years (Dakota's usual term; not read for this pack)",
-                     'price': 'about $2,694–2,699, search result 2026-11-03'}},
-          {'brand': 'RoyPow',
-           'model': '48V 105Ah',
-           'url': 'https://www.roypow.com/',
-           'cells': {'cap': '105 Ah', 'charger': 'not stated', 'bms': 'not read', 'warranty': 'not read', 'price': '$2,999.99, sold out on 2026-11-03'}}],
- 'after': '\n'
-          '<h2>What the kit replaces, and the bypass older carts need</h2>\n'
-          "<p>One 48 V LiFePO4 box replaces the six or eight flooded lead-acid batteries in a 48 V Club Car, and the kit's charger replaces the cart's old "
-          'one, so nothing else has to be sourced. Club Cars from the mid-1990s to about 2014 carry a Lester on-board computer that talks to the factory '
-          "charger (Lester's bypass kit lists 1995–2014; dealers selling Allied's sets say 1993–2013), and it has to be bypassed before a lithium pack charges "
-          "normally; a 1996 48 V DS discussed on Cartaholics this week has the OBC 27155-01. That is a general Club Car note, not Vatrer's, so check it "
-          'against your model year before ordering.</p>\n'
-          '<h2>Capacity and cycle life</h2>\n'
-          '<p>Vatrer rates the pack at 105 Ah and 4,000+ cycles with a 200 A BMS that handles overcharge, over-discharge, overcurrent, shorts and abnormal '
-          'temperatures and stops charging below freezing. Vatrer quotes 5,376–5,736 Wh for the 48 V 105 Ah family across its pages; 51.2 V × 105 Ah is 5,376 '
-          "Wh, which is the figure to plan range on. LiTime's 100 Ah kit is about 5% smaller.</p>\n"
-          '<h2>The warranty fine print</h2>\n'
-          "<p>Vatrer's warranty table (updated July 2026) gives 48 V 105 Ah golf-cart batteries 10 years, but only to the original buyer, from an authorized "
-          'channel, after the product is registered and the warranty activated before it goes into service. Unregistered packs fall back to the standard term, '
-          'and loose terminals, undersized cables or exceeding the series and parallel limits void it. Returns are 7 days, with a 30-day price guarantee.</p>\n'
-          '<h2>Price on the day</h2>\n'
-          "<p>The $1,579.99 page price dropped to $1,501.00 in the cart on 2026-11-03 through an automatic discount the store applied by itself; Vatrer's "
-          "site-wide banner code VIPD2026 was rejected on this kit (it took 5% off a Group 24 battery the same day). LiTime's $1,281.66 was a sale price "
-          'against a $1,649.99 list, so compare on the day you buy.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>LiTime's UL 2271 status and BMS rating, Eco Battery's current 48 V price, Chins and Cloud Energy kit prices (neither lists a price on its own "
-          "store; Chins's site did not load for us), whether DC House's charger plug fits your cart's charge port, every other rival's golf-cart warranty, "
-          'and any independent capacity test or '
-          'teardown of this Vatrer pack; the only independent Vatrer critique we found covers its server-rack battery, not this one.</p>\n',
- 'sources': [('Vatrer 48V 105Ah Club Car kit', 'https://vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries'),
-             ('Vatrer warranty policy (July 2026 table)', 'https://www.vatrerpower.com/pages/warranty-policy'),
-             ('LiTime 48V 100Ah golf cart kit', 'https://litime.com/products/48v-100ah-golf-cart-battery-kit'),
-             ('DC House 48V 100Ah battery with charger', 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger'),
-             ('DC House Sentry G100 (UL 2580) with charger',
-              'https://www.dchousepower.com/products/dc-house-sentry-g100-48v-100ah-ul2580-lifepo4-metal-case-battery-with-charger-ideal-for-golf-carts'),
-             ('Allied 48V Club Car set (Reach.dog listing)',
-              'https://reach.dog/shop/wheelz-custom-carts/products/allied-48v-lithium-battery-set-charger-club-car-precedent'),
-             ('Dakota Lithium 48V 96Ah (Reach.dog listing)', 'https://reach.dog/shop/light-as-air-boats/products/dakota-lithium-48v-96ah-golf-cart-battery')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- best-48v-lithium-golf-cart-battery-kit-with-charger-club-car (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": 'best-48v-lithium-golf-cart-battery-kit-with-charger-club-car',
+ "question": 'G84 (Awin brands: 48V lithium golf cart battery kit with charger for a Club Car under $1,700)',
+ "method": 'ab-2026-11',
+ "angle": 'C',
+ "searched_as": ['2026 best 48V lithium golf cart battery kit charger Club Car 100Ah Vatrer LiTime price', '2026 best 48V 105Ah lithium golf cart battery kit charger Club Car Vatrer Eco Battery LiTime price', '2026 best 48v 100ah lithium golf cart battery kit charger Club Car price Vatrer CHINS LiTime 2026', 'best 48v lithium golf cart battery with charger Club Car 2026 Vatrer LiTime Enjoybot price compatibility', '2026 best 48V lithium golf cart battery kit charger Club Car price 105Ah Vatrer LiTime Enjoybot 2026', 'best 48v lithium golf cart battery kit charger Club Car 2026 105Ah Vatrer Epoch LiTime price compatibility'],
+ "title": 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
+ "h1": 'Best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 (2026)',
+ "desc": "Which 48V lithium golf cart kit with a charger fits a Club Car under $1,700? It depends on the charging system. Vatrer's 105Ah Club Car kit is the pick on ERIC carts. On 1995–2013 on-board-computer carts, the bypass brings Vatrer to $1,703.98, so DC House's 200 A kit is the one that fits the budget.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best 48V lithium golf cart battery kit with charger for a Club Car under $1,700 is Vatrer\'s 105Ah Club Car kit (200 A) for 2014+ ERIC carts. On a 1995–2013 OBC cart its price plus a $123.99 bypass is $1,703.98; DC House\'s 100Ah kit with charger fits the budget.</p>',
+ "columns": [('fit', 'Club Car fit'), ('capacity', 'Capacity'), ('current', 'Continuous / peak current'), ('charger', 'Charger in the box'), ('obc_total', 'Total on a 1995–2013 OBC cart (kit + $123.99 Lester bypass)')],
+ "rows": [{'slug': 'vatrer-48v-105ah-club-car-golf-cart-battery-kit', 'model': 'Vatrer 48V 105Ah Club Car Lithium Golf Cart Battery Kit', 'cells': {'fit': "Built for DS, Precedent, Tempo and Onward; bracket included (Vatrer). CartVolts: 'its brand lists this cart'", 'capacity': '105 Ah, 5,376 Wh', 'current': '200 A; 400 A peak (Vatrer 105Ah kit page)', 'charger': 'Included, with LCD monitor (Vatrer)', 'obc_total': '$1,703.98, which is $3.98 over the cap'}}, {'brand': 'DC House', 'model': '48V 100Ah Metal Case LiFePO4 Battery with Charger', 'url': 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger', 'cells': {'fit': 'Fits a 2014+ Precedent by size; add a hold-down (CartVolts). 20.3 × 11.1 × 9.6 in', 'capacity': '100 Ah, 5,120 Wh; 95.9 lb', 'current': '200 A; 280 A for 30 s', 'charger': 'Included (DC House)', 'obc_total': '$983.98', 'price': '$859.99 (maker, 2026-11-14)'}}, {'brand': 'LiTime', 'model': '48V 100Ah Bluetooth Golf Cart Battery (2C) + LiTime 58.4V 18A charger', 'url': 'https://www.litime.com/products/48v-100ah-bluetooth-golf-cart-lithium-battery', 'cells': {'fit': 'LiTime lists Club Car; no hold-down or monitor in this set', 'capacity': '100 Ah, 5,120 Wh', 'current': "200 A ('2C discharge rate @ 2 minutes', LiTime)", 'charger': '58.4 V 18 A, bought separately', 'obc_total': '$1,377.97', 'price': '$1,253.98 (maker, 2026-11-13: battery $1,097.99 + charger $155.99)'}}, {'slug': 'redodo-48v-100ah-golf-cart-conversion-kit', 'model': 'Redodo 48V 100Ah Bluetooth Golf Cart Lithium Battery Conversion Kit', 'cells': {'fit': 'Redodo lists Club Car. CartVolts: fits a 2014+ Precedent by size; add a hold-down', 'capacity': '100 Ah, 5,120 Wh; 82 lb', 'current': '5,000 W stated, about 98 A at 51.2 V', 'charger': '58.4 V 18 A, 5.6 h (Redodo); 500 A shunt monitor', 'obc_total': '$1,273.98'}}, {'brand': 'LiTime', 'model': '48V 100Ah Lithium Battery Conversion Kit', 'url': 'https://www.litime.com/products/48v-100ah-golf-cart-battery-kit', 'cells': {'fit': 'Hold-down kit included. CartVolts: fits a 2014+ Precedent by size', 'capacity': '100 Ah, 5,120 Wh', 'current': '100 A (1C); 600 A for 1 s', 'charger': '58.4 V 18 A; battery monitor', 'obc_total': '$1,278.65', 'price': '$1,154.66 (maker, 2026-11-13)'}}, {'brand': 'Epoch', 'model': '48V 105Ah Mini Club Car DS Lithium Golf Cart Battery Kit', 'url': 'https://www.epochbatteries.com/products/48v-105ah-club-car-ds-lithium-conversion-kit', 'cells': {'fit': 'DS bracket, DS charge-port plug and 25 A 48V-to-12V converter included (Epoch)', 'capacity': '105 Ah; 99 lb', 'current': '200 A', 'charger': '15 A', 'obc_total': '$2,422.99', 'price': '$2,299 (maker, 2026-11-14)'}}],
+ "after": "\n<h2>What the differences mean</h2><p>Vatrer's Club Car kit costs more per amp than two of the cheaper 200 A options. What the extra money buys is fit: Vatrer lists Club Car models and puts the bracket in the box, and its listing title carries UL 2271.</p><ul><li><strong>Vatrer on an ERIC cart, with Vatrer's own 48V-to-12V reducer:</strong> $1,579.99 + $79.99 = $1,659.98, which leaves $40.02 under $1,700 before tax.</li><li><strong>Vatrer on an OBC cart:</strong> $1,579.99 + $123.99 bypass = $1,703.98. Add the reducer and it is $1,783.97.</li><li><strong>Cost per continuous amp:</strong> DC House $859.99 ÷ 200 A = $4.30. LiTime 2C set $1,253.98 ÷ 200 A = $6.27. Vatrer $1,579.99 ÷ 200 A = $7.90. LiTime kit $1,154.66 ÷ 100 A = $11.55. Redodo $1,149.99 ÷ 98 A = $11.73.</li><li><strong>Cost per kWh:</strong> DC House $859.99 ÷ 5.12 = $167.97. Redodo $1,149.99 ÷ 5.12 = $224.61. LiTime kit $1,154.66 ÷ 5.12 = $225.52. LiTime 2C set $1,253.98 ÷ 5.12 = $244.92. Vatrer $1,579.99 ÷ 5.376 = $293.90.</li><li><strong>Refill on the 18 A chargers:</strong> 100 Ah ÷ 18 A = 5.6 h for the DC House, LiTime and Redodo packs.</li></ul><table><thead><tr><th>Your Club Car</th><th>Kit</th><th>Total before tax</th></tr></thead><tbody><tr><td>Precedent built after Sept. 2013, Tempo or Onward (ERIC, no OBC)</td><td>Vatrer 48V 105Ah Club Car kit {buy:vatrer-48v-105ah-club-car-golf-cart-battery-kit}</td><td>$1,579.99; $1,659.98 with Vatrer's 12 V reducer</td></tr><tr><td>1995–2013 DS or pre-ERIC Precedent, with hills or four riders</td><td>DC House 48V 100Ah with charger, plus bypass (measure the tray: 20.3 × 11.1 × 9.6 in)</td><td>$983.98</td></tr><tr><td>Same OBC cart, but you want LiTime's app and a 200 A pack</td><td>LiTime 2C battery + 18 A charger, plus bypass</td><td>$1,377.97</td></tr><tr><td>OBC cart on flat ground, where the lightest pack with a monitor matters most</td><td>Redodo 48V 100Ah kit {buy:redodo-48v-100ah-golf-cart-conversion-kit}, plus bypass</td><td>$1,273.98</td></tr></tbody></table><h2>ERIC or on-board computer: your Club Car's charging decides the kit</h2><p>Club Car made its ERIC charging system standard on all Precedent electric cars built after September 2013. It 'cannot be used on older cars with the on-board computer', and its enhanced controller replaces the old OBC (Club Car's announcement, reprinted by the Golf Range Association, 2014-04-03). CartVolts lists the 2014+ Precedent and the Tempo as 'No OBC, ERIC charging'. It also warns that 'some 2014 carts still have an OBC', so check a 2014 car before you order.</p><p>On the older carts the computer sits in the charging path. Club Car's 1998/1999 PowerDrive Plus service supplement lists the charge circuit as 'the charger receptacle, fuse link, onboard computer and the batteries'. So a lithium charger plugged into the stock port charges through the OBC unless you bypass it. Lester's 17-283 bypass kit costs $123.99 at Buggies Unlimited. Its fit table covers 48V Club Cars from 1995 to 2013 (the product title says 2014). It is 'NOT Compatible with 36V (pre-1995) or ERIC systems (2014-Up)', and 'OEM Powerdrive chargers will not function once installed'.</p><p>The bypass also changes how the cart behaves. Lester's CGR-123 version ($127.99 at Pete's Golf Carts) disables 'all OBC functionality... including the dash light'. It provides the drive lockout while the charger is plugged in only when 'paired with a compatible Lester Electrical charger', and it fits only OBC carts with the 6-pin Deutsch connector. None of the kits above say their chargers provide that lockout, so on a bypassed cart, unplug before you drive.</p><h2>Not recommended</h2><p>On an ERIC cart with hills, skip the <strong>LiTime 48V 100Ah conversion kit</strong>. LiTime rates it at '1C continuous', which is 100 A. CartVolts lists the ERIC-era controller as a 250 A replacement part, so the battery's BMS sets the limit on a climb. For $99.32 more, LiTime's own 2C battery and the same 18 A charger give 200 A ($1,253.98). Redodo's kit states 5,000 W, about 98 A, so the same caution applies to it on hills. On flat ground both are fine.</p>\n",
+ "sources": [('Vatrer Club Car kit: $1,579.99, fits DS/Precedent/Tempo/Onward, 19.69 × 12.52 × 9.6 in, 5.376 kWh, charger, LCD and bracket included (read 2026-11-13)', 'https://www.vatrerpower.com/products/vatrer-48v-105ah-club-car-golf-cart-batteries'), ('Vatrer 48V 105Ah kit: 200 A smart BMS, 400 A peak, same price and size (read 2026-11-13)', 'https://www.vatrerpower.com/products/vatrer-48v-105ah-lithium-golf-cart-battery'), ('Vatrer 48V/72V-to-12V 25 A reducer: $79.99 (read 2026-11-13)', 'https://www.vatrerpower.com/products/48v-72v-to-12v-golf-cart-power-converter-25a-335w-dc-to-dc-voltage-reducer'), ('ERIC standard on Precedent electric cars built after Sept. 2013; not usable on OBC cars; controller replaces the OBC (read 2026-11-14)', 'https://golfrange.org/club-car-introduces-eric-charger-for-precedent-golf-cars/'), ('Lester 17-283 OBC bypass: $123.99, fits 1995–2013 48V, not for 36V or ERIC, OEM Powerdrive chargers stop working (read 2026-11-14)', 'https://www.buggiesunlimited.com/golf-cart/Lester-On-Board-Computer-Charger-Wiring-Bypass-Kit-for-Club-Car-Golf-Cart-1995-2014/17-283'), ('Lester CGR-123 bypass: $127.99, disables all OBC functions, lockout only with compatible Lester chargers, 6-pin Deutsch carts only (read 2026-11-14)', 'https://petesgolfcarts.com/?p=15778'), ('Club Car PowerDrive charge circuit runs through the onboard computer (1998/1999 service supplement, page 14-3, read 2026-11-14)', 'https://www.manualslib.com/manual/829065/Club-Car-1998.html?page=75'), ('Precedent 2014+: ERIC charging, some 2014 carts keep an OBC, 250 A ERIC controller, fit labels per kit (CartVolts, read 2026-11-14)', 'https://cartvolts.com/carts/club-car/precedent-2014-plus/'), ("Tempo: 'No OBC, ERIC charging' (CartVolts, read 2026-11-14)", 'https://cartvolts.com/carts/club-car/tempo/'), ('LiTime 48V 100Ah kit: $1,154.66, 1C continuous, 600 A for 1 s, 18 A charger, monitor, hold-down (read 2026-11-13)', 'https://www.litime.com/products/48v-100ah-golf-cart-battery-kit'), ('LiTime 48V 100Ah 2C battery: $1,097.99, 200 A continuous, lists Club Car; LiTime 58.4 V 18 A charger $155.99 (read 2026-11-13)', 'https://www.litime.com/products/48v-100ah-bluetooth-golf-cart-lithium-battery'), ('Redodo 48V 100Ah kit: $1,149.99, 5,000 W, 18 A charger at 5.6 h, 500 A shunt monitor, 82 lb (read 2026-11-13)', 'https://www.redodopower.com/products/redodo-48v-100ah-bluetooth-lithium-battery-conversion-kit'), ('DC House 48V 100Ah with charger: $859.99, 200 A continuous, 280 A for 30 s, 20.3 × 11.1 × 9.6 in, 95.9 lb, 18 A charger included (read 2026-11-14)', 'https://www.dchousepower.com/products/48v-100ah-metal-case-lifepo4-lithium-golf-cart-battery-charger'), ('Epoch Club Car DS kit: $2,299, 200 A, 15 A charger, DS charge-port plug, 25 A converter, OBC bypass not included (read 2026-11-14)', 'https://www.epochbatteries.com/products/48v-105ah-club-car-ds-lithium-conversion-kit')],
+ "published": '2026-11-03',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 {'slug': 'best-65w-gan-universal-travel-adapter-under-50',
  'question': 'G85 (Awin brands: 65W GaN universal travel adapter with 3 USB-C under $50)',
  'lead_first': True,
