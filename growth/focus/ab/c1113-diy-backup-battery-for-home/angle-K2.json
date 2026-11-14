@@ -1,0 +1,126 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that Sun Gold Power's SPH6548P 48 V inverter can charge at up to 140 A, which is 1.4C into one 100 Ah SG48100P pack. A one-pack kit therefore needs the inverter's charge-current limit set lower, or a second pack. None of them states either that Sun Gold's 6000W LF split-phase inverter/charger 'requires 240VAC input', so a 120 V-only generator or outlet cannot charge it.",
+ "standout": 2,
+ "standout_why": "ChatGPT's two saved chats came back with an empty results list: no domains, no cited pages. So there is no rival page to compare against, only ChatGPT's own answer. That answer says 'a compatible inverter from EG4, Sol-Ark, or Victron' and 'mutually compatible equipment' but never says what compatible means. It gives no charge-current limit against battery size, no battery communication protocol (CAN/RS485), and no warning that a split-phase low-frequency charger needs 240 VAC input. Both findings are new and useful. I can't rate this 3 because I could not open the battery's own maximum charge current in a readable source. That number is what turns '140 A versus 1 pack' from a caution into a firm rule on how many packs to buy.",
+ "kit_items": [
+  "Inverter/charger: Sun Gold Power SPH6548P 6.5 kW 48 V split-phase solar inverter. It is all-in-one: 120/240 V split-phase or 120 V output, built-in 2-MPPT solar charging (550 VDC Voc max), utility charging and lithium battery support. It is UL 1741 (ETL) for off-grid use, and Dealectric already lists it",
+  "Battery: Sun Gold Power SG48100P 51.2 V 100 Ah server-rack LiFePO4. It speaks CAN/RS485/RS232 and the maker names SunGoldPower inverters as compatible. It is UL 1973 / UL 9540A and ships 'cable/accessories ready'. Buy it as the store's 2-pack, so the SPH6548P's 140 A maximum charge spreads over 200 Ah (0.7C) instead of 1.4C on one pack",
+  "Avoid for a 120 V-only home or generator: Sun Gold 6000W 48V LF split-phase inverter/charger. The store page says it 'requires 240VAC input' to charge"
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power 6.5KW 48V Split Phase Solar Inverter SPH6548P | https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor | $1,035.00 | 2026-11-13",
+    "2 X 48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A | https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 | 2026-11-13"
+   ],
+   "bundle_sku": "No inverter + battery bundle found. The store's own 2-pack of the SG48100P is $1,953.00 against $981.00 for one pack (2 × $981 = $1,962, so the 2-pack saves $9). Cart total: $2,988.00 for the inverter plus 2 packs, 10.24 kWh nominal."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Maximum battery charging current",
+   "value": "140 A",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Read from the store's own product data through storecheck.py search. Quote: 'Combined with Max 140A battery charging'. Arithmetic: 140 A into one 100 Ah pack is 1.4C; into two packs (200 Ah) it is 0.7C."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery types supported",
+   "value": "48 V AGM/Sealed, Gel, Flooded, Lithium, plus a User Mode",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Store product text. It also states 'supports battery-free' operation."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "PV open-circuit voltage limit",
+   "value": "550 VDC, 2 MPPT",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Store product text: 'Max. Voltage of Open Circuit: 550VDC'. This sets the input window for any later panel string."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Output, parallel capacity and certification",
+   "value": "6,500 W rated, 13,000 VA peak; 120/240 V split-phase or 120 V; up to 6 units in parallel (39 kW); UL 1741 by ETL for off-grid",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "Store product text."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Price",
+   "value": "$1,035.00 (compare-at $4,526.00), in stock",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-13",
+   "note": "storecheck.py search against the Shopify store."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Communication protocols and named compatible inverters",
+   "value": "CAN / RS485 / RS232; names Growatt, Deye, SunGoldPower, Luxpower, Victron Energy, Schneider, Phocos, SMK",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Store product text. EG4 and Sol-Ark, which ChatGPT named, are not on the SG48100P list. They are on the SGH48100T and SG48200T lists."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Capacity, parallel limit and certification",
+   "value": "51.2 V 100 Ah (5.12 kWh); up to 63 in parallel (322.56 kWh); UL 1973, UL 9540A; ≥7,000 cycles; 10-year warranty",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Store product text. It also says 'cable/accessories ready for installation'."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Price (single / 2-pack / 4-pack)",
+   "value": "$981.00 / $1,953.00 / $3,888.00",
+   "source": "https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "2 X 48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Single pack: /products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p. 4-pack: /products/4-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p. All in stock."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V LF split-phase inverter/charger",
+   "label": "AC input requirement",
+   "value": "Requires 240 VAC input; outputs 120 or 240 VAC; $1,220.00",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Store product text: 'The split-phase inverter requires 240VAC input'. This model has no MPPT, so it is a wrong fit for a 120 V generator or solar-recharge kit."
+  },
+  {
+   "product": "Sun Gold Power SPH5048P (related model)",
+   "label": "Battery charging voltage window and BMS port",
+   "value": "40–60 V; RS485 port for BMS communication",
+   "source": "https://sungoldpower.com/products/5000w-48v-solar-charger-inverter",
+   "source_title": "5000W 48V Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Store product text for the 5 kW sibling, $530.00. It is a 120 V model that is split-phase only when 2 or more units run in parallel. The 51.2 V LFP pack's charge voltage falls inside 40–60 V."
+  }
+ ],
+ "unsourced": [
+  "SG48100P maximum continuous and standard charge current. Search snippets of the maker's manual say 100 A and 50 A, but the PDF I opened (cdn.shopify.com/.../219551-48100P.pdf) was compressed and I could not read it. sungoldpower.com product pages returned HTTP 429, and the device.report and manuals.plus copies returned 403. Without this number I cannot confirm that one pack must have the SPH6548P's charge limit set below 140 A.",
+  "SPH6548P program number and value for lithium battery type and BMS communication (CAN vs RS485 protocol select), and the BMS port pinout. The manual copies on device.report and manuals.plus returned 403, and the Shopify-hosted SPH manual PDF was not readable.",
+  "Whether a battery-to-inverter communication cable comes with the SG48100P or the SPH6548P. The store text only says 'cable/accessories ready for installation'.",
+  "SPH6548P battery voltage window and low-DC cutoff. I have only the SPH5048P's 40–60 V.",
+  "Amazon prices. I did not check them, because the kit is a single Sun Gold Power cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0225043000000003
+ }
+}

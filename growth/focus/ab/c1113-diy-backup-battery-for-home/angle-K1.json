@@ -1,0 +1,89 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that the inverter itself uses power while it sits idle: Inverter Geek measured the Sun Gold Power SPH6548P drawing 50–80 W continuously just to stay on. That is 1.2–1.9 kWh a day, or 23–38% of a single 5.12 kWh 51.2 V 100 Ah battery, used up before any appliance runs. ChatGPT's own '4,500 Wh ÷ 300 W = 15 hours' therefore comes out at about 11.8–12.9 hours.",
+ "standout": 2,
+ "standout_why": "ChatGPT's search for this query came back empty in both saved chats, so there were no cited rival pages or top results to compare against. I compared against ChatGPT's two answers instead. Both runtime calculators (4,500 Wh ÷ 300 W = 15 h, and 10 kWh at 500 W = 14.4 h) allow only for 90% inverter efficiency and 80–90% usable capacity. Neither counts the inverter's fixed idle draw. That draw matters most at the low essential loads (fridge, Wi-Fi, lights) that both answers lead with, and it pushes the shopper from one 51.2 V 100 Ah module toward two. I scored it 2 rather than 3 because I could not open the battery's own discharge-current spec, which is the second half of the 'two modules' argument.",
+ "kit_items": [
+  "Inverter/charger: Sun Gold Power SPH6548P 6.5 kW 48 V split-phase hybrid. It does 120/240 V, has 2 MPPTs and charges at up to 140 A, and the maker's page says it talks CAN/RS485 to SunGoldPower batteries. It matches the '48V-class + split-phase inverter/charger' design ChatGPT described, and the inverter and battery can go in one cart.",
+  "Battery: 2× Sun Gold Power SG48100P 51.2 V 100 Ah server-rack LiFePO4 (UL1973/UL9540A), 10.24 kWh total. With an 80 W idle draw, one 5.12 kWh module gives up 37.5% of its energy per day to overhead (80 W × 24 h = 1,920 Wh). With two modules that falls to 18.75%. At 300 W plus 80 W idle, 10,240 Wh ÷ 380 W ≈ 27 h on nominal capacity, against about 13.5 h with one module.",
+  "Not in the cart: a listed transfer switch or subpanel and an electrician for the panel connection, which ChatGPT already flagged. DC fusing and cabling sized for the inverter's battery current."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com)",
+   "items": [
+    "Sun Gold Power SPH6548P 6.5KW 48V Split Phase Solar Inverter | https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor | $1,035.00 | 2026-11-13",
+    "Sun Gold Power 2 X 48V 100AH Server Rack LiFePO4 Battery SG48100P | https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $1,953.00 | 2026-11-13"
+   ],
+   "bundle_sku": "None available. The SPH6548P page lists an inverter-plus-battery bundle option but shows it as sold out on 2026-11-13. The store's 2-pack battery listing ($1,953 against 2 × $981 = $1,962) is the only multi-item SKU I used. Cart total with the 2-pack: $2,988."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Idle (no-load) draw, measured",
+   "value": "50–80 W continuous",
+   "source": "https://invertergeek.com/inverter-reviews/sungoldpower-6500w-inverter-review/",
+   "source_title": "SUNGOLDPOWER 6500W Inverter Review - Inverter Geek (James Ndungu, updated 2026-04-17)",
+   "read": "2026-11-13",
+   "note": "James Ndungu at Inverter Geek measured this on a 48 V LiFePO4 bank with two 3-panel PV strings; the review gives no further test conditions. Arithmetic: 50 W × 24 h = 1,200 Wh/day and 80 W × 24 h = 1,920 Wh/day, where the review itself says roughly 1.4–2 kWh/day."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Rated output / peak",
+   "value": "6,500 W rated, 13,000 VA peak, 120/240 V split phase",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From the maker's US product page."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Max battery charge current",
+   "value": "140 A (combined; the page gives no separate AC and solar figures)",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "At about 51.2 V, 140 A ≈ 7.2 kW of charging. Refill of 10.24 kWh at full rate ≈ 1.4 h, if the batteries accept that current (their charge-current rating is in unsourced)."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "PV input",
+   "value": "550 VDC max Voc, 2 MPPTs; MPPT range 90–450 VDC and about 10,000 W total PV per Inverter Geek",
+   "source": "https://invertergeek.com/inverter-reviews/sungoldpower-6500w-inverter-review/",
+   "source_title": "SUNGOLDPOWER 6500W Inverter Review - Inverter Geek",
+   "read": "2026-11-13",
+   "note": "550 VDC and the 2 MPPTs are also on the maker's page. The 90–450 VDC range and about 10 kW figure come from Inverter Geek's spec table and text. Its 'approximately' wording means the 10 kW figure is not a maker rating."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "Nominal voltage / capacity",
+   "value": "51.2 V, 100 Ah (5.12 kWh); UL1973, UL9540A; ≥7,000 cycles; 10-year warranty",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A – Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read from the store's Shopify product data with storecheck.py search. 51.2 V × 100 Ah = 5,120 Wh. Price is $981 for one module and $1,953 for the 2-pack."
+  },
+  {
+   "product": "general",
+   "label": "ChatGPT's runtime example corrected for idle draw",
+   "value": "11.8–12.9 h, not 15 h",
+   "source": "https://invertergeek.com/inverter-reviews/sungoldpower-6500w-inverter-review/",
+   "source_title": "SUNGOLDPOWER 6500W Inverter Review - Inverter Geek",
+   "read": "2026-11-13",
+   "note": "Uses ChatGPT's own 4,500 Wh usable and 300 W load: 4,500 ÷ (300 + 80) = 11.8 h and 4,500 ÷ (300 + 50) = 12.9 h. At a 100 W overnight load (router, lights, fridge cycling off): 4,500 ÷ (100 + 80) = 25 h, not 45 h. The lighter the load, the larger the share lost to idle."
+  }
+ ],
+ "unsourced": [
+  "SG48100P maximum continuous discharge current. A search snippet said 100 A continuous, 50 A standard and a 110 A BMS trip, but the maker's PDFs on cdn.shopify.com came back as binary that I couldn't read, and solartown, enfsolar, thesolarstore and device.report returned 403 or 429. This matters because 100 A × 51.2 V ≈ 5.1 kW, below the inverter's 6.5 kW rating, which would be a second reason to buy two modules. I left it out because I could not open a page that states it.",
+  "SG48100P maximum charge current and recommended SOC/DOD range. The maker's product page kept returning HTTP 429, and the spec PDFs would not extract.",
+  "SPH6548P no-load draw as stated by the maker, including any power-saving mode figure. The maker's page doesn't list it, and the manual mirrors (manuals.plus, device.report) returned 403. The DIY Solar Forum thread reporting about 80 W idle also returned 403, so only Inverter Geek's measurement is used.",
+  "A Sun Gold Power solar panel price and wattage for refill-time arithmetic. I didn't search for it because the store was rate-limiting me."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0209392999999998
+ }
+}

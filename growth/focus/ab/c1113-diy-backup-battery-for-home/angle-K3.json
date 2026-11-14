@@ -1,0 +1,80 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that Sun Gold Power's 6000W 48V split-phase inverter/charger 'requires 240VAC input'. Feeding it from a 120 V-only source, such as the 120 V outlet on most portable generators, does not meet that requirement, so plan on a 240 V generator or 240 V feed to recharge the battery bank through it.",
+ "standout": 2,
+ "standout_why": "ChatGPT's results list was empty in both saved chats (2026-11-14T04:39 and 04:47), so there are no rival pages to compare. Its own answer covers backfeed and transfer equipment, permits, a licensed electrician, 'mutually compatible equipment' and avoiding bare cells. It names EG4, Sol-Ark and Victron inverters, but it never mentions the AC-input voltage the inverter/charger needs in order to charge, or that a 120 V generator may not meet it. The finding is new and changes which generator or inverter belongs in the set. It is not scored 3 because the forum thread showing what happens in practice could not be opened (it returned 403).",
+ "kit_items": [
+  "inverter/charger: Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter with Charger (UL1741). It has a built-in AC auto-transfer switch and Auto Gen Start. Its listing says it requires 240 VAC input, so pair it with a 240 V source.",
+  "battery: Sun Gold Power SG48100P 51.2V 100Ah server-rack LiFePO4 (UL1973, UL9540A, CAN/RS485/RS232). It is sold by the same store as the inverter, so one cart covers the set. The store's 2-pack (about 10.24 kWh) suits multi-hour backup.",
+  "alternative inverter if the shopper only has 120 V charging power: Sun Gold Power SPH5048P 5000W 48V. Its listing gives a 40–60 V battery charging range and an RS485 port for BMS communication, and states a 120 V single-phase output. Its required AC input voltage was not confirmed."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (sungoldpower.com, awin:sungoldpower)",
+   "items": [
+    "Sun Gold Power 6000W DC 48V Split Phase Pure Sine Wave Inverter With Charger | https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger | $1,220.00 | 2026-11-13",
+    "Sun Gold Power 48V 100Ah Server Rack LiFePO4 Battery SG48100P | https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p | $981.00 | 2026-11-13"
+   ],
+   "bundle_sku": "No inverter-plus-battery bundle of these two items showed up in the store search. The store's own battery multi-packs are 2 × SG48100P at $1,953.00 (https://sungoldpower.com/products/2-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p) and 4 × SG48100P at $3,888.00 (https://sungoldpower.com/products/4-x-48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p), both read 2026-11-13."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Inverter With Charger",
+   "label": "AC input requirement",
+   "value": "240 VAC input required; output 120 VAC or 240 VAC",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Maker's own store listing text, read through storecheck.py search on sungoldpower.com: 'The split-phase inverter requires 240VAC input and can provide 120VAC or 240VAC output power'. Inference: a 120 V-only source does not meet this stated requirement. This is the trap: shoppers pair it with a 120 V portable generator."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Inverter With Charger",
+   "label": "price",
+   "value": "$1,220.00 (compare-at $4,713.00), in stock",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "storecheck.py search result from the Shopify store. A direct product-page fetch returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Inverter With Charger",
+   "label": "built-in features",
+   "value": "UL1741; combined inverter + battery charger + AC auto-transfer switch; low-frequency design; AC priority by default (battery priority via SW5); charge current adjustable 0–100%; Auto Gen Start",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Maker listing text. Auto Gen Start only helps if the generator supplies the 240 VAC input the listing requires."
+  },
+  {
+   "product": "Sun Gold Power SG48100P",
+   "label": "battery spec and certifications",
+   "value": "51.2 V 100 Ah LiFePO4 (5.12 kWh nominal); UL1973 and UL9540A; CAN/RS485/RS232; up to 63 in parallel (322.56 kWh); ≥7,000 cycles; 10-year warranty",
+   "source": "https://sungoldpower.com/products/48v-100ah-server-rack-lifepo4-lithium-battery-sg48100p",
+   "source_title": "48V 100AH Server Rack LiFePO4 Lithium Battery SG48100P UL1973 UL9540A",
+   "read": "2026-11-13",
+   "note": "Maker listing text, read through storecheck.py search. Price $981.00 (compare-at $5,554.00), in stock."
+  },
+  {
+   "product": "Sun Gold Power SPH5048P 5000W 48V",
+   "label": "battery charging range and BMS port",
+   "value": "40–60 V battery charging voltage range; RS485 port for BMS communication; $530.00",
+   "source": "https://sungoldpower.com/products/5000w-48v-solar-charger-inverter",
+   "source_title": "5000W 48V Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Maker listing text, read through storecheck.py search. The listing states 110 V AC output. Its AC-input voltage was not in the text I read."
+  }
+ ],
+ "unsourced": [
+  "SG48100P maximum continuous BMS discharge current. I wanted to check whether a single 100 Ah module trips its BMS when the 6000 W inverter runs at full load (6,000 W ÷ about 48 V is about 125 A). The maker product page returned HTTP 429 every time, and no Sun Gold Power datasheet turned up in search.",
+  "The 6000W LF manual (LFP6K48V240VSP PDF on solartown.com) for the exact AC-input wiring, behaviour on 120 V-only input, neutral-ground bonding, lithium DIP-switch charge voltages and DC fuse sizing. The site returned HTTP 403, and downloading it locally was not permitted.",
+  "Count of owner reports for the generator trap. The Solar-Electric forum thread 'Inverter does not recognize generator power' (Sungold 6000W owner whose generator is not passed through) returned HTTP 403, so I have neither the poster count nor the dates. The diysolarforum thread 'sun gold sph6548 generator hookup not powering battery' was not opened.",
+  "SPH6548P and SPH5048P AC-input voltage requirement (whether 120 V single-phase input charges the battery). The SPH manual PDF on the Shopify CDN downloaded, but its text could not be extracted."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0164732
+ }
+}
