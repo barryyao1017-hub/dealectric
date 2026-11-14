@@ -9193,6 +9193,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G306: solar-generator-with-240v-outlet (research method ab-2026-11, 2026-11-14) ----------------
 {"slug": 'solar-generator-with-240v-outlet',
  "question": 'G306 (gap mining daily 2026-11-14, research method ab-2026-11: solar generator with 240v outlet)',
+ "price_check": True,
  "run": 'combo-1113',
  "kit": 'kit-240v-solar-generator',
  "method": 'ab-2026-11',
