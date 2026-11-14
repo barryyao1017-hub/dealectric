@@ -6548,6 +6548,22 @@ PRODUCTS = [
  "fit": "24 V banks of three or more 100 Ah batteries that charge from a 240 V generator whose voltage sags. Its 140 V lower input limit is wider than Sigineer's 160 V.",
  "caveats": ["Charging and pass-through need 240 V input. A 120 V-only generator won't charge it.", "The power-saver draw is 29 W (0.70 kWh a day), almost twice the Sigineer APC6024D's 15 W.", 'Idling with power saver off draws 77 W, which is 1.85 kWh a day, or 72% of one 24 V 100 Ah battery.', "Sun Gold's store text marks the 48 V version as UL1741. The 24 V listing makes no such claim.", 'The spec table gives no per-leg 120 V wattage.']},
 
+{"slug": 'redodo-58-4v-18a-lifepo4-charger',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "category": 'battery-charger',
+ "name": 'Redodo 58.4V 18A LiFePO4 Battery Charger for 48V (51.2V) lithium batteries, IP65',
+ "model": '58.4V 18A',
+ "url": 'https://www.redodopower.com/products/redodo-58-4v-18a-lifepo4-battery-charger-for-48v-51-2v-lithium-batteries',
+ "price": 149.99,
+ "verified": '2026-11-13',
+ "specs": [('Output', '58.4 V / 18 A'), ('Maximum DC output', '1,051 W (58.4 V × 18 A)'), ('AC input', '100–240 V AC, 47–63 Hz'), ('Charge stages', 'Pre-charge → constant current → constant voltage'), ('Dead-pack recovery', '0 V activation for BMS-protected batteries'), ('Sealing', 'IP65, sealed waterproof connector + cap'), ('Weight', '2.28 kg')],
+ "warranty": '2 years (Redodo)',
+ "returns": "30-day return window under Redodo's refund policy; return shipping is deducted from the refund unless the order was defective, delayed or damaged",
+ "summary": 'A 58.4 V, 18 A LiFePO4 charger for 51.2 V golf cart packs. It puts out at most 1,051 W, which a shared 15 A garage outlet can carry continuously, and refills 100 Ah in about 5.6 h of constant current.',
+ "fit": 'Owners of a drop-in 48 V (51.2 V) LiFePO4 golf cart pack who charge from an ordinary 120 V garage outlet.',
+ "caveats": ['LiFePO4 only: it is built for 51.2 V lithium packs, not lead-acid.', 'The listing describes a sealed waterproof output connector rather than a Club Car, E-Z-GO or Yamaha receptacle plug, so plan to charge at the battery or add the matching cart adapter.', 'At 18 A, a 105 Ah pack takes about 5.8 h of constant current. That is slower than a 30 A charger, but a 30 A charger needs a dedicated circuit.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT cited says that Lester's own FAQ answers 'Can I charge lithium batteries with a Summit II Charger?' this way: it uses the standard wet-cell (IEI) profiles and 'the maximum voltage is regulated by the lithium battery controller'. The same FAQ says Summit/E-Series chargers need about 15 VDC to start. So the Summit II, ChatGPT's 'Best premium' pick, depends on the battery's own controller to end charging, while LiTime's FAQ says only a charger with 0V activation can revive a pack whose BMS has shut off.",
+ "standout": 2,
+ "standout_why": "Compared with the cited iwantgolf.com page (2026-08-13), the uncited #1 result canyonlakemobile.com (2026-04-25), and the cited Trojan OnePack PDF (downloaded, but its text could not be extracted, so not compared). iwantgolf covers this only in general terms: a pack may 'require a BMS enable signal or communication' and 'some chargers must detect battery voltage before activating'. It names no charger, threshold or mechanism. Canyon Lake says the Summit II 'stores 500+ profiles', is 'reprogrammable', and leaves lithium to the matching profile. It never says Lester's lithium answer is a wet-cell profile with the battery controller capping voltage, and it has no start-voltage figure. One caveat: ChatGPT did get the Lester FAQ as uncited result #10. The fact sat in its results, but neither its answer nor any cited page says it. That is why this is 2 and not 3.",
+ "decides": "This argues against ChatGPT's 'Best premium: Lester Summit II' for the usual shopper with an aftermarket drop-in 48V LiFePO4 pack. In Lester's own words, the Summit II charges lithium on a wet-cell profile and relies on the battery's controller (Summit II is CAN bus compliant) to cap voltage. It suits OEM or CAN-integrated lithium carts, not a generic pack whose BMS only disconnects. It also needs about 15 VDC at the terminals to start, so it cannot charge a pack whose BMS has opened after over-discharge. For a generic drop-in pack, a fixed 58.4 V LiFePO4 charger with 0V/activation mode (LiTime's line) is the safer fit. LiTime's FAQ says 'Chargers without 0V activation cannot activate' an over-discharged battery whose BMS has entered protection. I could not open LiTime's or Vatrer's product pages (HTTP 429), so whether each model has activation and the current prices are still unverified.",
+ "candidates": [
+  "Lester Summit II 650W",
+  "LiTime 48V (58.4V) 18A LiFePO4 Charger",
+  "LiTime 48V 30A LiFePO4 Charger",
+  "Vatrer 58.4V 20A Golf Cart Charger"
+ ],
+ "findings": [
+  {
+   "product": "Lester Summit II (650W / 1050W)",
+   "label": "How it charges lithium",
+   "value": "Uses the standard wet-cell (IEI) profiles; maximum voltage is regulated by the lithium battery controller",
+   "source": "https://lesterelectrical.com/faqs/",
+   "source_title": "Battery Charger FAQs & Troubleshooting - Lester Electrical",
+   "read": "2026-11-13",
+   "note": "FAQ entry 'Can I charge lithium batteries with a Summit II Charger?' Quoted answer: 'Yes, The standard Wet Cell battery profiles are used (IEI) and the maximum voltage is regulated by the lithium battery controller'. The E-Series II entry gives the same answer."
+  },
+  {
+   "product": "Lester Summit II (650W / 1050W)",
+   "label": "CAN bus",
+   "value": "All Summit II chargers are CAN bus compliant",
+   "source": "https://lesterelectrical.com/faqs/",
+   "source_title": "Battery Charger FAQs & Troubleshooting - Lester Electrical",
+   "read": "2026-11-13",
+   "note": "FAQ 'Does my charger have CAN bus?' Answer: 'All Summit II Chargers are CAN bus compliant'. Taken with the lithium answer, the battery side has to do the voltage control."
+  },
+  {
+   "product": "Lester Summit II (650W / 1050W)",
+   "label": "Minimum start voltage",
+   "value": "approx. 15 VDC (Summit and E-Series); Lestronic 2 needs 70% of rated voltage",
+   "source": "https://lesterelectrical.com/faqs/",
+   "source_title": "Battery Charger FAQs & Troubleshooting - Lester Electrical",
+   "read": "2026-11-13",
+   "note": "FAQ 'What if my batteries' voltage is too low, can they still be charged?' says 'There is a minimum start voltage for all Lester Chargers'. A lithium pack whose BMS has opened shows close to 0 V at the terminals, which is below this threshold (my inference)."
+  },
+  {
+   "product": "Lester Summit II (650W / 1050W)",
+   "label": "Charge lockout wire",
+   "value": "Blue wire drives an external lockout that keeps the vehicle from moving during a charge cycle",
+   "source": "https://lesterelectrical.com/faqs/",
+   "source_title": "Battery Charger FAQs & Troubleshooting - Lester Electrical",
+   "read": "2026-11-13",
+   "note": "Lester says to check the vehicle maker's documentation for this connection."
+  },
+  {
+   "product": "Lester Summit II 650W",
+   "label": "Output at 48 V",
+   "value": "13.5 A (24V/25A, 36V/18A, 48V/13.5A)",
+   "source": "https://lesterelectrical.com/products/650w-summit-series-ii/",
+   "source_title": "650W Summit Series II - Lester Electrical",
+   "read": "2026-11-13",
+   "note": "This page does not mention lithium or CAN. It says the Bluetooth app can select the active profile and upload new ones."
+  },
+  {
+   "product": "general (LiTime LiFePO4 batteries)",
+   "label": "Chargers without 0V activation cannot wake a BMS-protected pack",
+   "value": "'Use a 0V LiFePO4 charger. Chargers without 0V activation cannot activate.'; 'most lead-acid chargers cannot activate lithium batteries.'",
+   "source": "https://www.litime.com/pages/faqs",
+   "source_title": "LiTime: Frequently Asked Questions",
+   "read": "2026-11-13",
+   "note": "FAQ 'Why does the battery fail to activate?' gives the root cause as 'Battery is over-discharged → BMS entered protection.' For 12 V packs the protection threshold is '<10V'. The FAQ gives no 48 V threshold."
+  },
+  {
+   "product": "general (LiTime chargers)",
+   "label": "What activation is for",
+   "value": "Wakes BMS dormancy caused by over-discharge (12 V packs: below 10 V) and Bluetooth batteries that are powered off",
+   "source": "https://www.litime.com/blogs/tips-and-tricks/how-to-wake-up-a-lithium-battery",
+   "source_title": "How to Wake Up a Lithium Battery - LiTime",
+   "read": "2026-11-13",
+   "note": "Article dated 2026-06-24. It refers to 'LiTime chargers' in general and names no model."
+  }
+ ],
+ "unsourced": [
+  "Whether the LiTime 48V 18A and 48V 30A chargers themselves have 0V/activation mode. I tried litime.com/products/48v-18a-lifepo4-battery-charger, litime.com/products/litime-48v-30a-lithium-lifepo4-battery-charger, the 58.4V 18A IP65 listing, ca.litime.com and storecheck; every request returned HTTP 429. A search snippet suggested activation is listed but was not used.",
+  "Current US prices for the LiTime 18A ($155.99 per ChatGPT), LiTime 30A ($229.99), Vatrer 58.4V 20A ($219.99) and Lester Summit II 650W ($454.99). Maker and store pages returned HTTP 429, so none of these were checked.",
+  "Vatrer 58.4V 20A: whether it has 0V/activation mode and its minimum start voltage. vatrerpower.com and storecheck both returned HTTP 429. I found no manual.",
+  "Which Summit II profile numbers in ChargerConnect are lithium profiles, and which battery brands they cover. I downloaded the ChargerConnect App User's Guide PDF but could not extract its text.",
+  "What the cited Trojan OnePack Charger Compatibility Guide (2026-03) says about CAN, approved chargers and BMS wake-up. I downloaded the PDF but could not extract its text, so it was not compared against."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9121615000000001
+ }
+}
