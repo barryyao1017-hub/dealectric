@@ -128,20 +128,87 @@ def research(slug: str, force: bool = False) -> dict:
     return {**r, "shape": "single"}
 
 
+USED = re.compile(r"\b(renewed|refurbished|used|open[- ]box|pre-owned)\b", re.I)
+
+
+def _norm(x: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", x.lower())
+
+
+BUNDLE = re.compile(r"bundle|kit with|\bwith .{0,70}(speakers?|stand|case|cables?|cleaning|mat|headphones|records?)\b|\+|2[- ]pack|pack of", re.I)
+
+
+def amazon_find(brand: str, model: str, tab) -> dict | None:
+    """The Amazon listing for a table row with no product record: an organic search result, read in the Agent Chrome,
+    whose title names the brand and every word of the model, new condition, not a seller's bundle; shortest title wins."""
+    import urllib.parse
+    tab.navigate("https://www.amazon.com/s?" + urllib.parse.urlencode({"k": f"{brand} {model}"}))
+    rows = []
+    for _ in range(6):
+        time.sleep(3)
+        rows = tab.eval("""[...document.querySelectorAll('div[data-component-type="s-search-result"]')].slice(0, 20).map(e => [e.dataset.asin,
+            ((e.querySelector('[data-cy="title-recipe"]') || e.querySelector('h2') || {}).innerText || '').replace(/\\s+/g, ' '),
+            /Sponsored/.test((e.querySelector('[data-cy="title-recipe"]') || e).innerText.slice(0, 40))])""") or []
+        if len(rows) >= 4:
+            break
+    words = [_norm(w) for w in re.findall(r"[A-Za-z0-9+.-]+", model) if len(_norm(w)) >= 2]
+    hits = [(asin, title) for asin, title, sponsored in rows
+            if asin and _norm(brand) in _norm(title) and all(w in _norm(title) for w in words) and not USED.search(title) and not BUNDLE.search(title)]
+    if not hits:
+        return None
+    asin, title = min(hits, key=lambda h: len(h[1]))
+    return {"asin": asin, "title": title[:160]}
+
+
+def amazon_rescue(draft: dict, d: Path) -> list[dict]:
+    """A single-product draft with no row we sell: give its rows our tagged Amazon listing where one exists (the
+    all_links rule of the 11-12 push: a row links our program, else our tagged Amazon listing, else the maker's page)."""
+    sys.path.insert(0, str(ROOT / "growth/evals"))
+    import ui
+    tab = ui.Tab("about:blank")
+    found = []
+    try:
+        for r in draft["page"]["rows"]:
+            if r.get("slug") or r.get("asin") or not r.get("brand"):
+                continue
+            hit = amazon_find(r["brand"], r.get("model") or "", tab)
+            found.append({"row": f"{r['brand']} {r.get('model')}", **(hit or {"asin": None})})
+            if hit:
+                r["asin"] = hit["asin"]
+            time.sleep(4)
+    finally:
+        tab.close()
+    draft["amazon_rescue"] = found
+    A.jsave(d / "draft.json", draft)
+    return found
+
+
 def apply(slug: str) -> dict:
     d = A.pdir(slug)
     draft = A.jload(d / "draft.json")
     if not draft:
         return {"slug": slug, "status": "no draft"}
-    orig = A.record_text
-    A.record_text = lambda dr, old, g: orig(dr, old, g).replace('"method": ', f'"run": {RUN!r},\n "method": ', 1)
+    kit = bool(draft.get("kit_page") or draft.get("bundle_compare"))
+    rows = (draft.get("page") or {}).get("rows") or []
+    amazon_pick = False
+    if not kit and rows and not any(r.get("slug") for r in rows):
+        if "amazon_rescue" not in draft:
+            amazon_rescue(draft, d)
+        amazon_pick = bool(rows[0].get("asin"))   # the pick must be linkable; otherwise the page stays skipped
+        if amazon_pick and (draft.get("gate") or {}).get("skipped"):
+            draft.pop("gate")
+            A.jsave(d / "draft.json", draft)
+    orig, orig_val = A.record_text, A.validate
+    extra = f'"run": {RUN!r},\n ' + ('"all_links": True,\n ' if amazon_pick else "")
+    A.record_text = lambda dr, old, g: orig(dr, old, g).replace('"method": ', extra + '"method": ', 1)
+    if amazon_pick:
+        A.validate = lambda dr, new: [e for e in orig_val(dr, new) if not e.startswith("NO_LISTED_PRODUCT")]
     try:
-        if draft.get("kit_page") or draft.get("bundle_compare"):
-            res = K.apply(slug, True)
-        else:
-            res = A.apply(slug, True)
+        res = K.apply(slug, True) if kit else A.apply(slug, True)
     finally:
-        A.record_text = orig
+        A.record_text, A.validate = orig, orig_val
+    if amazon_pick:
+        res["amazon_pick"] = rows[0]["asin"]
     return res
 
 
