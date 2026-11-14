@@ -2520,103 +2520,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-14',
  "updated": '2026-11-14'},
 
-{'slug': 'best-pet-camera-with-treat-dispenser-under-100',
- 'question': 'G87 (Awin brands: pet camera with a treat dispenser under $100)',
- 'lead_first': True,
- 'product_result': {'slug': 'petcube-bites-2-lite',
-                    'item_id': 'PETCUBE-BITES-2-LITE',
-                    'title': 'Petcube Bites 2 Lite, treat-tossing camera',
-                    'description': '1080p, 160°, night vision, two-way talk, treat tossing; live view and treats work without a plan. $99.99.',
-                    'image_url': 'https://petcube.com/images/store/gallery/bites-2-lite/side-face.jpg'},
- 'title': 'Best pet camera with a treat dispenser under $100 (2026)',
- 'h1': 'Best pet camera with a treat dispenser under $100 (2026)',
- 'desc': "Which pet camera with a treat dispenser costs under $100 and still works without a subscription: Petcube's Bites 2 Lite ($99.99, 1080p, 160°, night "
-         "vision, two-way talk, adjustable treat toss) against the Furbo 360 and Furbo Mini 360, eufy's D605 with local storage, the Skymee Owl robot and the "
-         'no-treat Wyze Cam v4, with what each needs a plan for and the prices seen on 2026-11-03.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Petcube Bites 2 Lite</strong> ({buy:petcube-bites-2-lite}), the best pet camera with '
-          'a treat dispenser under $100: $99.99 on 2026-11-03 (list $149.99) for 1080p video, a 160° view, night vision, two-way talk and treat tossing at an '
-          'adjustable distance, all of which work without a subscription; Petcube Care ($9.99 a month) adds video history and alerts. If stored clips without '
-          "a plan matter more, eufy's D605 records locally but listed at about $200.</p>\n"
-          "<p>What to know: no treat camera under $100 records history without a plan. The Bites 2 Lite keeps live view, talk, treats and Petcube's 24/7 vet "
-          "chat free and puts cloud history, daily diary and pet and human alerts behind Care; Furbo's 360° camera (listings $129–199 on 2026-11-03, with sale "
-          "SKUs that require its $6.99-a-month Nanny plan) is the better-known dog camera but costs more; eufy's D605 keeps 16 GB of clips on the device with "
-          "no plan at a higher price; Wyze's Cam v4 ($35) records to a microSD card but tosses nothing. The Bites 2 Lite holds 1.5 lb of treats in a "
-          'dishwasher-safe container, runs on 2.4 GHz Wi-Fi only, and comes with a 45-day money-back guarantee and a 1-year warranty.</p>\n',
- 'columns': [('treats', 'Treat tossing'), ('video', 'Video'), ('free', 'Without a plan'), ('plan', 'Plan price')],
- 'rows': [{'slug': 'petcube-bites-2-lite',
-           'model': 'Petcube Bites 2 Lite',
-           'cells': {'treats': 'Yes, adjustable distance, 1.5 lb container',
-                     'video': '1080p, 160°, night vision, 8× zoom',
-                     'free': 'Live view, talk, treats, vet chat; no history',
-                     'plan': 'Care $9.99/mo (bundles from $5.99)'}},
-          {'brand': 'Furbo',
-           'model': '360° Dog Camera',
-           'url': 'https://furbo.com/pages/comparison',
-           'cells': {'treats': 'Yes',
-                     'video': '1080p, 360° rotating',
-                     'free': 'Live view and treats while the app is open (reported; Nanny-required SKUs exist)',
-                     'plan': 'Nanny $6.99/mo for alerts and cloud clips',
-                     'price': '$129–199 listings; sale SKUs from $44 require Nanny, 2026-11-03'}},
-          {'brand': 'Furbo',
-           'model': 'Mini 360',
-           'url': 'https://furbo.com/',
-           'cells': {'treats': 'Yes',
-                     'video': 'not read',
-                     'free': 'described as a no-subscription model; unverified',
-                     'plan': 'optional',
-                     'price': 'about $99 in one guide, 2026-11-03'}},
-          {'brand': 'eufy',
-           'model': 'Pet Dog Camera D605',
-           'url': 'https://service.anker.com/article-description/Introducing-eufy-Pet-Dog-Camera-D605',
-           'cells': {'treats': 'Yes',
-                     'video': '2K, 360° pan',
-                     'free': 'Everything, with 16 GB on-device storage (no microSD slot per eufy)',
-                     'plan': 'none',
-                     'price': '$199.99 new (StackSocial); $109.99 open-box (Woot), 2026-11-03'}},
-          {'brand': 'Skymee',
-           'model': 'Owl Robot',
-           'url': 'https://www.skymee.com/',
-           'cells': {'treats': 'Yes, from a mobile robot', 'video': '1080p', 'free': 'Core features', 'plan': 'none', 'price': '$139.99–170, 2026-11-03'}},
-          {'slug': 'petcube-cam-360',
-           'model': 'Petcube Cam 360 (no treats)',
-           'cells': {'treats': 'No', 'video': '1080p, 360° pan-tilt, night vision', 'free': 'Live view, talk, pan; no history', 'plan': 'Care'}},
-          {'brand': 'Wyze',
-           'model': 'Cam v4 (no treats)',
-           'url': 'https://www.tomsguide.com/home/smart-home/wyze-cam-v4-vs-blink-mini-2-which-budget-security-camera-wins',
-           'cells': {'treats': 'No',
-                     'video': '2.5K, night vision',
-                     'free': 'Local microSD recording',
-                     'plan': 'Cam Plus about $2/mo for pet detection',
-                     'price': '$35–36, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>What works without Petcube Care</h2>\n'
-          '<p>Live 1080p video with 8× digital zoom, two-way talk, treat tossing with the amount and distance set from the phone, an autoplay mode that tosses '
-          "on a schedule, and Petcube's 24/7 online vet chat. What does not: any recording. The camera stores nothing on its own, so a bark at 2 p.m. is gone "
-          'unless Care (cloud history up to 90 days, daily diary, pet and human recognition) is on. SafeWise found the alerts weak even with Care on the older '
-          'Bites 2.</p>\n'
-          "<h2>Furbo's catch</h2>\n"
-          "<p>Furbo's cameras are the best-known of the type and reviewers like the AI features, but those features and cloud clips live in the $6.99-a-month "
-          "Nanny plan, and several Furbo 360 sale listings are subscription-required SKUs sold below $50 on the strength of the plan. Petcube's $99.99 is the "
-          'price with no strings.</p>\n'
-          '<h2>eufy D605 for recordings</h2>\n'
-          "<p>If you want clips kept without a plan, eufy's D605 stores 16 GB on the device (eufy's page says there is no microSD slot, though some "
-          'third-party listings claim one). It listed at $199.99 new and $109.99 open-box on 2026-11-03, and like the Petcube it is 2.4 GHz only.</p>\n'
-          '<h2>Fine print</h2>\n'
-          '<p>2.4 GHz Wi-Fi only; a 45-day money-back guarantee and a 1-year warranty from Petcube; a "first order bonus" of 10% off the next purchase, which '
-          "is not a code. Several reviews put the Bites 2 Lite's regular price near $125 rather than Petcube's $149.99 list.</p>\n"
-          '<h2>What we could not verify</h2>\n'
-          "<p>Furbo's current first-party prices and whether its current 360 SKU tosses treats without Nanny; the Furbo Mini 360's specs; eufy's microSD "
-          'question; any Wirecutter or PCMag text on these cameras (only secondhand claims surfaced).</p>\n',
- 'sources': [('Petcube Bites 2 Lite', 'https://petcube.com/store/product/bites-2-lite/'),
-             ('Petcube Care', 'https://petcube.com/care/'),
-             ('eufy Pet Dog Camera D605 (Anker support)', 'https://service.anker.com/article-description/Introducing-eufy-Pet-Dog-Camera-D605'),
-             ('Furbo camera comparison', 'https://furbo.com/pages/comparison'),
-             ('SafeWise: Petcube Bites 2 review', 'https://www.safewise.com/petcube-bites-2-review/'),
-             ('Digital Camera World: Petcube Bites 2 Lite review',
-              'https://www.digitalcameraworld.com/reviews/petcube-bites-2-lite-review-the-top-dog-in-affordable-pet-cameras')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- best-pet-camera-with-treat-dispenser-under-100 (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": 'best-pet-camera-with-treat-dispenser-under-100',
+ "question": 'G87 (Awin brands: pet camera with a treat dispenser under $100)',
+ "method": 'ab-2026-11',
+ "angle": 'B',
+ "searched_as": ['best pet camera treat dispenser under $100 2026 WOpet Petcube Furbo prices reviews', 'best pet camera treat dispenser under $100 2026 reviews WOpet Petcube', 'best pet camera treat dispenser under $100 2026 WOpet Petcube reviews prices', 'best pet camera treat dispenser under 100 dollars 2026 WOpet Petcube reviews prices', 'best pet camera treat dispenser under 100 dollars 2026 WOpet Petcube Furbo reviews prices'],
+ "title": 'Best pet camera with a treat dispenser under $100 (2026)',
+ "h1": 'Best pet camera with a treat dispenser under $100 (2026)',
+ "desc": 'Year-one cost of treat-tossing pet cameras under $100. The Petcube Bites 2 Lite is $99.99 with no plan. The $35 Furbo Mini 360° comes to $118.92 at checkout. Here is what recorded clips add to each.',
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best pet camera with a treat dispenser under $100 in 2026 is the Petcube Bites 2 Lite: $99.99 at Petcube, with no plan needed for live view and treats. Furbo prices look lower, but the $35 Furbo Mini 360° checks out at $118.92 with its bundled first-year plan.</p>',
+ "columns": [('year1_live', 'Year one: live view + treats'), ('year1_clips', 'Year one with recorded clips'), ('terms', 'Plan terms'), ('treats', 'Treat hopper'), ('camera', 'Camera')],
+ "rows": [{'slug': 'petcube-bites-2-lite', 'model': 'Petcube Bites 2 Lite', 'cells': {'year1_live': '$99.99, no plan: the free tier includes live streaming (Petcube)', 'year1_clips': '$119.88 on the Care Bundle ($0 camera + $9.99 × 12), or $159.87 bought outright plus Optimal yearly', 'terms': 'Bundle renews for at least 12 months. Cancel early and you pay $99.95 for the camera (Petcube)', 'treats': 'Up to 1.5 lb; crunchy treats 1 inch or smaller', 'camera': '1080p, fixed 160° view, 8× zoom, 2.4 GHz Wi-Fi only'}}, {'brand': 'Furbo', 'model': 'Mini 360°', 'url': 'https://furbo.com/products/furbo-mini-360', 'cells': {'price': '$118.92 with first-year plan (maker, 2026-11-14)', 'year1_live': '$118.92 at checkout: $35 camera + $83.92 Nanny Standard', 'year1_clips': '$118.92 (Standard includes 3-day video history)', 'terms': '3-month minimum, nonrefundable. After the plan ends, live stream only (Furbo terms)', 'treats': 'Up to 10 small treats, round, 0.25–0.5 in (Furbo)', 'camera': '2K, turns 270° for a 360° view, 8× zoom'}}, {'brand': 'Furbo', 'model': '360° Dog Camera', 'url': 'https://furbo.com/pages/comparison', 'cells': {'price': '$54 with a Nanny plan (maker, 2026-11-14)', 'year1_live': '$54 only with a Nanny plan; $184 camera alone (HomeGearLab)', 'year1_clips': '$267.92 with plan (VettedFur)', 'terms': 'Same Nanny terms: 3-month minimum, nonrefundable (Furbo terms)', 'treats': '100 treats of about 0.4 in (Furbo; securitycameraforhome)', 'camera': '1080p, turns 270° for a 360° view, 4× zoom'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Furbo Mini 360° on day one:</strong> $35 camera + $83.92 Nanny Standard = $118.92, which is $18.92 over a $100 budget. Every option shown on Furbo's page includes a plan.</li><li><strong>Petcube Bites 2 Lite with no plan:</strong> $99.99 + $0 = $99.99. Live view stays on Petcube's free tier.</li><li><strong>Petcube with recorded clips, bundle route:</strong> $0 camera + $9.99 × 12 months = $119.88.</li><li><strong>Petcube with recorded clips, bought outright:</strong> $99.99 + $59.88 Optimal yearly = $159.87.</li><li><strong>Treat hopper:</strong> the Mini 360° holds 10 treats against the Furbo 360°'s 100, a tenth as many (Furbo's own chart).</li><li><strong>Treat size:</strong> Petcube takes treats up to 1 in; the Mini 360° tops out at 0.5 in, so 1 ÷ 0.5 = twice the largest treat.</li></ul><table><thead><tr><th>If you want</th><th>Pick</th></tr></thead><tbody><tr><td>Live view, talk-back and treat tossing with no monthly bill</td><td>Petcube Bites 2 Lite</td></tr><tr><td>Large dog treats up to 1 inch</td><td>Petcube Bites 2 Lite</td></tr><tr><td>Small round cat treats, and you want a Nanny plan anyway</td><td>Furbo Mini 360°</td></tr></tbody></table><h2>What each camera really costs in year one</h2><p>Every camera on this list streams live video. They differ in whether recorded clips need a subscription and how long that subscription locks you in.</p><p><strong>Petcube</strong> sells the Bites 2 Lite two ways. Bought outright at $99.99, it keeps live streaming on the free Basic tier, which Petcube says comes with every camera. Care Optimal adds 3-day history and Smart Alerts for $59.88 a year. The Care Bundle gives you the camera for $0, but the plan must renew for at least 12 months. Cancel early or miss a payment and you owe $99.95 for the camera. After 12 months, cancelling turns off history and Smart Alerts, and live streaming keeps working. WIRED's tester, Molly Higgins, notes that the Bites 2 Lite lets you set both the amount and the distance of each toss. {buy:petcube-bites-2-lite}</p><p><strong>Furbo</strong> lists the Mini 360° at $35 (crossed-out $99), but the cart adds Nanny Standard billed at $83.92. Furbo's terms set a minimum of three continuous months, say subscription payments are nonrefundable, and say that once a plan ends you only get the real-time stream, with no past recordings. Furbo's help center adds that Subscription-Required units lock live view until a plan is linked. WIRED's Molly Higgins found the Mini 360° can't schedule feedings or change the amount dispensed.</p><h2>Not recommended</h2><p><strong>Furbo Mini 360° at its $35 headline price.</strong> For a $100 budget it comes to $118.92 at Furbo's checkout. Its hopper holds up to 10 small treats, round and 0.25–0.5 in (Furbo), and the plan can't be refunded for the first three months. It fits only a shopper who already wants a Furbo Nanny plan and uses small cat-sized treats.</p>\n",
+ "sources": [('Petcube Bites 2 Lite: $99.99 (list $149.99), holds up to 1.5 lb, treats 1 inch or less, 1080p, 160°, 8× zoom, 2.4 GHz Wi-Fi (read 2026-11-14)', 'https://petcube.com/bites-2-lite/'), ('Petcube Care Bundle: camera free with plan, $9.99/mo, renew for at least 12 months, $99.95 owed if cancelled early, 3-day history and Smart Alerts (read 2026-11-14)', 'https://petcube.com/care-bundle/'), ('Petcube Care: Basic tier with live streaming comes with every camera; Optimal $4.99/mo billed yearly ($59.88) (read 2026-11-14)', 'https://petcube.com/care/'), ('Furbo Mini 360°: $35 (was $99), Nanny Standard billed at $83.92, Add to cart $118.92 (read 2026-11-14)', 'https://furbo.com/products/furbo-mini-360'), ('Furbo comparison: Mini 360° up to 10 small treats, 2K, 8× zoom; Furbo 360° 100 treats, 1080p, 4× zoom, from $54 (read 2026-11-14)', 'https://furbo.com/pages/comparison'), ('Furbo Nanny terms: 3-month minimum, nonrefundable, only a real-time stream after a plan ends (read 2026-11-14)', 'https://help.furbo.com/hc/en-us/articles/17462358359705-Payment-Terms-and-Refund-Policy'), ('Furbo: Subscription-Required units lock live view until a Nanny plan is linked (read 2026-11-14)', 'https://help.furbo.com/hc/en-us/articles/58128779830169-Why-is-my-new-Furbo-asking-for-a-subscription-if-I-already-have-a-Furbo-Nanny-plan'), ('Furbo Mini 360° treats: round, dry, firm, about 0.25–0.5 in (read 2026-11-14)', 'https://help.furbo.com/hc/en-ca/articles/49064287479705-How-Mini-360-treat-tossing-works'), ('Furbo Mini 360°: 360° wide-angle view through a 270-degree physical rotation range (read 2026-11-14)', 'https://help.furbo.com/hc/en-gb/articles/49340707988505-Furbo-Mini-360-Calibration-Rotation-Controls'), ('Furbo 360° Dog Camera: 360° wide-angle view through a 270-degree physical rotation range (read 2026-11-14)', 'https://help.furbo.com/hc/en-us/articles/17467787259673-360-Rotating-Controls'), ("WIRED (Molly Higgins): Bites 2 Lite toss amount and distance adjustable; Mini 360° can't schedule or change the amount (read 2026-11-14)", 'https://www.wired.com/gallery/best-pet-cameras/'), ('VettedFur: Furbo 360° year-one cost with plan $267.92 (read 2026-11-14)', 'https://vettedfur.com/comparisons/best-pet-cameras-treat-dispenser-no-subscription/'), ('Furbo 360° treats about 0.4 in, 100 of them (read 2026-11-14)', 'https://securitycameraforhome.com/resources/pet-cameras/best-pet-camera-treat-dispenser'), ('HomeGearLab: Furbo 360° $54 with a Nanny plan, camera alone $184 (read 2026-11-14)', 'https://homegearlab.org/best-pet-camera')],
+ "published": '2026-11-03',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 
 # ---------------- best-triple-screen-laptop-extender-16-inch-1920x1200 (research method ab-2026-11, 2026-11-08) ----------------
 {"slug": 'best-triple-screen-laptop-extender-16-inch-1920x1200', "buy_compare": True,
