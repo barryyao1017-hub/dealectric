@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the WOLFBOX MegaVolt16 Air manual requires the pack to be above 50% charge before a jump, or that GOOLOO says not to jump the A3 below 2 of its 4 charge bars. The compressor and the jump clamps share one battery, so only the top half of the charge can go to inflating if you still want a jump left in reserve.",
+ "standout": 2,
+ "standout_why": "I compared four pages. TechGearLab's MegaVolt16 Air review (cited) says the battery is big enough to 'use the air compressor and still jump vehicles' and measured 51.3 Wh, but it gives no minimum charge for jumping. gearmyride only says 'both functions draw from the same reserve', with no threshold. autoboosting covers boost mode and temperature ranges but says nothing about a reserve or a minimum charge. The cited Popular Mechanics GOOLOO page could not be opened (the fetch tool is blocked there), so I could not check it. None of the pages I opened gives the >50% / 2-of-4-bars rule from the makers.",
+ "decides": "This is a reason to buy a bigger pack, not a reason to change brand. Both makers ask for about half a charge before a jump, so whatever the compressor uses comes out of the top half of the battery. On the MegaVolt16 Air that is about 29.6 Wh of its rated 59.2 Wh, or about 25.7 Wh of the 51.3 Wh TechGearLab measured. A shopper who expects to air up several tires and still jump the car should pick the larger-capacity unit (the MegaVolt24 Air, which autoboosting lists at 88.8 Wh) or recharge between uses. The ~$90 A3 suits someone who mostly tops off tires.",
+ "candidates": [
+  "GOOLOO A3",
+  "WOLFBOX MegaVolt16 Air",
+  "WOLFBOX MegaVolt24 Air (JS24AIR)"
+ ],
+ "findings": [
+  {
+   "product": "WOLFBOX MegaVolt16 Air",
+   "label": "Minimum jump-starter charge before a jump",
+   "value": "Above 50% battery level",
+   "source": "https://www.manualslib.com/manual/3751989/Wolfbox-Megavolt16-Air.html?page=10",
+   "source_title": "WOLFBOX MegaVolt16 Air User Manual V1.0 (ManualsLib), p.10",
+   "read": "2026-11-14",
+   "note": "Section heading 'Feature 1: How to Start a 12V Vehicle (Ensure Battery Level >50%)'. ManualsLib says the manual also covers the MegaVolt 24 Air. This is the maker's manual mirrored on ManualsLib; wolfbox.com returned HTTP 429, so I could not open the copy on the maker's site."
+  },
+  {
+   "product": "WOLFBOX MegaVolt16 Air",
+   "label": "Rated battery capacity",
+   "value": "59.2 Wh / 16,000 mAh",
+   "source": "https://www.manualslib.com/manual/3751989/Wolfbox-Megavolt16-Air.html?page=15",
+   "source_title": "WOLFBOX MegaVolt16 Air User Manual V1.0 (ManualsLib), p.15 specifications",
+   "read": "2026-11-14",
+   "note": "The same table gives 3000 A peak, 600 A start current, operating temperature -20 to 60 °C (-4 to 140 °F) and a full charge in about 1-1.5 h. Half of 59.2 Wh = 29.6 Wh, the most the compressor can use while staying above the 50% jump threshold."
+  },
+  {
+   "product": "WOLFBOX MegaVolt16 Air",
+   "label": "Measured usable battery capacity",
+   "value": "51.3 Wh (vs 59.2 Wh claimed)",
+   "source": "https://www.techgearlab.com/reviews/tools/jump-starter/wolfbox-megavolt16-air",
+   "source_title": "WOLFBOX MegaVolt16 Air Review | Tested & Rated (TechGearLab)",
+   "read": "2026-11-14",
+   "note": "TechGearLab measured it. Arithmetic: 51.3 Wh × 50% ≈ 25.7 Wh available to the compressor before the pack falls to the jump threshold. TechGearLab also took 3 minutes to add 5 PSI to a 275/70R18 F-150 tire and jumped a 2010 Explorer three times in a row at 33 °F."
+  },
+  {
+   "product": "WOLFBOX MegaVolt16 Air",
+   "label": "Charging protection in cold",
+   "value": "Charging protection engages below 0 °C and releases above 5 °C",
+   "source": "https://www.manualslib.com/manual/3751989/Wolfbox-Megavolt16-Air.html",
+   "source_title": "WOLFBOX MegaVolt16 Air User Manual V1.0 (ManualsLib), p.8",
+   "read": "2026-11-14",
+   "note": "This applies to recharging, not to jumping. A pack drained by inflating in freezing weather cannot be recharged until it warms above 5 °C."
+  },
+  {
+   "product": "GOOLOO A3",
+   "label": "Minimum jump-starter charge before a jump",
+   "value": "At least 2 of 4 battery bars (4 bars = full)",
+   "source": "https://us.gooloo.com/blogs/tutorials/a3-jump-starter",
+   "source_title": "GOOLOO A3 Jump Starter with Air Compressor: Complete User Guide (GOOLOO, published 2026-01-21)",
+   "read": "2026-11-14",
+   "note": "Section 2.2: 'Do not attempt to jump-start a vehicle if battery power is below 2 bars'. Section 4.1: 'aim for at least 2 bars before attempting a jump start'. The inflator screen shows battery level (5.1). GOOLOO gives no percentage."
+  },
+  {
+   "product": "GOOLOO A3",
+   "label": "Fully flat car battery (clamps can't detect it)",
+   "value": "Press BOOST on the clamp cable, then start within 30 s",
+   "source": "https://us.gooloo.com/blogs/tutorials/a3-jump-starter",
+   "source_title": "GOOLOO A3 Jump Starter with Air Compressor: Complete User Guide (GOOLOO)",
+   "read": "2026-11-14",
+   "note": "Section 4.2: blinking green = 'Battery voltage too low' → press BOOST; no light = 'Battery may be damaged' → press BOOST. GOOLOO also says to let the unit cool 30 min before recharging after a jump (4.3)."
+  },
+  {
+   "product": "general",
+   "label": "WOLFBOX guidance on inflating then jumping",
+   "value": "Confirm the display shows adequate remaining charge before a jump; watch remaining battery when airing up more than one or two tires in a row",
+   "source": "https://wolfbox.com/blogs/jump-starter-with-air-compressor/how-to-use-a-jump-starter-with-air-compressor",
+   "source_title": "How to Use a Jump Starter with Air Compressor: Step-by-Step Guide (WOLFBOX, 2026-08-24)",
+   "read": "2026-11-14",
+   "note": "WOLFBOX's own blog names the MegaVolt 10Air, 16 Air and 24Air. It gives no number; the >50% number comes from the manual."
+  }
+ ],
+ "unsourced": [
+  "Continuous-run limit and cool-down time for the GOOLOO A3 and MegaVolt16 Air compressors: GOOLOO's A3 guide and WOLFBOX's blog give none. The manuals.plus copies of both manuals returned HTTP 403.",
+  "Compressor power draw in watts for either unit, which I needed to turn the half-battery budget into minutes of inflation or a tire count: not on the manual spec page I opened or on GOOLOO's guide.",
+  "GOOLOO A3 battery capacity in Wh/mAh: GOOLOO's guide doesn't list it, and us.gooloo.com/products returned HTTP 429.",
+  "MegaVolt24 Air capacity and its own minimum-charge rule on wolfbox.com: the product pages returned HTTP 429. ManualsLib says the >50% manual covers the 24 Air, but I could not see its capacity there.",
+  "Today's maker-store prices for all three: storecheck.py and WebFetch both got HTTP 429 from us.gooloo.com and wolfbox.com.",
+  "Car-battery voltage at which BOOST becomes necessary: neither GOOLOO's nor WOLFBOX's pages give a number.",
+  "Popular Mechanics GOOLOO page (cited by ChatGPT): the fetch tool can't open popularmechanics.com, so I could not check whether it mentions the 2-bar rule."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9990725000000001
+ }
+}
