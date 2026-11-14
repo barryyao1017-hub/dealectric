@@ -8496,6 +8496,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G268: best-travel-tripod-for-camera (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'best-travel-tripod-for-camera',
  "question": 'G268 (gap mining daily 2026-11-13, research method ab-2026-11: travel tripod for camera)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'C',
@@ -8611,6 +8612,7 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
 # ---------------- G274: balcony-solar-system-with-battery-us (research method ab-2026-11, 2026-11-13) ----------------
 {"slug": 'balcony-solar-system-with-battery-us',
  "question": 'G274 (gap mining daily 2026-11-13, research method ab-2026-11: balcony solar system with battery)',
+ "price_check": True,
  "run": 'combo-1113',
  "method": 'ab-2026-11',
  "angle": 'C',
