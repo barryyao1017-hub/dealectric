@@ -2762,98 +2762,23 @@ Short outages on a budget, panel in the box: the <strong>ALLPOWERS P1800 + SP037
  "checked": '2026-11-08',
  "updated": '2026-11-12'},
 
-{'slug': 'best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300',
- 'question': 'G92 (Awin brands: 12V 100Ah Group 24 LiFePO4 with Bluetooth for a trolling motor under $300)',
- 'lead_first': True,
- 'product_result': {'slug': 'vatrer-12v-100ah-group-24-bluetooth-150a',
-                    'item_id': 'VATRER-GROUP24-BT',
-                    'title': 'Vatrer 12V 100Ah Group 24, Bluetooth, 150 A',
-                    'description': '1,280 Wh LiFePO4, 150 A BMS, low-temp cutoff, UL 1973, IP65. $259.99; code VIPD2026 takes 5% off.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0591/7523/9838/files/vatrer_12v_100ah_150_bms_battery.webp'},
- 'title': 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
- 'h1': 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
- 'desc': "Which 12V 100Ah Group 24 LiFePO4 battery with Bluetooth to buy for a trolling motor under $300: Vatrer's Group 24 ($259.99, 150 A BMS, UL 1973, "
-         "low-temp cutoff, IP65, code VIPD2026) against LiTime's and Redodo's Group 24 Bluetooth packs on their own stores and at resellers, Dakota Lithium "
-         'and Renogy, with BMS amps, warranties, the trolling-motor warranty question and the prices seen on 2026-11-03.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Vatrer 12V 100Ah Group 24</strong> ({buy:vatrer-12v-100ah-group-24-bluetooth-150a}), '
-          'the best Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300: $259.99 on 2026-11-03 (list $359.99; code VIPD2026 took 5% off in '
-          "the cart) for 1,280 Wh with a 150 A BMS, a UL 1973 listing, a low-temperature charge cutoff and an IP65 case. LiTime's Group 24 Bluetooth was "
-          "$365.99 and Redodo's $289.99 on their own stores the same day, both with 100 A BMSs.</p>\n"
-          '<p>What to know: the same LiTime and Redodo packs turn up cheaper at resellers ($229.99 at Renewable Outdoors, $219.99 at Walmart in search '
-          'results), so compare on the day; what the Vatrer adds at any price is the 150 A BMS against 100 A, which matters when a trolling motor and a fish '
-          'finder pull from one battery, and the UL 1973 listing no rival in this table claims. The Bluetooth app shows state of charge, voltage, current and '
-          "temperature; charging stops below 32 °F. Weight is about 11 kg (24 lb) shipping, in the standard Group 24 footprint. Vatrer's US warranty table "
-          'gives 12 V 100–600 Ah batteries 5 years after registration and activation, but its Japanese-market page says powered-equipment use such as trolling '
-          "motors carries 1 year, so ask Vatrer before counting on 5 for a boat. Dakota Lithium's Group 24 ($699–799) is the premium pick with an 11-year "
-          'warranty; this is not a starter battery.</p>\n',
- 'columns': [('bms', 'BMS'), ('listing', 'UL / low-temp'), ('app', 'Bluetooth'), ('warranty', 'Warranty')],
- 'rows': [{'slug': 'vatrer-12v-100ah-group-24-bluetooth-150a',
-           'model': 'Vatrer 12V 100Ah Group 24',
-           'cells': {'bms': '150 A',
-                     'listing': 'UL 1973; charge cutoff below 32 °F; IP65',
-                     'app': 'Yes: SOC, volts, amps, temperature',
-                     'warranty': '5 years (registered); possibly 1 year for trolling use, unconfirmed'}},
-          {'brand': 'LiTime',
-           'model': '12V 100Ah Group 24 Smart Bluetooth',
-           'url': 'https://litime.com/products/12v-100ah-group-24-smart-bluetooth',
-           'cells': {'bms': '100 A',
-                     'listing': 'Charge cutoff below 0 °C; UL not stated',
-                     'app': 'Yes',
-                     'warranty': '5 years',
-                     'price': '$365.99 (list $429.99) on litime.com; $229.99 at Renewable Outdoors, 2026-11-03'}},
-          {'brand': 'LiTime',
-           'model': '12V 100Ah Group 24 (no Bluetooth)',
-           'url': 'https://litime.com/products/12v-100ah-group-24-lithium-battery',
-           'cells': {'bms': '100 A',
-                     'listing': 'Low-temp protection; UL not stated',
-                     'app': 'No',
-                     'warranty': '5 years',
-                     'price': '$319.99 (list $369.99) on litime.com, 2026-11-03'}},
-          {'brand': 'Redodo',
-           'model': '12V 100Ah Group 24 with Bluetooth',
-           'url': 'https://redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth',
-           'cells': {'bms': '100 A (per Walmart listing)',
-                     'listing': 'Low-temp protection; UL not stated',
-                     'app': 'Yes',
-                     'warranty': "not read ('10-year lifetime' claims on listings, unverified)",
-                     'price': '$289.99 (list $359.99) on redodopower.com; $219.99 at Walmart, 2026-11-03'}},
-          {'brand': 'Dakota Lithium',
-           'model': '12V 100Ah Group 24',
-           'url': 'https://reach.dog/shop/mealey-marine/products/dakota-lithium-12v-100ah-battery',
-           'cells': {'bms': 'not read', 'listing': 'not read', 'app': 'not read', 'warranty': '11 years', 'price': '$699–799, search result 2026-11-03'}},
-          {'brand': 'Renogy',
-           'model': 'Core Group 24 Bluetooth (trolling)',
-           'url': 'https://www.renogy.com/',
-           'cells': {'bms': 'not read', 'listing': 'not read', 'app': 'Yes', 'warranty': '5 years, prorated', 'price': 'not read'}}],
- 'after': '\n'
-          '<h2>Why the BMS rating matters on a boat</h2>\n'
-          '<p>A 12 V trolling motor on high draws 40–60 A, a 24 V setup on two batteries less per battery; add a fish finder, livewell pump and lights and a '
-          "100 A BMS is still within limits but closer to them, and a BMS that trips under a surge shuts the whole battery off until it resets. Vatrer's 150 A "
-          "rating is the headroom. None of the packs here is a starter battery, so an outboard's starter stays on its own lead-acid or dual-purpose "
-          'battery.</p>\n'
-          '<h2>Price on the day, and where</h2>\n'
-          "<p>On 2026-11-03 the makers' own stores had Vatrer at $259.99 (5% off with VIPD2026, which passed in the cart), Redodo at $289.99 and LiTime at "
-          '$365.99 for the Bluetooth Group 24; search results showed the LiTime at $229.99 at Renewable Outdoors and the Redodo at $219.99 at Walmart. '
-          "Reseller prices move faster than the makers', so the honest statement is that Vatrer is the cheapest on the brand stores and within $40 of the "
-          'cheapest reseller listing, with the stronger BMS.</p>\n'
-          '<h2>The warranty question</h2>\n'
-          "<p>Vatrer's warranty table (July 2026) lists 5 years for 12 V 100–600 Ah batteries, after registering and activating the warranty before first use. "
-          'Its Japanese-language page for the low-temp Group 24 says powered equipment such as trolling motors, golf carts and kayaks gets 1 year; the US page '
-          'does not say that. Until Vatrer confirms in writing, plan on 1 year for a trolling motor and treat 5 as the RV term. LiTime states 5 years and '
-          'Dakota 11.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>UL listings for the LiTime and Redodo packs, Redodo's warranty term, Renogy's and Dakota's current prices and BMS ratings, any capacity test or "
-          "teardown of the Vatrer Group 24 (Wired2Fish ran it on a kayak for three weeks without publishing a capacity figure), and the Vatrer's net "
-          'weight.</p>\n',
- 'sources': [('Vatrer 12V 100Ah Group 24 (Bluetooth, 150 A)', 'https://vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery'),
-             ('Vatrer warranty policy', 'https://www.vatrerpower.com/pages/warranty-policy'),
-             ('LiTime 12V 100Ah Group 24 Smart Bluetooth', 'https://litime.com/products/12v-100ah-group-24-smart-bluetooth'),
-             ('Redodo 12V 100Ah Group 24 with Bluetooth', 'https://redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth'),
-             ('Wired2Fish: Vatrer Group 24 Bluetooth review',
-              'https://www.wired2fish.com/tackle-reviews/vatrer-12v-100ah-group-24-bluetooth-lithium-battery-review')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300 (research method ab-2026-11, 2026-11-14) ----------------
+{"slug": 'best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300',
+ "question": 'G92 (Awin brands: 12V 100Ah Group 24 LiFePO4 with Bluetooth for a trolling motor under $300)',
+ "method": 'ab-2026-11',
+ "angle": 'D',
+ "searched_as": ['best group 24 12V 100Ah LiFePO4 bluetooth battery trolling motor 100A BMS price 2026', 'group 24 100ah LiFePO4 bluetooth trolling motor battery 2026 price dimensions BMS', '2026 best group 24 12V 100Ah LiFePO4 bluetooth trolling motor battery price dimensions continuous discharge', '2026 group 24 12V 100Ah LiFePO4 Bluetooth trolling motor battery price LiTime ECO-WORTHY Power Queen Redodo', '2026 group 24 100Ah LiFePO4 bluetooth trolling motor battery price LiTime Redodo Power Queen 100A BMS', '2026 group 24 12V 100Ah LiFePO4 Bluetooth battery trolling motor price LiTime ECO WORTHY Power Queen Redodo'],
+ "title": 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
+ "h1": 'Best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 (2026)',
+ "desc": "WattCycle TM at $229.99: 120 A continuous, 2.4× a 12V 55 lb Minn Kota's 50 A max draw. Minn Kota's figures on BMS headroom, the 85% speed rule and 14.5 V charging.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best 12V 100Ah Group 24 LiFePO4 battery with Bluetooth for a trolling motor under $300 is the WattCycle TM at $229.99: its 120 A continuous discharge BMS is 2.4× a 55 lb motor\'s 50 A max draw, and Minn Kota specifies a 60 A breaker for it, so 150 A adds nothing.</p>',
+ "columns": [('cont', 'Continuous discharge (BMS)'), ('headroom', "Headroom over a 12V 55 lb motor's 50 A max"), ('wh', 'Energy'), ('hours', 'Hours at a steady 50 A')],
+ "rows": [{'brand': 'WattCycle', 'model': '12V 100Ah TM Bluetooth LiFePO4 (Group 24 size, 120A BMS)', 'url': 'https://www.wattcycle.com/products/12v-100ah-tm-bluetooth-lifepo4-battery-trolling-motors', 'cells': {'cont': '120 A (maker); held almost 200 A before shutting off (Panbo)', 'headroom': '2.4×', 'wh': '1,280 Wh rated; 101.75 Ah measured (Panbo)', 'hours': '2.0 h', 'price': '$229.99 (maker, 2026-11-14)'}}, {'slug': 'redodo-12v-120ah-group-24-trolling-bluetooth', 'model': 'Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth', 'cells': {'cont': '120 A (maker)', 'headroom': '2.4×', 'wh': '1,536 Wh', 'hours': '2.4 h'}}, {'slug': 'vatrer-12v-100ah-group-24-bluetooth-150a', 'model': 'Vatrer 12V 100Ah Group 24 Bluetooth, 150A BMS (UL 1973)', 'cells': {'cont': '150 A (maker)', 'headroom': '3.0×', 'wh': '1,280 Wh', 'hours': '2.0 h'}}, {'slug': 'redodo-12v-100ah-group-24-bluetooth-low-temp', 'model': 'Redodo 12V 100Ah Group 24 Bluetooth', 'cells': {'cont': '100 A (maker)', 'headroom': '2.0×', 'wh': '1,280 Wh', 'hours': '2.0 h'}}, {'brand': 'LiTime', 'model': '[Like New] 12V 100Ah Group 24 Bluetooth (open-box)', 'url': 'https://www.litime.com/products/like-new-12v-100ah-group-24-bluetooth-lithium-battery', 'cells': {'cont': '100 A (maker, new model)', 'headroom': '2.0×', 'wh': '1,280 Wh rated; 100.92 Ah at 40 A measured on a new unit (Techtest.org)', 'hours': '2.0 h', 'price': '$256.99 (maker, 2026-11-14)'}}],
+ "after": '\n<h2>What the differences mean</h2><p>Every battery here passes Minn Kota\'s test, which is that continuous discharge must cover the motor\'s max amp draw. What separates them is price, energy and water rating.</p><ul><li><strong>Headroom</strong> = continuous rating ÷ 50 A (Minn Kota\'s max draw for a 12V 50–55 lb motor): 100 ÷ 50 = 2.0×; 120 ÷ 50 = 2.4×; 150 ÷ 50 = 3.0×.</li><li><strong>Hours at a steady 50 A</strong> = Ah ÷ 50 A: 100 ÷ 50 = 2.0 h; 120 ÷ 50 = 2.4 h. Minn Kota says its max figures occur only intermittently, so a real day on the water runs longer.</li><li><strong>Extra energy</strong> of the 120Ah Redodo: 1,536 ÷ 1,280 = 1.20, or 20% more in the same Group 24 box.</li><li><strong>Price gap</strong>: the Vatrer and the 100Ah Redodo cost $259.99 − $229.99 = $30 more than the WattCycle TM, and the 120Ah Redodo costs $296.99 − $229.99 = $67 more (maker stores, 2026-11-14).</li><li><strong>Water</strong>: WattCycle rates the TM IP67. The Vatrer and the 100Ah Redodo are rated IP65.</li></ul><table><thead><tr><th>Your setup</th><th>Fits</th></tr></thead><tbody><tr><td>12V 30–55 lb motor, lowest price, a deck that gets soaked</td><td>WattCycle TM (120 A, IP67)</td></tr><tr><td>Longest day on one charge from a Group 24 tray</td><td>Redodo 12V 120Ah: 2.4 h vs 2.0 h at a steady 50 A {buy:redodo-12v-120ah-group-24-trolling-bluetooth}</td></tr><tr><td>Motor plus other loads on the same battery adding up to more than 100 A</td><td>Vatrer 150 A {buy:vatrer-12v-100ah-group-24-bluetooth-150a}</td></tr><tr><td>You want the maker to name trolling-motor thrust (30–70 lb) and give a 5-year warranty</td><td>Redodo 12V 100Ah Group 24 Bluetooth {buy:redodo-12v-100ah-group-24-bluetooth-low-temp}</td></tr><tr><td>24V or 36V motor charged by Minn Kota chargers</td><td>Two or three identical 12V Group 24 batteries in series, one charger bank per battery</td></tr></tbody></table><h2>Why a 150 A BMS buys a 12V trolling motor nothing: Minn Kota\'s numbers</h2><p><strong>The motor\'s own ceiling.</strong> Minn Kota\'s fuse and power-draw table lists 12V motors at 30 A max for 30 lb (30 A breaker), 42 A for 40–45 lb (50 A breaker) and 50 A for 50–55 lb (60 A breaker). Minn Kota specifies a 60 A breaker on the 55 lb motor\'s circuit, so a battery rated 150 A continuous gives that motor no current a 100 A battery doesn\'t. The higher-thrust 70 lb (42 A) and 80 lb (56 A) motors run at 24V on two 12V batteries in series. Each battery carries the same current as the motor, so it stays under 100 A as well.</p><p><strong>Brushed motors on lithium.</strong> Minn Kota tells owners of brushed motors running on lithium to "limit the motor speed to 85%, or Speed 8.5 or lower". Its reason is that lithium holds a higher voltage for longer, which can damage motors built for flooded lead-acid batteries. Below full speed the draw falls further, which leaves even more headroom.</p><p><strong>Measured, not just rated.</strong> Panbo\'s Ben Stein tested the WattCycle 100Ah Bluetooth. He measured about 101.75 Ah, and in his high-current test the BMS shut off only at almost 200 A. He reports the BMS handles surges of 220 A for up to 6 seconds and 400 A for 0.3 seconds. Techtest.org measured 100.92 Ah at 40 A from LiTime\'s Group 24 Bluetooth battery.</p><p><strong>Charging on a Minn Kota on-board charger.</strong> Minn Kota\'s PCL chargers charge 12V LiFePO4 at a maximum of 14.5 V, and Minn Kota tells owners to check that against the battery maker\'s specification. They are not compatible with single 24V or 36V lithium batteries, which is why a 24V or 36V setup needs 12V batteries in series. Panbo saw the WattCycle\'s BMS cut charging at 14.2 V, but only when 25 A or more was going in. Stein avoided this by setting absorption to 13.9–14.0 V. Minn Kota\'s MK 330PCL charges at 10 A per bank.</p><p><strong>Where each one falls short.</strong> The WattCycle page contradicts itself on thrust, with 30–100 lb in the title and 30–70 lb in the text. It also says only "Designed to Group 24 size", so measure your tray before buying. Redodo calls its 100Ah Group 24 "NOT suitable for ... high-power applications". LiTime\'s new Group 24 Bluetooth battery costs $311.09, which is over this budget. The $256.99 Like New unit is an open-box return that LiTime says carries the same 5-year warranty, though a badge on the same page says 2 years.</p>\n',
+ "sources": [("WattCycle 12V 100Ah TM Bluetooth: $229.99, 'Max. Continuous 120A Current', IP67, 'Designed to Group 24 size', 30–100 lb title vs 30~70 lb text (read 2026-11-14)", 'https://www.wattcycle.com/products/12v-100ah-tm-bluetooth-lifepo4-battery-trolling-motors'), ('Panbo (Ben Stein): WattCycle 100Ah Bluetooth measured about 101.75 Ah; BMS shut off at almost 200 A; surges of 220 A for 6 s and 400 A for 0.3 s; charge cut at 14.2 V at 25 A or more (read 2026-11-14)', 'https://panbo.com/?p=106332'), ('Redodo 12V 120Ah Group 24 Trolling Motor Bluetooth: $296.99, 1,536 Wh, 120 A continuous, 30–70 lb motors (read 2026-11-14)', 'https://www.redodopower.com/products/redodo-12v-120ah-group-24-trolling-motor-bluetooth-lithium-battery-for-3-days-fishing'), ("Redodo 12V 100Ah Group 24 Bluetooth: $259.99, 100 A BMS, IP65, 21.8 lb, 5-year warranty, 30–70 lb motors, 'NOT suitable for ... high-power applications' (read 2026-11-14)", 'https://www.redodopower.com/products/12v-100ah-group-24-battery-with-bluetooth'), ('Vatrer 12V 100Ah Group 24 Bluetooth: $259.99, 150A Smart BMS, charging stops below 32 °F (read 2026-11-14)', 'https://www.vatrerpower.com/products/vatrer-12v-100ah-group-24-lithium-battery'), ('LiTime [Like New] 12V 100Ah Group 24 Bluetooth: $256.99; description says same 5-year warranty as new, badge says 2 Years (read 2026-11-14)', 'https://www.litime.com/products/like-new-12v-100ah-group-24-bluetooth-lithium-battery'), ('LiTime 12V 100Ah Group 24 Smart Bluetooth: $311.09, 100 A BMS, IP65 (read 2026-11-14)', 'https://www.litime.com/products/12v-100ah-group-24-smart-bluetooth'), ('Techtest.org (Michael Barton): LiTime 12V 100Ah Group24 measured 100.92 Ah / 1,279 Wh at 40 A (read 2026-11-14)', 'https://techtest.org/litime-12v-100ah-group24-im-test-der-kompakte-bluetooth-akku-fuer-den-camper/'), ('Minn Kota: 12V max amp draw 30 A (30 lb), 42 A (40/45 lb), 50 A (50/55 lb, 60 A breaker); 24V 70 lb 42 A, 80 lb 56 A; max values occur intermittently (read 2026-11-14)', 'https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/44251283735703-Fuse-Size-Power-Draw-and-Power-Cable-Extension-Requirements'), ("Minn Kota: brushed motors on lithium, limit speed to 85% / Speed 8.5, as lithium's sustained higher voltage can damage motors designed for flooded lead-acid; continuous discharge must cover max amp draw (read 2026-11-14)", 'https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations'), ("Minn Kota: PCL chargers' 14.5 V maximum for 12V LiFePO4, to be checked against the battery maker's spec (read 2026-11-14)", 'https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/4413522095895-Charging-Lithium-Batteries'), ('Minn Kota: PCL chargers not compatible with single 24V/36V lithium batteries; MK 330PCL 10 A per bank (read 2026-11-14)', 'https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/14476351755159')],
+ "published": '2026-11-03',
+ "checked": '2026-11-14',
+ "updated": '2026-11-14'},
 
 {'slug': 'universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter',
  'question': 'G93 (Awin brands: universal travel adapter with a built-in 220V to 110V voltage converter)',
