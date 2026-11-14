@@ -367,6 +367,8 @@ def price(folders: list[str], pace: float) -> dict:
             slugs = [r["slug"] for r in g["rows"] if r.get("slug")][:2]   # the pick and the runner-up we sell
             for s in slugs:
                 if (log.get(s) or {}).get("date") == today:
+                    if log[s].get("result") == "lowest":
+                        pc["products"][s] = log[s]["entry"]
                     continue
                 p = B.BY_SLUG[s]
                 e = price_one(p, tab, B, BC)
@@ -396,9 +398,8 @@ def price(folders: list[str], pace: float) -> dict:
         for f in flagged:
             g = pages[f]
             before = gp.read_text()
-            key = f'"slug": {g["slug"]!r}'.replace("'", '"')
-            i = before.find(key)
-            j = before.find(f'"run": {RUN!r}'.replace("'", '"'), i) if i >= 0 else -1
+            i = before.find(f'"slug": {g["slug"]!r}')   # record_text writes values with repr()
+            j = before.find(f'"run": {RUN!r}', i) if i >= 0 else -1
             if j < 0 or j - i > 4000:
                 print(f"{g['slug']}: record not found for flagging", flush=True)
                 continue

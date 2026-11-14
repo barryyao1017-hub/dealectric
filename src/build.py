@@ -1613,7 +1613,10 @@ def price_check(p, short=False):
         mine = f"{money(ours)} through this link" + ("" if short else f" (discount applied in {p['brand']}'s cart, tested {last_test(c, p)['date']})")
     else:
         mine = f"{money(ours)} at {store_host(p)} through this link"
-    return f"Lowest of {len(b['sellers']) + 1} sellers checked {b['date']}: {mine}; {others}"
+    n = 1 + sum(1 for nm, _ in b["sellers"] if not nm.endswith("without the link"))   # the store through our link, plus the other sellers
+    if n == 1:   # only the brand store's own price to compare with: no "lowest of" claim
+        return f"{mine}; {others}, checked {b['date']}"
+    return f"Lowest of {n} sellers checked {b['date']}: {mine}; {others}"
 
 
 def price_check_section(c):
