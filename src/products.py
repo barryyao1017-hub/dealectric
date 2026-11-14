@@ -94,6 +94,7 @@ CATEGORIES = {
     "filament": ('3D printer filaments', 'Spools of plastic filament for FDM 3D printers, from everyday PLA to foaming and flexible grades.'),
     "welder": ('Welders', 'TIG, MIG and stick welding machines for home shops, farms and job sites.'),
     "smart-sprinkler": ('Smart sprinklers', 'App-controlled sprinklers and hose timers that water a lawn or garden on a weather-aware schedule.'),
+    "security-dvr": ('Security DVRs', 'Recorders for wired coax (BNC) security cameras that save video to a hard drive with no subscription.'),
 }
 
 PRODUCTS = [
@@ -7180,6 +7181,40 @@ PRODUCTS = [
  "summary": 'The earlier SteelSeries swappable-battery headset. It uses the same two-pack system as the Omni, with shorter rated battery life and no source mixing.',
  "fit": 'PC and PlayStation players who want swappable batteries from SteelSeries and find it well below list price.',
  "caveats": ['On backorder on 2026-11-14 (estimated restock Nov 18).', "A long-term owner (Club386) says the base plays one source at a time, the base screen can't be turned off, and the headband lost tension over months.", 'Buy the Xbox version if you play on Xbox; this PC/PlayStation version is a different model.']},
+
+{"slug": 'zosi-zr16fk-16-channel-1080p-dvr',
+ "brand": 'ZOSI',
+ "program": 'awin:zosi',
+ "category": 'security-dvr',
+ "name": 'ZOSI 16-Channel 1080p HD 4-in-1 DVR (ZR16FK), optional 2TB/3TB/4TB hard drive',
+ "model": 'ZR16FK',
+ "url": 'https://www.zositech.com/products/16ch-1080p-tvi-cvi-ahd-analog-4-in-1-security-dvr-easy-remote-view',
+ "price": 99.99,
+ "list_price": 349.99,
+ "verified": '2026-11-14',
+ "specs": [('Camera inputs', '16 BNC (coax)'), ('Camera formats', 'Analog (CVBS), AHD, HD-TVI, HD-CVI'), ('Camera resolution', 'Up to 1080p'), ('IP cameras', 'Not listed; coax cameras only'), ('Compression', 'H.265+'), ('Alerts', 'Motion detection with custom zones, app push and email'), ('Remote viewing', 'ZOSI Smart app, no subscription')],
+ "warranty": '2 years from the original purchase date (ZOSI store policy)',
+ "returns": '30 days from delivery. You pay return shipping if you change your mind. ZOSI pays for dead-on-arrival or defective units if you send evidence within 48 hours of delivery.',
+ "summary": 'A 16-channel recorder that reads all four common coax formats, so most older 720p and 1080p cameras can stay on their existing cables.',
+ "fit": 'For owners of 9 to 16 older 1080p coax cameras whose DVR has died and who want the lowest price for a new 16-channel recorder.',
+ "caveats": ["No IP camera channels and no person or vehicle detection listed. ANNKE's DR165 adds both for $30 more.", 'Does not take HD-SDI cameras.', "On ZOSI's Trustpilot page, owners often report failed or rebooting recorders and slow support.", '$99.99 is the lowest listed option. Check which hard drive option you choose.']},
+
+{"slug": 'zosi-zr08vma-8-channel-1080p-dvr',
+ "brand": 'ZOSI',
+ "program": 'awin:zosi',
+ "category": 'security-dvr',
+ "name": 'ZOSI 8-Channel 1080p HD 4-in-1 DVR (ZR08VMA/ZR08VNA)',
+ "model": 'ZR08VMA / ZR08VNA',
+ "url": 'https://www.zositech.com/products/8-channel-1080p-dvr-for-tvi-cvi-ahd-analog-security-camera',
+ "price": 69.99,
+ "list_price": 249.99,
+ "verified": '2026-11-14',
+ "specs": [('Camera inputs', '8 BNC (coax)'), ('Camera formats', 'Analog (CVBS), AHD, HD-TVI, HD-CVI'), ('Camera resolution', '720p and 1080p; 3 MP, 4 MP and 5 MP cameras at 12.5 fps'), ('IP cameras', 'Not listed; coax cameras only'), ('Compression', 'H.265+'), ('Alerts', 'Motion detection with custom and privacy zones, app push and email')],
+ "warranty": '2 years from the original purchase date (ZOSI store policy)',
+ "returns": '30 days from delivery. You pay return shipping if you change your mind. ZOSI pays for dead-on-arrival or defective units if you send evidence within 48 hours of delivery.',
+ "summary": 'The cheapest new 8-channel 4-in-1 recorder we found for bringing old 1080p coax cameras back online.',
+ "fit": 'For up to 8 older 720p or 1080p coax cameras where the lowest price matters most.',
+ "caveats": ['Cameras above 1080p record at only 12.5 fps.', "No IP channels. ANNKE's DR85 costs $10 more and adds person and vehicle alerts plus 2 IP channels.", 'Owner reports on Trustpilot describe recorder failures and slow warranty support.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
