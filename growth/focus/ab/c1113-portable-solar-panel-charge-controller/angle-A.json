@@ -1,0 +1,82 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the built-in controller only serves a bare 12 V battery: ACOPOWER says the controller 'must be used to charge 12V batteries' and that a power station is charged by plugging its own cable in ahead of the controller. Renogy's Voyager 20A PWM controller in the Renogy kit takes LiFePO4 only after the user sets the charge voltage by hand.",
+ "standout": 2,
+ "standout_why": "Every result ChatGPT got was a Renogy page for the 100/200W N-Type PWM suitcase, plus one reseller (outboundpower.com) selling the same kit. renogy.com, outboundpower.com and offgridsource.com returned HTTP 429 every time, through both WebFetch and storecheck, so I couldn't read those pages to confirm what they lack. ChatGPT's own answer said 'make sure the controller supports your battery chemistry' and 'MPPT is generally more efficient'. It never said that the controller is skipped when charging a power station, that Renogy's lithium setting is manual, or that a '20A' rating is an amp limit and not a watt figure. Those rival pages may still have the lithium note. Because I couldn't open them, I scored this 2 and not 3.",
+ "decides": "The finding splits the pick by what the shopper is charging. For a bare 12 V lead-acid or LiFePO4 battery, a kit with a PWM controller fits: ACOPOWER PLK at $219.00, or the Renogy N-Type kit from $229.99. The Renogy controller needs its lithium voltage set by hand, while ACOPOWER lists LiFePO4 among 8 battery presets. For a power station, the built-in controller is bypassed, so the shopper pays for a part they won't use. A controller-free panel fits better there, such as the Growatt 200 W, ALLPOWERS SP037 or BLUETTI SORA 500 that Dealectric already lists. ACOPOWER's PTK 200W at $399 is the MPPT option for someone who wants the most out of a 12 V battery and will pay $180 more than the PLK. ACOPOWER's own copy says MPPT gives 10–20% more than PWM.",
+ "candidates": [
+  "Renogy 100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller (Voyager)",
+  "ACOPOWER PLK Portable Solar Panel Kit 100W/200W, 20A controller",
+  "ACOPOWER PTK 200W Portable Solar Panel Kit (MPPT)",
+  "VEVOR 200W Foldable Solar Panel with 30A PWM controller"
+ ],
+ "findings": [
+  {
+   "product": "Renogy 100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller",
+   "label": "Price on maker's US store",
+   "value": "$229.99 (compare-at $322.99)",
+   "source": "https://www.renogy.com/products/200w-12v-n-type-portable-solar-panel-suitcase-kit-with-20a-pwm-controller",
+   "source_title": "100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller | Renogy US",
+   "read": "2026-11-13",
+   "note": "From storecheck search of the renogy.com Shopify catalog. This is the listing's headline price, which is probably the lowest variant. The separate 100W-only listing is also $229.99. I couldn't split the 200W variant price because the product endpoint returned HTTP 429. ChatGPT showed $322.99 for 200W, which matches the compare-at price."
+  },
+  {
+   "product": "Renogy Voyager 20A PWM controller (the one built into the Renogy suitcase kit)",
+   "label": "Lithium/LiFePO4 charging",
+   "value": "Supported only after setting the charge voltage manually ('Lithium option'; 'For lithium batteries, it is essential to manually set the voltage')",
+   "source": "https://www.renogy.com/products/new-edition-voyager-20a-pwm-waterproof-solar-charge-controller",
+   "source_title": "New Edition Voyager 20A PWM Waterproof Solar Charge Controller | Renogy US",
+   "read": "2026-11-13",
+   "note": "Store description text, read through storecheck. It also says: 4-stage PWM, auto-detects 12V/24V, Gel/AGM/Flooded plus Lithium, IP67. That the kit uses the Voyager comes from the kit title and SKU (VOY20). The standalone controller costs $54.99."
+  },
+  {
+   "product": "ACOPOWER PLK 120W Portable Solar Panel Kit (same PLK line and 20A LCD controller as the 100/200W kit)",
+   "label": "What the built-in controller is for vs a power station",
+   "value": "'The included charge controller ... must be used to charge 12V batteries. To charge solar generators with a built-in charge controller, simply use the solar panel connector cables provided and plug them into the cables that came with your power station.'",
+   "source": "https://www.acopower.com/products/120w-solar-panel-kit-built_in-charge-controller",
+   "source_title": "ACOPower Plk 120W Portable Solar Panel Kit, Lightweight Briefcase with 20A Charge Controller",
+   "read": "2026-11-13",
+   "note": "Store description text, read through storecheck. The same page says a 12V battery and a solar generator can charge at the same time. It lists 8 battery types (Lithium-ion, LiFePO4, LTO, Gel, AGM, Flooded, Crystal, Calcium). Price: $259.99."
+  },
+  {
+   "product": "ACOPOWER PLK 120W / 100W kits (20A LCD controller)",
+   "label": "Controller rating, stated as amps and then as watts",
+   "value": "'20 amps 12V/24V auto continuous charging capacity, enables use of up to 12V/360watts and 24V/720watts'",
+   "source": "https://www.acopower.com/products/120w-solar-panel-kit-built_in-charge-controller",
+   "source_title": "ACOPower Plk 120W Portable Solar Panel Kit, Lightweight Briefcase with 20A Charge Controller",
+   "read": "2026-11-13",
+   "note": "This normalises the rating: '20A' is a battery-side current limit, and ACOPOWER's own conversion is 20 A × ~18 V = 360 W on a 12V system. The 20A rating sets the most panel the controller can take; it doesn't add watts. The same wording appears on the ProteusX 100W kit page (https://www.acopower.com/products/100w-monocrystalline-solar-panel-proteus-20a-charge-controller, $189.00)."
+  },
+  {
+   "product": "ACOPOWER PLK Portable Solar Panel Kit 100W/200W",
+   "label": "Price on maker's US store",
+   "value": "$219.00 (compare-at $379.99), in stock",
+   "source": "https://www.acopower.com/products/acopower-plk-portable-solar-panel-kit-100w-200w",
+   "source_title": "ACOPOWER PLK Portable Solar Panel Kit, Lightweight 20A Charge Controller——200W, 100W",
+   "read": "2026-11-13",
+   "note": "From storecheck search of the acopower.com Shopify catalog. This is the headline price, which is probably the 100W variant. It matches the $219.00 ChatGPT showed. I couldn't get the variant split because of HTTP 429."
+  },
+  {
+   "product": "ACOPOWER PTK 200W Portable Solar Panel Kit",
+   "label": "Controller type and the maker's MPPT vs PWM claim",
+   "value": "MPPT, 20A; maker claims 'Power Generation 10~20% Higher than the PWM Solar Charge Controller'; $399.00",
+   "source": "https://www.acopower.com/products/hy-ptk-2x100",
+   "source_title": "ACOPower Ptk 200W Portable Solar Panel Kit Briefcase",
+   "read": "2026-11-13",
+   "note": "This is the maker's own claim. No named reviewer measured it. Four 50W panels hinged in pairs, MC4 plus Anderson connectors. It's the only MPPT suitcase-with-controller I could source today."
+  }
+ ],
+ "unsourced": [
+  "Renogy N-Type 100W/200W suitcase Vmp and Imp, from the renogy.com product page and the US manual PDFs (RNG-KIT-STCS100D-VOY20, STCS200D-VOY20). The product page returned HTTP 429 every time. The PDFs downloaded, but their text is compressed and I had no permission to run pdftotext. Without Imp I couldn't work out the PWM-limited charging watts (about Imp × battery voltage) for a 12.8 V LiFePO4 battery.",
+  "ACOPOWER PLK 100W/200W per-variant Vmp/Imp/Voc/Isc and variant prices, from the acopower.com product page and the HY-PLK-100WPX20A PDF. Both were blocked by HTTP 429 or had compressed text.",
+  "VEVOR 200W foldable panel with 30A PWM controller: price, Vmp/Imp and lithium support. I didn't reach the maker page within the tool budget.",
+  "Renogy 100W suitcase price at The Home Depot ($249.99 in ChatGPT's card). Not checked.",
+  "A named reviewer's measured charge watts for any of these PWM suitcases into a 12 V battery. Searched, but found only vendor blogs with no named measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0222671
+ }
+}

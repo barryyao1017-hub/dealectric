@@ -1,0 +1,128 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got gives a dated, store-by-store price for the whole field, or says that Renogy's Voyager 20A PWM controller (the one built into ChatGPT's two Renogy picks) has to have its voltage set by hand to charge lithium, while ACOPOWER's 20A controller lists LiFePO4 among its 8 built-in battery types.",
+ "standout": 2,
+ "standout_why": "Every result ChatGPT got (results 1–13) is a Renogy product page or a reseller copy of one, plus the Renogy STCS100D manual PDF, and none of them prices a rival. ChatGPT's cards then quoted prices that are now out of date. Renogy's own store lists the 100/200W suitcase from $229.99 against a $322.99 compare-at, and its 100W-only listing is $229.99, while the card showed $249.99 at Home Depot. VEVOR's own page has the 200W panel at $129.90, while the card showed $149.90 from a reseller. ChatGPT's answer tells the shopper to check LiFePO4 support but does not say which controllers have it. That detail is on Renogy's Voyager controller page and ACOPOWER's product pages, and none of the cited pages states it.",
+ "decides": "This mostly backs ChatGPT's picks but changes the advice. For a 12 V lead-acid or AGM battery, the Renogy suitcase is fine, and it is cheapest from Renogy at $229.99, not Home Depot. For a LiFePO4 battery, ACOPOWER's kits (PLK from $219, or the 100 W ProteusX at $189) have a lithium preset, while Renogy's Voyager needs its voltage set by hand. For a power station, a panel with its own controller is the wrong buy: ACOPOWER says to bypass its controller for 'solar generators with a built-in charge controller'. A kit like the BLUETTI Elite 30 V2 + 100 W ($489.99), whose station has its own MPPT charger, is the better fit.",
+ "candidates": [
+  "Renogy 100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller",
+  "Renogy 100W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller (RNG-KIT-STCS100D-VOY20)",
+  "ACOPOWER PLK Portable Solar Panel Kit 100W/200W with 20A controller",
+  "ACOPOWER PLK 120W Portable Solar Panel Kit with 20A controller",
+  "ACOPOWER 100W Portable Solar Panel Kit with ProteusX 20A controller",
+  "ACOPOWER PTK 200W Portable Solar Panel Kit (MPPT)",
+  "VEVOR 200W Foldable Solar Panel with 30A PWM Controller",
+  "Renogy 220/400W Lightweight Portable Solar Panel Suitcase (no controller)",
+  "Renogy E.Flex 100/200W N-Type Portable Solar Panel (no controller)",
+  "BLUETTI Elite 30 V2 + 100W Solar kit",
+  "BLUETTI Elite 30 V2 + 60W Solar kit",
+  "ALLPOWERS VOLIX P300 + 100W Solar Panel Kit"
+ ],
+ "findings": [
+  {
+   "product": "Renogy 100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller",
+   "label": "Price, Renogy US store (lowest variant)",
+   "value": "$229.99 (compare-at $322.99)",
+   "source": "https://www.renogy.com/products/200w-12v-n-type-portable-solar-panel-suitcase-kit-with-20a-pwm-controller",
+   "source_title": "100/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller | Renogy US",
+   "read": "2026-11-13",
+   "note": "From the Shopify store search API via storecheck.py. That API returns the listing's lowest variant price. The per-variant lookup returned HTTP 429 repeatedly, so I could not confirm whether $229.99 is the 100W or 200W variant. ChatGPT's card showed $322.99 for the 200W, which matches the compare-at figure. Where it loses: PWM, and lithium needs the voltage set by hand (see the Voyager finding)."
+  },
+  {
+   "product": "Renogy 100W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller",
+   "label": "Price, Renogy US store",
+   "value": "$229.99",
+   "source": "https://www.renogy.com/products/200w-12v-n-type-portable-solar-panel-suitcase-kit-with-20a-pwm-controller-copy",
+   "source_title": "100W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM Controller | Renogy US",
+   "read": "2026-11-13",
+   "note": "Store search API, compare-at also $229.99, in stock. ChatGPT's card priced the Renogy 100W at $249.99 from Home Depot. Home Depot's page returned 403 to me, so I could not verify the Home Depot price. Where it loses: 100 W PWM at the same price as rivals' 200 W kits (ACOPOWER PLK from $219, VEVOR 200W $129.90)."
+  },
+  {
+   "product": "Renogy Voyager 20A PWM controller (built into the Renogy suitcase kits)",
+   "label": "Lithium charging",
+   "value": "Supports Gel, AGM, Flooded and Lithium (incl. LiFePO4); for lithium 'it is essential to manually set the voltage'",
+   "source": "https://www.renogy.com/products/new-edition-voyager-20a-pwm-waterproof-solar-charge-controller",
+   "source_title": "New Edition Voyager 20A PWM Waterproof Solar Charge Controller | Renogy US",
+   "read": "2026-11-13",
+   "note": "Text from Renogy's controller listing via store API, which says the controller 'auto detects 12V/24V with Gel, AGM, Flooded; Lithium option'. The standalone controller is $54.99. I am assuming the suitcase's Voyager 20A is the same controller, based on the kit title and the manual name RNG-KIT-STCS100D-VOY20. I could not open the kit page to confirm it."
+  },
+  {
+   "product": "ACOPOWER PLK Portable Solar Panel Kit 100W/200W",
+   "label": "Price, ACOPOWER US store (lowest variant)",
+   "value": "$219.00 (compare-at $379.99)",
+   "source": "https://www.acopower.com/products/acopower-plk-portable-solar-panel-kit-100w-200w",
+   "source_title": "ACOPOWER PLK Portable Solar Panel Kit, Lightweight 20A Charge Controller——200W, 100W",
+   "read": "2026-11-13",
+   "note": "Store search API, in stock. Matches ChatGPT's $219.00 card. The per-variant split was blocked by HTTP 429."
+  },
+  {
+   "product": "ACOPOWER PLK 120W Portable Solar Panel Kit",
+   "label": "Price, weight, controller battery types, power-station advice",
+   "value": "$259.99; 14 lb; 20A LCD controller with 8 battery types incl. LiFePO4; power stations use the panel cables, not the controller",
+   "source": "https://www.acopower.com/products/120w-solar-panel-kit-built_in-charge-controller",
+   "source_title": "ACOPower Plk 120W Portable Solar Panel Kit, Lightweight Briefcase with 20A Charge Controller",
+   "read": "2026-11-13",
+   "note": "Maker text: 'Compatible with 8 different types of batteries - Lithium-ion, LiFePO4, LTO, Gel, AGM, Flooded, Crystal and Calcium' and 'To charge solar generators with a built-in charge controller, simply use the solar panel connector cables provided and plug them into the cables that came with your power station.' Folded 24 x 20 x 2 in."
+  },
+  {
+   "product": "ACOPOWER 100W Portable Solar Panel Kit with ProteusX 20A controller",
+   "label": "Price and battery types",
+   "value": "$189.00; 8 battery types incl. LiFePO4",
+   "source": "https://www.acopower.com/products/100w-monocrystalline-solar-panel-proteus-20a-charge-controller",
+   "source_title": "ACOPower 100w 12v Portable Solar Panel kit, Foldable Mono Suitcase, proteusX Waterproof 20A Charge Controller",
+   "read": "2026-11-13",
+   "note": "Store search API. This is the cheapest 100 W suitcase with a controller in this check, $40.99 below Renogy's 100W at $229.99."
+  },
+  {
+   "product": "ACOPOWER PTK 200W Portable Solar Panel Kit",
+   "label": "Price and controller",
+   "value": "$399.00; 20A MPPT controller",
+   "source": "https://www.acopower.com/products/hy-ptk-2x100",
+   "source_title": "ACOPower Ptk 200W Portable Solar Panel Kit Briefcase",
+   "read": "2026-11-13",
+   "note": "This is the only MPPT suitcase in this check. The maker claims 10–20% more output than PWM. Where it loses: it costs about $169 more than the cheapest Renogy and ACOPOWER suitcase listings ($229.99 and $219)."
+  },
+  {
+   "product": "VEVOR 200W Foldable Solar Panel with 30A PWM Controller",
+   "label": "Price, weight, box contents",
+   "value": "$129.90; 26.23 lb (11.9 kg) net; controller ships as a separate item",
+   "source": "https://www.vevor.com/paneles-solares-c_13594/vevor-200w-foldable-solar-panel-with-frame-23-high-efficiency-portable-monocrystalline-solar-panel-charger-with-30a-pwm-controller-mc4-output-ip67-waterproof-for-camping-hiking-rv-trips-p_010610144863",
+   "source_title": "VEVOR 200W Foldable Solar Panel with Frame, 23% High-Efficiency ... with 30A PWM Controller",
+   "read": "2026-11-13",
+   "note": "WebFetch read the price as '$129 90', which I take to be $129.90. That is $20 below ChatGPT's $149.90 card from the reseller SANVEN. The box lists the panel, 30A PWM controller, manual, 2 adapter cables and alligator clips. Where it loses: the page lists no battery-type support for the controller and no Voc/Vmp, and the controller is not built in."
+  },
+  {
+   "product": "Renogy 220/400W Lightweight Portable Solar Panel Suitcase",
+   "label": "Price and why it loses",
+   "value": "$320.99 (compare-at $1,099.99); no charge controller",
+   "source": "https://www.renogy.com/products/400w-lightweight-portable-solar-suitcase",
+   "source_title": "220/400W Lightweight Portable Solar Panel Suitcase | Renogy US",
+   "read": "2026-11-13",
+   "note": "Shown in ChatGPT's results (rank 8). Maker text points users to a power station's DC input or an existing controller ('ensure that the PV input voltage remains lower than the controller solar input voltage'). It does not fit a 'with charge controller' search."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2 + 100W Solar kit (Dealectric: bluetti-elite-30-v2-100w-solar-kit)",
+   "label": "Price, BLUETTI US store",
+   "value": "$489.99",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar | BLUETTI",
+   "read": "2026-11-13",
+   "note": "Store search API. A 288 Wh LFP station (the listing text says '5.288Wh', which I read as a typo) with a 100 W panel. The controller is the station's own solar input, so no separate controller is needed. The 60W-panel version is $399.99 (https://www.bluettipower.com/products/elite-30-v2-60w-solar). Where it loses: it costs $260 more than the cheapest suitcase, and it cannot charge an RV's or boat's own 12 V battery."
+  }
+ ],
+ "unsourced": [
+  "Which Renogy 100/200W variant the $229.99 price belongs to. Product JSON from renogy.com and outboundpower.com returned HTTP 429 every time.",
+  "Home Depot's current price for Renogy RNG-KIT-STCS100D-VOY20. homedepot.com returned 403, and a search snippet said $254.99, which I did not use.",
+  "Renogy suitcase panel electrical specs and weight from manual RNG-KIT-STCS100D-VOY20-US-Manual.pdf. I downloaded it, but its text is compressed and the PDF text extractor was not permitted.",
+  "ACOPOWER PLK per-variant prices and weights (product JSON returned 429).",
+  "Battery chemistry support for VEVOR's 30A PWM controller (not listed on VEVOR's page).",
+  "ALLPOWERS VOLIX P300 + 100W kit price (the ALLPOWERS store search returned non-JSON).",
+  "A named reviewer's measured output for any of these suitcases (not searched; ran out of tool budget)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.044452
+ }
+}

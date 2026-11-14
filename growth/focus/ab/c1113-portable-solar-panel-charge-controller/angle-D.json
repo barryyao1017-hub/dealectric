@@ -1,0 +1,57 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that to charge a portable power station (Jackery, EcoFlow, BLUETTI, Goal Zero) from a suitcase with a built-in PWM controller, you have to take the controller out of the path and plug the panel straight into the station's own MPPT input. The camping blog author Jesse had to add MC4 connectors between the panel and the Renogy Voyager 20A to do that.",
+ "standout": 2,
+ "standout_why": "I compared the claim against ChatGPT's own answer text. That answer lists 'Portable power station (Jackery, EcoFlow, Bluetti)' as a use case but never says the built-in controller is a problem there. I could not read the 12 cited renogy.com pages (product pages and the RNG-KIT-STCS100D-VOY20 manual PDF) or the outboundpower.com listing. The product pages and the Outbound Power listing returned HTTP 429. The manual PDF downloaded, but its text is compressed and could not be extracted, and the shell commands to extract it were not approved. So I could not confirm that no rival page carries a power-station or bypass note. That is why the score is 2, not 3.",
+ "decides": "The answer depends on what the shopper is charging. For a bare 12 V battery (AGM or LiFePO4), a suitcase with a built-in controller works as sold: the Renogy 100/200 W N-Type with Voyager 20A PWM, ACOPOWER PLK, or VEVOR. For a power station, the built-in controller is in the way. The station already has an MPPT controller, so the right pick is a plain MC4 foldable panel with no controller. Dealectric lists the Growatt 200 W, ALLPOWERS SP037 400 W, BLUETTI SORA 500, or BLUETTI's own kits (for example the AC180 + 200 W). The page should split the pick on this question.",
+ "candidates": [
+  "Renogy 100W/200W 12V N-Type Portable Solar Panel Suitcase Kit with 20A PWM (Voyager)",
+  "ACOPOWER PLK Portable Solar Panel Kit 20A",
+  "VEVOR 200W Foldable Solar Panel with 30A PWM",
+  "Growatt 200 W Foldable Solar Panel (MC4, no controller)",
+  "ALLPOWERS SP037 400 W Foldable Solar Panel",
+  "BLUETTI SORA 500 Portable Solar Panel"
+ ],
+ "findings": [
+  {
+   "product": "Renogy foldable solar suitcase with Voyager 20A PWM controller (2× 50 W, 100 W)",
+   "label": "Built-in controller must be bypassed to charge a power station",
+   "value": "The author had to cut the cable and add MC4 connectors between the panel's junction box and the Voyager controller so the panels could plug straight into a Goal Zero Yeti.",
+   "source": "https://thecampingnerd.com/bypass-solar-charge-controller-renogy/",
+   "source_title": "How To Bypass Solar Charge Controller On Renogy Suitcase (The Camping Nerd)",
+   "read": "2026-11-13",
+   "note": "Written by Jesse, published 2022-04-03. Quote: 'you must bypass the solar charge controller since the Yeti already has one built-in.' Jesse says the mod voids the warranty. This is about the older Renogy suitcase, not the current N-Type kit."
+  },
+  {
+   "product": "Renogy solar suitcases (later revisions)",
+   "label": "Factory bypass on newer Renogy suitcases",
+   "value": "Jesse's update note says 'Renogy has released panels with a built-in bypass' and gives the Renogy 200W with kickstand as the example.",
+   "source": "https://thecampingnerd.com/bypass-solar-charge-controller-renogy/",
+   "source_title": "How To Bypass Solar Charge Controller On Renogy Suitcase (The Camping Nerd)",
+   "read": "2026-11-13",
+   "note": "This is the blog author's report, not Renogy's wording. I could not confirm whether the current N-Type suitcase that ChatGPT cited has a bypass port, because the renogy.com product pages returned HTTP 429."
+  },
+  {
+   "product": "general (BLUETTI power stations)",
+   "label": "Power station already contains the solar controller",
+   "value": "BLUETTI: 'you do not need to purchase a separate controller because your BLUETTI station already manages the solar optimization' (built-in MPPT)",
+   "source": "https://www.bluettipower.com/blogs/knowledge/can-i-connect-my-roof-solar-panels-to-bluetti",
+   "source_title": "Can I Connect My Roof Solar Panels to BLUETTI (BLUETTI blog)",
+   "read": "2026-11-13",
+   "note": "By the BLUETTI Team, dated 2026-10-05. It is in the maker's own words, but it does not directly mention panels that come with their own controller."
+  }
+ ],
+ "unsourced": [
+  "Renogy's own wording, from the RNG-KIT-STCS100D-VOY20 manual or the Voyager 20A manual, on connecting the battery first and on use with power stations or bypassing the controller. The manual PDF downloaded but its text is compressed and could not be extracted. The Bash extraction commands were not approved, and the eu/ca renogy.com PDF copies returned 404.",
+  "Renogy US product page prices for the 100 W and 200 W variants and the panel Voc/Vmp. The page returned HTTP 429 on three tries.",
+  "Whether the current Renogy N-Type suitcase has a factory bypass or direct output port. Renogy's product page, its 200 W suitcase FAQ and its check-product-compatibility FAQ were all unreadable (429 or JavaScript-only content).",
+  "Any statement from a power-station maker (Jackery, EcoFlow, Goal Zero or Dometic help pages) saying that a panel with a built-in controller is not supported. The Dometic PLB40 FAQ returned 404, and no Jackery, EcoFlow or Goal Zero help article came up in search.",
+  "Whether the built-in controllers on the ACOPOWER PLK and VEVOR 200 W support LiFePO4. Not researched within the 25-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.8946529
+ }
+}
