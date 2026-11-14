@@ -116,13 +116,20 @@ def awin_sales(now: datetime) -> tuple[list[dict], str | None]:
     """Awin transactions the Worker recorded in the last 30 days (D1 `sales`). Status is not known here: Awin
     validates within about 30 days and a reversal arrives as a negative-commission row."""
     since = (now - timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%S")
-    rows, err = E.d1_query("SELECT ts, txn_id, advertiser, commission, sale, sub_id, event_date, voucher FROM sales "
+    rows, err = E.d1_query("SELECT ts, txn_id, advertiser, commission, sale, sub_id, event_date, voucher, click_time FROM sales "
                            f"WHERE network='awin' AND ts >= '{since}' ORDER BY ts")
     out = [{"network": "Awin", "id": str(r["txn_id"]), "advertiser": r.get("advertiser") or "?", "sale": r.get("sale"),
             "commission": r.get("commission"), "status": "recorded (Awin validates in ~30 days)",
-            "posted": r["ts"], "event": r.get("event_date") or "", "locks": "", "coupon": r.get("voucher") or "",
+            "posted": r["ts"], "event": r.get("event_date") or "", "locks": "", "coupon": r.get("voucher") or awin_code_credit(r),
             "sub_id": r.get("sub_id") or ""} for r in rows]
     return out, err
+
+
+def awin_code_credit(r: dict) -> str:
+    """Awin can't name the code on an order, but a sale credited by a code assigned to us (BLUETTI's DEALECTRIC)
+    comes with no clickRef and a click time equal to the order time (DLC-209; click_time since 2026-11-13)."""
+    ct, ev = r.get("click_time") or "", r.get("event_date") or ""
+    return "our code (no link click)" if not r.get("sub_id") and ct and ct[:16] == ev[:16] else ""
 
 
 def when(s: str) -> datetime | None:

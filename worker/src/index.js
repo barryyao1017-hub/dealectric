@@ -520,8 +520,10 @@ async function syncMeta(env) {
 // destination; Email Routing is on for dealectric.com without its DNS records, so the apex's Porkbun forwarding MX stays
 // as is) and writes one row to D1 `sales`, keyed by the network's own id so a re-sent or re-polled sale alerts once.
 //   Awin: Toolbox > Transaction Notifications calls GET /hook/awin?k=<AWIN_HOOK_KEY>&tid=!!!transactionId!!!&... on
-//         each recorded transaction (help.awin.com/developers/docs/transaction-notifications); &vc=!!!voucherCode!!!
-//         names the code a voucher-attributed order used (no clickref, click time = order time), DLC-209.
+//         each recorded transaction (help.awin.com/developers/docs/transaction-notifications). Awin has no macro for
+//         the code on an order (the &vc=!!!voucherCode!!! of 11-08 came through as the literal text), so since 11-13 it
+//         sends &ct=!!!clickTime!!!: a sale credited by a code assigned to us, not a link, has no clickRef and a click
+//         time equal to the order time (Awin records a stand-in click at checkout), DLC-209. Stored in sales.click_time.
 //   CJ:   no publisher postback (deprecated 2019), so the cron trigger polls the commissions GraphQL API every 30 min
 //         with a personal access token (CJ_TOKEN secret, CJ_CID var) over the last 3 days of posting dates.
 // Setup and test command: worker/README.md.
@@ -535,8 +537,9 @@ async function handleAwinHook(url, env) {
   const sale = {
     network: "awin", txn_id: tid, advertiser: awinBrand(p.get("mid"), sub), commission: num(p.get("c")),
     sale: num(p.get("amt")), currency: clip(p.get("cur") || "USD", 10), sub_id: sub, event_date: clip(p.get("date") || "", 40),
-    voucher: clip(p.get("vc") || "", 60),   // &vc=!!!voucherCode!!! in the callback (DLC-209, 2026-11-08)
+    click_time: macro(p.get("ct")),
   };
+  sale.code_credit = !sub && codeCredited(sale.click_time, sale.event_date);
   if (tid.startsWith("test")) {
     try {
       await notifySale(env, sale, true);
@@ -547,6 +550,19 @@ async function handleAwinHook(url, env) {
   }
   await recordSale(env, sale);
   return json({ ok: true });
+}
+
+// An unfilled Awin macro arrives as its own text ("!!!clickTime!!!"): store nothing then.
+function macro(v) {
+  v = clip(v || "", 40);
+  return v.startsWith("!!!") ? "" : v;
+}
+
+// Click within a minute of the order: the stand-in click Awin records for a code-credited sale.
+function codeCredited(click, order) {
+  const t = (v) => Date.parse(String(v || "").replace(" ", "T") + (/Z|[+-]\d\d:?\d\d$/.test(v || "") ? "" : "Z"));
+  const a = t(click), b = t(order);
+  return !Number.isNaN(a) && !Number.isNaN(b) && Math.abs(a - b) <= 60e3;
 }
 
 // Awin sends the program id (merchantId), not its name: name it from the clickref slug, else from the link map.
@@ -634,10 +650,10 @@ function rakutenBrands() {
 
 async function recordSale(env, s) {
   const r = await env.DB.prepare(
-    `INSERT OR IGNORE INTO sales (ts, network, txn_id, advertiser, commission, sale, currency, sub_id, event_date, voucher)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT OR IGNORE INTO sales (ts, network, txn_id, advertiser, commission, sale, currency, sub_id, event_date, voucher,
+       click_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).bind(new Date().toISOString(), s.network, s.txn_id, clip(s.advertiser || "", 100), s.commission, s.sale,
-    s.currency, s.sub_id, s.event_date, s.voucher || "").run();
+    s.currency, s.sub_id, s.event_date, s.voucher || "", s.click_time || null).run();
   // The row is kept even if the email fails: the daily update still reads CJ, and the network still has the sale.
   if (r.meta.changes) await notifySale(env, s, false).catch((e) => console.error("sale alert email failed", e));
 }
@@ -651,7 +667,9 @@ async function notifySale(env, s, test) {
   const text = [
     `${s.network.toUpperCase()} recorded a ${s.commission < 0 ? "correction" : "new sale"}: ${what}.`,
     slug ? `Link clicked: ${SITE}/go/${slug} (click id ${(s.sub_id || "").split(".")[1] || "?"} in D1 clicks).` : "No sub-ID on the sale.",
-    s.voucher ? `Code used: ${s.voucher}.` : "No code on the sale.",
+    s.voucher ? `Code used: ${s.voucher}.` : s.code_credit
+      ? `Credited by a code assigned to us, not a link click (Awin's click time ${s.click_time} = order time).`
+      : s.network === "awin" ? `Click time: ${s.click_time || "not sent"}.` : "No code on the sale.",
     s.event_date ? `Order time: ${s.event_date}` : "",
     test ? "This is a test of the alert wiring; no sale happened." : "",
   ].filter(Boolean).join("\n");

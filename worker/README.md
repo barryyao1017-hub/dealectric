@@ -66,9 +66,11 @@ GitHub Pages unchanged (since 2026-10-28 the Worker is routed for `dealectric.co
   emails Barry (barrryyao@gmail.com, a verified Email Routing destination) from `sales@dealectric.com`, and writes
   one row to D1 `sales` (unique per network + transaction id, so a sale alerts once).
   - Awin: Toolbox → Transaction Notifications is Enabled, method GET, callback
-    `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!&vc=!!!voucherCode!!!`
-    (`vc` added 2026-11-08, DLC-209: a voucher-attributed order arrives with no clickRef and a click time equal to the
-    order time, so the code is the only thing that ties it to us; stored in `sales.voucher`, printed in the alert).
+    `https://dealectric.com/hook/awin?k=<key>&tid=!!!transactionId!!!&c=!!!commission!!!&amt=!!!transactionAmount!!!&cur=!!!transactionCurrency!!!&mid=!!!merchantId!!!&cr=!!!clickRef!!!&date=!!!transactionDate!!!&ct=!!!clickTime!!!`
+    (`ct` since 2026-11-13, DLC-209; it replaced `&vc=!!!voucherCode!!!` of 11-08, which is not an Awin macro and came
+    through as its own text). Awin cannot tell us the code on an order, but a sale credited by a code assigned to us
+    (BLUETTI's DEALECTRIC) arrives with no clickRef and a click time equal to the order time; the alert says so, and
+    `sales.click_time` keeps the click time.
     The key is the Worker secret `AWIN_HOOK_KEY` (keychain `awin-hook-key`); a wrong key gets a 404.
   - CJ: no publisher postback, so the cron trigger queries `publisherCommissions` (commissions.api.cj.com, CID 8096118)
     over the last 3 days of posting dates with the personal access token `dealectric-sale-alerts` (Worker secret

@@ -85,6 +85,8 @@ CREATE TABLE IF NOT EXISTS sales (
   event_date TEXT,
   voucher TEXT,                -- code on the order: CJ coupon / Awin voucherCode (added 2026-11-08, DLC-209:
                                --   existing DB: ALTER TABLE sales ADD COLUMN voucher TEXT)
+  click_time TEXT,             -- Awin clickTime (since 2026-11-13): equal to event_date, with no sub_id, on a sale
+                               --   credited by a code assigned to us (existing DB: ALTER TABLE sales ADD COLUMN click_time TEXT)
   UNIQUE (network, txn_id)
 );
 
