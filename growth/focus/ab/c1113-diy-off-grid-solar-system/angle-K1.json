@@ -1,0 +1,90 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got shows how to string the 8 × 450 W panels in a complete 48 V kit: 8 in series gives 8 × 35.03 V = 280.2 V Voc, which is under the inverter's 500 V series limit, while two strings of 4 give only 4 × 30.08 V = 120.3 V Vmp at STC. Which layout works depends on the inverter's MPPT window and per-input current limit, so the shopper has to settle that before wiring.",
+ "standout": 2,
+ "standout_why": "ChatGPT's searches returned no results, so there was no rival page to compare against. ChatGPT's own two answers give rough sizing only: a 75% efficiency factor, 80% usable battery and peak-sun-hour arithmetic. Neither answer does any panel-to-inverter string arithmetic: no Voc against the 500 V series limit, no Vmp against the MPPT window, and no Isc against the per-input current limit. Neither names a kit or checks that the kit's own '14.4 kWh/day' claim is gross output with no losses. I scored this 2, not 3, because I couldn't open a page with the inverter's MPPT voltage range or per-MPPT current limit. Without those I can't show that 4-in-series falls below the MPPT minimum, which is what would make the wiring finding decide the set.",
+ "kit_items": [
+  "Complete kit (inverter + battery + panels in one cart): Sun Gold Power SGR-8K10E. It is one SKU on one approved store (awin:sungoldpower) and Dealectric already lists it. It pairs an 8,000 W 48 V 120/240 V inverter with built-in dual MPPT (no separate charge controller), 2 × 51.2 V 100 Ah SG48100P LiFePO4 (10.24 kWh) and 8 × 450 W N-type panels (3,600 W).",
+  "Panel strings: wire all 8 panels in one series string. Using SunGold's SGN-450-BDG5 figures, that is Voc 280.2 V at STC, under the manual's 500 V series limit and leaving about 220 V for cold-weather Voc rise. Don't assume two strings of 4: Vmp is only 120.3 V, and current doubles to 32.1 A Isc if both go on one input.",
+  "Battery: the included 10.24 kWh (2 × 51.2 V × 100 Ah) covers about 0.8 day at ChatGPT's 10 kWh/day example. Each extra SG48100P adds 5.12 kWh. The listing says the batteries support up to 63 in parallel.",
+  "Not in the kit and not sourced here: PV disconnect/combiner, DC breakers between battery and inverter, MC4 extension cable, and racking."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (https://sungoldpower.com/)",
+   "items": [
+    "Sun Gold Power SGR-8K10E Off-Grid Solar Kit 8000W 48VDC 120V/240V, 10.24 kWh LiFePO4, 8 × 450 W panels | https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e | $4,949.00 (compare-at $9,183.00, in stock) | 2026-11-13"
+   ],
+   "bundle_sku": "SGR-8K10E is the store's own bundle (inverter + 2 × SG48100P + 8 × 450 W panels), $4,949.00 on 2026-11-13. The title also mentions a 16.07 kWh battery option, which I could not price because the product page returned HTTP 429."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Price today",
+   "value": "$4,949.00 (compare-at $9,183.00), available",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search of the store's Shopify catalog. The product endpoint itself returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Maker's daily-energy claim, checked",
+   "value": "14.4 kWh/day gross; about 10.8 kWh/day at a 75% system factor",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC ... SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Listing: 'approximately 14.4kWh of solar energy per day under 4 hours of full sunlight'. 8 × 450 W = 3,600 W; 3,600 W × 4 h = 14.4 kWh, so the claim includes no losses. Applying ChatGPT's own 75% factor: 14.4 × 0.75 = 10.8 kWh/day."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Battery energy and autonomy",
+   "value": "10.24 kWh nominal; about 8.2 kWh usable; about 0.82 day at 10 kWh/day",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC ... SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Listing: 'two SUNGOLDPOWER 51.2V 100Ah SG48100P server rack LiFePO4 batteries', '7,000+ deep cycles', 'UL1973 and UL9540A'. 2 × 51.2 V × 100 Ah = 10.24 kWh. The 80% usable figure is ChatGPT's assumption, not the maker's: 10.24 × 0.8 = 8.19 kWh, and 8.19 / 10 kWh/day = 0.82 day. ChatGPT's 2-day example would need about 25 kWh, roughly 3 more SG48100P."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "Inverter PV and charge headroom",
+   "value": "Up to 11,000 W PV input on dual MPPT; up to 180 A combined solar + AC charging",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC ... SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "3,600 W of kit panels / 11,000 W = 33% of rated PV input, so about 7,400 W of panels could be added before the inverter limit (subject to the per-MPPT limits in unsourced). Full-array charge current is about 3,600 W / 51.2 V = 70 A, well under 180 A."
+  },
+  {
+   "product": "Sun Gold Power SGN-450-BDG5 450 W bifacial N-type panel",
+   "label": "STC electrical specs",
+   "value": "Pmax 450 W, Vmp 30.08 V, Imp 14.97 A, Voc 35.03 V, Isc 16.05 A, max system voltage 1,500 V",
+   "source": "https://www.batteryworld.com/450-watt-bifacial-n-type-monocrystalline-solar-panel-sgn-450-bdg5-32-panels-ul61730",
+   "source_title": "450 Watt Bifacial N-Type Monocrystalline Solar Panel SGN-450-BDG5 (32 PANELS) UL61730",
+   "read": "2026-11-13",
+   "note": "This is a named retailer listing; the maker's page returned HTTP 429. The kit listing says 'eight 450W N-type solar panels' without a model number. SGN-450-BDG5 is SunGold's 450 W N-type bifacial model, but a search snippet I did not open also shows an SGN-450-BBS (Voc 39.54 V), so check the panel label."
+  },
+  {
+   "product": "Sun Gold Power SPH8K48SP / SPH10K48SP inverter",
+   "label": "PV series-string voltage limit",
+   "value": "Open-circuit voltage of PV panels in series must be below 500 V",
+   "source": "https://www.manualslib.com/manual/3339506/Sun-Gold-Power-Sph8k48sp.html",
+   "source_title": "Sun Gold Power SPH8K48SP User Manual (All-in-one solar charge inverter V3.0)",
+   "read": "2026-11-13",
+   "note": "Manual quote: 'The open circuit voltage of PV panel in series connection must below 500V'; rated output 8,000 W, 120/240 Vac. String arithmetic with SGN-450-BDG5: 8 × 35.03 V = 280.2 V Voc (OK, 220 V margin for cold rise). Maximum at STC is 500 / 35.03 = 14.3, so 14 panels; cold correction lowers that, but I didn't source the temperature coefficient. 4 in series: Vmp 4 × 30.08 = 120.3 V. Two 4-panel strings on one input: Isc 2 × 16.05 = 32.1 A. A search tool said the kit's inverter is the SPH8048P rather than SPH8K48SP; I couldn't confirm that from the kit page (HTTP 429)."
+  }
+ ],
+ "unsourced": [
+  "Inverter MPPT operating voltage range (125–425 V according to search summaries) and max PV input current per MPPT (22 A according to search summaries). I tried the maker's kit page and inverter page (HTTP 429), manuals.plus and device.report (403), solartown (403), offgridsource and kratopower (429), and the Amazon listing B0D81DCDZG (blocked). These two numbers decide whether 2 × 4-in-series (Vmp 120.3 V) or 2 parallel strings (32.1 A Isc) would work.",
+  "Exact inverter model in the SGR-8K10E (SPH8048P or SPH8K48SP) and exact panel model (SGN-450-BDG5 or SGN-450-BBS). The kit page returned HTTP 429 on four attempts.",
+  "Inverter no-load (idle) consumption. Search summaries put it at 95–100 W for the 8 kW SunGold unit from retailer listings (kratopower, offgridstores), but I couldn't open them (429). If correct, 24 h × ~95 W ≈ 2.3 kWh/day, about 22% of the 10.24 kWh bank.",
+  "Panel Voc temperature coefficient, needed for the cold-weather maximum string length under 500 V. The datasheet PDF from solaris-shop downloaded but I couldn't extract its text, and the batteryworld page doesn't list it.",
+  "SG48100P battery max continuous charge/discharge current, and the price of the 16.07 kWh kit variant (maker's page 429)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0694123
+ }
+}

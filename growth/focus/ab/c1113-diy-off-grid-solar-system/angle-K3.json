@@ -1,0 +1,61 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got says how the eight 450 W panels in the Sun Gold Power SGR-8K10E kit have to be wired to fit the inverter's limits on solar input current and tracking voltage per input. I could not open a source for those limits, though, so this gap still needs checking. The only finding I could source is narrower: the kit's inverter and its two batteries talk to each other over RS485, and ChatGPT's answer never says the battery and inverter have to talk to each other at all.",
+ "standout": 1,
+ "standout_why": "ChatGPT got no search results and cited no pages, so the only thing to compare against is its own two answers. Both say to use 'listed compatible equipment', have an electrician check the work, and pick a 48 V system with a built-in MPPT charge controller. Neither says how to wire panels into strings against an inverter's per-input current and voltage limits, how cold weather raises panel voltage, or that the battery and inverter have to communicate. The panel-wiring trap would score 3 because it decides how the kit gets installed, but I could not open any source for it. Every Shopify store returned HTTP 429, and diysolarforum.com, manuals.plus, device.report and solartown.com returned HTTP 403. The one fact I could source, RS485 communication, is a smaller point, so I scored 1.",
+ "kit_items": [
+  "complete off-grid kit: Sun Gold Power SGR-8K10E. It is one product in one cart: an 8,000 W 48 V inverter with 120/240 V output, two 51.2 V 100 Ah SG48100P server-rack batteries and eight 450 W N-type panels. The inverter and batteries come from the same maker and share RS485 communication, which avoids the problem of mixing a battery and inverter that cannot talk to each other."
+ ],
+ "carts": [
+  {
+   "store": "Sun Gold Power (https://sungoldpower.com/)",
+   "items": [
+    "Sun Gold Power SGR-8K10E Off-Grid Solar Kit, 8000W 48VDC 120V/240V, 10.24 kWh LiFePO4, 8 × 450 W panels | https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e | $4,949.00 (compare-at $9,183.00, in stock) | 2026-11-13"
+   ],
+   "bundle_sku": "SGR-8K10E is the store's own bundle: $4,949.00 on 2026-11-13. The page also offers a 16.07 kWh battery option; I did not get its price."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "price today",
+   "value": "$4,949.00 (compare-at $9,183.00), available",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Read from the store's own Shopify product data with storecheck.py search. The web address says '8-x-415-watts' but the title and description say 450 W panels. The page should state the panel wattage from the product title."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "inverter-to-battery communication",
+   "value": "RS485 between the 48 V inverter and the 51.2 V SG48100P LiFePO4 batteries",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "The maker's description reads: 'The 48V inverter and 51.2V LiFePO4 batteries support RS485 communication for reliable system integration and battery management. Add compatible batteries...'. The maker does not say which other battery brands the inverter can communicate with."
+  },
+  {
+   "product": "Sun Gold Power SGR-8K10E",
+   "label": "solar input and battery expansion (maker claims)",
+   "value": "Dual MPPT, up to 11,000 W solar input; up to 180 A combined solar + AC charging; batteries UL1973 and UL9540A; up to 63 batteries in parallel; up to 6 inverters in parallel (48,000 W)",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-8000w-48vdc-120v-240v-lifepo4-10-24kwh-lithium-battery-8-x-415-watts-solar-panels-sgr-8k10e",
+   "source_title": "Off-Grid Solar Kit 8000W 48VDC 120V/240V LifePo4 10.24KWH-16.07KWH Lithium Battery 8 X 450 Watts Solar Panels SGR-8K10E",
+   "read": "2026-11-13",
+   "note": "Taken from the maker's product description. The page does not give the inverter's model number, its voltage limits, or its current limit per solar input."
+  }
+ ],
+ "unsourced": [
+  "The current limit on each of the inverter's two solar inputs (MPPT). Search snippets said 22 A for the SPH8048P, which is probably the kit's inverter, and two snippets disagreed on the tracking voltage range (125–425 V or 120–500 V). Every place I tried to read it from failed: the maker's manual PDF on Shopify's file server (https://cdn.shopify.com/s/files/1/0323/4090/2025/files/SPH8-10kw_manual.pdf) opened but had no readable text, and I was not allowed to run a local text extractor on it. The manuals.plus PDF also had no readable text, its HTML page returned HTTP 403, and sungoldpower.com, offgridstores.com, offgridsource.com and thesolarstore.com all returned HTTP 429. device.report and solartown.com returned HTTP 403.",
+  "The electrical specs of the SGN-450-BDG5 panel (Voc, Vmp, Isc and how Voc changes with temperature). Snippets gave Voc 35.03 V, Vmp 30.08 V, Isc 16.05 A and -0.28 %/K. The datasheet PDF on solaris-shop.com downloaded but had no readable text, and the offgridsource.com product page returned HTTP 429.",
+  "The trap I could not verify, if the snippet figures hold. Wiring 4 panels in series on each solar input gives about 4 × 30.08 = 120.3 V working voltage, which is below a 125 V tracking floor. Putting 2 strings in parallel on one input gives 2 × 16.05 = 32.1 A, which is over 22 A. That would leave one string of 8 on a single input: 8 × 35.03 = 280.2 V open-circuit, or about 315 V at -20 °C (280.2 × (1 + 0.0028 × 45)), which is under the 500 V maximum. This needs the maker's manual and the panel datasheet opened before it goes on the page.",
+  "Whether the inverter bonds neutral to ground inside the unit, which matters for 120/240 V wiring. A DIY Solar Forum thread snippet said a Sungoldpower low-frequency inverter needs the bond made outside the unit, but the thread returned HTTP 403, so I have no date, author, or count of people reporting it.",
+  "Whether the warranty is voided if the solar input limits are exceeded. I looked for this in the maker's manual and could not read it.",
+  "Whether the SG48100P batteries stop charging below freezing (low-temperature charge cutoff). The kit page does not mention it, and I could not reach the battery's own product page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9976500999999999
+ }
+}
