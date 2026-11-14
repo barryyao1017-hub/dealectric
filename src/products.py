@@ -6736,6 +6736,23 @@ PRODUCTS = [
  "fit": 'BLUETTI specifies one set for a single-panel setup and one set per panel for parallel setups; a single series string into a SolarX 4K has two free ends, so one set covers it.',
  "caveats": ["MC4 at both ends: the Apex 300's built-in XT60 ports need the separate MC4-to-XT60 cable."]},
 
+{"slug": 'gardepro-e5s-non-cellular-trail-camera',
+ "brand": 'GardePro',
+ "program": 'amazon:us',
+ "asin": 'B09ZLLH64Q',
+ "category": 'trail-camera',
+ "name": 'GardePro E5S Non-Cellular Trail Camera, 64MP Photo & 1296P HD Video',
+ "model": 'E5S',
+ "url": 'https://www.amazon.com/dp/B09ZLLH64Q',
+ "price": None,
+ "verified": '2026-11-14',
+ "specs": [('Radios', 'No Wi-Fi or cellular; footage viewed via SD card only (GardePro)'), ('Photos / video', '64MP photos, 1296p video (GardePro rating)'), ('Trigger', '0.1 s with 3 PIR sensors (GardePro claim)'), ('Storage', 'SD card up to 512 GB'), ('Power', 'AA batteries or GardePro SP350 solar panel'), ('Weatherproofing', 'IP66, 1/4"-20 mount'), ('Security box', 'GardePro MB200')],
+ "warranty": "1-year limited warranty from purchase date when bought on Amazon US; 2 years if bought from GardePro's own shop (GardePro)",
+ "returns": '30 days from receipt, unused and in original packaging with proof of purchase; customer usually pays return shipping unless the item is faulty (GardePro shop policy)',
+ "summary": 'A camera that only records to an SD card. GardePro states it has no Wi-Fi or cellular radio and that footage is viewed from the card only.',
+ "fit": 'Shoppers who want the lowest outlay on a camera whose maker states outright that it has no Wi-Fi or cellular radio.',
+ "caveats": ["No named lab has published a night-flash, detection or battery test of the E5S, and it was not in Trailcampro's 2026 flash test.", 'Video is 1296p, not 4K.', "It takes GardePro's MB200 security box, not the MB300 used by the E5 2.0 and T5NG Pro."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
