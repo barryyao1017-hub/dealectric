@@ -6482,6 +6482,23 @@ PRODUCTS = [
  "fit": 'Any BLUETTI panel with MC4 leads, such as the SP200L. A two-panel series string needs one set.',
  "caveats": ["It extends the panel's MC4 leads only. You still need the station's own solar charging cable at the station end.", 'For parallel wiring BLUETTI says to use one set per panel.']},
 
+{"slug": 'redodo-36v-50ah-trolling-low-temp',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "asin": None,
+ "category": 'lithium-battery',
+ "name": 'Redodo 36V 50Ah Lithium Trolling Motor Battery with Low-Temp Charge Cutoff',
+ "model": '36V 50Ah Trolling Motor Battery (Low-Temp Cutoff)',
+ "url": 'https://www.redodopower.com/products/redodo-36v-50ah-trolling-motor-battery-with-low-temp-cutoff',
+ "price": 359.99,
+ "verified": '2026-11-13',
+ "specs": [('Voltage', '36 V (38.4 V nominal)'), ('Capacity', '50 Ah, 1,920 Wh'), ('Discharge', '50 A steady (50 A BMS); 60 A for up to 30 min; 250 A peak'), ('Size', '13 × 6.77 × 8.5 in (Group 31)'), ('Weight', '32.8 lb'), ('Cold charging', 'stops below 32°F, resumes above 41°F; discharge stops below -4°F'), ('Expansion', 'up to 4 in parallel (36 V 200Ah, 7.68 kWh)'), ('Cycles', '4,000+ at full depth of discharge')],
+ "warranty": '5 years',
+ "returns": "30-day return window under Redodo's refund policy; return shipping is deducted from the refund unless the order was defective, delayed or damaged",
+ "summary": 'A 36 V LiFePO4 pack in a Group 31 case. Redodo sells it for 100–120 lb motors. Its 50 A steady rating sits below the 60 A Minn Kota says a QUEST motor can pull on high speed, so on a QUEST motor it belongs in a parallel pair.',
+ "fit": "Two in parallel on a 36 V motor (101–112 lb or 36 V QUEST): each pack then carries about 30 A at the motor's maximum draw.",
+ "caveats": ['A single pack is rated 60 A for only 30 minutes, against the 60 A a 36 V QUEST motor can draw on high speed.', "Won't charge below 32°F.", 'Needs a 43.8 V LiFePO4 charger. A Minn Kota onboard bank tops out at 14.5 V.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
