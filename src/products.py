@@ -7633,6 +7633,23 @@ PRODUCTS = [
  "fit": 'Shoppers who want a real Android head unit with wireless phone projection for the least money, including Samsung Galaxy owners, since the listing prints no phone-brand limit.',
  "caveats": ['The listing does not say which Wi-Fi band the unit uses. Google requires 5 GHz Wi-Fi support for wireless Android Auto.', 'The listing says some vehicles need an extra double-DIN dash kit, a vehicle-specific wiring harness and an antenna adapter.', "Haudio's repair service covers units bought from haudiocarstereo.com. For an Amazon order, Haudio tells you to contact the seller."]},
 
+{"slug": 'allpowers-p1800-600w-solar-kit',
+ "brand": 'ALLPOWERS',
+ "program": 'cj:allpowers',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'ALLPOWERS P1800 + 600 W Solar Generator Kit (1,024 Wh, 1,800 W)',
+ "model": 'P1800 + 600 W solar panel',
+ "url": 'https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel',
+ "price": 798.0,
+ "verified": '2026-11-14',
+ "specs": [('Battery', '1,024 Wh LiFePO4'), ('AC output', '1,800 W (3,600 W peak)'), ('Max solar input', '650 W via XT60'), ('Panel in kit', '600 W'), ('AC charging', '0–80% in about 1 hour'), ('Cycle life (ALLPOWERS)', 'Over 3,000 cycles')],
+ "warranty": "24 months from date of purchase. This is ALLPOWERS's standard warranty, which covers models not named in its 5-year tier. The P1800 is not named in that tier. ALLPOWERS lists the SP039 600 W panel at 2 years.",
+ "returns": '30 days after you receive it, through the ALLPOWERS store. You must request the return first, and the item must be unused, in its original packaging, with proof of purchase.',
+ "summary": "This is ALLPOWERS's own P1800 bundle with a 600 W solar panel, $798 on the ALLPOWERS US store (2026-11-14, compare-at $1,059.98). The panel is under the P1800's 650 W solar cap, so none of its output is clipped. In November it harvests about 1,589 Wh a day, enough to refill the 1,024 Wh battery in about 0.64 day.",
+ "fit": 'Multi-day home outages where the battery has to be refilled from the sun alone.',
+ "caveats": ["The kit listing says only 'the included 600W solar panel' and doesn't name the model. ALLPOWERS's own 600 W folding panel, the SP039, is listed at 44 V with an MC4-to-XT60 cable. Check at checkout which panel ships.", 'The store showed the kit as available on 2026-11-14 but gave no ship date. Check the delivery date at checkout.', 'The 600 W panel weighs more than a 200 W panel. ALLPOWERS lists the SP039 at 27.5 lb folded.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

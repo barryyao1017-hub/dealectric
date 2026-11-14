@@ -46,8 +46,8 @@
      "Over 3,000 cycles"
     ]
    ],
-   "warranty": null,
-   "returns": null,
+   "warranty": "24 months from date of purchase. This is ALLPOWERS's standard warranty, which covers models not named in its 5-year tier. The P1800 is not named in that tier. ALLPOWERS lists the SP039 600 W panel at 2 years.",
+   "returns": "30 days after you receive it, through the ALLPOWERS store. You must request the return first, and the item must be unused, in its original packaging, with proof of purchase.",
    "summary": "This is ALLPOWERS's own P1800 bundle with a 600 W solar panel, $798 on the ALLPOWERS US store (2026-11-14, compare-at $1,059.98). The panel is under the P1800's 650 W solar cap, so none of its output is clipped. In November it harvests about 1,589 Wh a day, enough to refill the 1,024 Wh battery in about 0.64 day.",
    "fit": "Multi-day home outages where the battery has to be refilled from the sun alone.",
    "caveats": [
@@ -189,6 +189,14 @@
     "https://iallpowers.com/products/allpowers-sp039-600w-monocrystalline-portable-solar-panel"
    ],
    [
+    "ALLPOWERS warranty policy: 24 months from date of purchase by default; 5-year tier lists R-series and S2000/S700 models, not the P1800; SP039 panel 2-year limited warranty (read 2026-11-14)",
+    "https://iallpowers.com/pages/warranty-policy"
+   ],
+   [
+    "ALLPOWERS refund policy: 30 days after receiving the item to request a return; item unused, in original packaging, with proof of purchase (read 2026-11-14)",
+    "https://iallpowers.com/policies/refund-policy"
+   ],
+   [
     "US average solar resource: November 3.53, December 2.87 kWh/m²/day, NREL PVWatts averaged over 50 cities (read 2026-11-14)",
     "https://shrinkthatfootprint.com/?p=4385"
    ],
@@ -234,7 +242,8 @@
   "ALLPOWERS P1800 solar input voltage range, current limit, UPS switchover time and battery expansion: iallpowers.com product pages returned HTTP 429 to WebFetch and storecheck, and a web search found no ALLPOWERS page stating them.",
   "Panel model in the P1800 + 600 W kit, and ship dates for the P1800 + 600 W and + 400 W kits: the kit page returned HTTP 429. The store search data says only 'the included 600W solar panel' and shows available=true.",
   "Jackery Solar Generator 1000 v2 and Anker SOLIX C1000 Gen 2 kit prices on the makers' US stores: jackery.com returned 429 and the Anker kit page showed 'Price Loading', so both rows were dropped.",
-  "Sourced average watts for a household refrigerator: energy.gov's estimating page returned 404. The page gives the EnergyGuide-label method (kWh/yr ÷ 8.76) instead of a figure."
+  "Sourced average watts for a household refrigerator: energy.gov's estimating page returned 404. The page gives the EnergyGuide-label method (kWh/yr ÷ 8.76) instead of a figure.",
+  "A P1800-specific warranty line on the P1800 product or kit page: both returned HTTP 429 to storecheck and WebFetch on 2026-11-14. ALLPOWERS's warranty-policy page doesn't name the P1800 in any tier, so the warranty field uses that page's stated 24-month default."
  ],
  "new_page": false,
  "searched_as": [
@@ -247,5 +256,22 @@
  ],
  "query": "Run one web search with exactly this query: \"best solar generator kit under $1000 for home backup\". Then answer my question the way you normally would, from what you found: What's the best solar generator kit under $1000 for home backup?",
  "verified_changes": 4,
- "verified_removed": 0
+ "verified_removed": 0,
+ "fix_pass": {
+  "errors": [
+   "allpowers-p1800-600w-solar-kit: missing warranty",
+   "allpowers-p1800-600w-solar-kit: missing returns"
+  ],
+  "log": [
+   "allpowers-p1800-600w-solar-kit warranty: set to 24 months from date of purchase. Source: https://iallpowers.com/pages/warranty-policy (read 2026-11-14). That page states 24 months as the default. Its 5-year tier lists R4000/R3500/R2500/R1500/R600/S2000 PRO/S2000/S700 and B3000/B1000, and the P1800 isn't named in any tier. Its 2-year tier lists the SP039 panel. The warranty text says this is the default and the P1800 isn't named, so nothing is overstated. Added to page sources.",
+   "allpowers-p1800-600w-solar-kit returns: set to 30 days after receiving the item. You must request the return first, and the item must be unused, in its original packaging, with proof of purchase. Source: https://iallpowers.com/policies/refund-policy (read 2026-11-14). Added to page sources.",
+   "The P1800 product and kit pages returned HTTP 429 (storecheck and WebFetch) on 2026-11-14, so I couldn't check for a model-specific warranty line. Added this to unsourced. A web search turned up only A-iPower (a different brand) and unrelated warranties, and none of it was used.",
+   "No other content changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }
