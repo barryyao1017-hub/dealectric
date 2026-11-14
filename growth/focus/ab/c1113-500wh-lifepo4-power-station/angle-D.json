@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states, in EcoFlow's words, that the RIVER 2 Max's backup switchover is a 30 ms 'switch-over mode', not the ≤10 ms UPS the Jackery Explorer 500 v2 is credited with, or that its 1,000 W figure is X-Boost on top of a 500 W rating.",
+ "standout": 1,
+ "standout_why": "Compared against powerbencher.com (cited) and powerstations.reviews/power-stations (cited), both read 2026-11-14. Powerbencher gives the Jackery Explorer 500 v2's 10 ms switchover but does not cover the RIVER 2 Max 500. It mentions no X-Boost or voltage-reduction mode and no charging-temperature limit. The powerstations.reviews database has a UPS-ms column, which shows 20 for the BLUETTI AC50B and is blank for the RIVER 2 Max 500. It lists the Max as '500 (1,000)' without saying the 1,000 is X-Boost, and it has no charging-temperature field. The HSN EcoFlow comparison PDF (cited) is an image with no readable text. So the rivals already carry part of the switchover story (Jackery 10 ms, AC50B 20 ms). The new piece is EcoFlow's own 30 ms figure for the Max. The X-Boost voltage-reduction mechanism is new to these pages, but I could not open a source for it, so it is not in the findings.",
+ "decides": "This confirms ChatGPT's split rather than overturning it. For camping and laptops, the RIVER 2 Max 500 at $309 still works. For home backup of a router, desktop or CPAP through a mains cut, EcoFlow's own wording ('30ms switch-over mode') points to the Jackery Explorer 500 v2, which powerbencher credits with 10 ms. The Max's 1,000 W is an X-Boost ceiling on a 500 W rating, so it does not match the AC50P's 700 W continuous. Separately, BLUETTI's own US store lists the AC50P as unavailable today at $339, so the 'best higher AC output' card may not be buyable from the maker.",
+ "candidates": [
+  "EcoFlow RIVER 2 Max 500",
+  "Jackery Explorer 500 v2",
+  "BLUETTI AC50P",
+  "BLUETTI AC50B",
+  "Anker SOLIX 536"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 2 Max 500",
+   "label": "AC output and X-Boost, maker's listing",
+   "value": "499 Wh, 500 W output; 'X-Boost output to 1000W'",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "Read from the EcoFlow US Shopify store's product data with storecheck.py search. Quoted text: '499Wh capacity and 500W output … X-Boost output to 1000W and run 80% of essential appliances.' The rendered product page returned HTTP 429, so I could not read any footnote on how X-Boost works."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max 500",
+   "label": "Price at maker's US store",
+   "value": "$309.00, in stock",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-14",
+   "note": "storecheck.py search; available=true, no compare-at price. Matches the $309 ChatGPT showed."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Backup switchover, maker's wording",
+   "value": "30 ms ('Essential home backup with a 30ms switch-over mode')",
+   "source": "https://us.ecoflow.com/products/river-2-max-portable-power-station-refurbished",
+   "source_title": "EcoFlow RIVER 2 Max Portable Power Station (Refurbished)",
+   "read": "2026-11-14",
+   "note": "From EcoFlow's own US store listing for the refurbished original RIVER 2 Max, via storecheck.py. The RIVER 2 Max 500 listing's summary text does not state a switchover time. The same store gives the sibling RIVER 2 and RIVER 2 Pro as '<30ms EPS auto-switch for essential devices.' Applying 30 ms to the '500' variant assumes the same inverter, which I did not confirm."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Rated vs peak output and X-Boost limit, user manual",
+   "value": "Rated 500 W, peak 1,000 W; with X-Boost the AC outlets run devices rated 1,000 W or less",
+   "source": "https://www.manualslib.fr/manual/643829/Ecoflow-River-2-Max.html",
+   "source_title": "EcoFlow River 2 Max manual (ManualsLib FR)",
+   "read": "2026-11-14",
+   "note": "French FAQ text on p.31 of the hosted manual: 'La puissance nominale du produit est de 500 W et la puissance de crête est de 1000 W' and X-Boost 'peut alimenter des appareils d'une puissance nominale de 1000 W ou moins'. P.29 adds: avoid running several at once so overload protection does not trip. The spec rows for charge temperature were cut off in the hosted excerpt."
+  },
+  {
+   "product": "Jackery Explorer 500 v2",
+   "label": "UPS switchover (rival's figure)",
+   "value": "10 ms",
+   "source": "https://powerbencher.com/stories/by-size/best-500wh-portable-power-stations/",
+   "source_title": "Best 500Wh Portable Power Stations (2026) — Power Bencher",
+   "read": "2026-11-14",
+   "note": "Powerbencher: '10ms switchover is fast enough that a router, a modem or a desktop never notices the cut.' The same page lists it as 512 Wh, 500 W (1,000 W surge), 12.6 lb, 6,000 cycles. This is already in a cited rival, so it is a comparison point, not the new fact. The Jackery US store search returned no 500 v2 product (only a carry case that names it), and the CA product page returned HTTP 429."
+  },
+  {
+   "product": "BLUETTI AC50B",
+   "label": "UPS switchover (rival database)",
+   "value": "20 ms",
+   "source": "https://powerstations.reviews/power-stations?job=apartment",
+   "source_title": "Power station spec database: all 129 models, CSV",
+   "read": "2026-11-14",
+   "note": "UPS ms column. The same table shows the RIVER 2 Max 500 as '–' for UPS and '500 (1,000)' for output. It has no charge-temperature or X-Boost field."
+  },
+  {
+   "product": "BLUETTI AC50P",
+   "label": "Price and availability at maker's US store",
+   "value": "$339.00 (compare-at $549.00), listed as unavailable",
+   "source": "https://www.bluettipower.com/products/bluetti-ac50p-portable-power-station",
+   "source_title": "BLUETTI AC50P Portable Power Station | 700W 504Wh",
+   "read": "2026-11-14",
+   "note": "storecheck.py search returned available=false. The rendered page hit a redirect loop, so I could not read the specs or switchover time."
+  }
+ ],
+ "unsourced": [
+  "How X-Boost works (it lowers output voltage, so it suits heaters and similar loads and not voltage-protected electronics): searched for EcoFlow's own wording. The only text I saw was in search snippets of RIVER 2 and DELTA 2 Max manuals. The Westmarine RIVER 2 manual PDF is image-only, the skanbatt RIVER 2 Max manual returned 404, and the EcoFlow product pages returned 429.",
+  "RIVER 2 Max charging temperature range (snippets say 0–45 °C): the maker's page returned 429, and the Memory Express and REI copies returned 403.",
+  "Jackery Explorer 500 v2 charging temperature: retailer snippets conflict (-20 °C vs 0 °C). The ca.jackery.com product page returned 429, and the US store has no product listing for it.",
+  "BLUETTI AC50P UPS switchover time, surge and Power Lifting behaviour: bluettipower.com product page hit a redirect loop.",
+  "Anker SOLIX 536 (508 Wh): did not reach an Anker page to confirm this model exists as ChatGPT named it.",
+  "ATX power-supply hold-up time (needed to say whether a 30 ms switchover drops a desktop PC): no Intel ATX spec opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1146776
+ }
+}

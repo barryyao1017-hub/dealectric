@@ -1,0 +1,74 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the BLUETTI AC50P ($339) is out of stock on BLUETTI's US store. None of them gives the AC50P's solar-input voltage limit either, but that limit (open-circuit voltage 12–28 V, which would block most series and higher-voltage panels) could not be confirmed on a maker page I opened.",
+ "standout": 1,
+ "standout_why": "I opened three cited pages. powerbencher.com (best 500Wh) says 'No maximum solar input appears in the specification we compared' for the Jackery Explorer 500 v2. It lists solar caps for other models (220 W, 300 W) but gives no panel voltage ranges, connector types or expansion support. powerstations.reviews lists the RIVER 2 Max at 220 W solar and not expandable, and the AC50B at 200 W with a 20 ms UPS switchover. It has no voltage range or connector, and the AC50P and Jackery 500 v2 were not in the part I could read. The HSN EcoFlow chart PDF is an image with no readable text. stationarena.com would not load (certificate error). So none of the rival pages states the voltage window or connector, the panel exclusions, or which accessory fits which model. The only compatibility facts I could actually confirm (an out-of-stock flag and a carrying-case fit) are minor. The fact that would matter, the AC50P's 28 V open-circuit voltage cap, appeared only in search snippets, because the maker pages were rate-limited (HTTP 429) or missing (HTTP 404).",
+ "decides": "The stock status changes the answer now: BLUETTI's US store shows the AC50P, ChatGPT's 'higher AC output' pick, as unavailable today at $339, and its $549 SP100L solar kit is unavailable too. If BLUETTI's manual confirms the 12–28 V open-circuit voltage input, solar buyers should match the AC50P only to a single low-voltage 100–200 W panel, never panels wired in series. On the Jackery 500 v2 and RIVER 2 Max, nothing I confirmed changes the pick.",
+ "candidates": [
+  "EcoFlow RIVER 2 Max",
+  "Jackery Explorer 500 v2",
+  "BLUETTI AC50P",
+  "Anker SOLIX 536"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC50P",
+   "label": "Maker US store price and availability",
+   "value": "$339.00 (compare-at $339.00), available: false",
+   "source": "https://www.bluettipower.com/products/bluetti-ac50p-portable-power-station",
+   "source_title": "BLUETTI AC50P Portable Power Station | 700W 504Wh",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py product (Shopify JSON). Variant 'AC50P | 700W, 504Wh Power Station'."
+  },
+  {
+   "product": "BLUETTI AC50P",
+   "label": "Maker US store bundle with SP100L 100 W panel",
+   "value": "$549.00, available: false",
+   "source": "https://www.bluettipower.com/products/bluetti-ac50p-portable-power-station",
+   "source_title": "BLUETTI AC50P Portable Power Station | 700W 504Wh",
+   "read": "2026-11-14",
+   "note": "storecheck.py product, variant 'AC50P+SP100L | 700W, 504Wh,100W Solar Kit'. This is the panel BLUETTI pairs with the AC50P."
+  },
+  {
+   "product": "Jackery Explorer 500 v2",
+   "label": "Maker-listed carrying case that fits",
+   "value": "Jackery Upgraded Carrying Case (S), $44.99, in stock; inside 12.2 × 8.1 × 11.0 in",
+   "source": "https://www.jackery.com/products/small-carrying-case-bag",
+   "source_title": "Jackery Upgraded Carrying Case (S)",
+   "read": "2026-11-14",
+   "note": "Product text says 'BUILT FOR THE EXPLORER 300 New/300 v2/500 v2/600 v2/240 v2/300/290/290 Plus/500/400/300 Plus/600 Plus'. Read with storecheck.py search on jackery.com."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Solar input and expansion, per a cited rival database",
+   "value": "Solar input 220 W; 'Expands to Wh' field shows a dash (no extra battery listed)",
+   "source": "https://powerstations.reviews/power-stations?job=apartment",
+   "source_title": "Power station spec database: all 129 models, CSV",
+   "read": "2026-11-14",
+   "note": "This is ChatGPT's cited rival, recorded for the gap check. No voltage range, connector or car input is listed."
+  },
+  {
+   "product": "Jackery Explorer 500 v2",
+   "label": "Solar input, per a cited rival page",
+   "value": "Not published there: page says 'No maximum solar input appears in the specification we compared'",
+   "source": "https://powerbencher.com/stories/by-size/best-500wh-portable-power-stations/",
+   "source_title": "Best 500Wh Portable Power Stations (2026)",
+   "read": "2026-11-14",
+   "note": "This is ChatGPT's cited rival. It shows the panel limit and connector for this pick are missing from what ChatGPT cited."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI AC50P solar input window (search snippets say 200 W max, open-circuit voltage 12–28 V, 8.5 A max) and the manual's warning against panels above 28 V open-circuit voltage. Tried: bluettipower.com product page (HTTP 429 three times); bluetti.com AC50P user manual PDF, flyer PDFs and spec page (HTTP 404); device.report and manuals.plus mirrors (HTTP 403); checkout.bluettipower.com.au (HTTP 429); a pdf.lowes.com manual (over 10 MB).",
+  "BLUETTI AC50P solar connector type and car-input voltage (12/24 V per retailer snippets only): same failed sources.",
+  "Jackery Explorer 500 v2 DC8020 solar input voltage range: snippets disagree, 16–60 V per an EU retailer and 11–60 V per TechRadar, with 10.5 A and 200 W max. Also how many SolarSaga 100 W or 200 W panels it takes. Tried: jackery.com FAQ page (the specs did not render, even read further down the page); jackery.com and ca.jackery.com product pages (HTTP 429 through both storecheck and WebFetch; the product did not come up in the storecheck search on jackery.com US); manuals.plus manual (HTTP 403); TechRadar review (only the title rendered).",
+  "EcoFlow RIVER 2 Max solar voltage, amps and connector, car input, and extra-battery support from EcoFlow's own docs: us.ecoflow.com product page (HTTP 429); the cited HSN EcoFlow chart PDF is an image with no readable text.",
+  "Anker SOLIX 536 compatibility (solar input, connector, expansion): not researched; ran out of tool calls.",
+  "UPS switchover times for the 500 v2, RIVER 2 Max and AC50P from maker pages: not reached."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.1005483
+ }
+}
