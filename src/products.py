@@ -6801,6 +6801,22 @@ PRODUCTS = [
  "fit": 'Smaller wrists and day trips with a charge every night or two',
  "caveats": ['Price is the T-Rex 3 Pro store listing, which covers both case sizes.', 'Rated for 26 h of accurate GPS against 42 h for the cheaper T-Rex 3.']},
 
+{"slug": 'qidi-box',
+ "brand": 'QIDI',
+ "program": 'awin:qidi',
+ "category": '3d-printer',
+ "name": 'QIDI Box 4-Spool Multi-Color and Drying Unit for QIDI Q2, Q2C, Plus5 and Max4',
+ "model": 'QIDI Box',
+ "url": 'https://qidi3d.com/products/qidi-box',
+ "price": 228.0,
+ "verified": '2026-11-14',
+ "specs": [('Spools per box', '4'), ('Boxes per printer', 'Up to 4 (16 filaments) with the QIDI BOX Expansion Kit'), ('Drying', 'Heated, up to 65 °C, runs at the same time as printing'), ('Fiber-filled filaments accepted', 'ABS-CF/GF, PLA-CF/GF, PETG-CF/GF, PET-CF/GF, PPS-CF'), ('Not supported', 'TPE, generic TPU, TPU 95A, damp PVA/BVOH, QIDI PAHT-CF, some silk PLA, glow-in-the-dark PLA'), ('Compatible printers', 'Q2C, Q2, Plus5, Max4 (the Plus4 uses its own hub and cable parts)')],
+ "warranty": "1 year from the date you receive the printer under QIDI's warranty statement; consumables such as nozzles, hotends and build plates are excluded.",
+ "returns": "QIDI's refund policy covers printers for 30 days. Used accessories cannot be returned.",
+ "summary": "QIDI's 4-spool filament changer. It turns a Q2, Q2C, Plus5 or Max4 into a multicolor, multi-material printer and dries filament at up to 65 °C during a print.",
+ "fit": 'Owners or buyers of a QIDI Q2, Q2C, Plus5 or Max4 who want up to 4 filaments per box, including third-party carbon- or glass-filled grades.',
+ "caveats": ["Flexible TPU 95A and generic TPU cannot run through the box. Feed them from the printer's own spool holder.", "QIDI's own PAHT-CF is on the not-supported list.", 'Linking more than one box takes the 39.99 USD QIDI BOX Expansion Kit.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

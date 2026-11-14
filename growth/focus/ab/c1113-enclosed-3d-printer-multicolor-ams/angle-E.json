@@ -1,0 +1,65 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much filament a multicolor print actually wastes. Notebookcheck measured it on the Bambu Lab X2D: a 12 g multicolor Benchy left about 70 g of waste when printed with one nozzle (the way the P1S, P2S and K2 Pro work) and about 20 g with both nozzles. The same print took 5.8 h on one nozzle and 2.7 h on two.",
+ "standout": 2,
+ "standout_why": "The cited rival desktop3dprinters.us/lists/multicolor-enclosed-3d-printers/ (read 2026-11-14) gives launch price, nozzle count, AMS/CFS slots, chamber temperature and build volume for 23 printers. It has no swap time, purge or waste per color change, noise or power figure for any of them, and it names no reviewer measurements: it cites All3DP and Fauxhammer for qualitative points and the Bambu wiki on flushing without quantities. The other cited rival, 3dprinterlist.com/index.php, would not open (TLS certificate error), so I could not check it. ChatGPT's answer itself mentions waste only as 'automatic filament switching' and gives no numbers.",
+ "decides": "This mostly backs ChatGPT's own framing. Three of its four picks (P1S Combo, P2S Combo, K2 Pro Combo) are single-nozzle and purge at every color change. In Notebookcheck's test that meant about 6× the model's weight in waste (70 g for a 12 g model) and more than twice the print time. Only the H2D, its $1,599.99 pick, is dual-nozzle. For a buyer who prints lots of multicolor parts, this makes a dual-nozzle machine worth its premium. The cited rival lists the X2D Combo at $899 launch, only $100 above the P2S Combo, so the X2D could become the pick. I could not verify the X2D price today because the Bambu US store returned HTTP 402 and storecheck returned 404. Caveats: the measurement is on the X2D, not the H2D, and Notebookcheck warns that results depend heavily on the model printed.",
+ "candidates": [
+  "Bambu Lab P1S Combo",
+  "Bambu Lab P2S Combo",
+  "Creality K2 Pro Combo",
+  "Bambu Lab H2D AMS Combo",
+  "Bambu Lab X2D Combo"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab X2D (single-nozzle mode)",
+   "label": "Multicolor waste vs model weight, one nozzle",
+   "value": "about 70 g waste for a 12 g model, of which 52 g is flushing",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "Notebookcheck's Silvio Werner printed a Multicolor 3D Benchy with standard settings (published 2026-06-10, updated 2026-10-05). On one nozzle the X2D purges at every color change, the same way the single-nozzle P1S, P2S and K2 Pro do. 70 g ÷ 12 g ≈ 5.8× the model's weight. The author says results depend heavily on the model."
+  },
+  {
+   "product": "Bambu Lab X2D (dual-nozzle mode)",
+   "label": "Multicolor waste, both nozzles",
+   "value": "about 20 g waste for the same 12 g model, almost all of it the purge tower",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "Same test as above. 70 g − 20 g = about 50 g saved, roughly 71% less waste. The H2D uses the same dual-nozzle approach, but Notebookcheck did not test the H2D."
+  },
+  {
+   "product": "Bambu Lab X2D",
+   "label": "Multicolor print time, single vs dual nozzle",
+   "value": "5.8 h on one nozzle vs 2.7 h on two (1.7 h on two without priming)",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "Notebookcheck: 'the printing time increases from 2.7 to 5.8 hours' when only one nozzle is used. The author said the 1.7 h no-priming run 'did not make sense', so it is not a recommended setting."
+  },
+  {
+   "product": "Creality K2 Pro Combo",
+   "label": "Noise while printing",
+   "value": "64 dB peak, 54 dB average",
+   "source": "https://3dprint.com/321055/creality-k2-and-k2-pro-print-farm-ready/",
+   "source_title": "Creality K2 and K2 Pro: Print Farm Ready?! (3DPrint.com, Orville Wright IV, 2025-10-08)",
+   "read": "2026-11-14",
+   "note": "Measured with a K2 and a K2 Pro running at the same time ('When both are running, I see a peak of 64 dB with an average of 54 dB'). The article gives no distance or method, so this is not a figure for one K2 Pro alone. The same reviewer measured 99.8 of 100 mm on a PETG accuracy test."
+  }
+ ],
+ "unsourced": [
+  "A measured purge or waste figure in grams for the P1S Combo, P2S Combo or K2 Pro Combo on a named multicolor print. Searches turned up only qualitative complaints. The Tom's Hardware K2 Pro Combo and P2S reviews came back as titles only. 3dtested.com's P2S review returned HTTP 525. TechRadar's P2S review came back as a title only.",
+  "A measured H2D waste comparison. The Overclock3D H2D review (said to show 182 color changes and about 101 g saved versus a single nozzle) returned HTTP 403. All3DP's H2D review returned 403. The Tom's Hardware H2D review came back as a title only. The itechguides page relaying Tom's Hardware's H2D vs H2C waste test (279 g) timed out.",
+  "Noise in dB for the P2S, P1S or H2D from a named lab. The only P2S figures I found were on low-reliability aggregator pages, so I left them out.",
+  "Today's US prices for the X2D Combo and P2S Combo from the maker. us.store.bambulab.com returned HTTP 402 to WebFetch, and storecheck.py search returned HTTP 404.",
+  "The cited rival 3dprinterlist.com/index.php, which failed with a TLS certificate error, so I could not check whether it states any waste or noise figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.8937483999999999
+ }
+}

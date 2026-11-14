@@ -1,0 +1,104 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much filament a colour change wastes. Notebookcheck measured it on the Bambu Lab X2D: 70 g of waste for a 12 g multicolour Benchy on one nozzle (5.8 g wasted per gram printed) and 20 g on both nozzles (1.7 g per gram), which is 71% less waste. Print time fell from 5.8 h to 2.7 h.",
+ "standout": 2,
+ "standout_why": "I compared against desktop3dprinters.us/lists/multicolor-enclosed-3d-printers (cited). It has launch price, multi-material system, nozzle count, enclosure, max chamber temperature and build volume for 23 printers. It has no purge, flush or waste column. Slot counts appear only in its text, and price per litre and price per slot can be worked out from its table, so a cost-per-slot figure would not stand out. Neither that page nor ChatGPT's answer gives grams of waste per colour change or waste per gram of model. ChatGPT's answer calls the H2D 'better for complex multi-material work' without a number. The second cited result, 3dprinterlist.com, would not load (TLS certificate error), so I could not check it.",
+ "decides": "It backs ChatGPT's split with a number. A single-nozzle feeder machine (P1S/P2S Combo, Creality K2 Pro Combo, QIDI Q2 + QIDI Box) is fine for occasional 2–4 colour prints. On a small, swap-heavy multicolour model, one nozzle threw away about 5.8 g per gram of part against about 1.7 g with two nozzles. Someone printing lots of small multicolour parts gets back part of the extra cost of a dual-nozzle Bambu (X2D/H2D) in filament and roughly half the print time. The measurement was taken on the X2D, not the H2D.",
+ "candidates": [
+  "Bambu Lab P1S Combo",
+  "Bambu Lab P2S Combo",
+  "Bambu Lab X2D",
+  "Bambu Lab H2D",
+  "Creality K2 Pro Combo",
+  "QIDI Q2 + QIDI Box",
+  "QIDI Plus5 + QIDI Box"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab X2D (one nozzle)",
+   "label": "Filament wasted per gram of model, multicolour Benchy, one nozzle",
+   "value": "5.8 g waste per g printed (70 g waste for a 12 g model)",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual-nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "Silvio Werner (Notebookcheck) measured about 70 g waste per 12 g model, 52 g of it from flushing. 70 / 12 = 5.8 g/g. Model: 3Designs Multicolor-3D-Benchy. Published 2026-06-10, updated 2026-10-05. This was the X2D run on one nozzle, used as a stand-in for single-nozzle feeder printers such as the P2S or K2 Pro; those printers were not tested."
+  },
+  {
+   "product": "Bambu Lab X2D (both nozzles)",
+   "label": "Filament wasted per gram of model, same Benchy, both nozzles",
+   "value": "1.7 g waste per g printed (20 g waste for a 12 g model)",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual-nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "About 20 g waste, mostly the purge tower. 20 / 12 = 1.7 g/g. Reduction against one nozzle: (70 − 20) / 70 = 71%."
+  },
+  {
+   "product": "Bambu Lab X2D",
+   "label": "Print time, same Benchy, one nozzle vs both nozzles",
+   "value": "5.8 h vs 2.7 h (53% shorter)",
+   "source": "https://www.notebookcheck.net/Bambu-Lab-X2D-in-detail-Dual-nozzle-halves-printing-time-and-drastically-reduces-waste.1319597.0.html",
+   "source_title": "Bambu Lab X2D in detail: Dual-nozzle halves printing time and drastically reduces waste (Notebookcheck, Silvio Werner)",
+   "read": "2026-11-14",
+   "note": "(5.8 − 2.7) / 5.8 = 53%. Notebookcheck also got 1.7 h with priming turned off but said print quality suffered."
+  },
+  {
+   "product": "QIDI Q2 / Plus5 + QIDI Box",
+   "label": "Purge per colour change in QIDI's own worked example",
+   "value": "0.19 g PLA per change (150 mm³); 100 changes ≈ 19 g",
+   "source": "https://qidi3d.com/blogs/guides/how-to-setup-multi-color-3d-printing",
+   "source_title": "How to Set Up Multi-Color 3D Printing With QIDI Box (QIDI guide)",
+   "read": "2026-11-14",
+   "note": "QIDI's example: 100 changes at 150 mm³ ≈ 19 g PLA, at 1.24 g/cm³. 0.150 cm³ × 1.24 = 0.19 g per change. QIDI says QIDI Studio sets the purge for each colour pair, so this is an illustration, not a measurement. Same page: 4 filaments per QIDI Box, up to 4 boxes per printer (16 colours or materials)."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Price today, printer only (QIDI US store)",
+   "value": "$449 (compare-at $649)",
+   "source": "https://qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck search on qidi3d.com. The store lists the printer with 270×270×256 mm build volume, 65 °C active chamber heating, 370 °C nozzle and QIDI Box compatibility. The QIDI Box is not included."
+  },
+  {
+   "product": "QIDI Q2C",
+   "label": "Price today, printer only (QIDI US store)",
+   "value": "$349",
+   "source": "https://qidi3d.com/products/q2c",
+   "source_title": "QIDI Q2C 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck search. 270×270×256 mm, works with the QIDI Box. The store text lists no active chamber heating."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Price today, printer only (QIDI US store)",
+   "value": "$699 (compare-at $899)",
+   "source": "https://qidi3d.com/products/plus5",
+   "source_title": "QIDI Plus5 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck search. 320×320×300 mm, 65 °C active chamber heating, optional QIDI Box."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Price today, printer only (QIDI US store)",
+   "value": "$1,049 (compare-at $1,299)",
+   "source": "https://qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI store",
+   "read": "2026-11-14",
+   "note": "Read with storecheck search. 390×390×340 mm, works with the QIDI Box."
+  }
+ ],
+ "unsourced": [
+  "Today's Bambu Lab US store prices for the P1S Combo, P2S Combo, X2D, H2D and AMS 2 Pro: storecheck returned HTTP 404 for us.store.bambulab.com and store.bambulab.com/en-us, us.store.bambulab.com/products/p2s returned HTTP 402 to WebFetch, and bambulab.com/en-us/p2s returned HTTP 403, so no cost-per-slot or cost-per-gram-saved figure for Bambu.",
+  "Today's Creality K2 Pro Combo price and CFS slot details from store.creality.com: storecheck search and the product URL both returned HTTP 404.",
+  "QIDI Q2 + QIDI Box bundle price and the QIDI Box price on its own: storecheck product and WebFetch both returned HTTP 429.",
+  "Tom's Hardware K2 Plus review purge test (search summary: 121.7 g in Creality Slicer vs 99 g in Bambu Studio over 206 swaps, about 0.59 vs 0.48 g per swap): the page returned only its title to WebFetch and the curl attempt was not approved, so I left it out.",
+  "A measured per-swap purge figure on a P2S, P1S, K2 Pro/CFS or a real QIDI Box print: none found from a maker page or a named reviewer.",
+  "The H2D waste test cited in search summaries (279 g purge, 70 g prime tower vs H2C 41 g and Prusa XL 37 g): no original page found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.8769195000000001
+ }
+}
