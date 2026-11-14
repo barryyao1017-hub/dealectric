@@ -7396,6 +7396,23 @@ PRODUCTS = [
  "fit": 'Insulated ceilings and spotlighting art, where 40° of adjustment is enough.',
  "caveats": ["40° of adjustment, not 90°. On very steep ceilings it can't point straight down.", 'The store page does not state whether it works with wall dimmers. Plan on app or voice dimming.', '2.4 GHz Wi-Fi only.']},
 
+{"slug": 'wiim-amp-ultra',
+ "brand": 'WiiM',
+ "program": 'amazon:us',
+ "asin": 'B0F995W2NG',
+ "category": 'amplifier',
+ "name": 'WiiM Amp Ultra Streaming Amplifier, 100 W/ch into 8 Ω, HDMI ARC with Dolby Digital decoding, subwoofer out',
+ "model": 'WiiM Amp Ultra',
+ "url": 'https://www.amazon.com/dp/B0F995W2NG',
+ "price": None,
+ "verified": '2026-11-14',
+ "specs": [('HDMI', '1× HDMI ARC: stereo PCM and Dolby Digital up to 24-bit/192 kHz; no DTS or Dolby Atmos'), ('Rated power', '100 W/ch into 8 Ω, 200 W/ch into 4 Ω (both channels driven, 0.08% THD)'), ('Other inputs', 'Optical (PCM and Dolby Digital), line in'), ('Subwoofer out', '1× RCA'), ('Phono', 'None; a turntable needs a built-in or external preamp')],
+ "warranty": "1 year from purchase, from WiiM: repair or replacement for defects in materials and workmanship, or a refund if neither is practical. WiiM's terms name wiimhome.com purchases and say warranty support stays available for Amazon and other reseller purchases with proof of purchase (WiiM refund & warranty policy, read 2026-11-14).",
+ "returns": "Bought on Amazon: WiiM says these are returned through Amazon under Amazon's own policy. Bought from wiimhome.com: 30 days from receipt, item undamaged in like-new condition and in its original packaging with all accessories; WiiM pays return shipping (WiiM refund & warranty policy, read 2026-11-14).",
+ "summary": "The lowest-cost stereo amp here that decodes the TV's Dolby Digital over HDMI ARC itself, rated at the same 100 W/ch into 8 Ω as the Marantz MODEL M1.",
+ "fit": "A TV-plus-stereo setup with easy speakers and no turntable, where the TV's digital audio output can be set to Dolby Digital or Stereo PCM.",
+ "caveats": ["Plain ARC, not eARC, and WiiM lists only Stereo PCM and Dolby Digital over it: set the TV's digital audio format to Stereo PCM or Dolby Digital.", 'No DTS or Dolby Atmos (WiiM FAQ).', 'No phono stage.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

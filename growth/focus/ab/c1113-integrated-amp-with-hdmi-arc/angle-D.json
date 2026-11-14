@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a stereo amp's HDMI ARC input takes only 2-channel PCM unless the amp has its own Dolby decoder. Marantz's MODEL 60n manual says 'Only the PCM 2-channel setting can be used to play sound from a TV via the HDMI ARC function… Do not input non-PCM signals, such as Dolby Digital, DTS and AAC. This causes noise and could damage the speakers.' NAD's C 3050 manual says to set eARC devices 'to PCM only'. The Marantz MODEL M1 decodes Dolby Digital and Dolby Digital+ itself.",
+ "standout": 3,
+ "standout_why": "I compared against the cited Marantz MODEL M1 US product page, which I opened. It lists 'Dolby Digital +, Dolby Digital, LPCM, DSD' decoding but never says the other amps lack it or that the TV must be set to PCM. I also checked ChatGPT's answer text: its only caveat is that ARC carries audio, not video. I could not read the cited audiolab.com 7000A page or the cited nadelectronics.com C 3050 page because both returned HTTP 429 on every try. No page ChatGPT got states the PCM-only rule or the 60n's warning about noise and speaker damage.",
+ "decides": "This splits ChatGPT's shortlist in two. The Marantz MODEL M1 decodes Dolby Digital and DD+, so it can take a TV's or streaming app's Dolby bitstream as-is. The Marantz MODEL 60n and NAD C 3050 need the TV's digital audio output set to PCM, 2-channel on the 60n. A TV left on Auto, Bitstream or Passthrough can play nothing, and on the 60n it can play noise that Marantz says can damage speakers. The MODEL M1 is the safer pick for a TV-first buyer. For the 60n or C 3050, the page should tell the buyer to set the TV to PCM before connecting.",
+ "candidates": [
+  "Marantz MODEL M1",
+  "Marantz MODEL 60n",
+  "NAD C 3050",
+  "Audiolab 7000A",
+  "Onkyo Muse Y-40"
+ ],
+ "findings": [
+  {
+   "product": "Marantz MODEL 60n",
+   "label": "HDMI ARC input formats",
+   "value": "PCM 2-channel only. 'Only the PCM 2-channel setting can be used to play sound from a TV via the HDMI ARC function. Set \"PCM 2ch\" as the audio format in the TV settings.'",
+   "source": "https://manuals.marantz.com/MODEL60n/NA/EN/DRDZSYkrcvurxw.php",
+   "source_title": "Marantz MODEL 60n online manual: Connecting to a device with digital audio connectors (NA/EN)",
+   "read": "2026-11-14",
+   "note": "Maker's own North American manual, quoted word for word."
+  },
+  {
+   "product": "Marantz MODEL 60n",
+   "label": "What happens with Dolby or DTS on ARC",
+   "value": "'Do not input non-PCM signals, such as Dolby Digital, DTS and AAC. This causes noise and could damage the speakers.'",
+   "source": "https://manuals.marantz.com/MODEL60n/NA/EN/DRDZSYkrcvurxw.php",
+   "source_title": "Marantz MODEL 60n online manual: Connecting to a device with digital audio connectors (NA/EN)",
+   "read": "2026-11-14",
+   "note": "Same page as above. The same section says TVs without ARC should use optical or coaxial instead."
+  },
+  {
+   "product": "Marantz MODEL M1",
+   "label": "Built-in decoding",
+   "value": "Dolby Digital +, Dolby Digital, LPCM, DSD, with one HDMI eARC input",
+   "source": "https://www.marantz.com/en-us/product/amplifiers/model-m1/300836.html",
+   "source_title": "MODEL M1 - 2 Channel 100W Wireless Streaming Amplifier Powered by HEOS | Marantz - United States",
+   "read": "2026-11-14",
+   "note": "Maker's US product page. Digital inputs listed as 'HDMI (eARC), TOSLINK'. It does not list DTS. Same page shows the price as $1,000."
+  },
+  {
+   "product": "Marantz MODEL M1",
+   "label": "Optical input formats (from the manual)",
+   "value": "2-channel linear PCM at 32–192 kHz, 16/20/24-bit, plus Dolby Digital bitstream",
+   "source": "https://manuals.marantz.com/MODELM1/ALL/EN/FIQOSYjvkborkx.php",
+   "source_title": "Marantz MODEL M1 online manual: Supported audio formats (Optical)",
+   "read": "2026-11-14",
+   "note": "The manual's 'About HDMI' page (https://manuals.marantz.com/MODELM1/ALL/EN/DRDZSYktddytxr.php) has no HDMI format table, so I took the HDMI decode claim from the product page above."
+  },
+  {
+   "product": "Marantz MODEL M1",
+   "label": "Price",
+   "value": "$1,000.00 (Marantz US store)",
+   "source": "https://www.marantz.com/en-us/product/amplifiers/model-m1/300836.html",
+   "source_title": "MODEL M1 | Marantz - United States",
+   "read": "2026-11-14",
+   "note": "Read from the product page. The checkout flow was not tested."
+  },
+  {
+   "product": "NAD C 3050",
+   "label": "HDMI eARC input formats",
+   "value": "'Ensure that the audio setting/format of eARC-connected devices to C 3050 is set to PCM only.' Also: 'Only audio output signal from TV is supported by HDMI eARC port.'",
+   "source": "https://www.manualslib.com/manual/3075866/Nad-C3050.html",
+   "source_title": "NAD C3050 Stereophonic Amplifier Manual (ManualsLib copy of NAD's owner's manual)",
+   "read": "2026-11-14",
+   "note": "This is a third-party copy of NAD's owner's manual, not NAD's own site. NAD's PDFs could not be read as text, and nadelectronics.com returned HTTP 429. The same section covers CEC Power: 'CEC Power allows the C 3050 to be powered up or down by an external TV connected via HDMI eARC port.'"
+  },
+  {
+   "product": "general",
+   "label": "Why a stereo amp on ARC goes silent",
+   "value": "Cambridge Audio's FAQ: 'Usually the TV is sending Dolby or surround sound… Set the TV's audio to PCM or Stereo. The Evo One plays 2-channel PCM only… If Netflix or Prime Video is silent, change the app's audio setting too.'",
+   "source": "https://www.cambridgeaudio.com/eur/en/faqs/there-no-soundsignal-evo-one-when-connected-my-tv-arcearc",
+   "source_title": "There is no sound/signal from the Evo One when connected to my TV via ARC/eARC | Cambridge Audio",
+   "read": "2026-11-14",
+   "note": "A maker explains the failure for its own stereo amp. Cambridge's Evo One is not one of the candidates. I use it only to show the general mechanism, including that streaming apps can override the TV's PCM setting."
+  }
+ ],
+ "unsourced": [
+  "Audiolab 7000A HDMI ARC formats (PCM-only or not, sample rates): audiolab.com, audiolab.co.uk/7000a and audioadvisor.com all returned HTTP 429. The hifi-regler copy of the manual and the manuals.plus copy were a PDF I could not read as text and a 403. A search snippet said the 7000A does not decode Dolby or DTS, but I could not open that page, so I left it out.",
+  "Onkyo Muse Y-40 HDMI ARC formats: onkyo.com/intl lists only 'Digital Audio Input: HDMI ARC' and gives no formats or CEC details. I could not read the spec sheet PDF as text.",
+  "NAD C 3050 PCM-only rule on NAD's own site: nadelectronics.com returned 429 and the moon-audio copy of the Quick Start Guide could not be read as text, so that finding rests on the ManualsLib copy of the manual.",
+  "Marantz MODEL M1 manual's own HDMI eARC format table, including DTS handling: the manual's 'About HDMI' page has none, and the infosheet PDF could not be read as text.",
+  "US store prices for the 60n, C 3050, 7000A and Y-40: not checked because of the tool-call budget and the 429s."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0874207999999999
+ }
+}
