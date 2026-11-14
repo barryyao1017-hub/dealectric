@@ -1,0 +1,137 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much power these whole-home stations use just sitting on with nothing plugged in. The Solar Lab measured about 58 W for the Jackery Explorer 5000 Plus, which is about 1.4 kWh a day. It measured about 20 W for the BLUETTI Apex 300. pv magazine USA (Andrew Riha) measured about 10 W for the Anker SOLIX S5000, which lost 5% charge in 24 h. Over a 3-day outage that difference is about 3.5 kWh, close to one whole station's capacity.",
+ "standout": 3,
+ "standout_why": "I compared against the cited pages: itechguides buying guide, itechguides sizing guide, outagereadyhq transfer-switch guide and calcpanel sizing guide. I also checked the top-ranked IES and solar-electric results by title. None of the cited pages reports an independent measurement. itechguides repeats Amazon vendor specs, such as a 6 W idle claim for the Anker S2000, and says it did no lab testing. calcpanel uses an assumed 0.95 discharge efficiency and does not cover idle draw. outagereadyhq lists only maker specs, such as Jackery's 20 ms switchover. None gives measured usable Wh, inverter efficiency or idle draw for the DELTA Pro 3, F3800 Plus or Explorer 5000 Plus that ChatGPT showed as cards. I could not open the Popular Mechanics page, which was uncited.",
+ "decides": "For multi-day outages it shifts the pick. At 58 W idle, the Jackery 5000 Plus loses about 4.2 kWh in 72 h to standby alone (58 W × 72 h), about 83% of its 5,040 Wh nameplate. That cancels its capacity lead over the Anker SOLIX S5000, at about 10 W × 72 h = 0.72 kWh. The S5000 is on Dealectric; pv magazine ran a large fridge plus phones on it for 61.5 h on one charge. The Apex 300, also on Dealectric, measured about 20 W idle, so it is the lower-cost low-idle option. On delivered energy, OutdoorGearLab measured 3,790 Wh (93%) from the DELTA Pro 3. The Solar Lab measured 89% efficiency for the DELTA Pro 3 and 84% for the F3800 Plus. So on efficiency the DELTA Pro 3 beats the F3800 Plus that ChatGPT showed beside it. I could not source idle draw for either the DELTA Pro 3 or the F3800 Plus, so the idle comparison covers only the Jackery, S5000 and Apex 300.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw, inverter on, no load (measured by The Solar Lab)",
+   "value": "about 58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab says the unit was 'sitting around 58W per hour' with the inverter on and no load, and estimates about 3.5 days of idle runtime. The page shows no reviewer name and no date, only a © 2026 footer. Arithmetic: 58 W × 24 h = 1.39 kWh/day, about 28% of the 5,040 Wh nameplate per day."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Surge test (The Solar Lab)",
+   "value": "Ran 8,000 W and 9,500 W loads for 20–30 s; struggled to start an AC unit with a 10,000 W surge",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Jackery claims a 14,000 W surge. The AC unit settled at about 3,000 W continuous after starting."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Idle loss, 120 V output on, nothing connected (pv magazine USA, Andrew Riha)",
+   "value": "5% state of charge per 24 h, about 10 W",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "Anker Solix S5000 deep-dive review: 5 kWh on wheels, tested through a real power outage (pv magazine USA, 2026-10-28)",
+   "read": "2026-11-13",
+   "note": "Riha calls this consistent with Anker's 8.8 W rating, since the display shows only whole percentages. Arithmetic: 0.05 × 5,024 Wh ≈ 251 Wh per 24 h ≈ 10.5 W. Plugged in and full, it drew about 7 W from the wall."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Energy delivered on full discharge, app-reported (pv magazine USA, Andrew Riha)",
+   "value": "4.87 kWh (97% of the 5,024 Wh nameplate)",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "Anker Solix S5000 deep-dive review (pv magazine USA, 2026-10-28)",
+   "read": "2026-11-13",
+   "note": "Riha did not meter the output; the figure is the app's reading. Round trip was 78%: 4.87 kWh out against 6.24 kWh drawn from the wall at the 1,800 W charge setting. The article first ran on ESS News on 2026-10-25."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Real outage runtime (pv magazine USA, Andrew Riha)",
+   "value": "61.5 h on a large refrigerator plus phones and small devices, 100% to 18%",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "Anker Solix S5000 deep-dive review (pv magazine USA, 2026-10-28)",
+   "read": "2026-11-13",
+   "note": "Ran during a PG&E Public Safety Power Shutoff. My arithmetic: 0.82 × 5,024 Wh ≈ 4,120 Wh over 61.5 h ≈ 67 W average, idle included."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "AC charge time at the 1,800 W setting (pv magazine USA, Andrew Riha)",
+   "value": "about 3 h 39 min, 0–100%",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "Anker Solix S5000 deep-dive review (pv magazine USA, 2026-10-28)",
+   "read": "2026-11-13",
+   "note": "Wall draw held at about 1.79 kW for 2 h 49 min, then about 1.43 kW for the last 50 min. I added the two phases to get the total."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "about 20 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab writes that 'a single Apex 300 had an idle draw of right around 20W'. The page shows no reviewer name and no date. Arithmetic: 20 W × 24 h = 0.48 kWh/day, about 17% of the 2,764.8 Wh nameplate."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Inverter efficiency (The Solar Lab)",
+   "value": "about 85%",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Measured across 'a variety of loads' through the six AC outlets; the page does not list the loads."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Usable energy delivered (Outdoor Life, Laura Lancaster)",
+   "value": "2,290 Wh (83% of the 2,765 Wh claimed)",
+   "source": "https://outdoorlife.com/gear/bluetti-apex-300-the-latest-entry-in-the-stackable-power-station-wars",
+   "source_title": "Bluetti Apex 300: The Latest Entry in the Stackable Power Station Wars (Outdoor Life, 2025-05-20)",
+   "read": "2026-11-13",
+   "note": "High-draw test with a dehumidifier as the load, measured with a Kill-a-Watt meter. Full AC charge took about 2 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Usable energy delivered (OutdoorGearLab, Kenji Mowrey)",
+   "value": "3,790 Wh (93% of the 4,096 Wh rating)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 review (OutdoorGearLab, 2026-01-13)",
+   "read": "2026-11-13",
+   "note": "Measured with OutdoorGearLab's test jig; the load profile is not stated. Charging peaked at about 1,600 W and averaged 1,293 Wh/hr. The spec table gives 3.2 h to charge."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Efficiency, AC charge time and surge (The Solar Lab, Cody & Robbie)",
+   "value": "89% efficiency at a 3,650 W load; AC charge 2 h 54 min; held 5,100 W for nearly a minute",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-3-review",
+   "source_title": "EcoFlow DELTA PRO 3 Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Ran 60 min at a sustained 3,650 W. The 2 h 54 min charge is slower than the advertised 2 h 20 min. Reviewer names appear on https://www.thesolarlab.com/quiz-results/ecoflow-delta-pro-3-power-station; neither page shows a date."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Inverter efficiency (The Solar Lab, Cody & Robbie)",
+   "value": "84%",
+   "source": "https://www.thesolarlab.com/quiz-results/anker-solix-f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (The Solar Lab results page)",
+   "read": "2026-11-13",
+   "note": "Measured by running the 6,000 W inverter hard from a full charge; the exact load is not stated. No date shown. The full Solar Lab review page has no measured figures and promises a deeper test later."
+  }
+ ],
+ "unsourced": [
+  "Idle draw for the EcoFlow DELTA Pro 3 and the Anker SOLIX F3800 Plus. I checked OutdoorGearLab, both Solar Lab DELTA Pro 3 pages, both Solar Lab F3800 Plus pages and a targeted search; none gave a measured figure. A PCMag 30–40 W figure appeared only in a search snippet from backuppowerhub, and I did not open it.",
+  "Measured usable Wh for the Jackery Explorer 5000 Plus and the Anker SOLIX F3800 Plus. The Solar Lab pages give only efficiency or nameplate. StorageReview's 2.98 kWh is for the original F3800, not the Plus, and I did not open it.",
+  "Measured noise in dB for any candidate. OutdoorGearLab and The Solar Lab describe noise only in words.",
+  "The Popular Mechanics whole-home power station roundup, an uncited result. I could not fetch it, so I could not check whether it has lab figures.",
+  "The Solar Lab's '>70 W' estimate for the original Anker F3800. I saw it only in a search snippet, did not open the page, and it is not the Plus model."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0016703000000002
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX F3800 Plus, one of the two units it showed, works as a UPS only through its three leftmost NEMA 5-20R outlets, which have a 1,440 W bypass limit and a 20 ms switching time, or that its 240 V output cannot be used while the unit is charging from a 120 V wall outlet. So a plug-in-and-forget setup covers 120 V loads such as a fridge, Wi-Fi and lights, but not a 240 V well pump or a 240 V transfer-switch feed.",
+ "standout": 2,
+ "standout_why": "I read all five cited pages that I could open and compared them against this. itechguides sizing guide: it covers compressor surge and quotes only a DELTA Pro Ultra '0-ms' listing line. itechguides buying guide: it gives a general 120/240 V split-phase line and a '10ms UPS' listing blurb. outagereadyhq: it gives Jackery Smart Transfer Switch '20 ms' and covers which Anker switch fits one or two F3800 Plus units. ankersolix blog: it gives E10 '20 milliseconds'. calcpanel: it has no switchover or voltage material. None of them says which F3800 Plus outlets are UPS-protected, gives the 1,440 W bypass limit, or says 240 V is unavailable while the unit charges from 120 V. On neutral-ground bonding, none of the cited pages mentions it. The uncited watt48 (rank 7) says only that the unit's bonded neutral 'decides which kind of transfer equipment fits' and gives no status for any model. The cited PG&E PDF was not opened, so whether it mentions bonding is unchecked.",
+ "decides": "This splits the shopper's two likely plans. (1) Leave the station plugged into the wall as an automatic UPS for the fridge and router: the F3800 Plus works if those loads stay on the three leftmost 5-20R outlets and under 1,440 W. (2) Use it for 240 V loads (well pump, transfer switch L14-30 feed) during an outage: that happens only on battery, after it is unplugged from 120 V charging, so it is not seamless. Before buying for a transfer switch, the shopper should check the station's neutral-ground bond against the switch. EcoFlow itself says an accidental neutral-ground connection can trip a GFCI. The finding confirms the F3800 Plus for 120 V essentials-UPS use and weakens it as a seamless 240 V backup. I could not get equivalent maker figures for the DELTA Pro 3 or Explorer 5000 Plus, so it does not yet rank them.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "UPS-protected outlets and bypass limit on wall power",
+   "value": "3 leftmost NEMA 5-20R outlets; 1,440 W bypass limit",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US product page, FAQ Q5)",
+   "read": "2026-11-13",
+   "note": "FAQ Q5, Condition 4 (no generator; plugged into a 120 V wall outlet): 'NEMA 5-20R (3 Leftmost Ports, UPS): Output available with bypass limit of up to 1,440W.'"
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "UPS switching time on wall power",
+   "value": "20 ms",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US product page, FAQ Q5)",
+   "read": "2026-11-13",
+   "note": "FAQ Q5, Condition 4: 'Switching Time: 20 ms'. The page lists 30 ms and 50 ms only for generator transitions."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging from 120 V AC",
+   "value": "Not available (240 V output blocked while charging from 120 V AC)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US product page)",
+   "read": "2026-11-13",
+   "note": "Verbatim: '(Note: The 240V output cannot be used while the device is charging via 120V AC.)'"
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V transfer-switch port",
+   "value": "NEMA L14-30R, 120/240 V, 25 A max, 6,000 W max",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US product page)",
+   "read": "2026-11-13",
+   "note": "Spec line: 'AC Output (NEMA L14-30R): 120V/240V~ 25A Max, 60Hz, 6000W Max'. FAQ Q4: 'Use the F3800 Plus's L14-30R AC output port to deliver up to 6,000W (240V)' to a transfer switch or inlet box."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "US store availability",
+   "value": "Sold Out on Anker SOLIX US; no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station (Anker SOLIX US product page)",
+   "read": "2026-11-13",
+   "note": "The page showed 'Price Loading' and 'Sold Out'. ChatGPT's card showed $2,999.99, which could not be re-verified today."
+  },
+  {
+   "product": "general",
+   "label": "Neutral-ground bond mismatch with transfer equipment",
+   "value": "Accidental neutral-ground connection can trip a GFCI; mismatched setup creates unwanted current paths",
+   "source": "https://www.ecoflow.com/us/blog/floating-neutral-generator",
+   "source_title": "Floating Neutral Generator: What It Means and Why It Matters (EcoFlow, 2026-09-24)",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'If neutral and ground connect by accident, the GFCI might trip, even if the generator is working well.' Also: 'Using a mismatched setup with the transfer equipment can create unwanted current paths' and 'Some equipment switches the neutral, but other systems keep it connected.' The page gives no bonding status for any specific EcoFlow station."
+  }
+ ],
+ "unsourced": [
+  "Neutral-ground bonding status (bonded, floating or switchable) of the Anker SOLIX F3800 Plus. Anker's product page has none. The manual PDF hosted at signaturesolar.com would not extract via fetch, device.report returned 403, and the only statements found were DIY Solar Forum user reports, which were not used.",
+  "Neutral-ground bonding status of the EcoFlow DELTA Pro 3. EcoFlow's floating-neutral blog does not name the model, the ecoflow.com/us product page returned only navigation, us.ecoflow.com returned HTTP 429, and only forum posts were found.",
+  "Neutral-ground bonding status of the Jackery Explorer 5000 Plus. The US manual PDF on Jackery's Shopify CDN would not extract. The Jackery 306A transfer-switch page, which a search snippet says is meant for floating-neutral generators, returned HTTP 429.",
+  "UPS-protected outlets, bypass limit and 240 V-while-charging behavior for the EcoFlow DELTA Pro 3 and Jackery Explorer 5000 Plus. Their US product pages returned HTTP 429 (EcoFlow also via storecheck.py).",
+  "Same UPS and 240 V data for Dealectric-listed Anker SOLIX S5000 and BLUETTI Apex 300. ankersolix.com/products/s5000 returned 404, storecheck search on ankersolix.com returned 404, and bluettipower.com/products/apex-300 hit a redirect loop.",
+  "Current US prices for the EcoFlow DELTA Pro 3 ($3,399.00 on ChatGPT's card) and Jackery Explorer 5000 Plus ($3,149.00 on ChatGPT's card). The maker stores returned HTTP 429 today."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9458976000000001
+ }
+}

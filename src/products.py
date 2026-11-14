@@ -6448,6 +6448,23 @@ PRODUCTS = [
  "fit": 'Adding storage to a Sun Gold Power 48 V kit without changing the inverter or panels.',
  "caveats": ['The store sells a 2-pack at $1,953 and a 4-pack at $3,888 (2026-11-13) if you need more than one.']},
 
+{"slug": 'bluetti-apex-300-b300k',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'power-station',
+ "name": 'BLUETTI Apex 300 + B300K Home Battery Backup Bundle (5,529.6 Wh LiFePO4, 3,840 W)',
+ "model": 'Apex 300 + B300K',
+ "url": 'https://www.bluettipower.com/products/apex-300-b300k',
+ "price": 2599.0,
+ "verified": '2026-11-13',
+ "specs": [('Capacity', '5,529.6 Wh LiFePO4 (Apex 300 2,764.8 Wh + B300K)'), ('AC output', '3,840 W continuous'), ('Idle loss (BLUETTI)', '20 W'), ('Cycle life (Apex 300)', '6,000 cycles to 80%'), ('Voltage', 'BLUETTI lists 120 V and 240 V devices'), ('Shipping', 'BLUETTI says the Apex 300 is expected to ship in late January (bluettipower.com, 2026-11-13)')],
+ "warranty": '5 years (proof of purchase from an official store)',
+ "returns": '30-day money-back for unused items in the original package; buyer pays return shipping',
+ "summary": 'The lowest price per kWh in the 5 kWh home-backup tier at $470/kWh.',
+ "fit": 'For running a refrigerator, Wi-Fi and lights through a multi-day outage at the lowest cost per kWh.',
+ "caveats": ["20 W idle uses 1.44 kWh over 72 hours, twice the Anker SOLIX S5000's loss.", "3,840 W output is lower than the S5000's 4,500 W and the Jackery 5000 Plus's 7,200 W.", 'The Solar Lab says a single Apex 300 switches between 120 V and 240 V output with a front-panel switch, and that running 240 V reduces the inverter output available.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

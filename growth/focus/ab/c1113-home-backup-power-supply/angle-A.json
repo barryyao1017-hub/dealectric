@@ -1,0 +1,109 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how much power each 120 V leg gets when a split-phase power station feeds a transfer switch through its L14-30 port. Anker says the F3800 Plus's 6,000 W L14-30R is a 25 A port, which works out to 3,000 W per leg, and its TT-30R only gets power from leg L1. The EcoFlow DELTA Pro 3's 4,000 W total over 240 V works out to about 2,000 W per leg, and it runs its 120 V inverter or its 240 V inverter, not both at once.",
+ "standout": 2,
+ "standout_why": "I read three of the results ChatGPT got: two itechguides pages (both cited) and outagereadyhq (cited). outagereadyhq lists amp ratings for the transfer switches and total watts for the Jackery 5000 Plus (7,200 W) and Anker S5000 (4,500 W), but gives no per-leg wattage or amps. itechguides' sizing page gives the DELTA Pro Ultra's 7,200 W as a total only. itechguides' buying guide gives cycle life to 70% for small Jackery units only, gives Anker S2000 cycles with no end point, and says nothing about 240 V beyond 'confirm split-phase'. None of them gives cycle life for the large home-backup units with the capacity end point attached. I did not open calcpanel, the ankersolix blog or the PG&E PDF.",
+ "decides": "Through a transfer switch most house loads (fridge, furnace blower, sump pump, microwave) are 120 V, and each one sits on one leg. So the per-leg figure, not the headline wattage, decides whether a fridge plus a microwave on the same leg trips the unit. On per-leg power the F3800 Plus (3,000 W per leg) beats the DELTA Pro 3 (about 2,000 W per leg), even though the DELTA Pro 3's 4,000 cycles to 80% is the only cycle-life figure I sourced with its end point. Anker gives the F3800 Plus as '3,000+ cycles' and the S5000 as '10,000 cycles', with no end point for either, so as published those two counts cannot be compared with EcoFlow's.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX S5000"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "L14-30R 240 V output rating",
+   "value": "25 A, 6,000 W max at 120/240 V",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Maker's US spec section. Per-leg figure: 25 A × 120 V = 3,000 W on each leg, i.e. 6,000 W ÷ 2."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "TT-30R output rating and leg",
+   "value": "120 V, 25 A, 3,000 W max, from leg L1 only (no output on L2)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-13",
+   "note": "The page states the L1-only limit in the 120 V generator-input context. In bypass from a wall outlet, the TT-30R and UPS 5-20R outlets are capped at 1,440 W."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "NEMA 5-20R outlet rating",
+   "value": "120 V, 20 A, 2,400 W max",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Maker spec. The page lists no surge figure."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Cycle life as stated",
+   "value": "3,000+ cycles, LFP; no capacity end point given",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-13",
+   "note": "The page also says '10+ years of lifespan'. Without an end point this cannot be compared with EcoFlow's cycles-to-80% figure."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "UPS switchover / AC charging input",
+   "value": "20 ms (UPS 5-20R outlets, unit on 120 V wall power); AC input 1,800 W max (bypass 1,440 W)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-13",
+   "note": "Page showed 'Sold Out' and no price."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "AC output, rated and peak",
+   "value": "4,500 W max rated, 8,000 W peak, 120/240 V; no per-outlet or per-leg rating given",
+   "source": "https://www.ankersolix.com/s5000",
+   "source_title": "Anker SOLIX S5000",
+   "read": "2026-11-13",
+   "note": "If the 4,500 W total is split evenly over 240 V: 4,500 ÷ 240 = 18.75 A per leg, about 2,250 W per 120 V leg. This is my arithmetic, not an Anker figure."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Cycle life as stated / UPS / AC input",
+   "value": "10,000 cycles, no end point; UPS switchover ≤10 ms; AC input 1,800 W at 120 V, 4,500 W at 240 V",
+   "source": "https://www.ankersolix.com/s5000-home-backup-power",
+   "source_title": "Anker SOLIX S5000 Home Backup Power",
+   "read": "2026-11-13",
+   "note": "Both Anker S5000 pages I opened give '10,000 Cycles' with no capacity percentage."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Cycle life with end point",
+   "value": "4,000 cycles to 80% capacity (0.5C, 25 °C / 77 °F)",
+   "source": "https://nooutage.com/delta_pro3.htm",
+   "source_title": "NoOutage.com: EcoFlow DELTA Pro 3",
+   "read": "2026-11-13",
+   "note": "Dealer and reviewer spec page, last updated 2025-02-15; it says the dealer no longer sells the item. EcoFlow's US product page returned HTTP 429 and its ecoflow.com/us page had no specs."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "AC output and inverter mode",
+   "value": "4,000 W continuous, 8,000 W surge (6,000 W with X-Boost); one inverter active at a time, user selects 120 V or 240 V",
+   "source": "https://nooutage.com/delta_pro3.htm",
+   "source_title": "NoOutage.com: EcoFlow DELTA Pro 3",
+   "read": "2026-11-13",
+   "note": "Per leg in 240 V mode: 4,000 W ÷ 240 V = 16.7 A, about 2,000 W per 120 V leg (my arithmetic). Receptacles listed: 4× 5-20R 20 A 120 V, 1× TT-30R 30 A 120 V, 6-20R 20 A 240 V, 1× L14-30R 30 A 120/240 V. UPS switchover 10 ms; AC input C20, 15 A."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 5000 Plus: the cycle-life end point (search snippets say 4,000 cycles to 70%), the per-leg amps on its L14-30/14-50 port, and its UPS times. jackery.com returned HTTP 429 three times, and the US manual PDF on Jackery's Shopify CDN downloaded as compressed binary I could not extract.",
+  "EcoFlow DELTA Pro 3 per-outlet amps from EcoFlow itself: a search snippet quoting the manual gives the L14-30 as 16.7 A, but us.ecoflow.com returned HTTP 429, one EN manual copy returned 404, the other was larger than 10 MB, and B&H returned 403.",
+  "Anker SOLIX S5000 cycle life to 80% / 60%: a search snippet says an Anker page gives 6,000 cycles to 80% and 10,000 to 60%, but both Anker S5000 pages I opened give only '10,000 Cycles'.",
+  "Prices for today (2026-11-13): the Anker F3800 Plus page showed 'Sold Out' with no price, and storecheck returned HTTP 429 for EcoFlow and Jackery and HTTP 404 for the Anker SOLIX store. So the prices ChatGPT showed ($3,399 DELTA Pro 3, $2,999.99 F3800 Plus, $3,149 Explorer 5000 Plus) are not verified.",
+  "BLUETTI Apex 300 specs: bluettipower.com/products/apex-300 failed with too many redirects."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0196105999999998
+ }
+}
