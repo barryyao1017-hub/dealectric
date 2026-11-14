@@ -211,6 +211,20 @@ def sanitize(draft: dict) -> list[str]:
             if r.get("slug") == p["slug"]:
                 r.pop("slug")
                 r.update({"brand": p["brand"], "model": r.get("model") or p.get("model") or p["name"], "url": p.get("url")})
+    for p in list(draft.get("products") or []):
+        if p["slug"] in known:   # an earlier page of the run already added this record: the rows keep pointing at it
+            draft["products"].remove(p)
+            notes.append(f"{p['slug']}: already listed, record reused")
+            continue
+        u = str(p.get("url") or "")
+        if u.startswith("https://www.ankersolix.com/products/"):   # the cart lives on the Shopify host us.ankersolix.com
+            alt = u.replace("https://www.ankersolix.com/", "https://us.ankersolix.com/").split("?")[0]
+            import subprocess
+            code = subprocess.run(["curl", "-s", "-m", "30", "-o", "/dev/null", "-w", "%{http_code} %{content_type}", "-A", "Mozilla/5.0",
+                                   alt.rstrip("/") + ".js"], capture_output=True, text=True).stdout
+            if code.startswith("200") and "javascript" in code:
+                p["url"] = alt
+                notes.append(f"{p['slug']}: url moved to us.ankersolix.com")
     for k in list(draft.get("new_categories") or {}):   # the category key is capped at 20 characters
         if len(k) > 20:
             parts = k.split("-")
