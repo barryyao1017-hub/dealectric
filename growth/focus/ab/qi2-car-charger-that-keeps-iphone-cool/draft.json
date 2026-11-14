@@ -47,7 +47,7 @@
     ]
    ],
    "warranty": "12 months, 24 months with registration (ESR Help Center)",
-   "returns": null,
+   "returns": "30 days from purchase on esrtech.com for any reason; item undamaged and returned complete in undamaged original packaging; buyer pays return shipping (ESR refund policy)",
    "summary": "Fan-cooled Qi2.2 vent mount. MobileReviews Eh! ranked it first of 11 with 19.1 W into an iPhone 17 Pro battery at a 35.3 °C peak.",
    "fit": "iPhone 16 Plus, 16 Pro Max, 17, 17 Pro/Pro Max or 18 Pro owners with bladed vents who want the most charge per minute.",
    "caveats": [
@@ -85,8 +85,8 @@
      "13.5 W into battery, 42.5 °C peak (MobileReviews Eh!)"
     ]
    ],
-   "warranty": null,
-   "returns": null,
+   "warranty": "2-year (24-month) limited warranty from date of delivery (UGREEN warranty policy)",
+   "returns": "30 calendar days from delivery on ugreen.com; item complete, unused-looking and in clean original packaging; buyer pays return shipping for non-defect returns (UGREEN refund policy)",
    "summary": "UGREEN's uncooled 25 W vent mount, the baseline its cooled MagFlow Pro was tested against.",
    "fit": "Short drives where heat is not a concern and the budget is tight.",
    "caveats": [
@@ -181,6 +181,10 @@
     "https://www.esrtech.com/en-gb/apps/help/product/2b528"
    ],
    [
+    "ESR returns: 30 days from purchase, buyer pays return shipping (read 2026-11-14)",
+    "https://www.esrtech.com/policies/refund-policy"
+   ],
+   [
     "Watts into battery, efficiency, peak surface temperature, test method, W778 listing B0G5XYDFST, ESR 58 W adapter included, no adapter with UGREEN 55967 or W778, Spigen Peltier cooling",
     "https://www.mobilereviews-eh.ca/top-3-qi2-25w-car-chargers-for-iphone-18-pro-duo-tested-ranked/"
    ],
@@ -195,6 +199,14 @@
    [
     "UGREEN MagFlow 25W car charger price $39.99 on 2026-11-13",
     "https://us.ugreen.com/products/25w-magnetic-car-charger"
+   ],
+   [
+    "UGREEN warranty: 2-year (24-month) limited warranty from delivery (read 2026-11-14)",
+    "https://us.ugreen.com/pages/warranty"
+   ],
+   [
+    "UGREEN returns: 30 calendar days from delivery, customer pays return shipping for non-quality returns (read 2026-11-14)",
+    "https://us.ugreen.com/policies/refund-policy"
    ],
    [
     "UGREEN W778 described as TEC + fan vent mount needing a 45 W (15 V/3 A) input",
@@ -233,5 +245,23 @@
  ],
  "query": "which qi2 magnetic car charger keeps an iphone cool and charging at full speed",
  "verified_changes": 3,
- "verified_removed": 0
+ "verified_removed": 0,
+ "fix_pass": {
+  "errors": [
+   "esr-omnilock-qi2-25w-cryoboost-car-charger: missing returns",
+   "ugreen-magflow-25w-magnetic-car-charger: missing warranty",
+   "ugreen-magflow-25w-magnetic-car-charger: missing returns"
+  ],
+  "log": [
+   "esr-omnilock-qi2-25w-cryoboost-car-charger returns: set to 30 days from purchase on esrtech.com, for any reason, item undamaged and complete in undamaged original packaging, buyer pays return shipping. Source: https://www.esrtech.com/policies/refund-policy, read 2026-11-14. The policy has no separate US section, so these site-wide terms apply. Added to sources.",
+   "ugreen-magflow-25w-magnetic-car-charger warranty: set to a 2-year (24-month) limited warranty from date of delivery. Source: https://us.ugreen.com/pages/warranty, read 2026-11-14. The us.ugreen.com site banner also says '2-Year Product Warranty'. The product page itself returned HTTP 429 (Too Many Requests) to both WebFetch and storecheck.py, so I couldn't check a product-specific line there. Added to sources.",
+   "ugreen-magflow-25w-magnetic-car-charger returns: set to 30 calendar days from delivery on ugreen.com, item complete and showing no wear, packaging clean and intact, customer pays return shipping for non-defect returns. Source: https://us.ugreen.com/policies/refund-policy, read 2026-11-14. Added to sources.",
+   "No other fields, rows, prices or page text changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-14",
+  "pass": true,
+  "g": null
+ }
 }
