@@ -1,0 +1,98 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much battery a 12 V split-phase inverter uses just sitting idle. The AIMS 4000 W 12 V split-phase unit that ChatGPT showed (Outbound Power, $1,949) is listed at 50 W idle. That is 50 W × 24 h ÷ 12.8 V ≈ 94 Ah a day, nearly a whole 100 Ah 12 V LiFePO4 battery gone with no load. Two Victron MultiPlus-II 12/3000 units, the pair needed for 240 V, use about 56 Ah a day (15 Ah in search mode).",
+ "standout": 2,
+ "standout_why": "I compared against the cited Victron 'help me choose' page, which has no idle, current-draw or cost figures, and the cited Victron MultiPlus-II 2x120V product page, whose visible spec table lists power and weight but no zero-load power. In ChatGPT's results, Victron's datasheet or manual may carry the 15 W per-unit zero-load figure. But no rival turns it into Ah per day, doubles it for the two-unit split-phase setup, or gives any idle figure for the AIMS or Sun Gold Power units on ChatGPT's cards. ChatGPT's own answer gave only the ~370 A full-load draw.",
+ "decides": "For an off-grid cabin or RV bank that stays on all day, idle draw matters more than the 4,000 W rating. On paper the AIMS unit costs nearly a 100 Ah battery a day at idle, so its 21 W power-saver mode (≈39 Ah a day) is required. The Victron pair is the lowest-idle way to get true 120/240 V (8 W in search mode ≈ 15 Ah a day), but it takes two units weighing 100 lb. Sun Gold Power is the cheapest at $0.23 per watt today, but its idle draw is unsourced, so the lowest-drain claim can't be checked for it. Also, its price today is $936, not the $624 ChatGPT showed.",
+ "candidates": [
+  "Sun Gold Power 4000W 12V Split Phase Pure Sine Wave Inverter With Charger",
+  "AIMS Power 4000W 12V Pure Sine Inverter Charger, split-phase 120/240 VAC output, 120 VAC input (PICOGLF4012120240VS)",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V (two units for split phase)"
+ ],
+ "findings": [
+  {
+   "product": "AIMS Power 4000W 12V split-phase (PICOGLF4012120240VS)",
+   "label": "Idle draw per day at 12.8 V nominal LiFePO4",
+   "value": "≈94 Ah/day (1,200 Wh/day)",
+   "source": "https://invertersrus.com/?p=98093",
+   "source_title": "AIMS Power 4000 Watt Pure Sine Inverter Charger 12Vdc / 120Vac Input & 120/240Vac Split Phase Output",
+   "read": "2026-11-13",
+   "note": "The page states 'Idle Consumption: 50 Watts'. 50 W × 24 h = 1,200 Wh ÷ 12.8 V = 93.75 Ah/day. This is a retailer page because the maker's page returned 404."
+  },
+  {
+   "product": "AIMS Power 4000W 12V split-phase (PICOGLF4012120240VS)",
+   "label": "Idle draw per day in power-saver mode",
+   "value": "≈39 Ah/day (504 Wh/day)",
+   "source": "https://invertersrus.com/?p=98093",
+   "source_title": "AIMS Power 4000 Watt Pure Sine Inverter Charger 12Vdc / 120Vac Input & 120/240Vac Split Phase Output",
+   "read": "2026-11-13",
+   "note": "The page states 'Power Saver Mode Idle Consumption: 21 Watts'. 21 W × 24 h = 504 Wh ÷ 12.8 V = 39.4 Ah/day."
+  },
+  {
+   "product": "AIMS Power 4000W 12V split-phase (PICOGLF4012120240VS)",
+   "label": "Battery current at full 4,000 W output",
+   "value": "≈379 A DC",
+   "source": "https://invertersrus.com/?p=98093",
+   "source_title": "AIMS Power 4000 Watt Pure Sine Inverter Charger 12Vdc / 120Vac Input & 120/240Vac Split Phase Output",
+   "read": "2026-11-13",
+   "note": "The page lists nominal efficiency >88% (peak). 4,000 W ÷ (0.88 × 12 V) = 379 A. Unit weight is 75 lb, so 4,000 ÷ 75 = 53 W/lb. Split-phase 120/240 Vac output at 60 Hz. Low-battery trip is 10.0–10.5 Vdc."
+  },
+  {
+   "product": "AIMS Power 4000W 12V split-phase (PICOGLF4012120240VS)",
+   "label": "Price and cost per continuous watt (the retailer ChatGPT showed)",
+   "value": "$1,949 → $0.49/W",
+   "source": "https://outboundpower.com/products/aims-power-4000-watt-12-volt-pure-sine-inverter-charger-charges-at-120-vac",
+   "source_title": "AIMS Power 4000 Watt 12 Volt Pure Sine Inverter Charger | Split Phase 120/240VAC Output | 120VAC Input",
+   "read": "2026-11-13",
+   "note": "Read through the Shopify store search (storecheck), in stock. $1,949 ÷ 4,000 W = $0.487/W. The 240 VAC-input version is $1,695 at the same store."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50 2x120V",
+   "label": "Inverter output when running from battery",
+   "value": "120 VAC single phase only; 240 V only when fed by a 120/240 V source",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "The page states: '240VAC is only available when the MultiPlus is supplied by a split phase 120/240VAC source.' So true 240 V from a 12 V battery needs two units configured as a split-phase pair."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50 2x120V (two units for split phase)",
+   "label": "Idle draw per day for the two-unit split-phase pair",
+   "value": "≈56 Ah/day standard; ≈38 Ah/day AES; ≈15 Ah/day search mode",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_2x120V/en/technical-specifications-mp-ii-2x120v.html",
+   "source_title": "MultiPlus-II 2x120V technical specifications",
+   "read": "2026-11-13",
+   "note": "Zero-load power is 15 W, 10 W in AES and 4 W in search mode, per unit. Standard: 2 × 15 W × 24 h = 720 Wh ÷ 12.8 V = 56 Ah. AES: 2 × 10 × 24 = 480 Wh → 37.5 Ah. Search: 2 × 4 × 24 = 192 Wh → 15 Ah."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50 2x120V (two units for split phase)",
+   "label": "Split-phase pair: continuous power, weight and full-load battery current",
+   "value": "4,800 W at 25 °C, 100 lb, ≈430 A DC",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_2x120V/en/technical-specifications-mp-ii-2x120v.html",
+   "source_title": "MultiPlus-II 2x120V technical specifications",
+   "read": "2026-11-13",
+   "note": "Per unit: 2,400 W at 25 °C, 93% peak efficiency, 22 kg (50 lb). The pair: 2 × 2,400 = 4,800 W and 2 × 50 = 100 lb (48 W/lb). Full-load draw: 4,800 ÷ (0.93 × 12) = 430 A. The 12/4k model has 18 W zero load per unit (2 × 18 × 24 ÷ 12.8 = 67.5 Ah/day for a pair)."
+  },
+  {
+   "product": "Sun Gold Power 4000W 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price today and cost per continuous watt",
+   "value": "$936 → $0.23/W (ChatGPT's card showed $624)",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Read through the Shopify store search (storecheck): price $936, compare-at $2,829, available. $936 ÷ 4,000 W = $0.234/W. The store lists unit weight as 53 lb, so 4,000 ÷ 53 = 75 W/lb, and a 120 A charger."
+  }
+ ],
+ "unsourced": [
+  "Sun Gold Power 4000W 12V split-phase idle and power-saving draw, and its efficiency: the maker's product page returned HTTP 429 on every attempt (WebFetch and storecheck product). The store search excerpt was cut off before the spec table, and I did not open the manual PDF or any reviewer page.",
+  "AIMS idle draw from the maker: the aimscorp.net product URL returned 404. A govets listing gives <3.47 A DC idle and <0.53 A in power saver (≈44 W / 7 W at 12.8 V), which conflicts with the 50 W / 21 W on invertersrus. I did not open the govets page, so the 50 W / 21 W retailer figure is the one used.",
+  "Victron MultiPlus-II 12/3000 2x120V US price: not checked within the tool budget, so no cost per watt for the Victron pair.",
+  "No named reviewer measurement of idle draw for any of the three units was found or opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0716615
+ }
+}

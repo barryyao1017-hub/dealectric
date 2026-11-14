@@ -6598,6 +6598,22 @@ PRODUCTS = [
  "fit": "RV5 kit owners who are removing the coach's lead-acid battery and have auto-leveling jacks.",
  "caveats": ["BLUETTI's page lists no maximum continuous or surge discharge current.", 'Not needed if the coach keeps its existing 12 V lead-acid battery, which BLUETTI names as the alternative.']},
 
+{"slug": 'sungoldpower-4000w-12v-split-phase-inverter-charger',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "category": 'inverter',
+ "name": 'Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger (LFP4K12V240VSP)',
+ "model": 'LFP4K12V240VSP',
+ "url": 'https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger',
+ "price": 936.0,
+ "verified": '2026-11-13',
+ "specs": [('Battery input', '12 V DC'), ('Continuous output', '4,000 W'), ('Surge', '12,000 W for 20 s'), ('AC output', '120 VAC or 240 VAC split phase, 50 or 60 Hz (SW4)'), ('AC input', '240 VAC required; range 140–270 VAC or 184–253 VAC, set by SW2'), ('Charger', '120 ± 5 A multi-stage, 7 battery type settings, adjustable 0–100%'), ('Transfer time', '10 ms typical'), ('Idle draw', '45 W; 18 W in power-saver mode (Solaris dealer spec)'), ('Efficiency', '>88% nominal (Solaris dealer spec)'), ('Weight', '53 lb (maker)'), ('Extras', 'Auto generator start, AC/battery priority switch, remote, BTS cable')],
+ "warranty": '2 years (per authorized dealer Solaris)',
+ "returns": '30 days, unused and in original packaging; buyer pays return shipping unless the unit is defective or wrong',
+ "summary": 'A low-frequency 12V inverter-charger with true 120/240V split-phase output, rated 4,000 W continuous and 12,000 W for 20 s, with a 120 A charger. It is the lowest-priced 12V split-phase inverter-charger here.',
+ "fit": 'Cabins, shops and home backup on a 12V battery bank, where the charging source is a 240V generator or the grid and some loads need 240 V.',
+ "caveats": ['Needs 240 VAC input to charge and pass power through. A 120 V-only source (30 A RV shore power, a 120 V generator) is below its 140 VAC minimum.', 'At 4,000 W it pulls about 379 A from a 12 V bank (4,000 ÷ (0.88 × 12)), so it needs heavy cables and a fuse rated for that current.', 'Idle draw of 45 W is about 84 Ah a day from a 12.8 V LiFePO4 bank unless power-saver mode is used.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

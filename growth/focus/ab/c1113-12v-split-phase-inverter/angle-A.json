@@ -1,0 +1,90 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the 12 V options on one comparable basis: the Sun Gold Power 4000W 12V split-phase unit is rated 4,000 W continuous with a 12,000 W surge for 20 seconds, and the maker says it makes 120 V or 240 V but needs a 240 VAC input to work as a charger/pass-through. A single Victron MultiPlus-II 12 V 2x120V is rated only 2,400 W (12/3000, its '3000' is VA) or 3,400 W (12/4k), at 25 °C. Its 5,500 W and 6,000 W peaks are about 2.3× and 1.8× continuous, with no duration stated, and it inverts 120 V only.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages (victronenergy.com help-me-choose and the MultiPlus-II 2x120V product page) and the uncited Victron 2x120V manual description page. They cover Victron only. They say a single 2x120V unit inverts 120 V only, sizes are in VA, the full rating applies up to 25 °C and peak is roughly double continuous. ChatGPT's answer repeats the 120 V-only point. None of the results ChatGPT got gives the Sun Gold or AIMS low-frequency ratings. None notes that '3000' on the Victron means 2,400 W, that the low-frequency units' surge is 3× for a stated 20 s, or that Sun Gold's split-phase 12 V unit requires a 240 VAC input. That last point matters for the RV 120 V shore power case ChatGPT asked about.",
+ "decides": "It confirms that for real 240 V from a 12 V battery only the low-frequency split-phase units (Sun Gold, AIMS) qualify, with higher continuous power and surge than a single Victron. It also adds a catch: Sun Gold says its split-phase model 'requires 240VAC input', so a shopper with only 120 V RV shore power or a 120 V generator should check that before buying. The Victron fits the 'power both sides of a 50 A RV panel at 120 V' case. Sun Gold's price today ($936) is well above the $624 ChatGPT showed.",
+ "candidates": [
+  "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+  "AIMS Power PICOGLF40W12V240VS",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V",
+  "Victron MultiPlus-II 12/4k/160-50 2x120V"
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Continuous / surge rating",
+   "value": "4,000 W continuous; 12,000 W surge for 20 s (3× continuous)",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Text read from the maker's Shopify product data with storecheck search: 'Continuous Output Power: 4000W Surge Rating: 12000W (20 Seconds)'. 12000/4000 = 3.0×. Low-frequency design."
+  },
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Output and input requirement",
+   "value": "120 VAC or 240 VAC output; maker says the split-phase model 'requires 240VAC input'",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "Exact text: 'The split-phase 4000-watt power inverter requires 240VAC input and can provide 120VAC or 240VAC output power'. The maker's single-phase 12 V 4000 W sibling instead 'requires 120VAC input'. Also listed: charger 120±5 A, 10 ms typical transfer, auto generator start, 53 lb."
+  },
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price, maker's US store",
+   "value": "$936.00 (compare-at $2,829.00), in stock",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-13",
+   "note": "From storecheck search of sungoldpower.com. ChatGPT's card showed $624.00 from seller SunGoldPower, so the price has changed or that was a different listing."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50 2x120V",
+   "label": "Continuous / peak (normalised to W)",
+   "value": "3,000 VA = 2,400 W continuous at 25 °C; 5,500 W peak (2.3× continuous W); 120 A charger; 50 A transfer switch",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Spec table rows PMP122305100 / PMP122305102 (UL 458). 5500/2400 = 2.29×. The product page gives no peak duration. help-me-choose says the full continuous rating applies 'up to 25 °C' and drops as temperature rises."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/4k/160-50 2x120V",
+   "label": "Continuous / peak",
+   "value": "3,400 W continuous; 6,000 W peak (1.76× continuous); 160 A charger; 50 A transfer switch",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Spec table rows PMP122405200 / PMP122405210. 6000/3400 = 1.76×."
+  },
+  {
+   "product": "Victron MultiPlus-II 2x120V (all 12 V models)",
+   "label": "240 V from battery",
+   "value": "No: inverter output is 120 V; L1 and L2 are tied together in invert mode, 0 V between them without a split-phase input",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_2x120V/en/description.html",
+   "source_title": "MultiPlus-II 2x120V manual, 2. Description",
+   "read": "2026-11-13",
+   "note": "Text: 'In invert mode, the inverter/charger connects both output lines (L1 and L2) together to provide 120VAC to loads on either line' and 240 V exists 'when the unit is connected to a split-phase input and 0V otherwise'. The cited product page states this too, so on its own this is not new."
+  },
+  {
+   "product": "general",
+   "label": "Victron rating basis",
+   "value": "Most Victron sizes are in VA; full continuous rating applies up to 25 °C; peak exceeds about 2× continuous for short periods",
+   "source": "https://www.victronenergy.com/inverters-chargers/help-me-choose",
+   "source_title": "Victron Energy inverter/charger help me choose",
+   "read": "2026-11-13",
+   "note": "This is why 'MultiPlus-II 3000' means 2,400 W, and why it is not directly comparable to the low-frequency units' '4000W continuous'."
+  }
+ ],
+ "unsourced": [
+  "Per-leg (each 120 V hot) continuous limit for the Sun Gold and AIMS 4000 W 12 V split-phase units. I tried the Sun Gold product page (HTTP 429), the solartown.com LFP4K12V240VSP spec PDF (403), the AIMS Global LF manual on aimscorp.net and the AIMS Low_Frequency brochure (both image-only PDFs, no readable text) and the ManualShelf HTML manual (images only). A search snippet mentioned a half-capacity-per-hot-line note in a different AIMS model's manual, but I did not see it in an opened document.",
+  "AIMS PICOGLF40W12V240VS figures (4,000 W, 12,000 W for 20 s, idle draw, transfer amps) and price. Outbound Power, windandsolar.com and shopsolarkits.com returned HTTP 429, and the AIMS manual and brochure PDFs had no readable text. I also saw a ManualShelf title, in search results only, suggesting AIMS has a variant that charges from 120 VAC; not opened.",
+  "Victron MultiPlus-II 2x120V 12 V output at 40 °C and 65 °C, efficiency and zero-load draw. The 2x120V datasheet PDF had no extractable text, and the product page has no 40 °C value.",
+  "Duration of Victron's peak power rating. Not on the product page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0431333
+ }
+}

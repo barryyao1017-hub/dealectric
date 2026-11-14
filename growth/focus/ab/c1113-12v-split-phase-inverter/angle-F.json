@@ -1,0 +1,132 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the 12V split-phase unit it called 'best value' (SunGold 4000W, shown at $624) costs $936 on SunGold's store today and needs 240VAC input to charge and pass power through, so it can't charge from a 120V-only source such as RV shore power or a 120V generator. Charging from 120V takes the AIMS 120VAC-input version, which costs $1,949 at Outbound Power and has a 70 A charger. AIMS's 240VAC-input version costs $1,695 and has a 115 A charger.",
+ "standout": 3,
+ "standout_why": "I compared against Victron's help-me-choose page and its MultiPlus-II 2x120V page, the two pages ChatGPT cited, plus the Victron PDFs and dealer pages in its results. They cover only Victron and say nothing about SunGold or AIMS units or what AC input their chargers need. ChatGPT's answer listed SunGold at $624 and AIMS at $1,949 without explaining why AIMS costs about twice as much: the AIMS version it showed charges from 120V, and SunGold's does not. The SunGold price it showed is also $312 below SunGold's own store today.",
+ "decides": "It splits the pick by charging source. A 12V buyer who charges from 30 A/120V RV or marine shore power or a 120V generator should skip the SunGold 4000W, because it needs 240VAC input. That buyer needs the AIMS PICOGLF4012120240VS at $1,949 (charges from 120V at 70 A) or the AIMS 3000W split-phase inverter-only unit at $880 with separate charging. A cabin or home buyer with a 240V generator or grid feed should take the SunGold 4000W at $936 from SunGold or the AIMS 240VAC-input unit at $1,695. The Victron MultiPlus-II 2x120V ($1,190) doesn't fit anyone who needs 240V loads on battery, because Victron says it makes 240V only when a split-phase source is connected. Dealectric's Sun Gold 6000W split-phase inverter fails the question's 12V requirement: its store listing is titled 24V/48V, and our catalog has it as the 48V model.",
+ "candidates": [
+  "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+  "AIMS Power 4000W 12V Split Phase Inverter Charger, 120VAC input (PICOGLF4012120240VS)",
+  "AIMS Power 4000W 12V Split Phase Inverter Charger, 240VAC input (PICOGLF40W12V240VS)",
+  "AIMS Power 3000W 12V Split Phase 120/240VAC Low Frequency Inverter (inverter only)",
+  "Victron MultiPlus-II 12/4k/160-50 2x120V",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V",
+  "Victron MultiPlus-II 12/3000/120-50 120V (two units for split phase)",
+  "EG4 12000XP",
+  "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger (Dealectric)"
+ ],
+ "findings": [
+  {
+   "product": "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price on the maker's US store",
+   "value": "$936.00 (compare-at $2,829.00), in stock",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "Read from the store's product data with storecheck.py search. ChatGPT's card showed $624.00, which is $312 lower."
+  },
+  {
+   "product": "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "AC input requirement (why it loses for 120V-charged RV and boat setups)",
+   "value": "Needs 240VAC input. The charger accepts 140–270 VAC or 184–253 VAC (set by SW2).",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "The maker's page says: 'The split-phase 4000-watt power inverter requires 240VAC input and can provide 120VAC or 240VAC output.' The input range is from the Solaris listing below. Neither range includes 120 V, so it can't charge from a 120V-only source."
+  },
+  {
+   "product": "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Charger current and idle draw",
+   "value": "120 ±5 A charger. Idle draw 45 W, or 18 W in power-saver mode. Nominal efficiency >88%. 2-year warranty.",
+   "source": "https://www.solaris-shop.com/sungoldpower-4000w-dc-12v-split-phase-pure-sine-wave-inverter-with-charger",
+   "source_title": "SunGoldPower 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – Solaris",
+   "read": "2026-11-13",
+   "note": "Spec table on this retailer's page. 45 W idle on a 12V bank is about 3.75 A, or roughly 90 Ah a day with power saver off (45 W ÷ 12 V × 24 h). Solaris lists it at $1,052.30."
+  },
+  {
+   "product": "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price at Outbound Power",
+   "value": "$1,040.00",
+   "source": "https://outboundpower.com/products/sungold-power-4000w-dc-12v-split-phase-pure-sine-wave-inverter-with-charger",
+   "source_title": "SunGold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – Outbound Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The listing repeats that it 'takes 240VAC from the grid or a generator, charges a 12V battery bank at up to 120A'."
+  },
+  {
+   "product": "AIMS Power 4000W 12V Split Phase Inverter Charger, 120VAC input (PICOGLF4012120240VS)",
+   "label": "Price at the retailer ChatGPT showed, plus charger and transfer specs",
+   "value": "$1,949.00. Charges from 120VAC with a 70 A charger. 40 A transfer switch. 12,000 W surge for 20 s.",
+   "source": "https://outboundpower.com/products/aims-power-4000-watt-12-volt-pure-sine-inverter-charger-charges-at-120-vac",
+   "source_title": "AIMS Power 4000 Watt 12 Volt Pure Sine Inverter Charger | Split Phase 120/240VAC Output | 120VAC Input – Outbound Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. This matches ChatGPT's $1,949 'heavy-duty alternative' card. It is the only 4000W 12V split-phase unit here that charges from a 120V source, but its charger is the weakest at 70 A."
+  },
+  {
+   "product": "AIMS Power 4000W 12V Split Phase Inverter Charger, 240VAC input (PICOGLF40W12V240VS)",
+   "label": "Price and charger",
+   "value": "$1,695.00. 115 A charger with 240VAC input. 40 A transfer switch. 50/60 Hz output.",
+   "source": "https://outboundpower.com/products/aims-power-4000-watt-12-volt-pure-sine-inverter-charger-charges-at-240-vac",
+   "source_title": "AIMS Power 4000 Watt 12 Volt Pure Sine Inverter Charger | Split Phase 120/240VAC Output | 240VAC Input – Outbound Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. It needs the same 240V input as the SunGold and costs $759 more than SunGold's own store price."
+  },
+  {
+   "product": "AIMS Power 3000W 12V Split Phase 120/240VAC Low Frequency Inverter (inverter only)",
+   "label": "Price and where it loses",
+   "value": "$880.00. 3,000 W continuous, 9,000 W surge for 20 s, ETL listed. No AC input, charger or transfer switch.",
+   "source": "https://outboundpower.com/products/aims-power-3000-watt-12-volt-split-phase-120-240vac-low-frequency-pure-sine-power-inverter",
+   "source_title": "AIMS Power 3000 Watt 12 Volt Split Phase 120/240VAC Low Frequency Pure Sine Power Inverter – Outbound Power",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The listing says HOT1–N and HOT2–N each measure 120 Vac and HOT1–HOT2 measures 240 Vac. It is the cheapest true 12V split-phase unit found, but the buyer must charge the battery another way."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/4k/160-50 2x120V",
+   "label": "Price and where it loses",
+   "value": "$1,190.00. It does not make 240V from the battery.",
+   "source": "https://www.solar-electric.com/victron-energy-multiplus-ii-12-4k-160-50-2x120v-inverter.html",
+   "source_title": "Victron Energy MultiPlus-II 12/4k/160-50 2x120V Inverter – Northern Arizona Wind & Sun",
+   "read": "2026-11-13",
+   "note": "The page says '240V loads are not powered from the battery' and that L1 and L2 are tied together when inverting. It is marked 'New to Market' and was due to ship in late Oct to early Nov 2026. The page notes that the cart may show a lower price."
+  },
+  {
+   "product": "Victron MultiPlus-II 2x120V (12/3000 and 12/4k)",
+   "label": "240V output while inverting (maker)",
+   "value": "240 VAC is available only when a split-phase 120/240 VAC source is connected. 12V models: 12/3000/120-50 (3,000 VA) and 12/4k/160-50 (3,400 W).",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x 120V – Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker's page: '240VAC is only available when the MultiPlus is supplied by a split phase 120/240VAC source.' The rival page already says this, and ChatGPT's answer repeated it."
+  },
+  {
+   "product": "Victron (general)",
+   "label": "How to get true split phase from Victron",
+   "value": "Use two 120 Vac models configured as split phase, or a 120/230 Vac model with an autotransformer.",
+   "source": "https://www.victronenergy.com/inverters-chargers/help-me-choose",
+   "source_title": "Help me choose – Victron Energy",
+   "read": "2026-11-13",
+   "note": "Victron recommends '2 × 120 Vac models' for North American 50 A split-phase systems and says a qualified installer should design these setups."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V Split Phase Pure Sine Wave Inverter With Charger (Dealectric)",
+   "label": "Price and where it loses",
+   "value": "$1,220.00. The listing is titled 24V/48V, not 12V.",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py search. The listing says it 'requires 240VAC input'. It fails the 12V requirement, so it only fits a buyer willing to move to a 24V or 48V bank."
+  }
+ ],
+ "unsourced": [
+  "Per-leg 120V limit on the SunGold or AIMS 4000W 12V units (2,000 W hot-to-neutral, 4,000 W hot-to-hot). Search results attributed this to SunGold's Amazon listing and a DIY Solar Forum thread. I couldn't open either: amzcheck.py was blocked, the forum returned 403, and sungoldpower.com, buildthepower.com and offgridstores returned 429. The manual PDF on solartown.com returned 403.",
+  "Price of the single 120V Victron MultiPlus-II 12/3000/120-50 (PMP122305120), needed to price a two-unit split-phase stack. Retailer pages (thesolarstore.com, bluemarine.com) returned 429 or failed. Snippets showed $875–$1,390, but I didn't use them.",
+  "AIMS's own prices and specs for PICOGLF4012120240VS and PICOGLF40W12V240VS. The aimscorp.net product pages loaded only their titles: no price, charger amps or certifications.",
+  "EG4 12000XP battery voltage and price. It appeared in ChatGPT's results, but I didn't open eg4electronics.com within the budget, so I left out the reason it loses.",
+  "Price of the Victron MultiPlus-II 12/3000/120-50 2x120V. I didn't open a dealer page for it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.2892003
+ }
+}

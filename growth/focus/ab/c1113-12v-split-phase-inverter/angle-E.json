@@ -1,0 +1,73 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states any measured idle draw for a 12V split-phase candidate. The closest named measurement is Victron community user rslifkin's reading of 9–10 W no-load on a MultiPlus Compact 12/2000/80-50 120V, against a 9 W spec. That is a sibling of the MultiPlus-II, not a candidate.",
+ "standout": 1,
+ "standout_why": "I compared against victronenergy.com/inverters-chargers/help-me-choose (cited) and victronenergy.com/inverters-chargers/multiplus-ii-2x-120v (cited). Neither has an idle or efficiency figure: the product page lists only VA/W, peak, charge current, transfer switch, size and weight, and help-me-choose sends readers to datasheets. The other top results are Victron datasheets and brochures, an EG4 page and retailer listings, which carry maker specs at best. So no rival has a third-party measurement. But I could not find a named reviewer or lab that measured the candidates themselves (SunGoldPower LFP4K12V240VSP, AIMS PICOGLF40W12V240VS, MultiPlus-II 12V 2x120V). The only named reading I could open is on a different Victron model, so it adds little.",
+ "decides": "It does not decide the pick. No named measurement exists for the 4,000 W 12V low-frequency split-phase units ChatGPT ranked first and second, so nothing measured backs or contradicts their idle and efficiency claims. The one opened owner reading (Victron Compact 12/2000, 9–10 W against a 9 W spec) only hints that Victron's 12V idle specs are realistic. The pick-relevant fact is still Victron's own statement that the MultiPlus-II 2x120V puts out 120V single phase in inverter mode, so it cannot make 240V from a 12V battery alone. ChatGPT's answer already says this. The page should frame the AIMS and SunGoldPower units as the only true 12V-to-240V options in the results, and present their idle figures as maker specs, not test results.",
+ "candidates": [
+  "SunGoldPower LFP4K12V240VSP 4000W 12V Split Phase Inverter Charger",
+  "AIMS Power PICOGLF40W12V240VS 4000W 12V 120/240V Inverter Charger",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V",
+  "Victron MultiPlus-II 12/4k/160-50 2x120V"
+ ],
+ "findings": [
+  {
+   "product": "Victron MultiPlus Compact 12/2000/80-50 120V (sibling of the candidate, not a candidate)",
+   "label": "Owner-measured no-load idle draw",
+   "value": "9–10 W (spec 9 W)",
+   "source": "https://communityarchive.victronenergy.com/questions/107726/real-world-experiences-with-multiplus-or-phoenix-i.html",
+   "source_title": "Real world experiences with Multiplus or Phoenix idle (Victron Community archive)",
+   "read": "2026-11-13",
+   "note": "Posted by user rslifkin on 2021-11-09: 'right around 9 - 10 watts at idle with no load. Spec is 9 watts.' Measurement method not stated. This is a 2,000 VA Compact, not a MultiPlus-II 2x120V."
+  },
+  {
+   "product": "Victron MultiPlus-II 48/5000/70-50 230V (not a candidate, for context only)",
+   "label": "Owner-measured idle draw",
+   "value": "about 20 W ± 5 W (spec 18 W, per another poster)",
+   "source": "https://communityarchive.victronenergy.com/questions/107726/real-world-experiences-with-multiplus-or-phoenix-i.html",
+   "source_title": "Real world experiences with Multiplus or Phoenix idle (Victron Community archive)",
+   "read": "2026-11-13",
+   "note": "Posted by user shaneyake on 2021-11-08. Read from the battery BMS, which the poster says is 'probably only +-10W accurate'. The poster calls it 'idle'. 48V/230V model, so not applicable to a 12V split-phase build."
+  },
+  {
+   "product": "Victron MultiPlus-II 12V 2x120V (all variants)",
+   "label": "240V from battery in inverter mode",
+   "value": "No: 'The inverter output is also 120V single phase'; 240V only 'when the MultiPlus is supplied by a split phase 120/240VAC source'",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x 120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker spec, not a measurement. ChatGPT cited this page and stated the point. Included so the page's 12V options are framed correctly."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50 2x120V",
+   "label": "Rated continuous / peak output (maker)",
+   "value": "3,000 VA / 2,400 W continuous at 25 °C; 5,500 W peak; 120 A charger",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x 120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker rating, not measured. Article code PMP122305100; a UL 458 version is PMP122305102."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/4k/160-50 2x120V",
+   "label": "Rated continuous / peak output (maker)",
+   "value": "3,400 W continuous at 25 °C; 6,000 W peak; 160 A charger",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x 120V | Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker rating, not measured. Article codes PMP122405200 and PMP122405210 (50/60 Hz)."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer or lab measurement (Will Prowse/DIY Solar Power, Hobotech, Off Grid Garage, a magazine lab) of idle draw, efficiency or surge for the SunGoldPower LFP4K12V240VSP. Searches found only maker and retailer listings. Snippets give maker specs of 45 W idle and 18 W in power-saver mode, but I could not open sungoldpower.com (HTTP 429 three times) or the solartown.com spec PDF (HTTP 403) to confirm them.",
+  "A named measurement for the AIMS PICOGLF40W12V240VS. Snippets show retailer specs of 50 W / 21 W idle, and other listings give <3.47 A / <0.53 A DC, which conflicts. Outbound Power's page returned HTTP 429, and I found no AIMS datasheet. A buyer comment on idle draw on Desertcart refers to the 120V sibling and gives no figure.",
+  "A measured idle draw for the Victron MultiPlus-II 12V 2x120V. Snippets give a retailer spec of 13 W or 15 W. The Victron manual PDF (32424) downloaded only as binary, and I could not extract text from it in this environment. The Victron community thread 188895 holds only datasheet values and calculations, not measurements.",
+  "An owner measurement of a SunGoldPower split-phase unit (a DIY Solar Forum thread reportedly shows about 155 W idle on a 24V 6000W model against a 25 W spec). diysolarforum.com returned HTTP 403, so I left it out. It is also a 24V model, not a candidate.",
+  "Today's prices at SunGoldPower ($624 in ChatGPT's answer) and Outbound Power ($1,949 in ChatGPT's answer). Both Shopify stores returned HTTP 429 to storecheck.py and WebFetch, so I could not confirm a price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1238643000000001
+ }
+}

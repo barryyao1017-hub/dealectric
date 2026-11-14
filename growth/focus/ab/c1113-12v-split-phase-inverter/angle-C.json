@@ -1,0 +1,83 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that its 'Best value' pick, the Sun Gold Power 4000W 12V split-phase LF inverter (LFP4K12V240VSP), needs 240 VAC input to charge or pass power through. Its stated AC input range is 140–270 VAC or 184–253 VAC, so a 120 V-only source such as a 30 A RV pedestal or a 120 V generator falls below it. AIMS sells the same 4000 W, 12 V, 120/240 V split-phase class in two input versions, one for 240 VAC (PICOGLF40W12V240VS) and one for 120 VAC (PICOGLF40W12120240VS).",
+ "standout": 3,
+ "standout_why": "I compared against the two cited Victron pages (help-me-choose and MultiPlus-II 2x120V) and also read the uncited MultiPlus-II 2x120V description page (rank 2). They cover only Victron. They say the 2x120V inverts 120 V only and passes 240 V through only from a split-phase source, and ChatGPT's answer already repeats that, so the Victron limit is not new. None of the 18 results is a Sun Gold Power or AIMS page. ChatGPT's answer never mentions what AC input voltage either low-frequency unit needs, even though its closing question ('both sides of an RV's 120V panel') points at exactly the 120 V-shore setup where the Sun Gold unit cannot charge.",
+ "decides": "For a 12 V shopper whose only AC sources are 120 V (RV shore power, a 120 V generator or a van), ChatGPT's 'Best value' Sun Gold LFP4K12V240VSP cannot charge or pass power through, because 120 V is below its stated 140 VAC input minimum. The pick then becomes the AIMS 120 VAC-input version (PICOGLF40W12120240VS / PICOGLF4012120240VS). The Sun Gold unit or the AIMS PICOGLF40W12V240VS fits only when 240 V grid or generator power is available. Victron MultiPlus-II 2x120V 12 V models do not produce 240 V from the battery at all.",
+ "candidates": [
+  "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger (LFP4K12V240VSP)",
+  "AIMS Power PICOGLF40W12120240VS / PICOGLF4012120240VS (12 V, 120 VAC input, 120/240 VAC output)",
+  "AIMS Power PICOGLF40W12V240VS (12 V, 240 VAC input, 120/240 VAC output)",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V",
+  "Victron MultiPlus-II 12/4k/160-50 2x120V"
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "AC input requirement (maker store)",
+   "value": "Requires 240 VAC input; outputs 120 VAC or 240 VAC",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "Maker's product text, pulled through storecheck.py's search of sungoldpower.com: 'The split-phase 4000-watt power inverter requires 240VAC input and can provide 120VAC or 240VAC output power.' The maker also sells a separate 12 V 4000 W model that 'requires 120VAC input' but outputs 120 VAC only. A direct product-page fetch returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Price on maker's US store",
+   "value": "$936.00 (compare-at $2,829.00), in stock",
+   "source": "https://sungoldpower.com/products/4000w-peak-12000w-dc-12v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger – SunGoldPower",
+   "read": "2026-11-13",
+   "note": "From storecheck.py's Shopify search of sungoldpower.com. ChatGPT's card showed $624.00, which is $312 below today's maker price."
+  },
+  {
+   "product": "Sun Gold Power 4000W DC 12V Split Phase Pure Sine Wave Inverter With Charger",
+   "label": "Model number and AC input voltage range",
+   "value": "LFP4K12V240VSP; AC input (grid or generator) 140–270 VAC or 184–253 VAC, selected by SW2",
+   "source": "https://www.solaris-shop.com/sungoldpower-4000w-dc-12v-split-phase-pure-sine-wave-inverter-with-charger",
+   "source_title": "SunGoldPower 4000W DC 12V Split Phase Pure Sine Wave Inverter with Charger – Solaris",
+   "read": "2026-11-13",
+   "note": "This is an authorized dealer's listing of the maker spec ('AC input Range (Grid or Generator): 140V-270VAC/184V-253VAC (select by SW2)'; 'AC Input: 240V'). Because the minimum is 140 V, a nominal 120 V source is below range. The maker datasheet PDF and LFP Series manual linked from this page would not yield text."
+  },
+  {
+   "product": "AIMS Power PICOGLF40W12120240VS",
+   "label": "Input/output pairing and ratings",
+   "value": "12 VDC; 120 VAC input; 120/240 VAC output; 33.3 A (120 V) / 16.6 A (240 V) output; 115 A charger; 40 A automatic transfer switch, 10 ms max",
+   "source": "https://www.globalindustrial.com/p/4000-watt-pure-sine-inverter-charger-12vdc-120vac-input120-240vac-split-phase-output",
+   "source_title": "AIMS 4000 Watt Pure Sine Inverter Charger 12Vdc/120Vac Input & 120/240Vac, PICOGLF40W12120240VS – Global Industrial",
+   "read": "2026-11-13",
+   "note": "Retailer spec listing. AIMS's own site (aimscorp.com) returned no readable content. 33.3 A × 120 V = 4,000 W and 16.6 A × 240 V ≈ 4,000 W, which matches the 4000 W rating. Other resellers use the SKU PICOGLF4012120240VS for the 120 VAC-input version and PICOGLF40W12V240VS for the 240 VAC-input version."
+  },
+  {
+   "product": "Victron MultiPlus-II 2x120V (12 V models)",
+   "label": "12 V models and 240 V limit",
+   "value": "12 V models 12/3000/120-50 2x120V (3,000 VA) and 12/4k/160-50 2x120V (3,400 W continuous); in inverter mode L1 and L2 are tied together for 120 VAC only; 240 VAC is available only when a split-phase 120/240 VAC source feeds the unit",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii-2x-120v",
+   "source_title": "MultiPlus-II 2x120V – Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker page: '240VAC is only available when the MultiPlus is supplied by a split phase 120/240VAC source.' The description page (https://www.victronenergy.com/media/pg/MultiPlus-II_2x120V/en/description.html, read 2026-11-13) says the same. ChatGPT's results already contain this."
+  },
+  {
+   "product": "general",
+   "label": "Victron route to 120/240 V from a 120 V inverter",
+   "value": "Two 120 V units in a split-phase configuration over VE.Bus, or an autotransformer making 120/240 VAC from a 120 V or 240 V input",
+   "source": "https://www.victronenergy.com/inverters-chargers/help-me-choose",
+   "source_title": "Help me choose – Victron Energy",
+   "read": "2026-11-13",
+   "note": "Maker page: 'Parallel, split-phase and 3-phase configurations' run over the VE.Bus port; autotransformers can produce 'a 120/240 Vac network from either a 120 V or 240 V input.' This is a cited rival page, so it is not new."
+  }
+ ],
+ "unsourced": [
+  "AIMS maker product pages and manual for PICOGLF40W12120240VS and PICOGLF40W12V240VS: aimscorp.com returned empty content, so I used a retailer spec listing instead.",
+  "Outbound Power price for the AIMS 12 V 240 VAC-input split-phase unit, which ChatGPT showed at $1,949: storecheck.py and WebFetch both returned HTTP 429.",
+  "Maximum load per 120 V leg (L1/L2) and the allowed imbalance for the Sun Gold LFP4K12V240VSP and the AIMS 12 V split-phase units: neither the datasheet nor the LFP Series manual PDF gave readable text, and running pdftotext locally needed approval I did not have.",
+  "A Victron document stating whether two 12 V MultiPlus-II 2x120V units can be stacked for split-phase output, and its firmware/identical-model requirements: the 2x120V description page does not cover it, and I did not open the parallel/split-phase manual sections within the call budget.",
+  "Lithium battery profile support on the Sun Gold 12 V split-phase unit: the dealer page lists '9 battery type settings', and the maker store text says '7 battery type settings'. Neither names the chemistries."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0871698
+ }
+}
