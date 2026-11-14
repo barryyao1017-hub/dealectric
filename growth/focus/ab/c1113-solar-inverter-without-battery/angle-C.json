@@ -1,0 +1,90 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the EG4 18kPV manual itself confirms solar-only backup: its 'No Battery' setting supplies loads from PV when the grid fails, and 'PV Grid Off' gives off-grid output with no batteries installed, which EG4 warns 'is not stable'. None of those results states that Enphase's current matrix supports Sunlight Backup with IQ System Controller 2/3/3G and IQ8 or IQ9 microinverters.",
+ "standout": 2,
+ "standout_why": "I compared against outagemath.com (top result, not cited) and ChatGPT's answer. outagemath lists Sunlight Backup as IQ8 + IQ System Controller 2 (3 also) + IQ Combiner 4/4C. For the EG4 18kPV it gives the 'PV Grid Off' name but says its output is 'Not published' and its switching 'Not stated'. ChatGPT's EG4 card only says 'Confirm PV-only backup capability and firmware.' Neither quotes the EG4 manual's 'No Battery' backup setting or its warning that the output is not stable. Neither has Enphase's current matrix (IQ9 added, IQ System Controller 3G, Combiner 5/5C and 6C generation) or the Sun Gold Power SPH6548P's 'supports battery-free' claim. The two cited Enphase PDFs (iq8-grid, sunlight-backup-installation-guidelines) downloaded, but their text is compressed and the fetch tool could not read it, and local PDF extraction was not approved. The PDF metadata shows they date from 2022-04-29 and 2023-04-26, so they cannot cover IQ9, but I could not check their text line by line. The cited Sol-Ark device.report guides are about Sol-Ark, not about these pairings.",
+ "decides": "This settles the hedge ChatGPT left open on its EG4 card. The EG4 18kPV has a documented setting for solar-only backup with no battery, so it can sit next to Enphase IQ8 as a 'works in an outage without a battery' option. The manual's warning that the output is not stable means daytime-only, light-load use. Sol-Ark stays in the grid-tie-only group. For Enphase buyers, the pick needs IQ8 or IQ9 micros plus IQ System Controller 2, 3 or 3G and at least one IQ Load Controller. IQ7 systems are not listed for Sunlight Backup. Sun Gold Power SPH6548P (Dealectric-listed, $1,035) is a cheaper off-grid all-in-one whose maker listing says it 'supports battery-free' operation. I could not read its manual for the limits, so it should be a secondary mention only.",
+ "candidates": [
+  "Enphase IQ8 Microinverters (Sunlight Backup)",
+  "EG4 18kPV-12LV",
+  "Sol-Ark 15K-2P",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "Enphase IQ8 / IQ9 Microinverters",
+   "label": "Sunlight Backup (no battery) supported hardware",
+   "value": "IQ System Controller 2/3/3G + IQ8 or IQ9 Microinverters + IQ Gateway or IQ Combiner; at least one IQ Load Controller required to commission",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Storage compatibility | Enphase",
+   "read": "2026-11-13",
+   "note": "Footnote 5 of Enphase's storage compatibility matrix, quoted: 'Sunlight Backup is supported with IQ System Controller 2/3/3G, IQ8 or IQ9 Microinverters and IQ Gateway or IQ Combiner.' and 'To commission a Sunlight Backup site, at least one IQ Load Controller is required.' The page also lists IQ System Controller 3M7, which footnote 5 does not name for Sunlight Backup, and marks IQ System Controller 2 and IQ Combiner 4/4C as EOL. The page shows no date, only '© 2026'."
+  },
+  {
+   "product": "Enphase IQ6/IQ7 Microinverters",
+   "label": "Exclusion from Sunlight Backup",
+   "value": "IQ6/7 (EOL) are not among the microinverters named for Sunlight Backup (IQ8 or IQ9 only)",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Storage compatibility | Enphase",
+   "read": "2026-11-13",
+   "note": "Inferred from footnote 5, which names only IQ8 or IQ9. The same page's footnote 2 says sites under an IEEE 1547:2018 utility mandate need 'replacement with IQ7 or IQ8 or IQ9 Series Microinverters'."
+  },
+  {
+   "product": "Enphase (solar-only config)",
+   "label": "Grid-tie with no battery and no Sunlight Backup",
+   "value": "'Produce solar energy only when the grid is up'",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Storage compatibility | Enphase",
+   "read": "2026-11-13",
+   "note": "Column heading on the matrix for the solar-only configuration: without the System Controller/Load Controller setup, there is no output in an outage."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Backup with solar only, no battery",
+   "value": "'No Battery' setting: 'can be enabled to use solar power to supply load when the grid fails or load-shedding happens'",
+   "source": "https://www.manualslib.com/manual/3312143/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual v2.0.2 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Page 84 of EG4 manual v2.0.2 (© 2023 EG4 Electronics), read on ManualsLib because the fetch tool could not read the text of the maker-hosted PDF (eg4electronics.com/wp-content/uploads/2024/04/EG4-18KPV-12LV-Manual.pdf). Also on p.84: 'If users do not have a battery installed yet but still wish to have inverter backup power with only solar panels connected, this setting can be enabled.'"
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Off-grid with no battery: setting and stated limit",
+   "value": "Enable 'PV Grid Off'; maker warns 'the Off-Grid energy is supplied by solar and is not stable'",
+   "source": "https://www.manualslib.com/manual/3312143/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual v2.0.2 (ManualsLib)",
+   "read": "2026-11-13",
+   "note": "Page 50 (7.2 Application Settings): 'If the customer wants the system to have Off-Grid functionality without installing any batteries, please enable PV Grid Off.'"
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery-free operation (maker claim)",
+   "value": "'supports battery-free'; 6,500 W rated, 13,000 VA peak, 550 VDC max PV Voc, 2 MPPT, 120/240 V split phase; 'UL 1741 by ETL for Off Grid Solar System'",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P | Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read from the maker's Shopify store with storecheck.py search (product JSON text). Later direct fetches of the page returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Price, maker US store",
+   "value": "$1,035.00 (compare-at $4,526.00), in stock",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P | Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of sungoldpower.com."
+  }
+ ],
+ "unsourced": [
+  "Verbatim text of the two cited Enphase PDFs (enphase.com/download/iq8-grid and /sunlight-backup-installation-guidelines): both downloaded, but their text is compressed and the fetch tool could not read it, and local PDF text extraction was not approved. Only the metadata dates (2022-04-29, 2023-04-26) were readable.",
+  "SPH6548P battery-free conditions (program number, whether parallel or surge loads work without a battery, PV-to-load limits): the manual on manuals.plus, device.report and manuals.online returned HTTP 403, and the maker product page returned HTTP 429.",
+  "EG4 18kPV firmware version needed for the 'No Battery' / 'PV Grid Off' settings, and the maximum continuous load in battery-free mode: not in the ManualsLib excerpt, and the text of the maker PDF could not be read.",
+  "EG4 18kPV price on the EG4 US store today: not checked within the call budget (ChatGPT's card showed $3,999.99, which I have not verified)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8872384999999998
+ }
+}

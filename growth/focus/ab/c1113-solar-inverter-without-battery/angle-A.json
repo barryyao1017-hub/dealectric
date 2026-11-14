@@ -1,0 +1,91 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the inverters' headline output ratings next to the power they can actually deliver from solar alone, with no battery, during an outage. Sol-Ark 15K-2P (13 kW backup), EG4 18kPV (12 kW continuous) and Sun Gold SPH6548P (6,500 W, 'supports battery-free') publish no battery-less outage wattage. The only published cap is Enphase's Sunlight Backup rule: loads at or below 30% of the array's AC rating, which is about 1.7 kW on a 5.7 kW array.",
+ "standout": 1,
+ "standout_why": "I compared against outagemath.com (rank 9, not cited). It already has the Enphase 30% rule and the 4×240 V / 8×120 V circuit limit, and it lists EG4 18kPV battery-less output as 'Not published'. It does not put that next to each maker's headline kW, and it does not cover the Sun Gold SPH6548P. I could not render the text of the cited Enphase PDFs (iq8-grid, sunlight-backup-installation-guidelines), and the cited device.report Sol-Ark manuals returned 403, so I don't know whether they state the 30% figure themselves. ChatGPT's own answer gave no wattage for running without a battery.",
+ "decides": "It confirms Enphase IQ8 as the pick for 'power during an outage with no battery' because it is the only candidate with a published battery-less outage rating. It also resets expectations: an IQ8 array runs about 30% of its AC rating, not the 12–13 kW printed on hybrid spec sheets, which only apply with a battery. Sol-Ark and EG4 can't be recommended for battery-less outage power from their maker pages. The Sun Gold SPH6548P says 'supports battery-free', but its maker page gives no condition or wattage, so the page shouldn't promise outage power from it.",
+ "candidates": [
+  "Enphase IQ8 Microinverters (Sunlight Backup)",
+  "Sol-Ark 15K-2P",
+  "EG4 18kPV",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "Enphase IQ8 Microinverters (Sunlight Backup)",
+   "label": "Battery-less outage load cap",
+   "value": "≤30% of array rated AC output (example: 5.7 kW AC array → about 1.7 kW of loads)",
+   "source": "https://www.outagemath.com/guides/solar-without-battery-power-outage/",
+   "source_title": "Solar Without a Battery in a Power Outage: What Works (OutageMath, updated 2026-11-10)",
+   "read": "2026-11-13",
+   "note": "OutageMath attributes this to Enphase's tech brief and installation guidelines. I opened those Enphase PDFs but could not extract their text. 0.30 × 5.7 kW = 1.71 kW."
+  },
+  {
+   "product": "Enphase IQ8 Microinverters (Sunlight Backup)",
+   "label": "Battery-less backup circuit limit and overload behaviour",
+   "value": "Up to 4 circuits at 240 V or 8 at 120 V; if loads exceed production, backup shuts off and can take up to 2 minutes to restart",
+   "source": "https://www.outagemath.com/guides/solar-without-battery-power-outage/",
+   "source_title": "Solar Without a Battery in a Power Outage: What Works (OutageMath)",
+   "read": "2026-11-13",
+   "note": "Works only in daylight."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Headline output ratings (maker page)",
+   "value": "15 kW grid output; 13 kW backup output 'for 30 minutes'; 24 kW surge; 23.4 kW DC-coupled PV",
+   "source": "https://sol-ark.com/residential-energy-solutions/whole-home-15k-2p-hybrid-inverter/",
+   "source_title": "Whole Home 15K-2P Hybrid Inverter | Sol-Ark",
+   "read": "2026-11-13",
+   "note": "The maker page doesn't say whether the backup output works without batteries, and gives no battery-less outage figure."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Headline output ratings (maker page)",
+   "value": "12 kW continuous AC; 18 kW PV input; off-grid/EPS output and surge not listed",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-18kpv-12lv-all-in-one-hybrid-inverter/",
+   "source_title": "EG4 18kPV-12LV All-in-One Hybrid Inverter | EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "The maker page only mentions 'without batteries' when talking about AC-coupling to an existing system. OutageMath lists the 18kPV 'PV Grid Off' battery-less output as 'Not published'."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery-free claim and ratings (maker store)",
+   "value": "'supports battery-free'; rated output 6,500 W; max peak 13,000 VA; 550 VDC max PV open-circuit voltage",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P | Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search on the Shopify store. The listing doesn't say whether battery-free mode needs utility power or gives a PV-only output figure."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Price (maker US store)",
+   "value": "$1,035.00 (compare-at $4,526.00), in stock",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P | Sun Gold Power",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search. A later product call returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "Other published battery-less outage outputs (for scale)",
+   "value": "SMA Sunny Boy Secure Power Supply up to 2,000 W from one 120 V outlet; Fronius Primo GEN24 PV Point up to 1.5 kW",
+   "source": "https://www.outagemath.com/guides/solar-without-battery-power-outage/",
+   "source_title": "Solar Without a Battery in a Power Outage: What Works (OutageMath)",
+   "read": "2026-11-13",
+   "note": "Both are manually switched, daylight-only, single-outlet backup. OutageMath cites the SMA manual and the Fronius US product page; I did not open either."
+  }
+ ],
+ "unsourced": [
+  "The text of the Enphase Sunlight Backup installation guidelines and IQ8 grid brief PDFs, to quote the 30% rule from Enphase directly: WebFetch returned compressed binary and local PDF extraction needed approval.",
+  "The Sol-Ark 15K-2P manual statement on battery-less operation: device.report returned 403. A Shopify-hosted programming guide reportedly says 'It will not provide any back up power' with no battery, but it came back as unreadable PDF and I couldn't confirm the brand or wording.",
+  "The EG4 18kPV battery-less ('PV Grid Off' / no-battery) off-grid output wattage: not on the maker page or in the manualslib v2.6.3 page I opened. The wiring-diagram PDF was too large to fetch.",
+  "The SPH6548P manual's conditions for battery-free mode (whether mains must be connected, PV-only load limit): manuals.plus and device.report returned 403, and the maker product page returned 429 on a full read.",
+  "Current prices for the Sol-Ark 15K-2P and EG4 18kPV from the maker or the retailer ChatGPT showed: I didn't check within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9523907
+ }
+}

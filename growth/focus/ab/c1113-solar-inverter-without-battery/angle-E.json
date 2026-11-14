@@ -1,0 +1,73 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that, in The Solar Lab's own tests, the Sol-Ark 15K drew 97 W at idle and the EG4 18kPV drew about 60–70 W. Those are always-on losses for a home running without a battery: 97 W round the clock is about 850 kWh a year. The same reviewer's Enphase IQ8MC rig made nothing without an outside grid reference.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Enphase pages ('When is IQ8 permitted' and the Sunlight Backup technical brief) and the cited device.report Sol-Ark 12K and 15K user guides, plus the top results: Enphase documentation, outagemath, isolarmn and the Sol-Ark product page. All of them are maker documents or explainers. None gives a measurement by a third party, such as idle draw, real output or behaviour without a grid reference. The SolarQuotes article on Sunlight Backup (Anthony Bennett, 2023-11-27) has no measured figures either.",
+ "decides": "This supports the IQ8 answer ChatGPT gave and adds two points. First, The Solar Lab's IQ8MC microinverters needed an active grid reference to run, so the microinverters alone don't give outage power. Batteryless outage power depends on the extra IQ System Controller and Sunlight Backup equipment. Second, for a shopper who only wants grid-tied solar without a battery, a hybrid inverter's measured idle draw is a real running cost. The Sol-Ark 15K at 97 W costs about 850 kWh a year and the EG4 18kPV at 60–70 W about 530–610 kWh, which favours the EG4 or microinverters over the Sol-Ark when no battery is planned.",
+ "candidates": [
+  "Enphase IQ8 (IQ8MC) Microinverters",
+  "EG4 18kPV Hybrid Inverter",
+  "Sol-Ark 15K-2P Hybrid Inverter"
+ ],
+ "findings": [
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Measured idle / standby draw",
+   "value": "97 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K Hybrid Inverter Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'When we tested it, the Sol-Ark 15K seemed to have an idle draw of 97W when it was in standby.' The page shows no author or article date, only a 2026 copyright footer. Arithmetic: 97 W × 24 h = 2.33 kWh per day, or about 850 kWh per year if it runs continuously. The review did not test the inverter without a battery."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Measured idle draw",
+   "value": "about 60–70 W (about 1.2 A from the battery)",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'the 18kPV uses about 60 to 70 watts' and 'runs somewhere in the region of 1.2 amps while it is on the battery'. This was measured with a battery connected, and idle draw without a battery wasn't tested. The page shows no author or date. Arithmetic: 60–70 W × 24 h = 1.44–1.68 kWh per day, or about 526–613 kWh per year."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Measured battery-charging pass-through and surge",
+   "value": "11,400 W charging (12,000 W rated); held the 15.5 kW 5-minute surge rating on battery only",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'we got it right up to 11,400W'. It says the surge rating held 'running purely on battery power—no grid power, no solar power.' This tells you nothing about PV-only operation without a battery."
+  },
+  {
+   "product": "Enphase IQ8MC",
+   "label": "Measured solar contribution, no battery, grid simulated",
+   "value": "about 800 W from 4 × 365 W panels (1,460 W nameplate), about 55% of nameplate",
+   "source": "https://www.thesolarlab.com/review/enphase-iq8mc-microinverter",
+   "source_title": "Enphase IQ8MC Microinverter Review: Are Microinverters a Good Investment? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "Setup: four Prism Solar 365 W panels with IQ8MC microinverters and an IQ Combiner 5, tested late afternoon in 'mid-October' (no year given). The load was about 1,830 W of lights and heat guns. With the microinverters on, the power drawn from an OUPES Guardian 6000 standing in for the grid fell to 1,082 W, so about 800 W came from solar. Arithmetic: 800 ÷ 1,460 ≈ 55%. The reviewer: 'the microinverters need an active grid reference in our solar-only configuration' and 'a standard grid-tied microinverter setup isn't automatically a backup power system.' Sunlight Backup was not tested. No author or date is shown."
+  },
+  {
+   "product": "Enphase IQ8 Sunlight Backup",
+   "label": "Named reviewer's verdict (no measurement)",
+   "value": "'more of a novelty feature than a practical solution'",
+   "source": "https://solarquotes.com.au/blog/enphase-sunlight-backup",
+   "source_title": "Why You Can't Have Enphase Sunlight Backup (SolarQuotes)",
+   "read": "2026-11-13",
+   "note": "Anthony Bennett, SolarQuotes, 2023-11-27. He gives no measured figures. He says Enphase limits Sunlight Backup to essential loads and that large motor loads such as a fridge cause brownouts. He also says Enphase withdrew the feature in the US, which conflicts with the 2026 Enphase Sunlight Backup documents ChatGPT cited and needs checking with Enphase."
+  }
+ ],
+ "unsourced": [
+  "Each maker's rated idle draw, to set against The Solar Lab's measurements: EG4 18kPV about 70 W normal and 18 W standby, and Sol-Ark 15K 90 W no-load. These appeared only in search snippets. The EG4 spec sheet (eg4electronics.com) and the Sol-Ark 15K datasheet PDFs couldn't be read as text, and the sol-ark.com product page doesn't list idle draw.",
+  "Enphase IQ8 / IQ8MC night-time power consumption (snippets said 21–60 mW depending on model and sheet revision) and CEC weighted efficiency (snippets said 97.0–97.5%). The maker datasheet PDFs I opened couldn't be read as text, and the Enphase IQ8MC shop page returned 404.",
+  "Any measurement by a named reviewer of PV-only output in an outage without a battery, for Enphase Sunlight Backup, an EG4 18kPV with no battery, or a Sol-Ark 15K with no battery. I searched The Solar Lab, SolarQuotes and the EG4 forum and found none.",
+  "Will Prowse's measured figures for the EG4 18kPV. The search found only a second-hand forum mention, and I didn't open the video.",
+  "Any measurement by a named reviewer for the Sun Gold Power SPH6548P that Dealectric lists. I didn't search for it because I ran out of the tool-call budget.",
+  "Author names and publication dates for the three The Solar Lab reviews. The pages show neither, and I couldn't fetch their metadata."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0603809000000002
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got quotes EG4's own 18kPV manual (v2.0.2) on running with no battery: it says to enable 'PV Grid Off' or 'No Battery' so solar can 'supply load when the grid fails', and it warns that 'the Off-Grid energy is supplied by solar and is not stable'. None of them mention that Sun Gold Power's SPH6548P, an off-grid UL 1741 unit, 'supports battery-free' operation either.",
+ "standout": 1,
+ "standout_why": "I compared against the two cited Enphase briefs (iq8-grid and sunlight-backup-installation-guidelines) and the uncited top result outagemath.com/guides/solar-without-battery-power-outage. Outagemath already covers the 2-second shutdown rule in IEEE 1547, Enphase's limit of 30% of array output for backup loads, and the name of EG4's 'PV Grid Off' setting. It lists EG4's batteryless output as 'Not published' and does not give EG4's own warning that this mode is 'not stable'. None of the result pages I could read mention the Sun Gold Power SPH6548P. I couldn't extract text from the two cited Enphase PDFs or the cited Sol-Ark guides on device.report, so I couldn't check what they say.",
+ "decides": "This confirms there are two ways to get batteryless backup and that both run only while the sun covers the load in real time. Enphase IQ8 Sunlight Backup is the only route where the maker publishes a sizing rule (loads at or below 30% of the IQ8 array's AC rating) and an automatic restart. The EG4 18kPV can power loads from PV alone during an outage, but EG4's manual says that power is unstable. That makes the EG4 a 'battery later' pick, not a dependable batteryless backup. The SPH6548P, which Dealectric lists at $1,035, runs without a battery, but its UL 1741 listing is for off-grid systems. It suits a shopper who wants appliances run directly from solar, not one who wants to send power back to the grid.",
+ "candidates": [
+  "Enphase IQ8 Microinverters + IQ System Controller 2 + IQ Load Controller (Sunlight Backup)",
+  "EG4 18kPV-12LV",
+  "Sun Gold Power SPH6548P",
+  "Sol-Ark 15K-2P"
+ ],
+ "findings": [
+  {
+   "product": "Enphase IQ8 Sunlight Backup",
+   "label": "Maximum backup load with no battery",
+   "value": "30% of the IQ8 array's total rated AC output (Enphase example: 24 IQ8 = 5.7 kW AC, so backup loads under 1.7 kW AC)",
+   "source": "https://enphase.com/homeowners/sunlight-backup-user-guide",
+   "source_title": "Enphase Sunlight Backup user guide (Essential load selection)",
+   "read": "2026-11-13",
+   "note": "Quoted: 'Enphase recommends your backup loads do not exceed 30% of the total rated AC output power.' Check: 0.30 × 5.7 kW = 1.71 kW. The page shows only a 2026 copyright date."
+  },
+  {
+   "product": "Enphase IQ8 Sunlight Backup",
+   "label": "What happens when loads exceed solar output",
+   "value": "System shuts down; takes up to 2 minutes to restart if sunlight is available",
+   "source": "https://enphase.com/homeowners/sunlight-backup-user-guide",
+   "source_title": "Enphase Sunlight Backup user guide",
+   "read": "2026-11-13",
+   "note": "Quoted: 'While running off-grid, the system may shutdown if the power produced is less than what is needed to power the loads' and 'The system can take up to two minutes to restart'. Enphase also says the system tries to find and disconnect the load that caused the shutdown."
+  },
+  {
+   "product": "Enphase IQ8 Sunlight Backup",
+   "label": "Hardware needed beyond the microinverters",
+   "value": "At least one IQ Load Controller, plus IQ System Controller 2 to detect the outage and switch over",
+   "source": "https://enphase.com/homeowners/sunlight-backup-user-guide",
+   "source_title": "Enphase Sunlight Backup user guide",
+   "read": "2026-11-13",
+   "note": "Quoted: 'Sunlight backup needs at least one IQ Load Controller installed on site'. Enphase says the IQ System Controller 2 'automatically detects utility power outages and seamlessly transitions you to backup power' and 'enables grid forming IQ8 Microinverters'."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Batteryless outage setting and EG4's caveat",
+   "value": "Enable 'PV Grid Off'; EG4 says 'the Off-Grid energy is supplied by solar and is not stable'",
+   "source": "https://www.manualslib.com/manual/3312143/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual, Version 2.0.2 (ManualsLib copy), p. 50, Section 7.2 Application Settings",
+   "read": "2026-11-13",
+   "note": "Quoted: 'without installing any batteries, please enable PV Grid Off'. This is a ManualsLib copy of EG4's manual (footer: Version 2.0.2, © 2023 EG4 Electronics). I did not open EG4's own PDF."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Solar-only backup during a grid outage",
+   "value": "'No Battery' setting lets solar supply loads when the grid fails",
+   "source": "https://www.manualslib.com/manual/3312143/Eg4-18kpv.html",
+   "source_title": "EG4 18KPV User Manual, Version 2.0.2 (ManualsLib copy), p. 84, Inverter Start-Up and Shutdown Procedure",
+   "read": "2026-11-13",
+   "note": "Quoted: \"'No Battery' can be enabled to use solar power to supply load when the grid fails or load-shedding happens.\" The manual gives no wattage for output without a battery."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Battery-free operation and UL listing",
+   "value": "Supports battery-free; 'UL 1741 by ETL for Off Grid Solar System'; 6,500 W rated, 13,000 VA peak",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P (Sun Gold Power US store)",
+   "read": "2026-11-13",
+   "note": "Read from the maker's store description with storecheck.py search. Quoted: 'a User Mode to work with all battery types, and supports battery-free.' The 13,000 VA peak figure is from the same page; the page doesn't say whether that peak is available with no battery."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P",
+   "label": "Price",
+   "value": "$1,035.00 (compare-at $4,526.00), in stock",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P (Sun Gold Power US store)",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of sungoldpower.com on 2026-11-13. A later product-page fetch returned HTTP 429, so the price was read once."
+  },
+  {
+   "product": "general",
+   "label": "Why an ordinary grid-tie inverter goes dark in an outage",
+   "value": "IEEE 1547 requires grid-tied inverters to detect an outage and stop exporting within 2 s (the utility can extend this to 5 s)",
+   "source": "https://www.outagemath.com/guides/solar-without-battery-power-outage/",
+   "source_title": "Outagemath: Solar Without a Battery in a Power Outage: What Works",
+   "read": "2026-11-13",
+   "note": "Outagemath's summary of IEEE 1547, with the standard linked in its sources. A search excerpt from a PES GM 2026 paper quotes IEEE 1547-2018 with the same 2-second limit, but I didn't open the standard itself. This page was already in ChatGPT's results, so this point is not new."
+  }
+ ],
+ "unsourced": [
+  "Sol-Ark 15K-2P solar-only behavior during a grid outage: the maker product page says nothing about batteryless operation, and the device.report copies of the Sol-Ark user guides returned HTTP 403.",
+  "Sun Gold Power SPH6548P manual on running without a battery (whether output is limited or follows PV, and the mixed-load mode): manuals.plus and device.report copies returned HTTP 403, and the maker product page returned HTTP 429 on a full fetch.",
+  "EG4 18kPV continuous output in 'PV Grid Off' or 'No Battery' mode: the manual pages I read give no figure.",
+  "Whether the cited Enphase briefs (iq8-grid, sunlight-backup-installation-guidelines) state the 30% load rule: both PDFs came back as compressed streams I couldn't extract, and local PDF extraction was blocked.",
+  "IEEE 1547 text from the standard itself or the NREL report: I found nrel.gov/docs/fy16osti/67185.pdf but didn't open it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0760432
+ }
+}
