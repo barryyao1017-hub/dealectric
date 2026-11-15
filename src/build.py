@@ -138,7 +138,7 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
-from focus import BUYBOX, DEAL_ROW
+from focus import BUYBOX, DEAL_ROW, BUY_FIRST
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from kits import KITS
 from urllib.parse import quote, urlsplit
@@ -937,6 +937,18 @@ def offer_block(p, net, prog, url):
 """
 
 
+def buy_first_row(p, url):
+    """bluetti-four run (11-15): the product page opens with where to buy it and the checkable saving (BUY_FIRST)."""
+    if p["slug"] not in BUY_FIRST or buy_compare(p):
+        return ""
+    co = checkable_offer(p)
+    if not co:
+        return ""
+    link = html.escape(url)
+    return (f'\n<p><strong>Buy from {html.escape(p["brand"])}:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>: '
+            f'{money(p["price"])} on {store_host(p)}; {html.escape(co)} · affiliate link</p>')
+
+
 def deal_row(p, url):
     """W3 "deal row first" (src/focus.py DEAL_ROW): buy link, code, price after it and the cart test date in one line
     under the product name, in the shape of the list-page rows that earned ChatGPT's /go/ links. Empty elsewhere."""
@@ -986,7 +998,7 @@ def product_page(p):
     c, s, after, date = best_offer(p)
     body = f"""
 <p class="small"><a href="/products/">Products</a> › {html.escape(cat_name)} › {html.escape(p['brand'])}</p>
-<h1>{html.escape(p['name'])}</h1>{where_to_buy(p, url)}{deal_row(p, url)}
+<h1>{html.escape(p['name'])}</h1>{where_to_buy(p, url)}{buy_first_row(p, url)}{deal_row(p, url)}
 <p class="lead">{html.escape(p['summary'])}</p>{newer_block(p)}
 {offer_block(p, net, prog, url)}
 <figure><img src="{wide['path']}" width="{wide['width']}" height="{wide['height']}" alt="{html.escape(wide['alt'])}">
@@ -1501,6 +1513,23 @@ def link_offer(p):
             f"{money(after)} through this link with code {cd['code']} at checkout ({when})")
 
 
+def checkable_offer(p, short=False):
+    """Bluetti-four run (11-15, DLC-281 test): the saving as text a reader can check beside the buy link: the price
+    through the link, the code, the amount saved and the date of the cart test on this exact product, and who sells
+    it. None when there is no code, no test on this product (a borrowed test), or the record is an Amazon listing."""
+    if is_amazon(p):
+        return None
+    cd, sv, after, date = best_offer(p)
+    if not cd or not date or borrowed_test(p, cd) or sv <= 0:
+        return None
+    pct = f"{cd['value']:g}% off" if cd.get("type") == "percent" else f"{money(cd['value'])} off"
+    how = "applied by the link" if applied_by_link(p, cd) else "entered at checkout"
+    if short:
+        return f"{money(after)} with code {cd['code']} (saves {money(sv)}, tested {date})"
+    return (f"{money(after)} with code {cd['code']} {how} ({pct}, saves {money(sv)}; tested in {p['brand']}'s cart {date}), "
+            f"sold and shipped by {p['brand']}")
+
+
 def compare_row_v2(c, r):
     """A v2 row: our products show the brand's own price in Price and the price through our link in Buy; other brands
     carry the maker's dated price and a link to the maker's page. Short link text keeps the table narrow."""
@@ -1529,6 +1558,10 @@ def compare_row_v2(c, r):
         p = BY_SLUG[r["slug"]]
         name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
         a = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">'
+        co = checkable_offer(p) if c.get("buy_by_name") else None
+        if co:   # bluetti-four run (DLC-281): the buy link beside the name, with the saving as checkable text
+            name += (f'<br><span class="small">{a}Buy from {html.escape(p["brand"])}</a>: {money(p["price"])} on {store_host(p)}, '
+                     f'{html.escape(co)}</span>')
         if is_amazon(p):
             price, buy = amz_price_text(p["asin"]), f'{a}Buy on Amazon</a>'
         else:
@@ -1665,6 +1698,10 @@ def pick_line(c):
             forms = [html.escape(bc), html.escape(gap_compare(c, p, short=True))]
         elif not lo:
             forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
+        elif c.get("buy_by_name") and checkable_offer(p):   # bluetti-four run (DLC-281): code and saving as checkable text
+            forms = [f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p))}',
+                     f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p, short=True))}',
+                     f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}']
         else:
             forms = [f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[1])}',
                      f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}', html.escape(lo[0])]

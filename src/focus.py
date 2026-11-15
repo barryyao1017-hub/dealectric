@@ -189,3 +189,14 @@ DEAL_ROW = {
     "allpowers-r4000-3456wh",                       # C
     "allpowers-s2000-pro-sp037-solar-kit",          # F
 }
+
+# BLUETTI products whose ChatGPT product panel shows no seller (bluetti-four run, Barry 2026-11-15): a search on the
+# product's name should land on a page whose first line is the buy link with the store price, the price with the code,
+# the saving and the cart-test date (build.py buy_first_row, text from checkable_offer). Not part of the W3 split above.
+BUY_FIRST = {
+    "bluetti-elite-200-v2",
+    "bluetti-elite-200-v2-200w-solar-kit",
+    "bluetti-elite-200-v2-2x200w-solar-kit",
+    "bluetti-elite-100-v2",
+    "bluetti-elite-30-v2-100w-solar-kit",
+}
