@@ -1916,7 +1916,7 @@ PRODUCTS = [
  "official_page": 'https://www.ankersolix.com/s5000',
  "price": 2599.99,
  "list_price": 3599.99,
- "verified": '2026-11-10',
+ "verified": '2026-11-15',
  "specs": [('Capacity', '5,024 Wh LFP (314 Ah cells), expandable to 30 kWh with five BP5000 batteries'), ('AC output', '4,500 W continuous, 8,000 W peak (fraction of a second)'), ('Voltage', '120 V and 240 V'), ('AC outlets', 'NEMA 5-20R (2,400 W each), TT-30R (3,600 W), L14-30R 240 V (4,500 W)'), ('USB', 'USB-C 100 W, USB-C 15 W, USB-A 12 W'), ('Solar input', '3,000 W total (2,000 W high-voltage + 1,000 W low-voltage)'), ('AC input', '1,800 W from 120 V; 4,500 W from 240 V (0 to 100% in 99 minutes)'), ('UPS switchover', '10 ms'), ('Idle draw', '8.8 W (120 V mode), 13.7 W (240 V mode), per Anker'), ('Cycle life', '10,000 cycles'), ('Weight', '97 lb, 10.6 × 22.0 × 15.2 in, wheels and pull handle'), ('Certification', 'UL 9540 and UL 9540A')],
  "warranty": '5 years',
  "returns": '30-day money-back guarantee on ankersolix.com',
