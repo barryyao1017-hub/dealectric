@@ -1,0 +1,85 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180 + 2×200 W kit gets its full 400 W only if the two SP200L panels are wired in series. The AC180's solar input is capped at 10 A (12–60 V). Each SP200L's short-circuit current (Isc) is 10.8 A and its open-circuit voltage (Voc) is 24.6 V. Wired in parallel, the pair therefore cannot deliver more than about 246 W, so a full charge takes at least 4.7 sun-hours instead of 2.9. In series the pair is 49.2 V Voc, which is under the 60 V limit, so all 400 W can reach the battery.",
+ "standout": 2,
+ "standout_why": "Trek4Tech (cited) lists the AC180 only with one 200 W panel. It gives a 500 W max input with no voltage or amp limits and no wiring guidance for two panels. RuntimeMath gives a 13 A limit only for the ALLPOWERS R1500 + SP039 and says nothing about series vs parallel. Our own dealectric.com page shows AC180 + 2×200 W at 2.9 h (1,152 ÷ 400) with the station's input limits marked 'Not given', so that 2.9 h is right only with series wiring. I could not read TheOutagePlan (cited) because of an SSL certificate error, so it is unchecked. None of the pages I read set each station's amp cap against the bundled panel's current.",
+ "decides": "This does not change the fastest pick on panel-to-battery ratio. That is the ALLPOWERS P1800 kits: 1,024 Wh with 600 W of panel, about 1.7 h at rated panel watts, or with 400 W, about 2.6 h. The P1800's solar input is 650 W, which is above both panel sizes. The finding sets a condition on the next-fastest kit. The BLUETTI AC180 + 2×200 W ($1,232) is about 2.9 h only in series and at least 4.7 h in parallel, which would put it behind both P1800 kits by a wide margin. The Elite 200 V2 has a 20 A input, so its 2×200 W kit (about 5.2 h) is not affected much by wiring. The page should give 'wire in series' as the instruction for the AC180 kit.",
+ "candidates": [
+  "ALLPOWERS P1800 + SP039 600 W",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "BLUETTI AC180 + 2× SP200L 200 W",
+  "BLUETTI Elite 200 V2 + 2× SP200L 200 W",
+  "EcoFlow DELTA 3 Plus + 400 W",
+  "GEYOTO N1000 + 2× 200 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limits",
+   "value": "12–60 V DC, 10 A max, 500 W max; series or parallel allowed; Voc must not exceed 60 V",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-15",
+   "note": "Comes from the manual's spec table and solar charging section. BLUETTI's own AC180 product page shows only '500W Max.'"
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Panel electrical specs",
+   "value": "Voc 24.6 V, Isc 10.8 A, 200 W max",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-15",
+   "note": "The page does not list Vmp or Imp. The AC180 2×200 W kit image filename is 'AC180_2xSP200L', which suggests the kit uses this panel."
+  },
+  {
+   "product": "BLUETTI AC180 + 2× SP200L",
+   "label": "Highest possible solar watts when wired in parallel",
+   "value": "≤246 W (≥4.7 h to full)",
+   "source": "https://www.manualslib.com/manual/3270655/Bluetti-Ac180.html",
+   "source_title": "Bluetti AC180 - Portable Power Station Manual (ManualsLib)",
+   "read": "2026-11-15",
+   "note": "In parallel the two panels together give 2 × 10.8 A = 21.6 A Isc, which is clipped to the 10 A input cap. Voltage stays under 24.6 V Voc, so the most power possible is 10 A × 24.6 V = 246 W, and the real figure at Vmp is lower. 1,152 Wh ÷ 246 W = 4.7 h, before losses. In series, Voc is 2 × 24.6 = 49.2 V, under the 60 V limit, and current stays at or below 10.8 A Isc. That allows up to about 400 W, so 1,152 ÷ 400 = 2.9 h. The panel's Isc is slightly above the 10 A cap, so expect a little clipping in full sun."
+  },
+  {
+   "product": "BLUETTI AC180 + 2×200 W kit",
+   "label": "Price (BLUETTI US)",
+   "value": "$1,232.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-15",
+   "note": "Listed on the page as the bundle option 'AC180+2*200W Solar | 1800W,1152Wh,400W Solar Kit'. The station alone was $499 in storecheck."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limits",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-15",
+   "note": "Two SP200L in parallel give 21.6 A Isc, close to the 20 A cap. The most power possible is 20 A × 24.6 V = 492 W, which is more than 400 W, so either wiring gives about 400 W. 2,073.6 Wh ÷ 400 W = 5.2 h. Kit price is $1,499.00. The page also claims '80% in 1.1 hours' (TurboBoost) without naming the charging source, so it is not a solar figure."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Solar input max and kit prices (ALLPOWERS US)",
+   "value": "650 W via XT60; P1800 + 400 W kit $698.00; P1800 + 600 W (SP039) kit $798.00; station alone $399.00",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-15",
+   "note": "Prices and the 650 W figure come from the storecheck Shopify query. The kit URLs are …/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel and …-with-600w-solar-panel. The listed 0–80% in about 1 hour is for AC charging, not solar. At rated panel watts: 1,024 ÷ 600 = 1.7 h and 1,024 ÷ 400 = 2.6 h. Both panel sizes are under the 650 W cap."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS P1800 solar input voltage range and amp cap. The ALLPOWERS US pages returned HTTP 429. The only 13 A / 60 V figures I found are for the R1500, so I did not apply them to the P1800. This number decides whether the SP039 (search snippet: Vmp 44 V, Imp 13.63 A, Voc 52.8 V) is clipped to about 572 W on the P1800.",
+  "ALLPOWERS SP039 and SP037 electrical specs (Vmp, Imp, Voc). The US product pages returned 429. I saw SP039 values only in a search snippet, so I did not use them.",
+  "EcoFlow DELTA 3 Plus per-port solar voltage and amp limits, and the price of the 400 W bundle. us.ecoflow.com returned 429 both directly and through storecheck.",
+  "GEYOTO N1000 solar input limits and the panel specs for its kit. Not researched within the budget.",
+  "SP200L Vmp and Imp. Neither is listed on BLUETTI's page, so the parallel figure is given as an upper bound from Voc × the input amp cap.",
+  "TheOutagePlan (cited rival). WebFetch failed with an SSL certificate error and curl needed approval, so I could not check its content."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1321756000000003
+ }
+}

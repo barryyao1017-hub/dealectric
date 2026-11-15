@@ -1,0 +1,113 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the ALLPOWERS P1800's own solar port is limited to 11–60 V and 13 A (650 W ceiling), or that ALLPOWERS sells a P1800 kit with a 600 W panel ($798) that stays under that ceiling. That kit refills faster than the 400 W kit ChatGPT picked, as long as the 600 W panel works at 46 V or more so 13 A is enough.",
+ "standout": 2,
+ "standout_why": "Trek4Tech (cited) gives only wattage ceilings: C1000 600 W, AC180 500 W, Explorer 1000 v2 400 W, Delta 2 500 W, Explorer 2000 v2 400 W and River 2 Pro 220 W. It names no voltage or amp window and doesn't cover the P1800. It only says to check that 'the voltage, current and wiring fit'. ChatGPT's answer gives the same ~3.4–4.3 h for all three 400 W kits, with no input limits and no 600 W option. I could not read TheOutagePlan (cited) because of a TLS certificate error, so it is not compared.",
+ "decides": "This changes the pick inside the same product line. ChatGPT chose the P1800 + 400 W kit. ALLPOWERS's US store also sells a P1800 + 600 W kit for $798, $100 more, and the P1800's 650 W XT60 input can take all 600 W. On the maker's ratings, that is 1,024 Wh against 600 W instead of 400 W, about 1.7 h at full rating instead of 2.6 h, before losses. Whether the panel really delivers 600 W depends on its operating voltage, because the input caps current at 13 A. At 13 A the port reaches 600 W only from about 46.2 V up (600 ÷ 13). The same cap limits the 400 W SP037: at its 37.4 V figure it can reach about 486 W, enough for 400 W. EcoFlow's '70-minute' DELTA 3 Plus claim needs 2 × 500 W inputs (1,000 W). EcoFlow's US store doesn't list a 400 W DELTA 3 Plus bundle (160 W, 220 W, 2 × 220 W only), so ChatGPT's EcoFlow card isn't a US maker kit. BLUETTI caps the AC180 at 500 W, so its 2 × 200 W kit gets nothing from the extra input room.",
+ "candidates": [
+  "ALLPOWERS P1800 + 600 W Solar Panel",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "EcoFlow DELTA 3 Plus + 220 W / 2×220 W",
+  "BLUETTI AC180 + 2×200 W",
+  "BLUETTI AC180 + 350 W",
+  "GEYOTO N1000 + 2×200 W"
+ ],
+ "findings": [
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Solar input ceiling (maker US store)",
+   "value": "Up to 650 W via XT60",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-15",
+   "note": "Product text pulled with storecheck search on iallpowers.com. Opening the full page returned HTTP 429 every time, so the voltage and amp window came from the reviewer below."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Solar/DC input voltage and current window (label on unit)",
+   "value": "11–60 V, 13 A max; 650 W",
+   "source": "https://www.vantour.net/allpowers-p1800-review/",
+   "source_title": "ALLPOWERS P1800: complete test, reviews and price (1024 Wh) — Vantour",
+   "read": "2026-11-15",
+   "note": "Vantour (dated 2026-08-05) shows the back-panel label as '11-60 V 13 A MAX input', described as 'the DC input for solar or car', and gives 650 W solar charging in its spec table. Vantour did not time a solar charge."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W Solar Panel",
+   "label": "Kit price, maker US store",
+   "value": "$798.00 (compare-at $1,059.98), in stock",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 600W Solar Panel",
+   "read": "2026-11-15",
+   "note": "From storecheck search. 600 W is below the 650 W input ceiling. At full rating that is 1,024 Wh ÷ 600 W ≈ 1.7 h, before MPPT and charging losses. The panel needs about 46.2 V or more at 13 A (600 ÷ 13) to deliver 600 W. Its electrical specs could not be opened."
+  },
+  {
+   "product": "ALLPOWERS P1800 + SP037 400 W",
+   "label": "Kit price, maker US store",
+   "value": "$698.00 (compare-at $1,059.98), in stock",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-400w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 400W Solar Panel",
+   "read": "2026-11-15",
+   "note": "From storecheck search. 1,024 Wh ÷ 400 W ≈ 2.6 h at full rating. The 200 W kit is $531.00."
+  },
+  {
+   "product": "ALLPOWERS SP037 400 W",
+   "label": "Panel voltage as stated by maker",
+   "value": "37.4 V; MC4 output",
+   "source": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel",
+   "source_title": "ALLPOWERS 400W Foldable Solar Panel SP037",
+   "read": "2026-11-15",
+   "note": "Store text: 'provides 37.4V huge power for your solar generators, such as ALLPOWRS S1500/S2000/S2000 Pro'. This is inside the P1800's 11–60 V window. At 37.4 V, 13 A allows about 486 W, so 400 W is not current-limited. The P1800 isn't in the maker's named compatible list, but ALLPOWERS sells it as the P1800 kit. Panel is $299.00 on its own."
+  },
+  {
+   "product": "ALLPOWERS S2000 Pro + SP037",
+   "label": "Maker wiring note",
+   "value": "2 × 200 W panels in parallel (400 W max) as sold; 650 W max with more panels, '3 hours to full'",
+   "source": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 2400W (S2000 Pro + SP037 400W Solar Panel)",
+   "read": "2026-11-15",
+   "note": "Kit is $848.00. The same listing says the polycrystalline panel's 'conversion rate… about 60%. That is, a 100W solar panel can output about 55W-65W', which is the maker's own derating."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Condition for the 70-minute solar claim",
+   "value": "500 W MPPT × 2 (1,000 W total)",
+   "source": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Plus Portable Power Station — EcoFlow US",
+   "read": "2026-11-15",
+   "note": "Page says 'EcoFlow DELTA 3 Plus with 500W MPPT × 2 charges fully in 70 minutes'. US-store solar bundles: + 160 W $819 (pre-order, ships late Nov), + 220 W $919 (pre-order), + 2 × 220 W sold out. No 400 W bundle listed. The page I loaded didn't show the per-port voltage and amp window."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input ceiling and kit prices",
+   "value": "500 W max; AC180 + 2 × 200 W $1,232, + 350 W $1,088, + 200 W $769",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-15",
+   "note": "Prices from storecheck product variants. The 500 W figure is from the page's comparison table. 400 W of panels fits under 500 W: 1,152 Wh ÷ 400 W ≈ 2.9 h at full rating. The page shows no voltage or amp window and no series/parallel guidance."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival states about compatibility",
+   "value": "Wattage ceilings only (C1000 600 W, AC180 500 W, Explorer 1000 v2 400 W, Delta 2 500 W, Explorer 2000 v2 400 W with one SolarSaga 200 per input, River 2 Pro 220 W)",
+   "source": "https://www.trek4tech.com/articles/best-solar-generators",
+   "source_title": "Best Solar Generators (2026): Six Bundles Compared on the Panel, Not the Pitch | Trek4Tech",
+   "read": "2026-11-15",
+   "note": "No voltage or amp windows, no ALLPOWERS P1800, no 600 W kit."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS 600 W panel (P1800 600 W kit) model number, Vmp, Imp and Voc. The kit page returned HTTP 429 on four tries, so I couldn't check it clears the 13 A cap at 600 W.",
+  "SP037 Vmp, Imp, Voc and Isc from a page I opened. A search summary credited the US page with Vmp 30.5 V and Imp 13.11 A, which would be right at the P1800's 13 A cap. I couldn't open that page (429) or the device.report manual (403), so I left those figures out.",
+  "ALLPOWERS P1800 user manual spec table (solar Voc max, XT60-to-MC4 cable included). manuals.plus returned 403 and the iallpowers.eu P1800 page returned 429.",
+  "EcoFlow DELTA 3 Plus per-port solar voltage and current window on an official EcoFlow page or manual. The US specs URL I tried returned 404.",
+  "GEYOTO N1000 solar input voltage, amps and watts. Search found only syndicated press releases, and I ran out of calls before finding a maker page.",
+  "BLUETTI AC180 solar voltage and amp window, and SP200L panel Voc and Isc. The AC180 page shows only '500W Max'.",
+  "TheOutagePlan (cited rival) content. WebFetch failed with a self-signed certificate error and curl needed approval."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2179321000000003
+ }
+}
