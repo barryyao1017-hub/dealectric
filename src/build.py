@@ -1562,6 +1562,8 @@ def compare_row_v2(c, r):
         if co:   # bluetti-four run (DLC-281): the buy link beside the name, with the saving as checkable text
             name += (f'<br><span class="small">{a}Buy from {html.escape(p["brand"])}</a>: {money(p["price"])} on {store_host(p)}, '
                      f'{html.escape(co)}</span>')
+        if is_amazon(p) and c.get("buy_by_name"):   # bluetti-four run: the Amazon link beside the name, with Amazon's dated price
+            name += f'<br><span class="small">{a}Buy on Amazon</a>: {amz_price_text(p["asin"])}</span>'
         if is_amazon(p):
             price, buy = amz_price_text(p["asin"]), f'{a}Buy on Amazon</a>'
         else:
@@ -1588,6 +1590,8 @@ def compare_row_v2(c, r):
         if r.get("asin"):   # DLC-208 third A push (Barry 11-12): Amazon Associates is the fallback link for a brand we have no program with
             buy = f'<a href="{amazon_row_link(r["asin"])}" rel="sponsored nofollow noopener">Buy on Amazon</a>'
             price = amz_price_text(r["asin"], price or AMAZON_PRICE)
+            if c.get("buy_by_name"):   # bluetti-four run: the Amazon link beside the name, with Amazon's dated price
+                name += f'<br><span class="small">{buy}: {amz_price_text(r["asin"])}</span>'
         elif r.get("url") and c.get("all_links"):   # no program and no Amazon listing: the maker's own page, no commission
             buy = f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"])}\'s page</a>'
     if r.get("note"):
