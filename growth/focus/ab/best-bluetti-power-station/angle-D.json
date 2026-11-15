@@ -1,0 +1,138 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got sets each BLUETTI model's UPS switchover time against the 17 ms hold-up that Intel's ATX12V guide requires of a desktop PC power supply at full load. Elite 30 V2 (≤10 ms), Elite 100 V2 (10 ms) and Elite 200 V2 (15 ms) all come in under 17 ms. The AC180's 20 ms is 3 ms over, and the Apex 300 reaches 0 ms only on two front outlets in one voltage setup.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited. OutdoorGearLab's AC180 review gives the 20 ms cut-off and says the reviewer 'would hesitate to use it as a UPS for sensitive electronics', but it never ties that to any PC power-supply figure or compares other BLUETTI models. The CNET/Yahoo Tech page returned HTTP 403, so I couldn't check it. ChatGPT's answer itself names no switchover times and no hold-up figure. Our current page also lacks them. None of these pages explains that the Apex 300's 0 ms depends on the outlet and voltage mode.",
+ "decides": "This confirms the Elite 100 V2 over the AC180 for anyone who wants a PC, NAS or router to stay up through a power cut. Both cost $499 at bluettipower.com today, but the Elite 100 V2 switches in 10 ms against 20 ms. The Elite 30 V2 at ≤10 ms is the small desk-UPS pick. For a large unit, the Elite 200 V2 at 15 ms is still inside 17 ms, and StorageReview found its switchover caused no reboots on running servers. Apex 300 buyers counting on 0 ms must use the two left front outlets in 240 V mode on a 120 V input. In 120 V mode StorageReview measured a 16 ms transfer.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "BLUETTI Apex 300",
+  "BLUETTI Elite 300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Desktop PC power supply hold-up after AC loss (Intel ATX12V Power Supply Design Guide v2.0, section 3.2.11)",
+   "value": "at least 17 ms at maximum continuous output load",
+   "source": "https://www.manualsdir.com/manuals/128310/intel-atx12v.html?page=22",
+   "source_title": "Intel ATX12V Power Supply Design Guide, Version 2.0, Voltage hold-up time",
+   "read": "2026-11-15",
+   "note": "Exact wording: the supply 'should maintain output regulation ... despite a loss of input power at the low-end nominal range—115 VAC / 57 Hz or 230 VAC / 47 Hz—at maximum continuous output load ... for a minimum of 17 ms.' This is a design-guide minimum at full load. Power supplies at light load usually hold up longer."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "UPS switchover time (maker)",
+   "value": "10 ms",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Store listing: '10ms UPS Backup: Switches to battery power in just 10 ms ... for medical devices, servers, and other sensitive equipment.' That is 7 ms under the ATX 17 ms minimum. Read with storecheck.py."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Read with storecheck.py; compare_at is also $499.00, in stock."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Power Lifting (maker)",
+   "value": "2,700 W Lifting Power on top of 1,800 W rated output",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Store listing text: '1,800W output (2,700W Lifting Power)'."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover time and bypass power (maker)",
+   "value": "≤10 ms, 980 W bypass",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "Elite 30 V2+100W Solar (BLUETTI US store)",
+   "read": "2026-11-15",
+   "note": "Store listing: '≤10ms Pro-Grade UPS Backup: Seamless switch with 980W bypass power'. The same listing gives 4.5 W standby and 1,500 W Lifting Power. Store price for this 100 W solar bundle is $489.99. I didn't read a standalone unit price."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "UPS switchover time (BLUETTI figure, quoted by named reviewer)",
+   "value": "15 ms",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: Portable Power Meets Lab-Grade Reliability – BLUETTI Elite 200 V2 Review (Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-15",
+   "note": "'BLUETTI also claims 15ms UPS ... switching.' This is 2 ms under the ATX 17 ms minimum. StorageReview ran repeated unplug/replug cycles with Dell PowerEdge R640 and R240, an HPE DL360 Gen10 and a Gigabyte chassis running and reported 'no reboots, instability, or other anomalies'."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Power Lifting limit (maker)",
+   "value": "3,900 W, pure resistive loads only",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-15",
+   "note": "Product page: 'kick into 3900W Power Lifting mode for pure resistive loads', and examples given are 'kettles, electric blankets, and hair dryers'. AC input 1,800 W max. Solar input 12-60 V / 20 A, 1,000 W max."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-15",
+   "note": "Read with storecheck.py; compare_at $899.00, in stock."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "UPS cut-off time (as reported by cited reviewer)",
+   "value": "20 ms",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-ac180",
+   "source_title": "OutdoorGearLab: Bluetti AC180 Review | Tested & Rated",
+   "read": "2026-11-15",
+   "note": "OGL says the AC180 advertises a '20ms cut-off' and the reviewer would hesitate to use it as a UPS for sensitive electronics. 20 ms is 3 ms over the ATX 17 ms full-load hold-up minimum. I couldn't read BLUETTI's own AC180 page (HTTP 429)."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (compare-at $1,232.00)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-15",
+   "note": "Read with storecheck.py search, in stock. Same price as the Elite 100 V2 today."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "UPS switchover (maker)",
+   "value": "'0ms or 20ms'",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Home Battery Backup (BLUETTI US store)",
+   "read": "2026-11-15",
+   "note": "Page says '0ms UPS switchover keeps essentials running nonstop' and also 'Fast 0ms or 20ms switching', without saying which outlets or modes give 0 ms. The page shows $1,499.00 and $1,699.00 without labelling which is current, so I've left the price out."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Conditions for 0 ms and measured transfer in 120 V mode (named reviewer)",
+   "value": "0 ms only on the two left front outlets in 240 V mode on a 120 V input. 120 V mode is the 20 ms path, where 16 ms was measured.",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review, 3,840 W, 240 V, grid input limit, UPS (Kevin OBrien, 2026-11-09)",
+   "read": "2026-11-15",
+   "note": "Quote: 'BLUETTI's 0ms figure applies to two front outlets in 240V mode on a 120V input.' Kevin OBrien captured a 16 ms transfer with a Quarch capture on a Dell Pro Precision 9 T2. The workstation stayed up at about 100 W idle and again at about 700 W benchmark load. On a 240 V input in 240 V mode, every outlet gets the delay."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 UPS switchover time from BLUETTI's own US page or manual: the product page FAQ 'Does Elite 200 V2 have a UPS function?' shows no answer, and the manual PDFs wouldn't convert to text (one was over the size limit), so the 15 ms figure comes from StorageReview quoting BLUETTI.",
+  "AC180 UPS switchover time from BLUETTI's own page or manual: bluettipower.com/products/ac180 returned HTTP 429, so the 20 ms figure comes from OutdoorGearLab.",
+  "Elite 300 UPS switchover time: I didn't reach a BLUETTI page or manual with it within the tool-call budget.",
+  "CNET/Yahoo Tech cited page (tech.yahoo.com test-portable-power-stations-living): HTTP 403, so I couldn't check whether it gives switchover times.",
+  "Real surge (motor-start) rating separate from Power Lifting for the Elite 100 V2 and Elite 200 V2: the BLUETTI pages give only Lifting Power, which on the Elite 200 V2 is stated as for pure resistive loads."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1839032999999994
+ }
+}
