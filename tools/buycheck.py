@@ -72,6 +72,9 @@ def seller_kind(merchant: str, brand: str) -> str:
         return "brand"
     if any(u in m for u in UNTRUSTED):
         return "marketplace"
+    if " - " in m and any(t in m.split(" - ")[0] for t in TRUSTED):
+        return "marketplace"   # "Newegg.com - <seller>", "Walmart - <seller>": a third-party seller on the retailer's marketplace, not the
+                               # retailer (Barry 11-14: count Newegg-sold only). A brand's own storefront there is "brand" above.
     if any(t in m for t in TRUSTED):
         return "retailer"
     return "other"
