@@ -1,0 +1,140 @@
+<title>Open-Query Pages, 15 Nov</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a status ledger (built / held / not built) with the two built pages set apart as cards. */
+:root {
+  --bg: #f6f7f5; --panel: #ffffff; --fg: #1d2420; --muted: #5d6862; --line: #dfe4e0;
+  --accent: #1f6f54; --accent-soft: #e3f0ea; --hold: #8a5a00; --hold-soft: #fbf0d9; --off: #6b7280; --off-soft: #eef0f2;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121614; --panel: #1a201d; --fg: #e4ebe6; --muted: #9aa6a0; --line: #2c3530;
+  --accent: #5cc49b; --accent-soft: #1d3a2f; --hold: #e5b45a; --hold-soft: #3a2e17; --off: #a3aab3; --off-soft: #23282d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121614; --panel: #1a201d; --fg: #e4ebe6; --muted: #9aa6a0; --line: #2c3530;
+  --accent: #5cc49b; --accent-soft: #1d3a2f; --hold: #e5b45a; --hold-soft: #3a2e17; --off: #a3aab3; --off-soft: #23282d; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 32px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 28px; }
+h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance; }
+h2 { font-size: 1.15rem; margin: 0 0 10px; font-weight: 600; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.sub { color: var(--muted); }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tally { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font: 500 13px/1 var(--mono); padding: 7px 10px; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); }
+.chip b { font-weight: 600; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 18px; display: grid; gap: 10px; min-width: 0; }
+.card h3 { margin: 0; font-size: 1.02rem; font-weight: 600; }
+.k { font: 500 11px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.v { margin-top: 2px; }
+.fact { background: var(--accent-soft); border-radius: 4px; padding: 10px 12px; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+th { font: 500 11px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td.q { font-variant-numeric: tabular-nums; }
+.qid { font: 500 12px var(--mono); color: var(--muted); white-space: nowrap; }
+.pill { display: inline-block; font: 500 11px/1 var(--mono); padding: 5px 7px; border-radius: 3px; white-space: nowrap; }
+.built { background: var(--accent-soft); color: var(--accent); }
+.held { background: var(--hold-soft); color: var(--hold); }
+.off { background: var(--off-soft); color: var(--off); }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 72ch; }
+.mono { font-family: var(--mono); font-size: 13px; }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="k">Dealectric · open-query run · 2026-11-15</div>
+    <h1>Open-query pages: 2 built, 3 held, 17 not built</h1>
+    <p class="sub">Of the 22 queries that stayed open in most plain ChatGPT chats (discovery report: <a href="https://claude.ai/artifact/1mBS24PWyoaPZNJET1kQBk">open-query discovery</a>), Barry cut the build to the two with search demand. Both were rebuilt on existing URLs, so each search still has one page. Pushed to main at 10:35Z on 15 Nov (commit <span class="mono">1b060d4</span>), GitHub Pages deploy succeeded, Worker deployed, IndexNow accepted.</p>
+    <div class="tally">
+      <span class="chip"><b>2</b> rebuilt and live</span>
+      <span class="chip"><b>0</b> new pages</span>
+      <span class="chip"><b>3</b> held for DLC-272 reading 3</span>
+      <span class="chip"><b>17</b> not built: no demand evidence</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The two pages built</h2>
+    <div class="cards">
+      <article class="card">
+        <div class="k">ac030 · open in 2 of 2 chats · 5,096 Bing searches / 13 weeks</div>
+        <h3><a href="https://dealectric.com/best-solar-generator-for-power-outages">What is the best solar generator for home use?</a></h3>
+        <div><div class="k">Page</div><div class="v">Rebuilt. The old G04 page already had the H1 "Best solar generator for home use and backup", so it was retargeted rather than adding a competing page. URL kept; title and H1 are now the query.</div></div>
+        <div><div class="k">Pick</div><div class="v">BLUETTI Apex 300 + B300K, $2,599 on bluettipower.com, $2,469.05 through our link with DEALECTRIC (cart-tested on this exact item 15 Nov; control code rejected).</div></div>
+        <div class="fact"><div class="k">Lead fact</div><div class="v">5,529.6 Wh and 3,840 W from one box, rated 6,000 cycles to 80% (BLUETTI's pages, read 15 Nov). The Anker F3800 Plus gives 3,300 W from one box; its 6,000 W needs an expansion battery (Anker's own footnote).</div></div>
+        <div><div class="k">Also on the page</div><div class="v">Anker SOLIX S5000 row (more watts from one box, 4,500 W, but less storage and a cycle rating that ends at 60%), EcoFlow DELTA Pro 3, Jackery Explorer 5000 Plus (Amazon listing, same-item check passed), and the Apex 300 + 2 B300K + 2×500 W panel kit in one cart.</div></div>
+      </article>
+      <article class="card">
+        <div class="k">pq025 · open in 2 of 2 chats · "cpap battery backup" 290 searches</div>
+        <h3><a href="https://dealectric.com/power-station-for-cpap">Which power station can run a CPAP for the most nights on one charge?</a></h3>
+        <div><div class="k">Page</div><div class="v">Rebuilt. /power-station-for-cpap already ranked stations by nights per charge, so its record moved from compare.py to gaps.py (URL unchanged) and was rebuilt with the research method. The week-of-camping CPAP page names one CPAP model and was left as it is.</div></div>
+        <div><div class="k">Pick</div><div class="v">Anker SOLIX S5000, $2,599.99 on ankersolix.com (re-read 15 Nov). No code: the pick line gives the store price only.</div></div>
+        <div class="fact"><div class="k">Lead fact</div><div class="v">About 10.7 nights from one box at a 40 W CPAP. Arithmetic: 5,024 Wh × 0.85 ÷ ((40 W + 10 W idle) × 8 h). Idle about 10 W measured by pv magazine USA; Anker states 8.8 W. 40 W covers ResMed's measured 34 W with humidifier and heated tube (ResMed's PDF, read 15 Nov).</div></div>
+        <div><div class="k">Also on the page</div><div class="v">Inverter idle draw decides it: the 5,040 Wh Jackery Explorer 5000 Plus idles at 58–85 W and gets 4.3–5.5 nights. Expanded systems are shown with their battery counts (S5000 + 1 battery about 21; DELTA Pro Ultra X + 2 batteries 17.2; Apex 300 + 2 B300K 14.7), plus the DC route through ResMed's converter.</div></div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>All 22 queries</h2>
+    <div class="scroll">
+      <table>
+        <tr><th>Query</th><th>Open in</th><th>Status</th><th>Page, or why not</th></tr>
+        <tr><td><span class="qid">ac030</span> what is the best solar generator for home use</td><td class="q">2 of 2</td><td><span class="pill built">rebuilt</span></td><td><a href="https://dealectric.com/best-solar-generator-for-power-outages">What is the best solar generator for home use?</a></td></tr>
+        <tr><td><span class="qid">pq025</span> which power station can run a cpap for the most nights on one charge</td><td class="q">2 of 2</td><td><span class="pill built">rebuilt</span></td><td><a href="https://dealectric.com/power-station-for-cpap">Which power station can run a CPAP for the most nights on one charge?</a></td></tr>
+        <tr><td><span class="qid">pq023</span> which power station makes the least fan noise when running a fridge at night</td><td class="q">2 of 2</td><td><span class="pill held">held</span></td><td>Held for DLC-272 reading 3. Would retarget <a href="https://dealectric.com/quietest-1000wh-power-station-while-charging">the quietest 1,000 Wh page</a>, a former B page.</td></tr>
+        <tr><td><span class="qid">pr008</span> which power station weighs the least that can still run a microwave</td><td class="q">2 of 2</td><td><span class="pill held">held</span></td><td>Held for DLC-272 reading 3. Would retarget <a href="https://dealectric.com/1000wh-power-station-that-can-run-a-microwave">the microwave page</a>, a former B page.</td></tr>
+        <tr><td><span class="qid">pm005</span> which 1000 watt hour power station is the smallest and easiest to carry</td><td class="q">2 of 3</td><td><span class="pill held">held</span></td><td>Held for DLC-272 reading 3. Would retarget <a href="https://dealectric.com/lightest-1000wh-lifepo4-power-station-for-car-camping">the lightest 1,000 Wh page</a>, a former B page.</td></tr>
+        <tr><td><span class="qid">fk010</span> Can a portable power station run my 240 volt well pump during an outage, and do I need one unit or two?</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Would retarget <a href="https://dealectric.com/solar-generator-that-can-run-a-well-pump">the well pump page</a>. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pm004</span> which power station can start the biggest appliances for its size</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page. All 6 angle reports kept (research library).</td></tr>
+        <tr><td><span class="qid">pm014</span> which power station keeps a wifi router running the longest</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Would retarget <a href="https://dealectric.com/small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage">the wifi router page</a>, which would also answer pm015. 6 angle reports kept in history/open-1115.</td></tr>
+        <tr><td><span class="qid">pm015</span> which power station loses the least power when you only use the usb and 12 volt ports</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Same page as pm014: both searches are "idle consumption, DC efficiency", and pm015 already retrieved the wifi router page.</td></tr>
+        <tr><td><span class="qid">pm022</span> which power station takes the fewest hours of sun to refill with two panels</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Would retarget <a href="https://dealectric.com/1kwh-power-station-with-1000w-solar-input-two-ports">the two-port solar input page</a>. 6 angle reports kept in history/open-1115.</td></tr>
+        <tr><td><span class="qid">pm026</span> which power station runs a pellet stove the longest</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Would retarget <a href="https://dealectric.com/power-station-to-run-a-pellet-stove-in-an-outage">the pellet stove page</a>. 6 angle reports kept in history/open-1115.</td></tr>
+        <tr><td><span class="qid">pq016</span> which power stations can be linked together for more power</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pr006</span> which power station runs a fan all night for the most nights</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pn010</span> which enclosed 3d printer is the fastest at printing abs</td><td class="q">2 of 2</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). A page was possible (QIDI is an approved program; ChatGPT typed QIDI Plus5 and Max4). Harvest kept.</td></tr>
+        <tr><td><span class="qid">fm035</span> Which power stations can still charge from solar panels when it's below freezing, for winter camping?</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). One page with pp006 (same search words). Harvest kept.</td></tr>
+        <tr><td><span class="qid">pp006</span> which power stations still charge in freezing weather</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Same page as fm035.</td></tr>
+        <tr><td><span class="qid">pp002</span> which power station gives you the most of its advertised capacity in real use</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pp004</span> which solar generator recharges fastest from solar panels in one day</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page, separate from pm022 (its searches are about the largest units' maximum solar input). Harvest kept.</td></tr>
+        <tr><td><span class="qid">pq006</span> which power station can charge the fastest from a car</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). New page. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pq021</span> which power stations can run 240 volt appliances from one unit</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). Would retarget <a href="https://dealectric.com/best-240v-portable-power-station">the 240V page</a>; the well pump query keeps its own page. Harvest kept.</td></tr>
+        <tr><td><span class="qid">pn005</span> which 3d scanner is the fastest for scanning a big car part</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). The fastest scanners ChatGPT named are professional metrology units we don't link; EINSTAR and Revopoint would only win the consumer segment. Harvest kept.</td></tr>
+        <tr><td><span class="qid">ps003</span> which robot mower mows best in wet grass</td><td class="q">2 of 3</td><td><span class="pill off">not built</span></td><td>No demand evidence (Barry, 15 Nov). MOVA and ANTHBOT are approved, but whether either has a wet-grass result was not researched. Harvest kept.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>Gates each built page passed</h2>
+    <ul>
+      <li>Research: six angle agents, compose and verify on Opus 5.5 high, then one sourced fix pass each. On the home-use page it added the S5000 row, dropped a junk price cell and added the panel kit. On the CPAP page it compared one box against one box and sourced the CPAP watts to ResMed.</li>
+      <li>abpage gates: validation, pick check (the answer's pick is row 1), build, docsguard, <span class="mono">fastloop.py check --research</span> at ranks 1, 3 and 6.</li>
+      <li>Cart tests in the Agent Chrome on each exact item before any through-link price: Apex 300 + B300K, Apex 300 + 2 B300K, Apex 300 + 2 B300K + 2×500 W, and the Apex 300 + B300K Home Backup Kit. All passed with DEALECTRIC, and the control code was rejected each time.</li>
+      <li>Amazon: one listing linked (Jackery Explorer 5000 Plus, B0DFGLG35L), confirmed by <span class="mono">combopage.amazon_verify</span>. Its price comes from <span class="mono">src/amazon_prices.json</span> (read 15 Nov). EcoFlow rows had no matching listing and link EcoFlow's page.</li>
+      <li>ChatGPT was not opened: harvests came from the saved discovery chats only.</li>
+    </ul>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>Next reading</h2>
+    <p>The reading is due once <span class="mono">storedcopy.py</span> shows OAI-SearchBot re-fetched both pages after 10:35:18Z on 15 Nov. Ask each query in 3 plain gpt-6 chats and score retrieved, cited, pick, and buy link handed over. Baseline: both queries were open in their discovery chats with our page not retrieved. Rule and record: <span class="mono">growth/focus/open-pages/push.json</span>. To-do: DLC-286.</p>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>Not verified</h2>
+    <ul>
+      <li>Whether OAI-SearchBot has fetched the new versions. Nothing is read until it has.</li>
+      <li>The Anker SOLIX S5000 price, $2,599.99, was read on Anker's page, not in a cart. Anker's Shopify feed lists $3,599.99 before the sale.</li>
+      <li>BLUETTI's 20 W idle figure for the Apex 300 with packs attached has not been measured by anyone. The CPAP page says so.</li>
+    </ul>
+  </section>
+</div>
