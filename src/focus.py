@@ -208,4 +208,7 @@ BUY_FIRST = {
     "jackery-explorer-5000-plus",
     "ecoflow-delta-3-ultra",
     "oupes-mega-1",
+    "dabbsson-2000l",
+    "dji-power-1000-v2",
+    "ecoflow-titan-5000-plus",
 }
