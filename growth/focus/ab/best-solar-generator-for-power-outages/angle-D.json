@@ -1,0 +1,65 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that on Anker's own page, a single SOLIX F3800 Plus is rated 3,300 W and reaches 6,000 W only 'when working with 1 or more expansion batteries'. ChatGPT, EnergySage and StormWatts all present 6,000 W as the output of one box.",
+ "standout": 3,
+ "standout_why": "Pages compared: StormWatts (cited), EnergySage (cited), TheSolarLab (cited) and SolarGenReview (cited). StormWatts gives 6,000 W and calls the F3800 Plus the 'Highest continuous watts on one box'. EnergySage says it has 'the most output on our list (6,000 W of 120 V/240 V split-phase power)'. Neither mentions the single-unit 3,300 W limit. TheSolarLab only tells readers to check 'whether adding capacity also adds output or 240 V support' and doesn't answer it. StormWatts does already say the F3800 Plus can't give 240 V while charging on 120 V AC, so only that sub-point is covered. None of the four discusses neutral-ground bonding or TT-30 vs L14-30 inlet limits. TheOutagePlan couldn't be read (certificate error).",
+ "decides": "The F3800 Plus is ChatGPT's value pick, quoted as '3.84 kWh · 6,000 W' at about $2,400–$3,000. On its own it delivers 3,300 W, which is less than the DELTA Pro 3's 4,000 W. To get the 6,000 W that ChatGPT and the rivals quote, the shopper also has to buy a BP3800 expansion battery, which our current page lists at $1,999.99. That makes 6,000 W roughly a $4,600 setup, not $2,600. So the F3800 Plus is only the high-output pick if it's bought with a battery. For one box with no add-ons, the DELTA Pro 3 gives more watts. Also, the F3800 Plus drops 240 V loads (well pump, dryer) whenever it's charging from a 120 V outlet.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC output, single unit vs with expansion battery",
+   "value": "3,300 W for a single unit; 6,000 W with 1 or more expansion batteries",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (Anker SOLIX US product page)",
+   "read": "2026-11-15",
+   "note": "Footnote 1 under the F3800 Series feature list, quoted: '3,300W for single unit, 6,000W when working with 1 or more expansion batteries.' The Home Power Panel 6,000 W figure has its own footnote 2, 'Working with expansion battery.'"
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging from 120 V AC",
+   "value": "240 V output not available while charging via 120 V AC",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (Anker SOLIX US product page)",
+   "read": "2026-11-15",
+   "note": "Anker's note in the feature list, quoted: '(Note: The 240V output cannot be used while the device is charging via 120V AC.)' This matters during a partial outage, or when recharging from a 120 V gas generator while a 240 V well pump or dryer is on the backup list."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Generator passthrough (bypass) limits by inlet",
+   "value": "L14-30R: 6,000 W max bypass from a 240 V generator; TT-30R: 3,000 W from a 120 V generator",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (Anker SOLIX US product page), FAQ section",
+   "read": "2026-11-15",
+   "note": "Taken from the product page FAQ. 3,000 W = 120 V × 25 A, i.e. a TT-30 inlet derated to 80%."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Maker store status",
+   "value": "Listed as Sold Out; no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus (Anker SOLIX US product page)",
+   "read": "2026-11-15",
+   "note": "The page showed 'Price Loading' and 'Sold Out'. storecheck.py product and search on ankersolix.com both returned HTTP 404, so I couldn't get a store price today."
+  }
+ ],
+ "unsourced": [
+  "Whether the EcoFlow DELTA Pro 3, Anker F3800 Plus and Jackery Explorer 5000 Plus have a bonded or floating neutral at their 120/240 V outlets. This decides which transfer switch or inlet setup is safe and GFCI-compatible. I searched maker sites and EcoFlow's 2026-09-24 floating-neutral blog post. Neither names a model. The Anker F3800 Plus manual PDF (signaturesolar.com) wouldn't extract, and the santansolar.com A1790P user guide returned 403.",
+  "EcoFlow DELTA Pro Ultra: whether its 7,200 W rating holds with one battery or needs more. us.ecoflow.com returned HTTP 429 on three tries, and storecheck also got 429.",
+  "Jackery Explorer 5000 Plus: whether its 7,200 W and 120/240 V outputs come from one unit with no add-ons, plus today's price. jackery.com returned HTTP 429 twice.",
+  "EcoFlow DELTA Pro 3: that its 120 V and 240 V outputs work one at a time, in EcoFlow's own words. I found it only on nooutage.com (third party) and in StormWatts' text. The EcoFlow product page returned 429.",
+  "BLUETTI Apex 300: output limits depending on B300K count. Not researched because I ran out of my call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0874628
+ }
+}
