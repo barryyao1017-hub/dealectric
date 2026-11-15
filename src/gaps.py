@@ -7382,7 +7382,8 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
 # ---------------- G327: portable-power-station-1000w (research method ab-2026-11, 2026-11-15) ----------------
 {"slug": 'portable-power-station-1000w',
  "question": 'G327 (gap mining daily 2026-11-15, research method ab-2026-11: best 1000 watt portable power station)',
- "run": 'open-1115',
+ "run": 'bluetti-1115',
+ "buy_by_name": True,
  "method": 'ab-2026-11',
  "angle": 'E',
  "searched_as": ['lightest smallest 1000Wh portable power station 2026 weight dimensions Jackery 1000 v2 Anker C1000 Gen 2 EcoFlow Delta 3 DJI Power 1000', '2026 lightest smallest 1000Wh portable power station weight dimensions Jackery Explorer 1000 v2 EcoFlow Delta 3 Bluetti Elite 100 V2', 'best portable power station under $500 2026 1800W 2000W sale price November', 'lightest smallest 1000Wh portable power station 2026 weight dimensions Jackery EcoFlow Anker Bluetti'],
@@ -7402,7 +7403,8 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
 # ---------------- G328: which-jackery-power-station-to-buy (research method ab-2026-11, 2026-11-15) ----------------
 {"slug": 'which-jackery-power-station-to-buy',
  "question": 'G328 (gap mining daily 2026-11-15, research method ab-2026-11: which jackery power station should i buy)',
- "run": 'open-1115',
+ "run": 'bluetti-1115',
+ "buy_by_name": True,
  "method": 'ab-2026-11',
  "angle": 'B',
  "searched_as": ['which jackery power station should i buy'],
@@ -7422,7 +7424,8 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
 # ---------------- G329: which-ecoflow-power-station-to-buy (research method ab-2026-11, 2026-11-15) ----------------
 {"slug": 'which-ecoflow-power-station-to-buy',
  "question": 'G329 (gap mining daily 2026-11-15, research method ab-2026-11: which ecoflow power station should i buy)',
- "run": 'open-1115',
+ "run": 'bluetti-1115',
+ "buy_by_name": True,
  "method": 'ab-2026-11',
  "angle": 'C',
  "searched_as": ['which ecoflow power station should i buy'],
@@ -7442,7 +7445,8 @@ On a <strong>2020 to early-2025 Model Y</strong>, the plug-in rear displays are 
 # ---------------- G330: oupes-portable-power-station (research method ab-2026-11, 2026-11-15) ----------------
 {"slug": 'oupes-portable-power-station',
  "question": 'G330 (gap mining daily 2026-11-15, research method ab-2026-11: oupes portable power station)',
- "run": 'open-1115',
+ "run": 'bluetti-1115',
+ "buy_by_name": True,
  "method": 'ab-2026-11',
  "angle": 'C',
  "searched_as": ['oupes portable power station'],

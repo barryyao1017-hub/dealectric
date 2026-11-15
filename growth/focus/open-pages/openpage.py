@@ -145,6 +145,9 @@ RUN_RULES = """## Rules for this page (open-query run, Barry 2026-11-15)
   such product at all, return status "skip" with the reason."""
 
 
+_CURRENT = {}   # the folder apply() is working on
+
+
 def _compose_patch():
     orig = A.compose_prompt
 
@@ -189,9 +192,9 @@ def _compose_patch():
 
     def record_text(draft, old, gnum):
         t = orig_rt(draft, old, gnum)
-        p = PAGES.get(draft.get("slug"), {})
+        p = PAGES.get(_CURRENT.get("folder") or draft.get("slug"), {})   # new pages: the folder name is not the final slug
         extra = "".join(f'"{k}": {v!r},\n ' for k, v in (p.get("flags") or {}).items())
-        return t.replace('"method": ', f'"run": {run_of(draft.get("slug"))!r},\n {extra}"method": ', 1)
+        return t.replace('"method": ', f'"run": {run_of(_CURRENT.get("folder") or draft.get("slug"))!r},\n {extra}"method": ', 1)
     A.record_text = record_text
 
 
@@ -290,7 +293,11 @@ def apply(folder: str) -> dict:
     dr = A.jload(A.pdir(folder) / "draft.json") or {}
     if "amazon_links" not in dr:
         links(folder)
-    return A.apply(folder, local=True)
+    _CURRENT["folder"] = folder
+    try:
+        return A.apply(folder, local=True)
+    finally:
+        _CURRENT.clear()
 
 
 def status() -> None:
