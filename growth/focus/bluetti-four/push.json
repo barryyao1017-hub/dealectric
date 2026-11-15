@@ -2,14 +2,65 @@
  "run": "bluetti-1115",
  "decided": "2026-11-15 (Barry, via the fork session): research the products ChatGPT names without a catalog seller that we can link, and build comparison pages on searches with demand, with our buy link beside the product's name and price",
  "pushes": [
-  {"commit": "e332a2d5", "at": "2026-11-15T11:40Z", "what": "2000 W and 1000 W pages, new records, buy-first product pages"},
-  {"commit": "27d90d97", "at": "2026-11-15T11:54Z", "what": "BLUETTI lineup and home battery backup pages"},
-  {"commit": "34445453", "at": "2026-11-15T12:03Z", "what": "Jackery, EcoFlow, OUPES pages"},
-  {"commit": "a9aae544bea01cd9d7667c54c3ddaeae67c3b5b3", "at": "2026-11-15T12:07Z", "what": "buy_by_name flag on the 1000 W, Jackery, EcoFlow and OUPES pages (missing in the 11:40Z/12:03Z pushes); last push of the run, Pages deploy success"}
+  {
+   "commit": "e332a2d5",
+   "at": "2026-11-15T11:40Z",
+   "what": "2000 W and 1000 W pages, new records, buy-first product pages"
+  },
+  {
+   "commit": "27d90d97",
+   "at": "2026-11-15T11:54Z",
+   "what": "BLUETTI lineup and home battery backup pages"
+  },
+  {
+   "commit": "34445453",
+   "at": "2026-11-15T12:03Z",
+   "what": "Jackery, EcoFlow, OUPES pages"
+  },
+  {
+   "commit": "a9aae544bea01cd9d7667c54c3ddaeae67c3b5b3",
+   "at": "2026-11-15T12:07Z",
+   "what": "buy_by_name flag on the 1000 W, Jackery, EcoFlow and OUPES pages (missing in the 11:40Z/12:03Z pushes); last push of the run, Pages deploy success"
+  },
+  {
+   "commit": "ea8d6767",
+   "at": "2026-11-15T13:14Z",
+   "what": "where-to-buy titles and first lines on product pages (fork session's final list)"
+  },
+  {
+   "commit": "c33a273d",
+   "at": "2026-11-15T13:20Z",
+   "what": "Dabbsson 2000L, DJI Power 1000 V2, EcoFlow TITAN 5000 Plus records; 2000 W / 1000 W rows linked; last push"
+  }
  ],
- "treated_pages_buy_by_name": ["best-bluetti-power-station", "best-2000wh-power-station", "portable-power-station-1000w", "best-home-battery-backup-system", "which-jackery-power-station-to-buy", "which-ecoflow-power-station-to-buy", "oupes-portable-power-station"],
- "buy_first_product_pages": ["bluetti-elite-200-v2", "bluetti-elite-200-v2-200w-solar-kit", "bluetti-elite-200-v2-2x200w-solar-kit", "bluetti-elite-100-v2", "bluetti-elite-30-v2-100w-solar-kit", "bluetti-pioneer-na", "bluetti-elite-100-mini"],
- "new_records": ["bluetti-pioneer-na", "bluetti-elite-100-mini", "jackery-explorer-5000-plus", "ecoflow-delta-3-ultra", "oupes-mega-1"],
+ "treated_pages_buy_by_name": [
+  "best-bluetti-power-station",
+  "best-2000wh-power-station",
+  "portable-power-station-1000w",
+  "best-home-battery-backup-system",
+  "which-jackery-power-station-to-buy",
+  "which-ecoflow-power-station-to-buy",
+  "oupes-portable-power-station"
+ ],
+ "buy_first_product_pages": [
+  "bluetti-elite-200-v2",
+  "bluetti-elite-200-v2-200w-solar-kit",
+  "bluetti-elite-200-v2-2x200w-solar-kit",
+  "bluetti-elite-100-v2",
+  "bluetti-elite-30-v2-100w-solar-kit",
+  "bluetti-pioneer-na",
+  "bluetti-elite-100-mini"
+ ],
+ "new_records": [
+  "bluetti-pioneer-na",
+  "bluetti-elite-100-mini",
+  "jackery-explorer-5000-plus",
+  "ecoflow-delta-3-ultra",
+  "oupes-mega-1",
+  "dabbsson-2000l",
+  "dji-power-1000-v2",
+  "ecoflow-titan-5000-plus"
+ ],
  "target_queries": {
   "best-bluetti-power-station": "bluetti power station (5,404 / 13 wk)",
   "best-2000wh-power-station": "portable power station 2000w (247; shortlist 1,217)",
@@ -19,5 +70,23 @@
   "which-ecoflow-power-station-to-buy": "ecoflow power station (2,504)",
   "oupes-portable-power-station": "oupes portable power station (457), oupes (887)"
  },
- "reading_rule": "Once storedcopy.py shows OAI-SearchBot fetched each page after its push: ask each target query in plain gpt-6 app chats (2-3 each, 15+ min apart per page), and for each answer naming one of the featured products click the product name: record whether the panel shows a seller, whether the answer or panel uses our link (/go/ or dealectric-20), which price ChatGPT quotes (store, through-link, Amazon, Walmart), and whether our page is retrieved/cited. Score DLC-281 on the buy_by_name pages against un-treated un-carded pages. The brand pages' rival sets were web-search stand-ins (no saved ChatGPT chat), so their first reading is also their baseline."
+ "reading_rule": "Once storedcopy.py shows OAI-SearchBot fetched each page after its push: ask each target query in plain gpt-6 app chats (2-3 each, 15+ min apart per page), and for each answer naming one of the featured products click the product name: record whether the panel shows a seller, whether the answer or panel uses our link (/go/ or dealectric-20), which price ChatGPT quotes (store, through-link, Amazon, Walmart), and whether our page is retrieved/cited. Score DLC-281 on the buy_by_name pages against un-treated un-carded pages. The brand pages' rival sets were web-search stand-ins (no saved ChatGPT chat), so their first reading is also their baseline. Where-to-buy: for each product on the fork session's final list ask 'where can i buy the <product> and how much does it cost' (the buycheck prompt) and score whether our product page is retrieved and our link handed over, against the 2026-11-15-buycheck baseline (2 of 31).",
+ "where_to_buy_product_pages": [
+  "bluetti-pioneer-na",
+  "bluetti-elite-100-mini",
+  "bluetti-elite-200-v2",
+  "bluetti-elite-200-v2-200w-solar-kit",
+  "bluetti-elite-200-v2-2x200w-solar-kit",
+  "bluetti-elite-100-v2",
+  "bluetti-elite-30-v2-100w-solar-kit",
+  "mango-power-e-3533wh",
+  "jackery-explorer-5000-plus",
+  "ecoflow-delta-3-ultra",
+  "oupes-mega-1",
+  "dabbsson-2000l",
+  "dji-power-1000-v2",
+  "ecoflow-titan-5000-plus",
+  "bluetti-ac180 (pilot line)",
+  "allpowers-r2500-v2-1920wh (pilot line)"
+ ]
 }
