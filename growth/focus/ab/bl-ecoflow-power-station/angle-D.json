@@ -1,0 +1,130 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that EcoFlow's X-Boost runs high-watt loads by lowering the output voltage, that EcoFlow's manual says it is 'more suitable for heating devices', and that it is 'unavailable when the power station is connected to an AC power source' (charging or bypass). So when a DELTA 3 Plus sits on wall power as a 10 ms UPS, its ceiling is the rated 1,800 W, not the 2,600 W X-Boost figure.",
+ "standout": 2,
+ "standout_why": "I compared against solarkontor.de (rank 1), explorersweb.com DELTA Max review (rank 4) and EcoFlow's own US store copy. Solarkontor's whole account of X-Boost is that 'the capacity can be temporarily doubled to power devices with high inrush currents'. That is the opposite of what the maker's manual says, because X-Boost lowers voltage and is aimed at heating loads. Solarkontor gives no switchover time and says nothing about X-Boost turning off while charging. Explorersweb mentions neither X-Boost nor UPS. EcoFlow's US store copy lists 'refrigerators, washers, circular saws' and 'air conditioner' as X-Boost loads, while its manual points to heating devices. Trailandkale (404) and tech.yahoo.com (403) would not open, and I did not open the techradar tag page, REI or the two notebookcheck news posts.",
+ "decides": "Size the EcoFlow to its rated watts, not its X-Boost watts. That matters most for motor loads such as fridges, sump pumps and AC, and for any setup where the unit stays plugged in as a UPS, because X-Boost turns off then. A shopper who needs about 2,000 W of non-heating load while it acts as a 10 ms UPS should skip the 1,800 W DELTA 3 Plus and DELTA 3 Classic and go to the 3,000 W DELTA 3 Max Plus or the 3,600 W DELTA 3 Ultra.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Classic",
+  "EcoFlow DELTA 3 Max Plus",
+  "EcoFlow DELTA 3 Ultra",
+  "EcoFlow DELTA 3 Ultra Plus",
+  "EcoFlow DELTA 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "X-Boost: which loads it suits",
+   "value": "'X-Boost is more suitable for heating devices, such as an electric blanket, a water heater, or a heat pump. X-Boost does not support devices with voltage protection (such as precise instruments). If such devices are connected, they may stop working due to low voltage.'",
+   "source": "https://www.manualslib.com/manual/3579330/Ecoflow-Delta-3-Plus.html?page=20",
+   "source_title": "EcoFlow DELTA 3 Plus User Manual, page 20 (ManualsLib mirror)",
+   "read": "2026-11-15",
+   "note": "Quoted from the manual page. EcoFlow's own copy is at ecoflow-service-us-prod.oss-us-west-1.aliyuncs.com/cms/manual/1753868222389/EcoFlow%20DELTA%203%20Plus_User%20Manual.pdf. I downloaded it but could not extract its text, so the quotes come from the ManualsLib mirror of the same manual."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "X-Boost turns off on AC input",
+   "value": "'X-Boost is unavailable when the power station is connected to an AC power source (e.g. The power station is charging or in [bypass] mode).' Bypass mode starts automatically when the unit charges and discharges through AC at the same time.",
+   "source": "https://www.manualslib.com/manual/3579330/Ecoflow-Delta-3-Plus.html?page=20",
+   "source_title": "EcoFlow DELTA 3 Plus User Manual, page 20 (ManualsLib mirror)",
+   "read": "2026-11-15",
+   "note": "The word 'bypass' is cut off in the page text. The manual's own footnote on the same page defines bypass mode. This is the mechanism: UPS use is AC-in plus AC-out, which is bypass mode, so X-Boost is off."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "AC output at 120 V, rated and with X-Boost",
+   "value": "1,800 W rated; 2,600 W with X-Boost",
+   "source": "https://www.manualslib.com/manual/3579330/Ecoflow-Delta-3-Plus.html?page=20",
+   "source_title": "EcoFlow DELTA 3 Plus User Manual, page 20 (ManualsLib mirror)",
+   "read": "2026-11-15",
+   "note": "From the manual's 'Reference: Power with X-Boost Feature' table, 120 V row. On AC input (UPS or bypass) only the 1,800 W applies."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "UPS transfer time",
+   "value": "10 ms ('acts as a standby UPS with a transfer time of 10 ms')",
+   "source": "https://www.manualslib.com/manual/3579330/Ecoflow-Delta-3-Plus.html?page=20",
+   "source_title": "EcoFlow DELTA 3 Plus User Manual, page 20 (ManualsLib mirror)",
+   "read": "2026-11-15",
+   "note": "The manual calls it a standby (offline) UPS, not online double-conversion."
+  },
+  {
+   "product": "general",
+   "label": "How X-Boost works (maker's words)",
+   "value": "'intelligent voltage control that marginally reduces voltage', which lets devices run on a lower-rated inverter. It is unavailable while the unit is charging, and EcoFlow says not to connect the AC output to the grid while X-Boost is on.",
+   "source": "https://www.ecoflow.com/us/x-boost",
+   "source_title": "EcoFlow X-Boost",
+   "read": "2026-11-15",
+   "note": "EcoFlow's example loads on this page are mostly resistive: air fryer 1,500 W, kettle 1,500 W, heater 2,200 W, hair dryer 1,600 W. The page says nothing about motors or compressors."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Output, X-Boost claim, price",
+   "value": "1,800 W (3,600 W surge); X-Boost to 2,600 W, store copy says 'such as microwaves, refrigerators, laptops, and air conditioner'; 10 ms auto-switch; $459 (compare-at $1,299)",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-15",
+   "note": "Read through the Dealectric storecheck tool (Shopify JSON), available. The store copy names compressor loads, while the manual says X-Boost is more suitable for heating devices."
+  },
+  {
+   "product": "EcoFlow DELTA 3 (us.ecoflow.com/products/delta-3-portable-power-station)",
+   "label": "Output, expansion, price",
+   "value": "1,800 W AC, 2,200 W (3,600 W surge) with X-Boost; expandable 1–5 kWh with DELTA 3 / DELTA Pro 3 / DELTA 2 / DELTA 2 Max Extra Battery; $579 (compare-at $1,349)",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-15",
+   "note": "Read through storecheck search. I could not open the variant list (HTTP 429), so I can't say whether $579 is the DELTA 3 Plus variant. This listing's 2,200 W X-Boost figure differs from the 2,600 W in the DELTA 3 Plus manual."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Output, X-Boost, UPS, expansion, price",
+   "value": "3,000 W (6,000 W surge); X-Boost to 3,800 W; 10 ms auto-switch; 2–10 kWh expandable; $1,149 (compare-at $3,399)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Plus Portable Power Station (2048Wh)",
+   "read": "2026-11-15",
+   "note": "Read through storecheck, available. Its 3,000 W rated output is above the DELTA 3 Plus's 2,600 W X-Boost ceiling with no X-Boost needed."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "Output, X-Boost, UPS, price",
+   "value": "3,600 W (7,200 W surge); X-Boost to 4,600 W; 10 ms auto-switch; $1,299 (compare-at $3,198)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh",
+   "source_title": "EcoFlow DELTA 3 Ultra Portable Power Station (3072Wh)",
+   "read": "2026-11-15",
+   "note": "Read through storecheck, available. 3,072 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra Plus",
+   "label": "Expansion, price",
+   "value": "3–11 kWh expandable; same 3,600 W / 7,200 W surge / 10 ms auto-switch as the DELTA 3 Ultra; $1,599 (compare-at $3,199)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-plus-portable-power-station-3072wh",
+   "source_title": "EcoFlow DELTA 3 Ultra Plus Portable Power Station (3072Wh)",
+   "read": "2026-11-15",
+   "note": "Read through storecheck, available. The DELTA 3 Ultra listing names no expansion, only the Plus says 3–11 kWh."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "X-Boost claim, expansion, price",
+   "value": "X-Boost 'up to 3400W output power to run 99% of home appliances'; 2–6 kWh with up to two DELTA 2 Max Smart Extra Batteries; $1,029 (compare-at $2,019)",
+   "source": "https://us.ecoflow.com/products/delta-2-max-portable-power-station",
+   "source_title": "EcoFlow DELTA 2 Max Portable Power Station",
+   "read": "2026-11-15",
+   "note": "Read through storecheck, available. Rated AC output is not in this store snippet."
+  }
+ ],
+ "unsourced": [
+  "DELTA 3 Plus price and variant list on us.ecoflow.com: the product URL returned HTTP 429 twice.",
+  "Plain text of EcoFlow's own DELTA 3 Plus manual PDF (aliyuncs host): WebFetch returned binary and local text extraction was not approved, so the quotes come from the ManualsLib mirror.",
+  "Any EcoFlow statement that X-Boost does or does not work with motor or compressor loads (fridges, sump pumps, AC). The manual says only 'more suitable for heating devices' and lists a heat pump as an example.",
+  "A named reviewer's bench measurement of AC output voltage with X-Boost on. Search found only unnamed or aggregator pages, none of which I opened.",
+  "RIVER 3 / RIVER 3 Plus X-Boost wattage and UPS transfer time from EcoFlow's US product page or manual: not searched within the budget.",
+  "Content of trailandkale.com (404) and tech.yahoo.com DELTA 3 Plus review (403): could not open, so I couldn't check them for this point."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.1516955000000002
+ }
+}
