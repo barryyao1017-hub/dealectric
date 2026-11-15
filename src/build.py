@@ -937,16 +937,26 @@ def offer_block(p, net, prog, url):
 """
 
 
+def where_line(p):
+    """bluetti-four run (11-15, fork session): answer 'where can I buy the <product> and what does it cost' in the page's
+    first line. Plain text before the link: the seller, the price there and, for our programs, the price through the link
+    with the code, the saving and the cart-test date on this product; when no tested code saves anything, it says so."""
+    name = re.split(r"\s*\(", short_name(p))[0]
+    if is_amazon(p):
+        return f"Where to buy the {name}: " + (amz_price_text(p["asin"]) if amz_price(p["asin"]) else "Amazon, with the price on the Amazon page")
+    co = checkable_offer(p)
+    if co:
+        return f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)}; {co}"
+    return (f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)} (checked {verified_on(p)}); "
+            f"no Dealectric code takes anything off it today, so the link costs the same as the store")
+
+
 def buy_first_row(p, url):
-    """bluetti-four run (11-15): the product page opens with where to buy it and the checkable saving (BUY_FIRST)."""
+    """bluetti-four run (11-15): the product page opens with where to buy it and what it costs (BUY_FIRST)."""
     if p["slug"] not in BUY_FIRST or buy_compare(p):
         return ""
-    co = checkable_offer(p)
-    if not co:
-        return ""
     link = html.escape(url)
-    return (f'\n<p><strong>Buy from {html.escape(p["brand"])}:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>: '
-            f'{money(p["price"])} on {store_host(p)}; {html.escape(co)} · affiliate link</p>')
+    return f'\n<p class="lead"><strong>{html.escape(where_line(p))}:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a></p>'
 
 
 def deal_row(p, url):
@@ -1032,7 +1042,13 @@ def product_page(p):
                      **({"description": f"{code_word(c)} {c['code']}: {money(s)} off, {money(after)} after the code; {pass_clause(p, c, date)}.{perks_text(p, c)}"} if c else {})}}
     if is_amazon(p):
         ld.pop("offers")  # no price or availability claim without Amazon's price feed (Program Policies); the link is in the body
-    if c and buy_compare(p):   # DLC-241/243 pilot: answer "where to buy <model>", with no code text to relay
+    if p["slug"] in BUY_FIRST and not buy_compare(p):   # bluetti-four run: the title answers "where to buy <product>"
+        a = amz_price(p["asin"]) if is_amazon(p) else None
+        co = checkable_offer(p)
+        title = (f"Where to buy the {title_name(p)}: " + (f"{money(a[0])} on Amazon" if a else "on Amazon" if is_amazon(p)
+                 else f"{money(after)} with code {c['code']}" if co else f"{money(p['price'])} at {p['brand']}"))
+        desc = f"{where_line(p)}. Buy: {url}"
+    elif c and buy_compare(p):   # DLC-241/243 pilot: answer "where to buy <model>", with no code text to relay
         title = f"Where to buy the {title_name(p)}: {money(bc_after(p, after))} with the discount applied"
         desc = f"{re.split(r'\s*\(', short_name(p))[0]}: {buy_compare(p)}. Buy: {url}"
     elif c:

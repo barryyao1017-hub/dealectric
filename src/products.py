@@ -6837,7 +6837,7 @@ PRODUCTS = [
  "url": 'https://mangopower.com/products/mango-power-e-home-backup-and-portable-power-station',
  "official_page": 'https://learn.mangopower.com/products/mango-power-e/specifications/',
  "price": 1299,
- "verified": '2026-11-14',
+ "verified": "2026-11-15",
  "specs": [('Capacity', '3,533 Wh, CATL LiFePO4'), ('AC output', '3,000 W continuous at 120 V; 4,500 to 4,800 W for 10 s'), ('240 V', 'Split-phase when paired with a second Mango Power E through the mSocket Pro (6,000 W combined)'), ('Outlets', '4 × 20 A 120 V AC, 1 × NEMA TT-30 30 A RV'), ('Wall charging', 'Up to 1,800 W on the included 15 A cable at 120 V; up to 3,000 W with the 30 A fast-charging cable (sold separately)'), ('Solar input', '2,000 W max, 60 to 150 V DC, 20 A'), ('Expansion', 'One Mango Power E Expansion Battery per unit, 7,066 Wh total'), ('Cycle life', '6,000 cycles to 70% capacity at 77 °F'), ('Weight', '100.1 lb, with wheels and a pull-out handle'), ('Size', '17.8 × 13.6 × 19.4 in'), ('Noise', 'Rated under 51 dB at full load')],
  "warranty": '10 years on the CATL battery cells; 5 years on the BMS board and other parts (North American purchases through official channels)',
  "returns": '30 days from delivery on mangopower.com orders shipped to the contiguous US; email support for an RMA before sending it back',

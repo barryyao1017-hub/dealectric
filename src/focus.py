@@ -201,4 +201,11 @@ BUY_FIRST = {
     "bluetti-elite-30-v2-100w-solar-kit",
     "bluetti-pioneer-na",
     "bluetti-elite-100-mini",
+    # fork session's final list (2026-11-15): no catalog card and no panel seller in ChatGPT's where-to-buy checks
+    "bluetti-ac180",
+    "mango-power-e-3533wh",
+    "allpowers-r2500-v2-1920wh",
+    "jackery-explorer-5000-plus",
+    "ecoflow-delta-3-ultra",
+    "oupes-mega-1",
 }
