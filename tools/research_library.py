@@ -52,8 +52,12 @@ def _live() -> set[str]:
 def rows() -> list[dict]:
     live = _live()
     out = []
-    for d in sorted(AB.iterdir()):
-        files = sorted(d.glob("angle-*.json")) if d.is_dir() else []
+    dirs = []
+    for d in sorted(AB.iterdir()):   # a re-researched or retargeted page keeps its earlier reports in history/<when>/ (11-15)
+        if d.is_dir():
+            dirs += [d] + sorted(h for h in d.glob("history/*") if h.is_dir())
+    for d in dirs:
+        files = sorted(d.glob("angle-*.json"))
         if not files:
             continue
         draft, comp, harv = _j(d / "draft.json"), _j(d / "compose.json"), _j(d / "harvest.json")
@@ -72,7 +76,7 @@ def rows() -> list[dict]:
                 "findings": len(fnd), "sources": len({v.get("source") for v in fnd if v.get("source")}),
                 "products": prods[:40], "read": dates[-1] if dates else None,
                 "model": (a.get("_meta") or {}).get("model"), "file": str(f.relative_to(ROOT))})
-        out.append({"folder": d.name, "slug": slug, "url": f"https://dealectric.com/{slug}" if slug in live else None,
+        out.append({"folder": str(d.relative_to(AB)), "slug": slug, "history": d.parent.name == "history", "url": f"https://dealectric.com/{slug}" if slug in live else None,
                     "query": draft.get("query") or next((c.get("typed") for c in harv.get("chats", []) if c.get("typed")), None),
                     "used": used, "why_used": draft.get("why_angle") or comp.get("why_angle"),
                     "verified": (d / "verify.json").exists(), "angles": angles})

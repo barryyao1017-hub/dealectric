@@ -1,0 +1,125 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that techtest.org measured 277.6 Wh out of 288 Wh (96%) from the Anker SOLIX C300X DC's 12 V socket at 2 A (about 24 W, a router-plus-modem-sized load) and 271.5 Wh (94%) on USB-C at 9 V/3 A (about 27 W). It also does not state that The Solar Lab measured the inverter-free EcoFlow TRAIL 300 DC using about 2 Wh in 24 hours switched on with no load, while Gough Lui measured 1.14 W idle on the EcoFlow RIVER 2 and The Technology Man saw a BLUETTI EB3A lose 16% in 12 hours with DC on and nothing plugged in.",
+ "standout": 3,
+ "standout_why": "I compared against the cited rivals. Best Batteries (en/us '46 measurements') gives only the C300X DC average of 272.9 Wh, with no breakdown by port or load. ChatGPT itself said it would 'want a low-load test before declaring it the most efficient'. powerstations.reviews gives the TRAIL 300 DC only as EcoFlow's 0.01 W spec and says it measured nothing. outagemath says 'makers don't publish idle draw' and gives no model figures. wattpowerstation's small-loads guide has AC-on idle watts for big stations from The Solar Lab and Outdoor Life, plus one DC-only figure: DELTA Pro 3 at about 13 W (Hobotech). It has nothing for the small DC-first stations. The Technology Man's EB3A figure (16% in 12 hours with DC on) was already cited, so that one adds nothing new. Only the per-load C300X DC results and the measured TRAIL 300 DC idle are missing from every rival.",
+ "decides": "This confirms the Anker SOLIX C300 DC / C300X DC as the pick for 'loses the least on USB and 12 V'. At a router-sized 24 W on its 12 V socket, techtest.org measured it losing about 4% (277.6 of 288 Wh), the low-load test ChatGPT said it was missing. That works out to about 11.5 h at 24 W, or about 13.9 h at 20 W if efficiency holds. The EcoFlow TRAIL 300 DC is the runner-up for standby loss (about 2 Wh a day measured idle), but nobody has measured how much energy it delivers. Stations whose DC side needs the main board awake lose far more. The Technology Man saw the BLUETTI EB3A lose about 1.3% an hour with DC on and no load. Hobotech, as reported by wattpowerstation, measured about 13 W DC-only idle on the DELTA Pro 3, and at a 15 W router load that idle draw almost doubles the drain. For the Wi-Fi question this means a small DC-only 288 Wh unit run from 12 V lasts about as long per watt-hour as anything sold. The big stations win only on raw capacity, not on losses.",
+ "candidates": [
+  "Anker SOLIX C300 DC / C300X DC",
+  "EcoFlow TRAIL 300 DC",
+  "EcoFlow RIVER 2",
+  "EcoFlow RIVER 3",
+  "BLUETTI EB3A",
+  "Jackery Explorer 240 v2",
+  "EcoFlow DELTA Pro 3",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C300 (AC)",
+  "EcoFlow RIVER 2 Max"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C300X DC",
+   "label": "Energy delivered, 12 V car socket at 2 A (about 24 W)",
+   "value": "277.6 Wh of 288 Wh rated (96%)",
+   "source": "https://techtest.org/anker-solix-c300x-dc-im-test-die-dc-only-schwester-der-solix-c300-mit-140-w-usb-c/",
+   "source_title": "Anker SOLIX C300X DC im Test: Die DC-only-Schwester der SOLIX C300 mit 140 W USB-C (techtest.org, Michael Barton, 21 May 2026)",
+   "read": "2026-11-15",
+   "note": "Full discharge into a load on the 12 V socket at 2 A; techtest.org reports 277.613 Wh. At 12 V/10 A (about 120 W) it measured 272.8 Wh (95%). Arithmetic: 277.6 Wh ÷ 24 W ≈ 11.6 h, or ≈ 13.9 h at 20 W if the efficiency holds. techtest.org tested the EU-named C300X DC. The US listing is 'SOLIX C300 DC'; both are 288 Wh, DC-only and have 140 W USB-C. I did not verify that the hardware is identical."
+  },
+  {
+   "product": "Anker SOLIX C300X DC",
+   "label": "Energy delivered, USB-C at 9 V/3 A, 20 V/5 A and 28 V/5 A",
+   "value": "271.5 Wh (94%) at 27 W; 269.7 Wh (94%) at 100 W; 273.1 Wh (95%) at 140 W",
+   "source": "https://techtest.org/anker-solix-c300x-dc-im-test-die-dc-only-schwester-der-solix-c300-mit-140-w-usb-c/",
+   "source_title": "Anker SOLIX C300X DC im Test (techtest.org, 21 May 2026)",
+   "read": "2026-11-15",
+   "note": "Average across the five tests: 272.925 Wh, the number Best Batteries quotes. The per-load split shows no drop at a low USB-C load (27 W)."
+  },
+  {
+   "product": "EcoFlow TRAIL 300 DC",
+   "label": "Idle use, switched on with nothing plugged in",
+   "value": "about 2 Wh over 24 h (≈0.08 W average)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-trail-300dc",
+   "source_title": "EcoFlow TRAIL 300 DC Review: Tiny, Tough, and Surprisingly Long-Lasting (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'it consumed about 2Wh over 24 hours'. The page gives no instrument and no publication date; the footer says © 2026. ≈0.08 W is 2 Wh ÷ 24 h. The page reports no delivered-Wh or 12 V test."
+  },
+  {
+   "product": "EcoFlow RIVER 2",
+   "label": "Standby draw, no outputs on / with AC on in UPS mode",
+   "value": "1.14 W / 3.71 W",
+   "source": "https://goughlui.com/2025/03/30/review-ecoflow-river-2-portable-power-station-300w-256wh/",
+   "source_title": "Review: EcoFlow RIVER 2 Portable Power Station (300W/256Wh), Gough's Tech Zone, 2025-03-30",
+   "read": "2026-11-15",
+   "note": "Measured by Gough Lui with programmatically controlled test equipment. He gives no separate DC-on-only idle figure in watts."
+  },
+  {
+   "product": "EcoFlow RIVER 2",
+   "label": "Energy delivered by output",
+   "value": "USB-C at 60 W: 233 Wh (≈91%); 12 V socket at 8 A: 221.9 Wh (86.7%); AC at 150 W: 217.2 Wh (84.8%)",
+   "source": "https://goughlui.com/2025/03/30/review-ecoflow-river-2-portable-power-station-300w-256wh/",
+   "source_title": "Review: EcoFlow RIVER 2 Portable Power Station (300W/256Wh), Gough's Tech Zone",
+   "read": "2026-11-15",
+   "note": "Percentages are against 256 Wh rated. Lui notes that the 12 V figure includes losses in the adapter and cable."
+  },
+  {
+   "product": "BLUETTI EB3A",
+   "label": "Drain with DC on and no load (Eco off), 12 h",
+   "value": "16% of capacity (≈3.6 W average)",
+   "source": "https://thetechnologyman.com/bluetti-eb3a-portable-power-station-review-lifepo4-268wh-600w-ac-pv68-solar-panel/",
+   "source_title": "Bluetti EB3A portable power station review, The Technology Man, 2023-04-12",
+   "read": "2026-11-15",
+   "note": "Watts derived: 268 Wh × 0.16 ÷ 12 h ≈ 3.6 W. AC on with no load lost over 5% an hour (≈13 W derived). DC delivered 225 Wh at an 8 A load (84%). Already cited by ChatGPT."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "AC idle drain; DC energy delivered",
+   "value": "about 4% an hour with AC on and no load (≈10 W); 219 Wh on DC at 8 A (≈92 W), 86%; 193 Wh on AC at 100 W",
+   "source": "https://thetechnologyman.com/power-all-your-tech-anywhere-jackery-explorer-240-v2-full-review",
+   "source_title": "Jackery Explorer 240 v2 full review, The Technology Man, 2024-11-14",
+   "read": "2026-11-15",
+   "note": "≈10 W is 256 Wh × 0.04. The review calls DC parasitic drain 'far smaller' but gives no number. The DC Wh figure is at about 92 W, not at router load."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "Energy delivered, USB-C at about 96 W",
+   "value": "about 216.8 Wh of 245.76 Wh (88.2%)",
+   "source": "https://powerstationtips.com/articles/ecoflow-river-3-review/",
+   "source_title": "EcoFlow RIVER 3 Review: Real Test Data, Not the Spec Sheet (PowerStationTips, Steve Wang, 2026-07-14)",
+   "read": "2026-11-15",
+   "note": "Average power × runtime (about 135 min) on an electronic load, so this is an estimate, not a cumulative meter reading. The page has no idle or 12 V figures."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Idle draw, DC outputs only vs AC on",
+   "value": "about 13 W DC-only; about 49 W with AC outlets on",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-small-loads/",
+   "source_title": "Why Portable Power Stations Run Out Early on Small Loads (wattpowerstation, 2026-11-09)",
+   "read": "2026-11-15",
+   "note": "Secondhand: wattpowerstation credits the measurement to Hobotech. I did not open Hobotech's original. A cited rival already carries this."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus / RIVER 2 Max / Anker SOLIX C300 (AC)",
+   "label": "Energy delivered by port (load not stated)",
+   "value": "DELTA 3 Plus: USB-C 937, 12 V 895, AC 860 Wh of 1,024. RIVER 2 Max: USB-C 450, 12 V 443, AC 377 Wh of 512. C300: USB-C 266, 12 V 254, AC 240 Wh of 288",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity (Best Batteries, Julien De Jurquet, 2026-08-28)",
+   "read": "2026-11-15",
+   "note": "The tester and load are not named, and the article says the tests are not rigorously comparable. A cited rival already carries these figures."
+  }
+ ],
+ "unsourced": [
+  "Idle draw with DC on for the US Anker SOLIX C300 DC: techtest.org (C300X DC) gives no idle wattage, The Solar Lab's C300X review covers the AC model and gives no idle figure, and I found no Notebookcheck or US reviewer measurement.",
+  "Energy delivered by the EcoFlow TRAIL 300 DC on USB-C or 12 V: The Solar Lab gives only the phone-charge count; I found no techtest.org or Gough Lui test.",
+  "Idle draw with DC on for the EcoFlow RIVER 3: I could not open ComputerBase's test, and the StorageReview snippets show no idle figure. The only number I found was an Alza.cz customer's 18 W for the RIVER 3 Plus, which is not a named measurement.",
+  "Idle draw with DC on for the BLUETTI Elite 30 V2: Zelpio's 7 W showed up only in a search snippet and I did not open the page. Decathlon's 5 W is a listing spec, and the BLUETTI community figure (9.36 W) comes from a user.",
+  "Hobotech's original DELTA Pro 3 measurement of about 13 W DC-only: I saw it only as wattpowerstation's citation.",
+  "Gough Lui's RIVER 2 idle with only DC on, in watts: the readable text gives only 1.14 W with no outputs on and 3.71 W in UPS mode with AC on."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.1751672999999998
+ }
+}

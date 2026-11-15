@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that each station's inverter keeps drawing its own idle power on top of the stove's draw. The Solar Lab puts the original EcoFlow DELTA Pro Ultra at roughly 60 W idle, the DELTA Pro Ultra X at about 36 W and the Anker F3800 at about 10 W. At a 150 W pellet-stove load, that overhead takes about 29 %, 19 % and 6 % of what the battery supplies. ChatGPT's flat 85 % factor hides this, and it ranks the stations by rated Wh alone.",
+ "standout": 2,
+ "standout_why": "I read sparkpowered.com/home-backup/pellet-stove (a top result) and runtimemath.com/can-a-power-station-run-a-pellet-stove (a top result). Sparkpowered covers igniter watts, 10–20 ms switchover, pure sine wave and Harman/Englander behavior after a power loss, but not idle draw. RuntimeMath lists idle draw only for smaller units (for example Apex 300 20 W, DELTA 3800 Gen4 14 W) and gives none for the DELTA Pro Ultra, Ultra X or F3800. ChatGPT cited three pages: the solarwaypoint comparison, the EcoFlow DELTA Pro Ultra product page and the DELTA Pro Ultra manual. Its answer uses one flat 85 % efficiency for every station. I could not open the cited enoughwatts.com pages (SSL certificate error), so I have not checked them. The page I did open, sparkpowered's, says nothing about inverter overhead.",
+ "decides": "The finding confirms the order but shrinks the gap between the stations. At 150 W the original DELTA Pro Ultra's roughly 60 W idle means the battery supplies about 210 W, which caps it at about 29 h on its rated 6,144 Wh even with no conversion losses. ChatGPT showed 34.8 h. The F3800, with about 10 W idle, caps at about 24 h on 3,840 Wh. That is a 5-hour gap where rated capacity alone suggests 13 hours. The DELTA Pro Ultra X, with about 36 W idle on 12,288 Wh, still runs longest (ceiling of about 66 h). For a low-draw stove, the page should recommend the Ultra X over the original DELTA Pro Ultra plus one extra battery, and should put each station's idle draw next to its rated Wh. The AC switch must stay on all night for the stove, so the overhead runs for every hour of the outage.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow DELTA Pro Ultra X",
+  "Anker SOLIX F3800",
+  "BLUETTI Elite 300",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle (no-load) draw, per a named reviewer",
+   "value": "roughly 60 W",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "DELTA Pro Ultra vs Ultra X: Which Is Better? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Quote: 'the original DELTA Pro Ultra has nearly double the idle rate (roughly 60W)'. The article does not give a measurement method. Arithmetic at a 150 W stove: 60 / (150 + 60) = 28.6 % of battery output goes to overhead. 60 W × 24 h = 1,440 Wh a day. Ceiling runtime: 6,144 Wh ÷ 210 W = 29.3 h before inverter conversion losses, against ChatGPT's 34.8 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle draw, per a named reviewer",
+   "value": "roughly 36 W",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "DELTA Pro Ultra vs Ultra X: Which Is Better? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Quote: 'The Ultra X's new inverter consumes roughly 36W while idle'. No method is given. At 150 W: 36 / 186 = 19.4 % overhead. Ceiling: 12,288 Wh ÷ 186 W = 66.1 h before conversion losses, against ChatGPT's 70 h."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw, measured by a named reviewer",
+   "value": "about 10 W (240 Wh a day)",
+   "source": "https://www.thesolarlab.com/review/can-you-survive-a-24-hour-outage-with-a-power-station",
+   "source_title": "Can You Survive a 24-Hour Outage with a Power Station? - Backup Power with the Anker F3800 (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Quote: 'With nothing plugged in, the main unit consumed around 10 watts per hour'. The article says the inverter, fans and screen account for the draw and that it adds up to 240 Wh over 24 h. It does not say whether the AC output was switched on. At 150 W: 10 / 160 = 6.3 % overhead. Ceiling: 3,840 Wh ÷ 160 W = 24.0 h."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Usable AC energy at a light load compared with a heavy load (shows the fixed overhead)",
+   "value": "about 2,650 Wh of 3,014.4 Wh (just under 88 %) at just over 200 W; just over 92 % at 1,800 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review (Notebookcheck, Marcus Schwarten)",
+   "read": "2026-11-15",
+   "note": "Notebookcheck measured both figures; the drop in efficiency at the stove-like load is the mechanism at work. The review gives no separate idle figure. At 150 W: 2,650 ÷ 150 = 17.7 h at most, which matches our current page."
+  },
+  {
+   "product": "general",
+   "label": "Why a power outage matters to the stove (context already in a rival page; not new)",
+   "value": "Harman: a power failure stops the combustion blower. Englander: a stove off for under about 3 minutes re-runs its start-up cycle.",
+   "source": "https://sparkpowered.com/home-backup/pellet-stove",
+   "source_title": "Power Station for a Pellet Stove: Igniter vs Running Watts, Hours and Switchover (Spark Powered)",
+   "read": "2026-11-15",
+   "note": "This is a rival's summary of the makers' manuals. I did not open the manuals themselves. It is listed so the page doesn't present it as new."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow's own no-load consumption spec for the DELTA Pro Ultra. us.ecoflow.com, uk.ecoflow.com and ca.ecoflow.com all returned HTTP 429, and so did storecheck. The manual PDFs (webstaurantstore, ecoflow.no) and the marinea.fi intro deck would not extract text. Search snippets from retailers disagree ('<45W' against 'Greater than 45W'), and I did not use them.",
+  "A measured idle draw for the Jackery Explorer 5000 Plus and the BLUETTI Elite 300 with AC on and no load. Notebookcheck's Elite 300 review gives none, and I did not reach a maker spec.",
+  "BLUETTI's own idle figure for the Apex 300. Notebookcheck's Apex 300 review gives none. RuntimeMath lists 20 W but does not name its source.",
+  "Whether the 10 W F3800 figure was taken with the AC inverter switched on. The Solar Lab does not say.",
+  "Today's maker prices for the DELTA Pro Ultra, Ultra X and F3800. The EcoFlow store was rate-limited, and pricing was outside this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1417721999999997
+ }
+}

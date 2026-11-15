@@ -1,0 +1,118 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got says how many watt-hours a 1 kWh station takes in to go from empty to full. StorageReview measured 1,180 Wh into the EcoFlow DELTA 3 Plus and 1,360 Wh into the BLUETTI AC180, and Notebookcheck measured 1,110 Wh into the Anker SOLIX C1000 Gen 2. Divided by each solar limit, that gives a refill floor of about 1.2 h, 1.85 h and 2.7 h.",
+ "standout": 2,
+ "standout_why": "I opened amphourly.com (DELTA 3 Plus vs Explorer 1000 v2), powerstations.reviews (Explorer 1000 v2 solar setups) and testedwatts.com (Jackery vs Anker). All three work out refill time from rated or assumed capacity and give no measured energy-in. Amphourly even divides an assumed 870 Wh of usable capacity by 1,000 W and gets 1.0 h, which is shorter than the measured energy-in allows. ChatGPT's cited sources are EcoFlow's '70 minutes' and Anker's '1.8 hours', both maker claims. solargenreview.com returned HTTP 429 and verifiedbackuppowerdata.com failed its TLS check, so I could not check those two. No one in the result set has a named, measured refill figure.",
+ "decides": "It confirms the pick and does not change it. On measured energy-in, the DELTA 3 Plus needs about 1,180 Wh ÷ 1,000 W ≈ 1.2 h (about 71 min), which supports EcoFlow's 70-minute claim. The C1000 Gen 2 needs 1,110 Wh ÷ 600 W ≈ 1.85 h and the AC180 needs 1,360 Wh ÷ 500 W ≈ 2.7 h. The order is the same as ChatGPT's, but the page can now say 'measured' and give honest floors. No named reviewer measured a full two-panel solar refill on any candidate. The only two-input observation is The Solar Lab getting 'really close to 1,000W combined' on the DELTA 3 Plus.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Energy taken in for a full recharge (AC, measured)",
+   "value": "1,180 Wh (86.8% recharge efficiency)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview (Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-15",
+   "note": "StorageReview: 'The unit required 1.18kWh (1,180Wh) to recharge fully.' The test was an AC charge. Solar goes through the DC MPPT input, so losses may differ. Floor at the 1,000 W solar limit: 1,180 ÷ 1,000 = 1.18 h ≈ 71 min, consistent with EcoFlow's 70-minute claim."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Energy delivered on discharge (measured)",
+   "value": "910 Wh of 1,024 Wh rated (≈88.9%)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review - StorageReview (Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-15",
+   "note": "StorageReview: 'The unit discharged 0.91kWh (910Wh) during testing.'"
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input observed using both 500 W inputs",
+   "value": "'really close to that 1,000W combined input'",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review: Amazing, but One Big Quirk? - The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab tested with Serious 415W bifacial panels but does not give the number of panels, an exact wattage, the conditions or a solar time-to-full. The page has no author byline and no date."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Energy taken in for a full recharge (AC, measured)",
+   "value": "1,110 Wh (≈92% efficiency)",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster, but… Anker Solix C1000 Gen 2 power station review - Notebookcheck (Marcus Schwarten, 2025-12-21, updated 2026-10-05)",
+   "read": "2026-11-15",
+   "note": "Measured on the EU version during an AC charge. Floor at the 600 W solar limit: 1,110 ÷ 600 = 1.85 h, consistent with Anker's claimed 1.8 h. Notebookcheck reports no solar measurement."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "AC recharge time and power (measured)",
+   "value": "just under 55 min without Boost; about 1,200 W near the end of the charge",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster, but… Anker Solix C1000 Gen 2 power station review - Notebookcheck",
+   "read": "2026-11-15",
+   "note": "Notebookcheck also measured 850 Wh delivered (83%) at a load of about 250 W at 230 V."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured capacity and AC charge rate",
+   "value": "890 Wh of 1,024 Wh (87%); 1,097 Wh/hr average charge rate",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/anker-solix-c1000-gen-2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Review - OutdoorGearLab (Kenji Mowrey, 2026-07-23)",
+   "read": "2026-11-15",
+   "note": "OutdoorGearLab calls its 2 h solar figure an 'ideal sunlight' estimate, not a measurement. Its spec table disagrees with the text (it lists 1,056 Wh and 80%)."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Energy taken in for a full recharge (AC, measured)",
+   "value": "1,360 Wh (≈80% charge efficiency)",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "Bluetti AC180 Portable Power Station Review - StorageReview (Kevin OBrien, 2023-05-26)",
+   "read": "2026-11-15",
+   "note": "StorageReview: 'we measured a total power requirement of 1360Wh from the wall' for 0–100%. Floor at the 500 W solar limit: 1,360 ÷ 500 = 2.72 h. StorageReview also measured 1,030 Wh delivered at a 350 W load."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Measured capacity and AC charge rate",
+   "value": "910 Wh of 1,070 Wh (85%); 563 Wh/hr, almost 2 h to full on AC",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/jackery-explorer-1000-v2",
+   "source_title": "Jackery Explorer 1000 v2 Review - OutdoorGearLab (Kenji Mowrey, 2026-07-23)",
+   "read": "2026-11-15",
+   "note": "OutdoorGearLab estimates '3-4 hours' on solar at the 400 W limit and says this is not measured. Rated floor: 1,070 ÷ 400 = 2.7 h before losses."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Measured capacity and AC charge rate",
+   "value": "890 Wh of 1,024 Wh (87%); 512 Wh/hr; 'two hours to recharge from 0%'",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/bluetti-elite-100-v2",
+   "source_title": "BLUETTI Elite 100 V2 Review - OutdoorGearLab (Kenji Mowrey, 2026-07-23)",
+   "read": "2026-11-15",
+   "note": "OutdoorGearLab does not name the charging source and reports no measured solar figure."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Two-panel arithmetic on the single 1,000 W input (Notebookcheck)",
+   "value": "two panels in series 'would still only deliver around 700 W'",
+   "source": "https://www.notebookcheck.net/Good-power-station-or-just-green-marketing-Bio-based-Bluetti-Elite-100-V2-with-1-kWh-reviewed.1198030.0.html",
+   "source_title": "Good power station or just green marketing? Bio-based Bluetti Elite 100 V2 with 1 kWh reviewed - Notebookcheck (Christian Hintze, 2026-01-06, updated 2026-10-05)",
+   "read": "2026-11-15",
+   "note": "This is Notebookcheck's own calculation, not a field measurement. It also observed up to 1,200 W charging from a wall outlet. The '70 min at max input' figure in its spec table is the maker's rating."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's measured two-panel solar refill time, with logged watts and hours, for any candidate. I checked StorageReview, Notebookcheck, OutdoorGearLab, CleanTechnica, PopSci, The Drive and The Solar Lab. The Solar Lab's C1000 Gen 2 '1.5 to 2 hours' with solar gives no panels, watts or conditions, so I left it out.",
+  "Measured energy-in to refill the Jackery Explorer 1000 v2 and the BLUETTI Elite 100 V2. OutdoorGearLab gives only charge rates and times.",
+  "Energy-in measured through the solar (DC) input rather than AC for any candidate. All the energy-in figures above are AC wall charges.",
+  "The contents of solargenreview.com (HTTP 429) and verifiedbackuppowerdata.com (TLS certificate error). I could not open either to compare."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1379777
+ }
+}

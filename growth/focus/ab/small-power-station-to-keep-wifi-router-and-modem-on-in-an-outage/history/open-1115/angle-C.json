@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the makers' UPS promise covers only the AC outlets. EcoFlow's US RIVER 3 Plus page says 'All three AC outlets have UPS protection' and says nothing about the USB or car ports. BLUETTI's Elite 30 V2 page gives '≤10ms' and '980W bypass' without naming any outputs. So the shopper who saves energy by running the router from USB or 12 V gets no written switchover promise from the maker for that port.",
+ "standout": 2,
+ "standout_why": "I compared four pages. outagemath.com (cited) says only that 'a station with UPS or EPS mode keeps the internet on without a blip' and tells you to check the switchover time. It says nothing about which ports the UPS covers. wattpowerstation.com (cited) has no UPS, pass-through or auto-off content at all; its only DC figure is Hobotech's DELTA Pro 3 idle draw. Our own dealectric page gives switchover times per model but does not say whether those times apply to the DC or USB ports. None of the ChatGPT answers raise the conflict between running on DC and having UPS switchover. They also don't mention Anker's 15 W cap on the C300 DC's USB-C4 port.",
+ "decides": "This narrows the pick rather than overturning it. If the router must survive a power cut with no blip, the only route the makers document is AC with UPS on, which gives up the DC savings. If the shopper goes DC-only to lose the least power, which is question pm015, they should treat the station as a battery they switch over to by hand, or test the DC port themselves, until the maker confirms DC pass-through. On the Anker SOLIX C300 DC, a 12 V router needs one of the 140 W ports (USB-C1 to C3). USB-C4 is limited to 15 W and shares 20 W with USB-A.",
+ "candidates": [
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C300 DC",
+  "Jackery Explorer 240 v2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Outputs covered by UPS",
+   "value": "AC outlets only. The page says 'All three AC outlets have UPS protection'. It does not name the USB or car ports.",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus (EcoFlow US)",
+   "read": "2026-11-15",
+   "note": "Maker's US product page. No price was shown on the day (the product block showed a dash)."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "UPS auto-switch time",
+   "value": "<10 ms",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus (EcoFlow US)",
+   "read": "2026-11-15",
+   "note": "From the spec table row 'Auto-switch'. No footnote about servers, medical use or exclusions."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "UPS switchover and bypass",
+   "value": "≤10 ms, 980 W bypass. The page does not say which outputs are covered.",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-15",
+   "note": "Maker's US page. The FAQ 'Does the Elite 30 V2 have a UPS function?' had no answer text, and the Tech Specs block was empty."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker-stated standby draw",
+   "value": "4.5 W ('as low as')",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-15",
+   "note": "No footnote on which outputs are on at 4.5 W. Our page cites 7–11 W with DC on (Zelpio / The Technology Man), so the two don't match."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, maker US store",
+   "value": "$289.99, in stock",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-15",
+   "note": "Read with storecheck.py product. Variant 'Elite 30 V2', compare_at was also $289.99."
+  },
+  {
+   "product": "Anker SOLIX C300 DC",
+   "label": "Low-power port limits",
+   "value": "USB-C4 alone: 15 W max. USB-A alone: 12 W max. USB-A and USB-C4 used together: 20 W max.",
+   "source": "https://www.ankersolix.com/products/c300-dc",
+   "source_title": "Anker SOLIX C300 DC (Anker SOLIX US)",
+   "read": "2026-11-15",
+   "note": "From FAQ Q4 on the maker's page. A 12 V router drawing more than about 12–15 W should go on one of the two 140 W two-way USB-C ports instead."
+  },
+  {
+   "product": "Anker SOLIX C300 DC",
+   "label": "Availability, maker US store",
+   "value": "Sold out, no price shown",
+   "source": "https://www.ankersolix.com/products/c300-dc",
+   "source_title": "Anker SOLIX C300 DC (Anker SOLIX US)",
+   "read": "2026-11-15",
+   "note": "Page showed 'Sold Out' and 'Price Loading'. ChatGPT's $239.99 Best Buy card was not checked."
+  },
+  {
+   "product": "general",
+   "label": "What cited rivals say about DC router hookup",
+   "value": "outagemath: router adapters are 5 V (eero 6/7), 10 V (Nest Wifi Pro) or 12 V (Archer AX21, Nighthawk R7000). It says to 'match the voltage and plug exactly' but gives no plug size, port coverage or UPS-on-DC detail.",
+   "source": "https://www.outagemath.com/appliances/wifi-router/",
+   "source_title": "How Long Will a Power Station Run a Wi-Fi Router?",
+   "read": "2026-11-15",
+   "note": "This is the baseline for judging how much the finding stands out. The cited wattpowerstation.com page has no router, UPS or auto-off content."
+  }
+ ],
+ "unsourced": [
+  "Whether the USB and 12 V car ports stay powered through a grid failure (DC pass-through) on the RIVER 3, Elite 30 V2, C300 DC or Explorer 240 v2. The maker product pages don't say. The manual PDFs (BLUETTI Elite 30 V2 manual on s4.bluettipower.com, EcoFlow RIVER 3 manual 20240911, Anker A1726 manual 20240913) came back as compressed PDFs that WebFetch couldn't read, and running pdftotext locally needed approval.",
+  "The USB-C PD voltage steps (whether 12 V is offered, which a USB-C-to-DC5521 12 V trigger cable needs) for the RIVER 3, Elite 30 V2 and C300 DC. The maker pages give only wattage. Search snippets listing 5/9/12/15/20 V were not used.",
+  "The rated voltage and current of the RIVER 3 car port (12.6 V 10 A appeared only in a search snippet), the Elite 30 V2 DC5521 ports (snippets said 5 A, 8 A or 10 A) and the C300 DC car socket. The Elite 30 V2 Tech Specs block was empty, and us.ecoflow.com and eu.ecoflow.com returned HTTP 429.",
+  "DC/USB ECO auto-off timers and thresholds for the Elite 30 V2 (the BLUETTI forum thread now redirects to forum.bluettipower.com) and Jackery Energy Saving Mode details for each port (jackery.com returned HTTP 429).",
+  "RIVER 3 (245 Wh) and Jackery Explorer 240 v2 prices today. Both maker stores rate-limited the requests."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1904293000000001
+ }
+}

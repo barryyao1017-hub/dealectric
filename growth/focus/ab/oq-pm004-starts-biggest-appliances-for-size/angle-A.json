@@ -1,0 +1,120 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that DJI is the only maker in this set to put a duration on its overload rating: the US 120 V DJI Power 1000 (DYM1000L) holds 2,600 W for 30 s at 25 °C and 50% charge, while its 4,400 W 'peak' and the OUPES Mega 1's 4,500 W 'surge' have no duration at all. It also doesn't state that BLUETTI's own US pages give the Elite 30 V2 and Elite 100 V2 only a 'Lifting Power' figure (1,500 W / 2,700 W) and no surge figure, so ChatGPT's 158 W/lb for the Elite 30 V2 comes from a Lifting number, not a surge number.",
+ "standout": 2,
+ "standout_why": "I compared against Volt & Valley's best-of-2026 page (cited) and Tested Watts' C1000 Gen 2 vs DELTA 3 Plus and Elite 100 V2 vs DELTA 3 Plus pages (both cited). None gives a surge or overload duration for any product. All three say their only ms figures are UPS switchover times. Volt & Valley puts the Elite 30 V2 in its table as '1,500W surge', but its body text calls the same figure 'Power Lifting', so that rival has part of the BLUETTI point. None of them has DJI's timed 2,600 W / 30 s figure. ChatGPT's own caveat says 'surge duration ... matter[s]' but gives no duration.",
+ "decides": "This changes the shortlist rather than naming a final winner. The BLUETTI Elite 30 V2 should come off the surge-per-pound table, because BLUETTI publishes no surge rating for it, only 1,500 W Lifting Power. The DJI Power 1000 becomes the only pick whose overload is backed by a stated time and test conditions: 2,600 W for 30 s from about 28.7 lb is about 91 W/lb for a held overload. OUPES's 4,500 W and DJI's 4,400 W are peak figures with no stated duration, so ChatGPT's 162 vs 153 W/lb ranking compares two unverified numbers. The page's footnote should say: only DJI tells you how long; nobody tells you how long the peak lasts.",
+ "candidates": [
+  "OUPES Mega 1",
+  "DJI Power 1000",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 30 V2"
+ ],
+ "findings": [
+  {
+   "product": "DJI Power 1000",
+   "label": "Timed overload (US 120 V model DYM1000L)",
+   "value": "2,600 W for 30 s",
+   "source": "https://www.dji.com/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI",
+   "read": "2026-11-15",
+   "note": "Footnote **: 'At an output power of 2600 W, the DYM1000L prototype can sustain for 30 seconds, and the DYM1000H prototype can sustain for 60 seconds.' Measured at about 25 °C (77 °F) and 50% battery; DJI says duration varies with temperature and charge. I'm inferring that DYM1000L is the 120 V/US unit from the L/H naming and the page's region note. 2,600 W / 28.66 lb (13 kg × 2.2046) = 90.7 W/lb."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Peak output (no duration stated)",
+   "value": "4,400 W",
+   "source": "https://www.dji.com/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI",
+   "read": "2026-11-15",
+   "note": "Spec reads 'peak output: 4400 W' with no time window. 4,400 / 28.66 lb = 153.5 W/lb, which matches ChatGPT's 153."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Continuous and max total AC output",
+   "value": "2,200 W continuous; 2,600 W max total",
+   "source": "https://www.dji.com/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI",
+   "read": "2026-11-15",
+   "note": "2,200 W continuous 'until the battery runs out' at 25 °C. Bypass (UPS passthrough) on DYM1000L is 1,440 W. The Japanese version is limited to 2,000 W continuous."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Weight and volume",
+   "value": "about 13 kg (28.7 lb); 448 × 225 × 230 mm = 23.2 L",
+   "source": "https://www.dji.com/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI",
+   "read": "2026-11-15",
+   "note": "Volume = 44.8 × 22.5 × 23.0 cm = 23,184 cm³. Timed overload per litre: 2,600 / 23.2 = 112 W/L."
+  },
+  {
+   "product": "OUPES Mega 1",
+   "label": "Rated / surge AC output and price (maker US store)",
+   "value": "2,000 W rated; 4,500 W surge (no duration stated); $699.00",
+   "source": "https://www.oupes.com/products/oupes-mega-1-home-backup-portable-power-station-2000w-1024wh",
+   "source_title": "OUPES Mega 1 Home Backup & Portable Power Station | 2000W 1024Wh",
+   "read": "2026-11-15",
+   "note": "From the Shopify product data via storecheck: '2,000W AC Pure Sine Wave Inverter (4,500W Surge)'. Compare-at price $2,219; listed as available. The listing gives no surge duration or test conditions. The rendered page returned HTTP 429, so I couldn't check its spec table for a footnote."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Maker-stated AC output (US store)",
+   "value": "1,800 W total; 2,700 W Lifting Power; no surge figure published",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "The Compare Models table lists '1,800W In Total, 120V, 15A' and gives a surge in brackets only for the AC180 column ('Surge 2,700W'), not for the Elite 100 V2. The bullets say '1,800W output (2,700W Lifting Power)'. The 3,600 W surge that ChatGPT and Tested Watts quote doesn't appear on this maker page. Price $499.00."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Weight and volume",
+   "value": "11.5 kg (25 lb); 320 × 215 × 250 mm = 17.2 L",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "BLUETTI's bullets say '17L design'. 32.0 × 21.5 × 25.0 cm = 17,200 cm³, the smallest volume of the 1 kWh candidates I could source."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker-stated AC output (US store)",
+   "value": "600 W rated; 1,500 W Lifting Power; no surge figure published",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh-blush-pink",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (Blush Pink)",
+   "read": "2026-11-15",
+   "note": "Store text: '600W Rated Power, 1500W Lifting Power'. ChatGPT's '1,500W surge, 158 W/lb' row (1,500 / 9.5 lb) divides a Lifting figure, not a surge rating. Price $289.99."
+  },
+  {
+   "product": "general",
+   "label": "What a cited rival says about the 1,500 W and 2,700 W BLUETTI figures and about surge duration",
+   "value": "Volt & Valley lists the Elite 30 V2 as '1,500W surge' in its table but calls it 'a 1,500W Power Lifting figure' in its text. It states no surge duration for any product.",
+   "source": "https://voltandvalley.com/best-portable-power-stations-2026",
+   "source_title": "The Best Portable Power Stations of 2026 | Volt & Valley",
+   "read": "2026-11-15",
+   "note": "This rival is cited in both ChatGPT chats. Tested Watts (https://testedwatts.com/2026/09/23/bluetti-vs-ecoflow/, read 2026-11-15) describes Power Lifting as running 'resistive appliances like kettles and hair dryers up to 2,700 W at reduced power' and says it reports no motor-start tests ('We don't lab-test power stations (yet)')."
+  },
+  {
+   "product": "general",
+   "label": "What the cited Tested Watts head-to-head says about surge duration",
+   "value": "No time window given for the 3,000 W (Anker C1000 Gen 2) or 3,600 W (EcoFlow DELTA 3 Plus) figures",
+   "source": "https://testedwatts.com/2026/09/23/anker-solix-c1000-gen-2-vs-ecoflow-delta-3-plus/",
+   "source_title": "Anker SOLIX C1000 Gen 2 vs EcoFlow DELTA 3 Plus: Which 1 kWh Power Station Wins? - Tested Watts",
+   "read": "2026-11-15",
+   "note": "Its only ms figures are UPS switchover times (10 ms / under 10 ms). It lists EcoFlow X-Boost at 2,200 W and says it 'doesn't change its 1,800 W continuous limit'."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus surge rating, any surge duration, X-Boost ceiling and weight from the maker: us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck, and device.report's copy of the manual returned 403. The 3,600 W surge, 2,200 W X-Boost and 27.6 lb figures appear only on rival pages (Tested Watts).",
+  "Anker SOLIX C1000 Gen 2 surge rating and any duration from the maker: anker.com and ankersolix.com product URLs returned 404, and the storecheck search on anker.com returned 404. I didn't open the Amazon listing.",
+  "BLUETTI Elite 100 V2 3,600 W surge in a maker document: the official BLUETTI support PDF (s4.bluettipower.com/.../4bacc59f...pdf) came back as compressed binary that WebFetch couldn't read, and the manuals.plus mirror returned 403. Search results show a Best Buy title saying '3600W peak', which I didn't open.",
+  "OUPES Mega 1 surge duration and test conditions: no figure in the store listing, and the maker's spec page returned HTTP 429.",
+  "A named reviewer's measured motor-start or peak-watt test for the OUPES Mega 1 or DJI Power 1000: thesolarlab.com's Mega 1 review says the unit 'pulls voltage during these types of surges' but names no reviewer, appliance or measured figure, so I left it out. I didn't open the batteryskills.com and bobvila.com reviews."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0546979999999997
+ }
+}

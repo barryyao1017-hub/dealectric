@@ -1,0 +1,132 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how much power each inverter uses just to stay on. At a pellet stove's 150 W, that idle draw changes the order of the 'longest runtime' list. The BLUETTI Apex 300 + B300K (5,529.6 Wh, about 19.5 W idle) runs about 29 h, which matches or beats the larger EcoFlow DELTA Pro Ultra (6,144 Wh, 45–60 W idle) at about 26–28 h. The Anker SOLIX F3800 (70–80 W idle) falls from ChatGPT's 21.8 h to about 15 h.",
+ "standout": 2,
+ "standout_why": "I compared against the cited solarwaypoint.com three-way table, which lists rated Wh, total cycles and UPS transfer time (20/0/30 ms) but has no idle or self-consumption row. Its cycle counts (3,000/6,000/3,500) also don't say what capacity is left at the end of those cycles, so they can't be compared directly. I also checked ChatGPT's own answers in both chats: they divide rated Wh by 150 W at a flat 85% and ignore idle draw. Our current page has measured usable Wh at 200–1,000 W, but no idle column, and it doesn't cover the DELTA Pro Ultra or F3800. EcoFlow's US store and Anker's F3800 Plus page state no self-consumption figure. BLUETTI is the only maker that publishes one (≈20 W) and a runtime formula that adds it to the load. I could not read the two cited enoughwatts.com pages (SSL certificate error), so I can't rule out that they mention idle draw.",
+ "decides": "For 'runs a pellet stove the longest', the overall top pick stays the same: EcoFlow DELTA Pro Ultra X (12,288 Wh, about 36 W idle) at roughly 56 h at 150 W (12,288 × 0.90 ÷ 186). Below that, ranking by rated Wh is wrong at stove-level loads. The Apex 300 + B300K ($2,599 at BLUETTI, 2026-11-15) ties or beats a DELTA Pro Ultra ($3,799 list, shown unavailable) on hours, for $1,200 less. The F3800 drops to about the same runtime as a single Apex 300. The page should rank by hours = Wh × 0.90 ÷ (stove W + idle W), not by Wh.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "BLUETTI Apex 300 + B300K",
+  "BLUETTI Apex 300",
+  "Anker SOLIX F3800 / F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Elite 300"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured idle draw, inverters on, no load",
+   "value": "about 19.5 W",
+   "source": "https://www.ess-news.com/?p=6613",
+   "source_title": "Hands-on with the Bluetti Apex 300 portable power station (ESS News, Tristan Rayner, 2025-09-17)",
+   "read": "2026-11-15",
+   "note": "Article says 'consumed around 19.5 W per hour while we watched'. Read as an average draw of 19.5 W. It says the manual suggests about 20 W."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maker-stated self-consumption and runtime formula",
+   "value": "≈20 W self-consumption; η ≈ 90%; Operation Time = Capacity × DoD × η ÷ (Load + self-consumption)",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/what-can-apex300-run",
+   "source_title": "What Can Apex 300 Power Station Run? (BLUETTI Team, 2025-08-25)",
+   "read": "2026-11-15",
+   "note": "This is the only maker formula I found that adds idle draw to the load. BLUETTI's own 150 W example ('~15.8 hours') leaves out η and self-consumption. With its stated inputs (2,764.8 Wh × 0.95 × 0.90 ÷ 170 W) the result is 13.9 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X / DELTA Pro Ultra / Anker SOLIX F3800",
+   "label": "Idle draw (reviewer)",
+   "value": "DPU X about 36 W; original DPU about 45 W; F3800 'closer to 80W'",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab says the DPU X 'idle draw averaged around 36W'. No test date or method is given."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw (same reviewer, different figure)",
+   "value": "roughly 60 W",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "This conflicts with the 45 W in The Solar Lab's DPU X review, and no method is given. The page should show both as a range of 45–60 W. The Solar Lab's dedicated DPU test page gives no idle figure."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw (reviewer estimate)",
+   "value": "over 70 W",
+   "source": "https://www.thesolarlab.com/how-tos/idle-consumption",
+   "source_title": "Idle consumption how-to (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Estimated by the reviewer from battery drain during a 24-hour blackout simulation with a fridge and Wi-Fi router plugged in, not a direct meter reading. Applies to the original F3800, not the Plus."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "What Anker states",
+   "value": "3,840 Wh; 'LFP, 3,000+ cycles' with no end-of-life % given; 'Switching Time: 20 ms'; no self-consumption figure; listed Sold Out with no price",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus product page",
+   "read": "2026-11-15",
+   "note": "The cycle count can't be compared with BLUETTI's 6,000 or EcoFlow's 3,500 because Anker doesn't say what capacity remains after them."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Transfer mode as EcoFlow states it",
+   "value": "'Online UPS, 0-ms transfer time'",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-delta-pro-ultra-extra-battery",
+   "source_title": "EcoFlow DELTA Pro Ultra + Extra Battery (EcoFlow US store listing)",
+   "read": "2026-11-15",
+   "note": "From storecheck search of us.ecoflow.com. 'Online' UPS means the inverter runs all the time, which is consistent with the higher idle draw. That link is my inference, not EcoFlow's statement. The DPU X Inverter listing says 'Online UPS, 10-ms transfer time', but the DPU X bundle listing says '20ms auto switchover', so EcoFlow states the DPU X transfer time two different ways."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Price, EcoFlow US store",
+   "value": "$3,799 (compare-at $7,599), listed unavailable; Smart Extra Battery 6,144 Wh $2,349",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (EcoFlow US)",
+   "read": "2026-11-15",
+   "note": "From the storecheck tool. available=false."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Price, EcoFlow US store",
+   "value": "$7,899 (12 kWh standard bundle: 1 inverter + 2 × 6,144 Wh batteries)",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Whole-Home Backup Power (EcoFlow US)",
+   "read": "2026-11-15",
+   "note": "From the storecheck tool. available=true."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K",
+   "label": "Price, BLUETTI US store",
+   "value": "$2,599 (compare-at $2,799), 5,529.6 Wh; Apex 300 + 2 × B300K $3,689, 8,294.4 Wh",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k",
+   "source_title": "Apex 300 + B300K (BLUETTI US store)",
+   "read": "2026-11-15",
+   "note": "From the storecheck tool. Both available=true."
+  },
+  {
+   "product": "general",
+   "label": "Hours at a 150 W stove, counting idle draw",
+   "value": "DPU X 56.2 h; Apex 300 + 2 × B300K 44.0 h; Apex 300 + B300K 29.4 h; DPU 28.4 h (45 W idle) / 26.3 h (60 W); F3800 15.0 h (80 W) / 15.7 h (70 W); Apex 300 alone 14.7 h",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/what-can-apex300-run",
+   "source_title": "BLUETTI formula applied to the idle figures above",
+   "read": "2026-11-15",
+   "note": "Rated Wh × 0.90 ÷ (150 + idle W), with DoD left out. Examples: 12,288 × 0.9 ÷ 186; 8,294.4 × 0.9 ÷ 169.5; 5,529.6 × 0.9 ÷ 169.5; 6,144 × 0.9 ÷ 195 or ÷ 210; 3,840 × 0.9 ÷ 230 or ÷ 220; 2,764.8 × 0.9 ÷ 169.5. These are estimates. The η = 0.90 at load and the no-load idle figure may partly double-count losses, so treat the gap between units as more reliable than the exact hours. ChatGPT gave 34.8 h (DPU), 21.8 h (F3800) and 15.7 h (Apex 300) without counting idle draw."
+  }
+ ],
+ "unsourced": [
+  "DELTA Pro 3 idle draw: The Solar Lab's DP3 review gives only 89% efficiency at 3,650 W, with no idle figure.",
+  "F3800 Plus idle draw, and Anker's reported claim that a firmware update halves idle drain: the How-To Geek article syndicated on Yahoo returned 403, so I couldn't confirm the 50–70 W range or the firmware claim. This is the 'stock firmware vs. update' footnote for this table.",
+  "Maker-stated no-load or self-consumption power for the DELTA Pro Ultra: the US manual PDFs (webstaurantstore.com and ecoflow.no) had no readable text layer, and pdftotext was not permitted.",
+  "Idle draw for BLUETTI Elite 300, Jackery Explorer 5000 Plus and Growatt HELIOS 3600: I did not find one in the searches I ran within the tool budget.",
+  "BLUETTI Apex 300 standalone price: the BLUETTI US store search returned only bundles, and the /products/apex-300 URL returned 404.",
+  "Content of the cited enoughwatts.com pellet-stove pages: WebFetch hit an SSL certificate error and curl needed approval, so I couldn't check whether they mention idle draw.",
+  "Apex 300 idle draw in 240 V mode (an owner on the BLUETTI forum reported about 75 W): I saw this only in a search summary and did not open the thread."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1676742
+ }
+}

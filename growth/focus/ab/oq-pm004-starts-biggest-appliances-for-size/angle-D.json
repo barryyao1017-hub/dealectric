@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that DJI, the only maker in the comparison that says how long its unit holds an overload, rates the US Power 1000 (DYM1000L, 120 V) to hold 2,600 W for just 30 seconds in its own prototype test at 25 °C and 50% charge, and gives no duration at all for the 4,400 W peak behind ChatGPT's 153 W/lb figure.",
+ "standout": 2,
+ "standout_why": "I read Volt & Valley's 'Best Power Station for High Surge Output and Hard Starts' (top result in chat 1) and its cited 'Best Portable Power Stations of 2026' (cited in both chats), both on 2026-11-15. The surge page lists only peak watts and says 'None of the manufacturers in our registry publishes the duration its peak rating is held for.' That registry leaves out DJI and OUPES. The best-of page gives surge watts and weight only, with no duration, locked-rotor or inrush figures. ChatGPT's own answers say surge duration matters and then rank by peak watts per pound anyway. I tried to open the cited Tested Watts and Enough Watts pages, but they failed with an SSL certificate error, so I can't rule out that they mention a duration.",
+ "decides": "Starting a motor depends on whether the inverter can hold the locked-rotor draw for the fraction of a second to few seconds the motor needs to spin up, not on the peak number printed on the box. A W/lb ranking is built on peak figures that no maker ties to a time limit. DJI publishes 2,600 W for 30 s on the US model, which the other makers here don't, so a page can recommend the DJI Power 1000 on a figure the maker stands behind. OUPES Mega 1's 4,500 W tops the W/lb list, but no duration is published for it (I couldn't open OUPES's own page to check), so it shouldn't be called the winner on that number alone. This weakens ChatGPT's tentative OUPES pick and backs DJI as the best-documented compact choice for hard starts.",
+ "candidates": [
+  "DJI Power 1000",
+  "OUPES Mega 1",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "DJI Power 1000",
+   "label": "Overload hold time, US model DYM1000L (100-120 V)",
+   "value": "2,600 W total for 30 s",
+   "source": "https://www.dji.com/us/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI (US)",
+   "read": "2026-11-15",
+   "note": "Footnote **: 'At an output power of 2600 W, the DYM1000L prototype can sustain for 30 seconds'. 'Durations were measured when DJI Power 1000 is at approx. 25° C (77° F) and 50% battery level. Duration may vary due to differences in battery temperature and battery level.'"
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Overload hold time, 220-240 V model DYM1000H (not sold in US)",
+   "value": "2,600 W total for 60 s",
+   "source": "https://www.dji.com/us/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI (US)",
+   "read": "2026-11-15",
+   "note": "Same footnote. The 120 V US unit is rated for half the hold time of the 230 V unit at the same wattage."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Peak output (no duration stated)",
+   "value": "4,400 W",
+   "source": "https://www.dji.com/us/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI (US)",
+   "read": "2026-11-15",
+   "note": "No footnote on the peak line. DJI ties a duration only to the 2,600 W max-output line."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Max continuous output",
+   "value": "2,200 W at 25 °C",
+   "source": "https://www.dji.com/us/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI (US)",
+   "read": "2026-11-15",
+   "note": "Footnote *: 'At a room temperature of 25° C (77° F), Power 1000 can stably provide a max continuous output of 2200 W'."
+  },
+  {
+   "product": "DJI Power 1000",
+   "label": "Weight",
+   "value": "approx. 13 kg (about 28.7 lb)",
+   "source": "https://www.dji.com/us/power-1000/specs",
+   "source_title": "DJI Power 1000 - Specs - DJI (US)",
+   "read": "2026-11-15",
+   "note": "Converted: 13 kg × 2.2046 = 28.66 lb. Overload-hold ratio: 2,600 W / 28.7 lb = about 91 W/lb for 30 s."
+  },
+  {
+   "product": "general",
+   "label": "Do makers publish surge duration (per rival)",
+   "value": "Volt & Valley found none in its registry (EcoFlow, Anker, BLUETTI, Jackery models; no DJI or OUPES)",
+   "source": "https://voltandvalley.com/home-backup/best-power-station-for-high-surge-loads",
+   "source_title": "Best Power Station for High Surge Output and Hard Starts | Volt & Valley",
+   "read": "2026-11-15",
+   "note": "Quote: 'None of the manufacturers in our registry publishes the duration its peak rating is held for.' The page also says inrush 'lasts a fraction of a second' and that an inverter over its limit 'trips and shuts off'."
+  }
+ ],
+ "unsourced": [
+  "OUPES Mega 1 surge duration and weight: oupes.com product pages returned HTTP 429 (twice). The manual copies on manualslib and manuals.plus appeared only as search snippets (4,500 W surge, no duration), which I didn't use.",
+  "BLUETTI Elite 100 V2 surge duration and overload trip time: the bluettipower.com product URLs I tried failed (redirect loop, 404). A BLUETTI-hosted manual PDF downloaded, but the fetch tool couldn't extract its text and running pdftotext needed approval. The manuals.plus copy returned 403. GoRV's 'few seconds at 3,600 W' appeared only as a snippet.",
+  "EcoFlow DELTA 3 Plus surge duration: us.ecoflow.com returned 429 and then 404. The device.report manual ChatGPT cited returned 403.",
+  "Anker SOLIX C1000 Gen 2 surge duration and SurgePad footnote: both ankersolix.com URLs I tried returned 404.",
+  "Rival pages Tested Watts (both cited) and Enough Watts (DELTA 3 Plus and 1,000 Wh pages) failed with an SSL certificate error. Running curl through Bash needed approval, so their wording on surge duration isn't checked.",
+  "Prices: I used no budget on pricing because it isn't this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9434025000000001
+ }
+}
