@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got names who timed any chamber or says how. CNC Kitchen (Stefan Hermann) put thermocouples in a European 230 V Bambu Lab X2D and measured a real 65 °C in about 20 minutes with the chamber heater alone. He says running the heated bed too roughly halves that, and US 110–120 V units will likely take longer. On the H2D he timed about 10 minutes to 60 °C with bed and heater together, also on a 230 V machine.",
+ "standout": 2,
+ "standout_why": "I compared against the cited QIDI Plus 4 TechSpecs page, desktop3dprinters.us chamber-temperature-specs and 3dcalculators.com heat-3d-printer-enclosure. The yakja.co comparison would not load (certificate error), so I could not check it. The QIDI page lists 400 W and 65 °C but no times. The desktop3dprinters table lists only maximum chamber temperatures and gives no times. 3dcalculators gives QIDI Plus4 times only: about 8 minutes from a 3DJake listing, about 5 minutes from QIDI's own blog, and 16.5 minutes to print-ready from an owner test. ChatGPT's answer showed the X2D at '~20 min to 65°C (reported)' and the H2S at '~25 min' with no named measurer. The rival pages lack the thermocouple method, the fact that running the bed halves the time, the 230 V vs 120 V caveat for US buyers, and any named H2D measurement. The H2S's ~25 minutes traces to bambuhub.net, which publishes it as setup guidance, not a test.",
+ "decides": "This partly undermines ChatGPT's pick. The only named, instrumented chamber timings I could open are for the Bambu Lab X2D and H2D. The QIDI Plus4's '5 minutes to ~60 °C' is from QIDI's own blog and names no tester or conditions. So the Plus4-vs-X2D comparison sets a vendor claim against a heater-only thermocouple test on a 230 V European unit, which is not a fair head-to-head. With the bed on as well, CNC Kitchen's numbers put the X2D at roughly 10 minutes and the H2D at about 10 minutes to 60 °C. Both figures come from 230 V machines, and a US shopper's 120 V unit is likely slower. The page should say plainly that no named reviewer has timed the QIDI Plus4, QIDI Plus5, Creality K2 Plus or Bambu H2S under the same conditions, so 'fastest' cannot be crowned from measurements.",
+ "candidates": [
+  "QIDI Plus4",
+  "Bambu Lab X2D",
+  "Bambu Lab H2S",
+  "Bambu Lab H2D",
+  "Creality K2 Plus",
+  "QIDI Plus5"
+ ],
+ "findings": [
+  {
+   "product": "Bambu Lab X2D",
+   "label": "Chamber heat-up to 65 °C, chamber heater only (measured)",
+   "value": "about 20 min to a real 65 °C",
+   "source": "https://www.cnckitchen.com/blog/bambu-lab-x2d-review-affordable-dual-nozzle-printing-with-a-catch",
+   "source_title": "Bambu Lab X2D Review: Dual Nozzle, One Catch (CNC Kitchen, Stefan Hermann)",
+   "read": "2026-11-15",
+   "note": "Published 2026-04-14. Hermann 'placed some thermocouples into the chamber'; the article does not give the sensor positions. Heated bed was off. He says running the bed as well 'cuts the heat-up time roughly in half' (about 10 min, his estimate). His unit is the 230 V European version, and he says 'if you get a US version, your heat-up times will likely be longer.' He measured total draw at over 1,500 W."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Chamber heat-up to 60 °C, bed and chamber heater together (measured)",
+   "value": "about 10 min",
+   "source": "https://www.cnckitchen.com/blog/i-tested-the-bambu-lab-h2d-and-its-more-than-i-expected",
+   "source_title": "I Tested the Bambu Lab H2D (CNC Kitchen, Stefan Hermann)",
+   "read": "2026-11-15",
+   "note": "Published 2025-03-25. Tested on a 230 V machine. He says '110V' machines 'might be slower' because of their 'considerably lower maximum power rating compared to the 2200W available in 230V regions.' He also found the bed about 10 °C below its setpoint with a thermal camera and a thermocouple; Bambu later fixed this in firmware."
+  },
+  {
+   "product": "Bambu Lab X2D",
+   "label": "Chamber heat-up, second-hand reported figures",
+   "value": "about 10 min (mpoxDE) vs about 20 min (CNC Kitchen)",
+   "source": "https://makers101.com/bambu-lab-h2c-vs-x2d/",
+   "source_title": "H2C Vs X2D: The Third Color Is Where $1,300 Starts To Matter (Makers101)",
+   "read": "2026-11-15",
+   "note": "Page dated Oct 1, 2026, updated Oct 4–5. It reports both figures without stating the target temperature or whether the bed was on, and gives no link for the mpoxDE figure. The 10 vs 20 min spread is consistent with CNC Kitchen's heater-only vs heater-plus-bed note."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Chamber heat-up from cold (vendor-hosted review, no named tester)",
+   "value": "about 5 min to roughly 60 °C",
+   "source": "https://qidi3d.com/blogs/news/qidi-plus-4-3d-printer-review",
+   "source_title": "[Review] QiDi PLUS 4 3D Printer In-Depth Review (QIDI blog)",
+   "read": "2026-11-15",
+   "note": "Byline Oct 24, 2024, with a September 2026 update. The figure appears in the spec table ('Around 60 °C in about 5 minutes') and the FAQ ('from cold'). No tester, room temperature, sensor or bed state is given. This is QIDI's own site, not an independent measurement."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Chamber heater power and maximum (maker spec)",
+   "value": "400 W PTC chamber heater, up to 65 °C; bed ≤120 °C; nozzle ≤370 °C",
+   "source": "https://us.qidi3d.com/pages/qidi-plus-4-techspecs",
+   "source_title": "QIDI Plus 4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Rated power is listed as '450W+400W(Chamber Heating)'. The page gives no heat-up times."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Time to print-ready, owner test (cited by a rival page)",
+   "value": "16 min 30 s to print-ready; chamber at 60 °C (sensor) with the heater at 70% power; 23 °C room",
+   "source": "https://3dcalculators.com/blog/heat-3d-printer-enclosure",
+   "source_title": "How to heat a 3D printer enclosure (3D Calculators)",
+   "read": "2026-11-15",
+   "note": "The page credits this to an unnamed owner test. The bed, still heating, was the bottleneck. The page also cites ~8 min to 65 °C from a 3DJake listing and ~5 min to ~60 °C from the QIDI blog."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Chamber heater power (reviewer-reported)",
+   "value": "550 W chamber heater, 65 °C target; 500 W bed to 120 °C",
+   "source": "https://3dwork.io/en/qidi-plus-5-review/",
+   "source_title": "QIDI Plus 5 + Polar Cooler + QIDI Box: Review 2026 (3Dwork, JJR)",
+   "read": "2026-11-15",
+   "note": "Published Aug 5, 2026. The reviewer states 'QIDI doesn't specify the exact heating time in its documentation' and reports no timing of their own."
+  },
+  {
+   "product": "Bambu Lab H2S",
+   "label": "Chamber pre-heat guidance (not a named measurement)",
+   "value": "about 25 min to 65 °C, plus 5 min to stabilize",
+   "source": "https://www.bambuhub.net/printers/h2s",
+   "source_title": "Bambu Lab H2S: Specs, Build Volume & Review (Bambu Hub)",
+   "read": "2026-11-15",
+   "note": "Seen only in a search result's summary; I did not open the page, so this cannot be published as a sourced figure. The site presents it as a pre-heat routine, and it is unclear whether it comes from a test."
+  }
+ ],
+ "unsourced": [
+  "Measured chamber heat-up time for the Creality K2 Plus by a named reviewer. I searched for reviews; HowToMechatronics and Tom's Hardware snippets give no times, and the Tom's Hardware page would not load past its title.",
+  "Measured chamber heat-up time for the QIDI Plus5. The Tom's Hardware review says only that it 'takes a while' to reach 350/100/65 °C, a quote seen in a search summary because the page would not load. Technix AM (Vinh Dinh, 27/09/2026) and 3Dwork give no times.",
+  "Measured chamber heat-up time for the Bambu Lab H2S by a named reviewer. I tried Tom's Hardware (would not load) and Fabbaloo (HTTP 403). TechRadar and The Gadgeteer snippets give no times.",
+  "Independent, named measurement of the QIDI Plus4 chamber time. The only figures trace to QIDI's own blog, a 3DJake retailer listing and an anonymous owner test.",
+  "Named nozzle heat-up times (e.g. 25→220 °C) and bed heat-up times (e.g. 25→100 °C) for any candidate. CNC Kitchen's X2D and H2D articles give none, and Makers101's '~8 s' H2C induction-hotend figure is unattributed and covers a model outside this set.",
+  "The cited Yakja seven-printer comparison could not be opened (self-signed certificate error), so I could not check whether it already states heat-up times.",
+  "Prices were not checked, because this angle is about measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0467786
+ }
+}

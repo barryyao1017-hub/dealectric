@@ -1,0 +1,113 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states chamber-heater watts per litre of cabinet. On that measure the QIDI Plus5 is highest (550 W ÷ 136.2 L = 4.04 W/L), well ahead of ChatGPT's pick, the Plus4 (400 W ÷ 135.3 L = 2.96 W/L), and ahead of the Q2 (3.22 W/L) and Max4 (2.53 W/L).",
+ "standout": 2,
+ "standout_why": "I compared against four pages. The cited QIDI Plus4 tech-specs page lists the 400 W chamber line but no other model. desktop3dprinters.us/lists/chamber-temperature-specs (cited) gives only maximum chamber temperatures (65 °C for nearly every model) and has no heater watts, heat-up times or per-volume figures. 3dcalculators.com/blog/heat-3d-printer-enclosure (cited) gives Q2 280 W and Plus4 400 W plus reported Plus4 warm-up times, but has no Plus5 or Max4 wattage and no normalisation by volume. The cited Yakja page would not load (certificate error). None of them divides heater power by chamber size, and none mentions the Plus5's 550 W heater or its 500 W bed.",
+ "decides": "This changes the pick ChatGPT gave. It named the Plus4 for fastest chamber heat-up, but by the maker's own figures the Plus5 puts 1.37× as much chamber-heater power into almost the same size cabinet (4.04 / 2.96 = 1.37). The Plus5 should therefore warm its chamber fastest of the QIDI line, and Dealectric lists it. This is a power-density proxy, not a measured time. Bambu (H2S, X2D, H2D) and Creality (K2 Plus) don't publish chamber-heater wattage, so the ratio can't rank them; the page should say so rather than guess.",
+ "candidates": [
+  "QIDI Plus5",
+  "QIDI Plus4",
+  "QIDI Q2",
+  "QIDI Max4",
+  "Bambu Lab H2S",
+  "Bambu Lab X2D",
+  "Bambu Lab H2D",
+  "Creality K2 Plus"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Plus5",
+   "label": "Chamber heater watts per litre of cabinet",
+   "value": "4.04 W/L",
+   "source": "https://us.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Rated power '150W+550W(Chamber Heating)+500W(Heatbed)'; printer dimensions 500×488×558 mm. 50.0×48.8×55.8 cm = 136.2 L; 550 W ÷ 136.2 L = 4.04 W/L. External box volume is used as a consistent stand-in for chamber air volume."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Bed heater watts per cm² of print area",
+   "value": "0.49 W/cm²",
+   "source": "https://us.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "500 W heatbed ÷ (32 × 32 cm print area = 1,024 cm²) = 0.49 W/cm². The page also says the bed holds maximum power for about 3–5 minutes so it reaches temperature quickly."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Chamber heater watts per litre of cabinet",
+   "value": "2.96 W/L",
+   "source": "https://us.qidi3d.com/pages/qidi-plus-4-techspecs",
+   "source_title": "QIDI Plus 4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Rated power '450W+400W(Chamber Heating)'; printer dimensions 505×487×550 mm. 50.5×48.7×55.0 cm = 135.3 L; 400 W ÷ 135.3 L = 2.96 W/L. Bed heater wattage not listed."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber heater watts per litre of cabinet",
+   "value": "3.22 W/L",
+   "source": "https://us.qidi3d.com/pages/qidi-q2-techspecs",
+   "source_title": "QIDI Q2 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Rated power '350W+280W(Chamber Heating)', PTC heater, up to 65 °C; printer dimensions 402×438×494 mm. 40.2×43.8×49.4 cm = 87.0 L; 280 W ÷ 87.0 L = 3.22 W/L."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Chamber heater watts per litre of cabinet",
+   "value": "2.53 W/L",
+   "source": "https://us.qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Rated power '150W+500W(Chamber Heating)+700W(Heating Bed)'; printer dimensions 558×578×612 mm. 55.8×57.8×61.2 cm = 197.4 L; 500 W ÷ 197.4 L = 2.53 W/L."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Bed heater watts per cm² of print area",
+   "value": "0.46 W/cm²",
+   "source": "https://us.qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "700 W heating bed ÷ (39 × 39 cm print area = 1,521 cm²) = 0.46 W/cm²."
+  },
+  {
+   "product": "general",
+   "label": "Plus5 vs Plus4 chamber power density",
+   "value": "1.37×",
+   "source": "https://us.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "4.04 W/L (Plus5) ÷ 2.96 W/L (Plus4, from https://us.qidi3d.com/pages/qidi-plus-4-techspecs) = 1.37. The two cabinets are nearly the same size (136.2 L vs 135.3 L), so the difference comes from the heater (550 W vs 400 W)."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Reported chamber warm-up (rival page baseline)",
+   "value": "65 °C in about 8 min (3DJake listing); about 60 °C in about 5 min (QIDI blog review)",
+   "source": "https://3dcalculators.com/blog/heat-3d-printer-enclosure",
+   "source_title": "How to heat a 3D printer enclosure | 3D Calculators",
+   "read": "2026-11-15",
+   "note": "Already on a cited rival page. It is the measured baseline for the 2.96 W/L figure. The same page says no heat-up time is published for the Bambu H2D or H2S."
+  },
+  {
+   "product": "Bambu Lab H2D",
+   "label": "Whole-printer maximum power (no chamber-heater breakdown)",
+   "value": "1,320 W at 110 V / 2,200 W at 220 V",
+   "source": "https://bambulab.com/en/h2d/tech-specs",
+   "source_title": "Bambu Lab H2D - Technical Specifications",
+   "read": "2026-11-15",
+   "note": "Taken from the search result for Bambu's official spec page; I did not open the page itself (bambulab.com spec pages returned 403 to my fetch), so this needs re-checking on the page before use. Active chamber heating is listed as supported (65 °C), but no heater wattage is given, so W/L can't be derived."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2S, X2D and H2D chamber-heater wattage: bambulab.com/en/h2s/specs and /x2d/specs returned 403; us.store.bambulab.com product pages returned 402, and the store checker returned 404; per a search snippet, the Chamber Heater Unit store page lists only materials and packaging, not watts; the H2S spec PDF on print3dd.com couldn't be read as text. No W/L figure for Bambu.",
+  "Creality K2 Plus chamber-heater and bed wattage: the creality.com and store.creality.com product URLs returned 404. Only a reseller listing (Astro3D, 800 W chamber) and a K2 Pro measurement relayed by printer-hub.ru turned up in search results; neither is a maker source and I opened neither.",
+  "QIDI Plus4 and Q2 bed-heater wattage: the maker pages give only a combined 450 W / 350 W 'rated' line, with no separate bed figure.",
+  "Internal chamber air volume for every model: no maker publishes it, so external cabinet dimensions were used for all W/L figures.",
+  "A same-conditions head-to-head chamber heat-up test across brands: none found in the rival pages or my searches."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9423062000000001
+ }
+}

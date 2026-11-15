@@ -1,0 +1,104 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that QIDI's current Plus4 firmware limits the 400 W chamber heater to 40% duty (max_power 0.4, roughly 160 W) and holds chamber heating until the bed reaches temperature, while the QIDI Q2 firmware lets its 280 W chamber heater run at full power (max_power 1). That makes the '~5–8 min' Plus4 chamber figure ChatGPT used a poor guide to a Plus4 running current firmware.",
+ "standout": 2,
+ "standout_why": "Compared against us.qidi3d.com Plus4 TechSpecs (cited), desktop3dprinters.us chamber-temperature list (cited) and 3dcalculators.com enclosure-heating post (cited). The QIDI spec page lists only '450W+400W(Chamber Heating)'. The desktop3dprinters page has no heater power, warm-up time or firmware detail. 3dcalculators has an owner test showing a 25-minute warm-up at 40% heater power and 16.5 minutes at 70%, but it does not say that 40% is QIDI's shipped firmware setting or that chamber heating waits for the bed. None of them compares firmware limits across QIDI models. yakja.co could not be read (TLS certificate error), so it was not checked.",
+ "decides": "It weakens ChatGPT's pick of the Plus4 for 'fastest chamber heating'. On current firmware the Plus4's usable chamber heater power (0.4 × 400 W ≈ 160 W) is below the Q2's uncapped 280 W, and the Plus4 heats bed and chamber one after the other rather than together. Any warm-up time for the Plus4 should name the firmware and power setting. The fast 5–8 min figures come from before the cap or from unstated conditions. This finding does not by itself prove the Q2 heats its chamber faster, because the Q2 has a smaller chamber and nobody has published a timed Q2 test.",
+ "candidates": [
+  "QIDI Plus4",
+  "QIDI Q2",
+  "QIDI Plus5",
+  "Bambu Lab H2D",
+  "Bambu Lab H2S",
+  "Bambu Lab X2D",
+  "Creality K2 Plus"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Plus4",
+   "label": "Chamber heater firmware power cap",
+   "value": "max_power 0.4 (40% duty); with the 400 W rated heater that is about 160 W average maximum",
+   "source": "https://raw.githubusercontent.com/QIDITECH/QIDI_PLUS4/main/config/printer.cfg",
+   "source_title": "QIDITECH/QIDI_PLUS4 config/printer.cfg (main branch)",
+   "read": "2026-11-15",
+   "note": "From the [heater_generic chamber] section: 'max_power:0.4', 'heat_with_heater_bed:True', 'heat_with_heater_bed_tem_add:25', target_min_temp 45, target_max_temp 65. [heater_bed] max_power is 1.0. 160 W = 0.4 × 400 W, taking the 400 W from QIDI's spec page and assuming average power scales linearly with PWM duty. The file has no separate 110 V and 220 V entries."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Chamber heating sequencing (firmware)",
+   "value": "Chamber heating starts only once the heated bed reaches its set temperature (firmware V1.6.0 and later)",
+   "source": "https://github.com/QIDITECH/QIDI_PLUS4/releases",
+   "source_title": "Releases · QIDITECH/QIDI_PLUS4",
+   "read": "2026-11-15",
+   "note": "Plus4_V1.6.0 release note: 'Optimized chamber heating logic: chamber heating starts only when the heated bed reaches the specified temperature.' Total warm-up is therefore bed time plus chamber time, not the two at once. The repo README lists V1.7.1 as the latest."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Rated power / chamber heater wattage",
+   "value": "450 W + 400 W (chamber heating); 100/240 VAC, 50/60 Hz",
+   "source": "https://us.qidi3d.com/pages/qidi-plus-4-techspecs",
+   "source_title": "QIDI Plus 4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Maker spec page. Chamber up to 65 °C (PTC heater, 2nd gen). Gives no heat-up times."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "110 V region hardware issue",
+   "value": "QIDI offered replacement heater power boards and extended warranties to Plus4 owners in 110 V countries",
+   "source": "https://all3dp.com/4/plus4-issue-prompts-qidi-tech-to-offer-replacement-parts/",
+   "source_title": "Plus4 Issue Prompts Qidi Tech to Offer Replacement Parts (All3DP, Matthew Mensley, 2024-11-07)",
+   "read": "2026-11-15",
+   "note": "All3DP: 'An issue affecting the new Plus4 3D printer in 110V countries accelerates wear on a power-carrying component.' This US-region issue is the reported background to the firmware power cap; QIDI's own announcement was not found."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber heater firmware power cap",
+   "value": "max_power 1 (full power; 280 W rated chamber heater), no heat_with_heater_bed line",
+   "source": "https://raw.githubusercontent.com/QIDITECH/QIDI_Q2/main/config/printer.cfg",
+   "source_title": "QIDITECH/QIDI_Q2 config/printer.cfg (main branch)",
+   "read": "2026-11-15",
+   "note": "[heater_generic chamber]: heater_pin PC8, max_power:1, max_temp 70. [heater_bed] max_power 1.0. Unlike the Plus4 file, there is no bed-first chamber setting."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Rated power / voltage",
+   "value": "350 W + 280 W (chamber heating); 110 V / 220–240 V AC, 50/60 Hz, region-specific models",
+   "source": "https://us.qidi3d.com/pages/qidi-q2-techspecs",
+   "source_title": "QIDI Q2 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Chamber up to 65 °C (2nd gen). Gives no heat-up times."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "US price",
+   "value": "$449.00 (compare-at $848.00), in stock",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Read with storecheck.py from the Shopify product JSON. The listing says it is compatible with QIDI Box."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Rated power / voltage / full-power warm-up",
+   "value": "150 W + 550 W (chamber heating) + 500 W (heatbed); 110 V / 220–240 V AC, region-specific models; runs at full power about 3–5 min during warm-up",
+   "source": "https://us.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Chamber up to 65 °C (3rd gen). Steady-state power at 25 °C ambient: PLA 190 W, ABS 500 W. The page tells buyers to check the label by the power socket to confirm the supply matches the printer's rating. The 3–5 min full-power phase is described for bed warm-up; no chamber time is given."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2D / H2S / X2D chamber-heater and heatbed wattage for 110 V vs 220 V units: bambulab.com spec pages returned 403, Bambu store product pages (Heatbed Unit H2D, Chamber Heater Unit) returned 402/404, and wiki.bambulab.com returned 402. A search snippet says Bambu sells the H2D heatbed and chamber heater in separate 110 V and 220 V versions, but I could not open a Bambu page to confirm it.",
+  "QIDI Plus5 firmware chamber max_power: raw.githubusercontent.com/QIDITECH/QIDI_PLUS5/main/config/printer.cfg returned 404, and I did not find the repo name.",
+  "Timed chamber warm-up for the QIDI Q2 or Plus5 on current firmware, from QIDI or a named reviewer.",
+  "An official QIDI statement or release note tying the Plus4 max_power 0.4 value to 110 V units specifically. The config file has one value for all units, and the firmware version where 0.4 was introduced is only claimed by a third-party blog (printer-hub.ru).",
+  "Creality K2 Plus chamber heater wattage and firmware limits: not researched within the tool budget.",
+  "yakja.co comparison page: fetch failed (self-signed certificate), so it was not checked for this fact."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0348011
+ }
+}

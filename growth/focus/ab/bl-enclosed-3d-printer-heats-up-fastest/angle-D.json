@@ -1,0 +1,67 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that on US 110–120 V power each printer's heaters share a smaller power budget. Bambu rates the H2S at 1,170 W max at 110 V against 2,050 W at 220 V. Creality says the K2 Plus chamber may not reach its 60 °C target at 110 V when the room is below 15 °C. The QIDI Plus4 has a separate 400 W chamber heater on top of its 450 W machine rating.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: us.qidi3d.com Plus4 TechSpecs (lists 450 W + 400 W chamber heating and 100–240 VAC, but says nothing about speed at 110 V), desktop3dprinters.us chamber-temperature list (max chamber temperatures only, with no wattage, voltage or warm-up figures), and 3dcalculators.com (has the Plus4's 400 W PTC heater and X1E/P1S power draw on 110 V, but not the H2S's 110 V vs 220 V limit or Creality's 110 V warning). The yakja.co page would not load (certificate error), so I could not check it. None of the pages I read says that published warm-up times may assume 220 V, or that a printer bought in the US gets less heating power.",
+ "decides": "This supports the QIDI Plus4 as the pick for fast chamber heating in a US home. Its 400 W chamber heater has its own power rating on top of the 450 W machine rating. Bambu's H2S is limited to 1,170 W in total on 110 V. Creality itself warns the K2 Plus chamber may not reach 60 °C at 110 V in a cool room. Shoppers on 120 V should expect Bambu and Creality warm-ups to be slower than figures measured on 220 V.",
+ "candidates": [
+  "QIDI Plus4",
+  "QIDI Plus5",
+  "Bambu Lab H2S",
+  "Bambu Lab X2D",
+  "Bambu Lab H2D",
+  "Creality K2 Plus"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Plus4",
+   "label": "Rated power, with a separate chamber heater",
+   "value": "450 W + 400 W (chamber heating); PTC chamber heater up to 65 °C; input 100/240 VAC, 50/60 Hz",
+   "source": "https://us.qidi3d.com/pages/qidi-plus-4-techspecs",
+   "source_title": "QIDI Plus 4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Maker's US spec page. The chamber heater's 400 W is listed apart from the 450 W machine rating, so the heater does not share the bed and nozzle budget on paper. The page gives no bed or chamber heat-up times."
+  },
+  {
+   "product": "Creality K2 Plus",
+   "label": "Chamber may not reach its target on 110 V in a cool room (maker's words)",
+   "value": "\"when the ambient temperature is below 15°C and the local operating voltage is 110V, the chamber may not reach the target temperature\" (max chamber 60 °C)",
+   "source": "https://www.creality.com/blog/k2-series-chamber-temperature-setting-guide",
+   "source_title": "Optimize K2 Pro/K2 Plus Chamber Temp for Engineering Materials (Creality, Jun 8, 2026)",
+   "read": "2026-11-15",
+   "note": "Quoted from Creality's own guide for the K2 Pro and K2 Plus. The same page says the chamber may not reach 60 °C when the room is too cold and suggests adding insulation."
+  },
+  {
+   "product": "Bambu Lab H2S",
+   "label": "Max power at 110 V vs 220 V",
+   "value": "1,170 W at 110 V; 2,050 W at 220 V",
+   "source": "https://bambuhub.net/printers/h2s",
+   "source_title": "Bambu Lab H2S: Specs, Build Volume & Review (Bambu Hub)",
+   "read": "2026-11-15",
+   "note": "Bambu Hub's spec table says it took this from bambulab.com/en-us/h2s/tech-specs (checked 2026-10-07). Bambu's own page returned HTTP 403 to my fetch, so I read the figure only through Bambu Hub. Arithmetic: 1,170 / 2,050 = 57% of the 220 V power budget for bed, nozzle and chamber together. Bambu Hub says the printer draws this maximum while the bed heats."
+  },
+  {
+   "product": "general",
+   "label": "What a chamber heater needs to warm a box (power vs time)",
+   "value": "Box of 24 × 24 × 28 in, 20 °C → 60 °C: 790 W for a 15-minute warm-up, 580 W for 30 minutes (bare walls)",
+   "source": "https://3dcalculators.com/blog/heat-3d-printer-enclosure",
+   "source_title": "How to heat a 3D printer enclosure | 3D Calculators",
+   "read": "2026-11-15",
+   "note": "This page is one of ChatGPT's cited results, included here for context only. It shows that warm-up time scales with available watts, which is why a 110 V power limit slows chamber heating."
+  }
+ ],
+ "unsourced": [
+  "Chamber heater wattage for the Bambu H2S, H2D and X2D: bambulab.com spec pages returned HTTP 403, wiki.bambulab.com/en/general/power-consumption returned 402, and the GigaParts H2D 110 V chamber-heater listing gives no wattage.",
+  "Bambu H2D and X2D max power at 110 V: I saw it only in search snippets and forum posts and could not open Bambu's spec page.",
+  "Bambu's footnote that the H2S holds maximum power for about 3 minutes to heat the bed: it appeared in a search snippet, but neither Bambu's page nor Bambu Hub showed it when I opened them.",
+  "Creality K2 Plus chamber heater wattage: Creality's wiki and blog pages give none, and the only figure was on an unofficial mirror site.",
+  "QIDI Plus5 chamber heater wattage: not checked within the call budget.",
+  "A measured bed or chamber warm-up time at 120 V for any candidate, taken under the same conditions: none found from a maker or a named reviewer, only forum anecdotes I saw in search snippets."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0189602999999998
+ }
+}

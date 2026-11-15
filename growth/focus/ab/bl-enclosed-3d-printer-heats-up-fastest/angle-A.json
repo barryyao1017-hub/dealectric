@@ -1,0 +1,169 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the 'up to 65 °C' chamber rating hides a 1.85× spread in heater power per litre of build volume across QIDI's current enclosed printers. The figures, from QIDI's spec sheets, are Plus5 550 W ≈ 17.9 W/L, Q2 280 W ≈ 15.0 W/L and Max4 500 W ≈ 9.7 W/L. Creality's K2 Plus heater only switches on when the chamber is set above 40 °C. Bambu publishes no chamber-heater wattage for the H2D or H2S.",
+ "standout": 2,
+ "standout_why": "us.qidi3d.com Plus 4 TechSpecs (cited) gives only 450 W + 400 W for the discontinued Plus4. desktop3dprinters.us chamber-temperature-specs (cited) lists max chamber temperature only and says outright that it has no wattage or warm-up times. 3dcalculators.com (cited) has the 400 W Plus4 heater, the 280 W Q2 heater and Plus4 owner warm-up times. It has no Plus5 or Max4 heater wattage, does not scale heater power to chamber size, and has nothing on the K2 Plus 40 °C threshold. I could not open yakja.co (cited) because of an SSL certificate error. ChatGPT's '~20 min X2D / ~25 min H2S' times have no maker source. The BambuHub H2S page, which cites Bambu's spec page, gives no heat-up time at all.",
+ "decides": "ChatGPT's top pick, the Plus4, is listed as discontinued (desktop3dprinters.us). After normalising, the QIDI Plus5 ($699 at QIDI US) has the most stated chamber-heater power per litre among current models. It also has the only maker-stated steady-state figure (500 W for ABS at 25 °C ambient) and a bed QIDI says runs at full power for 3–5 minutes during warm-up. That makes it the best-supported current answer for chamber heat-up. The Max4 has the same 65 °C label but about half the heater power per litre, so 'same max temperature' should not be read as 'same warm-up'. The K2 Plus's 60 °C rating comes with a heater that only runs for setpoints above 40 °C. None of this is a measured head-to-head time; it ranks stated heater power only.",
+ "candidates": [
+  "QIDI Plus5",
+  "QIDI Q2",
+  "QIDI Max4",
+  "QIDI Plus4",
+  "Creality K2 Plus",
+  "Bambu Lab H2S",
+  "Bambu Lab H2D",
+  "Bambu Lab X2D"
+ ],
+ "findings": [
+  {
+   "product": "QIDI Plus5",
+   "label": "Rated power split",
+   "value": "150 W + 550 W chamber heating + 500 W heatbed",
+   "source": "https://ca.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs",
+   "read": "2026-11-15",
+   "note": "Maker spec sheet. Chamber listed as '3rd Gen Up to 65° C, Independent Chamber Heating'."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Steady-state power at 25 °C ambient",
+   "value": "190 W (PLA), 500 W (ABS)",
+   "source": "https://ca.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs",
+   "read": "2026-11-15",
+   "note": "Maker-stated. This is the only steady-state draw any candidate's maker publishes."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Bed warm-up behaviour",
+   "value": "Bed runs at maximum power for about 3–5 min during warm-up",
+   "source": "https://ca.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs",
+   "read": "2026-11-15",
+   "note": "Maker-stated duration of full-power heating, not a time to reach a set temperature."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Chamber heater power per litre of build volume",
+   "value": "≈17.9 W/L",
+   "source": "https://ca.qidi3d.com/pages/qidi-plus5-techspecs",
+   "source_title": "QIDI Plus5 TechSpecs",
+   "read": "2026-11-15",
+   "note": "550 W ÷ (32 × 32 × 30 cm = 30.72 L). Build volume is a proxy for chamber volume because QIDI does not state the internal chamber volume."
+  },
+  {
+   "product": "QIDI Plus5",
+   "label": "Price, QIDI US store",
+   "value": "$699 (compare-at $1,098)",
+   "source": "https://us.qidi3d.com/products/plus5",
+   "source_title": "QIDI Plus5 3D Printer – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Checked with storecheck.py (Shopify)."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Rated power split",
+   "value": "350 W + 280 W chamber heating (2nd-gen PTC, up to 65 °C)",
+   "source": "https://ca.qidi3d.com/pages/qidi-q2-techspecs",
+   "source_title": "QIDI Q2 TechSpecs",
+   "read": "2026-11-15",
+   "note": "Maker spec sheet. Build volume 270 × 270 × 256 mm."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Chamber heater power per litre of build volume",
+   "value": "≈15.0 W/L",
+   "source": "https://ca.qidi3d.com/pages/qidi-q2-techspecs",
+   "source_title": "QIDI Q2 TechSpecs",
+   "read": "2026-11-15",
+   "note": "280 W ÷ (27 × 27 × 25.6 cm = 18.66 L)."
+  },
+  {
+   "product": "QIDI Q2",
+   "label": "Price, QIDI US store",
+   "value": "$449 (compare-at $848)",
+   "source": "https://us.qidi3d.com/products/qidi-q2",
+   "source_title": "QIDI Q2 3D Printer – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Checked with storecheck.py."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Rated power split",
+   "value": "150 W + 500 W chamber heating + 700 W heating bed",
+   "source": "https://ca.qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-15",
+   "note": "Maker spec sheet. 3rd-gen PTC, up to 65 °C. Build volume 390 × 390 × 340 mm."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Chamber heater power per litre of build volume",
+   "value": "≈9.7 W/L",
+   "source": "https://ca.qidi3d.com/pages/qidi-max4-techspecs",
+   "source_title": "QIDI Max4 TechSpecs",
+   "read": "2026-11-15",
+   "note": "500 W ÷ (39 × 39 × 34 cm = 51.71 L). That is about 54% of the Plus5's figure, with the same 65 °C rating."
+  },
+  {
+   "product": "QIDI Max4",
+   "label": "Price, QIDI US store",
+   "value": "$1,049 (compare-at $1,299)",
+   "source": "https://us.qidi3d.com/products/max4",
+   "source_title": "QIDI Max4 3D Printer – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Checked with storecheck.py."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Rated power split",
+   "value": "450 W + 400 W chamber heating (2nd-gen PTC, up to 65 °C)",
+   "source": "https://us.qidi3d.com/pages/qidi-plus-4-techspecs",
+   "source_title": "QIDI Plus 4 TechSpecs – QIDI US Store",
+   "read": "2026-11-15",
+   "note": "Maker spec sheet. The page gives no heat-up time. The model is listed as discontinued on desktop3dprinters.us/lists/chamber-temperature-specs/."
+  },
+  {
+   "product": "QIDI Plus4",
+   "label": "Maker-stated chamber warm-up",
+   "value": "About 60 °C in roughly 5 min",
+   "source": "https://qidi3d.com/blogs/news/qidi-plus-5-vs-plus-4",
+   "source_title": "QIDI Plus 5 vs Plus 4: Spec-by-Spec Comparison and Upgrade Guide (QIDI blog, 2026-09-18)",
+   "read": "2026-11-15",
+   "note": "Maker blog. No starting or room temperature is given. The same article rates the Plus5's 550 W heater at '38% higher heating efficiency' but gives no Plus5 chamber time."
+  },
+  {
+   "product": "Creality K2 Plus",
+   "label": "When the chamber heater engages",
+   "value": "Only for setpoints from 41 to 60 °C. From 0 to 40 °C the chamber fan alone regulates temperature.",
+   "source": "https://store.creality.com/blogs/tutorial/creality-k2-plus-chamber-temperature-setting-guide",
+   "source_title": "Creality K2 Plus Chamber Temperature Setting Guide (2025-06-16)",
+   "read": "2026-11-15",
+   "note": "Maker guide: '0°C < T ≤ 40°C: Chamber cooling fan control range… 40°C < T ≤ 60°C: Active heating control range.' Recommended setting is 60 °C for ABS/ASA/PC/nylon-CF and 35 °C for PLA/PETG."
+  },
+  {
+   "product": "Bambu Lab H2S",
+   "label": "Machine max power draw",
+   "value": "1,170 W at 110 V (2,050 W at 220 V), drawn while the bed heats",
+   "source": "https://www.bambuhub.net/printers/h2s",
+   "source_title": "BambuHub – Bambu Lab H2S",
+   "read": "2026-11-15",
+   "note": "Compiled from Bambu's H2S tech-specs page (BambuHub checked it 2026-10-02). The page gives no chamber heat-up time and no chamber-heater wattage."
+  }
+ ],
+ "unsourced": [
+  "Bambu Lab H2D/H2S/X2D chamber-heater wattage: bambulab.com tech-specs returned 403; the us.store.bambulab.com Chamber Heater Unit page returned 402 and 404. No reviewer figure found.",
+  "Bambu Lab X2D ~20 min and H2S ~25 min to 65 °C (the figures in ChatGPT's answer): the BambuHub H2S page has no such time, and I found no maker or named-reviewer source for either.",
+  "Creality K2 Plus chamber-heater wattage and bed heat-up time: creality.com product page returned 404. Retailer listings conflict (800 W bed heating system vs a 1,200 W rated machine) and are not the maker's US page.",
+  "Measured time to target temperature, under the same conditions, for any current model (Plus5, Q2, Max4, K2 Plus, H2S, X2D): none found from a maker or named reviewer.",
+  "QIDI Plus4 build volume from a page I opened, so the Plus4 W/L figure is left out.",
+  "Internal chamber volume for any model: makers state build volume only, so W/L uses build volume as the proxy.",
+  "Bambu and Creality US store prices: storecheck returned 404 for both stores."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.0975721000000003
+ }
+}
