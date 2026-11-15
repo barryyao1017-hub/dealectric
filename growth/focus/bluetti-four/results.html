@@ -1,0 +1,114 @@
+<title>Catalog-Gap Product Pages</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; a product ledger (built / featured / skipped) followed by the pages and what was not verified. */
+:root {
+  --bg: #f5f7f8; --panel: #ffffff; --fg: #1b2328; --muted: #5b6770; --line: #dde3e7;
+  --accent: #1d5f8a; --accent-soft: #e2eef6; --ok: #1f6f54; --ok-soft: #e3f0ea; --hold: #8a5a00; --hold-soft: #fbf0d9; --off: #6b7280; --off-soft: #eef0f2;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161a; --panel: #192026; --fg: #e3eaee; --muted: #98a5ae; --line: #2a343b;
+  --accent: #6bb3e3; --accent-soft: #1b3445; --ok: #5cc49b; --ok-soft: #1d3a2f; --hold: #e5b45a; --hold-soft: #3a2e17; --off: #a3aab3; --off-soft: #23282d; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161a; --panel: #192026; --fg: #e3eaee; --muted: #98a5ae; --line: #2a343b;
+  --accent: #6bb3e3; --accent-soft: #1b3445; --ok: #5cc49b; --ok-soft: #1d3a2f; --hold: #e5b45a; --hold-soft: #3a2e17; --off: #a3aab3; --off-soft: #23282d; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--sans); }
+.wrap { max-width: 1000px; margin: 0 auto; padding-block: 32px 56px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 28px; }
+h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 600; text-wrap: balance; }
+h2 { font-size: 1.15rem; margin: 0 0 10px; font-weight: 600; }
+p { margin: 0; max-width: 70ch; }
+.sub { color: var(--muted); }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.k { font: 500 11px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.tally { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font: 500 13px/1 var(--mono); padding: 7px 10px; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 860px; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font: 500 11px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--bg); }
+tr:last-child td { border-bottom: 0; }
+td b { font-weight: 600; }
+.pill { display: inline-block; font: 500 11px/1 var(--mono); padding: 5px 7px; border-radius: 3px; white-space: nowrap; }
+.built { background: var(--ok-soft); color: var(--ok); }
+.feat { background: var(--accent-soft); color: var(--accent); }
+.held { background: var(--hold-soft); color: var(--hold); }
+.off { background: var(--off-soft); color: var(--off); }
+.small { font-size: 13px; color: var(--muted); }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 74ch; }
+.mono { font-family: var(--mono); font-size: 13px; }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="k">Dealectric · bluetti-1115 run · 2026-11-15</div>
+    <h1>Catalog-gap products: 7 comparison pages, 5 new records</h1>
+    <p class="sub">The products are ones ChatGPT names without a seller in its product panel and that we can honestly link: the four BLUETTI products first, then the products the main session's catalog lookup flagged as probable gaps. Each was researched on Opus 5.5 high: where it wins on measured results, where it loses, and which searches with demand to target. Pages were built only on searches with volume, one page per search. On every page the buy link sits beside the product's name and price, with the code, the amount saved and the cart-test date as plain text. Last push <span class="mono">a9aae544</span>, 12:07Z; Pages deploy succeeded.</p>
+    <div class="tally">
+      <span class="chip"><b>3</b> pages rebuilt</span>
+      <span class="chip"><b>4</b> new pages</span>
+      <span class="chip"><b>5</b> new product records</span>
+      <span class="chip"><b>13</b> BLUETTI cart tests passed</span>
+      <span class="chip"><b>5</b> products skipped</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Pages built</h2>
+    <div class="scroll"><table>
+      <tr><th>Page</th><th>Target search (Bing, 13 weeks)</th><th>Pick and why</th><th>Products featured</th></tr>
+      <tr><td><span class="pill feat">rebuilt</span><br><a href="https://dealectric.com/best-bluetti-power-station">Which BLUETTI power station should I buy?</a></td><td>bluetti power station 5,404; bluetti solar generator 449</td><td>Elite 300 for home backup: 46 usable Wh per lb, $0.45 per usable Wh (StorageReview). Elite 100 mini or Elite 100 V2 to carry</td><td>Elite 200 V2, 100 V2, 30 V2 + 100 W, Pioneer Na, Elite 100 mini, AC180, Apex 300</td></tr>
+      <tr><td><span class="pill feat">rebuilt</span><br><a href="https://dealectric.com/best-2000wh-power-station">Best 2000 watt portable power station</a></td><td>portable power station 2000w 247 (shortlist cluster 1,217)</td><td>Elite 200 V2: lowest idle draw of six 2 kWh stations, 9.5 W (The Solar Lab). $899 at BLUETTI and at Walmart (sold by Bluetti Official); $854.05 through our link</td><td>Elite 200 V2</td></tr>
+      <tr><td><span class="pill built">new</span><br><a href="https://dealectric.com/portable-power-station-1000w">Best portable power station 1000W</a></td><td>portable power station 1000w 301 (shortlist cluster 1,483)</td><td>Anker SOLIX C1000 Gen 2: 1,097 Wh/hr wall refill (OutdoorGearLab). Elite 100 V2 second: same 890 Wh measured, lowest cost per usable Wh ($0.56)</td><td>Elite 100 V2</td></tr>
+      <tr><td><span class="pill feat">rebuilt</span><br><a href="https://dealectric.com/best-home-battery-backup-system">Best home battery backup system for power outages</a></td><td>home backup battery systems 2,214; battery backup for home 2,053</td><td>Anker SOLIX S5000 for plug-in backup: about 10 W idle (pv magazine) vs 58 W for the Explorer 5000 Plus. Powerwall 3 for wired whole-home</td><td>Explorer 5000 Plus, DELTA 3 Ultra, Mega 1</td></tr>
+      <tr><td><span class="pill built">new</span><br><a href="https://dealectric.com/which-jackery-power-station-to-buy">Which Jackery power station should I buy?</a></td><td>jackery power station 4,146; jackery solar generator 3,108; jackery portable power station 2,039</td><td>Explorer 2000 v2 for most homes: $0.49 per Wh at Jackery's store, 1,710 Wh measured (OutdoorGearLab). Explorer 5000 Plus only for 240 V from one box</td><td>Explorer 5000 Plus</td></tr>
+      <tr><td><span class="pill built">new</span><br><a href="https://dealectric.com/which-ecoflow-power-station-to-buy">Which EcoFlow power station should you buy?</a></td><td>ecoflow power station 2,504</td><td>DELTA 3 Plus: 910 Wh usable and 8 ms switchover (StorageReview), expands to 5 kWh. The DELTA 3 Ultra can't add a battery</td><td>DELTA 3 Ultra</td></tr>
+      <tr><td><span class="pill built">new</span><br><a href="https://dealectric.com/oupes-portable-power-station">Which OUPES portable power station to buy</a></td><td>oupes portable power station 457; oupes 887</td><td>Mega 1: the only one in OUPES's range that takes the B2 battery (up to 5.12 kWh, OUPES)</td><td>Mega 1</td></tr>
+    </table></div>
+    <p class="small" style="margin-top:8px">Product pages now open with the buy link, store price, price with code, saving and cart-test date: <a href="https://dealectric.com/bluetti-elite-200-v2">Elite 200 V2</a>, <a href="https://dealectric.com/bluetti-elite-100-v2">Elite 100 V2</a>, <a href="https://dealectric.com/bluetti-elite-30-v2-100w-solar-kit">Elite 30 V2 + 100 W</a>, <a href="https://dealectric.com/bluetti-pioneer-na">Pioneer Na</a>, <a href="https://dealectric.com/bluetti-elite-100-mini">Elite 100 mini</a>, both Elite 200 V2 panel kits. New Amazon product pages: <a href="https://dealectric.com/jackery-explorer-5000-plus">Explorer 5000 Plus</a>, <a href="https://dealectric.com/ecoflow-delta-3-ultra">DELTA 3 Ultra</a>, <a href="https://dealectric.com/oupes-mega-1">Mega 1</a>.</p>
+  </section>
+
+  <section>
+    <h2>Per product: where it wins, where it loses, what was done</h2>
+    <div class="scroll"><table>
+      <tr><th>Product</th><th>Wins (source)</th><th>Loses (source)</th><th>Outcome</th></tr>
+      <tr><td><b>BLUETTI Elite 200 V2</b><br><span class="small">in ChatGPT's catalog (Walmart Bluetti Official $899; BLUETTI-US)</span></td><td>9.5 W idle vs 17–27 W for Jackery 2000 v2, Anker C2000 Gen 2, DELTA 3 Max; 94% efficiency (The Solar Lab). 1,000 W solar input. 2,600 W continuous</td><td>53.4 lb, the heaviest 2 kWh unit; no expansion; about 1 h 52 min wall refill (CleanTechnica); no surge rating</td><td><span class="pill feat">featured</span> 2000 W page pick; BLUETTI page. Its higher-demand pages (panels included: 30 landings; 2 kWh RV) are DLC-272 former-B pages and were left alone</td></tr>
+      <tr><td><b>BLUETTI Elite 100 V2</b><br><span class="small">probable gap</span></td><td>$0.56 per usable Wh vs $0.67 DELTA 3 and $0.79 C1000 Gen 2 (arithmetic on OutdoorGearLab's 890/870/890 Wh); 1,000 W solar input</td><td>Slowest wall refill of the 1 kWh group, 512 Wh/hr (OutdoorGearLab); about 16 W idle (The Solar Lab); 30 dB only under 600 W</td><td><span class="pill feat">featured</span> 1000 W page (row 2), BLUETTI page</td></tr>
+      <tr><td><b>BLUETTI Elite 30 V2 + 100 W</b><br><span class="small">in ChatGPT's catalog (panel seller BLUETTI-US)</span></td><td>265 Wh usable vs 235 Wh for the Anker C300; 25 h vs 23 h on a 35 L fridge (4X4 Australia)</td><td>11–19 W idle with outputs on (The Technology Man); no expansion; panels can't be wired in series</td><td><span class="pill feat">featured</span> BLUETTI page and product page. Its demand pages (under-$500 kit: 23 landings, former B; tent camping: buy-link pilot) were left alone</td></tr>
+      <tr><td><b>BLUETTI Pioneer Na</b><br><span class="small">probable gap · new record</span></td><td>Charges down to 5 °F (-15 °C), runs to -13 °F (BLUETTI); The Solar Lab's cold test found the claims held, with output down about a third</td><td>16 kg for 900 Wh, heavier than lithium rivals; recharges only to 60% below 14 °F (BLUETTI)</td><td><span class="pill feat">featured</span> BLUETTI page row; <a href="https://dealectric.com/bluetti-pioneer-na">product page</a>, $700 to $665 (cart-tested). No cold-weather search with volume, so no page of its own</td></tr>
+      <tr><td><b>BLUETTI Elite 100 mini</b><br><span class="small">probable gap · new record</span></td><td>$0.43 per rated Wh; about 903 Wh measured (There's A Trick For That, via The Cool Down); 97% efficiency (The Solar Lab)</td><td>700 W output; 350 W solar input; about 13.5 W idle (The Solar Lab)</td><td><span class="pill feat">featured</span> BLUETTI page row; <a href="https://dealectric.com/bluetti-elite-100-mini">product page</a>, $429 to $407.55 (cart-tested)</td></tr>
+      <tr><td><b>Jackery Explorer 5000 Plus</b><br><span class="small">probable gap · Amazon record</span></td><td>7,200 W at 240 V held for 5 min; 4,450 Wh usable (HOBOTECH)</td><td>58 W idle (The Solar Lab), 85 W (HOBOTECH); struggled to start a high-surge AC</td><td><span class="pill feat">featured</span> home backup page, Jackery page, <a href="https://dealectric.com/jackery-explorer-5000-plus">product page</a> ($3,499 on Amazon)</td></tr>
+      <tr><td><b>EcoFlow DELTA 3 Ultra</b><br><span class="small">probable gap · Amazon record</span></td><td>3,600 W continuous, 50% more than the Elite 300 at similar capacity; fast wall refill (The Solar Lab)</td><td>No battery expansion; about 22 W idle, 82% efficiency (The Solar Lab)</td><td><span class="pill feat">featured</span> home backup page, EcoFlow page, <a href="https://dealectric.com/ecoflow-delta-3-ultra">product page</a> ($1,599 Amazon buy box)</td></tr>
+      <tr><td><b>OUPES Mega 1</b><br><span class="small">probable gap · Amazon record</span></td><td>2,000 W continuous and 4,500 W rated surge; expands to 5.12 kWh with two B2 (OUPES)</td><td>About 27 min at 1,779 W (The Solar Lab), modest efficiency; loud fan while charging (Bob Vila)</td><td><span class="pill feat">featured</span> home backup page, OUPES page, <a href="https://dealectric.com/oupes-mega-1">product page</a></td></tr>
+      <tr><td><b>BLUETTI AC70</b></td><td colspan="2">Listed at $359 on BLUETTI US, but every variant unavailable ("Notify Me") and the cart refused it (HTTP 422) on 15 Nov; no AC70P listing</td><td><span class="pill off">skipped</span> not sold</td></tr>
+      <tr><td><b>Zendure SuperBase V</b></td><td colspan="2">The single unit isn't on Zendure's US store (only a two-unit set, $5,998). Our Zendure program is the EU one, marked unused, with US crediting unconfirmed (DLC-170)</td><td><span class="pill off">skipped</span> no honest link</td></tr>
+      <tr><td><b>Jackery Explorer 300D</b></td><td colspan="2">$289 on Amazon vs $209 at jackery.com; its listings share a ratings family with the older Explorer 300, so they couldn't be confirmed as Jackery's own</td><td><span class="pill off">skipped</span> our link would be the dearer way to buy</td></tr>
+      <tr><td><b>EcoFlow DELTA 3 Plus + 220 W bundle</b></td><td colspan="2">No EcoFlow listing for the bundle on Amazon in four searches; EcoFlow's store page returned 429</td><td><span class="pill off">skipped</span> nothing to link</td></tr>
+    </table></div>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>Gates and checks</h2>
+    <ul>
+      <li>Cart tests in the Agent Chrome on each exact BLUETTI item with DEALECTRIC; the control code was rejected each time. Thirteen passed today: Elite 200 V2 and three kits, Elite 100 V2, Elite 30 V2 and two kits, Pioneer Na, Elite 100 mini, Elite 300, AC180, Apex 300. Pioneer Na and Elite 100 mini also passed <span class="mono">preapply.py</span>, so their links open checkout with the code applied.</li>
+      <li>Amazon: every linked listing passed <span class="mono">combopage.amazon_verify</span> as the same item, alone. Prices beside Amazon links come only from <span class="mono">src/amazon_prices.json</span>, read today, or say "price on the Amazon page".</li>
+      <li>Every page passed abpage's gates: validation, pick check, build, docsguard, and <span class="mono">fastloop.py check --research</span> at ranks 1, 3 and 6. The four new pages were re-gated after the buy-beside-name flag was added.</li>
+      <li>Pages that were left alone: DLC-272 former-B pages (panels included, under-$500 kit, 2 kWh RV); the buy-link pilot's tent-camping page; the kit pilot's refrigerator page; combo-run pages awaiting their reading.</li>
+    </ul>
+  </section>
+
+  <section style="display:grid;gap:10px">
+    <h2>Not verified</h2>
+    <ul>
+      <li>Who sells each Amazon listing. Amazon returns no seller to our tools and shows the browser pane an "Access restricted" page for AI agents, so only the titles were checked.</li>
+      <li>The OUPES Mega 1's Amazon buy-box price didn't read (search shows $489), so its rows say "price on the Amazon page". The DELTA 3 Ultra reads $1,599 in the buy box against $1,299 in Amazon search results.</li>
+      <li>The Jackery HomePower 1000 Plus v2 is $749 on Amazon against $669 at jackery.com. The page shows both prices, but our link is the dearer way to buy it.</li>
+      <li>The Jackery, EcoFlow and OUPES pages had no saved ChatGPT chat. Web-search results stood in as the rival set, and the harvest says so.</li>
+      <li>The catalog-gap status itself is probable. It rests on one to four panel checks per product and is never stated on a page.</li>
+      <li>No page has been re-fetched by OAI-SearchBot yet. Reading: DLC-287.</li>
+    </ul>
+  </section>
+</div>
