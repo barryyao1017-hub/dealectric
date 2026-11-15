@@ -1,0 +1,101 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got converts the warranty floors into kWh still guaranteed at the end of the warranty: a FranklinWH aPower 2 is guaranteed 10.5 kWh at year 15 (70% of 15 kWh) and an Enphase IQ Battery 10C only 6.0 kWh at year 15 (60% of 10 kWh), even though both cards say \"15-year warranty\", while a Powerwall 3 is guaranteed 9.45 kWh at year 10.",
+ "standout": 2,
+ "standout_why": "I compared against four pages. EnergySage's whole-home page (cited, 2026-05-11) gives \"10 years at 70%\" for Powerwall 3 and \"15 years at 70%\" for aPower 2, but it does not cover Enphase at all, so it never shows the 60% floor. Solar.com (cited, 2026-10-01) gives warranty years only and says generally that warranties keep \"about 70%\". SolarExaminer's comparison (cited, 2026-10-24) lists \"15 years, 60 MWh\" and \"15 years, 6,000 cycles\" without any retention percentage. Home Battery Report's warranty table was in one chat's results but not cited. It does list the per-model percentages (Enphase 10C: 70% at year 10, 60% at end of term), but it never converts them into guaranteed kWh or into full-cycle equivalents. So the percentages are already in that uncited result, and the kWh comparison is new.",
+ "decides": "ChatGPT's cards put \"15-year warranty\" on both FranklinWH aPower 2 and Enphase IQ Battery 10C as if the two were equal. Once you normalise them, Franklin's 15 years guarantees 1.75× the end-of-term energy (10.5 kWh vs 6.0 kWh). Powerwall 3's shorter 10-year warranty still guarantees more energy at year 10 than the 10C does (9.45 kWh vs 7.0 kWh). This backs ChatGPT's pick of Powerwall 3 and aPower 2 over the 10C. It also weakens the 10C's \"15-year warranty\" selling point unless the shopper is tied to Enphase microinverters.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2",
+  "Enphase IQ Battery 10C",
+  "Enphase IQ Battery 5P",
+  "EcoFlow DELTA Pro Ultra X"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Warranty floor, normalised",
+   "value": "70% of 13.5 kWh at 10 years = 9.45 kWh guaranteed; unlimited cycles for solar self-consumption, time-based control and backup; 37.8 MWh throughput cap for other uses",
+   "source": "https://homebatteryreport.com/guides/home-battery-warranties-compared",
+   "source_title": "Home battery warranty comparison: all 17 models in one table | The Home Battery Report",
+   "read": "2026-11-15",
+   "note": "Named reviewer is the third-tier source. tesla.com/powerwall returned 403, and the US warranty PDF on digitalassets.tesla.com is AES-encrypted, so the tools couldn't read it. Arithmetic: 13.5 × 0.70 = 9.45 kWh."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Retention as cited rival states it",
+   "value": "10 years at 70%, unlimited-cycle warranty",
+   "source": "https://www.energysage.com/energy-storage/best-batteries-for-whole-home-backup/",
+   "source_title": "What are the best batteries for whole-home backup in 2026? | EnergySage",
+   "read": "2026-11-15",
+   "note": "Page updated 2026-05-11. This independently confirms the 70% figure."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Warranty term and throughput (maker)",
+   "value": "15 years / 60 MWh throughput; 10 kW continuous; surge to start a 5-ton A/C",
+   "source": "https://www.franklinwh.com/products/apower2-home-battery-backup/",
+   "source_title": "aPower 2 Home Battery Backup | FranklinWH",
+   "read": "2026-11-15",
+   "note": "The maker page says \"extended 15-year warranty for 60 MWh throughput\" but gives no retention percentage. Normalised: 60 MWh ÷ 15 kWh = 4,000 full-cycle equivalents before the warranty can end early."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Warranty floor, normalised",
+   "value": "70% of 15 kWh rated = 10.5 kWh guaranteed at end of 15 years or 60 MWh, whichever comes first",
+   "source": "https://homebatteryreport.com/guides/home-battery-warranties-compared",
+   "source_title": "Home battery warranty comparison: all 17 models in one table | The Home Battery Report",
+   "read": "2026-11-15",
+   "note": "The 70% comes from the reviewer's table, which quotes the Franklin warranty (\"not less than 70% of the rated capacity\"). EnergySage, read the same day, also lists \"15 years at 70%\". Arithmetic: 15 × 0.70 = 10.5 kWh."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Capacity, power and warranty term (maker)",
+   "value": "10 kWh usable; 7.08 kW continuous; 15-year warranty up to 6,000 cycles",
+   "source": "https://enphase.com/store/storage/gen4/iq-battery-10c",
+   "source_title": "IQ Battery 10C | Enphase Store",
+   "read": "2026-11-15",
+   "note": "The store page gives no retention percentage. 6,000 cycles × 10 kWh ≈ 60 MWh nominal, about the same throughput as Franklin, but the end-of-term floor is lower (next row)."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Warranty floor, normalised",
+   "value": "70% of nameplate at end of year 10 = 7.0 kWh; 60% at end of term (15 years or 6,000 cycles) = 6.0 kWh",
+   "source": "https://homebatteryreport.com/guides/home-battery-warranties-compared",
+   "source_title": "Home battery warranty comparison: all 17 models in one table | The Home Battery Report",
+   "read": "2026-11-15",
+   "note": "Reviewer's row: \"70 percent at the end of year 10 and 60 percent at the end of the term\". Arithmetic: 10 × 0.70 = 7.0; 10 × 0.60 = 6.0 kWh. Compared with aPower 2 at year 15: 10.5 / 6.0 = 1.75×. Compared with Powerwall 3 at year 10: 9.45 vs 7.0 kWh."
+  },
+  {
+   "product": "Enphase IQ Battery 5P",
+   "label": "Warranty floor, normalised",
+   "value": "At least 60% of 5 kWh nameplate = 3.0 kWh guaranteed at end of 15 years or 6,000 cycles",
+   "source": "https://homebatteryreport.com/guides/home-battery-warranties-compared",
+   "source_title": "Home battery warranty comparison: all 17 models in one table | The Home Battery Report",
+   "read": "2026-11-15",
+   "note": "Arithmetic: 5 × 0.60 = 3.0 kWh. One chat put the 5P on a card with \"15-year warranty\"."
+  },
+  {
+   "product": "general",
+   "label": "Surge figures stated on different bases",
+   "value": "Powerwall 3: 185 LRA motor start; aPower 2: 15 kW for 10 s; IQ Battery 5P: 7.68 kW for 3 s",
+   "source": "https://www.solar.com/learn/best-solar-batteries/",
+   "source_title": "Best Solar Batteries of 2026: Top Picks & Real Prices | Solar.com",
+   "read": "2026-11-15",
+   "note": "This cited rival already prints these figures. The makers quote surge in different units and durations (LRA vs kW over 10 s vs kW over 3 s), so they can't be compared directly. Listed only as context, not as the gap."
+  }
+ ],
+ "unsourced": [
+  "Powerwall 3 70%-at-10-years retention from Tesla itself. tesla.com/powerwall returned 403, the US warranty PDF is AES-encrypted and unreadable, and the service.tesla.com spec page returned 404. I used Home Battery Report and EnergySage instead.",
+  "aPower 2 70% retention from FranklinWH's own warranty document. The franklinwh.com warranty PDF came back as an image stream with no text, and the support/warranty page returned 404.",
+  "Enphase IQ Battery 10C 70%/60% thresholds from the Enphase warranty itself. The 2025-01-31 and 2025-11-01 US warranty PDFs and the 10C datasheet PDF were compressed and unreadable, and the Enphase support article failed to load.",
+  "EcoFlow DELTA Pro Ultra X warranty term, cycle life and retention percentage. us.ecoflow.com returned 429. Reseller search snippets disagree (5 years vs 10 years; 3,000 vs 3,500 cycles to 80% for the non-X model), so I left it out.",
+  "Powerwall 3 185 LRA and aPower 2 peak power from the maker spec sheets. Neither page I could open shows them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1558072000000001
+ }
+}

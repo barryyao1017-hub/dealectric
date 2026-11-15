@@ -1,0 +1,80 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Tesla allows at most 7.68 kW AC of existing (AC-coupled) solar per Powerwall 3 on the backup circuit. Above 5 kW of excess PV per Powerwall, the system frequency-shifts the solar down, and it may shut it off completely. A Powerwall damaged by high fault current from excess PV during an outage is out of warranty.",
+ "standout": 2,
+ "standout_why": "I read six rival pages: EnergySage whole-home backup (cited), Solar Examiner best home batteries for backup (cited), Solar.com best solar batteries (cited), OC Solar Powerwall 3 vs Enphase vs FranklinWH (cited), homebattery.guide comparison (cited) and Solar.com FranklinWH review (cited). Motor starting is already covered: OC Solar gives 185 LRA for Powerwall 3, up to 90 A LRA for Enphase and 185 A LRA off-grid for FranklinWH; Solar Examiner and Solar.com quote Tesla's 185 LRA. So LRA is not new. None of the six says what happens to an existing solar inverter in an outage, and none gives a PV-to-battery size limit or mentions frequency shifting. homebattery.guide only lists 'Solar inverter work' as a quote line. The Solar.com FranklinWH review says the aPower 2 'works with almost any inverter' but says nothing about outage behavior.",
+ "decides": "This applies to shoppers who already have solar, which is the first follow-up question ChatGPT asked in every chat. For them it decides how many units to buy, not which brand. A home with an existing inverter above 7.68 kW AC is outside Tesla's rule with one Powerwall 3 and needs a second Powerwall, an Expansion, a PV split or PV shedding. ChatGPT's 'one Powerwall 3 is enough' framing and its ~$13.5–16k single-unit price do not hold for those homes. Enphase says (press release, 10 Aug 2026) that existing third-party solar keeps producing and charging the IQ Battery 10C in an outage, through an IQ Combiner 6C rated for up to 15.4 kVA of that solar. Enphase also caps legacy IQ6/IQ7 microinverter PV at 150% of IQ Battery continuous power. These are the makers' own rules, so a page can tell existing-solar owners to check their inverter's kW AC against the per-battery limit before picking a battery count.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2",
+  "Enphase IQ Battery 10C"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Max AC-coupled (non-Tesla) PV on the backup circuit",
+   "value": "7.68 kW AC per Powerwall; up to 10 kW AC with Powerwall 3 Expansion units, depending on the power setting and number of Expansions",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/SystemDesign/en-us/GUID-23D242D1-8D65-47B9-9118-57002FFD84D2.html",
+   "source_title": "AC-Coupled Solar System Sizing (Tesla Powerwall 3 System Design, en-us)",
+   "read": "2026-11-15",
+   "note": "Tesla's words: 'For systems with AC-coupled solar only, a maximum of 7.68 kW AC per Powerwall is allowed in the backup circuit.' Tesla says the limit exists 'to protect the Powerwall system from excessive PV power during a grid outage.' Example arithmetic: an existing 8 kW AC inverter is over the limit for one Powerwall 3 (8 > 7.68) and within it for two (2 × 7.68 = 15.36 kW)."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "What happens when existing PV is oversized in an outage",
+   "value": "Above 5 kW of excess PV per Powerwall, the system frequency-shifts to reduce PV and 'may have to shut PV production down completely'. Exceeding the ratio 'may result in high fault current during a grid outage', and a Powerwall damaged that way 'will be out of warranty'.",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/SystemDesign/en-us/GUID-23D242D1-8D65-47B9-9118-57002FFD84D2.html",
+   "source_title": "AC-Coupled Solar System Sizing (Tesla Powerwall 3 System Design, en-us)",
+   "read": "2026-11-15",
+   "note": "Tesla's listed fixes: add Powerwalls, add Powerwall 3 Expansion(s), use Tesla-brand solar devices for all PV, split the PV point of interconnection in and out of backup (if the AHJ accepts it), downsize PV, or shed part of the PV with grid-dependent relays or contactors."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Why solar stops during backup",
+   "value": "Powerwall triggers solar shut-off by frequency shifting when its charge (SOE) is close to 100%, or when site solar exceeds 5 kW per Powerwall",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/DeviceSetupGuide/en-us/GUID-B02C2D54-8CF1-445B-9E27-D2603C470ED7.html",
+   "source_title": "Solar Production Stops During Backup Test (Powerwall 3 Device Setup Guide, en-us)",
+   "read": "2026-11-15",
+   "note": "This is Tesla's troubleshooting page for installers. It confirms the mechanism is frequency shifting of the existing grid-tied inverter."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Existing third-party solar during an outage",
+   "value": "'During an outage, the existing third-party solar system can continue producing energy and charging the IQ Battery 10C'; the IQ Combiner 6C handles up to 15.4 kVA of existing third-party solar; the release names the IQ Battery 10C, IQ Combiner 6C and IQ Meter Collar as the hardware",
+   "source": "https://finviz.com/news/379821/enphase-energy-brings-iq-battery-10c-and-whole-home-backup-to-existing-third-party-solar-systems",
+   "source_title": "Enphase Energy Brings IQ Battery 10C and Whole-Home Backup to Existing Third-Party Solar Systems (GlobeNewswire, Fremont, Aug. 10, 2026)",
+   "read": "2026-11-15",
+   "note": "This is Enphase's own press release, reprinted verbatim by Finviz. The investor.enphase.com copy returned HTTP 403. The release gives no PV-to-battery ratio."
+  },
+  {
+   "product": "Enphase IQ Battery (with IQ6/IQ7 microinverters)",
+   "label": "PV-to-battery power limit for legacy Enphase microinverters",
+   "value": "IQ PV continuous power cannot exceed 150% of IQ Battery continuous power; PV shedding may be required",
+   "source": "https://enphase.com/installers/systems/home-essentials-backup/iq6-iq7",
+   "source_title": "Enphase installer systems: Home Essentials Backup, IQ6/IQ7",
+   "read": "2026-11-15",
+   "note": "Enphase's words: 'To maintain stability, IQ PV continuous power cannot be greater than 150% of the IQ Battery continuous power.' Example: 150% × 7.08 kW (IQ Battery 10C continuous, from the Enphase release) = 10.62 kW of IQ6/IQ7 PV per 10C. Whether this page covers the 10C specifically is not stated."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "When existing solar shows disconnected in off-grid mode",
+   "value": "With the system in off-grid mode and battery SOC above 80%, 'a photovoltaic over-generation, inverter failure or breaker tripping' may cause the app to show solar as disconnected",
+   "source": "https://www.franklinwh.com/support/articles/detail/ca_when-the-fhp-is-working-in-off-grid-mode-the-app-shows-that-the-solar-system-is-disconnected-from-system.-why-is-that",
+   "source_title": "FranklinWH support: When the FHP is working in off-grid mode the app shows that the solar system is disconnected. Why is that?",
+   "read": "2026-11-15",
+   "note": "The article gives no kW limit or PV-to-battery ratio."
+  }
+ ],
+ "unsourced": [
+  "FranklinWH aPower 2 / aGate maximum AC-coupled PV per aPower in off-grid mode, and whether aGate uses frequency shifting: the system datasheet PDF (franklinwh.com/document/system-datasheet) downloaded but the text could not be extracted, and FranklinWH support pages give no number.",
+  "Enphase IQ Battery 10C PV-to-battery ratio for third-party string inverters: the IQ Battery 10C System Planning Guide PDF (ressupply.com) has a 'Legacy and third-party PV support' section, but the text could not be extracted. The only 100%-per-phase rule found is in an EU IQ Battery 5P guide, which I left out because it is a different model and region.",
+  "Tesla's US product page (tesla.com/powerwall) returned HTTP 403, so the wording on existing-solar compatibility and the 185 LRA figure was not re-read there. Rivals already carry the 185 LRA figure.",
+  "EcoFlow DELTA Pro Ultra X and the portable stations on our current page: I did not research whether an existing grid-tied roof array can recharge them during an outage, because I ran out of tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1797855000000002
+ }
+}

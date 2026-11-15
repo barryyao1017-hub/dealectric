@@ -1,0 +1,92 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that a home that already has Powerwall 2 can add only one Powerwall 3 plus up to three Powerwall 3 Expansion units, on software 26.26 or later, with any Backup Gateway 1 and Neurio meters replaced and Powerwall+ sites excluded. None states that Enphase's IQ Battery 10C cannot be combined with the IQ Battery 5P or used for backup with the IQ System Controller 3M/3G.",
+ "standout": 2,
+ "standout_why": "I read four rival pages. EnergySage's whole-home backup page only says the batteries are AC- or DC-coupled. Solar Examiner's Tesla vs Enphase vs FranklinWH page says 'Multiple units' for Powerwall 3 and 'Modular' for Enphase, and notes that the 5P needs an IQ System Controller 3/3G, but it does not say the 10C and 5P can't be mixed. Solar.com's best-batteries page says 'stackable' and 'works with almost any inverter'. OC Solar's 2026 comparison says 'Up to 4 units (54 kWh)' for Powerwall 3. None of them covers mixing generations: Powerwall 2 with 3 and its gateway and meter requirements, Enphase 5P with 10C, or controller exclusions. Solar Examiner and Solar.com both say outright that they don't cover these.",
+ "decides": "This doesn't change the top pick for a new buyer, but it changes the advice for anyone who already owns a battery. A Powerwall 2 owner can add capacity with exactly one Powerwall 3 and up to three Expansions, and must budget for a Gateway 1 or Neurio meter swap if they have one. A Powerwall+ owner has to follow Tesla's separate upgrade procedure instead. An Enphase 5P owner can't add the 10C that ChatGPT recommended, because Enphase lists them as incompatible and the 10C won't back up with the System Controller 3M/3G their 5P system uses. That owner should keep adding 5Ps or weigh replacing the system. It also supports the AC-coupled FranklinWH as the pick for existing third-party solar: Enphase's own matrix footnote says the 10C system is 'NOT compatible with third-party inverters', at least at launch.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2",
+  "Enphase IQ Battery 10C",
+  "Enphase IQ Battery 5P",
+  "EcoFlow DELTA Pro Ultra X",
+  "Anker SOLIX F3800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Adding to an existing Powerwall 2 site",
+   "value": "One Powerwall 3 plus up to three Powerwall 3 Expansion units, added to up to four existing Powerwall 2 units",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Tesla Powerwall 3 Service Manual (Tesla Energy Library)",
+   "read": "2026-11-15",
+   "note": "Tesla quote: 'One Powerwall 3 with up to three Expansion units can be installed on an existing Powerwall 2 site.' If the finished system would have more than four Powerwall 2 units, the extra units must be replaced by a Powerwall 3 with Expansions, or the site upgraded to a full Powerwall 3 system. Once set up, Powerwall 3 becomes the Site Controller."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Software needed to combine with Powerwall 2",
+   "value": "26.26 or later",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Tesla Powerwall 3 Service Manual (Tesla Energy Library)",
+   "read": "2026-11-15",
+   "note": "Tesla quote: 'Powerwall 3 must be updated to software version 26.26 or later to commission a system with Powerwall 2 units.' The manual names no region. Not a Tesla App (notateslaapp.com, dated 2026-09-23 and citing Tesla Energy's X account) reports the feature reached North America. Tesla's own US and Canada backward-compatibility pages returned HTTP 403."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Hardware excluded from Powerwall 2 + 3 sites",
+   "value": "Backup Gateway 1 must be replaced (Backup Gateway 2, Backup Switch or Gateway 3 are accepted); Neurio meters and their CTs must be replaced with a Tesla Remote Meter; Powerwall+ sites are not covered by this procedure",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/ServiceManual/en-us/GUID-3C306246-121A-49EF-BEB4-57889666BF23.html",
+   "source_title": "Tesla Powerwall 3 Service Manual (Tesla Energy Library)",
+   "read": "2026-11-15",
+   "note": "Powerwall+ sites are referred to Tesla's 'Legacy Powerwall to Powerwall 3 Upgrade' procedure. Powerwall 3 must be wired to the last Powerwall 2 in the communication chain, and the chain can be at most 150 ft (45 m) with 16 AWG wire or 82 ft (25 m) with 18 AWG. The Powerwall 3 on/off switch controls the whole system."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Mixing with IQ Battery 5P",
+   "value": "Not compatible (Enphase footnote 1: 'The IQ Battery 10C is not compatible with the IQ Battery 5P at launch')",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Enphase Storage compatibility (installers)",
+   "read": "2026-11-15",
+   "note": "The page shows no update date apart from '© 2026'. The table also marks IQ System Controller 3M/3G 'No' for the 10C with backup and 'Yes' for the 5P with backup, and marks IQ Combiner 6C 'Yes' for the 10C and 'No' for the 5P. A 5P backup system and a 10C backup system use different controllers."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Microinverter generations supported",
+   "value": "IQ9, IQ8 and IQ6/IQ7 marked 'Yes' for solar-only, battery without backup, and battery with backup; M Series conditional",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Enphase Storage compatibility (installers)",
+   "read": "2026-11-15",
+   "note": "M Series is conditional because Envoy S Metered gateways can't hold the IEEE 2030.5 connection through ride-through times (footnote 2). Footnote 9 says M Series microinverters are incompatible with the IQ Battery 5P when installed with the IQ System Controller 3M."
+  },
+  {
+   "product": "Enphase IQ Battery 10C",
+   "label": "Third-party solar inverters",
+   "value": "Enphase footnote 3: 'the IQ Battery 10C/10CS-based system is NOT compatible with third-party inverters' at launch, with support planned for end of 2025",
+   "source": "https://enphase.com/installers/storage/compatibility",
+   "source_title": "Enphase Storage compatibility (installers)",
+   "read": "2026-11-15",
+   "note": "The page has no date, so this footnote may be out of date. Solar Examiner's FAQ says Enphase has announced 10C support for existing third-party systems, but I didn't open Enphase's announcement. The installer should confirm against the current matrix."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Expansion and home-panel pairing",
+   "value": "Up to 6 expansion batteries of 3.84 kWh each; works with the Home Power Panel, Double Power Hub and a transfer switch; a 240 V generator connects through the F3800 Plus Home Power Panel port",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery",
+   "read": "2026-11-15",
+   "note": "Anker's comparison table lists generator bypass as 'Yes' on the F3800 Plus and 'No' on the original F3800. The page showed 'Sold Out' and no price."
+  }
+ ],
+ "unsourced": [
+  "FranklinWH aPower 2 mixing with aPower (original) and aPower S, aGate version requirements, and generator module compatibility. FranklinWH's 'Backwards Compatibility Statement V1.1' (2026-10-26) and aPower S datasheet PDFs downloaded, but WebFetch could only read compressed binary from them, and the request to extract text locally needed shell approval that I didn't get. I didn't look for a reviewer source.",
+  "Whether the EcoFlow DELTA Pro Ultra X works with Smart Home Panel 2 or 3 and with original DELTA Pro Ultra batteries. us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck.py (two tries). The only claim I saw was a Wellbots retailer FAQ in a search snippet, which I didn't open.",
+  "Tesla's US backward-compatibility support page (tesla.com/support/energy/powerwall/learn/backward-compatibility) and Canada page returned HTTP 403, so the North America availability date comes only from Not a Tesla App, a secondary source.",
+  "Maximum number of IQ Battery 10C units per Enphase system: Enphase's compatibility page doesn't state it, and the 10C data sheet PDF was unreadable through WebFetch."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.2693221
+ }
+}

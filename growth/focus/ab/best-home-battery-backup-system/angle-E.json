@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how much power any candidate draws while just sitting on standby during an outage. The Solar Lab measured about 36 W idle for the EcoFlow DELTA Pro Ultra X, against 45–60 W for the original DELTA Pro Ultra and about 80 W for the Anker F3800. Powerwall 3 owners logged 65–110 W standby, which works out to roughly 1.6–2.6 kWh a day of a 13.5 kWh battery. The results also don't say that the 97.5% 'roundtrip efficiency' EnergySage gives for Powerwall 3 is really Tesla's solar-to-home figure. Tesla's own spec gives round-trip efficiency as 89%.",
+ "standout": 2,
+ "standout_why": "I read the cited EnergySage whole-home page (2026-05-11), Solar.com's best-solar-batteries page (2026-10-01) and the Solar Examiner Powerwall vs Enphase vs FranklinWH page (2026-10-24). None of them reports any independent measurement: no standby or idle draw, no measured capacity and no tested efficiency. Solar Examiner says outright that it 'did not test any of these batteries'. EnergySage lists Powerwall 3 at '97.5%' roundtrip efficiency, but that number is Tesla's CEC-weighted solar-to-home figure. Solar.com gives '~90%' and names no source. None of the three gives any idle-draw figure, measured or claimed.",
+ "decides": "This changes the sizing advice more than the ranking. For backup over several days, standby draw takes a real share of the battery. About 110 W (owner-logged on Powerwall 3) is 2.6 kWh a day, roughly 19% of one 13.5 kWh unit. The Solar Lab's 36 W on the DELTA Pro Ultra X is about 0.86 kWh a day, roughly 7% of its two-battery 12.288 kWh setup. ChatGPT's own calculators assumed 90% delivered energy and said nothing about standby loss. The finding supports the DELTA Pro Ultra X for a home without solar that wants to last through multi-day outages. It also weakens the efficiency argument for Powerwall 3 over FranklinWH aPower 2: on Tesla's own round-trip figure (89%) the two are about even, not 97.5% against 90%.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2",
+  "Enphase IQ Battery 10C",
+  "Enphase IQ Battery 5P",
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle draw, measured",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Review: Ultimate Home Backup? | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Measured by The Solar Lab: 'During testing, idle draw averaged around 36W.' The page shows no author or test date. My arithmetic: 36 W × 24 h = 0.86 kWh a day, about 7% of the two-battery 12.288 kWh setup. The Solar Lab's comparison page also gives 'roughly 36W'."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw, measured",
+   "value": "about 45 W (Ultra X review) or about 60 W (comparison page)",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "DELTA Pro Ultra vs DELTA Pro Ultra X: Which Is Better? | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab gives two figures for the same unit. The comparison page says 'roughly 60W' ('nearly double' the Ultra X). Its Ultra X review says 'around a 45W idle draw'. Show it as a 45–60 W range credited to The Solar Lab. Either way it's 1.1–1.4 kWh a day."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw, measured (non-Plus F3800)",
+   "value": "about 80 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Review: Ultimate Home Backup? | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'the Anker F3800 pulls closer to 80W while idling.' That is the F3800, not the F3800 Plus. Our page lists the Plus at '112 W measured pre-update', so don't merge the two figures."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Runtime at near-max load, measured",
+   "value": "59 min at just under 6,000 W (The Solar Lab reports 98% efficiency)",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "One inverter and one 6,144 Wh battery. My arithmetic: 6,000 W × 59/60 h ≈ 5,900 Wh, which is 96% of the rated 6,144 Wh. The Solar Lab's 98% looks like it was worked out against 6,000 Wh, and the page doesn't explain it."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "AC charge on 120 V, measured",
+   "value": "4 h 4 min; 7.25 kWh drawn from the wall to fill the battery",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Standard 120 V outlet; advertised rate about 1,800 W. My arithmetic: 6,144 Wh ÷ 7,250 Wh ≈ 85% charging efficiency, assuming it charged from empty."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Surge, measured",
+   "value": "9,200 W held for about 10 s, brief peak of 9,300 W, then shutdown",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing | The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Load above the 7,200 W inverter rating."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Standby draw, owner-measured",
+   "value": "about 110 W (10% SOC drop over 13 h); about 72 W (6% over 12 h)",
+   "source": "https://teslamotorsclub.com/tmc/threads/pw3-discharges-10-overnight-when-in-standby.343698/",
+   "source_title": "PW3 discharges 10% overnight when in standby | Tesla Motors Club",
+   "read": "2026-11-15",
+   "note": "Tesla Motors Club user 'apacheguy', one PW3, posts from Apr 16 to May 3, 2025. He worked from SOC and time-series data from the Net Zero app, so this is an owner log, not a lab test. In the same thread, user 'toononame' saw 1.5–2 kWh a day of phantom draw, about 65–80 W, from circuit monitoring against the main meter. My arithmetic: 110 W × 24 h = 2.6 kWh a day, about 19% of 13.5 kWh."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "Round-trip efficiency, Tesla test conditions",
+   "value": "89% solar to battery to home/grid; 97.5% solar to home/grid (CEC-weighted)",
+   "source": "https://energylibrary.tesla.com/docs/Public/EnergyStorage/Powerwall/3/InstallManual/BackupSwitch/en-us/GUID-EC527BC7-4750-4425-BBC4-DB8C000339B3.html",
+   "source_title": "Powerwall 3 Specifications | Tesla Energy Library",
+   "read": "2026-11-15",
+   "note": "Tesla's own figure. The 89% is 'for 25°C (77°F), at beginning of life. 3.3 kW charge/discharge power', 'typical solar shifting use case'. The 97.5% was 'Tested using CEC weighted efficiency methodology' and covers solar to home only, with no battery round trip. EnergySage, a cited rival, labels the 97.5% as roundtrip efficiency."
+  }
+ ],
+ "unsourced": [
+  "An independent lab round-trip efficiency or standby draw for the Powerwall 3, FranklinWH aPower 2, or Enphase IQ Battery 10C or 5P. I looked for HTW Berlin Stromspeicher-Inspektion 2026, Consumer Reports, Wirecutter, CNET and SolarQuotes results. Search results suggest HTW 2026 did not include Powerwall 3, but I didn't open the study.",
+  "Owner-measured standby draw for the FranklinWH aPower 2 and Enphase IQ Battery 10C or 5P. Searches turned up only spec comparisons.",
+  "FranklinWH aPower 2 rated round-trip efficiency from the maker. The US product page doesn't state it, and the datasheet PDF couldn't be read as text.",
+  "A measured usable-capacity (Wh delivered) test for the DELTA Pro Ultra X. The Solar Lab's Ultra X review gives idle draw but no discharge test.",
+  "A Powerwall 3 round-trip test by a credible named reviewer. solarscout.net ('Dr. Raj Kumar', 2026-04-17) claims 95.8% and 96.4% from one home over 15 cycles. I left it out: it is a single home, the metering can't be checked, and it contradicts Tesla's own 89%."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.2886849
+ }
+}
