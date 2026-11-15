@@ -8,7 +8,7 @@ out = Path(sys.argv[1])
 for slug in sys.argv[2:]:
     p = next(x for x in P.PRODUCTS if x["slug"] == slug)
     u = p["url"] + (f"?variant={p['cart_variant']}" if p.get("cart_variant") else "")
-    r = subprocess.run(["python3.12", "tools/codecheck_browser.py", u, "DEALECTRIC"], cwd=ROOT, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=600)
+    r = subprocess.run(["python3.12", "tools/codecheck_browser.py", u, __import__("os").environ.get("CODE", "DEALECTRIC")], cwd=ROOT, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=600)
     for l in r.stdout.strip().splitlines()[-2:]:
         try:
             d = json.loads(l)

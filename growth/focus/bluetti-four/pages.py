@@ -167,6 +167,55 @@ PAGES = {
                        "the text for an Amazon product. Slug: oupes-portable-power-station.")
                  .format(brief=brief("oupes-mega-1")),
     },
+    "bl-panels-included-fastest-recharge": {
+        "run": RUN, "flags": {"buy_by_name": True},
+        "query": "which solar generator with panels included recharges the fastest from its own panels",
+        "files": [RUNS + "2026-11-15-shortlist/dq009-which-solar-generator-with-panels-included-rec.json"],
+        "rules": rules("which solar generator with panels included recharges the fastest from its own panels",
+                       "the 'solar generator with panels included' cluster, 4,276 Bing searches in 13 weeks; open in one saved chat",
+                       "station-plus-panel kits sold as one purchase, including the ALLPOWERS P1800 + SP037 400 W kit and the "
+                       "EcoFlow DELTA 3 Plus + 400 W panel that ChatGPT named",
+                       "This is a NEW page distinct from /solar-generator-with-panels-included (which compares kits overall; link to "
+                       "it once). Its core is one figure per kit: hours of full sun for the kit's OWN included panels to refill its "
+                       "battery from empty, measured by a named tester where one exists, else arithmetic shown in one line (battery "
+                       "Wh / (panel W x a stated real-world derating with its source)), with the station's solar input limit and the "
+                       "panel's measured output where known. Only kits sold with their panels as one item. Our kit records to use "
+                       "where they fit: allpowers-p1800-sp037-solar-kit, allpowers-p1800-600w-solar-kit, allpowers-s2000-pro-sp037-solar-kit, "
+                       "allpowers-r2500-v2-sp037-solar-kit, bluetti-elite-200-v2-2x200w-solar-kit, bluetti-elite-200-v2-200w-solar-kit, "
+                       "bluetti-ac180-200w-solar-kit, bluetti-ac180-2x200w-solar-kit, bluetti-elite-30-v2-100w-solar-kit. "
+                       "Slug: solar-generator-with-panels-included-fastest-recharge.")
+                 .format(brief="(no product brief: research the kits directly)"),
+    },
+    "bl-balcony-kit-with-battery": {
+        "run": RUN, "flags": {"buy_by_name": True},
+        "query": "which balcony solar kit comes with a battery",
+        "files": [RUNS + "2026-11-15-shortlist/dq015-which-balcony-solar-kit-comes-with-a-battery.json"],
+        "rules": rules("which balcony solar kit comes with a battery", "the 'balcony solar kit' cluster, 1,737 Bing searches in "
+                       "13 weeks; open in one saved chat", "balcony / plug-in solar kits sold with a battery for US buyers, "
+                       "including the Anker SOLIX Solarbank kits, EcoFlow STREAM, Zendure SolarFlow and BLUETTI Balco that ChatGPT named",
+                       "This is a NEW page distinct from /balcony-solar-system-with-battery-us, /balcony-solar-generator-railing-panels "
+                       "and /solar-generator-kit-for-an-apartment-balcony (link to one of them once). It answers which balcony kits "
+                       "come WITH a battery in the box or as one listing, for US buyers: per kit the battery Wh, panel W included, "
+                       "whether it is sold in the US and where, and one measured or derived result (for example hours of sun for "
+                       "the included panels to fill the included battery, arithmetic shown). Our routes: BLUETTI's US program "
+                       "(check whether bluettipower.com sells the Balco kit), Anker SOLIX on Rakuten (check us.ankersolix.com / "
+                       "www.ankersolix.com for Solarbank kits), EcoFlow and others only through a confirmed Amazon listing. State "
+                       "plainly any kit that is not sold in the US. Slug: balcony-solar-kit-with-battery.")
+                 .format(brief="(no product brief: research the kits directly)"),
+    },
+    "bl-enclosed-3d-printer-heats-up-fastest": {
+        "run": RUN, "flags": {"buy_by_name": True},
+        "query": "which enclosed 3d printer heats up the fastest",
+        "files": [RUNS + "2026-11-15-shortlist/ps019-which-enclosed-3d-printer-heats-up-the-fastest.json"],
+        "rules": rules("which enclosed 3d printer heats up the fastest", "the 'enclosed 3d printer' cluster, 834 Bing searches in 13 "
+                       "weeks; open in one saved chat", "QIDI's enclosed printers on our Awin program (qidi-plus5, qidi-max4, qidi-q2)",
+                       "This is a NEW page distinct from /3d-printer-with-enclosure-heated-chamber (which asks whether the chamber is "
+                       "heated at all; link to it once). Its core is measured heat-up time per printer: nozzle, bed and chamber to a "
+                       "stated temperature (for ABS-class printing), each with the named tester or the maker's stated figure and "
+                       "the date, plus chamber heater wattage where the maker states it. Where nobody measured a figure, say so. "
+                       "Slug: enclosed-3d-printer-that-heats-up-fastest.")
+                 .format(brief="(no product brief: research the printers directly)"),
+    },
 }
 O.PAGES.update(PAGES)
 O.IN_SCOPE |= set(PAGES)

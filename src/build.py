@@ -1540,6 +1540,16 @@ def checkable_offer(p, short=False):
         return None
     pct = f"{cd['value']:g}% off" if cd.get("type") == "percent" else f"{money(cd['value'])} off"
     how = "applied by the link" if applied_by_link(p, cd) else "entered at checkout"
+    t = last_test(cd, p)
+    base = t.get("no_code_total") if t else None
+    if base is not None and base < p["price"] - 0.005:   # the store takes something off by itself (automatic or spend-tier discount)
+        extra = round(base - after, 2)
+        if extra <= 0:
+            return None   # the code only matches the store's own checkout price: no saving to claim
+        if short:
+            return f"{money(after)} with code {cd['code']} ({money(extra)} below the store's own checkout total, tested {date})"
+        return (f"{money(after)} with code {cd['code']} {how}; without the code the store's own discount makes it {money(base)} at "
+                f"checkout, so the code saves {money(extra)} more (tested in {p['brand']}'s cart {date}), sold and shipped by {p['brand']}")
     if short:
         return f"{money(after)} with code {cd['code']} (saves {money(sv)}, tested {date})"
     return (f"{money(after)} with code {cd['code']} {how} ({pct}, saves {money(sv)}; tested in {p['brand']}'s cart {date}), "
