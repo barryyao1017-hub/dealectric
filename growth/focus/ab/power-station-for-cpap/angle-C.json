@@ -1,0 +1,79 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that ResMed's own AirSense 11 DC/DC Converter (ref 39231) needs a 12 V supply at 10 A (or 24 V at 5 A) and is rated to run the HumidAir humidifier and ClimateLineAir heated tube, or that BLUETTI's Apex 300 has no built-in DC or USB output (they come only from the Hub D1 add-on), so the Apex 300 on its own cannot take that converter.",
+ "standout": 2,
+ "standout_why": "Compared against powerstations.reviews/for/cpap (cited), ridgewatt.com/best/cpap (cited) and buyersheet.com (DELTA Pro Ultra vs Explorer 5000 Plus). Powerstations.reviews covers part of this. It says a maker DC converter 'avoids the inverter', gives the AirSense 10 converter p/n 37297, the AirMini p/n 38839 and Philips' '12 VDC, 6.67 A', and lists the DELTA Pro Ultra X, DELTA Pro 3 and Anker S2000 as having no car socket. It does not give the AirSense 11 converter, its 10 A at 12 V input, or that it runs the humidifier and heated tube, and it says nothing about the Apex 300's DC ports. RidgeWatt only says 'run it from its DC cable where the maker offers one'. BuyerSheet lists no DC ports at all. Enoughwatts (cited) would not load (TLS certificate error), so it was not checked.",
+ "decides": "For 'most nights' the DC route is what stretches runtime, so a pick has to have a 12 V port that can deliver 10 A to ResMed's AirSense 11 converter. 12 V × 10 A = 120 W, which is the most a common '12V/10A' car socket gives, so such a port can run it but has no headroom. ChatGPT's capacity-first table ranks units that fail this. Powerstations.reviews lists the DELTA Pro Ultra X with no car socket, and BLUETTI says the Apex 300 (in ChatGPT's second answer) has DC only through the Hub D1, so on its own it falls back to AC and its inverter losses. That supports this page leading with stations whose maker states a 12 V/10 A port, such as the AC180 rows already on our page. The Apex 300 should carry an 'AC only unless you add the Hub D1' note.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "BLUETTI Apex 300",
+  "BLUETTI Apex 200",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI AC180",
+  "ResMed AirSense 11 DC/DC Converter (39231)"
+ ],
+ "findings": [
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (ref 39231)",
+   "label": "Input the converter needs",
+   "value": "12 V at 10 A or 24 V at 5 A; output 24 V at 3.75 A",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense™ 11 DC/DC Converter – ResMed shop",
+   "read": "2026-11-15",
+   "note": "From ResMed's own store (UK storefront, £70 + VAT; the page says it sells only to the UK). 12 V × 10 A = 120 W of input and 24 V × 3.75 A = 90 W of output. A station's 12 V port needs to supply 10 A, which is the full rating of a typical 12 V/10 A car socket."
+  },
+  {
+   "product": "ResMed AirSense 11 DC/DC Converter (ref 39231)",
+   "label": "Which machine and accessories it powers",
+   "value": "AirSense 11 only; ResMed says it can power an AirSense 11 with the HumidAir humidifier and ClimateLineAir heated tube",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense™ 11 DC/DC Converter – ResMed shop",
+   "read": "2026-11-15",
+   "note": "Page wording: 'specifically for use with the AirSense 11 device'. ResMed 'recommends connecting a deep cycle battery'. It also says the converter and its light switch off when the vehicle battery is too low. The page does not mention inverters or portable power stations."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in DC or 12 V output",
+   "value": "None built in. BLUETTI's table lists 'DC and USB outputs through compatible Hub D1'. AC outlets are TT-30R and 120/240 V NEMA 14-50R. Capacity is 2,764.8 Wh.",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/apex-200-vs-apex-300",
+   "source_title": "BLUETTI Apex 200 vs. Apex 300: Specs & Comparison – BLUETTI US",
+   "read": "2026-11-15",
+   "note": "Maker's buying guide, dated 2026-11-05. Without the Hub D1, a ResMed DC converter has nothing to plug into, so the CPAP has to run on AC through the inverter. The same page's runtime formula models 20 W of Apex 300 self-consumption. BLUETTI calls that a modeled figure, not a measurement."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Built-in DC output",
+   "value": "Built-in USB plus a 12 V/30 A Anderson output; the page names no 12 V car socket",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/apex-200-vs-apex-300",
+   "source_title": "BLUETTI Apex 200 vs. Apex 300: Specs & Comparison – BLUETTI US",
+   "read": "2026-11-15",
+   "note": "ResMed's converter ends in a cigarette-lighter plug, so it would need an Anderson-to-car-socket adapter. BLUETTI does not name one on this page."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra (1 inverter + 1 battery)",
+   "label": "US price at maker store",
+   "value": "$4,199 (compare-at $5,799), shown out of stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-15",
+   "note": "Read from the Shopify product data with storecheck.py. The 1 inverter + 2 batteries variant is $6,199, also out of stock."
+  }
+ ],
+ "unsourced": [
+  "Whether the EcoFlow DELTA Pro Ultra (non-X) inverter has a 12 V car socket. I couldn't read the official manual PDF (one copy was over the size limit, the text in the other was compressed), the solartown spec PDF returned 403, and us.ecoflow.com/pages/delta-pro-ultra lists no individual ports. Retailer snippets mention a 12.6 V/30 A Anderson port, but I could not open a maker page that confirms it.",
+  "Jackery Explorer 5000 Plus output ports, including any 12 V car port and its amp rating: jackery.com returned HTTP 429 twice, and storecheck.py also got HTTP 429.",
+  "Anker SOLIX F3800 Plus 12 V car outlet rating: the anker.com product URL returned 404 and storecheck search returned 404.",
+  "ResMed's own list of exclusions for the AirSense 11 converter (inverters, power stations, battery packs): ResMed's battery guide PDF returned 403, and the AU and UK product pages state none.",
+  "Low-load AC or DC auto-off times for the large stations (DELTA Pro Ultra, Explorer 5000 Plus, Apex 300). No maker document I opened gives a duration.",
+  "BLUETTI Hub D1 12 V port rating (whether it delivers the 10 A ResMed's converter needs). I didn't open a maker page for it.",
+  "ResMed's US price for converter 39231. Only the UK store page was opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0620325
+ }
+}

@@ -7534,6 +7534,22 @@ PRODUCTS = [
  "fit": 'A DSLR with a mid-weight zoom: under the 2× load rule it takes kits up to 8.8 lb, the most per dollar among the carbon travel tripods compared here (149.90 ÷ 17.6 = 8.52 per lb of rated load).',
  "caveats": ['Folds to 18.9 in, longer than the Manfrotto Befree Advanced AS (16.14 in) or the Peak Design Travel Tripod (15.5 in).', 'SIRUI names no test method for its 8 kg load figure.', 'At 3.46 lb it weighs 0.66 lb more than the Befree Advanced AS Carbon.']},
 
+{"slug": 'bluetti-apex-300-2-b300k',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "category": 'power-station',
+ "name": 'BLUETTI Apex 300 + 2× B300K Home Battery Backup Bundle (8,294.4 Wh LiFePO4, 3,840 W, 120/240 V)',
+ "model": 'Apex 300 + 2× B300K',
+ "url": 'https://www.bluettipower.com/products/apex-300-2-b300k',
+ "price": 3689.0,
+ "verified": '2026-11-15',
+ "specs": [('Capacity', '8,294.4 Wh LiFePO4 (BLUETTI)'), ('AC output', '3,840 W'), ('Idle loss', '20 W (BLUETTI states it; The Solar Lab measured about 20 W on one Apex 300)'), ('DC / 12 V output', 'Needs the Hub D1 add-on (BLUETTI)')],
+ "warranty": '5 years (proof of purchase from an official store)',
+ "returns": '30-day money-back for unused items in the original package; buyer pays return shipping',
+ "summary": 'An Apex 300 with two B300K packs. At a 40 W CPAP it works out to about 14.7 nights per charge if the 20 W idle holds with the packs attached.',
+ "fit": 'Shoppers who want more CPAP nights than any single box gives, for under $4,000.',
+ "caveats": ['Nobody has published an idle measurement with the B300K packs attached', 'No DC or 12 V output without the Hub D1, so a CPAP runs through the inverter', 'Three boxes to move, not one']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

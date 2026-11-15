@@ -1,0 +1,86 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the big stations use 36–85 W just keeping their AC inverter on, which is about as much as the 40 W CPAP itself. Counting that draw roughly halves every nights-per-charge figure the rivals publish. The EcoFlow DELTA Pro Ultra X still comes out on top, at about 20 nights rather than 32, while the Jackery Explorer 5000 Plus falls from 13.4 nights to 5.0–6.4.",
+ "standout": 3,
+ "standout_why": "I opened the two cited CPAP pages. powerstations.reviews/for/cpap uses 53 W, 8 h, 85% efficiency and a 20% reserve, and says outright that it gives no inverter idle or no-load draw for any model. ridgewatt.com/best/cpap uses 40 W × 8 h × 0.85, never mentions idle draw, and lists 32.6 / 16.3 / 13.4 nights for the DELTA Pro Ultra X, DELTA Pro Ultra and Explorer 5000 Plus. The cited enoughwatts.com comparison would not load (TLS certificate error), so I could not check it. ChatGPT's second answer hints that idle draw might shorten runtime but gives no figure and still prints 65, 32 and 26 nights. None of these pages puts a station's own idle watts next to the CPAP's watts, and that idle draw is the term that decides the result.",
+ "decides": "It confirms the DELTA Pro Ultra X as the most-nights pick, because it has the lowest idle draw measured among the giants (about 36 W, The Solar Lab). It also shows the 'nights' rankings everyone publishes are about 2× too high. Ranked by nights after idle draw, the Explorer 5000 Plus (58–85 W idle) and the original DELTA Pro Ultra (45–60 W idle) fall from about 13–16 nights to about 5–9. That makes idle draw, not capacity alone, the spec to compare. The table footnote should read: nights = rated Wh ÷ (8 h × (CPAP W + station idle W)). The Ultra X also has no USB ports, and no DC or 12 V output was found in what I read, so it can't use a CPAP's 12 V DC lead to skip the inverter. The Explorer 5000 Plus does list a 12 V car socket.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Elite 300",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "AC inverter idle (no-load) draw, measured",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Quote: 'During testing, idle draw averaged around 36W, which is extremely low for a 12kW inverter.' Load conditions not stated. Nights at 40 W CPAP, 8 h, inverter on only at night: 12,288 ÷ (8 × 76) = 20.2. With the rivals' extra 0.85 factor: 17.2. RidgeWatt lists 32.6."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "USB / DC outputs",
+   "value": "No USB-A or USB-C ports; review spec table lists USB ports as 'None'",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X: Which Power Station is Better? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The review mentions no 12 V DC port. A CPAP would have to run off the AC inverter, so the idle draw applies every night. Same page: with two batteries the system 'can sit powered on for nearly two weeks without external charging.'"
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "AC inverter idle draw, measured (three figures)",
+   "value": "45 W / 52 W / about 60 W",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "This page says 'roughly 60W'. The Solar Lab's Ultra X review says 'around a 45W idle draw'. EcoFlow's blog (https://www.ecoflow.com/us/blog/jackery-explorer-5000-plus-review, dated 2026-10-21, read 2026-11-15) cites tester HOBOTECH at 52 W. Nights at 40 W CPAP × 8 h on 6,144 Wh: 9.0 (45 W idle), 8.3 (52 W), 7.7 (60 W). RidgeWatt lists 16.3; powerstations.reviews lists 9.85 at 53 W."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "AC inverter idle draw, measured",
+   "value": "about 58 W (The Solar Lab); about 85 W (HOBOTECH)",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'sitting around 58W per hour when we turned the inverter on and let it run through a full charge without any sort of load', and 'could run about 3.5 days idling'. The 85 W figure is HOBOTECH's, as cited on EcoFlow's blog (2026-10-21, a rival maker's page). Nights at 40 W × 8 h on 5,040 Wh: 5040 ÷ (8 × 98) = 6.4 at 58 W; 5040 ÷ (8 × 125) = 5.0 at 85 W. RidgeWatt lists 13.4. If the inverter stays on all day (58 × 24 + 40 × 8 = 1,712 Wh a day), that is about 2.9 days."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "12 V car socket",
+   "value": "1 × 12 V car socket (rating not given)",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "Lists '1 x 12V car socket', and EcoFlow's blog confirms 'a 12V car socket'. With a CPAP's 12 V DC converter, this could let the AC inverter stay off. I could not find a measured DC-only idle draw."
+  },
+  {
+   "product": "general",
+   "label": "How the rival CPAP pages handle idle draw",
+   "value": "Not counted. Both cited pages use a flat 0.85 (or 0.85 plus a 20% reserve) factor",
+   "source": "https://powerstations.reviews/for/cpap",
+   "source_title": "Portable power station for CPAP: how many nights per charge (powerstations.reviews)",
+   "read": "2026-11-15",
+   "note": "This page's 85% is 'an assumption, not a measurement of any model', and it states no idle draw for any model. https://ridgewatt.com/best/cpap/ (read 2026-11-15) uses 'battery size times 0.85' with a 40 W CPAP and never mentions idle draw. A flat 15% loss assumes the station's overhead scales with the load. For a 40 W load on a station idling at 36–85 W, the overhead is 47–68% of the energy drawn."
+  }
+ ],
+ "unsourced": [
+  "Maker-stated no-load draw for the EcoFlow DELTA Pro Ultra. A search snippet quoted '<45W' from the user manual, but solartown.com and manuals.plus both returned 403, and the Global Industrial sales-deck PDF is image-only.",
+  "Jackery's own standby figure for the Explorer 5000 Plus. A search snippet claimed '50W' on Jackery's 'Explorer 5000 Plus Basic Information' FAQ, but the opened page was cut off by its navigation before any spec text. The US manual PDF text could not be extracted, because shell tools were blocked in this session.",
+  "Today's maker-store prices for the DELTA Pro Ultra, DELTA Pro Ultra X and Explorer 5000 Plus. us.ecoflow.com and jackery.com returned HTTP 429 both to WebFetch and to storecheck.py.",
+  "Measured idle draw for the Anker SOLIX F3800 Plus, Anker SOLIX S5000, BLUETTI Elite 300 and BLUETTI Apex 300. The Solar Lab mentions an 'F3800's 80W idle rate' in passing, but I did not open a dedicated source. I ran out of tool budget.",
+  "DC-only idle draw (inverter off, 12 V car socket on) for the Explorer 5000 Plus, which is needed to normalise its CPAP-on-DC nights.",
+  "I did not re-open the Gadgeteer source for the 10 W idle draw our current page credits to the BLUETTI Elite 200 V2 in this session. At that figure the 2,073.6 Wh unit would give about 5.2 nights at 40 W, roughly the same as the 5,040 Wh Explorer 5000 Plus at 85 W idle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0639179
+ }
+}

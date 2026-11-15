@@ -1,0 +1,186 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that once each station's measured inverter idle draw is added to a 40 W CPAP, the ranking changes: the Anker SOLIX S5000 (about 10 W idle, pv magazine) gives about 10.7 nights from 5,024 Wh, while the EcoFlow DELTA Pro Ultra gives 6.5–7.7 nights from 6,144 Wh (45–60 W idle) and the Jackery Explorer 5000 Plus gives 5.5 nights from 5,040 Wh (58 W idle). Those are about half the 13–16 nights ChatGPT and RidgeWatt printed.",
+ "standout": 3,
+ "standout_why": "RidgeWatt (cited) computes nights as Wh × 0.85 ÷ 40 W with no idle term. It says outright that idle is not mentioned, and it ranks the DELTA Pro Ultra (16.3) and Explorer 5000 Plus (13.4) above the S5000 (13.3). powerstations.reviews (cited) applies a flat 85% × 80% and does not model inverter idle. pluginsolarcheck (cited) lists capacities and prices only, with no idle or CPAP figures. ChatGPT's second answer warns that idle draw 'may substantially shorten' runtimes but gives no idle number for any unit and does not re-rank. I could not open the EnoughWatts compare page (TLS certificate error), and I did not open BuyerSheet.",
+ "decides": "The pick changes. At a CPAP's low load, idle draw is roughly as large as the CPAP's own draw on the big inverters (45–60 W on the DELTA Pro Ultra, 58 W on the 5000 Plus, against a 40 W CPAP), so the biggest battery does not give the most nights. Among single-box stations the Anker SOLIX S5000, which Dealectric lists via rakuten:ankersolix, comes out on top at about 10.7 nights at 40 W and 17.8 nights at 20 W with the humidifier off. Only the much pricier 12,288 Wh DELTA Pro Ultra X does better, at about 17.2 nights. Among stacks we list, the BLUETTI Apex 300 + 2× B300K (8,294.4 Wh) works out to about 14.7 nights, but only if its idle stays near 20 W with packs attached, which nobody has measured.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Elite 300",
+  "BLUETTI Apex 300 (+ B300K)",
+  "Anker SOLIX F3800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Method used for every nights figure below",
+   "value": "nights = rated Wh × 0.85 ÷ ((CPAP W + measured idle W) × 8 h)",
+   "source": "https://ridgewatt.com/best/cpap/",
+   "source_title": "Best Power Station for CPAP: Nights per Charge | RidgeWatt",
+   "read": "2026-11-15",
+   "note": "This keeps RidgeWatt's and ChatGPT's own inputs (0.85 factor, 40 W, 8 h) and adds only the idle term they leave out. RidgeWatt quote: 'Runtime is battery size times 0.85 ... divided by the draw'. Idle is not mentioned."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Rated capacity, idle power, weight (maker)",
+   "value": "5,024 Wh; 8.8 W idle; 97 lb",
+   "source": "https://www.ankersolix.com/s5000",
+   "source_title": "Anker SOLIX S5000 (ankersolix.com)",
+   "read": "2026-11-15",
+   "note": "Maker page lists 'Idle Power 8.8W'. It has no 12 V car outlet: the car port is an input, and the DC outputs are USB-A/USB-C up to 100 W only."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Measured idle drain, 120 V output on, nothing connected",
+   "value": "about 10 W (5% SOC lost in 24 h)",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review: 5 kWh on wheels – pv magazine USA (Andrew Riha)",
+   "read": "2026-11-15",
+   "note": "Riha: lost 5% in 24 h, about 10 W, 'consistent with Anker's 8.8 W figure'. The app reported 4.87 kWh delivered on a full discharge (97% of nameplate); output was not metered."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Nights per charge, 40 W CPAP, 8 h",
+   "value": "10.7 nights",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review – pv magazine USA",
+   "read": "2026-11-15",
+   "note": "5,024 × 0.85 = 4,270 Wh ÷ ((40 + 10) × 8 = 400 Wh) = 10.7. RidgeWatt says 13.3."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Nights per charge, 20 W CPAP (humidifier off), 8 h",
+   "value": "17.8 nights",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review – pv magazine USA",
+   "read": "2026-11-15",
+   "note": "4,270 ÷ ((20 + 10) × 8 = 240) = 17.8. ChatGPT's 20 W table gives 26 nights for the 5000 Plus and does not list the S5000."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Rated Wh per lb",
+   "value": "51.8 Wh/lb",
+   "source": "https://www.ankersolix.com/s5000",
+   "source_title": "Anker SOLIX S5000 (ankersolix.com)",
+   "read": "2026-11-15",
+   "note": "5,024 Wh ÷ 97 lb = 51.8."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Measured idle draw, inverter on, no load; weight",
+   "value": "about 58 W; 134 lb",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: 'sitting around 58W per hour when we turned the inverter on and let it run through a full charge without any sort of load'. Spec list has a 12V car socket, rating not given. Capacity 5,040 Wh."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Nights per charge, 40 W CPAP, 8 h",
+   "value": "5.5 nights",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "5,040 × 0.85 = 4,284 ÷ ((40 + 58) × 8 = 784) = 5.5. At 20 W: 4,284 ÷ 624 = 6.9. ChatGPT says 13 and 26; RidgeWatt says 13.4. Wh/lb: 5,040 ÷ 134 = 37.6."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Measured idle draw",
+   "value": "about 45 W (Ultra X review); about 60 W (Ultra vs Ultra X comparison)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: the original Ultra 'has around a 45W idle draw'. The Solar Lab's comparison page (https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x, read 2026-11-15) gives 'roughly 60W', so I give a 45–60 W range. Per The Solar Lab, the Ultra-family inverter has only AC outlets: no 12 V car port and no USB."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Nights per charge, 40 W CPAP, 8 h (inverter + 1 battery, 6,144 Wh)",
+   "value": "6.5–7.7 nights",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "6,144 × 0.85 = 5,222 ÷ ((40 + 45) × 8 = 680) = 7.7; ÷ ((40 + 60) × 8 = 800) = 6.5. At 20 W with 45 W idle: 5,222 ÷ 520 = 10.0. ChatGPT and RidgeWatt say 16 (40 W); ChatGPT says 32 at 20 W."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Measured idle draw",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: 'idle draw averaged around 36W'. Outputs listed are AC only (2 × 120 V, L14 twist-lock, 50 A); no USB or 12 V."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Nights per charge, 40 W CPAP, 8 h (12,288 Wh)",
+   "value": "17.2 nights",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "12,288 × 0.85 = 10,445 ÷ ((40 + 36) × 8 = 608) = 17.2. At 20 W: 10,445 ÷ 448 = 23.3. ChatGPT says 32 and 65."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured idle; efficiency; weight; DC port",
+   "value": "about 15 W idle; about 86% efficiency; 58 lb; has a 12V car socket",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: 'We measured the idle rate around 15W'. The review does not say whether the inverter was on."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Nights per charge, 40 W CPAP, 8 h",
+   "value": "5.8 nights",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "3,014 × 0.85 = 2,562 ÷ ((40 + 15) × 8 = 440) = 5.8. ChatGPT and RidgeWatt say 8. Wh/lb: 3,014 ÷ 58 = 52.0."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured idle; efficiency; weight; DC outputs",
+   "value": "about 20 W idle; about 85% efficiency; about 85 lb; no DC or USB outputs",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: 'a single Apex 300 had an idle draw of right around 20W'. 12 V/24 V car ports need the optional Power Hub D1. Idle with B300K packs attached is not stated."
+  },
+  {
+   "product": "BLUETTI Apex 300 (+ B300K)",
+   "label": "Nights per charge, 40 W CPAP, 8 h, by configuration",
+   "value": "4.9 (Apex 300); 9.8 (+1 B300K); 14.7 (+2 B300K)",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "2,764.8 × 0.85 = 2,350 ÷ 480 = 4.9; 5,529.6 × 0.85 = 4,700 ÷ 480 = 9.8; 8,294.4 × 0.85 = 7,050 ÷ 480 = 14.7. 480 = (40 + 20) × 8. Expanded configs assume the single-unit 20 W idle; ChatGPT gives 14 nights at 20 W for the base unit."
+  },
+  {
+   "product": "Anker SOLIX F3800 (original, not Plus)",
+   "label": "Idle estimated from a 24 h blackout test",
+   "value": "over 70 W",
+   "source": "https://www.thesolarlab.com/how-tos/idle-consumption",
+   "source_title": "Idle consumption – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "Quote: 'the Anker F3800 must have been consuming over 70 watts per hour just to stay on'. This is the original F3800, so I did not compute F3800 Plus nights from it."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX F3800 Plus measured idle draw: the search turned up only How-To Geek's qualitative 'slightly less idle draw' and Anker's 'reduces idle drain by half' claim. I did not open either, and no reviewer has a wattage, so the F3800 Plus has no nights figure.",
+  "Prices for every candidate on today's maker stores: jackery.com and us.ecoflow.com returned HTTP 429, storecheck on jackery.com returned HTTP 429, and storecheck on ankersolix.com returned HTTP 404. No prices are reported.",
+  "EcoFlow DELTA Pro Ultra maker no-load spec (search snippet: manual says under 45 W): manuals.plus and the solartown spec PDF returned HTTP 403, so I used The Solar Lab's measured 45–60 W instead.",
+  "Idle draw of the BLUETTI Apex 300 with B300K packs attached: neither The Solar Lab nor any review I opened measured it. A search snippet cites a BLUETTI forum owner estimating about 25 W, but I did not open that thread.",
+  "Measured usable Wh from a metered discharge at CPAP-level loads for any candidate: The Solar Lab gives only efficiency percentages, and pv magazine's 4.87 kWh for the S5000 is the app's reading.",
+  "DC (12 V car port) idle with the inverter off for the Jackery Explorer 5000 Plus and BLUETTI Elite 300: neither review gives a figure. The DC path could beat AC for these two, but I can't quantify it.",
+  "EnoughWatts compare page (cited by ChatGPT): WebFetch failed with a self-signed certificate error, so I could not check whether it lists idle draw."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2155482000000002
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the big home-backup stations it ranked use about 36–85 W just to keep the AC inverter switched on. Over an 8-hour night that is 290–680 Wh, as much as or more than the CPAP's own 40 W, so the AC-outlet 'nights per charge' figures on those pages are overstated by about 1.6–2.6×. The Jackery Explorer 5000 Plus's 12 V car port measured 0 Wh idle over 12 hours, and ResMed's AirSense 11 DC/DC converter is made to take 12 V from exactly that kind of port.",
+ "standout": 3,
+ "standout_why": "The two cited ranking pages are RidgeWatt /best/cpap/ and powerstations.reviews /for/cpap. Both calculate capacity × 0.85 ÷ CPAP watts, and neither gives an inverter idle figure. RidgeWatt says only that a maker's DC cable 'lasts longer'. powerstations.reviews says a 12 V port 'depends on your machine's DC cable' and warns about EcoFlow's low-load auto-off. BuyerSheet's DELTA Pro Ultra vs 5000 Plus page lists no idle draw and no 12 V port. The second ChatGPT answer warns that inverters 'can consume significant power' but gives no number, and it still ranks by capacity alone. None of these pages has measured idle watts or the DC-port result.",
+ "decides": "The pick changes from 'biggest Wh wins' to 'biggest Wh you can draw without the inverter running, or the lowest inverter idle'. Example at ChatGPT's own 40 W CPAP load over 8 hours: on AC, the Jackery 5000 Plus drops from the 13 nights ChatGPT showed to about 6.4 nights (5,040 ÷ (98 W × 8)). The DELTA Pro Ultra drops from 16 to about 8.3 nights (6,144 ÷ (92 W × 8)). The DELTA Pro Ultra X drops from 32 to about 20 nights (12,288 ÷ (76 W × 8)) and stays first on AC. Run through its 12 V port and ResMed's 39231 converter, the 5000 Plus has a ceiling of about 15.7 nights (5,040 ÷ 320 Wh), before converter losses no one has published. That beats the larger DELTA Pro Ultra on AC. The DELTA Pro Ultra X has no AC-free route: The Solar Lab lists AC outlets only. For our camping page, this supports the existing approach of running the CPAP on a regulated 12 V car port with ResMed's DC converter.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI AC180",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "AC inverter idle draw, no load (measured)",
+   "value": "58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Worth Buying? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab turned the inverter on and let a full charge run down with nothing plugged in. The article writes '58W per hour'; read that as 58 W. Over 8 hours that is 464 Wh per night before any CPAP load."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "AC inverter idle draw, energy over time (measured)",
+   "value": "85 W (515 Wh in 6 h, which is 2,060 Wh per 24 h)",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "The BIGGEST Jackery EVER! Explorer 5000 Plus (HOBOTECH, 2024-11-25)",
+   "read": "2026-11-15",
+   "note": "HOBOTECH worked this out from battery energy used with the inverter on. It is higher than The Solar Lab's 58 W, so give the page a range of 58–85 W."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "12 V DC and USB idle draw (measured)",
+   "value": "0 Wh over 12 h",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "The BIGGEST Jackery EVER! Explorer 5000 Plus (HOBOTECH, 2024-11-25)",
+   "read": "2026-11-15",
+   "note": "HOBOTECH's words: 'both the 12v DC and USB at idle for 12 hours and it used zip zilch zero'. The same post describes a single 12 V cigarette-lighter-style port. The Solar Lab's review also lists a 12 V car socket."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "AC inverter idle draw (measured, cited by another reviewer)",
+   "value": "52 W",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "The BIGGEST Jackery EVER! Explorer 5000 Plus (HOBOTECH, 2024-11-25)",
+   "read": "2026-11-15",
+   "note": "HOBOTECH: 'Delta Pro Ultra also has a 7200w inverter running 240 split and it uses only 52 watts at idle.' That is 416 Wh per 8-hour night. Arithmetic: 6,144 ÷ ((40 + 52) × 8) = 8.3 nights, against the 16 ChatGPT showed."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "AC inverter idle draw (measured)",
+   "value": "about 36 W average",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Review: Ultimate Home Backup? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'idle draw averaged around 36W, which is extremely low for a 12kW inverter'. The method is not described. Arithmetic: 12,288 ÷ ((40 + 36) × 8) = 20.2 nights, against the 32 ChatGPT showed."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Outputs (reviewer's list)",
+   "value": "2 × 120 V AC, 1 × L14 twist-lock, 1 × 50 A outlet; no USB",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Review: Ultimate Home Backup? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "No 12 V car outlet appears in the list, so a CPAP can only run through the inverter. The maker's port list is not confirmed (see unsourced)."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC inverter idle draw (measured, F3800)",
+   "value": "80 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Worth Buying? (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab compares the 5000 Plus with 'the F3800's 80W idle rate'. This was measured on the F3800, not the F3800 Plus. That is 640 Wh per 8-hour night, against ChatGPT's 10 nights at 40 W. Arithmetic: 3,840 ÷ (120 × 8) = 4.0 nights."
+  },
+  {
+   "product": "general (ResMed AirSense 11)",
+   "label": "ResMed AirSense 11 DC/DC Converter (39231) ratings",
+   "value": "Input 12 V/24 V at 10 A/5 A; output 24 V at 3.75 A (90 W); runs AirSense 11 with HumidAir humidifier and ClimateLineAir heated tube",
+   "source": "https://shop.resmed.com/cpap-spare-parts/airsense-11-converter/p/39231",
+   "source_title": "AirSense 11 DC/DC Converter | ResMed shop",
+   "read": "2026-11-15",
+   "note": "This is the maker's page. ResMed says it plugs into a vehicle auxiliary or accessory outlet, and 'if the vehicle battery is too low to operate your device, both the converter and the light will turn off'. A station's 12 V/10 A car port meets the 12 V/10 A input. The page is the UK shop; the ResMed AU page (resmed.com.au, read 2026-11-15) describes the same 12 V or 24 V cigarette-lighter use."
+  }
+ ],
+ "unsourced": [
+  "The Jackery Explorer 5000 Plus manual's low-load AC auto-off (a search snippet showed 'AC Output ≤25W'), its default timeout and how to turn it off. The US manual PDF (cdn.shopify.com/.../Explorer_5000_Plus_User_Manual-US.pdf) wouldn't extract as text, and the Jackery FAQ page didn't show it. This matters because a CPAP with the humidifier off may draw under 25 W.",
+  "EcoFlow's own US spec list of DELTA Pro Ultra X outputs (whether there is a 12 V car port) and any idle or self-consumption figure from EcoFlow. us.ecoflow.com returned HTTP 429 twice, and the ecoflow.com/us landing page has no spec table.",
+  "Idle-draw figures from EcoFlow, Jackery or Anker themselves. No maker page I opened publishes no-load inverter consumption.",
+  "Efficiency of the ResMed 39231 converter, and a measured AirSense 11 draw on DC with the humidifier off. ResMed's pages give only input and output ratings.",
+  "The original DELTA Pro Ultra's idle draw from a reviewer's own test page. The 52 W figure is HOBOTECH quoting it; the 35 W and 45 W figures appeared only in search snippets and were not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0576330999999997
+ }
+}

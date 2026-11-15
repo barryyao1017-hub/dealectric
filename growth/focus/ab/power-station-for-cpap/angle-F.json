@@ -1,0 +1,136 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the big stations' inverters draw 15–58 W with nothing plugged in, more than the 40 W CPAP they ranked. The Solar Lab measured about 36 W idle for the DELTA Pro Ultra X, about 45 W for the DELTA Pro Ultra, about 58 W for the Jackery Explorer 5000 Plus and about 15 W for the BLUETTI Elite 300. With the CPAP on the AC outlet and the inverter running all day, that cuts the DELTA Pro Ultra X from ChatGPT's 32 nights to about 10, and leaves the 5,040 Wh Jackery (about 2.9 nights) behind the $1,199 3,014 Wh Elite 300 (about 4.4 nights).",
+ "standout": 3,
+ "standout_why": "I compared four pages. powerstations.reviews/for/cpap (cited) uses a flat 85% efficiency and says the figure is 'an assumption, not a measurement of any model'. ridgewatt.com/best/cpap (cited) uses a flat 0.85 factor. pluginsolarcheck.com/power-stations (cited) lists only capacity and price. None of these three gives an idle or no-load figure for any model. ChatGPT's second answer only warned in general terms that idle draw 'can' shorten runtime, with no numbers. All of them rank nights by capacity alone, which puts the Jackery 5000 Plus third. I could not open the cited EnoughWatts page (certificate error), so I can't say whether it has idle figures.",
+ "decides": "The DELTA Pro Ultra X ($7,899 at EcoFlow today) still gives the most nights, but about 10 on AC with the inverter on all day, not 32. It has no USB or 12 V outputs, so the CPAP can only run through the inverter. Among the units most shoppers would actually buy, idle draw changes the ranking. The Jackery 5000 Plus's 58 W idle leaves it at about 2.9 nights on AC, while the BLUETTI Elite 300 ($1,199 at BLUETTI) gets about 4.4 nights. That matches the out-of-stock DELTA Pro Ultra (about 4.4 nights, $3,799) for under a third of the price, so it costs about $272 per night against about $760 for the Ultra X. On units that have a 12 V car socket, running the CPAP through ResMed's DC converter with the inverter off avoids the idle loss altogether.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX S5000",
+  "BLUETTI Elite 300",
+  "BLUETTI Apex 300",
+  "BLUETTI Apex 200",
+  "EcoFlow DELTA Pro",
+  "BLUETTI Elite 400"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Price, maker US store (1 inverter + 2 × 6,144 Wh batteries, 12,288 Wh)",
+   "value": "$7,899 (compare-at $11,149), in stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Whole-Home Backup Power",
+   "read": "2026-11-15",
+   "note": "Read from the Shopify product JSON with storecheck.py search."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle draw, measured",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X home backup unit",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'idle draw averaged around 36W'. The same review says EcoFlow removed 'all of the USB-A and USB-C ports'. Outputs are 2 × 120 V AC, L14 and 50 A only, so the CPAP must go through the inverter."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "CPAP nights per charge on AC, idle included",
+   "value": "about 10.4 nights (about 20 if the inverter runs only 8 h a night)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X home backup unit",
+   "read": "2026-11-15",
+   "note": "Our arithmetic, using ChatGPT's own 40 W × 8 h = 320 Wh per night: 12,288 Wh ÷ (320 + 36 W × 24 h = 1,184 Wh a day) = 10.4. Night-only: 12,288 ÷ (320 + 288) = 20.2. Inverter conversion loss on the 40 W load is not included, so these are upper bounds. ChatGPT said 32 nights. About $760 per night ($7,899 ÷ 10.4)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Price, maker US store (inverter + 1 battery, 6,144 Wh)",
+   "value": "$3,799 (compare-at $7,599), sold out",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-15",
+   "note": "storecheck.py reported available: false. The extra 6,144 Wh battery is $2,349 and in stock (https://us.ecoflow.com/products/delta-pro-ultra-x-smart-extra-battery)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw, measured",
+   "value": "about 45 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X home backup unit",
+   "read": "2026-11-15",
+   "note": "The Solar Lab says the original 'has around a 45W idle draw'. Nights on AC: 6,144 ÷ (320 + 45 × 24 = 1,400) = 4.4. ChatGPT said 16. Its main drawback is that it is sold out at the maker."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw with the inverter on and no load, measured",
+   "value": "about 58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "The Solar Lab: Jackery Explorer 5000 Plus Review",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'around 58W per hour when we turned the inverter on and let it run through a full charge without any sort of load'. Nights on AC: 5,040 ÷ (320 + 58 × 24 = 1,712) = 2.9; inverter on 8 h only: 6.4. ChatGPT said 13. The review's spec list includes '1 x 12V car socket', so a DC CPAP converter with the inverter off avoids the idle loss. I have not confirmed this on Jackery's page."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, maker US store",
+   "value": "$1,199, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-15",
+   "note": "storecheck.py search. The maker page also lists a 12 V/30 A DC port. Elite 300 + 2 × 200 W panels is $1,699."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw, measured; AC efficiency",
+   "value": "about 15 W idle; about 86% efficiency",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "The Solar Lab: Bluetti Elite 300 portable power station review",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'We measured the idle rate around 15W'. It does not say whether the inverter was on. Nights on AC: 3,014 ÷ (320 + 15 × 24 = 680) = 4.4, about $272 per night. That ties the sold-out DELTA Pro Ultra and beats the Jackery 5000 Plus on AC. It loses on outright nights to the DELTA Pro Ultra X."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Price, maker US store",
+   "value": "$1,099 (2,560 Wh); $2,199 with one B300K battery; $3,199 with two B300K batteries",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "Apex 200 Versatile Power Station",
+   "read": "2026-11-15",
+   "note": "storecheck.py search. Bundle URLs are /products/apex-200-b300k and /products/apex-200-2-b300k. I found no idle figure, so I can't give a nights-on-AC number."
+  },
+  {
+   "product": "EcoFlow DELTA Pro",
+   "label": "Price, maker US store (3,600 Wh)",
+   "value": "$1,799 (compare-at $4,998), in stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-portable-power-station",
+   "source_title": "EcoFlow DELTA Pro Portable Power Station",
+   "read": "2026-11-15",
+   "note": "storecheck.py search. I did not look for an idle figure."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival pages assume",
+   "value": "Flat 85% efficiency, no idle term",
+   "source": "https://powerstations.reviews/for/cpap",
+   "source_title": "Portable power station for CPAP: how many nights per charge",
+   "read": "2026-11-15",
+   "note": "Formula on that page: Wh × 0.85 × 0.80 ÷ 53 W. RidgeWatt (https://ridgewatt.com/best/cpap/, read 2026-11-15) uses Wh × 0.85 ÷ 40 W and lists DPU X $7,899, Jackery 5000 Plus $3,499 (out of stock), DELTA Pro 3 $2,799 (out of stock) and F3800 Plus $3,000 (out of stock). Neither page has an idle figure."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 5000 Plus price today: jackery.com returned HTTP 429 three times (storecheck twice, WebFetch once). RidgeWatt lists $3,499, out of stock, but I could not confirm it on Jackery's page.",
+  "EcoFlow DELTA Pro 3 price today: the storecheck product call returned HTTP 429 and the search didn't return the product. Idle draw: did not search.",
+  "Anker SOLIX F3800 Plus and S5000 prices: storecheck search on anker.com returned HTTP 404, and I ran out of calls to find the product URLs. Idle draw: did not search.",
+  "BLUETTI Apex 300 price: /products/apex-300 returned 404 and the search returned only Apex 200 listings. Idle draw: did not search.",
+  "Jackery 5000 Plus 12 V car socket on the maker's own spec page (blocked by 429). It is sourced only from The Solar Lab's spec list.",
+  "Measured DC-port CPAP runtime with the inverter off for any of the big units. I found no reviewer test.",
+  "EnoughWatts cited compare page: WebFetch failed with a self-signed certificate error, so I could not check it for idle figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0441635
+ }
+}
