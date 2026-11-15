@@ -75,8 +75,14 @@ def targets() -> dict:
 
 
 def queries(folder: str) -> list[str]:
+    if PAGES[folder].get("query"):   # a page fed from chat files with its own target search (bluetti-four run)
+        return [PAGES[folder]["query"]]
     T = targets()
     return [T[q]["query"] for q in PAGES[folder]["qids"]]
+
+
+def run_of(folder: str) -> str:
+    return PAGES.get(folder, {}).get("run", RUN)
 
 
 # ---------------------------------------------------------------- harvest (saved chats only)
@@ -86,24 +92,32 @@ def harvest(folder: str) -> dict:
     d = A.pdir(folder)
     if (d / "harvest.json").exists():
         old = A.jload(d / "harvest.json")
-        if old.get("run") != RUN:   # the page's earlier harvest (another query): keep it with the page's history
+        if old.get("run") != run_of(folder):   # the page's earlier harvest (another query): keep it with the page's history
             keep = d / "history" / dt.datetime.now().strftime("%Y-%m-%dT%H%M")
             keep.mkdir(parents=True, exist_ok=True)
             shutil.copy(d / "harvest.json", keep / "harvest.json")
     chats = []
-    for q in PAGES[folder]["qids"]:
-        for c in T[q]["chats"]:
-            raw = json.loads(Path(c["file"]).read_text())
-            f = A._chat_facts(raw)
-            f["verdict"] = c.get("verdict")
-            chats.append(f)
+    if PAGES[folder].get("web"):   # no saved ChatGPT chat for this search: a web search's top results stand in, labelled as such
+        q = PAGES[folder]["query"]
+        res = [{"rank": i, "domain": re.sub(r"^www\.", "", re.sub(r"^https?://", "", u).split("/")[0]), "title": t, "url": u,
+                "dated": None, "cited": False, "ours": "dealectric.com" in u} for i, (t, u) in enumerate(PAGES[folder]["web"], 1)]
+        chats.append({"chat": "web-stand-in", "at": A.today(), "model": "none (web search stand-in)", "typed": q, "queries": [q],
+                      "results": res, "carousel": [], "cited_elsewhere": [], "verdict": None,
+                      "answer": "No saved ChatGPT chat exists for this search. The results above are a web search's top results for "
+                                "the same words, read " + A.today() + ", standing in for the pages a shopper's assistant would see."})
+    srcs = [] if chats else [(f, None) for f in PAGES[folder].get("files", [])] or [(c["file"], c.get("verdict")) for q in PAGES[folder]["qids"] for c in T[q]["chats"]]
+    for file, verdict in srcs:
+        raw = json.loads(Path(file).read_text())
+        f = A._chat_facts(raw)
+        f["verdict"] = verdict
+        chats.append(f)
     tags = []
     for ch in sorted(chats, key=lambda x: x.get("at") or "", reverse=True):
         for q in ch["queries"]:
             q = re.sub(r"\s{2,}", " ", q).strip()
             if q and q.lower() not in {t.lower() for t in tags}:
                 tags.append(q)
-    h = {"slug": folder, "run": RUN, "updated": A.today(), "qids": PAGES[folder]["qids"], "chats": chats,
+    h = {"slug": folder, "run": run_of(folder), "updated": A.today(), "qids": PAGES[folder].get("qids", []), "chats": chats,
          "searched_as": tags[:6],
          "carousel": list(dict.fromkeys(p for ch in chats for p in ch["carousel"])),
          "cited_rivals": list(dict.fromkeys(x["url"] for ch in chats for x in ch["results"] if x["cited"] and not x["ours"]))}
@@ -144,12 +158,12 @@ def _compose_patch():
                           text, flags=re.S)
         else:
             text = orig(slug, h, query, angles, new_page)
-        if len(PAGES.get(slug, {}).get("qids", [])) > 1:
+        if len(PAGES.get(slug, {}).get("qids", [])) > 1 and not p.get("query"):
             qs = queries(slug)
             text += ("\n\n## One page for two shopper questions\nThe chats above come from two questions that need the same page: "
                      + " | ".join(qs) + ". Title and h1 use the first; the answer paragraph must also answer the second in its "
                      "own words, and one after-section h2 uses the second question's words.")
-        return text + "\n\n" + RUN_RULES
+        return text + "\n\n" + p.get("rules", RUN_RULES)
     A.compose_prompt = compose_prompt
 
     orig_q = A.query_for
@@ -175,7 +189,9 @@ def _compose_patch():
 
     def record_text(draft, old, gnum):
         t = orig_rt(draft, old, gnum)
-        return t.replace('"method": ', f'"run": {RUN!r},\n "method": ', 1)
+        p = PAGES.get(draft.get("slug"), {})
+        extra = "".join(f'"{k}": {v!r},\n ' for k, v in (p.get("flags") or {}).items())
+        return t.replace('"method": ', f'"run": {run_of(draft.get("slug"))!r},\n {extra}"method": ', 1)
     A.record_text = record_text
 
 
