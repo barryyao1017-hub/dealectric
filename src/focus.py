@@ -199,4 +199,6 @@ BUY_FIRST = {
     "bluetti-elite-200-v2-2x200w-solar-kit",
     "bluetti-elite-100-v2",
     "bluetti-elite-30-v2-100w-solar-kit",
+    "bluetti-pioneer-na",
+    "bluetti-elite-100-mini",
 }
