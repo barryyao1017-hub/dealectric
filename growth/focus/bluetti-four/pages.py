@@ -216,6 +216,22 @@ PAGES = {
                        "Slug: enclosed-3d-printer-that-heats-up-fastest.")
                  .format(brief="(no product brief: research the printers directly)"),
     },
+    "bl-quietest-enclosed-3d-printer-apartment": {
+        "run": RUN, "flags": {"buy_by_name": True},
+        "query": "which enclosed 3d printer is the quietest for an apartment",
+        "files": ["/Users/j0y0825/code/dealectric/growth/evals/runs/2026-11-15-parked/po032-which-enclosed-3d-printer-is-the-quietest-for-.json",
+                  "/Users/j0y0825/code/dealectric/growth/evals/runs/2026-11-15-parked-confirm/po032-which-enclosed-3d-printer-is-the-quietest-for-.json"],
+        "rules": rules("which enclosed 3d printer is the quietest for an apartment", "small: the 'enclosed 3d printer' cluster has 834 Bing "
+                       "searches in 13 weeks; found open in two chats of the parked-question run", "QIDI's enclosed printers on our Awin "
+                       "program (qidi-q2, qidi-plus5, qidi-max4) and the Flashforge Adventurer 5M Pro on Amazon (flashforge-adventurer-5m-pro)",
+                       "This is a NEW page distinct from /enclosed-3d-printer-that-heats-up-fastest and the other enclosed-printer pages "
+                       "(link to one once). Its core is measured noise per printer: dBA while printing (and at idle or with fans at full "
+                       "where measured), with the distance and mode, the named tester (or the maker's stated figure, labelled) and the "
+                       "date. Say where readings are not comparable (different distance, mode or meter). Apartment context in one line "
+                       "of plain arithmetic if useful (e.g. how many dB a closed door takes off is NOT to be invented; only use sourced "
+                       "figures). Slug: quietest-enclosed-3d-printer-for-an-apartment.")
+                 .format(brief="(no product brief: research the printers directly)"),
+    },
 }
 O.PAGES.update(PAGES)
 O.IN_SCOPE |= set(PAGES)
