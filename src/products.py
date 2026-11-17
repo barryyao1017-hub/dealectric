@@ -7785,6 +7785,23 @@ PRODUCTS = [
  "fit": 'Scanning printed parts, figures and busts to reprint them, for objects from 15 mm to 1,500 mm.',
  "caveats": ['On a flat granite plate in the same study it scattered more than the Revopoint MetroX: 0.60 mm vs 0.29 mm standard deviation.', 'Scanning from a phone needs the Smart Grip, which 3DMakerpro sells separately for $299.', "The store's product feed shows $419. The page itself was rate-limited, so the edition behind that price wasn't shown."]},
 
+{"slug": 'redodo-12v-100ah-lifepo4',
+ "brand": 'Redodo',
+ "program": 'awin:redodo',
+ "asin": None,
+ "category": 'lithium-battery',
+ "name": 'Redodo 12V 100Ah LiFePO4 Lithium Battery (standard, Group 31 size)',
+ "model": 'Redodo 12V 100Ah',
+ "url": 'https://www.redodopower.com/products/12v-100ah-lithium-battery',
+ "price": 242.99,
+ "verified": '2026-11-17',
+ "specs": [('Rated capacity', '100 Ah at 12.8 V (1,280 Wh)'), ('Measured capacity', '1,378 Wh / 107.7 Ah at 5, 10 and 15 A, 11 V cutoff (Techtest.org)'), ('Weight', '25 lb (Redodo)'), ('Cycle life', '4,000+ cycles at 100% DoD (Redodo)'), ('Recommended charger', '14.6 V 20 A LiFePO4, about 5 h to full (Redodo)'), ('Low-temperature charge cutoff', 'None on the unit Techtest.org tested'), ('Expansion', 'Up to 51.2 V 400 Ah, 20.48 kWh (Redodo)')],
+ "warranty": '5 years (Redodo)',
+ "returns": '30 days. Redodo pays return shipping if the product is defective, shipping was delayed or the package arrived damaged. For any other reason, return shipping is taken out of the refund (Redodo)',
+ "summary": "Redodo's base 12V 100Ah LiFePO4 battery. On Techtest.org's electronic load it gave 1,378 Wh, 7.7% above its 1,280 Wh rating, at every discharge current tested.",
+ "fit": "RV, solar and 30–70 lb thrust trolling-motor setups that are charged above freezing, paired with Redodo's 14.6 V 20 A charger.",
+ "caveats": ['The tested unit has no low-temperature charge cutoff (Techtest.org). If you charge below 32 °F, buy the Low-Temp or Self-Heating version.', 'The charger is sold separately.', 'Redodo says it is not suitable as a starter or golf cart battery.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

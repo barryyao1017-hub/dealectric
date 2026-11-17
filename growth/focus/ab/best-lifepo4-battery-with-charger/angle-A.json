@@ -1,0 +1,124 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says what its cycle count means: the Dakota Powerbox 10 pages (2,000+) and the Bixpower LF1220 pages (2000 Times) give neither the depth of discharge nor the capacity left at end of life, so neither can be set against makers that rate cycles at 100% DoD.",
+ "standout": 1,
+ "standout_why": "I opened four rival pages. invertersrus.com (Dakota Powerbox 10) gives '2,000+ recharge cycles' with no DoD or end-of-life capacity. tackledirect.com (same product) gives no cycle figure. bixpower.com has two pages, the LF1220 and the LF1220 + 60 W solar kit. Both say '2000 Times' with no conditions, though the LF1220 page does say the battery 'can safely discharge to ~20%'. All of these pages already give charger amps and continuous and peak current, so those columns are not new. What is new is that the cycle counts have no conditions. But I could not open a maker page that gives the conditioned figure to compare against: Redodo, Power Queen, ECO-WORTHY and the Dakota maker pages all returned HTTP 429, and the Power Queen fetch also failed on a TLS error. So the normalised table is only half sourced, and the finding does not yet decide the pick.",
+ "decides": "It confirms rather than changes the pick, for now. The small kits ChatGPT found (Dakota 10 Ah with a 3 A charger, Bixpower 20 Ah with a 6 A charger) all charge at the same 0.3C, about 3.3 h on paper. So they differ on cycle rating and price, not on charging. Their '2,000' cycle figures have no conditions, so the page must not rank them against the 100 Ah kits on cycle count until Redodo, Power Queen or ECO-WORTHY state their conditions (DoD, C-rate, end capacity) on a page we have actually opened. If the Redodo figure of 4,000 cycles at 100% DoD, 0.2C and 25 °C checks out on the maker page, the footnote becomes: 'a bare 2,000 is not half of 4,000 at 100% DoD; the two cannot be compared'.",
+ "candidates": [
+  "Dakota Lithium Powerbox 10 (12V 10Ah + 3A charger)",
+  "Bixpower LF1220 12.8V 20Ah with 14.6V 6A charger",
+  "Bixpower LF1220 + 60W solar panel kit",
+  "Chameleon Antenna BLF-1220AS kit",
+  "Redodo 12V 100Ah + 14.6V 20A charger",
+  "Power Queen 12V 100Ah Low-Temp + 20A charger kit",
+  "ECO-WORTHY 12V 100Ah Bluetooth + 20A charger"
+ ],
+ "findings": [
+  {
+   "product": "Dakota Lithium Powerbox 10",
+   "label": "Cycle life as stated",
+   "value": "2,000+ recharge cycles (no DoD or end-of-life capacity given)",
+   "source": "https://invertersrus.com/product/dl-powerbox-10/",
+   "source_title": "Dakota Lithium Powerbox 10, 12V 10Ah Battery Included – Inverters R Us",
+   "read": "2026-11-17",
+   "note": "The page says '2,000+ recharge cycles (roughly 5 year lifespan at daily use) vs. 500 for other lithium batteries or lead acid'. It gives no test conditions."
+  },
+  {
+   "product": "Dakota Lithium Powerbox 10",
+   "label": "Included charger and charge rate",
+   "value": "12 V 3 A LiFePO4 charger; 0.3C on 10 Ah, about 3.3 h from empty",
+   "source": "https://invertersrus.com/product/dl-powerbox-10/",
+   "source_title": "Dakota Lithium Powerbox 10, 12V 10Ah Battery Included – Inverters R Us",
+   "read": "2026-11-17",
+   "note": "My arithmetic: 10 Ah / 3 A = 3.3 h, ignoring the constant-voltage tail. The page gives only a solar charge time (7–9 h with a 20 W panel, sold separately) and says Dakota 12 V batteries should be charged at 14.4 V."
+  },
+  {
+   "product": "Dakota Lithium Powerbox 10",
+   "label": "Price",
+   "value": "$205.00, out of stock, backorder 4–8 weeks",
+   "source": "https://invertersrus.com/product/dl-powerbox-10/",
+   "source_title": "Dakota Lithium Powerbox 10, 12V 10Ah Battery Included – Inverters R Us",
+   "read": "2026-11-17",
+   "note": "Retailer price, not the maker's store (dakotalithium.com returned HTTP 429)."
+  },
+  {
+   "product": "Dakota Lithium Powerbox 10",
+   "label": "Price",
+   "value": "$199.00",
+   "source": "https://www.tackledirect.com/dakota-lithium-powerbox-10-w-12v-10ah-battery.html",
+   "source_title": "Dakota Lithium Powerbox 10 w/ 12V 10Ah Battery - TackleDirect",
+   "read": "2026-11-17",
+   "note": "This page gives no cycle-life figure, no continuous or surge current, no charge temperature limits and no warranty."
+  },
+  {
+   "product": "Bixpower LF1220 12.8V 20Ah",
+   "label": "Cycle life as stated",
+   "value": "2000 times (no DoD or end-of-life capacity given)",
+   "source": "https://www.bixpower.com/ProductDetails.php?ProductCode=Bat-LF1220",
+   "source_title": "12.8V 20Ah (256 Watt-hour) Portable Rechargeable Battery with UPS Funtion - LF1220",
+   "read": "2026-11-17",
+   "note": "Elsewhere the page says the battery 'can safely discharge to ~20% without damage' (about 10 V cutoff). That suggests a usable depth of about 80%, but the cycle rating is not tied to it."
+  },
+  {
+   "product": "Bixpower LF1220 12.8V 20Ah",
+   "label": "Continuous vs peak discharge",
+   "value": "20 A continuous, 25 A maximum (256 W continuous at 12.8 V)",
+   "source": "https://www.bixpower.com/ProductDetails.php?ProductCode=Bat-LF1220",
+   "source_title": "12.8V 20Ah (256 Watt-hour) Portable Rechargeable Battery with UPS Funtion - LF1220",
+   "read": "2026-11-17",
+   "note": "No duration is given for the 25 A figure. Watts are my arithmetic: 20 A × 12.8 V."
+  },
+  {
+   "product": "Bixpower LF1220 12.8V 20Ah",
+   "label": "Included charger and charge rate",
+   "value": "14.6 V 6 A AC charger; 0.3C, about 3.3 h from empty (max charge current 10 A)",
+   "source": "https://www.bixpower.com/ProductDetails.php?ProductCode=Bat-LF1220",
+   "source_title": "12.8V 20Ah (256 Watt-hour) Portable Rechargeable Battery with UPS Funtion - LF1220",
+   "read": "2026-11-17",
+   "note": "My arithmetic: 20 Ah / 6 A = 3.3 h. The solar kit page states 'less than 4 hours'."
+  },
+  {
+   "product": "Bixpower LF1220 12.8V 20Ah",
+   "label": "Charge temperature range",
+   "value": "0 to 45 °C (32 to 113 °F); discharge −20 to 60 °C",
+   "source": "https://www.bixpower.com/ProductDetails.php?ProductCode=Bat-LF1220",
+   "source_title": "12.8V 20Ah (256 Watt-hour) Portable Rechargeable Battery with UPS Funtion - LF1220",
+   "read": "2026-11-17",
+   "note": "The page does not say whether charging is blocked below 0 °C by the BMS or is only a recommendation."
+  },
+  {
+   "product": "Bixpower LF1220 12.8V 20Ah",
+   "label": "Price",
+   "value": "$169.95 sale (regular $299.00)",
+   "source": "https://www.bixpower.com/ProductDetails.php?ProductCode=Bat-LF1220",
+   "source_title": "12.8V 20Ah (256 Watt-hour) Portable Rechargeable Battery with UPS Funtion - LF1220",
+   "read": "2026-11-17",
+   "note": "Maker's own store."
+  },
+  {
+   "product": "Bixpower LF1220 + 60W solar kit",
+   "label": "Price and charge time",
+   "value": "$399.95 sale (regular $699.00); AC charge under 4 h with the 14.6 V 6 A charger",
+   "source": "https://www.bixpower.com/product-p/bat-lf1220-sp60w.htm",
+   "source_title": "12.8V 20Ah Lithium Iron Phosphate (LiFePO4) Battery with AC Charger and 60W Solar Panel Charger Kit",
+   "read": "2026-11-17",
+   "note": "Same cycle (2000 times, no conditions), discharge (20 A / 25 A) and charge temperature (0–45 °C) figures as the LF1220 page. No warranty is stated."
+  }
+ ],
+ "unsourced": [
+  "Redodo 12V 100Ah cycle life with its conditions (search snippets say 4,000 at 100% DoD, 0.2C, 25 °C; 6,000 at 80%; 15,000 at 60%). redodopower.com and ca.redodopower.com returned HTTP 429 and the store tool returned HTTP 403. The Shopify-CDN '12V 100Ah Spec Sheet' PDF is image-only, so I could not read it.",
+  "Power Queen 12V 100Ah Low-Temp + 20A kit: cycle-life conditions, surge current and duration, price. The ipowerqueen.com fetch failed on a self-signed-certificate error and the store tool returned HTTP 0.",
+  "ECO-WORTHY 12V 100Ah Bluetooth: cycle-life conditions and today's price. eco-worthy.com returned HTTP 429.",
+  "Dakota Lithium maker pages (12V 10Ah standard and Mini) for cycle-life conditions (search snippets give the Mini as 3,000 at 100% DoD / 6,000 at 80%, and the standard 10Ah as 2,000 in some listings and 5,000 in others). dakotalithium.com returned HTTP 429. pdftotext was blocked, so I could not read the nationwide-battery.com DL_PB10.pdf.",
+  "Chameleon BLF-1220AS kit specs and price: HTTP 429, and the store tool returned HTTP 403.",
+  "Walmart 12V 20Ah + 5A charger listing: Walmart served a bot-check page.",
+  "Power Queen 30Ah/50Ah/100Ah kit prices shown in ChatGPT's cards: I did not open those listings, so I left them out.",
+  "Surge current with duration for any 100 Ah candidate: none of the maker pages could be opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9583460999999999
+ }
+}

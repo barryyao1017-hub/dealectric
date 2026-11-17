@@ -1,0 +1,68 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that once a LiFePO4 battery's BMS cuts off for over-discharge the terminals show no output, and only a charger with an activation ('wake-up', 'boost' or '0V') function can push the small current that brings it back; a plain charger that is merely LiFePO4-rated may not start.",
+ "standout": 2,
+ "standout_why": "I opened the Bixpower LF1220 kit page (result 5), which is the only rival kit page I could read. It gives the roughly 10 V cutoff and the 0–45 °C charge window but nothing on recovering after a cutoff. ChatGPT's own answer only says to use a 14.6 V LiFePO4-specific charger. The Chameleon kit page (429), the epowerguys Dakota pages (429) and the Dakota Powerbox PDF on nationwide-battery.com (binary text that could not be read) were not checked, so I can't rule out that one of them mentions it.",
+ "decides": "This fact doesn't change the pick yet. It adds a filter: a 12 V kit is only safe for a battery that may be run flat (trolling motor, Power Wheels, a camper left in storage) if its charger has a 0V/activation mode. Search snippets say the Redodo 20A, Power Queen 20A and ECO-WORTHY 20A chargers all have one, but I couldn't open any of those maker pages, so none of them can be confirmed or ruled out on this point.",
+ "candidates": [
+  "Redodo 12V 100Ah + Redodo 14.6V 20A charger",
+  "Power Queen 12V 20A Charger Kit with 100Ah Low-Temp battery",
+  "ECO-WORTHY 12V 100Ah Bluetooth + 12V/24V 20A charger",
+  "Vatrer 48V 105Ah Club Car kit",
+  "Redodo 48V 100Ah Golf Cart Conversion Kit"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What happens after a BMS over-discharge cutoff",
+   "value": "Below the BMS over-discharge threshold 'the protection lockout may be triggered, causing the battery to have no output'",
+   "source": "https://www.litime.com/blogs/troubleshooting/how-to-jumpstart-a-dead-lithium-ion-battery",
+   "source_title": "How to Jumpstart a Dead Lithium LiFePO4 Battery? (LiTime)",
+   "read": "2026-11-17",
+   "note": "A battery maker's (LiTime's) support blog, dated Aug 17, 2026. The byline says John Marius but the author bio names John Thompson. It gives no numeric threshold."
+  },
+  {
+   "product": "general",
+   "label": "How a cut-off battery is brought back",
+   "value": "A charger with a 'wake-up', 'boost' or '0V' function 'delivers a low, controlled current to safely reactivate a battery with BMS protection'; an over-discharged battery 'can usually be restored by using a charger with an activation function'",
+   "source": "https://www.litime.com/blogs/troubleshooting/how-to-jumpstart-a-dead-lithium-ion-battery",
+   "source_title": "How to Jumpstart a Dead Lithium LiFePO4 Battery? (LiTime)",
+   "read": "2026-11-17",
+   "note": "Same page. It also warns that a regular jump starter 'can send too much current to the battery', and says that if the voltage doesn't rise after several tries the battery may be permanently damaged."
+  },
+  {
+   "product": "Bixpower LF1220 + AC charger + 60 W solar kit (rival result 5)",
+   "label": "Low-voltage cutoff",
+   "value": "Output cuts off at about 10 V",
+   "source": "https://www.bixpower.com/product-p/bat-lf1220-sp60w.htm",
+   "source_title": "12.8V 20Ah LiFePO4 Battery with AC Charger and 60W Solar Panel Charger Kit (Bixpower)",
+   "read": "2026-11-17",
+   "note": "Maker's page. It gives no procedure for recovering after the cutoff."
+  },
+  {
+   "product": "Bixpower LF1220 + AC charger + 60 W solar kit (rival result 5)",
+   "label": "Included charger and charge temperature range",
+   "value": "14.6 V 6 A AC charger, under 4 h to full; charging 0 to 45 °C",
+   "source": "https://www.bixpower.com/product-p/bat-lf1220-sp60w.htm",
+   "source_title": "12.8V 20Ah LiFePO4 Battery with AC Charger and 60W Solar Panel Charger Kit (Bixpower)",
+   "read": "2026-11-17",
+   "note": "Maker's page. It also says 'Only use the chargers supplied with the battery or BiXPower authorized chargers'."
+  }
+ ],
+ "unsourced": [
+  "Whether the Redodo 14.6V 20A charger has an activation/0V function: redodopower.com and ca.redodopower.com returned HTTP 429 four times. A search snippet says 'lithium battery activation function' with 3-stage pre-charge/CC/CV, but I didn't open the page.",
+  "Whether the Power Queen 14.6V 20A charger and the Power Queen 20A charger kit can 'activate 0V LiFePO4 batteries': ipowerqueen.com failed with a TLS certificate error and the manuals.plus copy returned 403. The claim is in search snippets only.",
+  "Whether the ECO-WORTHY 12V/24V 20A charger has a lithium activation function: eco-worthy.com returned 429. Only the UK site and a manuals.plus copy appeared in search snippets.",
+  "What the Vatrer 48V 105Ah kit charger does on a battery that has cut off, and its low-temperature cutoff wording: vatrerpower.com returned 403.",
+  "The Renogy RBC20A1P manual (as an example of the minimum voltage a charger needs to see before it starts): solartown.com returned 403, and the au.renogy.com URL served a store page instead of the manual.",
+  "Whether the Victron Blue Smart IP65 manual gives a minimum start voltage: the guessed PDF URL returned 404.",
+  "Rival pages Chameleon BLF-1220AS (429), epowerguys Dakota (429) and dakotalithium.com Powerbox 10 (429) were not checked; the Dakota PB10 PDF came back as unreadable binary text.",
+  "Prices for any candidate: storecheck.py and amzcheck.py runs were blocked because Bash needed approval, and the maker pages would not load."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.9248892999999998
+ }
+}
