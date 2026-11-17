@@ -841,7 +841,11 @@ BY_SLUG = {p["slug"]: p for p in PRODUCTS}
 
 
 def short_name(p):
-    return p["name"].split(",")[0]
+    """The name up to its spec list: cut at the first comma that is not a thousands separator, and drop a parenthesis
+    the cut leaves open ("... Solar Panel Kit (7,680 Wh, 3,200 W)" used to come out as "... Solar Panel Kit (7", 2026-11-17)."""
+    import re
+    s = re.split(r",(?!\d{3}\b)", p["name"])[0]
+    return re.sub(r"\s*\([^)]*$", "", s).strip() if s.count("(") > s.count(")") else s
 
 
 def title_name(p):
