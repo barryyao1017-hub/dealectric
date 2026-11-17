@@ -9,6 +9,7 @@
 import { EmailMessage } from "cloudflare:email";
 import LINKS from "./links-map.json";
 import { handleMcp } from "./mcp.js";
+import { refreshDashCache } from "./dash-cache.js";
 
 const SITE = "https://dealectric.com";
 const FEEDBACK_KINDS = ["missing_product", "wrong_price", "broken_link", "wrong_spec", "question", "other"];
@@ -42,6 +43,7 @@ export default {
     ctx.waitUntil(pollCj(env).catch((e) => console.error("cj poll failed", e)));
     ctx.waitUntil(pollRakuten(env).catch((e) => console.error("rakuten poll failed", e)));
     ctx.waitUntil(syncMeta(env).catch((e) => console.error("dashboard meta sync failed", e)));
+    ctx.waitUntil(refreshDashCache(env).catch((e) => console.error("dashboard cache refresh failed", e)));
   },
 };
 

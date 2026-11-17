@@ -132,3 +132,18 @@ Reading the data:
     npx wrangler d1 execute dealectric --remote --command "SELECT ts, slug, referrer FROM clicks WHERE kind='redirect' AND referrer LIKE '%utm_source=%' ORDER BY id DESC LIMIT 50"   # /go/ clicks made from a tagged landing
     # clicks by assistant (ChatGPT sends no referrer but appends ?utm_source=chatgpt.com)
     npx wrangler d1 execute dealectric --remote --command "SELECT utm_source, kind, count(*) n FROM clicks GROUP BY utm_source, kind ORDER BY n DESC"
+
+**Dashboard cache (2026-11-17).** D1's free plan allows 5M rows read a day; it ran out on 2026-11-15 because the sales
+dashboard (artifact TpCiDy6fNvUTHaifH3LyWA, nine live D1 queries, refreshed every 5 minutes while open) re-derived
+the human-click and shopper-view rows from all history in every query, about 136k rows read per refresh. Now:
+`dash_hc` and `dash_hv` hold exactly the `hc` / `hv` rows of those queries; the dashboard's queries read them for days
+before today and compute only today live (about 28k rows per refresh, results checked identical), and the dashboard
+refreshes every 30 minutes (`dash/settings` `updates: 30`). The cron (`refreshDashCache`, `src/dash-cache.js`)
+recomputes yesterday and today every 30 minutes (about 6k rows read a run). Older days stay as cached, so after a
+backfill or rule change that re-judges older clicks or page views, rebuild both tables:
+
+    wrangler d1 execute dealectric --remote --command "DELETE FROM dash_hc; DELETE FROM dash_hv"
+    # then run the CREATE-free form of the refresh with the window set to the start of logging, or drop the tables
+    # and re-create them from the dashboard's hc / hv definitions (CREATE TABLE dash_hc AS WITH seen ..., hc ... SELECT * FROM hc)
+
+If a dashboard query's `hc` / `hv` definition changes, change `src/dash-cache.js` to match and rebuild.
