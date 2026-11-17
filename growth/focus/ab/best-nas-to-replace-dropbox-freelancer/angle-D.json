@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that remote sync and client share links depend on how traffic reaches the NAS: with no public IP (CGNAT or double NAT), Synology QuickConnect and UGREENlink send the traffic through the maker's relay servers. Synology's own spec says relayed connections 'may be slower than port-forwarded connections' and 'may not work in some regions'. Getting a direct connection through DDNS instead requires a publicly reachable IP and port forwarding.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited, Synology Drive Technical Specifications (en-us and en-global, DSM 7.4). They cover the Drive client OS versions, On-demand Sync, 32 versions and share links, but never mention QuickConnect, relays, port forwarding or upload bandwidth. Results 1–7 and 10–13 are Drive client or Drive Server KB, release-note and changelog pages, and their titles cover clients, quick start and ShareSync, not connection routing. ChatGPT's answer ticks 'Access files remotely' with no caveat. Our current page says 'QuickConnect relay (throttled…)' and 'UGREENlink relay (speed capped by UGREEN's servers)' with no source, and this research supplies the maker wording behind those claims.",
+ "decides": "It doesn't change which brand to pick, but it adds a condition the answer must state. A freelancer working from coffee shops or client offices will get Dropbox-like remote sync only if the NAS is reachable directly. On a home line behind CGNAT, Synology Drive Client and UGREEN's client both fall back to the vendor relay, which Synology itself says is slower. The fix is DDNS with port forwarding (needs a public IP) or a mesh VPN. Frank Joseph (WunderTech) found UGREENlink about 2–4× faster than QuickConnect on relay. That favors the UGREEN DXP2800 for a freelancer who can only use the relay. Synology DS225+ stays the pick for Dropbox-like on-demand files (Windows 10 1809+, macOS 12.3+), which UGREEN's client lacks.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+ / DS425+ / DS925+ (DSM 7.4 QuickConnect)",
+   "label": "Relay speed caveat in Synology's own spec",
+   "value": "\"Relayed QuickConnect connections may be slower than port-forwarded connections because of increased network latency.\"",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Network and External Access | DSM 7.4 Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Maker's spec page. The same page says QuickConnect 'can use the QuickConnect relay service to maintain connectivity' and works 'without configuring port forwarding rules or router settings'."
+  },
+  {
+   "product": "Synology DS225+ / DS425+ / DS925+ (DSM 7.4 QuickConnect)",
+   "label": "Relay availability and service limits",
+   "value": "\"The relay service may not work in some regions because of restrictions imposed by specific Internet service providers.\" Also: \"Some services and packages that require direct mapping to an IP address or DDNS are not supported.\" Also: \"Third-party applications are not supported.\"",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Network and External Access | DSM 7.4 Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This rules out reaching third-party apps through QuickConnect, for example Nextcloud in Docker; they need DDNS or a VPN."
+  },
+  {
+   "product": "Synology DS225+ (Synology Drive)",
+   "label": "The cited Drive spec page says nothing about remote routing",
+   "value": "The page lists On-demand Sync (Windows 10 1809+, macOS 12.3+), 32 versions per file and password/expiry share links, and has no text on QuickConnect, relays or port forwarding.",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/synology_drive",
+   "source_title": "Synology Drive Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This is the page ChatGPT cited, checked to confirm what it lacks."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DXP4800 Plus (UGOS Pro)",
+   "label": "UGREENlink needs no public IP; DDNS direct access needs one",
+   "value": "\"UGREENlink can provide remote access without requiring you to obtain a public IP address.\" DDNS \"requires additional network configuration, including router-side port forwarding\", and UGREEN says to check for \"a publicly reachable IP address\" first, because \"your connection may be behind carrier-grade NAT (CGNAT), double NAT or another upstream NAT layer.\"",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access",
+   "source_title": "UGREEN NAS Remote Access (UGREEN blog, dated 17/04/2026)",
+   "read": "2026-11-17",
+   "note": "Maker's own article. It says a direct DDNS connection helps transfer performance, but actual speeds 'still depend on factors such as your home internet upload bandwidth'."
+  },
+  {
+   "product": "UGREEN NASync vs Synology",
+   "label": "Relay speed compared by a named reviewer",
+   "value": "UGREENlink about 2–4× faster than Synology QuickConnect on relay",
+   "source": "https://www.wundertech.net/ugreen-vs-synology/",
+   "source_title": "UGREEN vs. Synology: Which NAS Should You Buy in 2026? - WunderTech (Frank Joseph, published 2026-07-14, modified 2026-08-14)",
+   "read": "2026-11-17",
+   "note": "The reviewer says 'in my testing' but gives no absolute throughput or test setup. He also says both route traffic 'from the NAS through their servers to your device'."
+  },
+  {
+   "product": "Synology DS225+ (Synology Drive Client)",
+   "label": "Drive Client accepts a QuickConnect ID, so sync may run over the relay",
+   "value": "A QuickConnect ID can be entered as the Drive client's server address, and the client picks the route itself. Frank Joseph quotes Synology's QuickConnect white paper that the relay \"can cause a significant delay in data delivery.\"",
+   "source": "https://www.wundertech.net/synology-quickconnect-ultimate-setup-guide/",
+   "source_title": "Synology QuickConnect: How to Set it Up, Log In, and Find Your ID - WunderTech (Frank Joseph, modified 2026-08-02)",
+   "read": "2026-11-17",
+   "note": "The quote comes through WunderTech. I fetched the white paper PDF itself, but its text could not be extracted."
+  }
+ ],
+ "unsourced": [
+  "Measured relay throughput in MB/s for QuickConnect or UGREENlink. I searched maker docs, WunderTech, needtoknowit.com.au and igorslab and found none. The one NASCompares '1 MB/s' claim is about 1,379 days old with no test method, so I left it out.",
+  "Synology QuickConnect White Paper relay section in Synology's own words (cndl.synology.cn PDF). The fetch returned only binary, and local text extraction needed approval that wasn't granted.",
+  "Synology KB 'How can I speed up the syncing process of Synology Drive?' and the QuickConnect help page (kb.synology.com). Both rendered empty to the fetcher, so I couldn't confirm the recommendation to switch to DDNS with port 6690.",
+  "Official UGREEN statement that UGREENlink tries P2P before relay, or that relay speed is capped. UGREEN's blog doesn't cover relay routing, and I found no UGREEN support page saying it.",
+  "Whether UGREEN's desktop sync client keeps syncing over UGREENlink when away from home. Neither UGREEN's remote-access blog nor the reviewers covered it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1005751
+ }
+}

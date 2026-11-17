@@ -1,0 +1,136 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Synology rates its 'best overall' DS225+ for only 100,000 files and 10 users in Synology Drive. The DS425+, which has the same Celeron J4125 and 2 GB of RAM, is rated for 500,000 files and 20 users. Both ratings assume the RAM is maxed out at 6 GB, and both boxes ship with 2 GB.",
+ "standout": 3,
+ "standout_why": "I compared against the two pages ChatGPT cited, Synology Drive Technical Specifications (en-us and en-global, DSM 7.4). They give only the per-client limit ('each Synology Drive Client can synchronize up to 500,000 files') and say the recommended number of concurrent connections 'varies by Synology model'. They give no figure for any model. None of the other results (Drive Client help, the Quick Start guide, release notes, the 2020 white paper, patchletter) lists per-model hosted-file or user ratings. None normalises version history across Synology, QNAP, UGREEN and Dropbox either. Our current page has 'Versions: Up to 32 per file' for Synology and 'not found' or 'limits not found' for the others.",
+ "decides": "The Drive Client's 500,000-file limit doesn't apply to the DS225+. That NAS's own Drive rating is 100,000 hosted files, a fifth of that, and Synology tested it with 6 GB installed, not the 2 GB it ships with. A freelancer moving a large Dropbox (code repos, photo or design libraries, many small project files) can go over 100,000 files. In that case the DS425+ (500,000) or DS925+ (500,000, 80 users) is the Synology to pick, not the DS225+. Synology's footnote says going over the rating doesn't block anything but 'may result in longer response time'. For a small document-heavy Dropbox, the DS225+ pick stands. The version-history footnote is a second finding. Synology, QNAP and UGREEN all cap history by number of versions (32, 64 and 32). Dropbox measures it in days (30 on Plus). So '32 versions' can't be read against 'Dropbox 30 days': a file saved often runs through 32 versions in hours. On UGREEN the default is 8, so it has to be raised by hand.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Drive: Maximum Number of Hosted Files / Maximum Number of Users",
+   "value": "100,000 files; 10 users",
+   "source": "https://www.synology.com/en-us/products/DS225+?tab=specs",
+   "source_title": "DS225+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "From the Synology Drive block of the spec sheet. I opened the page twice and got the same values both times. The block's link points to the DSM 7.2 software spec. The file count 'applies to files indexed or hosted by Synology Drive'. Access over SMB and other protocols is covered by the File Services section instead."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Synology Drive: Maximum Number of Hosted Files / Maximum Number of Users",
+   "value": "500,000 files; 20 users",
+   "source": "https://www.synology.com/en-us/products/DS425+?tab=specs",
+   "source_title": "DS425+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "Same spec-sheet block and the same footnotes as the DS225+. Synology gives no reason for the 5× difference."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Synology Drive: Maximum Number of Hosted Files / Maximum Number of Users",
+   "value": "500,000 files; 80 users",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "The DS925+ and DS925neo+ have identical figures. It ships with 4 GB DDR4 (2 slots, 32 GB max)."
+  },
+  {
+   "product": "Synology DS225+ / DS425+",
+   "label": "Hardware behind the ratings",
+   "value": "Both: Intel Celeron J4125, 2 GB DDR4 non-ECC, max 6 GB (2 GB + 4 GB)",
+   "source": "https://www.synology.com/en-us/products/DS225+?tab=specs",
+   "source_title": "DS225+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "I read the DS425+ values from https://www.synology.com/en-us/products/DS425+?tab=specs on the same day. Both boxes have the same CPU and RAM, so the gap between 100,000 and 500,000 hosted files isn't explained by processor or memory. The 2 vs 4 bays may explain it, but Synology doesn't say."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Test conditions behind the Drive ratings (footnotes)",
+   "value": "Tested with maximum supported memory installed (6 GB); 20% of users active, 80% idle; Btrfs, non-encrypted shared folders; 'Exceeding the recommended numbers above will not block application operations, but may result in longer response time.'",
+   "source": "https://www.synology.com/en-us/products/DS225+?tab=specs",
+   "source_title": "DS225+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "This is the normalising footnote. The 100,000-file and 10-user ratings assume 6 GB, but the box ships with 2 GB. So a stock DS225+ is below the configuration Synology tested. The ratings are recommendations, not hard caps."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Max SMB connections (FSCT-based) and VPN Server connections",
+   "value": "5 SMB (FSCT-based); 4 VPN Server connections",
+   "source": "https://www.synology.com/en-us/products/DS225+?tab=specs",
+   "source_title": "DS225+ | Synology Inc. – Specifications",
+   "read": "2026-11-17",
+   "note": "Measured with Synology HDDs in every bay and all onboard network ports connected. On the same basis the DS425+ is 10 and the DS925+ is 40."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Max concurrent connections (CIFS), with max memory",
+   "value": "1,500",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/software",
+   "source_title": "TS-264 – Specifications | QNAP",
+   "read": "2026-11-17",
+   "note": "Not comparable with Synology's figure of 5. QNAP counts raw concurrent CIFS sessions. Synology runs an FSCT workload benchmark. Both assume maximum memory. This needs a footnote, not a side-by-side cell."
+  },
+  {
+   "product": "general (Synology Drive)",
+   "label": "Per-client file limit and version history",
+   "value": "Up to 500,000 files per Drive Client; up to 32 historical versions per file; rotation over 7, 30, 60 or 120 days, or Intelliversioning; On-demand Sync on Windows 10 1809+ and macOS 12.3+",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/synology_drive",
+   "source_title": "Synology Drive Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This is the page ChatGPT cited. It also says the recommended number of concurrent connections 'varies by Synology model' and gives no per-model numbers. The per-model figures above fill that gap."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Sync folder version retention and conflict handling",
+   "value": "8 versions by default, up to 32; on a conflict the newer file keeps the original name and the older one is renamed with a suffix; deletions in two-way sync go to a #SyncVersion folder (recycle bin)",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-file-sync",
+   "source_title": "UGREEN NAS File Sync (UGREEN how-to blog)",
+   "read": "2026-11-17",
+   "note": "The page is dated 06/05/2026 and says 'UGOS retains eight versions by default and supports up to 32.' The desktop client runs on Windows and macOS only, with no Linux client. The page says nothing about on-demand or placeholder files. To match Synology's 32, a user has to raise the setting from 8 to 32."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Qsync version control limit",
+   "value": "Maximum 64 versions (spec sheet); default 32; only 5 subfolders can be selected for version control",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/software",
+   "source_title": "TS-264 – Specifications | QNAP",
+   "read": "2026-11-17",
+   "note": "The spec sheet lists 'Maximum number of version control: 64' for both QTS and QuTS hero. The default of 32 and the 5-subfolder limit come from the QNAP FAQ https://www.qnap.com/en/how-to/faq/article/setup-the-version-control-in-qsync-central (last modified 2022-03-30, Qsync 4.2.0.1), which I read 2026-11-17. The spec sheet also lists Qsync clients for Windows, macOS, Ubuntu, Android and iOS, and says Qsync needs at least 1 GB RAM."
+  },
+  {
+   "product": "general (Dropbox, the thing being replaced)",
+   "label": "Deleted-file recovery window",
+   "value": "Plus: 30 days, 2 TB; Standard: 180 days; Advanced: 1 year",
+   "source": "https://www.dropbox.com/plans",
+   "source_title": "Dropbox Plans",
+   "read": "2026-11-17",
+   "note": "Dropbox counts history in days. The NAS makers count versions per file: Synology 32, QNAP up to 64, UGREEN 8 by default and up to 32. Only Synology also offers day-based rotation (up to 120 days). The page showed Plus at $9.99/month. I left the billing term out because the page didn't make clear whether that price is annual or monthly."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-17",
+   "note": "Checked with storecheck.py search on nas.ugreen.com. ChatGPT's card showed $296.99 at Walmart, which I did not re-check."
+  }
+ ],
+ "unsourced": [
+  "Today's prices for the Synology DS225+, DS425+ and DS925+. Synology doesn't sell these on its US site, and amzcheck.py returned nothing (probably walled), so I left Amazon prices out. ChatGPT's Best Buy and B&H prices were not re-opened.",
+  "UGREEN DXP2800 and QNAP TS-264 per-model ratings for sync-app file count or users. The QNAP TS-264 spec sheet lists no Qsync file or user limit, and the UGREEN sync how-to states no file count or size limit. I found no UGREEN spec page with such a rating.",
+  "Why Synology rates the DS225+ at a fifth of the DS425+'s hosted files with identical CPU and RAM. Synology's spec footnotes don't say, and I found no reviewer who measured it.",
+  "Version-count limits for TerraMaster TerraSync, Asustor EZ Sync and UniFi Drive. Not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.9309511999999999
+ }
+}
