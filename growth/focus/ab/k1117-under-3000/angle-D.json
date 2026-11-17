@@ -1,0 +1,85 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that BLUETTI's 350 W kit panel is listed at 33 V open-circuit (Voc) while the Elite 200 V2, Elite 300 and Elite 400 take only 12–60 V on their solar input. Two of these panels in series reach about 66 V or more, so every '2 × 350 W' BLUETTI kit has to be wired in parallel. Anker's F3000, by contrast, has a separate 11–165 V high-PV port that BLUETTI says takes four 400 W panels in series.",
+ "standout": 2,
+ "standout_why": "Compared against StormWatts (cited; read 2026-11-17). It already gives the voltage and current window for many stations, checks series and parallel wiring for EcoFlow's 2 × 220 W and BLUETTI's 2 × 200 W kits, and warns that cold raises panel voltage. So the method is on a cited page, but it does not list any 350 W BLUETTI kit, any panel figures for the 350 W or SORA 500, or the F3000's port voltages (it says only '2,400 W dual-voltage solar'). solargenadvisor.com, theoutageready.com and dealectric.com would not load through the fetch tool (self-signed certificate error), so I could not check them for this point.",
+ "decides": "This confirms rather than changes the pick. The '2 × 350 W' kits (Elite 200 V2 at $2,040.60, Elite 400 at $2,325.60, Apex 300 at $2,469.05 link price) still work, but only with the two panels in parallel, because series would exceed the 60 V input on Elite-series stations. The kit box BLUETTI lists has no parallel (Y-branch) cable, so the page should say in the kit's row to check whether one is included and to wire in parallel. On a page about future solar growth this favours the Anker F3000, which has a 165 V port for a series string, over the single-input BLUETTI Elite kits. It does not move the value or ships-now pick.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2× 350 W",
+  "BLUETTI Elite 300 + 350 W",
+  "BLUETTI Elite 400 + 2× 350 W",
+  "BLUETTI Elite 400 + 500 W",
+  "BLUETTI Apex 300 + 2× 350 W",
+  "Anker SOLIX F3000 + 400 W",
+  "EcoFlow DELTA 3 Ultra + 2× 220 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI 350W Solar Panel (the panel in the BLUETTI '+350W' kits)",
+   "label": "Open-circuit voltage (Voc)",
+   "value": "33 V",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-17",
+   "note": "The page text says '33V open-circuit voltage (Voc)'. Its Tech Specs table is empty, so Isc, Vmp and Imp are not on the page. Two in series = 2 × 33 V = 66 V before any cold-weather rise, which is above the 60 V ceiling of the Elite 200 V2, 300 and 400. BLUETTI's older PV350 manual is reported at 46.5 V Voc (see unsourced), which would be 93 V in series. Either way, series is over the limit."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "Elite 400+2*350W · BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Quoted from the kit page: 'Solar: 1,000 W Max., 12–60 V, 20 A Max.' The same page says 'Elite 400 ships from mid-December' and lists the kit at $2,448.00."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar · BLUETTI US",
+   "read": "2026-11-17",
+   "note": "From FAQ Q1: '12V-60V/20A, 1,000W max'. The box list is AC charging cable, documentation, Elite 200 V2 and a grounding screw. No parallel or Y-branch cable is listed. The page says the station ships from 11.26 and the 350 W panel ships from 12.25."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Solar input",
+   "value": "1,200 W max, 12–60 V, 22 A max",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 review: 3,014Wh, 2,400W and an 8ms UPS switchover in a 58-pound box (StorageReview, Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "This is StorageReview's spec-table row, not a measurement. The review did not test solar charging. The US BLUETTI kit pages for the Elite 300 had an empty Tech Specs section."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Solar inputs",
+   "value": "High-PV port 11–165 V, 17 A max, 1,600 W; low-PV port 11–60 V, 17 A max, 800 W; 2,400 W total",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 · Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Anker's FAQ on the page says: 'Connect up to four 400W solar panels in series for 1,600W' on the high-PV port and 'Connect two 400W solar panels in parallel for 800W' on the low-PV port. The '+400W' kit price did not load on the page ('Price Loading')."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input (as given on the US kit page)",
+   "value": "up to 4,000 W solar, only with the SolarX 4K add-on",
+   "source": "https://www.bluettipower.com/products/apex-300-2-350w",
+   "source_title": "Apex 300 + 2 × 350W · BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page gives no number of inputs, voltage window or current for the station's own solar input. It says 'The Apex 300 is expected to ship in late January.'"
+  }
+ ],
+ "unsourced": [
+  "Vmp, Imp and Isc of BLUETTI's US 350 W kit panel. Its US page has an empty spec table. The PV350 manual PDF (cdn.shopify.com/.../PV350_User_Manual_EN-JP_V1.0.pdf) downloaded but its text could not be extracted. A search snippet says it lists 46.5 V Voc, 10.8 A Isc, 37.5 V Vmp and 9.2 A Imp; that figure is not confirmed. Without Imp I cannot show whether two panels in parallel stay under the Elite 200 V2/400's 20 A input.",
+  "SORA 500 electrical figures (Voc, Isc) from a BLUETTI page I could open. The US page's Tech Specs section is empty. A snippet says bluettipower.eu lists 49.1 V Voc and 13.31 A Isc; not opened. I needed these to check the Elite 300/400 + 500 W kits against 60 V in cold weather.",
+  "Apex 300's own solar input voltage and current per input, and whether its two inputs take one 350 W panel each. Not on the US kit page; manual not checked within the tool-call budget.",
+  "Whether BLUETTI includes an MC4 parallel (Y-branch) cable in any '2 × 350 W' or '2 × 200 W' kit. The US kit page lists the station's box contents only.",
+  "Content of the solargenadvisor.com, theoutageready.com, dealectric.com and lightsonlabs.com pages. The fetch tool hit a self-signed certificate error, and curl needed approval it did not get."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.4463379999999997
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Anker SOLIX F3000's '3,600 W' is a total: its household NEMA 5-20R outlets are rated 2,400 W max, and only the TT-30R RV port is rated 3,600 W, while EcoFlow rates the DELTA 3 Ultra at 3,600 W output with 7,200 W surge and BLUETTI rates the Elite 400 at 2,600 W with 3,900 W only as 'Lifting Power'.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts (the cited rival, read in full), PreparedStates and Powersized. StormWatts gives no AC continuous or surge figure and no cycle life for any of its 24 kits. Powersized gives AC for only two kits, with no surge and no cycle life. PreparedStates does flag the Elite 200 V2 and Elite 400 3,900 W figures as lifting power, so the rivals already have part of the AC normalisation. None of them separates the F3000's per-outlet 2,400 W from its 3,600 W total, and none states which capacity a cycle count is measured to. I could not read four pages: the two Dealectric pages, SolarGenAdvisor and Lights On Labs all failed with a self-signed certificate error, so I can't say what they hold.",
+ "decides": "This weakens ChatGPT's home-backup pick of the Anker F3000. A 3,600 W single load needs the TT-30R RV port, and from the household 5-20R outlets the F3000 is a 2,400 W unit, below the DELTA 3 Ultra's 3,600 W rating. Anker's page also says the F3000 + 400 W bundle ships from early December, so it fails the 'ships now' rule. Among kits we link, the Elite 400 + 2× 350 W gives the most battery under $3,000 (3,840 Wh at a $2,325.60 link price), but it is a pre-order and its 2,600 W rating is lower than EcoFlow's 3,600 W. Only the Elite 200 V2 has a cycle count I could source from the maker with its endpoint (6,000+ cycles to 80%). The finding does not settle the pick alone; the pick still turns on which kit ships now.",
+ "candidates": [
+  "EcoFlow DELTA 3 Ultra + 2× 220W",
+  "Anker SOLIX F3000 + 400W",
+  "BLUETTI Elite 400 + 2× 350W",
+  "BLUETTI Elite 400 + 500W",
+  "BLUETTI Elite 300 + 500W",
+  "BLUETTI Elite 200 V2 + 2× 200W",
+  "BLUETTI Apex 300 + 2× 350W",
+  "ALLPOWERS R3500 + SP039 600W",
+  "Jackery HomePower 3000 + 2× SolarSaga 200W",
+  "EcoFlow DELTA 3800 Gen4 + 4× 160W"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "AC output, per outlet vs total",
+   "value": "NEMA 5-20R: 120 V, 20 A, 2,400 W max, 3,600 W total; TT-30R: 120 V, 30 A, 3,600 W max",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The page does not call any figure 'continuous'. One household plug tops out at 2,400 W; a 3,600 W single load needs the TT-30R port."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "AC surge",
+   "value": "7,200 W AC surge; 4,860 W 'SurgePad Power'",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Two different surge figures on one page; SurgePad is Anker's mode for sustaining a higher load, not the momentary peak."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Cycle life",
+   "value": "4,000 cycles, no capacity endpoint stated",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The only 80% on the page is a savings assumption (80% daily cycling in California at $0.5/kWh), not a cycle-test endpoint."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Solar input",
+   "value": "High-PV 11–165 V, 17 A, 1,600 W + Low-PV 11–60 V, 17 A, 800 W = 2,400 W combined",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The kit's 400 W panel uses one sixth of the station's solar cap. Arithmetic at rated output: 3,072 Wh / 400 W = 7.7 h of full sun."
+  },
+  {
+   "product": "Anker SOLIX F3000 + 400W",
+   "label": "Shipping state",
+   "value": "F3000 + 400W/200W Solar Panel Bundle ships starting early December",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The price block read 'Price Loading', so I have no bundle price from this page."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "AC output and surge",
+   "value": "3,600 W output, 7,200 W surge, X-Boost up to 4,600 W",
+   "source": "https://us.ecoflow.com/products/delta-3-ultra-solar-generator-3072wh",
+   "source_title": "EcoFlow DELTA 3 Ultra Solar Generator (3072Wh) | EcoFlow US",
+   "read": "2026-11-17",
+   "note": "Read through storecheck.py search on us.ecoflow.com. X-Boost runs resistive loads by lowering voltage and is not rated output. The tool listed a price of $1,369 for this product with a $2,199 compare-at, which is likely the lowest variant; I could not open the variants (HTTP 429), so I don't use it as a kit price."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cycle life and AC",
+   "value": "6,000+ cycles to 80% capacity; 2,600 W continuous",
+   "source": "https://bluettipower.com/blogs/buying-guide/elite-series-buying-guide",
+   "source_title": "BLUETTI Elite Series Buying Guide: Which Model Fits Your Lifestyle?",
+   "read": "2026-11-17",
+   "note": "BLUETTI article dated 2025-11-23. It says the unit 'was shown to sustain a 3,000W surge for over two minutes' in testing; it does not say who ran the test. Solar input up to 1,000 W."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Cycle life and AC",
+   "value": "4,000+ cycles to 80%; 1,800 W continuous, 2,700 W power lifting, 3,600 W surge",
+   "source": "https://bluettipower.com/blogs/buying-guide/elite-series-buying-guide",
+   "source_title": "BLUETTI Elite Series Buying Guide: Which Model Fits Your Lifestyle?",
+   "read": "2026-11-17",
+   "note": "Shows that BLUETTI gives three AC figures for one unit: continuous, lifting and surge."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "AC output",
+   "value": "2,600 W rated / 3,900 W Lifting Power; 5,200 W surge (buying guide)",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "BLUETTI Elite 400 + 2×350W - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Product page: '2,600 W rated / 3,900 W Lifting Power'. The 5,200 W surge is from the BLUETTI buying guide (https://bluettipower.com/blogs/buying-guide/elite-series-buying-guide), read the same day. Lifting power is BLUETTI's equivalent of X-Boost, for resistive loads only."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "BLUETTI Elite 400 + 2×350W - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The kit's 2× 350 W = 700 W, under the cap. Arithmetic at rated output: 3,840 Wh / 700 W = 5.5 h of full sun. The page says 'Elite 400 ships from mid-December'; our kit table gives this kit a Dec 25, 2026 dispatch date, and the page should use the kit table."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Cycle life",
+   "value": "3,000+ cycles to 80% of original capacity",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-2-max-solar-generator",
+   "source_title": "EcoFlow DELTA 2 Max Solar Generator | EcoFlow US",
+   "read": "2026-11-17",
+   "note": "Store text read through storecheck.py: 'Get 10 years of daily use until hitting 80% of its original capacity... 3000+ cycles'. The listing also says 'Pre-order: Ships in mid October', a date that has passed."
+  },
+  {
+   "product": "general",
+   "label": "What rival pages state on AC and cycle life",
+   "value": "StormWatts: no AC continuous/surge and no cycle life for any of 24 kits. PreparedStates: cycle counts for only two kits (Elite 300 '6,000+ (maker)', S2000 Pro 2,500), no endpoints; flags Elite 200 V2 and Elite 400 3,900 W as lifting. Powersized: no cycle life, no surge.",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "Also read on 2026-11-17: https://www.preparedstates.com/kit/solar-generators and https://powersized.com/best/solar-generator/."
+  }
+ ],
+ "unsourced": [
+  "Jackery HomePower 3000 cycle-life endpoint: a search snippet said '4000 cycles to 70%+ capacity', but jackery.com product pages returned HTTP 429 and the Jackery FAQ page was cut off before the spec line, so the 70% figure is not used. If confirmed, this is the strongest normalisation footnote: Jackery's 4,000 to 70% against BLUETTI's 6,000+ to 80%.",
+  "EcoFlow DELTA 3 Ultra cycle-life endpoint: EcoFlow's US product page returned HTTP 429 twice. Retailer snippets say 4,000 cycles to 80%; that was not used.",
+  "BLUETTI Elite 400, Elite 300 and Apex 300 cycle life: not on the Elite 400 product page or BLUETTI's buying guide; the Apex 300 and Elite 200 V2 product pages hit a redirect loop. Snippets from TechRadar and Fstoppers said about 3,000 cycles to 80% for the Elite 400; I did not open those pages.",
+  "ALLPOWERS R3500 and EcoFlow DELTA 3800 Gen4 cycle life and AC continuous vs surge: not reached within the tool budget.",
+  "Anker F3000 + 400W bundle price: the maker page showed 'Price Loading'.",
+  "Rival pages I could not read (self-signed certificate error): dealectric.com/best-2000wh-solar-generator-kit-with-panels, dealectric.com/solar-generator-with-panels-included, solargenadvisor.com/best-solar-generator-kits, lightsonlabs.com best-solar-generators."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.4753075000000004
+ }
+}

@@ -1,0 +1,103 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's 350 W panel has a 33 V open-circuit voltage. Two of them in series make 66 V, which is over the single 12–60 V, 20 A solar input on both the Elite 200 V2 and the Elite 400. So in the 2× 350 W kits for those two stations, the panels can only be wired in parallel. That needs an MC4 Y-branch, which is not in the box, and BLUETTI's own $39 one shows sold out. Even then, the 20 A cap holds the panels below 20 A × 33 V = 660 W, so the 700 W of panels can never all be used.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts (cited in both chats, dated 2026-11-08). It gives each station's solar input range and works out series and parallel wiring for the Elite 200 V2 + 2× 200 W kit (about 49 V in series is fine, 21.6 A in parallel is over 20 A). It does not list any 2× 350 W kit, does not give the 350 W panel's Voc and does not mention the Y-branch. I could not open SolarGenAdvisor (TLS certificate error). Neither ChatGPT answer says anything about wiring panels together or about input limits beyond the headline solar wattage. I did not re-read our own two Dealectric pages.",
+ "decides": "This backs the 2× 200 W kits over the 2× 350 W kits for the Elite 200 V2 and Elite 400. The 2× 200 W kits wire in series inside the 60 V limit with the cables that come with each panel. The Elite 200 V2 + 2× 350 W kit ($2,040.60 through our link, $2,148.00 store) and the Elite 400 + 2× 350 W kit ($2,325.60 link, $2,448.00 store) cost more for panel watts the station cannot take in, and they need an extra part that is out of stock. A shopper who wants about 700 W of panels should look at the Apex 300 + 2× 350 W kit ($2,469.05 link, pre-order, late January 2027). BLUETTI lists the Apex 300 with two MPPT inputs, so each panel can go on its own input. This does not change which kit ships now. It changes which panel option to recommend with each station.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 2× 350 W",
+  "BLUETTI Elite 400 + 2× 200 W",
+  "BLUETTI Elite 400 + 2× 350 W",
+  "BLUETTI Apex 300 + 2× 350 W",
+  "EcoFlow DELTA 3 Ultra + 2× 220 W",
+  "Anker SOLIX F3000 + 400 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI 350W Solar Panel (the panel in the 350 W kits)",
+   "label": "Open-circuit voltage (Voc) and connector",
+   "value": "33 V Voc; MC4 connectors; comes with one 20 A MC4-to-XT60 cable, 1.5 m",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page says \"a 33V open-circuit voltage (Voc)\". It lists the Elite 200 V2, Elite 300, Elite 400 and Apex 300 as compatible stations. It gives no series or parallel limits, and its Tech Specs section is empty. Price $649.00 alone, available, read with storecheck the same day."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limit",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Quoted from the kit page FAQ: \"PV input: Elite 200 V2: 12V-60V/20A, 1,000W max\". The box list shows the station, AC cable, grounding screw and documents, with no Y-branch or parallel connector. Shipping text: base unit \"Pre-order: Ships from 11.26\", \"350W Solar Panel ships from 12.25\". Store price $2,148.00, available, read with storecheck."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 350 W",
+   "label": "Series wiring of the two panels",
+   "value": "66 V open circuit, over the 60 V input maximum",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Arithmetic: 2 × 33 V (maker's Voc) = 66 V, against the 60 V maximum on the Elite 200 V2 kit page. Voc goes up further in cold weather, so the gap widens."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 350 W",
+   "label": "Most solar power the station can take with the panels in parallel",
+   "value": "under 660 W from 700 W of panels",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-pv350d",
+   "source_title": "BLUETTI Elite 200 V2+2*350W Solar | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Arithmetic from the maker's figures: 20 A input cap × 33 V Voc = 660 W. This is an upper bound. Panels work at a maximum-power voltage below Voc, and BLUETTI's US pages do not publish that voltage, so the real ceiling is lower."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input limit",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "Elite 400+2*350W | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Quoted: \"Solar: 1,000 W Max., 12–60 V, 20 A Max.\" The station page https://www.bluettipower.com/products/elite-400-portable-power-station says the same. The 2× 350 W kit therefore has the same problem as the Elite 200 V2 one: 66 V in series, under 660 W in parallel. The box lists no solar cables or adapters. Shipping text: \"Elite 400 ships from mid-December\". Store price $2,448.00."
+  },
+  {
+   "product": "BLUETTI MC4 Solar Connectors Y Branch Parallel Adapter Cable",
+   "label": "Part needed to wire two panels in parallel, and whether it is in stock",
+   "value": "$39.00, listed as unavailable (sold out)",
+   "source": "https://www.bluettipower.com/products/mc4-solar-y-branch-parallel-cable",
+   "source_title": "MC4 Solar Connectors Y Branch Parallel Adapter Cable | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Read with storecheck search on bluettipower.com, which returned available=false. The listing describes 1 male-to-2 female and 1 female-to-2 male MC4 connectors, rated 30 A, \"which can connect 2 solar panels in parallel\". BLUETTI's Solar Extension Cable listing ($59) says \"Parallel setup: 1 cable set per panel\"."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 200 W",
+   "label": "Series wiring of the two panels",
+   "value": "49.2 V open circuit, inside the 60 V limit",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "StormWatts gives the SP200L panel as Voc 24.6 V, Isc 10.8 A. Arithmetic: 2 × 24.6 = 49.2 V in series, under 60 V. In parallel, 2 × 10.8 = 21.6 A, which StormWatts notes is over the 20 A input. A rival already states this; it is included only as the contrast for the 2× 350 W kit."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input",
+   "value": "Up to 2,400 W with dual MPPT (built in); up to 4,000 W with the separate SolarX 4K",
+   "source": "https://manuals.plus/asin/B0FJ8D3C63",
+   "source_title": "BLUETTI Apex 300 manual (manuals.plus copy, Apex 300 + 2× 200 W bundle)",
+   "read": "2026-11-17",
+   "note": "The manual's spec table reads \"Solar Input: Up to 2400W with dual MPPT\". The 4,000 W figure, which \"Requires a SolarX 4K\", is from https://www.bluettipower.com/products/apex-300-2-350w (same date). That page says \"The Apex 300 is expected to ship in late January\" and lists no PV cables in the box. With dual inputs, each 350 W panel can go on its own input, so no Y-branch is needed."
+  }
+ ],
+ "unsourced": [
+  "The 350 W panel's Isc, maximum-power voltage and current: the US 350W Solar Panel page has an empty Tech Specs section. The PV350D page gave a redirect loop and a 404 through storecheck. BLUETTI's PDF manuals (s4.bluettipower.com) were over the fetch size limit. Without these I can only give 660 W as an upper bound, not the real parallel output.",
+  "The per-input voltage and current of the Apex 300's two solar inputs from a BLUETTI document: the US manual PDF was over the fetch size limit. A search snippet gave 12–60 V / 20 A / 1,200 W × 2, but I did not open that page.",
+  "The SORA 500 panel's Voc, to check the Elite 300/400 + 500 W kits against the 60 V limit: its US page has no electrical specs.",
+  "The Elite 200 V2 and Elite 400 solar input connector type (XT60 or other): neither product page states it.",
+  "Compatibility details for the EcoFlow DELTA 3 Ultra + 2× 220 W and the Anker SOLIX F3000 kits from the makers' own pages: not researched within the tool budget. StormWatts covers their input limits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.5886564
+ }
+}
