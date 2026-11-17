@@ -1,0 +1,139 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Synology DS925+'s '2× M.2 NVMe' slots can't hold a storage pool, which is where Immich wants its Postgres database, unless the SSD is Synology-verified. ChatGPT's recommended setup (a 500 GB NVMe for the database) therefore works out of the box on the UGREEN DXP4800 Plus but not on the DS925+ with an ordinary NVMe drive.",
+ "standout": 2,
+ "standout_why": "I compared against the three pages ChatGPT cited from docs.immich.app (Requirements, FAQ and Backup and Restore) and the mobile-backup.md page on GitHub. The Requirements page says the database 'should ideally use local SSD storage, and never a network share of any kind' and gives 6 GB minimum / 8 GB recommended RAM. None of these pages mentions Synology, NAS models, M.2 slots or storage pools (I checked the Requirements and FAQ pages for this). No result connects 'SSD for the database' to the fact that each maker means something different by its M.2 slots: Synology allows pools only on verified SSDs, QNAP's slots are PCIe Gen3 x1, and UGREEN's are PCIe 4.0 and can hold storage. ChatGPT's answer also skipped the DS225+'s 6 GB RAM ceiling and Immich's QSV note for Jasper Lake chips.",
+ "decides": "It backs the UGREEN DXP4800 Plus ($619.99 at UGREEN's NAS store today) as the box where the plain 'NVMe for the Immich database' advice works. It also changes how the DS925+ should be presented: on stock DSM its M.2 database pool needs a Synology-verified SSD, the 4 GB of RAM is below Immich's 6 GB minimum, and Synology lists no hardware transcoding engine. The DS925+ wins on DSM backup tools, not on running Immich. For 2-bay buyers the DS225+ tops out at 6 GB, exactly Immich's minimum and below the 8 GB recommendation, which argues for the DXP2800 or QNAP TS-264 instead.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-464-8G",
+  "Synology DS925+",
+  "Synology DS225+",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "UGREEN NASync DXP2800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich RAM requirement",
+   "value": "Minimum 6 GB, recommended 8 GB; with 4 GB Immich runs only with machine learning disabled",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-17",
+   "note": "Quoted: 'RAM: Minimum 6GB, recommended 8GB.' and 'For systems with only 4GB of RAM, Immich can be run with machine learning features disabled.' This is the yardstick for every box's default and maximum RAM below."
+  },
+  {
+   "product": "general",
+   "label": "Where Immich's database must live",
+   "value": "Local SSD, never a network share",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-17",
+   "note": "Quoted: Postgres 'should ideally use local SSD storage, and never a network share of any kind'. On a NAS that means an SSD storage pool or volume, not an SSD cache, so whether the M.2 slots can hold a pool is what counts."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "M.2 slots: what they can be used for",
+   "value": "2× M.2 2280 NVMe; storage pools only on Synology-verified SSDs",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "Spec footnote: 'Creating M.2 storage pools requires the use of Synology-verified SSDs'. SSD cache 'can be enabled with select compatible SSD'. Footnote: our page says '2× M.2 (Synology SSDs for pools)'. That is correct, but it is the reason the plain advice to add a 500 GB NVMe for the database doesn't work on stock DSM with a third-party drive."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "CPU / RAM / transcoding",
+   "value": "AMD Ryzen V1500B; 4 GB DDR4 ECC (max 32 GB, 16 GB × 2); no hardware transcoding engine listed",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "4 GB is below Immich's 6 GB minimum. Immich's hardware transcoding page lists AMD only through VAAPI, and the V1500B has no integrated GPU per Synology's spec (no transcoding row value). Warranty 3 years, extendable to 5."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM ceiling vs Immich",
+   "value": "2 GB DDR4 default, 6 GB maximum (2 GB + 4 GB); no M.2 slots listed",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "Fully upgraded, it reaches exactly Immich's 6 GB minimum and can never reach the 8 GB recommendation. With no M.2 slot, the database has to sit on a SATA bay. CPU Intel Celeron J4125, 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "CPU / RAM / M.2 link",
+   "value": "Intel Celeron N5095 with Intel UHD Graphics; 8 GB (max 16 GB, 2× 8 GB); 2× M.2 2280 PCIe Gen 3 x1",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 hardware specifications | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "Footnote: 'NVMe slots' here means Gen3 x1, one lane, about a quarter of an x4 link. The spec page doesn't say whether the slots can hold a pool or a cache. Warranty 3 years (accessories 1 year)."
+  },
+  {
+   "product": "general",
+   "label": "Immich Quick Sync caveat for Jasper Lake",
+   "value": "Jasper Lake and Elkhart Lake CPUs must use CQP constant-quality mode; 11th-gen and older may need Low-Power mode; VP9 needs 9th gen or newer",
+   "source": "https://docs.immich.app/features/hardware-transcoding/",
+   "source_title": "Hardware Transcoding | Immich",
+   "read": "2026-11-17",
+   "note": "This affects the N5105 (Asustor AS5402T) and likely the N5095 (QNAP TS-264/TS-464). 'Intel CPU, hardware transcoding' therefore needs a settings change on these chips. The same page: AMD only through VAAPI; Raspberry Pi not supported; Quick Sync not supported on WSL2."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "CPU generation",
+   "value": "Intel Celeron N5105, 'Products formerly Jasper Lake', Q1'21, Intel UHD Graphics, Quick Sync Video: Yes",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 specifications | Intel",
+   "read": "2026-11-17",
+   "note": "This places the AS5402T under Immich's Jasper Lake CQP note above."
+  },
+  {
+   "product": "general",
+   "label": "Immich machine-learning acceleration on NAS chips",
+   "value": "OpenVINO lists 'Intel GPUs such as Iris Xe and Arc'; integrated GPUs 'more likely to experience issues… especially for older processors or servers with low RAM'; RKNN only on RK3566/RK3568/RK3576/RK3588",
+   "source": "https://docs.immich.app/features/ml-hardware-acceleration/",
+   "source_title": "Hardware-Accelerated Machine Learning | Immich",
+   "read": "2026-11-17",
+   "note": "Footnote for the table: 'Intel CPU' doesn't by itself mean accelerated face and smart search. Older Celeron iGPUs are the case the docs flag, and OpenVINO also raises RAM use."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "M.2 slots: what they can be used for",
+   "value": "2× M.2 2280 PCIe 4.0, usable 'either as cache or as additional storage'",
+   "source": "https://en.techreviewer.de/ugreen-nasync-dxp4800-plus-test/",
+   "source_title": "UGREEN NASync DXP4800 Plus review – The NAS insider tip for 2025? (Timo Altmeyer, techreviewer.de, 2025-03-16)",
+   "read": "2026-11-17",
+   "note": "Altmeyer's spec table counts NVMe toward capacity: 'Up to 88TB (4×22TB HDD) + 8TB (2×4TB NVMe)'. He also says the Pentium Gold 8505's 'integrated Intel UHD graphics support QuickSync'. A named reviewer was used because UGREEN's product pages returned HTTP 429."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "RAM",
+   "value": "8 GB DDR5-4800, expandable to 64 GB (2× SO-DIMM)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/all/1",
+   "source_title": "UGREEN NASync DXP4800 Plus 4-bay NAS review (Simon Crisp, KitGuru, 2024-05-28)",
+   "read": "2026-11-17",
+   "note": "Meets Immich's 8 GB recommendation as shipped, with no upgrade needed. Crisp: 'a pair of NVMe PCIe 4.0 slots for caching or extra storage duties'."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus | UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search on nas.ugreen.com (Shopify JSON). Matches the $619.99 ChatGPT showed. Same run: DXP2800 $389.99, DH4300 Plus $373.99."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own spec wording on DXP4800 Plus M.2 storage pools: nas.ugreen.com and ai.ugreen.com returned HTTP 429 on 2026-11-17 (WebFetch and storecheck product), so this rests on named reviewers (techreviewer.de, KitGuru).",
+  "US price of a Synology-verified M.2 SSD (e.g. SNV3410 400 GB), needed to cost the DS925+ database pool: amzcheck.py search returned no results, and Synology has no US web store.",
+  "Today's US prices for the DS925+, DS225+ and TS-464-8G: amzcheck.py search returned nothing; I didn't try retailer pages within the budget.",
+  "Intel's code name for the Celeron N5095 (TS-264/TS-464): the Intel URL I tried redirected to the N5105 page (Jasper Lake), so I have no Intel page for the N5095 itself.",
+  "Whether a third-party NVMe SSD works as cache (not a pool) on the DS925+ under DSM 7.3: Synology's page says only 'select compatible SSD'; secondary sources (NAS Compares, datacenterdisk) conflict, and Synology's KB article on M.2 pools loaded empty.",
+  "Which Rockchip SoC the UGREEN DH2300 uses (to check Immich's RKNN list of RK3566/3568/3576/3588): not looked up within the budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1236565999999997
+ }
+}

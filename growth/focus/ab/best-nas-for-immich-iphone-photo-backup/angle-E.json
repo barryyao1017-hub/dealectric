@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that, when timed in a lab, Immich's full container stack peaked at 2,547–2,620 MiB of RAM, and that CPU-only face detection ran at 3.95 photos/s on four desktop cores. That rate works out to about 7 hours per 100,000 iPhone photos, and it shows why 2 GB and 4 GB stock NAS units (DS225+, DS925+) need a RAM upgrade before the first sync.",
+ "standout": 2,
+ "standout_why": "I compared against the four cited rival pages. docs.immich.app/install/requirements gives only 6 GB minimum / 8 GB recommended and says Postgres needs at least 2 GB. docs.immich.app/FAQ says '2 or 3 concurrent jobs can probably max the CPU' but has no timings and no RAM figures. backup-and-restore and mobile-backup.md hold no measurements. None of the rival pages names a NAS, gives measured RAM use of the Immich stack, gives a per-photo ML throughput, or gives the measured power draw of any candidate box. ChatGPT's answer also has no measured figures.",
+ "decides": "It confirms rather than flips the pick. The measured peak of about 2.6 GB for Immich alone, before DSM/QTS/UGOS takes its share, rules out the stock DS225+ (2 GB) for ML features. It also makes the stock DS925+ (4 GB) marginal. The 8 GB DXP2800, TS-264-8G and 16 GB F4-425 Plus can run it out of the box. Face detection at about 4 photos/s on 4 cores means the first indexing of a large iPhone library takes hours to days on any 4-core NAS. Raising concurrency doesn't help: at 4 jobs it was 9% slower. For a box that runs 24/7, measured idle draw favours the N100/N150 units (OCinside about 7 W for the DXP2800; NASCompares 13.3 W for the F4-425 Plus with SSDs only) over the DS925+ (NASCompares about 28 W idle).",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "TerraMaster F4-425 Plus",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-264",
+  "Asustor Nimbustor 2 Gen2 (AS5402T)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich peak RAM, all containers (default settings, during OCR)",
+   "value": "2,547 MiB (idle with photos about 2,430 MiB; empty library about 1,350 MiB)",
+   "source": "https://computingforgeeks.com/best-nas-for-immich-photos/",
+   "source_title": "Best NAS for Immich and Photo Backup, Lab-Timed (Computing for Geeks, Eugene Otieno)",
+   "read": "2026-11-17",
+   "note": "Immich v3.3.3 tested 2026-10-20 on a 4-core, 8 GB Proxmox VM (4 vCPUs of an Intel Core i7-6700, ML CPU-only) with 497 NASA photos. This is not a NAS unit. Peak was 2,620 MiB with face detection at concurrency 4. This excludes the NAS OS's own memory use."
+  },
+  {
+   "product": "general",
+   "label": "Immich face detection throughput, CPU-only, 4 cores",
+   "value": "3.95 photos/s (125.8 s for 497 photos); 136.7 s at concurrency 4 (about 9% slower)",
+   "source": "https://computingforgeeks.com/best-nas-for-immich-photos/",
+   "source_title": "Best NAS for Immich and Photo Backup, Lab-Timed (Computing for Geeks, Eugene Otieno)",
+   "read": "2026-11-17",
+   "note": "Same VM and test as above. Our arithmetic: 100,000 photos ÷ 3.95/s = 25,316 s ≈ 7.0 h. The rig is an i7-6700 VM, not an N100/N150/V1500B, so treat this as an order of magnitude only."
+  },
+  {
+   "product": "general",
+   "label": "Immich Smart Search (CLIP) and OCR throughput, CPU-only, 4 cores",
+   "value": "Smart Search 12.7 photos/s (39.1 s re-run; 82 s first run); OCR 3.1 photos/s (162 s); upload, metadata and thumbnails 73 s for 497 photos",
+   "source": "https://computingforgeeks.com/best-nas-for-immich-photos/",
+   "source_title": "Best NAS for Immich and Photo Backup, Lab-Timed (Computing for Geeks, Eugene Otieno)",
+   "read": "2026-11-17",
+   "note": "Same rig. Our arithmetic for 100,000 photos: CLIP ≈ 2.2 h and OCR ≈ 9.0 h. Face clustering took 11 s for 84 people."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured power draw at the wall",
+   "value": "about 7 W idle; 34.7 W maximum under combined CPU/RAM/disk stress",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de)",
+   "read": "2026-11-17",
+   "note": "RAID 1 on Btrfs. The drive models, the meter and the review date are not stated on the page. Over the 1 GbE test network the unit wrote a 50 GB file in 290 s (about 181 MB/s)."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Measured power draw at the wall",
+   "value": "24.25 W idle (2.5GbE), 30.45 W idle (10GbE); peak write 61.35 W (2.5GbE), 67.02 W (10GbE)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/14/",
+   "source_title": "UGREEN NASync DXP4800 Plus 4-bay NAS review (KitGuru, Simon Crisp, 2024-05-28)",
+   "read": "2026-11-17",
+   "note": "Measured during CrystalDiskMark 8.0.4 with WD Red WD60EFRX drives. The page doesn't state the drive count. Peak reads were 52.07 W (2.5GbE) and 58.17 W (10GbE)."
+  },
+  {
+   "product": "TerraMaster F4-425 Plus",
+   "label": "Measured power draw",
+   "value": "13.3 W idle with 3× NVMe SSDs and no HDDs; 55 W idle with 4× 7,200 rpm HDDs; 61–63 W under read/write load",
+   "source": "https://nascompares.com/2025/10/22/terramaster-f4-425-plus-nas-review/",
+   "source_title": "Terramaster F4-425 PLUS NAS Review (NASCompares, Rob Andrews, 2025-10-22)",
+   "read": "2026-11-17",
+   "note": "The HDDs were 4× Toshiba MG-series 7,200 rpm enterprise drives. Noise was about 33 dB(A) at low fan speed and about 43 dB(A) peak during heavy disk activity."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Measured power draw and noise",
+   "value": "about 28 W idle; 62–64 W peak; 36–37 dB(A) idle, 48–50 dB(A) under load",
+   "source": "https://nascompares.com/review/synology-ds925-nas-review/amp/",
+   "source_title": "Synology DS925+ NAS Review (NASCompares, Rob Andrews, 2025-05-02)",
+   "read": "2026-11-17",
+   "note": "Idle was measured with base apps installed and no access. Peak was measured with 4 bays and SSDs filled, CPU under strain and both 2.5GbE links active. The page has no container or transcode figures."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Measured energy use per 24 hours",
+   "value": "about 275 Wh per day with two hard drives (our arithmetic: about 11.5 W average)",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review (Dong Knows Tech, Dong Ngo, updated 2025-08-04)",
+   "read": "2026-11-17",
+   "note": "The drive models are not named. Dong Ngo also writes '2GB is simply too limited' (said in the context of VMM). Stock RAM is 2 GB with a 6 GB maximum."
+  }
+ ],
+ "unsourced": [
+  "An Immich ML timing (face detection, CLIP or OCR photos/s) measured on an actual candidate NAS (DXP2800, DXP4800 Plus, F4-425 Plus, DS925+, TS-264). An extended search found only the VM-based Computing for Geeks test and found none per NAS model.",
+  "Measured idle power for the QNAP TS-264 by a named reviewer. A Toshiba HDD lab report PDF (toshiba-storage.com, TSH209) is said to list 27.0 W idle with 2× N300, but I could not extract the PDF text to verify it. QNAP's own spec (29.086 W typical) is not a third-party measurement.",
+  "TechPowerUp's DXP4800 Plus power page (techpowerup.com/review/ugreen-nasync-dxp4800-plus/13.html) returned HTTP 403, so its idle and peak figures are not included.",
+  "Measured power or Immich figures for the Asustor AS5402T. I ran no search for them within the call budget.",
+  "Named CPU multi-thread benchmarks (PassMark or Notebookcheck) comparing the N100, N150, J4125, N5095, N5105, V1500B and Pentium Gold 8505. The page fetch was blocked, so none are included.",
+  "Measured hardware-transcode or OpenVINO speed-up for Immich on any candidate's iGPU. Computing for Geeks notes OpenVINO is experimental and was not tested on a NAS."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.0934416
+ }
+}

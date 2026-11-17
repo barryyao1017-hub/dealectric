@@ -1,0 +1,143 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Celeron N5095 in its QNAP TS-464 pick is a Jasper Lake chip whose graphics can only encode in Low-Power mode, which Immich's transcoding guide says needs an extra setup step on Intel 11th gen or older, or that Immich's machine-learning acceleration covers only Intel GPUs 'such as Iris Xe and Arc' and the Rockchip RK3566/RK3568/RK3576/RK3588.",
+ "standout": 2,
+ "standout_why": "I compared against the four pages ChatGPT cited: Immich Requirements, Backup and Restore, FAQ, and mobile-backup.md on GitHub. I also checked the uncited docker-compose and quick-start pages. Requirements covers amd64/arm64, the 6 GB RAM minimum (8 GB recommended) and keeping the database on a local SSD. mobile-backup.md covers Background App Refresh and iCloud caching. None of these pages lists which CPU or GPU works with Immich's hardware transcoding (NVENC/QSV/RKMPP/VAAPI) or its ML backends (OpenVINO/RKNN/ARM NN). None names the Low-Power encoding requirement or the iOS 15.0 minimum for the app. ChatGPT's answer says the TS-464 has 'hardware video acceleration' with no caveat. It also says the DS925+ has no integrated GPU, but cites no maker page for that.",
+ "decides": "This supports ChatGPT's choice of the Intel UGREEN DXP models over the QNAP TS-464 and Asustor AS5402T. Both use Jasper Lake chips (N5095/N5105), and Immich's own guide says Intel 11th gen or older needs extra Low-Power setup before Quick Sync works. That setup relies on HuC firmware loaded by the host kernel, and I couldn't find a source showing that QTS or ADM does this. The DS925+ remains a box for storage and backup rather than one that speeds up Immich. Separately, our own page is wrong in its DH2300 row: it says there is 'No Docker in UGOS on the DH series', but UGREEN's FAQ says the DH4300 Plus supports Docker; only the DH2300 lacks it. The DH4300 Plus uses an RK3588C with 8 GB, which meets Immich's 8 GB recommendation. It is a possible ARM pick, but only once someone confirms that Immich's RK3588 support (RKMPP/RKNN) works on the RK3588C under UGOS.",
+ "candidates": [
+  "UGREEN NASync DXP4800 Plus",
+  "UGREEN NASync DXP2800",
+  "QNAP TS-464-8G",
+  "QNAP TS-264-8G",
+  "Synology DS925+",
+  "Synology DS225+",
+  "Asustor Nimbustor 2 Gen2 AS5402T",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich hardware transcoding: supported APIs and limits",
+   "value": "NVENC (NVIDIA), Quick Sync (Intel), RKMPP (Rockchip), VAAPI (AMD/NVIDIA/Intel). 'Only Linux and Windows (through WSL2) servers are supported.' 'Raspberry Pi is currently not supported.' For Quick Sync on Intel 11th gen or older, 'Low-Power mode is required' (extra instructions linked). RKMPP: 'Only RK3588 supports hardware tonemapping.'",
+   "source": "https://docs.immich.app/features/hardware-transcoding/",
+   "source_title": "Hardware Transcoding | Immich",
+   "read": "2026-11-17",
+   "note": "Verbatim from the Immich docs. This page was not among ChatGPT's results. It says nothing about Synology or about 10-bit/HDR HEVC."
+  },
+  {
+   "product": "general",
+   "label": "Immich ML hardware acceleration: supported hardware",
+   "value": "OpenVINO: 'Intel GPUs such as Iris Xe and Arc'; 'Integrated GPUs are more likely to experience issues than discrete GPUs'. RKNN: only RK3566, RK3568, RK3576 and RK3588, with host RKNPU driver V0.9.8 or newer. ARM NN: Mali GPUs only. CUDA: compute capability 5.2 or higher. ROCm image needs at least 35 GiB free. Only Linux and WSL2 servers.",
+   "source": "https://docs.immich.app/features/ml-hardware-acceleration/",
+   "source_title": "Hardware-Accelerated Machine Learning | Immich",
+   "read": "2026-11-17",
+   "note": "The page names no specific Intel generations. Intel 'UHD Graphics' (N-series, J-series) is not named, so treat OpenVINO on those chips as unproven."
+  },
+  {
+   "product": "general",
+   "label": "Immich ML container CPU requirement (amd64)",
+   "value": "Since v3, the amd64 machine-learning container needs x86-64-v2 or newer. The last version for x86-64-v1 is v2.7.5. Platforms: amd64 and arm64.",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-17",
+   "note": "This page is in ChatGPT's cited results. It also gives RAM 6 GB minimum / 8 GB recommended (4 GB only with ML disabled), Docker Compose plugin required, and Postgres 'never a network share'."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "CPU, graphics, RAM ceiling, M.2",
+   "value": "Intel Celeron N5095 4C/4T, up to 2.9 GHz; Intel UHD Graphics; 8 GB DDR4 installed, 16 GB max (2× 8 GB); 2× M.2 2280 PCIe Gen 3 x1; Container Station needs at least 1 GB RAM",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "QNAP lists 'Hardware-accelerated Transcoding' with no detail. The 16 GB ceiling matches the 16 GB that ChatGPT recommends."
+  },
+  {
+   "product": "QNAP TS-464-8G / TS-264-8G",
+   "label": "N5095 product family",
+   "value": "Jasper Lake ('an inexpensive quad-core SoC of the Jasper Lake product family'), 16 EU UHD Graphics",
+   "source": "https://www.notebookcheck.net/Intel-Celeron-N5095-Processor-Benchmarks-and-Specs.536303.0.html",
+   "source_title": "Intel Celeron N5095 Processor - Benchmarks and Specs - Notebookcheck",
+   "read": "2026-11-17",
+   "note": "Intel's ark URL for the N5095 redirected to the N5105 page, so Notebookcheck is the named source for the N5095."
+  },
+  {
+   "product": "Asustor Nimbustor 2 Gen2 AS5402T",
+   "label": "N5105 product family and Quick Sync",
+   "value": "Code name 'Products formerly Jasper Lake'; Intel UHD Graphics; Quick Sync Video: Yes; launched Q1'21",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/212328/intel-celeron-processor-n5105-4m-cache-up-to-2-90-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor N5105 Specifications",
+   "read": "2026-11-17",
+   "note": "Intel's ark page."
+  },
+  {
+   "product": "general",
+   "label": "Jasper Lake encoding mode (Jellyfin Intel guide)",
+   "value": "'Gen 11 JSL/EHL graphics - Only support LP encoding mode.' Low-Power encoding relies on HuC firmware, and older Linux hosts need the i915 kernel parameter enable_guc=2 to load it. LP is on by default on Linux only for 'Gen 12 ADL+'.",
+   "source": "https://jellyfin.org/docs/general/post-install/transcoding/hardware-acceleration/intel/",
+   "source_title": "Intel GPU | Jellyfin",
+   "read": "2026-11-17",
+   "note": "Named source (Jellyfin docs). Immich's transcoding page links out for the Low-Power setup. Combined with Immich's '11th gen or older' clause, this means Quick Sync in Immich on the N5095 (TS-464/TS-264) and N5105 (AS5402T) depends on the host loading HuC firmware."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus / DH2300 / DXP series",
+   "label": "Docker support by model (maker)",
+   "value": "'The DH2300 does not officially support Docker.' 'The DH4300 Plus and current DXP models—including DXP2800, DXP4800 Plus, DXP4800 Pro, DXP2800 GT, DXP4800 GT, DXP6800 Pro, DXP8800 Plus, and DXP480T Plus—support Docker.' 'The DH2300 and DH4300 Plus do not support virtual machines.'",
+   "source": "https://ai.ugreen.com/pages/solution-software",
+   "source_title": "UGREEN NAS Software and UGOS Pro FAQs",
+   "read": "2026-11-17",
+   "note": "This contradicts our current page's DH2300 row, which says 'No Docker in UGOS on the DH series'. That is true for the DH2300 but wrong for the DH4300 Plus. UGREEN adds that Docker support 'does not guarantee' third-party containers."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "SoC, RAM, NPU",
+   "value": "Rockchip RK3588C, 8 cores, up to 2.4 GHz; 8 GB LPDDR4X; NPU 'Up to ~6 TOPS'; Docker available",
+   "source": "https://mightygadget.com/ugreen-nasync-dh4300-plus-review/",
+   "source_title": "Ugreen NASync DH4300 Plus Review - Mighty Gadget (James Smythe, 2025-10-06, updated 2026-03-20)",
+   "read": "2026-11-17",
+   "note": "Named reviewer. UGREEN's own product page returned HTTP 429 three times. Immich's RKNN and RKMPP lists name the RK3588, not the RK3588C variant, by name."
+  },
+  {
+   "product": "general",
+   "label": "Immich iOS app compatibility",
+   "value": "Requires iOS 15.0 or later; free; seller FUTO Holdings, Inc.; version 3.4.1 (81.3 MB)",
+   "source": "https://apps.apple.com/us/app/immich/id1613945652",
+   "source_title": "Immich - App Store",
+   "read": "2026-11-17",
+   "note": "The App Store showed version 3.4.1 as released '5d ago', which is about 2026-11-12."
+  },
+  {
+   "product": "general",
+   "label": "iOS background upload rules",
+   "value": "Background App Refresh must be on; 'iOS automatically manages background tasks; the app cannot control when the background upload task will run'; iCloud-only assets are downloaded to a temporary cache before hashing and upload, using extra data and storage",
+   "source": "https://github.com/immich-app/immich/blob/main/docs/docs/features/mobile-backup.md",
+   "source_title": "immich/docs/docs/features/mobile-backup.md · GitHub",
+   "read": "2026-11-17",
+   "note": "ChatGPT already cited this page. It is listed for completeness and is not part of the gap."
+  },
+  {
+   "product": "Synology DS225+ / DS925+",
+   "label": "Immich support status on Synology",
+   "value": "'This is a community contribution and not officially supported by the Immich team.' Installed via Container Manager from Package Center; offers a DB_STORAGE_TYPE: 'HDD' option for setups whose database is on hard drives",
+   "source": "https://docs.immich.app/install/synology/",
+   "source_title": "Synology | Immich",
+   "read": "2026-11-17",
+   "note": "The page states no DSM version, model or architecture limits."
+  }
+ ],
+ "unsourced": [
+  "A Synology maker page confirming the DS925+'s Ryzen V1500B has no integrated GPU. I didn't open the Synology DS925+ spec page, so this rests only on ChatGPT's unsourced claim.",
+  "Synology Container Manager supported models (DS223j, DS124): the package page showed an empty 'Applied Models' list, the release notes page is rendered by JavaScript, and the curl call to Synology's release-note API needed approval, so I didn't run it.",
+  "Whether QNAP QTS or Asustor ADM load the HuC firmware that Jasper Lake Low-Power encoding needs. I found no QNAP, Asustor or Immich document on this.",
+  "Whether UGOS on the DH4300 Plus provides the RKNPU driver (V0.9.8 or newer), /dev/mali0 or libmali.so that Immich's RKNN, ARM NN and RKMPP tonemapping need, and whether Immich treats the RK3588C as an RK3588.",
+  "UGREEN's own DH4300 Plus product page for the SoC, RAM and price: HTTP 429 on ai.ugreen.com (three tries, including through storecheck).",
+  "Graphics generation and Low-Power default for the Intel N100 (DXP2800) and Pentium Gold 8505 (DXP4800 Plus): the Jellyfin page doesn't name Alder Lake-N, and I didn't open the Intel ark pages.",
+  "Whether OpenVINO works on Intel UHD Graphics (N100/N5095/J4125): Immich names only Iris Xe and Arc."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2380322999999998
+ }
+}

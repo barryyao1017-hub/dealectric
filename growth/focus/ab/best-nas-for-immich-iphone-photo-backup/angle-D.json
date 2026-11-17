@@ -1,0 +1,103 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Immich's default 'required' transcode policy re-encodes any video that is HDR or not yuv420p (target h264), and that iPhones record Dolby Vision HDR video by default, so nearly every iPhone video gets transcoded. On a NAS with no Quick Sync, such as the DS925+ (Ryzen V1500B, no hardware transcoding), the CPU does all of that work, and even with Quick Sync, decoding and tone-mapping stay on the CPU unless hardware decoding is turned on.",
+ "standout": 2,
+ "standout_why": "I compared it against the cited docs.immich.app Requirements page (CPU/RAM minimums, x86-64-v2 for ML, Postgres on a local SSD and never a network share), the FAQ (says only that the initial backup is the heaviest load and that the player has HDR color problems), the mobile-backup.md iOS page (Background App Refresh, iCloud assets pulled into the cache) and the Backup and Restore page. None of them links the iPhone's default HDR recording to Immich's transcode-on-HDR rule, or says that tone-mapping uses the CPU by default. ChatGPT's answer says the DS925+ has 'No integrated GPU for hardware transcoding' but cites no source for it and doesn't say why that matters for iPhone footage, so the rivals have only part of this.",
+ "decides": "This supports picking an Intel box with Quick Sync (N100 DXP2800, J4125 DS225+, N5095 TS-264, N150 TerraMaster, Pentium 8505 DXP4800 Plus) over the DS925+ for a library with a lot of iPhone video. The DS925+ remains fine for a photo-heavy library, or if the shopper lowers transcoding settings. With an Intel box, the page should tell the shopper to map /dev/dri and enable hardware decoding so that decoding moves off the CPU too. Every candidate CPU meets the x86-64-v2 floor (N100 and J4125 list SSE4.2), so that requirement rules nothing out.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS225+",
+  "Synology DS925+",
+  "QNAP TS-264",
+  "TerraMaster F2-425 Plus",
+  "Asustor AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich default transcode policy and triggers",
+   "value": "Default policy 'required'; video is transcoded when 'The video is HDR.', 'The video is not in the yuv420p pixel format.' or 'The video codec is not in acceptedVideoCodecs'; default target video codec h264",
+   "source": "https://docs.immich.app/administration/system-settings/",
+   "source_title": "System Settings | Immich",
+   "read": "2026-11-17",
+   "note": "Quoted from the Video Transcoding section. The page does not list the default acceptedVideoCodecs."
+  },
+  {
+   "product": "general",
+   "label": "iPhone video recording format by default",
+   "value": "\"iPhone records video in Dolby Vision HDR for true-to-life color and contrast\" on supported models; to stop it, turn off HDR Video at Settings > Camera > Record Video",
+   "source": "https://support.apple.com/guide/iphone/adjust-hdr-camera-settings-iph2cafe2ebc/ios",
+   "source_title": "Adjust HDR camera settings on iPhone - Apple Support (iPhone User Guide)",
+   "read": "2026-11-17",
+   "note": "Apple describes turning HDR off as an extra step, so it is on unless the user switches it off. Combined with the Immich rule above, the iPhone's HDR video meets the 'video is HDR' trigger."
+  },
+  {
+   "product": "general",
+   "label": "What Immich hardware acceleration covers by default",
+   "value": "\"By default, only encoding is currently hardware accelerated. This means the CPU is still used for software decoding and tone-mapping.\" Hardware decoding is opt-in (accelDecode). APIs: NVENC, Quick Sync, RKMPP, VAAPI. Quick Sync passes through /dev/dri. 'Raspberry Pi is currently not supported.'",
+   "source": "https://docs.immich.app/features/hardware-transcoding/",
+   "source_title": "Hardware Transcoding | Immich",
+   "read": "2026-11-17",
+   "note": "Quoted from the Limitations list. The page also says only the RK3588 does hardware tone-mapping under RKMPP."
+  },
+  {
+   "product": "general",
+   "label": "Immich ML CPU floor",
+   "value": "Since v3, the ML container on amd64 requires x86-64-v2 or newer (\"Most CPUs released since ~2012\"); the last x86-64-v1 release is v2.7.5",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-17",
+   "note": "ChatGPT cited this page but did not mention this requirement. Every candidate CPU passes it, so it rules nothing out."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Hardware transcoding",
+   "value": "None: 'The Ryzen V1500B platform doesn't have hardware transcoding'; spec table lists 'Plex Transcoding: No'",
+   "source": "https://www.androidcentral.com/accessories/smart-home/synology-diskstation-ds925-plus-review",
+   "source_title": "Synology DiskStation DS925+ review (Android Central, Harish Jonnalagadda, 2025-04-23)",
+   "read": "2026-11-17",
+   "note": "Synology's own spec page lists the AMD Ryzen V1500B, 4C/8T at 2.2 GHz, and 4 GB of RAM expandable to 32 GB, but has no row for a GPU or transcoding engine."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "CPU / RAM (maker spec)",
+   "value": "AMD Ryzen V1500B, 4 cores / 8 threads, 2.2 GHz; 4 GB DDR4 ECC, max 32 GB (2 × 16 GB); 2 × M.2 2280 NVMe, M.2 pools need Synology-verified SSDs",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specs)",
+   "read": "2026-11-17",
+   "note": "Synology's spec page."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Intel N100 media engine",
+   "value": "Intel UHD Graphics; Intel Quick Sync Video: Yes; SSE4.1, SSE4.2, AVX2; 4C/4T; 6 W TDP",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N100 Specifications (Intel ARK)",
+   "read": "2026-11-17",
+   "note": "The N100 is the DXP2800's CPU per our current page row. SSE4.2 meets Immich's x86-64-v2 floor."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Intel Celeron J4125 media engine",
+   "value": "Intel UHD Graphics 600; Intel Quick Sync Video: Yes; SSE4.2; 4C/4T; 10 W TDP",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/197305/intel-celeron-processor-j4125-4m-cache-up-to-2-70-ghz/specifications.html",
+   "source_title": "Intel Celeron Processor J4125 Specifications (Intel ARK)",
+   "read": "2026-11-17",
+   "note": "The J4125 is the DS225+ (and DS425+) CPU. The DS225+ ships with 2 GB, below Immich's 6 GB minimum."
+  }
+ ],
+ "unsourced": [
+  "An AMD-published spec page for the Ryzen V1500B saying it has no integrated graphics: the amd.com V1000 series page timed out, WikiChip failed on a certificate error and cpu-monkey returned 403. Android Central's review was used instead.",
+  "Whether Immich's Quick Sync/VAAPI path can tone-map HDR in hardware once accelDecode is enabled: the docs name hardware tone-mapping only for RK3588 (RKMPP).",
+  "Apple's list of which iPhone models record HDR by default: it sits behind a link on the Apple guide page that I did not open.",
+  "Intel ARK pages for the N5095 (QNAP TS-264), N5105 (Asustor AS5402T), N150 (TerraMaster) and Pentium Gold 8505 (DXP4800 Plus) confirming Quick Sync: not opened within the tool-call budget.",
+  "A named measurement of how long a V1500B, N100 or J4125 takes to transcode an iPhone Dolby Vision clip under Immich: no source found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.0013352999999998
+ }
+}

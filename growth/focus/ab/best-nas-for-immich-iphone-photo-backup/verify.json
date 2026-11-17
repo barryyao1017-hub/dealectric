@@ -1,0 +1,183 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "D",
+  "why_angle": "The cited Immich pages give the RAM and SSD rules and the iOS background-upload limits. None connects the iPhone's default Dolby Vision HDR recording to Immich's default 'transcode when the video is HDR' policy, so none says which NAS chips encode that work in hardware (Intel Quick Sync on the 12th-gen UGREEN boxes, with a CQP fix on Jasper Lake QNAPs) and which leave it all to the CPU (the DS925+'s Ryzen V1500B).",
+  "slug": "best-nas-for-immich-iphone-photo-backup",
+  "must": [
+   "The best NAS for backing up iPhone photos with Immich is the UGREEN DXP4800 Plus",
+   "its 12th-gen Intel chip encodes that in hardware with Quick Sync"
+  ],
+  "products": [],
+  "page": {
+   "title": "Best NAS for backing up iPhone photos with Immich (2026): the box, the iOS background rules and remote access",
+   "h1": "Best NAS for backing up iPhone photos with Immich (2026)",
+   "desc": "Which NAS runs Immich best for iPhone photo backup: Quick Sync for the HDR video iPhones record, Immich's recommended 8 GB of RAM, NVMe for the database, plus the iOS background-upload rules and safe remote access.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best NAS for backing up iPhone photos with Immich is the UGREEN DXP4800 Plus. iPhones record Dolby Vision HDR video and Immich by default transcodes every HDR clip; its 12th-gen Intel chip encodes that in hardware with Quick Sync, and it ships with Immich's recommended 8 GB RAM.</p>",
+   "columns": [
+    [
+     "cpu",
+     "Processor"
+    ],
+    [
+     "video",
+     "Hardware encoder for iPhone HDR clips"
+    ],
+    [
+     "ram",
+     "RAM shipped / maximum (Immich recommends 8 GB)"
+    ],
+    [
+     "m2",
+     "M.2 slots for the Immich database"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nasync-dxp4800-plus",
+     "model": "UGREEN NASync DXP4800 Plus",
+     "cells": {
+      "cpu": "Intel Pentium Gold 8505, 12th gen (Alder Lake), 5 cores / 6 threads (Intel)",
+      "video": "Quick Sync: Yes, UHD Graphics for 12th Gen (Intel); newer than the 11th-gen-or-older chips that Immich's Low-Power note covers",
+      "ram": "8 GB DDR5 / 64 GB (KitGuru)",
+      "m2": "2× NVMe PCIe 4.0, for cache or extra storage (KitGuru)"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "cpu": "Intel N100 (Alder Lake-N), 4 cores / 4 threads (Intel)",
+      "video": "Quick Sync: Yes, Intel UHD Graphics (Intel)",
+      "ram": "8 GB DDR5 / 16 GB (The Gadgeteer)",
+      "m2": "2× NVMe, for cache or extra storage (The Gadgeteer)"
+     }
+    },
+    {
+     "slug": "qnap-ts-464-8g",
+     "model": "QNAP TS-464-8G",
+     "cells": {
+      "cpu": "Intel Celeron N5095 (Jasper Lake per Notebookcheck), 4 cores / 4 threads (QNAP)",
+      "video": "Intel UHD Graphics (QNAP); Immich requires Constant quality mode set to CQP on Jasper Lake",
+      "ram": "8 GB DDR4 / 16 GB (QNAP)",
+      "m2": "2× M.2 2280 PCIe Gen 3 x1 (QNAP)"
+     }
+    },
+    {
+     "slug": "synology-ds925-plus",
+     "model": "Synology DiskStation DS925+",
+     "cells": {
+      "cpu": "AMD Ryzen V1500B, 4 cores / 8 threads, 2.2 GHz (Synology)",
+      "video": "None: 'doesn't have hardware transcoding' (Android Central); the CPU does every HDR clip",
+      "ram": "4 GB DDR4 ECC / 32 GB (Synology); below Immich's 6 GB minimum as shipped",
+      "m2": "2× M.2 2280 NVMe; storage pools only on Synology-verified SSDs (Synology)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><p><strong>RAM headroom against Immich's 8 GB recommendation.</strong> Immich asks for at least 6 GB and recommends 8 GB. With only 4 GB it runs only if machine learning is turned off.</p><ul><li>DXP4800 Plus: 8 − 8 = 0 GB as shipped, and 64 − 8 = +56 GB of room at its maximum.</li><li>DXP2800: 8 − 8 = 0 GB as shipped, and 16 − 8 = +8 GB at its maximum.</li><li>TS-464-8G: 8 − 8 = 0 GB as shipped, and 16 − 8 = +8 GB at its maximum.</li><li>DS925+: 4 − 8 = −4 GB as shipped, so it needs a memory upgrade before the first sync. 32 − 8 = +24 GB once upgraded.</li></ul><p><strong>Where the database goes.</strong> Immich says its Postgres database should sit on local SSD storage, never a network share. On the two UGREEN boxes the M.2 slots can be used for extra storage, so an NVMe drive in them can hold the database. QNAP's two slots each run on a single PCIe Gen 3 lane. On the DS925+, an M.2 storage pool needs a Synology-verified SSD, so an ordinary NVMe drive won't do for the database there.</p><table><thead><tr><th>Your library</th><th>Box that fits</th></tr></thead><tbody><tr><td>Years of iPhone photos and video, room to grow to four drives</td><td>UGREEN DXP4800 Plus {buy:ugreen-nasync-dxp4800-plus}</td></tr><tr><td>Two drives are enough and you want the lower price</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>You already run QNAP</td><td>QNAP TS-464-8G, with CQP set in Immich's hardware acceleration settings</td></tr><tr><td>Mostly still photos and you want Synology's DSM</td><td>DS925+, after a RAM upgrade and with a Synology-verified SSD for the database</td></tr></tbody></table><h2>Why iPhone video decides the box</h2><p><strong>The trigger.</strong> Apple's iPhone User Guide says the iPhone 'records video in Dolby Vision HDR' on supported models. You turn this off at Settings &gt; Camera &gt; Record Video. Immich's default transcode policy is 'required'. Under it, Immich re-encodes a video when the video is HDR, when it isn't in yuv420p, or when its codec isn't on the accepted list. The default output is h264 at 720p. So with default settings on both sides, nearly every clip your iPhone uploads gets a second, transcoded copy.</p><p><strong>Who does the work.</strong> Immich can hand encoding to Intel Quick Sync. To do that, pass <code>/dev/dri</code> into the immich-server container and choose QSV. Immich's docs add that 'by default, only encoding is currently hardware accelerated': the CPU still does the decoding and tone-mapping. Turn on hardware decoding (<code>accelDecode</code>) to move decoding off the CPU too.</p><p><strong>Chip by chip.</strong> The Pentium Gold 8505 (DXP4800 Plus) and N100 (DXP2800) are Alder Lake parts with Quick Sync, both newer than Immich's note that 11th-gen-or-older Intel chips may need Low-Power mode. The N5095 in the TS-464-8G is Jasper Lake, and Immich says Jasper Lake needs Constant quality mode set to CQP. The DS925+'s Ryzen V1500B has no hardware transcoding (Android Central), so its four cores do all of this work alongside face recognition and thumbnails.</p><p><strong>The iPhone side, on any box.</strong> Immich's mobile-backup guide says Background App Refresh must be on and that iOS, not the app, decides when the background upload runs. Open the app during the first big upload. Photos stored only in iCloud are first downloaded to a temporary cache on the phone, which uses extra data and storage.</p><p><strong>Remote access.</strong> Immich's remote-access guide lists a VPN (WireGuard or OpenVPN), Tailscale (no router port needed) or a reverse proxy with HTTPS. It warns: 'Never forward port 2283 directly to the internet without additional configuration.'</p><h2>Not recommended</h2><p><strong>Synology DS925+ for a library full of iPhone video.</strong> It has no hardware transcoding, so every HDR clip is re-encoded on the CPU. It ships 4 GB short of Immich's 8 GB recommendation. And it won't build a database pool on an ordinary NVMe drive. DSM's backup tools are good, but for Immich the Intel boxes above do this work with less setup. If you keep the DS925+, upgrade the RAM, and either turn off HDR Video on the iPhone or change Immich's transcode policy.</p>",
+   "sources": [
+    [
+     "Immich RAM: 6 GB minimum, 8 GB recommended, 4 GB only with machine learning off; database on local SSD, never a network share",
+     "https://docs.immich.app/install/requirements/"
+    ],
+    [
+     "Immich default transcode policy 'required': transcodes when the video is HDR, not yuv420p, or the codec isn't accepted; default h264 at 720p",
+     "https://docs.immich.app/administration/system-settings/"
+    ],
+    [
+     "Immich hardware transcoding: only encoding accelerated by default, CPU does decoding and tone-mapping, accelDecode, /dev/dri, Low-Power note for 11th gen and older, CQP for Jasper Lake",
+     "https://docs.immich.app/features/hardware-transcoding/"
+    ],
+    [
+     "iPhone records video in Dolby Vision HDR on supported models; turn off at Settings > Camera > Record Video",
+     "https://support.apple.com/guide/iphone/adjust-hdr-camera-settings-iph2cafe2ebc/ios"
+    ],
+    [
+     "Pentium Gold 8505: Alder Lake, 5 cores / 6 threads, UHD Graphics for 12th Gen, Quick Sync Yes",
+     "https://www.intel.com/content/www/us/en/products/sku/226265/intel-pentium-gold-processor-8505-8m-cache-up-to-4-40-ghz-with-ipu/specifications.html"
+    ],
+    [
+     "Intel N100: Alder Lake-N, 4 cores / 4 threads, UHD Graphics, Quick Sync Yes",
+     "https://www.intel.com/content/www/us/en/products/sku/231803/intel-processor-n100-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "DXP4800 Plus: 8 GB DDR5, up to 64 GB; two NVMe PCIe 4.0 slots for caching or extra storage (KitGuru, Simon Crisp)",
+     "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/"
+    ],
+    [
+     "DXP2800: Intel N100, 8 GB DDR5 expandable to 16 GB, two NVMe slots for cache or extra storage (The Gadgeteer, Julian Perry)",
+     "https://the-gadgeteer.com/?p=483205"
+    ],
+    [
+     "QNAP TS-464-8G: Celeron N5095, Intel UHD Graphics, 8 GB / 16 GB, 2× M.2 PCIe Gen 3 x1",
+     "https://www.qnap.com/en-us/product/ts-464/specs/hardware"
+    ],
+    [
+     "Celeron N5095 belongs to the Jasper Lake family (Notebookcheck)",
+     "https://www.notebookcheck.net/Intel-Celeron-N5095-Processor-Benchmarks-and-Specs.536303.0.html"
+    ],
+    [
+     "DS925+: Ryzen V1500B 4C/8T, 4 GB DDR4 ECC / 32 GB, 2× M.2 NVMe, M.2 storage pools require Synology-verified SSDs",
+     "https://www.synology.com/en-us/products/DS925+#specs"
+    ],
+    [
+     "DS925+: 'The Ryzen V1500B platform doesn't have hardware transcoding' (Android Central, Harish Jonnalagadda)",
+     "https://www.androidcentral.com/accessories/smart-home/synology-diskstation-ds925-plus-review"
+    ],
+    [
+     "iOS: Background App Refresh required, iOS decides when background upload runs, iCloud-only assets cached before upload",
+     "https://github.com/immich-app/immich/blob/main/docs/docs/features/mobile-backup.md"
+    ],
+    [
+     "Remote access options (VPN, Tailscale, reverse proxy with HTTPS) and 'Never forward port 2283 directly to the internet without additional configuration'",
+     "https://docs.immich.app/guides/remote-access/"
+    ]
+   ]
+  }
+ },
+ "checked": 52,
+ "changed": [
+  {
+   "where": "after > Remote access",
+   "was": "It warns: 'Never forward port 2283 directly to the internet.'",
+   "now": "It warns: 'Never forward port 2283 directly to the internet without additional configuration.'",
+   "why": "The quote was cut short. Read 2026-11-17 at https://docs.immich.app/guides/remote-access/ and its GitHub source; the sentence there ends 'without additional configuration.'"
+  },
+  {
+   "where": "sources > remote-access label",
+   "was": "Remote access options (VPN, Tailscale, reverse proxy) and 'Never forward port 2283 directly to the internet'",
+   "now": "Remote access options (VPN, Tailscale, reverse proxy with HTTPS) and 'Never forward port 2283 directly to the internet without additional configuration'",
+   "why": "Made the quote match the page, which I read on 2026-11-17. The page also says clients reach the reverse proxy 'via https', which supports the 'with HTTPS' in the body."
+  },
+  {
+   "where": "after > Where the database goes",
+   "was": "so any NVMe drive can hold the database",
+   "now": "so an NVMe drive in them can hold the database",
+   "why": "KitGuru (DXP4800 Plus) and The Gadgeteer (DXP2800), both read 2026-11-17, say the slots can be used for cache or extra storage. Neither says UGREEN accepts any drive. UGREEN's own product page returned HTTP 429, so I couldn't check a drive-compatibility rule. I dropped 'any' and kept the claim the sources support."
+  },
+  {
+   "where": "sources > hardware-transcoding label",
+   "was": "... CQP for Jasper Lake, hardware tone-mapping only on RK3588",
+   "now": "... CQP for Jasper Lake",
+   "why": "The RK3588 claim was removed from the body (see removed), so the label no longer lists it."
+  }
+ ],
+ "removed": [
+  {
+   "where": "after > Who does the work: 'The docs list hardware tone-mapping only for the Rockchip RK3588, so on every box here tone-mapping stays on the CPU.'",
+   "why": "This misreads the docs. On https://docs.immich.app/features/hardware-transcoding/ (and its GitHub source, read 2026-11-17), 'Only RK3588 supports hardware tonemapping' sits inside the RKMPP (Rockchip) prerequisites and compares Rockchip SoCs with each other. The Limitations section says 'You can benefit from end-to-end acceleration by enabling hardware decoding', so the page doesn't support saying tone-mapping always stays on the CPU on the Intel boxes. I removed the sentence and wrote no replacement claim."
+  }
+ ],
+ "log": [
+  "Opened all 14 source URLs on 2026-11-17. The Apple guide needed a second read at offset 100000. Every remaining figure matches its source: Immich requirements (6/8 GB, 4 GB with ML off, local SSD, never a network share); system settings (policy 'required', HDR / yuv420p / accepted codecs, h264, 720); hardware transcoding ('By default, only encoding is currently hardware accelerated', accelDecode, /dev/dri, Low-Power for 11th gen or older, CQP for Jasper Lake); Apple (records in Dolby Vision HDR, Settings > Camera > Record Video); Intel 8505 (Alder Lake, 5C/6T, UHD for 12th Gen, Quick Sync Yes); Intel N100 (Alder Lake-N, 4C/4T, UHD, Quick Sync Yes); KitGuru (8 GB DDR5, up to 64 GB, 2× M.2 2280 PCIe 4.0); The Gadgeteer, Julian Perry (N100, 8 GB DDR5, expandable to 16 GB, 2 slots for cache or extra storage); QNAP (N5095 4C/4T, UHD, 8 GB DDR4, 16 GB max, 2× M.2 2280 PCIe Gen 3 x1); Notebookcheck (Jasper Lake); Synology (V1500B 4C/8T 2.2 GHz, 4 GB DDR4 ECC, 32 GB, 2× M.2 2280 NVMe, 'Creating M.2 storage pools requires the use of Synology-verified SSDs'); Android Central, Harish Jonnalagadda (quote is exact); Immich mobile-backup (Background App Refresh, iOS controls timing, iCloud assets cached, extra data and storage); remote access (OpenVPN/WireGuard, Tailscale when you can't open a router port, reverse proxy via https).",
+  "KitGuru's sentence 'a pair of NVMe PCIe 4.0 slots for caching or extra storage duties' names 'DXP4800' inside its DXP4800 Plus review. The review's spec list also gives 2× M.2 2280 PCIe 4.0 for the Plus, so I kept the cell.",
+  "UGREEN's DXP4800 Plus page (nas.ugreen.com) was not re-read: HTTP 429. The UGREEN cells rely on the named reviewers, as written.",
+  "No prices appear in the draft, and both UGREEN rows have slugs, so no price re-reads were needed. The must phrases are unchanged and still exact substrings of the answer."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.5005151999999999
+ }
+}

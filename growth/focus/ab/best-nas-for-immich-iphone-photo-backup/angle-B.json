@@ -1,0 +1,174 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what each candidate costs to run around the clock as an Immich server. By the makers' own drive-access wattage at the August 2026 US average residential rate of 18.16¢/kWh, ChatGPT's top pick, the UGREEN DXP4800 Plus, has the highest rated draw: 42.36 W = 371 kWh = $67.39 a year. The UGREEN DXP2800 comes to 16.38 W = 143 kWh = $26.06 a year, about $41 a year (about $207 over five years) less. Separately, no result maps the Synology DS225+'s 6 GB memory ceiling against Immich's 8 GB recommendation: the DS225+ can never meet it.",
+ "standout": 2,
+ "standout_why": "I compared against the four pages ChatGPT cited: docs.immich.app Requirements, Backup and Restore, the FAQ, and GitHub mobile-backup.md. I also checked our current page. The Requirements page gives only the 6 GB minimum and 8 GB recommended RAM, 2–4 cores and the SSD advice. It names no NAS, no wattage and no electricity cost (opened 2026-11-17). The FAQ has no NAS models, power or RAM-use figures (opened 2026-11-17). ChatGPT's answer gives prices but no running cost, and it never notes that the DS225+'s maximum memory equals Immich's minimum. Our current page says the DS225+ is 'below Immich's 6 GB minimum until upgraded'. It doesn't say that even fully upgraded it stops at 6 GB, below the 8 GB recommendation, and it has no wattage or running cost.",
+ "decides": "This supports a 2-bay N100 box (UGREEN DXP2800) as the value Immich pick for an iPhone photo library. It ships with Immich's recommended 8 GB, takes up to 16 GB, and is rated at the lowest drive-access draw among the Docker-capable candidates: about $26 a year against $46–67 for the 4-bay boxes ChatGPT recommended. That is about $207 saved over five years against ChatGPT's #1, the DXP4800 Plus. The Synology DS225+ drops out because its 6 GB ceiling never reaches 8 GB. The DS925+ ships with 4 GB and needs a RAM upgrade before it meets the recommendation. Treat cross-brand wattage gaps as rough, because the makers test differently (see notes). The UGREEN-to-UGREEN gap is like-for-like, since UGREEN tested both units the same way.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Synology DS925+",
+  "Synology DS225+",
+  "QNAP TS-464-8G",
+  "QNAP TS-264-8G"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Immich RAM requirement",
+   "value": "6 GB minimum, 8 GB recommended; 2 cores minimum, 4 recommended",
+   "source": "https://docs.immich.app/install/requirements/",
+   "source_title": "Requirements | Immich",
+   "read": "2026-11-17",
+   "note": "Same page: Postgres should ideally sit on 'local SSD storage, and never a network share of any kind'."
+  },
+  {
+   "product": "general",
+   "label": "US average residential electricity price",
+   "value": "18.16 ¢/kWh (August 2026)",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly Table 5.6.A",
+   "read": "2026-11-17",
+   "note": "Latest month in the table; August 2025 was 17.57 ¢. Every cost below = W × 8.76 (h/yr ÷ 1,000) × $0.1816."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Yearly running cost at the maker's access-mode wattage",
+   "value": "$26.06/yr (143.5 kWh); $8.34/yr (45.9 kWh) at the 5.24 W low-power figure",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "UGREEN: How Much Power Does Your NAS Consume",
+   "read": "2026-11-17",
+   "note": "16.38 W × 8.76 = 143.5 kWh × $0.1816 = $26.06. UGREEN Lab figure measured 'with a Seagate 2TB hard drive'."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Yearly running cost at the maker's access-mode wattage",
+   "value": "$67.39/yr (371.1 kWh); $28.83/yr (158.7 kWh) at the 18.12 W low-power figure",
+   "source": "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume",
+   "source_title": "UGREEN: How Much Power Does Your NAS Consume",
+   "read": "2026-11-17",
+   "note": "42.36 W × 8.76 = 371.1 kWh × $0.1816 = $67.39. Same UGREEN Lab single-2 TB-drive condition, so the gap to the DXP2800 is like-for-like: $41.33/yr, about $207 over five years."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Yearly running cost at the maker's access-mode wattage",
+   "value": "$60.31/yr (332.1 kWh); $19.61/yr (108.0 kWh) in HDD hibernation",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "37.91 W × 8.76 = 332.1 kWh × $0.1816 = $60.31; hibernation 12.33 W. The spec page doesn't state the test drive setup."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Yearly running cost at the maker's access-mode wattage",
+   "value": "$27.01/yr (148.7 kWh); $9.67/yr (53.3 kWh) in HDD hibernation",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "16.98 W × 8.76 = 148.7 kWh × $0.1816 = $27.01; hibernation 6.08 W."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "Yearly running cost at the maker's operating-mode wattage",
+   "value": "$64.49/yr (355.1 kWh); $34.39/yr (189.4 kWh) in HDD standby",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP",
+   "read": "2026-11-17",
+   "note": "40.536 W × 8.76 = 355.1 kWh × $0.1816 = $64.49; standby 21.618 W. QNAP: 'Tested with drives fully populated' (4 drives), a heavier condition than UGREEN's single drive."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Yearly running cost at the maker's operating-mode wattage",
+   "value": "$46.27/yr (254.8 kWh); $29.09/yr (160.2 kWh) in HDD standby",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP",
+   "read": "2026-11-17",
+   "note": "29.086 W × 8.76 = 254.8 kWh × $0.1816 = $46.27; standby 18.288 W; drives fully populated (2)."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "−2 GB even when fully upgraded (2 GB installed, 6 GB maximum)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "6 GB max − 8 GB recommended = −2 GB. As shipped, 2 GB − 6 GB minimum = −4 GB. No M.2 slots listed, so no local SSD for Postgres."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "−4 GB as shipped (4 GB DDR4 ECC); +24 GB at the 32 GB maximum",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "4 − 8 = −4 GB; 32 − 8 = +24 GB. 2 × M.2 2280 NVMe. 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-464-8G",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "0 GB as shipped (8 GB); +8 GB at the 16 GB maximum",
+   "source": "https://www.qnap.com/en-us/product/ts-464/specs/hardware",
+   "source_title": "TS-464 Hardware Specs | QNAP",
+   "read": "2026-11-17",
+   "note": "8 − 8 = 0; 16 − 8 = +8. Celeron N5095 4C/4T; 2 × M.2 2280 PCIe Gen 3 x1; 3-year warranty."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "0 GB as shipped (8 GB); +8 GB at the 16 GB maximum (2 × SODIMM)",
+   "source": "https://www.qnap.com/en-us/product/ts-264/specs/hardware",
+   "source_title": "TS-264 Hardware Specs | QNAP",
+   "read": "2026-11-17",
+   "note": "QNAP lists 8 GB installed 'Since 2024/01' and 16 GB max over two DDR4 SODIMM slots, which contradicts our current page's '8 GB fixed'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "0 GB as shipped (8 GB DDR5); +8 GB at the 16 GB maximum",
+   "source": "https://the-gadgeteer.com/?p=483205",
+   "source_title": "The Gadgeteer: UGREEN NASync DXP2800 review",
+   "read": "2026-11-17",
+   "note": "The Gadgeteer's spec list: '8GB DDR5, expandable up to 16GB'; Intel N100 4C/4T. I couldn't open the maker page (HTTP 429)."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "RAM headroom against Immich's 8 GB recommendation",
+   "value": "0 GB as shipped (8 GB DDR5); +56 GB at the 64 GB maximum",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/ugreen-nasync-dxp4800plus-4-bay-nas-review/",
+   "source_title": "KitGuru: UGREEN NASync DXP4800 Plus 4-bay NAS review (Simon Crisp)",
+   "read": "2026-11-17",
+   "note": "KitGuru: '8GB of DDR5 installed and supports up to 64GB via a pair of SO-DIMM slots'; Pentium Gold 8505."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US NAS store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 (nas.ugreen.com Shopify data via storecheck)",
+   "read": "2026-11-17",
+   "note": "Five-year cost with power at access-mode wattage: $389.99 + 5 × $26.06 = $520.29."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US NAS store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus (nas.ugreen.com Shopify data via storecheck)",
+   "read": "2026-11-17",
+   "note": "Five-year cost with power at access-mode wattage: $619.99 + 5 × $67.39 = $956.94."
+  }
+ ],
+ "unsourced": [
+  "Amazon prices for the Synology DS925+, DS225+, QNAP TS-464-8G and TS-264-8G: amzcheck.py search returned nothing (walled), so I skipped Amazon prices and have no five-year cost for these.",
+  "Synology's power-test drive setup for the DS925+ and DS225+: the spec page only links to a separate methodology article, which I didn't open.",
+  "Maker spec page for the DXP4800 Plus and DXP2800 memory (nas.ugreen.com returned HTTP 429 three times; www.ugreen.com returned 404), so the RAM figures come from KitGuru and The Gadgeteer.",
+  "Measured (not maker-rated) idle power for the DXP4800 Plus from TechPowerUp: the page returned HTTP 403, so I didn't use its numbers.",
+  "Wattage for an Immich workload specifically (ML indexing or initial upload): none of the maker pages or reviews I opened measured one."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.088419
+ }
+}
