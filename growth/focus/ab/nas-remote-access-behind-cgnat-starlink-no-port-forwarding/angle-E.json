@@ -1,0 +1,76 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that WunderTech (Frank Joseph, July 2026) measured UGREENlink's relay at about 2–4× the speed of Synology QuickConnect's relay in his own testing. That is the only named reviewer comparison of the two vendor relays a phone uses behind CGNAT.",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat lists no search results and cites no pages, so the comparison is against its answer text and our current page. The answer says only that a relay is 'potentially slower' and gives no figure. It also ranks Synology QuickConnect first for 'easy remote phone access'. Our page has QNAP's own 1–2 Mbps relay statement and Synology's 'may be slower' wording. It has no measurement by a named reviewer and does not compare UGREENlink with QuickConnect. The WunderTech multiple is new. It is a ratio from one reviewer who does not describe his method and gives no Mbps figures, so it supports a pick but cannot settle one by itself.",
+ "decides": "For a shopper who wants to use only the maker's app with no VPN (ChatGPT's own follow-up question), this supports putting the UGREEN NASync DXP2800 or DH2300 ahead of a Synology DS225+ or DS223j that runs on QuickConnect relay. The finding also has a limit. Every relay figure we found is small (NAS Compares states QuickConnect relay is limited to 1 MB/s; QNAP says its relay is 'usually limited to 1–2 Mbps'), and a forum user measured a Tailscale direct path at 2.5× the relay speed. So the page should still say that a direct path (Tailscale, which runs on DSM and in Docker on the DXP2800) beats any vendor relay for photo backup or video.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "Synology DS225+",
+  "Synology DS223j",
+  "Synology BeeStation Plus",
+  "QNAP TS-264-8G",
+  "Asustor Drivestor 2 Lite AS1102TL"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync (UGREENlink) vs Synology DiskStation (QuickConnect)",
+   "label": "Relay speed, UGREENlink compared with QuickConnect",
+   "value": "UGREENlink about 2–4× faster than QuickConnect (relative figure; no Mbps given)",
+   "source": "https://www.wundertech.net/ugreen-vs-synology/",
+   "source_title": "UGREEN vs. Synology: Which NAS Should You Buy in 2026? – WunderTech",
+   "read": "2026-11-17",
+   "note": "Frank Joseph, published 2026-07-14, modified 2026-08-14: 'On relay services, UGREENlink has been about two to four times faster than Synology QuickConnect in my testing.' His table labels this row 'Relay speed (my testing)'. He does not name the hardware, network or file sizes."
+  },
+  {
+   "product": "Synology (QuickConnect relay)",
+   "label": "QuickConnect relay speed limit (stated, not measured)",
+   "value": "1 MB/s (about 8 Mbps)",
+   "source": "https://nascompares.com/answer/speed-vs-security-choosing-the-right-remote-access-method-for-your-nas-on-internet/",
+   "source_title": "Speed vs Security: Choosing the Right Remote Access Method for Your NAS on Internet – NAS Compares",
+   "read": "2026-11-17",
+   "note": "Eddie Webguy, NAS Compares, 2023-02-02 (updated 2023-02-07): 'with Synology being limited to 1 MB/s', described as a proxy-server limit. No test method is given, and the figure is 3+ years old. The same author repeats it in the 2023-03-20 guide. 1 MB/s × 8 = 8 Mbps."
+  },
+  {
+   "product": "QNAP (myQNAPcloud Link relay)",
+   "label": "Relay bandwidth (QNAP's own statement)",
+   "value": "usually 1–2 Mbps",
+   "source": "https://www.qnap.com/en-ca/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings",
+   "source_title": "Why is your blazing fast NAS, but remote file transfer feels like it's crawling? – QNAP",
+   "read": "2026-11-17",
+   "note": "QNAP Marketing Team, 2026-04-07. This is a statement from the maker, not a measurement. It says a direct connection through myQNAPcloud DDNS or the WAN IP avoids the limit, but that route needs an inbound port, which CGNAT does not allow."
+  },
+  {
+   "product": "QNAP (myQNAPcloud)",
+   "label": "Remote download through myQNAPcloud vs the home site's upload",
+   "value": "Download was limited by the remote site's 29 Mbit/s (about 3.6 MB/s) upload; total throughput 'very similar' to NKN nConnect",
+   "source": "https://nascompares.com/review/nkn-nconnect-vpn-for-qnap/",
+   "source_title": "NKN nConnect VPN for QNAP review – NAS Compares",
+   "read": "2026-11-17",
+   "note": "Eddie Webguy, 2021-12-01. The client had about 150 Mbit/s down and 18.3 Mbit/s up. The actual speeds appear only in screenshots that were not readable. The article does not say whether the myQNAPcloud session was relayed. This 2021 result conflicts with QNAP's 2026 statement of 1–2 Mbps."
+  },
+  {
+   "product": "Synology (Tailscale, model not stated)",
+   "label": "Tailscale relay vs direct backup speed after an ISP change, CGNAT suspected",
+   "value": "10 Mbps relayed vs 25 Mbps direct (WireGuard site-to-site before the ISP change: about 100 Mbps)",
+   "source": "https://forums.lawrencesystems.com/t/tailscale-barely-working/21481",
+   "source_title": "Tailscale Barely Working – Lawrence Systems Forums",
+   "read": "2026-11-17",
+   "note": "Forum user borgtech, 2024-05-19, measuring Synology-to-Synology backup between two pfSense sites. The WAN address was 100.x (the CGNAT range), but the poster did not confirm CGNAT. Direct ÷ relay = 2.5×. This is one user's report, not a lab test."
+  }
+ ],
+ "unsourced": [
+  "UGREENlink relay throughput in Mbps or MB/s from any named reviewer: looked at WunderTech, Neowin, Trusted Reviews, CameraJabber and Notebookcheck reviews of NASync models; all measure LAN speeds only or describe remote access in words.",
+  "A measured QuickConnect relay figure (not a stated cap) from a named reviewer for the DS225+, DS223j or BeeStation Plus: the BlackVoid BeeStation Plus review (2025-07-11) measures only backup speeds (36 MB/s SMB, 26 MB/s to C2); the WunderTech remote-access article rates QuickConnect relay only as 'Slow on relay'; the SpaceRex summary page had no content.",
+  "Asustor EZ-Connect and TerraMaster TNAS.online relay throughput from any reviewer: none found in searches.",
+  "Tailscale throughput measured on a UGREEN DXP2800 or a Synology DS225+ behind Starlink or 5G CGNAT by a named reviewer: the Tailscale forum Starlink thread (about 400 KB/s via DERP to a Synology) returned HTTP 403 and could not be opened; the needtoknowit.com.au Starlink article gives no measurements.",
+  "Time to back up phone photos over a vendor relay (Synology Photos, UGREEN NAS app, QuMagie) as measured by a named reviewer: none found."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.0049008
+ }
+}

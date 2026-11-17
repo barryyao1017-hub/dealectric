@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which NAS can actually run Tailscale, the usual way around CGNAT. UGREEN says in writing that the DH2300 cannot run it ('DH2300 does not support Docker and cannot use this method'). Tailscale says its Synology Package Center package is no longer supported and you should install its own .spk by hand. QNAP's App Center lists Tailscale under Communications for x86-64 and arm-64 devices.",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved run shows no search queries and no result list, so it cited no rival pages. Its answer only says 'install Tailscale on a compatible NAS' and never says which models qualify. It also says UGREEN works 'on supported models' without naming any model it excludes. Our current page has two problems. It cites 'Tailscale official DSM package', which Tailscale now says is unsupported in Package Center. It also credits a '1–2 Mbps at peak' cap to QNAP's FAQ, and that FAQ no longer gives any number.",
+ "decides": "This settles the pick for shoppers who want both a vendor relay and a Tailscale route. The UGREEN DXP2800, QNAP TS-233/TS-264 and the Synology DS2xx models can do both. The DS models need Tailscale's .spk installed by hand, not the Package Center copy. The UGREEN DH2300 is limited to UGREENlink, its own relay. QNAP's relay is weaker than ChatGPT's 'Yes' suggests: QNAP says it may cap bandwidth, and its FAQ lists the web-desktop apps the relay can open.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "Synology DS223j",
+  "Synology DS225+",
+  "QNAP TS-264-8G",
+  "Asustor AS5402T"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Tailscale (Docker) support",
+   "value": "Not supported. UGREEN: 'DH2300 does not support Docker and cannot use this method'",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access",
+   "source_title": "UGREEN NAS Remote Access (UGREEN blog, dated 17/04/2026)",
+   "read": "2026-11-17",
+   "note": "UGREEN's Tailscale method runs as a Docker container and needs a 'Compatible Docker-capable model'. The same article names the DH2300 as unable to use it."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Remote access without a public IP or port forwarding",
+   "value": "UGREENlink: 'can provide remote access without requiring you to obtain a public IP address' and 'is designed to work without manually creating port-forwarding rules'. Tailscale is listed as a second route on Docker-capable models",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access",
+   "source_title": "UGREEN NAS Remote Access (UGREEN blog)",
+   "read": "2026-11-17",
+   "note": "The only prerequisite named is a 'current version of UGOS'. The article does not say whether UGREENlink connects peer to peer or through a relay, and it lists no models excluded from UGREENlink."
+  },
+  {
+   "product": "Synology DS223j / DS225+",
+   "label": "Tailscale package source on DSM",
+   "value": "Tailscale says 'The Tailscale package published in the Synology Package Center is no longer supported'. Install the .spk from Tailscale's package server by hand, picking the file for your model's CPU architecture",
+   "source": "https://tailscale.com/kb/1131/synology",
+   "source_title": "Access Synology NAS from anywhere · Tailscale Docs (last validated Jan 5, 2026)",
+   "read": "2026-11-17",
+   "note": "This contradicts the current page's 'Tailscale official DSM package' cell."
+  },
+  {
+   "product": "Synology DS223j / DS225+",
+   "label": "Tailscale limits on DSM 7",
+   "value": "By default, Tailscale on DSM 7 'only lets you make inbound connections to your Synology device'. Letting other NAS apps connect out over Tailscale needs a boot task that enables TUN, and that task must be rerun after each Tailscale upgrade. Synology can advertise routes but cannot use --accept-routes. Tailscale SSH is not supported. Moving from DSM 6 to DSM 7 means uninstalling and reinstalling Tailscale",
+   "source": "https://tailscale.com/kb/1131/synology",
+   "source_title": "Access Synology NAS from anywhere · Tailscale Docs",
+   "read": "2026-11-17",
+   "note": "None of this affects a phone reaching the NAS, because that connection is inbound to the NAS."
+  },
+  {
+   "product": "Synology DS223j / DS225+",
+   "label": "QuickConnect limits and exclusions",
+   "value": "'Third-party applications are not supported'. 'Some services and packages that require direct mapping to an IP address or DDNS are not supported'. Relayed connections 'may be slower than port-forwarded connections', and the relay 'may not work in some regions' because of ISP restrictions",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "DSM 7.4 Software Specifications – Network & External Access (Synology)",
+   "read": "2026-11-17",
+   "note": "The page lists no excluded DiskStation models. Its list of supported apps sits in a linked KB article, and that article would not load."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "Tailscale availability",
+   "value": "Listed in QNAP App Center under Communications. A manual QPKG is also available. Supported on 'x86-64bit devices' and 'arm-64bit devices'. Making the NAS a subnet router requires the tailscale command line",
+   "source": "https://tailscale.com/kb/1273/qnap",
+   "source_title": "Access QNAP NAS from anywhere · Tailscale Docs (last validated Jan 5, 2026)",
+   "read": "2026-11-17",
+   "note": "No minimum QTS or QuTS version is stated."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "myQNAPcloud Link: which apps it opens",
+   "value": "'only available for apps and stations that use the Web Administration port'. It supports File Station, Multimedia/Photo/Music/Video Station, Surveillance Station 'and other apps that can be launched from the QTS Desktop'",
+   "source": "https://support.myqnapcloud.com/faq/_faq_q_why-some-of-the-applications-and-stations-cannot-be-launched-when-using-cloudlink-connection-to-my-qts-desktop?lang=en",
+   "source_title": "myQNAPcloud FAQ: Why can I not launch some QTS apps and stations when using myQNAPcloud Link?",
+   "read": "2026-11-17",
+   "note": "The FAQ is undated and names no specific apps that are excluded."
+  },
+  {
+   "product": "QNAP TS-264-8G",
+   "label": "myQNAPcloud Link bandwidth",
+   "value": "QNAP 'will monitor the bandwidth and enforce some limits if necessary' on myQNAPcloud Link. DDNS gives 'direct access… so there is no bandwidth limit'",
+   "source": "https://support.myqnapcloud.com/faq/is-there-bandwidth-limite-when-i-use-myqnapcloud-remote-access-service",
+   "source_title": "myQNAPcloud FAQ: Are there bandwidth limits when using the myQNAPcloud remote access service?",
+   "read": "2026-11-17",
+   "note": "I checked this page twice and it gives no Mbps figure. The current page's 'usually 1–2 Mbps at peak' should come out unless another source is found. The DDNS route needs a public IP, which CGNAT does not provide."
+  }
+ ],
+ "unsourced": [
+  "Synology's list of mobile apps that work through QuickConnect relay (Synology Photos backup, Drive, DS file). The KB article loads by JavaScript and returned no text. The QuickConnect white paper PDF (cndl.synology.cn) downloaded, but I could not extract its text.",
+  "Whether UGREENlink connects peer to peer over IPv6 or through a relay. UGREEN's remote-access blog does not say, and I found no UGREEN help-center document on it.",
+  "Whether Asustor AiFoto 3 phone backup works over EZ-Connect relay. I did not re-check Asustor's online help in this pass.",
+  "Which Synology CPU architectures Tailscale's .spk files cover. Tailscale's KB points to a SynoCommunity architecture table, which I did not open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9086755000000002
+ }
+}

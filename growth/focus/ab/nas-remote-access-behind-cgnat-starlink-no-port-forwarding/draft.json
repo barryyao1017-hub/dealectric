@@ -1,0 +1,166 @@
+{
+ "status": "ok",
+ "angle": "C",
+ "why_angle": "ChatGPT's answer marks every brand 'Yes' behind CGNAT and says only 'install Tailscale on a compatible NAS' without naming the models that can. This page states for each model whether Tailscale runs and how: the DH2300 cannot (no Docker), Synology needs Tailscale's hand-installed .spk because the Package Center copy is unsupported, and Asustor's package is a community Docker build. It also cites QNAP's 1–2 Mbps relay figure to the QNAP page that actually states it.",
+ "slug": "nas-remote-access-behind-cgnat-starlink-no-port-forwarding",
+ "must": [
+  "Pick the UGREEN NASync DXP2800",
+  "QNAP rates its relay at 1–2 Mbps"
+ ],
+ "products": [],
+ "unsourced": [
+  "TerraMaster F2-425: I looked for an official TOS App Center or Tailscale page listing a Tailscale package. Only community .tpk builds and forum threads turned up, and the TerraMaster forum returned 403, so I left the row out.",
+  "UGREENlink connection order (IPv6 P2P before relay). The UGREEN remote-access blog does not describe it, and support article 671 would not render.",
+  "Relay speed in Mbps for Synology QuickConnect, UGREENlink and Asustor EZ-Connect. The makers' spec and help pages give no number.",
+  "Amazon prices for the Synology, QNAP and Asustor records on 2026-11-17. amzcheck.py search returned no results, so they were not re-read. The UGREEN store prices (DXP2800 $389.99, DH2300 $239.99) were re-read with storecheck.py on 2026-11-17."
+ ],
+ "page": {
+  "title": "Which NAS can you reach from your phone behind CGNAT (Starlink, 5G home internet) with no port forwarding (2026)?",
+  "h1": "Which NAS can you reach from your phone behind CGNAT (Starlink, 5G home internet) with no port forwarding? (2026)",
+  "desc": "Every NAS maker's relay works behind CGNAT, but QNAP rates its relay at 1–2 Mbps. Here is which 2-bay NAS can also run Tailscale for a direct path to your phone, and which can't.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> You can reach a NAS from your phone behind CGNAT with no port forwarding through the maker's relay, but QNAP rates its relay at 1–2 Mbps. Pick the UGREEN NASync DXP2800: UGREENlink needs no public IP, and its Docker runs Tailscale for a direct path the DH2300 can't.</p>",
+  "columns": [
+   [
+    "route",
+    "Maker's route with no public IP"
+   ],
+   [
+    "relay",
+    "Relay speed, as stated"
+   ],
+   [
+    "tailscale",
+    "Tailscale for a direct path"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "route": "UGREENlink: no public IP and no port-forwarding rules (UGREEN)",
+     "relay": "UGREEN gives no figure; 2–4× faster than QuickConnect in WunderTech's testing",
+     "tailscale": "Yes, as a Docker container (UGREEN's supported method); Docker runs well per Android Central"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "route": "QuickConnect; third-party apps not supported over it (Synology)",
+     "relay": "No figure; relayed links 'may be slower' from latency (Synology)",
+     "tailscale": "Yes, Tailscale's DSM 7 .spk installed by hand; Package Center copy no longer supported (Tailscale)"
+    }
+   },
+   {
+    "slug": "qnap-ts-264-8g",
+    "model": "QNAP TS-264-8G",
+    "cells": {
+     "route": "myQNAPcloud Link; opens only apps on the Web Administration port (QNAP)",
+     "relay": "'usually limited to 1–2 Mbps' (QNAP, 2026-04-07)",
+     "tailscale": "Yes, App Center under Communications; x86-64 and arm-64 supported (Tailscale)"
+    }
+   },
+   {
+    "slug": "synology-ds223j",
+    "model": "Synology DS223j",
+    "cells": {
+     "route": "QuickConnect; third-party apps not supported over it (Synology)",
+     "relay": "No figure; relayed links 'may be slower' from latency (Synology)",
+     "tailscale": "Yes, by manual .spk; Tailscale's DSM 7 builds include armv8 (Tailscale)"
+    }
+   },
+   {
+    "slug": "asustor-as5402t",
+    "model": "Asustor AS5402T",
+    "cells": {
+     "route": "EZ-Connect: tries LAN IP or EZ-Router, then the cloud.ezconnect.to relay (Asustor)",
+     "relay": "Asustor 'will limit bandwidth speed', no figure; some apps won't run on the relay",
+     "tailscale": "Community Docker package in App Central, AS54 listed, ADM 5.0.0+; not officially supported by Tailscale Inc."
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dh2300",
+    "model": "UGREEN NASync DH2300",
+    "cells": {
+     "route": "UGREENlink: no public IP and no port-forwarding rules (UGREEN)",
+     "relay": "UGREEN gives no figure; 2–4× faster than QuickConnect in WunderTech's UGREENlink testing",
+     "tailscale": "No: 'DH2300 does not support Docker and cannot use this method' (UGREEN)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p>Each box here can be reached from a phone behind CGNAT through its maker's relay. Two things separate them: how fast the relay is once it carries the traffic, and whether the NAS can also run Tailscale, which usually finds a direct path.</p><ul><li>QNAP relay, 1 GB of phone video: 8,000 Mb ÷ 2 Mbps = 4,000 s ≈ 67 min; at 1 Mbps, 8,000 s ≈ 133 min.</li><li>Tailscale's own DERP relay test (Delhi to Minnesota, 2.2 Mbps): 8,000 Mb ÷ 2.2 ≈ 3,636 s ≈ 61 min. Over its peer relay at 27.5 Mbps: 8,000 ÷ 27.5 ≈ 291 s ≈ 4.8 min.</li><li>DXP2800 over DH2300: $389.99 − $239.99 = $150 on UGREEN's store (2026-11-17). For this job, the extra money buys Docker, which is how UGREEN runs Tailscale.</li></ul><table><thead><tr><th>What you do from your phone</th><th>What fits</th></tr></thead><tbody><tr><td>Open a document or a few photos</td><td>Any maker relay; the DH2300 is the cheapest box here with one</td></tr><tr><td>Back up phone video or catch up a photo backup</td><td>A box that runs Tailscale: {buy:ugreen-nasync-dxp2800}, DS225+ or TS-264-8G</td></tr><tr><td>Stream from Plex or Jellyfin</td><td>Tailscale; Synology states third-party apps are not supported over QuickConnect</td></tr><tr><td>Synology's own apps only, light use</td><td>DS223j on QuickConnect, with Tailscale added later by manual .spk</td></tr></tbody></table><h2>Which NAS can run Tailscale, and why it matters behind CGNAT</h2><p>David Anderson of Tailscale calls CGNAT \"a run of the mill double-NAT\" that is \"mostly okay\" for a direct connection, adding that \"the big thing that breaks is our port mapping protocols.\" QuickConnect's automatic UPnP rules and any DDNS setup depend on port mapping, so behind Starlink or 5G home internet the maker apps fall back to their relay servers. Tailscale tries a direct path first and treats its DERP relay as the \"fallback of last resort\".</p><ul><li>UGREEN DXP2800: Tailscale runs as a Docker container, which is UGREEN's supported method. Android Central's Harish Jonnalagadda found \"you can install just about any service via Docker, and it runs well.\"</li><li>UGREEN DH2300: UGREEN states it \"does not support Docker and cannot use this method\", so UGREENlink is its only route.</li><li>Synology DS225+ and DS223j: Tailscale says the Package Center copy \"is no longer supported\". Install Tailscale's DSM 7 .spk by hand instead (x86_64 and armv8 builds, version 1.104.7 on 2026-11-17). By default it accepts only inbound connections, which is the direction a phone needs.</li><li>QNAP TS-264-8G: Tailscale is in App Center under Communications, for x86-64 and arm-64 devices.</li><li>Asustor AS5402T: Tailscale is a community Docker package in App Central (AS54 listed, ADM 5.0.0 or later). The listing says it \"is not officially supported by Tailscale Inc.\"</li></ul><h2>Not recommended</h2><p>The UGREEN NASync DH2300 is the wrong box if you plan to pull video or run large phone backups away from home. It is the cheapest box here at $239.99, but it has no Docker, so it cannot run Tailscale and every remote byte goes over UGREENlink. For opening files and single photos it works.</p>",
+  "sources": [
+   [
+    "UGREENlink needs no public IP or port forwarding; Tailscale runs as a Docker container; DH2300 cannot use it",
+    "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access"
+   ],
+   [
+    "DXP2800 runs Docker well (Harish Jonnalagadda, 2025-01-21)",
+    "https://www.androidcentral.com/accessories/smart-home/ugreen-nasync-dxp2800-review"
+   ],
+   [
+    "UGREENlink relay 2–4× faster than QuickConnect in Frank Joseph's testing",
+    "https://www.wundertech.net/ugreen-vs-synology/"
+   ],
+   [
+    "QuickConnect: relay may be slower, third-party apps not supported, UPnP auto port forwarding",
+    "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access"
+   ],
+   [
+    "Synology Package Center Tailscale no longer supported; manual .spk; DSM 7 inbound by default",
+    "https://tailscale.com/kb/1131/synology"
+   ],
+   [
+    "Tailscale DSM 7 .spk builds (x86_64, armv8; 1.104.7)",
+    "https://pkgs.tailscale.com/stable/#spks"
+   ],
+   [
+    "myQNAPcloud Link relay usually limited to 1–2 Mbps (QNAP, 2026-04-07)",
+    "https://www.qnap.com/en/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings"
+   ],
+   [
+    "myQNAPcloud Link opens only apps on the Web Administration port",
+    "https://support.myqnapcloud.com/faq/_faq_q_why-some-of-the-applications-and-stations-cannot-be-launched-when-using-cloudlink-connection-to-my-qts-desktop?lang=en"
+   ],
+   [
+    "Tailscale in QNAP App Center under Communications, x86-64 and arm-64",
+    "https://tailscale.com/kb/1273/qnap"
+   ],
+   [
+    "Asustor EZ-Connect relay order, bandwidth limit and app limits",
+    "https://www.asustor.com/online/online_help?id=13"
+   ],
+   [
+    "Asustor App Central Tailscale: community Docker package, AS54 listed, ADM 5.0.0",
+    "https://www.asustor.com/en/app_central/app_detail?id=1775&model=40"
+   ],
+   [
+    "CGNAT is a double NAT that is mostly okay; port mapping is what breaks (David Anderson)",
+    "https://tailscale.com/blog/how-nat-traversal-works"
+   ],
+   [
+    "Tailscale DERP 2.2 Mbps vs peer relay 27.5 Mbps measured",
+    "https://tailscale.com/blog/peer-relays-international-networks"
+   ],
+   [
+    "UGREEN store price: DXP2800 $389.99 (2026-11-17)",
+    "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "UGREEN store price: DH2300 $239.99 (2026-11-17)",
+    "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [],
+ "query": "which nas can you reach from your phone behind cgnat",
+ "verified_changes": 2,
+ "verified_removed": 0,
+ "gate": {
+  "date": "2026-11-17",
+  "pass": true,
+  "g": null
+ }
+}

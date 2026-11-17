@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a NAS behind CGNAT can be reached from a phone only if its app keeps an outbound session open to a vendor relay. The automatic UPnP port-forward that QuickConnect does on the home router cannot open the carrier's NAT layer. Once traffic falls back to the vendor's relay, it is throttled (QNAP: 'usually limited to 1-2 Mbps'; ASUSTOR: bandwidth limited and 'some applications cannot be executed in this mode'). QuickConnect also does not carry third-party apps such as Plex or Jellyfin at all, so phone streaming from a box behind CGNAT needs a mesh VPN like Tailscale. Tailscale's own engineer calls CGNAT 'a run of the mill double-NAT … mostly okay' for a direct path.",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat ran no searches and got no results, so there are no cited rival pages. Its answer already says relays work behind CGNAT but can be slower, and that P2P is 'not guaranteed'. It gives no relay speed, never says QuickConnect excludes third-party apps (Plex, Jellyfin, Immich), and never explains that UPnP port-forwarding fails behind CGNAT. It also misses Tailscale's statement that CGNAT on its own usually still allows a direct path. Our current page already has QNAP's 1–2 Mbps figure and Synology's 'may be slower', so the new parts are the third-party-app exclusion and the UPnP/double-NAT mechanism. The page also cites the wrong QNAP URL for the 1–2 Mbps figure: the support FAQ gives no number, and the number is in QNAP's reference article listed below.",
+ "decides": "This confirms that every brand ChatGPT named does 'work' behind CGNAT for its own photo and file apps, because every one of them falls back to a relay. It changes the pick in two ways. (1) If the shopper wants to stream video or run a third-party app from the phone, a vendor relay is not enough: QuickConnect does not carry third-party apps, and QNAP's relay runs at about 1–2 Mbps. Pick a NAS that can run Tailscale (Synology DS225+/DS223j, QNAP TS-264, UGREEN DXP2800 via Docker), not the Docker-less UGREEN DH2300 or a BeeStation. (2) For light use like photo backup and file browsing, the vendor relay is fine. Synology's 'slower' relay is the only one with no published throttle figure, while QNAP and ASUSTOR both say they limit relay bandwidth.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS223j",
+  "QNAP TS-264-8G",
+  "Asustor AS5402T",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+ / DS223j (DSM 7.4 QuickConnect)",
+   "label": "QuickConnect app coverage",
+   "value": "'Third-party applications are not supported.' and 'Some services and packages that require direct mapping to an IP address or DDNS are not supported.'",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Synology DSM 7.4 Software Specifications – Network and External Access",
+   "read": "2026-11-17",
+   "note": "Quoted from Synology's US spec page. Plex, Jellyfin and other third-party packages cannot be reached through a QuickConnect ID, so behind CGNAT they need a VPN path."
+  },
+  {
+   "product": "Synology DS225+ / DS223j (DSM 7.4 QuickConnect)",
+   "label": "QuickConnect relay behaviour",
+   "value": "'Relayed QuickConnect connections may be slower than port-forwarded connections because of increased network latency.' 'The relay service may not work in some regions because of restrictions imposed by specific Internet service providers.' QuickConnect 'Automatically applies required port forwarding rules to compatible UPnP routers.'",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Synology DSM 7.4 Software Specifications – Network and External Access",
+   "read": "2026-11-17",
+   "note": "Synology publishes no relay speed figure. Behind CGNAT, the UPnP rule only opens the home router, not the carrier's NAT, so per the Tailscale finding below port mapping is what breaks. Expect hole punching or the relay."
+  },
+  {
+   "product": "QNAP TS-264-8G (myQNAPcloud Link)",
+   "label": "Relay bandwidth",
+   "value": "'Traffic must be relayed through the official server, and bandwidth is usually limited to 1-2 Mbps.' 'In situations where global users share bandwidth, speeds are usually limited to 1-2 Mbps.'",
+   "source": "https://www.qnap.com/en-ca/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings",
+   "source_title": "QNAP – Why is your blazing fast NAS, but remote file transfer feels like it's crawling? (dated 2026-04-07)",
+   "read": "2026-11-17",
+   "note": "QNAP's own article. The support FAQ (support.myqnapcloud.com/faq/is-there-bandwidth-limite-...) only says QNAP 'will monitor the bandwidth and enforce some limits if necessary' and that DDNS has no limit. At 1–2 Mbps, a 3 GB phone video takes roughly 3.3–6.7 hours (3,000 MB × 8 ÷ 1–2 Mb/s)."
+  },
+  {
+   "product": "Asustor AS5402T (EZ-Connect)",
+   "label": "Relay mode limits",
+   "value": "Tries LAN IP or EZ-Router first, then the relay. In relay via cloud.ezconnect.to, 'ASUSTOR will limit bandwidth speed to maintain service stability' and 'Some applications cannot be executed in this mode.'",
+   "source": "https://www.asustor.com/online/online_help?id=13",
+   "source_title": "ASUSTOR Online Help – EZ-Connect",
+   "read": "2026-11-17",
+   "note": "No Mbps figure published, and the affected apps are not named."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DH2300 (UGREENlink)",
+   "label": "UGREENlink requirement",
+   "value": "'UGREENlink can provide remote access without requiring you to obtain a public IP address' and 'is designed to work without manually creating port-forwarding rules'. DDNS 'requires … router-side port forwarding.'",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access",
+   "source_title": "UGREEN – UGREEN NAS Remote Access (dated 17/04/2026)",
+   "read": "2026-11-17",
+   "note": "This UGREEN page does not describe P2P, IPv6 or relay mechanics or any speed. So UGREEN's DDNS option fails behind CGNAT, and UGREENlink is the built-in path."
+  },
+  {
+   "product": "general (Tailscale)",
+   "label": "Is CGNAT itself a blocker for a direct path?",
+   "value": "CGNAT is 'a run of the mill double-NAT, and so … it's mostly okay'. 'The big thing that breaks is our port mapping protocols.' 'If both hairpinning and port mapping protocols fail, you're stuck with relaying.' DERP relay is the 'fallback of last resort'.",
+   "source": "https://tailscale.com/blog/how-nat-traversal-works",
+   "source_title": "How NAT traversal works – David Anderson, Tailscale blog, 2020-08-21",
+   "read": "2026-11-17",
+   "note": "This is the named engineer's own explanation. CGNAT blocks UPnP or NAT-PMP port-forwarding, which QuickConnect's auto-forward and any DDNS setup depend on. UDP hole punching usually still works."
+  },
+  {
+   "product": "general (Tailscale)",
+   "label": "When Tailscale must relay, and relay speed",
+   "value": "'Tailscale can't establish a direct connection if both devices are behind a hard NAT.' 'DERP servers are reliable but have limited quality of service … generally slower than direct connections and may offer lower maximum throughput.' 'Peer relay connections are usually faster than DERP connections.'",
+   "source": "https://tailscale.com/kb/1257/connection-types",
+   "source_title": "Tailscale Docs – Connection types",
+   "read": "2026-11-17",
+   "note": "Peer relays need 'Tailscale version 1.86 or later' and a UDP port that other tailnet devices can reach, on any OS except iOS, Apple TV or Android (https://tailscale.com/kb/1591/peer-relays, read 2026-11-17). So the phone cannot act as the relay."
+  }
+ ],
+ "unsourced": [
+  "Starlink's CGNAT range (100.64.0.0/10), its rule that inbound ports are blocked, and its native IPv6 /56 delegation. The starlink.com help articles render as JS-only pages to the fetcher and returned no text, so I left these figures out.",
+  "Synology's QuickConnect white paper (connection order LAN → WAN → hole punching → relay). I fetched the PDF from cndl.synology.cn, but text extraction was not permitted in this session.",
+  "Any published Mbps cap for Synology's QuickConnect relay, UGREENlink's relay, or Tailscale DERP. Checked Synology's DSM 7.4 spec page, UGREEN's remote-access blog and Tailscale's DERP KB, and none gives a number.",
+  "Whether UGREENlink uses IPv6 P2P before relaying, as our current page claims. UGREEN's 2026-04-17 remote-access blog does not say, and I found no other UGREEN document stating it.",
+  "Which ASUSTOR apps stop working in EZ-Connect relay mode. ASUSTOR's help page says some do but does not name them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9761080999999999
+ }
+}

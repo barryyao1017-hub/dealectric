@@ -1,0 +1,112 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got puts a number on how slow the relay fallback is. QNAP's own figure for its myQNAPcloud Link relay is 1–2 Mbps. At that speed one 1 GB phone video takes about 67–133 minutes to pull. Tailscale measured about 2.2 Mbps through its DERP relay, which is about 61 minutes per GB. Neither Synology, UGREEN nor Asustor publishes a relay speed at all.",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no searches and cited no pages, so the only thing to compare against is its own answer. That answer says only that a relay is 'potentially slower' and that a direct connection is 'often faster', with no figure for either. Our current page has QNAP's 1–2 Mbps, but it cites the wrong page: the myQNAPcloud FAQ it links only says QNAP will 'monitor the bandwidth and enforce some limits if necessary'. The number comes from QNAP's 2026-04-07 reference article, and that article ties it to shared global bandwidth, not to peak hours. None of the pages turns a speed into transfer time, and none has Tailscale's measured DERP number.",
+ "decides": "This confirms that the pick should depend on getting a direct path, not on which brand's relay you use. Every vendor relay that publishes a number or has been measured runs at about 1–2 Mbps. That works for opening a document or a single photo. It is not workable for pulling video or catching up a photo backup. Behind CGNAT, favor a NAS that can run Tailscale (UGREEN DXP2800 through Docker, Synology DS225+/DS223j through the official package, QNAP through Container Station) or that offers an IPv6 direct path, and treat the vendor relay as a last resort. The DH2300 has no Docker, so it is weaker here unless you add a separate Tailscale device.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "Synology DS225+",
+  "Synology DS223j",
+  "QNAP TS-264",
+  "Asustor Drivestor 2 Lite (AS1102TL)"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-264 (myQNAPcloud Link relay)",
+   "label": "Relay speed QNAP states",
+   "value": "1–2 Mbps",
+   "source": "https://www.qnap.com/en/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings",
+   "source_title": "Qfile Storage Speed Reality: Why is Direct Connection faster than Relay Server? (QNAP, 2026-04-07)",
+   "read": "2026-11-17",
+   "note": "Quoted: 'In situations where global users share bandwidth, speeds are usually limited to 1-2 Mbps.' The same article says a direct connection can run at the home's full upload speed ('500M fiber upload ... full 500M')."
+  },
+  {
+   "product": "QNAP TS-264 (myQNAPcloud Link relay)",
+   "label": "Time to pull one 1 GB video over the relay",
+   "value": "≈67–133 min",
+   "source": "https://www.qnap.com/en/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings",
+   "source_title": "Qfile Storage Speed Reality (QNAP)",
+   "read": "2026-11-17",
+   "note": "1 GB = 8,000 Mb; 8,000 ÷ 2 Mbps = 4,000 s ≈ 67 min; 8,000 ÷ 1 Mbps = 8,000 s ≈ 133 min. Per 100 MB: 800 ÷ 2 = 400 s ≈ 6.7 min, up to 13.3 min at 1 Mbps."
+  },
+  {
+   "product": "QNAP TS-264 (myQNAPcloud Link relay)",
+   "label": "QNAP's wording on its FAQ page",
+   "value": "The FAQ gives no Mbps figure; it says QNAP will 'monitor the bandwidth and enforce some limits if necessary' on Link, with no limit on DDNS/direct",
+   "source": "https://support.myqnapcloud.com/faq/is-there-bandwidth-limite-when-i-use-myqnapcloud-remote-access-service",
+   "source_title": "myQNAPcloud FAQ: Are there bandwidth limits when using the myQNAPcloud remote access service?",
+   "read": "2026-11-17",
+   "note": "The current page's QNAP cell links here for the '1–2 Mbps at peak' claim. Re-cite it to the qnap.com reference article above and drop 'at peak'."
+  },
+  {
+   "product": "Tailscale (any NAS that runs it: DXP2800, DS225+, DS223j, TS-264)",
+   "label": "Measured throughput through the DERP relay vs a peer relay",
+   "value": "DERP ≈2.2 Mbps sustained; peer relay 27.5 Mbps (27–35 Mbps)",
+   "source": "https://tailscale.com/blog/peer-relays-international-networks",
+   "source_title": "Tailscale blog: peer relays on international networks (2026-01-26)",
+   "read": "2026-11-17",
+   "note": "120 s iperf3 TCP test from Delhi, India to Robbinsdale, MN. DERP receiver 2.20 Mbps; Tailscale credits 'DERP QoS shaping'. This is one intercontinental path, not a published cap. A US domestic DERP path may be faster."
+  },
+  {
+   "product": "Tailscale (DERP fallback)",
+   "label": "Time to pull one 1 GB video at the measured DERP rate",
+   "value": "≈61 min (vs ≈4.8 min via peer relay at 27.5 Mbps)",
+   "source": "https://tailscale.com/blog/peer-relays-international-networks",
+   "source_title": "Tailscale blog: peer relays on international networks",
+   "read": "2026-11-17",
+   "note": "8,000 Mb ÷ 2.2 Mbps = 3,636 s ≈ 61 min; 8,000 ÷ 27.5 = 291 s ≈ 4.8 min. When Tailscale gets a direct connection, speed is limited only by the home's upload."
+  },
+  {
+   "product": "Synology DS225+ / DS223j (QuickConnect)",
+   "label": "What Synology states about relay speed",
+   "value": "No Mbps figure; 'Relayed QuickConnect connections may be slower than port-forwarded connections because of increased network latency'",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Synology DSM 7.4 Network and External Access spec",
+   "read": "2026-11-17",
+   "note": "The same page says 'Third-party applications are not supported' over QuickConnect and the relay 'may not work in some regions because of restrictions imposed by specific Internet service providers'. Without a speed figure, no transfer time can be computed."
+  },
+  {
+   "product": "Asustor Drivestor 2 Lite (AS1102TL) (EZ-Connect)",
+   "label": "What Asustor states about relay speed",
+   "value": "No Mbps figure; 'ASUSTOR will limit bandwidth speed to maintain service stability' when connecting via the cloud.ezconnect.to relay; 'Some applications cannot be executed in this mode'",
+   "source": "https://www.asustor.com/online/online_help?id=13",
+   "source_title": "EZ-Connect | Online Help | ASUSTOR NAS",
+   "read": "2026-11-17",
+   "note": "Tries the LAN IP or EZ-Router first and uses the relay only if that fails. Without a speed figure, no transfer time can be computed."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price at the UGREEN NAS store",
+   "value": "$389.99 (listed compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py (Shopify), in stock. The DXP2800 GT is $429.99 on the same store."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Route UGREEN's remote access takes",
+   "value": "Through UGREEN's servers after you register a UGREEN account at ug.link",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/7/",
+   "source_title": "igor'sLAB (Tim Kutzner), Ugreen NASync DXP2800 NAS im Test, p. 7 'Zugriff aus der Ferne'",
+   "read": "2026-11-17",
+   "note": "Kutzner: 'Die Verbindung läuft dann über die Server von Ugreen' (the connection runs through Ugreen's servers). He gives no throughput figure for it."
+  }
+ ],
+ "unsourced": [
+  "Relay speed for UGREENlink: no figure on nas.ugreen.com or support pages, and no named reviewer measured it (igor'sLAB, Macwelt and NASCompares describe it without numbers). I found only one anonymous Reddit report of 'KB/s' speeds.",
+  "Relay speed for Synology QuickConnect: the DSM 7.4 spec says only 'may be slower'. The KB article on Drive speed did not render, and the QuickConnect white paper was not reachable. I found only anonymous forum reports (1.4 MB/s, 52 Mbit).",
+  "Relay speed for Asustor EZ-Connect: the help page confirms it is rate-limited but gives no number.",
+  "A US-to-US Tailscale DERP throughput figure: the only measured number is Tailscale's own Delhi-to-Minnesota test.",
+  "An official Apple figure for MB per minute of iPhone 4K HEVC video, to turn the per-GB times into per-clip times: only third-party estimates (170–400 MB/min) turned up, so I used 1 GB and 100 MB as the units instead.",
+  "Amazon prices for Synology DS225+/DS223j and QNAP TS-264: amzcheck.py search returned nothing (likely walled), and neither maker has a US store I could check."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0927748
+ }
+}

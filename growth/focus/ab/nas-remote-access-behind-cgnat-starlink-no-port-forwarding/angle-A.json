@@ -1,0 +1,86 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that QNAP is the only one of the five NAS makers to put a number on its CGNAT relay speed: myQNAPcloud Link relay traffic is 'usually limited to 1-2 Mbps', so 1 GB of phone video takes about 67–133 minutes. Synology, Asustor, TerraMaster and UGREEN only say their relays are slower or bandwidth-limited, and give no figure.",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat has no search results and no cited pages. Its answer is a table marking every brand 'Yes' for 'Works behind CGNAT?' with no throughput behind the yes. Our current page has the 1–2 Mbps figure, but it links it to QNAP's support FAQ. I opened that FAQ on 2026-11-17 and it gives no number, only 'we will monitor the bandwidth and enforce some limits if necessary'. The number is in QNAP's Qfile Pro reference article dated 2026-04-07. Nothing the shopper saw lines up the five relays in the same unit or notes that four makers publish no cap.",
+ "decides": "This partly settles the pick. QNAP's built-in relay is out for phone photo and video backup behind CGNAT, because its own stated 1–2 Mbps (0.125–0.25 MB/s) works for browsing files but not for moving video. QNAP owners on CGNAT need Tailscale in Container Station or a direct route. The other four makers publish no relay cap, so they can't be ranked on speed. The real split is direct path versus relay. Synology tries a hole-punched direct path before falling back to its relay. UGREEN tries IPv6 P2P first, which matters on Starlink and 5G home internet where IPv6 is often present. For heavy phone backup, the safe recommendation on any brand is Tailscale, whichever maker it is. The page should stop presenting 'Works behind CGNAT: Yes' as if it meant the same thing for every brand.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS223j",
+  "QNAP TS-264-8G",
+  "Asustor AS5402T",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "TerraMaster F2-212"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-264-8G (myQNAPcloud Link)",
+   "label": "Relay throughput stated by maker",
+   "value": "usually 1–2 Mbps (0.125–0.25 MB/s)",
+   "source": "https://www.qnap.com/en-ca/reference/qfile-storage-speed-reality-why-is-direct-connection-faster-than-relay-servernas-complete-analysis-of-remote-connection-settings",
+   "source_title": "Qfile Storage Speed Reality: Why is Direct Connection faster than Relay Server? (QNAP, 2026-04-07)",
+   "read": "2026-11-17",
+   "note": "QNAP's wording: 'bandwidth is usually limited to 1-2 Mbps' on the myQNAPcloud Link relay route, because global users share the relay. Qfile Pro labels this route 'myQNAPcloud Link (Relay Mode)' and labels DDNS/WAN IP 'Direct Connection Mode'. Arithmetic: 1 GB = 8,000 Mb; 8,000 ÷ 2 = 4,000 s ≈ 67 min; 8,000 ÷ 1 = 8,000 s ≈ 133 min."
+  },
+  {
+   "product": "QNAP TS-264-8G (myQNAPcloud Link)",
+   "label": "Relay limit in QNAP's support FAQ",
+   "value": "QNAP says it 'will monitor the bandwidth and enforce some limits if necessary'; DDNS (direct) has 'no bandwidth limit'",
+   "source": "https://support.myqnapcloud.com/faq/is-there-bandwidth-limite-when-i-use-myqnapcloud-remote-access-service",
+   "source_title": "myQNAPcloud Help FAQ: Are there bandwidth limits when using the myQNAPcloud remote access service?",
+   "read": "2026-11-17",
+   "note": "This FAQ has no Mbps figure. Our current page cites this URL for '1–2 Mbps', which is wrong. Move the citation to the Qfile reference article above. DDNS does not help on CGNAT because there is no inbound IPv4."
+  },
+  {
+   "product": "Asustor AS5402T (EZ-Connect)",
+   "label": "Relay limits stated by maker",
+   "value": "Tries LAN IP / EZ-Router first, then the relay; on cloud.ezconnect.to 'ASUSTOR will limit bandwidth speed'; 'Some applications cannot be executed in this mode'",
+   "source": "https://www.asustor.com/online/online_help?id=13",
+   "source_title": "EZ-Connect | Online Help | ASUSTOR NAS",
+   "read": "2026-11-17",
+   "note": "The page gives no Mbps figure and does not say which apps fail on the relay. It recommends the ASUSTOR EZ Connect client for large transfers."
+  },
+  {
+   "product": "Synology DS225+ / DS223j (QuickConnect)",
+   "label": "Relay behaviour stated by maker",
+   "value": "Relayed connections 'may be slower than port-forwarded connections because of increased network latency'; relay 'may not work in some regions because of restrictions imposed by specific Internet service providers'",
+   "source": "https://www.synology.com/en-us/dsm/7.4/software_spec/network_external_access",
+   "source_title": "Network and External Access | DSM 7.4 software specifications | Synology",
+   "read": "2026-11-17",
+   "note": "Synology blames latency, not a bandwidth cap, and states no Mbps figure. The spec page also says third-party apps and services that need direct IP/DDNS mapping are not supported over QuickConnect, and admins choose which apps are reachable."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DH2300 (UGREENlink)",
+   "label": "Remote access without a public IP (maker)",
+   "value": "UGREENlink 'can provide remote access without requiring you to obtain a public IP address'; works from the UGREEN NAS mobile app and desktop client using the UGREENlink ID",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-remote-access",
+   "source_title": "How to Access Your UGREEN NAS Remotely: UGREENlink, DDNS, and Tailscale (UGREEN, 17/04/2026)",
+   "read": "2026-11-17",
+   "note": "This UGREEN page gives no relay speed or cap and does not describe P2P versus relay. The IPv6-P2P-then-relay order is in UGREEN support article 671, which I could not open (see unsourced)."
+  },
+  {
+   "product": "TerraMaster F2-212 (TNAS.online)",
+   "label": "How TNAS.online works (maker doc)",
+   "value": "Remote access 'without the need for port forwarding' via browser (TNAS.online/<TNAS ID>), TNAS mobile (Android/iOS) and TNAS PC; needs a TerraMaster account; Security Isolation Mode must be off",
+   "source": "https://help.terra-master.com/docs/TOS7/controlpanel/network-services/remote-access",
+   "source_title": "Remote Access | TOS 7 | TerraMaster Help",
+   "read": "2026-11-17",
+   "note": "The TOS 7 doc does not say whether traffic is relayed or peer-to-peer and states no bandwidth figure."
+  }
+ ],
+ "unsourced": [
+  "Synology QuickConnect connection order (LAN/WAN, then hole punching, then relay) from the QuickConnect White Paper PDF (cndl.synology.cn). I downloaded the PDF, but WebFetch could not read the compressed text and running pdftotext locally was not approved, so I only saw this in search snippets.",
+  "UGREEN's IPv6 P2P requirement and relay fallback from support.ugnas.com article 671 ('Introduction to UGREEN NAS P2P Connection Mode (Including IPv6 Support)'). The page loads its content with JavaScript, WebFetch returned only the heading, and a raw curl was not approved.",
+  "A TerraMaster staff statement that TNAS.online bandwidth per user is limited. The forum thread (forum.terra-master.com viewtopic p=5420) returned HTTP 403.",
+  "Any Mbps or MB/s cap published by Synology, Asustor, UGREEN or TerraMaster. I checked each maker's remote-access help or spec page and none has a figure.",
+  "A first-party Starlink or T-Mobile Home Internet page confirming public IPv6 for residential customers, which UGREEN P2P and Tailscale direct paths depend on. Search returned only third-party blogs, and I did not open a carrier page.",
+  "Prices: out of scope for this angle and not checked today."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9560910999999999
+ }
+}
