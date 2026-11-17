@@ -1,0 +1,82 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a 16-inch MacBook Pro only takes the full 140 W through Apple's USB-C to MagSafe 3 cable, or through Apple's 240 W USB-C cable on the Nov 2023 and later models. ChargerLab measured that an M1 Max 16-inch on a 140 W power bank drew about 130 W through MagSafe but dropped to 90 W on a USB-C to USB-C cable.",
+ "standout": 2,
+ "standout_why": "Compared against Macworld (cited) and rottenwifi.com '15 Best Laptop Power Banks' (rank 4). The cited Wirecutter page could not be read: the proxy URL now returns only a block message, and nytimes.com refused the fetch. Macworld only says the 16-inch Pro 'can be fast-charged at 140W' and should use a 'PD 3.1 power bank'. It mentions 'Apple's USB-C to MagSafe 3 Cable or the included 240W USB-C cable' in passing in its Anker Prime 26K entry, but never says that a plain USB-C cable limits older 16-inch models. Rottenwifi covers the generic part: '140W is worthwhile only when the laptop supports USB PD 3.1… and the cable supports the required 5A extended-power mode'. It does not name the MagSafe 3 requirement, the Nov 2023 model cutoff for USB-C, or any measured drop. No rival gives Apple's own list of combinations or a measured 130 W vs 90 W.",
+ "decides": "This confirms the 140 W picks (UGREEN 145W, Anker Prime 26K A110A) only for 16-inch MacBook Pro owners who also use a USB-C to MagSafe 3 cable, or Apple's 240 W USB-C cable on a Nov 2023 or later 16-inch. With an ordinary USB-C to USB-C cable, a 2021 16-inch gets about 90 W in testing. In that case a 100 W bank like the Anker A1695 or the Baseus FC41's 100 W port performs about the same, for less money and weight. Every 14-inch Pro and every Air fast-charges over any USB-C charge cable at 96 W or more, so 140 W adds nothing for them.",
+ "candidates": [
+  "UGREEN 145W 25000mAh 3-Port Power Bank",
+  "Anker Prime Power Bank (26K, 300W) A110A",
+  "Anker Laptop Power Bank (25K, 165W) A1695",
+  "Baseus EnerFill FC41 25000mAh 145W",
+  "AOHi The Future Starship 240W 27600mAh"
+ ],
+ "findings": [
+  {
+   "product": "general (Apple MacBook Pro 16-inch, 2021 or later)",
+   "label": "Supported 140 W fast-charge setups, in Apple's words",
+   "value": "\"140W USB-C Power Adapter + USB-C to MagSafe 3 Cable\"; \"140W USB-C Power Adapter + 240W USB-C Charge Cable for MacBook Pro (16-inch, Nov 2023) or later\"",
+   "source": "https://support.apple.com/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-17",
+   "note": "For the 16-inch, Apple lists no plain USB-C charge cable. The only USB-C option is its 240 W cable, and only on Nov 2023 or later models. The 14-inch Pro and the Air do list 'USB-C to MagSafe 3 Cable or USB-C charge cable' with 96 W and 140 W adapters (the Air also with 70 W, and 67 W on the 13.6-inch)."
+  },
+  {
+   "product": "general (Apple MacBook Pro 14-inch and MacBook Air)",
+   "label": "Lowest Apple adapter listed for fast charging, and the cable allowed",
+   "value": "14-inch Pro: 96 W adapter with 'USB-C to MagSafe 3 Cable or USB-C charge cable'; Air: 70 W (67 W on the 13.6-inch) with the same cables",
+   "source": "https://support.apple.com/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-17",
+   "note": "Apple's adapter combinations translated to a power bank: a 100 W USB-C port covers fast charging on the 14-inch Pro and the Air; 140 W is never required for them."
+  },
+  {
+   "product": "general (MacBook Pro 16-inch M1 Max on a 140 W power bank)",
+   "label": "Measured charging power by cable",
+   "value": "about 130 W through a USB-C to MagSafe 3 cable (27 V mode); 90 W through a USB-C to USB-C cable",
+   "source": "https://chargerlab.com/review-of-baseus-140w-power-bank",
+   "source_title": "ChargerLab review of Baseus 140W power bank (PPADM140, 24,000 mAh / 86.4 Wh), 2023-10-26",
+   "read": "2026-11-17",
+   "note": "ChargerLab test on the USB-C1 port: 'the power can be up to 130W' with MagSafe 3; with C-to-C 'the power naturally dropped to 90W'. The test is on a Baseus bank, not one of our candidates. It shows the laptop-side limit."
+  },
+  {
+   "product": "general (USB Power Delivery)",
+   "label": "Voltage needed for 140 W, and the old ceiling",
+   "value": "140 W needs the 28 V fixed level; before PD 3.1, USB PD topped out at 100 W (20 V × 5 A cable)",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-17",
+   "note": "USB-IF: 'New 28V, 36V, and 48V fixed voltages enable up to 140W, 180W and 240W power levels' and 'Prior to this update, USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A.' The new levels need cables that meet the 240 W requirements in USB Type-C Release 2.1."
+  },
+  {
+   "product": "Anker Prime Power Bank (26K, 300W) A110A",
+   "label": "Cable condition stated by the maker (input side)",
+   "value": "140 W input needs a 140 W charger and a 5 A cable; 250 W input needs both USB-C ports, each with a 5 A cable and a 140 W charger",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) - anker.com",
+   "read": "2026-11-17",
+   "note": "Footnote quoted: 'Achieve 140W input with a compatible 140W charger and a 5A cable.' Page price $229.99. The page does not list box contents. Macworld says the bank includes a 240 W USB-C cable."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Port that delivers 140 W, and cable",
+   "value": "1× USB-C at 140 W PD 3.1, 1× USB-C at 100 W PD 3.0, 1× USB-A at 22.5 W; 145 W total; no built-in cable",
+   "source": "https://www.macworld.com/article/2395511/best-laptop-power-banks-for-apple-macbook.html",
+   "source_title": "Best laptop power banks for Apple MacBook 2026 | Macworld",
+   "read": "2026-11-17",
+   "note": "From Macworld's spec list and cons ('No built-in cable'). A 16-inch Pro reaches 140 W only from USB-C1, and only with a MagSafe 3 cable or Apple's 240 W cable (Nov 2023 or later model)."
+  }
+ ],
+ "unsourced": [
+  "UGREEN 145W 25000mAh 3-Port: in-box cable rating and US price. ugreen.com, us.ugreen.com and the en-ca 90597A page returned HTTP 429, and Adorama returned 403. A search snippet claimed a 100 W cable is included, but I could not open a page to confirm it. storecheck.py was not approved to run.",
+  "An Apple statement giving the exact USB-C watt limit on the 2021 and Jan 2023 16-inch MacBook Pro. Apple's page lists only the supported combinations. The 90 W figure is ChargerLab's measurement.",
+  "Wirecutter (cited rival): the proxy URL returns only a block message and nytimes.com could not be fetched, so I could not check whether it covers the MagSafe or cable limit.",
+  "solargenadvisor.com (rank 10) failed with a TLS certificate error, so I could not check it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0329200999999997
+ }
+}
