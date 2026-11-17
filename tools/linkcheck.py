@@ -554,7 +554,12 @@ def main() -> int:
     ap.add_argument("--date", default=None, help="the date in the output file name (default: today, UTC)")
     ap.add_argument("--out", default=None, help="write here instead of growth/codes/<date>-links.json")
     ap.add_argument("--slug", action="append", default=None, help="only this product (repeatable; testing)")
-    return run(ap.parse_args())
+    ap.add_argument("--deadline-min", type=int, default=None, help="run deadline in minutes (default 12, for the daily sweep)")
+    a = ap.parse_args()
+    if a.deadline_min:
+        global DEADLINE
+        DEADLINE = a.deadline_min * 60
+    return run(a)
 
 
 if __name__ == "__main__":

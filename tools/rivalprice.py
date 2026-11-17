@@ -66,7 +66,9 @@ def shopify(url: str) -> dict:
         return {"error": "no variants"}
     return {"live_price": v["price"] / 100, "live_compare": (v.get("compare_at_price") or 0) / 100 or None,
             "live_available": bool(v.get("available")), "variant": v["id"], "variant_title": v.get("title"),
-            "listing_title": d.get("title"), "variants": len(vs), "source": "shopify"}
+            "variant_named": bool(want), "listing_title": d.get("title"), "source": "shopify",
+            "variants": [{"id": x["id"], "title": x.get("title"), "price": x["price"] / 100, "available": bool(x.get("available"))}
+                         for x in vs]}
 
 
 def _offers(node, out):
@@ -111,8 +113,22 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
     ap.add_argument("--skip-pages", default=None, help="JSON list of page slugs to leave out")
+    ap.add_argument("--records", nargs="+", default=None, help="read these product records (src/products.py slugs) instead")
     ap.add_argument("pages", nargs="*")
     a = ap.parse_args()
+    if a.records:
+        from products import PRODUCTS
+        by = {p["slug"]: p for p in PRODUCTS}
+        rows = []
+        for slug in a.records:
+            p = by[slug]
+            res = shopify(p["url"]) if "/products/" in p["url"] else jsonld(p["url"])
+            rows.append({"slug": slug, "name": p["name"], "model": p.get("model"), "url": p["url"], "record_price": p.get("price"),
+                         "cart_variant": p.get("cart_variant"), "read_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), **res})
+            print(slug, res.get("live_price", res.get("error")), len(res.get("variants", [])), flush=True)
+            time.sleep(2.5)
+        Path(a.out).write_text(json.dumps({"date": dt.date.today().isoformat(), "rows": rows}, indent=1))
+        return 0
     skip = set(json.load(open(a.skip_pages))) if a.skip_pages else set()
     rows, last = [], {}
     for g in GAP_PAGES:

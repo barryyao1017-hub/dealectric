@@ -34,11 +34,39 @@ from products import PRODUCTS  # noqa: E402
 
 BY_SLUG = {p["slug"]: p for p in PRODUCTS}
 MAX_MOVE = 0.25
+RECVAR: dict = {}
 MONEY = re.compile(r"\$\s?([\d,]+(?:\.\d\d)?)")
 
 
 def money(x: float) -> str:
     return f"${x:,.2f}".replace(".00", "")
+
+
+def _toks(t: str) -> set[str]:
+    return set(re.findall(r"[a-z0-9]+", str(t).lower()))
+
+
+def pick_variant(model: str, variants: list[dict], shown: float | None):
+    """The listing variant that is this model, as (variant, how) or (None, why). One variant: that one. Several: the
+    variants whose titles fit the model best (model words present, extra words such as "Plus" or a bundle's panel count
+    against); the one at the shown price among them if any (the price still holds), else the single best, else None."""
+    if not variants:
+        return None, "no variants read"
+    if len(variants) == 1:
+        return variants[0], "single variant"
+    mt = _toks(model)
+    def score(v):
+        vt = _toks(v.get("title"))
+        return len(mt & vt) - 0.5 * len(vt - mt)
+    best = max(score(v) for v in variants)
+    cands = [v for v in variants if score(v) == best]
+    if shown is not None:
+        same = [v for v in cands if abs(v["price"] - shown) < 0.01]
+        if same:
+            return same[0], "variant at the shown price"
+    if len(cands) == 1 and len(mt & _toks(cands[0].get("title"))) > 0:
+        return cands[0], "variant title matches the model"
+    return None, f"ambiguous variant ({len(variants)} on the listing, titles don't single out the model)"
 
 
 def prose(g: dict) -> str:
@@ -66,6 +94,7 @@ def main() -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--skip-pages", default=None)
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--record-variants", default=None, help="tools/rivalprice.py --records report for the moved records")
     a = ap.parse_args()
     skip = set(json.load(open(a.skip_pages))) if a.skip_pages else set()
     pages = [g for g in gaps.GAP_PAGES if g["slug"] not in skip]
@@ -74,6 +103,8 @@ def main() -> int:
     out = {"date": day, "ours": {"same": [], "applied": [], "held": [], "unread": []},
            "rivals": {"same": [], "applied": [], "held": [], "unread": []}}
 
+    recvar = {r["slug"]: r for r in json.load(open(a.record_variants))["rows"]} if a.record_variants else {}
+    RECVAR.update(recvar)
     reads = {}
     for r in pr["rows"]:
         p = BY_SLUG.get(r["slug"])
@@ -83,6 +114,19 @@ def main() -> int:
             out["ours"]["unread"].append({"slug": r["slug"], "why": r.get("error")})
             continue
         old, new = p.get("price"), r["live_price"]
+        named = "variant=" in p.get("url", "") or p.get("cart_variant")
+        if old is not None and abs(new - float(old)) >= 0.01 and not named:
+            rv_ = recvar.get(r["slug"])
+            if rv_ is None:
+                out["ours"]["held"].append({"slug": r["slug"], "old": old, "first_variant_price": new,
+                                            "why": "price moved and the listing's variants were not re-read"})
+                continue
+            v, how = pick_variant(p["name"], rv_.get("variants", []), float(old))
+            if v is None:
+                out["ours"]["held"].append({"slug": r["slug"], "old": old, "first_variant_price": new, "why": how})
+                continue
+            new = v["price"]
+            r["live_available"] = v.get("available")
         reads[r["slug"]] = new
         if old is None or abs(new - float(old)) < 0.01:
             out["ours"]["same"].append(r["slug"])
@@ -109,14 +153,23 @@ def main() -> int:
             out["rivals"]["unread"].append({**key, "why": r.get("error") or "no price shown in the row"})
             continue
         old, new = r["shown_price"], r["live_price"]
+        g = by_page[r["page"]]
+        row = g["rows"][r["row"]]
+        if r.get("variants") and not r.get("variant_named"):
+            v, how = pick_variant(f'{row.get("brand", "")} {row.get("model", "")}', r["variants"], old)
+            if v is None:
+                out["rivals"]["held"].append({**key, "old": old, "why": how, "first_variant_price": new})
+                continue
+            new = r["live_price"] = v["price"]
+            r["variant_title"], r["live_available"] = v.get("title"), v.get("available")
         if abs(new - old) < 0.01:
             out["rivals"]["same"].append(key)
             continue
-        g = by_page[r["page"]]
-        row = g["rows"][r["row"]]
         item = {**key, "old": old, "new": new, "move": round((new - old) / old, 3), "cell": r.get("price_cell")}
         why = None
-        if abs(new - old) / old > MAX_MOVE:
+        if r.get("live_available") is False:
+            why = "sold out on the maker's store at the new price"
+        elif abs(new - old) / old > MAX_MOVE:
             why = f"moved {item['move']:+.0%}"
         elif any(k != "price" and "$" in str(v) for k, v in row.get("cells", {}).items()):
             why = "other $ cells in the row are worked out from the price"
@@ -153,6 +206,22 @@ def apply(out: dict, reads: dict, day: str, rv: dict, skip: set) -> None:
             b2 = b2.replace(f'"price": {new_price}', f'"price": {new_price}, "verified": "{day}"', 1)
         s = s[:i] + b2 + s[j:]
     pp.write_text(s)
+    # 2a. stock: the daily read takes the first available variant, so on a listing with several variants a record whose own
+    # variant is sold out reads "in stock". Where the variants were re-read, use the variant that is this record; where
+    # that variant can't be singled out, drop the read and keep the record's own in_stock.
+    sp = src / "stock.json"
+    if sp.exists():
+        st = json.loads(sp.read_text())
+        for slug, rv_ in RECVAR.items():
+            p = BY_SLUG.get(slug)
+            if p is None or slug not in st["in_stock"] or len(rv_.get("variants", [])) < 2:
+                continue
+            v, _ = pick_variant(p["name"], rv_["variants"], p.get("price"))
+            if v is None:
+                st["in_stock"].pop(slug)
+            else:
+                st["in_stock"][slug] = bool(v.get("available"))
+        sp.write_text(json.dumps(st, indent=1) + "\n")
     # 2. read dates for every price read (build.py uses one only where it matches the record)
     (src / "price_reads.json").write_text(json.dumps({"date": day, "prices": dict(sorted(reads.items()))}, indent=1) + "\n")
     # 3. rival rows: src/rival_reads.json {"date", "cells": {"<page>|<maker url>": {"from": old cell, "to": new cell}}};
