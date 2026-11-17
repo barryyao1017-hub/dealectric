@@ -1,0 +1,123 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the makers' PLA bed temperatures side by side: Prusa gives 60 °C, Bambu gives 45–60 °C for its Textured PEI plate, BIQU gives 45–55 °C for Glacier and 30–50 °C for Frostbite. None of them says that the coldest plate, Frostbite, is rated for PLA and PETG only, and retailer listings disagree on whether it also takes ABS.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited, plus nozzlenotes.com and 3dadapt.com. Prusa's PLA article (help.prusa3d.com/article/pla_2062) gives 60 °C and recommends satin or smooth PEI. Prusa's sheet guidepost gives no temperatures (its comparison table is an image). Nozzlenotes gives Bambu Textured PEI at 45–60 °C for PLA but names no cold-grip plate. 3dadapt covers only Prusa sheets and gives no temperatures. None of them mentions BIQU CryoGrip or Bambu SuperTack. None puts PLA bed floors on one footing, and none notes that the lowest-temperature plate gives up material range. ChatGPT's answer says textured PEI at '50–60°C' and doesn't mention cold plates.",
+ "decides": "If the shopper prints only PLA (and maybe PETG), Frostbite runs PLA 15 °C cooler at the bottom of its range than Bambu's Textured PEI (30 vs 45 °C) and 30 °C cooler than Prusa's 60 °C. MatterHackers' table marks ABS, TPU, PLA HR, PVA and nylon as not compatible with it, and it can't be cleaned with alcohol. Anyone who will also print ABS or TPU should take Glacier (PLA 45–55 °C, wide material list) or Textured PEI instead. Our current page lists Frostbite's materials as 'PLA, PETG, ABS'. MatterHackers contradicts that and 3DJake supports it, so the cell should say 'PLA, PETG' with a footnote about the conflict until BIQU's own Frostbite page can be read.",
+ "candidates": [
+  "BIQU Panda CryoGrip Pro Frostbite",
+  "BIQU Panda CryoGrip Pro Glacier",
+  "Bambu Lab Textured PEI Plate",
+  "Bambu Lab Cool Plate SuperTack",
+  "Prusa Smooth PEI Print Sheet",
+  "Prusa Satin Print Sheet"
+ ],
+ "findings": [
+  {
+   "product": "general (Prusa sheets)",
+   "label": "PLA bed temperature, maker",
+   "value": "60 °C, one figure, not a range",
+   "source": "https://help.prusa3d.com/article/pla_2062?product=mk3-5",
+   "source_title": "PLA | Prusa Knowledge Base",
+   "read": "2026-11-17",
+   "note": "Quote: 'Recommended bed temperature: 60 °C'. The page says satin or smooth PEI gives the best adhesion. A Prusa support comment, not the article itself, suggests raising the bed about 5 °C if adhesion is weak."
+  },
+  {
+   "product": "Prusa Smooth PEI Print Sheet",
+   "label": "Price, Prusa store",
+   "value": "$29.74 (list $34.99, -13 %)",
+   "source": "https://www.prusa3d.com/product/smooth-pei-print-sheet/",
+   "source_title": "Smooth PEI Print Sheet | Original Prusa 3D printers",
+   "read": "2026-11-17",
+   "note": "The page calls it 'the best solution for printing PLA' but gives no bed temperature or thickness. Warranty covers only sheets defective on arrival, because 'the coatings are designed to diminish over time'."
+  },
+  {
+   "product": "Bambu Lab Textured PEI Plate",
+   "label": "PLA bed temperature range",
+   "value": "45–60 °C; PETG 60–80 °C; PEI coating 0.075 mm",
+   "source": "https://nozzlenotes.com/articles/printers/3d-printer-build-plates",
+   "source_title": "3D Printer Build Plate: PEI, Glass and Textured | Nozzle Notes",
+   "read": "2026-11-17",
+   "note": "Nozzlenotes quotes Bambu's documentation (sources checked 2026-10-10). Bambu's store and wiki both returned HTTP 402 to me, so I couldn't read Bambu's own page. This range matches the 45–60 °C already on our page."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Glacier",
+   "label": "PLA / PETG bed temperature (Bambu-fit listing)",
+   "value": "PLA 45–55 °C; PETG 60–75 °C",
+   "source": "https://biqu.equipment/products/biqu-panda-buildplate-cryogrip-pro",
+   "source_title": "BIQU Panda BuildPlate CryoGrip Pro for Bambu X2D/X1/P1/P2/A1/A1 mini/...",
+   "read": "2026-11-17",
+   "note": "Quote: 'Excellent grip for PLA at 45-55°C and PETG at 60-75°C'. Cleaning: 'water, soap, or alcohol'. Rated to 300 °C nozzle. Store price for the listing is 'from $19.99' (compare-at $59.99). The variant shown when the page loaded was $29.99. I didn't get a price for each variant."
+  },
+  {
+   "product": "BIQU CryoGrip Pro Glacier (Voron / Elegoo listing)",
+   "label": "Bed temperature as stated on a second BIQU listing",
+   "value": "30–65 °C, one range covering both PLA and PETG",
+   "source": "https://biqu.equipment/products/biqu-cryogrip-pro-glacier-build-plate",
+   "source_title": "BIQU CryoGrip Pro Buildplate ... For Voron 300 Voron 350 ELEGOO CC/CC2",
+   "read": "2026-11-17",
+   "note": "This is BIQU's store listing text, found through its store search. The same Glacier surface is given as PLA 45–55 °C on the Bambu listing, but here as one 30–65 °C span for PLA and PETG together, so the two listings can't be compared directly. Use the per-material figures."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite",
+   "label": "PLA / PETG bed temperature",
+   "value": "PLA 30–50 °C; PETG 50–70 °C",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C | MatterHackers",
+   "read": "2026-11-17",
+   "note": "Comparison: the Frostbite PLA floor of 30 °C is 15 °C below the Glacier and Bambu Textured PEI floors (45 °C) and 30 °C below Prusa's 60 °C. 3DJake's Frostbite page also lists PLA 30–50 °C and PETG 50–70 °C."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite",
+   "label": "Rated materials",
+   "value": "PLA and PETG only. ABS/CF, TPU, PLA HR, PVA, nylon/CF and other filaments are marked 'Not compatible'",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C | MatterHackers",
+   "read": "2026-11-17",
+   "note": "Quote: 'Compatible ONLY with PLA & PETG at room temperature.' In the same table Glacier is 'Manufacturer recommended' for ABS, TPU, PVA and nylon. This contradicts our current page's 'PLA, PETG, ABS' for Frostbite."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite",
+   "label": "Rated materials, conflicting retailer listing",
+   "value": "'Suitable for printing with PLA, PETG and ABS only!'",
+   "source": "https://www.3djake.com/biqu/panda-build-plate-cryogrip-pro-frostbite-blue",
+   "source_title": "BIQU Panda Build Plate CryoGrip Pro Frostbite - Blue, Bambu Lab X1/P1/P2/A1 | 3DJake",
+   "read": "2026-11-17",
+   "note": "This page gives no ABS bed temperature, so 3DJake's ABS claim has no operating range attached. Its cleaning line is 'Just soap and water.'"
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite vs Glacier",
+   "label": "Cleaning",
+   "value": "Frostbite: water and soap only. Glacier: water and soap, or alcohol",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C | MatterHackers",
+   "read": "2026-11-17",
+   "note": "Quotes: 'Use water and soap ONLY on Frostbite' and 'Use water and soap OR alcohol on Glacier'."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite vs Glacier",
+   "label": "Grip Strength Index (BIQU's own scale)",
+   "value": "Frostbite 10, Glacier 8 (scale not stated)",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C | MatterHackers",
+   "read": "2026-11-17",
+   "note": "This is a maker index with no stated scale or test method, so it can't be compared with any Prusa or Bambu figure. Show it as a relative ranking only. The same table gives Glacier PETG as 55–75 °C, while BIQU's own page says 60–75 °C."
+  }
+ ],
+ "unsourced": [
+  "Bambu Cool Plate SuperTack PLA bed temperature from Bambu itself: us.store.bambulab.com and wiki.bambulab.com both returned HTTP 402, and pbtech.com returned 403. Our page's '45°C (Bambu's comparison chart)' couldn't be re-checked today.",
+  "Bambu Textured PEI range from Bambu's own page (402). I used nozzlenotes' copy of Bambu's documentation instead.",
+  "BIQU's own Frostbite product page with its compatibility table: biqu.equipment returned HTTP 429. That page is needed to settle the ABS conflict between MatterHackers and 3DJake.",
+  "Price for each BIQU variant (Frostbite and Glacier, 257 mm and 180 mm): the store gives only 'from $19.99' and $29.99 for the variant selected by default.",
+  "Bambu US store prices for SuperTack and Textured PEI (store blocked). A US reseller (3D Universe) shows $34.99 and $20.99, but those aren't the maker's store, so I left them out.",
+  "Coating life in print cycles or months for any of these plates: Prusa, BIQU, MatterHackers and nozzlenotes give no number.",
+  "Coating and plate thickness for the BIQU CryoGrip Pro: none of the pages I read gives a figure.",
+  "Default PLA bed temperatures in Bambu Studio for each plate type: the wiki was blocked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2091632
+ }
+}

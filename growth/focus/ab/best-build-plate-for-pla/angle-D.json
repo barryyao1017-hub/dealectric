@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that Bambu Studio's own PLA profile sets PLA's 'Softening temperature' (temperature_vitrification) at 45 °C but its default Textured PEI bed temperature at 55 °C. Bambu Studio's warning tooltip fires when the bed is at or above the softening temperature and tells you to open the front door and/or take off the upper glass to avoid nozzle clogs. So on an enclosed printer, textured PEI at its normal PLA setting only works with the enclosure open, while a cool-type plate at 35 °C stays under the limit.",
+ "standout": 3,
+ "standout_why": "Pages compared: the cited Prusa KB PLA article (help.prusa3d.com/article/pla_2062) and the cited Flexible steel sheets guidepost (help.prusa3d.com/article/flexible-steel-sheets-guidepost_2195), plus the top results nozzlenotes.com (build plates) and 3dadapt.com (smooth vs textured vs satin). Prusa recommends a 60 °C bed and Satin/Smooth PEI for PLA, and says to let the sheet cool to room temperature before removing a print. Prusa never mentions enclosures, softening temperature or heat creep. The nozzlenotes page lists Bambu textured PEI at 45–60 °C for PLA but says nothing about a closed chamber. The 3dadapt page says outright that it does not cover Bambu plates or enclosed-printer heat. ChatGPT's own answer gives 50–60 °C for textured PEI, which is above Bambu's 45 °C softening value.",
+ "decides": "For an enclosed printer (Bambu P1S, X1, P2S, X2D, or a QIDI Q2/Plus5/Max4), this changes the pick. Textured PEI at Bambu's own 55 °C default is 10 °C over the 45 °C softening value, so Bambu Studio will tell you to open the door or lift the lid. A cold-grip plate run at the bottom of its range (Bambu's Cool Plate profile is 35 °C; the BIQU Frostbite range on our page starts at 30 °C) lets the enclosure stay shut. The tooltip warns at 'equal to or greater than', so a plate run at 45 °C would also trigger it, as would the top of the Frostbite range (50 °C, figure from our page; I did not reopen it today). On the open-frame A1 and A1 mini this doesn't matter, and ChatGPT's pick, textured PEI, still stands.",
+ "candidates": [
+  "BIQU Panda CryoGrip Pro Frostbite 257 × 257 mm",
+  "BIQU Panda CryoGrip Pro Frostbite 180 × 180 mm (A1 mini)",
+  "BIQU Panda CryoGrip Pro Glacier 257 × 257 mm",
+  "Bambu Lab Cool Plate SuperTack",
+  "Bambu Lab Textured PEI Plate"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PLA softening temperature in Bambu Studio's generic PLA profile (temperature_vitrification)",
+   "value": "45 °C",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/filament/fdm_filament_pla.json",
+   "source_title": "BambuStudio resources/profiles/BBL/filament/fdm_filament_pla.json (GitHub, bambulab/BambuStudio master)",
+   "read": "2026-11-17",
+   "note": "Read from the file: \"temperature_vitrification\": [\"45\"]. This is the base profile that Bambu's PLA filament presets inherit from."
+  },
+  {
+   "product": "Bambu Lab Textured PEI Plate",
+   "label": "Default PLA bed temperature on the textured plate in Bambu Studio",
+   "value": "55 °C (first layer and other layers)",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/filament/fdm_filament_pla.json",
+   "source_title": "BambuStudio resources/profiles/BBL/filament/fdm_filament_pla.json (GitHub, bambulab/BambuStudio master)",
+   "read": "2026-11-17",
+   "note": "\"textured_plate_temp\": [\"55\"], \"textured_plate_temp_initial_layer\": [\"55\"]; hot_plate_temp (smooth PEI / High Temp plate) is also 55. 55 − 45 = 10 °C above the softening value."
+  },
+  {
+   "product": "general",
+   "label": "Default PLA bed temperature on the Cool Plate in Bambu Studio",
+   "value": "35 °C (first layer and other layers)",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/resources/profiles/BBL/filament/fdm_filament_pla.json",
+   "source_title": "BambuStudio resources/profiles/BBL/filament/fdm_filament_pla.json (GitHub, bambulab/BambuStudio master)",
+   "read": "2026-11-17",
+   "note": "\"cool_plate_temp\": [\"35\"]. 45 − 35 = 10 °C below the softening value. eng_plate_temp is 0, which by Bambu's tooltip means PLA is not supported on the Engineering plate. The generic PLA file has no supertack_plate_temp key."
+  },
+  {
+   "product": "general",
+   "label": "What Bambu Studio does when the bed reaches the softening temperature",
+   "value": "Option labelled \"Softening temperature\". Tooltip: \"The material softens at this temperature, so when the bed temperature is equal to or greater than it,\" followed by advice to open the front door and/or remove the upper glass to avoid clogs. Default 100 °C unless the filament profile overrides it.",
+   "source": "https://raw.githubusercontent.com/bambulab/BambuStudio/master/src/libslic3r/PrintConfig.cpp",
+   "source_title": "BambuStudio src/libslic3r/PrintConfig.cpp (GitHub, bambulab/BambuStudio master)",
+   "read": "2026-11-17",
+   "note": "Read at offset 100000 of the file. The first clause is quoted exactly; the rest of the tooltip came back paraphrased (open front door and/or remove upper glass to avoid clogs), so quote only the first clause on the page."
+  },
+  {
+   "product": "general",
+   "label": "Prusa's recommended PLA bed temperature and surface",
+   "value": "60 °C; \"Satin or Smooth PEI sheet will provide the best adhesion\"",
+   "source": "https://help.prusa3d.com/article/pla_2062?product=mk3-5",
+   "source_title": "PLA | Prusa Knowledge Base",
+   "read": "2026-11-17",
+   "note": "This is in the cited rival page, so it is not new. It is here for contrast: Prusa's 60 °C is 15 °C over Bambu's 45 °C softening value, which matters only in an enclosed chamber. Prusa also says \"PLA does not require a heated bed.\""
+  },
+  {
+   "product": "BIQU Panda CryoGrip (Pro)",
+   "label": "Named-reviewer note on cold-plate adhesion and removal",
+   "value": "\"The bed adhesion strength when cold is immense!\"; \"even more essential to flex that plate\"; thin prints will be troublesome",
+   "source": "https://hackaday.com/2024/10/25/putting-the-new-cryogrip-build-plate-to-the-test",
+   "source_title": "Putting The New CryoGrip Build Plate To The Test (Hackaday, Dave Rowntree, 2024-10-25)",
+   "read": "2026-11-17",
+   "note": "Hackaday is summarising a test by the YouTube channel Printing Perspective. No temperatures or forces were measured. Hackaday's closed-door benefits (noise, filtration) are labelled as a guess, so they are not used as a finding."
+  }
+ ],
+ "unsourced": [
+  "The Bambu wiki pages on heat creep, filament compatibility (PLA top glass/door advice above 45 °C) and HMS 0500-0400-0003-0009 ('keep the front door of printer open') all returned HTTP 402, so their exact wording comes only from search snippets and is left out.",
+  "The Bambu US store pages for the Cool Plate SuperTack and Textured PEI Plate returned HTTP 402 to the page fetcher and HTTP 404 to storecheck.py. I have no price and no SuperTack PLA bed temperature from Bambu's own page today.",
+  "BIQU's own pages for the CryoGrip Pro Frostbite and Glacier: storecheck.py search on biqu3d.com returned nothing, so I could not re-confirm the 30–50 °C (Frostbite) and 45–55 °C (Glacier) PLA ranges or any BIQU statement about printing with the door closed.",
+  "An independent test of PLA on a cold plate with the enclosure closed (clog rate or chamber temperature measured): none found. The Hackaday/Printing Perspective piece does not measure it.",
+  "Running pdftotext on Bambu's X1E Chamber Setting Guide PDF (cdn.shopify.com) needed shell approval and was not done."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1680443999999999
+ }
+}

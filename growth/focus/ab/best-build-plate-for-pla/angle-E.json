@@ -1,0 +1,74 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured adhesion figure: Montanuniversität Leoben (Spoerk et al.) measured PLA's highest adhesion on a glass bed at a 70 °C platform temperature, and tied shear-off forces above 200 N (PLA/ABS on glass or polyimide tape) to low warpage and no detachment.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited Prusa KB pages (PLA, Flexible steel sheets guidepost) and the top results nozzlenotes.com and 3dadapt.com. The Prusa PLA page gives a 60 °C bed and 'Satin or Smooth PEI … best adhesion' with no measured values. The guidepost has no PLA-specific numbers. Nozzlenotes says it is 'not a test' and 'We have not tested the specific products'. 3dadapt says comparisons are 'based on published specifications, not hands-on testing'. None of them has a measured force, a measured optimum temperature, or any named tester. None of them mentions SuperTack or CryoGrip either.",
+ "decides": "This confirms the pick rather than changing it. I found no instrumented head-to-head of SuperTack, CryoGrip, textured PEI or smooth PEI, so the pick can't rest on measured adhesion. The Leoben data (PLA on glass peaks at 70 °C) is a measured reason to steer PLA printers off bare glass, which ChatGPT's table rates 'Good with proper setup'. A named reviewer saw no PLA adhesion loss at 45 °C on textured PEI. Hackaday's write-up of a hands-on test reports CryoGrip's grip at ambient as 'immense', and prints have to be flexed off. That supports keeping textured PEI as the all-rounder and labelling cold-grip plates as strongest grip but hardest release, especially for thin parts.",
+ "candidates": [
+  "BIQU Panda CryoGrip Pro Frostbite (257 × 257 mm)",
+  "BIQU Panda CryoGrip Pro Glacier (257 × 257 mm)",
+  "Bambu Lab Cool Plate SuperTack",
+  "Bambu Lab Textured PEI Plate",
+  "Prusa Smooth / Satin PEI sheet"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Bed temperature giving the highest PLA adhesion on glass (measured)",
+   "value": "70 °C platform temperature",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6415401",
+   "source_title": "Optimisation of the Adhesion of Polypropylene-Based Materials during Extrusion-Based Additive Manufacturing (Spoerk et al., Polymers 10(5):490, 2018)",
+   "read": "2026-11-17",
+   "note": "The Leoben group cites its own earlier measurement (Ref. 21, Spoerk et al., Plastics, Rubber and Composites 47:17–24): PLA on a glass mirror had its highest adhesion force at 70 °C. The surface is glass, not PEI. I could not open the original paper (403)."
+  },
+  {
+   "product": "general",
+   "label": "Shear-off force tied to no warping or detachment (measured threshold)",
+   "value": "> 200 N",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6415401",
+   "source_title": "Optimisation of the Adhesion of Polypropylene-Based Materials during Extrusion-Based Additive Manufacturing (Spoerk et al., Polymers 2018)",
+   "read": "2026-11-17",
+   "note": "Quote: 'measuring a shear-off force larger than 200 N for PLA and ABS on a glass surface or polyimide tape' was linked to low warpage and no detachment (citing Ref. 21). The part geometry is in the original paper, which I could not open."
+  },
+  {
+   "product": "general",
+   "label": "Bed temperature vs PLA adhesion (measured trend)",
+   "value": "Adhesion force rises significantly when the bed is slightly above the filament's glass transition temperature",
+   "source": "https://pure.unileoben.ac.at/en/publications/effect-of-the-printing-bed-temperature-on-the-adhesion-of-parts-p/",
+   "source_title": "Effect of the printing bed temperature on the adhesion of parts produced by fused filament fabrication (Spörk, Gonzalez-Gutierrez, Sapkota, Schuschnigg, Holzer; Montanuniversität Leoben; DOI 10.1080/14658011.2017.1399531)",
+   "read": "2026-11-17",
+   "note": "Measured with an in-house adhesion device plus contact-angle measurements. PLA and ABS were tested on 'two standard bed surfaces', which the abstract does not name."
+  },
+  {
+   "product": "Textured PEI (Energetic double-sided sheet, generic textured PEI)",
+   "label": "PLA adhesion at 45 °C vs 60 °C bed (reviewer observation, no instrument)",
+   "value": "No difference in adhesion at 45 °C vs the reviewer's usual 60 °C",
+   "source": "https://3dprintbeginner.com/energetic-double-sided-pei-sheet-review/",
+   "source_title": "ENERGETIC Double-Sided PEI Sheet Review (3DPrintBeginner, Ciprian)",
+   "read": "2026-11-17",
+   "note": "Published 2020-05-26, Sapphire Plus printer, filament brand not named. Quote: 'with the textured PEI sheet at 45C there's no difference in adhesion.' This is a qualitative print test, not a force measurement. Only the textured side was tested at both temperatures."
+  },
+  {
+   "product": "BIQU CryoGrip Pro (Frostbite / Glacier)",
+   "label": "Cold adhesion and release (hands-on reviewer, no figures)",
+   "value": "Adhesion at ambient described as 'immense'; prints have to be flexed off; thin prints 'troublesome'",
+   "source": "https://hackaday.com/2024/10/25/putting-the-new-cryogrip-build-plate-to-the-test",
+   "source_title": "Putting The New CryoGrip Build Plate To The Test (Hackaday, Dave Rowntree, 2024-10-25)",
+   "read": "2026-11-17",
+   "note": "Hackaday summarises YouTuber Printing Perspective's test. No temperatures, forces or warp were measured. The reviewer saw warping on the first printer, blamed it on the magnetic plate seating poorly, and the problem went away on another printer."
+  }
+ ],
+ "unsourced": [
+  "Instrumented adhesion or release force (N, N/mm) for Bambu Cool Plate SuperTack, BIQU CryoGrip Pro Frostbite or Glacier, Bambu Textured PEI, Prusa Smooth or Satin. I searched for CNC Kitchen, Tom's Hardware, All3DP, Hackaday and peel/pull tests and found no named measurement. A '0.84 N/mm textured PEI peel strength' figure appeared only in a search snippet with no method, so I left it out.",
+  "Bambu's own lab claim of '<20% adhesion loss after 300 prints (PLA Basic, A1)' for SuperTack. wiki.bambulab.com and us.store.bambulab.com returned HTTP 402, so I only saw it in search snippets.",
+  "Spoerk et al. 2017 full text (tandfonline DOI returned 403): which two bed surfaces were tested and the PLA force values at each bed temperature.",
+  "Measured PLA results on cold-grip plates at ambient or 30–45 °C beds from any named lab. The CryoGrip reports I found are qualitative (Hackaday/Printing Perspective) or buyer reviews on reseller pages.",
+  "Prices today: the storecheck.py run was not permitted in this session and the Bambu US store returned 402. BIQU's page returned 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0884681999999999
+ }
+}

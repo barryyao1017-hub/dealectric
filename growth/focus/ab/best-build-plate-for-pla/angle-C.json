@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the BIQU CryoGrip Pro Frostbite's AR code is read only by the Bambu X1C, so A1, P1, P2 and X2D owners must turn off Build Plate Detection, or that the 256/257 mm Bambu-size plates do not fit the H2 series, which needs a separate 350 × 325 mm size.",
+ "standout": 2,
+ "standout_why": "I compared against nozzlenotes.com/articles/printers/3d-printer-build-plates (top result). It names no plate-to-printer fit, gives no sizes and says nothing about plate detection; its only Bambu note is that some entries do not apply to the A1 mini. I also compared 3dadapt.com/guides/smooth-textured-satin-build-plates, which covers only Prusa MK4/MK4S sheets and says it 'does not establish compatibility for similarly named third-party plates … or other printer models'. The cited Prusa guidepost (help.prusa3d.com flexible-steel-sheets) maps sheets only to Prusa families and says the HighTemp sheet is for the HT90 only. ChatGPT's own answer stopped at 'What 3D printer do you have?' None of these covers Bambu plate sizes, plate detection or third-party plate recognition.",
+ "decides": "It confirms the current picks and adds a per-printer fit row rather than changing the winner. Frostbite (the cold-PLA pick) and the Bambu SuperTack both come in a 256/257 mm size for A1, P1, X1, P2S and X2D. The 257 mm plates will not fit the H2 series (H2D, H2S, H2C), which needs a 350 × 325 mm plate (BIQU's H-series PyroGrip is 346 × 355 mm). On every printer except the X1C, plan to turn off Build Plate Detection, because the plate's AR or QR code is not read there.",
+ "candidates": [
+  "BIQU Panda CryoGrip Pro Frostbite 257 mm",
+  "BIQU Panda CryoGrip Pro Frostbite 180 mm (A1 mini)",
+  "BIQU Panda CryoGrip Pro Glacier 257 mm",
+  "Bambu Lab Cool Plate SuperTack",
+  "Bambu Lab Textured PEI Plate"
+ ],
+ "findings": [
+  {
+   "product": "BIQU Panda CryoGrip Pro (Frostbite / Glacier)",
+   "label": "Printers named in maker listing title",
+   "value": "Bambu X2D, X1, P1, P2, A1, A1 mini, A2L, H2D, H2S, H2C, H3C (across all size variants)",
+   "source": "https://biqu.equipment/products/biqu-panda-buildplate-cryogrip-pro",
+   "source_title": "BIQU Panda BuildPlate CryoGrip Pro for Bambu X2D/X1/P1/P2/A1/A1 mini/A2L/H2D/H2S/H2C/H3C Printers",
+   "read": "2026-11-17",
+   "note": "Read from the store's search index with storecheck.py search on biqu.equipment. Opening the product page itself returned HTTP 429. The title covers every size variant, not one plate."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro (Frostbite / Glacier)",
+   "label": "Price on BIQU store",
+   "value": "$19.99 (compare-at $59.99); variant not identified",
+   "source": "https://biqu.equipment/products/biqu-panda-buildplate-cryogrip-pro",
+   "source_title": "BIQU Panda BuildPlate CryoGrip Pro …",
+   "read": "2026-11-17",
+   "note": "This is the price storecheck search returned for the product. I could not open the page to tie it to a specific size or texture."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro (Bambu-specific listing)",
+   "label": "Printers named in maker text",
+   "value": "Bambu X1C, X1E, P1S, P1P, A1, A1 mini; $22.99 (compare-at $118.99)",
+   "source": "https://biqu.equipment/products/biqu-panda-buildplate-cryogrip-pro-for-bambu",
+   "source_title": "BIQU Panda CryoGrip Pro Build Plate for Bambu Lab X1C/P1S/A1 – Double-Sided Low-Temp Magnetic Spring Steel Plate",
+   "read": "2026-11-17",
+   "note": "From storecheck search. This listing does not name P2S, X2D or the H2 series. Its typical temperatures are PLA 45–55 °C and PETG 60–75 °C."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite",
+   "label": "Plate recognition",
+   "value": "AR code on the plate is recognised by the X1C; on other printers turn off Build Plate Detection",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C (MatterHackers)",
+   "read": "2026-11-17",
+   "note": "From MatterHackers' retailer copy: 'The plate is marked with an AR code for instant recognition by the X1C.' Glacier comes with an AR code sticker instead, and the page names no printer for it. I could not open BIQU's own page (HTTP 429) to confirm this from the maker."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro",
+   "label": "Sizes by printer family",
+   "value": "256 × 256 mm for A1/P/X series; 350 × 325 mm for H series",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C (MatterHackers)",
+   "read": "2026-11-17",
+   "note": "Retailer copy. Our page lists the Bambu-size plate as 257 × 257 mm. The H-series size is a separate product, so the 257 mm plate will not fit an H2D, H2S or H2C."
+  },
+  {
+   "product": "BIQU Panda CryoGrip Pro Frostbite vs Glacier",
+   "label": "Material and cleaning limits",
+   "value": "Frostbite: PLA and PETG only, PLA 30–50 °C, soap and water only. Glacier: PLA 45–55 °C, soap and water or alcohol, takes engineering materials",
+   "source": "https://www.matterhackers.com/store/l/biqu-cryogrip-pro-build-plate/sk/MFFMLFUN",
+   "source_title": "BIQU Panda CryoGrip Pro Frostbite Build Plate - H2C (MatterHackers)",
+   "read": "2026-11-17",
+   "note": "Retailer copy. It gives Glacier's PETG range two ways, 60–75 °C in one section and 55–75 °C in another."
+  },
+  {
+   "product": "BIQU PyroGrip (H-series)",
+   "label": "H-series plate size and fit",
+   "value": "346 × 355 mm, for Bambu H2D, H2S, H2C, A2L, H3C; $30.59",
+   "source": "https://biqu.equipment/products/biqu-pyrogrip-build-plate",
+   "source_title": "BIQU Pyrogrip Build Plate 346MM x 355MM Spring Steel Sheet Double-Sided Textured PEI Grid for Bambu Lab H2D/H2S/H2C/A2L/H3C Printers",
+   "read": "2026-11-17",
+   "note": "From storecheck search on BIQU's store. BIQU's H-series plate is a different size from the 257 mm Bambu-size plate. The same text says its AR code is read by the 'X1 series'."
+  },
+  {
+   "product": "Bambu Lab Cool Plate SuperTack",
+   "label": "Printer fit, detection note and TPU exclusion",
+   "value": "Fits A1 mini (180 × 180 mm), and A1, P1P, P1S, X1, X1C, X1E, P2S, X2D (256 × 256 mm); on P2S and X2D turn off build plate position detection, because 'the QR code does not work with second-generation printers'; no TPU",
+   "source": "https://www.3djake.com/bambu-lab/bambu-cool-plate-supertack?sai=43944",
+   "source_title": "Bambu Lab Bambu Cool Plate SuperTack, A1, P1, X1, X2D, P2S (3DJake)",
+   "read": "2026-11-17",
+   "note": "3DJake is an EU retailer. Its $33.49 price excludes VAT and is not a US price, so it should not go on the page. I could not reach Bambu's US store or wiki (HTTP 402/404) to confirm from the maker."
+  }
+ ],
+ "unsourced": [
+  "Bambu's own SuperTack compatibility and plate-detection statement: wiki.bambulab.com/en/filament-acc/acc/bambu-cool-plate-supertack returned HTTP 402, and us.store.bambulab.com returned 402 for the product page and 404 for the storecheck search and product calls.",
+  "Bambu US prices today for Cool Plate SuperTack and Textured PEI Plate: the US store was blocked, as above.",
+  "BIQU's own wording on Frostbite AR-code recognition, the per-size printer list, and variant prices: biqu.equipment and us.biqu.equipment product pages returned HTTP 429 on every attempt, so the recognition and H-series size come from MatterHackers' retailer copy.",
+  "The Bambu Studio and firmware version that added Build Plate Detection on H2D, P2S and X2D: the H2D firmware release-history wiki page returned HTTP 402.",
+  "Whether a Frostbite 180 mm A1 mini plate exists in BIQU's own listing: BIQU's title names the A1 mini, but I could not open the variant list."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1281210000000002
+ }
+}
