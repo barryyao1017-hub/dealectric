@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Epoch 12V 105Ah Essential Heated starts its heater with as little as 0.5 A of incoming charge current and never uses its stored energy for the heater. It also isn't stated that Battle Born's heater pulls about 28 W from the battery's own cells once a charge source is present below about 35°F. The rival pages give only Renogy's 4 A and LiTime's 10 A thresholds.",
+ "standout": 2,
+ "standout_why": "I compared four pages. BatteryTrail's spec database (cited) gives only Renogy's heater threshold, 'more than 4A per battery', and says no minimum current is published for any other model. CompareFoundry (cited) gives LiTime's 10 A Regular-mode minimum, its battery-powered mode above 20% SOC, and Renogy's 4 A, but nothing for Epoch or Battle Born. Boondockmaps (cited) says only that the Epoch 'heats itself' to -4°F and gives no power source or current. GearRanking (cited) would not load because of an SSL certificate error, so I could not compare against it. ChatGPT's answer carried only the general caveat that 'some models require incoming charging current'.",
+ "decides": "What decides whether the plan works is whether the shopper's winter charge source supplies enough current to start the heater. A weak morning solar trickle or a small maintainer can warm the Epoch, which needs 0.5 A. The same source may never wake the LiTime, which needs 10 A in Regular mode, or the Renogy Pro, which needs more than 4 A per battery, so those packs sit unable to charge. That supports keeping Epoch as the pick for solar-only or low-amp setups. Battle Born works the other way: its heater runs on the battery's own cells, but only once a charge source is present, so it can warm up from a tiny charge source at the cost of about 28 W from the pack. Owners need to know that.",
+ "candidates": [
+  "Epoch 12V 105Ah Essential Heated (12105A-H)",
+  "Battle Born BB10012H",
+  "LiTime 12V 100Ah Group 24 Self-Heating",
+  "Renogy 12V 100Ah Pro Self-Heating",
+  "Redodo 12V 100Ah Self-Heating",
+  "Vatrer 12V 100Ah Self-Heating"
+ ],
+ "findings": [
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Minimum charge current to start the heater",
+   "value": "0.5 A",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Essential Series – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Maker page: 'Charger connected and supplying at least 0.5A.'"
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "What powers the heater",
+   "value": "Incoming charge current only",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Essential Series – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Maker page: 'incoming charge current powers internal heating pads — never the battery's stored energy.'"
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Charging stops / resumes",
+   "value": "Disabled at 32°F (0°C); resumes at 41°F (5°C); charging with heat rated down to -4°F (-20°C)",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Essential Series – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Maker page: 'Charging disabled at 0°C / 32°F; resumes automatically at 5°C / 41°F'; charge range '−20°C to 55°C / −4°F to 131°F, with heating'."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Price",
+   "value": "$549",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "Essential Series – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Epoch's US store, SKU 12105A-H."
+  },
+  {
+   "product": "Battle Born BB10012H",
+   "label": "What powers the heater",
+   "value": "The battery's own cells, and only when a charge source is present",
+   "source": "https://battlebornbatteries.com/blogs/academy/how-battle-born-heated-batteries-work-the-battle-born-educational-series",
+   "source_title": "How Battle Born Heated Batteries Work | The Battle Born Educational Series (2026-04-28)",
+   "read": "2026-11-17",
+   "note": "Maker: 'The heater draws power from the battery itself, not from an external source'; it activates when the internal temperature drops to about 35°F and 'a charge source is present'."
+  },
+  {
+   "product": "Battle Born BB10012H",
+   "label": "Heater draw while on",
+   "value": "About 28 W",
+   "source": "https://battlebornbatteries.com/blogs/academy/how-battle-born-heated-batteries-work-the-battle-born-educational-series",
+   "source_title": "How Battle Born Heated Batteries Work | The Battle Born Educational Series (2026-04-28)",
+   "read": "2026-11-17",
+   "note": "Maker: 'typically around 28 watts when active'. At 12.8 V that is about 2.2 A from the pack (28 / 12.8)."
+  },
+  {
+   "product": "Renogy 12V 100Ah Pro Self-Heating",
+   "label": "Minimum charge current to start the heater",
+   "value": "More than 4 A per battery in the bank; heats from charger power below 41°F",
+   "source": "https://www.batterytrail.com/posts/lifepo4-rv-battery-spec-database/",
+   "source_title": "LiFePO4 RV Battery Spec Database – BatteryTrail",
+   "read": "2026-11-17",
+   "note": "BatteryTrail: 'Heater runs from charger at -4°F to 41°F', and the heater activates only when the charger supplies more than 4 A per battery. CompareFoundry says the same ('stable charge current above 4 A'). Renogy's own page returned HTTP 429."
+  },
+  {
+   "product": "LiTime 12V 100Ah Group 24 Self-Heating",
+   "label": "Minimum charge current to start the heater, and battery-powered mode",
+   "value": "At least 10 A in Regular mode; Energy-efficient mode can heat from the battery above 20% SOC; heats between -4°F and 41°F (-20°C to 5°C)",
+   "source": "https://comparefoundry.com/technology/12v-lifepo4-batteries/guides/capacity-bms-limits-cold-charging-and-us-packages",
+   "source_title": "Choose a 12V LiFePO4 battery: capacity, BMS limits, cold charging and US packages – CompareFoundry",
+   "read": "2026-11-17",
+   "note": "CompareFoundry: needs 'a charger of at least 10 A in its Regular mode'; Energy-efficient mode 'can draw battery power above 20% SOC'. LiTime's own page returned HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "GearRanking's self-heating ranking (cited by ChatGPT) did not load because of an SSL certificate error, so I could not check it for the Epoch 0.5 A or Battle Born figures.",
+  "The Redodo 12V 100Ah Self-Heating minimum heater current: our page says about 10 A, but redodopower.com returned HTTP 429 on the product page and through storecheck, and the Redodo blog page had no specs. That figure should be re-checked on the maker page before the page is published.",
+  "LiTime and Renogy maker pages for their heater thresholds returned HTTP 429, so those figures come from CompareFoundry and BatteryTrail, not the makers.",
+  "The Vatrer 12V 100Ah Self-Heating minimum heater current or voltage: vatrerpower.com returned HTTP 429.",
+  "The Battle Born BB10012H heater shutoff temperature and warm-up time: the 2025 Integrated Heating Instruction Guide PDF came back as unreadable binary, and the shell commands to extract its text were not approved.",
+  "Heater wattage and heating time for the Epoch 12105A-H: not on Epoch's product page.",
+  "A Battle Born BB10012H-1KIT price on the maker's store: not opened, because of the call budget and rate limits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0038241
+ }
+}

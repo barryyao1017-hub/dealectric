@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Epoch 12105A-H heater starts with only 0.5 A of incoming charge current. That is far below the 10 A LiTime's heated Group 24 needs in Regular mode and the more than 4 A per battery Renogy's Pro heater needs, so it decides whether a weak winter source (a small solar controller or a trickle charger) can warm each battery at all.",
+ "standout": 2,
+ "standout_why": "I compared against CompareFoundry (cited), BatteryTrail spec database (cited) and BoondockMaps (cited). CompareFoundry gives LiTime's 10 A heater minimum and Renogy's 4 A minimum. BatteryTrail gives Renogy's 4 A per battery and its parallel-only limit. Neither gives a heater start current for Epoch, the battery ChatGPT picked as best overall. BoondockMaps says Epoch is heated to -4°F but nothing about what turns the heater on, and nothing on series or parallel wiring. I could not read Gear Ranking (cited): WebFetch hit a self-signed-certificate error and the curl fallback needed approval. So I can't rule out that it states the Epoch 0.5 A figure, which is why this is a 2 and not a 3.",
+ "decides": "This backs ChatGPT's Epoch pick for anyone charging in the cold from a low-current source: Epoch says its heater runs from 0.5 A of charger current, while LiTime's Regular mode needs a charger of at least 10 A and Renogy's Pro heater needs more than 4 A reaching each battery. Wiring also separates them: Epoch allows up to 4 in series and 4 in parallel (48 V, 420 Ah), while Renogy's self-heating Pro is parallel-only, up to 8, so it cannot be built into a 24 V or 48 V bank. The page should give each heated pick a line saying 'heater needs ≥X A from the charger' and another for 'series/parallel limit'.",
+ "candidates": [
+  "Epoch 12V 105Ah Essential Series Heated & Bluetooth (12105A-H)",
+  "LiTime LiHeat 12V 100Ah Group 24 Bluetooth Self-Heating",
+  "Renogy Pro 12V 100Ah Smart Bluetooth Self-Heating (RBT12100LFP-BT-US)",
+  "Battle Born BB10012H 12V 100Ah Heated",
+  "Redodo 12V 100Ah Self-Heating",
+  "Vatrer 12V 100Ah Self-Heating (UL 1973)"
+ ],
+ "findings": [
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Heater start condition",
+   "value": "A connected charger supplying at least 0.5 A. The heater runs on incoming charge current only, never on stored battery energy.",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Quoted from Epoch's US product page: 'Charger connected and supplying at least 0.5A; powered by incoming charge current only, never stored battery energy.'"
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Cold charge cutoff and resume",
+   "value": "Charging is disabled below 0°C (32°F) and resumes automatically at 5°C (41°F). The heating system is tested to -20°C (-4°F).",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Epoch's US product page."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Series/parallel limit",
+   "value": "Up to 4 in series and 4 in parallel (4S4P): 48 V in series, 420 Ah in parallel",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Quoted: 'Max (4) in Series, Max (4) in Parallel - 4S4P.' 420 Ah = 4 × 105 Ah."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Charge sources Epoch approves",
+   "value": "A LiFePO4-compatible charger, RV converter, solar charge controller, inverter charger or DC-to-DC charger, set to Epoch's recommended charging parameters. The only communication the page describes is Bluetooth to the Epoch Li-Ion app, and it names no Victron or other closed-loop pairing.",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "The page links a user manual, data sheet and spec sheet (cdn.shopify.com/s/files/1/0251/0484/2798/...). I opened the data sheet but its text was compressed and unreadable."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Price",
+   "value": "$549 (Epoch store)",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Listed price on Epoch's US store. storecheck.py returned HTTP 404 for this store, so this comes from the page text."
+  },
+  {
+   "product": "Epoch 12V 105Ah Essential Heated (12105A-H)",
+   "label": "Warranty terms",
+   "value": "Free replacement in years 1–3, then 40% off MSRP for a replacement in years 4–11. Registration requested within 90 days, or keep proof of purchase.",
+   "source": "https://www.epochbatteries.com/products/12v-105ah-heated-bluetooth-lifepo4",
+   "source_title": "12V 105Ah Heated & Bluetooth LiFePO4 Battery – Epoch Batteries",
+   "read": "2026-11-17",
+   "note": "Exclusions are on a separate warranty-terms page I did not open."
+  },
+  {
+   "product": "LiTime LiHeat 12V 100Ah Group 24 Self-Heating",
+   "label": "Heater start condition",
+   "value": "In Regular mode it needs a charger of at least 10 A. Energy-efficient mode can heat from the battery's own power when state of charge is above 20%. It heats between -20°C and 5°C.",
+   "source": "https://comparefoundry.com/technology/12v-lifepo4-batteries/guides/capacity-bms-limits-cold-charging-and-us-packages",
+   "source_title": "Choose a 12V LiFePO4 battery: capacity, BMS limits, cold charging and US packages – CompareFoundry",
+   "read": "2026-11-17",
+   "note": "Figure as given by CompareFoundry. LiTime's own product page returned HTTP 429 twice, so I could not check it against the maker."
+  },
+  {
+   "product": "Renogy Pro 12V 100Ah Self-Heating (RBT12100LFP-BT-US)",
+   "label": "Heater start condition",
+   "value": "The heater runs only with more than 4 A of charge current per battery, from -4°F to 41°F",
+   "source": "https://www.batterytrail.com/posts/lifepo4-rv-battery-spec-database/",
+   "source_title": "LiFePO4 RV Battery Spec Database: Complete Comparison (All Major Brands) – BatteryTrail",
+   "read": "2026-11-17",
+   "note": "BatteryTrail: 'The heater only runs when the charger supplies more than 4A per battery.' CompareFoundry says the same: 'only when a stable charge current above 4 A is present.' Arithmetic: a 2-battery parallel bank needs more than 8 A total if the current splits evenly."
+  },
+  {
+   "product": "Renogy Pro 12V 100Ah Self-Heating (RBT12100LFP-BT-US)",
+   "label": "Series/parallel limit",
+   "value": "Parallel only, up to 8 batteries. No series, so it cannot make a 24 V or 48 V bank.",
+   "source": "https://www.batterytrail.com/posts/lifepo4-rv-battery-spec-database/",
+   "source_title": "LiFePO4 RV Battery Spec Database: Complete Comparison (All Major Brands) – BatteryTrail",
+   "read": "2026-11-17",
+   "note": "CompareFoundry says the same: 'Renogy documents parallel only, up to 8.' It also gives a charge cutoff of 32°F, resuming at 37°F, citing Renogy's manual."
+  }
+ ],
+ "unsourced": [
+  "Redodo 12V 100Ah Self-Heating heater minimum charge current (our current page says about 10 A) and its series/parallel limit: redodopower.com product page and storecheck.py both returned HTTP 429. No manual or reviewer page opened.",
+  "Vatrer 12V 100Ah and 300Ah self-heating heater minimum charge current and series/parallel limits: vatrerpower.com returned HTTP 429. No manual opened.",
+  "LiTime LiHeat Group 24 series/parallel limit for the heated model: litime.com returned HTTP 429. CompareFoundry cites a LiTime '4P4S' figure but does not say it covers the heated model.",
+  "Battle Born BB10012H heater start current, on/off temperatures and series/parallel rules for the heated SKU: battlebornbatteries.com returned HTTP 429. The rival pages only give the standard BB10012's rules.",
+  "Epoch 12105A-H manual and data sheet details (alternator/DC-DC current limits, closed-loop or Victron communication, warranty exclusions): both PDFs downloaded as compressed, unreadable streams, and local text extraction (pdftotext/pypdf) needed approval I didn't have.",
+  "Gear Ranking 'Best Self-Heating 12V Lithium Batteries 2026' (cited by ChatGPT): WebFetch hit a self-signed-certificate error and the curl fallback needed approval, so I could not check whether it already states the Epoch 0.5 A figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 0.996741
+ }
+}
