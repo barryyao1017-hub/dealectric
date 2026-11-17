@@ -1,0 +1,92 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured scan time for a real car part: in a King Saud University lab study (Applied Sciences, 2018) a white-light handheld scanner (Creaform Go!SCAN) scanned a car door in 2.66 min against 10.36 min for a laser handheld (Creaform VIUscan), at the cost of accuracy (0.1995 mm vs 0.1285 mm RMS deviation).",
+ "standout": 2,
+ "standout_why": "Compared against 3D Wonders' 'Best 3D Scanner for Automotive Inspection in 2026' (top result in two chats), which gives only maker specs plus an unattributed '5-15 minutes' body-panel capture time naming no scanner or tester, and against the three ChatGPT answers, which list only maker points-per-second and field-of-view figures (dim3nsions/Shining 3D brochures, Rev1, SKYLAB3D, SCANOLOGY PDFs, EMS3D, Print3DIndex, Polyrix) and say outright that no independently measured completion times exist. None of them has a timed car-part scan by a named lab or reviewer. The study is new to the result set but uses 2018-era Creaform hardware, not the current candidates, so it informs the speed-vs-accuracy trade-off rather than ranking today's models.",
+ "decides": "Confirms ChatGPT's own caveat with a number: on a car door, the area-capture (white/blue structured-light) scanner finished about 3.9x faster than the laser-line scanner but was less accurate, so 'fastest for a big car part' depends on the accuracy needed. For shape capture (1-2 mm) a structured-light or IR large-area mode is the faster pick; for 0.1 mm fitment work a laser tracker system (Trak Nova, KSCAN-X, HandySCAN MAX) costs scan time. It does not pick between the current laser trackers, for which no named timed test of a car part exists.",
+ "candidates": [
+  "SHINING 3D FreeScan Trak Nova",
+  "SHINING 3D FreeScan UE Nova",
+  "SHINING 3D FreeScan Omni",
+  "SHINING 3D FreeScan Trak ProW+",
+  "SCANOLOGY KSCAN-X",
+  "SCANOLOGY SIMSCAN-E",
+  "SCANOLOGY TrackScan Sharp-Z",
+  "Creaform HandySCAN MAX EVO",
+  "Artec Leo",
+  "Polyrix PolyScan XL"
+ ],
+ "findings": [
+  {
+   "product": "general (Creaform Go!SCAN, white light)",
+   "label": "Measured scan time, automotive car door",
+   "value": "2.6585 min",
+   "source": "https://www.mdpi.com/2076-3417/8/2/217",
+   "source_title": "Evaluation of Handheld Scanners for Automotive Applications (Ameen, Al-Ahmari, Mian; King Saud University; Applied Sciences 8(2):217, published 2018-01-31)",
+   "read": "2026-11-17",
+   "note": "Lab study at King Saud University's Advanced Manufacturing Institute; free-form car door (dimensions not given); optimized settings 1.5 mm resolution; full factorial design (18 runs) plus validation with 10 users per scanner. Paper does not say whether target placement is included. Read via r.jina.ai because mdpi.com returned 403."
+  },
+  {
+   "product": "general (Creaform VIUscan, laser)",
+   "label": "Measured scan time, same car door",
+   "value": "10.3607 min",
+   "source": "https://www.mdpi.com/2076-3417/8/2/217",
+   "source_title": "Evaluation of Handheld Scanners for Automotive Applications (King Saud University, Applied Sciences 2018)",
+   "read": "2026-11-17",
+   "note": "Same study and door; 27-run factorial design; optimized at 50% laser power, 6 ms shutter, 3 mm resolution. 10.3607 / 2.6585 = 3.9x longer than the white-light scanner."
+  },
+  {
+   "product": "general (Go!SCAN vs VIUscan)",
+   "label": "Measured accuracy on the car door (RMS deviation from reference CAD)",
+   "value": "0.1995 mm white light vs 0.1285 mm laser",
+   "source": "https://www.mdpi.com/2076-3417/8/2/217",
+   "source_title": "Evaluation of Handheld Scanners for Automotive Applications (King Saud University, Applied Sciences 2018)",
+   "read": "2026-11-17",
+   "note": "The faster white-light scanner was about 55% less accurate (0.1995 / 0.1285 = 1.55); triangle counts similar (142,659 vs 148,800)."
+  },
+  {
+   "product": "SHINING 3D FreeScan UE Pro (predecessor of UE Nova)",
+   "label": "Aniwaa timed large-object scan",
+   "value": "about 15 min for half of a ~4 m x 1 m x 1 m object at 1 mm resolution",
+   "source": "https://www.aniwaa.com/review/3d-scanners/freescan-ue-pro-review-cost-effective-metrology-grade-3d-scanner-that-delivers/",
+   "source_title": "FreeScan UE Pro review: cost-effective metrology-grade 3D scanner that delivers (Aniwaa, Pierre-Antoine Arrighi, 2022-10-18)",
+   "read": "2026-11-17",
+   "note": "Cross-lines laser mode with markers 15-25 cm apart plus photogrammetry; Arrighi says marker placement and removal 'takes the longest' but did not time it. The only car part in the review (a Saab 900 Aero air vent) took 'a minute or so' plus 'a few minutes' of single-line scanning; calibration under 5 min."
+  },
+  {
+   "product": "SHINING 3D FreeScan Combo",
+   "label": "Aniwaa timed scan of a >1 m object, laser vs infrared mode",
+   "value": "about 10 min laser (0.2 mm) vs about 5 min invisible-light large-object mode",
+   "source": "https://www.aniwaa.com/review/3d-scanners/shining-3d-freescan-combo-review-small-but-mighty/",
+   "source_title": "SHINING 3D FreeScan Combo review: small, but mighty? (Aniwaa, Pierre-Antoine Arrighi, 2023-12-19)",
+   "read": "2026-11-17",
+   "note": "Object: heater and pipes on a stone wall (>1 m); IR mode used marker alignment; Arrighi called it 'significantly faster than when using the laser mode'. Same direction as the King Saud result: area capture beats laser lines on time."
+  },
+  {
+   "product": "Creaform HandySCAN 3D|BLACK Elite",
+   "label": "Vendor-run shop-floor benchmark, total inspection time on an 800 x 1000 x 1000 mm mold",
+   "value": "45 min vs 294 min for an unnamed blue-light scanner",
+   "source": "https://www.creaform3d.com/en/resources/blog/results-revealed-and-facts-exposed-benchmarking-two-3d-scanning-metrology-solutions-to-save-inspection-time",
+   "source_title": "Results Revealed and Facts Exposed: Benchmarking Two 3D Scanning Metrology Solutions to Save Inspection Time (Creaform blog, 2024-04-29)",
+   "read": "2026-11-17",
+   "note": "Measured by Creaform with engineers at an unnamed automotive mold company, so not independent. Steps: setup/prep 5 vs 84 min, scan + post-processing 30 vs 180 min, cleaning 10 vs 30 min. Shows that prep (spray, targets) can outweigh capture speed; it reverses the King Saud ranking because the blue-light unit needed spray and more setup on a shiny part."
+  },
+  {
+   "product": "general (Apple iPad Pro 2nd gen LiDAR vs terrestrial laser scanners)",
+   "label": "Measured time to document a whole damaged vehicle",
+   "value": "about 15 min handheld vs about 3 h for terrestrial scanners (4 scans of ~20 min each plus moves)",
+   "source": "https://www.mdpi.com/1424-8220/21/23/8076",
+   "source_title": "Sensors 21(23):8076 (MDPI, 2021), handheld LiDAR vs FARO Focus 3D X330 and Trimble TX8b on a damaged vehicle",
+   "read": "2026-11-17",
+   "note": "Cloud-to-cloud RMSE of the handheld vs FARO 2.3 cm and vs Trimble 2.2 cm, so centimetre-level only; whole-vehicle shape capture, not part metrology. Read via r.jina.ai."
+  }
+ ],
+ "unsourced": [
+  "A timed scan of a car part (door, bumper, hood, frame) by a named independent reviewer or lab for FreeScan Trak Nova, FreeScan Trak ProW/ProW+, FreeScan Omni, SCANOLOGY KSCAN-X, SIMSCAN-E, TrackScan Sharp-Z or Creaform HandySCAN MAX EVO: searched Aniwaa, All3DP, Tom's Hardware, DEVELOP3D, Digital Engineering, Top3DShop and academic papers; only maker specs, reseller pages and vendor case studies turned up.",
+  "An independent timed car scan with the Artec Leo: 3Dnatives Lab (2021-03-15) and Fabbaloo tested it without timing a car; the car timings found were Artec's own case studies.",
+  "A measured door-to-door comparison of current trackers vs current structured-light scanners on the same car part, with marker placement included."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the big stations' own measured inverter idle draw (52 W DELTA Pro Ultra, 58-85 W Jackery 5000 Plus, about 20 W BLUETTI Apex 300) is as large as or larger than a 40-50 W fan, so counted per night it roughly halves ChatGPT's 10-16-night figures for the EcoFlow, Jackery and Anker picks and makes the $5,399 BLUETTI Apex 300 + 2x B500K (13,004.8 Wh, about 23 nights of a 50 W fan) the most nights per unit and per dollar.",
+ "standout": 3,
+ "standout_why": "Compared against the cited Solar Waypoint F3800 vs DELTA Pro Ultra vs 5000 Plus comparison (capacity only, no prices, no idle draw, no runtimes) and RuntimeWise's home-backup list (capacity, list price and Wh per list dollar for 17 models, runtimes 'calculated, not measured', no idle draw). ChatGPT's own answers divide rated Wh x 85% by the fan alone and only mention idle draw as a hedge; GearSpec Outpost's expandable-capacity article returned HTTP 429, so it was not checked.",
+ "decides": "It changes the pick. Counting each station's own idle draw for 8 h a night with a 50 W fan: BLUETTI Apex 300 + 2x B500K about 23 nights for $5,399 (about $233 per night of runtime); Apex 300 + B500K about 14 nights for $3,599; DELTA Pro Ultra about 7.5 nights for $3,699 instead of ChatGPT's 13; Jackery 5000 Plus about 4.7-5.8 nights instead of 10, at $3,499 and on pre-order; Anker F3800 Plus about 3.7-5.2 nights instead of 8, sold out. The DELTA Pro Ultra X and Anker E10 hold about 12 kWh, but no measured idle draw was found for either, so the Apex 300 + 2x B500K is the largest system whose nights can actually be worked out. It costs $2,500 less than the DPU X and still has more Wh.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro Ultra",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800 Plus",
+  "Anker SOLIX E10 (1x Power Module + 2x B6000)",
+  "BLUETTI Apex 300 + 2x B500K",
+  "BLUETTI Apex 300 + B500K"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "US store price (inverter + 1 battery, 6,144 Wh)",
+   "value": "$3,699 (compare-at $7,599), in stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on us.ecoflow.com (Shopify product data). Works out to $602 per kWh."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw, inverter on, no load (HOBOTECH, as reported by EcoFlow)",
+   "value": "52 W",
+   "source": "https://www.ecoflow.com/us/blog/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Specs, Testing, and Verdict (EcoFlow blog, 2026-10-21)",
+   "read": "2026-11-17",
+   "note": "HOBOTECH's measurement, quoted on EcoFlow's own blog, so the source is not neutral. Nights for a 50 W fan, 8 h a night: 6,144 Wh / (8 x (50 + 52) = 816 Wh) = 7.5 nights, against ChatGPT's 13 (fan only, 85%). Cost per night of runtime $3,699 / 7.5 = about $491. Loses because its own idle draw is about as large as the fan, so a third of the nights go to the inverter."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "US store price (standard bundle: 1 inverter + 2 Smart Extra Batteries, 12 kWh)",
+   "value": "$7,899 (compare-at $11,149), in stock",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X Whole-Home Backup Power",
+   "read": "2026-11-17",
+   "note": "Store text: '12kW/12kWh based on standard bundle (1 x EcoFlow DELTA Pro Ultra X Inverter + 2 x Smart Extra Batteries)'; each Smart Extra Battery is 6,144 Wh, so 12,288 Wh. $643 per kWh. Loses on price: $2,500 more than the BLUETTI Apex 300 + 2x B500K for 717 Wh less. It is also sold as an installed whole-home system, which is more than a fan needs."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "US store price",
+   "value": "$3,499 (compare-at $13,489 on the listing); sold out, pre-order ships Dec 2",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on jackery.com. Store text: '5000 Plus sold out due to high demand. Pre-order now, ships Dec 2.' 5,040 Wh, so $694 per kWh."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw, inverter on, no load (The Solar Lab)",
+   "value": "about 58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "The Solar Lab: 'around 58W per hour when we turned the inverter on' with no load, 'better than the F3800's 80W idle rate'. HOBOTECH measured about 85 W, per the EcoFlow blog (https://www.ecoflow.com/us/blog/jackery-explorer-5000-plus-review). Nights for a 50 W fan, 8 h a night: 5,040 / (8 x 108) = 5.8 at 58 W, or 5,040 / (8 x 135) = 4.7 at 85 W, against ChatGPT's 10 (50 W) or 13.4 (40 W). Cost per night of runtime $600-$749. Loses because the idle draw is bigger than the fan, and it ships Dec 2."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "US store price (base unit, 3,840 Wh)",
+   "value": "$2,399.99 (shown as $600 off, so $2,999.99 list); marked Sold Out / Notify Me",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Read through r.jina.ai (direct storecheck returned 404). $625 per kWh."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Idle draw, inverter on, nothing plugged in",
+   "value": "over 1 kWh per 24 h on the F3800 (over 42 W), with the Plus 'slightly less' (How-To Geek); 80 W on the F3800 (The Solar Lab)",
+   "source": "https://tech.yahoo.com/general/articles/anker-solix-f3800-plus-review-100016712.html",
+   "source_title": "Anker SOLIX F3800 Plus review (How-To Geek, syndicated on Yahoo Tech, 2025-03-19)",
+   "read": "2026-11-17",
+   "note": "Opened via r.jina.ai. How-To Geek: 'An Anker F3800 will use over 1kWh of power over a 24-hour period if left on, even if nothing is plugged in' and 'The Anker F3800 Plus has slightly less idle draw'. The 80 W figure for the F3800 is from The Solar Lab's 5000 Plus review (https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review). Nights for a 50 W fan, 8 h a night: 3,840 / (8 x 92) = 5.2 at 42 W, or 3,840 / (8 x 130) = 3.7 at 80 W, against ChatGPT's 8. Loses because it has the smallest battery of ChatGPT's picks, a large idle draw, and it is sold out."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2x B500K",
+   "label": "US store price (13,004.8 Wh)",
+   "value": "$5,399, in stock",
+   "source": "https://www.bluettipower.com/products/b500k2-2-apex-300",
+   "source_title": "Apex 300 + 2*B500K",
+   "read": "2026-11-17",
+   "note": "storecheck.py product: one variant, $5,399, available. Capacity: Apex 300 2,764.8 Wh + 2 x B500K 5,120 Wh (B500K rating from the bundle page https://www.bluettipower.com/products/b500k2-apex300-foldable-trolley) = 13,004.8 Wh. $415 per kWh, the lowest per kWh of the systems here."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw, inverters on, no load (measured)",
+   "value": "about 19.5-20 W",
+   "source": "https://www.ess-news.com/2025/09/17/hands-on-with-the-bluetti-apex-300-portable-power-station/",
+   "source_title": "Hands-on with the Bluetti Apex 300 portable power station (ESS News, Tristan Rayner, 2025-09-17)",
+   "read": "2026-11-17",
+   "note": "ESS News: the manual suggests 'about 20 W' self-consumption, and an idle Apex 300 with its inverters on drew 'around 19.5 W'. The Solar Lab (https://www.thesolarlab.com/review/bluetti-apex-300) also measured 'right around 20W' on a single Apex 300 and about 85% efficiency. Bluetti's bundle page claims 'idle loss to just 20W'. Both measurements are of a single unit with no B500K attached."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2x B500K",
+   "label": "Nights of a 50 W fan, 8 h a night, counting idle draw",
+   "value": "about 23 nights (about $233 per night of runtime)",
+   "source": "https://www.bluettipower.com/products/b500k2-2-apex-300",
+   "source_title": "Apex 300 + 2*B500K",
+   "read": "2026-11-17",
+   "note": "Arithmetic: 13,004.8 Wh / (8 h x (50 W fan + 20 W idle) = 560 Wh) = 23.2 nights; $5,399 / 23.2 = $233. Same method as the other rows (rated Wh divided by fan plus measured idle draw). By the same arithmetic the Apex 300 + B500K (7,884.8 Wh, $3,599 with Foldable Trolley 2, https://www.bluettipower.com/products/b500k2-apex300-foldable-trolley) gives 14.1 nights at $255 per night. Any extra standby draw the B500K packs add is not counted (unsourced)."
+  },
+  {
+   "product": "Anker SOLIX E10 (1x Power Module + 2x B6000)",
+   "label": "US store price (12 kWh)",
+   "value": "$5,999 (shown down from $6,299)",
+   "source": "https://us.ankersolix.com/products/e10-battery-2",
+   "source_title": "Anker SOLIX E10 Power Module + 2 Batteries",
+   "read": "2026-11-17",
+   "note": "Read via r.jina.ai (storecheck returned 429). Page: '10kW Turbo Output, 12kWh Capacity, 9kW Solar Input'. Stock status not shown. Close to the Apex 300 + 2x B500K on price, but it needs an electrician to install the inlet box or Power Dock, and no measured idle draw was found, so its nights can't be worked out."
+  },
+  {
+   "product": "general",
+   "label": "What rival pages give instead",
+   "value": "capacity and Wh per list dollar only; runtimes 'calculated (capacity x 85% inverter efficiency / appliance draw), not measured'",
+   "source": "https://www.runtimewise.com/best/power-stations/home-backup/",
+   "source_title": "Best Portable Power Station for Home Backup (Solar Generators) - RuntimeWise",
+   "read": "2026-11-17",
+   "note": "RuntimeWise list prices: DELTA Pro Ultra $5,799, Jackery 5000 Plus $3,499, F3800 Plus $2,699.99, Apex 300 $1,699, with no idle-draw column. Solar Waypoint's cited comparison (https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-ultra-vs-jackery-explorer-5000-plus/) gives capacity only: no price, idle draw or runtime."
+  }
+ ],
+ "unsourced": [
+  "Measured idle draw for the EcoFlow DELTA Pro Ultra X inverter: searched; only the original DELTA Pro Ultra's 52 W (HOBOTECH) was found.",
+  "Measured idle draw for the Anker SOLIX E10: not on Anker's page and no reviewer measurement found.",
+  "Measured idle draw for the F3800 Plus after Anker's firmware update, which is claimed to halve it: only pre-update figures were found.",
+  "Extra standby draw the B500K / B6000 / DPU extra batteries add when attached: no source found.",
+  "GearSpec Outpost's expandable-capacity article (cited by ChatGPT): HTTP 429, not read.",
+  "Amazon prices: not checked (the stores are the shown retailers)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}
