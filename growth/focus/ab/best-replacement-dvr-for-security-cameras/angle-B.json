@@ -1,0 +1,113 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how long a replacement DVR can record before it overwrites. Using the inputs on Dahua's own page (2 SATA bays at up to 16 TB each, video up to 8,192 kbps per channel), the XVR7208A-4K-I3 holds about 45 days of 24/7 footage from 8 coax cameras even with every channel at maximum bitrate. The $99.99 ANNKE DR88 tops out at one 8 TB drive, or 1 TB per BNC camera.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited rivals. The Dahua XVR7208A-4K-I3 product page lists the raw inputs (2 HDD × 16 TB, 32–8,192 kbps, 8 BNC) but gives no recording-duration estimate. The Hikvision DS-7208HQHI-S1/XT page returned no content when I fetched it, and the Hikvision datasheet PDF wasn't readable. ChatGPT's other results are Dahua datasheets and catalog pages with no prices, so none of them states a price per camera input or days of retention. ChatGPT's answer says 'SATA hard-drive support for continuous local recording' but never puts a number on it.",
+ "decides": "Retention per camera separates the budget picks from the step-up picks. The DR88 ($12.50 per BNC input) and ZOSI ZR08VMA ($8.75 per BNC input) are cheapest per camera. The DR88 has only one bay, capped at 8 TB, so it gives 1 TB per camera. The Viewtron VT-DVR-8 (2 × 12 TB = 3 TB per BNC camera, $100 per BNC input) and the Dahua XVR7208A-4K-I3 (32 TB = 4 TB per BNC camera) are for shoppers who need weeks of continuous recording at high bitrate. This confirms the DR88 as the value pick for typical home retention. Anyone who needs about 45 days of footage at full bitrate should step up to a 2-bay unit.",
+ "candidates": [
+  "ANNKE DR88",
+  "ANNKE DR85",
+  "ANNKE DR165",
+  "ZOSI ZR08VMA",
+  "ZOSI ZR16FK",
+  "Viewtron VT-DVR-8",
+  "Dahua XVR7208A-4K-I3",
+  "Hikvision DS-7208HQHI-S1/XT"
+ ],
+ "findings": [
+  {
+   "product": "Dahua XVR7208A-4K-I3",
+   "label": "Max internal storage",
+   "value": "32 TB (2 SATA bays × up to 16 TB each)",
+   "source": "https://www.dahuasecurity.com/products/HDCVI-Recorders/4K-series/XVR7208A-4K-I3",
+   "source_title": "XVR7208A-4K-I3 8-Channel Penta-brid 4K WizSense DVR - Zhejiang Dahua Technology Co., Ltd.",
+   "read": "2026-11-17",
+   "note": "The page says 'Up to 16 TB per HDD' and notes the limit varies with ambient temperature. 2 × 16 = 32 TB."
+  },
+  {
+   "product": "Dahua XVR7208A-4K-I3",
+   "label": "Days of 24/7 recording, 8 coax cameras at max bitrate, on max storage",
+   "value": "≈45 days",
+   "source": "https://www.dahuasecurity.com/products/HDCVI-Recorders/4K-series/XVR7208A-4K-I3",
+   "source_title": "XVR7208A-4K-I3 8-Channel Penta-brid 4K WizSense DVR - Zhejiang Dahua Technology Co., Ltd.",
+   "read": "2026-11-17",
+   "note": "8 ch × 8.192 Mbps (page max video bitrate) = 65.5 Mbps; × 86,400 s ÷ 8 = 707.8 GB/day; 32,000 GB ÷ 707.8 = 45.2 days. Worst case: lower bitrates or Smart H.265+ give longer retention. Audio (64 kbps/ch) excluded."
+  },
+  {
+   "product": "Dahua XVR7208A-4K-I3",
+   "label": "Storage per BNC camera at max capacity",
+   "value": "4 TB per camera",
+   "source": "https://www.dahuasecurity.com/products/HDCVI-Recorders/4K-series/XVR7208A-4K-I3",
+   "source_title": "XVR7208A-4K-I3 8-Channel Penta-brid 4K WizSense DVR - Zhejiang Dahua Technology Co., Ltd.",
+   "read": "2026-11-17",
+   "note": "32 TB ÷ 8 BNC inputs = 4 TB. Power is listed as under 15 W without HDDs (12 VDC, 5 A)."
+  },
+  {
+   "product": "ANNKE DR88",
+   "label": "Price per BNC camera input",
+   "value": "$12.50 per BNC input ($8.33 per channel counting the 4 IP channels)",
+   "source": "https://www.annke.com/products/dr88",
+   "source_title": "DR88 - 4K 8 Channel Hybrid 5-in-1 DVR (AU-DT81DW000)",
+   "read": "2026-11-17",
+   "note": "$99.99 (compare-at $149.99) at ANNKE on 2026-11-17. $99.99 ÷ 8 = $12.50; $99.99 ÷ 12 = $8.33."
+  },
+  {
+   "product": "ANNKE DR88",
+   "label": "Storage per BNC camera at max capacity",
+   "value": "1 TB per camera (8 TB max, one SATA bay)",
+   "source": "https://www.annke.com/products/dr88",
+   "source_title": "DR88 - 4K 8 Channel Hybrid 5-in-1 DVR (AU-DT81DW000)",
+   "read": "2026-11-17",
+   "note": "The page says 'HDD1 SATA interface' and 'Up to 8TB capacity'. 8 TB ÷ 8 BNC = 1 TB; with the 4 IP channels also recording, 8 ÷ 12 = 0.67 TB per camera. The page gives no per-channel bitrate, so I couldn't calculate days."
+  },
+  {
+   "product": "Viewtron VT-DVR-8",
+   "label": "Price per BNC camera input",
+   "value": "$100.00 per BNC input ($50.00 per channel across 8 BNC + 8 IP)",
+   "source": "https://cctvcamerapros.com/security-camera-DVR-p/vt-dvr-8.htm",
+   "source_title": "Viewtron VT-DVR-8 8 Channel Hybrid DVR/NVR - CCTV Camera Pros",
+   "read": "2026-11-17",
+   "note": "Sale price $799.99 (was $899.99). $799.99 ÷ 8 = $100.00; ÷ 16 = $50.00. The page contradicts itself on the bundled drive: one part says '2TB Video Hard Drive (included)', a later part says the unit ships with a 1 TB drive."
+  },
+  {
+   "product": "Viewtron VT-DVR-8",
+   "label": "Storage per BNC camera at max capacity",
+   "value": "3 TB per camera (2 bays × 12 TB = 24 TB)",
+   "source": "https://cctvcamerapros.com/security-camera-DVR-p/vt-dvr-8.htm",
+   "source_title": "Viewtron VT-DVR-8 8 Channel Hybrid DVR/NVR - CCTV Camera Pros",
+   "read": "2026-11-17",
+   "note": "The page says '2 Hard Drive Bays, 12TB each (24TB total)'. 24 ÷ 8 = 3 TB. The page gives no per-channel bitrate; it points to an online storage calculator instead."
+  },
+  {
+   "product": "ZOSI ZR08VMA",
+   "label": "Price per BNC camera input",
+   "value": "$8.75 per BNC input",
+   "source": "https://www.zositech.com/products/8-channel-1080p-dvr-for-tvi-cvi-ahd-analog-security-camera",
+   "source_title": "8 Channel 1080P HD Digital Video Recorder DVR (ZR08VMA/ZR08VNA)",
+   "read": "2026-11-17",
+   "note": "$69.99 (compare-at $249.99) via storecheck search of zositech.com on 2026-11-17. $69.99 ÷ 8 = $8.75. No IP channels."
+  },
+  {
+   "product": "ZOSI ZR16FK",
+   "label": "Price per BNC camera input",
+   "value": "$6.25 per BNC input",
+   "source": "https://www.zositech.com/products/16ch-1080p-tvi-cvi-ahd-analog-4-in-1-security-dvr-easy-remote-view",
+   "source_title": "16 Channel 1080P HD Digital Video Recorder DVR(ZR16FK) + Optional 2TB/3TB/4TB HDD",
+   "read": "2026-11-17",
+   "note": "$99.99 (compare-at $349.99) lowest listed price via storecheck search on 2026-11-17. $99.99 ÷ 16 = $6.25. The listing has HDD options and its package-contents text names a 4 TB drive, so I couldn't confirm which variant the $99.99 is for (the product-page fetch hit HTTP 429)."
+  }
+ ],
+ "unsourced": [
+  "ANNKE DR85 and DR165 price, max HDD and bitrate: annke.com returned HTTP 429 on every attempt after the DR88 fetch, so I didn't calculate per-input price or storage per camera for them.",
+  "Max HDD capacity for ZOSI ZR08VMA and ZR16FK: the product-page fetches hit HTTP 429. A search snippet citing a ZOSI blog said 6 TB line-wide, but I didn't open that page and it doesn't name these models.",
+  "Hikvision DS-7208HQHI-S1/XT and iDS-7208HQHI-E1/XT max HDD and bitrate: the hikvision.com product page returned no content, and the datasheet PDF couldn't be read as text (local text extraction wasn't permitted).",
+  "Per-channel max bitrate for ANNKE DR88, Viewtron VT-DVR-8 and ZOSI models: not on the product pages I opened, so I could only calculate days of recording for the Dahua.",
+  "Hikvision iDS-7208HQHI-M1/S ($141 at HIKD), UNV XVR301-08G3 ($79 at Blue Star) and the ANNKE 8CH ($234.99 at Newegg) prices from ChatGPT's answer: I didn't reach those pages within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0385674
+ }
+}

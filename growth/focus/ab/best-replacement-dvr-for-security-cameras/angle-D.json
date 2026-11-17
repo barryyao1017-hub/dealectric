@@ -1,0 +1,67 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that if the old DVR powered the cameras through the coax itself (PoC), an ordinary hybrid DVR leaves them unpowered, and that Dahua's PoC recorders power only Dahua's own HDCVI PoC cameras.",
+ "standout": 2,
+ "standout_why": "I opened the cited Dahua XVR7208A-4K-I3 page. It lists formats ('8 BNC ports, supports HDCVI/AHD/TVI/CVBS auto-detect'), resolution for each format and coax audio, and has no line about power over coax. The cited Hikvision DS-7208HQHI-S1/XT page loaded empty for me because it is built by JavaScript. The two cited Dahua PDFs (XVR7108HE-4K-I3, XVR5108HS-5M-I3) downloaded but their text could not be extracted, so I could not check them. Neither is a PoC model, and no title or URL among the 36 results has PoC/-8P/'/P' in the model name. ChatGPT's two answers cover format compatibility (TVI/CVI/AHD/CVBS) and BNC reuse, but neither says how the cameras get their power. Not a 3, because the finding decides the pick only for shoppers whose cameras run on power over coax. Most consumer kits (ZOSI, for example) power cameras from a separate 12 V supply and splitter.",
+ "decides": "Before picking a model, the page should have the shopper check where the cameras get power. If there is a 12 V adapter or 1-to-4 splitter, any 4-in-1 DVR on our list works (ANNKE DR88/DR85/DR165, ZOSI ZR08VMA/ZR16FK, Viewtron VT-DVR-8), and ChatGPT's format checklist is enough. If the camera's single coax cable is its only connection, the old DVR was a PoC unit. The replacement must then be a PoC recorder from the same camera maker (for Dahua that means a '-8P' PoC model such as XVR5108H-I3-8P, not the XVR7208A-4K-I3 ChatGPT ranked best overall), or the shopper must add a camera power supply at each camera.",
+ "candidates": [
+  "Dahua XVR5108H-I3-8P",
+  "Dahua XVR7208A-4K-I3",
+  "ANNKE DR88",
+  "ANNKE DR85",
+  "ZOSI ZR08VMA",
+  "ZOSI ZR16FK",
+  "Viewtron VT-DVR-8"
+ ],
+ "findings": [
+  {
+   "product": "Dahua XVR5108H-I3-8P",
+   "label": "Which cameras the PoC DVR powers over coax",
+   "value": "\"8-ch HDCVI PoC AT&AF Camera Power Supply\"; video inputs \"8 BNC ports, supports HDCVI/AHD/TVI/CVBS auto-detect\"",
+   "source": "https://www.dahuasecurity.com/products/hdcvi-products/hdcvi-recorders/poc-series/5m-n-1080p-series/xvr5108h-i3-8p",
+   "source_title": "XVR5108H-I3-8P Dahua 8-Ch WizSense Penta-brid PoC DVR",
+   "read": "2026-11-17",
+   "note": "Maker's product page. The DVR records AHD/TVI/CVBS video, but the only cameras it names as powered are HDCVI PoC (AT and AF classes). The page gives the recorder's own supply as 53 VDC, 1.812 A and has no warning about other brands' cameras."
+  },
+  {
+   "product": "Dahua XVR5108H-4KL-X-8P",
+   "label": "PoC camera input, power budget and cabling limit",
+   "value": "\"Supports HDCVI PoC Cameras\"; \"Total 48W output power consumption; Max supports 8 channels AF PoC cameras inputs or 4 channels AT PoC cameras inputs\"; \"HDCVI PoC system temporarily does not support balun accessing and UTP transmission\"",
+   "source": "https://www.dahuasecurity.com/de/products/All-Products/HDCVI-Recorders/PoC-Series/1-HDD/XVR5108H-4KL-X-8P",
+   "source_title": "XVR5108H-4KL-X-8P - Dahua DACH (8 Channel Penta-brid 4K Mini 1U Digital Video Recorder)",
+   "read": "2026-11-17",
+   "note": "Maker's DACH product page. This is an older PoC model; a search snippet lists it under Dahua AU discontinued products, but I did not open that page. It is used here only to show how a PoC DVR works: 48 W total means a full set of 8 cameras works only with the lower-power AF class, and PoC does not run over a balun or twisted-pair (UTP) cable."
+  },
+  {
+   "product": "Dahua XVR7208A-4K-I3",
+   "label": "Camera power and coax features on ChatGPT's 'best overall' pick",
+   "value": "Inputs \"8 BNC ports, supports HDCVI/AHD/TVI/CVBS auto-detect\"; audio in \"8-channel BNC (Coaxial Audio)\"; no PoC camera power line on the page",
+   "source": "https://www.dahuasecurity.com/products/HDCVI-Recorders/4K-series/XVR7208A-4K-I3",
+   "source_title": "XVR7208A-4K-I3 8-Channel Penta-brid 4K WizSense DVR - Zhejiang Dahua Technology Co., Ltd.",
+   "read": "2026-11-17",
+   "note": "Page ChatGPT cited. Its spec list has no PoC power output; 'PoC Series' appears only as a link in the site menu. Inference: cameras that were powered over coax would have no power on this DVR."
+  },
+  {
+   "product": "general (ZOSI kits)",
+   "label": "How a typical consumer analog camera gets power",
+   "value": "From a separate 12 V power supply and a \"1 to 4 power splitter cable\", not from the DVR",
+   "source": "https://supports.zositech.com/hc/en-us/articles/234712307-You-got-Video-Loss-on-one-channel-or-all-channels",
+   "source_title": "ZOSI Support: You got Video Loss on one channel or all channels",
+   "read": "2026-11-17",
+   "note": "ZOSI's own troubleshooting page: \"Please check whether the cameras' power supply and 1 to 4 power splitter cable can work well\"; \"use another working 12V power supply to connect the camera one by one to test.\" For kits like this, the camera power wiring stays in place when the DVR is swapped, so only the video format has to match."
+  }
+ ],
+ "unsourced": [
+  "Hikvision's rule that its PoC DVRs power only Hikvision PoC cameras, at 48 VDC, with a risk of damaging other brands' cameras. A search summary reported this from Hikvision technical bulletin tb_poc_intro_071217na, but us-legacy.hikvision.com did not resolve (DNS failure). The hikvision.com product pages (DS-7208HQHI-S1/XT, DS-7204HUHI-K1-P, DS-1TP08I-AT) loaded empty because they are built by JavaScript. The text of the PDF datasheets (assets.hikvision.com iDS-7208HUHI-M2/P, yesss.co.uk iDS-7208HUHI-M2/PXT) could not be extracted, and the shell commands to extract it needed approval.",
+  "ANNKE DR88 and DR85: whether they supply power over coax, coax PTZ control, and resolution for each format. annke.com returned HTTP 429 to WebFetch twice and to storecheck.py once.",
+  "Coax PTZ control (Hikvision UTC / Dahua coaxial control) and whether it is tied to the camera's video format on each candidate DVR. Not found on the opened Dahua pages; the Hikvision pages could not be read.",
+  "Text of the two Dahua datasheet PDFs ChatGPT cited (XVR7108HE-4K-I3, XVR5108HS-5M-I3). They downloaded, but WebFetch could not extract their text and pdftotext needed approval.",
+  "Whether Lorex, Swann or Night Owl cameras use their own power or video signalling over coax that would block a third-party DVR. Not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2353867999999997
+ }
+}
