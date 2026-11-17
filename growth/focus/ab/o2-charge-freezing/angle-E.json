@@ -1,0 +1,73 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how fast any power station actually charges once it is below freezing: a named freezer test (Zelpio) measured the BLUETTI Pioneer Na taking about 145 W at a 5-6°F internal temperature, about a tenth of its 1,400 W rated AC input, which matches BLUETTI's own cold table as reported by ESS News (132 W at -15°C, 159 W at -10°C).",
+ "standout": 2,
+ "standout_why": "Opened and compared runtimemath.com (18-model cold limits), energiasolarpro.com (cited; says 'We did not measure these units in a cold chamber ourselves'), powerstations.reviews (cited; 'We have not tested these setups ourselves'), powersized.com/best/camping (cited; found no published cold test as of 2026-10-27), outagemath.com (cited; only a single-cell LiFePO4 lab study, no station), amphourly.com, kilohour.com, blackboxsupplies.com ('we did not test any unit') and BLUETTI's Pioneer Na product page (cited). Every one gives only minimum charging temperatures and the 60%-SoC cap below 14°F; none gives a charge rate in the cold, heater draw or a measured cold result for any model. ChatGPT itself said its ratings were 'manufacturer documentation, not independent cold-charging tests'. Not scored 3 because the strongest measurement comes from a reviewer the page does not name (Zelpio) and the Jackery measurement comes from a site whose test dates come before its publish date by a year. I could not open the cited Pioneer Na manual PDF (too large, and r.jina.ai returned it empty), so I could not rule out that the manual carries the same cold charge-power table.",
+ "decides": "It confirms the Pioneer Na as the pick for charging in hard cold: it really does charge at about 5°F with no heater, but slowly. At the 132-145 W it accepts in the cold, filling to its 60% cap below 14°F takes about 4 hours, so a big solar array does not help until the battery warms up. A heated LFP station such as the Jackery HomePower 3600 Plus spends about 50 W on its heater once below 32°F, then (by one hands-on account) takes solar at 680 W at 28°F. That favors it for fast winter recharge where a heater-start is acceptable. The page should tell shoppers to budget for the cold charge rate, not the 32°F floor.",
+ "candidates": [
+  "BLUETTI Pioneer Na",
+  "Jackery Explorer 600 v2",
+  "Jackery Explorer 1500 v2",
+  "Jackery HomePower 3600 Plus",
+  "Pecron E1000LFP",
+  "EcoFlow DELTA Pro Ultra"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Pioneer Na",
+   "label": "Measured AC charge rate after a freezer soak",
+   "value": "about 145 W at a 5-6°F (about -15°C) internal temperature, about 10% of the 1,400 W normal AC rate; it rose as the battery warmed",
+   "source": "https://www.zelpio.com/blog/bluetti-pioneer-na-sodium-ion-power-station-review/",
+   "source_title": "Zelpio: BLUETTI Pioneer Na sodium-ion power station review",
+   "read": "2026-11-17",
+   "note": "Zelpio put the unit in a freezer for about 20 hours, until the internal temperature read 5-6°F, then plugged it into AC. Page dated 2026-08-23. It names no individual reviewer and states no freezer ambient temperature. In the same test the unit ran a full 1,500 W load while ice cold. Zelpio's cold-capacity estimates (about 12% loss at 32°F, about 20% at 0°F, about 600 Wh usable in bitter cold) are estimates, not measurements."
+  },
+  {
+   "product": "BLUETTI Pioneer Na",
+   "label": "Charge power by battery temperature (BLUETTI's table, as reported by ESS News)",
+   "value": "about 1,400 W at 10-25°C; about 245 W at 0°C; 211 W at -5°C; 159 W at -10°C; 132 W at -15°C; no charging at -20°C and below",
+   "source": "https://www.ess-news.com/2026/02/13/can-sodium-ion-beat-lithium-ion-in-portable-power-the-bluetti-pioneer-na-gives-it-a-try/",
+   "source_title": "Can sodium-ion beat lithium-ion in portable power? The Bluetti Pioneer Na gives it a try (ESS News, Tristan Rayner, 2026-02-13)",
+   "read": "2026-11-17",
+   "note": "These are BLUETTI's own figures, reprinted by ESS News, not ESS News measurements. They match Zelpio's 145 W at about -15°C. Arithmetic: below -10°C charging stops at 60% SoC, so 900 Wh × 0.6 = 540 Wh; 540 Wh / 132 W ≈ 4.1 h from empty at -15°C, before losses. The article does not say whether the table covers AC only or also solar. BLUETTI's US product page (read 2026-11-17, $700) gives only the -15°C limit and the 60% cap, not these wattages."
+  },
+  {
+   "product": "BLUETTI Pioneer Na",
+   "label": "Overnight outdoor cold test (ESS News)",
+   "value": "ran normally on discharge after a night outdoors below -10°C (14°F)",
+   "source": "https://www.ess-news.com/2026/02/13/can-sodium-ion-beat-lithium-ion-in-portable-power-the-bluetti-pioneer-na-gives-it-a-try/",
+   "source_title": "Can sodium-ion beat lithium-ion in portable power? The Bluetti Pioneer Na gives it a try (ESS News, Tristan Rayner, 2026-02-13)",
+   "read": "2026-11-17",
+   "note": "German winter, unit left outside overnight. The article reports no measured charge watts, charge times or delivered Wh from this test."
+  },
+  {
+   "product": "BLUETTI Pioneer Na",
+   "label": "The Solar Lab bench measurements (room temperature) and cold observation",
+   "value": "AC charge empty to full 1 h 3 min; idle draw 8.6 W with the inverter on; 86% efficiency; charged and discharged down to its rated temperatures",
+   "source": "https://www.thesolarlab.com/review/bluetti-pioneer-na",
+   "source_title": "The Solar Lab: BLUETTI Pioneer Na review",
+   "read": "2026-11-17",
+   "note": "The Solar Lab names no individual tester and gives no date (copyright 2026). It reports no watts or times for its cold run. It says BLUETTI cuts charge and discharge power by about one third at extreme temperatures, which does not match the roughly 90% cut in the table ESS News reported."
+  },
+  {
+   "product": "Jackery HomePower 3600 Plus",
+   "label": "Winter field test: heater draw and solar charging just below freezing",
+   "value": "self-heating switched on at 32°F and drew 50 W; at 28°F, solar averaged 680 W and added 2,040 Wh in 3 h; 20% to 100% took 3.2 h",
+   "source": "https://www.outdoortechlab.com/jackery-homepower-3600-plus-review/",
+   "source_title": "Jackery HomePower 3600 Plus Review: Proven Winter Test (Outdoor Tech Lab, JC Courtland)",
+   "read": "2026-11-17",
+   "note": "Test in Northern Michigan, December 2024 to January 2025, including an outage at 5°F. Published 2025-12-27 and updated April 2026: the test period comes a year before the publish date and the page does not explain why, so treat this as weak evidence. Its '92% capacity retention at 5°F' line gives no method. 28°F is only 4°F below the LFP cutoff, so this says nothing about charging at -4°F."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's or lab's measured charge rate, heater draw or time-to-charge below 32°F for the Jackery Explorer 600 v2 and Explorer 1500 v2 (searched reviews and freezer tests; found only maker -4°F ratings and comparison pages).",
+  "A measured cold-start heater test of the Pecron E1000LFP (its manual says a heater warms the battery above 0°C between -20°C and 0°C when charge input is present; reviews from Batteryskills, The Solar Lab and The Gadgeteer test only at room temperature).",
+  "A measured below-freezing charging test of the EcoFlow DELTA Pro Ultra (The Solar Lab and Electrek tested efficiency and a roughly 40°F home run, not cold charging).",
+  "The original YouTube freezer test of the Pioneer Na credited to The Solar Pit (about -12°F, 36+ hours); found only an automated recapio.com digest, so I used no numbers from it.",
+  "Whether the Pioneer Na user manual (cited by ChatGPT) carries the charge-power-by-temperature table: the PDF was over 10 MB and r.jina.ai returned it empty.",
+  "Popular Science (Nick Hilden, 2025-10-09) tested the Pioneer Na only in September and ran no cold test."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}
