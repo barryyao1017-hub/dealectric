@@ -1,0 +1,114 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got ties a lab figure to its own pick: the AlorAir Sentinel HDi65S is certified under the same ENERGY STAR record as the HD55S, which lists 36.33 pints/day at the DOE 65°F/60% RH test (about 66% of the 55-pint AHAM figure ChatGPT quoted), 2.08 L/kWh and 379 kWh/yr. None of the other pump models (HD55P, HD35P, Galaxy 85P, HDi90) are in the ENERGY STAR dataset at all.",
+ "standout": 1,
+ "standout_why": "I checked the two cited rivals, dehumidifierverdict.com and crawlspacedehumidifiers.org/with-pump. Both list the HDi65/HDi65S at 55 pints AHAM only, with no 65°F figure and no ENERGY STAR IEF. dehumidifierverdict says it does no testing. crawlspacedehumidifiers.org gives 73°F figures only for the HDi100/HDi120 and a 65°F figure only for the Seaira NXT85C. crawlspacecosts.com (cited in chat 2) has no DOE or ENERGY STAR data. One uncited result, dryhomelab.com, does give '36.33 pints per day at the portable test condition' for the HD55S. But it calls the HD55S a gravity unit outside its picks and never links that figure to the HDi65S. Bob Vila (uncited) is the only rival with named measurements, and none of them are for a pump model. So rivals hold part of the finding.",
+ "decides": "The finding confirms the HDi65S as the 55-pint pump pick but resizes it: in a cool crawl space, plan on about 36 pints/day, not 55. It also gives the HDi65S a verifiable efficiency figure (2.08 L/kWh, 379 kWh/yr) that the HD55P, HD35P, Galaxy 85P and HDi90 don't have in ENERGY STAR's data. That favours the HDi65S over the HD55P when running cost matters. Our page leads with the HD55P, so it should say the HD55P has no ENERGY STAR listing.",
+ "candidates": [
+  "AlorAir Sentinel HDi65S",
+  "AlorAir Sentinel HDi65",
+  "AlorAir Sentinel HDi90",
+  "AlorAir Sentinel HD55P",
+  "AlorAir Sentinel HD35P WiFi",
+  "AlorAir Galaxy 85P",
+  "AprilAire E070",
+  "Santa Fe Compact70",
+  "Hisense 60-pint dehumidifier with built-in pump"
+ ],
+ "findings": [
+  {
+   "product": "AlorAir Sentinel HDi65S",
+   "label": "Water removal at DOE appendix X1 (portable test, 65°F/60% RH)",
+   "value": "36.33 pints/day",
+   "source": "https://data.energystar.gov/resource/mgiu-hu4z.json?$where=upper(brand_name)%20like%20%27%25ALOR%25%27&$limit=200",
+   "source_title": "ENERGY STAR Certified Dehumidifiers dataset (EPA), record pd_id 4005597",
+   "read": "2026-11-17",
+   "note": "The record is for the Sentinel HD55S, with 'Sentinel HDI65S' under additional_model_information, so both share one certification. Certified 2025-03-18. 36.33 / 55 AHAM = 66%."
+  },
+  {
+   "product": "AlorAir Sentinel HDi65S",
+   "label": "Integrated energy factor (DOE appendix X1)",
+   "value": "2.08 L/kWh",
+   "source": "https://data.energystar.gov/resource/mgiu-hu4z.json?$where=upper(brand_name)%20like%20%27%25ALOR%25%27&$limit=200",
+   "source_title": "ENERGY STAR Certified Dehumidifiers dataset (EPA), record pd_id 4005597",
+   "read": "2026-11-17",
+   "note": "Same record as above. meets_most_efficient_criteria = No. Refrigerant HFC-32, 7.8 oz."
+  },
+  {
+   "product": "AlorAir Sentinel HDi65S",
+   "label": "Annual energy use (ENERGY STAR)",
+   "value": "379 kWh/yr",
+   "source": "https://data.energystar.gov/resource/mgiu-hu4z.json?$where=upper(brand_name)%20like%20%27%25ALOR%25%27&$limit=200",
+   "source_title": "ENERGY STAR Certified Dehumidifiers dataset (EPA), record pd_id 4005597",
+   "read": "2026-11-17",
+   "note": "Field annual_energy_consumption_kwh_yr on the shared HD55S/HDi65S record."
+  },
+  {
+   "product": "general",
+   "label": "AlorAir models in the ENERGY STAR certified list",
+   "value": "3 records: Helios D35, Sentinel Pro35X, Sentinel HD55S (with HDi65S as additional model)",
+   "source": "https://data.energystar.gov/resource/mgiu-hu4z.json?$where=upper(brand_name)%20like%20%27%25ALOR%25%27&$limit=200",
+   "source_title": "ENERGY STAR Certified Dehumidifiers dataset (EPA)",
+   "read": "2026-11-17",
+   "note": "Searched brand_name like '%ALOR%'. The Sentinel HD55P, HD35P, HDi90 and Galaxy 85P are not in the dataset, so none of them has an EPA-listed 65°F capacity or IEF. A query covering Santa Fe and AprilAire returned no Compact70 or E070 record either."
+  },
+  {
+   "product": "AprilAire E070",
+   "label": "Bob Vila crawl-space test: relative humidity drop",
+   "value": "70% to 58% in 12 h; 49% at 24 h; mid-40s afterwards",
+   "source": "https://www.bobvila.com/reviews/best-crawl-space-dehumidifiers/",
+   "source_title": "The 5 Best Crawl Space Dehumidifiers of 2026, Tested (Bob Vila)",
+   "read": "2026-11-17",
+   "note": "Tested by Mark Wolfe, article dated 2026-07-27. Sealed crawl space with vapor barrier, 5-day run, 50% RH target, drained by hose to a sump pump. The E070 is gravity drain only, no built-in pump."
+  },
+  {
+   "product": "AlorAir Sentinel HD55S",
+   "label": "Bob Vila crawl-space test: relative humidity drop",
+   "value": "66% to 55% in just under 18 h; 52% at 24 h",
+   "source": "https://www.bobvila.com/reviews/best-crawl-space-dehumidifiers/",
+   "source_title": "The 5 Best Crawl Space Dehumidifiers of 2026, Tested (Bob Vila)",
+   "read": "2026-11-17",
+   "note": "Mark Wolfe, 2026-07-27, same setup as above. The HD55S is the gravity-drain twin of the pump-equipped HDi65S (same ENERGY STAR record), so this is the closest named measurement to a pump model."
+  },
+  {
+   "product": "AlorAir Sentinel HD55",
+   "label": "Bob Vila crawl-space test: relative humidity drop",
+   "value": "67% to 59% in 12 h; 53% at 24 h",
+   "source": "https://www.bobvila.com/reviews/best-crawl-space-dehumidifiers/",
+   "source_title": "The 5 Best Crawl Space Dehumidifiers of 2026, Tested (Bob Vila)",
+   "read": "2026-11-17",
+   "note": "Mark Wolfe, 2026-07-27. Testers put the slowdown partly down to an 8°F drop in ambient temperature. Gravity drain, no pump."
+  },
+  {
+   "product": "AlorAir Sentinel HD55P",
+   "label": "Price, AlorAir US store",
+   "value": "$583.28 (list $729.11, 20% off)",
+   "source": "https://www.alorair.com/product/alorair-sentinel-hd55p",
+   "source_title": "AlorAir Sentinel HD55P (alorair.com)",
+   "read": "2026-11-17",
+   "note": "The same page lists 55 pints AHAM, 120 pints at saturation, 420 W max, 3.7 A, 50 dBA max and 33–105°F operation. It gives no DOE 65°F figure and no L/kWh."
+  },
+  {
+   "product": "AlorAir Sentinel HDi90",
+   "label": "Maker ratings (not measured by a third party)",
+   "value": "90 pints/day AHAM; 630 W max; 5.6 A; 58 dBA max; 33.8–104°F",
+   "source": "https://www.alorair.com/product-details/alorair-sentinel-hdi90-build-in-pump",
+   "source_title": "AlorAir Sentinel HDi90 (Built-in Pump) (alorair.com)",
+   "read": "2026-11-17",
+   "note": "The page gives no DOE 65°F capacity, no L/kWh and no pump-lift figure. It says cETL/ETL listed and does not mention ENERGY STAR."
+  }
+ ],
+ "unsourced": [
+  "HDi90 DOE-condition capacity: AlorAir's spec PDF (files.alorair.com, 2025-09-17 sheet) and the PSEG Long Island rebate table were said to show 47.71 PPD at DOE conditions, but both arrived as compressed PDFs I couldn't read, so the figure is left out.",
+  "HD55P DOE 65°F capacity (said to be 32 PPD on its data plate): the alorair.com data-plate PDF returned 404, and the Shopify-hosted HD55P spec PDF was unreadable compressed binary.",
+  "HD35P WiFi and Galaxy 85P DOE capacity or IEF: not in the ENERGY STAR dataset, and I didn't reach a maker page with the figure (aloraircrawlspace.com returned 429).",
+  "A named reviewer's or lab's measurement (humidity drop, dB, watts, pump lift actually achieved) for any built-in-pump crawl-space model: Bob Vila tested a Hisense 60-pint built-in-pump unit but published no numbers. The 'tested' pages found by search (rosy-tomorrows.com, museituppublishing.com, requiemforadream.com) name no tester or method, so I didn't use them.",
+  "crawlclimate.com (cited) and theheatandairreview.com: both failed to load with SSL certificate errors, so I couldn't compare against them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1636876999999997
+ }
+}
