@@ -42,7 +42,7 @@ JS = r"""
   const dc = (cart.discount_codes || []).find(d => d.code.toUpperCase() === code.toUpperCase());
   const apps = (cart.cart_level_discount_applications || []).map(a => ({title: a.title, amount: (a.total_allocated_amount || 0) / 100}))
     .concat(cart.items.flatMap(it => (it.line_level_discount_allocations || []).map(a => ({title: a.discount_application.title, amount: a.amount / 100, line: true}))));
-  return {code, product: prod.title, variant: v.title, variant_available: v.available, applicable: !!(dc && dc.applicable),
+  return {code, product: prod.title, variant: v.title, variant_id: v.id, variant_available: v.available, applicable: !!(dc && dc.applicable),
           subtotal: cart.original_total_price / 100, total: cart.total_price / 100, discount: cart.total_discount / 100,
           code_amount: Math.round(apps.filter(a => (a.title || '').toUpperCase() === code.toUpperCase()).reduce((s, a) => s + a.amount, 0) * 100) / 100,
           applications: apps};
@@ -50,10 +50,11 @@ JS = r"""
 """
 
 
-def check_many(product_url: str, codes: list[str], pause: float = 3.0) -> list[dict]:
+def check_many(product_url: str, codes: list[str], pause: float = 3.0, variant: str | int | None = None) -> list[dict]:
+    """variant: the Shopify variant id to put in the cart (else the URL's ?variant=, else the first available one)."""
     s = urlsplit(product_url)
     handle = s.path.rstrip("/").split("/products/")[1]
-    vid = (parse_qs(s.query).get("variant") or [""])[0]   # a ?variant= in the URL picks that variant (kits, 11-11)
+    vid = str(variant) if variant else (parse_qs(s.query).get("variant") or [""])[0]   # a ?variant= in the URL picks that variant (kits, 11-11)
     tab = ui.Tab(product_url)
     out = []
     try:
