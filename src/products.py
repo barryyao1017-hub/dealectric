@@ -7737,6 +7737,22 @@ PRODUCTS = [
  "fit": 'A router that needs either AC or 12 V in a short outage, on a small budget.',
  "caveats": ['Its AC-on draw from the battery with no load has not been published by a reviewer, so its AC router hours are an upper bound.']},
 
+{"slug": 'bluetti-apex-300-2-b500k',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "category": 'power-station',
+ "name": 'BLUETTI Apex 300 + 2× B500K Home Battery Backup Bundle (13,004.8 Wh LiFePO4, 3,840 W, 120/240 V)',
+ "model": 'Apex 300 + 2× B500K',
+ "url": 'https://www.bluettipower.com/products/b500k2-2-apex-300',
+ "price": 5399.0,
+ "verified": '2026-11-17',
+ "specs": [('Capacity', '13,004.8 Wh LiFePO4: Apex 300 2,764.8 Wh + 2 × B500K 5,120 Wh (BLUETTI)'), ('AC output', '3,840 W, 120/240 V (BLUETTI)'), ('Idle loss', 'About 19.5 W with the inverters on (ESS News, measured on one Apex 300); BLUETTI states about 20 W'), ('Expansion cable', 'Each B500K ships with one CA90 battery expansion cable (BLUETTI)'), ('System limit', '2–3 Apex 300 units and up to 18 batteries, 58 kWh (BLUETTI)')],
+ "warranty": '5 years (proof of purchase from an official store)',
+ "returns": '30-day money-back for unused items in the original package; buyer pays return shipping',
+ "summary": "An Apex 300 with two 5,120 Wh B500K packs. On a pellet stove that draws 180 W running (US Stove 5660 manual) it works out to about 59 hours per charge, if the Apex 300's measured 19.5 W idle holds with the packs attached.",
+ "fit": "Pellet-stove owners who want two days or more of heat through an outage from one listing, for less than EcoFlow's 12 kWh DELTA Pro Ultra X bundle.",
+ "caveats": ["Nobody has published an idle measurement with B500K packs attached; each pack's own standby draw would come off the hours", "BLUETTI's bundle page (read 2026-11-17) says the Apex 300 is expected to ship in late January and that each unit is delivered separately", 'Three heavy boxes to place and cable, not one']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
